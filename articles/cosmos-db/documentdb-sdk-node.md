@@ -16,10 +16,10 @@ ms.date: 05/24/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 260405d1f6b5064af3d533ecef722f0d56b7ef36
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: fd221f624e64e6b1ffcc4d28608b8fa2936400ae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -52,7 +52,12 @@ ms.lasthandoff: 05/31/2017
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB を使用した Node.js Web アプリケーションの作成](documentdb-nodejs-application.md)</td></tr>
 
-<tr><td>**現在サポートされているプラットフォーム**</td><td>[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/)<br/>[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/>[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)</td></tr>
+<tr><td>**現在サポートされているプラットフォーム**</td><td> 
+[Node.js v6.x](https://nodejs.org/en/blog/release/v6.10.3/)<br/> 
+[Node.js v4.2.0](https://nodejs.org/en/blog/release/v4.2.0/)<br/> 
+[Node.js v0.12](https://nodejs.org/en/blog/release/v0.12.0/)<br/> 
+[Node.js v0.10](https://nodejs.org/en/blog/release/v0.10.0/) 
+</td></tr>
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート

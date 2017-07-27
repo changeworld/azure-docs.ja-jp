@@ -15,9 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: bec4f89556a2daa41e19b0ecb2ab9bbbed849107
-ms.openlocfilehash: 3326b1ff8d1704b225cfb62886fbc992c6171211
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
+ms.openlocfilehash: 397f3e75830acf46b29ac864c77ed3160f4e01e4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 
@@ -81,9 +83,4 @@ IPv6 でロード バランサーをデプロイする方法について説明�
 * [テンプレートを使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-template.md)
 * [Azure PowerShell を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-ps.md)
 * [Azure CLI を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-cli.md)
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/13/2017
+ms.date: 05/12/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
-ms.openlocfilehash: bb58d485a7ae805489b468cfffd72654914f63f1
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: fe804cc01925cee58a1d694bdb94b85a8f994cef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/02/2017
 このチュートリアルを完了するには、次のものが必要です。
 
 * Java SE 8。 <br/> 「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Java を Windows または Linux にインストールする方法が説明されています。
-* Maven 3。  <br/> [開発環境の準備][lnk-dev-setup]に関するページでは、このチュートリアル用に Maven や lnk-maven を Windows または Linux にインストールする方法について説明しています。
+* Maven 3。  <br/> [開発環境の準備][lnk-dev-setup]に関するページでは、このチュートリアル用に [Maven][lnk-maven] を Windows または Linux にインストールする方法が説明されています。
 * [Node.js のバージョン 0.10.0 以降](http://nodejs.org)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -62,7 +62,7 @@ ms.lasthandoff: 05/02/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.1.24</version>
+      <version>1.3.30</version>
     </dependency>
     ```
 
@@ -209,7 +209,7 @@ ms.lasthandoff: 05/02/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.2.17</version>
+      <version>1.5.22</version>
       <type>jar</type>
     </dependency>
     ```
@@ -250,10 +250,10 @@ ms.lasthandoff: 05/02/2017
     import java.util.concurrent.TimeUnit;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 **{youriothubname}** を IoT Hub 名に置き換え、**{yourhubkey}** を「*デバイス ID の作成*」セクションで生成したデバイス キーの値に置き換えます。
+1. 次のクラスレベル変数を **App** クラスに追加します。 **{youriothubconnectionstring}** を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
 
     ```java
-    public static final String iotHubConnectionString = "HostName={youriothubname}.azure-devices.net;SharedAccessKeyName=owner;SharedAccessKey={yourhubkey}";
+    public static final String iotHubConnectionString = "{youriothubconnectionstring}";
     public static final String deviceId = "myDeviceId";
 
     public static final String methodName = "writeLine";
@@ -288,11 +288,15 @@ ms.lasthandoff: 05/02/2017
     System.out.println("Shutting down sample...");
     ```
 
+1. invoke-direct-method\src\main\java\com\mycompany\app\App.java ファイルを保存して閉じます。
+
+1. **invoke-direct-method** アプリを構築して、エラーを修正します。 コマンド プロンプトで invoke-direct-method フォルダーに移動し、次のコマンドを実行します。
+
+    `mvn clean package -DskipTests`
+
 ## <a name="run-the-apps"></a>アプリの実行
 
 これで、コンソール アプリを実行する準備が整いました。
-
-これで、アプリを実行する準備が整いました。
 
 1. simulated-device フォルダーで、コマンド プロンプトから次のコマンドを実行し、IoT Hub からのメソッド呼び出しのリッスンを開始します。
 
@@ -325,7 +329,7 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 
 <!-- Links -->
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-java/blob/master/doc/java-devbox-setup.md
-
+[lnk-maven]: https://maven.apache.org/what-is-maven.html
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-devguide-jobs]: iot-hub-devguide-jobs.md

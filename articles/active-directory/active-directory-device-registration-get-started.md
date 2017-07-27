@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/09/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 9934902811354ffa4047d70d995a6dd44be0229b
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録の使用
@@ -51,25 +52,25 @@ Azure Active Directory の管理者ポータルを使用して、登録されて
 
 **Azure Active Directory デバイス登録サービスを有効にするには:**
 
-1.    Microsoft Azure Portal に管理者としてサインインします。
+1.  Microsoft Azure Portal に管理者としてサインインします。
 
-2.    左ウィンドウで、 **[Active Directory]**を選択します。
+2.  左ウィンドウで、 **[Active Directory]**を選択します。
 
-3.    [ディレクトリ] タブで、ディレクトリを選択します。
+3.  [ディレクトリ] タブで、ディレクトリを選択します。
 
-4.    **[構成]**をクリックします。
+4.  **[構成]**をクリックします。
 
-5.    **[デバイス]** までスクロールします。
+5.  **[デバイス]** までスクロールします。
 
-6.    [ユーザーはデバイスを Azure AD に登録できます] で [すべて] を選択します。
+6.  [ユーザーはデバイスを Azure AD に登録できます] で [すべて] を選択します。
 
-7.    ユーザーごとに承認するデバイスの最大数を選択します。
+7.  ユーザーごとに承認するデバイスの最大数を選択します。
 
 Office 365 用に Microsoft Intune またはモバイル デバイス管理を使用して登録するには、デバイス登録が必要です。 これらのサービスのいずれかを構成している場合は、**[すべて]** が選択され、**[なし]** は無効になります。 正しく構成されていて、適切なライセンスがあることを確認してください。
 
-既定では、サービスに対する&2; 要素認証は有効になっていません。 ただし、デバイスを登録するときに&2; 要素認証を使用することをお勧めします。
+既定では、サービスに対する 2 要素認証は有効になっていません。 ただし、デバイスを登録するときに 2 要素認証を使用することをお勧めします。
 
-- このサービスに対して&2; 要素認証を必要とするように設定する場合は、事前に Azure Active Directory で&2; 要素認証プロバイダーを構成し、Multi-Factor Authentication に対してユーザー アカウントを構成する必要があります。「Multi-Factor Authentication を Azure Active Directory に追加する」を参照してください。
+- このサービスに対して 2 要素認証を必要とするように設定する場合は、事前に Azure Active Directory で 2 要素認証プロバイダーを構成し、Multi-Factor Authentication に対してユーザー アカウントを構成する必要があります。「Multi-Factor Authentication を Azure Active Directory に追加する」を参照してください。
 
 - Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。Active Directory フェデレーション サービスでの Multi-Factor Authentication の使用に関する記事を参照してください。
 
@@ -79,19 +80,19 @@ Azure 管理者ポータルから、デバイスの表示、ブロック、お�
 
 **Azure Active Directory のデバイス オブジェクトを表示および管理するには:**
  
-1.    Microsoft Azure Portal に管理者としてログオンします。
+1.  Microsoft Azure Portal に管理者としてログオンします。
 
-2.    左ウィンドウで、 **[Active Directory]**を選択します。
+2.  左ウィンドウで、 **[Active Directory]**を選択します。
 
-3.    ディレクトリを選択します。
+3.  ディレクトリを選択します。
 
-4.    **[ユーザー]** を選択します。 
+4.  **[ユーザー]** を選択します。 
 
 5.  表示するデバイスのユーザーをクリックします。
 
-6.    **[デバイス]** を選択します。
+6.  **[デバイス]** を選択します。
 
-7.    **[登録済みのデバイス]** を選択します。
+7.  **[登録済みのデバイス]** を選択します。
 
 これで、ユーザーの登録済みデバイスを表示、ブロック、またはブロック解除することができます。
 オンプレミスのドメインに参加済みで自動的に登録された Windows 10 デバイスは、[ユーザー] タブには表示されません。 企業のすべてのデバイスを検索するには、Get-MsolDevice PowerShell コマンドを使用してください。 

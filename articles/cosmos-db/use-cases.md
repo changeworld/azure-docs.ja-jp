@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 5b0fcc28637e95484d33ce99c7d7a379c4513948
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 6dfa8307162c377ef57412233a81f2769e0f891d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---

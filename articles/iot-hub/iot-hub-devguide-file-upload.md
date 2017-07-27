@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-translationtype: Human Translation
-ms.sourcegitcommit: 9ded95283b52f0fc21ca5b99df8e72e1e152fe1c
-ms.openlocfilehash: c56a568fa003ec45e92279e070e6309763071827
-ms.lasthandoff: 01/05/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
+ms.openlocfilehash: 3acefebb9d1007a0c035fa561191ca43a3f66896
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/01/2017
 
 
 ---
@@ -100,7 +101,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 「[エンドポイント][lnk-endpoints]」で説明したように、IoT Hub はサービス向けエンドポイント (**/messages/servicebound/fileuploadnotifications**) 経由でメッセージとしてファイルのアップロード通知を配信します。 ファイルのアップロード通知の受信セマンティクスは Cloud-to-device メッセージの場合と同様であり、[メッセージのライフサイクル][lnk-lifecycle]も同じです。 ファイルのアップロード通知エンドポイントから取得した各メッセージは、次のプロパティを持つ JSON レコードです。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 | --- | --- |
 | EnqueuedTimeUtc |通知が作成された日時を示すタイムスタンプ。 |
 | deviceId |**DeviceId** 。 |
@@ -126,7 +127,7 @@ IoT Hub には、ファイルのアップロードをサポートする 2 つの
 
 各 IoT Hub では、ファイルのアップロード通知用に次の構成オプションを公開しています。
 
-| プロパティ | 説明 | 範囲と既定値 |
+| プロパティ | Description | 範囲と既定値 |
 | --- | --- | --- |
 | **enableFileUploadNotifications** |ファイルのアップロード通知をファイル通知エンドポイントに書き込むかどうかを制御します。 |ブール値。 既定値: True。 |
 | **fileNotifications.ttlAsIso8601** |ファイルのアップロード通知の既定の TTL。 |最大 48 時間の ISO_8601 書式による間隔 (最小 1 分)。 既定値: 1 時間。 |
@@ -140,7 +141,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
 * [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
-* [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [デバイス ツイン、ジョブ、メッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ
@@ -169,7 +170,7 @@ IoT Hub を使用してデバイスからファイルをアップロードする
 [lnk-initialize]: iot-hub-devguide-file-upload.md#initialize-a-file-upload
 [lnk-notify]: iot-hub-devguide-file-upload.md#notify-iot-hub-of-a-completed-file-upload
 [lnk-service-notification]: iot-hub-devguide-file-upload.md#file-upload-notifications
-[lnk-lifecycle]: iot-hub-devguide-messaging.md#message-lifecycle
+[lnk-lifecycle]: iot-hub-devguide-messages-c2d.md#the-cloud-to-device-message-lifecycle
 [lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
 
 [lnk-devguide-identities]: iot-hub-devguide-identity-registry.md

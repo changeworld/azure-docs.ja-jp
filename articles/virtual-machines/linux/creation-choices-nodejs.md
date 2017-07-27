@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 756141fda3148726af0030a010465ee14e8ce6b6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1eb90d44797d66f3e09811918ce5a7f4ad4287c6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="different-ways-to-create-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを作成するさまざまな方法
@@ -98,8 +97,6 @@ azure vm image list-skus --location eastus --publisher Canonical --offer UbuntuS
 ```azurecli
 azure vm image list --location eastus --publisher Canonical --offer UbuntuServer --sku 16.04.0-LTS
 ```
-
-提供されているイメージの探し方と使い方の例については、 [Azure CLI を使用した Azure 仮想マシン イメージの検索と選択](cli-ps-findimage.md#use-azure-cli-10)に関するページを参照してください。
 
 `azure vm quick-create` コマンドと `azure vm create` コマンドにはエイリアスがあり、より一般的なディストリビューションと、その最新リリースにすばやくアクセスするために使用できます。 一般的に、エイリアスを使う方が、VM を作成するたびに発行元、プラン、SKU、バージョンを指定するよりも簡単です。
 

@@ -14,9 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f74379c3e310a7bbcf659ef610727bff19639022
 ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -61,7 +63,7 @@ ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 ## <a name="affinity-groups-and-vms"></a>アフィニティ グループと VM
 前述のように、一般的に VM ではアフィニティ グループは推奨されなくなりました。 一連の VM 間のネットワーク レイテンシ待ち時間を最小に抑える必要がある場合にのみ、アフィニティ グループを使用してください。 アフィニティ グループに VM を配置すると、すべての VM が同じコンピューティング クラスターまたはスケール ユニットに配置されることになります。
 
-アフィニティ グループを使用する場合は、次の&2; つの (おそらくはマイナスの) 結果が生じる可能性があります。
+アフィニティ グループを使用する場合は、次の 2 つの (おそらくはマイナスの) 結果が生じる可能性があります。
 
 * 一連の VM サイズは、コンピューティング スケール ユニットによって提供される一連の VM サイズに制限されます。
 * 新しい VM を割り当てられない可能性が高くなります。 これは、アフィニティ グループの特定のスケール ユニットが容量を使い切った場合に発生します。
@@ -70,10 +72,5 @@ ms.openlocfilehash: c495af3e818758cc5fe99af9b5f07506a16b59ef
 現在アフィニティ グループ内にある VM を、アフィニティ グループから削除する必要はありません。
 
 VM をデプロイすると、単一のスケール ユニットにデプロイされます。 アフィニティ グループは、新しい VM のデプロイの際に利用できる一連の VM サイズを制限できますが、デプロイ済みの既存の VM は、VM がデプロイされているスケール ユニット内で使用できる VM サイズに既に制限されています。 このため、アフィニティ グループから VM を削除しても影響はありません。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs"
 description: "Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。"
 services: functions,app-service\logic
@@ -17,10 +17,10 @@ ms.date: 09/08/2016
 ms.author: chrande; glenga
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 0f35d79870301bcba9f009f7dbc00696ce426458
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 31661e5840a6b65f54f9df027a7e3ecab8768055
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
@@ -50,7 +50,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | --- | --- | --- |
 | オーディエンス |オフィスの従業員、ビジネス ユーザー |IT プロフェッショナル、開発者 |
 | シナリオ |セルフ サービス |ミッション クリティカル |
-| デザイン ツール |ブラウザー上、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
+| デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
 | DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-arm-provision.md) |
 | 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |

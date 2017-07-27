@@ -22,7 +22,6 @@ ms.openlocfilehash: 16d9fa8a7b7593f222976897bddf615c28109540
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/20/2017
 
-
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 [!INCLUDE [storage-selector-portal-create-storage-account](../../includes/storage-selector-portal-create-storage-account.md)]
@@ -109,7 +108,7 @@ BLOB ストレージ アカウントでは、アクセス層を変更すると�
 > ストレージ アクセス キーは、他の人と共有しないことをお勧めします。 アクセス キーを入力しないでストレージ リソースにアクセスする場合は、 *Shared Access Signature*が利用できます。 Shared Access Signature を使用すると、指定した期間、指定した権限で、アカウント内のリソースにアクセスできるようになります。 詳細については、「 [Using Shared Access Signatures (SAS) (Shared Access Signature (SAS) の使用)](storage-dotnet-shared-access-signature-part-1.md) 」を参照してください。
 > 
 > 
-
+<a id="view-and-copy-storage-access-keys"/></a>
 #### <a name="view-and-copy-storage-access-keys"></a>ストレージ アクセス キーの表示とコピー
 [Azure Portal](https://portal.azure.com) で、お使いのストレージ アカウントに移動し、**[すべての設定]**、**[アクセス キー]** の順にクリックすると、アカウントのアクセス キーを表示、コピー、再生成できます。 また、 **[アクセス キー]** ブレードには、コピーしてアプリケーションで使用できるプライマリ キーとセカンダリ キーを使用してあらかじめ構成された接続文字列も含まれています。
 

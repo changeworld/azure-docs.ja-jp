@@ -3,11 +3,11 @@ layout: HubPage
 hide_bc: true
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1379795f656d741cb43d2f34793f05ff88852646
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7c1971abc2b71f6f23d8be2950aae8b56b4ceba1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 <div id="main" class="v2">
@@ -15,7 +15,7 @@ ms.lasthandoff: 05/10/2017
         <h1 class="screenReader">Microsoft Azure のドキュメント</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
-                <a href="http://aka.ms/azuredevgetstarted/">
+                <a href="/azure/guides/developer/azure-developer-guide">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
@@ -33,17 +33,17 @@ ms.lasthandoff: 05/10/2017
                 </a>
             </li>
             <li>
-                <a href="http://aka.ms/azureitgetstarted/">
+                <a href="/azure/architecture/guide/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
                                 <div class="cardImageOuter">
                                     <div class="cardImage">
-                                        <img data-hoverimage="media/index/getstarted-itoperator.svg" src="media/index/getstarted-itoperator.png" alt="" />
+                                        <img data-hoverimage="media/index/getstarted-architecture.png" src="media/index/getstarted-architecture.png" alt="" />
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Azure IT オペレーター向けファースト ステップ ガイド</span>
+                                    <span class="likeAnH3">Azure アプリケーション アーキテクチャ ガイド</span>
                                 </div>
                             </div>
                         </div>
@@ -106,13 +106,13 @@ ms.lasthandoff: 05/10/2017
                                             <div class="cardText">
                                                 <h3>アプリケーションの開発</h3>
                                                 <div class="ico48Link">
-                                                    <a href="/azure/app-service-web/app-service-web-get-started-dotnet">
+                                                    <a href="/dotnet/azure/?view=azure-dotnet">
                                                         <img src="media/index/logo_NET.svg" alt="">
                                                         <span>.NET</span>
                                                     </a>
                                                 </div>
                                                 <div class="ico48Link">
-                                                    <a href="/azure/app-service-web/app-service-web-get-started-nodejs">
+                                                    <a href="/nodejs/azure/?view=azure-node-2.0.0">
                                                         <img src="media/index/logo_nodejs.svg" alt="">
                                                         <span>Node.js</span>
                                                     </a>
@@ -124,13 +124,13 @@ ms.lasthandoff: 05/10/2017
                                                     </a>
                                                 </div>
                                                 <div class="ico48Link">
-                                                    <a href="/azure/app-service-web/app-service-web-get-started-java">
+                                                    <a href="/java/azure/">
                                                         <img src="media/index/logo_java.svg" alt="">
                                                         <span>Java</span>
                                                     </a>
                                                 </div>
                                                 <div class="ico48Link">
-                                                    <a href="/azure/app-service-web/app-service-web-get-started-python">
+                                                    <a href="/python/azure/">
                                                         <img src="media/index/logo_python.svg" alt="">
                                                         <span>Python</span>
                                                     </a>
@@ -140,6 +140,8 @@ ms.lasthandoff: 05/10/2017
                                                     <ul class="noBullet">
                                                         <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
                                                         <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
+                                                        <li><a class="barLink" href="/azure/container-service/">Kubernetes でのコンテナー</a></li>
+                                                        <li><a class="barLink" href="/azure/service-fabric/">Service Fabric でのマイクロサービス</a></li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -196,7 +198,29 @@ ms.lasthandoff: 05/10/2017
                                     </div>
                                 </div>
                             </li>
-                            <li></li>
+                            <li>
+                                <div class="cardSize">
+                                    <div class="cardPadding">
+                                        <div class="card">
+                                            <div class="cardText">
+                                                <h3>DevOps</h3>
+                                                <div class="ico48Link">
+                                                    <a href="https://www.visualstudio.com/en-us/docs/build/apps/jenkins/build-deploy-jenkins">
+                                                        <img src="/media/logos/logo_visual-studio.svg" alt="">
+                                                        <span>Visual Studio<br />Team Services</span>
+                                                    </a>
+                                                </div>
+                                                <div class="ico48Link">
+                                                    <a href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">
+                                                        <img src="/media/logos/logo_jenkins.svg" alt="">
+                                                        <span>Azure VM 上の<br />Jenkins</span>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
                             <li></li>
                             <li></li>
                             <li></li>
@@ -261,8 +285,7 @@ ms.lasthandoff: 05/10/2017
                                                 <img src="media/index/Batch.svg" alt="" />
                                                 <p>Batch</p>
                                             </a>
-                                        </li>
-                                        
+                                        </li>                                        
                                         <li>
                                             <a href="/azure/service-fabric/">
                                                 <img src="media/index/Fabric.svg" alt="" />
@@ -682,7 +705,7 @@ ms.lasthandoff: 05/10/2017
                                         </li>
                                         <li>
                                             <a href="/azure/data-lake-store/">
-                                                <img src="media/index/DataLakeStore.svg" alt="" />
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Data Lake Store</p>
                                             </a>
                                         </li>
@@ -733,13 +756,13 @@ ms.lasthandoff: 05/10/2017
                                         </li>
                                         <li>
                                             <a href="/azure/data-lake-analytics/">
-                                                <img src="media/index/DataLakeStore.svg" alt="" />
+                                                <img src="media/index/Azure-Data-Lake-Analytics-COLOR.svg" alt="" />
                                                 <p>Data Lake Analytics</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/data-lake-store/">
-                                                <img src="media/index/DataLakeStore.svg" alt="" />
+                                                <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                 <p>Data Lake Store</p>
                                             </a>
                                         </li>
@@ -1013,9 +1036,9 @@ ms.lasthandoff: 05/10/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/resource-health">
+                                            <a href="/azure/service-health">
                                                 <img src="media/index/resource-health.svg" alt="" />
-                                                <p>Azure Resource Health</p>
+                                                <p>Azure Service Health</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1428,7 +1451,7 @@ ms.lasthandoff: 05/10/2017
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/DataLakeStore.svg" alt="" />
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2175,7 +2198,7 @@ ms.lasthandoff: 05/10/2017
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/DataLakeStore.svg" alt="" />
+                                                        <img src="media/index/Azure-Data-Lake-Analytics-COLOR.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2194,7 +2217,7 @@ ms.lasthandoff: 05/10/2017
                                             <div class="card">
                                                 <div class="cardImageOuter">
                                                     <div class="cardImage">
-                                                        <img src="media/index/DataLakeStore.svg" alt="" />
+                                                        <img src="media/index/Azure-Data-Lake-Store-COLOR.svg" alt="" />
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
@@ -2992,7 +3015,7 @@ ms.lasthandoff: 05/10/2017
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/resource-health/">
+                                <a href="/azure/service-health/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3002,8 +3025,8 @@ ms.lasthandoff: 05/10/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Resource Health</h3>
-                                                    <p>リソースに影響を及ぼす Azure の問題が発生した際の診断とサポート利用を支援します。</p>
+                                                    <h3>Azure Service Health</h3>
+                                                    <p>Azure サービスの問題が影響を及ぼす場合、パーソナライズされたガイダンスとサポートを提供します。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3120,10 +3143,10 @@ ms.lasthandoff: 05/10/2017
                                                     <a href="/dotnet/azure/dotnet-sdk-azure-install">Azure Libraries for .NET の取得</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/net/">作業開始</a>
+                                                    <a href="/dotnet/azure">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/dotnet/azure/?view=azure-dotnet">API リファレンス</a>
+                                                    <a href="/dotnet/api/overview/azure/?view=azure-dotnet">API リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3141,19 +3164,13 @@ ms.lasthandoff: 05/10/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://pypi.python.org/pypi/azure">Python SDK の入手</a>
+                                                    <a href="/python/azure/python-sdk-azure-install">Python 用 Azure ライブラリの取得</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">作業開始</a>
+                                                    <a href="/python/azure">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure-sdk-for-python.readthedocs.io/en/latest/">API リファレンス</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/resources/samples/?platform=python">サンプルを入手する</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/develop/python">詳細情報</a>
+                                                    <a href="/python/api/overview/azure/">API リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3171,19 +3188,13 @@ ms.lasthandoff: 05/10/2017
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="https://www.npmjs.com/package/azure">Node.js SDK の入手</a>
+                                                    <a href="/nodejs/azure/node-sdk-azure-install">Node.js 用 Azure ライブラリの取得</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-sdk-for-node/">作業開始</a>
+                                                    <a href="/nodejs/azure/?view=azure-node-2.0.0">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="http://azure.github.io/azure-sdk-for-node/">API リファレンス</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/documentation/samples/?platform=nodejs">サンプルを入手する</a>
-                                                </p>
-                                                <p>
-                                                    <a href="https://azure.microsoft.com/develop/nodejs">詳細情報</a>
+                                                    <a href="/nodejs/api/overview/azure">API リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3204,10 +3215,10 @@ ms.lasthandoff: 05/10/2017
                                                     <a href="/java/azure/java-sdk-azure-install">Azure Libraries for Java の取得</a>
                                                 </h3>
                                                 <p>
-                                                    <a href="https://azure.microsoft.com/develop/java/">作業開始</a>
+                                                    <a href="/java/azure">作業開始</a>
                                                 </p>
                                                 <p>
-                                                    <a href="/java/api/">API リファレンス</a>
+                                                    <a href="/java/api/overview/azure">API リファレンス</a>
                                                 </p>
                                             </div>
                                         </div>
@@ -3501,7 +3512,7 @@ ms.lasthandoff: 05/10/2017
                                 </div>
                             </li>
                             <li>
-                                <a href="/azure/architecture/">
+                                <a href="/azure/architecture/guide/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3511,7 +3522,7 @@ ms.lasthandoff: 05/10/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>クラウドの基礎</h3>
+                                                    <h3>Azure アプリケーション アーキテクチャ ガイド</h3>
                                                     <p>クラウドで成功するための基本的な知識。 クラウドまたは Azure を初めてご利用になる場合は、ここから開始してください。</p>
                                                 </div>
                                             </div>

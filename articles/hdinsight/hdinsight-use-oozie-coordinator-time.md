@@ -14,12 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2017
+ms.date: 05/25/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: fc79b8017f2184091f2473a0ff9cdfbd0a4cbdf8
-ms.openlocfilehash: ebab21a8289ae639efae8bd802d7c493fd843d05
-ms.lasthandoff: 12/08/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: b43ea48b9b34f3ab6980f7bdc5c21a19d20fd5b6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -82,7 +83,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     <tr><td>Azure ストレージ アカウント名</td><td>$storageAccountName</td><td></td><td>HDInsight クラスターで利用できる Azure ストレージ アカウント。 このチュートリアルでは、クラスターのプロビジョニング プロセス中に指定された既定のストレージ アカウントを使用します。</td></tr>
     <tr><td>Azure BLOB コンテナー名</td><td>$containerName</td><td></td><td>この例では、既定の HDInsight クラスター ファイル システムで使用する Azure BLOB ストレージ コンテナーを使用します。 既定では、HDInsight クラスターと同じ名前です。</td></tr>
     </table>
-* **Azure SQL データベース**。 コンピューターから SQL Database サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL Database を作成して、ファイアウォールを構成する手順については、[Azure SQL Database の概要][sqldatabase-get-started]に関する記事を参照してください。 この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
+* **Azure SQL データベース**。 コンピューターから SQL Database サーバーに対するアクセスを許可するようにファイアウォール ルールを構成する必要があります。 Azure SQL データベースを作成して、ファイアウォールを構成する手順については、「[Azure Portal で Azure SQL データベースを作成する][sqldatabase-get-started]」をご覧ください。 この記事には、このチュートリアルに必要な Azure SQL データベース テーブルを作成するための Windows PowerShell スクリプトが示されています。
 
     <table border = "1">
     <tr><th>SQL データベースのプロパティ</th><th>Windows PowerShell 変数名</th><th>値</th><th>Description</th></tr>

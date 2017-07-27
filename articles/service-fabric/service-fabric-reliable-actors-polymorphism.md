@@ -3,7 +3,7 @@ title: "Reliable Actors フレームワークにおけるポリモーフィズ�
 description: "Reliable Actors フレームワークで .NET のインターフェイスと型の階層を作成して、機能と API の定義を再利用します。"
 services: service-fabric
 documentationcenter: .net
-author: seanmck
+author: vturecek
 manager: timlt
 editor: vturecek
 ms.assetid: ef0eeff6-32b7-410d-ac69-87cba8b8fd46

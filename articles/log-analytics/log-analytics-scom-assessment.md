@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
-ms.openlocfilehash: 97ae17912eaa7508e3ae1315800408664a340837
-ms.lasthandoff: 03/11/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 6754505e7f58a8e7305987db9204271ca9b93870
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>System Center Operations Manager Assessment (プレビュー) ソリューションを使用して環境を最適化する
+
+![System Center Operations Manager Assessment のシンボル](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
 
 System Center Operations Manager Assessment ソリューションを使用すると、System Center Operations Manager サーバー環境のリスクと正常性を定期的に評価できます。 この記事は、潜在的な問題の修正措置を実行できるように、ソリューションをインストール、構成、および使用するために役立ちます。
 
@@ -57,7 +60,7 @@ System Center Operations Manager Assessment ソリューションを使用する
 1. [System Center Operations Manager Assessment で使用する実行アカウントを設定します。](#operations-manager-run-as-accounts-for-oms)  
 2. [System Center Operations Manager 評価ルールを構成します。](#configure-the-assessment-rule)
 
-# <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager Assessment によるデータ収集の詳細
+## <a name="system-center-operations-manager-assessment-data-collection-details"></a>System Center Operations Manager Assessment によるデータ収集の詳細
 
 System Center Operations Manager Assessment は、有効化されたサーバーを使用して、Windows PowerShell、SQL クエリ、ファイル情報コレクターを通じて WMI データ、レジストリ データ、EventLog データ、Operations Manager データを収集します。
 
@@ -155,8 +158,8 @@ System Center Operations Manager Assessment ソリューションの管理パッ
 1. Operations Manager コンソールの **[作成]** ワークスペースの **[ルール]** ウィンドウで、"*Microsoft System Center Advisor SCOM Assessment 実行評価ルール*" を検索します。
 2. 検索結果で、"*タイプ: 管理サーバー*" というテキストが含まれているルールを選択します。
 3. ルールを右クリックし、**[上書き]** > **[クラス "管理サーバー" の特定のオブジェクト]** の順にクリックします。
-4.    利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。
-5.    **[Enabled (有効)]** パラメーター値の [上書き値] を **[True]** に変更します。  
+4.  利用できる管理サーバーの一覧で、ルールを実行する管理サーバーを選択します。
+5.  **[Enabled (有効)]** パラメーター値の [上書き値] を **[True]** に変更します。  
     ![パラメーターの上書き](./media/log-analytics-scom-assessment/rule.png)
 
 引き続きこのウィンドウで次の手順を使用して、実行の頻度を構成します。

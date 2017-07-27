@@ -19,6 +19,7 @@
 
 ## 回避
 ### [セキュリティ ポリシーの設定](security-center-policies.md)
+### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
 ### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)
@@ -71,6 +72,7 @@
 ## [Azure Security](/azure/security/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [料金](security-center-pricing.md)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)

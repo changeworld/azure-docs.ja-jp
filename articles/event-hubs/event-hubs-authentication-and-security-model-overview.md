@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 05/30/2017
 ms.author: sethm;clemensv
-translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 31bf24034558582eb138251207580e8f7fd7ddaf
-ms.lasthandoff: 04/19/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: 5abdbf70d4fdb2c7feb0f3537ecc0f2abf0775a0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -40,7 +41,8 @@ Event Hubs のセキュリティ モデルは、[Shared Access Signature (SAS)](
 すべてのトークンは、SAS キーで署名されます。 通常、すべてのトークンは、同じキーで署名されます。 クライアントはキーを認識しません。これによって、他のクライアントがトークンを生成することを防いでいます。
 
 ### <a name="create-the-sas-key"></a>SAS キーを作成する
-Azure Event Hubs 名前空間を作成するときに、**RootManageSharedAccessKey** という名前の 256 ビットの SAS キーが生成されます。 このキーは、名前空間に対する送信、リッスン、および管理権限を与えます。 追加のキーを作成できます。 特定の Event Hub に送信アクセス許可を与えるキーを生成することをお勧めします。 これ以降、このトピックでは、このキーは **EventHubSendKey** という名前であることを前提とします。
+
+Event Hubs 名前空間を作成するときに、**RootManageSharedAccessKey** という名前の 256 ビットの SAS キーが生成されます。 このキーは、名前空間に対する送信、リッスン、および管理権限を与えます。 追加のキーも作成できます。 特定の Event Hub に送信アクセス許可を与えるキーを生成することをお勧めします。 これ以降、このトピックでは、このキーは **EventHubSendKey** という名前であることを前提とします。
 
 次の例では、Event Hub を作成するときに送信専用のキーを作成します。
 
@@ -63,6 +65,7 @@ nm.CreateEventHub(ed);
 ```
 
 ### <a name="generate-tokens"></a>トークンを生成する
+
 SAS キーを使用してトークンを生成できます。 クライアントごとにトークンを 1 つだけ作成する必要があります。 トークンは、次のメソッドを使用して生成できます。 すべてのトークンは、 **EventHubSendKey** キーを使用して生成されます。 各トークンには、一意の URI が割り当てられます。
 
 ```csharp
@@ -88,7 +91,7 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 ### <a name="sending-data"></a>データの送信
 トークンが作成された後、各クライアントは独自のトークンと共にプロビジョニングされます。
 
-クライアントは Event Hub にデータを送信するときに、トークンを送信要求にタグ付けします。 攻撃者による送信の傍受とトークンの盗難を防ぐために、クライアントと Event Hub 間の通信は暗号化されたチャネルを介して行う必要があります。
+クライアントは、Event Hub にデータを送信するときに、トークンで送信要求にタグ付けします。 攻撃者による送信の傍受とトークンの盗難を防ぐために、クライアントと Event Hub 間の通信は暗号化されたチャネルを介して行う必要があります。
 
 ### <a name="blacklisting-clients"></a>クライアントのブラックリスト化
 トークンが攻撃者によって盗まれた場合、攻撃者は、トークンが盗まれたクライアントを偽装できます。 クライアントをブラックリスト化するとそのクライアントは、別のパブリッシャーを使用する新しいトークンを受信するまで、使用できなくなります。
@@ -96,7 +99,6 @@ SharedAccessSignature sr=contoso&sig=nPzdNN%2Gli0ifrfJwaK4mkK0RqAB%2byJUlt%2bGFm
 ## <a name="authentication-of-back-end-applications"></a>バックエンド アプリケーションの認証
 
 Event Hub クライアントによって生成されたデータを使用するバックエンド アプリケーションを認証するため、Event Hub は、Service Bus トピックで使用されるモデルに似たセキュリティ モデルを使用します。 Event Hubs のコンシューマー グループは、Service Bus トピックに対するサブスクリプションに相当します。 クライアントは、コンシューマー グループを作成する要求に Event Hub または Event Hub が所属している名前空間の管理権限を与えるトークンが付属している場合に、コンシューマー グループを作成できます。 クライアントは、受信要求にコンシューマー グループ、Event Hub、または Event Hub が所属している名前空間の受信権限を与えるトークンが付属している場合に、コンシューマー グループを使用できます。
-
 
 Service Bus の現在のバージョンは、個々のサブスクリプションに対する SAS ルールをサポートしません。 これは Event Hubs のコンシューマー グループにも当てはまります。 両方の機能に対する SAS のサポートは、今後追加される予定です。
 

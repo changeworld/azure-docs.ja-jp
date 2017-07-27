@@ -3,6 +3,7 @@
 ## [概念](devtest-lab-concepts.md)
 ## シナリオ
 ### [開発者向けのラボの使用](devtest-lab-developer-lab.md)
+### [テスト環境でのラボの使用](devtest-lab-test-env.md)
 ### [トレーニングでのラボの使用](devtest-lab-training-lab.md)
 
 # 作業開始
@@ -40,6 +41,7 @@
 
 ## 再利用可能なテンプレートの管理
 ### [アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)
+### [Resource Manager テンプレートの使用](devtest-lab-use-resource-manager-template.md)
 ### [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
 ### [数式の管理](devtest-lab-manage-formulas.md)
 
@@ -65,3 +67,7 @@
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-devtest-labs)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=devtest-lab)
 ## [料金](https://azure.microsoft.com/pricing/details/devtest-lab/)
+
+
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/en-us/roadmap/?category=developer-tools)

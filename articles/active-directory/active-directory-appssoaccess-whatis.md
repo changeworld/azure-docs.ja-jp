@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
-ms.author: asmalser
+ms.date: 07/13/2017
+ms.author: curyand
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
 ms.openlocfilehash: cb41fbd7ca931df52ba8e5304459bb04298a108c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは

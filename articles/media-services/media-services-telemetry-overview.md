@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 99c43c63f75e01713600ef5ca46a8d11e8c5c7ce
-ms.openlocfilehash: b6560fdd50c93a7e84f12047ec4401328b601deb
+ms.translationtype: HT
+ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
+ms.openlocfilehash: bc16ef727f0c3942b0be8c633717fd52da246c55
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/09/2016
-
+ms.lasthandoff: 07/19/2017
 
 ---
 
@@ -35,7 +34,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 
 ## <a name="configuring-telemetry"></a>テレメトリの構成
 
-テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の&2; つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
+テレメトリはコンポーネント レベルの粒度で構成でき、 "Normal" と "Verbose" の 2 つの詳細レベルがあります。 現時点では、どちらのレベルでも同じ情報が返ります。 "Normal" を使用することをお勧めします。 
 
 次のトピックで、テレメトリを有効にする方法を示します。
 
@@ -75,7 +74,7 @@ Azure Media Services (AMS) を使用して、サービスのテレメトリ/メ�
 プロパティ|値|例/メモ
 ---|---|---
 PartitionKey|{アカウント ID}_{エンティティ ID}|e49bef329c29495f9b9570989682069d_64435281c50a4dd8ab7011cb0f4cdf66<br/<br/>アカウント ID は、ワークフローを簡単にするためにパーティション キーに含まれ、複数の Media Services アカウントが同じストレージ アカウントに書き込まれます。
-RowKey|{午前&0; 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前&0; 時までの秒数から始まります。 詳細については、[こちらの記事](../storage/storage-table-design-guide.md#log-tail-pattern)を参照してください。 
+RowKey|{午前 0 時までの秒数}_{ランダム値}|01688_00199<br/><br/>行キーは、パーティション内の上位 n 件を取得するスタイルのクエリを可能にするために、午前 0 時までの秒数から始まります。 詳細については、[こちらの記事](../storage/storage-table-design-guide.md#log-tail-pattern)を参照してください。 
 Timestamp|日付/時刻|Azure Table の自動タイムスタンプ 2016-09-09T22:43:42.241Z
 Type|テレメトリ データを提供するエンティティの種類|Channel/StreamingEndpoint/Archive<br/><br/>イベントの種類は単なる文字列値です。
 Name|テレメトリ イベントの名前|ChannelHeartbeat/StreamingEndpointRequestLog
@@ -85,11 +84,11 @@ ServiceID|{サービス ID}|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 
 ### <a name="entity-specific-schema"></a>エンティティ固有のスキーマ
 
-エンティティ固有の&3; 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
+エンティティ固有の 3 種類のテレメトリ データ エントリがあり、それぞれ次の頻度でプッシュされます。
 
 - ストリーミング エンドポイント: 30 秒ごと
-- ライブ チャネル:&1; 分ごと
-- ライブ アーカイブ:&1; 分ごと
+- ライブ チャネル: 1 分ごと
+- ライブ アーカイブ: 1 分ごと
 
 **ストリーミング エンドポイント**
 
@@ -149,9 +148,9 @@ ServiceID|サービス ID|f70bd731-691d-41c6-8f2d-671d0bdc9c7e
 ManifestName|プログラムの URL|asset-eb149703-ed0a-483c-91c4-e4066e72cce3/a0a5cfbf-71ec-4bd2-8c01-a92a2b38c9ba.ism
 TrackName|トラックの名前|audio_1
 TrackType|トラックの種類|Audio/video
-カスタム属性|名前とビットレートが同じ複数のトラックを区別する&16; 進数の文字列 (マルチ カメラ アングル)|
+カスタム属性|名前とビットレートが同じ複数のトラックを区別する 16 進数の文字列 (マルチ カメラ アングル)|
 Bitrate|トラックのビットレート|785000
-Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら&2; つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
+Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場合は True|True (これら 2 つの値はメトリック内には存在しないがソース イベントには存在する)<br/><br/>Healthy は、次の条件のいずれかに該当する場合は false を返す複合関数です。<br/><br/>- FragmentDiscardedCount > 0<br/>- ArchiveAcquisitionError == True
 
 ## <a name="general-qa"></a>全般的な Q&A
 
@@ -169,7 +168,7 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 
 ### <a name="how-to-define-streaming-unit-count"></a>ストリーミング ユニット数を定義する方法は?
 
-ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを&1; つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
+ストリーミング ユニット数は、サービスのストリーミング エンドポイントからのピーク スループットを 1 つのストリーミング エンドポイントのピーク スループットで除算したピーク スループットと定義できます。 1 つのストリーミング エンドポイントの使用可能なピーク スループットは、160 Mbps です。
 たとえば、顧客のサービスからのピーク スループットが 40 MBps であるとします (一定時間の BytesSent の最大値)。 この場合、ストリーミング ユニット数は、(40 MBps)*(8 ビット/バイト)/(160 Mbps) = 2 になります。
 
 ### <a name="how-to-find-average-requestssecond"></a>平均要求数/秒を調べる方法は?

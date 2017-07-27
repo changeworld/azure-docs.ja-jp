@@ -12,11 +12,12 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 07/05/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
 ms.openlocfilehash: f64c41733f8fa7e34a0b0dfbbff2b565af7cf7db
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/25/2017
 
 ---

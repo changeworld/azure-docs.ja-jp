@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/05/2017
+ms.date: 06/06/2017
 ms.author: cherylmc
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 06fe033be4df07d8c691733016bc7c44dd49f51c
-ms.lasthandoff: 04/06/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: e0c44f6aabb56dfc97188bafa5e54ce2a0183e11
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -37,20 +38,16 @@ ms.lasthandoff: 04/06/2017
 * 作成するソリューションにはどのような種類の VPN Gateway が必要か。
 * どのゲートウェイ SKU を使用するか。
 
+
+### <a name="planning-table"></a>計画表
 次の表は、ソリューションに最適な接続オプションを決定するのに役立ちます。
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-### <a name="gwrequire"></a>VPN の種類と SKU 別のゲートウェイの要件
-[!INCLUDE [vpn-gateway-gwsku](../../includes/vpn-gateway-gwsku-include.md)]
 
-ゲートウェイの SKU の詳細については、 [VPN ゲートウェイ設定](vpn-gateway-about-vpn-gateway-settings.md#gwsku)に関するページをご覧ください。
-
-#### <a name="aggregate-throughput-by-sku-and-vpn-type"></a>SKU と VPN の種類別の合計スループット
+### <a name="gateway-skus"></a>ゲートウェイの SKU
 [!INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
-#### <a name="supported-configurations-by-sku-and-vpn-type"></a>SKU と VPN の種類別のサポートされる構成
-[!INCLUDE [vpn-gateway-table-requirements](../../includes/vpn-gateway-table-requirements-include.md)]
 
 ### <a name="wf"></a>ワークフロー
 次のリストは、クラウド接続の一般的なワークフローを示しています。

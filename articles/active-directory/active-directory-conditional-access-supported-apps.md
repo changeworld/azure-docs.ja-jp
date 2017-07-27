@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/11/2017
+ms.date: 07/06/2017
 ms.author: markvi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
-ms.openlocfilehash: 40eb1d80830818a492c78d5091aaa9cca8d48f16
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: ef01a2221eb1915ac155a14cda0ea56565603d03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -38,21 +38,30 @@ ms.lasthandoff: 05/04/2017
 
 Office 365 をはじめとする Azure AD 接続サービス アプリケーションに対する条件付きアクセスは、以下のアプリケーションでサポートされます。
 
-| 対象サービス | Platform | アプリケーション |
+
+| 対象サービス| プラットフォーム| アプリケーション |
 | --- | --- | --- |
-| Office 365 Exchange Online |Windows 10 |メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) |
-| Office 365 Exchange Online |Windows 8.1、Windows 7 |Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用) |
-| Office 365 Exchange Online |iOS、Android |Outlook Mobile アプリ |
-| Office 365 Exchange Online |Mac OS X |Outlook 2016 (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定)、Skype for Business は将来サポート予定 |
-| Office 365 SharePoint Online |Windows 10 |Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定。 |
-| Office 365 SharePoint Online |Windows 8.1、Windows 7 |Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照) |
-| Office 365 SharePoint Online |iOS、Android |Office モバイル アプリ |
-| Office 365 SharePoint Online |Mac OS X |Office 2016 アプリ (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定) |
-| Office 365 Yammer |Windows 10、iOS (Android サポートは将来サポート予定) |Office Yammer アプリ |
-| Dynamics CRM |Windows 10、Windows 8.1、Windows 7、iOS、Android |Dynamics CRM アプリ |
-| PowerBI サービス |Windows 10、Windows 8.1、Windows 7、iOS、Android |PowerBI アプリ |
-| Azure Remote App サービス |Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X |Azure リモート アプリ |
-| 任意のマイ アプリ アプリ サービス |Android および iOS |任意のマイ アプリ アプリ サービス |
+| 任意のマイ アプリ アプリ サービス| Android および iOS| アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。 |
+| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X| Azure リモート アプリ|
+| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android| Dynamics CRM アプリ|
+| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および MAC OS X| Microsoft Teams Services - Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、MAC OS X、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御します|
+| Office 365 Exchange Online| Windows 10| メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|
+| Office 365 Exchange Online| Windows 8.1、Windows 7| Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)|
+| Office 365 Exchange Online| iOS| Outlook Mobile アプリ|
+| Office 365 Exchange Online| Mac OS X| Outlook 2016 (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定)、Skype for Business は将来サポート予定|
+| Office 365 SharePoint Online| Windows 10| Office 2016 アプリ、ユニバーサル Office アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)。Office Groups および SharePoint アプリについては将来サポート予定。|
+| Office 365 SharePoint Online| Windows 8.1、Windows 7| Office 2016 アプリ、Office 2013 (最新の認証を使用)、OneDrive 同期クライアント ([メモ](https://support.office.com/en-US/article/Azure-Active-Directory-conditional-access-with-the-OneDrive-sync-client-on-Windows-028d73d7-4b86-4ee0-8fb7-9a209434b04e)参照)|
+| Office 365 SharePoint Online| iOS、Android| Office モバイル アプリ|
+| Office 365 SharePoint Online| Mac OS X| Office 2016 アプリ (多要素認証と場所のみ対応。デバイス ベースのポリシーは将来サポート予定)|
+| Office 365 Yammer| Windows 10、iOS、Android| Office Yammer アプリ|
+| PowerBI サービス| Windows 10、Windows 8.1、Windows 7、iOS| PowerBI アプリ。 Android 用の Power BI では現在、デバイス ベースの条件付きアクセスはサポートされていません。|
+| Visual Studio Team Services| Windows 10、Windows 8.1、Windows 7、iOS、Android| Visual Studio Team Services アプリ|
+
+
+
+
+
+
 
 ## <a name="applications-that-do-not-use-modern-authentication"></a>先進認証を使用しないアプリケーション
 先進認証を使用しないアプリへのアクセスをブロックするには、現時点では他の方法を用いる必要があります。 先進認証を使用しないアプリには、条件付きアクセスの規則が適用されません。 これは主に、Exchange と SharePoint アクセスに関する考慮事項となります。 以前のバージョンのアプリでは、古いアクセス制御プロトコルが使用されているケースが大半です。
@@ -60,12 +69,13 @@ Office 365 をはじめとする Azure AD 接続サービス アプリケーシ�
 ### <a name="control-access-in-office-365-sharepoint-online"></a>Office 365 SharePoint Online のアクセス制御
 SharePoint アクセスについては、Set-SPOTenant コマンドレットを使用することで、従来のプロトコルを無効にできます。 先進認証以外のプロトコルを使用している Office クライアントに SharePoint Online リソースへのアクセスを禁止するには、このコマンドレットを使用してください。
 
-**コマンドの例**:     `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
+**コマンドの例**: `Set-SPOTenant -LegacyAuthProtocolsEnabled $false`
 
 ### <a name="control-access-in-office-365-exchange-online"></a>Office 365 Exchange Online のアクセス制御
 Exchange で用意されているプロトコルは大きく 2 つのカテゴリに分けられます。 以下の選択肢を確認し、自分の組織にとって最適なポリシーを選択してください。
 
 * **Exchange ActiveSync**。 既定では、多要素認証と場所に関する条件付きアクセスのポリシーが Exchange ActiveSync には適用されません。 これらのサービスに対するアクセスを保護するには、Exchange ActiveSync のポリシーを直接構成するか、Active Directory フェデレーション サービス (AD FS) の規則を使用して Exchange ActiveSync をブロックする必要があります。
+
 * **従来のプロトコル**。 従来のプロトコルは、AD FS を使用してブロックすることができます。 最新でない Office クライアント (先進認証に対応していない Office 2013 や、それより前のバージョンの Office など) へのアクセスは、この方法でブロックすることができます。
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>AD FS を使用して従来のプロトコルをブロックする
@@ -113,12 +123,14 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
-## <a name="supported-browsers"></a>サポートされているブラウザー
+## <a name="supported-browsers-for-device-based-policies"></a>デバイス ベース ポリシーでサポートされるブラウザー
+
+アクセス権はデバイス ベース ポリシーに対してのみ付与できます。このポリシーは、Azure AD がデバイスを識別および認証できる場合に、デバイス コンプライアンスとドメイン参加のチェックを行います。 場所や MFA などのチェックの大半はほとんどのデバイスおよびブラウザーで機能しますが、デバイス ポリシーは以下の OS バージョンおよびブラウザーを必要とします。 サポートされていないブラウザーまたは OS のユーザーは、デバイス ポリシーが実施されていると、アクセスがブロックされます。
 
 | OS                     | ブラウザー                 | サポート     |
 | :--                    | :--                      | :-:         |
 | Windows 10                 | IE、Edge                 | ![○][1] |
-| Windows 10                 | Chrome                   | 近日対応予定 |
+| Windows 10                 | Chrome                   | Preview     |
 | Windows 8/8.1            | IE、Chrome               | ![○][1] |
 | Windows 7                  | IE、Chrome               | ![○][1] |
 | iOS                    | Safari                   | ![○][1] |
@@ -131,10 +143,15 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
 | Mac OS                 | Safari                   | ![○][1] |
 | Mac OS                 | Chrome                   | 近日対応予定 |
 
+> [!NOTE]
+> Chrome サポートの場合、Windows 10 Creators Update を使用している必要があり、[ここ](https://chrome.google.com/webstore/detail/windows-10-accounts/ppnbnpeolgkicgegkbkbjmhlideopiji)に示されている拡張機能をインストールする必要があります。
+>
+>
 
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、「[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)」を参照してください。
+
 
 
 

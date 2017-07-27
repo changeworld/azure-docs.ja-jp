@@ -88,10 +88,11 @@
 ## [多要素認証](../multi-factor-authentication/multi-factor-authentication.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
 ## [Azure AD B2C フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/160596-b2c)
-## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [よく寄せられる質問](active-directory-b2c-faqs.md)
+## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [サポート](active-directory-b2c-support.md)
+## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory-b2c)

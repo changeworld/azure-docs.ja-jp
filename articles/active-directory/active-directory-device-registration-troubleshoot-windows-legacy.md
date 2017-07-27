@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: 49af838d750ba61694bdb28a83ee6e531627527d
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="troubleshooting-auto-registration-of-domain-joined-computers-to-azure-ad-for-windows-down-level-clients"></a>Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング 

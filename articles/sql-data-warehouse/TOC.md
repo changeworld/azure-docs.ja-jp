@@ -50,6 +50,7 @@
 #### [インデックス](sql-data-warehouse-tables-index.md)
 #### [ID](sql-data-warehouse-tables-identity.md)
 #### [パーティション](sql-data-warehouse-tables-partition.md)
+#### [レプリケート テーブル](design-guidance-for-replicated-tables.md)
 #### [統計](sql-data-warehouse-tables-statistics.md)
 #### [一時](sql-data-warehouse-tables-temporary.md)
 
@@ -140,10 +141,11 @@
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
-## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
+## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## パートナー

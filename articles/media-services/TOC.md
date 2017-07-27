@@ -1,20 +1,18 @@
 # [概要](media-services-overview.md)
+## [シナリオと可用性](scenarios-and-availability.md)
 ## [概念](media-services-concepts.md)
 
 # 作業開始
 ## [アカウントの作成と管理](media-services-portal-create-account.md)
 ## [開発環境のセットアップ](media-services-set-up-computer.md)
-###[.NET](media-services-dotnet-how-to-use.md)
-###[REST ()](media-services-rest-how-to-use.md)  
+### [.NET](media-services-dotnet-how-to-use.md)
+### [REST ()](media-services-rest-how-to-use.md)  
 ## [AAD 認証を使用して API にアクセスする](media-services-use-aad-auth-to-access-ams-api.md)
-###[ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
-###[.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
-###[REST で API にアクセスする](media-services-rest-connect-with-aad.md)
-###[CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
-###[PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
-## ACS キーを使用してプログラムで接続する
-### [.NET](media-services-dotnet-connect-programmatically.md)
-### [REST ()](media-services-rest-connect-programmatically.md)
+### [ポータルを使用して AAD 認証を管理する](media-services-portal-get-started-with-aad.md)
+### [.NET で API にアクセスする](media-services-dotnet-get-started-with-aad.md)
+### [REST で API にアクセスする](media-services-rest-connect-with-aad.md)
+### [CLI を使用して AAD アプリを作成および構成する](media-services-cli-create-and-configure-aad-app.md)
+### [PowerShell を使用して AAD アプリを作成および構成する](media-services-powershell-create-and-configure-aad-app.md)
 
 ## ビデオ オン デマンドの配信
 ### [ポータル](media-services-portal-vod-get-started.md)
@@ -133,16 +131,15 @@
 ### [Widevine ライセンス テンプレートの概要](media-services-widevine-license-template-overview.md)
 ### [DRM ライセンス配信](media-services-deliver-keys-and-licenses.md)
 ### [パートナーを使用して Media Services に Widevine ライセンスを配信する](media-services-licenses-partner-integration.md)
+#### [Axinom を使用して Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
+#### [castLabs を使用して Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
 ### [PlayReady または Widevine の動的共通暗号化を使用する](media-services-protect-with-drm.md)
 ### [Apple FairPlay で保護された HLS コンテンツをストリーミングする](media-services-protect-hls-with-fairplay.md)
+### [DRM サブシステムのハイブリッド設計](hybrid-design-drm-sybsystem.md)
 ### [CENC とマルチ DRM およびアクセス制御](media-services-cenc-with-multidrm-access-control.md)
-### [Axinom を使用して Media Services に Widevine ライセンスを配信する](media-services-axinom-integration.md)
-### [castLabs を使用して Media Services に Widevine ライセンスを配信する](media-services-castlabs-integration.md)
-
-### 資産の配信
-#### 資産配信ポリシーを構成する
-##### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
-##### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
+### 資産配信ポリシーを構成する
+#### [.NET](media-services-dotnet-configure-asset-delivery-policy.md)
+#### [REST ()](media-services-rest-configure-asset-delivery-policy.md)
 ### ContentKeys を作成する
 #### [.NET](media-services-dotnet-create-contentkey.md)
 #### [REST ()](media-services-rest-create-contentkey.md)
@@ -155,6 +152,7 @@
 ### [ポータルを使用したメディアの分析](media-services-portal-analyze.md)
 ### [Indexer 2 による処理](media-services-process-content-with-indexer2.md)
 ### [Indexer による処理](media-services-index-content.md)
+#### [タスク プリセット](indexer-task-preset.md)
 ### [Hyperlapse による処理](media-services-hyperlapse-content.md)
 ### [Face Detector による処理](media-services-face-and-emotion-detection.md)
 ### [Motion Detector による処理](media-services-motion-detection.md)
@@ -223,7 +221,8 @@
 ## [REST ()](/rest/api/media/mediaservice)  
 
 # リソース
-## [リリース ノート](media-services-release-notes.md)
-## [料金](https://azure.microsoft.com/pricing/details/media-services/)
 ## [Azure Media Services コミュニティ](media-services-community.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
+## [料金](https://azure.microsoft.com/pricing/details/media-services/)
+## [リリース ノート](media-services-release-notes.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: 366c2c43ec50b0b6c47a25ea9b0e9d7109827429
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 44859d5368a954aee6939f6a6060738aa97c9c05
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/14/2017
 
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
@@ -91,7 +90,7 @@ Azure AD Connect をインストールした場合、**[ディレクトリの接
 | パスワードの同期 |<li>ディレクトリの変更のレプリケート</li>  <li>ディレクトリの変更をすべてにレプリケート |
 | Exchange ハイブリッドのデプロイメント |ユーザー、グループ、連絡先用の「[Exchange ハイブリッドの書き戻し](active-directory-aadconnectsync-attributes-synchronized.md#exchange-hybrid-writeback)」に記載された属性への書き込みアクセス許可。 |
 | Exchange メールのパブリック フォルダー |パブリック フォルダーに関して、「[Exchange メールのパブリック フォルダー](active-directory-aadconnectsync-attributes-synchronized.md#exchange-mail-public-folder)」に記載された属性への読み取りアクセス許可。 | 
-| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords.md)」に記載された属性への書き込みアクセス許可。 |
+| パスワードの書き戻し |ユーザー向けの「[パスワード管理の概要](../active-directory-passwords-writeback.md)」に記載された属性への書き込みアクセス許可。 |
 | デバイスの書き戻し |「[デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md)」に説明されているように、PowerShell スクリプトを使用して付与されたアクセス許可。 |
 | グループの書き戻し |配布グループが配置されている OU 内のグループ オブジェクトの読み取り、作成、更新、および削除。 |
 

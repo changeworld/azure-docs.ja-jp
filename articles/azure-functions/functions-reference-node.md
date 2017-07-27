@@ -14,13 +14,13 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 02/06/2017
+ms.date: 05/25/2017
 ms.author: chrande, glenga
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: ff8a92c66303c81075c8a42baaa841301d65daf1
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: fb0925f2d6eb8edede67cf208c735b7b2a0221ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -136,6 +136,21 @@ context.log(message)
 context.log.warn("Something has happened."); 
 ```
 host.json ファイルにログを記録する場合のトレース レベルのしきい値を設定したり、それを無効にしたりできます。  ログに書き込む方法の詳細については、次のセクションを参照してください。
+
+## <a name="binding-data-type"></a>バインド データ型
+
+入力バインドのデータ型を定義するには、バインド定義の `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
+
+```json
+{
+    "type": "httpTrigger",
+    "name": "req",
+    "direction": "in",
+    "dataType": "binary"
+}
+```
+
+`dataType` のその他のオプションは、`stream` と `string` です。
 
 ## <a name="writing-trace-output-to-the-console"></a>トレース出力をコンソールに書き込む 
 

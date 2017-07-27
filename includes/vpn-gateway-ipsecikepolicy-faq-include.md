@@ -1,5 +1,5 @@
 ### <a name="is-custom-ipsecike-policy-supported-on-all-azure-vpn-gateway-skus"></a>カスタム IPsec/IKE ポリシーはすべての Azure VPN Gateway SKU でサポートされていますか。
-カスタム IPsec/IKE ポリシーは、Azure の **Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
+カスタム IPsec/IKE ポリシーは、Azure の **VpnGw1、VpnGw2、VpnGw3、Standard** および **HighPerformance** VPN ゲートウェイでサポートされています。 **Basic** SKU はサポートされていません。
 
 ### <a name="how-many-policies-can-i-specify-on-a-connection"></a>1 つの接続に対してポリシーはいくつ指定できますか。
 ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
@@ -16,10 +16,10 @@
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                   |
 | DH グループ         | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
 | IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし    |
-| IPsec 整合性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                          |
+| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                          |
 | PFS グループ        | ECP384、ECP256、PFS24、PFS2048、PFS14、PFS2、PFS1、なし                     |
-| QM SA の有効期間*  | 秒 (整数) およびキロバイト数 (整数)                                      |
-| トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False)                             |
+| QM SA の有効期間*  | 秒 (整数: **最小 300**) およびキロバイト数 (整数: **最小 1024**)                                      |
+| トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False; default $False)                             |
 |                  |                                                                             |
 
 * (*) Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。

@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/27/2017
+ms.date: 07/19/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 2ad287d383f65ea66382d1f449a76db596963f46
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: fb865199d0aab097e70f2269d9a4b2cd66d5cecb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-active-directory-authentication-libraries"></a>Azure Active Directory 認証ライブラリ
@@ -39,7 +38,7 @@ ADAL は、さまざまなプラットフォームで使用できます。
 | Android |ADAL |[中央リポジトリ](http://search.maven.org/remotecontent?filepath=com/microsoft/aad/adal/) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-android) |[Android アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-android) | [JavaDocs](http://javadoc.io/doc/com.microsoft.aad/adal/)|
 | Node.js |ADAL |[npm](https://www.npmjs.com/package/adal-node) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-nodejs) | | |
 | Java |ADAL4J |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-java) |[Java Web アプリ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-devquickstarts-webapp-java) | |
-
+| Python |ADAL |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) |[GitHub](https://github.com/AzureAD/azure-activedirectory-library-for-python) | | |
 ### <a name="server-libraries"></a>サーバー ライブラリ 
 
 | プラットフォーム | ライブラリ | ダウンロード | ソース コード | サンプル | リファレンス

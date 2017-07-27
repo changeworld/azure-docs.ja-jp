@@ -7,7 +7,7 @@ author: chaosrealm
 manager: pablocas
 editor: 
 ms.assetid: 
-ms.service: cosmosdb
+ms.service: search
 ms.devlang: rest-api
 ms.topic: article
 ms.tgt_pltfrm: NA
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 333f8320820a1729a14ffc2e29446e7452aa768e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="connecting-cosmos-db-with-azure-search-using-indexers"></a>インデクサーを使用した Cosmos DB と Azure Search の接続
@@ -285,3 +284,4 @@ Cosmos DB クエリを指定すると、ネストされたプロパティや配�
 
 * Azure Cosmos DB の詳細については、[Cosmos DB のサービス ページ](https://azure.microsoft.com/services/documentdb/)をご覧ください。
 * Azure Search の詳細については、 [Search サービス ページ](https://azure.microsoft.com/services/search/)をご覧ください。
+

@@ -12,16 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 06/07/2017
 ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: 15858f7b7436536e6bae7fcfd6a50c722d2d04a2
-ms.openlocfilehash: 813120692232096275f3a7500c3b54e16af26b77
-ms.lasthandoff: 11/17/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: a9fc8427e76ee8fa48fa8f1ad452c6fe9b544ce2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="vmware-monitoring-preview-solution-in-log-analytics"></a>Log Analytics の VMware の監視 (プレビュー) ソリューション
+
+![VMware のシンボル](./media/log-analytics-vmware/vmware-symbol.png)
+
 Log Analytics の VMware の監視ソリューションは、大規模な VMware ログに対する一元化されたログ記録と監視のアプローチを作成するのに役立つソリューションです。 この記事では、このソリューションを使用して 1 つの場所で ESXi ホストのトラブルシューティング、キャプチャ、管理を行う方法を説明します。 このソリューションでは、すべての ESXi ホストの詳細なデータを 1 つの場所に表示できます。 ESXi ホストのログを通じて、VM および ESXi ホストの上位のイベント数、状態、傾向を知ることができます。 一元化された ESXi ホストのログを表示および検索して、トラブルシューティングを実行できます。 また、ログ検索クエリに基づくアラートを作成することもできます。
 
 このソリューションでは、ESXi ホストのネイティブの syslog 機能を使用して、OMS エージェントがインストールされたターゲット VM にデータをプッシュします。 ただし、ターゲット VM 内の syslog にはファイルは書き込まれません。 OMS エージェントがポート 1514 を開き、このポートをリッスンします。 OMS エージェントは、データを受信すると、OMS にデータをプッシュします。

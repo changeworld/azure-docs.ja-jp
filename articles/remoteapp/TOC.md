@@ -25,6 +25,7 @@
 # 方法
 
 ## [Azure RemoteApp からユーザー データを移行する](remoteapp-migrate.md)
+## [MyCloudIT への移行](remoteapp-migrate-mycloudit.md)
 ## [Citrix XenApp Essentials に移行する](remoteapp-migrate-citrix.md)
 ## RemoteApp コレクションを作成する
 ### [必要なコレクション](remoteapp-collections.md)
@@ -67,7 +68,8 @@
 ### [クラウド コレクションのトラブルシューティング](remoteapp-cloudtrouble.md)
 
 # リソース
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=remoteapp)
-## [料金](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
+## [料金](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

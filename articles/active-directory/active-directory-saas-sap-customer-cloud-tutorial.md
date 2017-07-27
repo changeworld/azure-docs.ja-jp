@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/22/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: f454e7e218764e00cc19ca67b0edade213834b75
-ms.openlocfilehash: bec672005b0b1856faeb230f5674013a37add774
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 22665107cdf689042a5b0eee34eaeacc0434fbc4
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -80,11 +82,11 @@ Azure AD への SAP Cloud for Customer の統合を構成するには、ギャ�
 
 6. 検索ボックスに、「 **SAP Cloud for Customer**」と入力します。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_01.png)
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_01.png)
 
 7. 結果ウィンドウで **[SAP Cloud for Customer]** を選択し、**[完了]** をクリックしてアプリケーションを追加します。
    
-    ![Active Directory](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_02.png)
+    ![Active Directory](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_02.png)
 
 ## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、SAP Cloud for Customer で Azure AD のシングル サインオンを構成し、テストします。
@@ -106,15 +108,15 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 1. Azure クラシック ポータルの **[SAP Cloud for Customer]** アプリケーション統合ページで、上部のメニューから **[属性]** をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_80.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_80.png) 
 
 2. [SAML トークンの属性] 一覧で、nameidentifier 属性を選択して **[編集]**をクリックします。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_84.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_84.png) 
 
 3. **[ユーザー属性の編集]** ダイアログで、次の手順を実行します。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_85.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_85.png) 
 
     a. **[属性値]** 一覧から **ExtractMailPrefix()** 関数を選択します。
 
@@ -130,23 +132,23 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 2. **[ユーザーの SAP Cloud for Customer へのアクセスを設定してください]** ページで、**[Azure AD のシングル サインオン]** を選択してから **[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_03.png) 
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_03.png) 
 
 3. **[アプリケーション設定の構成]** ダイアログ ページで、次の手順に従います。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_04.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_04.png) 
    
     a. **[サインオン URL]** ボックスに、`https://<server name>.crm.ondemand.com` という形式で、ユーザーが SAP Cloud for Customer アプリケーションへのサインオンに使用する URL を入力します。
    
-    b. click **[次へ]**
+    b. **[次へ]** をクリックします
 
 4. **[SAP Cloud for Customer でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_05.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_05.png)
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[メタデータのダウンロード]** をクリックし、コンピューターにファイルを保存します。
    
-    b. **[次へ]**をクリックします。
+    b. **[次へ]** をクリックします。
 
 5. 構成された SSO を取得するには、次の手順を実行します。
    
@@ -156,7 +158,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
    
     c. **[New Identity Provider (新しい ID プロバイダー)]** をクリックし、Azure クラシック ポータルからダウンロードしたメタデータの XML ファイルを選択します。 メタデータをインポートすることによって、必要な署名証明書と暗号化証明書が自動的にアップロードされます。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_54.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_54.png)
    
     d.Azure AD では、SAML 要求に Assertion Consumer Service URL 要素が必須です。 **[Include Assertion Consumer Service URL (Assertion Consumer Service URL を含める)]** チェック ボックスはオンにしてください。
    
@@ -166,11 +168,11 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
    
     g. **[My System (自分のシステム)]** タブをクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_52.png)
+    ![Configure Single Sign-On](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_52.png)
    
     h. **SSO URL** をコピーし、**[Azure AD Sign On URL (Azure AD サインオン URL)]** ボックスに貼り付けます。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_53.png)
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_53.png)
    
     i. ユーザー ID とパスワードでログオンするか、SSO でログオンするかを従業員が手動で選択できるかどうかを、**[Manual Identity Provider Selection (ID プロバイダーの手動選択)]** を選択して指定します。
    
@@ -208,29 +210,29 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 1. **Azure クラシック ポータル**の左側のナビゲーション ウィンドウで、**[Active Directory]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_09.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_09.png) 
 
 2. **[ディレクトリ]** の一覧から、ディレクトリ統合を有効にするディレクトリを選択します。
 
 3. 上部のメニューで **[ユーザー]**をクリックして、ユーザーの一覧を表示します。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_03.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_03.png) 
 
 4. 下部にあるツール バーで **[ユーザーの追加]** をクリックして、**[ユーザーの追加]** ダイアログ ボックスを開きます。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_04.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_04.png) 
 
 5. **[このユーザーに関する情報の入力]** ダイアログ ページで、次の手順に従います。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_05.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_05.png) 
    
     a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. ページの下部にある **[次へ]**」を参照してください。
+    c. **[次へ]** をクリックします。
 
-6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_06.png) 
+6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_06.png) 
    
     a. **[名]** ボックスに「**Britta**」と入力します。  
    
@@ -240,15 +242,15 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
    
     d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-    e. **[次へ]**をクリックします。
+    e. **[次へ]** をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_07.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_07.png) 
 
 8. **[一時パスワードの取得]** ダイアログ ページで、次の手順に従います。
    
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sapcloudforcustomer-tutorial/create_aaduser_08.png) 
+    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-sap-customer-cloud-tutorial/create_aaduser_08.png) 
    
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[新しいパスワード]** の値を書き留めます。
    
@@ -275,7 +277,7 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 2. アプリケーションの一覧で **[SAP Cloud for Customer]**を選択します。
    
-    ![[シングル サインオンの構成]](./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_sapcloudforcustomer_50.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_sapcloudforcustomer_50.png) 
 
 3. 上部のメニューで **[ユーザー]**をクリックします。
    
@@ -298,24 +300,19 @@ SAP Cloud for Customer で Azure AD のシングル サインオンを構成し�
 
 <!--Image references-->
 
-[1]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_01.png
-[2]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_02.png
-[3]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_03.png
-[4]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_04.png
+[1]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_01.png
+[2]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_02.png
+[3]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_03.png
+[4]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_04.png
 
-[6]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_05.png
-[10]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_06.png
-[11]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_07.png
-[20]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_100.png
+[6]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_05.png
+[10]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_06.png
+[11]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_07.png
+[20]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_100.png
 
-[200]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_200.png
-[201]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_201.png
-[203]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_203.png
-[204]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_204.png
-[205]: ./media/active-directory-saas-sapcloudforcustomer-tutorial/tutorial_general_205.png
-
-
-
-<!--HONumber=Dec16_HO1-->
-
+[200]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_200.png
+[201]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_201.png
+[203]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_203.png
+[204]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_204.png
+[205]: ./media/active-directory-saas-sap-customer-cloud-tutorial/tutorial_general_205.png
 

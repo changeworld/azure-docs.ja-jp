@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/07/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 3608ddf86c3d8010b577e6f745dcd5cef016acd9
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 2d979b954912b8f344aa681980514821058ce5da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/25/2017
 
 
 ---

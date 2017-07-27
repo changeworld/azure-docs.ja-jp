@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 1f8af4fa220b30de2ba04d4088a57ffc6a8d624b
-ms.lasthandoff: 05/01/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: df60686e7eeb4902bb9df045e28442ade2ad2cb7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="machine-learning-integration-in-stream-analytics"></a>Stream Analytics への Machine Learning の統合
@@ -33,10 +33,10 @@ Microsoft Azure Machine Learning には、データを活用した予測分析�
 * **エンドポイント**: *エンドポイント* は、機能を入力として取り、特定の Machine Learning モデルを適用し、スコア付けされた出力を返す Azure Machine Learning のオブジェクトです。
 * **スコア付け Web サービス**: *スコア付け Web サービス* とは、前述のエンドポイントの集合です。
 
-各エンドポイントには、バッチの実行と同期の実行用の API があります。 Stream Analytics では、同期実行を使用します。 この特定のサービスは、AzureML Studio では [Request/Response Service](../machine-learning/machine-learning-consume-web-services.md#request-response-service-rrs) と呼ばれています。
+各エンドポイントには、バッチの実行と同期の実行用の API があります。 Stream Analytics では、同期実行を使用します。 この特定のサービスは、AzureML Studio では [Request/Response Service](../machine-learning/machine-learning-consume-web-services.md) と呼ばれています。
 
 ## <a name="machine-learning-resources-needed-for-stream-analytics-jobs"></a>Stream Analytics のジョブに必要な Machine Learning リソース
-Stream Analytics のジョブを正常に処理するには、Request/Response のエンドポイント、 [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md#get-an-azure-machine-learning-authorization-key)および Swagger 定義のすべてが必要になります。 Stream Analytics には、Swagger エンドポイントの URL を作成し、インターフェイスを検索し、既定の UDF の定義をユーザーに返す追加エンドポイントがあります。
+Stream Analytics のジョブを正常に処理するには、Request/Response のエンドポイント、 [apikey](../machine-learning/machine-learning-connect-to-azure-machine-learning-web-service.md)および Swagger 定義のすべてが必要になります。 Stream Analytics には、Swagger エンドポイントの URL を作成し、インターフェイスを検索し、既定の UDF の定義をユーザーに返す追加エンドポイントがあります。
 
 ## <a name="configure-a-stream-analytics-and-machine-learning-udf-via-rest-api"></a>REST API を使用した Stream Analytics および Machine Learning UDF の構成
 REST API を使用すると、ジョブを構成して Azure Machine Language 関数を呼び出すことができます。 手順は次のとおりです。
@@ -200,9 +200,8 @@ PATCH : /subscriptions/<subscriptionId>/resourceGroups/<resourceGroup>/providers
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

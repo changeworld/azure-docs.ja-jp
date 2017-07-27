@@ -13,12 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2017
+ms.date: 06/15/2017
 ms.author: xshi
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 480f0544f155365d94b325bbf799bb999268dc31
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 2234924251447bb32d7cca0623a4e8d4f8d4e7ff
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -46,7 +47,7 @@ ms.lasthandoff: 04/25/2017
 
 ## <a name="what-you-learn"></a>学習内容
 
-iothub-explorer をさまざまな管理オプションで使用します。
+開発マシン上で iothub-explorer をさまざまな管理オプションで使用します。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -58,7 +59,7 @@ iothub-explorer をさまざまな管理オプションで実行します。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- iothub-explorer  ([iothub-explorer のインストール](https://github.com/azure/iothub-explorer))
+- iothub-explorer  (開発マシンに [iothub-explorer をインストールします](https://github.com/azure/iothub-explorer))
 
 ## <a name="connect-to-your-iot-hub"></a>IoT Hub に接続する
 
@@ -87,7 +88,7 @@ iothub-explorer device-method <your device Id> stop
 次のコマンドを実行して、目的のプロパティ interval = 3000 を設定します。
 
 ```bash
-iothub-explorer update-twin mydevice {\"properties\":{\"desired\":{\"interval\":3000}}}
+iothub-explorer update-twin <your device id> {\"properties\":{\"desired\":{\"interval\":3000}}}
 ```
 
 このプロパティをデバイスで読み取ることができます。
@@ -145,3 +146,4 @@ iothub-explorer query-twin "SELECT * FROM devices WHERE tags.role != 'temperatur
 iothub-explorer をさまざまな管理オプションで使用する方法を学習しました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
+

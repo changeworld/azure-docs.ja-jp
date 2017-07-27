@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 46bc735bb288a29828903a5d1891c78c2bfae86a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -172,7 +174,7 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
             }
         }
 
-## <a name="a-idjsonathumbnail-json-preset"></a><a id="json"></a>サムネイル JSON プリセット
+## <a id="json"></a>サムネイル JSON プリセット
 スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
 
     {
@@ -274,7 +276,7 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
     }
 
 
-## <a name="a-idxmlathumbnail-xml-preset"></a><a id="xml"></a>サムネイル XML プリセット
+## <a id="xml"></a>サムネイル XML プリセット
 スキーマの詳細については、 [この](https://msdn.microsoft.com/library/mt269962.aspx) トピックを参照してください。
 
     <?xml version="1.0" encoding="utf-16"?>
@@ -373,10 +375,5 @@ ms.openlocfilehash: 1c28e756548b69d336b7f66ae9fbfa3c9259f787
 
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

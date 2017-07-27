@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/31/2017
+ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 929a4dec638da9488dd0b43fd123ed0cce77bcf3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7d8825da888092988bf39c5a5789a957179b2cff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -29,23 +28,15 @@ ms.lasthandoff: 06/20/2017
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、[Kubernetes](https://kubernetes.io/docs/home/) クラスターを [Azure Container Service](container-service-intro.md) にデプロイする方法を詳しく説明します。 クラスターをデプロイしたら、Kubernetes `kubectl` コマンドライン ツールを使用してクラスターに接続し、最初の Windows コンテナーをデプロイします。
 
-このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
+CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 > [!NOTE]
 > Azure Container Service における Kubernetes での Windows コンテナーのサポートはプレビュー段階です。 
 >
-
-## <a name="log-in-to-azure"></a>Azure へのログイン 
-
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
-
-```azurecli-interactive 
-az login
-```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 

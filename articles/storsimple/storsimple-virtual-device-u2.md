@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: 538f282b28e5f43f43bf6ef28af20a4d8daea369
-ms.openlocfilehash: d9ba200dba2b1460a9d3c9ba07e2bca54c30b53a
-ms.lasthandoff: 04/07/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: ead9fcc5ec582420d731faccb7abba0dc815ed84
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -69,7 +70,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 #### <a name="azure-requirements"></a>Azure の要件
 仮想デバイスをプロビジョニングする前に、Azure 環境で次の準備作業が必要となります。
 
-* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。
+* 仮想デバイスに対し、 [Azure の仮想ネットワークを構成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)します。 Premium Storage を使用している場合は、Premium Storage をサポートする Azure リージョンに仮想ネットワークを作成する必要があります。 Premium storage リージョンは、[リージョン別の Azure サービス](https://azure.microsoft.com/en-us/regions/services)の一覧の "*Disk Storage*" 行に対応するリージョンです。
 * 独自の DNS サーバー名を指定する代わりに、Azure に用意されている既定の DNS サーバーを使用することをお勧めします。 DNS サーバー名が有効でない場合または DNS サーバーが IP アドレスを正しく解決できない場合、仮想デバイスの作成は失敗します。
 * ポイント対サイトおよびサイト間を必要に応じて選ぶことができますが、必須ではありません。 必要に応じてこれらのオプションを構成することで、より高度なシナリオを実現することができます。
 * 仮想デバイスによって公開されたボリュームを使用できる [Azure Virtual Machines](../virtual-machines/virtual-machines-linux-about.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (ホスト サーバー) を仮想ネットワークに作成できます。 これらのサーバーは次の要件を満たしている必要があります。                             

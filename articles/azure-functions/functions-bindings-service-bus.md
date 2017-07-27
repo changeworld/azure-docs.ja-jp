@@ -16,10 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: chrande; glenga
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 1afc4d0c04929fdf55cc9f336e50d90ff7c66172
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: a930e02313aa0a2238ecfaa31af68d59b2c8e961
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -123,7 +124,7 @@ Service Bus キュー メッセージを処理する、言語固有のサンプ�
 
 <a name="triggercsharp"></a>
 
-### <a name="trigger-sample-in-c"></a>C でのトリガー サンプル# #
+### <a name="trigger-sample-in-c"></a>C# でのトリガー サンプル #
 
 ```cs
 public static void Run(string myQueueItem, TraceWriter log)
@@ -134,7 +135,7 @@ public static void Run(string myQueueItem, TraceWriter log)
 
 <a name="triggerfsharp"></a>
 
-### <a name="trigger-sample-in-f"></a>F でのトリガー サンプル# #
+### <a name="trigger-sample-in-f"></a>F# でのトリガー サンプル #
 
 ```fsharp
 let Run(myQueueItem: string, log: TraceWriter) =
@@ -177,7 +178,7 @@ module.exports = function(context, myQueueItem) {
         "topicName" : "<Name of the topic>",
         "subscriptionName" : "<Name of the subscription>",
         "connection" : "<Name of app setting that has your topic's connection string - see below>",
-        "accessRights" : "<Access rights for the connection string - see below>"
+        "accessRights" : "<Access rights for the connection string - see below>",
         "type" : "serviceBus",
         "direction" : "out"
     }
@@ -240,7 +241,7 @@ Service Bus キューにメッセージを送信する、言語固有のサン�
 
 <a name="outcsharp"></a>
 
-### <a name="output-sample-in-c"></a>C での出力サンプル# #
+### <a name="output-sample-in-c"></a>C# での出力サンプル #
 
 ```cs
 public static void Run(TimerInfo myTimer, TraceWriter log, out string outputSbQueue)
@@ -265,7 +266,7 @@ public static void Run(TimerInfo myTimer, TraceWriter log, ICollector<string> ou
 
 <a name="outfsharp"></a>
 
-### <a name="output-sample-in-f"></a>F での出力サンプル# #
+### <a name="output-sample-in-f"></a>F# での出力サンプル #
 
 ```fsharp
 let Run(myTimer: TimerInfo, log: TraceWriter, outputSbQueue: byref<string>) =

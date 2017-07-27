@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/31/2016
 ms.author: saurinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 21078a82e979af251a08bca70d623c80949d064a
-ms.lasthandoff: 03/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 9f6de5b516da110b93a1e0cddf835b2bcec77bb7
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -29,8 +30,9 @@ Azure HDInsight では、これまで単一ユーザーのローカル管理者�
 
 > [!NOTE]
 > このプレビューで説明する新機能は、Hive ワークロードに対応する Linux ベースの HDInsight クラスターでのみ使用できます。 HBase、Spark、Storm、Kafka など、他のワークロードには今後のリリースで対応する予定です。
->
->
+
+> [!IMPORTANT]
+> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
 
 ## <a name="benefits"></a>メリット
 エンタープライズ セキュリティには、境界セキュリティ、認証、承認、暗号化の 4 つの大きな柱があります。

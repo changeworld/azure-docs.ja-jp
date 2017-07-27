@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 487b9b2f0d0ae904151e90248f8fb4a1ea662059
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d9cca5d529d96d505f304736547c23362796e16e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -31,7 +31,7 @@ ms.lasthandoff: 05/27/2017
 この記事の情報は、Windows ベースの HDInsight クラスターにのみ適用されます。 Linux ベースのクラスターの管理については、「[Azure Portal を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-portal-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 
 ## <a name="prerequisites"></a>前提条件

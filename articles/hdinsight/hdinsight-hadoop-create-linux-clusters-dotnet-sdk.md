@@ -1,5 +1,5 @@
 ---
-title: ".NET を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+title: ".NET を使用して Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、HDInsight 用の Linux ベースの Hadoop、HBase、Storm、または Spark クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 04/27/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 173869858ba7891fcea8a0207e9b192b81ae4840
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 823508c0bd9e379361dd26f70b3960259a8d4292
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -374,7 +374,7 @@ static void Main(string[] args)
 
 ## <a name="troubleshoot"></a>トラブルシューティング
 
-HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
+HDInsight クラスターの作成で問題が発生した場合は、「[アクセス制御の要件](hdinsight-administer-use-portal-linux.md#create-clusters)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 HDInsight クラスターが正常に作成されました。次に、クラスターの使用方法について、以下のトピックを参照してください。 

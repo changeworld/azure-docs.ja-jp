@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/24/2017
+ms.date: 07/12/2017
 ms.author: markvi
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7c4d5e161c9f7af33609be53e7b82f156bb0e33f
 ms.openlocfilehash: 899a45d59099dec147c96e4cd175536e859e88f8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/04/2017
-
 
 ---
 # <a name="azure-active-directory-faq"></a>Azure Active Directory に関する FAQ

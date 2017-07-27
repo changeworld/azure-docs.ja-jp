@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 4b496eb3d82249e8dc29833fa7bf94ffbfd87ea0
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 15dc58a1a607ef40c52dcd62ee9ed0df273fc011
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---

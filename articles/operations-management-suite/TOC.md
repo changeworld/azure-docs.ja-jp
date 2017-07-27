@@ -36,11 +36,13 @@
 ### 洞察と分析
 #### [AD 評価](../log-analytics/log-analytics-ad-assessment.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [AD レプリケーションの状態](../log-analytics/log-analytics-ad-replication-status.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Agent Health](oms-solution-agenthealth.md)
 #### [アラートの管理](../log-analytics/log-analytics-solution-alert-management.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Azure Networking Analytics](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [コンテナー](../log-analytics/log-analytics-containers.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [Key Vault Analytics](../log-analytics/log-analytics-azure-key-vault.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### [ネットワーク パフォーマンス監視](../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
+#### [Office 365](oms-solution-office-365.md)
 #### [Service Fabric 分析](../log-analytics/log-analytics-service-fabric.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 #### サービス マップ
 ##### [チュートリアル](operations-management-suite-walkthrough-servicemap.md)
@@ -73,3 +75,5 @@
 # リファレンス
 ## [SDK](operations-management-suite-sdk.md)
 
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

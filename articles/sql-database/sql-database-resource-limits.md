@@ -3,7 +3,7 @@ title: "Azure SQL Database のリソース制限 | Microsoft Docs"
 description: "このページでは、Azure SQL Database に対するいくつかの一般的なリソース制限について説明します。"
 services: sql-database
 documentationcenter: na
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: 884e519f-23bb-4b73-a718-00658629646a
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 05/31/2017
-ms.author: janeng
+ms.date: 07/12/2017
+ms.author: carlrab
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
 ms.openlocfilehash: a7887839b7a3672e824ed6662f6ba5dc4e318fab
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
-
 
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限

@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 5ea043ce3bcd0f500fd765f13764ea3ee83e1ba9
-ms.openlocfilehash: 83c3592014c73c0cf36d371d2752bc76b7c8a4e8
-ms.lasthandoff: 12/22/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 97ef8d2693296fc2692be46afcedfd01b07d743f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/22/2017
 
 
 ---
@@ -115,6 +116,12 @@ Web Apps 環境は、Web サーバーと Web アプリケーションの両方�
 Azure App Service では、Web Apps、API Apps、WebJobs のプロファイリングをリモートから実行できます。 プロセスの実行に予想以上に時間がかかる場合や、HTTP 要求の待機時間が通常よりも長く、かつプロセスの CPU 使用率も高い場合、対象プロセスをリモートからプロファイリングし、CPU サンプリング呼び出し履歴を取得して、プロセスのアクティビティとコードのホット パスを分析することができます。
 
 詳細については、 [Azure App Service におけるリモート プロファイリングのサポート](https://azure.microsoft.com/blog/remote-profiling-support-in-azure-app-service)に関するページを参照してください。
+
+#### <a name="use-application-insights-profiler"></a>Application Insights Profiler を使用する
+
+一部のコードがパフォーマンスの高い方法で書かれていないために、App Service アプリが低速になることがあります。 例としては、並列で実行できる順次コードや、予期しないデータベースのロック競合などがあります。 このようなコード内のボトルネックは、除去するとアプリのパフォーマンスが向上しますが、綿密なトレースとログを設定せずに検出することは困難です。 Application Insights Profiler は、こうした App Service アプリの課題の克服に役立ちます。 
+
+Application Insights Profiler は、最小限の構成でそれぞれの Web 呼び出しの応答時間に関する統計情報とトレースを提供し、応答が遅くなる原因となったコードの行を示します。 詳しくは、「[Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う](../application-insights/app-insights-profiler.md)」をご覧ください。 
 
 #### <a name="use-the-azure-app-service-support-portal"></a>Azure App Service サポート ポータルを使用する
 Web Apps には、HTTP ログ、イベント ログ、処理ダンプなどを参照することによって、Web アプリに関連した問題をトラブルシューティングする機能があります。 その情報はすべて、**http://&lt;目的のアプリの名前>.scm.azurewebsites.net/Support** のサポート ポータルで提供されます。

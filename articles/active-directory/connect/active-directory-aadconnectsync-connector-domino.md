@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 07/12/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: c1cd1450d5921cf51f720017b746ff9498e85537
 ms.openlocfilehash: aebe0b74c952045375e264bed88d33d936e34b92
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/14/2017
-
 
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/30/2017
+ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 44e0d7c920bc32bf3293ca5ab197b6d2332a43f8
+ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
+ms.openlocfilehash: 662db10a30d4581a77c75204f49e7f5c731342ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 05/23/2017
 
 
 ---
@@ -138,26 +138,26 @@ public IDictionary<string, string> Execute(
 
     ```csharp
 
-// Comment these lines if using VS 2017
-using System.IO;
-using System.Globalization;
-using System.Diagnostics;
-using System.Linq;
-// --------------------
+    // Comment these lines if using VS 2017
+    using System.IO;
+    using System.Globalization;
+    using System.Diagnostics;
+    using System.Linq;
+    // --------------------
 
-// Comment these lines if using <= VS 2015
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-// ---------------------
+    // Comment these lines if using <= VS 2015
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+    // ---------------------
 
-using Microsoft.Azure.Management.DataFactories.Models;
-using Microsoft.Azure.Management.DataFactories.Runtime;
+    using Microsoft.Azure.Management.DataFactories.Models;
+    using Microsoft.Azure.Management.DataFactories.Runtime;
 
-using Microsoft.WindowsAzure.Storage;
-using Microsoft.WindowsAzure.Storage.Blob;
+    using Microsoft.WindowsAzure.Storage;
+    using Microsoft.WindowsAzure.Storage.Blob;
     ```
 6. **名前空間**の名前を **MyDotNetActivityNS** に変更します。
 
@@ -267,7 +267,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
         // get the folder path from the output dataset definition
         folderPath = GetFolderPath(outputDataset);
 
-        // log the output folder path    
+        // log the output folder path   
         logger.Write("Writing blob to the folder: {0}", folderPath);
     
         // create a storage object for the output blob.
@@ -303,7 +303,7 @@ using Microsoft.WindowsAzure.Storage.Blob;
             return null;
         }
 
-        // get type properties of the dataset    
+        // get type properties of the dataset   
         AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
         if (blobDataset == null)
         {
@@ -389,8 +389,8 @@ using Microsoft.WindowsAzure.Storage.Blob;
     > カスタム アクティビティの zip ファイル内のファイルは、いずれもサブフォルダーがない **最上位レベル** に置く必要があります。
 
     ![バイナリ出力ファイル](./media/data-factory-use-custom-activities/Binaries.png)
-14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。    
-15. AzureStorageLinkedService によって参照される**汎用** Azure Blob Storage (ホット/クール BLOB ストレージでない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
+14. **customactivitycontainer** という名前の BLOB コンテナーがまだ存在していない場合は、作成します。 
+15. AzureStorageLinkedService によって参照される**汎用** Azure Blob ストレージ (ホット/クール BLOB ストレージではない) の customactivitycontainer に MyDotNetActivity.zip を BLOB としてアップロードします。  
 
 > [!IMPORTANT]
 > この .NET アクティビティ プロジェクトを Visual Studio で Data Factory プロジェクトを含むソリューションに追加し、Data Factory アプリケーション プロジェクトから .NET アクティビティ プロジェクトへの参照を追加する場合は、最後の 2 つの手順 (手動での zip ファイルの作成と汎用 Azure Blob Storage へのアップロード) を実行する必要はありません。 Data Factory エンティティを Visual Studio を使用して発行すると、これらの手順は発行プロセスによって自動的に実行されます。 詳しくは、[Visual Studio での Data Factory プロジェクト](#data-factory-project-in-visual-studio)に関するセクションをご覧ください。

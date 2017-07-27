@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2016
 ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: d8f76a2857766c481ec6cdec52274b5bd370ccfc
+ms.translationtype: Human Translation
+ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
+ms.openlocfilehash: 8d574f051a327ba0409e6f25a5886af673d3d5e0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -201,10 +203,5 @@ Web アプリの証明書を管理する方法については、 [PowerShell を
 * PowerShell を使用した App Service SSL 証明書の管理については、 [PowerShell を使用した SSL 証明書のバインド](app-service-web-app-powershell-ssl-binding.md)
 * Azure Web Apps に使用する Azure Resource Manager ベースの PowerShell コマンドレットの全一覧については、 [Azure Resource Manager の PowerShell コマンドレットを使って Web アプリを管理するための Azure コマンドレット リファレンス](https://msdn.microsoft.com/library/mt619237.aspx)
 * * CLI を使用した App Service の管理については、「[Azure Resource Manager ベースの XPlat CLI を使用して Azure Web アプリを管理する](app-service-web-app-azure-resource-manager-xplat-cli.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

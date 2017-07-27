@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 9962766b0a1fdfe313b70ea65e08785ec8a97996
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: d55cfc354ad5a9fc0f06b671f441ba4a0616bb9a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/15/2017
 
 
 ---
@@ -94,7 +94,10 @@ Web アプリ向けにカスタム Docker イメージを使用する場合、Do
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 
-カスタム Docker イメージを使用してアプリケーションを起動できない場合は、LogFiles/docker ディレクトリで Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。 
+カスタム Docker イメージを使用してアプリケーションを起動できない場合は、LogFiles/docker ディレクトリで Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
+コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Web サーバー ログ]** を有効にする必要があります。
+
+![ログ記録の有効化][8]
 
 ![Kudu を使用した Docker のログの表示][7]
 
@@ -120,4 +123,5 @@ Web App on Linux の使用を開始するには、次のリンクを参照して
 [5]: ./media/app-service-linux-using-custom-docker-image/existingapp-configure-builtin.png
 [6]: ./media/app-service-linux-using-custom-docker-image/setting-port.png
 [7]: ./media/app-service-linux-using-custom-docker-image/kudu-docker-logs.png
+[8]: ./media/app-service-linux-using-custom-docker-image/logging.png
 

@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/04/2017
+ms.date: 07/18/2017
 ms.author: adegeo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3219df0e45d516ea332725b3e1955026cc1db231
 ms.openlocfilehash: 88fb93b8f3e196121b635d5ce7a21bf8f8c46be5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/11/2017
-
 
 ---
 # <a name="common-cloud-service-startup-tasks"></a>クラウド サービス共通のスタートアップ タスク

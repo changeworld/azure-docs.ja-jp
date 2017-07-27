@@ -3,8 +3,8 @@ title: "Mobile Services から Azure App Service にアップグレードする"
 description: "簡単に Mobile Services アプリケーションを App Service Mobile App にアップグレードする方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 ms.assetid: 9c0ac353-afb6-462b-ab94-d91b8247322f
 ms.service: app-service-mobile
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: mobile
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
-ms.author: adrianha
-translationtype: Human Translation
+ms.author: glenga
+ms.translationtype: Human Translation
 ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>既存の .NET Azure Mobile Service を App Service にアップグレードする

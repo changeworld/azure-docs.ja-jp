@@ -1,6 +1,6 @@
 ---
 title: "Azure Cosmos DB を使用した Java アプリケーション開発のチュートリアル | Microsoft Docs"
-description: "この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB サービスを使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
+description: "この Java Web アプリケーション チュートリアルでは、Azure Cosmos DB および DocumentDB API を使用して、Azure Websites でホストされる Java アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。"
 keywords: "アプリケーション開発, データベース チュートリアル, java アプリケーション, java web アプリケーション チュートリアル, documentdb, azure, Microsoft azure"
 services: cosmos-db
 documentationcenter: java
@@ -10,20 +10,20 @@ editor: mimig
 ms.assetid: 0867a4a2-4bf5-4898-a1f4-44e3868f8725
 ms.service: cosmos-db
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
-ms.date: 05/22/2017
+ms.date: 06/23/2017
 ms.author: denlee
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 3c22c33b27b793e19850c405df9b6b7bc3fe3362
+ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
+ms.openlocfilehash: 09df5cb8d83dd9366d268a4245aaf25abf3ab55a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/24/2017
 
 
 ---
-# <a name="build-a-java-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Java Web アプリケーションの作成
+# <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Azure Cosmos DB および DocumentDB API を使用した Java Web アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-dotnet-application.md)
 > * [Node.js](documentdb-nodejs-application.md)
@@ -744,7 +744,7 @@ Azure Websites での Java アプリケーションのデプロイは簡単で�
 3. Eclipse で、**[File]** メニューの **[Import]** をクリックします。
 4. **[Import]** ウィンドウで、**[Git]**、**[Projects from Git]**、**[Next]** の順にクリックします。
 5. **[Select Repository Source]** 画面で、**[Clone URI]** をクリックします。
-6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「https://github.com/Azure-Samples/java-todo-app.git」と入力し、**[Next]\(次へ\)** をクリックします。
+6. **[Source Git Repository]\(ソース Git リポジトリ\)** 画面の **[URI]** ボックスに「 https://github.com/Azure-Samples/java-todo-app.git 」と入力し、**[Next]\(次へ\)** をクリックします。
 7. **[Branch Selection]** 画面で、**[master]** が選択されていることを確認し、**[Next]** をクリックします。
 8. **[Local Destination]** 画面で、**[Browse]** をクリックしてリポジトリをコピーするフォルダーを選択し、**[Next]** をクリックします。
 9. **[Select a wizard to use for importing projects]** 画面で、**[Import existing projects]** が選択されていることを確認し、**[Next]** をクリックします。

@@ -13,7 +13,7 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: bbf0f4868a95d21c3aaa31109c4c5a8083efc6db
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/11/2017
-
 
 ---
 # <a name="azure-resource-group-guidelines-for-linux-vms"></a>Linux VM 用の Azure リソース グループのガイドライン 

@@ -1,5 +1,5 @@
 ---
-title: "Data Factory を使用して Azure HDInsight (Hadoop) を作成する | Microsoft Docs"
+title: "Data Factory を使用して オンデマンドの Hadoop クラスターを作成する - Azure HDInsight | Microsoft Docs"
 description: "Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 02/23/2017
+ms.date: 07/20/2017
 ms.author: spelluru
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 8bdbe30bb435f06ba206bfde81b238fe7dcf544c
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 657c436cc45bb3818f89b922d74e03cae894778e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
@@ -313,12 +312,12 @@ HDInsight のオンデマンドのリンクされたサービスの定義で、�
     "properties": {
         "type": "HDInsightOnDemand",
         "typeProperties": {
-            "osType": "linux",
-            "version": "3.2",
+            "version": "3.5",
             "clusterSize": 1,
+            "timeToLive": "00:05:00",
+            "osType": "Linux",
             "sshUserName": "myuser",                            
             "sshPassword": "MyPassword!",
-            "timeToLive": "00:30:00",
             "linkedServiceName": "[variables('storageLinkedServiceName')]"
         }
     }
@@ -551,12 +550,12 @@ Azure Data Factory では、出力データセットの可用性によってパ�
         "properties": {
             "type": "HDInsightOnDemand",
             "typeProperties": {
-                "osType": "linux",
-                "version": "3.2",
+                "version": "3.5",
                 "clusterSize": 1,
+                "timeToLive": "00:05:00",
+                "osType": "Linux",
                 "sshUserName": "myuser",                            
                 "sshPassword": "MyPassword!",
-                "timeToLive": "00:30:00",
                 "linkedServiceName": "[variables('storageLinkedServiceName')]",
                 "additionalLinkedServiceNames": "[variables('defaultStorageLinkedServiceName')]"
             }

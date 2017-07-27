@@ -14,20 +14,22 @@
     items:
     - name: 人間の関与について
       href: Review-Tool-User-Guide/human-in-the-loop.md
-    - name: チームの作成
-      href: Review-Tool-User-Guide/Sign-up.md
-    - name: 画像のアップロード
-      href: Review-Tool-User-Guide/Upload-Images.md
+    - name: 設定
+      href: Review-Tool-User-Guide/Configure.md
+    - name: チームおよびサブチーム
+      href: Review-Tool-User-Guide/SubTeams.md
+    - name: タグについて
+      href: Review-Tool-User-Guide/Tags.md
     - name: 画像のレビュー
       href: Review-Tool-User-Guide/Review-Moderated-Images.md
     - name: テキストのレビュー
       href: Review-Tool-User-Guide/Text-Reviews.md
-    - name: チームおよびサブチーム
-      href: Review-Tool-User-Guide/SubTeams.md
+    - name: 資格情報の検証
+      href: Review-Tool-User-Guide/Credentials.md
+    - name: コネクタについて
+      href: Review-Tool-User-Guide/Connectors.md
     - name: ワークフローの使用
       href: Review-Tool-User-Guide/Workflows.md
-    - name: '[設定]'
-      href: Review-Tool-User-Guide/Configure.md
     - name: ダッシュボードの表示
       href: Review-Tool-User-Guide/View-Dashboard.md
 - name: リファレンス
@@ -48,6 +50,8 @@
     href: video-moderation-api.md
 - name: リソース
   items:  
+  - name: Azure のロードマップ
+    href: https://azure.microsoft.com/roadmap/
   - name: Windows SDK
     href: https://github.com/MicrosoftContentModerator/Microsoft.CognitiveServices.ContentModerator-Windows/
   - name: サンプル

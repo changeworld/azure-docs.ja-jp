@@ -13,13 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/08/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
 ms.openlocfilehash: d19956e4964f57251f51eb8ffe5041c6a49da1a7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/10/2017
-
 
 ---
 # <a name="get-started-with-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録の使用
@@ -56,9 +57,9 @@ Azure Active Directory の管理者ポータルを使用して、登録されて
 > 
 > 
 
-既定では、サービスに対する&2; 要素認証は有効になっていません。 ただし、デバイスを登録するときに&2; 要素認証を使用することをお勧めします。
+既定では、サービスに対する 2 要素認証は有効になっていません。 ただし、デバイスを登録するときに 2 要素認証を使用することをお勧めします。
 
-* このサービスに対して&2; 要素認証を要求するには、Azure Active Directory で&2; 要素認証プロバイダーを構成し、Multi-Factor Authentication 用のユーザー アカウントを構成しておく必要があります。[Azure Active Directory への Multi-Factor Authentication の追加](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関する記事をご覧ください。
+* このサービスに対して 2 要素認証を要求するには、Azure Active Directory で 2 要素認証プロバイダーを構成し、Multi-Factor Authentication 用のユーザー アカウントを構成しておく必要があります。[Azure Active Directory への Multi-Factor Authentication の追加](../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md)に関する記事をご覧ください。
 * Windows Server 2012 R2 で AD FS を使用している場合は、AD FS で 2 要素認証モジュールを構成する必要があります。[Active Directory フェデレーション サービスでの Multi-Factor Authentication の使用](../multi-factor-authentication/multi-factor-authentication-get-started-server.md)に関する記事をご覧ください。
 
 ## <a name="configure-azure-active-directory-device-registration-discovery"></a>Azure Active Directory Device Registration の検出を構成する
@@ -66,7 +67,7 @@ Windows 7 デバイスおよび Windows 8.1 デバイスでは、ユーザー �
 
 Azure Active Directory Device Registration サービスに関連付けられた A レコードを参照する DNS CNAME レコードを作成する必要があります。 CNAME レコードでは、既知のプレフィックス enterpriseregistration の後に、組織のユーザー アカウントで使用されている UPN サフィックスを使用する必要があります。 組織で複数の UPN サフィックスを使用している場合は、DNS に複数の CNAME レコードを作成する必要があります。
 
-たとえば、組織で @contoso.com と @region.contoso.com の&2; つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
+たとえば、組織で @contoso.com と @region.contoso.com の 2 つの UPN サフィックスを使用している場合は、次の DNS レコードを作成します。
 
 | エントリ | 型 | Address |
 | --- | --- | --- |

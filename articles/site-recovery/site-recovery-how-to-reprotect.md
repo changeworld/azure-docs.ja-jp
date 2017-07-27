@@ -11,18 +11,20 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
-ms.date: 02/13/2017
+ms.workload: storage-backup-recovery
+ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3156ca5b2b8ba836e94d79a97b28bf591c799b48
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: d77f9c4e6365c95b0ea1bf4d00b9f2e9c35eefde
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
+ms.lasthandoff: 06/16/2017
 
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへの再保護
+
+
 
 ## <a name="overview"></a>概要
 この記事では、Azure からオンプレミス サイトへ Azure Virtual Machines を再保護する方法について説明します。 [Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-failover.md)方法を使用して、VMware 仮想マシンまたは Windows/Linux 物理サーバーをオンプレミス サイトから Azure にフェールオーバーした後に、それらをフェールバックする準備ができたときに、この記事の手順に従ってください。
@@ -44,7 +46,7 @@ ms.lasthandoff: 04/27/2017
 
 * フェールバックする仮想マシンが vCenter サーバーによって管理されている場合、vCenter サーバー上の仮想マシンの検出に必要な権限があることを確認する必要があります。 詳細については、[こちら](site-recovery-vmware-to-azure-classic.md#vmware-permissions-for-vcenter-access)を参照してください。
 
-> [!WARNING] 
+> [!WARNING]
 > オンプレミスのマスター ターゲットまたは仮想マシン上にスナップショットがある場合、再保護は失敗します。 マスター ターゲット上のスナップショットを削除してから再保護に進むことができます。 仮想マシン上のスナップショットは、再保護ジョブの過程で自動的にマージされます。
 
 * フェールバックを開始する前に、さらに 2 つのコンポーネントを作成する必要があります。
@@ -103,6 +105,10 @@ Azure のプロセス サーバーのインストール方法について詳し�
 * [Linux マスター ターゲット サーバーをインストールする方法](site-recovery-how-to-install-linux-master-target.md)
 
 
+### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>フェールバック中にオンプレミスの ESXi ホストでサポートされるデータストアの種類
+
+現在 ASR は、VMFS データストアへのフェールバックのみをサポートしています。 vSAN または NFS データストアはサポートされていません。 vSAN または NFS データストアで実行されている仮想マシンを保護できることに注意してください。 この制限により、NFS データストアの場合は再保護画面のデータストア選択の入力が空になるか、vSAN データストアが表示されますが、ジョブの実行中に失敗します。 フェールバックする場合は、オンプレミスの VMFS データストアを作成すると、そのデータストアにフェールバックできます。 このフェールバックにより、VMDK の完全なダウンロードが発生します。 NFS と vSAN データストアは、今後のリリースでサポートされる予定です。
+
 #### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>マスター ターゲット サーバーのインストール完了後の一般的なチェック事項
 
 * 仮想マシンが vCenter サーバー上でオンプレミスに存在する場合、マスター ターゲット サーバーには、オンプレミスの仮想マシンの VMDK へのアクセス権が必要になります。 アクセス権は、レプリケートされたデータを仮想マシンのディスクに書き込むために必要です。 オンプレミスの仮想マシンのデータ ストアが、読み取りと書き込みアクセス権のあるマスター ターゲットのホストにマウントされていることを確認します。
@@ -129,7 +135,7 @@ Azure のプロセス サーバーのインストール方法について詳し�
    * Windows の既定のリテンション ボリュームは R ボリュームです。
 
    * Linux の既定のリテンション ボリュームは /mnt/retention/ です。
-   
+
    > [!IMPORTANT]
    > 既存の CS+PS マシン、スケール、または PS+MT マシンを使用している場合は、新しいドライブを追加する必要があります。 新しいドライブは、上記の要件を満たしている必要があります。 リテンション ドライブが存在しない場合、ポータルの選択ドロップダウンには何も表示されません。 オンプレミスのマスター ターゲットに追加したドライブがポータルの選択ドロップダウンに表示されるまでには、最大で 15 分かかります。 15 分たってもドライブが表示されない場合は、構成サーバーを更新することもできます。
 

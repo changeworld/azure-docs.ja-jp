@@ -7,6 +7,7 @@
 ## [URL ルーティング](application-gateway-url-route-overview.md)
 ## [マルチサイト](application-gateway-multi-site-overview.md)
 ## [エンド ツー エンド SSL](application-gateway-backend-ssl.md)
+## [リダイレクト](application-gateway-redirect-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 作業開始
@@ -37,6 +38,8 @@
 ## 複数サイトのホスティングを構成する
 ### [ポータル](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)
+## リダイレクトを構成する
+### [PowerShell](application-gateway-configure-redirect-powershell.md)
 ## 正常性プローブを構成する
 ### [ポータル](application-gateway-create-probe-portal.md)
 ### [PowerShell](application-gateway-create-probe-ps.md)
@@ -64,8 +67,9 @@
 ## [Load Balancer](/azure/load-balancer/)
 ## [Traffic Manager](/azure/traffic-manager/)
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/application-gateway/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)
+## [料金](https://azure.microsoft.com/pricing/details/application-gateway/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=application-gateway)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-application-gateway)

@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/18/2017
+ms.date: 06/13/2017
 ms.author: yuemlu
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 37a22be9fba7b245b2c1ea3ca6e495601d63b611
-ms.lasthandoff: 04/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 01597767a03a5959c4c0cde994b6a7b8a34bfb7e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -31,7 +32,7 @@ Azure Standard Storage は、待機時間の影響を受けないワークロー
 
 Azure VM の Standard ディスクは、次の 2 とおりの方法で作成できます。
 
-**非管理対象ディスク**: これは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクを接続できるので、VM あたり最大 64 TB のストレージを使用できます。
+**非管理対象ディスク**: これは、VM ディスクに対応する VHD ファイルの格納に使用するストレージ アカウントをユーザーが管理する本来の方法です。 VHD ファイルは、ストレージ アカウントにページ BLOB として格納されます。 非管理対象ディスクは、主に Premium Storage を使用する VM (DSv2 シリーズや GS シリーズなど) も含め、すべてのサイズの Azure VM に接続できます。 Azure VM には複数の Standard ディスクをアタッチできるので、VM あたり最大 256 TB のストレージを使用できます。
 
 [**Azure Managed Disks**](storage-managed-disks-overview.md): この機能は、VM ディスクに使用するストレージ アカウントを管理します。 必要なディスクの種類 (Premium または Standard) とサイズを指定すれば、ディスクの作成と管理は Azure によって行われます。 ストレージ アカウントのスケーラビリティの制限を超えないように、複数のストレージ アカウントにディスクを配置することを気に掛ける必要はありません。Azure がこれを管理します。
 
@@ -85,7 +86,7 @@ Premium ディスクとは異なり、Standard ディスクの IOPS (1 秒あた
 
 | **VM のレベル**            | **Basic レベルの VM** | **Standard レベルの VM** |
 |------------------------|-------------------|----------------------|
-| 最大ディスク サイズ          | 1023 GB           | 1023 GB              |
+| 最大ディスク サイズ          | 4095 GB           | 4095 GB              |
 | ディスクあたり最大 8 KB の IOPS | 最大 300         | 最大 500            |
 | ディスクあたりの最大帯域幅 | 最大 60 MB/秒     | 最大 60 MB/秒        |
 
@@ -121,7 +122,7 @@ Standard Storage を使用するときには、課金に関する次の考慮事
 * 送信データ転送
 * トランザクション
 
-**非管理対象ストレージのデータとディスク サイズ**: 非管理対象ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 
+**非管理対象ストレージのデータとディスク サイズ**: 非管理対象ディスクとその他のデータ (BLOB、テーブル、キュー、ファイル) については、使用している領域分に対してのみ課金されます。 たとえば、ページ BLOB が 127 GB としてプロビジョニングされている VM があり、その VM で実際には 10 GB の領域しか使用していない場合、10 GB の領域分に対して課金されます。 最大 8,191 GB の Standard Storage および最大 4,095 GB の Standard 非管理対象ディスクがサポートされます。 
 
 **管理ディスク**: 管理ディスクは、プロビジョニング済みサイズに対して課金されます。 ディスクが 10 GB ディスクとしてプロビジョニングされており、5 GB しか使用していなくても、10 GB のプロビジョニング サイズに対して課金されます。
 
@@ -154,3 +155,4 @@ Standard Storage、Virtual Machines、Managed Disks の価格の詳細につい�
 * [Resource Manager と PowerShell を使用して VM を作成する](../virtual-machines/virtual-machines-windows-ps-create.md)
 
 * [Azure CLI 2.0 を使用して Linux VM を作成する](../virtual-machines/linux/quick-create-cli.md)
+

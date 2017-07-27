@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 039ea499f3bfc594472ddc6de59220c4600769f1
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 9ca96196d2d4b898c79556867b5ff8d8be0f66dc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -52,7 +52,7 @@ Azure Stream Analytics では、ジョブを開始したり停止したりする
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
-* [Azure Stream Analytics の使用](stream-analytics-get-started.md)
+* [Azure Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: fb0217b1c51a4189dfeac8291bb932cbc571f385
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: b57a157bc47b09af34684b0d85ce4538782a5ff2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="securing-access-to-azure-cosmos-db-data"></a>Azure Cosmos DB データへのアクセスのセキュリティ保護
-この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
+この記事では、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) に格納されたデータへのアクセスをセキュリティ保護する方法の概要を説明します。
 
 Azure Cosmos DB では、2 種類のキーを使用してユーザーを認証し、そのデータとリソースへのアクセスを提供しています。 
 

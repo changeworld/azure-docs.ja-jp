@@ -7,6 +7,7 @@
 ## [セキュリティ グループ ビュー](network-watcher-security-group-view-overview.md)
 ## [次ホップ](network-watcher-next-hop-overview.md)
 ## [VPN 接続のトラブルシューティング](network-watcher-troubleshoot-overview.md)
+## [接続のチェック](network-watcher-connectivity-overview.md)
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#network-watcher-limits)
 # 作業の開始
 ## [Network Watcher の構成](network-watcher-create.md)
@@ -44,6 +45,10 @@
 ### [CLI 1.0](network-watcher-security-group-view-cli-nodejs.md)
 ### [CLI 2.0](network-watcher-security-group-view-cli.md)
 ### [REST ()](network-watcher-security-group-view-rest.md)
+## 接続をテストする
+### [PowerShell](network-watcher-connectivity-powershell.md)
+### [CLI 2.0](network-watcher-connectivity-cli.md)
+### [REST ()](network-watcher-connectivity-rest.md)
 ## NSG フロー ログの構成
 ### [ポータル](network-watcher-nsg-flow-logging-portal.md)
 ### [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
@@ -70,8 +75,9 @@
 ## [仮想マシン](/azure/virtual-machines/)
 ## [VPN Gateway](/azure/vpn-gateway/)
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/network-watcher/)
-## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=WAVirtualMachinesVirtualNetwork)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)
+## [料金](https://azure.microsoft.com/pricing/details/network-watcher/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=network-watcher)
+## [SLA](https://azure.microsoft.com/support/legal/sla/)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/network-watcher)

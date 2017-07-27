@@ -3,22 +3,22 @@ title: "Azure Active Directory B2C: カスタム ポリシーを使用した Sal
 description: "Azure Active Directory B2C のカスタム ポリシーに関するトピック"
 services: active-directory-b2c
 documentationcenter: 
-author: gsacavdm
+author: parakhj
 manager: krassk
-editor: gsacavdm
+editor: parakhj
 ms.assetid: d7f4143f-cd7c-4939-91a8-231a4104dc2c
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/30/2017
-ms.author: gsacavdm
+ms.date: 06/11/2017
+ms.author: parakhj
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 1d97c75f3130ea6fdacbc6335b6e70677b4d226e
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: dec042efe30b80d68b3f200a4aad4fd5d24cd158
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -31,6 +31,7 @@ ms.lasthandoff: 05/11/2017
 ## <a name="prerequisites"></a>前提条件
 
 ### <a name="azure-ad-b2c-setup"></a>Azure AD B2C のセットアップ
+
 [カスタム ポリシーを使い始める](active-directory-b2c-get-started-custom.md)にあたっての手順がすべて完了していることを確認します。
 
 次のトピックがあります。
@@ -42,11 +43,18 @@ ms.lasthandoff: 05/11/2017
 1. スターター パックのセットアップ。
 
 ### <a name="salesforce-setup"></a>Salesforce のセットアップ
+
 このチュートリアルでは、既に以下が完了していることを前提としています。
-1. Salesforce アカウントへのサインアップ。 [無料の Developer Edition](https://developer.salesforce.com/signup) にサインアップできます。 
+
+1. Salesforce アカウントへのサインアップ。 [無料の Developer Edition](https://developer.salesforce.com/signup) にサインアップできます。
 1. Salesforce 組織用の ["私のドメイン" のセットアップ](https://help.salesforce.com/articleView?id=domain_name_setup.htm&language=en_US&type=0)。
 
-## <a name="get-the-salesforce-saml-metadata"></a>Salesforce SAML メタデータの取得
+## <a name="configure-salesforce-to-allow-users-to-federate"></a>ユーザーがフェデレーションを実行できるように Salesforce を構成する
+
+Azure AD B2C が Salesforce と通信できるようにするには、Salesforce のメタデータ URL を取得する必要があります。
+
+### <a name="enable-salesforce-as-an-identity-provider"></a>Salesforce を ID プロバイダーとして有効にする
+
 >[!NOTE]
 > このチュートリアルでは、[Salesforce Lighting Experience](https://developer.salesforce.com/page/Lightning_Experience_FAQ) を使用していることを前提としています。
 
@@ -54,23 +62,68 @@ ms.lasthandoff: 05/11/2017
 1. 左側のメニューで、**[Settings]\(設定\)** の下の **[Identity]\(ID\)** を展開し、**[Identity Provider]\(ID プロバイダー\)** をクリックします。
 1. **[Enable Identity Provider]\(ID プロバイダーを有効にする\)** をクリックします。
 1. Azure AD B2C と通信するときに Salesforce で使用する**証明書を選択**し、**[Save]\(保存\)** をクリックします。 既定の証明書を使用できます。
-1. 使用できるようになった **[Download Metadata]\(メタデータのダウンロード\)** ボタンをクリックして、後の手順で使用するメタデータ ファイルを保存します。
 
-## <a name="add-a-saml-signing-certificate-to-azure-ad-b2c"></a>Azure AD B2C への SAML 署名証明書の追加
-Azure AD B2C テナントには、その SAML 要求に署名するときに使用する SAML 証明書をアップロードして保存する必要があります。 これを行うには、次の手順を実行します。
+### <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
+
+1. **[Identity Provider]\(ID プロバイダー\)** ページで、**[Service Providers]\(サービス プロバイダー\)** セクションまでスクロールします。
+1. **[Service Providers are now created via Connected Apps]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
+1. 接続されたアプリの必須の**基本情報**を提供します。
+1. **[Web App Settings]\(Web アプリの設定\)** セクションで、**[Enable SAML]\(SAML を有効にする\)** をオンにします。
+1. **[Entity ID]\(エンティティ ID\)** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。
+      ```
+      https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
+      ```
+1. **[ACS URL]** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。
+      ```
+      https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
+      ```
+1. それ以外の設定はすべて既定のままにします。
+1. 一番下までスクロールし、**[Save]\(保存\)** ボタンをクリックします。
+
+### <a name="get-the-metadata-url"></a>メタデータ URL の取得
+
+1. 接続されたアプリの概要ページで **[Manage]\(管理\)** をクリックします。
+1. **メタデータ検出エンドポイント**をコピーし、後で使用できるように保存します。
+
+### <a name="enable-salesforce-users-to-federate"></a>Salesforce ユーザーがフェデレーションを実行できるようにする
+
+1. 接続されたアプリの [Manage]\(管理\) ページで、**[Profiles]\(プロファイル\)** セクションまでスクロールします。
+1. **[Manage Profiles]\(プロファイルを管理する\)** をクリックします。
+1. Azure AD B2C とフェデレーションできるようにするプロファイル (またはユーザーのグループ) を選択します。 システム管理者は、Salesforce アカウントを使用してフェデレーションを行うことができるように、**[System Administrator]/(システム管理者/)** のチェック ボックスをオンにする必要があります。
+
+## <a name="generate-a-signing-certificate-for-azure-ad-b2c"></a>Azure AD B2C の署名証明書の生成
+
+Salesforce に送信された要求は、Azure AD B2C で署名する必要があります。 署名証明書を生成するには、PowerShell を開き、次のコマンドを実行します。
+
+**先頭の 2 行のテナント名およびパスワードを必ず更新してください。**
+
+```PowerShell
+$tenantName = "<YOUR TENANT NAME>.onmicrosoft.com"
+$pwdText = "<YOUR PASSWORD HERE>"
+
+$Cert = New-SelfSignedCertificate -CertStoreLocation Cert:\CurrentUser\My -DnsName "SamlIdp.$tenantName" -Subject "B2C SAML Signing Cert" -HashAlgorithm SHA256 -KeySpec Signature -KeyLength 2048
+
+$pwd = ConvertTo-SecureString -String $pwdText -Force -AsPlainText
+
+Export-PfxCertificate -Cert $Cert -FilePath .\B2CSigningCert.pfx -Password $pwd
+```
+
+## <a name="add-the-saml-signing-certificate-to-azure-ad-b2c"></a>Azure AD B2C への SAML 署名証明書の追加
+
+Azure AD B2C テナントに署名証明書をアップロードする必要があります。 これを行うには、次の手順を実行します。
 
 1. Azure AD B2C テナントに移動し、**[B2C Settings]\(B2C 設定\)、[Identity Experience Framework]、[Policy Keys]\(ポリシー キー\)** の順に開きます。
 1. **[+ 追加]** をクリックします。
-1. オプション:
- * **[オプション]、[アップロード]** の順に選択します。
- * **[名前]** に「`ContosoIdpSamlCert`」と入力します。  プレフィックス B2C_1A_ がキーの名前に自動的に追加されます。 フル ネーム (B2C_1A_ を含む) を書き留めておいてください。後でポリシーの中でこの名前を引用します。
- * **ファイルのアップロード コントロール**を使用して証明書を選択し、必要に応じて証明書のパスワードを指定します。
-1. **[作成]**
-1. 次のキーが作成されたことを確認します: `B2C_1A_ContosoIdpSamlCert`
+    * **[オプション]、[アップロード]** の順に選択します。
+    * **名前** (例: `SAMLSigningCert`) を入力します。 プレフィックス B2C_1A_ がキーの名前に自動的に追加されます。
+    * **ファイルのアップロード コントロール**を使用して証明書を選択する
+    * PowerShell スクリプトで設定した証明書のパスワードを入力します。
+1. ページの下部にある **[Create]**」を参照してください。
+1. キー (例: `B2C_1A_SAMLSigningCert`) を作成したことを確認します。 フル ネーム (B2C_1A_ を含む) を書き留めておいてください。後でポリシーの中でこの名前を引用します。
 
 ## <a name="create-the-salesforce-saml-claims-provider-in-your-base-policy"></a>基本ポリシーでの Salesforce SAML 要求プロバイダーの作成
 
-ユーザーが Salesforce を使用してログインできるようにするためには、Salesforce を要求プロバイダーとして定義する必要があります。 つまり、Azure AD B2C が通信するエンドポイントを指定する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使用する一連の "*要求*" を "*提供*" します。 これを行うには、ポリシーの拡張ファイルで Salesforce の `<ClaimsProvider>` を追加します。
+ユーザーが Salesforce を使用してログインできるようにするには、Salesforce を要求プロバイダーとして定義する必要があります。 つまり、Azure AD B2C が通信するエンドポイントを指定する必要があります。 エンドポイントは、特定のユーザーが認証されていることを確認するために Azure AD B2C で使用する一連の "*要求*" を "*提供*" します。 これを行うには、ポリシーの拡張ファイルで Salesforce の `<ClaimsProvider>` を追加します。
 
 1. 作業ディレクトリ (TrustFrameworkExtensions.xml) から拡張ファイルを開きます。
 1. セクション `<ClaimsProviders>` を探します。 存在しない場合は、ルート ノードの下に追加します。
@@ -78,30 +131,29 @@ Azure AD B2C テナントには、その SAML 要求に署名するときに使�
 
     ```XML
     <ClaimsProvider>
-      <Domain>contoso</Domain>
-      <DisplayName>Contoso</DisplayName>
+      <Domain>salesforce</Domain>
+      <DisplayName>Salesforce</DisplayName>
       <TechnicalProfiles>
-        <TechnicalProfile Id="Contoso">
-          <DisplayName>Contoso</DisplayName>
-          <Description>Login with your Contoso account</Description>
+        <TechnicalProfile Id="salesforce">
+          <DisplayName>Salesforce</DisplayName>
+          <Description>Login with your Salesforce account</Description>
           <Protocol Name="SAML2"/>
           <Metadata>
             <Item Key="RequestsSigned">false</Item>
             <Item Key="WantsEncryptedAssertions">false</Item>
-            <Item Key="PartnerEntity">
-    <![CDATA[ <md:EntityDescriptor xmlns:md="urn:oasis:names:tc:SAML:2.0:metadata" entityID="https://contoso.com" validUntil="2026-10-05T23:57:13.854Z" xmlns:ds="http://www.w3.org/2000/09/xmldsig#"><md:IDPSSODescriptor protocolSupportEnumeration="urn:oasis:names:tc:SAML:2.0:protocol"><md:KeyDescriptor use="signing"><ds:KeyInfo><ds:X509Data><ds:X509Certificate>MIIErDCCA….qY9SjVXdu7zy8tZ+LqnwFSYIJ4VkE9UR1vvvnzO</ds:X509Certificate></ds:X509Data></ds:KeyInfo></md:KeyDescriptor><md:NameIDFormat>urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified</md:NameIDFormat><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-POST" Location="https://contoso.com/idp/endpoint/HttpPost"/><md:SingleSignOnService Binding="urn:oasis:names:tc:SAML:2.0:bindings:HTTP-Redirect" Location="https://contoso.com/idp/endpoint/HttpRedirect"/></md:IDPSSODescriptor></md:EntityDescriptor>]]>
-            </Item>
-          </Metadata>       
+            <Item Key="WantsSignedAssertions">false</Item>
+            <Item Key="PartnerEntity">https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp.xml</Item>
+          </Metadata>
           <CryptographicKeys>
-            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert"/>
-            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_ContosoIdpSamlCert "/>
+            <Key Id="SamlAssertionSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
+            <Key Id="SamlMessageSigning" StorageReferenceId="B2C_1A_SAMLSigningCert"/>
           </CryptographicKeys>
           <OutputClaims>
             <OutputClaim ClaimTypeReferenceId="socialIdpUserId" PartnerClaimType="userId"/>
             <OutputClaim ClaimTypeReferenceId="givenName" PartnerClaimType="given_name"/>
             <OutputClaim ClaimTypeReferenceId="surname" PartnerClaimType="family_name"/>
             <OutputClaim ClaimTypeReferenceId="email" PartnerClaimType="email"/>
-            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="name"/>
+            <OutputClaim ClaimTypeReferenceId="displayName" PartnerClaimType="username"/>
             <OutputClaim ClaimTypeReferenceId="authenticationSource" DefaultValue="externalIdp"/>
             <OutputClaim ClaimTypeReferenceId="identityProvider" DefaultValue="SAMLIdp" />
           </OutputClaims>
@@ -117,8 +169,10 @@ Azure AD B2C テナントには、その SAML 要求に署名するときに使�
     </ClaimsProvider>
     ```
 
-1. `<ClaimsProvider>` ノードの下で、`<Domain>` の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。
-1. `<ClaimsProvider>` ノードの下で、`<DisplayName>` の値を、要求プロバイダーを表すわかりやすい名前に更新します。 この値は現在使用されていません。
+`<ClaimsProvider>` ノードの下で、以下の操作を実行します。
+
+* `<Domain>` の値を、他の ID プロバイダーと区別するために使用できる一意の値に更新します。
+* `<DisplayName>` の値を、要求プロバイダーを表すわかりやすい名前に更新します。 この値は現在使用されていません。
 
 ### <a name="update-the-technical-profile"></a>技術プロファイルの更新
 
@@ -127,17 +181,17 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 1. `<TechnicalProfile>` ノードの ID を更新します。 この ID は、ポリシーの他の部分からこの技術プロファイルを参照するために使用します。
 1. `<DisplayName>` の値を更新します。 この値は、ログイン画面のログイン ボタンに表示されます。
 1. `<Description>` の値を更新します。
-1. Azure AD では OpenID Connect プロトコルを使用するので、`<Protocol>` が "SAML2" になっていることを確認してください。
+1. Salesforce では SAML 2.0 プロトコルが使用されるため、`<Protocol>` が "SAML2" であることを確認してください。
 
-特定の Azure AD テナントの構成設定を反映するように、上の XML の `<Metadata>` セクションを更新する必要があります。 XML で、次のようにメタデータ値を更新します。
+特定の Salesforce アカウントの構成設定を反映するように、上の XML の `<Metadata>` セクションを更新する必要があります。 XML で、次のようにメタデータ値を更新します。
 
-1. `<Item Key="PartnerEntity">` の値を、Salesforce からダウンロードした Metadata.xml のコンテンツで更新します。 **必ず <![CDATA[ …metadata… ]]> でカプセル化してください**。
+1. `<Item Key="PartnerEntity">` の値を、先ほどコピーした Salesforce メタデータ URL で更新します。 形式は以下のとおりです。`https://contoso-dev-ed.my.salesforce.com/.well-known/samlidp/connectedapp.xml`
 
-1. 上の XML の `<CryptographicKeys>` セクションで、両方の `StorageReferenceId` の値を、定義した証明書 ID に更新します (例: ContosoSalesforceCert)。
+1. 上記の XML の `<CryptographicKeys>` セクションで、両方の `StorageReferenceId` の値を署名証明書のキーの名前 (例: B2C_1A_SAMLSigningCert) に更新します。
 
 ### <a name="upload-the-extension-file-for-verification"></a>拡張ファイルのアップロードによる確認
 
-ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。 そのためには、次の手順を実行します。
+ここまでで、Azure AD B2C が Salesforce と通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。 そのためには、次の手順を実行します。
 
 1. Azure AD B2C テナントの **[All Policies]**(すべてのポリシー) ブレードに移動します。
 1. **[Overwrite the policy if it exists]**(ポリシーが存在する場合は上書き) チェック ボックスをオンにします。
@@ -155,7 +209,7 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 
 ### <a name="display-the-button"></a>"ボタン" の表示
 
-`<ClaimsProviderSelection>` 要素は、サインアップ/サインイン画面の ID プロバイダー ボタンに類似しています。 Salesforce の `<ClaimsProviderSelection>` 要素を追加することで、ユーザーがページにアクセスしたときに新しいボタンが表示されます。 これを行うには、次の手順を実行します。
+`<ClaimsProviderSelection>` 要素は、サインアップ/サインイン画面の ID プロバイダーのボタンに類似しています。 Salesforce の `<ClaimsProviderSelection>` 要素を追加することで、ユーザーがページにアクセスしたときに新しいボタンが表示されます。 これを行うには、次の手順を実行します。
 
 1. 作成した `<UserJourney>` で `Order="1"` になっている `<OrchestrationStep>` を見つけます。
 1. 以下を追加します。
@@ -189,40 +243,14 @@ Salesforce から SAML トークンを取得するためには、Azure AD B2C �
 ここで、作成したユーザー ジャーニーを開始する RP ファイルを更新する必要があります。
 
 1. 作業ディレクトリに SignUpOrSignIn.xml のコピーを作成してその名前を変更します (例: SignUpOrSignInWithAAD.xml)。
-1. 新しいファイルを開き、`<TrustFrameworkPolicy>` の `PolicyId` 属性を一意な値で更新します。 これがポリシーの名前になります (例: SignUpOrSignInWithAAD)。
+1. 新しいファイルを開き、`<TrustFrameworkPolicy>` の `PolicyId` 属性を一意の値で更新します。 これがポリシーの名前になります (例: SignUpOrSignInWithAAD)。
 1. `<DefaultUserJourney>` の `ReferenceId` 属性を変更して、作成した新しいユーザー ジャーニーの ID と一致するようにします (例: SignUpOrSignUsingContoso)。
 1. 変更内容を保存し、ファイルをアップロードします。
 
-## <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
-Azure AD B2C を接続されたアプリとして Salesforce に登録する必要があります。
-
-1. [Salesforce にログインします。](https://login.salesforce.com/) 
-1. 左側のメニューで、**[Settings]\(設定\)** の下の **[Identity]\(ID\)** を展開し、**[Identity Provider]\(ID プロバイダー\)** をクリックします。
-1. 下部の **[Service Providers]\(サービス プロバイダー\)** セクションで、**[Service Providers are now created via Connected Apps. Click here.]\(接続されたアプリでサービス プロバイダーが作成されました。ここをクリックしてください。\)** をクリックします。
-1. 接続されたアプリの必須の**基本情報**を提供します。
-1. **[Web App Settings]\(Web アプリの設定\)** セクションで次の手順を実施します。
-    1. **[Enable SAML]\(SAML を有効にする\)** チェック ボックスをオンにします。
-    1. **[Entity ID]\(エンティティ ID\)** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。 
-    
-        ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase
-        ```
-
-    1. **[ACS URL]** フィールドに次の URL を入力します。必ず `tenantName` を置き換えてください。 
-        ```
-        https://login.microsoftonline.com/te/tenantName.onmicrosoft.com/B2C_1A_TrustFrameworkBase/samlp/sso/assertionconsumer
-        ```
-
-    1. それ以外の設定はすべて既定のままにします。
-1. 一番下までスクロールし、**[Save]\(保存\)** ボタンをクリックします。
-
-
-## <a name="troubleshooting"></a>トラブルシューティング
+## <a name="testing-and-troubleshooting"></a>テストおよびトラブルシューティング
 
 アップロードしたカスタム ポリシーのブレードを開いて [Run now] \(今すぐ実行) をクリックし、カスタム ポリシーをテストします。 エラーが発生した場合は、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)の方法を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
- 
+
 [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) にフィードバックを提供します。
-
-

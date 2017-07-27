@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 3/24/2017
+ms.date: 6/28/2017
 ms.author: ryanwi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: f47fbe0e9c6cb4d09e6233f6d26211969a5c1f00
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 48e4ad774164b87d0cacb42f709e54af1d6f07b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -175,6 +175,17 @@ PS D:\temp> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath .\MyApp
 同様に、パッケージの圧縮バージョンをアップロードし、圧縮されていないパッケージを使用する場合は、チェックサムの不一致を避けるために、バージョンを更新する必要があります。
 
 これでパッケージは正しくパッケージ化、検証、および (必要に応じて) 圧縮されたため、1 つまたは複数の Service Fabric クラスターに[デプロイ](service-fabric-deploy-remove-applications.md)する準備ができました。
+
+### <a name="compress-packages-when-deploying-using-visual-studio"></a>Visual Studio を使ってデプロイするときにパッケージを圧縮する
+`CopyPackageParameters` 要素を発行プロファイルに追加し、`CompressPackage` 属性を `true` に設定することで、デプロイ時にパッケージを圧縮するよう Visual Studio に指示できます。
+
+``` xml
+    <PublishProfile xmlns="http://schemas.microsoft.com/2015/05/fabrictools">
+        <ClusterConnectionParameters ConnectionEndpoint="mycluster.westus.cloudapp.azure.com" />
+        <ApplicationParameterFile Path="..\ApplicationParameters\Cloud.xml" />
+        <CopyPackageParameters CompressPackage="true"/>
+    </PublishProfile>
+```
 
 ## <a name="next-steps"></a>次のステップ
 「[アプリケーションのデプロイと削除][10]」では、PowerShell を使用してアプリケーション インスタンスを管理する方法について説明しています

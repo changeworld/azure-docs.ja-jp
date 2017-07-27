@@ -14,9 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09
-ms.openlocfilehash: 8b09e5c7505554f1007cdf46ae74a100fb083432
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 1ae54ed11130223f2795120e199234fec609d3fc
+ms.openlocfilehash: 1ad3ba6853edda93034b84996823262cb017c71a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -25,7 +27,7 @@ ms.openlocfilehash: 8b09e5c7505554f1007cdf46ae74a100fb083432
 
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 このガイドでは、Azure Queue ストレージ サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 キュー メッセージの**挿入**、**ピーク**、**取得**、**削除**と、**キューの作成と削除**の各シナリオについて説明します。 キューの詳細については、「次のステップ」セクションを参照してください。
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
@@ -117,8 +119,3 @@ queue_service.delete_queue('taskqueue')
 
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
-
-
-<!--HONumber=Nov16_HO3-->
-
-

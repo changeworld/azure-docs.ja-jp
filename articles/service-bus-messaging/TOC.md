@@ -66,14 +66,15 @@
 ## [SQLRuleAction 構文](service-bus-messaging-sql-rule-action.md)
 
 # リソース
-## [価格の詳細](service-bus-pricing-billing.md)
-## [サンプル](service-bus-samples.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/home?forum=servbus)
+## [価格の詳細](service-bus-pricing-billing.md)
 ## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [サンプル](service-bus-samples.md)
 ## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 

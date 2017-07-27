@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/22/2016
+ms.date: 04/26/2017
 ms.author: curtand
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 8c4920107b5d05716021bcef80d3c52c25f6eade
-ms.lasthandoff: 12/29/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
+ms.openlocfilehash: 6b448b4fac56d4b5debcf4fb3a545dd538929aff
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/19/2017
 
 ---
 # <a name="managing-owners-for-a-group"></a>グループの所有者の管理
@@ -47,5 +47,4 @@ ms.lasthandoff: 12/29/2016
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-
 

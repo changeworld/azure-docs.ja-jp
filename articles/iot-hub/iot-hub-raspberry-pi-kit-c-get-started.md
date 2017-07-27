@@ -13,14 +13,14 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 4/13/2017
+ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 387dcace5be29de52b465bc53fa81a3dbf876390
+ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
+ms.openlocfilehash: b7c328ac622190d64ea1b07ee459c7f8f5d1e0f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
+ms.lasthandoff: 05/31/2017
 
 
 ---
@@ -30,6 +30,8 @@ ms.lasthandoff: 04/19/2017
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
 
 このチュートリアルでは、まず Raspbian を実行する Raspberry Pi の操作の基礎について説明します。 次に、[Azure IoT Hub](iot-hub-what-is-iot-hub.md) を使って、デバイスをクラウドにシームレスに接続する方法について説明します。 Windows 10 IoT Core サンプルについては、[Windows デベロッパー センター](http://www.windowsondevices.com/)を参照してください。
+
+キットをお持ちでない場合は、 [Raspberry Pi オンライン シミュレーター](iot-hub-raspberry-pi-web-simulator-get-started.md)をお試しください。 または、[こちら](https://azure.microsoft.com/develop/iot/starter-kits)で新しいキットを購入してください。
 
 ## <a name="what-you-do"></a>作業内容
 
@@ -98,7 +100,7 @@ microSD カードに Raspbian イメージをインストールするための�
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](media/iot-hub-raspberry-pi-kit-c-get-started/1_raspbian-preferences-menu.png)
 
-1. **[Interfaces]** タブで、**[SPI]** と **[SSH]** を **[Enable]** に設定し、**[OK]** をクリックします。
+1. **[Interfaces]** タブで、**[SPI]** と **[SSH]** を **[Enable]** に設定し、**[OK]** をクリックします。 物理センサーがなく、シミュレートされたセンサー データを使用する場合は、この手順は省略可能です。
 
    ![Raspberry Pi で SPI と SSH を有効にする](media/iot-hub-raspberry-pi-kit-c-get-started/2_enable-spi-ssh-on-raspberry-pi.png)
 
@@ -110,6 +112,8 @@ SSH および SPI を有効にする場合は、[raspberrypi.org](https://www.ra
 ブレッドボードとジャンパー ワイヤを使用して、次のように LED と BME280 を Pi に接続します。 センサーがない場合は、このセクションをスキップします。
 
 ![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
+
+BME280 センサーでは、温度と湿度のデータを収集できます。 また、デバイスとクラウドの間で通信が行われると、LED が点滅します。 
 
 センサーの各ピンで、次のように接続します。
 
@@ -164,26 +168,26 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 次のコマンドを実行して、config ファイルを開きます。
 
    ```bash
-   cd iot-hub-c-raspberry-pi-clientapp
-   nano config.json
+   cd iot-hub-c-raspberry-pi-client-app
+   nano config.h
    ```
 
    ![config ファイル](media/iot-hub-raspberry-pi-kit-c-get-started/6_config-file.png)
 
-   このファイルには、構成可能な 2 つのマクロがあります。 1 つ目は `INTERVAL` で、クラウドに送信する 2 つのメッセージの時間間隔を定義します。 2 つ目は `SIMULATED_DATA` で、シミュレートされたセンサー データを使用するかどうかのブール値です。
+   このファイルには、構成可能な 2 つのマクロがあります。 1 つ目は `INTERVAL` で、クラウドに送信する 2 つのメッセージの時間間隔を定義します。 2 つ目は `SIMULATED_DATA` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
 
    **センサーがない**場合は、`SIMULATED_DATA` 値を `1` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
-1. Control + O > Enter > Control + X キーを押し、保存して終了します。
+1. Control + O キー、Enter キー、Control + X キーの順に押し、保存して終了します。
 
-### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションのビルドおよび実行
+### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションをビルドして実行する
 
 1. 次のコマンドを実行して、サンプル アプリケーションをビルドします。
 
    ```bash
    cmake . && make
    ```
-   ![ビルドの出力](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
+   ![ビルド出力](media/iot-hub-raspberry-pi-kit-c-get-started/7_build-output.png)
 
 1. 次のコマンドを実行して、サンプル アプリケーションを実行します。
 
@@ -201,7 +205,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="next-steps"></a>次のステップ
 
-サンプル アプリケーションを実行し、センサー データを収集して IoT Hub に送信します。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

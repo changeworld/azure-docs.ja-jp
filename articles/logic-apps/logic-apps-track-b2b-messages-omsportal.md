@@ -13,16 +13,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 11/13/2016
-ms.author: padmavc
+ms.author: LADocs; padmavc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 4d68fde29e85fcf9aa623b4d798262bcd486a8bb
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: d1c61ba220b4334f053428a23e620e8004fc60f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 # <a name="track-b2b-messages-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルで B2B メッセージを追跡する
+
+![ログ アプリ B2B シンボル](./media/logic-apps-track-b2b-messages-omsportal/logic-apps-b2b-symbol.png)
+
 B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプリケーション間でメッセージ交換が行われます。 Operations Management Suite ポータルで次の Web ベースの追跡機能を使用して、メッセージが正しく処理されたかどうかを確認します。
 
 * メッセージの数と状態
@@ -56,7 +59,7 @@ B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプ
 6. **[追加]** を選択して、**[Logic Apps B2B メッセージ]** をホーム ページに追加します。  
 ![[追加] の選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage3.png)
 
-7. **［Logic Apps B2B メッセ―ジ］** がホームページに表示されます。   
+7. ホームページに **[Logic Apps B2B メッセ―ジ]** が表示されます。   
 ![ホーム ページの選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage4.png)
 
 ## <a name="track-data-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルでデータを追跡する
@@ -67,9 +70,10 @@ B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプ
 2. AS2 および X12 のメッセージの状態を表示するには、ホーム ページで **[Logic Apps B2B メッセージ]** を選択します。  データは、1 日のものです。
 ![[Logic Apps B2B メッセージ] の選択](media/logic-apps-track-b2b-messages-omsportal/omshomepage5.png)
 
-3. メッセージの一覧に移動するには、状態別の X12 または AS2 メッセージを選択します。 次のスクリーン ショットは、AS2 メッセージの状態を示しています。 AS2 および X12 メッセージの状態のプロパティについては、「メッセージの一覧のプロパティの説明」で説明します。  
+3. メッセージの一覧に移動するには、状態別の AS2、X12、または EDIFACT メッセージを選択します。 次のスクリーン ショットは、AS2 メッセージの状態を示しています。 AS2 および X12 メッセージの状態のプロパティについては、「メッセージの一覧のプロパティの説明」で説明します。  
 ![AS2 メッセージの状態の選択](media/logic-apps-track-b2b-messages-omsportal/as2messagelist.png)
-4. ログ検索に移動するには、AS2 または X12 メッセージの一覧で行を選択します。  ログ検索では、同じ実行 ID を持つすべてのアクションが一覧表示されます。
+
+4. ログ検索に移動するには、AS2、X12、または EDIFACT メッセージの一覧で行を選択します。  ログ検索では、同じ実行 ID を持つすべてのアクションが一覧表示されます。
 ![メッセージの状態の選択](media/logic-apps-track-b2b-messages-omsportal/logsearch.png)
 
 ## <a name="message-list-property-descriptions"></a>メッセージの一覧のプロパティの説明
@@ -92,8 +96,8 @@ B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプ
 
 | プロパティ | 説明 |
 | --- | --- |
-| 送信者 | AS2 契約の受信設定で構成されているゲスト パートナーまたは送信設定で構成されているホスト パートナー。 |
-| 受信者 | AS2 契約の受信設定で構成されているホスト パートナーまたは送信設定で構成されているゲスト パートナー。 |
+| 送信者 | X12 契約の受信設定で構成されているゲスト パートナーまたは送信設定で構成されているホスト パートナー。 |
+| 受信者 | X12 契約の受信設定で構成されているホスト パートナーまたは送信設定で構成されているゲスト パートナー。 |
 | ロジック アプリ | AS2 アクションが構成されているロジック アプリ。 |
 | 状態 | X12 メッセージの状態 <br>成功 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認未構成 <br>成功 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認構成済みで受信済み 、または機能確認送信済み <br>失敗 = 無効な X12 メッセージ受信済みまたは送信済み <br>保留中 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認構成済みで機能確認待ち。 |
 | Ack | 機能確認 (997) の状態 <br>承認済み = 肯定の機能確認受信済みまたは送信済み <br>拒否 = 否定の機能確認受信済みまたは送信済み <br>保留中 = 機能確認待ちだが未受信 <br>保留中 = 機能確認生成済みだが、パートナーに送信できなかった <br>必要なし = 機能確認未構成 |
@@ -103,6 +107,24 @@ B2B 通信では、実行中の 2 つのビジネス プロセスまたはアプ
 | ICN | X12 メッセージのインターチェンジ制御番号。 |
 | TSCN | X12 メッセージのトランザクション セット制御番号。 |
 | タイムスタンプ | X12 アクションがメッセージを処理した時刻。 |
+
+
+#### <a name="edifact-message-list-property-descriptions"></a>EDIFACT メッセージの一覧のプロパティの説明
+
+| プロパティ | 説明 |
+| --- | --- |
+| 送信者 | EDIFACT 契約の受信設定で構成されているゲスト パートナーまたは送信設定で構成されているホスト パートナー。 |
+| 受信者 | EDIFACT 契約の受信設定で構成されているホスト パートナーまたは送信設定で構成されているゲスト パートナー。 |
+| ロジック アプリ | AS2 アクションが構成されているロジック アプリ。 |
+| 状態 | EDIFACT メッセージの状態 <br>成功 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認未構成 <br>成功 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認構成済みで受信済み 、または機能確認送信済み <br>失敗 = 無効な X12 メッセージ受信済みまたは送信済み <br>保留中 = 適切な X12 メッセージ受信済みまたは送信済み、機能確認構成済みで機能確認待ち。 |
+| Ack | 機能確認 (997) の状態 <br>承認済み = 肯定の機能確認受信済みまたは送信済み <br>拒否 = 否定の機能確認受信済みまたは送信済み <br>保留中 = 機能確認待ちだが未受信 <br>保留中 = 機能確認生成済みだが、パートナーに送信できなかった <br>必要なし = 機能確認未構成 |
+| 方向 | EDIFACT メッセージの方向。 |
+| 関連付け ID | ロジック アプリ内ですべてのトリガーとアクションをアクションを関連付けるための ID。 |
+| メッセージの種類 |  EDIFACT メッセージの種類。 |
+| ICN | EDIFACT メッセージのインターチェンジ制御番号。 |
+| TSCN | EDIFACT メッセージのトランザクション セット制御番号。 |
+| タイムスタンプ | EDIFACT アクションがメッセージを処理した時刻。 |
+
 
 ## <a name="queries-in-the-operations-management-suite-portal"></a>Operations Management Suite ポータルでのクエリ
 

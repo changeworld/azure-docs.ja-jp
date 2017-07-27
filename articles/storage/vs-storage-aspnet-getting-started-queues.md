@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/23/2016
 ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 5840ec74f6af2e373d9ebb34b0f6e13094c33f19
-ms.openlocfilehash: 4e5638938c8e9fa0de12aa273d03f3eead35a383
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 76b0d5e270e16a317ce8a7b424c06c867b537a8e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Azure Queue Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)
@@ -31,7 +32,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
 
 ##<a name="prerequisites"></a>前提条件
 
-* [Microsoft Visual Studio](https://www.visualstudio.com/visual-studio-homepage-vs.aspx)
+* [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 * [Azure Storage アカウント](storage-create-storage-account.md#create-a-storage-account)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
@@ -195,7 +196,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     queue.AddMessage(message);
     ```
 
-1. **ViewBag** プロパティを&2; つ作成し、ビュー内で表示されるように設定します。
+1. **ViewBag** プロパティを 2 つ作成し、ビュー内で表示されるように設定します。
 
     ```csharp
     ViewBag.QueueName = queue.Name;
@@ -230,7 +231,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
   
     ![メッセージの追加](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 
-「[キューからメッセージを削除せずに読み取る](#read-a-message-from-a-queue-without-removing-it)」と「[キューからメッセージを読み取って削除する](#read-and-remove-a-message-from-a-queue)」の&2; つのセクションでは、キューからメッセージを読み取る方法を説明します。    
+「[キューからメッセージを削除せずに読み取る](#read-a-message-from-a-queue-without-removing-it)」と「[キューからメッセージを読み取って削除する](#read-and-remove-a-message-from-a-queue)」の 2 つのセクションでは、キューからメッセージを読み取る方法を説明します。    
 
 ## <a name="read-a-message-from-a-queue-without-removing-it"></a>キューからメッセージを削除せずに読み取る
 
@@ -278,7 +279,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     CloudQueueMessage message = queue.PeekMessage();
     ```
 
-1. キュー名と読まれたメッセージの&2; つの値で **ViewBag** を更新します。 **CloudQueueMessage** は**CloudQueueMessage.AsBytes** および **CloudQueueMessage.AsString** プロパティの&2; つの値を公開して、オブジェクトの値を取得します。 **AsString** (この例で使用) は文字列を返し、一方で **AsBytes** はバイト配列を返します。
+1. キュー名と読まれたメッセージの 2 つの値で **ViewBag** を更新します。 **CloudQueueMessage** は**CloudQueueMessage.AsBytes** および **CloudQueueMessage.AsString** プロパティの 2 つの値を公開して、オブジェクトの値を取得します。 **AsString** (この例で使用) は文字列を返し、一方で **AsBytes** はバイト配列を返します。
 
     ```csharp
     ViewBag.QueueName = queue.Name; 
@@ -579,8 +580,4 @@ Azure でデータを格納するための追加のオプションについて�
 
   * [Azure Blob Storage と Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-blobs.md)
   * [テーブル ストレージと Visual Studio 接続済みサービスの概要 (ASP.NET)](./vs-storage-aspnet-getting-started-tables.md)
-
-
-<!--HONumber=Jan17_HO1-->
-
 

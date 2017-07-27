@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 5/04/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 080b732d78731e6281e82ddc28a3e84ae8755ffa
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
@@ -63,7 +63,7 @@ Application Insights は、アプリケーションのパフォーマンスの�
   
   ![スマート検出の設定](./media/app-insights-proactive-diagnostics/smart_detection_configuration.png)
   
-  * スマート検出の電子メールの**サブスクライブ解除**のリンク 
+  * スマート検出電子メール内の **[サブスクライブ解除]** リンクを使用して電子メール通知の受け取りを停止できます。
 
 スマート検出のパフォーマンスの異常に関する電子メールは、Application Insights リソースごとに 1 日 1 通に制限されます。 この電子メールは、その日に検出された新しい問題が 1 つ以上ある場合にのみ送信されます。 どのメッセージも繰り返し送信されることはありません。 
 

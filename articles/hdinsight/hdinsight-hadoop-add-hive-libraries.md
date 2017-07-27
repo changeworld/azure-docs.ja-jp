@@ -1,5 +1,5 @@
 ---
-title: "HDInsight クラスター作成時の Hive ライブラリの追加 | Microsoft Docs"
+title: "HDInsight クラスターの作成時に Hive ライブラリを追加する - Azure | Microsoft Docs"
 description: "クラスターの作成時に Hive ライブラリ (jar ファイル) を HDInsight クラスターに追加する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.date: 04/14/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6f6d7bf50878cc6938f19ba7f79f968f44f82ed6
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 6a9e676149a8a6fd6da4db1325638e8ec0b83a7b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/13/2017
 
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加

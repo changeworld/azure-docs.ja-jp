@@ -12,12 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/27/2017
 ms.author: yuemlu
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 56f4245b63cecd51bf81863e15e4e72d73e671d6
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 82485e569d91a082f72725ecfb04e75f0820cf02
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -52,19 +53,19 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 * Premium Storage で実行されている Azure VM を使う予定がある場合は、Premium Storage 対応の VM を使う必要があります。 Premium Storage 対応の VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使えます。 Premium Storage ディスクの方が、将来的により多くの VM の種類を使用できます。 使用可能な Azure VM ディスクの種類とサイズの詳細については、「[仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」と「[Cloud Services のサイズ](../cloud-services/cloud-services-sizes-specs.md)」を参照してください。
 
 ### <a name="considerations"></a>考慮事項
-Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 64 TB のストレージを設定することができます。 Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。 VM とディスクのさまざまなオプションがあります。 このセクションは、ワークロードに最適なオプションを探すのに役立ちます。
+Azure VM では複数の Premium Storage ディスクをアタッチすることができるので、アプリケーションには VM あたり最大で 256 TB のストレージを設定することができます。 Premium Storage を使用すると、アプリケーションは、VM あたり 80,000 IOPS (1 秒あたりの入力/出力操作) と、VM あたり 2000 MB/秒のディスク スループットを実現でき、読み取り操作の待ち時間も非常に短くなります。 VM とディスクのさまざまなオプションがあります。 このセクションは、ワークロードに最適なオプションを探すのに役立ちます。
 
 #### <a name="vm-sizes"></a>VM サイズ
 Azure VM のサイズの仕様は、「 [仮想マシンのサイズ](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」に記載されています。 Premium Storage で動作する仮想マシンのパフォーマンス特性を確認し、ワークロードに最適な VM を選択してください。 ディスク トラフィックが流れるのに十分な帯域幅が VM で利用できることを確認します。
 
 #### <a name="disk-sizes"></a>ディスク サイズ
-VM で使えるディスクには 3 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
+VM で使用できるディスクには 5 種類あり、それぞれに特定の IOPS とスループットの制限があります。 VM のディスクの種類を選択する場合は、容量、パフォーマンス、スケーラビリティ、最大負荷に関するアプリケーションのニーズに基づいて、これらの制限を考慮してください。
 
-| Premium Storage ディスク タイプ | P10 | P20 | P30 |
-|:---:|:---:|:---:|:---:|
-| ディスク サイズ |128 GB |512 GB |1024 GB (1 TB) |
-| ディスクあたりの IOPS |500 |2300 |5000 |
-| ディスクあたりのスループット |100 MB/秒 |150 MB/秒 |200 MB/秒 |
+| Premium ディスクの種類  | P10   | P20   | P30            | P40            | P50            | 
+|:-------------------:|:-----:|:-----:|:--------------:|:--------------:|:--------------:|
+| ディスク サイズ           | 128 GB| 512 GB| 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) | 
+| ディスクあたりの IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
+| ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
 ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 

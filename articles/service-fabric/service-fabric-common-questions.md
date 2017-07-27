@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/10/2017
 ms.author: seanmck
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 2bfbb3b8f7282ec8ae8abe9597230a3485221ecf
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 0d1d795a4d6965de6cdc2b9bd81a24a27a255566
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/25/2017
 
 ---
 
@@ -77,9 +77,14 @@ OS の更新に伴う課題は、それを行うには通常はコンピュー�
 
 アプリケーションをデプロイする前にテスト用のクラスターを作成する場合は、[継続的インテグレーション/継続的配置パイプライン](service-fabric-set-up-continuous-integration.md)の一部としてこれらのクラスターを作成することをお勧めします。
 
+
+### <a name="how-do-i-upgrade-my-operating-system-for-example-from-windows-server-2012-to-windows-server-2016"></a>オペレーティング システムはどのようにアップグレードすればいいですか? (Windows Server 2012 を 2016 にする場合など)
+
+Microsoft はエクスペリエンスの改善に取り組んでいますが、現時点ではお客様の責任でアップグレードを行っていただく必要があります。 クラスターの仮想マシンで OS イメージをアップグレードする場合は、一度に 1 つの VM で行う必要があります。 
+
 ## <a name="container-support"></a>コンテナー サポート
 
-### <a name="why-are-my-containers-that-are-deployed-to-sf-are-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
+### <a name="why-are-my-containers-that-are-deployed-to-sf-unable-to-resolve-dns-addresses"></a>SF にデプロイされたコンテナーが DNS アドレスを解決できないのはなぜですか?
 
 この問題は、5.6.204.9494 バージョンのクラスターで報告されています。 
 

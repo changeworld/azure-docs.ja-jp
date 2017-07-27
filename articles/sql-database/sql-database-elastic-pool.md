@@ -11,16 +11,16 @@ ms.assetid: b46e7fdc-2238-4b3b-a944-8ab36c5bdb8e
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.devlang: NA
-ms.date: 05/31/2017
+ms.date: 06/27/2017
 ms.author: ddove
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: de0c9969ec28e7b6e57bc384ac3ec47191096a9b
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: bd0661106a10506680e5c9c70c1fded3eaa999fd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---

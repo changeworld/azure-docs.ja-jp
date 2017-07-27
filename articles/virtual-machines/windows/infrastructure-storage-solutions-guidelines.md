@@ -13,14 +13,14 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 03/17/2017
+ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 23ca92cc12ed0ff70a4ad6147609289eef061a93
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: c0fabf155d4feb6d88ef7d7e087cc1654f44978b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 ---
 # <a name="azure-storage-infrastructure-guidelines-for-windows-vms"></a>Windows VM 用の Azure Storage インフラストラクチャのガイドライン
@@ -34,7 +34,7 @@ ms.lasthandoff: 03/31/2017
 
 * Azure Managed Disks または非管理対象ディスクのどちらを使用するか
 * ワークロードのために Standard Storage または Premium Storage のうちのいずれを使用する必要があるか
-* 1023 GB を超えるディスクを作成するためにディスクのストライピングが必要か
+* 4 TB を超えるディスクを作成するためにディスクのストライピングが必要か
 * ワークロードに最適な I/O パフォーマンスを実現するためにディスクのストライピングが必要か
 * IT ワークロードやインフラストラクチャをホストするために必要なストレージ アカウントのセット
 
@@ -63,20 +63,19 @@ Azure で作成される VM には、オペレーティング システム デ�
 
 高可用性のためのレプリケーション オプションの詳細については、 [こちら](../../storage/storage-introduction.md#replication-for-durability-and-high-availability)をご覧ください。
 
-オペレーティング システム ディスクとデータ ディスクの最大サイズは 1023 ギガバイト (GB) です。 BLOB の最大サイズは 1024 GB で、VHD ファイルのメタデータ (フッター) を含める必要があります (1 GB は 1024<sup>3</sup> バイト)。 Windows Server 2012 の記憶域スペースを使用してデータ ディスクをプールし、1023 GB を超える論理ボリュームを VM に割り当てることで、この制限を超えることができます。
+オペレーティング システム ディスクとデータ ディスクの最大サイズは 4 TB です。 Windows Server 2012 以降の記憶域スペースを使用してデータ ディスクをプールし、4 TB を超える論理ボリュームを VM に割り当てることで、この制限を超えることができます。
 
 Azure Storage のデプロイを設計する場合、スケーラビリティ制限がいくつか適用されます。詳しくは、[Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md#storage-limits)に関するページをご覧ください。 また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../../storage/storage-scalability-targets.md)」もご覧ください。
 
 アプリケーション ストレージについては、BLOB ストレージを使用して、ドキュメント、イメージ、バックアップ、構成データ、ログなどの非構造化データを 保存できます。 アプリケーションが VM に接続されている仮想ディスクに書き込むのではなく、アプリケーションが Azure BLOB ストレージに直接書き込むことができます。 BLOB ストレージには、可用性ニーズとコスト面の制約に応じて、[ホット ストレージ層とクール ストレージ層](../../storage/storage-blob-storage-tiers.md)のオプションも用意されています。
 
 ## <a name="striped-disks"></a>ストライピングされたディスク
-データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合、複数の BLOB で単一ボリュームのストレージをバックアップできるため、パフォーマンスが向上します。 ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
+データ ディスクにストライピングを使用すると、4 TB より大きいディスクを作成できるだけでなく、多くの場合、複数の BLOB で単一ボリュームのストレージをバックアップできるため、パフォーマンスが向上します。 ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。 詳細については、「 [仮想マシンのサイズ](sizes.md)」を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 
-* データ ディスクは、常に最大サイズ (1023 GB) にする必要があります。
 * VM のサイズで許可されている最大数のデータ ディスクをアタッチします。
 * 記憶域スペースを使用します。
 * Azure データ ディスクのキャッシュ オプションを使わないようにします (キャッシュ ポリシー = なし)。

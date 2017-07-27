@@ -17,10 +17,10 @@ ms.date: 03/01/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 21ce246fab787e06576a295ec4ea45ae3fdfc379
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 2d35232cdb9d7076c27e98f7c2300ec910479e8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="correlate-events-that-arrive-at-different-times-using-storm-and-hbase"></a>Storm と HBase を使用して別々の時刻に到着するイベントを関連付ける
@@ -41,7 +41,7 @@ Apache Storm の永続的なデータ ストアを使用して、別々の時刻
 * HDInsight クラスター (Linux または Windows ベース) の Apache HBase。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * 開発環境での [Java](https://java.com) 1.7 以降 Java を使用して、HDInsight クラスターへの送信時にトポロジをパッケージ化します。
 

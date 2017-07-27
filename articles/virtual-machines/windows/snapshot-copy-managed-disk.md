@@ -2,7 +2,7 @@
 title: "バックアップ用に Azure Managed Disk をコピーする | Microsoft Docs"
 description: "バックアップまたはディスクの問題のトラブルシューティングに使うために、Azure Managed Disk のコピーを作成する方法について説明します。"
 documentationcenter: 
-author: cwatsonMSFT
+author: cwatson-cat
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 2/9/2017
 ms.author: cwatson
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: bb913050fd3388d4632e6f75b36415006f370cbd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>管理スナップショットを使って Azure Managed Disk として保存された VHD のコピーを作成する

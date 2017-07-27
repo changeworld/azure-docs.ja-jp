@@ -16,10 +16,10 @@ ms.date: 05/04/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 25183c6c3c69f7d4c2872252197e2dc8662fefd4
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 6a69dc900eee2f539a2b1740c4e89132e2bd6db7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/06/2017
 
 
 ---
@@ -28,6 +28,8 @@ ms.lasthandoff: 05/10/2017
 ## <a name="overview"></a>概要
 
 すべての IoT Hub には、その IoT Hub への接続が許可されたデバイスに関する情報を保存する ID レジストリがあります。 デバイスを IoT Hub に接続できるようにするには、そのデバイスのエントリが IoT Hub の ID レジストリに存在する必要があります。 さらに、ID レジストリに保存されている資格情報に基づいて、デバイスが IoT Hub で認証される必要があります。
+
+ID レジストリに保存されているデバイス ID は大文字と小文字が区別されます。
 
 大まかに言うと、ID レジストリは、デバイス ID リソースの REST 対応コレクションです。 この ID レジストリにエントリを追加すると、IoT Hub によって、転送中の C2D メッセージを含むキューなどのデバイス単位のリソースがサービス内に作成されます。
 
@@ -177,7 +179,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 * [IoT Hub エンドポイント][lnk-endpoints]: 各 IoT Hub でランタイムと管理の操作のために公開される、さまざまなエンドポイントについて説明します。
 * [調整とクォータ][lnk-quotas]: IoT Hub サービスに適用されるクォータと、サービスを使用するときに想定される調整の動作について説明します。
 * [Azure IoT device SDK とサービス SDK][lnk-sdks]: IoT Hub とやりとりするデバイスとサービス アプリの両方を開発する際に使用できるさまざまな言語の SDK を紹介します。
-* [IoT Hub のツインおよびジョブ向けのクエリ言語][lnk-query]: IoT Hub からデバイス ツインおよびジョブに関する情報を取得する際に使用できる IoT Hub のクエリ言語について説明します。
+* [デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][lnk-query]: デバイス ツインとジョブに関する情報を IoT Hub から取得するために使用できる IoT Hub クエリ言語について説明します。
 * [IoT Hub の MQTT サポート][lnk-devguide-mqtt]: IoT Hub での MQTT プロトコルのサポートについて詳しく説明します。
 
 ## <a name="next-steps"></a>次のステップ

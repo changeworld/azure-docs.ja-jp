@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
 ms.openlocfilehash: adf358a130fd20674cbf2585de93005a9e1cb3ec
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="hybrid-identity-required-ports-and-protocols"></a>ハイブリッド ID で必要なポートとプロトコル
@@ -80,7 +79,7 @@ ms.lasthandoff: 04/27/2017
 |プロトコル|ポート番号|説明
 | --- | --- | ---
 |HTTP|80|SSL などのセキュリティ検証用の送信 HTTP トラフィックに使用されます。 コネクタの自動更新機能が正常に機能するためにも必要です。
-|HTTPS|443|    機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
+|HTTPS|443| 機能の有効化と無効化、コネクタの登録、コネクタ更新プログラムのダウンロード、およびすべてのユーザー サインイン要求の処理などの操作のために、送信 HTTPS トラフィックを有効にします。
 
 さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。
 
@@ -88,7 +87,7 @@ ms.lasthandoff: 04/27/2017
 
 |プロトコル|ポート番号|説明
 | --- | --- | ---
-|HTTPS|443|    SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
+|HTTPS|443| SSO 登録を有効にします (SSO 登録プロセスでのみ必要です)。
 
 さらに、Azure AD コネクタが [Azure データ センターの IP 範囲](https://www.microsoft.com/en-us/download/details.aspx?id=41653)に対して直接 IP 接続できる必要があります。 ここでも、これは SSO 登録プロセスでのみ必要です。
 

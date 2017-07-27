@@ -1,5 +1,5 @@
 ---
-title: "HDInsight で Ambari Tez ビューを使用する | Microsoft Docs"
+title: "HDInsight で Ambari Tez ビューを使用する - Azure | Microsoft Docs"
 description: "HDInsight で Ambari Tez ビューを使用して Tez ジョブをデバッグする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 04/14/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 4dcccb313c517982680266656c36b9f23dee44c4
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: c30fa8b1c2de13a0dd9ba43546d8e9ffb83942aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---

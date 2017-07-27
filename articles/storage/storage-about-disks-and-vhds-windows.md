@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Microsoft Azure Windows VM 用のディスクと VHD について | Microsoft Docs"
 description: "Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。"
 services: storage
@@ -12,19 +12,19 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 06/15/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 3b9d6eb9bcc4afe0e68920bbd5da7c259ceb0c67
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 953704c7eb8613d321a15a9f245118f87d33b51e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Azure Windows VM 用のディスクと VHD について
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
 
-この記事では、ディスクのさまざまな使用方法について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](storage-about-disks-and-vhds-linux.md)にも利用できます。
+この記事では、ディスクのさまざまな仕様法王について説明し、作成および使用できるディスクの種類を示します。 この記事は、 [Linux 仮想マシン](storage-about-disks-and-vhds-linux.md)にも利用できます。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-both-include.md)]
 
@@ -33,10 +33,10 @@ Azure の仮想マシンでは、その他のコンピューターとまった�
 ディスクは VM でどのように使用されるのでしょうか。
 
 ### <a name="operating-system-disk"></a>オペレーティング システム ディスク
-どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。 このディスクの最大容量は 1023 ギガバイトです。 
+どの仮想マシンにも 1 つのオペレーティング システム ディスクが取り付けられています。 これは SATA ドライブとして登録され、C ドライブのラベルが付けられます。 このディスクの最大容量は 2,048 ギガバイト (GB) です。 
 
 ### <a name="temporary-disk"></a>一時ディスク
-各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-planned-vs-unplanned-maintenance)中、または [VM の再デプロイ](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
+各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](../virtual-machines/windows/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](../virtual-machines/windows/redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
 
 この一時ディスクには D ドライブのラベルが付けられ、pagefile.sys を保存するために使用されます。 このディスクを再マッピングするには、 [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/windows/change-drive-letter.md)に関するページを参照してください。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「 [Azure の仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。
 
@@ -44,7 +44,7 @@ Azure による一時ディスクの使用方法については、「 [Understan
 
 
 ### <a name="data-disk"></a>データ ディスク
-データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 1023 ギガバイトです。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
+データ ディスクは仮想マシンに取り付けられる VHD であり、ユーザーが保存しておく必要があるアプリケーションなどのデータを格納するためのものです。 データ ディスクは SCSI ドライブとして登録され、ユーザーが選択した文字のラベルが付けられます。 各ディスクの最大容量は 4,095 GB です。 仮想マシンのサイズにより、そこに取り付けできるデータ ディスクの数と、ディスクをホストするために使用できるストレージの種類が決まります。
 
 > [!NOTE]
 > 仮想マシンの容量については、「 [Azure の Windows 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)」を参照してください。
@@ -63,6 +63,7 @@ Standard 非管理ディスク (HDD) を使用する場合は、TRIM を有効�
 
 次のコマンドを実行すると、TRIM の設定を確認できます。 Windows VM 上でコマンド プロンプトを開いて、次のように入力します。
 
+
 ```
 fsutil behavior query DisableDeleteNotify
 ```
@@ -73,10 +74,13 @@ fsutil behavior query DisableDeleteNotify
 fsutil behavior set DisableDeleteNotify 0
 ```
 
+> [!NOTE]
+> 注: Trim は Windows Server 2012/Windows 8 以上でサポートされます。「[New API allows apps to send "TRIM and Unmap" hints to storage media](https://msdn.microsoft.com/windows/compatibility/new-api-allows-apps-to-send-trim-and-unmap-hints) (新しい API を使用してアプリで "TRIM および Unmap" のヒントをストレージ メディアに送る方法)」をご覧ください。
+> 
+
 <!-- Might want to match next-steps from overview of managed disks -->
 ## <a name="next-steps"></a>次のステップ
 * [ディスクのアタッチ](../virtual-machines/windows/attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
-* [Windows VM イメージを Azure にアップロード](../virtual-machines/windows/upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) します。
 * [Windows 一時ディスクのドライブ文字を変更する方法](../virtual-machines/windows/change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
 
 

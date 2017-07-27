@@ -26,7 +26,8 @@ ms.lasthandoff: 05/10/2017
 
 ---
 
-# <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
+<a id="high-availability-for-sap-netweaver-on-azure-vms" class="xliff"></a>
+# Azure VM での SAP NetWeaver の高可用性
 
 [1928533]:https://launchpad.support.sap.com/#/notes/1928533
 [1999351]:https://launchpad.support.sap.com/#/notes/1999351
@@ -215,7 +216,8 @@ Azure クラシック デプロイメント モデルでは、Azure 内部ロー
 
 Azure Resource Manager では、Azure Load Balancer を使うために Azure リソース グループは必要ありません。 環境は、よりシンプルで柔軟性が高くなります。
 
-### <a name="support-for-sap-multi-sid-scenarios"></a>SAP マルチ SID シナリオのサポート
+<a id="support-for-sap-multi-sid-scenarios" class="xliff"></a>
+### SAP マルチ SID シナリオのサポート
 
 Azure Resource Manager では、1 つのクラスターに複数の SAP システム識別子 (SID) ASCS/SCS インスタンスをインストールすることができます。 各 Azure 内部ロード バランサーで複数の IP アドレスがサポートされているため、マルチ SID インスタンスが可能になります。
 
@@ -352,7 +354,8 @@ Azure Resource Manager デプロイメント モデルを使用した Azure で�
 
 ## <a name="045252ed-0277-4fc8-8f46-c5a29694a816"></a> エンド ツー エンドの高可用性デプロイ シナリオ
 
-### <a name="deployment-scenario-using-architectural-template-1"></a>Architectural Template 1 を使用するデプロイ シナリオ
+<a id="deployment-scenario-using-architectural-template-1" class="xliff"></a>
+### Architectural Template 1 を使用するデプロイ シナリオ
 
 図 8 は、**1 つ**の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
 
@@ -364,7 +367,8 @@ Azure Resource Manager デプロイメント モデルを使用した Azure で�
 
 _**図 8:** SAP 高可用性 Architectural Template 1: ASCS/SCS と DBMS に専用のクラスター_
 
-### <a name="deployment-scenario-using-architectural-template-2"></a>Architectural Template 2 を使用するデプロイ シナリオ
+<a id="deployment-scenario-using-architectural-template-2" class="xliff"></a>
+### Architectural Template 2 を使用するデプロイ シナリオ
 
 図 9 は、**1 つ**の SAP システムに対する Azure での SAP NetWeaver 高可用性アーキテクチャの例です。 このシナリオは、次のようにセットアップされます。
 
@@ -375,7 +379,8 @@ _**図 8:** SAP 高可用性 Architectural Template 1: ASCS/SCS と DBMS に専�
 
 _**図 9:** ASCS/SCS と DBMS に個別の専用クラスターを使用した、SAP 高可用性 Architectural Template 2_
 
-### <a name="deployment-scenario-using-architectural-template-3"></a>Architectural Template 3 を使用するデプロイ シナリオ
+<a id="deployment-scenario-using-architectural-template-3" class="xliff"></a>
+### Architectural Template 3 を使用するデプロイ シナリオ
 
 図 10 は、Azure での SAP NetWeaver 高可用性アーキテクチャの例を示します。このアーキテクチャは、&lt;SID1&gt; と &lt;SID2&gt; を持つ **2 つ**の SAP システムに対応しています。 このシナリオは、次のようにセットアップされます。
 
@@ -390,7 +395,8 @@ _**図 10:** SAP ASCS/SCS インスタンスごとに専用クラスターを使
 
 ## <a name="78092dbe-165b-454c-92f5-4972bdbef9bf"></a> インフラストラクチャの準備
 
-### <a name="prepare-the-infrastructure-for-architectural-template-1"></a>Architectural Template 1 のインフラストラクチャを準備する
+<a id="prepare-the-infrastructure-for-architectural-template-1" class="xliff"></a>
+### Architectural Template 1 のインフラストラクチャを準備する
 SAP 用の Azure Resource Manager テンプレートを使用すると、必要なリソースを簡単にデプロイできます。
 
 Azure Resource Manager の 3 層テンプレートは、2 つのクラスターを持つ Architectural Template 1 のような高可用性シナリオもサポートします。 各クラスターは、SAP ASCS/SCS および DBMS の SAP 単一障害点です。
@@ -482,7 +488,8 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 >
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-2"></a>Architectural Template 2 のインフラストラクチャを準備する
+<a id="prepare-the-infrastructure-for-architectural-template-2" class="xliff"></a>
+### Architectural Template 2 のインフラストラクチャを準備する
 
 この Azure Resource Manager テンプレートを SAP に使うと、SAP Architectural Template 2 に必要なインフラストラクチャ リソースのデプロイを簡略化するのに役立ちます。
 
@@ -492,7 +499,8 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 * [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
 
 
-### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Architectural Template 3 のインフラストラクチャを準備する
+<a id="prepare-the-infrastructure-for-architectural-template-3" class="xliff"></a>
+### Architectural Template 3 のインフラストラクチャを準備する
 
 **マルチ SID** 向けにインフラストラクチャを準備し、SAP を構成することができます。 たとえば、追加の SAP ASCS/SCS インスタンスを "*既存の*" クラスター構成に追加できます。 詳細については、[Azure Resource Manager で SAP マルチ SID 構成を作成するために既存のクラスター構成に追加の SAP ASCS/SCS インスタンスを構成する][sap-ha-multi-sid-guide]方法に関するトピックを参照してください。
 
@@ -735,7 +743,7 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、*[*<*SID*>-lb-ascs ロード バランサー]**、**[負荷分散規則]**の順に選択します。
+1.  Azure Portal で、**[<*SID*>-lb-ascs ロード バランサー]**、 **[負荷分散規則]** の順に選択します。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
   * 名前
@@ -1310,7 +1318,7 @@ _**図 60:** SAP ERS インスタンスのサービスの種類を遅延自動�
 
 ### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP プライマリ アプリケーション サーバーのインストール
 
-プライマリ アプリケーション サーバー (PAS) のインスタンス <SID>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。** Azure または DataKeeper 固有の設定に対する依存関係はありません。
+プライマリ アプリケーション サーバー (PAS) のインスタンス < *SID* >-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。 Azure または DataKeeper 固有の設定に対する依存関係はありません。
 
 ### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP 追加アプリケーション サーバーのインストール
 

@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 04/20/2017
 ms.author: jeffstok
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 02c854727e5185968dba49233df82ea6ff336ec8
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: d7a5620aef1f28ea065ec10ce095f7f3904a8060
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -69,7 +69,7 @@ Stream Analytics がイベントの順序の逸脱を修正できるようにす
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)
-* [Stream Analytics の使用](stream-analytics-get-started.md)
+* [Stream Analytics の使用](stream-analytics-real-time-fraud-detection.md)
 * [Stream Analytics ジョブのスケール設定](stream-analytics-scale-jobs.md)
 * [Stream Analytics クエリ言語リファレンス](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Stream Analytics 管理 REST API リファレンス](https://msdn.microsoft.com/library/azure/dn835031.aspx)

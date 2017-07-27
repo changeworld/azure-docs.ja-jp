@@ -38,6 +38,7 @@
 ##### [クイック スタート](active-directory-aadconnect-pass-through-authentication-quick-start.md)
 ##### [現時点での制限事項](active-directory-aadconnect-pass-through-authentication-current-limitations.md)
 ##### [それはどのように機能しますか?](active-directory-aadconnect-pass-through-authentication-how-it-works.md)
+##### [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
@@ -105,5 +106,6 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect の FAQ](active-directory-aadconnect-faq.md)
 ##[DirSync の廃止](active-directory-aadconnect-dirsync-deprecated.md)

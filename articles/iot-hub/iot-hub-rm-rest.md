@@ -20,7 +20,6 @@ ms.openlocfilehash: 61ff425266ddd6fe6f9dbe03890257bcb9c84376
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/16/2017
 
-
 ---
 # <a name="create-an-iot-hub-using-the-resource-provider-rest-api-net"></a>リソース プロバイダー REST API を使用して IoT Hub を作成する (.NET)
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
@@ -72,6 +71,7 @@ ms.lasthandoff: 05/16/2017
     static string rgName = "{Resource group name}";
     static string iotHubName = "{IoT Hub name including your initials}";
     ```
+[!INCLUDE [iot-hub-pii-note-naming-hub](../../includes/iot-hub-pii-note-naming-hub.md)]
 
 [!INCLUDE [iot-hub-get-access-token](../../includes/iot-hub-get-access-token.md)]
 

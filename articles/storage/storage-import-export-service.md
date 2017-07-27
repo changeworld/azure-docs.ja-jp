@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/17/2017
 ms.author: muralikk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1aebecdaacd3525bec07a9359e52d2bc3d1539de
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: fc0fd0188261263aac550b0f0784076efc807215
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -52,9 +52,7 @@ Azure Import/Export サービスを使用して、データを**ブロック** B
 BLOB ストレージとの間でインポートまたはエクスポートの処理を開始するには、最初に "ジョブ" を作成します。 ジョブは、"インポート ジョブ" または "エクスポート ジョブ" です。
 
 * オンプレミスのデータを、Azure ストレージ アカウントの BLOB に転送する場合は、インポート ジョブを作成します。
-* ストレージ アカウントに現在、BLOB として格納されているデータを、返送されるハード ドライブに移す場合は、エクスポート ジョブを作成します。
-
-ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することを Import/Export サービスに通知します。
+* ストレージ アカウントに現在、BLOB として格納されているデータを、返送されるハード ドライブに移す場合は、エクスポート ジョブを作成します。ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することを Import/Export サービスに通知します。
 
 * インポート ジョブの場合、データが保存されたハード ドライブを送付します。
 * エクスポート ジョブの場合、空のハード ドライブを送付します。
@@ -69,7 +67,7 @@ BLOB ストレージとの間でインポートまたはエクスポートの処
 
 WAImportExport ツールは、64 ビット Windows オペレーティング システムとのみ互換性があります。 サポートされる OS バージョンについては、「 [オペレーティング システム](#operating-system) 」をご覧ください。
 
-最新バージョンの [WAImportExport ツール](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)をダウンロードしてください。 WAImportExport ツールの使用について詳しくは、「[Using the WAImportExport Tool](storage-import-export-tool-how-to.md)」(WAImportExport ツールの使用) をご覧ください。
+最新バージョンの [WAImportExport ツール](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExportV2.zip)をダウンロードしてください。 WAImportExport ツールの使用について詳しくは、「[Using the WAImportExport Tool](storage-import-export-tool-how-to.md)」(WAImportExport ツールの使用) をご覧ください。
 
 >[!NOTE]
 >**以前のバージョン:** [WAImportExpot V1](http://download.microsoft.com/download/0/C/D/0CD6ABA7-024F-4202-91A0-CE2656DCE413/WaImportExportV1.zip) バージョンのツールをダウンロードし、[WAImportExpot V1 の使用ガイド](storage-import-export-tool-how-to-v1.md)を参照できます。 WAImportExpot V1 バージョンのツールでは、**データが既にディスクに事前書き込みされている場合に、ディスクを準備する**機能はサポートされていません。 また、使用可能なキーが SAS キーだけである場合も、WAImportExpot V1 ツールを使用する必要があります。
@@ -86,7 +84,9 @@ Import/Export サービスで使用できるのは、2.5 インチ SSD か、2.5
 > 
 > 
 
-### <a name="encryption"></a>Encryption
+以下は、内部 HDD にデータをコピーするために使用する外部 USB アダプターの一覧です。 Anker 68UPSATAA-02BU Anker 68UPSHHDS-BU Startech SATADOCK22UE Orico 6628SUS3-C-BK (6628 シリーズ) Thermaltake BlacX Hot-Swap SATA 外部ハード ドライブ ドッキング ステーション (USB 2.0 & eSATA)
+
+### <a name="encryption"></a>暗号化
 ドライブ上のデータは、BitLocker ドライブ暗号化で暗号化する必要があります。 こうすると、移送中にデータが保護されます。
 
 インポート ジョブの場合は、2 つの方法で暗号化できます。 1 つ目の方法は、ドライブの準備時に WAImportExport ツールを実行する際、データセット CSV ファイルを使用するときにオプションを指定する方法です。 もう 1 つは、ドライブで BitLocker 暗号化を手動で有効にし、ドライブの準備時にWAImportExport ツールのコマンド ラインを実行する際、ドライブセット CSV で暗号化キーを指定する方法です。
@@ -264,8 +264,8 @@ Azure Import/Export サービスを使用してデータをインポートする
 1. インポートするデータを特定します。 これは、ローカル サーバーまたはネットワーク共有上のディレクトリやスタンドアロン ファイルです。  
 2. データの合計サイズに応じて、必要なドライブの数を決定します。 2.5 インチ SSD か、2.5 (または 3.5) SATA II または III のハード ディスク ドライブを必要な数だけ調達します。
 3. ターゲット ストレージ アカウント、コンテナー、仮想ディレクター、および BLOB を特定します。
-4.    各ハード ディスク ドライブにコピーするディレクトリやスタンドアロン ファイルを決定します。
-5.    データセットとドライブセットの CSV ファイルを作成します。
+4.  各ハード ディスク ドライブにコピーするディレクトリやスタンドアロン ファイルを決定します。
+5.  データセットとドライブセットの CSV ファイルを作成します。
     
     **データセット CSV ファイル**
     
@@ -299,8 +299,8 @@ Azure Import/Export サービスを使用してデータをインポートする
 
     詳しくは、[ドライブセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-initialdriveset-or-additionaldriveset-csv-file)に関する記事をご覧ください。
 
-6.    [WAImportExport ツール](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)を使用して、1 台以上のハード ドライブにデータをコピーします。
-7.    ドライブセット CSV の Encryption フィールドで "Encrypt" を指定すると、ハード ディスク ドライブでの BitLocker 暗号化を有効にすることができます。 また、ハード ディスク ドライブで BitLocker 暗号化を手動で有効にし、ツールの実行時にドライブセット CSV で "AlreadyEncrypted" を指定し、キーを指定することもできます。
+6.  [WAImportExport ツール](http://download.microsoft.com/download/3/6/B/36BFF22A-91C3-4DFC-8717-7567D37D64C5/WAImportExport.zip)を使用して、1 台以上のハード ドライブにデータをコピーします。
+7.  ドライブセット CSV の Encryption フィールドで "Encrypt" を指定すると、ハード ディスク ドライブでの BitLocker 暗号化を有効にすることができます。 また、ハード ディスク ドライブで BitLocker 暗号化を手動で有効にし、ツールの実行時にドライブセット CSV で "AlreadyEncrypted" を指定し、キーを指定することもできます。
 
 8. ディスクの準備が完了した後に、ハード ディスク ドライブのデータやジャーナル ファイルを変更しないでください。
 
@@ -471,9 +471,11 @@ Import/Export サービスで、1 つのインポート ジョブまたはエク
 
 いいえ。 インポート ジョブとエクスポート ジョブの両方で、自分のドライブを発送する必要があります。
 
+** このサービスでインポートしたデータはどのようにアクセスすればよいでしょうか。** Azure ストレージ アカウント内のデータには、Azure Portal からまたは Storage Explorer と呼ばれるスタンドアロン ツールを使用してアクセスできます。 https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer 
+
 **インポート ジョブの完了後、ストレージ アカウント内でデータはどのような状態になりますか。ディレクトリ階層は保持されますか。**
 
-インポート ジョブのハード ドライブを準備するときに、データセット CSV の DstBlobPathOrPrefix フィールドでコピー先が指定されます。 これは、ハード ドライブのデータのコピー先となるストレージ アカウント内のコピー先コンテナーです。 このコピー先コンテナー内に、ハード ドライブのフォルダーの仮想ディレクトリが作成され、ファイルの BLOB が作成されます。
+インポート ジョブのハード ドライブを準備するときに、データセット CSV の DstBlobPathOrPrefix フィールドでコピー先が指定されます。 これは、ハード ドライブのデータのコピー先となるストレージ アカウント内のコピー先コンテナーです。 このコピー先コンテナー内に、ハード ドライブのフォルダーの仮想ディレクトリが作成され、ファイルの BLOB が作成されます。 
 
 **ストレージ アカウント内に既に存在するファイルがドライブに含まれている場合、ストレージ アカウント内の既存の BLOB が上書きされるのでしょうか。**
 
@@ -498,9 +500,9 @@ FedEx、DHL、UPS などの既知の運送業者や、アメリカ郵政公社�
 
 一部のストレージ アカウントの場所は、別の送付先にマップされています。 以前に利用できた送付先が、一時的に別の場所にマップされている場合もあります。 ドライブを発送する前に、ジョブの作成時に提供された送付先住所を必ず確認してください。
 
-**ドライブを発送するときに、運送業者からデータ センターの連絡先の名前と電話番号を求められました。何を提供すればよいですか。**
+**ドライブを発送するときに、運送業者からデータ センターの連絡先の住所と電話番号を求められました。何を提供すればよいですか。**
 
-電話番号はジョブの作成時に提供されます。 連絡先の名前が必要な場合は、 waimportexport@microsoft.com までお問い合わせください。
+電話番号と DC の住所は、ジョブの作成の一環として提供されます。
 
 **Azure Import/Export サービスを使用して、PST メールボックスと SharePoint データを O365 にコピーすることはできますか。**
 
@@ -510,11 +512,11 @@ FedEx、DHL、UPS などの既知の運送業者や、アメリカ郵政公社�
 
 「 [Azure Backup でのオフライン バックアップのワークフロー](../backup/backup-azure-backup-import-export.md)」をご覧ください。
 
-** 一度に発送できる HDD は最大で何個ですか?
+**一度に発送できる HDD は最大で何個ですか?**
 
 HDD は一度の発送で何個でも送ることができます。ディスクが複数のジョブに属している場合は、a) 対応するジョブ名でディスクをラベル付けする、 b) -1、-2 などのサフィックスが付いた追跡番号でジョブを更新することをお勧めします。
   
-* * Disk Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?
+**Disk Import/Export でサポートされるブロック BLOB とページ BLOB の最大サイズはいくつですか?**
 
 ブロック BLOB の最大サイズは、約 4.768 TB または 5,000,000 MB です。
 ページ BLOB の最大サイズは 1 TB です。

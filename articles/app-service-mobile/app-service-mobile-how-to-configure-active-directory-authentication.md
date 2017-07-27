@@ -4,7 +4,7 @@ description: "App Services アプリケーションに Azure Active Directory �
 author: mattchenderson
 services: app-service
 documentationcenter: 
-manager: adrianha
+manager: syntaxc4
 editor: 
 ms.assetid: 6ec6a46c-bce4-47aa-b8a3-e133baef22eb
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
 ms.openlocfilehash: 1f8813370995a7a55c9d87b8ec1b60ae0fe623f5
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/09/2017
-
 
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-azure-active-directory-login"></a>Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法

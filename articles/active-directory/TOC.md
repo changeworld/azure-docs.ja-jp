@@ -1,10 +1,9 @@
 # 概要
 ## [Azure Active Directory とは](active-directory-whatis.md)
-## [エディションの選択](active-directory-editions.md)
 ## [Azure の ID 管理について](identity-fundamentals.md)
 ## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
-## [Azure ポータルのエクスペリエンスをプレビューします。](active-directory-preview-explainer.md)
-
+## [ハイブリッド ID ソリューションの選択](choose-hybrid-identity-solution.md)
+## [FAQ](active-directory-faq.md)
 
 # 作業開始
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
@@ -13,26 +12,24 @@
 ## Azure AD ライセンスの管理
 ### [Azure ポータル](active-directory-licensing-get-started-azure-portal.md)
 ### [クラシック ポータル](active-directory-licensing-what-is.md)
-## [組織で Azure を導入する](sign-up-organization.md)
-## [FAQ](active-directory-faq.md)
+### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
+#### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
+#### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
+#### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
+#### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
+#### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
 ## [Azure Active Directory のサポートを得る方法](active-directory-troubleshooting-support-howto.md)
 ## [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
-## Azure AD のコントロール
-### [アクセス レビューを完了する](active-directory-azure-ad-controls-complete-an-access-review.md)
-### [アクセス レビューを作成する](active-directory-azure-ad-controls-create-an-access-review.md)
-### [アクセス レビューを実行する方法](active-directory-azure-ad-controls-perform-an-access-review.md)
-
 
 # 方法
 ## 計画と設計
 ### [Azure AD のアーキテクチャを理解する](active-directory-architecture.md)
-### [電子メールのポリシーと構成を保護する](secure-email-introduction.md)
-#### [推奨されるポリシー](secure-email-recommended-policies.md)
-#### [ポリシーと構成をデプロイする](secure-email-deploy-recommended-policies.md)
-#### [EMS と Office 365 のサービスの説明](secure-email-ems-office365-service-descriptions.md)
+### [推奨されるセキュリティ ポリシーと構成](secure-email-introduction.md)
+#### [セキュリティで保護されたメールの推奨されるポリシー](secure-email-recommended-policies.md)
+##### [セキュリティで保護された推奨されるメール ポリシーのデプロイ](secure-email-deploy-recommended-policies.md)
+#### [EMS と Office 365 のサービスの概要](secure-email-ems-office365-service-descriptions.md)
 ### [ハイブリッド ID ソリューションをデプロイする](active-directory-hybrid-identity-design-considerations-overview.md)
 ### [Azure Active Directory での要求マッピング](active-directory-claims-mapping.md)
-
 #### 要件を確認する
 ##### [ID](active-directory-hybrid-identity-design-considerations-business-needs.md)
 ##### [ディレクトリ同期](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)
@@ -53,9 +50,7 @@
 ### Add users
 #### [Azure Portal](active-directory-users-create-azure-portal.md)
 #### [クラシック ポータル](active-directory-create-users.md)
-### Azure AD のコントロール
-#### [アクセス レビューでのゲスト アクセス](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
-#### [レビューでのユーザー アクセスの管理](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+
 
 ### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
 #### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
@@ -106,11 +101,16 @@
 ### [危険な状態のユーザー](active-directory-reporting-security-user-at-risk.md)
 ### [リスクの高いサインイン](active-directory-reporting-security-risky-sign-ins.md)
 ### [リスク イベント](active-directory-reporting-risk-events.md)
-### [名前付きの場所](active-directory-named-locations.md)
-### [レポートの移行](active-directory-reporting-migration.md)
-### [保持](active-directory-reporting-retention.md)
-### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 ### [FAQ](active-directory-reporting-faq.md)
+### タスク
+#### [名前付きの場所の構成](active-directory-named-locations.md)
+#### [アクティビティ レポートの検出](active-directory-reporting-migration.md)
+#### [Azure Active Directory Power BI コンテンツ パックの使用](active-directory-reporting-power-bi-content-pack-how-to.md)
+### リファレンス
+#### [保持](active-directory-reporting-retention.md)
+#### [待機時間](active-directory-reporting-latencies-azure-portal.md)
+#### [Notifications](active-directory-reporting-notifications.md)
+#### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -122,23 +122,6 @@
 #### [監査のサンプル](active-directory-reporting-api-audit-samples.md)
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [証明書の使用](active-directory-reporting-api-with-certificates.md)
-### [クラシック ポータル](active-directory-view-access-usage-reports.md)
-#### [Azure AD レポート](active-directory-reporting-getting-started.md)
-#### [レポート ガイド](active-directory-reporting-guide.md)
-#### [既知のネットワーク](active-directory-known-networks.md)
-#### [API](active-directory-reporting-api-getting-started.md)
-##### [前提条件](active-directory-reporting-api-prerequisites.md)
-#### [イベントを監査する](active-directory-reporting-audit-events.md)
-#### [待機時間](active-directory-reporting-latencies.md)
-#### [Notifications](active-directory-reporting-notifications.md)
-#### レポートについて
-##### [不規則なサインイン](active-directory-reporting-irregular-sign-in-activity.md)
-##### [複数のエラー](active-directory-reporting-sign-ins-after-multiple-failures.md)
-##### [疑わしい IP アドレス](active-directory-reporting-sign-ins-from-ip-addresses-with-suspicious-activity.md)
-##### [複数の地域](active-directory-reporting-sign-ins-from-multiple-geographies.md)
-##### [感染している可能性があるデバイス](active-directory-reporting-sign-ins-from-possibly-infected-devices.md)
-##### [不明なソース](active-directory-reporting-sign-ins-from-unknown-sources.md)
-##### [異常なサインイン](active-directory-reporting-users-with-anomalous-sign-in-activity.md)
 
 ## [パスワードの管理](active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
@@ -188,8 +171,7 @@
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
-### Azure AD のコントロール
-####[プログラムとそのコントロールを管理する](active-directory-azure-ad-controls-manage-programs-and-controls.md)
+
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
 #### 作業開始
@@ -215,9 +197,11 @@
 ##### [ネイティブ クライアント アプリ](active-directory-application-proxy-native-client.md)
 ##### [サイレント インストール](active-directory-application-proxy-silent-installation.md)
 ##### [カスタム ホーム ページ](application-proxy-office365-app-launcher.md)
+##### [インライン リンクの変換](application-proxy-link-translation.md)
 #### 発行に関するチュートリアル
 ##### [リモート デスクトップ](application-proxy-publish-remote-desktop.md)
 ##### [SharePoint](application-proxy-enable-remote-access-sharepoint.md)
+##### [Microsoft Teams](application-proxy-teams.md)
 #### [トラブルシューティング](active-directory-application-proxy-troubleshoot.md)
 #### クラシック ポータルの使用
 ##### [コネクタをダウンロードする](application-proxy-enable-classic-portal.md)
@@ -399,9 +383,10 @@
 ## [Azure AD Privileged Identity Management](./privileged-identity-management/active-directory-securing-privileged-access.md)
 
 # リソース
-## [料金](https://azure.microsoft.com/pricing/details/active-directory/)
+## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=WindowsAzureAD)
+## [料金](https://azure.microsoft.com/pricing/details/active-directory/)
+## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=active-directory)
-## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory)
-## [Azure フィードバック フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory)

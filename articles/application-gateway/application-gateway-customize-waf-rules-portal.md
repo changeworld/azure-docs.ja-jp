@@ -15,10 +15,11 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: b08d5543fd3b680b7d49be6e8d2c95ee71aff10c
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 094ae187ec8ba5ff38f174ee4cf139d30db7e057
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -52,9 +53,10 @@ Application Gateway Web アプリケーション ファイアウォールは、W
 
 ## <a name="next-steps"></a>次のステップ
 
-無効になっているルールを構成したら、[Application Gateway 診断](application-gateway-diagnostics.md#diagnostic-logging)に関するページで WAF ログの表示方法を確認します
+無効になっているルールを構成したら、[Application Gateway 診断](application-gateway-diagnostics.md#diagnostic-logs)に関するページで WAF ログの表示方法を確認します
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png
 [2]: ./media/application-gateway-customize-waf-rules-portal/figure2.png
 [3]: ./media/application-gateway-customize-waf-rules-portal/figure3.png
+

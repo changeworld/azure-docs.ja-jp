@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/08/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: fef61e6155471a0459957ea0c510698cfa787fdc
-ms.lasthandoff: 03/18/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: f40ceb542a0ee51e17ee539db4dbc91c11e056f2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -31,8 +32,10 @@ Azure サブスクリプション、リージョン、ネットワーク リソ�
 下の計画に関する質問に答える前に、次の点について検討してください。
 
 * Azure で作成するものはすべて 1 つまたは複数のリソースで構成されます。 仮想マシン (VM) はリソースです。VM で利用されるネットワーク アダプター カード (NIC) はリソースです。NIC で利用されるパブリック IP アドレスはリソースです。NIC の接続先となる VNet はリソースです。
-* リソースを [Azure リージョン](https://azure.microsoft.com/regions/#services) とサブスクリプションの内部に作成します。 リソースの接続先となるのは、それが入っているリージョンとサブスクリプションに存在する VNet だけです。
-* [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)を利用し、VNet を互いに接続できます。 この方法で、リージョンとサブスクリプションをまたいで VNet を接続することもできます。
+* リソースを [Azure リージョン](https://azure.microsoft.com/regions/#services) とサブスクリプションの内部に作成します。 リソースの接続先となるのは、そのリソースが入っているリージョンとサブスクリプションに存在する仮想ネットワークだけです。
+* 以下を使用して 仮想ネットワークどうしを接続できます。
+    * **[ピアリングする仮想ネットワーク](virtual-network-peering-overview.md)** : 仮想ネットワークは同じ Azure リージョンに存在する必要があります。 ピアリングされた仮想ネットワーク内のリソース間の帯域幅は、リソースが同じ仮想ネットワークに接続された場合と同じです。
+    * **Azure [VPN Gateway](../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)** : 仮想ネットワークは、同じ Azure リージョンに存在していても異なる Azure リージョンに存在していてもかまいません。 VPN Gateway を介して接続されている仮想ネットワーク内のリソース間の帯域幅は、VPN Gateway の帯域幅によって制限されます。
 * Azure で利用できる[接続オプション](../vpn-gateway/vpn-gateway-about-vpngateways.md#site-to-site-and-multi-site-ipsecike-vpn-tunnel)のいずれかを利用し、オンプレミス ネットワークに VNet を接続できます。
 * 複数のリソースを[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)にグループ化できます。リソースの単位管理が簡単になります。 リソースが同じサブスクリプションに属する限り、リソース グループには複数のリージョンのリソースを含めることができます。
 
@@ -174,7 +177,7 @@ VNet には、次のプロパティが含まれています。
     はい。 オンプレミスのデータ センターにアクセスできるユーザーは暗号化トンネルを利用してアプリケーションにアクセスできなければならないからです。
 4. ソリューションには IaaS VM がいくつ必要ですか。
 
-    200 IaaS VM。 App1、App2、App3 は 5 つの Web サーバー、2 つアプリケーション サーバー、2 つのデータベース サーバーをそれぞれ必要とします。 アプリケーションあたり 9 つの IaaS VM が、合計で 36 の IaaS VM が必要になります。 App5 と App6 は 5 つの Web サーバーと 2 つのデータベース サーバーをそれぞれ必要とします。 アプリケーションあたり 7 つの IaaS VM が、合計で 14 の IaaS VM が必要になります。 そのため、Azure リージョンごとにすべてのアプリケーションのために 50 の IaaS VM が必要になります。 4 つのリージョンを使用する必要があるので、200 の IaaS VM が必要になります。
+    200 IaaS VM。 App1、App2、App3 および App4 は 5 つの Web サーバー、2 つのアプリケーション サーバー、2 つのデータベース サーバーをそれぞれ必要とします。 アプリケーションあたり 9 つの IaaS VM が、合計で 36 の IaaS VM が必要になります。 App5 と App6 は 5 つの Web サーバーと 2 つのデータベース サーバーをそれぞれ必要とします。 アプリケーションあたり 7 つの IaaS VM が、合計で 14 の IaaS VM が必要になります。 そのため、Azure リージョンごとにすべてのアプリケーションのために 50 の IaaS VM が必要になります。 4 つのリージョンを使用する必要があるので、200 の IaaS VM が必要になります。
 
     また、各 VNet に、あるいはオンプレミスのデータ センターに DNS サーバーを用意し、Azure IaaS VM とオンプレミスのネットワークの間で名前を解決する必要があります。
 5. VM のグループ (すなわち、フロントエンド Web サーバーとバックエンド データベース サーバー) に基づいてトラフィックを分離する必要はありますか。

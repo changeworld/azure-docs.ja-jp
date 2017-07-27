@@ -2,7 +2,7 @@
 title: "Azure Monitor の PowerShell クイック スタート サンプル | Microsoft Docs"
 description: "PowerShell を使って、自動スケール、アラート、webhook、アクティビティ ログの検索などの Azure Monitor の機能にアクセスします。"
 author: kamathashwin
-manager: carolz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: ashwink
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 8165147d9ff811b26f7fe2626c892f2aba5bb4f8
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="azure-monitor-powershell-quick-start-samples"></a>Azure Monitor の PowerShell クイック スタート サンプル

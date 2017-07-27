@@ -67,5 +67,6 @@
 ## [DNS](/azure/dns/)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=networking)
 ## [料金](https://azure.microsoft.com/pricing/details/load-balancer/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=load-balancer)

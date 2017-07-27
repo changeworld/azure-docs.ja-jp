@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/15/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 20c0db9c5f3f3586ac2df8657a7b2eb2114ed6b8
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 4045dd501ba70b04cb8ea06901c76072fc009018
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal"></a>Azure Portal を使用した VNet へのポイント対サイト接続の構成
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-the-azure-portal" class="xliff"></a>
+
+# Azure Portal を使用した VNet へのポイント対サイト接続の構成
 
 この記事では、Azure Portal を使用して、ポイント対サイト接続を備えた VNet を Resource Manager デプロイメント モデルで作成する手順を説明します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
@@ -85,7 +87,9 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 このセクションのスクリーンショットは、参照用の例です。 構成に必要な値に対応する GatewaySubnet アドレス範囲を使用するようにしてください。
 
-### <a name="to-create-a-gateway-subnet"></a>ゲートウェイ サブネットを作成するには
+<a id="to-create-a-gateway-subnet" class="xliff"></a>
+
+### ゲートウェイ サブネットを作成するには
 
 [!INCLUDE [vpn-gateway-add-gwsubnet-rm-portal](../../includes/vpn-gateway-add-gwsubnet-rm-portal-include.md)]
 
@@ -102,21 +106,25 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 * ゲートウェイの種類: VPN
 * VPN の種類: ルート ベース
 
-### <a name="to-create-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイを作成するには
+<a id="to-create-a-virtual-network-gateway" class="xliff"></a>
 
-[!INCLUDE [vpn-gateway-add-gw-rm-portal](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
+### 仮想ネットワーク ゲートウェイを作成するには
+
+[!INCLUDE [create a vnet gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
 ## <a name="generatecert"></a>6 - 証明書の生成
 
-証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 証明書の生成とインストールの詳細については、[ポイント対サイトの証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。
+証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 
+
+自己署名証明書を使用する場合は、特定のパラメーターを使って証明書を作成する必要があります。 自己署名証明書は、[PowerShell と Windows 10](vpn-gateway-certificates-point-to-site.md) を使った手順のほか、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使って作成することができます。 自己署名ルート証明書を扱うときや、自己署名ルート証明書からクライアント証明書を生成するときは、これらの説明に記載されている手順に従うことが大切です。 説明どおりに作成しないと、証明書が P2S 接続に適合せず、接続エラーが発生します。
 
 ### <a name="getcer"></a>手順 1 - ルート証明書の .cer ファイルの取得
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-rootcert-include.md)]
+[!INCLUDE [obtain root certificate](../../includes/vpn-gateway-p2s-rootcert-include.md)]
 
 ### <a name="generateclientcert"></a>手順 2 - クライアント証明書の生成
 
-[!INCLUDE [vpn-gateway-basic-vnet-rm-portal](../../includes/vpn-gateway-p2s-clientcert-include.md)]
+[!INCLUDE [generate client certificate](../../includes/vpn-gateway-p2s-clientcert-include.md)]
 
 ## <a name="addresspool"></a>7 - クライアント アドレス プールの追加
 
@@ -148,7 +156,9 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 
-### <a name="step-1---download-the-client-configuration-package"></a>手順 1 - クライアント構成パッケージをダウンロードする
+<a id="step-1---download-the-client-configuration-package" class="xliff"></a>
+
+### 手順 1 - クライアント構成パッケージをダウンロードする
 
 1. **[ポイント対サイトの構成]** ブレードで **[Download VPN client (VPN クライアントのダウンロード)]** をクリックして、**[Download VPN client (VPN クライアントのダウンロード)]** ブレードを開きます。 パッケージの生成には 1 ～ 2 分かかります。
 
@@ -157,7 +167,9 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
   ![VPN クライアントのダウンロード 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/vpnclient.png)
 
-### <a name="step-2---install-the-client-configuration-package"></a>手順 2 - クライアント構成パッケージをインストールする
+<a id="step-2---install-the-client-configuration-package" class="xliff"></a>
+
+### 手順 2 - クライアント構成パッケージをインストールする
 
 1. 仮想ネットワークに接続するコンピューターのローカルに構成ファイルをコピーします。 
 2. .exe ファイルをダブルクリックしてパッケージをクライアント コンピューターにインストールします。 構成パッケージを作成したのは皆さん自身であり、署名されていないために警告が表示されることがあります。 Windows SmartScreen ポップアップが表示された場合は、**[詳細]** (左側)、**[実行]** の順にクリックして、パッケージをインストールします。
@@ -213,11 +225,15 @@ P2S での仮想マシンへの接続に問題がある場合は、接続元の�
 
 信頼されたルート証明書を Azure に追加したり、Azure から削除したりできます。 ルート証明書を削除すると、そのルートから証明書を生成したクライアントは認証が無効となり、接続できなくなります。 クライアントの認証と接続を正常に実行できるようにするには、Azure に信頼されている (Azure にアップロードされている) ルート証明書から生成した新しいクライアント証明書をインストールする必要があります。
 
-### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
+
+### 信頼されたルート証明書を追加するには
 
 信頼されたルート証明書 .cer ファイルを最大 20 個まで Azure に追加できます。 手順については、この記事の[信頼されたルート証明書のアップロード](#uploadfile)に関するセクションを参照してください。
 
-### <a name="to-remove-a-trusted-root-certificate"></a>信頼されたルート証明書を削除するには
+<a id="to-remove-a-trusted-root-certificate" class="xliff"></a>
+
+### 信頼されたルート証明書を削除するには
 
 1. 信頼されたルート証明書を削除するには、仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ブレードに移動します。
 2. ブレードの **[ルート証明書]** セクションで、削除する証明書を見つけます。
@@ -229,7 +245,9 @@ P2S での仮想マシンへの接続に問題がある場合は、接続元の�
 
 一般的な方法としては、ルート証明書を使用してチームまたは組織レベルでアクセスを管理し、失効したクライアント証明書を使用して、個々のユーザーの細かいアクセス制御を構成します。
 
-### <a name="to-revoke-a-client-certificate"></a>クライアント証明書を失効させるには
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
+
+### クライアント証明書を失効させるには
 
 失効リストに拇印を追加することで、クライアント証明書を失効させることができます。
 
@@ -245,5 +263,8 @@ P2S での仮想マシンへの接続に問題がある場合は、接続元の�
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+

@@ -15,16 +15,17 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d8ae05316b424af7d87c3c5ebdac575bcc04998d
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: f5c33212da13b33be60488992d93305807c98d38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/07/2017
 
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
 Linux データ サイエンス仮想マシンは、一連のツールがプレインストールされた CentOS ベースの Azure 仮想マシンです。 これらのツールは、データ分析と機械学習に一般的に使用されます。 含まれている主なソフトウェア コンポーネントは次のとおりです。
 
+* オペレーティング システム: Linux CentOS ディストリビューション。
 * Microsoft R Server Developer エディション
 * 一般的なデータ分析ライブラリを含む Anaconda Python ディストリビューション (バージョン 2.7 および 3.5)
 * JuliaPro - 一般的な科学的およびデータ分析ライブラリを含む Julia 言語の管理されたディストリビューション
@@ -113,13 +114,13 @@ Linux VM は、既に X2Go サーバーでプロビジョニングされてお�
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
-   * **[Session] \(セッション) タブ**:
+   * **[Session] (セッション) タブ**:
      * **[Host (ホスト)]**: Linux データ サイエンス VM のホスト名または IP アドレス。
      * **[Login (ログイン)]**: Linux VM のユーザー名。
-     * **[SSH Port] \(SSH ポート)**: 既定値の 22 のままにします。
-     * **[Session Type] \(セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
-   * **[Media] \(メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
-   * **[Shared folders] \(共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
+     * **[SSH Port] (SSH ポート)**: 既定値の 22 のままにします。
+     * **[Session Type] (セッションの種類)**: 値を XFCE に変更します。 現在、Linux VM では XFCE デスクトップのみをサポートしています。
+   * **[Media] (メディア) タブ**: 音声のサポートとクライアントの印刷を使用しない場合は、それらをオフにできます。
+   * **[Shared folders] (共有フォルダー)**: クライアント コンピューターのディレクトリを Linux VM にマウントする場合は、このタブで VM と共有するクライアント コンピューターのディレクトリを追加します。
 
 SSH クライアントを使用するか、X2Go クライアントから XFCE グラフィカル デスクトップを使用して VM にサインインしたら、VM にインストールされ、構成されているツールをすぐに使い始めることができます。 XFCE では、アプリケーション メニューのショートカットとさまざまなツールのデスクトップ アイコンが表示されます。
 

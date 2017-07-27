@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 06/23/2017
 ms.author: raprasa
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 11e60ab8dfada4b8b0e1cd73ca60dc428364dc68
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: a438b5079ae48c82fb2dbd5ce4547302364e0ef5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 06/26/2017
 
 
 ---
@@ -51,8 +51,9 @@ Cosmos DB の中に保存されるデータとは異なり、自動バックア�
 ![GRS Azure Storage 内のすべての Cosmos DB エンティティの定期的な完全バックアップ](./media/online-backup-and-restore/automatic-backup.png)
 
 ## <a name="retention-period-for-a-given-snapshot"></a>特定のスナップショットの保有期間
-前述のように、データのスナップショットは定期的に取得され、最新のスナップショットは、法令遵守規定に基づいて 90 日間保持された後、最終的に消去されます。 コンテナーまたはアカウントが削除された場合、Cosmos DB は、最後のバックアップを 90 日間保存します。
+前述のように 4 時間ごとにデータのスナップショットを取得し、直近の 2 つのスナップショットを 30 日間保持します。 法令遵守規定に基づいて、スナップショットは 90 日後に消去されます。
 
+独自のスナップショットを保持する場合は、Azure Cosmos DB の JSON へのエクスポート オプション ([データ移行ツール](import-data.md#export-to-json-file)) を使用して、追加のバックアップをスケジュールすることができます。 
 
 ## <a name="restore-database-from-the-online-backup"></a>オンライン バックアップからデータベースを復元する
 データを誤って削除した場合は、[サポート チケットを申請する](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)か、[Azure サポートに問い合わせる](https://azure.microsoft.com/support/options/)ことで、最後の自動バックアップからデータを復元できます。 バックアップの特定のスナップショットを復元するには、少なくとも復元するスナップショットのバックアップ サイクル期間中のデータが Cosmos DB から入手可能である必要があります。

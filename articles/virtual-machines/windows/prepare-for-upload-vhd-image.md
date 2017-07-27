@@ -13,12 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 1/11/2017
+ms.date: 5/26/2017
 ms.author: glimoli;genli
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 104063500a33dfe55c56467517a5002c562772df
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
+ms.openlocfilehash: 4d8972e5a18cbe471ec4c5baa53992cc23fad129
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/27/2017
 
 
 ---
@@ -260,20 +261,31 @@ Windows の最新の更新プログラムをインストールします。 こ�
    * [KB3115224](https://support.microsoft.com/kb/3115224) Reliability improvements for VMs that are running on a Windows Server 2012 R2 or Windows Server 2012 host (Windows Server 2012 R2 または Windows Server 2012 ホストで実行される VM の信頼性に関する機能強化)
    * [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: 特権の昇格に対処する Microsoft Windows のセキュリティ更新プログラム (2016 年 3 月 8 日)
    * [KB3063075](https://support.microsoft.com/kb/3063075) Many ID 129 events are logged when you run a Windows Server 2012 R2 virtual machine in Microsoft Azure (Windows Server 2012 R2 仮想マシンを Microsoft Azure で実行すると多数の ID 129 イベントがログに記録される)
-   * [KB3137061](https://support.microsoft.com/kb/3137061) Microsoft Azure VMs don't recover from a network outage and data corruption issues occur (Microsoft Azure VM がネットワークの停止およびデータ破損の問題の発生から回復しない)
    * [KB3114025](https://support.microsoft.com/kb/3114025) Slow performance when you access Azure files storage from Windows 8.1 or Server 2012 R2 (Windows 8.1 または Server 2012 R2 から Azure ファイル ストレージにアクセスしたときパフォーマンスが低下する)
    * [KB3033930](https://support.microsoft.com/kb/3033930) Hotfix fix increases the 64K limit on RIO buffers per process for Azure service in Windows (修正プログラムにより Windows での Azure サービスのプロセスごとの RIO バッファーの 64K の制限が向上)
    * [KB3004545](https://support.microsoft.com/kb/3004545) You cannot access virtual machines that are hosted on Azure hosting services through a VPN connection in Windows (Windows の VPN 接続を介して Azure ホスティング サービスでホストされている仮想マシンにアクセスできない)
    * [KB3082343](https://support.microsoft.com/kb/3082343) Cross-Premises VPN connectivity is lost when Azure site-to-site VPN tunnels use Windows Server 2012 R2 RRAS (Azure サイト間 VPN トンネルで Windows Server 2012 R2 RRAS を使用したときクロスプレミス VPN 接続が失われる)
-   * [KB3140410](https://support.microsoft.com/kb/3140410) MS16-031: 特権の昇格に対処する Microsoft Windows のセキュリティ更新プログラム (2016 年 3 月 8 日)
    * [KB3146723](https://support.microsoft.com/kb/3146723) MS16-048: Description of the security update for CSRSS: April 12, 2016 (CSRSS 用のセキュリティ更新プログラムの説明: 2016 年 4 月 12 日)
    * [KB2904100](https://support.microsoft.com/kb/2904100) System freezes during disk I/O in Windows (Windows でディスク I/O 時にシステムがフリーズする)
      
 ## Sysprep を実行する<a id="step23"></a>    
-複数の仮想マシンにデプロイするためのイメージを作成するには、VHD を Azure にアップロードする前に [Sysprep を実行してイメージを一般化する](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)必要があります。 特殊化した VHD を使用するために Sysprep を実行する必要はありません。 詳細については、次の記事を参照してください。
+複数の VM にデプロイするためのイメージを作成するには、VHD を Azure にアップロードする前に Sysprep を実行してイメージを一般化する必要があります。 特殊化した VHD を使用するために Sysprep を実行する必要はありません。 
+
+特に重要な点は、Sysprep がすべての個人アカウント情報を削除して、マシンをイメージとして使用できるように準備することです。 Sysprep の詳細については、「 [Sysprep の使用方法: 紹介](http://technet.microsoft.com/library/bb457073.aspx)」を参照してください。
+
+コンピューター上で実行されるサーバー ロールが Sysprep でサポートされていることを確認します。 詳しくは、「 [Sysprep Support for Server Roles](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+
+1. Windows 仮想マシンへのサインイン
+2. 管理者としてコマンド プロンプト ウィンドウを開きます。 ディレクトリを **%windir%\system32\sysprep** に変更し、`sysprep.exe` を実行します。
+3. **[システム準備ツール]** ダイアログ ボックスで **[システムの OOBE (Out-of-Box Experience) に入る]** を選択し、**[一般化する]** チェック ボックスがオンになっていることを確認します。
+4. **[シャットダウン オプション]** の **[シャットダウン]** を選択します。
+5. **[OK]**をクリックします。
    
-   * [Sysprep を使用した Windows 仮想マシンの一般化](generalize-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-   * [Sysprep Support for Server Roles (Sysprep でのサーバー ロールのサポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)
+    ![Sysprep の開始](./media/upload-generalized-managed/sysprepgeneral.png)
+6. Sysprep は完了時に仮想マシンをシャットダウンします。 VM は再起動しないでください。
+
+
+
 
 ## <a name="complete-recommended-configurations"></a>推奨される構成を完了する
 次の設定は、VHD のアップロードに影響しません。 ただし、これらを構成しておくことを強くお勧めします。
@@ -299,6 +311,6 @@ Windows の最新の更新プログラムをインストールします。 こ�
     ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+* [Resource Manager デプロイメント向けに Windows VM イメージを Azure にアップロードする](upload-generalized-managed.md)
 
 

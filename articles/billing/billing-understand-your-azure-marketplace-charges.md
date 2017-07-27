@@ -4,7 +4,7 @@ description: "Azure 外部サービス (旧称 Marketplace) の課金につい�
 services: 
 documentationcenter: 
 author: adpick
-manager: ruchic
+manager: tonguyen
 editor: 
 tags: billing
 ms.assetid: 5e0e2a3c-d111-4054-8508-0c111c1b749b
@@ -23,7 +23,8 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 03/03/2017
 
 ---
-# <a name="understand-your-azure-billing-for-external-service-charges"></a>外部サービスの課金に対する Azure での請求について
+<a id="understand-your-azure-billing-for-external-service-charges" class="xliff"></a>
+# 外部サービスの課金に対する Azure での請求について
 外部サービスは、以前は Azure Marketplace と呼ばれていました。 一般に、外部サービスは、サードパーティが公開している Azure で使用できるサービスですが、Azure 内に完全に統合されています。 たとえば、ClearDB と SendGrid は、Azure で購入できる外部サービスですが、これらはマイクロソフトが公開したものではありません。
 
 新しい外部サービスまたはリソースをプロビジョニングすると、警告が表示されます。
@@ -35,13 +36,15 @@ ms.lasthandoff: 03/03/2017
 > 
 > 
 
-## <a name="how-external-services-are-billed"></a>外部サービスの請求方法
+<a id="how-external-services-are-billed" class="xliff"></a>
+## 外部サービスの請求方法
 - 外部サービスは個別に請求されます。 外部サービスは、Azure サブスクリプションの中で個別の注文として扱われます。 各サービスの請求期間は、サービスの購入時に設定されます。 サービスの請求期間とサービスを購入するために使用したサブスクリプションの請求期間を混同しないでください。 また、請求書は個別に発行され、クレジット カードの決済も個別に行われます。
 - 外部サービスの課金モデルはサービスごとに異なります。 一部のサービスは従量課金制で請求され、一部のサービスは月単位で課金されます。 Azure 外部サービスにはクレジット カードが必要であり、請求書による支払いで外部サービスを購入することはできません。
 - 外部サービスでは月々の無料クレジットは使用できません。 [無料クレジット](https://azure.microsoft.com/pricing/spending-limits/)付きの Azure サブスクリプションを使用している場合でも、外部サービスの請求に対して無料クレジットを適用することはできません。 外部サービスを購入する際は、クレジット カードをご使用ください。
 
 
-## <a name="view-external-service-spending-and-history-in-the-azure-portal"></a>Azure Portal で外部サービスの支払い履歴を表示する
+<a id="view-external-service-spending-and-history-in-the-azure-portal" class="xliff"></a>
+## Azure Portal で外部サービスの支払い履歴を表示する
 サブスクライブ中の外部サービスの一覧を [Azure ポータル](https://portal.azure.com/)に表示できます。 
 
 1. [Azure Portal](https://portal.azure.com/) にアカウント管理者としてサインインします。
@@ -58,10 +61,12 @@ ms.lasthandoff: 03/03/2017
    
     ![外部サービスの請求履歴の表示](./media/billing-understand-your-azure-marketplace-charges/billing-overview-blade.png)
 
-## <a name="view-external-service-spending-for-enterprise-agreement-ea-customers"></a>Enterprise Agreement (EA) のお客様の外部サービスの支払いを表示する
+<a id="view-external-service-spending-for-enterprise-agreement-ea-customers" class="xliff"></a>
+## Enterprise Agreement (EA) のお客様の外部サービスの支払いを表示する
 EA のお客様は、EA ポータルで外部サービスの支払いを表示し、レポートをダウンロードすることができます。 最初に、[EA お客様向け Azure Marketplace](https://ea.azure.com/helpdocs/azureMarketplace) をご覧ください。
 
-## <a name="manage-payment-methods-for-external-service-orders"></a>外部サービスに対する支払い方法を管理する
+<a id="manage-payment-methods-for-external-service-orders" class="xliff"></a>
+## 外部サービスに対する支払い方法を管理する
 外部サービスに対する支払い方法の更新は[アカウント センター](https://account.windowsazure.com/)で行ってください。
 
 > [!NOTE]
@@ -82,12 +87,14 @@ EA のお客様は、EA ポータルで外部サービスの支払いを表示�
    
     ![[情報の編集] を選択](./media/billing-understand-your-azure-marketplace-charges/edit-info.png)
 
-## <a name="cancel-an-external-service-order"></a>外部サービスの注文をキャンセルする
+<a id="cancel-an-external-service-order" class="xliff"></a>
+## 外部サービスの注文をキャンセルする
 外部サービスの注文をキャンセルする場合は、[Azure Portal](https://portal.azure.com) でリソースを削除します。
 
 ![リソースを削除](./media/billing-understand-your-azure-marketplace-charges/deleteMarketplaceOrder.PNG)
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
+<a id="need-help-contact-support" class="xliff"></a>
+## お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
 
 

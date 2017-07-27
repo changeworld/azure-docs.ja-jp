@@ -193,6 +193,10 @@
 ### [コレクション](machine-learning-gallery-collections.md)
 ### [カスタム モジュール](machine-learning-gallery-custom-modules.md)
 
+## Cortana Intelligence パートナー ソリューション
+### [Cortana Intelligence の発行ガイド](cortana-intelligence-appsource-publishing-guide.md)
+### [Cortana Intelligence のソリューション評価ツール](cortana-intelligence-appsource-evaluation-tool.md)
+
 ## Cortana Analytics
 ### API
 #### [異常の検出](machine-learning-apps-anomaly-detection-api.md)
@@ -207,6 +211,7 @@
 ##### [セットアップ](cortana-analytics-playbook-vehicle-telemetry-powerbi.md)
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 
 ## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)

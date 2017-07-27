@@ -4,22 +4,21 @@ description: "この記事では、Azure Site Recovery に関してよく寄せ�
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
-manager: cfreeman
+manager: carmonm
 editor: 
 ms.assetid: 5cdc4bcd-b4fe-48c7-8be1-1db39bd9c078
-ms.service: get-started-article
+ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 02/21/2017
+ms.date: 05/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: d3351e4a480caa1bf02e82545f130b14bf6f0910
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4ed866cf83ff1d38147c9aecf337fd05b025f01a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
@@ -27,20 +26,19 @@ ms.lasthandoff: 05/17/2017
 
 ## <a name="general"></a>全般
 ### <a name="what-does-site-recovery-do"></a>Site Recovery は何をするものですか。
-Site Recovery は、オンプレミスの仮想マシンと物理サーバーから Azure またはセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性と障害復旧 (BCDR) 戦略に貢献します。 [詳細情報](site-recovery-overview.md)。
+Site Recovery は、リージョン間のAzure VM のレプリケーション、オンプレミスの仮想マシンと物理サーバーの Azure へのレプリケーション、およびオンプレミスのマシンのセカンダリ データセンターへのレプリケーションを調整および自動化することで、ビジネス継続性とディザスター リカバリー (BCDR) 戦略に貢献します。 [詳細情報](site-recovery-overview.md)
 
 ### <a name="what-can-site-recovery-protect"></a>Site Recovery が保護できるものは何ですか。
+* **Azure VM**: Site Recovery は、サポート対象の Azure VM で実行されているすべてのワークロードをレプリケートできます。
 * **Hyper-V 仮想マシン**: Site Recovery は、Hyper-V 仮想マシンで実行されているすべてのワークロードを保護できます。
 * **物理サーバー**: Site Recovery は、Windows または Linux を実行する物理サーバーを保護できます。
 * **VMware 仮想マシン**: Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
 
 ### <a name="does-site-recovery-support-the-azure-resource-manager-model"></a>Site Recovery では Azure Resource Manager モデルがサポートされますか。
-Site Recovery は、Azure クラシック ポータルだけでなく、Resource Manager をサポートする Azure ポータルでも使用できます。 ほとんどのデプロイ シナリオについて、Azure ポータル の Site Recovery では合理的なデプロイ操作が実現し、VM と物理サーバーを、従来のストレージまたは Resource Manager ストレージにレプリケートできます。 サポートされているデプロイを次に示します。
+Site Recovery は、Resource Manager をサポートする Azure Portal で使用できます。 Site Recovery は、Azure クラシック ポータルで、古い製品のデプロイをサポートします。 クラシック ポータルでは新しい資格情報コンテナーは作成できません。また、新機能もサポートされていません。
 
-* [Azure ポータルで VMware VM または物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure.md)
-* [Azure ポータルで VMM クラウドの Hyper-V VM を Azure にレプリケートする](site-recovery-vmm-to-azure.md)
-* [Azure ポータルで Hyper-V VM (VMM なし) を Azure にレプリケートする](site-recovery-hyper-v-site-to-azure.md)
-* [Azure ポータルで VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](site-recovery-vmm-to-vmm.md)
+### <a name="can-i-replicate-azure-vms"></a>Azure VM をレプリケートできますか。
+はい、サポートされている Azure VM は Azure リージョン間でレプリケートできます。 [詳細情報](site-recovery-azure-to-azure.md)
 
 ### <a name="what-do-i-need-in-hyper-v-to-orchestrate-replication-with-site-recovery"></a>Site Recovery でレプリケーションを調整するには、Hyper-V で何が必要ですか。
 Hyper-V ホスト サーバーに必要なものは、デプロイ シナリオによって異なります。 以下の Hyper-V に関する前提条件を参照してください。
@@ -87,6 +85,10 @@ Site Recovery のライセンスは保護対象のインスタンス単位であ
 
 - VM ディスクが標準ストレージ アカウントにレプリケートされる場合、Azure Storage の料金はストレージ消費量に対するものです。 たとえば、ソース ディスク サイズが 1 TB で、400 GB が使われている場合、Site Recovery は Azure に 1 TB の VHD を作成しますが、課金されるストレージは 400 GB です (これに、レプリケーション ログに使われる記憶領域の量が加わります)。
 - VM ディスクが Premium Storage アカウントにレプリケートされる場合の Azure Storage の料金は、プロビジョニングされたストレージ サイズを最も近い Premium Storage ディスク オプションに切り上げた値に対するものです。 たとえば、ソース ディスク サイズが 50 GB で、Site Recovery が Azure で 50 GB のディスクを作成した場合、Azure はこれを最も近い Premium Storage ディスク (P10) にマップします。  コストは、50 GB のディスク サイズではなく、P10 に対して計算されます。  [詳細情報](https://aka.ms/premium-storage-pricing)。  Premium Storage を使っている場合は、レプリケーション ログ用の Standard ストレージ アカウントも必要であり、ログに使われる Standard 記憶領域の量にも課金されます。
+- テスト フェールオーバーまたはフェールオーバーまでは、ディスクは作成されません。 レプリケーション状態では、"ページ BLOB とディスク" のカテゴリに基いて [Storage 料金計算ツール](https://azure.microsoft.com/en-in/pricing/calculator/)で算出されるストレージ料金が発生します。 この料金は、Premium/Standard のストレージの種類およびデータの冗長性の種類 (LRS、GRS、RA-GRS など) に基づいています。
+- フェールオーバーで管理ディスクを使用するオプションが選択された場合、[管理ディスクの費用](https://azure.microsoft.com/en-in/pricing/details/managed-disks/)は、フェールオーバー/テスト フェールオーバー後に適用します。 管理ディスクの料金は、レプリケーション中には適用されません。
+- フェールオーバーで管理ディスクを使用するオプションが選択されていない場合、フェールオーバー後に、"ページ BLOB とディスク" のカテゴリに基いて [Storage 料金計算ツール](https://azure.microsoft.com/en-in/pricing/calculator/)で算出されるストレージ料金が発生します。 この料金は、Premium/Standard のストレージの種類およびデータの冗長性の種類 (LRS、GRS、RA-GRS など) に基づいています。
+- ストレージ トランザクションは、安定状態のレプリケーション中およびフェールオーバー/テスト フェールオーバー後の通常の VM 操作に課金されます。 この料金はごくわずかです。
 
 コストはテスト フェールオーバー中にも発生し、VM、ストレージ、送信、およびストレージ トランザクションのコストが適用されます。
 
@@ -160,7 +162,7 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 
 * [VMware VM と物理サーバーをレプリケートするためのキャパシティ プランニング](site-recovery-plan-capacity-vmware.md)
 * [VMM クラウドで Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-vmm-to-azure.md#capacity-planning)
-* [VMM なしの Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-hyper-v-site-to-azure.md#capacity-planning)
+* [VMM なしの Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-hyper-v-site-to-azure.md)
 
 ## <a name="failover"></a>フェールオーバー
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure の仮想マシンにどうしたらアクセスできますか。

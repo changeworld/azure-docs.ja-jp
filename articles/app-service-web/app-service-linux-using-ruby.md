@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5aeef6f31dacb1b27c605d39a35a81bd0211e06a
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: ad724b99426c1873c173da905c89b471ee64ffa6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -45,11 +45,14 @@ ms.lasthandoff: 05/10/2017
 
 Ruby Web アプリが作成されたら、Git または FTP を使用してデプロイできます。
 
+Ruby アプリの作成の詳細については、[ファースト ステップ ガイド](app-service-linux-ruby-get-started.md)をご覧ください。
+
 ## <a name="next-steps"></a>次のステップ
 * [Web App on Linux とは何か](app-service-linux-intro.md)
 * [Web App on Linux で Web Apps を作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)
 * [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)
+* [Azure Web App on Linux で Ruby アプリを作成する](app-service-linux-ruby-get-started.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-using-ruby/New-Linux.png

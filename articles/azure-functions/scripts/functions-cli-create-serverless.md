@@ -17,10 +17,10 @@ ms.date: 04/11/2017
 ms.author: cfowler
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: a9ab21a4eb6839006c4a7eca2037308646180010
+ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
+ms.openlocfilehash: 37046967bd5ab0d797d1c66690db7200fb4805e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 06/20/2017
 
 ---
 
@@ -28,11 +28,11 @@ ms.lasthandoff: 05/15/2017
 
 このサンプル スクリプトでは、関数のコンテナーである Azure Function App を作成します。 Function App は、イベント ドリブンのサーバーレス ワークロードに最適な[従量課金プラン](../functions-scale.md#consumption-plan)で作成されます。
 
-[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="sample-script"></a>サンプル スクリプト
 

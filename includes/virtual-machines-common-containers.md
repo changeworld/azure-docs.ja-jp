@@ -17,7 +17,7 @@ Azure は、次の Docker の価値を提供します。
 [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)と、docker ツールを使用して作成およびホストされたコンテナーは、分離を提供するためにハイパーバイザーを使用しません。 コンテナーでは、コンテナー ホストによって Linux カーネルのプロセスとファイル システムの分離機能が使用され、コンテナー、そのアプリ、特定のカーネル機能、その独自の分離型ファイル システムに公開されます。 コンテナーの内部で実行されるアプリから見ると、コンテナーは独立した OS インスタンスのように見えます。 内部のアプリからは、コンテナーの外部にあるプロセスやその他のリソースは見えません。
 
 Docker コンテナーでは、VM で使用されるよりもはるかに少ないリソースが使用されます。 Docker コンテナーでは、Docker ホストのカーネルを共有しないアプリケーションの分離と実行モデルが使用されます。 コンテナーには OS 全体が含まれないため、そのディスク フットプリントははるかに小さくなります。 起動時間と必要なディスク領域は VM よりも大幅に少なくなります。
-Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上で実行されるアプリに提供するためのものです。 Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。 2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。 Hyper-V コンテナーは、非常に強力に最適化された VM で各コンテナーをホストすることで分離のレイヤーを追加します。 Windows コンテナーの詳細については、 [Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。 Azure で Windows コンテナーを扱うには、まず[Azure Container Service クラスターのデプロイ方法](/articles/container-service/container-service-deployment.md)を参照してください。
+Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上で実行されるアプリに提供するためのものです。 Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。 2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。 Hyper-V コンテナーは、非常に強力に最適化された VM で各コンテナーをホストすることで分離のレイヤーを追加します。 Windows コンテナーの詳細については、 [Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。 Azure で Windows コンテナーを扱うには、まず[Azure Container Service クラスターのデプロイ方法](../articles/container-service/dcos-swarm/container-service-deployment.md)を参照してください。
 
 ## <a name="what-are-containers-good-for"></a>コンテナーのメリット
 

@@ -85,11 +85,11 @@
 ### [v1 と v2 の比較](active-directory-v2-compare.md)
 ## 作業の開始
 ### モバイル アプリとデスクトップ アプリ
-#### [iOS](https://github.com/Azure-Samples/active-directory-msal-ios-swift)
+#### [iOS](guidedsetups/active-directory-ios.md)
 #### [Android](guidedsetups/active-directory-android.md)
 #### [Windows デスクトップ .NET](guidedsetups/active-directory-windesktop.md)
 ### Web Apps
-#### [JavaScript SPA](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2)
+#### [JavaScript SPA](guidedsetups/active-directory-javascriptspa.md)
 #### [ASP.NET Web サーバー](guidedsetups/active-directory-aspnetwebapp.md)
 #### [NodeJS Web アプリ](active-directory-v2-devquickstarts-node-web.md)
 ## ガイド
@@ -105,3 +105,5 @@
 #### [トークンのリファレンス](active-directory-v2-tokens.md)
 #### [証明書の資格情報](active-directory-certificate-credentials.md)
 ### [スコープ](active-directory-v2-scopes.md)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)

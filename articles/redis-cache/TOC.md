@@ -34,6 +34,7 @@
 ###[出力キャッシュ プロバイダー](cache-aspnet-output-cache-provider.md)
 ## 管理
 ###[ポータルで構成する](cache-configure.md)
+###[geo レプリケーションの構成](cache-how-to-geo-replication.md)
 ###[データをインポート/エクスポートする](cache-how-to-import-export-data.md)
 ###[Reboot](cache-administration.md#reboot)
 ###[更新のスケジュール](cache-administration.md#schedule-updates)
@@ -55,6 +56,7 @@
 ## [REST ()](https://docs.microsoft.com/rest/api/redis/)
 
 # リソース
-## [Redis Cache のサンプル](cache-redis-samples.md)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
 ## [料金](https://azure.microsoft.com/pricing/details/cache/)
+## [Redis Cache のサンプル](cache-redis-samples.md)
 

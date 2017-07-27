@@ -13,9 +13,5 @@
 ### [アプリの概要](microsoft-authenticator-app-how-to.md)
 ### [携帯電話を使用したサインイン](microsoft-authenticator-app-phone-signin-faq.md)
 ### [FAQ](microsoft-authenticator-app-faq.md)
-
-
-
-<!--HONumber=Feb17_HO3-->
-
-
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)

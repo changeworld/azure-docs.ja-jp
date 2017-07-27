@@ -11,13 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 91a4e54b3dd2e1f44a6b52c548a243ae98e3ba3f
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="azure-active-directory-automatic-device-registration-faq"></a>Azure Active Directory へのデバイスの自動登録に関する FAQ
@@ -58,17 +59,17 @@ ms.lasthandoff: 04/27/2017
 
 オンプレミスの AD ドメインに参加している Windows 10 および Windows Server 2016 の場合、次の手順を実行します。
 
-1.    管理者としてコマンド プロンプトを開きます。
+1.  管理者としてコマンド プロンプトを開きます。
 
-2.    「`dsregcmd.exe /debug /leave`」と入力します。
+2.  「`dsregcmd.exe /debug /leave`」と入力します。
 
-3.    サインアウトしてからサインインして、デバイスを再登録するスケジュール済みタスクをトリガーします。 
+3.  サインアウトしてからサインインして、デバイスを再登録するスケジュール済みタスクをトリガーします。 
 
 オンプレミスの AD ドメインに参加しているその他の Windows プラットフォームの場合、次の手順を実行します。
 
-1.    管理者としてコマンド プロンプトを開きます。
-2.    「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
-3.    「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
+1.  管理者としてコマンド プロンプトを開きます。
+2.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /l"`」と入力します。
+3.  「 `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe /j"`」と入力します。
 
 ---
 
@@ -76,13 +77,13 @@ ms.lasthandoff: 04/27/2017
 
 **A:**
 
--    Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返した場合に、エントリの重複が発生することがあります。 
+-   Windows 10 および Windows Server 2016 の場合、同じデバイスの参加を解除し、再度参加させる操作を繰り返した場合に、エントリの重複が発生することがあります。 
 
--    [職場または学校アカウントを追加] を使用した場合、[職場または学校アカウントを追加] を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
+-   [職場または学校アカウントを追加] を使用した場合、[職場または学校アカウントを追加] を使用する各 Windows ユーザーは、同じデバイス名で新しいデバイス レコードを作成します。
 
--    自動登録を使用してオンプレミスの AD ドメインに参加している他の Windows プラットフォームでは、デバイスにログインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
+-   自動登録を使用してオンプレミスの AD ドメインに参加している他の Windows プラットフォームでは、デバイスにログインするドメイン ユーザーごとに、同じデバイス名で新しいデバイス レコードが作成されます。 
 
--    AADJ マシンをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
+-   AADJ マシンをワイプして再インストールし、同じ名前で再度参加させると、同じデバイス名で別のレコードとして表示されます。
 
 ---
 

@@ -80,7 +80,6 @@
 ### カスタム ドメイン
 #### [カスタム ドメインを購入して構成する](../app-service-web/custom-dns-web-site-buydomains-web-app.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [独自のカスタム ドメインをマップする](../app-service-web/web-sites-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-#### [GoDaddy ドメインを構成する](../app-service-web/web-sites-godaddy-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 #### [Traffic Manager でのカスタム ドメイン](../app-service-web/web-sites-traffic-manager-custom-domain-name.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ### [既存のアプリを複製する](../app-service-web/app-service-web-app-cloning-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -146,6 +145,7 @@
 ## 統合
 ### [ハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [SendGrid を使用した Azure での電子メールの送信方法](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [PowerApps および Microsoft Flow にエクスポートする](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## トラブルシューティング
 ### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
@@ -153,11 +153,12 @@
 ### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 # リソース
-## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
-## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ## [App Service のベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [Web ジョブのリソースの一覧](../app-service-web/websites-webjobs-resources.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+## [WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-get-started.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 
 

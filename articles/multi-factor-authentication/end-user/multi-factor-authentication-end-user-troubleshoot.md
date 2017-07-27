@@ -6,20 +6,21 @@ keywords: "多要素認証のクライアント, 認証の問題, 関連付け I
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 8f3aef42-7f66-4656-a7cd-d25a971cb9eb
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 06/15/2017
 ms.author: kgremban
+ms.reviewer: yossib
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 4ff028f88e984f28bc0f4a228aabed1fabc90560
-ms.openlocfilehash: 2eab76ba42955616ae4d6909c1568f03da0c1819
-ms.lasthandoff: 12/22/2016
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
+ms.openlocfilehash: 10b63a859c67b965734e32ec979b26a1ea6cc516
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/22/2017
 
 ---
 # <a name="having-trouble-with-two-step-verification"></a>2 段階認証で発生する問題
@@ -28,7 +29,7 @@ ms.lasthandoff: 12/22/2016
 ## <a name="i-lost-my-phone-or-it-was-stolen"></a>電話を紛失した場合や電話が盗まれた場合
 アカウントにアクセスする方法は 2 つあります。 1 つ目の方法は、代替認証電話番号を設定しているのであれば、その番号を使用することです。 2 つ目の方法は、管理者に設定をクリアしてもらうことです。
 
-電話を紛失した場合や電話が盗まれた場合は、アプリ パスワードのリセットと記憶されたすべてのデバイスのクリアも管理者に依頼することをお勧めします。 これらの実行方法を管理者がわからない場合は、[ユーザーとデバイスの管理](../multi-factor-authentication-manage-users-and-devices.md)に関する記事を示してください。
+電話を紛失した場合や電話が盗まれた場合は、アプリ パスワードのリセットと記憶されたすべてのデバイスのクリアも管理者に依頼することをお勧めします。 このタスクの実行方法を管理者がわからない場合は、[ユーザーとデバイスの管理](../multi-factor-authentication-manage-users-and-devices.md)に関する記事を示してください。
 
 ### <a name="use-an-alternate-phone-number"></a>代替電話番号を使用する
 複数の検証オプション (セカンダリ電話番号や別のデバイス上の認証アプリなど) を設定している場合は、いずれかのオプションを使用してサインインできます。
@@ -60,14 +61,14 @@ ms.lasthandoff: 12/22/2016
     ![Different Verification](./media/multi-factor-authentication-end-user-troubleshoot/diff_option.png)
 2. 使用する電話番号または配信方法を選択します。
    
-    複数の確認コードを受信した場合は、最新のコードだけが有効です。
+    複数の確認コードを受信した場合は、最新のコードを使用してください。
 
 別の方法を構成していない場合は、管理者に連絡して設定のクリアを依頼します。 次回のサインイン時に、[多要素認証の設定](multi-factor-authentication-end-user-first-time.md)を求めるメッセージが再び表示されます。
 
 電波状態が悪いために時間がかかる場合は、スマート フォンで[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)を使用することをお勧めします。 サインインするために使用するランダムなセキュリティコードをアプリで生成できます。これらのコードでは、携帯電話の信号もインターネット接続も必要ありません。
 
 ## <a name="app-passwords-are-not-working"></a>アプリ パスワードが機能しない場合
-最初に、アプリ パスワードが正しく入力されていることを確認します。  それでも機能しない場合は、サインインを試し、 [新しいアプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)します。  うまくいかない場合は、管理者に連絡して[既存のアプリ パスワードの削除](../multi-factor-authentication-manage-users-and-devices.md)を依頼します。その後、新しいパスワードを作成できます。
+最初に、アプリ パスワードが正しく入力されていることを確認します。 それでもうまく行かない場合は、サインインして[アプリ パスワードを作成](multi-factor-authentication-end-user-app-passwords.md)してみてください。  それでもうまくいかない場合は、管理者に連絡して[既存のアプリ パスワードの削除](../multi-factor-authentication-manage-users-and-devices.md)を依頼します。その後、新しいパスワードを作成できます。
 
 ## <a name="i-didnt-find-an-answer-to-my-problem"></a>問題に対する回答が見つからなかった場合
 トラブルシューティング手順を試したが、問題が解決されない場合は、管理者または多要素認証を設定した人に問い合わせて、 助言を求めてください。

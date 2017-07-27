@@ -10,7 +10,7 @@ ms.translationtype: Human Translation
 ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
 ms.openlocfilehash: 2b73fb55384cdcc8db2736557e0efef97b34fc45
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="azure-key-vault-soft-delete-feature-overview"></a>Azure Key Vault の論理的な削除機能の概要

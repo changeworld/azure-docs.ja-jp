@@ -12,12 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/08/2017
+ms.date: 07/13/2017
 ms.author: billmath
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 3d3ba2d11d66ecc253a34e7c4da422bf9fdbd1bd
 ms.openlocfilehash: da69c6f8d0d831349e50548c8883db249b4ee60f
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/06/2017
 
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect sync: アーキテクチャの概要
@@ -257,10 +258,5 @@ ID 管理プロセスは、異なる接続されたデータ ソース間で ID 
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Feb17_HO1-->
 
 

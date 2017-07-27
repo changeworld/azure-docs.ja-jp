@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib; sstein
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: cbe2b6bbc8e193bdbbf08572a8488239c633548d
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 84c27de6b5fafb3b9236fed77a9d0557d89d217c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -64,7 +64,7 @@ Azure SQL Database の統合機能となったエラスティック ジョブの
 
 ## <a name="get-the-wingtip-application-scripts"></a>Wingtip アプリケーションのスクリプトを取得する
 
-Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-the-wingtip-saas-scripts)。
+Wingtip SaaS のスクリプトとアプリケーション ソース コードは、[WingtipSaaS](https://github.com/Microsoft/WingtipSaaS) GitHub リポジトリから入手できます。 [Wingtip SaaS のスクリプトをダウンロードする手順](sql-database-wtp-overview.md#download-and-unblock-the-wingtip-saas-scripts)。
 
 ## <a name="create-a-job-account-database-and-new-job-account"></a>ジョブ アカウント データベースと新しいジョブ アカウントの作成
 
@@ -136,3 +136,4 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 * [Wingtip SaaS アプリケーションのデプロイに基づく作業のための追加のチュートリアル](sql-database-wtp-overview.md#sql-database-wingtip-saas-tutorials)
 * [スケールアウトされたクラウド データベースの管理](sql-database-elastic-jobs-overview.md)
 * [スケールアウトしたクラウド データベースの作成と管理](sql-database-elastic-jobs-create-and-manage.md)
+

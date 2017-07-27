@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/11/2017
+ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 3c91cb00d6535a4bc01a3b95547ef940cbff7fcb
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: e9699abe0c1bdb6ea449c99e087ae56adb717b8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 06/30/2017
 
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
@@ -39,7 +38,25 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [PowerShell コネクタ](active-directory-aadconnectsync-connector-powershell.md) リファレンス ドキュメント
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
 
-## <a name="115220"></a>1.1.522.0
+## <a name="115510-aadconnect-115530"></a>1.1.551.0 (AADConnect 1.1.553.0)
+
+### <a name="fixed-issues"></a>修正された問題:
+
+* 一般的な Web サービス:
+  * Wsconfig ツールでは、JSON 配列が、REST サービス メソッドの "サンプル要求" から正しく変換されませんでした。 このため、REST 要求のこの Json 配列で、シリアル化の問題が発生しました。
+  * Web サービス コネクタの構成ツールでは、JSON 属性名で空白記号を使用できません。代入パターンを、WSConfigTool.exe.config ファイルに手動で追加できます (例: ```<appSettings> <add key=”JSONSpaceNamePattern” value="__" /> </appSettings>```)。
+
+* Lotus Notes:
+  * **[Allow custom certifiers for Organization/Organizational Units]\(組織/組織単位のカスタム証明者を許可する\)** オプションが無効の場合、エクスポート (更新) 中のコネクタは失敗します。エクスポート フロー後は、すべての属性が Domino にエクスポートされていますが、KeyNotFoundException は、エクスポート時に同期に返されます。 これは、以下の属性のいずれかを変更することで DN (UserName 属性) を変更しようとしているときに、名前の変更操作が失敗するために発生します。  
+    - LastName
+    - FirstName
+    - MiddleInitial
+    - AltFullName
+    - AltFullNameLanguage
+    - ou
+    - altcommonname
+
+  * **[Allow custom certifiers for Organization/Organizational Units]\(組織/組織単位のカスタム証明者を許可する\)** オプションが有効な場合、必要な証明者がまだ空だと、KeyNotFoundException が発生します。
 
 ### <a name="enhancements"></a>強化された機能:
 

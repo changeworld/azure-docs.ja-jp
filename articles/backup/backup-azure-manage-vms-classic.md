@@ -15,10 +15,11 @@ ms.topic: article
 ms.date: 08/31/2016
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 82b7541ab1434179353247ffc50546812346bda9
-ms.openlocfilehash: d00235d788dbe1674eac219a7c708a8ecd53ccc5
-ms.lasthandoff: 03/02/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 4abc72962f5a67851aee9d64d7c8125e72d0ec09
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -32,9 +33,14 @@ ms.lasthandoff: 03/02/2017
 この記事では、Azure で保護されているクラシック モデル仮想マシンの、共通の管理および監視タスクに関する情報を提供します。  
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して&2; 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
+> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。[Resource Manager デプロイメント モデルとクラシック デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)です。 クラシック デプロイメント モデル VM の操作方法の詳細については、「[Azure 仮想マシンをバックアップする環境の準備](backup-azure-vms-prepare.md)」をご覧ください。
 >
+> [!IMPORTANT]
+>2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。
 >
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
+>- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+>- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 
 ## <a name="manage-protected-virtual-machines"></a>保護された仮想マシンを管理する
 以下では、保護された仮想マシンを管理する方法を説明します。

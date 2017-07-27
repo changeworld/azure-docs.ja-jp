@@ -5,120 +5,139 @@ services: mysql
 author: v-chenyh
 ms.author: v-chenyh
 manager: jhubbard
-editor: jasonh
-ms.assetid: 
-ms.service: mysql
-ms.devlang: na
+editor: jasonwhowell
+ms.service: mysql-database
 ms.topic: hero-article
-ms.tgt_pltfrm: portal
-ms.date: 05/10/2017
+ms.date: 06/14/2017
 ms.custom: mvc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 85bb0396809297f0efb7323bef081055f17ede62
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: dba50b369fb87d5f6d5118038c75392bd719cc10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/06/2017
 
 ---
 
 # <a name="create-an-azure-database-for-mysql-server-using-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL サーバーの作成
-
-この記事では、Azure Portal を使用して、5 分程度でサンプルの Azure Database for MySQL サーバーを作成する手順を説明します。 
+この記事では、Azure Portal を使用して、5 分程度で Azure Database for MySQL サーバーを作成する手順を説明します。 
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
-Web ブラウザーを開いて、[Microsoft Azure Portal](https://portal.azure.com/) にアクセスします。 資格情報を入力してポータルにログインします。 既定のビューはサービス ダッシュボードです。
+Web ブラウザーを開いて、[Microsoft Azure Portal](https://portal.azure.com/) にアクセスします。 資格情報を入力してポータルにサインインします。 既定のビューはサービス ダッシュボードです。
 
 ## <a name="create-azure-database-for-mysql-server"></a>Azure Database for MySQL サーバーの作成
+1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
 
-1. **[データベース]** > **[MySQL]** に移動します。 **[データベース]** カテゴリ内に Azure Database for MySQL サーバーが見つからない場合は、**[すべて表示]** をクリックして、使用可能なすべてのデータベース サービスを表示します。 検索ボックスに「**MySQL**」と入力すれば、サービスをすばやく探せます。
+2. **[新規]** ページで **[データベース]** を選択し、**[データベース]** ページで **[Azure Database for MySQL]** を選択します。 [新規] ページの検索ボックスに「**MySQL**」と入力すれば、サービスをすばやく探せます。
 ![Azure Portal - 新規 - データベース - MySQL](./media/quickstart-create-mysql-server-database-using-azure-portal/2_navigate-to-mysql.png)
 
-2. **[MySQL]** アイコンをクリックし、**[作成]** をクリックします。
-この例では、Azure Database for MySQL のページに次の情報を入力します。
+3. 前の画像で示されているように、新規サーバーの詳細フォームに次の情報を入力します。
 
-| **フォームのフィールド** | **フィールドの説明** |
-|----------------|-----------------------|
-| *[サーバー名]* | mysqlserver4demo (サーバー名はグローバルに一意) |
-| *サブスクリプション* | MySQLaaS (ドロップダウン リストから選択) |
-| *[リソース グループ]* | myresource (リソース グループを作成するか、既存のグループを使用する) |
-| *[サーバー管理者ログイン]* | myadmin (管理者アカウント名をセットアップ) |
-| *パスワード* | 管理者アカウントのパスワードを設定 |
-| *パスワードの確認* | 管理者アカウントのパスワードを確認 |
-| *場所* | 北ヨーロッパ (**[北ヨーロッパ]** か **[米国西部]** のいずれかを選択) |
-| *バージョン* | 5.6 (MySQL サーバーのバージョンを選択) |
-| *[パフォーマンスの構成]* | Basic (**[価格レベル]**、**[コンピューティング ユニット]**、**[ストレージ]** を選択し、**[OK]** をクリック) |
+| **設定** | **推奨値** | **フィールドの説明** |
+|---|---|---|
+| *[サーバー名]* | myserver4demo  | サーバー名はグローバルに一意である必要があります。 |
+| *サブスクリプション* | mysubscription | ドロップダウン リストからサブスクリプションを選択します。 |
+| *[リソース グループ]* | myresourcegroup | リソース グループを作成するか、既存のものを使用します。 |
+| *[サーバー管理者ログイン]* | myadmin | MySQL エンジンで管理者となるアカウント名を指定します。 |
+| *パスワード* |  | 強力な管理者アカウントのパスワードを設定します。 |
+| *パスワードの確認* |  | 管理者アカウントのパスワードを確認します。 |
+| *場所* |  | 使用可能なリージョンを選択します。 |
+| *バージョン* | 5.7 | 最新バージョンを選択します。 |
+| *価格レベル* | Basic、50 コンピューティング ユニット、50 ストレージ (GB)  | **価格レベル**、**コンピューティング ユニット**、**ストレージ (GB)** を選択して **[OK]** をクリックします。 |
+| *ダッシュボードにピン留めする* | ○ | サーバーを後で簡単に見つけることができるので、このチェック ボックスをオンすることをお勧めします。 |
 
-![Azure Portal - フォームの必須項目を入力して MySQL を作成](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
+   **[価格レベル]** をクリックして、新しいデータベースの価格レベルとパフォーマンス レベルを指定します。 このクイック スタートでは、Basic レベル、50 個のコンピューティング ユニット、および 50 GB のストレージを選択します。 **[OK]** をクリックして価格レベルを保存します。
+   
+   ![Azure Portal - フォームの必須項目を入力して MySQL を作成](./media/quickstart-create-mysql-server-database-using-azure-portal/3_create-server.png)
 
-数分間で Azure Database for MySQL サーバーがプロビジョニングされ実行します。 ツール バーの **[通知]** ボタン (ベル アイコン) をクリックすると、デプロイ プロセスを監視できます。
-
-> [!TIP]
-> Azure サービスは同じリージョン内に置き、最も近い場所を選択することをお勧めします。 また、**[ダッシュボードにピン留めする]** チェック ボックスをオンにすると、デプロイを追跡しやすくなります。
+   **[作成]**をクリックします。 1 ～ 2 分で、新しい Azure Database for MySQL サーバーがクラウドで実行されます。 ツール バーの **[通知]** ボタン (ベル型のアイコン) をクリックすると、デプロイ プロセスを監視できます。
 
 ## <a name="configure-the-firewall"></a>ファイアウォールの構成
-クライアントから初めて Azure Database for MySQL に接続する前に、ファイアウォールを構成し、クライアントのパブリック ネットワーク IP アドレス (または IP アドレスの範囲) をホワイト リストに追加する必要があります。
+初めて Azure Database for MySQL に接続する前に、ファイアウォールを構成し、クライアントのパブリック ネットワーク IP アドレス (またはその範囲) をホワイトリストに追加します。
 
-1. 新しく作成したサーバーをクリックし、**[設定]** をクリックします。
-  ![Azure Portal - MySQL - [設定] ボタン](./media/quickstart-create-mysql-server-database-using-azure-portal/4_server-settings.png)
+1. デプロイが完了したら、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名「**myserver4demo**」を入力して、新しく作成したサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの [概要] ページが開き、さらに多くの構成オプションが表示されます。
 
-2. **[全般]** セクションの下で **[ファイアウォール設定]** をクリックします。 **[自分の IP を追加]** をクリックして、ご使用のローカル コンピューターの IP アドレスを追加したり、IP アドレスの範囲を構成したりできます。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
+2. サーバーのブレードで、**[接続のセキュリティ]** を選択します。
+
+3. **[自分の IP を追加]** をクリックして、ご使用のローカル コンピューターの IP アドレスを追加するか、IP アドレスの範囲を構成します。 規則を作成したら、忘れずに **[保存]** をクリックしてください。
   ![Azure Portal - ファイアウォール規則の追加と保存](./media/quickstart-create-mysql-server-database-using-azure-portal/5_firewall-settings.png)
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Portal で、Azure MySQL サーバーの完全修飾ドメイン名を取得します。 この完全修飾ドメイン名は、**mysql.exe** コマンド ライン ツールでサーバーに接続する際に使用します。
 
-1.    [Azure Portal](https://portal.azure.com/) の左側のメニューにある **[すべてのリソース]** をクリックし、Azure Database for MySQL サーバーをクリックします。
+1.  [Azure Portal](https://portal.azure.com/) の左側のメニューにある **[すべてのリソース]** をクリックし、Azure Database for MySQL サーバーをクリックします。
 
-2.    **[プロパティ]**をクリックします。 **[サーバー名]** と **[サーバー管理者ログイン]** の値をメモしておきます。
-この例では、サーバー名は *mysql4doc.database.windows.net*、サーバー管理者ログインは *mysqladmin@mysql4doc* です。
+2.  **[プロパティ]**をクリックします。 **[サーバー名]** と **[サーバー管理者ログイン]** の値をメモしておきます。
+この例では、サーバー名は *myserver4demo.mysql.database.azure.com*、サーバー管理者ログインは *myadmin@myserver4demo* です。
 
 ## <a name="connect-to-the-server-using-mysqlexe-command-line-tool"></a>mysqlexe コマンドライン ツールを使用したサーバーへの接続
-MySQL サーバーに複数のデータベースを作成することができます。 作成できるデータベース数に制限はありませんが、複数のデータベースは同一のサーバー リソースを共有します。  **mysql.exe** コマンドライン ツールを使用してサーバーに接続するには、ポータルで **Azure Cloud Shell** を開いて、次のように入力します。
+[mysql コマンドライン ツール](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)を使用して、Azure Database for MySQL サーバーへの接続を確立します。 mysql コマンドライン ツールは、Azure Cloud Shell を使用してブラウザーで実行するか、ローカルにインストールされている mysql ツールを使用して自分のコンピューターから起動できます。 Azure Cloud Shell を起動するには、この記事のコード ブロックにある `Try It` ボタンをクリックするか、[Azure Portal](https://portal.azure.com) にアクセスして右上のツールバーにある `>_` アイコンをクリックします。 
 
-1. **mysql** コマンドライン ツールを使用してサーバーに接続します。
-```dos
- mysql -h mysqlserver4demo.database.windows.net -u myadmin@mysqlserver4demo -p
+1. 接続するためのコマンドを入力します。
+```azurecli-interactive
+mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p
 ```
 
-2. サーバーの状態を表示します。
-```dos
- mysql> status
+2. サーバーの状態を見て正常に接続していることを確認します。 接続したら、mysql> プロンプトで「`status`」と入力します。
+```sql
+status
 ```
-  ![コマンド プロンプト - mysql コマンド ラインの例](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
 
-> [!TIP]
-> その他のコマンドについては、「[MySQL 5.6 Reference Manual - Chapter 4.5.1](https://dev.mysql.com/doc/refman/5.6/en/mysql.html)」(MySQL 5.6 リファレンス マニュアル- 4.5.1 章) を参照してください。
+   ![コマンド プロンプト - mysql コマンド ラインの例](./media/quickstart-create-mysql-server-database-using-azure-portal/7_connect-to-server.png)
+
+   > [!TIP]
+   > その他のコマンドについては、「[MySQL 5.7 リファレンス マニュアル - 4.5.1 章](https://dev.mysql.com/doc/refman/5.7/en/mysql.html)」を参照してください。
+
+3. mysql> プロンプトで「`CREATE DATABASE`」と入力して空のデータベースを作成します。
+
+   ```sql
+   CREATE DATABASE quickstartdb;
+   ```
+
+   Azure Database for MySQL サーバー内には 1 つまたは複数のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 作成できるデータベース数に制限はありませんが、複数のデータベースは同一のサーバー リソースを共有します。  
+
+4. mysql> プロンプトで `SHOW DATABASES` コマンドを入力してデータベースをリストします。
+
+   ```sql
+   SHOW DATABASES;
+   ```
 
 ## <a name="connect-to-the-server-using-the-mysql-workbench-gui-tool"></a>MySQL Workbench GUI ツールを使用したサーバーへの接続
-1.    クライアント コンピューターで MySQL Workbench アプリケーションを起動します。 MySQL Workbench は[ここ](https://dev.mysql.com/downloads/workbench/)からダウンロードしてインストールできます。
+1.  クライアント コンピューターで MySQL Workbench アプリケーションを起動します。 MySQL Workbench は[ここ](https://dev.mysql.com/downloads/workbench/)からダウンロードしてインストールできます。
 
-2.    **[Setup New Connection]** ダイアログ ボックスで、次の情報を **[Parameters]** タブに入力します。
+2.  **[Setup New Connection]** ダイアログ ボックスで、次の情報を **[Parameters]** タブに入力します。
 
-| **パラメーター** | **説明** |
-|----------------|-----------------|
-|    *Connection Name* | この接続の名前を指定します (任意に指定できます) |
-| *Connection Method* | Standard (TCP/IP) を選択します |
-| *Hostname* | mycliserver.database.windows.net (前にメモしておいたサーバー名) |
-| *ポート* | 3306 |
-| *ユーザー名* | myadmin@mycliserver (前にメモしておいたサーバー管理者ログイン) |
-| *パスワード* | 資格情報コンテナーに管理者アカウントのパスワードを格納することができます |
+   ![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
 
-![新しい接続のセットアップ](./media/quickstart-create-mysql-server-database-using-azure-portal/setup-new-connection.png)
+| **設定** | **推奨値** | **フィールドの説明** |
+|---|---|---|
+|   *Connection Name* | Demo Connection| この接続のラベルを指定します。 |
+| *Connection Method* | Standard (TCP/IP) | Standard (TCP/IP) で十分です。 |
+| *Hostname* | myserver4demo.mysql.database.azure.com | サーバーの完全修飾サーバー名を使用します。 |
+| *ポート* | 3306 | 既定のポート 3306 を使用します。 |
+| *ユーザー名* | myadmin@myserver4demo  | 前にメモしておいたサーバー管理者ログインに @ 文字とサーバー名を付加したものを使用します。 |
+| *パスワード* | パスワード | [Store in Vault \(コンテナーに保存\)] ボタンをクリックしてパスワードを保存します。 |
 
-3.    **[Test Connection] (接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。
+**[Test Connection] \(接続のテスト)** をクリックして、すべてのパラメーターが正しく構成されているかをテストします。 [OK] をクリックして接続を保存します。 
 
-4.    これで、作成したばかりの接続をクリックして、サーバーに正常に接続できます。
-
-> ご使用のサーバーには SSL が既定で適用されるため、正常に接続するために追加の構成が必要です。 「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  このクイック スタートで SSL を無効にするのであれば、ポータルの [接続のセキュリティ] で SSL の適用を無効にすることができます。
+> [!NOTE]
+> ご使用のサーバーには SSL が既定で適用されるため、正常に接続するためには追加の構成が必要です。 「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  このクイック スタートでは SSL を無効にしたい場合は、Azure Portal にアクセスし、[接続のセキュリティ] ページをクリックして、[強制 SSL 接続] トグル ボタンをオフにして無効にします。
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
+[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)を削除して、クイックスタートで作成したすべてのリソースをクリーンアップします。
 
-これらのリソースが別のクイック スタート/チュートリアルで不要である場合、次のようにして削除することができます。
+> [!TIP]
+> このコレクションの他のクイック スタートは、このクイック スタートに基づいています。 引き続きクイック スタートの作業を行う場合は、このクイック スタートで作成したリソースをクリーンアップしないでください。 これ以上作業を行わない場合は、次の手順に従って、このクイック スタートで作成したすべてのリソースを Azure ポータルで削除してください。
 
-1. Azure Portal の左側のメニューから、**[リソース グループ]**、**[myresource]** の順にクリックします。 
-2. リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myresource**」と入力してから **[削除]** をクリックします。
+1.  Azure ポータルの左側のメニューから、**[リソース グループ]**、**[myResourceGroup]** の順にクリックします。
+2.  リソース グループのページで **[削除]** をクリックし、テキスト ボックスに「**myResourceGroup**」と入力してから [削除] をクリックします。
+
+新しく作成したサーバーを削除する場合は、次のようにします。
+1.  Azure ポータルの左側のメニューにある PostgreSQL サーバーをクリックし、作成したばかりのサーバーを検索します。
+2.  [概要] ページで、上部のウィンドウの [削除] ボタンをクリックします。![Azure Database for MySQL - サーバーの削除](./media/quickstart-create-mysql-server-database-using-azure-portal/delete-server.png)
+3.  削除するサーバーの名前を確認し、影響を受けるデータベースをその下に表示します。 テキスト ボックスに「**myserver4demo**」と入力し、[削除] をクリックします。
+
 
 ## <a name="next-steps"></a>次のステップ
 

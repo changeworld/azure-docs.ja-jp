@@ -4,7 +4,7 @@ description:
 services: 
 documentationcenter: 
 author: vikramdesai01
-manager: vikramdesai01
+manager: vikdesai
 editor: 
 tags: billing
 ms.assetid: e4c4d136-2826-4938-868f-a7e67ff6b025
@@ -15,10 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: vikdesai
-translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 3453e80246393f15cf0ee2eb29b2fb1d53f77078
-ms.lasthandoff: 04/26/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
+ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/25/2017
 
 
 ---
@@ -63,7 +64,7 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
     ![Azure Portal で請求閲覧者が見られる情報を表示するスクリーンショット](./media/billing-manage-access/billing-reader-view.png)
 
 > [!NOTE]
-> 請求閲覧者の機能はプレビュー段階であり、Azure グローバル クラウドのみで使用できます。
+> 請求閲覧者機能はプレビュー段階であり、エンタープライズ (EA) サブスクリプションや非グローバル クラウドはまだサポートされていません。
 
 ## <a name="adding-users-to-other-roles"></a>ユーザーをその他のロールに追加する
 
@@ -76,3 +77,4 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+

@@ -12,14 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/05/2017
+ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 8eab867e784ea227981341e2bf0035ed6bc3c198
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0bc73aacebd63473028ba707bb216d827d92f424
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -27,11 +26,11 @@ ms.lasthandoff: 05/10/2017
 
 Virtual machines in Azure Stack give you the flexibility of virtualization without having to buy and maintain the physical hardware that runs it. When you use Virtual Machines, understand that there are some differences between the features that are available in Azure and Azure Stack, refer to the [Considerations for virtual machines in Azure Stack](azure-stack-vm-considerations.md) topic to learn about these differences. 
 
-This guide details using PowerShell to create a Windows Server 2016 virtual machine in Azure Stack. You can run the steps described in this article either from the Azure Stack POC, or from a Windows-based external client if you are connected through VPN. 
+This guide details using PowerShell to create a Windows Server 2016 virtual machine in Azure Stack. You can run the steps described in this article either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN. 
 
 ## <a name="prerequisites"></a>Prerequisites
 
-1. The Azure Stack marketplace doesn't contain the Windows Server 2016 image by default. So, before you can create a virtual machine, make sure that the Azure Stack administrator [adds the Windows Server 2016 image to the Azure Stack marketplace](azure-stack-add-default-image.md). 
+1. The Azure Stack marketplace doesn't contain the Windows Server 2016 image by default. So, before you can create a virtual machine, make sure that the Azure Stack cloud administrator [adds the Windows Server 2016 image to the Azure Stack marketplace](azure-stack-add-default-image.md). 
 2. Azure Stack requires specific version of Azure PowerShell module to create and manage the resources. Use the steps described in [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) topic to install the required version.
 3. [Configure PowerShell to connect to Azure Stack.](azure-stack-powershell-configure.md)
 
@@ -208,7 +207,7 @@ New-AzureRmVM `
 
 ## <a name="connect-to-the-virtual-machine"></a>Connect to the virtual machine
 
-After the virtual machine is successfully created, open a Remote Desktop connection to the virtual machine from the Azure Stack POC, or from a Windows-based external client if you are connected through VPN. To remote into the virtual machine that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the virtual machine: 
+After the virtual machine is successfully created, open a Remote Desktop connection to the virtual machine from the development kit, or from a Windows-based external client if you are connected through VPN. To remote into the virtual machine that you created in the previous step, you need its public IP address. Run the following command to get the public IP address of the virtual machine: 
 
 ```powershell
 Get-AzureRmPublicIpAddress `

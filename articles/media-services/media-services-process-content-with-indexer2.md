@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 15/05/2017
+ms.date: 02/06/2017
 ms.author: adsolank;juliako;
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 717a8ace8c469b0529ac3c98f22b8ee5a53b3d3b
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: c7f11a2fc19446cd24e8c5fddfbe82d9f1712754
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -85,6 +85,9 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 * ポルトガル語 [PtBr]
 * アラビア語 (エジプト語) [ArEg]
 * 日本語 [JaJp]
+* ロシア語 [RuRu]
+* 英語 (英国) [EnGb]
+* スペイン語 (メキシコ) [EsMx] 
 
 ## <a name="supported-file-types"></a>サポートされるファイルの種類
 

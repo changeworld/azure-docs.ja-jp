@@ -74,7 +74,7 @@
 
 ### [Azure BLOB Storage](../../storage/storage-blob-storage-tiers.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [.NET を使用して Azure Blob Storage を使用する](../../storage/storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
-### [Windows で Azure File Storage を使用する](../../storage/storage-dotnet-how-to-use-files.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
+### [Windows で Azure File Storage を使用する](../../storage/storage-file-how-to-use-files-windows.md?toc=%2fazure%2fguides%2foperations%2ftoc.json) 
 ### [Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Table Storage を使用する](../../storage/storage-dotnet-how-to-use-tables.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 ### [Azure Queue Storage を使用する](../../storage/storage-dotnet-how-to-use-queues.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
@@ -99,3 +99,5 @@
 #### [仮想ネットワークへのコンピューターの接続](../../vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json)
 
 ## [次のステップ](azure-operations-guide.md#next-steps)
+# リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

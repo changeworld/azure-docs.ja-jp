@@ -12,12 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2016
+ms.date: 07/05/2017
 ms.author: nini
-translationtype: Human Translation
-ms.sourcegitcommit: a0c8af30fbed064001c3fd393bf0440aa1cb2835
-ms.openlocfilehash: ac94bca1657efbe0ce94db953933f026217d1c8a
-ms.lasthandoff: 02/28/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 6f864581fe1d1771371d6805407cb881fedb4187
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -29,14 +30,16 @@ ms.lasthandoff: 02/28/2017
 >
 >
 
+![Service Fabric のシンボル](./media/log-analytics-service-fabric/service-fabric-assessment-symbol.png)
+
 この記事では、Log Analytics で Service Fabric のソリューションを使用して、Service Fabric クラスター全体でのトラブルシューティングに役立てる方法について説明します。
 
 Service Fabric ソリューションでは Service Fabric VM からの Azure 診断データを使用しますが、このデータは Azure WAD テーブルから収集されます。 Log Analytics は**Reliable Service イベント**、**アクター イベント**、**操作イベント**、および**カスタム ETW イベント**を含む Service Fabric フレームワークのイベントを読み取ります。 ソリューション ダッシュボードを使用して、Service Fabric 環境における注目すべき問題や関連イベントを表示できます。
 
-ソリューションを開始するには、Service Fabric クラスターを Log Analytics のワークスペースに接続する必要があります。 この場合、3 つのシナリオが考えられます。
+ソリューションを開始するには、Service Fabric クラスターを Log Analytics ワークスペースに接続する必要があります。 この場合、3 つのシナリオが考えられます。
 
 1. Service Fabric クラスターをデプロイしていない場合は、「***Log Analytics のワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順を使用して新しいクラスターをデプロイし、Log Analytics をレポートするように構成します。
-2. ホストからパフォーマンス カウンターを収集して Service Fabric クラスターでセキュリティなどの他の OMS ソリューションを使用する必要がある場合は、「***VM 拡張機能がインストールされている OMS ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
+2. ホストからパフォーマンス カウンターを収集して Service Fabric クラスターでセキュリティなどの他の OMS ソリューションを使用する必要がある場合は、「***VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ***」の手順に従います。
 3. 既に Service Fabric クラスターをデプロイしてあり、Log Analytics に接続する場合は、「***Log Analytics への既存のストレージ アカウントの追加***」の手順に従います。
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace"></a>Log Analytics ワークスペースに接続されている Service Fabric クラスターをデプロイします。
@@ -48,7 +51,9 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-oms%2F%2Fazuredeploy.json)
 
-上記のデプロイボタンを選択すると、編集するパラメーターがある Azure Portal に移動します。 新しい Log Analytics ワークスペース名を入力する場合は、新しいリソース グループ: ![Service Fabric](./media/log-analytics-service-fabric/2.png) を作成してください。
+上のデプロイ ボタンを選択すると、Azure Portal が開き、パラメーターを編集できます。 新しい Log Analytics ワークスペース名を入力する場合は、新しいリソース グループを作成してください。
+
+![Service Fabric](./media/log-analytics-service-fabric/2.png)
 
 ![Service Fabric](./media/log-analytics-service-fabric/3.png)
 
@@ -56,13 +61,13 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
-## <a name="deploy-a-service-fabric-cluster-connected-to-an-oms-workspace-with-vm-extension-installed"></a>VM 拡張機能がインストールされている OMS ワークスペースに接続されている Service Fabric クラスターをデプロイします。
+## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace-with-vm-extension-installed"></a>VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 新しいワークスペースを作成するか、既存のワークスペースを使用することができます。
 2. 診断ストレージ アカウントを Log Analytics ワークスペースに追加します。
 3. Log Analytics ワークスペースで、Service Fabric ソリューションを有効にします。
-4. Service Fabric クラスター内の各 VM スケールセットで、MMA エージェント拡張機能をインストールします。 MMA エージェントがインストールされている場合、ノードに関するパフォーマンス メトリックを表示できます。
+4. Service Fabric クラスター内の各仮想マシン スケール セットで、MMA エージェント拡張機能をインストールします。 MMA エージェントがインストールされている場合、ノードに関するパフォーマンス メトリックを表示できます。
 
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fazure%2Fazure-quickstart-templates%2Fmaster%2Fservice-fabric-vmss-oms%2F%2Fazuredeploy.json)
 
@@ -82,7 +87,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 * [ログ検索] で、次のクエリを使用してノードに関する主要なメトリックを詳しく調べます。
   </br>
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 過去&1; 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
 
     ``` Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR. ```
 
@@ -115,16 +120,16 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
 
 > [!NOTE]
-> リソース グループを選択する際に、既存の Log Analytics ワークスペースを使用している場合は、[既存を使用] を選択して OMS ワークスペースを含むリソース グループを検索します。 そうでない場合は、新規の Log Analytics を作成してください。
+> リソース グループを選択する際に、既存の Log Analytics ワークスペースを使用している場合は、[既存のものを使用] を選択して Log Analytics ワークスペースが含まれたリソース グループを検索します。 そうでない場合は、新規の Log Analytics を作成してください。
 > ![Service Fabric](./media/log-analytics-service-fabric/8.png)
 >
 >
 
-このテンプレートがデプロイされた後は、Log Analytics ワークスペースに接続されたストレージ アカウントを表示することができます。 このインスタンスでは、上記で作成した Exchange ワークスペースにストレージ アカウントをもう&1; つ追加しました。
+このテンプレートがデプロイされた後は、Log Analytics ワークスペースに接続されたストレージ アカウントを表示することができます。 このインスタンスでは、上記で作成した Exchange ワークスペースにストレージ アカウントをもう 1 つ追加しました。
 ![Service Fabric](./media/log-analytics-service-fabric/9.png)
 
 ## <a name="view-service-fabric-events"></a>Service Fabric イベントの表示
-展開が完了し、Service Fabric ソリューションがワークスペースで有効になったら、Log Analytics ポータルで **[Service Fabric]** タイルを選択して Service Fabric ダッシュ ボードを起動します。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間範囲について、その列の基準に該当するイベント数の上位&10; 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
+展開が完了し、Service Fabric ソリューションがワークスペースで有効になったら、Log Analytics ポータルで **[Service Fabric]** タイルを選択して Service Fabric ダッシュ ボードを起動します。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | **Service Fabric イベント** | **description** |
 | --- | --- |
@@ -140,7 +145,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 次の表は、Service Fabric のデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
 
-| プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
+| プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![いいえ](./media/log-analytics-malware/oms-bullet-red.png) |![あり](./media/log-analytics-malware/oms-bullet-green.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |10 分 |
 

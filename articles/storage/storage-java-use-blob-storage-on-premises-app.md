@@ -14,14 +14,16 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ff0c9f9c800b0e4764efb88e43087bd96fa820e9
+ms.openlocfilehash: a172b881fa38a69f4510df94f5797b7a56940c52
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 
 ---
 # <a name="on-premises-application-with-blob-storage"></a>BLOB ストレージを使用するオンプレミスのアプリケーション
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
 次の例では、Azure Storage を使用して画像を Azure に保存する方法を示しています。 この記事では、画像を Azure にアップロードし、ブラウザーに画像を表示する HTML ファイルを作成するコンソール アプリケーションのコードを紹介します。
 
 ## <a name="prerequisites"></a>前提条件
@@ -29,7 +31,7 @@ ms.openlocfilehash: 27d088291d93ce936a9b2465a13a47e62270fb84
 * Azure SDK がインストールされていること。
 * Azure Libraries for Java の JAR および該当する依存関係 JAR がインストールされ、Java コンパイラで使用されるビルド パスに存在すること。 Azure Libraries for Java のインストールについては、「 [Azure SDK for Java のダウンロード](../java-download-azure-sdk.md)」のページをご覧ください。
 * Azure ストレージ アカウントがセットアップされていること。 この記事のコードでは、ストレージ アカウントのアカウント名とアカウント キーが使用されます。 ストレージ アカウントの作成については、「[方法: ストレージ アカウントを作成する](storage-create-storage-account.md#create-a-storage-account)」をご覧ください。アカウント キーの取得については、[ストレージ アクセス キーの表示およびコピーに関するページ](storage-create-storage-account.md#view-and-copy-storage-access-keys)をご覧ください。
-* ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。 または、例に含まれている   **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使うこともできます。
+* ローカル画像ファイルが作成され、c:\\myimages\\image1.jpg に保存されていること。 または、例に含まれている **FileInputStream** コンストラクターを変更して、別の画像パスとファイル名を使うこともできます。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
@@ -406,10 +408,5 @@ public class DeleteContainer {
 * [Azure ストレージ クライアント SDK リファレンス](http://dl.windowsazure.com/storage/javadoc/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

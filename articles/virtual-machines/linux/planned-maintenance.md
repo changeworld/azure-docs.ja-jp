@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/27/2017
 ms.author: zivr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 28c2fb5a67eca0c5ab2f0299bba7c11375e10558
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: f5e52f4642b85a75f0c9f1892fbf0e565aa8b35b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -36,4 +36,5 @@ Microsoft Azure は、世界各地で定期的に更新を行い、仮想マシ�
 
 -   VM 再起動メンテナンスでは、ホストされた仮想マシンの再起動または再配置が必要です。
 
-このページでは、Microsoft Azure による計画的なメンテナンスの実行について説明しています。 計画外のイベント (停止) の詳細については、「 [仮想マシンの可用性管理](../windows/manage-availability.md)」をご覧ください。
+このページでは、Microsoft Azure による計画的なメンテナンスの実行について説明しています。 計画外のイベント (停止) の詳細については、「[Azure での Windows 仮想マシンの可用性の管理](../linux/manage-availability.md)」を参照してください。
+

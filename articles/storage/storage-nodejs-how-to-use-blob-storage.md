@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: b5ed7853c696d9e8477a31aba8a9cc9ab8558fa8
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 38c3fd3cd271c3f9d60c44fff17715062b4979ae
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-nodejs"></a>Node.js から BLOB ストレージを使用する方法
@@ -418,7 +418,7 @@ blobSAS = blobSvc.generateSharedAccessSignature('mycontainer', { Id: 'user2' });
 * [Azure Storage SDK for Node の API リファレンス][Azure Storage SDK for Node API Reference]
 * [Azure Storage チーム ブログ][Azure Storage Team Blog]
 * GitHub の [Azure Storage SDK for Node リポジトリ][Azure Storage SDK for Node]。
-* [Node.js デベロッパー センター](/develop/nodejs/)
+* [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](storage-use-azcopy.md)
 
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node

@@ -17,10 +17,10 @@ ms.workload: NA
 ms.date: 04/13/2017
 ms.author: carlrab
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: d233bea6d0314f0bda0ebfe6fb310f1c6b1579d1
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: fac947fa153d83b614dc35c3cc0d8e640bfe1c95
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -45,7 +45,7 @@ DTU は、さまざまなパフォーマンス レベルとサービス層の Az
 ![Intro to SQL Database: Single database DTUs by tier and level](./media/sql-database-what-is-a-dtu/single_db_dtus.png)
 
 ## <a name="what-are-elastic-database-transaction-units-edtus"></a>エラスティック データベース トランザクション ユニット (eDTU) とは
-必要あるかないかに関係なく、常に使用できる SQL Database に専用のリソース (DTU) セットを提供する代わりに、SQL Database サーバー上の[エラスティック プール](sql-database-elastic-pool.md)に、これらのデータベース間でリソースのプールを共有するデータベースを配置できます。 エラスティック プール内の共有リソースは、エラスティック データベース トランザクション ユニット (eDTU) によって測定されます。 エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 エラスティック プールでは、プール内のすべてのリソースを 1 つのデータベースで使用することはなく、エラスティック プール内のデータベースは最小量のリソースを常に使用できることが保証されます。 詳細については、 [エラスティック プールとサービス レベル](sql-database-service-tiers.md#elastic-pool-service-tiers-and-performance-in-edtus) に関する記事を参照してください。
+必要あるかないかに関係なく、常に使用できる SQL Database に専用のリソース (DTU) セットを提供する代わりに、SQL Database サーバー上の[エラスティック プール](sql-database-elastic-pool.md)に、これらのデータベース間でリソースのプールを共有するデータベースを配置できます。 エラスティック プール内の共有リソースは、エラスティック データベース トランザクション ユニット (eDTU) によって測定されます。 エラスティック プールは、多種多様な予測できない使用パターンを持つ複数のデータベースに対するパフォーマンス目標を管理するための、簡単でコスト効率に優れたソリューションを提供します。 エラスティック プールでは、プール内のすべてのリソースを 1 つのデータベースで使用することはなく、エラスティック プール内のデータベースは最小量のリソースを常に使用できることが保証されます。 詳細については、[エラスティック プール](sql-database-elastic-pool.md) に関するページを参照してください。
 
 ![Intro to SQL Database: eDTUs by tier and level](./media/sql-database-what-is-a-dtu/sqldb_elastic_pools.png)
 

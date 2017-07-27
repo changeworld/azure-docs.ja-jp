@@ -5,23 +5,24 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: d94ac3f4-cd33-4c51-9d19-544a528637d4
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/04/2017
+ms.date: 07/14/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
 ms.openlocfilehash: 526efc5b025f8050f40c49d0a07a9c2713509493
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
-
 ---
+
 # <a name="publish-applications-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用してアプリケーションを発行する
 
 > [!div class="op_single_selector"]

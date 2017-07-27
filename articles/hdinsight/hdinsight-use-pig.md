@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/03/2017
+ms.date: 05/26/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: e7519981642c438ca25b0479324ee159545bac8e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9c19dc502acd1af4c3193e033d3caefe895624be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -39,7 +39,7 @@ Pig は、*Pig Latin* という手続き型言語を使用して Hadoop 用の�
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a id="why"></a>Pig を使用する理由
 
@@ -109,7 +109,7 @@ HDInsight では、さまざまな方法を使用して Pig Latin ジョブを�
 | [リモート デスクトップ](hdinsight-hadoop-use-pig-remote-desktop.md) (HDInsight 3.2 および 3.3) |✔ |✔ |Windows |Windows |
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="pig-and-sql-server-integration-services"></a>Pig および SQL Server Integration Services
 

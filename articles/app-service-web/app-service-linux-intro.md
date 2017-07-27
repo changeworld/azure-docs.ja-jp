@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 036e5691ecc435da54f381563b5d798f065bfb7f
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 5d1dc8caab804914ac7e94be7f080b713674bc0a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/08/2017
 
 
 ---
@@ -39,6 +39,7 @@ Web App on Linux を使用して、サポートされているアプリケーシ
     * 6.2
     * 6.6
     * 6.9
+    * 6.10
 * PHP
     * 5.6
     * 7.0

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/11/2017
 ms.author: markvi
+ms.reviewer: calebb
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
 ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/11/2017
-
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス

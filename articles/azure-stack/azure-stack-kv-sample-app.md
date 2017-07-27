@@ -12,20 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/26/2016
+ms.date: 07/04/2017
 ms.author: sngun
-translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 3d64805f30efe986c3be4408189ef823e5b72430
-ms.lasthandoff: 04/18/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a3a8b9ff522369ed0f03817585e1666507c95c6e
+ms.openlocfilehash: 9f2f6230ddd2ba303ad5be9f4691895e7828033d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/24/2017
 
 ---
 # <a name="run-the-sample-application-for-key-vault"></a>Run the sample application for Key Vault
-In this guide, you'll use a sample application to retrieve secrets and passwords from Key Vault.
 
-> [!NOTE]
-> In Technical Preview 3, you can create and manage a key vault from the [user portal](azure-stack-manage-portals.md#the-user-portal) or user API only. If you are an administrator, sign in to the user portal to access and perform operations on a key vault.
+In this guide, you'll use a sample application to retrieve secrets and passwords from Key Vault.
 
 ## <a name="download-the-samples-and-prepare"></a>Download the samples and prepare
 Download the Azure Key Vault client samples from the [Azure Key Vault client samples page](https://www.microsoft.com/en-us/download/details.aspx?id=45343).

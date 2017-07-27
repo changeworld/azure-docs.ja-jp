@@ -3,7 +3,7 @@ title: "Application Insights の .NET トレース ログを調べる"
 description: "Trace、NLog、または Log4Net で生成されたログを検索します。"
 services: application-insights
 documentationcenter: .net
-author: alancameronwills
+author: CFreemanwa
 manager: carmonm
 ms.assetid: 0c2a084f-6e71-467b-a6aa-4ab222f17153
 ms.service: application-insights
@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/3/2017
 ms.author: cfreeman
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1b0c902adff1d60a04fb3cddef5862256d54f813
+ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
+ms.openlocfilehash: e562e6a1a6c2b8203f3d5a9a2ee5680372499693
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 05/19/2017
 
 
 ---
@@ -96,6 +96,19 @@ Application Insights にトレースとして送信する [System.Diagnostics.Tr
  * `Name` では、収集する EventSource の名前を指定します。
  * `Level` では、収集するログ レベルを指定します。 `Critical`、`Error`、`Informational`、`LogAlways`、`Verbose`、`Warning` のいずれかを指定できます。
  * `Keywords` (省略可能) では、使用するキーワードの組み合わせの整数値を指定します。
+
+## <a name="using-diagnosticsource-events"></a>DiagnosticSource イベントの使用
+Application Insights にトレースとして送信する [System.Diagnostics.DiagnosticSource](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) イベントを構成できます。 まず、[`Microsoft.ApplicationInsights.DiagnosticSourceListener`](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DiagnosticSourceListener) NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。
+
+```xml
+    <Add Type="Microsoft.ApplicationInsights.DiagnsoticSourceListener.DiagnosticSourceTelemetryModule, Microsoft.ApplicationInsights.DiagnosticSourceListener">
+      <Sources>
+        <Add Name="MyDiagnosticSourceName" />
+      </Sources>
+    </Add>
+```
+
+トレースする DiagnosticSource ごとに、DiagnosticSource の名前に設定された `Name` 属性を持つエントリを追加します。
 
 ## <a name="using-etw-events"></a>ETW イベントを使用する
 Application Insights にトレースとして送信される ETW イベントを構成できます。 まず、`Microsoft.ApplicationInsights.EtwCollector` NuGet パッケージをインストールします。 次に、[ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md) ファイルの `TelemetryModules` セクションを編集します。

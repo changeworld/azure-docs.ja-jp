@@ -12,23 +12,25 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/07/2017
+ms.date: 07/03/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: b958487c80207002e0642b8af8486f53266dd563
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 149dd84d7d8f4ff9cd30f9fc649ced3cb364cfb7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 07/04/2017
 
 
 ---
-# <a name="configure-iot-hub-file-uploads-using-the-azure-portal"></a>Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
+# Azure Portal を使用して IoT Hub ファイルのアップロードを構成する
+<a id="configure-iot-hub-file-uploads-using-the-azure-portal" class="xliff"></a>
 
 [!INCLUDE [iot-hub-file-upload-selector](../../includes/iot-hub-file-upload-selector.md)]
 
-## <a name="file-upload"></a>ファイルのアップロード
+## ファイルのアップロード
+<a id="file-upload" class="xliff"></a>
 
-[IoT Hub でファイルのアップロード機能][lnk-upload]を使用するには、最初に Azure ストレージ アカウントとハブを関連付ける必要があります。 **[ファイルのアップロード]** 設定を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
+[IoT Hub でファイルのアップロード機能][lnk-upload]を使用するには、最初に Azure ストレージ アカウントとハブを関連付ける必要があります。 **[ファイルのアップロード]**を選択して、変更対象の IoT Hub のファイル アップロード プロパティのリストを表示します。
 
 ![ポータルで IoT Hub ファイル アップロード設定を表示する][13]
 
@@ -46,7 +48,8 @@ ms.lasthandoff: 05/16/2017
 
 ![ポータルで IoT Hub ファイル アップロードを構成する][15]
 
-## <a name="next-steps"></a>次のステップ
+## 次のステップ
+<a id="next-steps" class="xliff"></a>
 
 IoT Hub のファイルのアップロード機能に関する詳細については、IoT Hub 開発者ガイドの [Upload files from a device (デバイスからのファイルのアップロード)][lnk-upload] に関する記事をご覧ください。
 

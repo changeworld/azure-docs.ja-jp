@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2017
+ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: a3d958e1a37ddf6821d41afe7427faec1b8259b2
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
+ms.openlocfilehash: 7e0fa9a83c3c83145a4813422bf73a0e711d0ecc
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="track-software-changes-in-your-environment-with-the-change-tracking-solution"></a>変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する
+
+![変更の追跡シンボル](./media/log-analytics-change-tracking/change-tracking-symbol.png)
 
 この記事では、Log Analytics の変更の追跡ソリューションを使用して、環境の変更箇所を簡単に識別する方法を説明します。 このソリューションは、Windows および Linux ソフトウェア、Windows ファイルおよびレジストリ、Windows サービス、および Linux デーモンに対する変更を追跡します。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
@@ -33,6 +35,17 @@ ms.lasthandoff: 04/12/2017
 
 * 変更を監視する各コンピューターに、[Windows](log-analytics-windows-agents.md)、[Operations Manager](log-analytics-om-agents.md)、または [Linux](log-analytics-linux-agents.md) エージェントが必要です。
 * 変更の追跡ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ChangeTrackingOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に説明されている手順に従って追加してください。  さらに手動で構成する必要はありません。
+
+### <a name="configure-linux-files-to-track"></a>追跡する Linux ファイルを構成する
+次の手順を使用して、Linux コンピューター上で追跡するファイルを構成します。
+
+1. OMS ポータルで、**[設定]** (歯車アイコン) をクリックします。
+2. **[設定]** ページで **[データ]** をクリックし、**[Linux ファイルの追跡]** をクリックします。
+3. [Linux ファイルの変更追跡] の下に、追跡するファイルのファイル名を含むパス全体を入力し、**[追加]** シンボルをクリックします。 例: "/etc/*.conf"
+4. **[保存]** をクリックします。  
+  
+> [!NOTE]
+> Linux ファイルの追跡には、ディレクトリの追跡、ディレクトリの再帰、およびワイルドカード追跡などの追加機能があります。
 
 ### <a name="configure-windows-files-to-track"></a>追跡する Windows ファイルの構成
 次の手順を使用して、Windows コンピューター上で追跡するファイルを構成します。
@@ -52,14 +65,30 @@ ms.lasthandoff: 04/12/2017
 4. **[保存]** をクリックします。  
    ![Windows レジストリの変更追跡](./media/log-analytics-change-tracking/windows-registry-change-tracking.png)
 
+### <a name="explanation-of-linux-file-collection-properties"></a>Linux ファイル コレクションのプロパティの説明
+1. **種類**
+   * **ファイル** (ファイルのメタデータを報告: サイズ、変更日、ハッシュなど)
+   * **ディレクトリ** (ディレクトリのメタデータを報告: サイズ、変更日など)
+2. **リンク** (他のファイルまたはディレクトリへの Linux のシンボリック リンク参照の処理)
+   * **無視** (再帰中にシンボリック リンクを無視して、参照先のファイル/ディレクトリを含めないようにする)
+   * **フォロー** (再帰中にシンボリック リンクをフォローして、参照先のファイル/ディレクトリも含めるようにする)
+   * **管理** (シンボリック リンクをフォローし、返されたコンテンツの処理を変更する) 
+   
+   > [!NOTE]   
+   > ファイルのコンテンツの取得は現時点ではサポートされていないため、[管理] リンク オプションは推奨されません。
+   
+3. **再帰** (フォルダー レベルで再帰し、パス ステートメントに適合するすべてのファイルを追跡する)
+4. **Sudo** (sudo 特権を必要とするファイルまたはディレクトリへのアクセスを有効にする)
+
 ### <a name="limitations"></a>制限事項
 現在、変更の追跡ソリューションでは以下に対応していません。
 
-* フォルダー (ディレクトリ)
-* 再帰
-* ワイルド カード
+* Windows ファイル追跡用のフォルダー (ディレクトリ)
+* Windows ファイル追跡用の再帰
+* Windows ファイル追跡用のワイルドカード
 * パス変数
 * ネットワーク ファイル システム
+* ファイル コンテンツ
 
 その他の制限事項:
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 06/16/2017
 ms.author: markvi
+ms.reviewer: jairoc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 0fb7e8fe778c8d6f7e12b1c8a75c95941da3d4d9
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: b8cac63967bf837183095cbb235c4a84f2dabcb9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
 # <a name="how-to-configure-automatic-registration-of-windows-domain-joined-devices-with-azure-active-directory"></a>Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法
@@ -33,6 +33,7 @@ ms.lasthandoff: 04/27/2017
 
 - 条件付きアクセスの詳細については、[Azure Active Directory のデバイスベースの条件付きアクセス](active-directory-conditional-access-azure-portal.md)に関するページを参照してください。 
 - 職場における Windows 10 デバイスと、Azure AD に登録した場合の強化されたエクスペリエンスの詳細については、[デバイスを仕事に使用する方法 (エンタープライズ向け Windows 10)](active-directory-azureadjoin-windows10-devices-overview.md) に関するページを参照してください。
+- Windows 10 Enterprise E3 in CSP については、「[Windows 10 Enterprise E3 in CSP の概要](https://docs.microsoft.com/en-us/windows/deployment/windows-10-enterprise-e3-overview)」を参照してください。
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -59,9 +60,8 @@ ms.lasthandoff: 04/27/2017
     - Windows Server 2012 R2
     - Windows Server 2012
     - Windows Server 2008 R2
-- ダウンレベルの Windows デバイスの登録は、以下についてはサポートされて**いません**。
-    - 非フェデレーション環境 (パスワード ハッシュ同期の構成)。  
-    - ローミング プロファイルを使用しているデバイス。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
+- ダウンレベルの Windows デバイスの登録は、非フェデレーション環境において、[Azure Active Directory シームレス シングル サインオン](https://aka.ms/hybrid/sso)のシームレス シングル サインオンを介してサポート**されます**。
+- ダウンレベルの Windows デバイスの登録は、ローミング プロファイルを使用するデバイスではサポート**されません**。 プロファイルまたは設定のローミングを使用している場合は、Windows 10 を使用してください。
 
 
 
@@ -137,7 +137,10 @@ Azure AD Connect のデプロイ方法によっては、SCP オブジェクト�
 
     Initialize-ADSyncDomainJoinedComputerSync –AdConnectorAccount [connector account name] -AzureADCredentials $aadAdminCred;
 
-`Initialize-ADSyncDomainJoinedComputerSync` コマンドレットは Active Directory PowerShell モジュールを使用しますが、そのモジュールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。 
+`Initialize-ADSyncDomainJoinedComputerSync` コマンドレットは、
+
+- Active Directory PowerShell モジュールを使用しますが、そのモジュールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
+- **MSOnline PowerShell module version 1.1.166.0** でのみサポートされます。 このモジュールをダウンロードするには、この[リンク](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)を使用します。   
 
 Windows Server 2008 またはそれ以前のバージョンが実行されているドメイン コントローラーでは、次のスクリプトを使用してサービス接続ポイントを作成します。
 
@@ -524,7 +527,9 @@ AD FS では、この認証方法をパスする発行変換規則を追加す�
 
 ## <a name="step-4-control-deployment-and-rollout"></a>手順 4: デプロイとロールアウトの制御
 
-必要な手順が完了したら、ドメイン参加済みデバイスを Azure AD に自動的に登録する準備ができたことになります。 Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 新しいデバイスは、ドメインへの参加操作の終了後、デバイスが再起動されるときに、Azure AD に登録されます。
+必要な手順が完了したら、ドメイン参加済みデバイスを Azure AD に自動的に登録する準備ができたことになります。 Windows 10 Anniversary Update および Windows Server 2016 が実行されているすべてのドメイン参加済みデバイスは、デバイスの再起動時またはユーザーのサインイン時に Azure AD に自動的に登録されます。 新しいデバイスは、ドメインへの参加操作の完了後、デバイスが再起動されると Azure AD に登録されます。
+
+以前に Azure AD に社内参加済みのデバイス (例えば Intune 用) は、"*ドメイン参加済み、AAD 登録済み*" に移行しますが、ドメインの通常フローおよびユーザー アクティビティのために、すべてのデバイスでこのプロセスが完了するにはある程度時間がかかります。
 
 ### <a name="remarks"></a>解説
 

@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
-ms.author: curtand;rodejo
+ms.date: 05/25/2017
+ms.author: curtand
+ms.reviewer: rodejo
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
 ms.openlocfilehash: d7be54b508a845d6746fd65887e3339ff371a287
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
-
 
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>グループ管理用の Azure Active Directory バージョン 2 のコマンドレット

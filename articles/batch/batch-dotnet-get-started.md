@@ -12,18 +12,20 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 05/22/2017
+ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 162f4e753524f0d1236575618fc8413466481857
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5144c27ccbef6cc0e1e8c0b168bbfd86b736331b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
+<a id="get-started-building-solutions-with-the-batch-client-library-for-net" class="xliff"></a>
+
+# .NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
 
 > [!div class="op_single_selector"]
 > * [.NET](batch-dotnet-get-started.md)
@@ -36,10 +38,14 @@ ms.lasthandoff: 05/27/2017
 
 ![Batch ソリューションのワークフロー (基本)][11]<br/>
 
-## <a name="prerequisites"></a>前提条件
+<a id="prerequisites" class="xliff"></a>
+
+## 前提条件
 この記事は、C# と Visual Studio に関する実用的な知識があることを前提としています。 また、以下で指定されている、Azure、Batch サービス、Storage サービスのアカウント作成要件を満たせることも前提としています。
 
-### <a name="accounts"></a>アカウント
+<a id="accounts" class="xliff"></a>
+
+### アカウント
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成][azure_free_account]します。
 * **Batch アカウント**: Azure サブスクリプションの用意ができたら、 [Azure Batch アカウントを作成](batch-account-create-portal.md)します。
 * **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
@@ -49,18 +55,26 @@ ms.lasthandoff: 05/27/2017
 >
 >
 
-### <a name="visual-studio"></a>Visual Studio
+<a id="visual-studio" class="xliff"></a>
+
+### Visual Studio
 サンプル プロジェクトをビルドするには、**Visual Studio 2015 以降**が必要です。 Visual Studio の無料試用版については、[Visual Studio 製品の概要][visual_studio]に関するページを参照してください。
 
-### <a name="dotnettutorial-code-sample"></a>*DotNetTutorial* コード サンプル
+<a id="dotnettutorial-code-sample" class="xliff"></a>
+
+### *DotNetTutorial* コード サンプル
 [DotNetTutorial][github_dotnettutorial] サンプルは、GitHub の [azure-batch-samples][github_samples] リポジトリに置かれている多数の Batch コード サンプルの 1 つです。 リポジトリのホーム ページから **[Clone or download (複製またはダウンロード)]、[Download ZIP (ZIP のダウンロード)]** の順にクリックするか、[azure-batch-samples-master.zip][github_samples_zip] というダウンロード リンクを直接クリックすると、すべてのサンプルをダウンロードできます。 ZIP ファイルの内容を抽出すると、次のフォルダーでソリューションを見つけられます。
 
 `\azure-batch-samples\CSharp\ArticleProjects\DotNetTutorial`
 
-### <a name="azure-batch-explorer-optional"></a>(省略可能) Azure Batch Explorer
+<a id="azure-batch-explorer-optional" class="xliff"></a>
+
+### (省略可能) Azure Batch Explorer
 [Azure Batch Explorer][github_batchexplorer] は、GitHub の [azure-batch-samples][github_samples] リポジトリにある無料ユーティリティです。 このチュートリアルには必要ありませんが、Batch ソリューションの開発とデバッグに有効活用してください。
 
-## <a name="dotnettutorial-sample-project-overview"></a>DotNetTutorial サンプル プロジェクトの概要
+<a id="dotnettutorial-sample-project-overview" class="xliff"></a>
+
+## DotNetTutorial サンプル プロジェクトの概要
 *DotNetTutorial* コード サンプルは、**DotNetTutorial** と **TaskApplication** という 2 つのプロジェクトから構成される Visual Studio ソリューションです。
 
 * **DotNetTutorial** は、Batch サービスおよび Storage サービスとやり取りして、コンピューティング ノード (仮想マシン) で並列ワークロードを実行するクライアント アプリケーションです。 DotNetTutorial はローカル ワークステーションで実行されます。
@@ -84,7 +98,9 @@ ms.lasthandoff: 05/27/2017
 
 既に述べたように、このとおりの実行手順ではない Batch ソリューションもあり、他の手順が含まれる場合もありますが、 *DotNetTutorial* サンプル アプリケーションでは、Batch ソリューションの一般的なプロセスを実行します。
 
-## <a name="build-the-dotnettutorial-sample-project"></a>*DotNetTutorial* サンプル プロジェクトのビルド
+<a id="build-the-dotnettutorial-sample-project" class="xliff"></a>
+
+## *DotNetTutorial* サンプル プロジェクトのビルド
 サンプルを適切に実行するには、*DotNetTutorial* プロジェクトの `Program.cs` ファイルに Batch と Storage 両方のアカウント資格情報を指定する必要があります。 Visual Studio でソリューションを開いていない場合は、 `DotNetTutorial.sln` ソリューション ファイルをダブルクリックして Visual Studio で開きます。 **[ファイル] > [開く] > [プロジェクト/ソリューション]** メニューの順にクリックして、Visual Studio 内から開くこともできます。
 
 *DotNetTutorial* プロジェクトで `Program.cs` を開きます。 次に、指定どおりファイルの先頭近くに資格情報を追加します。
@@ -125,7 +141,9 @@ private const string StorageAccountKey  = "";
 
 *DotNetTutorial* プロジェクトの `Program.cs` ファイルにある `MainAsync` メソッドの一番上に移動し、手順 1. から始めてください。 以下の各手順では、ほぼ `MainAsync` のメソッドの呼び出し順に説明します。
 
-## <a name="step-1-create-storage-containers"></a>手順 1: ストレージ コンテナーを作成する
+<a id="step-1-create-storage-containers" class="xliff"></a>
+
+## 手順 1: ストレージ コンテナーを作成する
 ![Azure Storage でコンテナーを作成する][1]
 <br/>
 
@@ -193,7 +211,9 @@ private static async Task CreateContainerIfNotExistAsync(
 >
 >
 
-## <a name="step-2-upload-task-application-and-data-files"></a>手順 2: タスク アプリケーションとデータ ファイルをアップロードする
+<a id="step-2-upload-task-application-and-data-files" class="xliff"></a>
+
+## 手順 2: タスク アプリケーションとデータ ファイルをアップロードする
 ![タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする][2]
 <br/>
 
@@ -270,7 +290,9 @@ private static async Task<ResourceFile> UploadFileToContainerAsync(
 }
 ```
 
-### <a name="resourcefiles"></a>ResourceFiles
+<a id="resourcefiles" class="xliff"></a>
+
+### ResourceFiles
 [ResourceFile][net_resourcefile] は、Batch のタスクに対して、タスクの実行前にコンピューティング ノードにダウンロードする Azure Storage のファイルの URL を提供します。 [ResourceFile.BlobSource][net_resourcefile_blobsource] プロパティには、Azure Storage にあるファイルの完全な URL を指定します。 URL には、ファイルに対する安全なアクセスを提供する Shared Access Signature (SAS) も含めることができます。 Batch .NET 内のほとんどのタスクの種類には、次のように *ResourceFiles* プロパティが含まれます。
 
 * [CloudTask][net_task]
@@ -280,7 +302,9 @@ private static async Task<ResourceFile> UploadFileToContainerAsync(
 
 DotNetTutorial サンプル アプリケーションには JobPreparationTask または JobReleaseTask というタスクの種類は使用しませんが、詳細については、「 [Azure Batch コンピューティング ノードでのジョブ準備タスクとジョブ完了タスクの実行](batch-job-prep-release.md)」を参照してください。
 
-### <a name="shared-access-signature-sas"></a>Shared Access Signature (SAS)
+<a id="shared-access-signature-sas" class="xliff"></a>
+
+### Shared Access Signature (SAS)
 Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage のコンテナーと BLOB への安全なアクセスを提供することができる文字列です。 DotNetTutorial アプリケーションは、BLOB とコンテナー両方の Shared Access Signature URL を使用し、Storage サービスからこれらの Shared Access Signature 文字列を取得する方法を示します。
 
 * **BLOB Shared Access Signature**: DotNetTutorial 内のプールの StartTask は、Storage からアプリケーション バイナリと入力データ ファイルをダウンロードするときに BLOB の Shared Access Signature を使用します (以下の手順 3. を参照してください)。 DotNetTutorial の `Program.cs` 内の `UploadFileToContainerAsync` メソッドには、各 BLOB の Shared Access Signature を取得するコードが含まれます。 この処理を実行するために、[CloudBlob.GetSharedAccessSignature][net_sas_blob] を呼び出します。
@@ -291,13 +315,15 @@ Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage
 >
 >
 
-## <a name="step-3-create-batch-pool"></a>手順 3: Batch プールを作成する
+<a id="step-3-create-batch-pool" class="xliff"></a>
+
+## 手順 3: Batch プールを作成する
 ![Batch プールを作成する][3]
 <br/>
 
 Batch **プール**は複数のコンピューティング ノード (仮想マシン) をまとめたものです。Batch は、このプールでジョブのタスクを実行することになります。
 
-アプリケーションとデータ ファイルを Storage アカウントにアップロードすると、 *DotNetTutorial* は Batch .NET ライブラリを使用して Batch サービスとのやり取りを開始します。 その処理のために、まず [BatchClient][net_batchclient] が作成されます。
+*DotNetTutorial* は、Azure Storage API でアプリケーションとデータ ファイルをストレージ アカウントにアップロードした後、Batch .NET ライブラリに備わっている API で Batch サービスの呼び出しを開始します。 そのコードではまず、[BatchClient][net_batchclient] が作成されます。
 
 ```csharp
 BatchSharedKeyCredentials cred = new BatchSharedKeyCredentials(
@@ -310,7 +336,7 @@ using (BatchClient batchClient = BatchClient.Open(cred))
     ...
 ```
 
-次に、 `CreatePoolIfNotExistsAsync`を呼び出してコンピューティング ノードのプールが Batch アカウントに作成されます。 `CreatePoolIfNotExistsAsync` は、[BatchClient.PoolOperations.CreatePool][net_pool_create] メソッドを使用して、Batch サービス内にプールを作成します。
+次に、`CreatePoolIfNotExistsAsync` が呼び出されて、コンピューティング ノードのプールが Batch アカウントに作成されます。 `CreatePoolIfNotExistsAsync` は、[BatchClient.PoolOperations.CreatePool][net_pool_create] メソッドを使用して、Batch サービス内に新しいプールを作成します。
 
 ```csharp
 private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, string poolId, IList<ResourceFile> resourceFiles)
@@ -386,7 +412,9 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 >
 >
 
-## <a name="step-4-create-batch-job"></a>手順 4: Batch ジョブを作成する
+<a id="step-4-create-batch-job" class="xliff"></a>
+
+## 手順 4: Batch ジョブを作成する
 ![Batch ジョブを作成する][4]<br/>
 
 基本的に、Batch **ジョブ** はタスクのコレクションであり、コンピューティング ノードのプールに関連付けられます。 ジョブに含まれる一連のタスクは、関連付けられているプールのコンピューティング ノードで実行されます。
@@ -413,7 +441,9 @@ private static async Task CreateJobAsync(
 
 ジョブを作成したので、次は作業を実行するタスクを実行します。
 
-## <a name="step-5-add-tasks-to-job"></a>手順 5: ジョブにタスクを追加する
+<a id="step-5-add-tasks-to-job" class="xliff"></a>
+
+## 手順 5: ジョブにタスクを追加する
 ![ジョブにタスクを追加する][5]<br/>
 "*(1) タスクをジョブに追加します。(2) ノードで実行されるようにタスクをスケジュールします。(3) タスクで処理対象のデータ ファイルをダウンロードします*"
 
@@ -504,7 +534,9 @@ private static void UploadFileToContainer(string filePath, string containerSas)
 }
 ```
 
-## <a name="step-6-monitor-tasks"></a>手順 6: タスクを監視する
+<a id="step-6-monitor-tasks" class="xliff"></a>
+
+## 手順 6: タスクを監視する
 ![タスクを監視する][6]<br/>
 "*クライアント アプリケーションで (1) タスクの完了と成功の状態を監視し、(2) タスクから結果データを Azure Storage にアップロードします*"
 
@@ -600,7 +632,9 @@ private static async Task<bool> MonitorTasks(
 }
 ```
 
-## <a name="step-7-download-task-output"></a>手順 7: タスクの出力をダウンロードする
+<a id="step-7-download-task-output" class="xliff"></a>
+
+## 手順 7: タスクの出力をダウンロードする
 ![Storage からタスク出力をダウンロードする][7]<br/>
 
 これでジョブが完了したので、タスクの出力を Azure Storage からダウンロードできます。 ダウンロードするには、*DotNetTutorial* の `Program.cs` 内の `DownloadBlobsFromContainerAsync` を呼び出します。
@@ -638,7 +672,9 @@ private static async Task DownloadBlobsFromContainerAsync(
 >
 >
 
-## <a name="step-8-delete-containers"></a>手順 8: コンテナーを削除する
+<a id="step-8-delete-containers" class="xliff"></a>
+
+## 手順 8: コンテナーを削除する
 Azure Storage にあるデータは課金対象なので、Batch ジョブに使用しなくなった BLOB がある場合は削除することをお勧めします。 DotNetTutorial の `Program.cs` では、ヘルパー メソッド `DeleteContainerAsync` の 3 回の呼び出しで削除を実行します。
 
 ```csharp
@@ -669,7 +705,9 @@ private static async Task DeleteContainerAsync(
 }
 ```
 
-## <a name="step-9-delete-the-job-and-the-pool"></a>手順 9: ジョブとプールを削除する
+<a id="step-9-delete-the-job-and-the-pool" class="xliff"></a>
+
+## 手順 9: ジョブとプールを削除する
 最後の手順では、DotNetTutorial アプリケーションで作成されたジョブとプールを削除するよう求められます。 ジョブとタスク自体は課金対象ではありませんが、コンピューティング ノードは "*課金対象*" です。 そのため、必要な場合にのみノードを割り当てることをお勧めします。 使用されていないプールは、メンテナンス プロセスの一環として削除できます。
 
 BatchClient の [JobOperations][net_joboperations] と [PoolOperations][net_pooloperations] には、いずれも対応する削除メソッドがあります。このメソッドは、ユーザーが削除を確定すると呼び出されます。
@@ -697,7 +735,9 @@ if (response != "n" && response != "no")
 >
 >
 
-## <a name="run-the-dotnettutorial-sample"></a>*DotNetTutorial* サンプルを実行する
+<a id="run-the-dotnettutorial-sample" class="xliff"></a>
+
+## *DotNetTutorial* サンプルを実行する
 サンプル アプリケーションを実行すると、コンソールの出力は次のようになります。 実行中、プールのコンピューティング ノードを開始する際に、 `Awaiting task completion, timeout in 00:30:00...` で一時停止が発生します。 実行中と実行後のプール、コンピューティング ノード、ジョブ、タスクを監視するには、[Azure Portal][azure_portal] を使用します。 アプリケーションで作成された Storage リソース (コンテナーと BLOB) を表示するには、[Azure Portal][azure_portal] または [Azure ストレージ エクスプローラー][storage_explorers]を使用します。
 
 既定の構成でアプリケーションを実行する場合、通常の実行時間は **約 5 分間** です。
@@ -733,7 +773,9 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 *DotNetTutorial* と *TaskApplication* を自由に変更して、さまざまなコンピューティング シナリオを試してみてください。 たとえば、[Thread.Sleep][net_thread_sleep] を使用するなどして *TaskApplication* に実行遅延を追加して、実行時間が長いタスクをシミュレートし、ポータルで監視することができます。 タスクを追加したり、コンピューティング ノード数を調整したりすることもできます。 また、既存のプールの使用を確認および許可し、実行時間を短縮するロジックを追加できます ("*ヒント*": [azure-batch-samples][github_samples] の [Microsoft.Azure.Batch.Samples.Common][github_samples_common] プロジェクトの `ArticleHelpers.cs` を確認してください)。
 
 Batch ソリューションの基本的なワークフローを理解したところで、次は Batch サービスのその他の機能を掘り下げてみましょう。

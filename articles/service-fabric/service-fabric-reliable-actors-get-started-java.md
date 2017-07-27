@@ -14,10 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 01/04/2017
 ms.author: vturecek
-translationtype: Human Translation
-ms.sourcegitcommit: cf8f717d5343ae27faefdc10f81b4feaccaa53b9
-ms.openlocfilehash: 8ecc5208237d846d0e81914eee8874ea97744bc3
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 450c60abeaaf96c7d82152d425265a6b6714f689
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -40,7 +41,7 @@ ms.lasthandoff: 01/24/2017
 * **アクター サービス**。 Reliable Actors は、Service Fabric インフラストラクチャにデプロイできる Reliable Services にパッケージ化されます。 Actor インスタンスは、名前付きのサービス インスタンス内でアクティブ化されます。
 * **アクター登録**。 Reliable Services と同様に、Reliable Actor サービスは Service Fabric ランタイムに登録する必要があります。 さらに、アクターの型を Actor ランタイムに登録する必要があります。
 * **アクター インターフェイス**。 アクター インターフェイスは、アクターの厳密に型指定されたパブリック インターフェイスを定義するために使用されます。 Reliable Actor モデルの用語では、アクター インターフェイスに、アクターが理解し、処理できるメッセージの種類が定義されています。 アクター インターフェイスは、他のアクターとクライアント アプリケーションがメッセージをアクターに (非同期に) "送信" するために使用されます。 Reliable Actors は複数のインターフェイスを実装できます。
-* **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の&2; つの重要な機能を提供します。
+* **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の 2 つの重要な機能を提供します。
   
   * 名前解決: クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
   * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置する必要があるエラーが発生した後に、メソッドの呼び出しを再試行し、アクターの場所を再解決することができます。
@@ -178,15 +179,29 @@ public class HelloWorldActorHost {
 最後に、アプリケーションが、アクター サービスと、デプロイメント用に将来的に追加する他のサービスをパッケージ化します。 パッケージには、*ApplicationManifest.xml* と、アクター サービス パッケージのプレース ホルダーが含まれています。
 
 ## <a name="run-the-application"></a>アプリケーションの実行
-Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよびデプロイ解除するための bash スクリプトが含まれています。 アプリケーションを実行するには、最初に gradle を使用してアプリケーションをビルドします。
+
+Yeoman スキャフォールディングには、アプリケーションをビルドするための gradle スクリプトと、アプリケーションをデプロイおよび削除するための bash スクリプトが含まれています。 アプリケーションをデプロイするには、最初に gradle を使用してアプリケーションをビルドします。
 
 ```bash
 $ gradle
 ```
 
-これにより、Service Fabric Azure CLI を使用してデプロイできる Service Fabric アプリケーション パッケージが生成されます。 Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Azure CLI コマンドが含まれています。 単純に install.sh スクリプトを実行してデプロイします。
+これにより、Service Fabric CLI ツールを使用してデプロイできる Service Fabric アプリケーション パッケージが生成されます。
 
-```bask
+### <a name="deploy-with-xplat-cli"></a>XPlat CLI でデプロイする
+
+XPlat CLI を使っている場合、install.sh スクリプトには、アプリケーション パッケージをデプロイするために必要な Azure CLI コマンドが含まれています。 アプリケーションをデプロイするには、install.sh スクリプトを実行します。
+
+```bash
 $ ./install.sh
 ```
+
+### <a name="deploy-with-azure-cli-20"></a>Azure CLI 2.0 でデプロイする
+
+Azure CLI 2.0 を使っている場合は、[Azure CLI 2.0 を使ったアプリケーションのライフ サイクル](service-fabric-application-lifecycle-azure-cli-2-0.md)の管理に関する参照ドキュメントをご覧ください。
+
+## <a name="related-articles"></a>関連記事:
+
+* [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
+* [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)
 

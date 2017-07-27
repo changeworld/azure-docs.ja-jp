@@ -8,13 +8,13 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/11/2017
+ms.date: 05/24/2017
 ms.author: gauravbh; tomfitz
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a4348a4d2348d744c03ad3a89d0548526fa2f9f8
+ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
+ms.openlocfilehash: c4e0508e243bd4f0cd57ea1619f7812433329423
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 05/26/2017
 
 
 ---
@@ -34,9 +34,13 @@ Azure のこうしたエコシステムは、PaaS ベンダーや SaaS ベンダ
 1. マネージ アプリケーションを作成して広くユーザーに提供するベンダーまたは独立系ソフトウェア ベンダー (ISV)。 
 2. 公開されているアプリケーションを作成して利用する顧客 (コンシューマー)。 
 
-この記事では、両方の利用形態について取り上げます。 まず、マネージ アプリケーションのしくみを理解しましょう。 
+この記事では、両者の利用形態の概要を説明します。 まず、マネージ アプリケーションのしくみを理解しましょう。 
 
 マネージ アプリケーションは、Marketplace のソリューション テンプレートと似ていますが、1 つ大きな違いがあります。 マネージ アプリケーションでは、ISV/ベンダーによって管理されているリソース グループが、リソースのプロビジョニング先となります。 リソース グループは顧客のサブスクリプションに存在しますが、そのリソース グループには、ISV のテナント内のユーザー、ユーザー グループ、アプリケーションがアクセスできます。 アプリケーションの管理や保守を目的として、Active Directory の組み込みのロール (所有者、共同作成者、閲覧者など) にベンダーの ID が追加されます。 
+
+ベンダーから見た利用形態については、「[Azure マネージ アプリケーションの作成と発行](managed-application-publishing.md)」をご覧ください。
+
+コンシューマーから見た利用形態については、「[Azure マネージ アプリケーションの実行](managed-application-consumption.md)」をご覧ください。
 
 ## <a name="key-concepts"></a>主要な概念
 

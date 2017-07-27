@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 02/01/2017
+ms.date: 06/30/2017
 ms.author: steveesp
-translationtype: Human Translation
-ms.sourcegitcommit: 50be31e179bf52e009596fbc68339dfb5a1aa1e4
-ms.openlocfilehash: d53b1cae9845be32bd053ef196203ea83df06b10
-ms.lasthandoff: 02/15/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
+ms.openlocfilehash: 1340048d5d518caff3397f671d0c75caaab4b5ac
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/01/2017
 
 
 ---
@@ -35,7 +36,7 @@ Receive Side Scaling (RSS) を使用する VM は、RSS を使用しない VM �
     ```powershell
     Name                    : Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled                 : False
+    Enabled              : False
     ```
 2. 次のコマンドを入力して、RSS を有効にします。
 
@@ -48,7 +49,7 @@ Receive Side Scaling (RSS) を使用する VM は、RSS を使用しない VM �
     ```powershell
     Name                    :Ethernet
     InterfaceDescription    : Microsoft Hyper-V Network Adapter
-    Enabled                 : True
+    Enabled              : True
     ```
 
 ## <a name="linux-vm"></a>Linux VM
@@ -57,7 +58,7 @@ Azure Linux VM では、RSS は既定で常に有効になっています。 201
 
 ### <a name="ubuntu"></a>Ubuntu
 
-最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 1 月時点で次のバージョンが該当します。
+最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 6 月時点で次のバージョンが該当します。
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
@@ -80,7 +81,7 @@ apt-get -y upgrade
 
 ### <a name="centos"></a>CentOS
 
-最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 1 月時点で次のバージョンが該当します。
+最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 5 月時点で次のバージョンが該当します。
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
@@ -88,7 +89,7 @@ apt-get -y upgrade
 "Version": "latest"
 ```
 更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
-スループットの最適化は、LIS の 4.1.3 以降に含まれています。 次のコマンドを入力して、LIS をインストールします。
+スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを入力して、LIS をインストールします。
 
 ```bash
 sudo yum update
@@ -99,20 +100,27 @@ sudo yum install microsoft-hyper-v
 ### <a name="red-hat"></a>Red Hat
 
 最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 1 月時点で次のバージョンが該当します。
-
-"Publisher": "RedHat" "Offer": "RHEL" "Sku": "7.3" "Version": "7.3.20161104"
-
+```json
+"Publisher": "RedHat"
+"Offer": "RHEL"
+"Sku": "7.3"
+"Version": "7.3.2017062722"
+```
 更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
-スループットの最適化は、LIS の 4.1.3 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
+スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
 
 ```bash
-mkdir lis4.1.3
-cd lis4.1.3
-wget https://download.microsoft.com/download/7/6/B/76BE7A6E-E39F-436C-9353-F4B44EF966E9/lis-rpms-4.1.3.tar.gz
-tar xvzf lis-rpms-4.1.3.tar.gz
+mkdir lis4.2.1
+cd lis4.2.1
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
+tar xvzf lis-rpms-4.2.1-1.tar.gz
 cd LISISO
-install.sh #or upgrade.sh if previous LIS was previously installed
+install.sh #or upgrade.sh if prior LIS was previously installed
 ```
- 
-Linux Integration Services Version 4.1 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=51612)を参照してください。
+
+Linux Integration Services Version 4.2 for Hyper-V の詳細については、[ダウンロード ページ](https://www.microsoft.com/download/details.aspx?id=55106)を参照してください。
+
+## <a name="next-steps"></a>次のステップ
+* これで、VM が最適化されました。使用中のシナリオについては、「[Azure VM の帯域幅とスループットのテスト](virtual-network-bandwidth-testing.md)」で結果を確認してください。
+* 「[Azure Virtual Network についてよく寄せられる質問 (FAQ)](virtual-networks-faq.md)」を参照してください。
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2b9a8b5d7b889926f1cdbb6787fea1579dd21190
-ms.openlocfilehash: 941bc07fa9be765403e8fe541caf660eef15585e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3e9321255b65d46af59d0ee478e214df795664ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>VM レプリケーションのために Azure Automation DSC を使用してモビリティ サービスをデプロイする
@@ -34,7 +33,7 @@ Operations Management Suite では、ビジネス継続性計画の一部とし�
 
 管理サーバーは複数のサーバー ロールを実行します。 これらのロールの1 つが ” *構成*” で、通信を調整し、データ レプリケーションと復旧プロセスを管理します。
 
-また ” *プロセス* ” ロールは、レプリケーションのゲートウェイとして機能します。 プロセス ロールは保護されたソース マシンからレプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージ アカウントに送信します。 また、プロセス ロールの機能の&1; つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
+また ” *プロセス* ” ロールは、レプリケーションのゲートウェイとして機能します。 プロセス ロールは保護されたソース マシンからレプリケーション データを受信し、そのデータをキャッシュ、圧縮、暗号化によって最適化して、Azure ストレージ アカウントに送信します。 また、プロセス ロールの機能の 1 つとして、保護されたマシンへのモビリティ サービスのインストールをプッシュし、VMware VM の自動検出を実行します。
 
 Azure でのフェールバックがある場合は、” *マスター ターゲット* ” ロールが、この操作の一環としてレプリケーション データを処理します。
 
@@ -256,7 +255,7 @@ DSC 構成が正常に Automation DSC へ公開およびアップロードされ
 
 ## <a name="step-4-onboard-machines-to-automation-dsc"></a>手順 4: Automation DSC へのマシンの追加
 > [!NOTE]
-> このシナリオを完了するための前提条件の&1; つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。 お使いのプラットフォームに適切なバージョンは、 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=50395)からダウンロードおよびインストールできます。
+> このシナリオを完了するための前提条件の 1 つとして、Windows コンピューターが WMF の最新バージョンで更新されている必要があります。 お使いのプラットフォームに適切なバージョンは、 [ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=50395)からダウンロードおよびインストールできます。
 >
 >
 
@@ -512,5 +511,5 @@ New-AzureRmResourceGroupDeployment @RGDeployArgs -Verbose
 ```
 
 ## <a name="next-steps"></a>次のステップ
-モビリティ サービスのエージェントをデプロイした後は、仮想マシンの [レプリケーションを有効にする](site-recovery-vmware-to-azure.md#enable-replication) ことができます。
+モビリティ サービスのエージェントをデプロイした後は、仮想マシンの [レプリケーションを有効にする](site-recovery-vmware-to-azure.md) ことができます。
 

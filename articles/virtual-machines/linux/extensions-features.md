@@ -15,13 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/26/2017
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: a3ca1527eee068e952f81f6629d7160803b3f45a
-ms.openlocfilehash: 2b25b4f4925962b1e4de681d268e78909a93eccd
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 77f50a830c38b3a90110845e58ee7cbb28742c10
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/28/2017
 
 ---
+
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Linux 用の仮想マシンの拡張機能とその機能
 
 Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ後の構成と自動タスクを提供する複数の小さなアプリケーションです。 たとえば、仮想マシンでソフトウェアのインストール、ウイルス対策保護、または Docker 構成が必要な場合、VM 拡張機能を使用して、これらのタスクを実行できます。 Azure VM 拡張機能は、Azure CLI、PowerShell、Azure Resource Manager テンプレート、および Azure Portal を使用して実行できます。 拡張機能は、新しい仮想マシン デプロイにバンドルすることも、既存の任意のシステムに対して実行することもできます。
@@ -39,7 +40,7 @@ Azure 仮想マシン拡張機能は、Azure Virtual Machines でのデプロイ
 
 プロセス固有の拡張機能のほか、カスタム スクリプト拡張機能を Windows と Linux の両方の仮想マシンで使用できます。 Linux 用カスタム スクリプト拡張機能では、仮想マシンで実行する任意の Bash スクリプトを使用できます。 カスタム スクリプトは、ネイティブの Azure ツールが提供可能な構成以上の構成を必要とする Azure のデプロイを設計する場合に役立ちます。 詳細については、[Linux VM カスタム スクリプト拡張機能](extensions-customscript.md)に関するページを参照してください。
 
-VM 拡張機能がエンド ツー エンドのアプリケーションのデプロイで使用される例については、「[Azure Virtual Machines へのアプリケーションのデプロイを自動化する](../windows/dotnet-core-1-landing.md)」を参照してください。
+VM 拡張機能がエンド ツー エンドのアプリケーションのデプロイで使用される例については、「[Azure Virtual Machines へのアプリケーションのデプロイを自動化する](../linux/dotnet-core-1-landing.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -130,7 +131,7 @@ VM 拡張機能を Azure Resource Manager テンプレートに追加し、テ�
 }
 ```
 
-詳細については、「[Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../windows/extensions-authoring-templates.md)」を参照してください。
+詳細については、「[Linux VM 拡張機能を使用した Azure Resource Manager テンプレートの作成](../linux/extensions-authoring-templates.md)」を参照してください。
 
 ## <a name="secure-vm-extension-data"></a>VM 拡張機能のデータの保護
 

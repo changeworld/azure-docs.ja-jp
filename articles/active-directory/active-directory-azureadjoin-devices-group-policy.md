@@ -13,13 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/10/2017
+ms.date: 06/23/2017
 ms.author: markvi
-translationtype: Human Translation
+ms.reviewer: jairoc
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 24d86e17a063164c31c312685c0742ec4a5c2f1b
 ms.openlocfilehash: 39bd4fcbe1b9a197bcf5b8bb33bf6fffae2063fc
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/11/2017
-
 
 ---
 # <a name="connect-domain-joined-devices-to-azure-ad-for-windows-10-experiences"></a>Windows 10 エクスペリエンスのためにドメイン参加済みデバイスを Azure AD に接続する

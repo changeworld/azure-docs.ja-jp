@@ -20,6 +20,7 @@
 ### [診断 VM 拡張機能の v2.x を使用して VM を監視する](diagnostic-extension-v2.md)
 ### [カスタム データを挿入する](inject-custom-data.md)
 ### [Linux パスワードまたはキーのリセット、SSH の修正、ディスクのチェックを実行する](reset-access.md)
+### [メンテナンス](planned-maintenance-schedule.md)
 ### [CLI を使用して Docker ホストを作成する](cli-use-docker.md)
 ### [ポータルを使用して Docker ホストを作成する](portal-use-docker.md)
 ### [Docker Swarm を使用する方法](../../virtual-machines-linux-docker-swarm.md)
@@ -65,6 +66,7 @@
 ## トラブルシューティング
 ### [VM のデプロイ](troubleshoot-deployment-new-vm.md)
 ### [VM を再起動またはサイズ変更する](restart-resize-error-troubleshooting.md)
+### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
 ## [PowerShell](/powershell/azure/overview)
@@ -78,6 +80,7 @@
 
 
 # リソース
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Linux)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)

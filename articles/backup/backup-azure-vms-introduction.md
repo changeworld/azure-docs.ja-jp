@@ -13,12 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 4/5/2017
+ms.date: 5/22/2017
 ms.author: markgal;trinadhk
-translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: b6780e3dc0833c9a074ba85566848ac4246fa848
-ms.lasthandoff: 04/14/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
+ms.openlocfilehash: 6d390a75df51a22aa4e60094f3e4ba945a5725ad
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/16/2017
 
 
 ---
@@ -118,7 +119,8 @@ Azure で VM をバックアップする場合、オンプレミスにデプロ�
 * VM バックアップを非ピーク時にスケジュールします。 こうすれば、バックアップ サービスは IOPS を、ユーザーのストレージ アカウントからコンテナーへデータを転送するために使用します。
 * ポリシーが、異なるストレージ アカウントに分散されている VM にも適用されることを確認します。 1 つのストレージ アカウント内で同じバックアップ スケジュールによって保護されるディスクは、20 個以下がお勧めです。 1 つのストレージ アカウント内に 20 を超えるディスクがある場合は、それらの VM を複数のポリシーに分散させることで、必要な IOPS をバックアップ プロセスの転送フェーズ中に実現できます。
 * Premium ストレージで実行されている VM を同じストレージ アカウントに復元しないでください。 復元操作のプロセスがバックアップ操作と重なった場合は、バックアップ用の IOPS が減ります。
-* 最適なバックアップ パフォーマンスを確保するために、各 Premium VM を別々の Premium ストレージ アカウントで実行することをお勧めします。
+* Premium VM バックアップでは、バックアップが成功するために、Premium ディスクをホストするストレージ アカウントにスナップショットをステージングするための空き領域が 50% 以上あることを確認してください。 
+* バックアップ用に有効になっている Linux VM の該当の Python のバージョンが 2.7 であることを確認してください。
 
 ## <a name="data-encryption"></a>データの暗号化
 Azure Backup では、データはバックアップ プロセスの一部として暗号化されません。 ただし、VM 内でデータを暗号化し、保護されたデータをシームレスにバックアップできます ( [暗号化データのバックアップ](backup-azure-vms-encryption.md)の詳細をご覧ください)。

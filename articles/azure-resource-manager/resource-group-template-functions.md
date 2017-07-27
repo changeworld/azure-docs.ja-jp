@@ -12,18 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2017
+ms.date: 06/13/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: d7eecb36d8cb786c7eec5080cf37574c2fc93173
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: b5085f98d01c91ecabb690ad2aaf5992b707f302
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-resource-manager-template-functions"></a>Azure リソース マネージャーのテンプレートの関数
 このトピックでは、Azure Resource Manager テンプレートで使用できるすべての関数について説明します。
+
+テンプレート内の関数はそれぞれかっこ (`[` と `]`) で囲んで追加します。 式は配置時に評価されます。 文字列リテラルとして記述される一方で、式の評価の結果は、配列、オブジェクト、整数など、さまざまな JSON 型にすることができます。 JavaScript の場合と同様に、関数呼び出しは `functionName(arg1,arg2,arg3)` という形式になります。 プロパティの参照には、ドットと [index] 演算子を使用します。
+
+テンプレート式は、24,576 文字を超えることはできません。
 
 テンプレート関数とそのパラメーターでは大文字と小文字が区別されません。 たとえば、Resource Manager では、**variables('var1')** と **VARIABLES('VAR1')** が同じものとして解決されます。 評価の際、関数は、大文字/小文字を明確に変更する (toUpper、toLower など) 場合を除き、大文字/小文字を保持します。 特定のリソースの種類では、関数の評価方法とは無関係に、大文字/小文字の要件が存在する場合があります。
 

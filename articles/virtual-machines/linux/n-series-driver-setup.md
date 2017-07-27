@@ -13,19 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 05/02/2017
+ms.date: 06/08/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: 69f1363c26d8b5a18ffd5629c6a49c34306dd7c0
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: b12505e21a97949c7df6ae1568f2244b5dbcd0fa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
+ms.lasthandoff: 06/09/2017
 
 
 ---
 
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM の GPU ドライバーをセットアップする
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Linux を実行している N シリーズ VM に NVIDIA GPU ドライバーをインストールする
 
 Linux を実行する Azure N シリーズ VM の GPU 機能を利用するには、各 VM に NVIDIA グラフィック ドライバーをインストールする必要があります。 この記事では、N シリーズ VM をデプロイした後のドライバーのセットアップ手順について説明します。 ドライバーのセットアップ情報は、[Windows VM](../windows/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) でも利用可能です。
 
@@ -36,18 +36,14 @@ N シリーズ VM の仕様、ストレージの容量、およびディスク�
 
 ## <a name="supported-distributions-and-drivers"></a>サポートされているディストリビューションとドライバー
 
-> [!IMPORTANT]
-> 現時点では、Linux GPU ドライバーのサポートは、Azure NC VM でのみご利用いただけます。 
 
-N シリーズ Linux VM の NVIDIA グラフィック ドライバーを実行するために、Azure Marketplace の次のディストリビューションがサポートされています。
+N シリーズ Linux VM は、Azure Marketplace からの次のディストリビューションとリストされている NVIDIA ドライバーをサポートします。
 
-### <a name="nc-vms-tesla-k80-card"></a>NC VM (Tesla K80 カード)
-* Ubuntu 16.04 LTS 
-* Red Hat Enterprise Linux 7.3 
-* CentOS-based 7.3 
 
-**サポートされるドライバー**: NVIDIA CUDA 8.0、ドライバー ブランチ R375。 [インストール手順](#install-cuda-drivers-for-nc-vms)
-
+| VM シリーズ | サポートされているディストリビューション | サポートされているドライバー |
+| --- | --- | --- |
+| **NC** (Tesla K80 カード) | Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux 7.3<br/><br/> CentOS-based 7.3 | NVIDIA CUDA 8.0、ドライバー ブランチ R375<br/>[インストール手順](#install-cuda-drivers-for-nc-vms) |
+| **NV** (Tesla M60 カード)| Ubuntu 16.04 LTS<br/><br/>Red Hat Enterprise Linux 7.3<br/><br/>CentOS-based 7.3 | NVIDIA GRID 4.2、ドライバー ブランチ R367<br/>[インストール手順](#install-grid-drivers-for-nv-vms) |
 
 
 
@@ -66,7 +62,7 @@ C および C++ の開発者は、GPU アクセラレータを使用したアプ
 
 
 > [!NOTE]
-> ここで示されている CUDA ドライバーのダウンロード リンクは、公開された時点のものです。 最新のドライバーについては、[NVIDIA](http://www.nvidia.com/) Web サイトを参照してください。
+> ここで示されている CUDA ドライバーのダウンロード リンクは、公開された時点のものです。 最新の CUDA ドライバーについては、[NVIDIA](http://www.nvidia.com/) の Web サイトを参照してください。
 >
 
 CUDA Toolkit をインストールするには、各 VM への SSH 接続を作成します。 システムに CUDA 対応の GPU が備わっているかどうかを確認するには、次のコマンドを実行します。
@@ -82,71 +78,85 @@ lspci | grep -i NVIDIA
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
-```bash
-CUDA_REPO_PKG=cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
+1. CUDA ドライバーをダウンロードしてインストールします。
+  ```bash
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_8.0.61-1_amd64.deb
 
-wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
+  wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
-sudo dpkg -i /tmp/${CUDA_REPO_PKG}
+  sudo dpkg -i /tmp/${CUDA_REPO_PKG}
 
-rm -f /tmp/${CUDA_REPO_PKG}
+  rm -f /tmp/${CUDA_REPO_PKG}
 
-sudo apt-get update
+  sudo apt-get update
 
-sudo apt-get install cuda-drivers
+  sudo apt-get install cuda-drivers
 
-```
-インストールには数分かかる場合があります。
+  ```
 
-必要に応じて完全な CUDA ツールキットをインストールするには、次のように入力します。
+  インストールには数分かかる場合があります。
 
-```bash
-sudo apt-get install cuda
-```
+2. 必要に応じて完全な CUDA ツールキットをインストールするには、次のように入力します。
 
-VM を再起動して、インストールの確認に進みます。
+  ```bash
+  sudo apt-get install cuda
+  ```
 
-### <a name="centos-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 または Red Hat Enterprise Linux 7.3
+3. VM を再起動して、インストールの確認に進みます。
 
-> [!IMPORTANT] 
-> 既知の問題により、CentOS 7.3 または Red Hat Enterprise Linux 7.3 を実行する NC24r VM への NVIDIA CUDA ドライバーのインストールは失敗します。
->
+### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
 
-最初に、更新プログラムを取得します。 
 
-```bash
-sudo yum update
+1. 更新プログラムを取得します。 
 
-sudo reboot
-```
+  ```bash
+  sudo yum update
 
-VM に再接続し、次のコマンドを使用してインストールを続行します。
+  sudo reboot
+  ```
+2. VM に再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
+ 
+  ```bash
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1.tar.gz
+ 
+  tar xvzf lis-rpms-4.2.1.tar.gz
+ 
+  cd LISISO
+ 
+  sudo ./install.sh
+ 
+  sudo reboot
+  ```
+ 
+3. VM に再接続し、次のコマンドを使用してインストールを続行します。
 
-```bash
-sudo yum install kernel-devel
+  ```bash
+  sudo yum install kernel-devel
 
-sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-sudo yum install dkms
+  sudo yum install dkms
 
-CUDA_REPO_PKG=cuda-repo-rhel7-8.0.61-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-8.0.61-1.x86_64.rpm
 
-wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
+  wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
-sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
+  sudo rpm -ivh /tmp/${CUDA_REPO_PKG}
 
-rm -f /tmp/${CUDA_REPO_PKG}
+  rm -f /tmp/${CUDA_REPO_PKG}
 
-sudo yum install cuda-drivers
-```
+  sudo yum install cuda-drivers
+  ```
 
-インストールには数分かかる場合があります。 必要に応じて完全な CUDA ツールキットをインストールするには、次のように入力します。
+  インストールには数分かかる場合があります。 
 
-```bash
-sudo yum install cuda
-```
+4. 必要に応じて完全な CUDA ツールキットをインストールするには、次のように入力します。
 
-VM を再起動して、インストールの確認に進みます。
+  ```bash
+  sudo yum install cuda
+  ```
+
+5. VM を再起動して、インストールの確認に進みます。
 
 
 ### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
@@ -173,18 +183,171 @@ sudo apt-get upgrade -y
 sudo apt-get dist-upgrade -y
 
 sudo apt-get install cuda-drivers
+
+sudo reboot
 ```
 
-更新の完了後、VM を再起動します。
 
-#### <a name="centos-73-or-red-hat-enterprise-linux-73"></a>CentOS 7.3 または Red Hat Enterprise Linux 7.3
+#### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
 
 ```bash
 sudo yum update
+
+sudo reboot
 ```
 
-更新の完了後、VM を再起動します。
+## <a name="install-grid-drivers-for-nv-vms"></a>NV VM 用の GRID ドライバーのインストール
 
+NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM に SSH 接続を作成して、Linux ディストリビューションの手順に従います。 
+
+### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
+
+1. `lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
+
+2. 更新プログラムをインストールします。
+
+  ```bash
+  sudo apt-get update
+
+  sudo apt-get upgrade -y
+
+  sudo apt-get dist-upgrade -y
+
+  sudo apt-get install build-essential ubuntu-desktop -y
+  ```
+3. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+
+  ```
+  blacklist nouveau
+
+  blacklist lbm-nouveau
+  ```
+
+
+4. VM を再起動し、再接続します。 X サーバーを終了します。
+
+  ```bash
+  sudo systemctl stop lightdm.service
+  ```
+
+5. GRID ドライバーをダウンロードしてインストールします。
+
+  ```bash
+  wget -O NVIDIA-Linux-x86_64-367.92-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+
+  chmod +x NVIDIA-Linux-x86_64-367.92-grid.run
+
+  sudo ./NVIDIA-Linux-x86_64-367.92-grid.run
+  ``` 
+
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+
+7. インストールが完了したら、次を `/etc/nvidia/gridd.conf.template` に追加します。
+ 
+  ```
+  IgnoreSP=TRUE
+  ```
+8. VM を再起動して、インストールの確認に進みます。
+
+
+### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
+
+
+1. カーネルと DKMS を更新します。
+ 
+  ```bash  
+  sudo yum update
+ 
+  sudo yum install kernel-devel
+ 
+  sudo rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
+ 
+  sudo yum install dkms
+  ```
+
+2. NVIDIA ドライバーと互換性がない、Nouveau カーネル ドライバーを無効にします  (NV VM では NVIDIA ドライバーのみを使用)。これを行うには、次のコンテンツを使用して `/etc/modprobe.d `named`nouveau.conf` でファイルを作成します。
+
+  ```
+  blacklist nouveau
+
+  blacklist lbm-nouveau
+  ```
+ 
+3. VM を再起動して再接続し、HYPER-V の最新の Linux Integration Services をインストールします。
+ 
+  ```bash
+  wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1.tar.gz
+ 
+  tar xvzf lis-rpms-4.2.1.tar.gz
+ 
+  cd LISISO
+ 
+  sudo ./install.sh
+ 
+  sudo reboot
+  ```
+ 
+4. VM に再接続して、`lspci` コマンドを実行します。 NVIDIA M60 カードが PCI デバイスとして表示されていることを確認します。
+ 
+5. GRID ドライバーをダウンロードしてインストールします。
+
+  ```bash
+  wget -O NVIDIA-Linux-x86_64-367.92-grid.run https://go.microsoft.com/fwlink/?linkid=849941  
+
+  chmod +x NVIDIA-Linux-x86_64-367.92-grid.run
+
+  sudo ./NVIDIA-Linux-x86_64-367.92-grid.run
+  ``` 
+6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
+
+7. インストールが完了したら、次を `/etc/nvidia/gridd.conf.template` に追加します。
+ 
+  ```
+  IgnoreSP=TRUE
+  ```
+8. VM を再起動して、インストールの確認に進みます。
+
+### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
+
+
+GPU デバイスの状態を照会するには、VM に SSH 接続し、ドライバーと共にインストールされる [nvidia-smi](https://developer.nvidia.com/nvidia-system-management-interface) コマンド ライン ユーティリティを実行します。 
+
+次のような出力が表示されます。
+
+![NVIDIA デバイスの状態](./media/n-series-driver-setup/smi-nv.png)
+ 
+
+### <a name="x11-server"></a>X11 サーバー
+NV VM へのリモート接続用に X11 サーバーが必要な場合は、グラフィックスのハードウェア アクセラレータを許可している [x11vnc](http://www.karlrunge.com/x11vnc/) をお勧めします。 M60 デバイスの BusID は xconfig ファイルに手動で追加する必要があります (Ubuntu 16.04 LTS では `etc/X11/xorg.conf`、CentOS 7.3 または Red Hat Enterprise Server 7.3 では `/etc/X11/XF86config`)。 次のような `"Device"` セクションを追加します。
+ 
+```
+Section "Device"
+    Identifier     "Device0"
+    Driver         "nvidia"
+    VendorName     "NVIDIA Corporation"
+    BoardName      "Tesla M60"
+    BusID          "your-BusID:0:0:0"
+EndSection
+```
+ 
+また、このデバイスを使用するように `"Screen"` セクションを更新します。
+ 
+BusID は次を実行して見つけることができます。
+
+```bash
+/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1
+```
+ 
+VM が再割り当てまたは再起動されると、BusID が変更される場合があります。 そのため、スクリプトを使用して、VM が再起動されたときに、X11 の構成で BusID を更新することができます。 For example:
+
+```bash 
+#!/bin/bash
+BUSID=$((16#`/usr/bin/nvidia-smi --query-gpu=pci.bus_id --format=csv | tail -1 | cut -d ':' -f 1`))
+
+if grep -Fxq "${BUSID}" /etc/X11/XF86Config; then     echo "BUSID is matching"; else   echo "BUSID changed to ${BUSID}" && sed -i '/BusID/c\    BusID          \"PCI:0@'${BUSID}':0:0:0\"' /etc/X11/XF86Config; fi
+```
+
+このファイルは、`/etc/rc.d/rc3.d` でそのファイルのエントリを作成することで、起動時にルートとして呼び出すことができます。
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング

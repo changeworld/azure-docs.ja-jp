@@ -13,17 +13,19 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/15/2017
+ms.date: 06/27/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 6d5572a2fa7a89d51ec62e3ae05bdc9939ca3a24
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7abc3f238d08694c9f7359479cdce07bfb3d87bd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
-# <a name="configure-a-point-to-site-connection-to-a-vnet-using-powershell"></a>PowerShell を使用した VNet へのポイント対サイト接続の構成
+<a id="configure-a-point-to-site-connection-to-a-vnet-using-powershell" class="xliff"></a>
+
+# PowerShell を使用した VNet へのポイント対サイト接続の構成
 
 
 この記事では、PowerShell を使用して、ポイント対サイト接続を備えた VNet を Resource Manager デプロイメント モデルで作成する手順を説明します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
@@ -49,7 +51,9 @@ P2S 接続には、以下のものが必要です。
 * VPN クライアント構成パッケージが生成され、接続するすべてのクライアント コンピューターにインストールされていること。 このクライアント構成パッケージによって構成されるのは、既にオペレーティング システム上で動作し、VNet への接続に必要な情報を備えているネイティブ VPN クライアントです。
 
 
-## <a name="before-beginning"></a>作業を開始する前に
+<a id="before-beginning" class="xliff"></a>
+
+## 作業を開始する前に
 
 * Azure サブスクリプションを持っていることを確認します。 Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details)を有効にするか、[無料アカウント](https://azure.microsoft.com/pricing/free-trial)にサインアップしてください。
 * Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、[Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)に関するページを参照してください。
@@ -151,7 +155,9 @@ P2S 接続には、以下のものが必要です。
 
 ## <a name="Certificates"></a>3 - 証明書の生成
 
-証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 証明書の生成とインストールの詳細については、[ポイント対サイトの証明書](vpn-gateway-certificates-point-to-site.md)に関するページを参照してください。
+証明書は、ポイント対サイト VPN の VPN クライアントを認証するために、Azure によって使用されます。 そのため、ルート証明書の公開キー情報を Azure にアップロードします。 その後、その公開キーは "信頼された" と見なされます。 信頼されたルート証明書からクライアント証明書を生成し、それを各クライアント コンピューターの [証明書 - 現在のユーザー] の [個人] 証明書ストアにインストールする必要があります。 この証明書は、クライアントで VNet への接続を開始するときに、そのクライアントを認証するために使用されます。 
+
+自己署名証明書を使用する場合は、特定のパラメーターを使って証明書を作成する必要があります。 自己署名証明書は、[PowerShell と Windows 10](vpn-gateway-certificates-point-to-site.md) を使った手順で作成できるほか、Windows 10 をご利用でない場合は、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使って作成することができます。 自己署名ルート証明書やクライアント証明書を生成するときは、これらの説明に記載されている手順に従うことが大切です。 説明どおりに生成しないと、証明書が P2S 接続に適合せず、接続エラーが発生します。
 
 ### <a name="cer"></a>手順 1 - ルート証明書の .cer ファイルの取得
 
@@ -258,7 +264,9 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 
 信頼されたルート証明書を Azure に追加したり、Azure から削除したりできます。 ルート証明書を削除すると、そのルートから証明書を生成したクライアントは認証が無効となり、接続できなくなります。 クライアントの認証と接続を正常に実行できるようにするには、Azure に信頼されている (Azure にアップロードされている) ルート証明書から生成した新しいクライアント証明書をインストールする必要があります。
 
-### <a name="to-add-a-trusted-root-certificate"></a>信頼されたルート証明書を追加するには
+<a id="to-add-a-trusted-root-certificate" class="xliff"></a>
+
+### 信頼されたルート証明書を追加するには
 
 Azure には、最大 20 個のルート証明書 .cer ファイルを追加できます。 ルート証明書は次の手順で追加できます。
 
@@ -289,7 +297,9 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
   -VirtualNetworkGatewayName "VNet1GW"
   ```
 
-### <a name="to-remove-a-root-certificate"></a>ルート証明書を削除するには
+<a id="to-remove-a-root-certificate" class="xliff"></a>
+
+### ルート証明書を削除するには
 
 1. 変数を宣言します。
 
@@ -317,7 +327,9 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 一般的な方法としては、ルート証明書を使用してチームまたは組織レベルでアクセスを管理し、失効したクライアント証明書を使用して、個々のユーザーの細かいアクセス制御を構成します。
 
-### <a name="to-revoke-a-client-certificate"></a>クライアント証明書を失効させるには
+<a id="to-revoke-a-client-certificate" class="xliff"></a>
+
+### クライアント証明書を失効させるには
 
 1. クライアント証明書の拇印を取得します。 詳細については、「[方法: 証明書のサムプリントを取得する](https://msdn.microsoft.com/library/ms734695.aspx)」を参照してください。
 2. 情報をテキスト エディターにコピーし、文字列が 1 つにつながるようにスペースをすべて削除します。 これを次の手順で変数として宣言します。
@@ -343,7 +355,9 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
   ```
 6. 拇印が追加された後は、証明書を接続に使用することができなくなります。 この証明書を使用して接続を試みたクライアントには、証明書が無効になっていることを示すメッセージが表示されます。
 
-### <a name="to-reinstate-a-client-certificate"></a>クライアント証明書を回復するには
+<a id="to-reinstate-a-client-certificate" class="xliff"></a>
+
+### クライアント証明書を回復するには
 
 失効したクライアント証明書のリストから拇印を削除することで、クライアント証明書を回復できます。
 
@@ -371,5 +385,8 @@ Azure には、最大 20 個のルート証明書 .cer ファイルを追加で�
 
 [!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
+

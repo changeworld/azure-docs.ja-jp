@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/25/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 02ecc95d97719908a18f615dc3e19af2a563cc73
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 8ccb94ea1b415c93d9dc3faefab3cbf8fb075b89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -36,7 +36,7 @@ HDInsight で Spark を使用して、Application Insight テレメトリ デー
 * Linux ベースの HDInsight クラスターの作成に慣れていること。 詳細については、[HDInsight での Spark の作成](hdinsight-apache-spark-jupyter-spark-sql.md)に関する記事をご覧ください。
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * Web ブラウザー。
 

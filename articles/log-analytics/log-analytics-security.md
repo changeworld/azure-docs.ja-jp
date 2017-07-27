@@ -3,7 +3,7 @@ title: "Log Analytics のデータ セキュリティ | Microsoft Docs"
 description: "Log Analytics でプライバシーを保護し、データをセキュリティで保護する方法について説明します。"
 services: log-analytics
 documentationcenter: 
-author: bandersmsft
+author: MGoedtel
 manager: carmonm
 editor: 
 ms.assetid: a33bb05d-b310-4f2c-8f76-f627e600c8e7
@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
-ms.author: banders
-translationtype: Human Translation
-ms.sourcegitcommit: d0f4323c22858300d95af7407cdb14995507ee60
-ms.openlocfilehash: 952697dff7dca2779a6eb5375afa41c0b130aad4
-ms.lasthandoff: 11/23/2016
+ms.date: 05/03/2017
+ms.author: magoedte
+ms.translationtype: Human Translation
+ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
+ms.openlocfilehash: fa33a031a9e05f3079f1ed68d2ac0902b3070fa6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 05/04/2017
 
 
 ---
-# <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
+<a id="log-analytics-data-security" class="xliff"></a>
+
+# Log Analytics データのセキュリティ
 Microsoft は、組織の IT インフラストラクチャの管理に役立つソフトウェアやサービスを提供すると同時に、お客様のプライバシーとデータの保護に努めています。 他者にデータを委託する場合、信頼には厳格なセキュリティが必要であることを把握しております。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
 
 Microsoft においてデータの保護は最優先事項になります。 セキュリティ ポリシーを含め、次の情報に関するご質問やご提案、問題がある場合は、[Azure のサポート オプション](http://azure.microsoft.com/support/options/)に関するページを参照してください。
@@ -37,10 +40,14 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 * コンプライアンス
 * セキュリティ基準認定
 
-## <a name="data-segregation"></a>データの分離
+<a id="data-segregation" class="xliff"></a>
+
+## データの分離
 顧客データは OMS サービスを通じて各コンポーネントで論理的に個別に保存されます。 すべてのデータは組織ごとにタグ付けされます。 このタグ付けはデータのライフ サイクルにおいて継続され、サービスの各層で強制されます。 各顧客には、長期的なデータを格納する専用の Azure BLOB が提供されます。
 
-## <a name="data-retention"></a>データの保持
+<a id="data-retention" class="xliff"></a>
+
+## データの保持
 インデックス設定済みのログの検索データは、価格プランに従って保持されます。 詳細については、「 [ログ分析の価格](https://azure.microsoft.com/pricing/details/log-analytics/)」を参照してください。
 
 顧客データは、OMS ワークスペースが閉じられてから 30 日後に削除されます。 データが存在する Azure Storage アカウントも削除されます。 顧客データが削除されるときに、物理ドライブは破棄されません。
@@ -68,10 +75,14 @@ Log Analytics サービスは次の方法でクラウドベースのデータを
 | パフォーマンス |ObjectName、CounterName、PerfmonInstanceName、PerformanceDataId、PerformanceSourceInternalID、SampleValue、TimeSampled、TimeAdded |
 | 状態 |StateChangeEventId、StateId、NewHealthState、OldHealthState、コンテキスト、TimeGenerated、TimeAdded、StateId2、BaseManagedEntityId、MonitorId、HealthState、LastModified、LastGreenAlertGenerated、DatabaseTimeModified |
 
-## <a name="physical-security"></a>物理的なセキュリティ
+<a id="physical-security" class="xliff"></a>
+
+## 物理的なセキュリティ
 OMS サービスの Log Analytics は Microsoft の担当者によって運営されており、すべてのアクティビティ ログは記録され、監査することができます。 このサービスはすべて Azure で実行され、Azure の一般的なエンジニアリングの条件に準拠しています。 Azure の資産の物理的なセキュリティに関する詳細は、「 [Microsoft Azure セキュリティの概要](http://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)」の 18 ページを参照してください。 転送や終了を含む OMS サービスへの責任がなくなったユーザに対する、領域をセキュリティで保護する物理的なアクセス権は、1 営業日以内に変更されます。 使用されるグローバルな物理インフラストラクチャについては、[Microsoft データ センター](https://www.microsoft.com/en-us/server-cloud/cloud-os/global-datacenters.aspx)を参照してください。
 
-## <a name="incident-management"></a>インシデント管理
+<a id="incident-management" class="xliff"></a>
+
+## インシデント管理
 OMS には、すべての Microsoft サービスが準拠するインシデント管理プロセスがあります。 まとめると次のようになります。
 
 * セキュリティ責任の一部が Microsoft に属し、一部が顧客に属する責任の分担モデルの使用
@@ -95,7 +106,9 @@ OMS には、すべての Microsoft サービスが準拠するインシデン�
 
 Microsoft のセキュリティ インシデントへの対応の詳細については、「[Microsoft Azure Security Response in the Cloud](https://gallery.technet.microsoft.com/Azure-Security-Response-in-dd18c678/file/150826/1/Microsoft Azure Security Response in the cloud.pdf) (クラウドでの Microsoft Azure のセキュリティ対応)」を参照してください。
 
-## <a name="compliance"></a>コンプライアンス
+<a id="compliance" class="xliff"></a>
+
+## コンプライアンス
 OMS ソフトウェア開発およびサービス チームの情報セキュリティとガバナンスのプログラムは、ビジネス要件をサポートしており、法律および [Microsoft Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/) と [Microsoft セキュリティ センターのコンプライアンス](https://www.microsoft.com/en-us/TrustCenter/Compliance/default.aspx)で説明されている規定を順守しています。 そこでは、OMS によるセキュリティ要件の確立方法、セキュリティ制御の識別方法、リスクの管理と監視方法についても説明されています。 Microsoft では、ポリシー、標準、手順、およびガイドラインのレビューを毎年行っています。
 
 OMS 開発チームの各メンバーは、正規のアプリケーション セキュリティのトレーニングを受けています。 内部的には、ソフトウェア開発用に、バージョン管理システムを使用しています。 各ソフトウェア プロジェクトは、バージョン管理システムによって保護されています。
@@ -106,10 +119,14 @@ Microsoft の取締役会には、Microsoft におけるすべての情報セキ
 
 OMS ソフトウェアの開発とサービスのチームは、Microsoft の法律および法令遵守チーム、その他の業界パートナーと積極的に連携し、さまざまな認定資格を取得しています。
 
-## <a name="certifications-and-attestations"></a>認定と認証
+<a id="certifications-and-attestations" class="xliff"></a>
+
+## 認定と認証
 OMS Log Analytics は、次の要件を満たしています。
 
-* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm) および [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498) 準拠
+* [ISO/IEC 27001](http://www.iso.org/iso/home/standards/management-standards/iso27001.htm)
+* [ISO/IEC 27018:2014](http://www.iso.org/iso/home/store/catalogue_tc/catalogue_detail.htm?csnumber=61498)
+* [ISO 22301](https://azure.microsoft.com/en-us/blog/iso22301/)
 * PCI Security Standards Council による [Payment Card Industry (PCI 準拠) データ セキュリティ基準 (PCI DSS)](https://www.microsoft.com/en-us/TrustCenter/Compliance/PCI)。
 * [Service Organization Controls (SOC) 1 Type 1 および SOC 2 Type 1](https://www.microsoft.com/en-us/TrustCenter/Compliance/SOC1-and-2) 準拠
 * [HIPAA および HITECH](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA) (HIPAA Business Associate Agreement を締結している企業向け)
@@ -123,12 +140,16 @@ OMS Log Analytics は、次の要件を満たしています。
 >
 
 
-## <a name="cloud-computing-security-data-flow"></a>クラウド コンピューティングのセキュリティ データ フロー
+<a id="cloud-computing-security-data-flow" class="xliff"></a>
+
+## クラウド コンピューティングのセキュリティ データ フロー
 次の図は、企業の情報フローを例にしたクラウドのセキュリティ アーキテクチャです。情報が Log Analytics サービスまで移動する間にどのように保護され、最終的に OMS ポータルでユーザーに表示されるかを示しています。 各手順の詳細は図の後で説明します。
 
 ![Image of OMS data collection and security](./media/log-analytics-security/log-analytics-security-diagram.png)
 
-## <a name="1-sign-up-for-log-analytics-and-collect-data"></a>1.Log Analytics にサインアップし、データを収集する
+<a id="1-sign-up-for-log-analytics-and-collect-data" class="xliff"></a>
+
+## 1.Log Analytics にサインアップし、データを収集する
 組織から Log Analytics にデータを送信する場合、Windows エージェント、Azure Virtual Machines 上で実行されるエージェント、または Linux 用 OMS エージェントを構成します。 Operations Manager エージェントを使用する場合、オペレーション コンソールで構成ウィザードを使用して構成します。 ユーザー (あなた、他の個人、または複数人のグループの場合があります) は、次のアカウントのいずれかを使用して 1 つ以上の OMS アカウント (OMS ワークスペース) を作成し、エージェントを登録します。
 
 * [組織 ID](../active-directory/sign-up-organization.md)
@@ -142,7 +163,9 @@ Operations Manager の場合、構成ウィザードが完了したら、各 Ope
 
 各エージェントが Log Analytics のデータを収集します。 収集されるデータの種類は、使用するソリューションの種類によって異なります。 データ収集の概要については「[ソリューション ギャラリーから Log Analytics ソリューションを追加する](log-analytics-add-solutions.md)」を参照してください。 また、ほぼすべてのソリューションについて、より詳細な収集情報も提供されています。 ソリューションは、定義済みビュー、ログ検索クエリ、データの収集ルール、処理ロジックのバンドルになります。 Log Analytics を使用してソリューションをインポートできるのは管理者のみです。 ソリューションはインポート後、Operations Manager 管理サーバー (使用する場合) に移動され、選択した任意のエージェントに移動されます。 その後、エージェントはデータを収集します。
 
-## <a name="2-send-data-from-agents"></a>2.エージェントからデータを送信する
+<a id="2-send-data-from-agents" class="xliff"></a>
+
+## 2.エージェントからデータを送信する
 登録キーを使用してすべての種類のエージェントを登録すると、証明書ベースの認証とポート 443 による SSL が使用され、エージェントと Log Analytics サービス間にセキュリティで保護された接続が確立します。 OMS では、キーの生成と管理にシークレット ストアを使用します。 秘密キーは 90 日ごとに交換されて Azure に格納され、厳密な規制およびコンプライアンス手順に従う Azure オペレーターによって管理されます。
 
 Operations Manager では Log Analytics サービスにワークスペースを登録すると、Operations Manager 管理サーバーとの間にセキュリティで保護された HTTPS 接続が確立します。
@@ -153,14 +176,20 @@ Azure Virtual Machines 上で実行される Windows エージェントの場合
 
 前述のように、エージェントからのデータが SSL 経由で Microsoft Azure データ センターに送信されます。 必要に応じて、ExpressRoute を使用してデータのセキュリティを強化できます。 ExpressRoute は、ネットワーク サービス プロバイダーによって提供されるマルチ プロトコル ラベル スイッチング (MPLS) VPN などの、既存の WAN ネットワークから Azure に直接接続する方法です。 詳細については、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) に関するページを参照してください。
 
-## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3.Log Analytics サービスでデータを受信して処理する
+<a id="3-the-log-analytics-service-receives-and-processes-data" class="xliff"></a>
+
+## 3.Log Analytics サービスでデータを受信して処理する
 Log Analytics サービスでは、Azure 認証で証明書とデータの整合性を検証することにより、入力されるデータが信頼できる発行元からのものであることを確認します。 未処理の生データはその後、[Microsoft Azure Storage](../storage/storage-introduction.md) で BLOB として暗号化されていない状態で保存されます。 ただし、各 Azure Storage BLOB には、そのユーザーのみがアクセスできる一意のキーのセットがあります。 保存されているデータの種類は、インポートしてデータを収集するために使用したソリューションの種類によって異なります。 次に、Log Analytics サービスは、Azure Storage BLOB 用の生データを処理します。
 
-## <a name="4-use-log-analytics-to-access-the-data"></a>4.Log Analytics を使用してデータにアクセスする
+<a id="4-use-log-analytics-to-access-the-data" class="xliff"></a>
+
+## 4.Log Analytics を使用してデータにアクセスする
 OMS ポータルで Log Analytics にサインインするには、設定済みの組織アカウントまたは Microsoft アカウントを使用します。 OMS ポータルと OMS の Log Analytics 間のすべてのトラフィックは、セキュリティで保護された HTTPS チャネル経由で送信されます。 OMS ポータルを使用する場合、セッション ID がユーザーのクライアント (Web ブラウザー) で生成され、データはセッションが終了するまでローカル キャッシュに保存されます。 セッションが終了すると、キャッシュが削除されます。 個人を特定できる情報が含まれないクライアント側の Cookie は、自動的に削除されません。 セッションの Cookie は HTTPOnly としてマークされ、セキュリティで保護されます。 あらかじめ決められたアイドル期間の後は、OMS ポータル セッションが終了します。
 
 OMS ポータルを使用してデータを CSV ファイルにエクスポートし、検索 API を使用してデータにアクセスすることができます。 CSV エクスポートはエクスポートあたり 50,000 行に制限され、API のデータは検索あたり 5,000 行に制限されます。
 
-## <a name="next-steps"></a>次のステップ
+<a id="next-steps" class="xliff"></a>
+
+## 次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
 

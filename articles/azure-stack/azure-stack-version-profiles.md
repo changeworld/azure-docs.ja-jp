@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: sngun
-translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 4584323cb2f30b76b574ad0d8f131c37d0cf8d10
-ms.lasthandoff: 03/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a55cc1673e1dc9ecd197eea345bf646e953389c6
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -41,7 +41,7 @@ Update-Module -Name "AzureRm.BootStrapper"
 
 ## <a name="install-a-profile"></a>Install a profile
 
-Use the **Install-AzureRmProfile** cmdlet with the **2017-03-09-profile** API version profile to install the AzureRM modules required by Azure Stack. Note that the Azure Stack administrator modules are not installed with this API version profile, and they should be installed separately as specified in the Step 3 of the [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) article.
+Use the **Install-AzureRmProfile** cmdlet with the **2017-03-09-profile** API version profile to install the AzureRM modules required by Azure Stack. Note that the Azure Stack cloud administrator modules are not installed with this API version profile, and they should be installed separately as specified in the Step 3 of the [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) article.
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

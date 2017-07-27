@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/9/2017
 ms.author: markgal
-translationtype: Human Translation
-ms.sourcegitcommit: 767e3b2e8330b4c52576c90e8ef090e1abc69b42
-ms.openlocfilehash: 20e486be706c6fc02ced8343c050379ceff99d82
-ms.lasthandoff: 01/23/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 70ea11a7ee273d8c8497a6f12693ddb41ac7cb77
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/29/2017
 
 
 ---
@@ -28,7 +29,7 @@ ms.lasthandoff: 01/23/2017
 >
 >
 
-この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ監視および管理タスクの概要を説明します。 この記事は、既に Azure サブスクリプションがあり、少なくとも&1; つの Recovery Services コンテナーが作成済みであることを前提としています。
+この記事では、Azure Portal と Microsoft Azure Backup エージェントで使用できるバックアップ監視および管理タスクの概要を説明します。 この記事は、既に Azure サブスクリプションがあり、少なくとも 1 つの Recovery Services コンテナーが作成済みであることを前提としています。
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
@@ -81,7 +82,7 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 | アラート レベル | 送信されるアラート |
 | --- | --- |
 | 重大 |バックアップの失敗、回復エラー |
-| 警告 |警告を伴ってバックアップが完了した (破損が原因でバックアップされなかったファイルが&100; 個未満で、正常にバックアップされたファイルの数が&100; 万を超えるとき) |
+| 警告 |警告を伴ってバックアップが完了した (破損が原因でバックアップされなかったファイルが 100 個未満で、正常にバックアップされたファイルの数が 100 万を超えるとき) |
 | 情報 |なし |
 
 ## <a name="manage-backup-alerts"></a>バックアップ アラートの管理
@@ -110,7 +111,7 @@ Recovery Services コンテナーのダッシュボードには、Recovery Servi
 
 **[通知]** 頻度に **[アラートごと]** が選択されている場合、グループ化や電子メールの削減は行われません。 アラートごとに通知されます。 これは既定の設定で、解決策が示された電子メールが直ちに送信されます。
 
-**[通知]** 頻度に **[1 時間ごとのダイジェスト]** が選択されている場合、過去&1; 時間に新しいアラートが生成され、未解決であることが、電子メールでユーザーに通知されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
+**[通知]** 頻度に **[1 時間ごとのダイジェスト]** が選択されている場合、過去 1 時間に新しいアラートが生成され、未解決であることが、電子メールでユーザーに通知されます。 解決策が示された電子メールは、その時間の終了時に送信されます。
 
 次の重大度レベルに対してアラートを送信できます。
 
@@ -214,7 +215,7 @@ Backup エージェント コンソールの右側にある **[アクション]*
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/modify-or-stop-a-scheduled-backup.png)
 3. 項目を追加または変更する場合は、**[バックアップする項目の選択]** 画面で **[項目の追加]** をクリックします。
 
-    ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#exclusion-settings)を追加する手順をご覧ください。
+    ウィザードのこのページで、 **[除外の設定]** を設定することもできます。 ファイルまたはファイルの種類を除外する場合は、 [除外の設定](#manage-exclusion-settings)を追加する手順をご覧ください。
 4. バックアップするファイルとフォルダーを選択し、 **[OK]**をクリックします。
 
     ![Windows Server のバックアップ スケジュールを設定します](./media/backup-azure-manage-windows-server/add-items-modify.png)
@@ -300,9 +301,9 @@ A2. アラートは、Azure のバックアップが失敗してから 20 分以
 
 A3. アラートのノイズを軽減する目的で、次の場合は通知が送信されません。
 
-* 通知頻度が&1; 時間ごとに設定されており、アラートが発生してから&1; 時間以内に解決した。
+* 通知頻度が 1 時間ごとに設定されており、アラートが発生してから 1 時間以内に解決した。
 * ジョブが取り消された。
-* 元のバックアップ ジョブが進行中のために&2; 番目のバックアップ ジョブが失敗した。
+* 元のバックアップ ジョブが進行中のために 2 番目のバックアップ ジョブが失敗した。
 
 ## <a name="troubleshooting-monitoring-issues"></a>監視に関する問題のトラブルシューティング
 **問題:** Azure Backup エージェントからのジョブやアラートがポータルに表示されない。

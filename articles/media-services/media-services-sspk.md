@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 06/06/2017
 ms.author: xpouyat
-translationtype: Human Translation
-ms.sourcegitcommit: 432752c895fca3721e78fb6eb17b5a3e5c4ca495
-ms.openlocfilehash: 2a6122645f96e7a1a1286ef2d13c155b5b106056
-ms.lasthandoff: 03/30/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: bb14f94ee2b51c8b1c8eb4754ead670d7f82689f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -84,6 +85,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Albis Technologies Ltd.
 * Alticast Corporation
 * Amazon Digital Services, Inc.
+* Arion Technology, Inc.
 * AVC Multimedia Software Co., Ltd.
 * Cavium, Inc.
 * EchoStar Purchasing Corporation
@@ -115,6 +117,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * Amazon Digital Services, Inc.
 * AmTRAN Technology Co., Ltd.
 * Arcadyan Technology Corporation
+* Arion Technology, Inc.
 * ATMACA ELEKTRONİK SAN. VE TİC. A.Ş
 * British Sky Broadcasting Limited
 * CastPal Technology Inc., Shenzhen
@@ -153,6 +156,7 @@ Smooth Streaming Client Porting Kit の利用には、1 回限りのライセン
 * VIZIO, Inc.
 * Wistron Corporation
 * ZTE Corporation
+
 
 ## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]

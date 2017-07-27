@@ -1,5 +1,5 @@
 ---
-title: "プログラムで Hadoop YARN アプリケーション ログにアクセスする| Microsoft Docs"
+title: "Hadoop YARN アプリケーション ログにプログラムを使用してアクセスする - Azure | Microsoft Docs"
 description: "HDInsight の Hadoop クラスター上のアプリケーション ログにプログラムを使用してアクセスします。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: ce07cf026ca9dae40afe3205685f3ab463492e39
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 63b60a671cde118c41e94fc88c4eed5f6cba8c19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
