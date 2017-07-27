@@ -72,7 +72,7 @@
 ## [Azure Security](/azure/security/)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [料金](security-center-pricing.md)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
