@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 04/20/2017
 ms.author: jeedes
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: e42c541ce15b2e025c7019e91ae3c6c74483b6c2
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: 5119772dd7c3d55ed4e0ad44e71bd67b2e923409
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -241,7 +241,7 @@ Absorb LMS の場合、プロビジョニングは手動で行います。
 
     d. **[Password]** ボックスに、Britta Simon のパスワードを入力します。
 
-    e. **[Confirm Password]** ドロップダウンで、Britta Simon の確認パスワードを選択します。
+    e. **[パスワードの確認]** ボックスに、同じパスワードを入力します。
     
     f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[ACTIVE]** を選択します。    
 

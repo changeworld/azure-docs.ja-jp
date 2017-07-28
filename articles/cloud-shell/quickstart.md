@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 347984aae91a9fa99f88001effe2cba49f92deb9
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 6fbe0dbe159fecb73833260d18aade7d294f040f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
@@ -72,5 +72,6 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 `az group delete -n MyRG` を実行します。
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell におけるストレージの永続化について](persisting-shell-storage.md) [Azure CLI 2.0 について] (https://docs.microsoft.com/cli/azure/) [Azure File Storage について] (https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-
+[Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
+[Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
+[Azure File Storage について](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>

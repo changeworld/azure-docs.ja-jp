@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 3ca1184bfbd6af3a63e62bce9dfe1baf1729b4ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c1d70bfcf5d1235b34f6cda3ce4e1639e99ebc7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,12 +33,15 @@ HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。
 > [!NOTE]
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
 
+> [!IMPORTANT]
+> ドメイン参加済みの HDInsight では、Oozie は有効になっていません。
+
 ## <a name="prerequisites"></a>前提条件
 
 * **HDInsight クラスター**: [Linux での HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="example-workflow"></a>ワークフローの例
 

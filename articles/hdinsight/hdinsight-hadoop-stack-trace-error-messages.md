@@ -1,5 +1,5 @@
 ---
-title: "Hadoop スタック トレース エラー メッセージ | Microsoft Docs"
+title: "Hadoop スタック トレース エラー メッセージ - Azure HDInsight | Microsoft Docs"
 description: "Azure HDInsight での Hadoop スタック トレース エラー メッセージのインデックス。 一覧のエラーに対応するトラブルシューティング情報を確認します。"
 keywords: "スタック トレース、エラー メッセージ"
 services: hdinsight
@@ -15,12 +15,12 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: big-data
 ms.date: 04/26/2017
-ms.author: gao
+ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: bc6f7904e6307477eb90bb0ca74be19a9c76eb35
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: ef647b4414cc3f338719eff8ccd403abaefd41b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---

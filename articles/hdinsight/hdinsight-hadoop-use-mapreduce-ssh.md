@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop の MapReduce と SSH 接続の使用 | Microsoft Docs"
+title: "HDInsight での Hadoop の MapReduce と SSH 接続の使用 - Azure | Microsoft Docs"
 description: "SSH を使用して HDInsight で Hadoop を使用して MapReduce ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d13e6782115bf4f229ed232dc6e3c21ff81c86eb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 7af00e78536907a983285ef271e7945b83bd5619
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -38,7 +38,7 @@ Secure Shell (SSH) 接続から HDInsight に MapReduce ジョブを送信する
 * Linux ベースの HDInsight (HDInsight で Hadoop を使用) クラスター
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * SSH クライアント 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 

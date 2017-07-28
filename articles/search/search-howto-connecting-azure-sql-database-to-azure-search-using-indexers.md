@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 02/15/2017
+ms.date: 06/01/2017
 ms.author: eugenesh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 54b8e16504e1170058dd021f7f7e2fba7b99bba7
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 80ede2ffc7380145e3bfca48abf0d05f0a79585a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 
@@ -182,9 +182,10 @@ SQL データベースが [変更追跡](https://msdn.microsoft.com/library/bb93
 * Azure VM で SQL Server を使用している場合は、SQL Server 2008 R2 以降。
 * Azure SQL Database を使用している場合は、Azure SQL Database V12。
 
-SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。
-
-このポリシーはテーブルでのみ使用できます。ビューで使用することはできません。 このポリシーを使用する前に、使用しているテーブルの変更追跡を有効にする必要があります。 指示については、「[変更の追跡の有効化と無効化](https://msdn.microsoft.com/library/bb964713.aspx)」をご覧ください。
+> [!IMPORTANT] 
+> このポリシーはテーブルでのみ使用できます。ビューで使用することはできません。 このポリシーを使用する前に、使用しているテーブルの変更追跡を有効にする必要があります。 指示については、「[変更の追跡の有効化と無効化](https://msdn.microsoft.com/library/bb964713.aspx)」をご覧ください。
+> 
+> さらに、テーブルで複合主キー (複数の列を含む主キー) が使用されている場合は、このポリシーを使用できません。  
 
 このポリシーを使用するには、データ ソースを次のように作成または更新します。
 
@@ -197,6 +198,8 @@ SQL 統合変更追跡ポリシーを使用するときは、個別のデータ�
            "@odata.type" : "#Microsoft.Azure.Search.SqlIntegratedChangeTrackingPolicy"
       }
     }
+
+SQL 統合変更追跡ポリシーを使用するときは、個別のデータ削除検出ポリシーを指定しないでください。個別のデータ削除ポリシーには、削除された行を識別するためのサポートが組み込まれています。 ただし、削除が "自動的に" 検出されるためには、検索インデックスのドキュメント キーが SQL テーブルの主キーと同じである必要があります。 
 
 <a name="HighWaterMarkPolicy"></a>
 

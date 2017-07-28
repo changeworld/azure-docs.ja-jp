@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
 ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 858769130eed5c996bca151855bfc09d4832a314
+ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
+ms.openlocfilehash: 33390532cc4fc1129a4f960d589f41bc95e5a1ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 06/15/2017
 
 ---
 
@@ -88,7 +88,7 @@ Network Watcher のパケット キャプチャを使用すると、仮想マシ
 - **[ローカル ファイル パス]** - パケット キャプチャを保存する、仮想マシン上のローカル パスです  (**[ファイル]** を選択した場合にのみ有効です)。 有効なパスを指定する必要があります。
 - **[1 パケットあたりの最大バイト数]** - 各パケットからキャプチャされるバイト数です。空白のままの場合、すべてのバイトがキャプチャされます。
 - **[1 セッションあたりの最大バイト数]** - キャプチャされるバイト数の合計値です。この値に達すると、パケット キャプチャが停止します。
-- **[制限時間 (秒)]** - パケット キャプチャを停止するまでの制限時間を設定します。 既定値は 1,800 秒です。
+- **[制限時間 (秒)]** - パケット キャプチャを停止するまでの制限時間を設定します。 既定値は 18,000 秒です。
 
 > [!NOTE]
 > Premium Storage アカウントは、現在、パケット キャプチャの格納には対応していません。

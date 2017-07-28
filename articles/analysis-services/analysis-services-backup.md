@@ -12,12 +12,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 06/01/2017
 ms.author: owend
-translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: fb660384f2f9f569bcfbe7fa7d5c1f7ce772cacd
-ms.lasthandoff: 04/20/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: db04507d50b6dfe767ede4479fe0b02af2461576
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/03/2017
 
 
 ---
@@ -31,7 +32,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 > 
 > 
 
-バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 直接クエリの表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。 
+バックアップは、.abf という拡張子で保存されます。 インメモリの表形式モデルの場合、モデル データとメタデータの両方が保存されます。 DirectQuery 表形式モデルの場合、モデルのメタデータのみが保存されます。 バックアップは、オプションの選択によって、圧縮したり暗号化したりすることができます。 
 
 
 
@@ -54,7 +55,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
     ![コンテナーの選択](./media/analysis-services-backup/aas-backup-container.png)
 
-5. バックアップ設定を保存します。 ストレージ設定を変更したりバックアップの有効と無効を切り替えたりするたびに変更を保存する必要があります。
+5. バックアップ設定を保存します。
 
     ![バックアップ設定の保存](./media/analysis-services-backup/aas-backup-save.png)
 
@@ -66,7 +67,7 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 
 2. **[データベースのバックアップ]** > **[バックアップ ファイル]** の順に移動し、**[参照]** をクリックします。
 
-3. **[ファイル名を付けて保存]** ダイアログでフォルダーのパスを確認し、バックアップ ファイルの名前を入力します。 ファイル名には、既定で .abf という拡張子が付きます。 
+3. **[ファイル名を付けて保存]** ダイアログでフォルダーのパスを確認し、バックアップ ファイルの名前を入力します。 
 
 4. **[ データベースのバックアップ]** ダイアログで、オプションを選択します。
 
@@ -85,7 +86,12 @@ Azure Analysis Services の表形式モデル データベースのバックア�
 ## <a name="restore"></a>復元
 復元の際、バックアップ ファイルは、サーバー用に構成したストレージ アカウントにある必要があります。 バックアップ ファイルをオンプレミスの場所からストレージ アカウントに移動する必要がある場合は、[Microsoft Azure ストレージ エクスプローラー](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer)か、[AzCopy](../storage/storage-use-azcopy.md) コマンドライン ユーティリティを使用してください。 
 
-オンプレミスの SQL Server Analysis Services サーバーから表形式の 1200 モデル データベースを復元する場合は、まずモデルのロールからすべてのドメイン ユーザーを削除し、それを Azure Active Directory ユーザーとしてロールに追加し直す必要があります。 ロールは同じものとなります。
+
+
+> [!NOTE]
+> オンプレミスのサーバーから復元する場合、モデルのロールからすべてのドメイン ユーザーを削除し、それらのユーザーを Azure Active Directory ユーザーとしてロールに追加し直す必要があります。
+> 
+> 
 
 ### <a name="to-restore-by-using-ssms"></a>SSMS を使って復元するには
 

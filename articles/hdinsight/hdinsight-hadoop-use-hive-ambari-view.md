@@ -1,5 +1,5 @@
 ---
-title: "Ambari ビューによる HDInsight (Hadoop) での Hive の使用 | Microsoft Docs"
+title: "Ambari ビューによる HDInsight (Hadoop) での Hive の使用 - Azure | Microsoft Docs"
 description: "Web ブラウザーから Hive ビューを使用して Hive クエリを送信する方法について説明します。 Hive ビューは、Linux ベースの HDInsight クラスターに付属する Ambari Web UI の要素です。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/05/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 8789643474ac84d4509cd25206091e49925c9dcd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9adfd92b72eb0ecd5b4811c525d4b6ff6609f60f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -38,7 +38,7 @@ Ambari Hive ビューを使用して Hive クエリを実行する方法につ�
 * Linux ベースの HDInsight クラスター。 クラスターの作成方法については、[Linux ベースの HDInsight の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 ## <a name="open-the-hive-view"></a>Hive ビューを開く
 
