@@ -127,7 +127,7 @@ Draft のインストール手順は、[Draft のリポジトリ](https://github
     ここで、`ingress` コントローラーにウォッチを設定して、デプロイ時に外部 IP 値をキャプチャするようにします。 この IP アドレスは、次のセクションで[デプロイ ドメインにマップされる](#wire-up-deployment-domain)ものです。
 
     ```bash
-    kubectl get svc -w
+    $ kubectl get svc -w
     NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
     ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
     kubernetes                    10.0.0.1       <none>          443/TCP                      7h
@@ -209,8 +209,8 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
   - Kubernetes 受信外部 IP アドレスにマップするように構成したルート デプロイ ドメイン (この例では `squillace.io`)
 
   `draft init` を呼び出すと、構成プロセスによって、上記の値の入力を求めるメッセージが表示されます。 このプロセスは、初めて実行すると、次のように表示されます。
-    ```
-    draft init
+    ```bash
+    $ draft init
     Creating pack ruby...
     Creating pack node...
     Creating pack gradle...
@@ -239,7 +239,7 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
 
 ## アプリケーションを構築してデプロイする
 
-Draft リポジトリには [6 個の単純なサンプル アプリケーション](https://github.com/Azure/draft/tree/master/examples)があります。 このリポジトリを複製して、[Python のサンプル](https://github.com/Azure/draft/tree/master/examples/python)を使用しましょう。 examples/Python ディレクトリに移動し、`draft create` と入力してアプリケーションを構築します。 次の例のようになります。
+Draft リポジトリには [6 個の単純なサンプル アプリケーション](https://github.com/Azure/draft/tree/master/examples)があります。 このリポジトリをクローンして、[Python のサンプル](https://github.com/Azure/draft/tree/master/examples/python)を使用しましょう。 examples/python ディレクトリに移動し、`draft create` と入力してアプリケーションを構築します。 次の例のようになります。
 ```bash
 $ draft create
 --> Python app detected
