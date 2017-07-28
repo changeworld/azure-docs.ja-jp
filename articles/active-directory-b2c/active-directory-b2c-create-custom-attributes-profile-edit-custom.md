@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 83748140c7b92b95a648ae3ecf78f22e2393780b
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: c2bbb8058ce335c7568d5260ddd0274ca36c9c52
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/02/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
@@ -39,38 +39,38 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 
 Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)を使用してこれらの属性を読み書きすることもできます。
 
-[!NOTE]
-カスタム属性または拡張プロパティは、Azure AD B2C ディレクトリの機能として扱います。  拡張プロパティは、ディレクトリ内のユーザー オブジェクトのスキーマを拡張します。  カスタム属性をポリシーでカスタム要求として使用するには、ポリシーの `ClaimsSchema` 内でそれを定義します。
+>[!NOTE]
+>カスタム属性または拡張プロパティは、Azure AD B2C ディレクトリの機能として扱います。  拡張プロパティは、ディレクトリ内のユーザー オブジェクトのスキーマを拡張します。  カスタム属性をポリシーでカスタム要求として使用するには、ポリシーの `ClaimsSchema` 内でそれを定義します。
 
-[!NOTE]
-拡張プロパティは、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 プロパティは、アプリケーションに関連付けられます。 アプリケーション オブジェクトには、拡張プロパティを登録するための書き込みアクセス権が付与されている必要があります。 1 つのオブジェクトに対して、100 個の拡張プロパティ (すべての型とすべてのアプリケーションでの合計) を書き込むことができます。 拡張プロパティは、対象のディレクトリ タイプに追加され、Azure AD B2C ディレクトリ テナント内ですぐに利用できる状態になります。
+>[!NOTE]
+>拡張プロパティは、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 プロパティは、アプリケーションに関連付けられます。 アプリケーション オブジェクトには、拡張プロパティを登録するための書き込みアクセス権が付与されている必要があります。 1 つのオブジェクトに対して、100 個の拡張プロパティ (すべての型とすべてのアプリケーションでの合計) を書き込むことができます。 拡張プロパティは、対象のディレクトリ タイプに追加され、Azure AD B2C ディレクトリ テナント内ですぐに利用できる状態になります。
 アプリケーションを削除すると、このような拡張プロパティも、それらに含まれている、すべてのユーザーに関するデータと共に削除されます。 拡張プロパティは、アプリケーションによって削除されると、対象ディレクトリ オブジェクトで削除され、そのプロパティに含まれているデータもすべて削除されます。
 
-[!NOTE]
-拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する TechnicalProfile に含まれている必要があります。
+>[!NOTE]
+>拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する TechnicalProfile に含まれている必要があります。
 
-[!NOTE]
-Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web API アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。
+>[!NOTE]
+>Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web API アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
 
 1. 閲覧セッションを開き、[Azure Portal](https://portal.azure.com) に移動して、構成する B2C ディレクトリの管理者資格情報でサインインします。
-1. 左側のナビゲーション メニューで [`Azure Active Directory`] をクリックします。 [その他のサービス >] をクリックしないと表示されない場合があります。
-1. [`App registrations`] を選択し、[`New application registration`] をクリックします。
+1. 左側のナビゲーション メニューで、**[Azure Active Directory]** をクリックします。 [その他のサービス >] をクリックしないと表示されない場合があります。
+1. **[アプリの登録]** を選択し、**[新しいアプリケーションの登録]** をクリックします。
 1. 以下の推奨エントリを指定します。
-  * Web アプリケーションの名前を指定します: `WebApp-GraphAPI-DirectoryExtensions`
+  * Web アプリケーションの名前を指定します: **WebApp-GraphAPI-DirectoryExtensions**
   * アプリケーションの種類: Web アプリ/API
   * サインオン URL: https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
-1. [`Create`] を選択します。 正常に完了したことが [`notifications`] に表示されます。
-1. 新しく作成された Web アプリケーション `WebApp-GraphAPI-DirectoryExtensions` を選択します。
-1. 設定として [`Required permissions`] を選択します。
-1. API として `Windows Active Directory` を選択します。
-1. [アプリケーションのアクセス許可] で [`Read and write directory data`] チェック ボックスをオンにし、[`Save`] を選択します。
-1. [`Grant permissions`] を選択し、確認のために [`Yes`] を選択します。
+1. **[作成]** を選択します。 正常に完了したことが**通知**に表示されます。
+1. 新しく作成された Web アプリケーション **WebApp-GraphAPI-DirectoryExtensions** を選択します。
+1. 設定として **[必要なアクセス許可]** を選択します。
+1. API として **Windows Active Directory** を選択します。
+1. [アプリケーションのアクセス許可] で **[ディレクトリ データの読み取りと書き込み]** チェック ボックスをオンにし、**[保存]** を選択します。
+1. **[アクセス許可の付与]** を選択し、確認のために **[はい]** をクリックします。
 1. [WebApp-GraphAPI-DirectoryExtensions] > [設定] > [プロパティ] の順に移動し、次の識別子をクリップボードにコピーして保存します。
-*  [`Application ID`]。 例: `103ee0e6-f92d-4183-b576-8c3739027780`
-* `Object ID`」を参照してください。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
+*  **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`
+* **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して `ApplicationObjectId` を追加する
 
@@ -98,13 +98,16 @@ Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という�
         </ClaimsProvider>
     </ClaimsProviders>
 ```
-[!NOTE]
-<TechnicalProfile Id="AAD-Common"> は、その要素が、次の要素を使用することによってすべての Azure Active Directory TechnicalProfile で再利用されるため、"共通" します。
+
+>[!NOTE]
+><TechnicalProfile Id="AAD-Common"> は、その要素が、次の要素を使用することによってすべての Azure Active Directory TechnicalProfile で再利用されるため、"共通" します。
+
 ```
       <IncludeTechnicalProfile ReferenceId="AAD-Common" />
 ```
-[!NOTE]
-TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。これは、プロパティが見つからない場合に作成されるためです。  .*  
+
+>[!NOTE]
+>TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。これは、プロパティが見つからない場合に作成されるためです。  .*  
 
 ## <a name="using-the-new-extension-property--custom-attribute-in-a-user-journey"></a>ユーザー体験で新しい拡張機能プロパティ/カスタム属性を使用する
 
@@ -140,9 +143,12 @@ TechnicalProfile が新しく作成された拡張プロパティに初めて書
 </ClaimsSchema>
 ```
 4. 同じ要求の定義を基本ポリシー ファイル `TrustFrameworkBase.xml` に追加します。  
-注: `ClaimType` 定義は、通常、基本ファイルと拡張ファイルの両方に追加する必要はありません。ただし、次の手順で基本ファイルの TechnicalProfile に extension_loyaltyId を追加するため、この定義がないと、ポリシー検証で基本ファイルのアップロードが拒否されます。
 
-注: TrustFrameworkBase.xml ファイルの "ProfileEdit" という名前のユーザー体験の実行を追跡すると役立つ場合があります。  エディターで同じ名前のユーザー体験を検索し、オーケストレーション手順 5. で TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" が呼び出されることを確認します。  この TechnicalProfile を検索して調査すると、処理の流れについて理解が深まります。
+>[!NOTE]
+>`ClaimType` 定義は、通常、基本ファイルと拡張ファイルの両方に追加する必要はありません。ただし、次の手順で基本ファイルの TechnicalProfile に extension_loyaltyId を追加するため、この定義がないと、ポリシー検証で基本ファイルのアップロードが拒否されます。
+
+>[!NOTE]
+>TrustFrameworkBase.xml ファイルの "ProfileEdit" という名前のユーザー体験の実行を追跡すると役立つ場合があります。  エディターで同じ名前のユーザー体験を検索し、オーケストレーション手順 5. で TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" が呼び出されることを確認します。  この TechnicalProfile を検索して調査すると、処理の流れについて理解が深まります。
 
 5. TechnicalProfile "SelfAsserted-ProfileUpdate" で、入力および出力要求として loyaltyId を追加します。
 
@@ -233,8 +239,9 @@ TechnicalProfile が新しく作成された拡張プロパティに初めて書
      </TechnicalProfile>
 ```
 
-[!IMPORTANT]
-上記の IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
+
+>[!IMPORTANT]
+>上記の IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
 
 ## <a name="test-the-custom-policy-using-run-now"></a>[今すぐ実行] を使用してカスタム ポリシーをテストする
 
@@ -276,7 +283,8 @@ TechnicalProfile が新しく作成された拡張プロパティに初めて書
 * **Technical Profile (TP)** は、エンドポイントの名前、メタデータ、プロトコルを定義し、Identity Experience Framework が実行する必要のある要求の交換の詳細を定義する "*関数*" と見なすことができる要素の種類です。  この "*関数*" がオーケストレーションの手順または別の TechnicalProfile から呼び出されると、InputClaims と OutputClaims が呼び出し元によってパラメーターとして指定されます。
 
 
-* 拡張プロパティの詳細な取り扱いについては、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)
-」を参照してください。[!NOTE]
-Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使用して名前が付けられます。カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
+* 拡張プロパティの詳細な取り扱いについては、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
+
+>[!NOTE]
+>Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使用して名前が付けられます。カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
 

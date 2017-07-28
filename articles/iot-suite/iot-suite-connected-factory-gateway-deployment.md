@@ -15,15 +15,28 @@ ms.workload: na
 ms.date: 04/22/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: e8774cc290847d48ecdc5dcdac1f2533fdc7d072
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 09585a8e2ffbe0c825ee63f459218c7945cdd243
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.lasthandoff: 06/08/2017
 
 ---
 
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする
+
+構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイをデプロイするために必要なソフトウェアには、次の 2 つのコンポーネントがあります。
+
+* *OPC Proxy* は、IoT Hub との接続を確立し、コネクテッド ファクトリ ソリューション ポータルで動作する統合された OPC ブラウザーからのコマンドと制御のメッセージを待機します。
+* *OPC Publisher* は、既存のオンプレミス OPC UA サーバーに接続し、そこから IoT Hub にテレメトリ メッセージを転送します。
+
+どちらのコンポーネントもオープン ソースであり、GitHub 上のソースとして、または Docker コンテナーとして利用することができます。
+
+| GitHub | DockerHub |
+| ------ | --------- |
+| [OPC Publisher][lnk-publisher-github] | [OPC Publisher][lnk-publisher-docker] |
+| [OPC Proxy][lnk-proxy-github] | [OPC Proxy][lnk-proxy-docker] |
+
+どちらのコンポーネントも、公開 IP アドレスまたはゲートウェイ ファイアウォールの開放ポートは必要ありません。 OPC Proxy と OPC Publisher で使用されるのは、送信ポート 443、5671、8883 だけです。
 
 この記事では、Docker を使用して Windows または Linux 上にゲートウェイをデプロイする手順について説明します。 ゲートウェイにより、構成済みのコネクテッド ファクトリ ソリューションに接続できるようになります。
 
@@ -58,7 +71,7 @@ Windows ベースのゲートウェイ デバイスに [Docker for Windows] を�
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -i -c "<IoTHubOwnerConnectionString>" -D /mapped/cs.db`
 
-    * **&lt;ApplicationName&gt;** は、ゲートウェイによって作成された OPC UA アプリケーションの名前です。**publisher.&lt;完全修飾ドメイン名&gt;** の形式になります  (例: **publisher.microsoft.com**)。
+    * **&lt;ApplicationName&gt;** は、OPC UA Publisher に付ける名前です。**publisher.&lt;完全修飾ドメイン名&gt;** の形式になります。 たとえば、ファクトリ ネットワークの名称が **myfactorynetwork.com** である場合、**ApplicationName** の値は **publisher.myfactorynetwork.com** になります。
     * **&lt;IoTHubOwnerConnectionString&gt;** は、前の手順でコピーした **iothubowner** 接続文字列です。 この接続文字列はこの手順でのみ使用します。再度必要になることはありません。
 
     マップされた D:\\docker フォルダー (`-v` 引数) は、ゲートウェイ モジュールで使用する 2 つの X.509 証明書を保持するために後で使用します。
@@ -67,7 +80,7 @@ Windows ベースのゲートウェイ デバイスに [Docker for Windows] を�
 
 1. 次のコマンドを使用して、ゲートウェイを再起動します。
 
-    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e \_GW\_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
+    `docker run -it --rm -h <ApplicationName> --expose 62222 -p 62222:62222 -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/Logs -v //D/docker:/build/src/GatewayApp.NetCore/bin/Debug/netcoreapp1.0/publish/CertificateStores -v //D/docker:/shared -v //D/docker:/root/.dotnet/corefx/cryptography/x509stores -e _GW_PNFP="/shared/publishednodes.JSON" microsoft/iot-gateway-opc-ua:1.0.0 <ApplicationName>`
 
     `docker run -it --rm -v //D/docker:/mapped microsoft/iot-gateway-opc-ua-proxy:0.1.3 -D /mapped/cs.db`
 
@@ -152,5 +165,10 @@ Linux ゲートウェイ デバイスに [Docker をインストール]します
 [Azure Portal]: http://portal.azure.com/
 [オープン ソースの OPC UA クライアント]: https://github.com/OPCFoundation/UA-.NETStandardLibrary/tree/master/SampleApplications/Samples/Client.Net4
 [Docker をインストール]: https://www.docker.com/community-edition#/download
-[lnk-walkthrough]: iot-suite-overview.md
+[lnk-walkthrough]: iot-suite-connected-factory-sample-walkthrough.md
 [Azure IoT Edge]: https://github.com/Azure/iot-edge
+
+[lnk-publisher-github]: https://github.com/Azure/iot-edge-opc-publisher
+[lnk-publisher-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua
+[lnk-proxy-github]: https://github.com/Azure/iot-edge-opc-proxy
+[lnk-proxy-docker]: https://hub.docker.com/r/microsoft/iot-gateway-opc-ua-proxy

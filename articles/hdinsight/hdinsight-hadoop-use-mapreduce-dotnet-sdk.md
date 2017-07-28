@@ -1,5 +1,5 @@
 ---
-title: "HDInsight .NET SDK を使用して MapReduce ジョブを送信する | Microsoft Docs"
+title: "HDInsight .NET SDK を使用して MapReduce ジョブを送信する - Azure | Microsoft Docs"
 description: "HDInsight .NET SDK を使用して、MapReduce ジョブを Azure HDInsight Hadoop に送信する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
@@ -16,10 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: jgao
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: 03f3898182d405bced8ad41b281e2ce2037b8343
-ms.lasthandoff: 03/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: a4ba7a056faabeb88035ed28778ef7cbf826f34c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/10/2017
 
 
 ---

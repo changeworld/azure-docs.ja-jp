@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Pig で DataFu を使用する"
+title: "HDInsight の Pig で DataFu を使用する - Azure | Microsoft Docs"
 description: "DataFu は、Hadoop で使用するライブラリのコレクションです。 HDInsight クラスターの Pig で DataFu を使用する方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: b9dcb069003c647073c978feb588debb689d560e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 272159d5017e62d1f606e69d6bdcde8ecbc0e3bf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -34,7 +34,7 @@ HDInsight での DataFu の使用方法について説明します。 DataFu は
 * Azure HDInsight クラスター (Linux または Windows ベース)
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * [HDInsight での Pig の使用](hdinsight-use-pig.md)
 

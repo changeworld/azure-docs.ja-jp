@@ -1,5 +1,5 @@
 ---
-title: "Script Action を使用した Linux ベースの HDInsight での Solr のインストール | Microsoft Docs"
+title: "スクリプト アクションを使用した Linux ベースの HDInsight での Solr のインストール - Azure | Microsoft Docs"
 description: "Script Action を使用して Linux ベースの HDInsight Hadoop クラスターに Solr をインストールする方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 06/23/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 9035dd639433f1edc628db85f1663add4abfdbd3
+ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
+ms.openlocfilehash: cac69c443fd03cfd347e18166ae15b57dbd844c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 06/23/2017
 
 
 ---
@@ -32,7 +32,7 @@ ms.lasthandoff: 05/18/2017
     > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
 
 > [!IMPORTANT]
-> このドキュメントで使用するサンプル スクリプトは、特定の構成で Solr クラスターを作成します。 この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、スクリプトと Solr バイナリを変更する必要があります。
+> このドキュメントで使用するサンプル スクリプトは、特定の構成で Solr 4.9 をインストールします。 この構成とは異なるコレクションやシャード、スキーマ、レプリカなどで Solr クラスターを構成する場合には、スクリプトと Solr バイナリを変更する必要があります。
 
 ## <a name="whatis"></a>Solr とは何か
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 05/18/2017
 
 このスクリプトは、HDInsight クラスターに次のような変更を加えます。
 
-* `/usr/hdp/current/solr`
+* Solr 4.9 を `/usr/hdp/current/solr` にインストールします
 * Solr サービスの実行に使用されるユーザー **solrusr** を作成します
 * **solruser** を `/usr/hdp/current/solr` の所有者として設定します
 * Solr を自動的に起動する [Upstart](http://upstart.ubuntu.com/) 構成を追加します。

@@ -14,10 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: be8fed81757d3a7467707e4e0fdf1fd5734e0f07
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
+ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/09/2017
 
 
 ---
@@ -100,7 +101,7 @@ PTVS の使用はオプションですが、使用することをお勧めしま
 
 PTVS では、[Cloud Services](cloud-services/cloud-services-python-ptvs.md) と [Websites](app-service-web/web-sites-python-ptvs-django-mysql.md) へのデプロイをサポートしており、Microsoft Azure へのデプロイも容易になります。
 
-PTVS は、既存の Visual Studio 2013 または 2015 インストールに対応しています。  ダウンロードなどの詳細については、 [Python Tools for Visual Studio]に関するページをご覧ください。  
+PTVS は、既存の Visual Studio 2013、2015、2017 インストールに対応しています。  ダウンロードなどの詳細については、 [Python Tools for Visual Studio]に関するページをご覧ください。  
 
 ## <a name="python-azure-scenarios-for-linux-and-macos"></a>Linux や MacOS 向けの Python Azure
 Linux または MacOS の場合は、主に次の Azure シナリオがサポートされています。

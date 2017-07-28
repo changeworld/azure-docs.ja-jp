@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 06/24/2017
 ms.author: markvi
+ms.reviewer: nigu
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be3ac7755934bca00190db6e21b6527c91a77ec2
-ms.openlocfilehash: 483e77f598beaeb924197e3eb301a26da33a3f1f
+ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
+ms.openlocfilehash: 8132b4844260a997e62effd167f2f1206f3edbcd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.lasthandoff: 06/26/2017
 
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection

@@ -13,18 +13,22 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 05/26/2017
 ms.author: owend
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8c4e33a63f39d22c336efd9d77def098bd4fa0df
-ms.openlocfilehash: e47fa44d87ad29054b833ee4bf201ac4d72e1e6e
+ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
+ms.openlocfilehash: f8c9e9ab8b8728202ec3f049b309d96d883022f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/20/2017
+ms.lasthandoff: 06/03/2017
 
 
 ---
 # <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
 オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。
+
+最新バージョンのゲートウェイでは、SSDT でデータの取得と M のクエリを使用して、オンプレミスのデータ ソースに接続された 1400 表形式モデルがサポートされます。 
+
+サポートされるデータ ソースの詳細については、「[Azure Analysis Services でサポートされるデータ ソース](analysis-services-datasource.md)」を参照してください。
 
 ゲートウェイは、ネットワーク内のコンピューターにインストールされます。 Azure サブスクリプションに存在する Azure Analysis Services サーバーごとに 1 つのゲートウェイをインストールする必要があります。 たとえば、Azure サブスクリプションにオンプレミスのデータ ソースに接続するサーバーが 2 つある場合、ネットワークの 2 台の異なるコンピューターにゲートウェイをインストールする必要があります。
 
@@ -49,14 +53,6 @@ ms.lasthandoff: 04/20/2017
 * 既に構成されているゲートウェイのサーバー名を変更するには、新しいゲートウェイを再インストールして構成する必要があります。
 * 場合によっては、SQL Server Native Client (SQLNCLI11) などのネイティブ プロバイダーを使ってデータ ソースに接続する表形式モデルがエラーを返すことがあります。 詳しくは、「[データ ソースの接続](analysis-services-datasource.md)」をご覧ください。
 
-## <a name="supported-on-premises-data-sources"></a>サポートされているオンプレミスのデータ ソース
-ゲートウェイは Azure Analysis Services サーバーと次のオンプレミス データ ソースの間の接続をサポートします。
-
-* SQL Server
-* SQL Data Warehouse
-* APS
-* Oracle
-* Teradata
 
 ## <a name="download"></a>ダウンロード
  [ゲートウェイをダウンロードする](https://aka.ms/azureasgateway)
@@ -129,7 +125,7 @@ ms.lasthandoff: 04/20/2017
 
 ゲートウェイのインストールと構成に問題がある場合は、「[オンプレミス データ ゲートウェイのトラブルシューティング](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem-tshoot/)」をご覧ください。 ファイアウォールに問題があると思われる場合は、ファイアウォールまたはプロキシのセクションをご覧ください。
 
-ゲートウェイにプロキシの問題があると思われる場合は、「[オンプレミス データ ゲートウェイのプロキシ設定を構成する](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy.md)」をご覧ください。
+ゲートウェイにプロキシの問題があると思われる場合は、「[オンプレミス データ ゲートウェイのプロキシ設定を構成する](https://powerbi.microsoft.com/documentation/powerbi-gateway-proxy)」をご覧ください。
 
 ### <a name="telemetry"></a>テレメトリ
 監視とトラブルシューティングには、テレメトリを使用できます。 

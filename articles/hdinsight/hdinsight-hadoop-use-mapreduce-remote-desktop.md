@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop の MapReduce とリモート デスクトップの使用 | Microsoft Docs"
+title: "HDInsight での Hadoop の MapReduce とリモート デスクトップの使用 - Azure | Microsoft Docs"
 description: "リモート デスクトップを使用して、HDInsight で Hadoop に接続し、MapReduce ジョブを実行する方法を説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.date: 01/12/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 5e91fd06fb2ae22496832d7afedb3f003edf7ea6
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: edb7e6153060bf4b5471bf6c360b16672d5f759d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -30,7 +30,7 @@ ms.lasthandoff: 05/18/2017
 この記事では、リモート デスクトップを使用して HDInsight クラスター上の Hadoop に接続し、Hive コマンドを使用して MapReduce ジョブを実行する方法について説明します。
 
 > [!IMPORTANT]
-> リモート デスクトップは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> リモート デスクトップは、Windows ベースの HDInsight クラスターでのみ使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 >
 > HDInsight 3.4 以上での HDInsight クラスターへの接続と MapReduce ジョブの実行に関する情報については、[SSH による MapReduce の使用](hdinsight-hadoop-use-mapreduce-ssh.md)に関するページを参照してください。
 

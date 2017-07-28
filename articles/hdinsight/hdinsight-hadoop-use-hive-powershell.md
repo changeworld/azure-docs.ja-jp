@@ -1,5 +1,5 @@
 ---
-title: "HDInsight での Hadoop Hive と PowerShell の使用 | Microsoft Docs"
+title: "HDInsight での Hadoop Hive と PowerShell の使用 - Azure | Microsoft Docs"
 description: "PowerShell を使用して、HDInsight での Hadoop で Hive クエリを実行します。"
 services: hdinsight
 documentationcenter: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 03/21/2017
+ms.date: 06/16/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 897358e87937f9094d312cc88f630c81e7d46f4f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a235496728b4eeacb6b3e11d1d33363d28420fa8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/18/2017
 * **Azure HDInsight クラスター**: クラスターが Windows ベースか Linux ベースかは関係ありません。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * **Azure PowerShell を実行できるワークステーション**。
 

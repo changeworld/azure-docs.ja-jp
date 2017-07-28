@@ -17,10 +17,10 @@ ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: da03dc8afa58ddfe97301dabed186ed325410937
+ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
+ms.openlocfilehash: 2f1d68c7127324477cfc8b87df0fd82dee7cd1d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 06/17/2017
 
 
 ---
@@ -51,13 +51,13 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * 2 項演算子
 * 右辺の定数
 
-たとえば全体で見ると、(leftParameter binaryOperator "RightConstant") のようになります。2 項演算式全体を開きかっこと閉じかっこで囲んだ上で、右辺の定数は二重引用符で囲む必要があります。左辺のパラメーターの構文は user.property という形式で入力します。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
+完全な高度なルールは (leftParameter binaryOperator "RightConstant") のようになります。ここで、左かっこと右かっこは 2 項演算式全体に対して省略可能であり、二重引用符も省略可能で (右辺の定数が文字列の場合にのみその定数に必要)、左辺のパラメーターの構文は user.property です。 高度なルールは、複数の 2 項演算式を論理演算子 (-and、-or、-not) で組み合わせることができます。
 
 以下に示したのは、正しい構文に沿って作成された高度なルールの例です。
-
-* (user.department -eq "Sales") -or (user.department -eq "Marketing")
-* (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
-
+```
+(user.department -eq "Sales") -or (user.department -eq "Marketing")
+(user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
+```
 サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。 デバイスのルールに使用する属性については、「 [属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
 
 高度なルール本体の合計文字数が 2048 文字を超えないようにしてください。
@@ -81,6 +81,31 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | 指定値を含む |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
+| イン | -in |
+| 含まれない | -notIn |
+
+## <a name="operator-precedence"></a>演算子の優先順位
+
+すべての演算子を優先順位の低い順から並べると、-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn となります。同じ行にある演算子は優先順位が同じです。
+
+すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
+
+かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。例:
+```
+   user.department –eq "Marketing" –and user.country –eq "US"
+```
+は以下に匹敵します。
+```
+   (user.department –eq "Marketing") –and (user.country –eq "US")
+```
+## <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
+
+ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 -In 演算子を使用した例を次に示します。
+```
+    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+```
+値のリストの開始と終了に "[" と "]" を使用していることに注意してください。 この条件は、user.department の値がリスト内のいずれかの値に等しい場合に True に評価されます。
+
 
 ## <a name="query-error-remediation"></a>クエリ エラーの修復
 次の表では、発生する可能性のあるエラーとその解決方法を示します。
@@ -104,8 +129,8 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
-| accountEnabled |true false |user.accountEnabled -eq true) |
-| dirSyncEnabled |true false null |(user.dirSyncEnabled -eq true) |
+| accountEnabled |true false |user.accountEnabled -eq true |
+| dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
 使用可能な演算子
@@ -118,6 +143,8 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 * -notContains
 * -match
 * -notMatch
+* -in
+* -notIn
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
@@ -133,6 +160,7 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | mailNickName |任意の文字列値 (ユーザーのメール エイリアス) |(user.mailNickName -eq "value") |
 | mobile |任意の文字列値または $null |(user.mobile -eq "value") |
 | objectId |ユーザー オブジェクトの GUID |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | オンプレミスからクラウドに同期されたユーザーのオンプレミスのセキュリティ識別子 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |任意の文字列値または $null |(user.physicalDeliveryOfficeName -eq "value") |
 | postalCode |任意の文字列値または $null |(user.postalCode -eq "value") |
@@ -157,57 +185,101 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## <a name="multi-value-properties"></a>複数値プロパティ
+使用可能な演算子
+
+* -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
+* -all (コレクション内のすべての項目が条件に一致するときに満たされる)
+
+| プロパティ | 値 | 使用法 |
+| --- | --- | --- |
+| assigendPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+
+複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 For example:
+
+assignedPlans は、ユーザーに割り当てられたすべてのサービス プランをリストする複数値プロパティです。 次の式は、同様に [有効] 状態にある Exchange Online (プラン 2) サービス プランを持っているユーザーを選択します。
+
+```
+user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+(Guid 識別子は、Exchange Online (プラン 2) サービス プランを識別します。)
+
+> [!NOTE]
+> これは、Office 365 (またはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーを (たとえば、特定のポリシー セットによって対象にするために) 識別する場合に役立ちます。
+
+次の式は、Intune サービス (サービス名 "SCO" によって識別されます) に関連付けられた何らかのサービス プランを持っているすべてのユーザーを選択します。
+```
+user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+## <a name="use-of-null-values"></a>Null 値の使用
+
+ルールで null 値を指定するには、null または $null を使用します。 例:
+```
+   user.mail –ne null
+```
+は次と同等
+```
+   user.mail –ne $null
+   ```
+
 ## <a name="extension-attributes-and-custom-attributes"></a>拡張属性とカスタム属性
 拡張属性とカスタム属性は、動的なメンバーシップ ルールでサポートされます。
 
 拡張属性はオンプレミスの Window Server AD から同期され、"ExtensionAttributeX" という形式です (X は 1 ～ 15)。
 拡張属性を使用するルールの例を次に示します。
-
+```
 (user.extensionAttribute15 -eq "Marketing")
-
+```
 カスタム属性はオンプレミスの Windows Server AD または接続された SaaS アプリケーションから同期され、"user.extension_[GUID]\__[Attribute]" という形式です。[GUID] は AAD で属性を作成したアプリケーションの AAD での一意の識別子、[Attribute] は作成された属性の名前です。
 カスタム属性を使用するルールの例を次に示します
-
+```
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
-
+```
 カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
 
-## <a name="direct-reports-rule"></a>直接の部下のルール
-ユーザーのマネージャー属性に基づいてグループにメンバーを設定できるようになりました。
+## <a name="direct-reports-rule"></a>"直接の部下" のルール
+マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直接の部下が変更された場合、グループのメンバシップは自動的に調整されます。
 
-**"Manager" グループとしてグループを構成するには**
+> [!NOTE]
+> 1. このルールを機能させるには、テナント内のユーザーについて **[Manager ID] (マネージャー ID)** プロパティが正しく設定されていることを確認してください。 各ユーザーの現在の値は、そのユーザーの **[プロファイル] タブ**で確認できます。
+> 2. このルールは、**直接の**部下のみをサポートします。 現在、入れ子になった階層のグループ (たとえば、直接の部下とその部下が含まれたグループ) を作成することはできません。
 
-1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」の手順 1. ～ 5. に従い、**[メンバーシップの種類]** で **[動的ユーザー]** を選択します。
+**グループを構成するには**
+
+1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」のセクションの手順 1. ～ 5. に従い、**[Dynamic User] (動的ユーザー)** の **[Membership type] (メンバシップの種類)** を選択します。
 2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
 
-    直属の部下用の場合は、*Direct Reports for {obectID_of_manager}* です。 直属の部下の有効なルールの例を示します。
+    *Direct Reports for "{obectID_of_manager}"*
 
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-
-    ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。 オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ** で確認できます。
-3. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。 最初は、グループを設定するのに数分かかることがあります。
+    有効なルールの例:
+```
+                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
+```
+    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
+3. ルールを保存した後、指定されたマネージャー ID 値を持つすべてのユーザーがグループに追加されます。
 
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
 | プロパティ              | 使用できる値                  | 使用法                                                       |
 |-------------------------|---------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
 | displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
 | deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
 | deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
-| isDirSynced             | true false null                 | (device.isDirSynced -eq "true")                             |
-| isManaged               | true false null                 | (device.isManaged -eq "false")                              |
-| isCompliant             | true false null                 | (device.isCompliant -eq "true")                             |
 | deviceCategory          | 任意の文字列値                | (device.deviceCategory -eq "")                              |
 | deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
 | deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
 | deviceOwnership         | 任意の文字列値                | (device.deviceOwnership -eq "")                             |
 | domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
 | enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false null                 | (device.deviceOSType -eq "true")                            |
+| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
 | managementType          | 任意の文字列値                | (device.managementType -eq "")                              |
 | organizationalUnit      | 任意の文字列値                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
+| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | 有効な AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 
 

@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 610c731195ffa92ccd915b93e8c901f47b2ff16a
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: ada6ddfed06514d86e493c6a2074fa2f7c55010d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -109,15 +110,16 @@ Promapp で Azure AD の SSO を構成してテストするには、次の構成
    
     ![Azure AD のシングル サインオン][8] 
    
-   1. **[サインオン URL]** ボックスに、ユーザーが Promapp サイトへのサインオンに使用する URL (例: *https://companyname.promapp.com/instancename*) を入力します。
-   2. **[次へ]**をクリックします。
+   1. **[サインオン URL]** ボックスに、ユーザーが Promapp サイトへのサインオンに使う URL (例: *https://DOMAIN.promapp.com/INSTANCENAME/saml/authenticate*) を入力します。
+   2. **[識別子]** ボックスに、ユーザーが Promapp サイトへのサインオンに使う URL (例: *https://DOMAIN.promapp.com/INSTANCENAME*) を入力します。
+   3. **[次へ]** をクリックします。
 
 1. **[Promapp でのシングル サインオンの構成]** ページで、次の手順を実行します。
    
     ![Azure AD のシングル サインオン][9] 
    
    1. [証明書のダウンロード] をクリックし、コンピューターにファイルを保存します。
-   2. **[次へ]**をクリックします。
+   2. **[次へ]** をクリックします。
    
 2. Promapp 企業サイトに管理者としてサインオンします。 
 3. 上部のメニューで **[管理者]**をクリックします。 
@@ -163,7 +165,7 @@ Promapp で Azure AD の SSO を構成してテストするには、次の構成
    
    1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   3. **[次へ]**をクリックします。
+   3. **[次へ]** をクリックします。
    
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。 
    
@@ -173,7 +175,7 @@ Promapp で Azure AD の SSO を構成してテストするには、次の構成
    2. **[姓]** ボックスに「**Simon**」と入力します。
    3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   5. **[次へ]**をクリックします。
+   5. **[次へ]** をクリックします。
    
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
@@ -230,7 +232,7 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 
 [6]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_05.png
 [7]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_02.png
-[8]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_03.png
+[8]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_11.png
 [9]: ./media/active-directory-saas-promapp-tutorial/tutorial_promapp_04.png
 [10]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_06.png
 [11]: ./media/active-directory-saas-promapp-tutorial/tutorial_general_07.png

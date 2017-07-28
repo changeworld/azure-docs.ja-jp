@@ -12,13 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/20/2017
+ms.date: 06/01/2017
 ms.author: TomSh
+ms.custom: azlog
 ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 616a29b3f7db817e63a3a3673b845cc86752af77
+ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
+ms.openlocfilehash: 1adabc7f249d9b01f3ad1a819f75b2ef47f72998
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 06/06/2017
+
 
 
 ---
@@ -45,6 +47,9 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 
 現在のところ Azure ログ統合は、Azure アクティビティ ログ、Azure サブスクリプション内の Windows 仮想マシンからの Windows イベント ログ、Azure Security Center アラート、Azure 診断ログ、および Azure Active Directory 監査ログの統合をサポートしています。
 
+>[!NOTE]
+Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって Azure Storage のコストが発生します。
+
 次の表では、ログのカテゴリと SIEM 統合の詳細について説明します。
 
 | ログのタイプ  |JSON (Splunk、ELK) をサポートする Log Analytics| ArcSight  | QRadar  |   
@@ -55,8 +60,8 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 | 診断ログ (リソース ログ) | はい | エンド ユーザーは FlexConnector JSON パーサー ファイルを作成する必要があります。 方法については ArcSight のドキュメントをご覧ください。 | ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |
 | VM ログ | はい (JSON 経由ではなく転送されたイベントの場合) | はい (転送されたイベントの場合) | はい (転送されたイベントの場合) |
 
->[!NOTE]
-Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって Azure Storage のコストが発生します。
+サポートされているログの種類の詳細については、[FAQ](security-azure-log-integration-faq.md) のページを参照してください。
+
 
 [Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは、AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 
