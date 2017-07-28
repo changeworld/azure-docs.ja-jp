@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/12/2017
+ms.date: 07/05/2017
 ms.author: cherylmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 3f9fb86a5bf63d24432c1ba9945a4da6cf794f13
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: 42e53835c49f502ac41c08031a477e3c6bbd60fa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 07/06/2017
 
 
 ---
@@ -104,7 +104,7 @@ ExpressRoute は、さまざまな種類のサービスのために、[3 つの�
 いいえ。 Azure へのレイヤー 2 接続の拡張はサポートされません。
 
 ### <a name="can-i-have-more-than-one-expressroute-circuit-in-my-subscription"></a>1 つのサブスクリプションで複数の ExpressRoute 回線を使用できますか。
-はい。 1 つのサブスクリプションで、複数の ExpressRoute 回線をご利用いただけます。 専用回線の既定の上限は 10 に設定されています。 上限を増やす必要がある場合は、Microsoft サポートにご連絡ください。
+はい。 1 つのサブスクリプションで、複数の ExpressRoute 回線をご利用いただけます。 既定の制限は 10 に設定されています。 上限を増やす必要がある場合は、Microsoft サポートにご連絡ください。
 
 ### <a name="can-i-have-expressroute-circuits-from-different-service-providers"></a>別のサービス プロバイダーから ExpressRoute 回線を使用することはできますか。
 はい。 多くのサービス プロバイダーで ExpressRoute 回線をご利用いただけます。 各 ExpressRoute 回線は、1 つのサービス プロバイダーのみに関連付けられます。 
@@ -185,7 +185,7 @@ BGP セッションが切断されます。 プレフィックス数が上限未
 はい、Azure Portal または PowerShell を使用して、ExpressRoute 回線の帯域幅を増やすことを試すことができます。 回線が作成された物理ポートで使用可能な容量があれば、変更は成功します。 変更が失敗した場合は、現在のポートに十分な容量が残っていないため、帯域幅が大きい新しい ExpressRoute 回線を作成する必要がある、またはその場所には追加の容量がないため、帯域幅を増やすことはできないことを意味します。 また、接続プロバイダーに連絡して、帯域幅の増加をサポートするようにネットワーク内の調整を更新してもらう必要があります。 ただし、ExpressRoute 回線の帯域幅を減らすことはできません。 帯域幅が小さい新しい ExpressRoute 回線を作成し、古い回線を削除する必要があります。
 
 ### <a name="how-do-i-change-the-bandwidth-of-an-expressroute-circuit"></a>ExpressRoute 回線の帯域幅を変更するには、どうすればいいですか。
-専用回線の更新用の API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
+REST API や PowerShell コマンドレットを使用して、ExpressRoute 回線の帯域幅を更新できます。
 
 ## <a name="expressroute-premium"></a>ExpressRoute Premium
 ### <a name="what-is-expressroute-premium"></a>ExpressRoute Premium とは何ですか。
@@ -202,10 +202,10 @@ ExpressRoute Premium は、次に示す機能で構成されたサービスで�
 [!INCLUDE [expressroute-limits](../../includes/expressroute-limits.md)]
 
 ### <a name="how-do-i-enable-expressroute-premium"></a>ExpressRoute Premium はどのようにして有効にしますか。
-ExpressRoute Premium の機能は、ExpressRoute 機能を有効にする際に有効にでき、回線の状態を更新することで無効にできます。 ExpressRoute Premium の有効化は、回線の作成時のほか、専用回線の更新用の API や PowerShell コマンドレットを呼び出して行うこともできます。
+ExpressRoute Premium の機能は、ExpressRoute 機能を有効にする際に有効にでき、回線の状態を更新することで無効にできます。 ExpressRoute Premium の有効化は、回線の作成時のほか、REST API や PowerShell コマンドレットを呼び出して行うこともできます。
 
 ### <a name="how-do-i-disable-expressroute-premium"></a>ExpressRoute Premium はどのようにして無効にしますか。
-ExpressRoute Premium を無効にするには、専用回線の更新用の API や PowerShell コマンドレットを呼び出します。 ExpressRoute Premium を無効にする前に、接続ニーズが既定の上限を超えて増大していないことを確認する必要があります。 使用量が既定の上限を超えて増大している場合は、ExpressRoute Premium を無効にする要求が失敗します。
+ExpressRoute Premium を無効にするには、REST API や PowerShell コマンドレットを呼び出します。 ExpressRoute Premium を無効にする前に、接続ニーズが既定の上限を超えて増大していないことを確認する必要があります。 使用量が既定の上限を超えて増大している場合は、ExpressRoute Premium を無効にする要求が失敗します。
 
 ### <a name="can-i-pick-and-choose-the-features-i-want-from-the-premium-feature-set"></a>Premium の機能セットから必要な機能だけを選択できますか。
 いいえ。 必要な機能のみを選択することはできません。 ExpressRoute Premium を有効にすると、すべての機能が有効になります。

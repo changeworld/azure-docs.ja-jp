@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: jeedes
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 4172a4e4c7add3fc75d1c83e32e41ea9a596b647
-ms.lasthandoff: 04/03/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
+ms.openlocfilehash: 1e99bdc4509d8cbab9012d36207f21be2cc75e5e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/07/2017
 
 
 ---
@@ -113,19 +114,19 @@ Weekdone で Azure AD の SSO を構成してテストするには、次の構�
 
    1. **[応答 URL]** ボックスに、**"https://weekdone.com/a/azure"** の形式で URL を入力します。
    2. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
-   3. **[次へ]**をクリックします。
+   3. **[次へ]** をクリックします。
 4. **[アプリケーション設定の構成]** ダイアログ ページで、**SP 開始モード**でアプリケーションを構成する場合は、**[詳細設定を表示します (オプション)]** を選択し、**[サインオン URL]** と **[識別子]** を入力して **[次へ]** をクリックします。
    
-    ![Configure Single Sign-On](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_06.png) 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_06.png) 
    
    1. **[サインオン URL]** ボックスに、次のパターンを使用して、ユーザーが Weekdone アプリケーションへのサインオンに使用する URL を入力します。**"https://weekdone.com/a/azure"**
    2. **[識別子]** ボックスに、**"https://weekdone.com/a/azure/metadata"** の形式で URL を入力します。
-   3. **[次へ]**をクリックします。
+   3. **[次へ]** をクリックします。
 2. **[Weekdone でのシングル サインオンの構成]** ページで、次の手順を実行し、**[次へ]** をクリックします。
    
     ![[シングル サインオンの構成]](./media/active-directory-saas-weekdone-tutorial/tutorial_weekdone_05.png) 
    1. **[証明書のダウンロード]**をクリックし、コンピューターに証明書ファイルを保存します。
-   2. **[次へ]**をクリックします。
+   2. **[次へ]** をクリックします。
     
 3. お使いのアプリケーション用に構成された SSO を取得するには、Weekdone のサポート チーム (hello@weekdone.com) にお問い合わせください。 
 4. Weekdone チーム側で SSO を設定する必要があるため、ダウンロードした証明書ファイルをメールに添付して、メタデータ URL (ISSUER URL、SAML SSO URL、および SINGLE SIGN-OUT SERVICE URL) をチームと共有してください。
@@ -162,7 +163,7 @@ Weekdone で Azure AD の SSO を構成してテストするには、次の構�
    
    1. [ユーザーの種類] として [組織内の新しいユーザー] を選択します。
    2. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
-   3. **[次へ]**をクリックします。
+   3. **[次へ]** をクリックします。
     
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
 
@@ -172,7 +173,7 @@ Weekdone で Azure AD の SSO を構成してテストするには、次の構�
    2. **[姓]** ボックスに「**Simon**」と入力します。
    3. **[表示名]** ボックスに「**Britta Simon**」と入力します。
    4. **[ロール]** 一覧で **[ユーザー]** を選択します。
-   5. **[次へ]**をクリックします。
+   5. **[次へ]** をクリックします。
   
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
 

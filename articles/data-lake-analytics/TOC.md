@@ -18,6 +18,7 @@
 ### [Java SDK](data-lake-analytics-manage-use-java-sdk.md)
 ### [Node.js](data-lake-analytics-manage-use-nodejs.md)
 ### [診断ログにアクセスする](data-lake-analytics-diagnostic-logs.md)
+### [クォータ制限を調整する](data-lake-analytics-quota-limits.md)
 
 ## U-SQL プログラムの開発
 ### [U-SQL の基本](data-lake-analytics-u-sql-get-started.md)
@@ -48,7 +49,7 @@
 
 # リソース
 ## [Azure Data Lake のブログ](https://blogs.msdn.microsoft.com/azuredatalake/)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-analytics/)

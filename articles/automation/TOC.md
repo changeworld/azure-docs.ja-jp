@@ -60,6 +60,7 @@
 ### [GitHub Enterprise によるソース管理の統合](automation-scenario-source-control-integration-with-github-ent.md)
 ### [VSTS によるソース管理の統合](automation-scenario-source-control-integration-with-VSTS.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
+### [Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする](automation-deploy-template-runbook.md)
 ## 解決方法
 ### [変更の追跡](../log-analytics/log-analytics-change-tracking.md)
 ### [更新管理](../operations-management-suite/oms-solution-update-management.md)
@@ -82,7 +83,7 @@
 # リソース
 ## [Automation の紹介ビデオ](https://azure.microsoft.com/documentation/videos/azure-automation-101-with-powershell-and-eamon-o-reilly/)
 ## [Azure Automation トレーニング](https://mva.microsoft.com/en-US/training-courses/automating-the-cloud-with-azure-automation-8323?l=C6mIpCay_4804984382)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  

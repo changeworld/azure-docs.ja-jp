@@ -1,5 +1,5 @@
 ---
-title: "HDInsight の Hadoop クラスターに Giraph をインストールして使用する | Microsoft Docs"
+title: "HDInsight の Hadoop クラスターに Giraph をインストールして使用する - Azure | Microsoft Docs"
 description: "Giraph を使用して HDInsight クラスターをカスタマイズする方法と Giraph の使用方法について説明します。"
 services: hdinsight
 documentationcenter: 
@@ -17,10 +17,10 @@ ms.date: 02/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 1eda530368170be7cd99c5860e72f5700c015248
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 58db68a1b5000adad4d816c6221881254b9675c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -29,7 +29,7 @@ ms.lasthandoff: 05/18/2017
 Script Action を使用して Windows ベースの HDInsight クラスターを Giraph でカスタマイズする方法と、Giraph を使用して大規模なグラフを処理する方法について説明します。 Linux ベースのクラスターでの Giraph の操作については、「 [HDInsight Hadoop クラスターに Giraph をインストールする (Linux)](hdinsight-hadoop-giraph-install-linux.md)」を参照してください。
 
 > [!IMPORTANT]
-> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
+> このドキュメントの手順は、Windows ベースの HDInsight クラスターに対してのみ機能します。 Windows では、バージョン 3.4 より前の HDInsight のみを使用できます。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。 Linux ベースの HDInsight クラスターでの Giraph のインストール方法については、[HDInsight Hadoop クラスターへの Giraph のインストール (Linux)](hdinsight-hadoop-giraph-install-linux.md) に関するページを参照してください。
 
 
 *スクリプト アクション*を使用し、Azure HDInsight の任意の種類のクラスター (Hadoop、Storm、HBase、Spark) に Giraph をインストールできます。 HDInsight クラスターに Giraph をインストールするサンプル スクリプトは、 [https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1](https://hdiconfigactions.blob.core.windows.net/giraphconfigactionv01/giraph-installer-v01.ps1)の読み取り専用の Azure ストレージ BLOB から入手できます。 サンプル スクリプトは、HDInsight クラスター version 3.1 でのみ機能します。 HDInsight クラスター バージョンの詳細については、「 [HDInsight クラスター バージョン](hdinsight-component-versioning.md)」をご覧ください。

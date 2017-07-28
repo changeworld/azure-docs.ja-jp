@@ -12,21 +12,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 06/08/2017
 ms.author: juluk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 540cd10066e055e2dc132445b9adba5a4112d63a
+ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
+ms.openlocfilehash: 9f5883a2a611b986aa305087084d05d6fab1ab7d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/09/2017
 
 ---
 
 # <a name="persisting-files-in-azure-cloud-shell"></a>Azure Cloud Shell でのファイルの永続化
-Azure Cloud Shell の初回起動時に、LRS ストレージ アカウントと Azure ファイル共有を自動的に作成するためのサブスクリプションを求められます。
+Azure Cloud Shell の初回起動時に、LRS ストレージ アカウントと Azure ファイル共有を自動的に作成するためのサブスクリプションを求められます。 Cloud Shell を利用するには、ご利用のサブスクリプションに、ストレージ アカウントを作成するためのアクセス権が必要です。
 
 ![](media/storage-prompt.png)
 
+## <a name="how-it-works"></a>動作のしくみ
 ### <a name="three-resources-will-be-created-on-your-behalf-in-a-supported-region-nearest-to-you"></a>サポートされている最寄りのリージョンに、次の 3 つのリソースが自動的に作成されます。
 1. `cloud-shell-storage-<region>` という名前のリソース グループ
 2. `cs-uniqueGuid` という名前のストレージ アカウント
@@ -42,6 +43,9 @@ Azure Cloud Shell の初回起動時に、LRS ストレージ アカウントと
  
 > [!Note]
 > SSH キーなど、$Home ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 $Home ディレクトリおよびマウントされたファイル共有への情報の保存時に、ベスト プラクティスを適用してください。
+
+### <a name="restrict-resource-creation-with-an-azure-resource-policy"></a>Azure リソース ポリシーによるリソース作成の制限
+ストレージ アカウントには、"ms-resource-usage:azure-cloud-shell" というタグが付けられます。 Cloud Shell 用のストレージ アカウントを社内のユーザーが作成できないようにするには、この固有のキーと値によってトリガーされる[タグの Azure リソース ポリシー](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy-tags)を作成します。
 
 ## <a name="using-clouddrive"></a>clouddrive の使用
 Cloud Shell では、ユーザーが `clouddrive` というコマンドを実行することで、Cloud Shell にマウントされたファイル共有を手動で更新することができます。
@@ -132,6 +136,6 @@ justin@Azure:~$
 Cloud Shell の clouddrive ディレクトリでファイルにアクセスできるようになったことがわかります。
 
 ## <a name="next-steps"></a>次のステップ
-[Cloud Shell クイック スタート](quickstart.md) 
-[Azure File Storage について](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) 
-[Storage のタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) 
+[Cloud Shell のクイック スタート](quickstart.md) <br>
+[Azure File Storage について](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[ストレージのタグについて](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-using-tags) <br>

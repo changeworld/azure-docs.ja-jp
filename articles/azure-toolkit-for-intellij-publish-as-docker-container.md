@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 37a9de5909cf4d6b4568e40de001861d083a85df
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: 96680319a6c4c0f0a4673cd6303a5b172f428797
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
@@ -55,13 +55,13 @@ Docker コンテナーは、Web アプリケーションをデプロイするた
       ![[Publish as Docker Container]\(Docker コンテナーとして発行\) コマンド][PUB02]  
     **Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ)** ウィザードが開かれます。
 
-   ![Deploy Docker Container on Azure (Azure に Docker コンテナーをデプロイ) ウィザード][PUB03]
+   ![[Deploy Docker Container on Azure] (Azure への Docker コンテナーのデプロイ) ウィザード][PUB03]
 
-3. **[Type an image name, select the artifact's path and check a Docker host to be used]\(イメージ名を入力し、アーティファクトのパスを選択し、使用する Docker ホストを確認します\)** ウィンドウで、以下の操作を行います。 
+3. **[Type image name, select artifact's path and check Docker host to be used] (イメージ名を入力し、アーティファクトのパスを選択して、使用される Docker ホストを確認する)** ウィンドウで、以下の手順を実行します。 
 
-   a. **[Docker image name]\(Docker イメージ名\)** ボックスに、Docker ホストの一意の名前を入力します  (ウィザードによって名前が自動的に作成されますが、変更することができます)。 
+   a. **[Docker image name] (Docker イメージ名)** ボックスに、Docker ホストの一意の名前を入力します。 (このウィザードでは名前が自動的に作成されますが、それは変更できます)。 
 
-   b. **[ホスト]** 領域に、作成済みのすべての Docker ホストが表示されます。 次のいずれかを実行します。 
+   b. **[ホスト]** 領域には、既に作成しているすべての Docker ホストが表示されます。 次のいずれかを実行します。 
       * 既存の Docker ホストがある場合は、それに Web アプリをデプロイできます。
       * Docker ホストを作成するには、緑色のプラス記号 (**+**) をクリックします。  
        **[Create Docker Host]\(Docker ホストの作成\)** ダイアログ ボックスが表示されます。 
@@ -78,7 +78,7 @@ Docker コンテナーは、Web アプリケーションをデプロイするた
       
    d. **[OS and Size]\(OS とサイズ\)** タブで、以下の操作を行います。      
       * **[Host OS]\(ホスト OS\)**: ホストがある仮想マシンのオペレーティング システムを入力します。 
-      * **[サイズ]**: ホストの仮想マシン サイズを入力します。   
+      * **[サイズ]**: ホストの仮想マシンのサイズを入力します。   
        
    e. **[リソース グループ]** タブで、以下のいずれかを選択します。      
       * **[新しいリソース グループ]**: ホストのリソース グループを作成します。
@@ -106,12 +106,14 @@ Docker コンテナーは、Web アプリケーションをデプロイするた
 
       * **[New log in credentials]\(新しいログイン資格情報\)**: ログイン資格情報の新しいセットを作成します。 このオプションを選択する場合は、次の操作を行います。
 
-        a. **[VM Credentials]\(VM 資格情報\)** タブで、Docker ホストの仮想マシン ログイン資格情報について、以下の情報を指定します。     * **[ユーザー名]**: 仮想マシン ログイン資格情報のユーザー名を入力します。
+        a. **[VM Credentials]\(VM 資格情報\)** タブで、Docker ホストの仮想マシン ログイン資格情報について、以下の情報を指定します。* **[ユーザー名]**: 仮想マシン ログイン資格情報のユーザー名を入力します。
              * **[パスワード]** および **[確認]**: 仮想マシン ログイン資格情報のパスワードを入力します。
-             * **[SSH]**: Docker ホストの Secure Shell (SSH) 設定を入力します。 以下のいずれかのオプションを選択できます。        * **[なし]**: 仮想マシンが SSH 接続を許可しないことを指定します。
+             * **[SSH]**: Docker ホストの Secure Shell (SSH) 設定を入力します。 以下のいずれかのオプションを選択できます。* **[なし]**: 仮想マシンが SSH 接続を許可しないことを指定します。
                 * **[自動生成]**: SSH 経由で接続するために必要な設定を自動的に作成します。
-                * **[Import from directory]\(ディレクトリからインポート\)**: 以前に保存した SSH 設定のセットがあるディレクトリを指定できます。 ディレクトリには、次の 2 つのファイルが含まれている必要があります。           * *id_rsa*: ユーザーの RSA ID が含まれています。
-                   * *id_rsa.pub*: 認証に使用される RSA 公開キーが含まれています。
+                * **[Import from directory]\(ディレクトリからインポート\)**: 以前に保存した SSH 設定のセットがあるディレクトリを指定できます。 このディレクトリには、次の 2 つのファイルが含まれている必要があります。
+                
+                  * *id_rsa*: Contains the RSA identification for a user.
+                  * *id_rsa.pub*: Contains the RSA public key that is used for authentication.
             
         b. **[Docker Daemon Access]\(Docker デーモン アクセス\)** タブで、以下の情報を指定します。
 
@@ -138,7 +140,7 @@ Docker コンテナーは、Web アプリケーションをデプロイするた
 
 9. **[Configure the Docker container to be created]\(作成される Docker コンテナーの構成\)** ウィンドウで、以下の情報を指定します。 
 
-   a. **[Docker container name]\(Docker コンテナー名\)** ボックスで、Docker コンテナーの一意の名前を入力します。
+   a. **[Docker container name] (Docker コンテナー名)** ボックスに、Docker コンテナーの一意の名前を入力します。
 
    b. 次のいずれかの Docker イメージを選びます。 
 
@@ -182,7 +184,7 @@ Azure Toolkit により、Docker コンテナーでの Azure への Web アプ�
 IntelliJ でのアーティファクトの作成の詳細については、JetBrains Web サイトの「[Configuring Artifacts (アーティファクトの構成)]」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Toolkits for Java IDE の詳細については、以下のリソースを参照してください。
+Azure Toolkit for Java IDE の詳細については、次のリソースを参照してください。
 
 * [Azure Toolkit for Eclipse]
   * [Azure Toolkit for Eclipse の新機能]

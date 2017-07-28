@@ -23,7 +23,6 @@ ms.openlocfilehash: 47cbb4ba34bb075f51306cc9481afd308ff672b4
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="use-spark-mllib-to-build-a-machine-learning-application-and-analyze-a-dataset"></a>Spark MLlib を使用して Machine Learning アプリケーションを構築し、データセットを分析する
 
@@ -93,7 +92,7 @@ MLlib は、Machine Learning タスクに役立つ多数のユーティリティ
             sio.close()
             return value
 
-        inspections = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
+        inspections = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections1.csv')\
                         .map(csvParse)
 1. これで、CSV ファイルを RDD として使用できます。  データのスキーマを把握するために、RDD から 1 つの行を取得します。
 
@@ -253,7 +252,7 @@ MLLib には、この操作を簡単に実行する方法が用意されてい�
 
 1. 次のスニペットでは、モデルによって生成された予測を含む、新しいデータフレーム **predictionsDf** を作成します。 このスニペットでは、データフレームに基づいた **Predictions** と呼ばれる一時テーブルも作成します。
 
-        testData = sc.textFile('wasbs:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
+        testData = sc.textFile('wasb:///HdiSamples/HdiSamples/FoodInspectionData/Food_Inspections2.csv')\
                  .map(csvParse) \
                  .map(lambda l: (int(l[0]), l[1], l[12], l[13]))
         testDf = sqlContext.createDataFrame(testData, schema).where("results = 'Fail' OR results = 'Pass' OR results = 'Pass w/ Conditions'")

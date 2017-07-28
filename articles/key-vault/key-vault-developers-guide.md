@@ -2,19 +2,18 @@
 title: "Azure Key Vault 開発者ガイド | Microsoft Docs"
 description: "開発者は、Azure Key Vault を使用して、Microsoft Azure 環境内で暗号化キーを管理できます。"
 services: key-vault
-documentationcenter: 
 author: BrucePerlerMS
 manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 05/10/2017
+ms.date: 06/6/2017
 ms.author: bruceper
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5e92b1b234e4ceea5e0dd5d09ab3203c4a86f633
-ms.openlocfilehash: b046e95e2167009727f6ea8f3dd237619c61434f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 7b8042d6a2d34858f35a2041db0116c1d6159630
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -29,10 +28,14 @@ Key Vault を使用すると、アプリケーション内から機密情報に�
 
 Azure Key Vault の全般的な情報については、「 [Azure Key Vault とは](key-vault-whatis.md)」を参照してください。
 
-## <a name="public-preview---may-10-2017"></a>パブリック プレビュー - 2017 年 5 月 10 日
+## <a name="public-previews"></a>パブリック プレビュー
+
+Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 ぜひお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
+
+### <a name="soft-delete---may-10-2017"></a>論理的な削除 - 2017 年 5 月 10 日
 
 >[!NOTE]
->この Azure Key Vault のプレビュー バージョンでは、**論理的な削除**機能のみがプレビュー段階です。 全体としては、Azure Key Vault は完全な運用サービスです。
+>Azure Key Vault のこのアップデートでは、**論理的な削除**機能のみがプレビュー段階です。
 
 このプレビューでは、新しい論理的な削除機能や、Key Vault と Key Vault オブジェクトの回復可能な削除を利用できるほか、開発者向けのインターフェイス、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、および [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) が更新されています。 
 
@@ -63,7 +66,7 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 
 ## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
 
-プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 REST インターフェイスを介して Key Vault リソースのすべて (キー、シークレット、証明書) にアクセスできます。 [Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
+プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 REST インターフェイスを使用すると、すべてのキー コンテナー リソース (キー、シークレット、証明書) にアクセスできます。 [Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
 
 ### <a name="supported-programming-languages"></a>サポートされるプログラミング言語
 
@@ -79,7 +82,9 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 
 #### <a name="nodejs"></a>Node.js
 
-- [Key Vault Managment の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
+Node.js では、コンテナー管理 API とコンテナー オブジェクト API は別々になっています。 Key Vault Management では、キー コンテナーの作成と更新が行えます。 Key Vault Operations API は、キーやシークレット、証明書といったコンテナー オブジェクトを使用するためのものです。 
+
+- [Key Vault Management の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
 - [Key Vault Operations の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
 
 ### <a name="quick-start"></a>クイック スタート
@@ -120,20 +125,20 @@ Key Vault を使用したり、Key Vault と統合したりする他のシナリ
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault の概要と概念
 
-- [Key Vault セキュリティ ワールド](key-vault-ovw-security-worlds.md)
-- [Key Vault の論理的な削除](key-vault-ovw-soft-delete.md)
+- [Key Vault の論理的な削除の動作](key-vault-ovw-soft-delete.md)に関するページでは、削除が偶発的なものか意図的なものかにかかわらず、削除されたオブジェクトの回復を可能にする機能について説明します。
+- [Key Vault のクライアント調整](key-vault-ovw-throttling.md)に関するページでは、調整の基本的な概念を説明するとともに、アプリへのアプローチも紹介します。
+- [Key Vault のストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関するページでは、Key Vault 統合 Azure ストレージ アカウント キーについて説明します。
+- [Key Vault のセキュリティ ワールド](key-vault-ovw-security-worlds.md)に関するページでは、リージョンとセキュリティ領域の関係について説明します。
 
 ## <a name="social"></a>ソーシャル
 
 - [Key Vault Blog](http://aka.ms/kvblog)
 - [Key Vault Forum](http://aka.ms/kvforum)
 
-
 ## <a name="supporting-libraries"></a>対応ライブラリ
 
 - [Microsoft Azure Key Vault Core Library](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Core): 識別子からキーを検索し、キーを使用して操作を実行する、**IKey** および **IKeyResolver** インターフェイスを提供します。
 - [Microsoft Azure Key Vault Extensions](http://www.nuget.org/packages/Microsoft.Azure.KeyVault.Extensions) : Azure Key Vault の拡張機能を提供します。
 
-## <a name="other-key-vault-resources"></a>その他の Key Vault リソース
 
 

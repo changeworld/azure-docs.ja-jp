@@ -14,17 +14,16 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: 31582a87354bf915f058090add02d837f835a77c
-ms.lasthandoff: 04/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
+ms.openlocfilehash: 35cddba38c364dfb2f6a8646b0014d48ca4cb795
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 
 ---
 # <a name="installing-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse のインストール
-Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。 Azure Toolkit for Eclipse はオープン ソース プロジェクトであり、そのソース コードは、GitHub のプロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
-
-<https://github.com/microsoft/azure-tools-for-java>
+Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。 Azure Toolkit for Eclipse はオープン ソース プロジェクトです。 ソース コードは MIT ライセンスで <https://github.com/microsoft/azure-tools-for-java> から入手できます。
 
 次の手順は、Azure Toolkit for Eclipse をインストールする方法を示しています。
 
@@ -32,10 +31,10 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
 
 ## <a name="to-install-the-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse をインストールするには
 1. Eclipse を起動します。
-2. Eclipse が開いたら、次の図に示すように、**[Help (ヘルプ)]** メニューをクリックし、**[Install New Software (新しいソフトウェアのインストール)]** をクリックします。
+2. 次の図に示すように、**[Help]\(ヘルプ\)** メニューをクリックし、**[Install New Software]\(新しいソフトウェアのインストール\)** をクリックします。
    
     ![Azure Toolkit for Eclipse のインストール][01]
-3. **[Available Software (利用可能なソフトウェア)]** ダイアログで、**[Work with (対象)]** ボックスに「**http://dl.microsoft.com/eclipse**」と入力し、**Enter** キーを押します。
+3. **[Available Software]\(利用可能なソフトウェア\)** ダイアログで、**[Work with]\(対象\)** テキスト ボックスに「`http://dl.microsoft.com/eclipse`」と入力し、**Enter** キーを押します。
 4. **[Name]** ウィンドウで、**Azure Toolkit for Eclipse** をオンにし、**[Contact all update sites during install to find required software]** をオフにします。 画面は次のようになります。
    
     ![Azure Toolkit for Eclipse のインストール][02]
@@ -50,7 +49,7 @@ Azure Toolkit for Eclipse は、Eclipse 開発環境を使って Azure アプリ
    * **Microsoft JDBC Driver 4.2 for SQL Server**: SQL Server と Microsoft Azure SQL Database 向けに、Java Platform Enterprise Edition 8 の JDBC API を提供するコンポーネントです。
    * **Package for Apache Qpid Client Libraries for JMS**: Apache Qpid プロジェクトの JMS クライアント ライブラリを備えたコンポーネントです。Microsoft Azure でアプリケーションから AMQP メッセージングを利用するには、このコンポーネントを使用します。
    * **Package for Microsoft Azure Libraries for Java**: Microsoft Azure の各種サービス (ストレージ、Service Bus、サービス ランタイムなど) にアクセスするための API を備えたコンポーネントです。
-6. **[次へ]**をクリックします。 (ツールキットのインストール時に異常な遅延が発生する場合は、**[Contact all update sites during install to find required software (インストール中にすべての更新サイトに接続して必要なソフトウェアを調べる)]** がオフになっていることを確認してください)。
+6. **[次へ]** をクリックします。 (ツールキットのインストール時に異常な遅延が発生する場合は、**[Contact all update sites during install to find required software (インストール中にすべての更新サイトに接続して必要なソフトウェアを調べる)]** がオフになっていることを確認してください)。
 7. **[Install Details (インストールの詳細)]** ダイアログで、**[Next (次へ)]** をクリックします。
    
     ![Review Installation Details][03]

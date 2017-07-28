@@ -1,6 +1,6 @@
 ---
-title: "HDInsight での空のエッジ ノードの使用 | Microsoft Docs"
-description: "クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加する方法と HDInsight アプリケーションをテストおよびホストする方法について説明します。"
+title: "HDInsight の Hadoop クラスターで空のエッジ ノードを使用する - Azure | Microsoft Docs"
+description: "クライアントとして使用できる空のエッジ ノードを HDInsight クラスターに追加し、その後 HDInsight アプリケーションをテストおよびホストする方法について説明します。"
 services: hdinsight
 editor: cgronlun
 manager: jhubbard
@@ -9,7 +9,7 @@ tags: azure-portal
 documentationcenter: 
 ms.assetid: cdc7d1b4-15d7-4d4d-a13f-c7d3a694b4fb
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -17,16 +17,16 @@ ms.topic: article
 ms.date: 05/01/2017
 ms.author: jgao
 ms.translationtype: Human Translation
-ms.sourcegitcommit: e155891ff8dc736e2f7de1b95f07ff7b2d5d4e1b
-ms.openlocfilehash: ab888881a841f5a9bf2d47aea946022e6603c585
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 0b5ccfa5da0f6a4aa2ca72eb580e5238f3b262c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/02/2017
+ms.lasthandoff: 06/30/2017
 
 
 ---
-# <a name="use-empty-edge-nodes-in-hdinsight"></a>HDInsight での空のエッジ ノードの使用
+# <a name="use-empty-edge-nodes-on-hadoop-clusters-in-hdinsight"></a>HDInsight の Hadoop クラスターで空のエッジ ノードを使用する
 
-Linux ベースの HDInsight クラスターに空のエッジ ノードを追加する方法について説明します。 空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンですが、Hadoop サービスは実行されていません。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 
+HDInsight クラスターに空のエッジ ノードを追加する方法について説明します。 空のエッジ ノードは、ヘッド ノードの場合と同じクライアント ツールがインストールされ、構成された Linux 仮想マシンですが、Hadoop サービスは実行されていません。 エッジ ノードは、クラスターへのアクセス、クライアント アプリケーションのテスト、およびクライアント アプリケーションのホストに使用できます。 
 
 空のエッジ ノードは、既存の HDInsight クラスターに追加することも、クラスターの作成時にその新しいクラスターに追加することもできます。 空のエッジ ノードを追加するには、Azure Resource Manager テンプレートを使用します。  次のサンプルでは、テンプレートを使用して空のエッジ ノードを追加する方法を示しています。
 
@@ -65,12 +65,20 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 
 エッジ ノードを作成した後、SSH を使用してエッジ ノードに接続し、クライアント ツールを実行して HDInsight の Hadoop クラスターにアクセスすることができます。
 
+> [!WARNING] 
+> HDInsight での空のエッジ ノードの使用は、現在プレビュー段階です。 エッジ ノードにインストールされているカスタム コンポーネントは、Microsoft からビジネス上合理的なサポートを受けることができます。 これにより、発生する問題を解決できる場合があります。 または、コミュニティ リソースを利用することで、さらなる支援を受けられる場合もあります。 コミュニティから支援を受けることができる、最もアクティブなサイトの一部を次に示します。
+>
+> * [HDInsight の MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)
+> * [http://stackoverflow.com](http://stackoverflow.com)
+>
+> Apache テクノロジを使用している場合、[http://apache.org](http://apache.org) にある Apache の各プロジェクト サイト (例: [Hadoop](http://hadoop.apache.org/) サイト) で支援を受けられる可能性があります。
+
 ## <a name="add-an-edge-node-to-an-existing-cluster"></a>既存のクラスターにエッジ ノードを追加する
 このセクションでは、Resource Manager テンプレートを使用して既存の HDInsight クラスターにエッジ ノードを追加します。  Resource Manager テンプレートは、 [GitHub](https://github.com/hdinsight/Iaas-Applications/tree/master/EmptyNode)にあります。 Resource Manager テンプレートは、https://raw.githubusercontent.com/hdinsight/Iaas-Applications/master/EmptyNode/scripts/EmptyNodeSetup.sh にあるスクリプト アクションのスクリプトを呼び出します。 このスクリプトでは操作は実行されません。  これは、Resource Manager テンプレートからのスクリプト アクションの呼び出しを説明するためのものです。
 
 **既存のクラスターに空のエッジ ノードを追加するには**
 
-1. HDInsight クラスターがない場合は作成します。  「 [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
+1. HDInsight クラスターがない場合は作成します。  「[Hadoop チュートリアル: HDInsight で Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」をご覧ください。
 2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fhdinsight%2FIaas-Applications%2Fmaster%2FEmptyNode%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
@@ -89,7 +97,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 
 **既存のクラスターに空のエッジ ノードを追加するには**
 
-1. HDInsight クラスターがない場合は作成します。  「 [Hadoop チュートリアル: HDInsight で Linux ベースの Hadoop を使用する](hdinsight-hadoop-linux-tutorial-get-started.md)」を参照してください。
+1. HDInsight クラスターがない場合は作成します。  [HDInsight での Hadoop の使用](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページをご覧ください。
 2. 次の画像をクリックして Azure にサインインし、Azure Portal で Azure Resource Manager テンプレートを開きます。 
    
     <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-linux-with-edge-node%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-apps-use-edge-node/deploy-to-azure.png" alt="Deploy to Azure"></a>
@@ -115,7 +123,7 @@ Linux ベースの HDInsight クラスターに空のエッジ ノードを追�
 
 **エッジ ノードの SSH エンドポイントを確認するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. エッジ ノードを含む HDInsight クラスターを開きます。
 3. クラスター ブレードで、 **[アプリケーション]** をクリックします。 エッジ ノードが表示されます。  既定の名前は **new-edgenode**です。
 4. エッジ ノードをクリックします。 SSH エンドポイントが表示されます。
@@ -136,7 +144,7 @@ Azure Portal からエッジ ノードを削除できます。
 
 **エッジ ノードにアクセスするには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインオンします。
+1. [Azure Portal](https://portal.azure.com) にサインオンします。
 2. エッジ ノードを含む HDInsight クラスターを開きます。
 3. クラスター ブレードで、 **[アプリケーション]** をクリックします。 エッジ ノードの一覧が表示されます。  
 4. 削除するエッジ ノードを右クリックし、 **[削除]**をクリックします。

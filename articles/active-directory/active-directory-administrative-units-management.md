@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 05/04/2017
 ms.author: curtand
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 5bf0e7f631a86a9d413415ab73e03fa00a0e9325
+ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
+ms.openlocfilehash: 355ae7a13ab3d32b69a2b90e5410d5fc90fb6916
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/02/2017
 
 
 ---
@@ -28,7 +28,7 @@ ms.lasthandoff: 05/11/2017
 これは、部門が独立している組織、たとえば、互いに独立している多数の自律的なスクール (ビジネス スクール、エンジニアリング スクールなど) で構成される大きな大学で役に立ちます。 このような部門には、その部門のアクセスの制御、ユーザーの管理、およびポリシーの設定を行う IT 管理者が存在します。 全体管理者は、これらの部門の管理者に、特定の部門のユーザーに適用される権限を与えることができます。 前の例を使用して具体的に説明すると、全体管理者は、特定のスクール (ビジネス スクール) の管理単位を作成し、その中にビジネス スクールのユーザーだけを含めることができます。 その後、全体管理者は、ビジネススクールの IT スタッフに限定されたロールを追加できます。つまり、ビジネス スクールの IT スタッフに、ビジネス スクールという管理単位にのみ適用される権限を与えます。
 
 > [!IMPORTANT]
-> 管理単位は、Azure Active Directory Premium を有効にした場合にのみ、作成して使用できます。 詳細については、「 [Azure AD Premium の概要](active-directory-get-started-premium.md)」を参照してください。
+> 管理単位の対象管理者ロールを割り当てることができるのは、Azure Active Directory Premium を有効にした場合だけです。 詳細については、「 [Azure AD Premium の概要](active-directory-get-started-premium.md)」を参照してください。
 >
 
 

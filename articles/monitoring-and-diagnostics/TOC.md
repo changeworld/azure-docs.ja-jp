@@ -59,8 +59,9 @@
 ### [トラブルシューティング](azure-diagnostics-troubleshooting.md)
 
 # リファレンス
-## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
 ## [監視データのソース](monitoring-data-sources.md)
+## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
+## [アクティビティ ログのイベント スキーマ](monitoring-activity-log-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST ()](/rest/api/monitor/)
@@ -71,7 +72,7 @@
 
 # リソース
 ## [Azure CLI 1.0 のサンプル](insights-cli-samples.md)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [PowerShell のサンプル](insights-powershell-samples.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=monitor)
 ## [クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

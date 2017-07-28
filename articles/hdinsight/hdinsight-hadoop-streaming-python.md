@@ -1,7 +1,8 @@
 ---
-title: "HDInsight での Python MapReduce ジョブの開発 | Microsoft Docs"
-description: "Linux ベースの HDInsight クラスターで Python MapReduce ジョブを作成、実行する方法を説明します。"
+title: "HDInsight での Python ストリーミング MapReduce ジョブの開発 - Azure | Microsoft Docs"
+description: "ストリーミング MapReduce ジョブに Python を使用する方法について説明します。 Hadoop には、MapReduce を Java 以外の言語で記述するためのストリーミング API が用意されています。"
 services: hdinsight
+keyword: mapreduce python,python map reduce,python mapreduce
 documentationcenter: 
 author: Blackmist
 manager: jhubbard
@@ -9,7 +10,7 @@ editor: cgronlun
 tags: azure-portal
 ms.assetid: 7631d8d9-98ae-42ec-b9ec-ee3cf7e57fb3
 ms.service: hdinsight
-ms.custom: hdinsightactive
+ms.custom: hdinsightactive,hdiseo17may2017
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -17,23 +18,23 @@ ms.workload: big-data
 ms.date: 05/03/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: ce96113ad979997c555bc64698c0b78822b525ad
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72d7aefc6a51944eac8075760486dc1a583a171d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
-# <a name="develop-python-streaming-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング プログラムの開発
+# <a name="develop-python-streaming-mapreduce-programs-for-hdinsight"></a>HDInsight 用 Python ストリーミング MapReduce プログラムの開発
 
-MapReduce 操作で Python を使用する方法について説明します。 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
+ストリーミング MapReduce 操作に Python を使用する方法について説明します。 Hadoop には MapReduce に対するストリーミング API が用意されていて、Java 以外の言語の map 関数と reduce 関数を記述することができます。 このドキュメントの手順では、Python に Map および Reduce コンポーネントを実装します。
 
 ## <a name="prerequisites"></a>前提条件
 
 * HDInsight クラスターでの Linux ベースの Hadoop
 
   > [!IMPORTANT]
-  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > このドキュメントの手順では、Linux を使用する HDInsight クラスターが必要です。 Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * テキスト エディター
 

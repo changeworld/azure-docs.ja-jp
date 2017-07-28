@@ -1,5 +1,5 @@
 ---
-title: "HDInsight で使用されるポート | Microsoft Docs"
+title: "HDInsight 上の Hadoop サービスで使用されるポート- Azure | Microsoft Docs"
 description: "HDInsight で実行されている Hadoop サービスで使用されるポートの一覧。"
 services: hdinsight
 documentationcenter: 
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/17/2017
+ms.date: 06/02/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 44eac1ae8676912bc0eb461e7e38569432ad3393
-ms.openlocfilehash: 3bf5ff732b03a1ecffb4e149d7805a6216ab0019
+ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
+ms.openlocfilehash: ffd8c494d821d41532c9a31613b10b521ff4d86b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 06/10/2017
 
 
 ---
-# <a name="ports-and-uris-used-by-hdinsight"></a>HDInsight で使用されるポートと URI
+# <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
 
 このドキュメントでは、Linux ベースの HDInsight クラスターで実行されている Hadoop サービスで使用されるポートの一覧を示します。 また、SSH を使用したクラスターへの接続に使用されるポートの情報も提供します。
 
@@ -105,8 +105,8 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 | サービス | Nodes | ポート | プロトコル | Description |
 | --- | --- | --- | --- | --- |
-| HiveServer2 |ヘッド ノード |10001 |Thrift |プログラムによって Hive (Thrift/JDBC) に接続するためのサービス |
-| Hive メタストア |ヘッド ノード |9083 |Thrift |プログラムによって Hive メタデータ (Thrift/JDBC) に接続するためのサービス |
+| HiveServer2 |ヘッド ノード |10001 |Thrift |Hive に接続するためのサービス (Thrift/JDBC) |
+| Hive メタストア |ヘッド ノード |9083 |Thrift |Hive メタデータに接続するためのサービス (Thrift/JDBC) |
 
 ### <a name="webhcat-ports"></a>WebHCat ポート
 
@@ -152,4 +152,8 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 | ブローカー |ワーカー ノード |9092 |[Kafka Wire Protocol](http://kafka.apache.org/protocol.html) |クライアント通信に使用 |
 | &nbsp; |Zookeeper ノード |2181 |&nbsp; |クライアントが ZooKeeper への接続に使用するポート |
 
+### <a name="spark-ports"></a>Spark ポート
 
+| サービス | Nodes | ポート | プロトコル | Description |
+| --- | --- | --- | --- | --- |
+| Spark Thrift サーバー |ヘッド ノード |10002 |Thrift |Spark SQL に接続するためのサービス (Thrift/JDBC) |

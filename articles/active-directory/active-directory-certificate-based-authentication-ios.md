@@ -11,13 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 03/30/2017
+ms.date: 06/07/2017
 ms.author: markvi
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: e30d5c81817eb3501615763553d501509c559f0c
-ms.lasthandoff: 04/27/2017
-
+ms.reviewer: nigu
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
+ms.openlocfilehash: 162be9faa51047f4d0be0e73e3dbe6a3dc87ba4c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/08/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
@@ -29,7 +30,7 @@ ms.lasthandoff: 04/27/2017
 
 この機能を構成すると、モバイル デバイスで特定のメールおよび Microsoft Office アプリケーションにユーザー名とパスワードの組み合わせを入力する必要がなくなります。 
 
-このトピックでは、iOS デバイスで CBA を構成する場合の要件や対応シナリオについて説明します。Office 365 Enterprise、Business、Education、US Government の各プランにおけるテナントのユーザーが対象です。 
+このトピックでは、Office 365 Enterprise、Business、Education、US Government、および China プランのテナントのユーザーのために iOS デバイス上で CBA を構成するための要件およびサポートされるシナリオについて説明します。
 
 Office 365 US Government Defense プランと Federal プランでは、この機能はプレビュー版として提供されています。
 
@@ -46,6 +47,7 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 | Outlook |![○][1] |
 | Yammer |![○][1] |
 | Skype for Business |![○][1] |
+| Microsoft Teams |![○][1] |
 
 ## <a name="requirements"></a>必要条件 
 

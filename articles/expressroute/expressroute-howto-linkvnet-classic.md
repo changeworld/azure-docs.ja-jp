@@ -13,12 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/13/2016
+ms.date: 06/28/2017
 ms.author: ganesr
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: c30f58079c9d8b8077b65881517178fa0ae0e598
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
+ms.openlocfilehash: 5b0e774e9b6a75d26d0373a473fc577f45e8d82f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/30/2017
 
 
 ---
@@ -159,6 +160,10 @@ ms.lasthandoff: 04/27/2017
     State VnetName
     ----- --------
     Provisioned SalesVNET1
+
+新たにリンクされた仮想ネットワークのサブスクリプションで、このコマンドを実行します。
+
+    New-AzureDedicatedCircuitLink -ServiceKey "*****************************" -VNetName "MyVNet"
 
 ## <a name="next-steps"></a>次のステップ
 ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

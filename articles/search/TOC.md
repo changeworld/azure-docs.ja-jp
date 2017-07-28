@@ -31,8 +31,9 @@
 ### [SDK をアップグレードする](search-dotnet-sdk-migration.md)
 ### [REST API をアップグレードする](search-api-migration.md)
 ### [複合データ型をモデル化する](search-howto-complex-data-types.md)
+### [同時更新を処理する](search-howto-concurrency.md)
 
-## 管理
+## Manage
 ### Azure Search を管理する
 #### [Azure ポータル](search-manage.md)
 #### [PowerShell](search-manage-powershell.md)
@@ -75,7 +76,7 @@
 
 # リソース
 ## [API のバージョン](search-api-versions.md)
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
 ## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)

@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory でユーザー属性に基づきグループのメンバーを動的に設定する | Microsoft Docs"
+title: "Azure Active Directory でオブジェクト属性に基づいてグループのメンバーを動的に設定する | Microsoft Docs"
 description: "サポートされている式のルール演算子とパラメーターを含む、グループ メンバーシップの高度なルールを作成する方法。"
 services: active-directory
 documentationcenter: 
@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/14/2017
+ms.date: 06/19/2017
 ms.author: curtand
+ms.reviewer: rodejo
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 17c4dc6a72328b613f31407aff8b6c9eacd70d9a
-ms.openlocfilehash: b0c8eb46b6c01662f0b53213843f8a7ad295e5aa
+ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
+ms.openlocfilehash: dac95b5866aa165587009062064ca135b9255ab2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
+ms.lasthandoff: 06/20/2017
 
 
 ---
-# <a name="populate-groups-dynamically-based-on-user-attributes"></a>ユーザー属性に基づきグループのメンバーを動的に設定する 
+
+# <a name="populate-groups-dynamically-based-on-object-attributes"></a>オブジェクト属性に基づいてグループのメンバーを動的に設定する 
 Azure クラシック ポータルでは、Azure Active Directory (Azure AD) グループに対して、より複雑な属性ベースの動的メンバーシップを有効化できます。  
 
-ユーザーのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーの属性の変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーがグループのルールを満たしている場合は、そのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーまたはデバイスの属性変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
 
 > [!NOTE]
 > セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 
@@ -57,6 +59,7 @@ Azure クラシック ポータルでは、Azure Active Directory (Azure AD) グ
 
 サポートされているパラメーターと式のルール演算子の全一覧については、以降のセクションを参照してください。
 
+
 プロパティの先頭には、適切なオブジェクトの種類 (ユーザーまたはデバイス) が付加されている必要があります。
 次のルールは検証に失敗します: mail –ne null
 
@@ -86,6 +89,8 @@ user.mail –ne null
 | 指定値を含む |-contains |
 | 一致しない |-notMatch |
 | 一致する |-match |
+| イン | -in |
+| 含まれない | -notIn |
 
 ## <a name="operator-precedence"></a>演算子の優先順位
 
@@ -100,6 +105,14 @@ user.mail –ne null
 は以下に匹敵します。
 
    (user.department –eq "Marketing") –and (user.country –eq "US")
+
+## <a name="using-the--in-and--notin-operators"></a>-In および -notIn 演算子の使用
+
+ユーザー属性の値を複数の異なる値に対して比較する場合は、-In または -notIn 演算子を使用できます。 -In 演算子を使用した例を次に示します。
+
+    user.department -In [ "50001", "50002", "50003", “50005”, “50006”, “50007”, “50008”, “50016”, “50020”, “50024”, “50038”, “50039”, “51100” ]
+
+値のリストの開始と終了に "[" と "]" を使用していることに注意してください。 この条件は、user.department の値がリスト内のいずれかの値に等しい場合に True に評価されます。
 
 ## <a name="query-error-remediation"></a>クエリ エラーの修復
 次の表では、発生する可能性のあるエラーとその解決方法を示します。
@@ -151,6 +164,7 @@ user.mail –ne null
 | mailNickName |任意の文字列値 (ユーザーのメール エイリアス) |(user.mailNickName -eq "value") |
 | mobile |任意の文字列値または $null |(user.mobile -eq "value") |
 | objectId |ユーザー オブジェクトの GUID |(user.objectId -eq "1111111-1111-1111-1111-111111111111") |
+| onPremisesSecurityIdentifier | オンプレミスからクラウドに同期されたユーザーのオンプレミスのセキュリティ識別子 (SID)。 |(user.onPremisesSecurityIdentifier -eq "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |なし DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration、DisableStrongPassword |(user.passwordPolicies -eq "DisableStrongPassword") |
 | physicalDeliveryOfficeName |任意の文字列値または $null |(user.physicalDeliveryOfficeName -eq "value") |
 | postalCode |任意の文字列値または $null |(user.postalCode -eq "value") |
@@ -219,11 +233,12 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
     ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。 オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ** で確認できます。
 5. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。 最初は、グループを設定するのに数分かかることがあります。
 
-## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
+# <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
+| accountEnabled |true false |(device.accountEnabled -eq true) |
 | displayName |任意の文字列値 |(device.displayName -eq "Rob Iphone”) |
 | deviceOSType |任意の文字列値 |(device.deviceOSType -eq "IOS") |
 | deviceOSVersion |任意の文字列値 |(device.OSVersion -eq "9.1") |
@@ -239,7 +254,8 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 | isRooted |true false null |(device.isRooted -eq true) |
 | managementType |任意の文字列値 |(device.managementType -eq "") |
 | organizationalUnit |任意の文字列値 |(device.organizationalUnit -eq "") |
-| deviceId |有効なデバイス ID |(device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d" |
+| deviceId |有効なデバイス ID |(device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId |有効な AAD objectId |(device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 > [!NOTE]
 > Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
