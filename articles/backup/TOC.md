@@ -17,7 +17,7 @@
 ### VM をバックアップする
 #### [Recovery Services 資格情報コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-arm-vms.md)
 #### [暗号化された仮想マシンのバックアップ](backup-azure-vms-encryption.md)
-#### [バックアップ コンテナーへの Azure 仮想マシンのバックアップ](backup-azure-vms.md)
+#### [Azure 仮想マシンのバックアップ](backup-azure-vms.md)
 ### VM の管理と監視
 #### [Azure Portal での Azure VM のバックアップの管理](backup-azure-manage-vms.md)
 #### [Azure Portal での Azure VM のバックアップに関するアラートの監視](backup-azure-monitor-vms.md)
@@ -57,7 +57,7 @@
 ### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)
 ### [クラシック ポータルでの DPM ワークロードの準備](backup-azure-dpm-introduction-classic.md)
 ### [System Center DPM を使った Exchange サーバーのバックアップ](backup-azure-backup-exchange-server.md)
-### [Backup 資格情報コンテナー内のデータを別の DPM サーバーに回復する](backup-azure-alternate-dpm-server.md)
+### [別の DPM サーバーへのデータ復旧](backup-azure-alternate-dpm-server.md)
 ### [DPM を使った SQL Server ワークロードのバックアップ](backup-azure-backup-sql.md)
 ### [DPM を使った SharePoint ファームのバックアップ](backup-azure-backup-sharepoint.md)
 
@@ -90,11 +90,12 @@
 # 概念
 ## [Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)
 ## [Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)
-## [Azure Backup 資格情報コンテナーを削除する](backup-azure-delete-vault.md)
+## [Recovery Services コンテナーの削除](backup-azure-delete-vault.md)
 ## [ロールベースのアクセス制御](backup-rbac-rs-vault.md)
 ## [ハイブリッド バックアップのセキュリティ](backup-azure-security-feature.md)
 ## [Azure Backup レポートの構成](backup-azure-configure-reports.md)
 ## [Azure Backup レポートのデータ モデル](backup-azure-reports-data-model.md)
+## [Azure Backup の Log Analytics データ モデル](backup-azure-log-analytics-data-model.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
 ## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)

@@ -135,9 +135,7 @@
 #### [メトリックスの有効化と表示](storage-enable-and-view-metrics.md)
 #### [監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)
 #### [トラブルシューティングのチュートリアル](storage-e2e-troubleshooting.md)
-### ディスク削除エラーのトラブルシューティング
-#### [リソース マネージャー デプロイの場合](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
-#### [クラシック デプロイの場合](storage-cannot-delete-storage-account-container-vhd.md)
+### [ディスク削除エラーのトラブルシューティング](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)
 ### [File Storage のトラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 ## データの転送
 ### [Storage との間でデータを移動する](storage-moving-data.md)
@@ -208,7 +206,7 @@
 ### [トラブルシューティングのチュートリアル](storage-e2e-troubleshooting-classic-portal.md)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=storage)
 ## [Azure Storage クライアント ツール](storage-explorers.md)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [料金](https://azure.microsoft.com/pricing/details/storage/blobs/)
