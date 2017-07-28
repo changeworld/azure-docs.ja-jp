@@ -13,7 +13,12 @@
 
 # 作業の開始
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
-## [Spark の開始](hdinsight-apache-spark-jupyter-spark-sql.md)
+## Spark を開始する
+### [Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)
+### [Spark クラスターに対するクエリの実行](hdinsight-apache-spark-load-data-run-query.md)
+### [BI ツールを使用したデータの分析](hdinsight-apache-spark-use-bi-tools.md)
+### [クラスター リソースの管理](hdinsight-apache-spark-resource-manager.md)
+### [Spark ジョブのデバッグ](hdinsight-apache-spark-job-debugging.md)
 ## [R Server の開始](hdinsight-hadoop-r-server-get-started.md)
 ## [HBase & NoSQL の開始](hdinsight-hbase-tutorial-get-started-linux.md)
 ## [Storm の開始](hdinsight-apache-storm-tutorial-get-started-linux.md)
@@ -59,7 +64,6 @@
 ### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## メモリ内の処理への Spark の使用
 ### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [BI ツールを使用](hdinsight-apache-spark-use-bi-tools.md)
 ### [スタンドアロン アプリを作成する](hdinsight-apache-spark-create-standalone-application.md)
 ### [Eclipse を使用してアプリを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [IntelliJ を使用してアプリを作成する](hdinsight-apache-spark-intellij-tool-plugin.md)
@@ -76,8 +80,6 @@
 ### [ローカルの Jupyter Notebook を使用する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
 ### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md)
 ### [VPN を介して IntelliJ を使用してリモートでジョブをデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
-### [リソースの管理](hdinsight-apache-spark-resource-manager.md)
-### [ジョブを追跡してデバッグする](hdinsight-apache-spark-job-debugging.md)
 ### [既知の問題](hdinsight-apache-spark-known-issues.md)
 ## HBase の使用
 ### [Phoenix および SQLLine を使用する](hdinsight-hbase-phoenix-squirrel-linux.md)
@@ -234,7 +236,7 @@
 ### [Ambari API を使用してクラスターを監視する](hdinsight-monitor-use-ambari-api.md)
 
 # リソース
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=intelligence-analytics)
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [ビッグ データに関する Microsoft プロフェッショナル プログラム](https://academy.microsoft.com/en-us/professional-program/big-data/)
