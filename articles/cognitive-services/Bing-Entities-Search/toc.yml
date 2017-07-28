@@ -16,13 +16,10 @@
 - name: リファレンス
   items:
     - name: REST v7 プレビュー
-      href: >-
-        https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference
+      href: 'https://docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference'
 - name: リソース
   items:
     - name: Subscription key
-      href: >-
-        https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api
+      href: 'https://azure.microsoft.com/try/cognitive-services/?api=bing-entities-search-api'
     - name: 試してみる
-      href: >-
-        https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/
+      href: 'https://dev.cognitive.microsoft.com/docs/services/7a3fb374be374859a823b79fd938cc65/'
