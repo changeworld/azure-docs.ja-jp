@@ -22,7 +22,6 @@ ms.openlocfilehash: 678b2847f9bf39995fa214f181a05c96df9e49f2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/13/2017
 
-
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-azure-portal"></a>Azure Portal を使用した HDInsight の Linux ベースのクラスターの作成
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -37,6 +36,9 @@ Azure Portal は、Microsoft Azure クラウドでホストされるサービス
 
 ## <a name="create-clusters"></a>クラスターの作成
 Azure Portal には、ほとんどのクラスターのプロパティが公開されます。 Azure Resource Manager テンプレートを使用すると、多くの詳細を非表示にできます。 詳細については、「 [Azure Resource Manager テンプレートを使用した HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)」を参照してください。
+
+[!INCLUDE [secure-transfer-enabled-storage-account](../../includes/hdinsight-secure-transfer.md)]
+
 
 1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[+]** をクリックし、**[インテリジェンス + 分析]**、**[HDInsight]** の順にクリックします。

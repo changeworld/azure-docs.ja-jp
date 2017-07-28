@@ -23,7 +23,6 @@ ms.openlocfilehash: 134afd3495c555f85e8838cbe0344a3a48534950
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
 
-
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブ用データのアップロード
 Azure の HDInsight では、Azure BLOB ストレージ上でフル機能の Hadoop 分散ファイル システム (HDFS) を利用できます。 HDFS 拡張機能として、シームレスなエクスペリエンスを顧客に提供するように設計されています。 Hadoop エコシステムのすべてのコンポーネントを使用し、管理対象のデータを直接操作できます。 Azure BLOB ストレージと HDFS は、データの保管と計算処理のために最適化された別個のファイル システムです。 Azure BLOB ストレージを使用するメリットの詳細については、[HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事をご覧ください。
@@ -154,11 +153,11 @@ Hadoop コマンドを使用するためには、まず、次の方法のいず�
 
 HDInsight の既定のファイル システムは Azure BLOB ストレージにあるため、/example/data.txt は実際は Azure BLOB ストレージ上にあります。 このファイルは次のように表すこともできます。
 
-    wasbs:///example/data/data.txt
+    wasb:///example/data/data.txt
 
 または
 
-    wasbs://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
+    wasb://<ContainerName>@<StorageAccountName>.blob.core.windows.net/example/data/davinci.txt
 
 Hadoop のその他のファイル操作コマンドの一覧については、 [http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html](http://hadoop.apache.org/docs/r2.7.0/hadoop-project-dist/hadoop-common/FileSystemShell.html)
 
