@@ -1,10 +1,10 @@
 ---
 title: "Azure PowerShell を使用する Azure Data Lake Analytics の管理 | Microsoft Docs"
-description: "Data Lake Analytics のジョブ、データ ソース、ユーザーの管理方法について説明します。 "
+description: "Data Lake Analytics アカウント、データ ソース、ジョブ、カタログ項目を管理する方法について説明します。 "
 services: data-lake-analytics
 documentationcenter: 
-author: edmacauley
-manager: jhubbard
+author: saveenr
+manager: saveenr
 editor: cgronlun
 ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.service: data-lake-analytics
@@ -12,325 +12,464 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 12/05/2016
-ms.author: edmaca
+ms.date: 06/26/2017
+ms.author: mahi
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 4dd1ba30101d364fa52738a4e1c3e07874c5ed1f
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 86648ebc5e13570050bb142158bf1aa356d466b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ユーザー、およびジョブを管理する方法について説明します。 他のツールを使用する管理のトピックを表示する場合は、上のタブ セレクターをクリックします。
+Azure PowerShell を使用して、Azure Data Lake Analytics のアカウント、データ ソース、ジョブ、カタログ項目を管理する方法について説明します。 
 
-**前提条件**
+## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを読み始める前に、次の項目を用意する必要があります。
+Data Lake Analytics アカウントを作成するには、次の項目を把握している必要があります。
 
-* **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
-* **Azure PowerShell**。 「 [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)」の「前提条件」セクションを参照してください。
-
-## <a name="running-the-snippets"></a>スニペットの実行
+* **サブスクリプション ID**: Data Lake Analytics アカウントが存在する Azure サブスクリプション ID。
+* **リソース グループ**: Data Lake Analytics アカウントが含まれている Azure リソース グループの名前。
+* **Data Lake Analytics アカウント名**: アカウント名には小文字と数字のみを含める必要があります。
+* **既定の Data Lake Store アカウント**: 各 Data Lake Analytics アカウントには既定の Data Lake Store アカウントがあります。 これらのアカウントは同じ場所に存在する必要があります。
+* **場所**: Data Lake Analytics アカウントの場所。"米国東部 2" やサポートされているその他の場所です。 サポートされている場所は、[価格ページ](https://azure.microsoft.com/pricing/details/data-lake-analytics/)で確認できます。
 
 このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
 
-```
+```powershell
+$subId = "<SubscriptionId>"
 $rg = "<ResourceGroupName>"
-$adls = "<DataLakeAccountName>"
 $adla = "<DataLakeAnalyticsAccountName>"
-$location = "East US 2"
+$adls = "<DataLakeStoreAccountName>"
+$location = "<Location>"
 ```
 
-## <a name="manage-accounts"></a>アカウントの管理
+## <a name="log-in"></a>ログイン
+
+```powershell
+Login-AzureRmAccount -SubscriptionId $subId
+```
+
+> [!NOTE]
+> 今後の使用のためにログイン セッションを保存するには、``Save-AzureRmProfile`` を使用します。 もう一度ログイン セッションを読み込むには、``Select-AzureRmProfile`` を使用します。
+
+## <a name="managing-accounts"></a>アカウントの管理
 
 ### <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 
-```
+使用する[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)がまだ存在しない場合は、新たに作成します。 
+
+```powershell
 New-AzureRmResourceGroup -Name  $rg -Location $location
+```
+
+すべての Data Lake Analytics アカウントに、ログの保存を目的とした既定の Data Lake Store アカウントが必要です。 既存のアカウントを利用することも、アカウントを作成することもできます。 
+
+```powershell
 New-AdlStore -ResourceGroupName $rg -Name $adls -Location $location
+```
+
+リソース グループと Data Lake Store アカウントが用意できたら、Data Lake Analytics アカウントを作成します。
+
+```powershell
 New-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla -Location $location -DefaultDataLake $adls
 ```
 
-### <a name="create-a-data-lake-analytics-account-using-a-template"></a>テンプレートを使用して Data Lake Analytics アカウントを作成する
+### <a name="get-information-about-an-account"></a>アカウントに関する情報を取得する
 
-Azure リソース グループのテンプレートを使用することもできます。 Data Lake Analytics アカウントと従属する Data Lake Store アカウントを作成するためのテンプレートは、「[付録 A](#appendix-a)」にあります。.json テンプレートを使用してファイルにテンプレートを保存してから、以下の PowerShell スクリプトを使用してそれを呼び出します。
+アカウントの詳細を取得します。
 
-    $AzureSubscriptionID = "<Your Azure Subscription ID>"
+```powershell
+Get-AdlAnalyticsAccount -Name $adla
+```
 
-    $ResourceGroupName = "<New Azure Resource Group Name>"
-    $Location = "EAST US 2"
-    $DefaultDataLakeStoreAccountName = "<New Data Lake Store Account Name>"
-    $DataLakeAnalyticsAccountName = "<New Data Lake Analytics Account Name>"
+特定の Data Lake Analytics アカウントの存在を確認します。 コマンドレットは、`True` または `False` のどちらかを返します。
 
-    $DeploymentName = "MyDataLakeAnalyticsDeployment"
-    $ARMTemplateFile = "E:\Tutorials\ADL\ARMTemplate\azuredeploy.json"  # update the Json template path 
+```powershell
+Test-AdlAnalyticsAccount -Name $adla
+```
 
-    Login-AzureRmAccount
+### <a name="listing-accounts"></a>アカウントを一覧表示する
 
-    Select-AzureRmSubscription -SubscriptionId $AzureSubscriptionID
+現在のサブスクリプション内の Data Lake Analytics アカウントを一覧表示します。
 
-    # Create the resource group
-    New-AzureRmResourceGroup -Name $ResourceGroupName -Location $Location
+```powershell
+Get-AdlAnalyticsAccount
+```
 
-    # Create the Data Lake Analytics account with the default Data Lake Store account.
-    $parameters = @{"adlAnalyticsName"=$DataLakeAnalyticsAccountName; "adlStoreName"=$DefaultDataLakeStoreAccountName}
-    New-AzureRmResourceGroupDeployment -Name $DeploymentName -ResourceGroupName $ResourceGroupName -TemplateFile $ARMTemplateFile -TemplateParameterObject $parameters 
+特定のリソース グループ内の Data Lake Analytics アカウントを一覧表示します。
 
+```powershell
+Get-AdlAnalyticsAccount -ResourceGroupName $rg
+```
 
-### <a name="list-accounts"></a>アカウントの一覧表示
+## <a name="managing-firewall-rules"></a>ファイアウォール規則の管理
 
-現在のサブスクリプション内の Data Lake Analytics アカウントをリストします。
+### <a name="add-or-remove-firewall-rules"></a>ファイアウォール規則の追加または削除
 
-    Get-AzureRmDataLakeAnalyticsAccount
+ファイアウォール規則を一覧表示します。
 
-特定のリソース グループ内の Data Lake Analytics アカウントをリストします。
+```powershell
+Get-AdlAnalyticsFirewallRule -Account $adla
+```
 
-    Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName
+ファイアウォール規則を追加します。
 
-特定の Data Lake Analytics アカウントの詳細を取得します。
+```powershell
+$ruleName = "Allow access from on-prem server"
+$startIpAddress = "<start IP address>"
+$endIpAddress = "<end IP address>"
 
-    Get-AzureRmDataLakeAnalyticsAccount -Name $adlAnalyticsAccountName
+Add-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
 
-特定の Data Lake Analytics アカウントの存在をテストします。
+ファイアウォール規則を変更します。
 
-    Test-AzureRmDataLakeAnalyticsAccount -Name $adlAnalyticsAccountName
+```powershell
+Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $startIpAddress -EndIpAddress $endIpAddress
+```
 
-コマンドレットは、**True** または **False** を返します。
+ファイアウォール規則を削除します。
 
-### <a name="delete-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントの削除
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
+```powershell
+Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
+```
 
-    Remove-AzureRmDataLakeAnalyticsAccount -Name $dataLakeAnalyticsAccountName 
+### <a name="enable-or-disable-firewall-rules"></a>ファイアウォール規則の有効化または無効化
 
-Data Lake Analytics アカウントを削除しても、従属する Data Lake ストレージ アカウントは削除されません。 次の例では、Data Lake Analytics アカウントと既定の Data Lake Store アカウントを削除します。
+ファイアウォール規則を有効にします。
 
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    $dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticAccountName).Properties.DefaultDataLakeAccount
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
+```
 
-    Remove-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticAccountName 
-    Remove-AzureRmDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStoreName
+Azure の IP アドレスを許可します。
 
-<!-- ################################ -->
-<!-- ################################ -->
-## <a name="manage-account-data-sources"></a>アカウント データ ソースの管理
-Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
+```
+
+ファイアウォール規則を無効にします。
+
+```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
+```
+
+## <a name="managing-data-sources"></a>データ ソースの管理
+Azure Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
 * [Azure Storage](../storage/storage-introduction.md)
 
-Analytics アカウントを作成する際には、既定のストレージ アカウントとして Azure Data Lake ストレージ アカウントを指定する必要があります。 既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Analytics アカウントを作成したら、さらに Data Lake ストレージ アカウントや Azure Storage アカウントを追加することができます。 
+Analytics アカウントを作成する際には、既定のデータ ソースとして Data Lake Store アカウントを指定する必要があります。 既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Data Lake Analytics アカウントを作成した後で、Data Lake Store アカウントやストレージ アカウントを追加できます。 
 
 ### <a name="find-the-default-data-lake-store-account"></a>既定の Data Lake Store アカウントの検索
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    $dataLakeStoreName = (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticAccountName).Properties.DefaultDataLakeAccount
 
+```powershell
+$dataLakeStoreName = (Get-AdlAnalyticsAccount -Name $adla).DefaultDataLakeAccount
+```
 
-### <a name="add-additional-azure-blob-storage-accounts"></a>他の Azure BLOB ストレージ アカウントの追加
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    $AzureStorageAccountName = "<AzureStorageAccountName>"
-    $AzureStorageAccountKey = "<AzureStorageAccountKey>"
+### <a name="add-data-sources"></a>データ ソースの追加
 
-    Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -Account $dataLakeAnalyticAccountName -AzureBlob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
+追加のストレージ (BLOB) アカウントを追加します。
 
-### <a name="add-additional-data-lake-store-accounts"></a>他の Data Lake Store アカウントの追加
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    $AzureDataLakeName = "<DataLakeStoreName>"
+```powershell
+$AzureStorageAccountName = "<AzureStorageAccountName>"
+$AzureStorageAccountKey = "<AzureStorageAccountKey>"
 
-    Add-AzureRmDataLakeAnalyticsDataSource -ResourceGroupName $resourceGroupName -Account $dataLakeAnalyticAccountName -DataLake $AzureDataLakeName 
+Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
+```
 
-### <a name="list-data-sources"></a>データ ソースの一覧表示:
-    $resourceGroupName = "<ResourceGroupName>"
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
+追加の Data Lake Store アカウントを追加します。
 
-    (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticAccountName).Properties.DataLakeStoreAccounts
-    (Get-AzureRmDataLakeAnalyticsAccount -ResourceGroupName $resourceGroupName -Name $dataLakeAnalyticAccountName).Properties.StorageAccounts
+```powershell
+$AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
+Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
+```
 
+### <a name="list-data-sources"></a>データ ソースの一覧表示
 
+すべてのアタッチされたデータ ソースを一覧表示します。
 
-<!-- ################################ -->
-<!-- ################################ -->
-## <a name="manage-jobs"></a>ジョブの管理
-ジョブを作成するには、Data Lake Analytics アカウントが必要です。  詳細については、「 [Data Lake Analytics アカウントの管理](#manage-data-lake-analytics-accounts)」を参照してください。
+```powershell
+Get-AdlAnalyticsDataSource -Name $adla
+```
+
+アタッチされた Data Lake Store アカウントを一覧表示します。
+
+```powershell
+Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "DataLakeStore"
+```
+
+アタッチされたストレージ アカウントを一覧表示します。
+
+```powershell
+Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "Blob"
+```
+
+## <a name="managing-jobs"></a>ジョブの管理
+
+### <a name="submit-a-job"></a>ジョブの送信
+
+次の U-SQL スクリプトで、ローカルのテキスト ファイルを作成します。
+
+```
+@a  = 
+    SELECT * FROM 
+        (VALUES
+            ("Contoso", 1500.0),
+            ("Woodgrove", 2700.0)
+        ) AS D( customer, amount );
+OUTPUT @a
+    TO "/data.csv"
+    USING Outputters.Csv();
+```
+
+このスクリプトを送信します。
+
+```powershell
+Submit-AdlJob -AccountName $adla –ScriptPath "<LocalPathToScriptFile>"
+```
 
 ### <a name="list-jobs"></a>ジョブのリスト
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
 
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName
+アカウントに存在するすべてのジョブを一覧表示します。 出力結果には、現在実行されているジョブと最近完了したジョブが含まれます。
 
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName -State Running, Queued
-    #States: Accepted, Compiling, Ended, New, Paused, Queued, Running, Scheduling, Starting
+```powershell
+Get-AdlJob -Account $adla
+```
 
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName -Result Cancelled
-    #Results: Cancelled, Failed, None, Successed 
+過去 7 日以内に "joe@contoso.com" によって送信されたすべての失敗したジョブを一覧表示します。
 
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName -Name <Job Name>
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName -Submitter <Job submitter>
+```powershell
+Get-AdlJob -Account $adla `
+    -Submitter "joe@contoso.com" `
+    -SubmittedAfter (Get-Date).AddDays(-7) `
+    -Result Failed
+```
 
-    # List all jobs submitted on January 1 (local time)
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -SubmittedAfter "2015/01/01"
-        -SubmittedBefore "2015/01/02"    
+### <a name="get-information-about-a-job"></a>ジョブに関する情報の取得
 
-    # List all jobs that succeeded on January 1 after 2 pm (UTC time)
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -State Ended
-        -Result Succeeded
-        -SubmittedAfter "2015/01/01 2:00 PM -0"
-        -SubmittedBefore "2015/01/02 -0"
+特定のジョブの状態を取得します。
 
-    # List all jobs submitted in the past hour
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -SubmittedAfter (Get-Date).AddHours(-1)
+```powershell
+Get-AdlJob -AccountName $adla -JobId $job.JobId
+```
 
-### <a name="get-job-details"></a>ジョブの詳細の取得
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
-    Get-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName -JobID <Job ID>
+ジョブが完了するまで `Get-AdlAnalyticsJob` を繰り返す替わりに、`Wait-AdlJob` コマンドレットを使用してジョブの終了を待機できます。
 
-### <a name="submit-jobs"></a>ジョブの送信
-    $dataLakeAnalyticsAccountName = "<DataLakeAnalyticsAccountName>"
+```powershell
+Wait-AdlJob -Account $adla -JobId $job.JobId
+```
 
-    #Pass script via path
-    Submit-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -Name $jobName `
-        -ScriptPath $scriptPath
+ジョブの終了後、フォルダー内のファイルを一覧表示して、出力ファイルが存在するかどうかを確認します。
 
-    #Pass script contents
-    Submit-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -Name $jobName `
-        -Script $scriptContents
+```powershell
+Get-AdlStoreChildItem -Account $adls -Path "/"
+```
+
+ファイルの存在を確認します。
+
+```powershell
+Test-AdlStoreItem -Account $adls -Path "/data.csv"
+```
+
+### <a name="cancel-a-job"></a>ジョブを取り消す
+
+```powershell
+Stop-AdlJob -Account $adls -JobID $jobID
+```
+
+## <a name="uploading-and-downloading"></a>アップロードとダウンロード
+
+ファイルをアップロードします。
+
+```powershell
+Import-AdlStoreItem -AccountName $adls `
+    -Path "<LocalPath>\data.tsv" `
+    -Destination "/data_copy.csv" 
+```
+
+フォルダー全体をアップロードします。
+
+```powershell
+Import-AdlStoreItem -AccountName $adls `
+    -Path "<LocalPath>\myData\" `
+    -Destination "/myData/" `
+    -Recurse
+```
+
+ファイルをダウンロードします。
+
+```powershell
+Export-AdlStoreItem -AccountName $adls `
+    -Path "/data.csv" `
+    -Destination "<LocalPath>\data.csv"
+```
+
+フォルダー全体をダウンロードします。
+
+```powershell
+Export-AdlStoreItem -AccountName $adls `
+    -Path "/" `
+    -Destination "<LocalPath>\myData\" `
+    -Recurse
+```
 
 > [!NOTE]
-> ジョブの既定の優先度は 1000 で、ジョブの並列処理の既定の次数は 1 です。
-> 
-> 
-
-### <a name="cancel-jobs"></a>ジョブの取り消し
-    Stop-AzureRmDataLakeAnalyticsJob -Account $dataLakeAnalyticAccountName `
-        -JobID $jobID
-
+> アップロードまたはダウンロードのプロセスが中断された場合は、``-Resume`` フラグでコマンドレットを再度実行して、プロセスの再開を試みることができます。
 
 ## <a name="manage-catalog-items"></a>カタログ項目の管理
 U-SQL カタログを使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。 カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。 詳細については、「 [U-SQL カタログの使用](data-lake-analytics-use-u-sql-catalog.md)」を参照してください。
 
-### <a name="list-catalog-items"></a>カタログ項目のリスト
-    #List databases
-    Get-AzureRmDataLakeAnalyticsCatalogItem `
-        -Account $adlAnalyticsAccountName `
-        -ItemType Database
+### <a name="list-items"></a>項目の一覧表示
 
+U-SQL データベースを一覧表示します。
 
+```powershell
+Get-AdlCatalogItem -Account $adla -ItemType Database 
+```
 
-    #List tables
-    Get-AzureRmDataLakeAnalyticsCatalogItem `
-        -Account $adlAnalyticsAccountName `
-        -ItemType Table `
-        -Path "master.dbo"
+データベース内のテーブルを一覧表示します。
 
-### <a name="get-catalog-item-details"></a>カタログ項目の詳細の取得
-    #Get a database
-    Get-AzureRmDataLakeAnalyticsCatalogItem `
-        -Account $adlAnalyticsAccountName `
-        -ItemType Database `
-        -Path "master"
+```powershell
+Get-AdlCatalogItem -Account $adla -ItemType Table -Path "master"
+```
 
-    #Get a table
-    Get-AzureRmDataLakeAnalyticsCatalogItem `
-        -Account $adlAnalyticsAccountName `
-        -ItemType Table `
-        -Path "master.dbo.mytable"
+スキーマ内のテーブルを一覧表示します。
 
-### <a name="test-existence-of--catalog-item"></a>カタログ項目の存在のテスト
-    Test-AzureRmDataLakeAnalyticsCatalogItem  `
-        -Account $adlAnalyticsAccountName `
-        -ItemType Database `
-        -Path "master"
+```powershell
+Get-AdlCatalogItem -Account $adla -ItemType Table -Path "master.dbo"
+```
 
-## <a name="use-azure-resource-manager-groups"></a>Azure リソース マネージャー グループの使用
-アプリケーションは通常、Web アプリケーション、データベース、データベース サーバー、ストレージ、サード パーティのサービスなどの、複数のコンポーネントで構成されます。 Azure リソース マネージャー (ARM) を使用すると、アプリケーション内の複数のリソースを 1 つのグループ (Azure リソース グループと呼ばれます) と見なして作業できます。 アプリケーションのこれらすべてのリソースを、1 回の連携した操作でデプロイ、更新、監視、または削除できます。 デプロイメントにはテンプレートを使用しますが、このテンプレートは、テスト、ステージング、運用環境などのさまざまな環境に使用できます。 グループ全体のロールアップ コストを表示すると、組織の課金ついて明確に把握できます。 詳細については、「 [Azure リソース マネージャーの概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
+### <a name="get-information-about-a-catalog-item"></a>カタログ項目に関する情報の取得
 
-Data Lake Analtyics サービスには、次のコンポーネントを含めることができます。
+U-SQL データベースの詳細を取得します。
 
-* Azure Data Lake Analytics アカウント
-* 必要な既定の Azure Data Lake Storage アカウント
-* 追加の Azure Data Lake Storage アカウント
-* 追加の Azure Storage アカウント
+```powershell
+Get-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
+```
 
-管理しやすくするために 1 つの ARM グループの下にこれらすべてのコンポーネントを作成することができます。
+U-SQL データベース内のテーブルの詳細を取得します。
 
-![Azure Data Lake Analytics のアカウントとストレージ](./media/data-lake-analytics-manage-use-portal/data-lake-analytics-arm-structure.png)
+```powershell
+Get-AdlCatalogItem  -Account $adla -ItemType Table -Path "master.dbo.mytable"
+```
 
-Data Lake Analytics アカウントと従属するストレージ アカウントは同じ Azure データ センターに配置する必要があります。
-ただし、ARM グループは別のデータ センターに配置できます。  
+U-SQL データベースの存在をテストします。
 
-## <a name="see-also"></a>関連項目
-* [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
-* [Azure ポータルで Azure Data Lake Analytics の使用を開始する](data-lake-analytics-get-started-portal.md)
-* [Azure ポータルを使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)
-* [Azure ポータルを使用する Azure Data Lake Analytics ジョブの監視とトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+```powershell
+Test-AdlCatalogItem  -Account $adla -ItemType Database -Path "master"
+```
 
-## <a name="appendix-a---data-lake-analytics-arm-template"></a>付録 A - Data Lake Analytics ARM テンプレート
-以下の ARM テンプレートを使用して、Data Lake Analytics アカウントとそれに従属する Data Lake Store アカウントをデプロイすることができます。  それを json ファイルとして保存してから、PowerShell スクリプトを使用してテンプレートを呼び出します。 詳細については、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事および「[Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md)」(Azure Resource Manager テンプレートの作成) を参照してください。
+### <a name="create-catalog-items"></a>カタログ項目の作成
 
-    {
-      "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-      "contentVersion": "1.0.0.0",
-      "parameters": {
-        "adlAnalyticsName": {
-          "type": "string",
-          "metadata": {
-            "description": "The name of the Data Lake Analytics account to create."
-          }
-        },
-        "adlStoreName": {
-          "type": "string",
-          "metadata": {
-            "description": "The name of the Data Lake Store account to create."
-          }
-        }
-      },
-      "resources": [
-        {
-          "name": "[parameters('adlStoreName')]",
-          "type": "Microsoft.DataLakeStore/accounts",
-          "location": "East US 2",
-          "apiVersion": "2015-10-01-preview",
-          "dependsOn": [ ],
-          "tags": { }
-        },
-        {
-          "name": "[parameters('adlAnalyticsName')]",
-          "type": "Microsoft.DataLakeAnalytics/accounts",
-          "location": "East US 2",
-          "apiVersion": "2015-10-01-preview",
-          "dependsOn": [ "[concat('Microsoft.DataLakeStore/accounts/',parameters('adlStoreName'))]" ],
-          "tags": { },
-          "properties": {
-            "defaultDataLakeStoreAccount": "[parameters('adlStoreName')]",
-            "dataLakeStoreAccounts": [
-              { "name": "[parameters('adlStoreName')]" }
-            ]
-          }
-        }
-      ],
-      "outputs": {
-        "adlAnalyticsAccount": {
-          "type": "object",
-          "value": "[reference(resourceId('Microsoft.DataLakeAnalytics/accounts',parameters('adlAnalyticsName')))]"
-        },
-        "adlStoreAccount": {
-          "type": "object",
-          "value": "[reference(resourceId('Microsoft.DataLakeStore/accounts',parameters('adlStoreName')))]"
-        }
+U-SQL データベース内で、Azure でホストされているデータベースの資格情報オブジェクトを作成します。 現時点で U-SQL 資格情報は、PowerShell を使用して作成できるカタログ項目の唯一の種類です。
+
+```powershell
+$dbName = "master"
+$credentialName = "ContosoDbCreds"
+$dbUri = "https://contoso.database.windows.net:8080"
+
+New-AdlCatalogCredential -AccountName $adla `
+          -DatabaseName $db `
+          -CredentialName $credentialName `
+          -Credential (Get-Credential) `
+          -Uri $dbUri
+```
+
+## <a name="create-a-data-lake-analytics-account-using-a-template"></a>テンプレートを使用して Data Lake Analytics アカウントを作成する
+
+次の PowerShell スクリプトを使用して Azure Resource Group テンプレートを使用することもできます。
+
+```powershell
+$subId = "<Your Azure Subscription ID>"
+
+$rg = "<New Azure Resource Group Name>"
+$location = "<Location (such as East US 2)>"
+$adls = "<New Data Lake Store Account Name>"
+$adla = "<New Data Lake Analytics Account Name>"
+
+$deploymentName = "MyDataLakeAnalyticsDeployment"
+$armTemplateFile = "<LocalFolderPath>\azuredeploy.json"  # update the JSON template path 
+
+# Log in to Azure
+Login-AzureRmAccount -SubscriptionId $subId
+
+# Create the resource group
+New-AzureRmResourceGroup -Name $rg -Location $location
+
+# Create the Data Lake Analytics account with the default Data Lake Store account.
+$parameters = @{"adlAnalyticsName"=$adla; "adlStoreName"=$adls}
+New-AzureRmResourceGroupDeployment -Name $deploymentName -ResourceGroupName $rg -TemplateFile $armTemplateFile -TemplateParameterObject $parameters 
+```
+
+詳細については、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](../azure-resource-manager/resource-group-template-deploy.md)に関する記事および「[Authoring Azure Resource Manager templates](../azure-resource-manager/resource-group-authoring-templates.md)」(Azure Resource Manager テンプレートの作成) を参照してください。
+
+**テンプレートの例**
+
+以下のテキストを `.json` ファイルとして保存し、前述の PowerShell スクリプトを使用してテンプレートを使用します。 
+
+```json
+{
+  "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "adlAnalyticsName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Data Lake Analytics account to create."
+      }
+    },
+    "adlStoreName": {
+      "type": "string",
+      "metadata": {
+        "description": "The name of the Data Lake Store account to create."
       }
     }
+  },
+  "resources": [
+    {
+      "name": "[parameters('adlStoreName')]",
+      "type": "Microsoft.DataLakeStore/accounts",
+      "location": "East US 2",
+      "apiVersion": "2015-10-01-preview",
+      "dependsOn": [ ],
+      "tags": { }
+    },
+    {
+      "name": "[parameters('adlAnalyticsName')]",
+      "type": "Microsoft.DataLakeAnalytics/accounts",
+      "location": "East US 2",
+      "apiVersion": "2015-10-01-preview",
+      "dependsOn": [ "[concat('Microsoft.DataLakeStore/accounts/',parameters('adlStoreName'))]" ],
+      "tags": { },
+      "properties": {
+        "defaultDataLakeStoreAccount": "[parameters('adlStoreName')]",
+        "dataLakeStoreAccounts": [
+          { "name": "[parameters('adlStoreName')]" }
+        ]
+      }
+    }
+  ],
+  "outputs": {
+    "adlAnalyticsAccount": {
+      "type": "object",
+      "value": "[reference(resourceId('Microsoft.DataLakeAnalytics/accounts',parameters('adlAnalyticsName')))]"
+    },
+    "adlStoreAccount": {
+      "type": "object",
+      "value": "[reference(resourceId('Microsoft.DataLakeStore/accounts',parameters('adlStoreName')))]"
+    }
+  }
+}
+```
 
+## <a name="next-steps"></a>次のステップ
+* [Microsoft Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)
+* [Azure Portal](data-lake-analytics-get-started-portal.md) | [Azure PowerShell](data-lake-analytics-get-started-powershell.md) | [CLI 2.0](data-lake-analytics-get-started-cli2.md) で Data Lake Analytics の使用を開始する
+* [Azure Portal](data-lake-analytics-manage-use-portal.md) | [Azure PowerShell](data-lake-analytics-manage-use-powershell.md) |  [Azure Portal](data-lake-analytics-manage-use-portal.md) | [CLI](data-lake-analytics-manage-use-cli.md) で Azure Data Lake Analytics を管理する 
 

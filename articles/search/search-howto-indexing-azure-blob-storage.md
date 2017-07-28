@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 04/15/2017
 ms.author: eugenesh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: faa6d403aa130738ae0b58ba1ffc828a1e37e9f4
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 509682297a3db090caa73bd9438f6434257d558f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 06/28/2017
 
 ---
 
@@ -34,7 +34,8 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 * XML
 * ZIP
 * EML
-* プレーン テキスト ファイル (.txt)  
+* RTF
+* プレーン テキスト ファイル (.txt)
 * JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)のプレビュー機能を参照)
 * CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
 
@@ -46,7 +47,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 ## <a name="setting-up-blob-indexing"></a>BLOB インデックスの設定
 Azure Blob Storage インデクサーを設定するには、以下を使用します。
 
-* [Azure ポータル](https://ms.portal.azure.com)
+* [Azure Portal](https://ms.portal.azure.com)
 * Azure Search [REST API](https://docs.microsoft.com/rest/api/searchservice/Indexer-operations)
 * Azure Search [.NET SDK](https://aka.ms/search-sdk)
 
@@ -141,7 +142,7 @@ Shared Access Signature について詳しくは、「[Shared Access Signature �
 
 > [!NOTE]
 > 既定では、JSON や CSV などの構造化コンテンツを持つ BLOB には、1 つのテキスト チャンクとしてインデックスが作成されます。 構造化された方法で JSON および CSV の BLOB のインデックスを作成する場合は、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)と [CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照してください。
-> 
+>
 > 複合ドキュメントや埋め込みドキュメント (ファイルが添付された Outlook 電子メールを埋め込んだ Word 文書、ZIP アーカイブなど) も、1 つのドキュメントとしてインデックスが作成されます。
 
 * ドキュメントのテキスト コンテンツが、`content` という名前の文字列フィールドに抽出されます。
@@ -366,7 +367,9 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 | XML (application/xml) |`metadata_content_type`</br>`metadata_content_encoding`</br> |XML マークアップを削除し、テキストを抽出します。 |
 | JSON (application/json) |`metadata_content_type`</br>`metadata_content_encoding` |テキストを抽出します<br/>注: JSON BLOB から複数のドキュメント フィールドを抽出する必要がある場合、詳細については、[JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事をご覧ください |
 | EML (message/rfc822) |`metadata_content_type`<br/>`metadata_message_from`<br/>`metadata_message_to`<br/>`metadata_message_cc`<br/>`metadata_creation_date`<br/>`metadata_subject` |テキストを抽出します。添付ファイルも対象となります。 |
-| プレーン テキスト (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | |
+| RTF (アプリケーション/rtf) |`metadata_content_type`</br>`metadata_author`</br>`metadata_character_count`</br>`metadata_creation_date`</br>`metadata_page_count`</br>`metadata_word_count`</br> | テキストを抽出します|
+| プレーン テキスト (text/plain) |`metadata_content_type`</br>`metadata_content_encoding`</br> | テキストを抽出します|
+
 
 ## <a name="help-us-make-azure-search-better"></a>Azure Search の品質向上にご協力ください
 ご希望の機能や品質向上のアイデアがありましたら、[UserVoice サイト](https://feedback.azure.com/forums/263029-azure-search/)までお寄せください。

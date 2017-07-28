@@ -16,111 +16,144 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: a8a3716f8d03b596285026426c7514b7b642cb25
-ms.lasthandoff: 03/31/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: a394f7ec3f7985b97eec2eb649a8a310a31ac657
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 
 ---
 # <a name="use-acr-with-a-dcos-cluster-to-deploy-your-application"></a>DC/OS クラスターで ACR を使用してアプリケーションをデプロイする
 
-この記事では、DC/OS クラスターで ACR (Azure Container Registry) などのプライベート コンテナーを使用する方法について説明します。 ACR を使用すると、イメージをプライベートに保存し、バージョンや更新プログラムなどについて管理することができます。
+この記事では、DC/OS クラスターで Azure Container Registry を使う方法について説明します。 ACR を使うと、コンテナー イメージをプライベートに保存して管理することができます。 このチュートリアルに含まれるタスクは次のとおりです。
 
-このチュートリアルを進める前に、次を行う必要があります。 
-* Azure Container Service 内での DC/OS クラスターの構成。 [Azure Container Service クラスターのデプロイ](container-service-deployment.md)に関するページをご覧ください。
-* Azure Container Service のデプロイ。 「[Azure Portal を使用したプライベート Docker コンテナー レジストリの作成](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-portal)」または「[Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli)」を参照してください。
-* DC/OS クラスター内でのファイル共有の構成。 「[ファイル共有を作成し、DC/OS クラスターにマウントする](container-service-dcos-fileshare.md)」を参照してください。
-* [Web UI](container-service-mesos-marathon-ui.md) または [REST API](container-service-mesos-marathon-rest.md) を使用して DC/OS クラスターに Docker イメージをデプロイする方法の確認
+> [!div class="checklist"]
+> * Azure Container Registry をデプロイする (必要な場合)
+> * DC/OS クラスターで ACR 認証を構成する
+> * Azure Container Registry にイメージをアップロードする
+> * Azure Container Registry からコンテナー イメージを実行する
 
-## <a name="manage-the-authentication-inside-your-cluster"></a>クラスター内の認証を管理する
+このチュートリアルの手順を実行するには、ACS DC/OS クラスターが必要です。 必要に応じて、[このサンプル スクリプト](./scripts/container-service-cli-deploy-dcos.md)で仮想マシンを作成できます。
 
-従来の方法でプライベート レジストリからイメージをプッシュおよびプルするには、まずレジストリに対して認証を行います。 これを行うには、プライベート レジストリを使用する必要のある Docker クライアント プロセスに対して、`docker login` コマンドを実行する必要があります。
-ここでは DC/OS を使用していますが、実稼働環境の場合は任意のノードからイメージをプルできるようにする必要があります。 ご想像のとおり、クラスターのサイズによっては各マシンに対しこのコマンド ラインを実行するのは非常に大がかりな作業となるため、こうした作業を行わずに済むように認証プロセスの自動化が必要になります。 
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-[DC/OS 内でのファイル共有の設定](container-service-dcos-fileshare.md)を完了しているものとして、次の手順でこのファイル共有を使用します。
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-### <a name="from-any-client-machine-recommended-method"></a>任意のクライアントマシンから管理する (推奨)
+## <a name="deploy-azure-container-registry"></a>Azure Container Registry をデプロイする
 
-以下のコマンドは、すべての環境 (Windows/Mac/Linux) で実行可能です。
+必要な場合は、[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 
 
-1. 次の前提条件を満たしていることを確認します。
-  * TAR ツール
-    * [Windows](http://gnuwin32.sourceforge.net/packages/gtar.htm)
-  * Docker 
-    * [Windows](https://www.docker.com/docker-windows)
-    * [Mac](https://www.docker.com/docker-mac)
-    * [Ubuntu](https://www.docker.com/docker-ubuntu)
-    * [その他](https://www.docker.com/get-docker)
-  * [こちらの方法](container-service-dcos-fileshare.md)に従ってクラスター内にファイル共有をマウントする
+次の例では、ランダムに生成される名前でレジストリを作成します。 `--admin-enabled` 引数を使って管理者アカウントでレジストリを構成することもできます。
 
-2. お使いのターミナルで `sudo docker login --username=<USERNAME> --password=<PASSWORD> <ACR-REGISTRY-NAME>.azurecr.io` コマンドを実行して、ACR サービスへの認証を開始します。 `USERNAME`、`PASSWORD`、`ACR-REGISTRY-NAME` の各変数は Azure Portal で表示される値に置き換えてください。
+```azurecli-interactive
+az acr create --resource-group myResourceGroup --name myContainerRegistry$RANDOM --sku Basic --admin-enabled true
+```
 
-3. `docker login` 操作を実行すると、これらの値がローカルのホーム フォルダーに格納されます (Mac と Linux では `cd ~/.docker`、Windows では `cd %HOMEPATH%`)。 `tar czf` コマンドを使用してこのフォルダーの中身を圧縮します。
+レジストリを作成すると、Azure CLI では次のようなデータが出力されるようになります。 後の手順で使うので、`name` と `loginServer` を書き留めておいてください。
 
-4. 最後に、先ほど作成した tar ファイルを、[前提条件として作成済みの](container-service-dcos-fileshare.md)ファイル共有内にコピーします。 これは、Azure-CLI の `az storage file upload -s <shareName> --account-name <storageAccountName> --account-key <storageAccountKey> -source <pathToTheTarFile>` コマンドを使用して行います。
+```azurecli
+{
+  "adminUserEnabled": false,
+  "creationDate": "2017-06-06T03:40:56.511597+00:00",
+  "id": "/subscriptions/f2799821-a08a-434e-9128-454ec4348b10/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry23489",
+  "location": "eastus",
+  "loginServer": "mycontainerregistry23489.azurecr.io",
+  "name": "myContainerRegistry23489",
+  "provisioningState": "Succeeded",
+  "sku": {
+    "name": "Basic",
+    "tier": "Basic"
+  },
+  "storageAccount": {
+    "name": "mycontainerregistr034017"
+  },
+  "tags": {},
+  "type": "Microsoft.ContainerRegistry/registries"
+}
+```
 
-まとめとして、次の設定を使用したサンプルを以下に示します (Windows 環境を使用)。
-* ACR 名: **`demodcos`**
-* ユーザー名: **`demodcos`**
-* パスワード: **`+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0`**
-* ストレージ アカウント名: **`anystorageaccountname`**
-* ストレージ アカウント キー: **`aYGl6Nys4De5J3VPldT1rXxz2+VjgO7dgWytnoWClurZ/l8iO5c5N8xXNS6mpJhSc9xh+7zkT7Mr+xIT4OIVMg==`**
-* ストレージ アカウント内で作成した共有名: **`share`**
-* アップロードする tar アーカイブのパス: **`%HOMEPATH%/.docker/docker.tar.gz`**
+[az acr credential show](/cli/azure/acr/credential) コマンドを使って、コンテナー レジストリの資格情報を取得します。 `--name` は前の手順で書き留めたものに置き換えます。 後の手順で必要になるので、パスワードの 1 つを書き留めておきます。
 
-```bash
-# Changing directory to the home folder of the default user
-cd %HOMEPATH%
+```azurecli-interactive
+az acr credential show --name myContainerRegistry23489
+```
 
-# Authentication into my ACR
-docker login --username=demodcos --password=+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0 demodcos.azurecr.io
+Azure Container Registry について詳しくは、「[プライベート Docker コンテナー レジストリの概要](../container-registry/container-registry-intro.md)」をご覧ください。 
 
-# Tar the contains of the .docker folder
+## <a name="manage-acr-authentication"></a>ACR 認証を管理する
+
+従来の方法でプライベート レジストリからイメージをプッシュおよびプルするには、まずレジストリに対して認証を行います。 そのためには、プライベート レジストリにアクセスする必要がある任意のクライアントで、`docker login` コマンドを使います。 DC/OS クラスターは複数のノードを含むことができ、すべてのノードで ACR の認証を行う必要があります。各ノードでこのプロセスを自動化しておくと便利です。 
+
+### <a name="create-shared-storage"></a>共有記憶域を作成する
+
+このプロセスでは、クラスターの各ノードでマウントされている Azure ファイル共有を使います。 共有記憶域をまだ設定していない場合は、「[ファイル共有を作成し、DC/OS クラスターにマウントする](container-service-dcos-fileshare.md)」をご覧ください。
+
+### <a name="configure-acr-authentication"></a>ACR 認証を構成する
+
+最初に、DC/OS マスターの FQDN を取得し、それを変数に格納します。
+
+```azurecli-interactive
+FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
+```
+
+DC/OS に基づくクラスターのマスター (または最初のマスター) との SSH 接続を作成します。 クラスターの作成時に既定以外の値が使用されている場合は、ユーザー名を更新します。
+
+```azurecli-interactive
+ssh azureuser@$FQDN
+```
+
+次のコマンドを実行して、Azure Container Registry にログインします。 `--username` はコンテナー レジストリの名前に置き換え、`--password` は提供されたパスワードの 1 つに置き換えます。 この例の最後の引数 *mycontainerregistry.azurecr.io* は、コンテナー レジストリの loginServer 名に置き換えます。 
+
+このコマンドは、認証値を `~/.docker` パスの下にローカルに格納します。
+
+```azurecli-interactive
+docker -H tcp://localhost:2375 login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry.azurecr.io
+```
+
+コンテナー レジストリの認証値を含む圧縮ファイルを作成します。
+
+```azurecli-interactive
 tar czf docker.tar.gz .docker
-
-# Upload the tar archive in the fileshare
-az storage file upload -s share --account-name anystorageaccountname --account-key aYGl6Nys4De5J3VPldT1rXxz2+VjgO7dgWytnoWClurZ/l8iO5c5N8xXNS6mpJhSc9xh+7zkT7Mr+xIT4OIVMg== --source %HOMEPATH%/docker.tar.gz
 ```
 
-### <a name="from-the-master-not-recommended-method"></a>マスターから管理する (非推奨)
+このファイルを、クラスターの共有記憶域にコピーします。 これにより、DC/OS クラスターのすべてのノードでファイルを使うことができるようになります。
 
-ミスの影響が環境全体に影響が及ばないようにするために、マスターからは操作を実行しないことをお勧めします。
-
-1. まず、DC/OS に基づくクラスターのマスター (または最初のマスター) に SSH 接続します。 たとえば、`ssh userName@masterFQDN –A –p 22` を使用します。ここで、masterFQDN は、マスター VM の完全修飾ドメイン名です。 [詳細についてはこちらを参照してください](https://docs.microsoft.com/azure/container-service/container-service-connect#connect-to-a-dcos-or-swarm-cluster)。
-
-2. `sudo docker login --username=<USERNAME> --password=<PASSWORD> <ACR-REGISTRY-NAME>.azurecr.io` コマンドを実行して、ACR サービスへの認証を開始します。 `USERNAME`、`PASSWORD`、`ACR-REGISTRY-NAME` の各変数は Azure Portal で表示される値に置き換えてください。
-
-3. `docker login` 操作を実行すると、これらの値がローカルのホーム フォルダー `~/.docker` に格納されます。 `tar czf` コマンドを使用してこのフォルダーの中身を圧縮します。
-
-4. 最後に、先ほど作成した tar ファイルをファイル共有内にコピーします。 この操作により、クラスター内にある仮想マシンすべてでこの資格情報を使用し、Azure Container Registry に対する認証を行うことができるようになります。
-
-まとめとして、次の設定を使用したサンプルを以下に示します。
-* ACR 名: **`demodcos`**
-* ユーザー名: **`demodcos`**
-* パスワード: **`+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0`**
-* クラスター内のマウント ポイント: **`/mnt/share`**
-
-```bash
-# Changing directory to the home folder of the default user
-cd ~
-
-# Authentication into my ACR
-sudo docker login --username=demodcos --password=+js+/=I1=L+D=+eRpU+/=wI/AjvDo=J0 demodcos.azurecr.io
-
-# Tar the contains of the .docker folder
-sudo tar czf docker.tar.gz .docker
-
-# Copy of the tar file in the file share of my cluster
-sudo cp docker.tar.gz /mnt/share
+```azurecli-interactive
+cp docker.tar.gz /mnt/share/dcosshare
 ```
 
+## <a name="upload-image-to-acr"></a>ACR にイメージをアップロードする
 
-## <a name="deploy-an-image-from-acr-with-marathon"></a>Marathon を使用して ACR からイメージをデプロイする
+開発用コンピューターまたは Docker がインストールされている他のシステムで、イメージを作成し、Azure Container Registry にそれをアップロードします。
 
-コンテナー レジストリ内にデプロイするイメージをプッシュ済みであると想定しています。 「[Docker CLI を使用してプライベート Docker コンテナー レジストリに最初のイメージをプッシュする](https://docs.microsoft.com/azure/container-registry/container-registry-get-started-docker-cli)」を参照してください。
+Ubuntu イメージからコンテナーを作成します。
 
-たとえば、タグが **2.1** の **simple-web** イメージを Azure (ACR) でホストされているプライベート レジストリからデプロイするには、次の構成を使用します。
+```azurecli-interactive
+docker run ubunut --name base-image
+```
+
+コンテナーを新しいイメージにキャプチャします。 イメージ名には、コンテナー レジストリの `loginServer` 名が `loginServer/imageName` の形式で含まれる必要があります。
+
+```azurecli-interactive
+docker -H tcp://localhost:2375 commit base-image mycontainerregistry30678.azurecr.io/dcos-demo
+````
+
+Azure Container Registry にログインします。 名前は loginServer 名に、--username はコンテナー レジストリの名前に、--password は提供されたパスワードの 1 つに、それぞれ置き換えます。
+
+```azurecli-interactive
+docker login --username=myContainerRegistry23489 --password=//=ls++q/m+w+pQDb/xCi0OhD=2c/hST mycontainerregistry2675.azurecr.io
+```
+
+最後に、ACR レジストリにイメージをアップロードします。 この例では、dcos-demo という名前のイメージをアップロードします。
+
+```azurecli-interactive
+docker push mycontainerregistry30678.azurecr.io/dcos-demo
+```
+
+## <a name="run-an-image-from-acr"></a>ACR からイメージを実行する
+
+ACR レジストリからイメージを使うには、*acrDemo.json* という名前のファイルを作成し、次のテキストをそれにコピーします。 イメージ名は、コンテナー レジストリの loginServer 名とイメージ名に置き換えます (例: `loginServer/imageName`)。 `uris` プロパティを書き留めておきます。 このプロパティは、コンテナー レジストリ認証ファイルの場所を保持しています。この例では、DC/OS クラスターの各ノードでマウントされている Azure ファイル共有です。
 
 ```json
 {
@@ -128,10 +161,16 @@ sudo cp docker.tar.gz /mnt/share
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "demodcos.azurecr.io/simple-web:2.1",
+      "image": "mycontainerregistry30678.azurecr.io/dcos-demo",
       "network": "BRIDGE",
       "portMappings": [
-        { "hostPort": 0, "containerPort": 80, "servicePort": 10000 }
+        {
+          "containerPort": 80,
+          "hostPort": 80,
+          "protocol": "tcp",
+          "name": "80",
+          "labels": null
+        }
       ],
       "forcePullImage":true
     }
@@ -148,21 +187,25 @@ sudo cp docker.tar.gz /mnt/share
       "intervalSeconds": 2,
       "maxConsecutiveFailures": 10
   }],
-  "labels":{
-    "HAPROXY_GROUP":"external",
-    "HAPROXY_0_VHOST":"YOUR FQDN",
-    "HAPROXY_0_MODE":"http"
-  },
   "uris":  [
-       "file:///mnt/share/docker.tar.gz"
+       "file:///mnt/share/dcosshare/docker.tar.gz"
    ]
 }
 ```
 
-> [!NOTE] 
-> ご覧のとおり、**uris** オプションを使用して資格情報の保存場所を指定しています。
->
+DC/OC CLI を使ってアプリケーションをデプロイします。
+
+```azurecli-interactive
+dcos marathon app add acrDemo.json
+```
 
 ## <a name="next-steps"></a>次のステップ
-* [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)で詳細を確認します。
-* [Marathon REST API](container-service-mesos-marathon-rest.md) を使用して DC/OS コンテナーを管理します。
+
+このチュートリアルでは、Azure Container Registry を使うように DC/OS を構成し、次のタスクが含まれました。
+
+> [!div class="checklist"]
+> * Azure Container Registry をデプロイする (必要な場合)
+> * DC/OS クラスターで ACR 認証を構成する
+> * Azure Container Registry にイメージをアップロードする
+> * Azure Container Registry からコンテナー イメージを実行する
+
