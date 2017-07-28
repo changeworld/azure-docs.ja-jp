@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 35a86a91ee60a81b5c743067fcd97da0f2dcc8f1
-ms.lasthandoff: 04/27/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: e9c1868f978616eb71410171faed6d5a60030258
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -213,14 +214,23 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
   * Azure CLI をインストールして、Azure サブスクリプションに関連付ける場合は、[Azure CLI のインストールおよび構成方法](../cli-install-nodejs.md)に関するページを参照してください。
   * Mac、Linux、および Windows 用の Azure CLI を Azure Resource Manager で使用する場合は、「[Resource Manager モードでの Azure CLI コマンド](../virtual-machines/azure-cli-arm-commands.md)」をご覧ください。
 
-* Azure ディスク暗号化 PS コマンドレット Set-AzureRmVMDiskEncryptionExtension または CLI コマンドを使用して Azure Managed Disk VM で暗号化を有効にするには、-skipVmBackup パラメーターを使用する必要があります。
+* 管理ディスクを暗号化する場合、暗号化を有効にする前に、Azure Disk Encryption 以外を使用して管理ディスクのスナップショットまたはバックアップを作成することが必須の前提条件です。  バックアップがない場合、暗号化中に予期しないエラーが発生すると、回復オプションがない状態でアクセスできないディスクと VM がレンダリングされる可能性があります。  現在、Set-AzureRmVMDiskEncryptionExtension には管理ディスクをバックアップする機能がないため、-skipVmBackup パラメーターを指定せずに管理ディスクに対して使用するとエラーになります。  Azure Disk Encryption 以外を使用してバックアップを作成していない状態では、このパラメーターを使用しないでください。   -skipVmBackup パラメーターを指定すると、暗号化前に管理ディスクのバックアップは作成されません。  そのため、後で回復が必要になった場合に備えて、Azure Disk Encryption を有効にする前に、管理ディスク VM のバックアップを作成することが必須の前提条件と考えられます。  
 > [!NOTE]
- > -skipVmBackup パラメーターを指定しないと、暗号化有効化手順は失敗します。
+ > Azure Disk Encryption 以外を使用してスナップショットまたはバックアップを作成していない場合は、-skipVmBackup パラメーターは使用しないでください。 
 
 * Azure Disk Encryption ソリューションでは、Windows IaaS VM に対して BitLocker 外部キー保護機能を使用します。 ドメインに参加している VM の場合は、TPM 保護機能を適用するグループ ポリシーをプッシュしないでください。 "互換性のある TPM が装備されていない BitLocker を許可する" のグループ ポリシーについては、「[BitLocker Group Policy Reference](https://technet.microsoft.com/library/ee706521)」(BitLocker グループ ポリシー リファレンス) をご覧ください。
-* Azure AD アプリケーションを作成するか、Key Vault を作成するか、または既存の Key Vault をセットアップして暗号化を有効にする場合は、「[Azure Disk Encryption prerequisite PowerShell script](https://github.com/Azure/azure-powershell/blob/dev/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)」(Azure Disk Encryption の前提条件となる PowerShell スクリプト) をご覧ください。
+* カスタム グループ ポリシーを使用した、ドメインに参加している仮想マシン上の BitLocker ポリシーには、次の設定を含める必要があります。`Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key`  BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないコンピューターでは、新しいポリシーを適用し、新しいポリシーを強制的に適用して更新し (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。  
+* Azure AD アプリケーションを作成するか、Key Vault を作成するか、または既存の Key Vault をセットアップして暗号化を有効にする場合は、「[Azure Disk Encryption prerequisite PowerShell script](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)」(Azure Disk Encryption の前提条件となる PowerShell スクリプト) をご覧ください。
 * Azure CLI を使用してディスク暗号化の前提条件を構成する場合は、[こちらの Bash スクリプト](https://github.com/ejarvi/ade-cli-getting-started)をご覧ください。
 * Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 バックアップ サービスでは、KEK 構成を使用して暗号化された VM のみがサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。
+
+* Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus から返されたステータス メッセージが定期的にポーリングされます (https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus)。  暗号化が完了すると、このコマンドで返されるステータス メッセージで示されます。  たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
+
+* Linux 用 Azure Disk Encryption の場合、暗号化前に、Linux にマウントされているファイル システムがあるデータ ディスクを用意する必要があります。
+
+* 再帰的にマウントされているデータ ディスクは、Linux 用 Azure Disk Encryption でサポートされていません。 たとえば、ターゲット システムの /foo/bar 上にディスクがマウントされ、/foo/bar/baz 上に別のディスクがマウントされている場合、/foo/bar/baz の暗号化は成功しますが、/foo/bar の暗号化は失敗します。 
+
+* Azure Disk Encryption は、前述の前提条件を満たすギャラリー イメージでのみサポートされます。  カスタム イメージにはカスタムのパーティション スキームとプロセス動作が存在する可能性があるため、カスタム イメージはサポートされません。  また、最初は前提条件を満たしていて、作成後に変更されたギャラリー イメージも、互換性がない可能性があります。  そのため、Linux VM の暗号化手順として、クリーンなギャラリー イメージから始めて、VM を暗号化し、必要に応じてカスタム ソフトウェアまたはデータを VM に追加することをお勧めします。  
 
 > [!NOTE]
 > 暗号化された VM のバックアップと復元は、KEK 構成を使用して暗号化された VM についてのみサポートされています。 KEK を使用せずに暗号化された VM については、サポートされていません。 KEK は、VM を有効にするための省略可能なパラメーターです。
@@ -733,10 +743,8 @@ Azure Managed Disk ARM テンプレートを使用して、次の場所にある
  [ギャラリー イメージから新しい暗号化された Windows IaaS Managed Disk VM を作成する] (https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-create-new-vm-gallery-image-managed-disks)
 
   > [!NOTE]
-  >Azure ディスク暗号化 PS コマンドレット Set-AzureRmVMDiskEncryptionExtension または CLI コマンドを使用して Azure Managed Disk VM で暗号化を有効にするには、-skipVmBackup パラメーターを使用する必要があります。
-  >
-  >Linux Managed Disk VM で PS コマンドレット Set-AzureRmVMDiskEncryptionExtension を使用して暗号化を有効にする前に、実行中の VM インスタンスをバックアップすることをお勧めします。
-
+  >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、管理ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。  管理ディスクのスナップショットは、ポータルから作成できます。また、Azure Backup を使用できます。  バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。  バックアップを作成すると、Set-AzureRmVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定して管理ディスクを暗号化できます。  バックアップが作成されておらず、このパラメーターを指定していない場合、管理ディスク ベースの VM に対してこのコマンドを実行するとエラーが発生します。    
+ 
 ### <a name="update-encryption-settings-of-an-existing-encrypted-non-premium-vm"></a>既存の暗号化された Premium 以外の VM の暗号化設定を更新する
   既存の Azure ディスク暗号化でサポートされている VM 実行用のインターフェイス [PS コマンドレット、CLI、または ARM テンプレート] を使用して、AAD クライアント ID/シークレット、キー暗号化キー [KEK]、BitLocker 暗号化キー (Windows VM の場合)、パスフレーズ (Linux VM の場合) などの暗号化設定を更新します。暗号化設定の更新は、Premium 以外のストレージで支えられる VM の場合のみサポートされます。 Premium Storage によって支えられる VM ではサポートされていません。
 

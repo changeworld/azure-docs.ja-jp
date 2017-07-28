@@ -14,52 +14,45 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 06/07/2017
 ms.author: juliens
-translationtype: Human Translation
-ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
-ms.openlocfilehash: 6d40821327a9df47bb85ea12ecd33e4a0f49e39e
-ms.lasthandoff: 03/22/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
+ms.openlocfilehash: b4c81845b521eb1e8003ad399b466e911582b348
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/20/2017
 
 
 ---
 # <a name="create-and-mount-a-file-share-to-a-dcos-cluster"></a>ファイル共有を作成し、DC/OS クラスターにマウントする
-この記事では、Azure でファイル共有を作成し、DC/OS クラスターの各エージェントとマスターにマウントする方法について説明します。 ファイル共有を設定すると、クラスター間で構成、アクセス、ログなどのファイルが共有しやすくなります。
+このチュートリアルでは、Azure でファイル共有を作成し、DC/OS クラスターの各エージェントとマスターにマウントする方法について説明します。 ファイル共有を設定すると、クラスター間で構成、アクセス、ログなどのファイルが共有しやすくなります。 このチュートリアルでは、次のタスクを実行します。
 
-この例での操作には、Azure Container Service で構成された DC/OS クラスターが必要です。 [Azure Container Service クラスターのデプロイ](container-service-deployment.md)に関するページをご覧ください。
+> [!div class="checklist"]
+> * Azure のストレージ アカウントの作成
+> * ファイル共有を作成する
+> * DC/OS クラスターに共有をマウントする
+
+このチュートリアルの手順を実行するには、ACS DC/OS クラスターが必要です。 必要に応じて、[このサンプル スクリプト](./scripts/container-service-cli-deploy-dcos.md)で作成できます。
+
+このチュートリアルには、Azure CLI バージョン 2.0.4 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 アップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-a-file-share-on-microsoft-azure"></a>Microsoft Azure でのファイル共有の作成
-### <a name="using-the-portal"></a>ポータルの使用
 
-1. ポータルにログインします。
-2. ストレージ アカウントを作成します。
-   
-  ![Azure Container Service の [ストレージ アカウントの作成]](media/container-service-dcos-fileshare/createSA.png)
+ACS DC/OS クラスターで Azure ファイル共有を使用するには、事前にストレージ アカウントとファイル共有を作成しておく必要があります。 次のスクリプトを実行して、ストレージおよびファイル共有を作成します。 お客様の環境で、該当するパラメーターを更新します。
 
-3. 作成されたら、**[サービス]** セクションで **[ファイル]** をクリックします。
-   
-  ![Azure Container Service の [ファイル] セクション](media/container-service-dcos-fileshare/filesServices.png)
-
-4. **[+ ファイル共有]** をクリックし、この新しい共有の名前を入力します (**[クォータ]** は必須ではありません)。
-   
-  ![Azure Container Service の [+ ファイル共有]](media/container-service-dcos-fileshare/newFileShare.png)  
-
-### <a name="using-azure-cli-20"></a>Azure CLI 2.0 の使用
-
-必要な場合は、[Azure CLI をインストールして設定](/cli/azure/install-azure-cli.md)します。
-
-```azurecli
-################# Change these four parameters ##############
-DCOS_PERS_STORAGE_ACCOUNT_NAME=anystorageaccountname
-DCOS_PERS_RESOURCE_GROUP=AnyResourceGroupName
+```azurecli-interactive
+# Change these four parameters
+DCOS_PERS_STORAGE_ACCOUNT_NAME=mystorageaccount$RANDOM
+DCOS_PERS_RESOURCE_GROUP=myResourceGroup
 DCOS_PERS_LOCATION=eastus
-DCOS_PERS_SHARE_NAME=demoshare
-#############################################################
+DCOS_PERS_SHARE_NAME=dcosshare
 
 # Create the storage account with the parameters
 az storage account create -n $DCOS_PERS_STORAGE_ACCOUNT_NAME -g $DCOS_PERS_RESOURCE_GROUP -l $DCOS_PERS_LOCATION --sku Standard_LRS
 
-# Export the connection string as an environment variable
+# Export the connection string as an environment variable, this is used when creating the Azure file share
 export AZURE_STORAGE_CONNECTION_STRING=`az storage account show-connection-string -n $DCOS_PERS_STORAGE_ACCOUNT_NAME -g $DCOS_PERS_RESOURCE_GROUP -o tsv`
 
 # Create the share
@@ -68,91 +61,101 @@ az storage share create -n $DCOS_PERS_SHARE_NAME
 
 ## <a name="mount-the-share-in-your-cluster"></a>クラスターでの共有のマウント
 
-次に、cifs ツール/プロトコルを使用して、この共有を、クラスター内のすべての仮想マシンにマウントする必要があります。 これを行うには、コマンド ライン `mount -t cifs` を使用します。
+次に、ファイル共有をクラスター内のすべての仮想マシンにマウントする必要があります。 このタスクは、cifs ツール/プロトコルを使用して実行されます。 マウント操作は、クラスターの各ノード上で手動で行うことも、クラスター内で各ノードに対してスクリプトを実行して行うこともできます。
 
-ここでは次の例を使用します。
-* ストレージ アカウント名 **`anystorageaccountname`**
-* 架空のアカウント キー **`P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==`** 
-* マウント ポイント **`/mnt/share/demoshare`**
+以下の例では、2 つのスクリプトを実行します。1 つは Azure ファイル共有をマウントするスクリプトです。もう 1 つは DC/OS クラスターの各ノードでこのマウント用スクリプトを実行するスクリプトです。
 
-```bash
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+最初に、Azure ストレージ アカウント名とアクセス キーが必要です。 この情報の取得には、次のコマンドを実行します。 これらの値は、後の手順で使用するのでそれぞれメモしておきます。
+
+ストレージ アカウント名: 
+
+```azurecli-interactive
+STORAGE_ACCT=$(az storage account list --resource-group myResourceGroup --query "[?contains(name,'mystorageaccount')].[name]" -o tsv)
+echo $STORAGE_ACCT
 ```
 
-クラスターの仮想マシン (マスター ノードとエージェント ノード) でこのコマンドを実行します。 エージェント数が多い場合は、スクリプトを作成してこのプロセスを自動化することをお勧めします。  
+ストレージ アカウント アクセス キー: 
 
-### <a name="set-up-scripts"></a>スクリプトの設定
+```azurecli-interactive
+az storage account keys list --resource-group myResourceGroup --account-name $STORAGE_ACCT --query "[0].value" -o tsv
+```
 
-1. まず、DC/OS に基づくクラスターのマスター (または最初のマスター) に SSH 接続します。 たとえば、`ssh userName@masterFQDN –A –p 22` を使用します。ここで、masterFQDN は、マスター VM の完全修飾ドメイン名です。
+次に、DC/OS マスターの FQDN を取得し、それを変数に格納します。
 
-2. 秘密キーをマスターの作業ディレクトリ (~) にコピーします。
+```azurecli-interactive
+FQDN=$(az acs list --resource-group myResourceGroup --query "[0].masterProfile.fqdn" --output tsv)
+```
 
-3. コマンド `chmod 600 yourPrivateKeyFile` を使用して、そのアクセス許可を変更します。
+マスター ノードに秘密キーをコピーします。 このキーは、クラスター内のすべてのノードとの ssh 接続を作成するのに必要となります。 クラスターの作成時に既定値ではない値が使用されている場合は、ユーザー名を更新します。 
 
-4. `ssh-add yourPrivateKeyFile` コマンドを使用して、秘密キーをインポートします。 最初に動作しない場合は、`eval ssh-agent -s` を実行しなければならないことがあります。
+```azurecli-interactive
+scp ~/.ssh/id_rsa azureuser@$FQDN:~/.ssh
+```
 
-5. vi、nano、vim など、任意のエディターを使用して、マスターから次の 2 つのファイルを作成します。 
-  
-  * **cifsMount.sh** ファイル。各 VM で実行するスクリプトが含まれます 
-  * **mountShares.sh** ファイル。すべての SSH 接続を開始するためのファイルで、最初のスクリプトを呼び出します
+DC/OS に基づくクラスターのマスター (または最初のマスター) との SSH 接続を作成します。 クラスターの作成時に既定値ではない値が使用されている場合は、ユーザー名を更新します。
 
+```azurecli-interactive
+ssh azureuser@$FQDN
+```
 
-```bash
-# cifsMount.sh
+**cifsMount.sh** という名前のファイルを作成し、このファイルに次の内容をコピーします。 
+
+Azure ファイル共有をマウントするには、次のスクリプトを使用します。 これまでに収集した情報を使用して、`STORAGE_ACCT_NAME` 変数と `ACCESS_KEY` 変数を更新します。
+
+```azurecli-interactive
+#!/bin/bash
+
+# Azure storage account name and access key
+STORAGE_ACCT_NAME=mystorageaccount
+ACCESS_KEY=mystorageaccountKey
 
 # Install the cifs utils, should be already installed
 sudo apt-get update && sudo apt-get -y install cifs-utils
 
 # Create the local folder that will contain our share
-if [ ! -d "/mnt/share/demoshare" ]; then sudo mkdir -p "/mnt/share/demoshare" ; fi
+if [ ! -d "/mnt/share/dcosshare" ]; then sudo mkdir -p "/mnt/share/dcosshare" ; fi
 
 # Mount the share under the previous local folder created
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //$STORAGE_ACCT_NAME.file.core.windows.net/dcosshare /mnt/share/dcosshare -o vers=3.0,username=$STORAGE_ACCT_NAME,password=$ACCESS_KEY,dir_mode=0777,file_mode=0777
 ```
-  
-```bash
-# mountShares.sh
+2 つ目のファイルとして **getNodesRunScript.sh** という名前のファイルを作成し、このファイルに次の内容をコピーします。 
+
+このスクリプトは、すべてのクラスター ノードを検出し、**cifsMount.sh** スクリプトを実行して各クラスター ノードにファイル共有をマウントします。
+
+```azurecli-interactive
+#!/bin/bash
 
 # Install jq used for the next command
-sudo apt-get install jq
-
-# Create the local folder that will contain our share
-if [ ! -d "/mnt/share/demoshare" ]; then sudo mkdir -p "/mnt/share/demoshare" ; fi
-
-# Mount the share on the current vm (master)
-sudo mount -t cifs //anystorageaccountname.file.core.windows.net/demoshare /mnt/share/demoshare -o vers=3.0,username=anystorageaccountname,password=P/GuXXXuoRtIVsV+faSfLhuNyZDrTzPmZDm3RyCL4XS6ghyiHYriN12gl+w5JMN2gXGtOhCzxFf2JuGqXXXX1w==,dir_mode=0777,file_mode=0777
+sudo apt-get install jq -y
 
 # Get the IP address of each node using the mesos API and store it inside a file called nodes
 curl http://leader.mesos:1050/system/health/v1/nodes | jq '.nodes[].host_ip' | sed 's/\"//g' | sed '/172/d' > nodes
-  
+
 # From the previous file created, run our script to mount our share on each node
 cat nodes | while read line
-  do
-    ssh `whoami`@$line -o StrictHostKeyChecking=no -i yourPrivateKeyFile < ./cifsMount.sh
-    done
+do
+  ssh `whoami`@$line -o StrictHostKeyChecking=no < ./cifsMount.sh
+  done
+```
+
+クラスターのすべてのノードに Azure ファイル共有をマウントするスクリプトを実行します。
+
+```azurecli-interactive
+sh ./getNodesRunScript.sh
 ```  
-> [!IMPORTANT]
-> **mount** コマンドは、ストレージ アカウント名、パスワードなど、独自の設定で変更する必要があります。
->  
 
-このスクリプトを作成したフォルダーには、現在次の 3 つのファイルがあります。  
-
-* **cifsMount.sh**
-* **mountShares.sh**
-* **yourPrivateKeyFile** 
-
-### <a name="run-the-scripts"></a>スクリプトの実行
-
-`sh mountShares.sh` コマンドで **mountShares.sh** ファイルを実行します。
-
-端末に結果が出力されます。 スクリプトの完了後、クラスターのファイル共有を使用できます。
-
-スクリプトは最適化できますが、この例はシンプルで、その目的はわかりやすくガイダンスを提供することです。
-
-> [!NOTE] 
-> この方法は、高い IOPS を必要とするシナリオではお勧めしませんが、クラスター間でドキュメントや情報を共有するときに使用すると非常に便利です。
->
+これで、クラスターの各ノードにある `/mnt/share/dcosshare` にアクセスできるようになりました。
 
 ## <a name="next-steps"></a>次のステップ
-* [DC/OS コンテナーの管理](container-service-mesos-marathon-ui.md)で詳細を確認します。
-* [Marathon REST API](container-service-mesos-marathon-rest.md) を使用して DC/OS コンテナーを管理します。
+
+このチュートリアルは、次の手順を使用して、Azure ファイル共有を DC/OS クラスターで利用できるようにしました。
+
+> [!div class="checklist"]
+> * Azure のストレージ アカウントの作成
+> * ファイル共有を作成する
+> * DC/OS クラスターに共有をマウントする
+
+次のチュートリアルでは、Azure での Azure Container Registry と DC/OS の統合について学習します。  
+
+> [!div class="nextstepaction"]
+> [アプリケーションを負荷分散する](./container-service-dcos-acr.md)

@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 06/12/2017
 ms.author: sdanie
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: eeddc0da23192a0082f2fcddbb0cc5f3e4a72074
+ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
+ms.openlocfilehash: 88ed466053efd62370afd31f68c9617e79936267
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
+ms.lasthandoff: 06/13/2017
 
 
 ---
@@ -105,7 +105,7 @@ Azure Redis Cache には、さまざまなレベルの**サイズ**、**帯域�
 
 Cache のオプションを選択するときの考慮事項を次に示します。
 
-* **メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルは最大 530 GB であり、 [要求すれば](mailto:wapteams@microsoft.com?subject=Redis%20Cache%20quota%20increase)さらに多く使用できます。 詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
+* **メモリ**: Basic レベルと Standard レベルでは、250 MB ～ 53 GB です。 Premium レベルでは 530 GB まで提供されます。 詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/pricing/details/cache/)」を参照してください。
 * **ネットワーク パフォーマンス**: 高いスループットを必要とするワークロードがある場合、Standard または Basic より Premium レベルの方が多くの帯域幅を提供します。 また、各レベル内では、キャッシュをホストする基盤の VM のため、キャッシュのサイズが大きいほど帯域幅も増えます。 詳細については、[後の表](#cache-performance)を参照してください。
 * **スループット**: Premium レベルでは、使用可能な最大のスループットが提供されます。 キャッシュ サーバーまたはクライアントが帯域幅の限界に達した場合、クライアント側でタイムアウトが発生する場合があります。 詳細については、後の表を参照してください。
 * **高可用性/SLA**: Azure Redis Cache は、Standard/Premium キャッシュについて 99.9% の可用性を保証します。 SLA の詳細については、「 [Azure Redis Cache の価格](https://azure.microsoft.com/support/legal/sla/cache/v1_0/)」を参照してください。 SLA は、Cache エンドポイントへの接続のみをカバーします。 SLA は、データ損失からの保護には対応していません。 Premium レベルの Redis データの保持機能を使用して、データ損失に対する復元性を高めることをお勧めします。
@@ -467,10 +467,14 @@ Redis が正常に動作するために重要な点は、Redis を中心とし�
 Azure Redis Cache の使用方法については、「[Azure Redis Cache の使用方法](cache-dotnet-how-to-use-azure-redis-cache.md)」と [Azure Redis Cache のドキュメント](index.md)に関するページを参照してください。
 
 ### <a name="managed-cache-service"></a>Managed Cache Service
-[Managed Cache Service は 2016 年 11 月 30 日に終了となりました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[Managed Cache Service は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+アーカイブされたドキュメントを参照するには、[アーカイブされた Managed Cache Service に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386094.aspx)を参照してください。
 
 ### <a name="in-role-cache"></a>In-Role Cache
-[In-Role Cache は 2016 年 11 月 30 日に終了となりました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+[In-Role Cache は 2016 年 11 月 30 日に終了しました。](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)
+
+アーカイブされたドキュメントを参照するには、[アーカイブされた In-Role Cache に関するドキュメント](https://msdn.microsoft.com/library/azure/dn386103.aspx)を参照してください。
 
 ["minIoThreads" configuration setting]: https://msdn.microsoft.com/library/vstudio/7w2sway1(v=vs.100).aspx
 

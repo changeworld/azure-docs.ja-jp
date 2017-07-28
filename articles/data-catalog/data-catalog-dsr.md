@@ -1,6 +1,6 @@
 ---
 title: "Azure Data Catalog でサポートされるデータ ソース | Microsoft Docs"
-description: "現在サポートされているデータ ソースの仕様。"
+description: "この記事では、現在サポートされているデータ ソースの仕様を示します。"
 services: data-catalog
 documentationcenter: 
 author: steelanddata
@@ -16,23 +16,22 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d68ed62022834c9417d820a7a64e30b47f71a1bd
+ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
+ms.openlocfilehash: 456d3e4e81b9773545d194b38a5f58ff97cc7b25
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
+ms.lasthandoff: 06/21/2017
 
 
 ---
 
-# <a name="azure-data-catalog-supported-data-sources"></a>Azure Data Catalog でサポートされるデータ ソース
+# <a name="supported-data-sources-in-azure-data-catalog"></a>Azure Data Catalog でサポートされるデータ ソース
 
-ユーザーは、ワンクリック登録ツールのパブリック API を使って、または Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのソースと、それぞれの公開機能をまとめたものです。  また、各ソースを当社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
+ユーザーは、パブリック API またはワンクリック登録ツールを使って、または Azure Data Catalog の Web ポータルに直接情報を手動で入力して、メタデータを公開できます。 以下の表は、現在カタログでサポートされているすべてのデータ ソースと、それぞれの公開機能をまとめたものです。 また、各データ ソースを弊社のポータルから「オープンイン」で起動できる外部ツールも一覧表示されています。 2 番目の表には、各データ ソースの接続プロパティの詳細な技術仕様があります。
 
 
 ## <a name="list-of-supported-data-sources"></a>サポートされるデータ ソースの一覧
 
 <table>
-
     <tr>
        <td><b>データ ソース オブジェクト</b></td>
        <td><b>API</b></td>
@@ -41,48 +40,43 @@ ms.lasthandoff: 03/31/2017
        <td><b>オープンイン ツール</b></td>
        <td><b>メモ</b></td>
     </tr>
-
     <tr>
       <td>Azure Data Lake Store のディレクトリ</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Azure Data Lake Store のファイル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>Azure Storage BLOB</td>
-      <td>✓</td>
+      <td>Azure BLOB ストレージ</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Azure Storage ディレクトリ</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>Azure Storage Table</td>
-      <td>✓</td>
+      <td>Azure Storage テーブル</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td>
         <font size="2"></font>
       </td>
@@ -90,368 +84,327 @@ ms.lasthandoff: 03/31/2017
         <font size="2"></font>
       </td>
     </tr>
-
     <tr>
       <td>HDFS ディレクトリ</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>HDFS ファイル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Hive テーブル</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Hive ビュー</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>MySQL テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>MySQL ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Oracle Database テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Oracle Database ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>その他 (汎用アセット)</td>
-      <td>✓</td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td></td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>SQL Data Warehouse テーブル</td>
-      <td>✓</td>
+      <td>Azure SQL Data Warehouse テーブル</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Data Warehouse ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server Analysis Services ディメンション</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server Analysis Services KPI</td>
       <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server Analysis Services メジャー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server Analysis Services テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server Reporting Services レポート</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓ </td>
       <td>✓</td>
       <td><font size=2>ブラウザー</font></td>
       <td><font size=2>ネイティブ モードのサーバーのみ。SharePoint モードはサポートされていません。</font></td>
     </tr>
-
     <tr>
       <td>SQL Server テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SQL Server ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>Excel、PowerBI、SQL Server データ ツール</font></td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2>Excel、Power BI、SQL Server データ ツール</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Teradata テーブル</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>Teradata ビュー</td>
-      <td>✓</td>
+      <td>✓ </td>
       <td>✓ </td>
       <td>✓</td>
       <td><font size=2>Excel</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>SAP Hana ビュー</td>
-      <td>✓</td>
+      <td>SAP HANA ビュー</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2>PowerBI</font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Db2 テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Db2 ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>ファイル システム ファイル</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
+      <td><font size=2>Power BI</font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>Ftp ディレクトリ</td>
-      <td>✓</td>
+      <td>DB2 テーブル</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Ftp ファイル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Http レポート</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Http エンドポイント</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Http ファイル</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Odata エンティティ セット</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Odata 関数</td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-
-    <tr>
-      <td>Postgresql テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>Postgresql ビュー</td>
-      <td>✓</td>
+      <td>DB2 ビュー</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
-      <td>SAP Hana ビュー</td>
-      <td>✓</td>
+      <td>ファイル システムのファイル</td>
+      <td>✓ </td>
       <td></td>
       <td></td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
+    <tr>
+      <td>FTP ディレクトリ</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>FTP ファイル</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>HTTP レポート</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>HTTP エンドポイント</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>HTTP ファイル</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>OData エンティティ セット</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>OData 関数</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>PostgreSQL テーブル</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>PostgreSQL ビュー</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>SAP HANA ビュー</td>
+      <td>✓ </td>
+      <td></td>
+      <td></td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
     <tr>
       <td> Salesforce オブジェクト</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>SharePoint リスト </td>
-      <td>✓</td>
-      <td></td>
-      <td></td>
-      <td><font size=2></font></td>
-      <td><font size=2></font></td>
-    </tr>
-  
-    <tr>
-      <td>Azure DocumentDB コレクション</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td></td>
+      <td></td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
+    <tr>
+      <td>Azure Cosmos DB コレクション</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
     <tr>
       <td>汎用 ODBC テーブル</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
     <tr>
       <td>汎用 ODBC ビュー</td>
-      <td>✓</td>
       <td>✓ </td>
-      <td>✓</td>
+      <td>✓ </td>
+      <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
     </tr>
-
 </table>
 
-その他のソースのサポートが必要な場合は、 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)を使用して機能のリクエストを送信してください。
+その他のソースのサポートが必要な場合は、 [Azure Data Catalog フォーラム](http://go.microsoft.com/fwlink/?LinkID=616424&clcid=0x409)に機能のリクエストを送信してください。
 
 
-<br>
-<br>
 ## <a name="data-source-reference-specification"></a>データ ソース参照の仕様
 > [!NOTE]
-> 次の表の「DSL 構造体」列には、Azure Data Catalog で使われる "address" プロパティ バッグの接続プロパティの一覧だけが示されています。 つまり、"address" プロパティ バッグは、Azure Data Catalog が永続化しても使わないデータ ソースの他の接続プロパティを含むことができます。
+> 次の表の**DSL 構造体**列には、Azure Data Catalog で使われる "address" プロパティ バッグの接続プロパティのみが一覧表示されています。 つまり、"address" プロパティ バッグは、Azure Data Catalog が永続化しても使わないデータ ソースの他の接続プロパティを含むことができます。
+
 <table>
     <tr>
        <td><b>ソースの種類</b></td>
@@ -464,7 +417,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>Data Lake</td>
       <td>
-        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: webhdfs <br>Authentication: {basic, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -472,7 +425,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: webhdfs <br>Authentication: {basic, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -480,7 +433,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>コンテナー</td>
       <td>
-        <font size=2> protocol: azure-blobs <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー </font>
+        <font size=2> Protocol: azure-blobs <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー </font>
       </td>
     </tr>
     <tr>
@@ -488,7 +441,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>BLOB、ディレクトリ</td>
       <td>
-        <font size=2> protocol: azure-blobs <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
+        <font size=2> Protocol: azure-blobs <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コンテナー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
       </td>
     </tr>
     <tr>
@@ -496,7 +449,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>コンテナー</td>
       <td>
-        <font size=2> protocol: azure-tables <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント </font>
+        <font size=2> Protocol: azure-tables <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント </font>
       </td>
     </tr>
     <tr>
@@ -504,7 +457,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル</td>
       <td>
-        <font size=2> protocol: azure-tables <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
+        <font size=2> Protocol: azure-tables <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ドメイン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; アカウント <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 名前 </font>
       </td>
     </tr>
     <tr>
@@ -512,7 +465,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>仮想クラスター</td>
       <td>
-        <font size=2> protocol: cosmos <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: cosmos <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -520,7 +473,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>ストリーム、ストリーム セット、ビュー</td>
       <td>
-        <font size=2> protocol: cosmos <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: cosmos <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -528,7 +481,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -536,23 +489,23 @@ ms.lasthandoff: 03/31/2017
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
-      <td>Db2</td>
+      <td>DB2</td>
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: db2 <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: db2 <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
-      <td>Db2</td>
+      <td>DB2</td>
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: db2 <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
+        <font size=2> Protocol: db2 <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
       </td>
     </tr>
     <tr>
@@ -560,15 +513,15 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>ファイル</td>
       <td>
-        <font size=2> protocol: file <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス </font>
+        <font size=2> Protocol: file <br>Authentication: {none, basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス </font>
       </td>
     </tr>
     <tr>
-      <td>Ftp</td>
+      <td>FTP</td>
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: ftp <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: ftp <br>Authentication: {none, basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -576,7 +529,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>クラスター</td>
       <td>
-        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: webhdfs <br>Authentication: {basic, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -584,7 +537,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>ディレクトリ、ファイル</td>
       <td>
-        <font size=2> protocol: webhdfs <br>authentication: {basic, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: webhdfs <br>Authentication: {basic, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -592,7 +545,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: hive <br>authentication: {hdinsight, basic, username, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
+        <font size=2> Protocol: hive <br>Authentication: {HDInsight, basic, username, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
       </td>
     </tr>
     <tr>
@@ -600,31 +553,31 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: hive <br>authentication: {hdinsight, basic, username, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
+        <font size=2> Protocol: hive <br>Authentication: {HDInsight, basic, username, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>connectionProperties: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; serverProtocol: {hive2} </font>
       </td>
     </tr>
     <tr>
-      <td>Http</td>
+      <td>HTTP</td>
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
-      <td>Http</td>
+      <td>HTTP</td>
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
-      <td>Http</td>
+      <td>HTTP</td>
       <td>テーブル</td>
-      <td>エンド ポイント、ファイル</td>
+      <td>エンドポイント、ファイル</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -632,7 +585,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: mysql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: mysql <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -640,7 +593,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: mysql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: mysql <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -648,7 +601,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>エンティティ コンテナー</td>
       <td>
-        <font size=2> protocol: odata <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: odata <br>Authentication: {none, basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -656,7 +609,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>エンティティ セット、関数</td>
       <td>
-        <font size=2> protocol: odata <br>authentication: {none, basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リソース </font>
+        <font size=2> Protocol: odata <br>Authentication: {none, basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; リソース </font>
       </td>
     </tr>
     <tr>
@@ -664,7 +617,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: oracle <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: oracle <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -672,23 +625,23 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: oracle <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: oracle <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
-      <td>Postgresql</td>
+      <td>PostgreSQL</td>
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: postgresql <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: postgresql <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
-      <td>Postgresql</td>
+      <td>PostgreSQL</td>
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: postgresql <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: postgresql <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -696,7 +649,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>サイト</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -704,7 +657,7 @@ ms.lasthandoff: 03/31/2017
       <td>レポート</td>
       <td>レポート、ダッシュボード</td>
       <td>
-        <font size=2> protocol: http <br>authentication: {none, basic, windows, oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: http <br>Authentication: {none, basic, windows, oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -712,7 +665,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>データのマッシュアップ</td>
       <td>
-        <font size=2> protocol: power-query <br>authentication: {oauth} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: power-query <br>Authentication: {oauth} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -720,23 +673,23 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>オブジェクト</td>
       <td>
-        <font size=2> protocol: salesforce com <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginServer <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName </font>
+        <font size=2> Protocol: salesforce-com <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; loginServer <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; class <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; itemName </font>
       </td>
     </tr>
     <tr>
-      <td>SAP Hana</td>
+      <td>SAP HANA</td>
       <td>コンテナー</td>
       <td>サーバー</td>
       <td>
-        <font size=2> protocol: sap hana sql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー </font>
+        <font size=2> Protocol: sap-hana-sql <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー </font>
       </td>
     </tr>
     <tr>
-      <td>SAP Hana</td>
+      <td>SAP HANA</td>
       <td>テーブル</td>
       <td>表示</td>
       <td>
-        <font size=2> protocol: sap hana sql <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: sap-hana-sql <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -744,7 +697,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>一覧表示</td>
       <td>
-        <font size=2> protocol: sharepoint-list <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
+        <font size=2> Protocol: sharepoint-list <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url </font>
       </td>
     </tr>
     <tr>
@@ -752,7 +705,7 @@ ms.lasthandoff: 03/31/2017
       <td>コマンド</td>
       <td>ストアド プロシージャ</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -760,7 +713,7 @@ ms.lasthandoff: 03/31/2017
       <td>TableValuedFunction</td>
       <td>テーブル値関数</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -768,7 +721,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -776,7 +729,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -784,7 +737,7 @@ ms.lasthandoff: 03/31/2017
       <td>コマンド</td>
       <td>ストアド プロシージャ</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -792,7 +745,7 @@ ms.lasthandoff: 03/31/2017
       <td>TableValuedFunction</td>
       <td>テーブル値関数</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -800,7 +753,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -808,39 +761,39 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: tds <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: tds <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services Multidimensional</td>
+      <td>SQL Server Analysis Services 多次元</td>
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services Multidimensional</td>
+      <td>SQL Server Analysis Services 多次元</td>
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services Multidimensional</td>
+      <td>SQL Server Analysis Services 多次元</td>
       <td>Measure</td>
       <td>Measure</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
       </td>
     </tr>
     <tr>
-      <td>SQL Server Analysis Services Multidimensional</td>
+      <td>SQL Server Analysis Services 多次元</td>
       <td>テーブル</td>
       <td>Dimension</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Dimension} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Dimension} </font>
       </td>
     </tr>
     <tr>
@@ -848,7 +801,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル </font>
       </td>
     </tr>
     <tr>
@@ -856,7 +809,7 @@ ms.lasthandoff: 03/31/2017
       <td>KPI</td>
       <td>KPI</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {KPI} </font>
       </td>
     </tr>
     <tr>
@@ -864,7 +817,7 @@ ms.lasthandoff: 03/31/2017
       <td>Measure</td>
       <td>Measure</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Measure} </font>
       </td>
     </tr>
     <tr>
@@ -872,7 +825,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル</td>
       <td>
-        <font size=2> protocol: analysis-services <br>authentication: {windows, basic, anonymous, none} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Table} </font>
+        <font size=2> Protocol: analysis-services <br>Authentication: {windows, basic, anonymous, none} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; objectType: {Table} </font>
       </td>
     </tr>
     <tr>
@@ -880,7 +833,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>サーバー</td>
       <td>
-        <font size=2> protocol: reporting services <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
+        <font size=2> Protocol: reporting-services <br>Authentication: {windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
       </td>
     </tr>
     <tr>
@@ -888,7 +841,7 @@ ms.lasthandoff: 03/31/2017
       <td>レポート</td>
       <td>レポート</td>
       <td>
-        <font size=2> protocol: reporting services <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
+        <font size=2> Protocol: reporting-services <br>Authentication: {windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; パス <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; version: {ReportingService2010} </font>
       </td>
     </tr>
     <tr>
@@ -896,7 +849,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: teradata <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: teradata <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -904,7 +857,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> protocol: teradata <br>authentication: {protocol, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
+        <font size=2> Protocol: teradata <br>Authentication: {protocol, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>
@@ -912,7 +865,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>モデル</td>
       <td>
-        <font size="2"> protocol: mssql-mds <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン </font>
+        <font size="2"> Protocol: mssql-mds <br>Authentication: {windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン </font>
       </td>
     </tr>
     <tr>
@@ -920,23 +873,23 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>エンティティ</td>
       <td>
-        <font size="2"> protocol: mssql-mds <br>authentication: {windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エンティティ </font>
+        <font size="2"> Protocol: mssql-mds <br>Authentication: {windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; モデル <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; バージョン <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; エンティティ </font>
       </td>
     </tr>
     <tr>
-      <td>Azure DocumentDB</td>
+      <td>Azure Cosmos DB</td>
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> protocol: document-db <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: document-db <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
-      <td>Azure DocumentDB</td>
+      <td>Azure Cosmos DB</td>
       <td>コレクション</td>
       <td>コレクション</td>
       <td>
-        <font size=2> protocol: document-db <br>authentication: {azure-access-key} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コレクション </font>
+        <font size=2> Protocol: document-db <br>Authentication: {azure-access-key} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; コレクション </font>
       </td>
     </tr>
     <tr>
@@ -944,7 +897,7 @@ ms.lasthandoff: 03/31/2017
       <td>コンテナー</td>
       <td>データベース</td>
       <td>
-        <font size=2> プロトコル: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+        <font size=2> Protocol: odbc <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
       </td>
     </tr>
     <tr>
@@ -952,7 +905,7 @@ ms.lasthandoff: 03/31/2017
       <td>テーブル</td>
       <td>テーブル、ビュー</td>
       <td>
-        <font size=2> プロトコル: odbc <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
+        <font size=2> Protocol: odbc <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
       </td>
     </tr>
     <tr>
@@ -960,7 +913,7 @@ ms.lasthandoff: 03/31/2017
       <td>\*</td>
       <td>\*</td>
       <td>
-        <font size=2> protocol: generic-asset <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
+        <font size=2> Protocol: generic-asset <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; assetId </font>
       </td>
     </tr>
 </table>

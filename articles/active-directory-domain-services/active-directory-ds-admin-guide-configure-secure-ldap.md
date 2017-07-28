@@ -14,10 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 44be67cd5c59a57cafd244ce0a49a6fadf44bdda
-ms.openlocfilehash: 8abde97ecb906384cd6e62811fcbb833bdc8be51
-ms.lasthandoff: 01/25/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
+ms.openlocfilehash: 04e6c03dfd10c7dab50299f8ff0a5313274e4c60
+ms.contentlocale: ja-jp
+ms.lasthandoff: 06/14/2017
 
 
 ---
@@ -80,9 +81,9 @@ Windows コンピューターで **管理者** として新しい PowerShell ウ
 
     New-SelfSignedCertificate -Subject *.contoso100.com -NotAfter $lifetime.AddDays(365) -KeyUsage DigitalSignature, KeyEncipherment -Type SSLServerAuthentication -DnsName *.contoso100.com
 
-上記のサンプルの 'contoso100.com' は、Azure AD Domain Services の管理対象ドメインの DNS ドメイン名に置き換えます。
+上記のサンプルの '*.contoso100.com' は、Azure AD Domain Services の管理対象ドメインの DNS ドメイン名に置き換えます (したがって、たとえば、'contoso100.onmicrosoft.com' という AD Domain Services の DNS ドメイン名を作成した場合、上記のスクリプトの '*.contoso100.com' は '*.conotoso100.onmicrosoft.com' に置き換えます)。
 
-![Azure AD ディレクトリの選択](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
+![Select Azure AD Directory](./media/active-directory-domain-services-admin-guide/secure-ldap-powershell-create-self-signed-cert.png)
 
 新しく作成した自己署名証明書は、ローカル コンピューターの証明書ストアに配置されます。
 
