@@ -16,10 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: 4e4a4f4e299dc2747eb48bbd2e064cd80783211c
-ms.openlocfilehash: 46240f3dc99a8c8a103a1e7919ad4f5e7a8ea62a
-ms.lasthandoff: 04/04/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
+ms.openlocfilehash: 0ada599549d1c94a6be5199111f20f9d3708793f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/04/2017
 
 
 ---
@@ -37,7 +38,8 @@ ms.lasthandoff: 04/04/2017
 $ az --version
 ```
 
-`az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。
+`az` ツールをインストールしていないない場合、[ここ](https://github.com/azure/azure-cli#installation)に手順が記載されています。  
+または、[Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) を使うこともできます。これには、`az` Azure CLI と `kubectl` ツールが既にインストールされています。  
 
 `kubectl` ツールがインストールされていることを確認するには、次を実行します。
 
@@ -46,9 +48,20 @@ $ kubectl version
 ```
 
 `kubectl` をインストールしていない場合、次を実行できます。
-
 ```console
 $ az acs kubernetes install-cli
+```
+
+kubernetes キーが kubectl ツールにインストールされているかどうかをテストするには、次のコマンドを実行します。
+```console
+$ kubectl get nodes
+```
+
+上のコマンドでエラーが発生する場合は、kubernetes クラスター キーを kubectl ツールにインストールする必要があります。 これを行うには、次のコマンドを使います。
+```console
+RESOURCE_GROUP=my-resource-group
+CLUSTER_NAME=my-acs-name
+az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
 ## <a name="monitoring-containers-with-operations-management-suite-oms"></a>Operations Management Suite (OMS) を使用したコンテナーの監視
@@ -78,6 +91,43 @@ DaemonSet 構成にワークスペース ID とキーを追加したら、`kubec
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
+
+### <a name="installing-the-oms-agent-using-a-kubernetes-secret"></a>Kubernetes シークレットを使用した OMS エージェントのインストール
+OMS ワークスペースの ID とキーを保護するには、DaemonSet YAML ファイルの一部とし Kubernetes シークレットを使うことができます。
+
+ - スクリプト、シークレット テンプレート ファイル、DaemonSet YAML ファイルを ([リポジトリ](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)から) コピーし、それらが同じディレクトリにあることを確認します。 
+      - シークレット生成スクリプト: secret-gen.sh
+      - シークレット テンプレート: secret-template.yaml
+   - DaemonSet YAML ファイル: omsagent-ds-secrets.yaml
+ - スクリプトを実行します。 スクリプトでは、OMS ワークスペースの ID と主キーの指定を求められます。 それを挿入すると、スクリプトによってシークレット YAML ファイルが作成されるので、それを実行します。   
+   ```
+   #> sudo bash ./secret-gen.sh 
+   ```
+
+   - 次のコマンドを実行して、シークレット ポッドを作成します。``` kubectl create -f omsagentsecret.yaml ```
+ 
+   - 確認するには、次のコマンドを実行します。 
+
+   ``` 
+   root@ubuntu16-13db:~# kubectl get secrets
+   NAME                  TYPE                                  DATA      AGE
+   default-token-gvl91   kubernetes.io/service-account-token   3         50d
+   omsagent-secret       Opaque                                2         1d
+   root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
+   Name:           omsagent-secret
+   Namespace:      default
+   Labels:         <none>
+   Annotations:    <none>
+
+   Type:   Opaque
+
+   Data
+   ====
+   WSID:   36 bytes
+   KEY:    88 bytes 
+   ```
+ 
+  - ``` kubectl create -f omsagent-ds-secrets.yaml ``` を実行して、omsagent daemon-set を作成します。
 
 ### <a name="conclusion"></a>まとめ
 これで完了です。 しばらくすると、OMS ダッシュボードにデータが送られたことがわかります。

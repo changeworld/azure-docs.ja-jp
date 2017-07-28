@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
+ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 1c6b79c5f67cee5d62c9879bdeec926091253af6
+ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
+ms.openlocfilehash: a1e385c235c3530744a83527574880c5f37caadd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/06/2017
 
 ---
-# <a name="azure-active-directory-reporting-latencies---preview"></a>Azure Active Directory レポートの待機時間 - プレビュー
+# <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
 
-Azure Active Directory [プレビュー](active-directory-preview-explainer.md)のレポートでは、環境の動作状況を判断するために必要なすべての情報を取得できます。 Azure Portal にレポート データが表示されるのにかかる時間は、待機時間とも呼ばれます。 
+Azure Active Directory の[レポート](active-directory-preview-explainer.md)では、環境の動作状況を判断するために必要な情報をすべて取得できます。 Azure Portal にレポート データが表示されるのにかかる時間は、待機時間とも呼ばれます。 
 
 このトピックでは、Azure Portal 内のすべてのレポート用のカテゴリの待機時間情報を一覧します。 
 
@@ -91,3 +91,4 @@ Azure Portal のセキュリティ レポートに関する詳細については
 - [Azure Active Directory ポータルのリスクの高いサインイン レポート](active-directory-reporting-security-risky-sign-ins.md)
 
 リスク イベントの詳細について理解するには、「[Azure Active Directory のリスク イベント](active-directory-reporting-risk-events.md)」を参照してください。
+

@@ -15,15 +15,16 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: aa7244849f6286e8ef9f9785c133b4c326193c12
-ms.openlocfilehash: 852a0fab2fa7a50eb315e7107749e391031b463e
+ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
+ms.openlocfilehash: 024a9dd00d086d5c1cc14d6731b34ee0eab3b2c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/02/2017
+ms.lasthandoff: 06/29/2017
 
 
 ---
 
 # <a name="receive-events-from-azure-event-hubs-using-java"></a>Java を使用して Azure Event Hubs からイベントを受信する
+
 
 ## <a name="introduction"></a>はじめに
 Event Hubs は、拡張性の高いインジェスト システムで、1 秒あたり何百万ものイベントを取り込むことができます。そのためアプリケーションは、接続されているデバイスやアプリケーションによって生成された大量のデータを処理し、分析できます。 Event Hubs に収集されたデータは、任意のリアルタイム分析プロバイダーやストレージ クラスターを使用して転送と格納できます。
@@ -68,6 +69,11 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
     <groupId>com.microsoft.azure</groupId>
     <artifactId>azure-eventhubs-eph</artifactId>
     <version>{VERSION}</version>
+</dependency>
+<dependency>
+  <groupId>com.microsoft.azure</groupId>
+  <artifactId>azure-eventhubs-eph</artifactId>
+  <version>0.14.0</version>
 </dependency>
 ```
 
@@ -220,7 +226,7 @@ Event Hubs の Java クライアント ライブラリは、 [Maven セントラ
     ```
 
 > [!NOTE]
-> このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。 スループットを向上させるには、EventProcessorHost の複数のインスタンスを実行することをお勧めします。 このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
+> このチュートリアルでは、EventProcessorHost の単一のインスタンスを使用します。 スループットを向上させるには、EventProcessorHost の複数のインスタンスを (なるべく別のコンピューターで) 実行することをお勧めします。  これにより、冗長性も提供されます。   このような場合、受信したイベントの負荷を分散するために、さまざまなインスタンスが自動的に連携します。 複数の受信側でぞれぞれ *すべて* のイベントを処理する場合、 **ConsumerGroup** 概念を使用する必要があります。 さまざまなコンピューターからイベントを受信する場合、デプロイしたコンピューター (またはロール) に基づいて EventProcessorHost インスタンスの名前を指定するのに便利です。
 > 
 > 
 

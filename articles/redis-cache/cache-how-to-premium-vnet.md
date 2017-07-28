@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 06/07/2017
 ms.author: sdanie
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 945da7ce2ab5f2d479d96a6ed2896a0ba7e0747e
+ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
+ms.openlocfilehash: 84d55b7c86b6cf1964941d45748cde95c4f0f90f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 06/28/2017
 
 
 ---
@@ -40,7 +40,7 @@ Premium キャッシュのその他の機能の詳細については、「 [Azur
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
-Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Redis VNet 統合を構成できます。 新しい VNet を使用するには、まず「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」または「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-portal.md)」の手順に従って VNet を作成した後、**[新規 Redis Cache]** ブレードに戻り、Premium キャッシュを作成して構成します。
+Premium 価格レベルを選択すると、キャッシュと同じサブスクリプションと場所にある VNet を選択することで、Redis VNet 統合を構成できます。 新しい VNet を使用するには、まず「[Azure ポータルを使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」または「[Azure ポータルを使用した仮想ネットワーク (従来型) の作成](../virtual-network/virtual-networks-create-vnet-classic-pportal.md)」の手順に従って VNet を作成した後、**[新規 Redis Cache]** ブレードに戻り、Premium キャッシュを作成して構成します。
 
 新しいキャッシュ用に VNet を構成するには、**[新規 Redis Cache]** ブレードの **[仮想ネットワーク]** をクリックし、ドロップダウン リストから目的の VNet を選択します。
 
@@ -85,6 +85,7 @@ VNet の使用時に Azure Redis Cache インスタンスに接続するには�
 次の一覧は、Azure Redis Cache のスケーリングに関するよく寄せられる質問への回答です。
 
 * [Azure Redis Cache と VNet の誤った構成に関してよく見られる問題を教えてください](#what-are-some-common-misconfiguration-issues-with-azure-redis-cache-and-vnets)
+* [VNET で自分のキャッシュの動作を確認するにはどうすればよいですか](#how-can-i-verify-that-my-cache-is-working-in-a-vnet)
 * [Standard キャッシュまたは Basic キャッシュで VNet を使用できますか](#can-i-use-vnets-with-a-standard-or-basic-cache)
 * [Redis Cache の作成が失敗するサブネットと成功するサブネットがあるのはなぜですか](#why-does-creating-a-redis-cache-fail-in-some-subnets-but-not-others)
 * [サブネット アドレス空間の要件には何がありますか](#what-are-the-subnet-address-space-requirements)
@@ -143,6 +144,26 @@ Azure Redis Cache のネットワーク接続要件には、仮想ネットワ�
 * *ocsp.msocsp.com*、*mscrl.microsoft.com*、*crl.microsoft.com* に対する発信ネットワーク接続。 この接続は、SSL 機能をサポートするために必要です。
 * 仮想ネットワークの DNS 構成は、前述したすべてのエンドポイントとドメインを解決できるようにする必要があります。 これらの DNS 要件を満たすには、仮想ネットワークの有効な DNS インフラストラクチャを構成し、保守します。
 * 次の DNS ドメインで解決される次の Azure Monitoring エンドポイントに対する発信ネットワーク接続: shoebox2-black.shoebox2.metrics.nsatc.net、north-prod2.prod2.metrics.nsatc.net、azglobal-black.azglobal.metrics.nsatc.net、shoebox2-red.shoebox2.metrics.nsatc.net、east-prod2.prod2.metrics.nsatc.net、azglobal-red.azglobal.metrics.nsatc.net。
+
+### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>VNET で自分のキャッシュの動作を確認するにはどうすればよいですか
+
+>[!IMPORTANT]
+>VNET にホストされている Azure Redis Cache インスタンスに接続している場合、キャッシュ クライアントはテスト アプリケーションや診断 ping ツールを含む同じ VNET にある必要があります。
+>
+>
+
+前のセクションで説明したようにポート要件を構成した後、次の手順を実行して、キャッシュが動作していることを確認できます。
+
+- すべてのキャッシュ ノードを[再起動](cache-administration.md#reboot)します。 必要なすべてのキャッシュ依存関係 ([「受信ポートの要件」](cache-how-to-premium-vnet.md#inbound-port-requirements)と[「送信ポートの要件」](cache-how-to-premium-vnet.md#outbound-port-requirements)で説明) に到達できない場合、キャッシュは正常に再起動できません。
+- キャッシュ ノードが再起動したら (Azure Portal のキャッシュの状態で報告されます)、次のテストを実行できます。
+  - [tcping](https://www.elifulkerson.com/projects/tcping.php) を使って、キャッシュと同じ VNET 内にあるコンピューターからキャッシュ エンドポイントを ping します (ポート 6380 を使用)。 For example:
+    
+    `tcping.exe contosocache.redis.cache.windows.net 6380`
+    
+    `tcping` ツールでポートが開いていることがレポートされる場合、キャッシュは VNET 内のクライアントからの接続に使用できます。
+
+  - キャッシュに接続してキャッシュのいくつかの項目を追加および取得するテスト キャッシュ クライアント (StackExchange.Redis を使ったシンプルなコンソール アプリケーションにできます) を作成することでテストする方法もあります。 このサンプル クライアント アプリケーションをキャッシュと同じ VNET 内の VM にインストールし、実行してキャッシュへの接続性を確認します。
+
 
 ### <a name="can-i-use-vnets-with-a-standard-or-basic-cache"></a>Standard キャッシュまたは Basic キャッシュで VNet を使用できますか
 VNet は Premium キャッシュでのみ使用できます。
