@@ -214,7 +214,7 @@ Web アプリの **[カスタム ドメイン]** ページが、新規の専用 
 
 ## <a name="enforce-https"></a>HTTPS の適用
 
-App Service では HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用してアプリにアクセスできます**。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _web.config_ ファイルで書き換え規則を定義します。 App Service は、Web アプリの言語フレームワークに関係なく、このファイルを使用します。
+App Service *では* HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用してアプリにアクセスできます。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _web.config_ ファイルで書き換え規則を定義します。 App Service は、Web アプリの言語フレームワークに関係なく、このファイルを使用します。
 
 > [!NOTE]
 > 言語に固有の要求のリダイレクトがあります。 ASP.NET MVC では、_web.config_ 内の書き換え規則の代わりに [RequireHttps](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx) フィルターを使用できます。
