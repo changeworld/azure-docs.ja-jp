@@ -256,7 +256,7 @@ IIS URL 書き換えモジュールの詳細については、 [URL 書き換え
 
 ## <a name="enforce-https-for-web-apps-on-linux"></a>Web Apps on Linux に対する HTTPS の適用
 
-App Service on Linux では HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます**。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _.htaccess_ ファイルで書き換え規則を定義します。 
+App Service on Linux *では* HTTPS の使用が強制されないため、どなたでも引き続き HTTP を使用して Web アプリにアクセスできます。 Web アプリに対して HTTPS の使用を強制するには、Web アプリの _.htaccess_ ファイルで書き換え規則を定義します。 
 
 「[FTP/S を使用した Azure App Service へのアプリのデプロイ](app-service-deploy-ftp.md)」の指示に従って、Web アプリの FTP エンドポイントに接続します。
 
