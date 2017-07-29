@@ -7,6 +7,8 @@ author: shizn
 manager: timtl
 tags: 
 keywords: "raspberry pi シミュレーター, azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ"
+ROBOTS: NOINDEX
+redirect_url: /azure/iot-hub/iot-hub-raspberry-pi-web-simulator-get-started
 ms.service: iot-hub
 ms.devlang: node
 ms.topic: article

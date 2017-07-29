@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 07/18/2017
 ms.author: banders
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
@@ -151,7 +151,10 @@ ESXi ホストの VM 作成データの詳細を表示したい場合は、ESXi 
 #### <a name="common-search-queries"></a>一般的な検索クエリ
 このソリューションには、ESXi ホストの管理に役立つその他の便利なクエリ (高いストレージ使用量、ストレージの待機時間、パスの障害など) も含まれています。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![クエリ](./media/log-analytics-vmware/queries.png)
+
 
 #### <a name="save-queries"></a>クエリの保存
 検索クエリの保存は OMS の標準機能であり、便利なクエリを保存しておくのに役立ちます。 作成したクエリが便利であることがわかったら、**[お気に入り]** をクリックして保存します。 保存したクエリは、後で [[マイ ダッシュボード]](log-analytics-dashboards.md) ページから簡単に再利用できます。このページでは、独自のカスタム ダッシュボードを作成できます。

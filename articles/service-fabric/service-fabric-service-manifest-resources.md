@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: subramar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 9cfdb94d1e030fe9d467389acf8894d79efd17d1
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>サービス マニフェストにリソースを指定する

@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure SQL データ同期 (プ
 services: sql-database
 documentationcenter: 
 author: douglaslms
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: af4d41f8fa04902c766cd85d7e90f61dff8133e7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期の概要 (プレビュー)

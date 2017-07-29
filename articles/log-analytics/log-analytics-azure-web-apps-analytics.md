@@ -20,7 +20,6 @@ ms.openlocfilehash: 90d0b7e3f49daa33ab8c617d07ba9098cdda751f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/12/2017
 
-
 ---
 
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
@@ -92,6 +91,8 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 ### <a name="view-azure-web-apps-analytics-information"></a>Azure Web Apps Analytics 情報の表示
 
 **[Azure Web Apps Analytics]** タイルをクリックして、**[Azure Web Apps Analytics]** ダッシュボードを開きます。 ダッシュボードには、次の表に示したブレードが存在します。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 すべてのレコードを返すログ検索を実行するには、ブレードの一番下にある **[すべて表示]** をクリックするか、ブレード ヘッダーをクリックします。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | 分割 | Description |
 | --- | --- |

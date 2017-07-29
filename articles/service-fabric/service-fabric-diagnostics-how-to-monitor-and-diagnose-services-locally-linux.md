@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: subramar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 72b2d9142479f9ba0380c5bd2dd82734e370dee7
 ms.openlocfilehash: 86ed3f25f0bdd6bb5d8a93f124a0d2bcd7e2b07a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/08/2017
-
 
 ---
 

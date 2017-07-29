@@ -12,7 +12,7 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 7/27/2017
 ms.author: subramar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
