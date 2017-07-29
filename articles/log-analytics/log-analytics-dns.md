@@ -20,7 +20,6 @@ ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/09/2017
 
-
 ---
 
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
@@ -147,6 +146,8 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 ![[名前登録要求] ブレード ](./media/log-analytics-dns/name-reg-req-blade.png)
 
 **[DDI 分析のサンプル クエリ]**。 生の分析データを直接取得する最も一般的な検索クエリの一覧が含まれています。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ![サンプル クエリ](./media/log-analytics-dns/queries.png)
 

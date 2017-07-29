@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: subramar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1e6ae31b3ef2d9baf578b199233e61936aa3528e
@@ -20,25 +20,18 @@ ms.openlocfilehash: 09ddabf97028525e04f930f935f6ddf7ae132567
 ms.contentlocale: ja-jp
 ms.lasthandoff: 03/03/2017
 
-
 ---
-<a id="role-based-access-control-for-service-fabric-clients" class="xliff"></a>
-
-# ロール ベースのアクセス制御 (Service Fabric クライアント用)
+# <a name="role-based-access-control-for-service-fabric-clients"></a>ロール ベースのアクセス制御 (Service Fabric クライアント用)
 Azure Service Fabric では、Service Fabric クラスターに接続されるクライアントのために、管理者用とユーザー用の 2 つの異なるアクセス コントロールの種類がサポートされています。 アクセス制御を使用すると、クラスター管理者は、ユーザーのグループごとに特定のクラスター操作へのアクセスを制限して、クラスターのセキュリティを強化できます。  
 
 **管理者** には、管理機能へのフル アクセス権 (読み取り/書き込み機能など) が付与されています。 **ユーザー** には、管理機能 (クエリ機能など) と、アプリケーションとサービスを解決する機能への読み取りアクセス権のみが既定で付与されています。
 
 クラスターの作成時に、2 つのクライアント ロール (管理者とクライアント) を指定し、それぞれに個別の証明書を設定します。 セキュリティで保護された Service Fabric クラスターのセットアップの詳細については、 [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md) に関するページをご覧ください。
 
-<a id="default-access-control-settings" class="xliff"></a>
-
-## 既定のアクセス制御の設定
+## <a name="default-access-control-settings"></a>既定のアクセス制御の設定
 管理者のアクセス制御の種類は、すべての FabricClient API へのフル アクセスを持ちます。 Service Fabric クラスターに対して、次のような任意の読み取りおよび書き込み操作を実行できます。
 
-<a id="application-and-service-operations" class="xliff"></a>
-
-### アプリケーションおよびサービスの操作
+### <a name="application-and-service-operations"></a>アプリケーションおよびサービスの操作
 * **CreateService**: サービスの作成                             
 * **CreateServiceFromTemplate**: テンプレートからのサービスの作成                             
 * **UpdateService**: サービスの更新                             
@@ -58,9 +51,7 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 * **RecoverServicePartitions**: サービス パーティションの復旧                             
 * **RecoverSystemPartitions**: システム サービス パーティションの復旧                             
 
-<a id="cluster-operations" class="xliff"></a>
-
-### クラスターの操作
+### <a name="cluster-operations"></a>クラスターの操作
 * **ProvisionFabric**: MSI やクラスター マニフェストのプロビジョニング                             
 * **UpgradeFabric**: クラスターのアップグレードの開始                             
 * **UnprovisionFabric**: MSI やクラスター マニフェストのプロビジョニング解除                         
@@ -84,9 +75,7 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 * **NodeControl**: ノードの開始、停止、および再開                             
 * **MoveReplicaControl**: ノードから別のノードへのレプリカの移動                             
 
-<a id="miscellaneous-operations" class="xliff"></a>
-
-### その他の操作
+### <a name="miscellaneous-operations"></a>その他の操作
 * **Ping**: クライアントの ping                             
 * **Query**: 許可されるすべてのクエリ
 * **NameExists**: 名前付け URI の存在確認                             
@@ -110,14 +99,10 @@ Azure Service Fabric では、Service Fabric クラスターに接続される�
 
 管理者アクセス制御も、前述の操作にアクセスできます。
 
-<a id="changing-default-settings-for-client-roles" class="xliff"></a>
-
-## クライアント ロールの既定の設定の変更
+## <a name="changing-default-settings-for-client-roles"></a>クライアント ロールの既定の設定の変更
 クラスター マニフェスト ファイルでは、必要であれば、クライアントに管理者機能を提供できます。 既定の設定を変更するには、[クラスターの作成](service-fabric-cluster-creation-via-portal.md)中に **[Fabric の設定]** オプションに移動し、**name**、**admin**、**user**、**value** の各フィールドに前述の設定を入力します。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)
 
 [Service Fabric クラスターの作成](service-fabric-cluster-creation-via-portal.md)

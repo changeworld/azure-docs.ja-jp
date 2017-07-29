@@ -98,7 +98,7 @@ contoso.com のアプリケーション キーを Azure AD B2C テナントに�
                 <Protocol Name="OpenIdConnect"/>
                 <OutputTokenFormat>JWT</OutputTokenFormat>
                 <Metadata>
-                    <Item Key="METADATA">https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration</Item>
+                    <Item Key="METADATA">https://login.windows.net/contoso.com/.well-known/openid-configuration</Item>
                     <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
                     <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
                     <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>

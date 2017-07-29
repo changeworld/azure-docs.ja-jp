@@ -12,14 +12,13 @@ ms.devlang: Java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 7/27/2017
 ms.author: SubramaR
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: ad20216374306d8b5035140f3d8e107c595b623e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="service-fabric-on-linux"></a>Linux 上の Service Fabric
