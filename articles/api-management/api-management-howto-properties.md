@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="how-to-use-properties-in-azure-api-management-policies" class="xliff"></a>
-
-# Azure API Management ポリシーのプロパティの利用方法
+# <a name="how-to-use-properties-in-azure-api-management-policies"></a>Azure API Management ポリシーのプロパティの利用方法
 API Management のポリシーは、発行者がその構成を通じて API の動作を変更できる、システムの強力な機能の 1 つです。 API の要求または応答に対して順に実行される一連のステートメントが集まってポリシーが形成されます。 ポリシー ステートメントは、リテラル テキストの値、ポリシーの式、プロパティを使用して構築できます。 
 
 それぞれの API Management サービス インスタンスには、サービス インスタンスにグローバルなキー/値ペアのプロパティ コレクションがあります。 これらのプロパティを利用し、すべての API の構成とポリシーを対象に、定数文字列値を管理できます。 各プロパティには以下の属性があります。
@@ -48,9 +46,7 @@ API Management のポリシーは、発行者がその構成を通じて API の
 | ContosoHeaderValue |•••••••••••••••••••••• |True |Contoso |
 | ExpressionProperty |@(DateTime.Now.ToString()) |False | |
 
-<a id="to-use-a-property" class="xliff"></a>
-
-## プロパティを使用するには
+## <a name="to-use-a-property"></a>プロパティを使用するには
 ポリシーでプロパティを使用するには、`{{ContosoHeader}}` のように、二重の括弧の中にプロパティ名を置きます。次に例を示します。
 
 ```xml
@@ -83,9 +79,7 @@ API Management のポリシーは、発行者がその構成を通じて API の
 
 プロパティ値にはポリシー式を含めることができますが、プロパティ値に他のプロパティを含めることはできないことに注意してください。 `Property value text {{MyProperty}}`のように、プロパティ参照を含むテキストが使用されている場合、そのプロパティ参照は置換されず、プロパティ値の一部として追加されます。
 
-<a id="to-create-a-property" class="xliff"></a>
-
-## プロパティを作成するには
+## <a name="to-create-a-property"></a>プロパティを作成するには
 プロパティを作成するには、**[プロパティ]** タブで **[プロパティの追加]** をクリックします。
 
 ![プロパティの追加][api-management-properties-add-property-menu]
@@ -100,9 +94,7 @@ API Management のポリシーは、発行者がその構成を通じて API の
 
 REST API を利用し、プロパティを作成する方法については、「 [Create a property using the REST API (REST API を利用してプロパティを作成する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Put)」を参照してください。
 
-<a id="to-edit-a-property" class="xliff"></a>
-
-## プロパティを編集するには
+## <a name="to-edit-a-property"></a>プロパティを編集するには
 プロパティを編集するには、変数するプロパティの横にある **[編集]** をクリックします。
 
 ![プロパティの編集][api-management-properties-edit]
@@ -113,9 +105,7 @@ REST API を利用し、プロパティを作成する方法については、�
 
 REST API を利用し、プロパティを編集する方法については、「 [Edit a property using the REST API (REST API を利用してプロパティを編集する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Patch)」を参照してください。
 
-<a id="to-delete-a-property" class="xliff"></a>
-
-## プロパティを削除するには
+## <a name="to-delete-a-property"></a>プロパティを削除するには
 プロパティを削除するには、削除するプロパティの横にある **[削除]** をクリックします。
 
 ![プロパティの削除][api-management-properties-delete]
@@ -131,9 +121,7 @@ REST API を利用し、プロパティを編集する方法については、�
 
 REST API を利用し、プロパティを削除する方法については、「 [Delete a property using the REST API (REST API を利用してプロパティを作成する)](https://msdn.microsoft.com/library/azure/mt651775.aspx#Delete)」を参照してください。
 
-<a id="to-search-and-filter-properties" class="xliff"></a>
-
-## プロパティを検索し、フィルター処理するには
+## <a name="to-search-and-filter-properties"></a>プロパティを検索し、フィルター処理するには
 **[プロパティ]** タブには、プロパティの管理に役立つ検索とフィルター処理の機能があります。 プロパティ名でプロパティの一覧をフィルター処理するには、 **[検索プロパティ]** テキストボックスに検索語句を入力します。 すべてのプロパティを表示するには、 **[検索プロパティ]** テキストボックスを消去し、Enter を押します。
 
 ![Search][api-management-properties-search]
@@ -142,17 +130,13 @@ REST API を利用し、プロパティを削除する方法については、�
 
 ![フィルター][api-management-properties-filter]
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * ポリシーの使用に関する説明
   * [API Management のポリシー](api-management-howto-policies.md)
   * [Policy reference (ポリシー リファレンス)](https://msdn.microsoft.com/library/azure/dn894081.aspx)
   * [ポリシー式](https://msdn.microsoft.com/library/azure/dn910913.aspx)
 
-<a id="watch-a-video-overview" class="xliff"></a>
-
-## ビデオの概要を見る
+## <a name="watch-a-video-overview"></a>ビデオの概要を見る
 > [!VIDEO https://channel9.msdn.com/Blogs/AzureApiMgmt/Use-Properties-in-Policies/player]
 > 
 > 

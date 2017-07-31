@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby" class="xliff"></a>
-
-# Ruby で音声および SMS 機能に Twilio を使用する方法
+# <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-ruby"></a>Ruby で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
 
 ## <a id="WhatIs"></a>Twilio とは
