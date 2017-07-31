@@ -23,9 +23,7 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-<a id="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager" class="xliff"></a>
-
-# クラシックから Azure Resource Manager への IaaS リソースの移行計画
+# <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>クラシックから Azure Resource Manager への IaaS リソースの移行計画
 Azure Resource Manager には多くの優れた機能が用意されていますが、移行をスムーズに進めるには工程をしっかりと計画することが重要です。 時間をかけて計画すると、移行アクティビティの実行中に問題が発生することはありません。 
 
 > [!NOTE] 
@@ -35,13 +33,9 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 ![移行フェーズ](../media/virtual-machines-windows-migration-classic-resource-manager/plan-labtest-migrate-beyond.png)
 
-<a id="plan" class="xliff"></a>
+## <a name="plan"></a>プラン
 
-## プラン
-
-<a id="technical-considerations-and-tradeoffs" class="xliff"></a>
-
-### 技術的な考慮事項とトレードオフ
+### <a name="technical-considerations-and-tradeoffs"></a>技術的な考慮事項とトレードオフ
 
 技術要件の規模、地理的な場所、および運用方法に応じて、次のことを検討する必要があります。
 
@@ -57,9 +51,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 10. 移行のためにどのようなプログラム管理またはプロジェクト管理のプランを用意していますか。
 11. Azure Resource Manager への移行のタイムラインおよびその他の関連テクノロジのロード マップはどのようなものですか。  それらは最適に調整されていますか。
 
-<a id="patterns-of-success" class="xliff"></a>
-
-### 成功のパターン
+### <a name="patterns-of-success"></a>成功のパターン
 
 成功を収めたお客様は詳細なプランを作成しており、そこでは前述の質問についてよく話し合い、その内容を文書化して管理しています。  移行プランがスポンサーや関係者に広く伝わるようにしてください。  また、移行オプションに関する知識を身に付けてください。以下に示す移行ドキュメントをお読みになることを強くお勧めします。
 
@@ -72,18 +64,14 @@ Azure Resource Manager には多くの優れた機能が用意されています
 * [Review most common migration errors](migration-classic-resource-manager-errors.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (移行の一般的なエラーを確認する)
 * [クラシックから Azure Resource Manager への IaaS リソースの移行に関してよく寄せられる質問を確認する](migration-classic-resource-manager-faq.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-<a id="pitfalls-to-avoid" class="xliff"></a>
-
-### 回避すべき問題
+### <a name="pitfalls-to-avoid"></a>回避すべき問題
 
 - 計画を行わないこと。  この移行のテクノロジ面の手順は実証済みであり、結果は予測可能なものです。
 - プラットフォームでサポートされる移行 API がすべてのシナリオに対応していると想定すること。 サポート対象のシナリオについて確認するには、「[サポートされていない機能と構成](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations)」をご覧ください。
 - エンド ユーザーに関連するアプリケーションの停止の可能性について計画しないこと。  アプリケーションを使用できない可能性のある時間についてエンド ユーザーに適切に警告するための十分なバッファーを計画してください。
 
 
-<a id="lab-test" class="xliff"></a>
-
-## ラボ テスト 
+## <a name="lab-test"></a>ラボ テスト 
 
 **環境を複製してテスト移行を行う**
   > [!NOTE]
@@ -97,9 +85,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
   これは、AsmMetadataParser ツールを使用して実施できます。 [このツールについては、こちらをご覧ください](https://github.com/Azure/classic-iaas-resourcemanager-migration/tree/master/AsmToArmMigrationApiToolset)。
 
-<a id="patterns-of-success" class="xliff"></a>
-
-### 成功のパターン
+### <a name="patterns-of-success"></a>成功のパターン
 
 大規模な移行の多くで検出された問題を以下に示します。 これは包括的なリストではないため、詳しくは「[サポートされていない機能と構成](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#unsupported-features-and-configurations)」をご覧ください。 これらの技術的な問題が発生するかどうかはわかりませんが、問題が発生した場合は、移行の前に解決しておくと、移行をスムーズに行うことができます。
 
@@ -165,20 +151,14 @@ Azure Resource Manager には多くの優れた機能が用意されています
 
 - **ファブリック クラスターが存在しない** - さまざまな理由で、特定の VM を移行できない場合があります。 これらの既知のケースの 1 つとして、VM が最近 (たとえば先週) 作成されて、Azure Resource Manager ワークロード用の設定がまだ行われていない Azure クラスターに追加された場合などがあります。  この場合は、**ファブリック クラスターが存在しません**というエラーが表示され、VM を移行できません。 クラスターで Azure Resource Manager がすぐに有効になるため、通常、この問題は数日経つと解決します。 ただし、即時の解決策の 1 つとして、VM の `stop-deallocate` を実行して移行を続行し、移行の完了後に Azure Resource Manager で VM を起動する方法があります。
 
-<a id="pitfalls-to-avoid" class="xliff"></a>
-
-### 回避すべき問題
+### <a name="pitfalls-to-avoid"></a>回避すべき問題
 
 - 検証/準備/ドライ ランの中止の移行を省略しないでください。
 - ほとんど (すべてではありません) の潜在的な問題は、検証/準備/中止の手順で発生します。
 
-<a id="migration" class="xliff"></a>
+## <a name="migration"></a>移行
 
-## 移行
-
-<a id="technical-considerations-and-tradeoffs" class="xliff"></a>
-
-### 技術的な考慮事項とトレードオフ
+### <a name="technical-considerations-and-tradeoffs"></a>技術的な考慮事項とトレードオフ
 
 環境に関する既知の問題に対処したので、これで準備が整いました。
 
@@ -189,25 +169,17 @@ Azure Resource Manager には多くの優れた機能が用意されています
 3. **(省略可能)** 予期しない問題の発生に備えて、十分なバッファーを用意したメンテナンスのためのダウンタイムのスケジュールを設定します。
 4. 問題が発生した場合に備えて、サポート チームと連携します。
 
-<a id="patterns-of-success" class="xliff"></a>
-
-### 成功のパターン
+### <a name="patterns-of-success"></a>成功のパターン
 
 実際の移行を行う前に、前述の「ラボ テスト」に記載されている技術的なガイダンスを考慮し、問題を軽減する必要があります。  十分なテストを実施しておけば、移行はそれほど難しくはありません。  運用環境については、信頼できる Microsoft パートナーや Microsoft プレミア サービスなどの追加のサポートを準備しておくとよいでしょう。
 
-<a id="pitfalls-to-avoid" class="xliff"></a>
-
-### 回避すべき問題
+### <a name="pitfalls-to-avoid"></a>回避すべき問題
 
 完全なテストを実施しておかないと、問題が発生し、移行に遅れが出る可能性があります。  
 
-<a id="beyond-migration" class="xliff"></a>
+## <a name="beyond-migration"></a>移行後の注意事項
 
-## 移行後の注意事項
-
-<a id="technical-considerations-and-tradeoffs" class="xliff"></a>
-
-### 技術的な考慮事項とトレードオフ
+### <a name="technical-considerations-and-tradeoffs"></a>技術的な考慮事項とトレードオフ
 
 これで、Azure Resource Manager への移行が完了し、プラットフォームを最大限に活用できます。  その他のメリットについては、「[Azure Resource Manager の概要](../../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
@@ -217,9 +189,7 @@ Azure Resource Manager には多くの優れた機能が用意されています
 - Azure Resource Manager を使用する技術的な理由とビジネス上の理由について再検討します。Azure Resource Manager でのみ使用可能な追加のサービスを有効にして、環境に適用します。
 - PaaS サービスを使用して環境をモダナイズします。
 
-<a id="patterns-of-success" class="xliff"></a>
-
-### 成功のパターン
+### <a name="patterns-of-success"></a>成功のパターン
 
 Azure Resource Manager で有効にするサービスを、目的を持って選択してください。  多くのお客様は、Azure 環境について、以下のような魅力的な機能を活用しています。
 
@@ -229,16 +199,12 @@ Azure Resource Manager で有効にするサービスを、目的を持って選
 - [アクティビティ コントロール](../../azure-resource-manager/resource-group-audit.md)
 - [リソース ポリシー](../../azure-resource-manager/resource-manager-policy.md)
 
-<a id="pitfalls-to-avoid" class="xliff"></a>
-
-### 回避すべき問題
+### <a name="pitfalls-to-avoid"></a>回避すべき問題
 
 このクラシックから Azure Resource Manager への移行を開始した理由を思い出してください。  そもそものビジネス上の理由は何でしたか。 また、ビジネス上の目的を達成しましたか。
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への IaaS リソースの移行の概要](migration-classic-resource-manager-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [プラットフォームでサポートされているクラシックから Azure Resource Manager への移行に関する技術的な詳細](migration-classic-resource-manager-deep-dive.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)

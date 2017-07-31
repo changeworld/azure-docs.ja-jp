@@ -25,18 +25,14 @@ ms.lasthandoff: 05/08/2017
 
 
 ---
-<a id="reset-the-password-for-a-user-in-azure-active-directory" class="xliff"></a>
-
-# Azure Active Directory でのユーザー パスワードのリセット
+# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Azure Active Directory でのユーザー パスワードのリセット
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
 >
 >
 
-<a id="how-to-reset-the-password-for-a-user" class="xliff"></a>
-
-## ユーザーのパスワードをリセットする方法
+## <a name="how-to-reset-the-password-for-a-user"></a>ユーザーのパスワードをリセットする方法
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
@@ -50,9 +46,7 @@ ms.lasthandoff: 05/08/2017
     ![[パスワードのリセット] コマンドの選択](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
 6. **[パスワードのリセット]** ブレードで、**[パスワードのリセット]** を選択します。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)
 * [Azure AD でのロールへのユーザーの割り当て](active-directory-users-assign-role-azure-portal.md)
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)
