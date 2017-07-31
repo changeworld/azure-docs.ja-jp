@@ -25,14 +25,10 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-<a id="delete-a-user-from-a-directory-in-azure-active-directory" class="xliff"></a>
-
-# Azure Active Directory でディレクトリからユーザーを削除する
+# <a name="delete-a-user-from-a-directory-in-azure-active-directory"></a>Azure Active Directory でディレクトリからユーザーを削除する
 この記事では、Azure Active Directory (Azure AD) でディレクトリからユーザーを削除する方法について説明します。 組織への新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
 
-<a id="to-delete-a-user" class="xliff"></a>
-
-## ユーザーの削除
+## <a name="to-delete-a-user"></a>ユーザーの削除
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
@@ -45,9 +41,7 @@ ms.lasthandoff: 05/08/2017
 
     ![[削除] をクリックする](./media/active-directory-users-delete-user-azure-portal/create-users-delete-command.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [Azure Active Directory に新しいユーザーを追加する](active-directory-users-create-azure-portal.md)
 * [Azure Active Directory でのユーザー パスワードのリセット](active-directory-users-reset-password-azure-portal.md)
 * [Azure Active Directory でユーザーを管理者ロールに割り当てる](active-directory-users-assign-role-azure-portal.md)

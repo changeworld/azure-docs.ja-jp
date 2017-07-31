@@ -21,9 +21,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 05/08/2017
 
 ---
-<a id="api-management-advanced-policies" class="xliff"></a>
-
-# API Management の高度なポリシー
+# <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
 このトピックでは、次の API Management ポリシーについて説明します。 ポリシーを追加および構成する方法については、「 [Azure API Management のポリシー](http://go.microsoft.com/fwlink/?LinkID=398186)」をご覧ください。  
   
 ##  <a name="AdvancedPolicies"></a> 高度なポリシー  
@@ -77,9 +75,7 @@ ms.lasthandoff: 05/08/2017
   
  制御フロー ポリシーには、1 つ以上の `<when/>` 要素が含まれている必要があります。 `<otherwise/>` 要素は省略可能です。 `<when/>` 要素内の条件は、ポリシーに記述されている順序で評価されます。 条件属性が `true` と等しい最初の `<when/>` 要素に含まれているポリシー ステートメントが適用されます。 `<otherwise/>` 要素 (存在する場合) に含まれているポリシーは、`<when/>` 要素の条件属性がすべて `false` の場合に適用されます。  
   
-<a id="examples" class="xliff"></a>
-
-### 例  
+### <a name="examples"></a>例  
   
 ####  <a name="ChooseExample"></a> 例  
  次の例は、[set-variable](api-management-advanced-policies.md#set-variable) ポリシーと 2 つの制御フロー ポリシーを示しています。  
@@ -119,9 +115,7 @@ ms.lasthandoff: 05/08/2017
 </policies>  
 ```  
   
-<a id="example" class="xliff"></a>
-
-#### 例  
+#### <a name="example"></a>例  
  次の例に、バックエンド サービスから受信した応答で `Starter` 製品が使用されている場合にデータ要素を削除して、内容のフィルター処理を行う方法を示します。 このポリシーの構成と使用についてのデモは、「[Cloud Cover Episode 177: More API Management Features with Vlad Vinogradsky](https://azure.microsoft.com/documentation/videos/episode-177-more-api-management-features-with-vlad-vinogradsky/)」(クラウド カバー エピソード 177: Vlad Vinogradsky によるその他の API Management 機能の紹介) を 34:30 まで早送りしてご覧ください。 このデモで使用されている [Dark Sky Forecast API](https://developer.forecast.io/) の概要について確認する場合は、31:50 から再生してください。  
   
 ```xml  
@@ -140,9 +134,7 @@ ms.lasthandoff: 05/08/2017
 </choose>  
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
@@ -150,9 +142,7 @@ ms.lasthandoff: 05/08/2017
 |when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|はい|  
 |otherwise|`when` 条件のいずれも `true` に評価されない場合に使用されるポリシー スニペットが含まれます。|いいえ|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|  
 |---------------|-----------------|--------------|  
@@ -171,21 +161,15 @@ ms.lasthandoff: 05/08/2017
 > [!NOTE]
 >  このポリシーを削除すると、要求はバックエンド サービスに転送されず、inbound セクションのポリシーが正常に完了した時点で outbound セクションのポリシーが即座に評価されます。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <forward-request timeout="time in seconds" follow-redirects="true | false"/>  
 ```  
   
-<a id="examples" class="xliff"></a>
-
-### 例  
+### <a name="examples"></a>例  
   
-<a id="example" class="xliff"></a>
-
-#### 例  
+#### <a name="example"></a>例  
  次の API レベル ポリシーは、すべての要求を 60 秒のタイムアウト間隔でバックエンド サービスに転送します。  
   
 ```xml  
@@ -204,9 +188,7 @@ ms.lasthandoff: 05/08/2017
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-#### 例  
+#### <a name="example"></a>例  
  この操作レベル ポリシーは、`base` 要素を使用して、親 API レベル スコープからバックエンド ポリシーを継承します。  
   
 ```xml  
@@ -225,9 +207,7 @@ ms.lasthandoff: 05/08/2017
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-#### 例  
+#### <a name="example"></a>例  
  この操作レベル ポリシーは、すべての要求を 120 秒のタイムアウト間隔でバックエンド サービスに明示的に転送し、親 API レベル バックエンド ポリシーを継承しません。  
   
 ```xml  
@@ -247,9 +227,7 @@ ms.lasthandoff: 05/08/2017
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-#### 例  
+#### <a name="example"></a>例  
  この操作レベル ポリシーは、バックエンド サービスに要求を転送しません。  
   
 ```xml  
@@ -268,26 +246,20 @@ ms.lasthandoff: 05/08/2017
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |forward-request|ルート要素。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |timeout="整数"|バックエンド サービスの呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ|タイムアウトなし|  
 |follow-redirects="true &#124; false"|バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。|なし|false|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** backend  
@@ -300,9 +272,7 @@ ms.lasthandoff: 05/08/2017
 > [!NOTE]
 >  イベント ハブの構成とイベントのログ記録に関する詳細な手順については、[Azure Event Hubs で API Management イベントを記録する方法](https://azure.microsoft.com/documentation/articles/api-management-howto-log-event-hubs/)に関するページを参照してください。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <log-to-eventhub logger-id="id of the logger entity" partition-id="index of the partition where messages are sent" partition-key="value used for partition assignment">  
@@ -311,9 +281,7 @@ ms.lasthandoff: 05/08/2017
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  イベント ハブに記録する値として、任意の文字列を使用できます。 この例では、すべての着信コールの日付と時刻、デプロイ サービス名、要求 ID、IP アドレス、および操作名が、`contoso-logger` ID で登録されたイベント ハブ ロガーに記録されます。  
   
 ```xml  
@@ -328,17 +296,13 @@ ms.lasthandoff: 05/08/2017
 </policies>  
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |log-to-eventhub|ルート要素。 この要素の値は、イベント ハブに記録する文字列です。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|  
 |---------------|-----------------|--------------|  
@@ -346,9 +310,7 @@ ms.lasthandoff: 05/08/2017
 |partition-id|メッセージが送信されるパーティションのインデックスを指定します。|省略可能。 `partition-key` を使用する場合はこの属性を使用できません。|  
 |partition-key|メッセージの送信時にパーティション割り当てに使用される値を指定します。|省略可能。 `partition-id` を使用する場合はこの属性を使用できません。|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -358,18 +320,14 @@ ms.lasthandoff: 05/08/2017
 ##  <a name="mock-response"></a> モック応答  
 `mock-response` は名前が示すとおり、API と操作の模擬テストを実行するために使用します。 通常のパイプライン実行を中止し、モック応答を呼び出し元に返します。 ポリシーは常に、再現性が最も高い応答を返そうとします。 使用可能な場合は常に、応答コンテキストの例が優先されます。 スキーマが提供され、例が提供されていない場合、ポリシーはスキーマからサンプルの応答を生成します。 例もスキーマも見つからない場合、コンテキストなしの応答が返されます。
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <mock-response status-code="code" content-type="media type"/>  
   
 ```  
   
-<a id="examples" class="xliff"></a>
-
-### 例  
+### <a name="examples"></a>例  
   
 ```xml  
 <!-- Returns 200 OK status code. Content is based on an example or schema, if provided for this 
@@ -381,26 +339,20 @@ status code and media type. If no example or schema found, the content is empty.
 <mock-response status-code='200' content-type='application/json'/>  
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |mock-response|ルート要素。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|--------------|  
 |status-code|応答の状態コードを指定し、対応する例またはスキーマを選択するために使用します。|なし|200|  
 |content-type|`Content-Type` 応答のヘッダー値を指定し、対応する例またはスキーマを選択するために使用します。|なし|なし|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、on-error  
@@ -410,9 +362,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="Retry"></a> 再試行  
  `retry` ポリシーは、子ポリシーを 1 回実行し、再試行 `condition` が `false` になるか再試行 `count` に達するまで実行を再試行します。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
   
@@ -428,9 +378,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  次の例では、要求の転送が、指数再試行アルゴリズムを使用して 10 回まで再試行されます。 `first-fast-retry` が false に設定されているため、すべての再試行が指数再試行アルゴリズムの対象になります。  
   
 ```xml  
@@ -447,17 +395,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |retry|ルート要素。 他のポリシーを子要素として含めることができます。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
@@ -473,9 +417,7 @@ status code and media type. If no example or schema found, the content is empty.
 >  `interval` と `delta` のみを指定した場合、**線形**間隔の再試行アルゴリズムが使用されます。この場合の再試行間の待機時間は、次の式に従って計算されます: `interval + (count - 1)*delta`。  
 >  `interval`、`max-interval`、および `delta` を指定した場合、**指数**間隔の再試行アルゴリズムが適用されます。この場合の再試行間の待機時間は、次の式に従って `interval` の値から値 `max-interval` まで指数的に大きくなります: `min(interval + (2^count - 1) * random(delta * 0.8, delta * 1.2), max-interval)`。  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。 子ポリシーの使用に関する制限がこのポリシーに継承されることに注意してください。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -485,9 +427,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="ReturnResponse"></a> 応答を返す  
  `return-response` ポリシーは、パイプラインの実行を中止し、既定またはカスタムの応答を呼び出し元に返します。 既定の応答は、本文のない `200 OK` です。 コンテキスト変数またはポリシー ステートメントを使用して、カスタムの応答を指定できます。 その両方を指定した場合、コンテキスト変数に含まれる応答が、呼び出し元に返される前にポリシー ステートメントによって変更されます。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <return-response response-variable-name="existing context variable">  
@@ -498,9 +438,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
   
 ```xml  
 <return-response>  
@@ -512,9 +450,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
@@ -523,17 +459,13 @@ status code and media type. If no example or schema found, the content is empty.
 |set-body|[set-body](api-management-transformation-policies.md#SetBody) ポリシー ステートメント。|いいえ|  
 |set-status|[set-status](api-management-advanced-policies.md#SetStatus) ポリシー ステートメント。|いいえ|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|  
 |---------------|-----------------|--------------|  
 |response-variable-name|たとえば、アップストリームの [send-request](api-management-advanced-policies.md#SendRequest) ポリシーから参照され、`Response` オブジェクトを含むコンテキスト変数の名前|省略可能。|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -543,9 +475,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="SendOneWayRequest"></a> 1 方向の要求を送信する  
  `send-one-way-request` ポリシーは、指定された URL に指定された要求を送信します。応答は待機しません。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <send-one-way-request mode="new | copy">  
@@ -557,9 +487,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  このサンプル ポリシーでは、`send-one-way-request` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
   
 ```xml  
@@ -588,9 +516,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
@@ -600,9 +526,7 @@ status code and media type. If no example or schema found, the content is empty.
 |ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|なし|  
 |body|要求本文。|いいえ|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
@@ -610,9 +534,7 @@ status code and media type. If no example or schema found, the content is empty.
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|なし|override|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -622,9 +544,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="SendRequest"></a> 要求を送信する  
  `send-request` ポリシーは、設定されたタイムアウト値以内の待機時間で、指定された要求を指定された URL に送信します。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <send-request mode="new|copy" response-variable-name="" timeout="60 sec" ignore-error  
@@ -637,9 +557,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  この例は、承認サーバーを使用して参照トークンを検証する 1 つの方法を示しています。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
   
 ```xml  
@@ -677,9 +595,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
@@ -689,9 +605,7 @@ status code and media type. If no example or schema found, the content is empty.
 |ヘッダー|要求ヘッダー。 複数の要求ヘッダーには複数のヘッダー要素を使用します。|なし|  
 |body|要求本文。|いいえ|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
@@ -702,9 +616,7 @@ status code and media type. If no example or schema found, the content is empty.
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
 |exists-action|対象のヘッダーが既に指定されている場合の操作を指定します。 この属性の値は次のいずれかに設定する必要があります。<br /><br /> -   override - 既存のヘッダーの値を置き換えます。<br />-   skip - 既存のヘッダーの値を置き換えません。<br />-   append - 既存のヘッダーの値に値を追加します。<br />-   delete - 要求からヘッダーを削除します。<br /><br /> `override` に設定した場合、同じ名前の複数のエントリを記載すると、すべてのエントリに従ってヘッダーが設定されます (複数回記載されます)。結果に設定されるのは記載した値のみです。|なし|override|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -714,18 +626,14 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="SetHttpProxy"></a> HTTP プロキシの設定  
  `proxy` ポリシーにより、HTTP プロキシ経由でバックエンドに転送されるように要求をルーティングできます。 ゲートウェイとプロキシ間は、HTTP (HTTPS ではなく) のみがサポートされます。 基本認証と NTLM 認証のみ。
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <proxy url="http://hostname-or-ip:port" username="username" password="password" />  
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
 ポリシー ドキュメントに機密情報を保存しないようにするため、ユーザー名とパスワードの値としての[プロパティ](api-management-howto-properties.md)の使用に注意してください。  
   
 ```xml  
@@ -733,17 +641,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |proxy|ルート要素|あり|  
 
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
@@ -751,9 +655,7 @@ status code and media type. If no example or schema found, the content is empty.
 |username="string"|プロキシで認証に使用するユーザー名。|いいえ|該当なし |  
 |password="string"|プロキシで認証に使用するパスワード。|いいえ|該当なし |  
 
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound  
@@ -763,18 +665,14 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="SetRequestMethod"></a> 要求メソッドを設定する  
  `set-method` ポリシーでは、要求の HTTP 要求メソッドを変更できます。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <set-method>METHOD</set-method>  
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  このサンプル ポリシーでは、`set-method` ポリシーを使用して、HTTP 応答コードが 500 以上の場合に Slack チャット ルームにメッセージを送信します。 このサンプルの詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
   
 ```xml  
@@ -803,17 +701,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|はい|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、on-error  
@@ -823,18 +717,14 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="SetStatus"></a> 状態コードを設定する  
  `set-status` ポリシーは、HTTP 状態コードを指定された値に変更します。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <set-status code="" reason=""/>  
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  この例は、承認トークンが無効な場合に 401 応答を返す方法を示しています。 詳細については、「[Azure API Management サービスからの外部サービスの使用](https://azure.microsoft.com/documentation/articles/api-management-sample-send-request/)」を参照してください。  
   
 ```xml  
@@ -851,26 +741,20 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |set-status|ルート要素。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |code="整数"|返される HTTP 状態コード。|はい|該当なし|  
 |reason="文字列"|状態コードを返す理由の説明。|はい|該当なし|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** outbound、backend、on-error  
@@ -893,26 +777,20 @@ status code and media type. If no example or schema found, the content is empty.
 <set-variable name="IsMobile" value="@(context.Request.Headers["User-Agent"].Contains("iPad") || context.Request.Headers["User-Agent"].Contains("iPhone"))" />  
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |set-variable|ルート要素。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|  
 |---------------|-----------------|--------------|  
 |name|変数の名前。|はい|  
 |値|変数の値。 式またはリテラル値を指定できます。|はい|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -987,9 +865,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="Trace"></a> トレース  
  `trace` ポリシーは、[API Inspector](https://azure.microsoft.com/en-us/documentation/articles/api-management-howto-api-inspector/) の出力に文字列を追加します。 このポリシーは、トレースがトリガーされたときにのみ実行されます。つまり、`Ocp-Apim-Trace` 要求ヘッダーが存在し、`true` に設定されている場合、および `Ocp-Apim-Subscription-Key` 要求ヘッダーが存在し、管理者アカウントに関連付けられた有効なキーを保持している場合が該当します。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
   
@@ -999,25 +875,19 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |trace|ルート要素。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|はい|該当なし|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend、on-error  
@@ -1027,9 +897,7 @@ status code and media type. If no example or schema found, the content is empty.
 ##  <a name="Wait"></a> 待機  
  `wait` ポリシーは、直接の子ポリシーを並列で実行し、その直接の子ポリシーのすべてまたはいずれかが完了するまで完了を待機します。 待機ポリシーには、[要求を送信する](api-management-advanced-policies.md#SendRequest)、[キャッシュからの値の取得](api-management-caching-policies.md#GetFromCacheByKey)、および[制御フロー](api-management-advanced-policies.md#choose)のポリシーを直接の子ポリシーとして含めることができます。  
   
-<a id="policy-statement" class="xliff"></a>
-
-### ポリシー ステートメント  
+### <a name="policy-statement"></a>ポリシー ステートメント  
   
 ```xml  
 <wait for="all|any">  
@@ -1039,9 +907,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="example" class="xliff"></a>
-
-### 例  
+### <a name="example"></a>例  
  次の例では、`wait` ポリシーの直接の子ポリシーとして 2 つの `choose` ポリシーがあります。 これらの `choose` ポリシーはそれぞれ並列に実行されます。 各 `choose` ポリシーは、キャッシュされた値を取得しようとします。 キャッシュ ミスがある場合は、バックエンド サービスが呼び出されて値を提供します。 この例では、`for` 属性が `all` に設定されているため、すべての直接の子ポリシーが完了するまで、`wait` ポリシーは完了しません。   この例のコンテキスト変数 (`execute-branch-one`、`value-one`、`execute-branch-two`、および `value-two`) は、このサンプル ポリシーのスコープ外で宣言されています。  
   
 ```xml  
@@ -1076,34 +942,26 @@ status code and media type. If no example or schema found, the content is empty.
   
 ```  
   
-<a id="elements" class="xliff"></a>
-
-### 要素  
+### <a name="elements"></a>要素  
   
 |要素|Description|必須|  
 |-------------|-----------------|--------------|  
 |wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|はい|  
   
-<a id="attributes" class="xliff"></a>
-
-### 属性  
+### <a name="attributes"></a>属性  
   
 |Attribute|Description|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |for|`wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> -   `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。|いいえ|すべて|  
   
-<a id="usage" class="xliff"></a>
-
-### 使用法  
+### <a name="usage"></a>使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
   
 -   **ポリシー セクション:** inbound、outbound、backend  
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
 -    [API Management のポリシー](api-management-howto-policies.md) 
 -    [ポリシー式](api-management-policy-expressions.md)

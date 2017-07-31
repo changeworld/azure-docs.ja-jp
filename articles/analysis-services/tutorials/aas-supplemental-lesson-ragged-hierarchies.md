@@ -22,8 +22,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
 
 ---
-<a id="supplemental-lesson---ragged-hierarchies" class="xliff"></a>
-# 補足のレッスン - 不規則階層
+# <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -35,17 +34,14 @@ ms.lasthandoff: 05/05/2017
   
 このレッスンの推定所要時間: **20 分**  
   
-<a id="prerequisites" class="xliff"></a>
-## 前提条件  
+## <a name="prerequisites"></a>前提条件  
 この補足のレッスンのトピックは、表形式モデルのチュートリアルの一部です。 この補足のレッスンの作業を実行する前に、前のレッスンをすべて完了しているか、または Adventure Works Internet Sales のサンプル モデル プロジェクトを完了している必要があります。 
 
 チュートリアルの一環として AW Internet Sales プロジェクトを作成した場合、モデルには不規則なデータや階層がまだ含まれていません。 この補足のレッスンを実行するには、まず最初に、いくつかのテーブルを追加することによって問題を生じさせ、リレーションシップ、計算列、メジャー、および新しい組織階層を作成する必要があります。 その作業に 15 分程かかります。 その後、ほんの数分でそれを解決します。  
 
-<a id="add-tables-and-objects" class="xliff"></a>
-## テーブルとオブジェクトの追加
+## <a name="add-tables-and-objects"></a>テーブルとオブジェクトの追加
   
-<a id="to-add-new-tables-to-your-model" class="xliff"></a>
-### 新しいテーブルをモデルに追加するには
+### <a name="to-add-new-tables-to-your-model"></a>新しいテーブルをモデルに追加するには
   
 1.  表形式モデル エクスプローラーで、**[データ ソース]** を展開し、接続を右クリックして **[新しいテーブルのインポート]** を選択します。
   
@@ -116,8 +112,7 @@ ms.lasthandoff: 05/05/2017
 
     ピボットテーブルから分かるとおり、階層には不規則な行が表示されます。 空のメンバーが表示される行が多数あります。
 
-<a id="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property" class="xliff"></a>
-## [メンバーを隠す] プロパティを設定して不規則階層を修正するには
+## <a name="to-fix-the-ragged-hierarchy-by-setting-the-hide-members-property"></a>[メンバーを隠す] プロパティを設定して不規則階層を修正するには
 
 1.  **表形式モデル エクスプ ローラー**で、**[テーブル]** > **[DimEmployee]** > **[階層]** > **[Organization]** を展開します。
 
@@ -131,8 +126,7 @@ ms.lasthandoff: 05/05/2017
 
     これで、大幅に改善されました。
 
-<a id="see-also" class="xliff"></a>
-## 関連項目   
+## <a name="see-also"></a>関連項目   
 [レッスン 9: 階層を作成する](../tutorials/aas-lesson-9-create-hierarchies.md)  
 [補足のレッスン - 動的なセキュリティ](../tutorials/aas-supplemental-lesson-dynamic-security.md)  
 [補足のレッスン - 詳細行](../tutorials/aas-supplemental-lesson-detail-rows.md)  

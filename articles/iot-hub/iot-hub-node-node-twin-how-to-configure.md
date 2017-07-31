@@ -22,9 +22,7 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="use-desired-properties-to-configure-devices-node" class="xliff"></a>
-
-# 必要なプロパティを使用してデバイスを構成する (Node)
+# <a name="use-desired-properties-to-configure-devices-node"></a>必要なプロパティを使用してデバイスを構成する (Node)
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
 
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
@@ -48,9 +46,7 @@ ms.lasthandoff: 05/09/2017
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-<a id="create-the-simulated-device-app" class="xliff"></a>
-
-## シミュレートされたデバイスのアプリを作成する
+## <a name="create-the-simulated-device-app"></a>シミュレートされたデバイスのアプリを作成する
 このセクションでは、ハブに **myDeviceId** として接続し、必要な構成の更新を待機して、シミュレートされた構成の更新プロセスの情報を報告する、Node.js コンソール アプリを作成します。
 
 1. **simulatedeviceconfiguration** という名前の新しい空のフォルダーを作成します。 **simulatedeviceconfiguration** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
@@ -161,9 +157,7 @@ ms.lasthandoff: 05/09/2017
    
     `retrieved device twin` というメッセージが表示されます。 そのままアプリを実行します。
 
-<a id="create-the-service-app" class="xliff"></a>
-
-## サービス アプリケーションを作成する
+## <a name="create-the-service-app"></a>サービス アプリケーションを作成する
 このセクションでは、新しいテレメトリの構成オブジェクトを使って、**myDeviceId** に関連付けられたデバイス ツインの "*必要なプロパティ*" を更新する、Node.js コンソール アプリを作成します。 その後このアプリでは、IoT ハブに格納されているデバイス ツインにクエリを実行し、デバイスの必要な構成と報告される構成の違いを示します。
 
 1. **setdesiredandqueryapp** という名前の新しい空のフォルダーを作成します。 **setdesiredandqueryapp** フォルダー内に、コマンド プロンプトで次のコマンドを使用して新しい package.json ファイルを作成します。 次の既定値をすべてそのまま使用します。
@@ -253,9 +247,7 @@ ms.lasthandoff: 05/09/2017
    > 
    > 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 このチュートリアルでは、バックエンド アプリから必要な構成を "*必要なプロパティ*" として設定し、その変更を検出してデバイス ツインに "*報告されるプロパティ*" として状態を報告するマルチステップの更新プロセスをシミュレートするための、シミュレートされたデバイス アプリを記述しました。
 
 詳細については、次のリソースをご覧ください。
