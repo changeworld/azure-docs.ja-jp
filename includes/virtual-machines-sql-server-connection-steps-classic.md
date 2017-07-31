@@ -1,5 +1,4 @@
-### 仮想マシンの DNS 名を特定する
-<a id="determine-the-dns-name-of-the-virtual-machine" class="xliff"></a>
+### <a name="determine-the-dns-name-of-the-virtual-machine"></a>仮想マシンの DNS 名を特定する
 別のコンピューターから SQL Server Database エンジンに接続するには、仮想マシンのドメイン ネーム システム (DNS) 名が必要になります (これは、仮想マシンを識別するためにインターネットで使用される名前です。 IP アドレスを使用することもできますが、Azure で冗長化またはメンテナンスのためにリソースが移動された場合、IP アドレスは変わる可能性があります。 DNS 名は、新しい IP アドレスにリダイレクトできるため、安定しています)。  
 
 1. Azure ポータルで (または前の手順から)、 **[仮想マシン (クラシック)]**を選択します。
@@ -8,8 +7,7 @@
    
     ![DNS name](./media/virtual-machines-sql-server-connection-steps/sql-vm-dns-name.png)
 
-### 別のコンピューターからデータベース エンジンに接続する
-<a id="connect-to-the-database-engine-from-another-computer" class="xliff"></a>
+### <a name="connect-to-the-database-engine-from-another-computer"></a>別のコンピューターからデータベース エンジンに接続する
 1. インターネットに接続されたコンピューターで、SQL Server Management Studio を開きます。
 2. **[サーバーへの接続]** または **[データベース エンジンへの接続]** ダイアログ ボックスで、**[サーバー名]** ボックスに、先のタスクで決定した仮想マシンの DNS 名とパブリック エンドポイントのポート番号を「*DNS 名,ポート番号*」という形式で入力します (例: **mysqlvm.cloudapp.net,57500**)。
    

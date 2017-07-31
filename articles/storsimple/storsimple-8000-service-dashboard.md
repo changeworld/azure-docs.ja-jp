@@ -21,19 +21,16 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/12/2017
 
 ---
-# StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
-<a id="use-the-service-summary-blade-for-storsimple-8000-series-device" class="xliff"></a>
+# <a name="use-the-service-summary-blade-for-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスのサービスの概要ブレードを使用する
 
-## 概要
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概要
 
 StorSimple デバイス マネージャーのサービスの概要ブレードには、StorSimple デバイス マネージャー サービスに接続されているすべてのデバイスの概要が表示されます。システム管理者が注意を必要とするこれらのデバイスは強調表示されます。 このチュートリアルでは、サービスの概要ブレードを紹介したうえで、ダッシュボードの内容と機能、およびこのページで実行できるタスクについて説明します。
 
 ![サービスの概要](./media/storsimple-8000-service-dashboard/service-summary1.png)
 
 
-## 管理コマンド
-<a id="management-commands" class="xliff"></a>
+## <a name="management-commands"></a>管理コマンド
 
 StorSimple のサービスの概要ブレードには、StorSimple デバイス マネージャー サービスと、このサービスに登録されている StorSimple 8000 シリーズ デバイスを管理するためのオプションが表示されています。 管理コマンドは、ブレードの上部と左側にあります。
 
@@ -42,15 +39,13 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 こうしたオプションを使用して、共有やボリュームの追加、StorSimple デバイスで実行されている各種ジョブの監視など、さまざまな操作を実行します。
 
 
-## [要点]
-<a id="essentials" class="xliff"></a>
+## <a name="essentials"></a>[要点]
 
 要点領域では、StorSimple デバイス マネージャーが作成されたリソース グループ、場所、サブスクリプションなど、重要なプロパティがいくつかキャプチャされます。
 
 ![[要点]](./media/storsimple-8000-service-dashboard/service-summary3.png)
 
-## StorSimple デバイス マネージャー サービスの概要
-<a id="storsimple-device-manager-service-summary" class="xliff"></a>
+## <a name="storsimple-device-manager-service-summary"></a>StorSimple デバイス マネージャー サービスの概要
 
 * **[アラート]** タイルには、デバイス全体にわたるすべてのアクティブ アラートのスナップショットが、アラートの重大度別に表示されます。
 
@@ -85,14 +80,12 @@ StorSimple のサービスの概要ブレードには、StorSimple デバイス 
 
     ![[デバイス] タイルをクリック](./media/storsimple-8000-service-dashboard/service-summary9.png)
 
-## アクティビティ ログを表示する
-<a id="view-the-activity-logs" class="xliff"></a>
+## <a name="view-the-activity-logs"></a>アクティビティ ログを表示する
 
 StorSimple デバイス マネージャー内で実行されるさまざまな操作を表示するには、StorSimple サービスの概要ブレードの左側にある **[アクティビティ ログ]** リンクをクリックします。 これにより **[アクティビティ ログ]** ブレードが表示され、最近実行された操作の概要を確認できます。
 
 ![アクティビティ ログ](./media/storsimple-8000-service-dashboard/activity-logs1.png)
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
 

@@ -21,8 +21,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/12/2017
 
 ---
-# Service Fabric クラスターの容量計画に関する考慮事項
-<a id="service-fabric-cluster-capacity-planning-considerations" class="xliff"></a>
+# <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
 容量計画は、運用環境へのデプロイにおいて重要なステップとなります。 ここでは、そのプロセスの一環として考慮すべき事柄をいくつか取り上げます。
 
 * クラスターで最初に必要となるノード タイプの数
@@ -31,8 +30,7 @@ ms.lasthandoff: 07/12/2017
 
 それぞれの項目について簡単に見ていきましょう。
 
-## クラスターで最初に必要となるノード タイプの数
-<a id="the-number-of-node-types-your-cluster-needs-to-start-out-with" class="xliff"></a>
+## <a name="the-number-of-node-types-your-cluster-needs-to-start-out-with"></a>クラスターで最初に必要となるノード タイプの数
 まず、これから作成するクラスターを何の目的に使用するのか、また、そのクラスターにどのようなアプリケーションをデプロイするのかを把握する必要があります。 クラスターの目的が明確でないとすれば、容量計画プロセスに着手するのはおそらく時期尚早です。
 
 クラスターで最初に必要となるノード タイプの数をはっきりさせましょう。  ノード タイプはそれぞれ 1 つの仮想マシン スケール セットに対応付けられます。 各ノードの種類は、個別にスケール アップまたはスケール ダウンすることができ、さまざまなセットのポートを開き、異なる容量のメトリックスを持つことができます。 そのためノード タイプの数は、基本的に次の要因を考慮して決めることになります。
@@ -43,16 +41,14 @@ ms.lasthandoff: 07/12/2017
   この場合、1 つのノード タイプにすべてのサービスをデプロイすることもできますが、Microsoft としては、2 つのノード タイプから成るクラスターにデプロイすることをお勧めします。  そうすることでノード タイプごとに、インターネットの接続性や VM サイズなど異なる特性を持たせることができます。 VM 数を個別に増減させることもできます。  
 * 将来を予測することはできないので、まずは把握している事実を踏まえ、アプリケーションの立ち上げ時に必要となるノード タイプの数を決めましょう。 ノード タイプは後からいつでも追加または削除できます。 Service Fabric クラスターには少なくとも 1 つのノード タイプが必要です。
 
-## 各ノード タイプの特性
-<a id="the-properties-of-each-node-type" class="xliff"></a>
+## <a name="the-properties-of-each-node-type"></a>各ノード タイプの特性
 **ノード タイプ** は、Cloud Services のロールと同等のものと見なすことができます。 ノードのタイプには、VM のサイズ、VM の数、プロパティが定義されています。 Service Fabric クラスターで定義されているすべてのノード タイプは、個別の仮想マシン スケール セットとしてセットアップされます。 仮想マシン スケール セットは、セットとして仮想マシンのコレクションをデプロイおよび管理するために使用できる Azure 計算リソースです。 ノード タイプはそれぞれ別々の仮想マシン スケール セットとして定義されているため、個別にスケールアップまたはスケールダウンすることができ、また異なるポートの組み合わせを開放し、異なる容量メトリックを割り当てることができます。
 
 ノード タイプと仮想マシン スケール セットとの関係、いずれかのインスタンスに RDP で接続する方法、新しいポートを開く方法などの詳細については[こちらのドキュメント](service-fabric-cluster-nodetypes.md)を参照してください。
 
 クラスターには複数のノード タイプを指定できますが、運用環境のワークロードに使用するクラスターの場合、プライマリ ノード タイプ、つまりポータルで最初に定義したノードには、少なくとも 5 つの VM が必要です (テスト環境のクラスターの場合は 3 つ以上)。 Resource Manager テンプレートを使用してクラスターを作成する場合は、ノード タイプの定義下の **is Primary** 属性を探します。 Service Fabric のシステム サービスは、プライマリ ノード タイプに配置されます。  
 
-### プライマリ ノード タイプ
-<a id="primary-node-type" class="xliff"></a>
+### <a name="primary-node-type"></a>プライマリ ノード タイプ
 1 つのクラスターに複数のノード タイプが存在する場合、そのいずれかをプライマリにする必要があります。 プライマリ ノード タイプには、次の特徴があります。
 
 * プライマリ ノード タイプの**最小 VM サイズ**は、選択した**耐久性レベル**によって決まります。 既定の耐久性レベルは Bronze です。 耐久性レベルとは何か、どのようなプランがあるかについては、このページの下の方で説明しています。  
@@ -64,15 +60,13 @@ ms.lasthandoff: 07/12/2017
 
 ![ノードが 2 種類あるクラスターのスクリーン ショット ][SystemServices]
 
-### 非プライマリ ノード タイプ
-<a id="non-primary-node-type" class="xliff"></a>
+### <a name="non-primary-node-type"></a>非プライマリ ノード タイプ
 クラスターに複数のノード タイプが存在するとき、プライマリ ノード タイプは 1 つだけで、それ以外はすべて非プライマリ ノード タイプです。 非プライマリ ノード タイプには、次の特徴があります。
 
 * このノード タイプの最小 VM サイズは、選択した耐久性レベルによって決まります。 既定の耐久性レベルは Bronze です。 耐久性レベルとは何か、どのようなプランがあるかについては、このページの下の方で説明しています。  
 * このノード タイプの最低 VM 数は 1 です。 ただしこの数は、このノード タイプで実行するアプリケーション/サービスのレプリカ数に基づいて選ぶ必要があります。 ノード タイプの VM 数は、クラスターのデプロイ後に増やすことができます。
 
-## クラスターの耐久性の特徴
-<a id="the-durability-characteristics-of-the-cluster" class="xliff"></a>
+## <a name="the-durability-characteristics-of-the-cluster"></a>クラスターの耐久性の特徴
 耐久性レベルは、ご利用の VM が、基になる Azure インフラストラクチャに対して持つ特権をシステムに表明する目的で使用します。 プライマリ ノード タイプでは、Service Fabric がこの特権を使って、システム サービスやステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。 非プライマリ ノード タイプの場合も、Service Fabric がこの特権の下で、ノード内で実行されるステートフル サービスのクォーラム要件に影響を及ぼす、VM レベルのインフラストラクチャ要求 (VM の再起動、VM の再イメージ化、VM の移行など) を一時停止させることができます。
 
 この特権は次のプランで表されます。
@@ -95,13 +89,11 @@ ms.lasthandoff: 07/12/2017
 
 
 
-### どのような場合に Silver または Gold 耐久性レベルを使用するか
-<a id="recommendations-on-when-to-use-silver-or-gold-durability-levels" class="xliff"></a>
+### <a name="recommendations-on-when-to-use-silver-or-gold-durability-levels"></a>どのような場合に Silver または Gold 耐久性レベルを使用するか
 
 Silver または Gold 耐久性は、頻繁なスケールイン (VM インスタンス数の削減) が予測されるステートフル サービスをホストするすべてのノード タイプに適しており、またこれらのスケールイン操作を簡略化するためにデプロイ操作が遅れることを厭わない場合に適しています。 スケールアウト シナリオ (VM インスタンスの追加) は、耐久性レベルの選択では問題になりません。問題になるのは、スケールインのみです。
 
-### Silver または Gold 耐久性レベルに設定したノード タイプの操作上の推奨事項
-<a id="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level" class="xliff"></a>
+### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Silver または Gold 耐久性レベルに設定したノード タイプの操作上の推奨事項
 
 1. クラスターとアプリケーションを常に正常な状態に維持し、アプリケーションが適切なタイミングですべての[サービス レプリカのライフサイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ビルドのレプリカが停止するなど) に応答することを確認します。
 2. VM SKU の変更 (スケールアップ/ダウン) では、より安全な方法を採用します。
@@ -114,8 +106,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 6. 自動スケールを使用した場合、スケールイン (VM インスタンスの削除) が一度に 1 ノードに実行されるようにルールを設定します。 
 
 
-## クラスターの信頼性の特徴
-<a id="the-reliability-characteristics-of-the-cluster" class="xliff"></a>
+## <a name="the-reliability-characteristics-of-the-cluster"></a>クラスターの信頼性の特徴
 信頼性レベルは、クラスターのプライマリ ノード タイプで実行するシステム サービスのレプリカ数を設定する目的で使用します。 レプリカ数が増えるほど、クラスター内のシステム サービスの信頼性が上がります。  
 
 信頼性レベルは、以下のプランから選ぶことができます。
@@ -133,8 +124,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
  クラスターの信頼性レベルはいつでも変更できます。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。  アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行します。
 
 
-## プライマリ ノード タイプ - 容量に関するガイダンス
-<a id="primary-node-type---capacity-guidance" class="xliff"></a>
+## <a name="primary-node-type---capacity-guidance"></a>プライマリ ノード タイプ - 容量に関するガイダンス
 
 ここでは、プライマリ ノード タイプの容量計画のガイダンスを示します。
 
@@ -153,8 +143,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 - Standard A1 SKU は、パフォーマンス上の理由から運用ワークロードではサポートされません。
 
 
-## 非プライマリ ノード タイプ - ステートフル ワークロードの容量ガイダンス
-<a id="non-primary-node-type---capacity-guidance-for-stateful-workloads" class="xliff"></a>
+## <a name="non-primary-node-type---capacity-guidance-for-stateful-workloads"></a>非プライマリ ノード タイプ - ステートフル ワークロードの容量ガイダンス
 
 Service Fabric の Reliable Collection または Reliable Actors を使用するワークロードの場合は以下を参照してください。 [プログラミング モデルの詳細についてはこちらを参照してください](service-fabric-choose-framework.md)。
 
@@ -172,8 +161,7 @@ Service Fabric の Reliable Collection または Reliable Actors を使用する
 - 特に Standard A1 SKU は、パフォーマンス上の理由から運用ワークロードではサポートされません。
 
 
-## 非プライマリ ノード タイプ - ステートレス ワークロードの容量ガイダンス
-<a id="non-primary-node-type---capacity-guidance-for-stateless-workloads" class="xliff"></a>
+## <a name="non-primary-node-type---capacity-guidance-for-stateless-workloads"></a>非プライマリ ノード タイプ - ステートレス ワークロードの容量ガイダンス
 
 ステートレス ワークロードの場合は以下を参照してください。
 
@@ -196,8 +184,7 @@ Service Fabric の Reliable Collection または Reliable Actors を使用する
 
 <!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 容量計画が完了し、クラスターをセットアップしたら、以下のドキュメントをお読みください。
 
 * [Service Fabric クラスターのセキュリティ](service-fabric-cluster-security.md)

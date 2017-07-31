@@ -2,8 +2,7 @@
 
 ボリューム コンテナーにボリュームが関連付けられている場合は、先にそれらのボリュームをオフラインにします。 「 [ボリュームをオフラインにする](../articles/storsimple/storsimple-manage-volumes.md#take-a-volume-offline)」の手順に従ってください。 ボリュームがオフラインになったら、それらを削除できます。 ボリューム コンテナーに関連付けられているボリュームがない場合は、ボリューム コンテナーを削除します。 ボリューム コンテナーを削除するには、次の手順を実行します。
 
-#### ボリューム コンテナーを削除するには
-<a id="to-delete-a-volume-container" class="xliff"></a>
+#### <a name="to-delete-a-volume-container"></a>ボリューム コンテナーを削除するには
 1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 デバイスを選択してクリックし、**[設定]、[管理]、[ボリューム コンテナー]** の順にクリックします。
 
     ![[ボリューム コンテナー] ブレード](./media/storsimple-8000-create-volume-container/createvolumecontainer2.png)

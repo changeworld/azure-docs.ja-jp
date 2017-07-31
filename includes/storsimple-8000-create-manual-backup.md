@@ -1,8 +1,7 @@
 
 <!--author=alkohli last changed: 01/20/2017-->
 
-#### 手動でバックアップを作成するには
-<a id="to-create-a-manual-backup" class="xliff"></a>
+#### <a name="to-create-a-manual-backup"></a>手動でバックアップを作成するには
 
 1. StorSimple デバイス マネージャー サービスに移動し、**[デバイス]** をクリックします。 表形式のデバイス一覧で、デバイスを選択します。 **[設定]、[管理]、[バックアップ ポリシー]** の順に移動します。
 

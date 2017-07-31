@@ -1,5 +1,4 @@
-### データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
-<a id="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine" class="xliff"></a>
+### <a name="open-tcp-ports-in-the-windows-firewall-for-the-default-instance-of-the-database-engine"></a>データベース エンジンの既定のインスタンス用に Windows ファイアウォールで TCP ポートを開く
 1. リモート デスクトップを使用して仮想マシンに接続します。 VM への接続の詳しい手順については、[リモート デスクトップを使用して SQL VM を開く方法](../articles/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision.md#open-the-vm-with-remote-desktop)に関するページを参照してください。
 2. ログインしたら、スタート画面で「 **WF.msc**」と入力し、Enter キーを押します。
    
@@ -28,8 +27,7 @@
 
 必要に応じて他のコンポーネント用に追加のポートを開きます。 詳細については、「 [SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
 
-### TCP プロトコルでリッスンするように SQL Server を構成する
-<a id="configure-sql-server-to-listen-on-the-tcp-protocol" class="xliff"></a>
+### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>TCP プロトコルでリッスンするように SQL Server を構成する
 1. 仮想マシンに接続している間に、[スタート] ページで「 **SQL Server 構成マネージャー** 」と入力し、Enter キーを押します。
    
     ![SSCM を開く](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
@@ -44,8 +42,7 @@
 
 SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「 [サーバー ネットワーク プロトコルの有効化または無効化](http://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
 
-### 混合モード認証用に SQL Server を構成する
-<a id="configure-sql-server-for-mixed-mode-authentication" class="xliff"></a>
+### <a name="configure-sql-server-for-mixed-mode-authentication"></a>混合モード認証用に SQL Server を構成する
 ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。 別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。 混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます
 
 > [!NOTE]
@@ -71,8 +68,7 @@ SQL Server データベース エンジン用のプロトコルを有効にす�
     ![再起動](./media/virtual-machines-sql-server-connection-steps/22Restart2.png)
 7. [SQL Server Management Studio] ダイアログ ボックスで、SQL Server の再起動に同意を求めるメッセージに対して **[はい]** をクリックします。
 
-### SQL Server 認証ログインを作成する
-<a id="create-sql-server-authentication-logins" class="xliff"></a>
+### <a name="create-sql-server-authentication-logins"></a>SQL Server 認証ログインを作成する
 別のコンピューターからデータベース エンジンに接続するには、1 つ以上の SQL Server 認証ログインを作成する必要があります。
 
 1. SQL Server Management Studio のオブジェクト エクスプローラーで、新しいログインを作成するサーバー インスタンスのフォルダーを展開します。

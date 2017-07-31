@@ -1,8 +1,7 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### StorSimple のバックアップ ポリシーを削除するには
-<a id="to-delete-a-storsimple-backup-policy" class="xliff"></a>
+#### <a name="to-delete-a-storsimple-backup-policy"></a>StorSimple のバックアップ ポリシーを削除するには
 
 1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
 
