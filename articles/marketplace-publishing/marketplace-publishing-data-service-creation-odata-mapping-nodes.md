@@ -22,9 +22,7 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl" class="xliff"></a>
-
-# CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
+# <a name="understanding-the-nodes-schema-for-mapping-an-existing-web-service-to-odata-through-csdl"></a>CSDL を使用して既存の Web サービスを OData にマップするためのノード スキーマについて
 > [!IMPORTANT]
 > **現時点では、新しいデータ サービスの発行元はオンボードされなくなりました。一覧への新しいデータ サービスの追加は承認されません。** SaaS ビジネス アプリケーションを AppSource で発行する場合、詳細については[こちら](https://appsource.microsoft.com/partners)をご覧ください。 IaaS アプリケーションまたは開発者サービスを Azure Marketplace で発行する場合、詳細については[こちら](https://azure.microsoft.com/marketplace/programs/certified/)をご覧ください。
 >
@@ -32,9 +30,7 @@ ms.lasthandoff: 07/06/2017
 
 このドキュメントでは、OData プロトコルを CSDL にマップするためのノード構造について説明します。 ノード構造は整形式 XML である点に注意してください。 このため、OData マッピングを設計する際は、ルート、親、子のスキーマが適用されます。
 
-<a id="ignored-elements" class="xliff"></a>
-
-## 無視される要素
+## <a name="ignored-elements"></a>無視される要素
 以下に示すのは、Web サービスのメタデータのインポート時に Azure Marketplace バックエンドで使用されない上位の CSDL 要素 (XML ノード) です。 これらは表示される場合がありますが、無視されます。
 
 | 要素 | Scope |
@@ -51,9 +47,7 @@ ms.lasthandoff: 07/06/2017
 
 各 CSDL XML ノードに対する変更 (追加された要素と無視される要素) について、次で詳しく説明します。
 
-<a id="functionimport-node" class="xliff"></a>
-
-## FunctionImport ノード
+## <a name="functionimport-node"></a>FunctionImport ノード
 FunctionImport ノードは、エンド ユーザーにサービスを公開する 1 つの URL (エントリ ポイント) を表します。 このノードでは、URL を指定する方法、エンド ユーザーに提供するパラメーターの種類、およびこれらのパラメーターを提供する方法を記述できます。
 
 このノードの詳細については、[こちら][MSDNFunctionImportLink](https://msdn.microsoft.com/library/cc716710.aspx) をご覧ください。
@@ -155,9 +149,7 @@ FunctionImport ノード内の追加の (CSDL ドキュメントに記載され�
 
 **d:ErrorMessage** - OData のオプションの拡張
 
-<a id="parameter-node" class="xliff"></a>
-
-## Parameter ノード
+## <a name="parameter-node"></a>Parameter ノード
 このノードは、FunctionImport ノードで指定された URI テンプレート/要求本文の一部として公開されている 1 つのパラメーターを表します。
 
 "Parameter 要素" ノードに関する詳細情報が記載された役立つページが[こちら](http://msdn.microsoft.com/library/ee473431.aspx)にあります (必要に応じて、**[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。 *例:* `<Parameter Name="Query" Nullable="false" Mode="In" Type="String" d:Description="Query" d:SampleValues="Rudy Duck" d:EncodeParameterValue="true" MaxLength="255" FixedLength="false" Unicode="false" annotation:StoreGeneratedPattern="Identity"/>`
@@ -180,9 +172,7 @@ CSDL の仕様に追加された属性を次に示します。
 | **d:Nullable** *(省略可能)* |パラメーターを null に指定できるかどうかを定義できます。 既定値は true です。 ただし、URI テンプレートでパスの一部として公開されているパラメーターを null に指定することはできません。 これらのパラメーターでこの属性が false に設定されている場合、ユーザーの入力は上書きされます。 **例:** `<Parameter Name="BikeType" Type="String" Mode="In" Nullable="false"/>` |
 | **d:SampleValue** *(省略可能)* |UI でクライアントにメモとして表示するサンプル値。  パイプで区切られたリストを使用して、複数の値を追加できます (つまり、`a) |
 
-<a id="entitytype-node" class="xliff"></a>
-
-## EntityType ノード
+## <a name="entitytype-node"></a>EntityType ノード
 このノードは、Marketplace からエンド ユーザーに返される型の 1 つを表します。 また、コンテンツ プロバイダーのサービスによって返される出力とエンド ユーザーに返される値のマッピングも含まれています。
 
 このノードの詳細については、 [こちら](http://msdn.microsoft.com/library/bb399206.aspx) をご覧ください (必要に応じて、 **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。
@@ -206,9 +196,7 @@ CSDL の仕様に追加された属性を次に示します。
 
 **Key** - Marketplace では、この属性は無視されます。 一般に、REST ベースの Web サービスでは主キーは公開されません。
 
-<a id="property-node" class="xliff"></a>
-
-## Property ノード
+## <a name="property-node"></a>Property ノード
 このノードには、レコードのプロパティの 1 つが含まれています。
 
 このノードの詳細については、[http://msdn.microsoft.com/library/bb399546.aspx](http://msdn.microsoft.com/library/bb399546.aspx) を参照してください (必要に応じて **[その他のバージョン]** ボックスの一覧から別のバージョンのドキュメントを選択して表示できます)。*例:* `<EntityType Name="MetaDataEntityType" d:Map="/MyXMLPath">
@@ -264,9 +252,7 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 
 **d:DatabaseDataType** - SQL データ型など、データベース内の列のデータ型です。 「DataService CSDL の例」を参照してください。
 
-<a id="supported-parametersproperty-types" class="xliff"></a>
-
-## サポートされているパラメーター/プロパティの型
+## <a name="supported-parametersproperty-types"></a>サポートされているパラメーター/プロパティの型
 パラメーターおよびプロパティのサポートされている型を次に示します  (大文字と小文字が区別されます)。
 
 | プリミティブ型 | Description |
@@ -284,9 +270,7 @@ CSDL の仕様に追加されたその他の属性を次に示します。
 | Int64 |64 ビットの符号付き整数値を表します。 |
 | String |固長定または可変長の文字データを表します。 |
 
-<a id="see-also" class="xliff"></a>
-
-## 関連項目
+## <a name="see-also"></a>関連項目
 * 全体的な OData マッピングのプロセスと目的を理解したい場合は、こちらの [データ サービスの OData マッピング](marketplace-publishing-data-service-creation-odata-mapping.md) に関する記事を読んで、定義、構造、手順を確認してください。
 * 例を確認したい場合は、 [データ サービスの OData マッピングの例](marketplace-publishing-data-service-creation-odata-mapping-examples.md) に関するページでサンプル コードを参照し、コード構文とコンテキストを学習してください。
 * データ サービスを Azure Marketplace に発行するために指定のパスに戻る場合は、こちらの [データ サービスの発行ガイド](marketplace-publishing-data-service-creation.md)を参照してください。
