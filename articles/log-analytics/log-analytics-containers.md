@@ -22,8 +22,7 @@ ms.lasthandoff: 06/30/2017
 
 
 ---
-# Log Analytics のコンテナー (プレビュー) ソリューション
-<a id="containers-preview-solution-in-log-analytics" class="xliff"></a>
+# <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
 
 ![コンテナーのシンボル](./media/log-analytics-containers/containers-symbol.png)
 
@@ -35,8 +34,7 @@ ms.lasthandoff: 06/30/2017
 
 ![コンテナー ダイアグラム](./media/log-analytics-containers/containers-diagram.png)
 
-## ソリューションのインストールと構成
-<a id="installing-and-configuring-the-solution" class="xliff"></a>
+## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
 コンテナー ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
@@ -50,8 +48,7 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 お使いのコンテナー ホストでサポートされている Docker および Linux オペレーティング システムのバージョンは、[GitHub](https://github.com/Microsoft/OMS-docker) で確認できます。
 
-### コンテナー サービス
-<a id="container-services" class="xliff"></a>
+### <a name="container-services"></a>コンテナー サービス
 
 - Azure Container Service を使用する Kubernetes クラスターがある場合、詳細については、「[Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する](../container-service/container-service-kubernetes-oms.md)」をご覧ください。
 - Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/container-service-monitoring-oms.md)」をご覧ください。
@@ -66,8 +63,7 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 コンテナーを監視するには、コンテナー ホストで次の設定を構成しておくことが必要です。
 
-## Linux コンテナー ホスト
-<a id="linux-container-hosts" class="xliff"></a>
+## <a name="linux-container-hosts"></a>Linux コンテナー ホスト
 
 サポートされている Linux バージョンは、次のとおりです。
 
@@ -90,13 +86,11 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 [OMS ワークスペース ID とキー](log-analytics-linux-agents.md)が必要になります。
 
 
-### CoreOS を除くすべての Linux コンテナー ホスト
-<a id="for-all-linux-container-hosts-except-coreos" class="xliff"></a>
+### <a name="for-all-linux-container-hosts-except-coreos"></a>CoreOS を除くすべての Linux コンテナー ホスト
 
 - 「[Steps to install the OMS Agent for Linux (OMS Agent for Linux のインストール手順)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)」に従って操作します。
 
-### CoreOS を含むすべての Linux コンテナー ホスト
-<a id="for-all-linux-container-hosts-including-coreos" class="xliff"></a>
+### <a name="for-all-linux-container-hosts-including-coreos"></a>CoreOS を含むすべての Linux コンテナー ホスト
 
 監視する OMS コンテナーを起動します。 次の例に変更を加えて使用してください。
 
@@ -104,8 +98,7 @@ Docker をインストールした後で、コンテナー ホストの次の設
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e WSID="your workspace id" -e KEY="your key" -h=`hostname` -p 127.0.0.1:25225:25225 --name="omsagent" --restart=always microsoft/oms
 ```
 
-### CoreOS を含むすべての Azure Government Linux コンテナー ホスト
-<a id="for-all-azure-government-linux-container-hosts-including-coreos" class="xliff"></a>
+### <a name="for-all-azure-government-linux-container-hosts-including-coreos"></a>CoreOS を含むすべての Azure Government Linux コンテナー ホスト
 
 監視する OMS コンテナーを起動します。 次の例に変更を加えて使用してください。
 
@@ -114,12 +107,10 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 ```
 
 
-### インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え
-<a id="switching-from-using-an-installed-linux-agent-to-one-in-a-container" class="xliff"></a>
+### <a name="switching-from-using-an-installed-linux-agent-to-one-in-a-container"></a>インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え
 これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMSAgent を削除する必要があります。 [OMS Agent for Linux のインストール手順](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)に関するページを参照してください。
 
-### Docker Swarm 用の OMS エージェントを構成する
-<a id="configure-an-oms-agent-for-docker-swarm" class="xliff"></a>
+### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker Swarm 用の OMS エージェントを構成する
 
 Docker Swarm で、OMS エージェントをグローバル サービスとして実行できます。 次の情報を使用して、OMS Agent サービスを作成します。 ワークスペース ID と主キーを挿入する必要があります。
 
@@ -129,13 +120,11 @@ Docker Swarm で、OMS エージェントをグローバル サービスとし�
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
-### コンテナー サービス用のシークレット情報を保護する
-<a id="secure-your-secret-information-for-container-services" class="xliff"></a>
+### <a name="secure-your-secret-information-for-container-services"></a>コンテナー サービス用のシークレット情報を保護する
 
 Docker Swarm と Kubernetes 用のシークレット OMS ワークスペース ID と主キーを保護できます。
 
-#### Docker Swarm 用のシークレットを保護する
-<a id="secure-secrets-for-docker-swarm" class="xliff"></a>
+#### <a name="secure-secrets-for-docker-swarm"></a>Docker Swarm 用のシークレットを保護する
 
 Docker Swarm では、ワークスペース ID と主キーのシークレットの作成後に、OMSagent 用の Docker サービスの作成を実行できます。 次の情報を使用して、シークレット情報を作成します。
 
@@ -164,8 +153,7 @@ Docker Swarm では、ワークスペース ID と主キーのシークレット
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock --secret source=WSID,target=WSID --secret source=KEY,target=KEY  -p 25225:25225 -p 25224:25224/udp --restart-condition=on-failure microsoft/oms
     ```
 
-#### Kubernetes 用のシークレットを yaml ファイルを使用して保護する
-<a id="secure-secrets-for-kubernetes-with-yaml-files" class="xliff"></a>
+#### <a name="secure-secrets-for-kubernetes-with-yaml-files"></a>Kubernetes 用のシークレットを yaml ファイルを使用して保護する
 
 Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット .yaml ファイルを生成します。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページに、シークレット情報を使用して、または使用せずに使うことができるファイルがあります。
 
@@ -174,8 +162,7 @@ Kubernetes では、スクリプトを使用して、ワークスペース ID �
 
 omsagent DaemonSet は、シークレットを使用して作成するか使用せずに作成するかを選択できます。
 
-##### シークレットを使用しない既定の OMSagent DaemonSet yaml ファイル
-<a id="default-omsagent-daemonset-yaml-file-without-secrets" class="xliff"></a>
+##### <a name="default-omsagent-daemonset-yaml-file-without-secrets"></a>シークレットを使用しない既定の OMSagent DaemonSet yaml ファイル
 
 - 既定の OMS Agent DaemonSet yaml ファイルでは、`<WSID>` と `<KEY>` を自分の WSID と KEY に置き換えます。 ファイルをマスター ノードにコピーし、次を実行します。
 
@@ -183,8 +170,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
     sudo kubectl create -f omsagent.yaml
     ```
 
-##### シークレットを使用する既定の OMSagent DaemonSet yaml ファイル
-<a id="default-omsagent-daemonset-yaml-file-with-secrets" class="xliff"></a>
+##### <a name="default-omsagent-daemonset-yaml-file-with-secrets"></a>シークレットを使用する既定の OMSagent DaemonSet yaml ファイル
 
 1. シークレット情報を使用して OMS Agent DaemonSet を使用するには、まずシークレットを作成します。
     1. スクリプトとシークレット テンプレート ファイルをコピーし、それらが同じディレクトリにあることを確認します。
@@ -267,27 +253,23 @@ KEY:    88 bytes
 ```
 
 
-## Windows コンテナー ホスト
-<a id="windows-container-hosts" class="xliff"></a>
+## <a name="windows-container-hosts"></a>Windows コンテナー ホスト
 
 サポートされている Windows のバージョン:
 
 - Windows Server 2016
 - Windows 10 Anniversary Edition (Professional または Enterprise)
 
-### Windows でサポートされている Docker のバージョン
-<a id="docker-versions-supported-on-windows" class="xliff"></a>
+### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
 
 - Docker 1.12 ～ 1.13
 - Docker 17.03.0 [安定版]
 
-### Windows エージェントをインストールする前の準備
-<a id="preparation-before-installing-windows-agents" class="xliff"></a>
+### <a name="preparation-before-installing-windows-agents"></a>Windows エージェントをインストールする前の準備
 
 Windows を実行しているコンピューターにエージェントをインストールする前に、Docker サービスを構成する必要があります。 構成により、Windows エージェントまたは Log Analytics 仮想マシン拡張機能は、エージェントが Docker デーモンにリモートでアクセスできるように Docker TCP ソケットを使用できるようになり、監視用のデータをキャプチャすることが可能になります。
 
-#### Docker を起動して構成を確認するには
-<a id="to-start-docker-and-verify-its-configuration" class="xliff"></a>
+#### <a name="to-start-docker-and-verify-its-configuration"></a>Docker を起動して構成を確認するには
 
 Windows Server の TCP 名前付きパイプのセットアップに必要な手順があります。
 
@@ -313,8 +295,7 @@ Windows Server の TCP 名前付きパイプのセットアップに必要な手
 Windows コンテナーで使用する Docker デーモン構成の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 
-### Windows エージェントのインストール
-<a id="install-windows-agents" class="xliff"></a>
+### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
 Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターにエージェントをインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agents.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
 
@@ -328,8 +309,7 @@ Service Fabric で実行されている Windows コンテナーを監視でき�
     - **Microsoft Monitoring Agent** を開き、ワークスペース情報が正しいことを確認します。
 
 
-## コンテナーのデータ収集の詳細
-<a id="containers-data-collection-details" class="xliff"></a>
+## <a name="containers-data-collection-details"></a>コンテナーのデータ収集の詳細
 コンテナー ソリューションでは、有効化されたエージェントを使用して、コンテナー ホストとコンテナーからさまざまなパフォーマンス メトリックとログ データを収集します。
 
 次の表は、コンテナーのデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
@@ -356,16 +336,14 @@ Service Fabric で実行されている Windows コンテナーを監視でき�
 | コンテナー ログ | `Type=ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
 | コンテナー サービス ログ | `Type=ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
 
-## コンテナーの監視
-<a id="monitor-containers" class="xliff"></a>
+## <a name="monitor-containers"></a>コンテナーの監視
 OMS ポータルでソリューションを有効にすると、コンテナー ホストとホストで実行されているコンテナーに関する情報が **[コンテナー]** タイルに表示されます。
 
 ![[コンテナー] タイル](./media/log-analytics-containers/containers-title.png)
 
 このタイルには、環境内に存在するコンテナーの数と、それらのコンテナーの状態 (失敗、実行中、停止) の概要が示されます。
 
-### コンテナー ダッシュボードの使用
-<a id="using-the-containers-dashboard" class="xliff"></a>
+### <a name="using-the-containers-dashboard"></a>コンテナー ダッシュボードの使用
 **[コンテナー]** タイルをクリックします。 ここに表示される情報は、次の項目で整理されます。
 
 * コンテナーのイベント
@@ -392,12 +370,10 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
 
 たとえば、検索クエリの **[実行中]** を **[停止]** に変更して、実行中のコンテナーの代わりに停止している全コンテナーが表示されるようにすることもできます。
 
-## 失敗したコンテナーを特定してトラブルシューティングを行う
-<a id="troubleshoot-by-finding-a-failed-container" class="xliff"></a>
+## <a name="troubleshoot-by-finding-a-failed-container"></a>失敗したコンテナーを特定してトラブルシューティングを行う
 ゼロ以外の終了コードで終了したコンテナーは、OMS によって **[失敗]** とマークされます。 **[失敗したコンテナー]** ブレードで、環境におけるエラーと失敗の概要を確認できます。
 
-### 失敗したコンテナーを特定するには
-<a id="to-find-failed-containers" class="xliff"></a>
+### <a name="to-find-failed-containers"></a>失敗したコンテナーを特定するには
 1. **[Container Events (コンテナー イベント)]** ブレードをクリックします。  
    ![コンテナー イベント](./media/log-analytics-containers/containers-events.png)
 2. [ログ検索] が開き、次のようにコンテナーの状態が表示されます。  
@@ -408,8 +384,7 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
    `Type=ContainerInventory <ImageID>` これによりログが表示されます。 スクロールして失敗したコンテナーを表示できます。  
    ![失敗したコンテナー](./media/log-analytics-containers/containers-failed04.png)
 
-## コンテナー データのログの検索
-<a id="search-logs-for-container-data" class="xliff"></a>
+## <a name="search-logs-for-container-data"></a>コンテナー データのログの検索
 特定のエラーのトラブルシューティングを実行する際には、環境のどこでそのエラーが発生しているのかを確認すると役立つ場合があります。 次のログの種類は、目的の情報を返すクエリを作成するうえで役立ちます。
 
 * **ContainerInventory** – この種類は、コンテナーの場所、コンテナーの名前、実行中のイメージに関する情報が必要な場合に使用します。
@@ -417,8 +392,7 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
 * **ContainerLog** – この種類は、特定のエラー ログの情報やエントリを見つける場合に使用します。
 * **ContainerServiceLog** – この種類は、開始、停止、削除、プルのコマンドなど、Docker デーモンの監査証跡情報を見つける場合に使用します。
 
-### コンテナー データのログを検索するには
-<a id="to-search-logs-for-container-data" class="xliff"></a>
+### <a name="to-search-logs-for-container-data"></a>コンテナー データのログを検索するには
 * 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`Type=ContainerInventory ubuntu Failed` を検索します。  
     ![Ubuntu コンテナーの検索](./media/log-analytics-containers/search-ubuntu.png)
 
@@ -448,19 +422,16 @@ Type=Perf <containerName>
 
 ![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf03.png)
 
-## 検索クエリの例
-<a id="example-log-search-queries" class="xliff"></a>
+## <a name="example-log-search-queries"></a>検索クエリの例
 クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[注目すべきクエリ]** ブレードを試してみると、より高度なクエリを作成するのに役立ちます。
 
 ![コンテナーのクエリ](./media/log-analytics-containers/containers-queries.png)
 
-## ログ検索クエリの保存
-<a id="saving-log-search-queries" class="xliff"></a>
+## <a name="saving-log-search-queries"></a>ログ検索クエリの保存
 クエリの保存は、Log Analytics の標準的な機能です。 クエリを保存しておけば、後で使えるように、便利なクエリを取っておくことができます。
 
 作成したクエリが便利であることがわかったら、**[ログ検索]** ページの上部にある [お気に入り] をクリックして保存してください。 後で **[マイ ダッシュボード]** ページで簡単にアクセスできます。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * [ログを検索](log-analytics-log-searches.md) して、詳細なコンテナー データ レコードを確認します。
 

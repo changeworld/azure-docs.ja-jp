@@ -22,8 +22,7 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-# IoT Hub デバイス ID を一括で管理する
-<a id="manage-your-iot-hub-device-identities-in-bulk" class="xliff"></a>
+# <a name="manage-your-iot-hub-device-identities-in-bulk"></a>IoT Hub デバイス ID を一括で管理する
 
 各 IoT ハブには、デバイスごとのリソースをサービス内に作成するために使用できる ID レジストリがあります。 この ID レジストリを使って、デバイス向けエンドポイントへのアクセスを制御することもできます。 この記事では、ID レジストリとの間でデバイス ID を一括でインポートおよびエクスポートする方法について説明します。
 
@@ -31,8 +30,7 @@ ms.lasthandoff: 07/04/2017
 
 **RegistryManager** クラスには、**ジョブ** フレームワークを使用する **ExportDevicesAsync** および **ImportDevicesAsync** メソッドが含まれています。 これらのメソッドを使用すると、IoT Hub ID レジストリ全体のエクスポート、インポート、および同期化を行うことができます。
 
-## ジョブとは
-<a id="what-are-jobs" class="xliff"></a>
+## <a name="what-are-jobs"></a>ジョブとは
 
 ID レジストリの操作では、次の場合に **ジョブ** システムを使用します。
 
@@ -72,8 +70,7 @@ while(true)
 }
 ```
 
-## デバイスのエクスポート
-<a id="export-devices" class="xliff"></a>
+## <a name="export-devices"></a>デバイスのエクスポート
 
 **ExportDevicesAsync** メソッドでは、[Shared Access Signature](../storage/storage-security-guide.md#data-plane-security) を使用して IoT Hub ID レジストリ全体を [Azure Storage](../storage/index.md) BLOB コンテナーにエクスポートすることができます。
 
@@ -189,8 +186,7 @@ using (var streamReader = new StreamReader(await blob.OpenReadAsync(AccessCondit
 > [!NOTE]
 > また、**RegistryManager** クラスの **GetDevicesAsync** メソッドを使用して、デバイスの一覧を取得することができます。 ただし、この方法では、返されるデバイス オブジェクトの数は 1000 に制限されます。 **GetDevicesAsync** メソッドの用途は、開発シナリオでデバッグを支援することを想定しており、運用環境のワークロードに対しての使用はお勧めできません。
 
-## デバイスのインポート
-<a id="import-devices" class="xliff"></a>
+## <a name="import-devices"></a>デバイスのインポート
 
 **RegistryManager** クラスの **ImportDevicesAsync** メソッドを使用すると、IoT Hub ID レジストリの一括インポートおよび同期化操作を実行することができます。 **ExportDevicesAsync** メソッドと同様に、**ImportDevicesAsync** メソッドでも**ジョブ** フレームワークを使用します。
 
@@ -223,8 +219,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 
 この方法を使用して、デバイス ツインのデータをインポートすることもできます。 データ入力の形式は、**ExportDevicesAsync** セクションに示されている形式と同じです。 この方法で、エクスポートされたデータを再インポートすることができます。 **$metadata** はオプションです。
 
-## インポートの動作
-<a id="import-behavior" class="xliff"></a>
+## <a name="import-behavior"></a>インポートの動作
 
 **ImportDevicesAsync** メソッドを使用して、ID レジストリで次の一括操作を実行することができます。
 
@@ -254,8 +249,7 @@ JobProperties importJob = await registryManager.ImportDevicesAsync(containerSasU
 > [!NOTE]
 > シリアル化データが、デバイスの **importMode** フラグを明確に定義していない場合、インポート操作中に **createOrUpdate** が既定値に設定されます。
 
-## デバイスのインポートの例 – デバイスの一括プロビジョニング
-<a id="import-devices-example--bulk-device-provisioning" class="xliff"></a>
+## <a name="import-devices-example--bulk-device-provisioning"></a>デバイスのインポートの例 – デバイスの一括プロビジョニング
 
 次の C# コード サンプルでは、複数のデバイス ID を生成して以下の操作を行う方法を示します。
 
@@ -326,8 +320,7 @@ while(true)
 }
 ```
 
-## デバイスのインポートの例 – 一括削除
-<a id="import-devices-example--bulk-deletion" class="xliff"></a>
+## <a name="import-devices-example--bulk-deletion"></a>デバイスのインポートの例 – 一括削除
 
 次のコード サンプルでは、前述のコード サンプルを使用して追加したデバイスを削除する方法を示します。
 
@@ -377,8 +370,7 @@ while(true)
 }
 ```
 
-## コンテナーの SAS URI の取得
-<a id="get-the-container-sas-uri" class="xliff"></a>
+## <a name="get-the-container-sas-uri"></a>コンテナーの SAS URI の取得
 
 次のコード サンプルでは、BLOB コンテナーに対する読み取り、書き込み、および削除アクセス許可を使用して [SAS URI](../storage/storage-dotnet-shared-access-signature-part-2.md) を生成する方法を示します。
 
@@ -405,8 +397,7 @@ static string GetContainerSasUri(CloudBlobContainer container)
 }
 ```
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 この記事では、IoT Hub の ID レジストリに対して一括操作を実行する方法について説明しました。 Azure IoT Hub の管理についてさらに学習するには、次のリンクを使用してください。
 
