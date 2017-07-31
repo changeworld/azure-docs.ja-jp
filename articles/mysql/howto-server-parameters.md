@@ -17,20 +17,17 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-# Azure ポータルを使用して Azure Database for MySQL サーバーのサーバー パラメータを構成する方法
-<a id="how-to-configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal" class="xliff"></a>
+# <a name="how-to-configure-server-parameters-in-azure-database-for-mysql-using-the-azure-portal"></a>Azure ポータルを使用して Azure Database for MySQL サーバーのサーバー パラメータを構成する方法
 
 Azure Database for MySQL では、いくつかのサーバー パラメーターの構成をサポートします。 この記事では、Azure ポータルを使用してこれらのパラメーターを構成する方法について説明し、サポートされるパラメーター、既定値、および有効値の範囲を一覧で示します。 すべてのサーバー パラメーターを調整できるわけではありません。 ここに示されているもののみがサポートされます。
 
-## Azure ポータルで [サーバー パラメーター] ブレードに移動する
-<a id="navigate-to-server-parameters-blade-on-azure-portal" class="xliff"></a>
+## <a name="navigate-to-server-parameters-blade-on-azure-portal"></a>Azure ポータルで [サーバー パラメーター] ブレードに移動する
 
 Azure ポータルにログインし、Azure Database for MySQL サーバー名をクリックします。 **[設定]** セクションの **[サーバー パラメーター]** をクリックして、Azure Database for MySQL の [サーバー パラメーター] ブレードを開きます。
 
 ![Azure ポータルの [サーバー パラメーター] ブレード](./media/howto-server-parameters/auzre-portal-server-parameters.png)
 
-## 構成可能なサーバー パラメーターの一覧
-<a id="list-of-configurable-server-parameters" class="xliff"></a>
+## <a name="list-of-configurable-server-parameters"></a>構成可能なサーバー パラメーターの一覧
 
 次の表は、現在サポートされているサーバーのパラメーターを示しています。 アプリケーションの要件に従って、これらのパラメーターを構成できます。
 
@@ -59,7 +56,6 @@ Azure ポータルにログインし、Azure Database for MySQL サーバー名�
 |time_zone|SYSTEM|例: -8:00、+05:30|サーバーのタイム ゾーン。|
 |wait_timeout|120|60 ～ 240|非対話型接続でサーバーがアクティビティを行うために待機する秒数。この秒数が経過すると、接続が閉じます。|
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 - [Azure Database for MySQL の接続ライブラリ](concepts-connection-libraries.md)
 

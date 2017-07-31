@@ -22,19 +22,16 @@ ms.lasthandoff: 06/30/2017
 
 ---
 
-# Python スクリプトを使用して Log Analytics からデータを取得する
-<a id="retrieve-data-from-log-analytics-with-a-python-script" class="xliff"></a>
+# <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Python スクリプトを使用して Log Analytics からデータを取得する
 [Log Analytics のログ検索 API](log-analytics-log-search-api.md) を使用して、任意の REST API クライアントで Log Analytics ワークスペースからデータを取得することができます。  この記事では、Log Analytics のログ検索 API を使用する Python スクリプトの例を示します。  
 
-## 認証
-<a id="authentication" class="xliff"></a>
+## <a name="authentication"></a>認証
 このスクリプトでは、Azure Active Directory のサービス プリンシパルを使用してワークスペースを認証します。  サービス プリンシパルは、クライアント アプリケーションがアカウント名を持っていない場合でも、サービスがアカウントを認証することを要求できるようにします。 このスクリプトを実行する前に、「[リソースにアクセスできる Azure Active Directory アプリケーションとサービス プリンシパルをポータルで作成する](../azure-resource-manager/resource-group-create-service-principal-portal.md)」の手順に従ってサービス プリンシパルを作成する必要があります。  アプリケーション ID、テナント ID、および認証キーをスクリプトに指定する必要があります。 
 
 > [!NOTE]
 > [Azure Automation アカウントを作成](../automation/automation-create-standalone-account.md)すると、このスクリプトでの使用に適したサービス プリンシパルが作成されます。  Azure Automation によって作成されたサービス プリンシパルが既にある場合は、新しいものを作成する代わりにそれを使用することができますが、認証キーがない場合は、[認証キーの作成](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)が必要になることがあります。
 
-## スクリプト
-<a id="script" class="xliff"></a>
+## <a name="script"></a>スクリプト
 ``` python
 import adal
 import requests
@@ -124,6 +121,5 @@ print ("Total records:" + str(data["__metadata"]["total"]))
 print ("Returned top:" + str(data["__metadata"]["top"]))
 pprint (data["value"])
 ```
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 - [Log Analytics のログ検索 API](log-analytics-log-search-api.md) の詳細を確認します。

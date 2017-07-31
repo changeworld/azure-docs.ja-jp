@@ -21,11 +21,9 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/12/2017
 
 ---
-# StorSimple 8000 シリーズ デバイスの DATA 0 ネットワーク インターフェイス設定の変更
-<a id="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device" class="xliff"></a>
+# <a name="modify-the-data-0-network-interface-settings-on-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイスの DATA 0 ネットワーク インターフェイス設定の変更
 
-## 概要
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>概要
 
 Microsoft Azure StorSimple デバイスには、DATA 0 ～ DATA 5 の 6 つのネットワーク インターフェイスがあります。 DATA 0 インターフェイスは、必ず Windows PowerShell インターフェイスまたはシリアル コンソールを介して構成され、自動的にクラウドに対応します。 Azure ポータルを使用して、DATA 0 ネットワーク インターフェイスを構成することはできません。
 
@@ -36,12 +34,10 @@ DATA 0 インターフェイスは、まず、StorSimple デバイスを初め�
 * セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更する
 * `Set-HcsNetInterface` コマンドレットを使用して DATA 0 ネットワーク設定を変更する
 
-## セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更する
-<a id="modify-data-0-network-settings-through-setup-wizard" class="xliff"></a>
+## <a name="modify-data-0-network-settings-through-setup-wizard"></a>セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更する
 DATA 0 ネットワーク設定を再構成するには、StorSimple デバイスの Windows PowerShell インターフェイスに接続し、セットアップ ウィザードのセッションを起動します。 DATA 0 の設定を変更するには、次の手順を実行します。
 
-#### セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更するには
-<a id="to-modify-data-0-network-settings-through-setup-wizard" class="xliff"></a>
+#### <a name="to-modify-data-0-network-settings-through-setup-wizard"></a>セットアップ ウィザードを使用して DATA 0 ネットワーク設定を変更するには
 1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。 画面の指示に従って、 **デバイス管理者のパスワード**を入力します。 既定のパスワードは `Password1`です。
 2. コマンド プロンプトに、次のコマンドを入力します。
    
@@ -51,12 +47,10 @@ DATA 0 ネットワーク設定を再構成するには、StorSimple デバイ�
 > [!NOTE]
 > 固定コントローラーの IP は、Azure ポータルの StorSimple デバイスの **[ネットワーク設定]** ブレードで再構成する必要があります。 詳細については、 [ネットワーク インターフェイスの変更](storsimple-8000-modify-device-config.md#modify-network-interfaces)をご覧ください。
 
-## Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更する
-<a id="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet" class="xliff"></a>
+## <a name="modify-data-0-network-settings-through-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更する
 DATA 0 ネットワーク インターフェイスを再構成するためのもう 1 つの方法は、 `Set-HcsNetInterface` コマンドレットを使用することです。 このコマンドレットは、StorSimple デバイスの Windows PowerShell インターフェイスから実行します。 この手順を使用する場合、コントローラーの固定 IP アドレスをここで構成することもできます。 DATA 0 の設定を変更するには、次の手順を実行します。 
 
-#### Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更するには
-<a id="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet" class="xliff"></a>
+#### <a name="to-modify-data-0-network-settings-through-the-set-hcsnetinterface-cmdlet"></a>Set-HcsNetInterface コマンドレットを使用して DATA 0 ネットワーク設定を変更するには
 1. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。 画面の指示に従って、デバイス管理者のパスワードを入力します。 既定のパスワードは `Password1`です。
 2. コマンド プロンプトに、次のコマンドを入力します。
    
@@ -72,8 +66,7 @@ DATA 0 ネットワーク インターフェイスを再構成するためのも
      
      このコマンドレットの使用方法の詳細については、 [StorSimple 用 Windows PowerShell コマンドレット リファレンス](https://technet.microsoft.com/library/dn688161.aspx)をご覧ください。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * DATA 0 以外のネットワーク インターフェイスを構成するには、[Azure ポータルで [ネットワーク設定の構成]](storsimple-8000-modify-device-config.md) を使用できます。 
 * ネットワーク インターフェイスを構成するときに問題が発生した場合は、 [デプロイに関する問題のトラブルシューティング](storsimple-troubleshoot-deployment.md)のページを参照してください。
 

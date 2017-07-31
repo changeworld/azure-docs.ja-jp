@@ -1,5 +1,4 @@
-#### クラウド アプライアンスを構成して登録するには
-<a id="to-configure-and-register-the-cloud-appliance" class="xliff"></a>
+#### <a name="to-configure-and-register-the-cloud-appliance"></a>クラウド アプライアンスを構成して登録するには
 
 1. **[デバイス]** ブレードで、先ほど作成した StorSimple Cloud Appliance を選択してクリックします。
 

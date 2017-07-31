@@ -1,8 +1,7 @@
 
 <!--author=alkohli last changed: 01/02/17-->
 
-#### StorSimple のバックアップ スケジュールを追加または変更するには
-<a id="to-add-or-modify-a-storsimple-backup-schedule" class="xliff"></a>
+#### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>StorSimple のバックアップ スケジュールを追加または変更するには
 
 1. StorSimple デバイスに移動して、**[バックアップ ポリシー]** をクリックします。
 
