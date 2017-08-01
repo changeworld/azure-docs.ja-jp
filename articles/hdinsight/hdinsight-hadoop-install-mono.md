@@ -12,7 +12,7 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/01/2017
+ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: 2721b41e8736c9ebd75cd098ad376018b4563d3f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/10/2017
-
 
 ---
 

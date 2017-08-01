@@ -22,21 +22,18 @@ ms.lasthandoff: 12/14/2016
 
 
 ---
-# フィルターと動的マニフェスト
-<a id="filters-and-dynamic-manifests" class="xliff"></a>
+# <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
 Media Services のリリース 2.11 以降では、資産にフィルターを定義できます。 これらのフィルターは、ビデオの 1 つのセクションのみの再生や (ビデオ全体を再生するのではなく)、顧客のデバイスが処理できるオーディオ サブセットとビデオ演奏のみの再生 (資産に関連付けられているすべての演奏ではなく) などを顧客が選択できるようにする、サーバー側のルールです。 この資産のフィルター処理は**動的マニフェスト**によってアーカイブされます。これは、指定したフィルターに基づいてビデオをストリームする必要がある顧客のリクエストに応じて作成されます。
 
 このトピックでは、顧客にとってフィルターを使用することが非常に効果的である一般的なシナリオを示し、プログラムによるフィルターの作成方法を説明するトピックへのリンクを示します (現時点では、フィルターは REST API でのみ作成できます)。
 
-## Overview
-<a id="overview" class="xliff"></a>
+## <a name="overview"></a>Overview
 コンテンツ (ストリーミング ライブ イベントまたはビデオ オン デマンド) を顧客に配信する場合、その目標は、異なるネットワーク条件におけるさまざまなデバイスに高品質のビデオを配信することにあります。 この目標を達成するために、次の操作を行います。
 
 * ストリームをマルチビットレート ([アダプティブ ビットレート](http://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)) ビデオ ストリームにエンコードします (これにより品質とネットワーク条件に対応)。 
 * Media Services の [動的パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します (これにより異なるデバイスでのストリーミングに対応)。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH です。 
 
-### マニフェスト ファイル
-<a id="manifest-files" class="xliff"></a>
+### <a name="manifest-files"></a>マニフェスト ファイル
 アダプティブ ビットレート ストリーミングのアセットをエンコードすると、 **マニフェスト** (再生リスト) ファイルが作成されます (ファイルはテキスト ベースか XML ベース)。 **マニフェスト** ファイルには、トラックの種類 (オーディオ、ビデオ、テキスト)、トラック名、開始時刻と終了時刻、ビットレート (品質)、トラック言語、プレゼンテーション ウィンドウ (固定時間のスライディング ウィンドウ)、ビデオ コーデック (FourCC) などの、ストリーミング メタデータが含まれます。 また、次に再生可能なビデオ フラグメントとその場所の情報を通知して、次のフラグメントを取得するようにプレイヤーに指示します。 フラグメント (またはセグメント) とは、ビデオ コンテンツの実際の「チャンク」です。
 
 以下に、マニフェスト ファイルの例を示します。 
@@ -71,8 +68,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
     </SmoothStreamingMedia>
 
-### 動的マニフェスト
-<a id="dynamic-manifests" class="xliff"></a>
+### <a name="dynamic-manifests"></a>動的マニフェスト
 アセットの既定のマニフェスト ファイルに記述されている情報よりも、さらに高い柔軟性をクライアントが必要とする [シナリオ](media-services-dynamic-manifest-overview.md#scenarios) があります。 次に例を示します。
 
 * デバイスに固有: コンテンツの再生に使用するデバイスでサポートしている演奏や言語のトラックのみを指定して配信する場合 (「演奏フィルタ―処理」) 
@@ -113,8 +109,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 * ビデオの 1 つのセクションのみを再生する (ビデオ全体を再生するのではなく)。
 * DVR プレゼンテーション ウィンドウを調整する。
 
-## 演奏フィルター処理
-<a id="rendition-filtering" class="xliff"></a>
+## <a name="rendition-filtering"></a>演奏フィルター処理
 アセットは、複数のエンコード プロファイル (H.264 Baseline、H.264 高、AACL、AACH、Dolby Digital Plus) と複数の品質ビットレートにエンコードできます。 ただし、クライアント デバイスによっては、一部のアセットのプロファイルやビットレートをサポートしていない場合があります。 たとえば、古いバージョンの Android デバイスでは H.264 Baseline+AACL のみをサポートしています。 品質のメリットを利用できないデバイスに高いビットレートを送信すると、帯域幅とデバイスの計算が無駄になります。 このようなデバイスでは、表示用にスケールダウンするためだけに、取得した情報をすべてデコードしなくてはなりません。
 
 動的マニフェストの場合、携帯電話、コンソール、HD/SD などのデバイス プロファイルを作成し、各プロファイルの一部としてトラックや品質を含めることができます。
@@ -125,20 +120,17 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 ![演奏フィルター処理][renditions1]
 
-## 言語トラックを削除する
-<a id="removing-language-tracks" class="xliff"></a>
+## <a name="removing-language-tracks"></a>言語トラックを削除する
 アセットには、英語、スペイン語、フランス語などの複数のオーディオ言語が含まれる場合があります。通常、Player SDK マネージャーには、既定のオーディオ トラックと、ユーザーによって選択された使用可能なオーディオ トラックがあります。 このような Player SDK の開発は、デバイス固有のプレーヤー フレームワークによってさまざまな実装が必要になるため困難です。 また、一部のプラットフォームでは Player API に制限があり、オーディオ選択機能が含まれません。このため、ユーザーは既定のオーディオ トラックを選択、変更できません。 アセット フィルターを使用すれば、目的のオーディオ言語のみを含むフィルターを作成することで、動作を制御できます。
 
 ![言語トラックのフィルター処理][language_filter]
 
-## アセットのトリミングを開始する
-<a id="trimming-start-of-an-asset" class="xliff"></a>
+## <a name="trimming-start-of-an-asset"></a>アセットのトリミングを開始する
 ほとんどのライブ ストリーミング イベントでは、実際のイベントの前にオペレータがいくつかのテストを行います。 たとえば、イベントの開始前に、"プログラムが間もなく開始します" などのスレートを追加する場合があります。 プログラムをアーカイブすると、テストとスレートのデータもアーカイブされ、プレゼンテーションに追加されます。 しかし、この情報をクライアントに表示すべきではありません。 動的マニフェストを使用することで、開始時刻フィルターを作成し、マニフェストから不要なデータを削除できます。
 
 ![トリミングの開始][trim_filter]
 
-## ライブ アーカイブからサブクリップ (ビュー) を作成する
-<a id="creating-sub-clips-views-from-a-live-archive" class="xliff"></a>
+## <a name="creating-sub-clips-views-from-a-live-archive"></a>ライブ アーカイブからサブクリップ (ビュー) を作成する
 多くのライブ イベントは長時間実行され、ライブ アーカイブに複数のイベントが含まれる場合があります。 ライブ イベントの終了後に、ブロードキャスタはライブ アーカイブを論理プログラムの開始と終了シーケンスに分割することもあります。 この場合、ライブ アーカイブの後処理や個別のアセットの作成を行わずに、これらの仮想ブログラムを個別に発行します (これでは CDN にキャッシュされた既存のフラグメントを利用できません)。 このような仮想プログラム (サブクリップ) の例として、フットボールやバスケットボールの試合のクオーター、野球のイニング、オリンピック大会の午後の各イベントなどが挙げられます。
 
 動的マニフェストでは、開始時刻と終了時刻を使用したフィルターを作成し、ライブ アーカイブ上に仮想ビューを作成できます。 
@@ -149,34 +141,29 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 ![スキー][skiing]
 
-## プレゼンテーション ウィンドウ (DVR) を調整する
-<a id="adjusting-presentation-window-dvr" class="xliff"></a>
+## <a name="adjusting-presentation-window-dvr"></a>プレゼンテーション ウィンドウ (DVR) を調整する
 現在、Azure Media Services では 5 分～ 25 時間の期間を構成できる循環アーカイブを提供しています。 マニフェストのフィルタ―処理を使用して、メディアを削除せずにアーカイブ上に DVR のローリングウィンドウを作成できます。 ブロードキャスタが、ライブ エッジとともに移動する限定的な DVR ウィンドウを配信しつつ、規模の大きいアーカイブ ウインドウも確保しておく必要があるといったシナリオはよくあります。 ブロードキャスタは、クリップを強調表示するために DVR ウィンドウ外のデータを使用し、さまざまなデバイスに合わせて異なる DVR ウィンドウを用意する必要があります。 たとえば、ほとんどのモバイル デバイスでは大きな DVR ウィンドウに対応していません (DVR ウィンドウはモバイル デバイスでは 2 分、デスクトップ クライアントでは 1 時間使用できます)。
 
 ![DVR ウィンドウ][dvr_filter]
 
-## LiveBackoff (ライブ位置) を調整する
-<a id="adjusting-livebackoff-live-position" class="xliff"></a>
+## <a name="adjusting-livebackoff-live-position"></a>LiveBackoff (ライブ位置) を調整する
 マニフェストのフィルター処理を使用して、ライブ プログラムのライブ エッジから数秒を削除できます。 これにより、ブロードキャスタはプレビュー公開ポイントでプレゼンテーションを視聴し、視聴者がストリームを受信する前の広告の挿入ポイントを作成できます (通常 30 秒後退します)。 ブロードキャスタは、広告のチャンスの前にクライアントが情報を受信して処理するよう、これらの広告をクライアント フレームワークにプッシュできます。
 
 広告のサポートに加えて、LiveBackoff はクライアントのライブ ダウンロード位置の調整に使用することもできます。これにより、クライアントの接続が安定せず、ライブ エッジに到達した場合でも、404 または 412 の HTTP エラーを発生させずにサーバーからフラグメントを取得できます。
 
 ![livebackoff_filter][livebackoff_filter]
 
-## 複数のルールを 1 つのフィルターに組み合わせる
-<a id="combining-multiple-rules-in-a-single-filter" class="xliff"></a>
+## <a name="combining-multiple-rules-in-a-single-filter"></a>複数のルールを 1 つのフィルターに組み合わせる
 複数のフィルター処理ルールを 1 つのフィルターに組み合わせることができます。 たとえば、範囲ルールを定義してスレートをライブ アーカイブから削除したり、使用可能なビット レートをフィルター処理することもできます。 複数のフィルター処理による最終的な結果は、これらのルールの構成 (共通部分のみ) になります。
 
 ![multiple-rules][multiple-rules]
 
-## プログラムを使用してフィルターを作成する
-<a id="create-filters-programmatically" class="xliff"></a>
+## <a name="create-filters-programmatically"></a>プログラムを使用してフィルターを作成する
 次のトピックでは、フィルターに関連した Media Services のエンティティについて説明します。 このトピックでは、プログラムを使用してフィルターを作成する方法も示します。  
 
 [REST API を使用してフィルターを作成する](media-services-rest-dynamic-manifest.md)
 
-## 複数のフィルターを結合する (フィルターの構成)
-<a id="combining-multiple-filters-filter-composition" class="xliff"></a>
+## <a name="combining-multiple-filters-filter-composition"></a>複数のフィルターを結合する (フィルターの構成)
 1 つの URL で複数のフィルターを結合することもできます。 
 
 次のシナリオは、フィルターを結合する理由を示しています。
@@ -193,22 +180,18 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 
 詳細については、 [この投稿](https://azure.microsoft.com/blog/azure-media-services-release-dynamic-manifest-composition-remove-hls-audio-only-track-and-hls-i-frame-track-support/) を参照してください。
 
-## 既知の問題と制限
-<a id="know-issues-and-limitations" class="xliff"></a>
+## <a name="know-issues-and-limitations"></a>既知の問題と制限
 * 動的マニフェストは GOP 境界 (キー フレーム) で動作するため、トリミングの正確度は GOP に応じます。 
 * ローカル フィルターとグローバル フィルターに同じフィルター名を使用できます。 ローカル フィルターの方が優先順位が高く、グローバル フィルターをオーバライドすることにご注意ください。
 * フィルターを更新する場合、ストリーミング エンドポイントでルールを更新するのに最大 2 分かかります。 いくつかのフィルターを使用してコンテンツが処理された場合 (プロキシと CDN にキャッシュされている)、プレイヤーでこれらのフィルターを更新すると失敗します。 フィルターを更新した後にキャッシュをクリアすることをお勧めします。 このオプションが利用できない場合は、別のフィルターを使用することを検討してください。
 
-## Media Services のラーニング パス
-<a id="media-services-learning-paths" class="xliff"></a>
+## <a name="media-services-learning-paths"></a>Media Services のラーニング パス
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 
-## フィードバックの提供
-<a id="provide-feedback" class="xliff"></a>
+## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
-## 関連項目
-<a id="see-also" class="xliff"></a>
+## <a name="see-also"></a>関連項目
 [顧客へのコンテンツの配信に関する概要](media-services-deliver-content-overview.md)
 
 [renditions1]: ./media/media-services-dynamic-manifest-overview/media-services-rendition-filter.png
