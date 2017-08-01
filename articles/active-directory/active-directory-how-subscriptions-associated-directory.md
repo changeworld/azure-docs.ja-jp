@@ -12,18 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2d428e0e3aaf8fd4a2138648411da644ccd308f6
-ms.openlocfilehash: 4eee1b3f30c9e47983af5c1dfa60fe0deb8c2cc8
+ms.reviewer: jeffsta
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 7a82dcddcd051c88c2a6a515ed2353961307182a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/08/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付ける方法
 この記事では、Microsoft Azure へのサインインに関する情報と、Azure サブスクリプションと Azure Active Directory (Azure AD) の関係など、関連する問題について説明します。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。
 
 ## <a name="accounts-that-you-can-use-to-sign-in"></a>サインインに使用できるアカウント
 サインインに使用できるアカウントから始めます。 Microsoft アカウント (旧称 Microsoft Live ID) と、Azure AD に格納されるアカウントである職場または学校アカウントの 2 種類があります。
@@ -120,8 +124,7 @@ Azure クラシック ポータルで両方のディレクトリを管理する�
 ## <a name="next-steps"></a>次のステップ
 * Azure サブスクリプションの管理者を変更する方法の詳細については、「 [Azure 管理者ロールを追加または変更する方法](../billing/billing-add-change-azure-subscription-administrator.md)
 * Microsoft Azure でリソース アクセスを制御する方法の詳細については、「 [Azure でのリソース アクセスについて](active-directory-understanding-resource-access.md)
-* Azure AD で役割を割り当てる方法の詳細については、「 [Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)
-* [Azure への組織としてのサインアップ](sign-up-organization.md)
+* Azure AD でロールを割り当てる方法の詳細については、「 [Azure Active Directory (Azure AD) の管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)
 
 <!--Image references-->
 [1]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_PassThruAuth.png

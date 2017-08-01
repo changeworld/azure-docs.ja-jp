@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: bc0c8ccad64166582dcb3f7162280a8772abc6b3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ba82a5e25750fc6d9bd047ace3abb087e5dedfb3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="introduction-to-private-docker-container-registries"></a>プライベート Docker コンテナー レジストリの概要
@@ -40,7 +40,7 @@ Docker とコンテナーに関する背景情報については、次を参照�
 Azure コンテナー レジストリからさまざまなデプロイ ターゲットにイメージをプルできます。
 
 * [DC/OS](https://docs.mesosphere.com/)、[Docker Swarm](https://docs.docker.com/swarm/)、[Kubernetes](http://kubernetes.io/docs/) など、ホストのクラスターのコンテナー化されたアプリケーションを管理する**スケーラブルなオーケストレーション システム**。
-* [Container Service](../container-service/index.yml)、[App Service](/app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](../service-fabric/index.md) など、アプリケーションの大規模な構築と実行をサポートする **Azure サービス**。
+* [Container Service](../container-service/index.yml)、[App Service](/app-service/index.md)、[Batch](../batch/index.md)、[Service Fabric](/azure/service-fabric/) など、アプリケーションの大規模な構築と実行をサポートする **Azure サービス**。
 
 開発者は、コンテナー開発ワークフローの一環としてコンテナー レジストリにプッシュすることもできます。 たとえば、[Visual Studio Team Services](https://www.visualstudio.com/docs/overview) や [Jenkins](https://jenkins.io/) などの継続的な統合とデプロイ ツールからコンテナー レジストリを対象にすることができます。
 
@@ -52,6 +52,8 @@ Azure コンテナー レジストリからさまざまなデプロイ ターゲ
 * **レジストリ** - Azure サブスクリプションに 1 つ以上のコンテナー レジストリを作成できます。 各レジストリは、同じ場所の Standard Azure [ストレージ アカウント](../storage/storage-introduction.md)でサポートされます。 デプロイと同じ Azure の場所にレジストリを作成することで、ネットワーク上の近い場所にローカルで保存されたコンテナー イメージを活用します。 レジストリの完全修飾名は `myregistry.azurecr.io` という形式になります。
 
   コンテナー レジストリへの[アクセスを制御](container-registry-authentication.md)するには、Azure Active Directory でサポートされている[サービス プリンシパル](../active-directory/active-directory-application-objects.md)または提供された管理者アカウントを使用します。 レジストリによる認証を行うには、標準の `docker login` コマンドを実行します。
+
+* **管理されたレジストリ** - 3 つの SKU (Basic、Standard、Premium) のレジストリの機能を拡充した階層です。 これらの SKU のイメージは、Azure Container Registry サービスによって管理されたストレージ アカウントに保存され、信頼性が向上すると共に新しい機能が利用できます。 新しい機能の例として、webhook 統合、Azure Active Directory によるリポジトリ認証、削除機能のサポートが挙げられます。 ユーザーはレジストリを作成する際に、管理されたレジストリを作成するか、または独自のストレージ アカウントを基にレジストリを作成するかを選択できます。
 
 * **リポジトリ** - レジストリには、1 つ以上のリポジトリ (コンテナー イメージのグループ) が含まれています。 Azure Container Registry では、複数レベルのリポジトリ名前空間をサポートしています。 この機能により、特定のアプリに関連するイメージのコレクション (つまり、アプリのコレクション) を特定の開発チームや運用チーム別にグループ化できます。 次に例を示します。
 

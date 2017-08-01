@@ -1,5 +1,5 @@
 ---
-title: ".NET SDK を使用した Azure Search でのデータ アップロード | Microsoft Docs"
+title: "データのアップロード (.NET - Azure Search) | Microsoft Docs"
 description: ".NET SDK を使用して Azure Search のインデックスにデータをアップロードする方法について説明します。"
 services: search
 documentationcenter: 
@@ -15,10 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 01/13/2017
 ms.author: brjohnst
-translationtype: Human Translation
-ms.sourcegitcommit: 1f06a7197cc1a6dcf7a39c91183a4317bef126bb
-ms.openlocfilehash: 3c8f30583ebcb5b4e4182bd2770079882c088c50
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7676262b7bca47444aee7b10a131c01e6b697e7b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="upload-data-to-azure-search-using-the-net-sdk"></a>.NET SDK を使用した Azure Search へのデータのアップロード
@@ -236,10 +237,5 @@ Azure Search インデックスにマップする独自のモデル クラスを
 
 ## <a name="next-steps"></a>次のステップ
 Azure Search インデックスにデータを読み込んだら、ドキュメントを検索するクエリを発行できるようになります。 詳細については、「 [Azure Search インデックスの照会](search-query-overview.md) 」を参照してください。
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

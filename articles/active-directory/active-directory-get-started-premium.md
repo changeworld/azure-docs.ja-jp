@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Premium の概要"
-description: "このトピックでは、ボリューム ライセンスの Web サイトを通じて Azure Active Directory Premium Edition にサインアップする方法について説明します。"
+description: "ボリューム ライセンスの Web サイトを通じて Azure Active Directory Premium Edition にサインアップする方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -11,17 +11,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 73cbbce9ae3d727632b8cac2a29c2b1b92332ae7
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: fac41a05c97088b55f07455133d960687227af0e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="getting-started-with-azure-active-directory-premium"></a>Azure Active Directory Premium の概要
+この記事では、ボリューム ライセンス プログラムで購入した Azure Active Directory Premium の使用を開始する方法について説明します。 Azure Active Directory のエディションの違いについてまだよくご存知でない方は、「 [Azure Active Directory のエディション](active-directory-editions.md)」を参照してください。  
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
+
 Active Directory Premium にはいくつかの方法でサインアップできます。 
 
 **Azure または Office 365** - Azure または Office 365 のサブスクライバーである場合、Active Directory Premium をオンラインで購入できます。 詳細な手順については、「[How to Purchase Azure Active Directory Premium - Existing Customers (Azure Active Directory Premium を購入する方法 - 既存のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-Existing-Customer)」または「[How to Purchase Azure Active Directory Premium - New Customers (Azure Active Directory Premium を購入する方法 - 新規のお客様)](https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/How-to-Purchase-Azure-Active-Directory-Premium-New-Customers)」をご覧ください。  
@@ -30,10 +35,8 @@ Active Directory Premium にはいくつかの方法でサインアップでき�
 
 **マイクロソフト ボリューム ライセンス** - Azure Active Directory Premium は、[Microsoft Enterprise Agreement](https://www.microsoft.com/en-us/licensing/licensing-programs/enterprise.aspx) (250 個以上のライセンス) または [Open Volume License](https://www.microsoft.com/en-us/licensing/licensing-programs/open-license.aspx) (5 ～ 250 個のライセンス) プログラムで購入できます。
 
-このトピックでは、ボリューム ライセンス プログラムで購入した Azure Active Directory Premium の使用を開始する方法について説明します。 Azure Active Directory のエディションの違いについてまだよくご存知でない方は、「 [Azure Active Directory のエディション](active-directory-editions.md)」を参照してください。  
-
 > [!NOTE]
-> 中国のお客様は、Azure Active Directory の世界中のインスタンスを使用して、Azure Active Directory Premium および Basic エディションを利用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
+> Azure Active Directory のワールドワイド インスタンスを使用している中国のお客様は、Azure Active Directory Premium および Basic エディションを使用できます。 中国の 21Vianet が運営する Microsoft Azure サービスでは、Azure Active Directory Premium および Basic エディションは現在サポートされていません。 詳細については、 [Azure Active Directory フォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/)からお問い合わせください。
 > 
 > 
 
