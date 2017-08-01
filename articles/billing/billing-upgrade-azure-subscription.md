@@ -24,8 +24,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 03/17/2017
 
 ---
-<a id="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go" class="xliff"></a>
-# 無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
+# <a name="upgrade-your-free-trial-or-microsoft-imagine-azure-subscription-to-pay-as-you-go"></a>無料試用版または Microsoft Imagine Azure サブスクリプションを従量課金制にアップグレードする
 Azure アカウント ポータルで、[無料試用版](https://azure.microsoft.com/free/)または [Microsoft Imagine](https://azure.microsoft.com/offers/ms-azr-0144p/) サブスクリプションを[従量課金制](https://azure.microsoft.com/offers/ms-azr-0003p/)にアップグレードします。 アップグレードはそれ自体では課金されません。使用したサービスに対してのみ料金が発生します。
 
 1. [Azure アカウント ポータル](https://account.windowsazure.com/subscriptions)にサインインし、**[サブスクリプション]** タブに移動します。
