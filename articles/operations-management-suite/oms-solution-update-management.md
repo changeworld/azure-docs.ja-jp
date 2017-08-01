@@ -12,26 +12,23 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/21/2017
+ms.date: 07/09/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: b4d5ab66db64a50d1b87edd4bf445e49004e67b4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# OMS の更新管理ソリューション
-<a id="update-management-solution-in-oms" class="xliff"></a>
+# <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 
 ![更新管理のシンボル](./media/oms-solution-update-management/update-management-symbol.png)
 
-OMS の更新管理ソリューションを使用すると、Windows コンピューターと Linux コンピューターの更新プログラムを管理することができます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを開始することができます。
+OMS の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムのセキュリティ更新プログラムを管理できます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
 
 
-## ソリューションの概要
-<a id="solution-overview" class="xliff"></a>
+## <a name="solution-overview"></a>ソリューションの概要
 OMS で管理されるコンピューターでは、評価と更新プログラムのデプロイに次のコンポーネントを使用します。
 
 * Linux または Windows 用の OMS エージェント
@@ -39,14 +36,12 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 * Automation Hybrid Runbook Worker
 * Microsoft Update または Windows Server Update Services (Windows コンピューターの場合)
 
-下の図は、動作とデータ フローの概念図です。ワークスペースに接続されたすべての Windows Server および Linux コンピューターがこのソリューションによってどのように評価され、更新プログラムが適用されるかを示しています。    
+次の図は、動作とデータ フローの概念図です。ワークスペース内の接続された Windows Server と Linux コンピューターすべてがこのソリューションによってどのように評価され、セキュリティ更新プログラムが適用されるかを示しています。    
 
-#### Windows Server
-<a id="windows-server" class="xliff"></a>
+#### <a name="windows-server"></a>Windows Server
 ![Windows Server の更新管理プロセスのフロー](media/oms-solution-update-management/update-mgmt-windows-updateworkflow.png)
 
-#### Linux
-<a id="linux" class="xliff"></a>
+#### <a name="linux"></a>Linux
 ![Linux の更新管理プロセスのフロー](media/oms-solution-update-management/update-mgmt-linux-updateworkflow.png)
 
 コンピューターが更新プログラムの対応状態を確認するためにスキャンを実行した後、OMS エージェントによって情報が OMS に一括して転送されます。 Windows コンピューターでは、対応スキャンは既定で 12 時間ごとに実行されます。  このスキャン スケジュールに加えて、Microsoft Monitoring Agent (MMA) の再起動後 15 分以内、更新プログラムのインストール前、および更新プログラムのインストール後に、更新プログラムの対応状態を確認するためのスキャンが開始されます。  Linux コンピューターでは、対応スキャンは既定で 3 時間ごとに実行されます。また、MMA エージェントが再起動された場合も 15 分以内に対応スキャンが開始されます。  
@@ -57,8 +52,7 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 
 更新プログラムの展開で指定した日時に、対象のコンピューターでデプロイが並行して実行されます。  まず、スキャンが実行され、その更新プログラムが必須であることが確認されてからインストールされます。  WSUS クライアント コンピューターの場合、更新プログラムが WSUS で承認されていないと更新プログラムの展開は失敗するので、注意してください。  適用された更新プログラムの結果は OMS に転送され、そこで処理されてダッシュボードに要約が表示されます。また、イベントを検索することもできます。     
 
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 * このソリューションでサポートされるのは、Windows Server 2008 以降に対する更新プログラムの評価と、Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイです。  Server Core と Nano Server のインストール オプションはサポートされていません。
 
     > [!NOTE]
@@ -85,12 +79,10 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
 
 OMS Agent for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。  Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agents.md)に関するページを参照してください。  
 
-## ソリューションのコンポーネント
-<a id="solution-components" class="xliff"></a>
+## <a name="solution-components"></a>ソリューションのコンポーネント
 このソリューションは以下のリソースで構成されています。これらのリソースは、Automation アカウントに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
 
-### 管理パック
-<a id="management-packs" class="xliff"></a>
+### <a name="management-packs"></a>管理パック
 System Center Operations Manager 管理グループが OMS ワークスペースに接続されている場合は、以下の管理パックが Operations Manager にインストールされます。  これらの管理パックは、このソリューションを追加した後、直接接続された Windows コンピューターにもインストールされます。 管理パックに伴って構成や管理が必要となるものはありません。
 
 * Microsoft System Center Advisor 更新プログラム評価インテリジェンス パック (Microsoft.IntelligencePacks.UpdateAssessment)
@@ -99,14 +91,12 @@ System Center Operations Manager 管理グループが OMS ワークスペース
 
 ソリューション管理パックの更新方法の詳細については、「 [Operations Manager を Log Analytics に接続する](../log-analytics/log-analytics-om-agents.md)」を参照してください。
 
-### ハイブリッド worker グループ
-<a id="hybrid-worker-groups" class="xliff"></a>
+### <a name="hybrid-worker-groups"></a>ハイブリッド worker グループ
 このソリューションを有効にすると、ソリューションに含まれている Runbook をサポートするために、OMS ワークスペースに直接接続された Windows コンピューターが自動的に Hybrid Runbook Worker として構成されます。  ソリューションで管理されている各 Windows コンピューターは、<*ホスト名 FQDN_GUID*> という命名規則に従って、Automation アカウントの Hybrid Runbook Worker グループ ブレードに表示されます。  アカウントの Runbook でこれらのグループを対象として指定することはできません。指定すると失敗します。 これらのグループは、管理ソリューションをサポートすることのみを目的としています。   
 
 ただし、このソリューションと Hybrid Runbook Worker グループ メンバーシップの両方に同じアカウントを使用すれば、Windows コンピューターを Automation アカウントの Hybrid Runbook Worker に追加して Automation Runbook をサポートすることができます。  この機能は、Hybrid Runbook Worker のバージョン 7.2.12024.0 に追加されました。  
 
-## 構成
-<a id="configuration" class="xliff"></a>
+## <a name="configuration"></a>構成
 OMS ワークスペースに更新管理ソリューションを追加し、エージェントがレポートしていることを確認するには、次の手順を実行します。 ワークスペースに既に接続されている Windows エージェントは、そのままの構成で自動的に追加されます。
 
 このソリューションのデプロイには、次の方法を使用できます。
@@ -116,8 +106,7 @@ OMS ワークスペースに更新管理ソリューションを追加し、エ�
 
 既に Automation アカウントと OMS ワークスペースが同じリソース グループとリージョンにリンクされている場合は、[オートメーションと制御] を選択すると、構成を確認し、ソリューションをインストールするだけで、両方のサービスでソリューションが構成されます。  Azure Marketplace で更新管理ソリューションを選択した場合も、同じようにして構成されます。  サブスクリプションにどちらかのサービスがデプロイされている場合は、**[新しいソリューションの作成]** ブレードの手順に従って、事前に選択された他の推奨ソリューションをインストールする必要があるかどうかを確認します。  また、必要に応じて、[OMS ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページで説明されているプロセスをソリューション ギャラリーで実行して、更新管理ソリューションを OMS ワークスペースに追加できます。  
 
-### OMS エージェントと Operations Manager 管理グループが OMS に接続されていることを確認する
-<a id="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms" class="xliff"></a>
+### <a name="confirm-oms-agents-and-operations-manager-management-group-connected-to-oms"></a>OMS エージェントと Operations Manager 管理グループが OMS に接続されていることを確認する
 
 直接接続された OMS Agent for Linux と Windows 用 OMS エージェントが OMS と通信していることを確認するには、数分経ってから、次のログ検索を実行します。
 
@@ -142,10 +131,8 @@ Windows コンピューターでは、次の内容を調べて、OMS とエー�
 
 Operations Manager 管理グループが OMS と通信していることを確認する方法については、「[Operations Manager と OMS の統合を検証する](../log-analytics/log-analytics-om-agents.md#validate-operations-manager-integration-with-oms)」を参照してください。
 
-## データ収集
-<a id="data-collection" class="xliff"></a>
-### サポートされているエージェント
-<a id="supported-agents" class="xliff"></a>
+## <a name="data-collection"></a>データ収集
+### <a name="supported-agents"></a>サポートされているエージェント
 次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
 
 | 接続されているソース | サポートの有無 | 説明 |
@@ -155,28 +142,24 @@ Operations Manager 管理グループが OMS と通信していることを確�
 | Operations Manager 管理グループ |はい |ソリューションは、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。<br>Operations Manager エージェントから Log Analytics への直接接続は必要ありません。 データは管理グループから OMS リポジトリに転送されます。 |
 | Azure ストレージ アカウント |なし |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
 
-### 収集の頻度
-<a id="collection-frequency" class="xliff"></a>
+### <a name="collection-frequency"></a>収集の頻度
 管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。  管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
 
 ダッシュボードが管理対象コンピューターの更新されたデータを表示するのに、30 分～ 6 時間かかります。   
 
-## ソリューションの使用
-<a id="using-the-solution" class="xliff"></a>
+## <a name="using-the-solution"></a>ソリューションの使用
 OMS ワークスペースに更新管理ソリューションを追加すると、OMS のダッシュボードに **[Update Management (更新管理)]** タイルが追加されます。 このタイルには、ご利用の環境におけるコンピューターの数と更新プログラムの対応状態が数字とグラフで表示されます。<br><br>
 ![更新管理の概要タイル](media/oms-solution-update-management/update-management-summary-tile.png)  
 
 
-## 更新プログラムの評価の表示
-<a id="viewing-update-assessments" class="xliff"></a>
+## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示
 **[Update Management (更新管理)]** タイルをクリックすると、**[Update Management (更新管理)]** ダッシュボードが表示されます。<br><br> ![更新管理の概要ダッシュボード](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
 このダッシュボードには、更新状態の詳細な内訳が表示されます。更新状態は、オペレーティング システムの種類と更新プログラムの分類ごとに分けられています。更新プログラムの分類は、重要な更新プログラム、セキュリティ更新プログラム、その他 (定義更新など) です。 **[Update Deployments (更新プログラムの展開)]** タイルをクリックすると、[Update Deployments (更新プログラムの展開)] ページが表示されます。このページで、スケジュール、現在実行されているデプロイ、完了したデプロイを表示したり、新しいデプロイのスケジュールを設定したりすることができます。  
 
 特定のタイルをクリックすると、すべてのレコードを返すログ検索が実行されます。また、カテゴリと定義済みの条件を指定してクエリを実行し、**[一般的な更新クエリ]** 列に表示された一覧から任意のレコード 1 つを選択することもできます。    
 
-## 更新プログラムのインストール
-<a id="installing-updates" class="xliff"></a>
+## <a name="installing-updates"></a>更新プログラムのインストール
 ご利用のワークスペースにある Linux コンピューターと Windows コンピューターのすべてで更新プログラムが評価されたら、"*更新プログラムの展開*" を作成して、必要な更新プログラムがインストールされるようにすることができます。  "更新プログラムの展開" とは、1 台以上のコンピューターに対して、必要な更新プログラムをスケジュールに従ってインストールすることです。  デプロイの範囲に含めるコンピューターまたはコンピューター グループと、デプロイの日時を指定します。  コンピューター グループの詳細については、[Log Analytics のコンピューター グループ](../log-analytics/log-analytics-computer-groups.md)に関するページを参照してください。  更新プログラムの展開にコンピューター グループを含めると、スケジュールの作成時にグループ メンバーシップが 1 回だけ評価されます。  その後で加えられたグループへの変更は反映されません。  この問題を回避するには、スケジュールされた更新プログラムの展開を削除して、もう一度作成します。
 
 > [!NOTE]
@@ -184,8 +167,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 
 Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise Linux (RHEL) イメージから作成した仮想マシンは、Azure にデプロイされた [Red Hat Update Infrastructure (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) にアクセスするよう登録されています。  その他の Linux ディストリビューションは、サポートされている方式に従ったディストリビューション オンライン ファイル リポジトリから更新する必要があります。  
 
-### 更新プログラムの展開の表示
-<a id="viewing-update-deployments" class="xliff"></a>
+### <a name="viewing-update-deployments"></a>更新プログラムの展開の表示
 **[Update Deployment (更新プログラムの展開)]** タイルをクリックすると、既存の更新プログラムの展開の一覧が表示されます。  これらは状態別 (**スケジュール**、**実行中**、**Completed (完了)**) にグループ化されています。<br><br> ![更新プログラムの展開スケジュールのページ](./media/oms-solution-update-management/update-updatedeployment-schedule-page.png)<br>  
 
 各更新プログラムの展開に表示されるプロパティについては、次の表で説明します。
@@ -211,8 +193,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | Windows の更新プログラム |更新プログラムの展開に含まれる Windows の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 |
 | Linux の更新プログラム |更新プログラムの展開に含まれる Linux の更新プログラムと各更新プログラムのインストール状態が一覧表示されます。  いずれかの更新プログラムを選択すると、その更新プログラムに関するすべての更新レコードを返すログ検索が実行されます。状態をクリックすると、デプロイのすべての更新レコードを返すログ検索が実行されます。 |
 
-### 更新プログラムの展開の作成
-<a id="creating-an-update-deployment" class="xliff"></a>
+### <a name="creating-an-update-deployment"></a>更新プログラムの展開の作成
 新しい更新プログラムの展開を作成するには、画面上部にある **[追加]** ボタンをクリックして **[New Update Deployment (新しい更新プログラムの展開)]** ページを開きます。  次の表にあるプロパティの値を指定する必要があります。
 
 | プロパティ | Description |
@@ -226,18 +207,15 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 <br><br> ![[New Update Deployment (新しい更新プログラムの展開)] ページ](./media/oms-solution-update-management/update-newupdaterun-page.png)
 
-### 時間範囲
-<a id="time-range" class="xliff"></a>
+### <a name="time-range"></a>時間範囲
 既定では、更新管理ソリューションの分析は、過去 1 日間に生成された接続されているすべての管理グループから収集されたデータが対象となります。
 
 データの時間範囲を変更するには、ダッシュボードの上部にある **[Data based on (データの時間範囲)]** を選択します。 過去 7 日間、過去 1 日間、または過去 6 時間以内に作成または更新されたレコードを選択できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
 
-## Log Analytics のレコード
-<a id="log-analytics-records" class="xliff"></a>
+## <a name="log-analytics-records"></a>Log Analytics のレコード
 更新管理ソリューションにより 2 種類のレコードが OMS リポジトリに作成されます。
 
-### Update レコード
-<a id="update-records" class="xliff"></a>
+### <a name="update-records"></a>Update レコード
 **Update** という種類のレコードは、各コンピューターでインストールされるか必要とされる更新プログラムごとに作成されます。 Update レコードには、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
@@ -278,8 +256,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 
 ![ログ検索のテーブル ビュー (タイルのレコードの種類 Updates)](./media/oms-solution-update-management/update-la-view-list.png)
 
-### UpdateSummary レコード
-<a id="updatesummary-records" class="xliff"></a>
+### <a name="updatesummary-records"></a>UpdateSummary レコード
 **UpdateSummary** という種類のレコードは、Windows エージェント コンピューターごとに作成されます。 このレコードは、更新プログラムについてコンピューターがスキャンされるたびに更新されます。 **UpdateSummary** レコードには、次の表に示したプロパティがあります。
 
 | プロパティ | 説明 |
@@ -302,8 +279,7 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | WindowsUpdateSetting |コンピューターで重要な更新プログラムをインストールする方法に関する設定。<br>次のいずれかの値になります。<br>- 無効<br>- Notify before installation (インストール前に通知)<br>- Scheduled installation (スケジュールに従ってインストール) |
 | WSUSServer |WSUS サーバーの URL (コンピューターがそれを使用するように構成されている場合)。 |
 
-## サンプル ログ検索
-<a id="sample-log-searches" class="xliff"></a>
+## <a name="sample-log-searches"></a>サンプル ログ検索
 次の表は、このソリューションによって収集された更新レコードを探すログ検索の例です。
 
 | クエリ | Description |
@@ -330,19 +306,16 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
 | Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |List of all the “Ubuntu” machines with any update available (任意の更新プログラムが使用可能なすべての "Ubuntu" マシンの一覧) | 
 
-## トラブルシューティング
-<a id="troubleshooting" class="xliff"></a>
+## <a name="troubleshooting"></a>トラブルシューティング
 
 このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。  
 
-### 更新プログラムの展開のトラブルシューティングを行うにはどうすればよいですか。
-<a id="how-do-i-troubleshoot-update-deployments" class="xliff"></a>
+### <a name="how-do-i-troubleshoot-update-deployments"></a>更新プログラムの展開のトラブルシューティングを行うにはどうすればよいですか。
 このソリューションをサポートしている OMS ワークスペースにリンクされた Automation アカウントの [ジョブ] ブレードで、スケジュールされた更新プログラムの展開に含まれた更新プログラムをデプロイする Runbook の結果を表示できます。  Runbook **Patch-MicrosoftOMSComputer** は、管理されたコンピューター 1 台を対象とする子 Runbook です。詳細ストリームを確認すると、そのデプロイに関する詳細情報を把握できます。  出力に、適用可能な必須の更新プログラム、ダウンロード状態、インストール状態、その他の詳細情報が表示されます。<br><br> ![更新プログラムの展開ジョブの状態](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>
 
 詳細については、[Automation Runbook の出力とメッセージ](../automation/automation-runbook-output-and-messages.md)に関するページを参照してください。   
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  

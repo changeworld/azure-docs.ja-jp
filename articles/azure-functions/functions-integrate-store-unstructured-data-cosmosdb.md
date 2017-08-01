@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 07/08/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: 46022530c69b292878a4500c0e325bda878e6188
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 492c916a493bb8d5c5415fc517506e5c1ccffc56
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="store-unstructured-data-using-azure-functions-and-cosmos-db"></a>Azure Functions と Cosmos DB を使用して非構造化データを格納する
@@ -159,9 +159,7 @@ Cosmos DB データベースにエントリが作成されていることを確�
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Functions の詳細については、次のトピックを参照してください。
-
-[!INCLUDE [Getting help note](../../includes/functions-get-help.md)]
-
 [!INCLUDE [functions-quickstart-next-steps](../../includes/functions-quickstart-next-steps.md)]
+
+Cosmos DB データベースへのバインドの詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
 

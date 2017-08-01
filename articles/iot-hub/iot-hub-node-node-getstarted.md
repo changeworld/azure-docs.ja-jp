@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub の使用 (Node) | Microsoft Docs"
-description: "Azure IoT SDK for Node.js を使用して Azure IoT Hub デバイスでデバイスからクラウドへのメッセージを送信する方法。 メッセージを送信するシミュレーション対象デバイス アプリ、ID レジストリにデバイスを登録するサービス アプリ、およびデバイスからクラウドへのメッセージを IoT Hub から読み取るサービス アプリを作成します。"
+description: "IoT SDK for Node.js を使用して Azure IoT Hub にデバイスからクラウドへのメッセージを送信する方法について説明します。 デバイスを登録し、メッセージを送信して、IoT ハブからメッセージを読み取るために、シミュレートされたデバイスとサービス アプリを作成します。"
 services: iot-hub
 documentationcenter: nodejs
 author: dominicbetts
@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/22/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: b04fe441cf83ed616b0464eec83a6caf3a449532
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5ce485575416b863d34117807c6dccd96e88eb42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-node"></a>Node を使用してシミュレーション対象デバイスを IoT Hub に接続する
@@ -95,6 +94,8 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
       }
     }
     ```
+   [!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
+
 7. **CreateDeviceIdentity.js** ファイルを保存して閉じます。
 8. **createdeviceidentity** アプリケーションを実行するには、コマンド プロンプトで createdeviceidentity フォルダーに移動し、次のコマンドを実行します。
    

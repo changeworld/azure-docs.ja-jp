@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 05/03/2017
+ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: fac46780cfd591a00ce73ea1bb4ce73893d22967
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 31ac18add9c3fd956e0d37b1e0c1a510265c22e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -36,9 +36,9 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure ポータルの左上隅にある **[新規]** ボタンをクリックします。
 
-2. **[Compute]\(コンピューティング\)** を選択して **[Windows Server 2016 Datacenter]** を選択し、**Resource Manager** デプロイメント モデルが選択されていることを確認します。 **[Create]** ボタンをクリックします。 
+2. **[コンピューティング]**、**[Windows Server 2016 Datacenter]** の順に選択します。 
 
 3. 仮想マシンの情報を入力します。 ここに入力したユーザー名とパスワードが、仮想マシンへのログインに使用されます。 完了したら、**[OK]** をクリックします。
 
@@ -48,7 +48,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
     ![VM のサイズを示すスクリーンショット](./media/quick-create-portal/create-windows-vm-portal-sizes.png)  
 
-5. 設定ブレードの **[管理ディスクを使用]** で **[はい]** を選択し、他の設定は既定のままにして、**[OK]** をクリックします。
+5. 設定ブレードで、既定値のまま **[OK]** をクリックします。
 
 6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 

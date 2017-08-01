@@ -1,7 +1,5 @@
 
-<a id="about-vhds" class="xliff"></a>
-
-## VHD について
+## <a name="about-vhds"></a>VHD について
 
 Azure で使用される VHD は .vhd ファイルです。Azure では Standard または Premium Storage アカウントでページ BLOB としてこれらを格納します。 ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs/)」をご覧ください。 Premium Storage の詳細については、[高パフォーマンスの Premium Storage と Azure VM](../articles/storage/storage-premium-storage.md) に関する記事を参照してください。
 
@@ -17,35 +15,28 @@ Azure は VHD フォーマットの固定ディスクをサポートしていま
 > ユーザーがストレージからソースの .vhd ファイルを削除する場合、またはストレージ アカウントを削除する場合、Microsoft はそのデータを回復することはできません。
 > 
 
-<a id="types-of-disks" class="xliff"></a>
+## <a name="types-of-disks"></a>ディスクの種類 
 
-## ディスクの種類 
+Azure ディスクは、99.999% の可用性で設計されています。 エンタープライズレベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供してきました。
 
-ディスクの作成時に選択できるストレージには、Standard Storage と Premium Storage という 2 つのパフォーマンス レベルが存在します。 また、ディスクの種類には、非管理対象ディスクと管理ディスクの 2 つがあります。これらは、どちらのパフォーマンス レベルでも格納できます。  
+ディスクの作成時に選択できるストレージには、Standard Storage と Premium Storage という 2 つのパフォーマンス レベルが存在します。 また、ディスクの種類には、非管理対象ディスクと管理ディスクの 2 つがあります。これらは、どちらのパフォーマンス レベルでも格納できます。
 
-<a id="standard-storage" class="xliff"></a>
 
-### Standard Storage 
+### <a name="standard-storage"></a>Standard Storage 
 
 Standard Storage では、HDD が使用されており、高パフォーマンスでありながらコスト効率にも優れたストレージを提供します。 Standard Storage は、1 つのデータセンターでローカルにレプリケートするか、プライマリ データセンターとセカンダリ データセンターで geo 冗長レプリケートすることができます。 ストレージ レプリケーションの詳細については、「[Azure Storage のレプリケーション](../articles/storage/storage-redundancy.md)」を参照してください。 
 
 VM ディスクを利用した Standard Storage の使用の詳細については、[Standard Storage とディスク](../articles/storage/storage-standard-storage.md)に関する記事を参照してください。
 
-<a id="premium-storage" class="xliff"></a>
-
-### Premium Storage 
+### <a name="premium-storage"></a>Premium Storage 
 
 Premium Storage では、SSD が使用されており、I/O 集中型のワークロードを実行している VM 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、または FS シリーズの Azure VM で使用できます。 詳細については、[Premium Storage](../articles/storage/storage-premium-storage.md) に関する記事を参照してください。
 
-<a id="unmanaged-disks" class="xliff"></a>
-
-### 非管理対象ディスク
+### <a name="unmanaged-disks"></a>非管理対象ディスク
 
 非管理対象ディスクとは、VM で使用されてきた従来の種類のディスクです。 これらのディスクでは、独自のストレージ アカウントを作成し、ディスクの作成時にそのストレージ アカウントを指定します。 同じストレージ アカウントにディスクを配置しすぎないようにしてください。ストレージ アカウントの[スケーラビリティ ターゲット](../articles/storage/storage-scalability-targets.md) (たとえば 20,000 IOPS) を超過すると、VM が調整されるためです。 非管理対象ディスクを使用する場合は、VM のパフォーマンスを最大限に引き出すために、1 つ以上のストレージ アカウントを最大限に利用する方法を確認する必要があります。
 
-<a id="managed-disks" class="xliff"></a>
-
-### 管理ディスク 
+### <a name="managed-disks"></a>管理ディスク 
 
 Managed Disks により、ストレージ アカウントの作成/管理はバックグラウンドで処理されるため、ストレージ アカウントのスケーラビリティの制限について心配する必要がなくなります。 ディスク サイズとパフォーマンス レベル (Standard/Premium) を指定するだけで、Azure でディスクが作成され、管理されます。 ディスクの追加や VM のスケールアップとスケールダウンを行うときでも、使用されているストレージについて心配する必要はありません。 
 
@@ -53,9 +44,7 @@ Managed Disks により、ストレージ アカウントの作成/管理はバ�
 
 Managed Disks の多くの機能を活用するために、新しい VM には Managed Disks を使用し、以前の非管理対象ディスクを管理ディスクに変換することをお勧めします。
 
-<a id="disk-comparison" class="xliff"></a>
-
-### ディスクの比較
+### <a name="disk-comparison"></a>ディスクの比較
 
 次の表では、管理ディスクと非管理対象ディスクの両方について Premium と Standard を比較しており、どちらを使用するかを決定するのに役立ちます。
 

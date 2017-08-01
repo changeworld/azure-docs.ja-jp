@@ -3,7 +3,7 @@ title: "Graph API を使用した Azure Cosmos DB Node.js アプリケーショ�
 description: "Azure Cosmos DB への接続とデータの照会に使用できる Node.js コード サンプルについて説明します"
 services: cosmos-db
 documentationcenter: 
-author: mimig1
+author: dennyglee
 manager: jhubbard
 editor: 
 ms.assetid: daacbabf-1bb5-497f-92db-079910703046
@@ -13,14 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 05/21/2017
-ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: b9e8c46ba2f029f8dae2b357f05a806d769d0920
+ms.date: 07/14/2017
+ms.author: denlee
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 153b4cc668fdebd28cec5f3d95093a595064202a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
@@ -96,19 +95,23 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 
 ## <a name="update-your-connection-string"></a>接続文字列を更新する
 
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
+1. config.js ファイルを開きます。 
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーション メニューから、**[キー]** をクリックしてから **[読み取り/書き込みキー]** をクリックします。 次の手順では、右側のコピー ボタンを使用して、URI とプライマリ キーを `app.js` ファイルにコピーします。
-
-    ![Azure Portal の [キー] ブレード](./media/create-graph-nodejs/keys.png)
-
-2. ポータルから (コピー ボタンを使用して) Gremlin URI 値をコピーし、config.js の `config.endpoint` キーの値に設定します。 Gremlin エンドポイントは、`mygraphdb.graphs.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.graphs.azure.com` や `mygraphdb.graphs.azure.com:433` は不可)。
+2. config.js の config.endpoint キーに、Azure Portal の **[概要]** ページに表示される **[Gremlin URI]** の値を設定します。 
 
     `config.endpoint = "GRAPHENDPOINT";`
 
-3. ポータルから主キー値をコピーし、config.js の config.primaryKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-graph-nodejs/gremlin-uri.png)
+
+   **[Gremlin URI]** の値が空である場合は、ポータルの **[キー]** ページで値を生成できます。その場合は、**[URI]** の値を使用し、https:// を削除し、documents を graphs に変更してください。
+
+   Gremlin エンドポイントは、`mygraphdb.graphs.azure.com` のように、プロトコル/ポート番号が付いていないホスト名のみにする必要があります (`https://mygraphdb.graphs.azure.com` や `mygraphdb.graphs.azure.com:433` は不可)。
+
+3. config.js の config.primaryKey の値に、Azure Portal の **[キー]** ページに表示される **[プライマリ キー]** の値を設定します。 
 
     `config.primaryKey = "PRIMARYKEY";`
+
+   ![Azure Portal の [キー] ブレード](./media/create-graph-nodejs/keys.png)
 
 4. データベース名とグラフ (コンテナー) 名を config.database と config.collection の値として入力します。 
 
@@ -118,8 +121,8 @@ GitHub から Graph API アプリの複製を作成し、接続文字列を設�
 var config = {}
 
 // Note that this must not have HTTPS or the port number
-config.endpoint = "mygraphdb.graphs.azure.com";
-config.primaryKey = "OjlhK6tjxfSXyKtrmCiM9O6gQQgu5DmgAoauzD1PdPIq1LZJmILTarHvrolyUYOB0whGQ4j21rdAFwoYep7Kkw==";
+config.endpoint = "testgraphacct.graphs.azure.com";
+config.primaryKey = "Pams6e7LEUS7LJ2Qk0fjZf3eGo65JdMWHmyn65i52w8ozPX2oxY3iP0yu05t9v1WymAHNcMwPIqNAEv3XDFsEg==";
 config.database = "graphdb"
 config.collection = "Persons"
 

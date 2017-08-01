@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/29/2017
 ms.author: nisoneji
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: a6fdab66a6a41e352d07e3b6f3c58eb331c0d93f
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4d96483a971d5c4a0c2cc240620e7a9b289f597d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
@@ -456,7 +455,9 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 **[VM Compatibility (VM 適合性)]**: **Yes** と **Yes**\* の 2 つの値があります。 **Yes**\* は、[Azure Premium Storage](https://aka.ms/premium-storage-workload) に適した VM があるインスタンスに付けられます。 ただしこの場合、プロファイリング結果によると変更頻度または IOPS の高いディスクが、P20 または P30 のカテゴリに適しているのに、ディスクのサイズが原因でそれよりも低い P10 または P20 にマッピングされています。 ストレージ アカウントでは、Premium Storage のディスク タイプが、そのサイズに基づいて決定されます。 For example:
 * 128 GB 未満の場合は P10
 * 128 ～ 512 GB の場合は P20
-* 512 ～ 1023 GB の場合は P30
+* 512 ～ 1,024 GB の場合は P30
+* 1,025 ～ 2,048 GB の場合は P40
+* 2,049 ～ 4,095 GB の場合は P50
 
 したがって、ディスクのワークロード特性上は P20 または P30 に分類されるものの、サイズ上はそれよりも低い Premium Storage ディスク タイプに対応している VM は、Deployment Planner ツールによって **Yes**\* として表示されます。 そのうえで、推奨される適切な Premium Storage ディスク タイプに合わせてレプリケーション元のディスク サイズを変更するか、またはレプリケーション先のディスク タイプをフェールオーバー後に変更するように促されます。
 
@@ -494,7 +495,8 @@ Site Recovery のレプリケーション用に設定できる帯域幅 (Mbps) �
 
 **[VM Compatibility (VM 適合性)]**: 指定された VM が Site Recovery での使用に不適合である理由が表示されます。 理由は VM の不適合ディスクごとに記述され、公開されている[ストレージの制限](https://aka.ms/azure-storage-scalbility-performance)に基づく次のいずれかの状況に該当します。
 
-* ディスク サイズが 1,023 GB を超えている。 Azure Storage では現在、1 TB を超えるディスク サイズがサポートされません。
+* ディスク サイズが 4,095 GB を超えている。 Azure Storage では現在、4,095 GB を超えるデータ ディスク サイズがサポートされません。
+* OS ディスクが 2,048 GB を超えている。 Azure Storage では現在、2,048 GB を超える OS ディスク サイズがサポートされません。
 * ブートの種類が EFI である。 現在 Azure Site Recovery でサポートされる仮想マシンのブートの種類は BIOS だけです。
 
 * VM サイズの合計 (レプリケーション + テスト フェールオーバー) が、サポートされているストレージ アカウントの上限サイズ (35 TB) を超えている。 これは通常、VM にあるいずれか 1 台のディスクのパフォーマンス特性が、Azure または Site Recovery でサポートされる Standard ストレージの上限を超えている場合に発生します。 そのような VM は Premium Storage の領域に分類されます。 一方、Premium ストレージ アカウントでサポートされる最大サイズは 35 TB です。保護対象となる単一の VM を複数のストレージ アカウントにまたがって保護することはできません。 また、保護対象 VM で実行されるテスト フェールオーバーは、レプリケーション処理と同じストレージ アカウントで実行されることに注意してください。 この場合、レプリケーションの進行と同時にテスト フェールオーバーが正常完了するためには、対象となるディスク サイズの 2 倍の容量をセットアップする必要があります。
@@ -560,6 +562,15 @@ Deployment Planner を更新するには、次の手順に従います。
 
 
 ## <a name="version-history"></a>バージョン履歴
+
+### <a name="131"></a>1.3.1
+更新日: 2017 年 7 月 19 日
+
+次の新機能を追加しました。
+
+* レポートの生成における 1 TB を超える大容量ディスクのサポートを追加しました。 今後は Deployment Planner を使用して、ディスク サイズが 1 TB を超える仮想マシン (最大 4,095 GB) のレプリケーションを計画することができます。
+詳細については、[Azure Site Recovery における大容量ディスクのサポート](https://azure.microsoft.com/en-us/blog/azure-site-recovery-large-disks/)に関するページを参照してください。
+
 
 ### <a name="13"></a>1.3
 更新日: 2017 年 5 月 9 日

@@ -4,7 +4,7 @@
 > * [Java でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-java-java-getstarted.md)
 > * [Node.js でのシミュレートされたデバイス](../articles/iot-hub/iot-hub-node-node-getstarted.md)
 > * [Linux でのシミュレートされた IoT Edge ゲートウェイ](../articles/iot-hub/iot-hub-linux-iot-edge-get-started.md)
-> * [シミュレートされた IoT Edge ゲートウェイ (Windows)](../articles/iot-hub/iot-hub-windows-iot-edge-get-started.md)
+> * [Windows でのシミュレートされた IoT Edge ゲートウェイ](../articles/iot-hub/iot-hub-windows-iot-edge-get-started.md)
 > * [Node.js での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-node-get-started.md)
 > * [C での Raspberry Pi](../articles/iot-hub/iot-hub-raspberry-pi-kit-c-get-started.md)
 > * [Node.js での Intel Edison](../articles/iot-hub/iot-hub-intel-edison-kit-node-get-started.md)

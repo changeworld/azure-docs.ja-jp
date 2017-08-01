@@ -17,19 +17,18 @@ ms.workload: na
 ms.date: 03/24/2017
 ms.author: stevelas
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
-ms.openlocfilehash: e74c5428f0e31d9d3cf06b85aa8cefde868e9d67
-ms.lasthandoff: 03/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2cd5a08cc74473be594fc3c7a4fb934d65ffe0ab
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
 # <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Azure Portal を使用したプライベート Docker コンテナー レジストリの作成
-Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)または [Azure PowerShell](container-registry-get-started-powershell.md) を使用して行うことができるほか、Container Registry の [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
 
 背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
-
-
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 1. [Azure Portal](https://portal.azure.com) で、**[+新規]** をクリックします。

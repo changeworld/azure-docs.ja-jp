@@ -5,9 +5,7 @@ sql-database-resource-limits.md
 sql-database-service-tiers.md  
 -->
  
-<a id="basic-elastic-pool-limits" class="xliff"></a>
-
-### Basic エラスティック プールの制限
+### <a name="basic-elastic-pool-limits"></a>Basic エラスティック プールの制限
 
 | プール サイズ (DTU)  | **50** | **100** | **200** | **300** | **400** | **800** | **1200** | **1600** |
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
@@ -22,9 +20,7 @@ sql-database-service-tiers.md
 | データベースあたりの最大データ ストレージ容量 | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 2 GB | 
 ||||||||
 
-<a id="standard-elastic-pool-limits" class="xliff"></a>
-
-### Standard エラスティック プールの制限
+### <a name="standard-elastic-pool-limits"></a>Standard エラスティック プールの制限
 
 | プール サイズ (DTU)  | **50** | **100** | **200**** | **300**** | **400**** | **800****| 
 |:---|---:|---:|---:| ---: | ---: | ---: | 
@@ -36,12 +32,10 @@ sql-database-service-tiers.md
 | プールあたりの最大同時セッション数 | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
 | データベースあたりの最小 eDTU 数** | 0、10、20、50 | 0、10、20、50、100 | 0、10、20、50、100、200 | 0、10、20、50、100、200、300 | 0、10、20、50、100、200、300、400 | 0、10、20、50、100、200、300、400、800 |
 | データベースあたりの最大 eDTU 数** | 10、20、50 | 10、20、50、100 | 10、20、50、100、200 | 10、20、50、100、200、300 | 10、20、50、100、200、300、400 | 10、20、50、100、200、300、400、800 | 
-| データベースあたりの最大データ ストレージ容量 | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB |
+| データベースあたりの最大データ ストレージ容量 | 50 GB | 100 GB | 200 GB | 250 GB | 250 GB | 250 GB |
 ||||||||
 
-<a id="standard-elastic-pool-limits-continued" class="xliff"></a>
-
-### Standard エラスティック プールの制限 (続き) 
+### <a name="standard-elastic-pool-limits-continued"></a>Standard エラスティック プールの制限 (続き) 
 
 | プール サイズ (DTU)  |  **1200**** | **1600**** | **2000**** | **2500**** | **3000**** |
 |:---|---:|---:|---:| ---: | ---: |
@@ -56,9 +50,7 @@ sql-database-service-tiers.md
 | データベースあたりの最大データ ストレージ容量 | 250 GB | 250 GB | 250 GB | 250 GB | 250 GB | 
 ||||||||
 
-<a id="premium-elastic-pool-limits" class="xliff"></a>
-
-### Premium エラスティック プールの制限
+### <a name="premium-elastic-pool-limits"></a>Premium エラスティック プールの制限
 
 | プール サイズ (DTU)  | **125** | **250** | **500** | **1000** | **1500*****| 
 |:---|---:|---:|---:| ---: | ---: | 
@@ -70,12 +62,10 @@ sql-database-service-tiers.md
 | プールあたりの最大同時セッション数 | 30000 | 30000 | 30000 | 30000 | 30000 | 
 | データベースあたりの最小 eDTU 数 | 0、25、50、75、125 | 0、25、50、75、125、250 | 0、25、50、75、125、250、500 | 0、25、50、75、125、250、500、1000 | 0、25、50、75、125、250、500、1000 | 
 | データベースあたりの最大 eDTU 数 | 25、50、75、125 | 25、50、75、125、250 | 25、50、75、125、250、500 | 25、50、75、125、250、500、1000 | 25、50、75、125、250、500、1000 |
-| データベースあたりの最大データ ストレージ容量 | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
+| データベースあたりの最大データ ストレージ容量 | 250 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-<a id="premium-elastic-pool-limits-continued" class="xliff"></a>
-
-### Premium エラスティック プールの制限 (続き) 
+### <a name="premium-elastic-pool-limits-continued"></a>Premium エラスティック プールの制限 (続き) 
 
 | プール サイズ (DTU) | **2000***** | **2500***** | **3000***** | **3500***** | **4000*****|
 |:---|---:|---:|---:| ---: | ---: | 
@@ -90,9 +80,7 @@ sql-database-service-tiers.md
 | データベースあたりの最大データ ストレージ容量 | 500 GB | 500 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
-<a id="premium-rs-elastic-pool-limits" class="xliff"></a>
-
-### Premium RS エラスティック プールの制限
+### <a name="premium-rs-elastic-pool-limits"></a>Premium RS エラスティック プールの制限
 
 | プール サイズ (DTU)  | **125** | **250** | **500** | **1000** |
 |:---|---:|---:|---:| ---: | ---: | 
@@ -104,7 +92,7 @@ sql-database-service-tiers.md
 | プールあたりの最大同時セッション数 | 30000 | 30000 | 30000 | 30000 |
 | データベースあたりの最小 eDTU 数 | 0、25、50、75、125 | 0、25、50、75、125、250 | 0、25、50、75、125、250、500 | 0、25、50、75、125、250、500、1000 |
 | データベースあたりの最大 eDTU 数 | 25、50、75、125 | 25、50、75、125、250 | 25、50、75、125、250、500 | 25、50、75、125、250、500、1000 | 
-| データベースあたりの最大データ ストレージ容量 | 500 GB | 500 GB | 500 GB | 500 GB | 
+| データベースあたりの最大データ ストレージ容量 | 250 GB | 500 GB | 500 GB | 500 GB | 
 ||||||||
 
 > [!IMPORTANT]
@@ -113,5 +101,5 @@ sql-database-service-tiers.md
 >
 >\*\* パブリック プレビューでは、データベースあたりの最小/最大 eDTU 数が 200 eDTU 以上となります。
 >
->\*\*\* 500 eDTU 以上の Premium プールの場合、プールあたりの既定の最大データ ストレージは 750 GB です。 1,000 eDTU 以上の Premium プールあたりの最大データ ストレージ サイズをこれよりも大きくするには、Azure Portal または [PowerShell](../articles/sql-database/sql-database-elastic-pool-manage-powershell.md#change-the-storage-limit-for-an-elastic-pool) を使ってそのサイズを明示的に選択する必要があります。 ストレージが 1,000 TB を超える Premium プールは現在、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいてパブリック プレビュー段階です。 その他すべてのリージョンでは、プールあたりの最大ストレージが現在 750 GB に制限されています。
+>\*\*\* 500 eDTU 以上の Premium プールの場合、プールあたりの既定の最大データ ストレージは 750 GB です。 1,000 eDTU 以上の Premium プールあたりの最大データ ストレージ サイズをこれよりも大きくするには、Azure Portal、[PowerShell](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-powershell)、[Azure CLI](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-azure-cli)、[REST API](../articles/sql-database/sql-database-elastic-pool.md#manage-sql-database-elastic-pools-using-the-rest-api) を使ってそのサイズを明示的に選択する必要があります。 ストレージが 1,000 TB を超える Premium プールは現在、米国東部 2、米国西部、米国政府バージニア、西ヨーロッパ、ドイツ中部、東南アジア、東日本、オーストラリア東部、カナダ中部、およびカナダ東部の各リージョンにおいてパブリック プレビュー段階です。 その他すべてのリージョンでは、プールあたりの最大ストレージが現在 750 GB に制限されています。
 >

@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/22/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a05c878f876eadc5160ef9765f764595cade76a9
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cad933cc453f1bfdbf29914ca3a9a6029108e70f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
 
-この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure CLI を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
+この記事では、仮想ネットワーク間で VPN Gateway 接続を確立する方法について説明します。 仮想ネットワークが属しているリージョンやサブスクリプションは異なっていてもかまいません。 異なるサブスクリプションの VNet を接続する場合、サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この記事の手順は、Resource Manager デプロイメント モデルに適用されます。また、この手順では Azure CLI を使用します。 また、この構成の作成には、次のリストから別のオプションを選択して、別のデプロイ ツールまたはデプロイ モデルを使用することもできます。
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](vpn-gateway-howto-vnet-vnet-resource-manager-portal.md)
@@ -257,7 +256,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
 
 ![v2v diagram](./media/vpn-gateway-howto-vnet-vnet-cli/v2vdiffsub.png)
 
-このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
+このシナリオでは、TestVNet1 と TestVNet5 を接続します。 VNet は異なるサブスクリプション内に存在します。 サブスクリプションが同じ Active Directory テナントに関連付けられている必要はありません。 この構成の手順では、TestVNet1 を TestVNet5 に接続するために VNet 間接続を追加します。
 
 ### <a name="TestVNet1diff"></a>手順 5 - TestVNet1 を作成し、構成する
 

@@ -14,24 +14,19 @@ ms.devlang: nodejs
 ms.topic: get-started-article
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8a5d0c60e101f4038dff6f76c8f23dbb2b44661c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 49f6a49f3f97841e896ff2d497555c42a1ec8e0d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure" class="xliff"></a>
-
-# Node.js RESTful API をビルドして Azure で API アプリにデプロイする
+# <a name="build-a-nodejs-restful-api-and-deploy-it-to-an-api-app-in-azure"></a>Node.js RESTful API をビルドして Azure で API アプリにデプロイする
 [!INCLUDE [app-service-api-get-started-selector](../../includes/app-service-api-get-started-selector.md)]
 
-このクイックスタートでは、[Swagger](http://swagger.io/) 定義を使用して [簡易](http://expressjs.com/)フレームワークの Node.js REST API を作成し、[API アプリ](app-service-api-apps-why-best-platform.md)として Azure にデプロイする方法を示します。 コマンドライン ツールを使用してアプリを作成し、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) でリソースを構成してから、Git を使ってアプリをデプロイします。  完了すると、Azure.で実行される動作サンプルの REST API を入手できます。
+このクイック スタートでは、Node.js [Express](http://expressjs.com/) による REST API を [Swagger](http://swagger.io/) 定義を使って作成し、それを [API アプリ](app-service-api-apps-why-best-platform.md)として Azure にデプロイする方法を紹介します。 コマンドライン ツールを使用してアプリを作成し、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) でリソースを構成してから、Git を使ってアプリをデプロイします。  完了すると、Azure.で実行される動作サンプルの REST API を入手できます。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 
 * [Git](https://git-scm.com/)
 * [Node.js および NPM](https://nodejs.org/)
@@ -42,9 +37,7 @@ ms.lasthandoff: 06/28/2017
 
 CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-<a id="prepare-your-environment" class="xliff"></a>
-
-## 環境を準備する
+## <a name="prepare-your-environment"></a>環境を準備する
 
 1. ターミナル ウィンドウで、次のコマンドを実行して、ローカル コンピューターにサンプルを複製します。
 
@@ -65,9 +58,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
     npm install -g generator-swaggerize
     ```
 
-<a id="generate-nodejs-code" class="xliff"></a>
-
-## Node.js コードを生成する 
+## <a name="generate-nodejs-code"></a>Node.js コードを生成する 
 
 チュートリアルのこのセクションは、API 開発ワークフローをモデルにしています。ここでは最初に Swagger メタデータを作成し、それを使用して API のサーバー コードをスキャフォールディング (自動生成) します。 
 
@@ -89,9 +80,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
    ? Your email: frank@fabrikam.net
    ```
    
-<a id="customize-the-project-code" class="xliff"></a>
-
-## プロジェクト コードをカスタマイズする
+## <a name="customize-the-project-code"></a>プロジェクト コードをカスタマイズする
 
 1. *lib* フォルダーを `yo swaggerize` によって作成された *ContactList*フォルダーにコピーして、ディレクトリを *ContactList* に変更します。
 
@@ -149,6 +138,9 @@ CLI をローカルにインストールして使用する場合、このトピ�
     var swaggerize = require('swaggerize-express');
     var swaggerUi = require('swaggerize-ui'); 
     var path = require('path');
+    var fs = require("fs");
+    
+    fs.existsSync = fs.existsSync || require('path').existsSync;
 
     var app = express();
 
@@ -173,9 +165,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
     このコードには、Azure App Service と共に動作して、目的の API の対話型 Web インターフェイスを公開できるように、小規模の変更を加えています。
 
-<a id="test-the-api-locally" class="xliff"></a>
-
-### API をローカルでテストする
+### <a name="test-the-api-locally"></a>API をローカルでテストする
 
 1. Node.js アプリを起動する
     ```bash
@@ -239,9 +229,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 5. [!INCLUDE [Create API app](../../includes/app-service-api-create-api-app.md)] 
 
 
-<a id="deploy-the-api-with-git" class="xliff"></a>
-
-## Git を使って API をデプロイする
+## <a name="deploy-the-api-with-git"></a>Git を使って API をデプロイする
 
 ローカル Git リポジトリから Azure App Service へコミットをプッシュすることで、コードを API アプリにデプロイします。
 
@@ -268,9 +256,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 5. [!INCLUDE [Push to Azure](../../includes/app-service-api-git-push-to-azure.md)]  
  
-<a id="test-the-api--in-azure" class="xliff"></a>
-
-## Azure で API をテストする
+## <a name="test-the-api--in-azure"></a>Azure で API をテストする
 
 1. ブラウザーで http://app_name.azurewebsites.net/contacts を開きます。 チュートリアルの前述の手順で、ローカルで要求を行ったときに返された同じ JSON が表示されます。
 
@@ -298,9 +284,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
     これで、Azure Git リポジトリにコミットをプッシュして、サンプル API への更新を Azure に簡単にデプロイできるようになりました。
 
-<a id="clean-up" class="xliff"></a>
-
-## クリーンアップ
+## <a name="clean-up"></a>クリーンアップ
 
 このクイック スタートで作成したリソースをクリーンアップするには、次の Azure CLI コマンドを実行します。
 
@@ -308,9 +292,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 az group delete --name myResourceGroup
 ```
 
-<a id="next-step" class="xliff"></a>
-
-## 次のステップ 
+## <a name="next-step"></a>次のステップ 
 > [!div class="nextstepaction"]
 > [CORS を使用して JavaScript クライアントから API アプリを使用する](app-service-api-cors-consume-javascript.md)
 

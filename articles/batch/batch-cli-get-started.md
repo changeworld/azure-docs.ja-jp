@@ -16,10 +16,10 @@ ms.date: 05/11/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 19014e65920b16d2efbaa475b7c17b2a4e3a8471
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -180,13 +180,14 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 * `-h` を使用して、任意の CLI コマンドの **ヘルプ テキスト** を取得します。
 * `-v` と `-vv` を使用して、**詳細**なコマンド出力を表示します。 `-vv` フラグを指定すると、Azure CLI は実際の REST 要求および応答を表示します。 これらのスイッチは、完全なエラー出力を表示する場合に便利です。
 * `--json` オプションを使用すると、**コマンド出力を JSON として**表示できます。 たとえば、 `az batch pool show pool001 --json` を実行すると、pool001 のプロパティが JSON 形式で表示されます。 この出力をコピーして変更し、 `--json-file` で使用できます (この記事の前半で説明した [JSON ファイル](#json-files) の項目を参照してください)。
+<!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 * [Batch フォーラム][batch_forum]は、Batch チーム メンバーによって監視されています。 問題が発生した場合や、特定の操作についてアドバイスが欲しい場合は、質問を投稿できます。
 
 ## <a name="next-steps"></a>次のステップ
 
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)を参照してください。
 * Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。
-* Batch 計算ノードで実行するアプリケーションをこの機能を使用して管理およびデプロイする方法については、「 [Azure Batch アプリケーション パッケージを使用したアプリケーションのデプロイ](batch-application-packages.md) 」を参照してください。
+* Batch 計算ノードで実行するアプリケーションをこの機能を使用して管理およびデプロイする方法については、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md

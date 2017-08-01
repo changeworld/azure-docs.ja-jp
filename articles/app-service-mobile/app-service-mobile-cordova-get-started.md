@@ -3,8 +3,8 @@ title: "Azure App Service Mobile Apps で Cordova アプリを作成する | Mic
 description: "Apache Cordova 開発向けの Azure モバイル アプリ バックエンドの使用を開始するには、このチュートリアルに従ってください。"
 services: app-service\mobile
 documentationcenter: javascript
-author: adrianhall
-manager: adrianha
+author: ggailey777
+manager: syntaxc4
 editor: 
 tags: 
 keywords: "cordova,javascript,モバイル,クライアント"
@@ -14,13 +14,13 @@ ms.workload: na
 ms.tgt_pltfrm: mobile-html
 ms.devlang: javascript
 ms.topic: hero-article
-ms.date: 10/30/2016
-ms.author: adrianha
-translationtype: Human Translation
-ms.sourcegitcommit: bf5691dbf4aaae585373de454ad7a0672dd17b84
-ms.openlocfilehash: aab35cdbbc6dc73551ca436985b51e5fe7a50fb6
-ms.lasthandoff: 12/01/2016
-
+ms.date: 07/07/2017
+ms.author: glenga
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-apache-cordova-app"></a>Apache Cordova アプリの作成
@@ -34,7 +34,7 @@ ms.lasthandoff: 12/01/2016
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを完了するには、次の前提条件を用意しておく必要があります。
 
-* [Visual Studio Community 2015] 以降のバージョンがインストールされた PC
+* [Visual Studio Community 2017] 以降のバージョンがインストールされた PC
 * [Apache Cordova の Visual Studio ツール]
 * [アクティブな Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
 
@@ -74,7 +74,7 @@ SDK の使用方法を確認してください。
 
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
-[Visual Studio Community 2015]: http://www.visualstudio.com/
+[Visual Studio Community 2017]: http://www.visualstudio.com/
 [Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [オフライン データ]: app-service-mobile-offline-data-sync.md
 [認証]: app-service-mobile-auth.md
