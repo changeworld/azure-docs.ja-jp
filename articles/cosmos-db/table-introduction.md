@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/09/2017
 ms.author: arramac
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 07dc5e1520cf60e19a1961ad85d2aea0cc7bd15f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: ef57753aeeace0086c815d83600f92422996032a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -42,7 +42,7 @@ Azure Table Storage は、ストレージ要件が高くスループット要件
 | グローバル分散 | HA のために 1 つの読み取り可能なセカンダリ読み取りリージョンをオプションで備えた単一リージョン。 フェールオーバーを開始できない | 1 から 30 以上の地域にわたる[ターンキー グローバル分散](distribute-data-globally.md)。世界中のどこでもいつでも[自動および手動フェールオーバー](regional-failover.md)をサポート |
 | インデックス作成 | PartitionKey と RowKey のプライマリ インデックスのみ。 セカンダリ インデックスなし | すべてのプロパティに対する自動および完全なインデックス作成。インデックス管理なし |
 | クエリ | クエリの実行では、プライマリ キーにインデックスを使用し、それ以外の場合はスキャンする。 | クエリは、クエリ時間の短縮のためにプロパティの自動インデックス作成を利用できる。 Azure Cosmos DB のデータベース エンジンは、集計、地理空間、および並べ替えをサポート可能。 |
-| 整合性 | プライマリ リージョン内では強力、セカンダリ リージョンでは成り行き次第 | アプリケーションのニーズに基づいて、可用性、待機時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md) |
+| 整合性 | プライマリ リージョン内では強力、セカンダリ リージョンでは成り行き次第 | アプリケーションのニーズに基づいて、可用性、待ち時間、スループット、および整合性のトレードオフを行う[明確に定義された 5 つの整合性レベル](consistency-levels.md) |
 | 価格 | ストレージ最適化  | スループット最適化 |
 | SLA | 99.9% の可用性 | 単一のリージョン内では 99.99% の可用性、さらにリージョンを追加して可用性を高めることが可能。 一般公開に対する[業界トップレベルの包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) |
 

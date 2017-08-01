@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 07/18/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2593e6846c897644017083b49ad4ba8219696c6c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: aefec15c72c6cf8389a29b03be70abb4c7f020b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-security-policies-in-azure-security-center"></a>Azure Security Center でのセキュリティ ポリシーの設定
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/17/2017
     ![Defining policy](./media/security-center-policies/security-center-policies-fig1-ga.png)
 3. 選択したサブスクリプションの **[セキュリティ ポリシー]** ブレードが開き、オプションのセットが表示されます。 このブレードで使用できるオプションは次のとおりです。
 
-   * **防止ポリシー**: このオプションは、サブスクリプションまたはリソース グループごとにポリシーを構成するために使用します。  
+   * **防止ポリシー**: このオプションは、サブスクリプションごとにポリシーを構成するために使用します。  
    * **電子メールの通知**: このオプションは、最初に警告が発生したとき、および重大度が高い警告に対して送信される電子メール通知を構成するために使用します。 また、電子メールの設定は、サブスクリプション ポリシーに対してのみ構成できます。 電子メールの通知を構成する方法の詳細については、「 [Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md) 」を参照してください。
    * **価格レベル**: このオプションは、価格レベルの選択をアップグレードするために使用します。 価格オプションの詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
 4. **[仮想マシンからデータを収集する]** オプションが **[オン]** になっていることを確認します。 このオプションは、Microsoft Monitoring Agent を使用した既存のリソースと新規のリソースの自動的なログの収集を有効にします。このエージェントは、Operations Management Suite と Log Analytics サービスで使用される同じエージェントです。 このエージェントから収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。

@@ -16,10 +16,6 @@
 | **[App Service プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | 新しいプランを作成する場合は、必ず **[サイズ]** の下の **[重量課金プラン]** を選択してください。  |
 | **[ストレージ アカウント](../articles/storage/storage-create-storage-account.md#create-a-storage-account)** | グローバルに一意の名前 | 既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。   |
 
-**[作成]** をクリックして、これらの設定で Azure に関数アプリを作成します。 
-
-プロビジョニングの完了後、**[発行]** をクリックして、プロジェクト コードを新しい関数アプリにデプロイします。 
+**[作成]** をクリックして、これらの設定で Azure に関数アプリを作成します。 プロビジョニングが完了したら、**サイト URL** の値を書き留めておきます。これが Azure における関数アプリのアドレスになります。 
 
 ![Azure ローカル ランタイム](./media/functions-vstools-publish/functions-vstools-publish-profile.png)
-
-**[サイト URL]** 値を書き留めておきます。これが Azure における関数アプリのアドレスになります。 

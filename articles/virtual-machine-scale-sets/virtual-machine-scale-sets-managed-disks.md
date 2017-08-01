@@ -15,17 +15,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: f9cc157f25e70a8154614b659fb7e59b7fd06ed1
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
 
-Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)で、管理ディスクを使用する仮想マシンがサポートされるようになりました。 スケール セットで管理ディスクを使用すると、次のような利点があります。
+Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets/)では、管理ディスクを使用する仮想マシンがサポートされています。 スケール セットで管理ディスクを使用すると、次のような利点があります。
 
 * スケール セットの VM の OS ディスクを格納するストレージ アカウントを事前に作成し、管理する必要がなくなります。
 
@@ -43,10 +42,6 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 ```
 
 また、[Azure Quickstart Templates GitHub リポジトリ](https://github.com/Azure/azure-quickstart-templates)で `vmss` が含まれたフォルダーを探し、スケール セットをデプロイする作成済みのテンプレートの例を参照することもできます。 管理ディスクを既に使用しているテンプレートを確認するには、[こちらの一覧](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)をご覧ください。
-
-## <a name="api-versions"></a>API のバージョン
-
-管理対象ディスクとスケール セットには、`2016-04-30-preview` 以降のバージョンの Microsoft.Compute API が必要です。 非管理対象ディスクを使用するスケール セットは、管理ディスクをサポートする新しい API バージョンでも、引き続き現在と同様に機能します。 ただし、非管理対象ディスクを使用するスケール セットでは、これらの新しい API バージョンでも管理ディスクの利点は得られません。
 
 ## <a name="next-steps"></a>次のステップ
 

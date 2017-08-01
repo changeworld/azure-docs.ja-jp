@@ -15,23 +15,21 @@ ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 233db1cb74a6c81cf044953ecdf6e9de6cc50ee8
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 754c381cb242e0bdf7c56bd2a763d46acc80fbda
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/21/2017
 
 ---
-# Azure に Python Web アプリを作成する
-<a id="create-a-python-web-app-in-azure" class="xliff"></a>
+# <a name="create-a-python-web-app-in-azure"></a>Azure に Python Web アプリを作成する
 
 [Azure Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-overview) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。  このクイック スタートでは、Python アプリを開発して Azure Web Apps にデプロイする方法について説明します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使って Web アプリを作成し、Git を使用して Web アプリに Python のサンプル コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-python/hello-world-in-browser.png)
 
 以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -44,8 +42,7 @@ ms.lasthandoff: 06/28/2017
 
 CLI をローカルにインストールして使用する場合、このトピックでは、Azure CLI バージョン 2.0 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-## サンプルのダウンロード
-<a id="download-the-sample" class="xliff"></a>
+## <a name="download-the-sample"></a>サンプルのダウンロード
 
 ターミナル ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製します。
 
@@ -61,8 +58,13 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 cd Python-docs-hello-world
 ```
 
-## アプリをローカルで実行する
-<a id="run-the-app-locally" class="xliff"></a>
+## <a name="run-the-app-locally"></a>アプリをローカルで実行する
+
+`pip` を使って必要なパッケージをインストールします。
+
+```bash
+pip install -r requirements.txt
+```
 
 ターミナル ウィンドウを開き、`Python` コマンドを使って組み込みの Python Web サーバーを起動して、ローカルでアプリケーションを実行します。
 
@@ -92,8 +94,7 @@ Web ブラウザーを開き、http://localhost:5000 のサンプル アプリ�
 
 これで、Azure に空の新しい Web アプリが作成されました。
 
-## Python を使用するための構成
-<a id="configure-to-use-python" class="xliff"></a>
+## <a name="configure-to-use-python"></a>Python を使用するための構成
 
 Python バージョン `3.4` を使用するように Web アプリを構成するには、[az webapp config set](/cli/azure/webapp/config#set) コマンドを使用します。
 
@@ -150,8 +151,7 @@ To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
 ```
 
-## アプリの参照
-<a id="browse-to-the-app" class="xliff"></a>
+## <a name="browse-to-the-app"></a>アプリの参照
 
 Web ブラウザーを使用して、デプロイされたアプリケーションを参照します。
 
@@ -165,8 +165,7 @@ Python のサンプル コードは、Azure App Service の Web アプリで実�
 
 **お疲れさまでした。** App Service に初めての Python アプリをデプロイしました。
 
-## コードを更新して再デプロイする
-<a id="update-and-redeploy-the-code" class="xliff"></a>
+## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 
 ローカルのテキスト エディターを使用して、Python アプリ内の `main.py` ファイルを開き、`return` ステートメントの横のテキストを少し変更します。
 
@@ -185,8 +184,7 @@ git push azure master
 
 ![Azure で実行される更新済みのサンプル アプリ](media/app-service-web-get-started-python/hello-azure-in-browser.png)
 
-## 新しい Azure Web アプリを管理する
-<a id="manage-your-new-azure-web-app" class="xliff"></a>
+## <a name="manage-your-new-azure-web-app"></a>新しい Azure Web アプリを管理する
 
 <a href="https://portal.azure.com" target="_blank">Azure Portal</a> に移動し、作成した Web アプリを管理します。
 
@@ -202,8 +200,7 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [Python と PostgreSQL](app-service-web-tutorial-docker-python-postgresql-app.md)

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql-database
 ms.custom: mvc
 ms.topic: hero-article
-ms.date: 06/19/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 7bbf70786bff83ad3cfae9cb9b893f41736874b5
+ms.date: 07/12/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c065d692d2a4ac369cb13a70d09b30498e6c9106
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -38,12 +38,12 @@ Azure Database for PostgreSQL サーバーを作成するには、次の手順�
  ![Azure Database for PostgreSQL - データベースの作成](./media/quickstart-create-database-portal/1-create-database.png)
 
 3.  前の画像で示されているように、新規サーバーの詳細フォームに次の情報を入力します。
-    - サーバー名: **mypgserver-20170401** (サーバーの名前は DNS 名にマップするため、Azure でグローバルに一意である必要があります) 
+    - サーバー名: **mypgserver-20170401** (この名前は DNS 名にマップされるため、グローバルに一意のサーバー名を選択します)
     - サブスクリプション: 複数のサブスクリプションをお持ちの場合は、リソースが存在するか、課金の対象となっている適切なサブスクリプションを選択してください。
     - リソース グループ: **myresourcegroup**
     - サーバー管理者のログインとパスワード
-    - 場所
-    - PostgreSQL のバージョン
+    - 場所: 自身に最も近い場所を選択します。
+    - PostgreSQL のバージョン: 最新バージョンを選択します。
 
   > [!IMPORTANT]
   > ここで指定するサーバー管理者ログインとパスワードは、このクイック スタートの後の方でサーバーとそのデータベースにログインするために必要です。 後で使用するために、この情報を覚えておくか、記録しておきます。
@@ -104,12 +104,12 @@ Azure Database for PostgreSQL サーバーを作成したときに、既定の *
 
    ![Azure Database for PostgreSQL - Azure Shell Bash プロンプト](./media/quickstart-create-database-portal/8-bash.png)
 
-3. Cloud Shell プロンプトで、psql コマンドを使用して Azure Database for PostgreSQL サーバーに接続します。 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
+3. Cloud Shell プロンプトで、psql コマンド ラインを入力して Azure Database for PostgreSQL サーバーに接続します。 [psql](https://www.postgresql.org/docs/9.6/static/app-psql.html) ユーティリティで Azure Database for PostgreSQL サーバーに接続するには、次の形式を使用します。
    ```bash
    psql --host=<myserver> --port=<port> --username=<server admin login> --dbname=<database name>
    ```
 
-   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mypgserver 20170401.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 サーバー管理者のパスワードを求められたら、入力します。
+   たとえば次のコマンドは、アクセス資格情報を使用して、PostgreSQL サーバー **mypgserver 20170401.postgres.database.azure.com** にある既定のデータベース **postgres** に接続します。 接続時には常にポート **5432** を使用します。 サーバー管理者のパスワードを求められたら、入力します。 ここに示すとおり、コマンドの -- スイッチ間にはスペースを使用してください。ただし、等号とパラメーター値の間にはスペースを使用しないようにしてください。
 
    ```bash
    psql --host=mypgserver-20170401.postgres.database.azure.com --port=5432 --username=mylogin@mypgserver-20170401 --dbname=postgres

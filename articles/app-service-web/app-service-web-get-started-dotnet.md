@@ -15,11 +15,11 @@ ms.topic: hero-article
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 2b447bcc5930550af3996cb40925ab59d203dc7c
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: b5a7f3ebe5e95d3838e71b7b17b91e85da0d51a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>Azure に ASP.NET Web アプリを作成する
@@ -32,7 +32,7 @@ ms.lasthandoff: 06/20/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/en-us/visual-studio-homepage-vs.aspx) をインストールします。
+* 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - **ASP.NET と Web 開発**
     - **Azure 開発**
 
@@ -74,7 +74,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
-**[App Service の作成]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、アカウントが Azure サブスクリプションを保持していることを確認します。 サインイン アカウントを選択して、適切なアカウントを追加できます。
+**[App Service の作成]** ダイアログ ボックスで、**[アカウントの追加]** をクリックし、Azure サブスクリプションにサインインします。 既にサインインしている場合は、目的のサブスクリプションを含んだアカウントをドロップダウンから選択します。
 
 > [!NOTE]
 > 既にサインインしている場合は、まだ **[作成]** を選択しないでください。
@@ -82,8 +82,6 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 >
    
 ![Azure へのサインイン](./media/app-service-web-get-started-dotnet/sign-in-azure.png)
-
-サインインしたら、このダイアログ ボックスで、Azure Web アプリに必要なすべてのリソースの作成を開始できます。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
@@ -113,9 +111,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ## <a name="create-and-publish-the-web-app"></a>Web アプリを作成して発行する
 
-**[Web アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、および `-`) を入力します。 Web アプリの URL は`http://<app_name>.azurewebsites.net`です。`<app_name>` には Web アプリの名前を指定します。 
-
-自動的に生成される名前をそのまま使用してもかまいません。この名前は一意になっています。
+**[Web アプリ名]** に一意のアプリ名 (有効な文字は `a-z`、`0-9`、および `-`) を入力するか、自動的に生成された一意の名前をそのまま使用します。 Web アプリの URL は`http://<app_name>.azurewebsites.net`です。`<app_name>` には Web アプリの名前を指定します。
 
 **[作成]** をクリックして、Azure リソースの作成を開始します。
 
@@ -125,7 +121,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 ![Azure で発行された ASP.NET Web アプリ](./media/app-service-web-get-started-dotnet/published-azure-web-app.png)
 
-URL は、前に指定した Web アプリ名を `http://<app_name>.azurewebsites.net` という形式で使用します。 
+Web アプリを[作成して発行する手順](#create-and-publish-the-web-app)で指定した名前が、`http://<app_name>.azurewebsites.net` 形式の URL プレフィックスとして使用されます。
 
 ASP.NET Web アプリを Azure App Services でライブ実行することができました。
 

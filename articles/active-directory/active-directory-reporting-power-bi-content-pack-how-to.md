@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory Power BI コンテンツ パックの使用方法 | Microsoft Docs"
 description: "Azure Active Directory Power BI コンテンツ パックの使用方法について説明します。"
 services: active-directory
@@ -11,27 +10,23 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/21/2017
+ms.date: 07/15/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: ab95f61e2d88f82bf2b24aea786c7dbadfb9c0fe
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5c642bb814a279756e8391f12fdc86b6ec0b4a8f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="how-to-use-the-azure-active-directory-power-bi-content-pack" class="xliff"></a>
-
-# Azure Active Directory Power BI コンテンツ パックの使用方法
+# <a name="how-to-use-the-azure-active-directory-power-bi-content-pack"></a>Azure Active Directory Power BI コンテンツ パックの使用方法
 
 自分が管理しているユーザーが Azure Active Directory の機能をどのように採り入れ、使用しているかを把握することは、IT 管理者にとってきわめて重要です。 そうすることで自社の IT インフラストラクチャと通信を計画し、使用率を高め、AAD の機能を最大限に活かすことができます。 Azure Active Directory Power BI コンテンツ パックを使用すると、データを深く掘り下げて分析できます。利用頻度の高い各種の機能に関して、そのデータをどのように利用すれば Azure Active Directory で起こっていることについての洞察を深めることができるかが見えてきます。  Azure Active Directory の API が Power BI に統合されているため、既製のコンテンツ パックをすぐにダウンロードして、Power BI が備えている多彩な視覚化機能を使い、Azure Active Directory 内のあらゆるアクティビティについての洞察を得ることができます。 そうして得た情報は、独自のダッシュボードを作成することで、社内のだれとでも簡単に共有することができます。 
 
 このトピックでは、ご利用の環境にコンテンツ パックをインストールして使用する具体的な手順を紹介します。
 
-<a id="installation" class="xliff"></a>
-
-## インストール  
+## <a name="installation"></a>インストール  
 
 **Power BI コンテンツ パックをインストールするには**
 
@@ -72,15 +67,11 @@ ms.lasthandoff: 06/22/2017
  
     ![Azure Active Directory Power BI コンテンツ パック](./media/active-directory-reporting-power-bi-content-pack-how-to/08.png) 
 
-<a id="what-can-i-do-with-this-content-pack" class="xliff"></a>
-
-## このコンテンツ パックでできること
+## <a name="what-can-i-do-with-this-content-pack"></a>このコンテンツ パックでできること
 
 このコンテンツ パックで何ができるかを説明する前に、コンテンツ パックにあるさまざまなレポートをざっと見てみましょう。 レポート データは、**過去 30 日**までさかのぼることができます。
 
-<a id="reports-included-in-this-version-of-azure-active-directory-logs-content-pack" class="xliff"></a>
-
-### このバージョンの Azure Active Directory ログ コンテンツ パックに付属するレポート
+### <a name="reports-included-in-this-version-of-azure-active-directory-logs-content-pack"></a>このバージョンの Azure Active Directory ログ コンテンツ パックに付属するレポート
 
 **アプリの使用と傾向に関するレポート**: 社内で使用されているアプリについて詳しい情報を得ることができます。どのアプリが最も多く使われているか、またいつ使われているかについても正確に把握することができます。 このレポートでは、最近社内に展開したアプリがどのように使われているか、またどのアプリが支持されているかについて洞察を得ることができます。 その結果、アプリが使われているのかどうかがわかれば、使用状況の改善につなげることができます。
 
@@ -105,9 +96,7 @@ ms.lasthandoff: 06/22/2017
 
 **SSPR じょうご**: パスワードのリセットが社内でどのように行われているかを把握できます。 SSPR ツールを使ったパスワード リセットが試行された回数とその中で成功した回数が表示されます。 パスワード リセットの失敗について、SSPR じょうごを使って詳しく調べ、具体的な失敗の理由を把握できます。 SSPR ツールが社内でどのように使われているかについての理解を深め、適切な意思決定を行うことができます。
 
-<a id="customizing-azure-ad-activity-content-pack" class="xliff"></a>
-
-## Azure AD アクティビティ コンテンツ パックのカスタマイズ
+## <a name="customizing-azure-ad-activity-content-pack"></a>Azure AD アクティビティ コンテンツ パックのカスタマイズ
 
 **ビジュアルの変更**:  レポートのビジュアルは、**[レポートの編集]** をクリックして編集できるほか、必要なビジュアルを選択することができます。
  
@@ -135,17 +124,13 @@ ms.lasthandoff: 06/22/2017
 
 
 
-<a id="scheduling-a-daily-refresh-of-your-power-bi-report" class="xliff"></a>
-
-## Power BI レポートの日次更新スケジュール
+## <a name="scheduling-a-daily-refresh-of-your-power-bi-report"></a>Power BI レポートの日次更新スケジュール
 
 Power BI レポートの日次更新をスケジュールするには、**[データセット]、[設定]、[更新のスケジュール設定]** の順に移動し、以下のように設定します。
  
 ![Azure Active Directory Power BI コンテンツ パック](./media/active-directory-reporting-power-bi-content-pack-how-to/15.png) 
 
-<a id="updating-to-newer-version-of-content-pack" class="xliff"></a>
-
-## 新しいバージョンのコンテンツ パックへの更新
+## <a name="updating-to-newer-version-of-content-pack"></a>新しいバージョンのコンテンツ パックへの更新
 
 コンテンツ パックを新しいバージョンに更新するには、次の手順に従います。
 
@@ -157,12 +142,12 @@ Power BI レポートの日次更新をスケジュールするには、**[デ�
 
 新しいバージョンのコンテンツ パックが正常に動作していることが確認できたら、必要に応じてコンテンツ パックに関連付けられている基になるレポートとデータセットを削除して、以前のバージョンは削除してかまいません。
 
-<a id="still-having-issues" class="xliff"></a>
-
-## まだ問題がある場合 
+## <a name="still-having-issues"></a>まだ問題がある場合 
 
 [トラブルシューティング ガイド](active-directory-reporting-troubleshoot-content-pack.md)を参照してください。 Power BI 全般のヘルプ情報については、こちらの[ヘルプ記事](https://powerbi.microsoft.com/en-us/documentation/powerbi-service-get-started/)を参照してください。
  
 
+## <a name="next-steps"></a>次のステップ
 
+レポートの概要については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」を参照してください。
 

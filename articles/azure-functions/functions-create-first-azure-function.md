@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/08/2017
+ms.date: 07/19/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: f00ca3b8a35c0c49277457bd42fe8a314520d5a5
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ed096cf202a85f44755c9eee110b1b7c5c4074ad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
@@ -64,17 +63,15 @@ HTTP によってトリガーされる関数のテンプレートを使用して
 
     ![Azure Portal からの関数 URL のコピー](./media/functions-create-first-azure-function/function-app-develop-tab-testing.png)
 
-2. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `&name=<yourname>` を追加して、要求を実行します。 関数によって返された GET 要求へのブラウザーでの応答を次に示します。
+2. 関数 URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `&name=<yourname>` を追加し、`Enter` キーを押して、要求を実行します。 次に、Edge ブラウザーで関数によって返された応答の例を示します。
 
     ![ブラウザーでの関数の応答。](./media/functions-create-first-azure-function/function-app-browser-testing.png)
 
     要求 URL には、既定では HTTP 経由で関数にアクセスするために必要なキーが含まれています。   
 
-## <a name="view-the-function-logs"></a>関数のログを表示する 
+3. 関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある上矢印をクリックして **[ログ]** を展開します。 
 
-関数が実行されると、ログにトレース情報が書き込まれます。 前の実行からのトレース出力を表示するには、ポータルで関数に戻り、画面の下部にある上矢印をクリックして **[ログ]** を展開します。 
-
-![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
+   ![Azure Portal の関数ログ ビューアー。](./media/functions-create-first-azure-function/function-view-logs.png)
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
