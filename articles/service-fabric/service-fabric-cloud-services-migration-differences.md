@@ -22,14 +22,12 @@ ms.lasthandoff: 02/13/2017
 
 
 ---
-<a id="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications" class="xliff"></a>
-# アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
+# <a name="learn-about-the-differences-between-cloud-services-and-service-fabric-before-migrating-applications"></a>アプリケーションの移行前に、Cloud Services と Service Fabric の違いについて学習する。
 Microsoft Azure Service Fabric は、拡張性、信頼性の高い分散アプリケーションのための次世代クラウド アプリケーション プラットフォームです。 分散クラウド アプリケーションのパッケージ化、デプロイ、アップグレード、および管理用に、多数の新機能が導入されています。 
 
 これは、アプリケーションを Cloud Services から Service Fabric に移行する入門ガイドです。 これでは主に Cloud Services と Service Fabric のアーキテクチャと設計の違いに重点を置いていています。
 
-<a id="applications-and-infrastructure" class="xliff"></a>
-## アプリケーションとインフラストラクチャ
+## <a name="applications-and-infrastructure"></a>アプリケーションとインフラストラクチャ
 Cloud Services と Service Fabric の基本的な違いは、VM、ワークロード、およびアプリケーション間の関係です。 ここでのワークロードとは、特定のタスクを実行したり、サービスを提供したりするために記述されたコードと定義しています。
 
 * **Cloud Services は、アプリケーションを VM としてデプロイすることと関係しています。** 記述するコードは、Web または Worker ロールなどの VM インスタンスに密結合されます。 Cloud Services にワークロードをデプロイすることは、ワークロードを実行する 1 つ以上の VM インスタンスをデプロイすることです。 アプリケーションと VM の区別はなく、従ってアプリケーションの正式な定義はありません。 アプリケーションは、Cloud Services デプロイメント内の Web または Worker ロール インスタンスのセット、または Cloud Services デプロイメント全体と考えることができます。 この例では、アプリケーションはロール インスタンスのセットとして示されています。
@@ -48,8 +46,7 @@ Service Fabric アプリケーション モデルには、多数の利点があ�
 * Service Fabric プラットフォームは、Azure でも、オンプレミスでも、Windows Server または Linux マシンがあるすべての環境で実行できます。 このプラットフォームは、基礎となっているインフラストラクチャに対する抽象化レイヤーをとなるので、アプリケーションをさまざまな環境で実行できます。 
 * アプリケーションを分散管理できます。 Service Fabric は、分散アプリケーションをホストするプラットフォームであるのみではなく、ホストされている VM の個々のライフサイクルやマシンのライフ サイクルの管理を支援します。
 
-<a id="application-architecture" class="xliff"></a>
-## アプリケーションのアーキテクチャ
+## <a name="application-architecture"></a>アプリケーションのアーキテクチャ
 Cloud Services アプリケーションのアーキテクチャには、アプリケーションの状態およびデータ、Cloud Services デプロイメントでの Web ロールと Worker ロール間の通信を管理するための、Service Bus、Azure テーブルと Blob ストレージ、SQL、Redis などの多数の外部サービスとの依存関係が含まれています。 完全な Cloud Services アプリケーションの例を、次に示します。  
 
 ![Cloud Services のアーキテクチャ][9]
@@ -67,12 +64,10 @@ Service Fabric アプリケーションの完全なアプリケーションで�
 
 ![完全な移行後の Service Fabric のアーキテクチャ][11]
 
-<a id="communication-and-workflow" class="xliff"></a>
-## 通信とワークフロー
+## <a name="communication-and-workflow"></a>通信とワークフロー
 多くのクラウド サービス アプリケーションは、複数の階層で構成されます。 同様に、Service Fabric アプリケーションも、複数のサービス (通常は多数のサービス) で構成されます。 通信モデルには、一般的に、直接的な通信と、外部の持続性ストレージを経由した通信の 2 つがあります。
 
-<a id="direct-communication" class="xliff"></a>
-### 直接的な通信
+### <a name="direct-communication"></a>直接的な通信
 直接的な通信では、階層は、各階層が公開しているエンドポイント経由で直接的に通信します。 これは Cloud Services などのステートレスな環境では、VM ロールのインスタンスをランダムに、または負荷分散のためにラウンドロビン方式で選択して、そのエンドポイントに直接接続することを意味します。
 
 ![Cloud Services の直接的な通信][5]
@@ -86,8 +81,7 @@ Service Fabric には、サービスのエンドポイント アドレスを解�
 
 ![Service Fabric の直接的な通信][6]
 
-<a id="queues" class="xliff"></a>
-### キュー
+### <a name="queues"></a>キュー
 Cloud Services などのステートレスな環境での階層間の一般的な通信メカニズムでは、1 つの階層から別の階層に作業タスクを持続的に保存する外部ストレージ キューが使用されます。 一般的なシナリオは、Azure キューまたは Service Bus にジョブを送信する Web 層です。これでは Worker ロール インスタンスが、ジョブをキューから削除し、処理します。
 
 ![Cloud Services のキューの通信][7]
@@ -96,8 +90,7 @@ Service Fabric でも同じ通信モデルを使用できます。 これは、�
 
 ![Service Fabric の直接的な通信][8]
 
-<a id="next-steps" class="xliff"></a>
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 Cloud Services から Service Fabric への最も単純な移行パスは、Cloud Services デプロイメントのみを Service Fabric アプリケーションに置き換えるものです。これでは、アプリケーションの全体的なアーキテクチャはほぼ同じに維持されます。 次の記事では、Web または Worker ロールを Service Fabric ステートレス サービスに変換する方法について説明します。
 
 * [単純な移行: Web または Worker ロールを Service Fabric ステートレス サービスに変換する](service-fabric-cloud-services-migration-worker-role-stateless-service.md)
