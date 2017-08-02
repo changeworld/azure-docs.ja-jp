@@ -108,7 +108,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_samlbase.png)
 
-3. **[BenSelect Domain and URLs] (BenSelect のドメインと URL)** セクションで、次の手順を実行します。
+3. **[BenSelect Domain and URLs] \(BenSelect のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_url.png)
 
@@ -117,7 +117,7 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[BenSelect サポート チーム](mailto:support@selerix.com)に問い合わせてください。
  
-4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] (証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
+4. **[SAML 署名証明書]** セクションで、**[Certificate(Raw)] \(証明書 (Raw))** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_certificate.png) 
 
@@ -127,15 +127,15 @@ BenSelect で Azure AD のシングル サインオンを構成してテスト�
 
 6. **[シングル サインオン]** ダイアログの **[ユーザー属性]** セクションで、次の手順を実行します。
 
-    a. **[User Identifier] (ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
+    a. **[User Identifier] \(ユーザー識別子)** ドロップダウン リストで、**[ExtractMailPrefix]** を選択します。
 
-    b. **[Mail] (メール)** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
+    b. **[Mail] \(メール)** ドロップダウン リストで、**[user.userprincipalname]** を選択します。
 
 7. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_general_400.png)
 
-8. **[BenSelect Configuration] (BenSelect 構成)** セクションで、**[Configure BenSelect] (BenSelect の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+8. **[BenSelect Configuration] \(BenSelect 構成)** セクションで、**[Configure BenSelect] \(BenSelect の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-benselect-tutorial/tutorial_benselect_configure.png) 
 
