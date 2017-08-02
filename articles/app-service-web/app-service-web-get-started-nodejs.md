@@ -28,7 +28,10 @@ ms.lasthandoff: 07/06/2017
 
 ![Azure で実行されるサンプル アプリ](media/app-service-web-get-started-nodejs-poc/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 前提条件のインストールを終えてから、以降の手順を完了するまでに約 5 分かかります。   
+
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-for-Node-Developers/Create-a-Nodejs-app-in-Azure-Quickstart/player]   
+
 
 ## <a name="prerequisites"></a>前提条件
 

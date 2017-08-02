@@ -116,7 +116,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
 
-3. **[ArcGIS Online Domain and URLs] (ArcGIS Online のドメインと URL)** セクションで、次の手順を実行します。
+3. **[ArcGIS Online Domain and URLs] \(ArcGIS Online のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-arcgis-tutorial/tutorial_arcgisonline_url.png)
 
@@ -135,7 +135,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
 6. 別の Web ブラウザーのウィンドウで、管理者として ArcGIS 企業サイトにログインします。
 
-7. **[EDIT SETTINGS] (設定の編集)** をクリックします。
+7. **[EDIT SETTINGS] \(設定の編集)** をクリックします。
 
     ![Edit Settings (設定の編集)](./media/active-directory-saas-arcgis-tutorial/ic784742.png "Edit Settings")
 
@@ -143,7 +143,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
     ![Security (セキュリティ)](./media/active-directory-saas-arcgis-tutorial/ic784743.png "Security")
 
-9. **[Enterprise Logins] [エンタープライズ ログイン]** で、**[SET IDENTITY PROVIDER] (ID プロバイダーの設定)** をクリックします。
+9. **[Enterprise Logins] [エンタープライズ ログイン]** で、**[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
 
     ![Enterprise Logins (エンタープライズ ログイン)](./media/active-directory-saas-arcgis-tutorial/ic784744.png "Enterprise Logins")
 
@@ -157,7 +157,7 @@ ArcGIS Online で Azure AD のシングル サインオンを構成およびテ�
 
     c. ダウンロードしたメタデータ ファイルをアップロードするには、 **[Choose file]**をクリックします。
 
-    d. **[SET IDENTITY PROVIDER] (ID プロバイダーの設定)** をクリックします。
+    d. **[SET IDENTITY PROVIDER] \(ID プロバイダーの設定)** をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -203,11 +203,11 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
 
 1. **ArcGIS** テナントにログインします。
 
-2. **[INVITE MEMBERS] (メンバーの招待)** をクリックします。
+2. **[INVITE MEMBERS] \(メンバーの招待)** をクリックします。
    
     ![Invite Members (メンバーの招待)](./media/active-directory-saas-arcgis-tutorial/ic784747.png "Invite Members")
 
-3. **[Add members automatically without sending an email] (電子メールを送信せずにメンバーを自動的に追加する)** を選択し、**[NEXT] (次へ)** をクリックします。
+3. **[Add members automatically without sending an email] \(電子メールを送信せずにメンバーを自動的に追加する)** を選択し、**[NEXT] \(次へ)** をクリックします。
    
     ![メンバーの自動追加](./media/active-directory-saas-arcgis-tutorial/ic784748.png "Add Members Automatically")
 
@@ -217,8 +217,8 @@ ArcGIS Online の場合、プロビジョニングは手動のタスクです。
     
      a. プロビジョニングする有効な AAD アカウントの **[電子メール]**、**[名]**、および **[姓]** を入力します。
   
-     b. **[ADD AND REVIEW] (追加とレビュー)** をクリックします。
-5. 入力したデータを確認してから、**[ADD MEMBERS] (メンバーの追加)** をクリックします。
+     b. **[ADD AND REVIEW] \(追加とレビュー)** をクリックします。
+5. 入力したデータを確認してから、**[ADD MEMBERS] \(メンバーの追加)** をクリックします。
    
     ![メンバーの追加](./media/active-directory-saas-arcgis-tutorial/ic784750.png "Add member")
         

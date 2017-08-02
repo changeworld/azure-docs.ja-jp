@@ -108,7 +108,7 @@ Aravo で Azure AD のシングル サインオンを構成およびテストす
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_samlbase.png)
 
-3. **[Aravo Domain and URLs] (Aravo のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Aravo Domain and URLs] \(Aravo のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_url.png)
 
@@ -127,7 +127,7 @@ Aravo で Azure AD のシングル サインオンを構成およびテストす
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-aravo-tutorial/tutorial_general_400.png)
 
-6. **[Aravo Configuration] (Aravo 構成)** セクションで、**[Configure Aravo] (Aravo の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[Aravo Configuration] \(Aravo 構成)** セクションで、**[Configure Aravo] \(Aravo の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-aravo-tutorial/tutorial_aravo_configure.png) 
 
