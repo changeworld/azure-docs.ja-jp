@@ -171,7 +171,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Create table", "CreateTable", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Create table] (テーブルの作成)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Create table] \(テーブルの作成)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![[テーブルの作成]](./media/vs-storage-aspnet-getting-started-tables/create-table-results.png)
 
@@ -273,7 +273,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Add entity", "AddEntity", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Add entity] (エンティティの追加)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Add entity] \(エンティティの追加)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![エンティティの追加](./media/vs-storage-aspnet-getting-started-tables/add-entity-results.png)
 
@@ -393,7 +393,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Add entities", "AddEntities", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Add Entities] (複数エンティティの追加)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Add Entities] \(複数エンティティの追加)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![複数エンティティの追加](./media/vs-storage-aspnet-getting-started-tables/add-entities-results.png)
 
@@ -495,7 +495,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Get single", "GetSingle", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Get Single] (単一エンティティの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Get Single] \(単一エンティティの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![単一エンティティの取得](./media/vs-storage-aspnet-getting-started-tables/get-single-results.png)
 
@@ -605,7 +605,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Get partition", "GetPartition", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Get Partition] (パーティションの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Get Partition] \(パーティションの取得)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![パーティションの取得](./media/vs-storage-aspnet-getting-started-tables/get-partition-results.png)
 
@@ -705,7 +705,7 @@ Azure テーブル ストレージを使用すると、大量の構造化デー�
     <li>@Html.ActionLink("Delete entity", "DeleteEntity", "Tables")</li>
     ```
 
-1. アプリケーションを実行して **[Delete entity] (エンティティの削除)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Delete entity] \(エンティティの削除)** を選択し、次のスクリーン ショットと同様の結果が表示されることを確認します。
   
     ![単一エンティティの取得](./media/vs-storage-aspnet-getting-started-tables/delete-entity-results.png)
 

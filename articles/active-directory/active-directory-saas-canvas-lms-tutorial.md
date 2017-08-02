@@ -108,7 +108,7 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_samlbase.png)
 
-3. **[Canvas Domain and URLs] (Canvas のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Canvas Domain and URLs] \(Canvas のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_url.png)
 
@@ -127,7 +127,7 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-canvas-lms-tutorial/tutorial_general_400.png)
 
-6. **[Canvas Configuration] (Canvas 構成)** セクションで、**[Configure Canvas] (Canvas の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**パスワードの変更 URL、サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
+6. **[Canvas Configuration] \(Canvas 構成)** セクションで、**[Configure Canvas] \(Canvas の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**パスワードの変更 URL、サインアウト URL、SAML エンティティ ID、および SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-canvas-lms-tutorial/tutorial_canvaslms_configure.png) 
  
@@ -145,15 +145,15 @@ Canvas で Azure AD のシングル サインオンを構成およびテスト�
    
     ![Current Integration](./media/active-directory-saas-canvas-lms-tutorial/IC775992.png "Current Integration")
 
-    a. **[IdP Entity ID] (IdP エンティティ ID)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    a. **[IdP Entity ID] \(IdP エンティティ ID)** テキスト ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
 
-    b. **[Log On URL] (ログオン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
+    b. **[Log On URL] \(ログオン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** の値を貼り付けます。
 
-    c. **[Log Out URL] (ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    c. **[Log Out URL] \(ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
 
-    d. **[Change Password Link] (パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。 
+    d. **[Change Password Link] \(パスワードの変更リンク)** テキスト ボックスに、Azure Portal からコピーした**パスワードの変更 URL** の値を貼り付けます。 
 
-    e. **[Certificate Fingerprint] (証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。      
+    e. **[Certificate Fingerprint] \(証明書のフィンガープリント)** テキスト ボックスに、Azure Portal からコピーした証明書の **THUMBPRINT** 値を貼り付けます。      
         
     f. **[ログイン属性]** の一覧で、**[NameID]** を選択します。
 
@@ -221,7 +221,7 @@ Canvas の場合、ユーザー プロビジョニングは手動のタスクで
    
    ![ユーザーの追加](./media/active-directory-saas-canvas-lms-tutorial/IC775997.png "Add User")
    
-   a. **[Full Name] (フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
+   a. **[Full Name] \(フルネーム)** テキスト ボックスに、ユーザーの名前 (**BrittaSimon** など) を入力します。
 
    b. **[電子メール]** テキスト ボックスに、ユーザーの電子メール (**brittasimon@contoso.com** など) を入力します。
 

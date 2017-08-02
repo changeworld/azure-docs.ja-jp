@@ -108,7 +108,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_samlbase.png)
 
-3. **[AnswerHub Domain and URLs] (AnswerHub のドメインと URL)** セクションで、次の手順を実行します。
+3. **[AnswerHub Domain and URLs] \(AnswerHub のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_url.png)
 
@@ -127,7 +127,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-answerhub-tutorial/tutorial_general_400.png)
 
-6. **[AnswerHub Configuration] (AnswerHub 構成)** セクションで、**[Configure AnswerHub] (AnswerHub の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+6. **[AnswerHub Configuration] \(AnswerHub 構成)** セクションで、**[Configure AnswerHub] \(AnswerHub の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-answerhub-tutorial/tutorial_answerhub_configure.png) 
 
@@ -148,11 +148,11 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
 
      ![SAML のセットアップ](./media/active-directory-saas-answerhub-tutorial/ic785172.png "SAML Setup")  
   
-     a. **[IDP Login URL] (IDP ログイン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
+     a. **[IDP Login URL] \(IDP ログイン URL)** テキスト ボックスに、Azure Portal からコピーした **SAML シングル サインオン サービス URL** を貼り付けます。
   
-     b. **[IDP Logout URL] (IDP ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** 値を貼り付けます。
+     b. **[IDP Logout URL] \(IDP ログアウト URL)** テキスト ボックスに、Azure Portal からコピーした**サインアウト URL** 値を貼り付けます。
      
-     c. **[IDP Name Identifier Format] (IDP 名前識別子形式)** テキスト ボックスに、Azure Portal の **[ユーザー属性]** セクションで選択したのと同じユーザー識別子の値を入力します。
+     c. **[IDP Name Identifier Format] \(IDP 名前識別子形式)** テキスト ボックスに、Azure Portal の **[ユーザー属性]** セクションで選択したのと同じユーザー識別子の値を入力します。
   
      d. [ **Keys and Certificates**] をクリックします。
 
@@ -160,7 +160,7 @@ AnswerHub で Azure AD のシングル サインオンを構成およびテス�
     
      ![Keys and Certificates (キーと証明書)](./media/active-directory-saas-answerhub-tutorial/ic785173.png "Keys and Certificates")  
  
-     a. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IDP Public Key (x509 Format)] (IDP 公開キー (x509 形式))** テキスト ボックスに貼り付けます。
+     a. Azure Portal からダウンロードした Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[IDP Public Key (x509 Format)] \(IDP 公開キー (x509 形式))** テキスト ボックスに貼り付けます。
   
      b. [ **Save**] をクリックします。
 
