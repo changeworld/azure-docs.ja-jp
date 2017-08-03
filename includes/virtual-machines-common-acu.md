@@ -11,7 +11,7 @@ Azure SKU 間で計算 (CPU) パフォーマンスを比較する手段を提供
 
 <br>
 
-| SKU ファミリ | ACU/コア |
+| SKU ファミリ | ACU |
 | --- | --- |
 | [A0](../articles/virtual-machines/windows/sizes-general.md) |50 |
 | [A1 ～ A4](../articles/virtual-machines/windows/sizes-general.md) |100 |

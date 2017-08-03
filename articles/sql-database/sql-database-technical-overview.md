@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 17b51afc0c67377dccdef63deacdcc67af8df576
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 54aa8c2f738ef92c211462498103d368e4cb4c5c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
@@ -98,7 +98,7 @@ SQL Database では、次の 2 つの自動チューニングを使用できま�
 
 ### <a name="adaptive-query-processing"></a>クエリの適応処理
 
-SQL Database には、[クエリの適応処理機能](/sql/relational-databases/performance/adaptive-query-processing.md)ファミリも追加されています。この中には、複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
+SQL Database には、[クエリの適応処理機能](/sql/relational-databases/performance/adaptive-query-processing)ファミリも追加されています。この中には、複数ステートメントのテーブル値関数のインターリーブ実行、バッチ モードのメモリ許可のフィードバック、バッチ モードの適応型結合が含まれています。 これらのクエリの適応処理機能には類似の "学習して適応する" 手法が適用されています。この手法は、解決困難なクエリの最適化問題に関連するパフォーマンス問題にさらに深く取り組むために役立っています。
 
 ### <a name="intelligent-threat-detection"></a>インテリジェントな脅威の検出
 
@@ -160,3 +160,4 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
   - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
+

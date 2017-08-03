@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2017
 ms.author: xiaofmao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6084be41a9f95ac74348f4297db0372f3eac1d2e
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: beb2d26afb8ddc5e85b1828c71de5cbd9e678fe1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage: Differences and considerations
@@ -40,6 +39,7 @@ This article summarizes the known Azure Stack Storage differences from Azure Sto
 |Blob name|1,024 characters (2,048 bytes)|880 characters (1,760 bytes)
 |Block blob max size|4.75 TB (100 MB X 50,000 blocks)|50,000 X 4 MB (approx. 195 GB)
 |Page blob incremental snapshot copy|Premium and standard Azure page blobs supported|Not yet supported
+|Page blob max size|8 TB|1 TB
 |Page blob page size|512 bytes|4 KB
 |Table partition key and row key size|1,024 characters (2,048 bytes)|400 characters (800 bytes)
 
