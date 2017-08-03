@@ -51,6 +51,8 @@
       href: sql-database-implement-geo-distributed-database.md
 - name: サンプル
   items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=sql-database'
     - name: Azure CLI
       href: sql-database-cli-samples.md
     - name: PowerShell
@@ -100,8 +102,7 @@
         - name: SQL DB での TDE
           href: 'https://msdn.microsoft.com/library/dn948096'
         - name: Always Encrypted
-          href: >-
-            https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine
+          href: 'https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine'
         - name: データ マスク
           href: sql-database-dynamic-data-masking-get-started.md
     - name: ビジネス継続性
@@ -121,8 +122,7 @@
         - name: アプリの設計と回復
           href: sql-database-designing-cloud-solutions-for-disaster-recovery.md
         - name: アプリの設計とプール
-          href: >-
-            sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
+          href: sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md
         - name: アプリの設計とアプリのアップグレード
           href: sql-database-manage-application-rolling-upgrade.md
         - name: 障害からの回復
@@ -260,8 +260,7 @@
         - name: BCP を使用したデータの読み込み
           href: sql-database-load-from-csv-with-bcp.md
         - name: ADF を使用したデータの読み込み
-          href: >-
-            ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
+          href: ../data-factory/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md
         - name: データの同期
           href: sql-database-get-started-sql-data-sync.md
     - name: 監視とチューニング
@@ -307,8 +306,7 @@
         - name: カウンターの作成
           href: sql-database-elastic-database-perf-counters.md
         - name: Entity Framework を使用する
-          href: >-
-            sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
+          href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
         - name: クライアントのアップグレード
           href: sql-database-elastic-scale-upgrade-client-library.md
         - name: エラスティック ジョブのインストール
@@ -338,8 +336,7 @@
     - name: PowerShell
       href: 'https://docs.microsoft.com/en-us/powershell/module/azurerm.sql/#sql'
     - name: PowerShell (エラスティック データベース)
-      href: >-
-        https://docs.microsoft.com/en-us/powershell/module/elasticdatabasejobs/#elasticdatabasejobs
+      href: 'https://docs.microsoft.com/en-us/powershell/module/elasticdatabasejobs/#elasticdatabasejobs'
     - name: Azure CLI 2.0
       href: /cli/azure/sql
     - name: .NET
@@ -390,8 +387,7 @@
     - name: パブリック データ セット
       href: sql-database-public-data-sets.md
     - name: 接続のトラブルシューティング
-      href: >-
-        https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database
+      href: 'https://support.microsoft.com/help/10085/troubleshooting-connectivity-issues-with-microsoft-azure-sql-database'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/sql-database/'
     - name: MSDN フォーラム
@@ -399,8 +395,7 @@
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/sql-azure'
     - name: ビデオ
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=sql-database
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=sql-database'
     - name: サービスの更新情報
       href: 'https://azure.microsoft.com/updates/?service=sql-database'
     - name: アーキテクチャのガイダンス
@@ -410,13 +405,10 @@
     - name: サンプル アプリケーション
       items:
         - name: Tailspin Surveys
-          href: >-
-            https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md
+          href: 'https://github.com/Azure-Samples/guidance-identity-management-for-multitenant-apps/blob/master/docs/running-the-app.md'
         - name: Contoso Clinic
           href: 'https://github.com/Microsoft/azure-sql-security-sample'
         - name: エラスティック プール テレメトリ
-          href: >-
-            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools
+          href: 'https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools'
         - name: エラスティック プール カスタム ダッシュボード
-          href: >-
-            https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard
+          href: 'https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-sql-db-elastic-pools-custom-dashboard'

@@ -2,9 +2,11 @@
 layout: LandingPage
 title: "Service Bus メッセージングのドキュメント"
 description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。"
-translationtype: Human Translation
-ms.sourcegitcommit: 5b76339cc3ca28b523ecf825d7bccc18587aafc8
-ms.openlocfilehash: b990c273b6b76ef7277904f739aa81b8ab6a6ff6
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 848cfc882af64fdd75d1ceae2b626602474f46c2
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="service-bus-messaging-documentation"></a>Service Bus メッセージングのドキュメント
@@ -76,9 +78,8 @@ ms.openlocfilehash: b990c273b6b76ef7277904f739aa81b8ab6a6ff6
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>.NET</h3>
-                        <p><a href="/dotnet/api/microsoft.servicebus.messaging">Microsoft.ServiceBus.Messaging</a></p>
-                        <p><a href="/dotnet/api/microsoft.azure.management.servicebus">Microsoft.Azure.Management.ServiceBus</a></p>
+                        <h3>コマンド ライン</h3>
+                        <p><a href="/powershell/module/azurerm.servicebus">PowerShell</a></p>
                     </div>
                 </div>
             </div>
@@ -90,8 +91,8 @@ ms.openlocfilehash: b990c273b6b76ef7277904f739aa81b8ab6a6ff6
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="service-bus-powershell-how-to-provision.md">PowerShell</a></p>
-                        <p><a href="/rest/api/servicebus">REST ()</a></p>
+                        <p><a href="/dotnet/api/overview/azure/service-bus">.NET</a></p>
+                        <p><a href="/java/api/overview/azure/servicebus">Java</a></p>
                     </div>
                 </div>
             </div>
@@ -102,20 +103,12 @@ ms.openlocfilehash: b990c273b6b76ef7277904f739aa81b8ab6a6ff6
             <div class="cardPadding">
                 <div class="card">
                     <div class="cardText">
-                        <h3>その他</h3>
-                        <p><a href="service-bus-messaging-exceptions.md">例外</a></p>
-                        <p><a href="service-bus-quotas.md">クォータ</a></p>
-                        <p><a href="service-bus-messaging-sql-filter.md">SQLFilter 構文</a></p>
-                        <p><a href="service-bus-messaging-sql-rule-action.md">SQLRuleAction 構文</a></p>
+                        <h3>REST ()</h3>
+                        <p><a href="/rest/api/servicebus/">REST API リファレンスに関するページ</a></p>
                    </div>
                 </div>
             </div>
         </div>
     </li>
 </ul>
-
-
-
-<!--HONumber=Feb17_HO2-->
-
 
