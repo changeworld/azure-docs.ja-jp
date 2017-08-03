@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 を使用した Service Fabric アプリケーションの管理"
-description: "Azure CLI 2.0 を使用して Service Fabric クラスターからアプリケーションをデプロイおよび削除するプロセスについて説明します。"
+title: "Azure CLI 2.0 を使用して Azure Service Fabric アプリケーションを管理する"
+description: "Azure CLI 2.0 を使用して Azure Service Fabric クラスターにアプリケーションをデプロイまたは Azure Service Fabric クラスターからアプリケーションを削除する方法について説明します。"
 services: service-fabric
 author: samedder
 manager: timlt
@@ -8,46 +8,47 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: edwardsa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: a99819f6a1c0ef31e14c95b6bd47138feb05053f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5728339236e3819b301e428f9d7a8add08f02b3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="manage-service-fabric-application-using-azure-cli-20"></a>Azure CLI 2.0 を使用した Service Fabric アプリケーションの管理
+# <a name="manage-an-azure-service-fabric-application-by-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Service Fabric アプリケーションを管理する
 
-Service Fabric クラスターで実行されているアプリケーションを作成および削除するには、このドキュメントに従います。
+Azure Service Fabric クラスターで実行されているアプリケーションを作成および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-Azure CLI 2.0 がインストールされ、Service Fabric クラスターが選択されている必要があります。 詳細については、[Azure CLI 2.0 の概要に関するドキュメント](service-fabric-azure-cli-2-0.md)を参照してください。
+* Azure CLI 2.0 をインストールします。 次に、Service Fabric クラスターを選択します。 詳しくは、[Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)に関する記事をご覧ください。
 
-また、Service Fabric アプリケーション パッケージをデプロイする準備ができている必要もあります。 アプリケーションを作成してパッケージ化する方法の詳細については、[アプリケーションのモデル化に関するドキュメント](service-fabric-application-model.md)を参照してください。
+* Service Fabric アプリケーション パッケージをデプロイできるように準備します。 アプリケーションを作成してパッケージ化する方法について詳しくは、[Service Fabric アプリケーション モデル](service-fabric-application-model.md)に関する記事をご覧ください。
 
 ## <a name="overview"></a>概要
 
-新しいアプリケーションをデプロイするには、次の 4 つの手順を行います。
+新しいアプリケーションをデプロイするには、次の手順を実行します。
 
-1. アプリケーション パッケージを Service Fabric イメージ ストアにアップロードする
-1. アプリケーションの種類をプロビジョニングする
-1. アプリケーションを指定して作成する
-1. サービスを指定して作成する
+1. アプリケーション パッケージを Service Fabric イメージ ストアにアップロードします。
+2. アプリケーションの種類をプロビジョニングします。
+3. アプリケーションを指定して作成します。
+4. サービスを指定して作成します。
 
-既存のアプリケーションを削除するには、次の 3 つの手順が必要です。
+既存のアプリケーションを削除するには、次の手順を実行します。
 
-1. Delete application
-1. 関連付けられているアプリケーションの種類のプロビジョニングを解除する
-1. イメージ ストアのコンテンツを削除する
+1. アプリケーションを削除します。
+2. 関連付けられているアプリケーションの種類のプロビジョニングを解除します。
+3. イメージ ストアのコンテンツを削除します。
 
 ## <a name="deploy-a-new-application"></a>新しいアプリケーションのデプロイ
 
-アプリケーションをデプロイするには、次の手順に従います。
+新しいアプリケーションをデプロイするには、次のタスクを実行します。
 
 ### <a name="upload-a-new-application-package-to-the-image-store"></a>新しいアプリケーション パッケージをイメージ ストアにアップロードする
 
-アプリケーションを作成する前に、アプリケーション パッケージを Service Fabric イメージ ストアにアップロードする必要があります。
-たとえば、アプリケーション パッケージが `app_package_dir` ディレクトリ内に存在する場合は、 次のコマンドを使用してこのディレクトリをアップロードします。
+アプリケーションを作成する前に、アプリケーション パッケージを Service Fabric イメージ ストアにアップロードします。 
+
+たとえば、アプリケーション パッケージが `app_package_dir` ディレクトリにある場合は、次のコマンドを使用してディレクトリをアップロードします。
 
 ```azurecli
 az sf application upload --path ~/app_package_dir
@@ -55,40 +56,40 @@ az sf application upload --path ~/app_package_dir
 
 大規模なアプリケーション パッケージの場合は、`--show-progress` オプションを指定するとアップロードの進行状況を確認できます。
 
-### <a name="provision-application-type"></a>アプリケーションの種類をプロビジョニングする
+### <a name="provision-the-application-type"></a>アプリケーションの種類をプロビジョニングする
 
-アップロードが完了したら、アプリケーションをプロビジョニングする必要があります。 アプリケーションをプロビジョニングするには、次のコマンドを使用します。
+アップロードが完了したら、アプリケーションをプロビジョニングします。 アプリケーションをプロビジョニングするには、次のコマンドを使用します。
 
 ```azurecli
 az sf application provision --application-type-build-path app_package_dir
 ```
 
-`application-type-build-path` には、先ほどアップロードしたアプリケーション パッケージを含むディレクトリと同じディレクトリ名を指定します。
+`application-type-build-path` の値は、アプリケーション パッケージをアップロードしたディレクトリの名前です。
 
-### <a name="create-application-from-application-type"></a>アプリケーションの種類からアプリケーションを作成する
+### <a name="create-an-application-from-an-application-type"></a>アプリケーションの種類からアプリケーションを作成する
 
-アプリケーションがプロビジョニングされたら、次のコマンドを使用して、任意の名前でアプリケーションを作成できます。
+アプリケーションがプロビジョニングされたら、次のコマンドを使用して、アプリケーションに名前を付けて作成できます。
 
 ```azurecli
 az sf application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name` には、アプリケーションのインスタンスに付ける名前を指定します。 その他のパラメーターは、プロビジョニング済みのアプリケーション マニフェストで確認できます。
+`app-name` はアプリケーション インスタンスに対して使用する名前です。 追加のパラメーターは、以前にプロビジョニングしたアプリケーション マニフェストから取得できます。
 
-アプリケーション名の先頭には `fabric:/` プレフィックスが必要です。
+アプリケーション名の先頭にはプレフィックス `fabric:/` が必要です。
 
 ### <a name="create-services-for-the-new-application"></a>新しいアプリケーションのサービスを作成する
 
-アプリケーションを作成したら、そのアプリケーションからサービスを作成できます。 この例では、アプリケーションから新しいステートレス サービスを作成します。 アプリケーションから作成できるサービスは、プロビジョニング済みのアプリケーション パッケージ内のサービス マニフェストで定義されています。
+アプリケーションを作成したら、そのアプリケーションからサービスを作成します。 次の例では、アプリケーションから新しいステートレス サービスを作成します。 アプリケーションから作成できるサービスは、プロビジョニング済みのアプリケーション パッケージ内のサービス マニフェストで定義されています。
 
 ```azurecli
 az sf service create --app-id TestApp --name fabric:/TestApp/TestSvc --service-type TestServiceType \
 --stateless --instance-count 1 --singleton-scheme
 ```
 
-## <a name="verify-application-creation-and-health"></a>アプリケーションの作成と正常性の確認
+## <a name="verify-application-deployment-and-health"></a>アプリケーションのデプロイと正常性を確認する
 
-アプリケーションとサービスが正常にデプロイされていることを確認するには、次のコマンドを使用して、アプリケーションとサービスがリストにあることを確認します。
+アプリケーションとサービスが正常にデプロイされていることを確認するには、アプリケーションとサービスが一覧にあることを確認します。
 
 ```azurecli
 az sf application list
@@ -106,11 +107,11 @@ az sf service health --service-id TestApp/TestSvc
 
 ## <a name="remove-an-existing-application"></a>既存のアプリケーションの削除
 
-アプリケーションを削除するには、次の手順に従います。
+アプリケーションを削除するには、次のタスクを実行します。
 
 ### <a name="delete-the-application"></a>アプリケーションを削除する
 
-次のコマンドを実行して、アプリケーションを削除します。
+アプリケーションを削除するには、次のコマンドを使用します。
 
 ```azurecli
 az sf application delete --application-id TestEdApp
@@ -118,23 +119,25 @@ az sf application delete --application-id TestEdApp
 
 ### <a name="unprovision-the-application-type"></a>アプリケーションの種類のプロビジョニングを解除する
 
-アプリケーションが削除されたら、不要になったアプリケーションの種類のプロビジョニングを解除できます。 次のコマンドを使用して、アプリケーションのプロビジョニングを解除します。
+アプリケーションを削除したら、不要になったアプリケーションの種類のプロビジョニングを解除できます。 アプリケーションの種類のプロビジョニングを解除するには、次のコマンドを実行します。
 
 ```azurecli
 az sf application unprovision --application-type-name TestAppTye --application-type-version 1.0
 ```
 
-ここで指定するアプリケーションの種類の名前とバージョンは、プロビジョニング済みのアプリケーション マニフェストにある名前とバージョンと一致している必要があります。
+指定するアプリケーションの種類の名前とバージョンは、以前にプロビジョニングしたアプリケーション マニフェストにある名前およびバージョンと一致している必要があります。
 
-### <a name="delete-application-package"></a>アプリケーション パッケージを削除する
+### <a name="delete-the-application-package"></a>アプリケーション パッケージを削除する
 
-アプリケーションの種類のプロビジョニングが解除されたら、不要になったアプリケーション パッケージをイメージ ストアから削除することができます。 アプリケーション パッケージを削除すると、ディスク領域が解放されます。 次のコマンドを使用して、アプリケーション パッケージをイメージ ストアから削除します。
+アプリケーションの種類のプロビジョニングを解除したら、不要になったアプリケーション パッケージをイメージ ストアから削除できます。 アプリケーション パッケージを削除すると、ディスク領域が解放されます。 
+
+アプリケーション パッケージをイメージ ストアから削除するには、次のコマンドを使用します。
 
 ```azurecli
 az sf application package-delete --content-path app_package_dir
 ```
 
-`content-path` は、アプリケーションの作成時にアップロードしたディレクトリと同じ名前である必要があります。
+`content-path` はアプリケーションを作成したときにアップロードしたディレクトリの名前である必要があります。
 
 ## <a name="related-articles"></a>関連記事
 
