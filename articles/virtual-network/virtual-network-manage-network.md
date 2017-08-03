@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: b5457f754f6118f936b5aae48de51c76bff128b5
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: beb4f74012359f6a0a837f0194c7f43746977cea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>仮想ネットワークの作成、変更、削除
@@ -36,12 +35,12 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="before"></a>開始する前に
 
-この記事に記載されたタスクを開始する前に、次の前提条件を完了してください。
+この記事に記載されているタスクを開始する前に、次の前提条件を満たしてください。
 
-- 仮想ネットワークを初めて使用する場合は、「[最初の仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)」の演習を参照することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
-- 仮想ネットワークの制限について、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。
+- 仮想ネットワークを初めて使用する場合は、[最初の Azure 仮想ネットワークの作成](virtual-network-get-started-vnet-subnet.md)に関するページの演習を確認することをお勧めします。 この演習は、仮想ネットワークを理解するのに役立ちます。
+- 仮想ネットワークの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページをご覧ください。
 - Azure アカウントを使用して、Azure Portal、Azure コマンドライン ツール (Azure CLI)、または Azure PowerShell にサインインします。 Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
-- PowerShell のコマンドを使用してこの記事に記載されたタスクを行う場合は、最初に [Azure PowerShell をインストールして構成する](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)必要があります。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 例に含まれている PowerShell コマンドのヘルプを表示するには、「`get-help <command> -full`」と入力します。
+- PowerShell のコマンドを使用してこの記事に記載されたタスクを行う場合は、最初に [Azure PowerShell をインストールして構成する](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)必要があります。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 サンプルの PowerShell コマンドのヘルプを表示するには、「`get-help <command> -full`」と入力します。
 - Azure CLI のコマンドを使用してこの記事に記載されたタスクを行う場合は、最初に [Azure CLI をインストールして構成する](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)必要があります。 最新バージョンの Azure CLI がインストールされていることを確認してください。 Azure CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。
 
 
@@ -74,7 +73,7 @@ ms.lasthandoff: 06/14/2017
       >管理者が複数のサブネットを作成して、サブネット間でトラフィックのフィルター処理や制御を行うことはよくあります。 サブネットを定義する前に、サブネット間のトラフィックのルーティングやフィルター処理の方法について検討してください。 サブネット間のトラフィックをフィルター処理する方法の詳細については、[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)に関する記事を参照してください。 Azure ではサブネット間のルーティングが自動的に行われますが、Azure の既定のルートを上書きすることもできます。 Azure の既定のサブネット トラフィック ルーティングを上書きする方法については、[ユーザー定義のルート](virtual-networks-udr-overview.md)に関する記事を参照してください。
       >
 
-    - **サブネット アドレス範囲**: この範囲は、仮想ネットワーク用に入力したアドレス空間内にある必要があります。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のサブネット アドレス範囲が設定された仮想ネットワークで使用できる IP アドレスは 3 つのみです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namegwsubagateway-subnet)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、[サブネットの追加、変更、削除](virtual-network-manage-subnet.md)に関する記事の「[サブネット設定の変更](#change-subnet)」を参照してください。
+    - **サブネット アドレス範囲**: この範囲は、仮想ネットワーク用に入力したアドレス空間内にある必要があります。 指定できる最小範囲は、/29 です。これでサブネットに 8 つの IP アドレスを使用できます。 Azure では、サブネットごとに、最初と最後のアドレスがプロトコルに準拠するために予約されています。 そのほか、3 つのアドレスが Azure サービスの使用のために予約されています。 そのため、/29 のサブネット アドレス範囲が設定された仮想ネットワークで使用できる IP アドレスは 3 つのみです。 仮想ネットワークを VPN ゲートウェイに接続する場合は、ゲートウェイ サブネットを作成する必要があります。 詳細については、[ゲートウェイ サブネットに指定するアドレス範囲の考慮事項](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub)に関する記事を参照してください。 特定の条件下でのみ、サブネットの作成後にアドレス範囲を変更できます。 サブネット アドレス範囲を変更する方法については、[サブネットの追加、変更、削除](virtual-network-manage-subnet.md)に関する記事の「[サブネット設定の変更](#change-subnet)」を参照してください。
     - **サブスクリプション**: [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を選択します。 1 つの仮想ネットワークが複数の Azure サブスクリプションにまたがることはできません。 ただし、1 つのサブスクリプションの仮想ネットワークを他のサブスクリプションの仮想ネットワークに接続することはできます。 他のサブスクリプションの仮想ネットワークに接続するには、Azure VPN Gateway または仮想ネットワーク ピアリングを使用します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じサブスクリプションに存在する必要があります。
     - **リソース グループ**: 既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-groups)を選択するか、新しいリソース グループを作成します。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じリソース グループに存在していても別のリソース グループに存在していてもかまいません。
     - **場所**: Azure の[場所](https://azure.microsoft.com/regions/)を選択します。この場所はリージョンとも呼ばれます。 1 つの仮想ネットワークは、Azure の 1 つの場所にのみ存在できます。 ただし、VPN ゲートウェイを使用して、1 つの場所にある仮想ネットワークを別の場所の仮想ネットワークに接続することはできます。 仮想ネットワークに接続する Azure リソースは、仮想ネットワークと同じ場所に存在する必要があります。
@@ -90,7 +89,7 @@ ms.lasthandoff: 06/14/2017
 
 仮想ネットワークと設定を表示するには、次のようにします。
 
-1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当ての詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」をご覧ください。
 2. ポータルの検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果で、**[仮想ネットワーク]** をクリックします。
 3. **[仮想ネットワーク]** ブレードで、設定を表示する仮想ネットワークをクリックします。
 4. 選択した仮想ネットワークのブレードに、次の設定が表示されます。
@@ -133,7 +132,7 @@ ms.lasthandoff: 06/14/2017
 
 アドレス空間を追加または削除するには、次のようにします。
 
-1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当ての詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」をご覧ください。
 2. ポータルの検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果で、**[仮想ネットワーク]** を選択します。
 3. **[仮想ネットワーク]** ブレードで、アドレス空間を追加または削除する仮想ネットワークをクリックします。
 4. 仮想ネットワーク ブレードの **[設定]** で **[アドレス空間]** をクリックします。
@@ -151,7 +150,7 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="dns-servers"></a>DNS サーバーの追加、変更、削除
 
-仮想ネットワークに接続されている VM はすべて、その仮想ネットワークに指定した DNS サーバーに登録されます。 また、指定した DNS サーバーを名前解決に使用します。 VM 内のネットワーク インターフェイス (NIC) ごとに独自の DNS サーバー設定を構成できます。 NIC に独自の DNS サーバー設定を構成すると、仮想ネットワークの DNS サーバー設定が上書きされます。 NIC DNS 設定の詳細については、[ネットワーク インターフェイスのタスクと設定](virtual-network-network-interface.md#dns)に関する記事を参照してください。 Azure Cloud Services での VM とロール インスタンスの名前解決の詳細については、「[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。 DNS サーバーを追加、変更、削除するには、次のようにします。
+仮想ネットワークに接続されている VM はすべて、その仮想ネットワークに指定した DNS サーバーに登録されます。 また、指定した DNS サーバーを名前解決に使用します。 VM 内のネットワーク インターフェイス (NIC) ごとに独自の DNS サーバー設定を構成できます。 NIC に独自の DNS サーバー設定を構成すると、仮想ネットワークの DNS サーバー設定が上書きされます。 NIC DNS 設定の詳細については、[ネットワーク インターフェイスのタスクと設定](virtual-network-network-interface.md#change-dns-servers)に関する記事を参照してください。 Azure Cloud Services での VM とロール インスタンスの名前解決の詳細については、「[VM とロール インスタンスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。 DNS サーバーを追加、変更、削除するには、次のようにします。
 
 1. ご利用のサブスクリプションのネットワーク共同作成者ロール (またはそれ以上) のアクセス許可が割り当てられているアカウントで[ポータル](https://portal.azure.com)にサインインします。 アカウントへのロールとアクセス許可の割り当てについて詳しくは、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
 2. ポータルの検索ボックスに、「**仮想ネットワーク**」と入力します。 検索結果で、**[仮想ネットワーク]** を選択します。
@@ -196,8 +195,8 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- VM を作成して仮想ネットワークに接続する場合は、[仮想ネットワークの作成と VM の接続](virtual-network-get-started-vnet-subnet.md#a-namecreate-vmsacreate-virtual-machines)に関するページを参照してください。
+- VM を作成して仮想ネットワークに接続する場合は、[仮想ネットワークの作成と VM の接続](virtual-network-get-started-vnet-subnet.md#create-vms)に関するページを参照してください。
 - 仮想ネットワーク内のサブネット間のネットワーク トラフィックをフィルター処理する場合は、[ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関する記事を参照してください。
-- 仮想ネットワークを別の仮想ネットワークにピアリングする場合は、[仮想ネットワーク ピアリングの作成](virtual-network-create-peering.md#a-nameportalacreate-peering---azure-portal)に関する記事を参照してください。
-- オンプレミスのネットワークに仮想ネットワークを接続するためのオプションの詳細については、[VPN Gateway の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#a-namediagramsaconnection-topology-diagrams)に関する記事を参照してください。
+- 仮想ネットワークを別の仮想ネットワークにピアリングする場合は、[仮想ネットワーク ピアリングの作成](virtual-network-create-peering.md#portal)に関する記事を参照してください。
+- オンプレミスのネットワークに仮想ネットワークを接続するためのオプションの詳細については、[VPN Gateway の概要](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#diagrams)に関する記事を参照してください。
 

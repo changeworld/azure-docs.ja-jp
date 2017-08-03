@@ -1,6 +1,6 @@
 ---
 title: "入れ子になった Traffic Manager プロファイル | Microsoft Docs"
-description: "この記事では、Azure Traffic Manager の &quot;入れ子になったプロファイル&quot; 機能について説明します。"
+description: "この記事では、Azure Traffic Manager の \"入れ子になったプロファイル\" 機能について説明します。"
 services: traffic-manager
 documentationcenter: 
 author: kumudd
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/22/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 2dacb50ab9b8604e48f5ba08e8f8e94fa4a71bd5
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 1ac4ec2775ca9f690f5adf4f939908f8cee3f715
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -46,7 +46,7 @@ Traffic Manager プロファイルごとに 1 つのトラフィック ルーテ
 
 この構成では、親プロファイルを使用して転送されるトラフィックによって、通常どおりリージョン全体にトラフィックが振り分けられます。 西ヨーロッパ内では、入れ子になったプロファイルによって、割り当てられた重みに従って運用エンドポイントとテスト エンドポイントにトラフィックが分散されます。
 
-親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントに場所を割り当てる必要があります。 場所は、エンドポイントを構成するときに割り当てます。 デプロイメントに最も近い Azure リージョンを選択してください。 Azure のリージョンは、インターネット待機時間テーブルでサポートされている場所の値です。 詳細については、[Traffic Manager の "パフォーマンス" によるトラフィック ルーティング方法](traffic-manager-routing-methods.md#a-name--performanceaperformance-traffic-routing-method)に関する記事をご覧ください。
+親プロファイルで "パフォーマンス" トラフィック ルーティング方法を使用するときは、各エンドポイントに場所を割り当てる必要があります。 場所は、エンドポイントを構成するときに割り当てます。 デプロイメントに最も近い Azure リージョンを選択してください。 Azure のリージョンは、インターネット待機時間テーブルでサポートされている場所の値です。 詳細については、[Traffic Manager の "パフォーマンス" によるトラフィック ルーティング方法](traffic-manager-routing-methods.md#performance)に関する記事をご覧ください。
 
 ## <a name="example-2-endpoint-monitoring-in-nested-profiles"></a>例 2: 入れ子になったプロファイルでのエンドポイントの監視
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: efd01bb001f4ac05f933793184b5027157f143f6
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -149,7 +148,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: 追加のスケジュール設定および管理ツールを提供する実稼働レベルのスケーラブルな環境を作成する場合、または Docker Swarm クラスターをデプロイする場合。
 
-    >**作業開始**: [Container Service クラスターをデプロイします](../../container-service/container-service-deployment.md)。
+    >**作業開始**: [Container Service クラスターをデプロイします](../../container-service/dcos-swarm/container-service-deployment.md)。
 
 -   **Docker Machine**: docker-machine コマンドを使用して、仮想ホスト上で Docker Engine をインストールおよび管理できます。
 

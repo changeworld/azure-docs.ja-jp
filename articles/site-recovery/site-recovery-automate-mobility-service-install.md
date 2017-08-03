@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/06/2017
 ms.author: krnese
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3e9321255b65d46af59d0ee478e214df795664ac
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: cdb88505427cdea05f594277170633183dbe6d3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="deploy-the-mobility-service-with-azure-automation-dsc-for-replication-of-vm"></a>VM レプリケーションのために Azure Automation DSC を使用してモビリティ サービスをデプロイする
@@ -59,7 +59,7 @@ Azure でのフェールバックがある場合は、” *マスター ター�
 * 保護を有効にするコンピューターにインストールされている Windows Management Framework (WMF) 5.0 (Automation DSC の要件)
 
   > [!NOTE]
-  > WMF 4.0 がインストールされている Windows コンピューターに対して DSC を使用する場合は、[分離された環境での DSC の使用](#Use DSC in disconnected environments)セクションをご覧ください。
+  > WMF 4.0 がインストールされている Windows コンピューターに対して DSC を使用する場合は、[分離された環境での DSC の使用](## Use DSC in disconnected environments)セクションをご覧ください。
   >
   >
 
