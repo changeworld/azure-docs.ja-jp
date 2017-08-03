@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 3dd84ade3d3ad5f6982f8ab34dd72c2937d21410
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: 8ac757a84a932c434b508aa33c343c866a40bf02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 
@@ -472,7 +472,7 @@ compute_client = ComputeManagementClient(
 
 ### <a name="resize-the-vm"></a>VM のサイズを変更する
 
-仮想マシンのサイズを決定するときは、デプロイの多くの面を考慮する必要があります。 詳しくは、[VM サイズ](sizes.md)をご覧ください。
+仮想マシンのサイズを決定するときは、デプロイのさまざまな面を考慮する必要があります。 詳しくは、[VM サイズ](sizes.md)をご覧ください。
 
 1. 仮想マシンのサイズを変更するには、.py ファイルの変数の後に次の関数を追加します。
 
@@ -533,9 +533,9 @@ compute_client = ComputeManagementClient(
             vm)
 
         return add_result.result()
-        ```
+    ```
 
-2. To call the function that you previously added, add this code under the **if** statement at the end of the .py file:
+2. 前に追加した関数を呼び出すには、.py ファイルの最後にある **if** ステートメントの下に次のコードを追加します。
 
     ```python
     add_result = add_datadisk(compute_client)
@@ -567,7 +567,7 @@ Azure で使用されるリソースに対して課金されるため、不要�
 
 1. コンソール アプリケーションを実行するには、Visual Studio で **[開始]** をクリックします。
 
-2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが**成功**状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要な場合があります。  
+2. 各リソースの状態が返された後、**Enter** キーを押します。 状態の情報では、プロビジョニングが**成功**状態になっている必要があります。 仮想マシンが作成された後、作成したすべてのリソースを削除する機会があります。 **Enter** キーを押してリソースの削除を開始する前に、Azure Portal でリソースの作成状況を確認することもできます。 Azure Portal が開いたままになっている場合、新しいリソースを表示するにはブレードの更新が必要になる場合があります。  
 
     このコンソール アプリケーションが実行を開始してから完全に終了するまでには、約 5 分かかります。 アプリケーションが終了してから、すべてのリソースとリソース グループが削除されるまで、数分かかる場合があります。
 

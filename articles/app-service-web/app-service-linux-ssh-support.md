@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 6da663ea282e09b01ce380827fa7e31505712516
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: bfa902aae0b1ab4ca6a93387106b40a16c7288cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>Azure App Service Web Apps on Linux での SSH のサポート
@@ -90,7 +89,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     EXPOSE 2222 80
     ```
 
-4. ssh サービスが開始されることを確認します。 [こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3-1/init_container.sh)の例では、*/bin* ディレクトリのシェル スクリプトを使用しています。
+4. ssh サービスが開始されることを確認します。 [こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)の例では、*/bin* ディレクトリのシェル スクリプトを使用しています。
 
     ```bash
     #!/bin/bash

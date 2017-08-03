@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: dbee3f1d0aae885325ef9efe9c2f48961495e8b9
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: c5eda443dcd41a481ad952d8472f7f67f4517abd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
@@ -132,7 +131,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 ### <a name="create-output-dataset"></a>出力データセットの作成
 出力データセットは、スケジュール (1 時間に 1 回、毎日など) を開始するため、 アクティビティによって出力が実際に生成されなくても、パイプラインの Spark アクティビティの出力データセットを指定する必要があります。 アクティビティの入力データセットの指定は省略可能です。
 
-1. **Data Factory エディター**のコマンド バーで **[...] \(その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
+1. **Data Factory エディター**のコマンド バーで **[...] (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 JSON スニペットで、**OutputDataset** という名前のデータセットを定義します。 さらに、**adfspark** という BLOB コンテナーと **pyFiles/output** というフォルダーに結果が保存されるように指定します。 前述のように、このデータセットはダミー データセットです。 この例の Spark プログラムでは出力は生成されません。 **availability** セクションでは、出力データセットが毎日生成されることを指定します。  
 
     ```json
@@ -231,7 +230,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
-詳細な手順については、「[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-an-interactive-spark-sql-query)」を参照してください。 
+詳細な手順については、「[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql)」を参照してください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 **getDebugInfo** を **Always** に設定しているので、Azure BLOB コンテナー内の **pyFiles** フォルダーに **log** サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加の詳細情報を取得できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してみてください。

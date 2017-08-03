@@ -12,14 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/31/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e0ad6b5bec11c5197dd7bded64168a1b8cc2fdd
-ms.openlocfilehash: 0fc176eca038801725492f905442ba4dd9d2fabe
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 453314d603fdc25cfc0e37622e5394fc148a11a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/28/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Azure Redis Cache でデータをインポートまたはエクスポートする
@@ -108,8 +107,8 @@ Import は、任意のクラウドまたは環境で稼働している任意の 
 * [Import/Export がカスタム データベース設定を操作する方法](#how-does-importexport-work-with-a-custom-databases-setting)
 * [Import/Export と Redis の永続化にはどのような違いがありますか?](#how-is-importexport-different-from-redis-persistence)
 * [PowerShell、CLI、またはその他の管理クライアントを使って Import/Export を自動化することはできますか?](#can-i-automate-importexport-using-powershell-cli-or-other-management-clients)
-* [Import/Export 操作中にタイムアウト エラーが発生しました。これはどういうことですか?](#i-received-a-timeout-error-during-my-importexport-operation.-what-does-it-mean)
-* [Azure Blob Storage にデータをエクスポートしているときにエラーが発生しました。なぜでしょうか?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage.-what-happened)
+* [Import/Export 操作中にタイムアウト エラーが発生しました。これはどういうことですか?](#i-received-a-timeout-error-during-my-importexport-operation-what-does-it-mean)
+* [Azure Blob Storage にデータをエクスポートしているときにエラーが発生しました。なぜでしょうか?](#i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened)
 
 ### <a name="what-pricing-tiers-can-use-importexport"></a>Import/Export はどの価格レベルで使用できますか?
 Import/Export は Premium 価格レベルでのみ使用できます。

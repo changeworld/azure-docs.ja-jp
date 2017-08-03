@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c905bfe672d1027916d7f273ab5ac79ceec9a4d9
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 94ae2fa4600c007725ae2615554144d12306e833
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage と管理ディスク
@@ -59,7 +58,7 @@ Premium Storage の使用を開始するには、[無料の Azure アカウン�
 
 * **Premium Storage ディスク**
 
-    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Fs シリーズの VM をサポートしています。 選択することができるディスク サイズは、P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1,024 GB)、P40 (2,048 GB)、P50 (4,095 GB) の 7 つです。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#premium-storage-scalability-and-performance-targets)に関するセクションで説明します。
+    Premium Storage では、特定のサイズ シリーズの VM に接続できる VM ディスクがサポートされています。 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズ、Ls シリーズ、および Fs シリーズの VM をサポートしています。 選択することができるディスク サイズは、P4 (32 GB)、P6 (64 GB)、P10 (128 GB)、P20 (512 GB)、P30 (1,024 GB)、P40 (2,048 GB)、P50 (4,095 GB) の 7 つです。 P4 および P6 ディスク サイズは、現時点では Managed Disks のみでサポートされています。 各ディスク サイズは、それぞれ独自のパフォーマンス仕様があります。 アプリケーションの要件に応じて、VM には 1 つ以上のディスクを接続できます。 仕様の詳細については、[Premium Storage のスケーラビリティとパフォーマンスのターゲット](#scalability-and-performance-targets)に関するセクションで説明します。
 
 * **Premium ページ BLOB**
 

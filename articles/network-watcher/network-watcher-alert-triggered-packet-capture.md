@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 70e78af25c7087aa0eb59697aa9b51d615480085
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 8e0b9181bcd43692619726e7215e90116e5b9221
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
@@ -372,7 +371,8 @@ Azure ストレージ アカウントからファイルをダウンロードす�
 
 ## <a name="next-steps"></a>次のステップ
 
-パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-alert-triggered-packet-capture.md)に関するページをご覧ください。
+パケット キャプチャを表示する方法については、[Wireshark によるパケット キャプチャ分析](network-watcher-deep-packet-inspection.md)に関するページをご覧ください。
+
 
 [1]: ./media/network-watcher-alert-triggered-packet-capture/figure1.png
 [1-1]: ./media/network-watcher-alert-triggered-packet-capture/figure1-1.png

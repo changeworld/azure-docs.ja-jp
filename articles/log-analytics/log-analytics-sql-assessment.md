@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 13453a831c3d42a9e291976a4d5cc80ced5c4755
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 045c4cd49e7b7b1e0b02cc7dc6ede636d0622208
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションを使用して SQL Server 環境を最適化する
@@ -170,6 +169,8 @@ OMS の評価ソリューションを使用するには、ソリューション�
 
 ## <a name="ignore-recommendations"></a>推奨事項を無視する
 無視する推奨事項がある場合は、OMS が使用するテキスト ファイルを作成して、推奨事項が評価結果に表示されないようにすることができます。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 ### <a name="to-identify-recommendations-that-you-will-ignore"></a>無視する推奨事項を識別するには
 1. ワークスペースにサインインして、ログ検索を開きます。 次のクエリを使用して、環境内のコンピューターで失敗した推奨事項の一覧を表示します。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 32cbfbc78fbb808ed59142b80602a751f607706d
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: a0e93881e0d75541fc04d7bc736459f8109d1c9f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -33,13 +33,13 @@ ms.lasthandoff: 06/29/2017
 |機能|メディア エンコーダー スタンダード|メディア エンコーダー Premium ワークフロー|
 |---|---|---|
 |エンコード中に条件ロジックを適用する<br/>(たとえば、入力が HD の場合は、5.1 オーディオをエンコードする)|いいえ|あり|
-|クローズ キャプション|いいえ|[はい](media-services-premium-workflow-encoder-formats.md#a-idclosedcaptioningasupport-for-closed-captioning)|
+|クローズ キャプション|いいえ|[はい](media-services-premium-workflow-encoder-formats.md#closed_captioning)|
 |[Dolby® Professional Loudness Correction](http://www.dolby.com/us/en/technologies/dolby-professional-loudness-solutions.pdf)<br/> (Dialogue Intelligence™ を採用)|いいえ|あり|
 |ノンインターレース、逆テレシネ|Basic|放送品質|
 |黒い境界線の検出と削除 <br/>(ピラーボックス、レターボックス)|いいえ|あり|
-|サムネイルの生成|[はい](media-services-dotnet-generate-thumbnail-with-mes.md)|[はい](media-services-media-encoder-premium-workflow-tutorials.md#a-idthumbnailstomultibitratemp4aadding-thumbnails-to-multibitrate-mp4-output)|
-|ビデオのクリッピング/トリミングおよび合成|[はい](media-services-advanced-encoding-with-mes.md#a-idtrimvideoatrim-a-video-clipping)|あり|
-|オーディオまたはビデオのオーバーレイ|[はい](media-services-advanced-encoding-with-mes.md#a-idoverlayacreate-an-overlay)|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
+|サムネイルの生成|[はい](media-services-dotnet-generate-thumbnail-with-mes.md)|[はい](media-services-media-encoder-premium-workflow-tutorials.md#thumbnails_to__multibitrate_MP4)|
+|ビデオのクリッピング/トリミングおよび合成|[はい](media-services-advanced-encoding-with-mes.md#trim_video)|あり|
+|オーディオまたはビデオのオーバーレイ|[はい](media-services-advanced-encoding-with-mes.md#overlay)|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-1--overlay-an-image-on-top-of-the-video)|
 |グラフィックスのオーバーレイ|イメージ ソースから|イメージとテキスト ソースから|
 |複数のオーディオ言語トラック|制限あり|[はい](media-services-media-encoder-premium-workflow-multiplefilesinput.md#example-2--multiple-audio-language-encoding)|
 
