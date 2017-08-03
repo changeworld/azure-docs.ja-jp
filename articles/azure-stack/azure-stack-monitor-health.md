@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 07/26/2017
 ms.author: chasat
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8b7b3a5fcf01ca0ad721e52f8bad7feb8b29a907
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 93835eabcf9622735aada0f5dfa46028553c25bd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Monitor health and alerts in Azure Stack
@@ -43,11 +43,8 @@ To view the health state in the portal, click the region that you want to view i
 
 You can click a resource provider or infrastructure role to view more detailed information.
 
-If you click an infrastructure role, and then click the role instance, you’ll see options in the **Role instance** blade to Start, Restart, or Shutdown. (The available options depend on the current state.) Although there is the capability to start, restart, or shut down an infrastructure role instance, we don’t recommend that you do so without guidance from the [Azure Stack forum](https://aka.ms/azurestackforum).
-
 > [!WARNING]
->In an Azure Stack Development Kit environment, there is only one role instance for each infrastructure role. Therefore, if you restart or shut down a role instance, the functionality that the role offers is unavailable until the role instance starts. If you restart or shut down the AzS-Xrp01 role instance (associated with several of the infrastructure roles), you must use Hyper-V Manager to start the virtual machine.
->
+>If you click an infrastructure role, and then click the role instance, there are options in the **Role instance** blade to Start, Restart, or Shutdown. Do **not** use these options in an Azure Stack Development Kit environment. These options are designed only for a multi-node environment, where there is more than one role instance per infrastructure role. Restarting a role instance (especially AzS-Xrp01) in the development kit causes system instability. For troubleshooting assistance, please post your issue to the [Azure Stack forum](https://aka.ms/azurestackforum).
 >
  
 ## <a name="view-alerts"></a>View alerts
