@@ -12,17 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-android
 ms.devlang: Java
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 07/17/2017
 ms.author: piyushjo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 1cd7c365844b22e10dd69f38f08e5d1aa691ba20
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c179c39a43da0aa35e945acceacbf27fe8e328f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="release-notes"></a>リリース ノート
+
+## <a name="431-07172017"></a>4.3.1 (07/17/2017)
+* `EngagementAgentUtils.isInDedicatedEngagementProcess` を呼び出すときに稀に発生するクラッシュを修正します。これは、`EngagementApplication` クラスでも使用されます。
 
 ## <a name="430-06272017"></a>4.3.0 (06/27/2017)
 * Android 8 のサポート (以前のバージョンの SDK は Android 8 では動作しません)。
