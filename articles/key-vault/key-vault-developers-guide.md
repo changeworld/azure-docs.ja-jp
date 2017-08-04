@@ -9,12 +9,11 @@ ms.topic: article
 ms.workload: identity
 ms.date: 06/6/2017
 ms.author: bruceper
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 7b8042d6a2d34858f35a2041db0116c1d6159630
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a15b403166dad17790c75f6db874e4ed2640ca78
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
@@ -32,14 +31,14 @@ Azure Key Vault の全般的な情報については、「 [Azure Key Vault と�
 
 Key Vault の新機能のパブリック プレビューは定期的にリリースされます。 ぜひお試しいただき、azurekeyvault@microsoft.com (フィードバック用のメール アドレス) までご意見をお寄せください。
 
-### <a name="soft-delete---may-10-2017"></a>論理的な削除 - 2017 年 5 月 10 日
+### <a name="storage-account-keys---july-10-2017"></a>ストレージ アカウント キー - 2017 年 7 月 10 日
 
 >[!NOTE]
->Azure Key Vault のこのアップデートでは、**論理的な削除**機能のみがプレビュー段階です。
+>Azure Key Vault のこのアップデートでは、**ストレージ アカウント キー**機能のみがプレビュー段階です。
 
-このプレビューでは、新しい論理的な削除機能や、Key Vault と Key Vault オブジェクトの回復可能な削除を利用できるほか、開発者向けのインターフェイス、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、および [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) が更新されています。 
+このプレビューには、[.NET/C#](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault/)、[REST](https://docs.microsoft.com/rest/api/keyvault/)、[PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) の各インターフェイスで使用できる新しいストレージ アカウント キー機能が用意されています。 
 
-新しい論理的な削除機能の詳細については、「[Azure Key Vault soft delete overview (Azure Key Vault の論理的な削除の概要)](key-vault-ovw-soft-delete.md)」を参照してください。
+新しいストレージ アカウント キー機能について詳しくは、[Azure Key Vault ストレージ アカウント キーの概要](key-vault-ovw-storage-keys.md)に関する記事をご覧ください。
 
 ## <a name="videos"></a>ビデオ
 
