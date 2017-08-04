@@ -269,7 +269,7 @@ PowerShell スクリプトの終了時に、名前付きの値がいくつか出
 
 ### <a name="transact-sql-code"></a>Transact-SQL コード
 
-```tsql
+```sql
 ---- TODO: First, run the PowerShell portion of this two-part code sample.
 ---- TODO: Second, find every 'TODO' in this Transact-SQL file, and edit each.
 
@@ -465,7 +465,7 @@ GO
 
 実行時にターゲットがアタッチできなかった場合、イベント セッションを停止し、再起動する必要があります。
 
-```tsql
+```sql
 ALTER EVENT SESSION ... STATE = STOP;
 GO
 ALTER EVENT SESSION ... STATE = START;
