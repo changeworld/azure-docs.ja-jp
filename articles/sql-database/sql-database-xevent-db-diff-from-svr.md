@@ -126,7 +126,7 @@ Microsoft SQL Server では、同様のカタログ ビューは次のように�
 
 簡単な SQL **SELECT** を実行して、使用可能なイベント、アクション、ターゲットのリストを取得できます。
 
-```tsql
+```sql
 SELECT
         o.object_type,
         p.name         AS [package_name],

@@ -32,7 +32,7 @@ az acs show -g myResourceGroup -n containerservice-myACSName
 たとえば、前のクラスターのエージェント数を 10 に変更するには、次のコマンドを入力します。
 
 ```azurecli
-azure acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
+az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
 Azure CLI 2.0 は、新しいエージェント数を含む、コンテナー サービスの新しい構成を表す JSON 文字列を返します。
