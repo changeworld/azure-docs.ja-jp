@@ -45,8 +45,11 @@
 ## スケール
 ###[別のサイズとレベルに更新する](cache-how-to-scale.md)
 ###[Redis クラスターを使用してスケールイン/スケールアウトする](cache-how-to-premium-clustering.md)
+## Spring Boot との統合
+###[Redis Cache で Spring Boot Initializer アプリを使用する](cache-java-spring-boot-initializer-with-redis-cache.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=redis-cache)
 ## [PowerShell](/powershell/module/azurerm.rediscache)
 ## [Azure CLI 2.0 プレビュー](/cli/azure/redis)
 ## [.NET](/dotnet/api/microsoft.azure.management.redis)

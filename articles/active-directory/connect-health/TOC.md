@@ -12,6 +12,7 @@
 ## [同期中のエラー](../active-directory-aadconnect-troubleshoot-sync-errors.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
 
 # 関連項目
@@ -22,4 +23,4 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ##[Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
-
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

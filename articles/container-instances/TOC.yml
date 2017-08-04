@@ -29,9 +29,15 @@
       href: container-instances-multi-container-group.md
     - name: Azure ファイル共有による状態の管理
       href: container-instances-mounting-azure-files-volume.md
+- name: リファレンス
+  items:
+    - name: Azure CLI 2.0
+      href: /cli/azure/container
 - name: リソース
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
     - name: 利用可能なリージョン
       href: 'https://azure.microsoft.com/regions/services/'

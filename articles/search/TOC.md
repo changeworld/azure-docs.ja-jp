@@ -68,6 +68,7 @@
 
 # リファレンス
 
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=search)
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
 ## [.NET (管理)](/dotnet/api/?term=microsoft.azure.management.search)
 ## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
@@ -78,6 +79,7 @@
 ## [API のバージョン](search-api-versions.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=search)
 ## コースウェアとチュートリアル

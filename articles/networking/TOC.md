@@ -64,6 +64,7 @@
 ## [コミュニティ テンプレート](https://azure.microsoft.com/resources/templates/)
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 ## [料金](https://azure.microsoft.com/pricing)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=virtual-network)

@@ -99,7 +99,6 @@
 #### [Java トポロジでイベントを処理する](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [トポロジで Power BI を使用する](hdinsight-storm-power-bi-topology.md)
 #### [リアルタイム センサー データを分析する](hdinsight-storm-sensor-data-analysis.md)
-#### [車両センサー データを処理する](hdinsight-storm-iot-eventhub-documentdb.md)
 #### [一定期間に発生したイベントを関連付ける](hdinsight-storm-correlation-topology.md)
 #### [Python を使用してトポロジを開発する](hdinsight-storm-develop-python-topology.md)
 ## ドメイン参加済み HDInsight の使用 (プレビュー)
@@ -137,6 +136,7 @@
 ### [Hive で Web サイトのログを分析する](hdinsight-hive-analyze-website-log.md)
 ### [Application Insights Telemetry ログを分析する](hdinsight-spark-analyze-application-insight-logs.md)
 ## クラスターを拡張する
+### [セキュリティで保護された有効なストレージ アカウントを使用する](hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md)
 ### [ブートストラップを使用してクラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-bootstrap.md)
 ### [スクリプト アクションを使用したクラスターのカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)
 ### [オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)
@@ -207,6 +207,7 @@
 #### [Hive クエリの最適化](hdinsight-hadoop-optimize-hive-query.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight)
 ## [PowerShell](/powershell/module/azurerm.hdinsight)
 ## [.NET (Hadoop)](https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet)
 ## [.NET (HBase)](https://www.nuget.org/packages/Microsoft.HBase.Client/)
@@ -240,4 +241,5 @@
 ## [フォーラムで質問する](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight)
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/)
 ## [ビッグ データに関する Microsoft プロフェッショナル プログラム](https://academy.microsoft.com/en-us/professional-program/big-data/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [HDInsight 用の Windows ツール](hdinsight-hadoop-windows-tools.md)

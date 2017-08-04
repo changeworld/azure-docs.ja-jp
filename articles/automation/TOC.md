@@ -28,7 +28,6 @@
 ## 自動化
 ### [Runbook を開始する](automation-starting-a-runbook.md)
 ### [webhook から Runbook を開始する](automation-webhooks.md)
-### [Hybrid Runbook Worker で Runbook を実行する](automation-hybrid-runbook-worker.md)
 ### [Runbook の入力パラメーターを構成する](automation-runbook-input-parameters.md)
 ### [グラフィック Runbook でのエラー処理](automation-runbook-graphical-error-handling.md)
 ### [Runbook ジョブの追跡](automation-runbook-execution.md)
@@ -36,6 +35,9 @@
 ### [Azure Automation データの管理](automation-managing-data.md)
 ### [Log Analytics アラートから Azure Automation Runbook を呼び出す](automation-invoke-runbook-from-omsla-alert.md)
 ### [Azure Automation Runbook に JSON オブジェクトを渡す](automation-pass-json-string.md)
+## Hybrid Runbook Worker
+### [Hybrid Runbook Worker のデプロイ](automation-hybrid-runbook-worker.md)
+### [worker での Runbook の実行](automation-hrw-run-runbooks.md)
 ## 構成管理のデプロイ (DSC)
 ### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)
@@ -87,6 +89,7 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/automation/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureautomation)  
 ## [料金](https://azure.microsoft.com/pricing/details/automation/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](https://azure.microsoft.com/updates/?product=automation)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=automation)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-automation)

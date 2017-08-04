@@ -146,6 +146,9 @@
 ### [ストリーミング ログとコンソール](../app-service-web/web-sites-streaming-logs-and-console.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ### [Visual Studio を使用したトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md?toc=%2fazure%2fapp-service%2ftoc.json)
 
+# リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=app-service)
+
 # リソース
 ## [App Service のリファレンス](../app-service-web/app-service-changes-existing-services.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [Azure ポータル](../app-service-web/app-service-web-app-azure-portal.md?toc=%2fazure%2fapp-service%2ftoc.json)
@@ -153,6 +156,7 @@
 ## [ベスト プラクティス](../app-service-web/app-service-best-practices.md?toc=%2fazure%2fapp-service%2ftoc.json)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazurewebsitespreview)  
 ## [料金](https://azure.microsoft.com/pricing/details/app-service/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [REST ()](https://docs.microsoft.com/rest/api/appservice/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=app-service) 
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=app-service) 

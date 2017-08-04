@@ -59,6 +59,7 @@
 ### [トラブルシューティング](azure-diagnostics-troubleshooting.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=monitor)
 ## [監視データのソース](monitoring-data-sources.md)
 ## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
 ## [アクティビティ ログのイベント スキーマ](monitoring-activity-log-schema.md)
@@ -74,5 +75,6 @@
 ## [Azure CLI 1.0 のサンプル](insights-cli-samples.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [PowerShell のサンプル](insights-powershell-samples.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=monitor)
 ## [クイック スタート テンプレート](https://azure.microsoft.com/en-us/resources/templates/?resourceType=Microsoft.Insights)

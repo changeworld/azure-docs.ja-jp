@@ -7,10 +7,11 @@
 
 # 作業開始
 ## [テンプレートをエクスポートする](resource-manager-export-template.md)
-## [最初のテンプレートを作成する](resource-manager-create-first-template.md)
+## [テンプレートを作成してデプロイする](resource-manager-create-first-template.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # サンプル
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
 ## PowerShell
 ### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
 
@@ -102,6 +103,7 @@
 ### [配列とオブジェクトの関数](resource-group-template-functions-array.md)
 ### [比較関数](resource-group-template-functions-comparison.md)
 ### [デプロイ関数](resource-group-template-functions-deployment.md)
+### [論理関数](resource-group-template-functions-logical.md)
 ### [数値関数](resource-group-template-functions-numeric.md)
 ### [リソース関数](resource-group-template-functions-resource.md)
 ### [文字列関数](resource-group-template-functions-string.md)
@@ -129,6 +131,7 @@
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=azure-resource-manager)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-resource-manager)
 ## [スロットル リクエスト](resource-manager-request-limits.md)

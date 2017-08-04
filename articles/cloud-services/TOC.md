@@ -107,6 +107,7 @@
 #### [デプロイに関するよくあるご質問](cloud-services-deployment-faq.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cloud-services)
 ## [.csdef XMLSchema](https://msdn.microsoft.com/library/azure/ee758711)
 ## [.cscfg XMLSchema](https://msdn.microsoft.com/library/azure/ee758710)
 ## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
@@ -116,5 +117,6 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/cloud-services/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=windowsazuredevelopment)
 ## [料金](https://azure.microsoft.com/pricing/details/cloud-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=cloud-services&updatetype=&platform=)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=cloud-services)

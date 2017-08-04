@@ -42,6 +42,7 @@
 ## 構成
 ### Azure
 #### [プロファイラー](app-insights-profiler.md)
+#### [プロファイラーを有効にする](enable-profiler-cloud-services.md)
 #### [診断](app-insights-azure-diagnostics.md)
 #### [プレビュー](app-insights-previews.md)
 
@@ -140,7 +141,7 @@
 ### [Java](app-insights-java-troubleshoot.md)
 
 # リファレンス
-## [Analytics](app-insights-analytics-reference.md)
+## [Analytics](https://docs.loganalytics.io/)
 ## [.NET](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights)
 ## [Java](/java/api/com.microsoft.applicationinsights)
 ## [JavaScript](https://github.com/Microsoft/ApplicationInsights-JS/blob/master/API-reference.md)
@@ -154,6 +155,7 @@
 ### [メトリック](application-insights-data-model-metric-telemetry.md)
 ### [コンテキスト](application-insights-data-model-context.md)
 ## [テレメトリの関連付け](application-insights-correlation.md)
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=application-insights)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
@@ -161,6 +163,7 @@
 ## [言語とプラットフォーム](app-insights-platforms.md)
 
 ## [料金](https://azure.microsoft.com/pricing/details/application-insights/)  
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 
 ## ニュース
 

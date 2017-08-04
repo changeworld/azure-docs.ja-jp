@@ -40,6 +40,7 @@
 ### [U-SQL プログラミング ガイド](data-lake-analytics-u-sql-programmability-guide.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-analytics)
 ## [PowerShell](/powershell/module/azurerm.datalakeanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.datalake.analytics)
 ## [Node.js](https://www.npmjs.com/package/azure-arm-datalake-analytics)
@@ -53,5 +54,6 @@
 ## [UserVoice に関するフィードバックを送信する](https://feedback.azure.com/forums/327234-data-lake)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureDataLake)
 ## [料金](https://azure.microsoft.com/pricing/details/data-lake-analytics/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-lake-analytics)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-lake)

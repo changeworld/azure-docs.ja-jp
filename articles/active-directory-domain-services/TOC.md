@@ -47,6 +47,9 @@
 ### [プレビューの Azure Portal のエクスペリエンスを有効にする](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [一致しないテナントのエラーを解決する](active-directory-ds-mismatched-tenant-error.md)
 
+# リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
+
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)
 ## [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-overview.md)
@@ -57,4 +60,5 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [お問い合わせ](active-directory-ds-contact-us.md)
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-ds/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-ds)

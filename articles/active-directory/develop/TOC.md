@@ -61,8 +61,9 @@
 ### [Web API プロジェクトの変更点](vs-active-directory-webapi-what-happened.md)
 ## [Windows Server ADFS](https://technet.microsoft.com/windows-server-docs/identity/ad-fs/overview/ad-fs-scenarios-for-developers)
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory)
 ## [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)
-## [コード サンプル](active-directory-code-samples.md)
+## [コード サンプルの記事](active-directory-code-samples.md)
 ## [用語集](active-directory-dev-glossary.md)
 ## [認証プロトコル](active-directory-authentication-protocols.md)
 ### [OpenID Connect](active-directory-protocols-openid-connect-code.md)
@@ -107,3 +108,4 @@
 ### [スコープ](active-directory-v2-scopes.md)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

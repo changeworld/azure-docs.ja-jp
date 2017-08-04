@@ -34,3 +34,4 @@
 ## [サポートを受ける](./cloud-partner-portal-support-for-cloud-partner-portal.md)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

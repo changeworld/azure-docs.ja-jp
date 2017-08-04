@@ -29,6 +29,7 @@
 ### [マルウェアの評価](../log-analytics/log-analytics-malware.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [システムの更新の評価](../log-analytics/log-analytics-system-update.md?toc=%2fazure%2foperations-management-suite%2ftoc.json)
 ### [セキュリティ製品の接続](oms-security-connect-products.md)
+### [Web ベースライン評価](oms-security-web-baseline-assessment.md)
 
 ## ソリューションの使用
 ### [管理ソリューション](operations-management-suite-solutions.md)
@@ -77,3 +78,4 @@
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

@@ -15,3 +15,4 @@
 ### [FAQ](microsoft-authenticator-app-faq.md)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

@@ -8,6 +8,7 @@
 ## [Batch .NET のチュートリアル](batch-dotnet-get-started.md)
 ## [Batch Python のチュートリアル](batch-python-tutorial.md)
 ## [Batch Node.js のチュートリアル](batch-nodejs-get-started.md)
+## [Batch Rendering サービス](batch-rendering-service.md)
 # 方法
 ## 開発
 ### [アプリケーション パッケージ](batch-application-packages.md)
@@ -15,6 +16,7 @@
 ### Azure AD 認証
 #### [Batch サービスでの Azure AD](batch-aad-auth.md)
 #### [Batch Management での Azure AD](batch-aad-auth-management.md)
+### [コンピューティング集中型 VM](batch-pool-compute-intensive-sizes.md)
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
@@ -36,8 +38,8 @@
 #### [アプリケーションを追加する](./scripts/batch-cli-sample-add-application.md)
 #### [プールを管理する](./scripts/batch-cli-sample-manage-pool.md)
 #### [ジョブとタスクを実行する](./scripts/batch-cli-sample-run-job.md)
-
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=batch)
 ## [PowerShell](/powershell/module/azurerm.batch)
 ## [Azure CLI](/cli/azure/batch)
 ## [.NET](/dotnet/api/microsoft.azure.batch)
@@ -69,6 +71,7 @@
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)
 ## [料金](https://azure.microsoft.com/pricing/details/batch/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Python コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/Python/Batch)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=batch&updatetype=&platform=)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-batch)

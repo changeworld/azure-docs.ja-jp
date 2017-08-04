@@ -98,6 +98,7 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リージョン別の提供状況](https://azure.microsoft.com/regions/services/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-machine)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines)
