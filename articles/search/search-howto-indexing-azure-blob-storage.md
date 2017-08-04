@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 04/15/2017
+ms.date: 07/20/2017
 ms.author: eugenesh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 509682297a3db090caa73bd9438f6434257d558f
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 8ed07d7be1d737fac332d9ea82e65fd5e92f89d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -35,12 +35,12 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 * ZIP
 * EML
 * RTF
-* プレーン テキスト ファイル (.txt)
-* JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)のプレビュー機能を参照)
+* プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](#IndexingPlainText)」を参照)
+* JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
 * CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
 
 > [!IMPORTANT]
-> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2015-02-28-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
+> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2016-09-01-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
 >
 >
 
@@ -342,11 +342,31 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 ## <a name="indexing-documents-along-with-related-data"></a>ドキュメントと関連データを併せたインデックスを作成する
 
-ドキュメントには、次のいずれかの場所に構造化データとして格納されているメタデータ (ドキュメントを作成した部門など) が関連付けられている場合があります。
--   SQL Database や Azure Cosmos DB などの別のデータ ストア。
--   Azure Blob Storage 内の各ドキュメントにカスタム メタデータとして直接接続されている  (詳細については、「[Setting and Retrieving Properties and Metadata for Blob Resources (BLOB リソースのプロパティとメタデータの設定と取得)](https://docs.microsoft.com/rest/api/storageservices/setting-and-retrieving-properties-and-metadata-for-blob-resources)」を参照してください)。
+インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
 
-各ドキュメントとそのメタデータに同じ一意のキー値を割り当て、各インデクサーに `mergeOrUpload` アクションを指定することで、ドキュメントとメタデータを併せたインデックスを作成することができます。 このソリューションの詳細については、外部資料「[Combine documents with other data in Azure Search (ドキュメントを Azure Search の他のデータと組み合わせる)](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」を参照してください。
+これが機能するには、すべてのインデクサーと他のコンポーネントがドキュメント キーに同意する必要があります。 このソリューションのチュートリアルについて詳しくは、外部資料「[Combine documents with other data in Azure Search](http://blog.lytzen.name/2017/01/combine-documents-with-other-data-in.html)」(ドキュメントを Azure Search の他のデータと組み合わせる) をご覧ください。
+
+<a name="IndexingPlainText"></a>
+## <a name="indexing-plain-text"></a>プレーンテキストのインデックス作成 
+
+すべての BLOB に同じエンコードのプレーンテキストが含まれている場合、**テキスト解析モード**を使用してインデックス作成のパフォーマンスを大幅に改善できます。 テキスト解析モードを使用するには、`parsingMode` 構成プロパティを `text` に設定します。
+
+    PUT https://[service name].search.windows.net/indexers/[indexer name]?api-version=2016-09-01
+    Content-Type: application/json
+    api-key: [admin key]
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text" } }
+    }
+
+既定では、`UTF-8` エンコードが想定されます。 別のエンコードを指定するには、`encoding` 構成パラメーターを使用します。 
+
+    {
+      ... other parts of indexer definition
+      "parameters" : { "configuration" : { "parsingMode" : "text", "encoding" : "windows-1252" } }
+    }
+
 
 <a name="ContentSpecificMetadata"></a>
 ## <a name="content-type-specific-metadata-properties"></a>コンテンツの種類ごとのメタデータのプロパティ

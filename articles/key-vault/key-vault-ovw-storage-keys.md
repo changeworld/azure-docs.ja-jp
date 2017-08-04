@@ -1,25 +1,28 @@
 ---
 ms.assetid: 
 title: "Azure Key Vault ストレージ アカウント キー"
+description: "ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー アクセス間をシームレスに統合します。"
+ms.topic: article
+services: key-vault
 ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 06/8/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: cc00433604adefec86ac43ded9bc5f09038b6a1d
+ms.date: 07/10/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b30f9601725cdf568f0f2e18bebdc4ae86a616f6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
-Azure Key Vault ストレージ アカウント キーがなかったときは、開発者は自分たちの Azure Storage アカウント (ASA) キーを管理し、手動または外部オートメーションによって回す必要がありました。 現在は、Azure Key Vault ストレージ アカウント キーは [Key Vault シークレット](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets)として実装され、Azure Storage アカウントで認証するようになりました。 
+Azure Key Vault ストレージ アカウント キーがなかったときは、開発者は自分たちの Azure Storage アカウント (ASA) キーを管理し、手動または外部オートメーションによって回す必要がありました。 現在は、Key Vault ストレージ アカウント キーは [Key Vault シークレット](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets)として実装され、Azure Storage アカウントで認証するようになりました。 
 
-Key Vault ASA キーの機能は、シークレット回転を管理することにより付加価値を提供します。 また、Shared Access Signature (SAS) をメソッドとして提供することにより、Azure Storage アカウント キーを直接扱う必要がなくなりました。 
+ASA のキー機能がユーザーの代わりにシークレット ローテーションを管理します。また、Shared Access Signature (SAS) をメソッドとして提供することにより、ASA キーを直接扱う必要がなくなりました。 
 
-Azure Storage アカウントの概要情報については、「[ アカウントについて](https://docs.microsoft.com/azure/storage/storage-create-storage-account)」をご覧ください。
+Azure Storage アカウントの概要情報については、「[Azure Storage アカウントについて](https://docs.microsoft.com/azure/storage/storage-create-storage-account)」をご覧ください。
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
@@ -37,7 +40,7 @@ Key Vault では、ストレージ アカウント キーを使用するとき�
     - キーの値は、呼び出し元に応答で返されることはありません。 
     - Azure Key Vault では、ストレージ アカウントと従来のストレージ アカウントの両方のキーを管理します。 
 2. Azure Key Vault では、コンテナーやオブジェクトの所有者は SAS (アカウントまたはサービス SAS) 定義を作成できます。 
-    - SAS 値は SAS 定義を使用して作成され、REST URI パスを経由してシークレットとして返されます。
+    - SAS 値は SAS 定義を使用して作成され、REST URI パスを経由してシークレットとして返されます。 詳しくは、「[Azure Key Vault storage account operations](https://docs.microsoft.com/rest/api/keyvault/storage-account-key-operations)」(Azure Key Vault ストレージ アカウントの操作) をご覧ください。
 
 ### <a name="naming-guidance"></a>名前付けのガイダンス
 
@@ -66,7 +69,7 @@ var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSett
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  
 -AccountName msak01 -Name blobsas1 -Protocol HttpsOrHttp -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
 
-//Get SAS token from Key Vault //....
+//Get SAS token from Key Vault
 
 var secret = await kv.GetSecretAsync("SecretUri");
 
@@ -80,34 +83,40 @@ var accountWithSas = new CloudStorageAccount(accountSasCredential, new Uri ("htt
 
 var blobClientWithSas = accountWithSas.CreateCloudBlobClient(); 
  
-// If SAS token is about to expire then Get sasToken again from Key Vault 
-//.... 
- 
-// and update the accountSasCredential.UpdateSASToken(sasToken); 
- ```
+// If SAS token is about to expire then Get sasToken again from Key Vault and update it.
+
+accountSasCredential.UpdateSASToken(sasToken);
+
+  ```
  
  ### <a name="developer-best-practices"></a>開発者のベスト プラクティス 
 
-- ASA キー管理には Key Vault のみを許可します。 手動による管理は Key Vault のプロセスと干渉するため、自分で管理しようとしないでください。 
-- 複数のキー コンテナー オブジェクトによって ASA キーを管理しないでください。 
+- ASA キーの管理は、Key Vault のみを許可します。 Key Vault のプロセスと干渉するため、自身で管理しないでください。 
+- 複数の Key Vault オブジェクトによって ASA キーを管理しないでください。 
 - ASA キーを手動で再生成する必要がある場合は、Key Vault を使用して ASA キーを再生成することをお勧めします。 
 
 ## <a name="getting-started"></a>使用の開始
 
 ### <a name="setup-for-role-based-access-control-permissions"></a>ロールベースのアクセス制御の権限設定
 
-Key Vault では、ストレージ アカウントのキーを一覧表示し再生成する権限が必要です。 これは、次の手順で設定します。
+Key Vault では、ストレージ アカウントのキーを一覧表示し再生成する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
 
-1. このコマンドで KV の ObjectId を取得します。`Get-AzureRmADServicePrincipal -SearchString "AzureKeyVault"`  
- 
-2. Azure Key Vault ID に “Storage Key Operator” ロールを割り当てます。`New-AzureRmRoleAssignment -ObjectId <objectId of AzureKeyVault from previous command> -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '<azure resource id of storage account>'` 
+- Key Vault の ObjectId を取得します。 
 
->[!NOTE]
-> 従来のアカウントには、ロールのパラメーターを *"Classic Storage Account Key Operator Service Role"* と設定します。 
+    `Get-AzureRmADServicePrincipal -SearchString "AzureKeyVault"`
+
+- Azure Key Vault ID に Storage Key Operator ロールを割り当てます。 
+
+    `New-AzureRmRoleAssignment -ObjectId <objectId of AzureKeyVault from previous command> -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '<azure resource id of storage account>'`
+
+    >[!NOTE]
+    > 従来の種類のアカウントには、ロールのパラメーターを *"Classic Storage Account Key Operator Service Role"* と設定します。
 
 ### <a name="storage-account-onboarding"></a>ストレージ アカウントのオンボード 
 
-オンボード例: キー コンテナー オブジェクトの所有者は、 ストレージ アカウントをオンボードするために、AzKV 上のストレージ アカウント オブジェクトを追加します。
+#### <a name="example"></a>例
+
+キー コンテナー オブジェクトの所有者は、ストレージ アカウントをオンボードするために、AzKV 上のストレージ アカウント オブジェクトを追加します。
 
 オンボード時に Key Vault は、アカウントにオンボードする ID に、ストレージ キーの*一覧表示*と*再生成*のアクセス権があることを確認する必要があります。 Key Vault は、Azure Resource Manager としての対象とともに EvoSTS から OBO トークンを取得し、Storage RP へのキー一覧表示の呼び出しを行います。 一覧表示の呼び出しが失敗すると、Key Vault オブジェクトの作成が*禁止*の http 状態コードで失敗します。 この方法で表示されるキーは、キー コンテナー エンティティ ストレージでキャッシュされます。 
 
@@ -118,8 +127,7 @@ Key Vault では、ID がキー再生成の所有権を取得する前に、そ�
 
 以下は参考例です。 
 
-- 例: [VipSwapper](https://github.com/dushyantgill/VipSwapper/blob/master/CloudSense/CloudSense/AzureResourceMan agerUtil.cs) 
-- 例: [hasPermission](https://msazure.visualstudio.com/One/_search?type=Code&lp=searchproject&text=hasPermissions&result=DefaultCollection%2FOne%2FAzureUXPortalFx%2FGBdev%2F%2Fsrc%2FSDK%2FFramework.Client%2FTypeScript%2FFxHubs%2FPermissions.ts &filters=ProjectFilters%7BOne%7DRepositoryFilters%7BAzureUX-PortalFx%7D&_a=search) 
+- [GitHub のサンプル](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)例 
 
 OBO トークン経由の ID に*再生成*の権限がない場合、あるいは Key Vault のファースト パーティ ID に*一覧表示*または*再生成*の権限がない場合、オンボード要求は失敗し、適切なエラー コードとメッセージを返します。 
 
