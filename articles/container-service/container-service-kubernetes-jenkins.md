@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: briar
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 3d206ebb6deeaa40f8e792ec12304c99c0abe684
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dfbf4d90bed4e60cc6c1663ee3743b320319a881
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -58,9 +58,9 @@ CLUSTER_NAME=any-acs-cluster-name
 
 az acs create \
 --orchestrator-type=kubernetes \
---resource-group $RESOURCE_GROUP \ 
+--resource-group $RESOURCE_GROUP \
 --name=$CLUSTER_NAME \
---dns-prefix=$DNS_PREFIX \ 
+--dns-prefix=$DNS_PREFIX \
 --ssh-key-value ~/.ssh/id_rsa.pub \
 --admin-username=azureuser \
 --master-count=1 \
@@ -71,18 +71,17 @@ az acs create \
 ## <a name="set-up-jenkins-and-configure-access-to-container-service"></a>Jenkins をセットアップして Container Service へのアクセスを構成する
 
 ### <a name="step-1-install-jenkins"></a>手順 1: Jenkins をインストールする
-1. Ubuntu 16.04 LTS がインストールされている Azure VM を作成します。 
-2. こちらの[手順](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu)に従って、Jenkins をインストールします。
-3. さらに詳細なチュートリアルは、[howtoforge.com](https://www.howtoforge.com/tutorial/how-to-install-jenkins-with-apache-on-ubuntu-16-04) にあります。
-4. ポート 8080 を許可するよう Azure ネットワーク セキュリティ グループを更新し、ブラウザーで Jenkins を管理するためにポート 8080 でパブリック IP を参照します。
-5. 初期の Jenkins 管理パスワードは、/var/lib/jenkins/secrets/initialAdminPassword に保存されています。
-6. こちらの[手順](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts)に従って、Jenkins コンピューターに Docker をインストールします。 これで、Docker コマンドを Jenkins ジョブで実行できるようになります。
-7. Jenkins からエンドポイントにアクセスできるように Docker のアクセス許可を構成します。
+1. Ubuntu 16.04 LTS がインストールされている Azure VM を作成します。  後半の手順で、ローカル マシンでバッシュを利用し、この VM に接続し、'認証の種類' を 'SSH 公開キー' に設定し、ローカルの ~/.ssh フォルダーに保存されている SSH 公開キーを貼り付ける必要があります。  また、指定した 'ユーザー名' をメモしておきます。Jenkins ダッシュボードを表示するためと Jenkins VM に接続するために後の手順でこのユーザー名が必要になります。
+2. こちらの[手順](https://wiki.jenkins-ci.org/display/JENKINS/Installing+Jenkins+on+Ubuntu)に従って、Jenkins をインストールします。 さらに詳細なチュートリアルは、[howtoforge.com](https://www.howtoforge.com/tutorial/how-to-install-jenkins-with-apache-on-ubuntu-16-04) にあります。
+3. ローカル マシンで Jenkins ダッシュボードを表示するには、Azure ネットワーク セキュリティ グループを更新し、ポート 8080 を許可します。ポート 8080 へのアクセスを許可する受信ルールを追加します。  あるいは、コマンド `ssh -i ~/.ssh/id_rsa -L 8080:localhost:8080 <your_jenkins_user>@<your_jenkins_public_ip` を実行し、ポート フォワーディングを設定することもできます。
+4. パブリック IP (http://<your_jenkins_public_ip>:8080) に移動し、ブラウザーで Jenkins サーバーに接続し、初回の管理パスワードを使い、Jenkins ダッシュボードを最初のロック解除を行います。  管理パスワードは、Jenkins VM の /var/lib/jenkins/secrets/initialAdminPassword に保存されています。  Jenkins VM に SSH を実行すれば、このパスワードを簡単に取得できます。コマンドは `ssh <your_jenkins_user>@<your_jenkins_public_ip>` です。  次に、`sudo cat /var/lib/jenkins/secrets/initialAdminPassword` を実行します。
+5. こちらの[手順](https://docs.docker.com/cs-engine/1.13/#install-on-ubuntu-1404-lts-or-1604-lts)に従って、Jenkins コンピューターに Docker をインストールします。 これで、Docker コマンドを Jenkins ジョブで実行できるようになります。
+6. Jenkins から Docker エンドポイントにアクセスできるように Docker のアクセス許可を構成します。
 
     ```bash
     sudo chmod 777 /run/docker.sock
     ```
-8. Jenkins に `kubectl` CLI をインストールします。 詳細については、「[Installing and Setting up kubectl (kubectl のインストールとセットアップ)](https://kubernetes.io/docs/tasks/kubectl/install/)」を参照してください。
+8. Jenkins に `kubectl` CLI をインストールします。 詳細については、「[Installing and Setting up kubectl (kubectl のインストールとセットアップ)](https://kubernetes.io/docs/tasks/kubectl/install/)」を参照してください。  Jenkins ジョブは 'kubectl' を利用して Kubernetes クラスターを管理し、それにデプロイします。
 
     ```bash
     curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt)/bin/linux/amd64/kubectl
@@ -98,21 +97,19 @@ az acs create \
 > 次の手順を行う方法は複数あります。 自身にとって最も簡単な方法を使用してください。
 >
 
-1. `kubectl` 構成ファイルを Jenkins コンピューターにコピーします。
+1. Jenkins ジョブが Kubernetes クラスターにアクセスできるように、Jenkins マシンに構成ファイル `kubectl` をコピーします。 この手順では、Jenkins VM とは違うマシンからバッシュを使用していること、ローカル SSH 公開キーがマシンの ~/.ssh フォルダーに保存されていることを前提にしています。
 
-    ```bash
-    export KUBE_MASTER=<your_cluster_master_fqdn>
+```bash
+export KUBE_MASTER=<your_cluster_master_fqdn>
+export JENKINS_USER=<your_jenkins_user>
+export JENKINS_SERVER=<your_jenkins_public_ip>
+sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir -m 777 /home/$JENKINS_USER/.kube/ \
+&& sudo ssh $JENKINS_USER@$JENKINS_SERVER sudo mkdir /var/lib/jenkins/.kube/ \
+&& sudo scp -3 -i ~/.ssh/id_rsa azureuser@$KUBE_MASTER:.kube/config $JENKINS_USER@$JENKINS_SERVER:~/.kube/config \
+&& sudo ssh -i ~/.ssh/id_rsa $JENKINS_USER@$JENKINS_SERVER sudo cp /home/$JENKINS_USER/.kube/config /var/lib/jenkins/.kube/config \
+```
         
-    sudo scp -3 -i ~/.ssh/id_rsa azureuser@$KUBE_MASTER:.kube/config user@<your_jenkins_server>:~/.kube/config
-        
-    sudo ssh user@<your_jenkins_server> sudo chmod 777 /home/user/.kube/config
-
-    sudo ssh -i ~/.ssh/id_rsa user@<your_jenkins_server> sudo chmod 777 /home/user/.kube/config
-        
-    sudo ssh -i ~/.ssh/id_rsa user@<your_jenkins_server> sudo cp /home/user/.kube/config /var/lib/jenkins/config
-    ```
-        
-2. Jenkins から、Kubernetes クラスターにアクセスできることを検証します。
+2. Jenkins から、Kubernetes クラスターにアクセスできることを検証します。  Jenkins VM に SSH を実行します。コマンドは `ssh <your_jenkins_user>@<your_jenkins_public_ip>` です。  次に、Jenkins がクラスターに接続できることを確認します。コマンドは `kubectl cluster-info` です。
     
 
 ## <a name="create-a-jenkins-workflow"></a>Jenkins ワークフローを作成する
@@ -121,7 +118,8 @@ az acs create \
 
 - コード リポジトリの GitHub アカウント。
 - イメージを格納および更新するための Docker Hub アカウント。
-- リビルドおよび更新が可能な、コンテナー化されたアプリケーション。 Golang で記述された、このサンプル コンテナー アプリ (https://github.com/chzbrgr71/go-web) を使用することができます。
+- リビルドおよび更新が可能な、コンテナー化されたアプリケーション。 Golang で記述された、このサンプル コンテナー アプリ (https://github.com/chzbrgr71/go-web) を使用することができます。 
+
 > [!NOTE]
 > 以下の手順は、所有する GitHub アカウントで実行する必要があります。 上記のリポジトリを自由に複製できますが、webhook と Jenkins のアクセスを構成するには自身のアカウントを使用する必要があります。
 >

@@ -1,25 +1,7 @@
----
-title: "Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs"
-description: "この記事では、Azure Site Recovery を使って Active Directory の障害復旧ソリューションを実装する方法について説明します。"
-services: site-recovery
-documentationcenter: 
-author: prateek9us
-manager: gauravd
-editor: 
-ms.assetid: af1d9b26-1956-46ef-bd05-c545980b72dc
-ms.service: site-recovery
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: storage-backup-recovery
-ms.date: 3/17/2017
-ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 9b2e78ff55ed23732892d605f3edef6a5afdf7ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+7--- title: Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs description: この記事では、Azure Site Recovery を使用して Active Directory のディザスター リカバリー ソリューションを実装する方法について説明します。
+services: site-recovery documentationcenter: '' author: prateek9us manager: gauravd editor: ''
 
+ms.assetid: af1d9b26-1956-46ef-bd05-c545980b72dc ms.service: site-recovery ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: storage-backup-recovery ms.date: 7/20/2017 ms.author: pratshar
 
 ---
 # <a name="protect-active-directory-and-dns-with-azure-site-recovery"></a>Azure Site Recovery で Active Directory と DNS を保護する
@@ -83,8 +65,7 @@ Site Recovery でドメイン コントローラー/DNS 仮想マシンの保護
 1. 分離されたネットワークを作成します。 既定では、Azure で作成されるすべての仮想ネットワークは、その他のネットワークから分離します。 このネットワークの IP アドレス範囲は、運用ネットワークと同じものを使用することをお勧めします。 このネットワーク上でサイト間接続を有効化しないでください。
 1. DNS 仮想マシンに取得させる IP アドレスとして、作成したネットワークに DNS の IP アドレスを指定します。 レプリケート先として Azure を使っている場合は、フェールオーバーで使われる VM の IP アドレスを **[コンピューティングとネットワーク]** の設定の **[ターゲット IP]** の設定で指定します。 
 
-    ![ターゲット IP](./media/site-recovery-active-directory/DNS-Target-IP.png)
-    **ターゲット IP**
+    ![ターゲット IP](./media/site-recovery-active-directory/DNS-Target-IP.png) **ターゲット IP**
 
     ![Azure テスト ネットワーク](./media/site-recovery-active-directory/azure-test-network.png)
 
@@ -211,5 +192,4 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 ## <a name="next-steps"></a>次のステップ
 Azure Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。
-
 

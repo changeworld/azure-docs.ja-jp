@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 3337e3ad36792c1dcd0eaf183a2b695503b8f02c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: e1eff2abf8512870661cbe539bd34aa5c33ded14
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -45,7 +44,7 @@ Azure Service Fabric クラスターを実行している場合、1 か所です
 
 ## <a name="log-and-event-sources"></a>ログとイベントのソース
 
-### <a name="service-fabric-infrastructure-events"></a>Service Fabric インフラストラクチャ イベント
+### <a name="service-fabric-platform-events"></a>Service Fabric プラットフォームのイベント
 [こちらの記事](service-fabric-diagnostics-event-generation-infra.md)で説明するように、Service Fabric にはすぐに使用できるログ チャネルがいくつか用意されています。そのうち、次のチャネルは、監視および診断データをストレージ テーブルや他の場所に送信するように WAD で簡単に構成できます。
   * 操作イベント: Service Fabric プラットフォームで実行される高度な操作です。 たとえば、アプリケーションとサービスの作成、ノードの状態変化、アップグレード情報などです。 これらは Event Tracing for Windows (ETW) ログとして出力されます。
   * [Reliable Actors プログラミング モデル イベント](service-fabric-reliable-actors-diagnostics.md)

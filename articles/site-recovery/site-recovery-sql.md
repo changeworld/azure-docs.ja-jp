@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: pratshar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 49bac93758cb35dc1aa39c0aaf58f239d9667e77
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a1e5461ef2188a42a3edd6cc35827874ddd6e3f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="protect-sql-server-using-sql-server-disaster-recovery-and-azure-site-recovery"></a>SQL Server 障害復旧および Azure Site Recovery を使用した SQL Server の保護
@@ -56,6 +55,7 @@ Site Recovery は、次の表のように SQL Server を保護できます。
 ### <a name="supported-sql-server-versions"></a>サポートされる SQL Server のバージョン
 これらの SQL Server バージョンは、サポートされるシナリオに対応しています。
 
+* SQL Server 2016 Enterprise および Standard
 * SQL Server 2014 Enterprise および Standard
 * SQL Server 2012 Enterprise および Standard
 * SQL Server 2008 R2 Enterprise および Standard

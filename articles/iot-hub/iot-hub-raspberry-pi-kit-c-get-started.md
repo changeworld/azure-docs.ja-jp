@@ -1,10 +1,10 @@
 ---
 title: "Raspberry Pi から クラウドへ (C) - Raspberry Pi の Azure IoT Hub への接続 | Microsoft Docs"
-description: "Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウドにデータを送信します。"
+description: "このチュートリアルでは、Raspberry Pi を Azure IoT Hub に接続し、Raspberry Pi で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot raspberry pi, raspberry pi iot hub, raspberry pi でクラウドにデータを送信する raspberry pi からクラウドへ"
 ms.assetid: 68c0e730-1dc8-4e26-ac6b-573b217b302d
@@ -13,15 +13,14 @@ ms.devlang: c
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 6/15/2017
+ms.date: 7/12/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: b7c328ac622190d64ea1b07ee459c7f8f5d1e0f4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 244d665d4981cde838217701767be6d394fe8dc5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -113,7 +112,7 @@ SSH および SPI を有効にする場合は、[raspberrypi.org](https://www.ra
 
 ![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-c-get-started/3_raspberry-pi-sensor-connection.png)
 
-BME280 センサーでは、温度と湿度のデータを収集できます。 また、デバイスとクラウドの間で通信が行われると、LED が点滅します。 
+BME280 センサーでは、温度と湿度のデータを収集できます。 また、デバイスとクラウドとの間で通信が行われると、LED が点滅します。 
 
 センサーの各ピンで、次のように接続します。
 
@@ -154,7 +153,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    grep -q -F 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA6A393E4C2257F
    sudo apt-get update
-   sudo apt-get install -y azure-iot-sdk-c-dev cmake
+   sudo apt-get install -y azure-iot-sdk-c-dev cmake libcurl4-openssl-dev git-core
+   git clone git://git.drogon.net/wiringPi
+   cd ./wiringPi
+   ./build
    ```
 
 
@@ -168,7 +170,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 1. 次のコマンドを実行して、config ファイルを開きます。
 
    ```bash
-   cd iot-hub-c-raspberry-pi-client-app
+   cd iot-hub-c-raspberrypi-client-app
    nano config.h
    ```
 

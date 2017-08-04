@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: f98b876658c3257ad2b9162dea053f879ba1f1f0
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 57379d318ab01310388f55c8ec0b9751e909cb9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="map-an-existing-custom-dns-name-to-azure-web-apps"></a>既存のカスタム DNS 名を Azure Web Apps にマップする
@@ -39,7 +39,9 @@ ms.lasthandoff: 06/23/2017
 **CNAME レコード**または **A レコード**のいずれかを使用して、カスタム DNS 名を App Service にマップします。 
 
 > [!NOTE]
-> ルート ドメイン (`contoso.com` など) を除くすべてのカスタム DNS 名に CNAME を使用することをお勧めします。 
+> ルート ドメイン (`contoso.com` など) を除くすべてのカスタム DNS 名に CNAME を使用することをお勧めします。
+
+ライブ サイトとその DNS ドメイン名を App Service に移行する方法については、「[Azure App Service へのアクティブな DNS 名の移行](app-service-custom-domain-name-migrate.md)」をご覧ください。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -69,6 +71,8 @@ Web アプリにカスタム DNS 名をマップするには、Web アプリの 
 
 App Service アプリの管理ページが表示されます。  
 
+<a name="checkpricing"></a>
+
 ### <a name="check-the-pricing-tier"></a>価格レベルの確認
 
 アプリ ページの左側のナビゲーションで、**[設定]** セクションまでスクロールし、**[スケール アップ (App Service のプラン)]** を選択します。
@@ -80,6 +84,8 @@ App Service アプリの管理ページが表示されます。
 ![価格レベルの確認](./media/app-service-web-tutorial-custom-domain/check-pricing-tier.png)
 
 App Service プランが **Free** ではない場合は、**[価格レベルの選択]** ページを閉じて、[[Map a CNAME record]\(CNAME レコードをマップ\)](#cname) にスキップします。
+
+<a name="scaleup"></a>
 
 ### <a name="scale-up-the-app-service-plan"></a>App Service プランをスケール アップする
 
@@ -99,22 +105,7 @@ Free 以外のレベル (**Shared**、**Basic**、**Standard**、または **Pre
 
 このチュートリアルの例では、`www` サブドメイン (たとえば `www.contoso.com`) の CNAME レコードを追加します。
 
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、プロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、DNS レコードの管理ページを見つけるには、アカウント情報を表示し、**[ドメイン]**などのリンクを探します。 そのページに移動し、**[ゾーン ファイル]**、**[DNS レコード]**、**[詳細構成]** のような名前のリンクを探します。
-
-以下のスクリーンショットは、DNS レコードの管理ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクを選択するまで DNS レコードの変更が反映されません。 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 
@@ -178,22 +169,7 @@ Azure Portal のアプリ ページの左側のナビゲーションで、**[カ
 
 ![Azure アプリへのポータル ナビゲーション](./media/app-service-web-tutorial-custom-domain/mapping-information.png)
 
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、プロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、DNS レコードの管理ページを見つけるには、アカウント情報を表示し、**[ドメイン]**などのリンクを探します。 そのページに移動し、**[ゾーン ファイル]**、**[DNS レコード]**、**[詳細構成]** のような名前のリンクを探します。
-
-以下のスクリーンショットは、DNS レコードの管理ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクを選択するまで DNS レコードの変更が反映されません。 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-a-record"></a>A レコードを作成する
 
@@ -249,22 +225,7 @@ Azure Portal のアプリの **[カスタム ドメイン]** ページに戻り�
 
 このチュートリアルの例では、CNAME レコードを追加して、[ワイルドカード DNS 名](https://en.wikipedia.org/wiki/Wildcard_DNS_record) (たとえば `*.contoso.com`) を App Service アプリにマップします。 
 
-### <a name="access-dns-records-with-domain-provider"></a>ドメイン プロバイダーで DNS レコードにアクセスする
-
-ドメイン プロバイダーの Web サイトにサインインします。
-
-DNS レコードの管理ページを探します。 各ドメイン プロバイダーには独自の DNS レコード インターフェイスがあるので、プロバイダーのドキュメントを参照してください。 **[ドメイン名]**、**[DNS]**、**[ネーム サーバー管理]** というラベルが付いたサイトのリンクまたは領域を探します。 
-
-通常、DNS レコードの管理ページを見つけるには、アカウント情報を表示し、**[ドメイン]**などのリンクを探します。 そのページに移動し、**[ゾーン ファイル]**、**[DNS レコード]**、**[詳細構成]** のような名前のリンクを探します。
-
-以下のスクリーンショットは、DNS レコードの管理ページの例です。
-
-![DNS レコード ページの例](./media/app-service-web-tutorial-custom-domain/example-record-ui.png)
-
-このスクリーンショットの例では、**[追加]** を選択してレコードを作成します。 プロバイダーによっては、追加するレコード タイプごとに異なるリンクが用意されています。 この場合も、プロバイダーのドキュメントを参照してください。
-
-> [!NOTE]
-> 一部のプロバイダー (GoDaddy など) では、別の **[変更を保存]** リンクを選択するまで DNS レコードの変更が反映されません。 
+[!INCLUDE [Access DNS records with domain provider](../../includes/app-service-web-access-dns-records.md)]
 
 ### <a name="create-the-cname-record"></a>CNAME レコードを作成する
 

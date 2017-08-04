@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 06/20/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 8af9ea0a76b9a0606284505195ee3f52b1964604
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d5e63e7079b652e69a089aef495952d29cae67a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -42,7 +41,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを実行するには、最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS) をインストールしておく必要があります。 
+このチュートリアルを完了するには、以下がインストールされていることを確認してください。
+- 最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。
+- 最新バージョンの [BCP と SQLCMD][https://www.microsoft.com/download/details.aspx?id=36433]。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
@@ -110,7 +111,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
    > 以降のクイック スタートでサーバーとそのデータベースに接続するには、この完全修飾サーバー名が必要になります。
    > 
 
-   ![サーバー名](./media/sql-database-get-started-portal/server-name.png) 
+   ![サーバー名](./media/sql-database-connect-query-dotnet/server-name.png) 
 
 2. 前の画像に示されているように、ツール バーの **[サーバー ファイアウォールの設定]** をクリックします。 SQL Database サーバーの **[ファイアウォール設定]** ページが開きます。 
 
@@ -130,7 +131,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** をクリックします。
 
-## <a name="get-connection-information-in-the-azure-portal"></a>Azure Portal で接続情報を取得する
+## <a name="sql-server-connection-information-in-the-azure-portal"></a>Azure Portal での SQL Server の接続情報
 
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
@@ -138,7 +139,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
 
-   ![接続情報](./media/sql-database-get-started-portal/server-name.png)
+   ![接続情報](./media/sql-database-connect-query-dotnet/server-name.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>SSMS を使用してデータベースに接続する
 

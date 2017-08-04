@@ -1,0 +1,26 @@
+
+## <a name="test-querying-the-microsoft-graph-api-from-your-ios-application"></a>iOS アプリケーションから Microsoft Graph API にクエリ実行をテストする
+
+`Command` + `R` を押し、シミュレーターでコードを実行します。
+
+![サンプル画面](media/active-directory-mobileanddesktopapp-ios-test/iostestscreenshot.png)
+
+テストの準備ができたら、*‘Microsoft Graph API の呼び出し’* をタップします。ユーザー名とパスワードを入力するように求められます。
+
+### <a name="consent"></a>同意
+アプリケーションに初めてサインインすると、下記のような同意の画面が表示され、明示的に承認する必要があります。
+
+![同意画面](media/active-directory-mobileanddesktopapp-ios-test/iosconsentscreen.png)
+
+### <a name="expected-results"></a>予想される結果
+*[ログ]* セクションに、Microsoft Graph API の呼び出しによって返されるユーザー プロファイル情報が表示されます。
+
+<!--start-collapse-->
+### <a name="more-information-about-scopes-and-delegated-permissions"></a>スコープと委任されたアクセス許可の詳細
+
+Microsoft Graph API は、ユーザーのプロファイルを読み込むためにスコープ `user.read` を必要とします。 このスコープは既定では、登録ポータルに登録されるすべてのアプリケーションで自動的に追加されます。 バックエンド サーバーのカスタム API に加え、他のいくつかの Microsoft Graph API は、場合によっては、追加のスコープを必要とします。 たとえば、Microsoft Graph の場合、ユーザーの予定表を一覧表示するにはスコープ `Calendars.Read` が必要です。 アプリケーションのコンテキストでユーザーの予定表にアクセスするには、委任されたアクセス許可 `Calendars.Read` をアプリケーション登録の情報に追加し、`acquireTokenSilent` 呼び出しにスコープ `Calendars.Read` を追加する必要があります。 スコープの数を増やすと、ユーザーは追加で同意を求められる可能性があります。
+
+<!--end-collapse-->
+
+
+

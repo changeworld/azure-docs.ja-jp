@@ -13,15 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/03/2017
+ms.date: 7/20/2017
 ms.author: negat
 ms.custom: na
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 718732df4455831454245ea1a80d49e042c20f09
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f320dd5d1f8c99317792f4ae9e09bc5adaf79e25
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -511,7 +510,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>同じサブスクリプションで同じリージョンの仮想マシン スケール セットの VIP スワップを実行するにはどうすればよいですか。
 
-2 つの仮想マシン スケール セットと Azure Load Balancer フロントエンドがあり、それらが同じサブスクリプションおよびリージョンにある場合、それぞれのパブリック IP アドレスの割り当てを解除し、もう一方に割り当てることができます。 例については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。 しかし、この場合、リソースの割り当て解除/割り当てがネットワーク レベルで行われるため、遅延が生じます。 もう 1 つのオプションは、[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) でアプリケーションをホストすることです。このサービスでは、ステージング スロットと運用スロット間のすばやい切り替えをサポートしています。
+2 つの仮想マシン スケール セットと Azure Load Balancer フロントエンドがあり、それらが同じサブスクリプションおよびリージョンにある場合、それぞれのパブリック IP アドレスの割り当てを解除し、もう一方に割り当てることができます。 例については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。 しかし、この場合、リソースの割り当て解除/割り当てがネットワーク レベルで行われるため、遅延が生じます。 高速なオプションは、Azure Application Gateway と 2 つのバックエンド プールおよびルーティング規則を使うものです。 または、[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) でアプリケーションをホストすることもできます。このサービスでは、ステージング スロットと運用スロット間のすばやい切り替えをサポートしています。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>静的プライベート IP アドレスの割り当て用に、プライベート IP アドレスの範囲を指定するにはどうすればよいですか。
 
@@ -570,6 +569,10 @@ IP アドレスは指定したサブネットから選択されます。
         }
     }
 ```
+
+### <a name="can-i-configure-a-scale-set-to-work-with-multiple-application-gateways"></a>複数の Application Gateway で動作するようにスケール セットを構成できますか?
+
+はい。 複数の Application Gateway バックエンド アドレス プールのリソース ID を、スケール セット ネットワーク プロファイルの _ipConfigurations_ セクションの _applicationGatewayBackendAddressPools_ リストに追加できます。
 
 ## <a name="scale"></a>スケール
 

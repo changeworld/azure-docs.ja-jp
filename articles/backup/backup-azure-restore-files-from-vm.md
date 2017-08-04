@@ -12,17 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 2/6/2017
+ms.date: 07/20/2017
 ms.author: pullabhk;markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: c65976c7394c7f9691526c0914854ef09184ab07
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: ae7c345c11a7db25413d60ad822f16f84ca37362
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="recover-files-from-azure-virtual-machine-backup-preview"></a>Azure 仮想マシンのバックアップからファイルを回復する (プレビュー)
+# <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
 Azure Backup は、[Azure VM とディスク](./backup-azure-arm-restore-vms.md)を Azure VM のバックアップから復元する機能を提供します。 この記事では、Azure VM のバックアップからファイルやフォルダーなどのアイテムを回復する方法について説明します。
 
@@ -35,7 +34,7 @@ Azure Backup は、[Azure VM とディスク](./backup-azure-arm-restore-vms.md)
 
 1. [Azure ポータル](http://portal.Azure.com)にサインインします。 関連する Recovery Services コンテナーと必要なバックアップ アイテムを見つけます。
 
-2. [バックアップ項目] ブレードで、**[ファイルの回復 (プレビュー)]** をクリックします。
+2. [バックアップ項目] ブレードで、**[ファイルの回復]** をクリックします。
 
     ![Recovery Services コンテナーを開く](./media/backup-azure-restore-files-from-vm/open-vault-item.png)
 
@@ -49,13 +48,19 @@ Azure Backup は、[Azure VM とディスク](./backup-azure-arm-restore-vms.md)
 
   この実行可能ファイル/スクリプトでは、ローカル コンピューターと指定された復旧ポイント間の接続を作成します。
 
-5. ファイルを回復するコンピューターで、実行可能ファイル/スクリプトを実行します。 これらは、管理者資格情報を使用して実行する必要があります。 アクセスが制限されたコンピューターでスクリプトを実行する場合は、以下にアクセスできることを確認します。
+5. ダウンロードしたスクリプト/実行可能ファイルを実行するにはパスワードが必要です。 生成したパスワードの横にあるコピー ボタンでポータルからパスワードをコピーできます。
 
-    - go.microsoft.com
+    ![生成されたパスワード](./media/backup-azure-restore-files-from-vm/generated-pswd.png)
+
+6. ファイルを回復するコンピューターで、実行可能ファイル/スクリプトを実行します。 これらは、管理者資格情報を使用して実行する必要があります。 アクセスが制限されたコンピューターでスクリプトを実行する場合は、以下にアクセスできることを確認します。
+
+    - download.microsoft.com
     - Azure VM のバックアップで使用された Azure エンドポイント
     - 送信ポート 3260
 
    Linux の場合、スクリプトによって復旧ポイントに接続するには "open-iscsi" および "lshw" コンポーネントが必要です。 スクリプトを実行するマシン上にこれらのコンポーネントが存在しない場合、スクリプトは該当するコンポーネントをインストールするためのアクセス許可を要求し、同意を得たうえでコンポーネントをインストールします。
+   
+   入力を求められたら、ポータルからコピーしたパスワードを入力します。 有効なパスワードが入力されると、スクリプトが復旧ポイントに接続されます。
       
     ![[ファイルの回復] ブレード](./media/backup-azure-restore-files-from-vm/executable-output.png)
     

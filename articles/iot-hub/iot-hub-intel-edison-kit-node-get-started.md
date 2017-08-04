@@ -1,10 +1,10 @@
 ---
 title: "Intel Edison からクラウドへの接続 (Node.js) - Intel Edison を Azure IoT Hub に接続する | Microsoft Docs"
-description: "Intel Edison から Azure クラウドにデータを送信するために、Intel Edison を Azure IoT Hub に接続します。"
+description: "このチュートリアルでは、Intel Edison を Azure IoT Hub に接続し、Intel Edison で Azure クラウド プラットフォームにデータを送信する方法について説明します。"
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "azure iot intel edison, intel edison iot hub, intel edison からクラウドへのデータの送信, intel edison からクラウドへの接続"
 ms.assetid: a7c9cf2d-c102-41b0-aa45-41285c6877eb
@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 6/15/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 9e9198f827d0906f65f59322126ef27ba6428d3e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5a31efba704045196b5563f7bc467c773bea7805
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 

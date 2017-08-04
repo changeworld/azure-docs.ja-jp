@@ -1,8 +1,8 @@
 ---
 title: "Azure での自動スケールの使用 | Microsoft Docs"
 description: "Azure でリソースをスケールする方法について説明します。"
-author: rajram
-manager: rboucher
+author: anirudhcavale
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,22 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/07/2017
-ms.author: rajram
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 4faccae708b5407d1eb64e746824a23688bc5834
+ms.date: 07/07/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ed6647979d33564afe68e46d52833f88ffa2fbda
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-auto-scale-in-azure"></a>Azure での自動スケールの使用
 この記事では、Azure Portal でリソースの自動スケール設定をセットアップする方法について説明します。
 
-Azure Monitor の自動スケールは、仮想マシン スケール セット (VMSS)、Cloud Services、App Service プラン、App Service Environment にのみ適用されます。 
-
-# <a name="lets-get-started"></a>作業の開始
+Azure Monitor の自動スケールは、仮想マシン スケール セット (VMSS)、クラウド サービス、App Service プラン、App Service 環境のみに適用されます。 
 
 ## <a name="discover-the-auto-scale-settings-in-your-subscriptions"></a>サブスクリプションで自動スケール設定を検出する
 Azure Monitor で自動スケールを適用できるすべてのリソースを検出できます。 リソースを検出するには、次の手順に従います。
@@ -62,8 +59,8 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 
 > 注: VMSS またはクラウド サービス ロールを使用する場合も同じ手順が適用されます。
 
-# <a name="other-considerations"></a>その他の考慮事項
-## <a name="scale-based-on-a-schedule"></a>スケジュールに基づくスケール変更
+## <a name="other-considerations"></a>その他の考慮事項
+### <a name="scale-based-on-a-schedule"></a>スケジュールに基づくスケール変更
 常に CPU に基づいてスケールするだけでなく、特定の曜日に異なる方法でスケールを設定することもできます。
 
 - [Add a scale condition (スケール条件の追加)] をクリックします。
@@ -72,7 +69,7 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 - 曜日を選択し、選択した曜日にスケール条件を適用する開始時刻と終了時刻を選択します。
 
 ![スケジュールに基づくスケール条件][9]
-## <a name="scale-differently-on-specific-dates"></a>特定の日に異なる方法でスケールする
+### <a name="scale-differently-on-specific-dates"></a>特定の日に異なる方法でスケールする
 常に CPU に基づいてスケールするだけでなく、特定の日に異なる方法でスケールを設定することもできます。
 
 - [Add a scale condition (スケール条件の追加)] をクリックします。
@@ -82,21 +79,21 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 
 ![日付に基づくスケール条件][10]
 
-## <a name="view-the-scale-history-of-your-resource"></a>リソースのスケール履歴を表示する
+### <a name="view-the-scale-history-of-your-resource"></a>リソースのスケール履歴を表示する
 リソースをスケールアップ/スケールダウンするたびに、アクティビティ ログにイベントが記録されます。 [実行履歴] タブに切り替えることで、過去 24 時間のリソースのスケール履歴を表示できます。
 
 ![実行履歴][11]
 
 すべてのスケール履歴 (最大 90 日間) を表示する場合は、[Click here to see more details (詳細を表示するには、ここをクリックしてください)] をクリックします。 これにより、リソースが含まれ、カテゴリとして "自動スケール" が事前に選択されたアクティビティ ログが表示されます。
 
-## <a name="view-the-scale-definition-of-the-resource"></a>リソースのスケール定義を表示する
+### <a name="view-the-scale-definition-of-the-resource"></a>リソースのスケール定義を表示する
 自動スケール設定は ARM リソースです。 [JSON] タブに切り替えることで、JSON でスケール定義を表示できます。
 
 ![スケール定義][12]
 
 必要に応じて、JSON に直接変更を加えることができます。 これらの変更は保存時に反映されます。
 
-## <a name="disable-autoscale-and-manually-scale-your-instances"></a>自動スケールを無効にしてインスタンスを手動でスケールする
+### <a name="disable-autoscale-and-manually-scale-your-instances"></a>自動スケールを無効にしてインスタンスを手動でスケールする
 現在のスケール設定を無効にし、リソースを手動でスケールすることが必要な場合があります。
 
 上部にある [自動スケールの無効化] ボタンをクリックします。
@@ -107,6 +104,10 @@ Azure Monitor で自動スケールを適用できるすべてのリソースを
 ![手動スケールの設定][14]
 
 [Enable autoscale (自動スケールを有効にする)] をクリックし、[保存] をクリックすることで、いつでも自動スケールに戻すことができます。
+
+## <a name="next-steps"></a>次のステップ
+- [アクティビティ ログ アラートを作成して、サブスクリプションで自動スケールのエンジン操作をすべて監視する。](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)
+- [アクティビティ ログ アラートを作成して、サブスクリプションで失敗した自動スケールのスケールイン/スケールアウト操作をすべて監視する](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-failed-alert)
 
 <!--Reference-->
 [1]:https://portal.azure.com

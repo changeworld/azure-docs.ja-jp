@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 5/22/2017
+ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6d390a75df51a22aa4e60094f3e4ba945a5725ad
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d44bb8207edae22ab9d6b1c7b9a3e4da888aa06e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Azure における VM バックアップ インフラストラクチャの計画を立てる
@@ -40,6 +39,7 @@ Azure Backup サービスがスナップショットを取ると、データは�
 > [!NOTE]
 > 1. バックアップ プロセス中、Azure Backup には仮想マシンに接続された一時ディスクは含まれません。 詳細については、ブログの[一時記憶域](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)をご覧ください。
 > 2. Azure Backup はストレージ レベルのスナップショットを取得してそのスナップショットをバックアップコンテナーに転送するため、バックアップ ジョブが終了するまでストレージ アカウント キーを変更しないでください。
+> 3. プレミアム VM の場合、ストレージ アカウントにスナップショットをコピーします。 これは、Azure Backup サービスにデータをコンテナーに転送するために必要十分な IOPS を与えるための措置です。 ストレージをこの方法で付加的にコピーするとき、VM の割り当てサイズに基づいて課金されます。 
 >
 
 ### <a name="data-consistency"></a>データの一貫性

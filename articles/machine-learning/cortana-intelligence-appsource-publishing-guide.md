@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 67e2e7906df78ff3e57765e0a6706f98123c3428
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/08/2017
 
 --- 
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence の AppSource 発行ガイド
@@ -30,11 +30,13 @@ Microsoft パートナーとして AppSource に発行することで実際に�
 - ソリューションやアプリがビジネスの具体的な問題に対処している。
 - 構築したモジュールや知的財産を、お客様が比較的簡単かつ予測可能な方法で再利用できる。
 
+AppSource で公開されている [Cortana Intelligence ソリューション](https://appsource.microsoft.com/en-us/marketplace/apps?product=cortana-intelligence&page=1)をご覧ください。 
+
 この記事では、パートナーの Cortana Intelligence ソリューションを AppSource に発行する手順について詳しく説明します。
 
 ## <a name="getting-started"></a>使用の開始
 1. Advanced Analytics のパートナーとして掲載される方法については、[Partner Community Benefits Guide (パートナー コミュニティ ベネフィット ガイド)](https://www.microsoftpartnerserverandcloud.com/_layouts/download.aspx?SourceUrl=Hosted%20Documents/Partner%20Community%20Benefits%20Guide%20-%20Cloud%20and%20Enterprise.pdf) (PDF) の 9 ページをご覧ください。
-1. [[アプリの申請]](https://appsource.microsoft.com/en-us/) フォームに入力します。
+1. [[アプリの申請]](https://appsource.microsoft.com/en-us/partners/list-an-app) フォームに入力します。
 
     "*アプリがビルドされた製品を選択してください*" という質問で、**[その他]** チェックボックスをオンにして、編集コントロールに「Cortana Intelligence」を一覧表示します。
 1. Cortana Intelligence アプリは、AppSource にオンボードされる前に Cortana Intelligence のパートナー ソリューション テクノロジー チームの認定を受ける必要があります。 プロセスを開始するには、[Cortana Intelligence solution evaluation for AppSource publishing](https://aka.ms/cisappsrceval) のアンケート フォームに入力し、アプリの情報を提供してください。 このサイトはパスワードで保護されており、サイトにはパスワードを取得する手順が用意されています。
@@ -63,7 +65,7 @@ Microsoft パートナーとして AppSource に発行することで実際に�
 1. ソリューションで Power BI を使用します。任意ですが、より多くの潜在顧客を生み出すことが実証されているため、強くお勧めします。
 
 ## <a name="devcenter-account-setup"></a>デベロッパー センター アカウントのセットアップ
-これは、マイクロソフトのパブリッシャーとして自社を登録するプロセスです。 既存のデベロッパー センター アカウントでパブリッシャーとしてすでに登録されている場合は、デベロッパー センター アカウントに関連付けられている電子メール ID を共有します。 
+これは、マイクロソフトのパブリッシャーとして自社を登録するプロセスです。 既存のデベロッパー センター アカウントでパブリッシャーとしてすでに登録されている場合は、デベロッパー センター アカウントに関連付けられている電子メール ID を共有します。 アプリケーションの公開が承認されると、[Cloud Portal Manage パブリッシャー プロファイル](https://cloudpartner.azure.com/#documentation/manage-publisher-profile)の完全ドキュメントにアクセスできます。
 
 ない場合は、デベロッパー センター アカウントをセットアップします。以下に主な手順を示します。
 1. [こちら](https://signup.live.com/signup.aspx)から Microsoft アカウントを作成します。

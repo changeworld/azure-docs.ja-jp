@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 9553c9ed02fa198d210fcb64f4657f84ef3df801
-ms.openlocfilehash: 6fdee57d33b19569ef892d0d32ea7007fd69faaf
-ms.lasthandoff: 03/23/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 18d6a8da38b42dcf5c1500f7fc26638aea26a809
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="migrate-an-enterprise-web-app-to-azure-app-service"></a>エンタープライズ Web アプリの Azure App Service への移行
@@ -107,7 +107,7 @@ Migration Assistant により対応状況レポートが作成されます。こ
     ![](./media/web-sites-migration-from-iis-server/migration-settings.png)
     
     > [!NOTE]
-    > カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web アプリが [Azure Active Directory](../active-directory/active-directory-whatis.md) (**既定のディレクトリ**) に統合されます。 オンプレミス Active Directory と Azure Active Directory の同期の詳細については、「 [ディレクトリ統合](http://msdn.microsoft.com/library/jj573653)」を参照してください。
+    > カスタム設定で **[Azure Active Directory を有効にする]** チェック ボックスをオンにすると、Azure Web アプリが [Azure Active Directory](../active-directory/active-directory-whatis.md) (**既定のディレクトリ**) に統合されます。 オンプレミス Active Directory と Azure Active Directory の同期について詳しくは、「[ディレクトリ統合](http://msdn.microsoft.com/library/jj573653)」をご覧ください。
     > 
     > 
 11. 必要な変更をすべて行ったら、**[作成]** をクリックして移行プロセスを開始します。 移行ツールにより、Azure SQL Database と Azure Web アプリが作成され、Web サイトのコンテンツとデータベースが発行されます。 移行の進行状況が移行ツールで明確に表示され、最後に概要のページが表示されます。このページには、移行されたサイトの詳細情報、移行が正しく行われたかどうか、新しく作成された Azure Web アプリへのリンクなどが表示されます。 

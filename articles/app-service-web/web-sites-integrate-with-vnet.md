@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c8268a90c5e14839ed97daa6a186d170f5a4cc3
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 31b4f69a2870e619255feac6bed3679efb03f568
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>アプリを Azure 仮想ネットワークに統合する
@@ -95,7 +95,7 @@ VNET にゲートウェイとポイント対サイトのどちらもない場合
 ![][8]
 
 ##### <a name="enabling-point-to-site-in-a-resource-manager-vnet"></a>Resource Manager VNET でのポイント対サイトの有効化
-Resource Manager VNET をゲートウェイとポイント対サイトで構成するには、「[PowerShell を使用した VNet へのポイント対サイト接続の構成][V2VNETP2S]」に従って PowerShell を使用するか、「[Azure Portal を使用した VNet へのポイント対サイト接続の構成][V2VNETPortal]」に従って Azure Portal を使用します。  この機能のための UI はまだ利用できません。 
+Resource Manager VNET をゲートウェイとポイント対サイトで構成するには、「[PowerShell を使用した VNet へのポイント対サイト接続の構成][V2VNETP2S]」に従って PowerShell を使用するか、「[Azure Portal を使用した VNet へのポイント対サイト接続の構成][V2VNETPortal]」に従って Azure Portal を使用します。  この機能のための UI はまだ利用できません。 ポイント対サイト構成の場合は証明書を作成する必要がないことに注意してください。 WebApp を VNET に接続すると自動的に構成されます。 
 
 ### <a name="creating-a-pre-configured-vnet"></a>事前構成された VNET の作成
 ゲートウェイとポイント対サイトが構成された新しい VNET は App Service のネットワーク UI を使って作成できますが、この機能は Resource manager VNET にしか対応していません。  ゲートウェイとポイント対サイトが構成されたクラシック VNET を作成する場合は、ネットワーク ユーザー インターフェイスから手動で行う必要があります。 
@@ -177,11 +177,11 @@ ASP の場所を覚えておくと、統合先の VNET の場所を調べると�
 **証明書** [証明書の状態] には、App Service によって実行されるチェックの結果が反映されます。このチェックでは、VPN 接続に使用している証明書が現在も有効であるかどうかが検証されます。  VNET 統合が有効になっている状態で、この ASP で任意のアプリからその VNET と初めて統合する場合は、接続のセキュリティを確保するために、証明書の交換が必要となります。  証明書と共に、DNS の構成やルートなど、ネットワークに関するその他の同様の情報を取得できます。
 これらの証明書またはネットワーク情報が変更された場合は、[ネットワークの同期] をクリックする必要があります。  **注**: [ネットワークの同期] をクリックすると、アプリと VNET の間の接続が短時間途切れます。  アプリの再起動が行われない場合は、接続が途切れることで、サイトが正常に機能しなくなる可能性があります。  
 
-## <a name="accessing-on-premise-resources"></a>オンプレミスのリソースへのアクセス
+## <a name="accessing-on-premises-resources"></a>オンプレミスのリソースへのアクセス
 VNET 統合機能のメリットの 1 つとして、VNET がオンプレミスのネットワークにサイト間 VPN で接続されている場合に、アプリからオンプレミスのリソースにアクセスできることが挙げられます。  ただし、そのためには、ポイント対サイト IP の範囲へのルートでオンプレミスの VPN ゲートウェイを更新しなければならない場合があります。  サイト間 VPN を初めてセットアップするときには、その構成に使用するスクリプトにより、ポイント対サイト VPN などのルートをセットアップする必要があります。  サイト間 VPN を作成した後にポイント対サイト VPN を追加した場合は、ルートを手動で更新する必要があります。  その詳しい手順はゲートウェイごとに異なるため、ここでは取り上げません。  
 
 > [!NOTE]
-> VNET 統合機能はサイト間 VPN と連動してオンプレミスのリソースへのアクセスを実現できるものの、現時点では、ExpressRoute VPN と組み合わせた場合は同じことはできません。  これは、クラシックまたは Resource Manager VNET と統合する場合に当てはまります。  ExpressRoute VPN を通じてリソースにアクセスする必要がある場合は、VNET で実行できる ASE を使用できます。 
+> VNET 統合機能では、アプリと ExpressRoute ゲートウェイを使う VNet は統合されません。 ExpressRoute ゲートウェイが[共存モード][VPNERCoex]で構成されている場合であっても、機能しません。 ExpressRoute 接続を通してリソースにアクセスする必要がある場合は、VNet で実行する [App Service 環境][ASE]を使うことができます。
 > 
 > 
 
@@ -249,7 +249,7 @@ nameresolver を使用すると、アプリが依存しているホスト名を�
 
 * VNET 内の別の VM にログオンし、そこからリソースのホスト:ポートへのアクセスを試します。  この目的で使用できる TCP ping ユーティリティもあるほか、必要な場合には telnet も使用できます。  ここでの目的は、他の VM からの接続が正常かどうかを判断することだけです。 
 * 別の VM 上で任意のアプリケーションを起動し、アプリのコンソールから、そのホストとポートにアクセスできるかどうかをテストします。  
-  ####<a name="on-premise-resources"></a>オンプレミスのリソース####
+  ####<a name="on-premises-resources"></a>オンプレミスのリソース####
   オンプレミスのリソースにアクセスできない場合は、まず VNET 内のリソースにアクセスできるかどうかを確認してください。  アクセスできる場合は、次の手順は非常に簡単です。  VNET 内の VM からオンプレミスのアプリケーションへのアクセスを試す必要があります。  telnet または TCP ping ユーティリティを使用できます。  VM がオンプレミスのリソースにアクセスできない場合は、まずサイト間 VPN 接続が機能していることを確認してください。  機能している場合は、前に説明したのと同じ内容と、オンプレミス ゲートウェイの構成および状態を確認します。  
 
 VNET でホストされている VM はオンプレミス システムに到達でき、アプリは到達できない場合、次のいずれかが原因と考えられます。
@@ -301,4 +301,6 @@ App Service Environment 機能を使用すると、VNET で Azure App Service �
 [ASEintro]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-intro/
 [ILBASE]: http://azure.microsoft.com/documentation/articles/app-service-environment-with-internal-load-balancer/
 [V2VNETPortal]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-point-to-site-resource-manager-portal
+[VPNERCoex]: http://docs.microsoft.com/en-us/azure/expressroute/expressroute-howto-coexist-resource-manager
+[ASE]: http://docs.microsoft.com/azure/app-service/app-service-environment/intro
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 2e7c1ddedaa11fb614f2e8cf6d1644ae2a2beae3
-ms.lasthandoff: 04/28/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 92e4c7d5a873cd75cdc32e1feeede71bd5e37f40
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
@@ -49,7 +49,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 
 多要素認証プロバイダーまたは Azure MFA、Azure AD Premium、 Enterprise Mobility + Security のいずれかのライセンスがある場合は、このメソッドを使用して MFA サービス設定ページにアクセスします。
 
-[MFA サービス設定] ページを介して MFA 管理ポータルにアクセスするには、管理者として Azure クラシック ポータルにサインインし、[Active Directory] オプションを選択します。 ディレクトリをクリックし、 **[構成]** タブをクリックします。 [多要素認証] セクションで、 **[サービス設定の管理]**を選択します。 [MFA サービス設定] ページの下部にある **[ポータルに移動]** リンクをクリックします。
+[MFA サービス設定] ページを介して MFA 管理ポータルにアクセスするには、管理者として Azure クラシック ポータルにサインインし、[Active Directory] オプションを選択します。 ディレクトリをクリックし、 **[構成]** タブをクリックします。 [多要素認証] セクションで、 **[サービス設定の管理]** を選択します。 [MFA サービス設定] ページの下部にある **[ポータルに移動]** リンクをクリックします。
 
 
 ## <a name="fraud-alert"></a>不正アクセスのアラート

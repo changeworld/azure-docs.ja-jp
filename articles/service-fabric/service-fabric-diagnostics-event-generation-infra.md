@@ -1,6 +1,6 @@
 ---
-title: "Azure Service Fabric のインフラストラクチャ レベルの監視 | Microsoft Docs"
-description: "Azure Service Fabric クラスターの監視と診断に使用するインフラストラクチャ レベルのイベントとログについて説明します。"
+title: "Azure Service Fabric のプラットフォーム レベルの監視 | Microsoft Docs"
+description: "Azure Service Fabric クラスターの監視と診断に使用するプラットフォーム レベルのイベントとログについて説明します。"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,22 +12,21 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: bae1917e7c0f0b247be473f78fedd7753aef6d23
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
-# <a name="infrastructure-level-event-and-log-generation"></a>インフラストラクチャ レベルのイベントとログの生成
+# <a name="platform-level-event-and-log-generation"></a>プラットフォーム レベルのイベントとログの生成
 
 ## <a name="monitoring-the-cluster"></a>クラスターの監視
 
-ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、インフラストラクチャ レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、インフラストラクチャの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
+ハードウェアとクラスターが予想どおりに動作しているかどうかを確認するために、プラットフォーム レベルで監視することが重要です。 Service Fabric では、ハードウェアの障害時にもアプリケーションを実行し続けることができますが、エラーがアプリケーションと基になるインフラストラクチャのどちらで発生しているのかを診断する必要があります。 また、ハードウェアの追加や削除を決定する際に役立つ適切な容量計画を作成するために、クラスターを監視する必要があります。
 
 Service Fabric には、すぐに使える 5 種類のログ チャネルが用意されています。これらのチャネルでは、次のイベントが生成されます。
 
@@ -37,7 +36,7 @@ Service Fabric には、すぐに使える 5 種類のログ チャネルが用�
 * [Reliable Actors イベント](service-fabric-reliable-actors-diagnostics.md): プログラミング モデル固有のイベントとパフォーマンス カウンター
 * サポート ログ: 弊社がサポートを提供する場合にのみ使用する Service Fabric によって生成されたシステム ログ
 
-これらの各種チャネルは、推奨されるインフラストラクチャ レベルのほとんどのログに対応します。 インフラストラクチャ レベルのログを向上させるには、正常性モデルの理解を深め、カスタム正常性レポートの追加に投資することを検討し、カスタム **パフォーマンス カウンター**を追加して、サービスやアプリケーションがクラスターに及ぼす影響をリアルタイムで把握できるようにします。
+これらの各種チャネルは、推奨されるプラットフォーム レベルのほとんどのログに対応します。 プラットフォーム レベルのログを向上させるには、正常性モデルをよく理解することに努め、カスタム正常性レポートを追加し、カスタム **パフォーマンス カウンター**を追加することを検討し、サービスやアプリケーションがクラスターに及ぼす影響をリアルタイムで把握できるようにします。
 
 ### <a name="azure-service-fabric-health-and-load-reporting"></a>Azure Service Fabric の正常性と負荷のレポート
 
@@ -99,7 +98,7 @@ Azure Service Fabric クラスターに関する支援を得るために Microso
 
 ## <a name="measuring-performance"></a>パフォーマンスの測定
 
-クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-up-down.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細をご覧ください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
+クラスターのパフォーマンスを測定すると、クラスターが負荷をどのように処理できるのかを理解しやすくなり、クラスターのスケーリングに関する意思決定が促進されます ([Azure](service-fabric-cluster-scale-up-down.md) または[オンプレミス](service-fabric-cluster-windows-server-add-remove-nodes.md)のクラスターのスケーリングの詳細を参照してください)。 また、パフォーマンス データは、今後ログを分析したときに、開発者またはアプリケーションやサービスによって実行された可能性のあるアクションと比較する際にも役立ちます。 
 
 Service Fabric の使用時に収集されるパフォーマンス カウンターの一覧については、[Service Fabric のパフォーマンス カウンター](service-fabric-diagnostics-event-generation-perf.md)に関する記事をご覧ください。
 

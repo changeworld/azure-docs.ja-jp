@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1d35dc01aba57dcf8a37db757138abbd7b22c8c5
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
@@ -225,9 +224,9 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. TCP ポート 80 の仮想マシンのエンドポイントを作成します。 詳細については、このドキュメントの「 [仮想マシン エンドポイントとファイアウォール ポート](#virtual-machine-endpoints-and-firewall-ports) 」をご覧ください。
 2. 仮想マシンのファイアウォールでポート 80 を開きます。
-3. URL 内のサーバー名として Azure 仮想マシンの **DNS 名** を使用して、Web ポータルまたはレポート マネージャーを参照します。 次に例を示します。
+3. URL 内のサーバー名として Azure 仮想マシンの **DNS 名** を使用して、Web ポータルまたはレポート マネージャーを参照します。 For example:
    
-    **レポート サーバー**: http://uebi.cloudapp.net/reportserver  **Web ポータル**: http://uebi.cloudapp.net/reports
+    **レポート サーバー**: http://uebi.cloudapp.net/reportserver **Web ポータル**: http://uebi.cloudapp.net/reports
    
     [レポート サーバー アクセスに対するファイアウォールの構成](https://msdn.microsoft.com/library/bb934283.aspx)
 

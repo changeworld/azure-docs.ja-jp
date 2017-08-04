@@ -1,6 +1,6 @@
 ---
 title: "Azure Storage で使用できるセキュリティ機能 | Microsoft Docs"
-description: " この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。. "
+description: " この記事では、Azure Storage で使用できる Azure のコア セキュリティ機能の概要について説明します。 "
 services: security
 documentationcenter: na
 author: TerryLanfear
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2017
 ms.author: terrylan
-translationtype: Human Translation
-ms.sourcegitcommit: b5edb42f7fac6943a72e02a85a4cbc32300b9f38
-ms.openlocfilehash: 2db6effdaf2e23d00eefdde82d074dd5d47857d7
-ms.lasthandoff: 01/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1386d16cf0e7f6fd324d0779e9ad54ecd88b3166
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-storage-security-overview"></a>Azure Storage のセキュリティの概要
@@ -63,7 +63,7 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
 
 * [トランスポートレベルの暗号化](../storage/storage-security-guide.md#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
-* [ワイヤ暗号化](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares)(Azure ファイル共有の SMB 3.0 暗号化など)。
+* [ワイヤ暗号化](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
 * [クライアント側の暗号化](../storage/storage-security-guide.md#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 クライアント側の暗号化の詳細:
@@ -72,7 +72,7 @@ Shared Access Signature (SAS) を使用すると、ストレージ アカウン�
 * [Cloud security controls series: Encrypting Data in Transit (クラウドのセキュリティ管理シリーズ: 転送中のデータの暗号化)](http://blogs.microsoft.com/cybertrust/2015/08/10/cloud-security-controls-series-encrypting-data-in-transit/)
 
 ## <a name="encryption-at-rest"></a>保存時の暗号化
-多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が&3; つあります。
+多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
 * [Storage Service Encryption](../storage/storage-security-guide.md#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 * [クライアント側の暗号化](../storage/storage-security-guide.md#client-side-encryption) には、保存時の暗号化機能もあります。

@@ -2,7 +2,7 @@
 title: "Resource Manager を使用してアクション グループを作成する | Microsoft Docs"
 description: "アクション グループを使用すると、特定のイベントが発生したときに電子メールや SMS で通知したり、webhook を呼び出したりできます。"
 author: anirudhcavale
-manager: carmonm
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 785d3a8920d48e11e80048665e9866f16c514cf7
-ms.openlocfilehash: 2dd7b14f1466fa7244a2af2c030d8b794658aaad
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 88e7b2e7781b80ea360531f4c3a45256de83b594
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/12/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -28,10 +27,10 @@ ms.lasthandoff: 04/12/2017
 
 基本的な手順は次のとおりです。
 
-1.    アクション グループの作成方法が記述された JSON ファイルとしてテンプレートを作成します。
-2.    [任意のデプロイ方法を使用して、テンプレートをデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)します。
+1.  アクション グループの作成方法が記述された JSON ファイルとしてテンプレートを作成します。
+2.  [任意のデプロイ方法を使用して、テンプレートをデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)します。
 
-ここでは、Resource Manager テンプレートを作成して 1 つのアクション グループを作成する方法を説明したあと、他のリソースを作成しながらアクション グループを作成する方法を説明します。
+最初に、アクション定義がテンプレートにハードコーディングされたアクショングループに対して、次に、テンプレートのデプロイ時に入力パラメーターとして webhook 構成情報を取得するテンプレートに対して、Resource Manager テンプレートを作成する方法を以下に示します。
 
 ## <a name="resource-manager-template-for-an-action-group"></a>アクション グループの Resource Manager テンプレート
 

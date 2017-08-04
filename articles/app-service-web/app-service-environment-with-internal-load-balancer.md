@@ -14,14 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/17/2016
 ms.author: ccompy
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 21223eb0cfbff607e15713e4726761c1bdb01774
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cfc9fb3ca26819999e10eff8df55d48468c7edef
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="using-an-internal-load-balancer-with-an-app-service-environment"></a>App Service 環境での内部ロード バランサーの使用
-App Service 環境 (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。  ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。  App Service 環境で提供される機能の詳細については、「[App Service 環境の概要][WhatisASE]」を参照してください。  VNet での稼働の利点がわからない場合は、「[Virtual Network FAQ][virtualnetwork]」を参照してください。  
+App Service 環境 (ASE) 機能は Azure App Service の Premium サービス オプションであり、マルチテナント スタンプでは使用できない高度な構成機能を提供します。  ASE 機能は、基本的に Azure App Service を顧客の Azure Virtual Network (VNet) にデプロイします。  App Service 環境が提供される機能の詳細については、[App Service 環境の概要][WhatisASE]に関するページを参照してください。  VNet での稼働の利点についての詳細は、「[Azure 仮想ネットワークに関する FAQ][virtualnetwork]」を参照してください。  
 
 ## <a name="overview"></a>概要
 ASE は、インターネットにアクセスできるエンドポイント、または VNet の IP アドレスを使用して展開できます。  IP アドレスを VNet アドレスに設定するには、内部ロード バランサー (ILB) を含む ASE を展開する必要があります。  ILB を含むように ASE を構成する場合は、次の項目を指定します。
@@ -44,7 +45,7 @@ ILB ASE を使用する際に実行できないことがいくつかあります
 * ポータルからのアプリの証明書の購入と使用。  もちろん、証明機関から証明書を直接取得してアプリで使用できます。Azure ポータルが使用できないだけです。
 
 ## <a name="creating-an-ilb-ase"></a>ILB ASE の作成
-ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。  ASE の作成方法の詳細については、「[App Service 環境の作成方法][HowtoCreateASE]」を参照してください。  ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。  ILB ASE を作成する方法は次のとおりです。 
+ILB ASE の作成は、ASE を作成する通常の方法と特に変わりません。  ASE の作成方法の詳細については、「[App Service Environment の作成方法][HowtoCreateASE]」を参照してください。  ILB ASE を作成するプロセスは、ASE 作成時に VNet を作成する場合も、既存の VNet を選択する場合も同じです。  ILB ASE を作成する方法は次のとおりです。 
 
 1. Azure ポータルで、**[新規]、[Web + モバイル]、[App Service 環境]** の順に選択します。
 2. サブスクリプションを選択します。
@@ -109,7 +110,7 @@ ILB ASE によって、アプリをネットワークから分離することが
 
 NSG を使用してさらにアクセスを制限しようとするときは、ASE が作動するために必要な通信を切断しないように注意する必要があります。  HTTP/HTTPS アクセスは ASE によって使用される ILB を介してのみ行われますが、ASE は依然として VNet 外部のリソースに依存しています。  どのネットワーク アクセスが引き続き必要かを確認するには、「[App Service 環境への受信トラフィックを制御する方法][ControlInbound]」および「[ExpressRoute を使用した App Service 環境のネットワーク構成の詳細][ExpressRoute]」の情報を参照してください。  
 
-NSG を構成するには、Azure が ASE を管理するために使用する IP アドレスを把握する必要があります。  この IP アドレスは、ASE がインターネット要求を行う場合の発信 IP アドレスでもあります。  この IP アドレスを調べるには、**[設定]、[プロパティ]** の順に選択し、**[送信 IP アドレス]** を確認します。  
+NSG を構成するには、Azure が ASE を管理するために使用する IP アドレスを把握する必要があります。  この IP アドレスは、ASE がインターネット要求を行う場合の発信 IP アドレスでもあります。  ASE の送信 IP アドレスは、ASE が有効な限り、静的なままです。  ASE を削除して再作成すると、新しい IP アドレスを取得できます。  この IP アドレスを調べるには、**[設定]、[プロパティ]** の順に選択し、**[送信 IP アドレス]** を確認します。  
 
 ![][5]
 
@@ -128,9 +129,9 @@ ILB ASE の管理は、通常の ASE の管理方法とほぼ同じです。  �
 ## <a name="getting-started"></a>使用の開始
 App Service 環境に関するすべての記事と作業方法は [App Service 環境の README](../app-service/app-service-app-service-environments-readme.md)を参照してください。
 
-App Service Environment の使用を開始するには、「[App Service Environment の概要][WhatisASE]」を参照してください。
+App Service 環境の使用を開始するには、「[App Service 環境の概要][WhatisASE]」をご覧ください。
 
-Azure App Service プラットフォームの詳細については、「[Azure App Service とは][AzureAppService]」を参照してください。
+Azure App Service プラットフォームの詳細については、[Azure App Service][AzureAppService] に関するページを参照してください。
 
 [!INCLUDE [app-service-web-whats-changed](../../includes/app-service-web-whats-changed.md)]
 
@@ -155,9 +156,4 @@ Azure App Service プラットフォームの詳細については、「[Azure A
 [ExpressRoute]: http://azure.microsoft.com/documentation/articles/app-service-app-service-environment-network-configuration-expressroute/
 [vnetnsgs]: http://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
 [ASEConfig]: http://azure.microsoft.com/documentation/articles/app-service-web-configure-an-app-service-environment/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

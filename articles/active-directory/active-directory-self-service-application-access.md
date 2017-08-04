@@ -3,7 +3,7 @@ title: "Azure Active Directory によるアプリケーションのセルフ サ
 description: "この記事では、Azure Active Directory でアプリケーションのセルフ サービス アクセスと委任管理を有効にする方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: asmalser-msft
+author: curtand
 manager: femila
 editor: 
 ms.assetid: 448a7fe8-a162-475e-9ba2-2e3ab59302bc
@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
-ms.author: asmalser
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 57093159c0b9c63b6e2dc0971e3aea645a33aa55
+ms.date: 07/13/2017
+ms.author: curtand
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 1724376c55d196f1b2b0b82180e4f59432e506ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="self-service-application-access-and-delegated-management-with-azure-active-directory"></a>Azure Active Directory によるアプリケーションのセルフ サービス アクセスと委任管理
 エンドユーザーに対してセルフ サービス機能を有効にすることは、エンタープライズ IT の一般的なシナリオです。 数多くのユーザーやアプリケーションが存在しており、アクセス許可を決定するための情報に最も通じている人物がディレクトリ管理者であるとは限りません。 多くの場合、アプリケーションにアクセスできるユーザーを決定するのに最適な人物は、チーム リーダーまたはその他の代理管理者です。 しかし、結局のところ、アプリを使用するのはユーザーであり、自分の仕事をできるようにするために何が必要かはユーザーが知っています。
 
-アプリケーションのセルフ サービス アクセスは、ディレクトリ管理者に次のことを許可する [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) の機能です。
+アプリケーションのセルフ サービス アクセスは、ディレクトリ管理者に次のことを許可する [Azure Active Directory Premium](https://azure.microsoft.com/trial/get-started-active-directory/) の P1 および P2 のライセンス機能です。
 
-*  [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)
+* [Azure AD アクセス パネル](active-directory-appssoaccess-whatis.md#deploying-azure-ad-integrated-applications-to-users)の [アプリケーションをさらに取得] タイルを使用して、ユーザーがアプリケーションへのアクセスを申請できるようにする
 * どのアプリケーションへのアクセスをユーザーが申請できるかを設定する
 * アプリケーションへのアクセスをユーザーが自分で割り当てるために承認が必要かどうかを設定する
 * 誰が申請を承認し、各アプリケーションへのアクセスを管理するかを設定する

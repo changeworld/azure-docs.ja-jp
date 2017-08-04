@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 3b2ddf764f54d2e7f23b02b5b593077938ac9355
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dbf870ca6e0ab85c96290a93eafd47d4b574dbc7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -57,7 +56,11 @@ Application Gateway は、お客様の仮想ネットワーク専用のデプロ
 
 **Q.HTTP から HTTPS へのリダイレクトはサポートされていますか?**
 
-現在これはサポートされていません。
+リダイレクトはサポートされます。 詳しくは、「[Application Gateway redirect overview](application-gateway-redirect-overview.md)」(Application Gateway のリダイレクトの概要) をご覧ください。
+
+**Q.リスナーはどのような順序で処理されますか?**
+
+リスナーは、表示される順序で処理されます。 そのため、基本リスナーが着信要求と一致する場合は、基本リスナーが要求を最初に処理します。  トラフィックが正しいバックエンドにルーティングされるようにするには、基本リスナーの前にマルチサイト リスナーを構成する必要があります。
 
 **Q.Application Gateway の IP と DNS はどこで確認できますか?**
 
@@ -131,6 +134,10 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 カスタム プローブは応答データでワイルドカードまたは正規表現をサポートしません。
 
+**Q.ルールはどのように処理されますか?**
+
+ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前にポートに基づいて基本ルールがトラフィックと一致することでトラフィックが不適切なバックエンドにルーティングされる可能性を下げるため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
+
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
 [ホスト] フィールドは、プローブの送信先の名前を指定します。 Application Gateway でマルチサイトが構成されている場合にのみ適用されます。それ以外の場合は、"127.0.0.1" を使用します。 この値は VM ホスト名とは異なり、\<プロトコル\>://\<ホスト\>:\<ポート\>\<パス\> という形式になります。
@@ -153,7 +160,7 @@ Application Gateway サブネットの NSG を使用して行うことができ�
 
 **Q.Application Gateway は高可用性とスケーラビリティをどのようにサポートしますか?**
 
-Application Gateway は、3 つ以上のインスタンスがデプロイされている場合に高可用性のシナリオをサポートします。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによってスケーラビリティをサポートします。
+2 つ以上のインスタンスをデプロイすると、Application Gateway は高可用性のシナリオをサポートします。 Azure は、これらのインスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによってスケーラビリティをサポートします。
 
 **Q.Application Gateway を使用して複数のデータ センター間で障害復旧のシナリオを実現するにはどうすればよいですか?**
 

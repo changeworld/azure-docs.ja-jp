@@ -4,7 +4,7 @@ description: "Azure IoT Hub デバイス管理用の iothub-explorer CLI を使�
 services: iot-hub
 documentationcenter: 
 author: shizn
-manager: timtl
+manager: timlt
 tags: 
 keywords: "Azure IoT デバイス管理, Azure IoT Hubデバイス管理, デバイス管理 IoT, IoT Hub デバイス管理"
 ms.assetid: b34f799a-fc14-41b9-bf45-54751163fffe
@@ -13,14 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/15/2017
+ms.date: 07/12/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2234924251447bb32d7cca0623a4e8d4f8d4e7ff
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5b7a5057bdfb5920fbb5759bed1f5561cfa1d7e0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-iothub-explorer-for-azure-iot-hub-device-management"></a>Azure IoT Hub デバイス管理用の iothub-explorer を使用する
@@ -59,7 +58,8 @@ iothub-explorer をさまざまな管理オプションで実行します。
   - 有効な Azure サブスクリプション
   - サブスクリプションの Azure IoT Hub。
   - Azure IoT Hub にメッセージを送信するクライアント アプリケーション。
-- iothub-explorer  (開発マシンに [iothub-explorer をインストールします](https://github.com/azure/iothub-explorer))
+- このチュートリアルの実行時にクライアント アプリケーションでデバイスが実行されていることを確認します。
+- iothub-explorer (開発コンピューターに [iothub-explorer をインストールします](https://github.com/azure/iothub-explorer))。
 
 ## <a name="connect-to-your-iot-hub"></a>IoT Hub に接続する
 
@@ -114,7 +114,8 @@ iothub-explorer get-twin <your device id>
 次のコマンドを実行して、フィールド role = temperature&humidity をデバイスに追加します。
 
 ```bash
-iothub-explorer update-twin <your device id> {\"tags\":{\"role\":\"temperature&humidity\"}}
+iothub-explorer update-twin <your device id> "{\"tags\":{\"role\":\"temperature&humidity\"}}"
+
 ```
 
 ## <a name="use-iothub-explorer-with-cloud-to-device-messages"></a>iothub-explorer と cloud-to-device メッセージを使用する

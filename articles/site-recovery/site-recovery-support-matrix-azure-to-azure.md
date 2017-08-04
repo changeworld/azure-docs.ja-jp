@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7c30f5164b9fe7ff6044bbf23767a5db9a0f7c30
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 89b12ce7af1e810f72e14f67ec5b11390ac3e72f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -63,16 +62,35 @@ ms.lasthandoff: 06/15/2017
 
 #### <a name="windows"></a>Windows
 
-- 64 ビット Windows Server 2012 R2
+- Windows Server 2016 (Server Core およびデスクトップ エクスペリエンス搭載サーバー)*
+- Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2 SP1 以降
 
+>[!NOTE]
+>
+> \* Windows Server 2016 の Nano Server はサポートされていません。
+
 #### <a name="linux"></a>Linux
 
-- Red Hat Enterprise Linux 6.7、6.8、7.1、7.2、7.3
+- Red Hat Enterprise Linux 6.7、6.8、7.0、7.1、7.2、7.3
 - CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2、7.3
+- Ubuntu 14.04 LTS Server[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+- Ubuntu 16.04 LTS Server[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 - Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5
 - SUSE Linux Enterprise Server 11 SP3
+
+>[!NOTE]
+>
+> パスワード ベースの認証とログインを使用しており、cloud-init パッケージを使用してクラウド仮想マシンを構成する Ubuntu サーバーでは、(cloudinit 構成に応じて) フェールオーバー時にパスワード ベースのログインが無効になっている場合があります。パスワード ベースのログインは、Azure ポータルでフェールオーバーされた仮想マシンの設定メニュー ([サポート + トラブルシューティング] セクションにある) からパスワードをリセットして、仮想マシンで再度有効にすることができます。
+
+### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Azure 仮想マシン用のサポートされる Ubuntu カーネル バージョン
+
+**リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
+--- | --- | --- |
+14.04 LTS | 9.9 | 3.13.0-24-generic ～ 3.13.0-117-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-75-generic |
+14.04 LTS | 9.10 | 3.13.0-24-generic ～ 3.13.0-121-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-81-generic |
+16.04 LTS | 9.10 | 4.4.0-21-generic ～ 4.4.0-81-generic、<br/>4.8.0-34-generic ～ 4.8.0-56-generic、<br/>4.10.0-14-generic ～ 4.10.0-24-generic |
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-azure-virtual-machines-running-linux-os"></a>Linux OS を実行している Azure 仮想マシンでサポートされるファイル システムおよびゲスト ストレージ構成
 
@@ -113,16 +131,16 @@ Site Recovery を使用して移行された VM | サポートされています
 
 **構成** | **サポートされるかどうか** | **解説**
 --- | --- | ---
-OS ディスクの最大サイズ | Azure でサポートされる OS ディスクの最大サイズ| ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
-データ ディスクの最大サイズ | Azure でサポートされるデータ ディスクの最大サイズ| ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
+OS ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
+データ ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
 データ ディスクの数 | 特定の Azure VM サイズでサポートされている最大数 64 | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください
 一時ディスク | 常にレプリケーションから除外 | 一時ディスクは常にレプリケーションから除外されます。 Azure ガイダンスに従って、一時ディスクには永続データを配置しないでください。 詳細については、[Azure VM の一時ディスク](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk)に関する記事をご覧ください。
-ディスク上のデータの変更率 | ディスクあたり最大 6 Mbps | ディスク上のデータの変更率が継続的に 6 Mbps を超えると、レプリケーションが追いつくことができません。 ただし、データの急激な増加が時折しか発生せず、変更率が一時的に 6 Mbps を超えてから低下する場合は、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
+ディスク上のデータの変更率 | ディスクあたり最大 6 MBps | ディスク上の平均データ変更率が継続的に 6 MBps を超えると、レプリケーションが追いつきません。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 6 MBps を超えてから低下する場合は、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
 Standard Storage アカウントのディスク | サポートされています |
 Premium Storage アカウントのディスク | サポートされています | VM のディスクが Premium Storage アカウントと Standard Storage ストレージ アカウントに分散している場合は、ディスクごとに異なるターゲット ストレージ アカウントを選択して、ターゲット リージョンのストレージ構成を確実に同じできます。
 Standard 管理ディスク | サポートされていません |  
 Premium 管理ディスク | サポートされていません |
-記憶域スペース | サポートされていません |         
+記憶域スペース | サポートされています |         
 保存時の暗号化 (SSE) | サポートされています | キャッシュおよびターゲット ストレージ アカウントごとに、SSE 対応ストレージ アカウントを選択できます。     
 Azure Disk Encryption (ADE) | サポートされていません |
 ディスクのホット アド/削除 | サポートされていません | VM 上でデータ ディスクを追加または削除する場合は、レプリケーションを無効にしてから、もう一度 VM に対してレプリケーションを有効にする必要があります。
