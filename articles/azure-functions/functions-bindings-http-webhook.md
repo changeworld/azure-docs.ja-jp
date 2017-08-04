@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/18/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 56d6f7b5858a0e2122021e02718050a26e6defe4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f31c0eec6b570c4d9f798185f8f0f8c49a7e400d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
@@ -290,6 +289,22 @@ public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceW
     return name == null
         ? req.CreateResponse(HttpStatusCode.BadRequest, "Please pass a name on the query string or in the request body")
         : req.CreateResponse(HttpStatusCode.OK, "Hello " + name);
+}
+```
+
+`HttpRequestMessage` の代わりに POCO にバインドすることもできます。 これは、JSON として解析され、要求の本文から取り込まれます。 同様に、型は HTTP 応答出力バインディングに渡すことができ、これは、200 のステータス コードと共に、応答本文として返されます。
+```csharp
+using System.Net;
+using System.Threading.Tasks;
+
+public static string Run(CustomObject req, TraceWriter log)
+{
+    return "Hello " + req?.name;
+}
+
+public class CustomObject {
+     public String name {get; set;}
+}
 }
 ```
 
