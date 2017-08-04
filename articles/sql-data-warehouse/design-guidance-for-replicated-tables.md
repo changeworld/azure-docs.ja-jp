@@ -15,10 +15,10 @@ ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 36515f6a3886ec68748a5b21b8022199abc3e092
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: efb5361496a2199a960564f6213f509b693e3cfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/21/2017
 
 次の図は、各コンピューティング ノード上でアクセスできるレプリケート テーブルを示したものです。 SQL Data Warehouse では、レプリケート テーブルは各コンピューティング ノード上のディストリビューション データベースに完全にコピーされます。 
 
-![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル")  
+![レプリケート テーブル](media/guidance-for-using-replicated-tables/replicated-table.png "レプリケート テーブル")  
 
 レプリケート テーブルは、スター スキーマの小規模なディメンションのテーブルに適しています。 ディメンション テーブルは、通常、複数のコピーの格納および保持を可能にするサイズです。 ディメンションは、顧客名、住所、製品の詳細など、変更頻度の低い説明的なデータを格納します。 変更頻度が低いというデータの性質により、レプリケート テーブルの再構築は少なくなります。 
 

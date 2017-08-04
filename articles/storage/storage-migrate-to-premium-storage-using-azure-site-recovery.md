@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/06/2017
 ms.author: luywang
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8cd91893003e3c24f7e3be99d457c0cb98775e89
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: e3869df76a13d5945d237987dc597fffb302a77d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="migrating-to-premium-storage-using-azure-site-recovery"></a>Azure Site Recovery を使用した Premium Storage への移行
@@ -151,7 +151,7 @@ Site Recovery を使用して、リージョン間または同じリージョン
 ## <a name="post-migration-steps"></a>移行後の手順
 
 1. **レプリケートされた VM を可用性セットに構成します (該当する場合)**。 Site Recovery では、VM を可用性セットと併せて移行する操作はサポートされていません。 レプリケートされた VM のデプロイに応じて、次のいずれかを実行してください。
-  * クラシック デプロイメント モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../virtual-machines/windows/classic/configure-availability.md#a-idaddmachine-aoption-2-add-an-existing-virtual-machine-to-an-availability-set)」を参照してください。
+  * クラシック デプロイメント モデルを使用して作成された VM の場合: Azure Portal で可用性セットに VM を追加します。 詳細な手順については、「[既存の仮想マシンを可用性セットに追加する](../virtual-machines/windows/classic/configure-availability.md#addmachine)」を参照してください。
   * Resource Manager デプロイメント モデルの場合: VM の構成を保存し、可用性セット内の VM をいったん削除してから再作成します。 これを行うには、[Azure Resource Manager VM 可用性セットの設定](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)スクリプトを使用します。 このスクリプトの制限事項を確認し、スクリプトを実行する前にダウンタイムを計画してください。
 
 2. **以前の VM とディスクを削除します**。 これらを削除する前に、Premium ディスクとソース ディスクの間に一貫性があり、新しい VM がソース VM と同じように動作することを確認してください。 Resource Manager (RM) デプロイメント モデルの場合、Azure Portal でソース ストレージ アカウントから VM を削除したうえで、ディスクを削除します。 クラシック デプロイメント モデルの場合は、クラシック ポータルまたは Azure Portal で VM とディスクを削除できます。 VM を削除してもディスクが削除されない問題が発生した場合は、[VHD を削除するときに生じるエラーのトラブルシューティング](storage-resource-manager-cannot-delete-storage-account-container-vhd.md)に関するページを参照してください。

@@ -1,7 +1,24 @@
-7--- title: Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs description: この記事では、Azure Site Recovery を使用して Active Directory のディザスター リカバリー ソリューションを実装する方法について説明します。
-services: site-recovery documentationcenter: '' author: prateek9us manager: gauravd editor: ''
-
-ms.assetid: af1d9b26-1956-46ef-bd05-c545980b72dc ms.service: site-recovery ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: storage-backup-recovery ms.date: 7/20/2017 ms.author: pratshar
+---
+title: "Azure Site Recovery で Active Directory と DNS を保護する | Microsoft Docs"
+description: "この記事では、Azure Site Recovery を使って Active Directory の障害復旧ソリューションを実装する方法について説明します。"
+services: site-recovery
+documentationcenter: 
+author: prateek9us
+manager: gauravd
+editor: 
+ms.assetid: af1d9b26-1956-46ef-bd05-c545980b72dc
+ms.service: site-recovery
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: storage-backup-recovery
+ms.date: 7/20/2017
+ms.author: pratshar
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 197441fc24c178695d4eada6db59f503b21672ad
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="protect-active-directory-and-dns-with-azure-site-recovery"></a>Azure Site Recovery で Active Directory と DNS を保護する
@@ -192,4 +209,5 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 ## <a name="next-steps"></a>次のステップ
 Azure Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。
+
 

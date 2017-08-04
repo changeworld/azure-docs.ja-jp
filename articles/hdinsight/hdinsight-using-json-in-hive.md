@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 04/26/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 41ae560b6ab66860baa1a311bb8d14ed33a20b41
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bd136afebeceb0cd9c24cfc5f15601caa80a755e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="process-and-analyze-json-documents-using-hive-in-hdinsight"></a>HDInsight の Hive を使用した JSON ドキュメントの処理と分析
@@ -62,7 +61,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
         ]
     }
 
-ファイルは、wasbs://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。 HDInsight での Azure BLOB Storage の使用については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
+ファイルは、wasb://processjson@hditutorialdata.blob.core.windows.net/ で参照できます。 HDInsight での Azure BLOB Storage の使用については、[HDInsight の Hadoop での HDFS と互換性のある Azure BLOB Storage の使用](hdinsight-hadoop-use-blob-storage.md)に関する記事をご覧ください。 クラスターの既定のコンテナーにファイルをコピーできます。
 
 このチュートリアルでは、Hive コンソールを使用します。  Hive コンソールを開く手順については、「 [リモート デスクトップによる HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-remote-desktop.md)」をご覧ください。
 
@@ -86,7 +85,7 @@ HDInsight の Hive を使用して JSON ファイルを処理および分析す�
 
     SELECT * FROM StudentsOneLine
 
-未加工の JSON ファイルは **wasbs://processjson@hditutorialdata.blob.core.windows.net/** にあります。 *StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指します。
+未加工の JSON ファイルは **wasb://processjson@hditutorialdata.blob.core.windows.net/** にあります。 *StudentsRaw* Hive テーブルは、未加工の平坦化されていない JSON ドキュメントを指します。
 
 *StudentsOneLine* Hive テーブルは、*/json/students/* パスの下にある HDInsight の既定のファイル システムにデータを保存します。
 

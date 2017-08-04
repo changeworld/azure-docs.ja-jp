@@ -12,19 +12,18 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 06/15/2017
+ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 337da13d4448090f320fa53a789d97f9843804d3
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: ac11c6c8532007ee40db128dd9933c99a32a9420
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
 ## <a name="overview"></a>概要
-StorSimple デバイス マネージャー サービスを使用して、StorSimple ソリューション内にある特定のデバイスを監視できます。 I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいてカスタム グラフを作成し、それらのグラフをダッシュボードにピン留めすることができます。 詳細については、[ポータル ダッシュボードをカスタマイズする](https://docs.microsoft.com/azure/azure-portal/azure-portal-dashboards.md)ことに関するページを参照してください。
+StorSimple デバイス マネージャー サービスを使用して、StorSimple ソリューション内にある特定のデバイスを監視できます。 I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいてカスタム グラフを作成し、それらのグラフをダッシュボードにピン留めすることができます。 詳細については、[ポータル ダッシュボードをカスタマイズする](/articles/azure-portal/azure-portal-dashboards.md)ことに関するページを参照してください。
 
 特定のデバイスの監視情報を表示するには、Azure Portal で StorSimple デバイス マネージャー サービスを選択します。 デバイスの一覧から目的のデバイスを選択したら、**[監視]** に移動します。 選択したデバイスの**容量**、**使用状況**、および**パフォーマンス**のグラフを表示できます。
 
