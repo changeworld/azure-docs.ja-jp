@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/05/2017
+ms.date: 07/14/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 42e53835c49f502ac41c08031a477e3c6bbd60fa
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fc11bf194b648cefea32feada4fe9e7fb2119fff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="expressroute-faq"></a>ExpressRoute の FAQ
@@ -247,6 +246,9 @@ ExpressRoute がサポートされているパートナーと地域の一覧に�
 
 ### <a name="can-i-access-office-365-over-the-internet-even-if-expressroute-was-configured-for-my-organization"></a>自社で ExpressRoute が構成されている場合でも、インターネット経由で Office 365 にアクセスできますか。
 はい。 自社のネットワークで ExpressRoute が構成されている場合でも、インターネット経由で Office 365 サービスのエンドポイントにアクセスできます。 ExpressRoute 経由で Office 365 サービスに接続するように構成されている場所では、ExpressRoute 経由で接続します。
+
+### <a name="can-i-access-office-365-us-government-community-gcc-services-over-an-azure-us-government-expressroute-circuit"></a>Azure US Government ExpressRoute 回線を通じてOffice 365 US Government Community (GCC) サービスにアクセスすることはできますか。
+はい。 Office 365 GCC サービス エンドポイントに、Azure US Government ExpressRoute を通してアクセスすることができます。 ただし、まず、Azure ポータルでサポート チケットを開いて、Microsoft にアドバタイズするプレフィックスを提供する必要があります。 サポート チケットが解決された後に、Office 365 GCC サービスへの接続が確立されます。 
 
 ### <a name="can-dynamics-365-for-operations-formerly-known-as-dynamics-ax-online-be-accessed-over-an-expressroute-connection"></a>ExpressRoute 接続経由で Dynamics 365 for Operations (旧称 Dynamics AX Online) にアクセスできますか。
 はい。 [Dynamics 365 for Operations](https://www.microsoft.com/dynamics365/operations) は、Azure でホストされています。 それに接続するには、ExpressRoute 回線で Azure パブリック ピアリングを有効にします。 

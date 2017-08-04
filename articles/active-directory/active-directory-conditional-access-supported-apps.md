@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/06/2017
+ms.date: 07/13/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: ef01a2221eb1915ac155a14cda0ea56565603d03
+ms.reviewer: calebb
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 38c8cb00b21416add28eeb06187b89f64518dc92
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="applications-and-browsers-that-use-conditional-access-rules-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス規則を使用するアプリケーションとブラウザー
@@ -75,7 +75,6 @@ SharePoint アクセスについては、Set-SPOTenant コマンドレットを�
 Exchange で用意されているプロトコルは大きく 2 つのカテゴリに分けられます。 以下の選択肢を確認し、自分の組織にとって最適なポリシーを選択してください。
 
 * **Exchange ActiveSync**。 既定では、多要素認証と場所に関する条件付きアクセスのポリシーが Exchange ActiveSync には適用されません。 これらのサービスに対するアクセスを保護するには、Exchange ActiveSync のポリシーを直接構成するか、Active Directory フェデレーション サービス (AD FS) の規則を使用して Exchange ActiveSync をブロックする必要があります。
-
 * **従来のプロトコル**。 従来のプロトコルは、AD FS を使用してブロックすることができます。 最新でない Office クライアント (先進認証に対応していない Office 2013 や、それより前のバージョンの Office など) へのアクセスは、この方法でブロックすることができます。
 
 ### <a name="use-ad-fs-to-block-legacy-protocol"></a>AD FS を使用して従来のプロトコルをブロックする
@@ -123,9 +122,9 @@ Microsoft Office 365 ID プラットフォームの AD FS 証明書利用者信�
     => issue(Type = "http://schemas.microsoft.com/authorization/claims/permit", Value = "true");
 
 
-## <a name="supported-browsers-for-device-based-policies"></a>デバイス ベース ポリシーでサポートされるブラウザー
+## <a name="supported-browsers-for-device-based-policies"></a>デバイス ベース ポリシーでサポートされるブラウザー 
 
-アクセス権はデバイス ベース ポリシーに対してのみ付与できます。このポリシーは、Azure AD がデバイスを識別および認証できる場合に、デバイス コンプライアンスとドメイン参加のチェックを行います。 場所や MFA などのチェックの大半はほとんどのデバイスおよびブラウザーで機能しますが、デバイス ポリシーは以下の OS バージョンおよびブラウザーを必要とします。 サポートされていないブラウザーまたは OS のユーザーは、デバイス ポリシーが実施されていると、アクセスがブロックされます。
+デバイス ベース ポリシーに対するアクセス権のみ取得できます。このポリシーは、Azure AD がデバイスを識別して認証できる場合に、デバイス コンプライアンスとドメイン参加のチェックを行います。 場所や MFA などのチェックの大半はほとんどのデバイスおよびブラウザーで機能しますが、デバイス ポリシーは以下の OS バージョンおよびブラウザーを必要とします。 サポートされていないブラウザーやオペレーティング システムのユーザーは、デバイス ポリシーが実施されていると、アクセスがブロックされます。 
 
 | OS                     | ブラウザー                 | サポート     |
 | :--                    | :--                      | :-:         |

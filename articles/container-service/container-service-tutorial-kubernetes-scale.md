@@ -14,13 +14,13 @@ ms.devlang: aurecli
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 07/06/2017
 ms.author: danlep
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e72e33e4c8511ab3daa0b9ccbefb5fde887bc0f9
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: f0e2c0bc0eeeceb86bc5108a4e4866392a79e016
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -61,7 +61,7 @@ azure-vote-back-2549686872-4d2r5   1/1       Running   0          31m
 azure-vote-front-848767080-tf34m   1/1       Running   0          31m
 ```
 
-[kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 4 に増やします。
+[kubectl scale](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#scale) コマンドを使って、`azure-vote-front` のデプロイに含まれるポッドの数を手動で変更します。 この例では、数を 5 に増やします。
 
 ```bash
 kubectl scale --replicas=5 deployment/azure-vote-front
@@ -76,12 +76,13 @@ kubectl get pods
 出力:
 
 ```bash
-NAME                               READY     STATUS    RESTARTS   AGE
-azure-vote-back-2549686872-4d2r5   1/1       Running   0          33m
-azure-vote-front-848767080-1kt72   1/1       Running   0          1m
-azure-vote-front-848767080-2b62d   1/1       Running   0          1m
-azure-vote-front-848767080-78rf0   1/1       Running   0          1m
-azure-vote-front-848767080-tf34m   1/1       Running   0          33m
+NAME                                READY     STATUS    RESTARTS   AGE
+azure-vote-back-2606967446-nmpcf    1/1       Running   0          15m
+azure-vote-front-3309479140-2hfh0   1/1       Running   0          3m
+azure-vote-front-3309479140-bzt05   1/1       Running   0          3m
+azure-vote-front-3309479140-fvcvm   1/1       Running   0          3m
+azure-vote-front-3309479140-hrbf2   1/1       Running   0          15m
+azure-vote-front-3309479140-qphz8   1/1       Running   0          3m
 ```
 
 ## <a name="autoscale-pods"></a>ポッドを自動スケールする

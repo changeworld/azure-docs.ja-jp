@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e789114a9b3faee73d264eded52c35cedd9cf98f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -255,7 +255,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
      
      * **クラスターの種類**: Hadoop。 ドメイン参加済み HDInsight は現在、Hadoop クラスターのみでサポートされています。
      * **オペレーティング システム**: Linux。  ドメイン参加済み HDInsight は、Linux ベースの HDInsight クラスターのみでサポートされています。
-     * **バージョン**: Hadoop 2.7.3 (HDI 3.5)。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.5 のみでサポートされています。
+     * **バージョン**: HDI 3.6。 ドメイン参加済み HDInsight は、HDInsight クラスター バージョン 3.6 のみでサポートされています。
      * **クラスターの種類**: PREMIUM
        
        **[選択]** をクリックして変更を保存します。

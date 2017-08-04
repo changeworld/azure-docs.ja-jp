@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/18/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: d725176bc6654186732b48ee6b5dd8d1526ea6ce
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 058601f416ee9ae50d90149764c3991cc1f2923b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-net-sdk"></a>Azure .NET SDK を使用して Azure Data Lake Analytics を管理する
@@ -55,7 +54,7 @@ Install-Package -Id Microsoft.Azure.Graph.RBAC -Version 3.4.0-preview
 
 ## <a name="common-variables"></a>共通の変数
 
-```
+``` csharp
 string subid = "<Subscription ID>"; // Subscription ID (a GUID)
 string tenantid = "<Tenant ID>"; // AAD tenant ID or domain. For example, "contoso.onmicrosoft.com"
 string rg == "<value>"; // Resource  group name
@@ -66,7 +65,7 @@ string clientid = "1950a258-227b-4e31-a9cf-717495945fc2"; // Sample client ID (t
 
 Azure Data Lake Analytics にログオンするいくつかのオプションがあります。 次のスニペットは、ポップアップの対話ユーザー認証での認証の例です。
 
-```
+``` csharp
 using System;
 using System.IO;
 using System.Threading;
@@ -107,7 +106,7 @@ public static Program
 
 ## <a name="create-the-client-management-objects"></a>クライアント管理オブジェクトを作成する
 
-```
+``` csharp
 var resourceManagementClient = new ResourceManagementClient(armCreds) { SubscriptionId = subid };
 
 var adlaAccountClient = new DataLakeAnalyticsAccountManagementClient(armCreds);
@@ -130,9 +129,9 @@ graphClient.TenantID = domain;
 
 ### <a name="create-an-azure-resource-group"></a>Azure リソース グループを作成する
 
-Azure リソース グループをまだ作成していない場合は、Data Lake Analytics コンポーネントを作成する際に必要になります。 認証資格情報、サブスクリプション ID、および場所が必要です。 次のコードは、リソース グループの作成方法を示しています。
+Azure リソース グループをまだ作成していない場合は、Data Lake Analytics コンポーネントを作成する際に必要になります。 認証資格情報、サブスクリプション ID、場所が必要です。 次のコードは、リソース グループの作成方法を示しています。
 
-```
+``` csharp
 var resourceGroup = new ResourceGroup { Location = location };
 resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 ```
@@ -142,7 +141,7 @@ resourceManagementClient.ResourceGroups.CreateOrUpdate(groupName, rg);
 
 ADLA アカウントには ADLS アカウントが必要です。 使うものがまだない場合は、次のコードで作成できます。
 
-```
+``` csharp
 var new_adls_params = new DataLakeStoreAccount(location: _location);
 adlsAccountClient.Account.Create(rg, adls, new_adls_params);
 ```
@@ -151,7 +150,7 @@ adlsAccountClient.Account.Create(rg, adls, new_adls_params);
 
 次のコードは ADLS アカウントを作成します
 
-```
+``` csharp
 var new_adla_params = new DataLakeAnalyticsAccount()
 {
    DefaultDataLakeStoreAccount = adls,
@@ -163,34 +162,34 @@ adlaClient.Account.Create(rg, adla, new_adla_params);
 
 ### <a name="list-data-lake-store-accounts"></a>Data Lake Store アカウントを一覧表示する
 
-```
+``` csharp
 var adlsAccounts = adlsAccountClient.Account.List().ToList();
 foreach (var adls in adlsAccounts)
 {
-   Console.WriteLine("ADLS: {0}", adls.Name);
+   Console.WriteLine($"ADLS: {0}", adls.Name);
 }
 ```
 
 ### <a name="list-data-lake-analytics-accounts"></a>Data Lake Analytics アカウントを一覧表示します。
 
-```
+``` csharp
 var adlaAccounts = adlaClient.Account.List().ToList();
 
 for (var adla in AdlaAccounts)
 {
-   Console.WriteLine("ADLA: {0}, adla.Name");
+   Console.WriteLine($"ADLA: {0}, adla.Name");
 }
 ```
 
 ### <a name="checking-if-an-account-exists"></a>アカウントが存在するかどうか確認する
 
-```
+``` csharp
 bool exists = adlaClient.Account.Exists(rg, adla));
 ```
 
 ### <a name="get-information-about-an-account"></a>アカウントに関する情報を取得する
 
-```
+``` csharp
 bool exists = adlaClient.Account.Exists(rg, adla));
 if (exists)
 {
@@ -200,7 +199,7 @@ if (exists)
 
 ### <a name="delete-an-account"></a>アカウントの削除
 
-```
+``` csharp
 if (adlaClient.Account.Exists(rg, adla))
 {
    adlaClient.Account.Delete(rg, adla);
@@ -211,7 +210,7 @@ if (adlaClient.Account.Exists(rg, adla))
 
 すべての Data Lake Analytics アカウントに、既定の Data Lake Store アカウントが必要です。 次のコードを使用して、Analytics アカウントの既定の Store アカウントを決定使用します。
 
-```
+``` csharp
 if (adlaClient.Account.Exists(rg, adla))
 {
   var adla_accnt = adlaClient.Account.Get(rg, adla);
@@ -230,7 +229,7 @@ Data Lake Analytics では現在、以下のデータ ソースがサポート�
 
 Azure Storage アカウントへのリンクを作成することができます。
 
-```
+``` csharp
 string storage_key = "xxxxxxxxxxxxxxxxxxxx";
 string storage_account = "mystorageaccount";
 var addParams = new AddStorageAccountParameters(storage_key);            
@@ -239,28 +238,28 @@ adlaClient.StorageAccounts.Add(rg, adla, storage_account, addParams);
 
 ### <a name="list-azure-storage-data-sources"></a>Azure Storage データ ソースを一覧表示する
 
-```
+``` csharp
 var stg_accounts = adlaAccountClient.StorageAccounts.ListByAccount(rg, adla);
 
 if (stg_accounts != null)
 {
   foreach (var stg_account in stg_accounts)
   {
-      Console.WriteLine("Storage account: {0}", stg_account.Name);
+      Console.WriteLine($"Storage account: {0}", stg_account.Name);
   }
 }
 ```
 
 ### <a name="list-data-lake-store-data-sources"></a>Data Lake Store データ ソースを一覧表示する
 
-```
+``` csharp
 var adls_accounts = adlsClient.Account.List();
 
 if (adls_accounts != null)
 {
   foreach (var adls_accnt in adls_accounts)
   {
-      Console.WriteLine("ADLS account: {0}", adls_accnt.Name);
+      Console.WriteLine($"ADLS account: {0}", adls_accnt.Name);
   }
 }
 ```
@@ -277,13 +276,13 @@ Data Lake Store ファイル システムのクライアント管理オブジェ
 
 次の例では、Data Lake Store 内のフォルダーをダウンロードする方法を示します。
 
-```
+``` csharp
 adlsFileSystemClient.FileSystem.DownloadFolder(adls, sourcePath, destinationPath);
 ```
 
 ### <a name="create-a-file-in-a-data-lake-store-account"></a>Data Lake Store アカウントにファイルを作成する
 
-```
+``` csharp
 using (var memstream = new MemoryStream())
 {
    using (var sw = new StreamWriter(memstream, UTF8Encoding.UTF8))
@@ -299,7 +298,7 @@ using (var memstream = new MemoryStream())
 ### <a name="verify-azure-storage-account-paths"></a>Azure ストレージ アカウント パスを確認する
 次のコードは、Data Lake Analytics アカウント (analyticsAccountName) 内に Azure ストレージ アカウント (storageAccntName) が存在するかどうかと、その Azure ストレージ アカウント内にコンテナー (containerName) が存在するかどうかを確認します。
 
-```
+``` csharp
 string storage_account = "mystorageaccount";
 string storage_container = "mycontainer";
 bool accountExists = adlaClient.Account.StorageAccountExists(rg, adla, storage_account));
@@ -312,7 +311,7 @@ DataLakeAnalyticsCatalogManagementClient オブジェクトは、各 Azure Data 
 ### <a name="list-databases-and-schemas"></a>データベースとスキーマを一覧表示する
 一覧表示できる対象の中で、最も一般的なものはデータベースとスキーマです。 次のコードは、データベースのコレクションを取得し、各データベースのスキーマを列挙します。
 
-```
+``` csharp
 var databases = adlaCatalogClient.Catalog.ListDatabases(adla);
 foreach (var db in databases)
 {
@@ -329,7 +328,7 @@ foreach (var db in databases)
 ### <a name="list-table-columns"></a>テーブルの列を一覧表示する
 次のコードでは、Data Lake Analytics カタログ管理クライアントを使用してデータベースにアクセスして、指定したテーブルの列を一覧表示する方法を示します。
 
-```
+``` csharp
 var tbl = adlaCatalogClient.Catalog.GetTable(adla, "master", "dbo", "MyTableName");
 IEnumerable<USqlTableColumn> columns = tbl.ColumnList;
 
@@ -356,7 +355,7 @@ foreach (USqlTableColumn utc in columns)
 ### <a name="list-failed-jobs"></a>失敗したジョブを一覧表示する
 次のコードは、失敗したジョブに関する情報を一覧表示します。
 
-```
+``` csharp
 var odq = new ODataQuery<JobInformation> { Filter = "result eq 'Failed'" };
 var jobs = adlaJobClient.Job.List(adla, odq);
 foreach (var j in jobs)
@@ -365,17 +364,39 @@ foreach (var j in jobs)
 }
 ```
 
+### <a name="list-pipelines"></a>パイプラインを一覧表示する
+次のコードは、アカウントに送信されたジョブの各パイプラインに関する情報を一覧表示します。
+
+``` csharp
+var pipelines = adlaJobClient.Pipeline.List(adla);
+foreach (var p in pipelines)
+{
+   Console.WriteLine($"Pipeline: {p.Name}\t{p.PipelineId}\t{p.LastSubmitTime}");
+}
+```
+
+### <a name="list-recurrences"></a>反復を一覧表示する
+次のコードは、アカウントに送信されたジョブの各反復に関する情報を一覧表示します。
+
+``` csharp
+var recurrences = adlaJobClient.Recurrence.List(adla);
+foreach (var r in recurrences)
+{
+   Console.WriteLine($"Recurrence: {r.Name}\t{r.RecurrenceId}\t{r.LastSubmitTime}");
+}
+```
+
 ## <a name="common-graph-scenarios"></a>一般的なグラフ シナリオ
 
 ### <a name="look-up-user-in-the-aad-directory"></a>AAD ディレクトリでユーザーを検索する
 
-```
+``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
 ```
 
 ### <a name="get-the-objectid-of-a-user-in-the-aad-directory"></a>AAD ディレクトリでユーザーの ObjectId を取得する
 
-```
+``` csharp
 var userinfo = graphClient.Users.Get( "bill@contoso.com" );
 Console.WriteLine( userinfo.ObjectId )
 ```
@@ -386,7 +407,7 @@ DataLakeAnalyticsAccountManagementClient オブジェクトでは、Data Lake An
 ### <a name="list-compute-policies"></a>コンピューティング ポリシーを一覧表示する
 次のコードは、Data Lake Analytics アカウントのコンピューティング ポリシーの一覧を取得します。
 
-```
+``` csharp
 var policies = adlaAccountClient.ComputePolicies.ListByAccount(rg, adla);
 foreach (var p in policies)
 {
@@ -397,7 +418,7 @@ foreach (var p in policies)
 ### <a name="create-a-new-compute-policy"></a>新しいコンピューティング ポリシーを作成する
 次のコードは、Data Lake Analytics アカウントの新しいコンピューティング ポリシーを作成し、指定したユーザーが使用できる最大 AU を 50 に、最小ジョブ優先順位を 250 に設定します。
 
-```
+``` csharp
 var userAadObjectId = "3b097601-4912-4d41-b9d2-78672fc2acde";
 var newPolicyParams = new ComputePolicyCreateOrUpdateParameters(userAadObjectId, "User", 50, 250);
 adlaAccountClient.ComputePolicies.CreateOrUpdate(rg, adla, "GaryMcDaniel", newPolicyParams);

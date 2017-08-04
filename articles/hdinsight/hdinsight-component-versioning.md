@@ -17,13 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 54254203b79c6d69a2febc5987b0a24077a84939
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0abad78affc92006fb30007d27f5656a2500fb80
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
- 
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
@@ -74,7 +72,7 @@ HDInsight クラスターのバージョンに関連付けられた Hadoop エ�
 Windows ベースのクラスターのみ: コンポーネントのバージョンを取得するもう 1 つの方法は、リモート デスクトップを使用してクラスターにログインし、"C:\apps\dist\" ディレクトリの内容を直接確認することです。
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](#hdi-version-33-nearing-retirement-date)に関する記事をご覧ください。 
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](#hdinsight-windows-retirement)に関する記事をご覧ください。 
 
 ### <a name="release-notes"></a>リリース ノート
 
@@ -89,14 +87,14 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure Portal での利用 | サポート有効期限 | 提供終了日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDI 3.6 |HDP 2.6 |Ubuntu 16 |はい |04/06/2017 |はい | | |
-| HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい |07/05/2017 |05/31/2018 |
-| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |はい |12/29/2016 |1/9/2018 |
-| HDI 3.3 |HDP 2.3 |Windows Server 2012R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |07/31/2018 |
-| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
-| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |あり |2015 年 2 月 18 日 |いいえ |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
-| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |あり |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6月 30 日 |
-| HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |あり |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
-| HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |あり |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
+| HDI 3.5 |HDP 2.5 |Ubuntu 16 |はい |9/30/2016 |はい |08/20/2017 |05/31/2018 |
+| HDI 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |はい |2016 年 3 月 29 日 |はい |12/29/2016 |1/9/2018 |
+| HDI 3.3 |HDP 2.3 |Windows Server 2012R2 |はい |2015 年 12 月 2 日 |はい |2016 年 6 月 27 日 |07/31/2018 |
+| HDI 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |はい |2015 年 12 月 2 日 |はい |2016 年 6 月 27 日 |2017 年 7 月 31 日 |
+| HDI 3.2 |HDP 2.2 |Ubuntu 12.04 LTS または Windows Server 2012R2 |はい |2015 年 2 月 18 日 |いいえ |2016 年 3 月 1 日 |2017 年 4 月 1 日 |
+| HDI 3.1 |HDP 2.1 |Windows Server 2012R2 |はい |2014 年 6 月 24 日 |いいえ |2015 年 5 月 18 日 |2016 年 6月 30 日 |
+| HDI 3.0 |HDP 2.0 |Windows Server 2012R2 |はい |02/11/2014 |いいえ |09/17/2014 |06/30/2015 |
+| HDI 2.1 |HDP 1.3 |Windows Server 2012R2 |はい |10/28/2013 |いいえ |05/12/2014 |05/31/2015 |
 | HDI 1.6 |HDP 1.1 | |いいえ |10/28/2013 |いいえ |04/26/2014 |05/31/2015 |
 
 ## <a name="hdinsight-windows-retirement"></a>Windows での HDInsight の提供終了
@@ -192,10 +190,10 @@ Azure HDInsight では、**Standard** と **Premium** の 2 つのカテゴリ�
 
 | クラスターの種類 | Standard | Premium (プレビュー) |
 | --- | --- | --- |
-| Hadoop は、 |はい |はい (HDInsight 3.5 および 3.6 のみ) |
+| Hadoop |はい |はい (HDInsight 3.6 のみ) |
 | Spark |はい |いいえ |
-| HBase |あり |いいえ |
-| Storm |あり |いいえ |
+| HBase |はい |いいえ |
+| Storm |はい |いいえ |
 | R Server  |はい |いいえ |
 | 対話型 Hive (プレビュー) |はい |なし |
 | Kafka (プレビュー)|はい|いいえ| 
@@ -221,7 +219,7 @@ HDInsight Premium の料金と SLA の詳細については、「 [HDInsight の
 
 * ブラジル南部と西日本を除くすべてのサポートされているリージョン:
 
-  | クラスターの種類 | Hadoop は、 | HBase | Storm | Spark | R Server |
+  | クラスターの種類 | Hadoop | HBase | Storm | Spark | R Server |
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 v2 |D3 v2 |A3 |D12 v2 |D12 v2 |
   | ヘッド: 推奨される VM サイズ |D3 v2、D4 v2、D12 v2 |D3 v2、D4 v2、D12 v2 |A3、A4、A5 |D12 v2、D13 v2、D14 v2 |D12 v2、D13 v2、D14 v2 |
@@ -233,7 +231,7 @@ HDInsight Premium の料金と SLA の詳細については、「 [HDInsight の
   | エッジ: 推奨される VM サイズ | | | | |Windows: D12 v2、D13 v2、D14 v2、Linux: D4 v2、D12 v2、D13 v2、D14 v2 |
 * ブラジル南部と西日本のみ (v2 サイズはありません):
 
-  | クラスターの種類 | Hadoop は、 | HBase | Storm | Spark | R Server |
+  | クラスターの種類 | Hadoop | HBase | Storm | Spark | R Server |
   | --- | --- | --- | --- | --- | --- |
   | ヘッド: 既定の VM サイズ |D3 |D3 |A3 |D12 |D12 |
   | ヘッド: 推奨される VM サイズ |D3、D4、D12 |D3、D4、D12 |A3、A4、A5 |D12、D13、D14 |D12、D13、D14 |

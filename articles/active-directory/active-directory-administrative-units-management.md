@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/04/2017
+ms.date: 07/20/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 355ae7a13ab3d32b69a2b90e5410d5fc90fb6916
+ms.reviewer: elkuzmen
+ms.custom: oldportal;it-pro;
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 439dc6635a0df8c70da41bd3aadfa04616e4cc1b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="administrative-units-management-in-azure-ad---public-preview"></a>Azure AD の管理単位 - パブリック プレビュー
@@ -35,9 +36,9 @@ ms.lasthandoff: 06/02/2017
 全体管理者の観点から見ると、管理単位は、作成してリソースを設定できるディレクトリ オブジェクトです。 **このプレビュー リリースでは、設定できるリソースはユーザーだけです。** 管理単位を作成して設定した後、与えられた権限の適用先を管理単位に含まれているリソースに限定するスコープとして使用できます。
 
 ## <a name="managing-administrative-units"></a>管理単位の管理
-このプレビュー リリースでは、Azure Active Directory Module for Windows PowerShell コマンドレットを使用して、管理単位の作成と管理を実行できます。 その方法に関する詳細については、「[管理単位の操作](https://docs.microsoft.com/en-us/powershell/azure/working-with-administrative-units?view=azureadps-2.0)」を参照してください。
+このプレビュー リリースでは、Azure Active Directory Module for Windows PowerShell コマンドレットを使用して、管理単位の作成と管理を実行できます。 その方法に関する詳細については、「[管理単位の操作](https://docs.microsoft.com/powershell/azure/active-directory/working-with-administrative-units?view=azureadps-2.0)」をご覧ください。
 
-Azure AD モジュールのソフトウェア要件とインストールの詳細、および管理単位を管理するための Azure AD モジュールのコマンドレット (構文、パラメーターの説明、および例) については、「 [Windows PowerShell による Azure AD の管理](https://msdn.microsoft.com/library/azure/jj151815.aspx)」を参照してください。
+Azure AD モジュールのソフトウェア要件とインストールの詳細、管理単位を管理するための Azure AD モジュールのコマンドレット (構文、パラメーターの説明、例) については、「[Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory/overview?view=azureadps-2.0)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory のエディション](active-directory-editions.md)

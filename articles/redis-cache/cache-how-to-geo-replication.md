@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: sdanie
 ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: ed05b369d882d2d9853b87a87fd91fe927ab15ba
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 71b0d4add7e642487f6d67cda692c500ee78b0e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -45,10 +45,11 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - キャッシュのクラスタリングが有効になっている場合、どちらかのキャッシュで[スケーリング操作](cache-how-to-scale.md)を開始したり、[シャード数を変更](cache-how-to-premium-clustering.md)したりすることはできません。
 - どちらのキャッシュでも永続化を有効にすることはできません。
 - どちらのキャッシュでも[エクスポート](cache-how-to-import-export-data.md#export)を使用できますが、[インポート](cache-how-to-import-export-data.md#import)できるのはプライマリ リンク キャッシュに対してだけです。
+- リンクされたキャッシュのうちの片方やそれらのキャッシュを含むリソース グループは、geo レプリケーション リンクを削除するまで、削除できません。 詳しくは、「[リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)」をご覧ください。
 - 2 つのキャッシュが異なるリージョンにある場合、ネットワーク送信のコストは、リージョン全体でセカンダリ リンク キャッシュにレプリケートされたデータに適用されます。 詳しくは、「[Azure リージョン間でデータをレプリケートするコストはどれくらいですか](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)」をご覧ください。
 - プライマリ キャッシュ (およびそのレプリカ) がダウンした場合、セカンダリ リンク キャッシュへの自動フェールオーバーは行われません。 クライアント アプリケーションをフェールオーバーするには、geo レプリケーション リンクを手動で解除し、以前はセカンダリ リンク キャッシュであったキャッシュをクライアント アプリケーションでポイントする必要があります。 詳しくは、「[セカンダリ リンク キャッシュへのフェールオーバーはどのように動作しますか](#how-does-failing-over-to-the-secondary-linked-cache-work)」をご覧ください。
 
-## <a name="to-add-a-cache-replication-link"></a>キャッシュ レプリケーション リンクを追加するには
+## <a name="add-a-geo-replication-link"></a>geo レプリケーション リンクの追加
 
 1. geo レプリケーションの 2 つの Premium キャッシュをリンクするには、プライマリ リンク キャッシュとするキャッシュの [リソース] メニューで **[geo レプリケーション]** をクリックし、**[geo レプリケーション]** ブレードで **[Add cache replication link]\(キャッシュ レプリケーション リンクの追加\)** をクリックします。
 
@@ -80,7 +81,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 
     リンク プロセス中もプライマリ リンク キャッシュは使用可能なままですが、セカンダリ リンク キャッシュはリンク プロセスが完了するまで使用できません。
 
-## <a name="to-remove-a-geo-replication-link"></a>geo レプリケーション リンクを削除するには
+## <a name="remove-a-geo-replication-link"></a>geo レプリケーション リンクの削除
 
 1. 2 つのキャッシュ間のリンクを削除し、geo レプリケーションを停止するには、**[geo レプリケーション]** ブレードで **[Unlink caches]\(キャッシュのリンク解除\)** をクリックします。
     
@@ -104,6 +105,7 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - [VNET 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
 - [PowerShell または Azure CLI を使って geo レプリケーションを管理することはできますか](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
 - [Azure リージョン間でデータをレプリケートするコストはどれくらいですか](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
+- [リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [セカンダリ リンク キャッシュにはどのリージョンを使う必要がありますか](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [セカンダリ リンク キャッシュへのフェールオーバーはどのように動作しますか](#how-does-failing-over-to-the-secondary-linked-cache-work)
 
@@ -146,6 +148,10 @@ geo レプリケーションは、Premium レベルのキャッシュにのみ�
 ### <a name="how-much-does-it-cost-to-replicate-my-data-across-azure-regions"></a>Azure リージョン間でデータをレプリケートするコストはどれくらいですか
 
 geo レプリケーションを使用している場合、プライマリ リンク キャッシュからのデータは、セカンダリ リンク キャッシュにレプリケートされます。 2 つのリンク キャッシュが同じ Azure リージョンにある場合、データ転送には課金されません。 2 つのリンク キャッシュが異なる Azure リージョンにある場合、geo レプリケーション データ転送料金は、そのデータを他の Azure リージョンにレプリケートする際の帯域幅コストです。 詳しくは、「[帯域幅の料金詳細](https://azure.microsoft.com/pricing/details/bandwidth/)」をご覧ください。
+
+### <a name="why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache"></a>リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか
+
+2 つのキャッシュがリンクされている場合、リンクされた片方のキャッシュや、それらのキャッシュを含むリソース グループは、geo レプリケーション リンクを削除するまで、削除することはできません。 リンクされたキャッシュの一方または両方を含むリソース グループを削除しようとすると、リソース グループ内の他のリソースは削除されますが、リソース グループは `deleting` 状態のままとなり、リソース グループ内にあるリンクされたキャッシュは `running` 状態のままとなります。 リソース グループとその中にあるリンクされたキャッシュを完全に削除するには、「[geo レプリケーション リンクの削除](#remove-a-geo-replication-link)」にある説明に従って、geo レプリケーション リンクを解除します。
 
 ### <a name="what-region-should-i-use-for-my-secondary-linked-cache"></a>セカンダリ リンク キャッシュにはどのリージョンを使う必要がありますか
 

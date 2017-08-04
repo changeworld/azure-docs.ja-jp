@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/23/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 01dd9cb6491ac830486da074cfe74779ca41db5b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a193590504fc3706a7c1f1562e94a8a80da03e75
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="get-started-with-u-sql"></a>U-SQL を使ってみる
@@ -27,9 +26,9 @@ U-SQL は、あらゆる規模のデータの処理を可能にするために�
 
 ## <a name="learning-resources"></a>学習用のリソース
 
-**U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)」(U-SQL 言語のリファレンス) を参照してください。
-
-**U-SQL のデザインの考え方**について理解するには、Visual Studio ブログの投稿「[Introducing U-SQL – A Language that makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)」(U-SQL 紹介 – ビッグ データ処理を容易にする言語)を参照してください。
+* [U-SQL チュートリアル] では、ほとんどの U-SQL 言語のガイド付きチュートリアルを提供しています。 U-SQL について学習するすべての開発者には、このドキュメントをご覧になることをお勧めします。
+* **U-SQL 言語構文**の詳細については、「[U-SQL Language Reference](http://go.microsoft.com/fwlink/p/?LinkId=691348)」(U-SQL 言語のリファレンス) を参照してください。
+* **U-SQL のデザインの考え方**について理解するには、Visual Studio ブログの投稿「[Introducing U-SQL – A Language that makes Big Data Processing Easy](https://blogs.msdn.microsoft.com/visualstudio/2015/09/28/introducing-u-sql-a-language-that-makes-big-data-processing-easy/)」(U-SQL 紹介 – ビッグ データ処理を容易にする言語)を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 

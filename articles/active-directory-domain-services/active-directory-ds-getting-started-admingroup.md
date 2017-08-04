@@ -12,21 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 07/15/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: d10e24727024e3ab559929666777c4bb062b2075
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f87bcf33d3b1eb21c7d84814e4c4086f664e293d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)
-
-> [!div class="op_single_selector"]
-> * [プレビュー - Azure Portal を使って Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
-> * [Azure クラシック ポータルを使って Azure AD Domain Services を有効にする](active-directory-ds-getting-started-create-group.md)
 
 
 ## <a name="task-3-configure-administrative-group"></a>タスク 3: 管理グループを構成する
@@ -36,7 +31,7 @@ ms.lasthandoff: 06/30/2017
 > Azure Active Directory Domain Services を使用して作成された管理対象ドメインでは、ドメイン管理者権限またはエンタープライズ管理者権限がありません。 管理対象ドメインでは、これらの権限はサービスによって予約されており、テナント内でユーザーが使用することはできません。 ただし、この構成タスクで作成した特殊な管理者グループを使用して、特権操作の一部を実行することはできます。 これらの操作には、ドメインへのコンピューターの参加、ドメインに参加しているコンピューターでの管理グループへの所属、グループ ポリシーの構成などが含まれます。
 >
 
-管理グループは、ウィザードで Azure AD ディレクトリに自動的に作成されます。 このグループは、"AAD DC Administrators" という名前です。 グループ メンバーシップは、**[管理者グループ]** ウィザード ページを使用して構成できます。
+管理グループは、ウィザードで Azure AD ディレクトリに自動的に作成されます。 このグループは、"AAD DC Administrators" という名前です。 Azure AD ディレクトリにこの名前のグループが既に存在している場合、ウィザードはこのグループを選択します。 グループ メンバーシップは、**[管理者グループ]** ウィザード ページを使用して構成できます。
 
 1. グループ メンバーシップを構成するには、**[AAD DC Administrators]** をクリックします。
 

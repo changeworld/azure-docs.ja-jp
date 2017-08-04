@@ -1,24 +1,26 @@
 ---
-title: "Azure Data Lake Tools for Visual Studio Code の使用 | Microsoft Docs"
+title: "Azure Data Lake Tools - Azure Data Lake Tools for Visual Studio Code の使用 | Microsoft Docs"
 description: "Azure Data Lake Tools for Visual Studio Code を使用して U-SQL スクリプトを作成、テスト、実行する方法について説明します。 "
+Keywords: "VScode,Azure Data Lake Tools,ローカル実行,ローカル デバッグ,ストレージ ファイルのプレビュー,ストレージ パスにアップロード"
 services: data-lake-analytics
 documentationcenter: 
 author: jejiang
 manager: jhubbard
 editor: cgronlun
+tags: azure-portal
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.service: data-lake-analytics
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 11/30/2016
+ms.date: 07/14/2017
 ms.author: jejiang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 038c84e3eb78d1654ec035ada48cdeed6dd03002
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 0ed3d7a0057eb446b3e1d16019ac74c641ae3138
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -36,7 +38,7 @@ Data Lake Tools は、VSCode でサポートされている Windows、Linux、Ma
 
     - [Visual Studio Code]( https://www.visualstudio.com/products/code-vs.aspx)。
     - [Java SE Runtime Environment Version 8 Update 77 以降](https://java.com/download/manual.jsp)。 java.exe のパスをシステム環境変数パスに追加する必要があります。  手順については、「[how do I set or change the Path system variable? (Path システム変数を設定または変更するにはどうすればよいですか?)]( https://www.java.com/download/help/path.xml)」を参照してください。 このパスは、C:\Program Files\Java\jdk1.8.0_77\jre\bin のようなパスです。
-    - [.NET Core SDK 1.0.1 Preview 2 または .NET Core 1.0.1 ランタイム]( https://www.microsoft.com/net/download)。
+    - [.NET Core SDK 1.0.3 または .NET Core 1.1 ランタイム](https://www.microsoft.com/net/download)。
     
 - Linux (Ubuntu 14.04 LTS を推奨)
 
@@ -60,13 +62,13 @@ Data Lake Tools は、VSCode でサポートされている Windows、Linux、Ma
             > Mono 4.6 はサポートされていません。  バージョン 4.6 を完全にアンインストールしてから 4.2.x をインストールする必要があります。  
 
         - [Java SE Runtime Environment Version 8 Update 77 以降](https://java.com/download/manual.jsp)。 手順は[こちら]( https://java.com/en/download/help/linux_x64_install.xml)に記載されています。
-        - [.NET Core SDK 1.0.1 Preview 2 または .NET Core 1.0.1 ランタイム]( https://www.microsoft.com/net/download)。
+        - [.NET Core SDK 1.0.3 または .NET Core 1.1 ランタイム](https://www.microsoft.com/net/download)。
 - MacOS
 
     - [Visual Studio Code]( https://www.visualstudio.com/products/code-vs.aspx)。
     - [Mono 4.2.4](http://download.mono-project.com/archive/4.2.4/macos-10-x86/)。 
     - [Java SE Runtime Environment Version 8 Update 77 以降](https://java.com/download/manual.jsp)。 手順は[こちら](https://java.com/en/download/help/mac_install.xml)に記載されています。
-    - [.NET Core SDK 1.0.1 Preview 2 または .NET Core 1.0.1 ランタイム]( https://www.microsoft.com/net/download)。
+    - [.NET Core SDK 1.0.3 または .NET Core 1.1 ランタイム](https://www.microsoft.com/net/download)。
 
 ## <a name="install-the-data-lake-tools"></a>Data Lake Tools のインストール
 
@@ -76,13 +78,14 @@ Data Lake Tools は、VSCode でサポートされている Windows、Linux、Ma
 
 1. **Visual Studio Code** を開きます。
 2. **Ctrl + P** キーを押し、次のコマンドを入力します。
+```
+ext install usql-vscode-ext
+```
+Visual Studio Code 拡張機能の一覧が表示されます。 そのうちの 1 つが **Azure Data Lake Tool** です。
 
-        ext install usql-vscode-ext
-    Visual Studio Code 拡張機能の一覧が表示されます。 そのうちの 1 つが **Azure Data Lake Tool (Preview)** です。
-3. **[Azure Data Lake Tool (Preview)]** の横にある **[インストール]** をクリックします。 数秒後、[インストール] ボタンが [再度読み込む] に変わります。
+3. **[Azure Data Lake Tool]** の横にある **[インストール]** をクリックします。 数秒後、[インストール] ボタンが [再度読み込む] に変わります。
 4. **[再度読み込む]** をクリックして拡張機能をアクティブにします。
 5. **[OK]** をクリックして確定します。 [拡張機能] ウィンドウに Azure Data Lake Tools が表示されます。
-
     ![Data Lake Tools for Visual Studio Code のインストール](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extensions.png)
 
 ## <a name="activate-azure-data-lake-tools"></a>Azure Data Lake Tools をアクティブ化する
@@ -95,14 +98,17 @@ Azure Data Lake Analytics で U-SQL スクリプトをコンパイルして実�
 **Azure に接続するには**
 
 1.  **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。 
-2.  「**ADL: Login**」と入力します。
+2.  「**ADL: Login**」と入力します。 ログイン情報が出力ウィンドウに表示されます。
 
     ![Data Lake Tools for Visual Studio Code のコマンド パレット](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
+    ![Data Lake Tools for Visual Studio Code のログイン情報](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
+3. Ctrl キーを押しながらログイン URL「https://aka.ms/devicelogin」をクリックして、ログイン Web ページを開きます。 コード「G567LX42V」をコピーし、下のテキスト ボックスに貼り付けてから、[続行] をクリックし次に進みます。
 
-2.  手順に従って Web ページからサインインします。 接続すると、ウィンドウの下部にあるステータス バーにアカウント名が表示されます。
+   ![Data Lake Tools for Visual Studio Code のログイン時に貼り付けるコード](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
+4.  手順に従って Web ページからサインインします。 接続すると、VSCode ウィンドウの左下にあるステータス バーに Azure アカウント名が表示されます。 
 
-> [!NOTE] 
-> アカウントで 2 要素認証が有効になっている場合は、PIN ではなく電話認証を使用することをお勧めします。
+    > [!NOTE] 
+    > アカウントで 2 要素認証が有効になっている場合は、PIN ではなく電話認証を使用することをお勧めします。
 
 サインオフするには、**ADL: Logout** コマンドを使用します。
 
@@ -117,7 +123,7 @@ Azure Data Lake Analytics で U-SQL スクリプトをコンパイルして実�
 
 ## <a name="open-sample-script"></a>サンプル スクリプトを開く
 
-コマンド パレット (**Ctrl + Shift + P**) を使用して、**[ADL: サンプル スクリプトを開く]** を選択します。 このサンプルの別のインスタンスが開きます。 このインスタンスでスクリプトの編集、構成、および送信も行います。
+コマンド パレット (**Ctrl + Shift + P**) を使用して、**[ADL: サンプル スクリプトを開く]** を選択します。 このサンプルの別のインスタンスが開きます。 このインスタンスのスクリプトは編集、構成、送信することもできます。
 
 ## <a name="work-with-u-sql"></a>U-SQL の操作
 
@@ -149,17 +155,22 @@ U-SQL を操作するには、U-SQL ファイルまたはフォルダーを開�
 4. **adltools_settings.json** を開き、以下のプロパティで構成します。
 
     - アカウント: Azure サブスクリプション内の Data Lake Analytics アカウント。
+    - データベース: 自分のアカウント内のデータベース。 既定値は master です。
+    - スキーマ: データベース内のスキーマ。 既定値は dbo です。
     - オプション設定:
-
         - 優先順位: 優先順位の範囲は 1 ～ 1,000 で、1 が最も高い優先順位です。 既定値は 1,000 です。
-        - 並列処理: 並列処理の範囲は 1 ～ 150 です。 既定値は 150 です。 
-
+        - 並列処理: 並列処理の範囲は 1 ～ 150 です。 既定値は、ADLA アカウントで許可される並列処理の最大数です。 
+        
         > [!NOTE] 
         > 設定値が有効でない場合は、既定値が使用されます。
 
-     ![Data Lake Tools for Visual Studio Code の構成ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
+    ![Data Lake Tools for Visual Studio Code の構成ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-configuration-file.png)
 
     U-SQL ジョブのコンパイルと実行には、コンピューティング用の Data Lake Analytics アカウントが必要です。  U-SQL ジョブのコンパイルと実行を行う前に、このコンピューター アカウントを構成する必要があります。
+    
+    構成が保存されると、アカウント | データベース | スキーマ情報は、対応する USQL ファイルの左下にあるステータス バーに表示されます。 
+ 
+ 
 
 ファイルを開く方法とは異なり、フォルダーを開く方法では以下の操作が可能です。
 
@@ -214,11 +225,31 @@ Data Lake Tools を使用すると、カスタム コード アセンブリを D
 
 **アセンブリを登録するには**
 
+「**ADL: Register Assembly**」 または「**ADL: Register Assembly through Configuration**」を使用してアセンブリを登録することができます。
+
+**ADL: Register Assembly**
 1.  **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
-2.  「**ADL: Register Assembly**」と入力します。
-3.  Data Lake Analytics アカウントを選択します。
-4.  データベースを選択します。
-5.  ローカル アセンブリのパスを指定します。
+2.  「**ADL: Register Assembly**」と入力します。 
+3.  ローカル アセンブリのパスを指定します。 
+4.  Data Lake Analytics アカウントを選択します。
+5.  データベースを選択します。
+
+結果: ポータルがブラウザーで開かれ、アセンブリの登録プロセスが表示されます。  
+
+**ADL: Register Assembly** コマンドをトリガーする他の便利な方法として、エクスプローラーで dll ファイルを右クリックする方法があります。 
+
+**ADL: Register Assembly through Configuration**
+1.  **Ctrl + Shift + P** キーを押してコマンド パレットを開きます。
+2.  「**ADL: Register Assembly through Configuration**」と入力します。 
+3.  ローカル アセンブリのパスを指定します。 
+4.  Json ファイルが表示されます。 アセンブリの依存関係とリソース パラメーターを確認して、必要な場合は編集します。 手順が出力ウィンドウに表示されます。 Json ファイルを保存 (**Ctrl + S**) し、アセンブリの登録を続行します。
+
+![Data Lake Tools for Visual Studio Code の分離コード](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-register-assembly-advance.png)
+>[!NOTE]
+>- アセンブリの依存関係: Azure Data Lake Tools auto は、DLL が依存関係を持つかどうかを自動的に検出します。 依存関係が検出された場合は、Json ファイルに表示されます。 
+>- リソース: DLL のリソース (txt、png、csv など) をアセンブリの登録の一部としてアップロードできます。 
+
+**ADL: Register Assembly through Configuration** コマンドをトリガーするさらに便利な方法として、エクスプローラーで dll ファイルを右クリックする方法があります。 
 
 次の U-SQL コードは、アセンブリを呼び出す方法を示しています。 このサンプルでは、アセンブリ名は *test* です。
 
@@ -273,12 +304,11 @@ Azure に接続した後は、以下の手順に従って U-SQL カタログに�
 2.  アカウントのジョブの一覧が表示されるまで待機します。
 3.  ジョブの一覧からジョブを選択すると、ADL Tools によってポータルにジョブの詳細が表示され、VSCode に JobInfo ファイルが表示されます。
 
-    ![Data Lake Tools for Visual Studio Code の IntelliSense オブジェクト型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
+![Data Lake Tools for Visual Studio Code の IntelliSense オブジェクト型](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-show-job.png)
 
 ## <a name="azure-data-lake-storage-adls-integration"></a>Azure Data Lake Storage (ADLS) の統合
 
-VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビゲーションや ADLS ファイルのプレビューを行い、ADLS にファイルを直接アップロードすることができます。  コマンド **[ADL: Open Web Azure Storage Explorer]\(Web Azure ストレージ エクスプローラーを開く\)** を使用するか、コンテキスト メニューを右クリックして、**Web Azure ストレージ エクスプローラー**を開くこともできます。
-
+VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビゲーションや ADLS ファイルのプレビューを行い、ADLS にファイルを直接アップロードすることができます。  
 ### <a name="list-storage-path"></a>ストレージ パスのリスト
 
 コマンド パレット (**Ctrl + Shift + P**) を使用して、**[ADL: List Storage Path] \(ADL: ストレージ パスのリスト\)** を選択します。
@@ -286,33 +316,45 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
     ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-storage.png)
 
-2.  ローカルまたは ADLA からアカウントを選択します。
+2.  ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] (パスを入力)** を使用しています。
 
-    ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+    ![Data Lake Tools for Visual Studio Code のストレージ パス リスト選択方法](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
 
-3.  [その他] をクリックし、さらに ADLA アカウントを一覧表示して、ADLA アカウントを選択します。
+    > [!NOTE]
+    >- Vscode は最後にアクセスしたすべてのADLAアカウントのパスを保持します。 例： /tt/ss.
+    >- Browser from root path: ADLA アカウントまたはローカルを選択して、ルート パスをリストに加えます。
+    >- Enter a path: ADLA アカウントまたはローカルを選択して、指定したパスをリストに加えます。
+    
+3. ローカルまたは ADLA アカウントからアカウントを選択します。
 
-    ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
+    ![Data Lake Tools for Visual Studio Code で [その他] を選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
 
-4.  Azure ストレージ パスを入力する 例: /output/
+4.  [その他] をクリックし、さらに ADLA アカウントを一覧表示して、ADLA アカウントを選択します。
 
-       ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-path.png)
+    ![Data Lake Tools for Visual Studio Code のアカウントの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
 
-5.  結果: コマンド パレットには、入力内容に基づくパス情報が一覧表示されます。
+5.  Azure ストレージ パスを入力する 例: /output
 
-    ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-path.png)
+       ![Data Lake Tools for Visual Studio Code のストレージ パスの入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-path.png)
+
+6.  結果: コマンド パレットには、入力内容に基づくパス情報が一覧表示されます。
+
+    ![Data Lake Tools for Visual Studio Code のストレージ パスの結果一覧](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-path.png)
 
 相対パスの一覧を表示する便利な別の方法は、右クリック コンテキスト メニューを使用することです。
 
 1.  パス文字列を右クリックし、[List Storage Path]\(ストレージ パスのリスト\) を選択します。
 
        ![Data Lake Tools for Visual Studio Code の右クリック コンテキスト メニュー](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-right-click-path.png)
+2. コマンド パレットに、選択した相対パスが表示されます。
 
-2.  ローカルまたは ADLA アカウントからアカウントを選択します。
+   ![Data Lake Tools for Visual Studio Code の選択したパスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-relative-path.png)
 
-       ![Data Lake Tools for Visual Studio Code の右クリック ストレージ](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+3.  ローカルまたは ADLA アカウントからアカウントを選択します。
 
-3.  結果: コマンド パレットに、現在のパスのフォルダーおよびファイルが一覧表示されます。
+       ![Data Lake Tools for Visual Studio Code のアカウントの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+
+4.  結果: コマンド パレットに、現在のパスのフォルダーおよびファイルが一覧表示されます。
 
        ![Data Lake Tools for Visual Studio Code の現在のパスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-current.png)
 
@@ -321,7 +363,7 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 コマンド パレット (**Ctrl + Shift + P**) を使用して、**[ADL: Preview Storage File] \(ADL: ストレージ ファイルのプレビュー\)** を選択します。
 1.  コマンド パレットを開き、コマンドを入力します。
 
-       ![Data Lake Tools for Visual Studio Code のプレビュー リスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-preview.png)
+       ![Data Lake Tools for Visual Studio Code のファイルをプレビュー](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-preview.png)
 
 2.  ローカルまたは ADLA からアカウントを選択します。
 
@@ -331,13 +373,13 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
        ![Data Lake Tools for Visual Studio Code のアカウントの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
 
-4.  Azure ストレージ パスを入力する 例: /output/
+4.  Azure ストレージ パスまたはファイルを入力します。 例: /output/SearchLog.txt
 
-       ![Data Lake Tools for Visual Studio Code の入力ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-file.png)
+       ![Data Lake Tools for Visual Studio Code のストレージ パスとファイルを入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-preview-file.png)
 
 5.  結果: コマンド パレットには、入力内容に基づくパス情報が一覧表示されます。
 
-       ![Data Lake Tools for Visual Studio Code のファイルのプレビュー](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
+       ![Data Lake Tools for Visual Studio Code のファイル結果をプレビュー](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
 
 ファイルのプレビューを表示する便利な別の方法は、右クリック コンテキスト メニューを使用することです。
 
@@ -351,38 +393,65 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
 3.  結果: VSCode に、ファイルのプレビュー結果が表示されます。
 
-       ![Data Lake Tools for Visual Studio Code の現在のパスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
+       ![Data Lake Tools for Visual Studio Code のファイル結果をプレビュー](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-preview-results.png)
 
-### <a name="upload-to-storage-path"></a>ストレージ パスにアップロードする
+### <a name="upload-file"></a>ファイルのアップロード 
 
-コマンド パレット (**Ctrl + Shift + P**) を使用して、**[ADL: : Upload to Storage Path] \(ADL: ストレージ パスへのアップロード\)** を選択します。
-1.  コマンド パレットを開き、コマンドを入力します。
+**ADL: Upload File** または **ADL: Upload File through Configuration** のコマンドを使用してファイルをアップロードすることができます。
 
-       ![Data Lake Tools for Visual Studio Code のプレビュー リスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-storage.png)
+**ADL: Upload File**
+1.  Ctrl + Shift + P キーを押してコマンド パレットを開くか、スクリプト エディターを右クリックして、「**Upload File**」と入力します。
+2. アップロードするローカル パスを入力します。
 
-2.  ローカルまたは ADLA からアカウントを選択します。
+    ![Data Lake Tools for Visual Studio Code でのローカル パスの入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-input-local-path.png)
 
-       ![Data Lake Tools for Visual Studio Code のアカウントのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
+3. ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] (パスを入力)** を使用しています。
 
-3.  [その他] をクリックし、さらに ADLA アカウントを一覧表示して、ADLA アカウントを選択します。
+    ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
+    >[!NOTE]
+    >- Vscode は最後にアクセスしたすべてのADLAアカウントのパスを保持します。 例： /tt/ss.
+    >- Browser from root path: ADLA アカウントまたはローカルを選択して、ルート パスをリストに加えます。
+    >- Enter a path: ADLA アカウントまたはローカルを選択して、指定したパスをリストに加えます。
 
-       ![Data Lake Tools for Visual Studio Code のアカウントの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-select-adla-account.png)
+4. ローカルまたは ADLA アカウントからアカウントを選択します。
 
-4.  Azure ストレージ パスを入力する 例: /output/
+    ![Data Lake Tools for Visual Studio Code の右クリック ストレージ](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account.png)
 
-       ![Data Lake Tools for Visual Studio Code の入力ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-file.png)
+5.  Azure ストレージ パスを入力する 例: /output/
 
-5.  ソース ファイルへのローカル パスを入力します。
+       ![Data Lake Tools for Visual Studio Code のストレージ パスの入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-preview-file.png)
 
-       ![Data Lake Tools for Visual Studio Code の入力ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-file.png)
+6. Azure ストレージ パスを入力してリストに加えます。 **[Choose current folder] (現在のフォルダーを選択)** を選択します。
 
-6.  VSCode に、json 構成ファイルが表示され、必要な場合は、さらに更新を行うことができます。 ファイルを保存し (CTRL + S)、ファイルのアップロードを続行します。
-
-       ![Data Lake Tools for Visual Studio Code の入力ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-file.png)
+    ![Data Lake Tools for Visual Studio Code のフォルダーの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-choose-current-folder.png)
 
 7.  結果: 出力ウィンドウに、ファイル アップロードのステータスが表示されます。
 
        ![Data Lake Tools for Visual Studio Code のアップロード ステータス](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-status.png)    
+
+**ADL: Upload File through Configuration**
+1.  Ctrl + Shift + P キーを押してコマンド パレットを開くか、スクリプト エディターを右クリックして、「**Upload File through Configuration**」と入力します。
+2.  VSCode に、json ファイルが表示されます。 ファイルのパスを入力し、同時に複数のファイルをアップロードできます。 手順が出力ウィンドウに表示されます。 Json ファイルを保存 (**Ctrl + S**) し、ファイルのアップロードを続行します。
+
+       ![Data Lake Tools for Visual Studio Code の入力ファイル](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-file.png)
+
+3.  結果: 出力ウィンドウに、ファイル アップロードのステータスが表示されます。
+
+       ![Data Lake Tools for Visual Studio Code のアップロード ステータス](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-upload-status.png)     
+
+ファイルをストレージにアップロードする別の便利な方法として、スクリプト エディターでファイルのフルパスまたはファイルの相対パスの右クリック メニューを使用する方法があります。 ローカル ファイル パスを入力し、アカウントを選択すると、出力ウィンドウにアップロード ステータスが表示されます。 
+
+### <a name="open-web-azure-storage-explorer"></a>Web Azure ストレージ エクスプローラーを開く
+コマンド **[ADL: Open Web Azure Storage Explorer] (Web Azure ストレージ エクスプローラーを開く)** を使用するか、右クリック メニューで、**Web Azure ストレージ エクスプローラー**を開くことができます。
+
+1. Ctrl + Shift + P キーを押してコマンド パレットを開きます。
+2. 「**Open Web Azure Storage Explorer**」と入力するか、スクリプト エディターで相対パスまたは完全なパスを右クリックして、**[Open Web Azure Storage Explorer] (Web Azure ストレージ エクスプローラーを開く)** を選択します。
+3. Data Lake Analytics アカウントを選択します。
+
+ADL Tools によってポータルに Azure ストレージ パスが開かれます。 パスにアクセスして Web でファイルのプレビューを確認できます。
+
+### <a name="local-run-and-local-debug-windows-users"></a>Windows ユーザーのローカル実行とローカル デバッグ
+U-SQL Local Run は ADLA にコードをパブリッシュする前に、ローカル データ のテスト、ローカルでのスクリプト検証をするために導入されました。 ローカル デバッグ機能を使用すると、C# 分離コードのデバッグ、コードの実行、ローカルでのスクリプトの検証を ADLA に送信する前に行うことができます。 手順については、「[U-SQL local run and local debug with Visual Studio Code (Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ)](data-lake-tools-for-vscode-local-run-and-debug.md)」をご覧ください。
 
 ## <a name="additional-features"></a>その他の機能
 
@@ -410,8 +479,9 @@ Data Lake Tools for VSCode では、以下の各機能がサポートされて�
 
     ![Data Lake Tools for Visual Studio Code の構文の強調表示](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-syntax-highlights.png)
 
-## <a name="next-steps"></a>次のステップ:
+## <a name="next-steps"></a>次のステップ
 
+- Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグについては、「[U-SQL local run and local debug with Visual Studio Code (Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ)](data-lake-tools-for-vscode-local-run-and-debug.md)」をご覧ください。
 - Data Lake Analytics の概要については、[Azure Data Lake Analytics の使用開始に関するチュートリアル](data-lake-analytics-get-started-portal.md)のページを参照してください。
 - Data Lake Tools for Visual Studio の使用方法については、「[チュートリアル: Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)」を参照してください。
 - アセンブリの開発に関する情報については、「[Develop U-SQL assemblies for Azure Data Lake Analytics jobs (Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発)](data-lake-analytics-u-sql-develop-assemblies.md)」を参照してください。

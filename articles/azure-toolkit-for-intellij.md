@@ -14,25 +14,22 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: robmcm;asirveda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: f234780e85c8a7c969ad7a0c66254ca295d4f92e
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 75a8880f3d28c290236b87677648fdd915effea2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ
-Azure Toolkit for IntelliJ は、IntelliJ 開発環境を使って Azure アプリケーションを簡単に作成、開発、テスト、デプロイできるテンプレートと機能を提供します。 これはオープン ソース プロジェクトであり、そのソース コードは、プロジェクト サイトから MIT License で入手できます。URL は次のとおりです。
-
-* <https://github.com/microsoft/azure-tools-for-java>
+Azure Toolkit for IntelliJ は、IntelliJ 統合開発環境 (IDE) を使って Azure アプリケーションを簡単に作成、開発、テスト、またデプロイできるテンプレートと機能を提供します。 これはオープン ソース プロジェクトであり、そのソース コードは、[プロジェクト サイトから MIT License](https://github.com/microsoft/azure-tools-for-java) で入手できます。
 
 > [!NOTE]
 > Eclipse IDE 用の Azure Toolkit もあります。 詳細については、「 [Azure Toolkit for Eclipse](azure-toolkit-for-eclipse.md)」をご覧ください。
 > 
 > 
 
-## <a name="getting-started-with-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の概要
+## <a name="get-started-with-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の概要
 次の記事では、Azure Toolkit for IntelliJ の使用方法について説明します。
 
 * [Azure Toolkit for IntelliJ の新機能](azure-toolkit-for-intellij-whats-new.md)
@@ -40,7 +37,7 @@ Azure Toolkit for IntelliJ は、IntelliJ 開発環境を使って Azure アプ�
 * [Azure Toolkit for IntelliJ のサインイン手順](azure-toolkit-for-intellij-sign-in-instructions.md)
 * [IntelliJ で Azure 用の Hello World Web アプリを作成する](app-service-web/app-service-web-intellij-create-hello-world-web-app.md)
 
-## <a name="using-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の使用
+## <a name="use-the-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ の使用
 次の記事では、Azure Toolkit for IntelliJ を使用して Azure 機能を Java プロジェクトに追加する方法について説明します。
 
 * [Azure Explorer for IntelliJ を使用して仮想マシンを管理する](azure-toolkit-for-intellij-managing-storage-accounts-using-azure-explorer.md)
@@ -53,11 +50,9 @@ Azure Toolkit for IntelliJ は、IntelliJ 開発環境を使って Azure アプ�
 
 [!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
-
 <!-- URL List -->
 
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 
 <!-- Temporarily Deprecated URLs -->
