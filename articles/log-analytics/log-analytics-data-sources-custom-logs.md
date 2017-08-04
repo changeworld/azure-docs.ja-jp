@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 01/23/2017
+ms.date: 07/07/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: a9c70810c4f731b2d8b395873fa6b94db78306aa
-ms.lasthandoff: 01/24/2017
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: d79e7ec6abfc0104008139bb4f86cc7bb1a02a13
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -28,12 +29,12 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 
 収集するログ ファイルは、次の条件に一致する必要があります。
 
-* ログでは 1 行につき 1 エントリとするか、各エントリの先頭に次のいずれかの形式に一致するタイムスタンプを使用する必要があります。
+- ログでは 1 行につき 1 エントリとするか、各エントリの先頭に次のいずれかの形式に一致するタイムスタンプを使用する必要があります。
   
-    YYYY-MM-DD HH:MM:SS  <br>
-    M/D/YYYY HH:MM:SS AM/PM <br>
-    Mon DD,YYYY HH:MM:SS
-* ログ ファイルには、新しいエントリでファイルが上書きされる巡回更新を許可しません。 
+    YYYY-MM-DD HH:MM:SS <br>M/D/YYYY HH:MM:SS AM/PM <br>Mon DD,YYYY HH:MM:SS
+
+- ログ ファイルには、新しいエントリでファイルが上書きされる巡回更新を許可しません。 
+- ログ ファイルでは、ASCII または UTF-8 エンコードを使用する必要があります。  UTF-16 など他の形式はサポートされていません。
 
 ## <a name="defining-a-custom-log"></a>カスタム ログを定義する
 次の手順でカスタム ログ ファイルを定義できます。  この記事の最後にカスタム ログ追加のサンプル チュートリアルがあります。
@@ -59,10 +60,10 @@ Log Analytics のカスタム ログ データ ソースでは、Windows コン�
 > 
 
 1. **[閲覧]** をクリックし、サンプル ファイルを表示します。  一部のブラウザーでは、このボタンのラベルは **[ファイルの選択]** になっていることがあります。
-2. **[次へ]**をクリックします。 
+2. **[次へ]** をクリックします。 
 3. カスタム ログ ウィザードはファイルをアップロードし、識別したレコードを一覧表示します。
 4. 新しいレコードの識別に使用される区切り記号を変更し、ログ ファイルのレコードを最も効率的に識別する区切り記号を選択します。
-5. **[次へ]**をクリックします。
+5. **[次へ]** をクリックします。
 
 ### <a name="step-3-add-log-collection-paths"></a>手順 3. ログのコレクション パスを追加する
 エージェントに 1 つまたは複数のパスを定義する必要があります。エージェントがカスタム ログを見つける場所です。  ログ ファイルの特定のパスか名前を入力するか、名前にワイルドカードを含むパスを指定できます。  毎日新しいファイルを作成するアプリケーションに対応し、1 つのファイルが一定のサイズに到達した場合にも対応します。  また、1 つのログ ファイルに複数のパスを指定できます。

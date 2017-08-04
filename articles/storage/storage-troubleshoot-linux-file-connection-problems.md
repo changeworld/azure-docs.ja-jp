@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 07/11/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 5c22c2d8c00882c45ecc2991916e389b2a00586d
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 62cd62ec3a2900f06acacc0852a48b5e3ff1c8cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="troubleshoot-azure-file-storage-problems-in-linux"></a>Linux での Azure File Storage に関する問題のトラブルシューティング
@@ -84,11 +83,11 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="cause"></a>原因
 
-Linux ディストリビューションは、SMB 3.0 の暗号化機能を現時点ではサポートしていません。 一部のディストリビューションでは、ユーザーが SMB 3.0 を使用して Azure File Storage をマウントしようとしたときに、機能が見つからないため、"115" エラー メッセージが表示される場合があります。
+一部のディストリビューションでは、SMB 3.0 での暗号化機能がまだサポートされておらず、ユーザーが SMB 3.0 を使用して Azure File Storage をマウントしようとしたときに、機能が見つからないため、"115" エラー メッセージが表示される場合があります。
 
 ### <a name="solution"></a>解決策
 
-Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure File Storage をマウントします。
+Linux 用 SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできるようになります。 この機能は、公開時に Ubuntu 17.04 と Ubuntu 16.10 に移植されました。 Linux SMB クライアントが暗号化をサポートしていない場合は、File Storage アカウントと同じデータ センターにある Azure Linux VM から SMB 2.1 を使用して Azure File Storage をマウントします。
 
 <a id="slowperformance"></a>
 ## <a name="slow-performance-on-an-azure-file-share-mounted-on-a-linux-vm"></a>Linux VM にマウントされている Azure ファイル共有のパフォーマンスが低下している
@@ -111,18 +110,7 @@ Linux SMB クライアントが暗号化をサポートしていない場合は�
 
 `//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
-**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](storage-how-to-use-files-linux.md#mount-the-file-share)のマウント コマンドを実行して、Azure File Storage をマウント解除してから再マウントします。 その後、**/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
-
-<a id="error11"></a>
-## <a name="mount-error11-resource-temporarily-unavailable-when-youre-mounting-to-an-ubuntu-48-kernel"></a>Ubuntu 4.8 カーネルにマウントしているときの "マウント エラー (11): リソースは一時的に利用できません"
-
-### <a name="cause"></a>原因
-
-Ubuntu 16.10 カーネル (バージョン 4.8) のドキュメントでは、クライアントが暗号化をサポートしていると記載されていますが、実際にはサポートされていません。
-
-### <a name="solution"></a>解決策
-
-Ubuntu 16.10 が修正されるまでは、`vers=2.1` マウント オプションを指定するか、Ubuntu 16.04 を使用します。
+**cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure File Storage をマウント解除してから再マウントします。 その後、**/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
 
 <a id="timestampslost"></a>
 ## <a name="time-stamps-were-lost-in-copying-files-from-windows-to-linux"></a>Windows から Linux にファイルをコピーすると、タイム スタンプが失われる

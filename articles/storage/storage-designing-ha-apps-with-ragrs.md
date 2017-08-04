@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 3b7eca721181155cd2bcc619d517c9b5a6a89a0d
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: adc7e23d8c9f869f2951490020e3d0f1a2b2e81c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="designing-highly-available-applications-using-ra-grs"></a>RA-GRS を使用した高可用性アプリケーションの設計
@@ -37,7 +37,7 @@ RA-GRS ストレージの使用方法について説明する前に、その特�
 
 * セカンダリ リージョンの読み取り専用コピーは、プライマリ リージョンのデータと最終的に一致します (これを[結果整合性](https://en.wikipedia.org/wiki/Eventual_consistency)といいます)。
 
-* BLOB、テーブル、キューについて、セカンダリ リージョンの "*最後の同期時刻*" の値を照会すれば、プライマリ リージョンからセカンダリ リージョンへのレプリケーションが最後に行われた日時がわかります (現時点では、Azure Files には RA-GRS 冗長性がないため非対応です)。
+* BLOB、テーブル、キューについて、セカンダリ リージョンの "*最後の同期時刻*" の値を照会すれば、プライマリ リージョンからセカンダリ リージョンへのレプリケーションが最後に行われた日時がわかります (現時点では、Azure File Storage には RA-GRS 冗長性がないため非対応です)。
 
 * ストレージ クライアント ライブラリを使用して、プライマリ リージョンまたはセカンダリ リージョンのデータと対話することができます。 プライマリ リージョンに対する読み取り要求がタイムアウトした場合に、その要求をセカンダリ リージョンに自動的にリダイレクトすることもできます。
 

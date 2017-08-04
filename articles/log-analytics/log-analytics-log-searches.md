@@ -12,15 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 07/07/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: b005d0fb25483f3dce14133038d7759dff07fc7c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6dbe7713c48a60974f1026dddc8ee9d2aeb01708
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="find-data-using-log-searches"></a>ログ検索を使用してデータを探す
@@ -135,6 +134,24 @@ EventLog=Application OR EventLog=System AND Computer=SERVER1.contoso.com
 
 ```
 CounterName="% Processor Time"  AND InstanceName="_Total" AND (Computer=SERVER1.contoso.com OR Computer=SERVER2.contoso.com)
+```
+
+### <a name="field-types"></a>フィールドの型
+フィルターを作成するときは、ログ検索から返される各種フィールドの扱い方の違いを理解する必要があります。
+
+**検索可能フィールド**は、検索結果に青色で表示されます。  検索可能フィールドは、そのフィールドに固有の検索条件に使用できます。その例を次に示します。
+
+```
+Type: Event EventLevelName: "Error"
+Type: SecurityEvent Computer:Contains("contoso.com")
+Type: Event EventLevelName IN {"Error","Warning"}
+```
+
+**フリーテキスト検索可能フィールド**は、検索結果に灰色で表示されます。  検索可能フィールドのようにフィールド固有の検索条件で使用することはできません。  検索できるのは、全フィールドを対象にクエリを実行するときだけです。その例を次に示します。
+
+```
+"Error"
+Type: Event "Exception"
 ```
 
 

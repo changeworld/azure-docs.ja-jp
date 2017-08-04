@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: robinsh
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: da581b2e22f85152ae7bc5f0d403b2fc0aaf0e54
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a477c1eaf2388f31d4fd36b90f9a830c782873d3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="storage-analytics"></a>Storage Analytics
@@ -38,7 +38,7 @@ Storage Analytics は、ストレージ サービスに対する要求の成功�
 
 ログ エントリが作成されるのは、ストレージ サービス アクティビティが存在する場合に限られます。 たとえば、ストレージ アカウントの BLOB サービスにはアクティビティが存在するが、Table サービスや Queue サービスにはアクティビティが存在しない場合、BLOB サービスに関連したログだけが作成されます。
 
-Storage Analytics Logging は、Azure File Service では使用できません。
+Storage Analytics Logging は、Azure File Storage では使用できません。
 
 ### <a name="logging-authenticated-requests"></a>認証済み要求のログ記録
 次のタイプの認証済み要求が記録されます。

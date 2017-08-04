@@ -10,13 +10,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: c0938fb27afe2aad77e66b189f46d30a8e045b55
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 048697f87383662506fb851bb3ea510c2cddf043
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -59,19 +59,19 @@ Azure AD は、以下に示すいくつかの要件に従って、SAML 2.0 SP Li
 SAML 応答メッセージでは、署名ノードにメッセージ自体のデジタル署名に関する情報が含まれています。 署名ブロックには次の要件があります。
 
 1. アサーション ノード自体を署名する必要があります。
-2.    DigestMethod として RSA-sha1 アルゴリズムを使用する必要があります。 その他のデジタル署名アルゴリズムは容認されません。
+2.  DigestMethod として RSA-sha1 アルゴリズムを使用する必要があります。 その他のデジタル署名アルゴリズムは容認されません。
    `<ds:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha1"/>`
-3.    XML ドキュメントにも署名できます。 
-4.    変換アルゴリズムは、次の例の値と一致する必要があります。 `<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
+3.  XML ドキュメントにも署名できます。 
+4.  Transform アルゴリズムは、次の例の値と一致する必要があります。`<ds:Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature"/>
        <ds:Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#"/>`
-9.    SignatureMethod アルゴリズムは、次の例と一致する必要があります。`<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
+9.  SignatureMethod アルゴリズムは、次の例と一致する必要があります。`<ds:SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha1"/>`
 
 ## <a name="supported-bindings"></a>サポートされるバインディング
 バインディングは、トランスポート関連の必須通信パラメーターです。 バインディングには次の要件が適用されます。
 
 1. 要求されるトランスポートは HTTPS です。
-2.    Azure AD は、ログオン中のトークンの送信で HTTP POST を必要とします。
-3.    Azure AD は、ID プロバイダーへの認証要求で HTTP POST を使用し、ID プロバイダーへのログオフ メッセージで REDIRECT を必要とします。
+2.  Azure AD は、ログオン中のトークンの送信で HTTP POST を必要とします。
+3.  Azure AD は、ID プロバイダーへの認証要求で HTTP POST を使用し、ID プロバイダーへのログオフ メッセージで REDIRECT を必要とします。
 
 ## <a name="required-attributes"></a>必須属性
 次の表は、SAML 2.0 メッセージの特定の属性の要件を示します。
@@ -178,7 +178,7 @@ SAML 2.0 ID プロバイダーを使用してフェデレーションする各 A
 
 
 1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService
-2.    SAML 2.0 とのフェデレーションで使用する Office 365 ドメインを構成します。`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
+2.  SAML 2.0 とのフェデレーションで使用する Office 365 ドメインを構成します。`$dom = "contoso.com" $BrandName - "Sample SAML 2.0 IDP" $LogOnUrl = "https://WS2012R2-0.contoso.com/passiveLogon" $LogOffUrl = "https://WS2012R2-0.contoso.com/passiveLogOff" $ecpUrl = "https://WS2012R2-0.contoso.com/PAOS" $MyURI = "urn:uri:MySamlp2IDP" $MySigningCert = @" MIIC7jCCAdagAwIBAgIQRrjsbFPaXIlOG3GTv50fkjANBgkqhkiG9w0BAQsFADAzMTEwLwYDVQQDEyh BREZTIFNpZ25pbmcgLSBXUzIwMTJSMi0wLnN3aW5mb3JtZXIuY29tMB4XDTE0MDEyMDE1MTY0MFoXDT E1MDEyMDE1MTY0MFowMzExMC8GA1UEAxMoQURGUyBTaWduaW5nIC0gV1MyMDEyUjItMC5zd2luZm9yb WVyLmNvbTCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAKe+rLVmXy1QwCwZwqgbbp1/kupQ VcjKuKLitVDbssFyqbDTjP7WRjlVMWAHBI3kgNT7oE362Gf2WMJFf1b0HcrsgLin7daRXpq4Qi6OA57 sW1YFMj3sqyuTP0eZV3S4+ZbDVob6amsZIdIwxaLP9Zfywg2bLsGnVldB0+XKedZwDbCLCVg+3ZWxd9 T/jV0hpLIIWr+LCOHqq8n8beJvlivgLmDJo8f+EITnAxWcsJUvVai/35AhHCUq9tc9sqMp5PWtabAEM b2AU72/QlX/72D2/NbGQq1BWYbqUpgpCZ2nSgvlWDHlCiUo//UGsvfox01kjTFlmqQInsJVfRxF5AcC AwEAATANBgkqhkiG9w0BAQsFAAOCAQEAi8c6C4zaTEc7aQiUgvnGQgCbMZbhUXXLGRpjvFLKaQzkwa9 eq7WLJibcSNyGXBa/SfT5wJgsm3TPKgSehGAOTirhcqHheZyvBObAScY7GOT+u9pVYp6raFrc7ez3c+ CGHeV/tNvy1hJNs12FYH4X+ZCNFIT9tprieR25NCdi5SWUbPZL0tVzJsHc1y92b2M2FxqRDohxQgJvy JOpcg2mSBzZZIkvDg7gfPSUXHVS1MQs0RHSbwq/XdQocUUhl9/e/YWCbNNxlM84BxFsBUok1dH/gzBy Sx+Fc8zYi7cOq9yaBT3RLT6cGmFGVYZJW4FyhPZOCLVNsLlnPQcX3dDg9A==" "@ $uri = "http://WS2012R2-0.contoso.com/adfs/services/trust" $Protocol = "SAMLP" Set-MsolDomainAuthentication -DomainName $dom -FederationBrandName $dom -Authentication Federated -PassiveLogOnUri $MyURI -ActiveLogOnUri $ecpUrl -SigningCertificate $MySigningCert -IssuerUri $uri -LogOffUri $url -PreferredAuthenticationProtocol $Protocol` 
 
 3.  IDP メタデータ ファイルから署名証明書の base64 でエンコードされた文字列を取得できます。 この場所の例は用意されていますが、実装に基づいて若干異なる場合があります。
 
@@ -202,8 +202,8 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 
 
 1. テナント管理者として、Azure AD ディレクトリに接続します。Connect-MsolService
-2.    新しいユーザー プリンシパルを作成します。` New-MsolUser
-      -UserPrincipalName elwoodf1@contoso.com
+2.  新しいユーザー プリンシパルを作成します。` New-MsolUser
+        -UserPrincipalName elwoodf1@contoso.com
         -ImmutableId ABCDEFG1234567890
         -DisplayName "Elwood Folk"
         -FirstName Elwood 
@@ -222,11 +222,11 @@ Windows PowerShell は、新しいユーザーの Azure AD への追加を自動
 
 
 1.  Azure AD SAML 2.0 プロトコル要件をレビューしている
-2.    SAML 2.0 ID プロバイダーを構成している
-3.    SAML 2.0 ID プロバイダーでシングル サインオンするための Windows PowerShell をインストールしている
-4.    SAML 2.0 ID プロバイダーと Azure AD との間に信頼を確立している
-5.    Windows PowerShell または Azure AD Connect を介して Azure Active Directory (Office 365) に既知のテスト ユーザー プリンシパルをプロビジョニングしている
-6.    [Azure AD Connect](active-directory-aadconnect.md) を使用してディレクトリ同期を構成している
+2.  SAML 2.0 ID プロバイダーを構成している
+3.  SAML 2.0 ID プロバイダーでシングル サインオンするための Windows PowerShell をインストールしている
+4.  SAML 2.0 ID プロバイダーと Azure AD との間に信頼を確立している
+5.  Windows PowerShell または Azure AD Connect を介して Azure Active Directory (Office 365) に既知のテスト ユーザー プリンシパルをプロビジョニングしている
+6.  [Azure AD Connect](active-directory-aadconnect.md) を使用してディレクトリ同期を構成している
 
 SAML 2.0 SP-Lite ベースの ID プロバイダーを使用するシングル サインオンを設定したら、それが正しく動作していることを検証する必要があります。
 
@@ -245,10 +245,10 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 
 
 1. [https://testconnectivity.microsoft.com/?tabid=Client](https://testconnectivity.microsoft.com/?tabid=Client) から接続アナライザーをダウンロードします。
-2.    [今すぐインストール] をクリックして、ツールのダウンロードとインストールを開始します。
-3.    [I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory]\(Office 365、Azure、または Azure Active Directory を使用するその他のサービスとのフェデレーションを設定できません\) を選択します。
-4.    ツールがダウンロードされて実行されると、[接続診断] ウィンドウが表示されます。 ツールが示す手順に従って、フェデレーションの接続をテストします。
-5.    接続アナライザーによって、ログオン用の SAML 2.0 IDP が開きます。テストするユーザー プリンシパルの資格情報を入力します。![SAML](media/active-directory-aadconnect-federation-saml-idp/saml1.png)
+2.  [今すぐインストール] をクリックして、ツールのダウンロードとインストールを開始します。
+3.  [I can’t set up federation with Office 365, Azure, or other services that use Azure Active Directory]\(Office 365、Azure、または Azure Active Directory を使用するその他のサービスとのフェデレーションを設定できません\) を選択します。
+4.  ツールがダウンロードされて実行されると、[接続診断] ウィンドウが表示されます。 ツールが示す手順に従って、フェデレーションの接続をテストします。
+5.  接続アナライザーによって、ログオン用の SAML 2.0 IDP が開きます。テストするユーザー プリンシパルの資格情報を入力します。![SAML](media/active-directory-aadconnect-federation-saml-idp/saml1.png)
 6.  フェデレーション テストのサインイン ウィンドウでは、SAML 2.0 ID プロバイダーとフェデレーションするように構成されている Azure AD テナントのアカウント名とパスワードを入力する必要があります。 ツールは、これらの資格情報を使用してサインインを試行し、サインインの試行中に実行したテストの詳細な結果を出力として提示します。
 ![SAML](media/active-directory-aadconnect-federation-saml-idp/saml2.png)
 7. このウィンドウには、テストの失敗した結果を示しています。 [詳細結果をレビュー] クリックすると、実行された各テストの結果に関する情報が表示されます。 結果を共有するためにディスクに保存することもできます。
@@ -262,8 +262,8 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 
 
 1. ドメインに参加しているコンピューターで、会社の資格情報で使用するのと同じログオン名を使用して、クラウド サービスにサインインします。
-2.    [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されていれば、パスワード ボックスは網掛けになり、"<your company> にサインインする必要があります。" というメッセージが表示されます。
-3.    <your company> リンクの [サインイン] をクリックします。 サインインすることができたら、シングル サインオンが設定されています。
+2.  [パスワード] ボックスの内側をクリックします。 シングル サインオンが設定されていれば、パスワード ボックスは網掛けになり、"<your company> にサインインする必要があります。" というメッセージが表示されます。
+3.  <your company> リンクの [サインイン] をクリックします。 サインインすることができたら、シングル サインオンが設定されています。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -271,3 +271,4 @@ Microsoft では、SAML 2.0 ベースの ID プロバイダーをテストする
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](active-directory-aadconnect-federation-management.md)
 - [Azure AD のフェデレーション互換性リスト](active-directory-aadconnect-federation-compatibility.md)
 - [Azure AD Connect のカスタム インストール](active-directory-aadconnect-get-started-custom.md)
+

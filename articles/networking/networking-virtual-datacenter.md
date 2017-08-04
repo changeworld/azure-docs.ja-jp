@@ -5,17 +5,17 @@ services: networking
 author: tracsman
 manager: rossort
 tags: azure-resource-manager
-ms.service: networking
+ms.service: virtual-network
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: df2e834dd06a00716aa4991af62277791b6768f5
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 487c2dc22acc5194ef103ebef01c62c887580335
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 

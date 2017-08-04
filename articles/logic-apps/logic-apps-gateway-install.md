@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 06/9/2017
+ms.date: 07/13/2017
 ms.author: LADocs; dimazaid; estfan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 7122b970c2e4703df9771e8ace4e710399ca3e6c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
@@ -29,7 +28,7 @@ ms.lasthandoff: 06/13/2017
 
 このゲートウェイは、次のオンプレミスのデータ ソースへの接続をサポートします。
 
-*   BizTalk Server
+*   BizTalk Server 2016
 *   DB2  
 *   ファイル システム
 *   Informix
@@ -39,18 +38,18 @@ ms.lasthandoff: 06/13/2017
 *   PostgreSQL
 *   SAP アプリケーション サーバー 
 *   SAP メッセージ サーバー
-*   SharePoint (HTTP のみ。HTTPS は対象外)
+*   SharePoint
 *   SQL Server
 *   Teradata
 
 以下の手順は、[ゲートウェイとロジック アプリ間の接続を設定](./logic-apps-gateway-connection.md)する前にオンプレミス データ ゲートウェイをインストールする方法を示しています。 サポートされる接続の詳細については、[Azure Logic Apps のコネクタ](https://docs.microsoft.com/azure/connectors/apis-list)に関するページを参照してください。 
 
-他の Microsoft サービス向けのデータ ゲートウェイの詳細については、次の記事を参照してください。
+他のサービスでゲートウェイを使用する方法については、次の記事を参照してください。
 
-*   [Azure Application Gateway](https://azure.microsoft.com/services/application-gateway/): [Application Gateway の概要](../application-gateway/application-gateway-introduction.md)
 *   [Microsoft Power BI オンプレミス データ ゲートウェイ](https://powerbi.microsoft.com/documentation/powerbi-gateway-onprem/)
 *   [Azure Analysis Services オンプレミス データ ゲートウェイ](../analysis-services/analysis-services-gateway.md)
 *   [Microsoft Flow オンプレミス データ ゲートウェイ](https://flow.microsoft.com/documentation/gateway-manage/)
+*   [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
 ## <a name="requirements"></a>必要条件

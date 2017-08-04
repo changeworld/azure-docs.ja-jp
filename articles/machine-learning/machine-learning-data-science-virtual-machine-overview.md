@@ -1,6 +1,6 @@
 ---
 title: "データ サイエンス仮想マシンとは | Microsoft Docs"
-description: "この記事では、重要なシナリオ、機能、および分析に使用できるデータ サイエンス Virtual Machines、環境、ツールキットを使い始める方法について説明します。"
+description: "データ サイエンス仮想マシンで主要な分析シナリオを始める方法。"
 keywords: "データ サイエンス ツール,データ サイエンス仮想マシン, データ サイエンス用ツール, linux データ サイエンス"
 services: machine-learning
 documentationcenter: 
@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/13/2017
-ms.author: gokuma
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 77b4f634c2a30d0cbec92d34a7f83866541d7d84
-ms.lasthandoff: 04/15/2017
-
+ms.date: 07/21/2017
+ms.author: gokuma;bradsev
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 6a1bde07ea04445849674712361892f5783c0f2d
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="introduction-to-the-cloud-based-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用のクラウド ベースのデータ サイエンス仮想マシンの概要
@@ -119,7 +119,7 @@ ms.lasthandoff: 04/15/2017
 
 
 
-## <a name="how-to-get-started-with-the-windows-data-science-vm"></a>Windows データ サイエンス仮想マシンを使う方法
+## <a name="get-started-with-the-windows-data-science-vm"></a>Windows データ サイエンス仮想マシンを使ってみる
 * [このページ](https://azure.microsoft.com/marketplace/partners/microsoft-ads/standard-data-science-vm/)に移動し、緑の **[仮想マシンの作成]** ボタンを選んで、Windows 上に VM のインスタンスを作成します。
 * VM を作成するときに指定した資格情報を使って、リモート デスクトップから VM にサインインします。
 * 使用できるツールを見つけて起動するには、**[Start]** (開始) メニューをクリックします。

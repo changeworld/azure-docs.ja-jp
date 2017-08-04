@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 07/06/2017
 ms.author: magoedte
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 79bbb4dfe03a6c1ae782abc1404e22343bde22a0
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 24d970faa0b4b1a74629b55efb034e9d79eddb1d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -55,8 +55,8 @@ IT セキュリティ ポリシーで、ネットワーク上のコンピュー�
 |------|---------|  
 |*.ods.opinsights.azure.com | ポート 443|   
 |*.oms.opinsights.azure.com | ポート 443|   
-|ods.systemcenteradvisor.com | ポート 443|   
 |*.blob.core.windows.net/ | ポート 443|   
+|*.azure-automation.net | ポート 443|  
 
 ### <a name="package-requirements"></a>パッケージの要件
 
@@ -66,7 +66,7 @@ Glibc | GNU C ライブラリ   | 2.5-12
 Openssl | OpenSSL ライブラリ | 0.9.8e または 1.0
 Curl | cURL Web クライアント | 7.15.5
 Python-ctypes | | 
-PAM | Pluggable Authentication Module (プラグ可能な認証モジュール)   | 
+PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) | 
 
 > [!NOTE]
 >  syslog メッセージを収集するには、rsyslog または syslog-ng が必要となります。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、rsyslog デーモンをインストールし、sysklog を置き換えるように構成する必要があります。 
@@ -75,7 +75,7 @@ PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) 
 
 **パッケージ** | **バージョン** | **説明**
 ----------- | ----------- | --------------
-omsagent | 1.3.4 | Operations Management Suite Agent for Linux
+omsagent | 1.4.0 | Operations Management Suite Agent for Linux
 omsconfig | 1.1.1 | OMS Agent 用の構成エージェント
 omi | 1.2.0 | Open Management Infrastructure (OMI) - 軽量の CIM サーバー
 scx | 1.6.3 | オペレーティング システムのパフォーマンス メトリックの OMI CIM プロバイダー
@@ -142,22 +142,22 @@ Options:
 
 #### <a name="to-install-and-onboard-directly"></a>直接インストールしてオンボードする場合
 ```
-sudo sh ./omsagent-1.3.0-1.universal.x64.sh --upgrade -w <workspace id> -s <shared key>
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <shared key>
 ```
 
 #### <a name="to-install-and-onboard-to-a-workspace-in-us-government-cloud"></a>インストールして、米国政府クラウド内のワークスペースにオンボードする場合
 ```
-sudo sh ./omsagent-1.3.0-1.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us
 ```
 
 #### <a name="to-install-the-agent-packages-and-onboard-at-a-later-time"></a>エージェント パッケージをインストールし、後でオンボードする場合
 ```
-sudo sh ./omsagent-1.3.0-1.universal.x64.sh --upgrade
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade
 ```
 
 #### <a name="to-extract-the-agent-packages-from-the-bundle-without-installing"></a>インストールせずに、バンドルからエージェント パッケージを抽出する場合
 ```
-sudo sh ./omsagent-1.3.0-1.universal.x64.sh --extract
+sudo sh ./omsagent-<version>.universal.x64.sh --extract
 ```
 
 ## <a name="configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway"></a>HTTP プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成
@@ -184,7 +184,7 @@ proxyhost|プロキシ サーバー/OMS ゲートウェイのアドレスまた�
 omsagent インストール バンドルの `-p` または `--proxy` 引数で、使用するプロキシ構成を指定します。 
 
 ```
-sudo sh ./omsagent-1.3.0-1.universal.x64.sh --upgrade -p http://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p http://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
 ```
 
 ### <a name="define-the-proxy-configuration-in-a-file"></a>ファイルでプロキシ構成を定義する
@@ -217,9 +217,8 @@ System Center Operations Manager 管理グループにレポートするよう�
 ワークスペースの ID とキーを指定して、omsadmin.sh コマンドを実行します。 このコマンドはルートとして実行 (sudo 昇格を使用) する必要があります。
 ```
 cd /opt/microsoft/omsagent/bin
-sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key> [-p <proxy>] [-v]
+sudo ./omsadmin.sh -w <WorkspaceID> -s <Shared Key>
 ```
-省略可能な -v スイッチを使用して、オンボード プロセス中に詳細なログ記録を有効にすることができます。 すべての情報は、シェル スクリプトが実行される画面に表示されます。
 
 ### <a name="onboarding-using-a-file"></a>ファイルを使用したオンボード
 1.  ファイル `/etc/omsagent-onboard.conf` を作成します。 このファイルはルートが読み取り/書き込み可能である必要があります。
@@ -328,4 +327,3 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 4. 場合によっては、OMS Agent for Linux が OMS サービスと通信できないときに、エージェントのデータが最大バッファー サイズ (50 MB) までキューイングされます。 `/opt/microsoft/omsagent/bin/service_control restart [<workspace id>]` コマンドを実行して、OMS Agent for Linux を再起動する必要があります。 
 > [!NOTE]
 > この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
-
