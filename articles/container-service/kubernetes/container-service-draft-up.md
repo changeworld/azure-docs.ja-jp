@@ -197,8 +197,8 @@ Draft によって、作成される各 Helm チャート (作業対象の各ア
   - Kubernetes 受信外部 IP アドレスにマップするように構成したルート デプロイ ドメイン (この例では `squillace.io`)
 
   `draft init` を呼び出すと、構成プロセスによって、上記の値の入力を求めるメッセージが表示されます。 このプロセスは、初めて実行すると、次のように表示されます。
-    ```
-    draft init
+ ```bash
+    $ draft init
     Creating pack ruby...
     Creating pack node...
     Creating pack gradle...
