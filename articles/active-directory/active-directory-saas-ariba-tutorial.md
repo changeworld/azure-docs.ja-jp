@@ -108,7 +108,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_samlbase.png)
 
-3. **[Ariba Domain and URLs] (Ariba のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Ariba Domain and URLs] \(Ariba のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_url.png)
 
@@ -120,7 +120,7 @@ Ariba で Azure AD のシングル サインオンを構成してテストする
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 ここでは、識別子に一意の文字列値を使用することをお勧めします。 これらの値を取得するには、Ariba クライアント サポート チーム (**1-866-218-2155**) に問い合わせてください。 
  
 
-4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64)] (証明書 (Base64))** をクリックし、証明書ファイルをコンピューターに保存します。
+4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64)] \(証明書 (Base64))** をクリックし、証明書ファイルをコンピューターに保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-ariba-tutorial/tutorial_ariba_certificate.png) 
 

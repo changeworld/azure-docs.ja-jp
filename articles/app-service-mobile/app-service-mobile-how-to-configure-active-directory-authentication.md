@@ -46,7 +46,7 @@ ms.lasthandoff: 03/09/2017
 
 ### <a name="register"> </a>Azure Active Directory にアプリケーションを登録する
 1. [Azure ポータル]にログオンし、アプリケーションに移動します。 **[URL]**をコピーします。 これを使用して、Azure Active Directory アプリケーションを構成します。
-2. [[Active Directory]] にサインインして、 **Active Directory**に移動します。
+2. [Active Directory] にサインインして、 **Active Directory**に移動します。
    
     ![][2]
 3. ディレクトリを選択し、上部の **[アプリケーション]** タブを選択します。 下部の **[追加]** をクリックして、新しいアプリの登録を作成します。
@@ -76,7 +76,7 @@ ms.lasthandoff: 03/09/2017
 ## <a name="optional-configure-a-native-client-application"></a>(省略可能) ネイティブ クライアント アプリケーションの構成
 Azure Active Directory では、ネイティブ クライアントを登録して、アクセス許可のマッピングをさらに詳細に制御することもできます。 **Active Directory Authentication Library**などのライブラリを使用してログインを実行する場合は、この処理が必要です。
 
-1. **Azure クラシック ポータル** の [[Active Directory]]に移動します。
+1. **Azure クラシック ポータル** の [Active Directory]に移動します。
 2. ディレクトリを選択し、上部の **[アプリケーション]** タブを選択します。 下部の **[追加]** をクリックして、新しいアプリの登録を作成します。
 3. **[組織で開発中のアプリケーションを追加]**をクリックします。
 4. アプリケーションの追加ウィザードで、アプリケーションの**名前**を入力し、種類として **[ネイティブ クライアント アプリケーション]** をクリックします。 その後、クリックして続行します。
@@ -101,6 +101,6 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 <!-- URLs. -->
 
 [Azure ポータル]: https://portal.azure.com/
-[[Active Directory]]: https://manage.windowsazure.com/
+[Active Directory]: https://manage.windowsazure.com/
 [alternative method]:#advanced
 

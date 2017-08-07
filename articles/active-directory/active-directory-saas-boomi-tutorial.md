@@ -161,7 +161,7 @@ Boomi で Azure AD のシングル サインオンを構成してテストする
 
     ![アプリ側でのシングル サインオンの構成](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_11.png)
 
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Enable SAML Single Sign-On](SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
+    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 **[Enable SAML Single Sign-On]\(SAML シングル サインオンの有効化)** のチェックボックスをオンにします。
 
     b. **[インポート]** をクリックして、Azure AD からダウンロードした証明書を **ID プロバイダー証明書** にアップロードします。
     
@@ -218,7 +218,7 @@ Azure AD ユーザーが Boomi にログインできるようにするには、�
 
     ![ユーザー](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_001.png "Users")
 
-3. **+** アイコンをクリックすると **[Add/Maintain User Roles](ユーザーの役割の追加と管理)** ダイアログが開きます。
+3. **+** アイコンをクリックすると **[Add/Maintain User Roles]\(ユーザーの役割の追加と管理)** ダイアログが開きます。
 
     ![ユーザー](./media/active-directory-saas-boomi-tutorial/tutorial_boomi_002.png "Users")
 

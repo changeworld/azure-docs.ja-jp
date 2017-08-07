@@ -108,7 +108,7 @@ Brightspace by Desire2Learn で Azure AD のシングル サインオンを構�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_samlbase.png)
 
-3. **[Brightspace by Desire2Learn Domain and URLs] (Brightspace by Desire2Learn のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Brightspace by Desire2Learn Domain and URLs] \(Brightspace by Desire2Learn のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-brightspace-desire2learn-tutorial/tutorial_brightspacebydesire2learn_url.png)
 

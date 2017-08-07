@@ -108,7 +108,7 @@ Asset Bank で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_samlbase.png)
 
-3. **[Asset Bank Domain and URLs] (Asset Bank のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Asset Bank Domain and URLs] \(Asset Bank のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-assetbank-tutorial/tutorial_assetbank_url.png)
 

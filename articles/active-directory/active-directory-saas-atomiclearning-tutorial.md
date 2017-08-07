@@ -108,7 +108,7 @@ Atomic Learning で Azure AD のシングル サインオンを構成してテ�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-atomiclearning-tutorial/tutorial_atomiclearning_samlbase.png)
 
-3. **[Atomic Learning Domain and URLs] (Atomic Learning のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Atomic Learning Domain and URLs] \(Atomic Learning のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-atomiclearning-tutorial/tutorial_atomiclearning_url.png)
 
