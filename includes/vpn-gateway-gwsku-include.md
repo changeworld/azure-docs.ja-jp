@@ -14,7 +14,7 @@ SLA と機能セットに違いがあるため、"*運用環境と開発テス�
 | **開発テストまたは概念実証**   | Basic                  |
 |                                    |                        |
 
-古い SKU を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU については、[ゲートウェイ SKU (古い SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。
+古い SKU を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU については、[ゲートウェイ SKU (レガシ SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。
 
 ###  <a name="feature"></a>ゲートウェイ SKU の機能セット
 
