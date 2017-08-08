@@ -113,7 +113,7 @@ POST /indexes/hotels/docs/search?api-version=2016-09-01
 Spacious,||air-condition*+"Ocean view" 
 ~~~~
 
-ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view と spacious と air-condition の "***すべて*" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
+ブール クエリの構造において、明示的な演算子 (`+"Ocean view"` の `+` など) の意味ははっきりしています。つまり検索条件との一致は "*必須 (must)*" です。 それに比べて、残りの語句 (spacious と air-condition) の解釈はあいまいです。 検索エンジンが探すべきなのは、ocean view *と* spacious *と* air-condition の "すべて" との一致でしょうか。 それとも、ocean view に加えて、残りの 2 つの語句のうち、"*どちらか一方*" のみが含まれていればよいのでしょうか。 
 
 既定 (`searchMode=any`) では、検索エンジンはより広く解釈することを想定します。 どちらか一方のフィールドが一致していればよい (*should*) の意味、つまり "or" のセマンティクスで解釈されます。 先ほど例に挙げた、2 つの "should" 演算を含んだクエリ ツリーは既定の動作を示しています。  
 
