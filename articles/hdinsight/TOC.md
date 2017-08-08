@@ -94,7 +94,6 @@
 #### [Data Lake Store に書き込む](hdinsight-storm-write-data-lake-store.md)
 #### [Maven で Java ベースのトポロジを開発する](hdinsight-storm-develop-java-topology.md)
 #### [Hadoop ツールで C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
-#### [Twitter のトレンド トピックを確認する](hdinsight-storm-twitter-trending.md)
 #### [C# トポロジでイベントを処理する](hdinsight-storm-develop-csharp-event-hub-topology.md)
 #### [Java トポロジでイベントを処理する](hdinsight-storm-develop-java-event-hub-topology.md)
 #### [トポロジで Power BI を使用する](hdinsight-storm-power-bi-topology.md)

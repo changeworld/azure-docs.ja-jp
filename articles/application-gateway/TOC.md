@@ -27,16 +27,20 @@
 ## Web アプリケーション ファイアウォールを構成する
 ### [ポータル](application-gateway-web-application-firewall-portal.md)
 ### [PowerShell](application-gateway-web-application-firewall-powershell.md)
+### [Azure CLI 2.0](application-gateway-web-application-firewall-cli.md)
 ## Web アプリケーション ファイアウォール規則のカスタマイズ
 ### [ポータル](application-gateway-customize-waf-rules-portal.md)
+### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
 ## SSL オフロードを構成する
 ### [ポータル](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (クラシック)](application-gateway-ssl.md)
+### [Azure CLI 2.0](application-gateway-ssl.md)
 ### [ポリシーとエンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
 ## URL パス ベースのルーティングを構成する
 ### [ポータル](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)
+### [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 ## 複数サイトのホスティングを構成する
 ### [ポータル](application-gateway-create-multisite-portal.md)
 ### [PowerShell](application-gateway-create-multisite-azureresourcemanager-powershell.md)

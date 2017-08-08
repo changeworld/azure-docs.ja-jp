@@ -37,3 +37,11 @@ sections:
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">コンテナー イメージにアプリケーションをパッケージ化する</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-acr">Azure Container Registry を作成し、コンテナー イメージをアップロードする</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-deploy-app">Azure Container Instances にコンテナー イメージをデプロイする</a>
+  - title: リファレンス
+    items:
+      - type: list
+        style: cards
+        className: cardsD
+        items:
+          - title: Azure CLI
+            html: <p><a href="/cli/azure/container">Azure CLI 2.0</a></p>
