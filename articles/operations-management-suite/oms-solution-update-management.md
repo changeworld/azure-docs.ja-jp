@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/09/2017
+ms.date: 07/27/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8f83f5d13cb61709653f255c756dc78453073626
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
@@ -64,10 +64,10 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
     > [!NOTE]
     > Windows エージェントは、System Center Configuration Manager で同時に管理することはできません。  
     >
-* CentOS 6 (x86/x64) および 7 (x64)
-* Red Hat Enterprise 6 (x86/x64) および 7 (x64)
-* SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)
-* Ubuntu 12.04 LTS 以降 (x86/x64)  
+* CentOS 6 (x86/x64) および 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) および 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)  
+* Ubuntu 12.04 LTS 以降 (x86/x64)   
     > [!NOTE]  
     > Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 構成方法については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)をご覧ください。
 
@@ -78,6 +78,9 @@ OMS で管理されるコンピューターでは、評価と更新プログラ�
     >
 
 OMS Agent for Linux をインストールして最新バージョンをダウンロードする方法の詳細については、[Operations Management Suite Agent for Linux](https://github.com/microsoft/oms-agent-for-linux) に関するページを参照してください。  Windows 用 OMS エージェントをインストールする方法の詳細については、[Windows 用 Operations Management Suite エージェント](../log-analytics/log-analytics-windows-agents.md)に関するページを参照してください。  
+
+### <a name="permissions"></a>アクセス許可
+更新プログラムのデプロイを作成するには、Automation アカウントと Log Analytics ワークスペースの両方で共同作成者ロールを付与されている必要があります。  
 
 ## <a name="solution-components"></a>ソリューションのコンポーネント
 このソリューションは以下のリソースで構成されています。これらのリソースは、Automation アカウントに追加され、エージェントに直接接続されるか、Operations Manager に接続された管理グループに接続されます。
@@ -155,7 +158,7 @@ OMS ワークスペースに更新管理ソリューションを追加すると�
 ## <a name="viewing-update-assessments"></a>更新プログラムの評価の表示
 **[Update Management (更新管理)]** タイルをクリックすると、**[Update Management (更新管理)]** ダッシュボードが表示されます。<br><br> ![更新管理の概要ダッシュボード](./media/oms-solution-update-management/update-management-dashboard.png)<br>
 
-このダッシュボードには、更新状態の詳細な内訳が表示されます。更新状態は、オペレーティング システムの種類と更新プログラムの分類ごとに分けられています。更新プログラムの分類は、重要な更新プログラム、セキュリティ更新プログラム、その他 (定義更新など) です。 **[Update Deployments (更新プログラムの展開)]** タイルをクリックすると、[Update Deployments (更新プログラムの展開)] ページが表示されます。このページで、スケジュール、現在実行されているデプロイ、完了したデプロイを表示したり、新しいデプロイのスケジュールを設定したりすることができます。  
+このダッシュボードには、更新状態の詳細な内訳が表示されます。更新状態は、オペレーティング システムの種類と更新プログラムの分類ごとに分けられています。更新プログラムの分類は、重要な更新プログラム、セキュリティ更新プログラム、その他 (定義更新など) です。 このダッシュボードの各タイルの結果は、デプロイが承認された更新プログラムのみを反映します。これはコンピューターの同期ソースに基づいています。   **[Update Deployments (更新プログラムの展開)]** タイルをクリックすると、[Update Deployments (更新プログラムの展開)] ページが表示されます。このページで、スケジュール、現在実行されているデプロイ、完了したデプロイを表示したり、新しいデプロイのスケジュールを設定したりすることができます。  
 
 特定のタイルをクリックすると、すべてのレコードを返すログ検索が実行されます。また、カテゴリと定義済みの条件を指定してクエリを実行し、**[一般的な更新クエリ]** 列に表示された一覧から任意のレコード 1 つを選択することもできます。    
 
@@ -309,6 +312,17 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。  
+
+### <a name="how-do-i-troubleshoot-onboarding-issues"></a>オンボードに関する問題のトラブルシューティング方法
+ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、**アプリケーションとサービス ログ\Operations Manager** イベント ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。  次の表に、具体的なエラー メッセージと、考えられる個別の解決策を示します。  
+
+| メッセージ | 理由 | 解決策 |   
+|----------|----------|----------|  
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.InvalidOperationException: {"Message":"Machine is already<br>registered to a different account. "} (System.InvalidOperationException: {"メッセージ": "マシンは既に別のアカウントに登録されています。) | マシンは既に Update Management 用の別のワークスペースにオンボードされています。 | [Hybrid Runbook グループを削除する](../automation/automation-hybrid-runbook-worker.md#remove-hybrid-worker-groups)ことにより、古いアーティファクトのクリーンアップを実行します。|  
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>System.Net.Http.HttpRequestException: この要求の送信中にエラーが発生しました。 ---><br>System.Net.WebException: 基になる接続が<br>閉じられました。受信時に予期しないエラーが<br>発生しました。 ---> System.ComponentModel.Win32Exception:<br>クライアントとサーバーは共通のアルゴリズムを保持していないため<br>通信できません。 | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](../automation/automation-offering-get-started.md#network-planning)。|  
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>Newtonsoft.Json.JsonReaderException: Error parsing positive infinity value. (Newtonsoft.Json.JsonReaderException: 正の無限大の値の解析エラー。) | プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](../automation/automation-offering-get-started.md#network-planning)。| 
+| サービス <wsid>.oms.opinsights.azure.com によって提示された証明書は、<br>Microsoft サービスで使用する証明機関が<br>発行したものではありませんでした。 ネットワーク管理者に連絡のうえ、<br>TLS/SSL 通信を遮断するプロキシが実行されているかどうかを<br>確認してください。 |プロキシ/ゲートウェイ/ファイアウォールが通信をブロックしています。 | [ネットワークの要件を確認します](../automation/automation-offering-get-started.md#network-planning)。|  
+| Unable to Register Machine for Patch Management, (更新プログラムの管理用のマシンを登録できません。)<br>Registration Failed with Exception (登録は次の例外で失敗しました)<br>AgentService.HybridRegistration。<br>PowerShell.Certificates.CertificateCreationException:<br>自己署名証明書を作成できませんでした。 ---><br>System.UnauthorizedAccessException: アクセスが拒否されました。 | 自己署名証明書の生成に失敗しました。 | システム アカウントが次のフォルダーに対する<br>読み取りアクセスを持っていることを確認します。<br>**C:\ProgramData\Microsoft\**<br>**Crypto\RSA**|  
 
 ### <a name="how-do-i-troubleshoot-update-deployments"></a>更新プログラムの展開のトラブルシューティングを行うにはどうすればよいですか。
 このソリューションをサポートしている OMS ワークスペースにリンクされた Automation アカウントの [ジョブ] ブレードで、スケジュールされた更新プログラムの展開に含まれた更新プログラムをデプロイする Runbook の結果を表示できます。  Runbook **Patch-MicrosoftOMSComputer** は、管理されたコンピューター 1 台を対象とする子 Runbook です。詳細ストリームを確認すると、そのデプロイに関する詳細情報を把握できます。  出力に、適用可能な必須の更新プログラム、ダウンロード状態、インストール状態、その他の詳細情報が表示されます。<br><br> ![更新プログラムの展開ジョブの状態](media/oms-solution-update-management/update-la-patchrunbook-outputstream.png)<br>

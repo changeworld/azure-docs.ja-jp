@@ -12,10 +12,10 @@ ms.topic: hero-article
 ms.devlang: java
 ms.date: 06/20/2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0190fb5a88f766369e6462965e47686c5f289551
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 6ffcf3b38a3d868dfa10ea2e2a9d097441387d4f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/21/2017
 
 さらに、以下を実行する必要があります。
 - JDBC ドライバー [MySQL Connector/J](https://dev.mysql.com/downloads/connector/j/) をダウンロードする。
-- JDBC .jar ファイル (例: mysql-connector-java-5.1.42-bin.jar) をアプリケーションの classpath に含める。
+- JDBC .jar ファイル (例: mysql-connector-java-5.1.42-bin.jar) をアプリケーションの classpath に含める。 これに問題が発生した場合は、クラス パスの詳細 ([Apache Tomcat](https://tomcat.apache.org/tomcat-7.0-doc/class-loader-howto.html)、[Java SE](http://docs.oracle.com/javase/7/docs/technotes/tools/windows/classpath.html) など) について環境のドキュメントを参照してください。
 - アプリケーションが正常に接続できるよう、ファイアウォールが開き、SSL 設定が調整された状態で Azure Database for MySQL 接続のセキュリティが構成されていることを確認する。
 
 ## <a name="get-connection-information"></a>接続情報の取得

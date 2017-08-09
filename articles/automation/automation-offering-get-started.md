@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0e80e0a1c334bcca0bb15dd16c54306a60f2486e
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 7ef31d7d72844c0ed3be0701549e49e26aac9abf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -35,9 +35,9 @@ Azure Automation は、Runbook を使用してプロセスを自動化し、Desi
 
 Azure で実行する Runbook は、Azure のプラットフォームとしてのサービス (PaaS) 仮想マシンでホストされる Automation サンドボックスで実行されます。  Automation サンドボックスの使用により、Runbook の実行のあらゆる側面 (モジュール、ストレージ、メモリ、ネットワーク通信、ジョブ ストリームなど) においてテナントの分離性が生み出されます。このロールは、サービスによって管理されており、Azure アカウントまたは Azure Automation アカウントからアクセスして自分で管理することはできません。         
 
-ご利用のローカル データ センターまたは他のクラウド サービス上のリソースのデプロイと管理を自動化する場合は、Automation アカウントを作成した後で、[Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) ロールを実行する 1 つ以上のマシンを指定できます。  各 HRW には、Microsoft Management Agent (MMA) のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、MMA エージェントの管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
+ご利用のローカル データ センターまたは他のクラウド サービス上のリソースのデプロイと管理を自動化する場合は、Automation アカウントを作成した後で、[Hybrid Runbook Worker (HRW)](automation-hybrid-runbook-worker.md) ロールを実行する 1 つ以上のマシンを指定できます。  各 HRW には、Microsoft Management Agent のほかに、Automation アカウントと Log Analytics ワークスペースへの接続が必要です。  Log Analytics は、インストールのブートストラップ、Microsoft Management Agent の管理、および HRW の機能の監視に使用されます。  Runbook の配信と Runbook の実行指示は、Azure Automation によって行われます。
 
-複数の HRW をデプロイすると、Runbook の高可用性を実現し、Runbook ジョブの負荷を分散できます。場合によっては、Runbook を特定のワークロードや環境専用にすることもできます。  HRW は、TCP 送信ポート 443 を介して Automation サービスと通信します。  データ センター内の他のコンピューターやサービスに対する管理タスクを実行する Runbook をデータ センター内の HRW で実行する場合、その Runbook では他のポートにアクセスすることが必要になる可能性があります。  IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)に関する記事を参照してください。OMS ゲートウェイは HRW のプロキシとして機能して、ジョブの状態を収集し、Automation アカウントから構成情報を受け取ります。
+複数の HRW をデプロイすると、Runbook の高可用性を実現し、Runbook ジョブの負荷を分散できます。場合によっては、Runbook を特定のワークロードや環境専用にすることもできます。  HRW で Microsoft Monitoring Agent は、TCP ポート 443 経由で Automation サービスとの通信を開始します。入力方向のファイアウォール要件はありません。  環境内の他のコンピューターやサービスに対する管理タスクを実行する Runbook をその環境内の HRW で実行する場合、その Runbook では他のポートにアクセスすることが必要になる可能性があります。  IT セキュリティ ポリシーでネットワーク上のコンピューターがインターネットに接続することが許可されていない場合は、[OMS ゲートウェイ](../log-analytics/log-analytics-oms-gateway.md)に関する記事を参照してください。OMS ゲートウェイは HRW のプロキシとして機能して、ジョブの状態を収集し、Automation アカウントから構成情報を受け取ります。
 
 HRW で実行される Runbook は、コンピューターのローカル システム アカウントのコンテキストで実行されます。これは、ローカルの Windows コンピューターで管理操作を実行する場合に推奨されるセキュリティ コンテキストです。 Runbook でローカル コンピューターの外部にあるリソースに対するタスクを実行する必要がある場合は、Runbook からアクセスでき、外部リソースへの認証に使用できる、セキュリティで保護された資格情報資産を Automation アカウントに定義することが必要なことがあります。 資格情報を指定できるコマンドレットで Runbook の[資格情報](automation-credentials.md)資産、[証明書](automation-certificates.md)資産、および[接続](automation-connections.md)資産を使用することで、さまざまなリソースへの認証が可能になります。
 

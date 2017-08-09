@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 5f57cbdb1678dd61eda449d2103125d8db83892e
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
@@ -141,6 +141,8 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 + **Syslog** データの種類
   - `Type=Syslog | measure count() by Facility, SeverityLevel`
   - `Type=Syslog | measure count() by ProcessName`
++ **AzureDiagnostics** データ型
+  - `Type=AzureDiagnostics | measure count() by ResourceProvider, ResourceId`
 
 収集されるログの量を削減するには、次の手順を実行します。
 
@@ -150,6 +152,7 @@ Log Analytics の[アラート](log-analytics-alerts-creating.md)では、検索
 | パフォーマンス カウンター       | [パフォーマンス カウンターの構成](log-analytics-data-sources-performance-counters.md)を次のように変更します。 <br> - 収集の頻度を減らす <br> - パフォーマンス カウンターの数を減らす |
 | イベント ログ                 | [イベント ログの構成](log-analytics-data-sources-windows-events.md)を次のように変更します。 <br> - 収集対象のイベント ログの数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" レベルのイベントを収集しないようにします。 |
 | syslog                     | [syslog の構成](log-analytics-data-sources-syslog.md)を次のように変更します。 <br> - 収集対象の施設の数を減らす <br> - 必要なイベント レベルのみを収集する たとえば、"*情報*" と "*デバッグ*" レベルのイベントを収集しないようにします。 |
+| AzureDiagnostics           | リソース ログの収集を次のように変更します。 <br> - Log Analytics へのリソース送信ログの数を減らす <br> - 必要なログのみを収集する |
 | ソリューションを必要としないコンピューターからのソリューション データ | [ソリューションのターゲット設定](../operations-management-suite/operations-management-suite-solution-targeting.md)を使用して、必要なコンピューター グループからのみデータを収集するようにします。 |
 
 ### <a name="check-if-there-are-more-nodes-than-expected"></a>ノード数が予想を超えているかどうかの確認

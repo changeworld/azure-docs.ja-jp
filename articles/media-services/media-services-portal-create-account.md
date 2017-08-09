@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9ab5368c173f016f44546d6c8acb360598f5f5ab
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f6bcb18a04be9a802e14b960a1e2d04a71a691cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="create-an-azure-media-services-account-using-the-azure-portal"></a>Azure Portal を使用した Azure Media Services アカウントの作成
@@ -44,7 +44,7 @@ Media Services にアクセスするには、関連付けられた次の 2 つ�
 * Azure ストレージ アカウント。 ストレージ アカウントは、Media Services アカウントと同じリージョンに配置する必要があります。 Media Services アカウントを作成するときに、同じリージョンにある既存のストレージ アカウントを選択することも、同じリージョンに新しいストレージ アカウントを作成することもできます。 メディア サービス アカウントを削除しても、関連付けられたストレージ アカウントにある BLOB は削除されません。
 
 > [!NOTE]
-> 異なるリージョンにおける Azure Media Services 機能の可用性については、[データ センター全体における AMS 機能の可用性](scenarios-and-availability.md#a-idavailabilitya-availability-of-media-services-features-across-datacenters)に関するセクションを参照してください。
+> 異なるリージョンにおける Azure Media Services 機能の可用性については、[データ センター全体における AMS 機能の可用性](scenarios-and-availability.md#availability)に関するセクションを参照してください。
 
 ## <a name="create-an-ams-account"></a>AMS アカウントの作成
 このセクションでは、AMS アカウントを作成する方法について説明します。

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 9353ad6df121ebd2e92a5d34214c32e852ed60a3
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 9b50f1cca81348b69f7ff2d702c6c72871afe0a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="getting-started-with-notification-hubs-for-windows-universal-platform-apps"></a>Notification Hubs の使用 (Windows ユニバーサル プラットフォーム アプリ)
@@ -49,33 +48,30 @@ ms.lasthandoff: 07/06/2017
 UWP アプリにプッシュ通知を送信するには、アプリを Windows ストアに関連付ける必要があります。 さらに、WNS に統合するために通知ハブを構成する必要があります。
 
 1. アプリケーションをまだ登録していない場合は、 [Windows デベロッパー センター](https://dev.windows.com/overview)に移動し、Microsoft アカウントでサインインし、 **[新しいアプリの作成]**をクリックします。
-2. アプリの名前を入力し、 **[アプリの名前の予約]**をクリックします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-win8-app-name.png)
-   
-   これでアプリケーションの新しい Windows ストア登録が作成されます。
-3. Visual Studio で、**[空のアプリケーション]** テンプレートを使用して新しい Visual C# ストア アプリ プロジェクトを作成し、**[OK]** をクリックします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-create-windows-universal-app.png)
+
+2. アプリの名前を入力し、 **[アプリの名前の予約]**をクリックします。 これでアプリケーションの新しい Windows ストア登録が作成されます。
+
+3. Visual Studio で、Windows ユニバーサルの **[空のアプリケーション]** テンプレートを使用して新しい Visual C# ストア アプリ プロジェクトを作成し、**[OK]** をクリックします。
+
 4. ターゲットとプラットフォームの最小バージョンの既定値をそのまま使用します。
-5. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-win8-app.png)
 
-   **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
+5. ソリューション エクスプローラーで Windows ストア アプリ プロジェクトを右クリックし、**[ストア]**、**[アプリケーションをストアと関連付ける]** の順にクリックします。 **アプリケーションを Windows ストアと関連付ける** ウィザードが表示されます。
 
-1. ウィザードで **[サインイン]** をクリックし、Microsoft アカウントでサインインします。
-2. ステップ 2. で登録したアプリケーションをクリックし、**[次へ]**、**[関連付け]** の順にクリックします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-associate-app-name.png)
-   
-   この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
-3. [Windows デベロッパー センター](http://go.microsoft.com/fwlink/p/?LinkID=266582)で新しいアプリケーションのページに戻り、**[Services (サービス)]**、**[Push notifications (プッシュ通知)]** の順にクリックし、**[Windows Push Notification Services (WNS) and Microsoft Azure Mobile Apps (Windows プッシュ通知サービス (WNS) と Microsoft Azure Mobile Apps)]** の下にある **[Live Services site (Live サービス サイト)]** をクリックします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-live-services.png)
-4. アプリの登録ページで、**Windows ストア** プラットフォームの設定の下にある**アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。
-   
-    ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hubs-uwp-app-push-auth.png)
+6. ウィザードで、自分の Microsoft アカウントでサインインします。
+
+7. ステップ 2. で登録したアプリケーションをクリックし、**[次へ]**、**[関連付け]** の順にクリックします。 この操作により、必要な Windows ストア登録情報がアプリケーション マニフェストに追加されます。
+
+8. [Windows デベロッパー センター](http://dev.windows.com/overview)で新しいアプリのページに戻り、**[サービス]**、**[プッシュ通知]**、**[WNS/MPNS]** の順にクリックします。
+
+9. **[新しい通知]** をクリックします。
+
+10. **[Blank (Toast)]\(空白 (トースト)\)** テンプレートをクリックして、**[OK]** をクリックします。
+
+11. 通知の**名前**とビジュアル **コンテキスト** メッセージを入力します。 **[下書きとして保存]** をクリックします。
+
+12. [アプリケーション登録ポータル](http://apps.dev.microsoft.com)に移動して、ログインします。
+
+13. アプリケーション名をクリックします。 **Windows ストア** プラットフォームの設定の**アプリケーション シークレット** パスワードと**パッケージ セキュリティ ID (SID)** をメモします。
 
      > [AZURE.WARNING]
     アプリケーション シークレットおよびパッケージ SID は、重要なセキュリティ資格情報です。 これらの値は、他のユーザーと共有したり、アプリケーションで配信したりしないでください。
@@ -128,7 +124,7 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
     このコードにより、WNS からアプリケーションのチャネル URI が取得され、そのチャネル URI が通知ハブに登録されます。
    
    > [!NOTE]
-   > "your hub name" プレースホルダーは、Azure ポータルに表示される通知ハブの名前に置き換えてください。 さらに、接続文字列プレースホルダーを、前のセクションで通知ハブの **[アクセス ポリシー]** ページから取得した **DefaultListenSharedAccessSignature** 接続文字列に置き換えます。
+   > "your hub name" プレースホルダーは、Azure Portal に表示される通知ハブの名前に置き換えてください。 さらに、接続文字列プレースホルダーを、前のセクションで通知ハブの **[アクセス ポリシー]** ページから取得した **DefaultListenSharedAccessSignature** 接続文字列に置き換えます。
    > 
    > 
 5. App.xaml.cs 内で、**OnLaunched** イベント ハンドラーの先頭に、次に示す新しい **InitNotificationsAsync** メソッドへの呼び出しを追加します。
@@ -137,13 +133,11 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
    
     これにより、アプリケーションが起動するたびに必ずチャネル URI が通知ハブに登録されます。
 6. **F5** キーを押してアプリケーションを実行します。 登録キーを示すポップアップ ダイアログが表示されます。
-   
-     ![][19]
 
 これで、アプリケーションがトースト通知を受信する準備が整いました。
 
 ## <a name="send-notifications"></a>通知を送信する
-以下の画面に示すように、通知ハブの [[テスト送信]](https://portal.azure.com/) ボタンを使用して、 **Azure ポータル** で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
+以下の画面に示すように、通知ハブの [[テスト送信]](https://portal.azure.com/) ボタンを使用して、**Azure Portal** で通知を送信し、アプリケーションで通知の受信テストをすばやく行うことができます。
 
 ![](./media/notification-hubs-windows-store-dotnet-get-started/notification-hub-test-send-wns.png)
 
@@ -162,9 +156,8 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
 
 1. ソリューションを右クリックして **[追加]**、**[新しいプロジェクト]** の順に選択し、**[Visual C#]** で **[Windows]**、**[コンソール アプリケーション]** の順にクリックして、**[OK]** をクリックします。
    
-     ![][13]
-   
     これにより、新しい Visual C# コンソール アプリケーションがソリューションに追加されます。 個別のソリューションでこの操作を行うこともできます。
+
 2. Visual Studio で、**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
    
     Visual Studio のパッケージ マネージャー コンソールが表示されます。
@@ -199,8 +192,6 @@ UWP アプリにプッシュ通知を送信するには、アプリを Windows �
          SendNotificationAsync();
          Console.ReadLine();
 7. Visual Studio でコンソール アプリケーション プロジェクトを右クリックし、 **[スタートアップ プロジェクトに設定]** をクリックすることにより、それをスタートアップ プロジェクトとして設定します。 **F5** キーを押して、アプリケーションを実行します。
-   
-     ![][14]
    
     登録したすべてのデバイスでトースト通知を受信します。 トースト バナーをクリックまたはタップすると、アプリケーションが読み込まれます。
 

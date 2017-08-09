@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 82e8d7e0ea975f140eaf73a625d181a4ec68eaa7
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 1580e2841790b7c1b6c9540da4940eef2c487256
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
@@ -274,7 +274,7 @@ Web アプリケーション サーバーが AD FS サーバーとの間にセ�
 ### <a name="specify-the-service-account-for-the-ad-fs-service"></a>AD FS サービスのサービス アカウントを指定します。
 AD FS サービスには、ユーザーを認証し Active Directory のユーザー情報を参照するドメイン サービス アカウントが必要です。 次の 2 種類のサービス アカウントがサポートされます。
 
-* **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory ドメイン サービスに導入されました。 この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
+* **グループ管理サービス アカウント** - Windows Server 2012 と共に Active Directory Domain Services に導入されました。 この種類のアカウントは、AD FS のようなサービスに、パスワードを定期的に更新する必要のない単一のアカウントを提供します。 AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーが既にある場合は、このオプションを使用してください。
 * **ドメイン ユーザー アカウント** - この種類のアカウントではパスワードの入力が求められ、パスワードの変更や期限切れの際に、定期的に更新する必要があります。 このオプションは、AD FS サーバーが所属するドメインに Windows Server 2012 ドメイン コントローラーがない場合にのみ使用してください。
 
 グループ管理サービス アカウントを選択した場合、Active Directory でこの機能を使用したことがないと、エンタープライズ管理者の資格情報の入力を求められます。 入力した資格情報は、キー ストアを開始し、Active Directory でこの機能を有効にするために使用されます。
@@ -317,6 +317,15 @@ AD FS サービスには、ユーザーを認証し Active Directory のユー�
 
 ### <a name="verify-your-federation-configuration"></a>フェデレーション構成の確認
 [検証] をクリックすると、Azure AD Connect によって DNS 設定が検証されます。
+
+**イントラネット接続の確認**
+
+* フェデレーション FQDN の解決: 接続を確保するために、DNS でフェデレーション FQDN を解決できるかどうかが Azure AD Connect によって確認されます。 Azure AD Connect が FQDN を解決できない場合、検証は失敗します。 検証を正常に完了するために、フェデレーション サービス FQDN の DNS レコードを設定してください。
+* DNS A レコード: フェデレーション サービスに A レコードがあるかどうかが Azure AD Connect によって確認されます。 A レコードがない場合、検証は失敗します。 検証を正常に完了するために、フェデレーション FQDN の A レコードを作成してください (CNAME レコードではありません)。
+
+**エクストラネット接続の確認**
+
+* フェデレーション FQDN の解決: 接続を確保するために、DNS でフェデレーション FQDN を解決できるかどうかが Azure AD Connect によって確認されます。
 
 ![完了](./media/active-directory-aadconnect-get-started-custom/completed.png)
 

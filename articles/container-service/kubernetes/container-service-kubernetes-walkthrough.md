@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/01/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 51c70dcacfba82255532f3222ecb391a43eccbb4
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: a278f76fc0ac2aa42633ed0ce2ad4fbc4e7290da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
 # <a name="deploy-kubernetes-cluster-for-linux-containers"></a>Linux コンテナー用の Kubernetes クラスターをデプロイする
 
-このクイック スタートでは、Azure CLI を使用して Kubernetes クラスターをデプロイします。 次に、このクラスターで、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションが実行されます。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
+このクイック スタートでは、Azure CLI を使用して Kubernetes クラスターをデプロイします。 次に、Web フロントエンドと Redis インスタンスで構成される複数コンテナー アプリケーションをデプロイして、このクラスターで実行します。 完了すると、このアプリケーションはインターネット経由でアクセス可能になります。
 
 ![Azure Vote にブラウザーでアクセスしたところ](media/container-service-kubernetes-walkthrough/azure-vote.png)
 
@@ -80,7 +80,7 @@ Kubernetes クラスターを管理するには、Kubernetes のコマンドラ�
 
 Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合には、[az acs kubernetes install-cli](/cli/azure/acs/kubernetes#install-cli) コマンドを使用します。
 
-Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。
+Kubernetes クラスターに接続するように kubectl を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。 この手順では、資格情報をダウンロードし、Kubernetes CLI を構成してそれらの資格情報を使用します。
 
 ```azurecli-interactive 
 az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8sCluster
@@ -216,7 +216,7 @@ az group delete --name myResourceGroup --yes --no-wait
 
 このクイック スタートでは、事前に作成したコンテナー イメージを使用して、Kubernetes のデプロイを作成しました。 関連するアプリケーション コード、Dockerfile、および Kubernetes マニフェスト ファイルは、GitHub で入手できます。
 
-[Azure Vote アプリケーションと Redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
+[https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
 ## <a name="next-steps"></a>次のステップ
 

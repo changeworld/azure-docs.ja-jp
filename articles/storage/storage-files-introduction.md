@@ -15,15 +15,15 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 16fdd3aafef1a50554932a0e7843d347182c9b6a
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: bae2e9825bf158bb015ec0affa56f15ce5baa201
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
 # <a name="introduction-to-azure-file-storage"></a>Azure File Storage の概要
-Azure File Storage は、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と [Samba/共通インターネット ファイル システム (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) を使用して、クラウド内のネットワーク ファイル共有を提供します。 Azure ファイル共有は、Windows、macOS、Linux のオンプレミス デプロイなどのクライアント、または Azure 仮想マシンによって、同時にマウントできます。 汎用ストレージ アカウントを使用すると、1 つのアカウントにある Azure File Storage やその他のサービス (BLOB、Azure 仮想マシン ディスク、キューなど) にアクセスできます。
+Azure File Storage は、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx)と [共通インターネット ファイル システム (CIFS)](https://technet.microsoft.com/library/cc939973.aspx) を使用して、クラウド内のネットワーク ファイル共有を提供します。 Azure ファイル共有は、Windows、macOS、Linux のオンプレミス デプロイなどのクライアント、または Azure 仮想マシンによって、同時にマウントできます。 汎用ストレージ アカウントを使用すると、1 つのアカウントにある Azure File Storage やその他のサービス (BLOB、Azure 仮想マシン ディスク、キューなど) にアクセスできます。
 
 
 

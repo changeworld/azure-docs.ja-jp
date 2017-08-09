@@ -15,18 +15,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/20/2017
+ms.date: 07/21/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 0625984bf10588fe50a2632285f565eb79b66ab7
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターの作成
 
-この記事では、Azure HDInsight で Apache Spark クラスターを作成する方法を説明します。
+この記事では、Azure HDInsight で Apache Spark クラスターを作成する方法を説明します。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)」を参照してください。
 
    ![Azure HDInsight に Apache Spark クラスターを作成する手順を説明するクイック スタート図](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "HDInsight で Apache Spark を使用する Spark のクイック スタート。図に示されている手順: クラスターを作成し、Spark の対話型クエリを実行します")
 
@@ -115,10 +115,17 @@ HDInsight Spark クラスター用に構成された Jupyter Notebook を使用�
 
 7. アプリケーションの実行後は、Notebook をシャットダウンしてクラスター リソースを解放します。 そのためには、Notebook の **[ファイル]** メニューの **[Close and Halt]** (閉じて停止) をクリックします。
 
-## <a name="next-step"></a>次のステップ
+8. 次の手順を後で実行する場合は、必ずこの記事で作成した HDInsight クラスターを削除してください。 
 
-この記事では、HDInsight Spark クラスターを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。 次は、[HDInsight Spark にデータを読み込み、対話型クエリを実行する](hdinsight-apache-spark-load-data-run-query.md)方法を学習します。
+    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-次の手順を後で実行する場合は、必ず HDInsight クラスターを削除してください。 
+## <a name="next-step"></a>次のステップ 
 
-[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+この記事では、HDInsight Spark クラスターを作成し、基本的な Spark SQL クエリを実行する方法を学習しました。 HDInsight Spark クラスターを使用してサンプル データに対話型のクエリを実行するには、次の記事に進みます。
+
+> [!div class="nextstepaction"]
+>[HDInsight Spark クラスターに対して対話型クエリを実行する](hdinsight-apache-spark-load-data-run-query.md)
+
+
+
+

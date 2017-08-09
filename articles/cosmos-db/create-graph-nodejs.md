@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/14/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 153b4cc668fdebd28cec5f3d95093a595064202a
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
@@ -141,9 +141,11 @@ module.exports = config;
 
 ここで、Azure Portal のデータ エクスプローラーに戻り、新しいグラフ データの表示、クエリ実行、変更、使用を行うことができます。
 
-データ エクスプローラーで新しいデータベースが **[コレクション]** ウィンドウに表示されます。 **graphdb**、**graphcoll** の順に展開し、**[グラフ]** をクリックします。
+データ エクスプローラーで新しいデータベースが **[グラフ]** ウィンドウに表示されます。 データベース、コレクションの順に展開し、**[グラフ]** をクリックします。
 
-サンプル アプリで生成されたデータは、**[グラフ]** ウィンドウに表示されます。
+**[フィルターの適用]** をクリックすると、サンプル アプリで生成されたデータが、**[グラフ]** タブ内にある隣のウィンドウに表示されます。
+
+試しに `g.V()` に「`.has('firstName', 'Thomas')`」と入力して、フィルターをテストします。 値の大文字と小文字が区別されることに注意してください。
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 

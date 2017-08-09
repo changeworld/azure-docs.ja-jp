@@ -12,10 +12,10 @@ ms.devlang: go
 ms.topic: hero-article
 ms.date: 07/18/2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ffe09758d0bf5dd4a6e599b1a606d9ae5fce4bf9
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 42a6b1c37de08971674c8b38f1e13bfd657f8b03
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -34,10 +34,11 @@ ms.lasthandoff: 07/21/2017
 1. Go for Microsoft Windows を[ダウンロード](https://golang.org/dl/)し、[インストール手順](https://golang.org/doc/install)に従ってインストールします。
 2. スタート メニューからコマンド プロンプトを起動します。
 3. プロジェクトのフォルダーを作成します。 `mkdir  %USERPROFILE%\go\src\mysqlgo`」を参照してください。
-4. プロジェクト フォルダーに移動します (例: `cd %USERPROFILE%\go\src\mysqlgo`)。
-5. GOPATH 環境変数にソース コード ディレクトリを設定します。 `set GOPATH=%USERPROFILE%\go`」を参照してください。
+4. ディレクトリをプロジェクト フォルダーに変更します (例: `cd %USERPROFILE%\go\src\mysqlgo`)。
+5. GOPATH の環境変数がソース コード ディレクトリをポイントするように設定します。 `set GOPATH=%USERPROFILE%\go`」を参照してください。
 6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
 
+   まとめると、Go をインストールしてから、コマンド プロンプトで以下のコマンドを実行します。
    ```cmd
    mkdir  %USERPROFILE%\go\src\mysqlgo
    cd %USERPROFILE%\go\src\mysqlgo
@@ -48,11 +49,12 @@ ms.lasthandoff: 07/21/2017
 ### <a name="linux-ubuntu"></a>Linux (Ubuntu)
 1. Bash シェルを起動します。 
 2. `sudo apt-get install golang-go` を実行して Go をインストールします。
-3. プロジェクトのフォルダーを自分の home ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
-4. このフォルダーに移動します (例: `cd ~/go/src/mysqlgo/`)。
+3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
+4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
 6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
 
+   まとめると、以下の Bash コマンドを実行します。
    ```bash
    sudo apt-get install golang-go
    mkdir -p ~/go/src/mysqlgo/
@@ -64,18 +66,18 @@ ms.lasthandoff: 07/21/2017
 ### <a name="apple-macos"></a>Apple macOS
 1. [インストール手順](https://golang.org/doc/install)に従って、ご利用のプラットフォームに適した Go をダウンロードしてインストールします。 
 2. Bash シェルを起動します。 
-3. プロジェクトのフォルダーを自分の home ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
-4. このフォルダーに移動します (例: `cd ~/go/src/mysqlgo/`)。
+3. プロジェクトのフォルダーを自分のホーム ディレクトリに作成します (例: `mkdir -p ~/go/src/mysqlgo/`)。
+4. ディレクトリをこのフォルダーに変更します (例: `cd ~/go/src/mysqlgo/`)。
 5. GOPATH 環境変数に有効なソース ディレクトリを設定します (現在のホーム ディレクトリの go フォルダーなど)。 Bash シェルで `export GOPATH=~/go` を実行し、現在のシェル セッションの GOPATH として go ディレクトリを追加します。
 6. `go get github.com/go-sql-driver/mysql` コマンドを実行して [go-sql-driver for mysql](https://github.com/go-sql-driver/mysql#installation) をインストールします。
 
+   まとめると、Go をインストールしてから、以下の Bash コマンドを実行します。
    ```bash
    mkdir -p ~/go/src/mysqlgo/
    cd ~/go/src/mysqlgo/
    export GOPATH=~/go/
    go get github.com/go-sql-driver/mysql
    ```
-
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
@@ -89,10 +91,12 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
    
 
 ## <a name="build-and-run-go-code"></a>Go コードのビルドと実行 
-1. 以下のセクションからテキスト ファイルに Go コードを貼り付け、*.go というファイル拡張子でプロジェクト フォルダーに保存します。たとえば、Windows の場合は `%USERPROFILE%\go\src\mysqlgo\createtable.go` に、Linux の場合は `~/go/src/mysqlgo/createtable.go` に保存します。
-2. コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します。 たとえば Windows の場合、「`cd %USERPROFILE%\go\src\mysqlgo\`」と入力します。 Linux の場合は、「`cd ~/go/src/mysqlgo/`」と入力します。
-3. コマンド「`go run createtable.go`」を入力してコードを実行し、アプリケーションをコンパイルして実行します。
-4. または、コードをネイティブ アプリケーションとしてビルドするには、`go build createtable.go` を実行し、`createtable.exe` を起動してアプリケーションを実行します。
+1. Golang コードを記述するには、Microsoft Windows のメモ帳、Ubuntu の [vi](http://manpages.ubuntu.com/manpages/xenial/man1/nvi.1.html#contenttoc5) や [Nano](https://www.nano-editor.org/)、macOS の TextEdit などのシンプルなテキスト エディターを使用できます。 充実した対話的な開発環境 (IDE) の方が好ましい場合は、Jetbrains の [Gogland](https://www.jetbrains.com/go/)、Microsoft の [Visual Studio Code](https://code.visualstudio.com/)、または [Atom](https://atom.io/) をお試しください。
+2. 以下のセクションからテキスト ファイルに Go コードを貼り付け、\*.go というファイル拡張子でプロジェクト フォルダーに保存します。たとえば、Windows の場合は `%USERPROFILE%\go\src\mysqlgo\createtable.go` に、Linux の場合は `~/go/src/mysqlgo/createtable.go` に保存します。
+3. コード内で `HOST`、`DATABASE`、`USER`、および `PASSWORD` の定数を見つけて、サンプルの値を独自の値で置き換えます。 
+4. コマンド プロンプトまたは Bash シェルを起動します。 ディレクトリをプロジェクト フォルダーに変更します。 たとえば Windows の場合、「`cd %USERPROFILE%\go\src\mysqlgo\`」と入力します。 Linux の場合は、「`cd ~/go/src/mysqlgo/`」と入力します。  前述した一部の IDE エディターでは、シェル コマンドを必要とせずに、デバッグとランタイムの機能が提供されています。
+5. コマンド「`go run createtable.go`」を入力してコードを実行し、アプリケーションをコンパイルして実行します。 
+6. または、コードをネイティブ アプリケーションとしてビルドするには、`go build createtable.go` を実行し、`createtable.exe` を起動してアプリケーションを実行します。
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
 次のコードを使用してサーバーに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込みます。 

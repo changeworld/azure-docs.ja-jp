@@ -16,30 +16,24 @@ ms.workload: na
 ms.date: 05/02/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: d1ddfbe9a0a0c7c7e0a060776938bd68a87e1ba5
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/26/2017
+ms.lasthandoff: 08/02/2017
 
 ---
-<a id="add-messages-to-an-azure-storage-queue-using-functions" class="xliff"></a>
-
-# Functions を使用して Azure Storage キューにメッセージを追加する
+# <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
 
 Azure Functions では、入力および出力バインディングによって、関数から外部サービス データに接続する宣言方法が提供されます。 このトピックでは、Azure Queue Storage にメッセージを送信する出力バインディングを追加することで既存の関数を更新する方法について説明します。  
 
 ![ログ内のメッセージを表示します。](./media/functions-integrate-storage-queue-output-binding/functions-integrate-storage-binding-in-portal.png)
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件 
+## <a name="prerequisites"></a>前提条件 
 
 [!INCLUDE [Previous topics](../../includes/functions-quickstart-previous-topics.md)]
 
 * [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)をインストールします。
-
-[!INCLUDE [functions-portal-favorite-function-apps](../../includes/functions-portal-favorite-function-apps.md)] 
 
 ## <a name="add-binding"></a>出力バインディングを追加する
  
@@ -49,7 +43,7 @@ Azure Functions では、入力および出力バインディングによって�
     
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
-3. テーブルに指定されている設定を使用し、**[保存]** を選択します。 
+3. 次の表で指定されている設定を使用してください。 
 
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding-2.png)
 
@@ -59,11 +53,11 @@ Azure Functions では、入力および出力バインディングによって�
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
     | **メッセージ パラメーター名** | outQueueItem | 出力バインディング パラメーターの名前。 | 
 
+4. **[保存]** をクリックしてバインディングを追加します。
+ 
 出力バインディングが定義されたので、コードを更新し、バインディングを使用して、メッセージをキューに追加する必要があります。  
 
-<a id="update-the-function-code" class="xliff"></a>
-
-## 関数コードを更新する
+## <a name="update-the-function-code"></a>関数コードを更新する
 
 1. 関数を選択し、エディターに関数コードを表示します。 
 
@@ -92,9 +86,7 @@ Azure Functions では、入力および出力バインディングによって�
 
 HTTP トリガーに渡される値は、キューに追加されるメッセージに含まれています。
  
-<a id="test-the-function" class="xliff"></a>
-
-## 関数をテストする 
+## <a name="test-the-function"></a>関数をテストする 
 
 1. コードの変更が保存されたら、**[実行]** を選択します。 
 
@@ -104,9 +96,7 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
 
 次に、ストレージ アカウントに接続して、追加した新しいキューとメッセージを確認することができます。 
 
-<a id="connect-to-the-queue" class="xliff"></a>
-
-## キューに接続する
+## <a name="connect-to-the-queue"></a>キューに接続する
 
 既に Storage エクスプローラーをインストールしてストレージ アカウントに接続している場合は、最初の 3 つの手順をスキップします。    
 
@@ -127,15 +117,11 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
     ![ストレージ キューを作成します。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  
 
-<a id="clean-up-resources" class="xliff"></a>
-
-## リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 既存の関数に出力バインディングを追加しました。 
 

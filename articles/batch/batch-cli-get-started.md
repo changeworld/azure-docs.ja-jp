@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 05/11/2017
+ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a818a41e2e11926c2dee27e081ae8ffc0a4a6298
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bee0344ba70c50cda36a87ea617906283040ff9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
@@ -120,6 +119,10 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
 「[サンプル シェル スクリプト](#sample-shell-scripts)」セクションの一覧にある例では、Azure CLI で Azure AD と共有キーの両方を使用して Batch アカウントにログインする方法を示しています。
 
+## <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
+
+Azure CLI を使用すると、コードを記述せずに、エンド ツー エンドで Batch ジョブを実行できます。 Batch テンプレート ファイルでは、Azure CLI を使用したプール、ジョブ、およびタスクの作成がサポートされます。 Azure CLI を使用すると、ジョブ入力ファイルを Batch アカウントに関連付けられた Azure ストレージ アカウントにアップロードし、そこからジョブの出力ファイルをダウンロードすることもできます。 詳しくは、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
+
 ## <a name="sample-shell-scripts"></a>サンプル シェル スクリプト
 
 次の表に示すサンプル スクリプトは、Batch サービスと Batch 管理サービスで Azure CLI コマンドを使用して一般的なタスクを実行する方法を示しています。 これらのサンプル スクリプトでは、Batch 用の Azure CLI で使用できるコマンドの多くがカバーされています。 
@@ -187,7 +190,7 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 
 * Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)を参照してください。
 * Batch リソースの詳細については、[開発者向けの Azure Batch の概要](batch-api-basics.md)に関するページを参照してください。
-* Batch 計算ノードで実行するアプリケーションをこの機能を使用して管理およびデプロイする方法については、「[Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ](batch-application-packages.md)」を参照してください。
+* Batch テンプレートを使用してコードの記述なしでプール、ジョブ、およびタスクを作成する方法については、「[Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)](batch-cli-templates.md)」を参照してください。
 
 [batch_forum]: https://social.msdn.microsoft.com/forums/azure/home?forum=azurebatch
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
