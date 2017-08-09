@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/21/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 013a3175d5e19689629d1d0ea3b413184e71c485
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: a921eeabe0df6dbc32ab62f74fe585ac2eaf9d42
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
@@ -83,7 +82,7 @@ Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属して�
     ![[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\) プロジェクトの選択](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 3. **[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\)** ダイアログ ボックスで、次の値を指定し、**[Next]\(次へ\)** をクリックします。
    * プロジェクトの名前を入力します。
-   * **[JRE]** 領域で、**[Use an execution environment JRE]\(実行環境 JRE を使用する\)** が **[JavaSE-1.7]** に設定されていることを確認します。
+   * **[JRE]** 領域で、**[Use an execution environment JRE]\(実行環境 JRE を使用する\)** が **JavaSE-1.7** 以降に設定されていることを確認します。
    * Spark SDK が、SDK をダウンロードした場所に設定されていることを確認します。 ダウンロード場所へのリンクは、この記事の前の「[前提条件](#prerequisites)」にあります。 このダイアログ ボックスにあるリンクから SDK をダウンロードすることもできます。
 
     ![[New HDInsight Scala Project]\(新しい HDInsight Scala プロジェクト\) ダイアログ ボックス](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-hdi-scala-app-3.png)
@@ -116,12 +115,12 @@ Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属して�
             val conf = new SparkConf().setAppName("MyClusterApp")
             val sc = new SparkContext(conf)
    
-            val rdd = sc.textFile("wasbs:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
+            val rdd = sc.textFile("wasb:///HdiSamples/HdiSamples/SensorSampleData/hvac/HVAC.csv")
    
             //find the rows that have only one digit in the seventh column in the CSV
             val rdd1 =  rdd.filter(s => s.split(",")(6).length() == 1)
    
-            rdd1.saveAsTextFile("wasbs:///HVACOut")
+            rdd1.saveAsTextFile("wasb:///HVACOut")
           }        
         }
 5. HDInsight Spark クラスターでアプリケーションを実行します。
@@ -130,8 +129,8 @@ Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属して�
    2. **[Spark Submission]\(Spark 送信\)** ダイアログ ボックスで、次の値を入力し、**[Submit]\(送信\)** をクリックします。
       
       * **[Cluster Name (クラスター名)]**で、アプリケーションを実行する HDInsight Spark クラスターを選択します。
-      * Eclipse プロジェクトまたはハード ドライブからアーティファクトを選択します。
-      * **[Main class name]\(メイン クラス名\)** ボックスに、コードで指定したオブジェクトの名前を入力します。
+      * Eclipse プロジェクトまたはハード ドライブからアーティファクトを選択します。 既定値は、Package Explorer から右クリックした項目によって異なります。
+      * 送信ウィザードの **[Main class name]\(メイン クラス名\)** ボックスの一覧に、選択したプロジェクトのすべてのオブジェクト名が表示されます。 実行するオブジェクトを選択または入力します。 ハード ディスク上のアーティファクトを選択する場合は、自分でメイン クラス名を入力する必要があります。 
       * この例のアプリケーション コードでは、コマンドライン引数を必要とせず、JAR またはファイルを参照することもないので、残りのテキスト ボックスは空のままでかまいません。
         
        ![[Spark Submission]\(Spark 送信\) ダイアログ ボックス](./media/hdinsight-apache-spark-eclipse-tool-plugin/create-scala-proj-3.png)
@@ -141,6 +140,18 @@ Eclipse 用の HDInsight Tools は、Azure Toolkit for Eclipse に付属して�
       
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-hdinsight-tools-in-azure-toolkit-for-eclipse"></a>Azure Toolkit for Eclipse の HDInsight Tools を使用して HDInsight Spark クラスターにアクセスして管理する
 HDInsight Tools を使用すると、ジョブの出力へのアクセスなど、さまざまな操作を実行できます。
+
+### <a name="access-the-job-view"></a>ジョブ ビューにアクセスする
+1. Azure Explorer で **[HDInsight]** を展開します。Spark クラスター名を展開した後、**[Jobs]\(ジョブ\)** をクリックします。  
+       ![[ジョブ ビュー] ノード](./media/hdinsight-apache-spark-intellij-tool-plugin/job-view-node.png)
+2. 右側のウィンドウの **[Spark Job View (Spark ジョブ ビュー)]** タブに、クラスター上で実行されていたすべてのアプリケーションが表示されます。 詳細情報を確認したいアプリケーションの名前をクリックします。
+       ![Application details](./media/hdinsight-apache-spark-intellij-tool-plugin/view-job-logs.png)
+3. ジョブ グラフにマウス ポインターを合わせると、実行中のジョブの基本情報が表示されます。 ジョブ グラフをクリックすると、各ジョブについて生成されるステージのグラフと情報を確認できます。
+       ![ジョブのステージの詳細](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-graph-stage-info.png)
+
+4. 頻繁に使用される Driver Stderr、Driver Stdout、Directory Info などのログは、**[ログ]** タブに表示されます。
+       ![ログの詳細](./media/hdinsight-apache-spark-intellij-tool-plugin/Job-log-info.png)
+5. ウィンドウの上部にあるハイパーリンクをクリックして、Spark 履歴 UI と YARN UI を (アプリケーション レベルで) 開くこともできます。
 
 ### <a name="access-the-storage-container-for-the-cluster"></a>クラスターのストレージ コンテナーにアクセスする
 1. Azure Explorer で、**[HDInsight]** ルート ノードを展開して、使用できる HDInsight Spark クラスターの一覧を表示します。
@@ -207,7 +218,9 @@ Windows コンピューターでローカルの Spark Scala アプリケーシ�
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure Toolkit for IntelliJ を使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
-* [Azure Toolkit for IntelliJ を使用して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ を使用して VPN を介して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Azure Toolkit for IntelliJ を使用して SSH を介して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
+* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)

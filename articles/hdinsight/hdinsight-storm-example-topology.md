@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 30e851272dcaa3bc0ec588f66930234ae39c60c7
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: b68b723aaff1f47dbd2d36503ce1a5db282ed9b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="example-storm-toplogies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
@@ -46,6 +45,7 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 | [HDInsight の Storm を使用して Azure Event Hubs から読み取る場合の拡張性ベンチマーク][d6c540e3] |メッセージ スループット、Event Hubs、SQL Database |C#、Java |
 | [HDInsight での Storm および HBase を使用した関連付け](hdinsight-storm-correlation-topology.md) |HBase |C# |
 | [HDInsight の Storm での Python の使用](hdinsight-storm-develop-python-topology.md) |Flux トポロジを使用する Python コンポーネント |Python |
+| [HDInsight の Storm での Kafka の使用](hdinsight-apache-storm-with-kafka.md) | Apache Storm を使用した Apache Kafka の読み取りと書き込み | Java |
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -61,7 +61,7 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 [844d1d81]: hdinsight-storm-develop-csharp-event-hub-topology.md "HDInsight の Storm でAzure Event Hubs のデータを読み書きする方法を説明します。"
 [ab894747]: hdinsight-storm-sensor-data-analysis.md "HDInsight の Apache Storm を使用して、Azure Event Hubs からのセンサー データを処理し、D3.js を使用して表示し、HBase に格納する (オプション) 方法を説明します。"
 [3c86c7c8]: hdinsight-storm-twitter-trending.md "Trident を使用して、Twitter で (ハッシュタグに基づいて) トレンディング トピックを見つける Storm トポロジを作成する方法について説明します。"
-[246ee964]: hdinsight-storm-iot-eventhub-documentdb.md "Storm トポロジを使用して、Azure Event Hubs からメッセージを読み取り、データ参照用に Azure Cosmos DB からドキュメントを読み取り、データを Azure Storage に保存する方法を説明します。"
+[246ee964]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/IotExample/README.md "Storm トポロジを使用して、Azure Event Hubs からメッセージを読み取り、データ参照用に Azure Cosmos DB からドキュメントを読み取り、データを Azure Storage に保存する方法を説明します。"
 [d6c540e3]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/EventCountExample "HDInsight の Apache Storm を使用して Azure Event Hubs から読み取って SQL Database に格納するときのスループットを示す複数のトポロジです。"
 [b4b68194]: https://github.com/hdinsight/hdinsight-storm-examples/blob/master/RealTimeETLExample "Azure Event Hubs からデータを読み取り、データを集計および変換し、HDInsight の HBase に格納する方法を説明します。"
 [ce0c02a2]: https://github.com/hdinsight/hdinsight-storm-examples/tree/master/templates/HDInsightStormExamples "このプロジェクトには、Event Hubs、Cosmos DB、SQL Database などの Azure サービスと対話するためのスパウト、ボルト、トポロジのテンプレートが含まれます。"

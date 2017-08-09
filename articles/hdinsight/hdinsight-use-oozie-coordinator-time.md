@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: b43ea48b9b34f3ab6980f7bdc5c21a19d20fd5b6
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: ce145585b31585fdc6a60eb8a8dd933a81a46bd1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
@@ -94,7 +93,7 @@ Apache Oozie は Hadoop ジョブを管理するワークフローおよび調�
     </table>
 
   > [!NOTE]
-  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure ポータルから有効にする必要があります。 SQL データベースの作成とファイアウォール ルールの構成手順については、[SQL Database の作成と構成][sqldatabase-get-started]に関する記事を参照してください。
+  > 既定では、Azure SQL データベースは Azure HDinsight などの Azure サービスからの接続を許可します。 このファイアウォール設定が無効になっている場合は、Azure Portal から有効にする必要があります。 SQL データベースの作成とファイアウォール ルールの構成手順については、[SQL Database の作成と構成][sqldatabase-get-started]に関する記事を参照してください。
 
 > [!NOTE]
 > テーブルに値を入力します。 そうしておくと、このチュートリアルを読み進める際に役に立ちます。
@@ -199,7 +198,7 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
     <table border = "1">
     <tr><th>ワークフローの変数</th><th>Description</th></tr>
     <tr><td>${jobTracker}</td><td>Hadoop ジョブ トラッカーの URL を指定します。 HDInsight クラスター バージョン 3.0 および 2.0 の <strong>jobtrackerhost:9010</strong> を使用します。</td></tr>
-    <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムの wasbs:// アドレス (たとえば、<i>wasbs://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
+    <tr><td>${nameNode}</td><td>Hadoop 名前ノードの URL を指定します。 既定のファイル システムの wasb:// アドレス (たとえば、<i>wasb://&lt;containerName&gt;@&lt;storageAccountName&gt;.blob.core.windows.net</i>) を使用します。</td></tr>
     <tr><td>${queueName}</td><td>ジョブの送信先になるキュー名を指定します。 <strong>既定値</strong>を使用します。</td></tr>
     </table>
 
@@ -253,15 +252,15 @@ Oozie ワークフロー定義は hPDL (XML プロセス定義言語) で書か�
 ## <a name="deploy-the-oozie-project-and-prepare-the-tutorial"></a>Oozie プロジェクトをデプロイしてチュートリアルを準備する
 Azure PowerShell スクリプトを実行して、以下を実行します。
 
-* HiveQL スクリプト (useoozie.hql) を Azure Blob Storage (wasbs:///tutorials/useoozie/useoozie.hql) にコピーします。
-* workflow.xml を wasbs:///tutorials/useoozie/workflow.xml にコピーします。
-* coordinator.xml を wasbs:///tutorials/useoozie/coordinator.xml にコピーします。
-* データ ファイル (/example/data/sample.log) を wasbs:///tutorials/useoozie/data/sample.log にコピーします。
+* HiveQL スクリプト (useoozie.hql) を Azure Blob Storage (wasb:///tutorials/useoozie/useoozie.hql) にコピーします。
+* workflow.xml を wasb:///tutorials/useoozie/workflow.xml にコピーします。
+* coordinator.xml を wasb:///tutorials/useoozie/coordinator.xml にコピーします。
+* データ ファイル (/example/data/sample.log) を wasb:///tutorials/useoozie/data/sample.log にコピーします。
 * Sqoop エクスポート データを格納するための Azure SQL データベース テーブルを作成します。 テーブル名は *log4jLogCount*です。
 
 **HDInsight ストレージについて**
 
-HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 wasbs:// は、Hadoop 分散ファイル システム (HDFS) を Azure BLOB ストレージ上で Microsoft が実装したものです。 詳細については、[HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事を参照してください。
+HDInsight は、データ ストレージとして Azure BLOB ストレージを使用します。 wasb:// は、Hadoop 分散ファイル システム (HDFS) を Azure Blob Storage 上で Microsoft が実装したものです。 詳細については、[HDInsight での Azure Blob Storage の使用][hdinsight-storage]に関する記事を参照してください。
 
 HDInsight クラスターをプロビジョニングするときに、HDFS と同じように、Azure BLOB ストレージ アカウントと、そのアカウントの特定のコンテナーを既定のファイル システムとして指定します。 プロビジョニング プロセス中に、このストレージ アカウントに加えて、同じ Azure サブスクリプションか、別の Azure サブスクリプションに属するストレージ アカウントをさらに追加することもできます。 ストレージ アカウントをさらに追加する手順については、[HDInsight クラスターのプロビジョニング][hdinsight-provision]に関する記事を参照してください。 このチュートリアルで使用する Azure PowerShell スクリプトを簡単にするために、ファイルはすべて、 */tutorials/useoozie*にある既定のファイル システム コンテナーに格納されています。 既定では、このコンテナーの名前は HDInsight クラスター名と同じです。
 の構文は次のとおりです。
@@ -275,8 +274,8 @@ HDInsight クラスターをプロビジョニングするときに、HDFS と�
 
 既定のファイル システム コンテナーに格納されているファイルは、次の URI のどれを使用しても HDInsight からアクセスできます (例として workflow.xml を使用しています)。
 
-    wasbs://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
-    wasbs:///tutorials/useoozie/workflow.xml
+    wasb://mycontainer@mystorageaccount.blob.core.windows.net/tutorials/useoozie/workflow.xml
+    wasb:///tutorials/useoozie/workflow.xml
     /tutorials/useoozie/workflow.xml
 
 ストレージ アカウントから直接ファイルにアクセスする場合、ファイルの BLOB 名は次のようになります。
@@ -411,7 +410,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
     #Azure Blob storage (WASB) variables
     $storageAccountName = "<StorageAccountName>"
     $storageContainerName = "<BlobContainerName>"
-    $storageUri="wasbs://$storageContainerName@$storageAccountName.blob.core.windows.net"
+    $storageUri="wasb://$storageContainerName@$storageAccountName.blob.core.windows.net"
 
     #Azure SQL database variables
     $sqlDatabaseServer = "<SQLDatabaseServerName>"

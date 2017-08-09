@@ -14,17 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ccfa8d72b51c43e04d924d2b096e3cbc407af043
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 39cb54a6637088c35c6aef864a804c24803f48ba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="assign-users-to-a-custom-domain"></a>カスタム ドメインにユーザーを割り当てる
 カスタム ドメインを Azure Active Directory に追加した後は、このドメインのユーザー アカウントを追加する必要があります。その後ユーザー アカウントの認証を開始できます。
 
-## <a name="users-synced-in-from-a-directory-on-your-corporate-network"></a>企業ネットワークのディレクトリから同期したユーザー
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターでドメイン名を管理する方法については、「[Azure Active Directory のカスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)」を参照してください。
+
+## <a name="users-synced-from-a-on-premises-directory"></a>オンプレミスのディレクトリから同期されたユーザー
 既にオンプレミスの Active Directory と Azure Active Directory の間の接続を設定してある場合は、同期することで、アカウントを設定できます。 オンプレミスの Active Directory と Azure Active Directory を同期する方法の詳細については、「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。
 
 ## <a name="users-added-and-managed-in-the-cloud"></a>クラウドで追加され管理されるユーザー

@@ -10,16 +10,16 @@ ms.custom: mvc
 ms.service: postgresql-database
 ms.topic: article
 ms.date: 05/31/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 2bd54b85f4c9f9ff13b8975eee15649f607a9194
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: e141c15b9999a33206285290b9a34c8616bf3791
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
-- 価格レベル
+- [価格レベル]
 - コンピューティング ユニット
 - ストレージ (GB)
 
@@ -35,11 +35,11 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 
 次の表では、各種アプリケーション ワークロードに最適な価格レベルの例を示します。
 
-| 価格レベル | 対象のワークロード |
+| [価格レベル] | 対象のワークロード |
 | :----------- | :----------------|
 | Basic | IOPS 保証なしのスケーラブルなコンピューティングおよびストレージを必要とする小規模なワークロードに最適です。 たとえば、開発やテスト、使用頻度の低い小規模なアプリケーションに使用するサーバーがこれに該当します。 |
 | Standard | 高スループットの IOPS 保証が必要なクラウド アプリケーションで主に使用されるオプション。 たとえば、Web アプリケーションや分析アプリケーションがこれに該当します。 |
-| Premium | トランザクションと IO の待機時間が短い必要があるワークロードに最適です。 多くの同時実行ユーザーに対して最適なサポートを提供します。 ミッション クリティカルなアプリケーションをサポートするデータベースに適用できます。<br />Premium 価格レベルはプレビュー段階では利用できません。 |
+| Premium | トランザクションと IO の待機時間を短くする必要があるワークロードに最適です。 多くの同時実行ユーザーに対して最適なサポートを提供します。 ミッション クリティカルなアプリケーションをサポートするデータベースに適用できます。<br />Premium 価格レベルはプレビュー段階では利用できません。 |
 
 価格レベルを決定するには、まず、ワークロードに IOPS 保証が必要かどうかを確認します。 必要な場合は、Standard 価格レベルを使用します。
 
@@ -53,10 +53,13 @@ Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベ
 
 プレビュー期間中は、サーバーを作成した後に価格レベルを変更することはできません。 将来的には、価格レベル間でのサーバーのアップグレードまたはダウングレードが可能になる予定です。
 
+## <a name="understand-the-price"></a>価格について
+新しい Azure Database for PostgreSQL を [Azure Portal](https://portal.azure.com/#create/Microsoft.PostgreSQLServer) 内で作成して、**[価格レベル]** ブレードをクリックすると、選択したオプションに基づいて毎月のコストが表示されます。 Azure サブスクリプションを取得していない場合は、Azure 料金計算ツールを使用して見積もり価格を確認してください。 [Azure 料金計算ツール](https://azure.microsoft.com/pricing/calculator/)の Web サイトにアクセスし、**[項目の追加]** をクリックして、**[データベース]** カテゴリを展開し、**[Azure Database for PostgreSQL]** を選択してオプションをカスタマイズします。
+
 ## <a name="choose-a-performance-level-compute-units"></a>パフォーマンス レベル (コンピューティング ユニット数) の選択
 Azure Database for PostgreSQL サーバーの価格レベルが決定したら、必要なコンピューティング ユニット数を選択して、パフォーマンス レベルを決定します。 Web ワークロードや分析ワークロードで、より多くのユーザーの同時実行性が求められるアプリケーションの場合、200 または 400 コンピューティング ユニットから始め、必要に応じて徐々に調整するとよいでしょう。 
 
-コンピューティング ユニットは、単一の Azure Database for PostgreSQL サーバーで使用できることが保証される CPU 処理スループットの測定値で、 CPU とメモリ リソースを組み合わせた測定値です。  詳細については、[コンピューティング ユニットの説明](concepts-compute-unit-and-storage.md)に関する記事をご覧ください。
+コンピューティング ユニットは、単一の Azure Database for PostgreSQL サーバーで使用できることが保証される CPU 処理スループットの測定値で、 CPU とメモリ リソースを組み合わせた測定値です。  詳細については、[コンピューティング ユニットの説明](concepts-compute-unit-and-storage.md)に関するページをご覧ください。
 
 ### <a name="basic-pricing-tier-performance-levels"></a>Basic 価格レベルのパフォーマンス レベル:
 

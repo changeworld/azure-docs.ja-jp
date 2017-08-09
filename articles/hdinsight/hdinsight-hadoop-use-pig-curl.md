@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: b7a4772180225fc6be48ab5c75dcc334d3431e75
+ms.translationtype: HT
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: a86864a779b0de1c6d5669cfbba0f3e1a27f1ff1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="run-pig-jobs-with-hadoop-on-hdinsight-by-using-rest"></a>REST を使用した HDInsight の Hadoop での Pig ジョブの実行
@@ -106,7 +105,7 @@ Azure HDInsight クラスターに REST を要求して Pig Latin ジョブを�
 
 ## <a id="results"></a>結果の表示
 
-ジョブのステータスが **SUCCEEDED** に変わったら、クラスターが使用する既定のストレージからジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/pigcurl` です。
+ジョブのステータスが **SUCCEEDED** に変わったら、ジョブの結果を取得できます。 クエリで渡される `statusdir` パラメーターには、出力ファイルの場所が含まれます。この場合は、`/example/pigcurl` です。
 
 HDInsight は、既定のデータ ストアとして Azure Storage または Azure Data Lake Store のいずれかを使用します。 どちらを使用するかによって、さまざまな方法でデータを取得できます。 詳細については、[Linux ベースの HDInsight について](hdinsight-hadoop-linux-information.md#hdfs-azure-storage-and-data-lake-store)ドキュメントのストレージの項を参照してください。
 

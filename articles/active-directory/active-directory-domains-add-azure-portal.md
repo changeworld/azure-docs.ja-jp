@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: 8f61e947d9667f5047729ac19dc2bf1e03a48c6b
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: ad72f768add7edc1d34a85c27dc2aa1b4e4b3a50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Azure Active Directory へのカスタム ドメイン名の追加
@@ -27,7 +27,7 @@ ms.lasthandoff: 05/08/2017
 > * [Azure クラシック ポータル](active-directory-add-domain.md)
 > 
 
-組織にはビジネス向けに使用する 1 つ以上のドメイン名があり、ユーザーはその会社のドメイン名を使用してその会社のネットワークにサインインします。 Azure Active Directory (Azure AD) を使用して、会社のドメイン名を Azure AD に追加することもできます。 これにより、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
+Azure Active Directory (Azure AD) を使用して、会社のドメイン名を Azure AD に追加することもできます。 組織がビジネスに使うドメイン名がある場合、および会社のドメイン名を使ってサインインするユーザーがいる場合があります。 Azure AD にドメイン名を追加すると、ディレクトリ内で "alice@contoso.com" のようなユーザーにとって馴染みのあるユーザー名を割り当てることができます。 この場合のプロセスは単純です。
 
 1. カスタム ドメイン名をディレクトリに追加する
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
