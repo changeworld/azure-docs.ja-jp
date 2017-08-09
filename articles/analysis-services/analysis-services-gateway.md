@@ -13,17 +13,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 07/25/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: f8c9e9ab8b8728202ec3f049b309d96d883022f4
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f07d72a18221e7a2838cec3982990dca21c00153
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
+# <a name="install-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイのインストール
 オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。
 
 最新バージョンのゲートウェイでは、SSDT でデータの取得と M のクエリを使用して、オンプレミスのデータ ソースに接続された 1400 表形式モデルがサポートされます。 
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/03/2017
 
 ゲートウェイは、ネットワーク内のコンピューターにインストールされます。 Azure サブスクリプションに存在する Azure Analysis Services サーバーごとに 1 つのゲートウェイをインストールする必要があります。 たとえば、Azure サブスクリプションにオンプレミスのデータ ソースに接続するサーバーが 2 つある場合、ネットワークの 2 台の異なるコンピューターにゲートウェイをインストールする必要があります。
 
-## <a name="requirements"></a>必要条件
+## <a name="prerequisites"></a>前提条件
 **最低限必要なもの**
 
 * .NET Framework 4.5
@@ -61,7 +60,7 @@ ms.lasthandoff: 06/03/2017
 1. セットアップを実行します。
 2. インストールする場所を選んで、ライセンス条項に同意します。
 3. Azure にサインインします。
-4. Azure の分析サーバーの名前を指定します。 指定できるサーバーはゲートウェイごとに 1 つだけです。 **[構成]** をクリックして構成します。
+4. Azure の分析サーバーの名前を指定し、**[構成]** をクリックします。 指定できるサーバーはゲートウェイごとに 1 つだけです。
 
     ![Azure にサインインする](./media/analysis-services-gateway/aas-gateway-configure-server.png)
 
@@ -70,7 +69,7 @@ ms.lasthandoff: 06/03/2017
 
 ![動作のしくみ](./media/analysis-services-gateway/aas-gateway-how-it-works.png)
 
-クエリとデータ フローは次のように動作します。
+クエリとデータ フロー:
 
 1. クエリは、オンプレミス データ ソースに対する暗号化された資格情報を使用して、クラウド サービスによって作成されます。 その後、処理のためにゲートウェイのキューに送信されます。
 2. ゲートウェイ クラウド サービスはクエリを分析して、[Azure Service Bus](https://azure.microsoft.com/documentation/services/service-bus/) に要求をプッシュします。
@@ -100,18 +99,18 @@ ms.lasthandoff: 06/03/2017
 | --- | --- | --- |
 | *.powerbi.com |80 |インストーラーのダウンロードに使用される HTTP。 |
 | *.powerbi.com |443 |HTTPS |
-| *. analysis.windows.net |使用します |HTTPS |
+| *. analysis.windows.net |443 |HTTPS |
 | *.login.windows.net |443 |HTTPS |
-| *.servicebus.windows.net |5671 - 5672 |Advanced Message Queuing Protocol (AMQP) |
-| *.servicebus.windows.net |443、9350 - 9354 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *. frontend.clouddatahub.net |使用します |HTTPS |
+| *.servicebus.windows.net |5671 ～ 5672 |Advanced Message Queuing Protocol (AMQP) |
+| *.servicebus.windows.net |443、9350 ～ 9354 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
+| *. frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
 | *. msftncsi.com |使用します |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 
 ### <a name="forcing-https-communication-with-azure-service-bus"></a>Azure Service Bus との HTTPS 通信の強制
-ダイレクト TCP ではなく HTTPS を使って Azure Service Bus と通信するようにゲートウェイに強制できます。ただし、大幅にパフォーマンスが低下します。 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ファイルを変更する必要があります。 値を `AutoDetect` から `Https` に変更します。 既定では、このファイルは *C:\Program Files\On-premises data gateway* にあります。
+ダイレクト TCP ではなく HTTPS を使用して Azure Service Bus と通信するようにゲートウェイに強制できます。ただし、これを行うと、パフォーマンスが大幅に低下します。 *Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config* ファイルの値を `AutoDetect` から `Https` に変更することで、このファイルを変更できます。 既定では、このファイルは *C:\Program Files\On-premises data gateway* にあります。
 
 ```
 <setting name="ServiceBusSystemConnectivityModeString" serializeAs="String">
@@ -132,8 +131,8 @@ ms.lasthandoff: 06/03/2017
 
 **テレメトリを有効にするには**
 
-1.    コンピューター上のオンプレミス データ ゲートウェイ クライアント ディレクトリを確認します。 通常は、%systemdrive%\Program Files\On-premises data gateway にあります。 または、サービス コンソールを開き、オンプレミス データ ゲートウェイ サービスのプロパティで実行可能ファイルのパスを確認することもできます。
-2.    クライアント ディレクトリにある Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config ファイルで、 SendTelemetry の設定を true に変更します。
+1.  コンピューター上のオンプレミス データ ゲートウェイ クライアント ディレクトリを確認します。 通常は、**%systemdrive%\Program Files\On-premises data gateway** です。 または、サービス コンソールを開き、オンプレミス データ ゲートウェイ サービスのプロパティで実行可能ファイルのパスを確認することもできます。
+2.  クライアント ディレクトリにある Microsoft.PowerBI.DataMovement.Pipeline.GatewayCore.dll.config ファイルで、 SendTelemetry の設定を true に変更します。
         
     ```
         <setting name="SendTelemetry" serializeAs="String">
@@ -141,7 +140,7 @@ ms.lasthandoff: 06/03/2017
         </setting>
     ```
 
-3.    変更を保存し、その Windows サービス (オンプレミス データ ゲートウェイ サービス) を再起動します。
+3.  変更を保存し、その Windows サービス (オンプレミス データ ゲートウェイ サービス) を再起動します。
 
 
 

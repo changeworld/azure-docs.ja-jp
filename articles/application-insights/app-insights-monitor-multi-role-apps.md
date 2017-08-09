@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 9b26ade6c3a90e6ebe49bfbc6f3fa801dc7f8d20
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Application Insights (プレビュー) でマルチコンポーネント アプリケーションを監視する
@@ -30,7 +29,9 @@ ms.lasthandoff: 05/19/2017
 
 ### <a name="sharing-a-single-application-insights-resource"></a>単一の Application Insights リソースの共有 
 
-ここでの主要なテクニックは、アプリケーションのすべてのコンポーネントから同じ Application Insights リソースにテレメトリを送信し、必要であれば `cloud_RoleName` プロパティを使用してロールを区別することです。 
+ここでの主要なテクニックは、アプリケーションのすべてのコンポーネントから同じ Application Insights リソースにテレメトリを送信し、必要であれば `cloud_RoleName` プロパティを使用してロールを区別することです。 Application Insights SDK は、`cloud_RoleName` プロパティをテレメトリ コンポーネントの出力に追加します。 たとえば、Web サイト名またはサービス ロール名を `cloud_RoleName` プロパティに追加します。 この値は、telemetryinitializer でオーバーライドできます。 アプリケーション マップは、`cloud_RoleName` プロパティを使用してマップ上のコンポーネントを識別します。
+
+`cloud_RoleName` プロパティをオーバーライドする方法については、「[プロパティの追加: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer)」を参照してください。  
 
 一部のケースでは、この方法が適切ではなく、コンポーネントのグループごとに個別のリソースを使用する方がよい場合があります。 たとえば、管理や課金のために、異なるリソースを使用しなければならないことがあります。 個別のリソースを使用する場合は、すべてのコンポーネントが単一のアプリケーション マップには表示されず、[Analytics](app-insights-analytics.md) で複数のコンポーネントにわたるクエリを実行することができません。 また、リソースごとにセットアップを行う必要があります。
 
