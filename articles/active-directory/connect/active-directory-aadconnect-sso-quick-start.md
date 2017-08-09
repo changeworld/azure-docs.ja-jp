@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 451d4fd24dc506fb4a659edb710ab67a66cbbde7
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -33,6 +33,7 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 2. *機能を有効にする*: Azure AD Connect を使用して、テナントでシームレス SSO を有効にします。
 3. *機能をロールアウトする*: グループ ポリシーを使って一部またはすべてのユーザーに機能をロールアウトします。
 4. *機能をテストする*: シームレス SSO を使用して、ユーザー サインインをテストします。
+5. "*キーをロール オーバーする*": コンピューター アカウントの Kerberos 復号化キーを頻繁にロール オーバーします。
 
 ## <a name="step-1-check-prerequisites"></a>手順 1: 前提条件を確認する
 
@@ -104,14 +105,19 @@ Mozilla Firefox は、Kerberos 認証を自動的に行いません。 各ユー
 4. フィールドに「https://autologon.microsoftazuread-sso.com」と「https://aadg.windows.net.nsatc.net」を入力します。
 5. [OK] をクリックし、ブラウザーを再度開きます。
 
->[!NOTE]
->シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
+#### <a name="safari-on-mac-os"></a>Mac OS 上の Safari
 
-#### <a name="google-chrome-on-mac"></a>Mac 上の Google Chrome
+Mac OS が実行されているコンピューターが AD に参加していることを確認します。 その手順については、[ここ](http://training.apple.com/pdf/Best_Practices_for_Integrating_OS_X_with_Active_Directory.pdf)を参照してください。
 
-Mac などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[この記事](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)を参照してください。
+#### <a name="google-chrome-on-mac-os"></a>Mac OS 上の Google Chrome
+
+Mac OS などの Windows 以外のプラットフォームで Google Chrome を使用し、統合認証で Azure AD の URL をホワイトリスト化する方法については、[この記事](https://dev.chromium.org/administrators/policy-list-3#AuthServerWhitelist)を参照してください。
 
 Mac ユーザーがサードパーティの Active Directory グループ ポリシーの拡張機能を使用して、Azure AD の URL を Firefox および Mac 上の Google Chrome にロールアウトする場合については、この記事の範囲外です。
+
+#### <a name="known-limitations"></a>既知の制限事項
+
+シームレス SSO は、Firefox および Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
 
 ## <a name="step-4-test-the-feature"></a>手順 4: 機能をテストする
 
@@ -127,6 +133,13 @@ Mac ユーザーがサードパーティの Active Directory グループ ポリ
 ユーザーがユーザー名またはパスワードを入力する必要がないシナリオをテストする場合: 
 - 新しいプライベート ブラウザー セッションで *https://myapps.microsoft.com/contoso.onmicrosoft.com* にサインインします。 "*contoso*" を自分のテナント名に置き換えます。
 - または、新しいプライベート ブラウザー セッションで *https://myapps.microsoft.com/contoso.com* にサインインします。 "*contoso.com*" を、テナントで検証されたドメイン (フェデレーション ドメインではなく) に置き換えます。
+
+## <a name="step-5-roll-over-keys"></a>手順 5: キーをロール オーバーする
+
+手順 2. では、Azure AD Connect によって、シームレス SSO を有効にしたすべての AD フォレスト内でコンピューター アカウント (Azure AD を表します) が作成されます。 詳細については、[ここ](active-directory-aadconnect-sso-how-it-works.md)を参照してください。 セキュリティを強化するために、これらのコンピューター アカウントの Kerberos 復号化キーを頻繁にロール オーバーすることをお勧めします。
+
+>[!IMPORTANT]
+>この機能を有効にした後に、"_直ちに_" この手順を実行する必要はありません。 少なくとも 30 日ごとに Kerberos 復号化キーをロール オーバーしてください。
 
 ## <a name="next-steps"></a>次のステップ
 

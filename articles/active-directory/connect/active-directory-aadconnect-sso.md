@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 72b5217bd8de29fdad753d89f34934f64c551ff2
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: c4cd80c50dca5b97c36f1c9785d8ea347b35285c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -35,14 +35,14 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 >[!NOTE]
 >この機能は、Active Directory フェデレーション サービス (ADFS) には適用_されません_。ADFS はこの機能を既に備えています。
 
-## <a name="key-benefits-of-using-azure-ad-seamless-sso"></a>Azure AD シームレス SSO を使用する主な利点
+## <a name="key-benefits"></a>主な利点
 
 - *優れたユーザー エクスペリエンス*
   - ユーザーは、オンプレミスとクラウドベースの両方のアプリケーションに自動的にサインインします。
   - ユーザーはパスワードを繰り返し入力する必要はありません。
 - *デプロイと管理が容易*
   - オンプレミスでは、この機能の動作のために追加のコンポーネントは不要です。
-  - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらの管理された認証方法でも機能します。
+  - [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)の、どちらのクラウド認証方法でも機能します。
   - グループ ポリシーを使用して、一部のユーザーまたはすべてのユーザーに展開できます。
   - Azure AD で非 Windows 10 デバイスを登録します。 これには、バージョン 2.1 以降の [workplace-join クライアント](https://www.microsoft.com/download/details.aspx?id=53554)が必要です。
 
@@ -57,11 +57,11 @@ Azure Active Directory シームレス シングル サインオン (Azure AD �
 
 | OS\ブラウザー |Internet Explorer|Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|あり|サポートされていません|あり|はい\*|該当なし
-|Windows 8.1|あり|サポートされていません|あり|はい\*|該当なし
-|Windows 8|あり|サポートされていません|あり|はい\*|該当なし
-|Windows 7|あり|サポートされていません|あり|はい\*|該当なし 
-|Mac OS X|該当なし|該当なし|はい\*|はい\*|サポートされていません
+|Windows 10|はい|あり|はい|はい\*|該当なし
+|Windows 8.1|あり|該当なし|あり|はい\*|該当なし
+|Windows 8|あり|該当なし|あり|はい\*|該当なし
+|Windows 7|あり|該当なし|あり|はい\*|該当なし 
+|Mac OS X|該当なし|該当なし|はい\*|はい\*|はい\*
 
 \*[追加の構成](active-directory-aadconnect-sso-quick-start.md#browser-considerations)が必要
 

@@ -12,23 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: e363ade43ab9e2b2432c9efdc3ce1b661e278b2a
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: bd50e622773c091b3dc4dbd683a6441128c95144
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
-この記事では、Azure AD のシームレス SSO に関してよく寄せられる質問の解決策を示します。 最新のコンテンツを常にチェックしてください。
+この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>シームレス SSO は、どのようなサインイン方法と動作しますか。
 
-シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のいずれかと組み合わせることができます。Active Directory フェデレーション サービス (AD FS) とは動作しません。
+シームレス SSO は、サインインの方法として、[パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md)または[パススルー認証](active-directory-aadconnect-pass-through-authentication.md)のどちらとも組み合わせることができます。 ただし、この機能は、Active Directory フェデレーション サービス (AD FS) で使用できません。
 
 ## <a name="is-seamless-sso-a-free-feature"></a>シームレス SSO は無料の機能ですか。
 
@@ -46,6 +46,33 @@ ms.lasthandoff: 06/16/2017
 
 はい、このシナリオでは[ワークプレース ジョイン クライアント](https://www.microsoft.com/download/details.aspx?id=53554)のバージョン 2.1 以降が必要です。
 
+## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account"></a>`AZUREADSSOACCT` コンピューター アカウントの Kerberos の復号化キーをロール オーバーするにはどうすればよいですか。
+
+オンプレミスの AD フォレストで作成した `AZUREADSSOACCT` コンピューター アカウント (Azure AD を表します) の Kerberos の復号化キーを頻繁にロール オーバーすることが重要です。
+
+>[!IMPORTANT]
+>少なくとも 30 日ごとに Kerberos の復号化キーをロールオーバーすることを強くお勧めします。
+
+Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
+
+### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 1. シームレス SSO が有効になっている AD フォレストのリストの取得
+
+1. 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
+2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+3. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+4. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
+5. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
+6. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
+
+### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>手順 2. Kerberos の復号化キーが設定された各 AD フォレストでキーを更新します。
+
+1. `$creds = Get-Credential` を呼び出します。 メッセージが表示されたら、目的の AD フォレストのドメイン管理者の資格情報を入力します。
+2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACCT` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
+3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
+
+>[!IMPORTANT]
+>`Update-AzureADSSOForest` コマンドは、"_複数回実行しない_" でください。 複数回実行すると、ユーザーの Kerberos チケットの期限が切れてオンプレミスの Active Directory によって再発行されるまで、この機能は動作を停止します。
+
 ## <a name="how-can-i-disable-seamless-sso"></a>シームレス SSO はどのように無効にできますか。
 
 シームレス SSO は、Azure AD Connect を使用して無効にできます。
@@ -56,16 +83,18 @@ Azure AD Connect を実行し、[Change user sign-in page] \(ユーザー サイ
 
 「シングル サインオンは現在無効ですが、クリーンアップを完了するために実行できる追加の手動手順があります。 詳細情報」
 
-次の手動の手順が必要です。
+プロセスを完了するには、Azure AD Connect が実行されているオンプレミス サーバーで次の手動の手順を実行します。
 
-1. シームレス SSO が有効になっている AD フォレストのリストの取得
-- 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
-- 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
-- `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
-- 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
-  - PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、Azure AD テナント管理者の資格情報を入力するポップアップが表示されます。
-  - `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
-2. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
+### <a name="step-1-get-list-of-ad-forests-where-seamless-sso-has-been-enabled"></a>手順 1. シームレス SSO が有効になっている AD フォレストのリストの取得
+
+1. 最初に、[Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。
+2. 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+3. `%programfiles%\Microsoft Azure Active Directory Connect` フォルダーに移動します。
+4. 以下のコマンドを使用して、Seamless SSO PowerShell モジュールをインポートします。`Import-Module .\AzureADSSO.psd1`
+5. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 このコマンドでは、テナントのグローバル管理者の資格情報を入力するポップアップが表示されます。
+6. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
+
+### <a name="step-2-manually-delete-the-azureadssoacct-computer-account-from-each-ad-forest-that-you-see-listed"></a>手順 2. 表示されている各 AD フォレストから `AZUREADSSOACCT` コンピューター アカウントを手動で削除します。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Automation Runbook に JSON オブジェクトを渡す | Microsoft Docs"
-description: "Azure Automation Desired State Configuration (DSC) の概要、その利用規約、および既知の問題"
+description: "JSON オブジェクトとして Runbook にパラメーターを渡す方法"
 services: automation
 documentationcenter: dev-center-name
 author: eslesar
@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: c8f1423e3764e476068681ed725db831543690f5
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -84,9 +84,9 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
 次の PowerShell コマンドを実行します。
 
 1. Azure へのログイン:
-    ```powershell
-    Login-AzureRmAccount
-    ```
+   ```powershell
+   Login-AzureRmAccount
+   ```
     Azure 資格情報を入力するよう求められます。
 1. JSON ファイルの内容を取得して文字列に変換:
     ```powershell
@@ -94,23 +94,23 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
     ```
     `JsonPath` は、JSON ファイルを保存した場所へのパスです。
 1. `$json` の文字列の内容を PowerShell オブジェクトに変換:
-    ```powershell
-    $JsonParams = @{"json"=$json}
-    ```
+   ```powershell
+   $JsonParams = @{"json"=$json}
+   ```
 1. `Start-AzureRmAutomstionRunbook` のパラメーターのハッシュ テーブルの作成:
-    ```powershell
-    $RBParams = @{
+   ```powershell
+   $RBParams = @{
         AutomationAccountName = 'AATest'
         ResourceGroupName = 'RGTest'
         Name = 'Test-Json'
         Parameters = $JsonParams
-    }
-    ```
-    JSON ファイルの値を含む PowerShell オブジェクトに `Parameters` の値を設定していることに注意してください。 
+   }
+   ```
+   JSON ファイルの値を含む PowerShell オブジェクトに `Parameters` の値を設定していることに注意してください。 
 1. Runbook の起動
-    ```powershell
-    $job = Start-AzureRmAutomationRunbook @RBParams
-    ```
+   ```powershell
+   $job = Start-AzureRmAutomationRunbook @RBParams
+   ```
 
 Runbook は、JSON ファイルの値を使用して、VM を開始します。
 

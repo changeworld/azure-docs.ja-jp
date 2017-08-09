@@ -12,13 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 07/24/2017
 ms.author: curtand
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f1f3d6fa1ba29b0d43d29c7d9cccfc430fdd6f1e
-ms.openlocfilehash: 9803b4e41223bc979e4c0b0a4f22586a441c28df
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 0228bf7ce261cfccdec9431d3c9fb67f461eefbd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="add-a-custom-domain-name-to-azure-active-directory"></a>Azure Active Directory へのカスタム ドメイン名の追加
@@ -34,10 +36,10 @@ ms.lasthandoff: 02/22/2017
 2. ドメイン名レジストラーでドメイン名の DNS エントリを追加する
 3. Azure AD でカスタム ドメイン名を検証する
 
-> [!NOTE]
-> カスタム ドメイン名を企業ネットワーク上の Active Directory フェデレーション サービス (AD FS) またはそれ以外のセキュリティ トークン サービス (STS) で使用するように構成する場合は、 [Azure Active Directory でのフェデレーション用ドメインの追加と構成](active-directory-add-domain-federated.md)に関する記事の手順を実施します。 企業のディレクトリから Azure AD にユーザーを同期したいが、 [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md) では実現できないような場合に便利です。
-> 
-> 
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで会社のドメイン名を追加する方法については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-domains-add-azure-portal.md)」を参照してください。
+
+カスタム ドメイン名を企業ネットワーク上の Active Directory フェデレーション サービス (AD FS) またはそれ以外のセキュリティ トークン サービス (STS) で使用するように構成する場合は、 [Azure Active Directory でのフェデレーション用ドメインの追加と構成](active-directory-add-domain-federated.md)に関する記事の手順を実施します。 企業のディレクトリから Azure AD にユーザーを同期したいが、 [パスワード ハッシュ同期](active-directory-aadconnectsync-implement-password-synchronization.md) では実現できないような場合に便利です。
 
 ## <a name="add-a-custom-domain-name-to-your-directory"></a>カスタム ドメイン名をディレクトリに追加する
 1. Azure AD ディレクトリのグローバル管理者のユーザー アカウントで [Azure クラシック ポータル](https://manage.windowsazure.com/) にサインインします。

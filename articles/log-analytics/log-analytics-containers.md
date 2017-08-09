@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 08/01/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 936064959ac9dd6422619076fabbbba887d17bb6
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 524c63d358ce22c10b7a23e5bcf0b33e9f2e5f26
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
@@ -33,6 +32,49 @@ ms.lasthandoff: 06/30/2017
 次のダイアグラムは、OMS を使用するさまざまなコンテナー ホストとエージェント間の関係を示しています。
 
 ![コンテナー ダイアグラム](./media/log-analytics-containers/containers-diagram.png)
+
+## <a name="system-requirements"></a>システム要件
+始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
+
+### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート 
+次の表は、Log Analytics によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
+
+| | ACS | Linux | Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>イベント | イベント<br>ログ | コンテナー<br>ログ | 
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| Kubernetes | あり | あり | | あり | あり | あり | あり | あり | あり | あり | 
+| Mesosphere<br>DC/OS | あり | あり | | あり | あり | あり | あり| あり | あり | あり | 
+| Docker<br>Swarm | あり | あり | あり | あり | あり | あり | あり | あり | | あり |
+| サービス<br>Fabric | | | あり | あり | あり | あり | あり | あり | あり | あり | 
+| Red Hat Open<br>Shift | | あり | | あり | あり| あり | あり | あり | | あり | 
+| Windows Server<br>(スタンドアロン) | | | あり | あり | あり | あり | あり | あり | | あり |
+| Linux サーバー<br>(スタンドアロン) | | あり | | あり | あり | あり | あり | あり | | あり |
+
+
+### <a name="supported-linux-operating-system"></a>サポートされている Linux オペレーティング システム
+
+- Docker 1.11 ～ 1.13
+- Docker CE および EE v17.03
+
+次の x64 Linux ディストリビューションは、コンテナー ホストとしてサポートされます。
+
+- Ubuntu 14.04 LTS、16.04 LTS
+- CoreOS (Stable)
+- Amazon Linux 2016.09.0
+- openSUSE 13.2
+- openSUSE LEAP 42.2
+- CentOS 7.2、7.3
+- SLES 12
+- RHEL 7.2、7.3
+
+### <a name="supported-windows-operating-system"></a>サポートされている Windows オペレーティング システム
+
+- Windows Server 2016
+- Windows 10 Anniversary Edition (Professional または Enterprise)
+
+### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
+
+- Docker 1.12 ～ 1.13
+- Docker 17.03.0 
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
@@ -50,14 +92,14 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 ### <a name="container-services"></a>コンテナー サービス
 
-- Azure Container Service を使用する Kubernetes クラスターがある場合、詳細については、「[Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する](../container-service/container-service-kubernetes-oms.md)」をご覧ください。
-- Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/container-service-monitoring-oms.md)」をご覧ください。
+- Azure Container Service を使用する Kubernetes クラスターがある場合、詳細については、「[Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する](../container-service/kubernetes/container-service-kubernetes-oms.md)」をご覧ください。
+- Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
 - Docker Swarm モード環境がある場合、詳細については、「[Docker Swarm 用の OMS エージェントを構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
 - Service Fabric でコンテナーを使用する場合は、[Azure Service Fabric の概要](../service-fabric/service-fabric-overview.md)ページで詳細情報を確認してください。
 - Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
-> Docker は、[OMS Agent for Linux](log-analytics-linux-agents.md) をコンテナー ホストにインストールする**前**に実行しておく必要があります。 Docker をインストールするより先にエージェントをインストールしてある場合は、OMS Agent for Linux を再インストールする必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
+> Docker は、[OMS Agent for Linux](log-analytics-agent-linux.md) をコンテナー ホストにインストールする**前**に実行しておく必要があります。 Docker をインストールするより先にエージェントをインストールしてある場合は、OMS Agent for Linux を再インストールする必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
 >
 >
 
@@ -65,30 +107,12 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 ## <a name="linux-container-hosts"></a>Linux コンテナー ホスト
 
-サポートされている Linux バージョンは、次のとおりです。
-
-- Docker 1.11 ～ 1.13
-- Docker CE および EE v17.03
-
-
-次の x64 Linux ディストリビューションは、コンテナー ホストとしてサポートされます。
-
-- Ubuntu 14.04 LTS、16.04 LTS
-- CoreOS (Stable)
-- Amazon Linux 2016.09.0
-- openSUSE 13.2
-- openSUSE LEAP 42.2
-- CentOS 7.2、7.3
-- SLES 12
-- RHEL 7.2、7.3
-
-
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 [OMS ワークスペース ID とキー](log-analytics-linux-agents.md)が必要になります。
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 [OMS ワークスペース ID とキー](log-analytics-agent-linux.md)が必要になります。
 
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>CoreOS を除くすべての Linux コンテナー ホスト
 
-- 「[Steps to install the OMS Agent for Linux (OMS Agent for Linux のインストール手順)](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)」に従って操作します。
+- OMS Agent for Linux のインストール方法の詳細と手順については、「[Linux コンピューターを Operations Management Suite (OMS) に接続する](log-analytics-agent-linux.md)」を参照してください。
 
 ### <a name="for-all-linux-container-hosts-including-coreos"></a>CoreOS を含むすべての Linux コンテナー ホスト
 
@@ -108,7 +132,7 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v 
 
 
 ### <a name="switching-from-using-an-installed-linux-agent-to-one-in-a-container"></a>インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え
-これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMSAgent を削除する必要があります。 [OMS Agent for Linux のインストール手順](https://github.com/Microsoft/OMS-Agent-for-Linux/blob/master/docs/OMS-Agent-for-Linux.md)に関するページを参照してください。
+これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux)」を参照してください。
 
 ### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker Swarm 用の OMS エージェントを構成する
 
@@ -254,16 +278,6 @@ KEY:    88 bytes
 
 
 ## <a name="windows-container-hosts"></a>Windows コンテナー ホスト
-
-サポートされている Windows のバージョン:
-
-- Windows Server 2016
-- Windows 10 Anniversary Edition (Professional または Enterprise)
-
-### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
-
-- Docker 1.12 ～ 1.13
-- Docker 17.03.0 [安定版]
 
 ### <a name="preparation-before-installing-windows-agents"></a>Windows エージェントをインストールする前の準備
 
@@ -425,7 +439,10 @@ Type=Perf <containerName>
 ## <a name="example-log-search-queries"></a>検索クエリの例
 クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[注目すべきクエリ]** ブレードを試してみると、より高度なクエリを作成するのに役立ちます。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 ![コンテナーのクエリ](./media/log-analytics-containers/containers-queries.png)
+
 
 ## <a name="saving-log-search-queries"></a>ログ検索クエリの保存
 クエリの保存は、Log Analytics の標準的な機能です。 クエリを保存しておけば、後で使えるように、便利なクエリを取っておくことができます。
