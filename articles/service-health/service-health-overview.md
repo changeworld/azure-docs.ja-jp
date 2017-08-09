@@ -33,7 +33,7 @@ Service Health はお使いのリソースに及ぼす可能性のある次の 3
     ![Service Health のイベント](./media/service-health-overview/azure-service-health-overview-7.png)
 
 ## <a name="get-started-with-service-health"></a>Service Health の使用
-Service Health ダッシュボードを起動するには、ポータルのダッシュボードにある [Service Health] タイルを選択します。 過去にタイルを削除した、またはダッシュボードをカスタマイズしている場合は、[その他のサービス] (ダッシュボードの右下) で Service Health サービスを検索してください。
+Service Health ダッシュボードを起動するには、ポータルのダッシュボードにある [Service Health] タイルを選択します。 過去にタイルを削除した、またはダッシュボードをカスタマイズしている場合は、[その他のサービス] \(ダッシュボードの右下) で Service Health サービスを検索してください。
 ![Service Health の使用](./media/service-health-overview/azure-service-health-overview-1.png)
 
 ## <a name="see-current-issues-which-impact-your-services"></a>お使いのサービスに現在影響を及ぼしている問題を確認する
