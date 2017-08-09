@@ -141,7 +141,7 @@ Enterprise Mobility Suite、Azure AD Premium、または Enterprise Cloud Suite 
 3. インストールが完了したら、**[Finish (終了)]** をクリックします。  構成ウィザードが起動します。
 4. 構成ウィザードの [ようこそ] 画面で、**[認証構成ウィザードの使用をスキップする]** をオンにし、**[次へ]** をクリックします。  ウィザードを閉じると、サーバーが起動します。
     ![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
-5. サーバーをダウンロードしたページに戻るには、 **[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]**をクリックします。
+5. サーバーをダウンロードしたページに戻り、 **[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]**をクリックします。
 
 <a id="import-users-from-active-directory" class="xliff"></a>
 
