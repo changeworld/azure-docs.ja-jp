@@ -1,4 +1,3 @@
-* Azure Storage Service Encryption を使って暗号化されているストレージ アカウントに非管理対象ディスクが存在する場合、そのディスクを管理ディスクに変換することはできません。 これらの仮想ハード ディスク (VHD) をコピーして管理ディスクで使用する手順については、この記事の後半の「[Managed Disks と Azure Storage Service Encryption](#managed-disks-and-azure-storage-service-encryption)」を参照してください。
 
 * 変換作業は VM の再起動を伴うので、既に設定されているメンテナンス期間中に VM の移行をスケジュールしてください。 
 
