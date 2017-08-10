@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 03/27/2017
+ms.date: 08/01/2017
 ms.author: rajanaki
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf

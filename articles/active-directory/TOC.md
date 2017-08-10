@@ -9,8 +9,9 @@
 ## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)
+## [クイックスタート: セルフサービスによるパスワードのリセット](active-directory-passwords-getting-started.md)
 ## Azure AD ライセンスの管理
-### [Azure ポータル](active-directory-licensing-get-started-azure-portal.md)
+### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [クラシック ポータル](active-directory-licensing-what-is.md)
 ### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
 #### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
@@ -18,7 +19,7 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
-## [Azure Active Directory のサポートを得る方法](active-directory-troubleshooting-support-howto.md)
+## [Azure Active Directory のサポートを利用する](active-directory-troubleshooting-support-howto.md)
 ## [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
 
 # 方法
@@ -78,6 +79,7 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
+### [Office 365 グループの有効期限を設定する](active-directory-groups-lifecycle-azure-portal.md)
 ### [グループをすべて表示する](active-directory-groups-view-azure-portal.md)
 ### [専用グループの有効化](active-directory-accessmanagement-dedicated-groups.md)
 ### [SaaS アプリへのグループ アクセスの追加](active-directory-accessmanagement-group-saasapps.md)
@@ -124,11 +126,10 @@
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-### [クイック スタート: セルフサービスのパスワード リセット](active-directory-passwords-getting-started.md)
 ### [SSPR のライセンス](active-directory-passwords-licensing.md)
 ### [SSPR のデプロイ](active-directory-passwords-best-practices.md)
 ### IT 管理者: パスワードのリセット
-#### [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
+#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 #### [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
 ### [SSPR ポリシーについて](active-directory-passwords-policy.md)
 ### [パスワード リセットについて](active-directory-passwords-how-it-works.md)

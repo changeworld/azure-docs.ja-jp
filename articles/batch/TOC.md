@@ -18,6 +18,8 @@
 #### [Batch Management での Azure AD](batch-aad-auth-management.md)
 ### [コンピューティング集中型 VM](batch-pool-compute-intensive-sizes.md)
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
+### [状態別にタスクをカウントする](batch-get-task-counts.md)
+### [カスタム イメージを使用してプールを作成する](batch-custom-images.md)
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
 ### [Linux コンピューティング ノード](batch-linux-nodes.md)

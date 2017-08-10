@@ -23,12 +23,18 @@
   items:
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
+    - name: コンテナー グループ
+      href: container-instances-container-groups.md
 - name: ハウツー ガイド
   items:
-    - name: 複数コンテナー グループ
+    - name: 複数コンテナー グループのデプロイ
       href: container-instances-multi-container-group.md
     - name: Azure ファイル共有による状態の管理
       href: container-instances-mounting-azure-files-volume.md
+    - name: Azure Container Registry からのデプロイ
+      href: container-instances-using-azure-container-registry.md
+    - name: Azure Container Instances へのデプロイのトラブルシューティング
+      href: container-instances-troubleshooting.md
 - name: リファレンス
   items:
     - name: Azure CLI 2.0

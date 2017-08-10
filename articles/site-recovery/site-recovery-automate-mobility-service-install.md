@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/06/2017
+ms.date: 08/01/2017
 ms.author: krnese
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
@@ -60,8 +60,7 @@ Azure でのフェールバックがある場合は、” *マスター ター�
 
   > [!NOTE]
   > WMF 4.0 がインストールされている Windows コンピューターに対して DSC を使用する場合は、[分離された環境での DSC の使用](## Use DSC in disconnected environments)セクションをご覧ください。
-  >
-  >
+  
 
 モビリティ サービスは、コマンドラインからインストールでき、いくつかの引数を使用できます。 このため、バイナリを (セットアップからの抽出後に) 取得し、DSC 構成を使用して取得できる場所に保存する必要があります。
 
