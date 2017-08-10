@@ -22,7 +22,7 @@ ms.lasthandoff: 03/10/2017
 
 ---
 # <a name="azure-ad-connect-sync-service-features"></a>Azure AD Connect 同期サービスの機能
-Azure AD Connect の同期機能には&2; つのコンポーネントがあります。
+Azure AD Connect の同期機能には 2 つのコンポーネントがあります。
 
 * **Azure AD Connect Sync** という名前のオンプレミスのコンポーネント: **同期エンジン**とも呼ばれます。
 * Azure AD 内にあるサービス: **Azure AD Connect 同期サービス**
@@ -82,7 +82,7 @@ Set-MsolDirSyncFeature -Feature EnableSoftMatchOnUpn -Enable $true
 ```
 
 ## <a name="synchronize-userprincipalname-updates"></a>userPrincipalName の更新の同期
-これまで、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することは、次の&2; つの条件が両方とも当てはまらない限り、できませんでした。
+これまで、オンプレミスから同期サービスを使用して UserPrincipalName 属性を更新することは、次の 2 つの条件が両方とも当てはまらない限り、できませんでした。
 
 * ユーザーが管理対象ユーザー (非フェデレーション ユーザー) である。
 * ユーザーにライセンスが割り当てられていない。

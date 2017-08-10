@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 08/07/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: d0f68c191c271c58bfa1578802322b69130b3cef
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 2cf11155dbd524260329f8b271ce4d9b19095b6a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -49,7 +49,7 @@ Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-vers
 * When selecting an infrastructure role instance,  you see an error showing a reference error. Use the browser’s refresh functionality to refresh the Admin Portal.
 * The "move" button is disabled on the Resource Group blade.  This is expected behavior, because moving resource groups between subscriptions is not currently supported.
 * You will receive repeated notifications for syndicated marketplace items that have completed downloading.
-* You are not able to view permissions to your subscription using the Azure Stack portals.  As a work around, you can verify permissions using Powershell.
+* You are not able to view permissions to your subscription using the Azure Stack portals.  As a work-around, you can verify permissions using Powershell.
 * You must add `-TenantID` as a flag when exporting a completed deployment as an automation script from the portal.
 
 #### <a name="services"></a>Services
@@ -57,7 +57,7 @@ Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-vers
 * There is no marketplace experience for creating virtual machine scale sets, though they can be created via template.
 * You cannot associate a load balancer with a backend network via the portal.  This task can be completed with PowerShell or with a template.
 * VM Availability sets can only be configured with a fault domain of one and an update domain of one.  
-* A tenant must have an existing storage account before creating a new Azure function.
+* A tenant must have an existing storage account before creating a new Azure Function.
 * VM may fail and report "Cannot bind argument to parameter 'VM Network Adapter' because it is null."  Redeployment of the virtual machine succeeds.  
 * Deleting tenant subscriptions results in orphaned resources.  As a workaround, first delete tenant resources or entire resource group, and then delete tenant subscriptions. 
 * You must create a NAT rule when creating a network load balancer, or you will receive an error when you attempt to add a NAT rule after the load balancer is created.
@@ -83,10 +83,7 @@ Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-vers
       Set-AzureRmEnvironment AzureStack -GraphAudience https://graph.local.azurestack.external/
     ```
 
-
-
 #### <a name="fabric"></a>Fabric
-* All Infrastructure Roles display a known health state, however the health state is not accurate for roles outside of Compute controller and Health controller.
 * The compute resource provider displays an unknown state.
 * The BMC IP address & model are not shown in the essential information of a Scale Unit Node.  This behavior is expected in Azure Stack development kit.
 * The restart action on Compute controller infrastructure role (AzS-XRP01 instance) should not be used.

@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/12/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 534fa3718d22eb17a99b654b5f5cb404de53eceb
 ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/19/2017
 
 ---
 
@@ -244,9 +245,4 @@ ms.openlocfilehash: b7511746a234186cd9027f1cc272cd5d0a1c49e8
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
-
-
-<!--HONumber=Jan17_HO3-->
-
 
