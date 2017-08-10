@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: yuemlu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 01597767a03a5959c4c0cde994b6a7b8a34bfb7e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cdcc06844dce5df09b50a9a5f6a97a7a96a9ef48
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>コスト効率に優れた Standard Storage および Azure VM の非管理対象ディスクと管理ディスク
@@ -49,7 +48,7 @@ Managed Disks を使用する VM を作成する方法については、次の�
 
 ここでは、Standard Storage の機能をいくつか紹介します。 詳細については、[Azure Storage の概要](storage-introduction.md)に関する記事をご覧ください。
 
-**Standard Storage**: Azure Standard Storage では、Azure Disks、Azure BLOB、Azure Files、Azure Tables、Azure Queues をサポートしています。 Standard Storage サービスを使用するには、まず、[Azure ストレージ アカウントを作成](storage-create-storage-account.md#create-a-storage-account)します。
+**Standard Storage**: Azure Standard Storage では、Azure Disks、Azure BLOB、Azure File Storage、Azure Tables、Azure Queues をサポートしています。 Standard Storage サービスを使用するには、まず、[Azure ストレージ アカウントを作成](storage-create-storage-account.md#create-a-storage-account)します。
 
 **Standard Storage ディスク**: Standard Storage ディスクは、Premium Storage で使用されるサイズ シリーズの VM (DSv2 シリーズや GS シリーズなど) も含め、すべての Azure VM に接続できます。 Standard Storage ディスクは、1 台の VM にのみ接続できます。 ただし、1 台の VM に Standard Storage ディスクを 1 つ以上接続できます。その VM サイズで定義されている最大ディスク数まで接続することが可能です。 Standard Storage のスケーラビリティとパフォーマンスのターゲットに関する次のセクションで、仕様についてさらに詳しく説明します。 
 

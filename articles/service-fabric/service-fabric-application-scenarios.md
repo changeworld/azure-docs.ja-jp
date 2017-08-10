@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 7/02/2017
 ms.author: mfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 69c517da6c23df1708f94ef7486b8c3b5b4edcaa
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 471ec6f45f4152fbac56242ef3ce906f8af00b54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="service-fabric-application-scenarios"></a>Service Fabric アプリケーションのシナリオ
@@ -36,7 +35,7 @@ Azure の Service Fabric プラットフォームは、次のカテゴリのア�
 [BMW](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/24/service-fabric-customer-profile-bmw-technology-corporation/)、[Schneider Electric](https://blogs.msdn.microsoft.com/azureservicefabric/2016/08/05/service-fabric-customer-profile-schneider-electric/)、[Mesh Systems](https://blogs.msdn.microsoft.com/azureservicefabric/2016/06/20/service-fabric-customer-profile-mesh-systems/) など、Service Fabric を使用して IoT システムを構築した顧客がいくつか確認されました。
 
 ## <a name="application-design-case-studies"></a>アプリケーション設計のケース スタディ
-アプリケーション設計における Service Fabric の使用方法を紹介するケース スタディが、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/tag/customer-profile/)と[マイクロサービス ソリューション サイト](https://azure.microsoft.com/solutions/microservice-applications/)で多数公開されています。
+アプリケーションを設計するための Service Fabric の使用方法を示すケース スタディが、[Service Fabric チーム ブログ](https://blogs.msdn.microsoft.com/azureservicefabric/tag/customer-profile/)と[マイクロサービス ソリューション サイト](https://azure.microsoft.com/solutions/microservice-applications/)で多数公開されています。
 
 ## <a name="design-applications-composed-of-stateless-and-stateful-microservices"></a>ステートレスとステートフルなマイクロサービスから成るアプリケーションを設計する
 Azure Cloud Service worker ロールでのアプリケーションの構築は、ステートレス サービスの一例です。 対照的に、ステートフルなマイクロサービスは、要求とその応答を超える権限のある状態を維持します。 正しい処理をレプリケーションでバックアップするシンプルな API 経由で状態の高可用性と一貫性が実現します。 Service Fabric のステートフルなサービスでは、高可用性を平等に実現可能にすることで、データベースなどのデータ ストアだけでなく、すべての種類のアプリケーションに高可用性をもたらします。 これは自然な進展です。 アプリケーションは既に、高可用性のための純粋なリレーショナル データベースから NoSQL データベースに移っています。 アプリケーション自体を「ホット」な状態にして、データを中で管理し、信頼性、一貫性、可用性を犠牲にすることなく、パフォーマンスを上げることができるようになりました。

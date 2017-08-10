@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a6f74374582d551e2540d1ebd5e9677c92330e09
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 5075f7e7f082a31be3ed30cdce57e89da070dfdb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="upgrade-your-standalone-azure-service-fabric-on-windows-server-cluster"></a>Windows Server クラスターでのスタンドアロン Azure Service Fabric のアップグレード
@@ -188,6 +187,23 @@ Service Fabric の新しいバージョンが利用可能になると、パッ�
 
 
 ## <a name="upgrade-the-cluster-configuration"></a>クラスター構成のアップグレード
+構成アップグレードを開始する前に、スタンドアロン パッケージで PowerShell スクリプトを実行し、新しいクラスター構成をテストできます。
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File>
+
+```
+または
+
+```powershell
+
+    TestConfiguration.ps1 -ClusterConfigFilePath <Path to the new Configuration File> -OldClusterConfigFilePath <Path to the old Configuration File> -FabricRuntimePackagePath <Path to the .cab file which you want to test the configuration against>
+
+```
+
+エンドポイント、クラスター名、ノード IP など、一部の構成はアップグレードできません。これは古いクラスター構成 JSON に対して新しいクラスター構成 JSON をテストし、問題があれば、PowerShell ウィンドウにエラーを表示します。
+
 クラスター構成をアップグレードするには、**Start-ServiceFabricClusterConfigurationUpgrade** を実行します。 構成のアップグレードは、アップグレード ドメインごとに処理されます。
 
 ```powershell

@@ -75,6 +75,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [Azure のセキュリティ、プライバシー、およびコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [料金](security-center-pricing.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの概要](https://azure.microsoft.com/services/security-center/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=security-center)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=security-center)

@@ -93,6 +93,7 @@
 ### [Data Management Gateway の使用に関する問題のトラブルシューティング](data-factory-troubleshoot-gateway-issues.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-factory)
 ## [PowerShell](/powershell/module/azurerm.datafactories)
 ## [.NET](/dotnet/api/microsoft.azure.management.datafactories.models)
 ## [REST ()](/rest/api/datafactory/)
@@ -104,6 +105,7 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/data-factory)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureDataFactory)
 ## [料金](https://azure.microsoft.com/pricing/details/data-factory/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Data Management Gateway のリリース ノート](data-factory-gateway-release-notes.md)
 ## [機能のリクエスト](https://feedback.azure.com/forums/270578-azure-data-factory)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-factory)

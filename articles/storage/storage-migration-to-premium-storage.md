@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 82485e569d91a082f72725ecfb04e75f0820cf02
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 373dde7b751156490fafd3e052b32310c497b43b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
@@ -238,7 +237,7 @@ Azure 以外のクラウド ストレージから Azure へ VHD を移行する�
 ##### <a name="copy-a-vhd-from-other-non-azure-cloud"></a>他の Azure 以外のクラウドから VHD をコピーする
 Azure 以外のクラウド ストレージから Azure へ VHD を移行する場合は、最初に VHD をローカル ディレクトリにエクスポートする必要があります。 VHD が保存されているローカル ディレクトリの完全なソース パスをコピーします。
 
-##### <a name="copy-a-vhd-from-on-premise"></a>オンプレミスから VHD をコピーする
+##### <a name="copy-a-vhd-from-on-premises"></a>オンプレミスから VHD をコピーする
 オンプレミス環境から VHD を移行する場合は、VHD の保存場所の完全なソース パスが必要です。 ソース パスは、サーバーの場所の場合もあれば、ファイル共有の場合もあります。
 
 #### <a name="step-2-create-the-destination-for-your-vhd"></a>手順 2. VHD のコピー先を作成する

@@ -17,17 +17,16 @@ ms.devlang:
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: Jenny Jiang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 897fedb6744d5be78aca7ea10beaadeea0dd387e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5ee6504cd4bf69c8f2c14a3623ff537e66030ce1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="remotely-debug-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Spark アプリケーションをリモートでデバッグする
 
-この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使って HDInsight クラスター上でアプリケーションをリモート デバッグするための詳細な手順を紹介します。
+この記事では、Azure Toolkit for IntelliJ の HDInsight ツールを使って HDInsight クラスター上でアプリケーションをリモート デバッグするための詳細な手順を紹介します。 [ビデオ](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)に従ってプロジェクトをデバッグできます。
 
 **前提条件:**
 
@@ -45,12 +44,13 @@ ms.lasthandoff: 06/23/2017
       - **HDInsight の Spark (Scala)**
       - **HDInsight の Spark (Java)**
       - **HDInsight の Spark のクラスター実行サンプル (Scala)**
+   - ビルド ツール: Scala プロジェクト作成ウィザードでは、依存関係の管理と Scala プロジェクトのビルドのために Maven または SBT をサポートしています。 必要に応じていずれかを選択してください。
 2. 次のウィンドウで、プロジェクトの詳細を指定します。
 
    ![Spark SDK の選択](./media/hdinsight-apache-spark-intellij-tool-debug-remotely/hdinsight-new-project.png)
    - プロジェクト名とプロジェクトの場所を指定します。
    - **[Project SDK]\(プロジェクト SDK\)** では、**Spark 2.x** クラスターの場合は **Java 1.8** を使用し、**Spark 1.x** クラスターの場合は **Java 1.7** を使用します。
-   - **[Spark のバージョン]** では、Scala プロジェクト作成ウィザードで Spark SDK と Scala IDE の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この記事では、例として **Spark 2.0.2 (Scala 2.11.8)** を使用します。
+   - **[Spark Version]\(Spark のバージョン\)** では、Scala プロジェクト作成ウィザードで Spark SDK と Scala SDK の適切なバージョンが統合されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この記事では、例として **Spark 2.0.2 (Scala 2.11.8)** を使用します。
 3. **[src]** > **[main]** > **[scala]** を選択してプロジェクトのコードを開きます。 この記事では、例として **SparkCore_wasbloTest** スクリプトを使用します。
 4. **[構成の編集]** メニューにアクセスするには、右上のアイコンを選択します。 このメニューでは、リモート デバッグの構成を作成または編集できます。
 
@@ -139,7 +139,8 @@ ms.lasthandoff: 06/23/2017
 * [概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)
 
 ### <a name="demo"></a>デモ
-* リモート デバッグ (ビデオ): [Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で Spark アプリケーションをリモートでデバッグする](https://www.youtube.com/watch?v=wQtj_wjn1Ac)
+* Scala プロジェクトの作成 (ビデオ): [Spark Scala アプリケーションの作成](https://channel9.msdn.com/Series/AzureDataLake/Create-Spark-Applications-with-the-Azure-Toolkit-for-IntelliJ)
+* リモート デバッグ (ビデオ): [Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で Spark アプリケーションをリモートでデバッグする](https://channel9.msdn.com/Series/AzureDataLake/Debug-HDInsight-Spark-Applications-with-Azure-Toolkit-for-IntelliJ)
 
 ### <a name="scenarios"></a>シナリオ
 * [Spark と BI: HDInsight と BI ツールで Spark を使用した対話型データ分析の実行](hdinsight-apache-spark-use-bi-tools.md)
@@ -155,6 +156,7 @@ ms.lasthandoff: 06/23/2017
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
 * [Azure Toolkit for IntelliJ の HDInsight ツールを使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して VPN により HDInsight Spark 上でアプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)

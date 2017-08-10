@@ -4,7 +4,7 @@
 
 # 作業開始
 ## [Azure VM のバックアップ](backup-azure-vms-first-look-arm.md)
-## [ファイルとフォルダーのバックアップ](backup-try-azure-backup-in-10-mins.md)
+## [Windows Server または Windows コンピューターのバックアップ](backup-try-azure-backup-in-10-mins.md)
 ## [VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 
 # 方法
@@ -27,16 +27,19 @@
 #### [Resource Manager でデプロイされた VM の Azure Portal での復元](backup-azure-arm-restore-vms.md)
 #### [暗号化された仮想マシンの復元](backup-azure-vms-encryption.md)
 #### [Azure での仮想マシンの復元](backup-azure-restore-vms.md)
-#### [Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットの復元](backup-azure-restore-key-secret.md)
+#### [暗号化された VM の Key Vault のキーとシークレットを復元](backup-azure-restore-key-secret.md)
 
 
-## Windows のファイルとフォルダー
-### [Resource Manager デプロイメント モデルを使用した Windows Server](backup-configure-vault.md)
-### [クラシック デプロイメント モデルを使用した Windows Server](backup-configure-vault-classic.md)
+## Windows Server
+### [Windows Server のファイルとフォルダーのバックアップ](backup-configure-vault.md)
+### [Windows Server のシステムの状態のバックアップ](backup-azure-system-state.md)
+### [Azure から Windows Server へのファイルの回復](backup-azure-restore-windows-server.md)
+### [Windows Server のシステムの状態の復元](backup-azure-restore-system-state.md)
 ### [Recovery Services 資格情報コンテナーの監視と管理](backup-azure-manage-windows-server.md)
-### [クラシック デプロイメント モデルを使用した Backup 資格情報コンテナーの管理](backup-azure-manage-windows-server-classic.md)
-### [Resource Manager デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server.md)
-### [クラシック デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server-classic.md)
+### クラシック ポータルを使用したバックアップと復元
+#### [クラシック デプロイメント モデルを使用した Windows Server](backup-configure-vault-classic.md)
+#### [クラシック デプロイメント モデルを使用した Backup 資格情報コンテナーの管理](backup-azure-manage-windows-server-classic.md)
+#### [クラシック デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server-classic.md)
 
 ## Azure Backup Server
 ### [Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
@@ -108,5 +111,6 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazureonlinebackup)
 ## [料金](https://azure.microsoft.com/pricing/details/backup/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=backup)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=backup)

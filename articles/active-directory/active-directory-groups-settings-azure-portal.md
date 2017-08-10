@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でグループのプロパティを管理する | Microsoft Docs"
 description: "Azure Active Directory でグループのプロパティとその他の構成設定を編集する方法"
 services: active-directory
@@ -13,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ad714d4543f2c1990a2262de456f607c876f738d
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 24f5da884a7d9f1d07c32419316d2c046d54d739
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Azure Active Directory でグループの設定を管理する
@@ -31,10 +29,10 @@ ms.lasthandoff: 05/09/2017
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-   ![ユーザー管理を開く](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
+   ![[ユーザーとグループ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
 
-   ![グループ ブレードを開く](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
+   ![[すべてのグループ] ブレードを開く](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
 4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
 5. **[グループ - *グループ名*]** ブレードで、**[プロパティ]** を選択します。
 

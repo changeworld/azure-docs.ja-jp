@@ -36,7 +36,7 @@ ms.lasthandoff: 06/30/2017
 
 ## <a name="downloading-the-scale-out-process-server-software"></a>スケール アウト プロセス サーバー ソフトウェアのダウンロード
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
-2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** ([For VMware & Physical Machines] (VMware および物理マシン) の下) に移動します。
+2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** \([For VMware & Physical Machines] \(VMware および物理マシン) の下) に移動します。
 3. 構成サーバーを選択して、構成サーバーの詳細ページに移動します。
 4. **[+ プロセス サーバー]** ボタンをクリックします。
 5. **[プロセス サーバーの追加]** ページの **[プロセス サーバーのデプロイ先を選択してください]** ボックスで、**[スケールアウト プロセス サーバーをオンプレミスにデプロイします]** オプションを選択します。

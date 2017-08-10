@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 0d74a13968338d5dc88eab3353316c77c7544615
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: c852a1297261504015a3a985fe14a38957d1a64a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-virtual-machine-with-accelerated-networking"></a>高速ネットワークを使った仮想マシンの作成
@@ -36,7 +35,8 @@ ms.lasthandoff: 07/06/2017
 
 高速ネットワークのメリットが得られるのは、高速ネットワークが有効になっている VM だけです。 最適な結果を得るには、同じ Azure 仮想ネットワーク (VNet) に接続された 2 台以上の VM でこの機能を有効にしておくことをお勧めします。 VNet の境界を越えて通信するときや、オンプレミスで接続する場合、全体的な待ち時間に対してこの機能がもたらす効果は限定的です。
 
-[!INCLUDE [virtual-network-preview](../../includes/virtual-network-preview.md)]
+> [!WARNING]
+> この Linux Public Preview は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、Azure の場所によっては、利用できない場合もあります。 この機能の可用性とステータスに関する最新の通知については、Azure Virtual Network の更新情報に関するページをご覧ください。
 
 ## <a name="benefits"></a>メリット
 * **待機時間の短縮 / 1 秒あたりのパケット数 (pps)の向上:** データパスから仮想スイッチを削除することで、ホストにおけるパケットのポリシー処理に必要な時間がなくなるため、VM 内で処理できるパケット数が増加します。
@@ -51,6 +51,7 @@ ms.lasthandoff: 07/06/2017
 * **リージョン:** 高速ネットワークを使用した Windows VM は、ほとんどの Azure リージョンで提供されています。 高速ネットワークを使用した Linux VM は、複数のリージョンで提供されています。 この機能が利用できるリージョンは拡大しています。 最新情報については、Azure 仮想ネットワークの更新ブログを参照してください。   
 * **サポートされているオペレーティング システム:** Windows では、Microsoft Windows Server 2012 R2 Datacenter と Windows Server 2016 がサポートされます。 Linuxでは、Ubuntu Server 16.04 LTS (カーネル 4.4.0-77 以降)、SLES 12 SP2、RHEL 7.3 と CentOS 7.3 (Rogue Wave Software が公開) がサポートされます。
 * **VM サイズ:** "汎用" タイプと "コンピューティングの最適化" タイプのインスタンス サイズ (8 コア以上)。 詳細については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) と [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM サイズに関する記事を参照してください。 サポートされる VM のインスタンス サイズは、今後増える予定です。
+* **Azure Resource Manager (ARM) のみによるデプロイ:** ASM/RDFE によるデプロイでは高速ネットワークを使用できません。
 
 これらの制限に対する変更については、[Azure 仮想ネットワークの更新情報](https://azure.microsoft.com/updates/accelerated-networking-in-preview)に関するページでお知らせします。
 
@@ -324,11 +325,11 @@ Red Hat Enterprise Linux または CentOS 7.3 VM を作成するには、SR-IOV 
 
 1.  Azure の非-SRIOV CentOS 7.3 の VM をプロビジョニングします
 
-2.  LIS 4.2.1 をインストールします。
+2.  LIS 4.2.2 をインストールします。
     
     ```bash
-    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
-    tar -xvf lis-rpms-4.2.1-1.tar.gz
+    wget http://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
+    tar -xvf lis-rpms-4.2.2-2.tar.gz
     cd LISISO && sudo ./install.sh
     ```
 
@@ -402,8 +403,8 @@ Red Hat Enterprise Linux または CentOS 7.3 VM を作成するには、SR-IOV 
 
     # Specify a URI for the location from which the new image binary large object (BLOB) is copied to start the virtual machine. 
     # Must end with ".vhd" extension
-    $destOsDiskName = "MyOsDiskName.vhd" 
-    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $destOsDiskName
+    $OsDiskName = "MyOsDiskName.vhd" 
+    $destOsDiskUri = "https://myexamplesa.blob.core.windows.net/vhds/" + $OsDiskName
     
     # Define a credential object for the VM. PowerShell prompts you for a username and password.
     $Cred = Get-Credential
@@ -417,7 +418,7 @@ Red Hat Enterprise Linux または CentOS 7.3 VM を作成するには、SR-IOV 
      -Credential $Cred | `
     Add-AzureRmVMNetworkInterface -Id $Nic.Id | `
     Set-AzureRmVMOSDisk `
-     -Name $OSDiskName `
+     -Name $OsDiskName `
      -SourceImageUri $sourceUri `
      -VhdUri $destOsDiskUri `
      -CreateOption FromImage `

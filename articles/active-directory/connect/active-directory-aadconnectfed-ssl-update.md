@@ -12,20 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 9bb29624324305f5295e0a50ef79d8f4c6d063c0
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---    
 
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
 ## <a name="overview"></a>概要
-この記事では、Azure AD Connect を使って Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書を更新する方法について説明します。 Azure AD Connect のサインイン方法が AD FS に設定されている場合、Azure AD Connect ツールを使って AD FS ファーム用の SSL 証明書を簡単に更新できます。 この更新は、次の簡単な 3 つの手順で、すべてのフェデレーション サーバーとWeb アプリケーション プロキシ (WAP) サーバーに対して実行できます。
+この記事では、Azure AD Connect を使って Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書を更新する方法について説明します。 選択されたユーザー サインイン方法が AD FS でない場合でも、Azure AD Connect ツールを使って AD FS ファーム用の SSL 証明書を簡単に更新できます。
+
+3 つのシンプルな手順で、すべてのフェデレーション サーバーと Web アプリケーション プロキシ (WAP) サーバーに対して、AD FS ファームの SSL 証明書の更新操作全体を実行できます。
 
 ![3 つの手順](./media/active-directory-aadconnectfed-ssl-update/threesteps.png)
 

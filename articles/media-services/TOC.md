@@ -215,6 +215,7 @@
 ### [再試行ロジック](media-services-retry-logic-in-dotnet-sdk.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=media-services)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.media)
 ## [PowerShell (サービス管理)](/powershell/module/azure/?view=azuresmps-3.7.0)
 ## [.NET](/dotnet/api/microsoft.windowsazure.mediaservices.client)
@@ -224,5 +225,6 @@
 ## [Azure Media Services コミュニティ](media-services-community.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [料金](https://azure.microsoft.com/pricing/details/media-services/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](media-services-release-notes.md)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/index/?services=media-services)

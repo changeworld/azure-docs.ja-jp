@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: f8917ca67aa5f15ccc11030fd0292ac803d9e994
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8c02e911770577bd51bc2bebbb3e29b66ed0235b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-using-routes-net"></a>ルートを使用した IoT Hub のデバイスからクラウドへのメッセージの処理 (.NET)
@@ -34,8 +33,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 このチュートリアルの最後に、次の 3 つの .NET コンソール アプリを実行します。
 
 * **SimulatedDevice**: [IoT Hub の使用]に関するチュートリアルで作成したアプリを変更したものです。デバイスからクラウドへのデータ ポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージを 10 秒ごとに送信します。 このアプリでは、IoT Hub との通信に AMQP プロトコルを使用します。
-* **ReadDeviceToCloudMessages**。シミュレート デバイス アプリから送信された、重大ではないテレメトリを表示します。
-* **ReadCriticalQueue**。シミュレート デバイス アプリから IoT hub に接続された Service Bus キューに送信された重大なメッセージをデキューします。
+* **ReadDeviceToCloudMessages**: デバイス アプリから送信された重大ではないテレメトリを表示します。
+* **ReadCriticalQueue**: IoT Hub に接続された Service Bus キューからデバイス アプリによって送信された重大なメッセージをデキューします。
 
 > [!NOTE]
 > IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのシミュレート対象デバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法については、「[Azure IoT デベロッパー センター]」をご覧ください。
@@ -49,8 +48,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
-## <a name="send-interactive-messages-from-a-simulated-device-app"></a>シミュレート対象デバイス アプリからの対話型メッセージの送信
-このセクションでは、「[IoT Hub の使用]」チュートリアルで作成したシミュレート デバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
+## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
+このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
 
 Visual Studio で、**SimulatedDevice** プロジェクトの `SendDeviceToCloudMessagesAsync` メソッドを次のコードに置き換えます。
 

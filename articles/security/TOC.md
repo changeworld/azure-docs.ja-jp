@@ -3,6 +3,7 @@
 ## [データベースのセキュリティ](azure-database-security-overview.md)
 ## [Storage のセキュリティ](security-storage-overview.md)
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
+## [運用上のセキュリティ](azure-operational-security-overview.md)
 ## [セキュリティの管理と監視](security-management-and-monitoring-overview.md)
 ## [ID 管理](security-identity-management-overview.md)
 ## [IoT のセキュリティ](../iot-suite/iot-security-architecture.md#security-in-iot)
@@ -35,6 +36,8 @@
 ### [IaaS ワークロードのベスト プラクティス](azure-security-iaas.md)
 ### [Microsoft Antimalware](azure-security-antimalware.md)
 ### [IaaS VM のディスク暗号化](azure-security-disk-encryption.md)
+#### [ディスクの暗号化の FAQ](azure-security-disk-encryption-faq.md)
+#### [ディスクの暗号化のトラブルシューティング](azure-security-disk-encryption-tsg.md)
 ### [Azure VM の暗号化](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## セキュリティの管理と監視
@@ -53,8 +56,10 @@
 ## PaaS サービス
 ### [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)
 #### [SQL を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-sql.md)
-#### [SQL Database のベスト プラクティス](azure-database-security-best-practices.md)
+#### [SQL Database のセキュリティに関するベスト プラクティス](azure-database-security-best-practices.md)
+#### [SQL Database のセキュリティのチェックリスト](azure-database-security-checklist.md)
 #### [App Services を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-app-services.md)
+####[運用上のセキュリティのチェックリスト](azure-operational-security-checklist.md)
 
 ## モノのインターネット
 ### [IoT デプロイのセキュリティ保護](../iot-suite/iot-suite-security-deployment.md)
@@ -79,6 +84,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [Azure セキュリティの MVP プログラム](azure-security-mvp.md)
 ## [サイバーセキュリティに関する相談](azure-security-cyber-services.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [セキュリティとコンプライアンスのブログ](http://blogs.msdn.com/b/azuresecurity/)
 ## [Virtual Academy のセキュリティ講座](security-microsoft-virtual-academy.md)
 ## [Channel 9 で配信中のセキュリティに関するビデオ](security-channel-nine.md)

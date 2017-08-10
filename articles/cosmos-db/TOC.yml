@@ -5,8 +5,7 @@
     - name: Azure Cosmos DB について
       href: introduction.md
     - name: DocumentDB ユーザーへの対応
-      href: >-
-        https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/
+      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: クイック スタート
   expanded: true
   items:
@@ -138,6 +137,8 @@
               href: documentdb-resources.md
             - name: SQL クエリ
               href: documentdb-sql-query.md
+            - name: SQL クエリのパフォーマンス
+              href: documentdb-sql-query-metrics.md
             - name: SQL のプレイグラウンド
               href: 'https://www.documentdb.com/sql/demo'
             - name: パーティション分割
@@ -195,8 +196,7 @@
                 - name: スタック オーバーフロー
                   href: 'http://stackoverflow.com/questions/tagged/azure-cosmosdb'
                 - name: ビデオ
-                  href: >-
-                    https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db
+                  href: 'https://azure.microsoft.com/documentation/videos/index/?services=cosmos-db'
                 - name: サービスの更新情報
                   href: 'https://azure.microsoft.com/updates/?product=cosmos-db'
                 - name: コミュニティ ポータル
@@ -224,8 +224,7 @@
         - name: テーブル API
           items:
             - name: テーブル ストレージ
-              href: >-
-                https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts
+              href: 'https://docs.microsoft.com/rest/api/storageservices/fileservices/Table-Service-Concepts'
         - name: Change Feed
           href: change-feed.md
         - name: GeoSpatial
@@ -284,8 +283,12 @@
           href: powerbi-visualize.md
         - name: ODBC ドライバーを利用してデータを視覚化する
           href: odbc-driver.md
+        - name: DocumentDB API で Spring Boot Starter を使用する
+          href: documentdb-java-spring-boot-starter-with-cosmos-db.md
 - name: リファレンス
   items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=cosmos-db'
     - name: DocumentDB API
       items:
         - name: Java

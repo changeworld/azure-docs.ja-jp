@@ -108,7 +108,7 @@ Cherwell で Azure AD のシングル サインオンを構成およびテスト
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-cherwell-tutorial/tutorial_cherwell_samlbase.png)
 
-3. **[Cherwell Domain and URLs] (Cherwell のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Cherwell Domain and URLs] \(Cherwell のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cherwell-tutorial/tutorial_cherwell_url.png)
 

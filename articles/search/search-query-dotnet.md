@@ -14,10 +14,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/19/2017
 ms.author: brjohnst
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0185d898f5443cc03135cb1692a54194a82b1e50
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 52bd0fd4cf70401dcf881c7f28d5cd91397bb059
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="query-your-azure-search-index-using-the-net-sdk"></a>.NET SDK を使用した Azure Search インデックスの照会
@@ -33,7 +33,8 @@ ms.lasthandoff: 07/21/2017
 
 このチュートリアルを開始する前に、既に [Azure Search インデックスを作成](search-what-is-an-index.md)し、[インデックスにデータを読み込んで](search-what-is-data-import.md)います。
 
-この記事に記載されたすべてのサンプル コードは、C# で記述されていることにご注意ください。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。
+> [!NOTE]
+> この記事のサンプル コードはすべて C# で記述されています。 [GitHub](http://aka.ms/search-dotnet-howto)に完全なソース コードがあります。 サンプル コードの詳細なチュートリアルについては、[Azure Search .NET SDK](search-howto-dotnet-sdk.md) に関する記事も参照してください。
 
 ## <a name="identify-your-azure-search-services-query-api-key"></a>Azure Search サービスのクエリ API キーの識別
 Azure Search インデックスの作成は済んでいるので、.NET SDK を使用してクエリを発行する準備はほとんどできています。 まず、プロビジョニングした検索サービス用に生成されたクエリ API キーの 1 つを取得する必要があります。 .NET SDK は、サービスに対する要求ごとに、この API キーを送信します。 有効なキーがあれば、要求を送信するアプリケーションとそれを処理するサービスの間で、要求ごとに信頼を確立できます。

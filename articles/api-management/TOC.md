@@ -85,6 +85,7 @@
 ## [HTTP 経由で SOAP WCF サービスを使用する](http://mostlydotnetdev.blogspot.nl/2015/03/azure-api-management-apim-consuming.html)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureapimgmt)
 ## [料金](https://azure.microsoft.com/pricing/details/api-management/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [REST API を使用して RBAC ライクなアクセスを提供する](http://blogs.msdn.com/b/katriend/archive/2015/12/21/using-the-azure-api-management-rest-api-as-workaround-to-rbac-functionality.aspx)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=api-management)
 ## [API Management API を呼び出すために PostMan を設定する](http://www.bizbert.com/bizbert/2015/07/08/Setting+Up+PostMan+To+Call+The+Azure+Management+APIs.aspx)

@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: c2bbb8058ce335c7568d5260ddd0274ca36c9c52
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: fb4302f028ecacf095adbe1b52e31e0432102776
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
@@ -50,7 +50,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 >拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する TechnicalProfile に含まれている必要があります。
 
 >[!NOTE]
->Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web API アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。
+>Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  これを行うための手順については、この記事の「`NEXT STEPS`」のセクションで説明しています。
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
@@ -71,6 +71,8 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 1. [WebApp-GraphAPI-DirectoryExtensions] > [設定] > [プロパティ] の順に移動し、次の識別子をクリップボードにコピーして保存します。
 *  **アプリケーション ID**。 例: `103ee0e6-f92d-4183-b576-8c3739027780`
 * **オブジェクト ID**。 例: `80d8296a-da0a-49ee-b6ab-fd232aa45201`
+
+
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して `ApplicationObjectId` を追加する
 
@@ -270,11 +272,38 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="next-steps"></a>次のステップ
 
-以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
+### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
 ```
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
+```
+### <a name="using-the-same-extension-attributes-between-built-in-and-custom-policies"></a>組み込みポリシーとカスタム ポリシーの間での同じ拡張属性の使用
+ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。  カスタム ポリシーでこれらの拡張属性を使用するには、次の手順に従います。
+1. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。
+2. 自分の **b2c-extensions-app** を検索して選択します。
+3. 'Essentials' で、**アプリケーション ID** と**オブジェクト ID** を記録します。
+4. これらを、以下のように AAD-Common 技術プロファイル メタデータに含めます。
+
+```xml
+    <ClaimsProviders>
+        <ClaimsProvider>
+              <DisplayName>Azure Active Directory</DisplayName>
+            <TechnicalProfile Id="AAD-Common">
+              <DisplayName>Azure Active Directory</DisplayName>
+              <Protocol Name="Proprietary" Handler="Web.TPEngine.Providers.AzureActiveDirectoryProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+              <!-- Provide objectId and appId before using extension properties. -->
+              <Metadata>
+                <Item Key="ApplicationObjectId">insert objectId here</Item> <!-- This is the "Object ID" from the "b2c-extensions-app"-->
+                <Item Key="ClientId">insert appId here</Item> <!--This is the "Application ID" from the "b2c-extensions-app"-->
+              </Metadata>
+```
+
+5. ポータルのエクスペリエンスとの整合性を保つには、カスタム ポリシーで使用する "*前*" に、ポータルの UI を使用してこれらの属性を作成します。  ポータルで属性 "ActivationStatus" を作成するときに、次のようにこの属性を参照する必要があります。
+
+```
+extension_ActivationStatus in the custom policy
+extension_<app-guid>_ActivationStatus via the Graph API.
 ```
 
 

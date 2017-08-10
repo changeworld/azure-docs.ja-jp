@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 07/04/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 6664cb20393ec5f588c8eeb119d6f606a0072861
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a2ccc3d43a56a569897e1efe24f576eb92610ec3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/15/2017
 
 **デプロイ** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)** |
 --- | --- | ---
-**Azure ポータル** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
+**Azure Portal** | Azure Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの VMware VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。 | Resource Manager または従来のストレージとネットワークを使用して、オンプレミスの Hyper-V VM を Azure Storage にレプリケートします。<br/><br/> Resource Manager ベースの VM または従来の VM にフェールオーバーします。
 **クラシック ポータル** | メンテナンス モードのみ。 新しい資格情報コンテナーを作成することはできません。 | メンテナンス モードのみ。
 **PowerShell** | 現在、サポートされていません。 | サポートされています
 
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/15/2017
 
 **デプロイ** | **サポート**
 --- | ---
-**VMware VM/物理サーバー** | vSphere 6.0、5.5、または 5.1 (最新の更新プログラムをインストール済み)
+**VMware VM/物理サーバー** | vCenter 6.5、6.0、5.5
 **Hyper-V (Virtual Machine Manager あり)** | System Center Virtual Machine Manager 2016 と System Center Virtual Machine Manager 2012 R2
 
   >[!Note]
@@ -53,7 +52,7 @@ ms.lasthandoff: 06/15/2017
 
 **デプロイ** | **サポート**
 --- | ---
-**VMware VM/物理サーバー** | vCenter 5.5 または 6.0 (5.5 の機能のみをサポート) 
+**VMware VM/物理サーバー** | vSphere 6.5、6.0、5.5
 **Hyper-V (Virtual Machine Manager あり/なし)** | Windows Server 2016、最新の更新プログラムが適用された Windows Server 2012 R2。<br></br>SCVMM が使用されている場合、Windows Server 2016 ホストは、SCVMM 2016 によって管理されている必要があります。
 
 
@@ -67,7 +66,7 @@ ms.lasthandoff: 06/15/2017
 
  **VMware/物理サーバー** | **Hyper-V (VMM あり/なし)** |
 --- | --- |
-64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/><br/> Red Hat Enterprise Linux 6.7、6.8、7.1、7.2 <br/><br/>CentOS 6.5、6.6、6.7、6.8、7.0、7.1、7.2 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
+64 ビット Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2 SP1 以降<br/>*Windows Server 2016* - VMware VM および物理サーバーでは現在サポートされていません。 <br/><br/> Red Hat Enterprise Linux: 5.2 から 5.11、6.1 から 6.8、7.0 から 7.3 <br/><br/>Cent OS: 5.2 から 5.11、6.1 から 6.8、7.0 から 7.3 <br/><br/>Ubuntu 14.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Ubuntu 16.04 LTS サーバー[ (サポートされるカーネルのバージョン)](#supported-ubuntu-kernel-versions-for-vmwarephysical-servers)<br/><br/>Red Hat 互換カーネルまたは Unbreakable Enterprise Kernel リリース 3 (UEK3) を実行している Oracle Enterprise Linux 6.4、6.5 <br/><br/> SUSE Linux Enterprise Server 11 SP3 <br/><br/> SUSE Linux Enterprise Server 11 SP4 <br/>(レプリケートするマシンの SLES 11 SP3 から SLES 11 SP4 へのアップグレードはサポートされていません。 レプリケートされるマシンが SLES 11SP3 から SLES 11 SP4 にアップグレードされた場合は、アップグレード後にレプリケーションを無効にし、再度マシンを保護する必要があります。) | [Azure がサポートする](https://technet.microsoft.com/library/cc794868.aspx)任意のゲスト OS
 
 
 >[!IMPORTANT]
@@ -82,19 +81,24 @@ ms.lasthandoff: 06/15/2017
 **リリース** | **モビリティ サービス バージョン** | **カーネル バージョン** |
 --- | --- | --- |
 14.04 LTS | 9.9 | 3.13.0-24-generic ～ 3.13.0-117-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic ～ 4.4.0-75-generic |
+14.04 LTS | 9.10 | 3.13.0-24-generic から 3.13.0-121-generic、<br/>3.16.0-25-generic ～ 3.16.0-77-generic、<br/>3.19.0-18-generic ～ 3.19.0-80-generic、<br/>4.2.0-18-generic ～ 4.2.0-42-generic、<br/>4.4.0-21-generic から 4.4.0-81-generic |
+16.04 LTS | 9.10 | 4.4.0-21-generic から 4.4.0-81-generic、<br/>4.8.0-34-generic から 4.8.0-56-generic、<br/>4.10.0-14-generic から 4.10.0-24-generic |
+
 
 ## <a name="supported-file-systems-and-guest-storage-configurations-on-linux-vmwarephysical-servers"></a>Linux (VMware/物理サーバー) でサポートされるファイル システムおよびゲスト ストレージ構成
 
 VMware または物理サーバーで実行される Linux サーバーでは、次のファイル システムおよびストレージ構成ソフトウェアがサポートされます。
-* ファイル システム: ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS (v4 までに限られます)
+* ファイル システム: ext3、ext4、ReiserFS (Suse Linux Enterprise Server のみ)、XFS
 * ボリューム マネージャー: LVM2
 * マルチパス ソフトウェア: デバイス マッパー
 
-HP CCISS ストレージ コントローラーを使用する物理サーバーはサポートされていません。
+準仮想化ストレージ デバイス (準仮想化ドライバーによってエクスポートされたデバイス) はサポートされていません。<br/>
+マルチ キュー ブロック IO デバイスはサポートされていません。<br/>
+HP CCISS ストレージ コントローラーを使用する物理サーバーはサポートされていません。<br/>
 
 >[!Note]
 > Linux サーバーでは、/ (ルート)、/boot、/usr、/usr/local、/var、/etc の各ディレクトリ (個別のパーティション/ファイルシステムとしてセットアップされた場合) はすべて、ソース サーバーの同じディスク (OS ディスク) 上に存在する必要があります。<br/><br/>
-> メタデータ チェックサムなど XFS v5 の機能は現在、XFS ファイルシステムの ASR でサポートされていません。 XFS ファイルシステムで v5 の機能を使用していないことを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。
+> メタデータ チェックサムなど、XFS ファイル システム上の XFSv5 機能は、モビリティ サービスのバージョン 9.10 以降でサポートされます。 XFSv5 機能を使用している場合は、モビリティ サービスのバージョン 9.10 以降を実行していることを確認してください。 xfs_info ユーティリティを使用して、パーティションの XFS スーパーブロックを確認します。 ftype が 1 に設定されている場合は、XFSv5 の機能が使用されています。
 >
 
 
@@ -105,7 +109,7 @@ HP CCISS ストレージ コントローラーを使用する物理サーバー�
 
 **構成** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
 --- | --- | ---
-NIC チーミング | はい<br/><br/>物理マシン上でサポートされていません| はい
+NIC チーミング | あり<br/><br/>物理マシンがレプリケートされている場合はサポートされません| あり
 VLAN | あり | あり
 IPv4 | はい | はい
 IPv6 | なし | なし
@@ -118,7 +122,7 @@ NIC チーミング | なし | なし
 IPv4 | はい | はい
 IPv6 | なし | なし
 静的 IP (Windows) | あり | あり
-静的 IP (Linux) | なし | なし
+静的 IP (Linux) | あり <br/><br/>フェールバックで DHCP を使用するように仮想マシンが構成されます  | いいえ
 マルチ NIC | はい | はい
 
 ### <a name="failed-over-azure-vm-network-configuration"></a>フェールオーバーされる Azure VM のネットワーク構成
@@ -155,12 +159,13 @@ VMDK | はい | 該当なし
 VHD/VHDX | 該当なし | はい
 第 2 世代 VM | 該当なし | はい
 EFI/UEFI| なし | はい
-共有クラスター ディスク | VMware = はい<br/><br/> 物理サーバー = 該当なし | いいえ
+共有クラスター ディスク | いいえ | なし
 暗号化されたディスク | いいえ | なし
 NFS | なし | 該当なし
 SMB 3.0 | なし | なし
 RDM | はい<br/><br/> 物理サーバー = 該当なし | 該当なし
-1 TB より大きいディスク | いいえ | いいえ
+1 TB より大きいディスク | あり<br/><br/>最大 4095 GB | あり<br/><br/>最大 4095 GB
+4K セクター サイズのディスク | あり | あり、Generation 1 VM の場合にサポートされます<br/><br/>Generation 2 VM の場合はサポートされません
 ストライピングされたディスクのボリューム > 1 TB<br/><br/> LVM 論理ボリュームの管理 | はい | はい
 記憶域 | なし | あり
 ディスクのホット アド/削除 | なし | いいえ
@@ -182,9 +187,10 @@ Premium Storage | はい | はい
 ## <a name="support-for-azure-compute-configuration"></a>Azure コンピューティング構成のサポート
 
 **コンピューティング機能** | **VMware/物理サーバー** | **Hyper-V (Virtual Machine Manager あり/なし)**
---- | --- | --- | ---
+--- | --- | --- 
 可用性セット | はい | はい
-ハブ | あり | はい  
+ハブ | あり | あり  
+管理ディスク | あり | あり<br/><br/>管理ディスクのある Azure VM からオンプレミスへのフェールバックは現在サポートされていません。
 
 ## <a name="failed-over-azure-vm-requirements"></a>フェールオーバーされる Azure VM の要件
 
@@ -192,12 +198,12 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 **エンティティ** | **要件** | **詳細**
 --- | --- | ---
-**ゲスト オペレーティング システム** | Hyper-V から Azure へのレプリケーション: Site Recovery では、 [Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。 <br/><br/> VMware と物理サーバーのレプリケーション: Windows と Linux の [前提条件](site-recovery-vmware-to-azure-classic.md#before-you-start-deployment) | サポートされていない場合、前提条件の確認は失敗します。
+**ゲスト オペレーティング システム** | Hyper-V から Azure へのレプリケーション: Site Recovery では、 [Azure でサポートされている](https://technet.microsoft.com/library/cc794868%28v=ws.10%29.aspx)すべてのオペレーティング システムがサポートされます。 <br/><br/> VMware と物理サーバーのレプリケーション: Windows と Linux の [前提条件](site-recovery-vmware-to-azure-classic.md) | サポートされていない場合、前提条件の確認は失敗します。
 **ゲスト オペレーティング システムのアーキテクチャ** | 64 ビット | サポートされていない場合、前提条件の確認は失敗します。
-**オペレーティング システムのディスク サイズ** | 最大 1023 GB | サポートされていない場合、前提条件の確認は失敗します。
+**オペレーティング システムのディスク サイズ** | **VMware VM または物理サーバーを Azure に**レプリケートしている場合は 2048 GB までです。<br/><br/>**Hyper-V 第 1 世代**の VM の場合は 2048 GB までです。<br/><br/>**Hyper-V 第 2 世代**の VM の場合は 300 GB までです。  | サポートされていない場合、前提条件の確認は失敗します。
 **オペレーティング システムのディスク数** | 1 | サポートされていない場合、前提条件の確認は失敗します。
 **データ ディスク数** | **VMware VM を Azure に**レプリケートする場合は 64 個以下、**HYPER-V VM を Azure に**レプリケートする場合は 16 個以下 | サポートされていない場合、前提条件の確認は失敗します。
-**データ ディスク VHD のサイズ** | 最大 1023 GB | サポートされていない場合、前提条件の確認は失敗します。
+**データ ディスク VHD のサイズ** | 最大 4095 GB | サポートされていない場合、前提条件の確認は失敗します。
 **ネットワーク アダプター** | 複数のアダプターがサポートされます。 |
 **共有 VHD** | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。
 **FC ディスク** | サポートされていません | サポートされていない場合、前提条件の確認は失敗します。

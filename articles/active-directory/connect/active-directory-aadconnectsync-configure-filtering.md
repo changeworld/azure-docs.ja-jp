@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 635affebf9130c2bfb38e84cc144ee4838504777
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 064642ebb9cafb0c6e1b3ff306241182a95215cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -297,6 +297,8 @@ Active Directory からメタバースへの[受信](#inbound-filtering)フィ�
 
 ## <a name="group-based-filtering"></a>グループベースのフィルター処理
 グループベースのフィルター処理は、[カスタム インストール](active-directory-aadconnect-get-started-custom.md#sync-filtering-based-on-groups)を使用して Azure AD Connect を初めてインストールするときに構成できます。 このフィルター処理は、同期が必要なオブジェクトがごく少数であるパイロット デプロイで使用するためのものです。 グループベースのフィルター処理は、一度無効にすると再び有効にすることができません。 カスタム構成でのグループベースのフィルター処理は、*サポートされていません*。 この機能を構成できるのは、インストール ウィザードを使用する場合のみです。 パイロットが完了したら、このトピックで説明されているいずれかの他のフィルター処理オプションを使用する必要があります。 OU ベースのフィルター処理とグループ ベースのフィルター処理を組み合わせて使用する場合は、グループとそのメンバーが配置されている OU を追加する必要があります。
+
+複数の AD フォレストを同期すると、各 AD コネクタに別のグループを指定することで、グループベースのフィルター処理を構成できます。 1 つの AD フォレストでユーザーを同期する場合、同じユーザーが他の AD フォレストで 1 つ以上の対応する FSP (外部セキュリティ プリンシパル) オブジェクトを持つとき、ユーザー オブジェクトとそれに対応するすべての FSP オブジェクトがグループベースのフィルター処理のスコープ内にあることを確認してください。 グループベースのフィルター処理で 1 つ以上の FSP オブジェクトが除外された場合、ユーザー オブジェクトは Azure AD に同期されません。
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の詳細を確認してください。

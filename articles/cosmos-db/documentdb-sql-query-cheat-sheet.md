@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 04810ffa33d90d31003d0919c3edb2710fed453c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: DocumentDB API SQL クエリのチート シート PDF
@@ -40,7 +39,7 @@ SQL クエリ チート シートをダウンロードし、それをクイッ�
 
 ## <a name="more-help-with-writing-sql-queries"></a>SQL クエリの記述に関するその他のヘルプ
 * Cosmos DB で利用できるクエリ オプションのチュートリアルについては、「[Cosmos DB のクエリ](documentdb-sql-query.md)」を参照してください。
-* 関連リファレンス ドキュメントについては、「[Cosmos DB SQL クエリ言語](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
+* 関連するリファレンス ドキュメントについては、「[Azure Cosmos DB DocumentDB API: SQL 構文リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)」を参照してください。
 
 ## <a name="release-notes"></a>リリース ノート
 TOP を含めるために 2016 年 7 月 29 日に更新されました。

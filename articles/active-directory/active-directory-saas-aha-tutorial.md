@@ -108,7 +108,7 @@ Aha! で Azure AD のシングル サインオンを構成およびテストす�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-aha-tutorial/tutorial_aha_samlbase.png)
 
-3. **[Aha! Domain and URLs] (Aha! のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Aha! Domain and URLs] Aha! のドメインと URL** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-aha-tutorial/tutorial_aha_url.png)
 

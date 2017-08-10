@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: v-livech
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: a95157f57c0cbd1f2a9ed68a0fe83140d7c9ec40
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: ddc5446fa6a43bfff05ec251b30175ddd24052c9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="add-a-user-to-an-azure-vm"></a>Azure VM へのユーザーの追加
@@ -78,7 +78,7 @@ sudo top
 `useradd` コマンドを使用して、ユーザー アカウントを Linux VM に追加します。  `useradd` を実行すると、`/etc/passwd`、`/etc/shadow`、`/etc/group`、および `/etc/gshadow` が変更されます。  また、コマンド ライン フラグを `useradd` コマンドに追加して、新しいユーザーを Linux の適切な sudo グループに追加します。  `useradd` は `/etc/passwd` にエントリを作成しますが、新しいユーザー アカウントへのパスワードの設定は行いません。  簡単な `passwd` コマンドを使用して、新しいユーザーの初期パスワードを作成します。  最後に、sudo 規則を変更して、ユーザーがすべてのコマンドに対してパスワードを入力しなくても sudo 特権でコマンドを実行できるようにします。  秘密キーを使用してログインしているので、ユーザー アカウントは不正なアクターに対して安全であり、パスワードなしでの sudo アクセスが許可されるものと想定しています。  
 
 ### <a name="adding-a-single-sudo-user-to-an-azure-vm"></a>Azure VM への 1 人の sudo ユーザーの追加
-SSH キーを使用して Azure VM にログインします。  SSH 公開キー アクセスをセットアップしていない場合は、最初に「 [Using Public Key Authentication with Azure](http://link.to/article)」 (Azure での公開キー認証の使用) を参照してください。  
+SSH キーを使用して Azure VM にログインします。  SSH 公開キー アクセスをセットアップしていない場合は、最初に「 [Using Public Key Authentication with Azure](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」 (Azure での公開キー認証の使用) を参照してください。  
 
 `useradd` コマンドは次の処理を行います。
 

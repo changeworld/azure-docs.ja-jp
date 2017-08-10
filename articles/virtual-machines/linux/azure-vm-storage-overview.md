@@ -1,6 +1,6 @@
 ---
 title: "Azure Linux VM と Azure Storage | Microsoft Docs"
-description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage と、管理ディスクおよび非管理対象ディスクについて説明します。"
+description: "Linux 仮想マシンでの Azure Standard Storage および Premium Storage と、Managed Disks および Unmanaged Disks について説明します。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines-linux
 author: vlivech
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 0151e188fde38c7a617cf2070939c6498142dd71
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 598d6a62fc7c4a769043c4d6d6547e5b8f8a5d5a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure と Linux の VM ストレージ
@@ -48,71 +48,37 @@ Azure VM は、Managed Disks と非管理対象ディスクのどちらを使用
 
 ## <a name="creating-a-vm-with-a-managed-disk"></a>Managed Disk での VM の作成
 
-次の例では、[ここでインストール] できる Azure CLI 2.0 が必要です。
+次の例では、[ここでインストール](/cli/azure/install-azure-cli)できる Azure CLI 2.0 が必要です。
 
-まず、リソースを管理するリソース グループを作成します。
+まず、[az group create](/cli/azure/group#create) でリソースを管理するリソース グループを作成します。
 
 ```azurecli
 az group create --location westus --name myResourceGroup
 ```
 
-続いて、次の例に示すように `az vm create` コマンドで VM を作成します。`manageddisks` が取得される可能性が高いため、必ず一意の `--public-ip-address-dns-name` 引数を指定してください。
+ここで [az vm create](/cli/azure/vm#create) を使用して VM を作成します。 `mypublicdns` が取得されるため、一意の `--public-ip-address-dns-name` 引数を指定します。
 
 ```azurecli
 az vm create \
---image credativ:Debian:8:latest \
---admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub
---public-ip-address-dns-name manageddisks \
---resource-group myResourceGroup \
---location westus \
---name myVM
+    --resource-group myResourceGroup \
+    --name myVM
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --public-ip-address-dns-name mypublicdns
 ```
 
 前の例では、Standard Storage アカウントの管理ディスクを使用して VM を作成します。 Premium Storage アカウントを使用するには、次の例のように `--storage-sku Premium_LRS` 引数を追加します。
 
 ```azurecli
 az vm create \
---storage-sku Premium_LRS
---image credativ:Debian:8:latest \
---admin-username azureuser \
---ssh-key-value ~/.ssh/id_rsa.pub
---public-ip-address-dns-name manageddisks \
---resource-group myResourceGroup \
---location westus \
---name myVM
-```
-
-
-### <a name="create-a-vm-with-an-unmanaged-standard-disk-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した、非管理対象の Standard ディスクでの VM の作成
-
-当然のことながら、Azure CLI 1.0 を使用して、Standard ディスクと Premium ディスクの VM も作成できます。現時点では、Azure CLI 1.0 を使用して、Managed Disks によってサポートされる VM を作成することはできません。
-
-`-z` オプションは、Standard_A1 を選びます。これは Standard Storage を基盤とする Linux VM です。
-
-```azurecli
-azure vm quick-create -g rbg \
-exampleVMname \
--l westus \
--y Linux \
--Q Debian \
--u exampleAdminUser \
--M ~/.ssh/id_rsa.pub
--z Standard_A1
-```
-
-### <a name="create-a-vm-with-premium-storage-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用した Premium Storage を使用する VM の作成
-`-z` オプションは、Standard_DS1 を選びます。これは Premium Storage を基盤とする Linux VM です。
-
-```azurecli
-azure vm quick-create -g rbg \
-exampleVMname \
--l westus \
--y Linux \
--Q Debian \
--u exampleAdminUser \
--M ~/.ssh/id_rsa.pub
--z Standard_DS1
+    --resource-group myResourceGroup \
+    --name myVM
+    --image UbuntuLTS \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --public-ip-address-dns-name mypublicdns \
+    --storage-sku Premium_LRS
 ```
 
 ## <a name="standard-storage"></a>Standard Storage
@@ -144,7 +110,7 @@ Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズお�
 | Centos |6.5、6.6、6.7、7.0、7.1 |3.10.0-229.1.2.el7+ |
 | RHEL |6.8+、7.2+ | |
 
-## <a name="file-storage"></a>File Storage
+## <a name="azure-file-storage"></a>Azure File ストレージ
 Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 Azure Files を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。 Azure で実行されているアプリケーションでは、Linux を実行している Azure の仮想マシンからファイル共有を簡単にマウントできます。 また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。  ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
 
 File Storage は、BLOB、Table、および Queue Storage と同じテクノロジ上に構築されているため、可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。 File Storage のパフォーマンスのターゲットと制限事項の詳細については、「Azure Storage のスケーラビリティおよびパフォーマンスのターゲット」をご覧ください。
@@ -179,7 +145,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 ローカル冗長ストレージ (LRS) では、ストレージ アカウントが作成されたリージョン内のデータがレプリケートされます。 持続性を最大限まで高めるため、ストレージ アカウント内のデータに対して行われたすべての要求が 3 回レプリケートされます。 これらの 3 つのレプリカはそれぞれ別個の障害ドメインとアップグレード ドメインに存在します。  3 つのレプリカのすべてに書き込まれた場合にのみ、要求は正常に返されます。
 
 ### <a name="zone-redundant-storage"></a>ゾーン冗長ストレージ
-ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の&2; つから&3; つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用の Storage アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます
+ゾーン冗長ストレージ (ZRS) では、1 つまたは 2 つのリージョン内の 2 つから 3 つの施設でデータがレプリケートされるため、LRS よりも高い持続性を実現します。 ご使用のストレージ アカウントで ZRS が有効になっている場合、1 つの施設で障害が発生した場合でもデータは保持されます。
 
 ### <a name="geo-redundant-storage"></a>geo 冗長ストレージ
 geo 冗長ストレージ (GRS) では、プライマリ リージョンから数百マイル離れたセカンダリ リージョンにデータがレプリケートされます。 ご使用のストレージ アカウントで GRS が有効になっている場合は、地域的な停電やプライマリ リージョンが復旧できない災害が発生しても、データは保持されます。
@@ -199,15 +165,15 @@ Standard ストレージ アカウントの場合: Standard ストレージ ア�
 Premium Storage アカウントの場合: Premium Storage アカウントの最大合計スループット レートは 50 Gbps です。 すべての VM ディスク全体の合計スループットは、この制限を超えることはできません。
 
 ## <a name="availability"></a>可用性
-マイクロソフトは、読み取りアクセス geo 冗長ストレージ (RA-GRS) アカウントからのデータの読み取り要求が 99.99% (クール アクセス層の場合 99.9%) 以上、正常に処理されることを保証します。ただし、プライマリ リージョンからのデータの読み取りに失敗した場合、セカンダリ リージョンで読み取りを再試行するものとします。
+マイクロソフトは、Read Access-Geo Redundant ストレージ (RA-GRS) アカウントからのデータの読み取り要求が 99.99% (クール アクセス層の場合 99.9%) 以上、正常に処理されることを保証します。ただし、プライマリ リージョンからのデータの読み取りに失敗した場合、セカンダリ リージョンで読み取りを再試行するものとします。
 
 マイクロソフトは、ローカル冗長ストレージ (LRS)、ゾーン冗長ストレージ (ZRS)、および geo 冗長ストレージ (GRS) アカウントからのデータの読み取り要求が 99.9% (クール アクセス層の場合 99%) 以上、正常に処理されることを保証します。
 
-マイクロソフトは、ローカル冗長ストレージ (LRS) アカウント、ゾーン冗長ストレージ (ZRS) アカウント、geo 冗長ストレージ (GRS) アカウント、および読み取りアクセス Geo 冗長ストレージ (RA-GRS) アカウントへのデータの書き込み要求が 99.9% (クール アクセス層の場合 99%) 以上の時間において、正常に処理されることを保証します。
+マイクロソフトは、ローカル冗長ストレージ (LRS) アカウント、ゾーン冗長ストレージ (ZRS) アカウント、geo 冗長ストレージ (GRS) アカウント、および Read Access-Geo Redundant ストレージ (RA-GRS) アカウントへのデータの書き込み要求が 99.9% (クール アクセス層の場合 99%) 以上の時間において、正常に処理されることを保証します。
 
 * [ストレージに関する Azure の SLA](https://azure.microsoft.com/support/legal/sla/storage/v1_1/)
 
-## <a name="regions"></a>リージョン
+## <a name="regions"></a>地域
 Azure は世界中の 30 のリージョンで一般公開され、さらに 4 つのリージョン向けのプランを発表しました。 さらなる地域への展開を行うことでお客様のパフォーマンス向上を実現し、データの保存場所に対するお客様の要件や好みをサポートできるため、これは Azure の優先事項となっています。  提供開始された最新の Azure リージョンはドイツです。
 
 Microsoft Cloud Germany は、既にヨーロッパで提供されているマイクロソフトのクラウド サービスとは異なるオプションを提供し、ドイツ国内や欧州連合 (EU)、欧州自由貿易連合 (EFTA) 圏内の規制の厳しいパートナーやお客様向けに、イノベーションの推進やビジネス拡大のさらなるチャンスを生み出します。
@@ -223,7 +189,7 @@ Azure Storage で提供される包括的なセキュリティ機能のセット
 管理プレーンは、ストレージ アカウントの管理に使用するリソースが構成されます。 このセクションでは、Azure Resource Manager デプロイメント モデルと、ロールベースのアクセス制御 (RBAC) を使用してストレージ アカウントへのアクセスを制御する方法について説明します。 また、ストレージ アカウント キーの管理とその再生成方法についても説明します。
 
 ### <a name="data-plane-security"></a>データ プレーンのセキュリティ
-このセクションでは、Shared Access Signature と保存されたアクセス ポリシーを使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
+このセクションでは、Shared Access Signature と Stored Access Policy を使用して、BLOB、ファイル、キュー、テーブルなど、ストレージ アカウントの実際のデータ オブジェクトに対してアクセスを許可する方法について説明します。 サービスレベルの SAS とアカウントレベルの SAS の両方が対象です。 また、特定の IP アドレス (または IP アドレスの範囲) に対するアクセスを制限する方法、HTTPS に使用されるプロトコルを制限する方法、Shared Access Signature が期限切れになる前に無効にする方法についても説明します。
 
 ## <a name="encryption-in-transit"></a>転送中の暗号化
 このセクションでは、Azure Storage とのデータの送受信時にデータをセキュリティで保護する方法について説明します。 Azure のファイル共有用の SMB 3.0 に使用される HTTPS と暗号化の推奨される使用方法について説明します。 また、クライアント側の暗号化についても取り上げます。クライアント側の暗号化の場合、クライアント アプリケーションで Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化することができます。
@@ -234,7 +200,7 @@ Storage Service Encryption (SSE) と、ストレージ アカウントで Storag
 * [Azure Storage セキュリティ ガイド](../../storage/storage-security-guide.md)
 
 ## <a name="temporary-disk"></a>一時ディスク
-各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-planned-vs-unplanned-maintenance)中、または [VM の再デプロイ](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
+各 VM には、一時ディスクが含まれています。 一時ディスクは、アプリケーションとプロセスのための一時的なストレージを提供し、ページ ファイルやスワップ ファイルなどのデータのみを格納するためのものです。 一時ディスクのデータは、[メンテナンス イベント](manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime)中、または [VM の再デプロイ](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)時に失われる可能性があります。 VM の標準的な再起動中は、一時ドライブのデータは保持されます。
 
 Linux 仮想マシンでは、ディスクは通常 **/dev/sdb** であり、Azure Linux エージェントにより書式設定され、**/mnt** にマウントされます。 仮想マシンのサイズに基づいて、一時ディスクのサイズは異なります。 詳細については、「[Linux 仮想マシンのサイズ](sizes.md)」をご覧ください。
 

@@ -12,14 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: f5c33212da13b33be60488992d93305807c98d38
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 3c7db401442c41bbe1343b1adc48f4f1b7d88b49
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
@@ -178,7 +177,7 @@ Jupyter Notebook サーバーは、どのホストからでもアクセスでき
 サンプルの Notebook がパッケージ化されています (Python と R にそれぞれ 1 つずつ)。ローカルの Linux ユーザー名とパスワードを使用して Jupyter Notebook の認証を受けると、Notebook のホーム ページにサンプルへのリンクを表示できます。 **[新規]** を選択し、適切な言語カーネルを選択して、新しい Notebook を作成できます。 **[新規]** ボタンが表示されない場合は、左上にある **Jupyter** アイコンをクリックして、Notebook サーバーのホーム ページに移動します。
 
 ### <a name="apache-spark-standalone"></a>Apache Spark スタンドアロン 
-Apache Spark のスタンドアロン インスタンスが Linux DSVM にプレインストールされているため、Spark アプリケーションをテストして大規模なクラスターにデプロイする前に、まずローカルで開発することができます。 Jupyter カーネルを使用して PySpark プログラムを実行できます。 Jupyter を開いて [新規] ボタンをクリックすると、利用可能なカーネルの一覧が表示されます。 "Spark-Python"は、Python 言語を使用して Spark アプリケーションを構築するのに便利な PySpark カーネルです。 また PyCharm や Spyder などの Python IDE を使用して Spark プログラムを作成することもできます。 スタンドアロン インスタンスであるため、Spark スタックは呼び出し元のクライアント プログラム内で実行します。 これにより、Spark クラスターでの開発に比べて、問題のトラブルシューティングが高速かつ容易になります。 
+Apache Spark のスタンドアロン インスタンスが Linux DSVM にプレインストールされているため、Spark アプリケーションをテストして大規模なクラスターにデプロイする前に、まずローカルで開発することができます。 Jupyter カーネルを使用して PySpark プログラムを実行できます。 Jupyter を開いて [New]\(新規\) ボタンをクリックすると、利用可能なカーネルの一覧が表示されます。 "Spark-Python" は、Python 言語を使用して Spark アプリケーションを構築するのに便利な PySpark カーネルです。 また PyCharm や Spyder などの Python IDE を使用して Spark プログラムを作成することもできます。 スタンドアロン インスタンスであるため、Spark スタックは呼び出し元のクライアント プログラム内で実行します。 これにより、Spark クラスターでの開発に比べて、問題のトラブルシューティングが高速かつ容易になります。 
 
 サンプルの PySpark Notebook は、Jupyter のホーム ディレクトリ下の "SparkML" ディレクトリ ($HOME/notebooks/SparkML/pySpark) で提供されます。 
 

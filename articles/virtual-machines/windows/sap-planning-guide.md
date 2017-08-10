@@ -17,12 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 146495393d5ed356a2ad3b6ce181a30e8b2ae997
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c0b5968189512d3ca936c0e916274e1df057afb9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sap-netweaver-on-azure-windows-virtual-machines-vms--planning-and-implementation-guide"></a>Azure Windows Virtual Machines (VM) 上の SAP NetWeaver – 計画および実装ガイド
@@ -441,7 +440,7 @@ SAP システムを Azure に正常にデプロイするには、オンプレミ
 各セット内の VM は、並行してデプロイする必要があります。その際、各セット内の VM 名は同じ名前にします。
 
 ### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ
-![VPN with Site-To-Site Connectivity (Cross-Premise) (サイト間接続による VPN (クロスプレミス))][planning-guide-figure-300]
+![VPN with Site-To-Site Connectivity (cross-premise) (サイト間接続による VPN (クロスプレミス))][planning-guide-figure-300]
 
 このシナリオはクロスプレミスのシナリオで、さまざまなデプロイメント パターンが考えられます。 簡単に言えば、SAP ランドスケープの一部をオンプレミスで実行しながら、SAP ランドスケープの別の一部を Azure 上で実行するシナリオと言えます。 SAP コンポーネントの一部が Azure で実行される事実について、エンドユーザーにあらゆる情報を開示する必要があります。 それにより、SAP Transport Correction System (STMS)、RFC Communication、Printing、Security (SSO など) が、Azure で実行されている SAP システムに対してシームレスに動作するようになります。 ただし、クロスプレミス シナリオは、SAP ランドス ケープ全体を Azure 内で実行し、顧客のドメインと DNS を Azure に拡張するシナリオのことも指します。
 
@@ -659,7 +658,7 @@ Azure での名前解決と IP 解決の構成については、さまざまな�
 ##### <a name="azure-virtual-networks"></a>Azure 仮想ネットワーク
 Azure Virtual Network を作成することで、Azure の DHCP 機能によって割り当てられたプライベート IP アドレスのアドレス範囲を定義できます。 クロスプレミス シナリオでは、定義されている IP アドレス範囲が Azure によって DHCP を使用して割り当てられます。 ただし、ドメイン名解決は (VM がオンプレミス ドメインの一部であると想定して) オンプレミスで実行されるため、複数の Azure Cloud Services にまたがってアドレスを解決できます。
 
-[comment]: <> (MSSedusch まだ必要ですか?TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただし、これは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて **いない** ことを条件としています。これについては、1 年前の推奨事項には反しますが、**今後は Azure アフィニティ グループを使用しない** ように既にお伝えしています。詳細については、こちら (<https://azure.microsoft.com/blog/regional-virtual-networks/>) を参照してください)
+[comment]: <> (MSSedusch まだ必要ですか?TODO 当初、Azure Virtual Network はアフィニティ グループに関連付けられていました。これにより、Azure 内の Virtual Network は、アフィニティ グループの割り当て先の Azure スケール ユニットに制限されていました。このことは最終的に、Virtual Network が Azure スケール ユニット内で使用できるリソースに制限されるということを意味していました。そのため、これは変更され、Azure Virtual Network を 1 つ以上の Azure スケール ユニットにまたがって拡張できるようになりました。ただし、これは、Azure Virtual Network が作成時にアフィニティ グループに関連付けられて **いない** ことを条件としています。これについては、1 年前の推奨事項には反しますが、**今後は Azure アフィニティ グループを使用しない** ように既にお伝えしています。詳細については、こちら <https://azure.microsoft.com/blog/regional-virtual-networks/> を参照してください)
 
 Azure 内のすべての仮想マシンは、Virtual Network に接続される必要があります。
 
@@ -733,7 +732,7 @@ Express Route では、1 つの ExpressRoute 回線を通じて複数の Azure �
 * <https://azure.microsoft.com/documentation/articles/expressroute-howto-linkvnet-arm/>
 * <https://azure.microsoft.com/documentation/articles/expressroute-howto-circuit-arm/>
 
-#### <a name="forced-tunneling-in-case-of-cross-premise"></a>クロス プレミスのケースでの強制トンネリング
+#### <a name="forced-tunneling-in-case-of-cross-premises"></a>クロス プレミスのケースでの強制トンネリング
 サイト間、ポイント対サイトまたは ExpressRoute を使用してオンプレミス ドメインに参加している VM については、それらの VM 内のすべてのユーザーに対して、インターネット プロキシ設定がデプロイされていることも確認する必要があります。 既定では、これらの VM で実行されているソフトウェアや、ブラウザーを使用してインターネットにアクセスしているユーザーは、会社のプロキシを通過せず、Azure をそのまま通過してインターネットに接続します。 ただしプロキシ設定も、トラフィックを会社のプロキシ経由にするための完全な解決方法ではありません。プロキシの確認は、ソフトウェアやサービス側で行われるためです。 VM で実行されているソフトウェアがこれを行わない場合や、管理者が設定を操作した場合、インターネットへのトラフィックは、Azure からインターネットへの直接経路へと再度迂回される可能性があります。
 
 この問題を回避するには、オンプレミスと Azure 間のサイト間接続を使用した、強制トンネリングを構成できます。 強制トンネリング機能の詳細については、こちら (<https://azure.microsoft.com/documentation/articles/vpn-gateway-forced-tunneling-rm/>) を参照してください。
@@ -911,7 +910,7 @@ VM を Azure にアップロードする前に、VM と VHD が特定の要件�
 [comment]: <> (MShermannd TODO CLI も静的に変換されるか確認する必要があります )
 * 固定の VHD 形式である必要があります。 動的 VHD や、VHDx 形式の VHD は、Azure ではまだサポートされていません。 動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
 * VM にマウントされ、Azure 内で再度 VM にマウントされる必要がある VHDも、固定 VHD 形式である必要があります。 データ ディスクにも、OS ディスクと同じサイズ制限が適用されます。 VHD は、最大で 1 TB のサイズにすることができます。 動的 VHD は、PowerShell コマンドレットや CLI を使用して VHD をアップロードする際に、静的 VHD に変換されます
-* VM でユーザーとして登録されているすべてのドメイン ユーザーは、クラウドのみのシナリオでは存在しなくなるので、(このドキュメントの「[クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ][planning-guide-2.1]」の章をご覧ください)、このようなドメイン アカウントを使用したサービスは、イメージが Azure にデプロイされた後には機能しないことがあります。 これは特に、DBMS や SAP アプリケーションなどのサービスの実行に使用されるアカウントでよく起こります。 したがって、このようなドメイン アカウントは VM ローカル アカウントに置き換えて、VM のオンプレミス ドメイン アカウントを削除する必要があります。 このドキュメントの「[クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ][planning-guide-2.2]」の章で説明しているように、VM がクロスプレミス シナリオでデプロイされた場合には、オンプレミス ドメイン ユーザーを VM イメージ内に保持しても問題ない場合があります。
+* VM でユーザーとして登録されているすべてのドメイン ユーザーは、クラウドのみのシナリオでは存在しなくなるので、(このドキュメントの「[クラウドのみ - オンプレミスの顧客ネットワークとの依存関係を持たない仮想マシンの Azure へのデプロイ][planning-guide-2.1]」の章をご覧ください)、このようなドメイン アカウントを使用したサービスは、イメージが Azure にデプロイされた後には機能しないことがあります。 これは特に、DBMS や SAP アプリケーションなどのサービスの実行に使用されるアカウントでよく起こります。 したがって、このようなドメイン アカウントは VM ローカル アカウントに置き換えて、VM のオンプレミス ドメイン アカウントを削除する必要があります。 このドキュメントの「[クロス プレミス - オンプレミス ネットワークに完全に統合されることを要件とする 1 つまたは複数の SAP VM の Azure へのデプロイ][planning-guide-2.2]」の章で説明しているように、VM がクロスプレミス シナリオでデプロイされた場合には、オンプレミス ドメイン ユーザーを VM イメージ内に保持しても問題ありません。
 * 管理者特権を持つ別のローカル アカウントを追加します。VM がデプロイされ、より適切なユーザーが使用可能になるまで、このアカウントをマイクロソフトのサポートが問題調査に使用したり、サービスやアプリケーションの実行コンテキストとして割り当てることができるようにします。
 * クラウドのみのデプロイメントの場合、システムをオンプレミスで実行しているときにドメイン アカウントが DBMS のログインまたはユーザーとして使用されていた場合には、ドメイン ユーザーを削除してください。 ローカル管理者ともう 1 つの VM ローカル ユーザーが、DBMS の管理ログイン/ユーザーとして追加されていることを確認する必要があります。
 * 特定のデプロイメント シナリオで必要となる可能性があるアカウントとして、他のローカル アカウントを追加します。

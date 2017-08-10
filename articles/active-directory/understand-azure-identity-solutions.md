@@ -6,19 +6,18 @@ author: jeffgilb
 manager: femila
 ms.reviewer: jsnow
 ms.author: jeffgilb
-ms.date: 7/5/2017
+ms.date: 7/17/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 2c4ff2837d0c0b22da4e63011f77fe081dd73a71
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b7328eea378dde886419be8a4ab5b6f69c0b0d24
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
@@ -59,9 +58,15 @@ Azure ID の基本的な用語を把握したら、十分な情報に基づい�
 |[ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect)|ハイブリッド ID は、[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) を使用してオンプレミスの Windows Server Active Directory (AD DS) と Azure AD を統合することで実現されます。 これにより、Azure AD と統合された Office 365、Azure、オンプレミスのアプリまたは SaaS アプリケーションのユーザーに、共通の ID を提供できます。 ハイブリッド ID を使用すると、オンプレミス環境の ID とアクセスに関する処理をクラウドに効果的に拡張できます。|
 
 ### <a name="the-difference-between-windows-server-ad-ds-and-azure-ad"></a>Windows Server AD DS と Azure AD の違い
-Windows 2000 Server で初めて導入されたオンプレミスの Windows Server Active Directory Domain Services (AD DS) について理解している方であれば、おそらく ID サービスの基本概念を理解していることと思います。 ただし、Azure AD はクラウドの単なるドメイン コントローラーではないことを理解しておくことも重要です。 Azure AD は、Azure でサービスとしての ID (IDaaS) を提供するまったく新しい方法であり、クラウドベースの機能を完全に取り入れて最新の脅威から組織を保護するために、まったく新しい考え方が求められます。 IT 部門では、セキュリティ境界を保護するために、長年 AD DS が使用されてきました。しかし、境界を持たない現代の大企業で従業員、顧客、パートナーの ID ニーズをサポートするには、新しいコントロール プレーンが必要です。 Azure AD がその ID コントロール プレーンです。
+Azure Active Directory (Azure AD) とオンプレミスの Active Directory (Active Directory Domain Services or AD DS) は、両方ともディレクトリ データを格納し、ユーザーとリソース間の通信を管理するシステムであり、ユーザーのログイン プロセス、認証、およびディレクトリ検索を実行します。
 
-セキュリティは、企業のファイアウォールからクラウドに移行しました。クラウドでは、(オンプレミス ユーザーかクラウド ユーザーかを問わず) ユーザーに 1 つの共通の ID を提供することで、Azure AD が企業リソースとアクセスを保護します。 これにより、ユーザーは仕事に必要なアプリにほぼすべてのデバイスから安全にアクセスする柔軟性が得られます。 また、IT 部門が会社のデータを保護するために必要となる、機械学習機能と詳細なレポートに基づくシームレスなリスクベースのデータ保護コントロールも提供されます。
+Windows 2000 Server で初めて導入されたオンプレミスの Windows Server Active Directory Domain Services (AD DS) について理解している方であれば、おそらく ID サービスの基本概念を理解していることと思います。 ただし、Azure AD はクラウドの単なるドメイン コントローラーではないことを理解しておくことも重要です。 Azure AD は、Azure でサービスとしての ID (IDaaS) を提供するまったく新しい方法であり、クラウドベースの機能を完全に取り入れて最新の脅威から組織を保護するために、まったく新しい考え方が求められます。 
+
+AD DS は、Windows Server 上のサーバー ロールであり、物理または仮想マシンに展開できます。 X.500 に基づく階層構造になっています。 オブジェクトの検索では DNS を使用し、LDAP を使用して対話でき、認証では主に Kerberos を使用します。 Active Directory では、ドメインにマシンを参加させるだけでなく、組織単位 (OU) とグループ ポリシー オブジェクト (GPO) を使用できます。ドメイン間に信頼関係が作成されます。
+
+IT 部門では、セキュリティ境界を保護するために、長年 AD DS が使用されてきました。しかし、境界を持たない現代の大企業で従業員、顧客、パートナーの ID ニーズをサポートするには、新しいコントロール プレーンが必要です。 Azure AD がその ID コントロール プレーンです。 セキュリティは、企業のファイアウォールからクラウドに移行しました。クラウドでは、(オンプレミス ユーザーかクラウド ユーザーかを問わず) ユーザーに 1 つの共通の ID を提供することで、Azure AD が企業リソースとアクセスを保護します。 これにより、ユーザーは仕事に必要なアプリにほぼすべてのデバイスから安全にアクセスする柔軟性が得られます。 また、IT 部門が会社のデータを保護するために必要となる、機械学習機能と詳細なレポートに基づくシームレスなリスクベースのデータ保護コントロールも提供されます。
+
+Azure AD は、複数の顧客向けのパブリック ディレクトリ サービスであり、クラウド サーバーのテナントと Office 365 などのアプリケーションを Azure AD 内に作成できます。 ユーザーとグループは、OU も GPO もないフラットな構造で作成されます。 認証は、SAML、WS-Federation、OAuth などのプロトコルを通して実行されます。 Azure AD のクエリを実行できますが、LDAP を使用する代わりに、AD Graph API と呼ばれる REST API を使用する必要があります。 これらのすべてが、HTTP と HTTPS 経由で機能します。
 
 ### <a name="extend-office-365-management-and-security-capabilities"></a>Office 365 の管理およびセキュリティ機能の拡張
 Office 365 は既にお使いですか。 Azure AD で Office 365 の組み込み機能を拡張してすべてのリソースをセキュリティで保護することで、デジタル変革を促進できます。これにより、従業員全体の生産性を確保できます。 Office 365 の機能に加え、Azure AD を使用すると、すべてのアプリのシングル サインオンを可能にする 1 つの ID でアプリケーション ポートフォリオ全体を保護できます。 デバイスの状態だけでなく、ユーザーや場所、アプリケーション、リスクにも基づいて、条件付きアクセス機能を拡張することができます。 Multi-Factor Authentication (MFA) 機能を使用すると、必要なときにさらに多くの保護が得られます。 ユーザー権限の管理機能が強化され、オンデマンドのジャストインタイム管理アクセスが提供されます。 パスワードを忘れた場合のリセット、アプリケーションへのアクセス要求、グループの作成と管理など、Azure AD に用意されているセルフサービス機能により、ユーザーの生産性が向上し、ヘルプデスク チケットを作成する機会が少なくなります。
@@ -69,31 +74,50 @@ Office 365 は既にお使いですか。 Azure AD で Office 365 の組み込�
 > [!TIP]
 > Azure AD ID 管理を Office 365 で使用する方法については、 [こちらの電子書籍を入手](https://info.microsoft.com/Extend-Office-365-security-with-EMS.html)してください。
 
-## <a name="microsoft-identity-solutions"></a>Microsoft の ID ソリューション
+## <a name="microsoft-azure-identity-solutions"></a>Microsoft Azure ID ソリューション
 
 Microsoft Azure には、ユーザーの ID を管理するための方法がいくつか用意されています。その ID が完全にオンプレミスで管理されるか、クラウドでのみ管理されるか、その間のどこかで管理されるかは問いません。 これらのオプションには、Azure の自作 (DIY) AD DS、Azure Active Directory (Azure AD)、ハイブリッド ID、Azure AD Domain Services があります。
 
+### <a name="do-it-yourself-diy-ad-ds"></a>自作 (DIY) AD DS
 クラウドで必要となるフットプリントが小さい企業の場合は、Azure の**自作 (DIY) AD DS** を使用できます。 このオプションは、Azure 上の仮想マシン (VM) としてのデプロイに適した多くの Windows Server AD DS シナリオに対応しています。 たとえば、リモート ネットワークに接続されている遠隔地のデータセンターで実行されているドメイン コントローラーとして Azure VM を作成できます。 そこで VM がリモート ユーザーからの認証要求をサポートすることで、認証のパフォーマンスを高めることができる場合があります。 このオプションは、Azure 上で少数のドメイン コントローラーと単一の仮想ネットワークをホストすることにより、コストのかかるディザスター リカバリー サイトに替わる比較的低コストの方法としても適しています。 最後に、Windows Server AD DS を必要とするものの、オンプレミス ネットワークや社内の Windows Server Active Directory には依存しないアプリケーション (SharePoint など) を Azure にデプロイすることが必要な場合があります。 そのようなケースでは、分離したフォレストを Azure にデプロイすることにより、SharePoint サーバー ファームの要件を満たすことができます。 また、オンプレミス ネットワークとオンプレミス Active Directory への接続を必要とするネットワーク アプリケーションのデプロイもサポートされています。
 
-**Azure Active Directory (Azure AD)** スタンドアロンは、完全にクラウドベースの IDaaS (Identity and access management as a Service) ソリューションです。 Azure AD は、ユーザーとグループを管理する堅牢な機能のセットを提供します。 オンプレミスとクラウドのアプリケーション (Office 365 のような Microsoft の Web サービスや、さまざまな Microsoft 以外のサービスとしてのソフトウェア (SaaS) アプリケーションなど) への安全なアクセスを支援します。 Azure AD には、Free、Basic、および Premium の 3 つのエディションが用意されています。 Azure AD は、組織の実効性を向上させるほか、セキュリティを、境界ファイアウォールを越えて、Azure 機械学習やその他の高度なセキュリティ機能によって保護された新しいコントロール プレーンに拡張します。
+### <a name="azure-active-directory-azure-ad"></a>Azure Active Directory (Azure AD)
+**Azure AD スタンドアロン**は、完全にクラウドベースの IDaaS (Identity and access management as a Service) ソリューションです。 Azure AD は、ユーザーとグループを管理する堅牢な機能のセットを提供します。 オンプレミスとクラウドのアプリケーション (Office 365 のような Microsoft の Web サービスや、さまざまな Microsoft 以外のサービスとしてのソフトウェア (SaaS) アプリケーションなど) への安全なアクセスを支援します。 Azure AD には、Free、Basic、および Premium の 3 つのエディションが用意されています。 Azure AD は、組織の実効性を向上させるほか、セキュリティを、境界ファイアウォールを越えて、Azure 機械学習やその他の高度なセキュリティ機能によって保護された新しいコントロール プレーンに拡張します。
 
+### <a name="hybrid-identity"></a>ハイブリッド ID
 先進的な考えを持つ多くの CIO や企業は、会社の長期的な方向性を見越したうえで、オンプレミスかクラウドベースの ID ソリューションかという二者択一ではなく、**ハイブリッド ID** ソリューションを介して自社のオンプレミスのディレクトリをクラウドに拡張しようとしています。 ハイブリッド ID を使用することで、ユーザーが業務を行うために必要なアプリケーションへの安全で生産性の高いアクセスを提供する、真にグローバルな ID およびアクセス管理ソリューションを実現できます。
 
 > [!TIP]
 > CIO たちがどのように Azure Active Directory を IT 戦略の中核に据えてきたかについては、[Azure Active Directory の CIO 向けガイド](https://aka.ms/AzureADCIOGuide)をダウンロードしてご確認ください。
 
-最後に、**Azure AD Domain Services** は、AD DS を使用して Azure VM 構成の簡便な制御を実現するためのクラウドベースのオプションと、ネットワーク アプリケーションの開発とテストのためのオンプレミスの ID 要件を満たす方法を提供します。 Azure AD Domain Services の目的は、オンプレミスの AD DS インフラストラクチャを Azure AD Domain Services によって管理される Azure VM にリフトアンドシフトすることではありません。 AD DS の認証方法を必要とするオンプレミス アプリケーションの開発、テスト、クラウドへの移行をサポートするために、管理対象ドメイン内の Azure VM を使用する必要があります。
+### <a name="azure-ad-domain-services"></a>Azure AD Domain Services
+**Azure AD Domain Services** は、AD DS を使用して Azure VM 構成の簡便な制御を実現するためのクラウドベースのオプションと、ネットワーク アプリケーションの開発とテストのためのオンプレミスの ID 要件を満たす方法を提供します。 Azure AD Domain Services の目的は、オンプレミスの AD DS インフラストラクチャを Azure AD Domain Services によって管理される Azure VM にリフトアンドシフトすることではありません。 AD DS の認証方法を必要とするオンプレミス アプリケーションの開発、テスト、クラウドへの移行をサポートするために、管理対象ドメイン内の Azure VM を使用する必要があります。
 
 ## <a name="common-scenarios-and-recommendations"></a>一般的なシナリオと推奨事項
 
 以降では、ID とアクセスに関する一般的なシナリオをいくつか取り上げると共に、それぞれのシナリオで最適と思われる Azure ID オプションを紹介します。
 
-  |ID のシナリオ| 推奨|
-  |-----|-----|
-  |Azure で少数の仮想マシンをサポートする必要があるが、会社ではまだオンプレミス Active Directory (AD DS) に多額の投資を行っている。|少数の仮想マシンをサポートする必要があり、オンプレミス AD DS への大規模な投資を行っている場合は、[DIY AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx) を使用して Azure VM を使用します。 |
-  |自社のビジネスはクラウドに基づいており、オンプレミスの ID ソリューションへの投資を行っていない。| オンプレミスへの投資のないクラウドのみのビジネスには、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) が最適な選択肢です。|
-  |組織でオンプレミスの Windows Server Active Directory に多額の投資を行ってきたものの、ID をクラウドに拡張したいと考えている。| 最も広く使われている Azure ID ソリューションは、[ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview) です。 オンプレミスの AD DS に既に投資している場合は、Azure AD Connect を使用して ID を簡単にクラウドに拡張できます。|
-  |アプリの開発とテストのためのオンプレミスの ID 要件を満たすために、簡便な Azure VM 構成と制御を必要としている。|Azure VM 構成の簡便な制御を実現するために AD DS を使用する必要がある場合や、従来のディレクトリ対応のオンプレミス アプリケーションを開発したり、クラウドに移行したりする場合は、[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) を選択することをお勧めします。|
+|ID のシナリオ| 推奨|
+|-----|-----|
+|組織でオンプレミスの Windows Server Active Directory に多額の投資を行ってきたものの、ID をクラウドに拡張したいと考えている。| 最も広く使われている Azure ID ソリューションは、[ハイブリッド ID](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview) です。 オンプレミスの AD DS に既に投資している場合は、Azure AD Connect を使用して ID を簡単にクラウドに拡張できます。|
+|自社のビジネスはクラウドに基づいており、オンプレミスの ID ソリューションへの投資を行っていない。| オンプレミスへの投資のないクラウドのみのビジネスには、[Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) が最適な選択肢です。|
+|アプリの開発とテストのためのオンプレミスの ID 要件を満たすために、簡便な Azure VM 構成と制御を必要としている。|Azure VM 構成の簡便な制御を実現するために AD DS を使用する必要がある場合や、従来のディレクトリ対応のオンプレミス アプリケーションを開発したり、クラウドに移行したりする場合は、[Azure AD Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-overview) を選択することをお勧めします。|  
+|Azure で少数の仮想マシンをサポートする必要があるが、会社ではまだオンプレミス Active Directory (AD DS) に多額の投資を行っている。|少数の仮想マシンをサポートする必要があり、オンプレミス AD DS への大規模な投資を行っている場合は、[DIY AD DS](https://msdn.microsoft.com/library/azure/jj156090.aspx) を使用して Azure VM を使用します。 |
+
+## <a name="where-can-i-learn-more"></a>詳細情報を得るには?
+Azure AD について理解を深めていただけるよう、豊富なオンライン リソースをご用意しています。 理解を深めるのに適した優れた記事を以下にリストしましたので、ご活用ください。
+
+* [Azure AD Connect によるディレクトリのハイブリッド管理を有効にする](active-directory-aadconnect.md)
+* [多要素認証とは](../multi-factor-authentication/multi-factor-authentication.md)
+* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+* [Azure AD レポートの概要](active-directory-reporting-getting-started.md)
+* [任意の場所からのパスワードの管理](active-directory-passwords.md)
+* [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+* [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
+* [オンプレミス アプリケーションへの安全なリモート アクセスを実現する方法](active-directory-application-proxy-get-started.md)
+* [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
+* [Microsoft Azure Active Directory ライセンスとは](active-directory-licensing-what-is.md)
+* [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md)
 
 ## <a name="next-steps"></a>次のステップ
 

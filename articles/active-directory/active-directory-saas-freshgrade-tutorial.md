@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: b8c60d60862ecc546d60043508fe2b500c86818c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3ff3e5aab679f8ee610c98f8a4089308adcce48f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshgrade"></a>チュートリアル: Azure Active Directory と FreshGrade の統合
@@ -141,7 +140,27 @@ FreshGrade で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_configure.png) 
 
-7. **FreshGrade** 側でシングル サインオンを構成するには、ダウンロードした**メタデータ XML** と **SAML シングル サインオン サービス URL** を [FreshGrade サポート チーム](mailTo:support@freshgrade.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
+7. **メタデータ** URL を生成するには、次の手順を実行します。
+
+    a. **[アプリの登録]** をクリックします。
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appregistrations.png)
+   
+    b. **[エンドポイント]** をクリックして **[エンドポイント]** ダイアログ ボックスを開きます。  
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpointicon.png)
+
+    c. コピー ボタンをクリックして、**フェデレーション メタデータ ドキュメント**の URL をコピーしてノートパッドに貼り付けます。
+    
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_endpoint.png)
+     
+    d. 次に、**FreshGrade** のプロパティ ページに移動し、**[コピー]** ボタンで**アプリケーション ID** をコピーしてノートパッドに貼り付けます。
+ 
+    ![[シングル サインオンの構成]](./media/active-directory-saas-freshgrade-tutorial/tutorial_freshgrade_appid.png)
+
+    e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
+
+8. **FreshGrade** 側でシングル サインオンを構成するには、**メタデータ URL** と **SAML シングル サインオン サービス URL** を [FreshGrade サポート チーム](mailTo:support@freshgrade.com)に送る必要があります。 サポート チームはこれを設定して、SAML SSO 接続が両方の側で正しく設定されるようにします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。

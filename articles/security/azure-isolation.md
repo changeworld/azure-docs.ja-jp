@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Public Cloud での分離 | Microsoft Docs"
 description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: a167f15b1c885c51c9a85c501a9a9a60992cdf5d
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2559bdbca8002392ef925e0eddfd23044cc563b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -116,9 +114,9 @@ Azure Active Directory のその他の機能を次に示します。
 ### <a name="isolation-from-microsoft-administrators--data-deletion"></a>Microsoft 管理者およびデータ削除からの分離
 マイクロソフトは、許可されていない人物による不適切なアクセスや使用からデータを保護するために強硬な手段を取ります。 このような運用プロセスと管理は、データへのアクセスを管理する契約責任を提供する[オンライン サービス条件](http://aka.ms/Online-Services-Terms)によって裏付けされます。
 
--    マイクロソフトのエンジニアが、クラウド内のお客様のデータに対して既定のアクセス権を持つことはありません。 代わりに、監視の下で必要な場合にのみアクセス権が付与されます。 アクセス権は注意深く管理されてログに記録され、不要になったときは取り消されます。
+-   マイクロソフトのエンジニアが、クラウド内のお客様のデータに対して既定のアクセス権を持つことはありません。 代わりに、監視の下で必要な場合にのみアクセス権が付与されます。 アクセス権は注意深く管理されてログに記録され、不要になったときは取り消されます。
 
--    マイクロソフトは他の会社に委託して限られたサービスを提供することがあります。 下請け業者が顧客データにアクセスできるのは、委託したサービスを提供する場合のみです。それ以外のすべての目的でデータを使用することは禁止されます。 さらに、お客様の情報の機密を保持する義務が契約によって課せられます。
+-   マイクロソフトは他の会社に委託して限られたサービスを提供することがあります。 下請け業者が顧客データにアクセスできるのは、委託したサービスを提供する場合のみです。それ以外のすべての目的でデータを使用することは禁止されます。 さらに、お客様の情報の機密を保持する義務が契約によって課せられます。
 
 ISO/IEC 27001 など監査済み認証を備えたビジネス サービスは、マイクロソフトおよび認可された監査機関によって定期的に検証されます。これらは、サンプル監査を実行して、正当なビジネスの目的のみでアクセスが行われていることを証明します。 自らの顧客データにはいつでもどのような理由でもアクセスできます。
 
@@ -176,9 +174,9 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 
 プログラムされるルールには、次の 2 つのカテゴリがあります。
 
--    **マシン構成またはインフラストラクチャの規則:** 既定では、すべての通信がブロックされています。 仮想マシンに DHCP および DNS トラフィックの送受信を許可する例外があります。 仮想マシンは、トラフィックを "パブリック" インターネットに送信したり、トラフィックを同じ Azure Virtual Network 内の他の仮想マシンや OS ライセンス認証サーバーに送信したりすることもできます。 仮想マシンの発信先の許可リストには、Azure ルーター サブネット、Azure 管理、およびその他の Microsoft サービスは含まれていません。
+-   **マシン構成またはインフラストラクチャの規則:** 既定では、すべての通信がブロックされています。 仮想マシンに DHCP および DNS トラフィックの送受信を許可する例外があります。 仮想マシンは、トラフィックを "パブリック" インターネットに送信したり、トラフィックを同じ Azure Virtual Network 内の他の仮想マシンや OS ライセンス認証サーバーに送信したりすることもできます。 仮想マシンの発信先の許可リストには、Azure ルーター サブネット、Azure 管理、およびその他の Microsoft サービスは含まれていません。
 
--    **ロール構成ファイル:** テナントのサービス モデルに基づいて受信アクセス制御リスト (ACL) を定義します。
+-   **ロール構成ファイル:** テナントのサービス モデルに基づいて受信アクセス制御リスト (ACL) を定義します。
 
 ### <a name="vlan-isolation"></a>VLAN の分離
 各クラスターには、次の 3 つの VLAN があります。
@@ -186,11 +184,11 @@ Azure ハイパーバイザー、ルート OS/FA、顧客 VM/GA のコレクシ�
 ![VLAN の分離](./media/azure-isolation/azure-isolation-fig8.jpg)
 
 
--    メイン VLAN – 信頼されていない顧客ノードを相互接続します。
+-   メイン VLAN – 信頼されていない顧客ノードを相互接続します。
 
--    FC VLAN – 信頼されている FC やサポート システムが含まれています。
+-   FC VLAN – 信頼されている FC やサポート システムが含まれています。
 
--    デバイス VLAN – 信頼されているネットワークおよびその他のインフラストラクチャ デバイスが含まれています。
+-   デバイス VLAN – 信頼されているネットワークおよびその他のインフラストラクチャ デバイスが含まれています。
 
 通信が許可されているのは、FC VLAN からメイン VLAN です。メイン VLAN から FC VLAN に対して通信を開始することはできません。 メイン VLAN からデバイス VLAN への通信もブロックされます。 これにより、顧客ノードを実行するノードが侵入された場合でも、FC VLAN またはデバイス VLAN 上のノードを攻撃することはできません。
 
@@ -215,27 +213,27 @@ IP 記憶域データは、トラフィックの専用トンネルを IP 記憶�
 
 ### <a name="encryption"></a>Encryption
 Azure では、データを保護するために次の種類の暗号化が提供されます。
--    転送中の暗号化
+-   転送中の暗号化
 
--    保存時の暗号化
+-   保存時の暗号化
 
 #### <a name="encryption-in-transit"></a>転送中の暗号化
 転送中の暗号化は、ネットワーク間でデータを転送するときにデータを保護するメカニズムです。 Azure Storage では、以下を使用してデータをセキュリティ保護できます。
 
--    [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
+-   [トランスポートレベルの暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-in-transit)(Azure Storage の内外にデータを転送する場合の HTTPS など)。
 
--    [ワイヤ暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-encryption-during-transit-with-azure-file-shares)(Azure ファイル共有の SMB 3.0 暗号化など)。
+-   [ワイヤ暗号化](../storage/storage-security-guide.md#using-encryption-during-transit-with-azure-file-shares) (Azure ファイル共有の SMB 3.0 暗号化など)。
 
--    [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
+-   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#using-client-side-encryption-to-secure-data-that-you-send-to-storage)(Storage にデータを転送する前にデータを暗号化し、Storage からデータを転送した後にデータを復号化します)。
 
 #### <a name="encryption-at-rest"></a>保存時の暗号化
 多くの組織にとって、データ プライバシー、コンプライアンス、データ主権を確保するうえで [保存データの暗号化](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) は欠かせません。 Azure には、“保存時の“ データの暗号化を提供する機能が 3 つあります。
 
--    [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
+-   [Storage Service Encryption](https://docs.microsoft.com/azure/storage/storage-security-guide#encryption-at-rest) を使用すると、ストレージ サービスが Azure Storage にデータを書き込むときに自動的に暗号化するように要求できます。
 
--    [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) には、保存時の暗号化機能もあります。
+-   [クライアント側の暗号化](https://docs.microsoft.com/azure/storage/storage-security-guide#client-side-encryption) には、保存時の暗号化機能もあります。
 
--    [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
+-   [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) を使用すると、IaaS 仮想マシンに使用される OS ディスクとデータ ディスクを暗号化できます。
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 仮想マシン (VM) 向けの [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption) は、[Azure Key Vault](https://azure.microsoft.com/services/key-vault/) で管理するキーとポリシーを使用して VM ディスク (ブート ディスクとデータ ディスクを含む) を暗号化するソリューションです。組織のセキュリティとコンプライアンスの要件に対処する際に大きな効果を発揮します。
@@ -243,39 +241,39 @@ Azure では、データを保護するために次の種類の暗号化が提�
 Windows 向けの Disk Encryption ソリューションのベースは [Microsoft BitLocker ドライブ暗号化](https://technet.microsoft.com/library/cc732774.aspx)であり、Linux 向けソリューションは [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) がベースになっています。
 
 このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
--    Azure Key Vault との統合
+-   Azure Key Vault との統合
 
--    Standard レベルの VM: A、D、DS、G、GS などの IaaS VM シリーズ
+-   Standard レベルの VM: A、D、DS、G、GS などの IaaS VM シリーズ
 
--    Windows および Linux IaaS VM の暗号化を有効にする
+-   Windows および Linux IaaS VM の暗号化を有効にする
 
--    Windows IaaS VM の OS およびデータ ドライブの暗号化を無効にする
+-   Windows IaaS VM の OS およびデータ ドライブの暗号化を無効にする
 
--    Linux IaaS VM のデータ ドライブの暗号化を無効にする
+-   Linux IaaS VM のデータ ドライブの暗号化を無効にする
 
--    Windows クライアント OS を実行している IaaS VM の暗号化を有効にする
+-   Windows クライアント OS を実行している IaaS VM の暗号化を有効にする
 
--    ボリュームのマウント パスの暗号化を有効にする
+-   ボリュームのマウント パスの暗号化を有効にする
 
--    [mdadm](https://en.wikipedia.org/wiki/Mdadm) を使用してディスク ストライピング (RAID) が構成されている Linux VM の暗号化を有効にする
+-   [mdadm](https://en.wikipedia.org/wiki/Mdadm) を使用してディスク ストライピング (RAID) が構成されている Linux VM の暗号化を有効にする
 
--    データ ディスクの [LVM (論理ボリューム マネージャー)](https://msdn.microsoft.com/library/windows/desktop/bb540532) を使用して Linux VM の暗号化を有効にする
+-   データ ディスクの [LVM (論理ボリューム マネージャー)](https://msdn.microsoft.com/library/windows/desktop/bb540532) を使用して Linux VM の暗号化を有効にする
 
--    ストレージ スペースを使用して構成されている Windows VM の暗号化を有効にする
+-   ストレージ スペースを使用して構成されている Windows VM の暗号化を有効にする
 
--    Azure のすべてのパブリック リージョンがサポートされる
+-   Azure のすべてのパブリック リージョンがサポートされる
 
 このソリューションの現在のリリースでは、以下のシナリオ、機能、およびテクノロジはサポートされていません。
 
--    Basic レベルの IaaS VM
+-   Basic レベルの IaaS VM
 
--    Linux IaaS VM の OS ドライブの暗号化を無効にする
+-   Linux IaaS VM の OS ドライブの暗号化を無効にする
 
--    従来の VM の作成方法を使用して作成された IaaS VM
+-   従来の VM の作成方法を使用して作成された IaaS VM
 
--    オンプレミス キー管理サービスとの統合
+-   オンプレミス キー管理サービスとの統合
 
--    Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
+-   Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
 
 ## <a name="sql-azure-database-isolation"></a>SQL Azure データベースの分離
 SQL Database は、市場をリードする Microsoft SQL Server エンジンとミッション クリティカルなワークロードを処理する機能を基盤とする、Microsoft Cloud のリレーショナル データベース サービスです。 SQL Database では、アカウント レベル、地理/リージョン ベース、およびネットワーキング ベースで、予測可能なデータ分離が提供され、いずれも管理はほとんど必要ありません。
@@ -298,9 +296,9 @@ SQL Azure サーバーは、物理インスタンスまたは VM インスタン
 
 論理マスター データベースには以下が含まれます。
 
--    サーバーへの接続に使用される SQL ログイン
+-   サーバーへの接続に使用される SQL ログイン
 
--    ファイアウォール規則
+-   ファイアウォール規則
 
 同じ論理サーバーの SQL Azure データベースに関する課金と使用状況の情報は、SQL Azure クラスター内の同じ物理インスタンスに存在する保証はありません。アプリケーションは接続時に接続先データベース名を指定する必要があります。
 
@@ -311,13 +309,13 @@ SQL Azure サーバーは、物理インスタンスまたは VM インスタン
 論理サーバーが作成されて DNS 名が登録されると、DNS 名は、サーバーが配置された固有のデータ センター内のいわゆる "ゲートウェイ VIP" アドレスを指します。
 
 VIP (仮想 IP アドレス) の背後には、ステートレス ゲートウェイ サービスのコレクションがあります。 一般に、ゲートウェイが関連するのは、複数のデータソース (マスター データベース、ユーザー データベースなど) 間の調整が必要な場合です。 ゲートウェイ サービスでは以下が実装されます。
--    **TDS 接続のプロキシ化。** これには、バックエンド クラスターでのユーザー データベースの検索、ログイン シーケンスの実装、バックエンドに対する TDS パケットの送受信が含まれます。
+-   **TDS 接続のプロキシ化。** これには、バックエンド クラスターでのユーザー データベースの検索、ログイン シーケンスの実装、バックエンドに対する TDS パケットの送受信が含まれます。
 
--    **データベースの管理。** これには、データベース操作 CREATE/ALTER/DROP を実行するワークフローのコレクションの実装が含まれます。 データベース操作は、TDS パケットのスニッフィングまたは明示的な OData API によって呼び出すことができます。
+-   **データベースの管理。** これには、データベース操作 CREATE/ALTER/DROP を実行するワークフローのコレクションの実装が含まれます。 データベース操作は、TDS パケットのスニッフィングまたは明示的な OData API によって呼び出すことができます。
 
--    ログイン/ユーザー操作の CREATE/ALTER/DROP
+-   ログイン/ユーザー操作の CREATE/ALTER/DROP
 
--    OData API を介した論理サーバー管理操作
+-   OData API を介した論理サーバー管理操作
 
 ![ネットワーク トポロジによる分離](./media/azure-isolation/azure-isolation-fig12.png)
 

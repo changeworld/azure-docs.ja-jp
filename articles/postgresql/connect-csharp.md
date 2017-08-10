@@ -12,10 +12,10 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.date: 06/23/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 9f393e9ab1b3b6ab7f1ff085d625362d50adc97c
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b9382de2b8c672670213d9f5d0daf1eb0bff8c78
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -28,42 +28,9 @@ ms.lasthandoff: 07/26/2017
 - [DB の作成 - CLI](quickstart-create-server-database-azure-cli.md)
 
 さらに、以下を実行する必要があります。
-- [.NET Framework](https://www.microsoft.com/net/download) のインストール
-- [Visual Studio](https://www.visualstudio.com/downloads/)
-- [Npgsql](http://www.npgsql.org/doc/index.html) のインストール 
-
-## <a name="install-visual-studio-and-net"></a>Visual Studio と .NET のインストール
-このセクションの手順では、.NET を使用した開発に慣れていることを前提としています。
-
-### <a name="windows-net-framework-and-net-core"></a>**Windows .NET Framework と .NET Core**
-Visual Studio 2017 Community は、さまざまな機能が用意された、拡張可能な無料の IDE です。Web およびデータベース アプリケーションやクラウド サービスだけでなく、Android、iOS、Windows 向けの最新のアプリケーションの作成に使用できます。 完全な .NET Framework をインストールすることも、.NET Core だけをインストールすることもできます。 どちらの場合も、このクイック スタートのコード スニペットは正しく動作します。 既にコンピューターに Visual Studio がインストールされている場合、次のいくつかの手順はスキップします。
-
-1. [Visual Studio 2017 インストーラー](https://www.visualstudio.com/thank-you-downloading-visual-studio/?sku=Community&rel=15)をダウンロードします。 
-2. インストーラーを実行し、表示されるインストールの指示に従って、インストールを完了します。
-
-### <a name="mac-os"></a>**Mac OS**
-ターミナルを開き、.NET Core プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**brew**、**OpenSSL**、**.NET Core** をインストールします。 
-
-```bash
-ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-brew update
-brew install openssl
-mkdir -p /usr/local/lib
-ln -s /usr/local/opt/openssl/lib/libcrypto.1.0.0.dylib /usr/local/lib/
-ln -s /usr/local/opt/openssl/lib/libssl.1.0.0.dylib /usr/local/lib/
-```
-
-macOS では、.NET Core をインストールします。 [公式インストーラー](https://go.microsoft.com/fwlink/?linkid=843444)をダウンロードします。 このインストーラーは、ツールをインストールして環境変数 PATH に追加します。これにより、コンソールから .NET を実行できるようになります。
-
-### <a name="linux-ubuntu"></a>**Linux (Ubuntu)**
-ターミナルを開き、.NET Core プロジェクトの作成先となるディレクトリに移動します。 次のコマンドを入力して、**.NET Core** をインストールします。
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-sudo apt-get update
-sudo apt-get install dotnet-dev-1.0.1
-```
+- [.NET Framework](https://www.microsoft.com/net/download) のインストール。 リンク先の記事の手順に従って、プラットフォーム (Windows、Ubuntu Linux、または macOS) に応じた .NET をインストールしてください。 
+- コードの入力と編集に使用する [Visual Studio](https://www.visualstudio.com/downloads/) または Visual Studio Code のインストール。
+- [Npgsql](http://www.npgsql.org/doc/index.html) ライブラリのインストール (下記参照)。
 
 ## <a name="install-npgsql-references-into-your-visual-studio-solution"></a>Visual Studio ソリューションへの Npgsql 参照のインストール
 C# アプリケーションから PostgreSQL に接続するには、Npgsql と呼ばれるオープンソースの ADO.NET ライブラリを使用します。 NuGet を使用すると、参照のダウンロードと管理を簡単に実行できます。

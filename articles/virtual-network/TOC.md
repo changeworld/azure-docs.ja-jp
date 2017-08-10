@@ -22,10 +22,6 @@
 #### [PowerShell](virtual-networks-create-vnet-arm-ps.md)
 #### [CLI](virtual-networks-create-vnet-arm-cli.md)
 #### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
-#### クラシック
-##### [ポータル](virtual-networks-create-vnet-classic-pportal.md)
-##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
-##### [CLI](virtual-networks-create-vnet-classic-cli.md)
 
 ### ネットワーク セキュリティ グループ
 #### [ポータル](virtual-networks-create-nsg-arm-pportal.md)
@@ -99,6 +95,12 @@
 ##### [DMZ とファイアウォール、UDR、および NSG](virtual-networks-dmz-nsg-fw-udr-asm.md)
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
+### クラシック
+#### [Virtual Network](create-virtual-network-classic.md)
+##### [ポータル](virtual-networks-create-vnet-classic-pportal.md)
+##### [PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
+##### [CLI](virtual-networks-create-vnet-classic-cli.md)
+
 ## 構成
 ### 仮想マシン
 #### [ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)
@@ -140,6 +142,7 @@
 ### [仮想ネットワークを削除できない](virtual-network-troubleshoot-cannot-delete-vnet.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
 ## [PowerShell (Resource Manager)](/powershell/module/azurerm.network)
 ## [PowerShell (クラシック)](/powershell/module/azure/)
 ## [Azure CLI](/cli/azure/network)
@@ -162,4 +165,5 @@
 ## [ネットワークのブログ](http://azure.microsoft.com/blog/topics/networking)
 ## [ネットワークのフォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-network)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)

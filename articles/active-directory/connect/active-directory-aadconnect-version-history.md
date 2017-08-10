@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 02/08/2017
+ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 3ab0f37147330cb55da8b0955a359cca27750e70
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: b8e88737c5dd81760a733e0b761fd3e51566ad02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
@@ -35,6 +34,76 @@ Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的�
 Azure AD Connect からのアップグレード手順 | Azure AD Connect の [以前のバージョンから最新バージョンにアップグレード](active-directory-aadconnect-upgrade-previous-version.md) するさまざまな方法を説明しています。
 必要なアクセス許可 | 更新プログラムの適用に必要なアクセス許可については、[アカウントとアクセス許可](./active-directory-aadconnect-accounts-permissions.md#upgrade)に関するページを参照してください。
 ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)。
+
+## <a name="115610"></a>1.1.561.0
+状態: リリース予定
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+
+#### <a name="fixed-issue"></a>修正された問題
+
+* 既定の同期規則 “AD への送信 – ユーザー ImmutableId” の削除を招く問題を修正しました。
+
+  * この問題は、Azure AD Connect をアップグレードする際か、Azure AD Connect ウィザード内のタスク オプション*[Update Synchronization Configuration](同期構成の更新)* を使用して Azure AD Connect 同期構成を更新する際に発生します。
+  
+  * この同期規則は、[ソース アンカーとしての msDS-ConsistencyGuid 機能](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)を有効にしているお客様に適用されます。 この機能は、バージョン 1.1.524.0 以降で導入されました。 この同期規則が削除されると、Azure AD Connect でオンプレミスの AD ms-DS-ConsistencyGuid 属性に ObjectGuid 属性値を設定することができなくなります。 これによって新しいユーザーが Azure AD にプロビジョニングされなくなることはありません。
+  
+  * この修正により、上記の機能が有効になっていれば、アップグレード中や構成の変更中にこの同期規則が削除されなくなります。 この問題による影響を受けている既存のお客様の場合、この修正により、このバージョンの Azure AD Connect へのアップグレード後に、この同期規則がもう一度追加されるようにもなります。
+
+* 既定の同期規則の優先順位値が 100 未満になる原因の問題を修正しました。
+
+  * 一般に、カスタム同期規則のために優先順位値 0 から 99 までが予約されています。 アップグレード中に、既定の同期規則の優先順位値は、同期規則の変更に対応して更新されます。 この問題のために、既定の同期規則に 100 未満の優先順位値が割り当てられる可能性があります。
+  
+  * この修正により、アップグレード中にこの問題が発生しなくなります。 しかし、この問題の影響を受けている既存のお客様の優先順位値は復元されません。 将来、復元に役立つ別個の修正が提供される予定です。
+
+* Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
+
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは*“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+
+#### <a name="new-features-and-improvements"></a>新機能と機能強化
+
+* [自動アップグレード機能](active-directory-aadconnect-feature-automatic-upgrade.md)が、次のような構成のお客様をサポートするように拡張されています。
+  * デバイスの書き戻し機能を有効にしました。
+  * グループの書き戻し機能を有効にしました。
+  * インストールが簡単設定でも DirSync のアップグレードでもありません。
+  * メタバース内のオブジェクトが 100,000 を超えています。
+  * 現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。
+  * SQL Server Express LocalDB データベースが使用されていません。
+  * AD Connector アカウントは、既定の MSOL_ アカウントではなくなりました。
+  * サーバーがステージング モードに設定されています。
+  * ユーザーの書き戻し機能を有効にしました。
+  
+  >[!NOTE]
+  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)」を参照してください。
+
+## <a name="115580"></a>1.1.558.0
+状態: リリース予定なし。 このビルドの変更は、バージョン 1.1.561.0 に組み込まれています。
+
+### <a name="azure-ad-connect"></a>Azure AD Connect
+
+#### <a name="fixed-issue"></a>修正された問題
+
+* OU ベースのフィルター処理構成の更新時に、既定の同期規則 “AD への送信 – ユーザー ImmutableId” が削除を招く問題を修正しました。 この同期規則は、[ソース アンカーとしての msDS-ConsistencyGuid 機能](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)にとって必要です。
+
+* Azure AD Connect ウィザード内の [[ドメインと OU のフィルター処理] 画面](active-directory-aadconnect-get-started-custom.md#domain-and-ou-filtering)で、OU ベースのフィルター処理が有効になっている場合でも、*[すべてのドメインと OU の同期]* オプションが選択済みとして表示される問題を修正しました。
+
+*   Synchronization Service Manager の[[ディレクトリ パーティションの構成] 画面](active-directory-aadconnectsync-configure-filtering.md#organizational-unitbased-filtering)で *[更新]* ボタンをクリックするとエラーが返される原因となる問題を修正しました。 エラー メッセージは*“An error was encountered while refreshing domains: Unable to cast object of type ‘System.Collections.ArrayList’ to type ‘Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject.”* (ドメインの更新中にエラーが発生しました。型 ‘System.Collections.ArrayList’ のオブジェクトを型 'Microsoft.DirectoryServices.MetadirectoryServices.UI.PropertySheetBase.MaPropertyPages.PartitionObject' にキャストできません。) です。 このエラーは、新しい AD ドメインが既存の AD フォレストに追加されている場合に、[更新] ボタンを使用して Azure AD Connect を更新しようとすると発生します。
+
+#### <a name="new-features-and-improvements"></a>新機能と機能強化
+
+* [自動アップグレード機能](active-directory-aadconnect-feature-automatic-upgrade.md)が、次のような構成のお客様をサポートするように拡張されています。
+  * デバイスの書き戻し機能を有効にしました。
+  * グループの書き戻し機能を有効にしました。
+  * インストールが簡単設定でも DirSync のアップグレードでもありません。
+  * メタバース内のオブジェクトが 100,000 を超えています。
+  * 現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。
+  * SQL Server Express LocalDB データベースが使用されていません。
+  * AD Connector アカウントは、既定の MSOL_ アカウントではなくなりました。
+  * サーバーがステージング モードに設定されています。
+  * ユーザーの書き戻し機能を有効にしました。
+  
+  >[!NOTE]
+  >自動アップグレード機能の範囲の拡大は、Azure AD Connect ビルド 1.1.105.0 以降のお客様に影響します。 Azure AD Connect サーバーが自動的にアップグレードされないようにするには、Azure AD Connect サーバーで `Set-ADSyncAutoUpgrade -AutoUpgradeState disabled` コマンドレットを実行する必要があります。 自動アップグレードの有効化/無効化の詳細については、「[Azure AD Connect: 自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)」を参照してください。
 
 ## <a name="115570"></a>1.1.557.0
 リリース: 2017 年 7 月
@@ -222,7 +291,7 @@ Azure AD Connect Sync
 * 現在、Azure AD Connect では、ConsistencyGuid 属性の使用が、オンプレミスの AD オブジェクトのソース アンカー属性として自動的に有効になります。 また、ConsistencyGuid 属性が空の場合、この属性は、Azure AD Connect によって、objectGuid 属性の値で自動的に設定されます。 この機能は新しいデプロイにのみ適用されます。 この機能について詳しくは、「[Azure AD Connect: 設計概念」の「sourceAnchor としての msDS-ConsistencyGuid の使用](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)」を参照してください。
 * トラブルシューティングのための新しいコマンドレット Invoke-ADSyncDiagnostics を追加しました。パスワード ハッシュ同期に関する問題の診断に役立てることができます。 コマンドレットの使用の詳細については、「[Azure AD Connect Sync を使用したパスワード同期のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-synchronization)」を参照してください。
 * Azure AD Connect で新たに、オンプレミスの AD と Azure AD との間で "メールが有効なパブリック フォルダ" オブジェクトの同期がサポートされます。 この機能は、Azure AD Connect ウィザードのオプション機能から有効にできます。 この機能の詳細については、「[Office 365 Directory Based Edge Blocking support for on-premises Mail Enabled Public Folders (オンプレミスのメールが有効なパブリック フォルダーに対する Office 365 ディレクトリ ベース エッジ ブロック サポート)](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders)」を参照してください。
-* Azure AD Connect では、オンプレミス AD から同期するために AD DS アカウントが必要となります。 以前のバージョンでは、高速モードで Azure AD Connect をインストールする場合、エンタープライズ管理者アカウントの資格情報を指定できます。 必要な AD DS アカウントは、Azure AD Connect によって作成されます。 ただし、カスタム インストールを行う場合や、既存のデプロイにフォレストを追加する場合は、AD DS アカウントを自分で指定する必要があります。 今後は、カスタム インストールの際に、エンタープライズ管理者アカウントの資格情報を指定することで、必要な AD DS アカウントを Azure AD Connect で自動的に作成することができます。
+* Azure AD Connect では、オンプレミスの AD から同期するために AD DS アカウントが必要となります。 以前は、簡易モードを使用して Azure AD Connect をインストールした場合、エンタープライズ管理者アカウントの資格情報を指定でき、必要な AD DS アカウントは Azure AD Connect によって作成されました。 しかし、カスタム インストールを行う場合や、既存のデプロイにフォレストを追加する場合は、AD DS アカウントを自分で指定する必要がありました。 今後は、カスタム インストールの際に、エンタープライズ管理者アカウントの資格情報を指定することで、必要な AD DS アカウントを Azure AD Connect で自動的に作成することもできます。
 * Azure AD Connect で新たに SQL AOA がサポートされます。 Azure AD Connect をインストールする前に SQL を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
 * Azure AD Connect サーバーのデータベースとして LocalDB を使用していて、サイズの上限である 10 GB に達した場合、それ以降、同期サービスは起動しません。 以前のバージョンでは、LocalDB で ShrinkDatabase 操作を実行し、同期サービスを起動できるだけの DB 空き領域を回収する必要があります。 その後は、Synchronization Service Manager を使用して実行履歴を削除し、DB 空き領域をさらに回収することができます。 新しいバージョンでは、Start-ADSyncPurgeRunHistory コマンドレットを使用して実行履歴データを LocalDB から消去し、DB 空き領域を回収することができます。 このコマンドレットは、同期サービスが実行されていないときに使用できるオフライン モードにも対応しています (-offline パラメーターを指定)。 注: オフライン モードは、同期サービスが実行されておらず、なおかつ使用されているデータベースが LocalDB である場合にのみ使用できます。
 * 新しいバージョンの Azure AD Connect では、必要な記憶域スペースを小さくするために、同期エラーの詳細情報は、圧縮してから LocalDB/SQL データベースに格納されます。 以前のバージョンの Azure AD Connect からこのバージョンにアップグレードすると、既に存在している同期エラー情報に対して一回限りの圧縮が実行されます。

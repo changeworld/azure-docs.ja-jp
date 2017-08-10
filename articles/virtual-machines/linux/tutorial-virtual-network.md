@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: de7e77b7d4c26b08e73036b8da67489823100f4c
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 2366905b8160675f77cbc41ba97540af70be8c01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -122,7 +122,7 @@ IP アドレスの割り当て方法は、[az network public-ip update](/cli/azu
 az vm deallocate --resource-group myRGNetwork --name myFrontEndVM
 ```
 
-[az network public-ip update](/azure/network/public-ip#update) コマンドを使用して、割り当て方法を更新します。 この例では、`--allocaion-metod` を *static* に設定しています。
+[az network public-ip update](/cli/azure/network/public-ip#update) コマンドを使用して、割り当て方法を更新します。 この例では、`--allocation-method` を *static* に設定しています。
 
 ```azurecli-interactive 
 az network public-ip update --resource-group myRGNetwork --name myFrontEndIP --allocation-method static

@@ -1,5 +1,5 @@
 ---
-title: "StorSimple デバイスのオンとオフ | Microsoft Docs"
+title: "StorSimple 8000 シリーズ デバイスのオンとオフ | Microsoft Docs"
 description: "新しい StorSimple デバイスの電源を入れる方法、シャットダウンまたは電力喪失後にデバイスの電源を入れる方法、動作中のデバイスの電源を切る方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 02/27/2017
+ms.date: 06/29/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 74196c7d3989cc748a27026c04ea837b29a2785f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 0577c837e0c47ba37a4f586603b0f5b951f1b549
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -56,8 +56,6 @@ StorSimple 8600 モデルには、主エンクロージャと EBOD エンクロ�
 
 > [!NOTE]
 > デバイスのセットアップと配線に関する詳細な手順については、「 [StorSimple 8600 デバイスの取り付け](storsimple-8600-hardware-installation.md)」を参照してください。 説明されている手順に厳密に従ってください。
-> 
-> 
 
 ## <a name="turn-on-a-device-after-shutdown"></a>シャットダウン後にデバイスの電源をオンにする
 StorSimple デバイスのシャットダウン後に電源をオンにする手順は、デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。 8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。
@@ -77,7 +75,7 @@ EBOD エンクロージャを備えていない主エンクロージャのみの
    2. 両方のコントローラーのステータス LED が緑色で点灯していること。
    3. 一方のコントローラーの青い LED が点滅していること。これは、コントローラーがアクティブであることを示します。
       
-      これらの条件のいずれか 1 つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
+      これらの条件のいずれか 1 つでも満たされていない場合、デバイス は正常ではありません。 [Microsoft サポートにお問い合わせ](storsimple-8000-contact-microsoft-support.md)ください。
 
 ### <a name="device-with-ebod-enclosure"></a>EBOD エンクロージャを備えるデバイス
 主エンクロージャと EBOD エンクロージャを備える StorSimple デバイスで、シャットダウン後に電源を入れるには、以下の手順を実行します。 説明されているとおりに各手順を正しく順に実行してください。 正しく実行しないとデータが失われる可能性があります。
@@ -140,9 +138,8 @@ EBOD エンクロージャだけ両方の電源で異常が発生した場合は
 10. SAS レーン LED (EBOD コントローラーあたり 4 つ) がすべてオンになっていることをチェックすることで、EBOD エンクロージャと主エンクロージャ間の接続が正常であることを確認します。
 
 > [!IMPORTANT]
-> システムをオンにしたときに、SAS ケーブルに欠陥がある場合、または EBOD エンクロージャと主エンクロージャ間の接続が正常でない場合、回復モードになります。 このような場合は、 [Microsoft サポートにお問い合わせください](storsimple-contact-microsoft-support.md) 。
-> 
-> 
+> システムをオンにしたときに、SAS ケーブルに欠陥がある場合、または EBOD エンクロージャと主エンクロージャ間の接続が正常でない場合、回復モードになります。 このような場合は、 [Microsoft サポートにお問い合わせください](storsimple-8000-contact-microsoft-support.md) 。
+
 
 ## <a name="turn-off-a-running-device"></a>動作中のデバイスの電源をオフにする
 StorSimple デバイスを移動する場合や廃棄する場合、不具合の生じたコンポーネントを交換する必要がある場合は、動作中のデバイスをシャットダウンすることが必要な場合があります。 この手順は、StorSimple デバイスが 8100 と 8600 のどちらのモデルであるかによって異なります。 8100 は 1 つの主エンクロージャを持つデバイスであり、8600 は 1 つの主エンクロージャと 1 つの EBOD エンクロージャを持つデュアル エンクロージャ デバイスです。 このセクションでは、動作中のデバイスをシャットダウンする手順について詳しく説明します。
@@ -164,21 +161,18 @@ Windows PowerShell for StorSimple または Azure クラシック ポータル�
 
 ### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD エンクロージャを備えるデバイス <a name="8600a">
 > [!IMPORTANT]
-> プライマリ エンクロージャと EBOD エンクロージャをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。 Azure クラシック ポータルで、**[デバイス]** > **[メンテナンス]** > **[ハードウェアの状態]** に移動し、すべてのコンポーネントが正常であることを確認します。
-> 
-> 
+> プライマリ エンクロージャと EBOD エンクロージャをシャットダウンする前に、すべてのデバイス コンポーネントが正常であることを確認してください。 Azure Portal で、**[デバイス]** > **[監視]** > **[ハードウェアの正常性]** に移動し、すべてのコンポーネントが正常であることを確認します。
+
 
 #### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>EBOD エンクロージャを備えた動作中のデバイスをシャットダウンするには
-1. プライマリ エンクロージャについては、「 [StorSimple デバイスをシャットダウンする](storsimple-manage-device-controller.md#shut-down-a-storsimple-device) 」の手順をすべて実行してください。
+1. プライマリ エンクロージャについては、「 [StorSimple デバイスをシャットダウンする](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) 」の手順をすべて実行してください。
 2. プライマリ エンクロージャをシャットダウンした後、EBOD の両方の電源冷却モジュール (PCM) のスイッチをオフにして EBOD をシャットダウンします。
 3. EBOD がシャットダウンされたことを確認するには、EBOD エンクロージャの背面にあるすべてのライトが消えていることを確認します。
 
 > [!NOTE]
 > EBOD エンクロージャとプライマリ エンクロージャとの接続に使用されていた SAS ケーブルは、システムがシャットダウンされるまで取り外さないでください。
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
-[Contact Microsoft Support](storsimple-contact-microsoft-support.md) 。
+[Contact Microsoft Support](storsimple-8000-contact-microsoft-support.md) 。
 
 

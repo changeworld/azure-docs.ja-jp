@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub - クラウドへの IoT デバイス接続入門 |Microsoft Docs"
-description: "IoT デバイスを Azure IoT Hub に接続する方法について説明します。 デバイスは IoT Hub にテレメトリを送信し、Iot Hub はデバイスを監視および管理することができます。"
+description: "IoT ボードとスタート キットを Azure IoT Hub に接続する方法について説明します。 デバイスは IoT Hub にテレメトリを送信でき、IoT Hub はデバイスを監視および管理することができます。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: d3d74d44bdd7ce6b49ec58b70c7ddb8081e11f96
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c02b4bb6e01bc6e6e5b7e373a8d6d2ab2d2395da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---

@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7f0fbaf5d8e0379fc67ad62ea7c9ab63c6737150
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 0c8a4b518c6946781c2340f79ab479612b595c74
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-java"></a>Java を使用してデバイスを IoT ハブに接続する
@@ -303,12 +303,8 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     mvn clean package -DskipTests
     ```
 
-<<<<<<< HEAD
 ## <a name="create-a-device-app"></a>デバイス アプリの作成
-=======
-## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
-
->>>>>>> master このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Java コンソール アプリを作成します。
+このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Java コンソール アプリを作成します。
 
 1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
 
@@ -378,19 +374,10 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
-<<<<<<< HEAD
 9. 次の入れ子になった **EventCallback** クラスを **App** クラス内に追加して、デバイス アプリからのメッセージを処理するときに IoT ハブが返す受信確認ステータスが表示されるようにします。 このメソッドにより、メッセージが処理されたときのアプリのメイン スレッドも通知されます。
    
-    ```
-    private static class EventCallback implements IotHubEventCallback
-    {
-=======
-
-9. Add the following nested **EventCallback** class inside the **App** class to display the acknowledgement status that the IoT hub returns when it processes a message from the simulated device app. This method also notifies the main thread in the app when the message has been processed:
-
     ```java
     private static class EventCallback implements IotHubEventCallback {
->>>>>>> master
       public void execute(IotHubStatusCode status, Object context) {
         System.out.println("IoT Hub responded to message with status: " + status.name());
    
@@ -500,11 +487,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
 ## <a name="next-steps"></a>次のステップ
-<<<<<<< HEAD このチュートリアルでは、Azure Portal で新しい IoT ハブを構成し、IoT ハブの ID レジストリにデバイス ID を作成しました。 デバイス アプリでデバイスからクラウドへのメッセージを IoT ハブに送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。 
-=======
-
-このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。
->>>>>>> master
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 デバイス アプリでデバイスからクラウドへのメッセージを IoT ハブに送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 

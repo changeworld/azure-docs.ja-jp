@@ -1,6 +1,6 @@
 ---
-title: "Java から File Storage を使用する方法 | Microsoft Docs"
-description: "Azure ファイル サービスを使用して、ファイルをアップロード、ダウンロード、一覧表示、削除する方法について説明します。 コード サンプルは Java で記述されています。"
+title: "Java での Azure File Storage 用の開発 | Microsoft Docs"
+description: "Azure File Storage を使用してファイル データを格納する Java アプリケーションとサービスを開発する方法を説明します。"
 services: storage
 documentationcenter: java
 author: robinsh
@@ -12,32 +12,36 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 12/08/2016
+ms.date: 05/27/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 33630644e2b3b6565d009276145ecf220802cc63
-ms.openlocfilehash: 49b35ff1b82f5384b105d99ce95773648a11f6f4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 16924599e49990265e07f7a58613756d93c46942
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="how-to-use-file-storage-from-java"></a>Java からファイル ストレージを使用する方法
+
+# <a name="develop-for-azure-file-storage-with-java"></a>Java での Azure File Storage 用の開発
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-check-out-samples-java](../../includes/storage-check-out-samples-java.md)]
 
-## <a name="overview"></a>概要
-このガイドでは、Microsoft Azure ファイル ストレージ サービスで基本的な操作を実行する方法を紹介します。 Java で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure のファイル ストレージ サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で非常に役立ちます。
+## <a name="about-this-tutorial"></a>このチュートリアルについて
+このチュートリアルでは、ファイル データの格納に Azure File Storage を使用するアプリケーションまたはサービスを開発するための Java の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、Java と Azure File Storage による次のような基本的な操作の実行方法を示します。
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+* Azure ファイル共有を作成および削除する
+* ディレクトリを作成および削除する
+* Azure ファイル共有のファイルとディレクトリを列挙する
+* ファイルのアップロード、ダウンロード、および削除
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+> [!Note]  
+> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 Java I/O クラスを使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Java SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。
 
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java][] が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
 
-## <a name="setup-your-application-to-use-file-storage"></a>ファイル ストレージを使用するようにアプリケーションを設定します。
+## <a name="setup-your-application-to-use-azure-file-storage"></a>Azure File Storage を使用するようにアプリケーションを設定する
 Azure ストレージ API を使用するには、ストレージ サービスのアクセス元にする Java ファイルの一番上に次の文を追加します。
 
 ```java
@@ -47,7 +51,7 @@ import com.microsoft.azure.storage.file.*;
 ```
 
 ## <a name="setup-an-azure-storage-connection-string"></a>Azure のストレージ接続文字列の設定
-ファイル ストレージを使用するには、Azure ストレージ アカウントに接続する必要があります。 最初の手順はストレージ アカウントに接続するために使用する接続文字列を構成することです。 そのために静的変数を定義しましょう。
+Azure File Storage を使用するには、Azure ストレージ アカウントに接続する必要があります。 最初の手順はストレージ アカウントに接続するために使用する接続文字列を構成することです。 そのために静的変数を定義しましょう。
 
 ```java
 // Configure the connection-string with your values
@@ -76,15 +80,15 @@ try {
 
 **CloudStorageAccount.parse** は InvalidKeyException を投げます。そのため、try/catch ブロック内にそれを配置する必要があります。
 
-## <a name="how-to-create-a-share"></a>共有を作成する方法
-ファイル ストレージのすべてのファイルとディレクトリは「 **Share**」という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、ファイル ストレージ クライアントを使用する必要があります。
+## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
+Azure File Storage のすべてのファイルとディレクトリは **Share** という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、Azure File Storage クライアントを使用する必要があります。
 
 ```java
-// Create the file storage client.
+// Create the Azure File storage client.
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-ファイル ストレージ クライアントを使用し、共有への参照を取得できます。
+Azure File Storage クライアントを使用し、共有への参照を取得できます。
 
 ```java
 // Get a reference to the file share
@@ -101,108 +105,7 @@ if (share.createIfNotExists()) {
 
 この時点で、**share** は「**sampleshare**」という名前の共有の参照を保持します。
 
-## <a name="how-to-upload-a-file"></a>ファイルをアップロードする方法
-Azure ファイル ストレージ共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
-
-ファイルをアップロードするための最初の手順は、ファイルを置くディレクトリの参照を取得することです。 これを行うには、share オブジェクトの **getRootDirectoryReference** メソッドを呼び出します。
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-```
-
-共有のルート ディレクトリの参照が与えられたので、次のコードを利用してディレクトリにファイルをアップロードできます。
-
-```java
-        // Define the path to a local file.
-        final String filePath = "C:\\temp\\Readme.txt";
-    
-        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
-        cloudFile.uploadFromFile(filePath);
-```
-
-## <a name="how-to-create-a-directory"></a>ディレクトリを作成する方法
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure ファイル ストレージ サービスでは、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-//Get a reference to the sampledir directory
-CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-
-if (sampleDir.createIfNotExists()) {
-    System.out.println("sampledir created");
-} else {
-    System.out.println("sampledir already exists");
-}
-```
-
-## <a name="how-to-list-files-and-directories-in-a-share"></a>共有のファイルとディレクトリを一覧表示する方法
-CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、共有内のファイルとディレクトリの一覧を簡単に取得できます。 このメソッドは繰り返しできる ListFileItem オブジェクトの一覧を返します。 たとえば、次のコードはルート ディレクトリ内のファイルとディレクトリを一覧表示します。
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
-    System.out.println(fileItem.getUri());
-}
-```
-
-## <a name="how-to-download-a-file"></a>ファイルをダウンロードする方法
-ファイル ストレージに頻繁に実行する操作はファイルのダウンロードです。 次の例のコードは SampleFile.txt をダウンロードし、そのコンテンツを表示します。
-
-```java
-//Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-//Get a reference to the directory that contains the file
-CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
-
-//Get a reference to the file you want to download
-CloudFile file = sampleDir.getFileReference("SampleFile.txt");
-
-//Write the contents of the file to the console.
-System.out.println(file.downloadText());
-```
-
-## <a name="how-to-delete-a-file"></a>ファイルを削除する方法
-もう 1 つの一般的なファイル ストレージ操作はファイル削除です。 次のコードは「 **sampledir**」という名前のディレクトリ内に保存されている「SampleFile.txt」という名前のファイルを削除します。
-
-```java
-// Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-// Get a reference to the directory where the file to be deleted is in
-CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
-
-String filename = "SampleFile.txt"
-CloudFile file;
-
-file = containerDir.getFileReference(filename)
-if ( file.deleteIfExists() ) {
-    System.out.println(filename + " was deleted");
-}
-```
-
-## <a name="how-to-delete-a-directory"></a>ディレクトリを削除する方法
-ディレクトリの削除はかなり単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
-
-```java
-// Get a reference to the root directory for the share.
-CloudFileDirectory rootDir = share.getRootDirectoryReference();
-
-// Get a reference to the directory you want to delete
-CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
-
-// Delete the directory
-if ( containerDir.deleteIfExists() ) {
-    System.out.println("Directory deleted");
-}
-```
-
-## <a name="how-to-delete-a-share"></a>共有を削除する方法
+## <a name="delete-an-azure-file-share"></a>Azure ファイル共有を削除する
 CloudFileShare オブジェクトで **deleteIfExists** メソッドを呼び出すと共有が削除されます。 次がそのサンプル コードです。
 
 ```java
@@ -225,6 +128,107 @@ try
 }
 ```
 
+## <a name="create-a-directory"></a>ディレクトリを作成する
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure File Storage では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the sampledir directory
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+if (sampleDir.createIfNotExists()) {
+    System.out.println("sampledir created");
+} else {
+    System.out.println("sampledir already exists");
+}
+```
+
+## <a name="delete-a-directory"></a>ディレクトリを削除する
+ディレクトリの削除はかなり単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory you want to delete
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+// Delete the directory
+if ( containerDir.deleteIfExists() ) {
+    System.out.println("Directory deleted");
+}
+```
+
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure ファイル共有のファイルとディレクトリを列挙する
+CloudFileDirectory 参照で **listFilesAndDirectories** を呼び出すと、共有内のファイルとディレクトリの一覧を簡単に取得できます。 このメソッドは繰り返しできる ListFileItem オブジェクトの一覧を返します。 たとえば、次のコードはルート ディレクトリ内のファイルとディレクトリを一覧表示します。
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+for ( ListFileItem fileItem : rootDir.listFilesAndDirectories() ) {
+    System.out.println(fileItem.getUri());
+}
+```
+
+## <a name="upload-a-file"></a>ファイルをアップロードする
+Azure ファイル共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
+
+ファイルをアップロードするための最初の手順は、ファイルを置くディレクトリの参照を取得することです。 これを行うには、share オブジェクトの **getRootDirectoryReference** メソッドを呼び出します。
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+```
+
+共有のルート ディレクトリの参照が与えられたので、次のコードを利用してディレクトリにファイルをアップロードできます。
+
+```java
+        // Define the path to a local file.
+        final String filePath = "C:\\temp\\Readme.txt";
+    
+        CloudFile cloudFile = rootDir.getFileReference("Readme.txt");
+        cloudFile.uploadFromFile(filePath);
+```
+
+## <a name="download-a-file"></a>ファイルをダウンロードする
+Azure File Storage に頻繁に実行する操作はファイルのダウンロードです。 次の例のコードは SampleFile.txt をダウンロードし、そのコンテンツを表示します。
+
+```java
+//Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+//Get a reference to the directory that contains the file
+CloudFileDirectory sampleDir = rootDir.getDirectoryReference("sampledir");
+
+//Get a reference to the file you want to download
+CloudFile file = sampleDir.getFileReference("SampleFile.txt");
+
+//Write the contents of the file to the console.
+System.out.println(file.downloadText());
+```
+
+## <a name="delete-a-file"></a>ファイルを削除する
+もう 1 つの一般的な Azure File Storage 操作はファイル削除です。 次のコードは「 **sampledir**」という名前のディレクトリ内に保存されている「SampleFile.txt」という名前のファイルを削除します。
+
+```java
+// Get a reference to the root directory for the share.
+CloudFileDirectory rootDir = share.getRootDirectoryReference();
+
+// Get a reference to the directory where the file to be deleted is in
+CloudFileDirectory containerDir = rootDir.getDirectoryReference("sampledir");
+
+String filename = "SampleFile.txt"
+CloudFile file;
+
+file = containerDir.getFileReference(filename)
+if ( file.deleteIfExists() ) {
+    System.out.println(filename + " was deleted");
+}
+```
+
 ## <a name="next-steps"></a>次のステップ
 その他の Azure ストレージ API に関する詳細については、次のリンク先をご覧ください。
 
@@ -235,5 +239,3 @@ try
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](https://msdn.microsoft.com/library/azure/dd179355.aspx)
 * [Azure Storage チーム ブログ](http://blogs.msdn.com/b/windowsazurestorage/)
 * [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-
-

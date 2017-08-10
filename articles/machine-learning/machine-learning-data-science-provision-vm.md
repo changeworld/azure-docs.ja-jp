@@ -11,18 +11,17 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.devlang: na
 ms.topic: article
-ms.date: 03/24/2017
+ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 1469e7a2f5f41ef52c0ff77e6e70378951594135
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: b1b29ba11bc489a6ad67c2d9043cdb8a2dca7ef8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="provision-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンのプロビジョニング
-Microsoft データ サイエンス用仮想マシンは、プレインストールの Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 含まれているツールは、次のとおりです。
+Microsoft データ サイエンス用仮想マシンは、プレインストールの Windows Azure 仮想マシン (VM) イメージです。データ分析と機械学習用に一般的に使用されているいくつかのツールで構成されています。 含まれているツールは、次のとおりです。
 
 * Microsoft R Server Developer エディション
 * Anaconda Python ディストリビューション
@@ -42,7 +41,13 @@ Microsoft データ サイエンス用仮想マシンは、プレインストー
 * GitHub、Visual Studio Team Services を含むソース コード リポジトリを操作する Git Bash を含む Git
 * コマンド プロンプトからアクセスできる、いくつかの一般的な Linux コマンド ライン ユーティリティ (awk, sed, perl, grep, find, wget, curl などを含む) の Windows のポート。 
 
-データ サイエンスでは、一連のタスクの反復処理を行います。たとえば、データの検索、読み込み、および前処理、モデルの構築とテスト、インテリジェント アプリケーションで使用するためのモデルのデプロイなどです。 データ サイエンティストは、こうしたタスクを行うためにさまざまなツールを使用します。 適切なバージョンのソフトウェアを見つけ、ダウンロードしてインストールするには、非常に時間がかかる場合があります。 Microsoft データ サイエンス仮想マシンは、プレインストールされ、構成されているいくつかの一般的なツールを使って Azure 上でプロビジョニング可能なすぐに使用できるイメージにより、この負荷を容易にすることができます。 
+データ サイエンスでは、次の一連のタスクを反復処理します。
+
+1. データの検索、読み込み、前処理
+2. モデルの作成とテスト
+3. インテリジェント アプリケーションで使用するためのモデルのデプロイ
+
+データ サイエンティストは、こうしたタスクを行うためにさまざまなツールを使用します。 適切なバージョンのソフトウェアを見つけ、ダウンロードしてインストールするには、非常に時間がかかる場合があります。 Microsoft データ サイエンス仮想マシンは、プレインストールされ、構成されているいくつかの一般的なツールを使って Azure 上でプロビジョニング可能なすぐに使用できるイメージにより、この負荷を容易にすることができます。 
 
 Microsoft データ サイエンス仮想マシンは分析プロジェクトの活性剤となります。 R、Python、SQL、C# など、さまざまな言語でタスクを処理できます。 Visual Studio には、コードの開発やテストを行うための使いやすい IDE が用意されています。 VM に含まれている Azure SDK を使用すると、Microsoft のクラウド プラットフォームにあるさまざまなサービスを利用してアプリケーションを構築できます。 
 
@@ -92,7 +97,7 @@ VM を作成した後は、前述の **[基本]** セクションで作成した
 VM が作成され、プロビジョニングされた後は、VM にインストールされて構成されたツールを使い始めることができます。 多くのツールには、スタート メニュー タイルとデスクトップ アイコンがあります。 
 
 ## <a name="how-to-create-a-strong-password-for-jupyter-and-start-the-notebook-server"></a>Jupyter の強力なパスワードを作成し、Notebook サーバーを起動する方法
-既定では、Jupyter Notebook サーバーはあらかじめ構成されていますが、Jupyter パスワードを設定するまで、VM 上では無効になります。 コンピューターにインストールされている Jupyter Notebook サーバーの強力なパスワードを作成するには、データ サイエンス仮想マシンでコマンド プロンプトから次のコマンドを実行するか、VM のローカル管理者アカウントから、Microsoft が提供している **[Jupyter Set Password & Start (Jupyter のパスワード設定と起動)]** というデスクトップ ショートカットをダブルクリックします。
+既定では、Jupyter Notebook サーバーはあらかじめ構成されていますが、Jupyter パスワードを設定するまで、VM 上では無効になります。 コンピューターにインストールされている Jupyter Notebook サーバーの強力なパスワードを作成するには、データ サイエンス仮想マシンでコマンド プロンプトから次のコマンドを実行するか、VM のローカル管理者アカウントから、Microsoft が提供している **[Jupyter Set Password & Start]\(Jupyter のパスワード設定と起動\)** というデスクトップ ショートカットをダブルクリックします。
 
     C:\dsvm\tools\setup\JupyterSetPasswordAndStart.cmd
 
@@ -104,6 +109,7 @@ VM が作成され、プロビジョニングされた後は、VM にインス�
 
 
 ## <a name="tools-installed-on-the-microsoft-data-science-virtual-machine"></a>Microsoft データ サイエンス仮想マシンにインストールされているツール
+
 ### <a name="microsoft-r-server-developer-edition"></a>Microsoft R Server Developer エディション
 分析に R を使用できるように、VM に Microsoft R Server Developer エディションがインストールされています。 Microsoft R Server は、サポート対象のスケーラブルで安全な R に基づく、広範にデプロイできるエンタープライズ クラスの分析プラットフォームです。 さまざまなビッグ データ統計、予測モデリング、および機械学習の機能をサポートする R Server は、幅広い分析機能 (探索、分析、視覚化、モデリングなど) をサポートしています。 オープン ソース R を使用、拡張することで、Microsoft R Server は R スクリプト、関数、CRAN パッケージと完全に互換性のある形式で、エンタープライズ規模でデータを分析します。 データの並列処理とチャンク処理を追加することで、オープン ソース R のメモリ内制限も対処します。 これにより、メイン メモリに収まりきるよりもはるかに大きなデータに対して、分析を実行することができます。  VM にインストールされている Visual Studio Community Edition には Visual Studio 拡張機能のための R のツールがあり、R を操作するための完全な IDE を提供します。[RStudio](http://www.rstudio.com) などの他の IDE をダウンロードして使用することもできます。 
 

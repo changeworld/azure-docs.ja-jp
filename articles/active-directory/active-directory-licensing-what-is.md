@@ -13,15 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/08/2017
+ms.date: 05/24/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 684cb55c0bf2abfa1fc1410d7fc1224a220c2713
+ms.custom: oldportal;it-pro;H1Hack27Feb2017
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 9da5bb6987a9eb3398abe0d6066f1945620df9a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="what-is-microsoft-azure-active-directory-licensing-in-the-azure-classic-portal"></a>Azure クラシック ポータルでの Microsoft Azure Active Directory ライセンスとは
@@ -33,6 +32,9 @@ ms.lasthandoff: 06/30/2017
 >
 
 Azure Active Directory (Azure AD) は、マイクロソフトのサービスとしての ID (IDaaS) ソリューションおよびプラットフォームです。 Azure AD は、Office 365、Dynamics、Microsoft Intune、Azure (このモードでは Azure AD の使用料金は発生しません) などの任意の Microsoft サービスと使用できる Azure AD 無料版から、Enterprise Mobility Suite (EMS)、Azure AD Premium や Basic、Azure Multi-Factor Authentication (MFA) などの Azure AD の有料バージョンまで、さまざま機能と技術のバージョンが提供されています。 多くの Microsoft オンライン サービスと同様、ほとんどの Azure AD の有料バージョンは、Office 365、Microsoft Intune、Azure AD のように、ユーザーごとの資格を通じて提供されます。 このような場合、サービスの購入は 1 つ以上のサブスクリプションで表され、各サブスクリプションには、テナントで事前に購入したライセンスの数が含まれます。 ユーザーごとの資格はライセンスの割り当てによって実現されます。ユーザーと製品が関連付けられ、ユーザーに対してサービス コンポーネントが有効になり、前払いライセンスの 1 つが使用されます。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで管理者ロールを割り当てる方法については、「[Azure Active Directory での自分とユーザーのライセンスの取得](active-directory-licensing-get-started-azure-portal.md)」を参照してください。
 
 [今すぐ Azure AD premium をお試しください。](https://portal.office.com/Signup/Signup.aspx?OfferId=01824d11-5ad8-447f-8523-666b0848b381&ali=1#0)
 

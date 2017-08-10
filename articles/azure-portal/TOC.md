@@ -35,6 +35,7 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=monitoring-management)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuremanagement) 
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-management-portal)
 
 

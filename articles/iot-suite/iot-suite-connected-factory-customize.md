@@ -13,14 +13,13 @@ ms.devlang: c#
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/04/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ec4b2808e6984821200be182183e53b69887b912
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
@@ -69,7 +68,7 @@ ms.lasthandoff: 06/08/2017
 
 ## <a name="map-the-data"></a>データのマップ
 
-コネクテッド ファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 コネクテッド ファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio コネクテッド ファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio コネクテッド ファクトリ ソリューションで表示および変更することも、再デプロイすることもできます。
+コネクテッド ファクトリ ソリューションでは、OPC UA サーバーの公開データ項目をソリューションのさまざまなビューにマップしたり、ビューで集計したりできます。 コネクテッド ファクトリ ソリューションは、ソリューションのプロビジョニング時に Azure アカウントにデプロイされます。 Visual Studio コネクテッド ファクトリ ソリューションの JSON ファイルには、このマッピング情報が格納されます。 この JSON 構成ファイルは、Visual Studio コネクテッド ファクトリ ソリューションで表示および変更できます。 ソリューションは、変更後に再デプロイできます。
 
 構成ファイルを使用すると、次の操作を行うことができます。
 
@@ -107,7 +106,7 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 
 ### <a name="opcuri"></a>OpcUri
 
-**OpcUri** 値は、OPC UA サーバーを一意に識別する OPC UA アプリケーション URI です。 たとえば、ミュンヘンにある生産ライン 1 のアセンブリ ステーションの **OpcUri** 値は **urn:scada2194:ua:munich:productionline0:assemblystation** です。
+**OpcUri** 値は、OPC UA サーバーを一意に識別する OPC UA アプリケーション URI です。 たとえば、ミュンヘンにある生産ライン 1 のアセンブリ ステーションの **OpcUri** 値は **urn:scada2194:ua:munich:productionline0:assemblystation** のようになります。
 
 ソリューション ダッシュボードでは、接続されている OPC UA サーバーの URI を確認できます。
 

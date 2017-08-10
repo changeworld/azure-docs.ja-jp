@@ -29,6 +29,9 @@
 
 5. **[共有アクセス ポリシー]** ウィンドウで、**[iothubowner]** ポリシーをクリックし、IoT Hub の **[接続文字列]** をコピーしてメモしておきます。 詳細については、「[IoT Hub へのアクセスの制御](../articles/iot-hub/iot-hub-devguide-security.md)」を参照してください。
 
+> [!NOTE] 
+このセットアップ チュートリアルでは、この iothubowner 接続文字列は必要ありません。 ただし、このセットアップの完了後、異なる IoT シナリオの一部のチュートリアルでは必要になる場合があります。
+
    ![IoT Hub の接続文字列を取得する](../articles/iot-hub/media/iot-hub-create-hub-and-device/5_get-azure-iot-hub-connection-string-portal.png)
 
 ## <a name="register-a-device-in-the-iot-hub-for-your-device"></a>デバイスの IoT ハブにデバイスを登録する

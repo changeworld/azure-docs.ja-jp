@@ -31,12 +31,22 @@
 #### [IIS ログ](log-analytics-data-sources-iis-logs.md)
 #### [カスタム ログ](log-analytics-data-sources-custom-logs.md)
 #### [カスタム フィールド](log-analytics-custom-fields.md)
+
 ## データのクエリを実行する
 ### [ログ検索の概要](log-analytics-log-searches.md)
 ### [検索リファレンス](log-analytics-search-reference.md)
 #### [正規表現](log-analytics-log-searches-regex.md)
 ### [検索結果からのアクションの実行](log-analytics-log-search-takeaction.md)
 ### [コンピューター グループ](log-analytics-computer-groups.md)
+
+## 新しいログ検索
+### [ワークスペースのアップグレード](log-analytics-log-search-upgrade.md)
+### [FAQ](log-analytics-log-search-faq.md)
+### [ログ検索の概要](log-analytics-log-search-new.md)
+### [ログ検索ポータル](log-analytics-log-search-portals.md)
+#### [ログ検索ポータルの使用](log-analytics-log-search-log-search-portal.md)
+### [従来の言語からの切り替え](log-analytics-log-search-transition.md)
+
 ## データを分析する
 ### [ダッシュボード](log-analytics-dashboards.md)
 ### [ビュー デザイナー](log-analytics-view-designer.md)
@@ -74,6 +84,7 @@
 ### [マルウェアの評価](log-analytics-malware.md)
 ### [ネットワーク分析](log-analytics-azure-networking-analytics.md)
 ### [ネットワーク パフォーマンス監視](log-analytics-network-performance-monitor.md)
+### [Office 365](../operations-management-suite/oms-solution-office-365.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [SCOM 評価](log-analytics-scom-assessment.md)
 ### [セキュリティ監査](../operations-management-suite/oms-security-getting-started.md?toc=%2fazure%2flog-analytics%2ftoc.json)
 ### [Service Fabric](log-analytics-service-fabric.md)
@@ -101,5 +112,6 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [料金](https://azure.microsoft.com/pricing/details/log-analytics/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=log-analytics)
 ## [Windows Analytics](https://www.microsoft.com/en-us/WindowsForBusiness/windows-analytics)

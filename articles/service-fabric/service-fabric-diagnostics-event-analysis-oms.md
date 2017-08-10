@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: d7857821524de3d1dbdac9e8c8d0da89678670db
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 78778e2601ca91c1921a5d987ec7845332c8e27a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -37,7 +36,7 @@ Log Analytics がデータを受け取った後、OMS にはいくつかの*管�
 
 ## <a name="setting-up-an-oms-workspace-with-the-service-fabric-solution"></a>Service Fabric ソリューションによる OMS ワークスペースの設定
 
-OMS ワークスペースに Service Fabric ソリューションを含めることをお勧めします。インフラストラクチャおよびアプリケーション レベルからのさまざまなログ チャネルを表示する便利なダッシュボードが用意されており、Service Fabric 固有のログを照会することもできます。 ここで、比較的単純な Service Fabric ソリューションを示します。クラスター上に単一アプリケーションが展開されます。
+OMS ワークスペースに Service Fabric ソリューションを含めることをお勧めします。プラットフォームおよびアプリケーション レベルからのさまざまなログ チャネルを表示する便利なダッシュボードが用意されており、Service Fabric 固有のログを照会することもできます。 ここで、比較的単純な Service Fabric ソリューションを示します。クラスター上に単一アプリケーションが展開されます。
 
 ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
@@ -104,6 +103,6 @@ Azure Marketplace で*コンテナー*を検索し、 ([Monitoring + Management]
 
 必要に応じてワークスペースをカスタマイズするには、次の OMS ツールとオプションを調べてください。
 
-* オンプレミス クラスターのために、OMS はデータを OMS に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](../log-analytics/log-analytics-oms-gateway.md)を参照してください
+* オンプレミス クラスター用に、OMS はデータを OMS に送信するために使用できるゲートウェイ (HTTP 転送プロキシ) を提供します。 詳細については、[インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する](../log-analytics/log-analytics-oms-gateway.md)を参照してください
 * OMS を構成して、検出と診断に役立つ[自動アラート](../log-analytics/log-analytics-alerts.md)を設定する
 * Log Analytic の一部として提供されている[ログ検索とクエリ](../log-analytics/log-analytics-log-searches.md)機能に詳しくなる

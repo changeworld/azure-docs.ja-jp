@@ -11,21 +11,21 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 6d85e02ec538a0a7073915a9d613328cedb41bfb
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/08/2017
 
 --- 
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
 ## <a name="overview"></a>概要
-Cortana Intelligence ソリューション評価ツールを使用して、開発した高度な分析アプリケーションが Microsoft によって推奨されているベスト プラクティスに準拠しているかどうかを評価できます。 Microsoft は、パートナー各社 (ISV/SI) と協力して、高品質のソリューションを顧客、リセラー、および導入パートナーに提供できることを嬉しく思っています。 このガイドでは、開発したアプリケーションに対してこのソリューション評価ツールを使用する方法と、チェックの対象となる具体的なベスト プラクティスについて説明します。
+Cortana Intelligence ソリューション評価ツールを使用して、開発した高度な分析ソリューションが Microsoft によって推奨されているベスト プラクティスに準拠しているかどうかを評価できます。 Microsoft は、パートナー各社 (ISV/SI) と協力して、高品質のソリューションを顧客、リセラー、および導入パートナーに提供できることを嬉しく思っています。 このガイドでは、開発したソリューションに対してこのソリューション評価ツールを使用する方法と、チェックの対象となる具体的なベスト プラクティスについて説明します。
 
 ## <a name="getting-started"></a>使用の開始
-Cortana Intelligence ソリューション評価ツールを[ダウンロード](https://aka.ms/aa-evalution-tool-download)してインストールしてください。
+Cortana Intelligence ソリューション評価ツールを[ダウンロード](https://aka.ms/aa-evaluation-tool-download)してインストールしてください。
 
 前提条件:
 - Windows 10: [Windows 10 の公式サイト](https://www.microsoft.com/en-us/windows)
@@ -36,7 +36,7 @@ Cortana Intelligence ソリューション評価ツールを[ダウンロード]
 
 ![評価ツールを開く](./media/cortana-intelligence-appsource-evaluation-tool/1-open-evaluation-tool.png)
 
-アプリケーションの識別情報を入力します。
+ソリューションの識別情報を入力します。
 
 ![Azure サブスクリプションに接続する](./media/cortana-intelligence-appsource-evaluation-tool/2-connect-azure-subscription.png)
 
@@ -44,18 +44,18 @@ Azure サブスクリプションに接続し、アプリが含まれている�
 
 ![リソースを選択する](./media/cortana-intelligence-appsource-evaluation-tool/3-select-resources.png)
 
-リソース グループが読み込まれたら、アプリに含まれているリソースを選択し、データ リソースの利用法として次のいずれかを識別します。
+リソース グループが読み込まれたら、ソリューションに含まれているリソースを選択し、データ リソースのアクセシビリティが次のいずれかを識別します。
 - データの取り込み
 - 消費
 - 内部
 
-この情報は、アプリがさまざまなコンポーネントをどのように利用するかを理解し、ユーザー向けのコンポーネントがベスト プラクティスと一致していることを保証するために使用されます。
+この情報は、ソリューションがさまざまなコンポーネントをどのように利用するかを理解し、ユーザー向けのコンポーネントがベスト プラクティスと一致していることを保証するために使用されます。
 
 ### <a name="ingestion"></a>データの取り込み
-ここでの取り込みは、アプリの外部からアプリにデータをプルするために使用されるデータ ソース、またはアプリにデータをプッシュするために使用されるアプリの外部のサービスを意味します。
+ここでの取り込みとは、何らかのデータ ソースが利用され、ソリューションの外部からデータがプルされることを意味するか、ソリューションの外部のサービスにより何らかのデータ ソースが利用され、データがソリューションにプッシュされることを意味します。
 
-### <a name="consumption"></a>消費
-ここでの消費は、直接または間接的にエンドユーザーにデータをプッシュするために使用されるデータセットを意味します。 次に例を示します。
+### <a name="consumption"></a>使用量
+ここでの使用とは、何らかのデータ ソースが利用され、直接的または間接的にエンド ユーザーにデータがプッシュされることを意味します。 For example:
 - PowerBI からの直接クエリで使用されるデータセット。
 - WebApp 内でクエリされるデータセット。
 
@@ -70,25 +70,29 @@ Azure サブスクリプションに接続し、アプリが含まれている�
 ![テストの前提条件を設定する](./media/cortana-intelligence-appsource-evaluation-tool/4-set-test-prerequisites.png)
 
 ## <a name="solution-test-cases"></a>ソリューションのテスト ケース
-ソリューション ツールは、自動化されたテストのコレクションをアプリケーションに対して実行します。
+ソリューション ツールは、自動化されたテストのコレクションをソリューションに対して実行します。
 
 ![テストの実行を設定する](./media/cortana-intelligence-appsource-evaluation-tool/5-set-test-execution.png)
 
-テストが完了すると、アプリが要件に準拠していないことの説明または正当な理由を示すことを求められます。
+テストが完了すると、ソリューションが要件に準拠していないことの説明または正当な理由を示すことを求められます。
 
 ![ビジネス上の正当な理由を示す](./media/cortana-intelligence-appsource-evaluation-tool/6-provide-business-justification.png)
 
-たとえば、アプリが Azure SQL DW に対して発行する場合、評価テストは、Azure Analysis Services にも発行することを要求します。 
+たとえば、ソリューションが Azure SQL DW に対して発行する場合、評価テストは、Azure Analysis Services にも発行することを要求します。 
 
-アプリで、Azure Analysis Services ではなく SQL Server Analysis Services を実行する IaaS 仮想マシンを使用している場合があります。 これは、テスト失敗の許容可能な理由になります。
+ソリューションで、Azure Analysis Services ではなく SQL Server Analysis Services を実行する IaaS 仮想マシンを使用している場合があります。 これは、テスト失敗の許容可能な理由になります。
 ## <a name="packaging-your-evaluation-results"></a>評価結果のパッケージ化
-テスト ケースが完了すると、評価パッケージが zip ファイルにエクスポートされ、評価ツールに関するフィードバックを提供することを求められます。
+テスト ケースが完了すると、評価パッケージが zip ファイルにエクスポートされ、評価ツールに関するフィードバックを提供することを求められます。 
+
+AppSource に追加するための承認を得る前に、ソリューションを評価するためにこのテスト結果の zip ファイルを Microsoft と共有する必要があります。
 
 ![評価ツールを採点する](./media/cortana-intelligence-appsource-evaluation-tool/7-grade-evaluation-tool.png)
 
+この記事の上のセクションはツールのさまざまな機能を取り上げました。ここからはこのツールで評価する際の各種ベスト プラクティスについて確認します。
+
 ## <a name="security-evaluation-considerations"></a>セキュリティの評価に関する考慮事項
 ### <a name="databases-should-use-azure-active-directory-authentication"></a>データベースは Azure Active Directory 認証を使用する必要があります
-アプリの Azure SQL または Azure SQL DW リソースは、Azure Active Directory (AAD) 認証を使用して有効にする必要があります。 AAD は、すべての ID とロールを管理する単一の場所を提供します。
+ソリューションの Azure SQL または Azure SQL DW リソースは、Azure Active Directory (AAD) 認証を使用して有効にする必要があります。 AAD は、すべての ID とロールを管理する単一の場所を提供します。
 
 | 詳細情報 | 参照する記事 |
 | --- | --- |
@@ -126,21 +130,21 @@ Azure SQL と Azure SQL DW はどちらも、データとログ ファイルの�
 TDE に加え、Azure SQL では、Always Encrypted もサポートしています。これは、保存時とクライアントとサーバー間の移動中だけデータが暗号化されるのではなく、サーバーでのコマンドの実行中にデータが使用されている間も暗号化されることを保証する新しいデータ暗号化テクノロジです。
 
 ### <a name="any-virtual-machines-must-be-deployed-from-the-azure-marketplace"></a>すべての Virtual Machines は Azure Marketplace からデプロイする必要があります
-AppSource 全体で一貫性のあるレベルのセキュリティを提供するために、Cortana Intelligence アプリの一部としてデプロイされるすべての仮想マシンは、認定を受けたうえで Azure Marketplace に公開することが要求されています。
+AppSource 全体で一貫性のあるレベルのセキュリティを提供するために、Cortana Intelligence ソリューションの一部としてデプロイされるすべての仮想マシンは、認定を受けたうえで Azure Marketplace に公開することが要求されています。
 
 現在の Azure Marketplace イメージの一覧を検索するには、[Microsoft Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/compute) を参照してください。
 
 Azure Marketplace に仮想マシン イメージを公開する方法については、「[Azure Marketplace 向け仮想マシン イメージ作成ガイド](https://docs.microsoft.com/en-us/azure/marketplace-publishing/marketplace-publishing-vm-image-creation)」を参照してください。
 
 ## <a name="scalability-evaluation-considerations"></a>スケーラビリティの評価に関する考慮事項
-### <a name="cortana-intelligence-apps-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence アプリにはスケーラブルなビッグ データ プラットフォームを含める必要があります
-Cortana Intelligence アプリは、非常に大きなデータ サイズに対応できる必要があります。 Azure では、次の 2 つのペタバイト規模のデータ プラットフォームのいずれかを含める必要があることを意味します。
+### <a name="cortana-intelligence-solutions-should-include-a-scalable-big-data-platform"></a>Cortana Intelligence ソリューションにはスケーラブルなビッグ データ プラットフォームを含める必要があります
+Cortana Intelligence ソリューションは、非常に大きなデータ サイズに対応できる必要があります。 Azure では、次の 2 つのペタバイト規模のデータ プラットフォームのいずれかを含める必要があることを意味します。
 - Azure Data Lake Store
 - Azure SQL Data Warehouse
 
-アプリがこれらのデータ サイズをサポートする必要がない、または代替データ プラットフォームを使用している場合は、それをテスト ケースの正当な理由の中で説明してください。
-### <a name="cortana-intelligence-apps-should-include-dedicated-ingestion-data-environments"></a>Cortana Intelligence アプリには専用の取り込みデータ環境を含める必要があります
-Cortana Intelligence アプリは、通常は、リレーショナル データ ソースにデータを直接挿入することは避ける必要があります。 代わりに、構造化されていない環境に生データを格納し、Azure Data Factory を使用して、リレーショナル ストアにべき等挿入/更新を行う必要があります。
+ソリューションがこれらのデータ サイズをサポートする必要がない、または代替データ プラットフォームを使用している場合は、それをテスト ケースの正当な理由の中で説明してください。
+### <a name="cortana-intelligence-solutions-should-include-dedicated-ingestion-data-environments"></a>Cortana Intelligence ソリューションには専用の取り込みデータ環境を含める必要があります
+Cortana Intelligence ソリューションは、通常は、リレーショナル データ ソースにデータを直接挿入することは避ける必要があります。 代わりに、構造化されていない環境に生データを格納し、Azure Data Factory を使用して、リレーショナル ストアにべき等挿入/更新を行う必要があります。
 
 Azure Data Factory を使用してデータをコピーする方法の詳細については、「[チュートリアル: コピー アクティビティがあるパイプラインを Visual Studio で作成する](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-copy-activity-tutorial-using-visual-studio)」を参照してください。
 
@@ -170,7 +174,7 @@ Azure SQL データベースの geo レプリケーションの詳細につい�
 Azure SQL の geo レプリケーションを構成する方法の手順については、「[Transact-SQL を使用して Azure SQL Database のアクティブ geo レプリケーションを構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-geo-replication-transact-sql)」を参照してください。
 
 ### <a name="azure-sql-data-warehouse-should-have-geo-redundant-backups-enabled"></a>Azure SQL Data Warehouse で地理冗長バックアップが有効になっている必要があります
-Azure SQL DW は、geo 冗長ストレージに対する毎日のバックアップをサポートしています。 この geo レプリケーションによって、プライマリ リージョンに格納されているスナップショットにアクセスできない状況でも、データ ウェアハウスを復元できることが保証されます。 この機能は既定で有効になっており、Cortana Intelligence アプリで無効にすべきではありません。
+Azure SQL DW は、geo 冗長ストレージに対する毎日のバックアップをサポートしています。 この geo レプリケーションによって、プライマリ リージョンに格納されているスナップショットにアクセスできない状況でも、データ ウェアハウスを復元できることが保証されます。 この機能は既定で有効になっており、Cortana Intelligence ソリューションで無効にすべきではありません。
 
 Azure SQL DW のバックアップと復元の詳細については、「[SQL Data Warehouse のバックアップ](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-backups)」を参照してください。
 
@@ -190,5 +194,10 @@ Azure Machine Learning (AzureML) には、予測モデルと機械学習のパ�
 AzureML の再トレーニング Web サービスの作成の詳細については、「[プログラムによる Machine Learning のモデルの再トレーニング](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-retrain-models-programmatically)」を参照してください。
 
 Azure Data Factory を使用したモデルのトレーニング プロセスの自動化の詳細については、「[更新リソース アクティビティを使って Azure Machine Learning モデルを更新する](https://docs.microsoft.com/en-us/azure/data-factory/data-factory-azure-ml-update-resource-activity)」を参照してください。
+
+## <a name="existing-documentation"></a>既存のドキュメント
+[Microsoft Azure Certified でクラウド ビジネスを拡大](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
+
+[Microsoft Azure Certified for Cortana Intelligence](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
 
 

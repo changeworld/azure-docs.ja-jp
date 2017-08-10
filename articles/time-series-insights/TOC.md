@@ -30,3 +30,4 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=internet-of-things)
 ## [料金](https://azure.microsoft.com/pricing/details/time-series-insights/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

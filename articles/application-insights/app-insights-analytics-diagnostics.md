@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: bb836357af6d006c18db578164f02fa7bd043b45
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 5e53bc714d89bf6204681349e7890e0b8fbc7046
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="diagnose-sudden-changes-in-your-app-telemetry"></a>アプリのテレメトリにおける急激な変化を診断する
@@ -61,7 +61,7 @@ Web サイトの特定のページに問題があり、特定のブラウザー�
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-スマート診断では、[DiffPatterns](app-insights-analytics-reference.md#evaluate-diffpatterns) 操作に基づく教師なしの高度な機械学習アルゴリズムを使用します。 データの変化を説明できるような候補となるパターンを探し、 メトリックに対する各候補の影響を分析して、変化との相関関係が最大となるパターンを示します。
+スマート診断では、[DiffPatterns](app-insights-analytics-reference.md) 操作に基づく教師なしの高度な機械学習アルゴリズムを使用します。 データの変化を説明できるような候補となるパターンを探し、 メトリックに対する各候補の影響を分析して、変化との相関関係が最大となるパターンを示します。
 
 ## <a name="no-diagnostic-points"></a>診断ポイントがない場合
 

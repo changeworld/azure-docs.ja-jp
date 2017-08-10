@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 07/17/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 571c31b9e6514b44d6a8a69fe8a6a0806e4b80e3
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 88f4a23f89a1c8fd88db1df3a7ff03ae5df64c0f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 06/01/2017
 
 監視と診断の全体的なワークフローは、次の 3 つの手順で構成されます。
 
-1. **イベントの生成**: これには、インフラストラクチャ (クラスター) とアプリケーション/サービス レベルの両方でのイベント (ログ、トレース、カスタム イベント) が含まれます。
+1. **イベントの生成**: これには、インフラストラクチャ (クラスター)、プラットフォーム、およびアプリケーション/サービス レベルでのイベント (ログ、トレース、カスタム イベント) が含まれます。
 2. **イベントの集計**: 生成されたイベントを表示するには、生成されたイベントを収集して集計する必要があります。
 3. **分析**: イベントは、必要に応じて分析して表示できるように、視覚化して、特定の形式でアクセスできるようにする必要があります。
 
@@ -45,9 +44,9 @@ ms.lasthandoff: 06/01/2017
 
 ## <a name="event-generation"></a>イベントの生成
 
-監視と診断のワークフローの最初の手順は、イベントおよびログの作成と生成です。 これらのイベント、ログ、およびトレースは 2 つのレベルで生成されます。インフラストラクチャ レイヤー (クラスター、コンピューター、または Service Fabric アクションからのもの) と、アプリケーション レイヤー (クラスターにデプロイされたアプリとサービスに追加されるインストルメンテーション) です。 これらの各レベルのイベントはカスタマイズ可能ですが、Service Fabric は既定でインストルメンテーションを提供します。
+監視と診断のワークフローの最初の手順は、イベントおよびログの作成と生成です。 これらのイベント、ログ、およびトレースは、プラットフォーム レイヤー (クラスター、コンピューター、または Service Fabric アクションを含む) またはアプリケーション レイヤー (クラスターにデプロイされたアプリとサービスに追加されるインストルメンテーション) という 2 つのレベルで生成されます。 これらの各レベルのイベントはカスタマイズ可能ですが、Service Fabric は既定でインストルメンテーションを提供します。
 
-提供される内容とインストルメンテーションの追加方法については、[インフラストラクチャ レベルのイベント](service-fabric-diagnostics-event-generation-infra.md)と[アプリケーション レベルのイベント](service-fabric-diagnostics-event-generation-app.md)に関する記事をご覧ください。
+提供される内容とインストルメンテーションの追加方法については、[プラットフォーム レベルのイベント](service-fabric-diagnostics-event-generation-infra.md)と[アプリケーション レベルのイベント](service-fabric-diagnostics-event-generation-app.md)に関するページを参照してください。
 
 利用するログ記録プロバイダーを決定したら、ログが適切に集計され、保存されていることを確認する必要があります。
 
@@ -69,7 +68,7 @@ Azure 診断拡張機能を使用したアプリケーション ログの収集�
 * 内部アプリケーション データおよびコンテキストへのアクセス
     * アプリケーション/サービス プロセス内で実行される診断サブシステムは、コンテキスト情報を使用してトレースを簡単に強化できます
 
-注意すべき点は、これら 2 つのオプションは相互に排他的でないということです。どちらか一方で同様のジョブを実行できますが、両方設定しても構いません。 多くの場合、エージェントをプロセス内収集と組み合わせると、より信頼性の高い監視ワークフローとなります。 Azure 診断拡張機能 (エージェント) がインフラストラクチャ レベルのログで選択できるのに対して、EventFlow (プロセス内収集) はアプリケーション レベルのログで使用できます。 お客様にとって最適な方法がわかったら、今度はデータの表示方法と分析方法を検討します。
+注意すべき点は、これら 2 つのオプションは相互に排他的でないということです。どちらか一方で同様のジョブを実行できますが、両方設定しても構いません。 多くの場合、エージェントをプロセス内収集と組み合わせると、より信頼性の高い監視ワークフローとなります。 Azure 診断拡張機能 (エージェント) がプラットフォーム レベルのログで選択できるのに対して、EventFlow (インプロセス収集) はアプリケーション レベルのログで使用できます。 お客様にとって最適な方法がわかったら、今度はデータの表示方法と分析方法を検討します。
 
 ## <a name="event-analysis"></a>イベントの分析
 
@@ -85,7 +84,7 @@ Azure 診断拡張機能を使用したアプリケーション ログの収集�
 
 ![収集されたメトリック情報の Azure Portal での表示](media/service-fabric-diagnostics-overview/azure-monitoring-metrics.png)
 
-グラフをカスタマイズするには、[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関する記事に記載された手順に従います。 また、「[Azure Monitor での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure Monitor では、サブスクリプションを 1 つだけサポートします。 複数のサブスクリプションを監視する必要がある場合や、追加機能が必要な場合は、Microsoft Operations Management Suite に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) が、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションを提供します。 Azure Monitor のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを 1 か所で確認できます。
+グラフをカスタマイズするには、[Microsoft Azure のメトリック](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md)に関する記事に記載された手順に従います。 また、「[Azure Monitor での Azure サービス アラートの作成](../monitoring-and-diagnostics/insights-alerts-portal.md)」で説明するように、これらのメトリックに基づいてアラートを作成することもできます。 「[Azure メトリック アラートでの webhook の構成](../monitoring-and-diagnostics/insights-webhooks-alerts.md)」で説明するように、webhook を使用してアラートを通知サービスに送信できます。 Azure Monitor では、サブスクリプションを 1 つだけサポートします。 複数のサブスクリプションを監視する必要がある場合や、追加機能が必要な場合、Microsoft Operations Management Suite に含まれる [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) で、オンプレミスとクラウド ベースの両方のインフラストラクチャに対応する包括的な IT 管理ソリューションが提供されます。 Azure Monitor のデータを Log Analytics に直接ルーティングできるので、環境全体のメトリックとログを 1 か所で確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -93,4 +92,4 @@ Azure 診断拡張機能を使用したアプリケーション ログの収集�
 
 ウォッチドッグは、複数のサービスにわたって正常性と負荷を監視し、正常性モデル階層内のあらゆるものの正常性を報告することができる別のサービスです。 このサービスにより、1 つのサービスの観点では検出されないエラーを防ぐことができます。 またウォッチドッグは、ユーザー操作なしで修復アクションを実行するコードをホストする場所としても適しています。たとえば、特定の時間間隔でストレージ内のログ ファイル クリーンアップを行うなどです。 ウォッチドッグ サービスの実装サンプルは、[ここ](https://github.com/Azure-Samples/service-fabric-watchdog-service)で見つけることができます。
 
-イベントとログが、[インフラストラクチャ レベル](service-fabric-diagnostics-event-generation-infra.md)と[アプリケーション レベル](service-fabric-diagnostics-event-generation-app.md)でどのように生成されるかについて理解しましょう。
+イベントとログが、[プラットフォーム レベル](service-fabric-diagnostics-event-generation-infra.md)と[アプリケーション レベル](service-fabric-diagnostics-event-generation-app.md)でどのように生成されるかについて理解しましょう。

@@ -108,7 +108,7 @@ Alcumus Info Exchange で Azure AD のシングル サインオンを構成し�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-alcumus-info-tutorial/tutorial_alcumusinfoexchange_samlbase.png)
 
-3. **[Alcumus Info Exchange Domain and URLs] (Alcumus Info Exchange のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Alcumus Info Exchange Domain and URLs] \(Alcumus Info Exchange のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-alcumus-info-tutorial/tutorial_alcumusinfoexchange_url.png)
 

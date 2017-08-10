@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 05/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 456d3e4e81b9773545d194b38a5f58ff97cc7b25
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 1ef3903bc4c401988c0f8b27dc9f9f0f3ec99466
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -395,6 +395,54 @@ ms.lasthandoff: 06/21/2017
       <td>✓ </td>
       <td><font size=2></font></td>
       <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>Cassandra テーブル</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2>汎用 ODBC 資産として発行</font></td>
+    </tr>
+    <tr>
+      <td>Cassandra ビュー</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2>汎用 ODBC 資産として発行</font></td>
+    </tr>
+    <tr>
+      <td>Sybase テーブル</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>Sybase ビュー</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2></font></td>
+    </tr>
+    <tr>
+      <td>MongoDB テーブル</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2>汎用 ODBC 資産として発行</font></td>
+    </tr>
+    <tr>
+      <td>MongoDB ビュー</td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td>✓ </td>
+      <td><font size=2></font></td>
+      <td><font size=2>汎用 ODBC 資産として発行</font></td>
     </tr>
 </table>
 
@@ -906,6 +954,22 @@ ms.lasthandoff: 06/21/2017
       <td>テーブル、ビュー</td>
       <td>
         <font size=2> Protocol: odbc <br>Authentication: {basic, windows} <br>Address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オプション <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Sybase</td>
+      <td>コンテナー</td>
+      <td>データベース</td>
+      <td>
+        <font size=2>プロトコル: sybase <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース </font>
+      </td>
+    </tr>
+    <tr>
+      <td>Sybase</td>
+      <td>テーブル</td>
+      <td>テーブル、ビュー</td>
+      <td>
+        <font size=2>プロトコル: sybase <br>authentication: {basic, windows} <br>address: <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; サーバー <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; データベース <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; スキーマ <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; オブジェクト </font>
       </td>
     </tr>
     <tr>

@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 07/10/2017
 ms.author: rickbyh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 65966f3adf8abee6d1476e9241b35247599ab1af
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d2dc4ae7af95a93d3c4031c7d3e11f617a5666c8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
@@ -153,6 +152,17 @@ Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23
 ```
 
 Azure Active Directory 管理者は、REST API を使用してプロビジョニングすることもできます。 詳細については、「 [Service Management REST API リファレンスと Azure SQL Database の操作](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+
+### <a name="cli"></a>CLI  
+以下の CLI コマンドを呼び出して、Azure AD 管理者をプロビジョニングすることもできます。
+| コマンド | Description |
+| --- | --- |
+|az sql server ad-admin create |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者をプロビジョニングします  (現在のサブスクリプションから実行する必要があります)。 |
+|az sql server ad-admin delete |Azure SQL Server または Azure SQL Data Warehouse の Azure Active Directory 管理者を削除します。 |
+|az sql server ad-admin list |現在 Azure SQL Server または Azure SQL Data Warehouse 用に構成されている Azure Active Directory 管理者に関する情報を返します。 |
+
+CLI コマンドの詳細については、「[SQL - az sql](https://docs.microsoft.com/cli/azure/sql/server)」を参照してください。  
+
 
 ## <a name="configure-your-client-computers"></a>クライアント コンピューターを構成する
 Azure AD の ID を使用して Azure SQL Database または Azure SQL Data Warehouse に接続するアプリケーションまたはユーザーが存在するすべてのクライアント コンピューターには、次のソフトウェアをインストールする必要があります。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 6df3fc533b0c375cd85743a971c778071629bb7e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 53fbfec76b7370ca972e4d637705f5f5a5cb27c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="team-data-science-process-walkthroughs"></a>Team Data Science Process のチュートリアル

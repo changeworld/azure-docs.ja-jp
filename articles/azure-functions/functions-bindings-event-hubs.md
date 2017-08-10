@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 06/20/2017
 ms.author: wesmc
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: eaa97e31fbc2ffb8464b5ec2bd1f0eb5c59fdbd2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 19021bef8b7156b3049f43b0275c0ed0c6b22514
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -94,6 +94,31 @@ using System;
 public static void Run(string myEventHubMessage, TraceWriter log)
 {
     log.Info($"C# Event Hub trigger function processed a message: {myEventHubMessage}");
+}
+```
+
+このイベントは、イベント メタデータへのアクセスに使用できる [EventData](/dotnet/api/microsoft.servicebus.messaging.eventdata) オブジェクトとしても受け取ることができます。
+
+```cs
+#r "Microsoft.ServiceBus"
+using System.Text;
+using Microsoft.ServiceBus.Messaging;
+
+public static void Run(EventData myEventHubMessage, TraceWriter log)
+{
+    log.Info($"{Encoding.UTF8.GetString(myEventHubMessage.GetBytes())}");
+}
+```
+
+イベントをバッチで受け取るには、メソッド シグネチャを `string[]` または `EventData[]` に変更します。
+
+```cs
+public static void Run(string[] eventHubMessages, TraceWriter log)
+{
+    foreach (var message in eventHubMessages)
+    {
+        log.Info($"C# Event Hub trigger function processed a message: {message}");
+    }
 }
 ```
 

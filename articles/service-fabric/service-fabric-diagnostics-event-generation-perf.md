@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: ac019d5393e9e9b7edb7960aa50edd5af3b49ebc
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -32,12 +32,6 @@ ms.lasthandoff: 07/06/2017
 
 | カウンターのカテゴリ | カウンター名 |
 | --- | --- |
-| PhysicalDisk(Total) | Avg. Disk Read Queue Length |
-| PhysicalDisk(Total) | Avg. Disk Write Queue Length |
-| PhysicalDisk(Total) | Disk Reads/sec  |
-| PhysicalDisk(Total) | Disk Read Bytes/sec  |
-| PhysicalDisk(Total) | Disk Writes/sec |
-| PhysicalDisk(Total) | Disk Write Bytes/sec |
 | PhysicalDisk(per Disk) | Avg. Disk Read Queue Length |
 | PhysicalDisk(per Disk) | Avg. Disk Write Queue Length |
 | PhysicalDisk(per Disk) | Avg. Disk sec/Read |
@@ -85,6 +79,6 @@ Reliable Collections を使っている場合は、`Service Fabric Transactional
 
 ## <a name="next-steps"></a>次のステップ
 
-* Service Fabric における [インフラストラクチャ レベルでのイベントの生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習してください
+* Service Fabric における[プラットフォーム レベルでのイベント生成](service-fabric-diagnostics-event-generation-infra.md)についてさらに学習します
 * [Azure 診断](service-fabric-diagnostics-event-aggregation-wad.md)を使ってパフォーマンス メトリックを収集してください
 

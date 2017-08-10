@@ -179,6 +179,7 @@
 #### [ドライブ マニフェストのバックアップ](storage-import-export-backing-up-drive-manifests.md)
 #### [Import/Export ジョブの診断とエラーからの回復](storage-import-export-diagnostics-and-error-recovery.md)
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=storage)
 ## [PowerShell](/powershell/module/azure.storage)
 ## [Azure CLI](/cli/azure/storage)
 ## .NET
@@ -210,6 +211,7 @@
 ## [Azure Storage クライアント ツール](storage-explorers.md)
 ## [フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazuredata)
 ## [料金](https://azure.microsoft.com/pricing/details/storage/blobs/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storage)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=storage)
@@ -218,6 +220,7 @@
 ### [ストレージ エクスプローラー (プレビュー)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
 ### [ストレージ エクスプローラーを使用した BLOB の管理 (プレビュー)](../vs-azure-tools-storage-explorer-blobs.md)
 ### [Azure File Storage でのストレージ エクスプローラー (プレビュー) の使用](../vs-azure-tools-storage-explorer-files.md)
+### [ストレージ エクスプローラー (プレビュー) のリリース ノート](../vs-azure-tools-storage-explorer-relnotes.md)
 
 ## NuGet パッケージ
 ### [.NET 用 Azure Storage クライアント ライブラリ](https://www.nuget.org/packages/WindowsAzure.Storage/)

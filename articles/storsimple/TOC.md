@@ -359,6 +359,7 @@
 ## [マーケティング](https://www.microsoft.com/server-cloud/products/storsimple/explore.aspx)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=StorSimple)
 ## [料金](https://azure.microsoft.com/pricing/details/storsimple/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=storsimple)
 ## [サポート ブログ](http://blogs.msdn.com/b/storsimple/)
 ## [サード パーティに関する通知](http://download.microsoft.com/download/2/0/0/2003271D-69D5-4143-85A2-F1D8EA058F52/StorSimple TPNs.zip)

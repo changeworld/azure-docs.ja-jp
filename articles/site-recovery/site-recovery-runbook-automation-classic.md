@@ -12,14 +12,13 @@ ms.devlang: powershell
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.workload: storage-backup-recovery
-ms.date: 02/06/2017
+ms.date: 08/01/2017
 ms.author: ruturajd@microsoft.com
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: c91a1210e84d215449b98aae14bda490aa2cb156
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans-in-the-classic-portal"></a>クラシック ポータルで復旧計画に Azure Automation Runbook を追加する

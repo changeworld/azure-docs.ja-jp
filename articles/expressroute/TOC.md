@@ -32,6 +32,7 @@
 ### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
+## [Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成
@@ -67,6 +68,7 @@
 ## [ケース スタディ](https://customers.microsoft.com/Pages/advancedsearch.aspx?mrmcproducts=More%20Products)
 ## [ネットワークのブログ](https://azure.microsoft.com/blog/topics/networking/)
 ## [料金](https://azure.microsoft.com/pricing/details/expressroute/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=expressroute)
 ## [SLA](https://azure.microsoft.com/support/legal/sla/)
 ## [サブスクリプションとサービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fexpressroute%2ftoc.json)

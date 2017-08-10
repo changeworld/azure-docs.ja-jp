@@ -14,14 +14,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/23/2017
+ms.date: 08/02/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 9447cf1919cacee5319afe559e7745e5d218fb0d
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 3ee89b6644ba395e0a6c28ecc2c082c2f7393ac8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="develop-c-topologies-for-apache-storm-by-using-the-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Apache Storm の C# トポロジの開発
@@ -121,6 +120,9 @@ Data Lake Tools for Visual Studio には次のテンプレートがあります�
 | Storm HBase ライターのサンプル |HDInsight クラスター上の HBase に書き込む方法。 |
 | Storm ハイブリッドのサンプル |Java コンポーネントを使用する方法。 |
 | Storm サンプル |基本的なワード カウント トポロジ。 |
+
+> [!WARNING]
+> すべてのテンプレートが Linux ベースの HDInsight で動作するとは限りません。 テンプレートで使用されている Nuget パッケージは Mono と互換性がない場合があります。 [Mono の互換性](http://www.mono-project.com/docs/about-mono/compatibility/)に関するドキュメントを確認し、[.NET Portability Analyzer](hdinsight-hadoop-migrate-dotnet-to-linux.md#automated-portability-analysis) を使用して潜在的な問題を特定してください。
 
 このドキュメントの手順では、基本的な種類の Storm アプリケーション プロジェクトを使用してトポロジを作成します。
 

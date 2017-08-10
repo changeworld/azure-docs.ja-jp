@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 8504be28baf202c0b04ee89b18122b29a93588ab
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 7f472bf6669bcf0c1cab048a3a5969fc71aadd8e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
@@ -373,6 +372,6 @@ namespace IngestionClient
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Analytics クエリ言語のツアー](app-insights-analytics-tour.md)
+* [Log Analytics クエリ言語のツアー](app-insights-analytics-tour.md)
 * [*Logstash* を使用して Application Insights にデータを送信する](https://github.com/Microsoft/logstash-output-application-insights)
 

@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 5/04/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e9c10b77110efe90239863ee603acbd54b17ead
+ms.translationtype: HT
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: dab2e54dedf55f0d9a0b0b4e66d101ed7df94bfa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="smart-detection---performance-anomalies"></a>スマート検出 - パフォーマンスの異常
 
 [Application Insights](app-insights-overview.md) は、Web アプリケーションのパフォーマンスを自動的に分析し、潜在的な問題について警告できます。 この記事は、スマート検出による通知を受信されたユーザーを主に想定しています。
 
-この機能を使用する場合、([ASP.NET](app-insights-asp-net.md)、Java (app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、および [Web ページ コード](app-insights-javascript.md)における) Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
+この機能を使用する場合、([ASP.NET](app-insights-asp-net.md)、[Java](app-insights-java-get-started.md)、[Node.js](app-insights-nodejs.md)、および [Web ページ コード](app-insights-javascript.md)における) Application Insights 用のアプリの構成を除き、特別な設定は不要です。 この機能は、アプリが十分なテレメトリを生成する際にアクティブになります。
 
 ## <a name="when-would-i-get-a-smart-detection-notification"></a>スマート検出による通知はいつ送信されますか
 
@@ -192,3 +191,4 @@ Application Insights は、一部のユーザーにのみ影響する、また�
 
 * [手動で構成するメトリックのアラート](app-insights-alerts.md)
 * [可用性 Web テスト](app-insights-monitor-web-app-availability.md)
+

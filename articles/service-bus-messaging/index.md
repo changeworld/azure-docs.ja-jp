@@ -3,10 +3,10 @@ layout: LandingPage
 title: "Service Bus メッセージングのドキュメント"
 description: "オンプレミスとクラウド環境の間でアプリケーションやサービスを接続するメッセージングを設定する方法について説明します。"
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 848cfc882af64fdd75d1ceae2b626602474f46c2
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 559bbabe07ae50b2cc83fad5e867c23c9272d6ab
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="service-bus-messaging-documentation"></a>Service Bus メッセージングのドキュメント
@@ -91,7 +91,8 @@ ms.lasthandoff: 08/03/2017
                 <div class="card">
                     <div class="cardText">
                         <h3>言語</h3>
-                        <p><a href="/dotnet/api/overview/azure/service-bus">.NET</a></p>
+                        <p><a href="/dotnet/api/microsoft.servicebus.messaging">.NET Framework</a></p>
+                        <p><a href="/dotnet/api/microsoft.azure.servicebus">.NET Standard</a></p>
                         <p><a href="/java/api/overview/azure/servicebus">Java</a></p>
                     </div>
                 </div>

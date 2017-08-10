@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 7b91be16b5820f379f7408b477311ea86b213ccd
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: dcd843ae1ba768ce02256dcc91c61693730c60e4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
@@ -40,7 +39,7 @@ SSE は、Azure Storage に書き込まれるデータを書き込みの時点�
 
 詳細については、よく寄せられる質問に関するセクションを参照してください。
 
-特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://azure.portal.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
+特定のストレージ アカウントについてストレージ サービスの暗号化を有効または無効にするには、 [Azure Portal](https://portal.azure.com) にログインしてストレージ アカウントを選択します。 [設定] ブレードで [BLOB サービス] セクション (次のスクリーンショットを参照) を探し、[暗号化] をクリックします。
 
 ![暗号化オプションが表示されたポータルのスクリーンショット](./media/storage-service-encryption/image1.png)
 <br/>"*図 1: Blob service の SSE を有効にする (手順 1)*"
@@ -85,7 +84,7 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
 #### <a name="using-smb"></a>SMB の使用
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 オンプレミスまたは Azure のクライアントからファイル共有をマウントできます。 マウントすると、Robocopy などのツールを使用して、ファイルを Azure ファイル共有にコピーすることができます。 詳細については、[Windows で Azure ファイル共有をマウントする方法](https://docs.microsoft.com/en-us/azure/storage/storage-dotnet-how-to-use-files#mount-the-file-share)に関するページおよび [Linux で Azure ファイル共有をマウントする方法](https://docs.microsoft.com/en-us/azure/storage/storage-how-to-use-files-linux#mount-the-file-share)に関するページを参照してください。
+Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 オンプレミスまたは Azure のクライアントからファイル共有をマウントできます。 マウントすると、Robocopy などのツールを使用して、ファイルを Azure ファイル共有にコピーすることができます。 詳細については、[Windows で Azure ファイル共有をマウントする方法](storage-file-how-to-use-files-windows.md)に関するページおよび [Linux で Azure ファイル共有をマウントする方法](storage-how-to-use-files-linux.md)に関するページを参照してください。
 
 
 #### <a name="using-the-storage-client-libraries"></a>ストレージ クライアント ライブラリの使用

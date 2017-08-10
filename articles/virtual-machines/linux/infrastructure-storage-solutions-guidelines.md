@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 771e3d1e728f6c85d9f63111b2483d08396ef530
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7c5089b9db945b0e0f4523e53bb44c178ffd0781
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-storage-infrastructure-guidelines-for-linux-vms"></a>Linux VM 用の Azure Storage インフラストラクチャのガイドライン
@@ -73,7 +72,7 @@ Azure Storage のデプロイを設計する場合、スケーラビリティ制
 ## <a name="striped-disks"></a>ストライピングされたディスク
 データ ディスクにストライピングを使用すると、1023 GB より大きいディスクを作成できるだけでなく、多くの場合、複数の BLOB で単一ボリュームのストレージをバックアップできるため、パフォーマンスが向上します。 ストライピングにより、単一の論理ディスクのデータを読み書きするのに必要な I/O が並列化されます。
 
-Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。 詳細については、[仮想マシンのサイズ](sizes.md
+Azure では、使用できるデータ ディスクの数と帯域幅が、VM のサイズに応じて制限されます。 詳細については、「[仮想マシンのサイズ](sizes.md)」を参照してください。
 
 Azure データ ディスクにディスク ストライピングを使用する場合は、次のガイドラインを考慮してください。
 

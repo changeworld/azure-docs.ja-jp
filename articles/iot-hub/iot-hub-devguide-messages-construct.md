@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: be467cf7d3ada41f110f4f6aea686b3d40e01ffa
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: e6eafb1a0030b022da2b5d0b787e092f3067c99f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
@@ -48,10 +47,10 @@ ms.lasthandoff: 06/01/2017
 | EnqueuedTime |IoT Hub が[クラウドからデバイス][lnk-c2d]へのメッセージを受信した日時。 |
 | CorrelationId |通常、要求/応答パターンで要求の MessageId を格納する、応答メッセージの文字列プロパティ。 |
 | UserId |メッセージの送信元を指定するために使用される ID。 IoT Hub でメッセージが生成されると、 `{iot hub name}`に設定されます。 |
-| Ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 詳細については、[メッセージのフィードバック][lnk-feedback] をご覧ください。 |
+| Ack |フィードバック メッセージのジェネレーター。 このプロパティは、デバイスがメッセージを使用した結果としてのフィードバック メッセージの生成を IoT Hub に要求するために、C2D メッセージで使用されます。 使用可能な値: **none** (既定値): フィードバック メッセージは生成されません。**positive**: メッセージが完了した場合にフィードバック メッセージを受信します。**negative**: デバイスでメッセージが完了しないまま、メッセージの有効期限が切れた場合 (または最大配信数に達した場合) にフィードバック メッセージを受信します。**full**: positive と negative の両方の値を意味します。 詳細については、「[メッセージのフィードバック][lnk-feedback]を参照してください。 |
 | ConnectionDeviceId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **deviceId** が含まれます。 |
-| ConnectionDeviceGenerationId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの ([デバイス ID のプロパティ][Ink-device-properties] に応じた) **generationId** が含まれています。 |
-| ConnectionAuthMethod |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 詳細については、[D2C のなりすまし対策][lnk-antispoofing] に関する記述をご覧ください。 |
+| ConnectionDeviceGenerationId |IoT Hub で D2C メッセージに対して設定される ID。 メッセージを送信したデバイスの **generationId** (「[デバイス ID のプロパティ][lnk-device-properties]」を参照) が含まれています。 |
+| ConnectionAuthMethod |IoT Hub で D2C メッセージに対して設定される認証方法。 このプロパティには、メッセージを送信するデバイスの認証に使用する認証方法に関する情報が含まれます。 詳細については、[D2C のなりすまし対策][lnk-antispoofing]に関するセクションを参照してください。 |
 
 ## <a name="message-size"></a>メッセージ サイズ
 
@@ -75,4 +74,7 @@ IoT Hub メッセージをさまざまなプログラミング言語で作成し
 [lnk-sdks]: iot-hub-devguide-sdks.md
 [lnk-c2d]: iot-hub-devguide-messages-c2d.md
 [lnk-d2c]: iot-hub-devguide-messages-d2c.md
-[[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback [lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties [lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-propertiess
+[lnk-feedback]: iot-hub-devguide-messages-c2d.md#message-feedback
+[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
+[lnk-antispoofing]: iot-hub-devguide-messages-d2c.md#anti-spoofing-properties
+

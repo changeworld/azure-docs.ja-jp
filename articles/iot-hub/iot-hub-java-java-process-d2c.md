@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 7055e207cfbcc9de02669be9f0e97045769ef217
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
-# IoT Hub のデバイスからクラウドへのメッセージの処理 (Java)
-<a id="process-iot-hub-device-to-cloud-messages-java" class="xliff"></a>
+# <a name="process-iot-hub-device-to-cloud-messages-java"></a>IoT Hub のデバイスからクラウドへのメッセージの処理 (Java)
 
 [!INCLUDE [iot-hub-selector-process-d2c](../../includes/iot-hub-selector-process-d2c.md)]
 
@@ -34,11 +32,11 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 チュートリアルの終わりとして、次の 3 つの Java コンソール アプリケーションを実行します。
 
 * **simulated-device**: [IoT Hub の使用]に関するチュートリアルで作成したアプリを変更したものです。デバイスからクラウドへのデータポイント メッセージを 1 秒ごとに送信し、デバイスからクラウドへの対話型メッセージを 10 秒ごとに送信します。 このアプリでは、IoT Hub との通信に AMQP プロトコルを使用します。
-* **read-d2c-messages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
+* **read-d2c-messages**。デバイス アプリから送信されたテレメトリを表示します。
 * **read-critical-queue**。IoT hub に接続された Service Bus キューから重大なメッセージをデキューします。
 
 > [!NOTE]
-> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのシミュレート対象デバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法の手順については、 [Azure IoT デベロッパー センター]を参照してください。
+> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのデバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法の手順については、[Azure IoT デベロッパー センター]を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -49,10 +47,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
-## シミュレート対象デバイス アプリからの対話型メッセージの送信
-<a id="send-interactive-messages-from-a-simulated-device-app" class="xliff"></a>
-
-このセクションでは、「[IoT Hub の使用]」チュートリアルで作成したシミュレート デバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
+## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
+このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
 
 1. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ファイルを開きます。 このファイルには、 **IoT Hub の概要** のチュートリアルで作成した [IoT Hub の使用] アプリのコードが含まれています。
 
@@ -103,11 +99,11 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
         }
     }
     ```
-
-    このメソッドは、シミュレートされたデバイスによって送信されたメッセージに `"level": "critical"` プロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
-
-    > [!NOTE]
-    > メッセージのプロパティを使用したメッセージのルーティングは、ここで示すホット パスの例に加え、コールド パス処理などのさまざまなシナリオで使用できます。
+   
+    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` プロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
+   
+   > [!NOTE]
+   > メッセージのプロパティを使用したメッセージのルーティングは、ここで示すホット パスの例に加え、コールド パス処理などのさまざまなシナリオで使用できます。
 
 2. simulated-device\src\main\java\com\mycompany\app\App.java を保存して閉じます。
 
@@ -120,8 +116,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     mvn clean package -DskipTests
     ```
 
-## IoT hub へのキューの追加とキューへのメッセージのルーティング
-<a id="add-a-queue-to-your-iot-hub-and-route-messages-to-it" class="xliff"></a>
+## <a name="add-a-queue-to-your-iot-hub-and-route-messages-to-it"></a>IoT hub へのキューの追加とキューへのメッセージのルーティング
 
 このセクションでは、Service Bus キューを作成して IoT hub に接続し、メッセージのプロパティの有無に基づいてこのキューにメッセージを送信するように IoT hub を構成します。 Service Bus キューのメッセージを処理する方法の詳細については、「[Service Bus キューの使用][lnk-sb-queues-java]」を参照してください。
 
@@ -143,13 +138,11 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
     ![フォールバック ルート][33]
 
-## (省略可能) キュー エンドポイントからの読み取り
-<a id="optional-read-from-the-queue-endpoint" class="xliff"></a>
+## <a name="optional-read-from-the-queue-endpoint"></a>(省略可能) キュー エンドポイントからの読み取り
 
 必要に応じて、[キューの使用方法][lnk-sb-queues-java]に関する記事の手順に従って、キュー エンドポイントからメッセージを読み取ることができます。 アプリに **read-critical-queue**という名前を付けます。
 
-## アプリケーションの実行
-<a id="run-the-applications" class="xliff"></a>
+## <a name="run-the-applications"></a>アプリケーションの実行
 
 これで、3 つのアプリケーションを実行する準備が整いました。
 
@@ -177,8 +170,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
    
    ![simulated-device の実行][simulateddevice]
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、IoT Hub のメッセージ ルーティング機能を使用して、デバイスからクラウドへのメッセージを確実にディスパッチする方法について説明しました。
 

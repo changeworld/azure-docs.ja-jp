@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 5/17/2017
 ms.author: rclaus
 ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7a53ca814170a6651fc499c41395fe088a6f869a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 9a2293f13b90e9a4cb11b4169fad969dd622a9a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -27,19 +27,20 @@ ms.lasthandoff: 06/15/2017
 
 Azure CLI を使用すると、コマンド プロンプトで、またはスクリプトを使用して Azure リソースを作成および管理できます。 この記事では、Azure CLI スクリプトを使用して、Azure Marketplace ギャラリー イメージから Oracle Database 12c データベースをデプロイします。
 
-始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI インストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
+始める前に、Azure CLI がインストールされていることを確認します。 詳細については、[Azure CLI のインストール ガイド](https://docs.microsoft.com/cli/azure/install-azure-cli)を参照してください。
 
 ## <a name="prepare-the-environment"></a>環境の準備
-### <a name="step-1-assumptions"></a>手順 1: 前提条件
+
+### <a name="step-1-prerequisites"></a>手順 1: 前提条件
 
 *   バックアップと回復プロセスを実行するには、インストール済みの Oracle Database 12c のインスタンスを使用して、Linux VM を作成する必要があります。 VM の作成に使用する Marketplace イメージは、*Oracle:Oracle-Database-Ee:12.1.0.2:latest* と呼ばれます。
 
-    Oracle データベースの作成手順については、[Oracle Database データベースのクイック作成ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)のページを参照してください。
+    Oracle データベースの作成手順については、[Oracle データベースのクイック作成ガイド](https://docs.microsoft.com/azure/virtual-machines/workloads/oracle/oracle-database-quick-create)のページを参照してください。
 
 
 ### <a name="step-2-connect-to-the-vm"></a>手順 2: 仮想マシンに接続する
 
-*   VM で Secure Shell (SSH) セッションを作成するには、次のコマンドを使用します。IP アドレスとホスト名の組み合わせを、VMの `publicIpAddress` の値で置き換えます。
+*   VM で Secure Shell (SSH) セッションを作成するには、次のコマンドを使用します。 IP アドレスとのホスト名の組み合わせを VM の `publicIpAddress` の値で置き換えます。
 
     ```bash 
     ssh <publicIpAddress>
@@ -95,7 +96,7 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
     SQL> ALTER DATABASE OPEN;
     SQL> ALTER SYSTEM SWITCH LOGFILE;
     ```
-3.  コミットをテストするテーブルを作成します (省略可能)。
+3.  コミットをテストするテーブルを作成します (省略可能) 。
 
     ```bash
     SQL> alter session set "_ORACLE_SCRIPT"=true ;
@@ -135,173 +136,192 @@ Azure CLI を使用すると、コマンド プロンプトで、またはスク
 
 ### <a name="step-4-application-consistent-backup-for-linux-vms"></a>手順 4: Linux VM のアプリケーション整合性バックアップ
 
-これは Azure Backup の新機能で、ユーザーが VM スナップショットの前および後に実行するスクリプト (事前および事後) を指定できるようにします。
+これは Azure Backup の新機能で、 ユーザーが VM スナップショットの前および後に実行するスクリプト (事前および事後) を作成し、選択できます。
 
-#### <a name="1-download-vmsnapshotscriptpluginconfigjson-from-httpsgithubcommicrosoftazurebackupvmsnapshotpluginconfig-content-should-be-similar-to-following"></a>1.https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig から VMSnapshotScriptPluginConfig.json をダウンロードします。 コンテンツは、次のようになります。
+1. JSON ファイルをダウンロードします。
 
-```azurecli
-{
-    "pluginName" : "ScriptRunner",
-    "preScriptLocation" : "",
-    "postScriptLocation" : "",
-    "preScriptParams" : ["", ""],
-    "postScriptParams" : ["", ""],
-    "preScriptNoOfRetries" : 0,
-    "postScriptNoOfRetries" : 0,
-    "timeoutInSeconds" : 30,
-    "continueBackupOnFailure" : true,
-    "fsFreezeEnabled" : true
-}
-```
+    https://github.com/MicrosoftAzureBackup/VMSnapshotPluginConfig から VMSnapshotScriptPluginConfig.json をダウンロードします。 ファイルの内容は、次のようになります。
 
-#### <a name="2-create-etcazure-folder-on-vm"></a>2.VM に /etc/azure フォルダーを作成します。
+    ```azurecli
+    {
+        "pluginName" : "ScriptRunner",
+        "preScriptLocation" : "",
+        "postScriptLocation" : "",
+        "preScriptParams" : ["", ""],
+        "postScriptParams" : ["", ""],
+        "preScriptNoOfRetries" : 0,
+        "postScriptNoOfRetries" : 0,
+        "timeoutInSeconds" : 30,
+        "continueBackupOnFailure" : true,
+        "fsFreezeEnabled" : true
+    }
+    ```
 
-```bash
-$ sudo su -
-# mkdir /etc/azure
-# cd /etc/azure
-```
+2. VM に /etc/azure フォルダーを作成します。
 
-#### <a name="3-copy-vmsnapshotscriptpluginconfigjson-file-to-folder-etcazure"></a>3.VMSnapshotScriptPluginConfig.json ファイルをフォルダー /etc/azure にコピーします。
+    ```bash
+    $ sudo su -
+    # mkdir /etc/azure
+    # cd /etc/azure
+    ```
 
-#### <a name="4-edit-the-vmsnapshotscriptpluginconfigjson-file-to-included-the-prescriptlocation-and-postscriptlocation-parameters-for-example"></a>4.VMSnapshotScriptPluginConfig.json ファイルを編集して、PreScriptLocation と PostScriptlocation パラメーターを含めます。 For example:
-```azurecli
-{
-    "pluginName" : "ScriptRunner",
-    "preScriptLocation" : "/etc/azure/pre_script.sh",
-    "postScriptLocation" : "/etc/azure/post_script.sh",
-    "preScriptParams" : ["", ""],
-    "postScriptParams" : ["", ""],
-    "preScriptNoOfRetries" : 0,
-    "postScriptNoOfRetries" : 0,
-    "timeoutInSeconds" : 30,
-    "continueBackupOnFailure" : true,
-    "fsFreezeEnabled" : true
-}
-```
-#### <a name="5-create-the-pre-and-post-script-files"></a>5.事前と事後のスクリプト ファイルを作成します。
+3. JSON ファイルをコピーします。
 
-コールド バックアップ (シャットダウンして再起動) の事前スクリプトと事後スクリプトの例を次に示します。
+    VMSnapshotScriptPluginConfig.json ファイルを /etc/azure フォルダーにコピーします。
 
-/etc/azure/pre_script.sh の場合
+4. JSON ファイルを編集します。
 
-```bash
-v_date=`date +%Y%m%d%H%M`
-ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
-ORA_OWNER=oracle
-su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
-```
+    VMSnapshotScriptPluginConfig.json ファイルを編集して、`PreScriptLocation` と `PostScriptlocation` パラメーターを含めます。 For example:
 
-/etc/azure/post_script.sh の場合
+    ```azurecli
+    {
+        "pluginName" : "ScriptRunner",
+        "preScriptLocation" : "/etc/azure/pre_script.sh",
+        "postScriptLocation" : "/etc/azure/post_script.sh",
+        "preScriptParams" : ["", ""],
+        "postScriptParams" : ["", ""],
+        "preScriptNoOfRetries" : 0,
+        "postScriptNoOfRetries" : 0,
+        "timeoutInSeconds" : 30,
+        "continueBackupOnFailure" : true,
+        "fsFreezeEnabled" : true
+    }
+    ```
 
-```bash
-v_date=`date +%Y%m%d%H%M`
-ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
-ORA_OWNER=oracle
-su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
-```
+5. 事前と事後のスクリプト ファイルを作成します。
 
-ホット バックアップの事前スクリプトと事後スクリプトの例を次に示します。
+    "コールド バックアップ" (シャットダウンして再起動することによるオフライン バックアップ) の事前スクリプトと事後スクリプトの例を次に示します。
 
-```bash
-v_date=`date +%Y%m%d%H%M`
-ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
-ORA_OWNER=oracle
-su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
-```
+    /etc/azure/pre_script.sh の場合
 
-/etc/azure/post_script.sh の場合
+    ```bash
+    v_date=`date +%Y%m%d%H%M`
+    ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+    ORA_OWNER=oracle
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbshut $ORA_HOME" > /etc/azure/pre_script_$v_date.log
+    ```
 
-```bash
-v_date=`date +%Y%m%d%H%M`
-ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
-ORA_OWNER=oracle
-su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
-```
+    /etc/azure/post_script.sh の場合
 
-/etc/azure/pre_script.sql の場合、要件に合わせて、ファイルのコンテンツを変更する必要があります。
+    ```bash
+    v_date=`date +%Y%m%d%H%M`
+    ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+    ORA_OWNER=oracle
+    su - $ORA_OWNER -c "$ORA_HOME/bin/dbstart $ORA_HOME" > /etc/azure/post_script_$v_date.log
+    ```
 
-```bash
-alter tablespace SYSTEM begin backup;
-...
-...
-alter system switch logfile;
-alter system archive log stop;
-```
+    "ホット バックアップ" (オンライン バックアップ) の事前スクリプトと事後スクリプトの例を次に示します。
 
-/etc/azure/post_script.sql の場合、要件に合わせて、ファイルのコンテンツを変更する必要があります。
+    ```bash
+    v_date=`date +%Y%m%d%H%M`
+    ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+    ORA_OWNER=oracle
+    su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/pre_script.sql" > /etc/azure/pre_script_$v_date.log
+    ```
 
-```bash
-alter tablespace SYSTEM end backup;
-...
-...
-alter system archive log start;
-```
+    /etc/azure/post_script.sh の場合
 
-#### <a name="6-change-file-permissions"></a>6.ファイルのアクセス許可を変更します。
+    ```bash
+    v_date=`date +%Y%m%d%H%M`
+    ORA_HOME=/u01/app/oracle/product/12.1.0/dbhome_1
+    ORA_OWNER=oracle
+    su - $ORA_OWNER -c "sqlplus / as sysdba @/etc/azure/post_script.sql" > /etc/azure/pre_script_$v_date.log
+    ```
 
-```bash
-# chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
-# chmod 700 /etc/azure/pre_script.sh
-# chmod 700 /etc/azure/post_script.sh
-```
+    /etc/azure/pre_script.sql の場合、要件に合わせてファイルの内容を変更します。
 
-#### <a name="7-test-the-scripts-sign-in-as-root-make-sure-no-errors"></a>7.スクリプトをテスト (ルートとしてサインイン) して、エラーがないことを確認します。
+    ```bash
+    alter tablespace SYSTEM begin backup;
+    ...
+    ...
+    alter system switch logfile;
+    alter system archive log stop;
+    ```
 
-```bash
-# /etc/azure/pre_script.sh
-# /etc/azure/post_script.sh
-```
+    /etc/azure/post_script.sql の場合、要件に合わせてファイルの内容を変更します。
+
+    ```bash
+    alter tablespace SYSTEM end backup;
+    ...
+    ...
+    alter system archive log start;
+    ```
+
+6. ファイルのアクセス許可を変更します。
+
+    ```bash
+    # chmod 600 /etc/azure/VMSnapshotScriptPluginConfig.json
+    # chmod 700 /etc/azure/pre_script.sh
+    # chmod 700 /etc/azure/post_script.sh
+    ```
+
+7. スクリプトをテストします。
+
+    スクリプトをテスト (ルートとしてサインイン) して、 エラーがないことを確認します。
+
+    ```bash
+    # /etc/azure/pre_script.sh
+    # /etc/azure/post_script.sh
+    ```
 
 詳細については、「[Application consistent backup for Linux VMs](https://azure.microsoft.com/en-us/blog/announcing-application-consistent-backup-for-linux-vms-using-azure-backup/)」(Linux VM のアプリケーション整合性バックアップ) を参照してください。
 
 
 ### <a name="step-5-use-azure-recovery-services-vaults-to-back-up-the-vm"></a>手順 5: Azure Recovery Services コンテナーを使用してVM をバックアップする
 
-1.  Azure Portal にサインインし、Recovery Services コンテナー インスタンスを検索します。
-![Recovery Services コンテナー ページ](./media/oracle-backup-recovery/recovery_service_01.png)
+1.  Azure Portal で **Recovery Services コンテナー**を検索します。
 
-2.  **[追加]** ボタンをクリックして、新しいコンテナーを追加します。
-![Recovery Services コンテナーの追加ページ](./media/oracle-backup-recovery/recovery_service_02.png)
+    ![Recovery Services コンテナー ページ](./media/oracle-backup-recovery/recovery_service_01.png)
 
-3.  続行するには、**[myVault]** をクリックします。 詳細ページが表示されます。
-![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_03.png)
+2.  **[Recovery Services コンテナー]** ブレードで **[追加]** をクリックして、新しいコンテナーを追加します。
 
-4.  **[バックアップ]** ボタンをクリックします。 次に、バックアップの目標、ポリシー、およびバックアップ項目を追加します。
-![Recovery Services コンテナーのバックアップ ページ](./media/oracle-backup-recovery/recovery_service_04.png)
+    ![Recovery Services コンテナーの追加ページ](./media/oracle-backup-recovery/recovery_service_02.png)
 
-5.  **[バックアップの目標]** には、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 続行するには、**[OK]** をクリックします。
-![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_05.png)
+3.  続行するには、**[myVault]** をクリックします。
 
-6.  **[バックアップ ポリシー]** には、**[DefaultPolicy]** または**[新しいポリシーの作成]** を使用します。 続行するには、**[OK]** をクリックします。
-![Recovery Services コンテナーのバックアップ ポリシーの詳細ページ](./media/oracle-backup-recovery/recovery_service_06.png)
+    ![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_03.png)
 
-7.  **[myVM1]** チェック ボックスをオンにして、**[OK]**、**[バックアップの有効化]** の順にクリックします。
-![バックアップする Recovery Services コンテナー項目の詳細ページ](./media/oracle-backup-recovery/recovery_service_07.png)
+4.  **myVault**ブレードで、**[バックアップ]** をクリックします。
+
+    ![Recovery Services コンテナーのバックアップ ページ](./media/oracle-backup-recovery/recovery_service_04.png)
+
+5.  **[バックアップの目標]** ブレードには、既定の **[Azure]** と **[仮想マシン]** の値を使用します。 **[OK]**をクリックします。
+
+    ![Recovery Services コンテナーの詳細ページ](./media/oracle-backup-recovery/recovery_service_05.png)
+
+6.  **[バックアップ ポリシー]** には、**[DefaultPolicy]** または**[新しいポリシーの作成]** を使用します。 **[OK]**をクリックします。
+
+    ![Recovery Services コンテナーのバックアップ ポリシーの詳細ページ](./media/oracle-backup-recovery/recovery_service_06.png)
+
+7.  **[仮想マシンの選択]** ブレードで、**[myVM1]** チェック ボックスをオンし、**[OK]** をクリックします。 **[バックアップの有効化]** ボタンをクリックします。
+
+    ![バックアップする Recovery Services コンテナー項目の詳細ページ](./media/oracle-backup-recovery/recovery_service_07.png)
 
     > [!IMPORTANT]
     > **[バックアップの有効化]** をクリックしても、スケジュールされた時間に達するまでバックアップ プロセスは開始されません。 即時バックアップをセットアップするには、次の手順を完了します。
 
-8.  **[バックアップ項目]** をクリックして、**[バックアップ項目の数]** の下で、バックアップ項目の数をクリックします。
+8.  **myVault のバックアップ項目**ブレードの **[バックアップ項目数]** の下で、バックアップ項目の数を選択します。
 
     ![Recovery Services コンテナー myVault の詳細ページ](./media/oracle-backup-recovery/recovery_service_08.png)
 
-9.  ページの右側で、省略記号 (**...**) ボタンをクリックし、**[今すぐバックアップ]** をクリックします。
+9.  **バックアップ項目 (Azure 仮想マシン)** ブレードのページ右側で省略記号 (**...**) ボタンをクリックし、**[今すぐバックアップ]** をクリックします。
 
     ![Recovery Services コンテナーの [今すぐバックアップ] コマンド](./media/oracle-backup-recovery/recovery_service_09.png)
 
-10. **[バックアップ]** ボタンをクリックし、バックアップ プロセスの完了を待ってから、「手順 5: データベース ファイルを削除する」に進みます。
-バックアップ ジョブの状態を表示するには、**[ジョブ]** をクリックします。
-![Recovery Services コンテナーのジョブ ページ](./media/oracle-backup-recovery/recovery_service_10.png)
+10. **[バックアップ]** ボタンをクリックします。 バックアップ プロセスが完了するまで待ってから、 [手順 6: データベース ファイルを削除する](#step-6-remove-the-database-files)に進みます。
+
+    バックアップ ジョブの状態を表示するには、**[ジョブ]** をクリックします。
+
+    ![Recovery Services コンテナーのジョブ ページ](./media/oracle-backup-recovery/recovery_service_10.png)
 
     次のイメージには、バックアップ ジョブの状態が表示されます。
 
     ![状態が表示された Recovery Services コンテナーのジョブ ページ](./media/oracle-backup-recovery/recovery_service_11.png)
 
-11. アプリケーション整合性バックアップのため、 ログ ファイル /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0 内のすべてのエラーに対処します。
+11. アプリケーション整合バックアップのため、ログ ファイル内のすべてのエラーに対処します。 ログ ファイルは /var/log/azure/Microsoft.Azure.RecoveryServices.VMSnapshotLinux/1.0.9114.0 にあります。
 
 ### <a name="step-6-remove-the-database-files"></a>手順 6: データベース ファイルを削除する 
-この記事の後半では、回復プロセスをテストする方法を説明します。 回復プロセスをテストするには、先にデータベース ファイルを削除する必要があります。
+回復プロセスのテスト方法については、この記事の後半で学習します。 回復プロセスをテストするには、先にデータベース ファイルを削除する必要があります。
 
 1.  テーブルスペースとバックアップ ファイルを削除します。
 
@@ -321,20 +341,24 @@ alter system archive log start;
     ORACLE instance shut down.
     ```
 
-## <a name="restore-the-deleted-files-from-recovery-services-vaults"></a>Recovery Services コンテナーから削除されたファイルを復元する
+## <a name="restore-the-deleted-files-from-the-recovery-services-vaults"></a>Recovery Services コンテナーから削除されたファイルを復元します。
 削除されたファイルを復元するには、次の手順を実行します。
 
-1. Azure Portal にサインインし、*myVault* Recovery Services コンテナー項目を検索します。 右上隅の **[バックアップ項目]** の下で、項目の数をクリックします。
-![Recovery Services コンテナー myVault のバックアップ項目](./media/oracle-backup-recovery/recovery_service_12.png)
+1. Azure Portal で、*myVault* Recovery Services コンテナー項目を検索します。 **[概要**] ブレードの **[バックアップ項目]** で、項目数を選択します。
 
-2. **[バックアップ項目の数]** の下で、項目の数をクリックします。
-![Recovery Services コンテナー Azure Virtual Machine のバックアップ項目の数](./media/oracle-backup-recovery/recovery_service_13.png)
+    ![Recovery Services コンテナー myVault のバックアップ項目](./media/oracle-backup-recovery/recovery_service_12.png)
 
-3. **[ファイルの回復 (プレビュー)]** をクリックします。
-![Recovery Services コンテナーのファイルの回復ページのスクリーンショット](./media/oracle-backup-recovery/recovery_service_14.png)
+2. **[バックアップ項目の数]** で、項目の数を選択します。
 
-4. **[スクリプトのダウンロード]** をクリックして、ダウンロード ファイル (.sh) をクライアント コンピューターのフォルダーに保存します。
-![スクリプト ファイルのダウンロードの保存オプション](./media/oracle-backup-recovery/recovery_service_15.png)
+    ![Recovery Services コンテナー Azure Virtual Machine のバックアップ項目の数](./media/oracle-backup-recovery/recovery_service_13.png)
+
+3. **[myvm1]** ブレードで、**[ファイルの回復 (プレビュー)]** をクリックします。
+
+    ![Recovery Services コンテナーファイル回復ページのスクリーンショット](./media/oracle-backup-recovery/recovery_service_14.png)
+
+4. [**ファイルの回復 (プレビュー)**] ウィンドウで、**[スクリプトのダウンロード]** をクリックします。 次に、クライアント コンピューター上のフォルダーにダウンロードされた (.sh) ファイルを保存します。
+
+    ![スクリプト ファイルのダウンロードの保存オプション](./media/oracle-backup-recovery/recovery_service_15.png)
 
 5. .sh ファイルを VM にコピーします。
 
@@ -348,7 +372,7 @@ alter system archive log start;
     ```
 6. ファイルがルートによって所有されるように、ファイルを変更します。
 
-    次の例では、ルートによって所有されるようにファイルを変更してから、アクセス許可を変更します。
+    次の例では、ルートによって所有されるように、ファイルを変更します。 次に、アクセス許可を変更します。
 
     ```bash 
     $ ssh <publicIpAddress>
@@ -421,7 +445,7 @@ alter system archive log start;
     
 10. ディスクをマウントを解除します。
 
-    Azure Portal で **[ディスクのマウント解除]** をクリックします。
+    ドライブをマウント解除するには、Azure Portal の **[ファイルの回復 (プレビュー)]** ブレードで **[ディスクのマウント解除]** をクリックします。
 
     ![[ディスクのマウント解除] コマンド](./media/oracle-backup-recovery/recovery_service_17.png)
 
@@ -429,67 +453,76 @@ alter system archive log start;
 
 削除されたファイルを Recovery Services コンテナーから復元する代わりに、VM 全体を復元することができます。
 
-### <a name="step-1-drop-the-myvm"></a>手順 1: myVM をを破棄する
+### <a name="step-1-delete-myvm"></a>手順 1: myVM の削除
 
-*   Azure Portal にサインインし、*myVM* コンテナーに移動して、**[削除]** を選択します。
+*   Azure Portal にサインインし、**myVM1** コンテナーに移動して、**[削除]** を選択します。
 
-    ![[削除] コマンド](./media/oracle-backup-recovery/recover_vm_01.png)
+    ![コンテナー [削除] コマンド](./media/oracle-backup-recovery/recover_vm_01.png)
 
 ### <a name="step-2-recover-the-vm"></a>手順 2: VM を復元する
 
 1.  **[Recovery Services コンテナー]** に移動して、**[myVault]** を選択します。
-![UI に表示される myVault エントリ](./media/oracle-backup-recovery/recover_vm_02.png)
 
-2.  右上隅の **[バックアップ項目]** の下で、項目の数をクリックします。
-![myVault のバックアップ項目](./media/oracle-backup-recovery/recover_vm_03.png)
+    ![myVault エントリ](./media/oracle-backup-recovery/recover_vm_02.png)
 
-3.  **[バックアップ項目の数]** の下で、項目の数をクリックします。
-![VM の復元ページ](./media/oracle-backup-recovery/recover_vm_04.png)
+2.  **[概要**] ブレードの **[バックアップ項目]** で、項目数を選択します。
 
-4.  ページの右側で、省略記号 (**...**) ボタンをクリックし、**[VM の復元]** をクリックします。
-![[VM の復元] コマンド](./media/oracle-backup-recovery/recover_vm_05.png)
+    ![myVault のバックアップ項目](./media/oracle-backup-recovery/recover_vm_03.png)
 
-5.  復元する項目を選択し、**[OK]** をクリックします。
-![復元ポイントを選択](./media/oracle-backup-recovery/recover_vm_06.png) アプリケーション整合性バックアップを有効にしている場合は、縦棒が青色で表示されます。
+3.  **[バックアップ項目 (Azure Virtual Machin)]**ブレードで、 **[myvm1]** を選択します。
 
-6.  **仮想マシン名**を選択し、**リソース グループ**を選択し、**[OK]** をクリックします。
-![復元構成の値](./media/oracle-backup-recovery/recover_vm_07.png)
+    ![VM の復元ページ](./media/oracle-backup-recovery/recover_vm_04.png)
 
-7.  VM を復元するには、UI の左下隅 (前のイメージを参照) で、**[復元]** をクリックします。
+4.  **[myvm1]** ブレードで、省略記号 (**...**) ボタンをクリックし、**[VM の復元]** をクリックします。
 
-8.  復元プロセスの状態を表示するには、**[ジョブ]** をクリックします。
-![バックアップ ジョブの状態のコマンド](./media/oracle-backup-recovery/recover_vm_08.png)
+    ![[VM の復元] コマンド](./media/oracle-backup-recovery/recover_vm_05.png)
 
-    次のイメージは、復元プロセスの状態を示しています。
+5.  **[復元ポイントの選択]** ブレードで、復元する項目を選択し、**[OK]** をクリックします。
+
+    ![復元ポイントを選択します。](./media/oracle-backup-recovery/recover_vm_06.png)
+
+    アプリケーション整合性バックアップを有効にしている場合は、縦棒が青色で表示されます
+
+6.  **[構成の復元]** ブレードで、仮想マシン名を選択し、リソース グループを選択し、**[OK]** をクリックします。
+
+    ![構成値の復元](./media/oracle-backup-recovery/recover_vm_07.png)
+
+7.  VM を復元するには、**[復元]** ボタンをクリックします。
+
+8.  復元プロセスの状態を表示するには、**[ジョブ]** をクリックし、**[バックアップジョブ]** をクリックします。
+
+    ![バックアップ ジョブの状態コマンド](./media/oracle-backup-recovery/recover_vm_08.png)
+
+    次の図は、復元プロセスの状態を示しています。
 
     ![復元プロセスの状態](./media/oracle-backup-recovery/recover_vm_09.png)
 
 ### <a name="step-3-set-the-public-ip-address"></a>手順 3: パブリック IP アドレスを設定する
 VM を復元したら、パブリック IP アドレスを設定します。
 
-1.  検索ボックスを使用して、**パブリック IP アドレス**を検索します。
+1.  検索ボックスで**パブリック IP アドレス**を検索します。
 
     ![パブリック IP アドレスのリスト](./media/oracle-backup-recovery/create_ip_00.png)
 
-2.  左上隅で **[追加]** をクリックします。 **[名前]** にパブリック IP 名を選択し、**[リソース グループ]** には **[既存のものを使用]** を選択します。 ページの下部にある **[Create]**」を参照してください。
+2.  **[パブリック IP アドレス]** ブレードで、**[追加]** をクリックします。 **[パブリック IP アドレスの作成]** ブレードの **[名前]** で、パブリック IP 名を選択します。 **[リソース グループ]** では、**[既存のものを使用]** を選択します。 **[作成]**をクリックします。
 
     ![IP アドレスを作成する](./media/oracle-backup-recovery/create_ip_01.png)
 
-3.  パブリック IP アドレスを VM の NIC インターフェイスに関連付けるには、**myVMip** を検索して選択し、**[関連付け]** をクリックします。
+3.  パブリック IP アドレスを仮想マシンのネットワーク インターフェイスに関連付けるには、**myVMip** を検索して選択します。 次に、**[関連付け]** をクリックします。
 
     ![IP アドレスを関連付ける](./media/oracle-backup-recovery/create_ip_02.png)
 
-4.  **[リソースの種類]** に **[ネットワーク インターフェイス]** を選択し、myVM インスタンスで使用される NIC を選択し、**[OK]** をクリックします。
+4.  **[リソースの種類]** で **[ネットワーク インターフェイス]** を選択します。 myVM インスタンスで使用されるネットワーク インターフェイスを選択し、**[OK]** をクリックします。
 
     ![リソースの種類と NIC の値を選択する](./media/oracle-backup-recovery/create_ip_03.png)
 
-5.  ポータルから移植される myVM インスタンスを検索して開きます。 VM に関連付けられている IP アドレスが、右上隅に表示されます。
+5.  ポータルから移植される myVM インスタンスを検索して開きます。 仮想マシンに関連付けられている IP アドレスが、myVM **[概要]** ブレードに表示されます。
 
     ![IP アドレスの値](./media/oracle-backup-recovery/create_ip_04.png)
 
 ### <a name="step-4-connect-to-the-vm"></a>手順 4: VM に接続する
 
-*   接続には、次のスクリプトを使用します。
+*   VM に接続するには、次のスクリプトを使用します。
 
     ```bash 
     ssh <publicIpAddress>
@@ -504,10 +537,10 @@ VM を復元したら、パブリック IP アドレスを設定します。
     SQL> startup
     ```
 
-> [!IMPORTANT]
-> データベースの **startup** コマンドでエラーが発生する場合に、データベースを復旧するには、「手順 6: RMAN を使用してデータベースを復旧する」を参照してください。
+    > [!IMPORTANT]
+    > データベースの **startup** コマンドでエラーが発生する場合に、データベースを復旧するには、「[手順 6: RMAN を使用してデータベースを復旧する](#step-6-optional-use-rman-to-recover-the-database)」を参照してください。
 
-### <a name="step-6-use-rman-to-recover-the-database-optional-step"></a>手順 6: RMAN を使用してデータベースを復旧する (省略可能)
+### <a name="step-6-optional-use-rman-to-recover-the-database"></a>手順 6: RMAN を使用してデータベースを復旧する
 *   データベースを復旧するには、次のスクリプトを使用します。
 
     ```bash
@@ -520,7 +553,8 @@ VM を復元したら、パブリック IP アドレスを設定します。
     RMAN> SELECT * FROM scott.scott_table;
     ```
 
-これで、Azure Linux 仮想マシンでの Oracle 12c のデータベースのバックアップと復旧が完了しました。
+これで、Azure Linux VM での Oracle 12c のデータベースのバックアップと復旧が完了しました。
+
 ## <a name="delete-the-vm"></a>VM の削除
 
 VM が必要なくなったら、次のコマンドを使用して、リソース グループ、VM、およびすべての関連リソースを削除できます。
@@ -534,4 +568,7 @@ az group delete --name myResourceGroup
 [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
 
 [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+
+
+
 

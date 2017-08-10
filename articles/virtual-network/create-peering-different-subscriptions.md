@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/17/2017
 ms.author: jdial;narayan;annahar
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: eee5ba0b57dd62e34303b92a564e1cb6070dbdd8
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 84bbf90257f038fb5f3e964b7b35419acd77fc6d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション 
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/21/2017
     - **[リソース グループ]**: **[新規作成]** を選択し、「*myResourceGroupB*」と入力します
     - **[場所]**: "*米国東部*"
 
-13. ポータル上部の **[リソースの検索]** ボックスに「*myVnetB*」と入力します。 検索結果に **myVnetB** が表示されたら、それをクリックします。 **myVnetB** 仮想ネットワークのブレードが表示されます。
+13. ポータル上部の **[リソースの検索]** ボックスに「*myVnetB*」と入力します。 検索結果に **[myVnetB]** が表示されたら、それをクリックします。 **myVnetB** 仮想ネットワークのブレードが表示されます。
 14. 表示された **[myVnetB]** ブレードの左側にある縦長のオプション一覧で **[プロパティ]** をクリックします。 **リソース ID** をコピーします。これは後の手順で使用されます。 リソース ID は次の例に似ています: /subscriptions/<Susbscription ID>/resourceGroups/myResoureGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB
 15. **myVnetB** のブレードで **[アクセス制御 (IAM)]** をクリックし、myVnetB に対して手順 5 ～ 10 を実行します。手順 8 では「**UserA**」と入力します。
 16. UserB としてポータルからログアウトし、UserA としてログインします。
@@ -84,7 +84,7 @@ ms.lasthandoff: 07/21/2017
      - **[リソース ID を知っている]**: このチェック ボックスをオンにします。
      - **[リソース ID]**: 手順 14 のリソース ID を入力します。
      - **[仮想ネットワーク アクセスを許可する]**: **[有効]** が選択されていることを確認します。
-    その他の設定は、このチュートリアルでは使用しません。 すべてのピアリング設定については、[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md#create-peering)に関するページを参照してください。
+    その他の設定は、このチュートリアルでは使用しません。 すべてのピアリング設定については、[仮想ネットワーク ピアリングの管理](virtual-network-manage-peering.md#create-a-peering)に関するページを参照してください。
 22. 前の手順で **[OK]** をクリックすると、**[ピアリングの追加]** ブレードが閉じて、**[myVnetA - ピアリング]** ブレードが再度表示されます。 数秒後、作成したピアリングがブレードに表示されます。 作成した **myVnetAToMyVnetB** ピアリングの **[ピアリング状態]** 列に **[開始済み]** と表示されます。 myVnetA を myVnetB にピアリングできましたが、今度は myVnetB を myVnetA にピアリングする必要があります。 各仮想ネットワーク内のリソースが相互に通信するためには、ピアリングを双方向で作成する必要があります。
 23. UserA としてポータルからログアウトし、UserB としてログインします。
 24. myVnetB について、手順 17 ～ 21 を繰り返します。 手順 21 では、ピアリングに「*myVnetBToMyVnetA*」という名前を設定し、**[仮想ネットワーク]** で *myVnetA* を選び、手順 10 の ID を **[リソース ID]** ボックスに入力します。
@@ -294,7 +294,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 ## <a name="next-steps"></a>次のステップ
 
-- 運用環境で使用する仮想ネットワーク ピアリングを作成する前に、[仮想ネットワーク ピアリングの制約と動作](virtual-network-manage-peering.md#about-peering)の要点をしっかりと理解します。
-- [仮想ネットワーク ピアリングのさまざまな設定](virtual-network-manage-peering.md#create-peering)について理解を深めます。
+- 運用環境で使用する仮想ネットワーク ピアリングを作成する前に、[仮想ネットワーク ピアリングの制約と動作](virtual-network-manage-peering.md#requirements-and-constraints)の要点をしっかりと理解します。
+- [仮想ネットワーク ピアリングのさまざまな設定](virtual-network-manage-peering.md#create-a-peering)について理解を深めます。
 - 仮想ネットワーク ピアリングで[ハブとスポークのネットワーク トポロジを作成](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)する方法を学習します。
 

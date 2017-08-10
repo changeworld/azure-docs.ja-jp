@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub へのシミュレートされたデバイス接続入門 |Microsoft Docs"
-description: "シミュレートされた IoT デバイスを作成し、それらを Azure IoT Hub に接続する方法を説明します。 デバイスは IoT Hub にテレメトリを送信し、Iot Hub はデバイスを監視および管理することができます。"
+description: "シミュレートされた IoT デバイスを作成し、それらを Azure IoT Hub に接続する方法を説明します。 デバイスは IoT Hub にテレメトリを送信でき、IoT Hub はデバイスを監視および管理することができます。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/02/2017
 ms.author: dobett
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 121f5d2d1acfdcc2e369eec4a6187c071ded2593
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 436b3057509a831837159e814490959a2d7455a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---

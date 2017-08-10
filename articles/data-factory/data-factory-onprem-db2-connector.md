@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/12/2017
+ms.date: 07/19/2017
 ms.author: jingwang
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
-ms.openlocfilehash: 6d54203797ad970d590b853b171b383708dbcb5d
-ms.lasthandoff: 04/12/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ee4ea351866b23b10cb8b6ebd7f5a674e5aea158
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="move-data-from-db2-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータを移動する
@@ -48,7 +48,9 @@ Data Management Gateway では組み込みの DB2 ドライバーが提供され
 * IBM DB2 for LUW 10.1
 
 > [!TIP]
-> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE = 51002 SQLCODE =-805" というエラーが表示された場合、ユーザーが高い特権アカウント (パワー ユーザーまたは管理者) を使用してコピー アクティビティを 1 回実行すると、コピー中に必要なパッケージが自動的に作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
+> "SQL ステートメント実行要求に対応するパッケージが見つかりませんでした。 SQLSTATE=51002 SQLCODE=-805" というエラー メッセージは、その OS で通常のユーザー用に必要なパッケージが作成されなかったために表示されます。 DB2 サーバーの種類によって、次の手順に従います。
+> - DB2 for i (AS400): コピー アクティビティを使用する前に、パワー ユーザーにログイン ユーザー用のコレクションを作成できるようにします。 コマンド: `create collection <username>`
+> - DB2 for Z/OS または LUW: パッケージの権限および BIND、BINDADD、GRANT EXECUTE TO PUBLIC アクセス許可を持つパワー ユーザーまたは管理者の高い権限があるアカウントを使用して、コピー アクティビティを 1 回実行します。するとコピー時に必要なパッケージが自動作成されます。 その後、通常のユーザーに切り替えて後続のコピー操作を実行することができます。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツール/API を使用して、オンプレミスの DB2 データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 

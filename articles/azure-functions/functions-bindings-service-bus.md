@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/01/2017
 ms.author: chrande; glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: a930e02313aa0a2238ecfaa31af68d59b2c8e961
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 58b6d5c6ef40891e56ea4811f5e778286bdb8bc3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-functions-service-bus-bindings"></a>Azure Functions における Service Bus のバインド
@@ -76,7 +75,7 @@ Service Bus のキューおよびトピック トリガーは、function.json �
 
 ## <a name="trigger-behavior"></a>トリガーの動作
 * **シングル スレッド** - Functions ランタイムは、既定で複数のメッセージを同時に処理します。 一度に 1 つのキューまたはトピックのメッセージのみを処理するようにランタイムに指示するには、*host.json* ファイルで `serviceBus.maxConcurrentCalls` を 1 に設定します。 
-  *host.json* については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://git .com/Azure/azure-webjobs-sdk-script/wiki/host.json)」をご覧ください。
+  *host.json* については、「[フォルダー構造](functions-reference.md#folder-structure)」および「[host.json](https://github .com/Azure/azure-webjobs-sdk-script/wiki/host.json)」をご覧ください。
 * **有害メッセージの処理** - Service Bus では、Azure Functions の構成やコードで制御または構成することができない、独自の有害メッセージを処理します。 
 * **PeekLock 動作** - Functions ランタイムは、[`PeekLock` モード](../service-bus-messaging/service-bus-performance-improvements.md#receive-mode)でメッセージを受信して、関数が正常に終了した場合はメッセージの `Complete` を呼び出し、関数が失敗した場合は `Abandon` を呼び出します。 
   関数の実行時間が `PeekLock` タイムアウトよりも長くなると、ロックが自動的に更新されます。

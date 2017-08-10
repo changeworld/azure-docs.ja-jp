@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 07/27/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: f16299407a905b51b6e3f22dfb214cc71c1b9f9a
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 6acbc347d7b187a6aac603dd05cf95c6aba54475
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -34,6 +34,9 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 
 パススルー認証と[シームレス シングル サインオン](active-directory-aadconnect-sso.md)機能は組み合わせることができます。 この方法では、ユーザーが企業ネットワーク内の会社のコンピューター アプリケーションにアクセスしてサインインするときに、パスワードを入力する必要がありません。
 
+>[!IMPORTANT]
+>Azure AD パススルー認証は現在プレビュー段階です。
+
 ## <a name="key-benefits-of-using-azure-ad-pass-through-authentication"></a>Azure AD パススルー認証を使用する主なメリット
 
 - *優れたユーザー エクスペリエンス*
@@ -47,7 +50,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - *セキュリティ保護*
   - オンプレミス パスワードが何らかの形でクラウドに保存されることはありません。
   - エージェントは、ネットワーク内からの送信接続のみを行います。 そのため、DMZ とも呼ばれる、境界ネットワークにエージェントをインストールする必要がありません。
-  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)で作業を中断されないように、ユーザー アカウントを保護できます。
+  - 多要素認証 (MFA) を含む、[Azure AD 条件付きアクセス ポリシー](../active-directory-conditional-access-azure-portal.md)と[フィルター処理によるブルート フォース パスワード攻撃の除外](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)により、作業を中断されずに、ユーザー アカウントを保護できます。
 - *高可用性*
   - 追加のエージェントを複数のオンプレミス サーバーにインストールすることで、サインイン要求の高可用性を実現できます。
 
@@ -61,6 +64,7 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - これは、[Azure AD Connect](active-directory-aadconnect.md) を使用して有効にすることができます。
 - これでは、パスワード検証要求を待ち受けて応答する、軽量オンプレミス エージェントを使用します。
 - 複数のエージェントをインストールすることにより、サインイン要求の高可用性が実現されます。
+- これにより、オンプレミス アカウントがクラウドへのブルート フォース パスワード攻撃から[保護](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)されます。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -69,6 +73,6 @@ Azure Active Directory (Azure AD) パススルー認証を使用すると、ユ�
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 機能に関する一般的な問題を解決する方法を確認します。
-- [**Azure AD のシームレスな SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
+- [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 84d55b7c86b6cf1964941d45748cde95c4f0f90f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c758aa5955362d04abf69c760d2aed7983cdf102
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -186,9 +185,9 @@ Azure VNET インフラストラクチャによって使用される IP アド�
 ## <a name="use-expressroute-with-azure-redis-cache"></a>Azure Redis Cache と ExpressRoute の使用
 顧客は、 [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) 回線を自分の仮想ネットワーク インフラストラクチャに接続することで、オンプレミスのネットワークを Azure に拡張できます。 
 
-既定では、新しく作成された ExpressRoute 回線は、発信インターネット接続を許可する既定のルートをアドバタイズします。 この構成を使用すると、クライアント アプリケーションは Azure Redis Cache を含む他の Azure エンドポイントに接続できます。
+既定では、新たに作成した ExpressRoute 回線では VNET での強制トンネリングは実行されません (既定のルートのアドバタイズ、0.0.0.0/0)。 その結果、発信インターネット接続は VNET から直接行うことができ、クライアント アプリケーションは、Azure Redis Cache を含む他の Azure エンドポイントに接続できます。
 
-ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる独自の既定のルート (0.0.0.0/0) を定義しています。 このトラフィック フローは、送信トラフィックの場合には、Azure Redis Cache との接続を切断し、Azure Redis Cache インスタンスがその依存関係と通信できないように、オンプレミスでブロックされます。
+ただし、顧客の一般的な構成では、発信インターネット トラフィックを強制的にオンプレミスにフローさせる強制トンネリング (既定のルートのアドバタイズ) が使用されます。 このトラフィック フローは、送信トラフィックの場合には、Azure Redis Cache との接続を切断し、Azure Redis Cache インスタンスがその依存関係と通信できないように、オンプレミスでブロックされます。
 
 解決策は、Azure Redis Cache を含むサブネット上で 1 つ (以上) のユーザー定義ルート (UDR) を定義することです。 UDR は、既定のルートに優先するサブネット固有のルートを定義します。
 

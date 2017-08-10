@@ -1,8 +1,8 @@
 ---
-title: "Azure Monitor の CLI クイック スタート サンプル | Microsoft Docs"
-description: "Azure Monitor の機能用のサンプル CLI コマンドです。 Azure Monitor は、アラート通知の送信、構成済みのテレメトリ データの値に基づく Web URL の呼び出しに加え、Cloud Services、Virtual Machines、Web Apps の自動スケールを行うことができる Microsoft Azure サービスです。"
+title: "Azure Monitor の CLI 1.0 クイック スタート サンプル。 | Microsoft Docs"
+description: "Azure Monitor の機能用のサンプル CLI 1.0 コマンド。 Azure Monitor は、アラート通知の送信、構成済みのテレメトリ データの値に基づく Web URL の呼び出しに加え、Cloud Services、Virtual Machines、Web Apps の自動スケールを行うことができる Microsoft Azure サービスです。"
 author: kamathashwin
-manager: carolz
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2016
 ms.author: ashwink
-translationtype: Human Translation
-ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
-ms.openlocfilehash: 0e629dac553f576f2dd3059453b00d6b10e48fd7
-ms.lasthandoff: 03/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5a8362b52c06b1b41f8108926ba07bbe5901125a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="azure-monitor--cross-platform-cli-quick-start-samples"></a>Azure Monitor クロスプラットフォーム CLI のクイック スタート サンプル
+# <a name="azure-monitor--cross-platform-cli-10-quick-start-samples"></a>Azure Monitor クロスプラットフォーム CLI 1.0 のクイック スタート サンプル
 この記事では、Azure Monitor の機能にアクセスするために役立つコマンド ライン インターフェイス (CLI) のサンプル コマンドを紹介します。 Azure Monitor では、Cloud Services、Virtual Machines、Web Apps を自動スケールできます。また、アラート通知の送信や、構成済みのテレメトリ データの値に基づく Web URL の呼び出しも行うことができます。
 
 > [!NOTE]

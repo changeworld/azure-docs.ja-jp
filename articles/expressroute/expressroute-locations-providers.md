@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/19/2017
+ms.date: 08/01/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2e35237b0ccc201cb797c4e65e963e42f7a07c4b
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 1dcfcde43bf2a41cf5ac3651a23c097a30a84dd3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
@@ -79,7 +79,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **デンバー** |CoreSite |
 | **ダブリン** |Colt、Interxion、Telecity Group |
 | **香港** |Aryaka Networks、British Telecom、China Telecom Global、Equinix、Megaport、Orange、PCCW Global Limited、Tata Communications、Verizon |
-| **ラスベガス** |Level 3 Communications+、Megaport |
+| **ラスベガス** |Level 3 Communications、Megaport |
 | **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
@@ -92,7 +92,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **パリ** |Colt、Interxion、Equinix、Orange |
 | **ケベック シティ** | Megaport |
 | **サンアントニオ** |Megaport |
-| **サンパウロ** |Ascenty Data Centers+、Equinix、Level 3 Communications、Telefonica、UOLDIVEO+ |
+| **サンパウロ** |Ascenty Data Centers+、Equinix、Level 3 Communications、Telefonica、UOLDIVEO |
 | **シアトル** |Equinix、Level 3 Communications、Megaport |
 | **ソウル** |KINX、Sejong Telecom |
 | **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Console、Equinix、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
@@ -127,7 +127,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 ### <a name="germany"></a>ドイツ
 | **場所** | **サービス プロバイダー** |
 | --- | --- |
-| **ベルリン** |Colt+、e-shelter、Megaport+ |
+| **ベルリン** |Colt+、e-shelter、Megaport+、T-Systems |
 | **フランクフルト** |Colt、Equinix、Interxion |
 
 ## <a name="c1partners"></a>Exchange プロバイダー経由の接続

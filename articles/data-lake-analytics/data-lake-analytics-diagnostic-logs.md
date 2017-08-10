@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/03/2017
+ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2bfd7d8a4c06b1b40a9852d21908e7c1c785b91d
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: f5fe6db423f1f2faeaf51e25be9b8f5b551e2a16
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
@@ -50,8 +49,8 @@ ms.lasthandoff: 06/20/2017
 
      * **[Stream to an event hub]** (イベント ハブへのストリーム) オプションを選択して、Azure イベント ハブにログ データをストリーミングします。 リアルタイムで受信したログを分析するためのダウン ストリーム処理パイプラインがある場合には、このオプションを使用します。 このオプションを選択する場合、使用する Azure Event Hub の詳細を指定する必要があります。
 
-     * __[Send to Log Analytics]__ (Log Analytics に送信) を選択して、Log Analytics サービスにデータを送信します。 Log Analytics を使って分析ログを収集する場合は、この機能を使用します。
-   * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログはすべての API 要求をキャプチャし、監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
+     * __[Send to Log Analytics]__ (Log Analytics に送信) を選択して、Log Analytics サービスにデータを送信します。 Log Analytics を使ってログを収集し分析する場合は、このオプションを使用します。
+   * 監査ログ、要求ログ、またはその両方のいずれを取得するかを指定します。  要求ログは、すべての API 要求をキャプチャします。 監査ログは、その API 要求によってトリガーされるすべての操作を記録します。
 
    * __[ストレージ アカウントへのアーカイブ]__ で、データを保持する日数を指定します。
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 06/20/2017
     ![ログ エントリ](./media/data-lake-analytics-diagnostic-logs/diagnostic-log-entries.png)
 
    * 要求ログは、Data Lake Analytics アカウントで行われるすべての API 要求をキャプチャします。
-   * 監査ログは要求ログとよく似ていますが、Data Lake Analytics アカウントで実行される操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
+   * 監査ログは、要求ログと同様ですが、操作についてより詳しい内訳を提供します。 たとえば、要求ログでは単一のアップロードの API 呼び出しが、監査ログでは複数の "追加" 操作になる可能性があります。
 
 3. 各ログ エントリの **[ダウンロード]** リンクをクリックして、ログをダウンロードします。
 
@@ -235,7 +234,7 @@ JSON 形式の監査ログのエントリの例を次に示します。 各 BLOB
 | 並列処理 |String |このジョブの送信中にこのジョブについて要求された Data Lake Analytics ユニットの数 |
 
 > [!NOTE]
-> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** の 4 つは、操作に関する情報を提供するものであり、操作が開始または完了した場合にのみ値が入ります。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。
+> **SubmitTime**、**StartTime**、**EndTime**、**Parallelism** は操作に関する情報を提供します。 これらのエントリには、その操作が開始または完了した場合にのみ値が含まれます。 たとえば、**SubmitTime** であれば、**operationName** の値が **JobSubmitted** になった後にのみ値が入ります。
 
 ## <a name="process-the-log-data"></a>ログ データの処理
 

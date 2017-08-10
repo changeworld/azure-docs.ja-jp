@@ -40,7 +40,7 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
     ![[条件付きアクセス] コマンド](./media/active-directory-named-locations/05.png)
 
 
-4. **[条件付きアクセス]** ブレードの **[管理]** セクションで、**[Named locations] (名前付きの場所)** をクリックします。
+4. **[条件付きアクセス]** ブレードの **[管理]** セクションで、**[Named locations] \(名前付きの場所)** をクリックします。
 
     ![[名前付きの場所] コマンド](./media/active-directory-named-locations/06.png)
 

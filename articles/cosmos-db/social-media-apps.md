@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 0691d6730fddbf9b6145d4a39da94a1762516c2c
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: c77357b2cefc8081728cb20d08b00656ba60bea6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
@@ -201,7 +200,7 @@ Azure Cosmos DB では、[カスタマイズ](indexing-policies.md)も可能な�
 ## <a name="the-search-box"></a>検索ボックス
 ユーザーは、幸いにも大量のコンテンツを生成します。 コンテンツのストリームに直接存在しない可能性のあるコンテンツを検索して見つける機能を提供できる必要があります。作成者をフォローするのではなく、6 か月前に行われた古い投稿を見つけようとしているだけだからです。
 
-Azure DocumentDB を使用しているので、 [Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを 1 行も入力せずに検索エンジンを数分で簡単に実装できます。
+Azure Cosmos DB を使用しているので、[Azure Search](https://azure.microsoft.com/services/search/) を使用して、(検索プロセスと UI 以外の) コードを 1 行も入力せずに検索エンジンを数分で簡単に実装できます。
 
 これが非常に簡単なのはなぜでしょうか。
 

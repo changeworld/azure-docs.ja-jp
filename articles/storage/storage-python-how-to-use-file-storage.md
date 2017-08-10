@@ -1,6 +1,6 @@
 ---
-title: "Python から Azure File Storage を使用する方法 | Microsoft Docs"
-description: "Python から Azure File Storage を使用して、ファイルをアップロード、一覧表示、ダウンロード、削除する方法について説明します。"
+title: "Python での Azure File Storage 用の開発 | Microsoft Docs"
+description: "Azure File Storage を使用してファイル データを格納する Python アプリケーションとサービスを開発する方法を説明します。"
 services: storage
 documentationcenter: python
 author: robinsh
@@ -14,59 +14,73 @@ ms.devlang: python
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: robinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fefebeae665ccd14f15b0197241b30d33830fd09
-ms.openlocfilehash: 9973da827ea5a9311904d7d6d4c22d59b5e2d0ce
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a1a37266908277b54e7b42d85b9b4873af77e622
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="how-to-use-azure-file-storage-from-python" class="xliff"></a>
 
-# Python から Azure File Storage を使用する方法
+# <a name="develop-for-azure-file-storage-with-python"></a>Python での Azure File Storage 用の開発
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-<a id="overview" class="xliff"></a>
+## <a name="about-this-tutorial"></a>このチュートリアルについて
+このチュートリアルでは、ファイル データの格納に Azure File Storage を使用するアプリケーションまたはサービスを開発するための Python の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、Python と Azure File Storage による次のような基本的な操作の実行方法を示します。
 
-## Overview
-この記事では、File Storage を使用して一般的なシナリオを実行する方法について説明します。 サンプルは Python で作成され、 [Microsoft Azure Storage SDK for Python]を使用しています。 紹介するシナリオは、ファイルのアップロード、一覧表示、ダウンロード、および削除です。
+* Azure ファイル共有を作成する
+* ディレクトリを作成する
+* Azure ファイル共有のファイルとディレクトリを列挙する
+* ファイルのアップロード、ダウンロード、および削除
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+> [!Note]  
+> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 Python I/O クラスと関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage Python SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/en-us/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
-
-<a id="create-a-share" class="xliff"></a>
-
-## 共有を作成する
-**FileService** オブジェクトを使うと、共有、ディレクトリ、ファイルを操作できます。 次のコードでは、 **FileService** オブジェクトを作成します。 プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
+### <a name="set-up-your-application-to-use-azure-file-storage"></a>Azure File Storage を使用するようにアプリケーションを設定する
+プログラムを使用して Azure Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
 
 ```python
 from azure.storage.file import FileService
 ```
 
-次のコードでは、ストレージ アカウント名とアカウント キーを使用して **FileService** オブジェクトを作成します。  'myaccount' と 'mykey' は、実際のアカウント名とキーに置き換えてください。
+### <a name="set-up-a-connection-to-azure-file-storage"></a>Azure File Storage への接続を設定します。 
+`FileService` オブジェクトを使うと、共有、ディレクトリ、ファイルを操作できます。 次のコードは、ストレージ アカウントの名前とアカウント キーを使用して、`FileService` オブジェクトを作成します。 `<myaccount>` と `<mykey>` をアカウント名とキーに置き換えます。
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
-次のコード サンプルでコンテナーが存在しない場合は、 **FileService** オブジェクトを使用してコンテナーを作成できます。
+### <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
+次のコード サンプルで共有が存在しない場合は、`FileService` オブジェクトを使用して共有を作成できます。
 
 ```python
 file_service.create_share('myshare')
 ```
 
-<a id="upload-a-file-into-a-share" class="xliff"></a>
+### <a name="create-a-directory"></a>ディレクトリを作成する
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure File Storage では、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
 
-## ファイルを共有にアップロードする
-Azure ファイル ストレージ共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
+```python
+file_service.create_directory('myshare', 'sampledir')
+```
 
-ファイルを作成し、データをアップロードするには、**create\_file\_from\_path**、**create\_file\_from\_stream**、**create\_file\_from\_bytes**、**create\_file\_from\_text** メソッドを使用します。 これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+### <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure ファイル共有のファイルとディレクトリを列挙する
+共有のファイルとディレクトリを一覧表示するには、**list\_directories\_and\_files** メソッドを使用します。 このメソッドは、ジェネレーターを返します。 次のコードでは、共有内の各ファイルとディレクトリの **名前 (name)** をコンソールに出力しています。
 
-**create\_file\_from\_path** は、指定したパスからファイルの内容をアップロードし、**create\_file\_from\_stream** は既に開いているファイルまたはストリームから内容をアップロードします。 **create\_file\_from\_bytes** はバイト配列をアップロードし、**create\_file\_from\_text** は指定したエンコーディング (既定値から UTF-8) を使用して、指定したテキスト値をアップロードします。
+```python
+generator = file_service.list_directories_and_files('myshare')
+for file_or_dir in generator:
+    print(file_or_dir.name)
+```
+
+### <a name="upload-a-file"></a>ファイルをアップロードする 
+Azure ファイル共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
+
+ファイルを作成してデータをアップロードするには、`create_file_from_path`、`create_file_from_stream`、`create_file_from_bytes`、または`create_file_from_text` メソッドを使用します。 これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
+
+`create_file_from_path` は、指定したパスからファイルの内容をアップロードし、`create_file_from_stream` は既に開いているファイルまたはストリームから内容をアップロードします。 `create_file_from_bytes` はバイト配列をアップロードし、`create_file_from_text` は指定したエンコーディング (既定値から UTF-8) を使って、指定したテキスト値をアップロードします。
 
 次の例では、**sunset.png** ファイルの内容を **myfile** ファイルにアップロードします。
 
@@ -80,56 +94,25 @@ file_service.create_file_from_path(
     content_settings=ContentSettings(content_type='image/png'))
 ```
 
-<a id="how-to-create-a-directory" class="xliff"></a>
+### <a name="download-a-file"></a>ファイルをダウンロードする
+ファイルからデータをダウンロードするには、`get_file_to_path`、`get_file_to_stream`、`get_file_to_bytes`、または `get_file_to_text` を使用します。 これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-## ディレクトリを作成する方法
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure ファイル ストレージ サービスでは、自分のアカウントで許可されるだけのディレクトリを作成できます。 下のコードはルート ディレクトリの下に「 **sampledir** 」という名前のサブディレクトリを作成します。
-
-```python
-file_service.create_directory('myshare', 'sampledir')
-```
-
-<a id="how-to-list-files-and-directories-in-a-share" class="xliff"></a>
-
-## 共有のファイルとディレクトリを一覧表示する方法
-共有のファイルとディレクトリを一覧表示するには、**list\_directories\_and\_files** メソッドを使用します。 このメソッドは、ジェネレーターを返します。 次のコードでは、共有内の各ファイルとディレクトリの **名前 (name)** をコンソールに出力しています。
-
-```python
-generator = file_service.list_directories_and_files('myshare')
-for file_or_dir in generator:
-    print(file_or_dir.name)
-```
-
-<a id="download-files" class="xliff"></a>
-
-## ファイルをダウンロードする
-ファイルからデータをダウンロードするには、**get\_file\_to\_path**、**get\_file\_to\_stream**、**get\_file\_to\_bytes**、**get\_file\_to\_text** を使用します。 これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
-
-次の例は、**get\_file\_to\_path** を使用して **myfile** ファイルの内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
+次の例は、`get_file_to_path` を使用して **myfile** ファイルの内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
-<a id="delete-a-file" class="xliff"></a>
-
-## ファイルを削除する
-最後に、ファイルを削除するには、**delete_file** を呼び出します。
+### <a name="delete-a-file"></a>ファイルを削除する
+最後に、ファイルを削除するには、`delete_file` を呼び出します。
 
 ```python
 file_service.delete_file('myshare', None, 'myfile')
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
-これで、File Storage の基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
+## <a name="next-steps"></a>次のステップ
+Python での Azure File Storage を操作する方法を習得したので、詳細について次のリンクを参照してください。
 
 * [Python デベロッパー センター](/develop/python/)
 * [Azure Storage Services REST API (Azure Storage サービスの REST API)](http://msdn.microsoft.com/library/azure/dd179355)
-* [Azure Storage チーム ブログ]
-* [Microsoft Azure Storage SDK for Python]
-
-[Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
-[Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
-
+* [Microsoft Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python)

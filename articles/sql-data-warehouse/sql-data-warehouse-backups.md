@@ -15,12 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43ab6a2f71ab51c50847b1ba5249f51c48e03fea
-ms.openlocfilehash: 94b92f05af30734de727a12fd99271aa9769723a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ef2e6e7a19c7ed1730fdec5eca73c941e1b319c4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse のバックアップ
@@ -54,6 +53,11 @@ Azure Premium Storage を使用する利点として、SQL Data Warehouse は Az
 > [!NOTE]
 > Azure Storage の " *レプリケーション* " という用語は、ある場所から別の場所にファイルをコピーすることを表します。 SQL の " *データベース レプリケーション* " は、複数のセカンダリ データベースとプライマリ データベースとの同期を保つことを意味します。 
 > 
+> 
+
+> [!NOTE]
+> DWU 9000 と DWU 18000 では、geo 冗長バックアップの使用を中止することはできません。 
+>
 > 
 
 関連情報:

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 527f3f33e2b5996c6fa7b7dc874123bba5ab39dd
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: 4b2593067193fe928cb8ac2b662fc3fd8ba7aedf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>管理イメージから VM を作成する
@@ -32,10 +31,10 @@ Azure では、管理 VM イメージから複数の VM を作成できます。
 
 新しい VM の作成に使用する[管理 VM イメージを作成](capture-image-resource.md)しておく必要があります。 
 
-AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
+AzureRM.Compute および AzureRM.Network の PowerShell モジュールが最新バージョンであることを確認してください。 管理者として PowerShell プロンプトを開き、次のコマンドを実行してこれらをインストールします。
 
 ```powershell
-Install-Module AzureRM.Compute -RequiredVersion 2.6.0
+Install-Module AzureRM.Compute,AzureRM.Network
 ```
 詳細については、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
 

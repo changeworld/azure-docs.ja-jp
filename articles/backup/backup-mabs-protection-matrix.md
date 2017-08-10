@@ -12,11 +12,11 @@ ms.date: 05/15/2017
 ms.topic: article
 ms.author: markgal,masaran
 manager: carmonm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: d538ec6cbf08a39671e3c5bcb4c9ecaa2f0b1ed7
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: ffd19e25e2931ac7af472b4c88eccbce73b10ff4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 06/01/2017
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|Y|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Server 2008|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y |ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
 |サーバー (32 ビットおよび 64 ビット)|Windows Storage Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|ボリューム、共有、フォルダー、ファイル、システム状態/ベア メタル|
-|SQL Server|SQL Server 2016|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y (UR2 以降)|N|すべてのデプロイ シナリオ: データベース|
+|SQL Server|SQL Server 2016|物理サーバー <br /><br /> オンプレミスの Hyper-V 仮想マシン <br /> <br /> Azure 仮想マシン <br /><br /> VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y |N|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2014|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)|Y|Y |すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2014|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y|すべてのデプロイ シナリオ: データベース|
 |SQL Server|SQL Server 2012 SP2|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y |すべてのデプロイ シナリオ: データベース|
@@ -78,7 +78,7 @@ ms.lasthandoff: 06/01/2017
 |Exchange|Exchange 2010|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y |保護 (すべてのデプロイ シナリオ): スタンドアロンの Exchange サーバー、データベース可用性グループ (DAG) の下のデータベース<br /><br />回復 (すべてのデプロイ シナリオ): メールボックス、DAG の下のメールボックス データベース|
 |Exchange|Exchange 2007|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護 (すべてのデプロイ シナリオ): ストレージ グループ<br /><br />回復 (すべてのデプロイ シナリオ): ストレージ グループ、データベース、メールボックス|
 |Exchange|Exchange 2007|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y |保護 (すべてのデプロイ シナリオ): ストレージ グループ<br /><br />回復 (すべてのデプロイ シナリオ): ストレージ グループ、データベース、メールボックス|
-|SharePoint|SharePoint 2016|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /><br />Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y (UR2 以降)|N|保護 (すべてのデプロイ シナリオ): ファーム、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
+|SharePoint|SharePoint 2016|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン<br /><br />Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合)<br /><br />VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y |N|保護 (すべてのデプロイ シナリオ): ファーム、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護 (すべてのデプロイ シナリオ): ファーム、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|Azure 仮想マシン (ワークロードが Azure 仮想マシンとして実行されている場合) - DPM 2012 R2 更新プログラム ロールアップ 3 以降|Y|Y|保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
 |SharePoint|SharePoint 2013|VMWare 内の Windows 仮想マシン (VMWare 内の Windows 仮想マシンで実行されているワークロードを保護します)|Y|Y |保護 (すべてのデプロイ シナリオ): ファーム、SharePoint 検索、フロントエンド Web サーバーのコンテンツ<br /><br />回復 (すべてのデプロイ シナリオ): ファーム、データベース、Web アプリケーション、ファイルまたはリスト項目、SharePoint 検索、フロントエンド Web サーバー<br /><br />コンテンツ データベースに対する SQL Server 2012 の AlwaysOn 機能を使用している SharePoint ファームの保護はサポートされていないことに注意してください。|
@@ -92,7 +92,7 @@ ms.lasthandoff: 06/01/2017
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2012 - Datacenter および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
-|Linux|Hyper-V ゲストとして実行されている Linux|オンプレミスの Hyper-V 仮想マシン|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体|
+|Linux|Hyper-V または VMware ゲストとして実行されている Linux|オンプレミスの Hyper-V 仮想マシン|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体|
 
 ## <a name="cluster-support"></a>クラスターのサポート
 Azure Backup Server は、次のクラスタ化されたアプリケーション内のデータを保護できます。

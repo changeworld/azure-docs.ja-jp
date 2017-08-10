@@ -12,12 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/19/2017
+ms.date: 07/24/2017
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: 0ac8ca0c5407925728ed0431294a3234b58d6e63
-ms.openlocfilehash: 04506596ba21c3ebef7237eaad8c5d786ad672fe
-ms.lasthandoff: 02/27/2017
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: e6154d990e10f67d4b30b889a62a99cedcbfccbe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -34,10 +35,13 @@ ms.lasthandoff: 02/27/2017
 
 ## <a name="add-the-net-installer-to-your-project"></a>プロジェクトに .NET インストーラーを追加する
 * インストールする .NET Framework の Web インストーラーをダウンロードします。
+  * [.NET 4.7 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=825298)
   * [.NET 4.6.1 Web インストーラー](http://go.microsoft.com/fwlink/?LinkId=671729)
+
 * Web ロールの場合
   1. **ソリューション エクスプローラー**で、該当するクラウド サービス プロジェクトの **[ロール]** の下のロールを右クリックし、**[追加]、[新しいフォルダー]** の順に選択します。 *bin*
   2. **bin** フォルダーを右クリックし、**[追加]、[既存の項目]** の順に選択します。 .NET インストーラーを選択して bin フォルダーに追加します。
+  
 * worker ロールの場合
   1. ロールを右クリックし、**[追加]、[既存の項目]** の順に選択します。 .NET インストーラーを選択して、ロールに追加します。 
 
@@ -51,7 +55,7 @@ ms.lasthandoff: 02/27/2017
 ![インストーラー ファイルを持つロール コンテンツ][1]
 
 ## <a name="define-startup-tasks-for-your-roles"></a>ロールのスタートアップ タスクを定義する
-スタートアップ タスクでは、ロールが起動する前に操作を実行できます。 .NET Framework をスタートアップ タスクとしてインストールすると、任意のアプリケーション コードが実行される前に Framework がインストールされます。 スタートアップ タスクの詳細については、「 [Azure でスタートアップ タスクを実行する](cloud-services-startup-tasks.md)」を参照してください。 
+スタートアップ タスクでは、ロールが起動する前に操作を実行できます。 .NET Framework をスタートアップ タスクの一部としてインストールすると、任意のアプリケーション コードが実行される前に Framework がインストールされます。 スタートアップ タスクの詳細については、[Azure におけるスタートアップの実行](cloud-services-startup-tasks.md)に関するページを参照してください。 
 
 1. すべてのロールについて、**WebRole** または **WorkerRole** ノードの下で次のコマンドを *ServiceDefinition.csdef* ファイルに追加します。
    
@@ -73,15 +77,17 @@ ms.lasthandoff: 02/27/2017
     </Startup>
     ```
    
-    上の構成では、管理者特権でコンソール コマンド *install.cmd* を実行して .NET Framework をインストールできます。 この構成では、 *NETFXInstall*という名前の LocalStorage も作成されます。 スタートアップ スクリプトは、.NET framework インストーラーがダウンロードされ、このローカル ストレージ リソースからインストールされるように、このリソースを使用する一時フォルダーを設定します。 このリソースのサイズは少なくとも 1024 MB に設定して、フレームワークが適切にインストールされるようにする必要があります。 スタートアップ タスクの詳細については、「 [クラウド サービス共通のスタートアップ タスク](cloud-services-startup-tasks-common.md) 
+    上記の構成では、管理者特権でコンソール コマンド *install.cmd* を実行して .NET Framework をインストールしています。 この構成では、*NETFXInstall* という名前の *LocalStorage* も作成されます。 このスタートアップ スクリプトにより、このローカル ストレージ リソースを使用するための一時フォルダーが設定されます。 このリソースのサイズは少なくとも 1024 MB に設定して、フレームワークが適切にインストールされるようにする必要があります。 スタートアップ タスクの詳細については、「[クラウド サービス共通のスタートアップ タスク](cloud-services-startup-tasks-common.md)」を参照してください。 
+
 2. **install.cmd** ファイルを作成します。次に、ロールを右クリックし、**[追加]、[既存の項目]** の順に選択して、このファイルをすべてのロールに追加します。 これで、すべてのロールに .NET インストーラー ファイルと、install.cmd ファイルが設定されました。
    
-    ![すべてのファイルを持つロール コンテンツ][2]
+   ![すべてのファイルを持つロール コンテンツ][2]
    
    > [!NOTE]
-   > メモ帳などの単純なテキスト エディターを使用してこのファイルを作成します。 Visual Studio を使用してテキスト ファイルを作成し、名前を '.cmd' に変更した場合、ファイルにまだ UTF-8 バイト オーダー マークが含まれていることがあるため、スクリプトの最初の行を実行するとエラーが発生します。 Visual Studio を使用してファイルを作成した場合は、実行時に無視されるよう REM (コメント) をファイルの最初の行に追加してください。 
+   > メモ帳などの基本的なテキスト エディターを使用してこのファイルを作成します。 Visual Studio を使用してテキスト ファイルを作成し、名前を '.cmd' に変更した場合、ファイルにまだ UTF-8 バイト オーダー マークが含まれていることがあるため、スクリプトの最初の行を実行するとエラーが発生します。 ファイルの最初の行を必ず REM コマンドにします。これにより、UTF-8 バイト オーダー マークの処理をスキップできます。 
    > 
    > 
+
 3. 次のスクリプトを **install.cmd** ファイルに追加します。
    
     ```cmd
@@ -90,42 +96,48 @@ ms.lasthandoff: 02/27/2017
     REM ***** To install .NET 4.6 set the variable netfx to "NDP46" *****
     REM ***** To install .NET 4.6.1 set the variable netfx to "NDP461" *****
     REM ***** To install .NET 4.6.2 set the variable netfx to "NDP462" *****
-    set netfx="NDP461"
-   
+    REM ***** To install .NET 4.7 set the variable netfx to "NDP47" *****
+    set netfx="NDP47"
+
     REM ***** Set script start timestamp *****
     set timehour=%time:~0,2%
     set timestamp=%date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2%
     set "log=install.cmd started %timestamp%."
-   
+
     REM ***** Exit script if running in Emulator *****
     if %ComputeEmulatorRunning%=="true" goto exit
-   
+
     REM ***** Needed to correctly install .NET 4.6.1, otherwise you may see an out of disk space error *****
     set TMP=%PathToNETFXInstall%
     set TEMP=%PathToNETFXInstall%
-   
+
     REM ***** Setup .NET filenames and registry keys *****
+    if %netfx%=="NDP47" goto NDP47
     if %netfx%=="NDP462" goto NDP462
     if %netfx%=="NDP461" goto NDP461
     if %netfx%=="NDP46" goto NDP46
         set "netfxinstallfile=NDP452-KB2901954-Web.exe"
         set netfxregkey="0x5cbf5"
         goto logtimestamp
-   
+
     :NDP46
     set "netfxinstallfile=NDP46-KB3045560-Web.exe"
     set netfxregkey="0x6004f"
     goto logtimestamp
-   
+
     :NDP461
     set "netfxinstallfile=NDP461-KB3102438-Web.exe"
     set netfxregkey="0x6040e"
     goto logtimestamp
-   
+
     :NDP462
     set "netfxinstallfile=NDP462-KB3151802-Web.exe"
     set netfxregkey="0x60632"
-   
+
+    :NDP47
+    set "netfxinstallfile=NDP47-KB3186500-Web.exe"
+    set netfxregkey="0x707FE"
+
     :logtimestamp
     REM ***** Setup LogFile with timestamp *****
     md "%PathToNETFXInstall%\log"
@@ -135,7 +147,7 @@ ms.lasthandoff: 02/27/2017
     echo Logfile generated at: %startuptasklog% >> %startuptasklog%
     echo TMP set to: %TMP% >> %startuptasklog%
     echo TEMP set to: %TEMP% >> %startuptasklog%
-   
+
     REM ***** Check if .NET is installed *****
     echo Checking if .NET (%netfx%) is installed >> %startuptasklog%
     set /A netfxregkeydecimal=%netfxregkey%
@@ -143,7 +155,7 @@ ms.lasthandoff: 02/27/2017
     FOR /F "usebackq skip=2 tokens=1,2*" %%A in (`reg query "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\NET Framework Setup\NDP\v4\Full" /v Release 2^>nul`) do @set /A foundkey=%%C
     echo Minimum required key: %netfxregkeydecimal% -- found key: %foundkey% >> %startuptasklog%
     if %foundkey% GEQ %netfxregkeydecimal% goto installed
-   
+
     REM ***** Installing .NET *****
     echo Installing .NET with commandline: start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog%  /chainingpackage "CloudService Startup Task" >> %startuptasklog%
     start /wait %~dp0%netfxinstallfile% /q /serialdownload /log %netfxinstallerlog% /chainingpackage "CloudService Startup Task" >> %startuptasklog% 2>>&1
@@ -152,17 +164,17 @@ ms.lasthandoff: 02/27/2017
         if %ERRORLEVEL%== 3010 goto restart
         if %ERRORLEVEL%== 1641 goto restart
         echo .NET (%netfx%) install failed with Error Code %ERRORLEVEL%. Further logs can be found in %netfxinstallerlog% >> %startuptasklog%
-   
+
     :restart
     echo Restarting to complete .NET (%netfx%) installation >> %startuptasklog%
     EXIT /B %ERRORLEVEL%
-   
+
     :installed
     echo .NET (%netfx%) is installed >> %startuptasklog%
-   
+
     :end
     echo install.cmd completed: %date:~-4,4%%date:~-10,2%%date:~-7,2%-%timehour: =0%%time:~3,2% >> %startuptasklog%
-   
+
     :exit
     EXIT /B 0
     ```
@@ -177,7 +189,7 @@ ms.lasthandoff: 02/27/2017
 ## <a name="configure-diagnostics-to-transfer-the-startup-task-logs-to-blob-storage"></a>診断でスタートアップ タスク ログが BLOB ストレージに転送されるように構成する
 インストールの問題のトラブルシューティングを簡単にするために、スタートアップ スクリプトまたは .NET インストーラーが生成したログ ファイルを BLOB ストレージに転送するように Azure 診断を構成できます。 この方法では、リモート デスクトップをロールに移動するのではなく、ログ ファイルを BLOB ストレージから単にダウンロードしてログを表示できます。
 
-診断を構成するには、 *diagnostics.wadcfgx* を開き、次のコマンドを **Directories** ノードに追加します。 
+診断を構成するには、*diagnostics.wadcfgx* を開き、次のコマンドを **Directories** ノードに追加します。 
 
 ```xml 
 <DataSources>
@@ -187,10 +199,10 @@ ms.lasthandoff: 02/27/2017
 </DataSources>
 ```
 
-これにより、Azure 診断が *NETFXInstall* リソースの *log* ディレクトリ内のすべてのファイルを *netfx-install* BLOB コンテナーの診断ストレージ アカウントに転送するように構成されます。
+この xml により、Azure 診断が *NETFXInstall* リソースの *log* ディレクトリ内のすべてのファイルを *netfx-install* BLOB コンテナーの診断ストレージ アカウントに転送するように構成されます。
 
 ## <a name="deploying-your-service"></a>サービスのデプロイ
-サービスをデプロイすると、スタートアップ タスクが実行され、またインストールされていない場合、.NET Framework がインストールされます。 Framework のインストール中、ロールはビジー状態になります。また、Framework のインストールで必要な場合、ロールが再起動されることがあります。 
+サービスをデプロイすると、.NET Framework がインストールされていない場合は、スタートアップ タスクにより .NET Framework がインストールされます。 Framework のインストール中、ロールは "*ビジー*" 状態になります。また、Framework のインストールで必要な場合、ロールが再起動されることがあります。 
 
 ## <a name="additional-resources"></a>その他のリソース
 * [.NET Framework のインストール][Installing the .NET Framework]

@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: babanisa;sethm
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 775900fcae1b2832a5d0951e2a4053562c21455e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -33,11 +33,11 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 既定では、診断ログは無効になっています。 診断ログを有効にするには、次の手順を実行します。
 
-1.  [Azure Portal](https://portal.azure.com) で、[ストリーミング ジョブ] ブレードに移動します。
+1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
 
-2.  **[監視]** の **[診断ログ]** ブレードに移動します。
+    ![ブレードで診断ログに移動する](./media/service-bus-diagnostic-logs/image1.png)
 
-    ![ブレードで診断ログに移動する](./media/service-bus-diagnostic-logs/image1.png)  
+2. 監視するリソースをクリックします。  
 
 3.  **[診断を有効にする]** をクリックします。
 
@@ -49,9 +49,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
 
-6.  収集するログのカテゴリを選択します (**実行**、**作成**など)。
-
-7.  新しい診断設定を保存します。
+6.  新しい診断設定を保存します。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
 
@@ -61,7 +59,7 @@ Azure Service Bus の 2 種類のログを表示できます。
 
 すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下のセクションで説明している形式を使用する文字列フィールドがあります。
 
-## <a name="operation-logs-example"></a>操作ログの例
+## <a name="operational-logs-schema"></a>操作ログのスキーマ
 
 **OperationalLogs** カテゴリのログは、Service Bus の操作中に起きていることをキャプチャします。 具体的には、これらのログは操作の種類 (キューの作成、使用リソース、操作の状態など) をキャプチャします。
 

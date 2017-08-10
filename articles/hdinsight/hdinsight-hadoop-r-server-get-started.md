@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 07/13/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ee4298b91f4e2b215b5faabaad96323f4ef234b8
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: f0ee0d23f28df2824ea41f7c9f7490e1ec62d041
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="get-started-using-r-server-on-hdinsight"></a>HDInsight での R Server の概要
@@ -49,7 +49,7 @@ Azure Resource Manager テンプレート、SDK のほか、PowerShell も使用
 <a name="create-hdi-custer-with-aure-portal"></a>
 ## <a name="create-the-cluster-using-the-azure-portal"></a>Azure Portal を使用してクラスターを作成する
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 
 2. **[新規]** -> **[インテリジェンス + 分析]** -> **[HDInsight]** の順に選択します。
 
@@ -367,7 +367,7 @@ scaleR 関数を使用してジョブを送信できます。 ジョブの実行
 
 4. WASB スタイルのアドレス指定も使用できます。
 
-    rxHadoopListFiles("wasbs:///")
+    rxHadoopListFiles("wasb:///")
 
 
 ## <a name="using-r-server-on-hdi-from-a-remote-instance-of-microsoft-r-server-or-microsoft-r-client"></a>Microsoft R Server または Microsoft R Client のリモート インスタンスから HDI の R Server を使用する

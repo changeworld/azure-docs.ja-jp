@@ -108,7 +108,7 @@ Allocadia で Azure AD のシングル サインオンを構成してテスト�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_samlbase.png)
 
-3. **[Allocadia Domain and URLs] (Allocadia のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Allocadia Domain and URLs] \(Allocadia のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-allocadia-tutorial/tutorial_allocadia_url.png)
 

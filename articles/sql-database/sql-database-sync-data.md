@@ -4,7 +4,7 @@ description: "この概要では、Azure SQL データ同期 (プレビュー) �
 services: sql-database
 documentationcenter: 
 author: douglaslms
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 075b5563688158289d51f2f0b5da4a3441ddd13a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 94c8160464cd7355ac0e0733801d0b06fcdfab7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
@@ -29,7 +28,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 データ同期は、同期グループの概念に基づいています。 同期グループは、同期するデータベースのグループです。
 
-同期グループには、次のようないくつかのプロパティがあります。
+同期グループには、次のプロパティがあります。
 
 -   **同期スキーマ**は、どのデータが同期されるかについて説明します。
 
@@ -39,7 +38,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   **競合解決ポリシー**は、グループ レベルのポリシーであり、*[ハブ側に合わせる]* と *[Member wins]\(メンバー側に合わせる\)* のどちらかにすることができます。
 
-データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 グループ内のいずれかのデータベースを、ハブ データベースとして定義する必要があります。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
+データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 グループ内のいずれかのデータベースを、ハブ データベースとして定義します。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
 -   **ハブ データベース**は、Azure SQL データベースにする必要があります。
 -   **メンバー データベース**は、SQL データベース、オンプレミス SQL Server データベース、または Azure 仮想マシン上の SQL Server インスタンスにすることができます。
 -   **同期データベース**には、データ同期のメタデータとログが含まれています。 同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
@@ -82,7 +81,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ## <a name="limitations-and-considerations"></a>制限と考慮事項
 
 ### <a name="performance-impact"></a>パフォーマンスへの影響
-データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内にサイド テーブルが作成されます。 これらのアクティビティはデータベースのワークロードに影響を与えるため、サービス レベルを評価したうえで、必要があればアップグレードしてください。
+データ同期では、挿入、更新、および削除の 3 種類のトリガーを使用して変更を追跡します。 これにより、ユーザー データベース内に変更追跡のためのサイド テーブルが作成されます。 これらの変更追跡アクティビティは、データベースのワークロードに影響します。 サービス層を評価し、必要な場合はアップグレードします。
 
 ### <a name="eventual-consistency"></a>最終的な一貫性
 データ同期はトリガー ベースであるため、トランザクションの一貫性は保証されません。 Microsoft では、最終的にはすべての変更が行われることと、データ同期でデータ損失が発生しないことを保証しています。
@@ -101,9 +100,9 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 -   各テーブルには主キーが必要です。
 
--   テーブルは、主キー以外の ID 列を設けることはできません。
+-   テーブルに、主キー以外の ID 列を設けることはできません。
 
--   データベース名に特殊文字を使用することはできません。
+-   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
 
@@ -119,6 +118,28 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 | テーブルでのデータ行のサイズ                                        | 24 Mb                  |                             |
 | 最小同期間隔                                           | 5 分              |                             |
 
+## <a name="common-questions"></a>一般的な質問
+
+### <a name="how-frequently-can-data-sync-synchronize-my-data"></a>データ同期はどのくらいの頻度でデータを同期しますか? 
+最小の頻度は 5 分ごとです。
+
+### <a name="can-i-use-data-sync-to-sync-between-sql-server-on-premises-databases-only"></a>データ同期を使用してオンプレミスの SQL Server データのみの間で同期できますか? 
+直接無効にすることはできません。 しかし、Azure でハブ データベースを作成し、オンプレミスデータベースを同期グループに追加することで、オンプレミスの SQL Server データベース間で間接的に同期できます。
+   
+### <a name="can-i-use-data-sync-to-seed-data-from-my-production-database-to-an-empty-database-and-then-keep-them-synchronized"></a>データ同期を使用して、実稼働データベースからデータを空のデータベースにデータを挿入し、それらの同期を維持することはできますか? 
+はい。 元のデータベースからスクリプトを作成することで、新しいデータベース内にスキーマを手動で作成します。 スキーマを作成した後で、同期グループにテーブルを追加し、データをコピーして同期を維持します。
+
+### <a name="why-do-i-see-tables-that-i-did-not-create"></a>作成していないテーブルが表示されるのはなぜですか?  
+データの同期により、データベース内に変更追跡のためのサイド テーブルが作成されます。 これらを削除しないでください。削除するとデータ同期が動作を停止します。
+   
+### <a name="i-got-an-error-message-that-said-cannot-insert-the-value-null-into-the-column-column-column-does-not-allow-nulls-what-does-this-mean-and-how-can-i-fix-the-error"></a>"列 \<column\> に値 NULL を挿入できません。 この列では NULL 値が許可されていません" というエラー メッセージが表示されました。 これはどういう意味ですか、エラーを修正する方法を教えてください。 
+このエラー メッセージは、次の 2 つの問題のいずれかを示します。
+1.  主キーのないテーブルである可能性があります。 この問題を解決するには、同期しているすべてのテーブルに主キーを追加します。
+2.  CREATE INDEX ステートメントに WHERE 句がある可能性があります。 同期では、この条件は処理されません。 この問題を解決するには、WHERE 句を削除するか、手動ですべてのデータベースに変更を加えます。 
+ 
+### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>データ同期では循環参照はどのように処理されますか? つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?
+データ同期は循環参照を処理しません。 必ず回避してください。 
+
 ## <a name="next-steps"></a>次のステップ
 
 SQL Database および SQL データ同期の詳細については、以下を参照してください。
@@ -132,6 +153,4 @@ SQL Database および SQL データ同期の詳細については、以下を�
 -   [SQL Database の概要](sql-database-technical-overview.md)
 
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
-
-
 

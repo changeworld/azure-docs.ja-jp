@@ -10,15 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/17/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 041254b07584a52ae92e603f60a439050b747af1
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8745db3abe6ddec6da1f92da6b7cf8bf82b96d79
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="consume-an-azure-managed-application"></a>Azure マネージ アプリケーションの実行
+# <a name="consume-a-service-catalog-managed-application"></a>サービス カタログ マネージ アプリケーションの使用
 
 [マネージ アプリケーションの概要](managed-application-overview.md)に関する記事で説明したように、マネージ アプリケーションには、その利用形態を全体として見た場合に 2 つのシナリオが存在します。 1 つは、顧客向けにマネージ アプリケーションを作成する発行元 (ISV) のシナリオです。 もう 1 つは、そのマネージ アプリケーションのエンド カスタマー (コンシューマー) のシナリオです。 この記事では、2 つ目のシナリオについて取り上げると共に、ISV から提供されたマネージ アプリケーションをエンド カスタマーが実行する方法について説明します。
 
@@ -69,10 +68,10 @@ az group deployment create --name managedAppDeployment --resourceGroup mainResou
 ```azurecli
 az managedapp create --name ravtestappliance401 --location "westcentralus" 
     --kind "Servicecatalog" --resource-group "ravApplianceCustRG401" 
-       --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401" 
-       --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401" 
-       --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}" 
-       --debug
+    --managedapp-definition-id "/subscriptions/{guid}/resourceGroups/ravApplianceDefRG401/providers/Microsoft.Solutions/applianceDefinitions/ravtestAppDef401" 
+    --managed-rg-id "/subscriptions/{guid}/resourceGroups/ravApplianceCustManagedRG401" 
+    --parameters "{\"storageAccountName\": {\"value\": \"ravappliancedemostore1\"}}" 
+    --debug
 ```
 
 **appliance-definition-Id** - 前の手順で作成したアプライアンス定義のリソース ID。 この ID を取得するには、次のコマンドを実行します。
@@ -118,4 +117,6 @@ Azure Portal の [作成] ブレードで [サービス カタログの管理さ
 ## <a name="next-steps"></a>次のステップ
 
 * マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
-* ベンダーから見た利用形態については、「[Azure マネージ アプリケーションの作成と発行](managed-application-publishing.md)」を参照してください。
+* サービス カタログ マネージ アプリケーションの発行については、「[サービス カタログ マネージ アプリケーションの作成と発行](managed-application-publishing.md)」を参照してください。
+* マネージ アプリケーションを Marketplace に発行する方法については、「[Azure Managed Applications in the Marketplace (Marketplace における Azure マネージ アプリケーション)](managed-application-author-marketplace.md)」を参照してください。
+* Marketplace からマネージ アプリケーションを使用する方法については、「[Consume Azure managed applications in the Marketplace (Marketplace での Azure マネージ アプリケーションの使用)](managed-application-consume-marketplace.md)」を参照してください。

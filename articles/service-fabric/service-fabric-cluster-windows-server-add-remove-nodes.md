@@ -31,7 +31,7 @@ ms.lasthandoff: 06/08/2017
 3. クラスターに追加する VM/コンピューターにリモート デスクトップ (RDP) 接続します。
 4. この VM/コンピューターに [Windows Server 用の Service Fabric のスタンドアロン パッケージをダウンロード](http://go.microsoft.com/fwlink/?LinkId=730690)するかコピーし、パッケージを展開します。
 5. 昇格した特権で Powershell を実行し、展開したパッケージのある場所に移動します。
-6. 追加する新しいノードを記述したパラメーターを指定して、*AddNode.ps1* スクリプトを実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と fd:/dc1/r0 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。クラスター内にある "任意"** のノードの IP アドレスを使用できます。
+6. 追加する新しいノードを記述したパラメーターを指定して、*AddNode.ps1* スクリプトを実行します。 次の例では、名前が VM5、タイプが NodeType0、IP アドレスが 182.17.34.52 の新しいノードを UD1 と fd:/dc1/r0 に追加します。 *ExistingClusterConnectionEndPoint* は、既存のクラスターに既にあるノードの接続エンドポイントです。クラスター内にある *"任意"* のノードの IP アドレスを使用できます。
 
     ```
     .\AddNode.ps1 -NodeName VM5 -NodeType NodeType0 -NodeIPAddressorFQDN 182.17.34.52 -ExistingClientConnectionEndpoint 182.17.34.50:19000 -UpgradeDomain UD1 -FaultDomain fd:/dc1/r0 -AcceptEULA
@@ -83,7 +83,7 @@ ms.lasthandoff: 06/08/2017
 ## <a name="remove-nodes-from-your-cluster"></a>クラスターからのノードの削除
 ノードをクラスターから削除するには、次の方法で構成のアップグレードを使用します。
 
-1. [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、"Nodes" セクションからノードを "削除"** します。
+1. [Get-ServiceFabricClusterConfiguration](/powershell/module/servicefabric/get-servicefabricclusterconfiguration?view=azureservicefabricps) を実行して最新の構成ファイルを取得し、"Nodes" セクションからノードを *"削除"* します。
 "FabricSettings" セクション内の "Setup" セクションに "NodesToBeRemoved" パラメーターを追加します。 "value" は、削除する必要があるノードのノード名のコンマ区切りの一覧です。
 
     ```

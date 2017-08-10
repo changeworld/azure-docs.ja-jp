@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/08/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 1241b6d97447fe6ee2a8abfb425b8b5f7d0f8a9c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 71878a5a8807b025f418b978990cb0c502e4eca7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API の SQL クエリ
@@ -921,9 +920,7 @@ TOP キーワードを使用すると、クエリの値数を制限できます�
 
 **結果**
 
-    [{
-        "$1": 1
-    }]
+    [ 1 ]
 
 次の表は、DocumentDB API でサポートされている集計関数の一覧です。 `SUM` と `AVG` は、数値に対して実行します。`COUNT`、`MIN`、`MAX` は、数値、文字列、ブール値、null 値に対して実行できます。 
 
@@ -1206,7 +1203,7 @@ JOIN の便利な点は、クロス積からタプルを生成できる点です
         }
     }
 
-`AndersenFamily` には 1 人の子供がいて、子供はペットを 1 匹飼っています。 このため、クロス積によってこの家族から 1 行 (1*1*1) が導出されます。 WakefieldFamily には子供が 2 人いますが、ペットを飼っているのは "Jesse" 1 人だけです。 ただしペットは 2 匹います。 したがって、この家族からのクロス積は 1*1*2 = 2 行となります。
+`AndersenFamily` には 1 人の子供がいて、子供はペットを 1 匹飼っています。 このため、クロス積によってこの家族から 1 行 (1\*1\*1) が導出されます。 WakefieldFamily には子供が 2 人いますが、ペットを飼っているのは "Jesse" 1 人だけです。 ただしペットは 2 匹います。 したがって、この家族からのクロス積は 1\*1\*2 = 2 行となります。
 
 次の例では、 `pet`に対するフィルターを追加します。 これによって、ペットの名前が "Shadow" ではないタプルがすべて除外されます。 配列からタプルを構築し、タプルのすべての要素に対してフィルターを実行し、要素の任意の組み合わせをプロジェクションできる点に注目してください。 
 
@@ -1515,7 +1512,7 @@ Cosmos DB の関数と ANSI SQL の間の主な違いとして、Cosmos DB の�
 | [LOWER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_lower) |文字列式の大文字データを小文字に変換して返します。 |
 | [UPPER (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_upper) |文字列式の小文字データを大文字に変換して返します。 |
 | [REPLACE (str_expr, str_expr, str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replace) |指定された文字列値のすべての出現箇所をもう 1 つの文字列値に置き換えます。 |
-| [REPLICATE (str_expr, num_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_replicate) |文字列値を指定された回数だけ繰り返します。 |
+| [REPLICATE (str_expr, num_expr)](https://docs.microsoft.com/azure/cosmos-db/documentdb-sql-query-reference#bk_replicate) |文字列値を指定された回数だけ繰り返します。 |
 | [REVERSE (str_expr)](https://msdn.microsoft.com/library/azure/dn782250.aspx#bk_reverse) |文字列値の順序を逆にして返します。 |
 
 これらの関数を使用して、次のようなクエリを実行できます。 たとえば、次のようにすると、ファミリ名を大文字で返すことができます。

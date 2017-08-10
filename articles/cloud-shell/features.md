@@ -7,40 +7,40 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 07/13/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 2b434ccb9218a0a2731642da6125031592ea8ce6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3e8eb5b2fe7d3d072132044e2445eab6fcd82ce1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
-# <a name="features--tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
+# <a name="features-and-tools-for-azure-cloud-shell"></a>Azure Cloud Shell の機能とツール
 Azure Cloud Shell は、Azure リソースを開発および管理するための、ブラウザー ベースのシェル環境です。
 
 Cloud Shell は、インストール、バージョン管理、およびコンピューター管理のオーバーヘッドなしで、ブラウザーでアクセスできる、事前構成済みのシェル環境を提供します。
 
-Cloud Shell は要求ごとにコンピューターをプロビジョニングするため、セッション間ではコンピューターの状態が保持されません。 Cloud Shell は対話型セッション向けに構築されているため、シェルが 10 分間非アクティブの状態になると、シェルは自動的に終了します。
+Cloud Shell は要求ごとにコンピューターをプロビジョニングするため、セッション間ではコンピューターの状態が保持されません。 Cloud Shell は対話型セッション向けに構築されているため、シェルが 20 分間非アクティブの状態になると、シェルは自動的に終了します。
 
 ## <a name="bash-in-cloud-shell"></a>Cloud Shell の Bash
 ### <a name="tools"></a>ツール
 |カテゴリ   |名前   |
 |---|---|
 |Linux シェル インタープリター|Bash<br> sh               |
-|Azure ツール            |Azure CLI 2.0 および 1.0<br> AzCopy     |
+|Azure ツール            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) と [1.0](https://github.com/Azure/azure-xplat-cli)<br> [AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Batch Shipyard](https://github.com/Azure/batch-shipyard)     |
 |テキスト エディター           |vim<br> nano<br> emacs       |
 |ソース管理         |git                    |
 |ビルド ツール            |make<br> maven<br> npm<br> pip         |
-|コンテナー             |Docker CLI/Docker Machine<br> Kubectl<br> DC/OS CLI         |
-|データベース              |MySQL クライアント<br> PostgreSql クライアント<br> sqlcmd ユーティリティ      |
-|その他                  |iPython クライアント<br> Cloud Foundry CLI<br> |
+|コンテナー             |[Docker CLI](https://github.com/docker/cli)/[Docker Machine](https://github.com/docker/machine)<br> [Kubectl](https://kubernetes.io/docs/user-guide/kubectl-overview/)<br> [下書き](https://github.com/Azure/draft)<br> [DC/OS CLI](https://github.com/dcos/dcos-cli)         |
+|データベース              |MySQL クライアント<br> PostgreSql クライアント<br> [sqlcmd ユーティリティ](https://docs.microsoft.com/sql/tools/sqlcmd-utility)      |
+|その他                  |iPython クライアント<br> [Cloud Foundry CLI](https://github.com/cloudfoundry/cli)<br> |
 
 ### <a name="language-support"></a>言語のサポート
 |言語   |バージョン   |
@@ -55,7 +55,7 @@ Cloud Shell は要求ごとにコンピューターをプロビジョニング�
 Cloud Shell は、Azure CLI 2.0 のアカウント アクセスを安全かつ自動的に認証します。
 
 ## <a name="azure-files-persistence"></a>Azure ファイルの永続化
-Cloud Shell は、一時的なマシンを使用して、要求ごとに割り当てられるため、$Home の外のローカル ファイルやマシンの状態は、セッション間で保持されません。
+Cloud Shell は、一時的なマシンを使用して、要求ごとに割り当てられるため、$Home の外のファイルやマシンの状態は、セッション間で保持されません。
 セッション間でファイルを保持する場合、Cloud Shell の初回起動時に、Azure ファイル共有のアタッチについてのチュートリアルがあります。
 チュートリアルが完了すると、今後のすべてのセッションで、記憶域が自動的にアタッチされます。
 
