@@ -55,7 +55,7 @@ Web サービスの API ドキュメントには、Web サービス アクセス
    * **[Please specify authentication type]**の下の [アカウント] を選択します。
    * Azure BLOB ストレージのアカウント情報を入力します。 
      <p />
-3.**[Path to blob beginning with container parameter] \(コンテナー パラメーターから始まる BLOB のパス\)** の右にあるアイコンをクリックします。 次のように表示されています。
+3. [Path to blob beginning with container parameter] \(コンテナー パラメーターから始まる BLOB のパス\) **の右にあるアイコンをクリックします**。 次のように表示されています。
    
    ![Web サービスのパラメーター アイコン][icon]
    

@@ -108,7 +108,7 @@ ADP eTime で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_samlbase.png)
 
-3. **[ADP eTime Domain and URLs] (ADP eTime のドメインと URL)** セクションで、次の手順を実行します。
+3. **[ADP eTime Domain and URLs] \(ADP eTime のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_url.png)
 
@@ -150,7 +150,7 @@ ADP eTime で Azure AD のシングル サインオンを構成してテスト�
     > [!NOTE] 
     > SAML アサーションを構成するには、その前に [ADP eTime サポート チーム](https://www.adp.com/contact-us/overview.aspx)に連絡し、テナントの一意識別子属性の値を要求する必要があります。 この値は、アプリケーションのカスタム要求を構成するのに必要です。 
 
-7. **[ADP eTime Configuration] (ADP eTime 構成)** セクションで、**[Configure ADP eTime] (ADP eTime の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。
+7. **[ADP eTime Configuration] \(ADP eTime 構成)** セクションで、**[Configure ADP eTime] \(ADP eTime の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-adpetime-tutorial/tutorial_adpetime_configure.png) 
 

@@ -125,7 +125,7 @@ Cherwell で Azure AD のシングル サインオンを構成およびテスト
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cherwell-tutorial/tutorial_general_400.png)
 
-6. **[Cherwell Configuration] (Cherwell 構成)** セクションで、**[Configure Cherwell] (Cherwell の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
+6. **[Cherwell Configuration] \(Cherwell 構成)** セクションで、**[Configure Cherwell] \(Cherwell の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス] セクション**から、**SAML エンティティ ID と SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-cherwell-tutorial/tutorial_cherwell_configure.png) 
 

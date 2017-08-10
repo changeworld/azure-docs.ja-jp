@@ -108,7 +108,7 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_samlbase.png)
 
-3. **[ADP Globalview Domain and URLs] (ADP Globalview のドメインと URL)** セクションで、次の手順を実行します。
+3. **[ADP Globalview Domain and URLs] \(ADP Globalview のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_url.png)
 
@@ -150,7 +150,7 @@ ADP Globalview で Azure AD のシングル サインオンを構成およびテ
     > [!NOTE] 
     > SAML アサーションを構成するには、その前に [ADP Globalview サポート](https://www.adp.com/contact-us/overview.aspx)に連絡し、テナントの一意識別子属性の値を要求する必要があります。 この値は、アプリケーションのカスタム要求を構成するのに必要です。 
 
-8. **[ADP Globalview Configuration] (ADP Globalview 構成)** セクションで、**[Configure ADP Globalview] (ADP Globalview の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+8. **[ADP Globalview Configuration] \(ADP Globalview 構成)** セクションで、**[Configure ADP Globalview] \(ADP Globalview の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-adglobalview-tutorial/tutorial_adpglobalview_configure.png) 
 
