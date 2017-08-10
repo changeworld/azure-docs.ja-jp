@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
-ms.date: 07/05/2017
+ms.date: 07/10/2017
 ms.author: sashan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 7166c4428398015c0570b048dff0005b5061eadb
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 8bb7f93b5ba2d1909653bb1010f1266640a1b2e9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概要: フェールオーバー グループとアクティブ geo レプリケーション
@@ -53,7 +52,6 @@ Azure SQL Database の自動フェールオーバー グループ (プレビュ�
 
 ## <a name="active-geo-replication-capabilities"></a>アクティブ geo レプリケーションの機能
 アクティブ geo レプリケーションには、次の重要な機能が用意されています。
-
 * **自動非同期レプリケーション**: セカンダリ データベースは、既存のデータベースに追加することによってのみ作成できます。 セカンダリは任意の Azure SQL Database サーバーに作成できます。 作成した後、プライマリ データベースからコピーしたデータをセカンダリ データベースに設定できます。 このプロセスはシード処理と呼ばれます。 オンライン セカンダリ データベースが作成およびシードされた後、プライマリ データベースの更新がセカンダリ データベースに非同期で自動的にレプリケートされます。 非同期レプリケーションでは、トランザクションはプライマリ データベースでコミットされた後に、セカンダリ データベースにレプリケートされます。 
 * **読み取り可能なセカンダリ データベース**: アプリケーションは、プライマリ データベースへのアクセスに使用されているのと同じ、または異なるセキュリティ プリンシパルを使用して、セカンダリ データベースにアクセスして読み取り専用操作を実行できます。 セカンダリ データベースは、セカンダリ上で実行されるクエリによってプライマリ (ログの再生) の更新プログラムのレプリケーションが遅延しないように、スナップショット分離モードで動作します。
 
@@ -85,8 +83,8 @@ Azure SQL Database の自動フェールオーバー グループ (プレビュ�
    > フェールオーバー グループの一部でないサーバーにセカンダリ データベースが既に存在するデータベースを追加すると、セカンダリ サーバーに新しいセカンダリが作成されます。 
    >
 
-* **フェールオーバー グループの読み取り/書き込みリスナー**: 現在のプライマリ サーバーの URL を示す DNS の CNAME レコードです。 これにより、フェールオーバー後にプライマリが変更されたときに、読み取り/書き込み SQL アプリケーションがプライマリ データベースに透過的に再接続できます。 
-* **フェールオーバー グループの読み取り専用リスナー**: セカンダリ サーバーの URL を示す DNS の CNAME レコードです。 これにより、指定した負荷分散規則を使用して、読み取り専用 SQL アプリケーションがセカンダリ データベースに等価的に接続できます。 必要に応じて、セカンダリ サーバーが利用できないときに、読み取り専用トラフィックをプライマリ サーバーに自動的にリダイレクトするように指定できます。
+* **フェールオーバー グループの読み取り/書き込みリスナー**: 現在のプライマリ サーバーの URL を示す **&lt;failover-group-name&gt;.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、フェールオーバー後にプライマリが変更されたときに、読み取り/書き込み SQL アプリケーションがプライマリ データベースに透過的に再接続できます。 
+* **フェールオーバー グループの読み取り/書き込みリスナー**: セカンダリ サーバーの URL を示す **&lt;failover-group-name&gt;.secondary.database.windows.net** という形式の DNS の CNAME レコードです。 これにより、指定した負荷分散規則を使用して、読み取り専用 SQL アプリケーションがセカンダリ データベースに等価的に接続できます。 必要に応じて、セカンダリ サーバーが利用できないときに、読み取り専用トラフィックをプライマリ サーバーに自動的にリダイレクトするように指定できます。
 * **自動フェールオーバー ポリシー**: 既定では、フェールオーバー グループは自動フェールオーバー ポリシーを使用して構成されます。 システムは、エラーが検出されるとすぐにフェールオーバーをトリガーします。 アプリケーションからフェールオーバー ワークフローを制御するには、自動フェールオーバーをオフにします。 
 * **手動フェールオーバー**: 自動フェールオーバー構成に関係なくいつでも手動でフェールオーバーを開始することができます。 自動フェールオーバー ポリシーが構成されていない場合、フェールオーバー グループ内のデータベースの復元には手動フェールオーバーが必要です。 強制フェールオーバーまたはフレンドリ フェールオーバーを開始できます (データは完全に同期されます)。 後者は、アクティブ サーバーをプライマリ リージョンに再配置する場合に使用できます。 フェールオーバーが完了すると、正しいサーバーに接続されるように DNS レコードが自動的に更新されます。
 * **データ消失の猶予期間**: プライマリ データベースとセカンダリ データベースは非同期レプリケーションを使用して同期されるため、フェールオーバーによりデータが消失する場合があります。 アプリケーションのデータ消失の許容範囲を反映するように、自動フェールオーバー ポリシーをカスタマイズできます。 **GracePeriodWithDataLossHours** を構成することで、データ消失につながる可能性があるフェールオーバーの開始までにシステムが待機する時間を制御できます。 
@@ -100,12 +98,13 @@ Azure SQL Database の自動フェールオーバー グループ (プレビュ�
 ## <a name="best-practices-of-building-highly-available-service"></a>高可用性サービスを構築するうえでのベスト プラクティス
 
 Azure SQL データベースを使った高可用性サービスを構築するには、以下のガイドラインに従う必要があります。
-- **フェールオーバー グループ**: 1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。
-- **自動フェールオーバー グループを使用する**: プライマリとの間でサービスの目的を共有する geo セカンダリ データベースが作成されます。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベル目標で構成されていることを確認してください。
-- **ApplicationIntent=ReadOnly** を使用する: ある程度のデータの古さに対して耐性がある読み取り専用のワークロード部分がある場合、接続文字列の中で、**ApplicationIntent=ReadOnly** を使用して読み取りの意図を指定すると、その接続は自動的にセカンダリに誘導されます。 
-- 機能停止が検出された場合、経験的にデータの損失がゼロであれば、読み取り/書き込みのフェールオーバーが SQL によって自動的にトリガーされます。 それ以外の場合、**GracePeriodWithDataLossHours** に指定された期間、待機状態となります。 
-- **パフォーマンスの低下に備える**: SQL のフェールオーバーの決定は、アプリケーションの他の領域や、使用されている他のサービスとは無関係に行われます。 アプリケーションが、同じリージョン内のコンポーネントや別のリージョン内のコンポーネントと "混在" する場合があります。 パフォーマンスの低下を防ぐために、DR リージョンでアプリケーションのデプロイを冗長化し、この記事のガイドラインに従うようにしてください。 DR リージョン内のアプリケーションで使う接続文字列を変更する必要はありません。 
-- **データの損失に備える**: **GracePeriodWithDataLossHours** を指定した場合は、データの損失に備えてください。 一般に、機能の停止中、Azure では可用性が重視されます。 データの損失が許容できない場合は、**GracePeriodWithDataLossHours** に設定する値を十分大きく確保してください (24 時間など)。 
+- **フェールオーバー グループの使用**: 1 つまたは複数のフェールオーバー グループを異なるリージョンの 2 つのサーバー (プライマリおよびセカンダリ サーバー) 間に作成できます。 各グループには、プライマリ リージョンに発生した機能停止によりすべてまたは一部のプライマリ データベースが使用できなくなった際にユニットとして復元できる、1 つまたは複数のデータベースを含めることができます。 フェールオーバー グループは、プライマリと同じサービスの目的を共有する geo セカンダリ データベースを作成します。 既にある geo レプリケーションのリレーションシップをこのフェールオーバー グループに追加する場合は、その geo セカンダリが、プライマリと同じサービス レベル目標で構成されていることを確認してください。
+- **OLTP ワークロードに読み取り/書き込みのリスナーを使用する**: OLTP 操作を実行するときにサーバーの URL として **&lt;failover-group-name&gt;.database.windows.net** を使用すると、自動的にプライマリに接続されます。 この URL はフェールオーバー後にも変更されません。  
+フェールオーバーでは DNS レコードの更新が行われるため、クライアントの接続は、クライアント DNS キャッシュが最新の情報に更新された後にのみ新しいプライマリにリダイレクトされます。
+- **読み取り専用ワークロードには読み取り専用リスナーを使用する**: データがある程度古くても構わない、論理的に分離された読み取り専用ワークロードがある場合、アプリケーションでセカンダリ データベースを使用できます。 読み取り専用セッションでは、サーバーの URL として **&lt;failover-group-name&gt;.secondary.database.windows.net** を使用すると、自動的にセカンダリに接続されます。 接続文字列に **ApplicationIntent=ReadOnly** を使用して、読み取りの意図を示すこともお勧めします。 
+- **パフォーマンスの低下に備える**: SQL のフェールオーバーの決定は、アプリケーションの他の領域や、使用されている他のサービスとは無関係に行われます。 アプリケーションが、同じリージョン内のコンポーネントや別のリージョン内のコンポーネントと "混在" する場合があります。 パフォーマンスの低下を防ぐために、DR リージョンでアプリケーションのデプロイを冗長化し、この記事のガイドラインに従うようにしてください。  
+DR リージョン内のアプリケーションで使う接続文字列を変更する必要はありません。  
+- **データの損失に備える**: 機能停止が検出された場合、経験的にデータの損失がゼロであれば、読み取り/書き込みのフェールオーバーが SQL によって自動的にトリガーされます。 それ以外の場合、**GracePeriodWithDataLossHours** に指定された期間、待機状態となります。 **GracePeriodWithDataLossHours** を指定した場合は、データの損失に備えてください。 一般に、機能の停止中、Azure では可用性が重視されます。 データの損失が許容できない場合は、**GracePeriodWithDataLossHours** に設定する値を十分大きく確保してください (24 時間など)。 
 
 
 ## <a name="upgrading-or-downgrading-a-primary-database"></a>プライマリ データベースのアップグレードまたはダウングレード
@@ -116,10 +115,10 @@ Azure SQL データベースを使った高可用性サービスを構築する�
 >
 
 ## <a name="preventing-the-loss-of-critical-data"></a>重要なデータの損失の防止
-ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](https://msdn.microsoft.com/library/dn467644.aspx) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースにレプリケートされるまで、呼び出しスレッドがブロックされます。 このプロシージャは、キューに登録されたすべてのトランザクションがセカンダリ データベースで確認されるまで待機します。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
+ワイド エリア ネットワークの遅延は大きいため、連続コピーでは非同期のレプリケーション メカニズムが使用されます。 非同期レプリケーションでは、障害が発生した場合に部分的なデータ損失が避けられません。 しかし、データ損失が許されないアプリケーションもあります。 重要な更新情報を保護するには、アプリケーション開発者は、トランザクションがコミットされた直後に [sp_wait_for_database_copy_sync](https://msdn.microsoft.com/library/dn467644.aspx) ステム プロシージャを呼び出すことができます。 **sp_wait_for_database_copy_sync** を呼び出すと、最後にコミットされたトランザクションがセカンダリ データベースに転送されるまで、呼び出しスレッドがブロックされます。 ただし、転送されたトランザクションがセカンダリで再生およびコミットされるのを待つことはありません。 **sp_wait_for_database_copy_sync** の対象は、特定の連続コピー リンクです。 プライマリ データベースへの接続権限を持つユーザーが、このプロシージャを呼び出すことができます。
 
 > [!NOTE]
-> **sp_wait_for_database_copy_sync** プロシージャを呼び出すと、大きな遅延が発生する場合があります。 遅延は、その時点のトランザクション ログの長さのサイズに依存し、この呼び出しは、ログ全体がレプリケートされるまでは復帰しません。 必要な場合を除き、このプロシージャを呼び出さないようにしてください。
+> **sp_wait_for_database_copy_sync** は、フェールオーバー後のデータの損失を防ぎますが、読み取りアクセスに対して完全な同期を保証することはありません。 **sp_wait_for_database_copy_sync** プロシージャ呼び出しによる遅延は、長くなる場合があり、呼び出し時のトランザクション ログのサイズによって異なります。 
 > 
 
 ## <a name="programmatically-managing-active-geo-replication"></a>アクティブ geo レプリケーションのプログラムでの管理
@@ -167,11 +166,11 @@ Azure SQL データベースを使った高可用性サービスを構築する�
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](https://docs.microsoft.com/rest/api/sql/databases#Databases_CreateOrUpdate) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](https://docs.microsoft.com/rest/api/sql/databases#Databases_CreateOrUpdate) |復元操作中にステータスを返します。 |
-| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://docs.microsoft.com/rest/api/sql/databases%20-%20replicationlinks#Databases_FailoverReplicationLink) |現在のプライマリ レプリカのデータベースからフェールオーバーして、どのレプリカのデータベースがプライマリかを設定します。 |
-| [Set Secondary Database as Primary (計画されていないフェールオーバー)](https://docs.microsoft.com/rest/api/sql/databases%20-%20replicationlinks#Databases_FailoverReplicationLinkAllowDataLoss) |現在のプライマリ レプリカのデータベースからフェールオーバーして、どのレプリカのデータベースがプライマリかを設定します。 この操作を行うとデータが失われる可能性があります。 |
-| [Get Replication Link](https://docs.microsoft.com/rest/api/sql/databases%20-%20replicationlinks#Databases_FailoverReplicationLinkAllowDataLoss) |geo レプリケーション パートナーシップで指定された SQL データベースの特定のレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
-| [List Replication Links](https://docs.microsoft.com/en-us/rest/api/sql/databases%20-%20replicationlinks#Databases_GetReplicationLink) | geo レプリケーション パートナーシップで指定された SQL データベースのすべてのレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
-| [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/databases%20-%20replicationlinks#Databases_DeleteReplicationLink) | データベース レプリケーション リンクを削除します。 フェールオーバー中には実行できません。 |
+| [Set Secondary Database as Primary (Planned Failover) (セカンダリ データベースをプライマリとして設定する (計画されたフェールオーバー))](https://docs.microsoft.com/rest/api/sql/replicationlinkss#ReplicationLinks_Failover) |現在のプライマリ レプリカのデータベースからフェールオーバーして、どのレプリカのデータベースがプライマリかを設定します。 |
+| [Set Secondary Database as Primary (計画されていないフェールオーバー)](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_FailoverAllowDataLoss) |現在のプライマリ レプリカのデータベースからフェールオーバーして、どのレプリカのデータベースがプライマリかを設定します。 この操作を行うとデータが失われる可能性があります。 |
+| [Get Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_Get) |geo レプリケーション パートナーシップで指定された SQL データベースの特定のレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
+| [List Replication Links](https://docs.microsoft.com/en-us/rest/api/sql/replicationlinks#ReplicationLinks_ListByDatabase) | geo レプリケーション パートナーシップで指定された SQL データベースのすべてのレプリケーション リンクを取得します。 sys.geo_replication_links カタログ ビューで表示可能な情報を取得します。 |
+| [Delete Replication Link](https://docs.microsoft.com/rest/api/sql/replicationlinks#ReplicationLinks_Delete) | データベース レプリケーション リンクを削除します。 フェールオーバー中には実行できません。 |
 | [Create or Update Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_CreateOrUpdate) | フェールオーバー グループを作成または更新します |
 | [Delete Failover Group](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Delete) | フェールオーバー グループをサーバーから削除します。 |
 | [Failover (計画されたフェールオーバー)](https://docs.microsoft.com/rest/api/sql/failovergroups#FailoverGroups_Failover) | 現在のプライマリ サーバーからこのサーバーにフェールオーバーします。 |

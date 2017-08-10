@@ -13,14 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2017
+ms.date: 07/31/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: f2c0559057e677c824a2ecd971488b35bc2cc8f8
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 9d14022f46c15db531bb3430f302eb49e1335083
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
@@ -46,6 +45,12 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 
 各 Azure Cosmos DB コンテナーは、1 秒あたりのスループットを表す RU を単位として、プロビジョニング スループットを使用して予約できます。 あらゆる規模のアプリケーションで、個々の要求のベンチマークを実行して RU 値を測定し、すべての要求の要求ユニットの合計に対処できるようにコンテナーをプロビジョニングできます。 アプリケーションのニーズの進化に合わせて、コンテナーのスループットをスケールアップまたはスケールダウンすることもできます。 要求ユニットの詳細とコンテナーのニーズを判断する方法については、「[スループットのニーズの推定](request-units.md#estimating-throughput-needs)」を参照し、[スループット計算ツール](https://www.documentdb.com/capacityplanner)をお試しください。 ここで言う "*コンテナー*" とは、DocumentDB API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
+### <a name="how-does-azure-cosmos-db-support-various-data-models-such-as-keyvalue-columnar-document-and-graph"></a>Azure Cosmos DB は、キー/値、多桁式、ドキュメント、グラフなどのさまざまなデータ モデルをどのようにサポートしていますか?
+
+キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (DocumentDB、MongoDB、Table、および Graph API)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
+
+Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムからストレージ レイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 Cosmos DB はまた、一連のワイヤ プロトコルおよび API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することにより、一意に複数のデータ モデルをネイティブにサポートできるようになる機能も備えています。
+
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB は HIPAA 準拠ですか?
 はい。Azure Cosmos DB は HIPAA 準拠です。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)を参照してください。
 
@@ -59,7 +64,7 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 ここで言う "*コンテナー*" とは、DocumentDB API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
-Azure を初めて使用する場合は、30 日間使用できる [Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。すべての Azure サービスを試すには 200 ドルかかります。 Visual Studio サブスクリプションをお持ちの場合は、[1 か月あたり 150 ドルの無料 Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)ですべての Azure サービスを使用できます。 
+Azure を初めて使用する場合は、[Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。それにより、30 日間の使用権と、すべての Azure サービスを試すためのクレジットが与えられます。 Visual Studio サブスクリプションを持っている場合は、どの Azure サービスでも使用できる[無料の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)も与えられます。 
 
 また、[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成しなくても、ローカルでのアプリケーションの開発とテストを無料で行うことができます。 Azure Cosmos DB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 
@@ -101,13 +106,13 @@ DocumentDB API の [.NET](documentdb-dotnet-samples.md)、[Java](https://github.
 ### <a name="what-is-a-collection"></a>コレクションとは何ですか?
 コレクションとは、ドキュメントと、関連する JavaScript アプリケーション ロジックのグループです。 コレクションは課金対象のエンティティであり、その[コスト](performance-levels.md)は、スループットと使用しているストレージによって決まります。 コレクションは、1 つ以上のパーティションまたはサーバーにまたがって存在することができ、拡張性があるので、対応できるストレージまたはスループットの量には実質的に制限はありません。
 
-コレクションは、Azure Cosmos DB の課金エンティティでもあります。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、[DocumentDB API の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 
+コレクションは、Azure Cosmos DB の課金エンティティでもあります。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「[Azure Cosmos DB Pricing (Azure Cosmos DB の価格)](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。 
 
 ### <a name="how-do-i-create-a-database"></a>どのようにしてデータベースを作成しますか?
 データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-documentdb-dotnet.md#create-collection)」を参照)、[Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/documentdb/) を使用して作成できます。 
 
 ### <a name="how-do-i-set-up-users-and-permissions"></a>どのようにしてユーザーおよびアクセス許可を設定しますか?
-ユーザーとアクセス許可は、[DocumentDB API SDK](documentdb-sdk-dotnet.md) のいずれかまたは [REST API](/rest/api/documentdb/) を使用して作成できます。  
+ユーザーとアクセス許可は、[Cosmos DB API SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) のいずれかを使用して作成できます。  
 
 ### <a name="does-the-documentdb-api-support-sql"></a>DocumentDB API は SQL をサポートしていますか?
 SQL クエリ言語は、SQL でサポートされるクエリ機能の強化版サブセットです。 Azure Cosmos DB の SQL クエリ言語は、高度な階層型の関係演算子と、JavaScript ベースのユーザー定義関数 (UDF) による機能拡張を提供します。 JSON 文法では、ラベル付きノードが配置されたツリーとして JSON ドキュメントをモデル化できます。これは、Azure Cosmos DB の自動インデックス作成手法と Azure Cosmos DB の SQL クエリ言語の両方で使用されます。 SQL 文法の使用方法については、[QueryDocumentDB][query] に関する記事をご覧ください。
@@ -121,19 +126,19 @@ DocumentDB API は、HTTP エンティティ タグ (ETag) によるオプティ
 .NET でオプティミスティック同時実行制御を使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 ### <a name="how-do-i-perform-transactions-in-the-documentdb-api"></a>DocumentDB API でトランザクションを実行するにはどうすればよいですか?
-DocumentDB API は、JavaScript のストアド プロシージャとトリガーによる、統合言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、[DocumentDB API のサーバー側プログラミング](programming.md)に関する記事をご覧ください。
+DocumentDB API は、JavaScript のストアド プロシージャとトリガーによる、統合言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Server-side JavaScript programming for Azure Cosmos DB (Azure Cosmos DB のためのサーバー側の JavaScript プログラミング)](programming.md)」を参照してください。
 
-### <a name="how-can-i-bulk-insert-documents-into-the-documentdb-api"></a>DocumentDB API にドキュメントを一括挿入するにはどうすればよいですか?
+### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>ドキュメントを Cosmos DB に一括挿入するにはどうすればよいですか?
 Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれかの方法で実行できます。
 
-* データ移行ツール。[DocumentDB API へのデータのインポート](import-data.md)に関する記事をご覧ください。
-* ストアド プロシージャ。[DocumentDB API のサーバー側プログラミング](programming.md)に関する記事をご覧ください。
+* データ移行ツール。「[Database migration tool for Azure Cosmos DB (Azure Cosmos DB 用のデータベース移行ツール)](import-data.md)」で説明されています。
+* ストアド プロシージャ。「[Server-side JavaScript programming for Azure Cosmos DB (Azure Cosmos DB のためのサーバー側の JavaScript プログラミング)](programming.md)」で説明されています。
 
 ### <a name="does-the-documentdb-api-support-resource-link-caching"></a>DocumentDB API はリソース リンク キャッシュをサポートしていますか?
 はい。Azure Cosmos DB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。 DocumentDB API クライアントは、ドキュメントやコレクションなどのリソースに対する読み取りに "If-None-Match" ヘッダーを指定し、サーバー バージョンが変更されたらローカル コピーを更新できます。
 
 ### <a name="is-a-local-instance-of-documentdb-api-available"></a>DocumentDB API のローカル インスタンスは使用できますか?
-はい。 [Azure Cosmos DB Emulator](local-emulator.md) では、DocumentDB API サービスの高忠実度エミュレーションを実行できます。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure Cosmos DB と同じ機能がサポートされています。 Azure Cosmos DB Emulator を使用してアプリケーションの開発とテストを行い、Azure Cosmos DB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイできます。
+はい。 [Azure Cosmos DB Emulator](local-emulator.md) には、Cosmos DB サービスの高忠実度エミュレーションが用意されています。 JSON ドキュメントの作成とクエリ、コレクションのプロビジョニングとスケーリング、ストアド プロシージャとトリガーの実行のサポートなど、Azure Cosmos DB と同じ機能がサポートされています。 Azure Cosmos DB Emulator を使用してアプリケーションの開発とテストを行い、Azure Cosmos DB の接続エンドポイントの構成を 1 つ変更するだけで、世界規模で Azure にデプロイできます。
 
 ## <a name="develop-against-the-api-for-mongodb"></a>MongoDB 用 API に対する開発
 ### <a name="what-is-the-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の MongoDB 用 API とは何ですか?
@@ -173,12 +178,16 @@ Azure Cosmos DB Table API は [Azure Portal][azure-portal] で利用できます
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>SDK やバグに関するフィードバックを提供するにはどうすればよいですか?
 次のいずれかの方法でフィードバックをお寄せください。
 
-* [Uservoice](https://feedback.azure.com/forums/263030-documentdb)
+* [Uservoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api)
 * [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)
 * [StackOverflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb)
 
 ### <a name="what-is-the-connection-string-that-i-need-to-use-to-connect-to-the-table-api-preview"></a>Table API (プレビュー) に接続する際に使用する必要がある接続文字列を教えてください。
-接続文字列は、`DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.documents.azure.com` です。 接続文字列は、Azure Portal の [キー] ページから取得できます。 
+接続文字列は次のとおりです。
+```
+DefaultEndpointsProtocol=https;AccountName=<AccountNamefromCosmos DB;AccountKey=<FromKeysPaneofCosmosDB>;TableEndpoint=https://<AccountNameFromDocumentDB>.documents.azure.com
+```
+接続文字列は、Azure Portal の [キー] ページから取得できます。 
 
 ### <a name="how-do-i-override-the-config-settings-for-the-request-options-in-the-new-table-api-preview"></a>新しい Table API (プレビュー) で、要求オプションの構成設定を上書きするにはどうすればよいですか?
 構成設定については、「[Azure Cosmos DB の機能](../cosmos-db/tutorial-develop-table-dotnet.md#azure-cosmos-db-capabilities)」をご覧ください。 設定を変更するには、クライアント アプリケーションの app.config の appSettings セクションに設定を追加します。
@@ -219,7 +228,7 @@ Table API (プレビュー) 用の PowerShell と Azure CLI のサポートを�
 既存の Table Storage データで新しい Table API を利用する場合は、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) までご連絡ください。 
 
 ### <a name="what-is-the-roadmap-for-this-service-and-when-will-you-offer-other-standard-table-api-functionality"></a>このサービスのロードマップを教えてください。Standard Table API の他の機能はいつ提供されますか?
-GA に向けて、SAS トークン、ServiceContext、統計、クライアント側暗号化、分析などの機能のサポートを追加する予定です。 [UserVoice](https://feedback.azure.com/forums/263030-documentdb) でフィードバックをお寄せください。 
+GA に向けて、SAS トークン、ServiceContext、統計、クライアント側暗号化、分析などの機能のサポートを追加する予定です。 [UserVoice](https://feedback.azure.com/forums/599062-azure-cosmos-db-table-api) でフィードバックをお寄せください。 
 
 ### <a name="how-is-expansion-of-the-storage-size-done-for-this-service-if-for-example-i-start-with-n-gb-of-data-and-my-data-will-grow-to-1-tb-over-time"></a>たとえば、最初は *n* GB のデータが時間の経過と共に 1 TB に増加した場合、このサービスではストレージ サイズはどのように拡張されるのですか? 
 Azure Cosmos DB は、水平スケーリングを使用して無制限のストレージを提供するように設計されています。 このサービスは、ストレージを監視し、ストレージを効率的に増やすことができます。 
@@ -231,7 +240,11 @@ Table API (プレビュー) の**メトリック** ウィンドウを使用し�
 容量見積もりツールを使用して、操作に必要な TableThroughput を計算できます。 詳細については、「[Estimate Request Units and Data Storage (要求ユニットとデータ ストレージの見積もり)](https://www.documentdb.com/capacityplanner)」をご覧ください。 一般に、エンティティを JSON として表し、操作数を指定します。 
 
 ### <a name="can-i-use-the-new-table-api-preview-sdk-locally-with-the-emulator"></a>エミュレーターで新しい Table API (プレビュー) SDK をローカルで使用できますか?
-新しい SDK を使用すると、ローカル エミュレーターで Table API (プレビュー) を使用できます。 新しいエミュレーターをダウンロードする場合は、「[Use the Azure Cosmos DB Emulator for local development and testing (ローカルの開発とテストでの Azure Cosmos DB Emulator の使用)](local-emulator.md)」をご覧ください。 app.config の StorageConnectionString 値が、`DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;TableEndpoint=https://localhost:8081` である必要があります。 
+新しい SDK を使用すると、ローカル エミュレーターで Table API (プレビュー) を使用できます。 新しいエミュレーターをダウンロードする場合は、「[Use the Azure Cosmos DB Emulator for local development and testing (ローカルの開発とテストでの Azure Cosmos DB Emulator の使用)](local-emulator.md)」をご覧ください。 app.config 内の StorageConnectionString 値が次のようになっている必要があります。
+
+```
+DefaultEndpointsProtocol=https;AccountName=localhost;AccountKey=C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==;TableEndpoint=https://localhost:8081`. 
+```
 
 ### <a name="can-my-existing-application-work-with-the-table-api-preview"></a>既存のアプリケーションを Table API (プレビュー) で動作させることはできますか? 
 新しい Table API (プレビュー) の表面領域は、.NET API での作成、削除、更新、クエリの各操作で既存の Azure Standard Table SDK と互換性があります。 Table API (プレビュー) ではパーティション キーと行キーの両方が必要となるため、行キーがあることを確認してください。 また、このサービスの GA に向けて、SDK のサポートをさらに追加する予定です。
@@ -314,12 +327,12 @@ app.config ファイルに JSON 形式の文字列で指定します。
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>プラットフォームとしての Azure Cosmos DB は、並べ替え、集計、階層などの多数の機能を備えているようですが、 これらの機能は Table API に追加される予定ですか? 
-プレビューでは、Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API の追加機能が提供される予定です。 詳細については、[Azure Cosmos DB クエリ](../documentdb/documentdb-sql-query.md)に関する記事をご覧ください。
+プレビューでは、Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API の追加機能が提供される予定です。 詳細については、「[SQL queries for Azure Cosmos DB DocumentDB API (Azure Cosmos DB DocumentDB API 用の SQL クエリ)](../documentdb/documentdb-sql-query.md)」を参照してください。
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api-preview"></a>Table API (プレビュー) の TableThroughput は、どのようなときに変更する必要がありますか?
 次のいずれかの条件に該当する場合は、TableThroughput を変更してください。
 * データの抽出、変換、読み込み (ETL) を実行している。または、短時間に大量のデータをアップロードする必要がある。 
-* バックエンドでコンテナーのスループットを増やす必要がある  (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、[スループットの設定](set-throughput.md)に関する記事をご覧ください。
+* バックエンドでコンテナーのスループットを増やす必要がある  (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、「[Set throughput for Azure Cosmos DB containers (Azure Cosmos DB コンテナーのスループットを設定する)](set-throughput.md)」を参照してください。
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-preview-table"></a>Table API (プレビュー) のテーブルのスループットはスケールアップまたはスケールダウンできますか? 
 はい。スループットのスケーリングは、Azure Cosmos DB ポータルのスケール ウィンドウを使用して実行できます。 詳細については、[スループットの設定](set-throughput.md)に関する記事をご覧ください。

@@ -12,13 +12,13 @@ ms.devlang: rest-api
 ms.workload: search
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 07/20/2017
+ms.date: 07/22/2017
 ms.author: eugenesh
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 8ed07d7be1d737fac332d9ea82e65fd5e92f89d5
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b60662cbe655eea11cba2aaaaa4671209bf018f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -35,7 +35,7 @@ BLOB インデクサーは、次の形式のドキュメントからテキスト
 * ZIP
 * EML
 * RTF
-* プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](#IndexingPlainText)」を参照)
+* プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](#IndexingPlainText)」も参照)
 * JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
 * CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
 
@@ -89,8 +89,8 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 次のいずれかの方法で BLOB コンテナーに対して資格情報を指定できます。
 
 - **フル アクセス ストレージ アカウントの接続文字列**: `DefaultEndpointsProtocol=https;AccountName=<your storage account>;AccountKey=<your account key>`。 この接続文字列は、ストレージ アカウント ブレードに移動し、[設定]、[キー] と選択する (クラシック ストレージ アカウントの場合) か、[設定]、[アクセス キー] と選択する (Azure Resource Manager ストレージ アカウントの場合) ことで Azure Portal から取得できます。
-- **ストレージ アカウントの Shared Access Signature** (SAS) の接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`。 SAS にはコンテナー上およびオブジェクト (この場合は BLOB) にリストおよび読み取りアクセス許可が必要です。
--  **コンテナーの Shared Access Signature**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`。 SAS にはコンテナー上にリストおよび読み取りアクセス許可が必要です。
+- **ストレージ アカウントの共有アクセス署名** (SAS) 接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS には、コンテナーとオブジェクト (ここでは BLOB) の一覧と読み取りアクセス許可が必要です。
+-  **コンテナの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS にはコンテナーの一覧および読み取りアクセス許可が必要です。
 
 Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
@@ -340,6 +340,8 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
 
 - データ ソースごとに対応するインデクサーを作成します。 すべてのインデクサーから、同じターゲット検索インデックスをポイントできます。  
 
+- サービス内の 1 つの検索単位は、特定の時点で 1 つのインデクサーを実行できます。 上記のように、複数のインデクサーの作成は、これらを実際に並行して実行する場合のみ有用です。 複数のインデクサーを並行して実行するには、適切な数のパーティションとレプリカを作成して、検索サービスをスケールアウトします。 たとえば、検索サービスに 6 つの検索単位がある場合 (たとえば、2 つのパーティション x 3 つのレプリカ)、6 つのインデクサーを同時に実行でき、インデックス作成のスループットが 6 倍になります。 スケーリングと容量計画について詳しくは、「[Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする](search-capacity-planning.md)」をご覧ください。
+
 ## <a name="indexing-documents-along-with-related-data"></a>ドキュメントと関連データを併せたインデックスを作成する
 
 インデックスの複数のソースからドキュメントを「アセンブル」できます。 たとえば、Cosmos DB に格納された他のメタデータを使用して BLOB からテキストをマージすることもできます。 プッシュ インデックス作成 API を各種インデクサーとともに使用して、複数のパーツから検索ドキュメントを構築することもできます。 
@@ -360,7 +362,7 @@ BLOB のインデックス作成プロセスは、時間がかかる場合があ
       "parameters" : { "configuration" : { "parsingMode" : "text" } }
     }
 
-既定では、`UTF-8` エンコードが想定されます。 別のエンコードを指定するには、`encoding` 構成パラメーターを使用します。 
+既定では、`UTF-8` エンコードが想定されます。 別のエンコードを指定するには、`encoding` 構成プロパティを使用します。 
 
     {
       ... other parts of indexer definition

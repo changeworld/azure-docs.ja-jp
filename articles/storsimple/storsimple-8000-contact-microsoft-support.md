@@ -1,5 +1,5 @@
 ---
-title: "StorSimple 8000 シリーズのサポート チケットを記録する | Microsoft Docs"
+title: "StorSimple 8000 シリーズのサポート チケットまたはサポート ケースを作成する | Microsoft Docs"
 description: "サポート要求をログに記録する方法と StorSimple 8000 シリーズ デバイスでサポート セッションを開始する方法について説明します。"
 services: storsimple
 documentationcenter: 
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/27/2017
+ms.date: 07/25/2017
 ms.author: alkohli;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 21aeecb33707c03b5994b3e394b597797e81746f
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 4b5a14237ce79100f980b2186b2c3c887abaa296
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="contact-microsoft-support"></a>Microsoft サポートに問い合わせる
@@ -118,3 +117,4 @@ StorSimple デバイスで発生した問題のトラブルシューティング
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple 8000 シリーズ デバイスに関連する問題を診断および解決](storsimple-troubleshoot-deployment.md)する方法を確認します
+

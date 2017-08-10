@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 07/31/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: ffe17f50db9afe7c562b0890e8ea24d517e31bf7
-ms.lasthandoff: 01/13/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 475c3ff696af89dd4ff627b04b986562fc2ace7a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="create-contentkeys-with-rest"></a>REST で ContentKey を作成する
@@ -32,7 +32,7 @@ Media Services では、暗号化されたアセットを新しく作成して�
 
 新しいアセットを作成するときは ([ファイルをアップロード](media-services-rest-upload-files.md)する前など)、次の暗号化オプションを指定できます: **StorageEncrypted**、**CommonEncryptionProtected**、または **EnvelopeEncryptionProtected**。 
 
-クライアントにアセットを配信するときは、次の&2; つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-rest-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
+クライアントにアセットを配信するときは、次の 2 つの暗号化のどちらかを使用して[アセットが動的に暗号化されるように構成できます](media-services-rest-configure-asset-delivery-policy.md): **DynamicEnvelopeEncryption** または **DynamicCommonEncryption**。
 
 暗号化されたアセットには、 **ContentKey**を関連付ける必要があります。 この記事では、コンテンツ キーの作成方法について説明します。
 
@@ -65,7 +65,7 @@ Media Services では、暗号化されたアセットを新しく作成して�
          Array.Copy(array, array2, 8);
          return Convert.ToBase64String(array2);
      }
-5. 前の手順で取得した **EncryptedContentKey** 値 (Base&64; エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
+5. 前の手順で取得した **EncryptedContentKey** 値 (Base 64 エンコード形式の文字列に変換されます)、**ProtectionKeyId** 値、**ProtectionKeyType** 値、**ContentKeyType** 値、**Checksum** 値を使ってコンテンツ キーを作成します。
 6. $links 操作で、**ContentKey** エンティティと **Asset** エンティティを関連付けます。
 
 AES キーの生成、キーの暗号化、checksum 計算の例は、このトピックから削除されました。 Media Servicesを操作する方法についての例のみご覧いただけます。
@@ -75,8 +75,7 @@ AES キーの生成、キーの暗号化、checksum 計算の例は、このト�
 > 
 > Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
 > 
-> https://media.windows.net に正常に接続されると、別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 「 [Media Services REST API を使用して Media Services アカウントに接続する](media-services-rest-connect-programmatically.md)」で説明するとおり、続けて新しい URI を呼び出す必要があります。 
-> 
+> に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 > 
 
 ## <a name="retrieve-the-protectionkeyid"></a>ProtectionKeyId の取得

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 07/13/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 165568731debf2cd81a88170833f95ca2e7080e5
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: cab45cc6dd621eb4a95ef5f1842ec38c25e980b6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -106,6 +105,9 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 アラートは、Azure SQL Database リソースから送られるデータを使用して簡単に作成できます。 アラートに使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリを以下に 2 つ示しました。
 
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
+
 *高 DTU (Azure SQL Database 上)*
 
 ```
@@ -140,6 +142,11 @@ Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/ELASTICPOOLS/"*
 ```
 Type=AzureMetrics ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_percent | measure avg(Average) by Resource | display LineChart
 ```
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリは次のように変更されます。
+>
+>`search in (AzureMetrics) isnotempty(ResourceId) and "/ELASTICPOOLS/" and MetricName == "dtu_consumption_percent" | summarize AggregatedValue = avg(Average) by bin(TimeGenerated, 1h), Resource | render timechart`
 
 次の例では、1 つのエラスティック プールの DTU 使用率が 100% 近くまで上昇しているのに対し、他のエラスティック プールの使用量はごくわずかであることを確認できます。 さらに、Azure のアクティビティ ログを使えば、最近になって環境に生じた変更の有無を確認し、トラブルシューティングを行うことができます。
 

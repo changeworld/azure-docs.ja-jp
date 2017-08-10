@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 5f501bdb0a3c478a436d729dfe045ad8e39bd3bb
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: e2d2847276e553d7511241ff323c3e00aad8e5c9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -184,7 +183,7 @@ Azure Cosmos DB のスケーリングを効率よく行うには、コンテナ�
 実際に遭遇する可能性のあるいくつかのシナリオと、それぞれの適切なパーティション キーを見てみましょう。
 * ユーザー プロファイルのバックエンドを実装する場合、ユーザー ID のパーティション キーを選択することをお勧めします。
 * IoT データ (デバイス状態など) を格納する場合は、デバイス ID のパーティション キーを使用することをお勧めします。
-* 時系列データのログ記録に DocumentDB を使用する場合は、ホスト名やプロセス ID がパーティション キーとして適しています。
+* 時系列データのログ記録に Azure Cosmos DB を使用する場合は、ホスト名やプロセス ID がパーティション キーとして適しています。
 * マルチ テナント アーキテクチャがある場合は、テナント ID のパーティション キーをお勧めします。
 
 一部のユース ケース (IoT、ユーザー プロファイルなど) では、パーティション キーはお使いの ID (ドキュメント キー) と同じになる場合があります。 その他のケース (時系列データなど) では、パーティション キーは ID と異なる可能性があります。

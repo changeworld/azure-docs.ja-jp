@@ -1,19 +1,19 @@
 ---
 ms.assetid: 
 title: "Azure Key Vault ストレージ アカウント キー"
-description: "ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー アクセス間をシームレスに統合します。"
+description: "ストレージ アカウント キーは、Azure Key Vault と Azure Storage アカウントへのキー ベースのアクセス間をシームレスに統合します。"
 ms.topic: article
 services: key-vault
 ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 07/10/2017
+ms.date: 07/25/2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b30f9601725cdf568f0f2e18bebdc4ae86a616f6
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: c7b20c83b356dd698e66919483c9ff6f0e8a36ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
@@ -58,7 +58,8 @@ SAS 定義名は長さが 1 文字から 102 文字までで、0 ～ 9、a ～ z
 //create storage account using connection string containing account name 
 // and the storage key 
 
-var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));var blobClient = storageAccount.CreateCloudBlobClient();
+var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSetting("StorageConnectionString"));
+var blobClient = storageAccount.CreateCloudBlobClient();
  ```
  
 ### <a name="after-azure-key-vault-storage-keys"></a>Azure Key Vault ストレージ キー以後 
@@ -67,7 +68,7 @@ var storageAccount = CloudStorageAccount.Parse(CloudConfigurationManager.GetSett
 //Use PowerShell command to get Secret URI 
 
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  
--AccountName msak01 -Name blobsas1 -Protocol HttpsOrHttp -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
+-AccountName msak01 -Name blobsas1 -Protocol HttpsOnly -ValidityPeriod ([System.Timespan]::FromDays(1)) -Permission Read,List
 
 //Get SAS token from Key Vault
 
@@ -97,9 +98,9 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 ## <a name="getting-started"></a>使用の開始
 
-### <a name="setup-for-role-based-access-control-permissions"></a>ロールベースのアクセス制御の権限設定
+### <a name="setup-for-role-based-access-control-rbac-permissions"></a>ロール ベースのアクセス制御 (RBAC) の権限設定
 
-Key Vault では、ストレージ アカウントのキーを一覧表示し再生成する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
+Key Vault では、ストレージ アカウントのキーを*一覧表示*し*再生成*する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
 
 - Key Vault の ObjectId を取得します。 
 
@@ -114,22 +115,18 @@ Key Vault では、ストレージ アカウントのキーを一覧表示し再
 
 ### <a name="storage-account-onboarding"></a>ストレージ アカウントのオンボード 
 
-#### <a name="example"></a>例
+例: Key Vault オブジェクトの所有者は、ストレージ アカウントをオンボードするために、ストレージ アカウント オブジェクトを Azure Key Vault に追加します。
 
-キー コンテナー オブジェクトの所有者は、ストレージ アカウントをオンボードするために、AzKV 上のストレージ アカウント オブジェクトを追加します。
-
-オンボード時に Key Vault は、アカウントにオンボードする ID に、ストレージ キーの*一覧表示*と*再生成*のアクセス権があることを確認する必要があります。 Key Vault は、Azure Resource Manager としての対象とともに EvoSTS から OBO トークンを取得し、Storage RP へのキー一覧表示の呼び出しを行います。 一覧表示の呼び出しが失敗すると、Key Vault オブジェクトの作成が*禁止*の http 状態コードで失敗します。 この方法で表示されるキーは、キー コンテナー エンティティ ストレージでキャッシュされます。 
+オンボード時に Key Vault は、オンボードするアカウントの ID にストレージ キーの*一覧表示*と*再生成*の権限があることを確認する必要があります。 これらの権限を確認するために、Key Vault は、認証サービスから OBO (On Behalf Of) トークンを取得し、対象ユーザーを Azure Resource Manager に設定し、Azure Storage サービスの*一覧表示*キーを呼び出します。 *一覧表示*の呼び出しが失敗すると、Key Vault オブジェクトの作成が*禁止*の HTTP 状態コードで失敗します。 この方法で表示されるキーは、キー コンテナー エンティティ ストレージでキャッシュされます。 
 
 Key Vault では、ID がキー再生成の所有権を取得する前に、その ID に*再生成*の権限があることを確認する必要があります。 この ID が、OBO トークン経由で、Key Vault ファースト パーティ ID と同様に権限があることを確認するために、以下のことを行います。
 
 - Key Vault は、ストレージ アカウント リソースに対するRBAC 権限を一覧表示します。
 - Key Vault は、アクションとアクション以外の正規表現の照合によって応答を検証します。 
 
-以下は参考例です。 
+サポートされるその他の例は、[Key Vault - 管理対象のストレージ アカウント キーのサンプル](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)に関するページをご覧ください。
 
-- [GitHub のサンプル](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)例 
-
-OBO トークン経由の ID に*再生成*の権限がない場合、あるいは Key Vault のファースト パーティ ID に*一覧表示*または*再生成*の権限がない場合、オンボード要求は失敗し、適切なエラー コードとメッセージを返します。 
+ID に*再生成*の権限がない場合、あるいは Key Vault のファースト パーティ ID に*一覧表示*または*再生成*の権限がない場合、オンボード要求は失敗し、適切なエラー コードとメッセージを返します。 
 
 OBO トークンは、PowerShell または CLI のいずれかのファースト パーティのネイティブ クライアント アプリケーションを使用する場合にのみ機能します。
 

@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql-database
 ms.topic: overview
-ms.date: 07/05/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 30ab79ed40381aaa7a8cf88193fac8d59ecbbced
+ms.date: 08/01/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 322560aece243e150606e722d467b843bc9580b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
@@ -49,7 +49,7 @@ Microsoft が管理するデータセンターのグローバル ネットワー
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 Azure データベース サービスは、アクセスの制限、保存データと移動中のデータの保護、監視アクティビティの支援を行う機能を備えた Azure Database for PostgreSQL によって、データ セキュリティを維持してきました。 Azure のプラットフォーム セキュリティについては、[Azure セキュリティ センター](https://www.microsoft.com/TrustCenter/Security/default.aspx)をご覧ください。
 
-Azure Database for PostgreSQL サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むすべてのデータは、ディスク上で暗号化されます。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
+Azure Database for PostgreSQL サービスでは、保存されるデータにストレージ暗号化が使用されます。 バックアップを含むデータはディスク上で暗号化されます (ただし、クエリの実行中にエンジンによって作成された一時ファイルを除きます)。 このサービスでは、Azure ストレージ暗号化に含まれる AES 256 ビット暗号が使用され、キーはシステムによって管理されます。 ストレージの暗号化は常にオンになっており、無効にすることはできません。
 
 Azure Database for PostgreSQL サービスは、既定で、ネットワーク上で転送されるデータに [SSL 接続セキュリティ](./concepts-ssl-connection-security.md)を要求するように構成されます。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。  クライアント アプリケーションが SSL 接続をサポートしていない場合は、必要に応じて、データベース サービスに接続するための SSL 要求を無効にできます。
 

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: milanga;juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 549be7c3439dfc00a5a8b771811d59261f56ddc9
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 4ccd5efb0d5651d90d70f382fd7d2ebed8bed4eb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="detect-motions-with-azure-media-analytics"></a>Azure Media Analytics で動作を検出する

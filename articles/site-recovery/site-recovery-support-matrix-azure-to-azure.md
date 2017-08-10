@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 89b12ce7af1e810f72e14f67ec5b11390ac3e72f
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: e8ff96587a840236adfb277b3a33b11db71f7d8e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/03/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -106,7 +106,7 @@ ms.lasthandoff: 07/21/2017
 -- | --
 アメリカ | カナダ東部、カナダ中部、米国中南部、米国中西部、米国東部、米国東部 2、米国西部、米国西部 2、米国中部、米国中北部
 ヨーロッパ | 英国西部、英国南部、北ヨーロッパ、西ヨーロッパ
-アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本
+アジア | インド南部、インド中部、東南アジア、東アジア、東日本、西日本、韓国中部、韓国南部
 オーストラリア   | オーストラリア東部、オーストラリア南東部
 
 >[!NOTE]
@@ -148,7 +148,7 @@ Azure Disk Encryption (ADE) | サポートされていません |
 LRS | サポートされています |
 GRS | サポートされています |
 RA-GRS | サポートされています |
-ZRS | サポートされています |  
+ZRS | サポートされていません |  
 クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
 
 >[!IMPORTANT]

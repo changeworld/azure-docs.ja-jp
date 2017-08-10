@@ -16,17 +16,28 @@ ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 31c7e517673d7a0df9dec32b3882e7e022ac83d9
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 0b861bea8948c7022d2ce95a2a7975a5ad7ad8a7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
-Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
+Azure Active Directory (Azure AD) では、グループの複雑な属性ベースの動的メンバーシップを有効にする高度なルールを作成できます。 この記事では、ユーザーまたはデバイスについて動的なメンバーシップ ルールを作成するための属性と構文について詳しく説明します。
 
-## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
+ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。
+
+> [!NOTE]
+> - セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
+>
+> - この機能を使うには、少なくとも 1 つの動的グループに追加される各ユーザー メンバーに Azure AD Premium P1 ライセンスが必要です。
+>
+> - デバイスまたはユーザーの動的グループは作成できても、ユーザー オブジェクトとデバイス オブジェクトの両方を含むルールは作成できません。
+
+> - 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
+
+## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
+1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
    ![ユーザー管理を開く](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
@@ -149,7 +160,7 @@ For example:
 | --- | --- | --- |
 | city |任意の文字列値または $null |(user.city -eq "value") |
 | country |任意の文字列値または $null |(user.country -eq "value") |
-| CompanyName | 任意の文字列値または $null | (user.CompanyName -eq "value") |
+| companyName | 任意の文字列値または $null | (user.companyName -eq "value") |
 | department |任意の文字列値または $null |(user.department -eq "value") |
 | displayName |任意の文字列値 |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |任意の文字列値または $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -192,7 +203,7 @@ For example:
 
 | プロパティ | 値 | 使用法 |
 | --- | --- | --- |
-| assigendPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+| assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
 
 複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 For example:
 

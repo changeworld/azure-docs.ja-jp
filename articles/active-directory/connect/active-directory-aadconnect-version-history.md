@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/12/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: b8e88737c5dd81760a733e0b761fd3e51566ad02
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: d55cecf20abdf1637f0537e63a3dba5992a68741
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
@@ -36,7 +36,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 ダウンロード| [Azure AD Connect のダウンロード](http://go.microsoft.com/fwlink/?LinkId=615771)。
 
 ## <a name="115610"></a>1.1.561.0
-状態: リリース予定
+リリース: 2017 年 7 月 23 日
 
 ### <a name="azure-ad-connect"></a>Azure AD Connect
 
@@ -68,7 +68,6 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
   * インストールが簡単設定でも DirSync のアップグレードでもありません。
   * メタバース内のオブジェクトが 100,000 を超えています。
   * 現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。
-  * SQL Server Express LocalDB データベースが使用されていません。
   * AD Connector アカウントは、既定の MSOL_ アカウントではなくなりました。
   * サーバーがステージング モードに設定されています。
   * ユーザーの書き戻し機能を有効にしました。
@@ -97,7 +96,6 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
   * インストールが簡単設定でも DirSync のアップグレードでもありません。
   * メタバース内のオブジェクトが 100,000 を超えています。
   * 現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。
-  * SQL Server Express LocalDB データベースが使用されていません。
   * AD Connector アカウントは、既定の MSOL_ アカウントではなくなりました。
   * サーバーがステージング モードに設定されています。
   * ユーザーの書き戻し機能を有効にしました。
@@ -292,7 +290,7 @@ Azure AD Connect Sync
 * トラブルシューティングのための新しいコマンドレット Invoke-ADSyncDiagnostics を追加しました。パスワード ハッシュ同期に関する問題の診断に役立てることができます。 コマンドレットの使用の詳細については、「[Azure AD Connect Sync を使用したパスワード同期のトラブルシューティング](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnectsync-troubleshoot-password-synchronization)」を参照してください。
 * Azure AD Connect で新たに、オンプレミスの AD と Azure AD との間で "メールが有効なパブリック フォルダ" オブジェクトの同期がサポートされます。 この機能は、Azure AD Connect ウィザードのオプション機能から有効にできます。 この機能の詳細については、「[Office 365 Directory Based Edge Blocking support for on-premises Mail Enabled Public Folders (オンプレミスのメールが有効なパブリック フォルダーに対する Office 365 ディレクトリ ベース エッジ ブロック サポート)](https://blogs.technet.microsoft.com/exchange/2017/05/19/office-365-directory-based-edge-blocking-support-for-on-premises-mail-enabled-public-folders)」を参照してください。
 * Azure AD Connect では、オンプレミスの AD から同期するために AD DS アカウントが必要となります。 以前は、簡易モードを使用して Azure AD Connect をインストールした場合、エンタープライズ管理者アカウントの資格情報を指定でき、必要な AD DS アカウントは Azure AD Connect によって作成されました。 しかし、カスタム インストールを行う場合や、既存のデプロイにフォレストを追加する場合は、AD DS アカウントを自分で指定する必要がありました。 今後は、カスタム インストールの際に、エンタープライズ管理者アカウントの資格情報を指定することで、必要な AD DS アカウントを Azure AD Connect で自動的に作成することもできます。
-* Azure AD Connect で新たに SQL AOA がサポートされます。 Azure AD Connect をインストールする前に SQL を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
+* Azure AD Connect で新たに SQL AOA がサポートされます。 Azure AD Connect をインストールする前に SQL AOA を有効にする必要があります。 インストール中、指定された SQL インスタンスで SQL AOA が有効であるかどうかが Azure AD Connect によって検出されます。 SQL AOA が有効である場合、Azure AD Connect はさらに、SQL AOA が、同期レプリケーションまたは非同期レプリケーションを使用するように構成されているかどうかを調べます。 可用性グループ リスナーを設定するときは、RegisterAllProvidersIP プロパティを 0 に設定することをお勧めします。 Azure AD Connect は現在、SQL Native Client を使用して SQL に接続していますが、SQL Native Client は、MultiSubNetFailover プロパティの使用をサポートしていないためです。
 * Azure AD Connect サーバーのデータベースとして LocalDB を使用していて、サイズの上限である 10 GB に達した場合、それ以降、同期サービスは起動しません。 以前のバージョンでは、LocalDB で ShrinkDatabase 操作を実行し、同期サービスを起動できるだけの DB 空き領域を回収する必要があります。 その後は、Synchronization Service Manager を使用して実行履歴を削除し、DB 空き領域をさらに回収することができます。 新しいバージョンでは、Start-ADSyncPurgeRunHistory コマンドレットを使用して実行履歴データを LocalDB から消去し、DB 空き領域を回収することができます。 このコマンドレットは、同期サービスが実行されていないときに使用できるオフライン モードにも対応しています (-offline パラメーターを指定)。 注: オフライン モードは、同期サービスが実行されておらず、なおかつ使用されているデータベースが LocalDB である場合にのみ使用できます。
 * 新しいバージョンの Azure AD Connect では、必要な記憶域スペースを小さくするために、同期エラーの詳細情報は、圧縮してから LocalDB/SQL データベースに格納されます。 以前のバージョンの Azure AD Connect からこのバージョンにアップグレードすると、既に存在している同期エラー情報に対して一回限りの圧縮が実行されます。
 * 以前のバージョンでは、OU のフィルタリング構成を更新した後、フル インポートを手動で実行して、ディレクトリ同期の対象に既存のオブジェクトを適切に含めたり、対象から除外したりする必要があります。 新しいバージョンの Azure AD Connect では、次の同期サイクルの間にフル インポートが自動的にトリガーされます。 また、フル インポートは、更新の影響を受けた AD コネクタにのみ適用されます。 注: この機能強化が適用されるのは、Azure AD Connect ウィザードを使用して行われた OU のフィルタリングの更新だけです。 Synchronization Service Manager を使って行われた OU のフィルタリングの更新には適用されません。

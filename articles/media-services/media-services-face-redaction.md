@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7f5d43e337b610f0bcf8273432b4dcd0a757937d
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 6095135e49a6da3ef37fb566c2fb56702cfd70c9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
@@ -314,8 +314,7 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
         }
     }
 
-## <a name="next-step"></a>次のステップ
-Media Services のラーニング パスを確認します。
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

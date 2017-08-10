@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory の管理者ロールの割り当て | Microsoft Docs"
-description: "Azure Active Directory で管理者ロールが使用できる機能と、管理者ロールを割り当てる方法について説明します。"
+description: "管理者ロールを使って、ユーザーの作成または編集、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持ちます。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,26 +12,30 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 07/25/2017
 ms.author: curtand
-ms.reviewer: 
+ms.reviewer: Vince.Smith
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: e7444e153c2ee7b4669fb814ae62b152a0fd89d8
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 042e2f4117a35e80694a1643dd95fa54d508f1f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-assign-admin-roles-azure-portal.md)
+> * [Azure ポータル]()
 > * [Azure クラシック ポータル](active-directory-assign-admin-roles.md)
 >
 >
 
-Azure Active Directory (Azure AD) を使用すると、各種役割ごとに別々の管理者を指定することができます。 これらの管理者は、Azure ポータルまたは Azure クラシック ポータルでさまざまな機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Windows PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
+各機能ごとに別々の管理者を指定するには、Azure Active Directory (Azure AD) を使います。 これらの管理者は、Azure Portal または Azure クラシック ポータルで選択した機能にアクセスでき、ロールに応じて、ユーザーの作成または編集、他のユーザーへの管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 Office 365 ポータルと Azure クラシック ポータルのどちらで割り当てたのか、あるいは Microsoft PowerShell 用 Azure AD モジュールを使用して割り当てたのかに関係なく、管理者ロールが割り当てられたユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持つことになります。
+
+> [!IMPORTANT]
+> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターで管理者ロールを割り当てる方法については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles-azure-portal.md)」を参照してください。
+
 
 次の管理者ロールを使用できます。
 

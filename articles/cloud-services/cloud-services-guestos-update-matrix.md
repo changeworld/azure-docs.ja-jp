@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 7/7/2017
+ms.date: 7/26/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d22ecfd1c439f1af63f07ef472ceedb029f9d6a6
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: cd61a785c415e945a33b0727004338e01c67f3ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
@@ -38,6 +38,9 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+###### <a name="july-19-2017"></a>**2017 年 7 月 19 日**
+7 月のゲスト OS ロールアウトは、7 月 19 日に開始し、8 月 8 日にリリースされる予定です。
+
 ###### <a name="july-7-2017"></a>**2017 年 7 月 7 日**
 6 月のゲスト OS がリリースされました。
 
@@ -107,8 +110,6 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 |~~WA-GUEST-OS-4.36_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 |~~WA-GUEST-OS-4.35_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
 |~~WA-GUEST-OS-4.34_201607-01~~ |2016 年 8 月 8 日 |2016 年 11 月 13 日 |TBD |
-|~~WA-GUEST-OS-4.33_201606-01~~ |2016 年 7 月 13 日 |2016 年 10 月 13 日 |TBD |
-
 
 
 ## <a name="family-3-releases"></a>ファミリ 3 のリリース
@@ -133,8 +134,6 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 |~~WA-GUEST-OS-3.43_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 |~~WA-GUEST-OS-3.42_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
 |~~WA-GUEST-OS-3.41_201607-01~~ |2016 年 8 月 8 日 |2016 年 11 月 13 日 |TBD |
-|~~WA-GUEST-OS-3.40_201606-01~~ |2016 年 7 月 13 日 |2016 年 10 月 13 日 |TBD |
-
 
 
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
@@ -160,7 +159,6 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 |~~WA-GUEST-OS-2.55_201609-01~~ |2016 年 10 月 13 日 |2017 年 1 月 14 日 |TBD |
 |~~WA-GUEST-OS-2.54_201608-01~~ |2016 年 9 月 13 日 |2016 年 12 月 16 日 |TBD |
 |~~WA-GUEST-OS-2.53_201607-01~~ |2016 年 8 月 8 日 |2016 年 11 月 13 日 |TBD |
-|~~WA-GUEST-OS-2.52_201606-01~~ |2016 年 7 月 13 日 |2016 年 10 月 13 日 |TBD |
 
 
 
@@ -183,7 +181,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 **無効になる**日から**有効期限**までの間に一定の期間を設けているため、新しいゲスト OS に簡単に切り替えることができます。 ゲスト OS として " *自動* " バージョンを使用していると、常に最新バージョンに維持されるため、期限切れを心配する必要はありません。
 
-**有効期限** を過ぎると、そのゲスト OS を引き続き使用しているクラウド サービスが停止、削除、または強制的にアップグレードされます。 提供終了ポリシーの詳細については、[こちら][retirepolicy]を参照してください。
+**有効期限**を過ぎると、そのゲスト OS を引き続き使用しているクラウド サービスが停止、削除、または強制的にアップグレードされます。 提供終了ポリシーの詳細については、[こちら][retirepolicy]を参照してください。
 
 ## <a name="guest-os-family-version-explanation"></a>ゲスト OS ファミリ、バージョンの説明
 ゲスト OS ファミリは Microsoft Windows Server のリリース バージョンに基づいています。 ゲスト OS は、Azure Cloud Services が実行される、基になるオペレーティング システムです。 各ゲスト OS には、ファミリ、バージョン、リリース番号があります。

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 43acd0e8e6b106013fc4491e3785f6efefc51493
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 1031cd63dede9ed202fdc11b153a550766d9cb19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -131,7 +130,7 @@ Azure アカウントをお持ちでない場合は、 [無料試用版にサイ
 > 
 > 
 
-$200 相当の Azure クレジットを利用できるよう、この記事の最後にある「Azure アカウントのクリーンアップ」セクションの手順を忘れずに実行してください。
+Azure クレジットを利用できるよう、この記事の最後にある「Azure アカウントのクリーンアップ」セクションの手順を忘れずに実行してください。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>チュートリアルに必要な Azure リソースのプロビジョニング
 このチュートリアルでは、"*入口*" と "*出口*" のデータ ストリームを受信するために、2 つのイベント ハブが必要となります。 Stream Analytics ジョブの結果は Azure SQL Database で出力します。 また、車両登録に関する参照データは Azure Storage に格納します。

@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 79b0405f57fd2221f897ded042a111236006c6e0
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 35dcbb91e6af1480685c9fd5b829c54277c1c605
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="use-apache-sqoop-to-import-and-export-data-between-hadoop-on-hdinsight-and-sql-database"></a>Apache Sqoop を使用して、HDInsight の Hadoop と SQL Database の間でデータをインポートおよびエクスポートする
@@ -46,7 +46,7 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 2. 次のコマンドを使用して FreeTDS をインストールします。
 
     ```bash
-    sudo apt install --assume-yes install freetds-dev freetds-bin
+    sudo apt --assume-yes install freetds-dev freetds-bin
     ```
 
     FreeTDS は、SQL Database に接続する際のいくつかの手順で使用します。
@@ -118,10 +118,10 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 2. **hivesampletable** から **mobiledata** テーブルにデータをエクスポートするには、次のコマンドを使用します。
 
     ```bash
-    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasbs:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
+    sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> -P --table 'mobiledata' --export-dir 'wasb:///hive/warehouse/hivesampletable' --fields-terminated-by '\t' -m 1
     ```
 
-    このコマンドによって、**sqooptest** データベースに接続するように Sqoop に指示します。 Sqoop は次に、**wasbs:///hive/warehouse/hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
+    このコマンドによって、**sqooptest** データベースに接続するように Sqoop に指示します。 Sqoop は次に、**wasb:///hive/warehouse/hivesampletable** から **mobiledata** テーブルにデータをエクスポートします。
 
     > [!IMPORTANT]
     > クラスターの既定のストレージが Azure ストレージ アカウントの場合、`wasb:///` を使用します。 Azure Data Lake Store の場合、`adl:///` を使用します。
@@ -144,10 +144,10 @@ Azure HDInsight の Hadoop クラスターと Azure SQL Database または Micro
 
 ## <a name="sqoop-import"></a>Sqoop のインポート
 
-1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasbs:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
+1. 次のコマンドを使用して、SQL Database の **mobiledata** テーブルから HDInsight の **wasb:///tutorials/usesqoop/importeddata** ディレクトリにデータをインポートします。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
     データ内のフィールドはタブ文字で区切られていて、行は改行文字で終わっています。
@@ -194,7 +194,7 @@ Sqoop を使用すると、Azure でホストされているデータ センタ�
 * HDInsight から SQL Server に接続するときに、SQL Server の IP アドレスの使用が必要な場合があります。 次に例を示します。
 
     ```bash
-    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasbs:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
+    sqoop import --connect 'jdbc:sqlserver://10.0.1.1:1433;database=sqooptest' --username <adminLogin> --password <adminPassword> --table 'mobiledata' --target-dir 'wasb:///tutorials/usesqoop/importeddata' --fields-terminated-by '\t' --lines-terminated-by '\n' -m 1
     ```
 
 ## <a name="limitations"></a>制限事項

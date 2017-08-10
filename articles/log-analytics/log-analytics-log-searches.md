@@ -12,17 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2017
+ms.date: 07/26/2017
 ms.author: bwren
-ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6dbe7713c48a60974f1026dddc8ee9d2aeb01708
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
-# <a name="find-data-using-log-searches"></a>ログ検索を使用してデータを探す
+# <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
+
+>[!NOTE]
+> この記事では、現行のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[Log Analytics でのログ検索について (新)](log-analytics-log-search-new.md) に関するページをご覧ください。
+
 
 Log Analytics の中心にあるのは、環境内のさまざまなソースから収集したコンピューター データを組み合わせて相互の関係を比較できるログ検索機能です。 各種のソリューションも、特定の問題領域に関するj測定基準を得るためのログ検索機能を備えています。
 
