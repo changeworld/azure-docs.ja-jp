@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 6da663ea282e09b01ce380827fa7e31505712516
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 964b39053cf91285202f3af165f4313a15e9f9ee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>Azure App Service Web Apps on Linux での SSH のサポート
@@ -56,7 +55,7 @@ SSH クライアント接続を行うには、メイン サイトを開始する
 
 Azure ポータルでのコンテナーとクライアント間の SSH 通信をカスタム Docker イメージでサポートするために、Docker イメージに対して次の手順を実行します。 
 
-これらの手順は、Azure App Service レポジトリに例として示されています ([こちら](https://github.com/Azure-App-Service/node/tree/master/4.4.7-1)を参照してください)。
+これらの手順は、Azure App Service レポジトリに例として示されています ([こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3/)を参照してください)。
 
 1. イメージ用の Dockerfile ファイルの [`RUN` 命令](https://docs.docker.com/engine/reference/builder/#run)に `openssh-server` のインストールを含め、ルート アカウントのパスワードとして `"Docker!"` を設定します。 
 
@@ -90,7 +89,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
     EXPOSE 2222 80
     ```
 
-4. ssh サービスが開始されることを確認します。 [こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3-1/init_container.sh)の例では、*/bin* ディレクトリのシェル スクリプトを使用しています。
+4. ssh サービスが開始されることを確認します。 [こちら](https://github.com/Azure-App-Service/node/blob/master/6.9.3/startup/init_container.sh)の例では、*/bin* ディレクトリのシェル スクリプトを使用しています。
 
     ```bash
     #!/bin/bash

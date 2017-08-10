@@ -108,7 +108,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_samlbase.png)
 
-3. **[AppBlade Domain and URLs] (AppBlade のドメインと URL)** セクションで、次の手順を実行します。
+3. **[AppBlade Domain and URLs] \(AppBlade のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-appblade-tutorial/tutorial_appblade_url.png)
 
@@ -125,7 +125,7 @@ AppBlade で Azure AD のシングル サインオンを構成してテストす
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-appblade-tutorial/tutorial_general_400.png)
 
-6. **AppBlade** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [AppBlade サポート チーム](mailto:support@appblade.com)に送信する必要があります。 また、**[SSO Issuer URL] (SSO 発行者の URL)** を `https://appblade.com/saml` として構成することも依頼してください。 この設定は、シングル サインオンが動作するために必要です。
+6. **AppBlade** 側にシングル サインオンを構成するには、ダウンロードされた**メタデータ XML** を [AppBlade サポート チーム](mailto:support@appblade.com)に送信する必要があります。 また、**[SSO Issuer URL] \(SSO 発行者の URL)** を `https://appblade.com/saml` として構成することも依頼してください。 この設定は、シングル サインオンが動作するために必要です。
 
 
 > [!TIP]

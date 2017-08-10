@@ -138,7 +138,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     <li>@Html.ActionLink("Create queue", "CreateQueue", "Queues")</li>
     ```
 
-1. アプリケーションを実行して **[Create queue] (キューの作成)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Create queue] \(キューの作成)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
   
     ![キューの作成](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
@@ -227,7 +227,7 @@ Azure Queue Storage は、アプリケーション コンポーネント間の�
     <li>@Html.ActionLink("Add message", "AddMessage", "Queues")</li>
     ```
 
-1. アプリケーションを実行して **[Add message] (メッセージの追加)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
+1. アプリケーションを実行して **[Add message] \(メッセージの追加)** を選択し、次のスクリーンショットと同様の結果が表示されることを確認します。
   
     ![メッセージの追加](./media/vs-storage-aspnet-getting-started-queues/add-message-results.png)
 

@@ -5,21 +5,21 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: harshja
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/02/2017
+ms.date: 07/02/2017
 ms.author: kgremban
-ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: dc49397f76f982cc7d35bbe3e073cb828a4965c6
+ms.reviewer: harshja
+ms.custom: it-pro; oldportal
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: ea97fdc8d146ed524a932018b572ceda0982738b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -44,17 +44,17 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
    | ポート番号 | 用途 |
    | --- | --- |
-   | 80 | SSL 証明書検証中の、証明書失効リスト (CRL) のダウンロード |
+   | 80 | SSL 証明書を検証する際に証明書失効リスト (CRL) をダウンロードする |
    | 443 | アプリケーション プロキシ サービスとのすべての送信通信 |
 
    ご利用のファイアウォールが送信元ユーザーに応じてトラフィックを監視している場合は、Network Service として実行されている Windows サービスを送信元とするトラフィックに対してこれらのポートを開放します。
 
    > [!IMPORTANT]
-   > テーブルには、バージョンが 1.5.132.0 以降のコネクタのポートの要件が反映されます。 コネクタのバージョンが古い場合は、5671、8080、9090、9091、9350、9352、および 10100 - 10120 のポートも有効にする必要があります。
+   > テーブルには、バージョン 1.5.132.0 以降のコネクタのポート要件が反映されます。 コネクタのバージョンがこれより古い場合は、5671、8080、9090、9091、9350、9352、および 10100 - 10120 ポートも有効にする必要があります。
    >
    >コネクタを最新バージョンに更新する方法の詳細については、「[Azure AD アプリケーション プロキシ コネクタを理解する](application-proxy-understand-connectors.md#automatic-updates)」を参照してください。
 
-2. ファイアウォールまたはプロキシで DNS ホワイトリストを許可している場合は、msappproxy.net と servicebus.windows.net への接続をホワイトリストに登録できます。 許可していない場合は、毎週更新される [Azure DataCenter IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。
+2. ファイアウォールまたはプロキシが DNS ホワイトリストを許可している場合は、msappproxy.net と servicebus.windows.net への接続をホワイトリストに登録できます。 そうでない場合は、毎週更新される [Azure DataCenter IP 範囲](https://www.microsoft.com/download/details.aspx?id=41653)へのアクセスを許可する必要があります。
 
 3. [Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使った、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。
 
@@ -76,13 +76,13 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
 
    * Azure AD グローバル管理者の資格情報を指定します。 グローバル管理者のテナントは、Microsoft Azure の資格情報とは異なる場合があります。
    * コネクタを登録する管理者が属しているディレクトリは、アプリケーション プロキシ サービスを有効にしたディレクトリと同じになるようにしてください。 たとえば、テナントのドメインが contoso.com の場合、管理者は admin@contoso.com またはそのドメイン上の他のエイリアスであることが必要です。
-   * コネクタをインストールするサーバーで **[IE セキュリティ強化の構成]** を **[オン]** に設定している場合、登録画面がブロックされることがあります。 エラー メッセージに示された指示に従って、アクセスを許可してください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
+   * サーバーで **[IE セキュリティ強化の構成]** を **[オン]** に設定している場合、登録画面がブロックされることがあります。 アクセスを許可するには、エラー メッセージに示された指示に従ってください。 Internet Explorer セキュリティ強化の構成が無効になっていることを確認します。
    * コネクタの登録が成功しない場合は、「 [アプリケーション プロキシのトラブルシューティング](active-directory-application-proxy-troubleshoot.md)」をご覧ください。  
 4. インストールが完了すると、次に示す 2 つの新しいサービスがサーバーに追加されます。
 
    * **Microsoft AAD アプリケーション プロキシ コネクタ** : 接続を有効にします。
 
-     * **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター** : 定期的にコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新する自動更新サービスです。
+     * **Microsoft AAD アプリケーション プロキシ コネクタ アップデーター**は自動更新サービスです。 定期的にコネクタの新しいバージョンをチェックし、必要に応じてコネクタを更新します。
 
      ![App Proxy Connector services - screenshot](./media/active-directory-application-proxy-enable/app_proxy_services.png)
 5. インストール ウィンドウで、 **[完了]** をクリックします。

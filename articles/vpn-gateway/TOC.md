@@ -17,7 +17,6 @@
 ### [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 ## ポイント対サイト接続の構成
 ### [Azure ポータル](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 ### [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
@@ -59,7 +58,6 @@
 ### [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
 ### [PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
 ### [PowerShell (クラシック)](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
-## [VPN ゲートウェイの構成 (クラシック)](vpn-gateway-configure-vpn-gateway-mp.md)
 ## [ゲートウェイの SKU (旧)](vpn-gateway-about-skus-legacy.md)
 ## サード パーティ VPN デバイスの構成
 ### [概要と Azure の構成](vpn-gateway-3rdparty-device-config-overview.md)
@@ -91,5 +89,6 @@
 ## [ブログ](https://azure.microsoft.com/blog/topics/networking)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesVirtualNetwork)
 ## [料金](https://azure.microsoft.com/pricing/details/vpn-gateway)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [SLA](https://azure.microsoft.com/support/legal/sla)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=vpn-gateway)

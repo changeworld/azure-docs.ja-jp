@@ -101,3 +101,4 @@
 ## [次のステップ](azure-operations-guide.md#next-steps)
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

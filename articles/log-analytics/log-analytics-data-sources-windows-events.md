@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 07/12/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 653696779e612726ed5b75829a5c6ed2615553d7
-ms.openlocfilehash: b6627ed7e3b08e0a94dec229d735114b3ed1b9df
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 1cdaa8c4bf511a07383023f1baf79449ef7fdd35
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
@@ -71,10 +70,21 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 | Type=Event &#124; Measure count() by Source |ソース別の Windows イベントの数。 |
 | Type=Event EventLevelName=error &#124; Measure count() by Source |ソース別の Windows エラー イベントの数。 |
 
+
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
+>
+>| クエリ | Description |
+|:---|:---|
+| イベント |すべての Windows イベント。 |
+| Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |
+| Event &#124; summarize count() by Source |ソース別の Windows イベントの数。 |
+| Event &#124; where EventLevelName == "error" &#124; summarize count() by Source |ソース別の Windows エラー イベントの数。 |
+
+
 ## <a name="next-steps"></a>次のステップ
 * 分析のために別の [データ ソース](log-analytics-data-sources.md) を収集するように Log Analytics を構成します。
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用し、イベント レコードを個別のフィールドに解析します。
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](log-analytics-data-sources-performance-counters.md) を構成します。
-
 

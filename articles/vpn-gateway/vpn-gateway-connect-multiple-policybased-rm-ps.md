@@ -15,17 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 1a2e9af88c63d00cf6d08f5b1df24e2edcce9232
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
-この記事では、S2S VPN 接続上のカスタム IPsec/IKE ポリシーを利用して、Azure ルート ベース VPN ゲートウェイを構成し、複数のオンプレミス ポリシー ベース VPN デバイスに接続する手順を説明します。
+この記事は、S2S VPN 接続のカスタム IPsec/IKE ポリシーを利用して、複数のオンプレミス ポリシー ベース VPN デバイスに接続するように Azure ルート ベース VPN ゲートウェイを構成するのに役立ちます。
 
 ## <a name="about-policy-based-and-route-based-vpn-gateways"></a>ポリシー ベースおよびルート ベースの VPN ゲートウェイについて
 
@@ -37,10 +36,10 @@ ms.lasthandoff: 06/14/2017
 次の図では、2 つのモデルが強調表示されています。
 
 ### <a name="policy-based-vpn-example"></a>ポリシー ベース VPN 例
-![policybased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
+![ポリシー ベース](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedmultisite.png)
 
 ### <a name="route-based-vpn-example"></a>ルート ベース VPN の例
-![routebased](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
+![ルート ベース](./media/vpn-gateway-connect-multiple-policybased-rm-ps/routebasedmultisite.png)
 
 ### <a name="azure-support-for-policy-based-vpn"></a>ポリシー ベース VPN の Azure のサポート
 現在、Azure では、ルート ベース VPN ゲートウェイとポリシー ベース VPN ゲートウェイの両方の VPN ゲートウェイ モードをサポートしています。 これらは、異なる内部プラットフォームに基づいて構築され、結果として異なる仕様になります。
@@ -49,25 +48,25 @@ ms.lasthandoff: 06/14/2017
 | ---                      | ---                         | ---                                      |
 | **Azure ゲートウェイ SKU**    | 基本                       | Basic、Standard、HighPerformance         |
 | **IKE バージョン**          | IKEv1                       | IKEv2                                    |
-| **最大S2S 接続** | **1**                       | Basic/Standard:10<br> HighPerformance:30 |
+| **最大S2S 接続** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
 
 カスタムの IPsec/IKE ポリシーでは、Azure ルート ベース VPN ゲートウェイを構成し、オプション "**PolicyBasedTrafficSelectors**" を指定してプレフィクス ベースのトラフィック セレクターを使用し、オンプレミス ポリシー ベース VPN デバイスに接続できるようになりました。 この機能では、Azure 仮想ネットワークおよび VPN ゲートウェイから複数のオンプレミス ポリシー ベース VPN/ファイアウォール デバイスに接続し、現在の Azure ポリシー ベース VPN ゲートウェイから単一の接続制限をなくすことができます。
 
 > [!IMPORTANT]
-> 1. この接続を有効にするには、オンプレミス ポリシー ベース VPN デバイスが **IKEv2** をサポートし、Azure ルートベース VPN ゲートウェイに接続する必要があります。 VPN デバイスの仕様で確認してください。
+> 1. この接続を有効にするには、オンプレミス ポリシー ベース VPN デバイスが **IKEv2** をサポートし、Azure ルートベース VPN ゲートウェイに接続する必要があります。 VPN デバイスの仕様を確認してください。
 > 2. このメカニズムを使用してポリシー ベース VPN デバイスを介して接続するオンプレミス ネットワークは、Azure 仮想ネットワークにのみ接続できます。**同じ Azure VPN ゲートウェイを介して別のオンプレミス ネットワークまたは仮想ネットワークには移行できません**。
-> 3. 構成オプションは、カスタムの IPsec/IKE 接続ポリシーの一部です。 ポリシー ベースのトラフィックのセレクター オプションを有効にした場合は、(IPsec/IKE 暗号化と整合性アルゴリズム、キーの強度、および SA の有効期間) の完全なポリシーを指定する必要があります。
+> 3. 構成オプションは、カスタムの IPsec/IKE 接続ポリシーの一部です。 ポリシー ベースのトラフィック セレクター オプションを有効にした場合は、完全なポリシー (IPsec/IKE 暗号化と整合性アルゴリズム、キーの強度、および SA の有効期間) を指定する必要があります。
 
-次の図は、Azure VPN ゲートウェイを介した移行ルーティングがポリシー ベース オプションで動作しない理由を示しています。
+以下の図は、Azure VPN ゲートウェイを介した移行ルーティングがポリシー ベース オプションで動作しない理由を示しています。
 
-![policybasedtransit](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
+![ポリシー ベースの移行](./media/vpn-gateway-connect-multiple-policybased-rm-ps/policybasedtransit.png)
 
 図に示すように、Azure VPN ゲートウェイには、仮想ネットワークから各オンプレミス ネットワーク プレフィックスへのトラフィック セレクターはありますが、クロス接続のプレフィックスはありません。 たとえば、オンプレミス サイト 2、サイト 3、およびサイト 4 は、それぞれが VNet1 と通信できますが、Azure VPN ゲートウェイ経由で相互に接続することはできません。 図では、この構成の下にある Azure VPN ゲートウェイでは使用できない交差接続トラフィック セレクターを示しています。
 
 ## <a name="configure-policy-based-traffic-selectors-on-a-connection"></a>接続でのポリシー ベース トラフィック セレクターの構成
 
-この記事の指示では、次の図に示すように、[S2S VPN または VNet 対 VNet 接続用のIPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページに従って、S2S VPN 接続を確立します。
+この記事の手順では、「[S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)」に示されている同じ例に従って、S2S VPN 接続を確立します。 これを次の図に示します。
 
 ![s2s ポリシー](./media/vpn-gateway-connect-multiple-policybased-rm-ps/s2spolicypb.png)
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 06/14/2017
 
 ## <a name="enable-policy-based-traffic-selectors-on-a-connection"></a>接続でのポリシー ベース トラフィック セレクターの有効化
 
-このセクションの「[IPsec/IKE ポリシーの構成の記事のパート 3](vpn-gateway-ipsecikepolicy-rm-powershell.md)」を完了したことを確認してください。 次の例では、同じパラメーターと手順を使用します。
+このセクションの「[IPsec/IKE ポリシーの構成の記事のパート 3](vpn-gateway-ipsecikepolicy-rm-powershell.md)」を完了したことを確認してください。 以下の例では、同じパラメーターと手順を使用します。
 
 ### <a name="step-1---create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>手順1 - 仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
 
@@ -110,7 +109,7 @@ $LNGPrefix61   = "10.61.0.0/16"
 $LNGPrefix62   = "10.62.0.0/16"
 $LNGIP6        = "131.107.72.22"
 ```
-リソース マネージャー コマンドレットを使用するように PowerShell モードを切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
+Resource Manager コマンドレットを使用する場合は、必ず PowerShell モードに切り替えてください。 詳細については、「 [リソース マネージャーでの Windows PowerShell の使用](../powershell-azure-resource-manager.md)」を参照してください。
 
 PowerShell コンソールを開き、アカウントに接続します。 接続するには、次のサンプルを参照してください。
 
@@ -121,7 +120,7 @@ New-AzureRmResourceGroup -Name $RG1 -Location $Location1
 ```
 
 #### <a name="2-create-the-virtual-network-vpn-gateway-and-local-network-gateway"></a>2.仮想ネットワーク、VPN ゲートウェイ、およびローカル ネットワーク ゲートウェイを作成する
-次の例では、仮想ネットワーク、3 つのサブネットを持つ TestVNet1、および VPN ゲートウェイを作成します。 値を代入するときは、ゲートウェイの名前を必ず GatewaySubnet にすることが重要です。 別の名前にすると、接続を作成できません。
+次の例は、3 つのサブネットを持つ仮想ネットワーク TestVNet1 と VPN ゲートウェイを作成します。 値を代入する場合は、ゲートウェイ サブネットの名前を必ず "GatewaySubnet" にすることが重要です。 別の名前にすると、ゲートウェイの作成は失敗します。
 
 ```powershell
 $fesub1 = New-AzureRmVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -140,14 +139,14 @@ New-AzureRmVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Locatio
 New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location $Location1 -GatewayIpAddress $LNGIP6 -AddressPrefix $LNGPrefix61,$LNGPrefix62
 ```
 
-### <a name="step-2---creat-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>手順 2 - IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
+### <a name="step-2---create-a-s2s-vpn-connection-with-an-ipsecike-policy"></a>手順 2 - IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
 
 #### <a name="1-create-an-ipsecike-policy"></a>1.IPsec/IKE ポリシーを作成する
 
 > [!IMPORTANT]
 > 接続で "UsePolicyBasedTrafficSelectors" オプションを有効にするために、IPsec/IKE ポリシーを作成する必要があります。
 
-次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
+次の例では、以下のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
 * IKEv2: AES256、SHA384、DHGroup24
 * IPsec: AES256、SHA256、PFS24、SA の有効期間 3600 秒および 2048KB
 
@@ -156,7 +155,7 @@ $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA38
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-policy-based-traffic-selectors-and-ipsecike-policy"></a>2.ポリシー ベースのトラフィックのセレクターと IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する
-S2S VPN 接続を作成し、上記で作成した IPsec/IKE ポリシーを適用します。 パラメーター "-UsePolicyBasedTrafficSelectors $True" を追加して、接続でポリシー ベース トラフィック セレクターを有効にします。
+S2S VPN 接続を作成し、前の手順で作成した IPsec/IKE ポリシーを適用します。 パラメーター "-UsePolicyBasedTrafficSelectors $True" を追加して、接続でポリシー ベース トラフィック セレクターを有効にします。
 
 ```powershell
 $vnet1gw = Get-AzureRmVirtualNetworkGateway -Name $GWName1  -ResourceGroupName $RG1
@@ -165,7 +164,7 @@ $lng6 = Get-AzureRmLocalNetworkGateway  -Name $LNGName6 -ResourceGroupName $RG1
 New-AzureRmVirtualNetworkGatewayConnection -Name $Connection16 -ResourceGroupName $RG1 -VirtualNetworkGateway1 $vnet1gw -LocalNetworkGateway2 $lng6 -Location $Location1 -ConnectionType IPsec -UsePolicyBasedTrafficSelectors $True -IpsecPolicies $ipsecpolicy6 -SharedKey 'AzureA1b2C3'
 ```
 
-手順を完了したら、S2S VPN 接続は、上記で定義された IPsec/IKE ポリシーを使用し、接続でポリシー ベース トラフィック セレクターを有効にします。 同じ手順を繰り返し、同じ Azure VPN ゲートウェイから追加のオンプレミス ポリシー ベース VPN デバイスへの接続を追加できます。
+手順が完了したら、S2S VPN 接続は、定義された IPsec/IKE ポリシーを使用し、接続でポリシー ベース トラフィック セレクターを有効にします。 同じ手順を繰り返し、同じ Azure VPN ゲートウェイから追加のオンプレミス ポリシー ベース VPN デバイスへの接続を追加できます。
 
 ## <a name="update-policy-based-traffic-selectors-for-a-connection"></a>接続でのポリシー ベース トラフィック セレクターの更新
 最後のセクションでは、既存の S2S VPN 接続のポリシー ベース トラフィック セレクター オプションを更新する方法を示します。

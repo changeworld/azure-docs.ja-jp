@@ -44,3 +44,4 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [サポートにお問い合せください](../azure-supportability/how-to-create-azure-support-request.md)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

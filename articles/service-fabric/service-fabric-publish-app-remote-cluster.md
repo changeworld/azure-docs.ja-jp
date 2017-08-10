@@ -21,8 +21,7 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/12/2017
 
 ---
-# Visual Studio を使用してアプリケーションのデプロイと削除を実行する
-<a id="deploy-and-remove-applications-using-visual-studio" class="xliff"></a>
+# <a name="deploy-and-remove-applications-using-visual-studio"></a>Visual Studio を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
 > * [PowerShell](service-fabric-deploy-remove-applications.md)
 > * [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -34,14 +33,11 @@ ms.lasthandoff: 07/12/2017
 
 Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service Fabric クラスターへのアプリケーションの発行を反復可能な方法で簡単に実行できるうえに、スクリプト化することもできます。
 
-## 発行に必要なアーティファクトの概要
-<a id="the-artifacts-required-for-publishing" class="xliff"></a>
-### Deploy-FabricApplication.ps1
-<a id="deploy-fabricapplicationps1" class="xliff"></a>
+## <a name="the-artifacts-required-for-publishing"></a>発行に必要なアーティファクトの概要
+### <a name="deploy-fabricapplicationps1"></a>Deploy-FabricApplication.ps1
 これは、Service Fabric アプリケーションを発行するためのパラメーターとして発行プロファイルのパスを使用する PowerShell スクリプトです。 このスクリプトはアプリケーションの一部であるため、アプリケーションに必要であれば修正できます。
 
-### 発行プロファイル
-<a id="publish-profiles" class="xliff"></a>
+### <a name="publish-profiles"></a>発行プロファイル
 " **PublishProfiles** " という名前の Service Fabric アプリケーション プロジェクトのフォルダーには、次のようなアプリケーションを発行するための重要な情報を格納する XML ファイルが含まれています。
 
 * Service Fabric クラスターの接続パラメーター
@@ -50,15 +46,13 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
 
 既定で、アプリケーションには、Local.1Node.xml、Local.5Node.xml、Cloud.xml という 3 つの発行プロファイルが含まれます。 既定のファイルの 1 つをコピーして貼り付けることで、プロファイルを追加できます。
 
-### アプリケーション パラメーター ファイル
-<a id="application-parameter-files" class="xliff"></a>
+### <a name="application-parameter-files"></a>アプリケーション パラメーター ファイル
 **ApplicationParameters** という Service Fabric アプリケーション プロジェクト内のフォルダーに、ユーザーが指定したアプリケーション マニフェストのパラメーター値用の XML ファイルが含まれています。 デプロイ設定に複数の値を使用できるように、アプリケーション マニフェスト ファイルをパラメーター化できます。 アプリケーションのパラメーター化に関する詳細については、「 [Service Fabric で複数の環境を管理する](service-fabric-manage-multiple-environment-app-configuration.md)」を参照してください。
 
 > [!NOTE]
 > アクター サービスの場合、エディターや発行ダイアログ ボックスでファイルを編集する前に、プロジェクトをビルドする必要があります。 これは、マニフェスト ファイルの一部がビルド時に生成されるためです。
 
-## [Service Fabric アプリケーションの発行] ダイアログ ボックスを使用してアプリケーションを発行する
-<a id="to-publish-an-application-using-the-publish-service-fabric-application-dialog-box" class="xliff"></a>
+## <a name="to-publish-an-application-using-the-publish-service-fabric-application-dialog-box"></a>[Service Fabric アプリケーションの発行] ダイアログ ボックスを使用してアプリケーションを発行する
 次の手順は、Visual Studio Service Fabric Tools によって提供される **[Service Fabric アプリケーションの発行]** ダイアログ ボックスを使用してアプリケーションを発行する方法を示しています。
 
 1. Service Fabric アプリケーション プロジェクトのショートカット メニューで **[発行...]** を選択すると、 **[Service Fabric アプリケーションの発行]** ダイアログ ボックスが表示されます。
@@ -94,8 +88,7 @@ Visual Studio の Azure Service Fabric 拡張機能を使用すると、Service 
    > 
 6. 必要な設定をすべて指定し終えたら、 **[発行]** をクリックし、選択した Service Fabric クラスターにアプリケーションを発行します。 指定した設定が、発行プロセスに適用されます。
 
-## (パーティ クラスターを含む) 任意のクラスター エンドポイントに発行する
-<a id="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters" class="xliff"></a>
+## <a name="publish-to-an-arbitrary-cluster-endpoint-including-party-clusters"></a>(パーティ クラスターを含む) 任意のクラスター エンドポイントに発行する
 Visual Studio の発行機能は、ご利用の Azure サブスクリプションの 1 つに関連付けられているリモート クラスターに発行するために最適化されています。 ただし、発行プロファイル XML を直接編集し、任意のエンドポイント (Service Fabric パーティ クラスターなど) に発行できます。 前述のように、**Local.1Node.xml**、**Local.5Node.xml**、**Cloud.xml** という 3 つの発行プロファイルが既定で提供されますが、別の環境向けに追加プロファイルを作成することもできます。 たとえば、パーティ クラスターに発行するために「 **Party.xml**」という名前のプロファイルを作成します。
 
 保護されていないクラスターに接続する場合、必要なものは、`partycluster1.eastus.cloudapp.azure.com:19000` など、クラスター接続エンドポイントだけです。 その場合、発行プロファイルの接続エンドポイントは次のようになります。
@@ -112,8 +105,7 @@ Visual Studio の発行機能は、ご利用の Azure サブスクリプショ�
 
   この場合、新しい発行プロファイルは既定のアプリケーション パラメーター ファイルの 1 つを指すことに注意してください。 同じアプリケーション構成を複数の環境に発行する場合、これは適切です。 一方、発行する環境ごとに異なる構成を用意する場合、それぞれ対応するアプリケーション パラメーター ファイルを作成すると合理的です。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 継続的な統合環境で発行プロセスを自動化する方法については、 [Service Fabric の継続的な統合のセットアップ](service-fabric-set-up-continuous-integration.md)に関するページを参照してください。
 
 [0]: ./media/service-fabric-publish-app-remote-cluster/PublishDialog.png

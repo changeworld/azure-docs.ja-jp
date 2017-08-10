@@ -9,14 +9,13 @@ ms.service: batch
 ms.devlang: multiple
 ms.topic: article
 ms.workload: na
-ms.date: 05/05/2017
+ms.date: 07/21/2017
 ms.author: markscu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: 5f37bc9dc3b754e7900883263a2b8fdcbf4b707f
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 9bf0ac322020d8a8453011c3207c1930175db6d3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -30,7 +29,7 @@ Azure Batch には Batch ワークロードのコストを減らす優先順位�
 
 優先順位の低い VM は、専用 VM よりも大幅にコストを抑えることができます。 料金について詳しくは、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」をご覧ください。
 
-優先順位の低い VM に関する追加の説明については、ブログ投稿の告知「[Batch computing at a fraction of the price](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-batch-low-priority-vms/preview/)」 (わずかな価格でのバッチ コンピューティング) をご覧ください。
+優先順位の低い VM に関する追加の説明については、ブログ投稿の告知「[Batch computing at a fraction of the price](https://azure.microsoft.com/blog/announcing-public-preview-of-azure-batch-low-priority-vms/)」 (わずかな価格でのバッチ コンピューティング) をご覧ください。
 
 > [!IMPORTANT]
 > 優先順位の低い VM は現在プレビューの段階であり、Batch で実行されるワークロードでのみ使用できます。 
@@ -172,6 +171,22 @@ VM では割り込みが発生することがあり、これが発生すると�
 -   その VM は事実上削除され、VM のローカルに保存されているすべてのデータが削除されます。
 -   プールは引き続き使用可能な優先順位の低いノードのターゲット数に達するよう試行します。 代替の容量が見つかると、ノードは ID を保持しつつ再初期化され、**作成中**状態、**開始**状態を経て、その後タスクをスケジュールできるようになります。
 -   割り込みの数は Azure Portal のメトリックとして使用できます。
+
+## <a name="metrics"></a>メトリック
+
+新しいメトリックは、優先順位の低いノードについて [Azure Portal](https://portal.azure.com) で使用可能です。 これらのメトリックは次のとおりです。
+
+- Low-Priority Node Count (優先順位の低いノードの数)
+- Low-Priority Core Count (優先順位の低いコアの数) 
+- Preempted Node Count (割り込まれたノードの数)
+
+Azure Portal でメトリックを表示するには、次の手順を実行します。
+
+1. ポータル内の Batch アカウントに移動し、Batch アカウントの設定を表示します。
+2. **[監視]** セクションから **[メトリック]** を選択します。
+3. **[利用可能なメトリック]** 一覧から目的のメトリックを選択します。
+
+![優先順位の低いノードのメトリック](media/batch-low-pri-vms/low-pri-metrics.png)
 
 ## <a name="next-steps"></a>次のステップ
 

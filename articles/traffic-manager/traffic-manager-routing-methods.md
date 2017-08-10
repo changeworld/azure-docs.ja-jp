@@ -3,7 +3,7 @@ title: "Azure Traffic Manager - トラフィック ルーティング方法 | Mi
 description: "この記事では、Traffic Manager で使用されるさまざまなトラフィック ルーティング方法について説明します。"
 services: traffic-manager
 documentationcenter: 
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 ms.assetid: db1efbf6-6762-4c7a-ac99-675d4eeb54d0
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/15/2017
+ms.date: 07/13/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 5a39ef3f0debb92a19015f9a2428a2c3ba95c621
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fe776e24a4f78b389c6096694055b38befa3c419
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -93,7 +93,7 @@ Traffic Manager は、インターネット待機時間テーブルを定期的�
 注意する点:
 
 * プロファイルに同一 Azure リージョン内の複数のエンドポイントが含まれている場合は、Traffic Manager では、そのリージョンで利用可能なエンドポイントにトラフィックが均等に分散されます。 リージョン内で別のトラフィック分散を使用する場合は、[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)を使用できます。
-* Traffic Manager では、特定の Azure リージョン内のすべての有効なエンドポイントの実行状況が低下している場合に、2 番目に近いエンドポイントではなく、他のすべての利用可能なエンドポイント間でトラフィックが振り分けられます。 このロジックで、2 番目に近いエンドポイントのオーバー ロードを回避することで、連鎖的な障害の発生を防止しています。 希望するフェールオーバー シーケンスを定義する場合は、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」を使用してください。
+* 最も近い Azure リージョン内のすべての有効なエンドポイントの機能が低下している場合は、Traffic Manager によって次に近い Azure リージョン内のエンドポイントにトラフィックが移動されます。 希望するフェールオーバー シーケンスを定義する場合は、「[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md)」を使用してください。
 * 外部エンドポイントまたは入れ子になったエンドポイントでパフォーマンス トラフィック ルーティング方法を使用する場合は、エンドポイントの場所を指定する必要があります。 デプロイメントに最も近い Azure リージョンを選択してください。 これらの場所は、インターネット待機時間テーブルでサポートされている値です。
 * エンドポイントを選択するアルゴリズムは確定的です。 同じクライアントからの反復 DNS クエリは、同じエンドポイントに送信されます。 通常、クライアントは、出張中に別の再帰 DNS サーバーを使用します。 このクライアントは、別のエンドポイントにルーティングされる可能性があります。 また、ルーティングは、インターネット待機時間テーブルの更新の影響を受ける場合もあります。 そのため、パフォーマンス トラフィック ルーティング方法では、クライアントが常に同じエンドポイントにルーティングされる保証はありません。
 * インターネット待機時間テーブルが変更されたときに、一部のクライアントが別のエンドポイントにルーティングされていることに気付く場合があります。 このルーティングの変更は、最新の待機時間データに基づいてより厳密に行われます。 これらの更新は、インターネットが継続的に発展する中で、パフォーマンス トラフィック ルーティングの精度を維持するために不可欠となります。

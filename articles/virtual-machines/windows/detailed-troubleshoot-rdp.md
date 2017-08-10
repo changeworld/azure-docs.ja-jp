@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: support-article
 ms.date: 05/31/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bd832efd3902dd61be1a8b64396eaadf1cd76e24
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 05517573232f5b5234364865d92d5a2d1b7096e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
@@ -120,6 +119,8 @@ RDP 接続には以下のコンポーネントが関連しています。
   * アクションが **[許可]** に設定されていることを確認し、[OK] をクリックして新しい受信規則を保存します。
 
 詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)
+
+NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
 
 ## <a name="source-5-windows-based-azure-vm"></a>ソース 5: Windows ベースの Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

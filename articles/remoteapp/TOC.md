@@ -71,5 +71,6 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureRemoteApp)
 ## [料金](https://azure.microsoft.com/pricing/details/remoteapp/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=remoteapp)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=remoteapp)

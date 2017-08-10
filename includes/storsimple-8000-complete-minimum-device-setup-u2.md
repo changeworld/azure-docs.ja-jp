@@ -1,8 +1,10 @@
 <!--author=alkohli last changed: 01/12/17-->
 
-#### StorSimple の最小デバイス セットアップを完了するには
-<a id="to-complete-the-minimum-storsimple-device-setup" class="xliff"></a>
+#### <a name="to-complete-the-minimum-storsimple-device-setup"></a>StorSimple の最小デバイス セットアップを完了するには
 
+   > [!NOTE]
+   > 最小デバイス セットアップが完了した後でデバイス名を変更することはできません。
+   
 1. **[デバイス]** ブレードの表形式のデバイス一覧で、デバイスを選択してクリックします。 デバイスの状態は "**セットアップの準備が完了しました**" になっています。 **[デバイスの構成]** ブレードが開きます。
 
      ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig1.png)
@@ -26,9 +28,6 @@
 1. **[OK]**をクリックします。 デバイス構成が開始されます。 デバイス構成が完了すると、通知が表示されます。 **[デバイス]** ブレードで、デバイスの状態が **[オンライン]** に変わります。
 
     ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig4.png)
-
-   > [!NOTE]
-   > **[デバイスの設定]** ブレードにアクセスすれば、他のすべてのデバイス設定をいつでも変更できます。
 
 <!--Link reference-->
 [Test]: https://technet.microsoft.com/library/dn715782(v=wps.630).aspx

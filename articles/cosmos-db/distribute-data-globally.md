@@ -14,20 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/14/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: c579b003052045cb78c922265ff1fc6d321a6f86
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
 Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の 1 つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 
 
-[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル分散](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](../cosmos-db/partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 Azure Cosmos DB は、クラウド生まれのサービスとして、最初からマルチテナントとグローバル分散を念頭に置いて入念に置いて設計されています。
+[Azure Cosmos DB](../cosmos-db/introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散型マルチモデル データベース サービスです。 Azure Cosmos DB は、ターン キー グローバル分散、[スループットとストレージの世界規模でのエラスティック スケーリング](../cosmos-db/partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。 Azure Cosmos DB は、クラウド生まれのサービスとして、最初からマルチテナントとグローバル分散を念頭に置いて入念に置いて設計されています。
 
-**1 つの Azure Cosmos DB コレクションをパーティション分割し、3 つの Azure リージョンに分散**
+**1 つの Azure Cosmos DB コレクションをパーティション分割し、複数の Azure リージョンに分散**
 
 ![パーティション分割され、3 つのリージョンに分散された Azure Cosmos DB コレクション](./media/distribute-data-globally/global-apps.png)
 
@@ -41,7 +40,7 @@ Azure Cosmos DB のターンキー グローバル分散により、開発者は
 Azure Cosmos DB には、地球規模のアプリケーションを簡単に作成できるようにするための以下の機能が用意されています。 これらの機能は、Azure Cosmos DB のリソース プロバイダー ベースの [REST API](https://docs.microsoft.com/rest/api/documentdbresourceprovider/) と Azure Portal で使用できます。
 
 ### <a id="RegionalPresence"></a>ユビキタスなリージョン プレゼンス 
-Azure では、新しいリージョンをオンラインにすることで、地理的プレゼンスを常に高めています。 Azure Cosmos DB は、すべての新しい Azure リージョンで既定で利用できます。 これにより、Azure がビジネス向けの新しいリージョンを開設するとすぐに、地理的リージョンを Azure Cosmos DB データベース アカウントに関連付けることができます。
+Azure では、[新しいリージョン](https://azure.microsoft.com/regions/)をオンラインにすることで、地理的プレゼンスを常に高めています。 Azure Cosmos DB は、すべての新しい Azure リージョンで既定で利用できます。 これにより、Azure がビジネス向けの新しいリージョンを開設するとすぐに、地理的リージョンを Azure Cosmos DB データベース アカウントに関連付けることができます。
 
 **すべての Azure リージョンで既定で利用できる Azure Cosmos DB**
 
@@ -228,7 +227,7 @@ Azure Cosmos DB では、スループット、待機時間、整合性、可用�
 ![Azure Cosmos DB の顧客が表示できる SLA メトリック](./media/distribute-data-globally/customer-slas.png)
 
 ## <a id="Next Steps"></a>次のステップ
-* Azure Portal を使用して Azure Cosmos DB アカウントにグローバル レプリケーションを実装する方法については、[Azure Portal を使用して Azure Cosmos DB グローバル データベース レプリケーションを実行する方法](../cosmos-db/tutorial-global-distribution-documentdb.md)に関する記事をご覧ください。
+* Azure Portal を使用して Azure Cosmos DB アカウントにグローバル レプリケーションを実装する方法については、[Azure Portal を使用して Azure Cosmos DB グローバル データベース レプリケーションを実行する方法](tutorial-global-distribution-documentdb.md)に関する記事をご覧ください。
 * Azure Cosmos DB を使用してマルチマスター アーキテクチャを実装する方法については、[Azure Cosmos DB を使用したマルチマスター データベース アーキテクチャ](multi-region-writers.md)に関する記事をご覧ください。
 * Azure Cosmos DB の自動および手動フェールオーバーのしくみの詳細については、[Azure Cosmos DB のリージョン内フェールオーバー](regional-failover.md)に関する記事をご覧ください。
 

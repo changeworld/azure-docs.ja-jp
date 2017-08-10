@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/14/2016
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8827793d771a2982a3dccb5d5d1674af0cd472ce
-ms.openlocfilehash: 397f3e75830acf46b29ac864c77ed3160f4e01e4
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 8cca857314ecf37ef51700fd25aef228515ecd0a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -73,7 +73,9 @@ Azure Resource Manager を介してデプロイされた VM のネイティブ I
 * Azure VMs は IPv6 を介して他の VM、他の Azure サービス、またはオンプレミスのデバイスに接続できません。 Azure Load Balancer とのみ IPv6 を介して通信できます。 ただし、これらの他のリソースとは IPv4 を使用して通信できます。
 * IPv4 のネットワーク セキュリティ グループ (NSG) 保護は、デュアル スタック (IPv4 + IPv6) デプロイメントでサポートされています。 NSG は IPv6 のエンドポイントには適用されません。
 * VM 上の IPv6 エンドポイントはインターネットに直接公開されません。 ロード バランサーの内側にあります。 ロード バランサー規則で指定されているポートのみ、IPv6 を介してアクセスできます。
-* IPv6 の IdleTimeout パラメーターの変更は、 **現在サポートされてません**。 既定では 4 分です。
+* IPv6 の IdleTimeout パラメーターの変更は、**現在サポートされていません**。 既定では 4 分です。
+* IPv6 の loadDistributionMethod パラメーターの変更は、**現在サポートされてません**。
+* 予約済み IPv6 IP (IPAllocationMethod = static) は、**現在サポートされていません**。
 
 ## <a name="next-steps"></a>次のステップ
 

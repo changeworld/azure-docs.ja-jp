@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: e62b9742875512e70e5369978c1c90bdc9c6c1cb
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 3fbb2f0629e510dfa9dac8e363eafb8e668e81d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="partitioning-in-azure-cosmos-db-using-the-documentdb-api"></a>DocumentDB API を使用した Azure Cosmos DB でのパーティション分割
@@ -77,7 +76,7 @@ ms.lasthandoff: 06/20/2017
 
 パーティション キーの選択が、アプリケーションのパフォーマンスにどのように影響するかを見てみましょう。
 
-## <a name="working-with-the-documentdb-sdks"></a>DocumentDB SDK の操作
+## <a name="working-with-the-azure-cosmos-db-sdks"></a>Azure Cosmos DB SDK の操作
 Azure Cosmos DB に、[REST API バージョン 2015-12-16](/rest/api/documentdb/)による自動パーティション分割のサポートが追加されました。 パーティション分割コンテナーを作成するには、サポートされたいずれかの SDK プラットフォーム(.NET、Node.js、Java、Python、MongoDB) で SDK バージョン 1.6.0 以降をダウンロードする必要があります。 
 
 ### <a name="creating-containers"></a>コンテナーの作成
@@ -207,7 +206,7 @@ IQueryable<DeviceReading> crossPartitionQuery = client.CreateDocumentQuery<Devic
 * `MaxDegreeOfParallelism` を設定すると、並列処理次数、つまりコンテナーのパーティションに同時ネットワーク接続できる数の上限を制御することができます。 このパラメーターを -1 に設定した場合、並列処理次数は SDK によって管理されます。 `MaxDegreeOfParallelism` が指定されていないか、0 (既定値) に設定されている場合、コンテナーのパーティションへのネットワーク接続は 1 つのみです。
 * `MaxBufferedItemCount` を設定すると、クエリの待ち時間とクライアント側のメモリ使用率のバランスを取ることができます。 このパラメーターを省略するか、このパラメーターに -1 を設定した場合、並列クエリの実行中にバッファリングされる項目の数は SDK によって管理されます。
 
-コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、DocumentDB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
+コレクションが同じ状態の場合、並列クエリでは順次実行と同じ順序で結果が返されます。 並べ替え (ORDER BY、TOP、またはその両方) を含むクロスパーティション クエリを実行したときは、Azure Cosmos DB SDK からパーティション全体に並列クエリが発行され、部分的に並べ替えられた結果がクライアント側でマージされて、グローバルに並べ替えられた結果が作成されます。
 
 ### <a name="executing-stored-procedures"></a>ストアド プロシージャの実行
 また、単一のアイテムでデバイスの集計や最新状態を管理するといった場合に、同じデバイス ID を持つドキュメントに対してアトミック トランザクションを実行することもできます。 
@@ -222,9 +221,9 @@ await client.ExecuteStoredProcedureAsync<DeviceReading>(
 次のセクションでは、単一パーティション コンテナーからパーティション分割コンテナーへの移動方法について説明します。
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、DocumentDB API で Cosmos DB コンテナー のパーティション分割を使用する方法の概要について説明しました。 [パーティション分割と水平スケーリング](../cosmos-db/partition-data.md)に関する記事で、Azure Cosmos DB API を使用したパーティション分割の概念とベスト プラクティスの概要についても確認してください。 
+この記事では、DocumentDB API で Azure Cosmos DB コンテナーのパーティション分割を使用する方法の概要について説明しました。 [パーティション分割と水平スケーリング](../cosmos-db/partition-data.md)に関する記事で、Azure Cosmos DB API を使用したパーティション分割の概念とベスト プラクティスの概要についても確認してください。 
 
-* Cosmos DB のスケールとパフォーマンスのテストを行います。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
+* Azure Cosmos DB のスケールとパフォーマンスのテストを行う。 サンプルについては、「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
 * [SDK](documentdb-sdk-dotnet.md) または [REST API](/rest/api/documentdb/) を使ってコーディングを開始します。
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します
 

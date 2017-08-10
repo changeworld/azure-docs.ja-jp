@@ -22,21 +22,15 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics" class="xliff"></a>
-
-# Log Analytics での OMS Agent for Linux を使用したカスタム JSON データ ソースの収集
+# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Log Analytics での OMS Agent for Linux を使用したカスタム JSON データ ソースの収集
 カスタム JSON データ ソースは、OMS Agent for Linux を使用して Log Analytics に収集できます。  これらのカスタム データ ソースは、[curl](https://curl.haxx.se/) や [FluentD の 300 を超えるプラグイン](http://www.fluentd.org/plugins/all)のいずれかなどの、JSON を返す単純なスクリプトでかまいません。 この記事では、このデータ収集に必要な構成について説明します。
 
 > [!NOTE]
 > カスタム JSON データには OMS Agent for Linux v1.1.0-217 以降が必要です
 
-<a id="configuration" class="xliff"></a>
+## <a name="configuration"></a>構成
 
-## 構成
-
-<a id="configure-input-plugin" class="xliff"></a>
-
-### 入力プラグインを構成する
+### <a name="configure-input-plugin"></a>入力プラグインを構成する
 
 Log Analytics で JSON データを収集するには、入力プラグイン内の FluentD タグの先頭に `oms.api.` を追加します。
 
@@ -68,9 +62,7 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
-<a id="configure-output-plugin" class="xliff"></a>
-
-### 出力プラグインを構成する 
+### <a name="configure-output-plugin"></a>出力プラグインを構成する 
 次の出力プラグイン構成を `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` 内のメインの構成に追加するか、または `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` に配置された個別の構成ファイルとして追加します
 
 ```
@@ -88,16 +80,12 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
 </match>
 ```
 
-<a id="restart-oms-agent-for-linux" class="xliff"></a>
-
-### OMS Agent for Linux を再起動する
+### <a name="restart-oms-agent-for-linux"></a>OMS Agent for Linux を再起動する
 次のコマンドを使用して、OMS Agent for Linux サービスを再起動します。
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
-<a id="output" class="xliff"></a>
-
-## 出力
+## <a name="output"></a>出力
 データは、`<FLUENTD_TAG>_CL` のレコードの種類を使用して Log Analytics で収集されます。
 
 たとえば、カスタム タグ `tag oms.api.tomcat` は `tomcat_CL` のレコードの種類を使用して Log Analytics で収集されます。  この種類のすべてのレコードを次のログ検索で取得できます。
@@ -116,8 +104,6 @@ Log Analytics で JSON データを収集するには、入力プラグイン内
 ```
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
  

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 44426571e3fd8aed090ccccc0dcc46dca8098906
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 0fa05ee6a2df13845024e770a82f50ab7f75bafd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
@@ -225,7 +225,7 @@ Azure AD Connect ツールでは、接続が現在も有効であることを確
 
 Azure AD Connect ユーティリティで指定されたアカウントには、そのフォレスト内の**各ドメイン**のルート オブジェクト**または** SSPR の対象に含めたいユーザー OU のいずれかに対して、lockoutTime の [パスワードのリセット]、[パスワードの変更]、[書き込みアクセス許可] や pwdLastSet の [書き込みアクセス許可] などの拡張権限が必要です。
 
-上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[ソリューションの確認] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
+上記のどのアカウントが参照されるか明らかでない場合は、Azure Active Directory Connect の構成 UI を開き、[現在の構成を表示する] オプションをクリックします。 アクセス許可を追加する必要があるアカウントが、[同期されたディレクトリ] の下に表示されます。
 
 これらの権限を設定すると、パスワード管理が、フォレストに含まれるユーザー アカウントからではなく、各フォレストのMA サービス アカウントから可能になります。 **これらの権限を割り当てないと、ライトバックが正常に構成されているように思われる場合でも、クラウドからオンプレミスのパスワードを管理しようとするとエラーが発生します。**
 

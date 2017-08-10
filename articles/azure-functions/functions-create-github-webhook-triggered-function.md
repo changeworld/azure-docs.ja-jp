@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 05/31/2017
 ms.author: glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: accd5c55e7adafd5a387bf420660b808335192e6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 6e91d095c8a89ead513a8ea63f74fd4b9384cfd5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-function-triggered-by-a-github-webhook"></a>GitHub webhook でトリガーされる関数の作成
@@ -104,5 +104,9 @@ GitHub 固有のペイロードを含む HTTP webhook 要求によってトリ�
 
 ## <a name="next-steps"></a>次のステップ
 
-GitHub webhook から要求が受信されときに実行される関数を作成しました。 
-[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)] webhook トリガーの詳細については、「[Azure Functions における HTTP と Webhook のバインド](functions-bindings-http-webhook.md)」を参照してください。
+GitHub webhook から要求が受信されときに実行される関数を作成しました。
+
+[!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
+
+webhook トリガーの詳細については、「[Azure Functions における HTTP と Webhook のバインド](functions-bindings-http-webhook.md)」を参照してください。
+

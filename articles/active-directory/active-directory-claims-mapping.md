@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory での要求マッピング (パブリック プレビュー) | Microsoft Docs"
-description: "このページでは、Azure Active Directory の要求マッピングについて説明します。"
+title: "Azure Active Directory での要求のマッピング (パブリック プレビュー) | Microsoft Docs"
+description: "このページでは、Azure Active Directory の要求のマッピングについて説明します。"
 services: active-directory
 author: billmath
 manager: femila
@@ -11,19 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: dc542483a8894e31bd118ac60d248dc8ee590885
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 78dbbe085fca26ad529c6262ba852f3c06ace404
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
-# <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求マッピング (パブリック プレビュー)
+# <a name="claims-mapping-in-azure-active-directory-public-preview"></a>Azure Active Directory での要求のマッピング (パブリック プレビュー)
 
 >[!NOTE]
->この機能は、現在ポータルで提供されている要求のカスタマイズに取って代わり、そのカスタマイズに優先します ([こちら](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)を参照)。 このドキュメントで詳しく説明している Graph/Powershell 以外に、ポータルを使用して、同じアプリケーションで要求をカスタマイズする場合、そのアプリケーションに対して発行されたトークンは、ポータルの構成を無視します。
+>この機能は、現在ポータルで提供されている[要求のカスタマイズ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)に取って代わり、そのカスタマイズに優先します。 このドキュメントで詳しく説明している Graph/PowerShell の方法以外に、ポータルを使用して、同じアプリケーションで要求をカスタマイズする場合、そのアプリケーションに対して発行されたトークンは、ポータルの構成を無視します。
 このドキュメントで詳しく説明した方法で行った構成は、ポータルには反映されません。
 
 この機能は、テナント管理者が、テナントの特定のアプリケーションに対するトークンに出力された要求をカスタマイズするときに使用します。 要求のマッピング ポリシーを使用すると、次の操作を行うことができます。
@@ -33,26 +32,26 @@ ms.lasthandoff: 06/30/2017
 - 特定の要求で出力されたデータのソースを選択または変更する。
 
 >[!NOTE]
->この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory サブスクリプションで使用できます。 ただし、機能が一般公開されたら、機能の一部で Azure Active Directory Premium サブスクリプションが必要になる場合があります。
+>この機能は現在パブリック プレビューの段階です。 変更を元に戻すか、削除できるように準備しておいてください。 機能は、パブリック プレビュー期間中、すべての Azure Active Directory (Azure AD) サブスクリプションで使用できます。 しかし、機能が一般公開されたら、機能の一部で Azure Active Directory Premium サブスクリプションが必要になる場合があります。
 
 ## <a name="claims-mapping-policy-type"></a>要求のマッピング ポリシーの種類
-Azure AD では、ポリシー オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
+Azure AD では、**ポリシー** オブジェクトは、組織の個々のアプリケーションまたはすべてのアプリケーションに適用される規則のセットを表します。 それぞれのポリシーの種類は、割り当てられているオブジェクトに適用されるプロパティのセットを含む一意の構造体を持ちます。
 
-要求のマッピング ポリシーはポリシー オブジェクトの種類で、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
+要求のマッピング ポリシーは**ポリシー** オブジェクトの一種であり、特定のアプリケーションに対して発行されたトークンに出力される要求を変更します。
 
 ## <a name="claim-sets"></a>要求セット
 トークンで使用する方法とタイミングを定義する要求のセットがあります。
 
-## <a name="core-claim-set"></a>コア要求セット
+### <a name="core-claim-set"></a>コア要求セット
 コア要求セット内の要求は、ポリシーに関係なく、すべてのトークンに提示されます。 また、この要求は制限付きと見なされ、変更できません。
 
-## <a name="basic-claim-set"></a>基本要求セット
-基本要求セットには、(コア要求セットの他に) トークンに対して既定で出力される要求が含まれます。 この要求は、要求のマッピング ポリシーを使用して省略または変更できます。
+### <a name="basic-claim-set"></a>基本要求セット
+基本要求セットには、(コア要求セットの他に) トークンに対して既定で出力される要求が含まれます。 この要求は、要求のマッピング ポリシーを使用して省略したり変更したりできます。
 
-## <a name="restricted-claim-set"></a>制限付き要求セット
+### <a name="restricted-claim-set"></a>制限付き要求セット
 制限付き要求は、ポリシーを使って変更することはできません。 データ ソースを変更できず、要求を生成するときに変換が適用されません。
 
-### <a name="table-1---jwt-restricted-claim-set"></a>表 1 - JWT 制限付き要求セット
+#### <a name="table-1-json-web-token-jwt-restricted-claim-set"></a>表 1: JSON Web トークン (JWT) 制限付き要求セット
 |要求の種類 (名前)|
 | ----- |
 |_claim_names|
@@ -186,7 +185,7 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 |wids|
 |win_ver|
 
-### <a name="table-2---saml-restricted-claim-set"></a>表 2 - SAML 制限付き要求セット
+#### <a name="table-2-security-assertion-markup-language-saml-restricted-claim-set"></a>表 2: Security Assertion Markup Language (SAML) 制限付き要求セット
 |要求の種類 (URI)|
 | ----- |
 |http://schemas.microsoft.com/ws/2008/06/identity/claims/expiration|
@@ -237,11 +236,9 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 |http://schemas.microsoft.com/identity/claims/scope|
 
 ## <a name="claims-mapping-policy-properties"></a>要求のマッピング ポリシーのプロパティ
-要求のマッピング ポリシーのプロパティは、出力される要求とデータのソースを制御するときに使用されます。 ポリシーが設定されていない場合は、アプリケーションが受信するように選択したコア要求セット、基本要求セット、および省略可能な要求を含むトークンが発行されます。
+要求のマッピング ポリシーのプロパティを使用して、出力される要求とデータのソースを制御します。 ポリシーが設定されていない場合は、アプリケーションが受信するように選んだコア要求セット、基本要求セット、省略可能な要求を含むトークンが発行されます。
 
 ### <a name="include-basic-claim-set"></a>Include 基本要求セット
-
-プロパティの概要
 
 **文字列:** IncludeBasicClaimSet
 
@@ -256,14 +253,13 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 >コア要求セット内の要求については、このプロパティの設定に関係なく、すべてのトークンに提示されます。 
 
 ### <a name="claims-schema"></a>要求スキーマ
-プロパティの概要
 
 **文字列:** ClaimsSchema
 
-**データ型:** 1 つ以上の要求スキーマ エントリを含む JSON BLOB (形式については、要求のマッピング ポリシー サンプルのセクションを参照)
+**データ型:** 1 つ以上の要求スキーマ エントリを含む JSON BLOB
 
-**概要:** このプロパティは、基本要求セット (IncludeBasicClaimSet が True に設定されている場合) やコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義するときに使用されます。
-このプロパティで定義されている要求スキーマ エントリごとに、2 つの情報、つまりデータのソース (値またはソース/ID のペア) と、どの要求としてデータが出力されるか (要求の種類) を設定する必要があります。
+**概要:** このプロパティは、基本要求セットやコア要求セットのほか、ポリシーの影響を受けるトークンにどの要求を提示するかを定義します。
+このプロパティで定義されている要求スキーマ エントリごとに、特定の情報が必要です。 データのソース (**値**または**ソース/ID ペア**) と、どの要求としてデータが出力されるか (**要求の種類**) を指定する必要があります。
 
 ### <a name="claim-schema-entry-elements"></a>要求スキーマ エントリ要素
 
@@ -274,18 +270,18 @@ Azure AD では、ポリシー オブジェクトは、組織の個々のアプ�
 ソース要素は、次のいずれかに設定する必要があります。 
 
 
-- "user": 要求のデータは、ユーザー オブジェクトのプロパティです 
-- "application": 要求のデータは、アプリケーション (クライアント) のサービス プリンシパルのプロパティです 
-- "resource": 要求のデータは、リソースのサービス プリンシパルのプロパティです
-- "audience": 要求のデータは、トークン (クライアントまたはリソースのいずれかのサービス プリンシパル) の対象ユーザーであるサービス プリンシパルのプロパティです
-- "company": 要求のデータは、リソース テナントの会社のオブジェクトのプロパティです
-- "transformation": 要求のデータは、要求からの変換です。次の「要求の変換」を参照してください。 
+- "user": 要求のデータは、ユーザー オブジェクトのプロパティです。 
+- "application": 要求のデータは、アプリケーション (クライアント) のサービス プリンシパルのプロパティです。 
+- "resource": 要求のデータは、リソースのサービス プリンシパルのプロパティです。
+- "audience": 要求のデータは、トークン (クライアントかリソースのいずれかのサービス プリンシパル) の対象ユーザーであるサービス プリンシパルのプロパティです。
+- "company": 要求のデータは、リソース テナントの会社のオブジェクトのプロパティです。
+- "transformation": 要求のデータは、要求からの変換です (この記事の後述の「要求の変換」セクションを参照してください)。 
 
-ソースが transformation の場合、TransformationID 要素も、この要求の定義に含める必要があります。
+ソースが transformation の場合、**TransformationID** 要素も、この要求の定義に含める必要があります。
 
 ID 要素により、ソースのどのプロパティが要求の値を提供するかが特定されます。 次の表は、ソースの各値に対して有効な ID の値を示しています。
 
-### <a name="table-3---valid-id-values-per-source"></a>表 3 - ソースごとに有効な ID 値
+#### <a name="table-3-valid-id-values-per-source"></a>表 3: ソースごとに有効な ID 値
 |から|ID|Description|
 |-----|-----|-----|
 |User|surname|姓|
@@ -334,56 +330,56 @@ ID 要素により、ソースのどのプロパティが要求の値を提供�
 
 **TransformationID:** TransformationID 要素は、ソース要素が "transformation" に設定されている場合にのみ指定する必要があります。
 
-- この要素は、この要求のデータを生成する方法を定義する、ClaimsTransformation プロパティの変換エントリの ID 要素と一致する必要があります。
+- この要素は、この要求のデータを生成する方法を定義する、**ClaimsTransformation** プロパティの変換エントリの ID 要素と一致する必要があります。
 
-**要求の種類:** JwtClaimType 要素と SamlClaimType 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
+**要求の種類:** **JwtClaimType** 要素と **SamlClaimType** 要素は、この要求スキーマ エントリが、どの要求を参照するかを定義します。
 
-- JwtClaimTypeshould には、JWT に出力する要求の名前を含める必要があります。
+- JwtClaimType には、JWT に出力する要求の名前を含める必要があります。
 - SamlClaimType には、SAML トークンに出力する要求の URI を含める必要があります。
 
 >[!NOTE]
->制限付き要求セット内の要求の名前と URI を、要求の種類の要素に使用することはできません。 次の「例外と制限事項」セクションを参照してください。
+>制限付き要求セット内の要求の名前と URI を、要求の種類の要素に使用することはできません。 詳細については、この記事の後述の「例外と制限事項」セクションを参照してください。
 
 ### <a name="claims-transformation"></a>要求の変換
-プロパティの概要
 
 **文字列:** ClaimsTransformation
 
-**データ型:** 1 つ以上の変換エントリを含む JSON BLOB (形式については、要求のマッピング ポリシー サンプルのセクションを参照)
+**データ型:** 1 つ以上の変換エントリを含む JSON BLOB 
 
-**概要:** このプロパティは、共通の変換をソース データに適用して、要求スキーマで指定された要求の出力データを生成するときに使用されます。
-変換エントリ要素
+**概要:** このプロパティを使用して、共通の変換をソース データに適用し、要求スキーマで指定された要求の出力データを生成します。
 
-**ID:** ID 要素は、TransformationID 要求スキーマ エントリのこの変換エントリを参照するときに使用されます。 この値は、このポリシー内の変換エントリごとに一意である必要があります。
+**ID:** ID 要素を使用して、TransformationID 要求スキーマ エントリのこの変換エントリを参照します。 この値は、このポリシー内の変換エントリごとに一意である必要があります。
 
 **TransformationMethod:** TransformationMethod 要素は、要求のデータを生成するときに実行される操作を特定します。
 
-選択した方法に基づいて、一連の入力と出力が想定されます。 これは、InputClaims 要素、InputParameters 要素、および OutputClaims 要素を使用して定義されます。
+選択した方法に基づいて、一連の入力と出力が想定されます。 これは、**InputClaims** 要素、**InputParameters** 要素、**OutputClaims** 要素を使用して定義されます。
 
-### <a name="table-4---transformation-methods-and-expected-inputsoutputs"></a>表 4 - 変換方法と想定される入力/出力
+#### <a name="table-4-transformation-methods-and-expected-inputs-and-outputs"></a>表 4: 変換方法と想定される入出力
 |TransformationMethod|想定される入力|想定される出力|Description|
 |-----|-----|-----|-----|
-|Join (結合)|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , sring2:"sandbox" , separator:"." の結果は、outputClaim:"foo@bar.com.sandbox" になります|
-|ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。"@" 記号がない場合、元の入力文字列がそのまま返されます。|
+|Join (結合)|string1, string2, separator|outputClaim|入力文字列の間に区切り記号を使用して、その文字列を結合します。 例: string1:"foo@bar.com" , string2:"sandbox" , separator:"." の結果は outputClaim:"foo@bar.com.sandbox" になります|
+|ExtractMailPrefix|mail|outputClaim|メール アドレスのローカル部分を抽出します。 例: mail:"foo@bar.com" の結果は outputClaim:"foo" になります。 @ 記号がない場合、元の入力文字列がそのまま返されます。|
 
-**InputClaims:** InputClaims 要素を使用すると、要求スキーマ エントリから変換にデータを渡すことができます。 この要素には ClaimTypeReferenceId と TransformationClaimType の 2 つの属性があります。
+**InputClaims:** InputClaims 要素を使用して、要求スキーマ エントリから変換にデータを渡します。 この要素には **ClaimTypeReferenceId** と **TransformationClaimType** の 2 つの属性があります。
 
-- ClaimTypeReferenceId は要求スキーマ エントリの ID 要素と結合され、適切な入力要求を検索します。 
-- TransformationClaimType は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
+- **ClaimTypeReferenceId** は要求スキーマ エントリの ID 要素と結合され、該当する入力要求を検索します。 
+- **TransformationClaimType** は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
 
-**InputParameters:** InputParameters 要素は、定数値を変換に渡すときに使用されます。 この要素には Value と ID の 2 つの属性があります。
-Value は、渡される実際の定数値です。
-ID は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
+**InputParameters:** InputParameters 要素を使用して、定数値を変換に渡します。 この要素には **Value** と **ID** の 2 つの属性があります。
 
-**OutputClaims:** OutputClaims 要素は、変換によって生成されたデータを保持するときに使用され、そのデータを要求スキーマ エントリに関連付けます。 この要素には ClaimTypeReferenceId と TransformationClaimType の 2 つの属性があります。
+- **Value** は、渡される実際の定数値です。
+- **ID** は、この入力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される入力のいずれかと一致する必要があります。
 
-ClaimTypeReferenceId は要求スキーマ エントリの ID と結合され、適切な出力要求を検索します。 TransformationClaimType は、この出力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される出力のいずれかと一致する必要があります。
+**OutputClaims:** OutputClaims 要素を使用して、変換によって生成されたデータを保持し、そのデータを要求スキーマ エントリに関連付けます。 この要素には **ClaimTypeReferenceId** と **TransformationClaimType** の 2 つの属性があります。
+
+- **ClaimTypeReferenceId** は要求スキーマ エントリの ID と結合され、該当する出力要求を検索します。
+- **TransformationClaimType** は、この出力に一意の名前を指定するときに使用されます。 この名前は、変換方法に対する想定される出力のいずれかと一致する必要があります。
 
 ### <a name="exceptions-and-restrictions"></a>例外と制限事項
 
-**SAML NameID と UPN:** NameID と UPN の値のソース属性、および許可される要求変換には、制限があります。
+**SAML NameID と UPN:** NameID と UPN の値のソース属性と、許可される要求変換には、制限があります。
 
-### <a name="table-5---attributes-allowed-as-data-source-for-saml-nameid"></a>表 5 - SAML NameID のデータ ソースとして許可されている属性
+#### <a name="table-5-attributes-allowed-as-a-data-source-for-saml-nameid"></a>表 5: SAML NameID のデータ ソースとして許可されている属性
 |から|ID|Description|
 |-----|-----|-----|
 |User|mail|電子メール アドレス|
@@ -406,10 +402,10 @@ ClaimTypeReferenceId は要求スキーマ エントリの ID と結合され、
 |User|extensionattribute14|拡張属性 14|
 |User|extensionattribute15|拡張属性 15|
 
-### <a name="table-6---transformation-methods-allowed-for-saml-nameid"></a>表 6 - SAML NameID の許可されている変換方法
+#### <a name="table-6-transformation-methods-allowed-for-saml-nameid"></a>表 6: SAML NameID の許可されている変換方法
 |TransformationMethod|制限|
 | ----- | ----- |
-|ExtractMailPrefix||なし|
+|ExtractMailPrefix|なし|
 |Join (結合)|結合されているサフィックスは、リソース テナントの確認済みドメインである必要があります。|
 
 ### <a name="custom-signing-key"></a>カスタム署名キー
@@ -423,7 +419,7 @@ ClaimTypeReferenceId は要求スキーマ エントリの ID と結合され、
 
 ### <a name="example-claims-mapping-policies"></a>要求のマッピング ポリシーのサンプル
 
-特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズする場合、Azure AD では多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
+Azure AD では、特定のサービス プリンシパルに対するトークンに発行された要求をカスタマイズできる場合、多くのシナリオが考えられます。 このセクションでは、要求のマッピング ポリシーの種類を使用する方法を理解するうえで役に立つ、一般的なシナリオをいくつか取り上げて説明します。
 
 #### <a name="prerequisites"></a>前提条件
 次の例では、サービス プリンシパルのポリシーを作成、更新、リンク、および削除します。 Azure AD に慣れていない場合は、こうした例を確認する前に、Azure AD テナントを取得する方法について学習することをお勧めします。 
@@ -488,7 +484,7 @@ ClaimTypeReferenceId は要求スキーマ エントリの ID と結合され、
      ``` powershell
     Add-AzureADServicePrincipalPolicy -Id <ObjectId of the ServicePrincipal> -RefObjectId <ObjectId of the Policy>
     ```
-#### <a name="example-create-and-assign-a-policy-utilizing-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>例: サービス プリンシパルに対して発行されたトークンで要求変換を使用するポリシーを作成して割り当てる。
+#### <a name="example-create-and-assign-a-policy-that-uses-a-claims-transformation-in-tokens-issued-to-a-service-principal"></a>例: サービス プリンシパルに対して発行されたトークンで要求変換を使用するポリシーを作成して割り当てる。
 この例では、リンクされたサービス プリンシパルに対して発行された JWT に、カスタム要求 "JoinedData" を出力するポリシーを作成します。 この要求には、ユーザー オブジェクトの extensionattribute1 属性に格納されたデータと ".sandbox" を結合して作成された値が追加されます。 この例では、トークンで基本要求セットを除外します。
 
 

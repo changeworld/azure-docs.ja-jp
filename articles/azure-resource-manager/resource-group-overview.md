@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 07/19/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: db97edd3c4fbfdbe955c49cc9a58de30c5085305
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b382225b9e355148279181fbf6238eb1e08f382d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-resource-manager-overview"></a>Azure Resource Manager の概要
@@ -82,7 +81,7 @@ Resource Manager では、Azure PowerShell、Azure CLI、Azure Portal、REST API
 ## <a name="resource-providers"></a>リソース プロバイダー
 Azure サービスを扱うための一連のリソースと操作は、それぞれのリソース プロバイダーから得られます。 たとえば、キーとシークレットを格納するためには、 **Microsoft.KeyVault** リソース プロバイダーを使用します。 このリソース プロバイダーには、キー コンテナーを作成するための **vaults** という名前のリソースの種類が用意されています。 
 
-リソースの種類を表す名前は、**{resource-provider}/{resource-type}** のような形式になります。 たとえば、キー コンテナーの種類は **Microsoft.KeyVault\vaults** です。
+リソースの種類を表す名前は、**{resource-provider}/{resource-type}** のような形式になります。 たとえば、キー コンテナーの種類は **Microsoft.KeyVault/vaults** です。
 
 リソースのデプロイを始める前に、利用可能なリソース プロバイダーを把握する必要があります。 リソース プロバイダーとリソースの名前がわかれば、Azure にデプロイするリソースの定義に役立ちます。 また、各リソースの種類の有効な場所と API のバージョンを把握しておく必要があります。 詳細については、「[リソース プロバイダーと種類](resource-manager-supported-services.md)」を参照してください。
 
@@ -258,49 +257,28 @@ JSON でポリシーを定義し、サブスクリプション全体またはリ
 作成できるポリシーの種類はほかにも多数あります。 詳細については、「 [ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
 
 ## <a name="sdks"></a>SDK
-Azure の SDK は、複数の言語とプラットフォームで利用できます。
-これらの言語実装はそれぞれ、エコシステムのパッケージ マネージャーと GitHub を介して入手できます。
-
-これらの SDK のコードはそれぞれ、Azure REST ベースの API 仕様から生成されます。
-これらの仕様はオープン ソースであり、Swagger 2.0 仕様に基づいています。
-SDK コードは、AutoRest と呼ばれるオープン ソース プロジェクトを使用して生成されています。
-AutoRest では、これらの REST ベースの API 仕様が、複数の言語でクライアント ライブラリに変換されます。
-SDK で生成されたコードに改善する箇所がある場合、広範に適用されている API 仕様形式に基づく、SDK を作成するためのツール全体が自由に使用できます。
+Azure の SDK は、複数の言語とプラットフォームで利用できます。 これらの言語実装はそれぞれ、エコシステムのパッケージ マネージャーと GitHub を介して入手できます。
 
 Microsoft のオープン ソース SDK リポジトリを次に示します。 フィードバック、問題、プル要求をお待ちしております。
 
-[.NET](https://github.com/Azure/azure-sdk-for-net) | [Java](https://github.com/Azure/azure-sdk-for-java) | [Node.js](https://github.com/Azure/azure-sdk-for-node) | [PHP](https://github.com/Azure/azure-sdk-for-php) | [Python](https://github.com/Azure/azure-sdk-for-python) | [Ruby](https://github.com/Azure/azure-sdk-ruby)
+* [Azure SDK for .NET](https://github.com/Azure/azure-sdk-for-net)
+* [Azure Management Libraries for Java](https://github.com/Azure/azure-sdk-for-java)
+* [Azure SDK for Node.js](https://github.com/Azure/azure-sdk-for-node)
+* [Azure SDK for PHP](https://github.com/Azure/azure-sdk-for-php)
+* [Azure SDK for Python](https://github.com/Azure/azure-sdk-for-python)
+* [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby)
+
+リソースでこれらの言語を使用する方法については、以下を参照してください。
+
+* [.NET 開発者向けの Azure](/dotnet/azure/?view=azure-dotnet)
+* [Java 開発者向けの Azure](/java/azure/)
+* [Node.js 開発者向けの Azure](/nodejs/azure/)
+* [Python 開発者向けの Azure](/python/azure/)
 
 > [!NOTE]
 > 必要な機能が SDK に備わっていない場合は、 [Azure REST API](https://docs.microsoft.com/rest/api/resources/) を直接呼び出すこともできます。
 > 
 > 
-
-## <a name="samples"></a>サンプル
-### <a name="net"></a>.NET
-* [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-resources-and-groups/)
-* [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-dotnet-template-deployment/)
-
-### <a name="java"></a>Java
-* [Azure のリソースを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource/)
-* [Azure のリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resources-java-manage-resource-group/)
-* [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resources-java-deploy-using-arm-template/)
-
-### <a name="nodejs"></a>Node.js
-* [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-node-resources-and-groups/)
-* [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-node-template-deployment/)
-
-### <a name="python"></a>Python
-* [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-python-resources-and-groups/)
-* [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-python-template-deployment/)
-
-### <a name="ruby"></a>Ruby
-* [Azure のリソースとリソース グループを管理する](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-resources-and-groups/)
-* [テンプレートを使用して SSH 対応 VM をデプロイする](https://azure.microsoft.com/documentation/samples/resource-manager-ruby-template-deployment/)
-
-これらのサンプルだけでなく、ギャラリー サンプルを検索することもできます。
-
-[.NET](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=dotnet) | [Java](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=java) | [Node.js](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=nodejs) | [Python](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=python) | [Ruby](https://azure.microsoft.com/documentation/samples/?service=azure-resource-manager&platform=ruby)
 
 ## <a name="next-steps"></a>次のステップ
 * テンプレートの簡単な操作手順については、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。

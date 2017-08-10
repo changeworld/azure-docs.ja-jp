@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 8bea98274f94853cb52fe8b51fdaa4f224c649e4
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: e6338dc283b5a26f20a467df9582181381967931
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="use-windows-powershell-cmdlets-with-azure-remoteapp"></a>Azure RemoteApp での Windows PowerShell コマンドレットの使用
@@ -45,9 +45,20 @@ ms.lasthandoff: 04/27/2017
 2. Microsoft Azure PowerShell を起動します。
 3. **Add-AzureAccount** を実行して、Azure サブスクリプションに対して認証します。 メッセージが表示されたら、Azure ポータルへのサインインに使用するのと同じユーザー名とパスワードを入力します。  
 4. **Get-AzureSubscription** を実行して、自分のユーザー アカウントに関連付けられたサブスクリプションを表示します。 
-5. **Select-AzureSubscription** を実行して、PowerShell コンソールで使用するサブスクリプション名または ID を指定します。
+5. **Select-AzureSubscription -SubscriptionName &lt;サブスクリプション名&gt;** または **Select-AzureSubscription -SubscriptionId &lt;サブスクリプション ID&gt;** を実行して、使用するサブスクリプションを指定します。
 
 これで、Azure PowerShell コンソールが構成され、使用できるようになりました。 Azure PowerShell コンソールを起動するたびに、2 ～ 5 の手順を繰り返してください。  
+
+
+## <a name="list-all-collections"></a>すべてのコレクションの一覧表示
+- - -
+     Get-AzureRemoteAppCollection
+
+## <a name="delete-a-collection"></a>コレクションの削除
+- - -
+    Remove-AzureRemoteAppCollection <enter collection name>
+
+例: `Remove-AzureRemoteAppCollection ContosoProduction`。
 
 ## <a name="create-a-cloud-collection"></a>Create a cloud collection (クラウド コレクションを作成する)
 - - -

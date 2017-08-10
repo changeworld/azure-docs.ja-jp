@@ -13,14 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: tables
-ms.date: 06/29/2017
+ms.date: 07/12/2017
 ms.author: jrj;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ec9b3cc391a75b4f3a75f95a2ff9613c0317bfa2
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>超並列処理 (MPP) 用の分散データと分散テーブル
@@ -68,7 +67,7 @@ SQL Data Warehouse と Parallel Data Warehouse では、分散データとは MP
 ## <a name="Replicated"></a>レプリケート テーブル
 レプリケートされたテーブルは、各コンピューティング ノードに保存されているテーブルの完全なコピーです。 テーブルをレプリケートすると、結合または集計の前に、コンピューティング ノード内のデータを転送する必要がなくなります。 各コンピューティング ノードに完全なテーブルを格納するために余分な記憶域が必要になるため、レプリケート テーブルは小さなテーブルにのみ使用できます。  
 
-次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 SQL Data Warehouse の場合は、レプリケート テーブルはラウンドロビン テーブルによって保持され、各コンピューティング ノードの最初のディストリビューション データベースに完全にコピーされます。 Parallel Data Warehouse の場合は、レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。  このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
+次の図は、各コンピューティング ノードに格納されるレプリケート テーブルを示したものです。 SQL Data Warehouse の場合は、レプリケート テーブルは各コンピューティング ノードのディストリビューション データベースに完全にコピーされます。 Parallel Data Warehouse の場合は、レプリケート テーブルは、コンピューティング ノードに割り当てられているすべてのディスクに格納されます。  このディスク戦略は、SQL Server のファイル グループを使用して実装されます。  
 
 ![レプリケート テーブル](media/sql-data-warehouse-distributed-data/replicated-table.png "レプリケート テーブル") 
 

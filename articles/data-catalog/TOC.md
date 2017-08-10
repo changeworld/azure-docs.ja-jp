@@ -24,6 +24,7 @@
 ## [関連のデータ資産の表示](data-catalog-how-to-view-related-data-assets.md) 
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-catalog)
 ## [REST ()](/rest/api/datacatalog/)
 ## [検索構文リファレンス](/rest/api/datacatalog/data-catalog-search-syntax-reference)
 ## [開発者の概念](data-catalog-developer-concepts.md)
@@ -34,6 +35,7 @@
 ## [Azure Data Catalog 用のキーボード ショートカット](data-catalog-keyboard-shortcuts.md)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azuredatacatalog)
 ## [料金](https://azure.microsoft.com/pricing/details/data-catalog/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](data-catalog-whats-new.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=data-catalog)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-data-catalog)

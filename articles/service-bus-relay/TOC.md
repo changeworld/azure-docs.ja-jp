@@ -30,5 +30,6 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=enterprise-integration)
 ## [ブログ](https://blogs.msdn.microsoft.com/servicebus/)
 ## [料金](https://azure.microsoft.com/pricing/details/service-bus/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サンプル](https://github.com/azure/azure-relay/tree/master/samples)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-servicebusrelay)

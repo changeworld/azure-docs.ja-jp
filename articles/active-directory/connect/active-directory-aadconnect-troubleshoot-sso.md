@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4466a5aa1d55b178a584832d03f68d307767d167
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 39dd859d60e7f1dcf697e3c59b8f084e400bbae0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -83,7 +83,7 @@ ms.lasthandoff: 06/16/2017
 
 ## <a name="manual-reset-of-azure-ad-seamless-sso"></a>Azure AD シームレス SSO の手動リセット
 
-トラブルシューティングを行っても改善しなかった場合は、次の手順を実行して、テナントでシームレス SSO 機能を手動でリセットします。
+トラブルシューティングを行っても改善しなかった場合は、テナントでシームレス SSO 機能を手動でリセットできます。 Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
 
 ### <a name="step-1-import-the-seamless-sso-powershell-module"></a>手順 1: Seamless SSO PowerShell モジュールをインポートする
 
@@ -94,7 +94,7 @@ ms.lasthandoff: 06/16/2017
 
 ### <a name="step-2-get-the-list-of-ad-forests-on-which-seamless-sso-has-been-enabled"></a>手順 2: シームレス SSO が有効になっている AD フォレストのリストを取得する
 
-1. PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 メッセージが表示されたら、Azure AD テナント管理者の資格情報を入力します。
+1. PowerShell を管理者として実行します。 PowerShell で、`New-AzureADSSOAuthenticationContext` を呼び出します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 2. `Get-AzureADSSOStatus` を呼び出します。 このコマンドでは、この機能が有効になっている AD フォレストのリスト ("ドメイン" リストを参照) が表示されます。
 
 ### <a name="step-3-disable-seamless-sso-for-each-ad-forest-that-it-was-set-it-up-on"></a>手順 3: 機能が有効に設定されている各 AD フォレストのシームレス SSO を無効にする

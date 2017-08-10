@@ -16,6 +16,7 @@
 ### [2 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
 
 # サンプル
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
 ## [Azure CLI](samples-cli.md)
 # 概念
@@ -131,7 +132,6 @@
 ### コンテナー サービスの構築
 #### [Windows コンテナー アプリケーションの作成](service-fabric-get-started-containers.md)
 #### [Linux コンテナー アプリケーションの作成](service-fabric-get-started-containers-linux.md)
-#### [Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
 #### [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
 #### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
 #### [コンテナーとサービスのリソース ガバナンス](service-fabric-resource-governance.md)
@@ -328,6 +328,7 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/service-fabric/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureServiceFabric)
 ## [料金](https://azure.microsoft.com/pricing/details/service-fabric/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [コード サンプル](http://aka.ms/servicefabricsamples)
 ## [サポート オプション](service-fabric-support.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)

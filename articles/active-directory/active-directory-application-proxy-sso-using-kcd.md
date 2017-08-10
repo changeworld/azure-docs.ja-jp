@@ -5,20 +5,21 @@ services: active-directory
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: 
 ms.assetid: ded0d9c9-45f6-47d7-bd0f-3f7fd99ab621
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 07/05/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 015cc28903bfd366c653a51b0f73512bf8b578ea
-ms.openlocfilehash: aac56543b2b3b7fa8f8baf1cc719ead79b3c1b00
-ms.lasthandoff: 02/28/2017
+ms.reviewer: harshja
+ms.custom: H1Hack27Feb2017, it-pro
+ms.translationtype: Human Translation
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: c8470fc79d27847fc0e12d1c40cfccc08dfc3cdf
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -27,14 +28,14 @@ ms.lasthandoff: 02/28/2017
 
 1. ユーザーがクラウドにサインインします。  
 2. クラウドですべてのセキュリティ検証 (事前認証) が実施されます。  
-3. オンプレミスのアプリケーションに要求が送信されると、アプリケーション プロキシ コネクタが見かけ上ユーザーとして振る舞います。 バックエンド アプリケーションは、これをドメイン参加デバイスからの正規ユーザーであると認識します。
+3. オンプレミスのアプリケーションに要求が送信されると、アプリケーション プロキシ コネクタが見かけ上ユーザーとして振る舞います。 バックエンド アプリケーションでは、ドメイン参加デバイスの正規ユーザーから要求が送信されているものと見なされます。
 
 ![アプリケーション プロキシ経由のエンド ユーザーから企業ネットワークへのアクセス図](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_diagram.png)
 
 Azure AD アプリケーション プロキシによって、ユーザーにシングル サインオン (SSO) エクスペリエンスを提供できます。 SSO を使用するアプリを発行するには、次の手順に従います。
 
 ## <a name="sso-for-on-prem-iwa-apps-using-kcd-with-application-proxy"></a>オンプレミス IWA アプリケーションへの SSO のための KCD とアプリケーション プロキシの使用
-統合 Windows 認証 (IWA) を使用してアプリケーションへのシングル サインオンができるようにするには、アプリケーション プロキシ コネクタがユーザーの代理でトークンを送受信できるように Active Directory で設定します。
+統合 Windows 認証 (IWA) を使用してアプリケーションへのシングル サインオンができるようにするには、ユーザーの権限を借用できるように Active Directory でアプリケーション プロキシ コネクタにアクセス許可を与えます。 コネクタはこのアクセス許可を利用し、ユーザーの代理としてトークンを送受信します。
 
 ### <a name="network-diagram"></a>ネットワーク図
 この図は、IWA を使用するオンプレミス アプリケーションにユーザーがアクセスしようとしたときの流れを説明するものです。
@@ -64,7 +65,7 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 #### <a name="connector-and-published-server-in-the-same-domain"></a>同じドメインにあるコネクタと公開されたサーバー
 1. Active Directory で、**[ツール]** > **[ユーザーとコンピューター]** の順に移動します。
 2. コネクタを実行しているサーバーを選択します。
-.3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
+3. 右クリックし、**[プロパティ]** > **[委任]** を選択します。
 4. **[指定されたサービスへの委任でのみこのコンピューターを信頼する]** をクリックします。 **[このアカウントが委任された資格情報を提示できるサービス]** の下で、アプリケーション サーバーの SPN ID の値を追加します。
 5. これで、アプリケーション プロキシ コネクタは、AD において、リストで定義されたアプリケーションに対してユーザーの代理となることができるようになります。
 
@@ -86,11 +87,12 @@ Active Directory の構成は、アプリケーション プロキシ コネク�
 >
 
 ### <a name="azure-classic-portal-configuration"></a>Azure クラシック ポータルの構成
-1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](active-directory-application-proxy-publish.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
-2. アプリケーションがアプリケーションの一覧に表示されたら、アプリケーションを選択して **[構成]**をクリックします。
-3. **[プロパティ]** の下で、**[内部認証方法]** を **[統合 Windows 認証]** に設定します。  
+1. 「 [アプリケーション プロキシを使用したアプリケーションの発行](application-proxy-publish-azure-portal.md)」で説明されている手順に従って、アプリケーションを発行します。 **[事前認証方法]** で **[Azure Active Directory]** が選択されていることを確認してください。
+2. アプリケーションがエンタープライズ アプリケーションの一覧に表示されたら、アプリケーションを選択して **[シングル サインオン]** をクリックします。
+3. シングル サインオン モードを **[統合 Windows 認証]** に設定します。  
+4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/www.contoso.com です。  
+
    ![高度なアプリケーションの構成](./media/active-directory-application-proxy-sso-using-kcd/cwap_auth2.png)  
-4. アプリケーション サーバーの **[内部アプリケーション SPN]** を入力します。 この例では、公開されたアプリケーションの SPN は、http/lob.contoso.com です。  
 
 > [!IMPORTANT]
 > オンプレミスの UPN と Azure Active Directory の UPN が同一でない場合は、事前認証が機能するように[委任されたログイン ID](#delegated-login-identity) を構成する必要があります。
@@ -119,19 +121,19 @@ Kerberos について詳しくは、「[All you want to know about Kerberos Cons
 
 ![委任されたログイン ID パラメーターのスクリーンショット](./media/active-directory-application-proxy-sso-using-kcd/app_proxy_sso_diff_id_upn.png)
 
-委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。 異なる&2; つのコネクタ グループを使用してこれらのアプリケーションを&2; 回発行することで、この問題を回避できます。 これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
+委任されたログイン ID が使用されている場合、その値は組織内のすべてのドメインまたはフォレストで一意でないことがあります。 異なる 2 つのコネクタ グループを使用してこれらのアプリケーションを 2 回発行することで、この問題を回避できます。 これは各アプリケーションのユーザーが異なり、そのコネクタを異なるドメインに参加させることができるためです。
 
 ## <a name="working-with-sso-when-on-premises-and-cloud-identities-are-not-identical"></a>オンプレミス ID とクラウド ID が同一でない場合の SSO の操作
 他に構成されていない限り、アプリケーション プロキシは、ユーザーのクラウド ID とオンプレミス ID は完全に同じであるとみなします。 アプリケーションごとに、シングル サインオンを実行するときに使用する ID を構成できます。  
 
 この機能により、オンプレミス ID とクラウド ID が異なる多くの組織で、ユーザーに別のユーザー名とパスワードの入力を要求することなく、クラウドからオンプレミスのアプリに SSO させることができます。 次のような組織が含まれます。
 
-* 内部に複数のドメインがあり (joe@us.contoso.com、joe@eu.contoso.com)、クラウドに&1; つのドメインがある (joe@contoso.com)。
+* 内部に複数のドメインがあり (joe@us.contoso.com、joe@eu.contoso.com)、クラウドに 1 つのドメインがある (joe@contoso.com)。
 * 内部にルーティングできないドメイン名があり (joe@contoso.usa)、クラウドに法的なドメイン名がある。
 * 内部でドメイン名を使用していない (joe)。
-* オンプレミスとクラウドで異なるエイリアスを使用している。 例: joe-johns@contoso.com vs. joej@contoso.com  
+* オンプレミスとクラウドで異なるエイリアスを使用している。 たとえば、joe-johns@contoso.com と joej@contoso.com です。  
 
-これは、Windows 以外のバックエンド サーバーで非常に一般的なシナリオである電子メール アドレス形式のアドレスを受け入れないアプリケーションでも役立ちます。
+これは、Windows 以外のバックエンド サーバーで一般的なシナリオである電子メール アドレス形式のアドレスを受け入れないアプリケーションでも役立ちます。
 
 ### <a name="setting-sso-for-different-cloud-and-on-prem-identities"></a>クラウド ID とオンプレミス ID が異なる場合の SSO の設定
 1. Azure AD Connect の設定を、メイン ID が電子メール アドレス (mail) になるように構成します。 これはカスタマイズ プロセスの一部として、同期設定の **[ユーザー プリンシパル名]** フィールドを変更することで実行します。 これらの設定は、ユーザーが Office365、Windows10 デバイス、および Azure AD を ID ストアとして使用する他のアプリケーションにログインする方法も決定します。  

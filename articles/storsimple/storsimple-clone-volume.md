@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 09b67ca9258a490338d29763710c40ea2da23ce7
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 8f1936fac543f559a44ad0f9c35b30d1a92dce68
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-clone-a-volume"></a>StorSimple Manager サービスを使用してボリュームを複製する
@@ -66,7 +65,7 @@ StorSimple Manager サービスの **[バックアップ カタログ]** ペー�
 > 
 > 
 
-このように作成された複製は一時的な複製です。 複製の種類の詳細については、「 [一時的な複製と永続的な複製](#transient-vs.-permanent-clones)」を参照してください。
+このように作成された複製は一時的な複製です。 複製の種類の詳細については、「 [一時的な複製と永続的な複製](#transient-vs-permanent-clones)」を参照してください。
 
 この複製はこれで通常のボリュームとなり、ボリュームに対して実行できるすべての操作を利用できます。 バックアップを行う場合は、このボリュームを構成する必要があります。
 

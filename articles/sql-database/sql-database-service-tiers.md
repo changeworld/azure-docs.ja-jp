@@ -4,7 +4,7 @@ description: "SQL Database の単一データベースのサービス レベル�
 keywords: "データベース オプション, データベース パフォーマンス"
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 ms.assetid: f5c5c596-cd1e-451f-92a7-b70d4916e974
@@ -15,18 +15,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/30/2017
-ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 68d55d2dd088ce6350bd65b79206f161f9d3d788
+ms.author: carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: a3c287c5317bd7db2b560e37ddacc9e43d7292d1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-<a id="what-performance-options-are-available-for-an-azure-sql-database" class="xliff"></a>
-
-# Azure SQL Database で利用可能なパフォーマンス オプション
+# <a name="what-performance-options-are-available-for-an-azure-sql-database"></a>Azure SQL Database で利用可能なパフォーマンス オプション
 
 [Azure SQL Database](sql-database-technical-overview.md) には、単一データベースと[プールされた](sql-database-elastic-pool.md)データベースのそれぞれに 4 つのサービス レベルが用意されています。 サービス レベルは、**Basic**、**Standard**、**Premium**、**Premium RS** です。 各サービス レベルには、異なるワークロードとデータ サイズを処理するために、複数のパフォーマンス レベル ([DTU](sql-database-what-is-a-dtu.md)) とストレージ オプションがあります。 パフォーマンス レベルが高くなるほど提供されるコンピューティング リソースとストレージ リソースが追加され、スループットとキャパシティが段階的に高くなるように設計されています。 ダウンタイムを発生させることなく、サービス レベル、パフォーマンス レベル、ストレージを動的に変更できます。 
 - **Basic**、**Standard**、**Premium** のサービス レベルは、いずれもアップタイムの SLA が 99.99% で、柔軟なビジネス継続性のオプション、セキュリティ機能、時間単位の課金体系が用意されています。 
@@ -35,9 +32,7 @@ ms.lasthandoff: 07/06/2017
 > [!IMPORTANT]
 > Azure SQL データベースは所定のリソースを取得します。データベースの期待されるパフォーマンス特性は Azure 内の他のデータベースの影響を受けません。 
 
-<a id="choosing-a-service-tier" class="xliff"></a>
-
-## サービス階層の選択
+## <a name="choosing-a-service-tier"></a>サービス階層の選択
 次の表では、各種のアプリケーション ワークロードに最適なサービス階層の例を示します。
 
 | サービス階層 | 対象のワークロード |
@@ -80,16 +75,12 @@ ms.lasthandoff: 07/06/2017
 > データベースを SQL エラスティック プールにグループ化してコンピューティング リソースとストレージ リソースを共有する方法の詳細については、[SQL エラスティック プール](sql-database-elastic-pool.md)に関するトピックを参照してください。 このトピックの残りの部分では、単一データベースのサービス レベルとパフォーマンス レベルを中心に説明します。
 >
 
-<a id="single-database-service-tiers-and-performance-levels" class="xliff"></a>
-
-## 単一データベース サービス階層とパフォーマンス レベル
+## <a name="single-database-service-tiers-and-performance-levels"></a>単一データベース サービス階層とパフォーマンス レベル
 単一データベースでは、各サービス レベル内に複数のパフォーマンス レベルとストレージ容量があります。 
 
 [!INCLUDE [SQL DB service tiers table](../../includes/sql-database-service-tiers-table.md)]
 
-<a id="scaling-up-or-scaling-down-a-single-database" class="xliff"></a>
-
-## 単一データベースのスケールアップとスケールダウン
+## <a name="scaling-up-or-scaling-down-a-single-database"></a>単一データベースのスケールアップとスケールダウン
 
 最初にサービス レベルとパフォーマンス レベルを選んだ後、実際の使用感に基づいて、単一データベースを動的にスケールアップまたはスケールダウンすることができます。  
 
@@ -100,6 +91,10 @@ ms.lasthandoff: 07/06/2017
 
 スケールアップ プロセス全体の継続時間は、変更前後のデータベースのサイズとサービス レベルによって異なります。 たとえば、250 GB のデータベースを Standard サービス レベルとの間または Standard サービス レベル内で変更する場合は、6 時間以内に完了します。 Premium サービス レベル内で同じサイズのデータベースのパフォーマンス レベルを変更する場合は、3 時間以内で完了します。
 
+> [!TIP]
+> 実行中の SQL Database のスケーリング操作について、その状態をチェックするには、```select * from sys.dm_operation_status``` というクエリを使用します。
+>
+
 * より上位のサービス レベルまたはパフォーマンス レベルにアップグレードしても、より大きな最大サイズを明示的に指定しない限り、最大データベース サイズは増加しません。
 * データベースをダウングレードするには、データベースがダウングレード後のサービス レベルで許可されている最大サイズより小さい必要があります。 
 * [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをアップグレードする場合、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードします (一般的なガイダンス)。
@@ -108,9 +103,7 @@ ms.lasthandoff: 07/06/2017
 * データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 
 
-<a id="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize" class="xliff"></a>
-
-## 最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項
+## <a name="current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize"></a>最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項
 
 (前に説明したように) P11 および P15 データベースの 4 TB の最大サイズは、一部のリージョンでサポートされています。 最大サイズ 4 TB の P11 および P15 データベースには、次の考慮事項と制限事項が適用されます。
 
@@ -125,9 +118,7 @@ ms.lasthandoff: 07/06/2017
    - geo レプリケーションのリレーションシップでのプライマリ データベースのアップグレード: プライマリ データベースで最大サイズを 4 TB に変更すると、セカンダリ データベースでも同じ変更がトリガーされます。 プライマリに対する変更を有効にするには、両方のアップグレードが正常に完了する必要があります。 4 TB のオプションに関するリージョンの制限が適用されます (上記参照)。 4 TB をサポートしていないリージョンにセカンダリが存在する場合、プライマリはアップグレードされません。
 - P11-4TB/P15-4TB データベースの読み込みに Import/Export サービスを使用することはサポートされていません。 SqlPackage.exe を使用して、データを[インポート](sql-database-import.md)および[エクスポート](sql-database-export.md)してください。
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-portal" class="xliff"></a>
-
-## Azure Portal を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-the-azure-portal"></a>Azure Portal を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
 
 Azure Portal を使用して、新規または既存の Azure SQL データベースのサービス レベル、パフォーマンス レベル、またはストレージ容量を設定または変更するには、次のスクリーンショットに示すように、**[価格レベル (DTU のスケール)]** をクリックし、データベースの **[パフォーマンスの構成]** ウィンドウを開きます。 
 
@@ -141,25 +132,21 @@ Azure Portal を使用して、新規または既存の Azure SQL データベ�
 > P11 または P15 サービス レベルを選択する場合は、「[最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項](sql-database-service-tiers.md#current-limitations-of-p11-and-p15-databases-with-4-tb-maxsize)」を参照してください。
 >
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-powershell" class="xliff"></a>
-
-## PowerShell を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-powershell"></a>PowerShell を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
 
 PowerShell を使用して、Azure SQL データベースのサービス レベル、パフォーマンス レベル、およびストレージ容量を設定または変更するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
 
 | コマンドレット | Description |
 | --- | --- |
 |[New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase)|データベースを作成します。 |
-|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|1 つ以上のデータベースを取得します。|
+|[Get-AzureRmSqlDatabase](/powershell/module/azurerm.sql/get-azurermsqldatabase)|1 つまたは複数のデータベースを取得します。|
 |[Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase)|データベースのプロパティを設定するか、既存のデータベースをエラスティック プールに移動します。|
 
 
 > [!TIP]
 > データベースのパフォーマンス メトリックを監視し、そのデータベースを上位のパフォーマンス レベルにスケーリングして、パフォーマンス メトリックの 1 つにアラート ルールを作成する PowerShell のサンプル スクリプトについては、「[PowerShell を使用して単一の SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-powershell.md)」を参照してください。
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-the-azure-cli" class="xliff"></a>
-
-## Azure CLI を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-the-azure-cli"></a>Azure CLI を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
 
 Azure CLI を使用して、Azure SQL データベースのサービス レベル、パフォーマンス レベル、およびストレージ容量を設定または変更するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 SQL エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
 
@@ -176,15 +163,13 @@ Azure CLI を使用して、Azure SQL データベースのサービス レベ�
 > 単一の Azure SQL データベースのサイズ情報を照会した後に、そのデータベースを別のパフォーマンス レベルにスケーリングする Azure CLI のサンプル スクリプトについては、「[CLI を使用して 1 つの SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md)」を参照してください。
 >
 
-<a id="manage-single-database-service-tiers-and-performance-levels-using-transact-sql" class="xliff"></a>
-
-## Transact-SQL を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
+## <a name="manage-single-database-service-tiers-and-performance-levels-using-transact-sql"></a>Transact-SQL を使用した単一データベースのサービス レベルとパフォーマンス レベルの管理
 
 Transact-SQL を使用して、Azure SQL データベースのサービス レベル、パフォーマンス レベル、およびストレージ容量を設定または変更するには、次の T-SQL コマンドを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 
 
 | コマンド | Description |
 | --- | --- |
-|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを作成します。 新しいデータベースを作成するには、master データベースに接続する必要があります。|
+|[CREATE DATABASE (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|新しいデータベースを作成します。 新しいデータベースを作成するには、マスター データベースに接続する必要があります。|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Azure SQL データベースを変更します。 |
 |[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|Azure SQL Database または Azure SQL Data Warehouse のエディション (サービス レベル)、サービス目標 (価格レベル)、およびエラスティック プール名 (存在する場合) を返します。 Azure SQL Database サーバーの master データベースにログオンしている場合は、すべてのデータベースの情報が返されます。 Azure SQL Data Warehouse の場合は、master データベースに接続する必要があります。|
 |[sys.database_usage (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-usage-azure-sql-database)|Azure SQL Database サーバー上のデータベースの数、種類、および期間を一覧表示します。|
@@ -196,15 +181,11 @@ ALTER DATABASE <myDatabaseName>
    MODIFY (MAXSIZE = 4096 GB);
 ```
 
-<a id="manage-single-databases-using-the-rest-api" class="xliff"></a>
-
-## REST API を使用した単一データベースの管理
+## <a name="manage-single-databases-using-the-rest-api"></a>REST API を使用した単一データベースの管理
 
 REST API を使用して、Azure SQL データベースのサービス レベル、パフォーマンス レベル、およびストレージ容量を設定または変更するには、「[Azure SQL Database REST API](/rest/api/sql/)」を参照してください。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * [DTU](sql-database-what-is-a-dtu.md) の詳細を参照してください。
 * DTU の使用状況の監視については、「[監視とパフォーマンスのチューニング](sql-database-troubleshoot-performance.md)」を参照してください。

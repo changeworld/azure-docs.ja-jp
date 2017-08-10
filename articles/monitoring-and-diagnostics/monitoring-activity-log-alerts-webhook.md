@@ -1,9 +1,32 @@
+---
+title: "Azure サービスの通知でアクティビティ ログ アラートを受け取る | Microsoft Docs"
+description: "Azure サービスで問題が発生したときに、SMS、電子メール、または webhook で通知を受け取ります。"
+author: johnkemnetz
+manager: orenr
+editor: 
+services: monitoring-and-diagnostics
+documentationcenter: monitoring-and-diagnostics
+ms.assetid: 
+ms.service: monitoring-and-diagnostics
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 03/31/2017
+ms.author: johnkem
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: c8339c08333aaa471b42f6468ca2a59ee4efacf9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
+
+---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Azure アクティビティ ログ アラートのための webhook
 アクション グループの定義の一部として、アクティビティ ログ アラート通知を受信するように webhook エンドポイントを構成することができます。 webhook を使用すると、後処理やカスタム アクションのために、これらの通知を他のシステムにルーティングすることができます。 この記事では、webhook に対する HTTP POST のペイロードの概要について説明します。
 
-Azure アクティビティ ログ アラートの設定とスキーマについては、 [こちらのページをご覧ください](monitoring-activity-log-alerts.md)。
+Azure アクティビティ ログ アラートの作成については、[こちらのページをご覧ください](monitoring-activity-log-alerts.md)。
 
-アクション グループの設定とスキーマについては、[こちらのページをご覧ください](monitoring-action-groups.md)
+アクション グループの作成については、[こちらのページをご覧ください](monitoring-action-groups.md)
 
 ## <a name="authenticating-the-webhook"></a>webhook の認証
 webhook はトークンベースの認証を使用して認証でき、webhook URI は、`https://mysamplealert/webcallback?tokenid=sometokenid&someparameter=somevalue` のようなトークン ID を使用して保存されます
@@ -90,7 +113,7 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
                     "stage": "Active",
                     "communicationId": "...",
                     "version": "0.1"
-                },
+                }
             }
         },
         "properties": {}
@@ -136,3 +159,4 @@ POST 操作に含まれる JSON ペイロードは、ペイロードの data.con
 * [ロジック アプリを使用して、Azure アラートから Twilio 経由で SMS を送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-text-message-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Slack メッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-slack-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
 * [ロジック アプリを使用して、Azure アラートから Azure キューにメッセージを送信します](https://github.com/Azure/azure-quickstart-templates/tree/master/201-alert-to-queue-with-logic-app)。 この例はメトリック アラートのためのものですが、変更を加えてアクティビティ ログ アラートで使用できます。
+

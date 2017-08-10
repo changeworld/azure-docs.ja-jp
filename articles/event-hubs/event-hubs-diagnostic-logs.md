@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 06/27/2017
 ms.author: sethm;babanisa
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 11f7b111df8b426c00334bebd82d5877817419d8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 09bc62f4918635419d74ef3ae400a41d4ce58b5a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -32,11 +32,11 @@ Azure Event Hubs の 2 種類のログを表示できます。
 ## <a name="turn-on-diagnostic-logs"></a>診断ログを有効にする
 既定では、診断ログは無効になっています。 診断ログを有効にするには
 
-1.  Azure Portal で、[ストリーミング ジョブ] ブレードに移動します。
+1.  [Azure ポータル](https://portal.azure.com)の **[監視 + 管理]** で、**[診断ログ]** をクリックします。
 
-2.  **[監視]** の **[診断ログ]** ブレードに移動します。
+    ![ブレードで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)
 
-    ![ブレードで診断ログに移動する](./media/event-hubs-diagnostic-logs/image1.png)  
+2.  監視するリソースをクリックします。
 
 3.  **[診断を有効にする]** をクリックします。
 
@@ -48,9 +48,7 @@ Azure Event Hubs の 2 種類のログを表示できます。
 
 5.  アーカイブ ターゲットを設定します (ストレージ アカウント、イベント ハブ、Azure Log Analytics など)。
 
-6.  収集するログのカテゴリを選択します (**実行**、**作成**など)。
-
-7.  新しい診断設定を保存します。
+6.  新しい診断設定を保存します。
 
 新しい設定は、10 分ほどで有効になります。 その後、構成したアーカイブ ターゲットのログが **[診断ログ]** ブレードに表示されます。
 
@@ -59,11 +57,11 @@ Azure Event Hubs の 2 種類のログを表示できます。
 ## <a name="diagnostic-logs-categories"></a>診断ログのカテゴリ
 Event Hubs では、2 つのカテゴリの診断ログをキャプチャします。
 
-* **ArchivalLogs**: イベント ハブのアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ)。
+* **ArchiveLogs**: イベント ハブのアーカイブに関連するログ (特に、アーカイブ エラーに関連するログ)。
 * **OperationalLogs**: Event Hubs の操作中に発生したことに関する情報 (特に、イベント ハブの作成などの操作の種類、使用されたリソース、操作の状態)。
 
 ## <a name="diagnostic-logs-schema"></a>診断ログのスキーマ
-すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下の例で説明している形式を使用する文字列フィールドがあります。
+すべてのログは、JavaScript Object Notation (JSON) 形式で格納されます。 各エントリには、以下のセクションで説明している形式を使用する文字列フィールドがあります。
 
 ### <a name="archive-logs-schema"></a>アーカイブ ログ スキーマ
 
@@ -84,7 +82,7 @@ durationInSeconds | 障害の時間。
 Message | エラー メッセージ。
 カテゴリ | ArchiveLogs
 
-アーカイブ ログの JSON 文字列の例を次に示します。
+次のコードは、アーカイブ ログの JSON 文字列の例です。
 
 ```json
 {
@@ -103,7 +101,7 @@ Message | エラー メッセージ。
 }
 ```
 
-### <a name="operation-logs-schema"></a>操作ログ スキーマ
+### <a name="operational-logs-schema"></a>操作ログのスキーマ
 
 操作ログの JSON 文字列には、次の表に示す要素が含まれます。
 
@@ -119,7 +117,7 @@ EventProperties | 操作プロパティ。
 Caller | 操作の呼び出し元 (Azure Portal または管理クライアント)。
 カテゴリ | OperationalLogs
 
-操作ログの JSON 文字列の例を次に示します。
+次のコードは、操作ログの JSON 文字列の例です。
 
 ```json
 Example:

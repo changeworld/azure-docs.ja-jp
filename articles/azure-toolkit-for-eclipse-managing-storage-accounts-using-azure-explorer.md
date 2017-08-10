@@ -23,9 +23,7 @@ ms.lasthandoff: 05/08/2017
 
 ---
 
-<a id="manage-storage-accounts-by-using-the-azure-explorer-for-eclipse" class="xliff"></a>
-
-# Azure Explorer for Eclipse を使用してストレージ アカウントを管理する
+# <a name="manage-storage-accounts-by-using-the-azure-explorer-for-eclipse"></a>Azure Explorer for Eclipse を使用してストレージ アカウントを管理する
 
 Azure Toolkit for Eclipse の一部である Azure Explorer は、Eclipse 統合開発環境 (IDE) 内から Azure アカウントのストレージ アカウントを管理するための使いやすいソリューションを Java 開発者に提供します。
 
@@ -33,9 +31,7 @@ Azure Toolkit for Eclipse の一部である Azure Explorer は、Eclipse 統合
 
 [!INCLUDE [azure-toolkit-for-eclipse-show-azure-explorer](../includes/azure-toolkit-for-eclipse-show-azure-explorer.md)]
 
-<a id="create-a-storage-account-in-eclipse" class="xliff"></a>
-
-## Eclipse でストレージ アカウントを作成する
+## <a name="create-a-storage-account-in-eclipse"></a>Eclipse でストレージ アカウントを作成する
 
 Azure Explorer を使用してストレージ アカウントを作成するには、以下の手順を実行します。
 
@@ -67,9 +63,7 @@ Azure Explorer を使用してストレージ アカウントを作成するに�
 
 4. 上記のオプションをすべて指定したら、**[作成]** をクリックします。
 
-<a id="create-a-storage-container-in-eclipse" class="xliff"></a>
-
-## Eclipse でストレージ コンテナーを作成する
+## <a name="create-a-storage-container-in-eclipse"></a>Eclipse でストレージ コンテナーを作成する
 
 Azure Explorer を使用してストレージ コンテナーを作成するには、以下の手順を実行します。
 
@@ -81,9 +75,7 @@ Azure Explorer を使用してストレージ コンテナーを作成するに�
 
    ![[BLOB コンテナーを作成する] ダイアログ ボックス][CC02]
 
-<a id="delete-a-storage-container-in-eclipse" class="xliff"></a>
-
-## Eclipse でストレージ コンテナーを削除する
+## <a name="delete-a-storage-container-in-eclipse"></a>Eclipse でストレージ コンテナーを削除する
 
 Azure Explorer を使用してストレージ コンテナーを削除するには、以下の手順を実行します。
 
@@ -95,9 +87,7 @@ Azure Explorer を使用してストレージ コンテナーを削除するに�
 
    ![[ストレージ コンテナーの削除] 確認ウィンドウ][DC02]
 
-<a id="delete-a-storage-account-in-eclipse" class="xliff"></a>
-
-## Eclipse でストレージ アカウントを削除する
+## <a name="delete-a-storage-account-in-eclipse"></a>Eclipse でストレージ アカウントを削除する
 
 Azure Explorer を使用してストレージ アカウントを削除するには、以下の手順を実行します。
 
@@ -109,9 +99,7 @@ Azure Explorer を使用してストレージ アカウントを削除するに�
 
    ![[Delete storage account] (ストレージ アカウントの削除) 確認ウィンドウ][DS02]
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 Azure ストレージ アカウント、サイズ、および料金の詳細については、次のリソースを参照してください。
 
 * [Microsoft Azure Storage の概要]

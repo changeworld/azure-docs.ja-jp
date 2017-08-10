@@ -22,9 +22,7 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="collect-data-from-collectd-on-linux-agents-in-log-analytics" class="xliff"></a>
-
-# Log Analytics で Linux エージェント上の CollectD からデータを収集する
+# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Log Analytics で Linux エージェント上の CollectD からデータを収集する
 [CollectD](https://collectd.org/) は、アプリケーションおよびシステム レベルの情報から定期的にパフォーマンス メトリックを収集するオープン ソースの Linux デーモンです。 アプリケーションの例には、Java 仮想マシン (JVM)、MySQL Server、および Nginx が含まれます。 この記事では、Log Analytics での CollectD からのパフォーマンス データの収集に関する情報を提供します。
 
 使用可能なプラグインの完全な一覧は、「[プラグインの表](https://collectd.org/wiki/index.php/Table_of_Plugins)」にあります。
@@ -72,25 +70,19 @@ OMS Agent for Linux はまた、CollectD メトリックのためにポート 26
     </filter>
 
 
-<a id="versions-supported" class="xliff"></a>
-
-## サポートされているバージョン
+## <a name="versions-supported"></a>サポートされているバージョン
 - Log Analytics は現在、CollectD バージョン 4.8 以降をサポートしています。
 - CollectD メトリックの収集には OMS Agent for Linux v1.1.0-217 以降が必要です。
 
 
-<a id="configuration" class="xliff"></a>
-
-## 構成
+## <a name="configuration"></a>構成
 Log Analytics での CollectD データの収集を構成するための基本的な手順を次に示します。
 
 1. write_http プラグインを使用してデータを OMS Agent for Linux に送信するように CollectD を構成します。  
 2. 適切なポート上で CollectD データをリッスンするように OMS Agent for Linux を構成します。
 3. CollectD と OMS Agent for Linux を再起動します。
 
-<a id="configure-collectd-to-forward-data" class="xliff"></a>
-
-### データを転送するように CollectD を構成する 
+### <a name="configure-collectd-to-forward-data"></a>データを転送するように CollectD を構成する 
 
 1. CollectD データを OMS Agent for Linux にルーティングするには、CollectD の構成ディレクトリに `oms.conf` を追加する必要があります。 このファイルの移動先は、使用しているマシンの Linux ディストリビューションによって異なります。
 
@@ -115,9 +107,7 @@ Log Analytics での CollectD データの収集を構成するための基本�
 
     sudo service collectd restart  sudo /opt/microsoft/omsagent/bin/service_control restart
 
-<a id="collectd-metrics-to-log-analytics-schema-conversion" class="xliff"></a>
-
-## CollectD メトリックから Log Analytics スキーマへの変換
+## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>CollectD メトリックから Log Analytics スキーマへの変換
 既に OMS Agent for Linux によって収集されたインフラストラクチャ メトリックと、CollectD によって収集された新しいメトリックの間で使い慣れたモデルを維持するために、次のスキーマ マッピングが使用されます。
 
 | CollectD メトリックのフィールド | Log Analytics のフィールド |
@@ -131,9 +121,7 @@ Log Analytics での CollectD データの収集を構成するための基本�
 | dstypes | なし |
 | values[] | CounterValue |
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
 

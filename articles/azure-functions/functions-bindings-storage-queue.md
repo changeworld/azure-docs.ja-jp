@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam, glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 85a3386c8159eb1abf01ccd35c6aea04f5710d5c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f39f674bf576a2661a0e03710b9005b0515b3aa5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-functions-queue-storage-bindings"></a>Azure Functions における Queue Storage バインド
@@ -75,7 +74,7 @@ Node.js 関数では、`context.bindings.<name>` を使用してキュー デー
 * **ExpirationTime** - `DateTimeOffset?` 型。 メッセージが期限切れになる時刻。
 * **Id** - `string` 型。 キュー メッセージ ID。
 * **InsertionTime** - `DateTimeOffset?` 型。 メッセージがキューに追加された時刻。
-* **NextVisibleTime** - DateTimeOffset 型。 メッセージが次に表示される時刻。
+* **NextVisibleTime** - `DateTimeOffset?` 型。 メッセージが次に表示される時刻。
 * **PopReceipt** - `string` 型。 メッセージのポップ受信。
 
 キュー メタデータの使用方法については、「[トリガー サンプル](#triggersample)」を参照してください。
@@ -294,3 +293,4 @@ module.exports = function(context) {
 <!-- LINKS -->
 
 [`CloudQueueMessage`]: /dotnet/api/microsoft.windowsazure.storage.queue.cloudqueuemessage
+

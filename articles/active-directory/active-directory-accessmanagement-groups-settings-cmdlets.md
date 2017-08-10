@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory コマンドレットを使用したグループ設定の構成 | Microsoft Docs"
-description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です。"
+description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,19 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 07/26/2017
 ms.author: rodejo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 81fdae033afd90b77d3725f8c39b8a6c6bbc3812
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7dd4833000e8550b172e0451c48788b1e627a1fb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
 > [!IMPORTANT]
-> このコンテンツは、Office 365 グループとも呼ばれる統合グループにのみ適用されます。 
+> このコンテンツは、Office 365 グループにのみ適用されます。 
 
 Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。 つまり、ディレクトリは既定の設定で構成されています。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリのグループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループのグループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、グループへのゲストのアクセスを管理するために使用します。 
 

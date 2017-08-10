@@ -13,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 07/17/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 5de3e36a97ead2f5ddfe57591e7c80a6df64c064
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ee58d0c6703d7e6688ba9959a7f75c3b52a9411c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="customize-azure-ad-functionality-for-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットのための Azure AD 機能のカスタマイズ
@@ -37,6 +36,8 @@ SSPR が有効になっていない場合でも、ユーザーにはパスワー
 3. 前記のロールのどちらも割り当てられていない場合は、**グローバル管理者**が通知を受け取ります
 
 どの場合も、最大 100 人の受信者が通知を受け取ります。
+
+さまざまな管理者ロールと、それらの管理者ロールを割り当てる方法の詳細については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください
 
 ### <a name="disable-contact-your-administrator-emails"></a>[管理者に問い合わせてください] メールを無効にする
 

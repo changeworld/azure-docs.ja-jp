@@ -7,24 +7,24 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/10/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 6b4bbb13dbb86f82dd6a70acaccfcf38eec951c6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 865c72b7525c185d047d6c9f57b642a195e56fd4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の概要
 Azure Cloud Shell は、Azure リソースを管理するための、ブラウザーでアクセスできるインタラクティブなシェルです。
 
-![](media/startup.gif)
+![](media/overview-pic.png)
 
 ## <a name="features"></a>Features (機能)
 ### <a name="browser-based-shell-experience"></a>ブラウザーベースのシェル環境
@@ -42,9 +42,10 @@ Azure CLI 2.0 ですばやくリソースにアクセスできるよう、Cloud 
 Cloud Shell マシンは一時的なものであるため、お使いの $Home ディレクトリを永続化するためには、Azure ファイル共有を `clouddrive` としてマウントする必要があります。
 Cloud Shell の初回起動時に、リソース グループとストレージ アカウント、ファイル共有を自動的に作成するよう促されます。 これは 1 回限りの作業であり、それ以降はすべてのセッションで自動的に接続されます。 
 
-![](media/storage-prompt.png)
+#### <a name="create-new-storage"></a>新しいストレージの作成
+![](media/basic-storage.png)
 
-既定の 5 GB のディスク イメージを含んだ Azure ファイル共有と共に、LRS ストレージ アカウントが自動的に作成されます。 $Home ディレクトリの同期と永続化に使用されるディスク イメージとのファイル共有操作のために、ファイル共有が `clouddrive` としてマウントされます。 ストレージのコストは通常どおりに適用されます。
+既定の 5 GB のディスク イメージを含んだ Azure ファイル共有と共に、ローカル冗長ストレージ (LRS) アカウントが自動的に作成されます。 $Home ディレクトリの同期と永続化に使用されるディスク イメージとのファイル共有操作のために、ファイル共有が `clouddrive` としてマウントされます。 ストレージのコストは通常どおりに適用されます。
 
 以下の 3 つのリソースが自動的に作成されます。
 1. `cloud-shell-storage-<region>` という名前のリソース グループ
@@ -54,11 +55,16 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 > [!Note]
 > SSH キーなど、$Home ディレクトリ内のすべてのファイルが、マウントされたファイル共有に格納されたユーザー ディスク イメージに永続化されます。 $Home ディレクトリおよびマウントされたファイル共有へのファイルの保存時に、ベスト プラクティスを適用します。
 
-[Cloud Shell ストレージ、ファイル共有の更新、ファイルのアップロード/ダウンロードについては、こちらを参照してください] [persisting-shell-storage.md]
+#### <a name="use-existing-resources"></a>既存のリソースの使用
+![](media/advanced-storage.png)
+
+詳細オプションで、既にあるリソースを Cloud Shell に関連付けることもできます。 ストレージのセットアップを促す画面が表示されたら、[詳細設定の表示] をクリックして、追加オプションを選択します。 ドロップダウン ボックスには、割り当てられている Cloud Shell リージョンとローカル/グローバル冗長ストレージ アカウントが一覧表示されます。
+
+[Cloud Shell ストレージ、ファイル共有の更新、ファイルのアップロード/ダウンロードについてはこちらを参照してください。](persisting-shell-storage.md)
 
 ## <a name="concepts"></a>概念
 * Cloud Shell は、ユーザーごとにセッション単位で一時的に提供されるマシン上で実行されます。
-* Cloud Shell は、無操作状態で 10 分経過するとタイムアウトとなります。
+* Cloud Shell は、無操作状態で 20 分経過するとタイムアウトとなります。
 * Cloud Shell は、ファイル共有を接続した状態でのみアクセスできます。
 * Cloud Shell には、ユーザー アカウントごとに 1 台のマシンが割り当てられます。
 * アクセス許可は、標準の Linux ユーザーとして設定されます。
@@ -66,7 +72,7 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 [Cloud Shell の全機能については、こちらを参照してください。](features.md)
 
 ## <a name="examples"></a>例
-* 任意のブラウザーから Azure リソースを管理するためのスクリプトを作成または編集する。
+* Azure の管理を自動化するスクリプトの作成と編集
 * Azure Portal と Azure CLI 2.0 を同時に使ってリソースを管理する。
 * Azure CLI 2.0 を試用する。
 
@@ -79,9 +85,6 @@ Cloud Shell のホストとなるマシンは無料です。ただし $Home デ�
 Cloud Shell は、Chrome、Edge、Safari での使用をお勧めします。 Cloud Shell は Chrome、Firefox、Safari、IE、Edge でサポートされますが、ブラウザー固有の設定の影響を受けます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-* ストレージを作成するとき、409 MissingSubscriptionRegistration というエラーを受け取ります。
-  * このエラーは、ストレージの名前空間にサブスクリプションが登録されていないことを示します。 [こちらの詳細な手順](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-common-deployment-errors#noregisteredproviderfound)に従い、完了したらもう一度やり直してください。
-* Azure Active Directory サブスクリプションを使っているとき、400 DisallowedOperation エラーのためのストレージを作成できません。
-  * AD サブスクリプションは、Azure リソース作成のためのアクセスを許可されていません。ストレージ リソースを作成できる Azure サブスクリプションを使ってください。
+1. Azure Active Directory サブスクリプションを使っているとき、400 DisallowedOperation エラーのためのストレージを作成できません。 これを解決するには、ストレージ リソースを作成できる Azure サブスクリプションを使用してください。 AD サブスクリプションでは、Azure のリソースを作成できません。
 
 具体的に確認されている制限については、[Cloud Shell の制限](limitations.md)に関するページを参照してください。

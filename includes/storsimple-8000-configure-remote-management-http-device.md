@@ -1,6 +1,5 @@
 
-#### クラウド アプライアンスのリモート管理を構成するには
-<a id="to-configure-remote-management-on-cloud-appliance" class="xliff"></a>
+#### <a name="to-configure-remote-management-on-cloud-appliance"></a>クラウド アプライアンスのリモート管理を構成するには
 
 1. StorSimple デバイス マネージャー サービスで **[デバイス]** をクリックします。 サービスに接続されているデバイスの一覧から、クラウド アプライアンスを選択してクリックします。
     ![StorSimple でのクラウド アプライアンスの選択](./media/storsimple-8000-configure-remote-management-http-device/sca-remote-manage1.png)

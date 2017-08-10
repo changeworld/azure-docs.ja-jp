@@ -2,7 +2,7 @@
 title: "Azure 診断ログの概要 | Microsoft Docs"
 description: "Azure 診断ログの概要と、診断ログを使用して Azure リソース内で発生するイベントを把握する方法について説明します。"
 author: johnkemnetz
-manager: rboucher
+manager: orenr
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: johnkem; magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: d144dd60192a4b62db393db08b82efeaa8d45447
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2517972b63bbd1a552fe591e937c9e34db580865
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="collect-and-consume-diagnostic-data-from-your-azure-resources"></a>Azure リソースからの診断データの収集と使用
@@ -45,7 +44,7 @@ ms.lasthandoff: 07/06/2017
 * サード パーティのサービスや PowerBI などのカスタム分析ソリューションで取り込むために、[診断ログを **Event Hubs** にストリーミング](monitoring-stream-diagnostic-logs-to-event-hubs.md)する。
 * 診断ログを [OMS Log Analytics](../log-analytics/log-analytics-azure-storage.md)
 
-ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたはイベント ハブ名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
+ログを出力するサブスクリプションとは別のサブスクリプションで、ストレージ アカウントまたは Event Hubs 名前空間を使用できます。 設定を構成するユーザーは、両方のサブスクリプションに対して適切な RBAC アクセスを持っている必要があります。
 
 ## <a name="diagnostic-settings"></a>診断設定
 非コンピューティング リソースの診断ログは、診断設定を使用して構成します。 **診断設定** では、以下を制御します。
@@ -86,7 +85,7 @@ ms.lasthandoff: 07/06/2017
 コンピューティング以外のリソースについては、リソースの作成後に Azure Portal で以下を行うと、診断ログを有効にできます。
 
 1. リソースのブレードに移動し、 **[診断]** ブレードを開きます。
-2. **[オン]** をクリックし、ストレージ アカウントおよび Event Hubs を選択します。
+2. **[オン]** をクリックし、ストレージ アカウントやイベント ハブを選択します。
 
    ![リソースの作成後に診断ログを有効にする](./media/monitoring-overview-of-diagnostic-logs/enable-portal-existing.png)
 3. **[ログ]** で、収集またはストリーミングする**ログ カテゴリ**を選択します。
@@ -98,23 +97,23 @@ Azure PowerShell コマンドレットを使用して診断ログを有効にす
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -StorageAccountId [your storage account id] -Enabled $true
 ```
 
 ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
 
-Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
+イベント ハブへの診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your service bus rule id] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -ServiceBusRuleId [your Service Bus rule id] -Enabled $true
 ```
 
-Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key name}`の形式の文字列です。
+Service Bus 規則 ID は、 `{Service Bus resource ID}/authorizationrules/{key name}`の形式の文字列です。
 
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
 ```powershell
-    Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
+Set-AzureRmDiagnosticSetting -ResourceId [your resource id] -WorkspaceId [resource id of the log analytics workspace] -Enabled $true
 ```
 
 次のコマンドを使用して、Log Analytics ワークスペースのリソース IDを取得できます。
@@ -131,23 +130,23 @@ Azure CLI を使用して診断ログを有効にするには、次のコマン�
 ストレージ アカウントへの診断ログの保存を有効にするには、次のコマンドを使用します。
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --storageId <storageAccountId> --enabled true
 ```
 
 ストレージ アカウント ID は、ログの送信先となるストレージ アカウントのリソース ID です。
 
-Event Hubs への診断ログのストリーミングを有効にするには、次のコマンドを使用します。
+イベント ハブへの診断ログのストリーミングを有効にするには、次のコマンドを使用します。
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --serviceBusRuleId <serviceBusRuleId> --enabled true
 ```
 
-Service Bus 規則 ID は、 `{service bus resource ID}/authorizationrules/{key name}`の形式の文字列です。
+Service Bus 規則 ID は、 `{Service Bus resource ID}/authorizationrules/{key name}`の形式の文字列です。
 
 Log Analytics ワークスペースへの診断ログの送信を有効にするには、次のコマンドを使用します。
 
 ```azurecli
-    azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
+azure insights diagnostic set --resourceId <resourceId> --workspaceId <resource id of the log analytics workspace> --enabled true
 ```
 
 このパラメーターを組み合わせて、複数の出力オプションを有効にできます。

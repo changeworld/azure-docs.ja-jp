@@ -14,9 +14,10 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 03/21/2017
 ms.author: tarcher
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 424d8654a047a28ef6e32b73952cf98d28547f4f
 ms.openlocfilehash: 9e79f275b8de045892517ec33581b72195a81f32
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/22/2017
 
 

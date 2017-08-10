@@ -1,5 +1,5 @@
 ---
-title: "System Center VMM を使用せずに Azure Site Recovery で Hyper-V を Azure にレプリケートするためのアーキテクチャについて説明します。 | Microsoft Docs"
+title: "Azure Site Recovery を使用した Azure への Hyper-V レプリケーション (System Center VMM なし) 用のアーキテクチャを確認する | Microsoft Docs"
 description: "この記事では、(VMM を使用せずに) Azure Site Recovery サービスを使用してオンプレミスの Hyper-V VM を Azure にレプリケートするときに使用されるコンポーネントとアーキテクチャの概要を説明します。"
 services: site-recovery
 documentationcenter: 
@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 044dfe686de36c56703d126db94d0b4382b85886
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: d57cbc5b205cfb020070d567097f3bb648ce5300
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
 
-<a id="step-1-review-the-architecture-for-hyper-v-replication-to-azure" class="xliff"></a>
-
-# 手順 1: Azure に対する Hyper-V レプリケーションのアーキテクチャを確認する
+# <a name="step-1-review-the-architecture-for-hyper-v-replication-to-azure"></a>手順 1: Azure に対する Hyper-V レプリケーションのアーキテクチャを確認する
 
 
 この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用したオンプレミスの (System Center VMM の管理下にない) Hyper-V 仮想マシンの Azure へのレプリケートに関係するコンポーネントとプロセスについて説明します。
@@ -34,9 +32,7 @@ ms.lasthandoff: 06/23/2017
 
 
 
-<a id="architectural-components" class="xliff"></a>
-
-## アーキテクチャ コンポーネント
+## <a name="architectural-components"></a>アーキテクチャ コンポーネント
 
 VMM なしで Hyper-V VM を Azure にレプリケートする場合に関係するコンポーネントは多数あります。
 
@@ -53,26 +49,20 @@ VMM なしで Hyper-V VM を Azure にレプリケートする場合に関係す
 ![コンポーネント](./media/hyper-v-site-walkthrough-architecture/arch-onprem-azure-hypervsite.png)
 
 
-<a id="replication-process" class="xliff"></a>
-
-## レプリケーション プロセス
+## <a name="replication-process"></a>レプリケーション プロセス
 
 **図 2: Azure への Hyper-V レプリケーションのレプリケーションと回復のプロセス**
 
 ![ワークフロー](./media/hyper-v-site-walkthrough-architecture/arch-hyperv-azure-workflow.png)
 
-<a id="enable-protection" class="xliff"></a>
-
-### 保護を有効にする
+### <a name="enable-protection"></a>保護を有効にする
 
 1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
 2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) を呼び出します。
 3. ジョブが [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
 4. ジョブは **[ジョブ]** タブで監視できます。
  
-<a id="replicate-the-initial-data" class="xliff"></a>
-
-### 初期データをレプリケーする
+### <a name="replicate-the-initial-data"></a>初期データをレプリケーする
 
 1. 初期レプリケーションがトリガーされると、[Hyper-V VM スナップショット](https://technet.microsoft.com/library/dd560637.aspx)が作成されます。
 2. 仮想ハード ディスクは、すべてが Azure にコピーされるまで、1 つずつレプリケートされます。 VM サイズとネットワーク帯域幅によっては、しばらく時間がかかる場合があります。 ネットワーク使用量の最適化については、 [Azure 保護ネットワークの帯域幅使用量のオンプレミスでの管理方法](https://support.microsoft.com/kb/3056159)に関するページを参照してください。
@@ -81,35 +71,27 @@ VMM なしで Hyper-V VM を Azure にレプリケートする場合に関係す
 5. 初期レプリケーションが完了すると、VM スナップショットは削除されます。 ログの差分ディスク変更は、親ディスクに同期され、マージされます。
 
 
-<a id="finalize-protection" class="xliff"></a>
-
-### 保護の最終処理
+### <a name="finalize-protection"></a>保護の最終処理
 
 1. 初期レプリケーションが終了すると、"**バーチャル マシンの保護の最終処理**" ジョブによって、ネットワークなどのレプリケーション後の設定が構成され、仮想マシンが保護されます。
 2. Azure にレプリケートする場合は、仮想マシンの設定を微調整して、いつでもフェールオーバーできるようにしておくことが必要な場合があります。 この時点で、テスト フェールオーバーを実行して、すべてが想定通りに動作しているかを確認できます。
 
-<a id="replicate-the-delta" class="xliff"></a>
-
-### デルタをレプリケートする
+### <a name="replicate-the-delta"></a>デルタをレプリケートする
 
 1. 初期レプリケーション後は、レプリケーションの設定に従って差分の同期が開始されます。
 2. Hyper-V レプリカのレプリケーション トラッカーは、仮想ハード ディスクへの変更を .hrl ファイルとして追跡します。 レプリケーション用に構成された各ディスクには、関連付けられた .hrl ファイルがあります。 このログは、初期レプリケーションの完了後、顧客のストレージ アカウントに送信されます。 ログが Azure に送信される間、プライマリ ディスクでの変更は、同じディレクトリ内の別のログ ファイルで追跡されます。
 3. 初期レプリケーションおよび差分レプリケーション中は、VM ビューで VM を監視できます。 [詳細情報](site-recovery-monitoring-and-troubleshooting.md#monitor-replication-health-for-virtual-machines)。  
 
-<a id="synchronize-replication" class="xliff"></a>
-
-### レプリケーションを同期する
+### <a name="synchronize-replication"></a>レプリケーションを同期する
 
 1. 差分レプリケーションに失敗した場合、完全なレプリケーションが帯域幅または時間の観点からコスト高になるときは、VM に再同期のマークが付けられます。 たとえば、.hrl ファイルがディスク サイズの 50% に達した場合、VM には再同期のマークが付けられます。
 2.  再同期では、ソースとターゲットの仮想マシンのチェックサムを計算して差分データのみを送信することで、送信されるデータの量が最小限に抑えられます。 再同期では、ソース ファイルとターゲット ファイルを固定チャンクに分割する固定ブロック チャンク アルゴリズムが使用されます。 チャンクごとにチェックサムを生成し、比較することによって、ソース側のどのブロックをターゲットに適用すべきかが判断されます。
 3. 再同期が完了すると、通常の差分レプリケーションが再開されます。 既定では再同期は業務時間外に自動的に実行するようにスケジュールされますが、手動で仮想マシンを再同期することもできます。 たとえば、ネットワークの停止など、なんらかの機能不全が発生した場合は、再同期を再開することができます。 そのためには、ポータルで VM を選択し、**[再同期]** を選択します。
 
-    ![Manual resynchronization](media/hyper-v-site-walkthrough-architecture/image4.png)
+    ![Manual resynchronization](./media/hyper-v-site-walkthrough-architecture/image4.png)
 
 
-<a id="retry-logic" class="xliff"></a>
-
-### 再試行ロジック
+### <a name="retry-logic"></a>再試行ロジック
 
 レプリケーション エラーが発生した場合に備えて、組み込み再試行があります。 このロジックは、次の 2 つのカテゴリに分類できます。
 
@@ -120,9 +102,7 @@ VMM なしで Hyper-V VM を Azure にレプリケートする場合に関係す
 
 
 
-<a id="failover-and-failback-process" class="xliff"></a>
-
-## フェールオーバーとフェールバックのプロセス
+## <a name="failover-and-failback-process"></a>フェールオーバーとフェールバックのプロセス
 
 1. 計画または計画外[フェールオーバー](site-recovery-failover.md)をオンプレミスの Hyper-V VM から Azure に実行できます。 予定されたフェールオーバーを実行する場合、データが決して失われないように、ソース側の VM はシャット ダウンされます。
 2. 単一のマシンをフェールオーバーするか、複数のマシンのフェールオーバーを調整するための[復旧計画](site-recovery-create-recovery-plans.md)を作成することができます。
@@ -133,9 +113,7 @@ VMM なしで Hyper-V VM を Azure にレプリケートする場合に関係す
 
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 [手順 2. のデプロイの前提条件の確認](hyper-v-site-walkthrough-prerequisites.md)に関するページに進んでください。
 

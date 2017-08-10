@@ -20,7 +20,6 @@ ms.openlocfilehash: 6f864581fe1d1771371d6805407cb881fedb4187
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
 
-
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
 
@@ -78,6 +77,8 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ### <a name="viewing-performance-data"></a>パフォーマンス データの表示
 ノードからパフォーマンス データを表示するには、次の処理を行います。
 </br>
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 * Azure Portal から Log Analytics ワークスペースを起動します。
 

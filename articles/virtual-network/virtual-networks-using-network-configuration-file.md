@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 6baf1a642778bdd281ae641611bc09ee26aaec70
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f1e3ae26b6525f2235a6b0d53546b334dc027b94
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>ネットワーク構成ファイルを使用した仮想ネットワーク (クラシック) の構成
@@ -32,7 +31,7 @@ ms.lasthandoff: 06/24/2017
 
 ネットワーク構成ファイルを使った仮想ネットワーク (クラシック) の作成と構成には、そのファイルのエクスポート、変更、インポートが伴います。
 
-## <a name="export-a-network-configuration-file"></a>ネットワーク構成ファイルのエクスポート
+## <a name="export"></a>ネットワーク構成ファイルのエクスポート
 
 ネットワーク構成ファイルをエクスポートするには、PowerShell または Azure CLI を使用できます。 PowerShell では XML ファイルがエクスポートされるのに対し、Azure CLI では json ファイルがエクスポートされます。
 
@@ -120,7 +119,7 @@ ms.lasthandoff: 06/24/2017
 
 エクスポートしたネットワーク構成ファイルにコンテンツがない場合は、前の出の例の json をコピーして新しいファイルに貼り付けてください。
 
-## <a name="import-a-network-configuration-file"></a>ネットワーク構成ファイルのインポート
+## <a name="import"></a>ネットワーク構成ファイルのインポート
 
 ネットワーク構成ファイルをインポートするには、PowerShell または Azure CLI を使用できます。 PowerShell では XML ファイルがインポートされるのに対し、Azure CLI では json ファイルがインポートされます。 インポートに失敗する場合は、ファイルが[ネットワーク構成スキーマ](https://msdn.microsoft.com/library/azure/jj157100.aspx)に準拠していることを確認してください。 
 
@@ -143,3 +142,4 @@ ms.lasthandoff: 06/24/2017
     ```azurecli
     azure network import c:\azure\networkconfig.json
     ```
+

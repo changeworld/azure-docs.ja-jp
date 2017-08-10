@@ -23,9 +23,7 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="create-and-modify-peering-for-an-expressroute-circuit-using-powershell" class="xliff"></a>
-
-# PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
+# <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 > [!div class="op_single_selector"]
 > * [Resource Manager- Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
 > * [Resource Manager - PowerShell](expressroute-howto-routing-arm.md)
@@ -38,9 +36,7 @@ ms.lasthandoff: 05/09/2017
 
 この記事では、PowerShell と Azure リソース マネージャーのデプロイメント モデルを使用して、ExpressRoute 回線のルーティング構成を作成して管理する手順について説明します。  以下の手順では、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除の方法も示します。 
 
-<a id="configuration-prerequisites" class="xliff"></a>
-
-## 構成の前提条件
+## <a name="configuration-prerequisites"></a>構成の前提条件
 
 * Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
@@ -55,15 +51,11 @@ ms.lasthandoff: 05/09/2017
 
 ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 
 
-<a id="azure-private-peering" class="xliff"></a>
-
-## Azure プライベート ピアリング
+## <a name="azure-private-peering"></a>Azure プライベート ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除する方法について説明します。 
 
-<a id="to-create-azure-private-peering" class="xliff"></a>
-
-### Azure プライベート ピアリングを作成するには
+### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
 
 1. ExpressRoute 用の PowerShell モジュールをインポートします。
 
@@ -164,9 +156,7 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
   > 
   >
 
-<a id="to-view-azure-private-peering-details" class="xliff"></a>
-
-### Azure プライベート ピアリングの詳細を表示するには
+### <a name="to-view-azure-private-peering-details"></a>Azure プライベート ピアリングの詳細を表示するには
 
 次のコマンドレットを使用して、構成の詳細を取得できます。
 
@@ -176,9 +166,7 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Circuit $ckt
 ```
 
-<a id="to-update-azure-private-peering-configuration" class="xliff"></a>
-
-### Azure プライベート ピアリングの構成を更新するには
+### <a name="to-update-azure-private-peering-configuration"></a>Azure プライベート ピアリングの構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分でも更新することができます。 次の例では、回路の VLAN ID が 100 から 500 に更新されています。
 
@@ -188,9 +176,7 @@ Set-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-<a id="to-delete-azure-private-peering" class="xliff"></a>
-
-### Azure プライベート ピアリングを削除するには
+### <a name="to-delete-azure-private-peering"></a>Azure プライベート ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -205,15 +191,11 @@ Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePrivatePeering" -Expr
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-<a id="azure-public-peering" class="xliff"></a>
-
-## Azure パブリック ピアリング
+## <a name="azure-public-peering"></a>Azure パブリック ピアリング
 
 このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新および削除する方法について説明します。
 
-<a id="to-create-azure-public-peering" class="xliff"></a>
-
-### Azure パブリック ピアリングを作成するには
+### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
 
 1. ExpressRoute 用の PowerShell モジュールをインポートします。
 
@@ -317,9 +299,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   > 
   >
 
-<a id="to-view-azure-public-peering-details" class="xliff"></a>
-
-### Azure パブリック ピアリングの詳細を表示するには
+### <a name="to-view-azure-public-peering-details"></a>Azure パブリック ピアリングの詳細を表示するには
 
 次のコマンドレットを使用して、構成の詳細を取得できます。
 
@@ -329,9 +309,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   Get-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Circuit $ckt
   ```
 
-<a id="to-update-azure-public-peering-configuration" class="xliff"></a>
-
-### Azure パブリック ピアリング構成を更新するには
+### <a name="to-update-azure-public-peering-configuration"></a>Azure パブリック ピアリング構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分も更新することができます。
 
@@ -343,9 +321,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 
 上記の例では、回線の VLAN ID は 200 から 600 に更新されています。
 
-<a id="to-delete-azure-public-peering" class="xliff"></a>
-
-### Azure パブリック ピアリングを削除するには
+### <a name="to-delete-azure-public-peering"></a>Azure パブリック ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -354,15 +330,11 @@ Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -Expre
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-<a id="microsoft-peering" class="xliff"></a>
-
-## Microsoft ピアリング
+## <a name="microsoft-peering"></a>Microsoft ピアリング
 
 このセクションでは、ExpressRoute 回線の Microsoft ピアリング構成を作成、取得、更新および削除する方法について説明します。 
 
-<a id="to-create-microsoft-peering" class="xliff"></a>
-
-### Microsoft ピアリングを作成するには
+### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
 1. ExpressRoute 用の PowerShell モジュールをインポートします。
 
   ExpressRoute コマンドレットを使用するには、 [PowerShell ギャラリー](http://www.powershellgallery.com/) から最新の PowerShell インストーラーをインストールし、Azure リソース マネージャー モジュールを PowerShell セッションにインポートする必要があります。 管理者として PowerShell を実行する必要があります。
@@ -455,9 +427,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   ```
 
-<a id="to-get-microsoft-peering-details" class="xliff"></a>
-
-### Microsoft ピアリングの詳細を取得するには
+### <a name="to-get-microsoft-peering-details"></a>Microsoft ピアリングの詳細を取得するには
 
 次のコマンドレットを使用して、構成の詳細を取得できます。
 
@@ -467,9 +437,7 @@ $ckt = Get-AzureRmExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGr
 Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt
 ```
 
-<a id="to-update-microsoft-peering-configuration" class="xliff"></a>
-
-### Microsoft ピアリング構成を更新するには
+### <a name="to-update-microsoft-peering-configuration"></a>Microsoft ピアリング構成を更新するには
 
 次のコマンドレットを使用して、構成のどの部分も更新することができます。
 
@@ -479,9 +447,7 @@ Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRo
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-<a id="to-delete-microsoft-peering" class="xliff"></a>
-
-### Microsoft ピアリングを削除するには
+### <a name="to-delete-microsoft-peering"></a>Microsoft ピアリングを削除するには
 
 以下のコマンドレットを実行して、ピアリング構成を削除することができます。
 
@@ -491,9 +457,7 @@ Remove-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -Express
 Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 次の手順では、 [ExpressRoute 回線に VNet をリンク](expressroute-howto-linkvnet-arm.md)します。
 

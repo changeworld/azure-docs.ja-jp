@@ -16,32 +16,26 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: 9071ab19844898abf7feb7fc0d84120298bb5eaf
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: a43d7e30a6f4176afba27f0de2c2c116df741080
 ms.contentlocale: ja-jp
 
 
 ---
 
-<a id="set-up-your-project" class="xliff"></a>
+## <a name="set-up-your-project"></a>プロジェクトの設定
 
-## プロジェクトの設定
-
-> 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら[構成](#create-an-application-express "構成手順")手順に進み、実行前にコード サンプルを構成します。
+> 代わりにこのサンプルの Android Studio プロジェクトをダウンロードしますか。 [プロジェクトをダウンロード](https://github.com/Azure-Samples/active-directory-android-native-v2/archive/master.zip)したら[構成](#create-an-application-express)手順に進み、実行前にコード サンプルを構成します。
 
 
-<a id="create-a-new-project" class="xliff"></a>
-
-### 新しいプロジェクトを作成する 
+### <a name="create-a-new-project"></a>新しいプロジェクトを作成する 
 1.  Android Studio を開き、[`File`] (ファイル)  >  [`New`] (新規)  >  [`New Project`] (新しいプロジェクト) に移動します。
 2.  アプリケーションに名前を付けて、[`Next`] (次へ) をクリックします。
 3.  *API 21 以降 (Android 5.0)* を選択して、[`Next`] (次へ) をクリックします。
 4.  [`Empty Activity`] (空のアクティビティ) はそのままにして [`Next`] (次へ) をクリックし、[`Finish`] (完了) をクリックします。
 
 
-<a id="add-the-microsoft-authentication-library-msal-to-your-project" class="xliff"></a>
-
-### プロジェクトへの Microsoft Authentication Library (MSAL) の追加
+### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>プロジェクトへの Microsoft Authentication Library (MSAL) の追加
 1.  Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] (Gradle のビルド) に移動します。
 2.  [`Dependencies`] (依存関係) で次のコードをコピーして貼り付けます。
 
@@ -53,16 +47,12 @@ compile 'com.android.volley:volley:1.0.0'
 ```
 
 <!--start-collapse-->
-<a id="about-this-package" class="xliff"></a>
-
-### このパッケージについて
+### <a name="about-this-package"></a>このパッケージについて
 
 上記パッケージにより、Microsoft Authentication Library (MSAL) がインストールされます。 MSAL は、Azure Active Directory v2 エンドポイントで保護される API へのアクセスで使用するユーザー トークンの取得、キャッシュ、更新を処理します。
 <!--end-collapse-->
 
-<a id="create-your-applications-ui" class="xliff"></a>
-
-## アプリケーションの UI の作成
+## <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 
 1.  `activity_main.xml` を開きます ([`res`]  >  [`layout`] (レイアウト) の順)。
 2.  アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` やその他から `LinearLayout` に変更します。

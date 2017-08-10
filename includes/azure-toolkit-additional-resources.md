@@ -1,4 +1,4 @@
-Java 統合開発環境 (IDE) 向け Azure Toolkit の詳細については、次のリンクを参照してください。
+Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
 * [Azure Toolkit for Eclipse](/azure/azure-toolkit-for-eclipse)
   * [Azure Toolkit for Eclipse の新機能](/azure/azure-toolkit-for-eclipse-whats-new)

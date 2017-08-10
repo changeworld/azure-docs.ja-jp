@@ -22,12 +22,8 @@ ms.lasthandoff: 02/11/2017
 
 
 ---
-<a id="understand-your-azure-marketplace-payout-reports" class="xliff"></a>
-
-# Azure Marketplace 支払いレポートについて
-<a id="access-and-view-your-payout-reports" class="xliff"></a>
-
-## 支払いレポートへのアクセスと表示
+# <a name="understand-your-azure-marketplace-payout-reports"></a>Azure Marketplace 支払いレポートについて
+## <a name="access-and-view-your-payout-reports"></a>支払いレポートへのアクセスと表示
 デベロッパー センターに移行中に、一部の支払いレポートは https://dev.windows.com/ja-jp のデベロッパー センターで利用できる場合がありますが、他の支払いレポートは、https://publish.windowsazure.com の公開ポータルに表示されたままになる可能性があります。
 
 支払いレポートは、最新の支払いに関連付けられているすべての Marketplace サービスについて、**デベロッパー センター**で利用できるようになります。現在は以下が対象となります。
@@ -42,9 +38,7 @@ ms.lasthandoff: 02/11/2017
 
 レポートは四半期の終了後 45 日間入手可能であり、返金後に計算されます。
 
-<a id="access-payout-reports-in-dev-center" class="xliff"></a>
-
-### デベロッパー センターでの支払いレポートへのアクセス
+### <a name="access-payout-reports-in-dev-center"></a>デベロッパー センターでの支払いレポートへのアクセス
 1. デベロッパー センター (https://dev.windows.com/ja-jp) に移動します。
 2. **[ダッシュボード]**をクリックします。
 
@@ -53,9 +47,7 @@ ms.lasthandoff: 02/11/2017
 
     ![DashboardPayoutSummary][2]
 
-<a id="view-your-payout-reports-in-dev-center" class="xliff"></a>
-
-## デベロッパー センターでの支払いレポートの表示
+## <a name="view-your-payout-reports-in-dev-center"></a>デベロッパー センターでの支払いレポートの表示
 四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
 
 * 予約済みの額は、今後の入金サイクルの他に生じる支払いを示します (たとえば、この額は翌月の今後の入金に移動されます)。  (事前に顧客の給料が多い場合を除き)、通常、この額は 0 ドルになります。
@@ -68,9 +60,7 @@ ms.lasthandoff: 02/11/2017
 
     ![PayoutSummaryPaymentStatementsFilterControl][4]
 
-<a id="view-your-payout-reports-in-publishing-portal" class="xliff"></a>
-
-## 発行ポータルでの支払いレポートの表示
+## <a name="view-your-payout-reports-in-publishing-portal"></a>発行ポータルでの支払いレポートの表示
 四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
 
 1. 発行ポータル (https://publish.windowsazure.com) に移動します。
@@ -79,9 +69,7 @@ ms.lasthandoff: 02/11/2017
 
     ![accessingpayoutreport][5]
 
-<a id="read-your-payout-reports" class="xliff"></a>
-
-### 支払いレポートの読み取り
+### <a name="read-your-payout-reports"></a>支払いレポートの読み取り
 四半期ごとの支払いレポートには、その四半期内で発生したすべてのトランザクションが記録されます。
 
 * 特定の四半期に関連する台帳項目を探すには、ドロップダウン リストからその四半期の支払いレポートを選択します。 たとえば、2015 年 4 月から 6 月までの台帳項目を確認するには、ドロップダウン リストからその日付範囲を選択します。
@@ -90,9 +78,7 @@ ms.lasthandoff: 02/11/2017
 * [財務の概要] パネルには、残高、貸方、および借方が分類別に表示されます。
 * 元帳項目は個々のトランザクションを示します。
 
-<a id="definitions" class="xliff"></a>
-
-## 定義
+## <a name="definitions"></a>定義
 **[財務の概要] パネル:**
 
 ![financialdefinitions][7]
@@ -101,9 +87,7 @@ ms.lasthandoff: 02/11/2017
 
 ![ledgerdefinitions][8]
 
-<a id="payout-questions" class="xliff"></a>
-
-## 支払いの質問
+## <a name="payout-questions"></a>支払いの質問
 支払いに関連する質問がある場合は、サポート チームにお問い合わせください。
 
 ![payoutquestions][9]
@@ -113,9 +97,7 @@ ms.lasthandoff: 02/11/2017
 3. **[支払いに関連する質問]**を選択します。
 4. **[要求の開始]**をクリックします。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 その他のサポートの問い合わせについては、<https://portal.azure.com> に問題を記録してください。
 
 [1]: ./media/marketplace-publishing-report-payout/LandingPage-DashboardHighlight.png

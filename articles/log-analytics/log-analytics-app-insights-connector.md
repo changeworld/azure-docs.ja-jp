@@ -12,7 +12,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 07/18/2017
 ms.author: banders
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
@@ -20,11 +20,9 @@ ms.openlocfilehash: 297c85d2aa5609729e394dc527fb3a1ca5810ffa
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
 
-
 ---
 
-# Operations Management Suite (OMS) の Application Insights Connector ソリューション (プレビュー)
-<a id="application-insights-connector-solution-preview-in-operations-management-suite-oms" class="xliff"></a>
+# <a name="application-insights-connector-solution-preview-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) の Application Insights Connector ソリューション (プレビュー)
 
 ![Application Insights シンボル](./media/log-analytics-app-insights-connector/app-insights-connector-symbol.png)
 
@@ -37,8 +35,7 @@ Application Insights Connector ソリューションを使用すると、パフ�
 - ログ検索でパースペクティブを使用してアプリケーション データをグラフ化する
 - OMS ポータルと Azure ポータルで、Log Analytics データから Application Insights アプリにピボットする
 
-## 接続先ソース
-<a id="connected-sources" class="xliff"></a>
+## <a name="connected-sources"></a>接続先ソース
 
 他のほとんどの Log Analytics ソリューションとは異なり、Application Insights Connector 用のデータはエージェントによって収集されません。 ソリューションで使用されるデータはすべて、Azure から直接収集されます。
 
@@ -49,15 +46,13 @@ Application Insights Connector ソリューションを使用すると、パフ�
 | [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | ソリューションでは、接続された SCOM 管理グループ内のエージェントの情報は収集しません。 |
 | [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | ソリューションでは、Azure Storage の情報は収集しません。 |
 
-## 前提条件
-<a id="prerequisites" class="xliff"></a>
+## <a name="prerequisites"></a>前提条件
 
 - Application Insights Connector 情報にアクセスするには、Azure サブスクリプションが必要です。
 - 少なくとも 1 つの Application Insights リソースが構成済みである必要があります。
 - Application Insights リソースの所有者または共同作成者である必要があります。
 
-## 構成
-<a id="configuration" class="xliff"></a>
+## <a name="configuration"></a>構成
 
 1. Azure Web Apps Analytics ソリューションを有効にします。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ApplicationInsights?tab=Overview) から有効にするか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されているプロセスを使用して有効にしてください。
 2. OMS ポータルで、**[設定]** &gt; **[データ]** &gt; **[Application Insights]** をクリックします。
@@ -73,18 +68,15 @@ Application Insights Connector ソリューションを使用すると、パフ�
 - Application Insights アプリは、1 つの OMS ワークスペースにのみリンクできます。
 - [Standard または Premium の Application Insights リソース](https://azure.microsoft.com/pricing/details/application-insights)は、OMS Log Analytics にのみリンクできます。 ただし、Log Analytics の Free レベルを使用することができます。
 
-## 管理パック
-<a id="management-packs" class="xliff"></a>
+## <a name="management-packs"></a>管理パック
 
 このソリューションでは、接続されている管理グループに管理パックがインストールされることはありません。
 
-## ソリューションの使用
-<a id="use-the-solution" class="xliff"></a>
+## <a name="use-the-solution"></a>ソリューションの使用
 
 次のセクションで、Application Insights ダッシュボードに表示されるブレードを使用して、アプリからのデータの表示と操作を行う方法について説明します。
 
-### Application Insights Connector 情報を表示する
-<a id="view-application-insights-connector-information" class="xliff"></a>
+### <a name="view-application-insights-connector-information"></a>Application Insights Connector 情報を表示する
 
 **[Application Insights]** タイルをクリックします。**Application Insights** ダッシュボードが開いて、次のブレードが表示されます。
 
@@ -93,6 +85,8 @@ Application Insights Connector ソリューションを使用すると、パフ�
 ![Application Insights ダッシュボード](./media/log-analytics-app-insights-connector/app-insights-dash02.png)
 
 ダッシュボードには、次の表に示すブレードが含まれます。 それぞれのブレードには、特定のスコープと時間範囲について、そのブレードの基準に該当する項目が最大 10 個表示されます。 ブレードの一番下にある **[すべて表示]** をクリックするかブレード ヘッダーをクリックすると、すべてのレコードを返すログ検索を実行できます。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
 | **列** | **説明** |
 | --- | --- |
@@ -103,8 +97,7 @@ Application Insights Connector ソリューションを使用すると、パフ�
 | 失敗: 1 時間あたりの失敗した要求数 | 1 時間あたりの失敗したアプリケーション要求の数を折れ線グラフで示します。 グラフ内の線上にポインターを置くと、ある時点で失敗した要求の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの失敗した要求の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Request  RequestSuccess = false &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、失敗したアプリケーション要求の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights ApplicationName=yourapplicationname TelemetryType=Request  RequestSuccess=false</code>) が実行され、失敗した要求の数、時間を追った要求数のグラフ、要求の実行時間別の要求数のグラフ、および失敗した要求の応答コードの一覧が表示されます。 |
 | 例外: 1 時間あたりの例外の数 | 1 時間あたりの例外の数を示す折れ線グラフを表示します。 グラフ内の線上にポインターを置くと、ある時点での例外の数が多い上位 3 つのアプリケーションが表示されます。 アプリケーションと各アプリケーションの例外の数の一覧も表示されます。 グラフをクリックすると、ログ検索 (<code>Type=ApplicationInsights TelemetryType=Exception &#124; measure sum(SampledCount) by ApplicationName interval 1hour</code>) が実行され、例外の数を示す詳細な折れ線グラフが表示されます。 <br><br>一覧の項目をクリックすると、ログ検索 (<code>Type=ApplicationInsights  ApplicationName=yourapplicationname TelemetryType=Exception</code>) が実行され、例外、時間を追った例外のグラフ、失敗した要求の数のグラフ、および例外の種類別の一覧が表示されます。  |
 
-### ログ検索で Application Insights のパースペクティブを表示する
-<a id="view-the-application-insights-perspective-with-log-search" class="xliff"></a>
+### <a name="view-the-application-insights-perspective-with-log-search"></a>ログ検索で Application Insights のパースペクティブを表示する
 
 ダッシュボードのいずれかの項目をクリックすると、検索に Application Insights のパースペクティブが表示されます。 パースペクティブは、選択されたテレメトリの種類に基づく拡張グラフを提供します。 そのため、グラフ化されるコンテンツは、テレメトリの種類に応じて変化します。
 
@@ -136,8 +129,7 @@ Application Insights Connector ソリューションを使用すると、パフ�
 - 1 つの選択したアプリケーション
 - アプリケーションのグループ
 
-### Azure ポータルでアプリにピボットする
-<a id="pivot-to-an-app-in-the-azure-portal" class="xliff"></a>
+### <a name="pivot-to-an-app-in-the-azure-portal"></a>Azure ポータルでアプリにピボットする
 
 [Application Insights Connector] ブレードは、"*OMS ポータルを使用しているときに*"、選択した Application Insights アプリにピボットできるように設計されています。 このソリューションを高度な監視プラットフォームとして使用して、アプリのトラブルシューティングを行うことができます。 接続されているアプリケーションのいずれかで潜在的な問題があることを確認したら、OMS 検索で問題をドリルダウンするか、Application Insights アプリに直接ピボットすることができます。
 
@@ -148,8 +140,7 @@ Application Insights Connector ソリューションを使用すると、パフ�
 
 ![Application Insights で開く](./media/log-analytics-app-insights-connector/open-in-app-insights.png)
 
-### サンプリング補正データ
-<a id="sample-corrected-data" class="xliff"></a>
+### <a name="sample-corrected-data"></a>サンプリング補正データ
 
 Application Insights では、"*[サンプリング補正](../application-insights/app-insights-sampling.md)*" によって、テレメトリのトラフィックを削減しています。 Application Insights アプリでサンプリングを有効にすると、Application Insights と OMS の両方に格納されるエントリの数が減少します。 データの整合性は **Application Insights Connector** ページとパースペクティブで保持されますが、カスタム クエリでは、サンプリング データを手動で補正する必要があります。
 
@@ -163,8 +154,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 サンプリングは、アプリケーションが生成するエントリの総数のみに影響します。 **RequestDuration** や **AvailabilityDuration** などのメトリック フィールドは、表わされているエントリの平均値を示すため、これらのフィールドのサンプリングは補正する必要がありません。
 
-## 入力データ
-<a id="input-data" class="xliff"></a>
+## <a name="input-data"></a>入力データ
 
 ソリューションは、接続されている Application Insights アプリから次のテレメトリの種類のデータを受信します。
 
@@ -176,13 +166,11 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 データは、使用可能になると、OMS によって Application Insights から受信されます。
 
-## 出力データ
-<a id="output-data" class="xliff"></a>
+## <a name="output-data"></a>出力データ
 
 入力データの種類ごとに、"*種類*" が "*ApplicationInsights*" であるレコードが作成されます。 ApplicationInsights レコードには、次のセクションに示すプロパティがあります。
 
-### 一般的なフィールド
-<a id="generic-fields" class="xliff"></a>
+### <a name="generic-fields"></a>一般的なフィールド
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -208,8 +196,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | SessionId | 要求が作成されたセッションを一意に識別する GUID |
 | SourceSystem | ApplicationInsights |
 
-### 可用性に固有のフィールド
-<a id="availability-specific-fields" class="xliff"></a>
+### <a name="availability-specific-fields"></a>可用性に固有のフィールド
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -234,8 +221,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | AvailabilityMax |   |
 | AvailabilityStdDev | &nbsp;  |
 
-### 例外に固有のフィールド
-<a id="exception-specific-fields" class="xliff"></a>
+### <a name="exception-specific-fields"></a>例外に固有のフィールド
 
 | 型 | ApplicationInsights |
 | --- | --- |
@@ -252,8 +238,7 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 
 
 
-### 要求に固有のフィールド
-<a id="request-specific-fields" class="xliff"></a>
+### <a name="request-specific-fields"></a>要求に固有のフィールド
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -274,13 +259,11 @@ Type=ApplicationInsights | measure sum(SampledCount) by TelemetryType
 | RequestDurationMax | サンプリング レコードでは、このフィールドは、最大の要求の実行時間 (ミリ秒単位) を示します |
 | RequestDurationStdDev | サンプリング レコードでは、このフィールドは、表されるデータ ポイントのすべての要求の実行時間 (ミリ秒単位) の標準偏差を示します |
 
-## サンプル ログ検索
-<a id="sample-log-searches" class="xliff"></a>
+## <a name="sample-log-searches"></a>サンプル ログ検索
 
 このソリューションには、ダッシュボードに表示されるサンプル ログ検索のセットはありません。 ただし、サンプル ログ検索クエリとその説明が「[Application Insights Connector 情報を表示する](#view-application-insights-connector-information)」セクションに示されています。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 - [ログ検索](log-analytics-log-searches.md)を使用して Application Insights アプリの詳細情報を表示します。
 

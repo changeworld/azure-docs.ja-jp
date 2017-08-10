@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/04/2017
+ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: a17b28274988687fb1951e46c5270c62dcfe11b1
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3afc7bca878caef424d3fa3c64aa17df0fda7de5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/20/2017
 
 ## <a name="application-not-found-in-directory"></a>アプリケーションがディレクトリ内に見つからない
 
-*エラー: 識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
+*エラー AADSTS70001: 識別子 'https://contoso.com' を持つアプリケーションがディレクトリ内に見つかりませんでした*。
 
 **考えられる原因**
 
@@ -65,9 +64,43 @@ SAML 要求内の発行者属性が Azure AD で構成された識別子の値�
 
 Azure AD で識別子の値を更新し、それが SAML 要求でアプリケーションによって送信される値に一致するようになったら、アプリケーションにサインインできるようになります。
 
+## <a name="the-reply-address-does-not-match-the-reply-addresses-configured-for-the-application"></a>応答アドレスが、アプリケーションに対して構成されている応答アドレスと一致しない。 
+
+*エラー AADSTS50011: 応答アドレス 'https://contoso.com' は、アプリケーションに対して構成された応答アドレスと一致しません。* 
+
+**考えられる原因** 
+
+SAML 要求の AssertionConsumerServiceURL 値が、応答 URL 値または Azure AD で構成されているパターンと一致しません。 SAML 要求内の AssertionConsumerServiceURL 値は、エラー メッセージに表示されている URL です。 
+
+**解決策** 
+
+SAML 要求の AssertionConsumerServiceURL 値が、Azure AD で構成されている応答 URL 値と一致していることを確認してください。 
+ 
+1.  [**Azure Portal**](https://portal.azure.com/) を開き、**グローバル管理者**または**共同管理者**としてサインインします。 
+
+2.  左側のメイン ナビゲーション メニューの下部にある **[その他のサービス]** をクリックして、**Azure Active Directory 拡張機能**を開きます。 
+
+3.  フィルター検索ボックスに「**Azure Active Directory**」と入力し、**[Azure Active Directory]** 項目を選択します。 
+
+4.  Azure Active Directory の左側にあるナビゲーション メニューで **[エンタープライズ アプリケーション]** をクリックします。 
+
+5.  **[すべてのアプリケーション]** をクリックして、すべてのアプリケーションの一覧を表示します。 
+
+  * ここに表示したいアプリケーションが表示されない場合は、**[All Applications List (すべてのアプリケーション リスト)]** の上部にある **[フィルター]** コントロールを使用して、**[表示]** オプションを **[すべてのアプリケーション]** に設定します。
+  
+6.  シングル サインオンを構成するアプリケーションを選択します。
+
+7.  アプリケーションが読み込まれたら、アプリケーションの左側のナビゲーション メニューから **[シングル サインオン]** をクリックします。
+
+8.  **[ドメインと URL]** セクションに移動します。 [応答 URL] テキスト ボックスの値が SAML 要求内の AssertionConsumerServiceURL 値と一致していることを確認するか、一致するように値を更新します。
+
+  * [応答 URL] テキスト ボックスが表示されていない場合は、**[詳細な URL 設定の表示]** チェック ボックスをオンにしてください。 
+
+Azure AD で応答 URL の値を更新し、その URL 値が、アプリケーションが SAML 要求に含めて送信する値に一致していれば、アプリケーションにサインインできます。
+
 ## <a name="user-not-assigned-a-role"></a>ユーザーにロールが割り当てられていない
 
-*エラー: サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていない*
+*エラー AADSTS50105: サインインしているユーザー 'brian@contoso.com' にアプリケーションのロールが割り当てられていません*。
 
 **考えられる原因**
 
@@ -113,7 +146,7 @@ Azure AD で識別子の値を更新し、それが SAML 要求でアプリケ�
 
 ## <a name="not-a-valid-saml-request"></a>有効な SAML 要求ではない
 
-*エラー: この要求は有効な Saml2 プロトコル メッセージではありません。*
+*エラー AADSTS75005: この要求は有効な Saml2 プロトコル メッセージではありません。*
 
 **考えられる原因**
 
@@ -137,7 +170,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="no-resource-in-requiredresourceaccess-list"></a>requiredResourceAccess リスト内にリソースがない
 
-*エラー: クライアント アプリケーションがリソース '00000002-0000-0000-c000-000000000000' へのアクセスを要求しました。クライアントが requiredResourceAccess リスト内にこのリソースを指定していないため、この要求は失敗しました*。
+*エラー AADSTS65005: クライアント アプリケーションがリソース '00000002-0000-0000-c000-000000000000' へのアクセスを要求しました。クライアントが requiredResourceAccess リスト内にこのリソースを指定していないため、この要求は失敗しました*。
 
 **考えられる原因**
 
@@ -169,7 +202,7 @@ Azure AD は、シングル サインオン用のアプリケーションによ�
 
 ## <a name="certificate-or-key-not-configured"></a>証明書またはキーが構成されていない
 
-エラー: 署名キーが構成されていません。
+エラー AADSTS50003: 署名キーが構成されていません。
 
 **考えられる原因**
 

@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory でのグループへのライセンス割り当て | Microsoft Docs"
 description: "Azure Active Directory のグループへのライセンスによってユーザーにライセンスを割り当てる方法"
 services: active-directory
@@ -17,12 +16,11 @@ ms.workload: identity
 ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 2af42c34306dd6fe3174187892c109ae866a2f87
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 42b18eab9cb419e6ada72ba72dc8be8d7f7b2eed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -85,6 +83,8 @@ ms.lasthandoff: 06/24/2017
    - アクティビティ: **ユーザーに対するグループ ベースのライセンスの適用を開始する**。 このログは、システムによってグループでのライセンス割り当ての変更が検出され、すべてのユーザー メンバーに対するその変更の適用が開始されたときに、記録されます。 ここには、行われた変更の情報が含まれます。
 
    - アクティビティ: **ユーザーに対するグループ ベースのライセンスの適用を終了する**。 このログは、システムによるグループ内のユーザー全員の処理が完了したときに記録されます。 ここには、処理が正常に完了したユーザーの数とグループ ライセンスを割り当てることができなかったユーザーの数の概要が含まれます。
+
+   [このセクション](./active-directory-licensing-group-advanced.md#use-audit-logs-to-monitor-group-based-licensing-activity)では、グループ ベースのライセンスによって行われた変更を、監査ログを使用して分析する方法を説明しています。
 
 ## <a name="step-3-check-for-license-problems-and-resolve-them"></a>手順 3. ライセンスに関する問題のチェックと解決
 

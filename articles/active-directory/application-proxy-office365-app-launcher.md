@@ -11,14 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/15/2017
+ms.date: 07/06/2017
 ms.author: kgremban
+ms.reviewer: harshja
+ms.custom: it-pro
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
-ms.openlocfilehash: 31e8e39580ed83f13fd3ffb9981221765063a0b7
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 194367028c3c2c571dd8645a794f67a0c3a21d4c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/21/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 
@@ -35,8 +36,6 @@ ms.lasthandoff: 04/21/2017
 
 ## <a name="before-you-start"></a>開始する前に
 
-### <a name="determine-the-home-page-url"></a>ホーム ページの URL を決定する
-
 ホーム ページの URL を設定する前に、次の点にご注意ください。
 
 * 指定するパスがルート ドメイン URL のサブドメインのパスであることを確認してください。
@@ -44,6 +43,16 @@ ms.lasthandoff: 04/21/2017
   ルート ドメイン URL が https://apps.contoso.com/app1/ である場合、構成するホーム ページの URL は https://apps.contoso.com/app1/ で始まる必要があります。
 
 * 発行されたアプリに変更を加えると、ホーム ページの URL の値がリセットされる可能性があります。 後でアプリを更新する場合は、ホーム ページの URL を再確認し、必要であれば更新してください。
+
+## <a name="change-the-home-page-in-the-azure-portal"></a>Azure Portal でホーム ページを変更する
+
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+2. **[Azure Active Directory]** > **[アプリの登録]** に移動し、リストからアプリケーションを選びます。 
+3. 設定から **[プロパティ]** を選びます。
+4. **[ホーム ページ URL]** フィールドを新しいパスで更新します。 
+5. **[保存]** を選びます。
+
+## <a name="change-the-home-page-with-powershell"></a>PowerShell でホーム ページを変更する
 
 ### <a name="install-the-azure-ad-powershell-module"></a>Azure AD PowerShell モジュールをインストールする
 
@@ -59,7 +68,7 @@ PowerShell を使用してホーム ページのカスタム URL を定義する
     コマンドを非管理者として実行している場合は、`-scope currentuser` オプションを使用します。
 2. インストール中に **Y** を選択して、Nuget.org から 2 つのパッケージをインストールします。 両方のパッケージが必要です。 
 
-## <a name="step-1-find-the-objectid-of-the-app"></a>手順 1: アプリの ObjectID を取得する
+### <a name="find-the-objectid-of-the-app"></a>アプリの ObjectID を検索する
 
 アプリの ObjectID を取得し、ホーム ページでアプリを検索します。
 
@@ -87,7 +96,7 @@ PowerShell を使用してホーム ページのカスタム URL を定義する
     ObjectId    : 8af89bfa-eac6-40b0-8a13-c2c4e3ee22a4
     ```
 
-## <a name="step-2-update-the-home-page-url"></a>手順 2: ホーム ページの URL を更新する
+### <a name="update-the-home-page-url"></a>ホーム ページの URL を更新する
 
 手順 1 で使用したのと同じ PowerShell モジュールで、次の手順を実行します。
 

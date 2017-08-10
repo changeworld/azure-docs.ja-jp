@@ -1,5 +1,4 @@
 ---
-
 title: "Azure AD レポート API の概要 | Microsoft Docs"
 description: "Azure Active Directory Reporting API の概要について説明します"
 services: active-directory
@@ -13,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/18/2017
+ms.date: 07/15/2017
 ms.author: dhanyahk;markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: fd750c1bf960678e0fecef61a67b73781d9777ef
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b0ff68902f671518ff53772b1956272a7f6e1614
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API の概要
@@ -44,6 +43,6 @@ Azure Active Directory は多様なレポートを提供しています。 こ�
    * [サインイン アクティビティ レポート API リファレンスの使用](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>次のステップ
-提供されているすべての Azure AD Graph API エンドポイントについては、 [https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta](https://graph.windows.net/tenant-name/reports/$metadata?api-version=beta)にナビゲートしてください。
+提供されているすべての Azure AD Graph API エンドポイントは、[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta) でご覧ください。
 
 

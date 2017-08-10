@@ -5,3 +5,4 @@
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

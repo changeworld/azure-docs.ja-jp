@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT Hub のダイレクト メソッドの使用 (.NET/Node) | Microsoft Docs"
-description: "Azure IoT Hub のダイレクト メソッドの使用方法。 Azure IoT device SDK for Node.js を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
+title: "Azure IoT Hub のダイレクト メソッドの使用 (Java) | Microsoft Docs"
+description: "Azure IoT Hub のダイレクト メソッドの使用方法。 Azure IoT device SDK for Java を使用して、ダイレクト メソッドを含むシミュレートされたデバイス アプリを実装し、Azure IoT service SDK for Java を使用して、ダイレクト メソッドを呼び出すサービス アプリを実装します。"
 services: iot-hub
 documentationcenter: 
 author: dominicbetts
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/12/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: fe804cc01925cee58a1d694bdb94b85a8f994cef
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3be5b442b357523449850e0a179eab93634e7b7b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-direct-methods-java"></a>ダイレクト メソッドの使用 (Java)
@@ -48,7 +47,7 @@ ms.lasthandoff: 05/19/2017
 
 このセクションでは、ソリューション バックエンドによって呼び出されたメソッドに応答する Java コンソール アプリを作成します。
 
-1. "iot-java-direct-method" という名前の空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを実行し、iot-java-direct-method フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. "iot-java-direct-method" という名前の空のフォルダーを作成します。
 
 1. コマンド プロンプトで次のコマンドを実行し、iot-java-direct-method フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
 

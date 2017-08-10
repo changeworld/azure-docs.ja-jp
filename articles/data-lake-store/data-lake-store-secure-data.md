@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/10/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 376b61037de8b1af657095b8b32ee16568af8894
-ms.openlocfilehash: 0df8932668a954cc60a1db9b745019decb98d1e9
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 337c6142c27314150a21f1c80a17aae17cd0d67f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/07/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
@@ -41,6 +40,18 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 ## <a name="create-security-groups-in-azure-active-directory"></a>Azure Active Directory でセキュリティ グループを作成する
 AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-accessmanagement-manage-groups.md)」を参照してください。
 
+> [!NOTE] 
+> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、グループにサービス プリンシパルを追加するには、[Azure AD の PowerShell モジュール](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)を使用してください。
+> 
+> ```powershell
+> # Get the desired group and service principal and identify the correct object IDs
+> Get-AzureADGroup -SearchString "<group name>"
+> Get-AzureADServicePrincipal -SearchString "<SPI name>"
+> 
+> # Add the service principal to the group
+> Add-AzureADGroupMember -ObjectId <Group object ID> -RefObjectId <SPI object ID>
+> ```
+ 
 ## <a name="assign-users-or-security-groups-to-azure-data-lake-store-accounts"></a>ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる
 ユーザーまたはセキュリティ グループを Azure Data Lake Store アカウントに割り当てる場合は、Azure ポータルと Azure リソース マネージャー API を使用して、アカウントに関する管理操作へのアクセスを制御します。 
 
@@ -60,7 +71,7 @@ AAD セキュリティ グループを作成する手順および AAD セキュ�
    
     ![ユーザーのロールを追加する](./media/data-lake-store-secure-data/adl.add.user.1.png "ユーザーのロールを追加する")
    
-    **[所有者]** ロールと **[共同作成者]** ロールは、Data Lake アカウントでさまざまな管理機能へのアクセスを許可します。 Data Lake 内のデータと対話するユーザーについては、該当するユーザーを **[閲覧者]** ロールに追加できます。 これらのロールの適用範囲は、Azure Data Lake Store アカウントに関連する管理操作に限定されます。
+    **[所有者]** ロールと **[共同作成者]** ロールは、Data Lake アカウントでさまざまな管理機能へのアクセスを許可します。 Data Lake 内のデータと対話するユーザーについては、該当するユーザーを [閲覧者] ロールに追加できます。 これらのロールの適用範囲は、Azure Data Lake Store アカウントに関連する管理操作に限定されます。
    
     データ操作の場合、ユーザーが行える操作はファイル システムの個々のアクセス許可によって定義されます。 そのため、閲覧者ロールを持つユーザーはアカウントに関連付けられた管理設定しか表示できません。しかし、場合によっては、そのユーザーに割り当てられているファイル システムのアクセス許可に基づいて、データの読み取りおよび書き込みができます。 Data Lake Store ファイル システムのアクセス許可については、[セキュリティ グループを ACL として Azure Data Lake Store ファイル システムに割り当てる](#filepermissions)方法に関するページを参照してください。
 5. **[Add access (アクセスの追加)]** ブレードの **[Add users (ユーザーの追加)]** をクリックして **[Add users (ユーザーの追加)]** ブレードを開きます。 このブレードで、前に Azure Active Directory で作成したセキュリティ グループを検索します。 検索対象のグループが多数存在する場合は、上部にあるテキスト ボックスを使用してグループ名をフィルター処理できます。 **[選択]**をクリックします。

@@ -48,10 +48,10 @@ ms.lasthandoff: 07/21/2017
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 1. 上部のバーで、自分のアカウントを選択します。 **[ディレクトリ]** の一覧から、アプリケーションを登録する Azure AD テナント (contoso.com) を選択します。
-1. 左側のウィンドウで **[More Services] (その他のサービス)** をクリックし、[App registrations] (アプリの登録) を検索します。
+1. 左側のウィンドウで **[More Services] \(その他のサービス)** をクリックし、[App registrations] \(アプリの登録) を検索します。
 1. **[新しいアプリケーションの登録]** を選択します。
 1. アプリケーションの名前を入力します (`Azure AD B2C App` など)。
-1. アプリケーション タイプとして **[Web app / API] (Web アプリ/API)** を選択します。
+1. アプリケーション タイプとして **[Web app / API] \(Web アプリ/API)** を選択します。
 1. **[サインオン URL]** に次の URL を入力します。`yourtenant`は、Azure AD B2C テナントの名前 (`fabrikamb2c.onmicrosoft.com`) で置き換えられます。
 
     ```
@@ -66,10 +66,10 @@ ms.lasthandoff: 07/21/2017
 ## <a name="add-the-azure-ad-key-to-azure-ad-b2c"></a>Azure AD キーの Azure AD B2C への追加
 
 contoso.com のアプリケーション キーを Azure AD B2C テナントに格納する必要があります。 これを行うには、次の手順を実行します。
-1. Azure AD B2C テナントに移動し、**[B2C Settings] (B2C 設定)**  >  **[Identity Experience Framework]**  >  **[Policy Keys] (ポリシー キー)** の順に選択します。
+1. Azure AD B2C テナントに移動し、**[B2C Settings] \(B2C 設定)**  >  **[Identity Experience Framework]**  >  **[Policy Keys] \(ポリシー キー)** の順に選択します。
 1. **[+追加]** を選択します。
 1. 以下のオプションを選択または入力します。
-   * **[Manual] (手動)** を選択します。
+   * **[Manual] \(手動)** を選択します。
    * **[名前]** には、Azure AD テナント名に一致する名前 (例: `ContosoAppSecret`) を選択します。  プレフィックス `B2C_1A_` がキーの名前に自動的に追加されます。
    * アプリケーション キーを **[シークレット]** ボックスに貼り付けます。
    * **[署名]** を選択します。
@@ -98,7 +98,7 @@ contoso.com のアプリケーション キーを Azure AD B2C テナントに�
                 <Protocol Name="OpenIdConnect"/>
                 <OutputTokenFormat>JWT</OutputTokenFormat>
                 <Metadata>
-                    <Item Key="METADATA">https://login.microsoftonline.com/contoso.com/.well-known/openid-configuration</Item>
+                    <Item Key="METADATA">https://login.windows.net/contoso.com/.well-known/openid-configuration</Item>
                     <Item Key="ProviderName">https://sts.windows.net/00000000-0000-0000-0000-000000000000/</Item>
                     <Item Key="client_id">00000000-0000-0000-0000-000000000000</Item>
                     <Item Key="IdTokenAudience">00000000-0000-0000-0000-000000000000</Item>
@@ -159,7 +159,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 ここまでで、Azure AD B2C が Azure AD ディレクトリと通信する方法を認識するようにポリシーを設定しました。 ポリシーの拡張ファイルをアップロードして、現時点で問題がないことを確認してみます。 そのためには、次の手順を実行します。
 
-1. Azure AD B2C テナントの **[All Policies] (すべてのポリシー)** ブレードを開きます。
+1. Azure AD B2C テナントの **[All Policies] \(すべてのポリシー)** ブレードを開きます。
 1. **[ポリシーが存在する場合は上書きする]** チェック ボックスをオンにします。
 1. 拡張ファイル (TrustFrameworkExtensions.xml) をアップロードし、ファイルが検証に失敗しないことを確認します。
 
@@ -215,7 +215,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-アップロードしたカスタム ポリシーのブレードを開いて **[Run now] (今すぐ実行)** をクリックし、ポリシーをテストします。 問題を診断するには、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)についての記事を参照してください。
+アップロードしたカスタム ポリシーのブレードを開いて **[Run now] \(今すぐ実行)** をクリックし、ポリシーをテストします。 問題を診断するには、[トラブルシューティング](active-directory-b2c-troubleshoot-custom.md)についての記事を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -39,7 +39,7 @@ ms.lasthandoff: 06/08/2017
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 3. 存在しない場合は、B2C_1A_TokenSigningKeyContainer を作成します。<br>
     a.  **[追加]**を選択します。 <br>
-    b.  **[Generate] (生成)** を選択します。<br>
+    b.  **[Generate] \(生成)** を選択します。<br>
     c. **[名前]** には `TokenSigningKeyContainer` を使用します。 <br> 
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。<br>
     d. **[キーの種類]** には **[RSA]** を使用します。<br>
@@ -48,7 +48,7 @@ ms.lasthandoff: 06/08/2017
     g. **[作成]**を選択します。<br>
 4. 存在しない場合は、B2C_1A_TokenEncryptionKeyContainer を作成します。<br>
  a. **[追加]**を選択します。<br>
- b. **[Generate] (生成)** を選択します。<br>
+ b. **[Generate] \(生成)** を選択します。<br>
  c. **[名前]** には `TokenEncryptionKeyContainer` を使用します。 <br>
    プレフィックス `B2C_1A`_ が自動的に追加される場合があります。<br>
  d. **[キーの種類]** には **[RSA]** を使用します。<br>
@@ -58,7 +58,7 @@ ms.lasthandoff: 06/08/2017
 5. B2C_1A_FacebookSecret を作成します。 <br>
 Facebook アプリケーション シークレットが既にある場合は、それをポリシー キーとしてテナントに追加します。 ない場合は、ポリシーが検証にパスするように、プレースホルダー値を含むキーを作成する必要があります。<br>
  a. **[追加]**を選択します。<br>
- b. **[オプション]** には **[Manual] (手動)** を使用します。<br>
+ b. **[オプション]** には **[Manual] \(手動)** を使用します。<br>
  c. **[名前]** には `FacebookSecret` を使用します。 <br>
  プレフィックス `B2C_1A_` が自動的に追加される場合があります。<br>
  d. **[シークレット]** ボックスに、developers.facebook.com の FacebookSecret を入力するか、プレースホルダーとして「`0`」を入力します。 "*Facebook App ID ではない*" ので注意してください。 <br>
@@ -101,9 +101,9 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 1. **[追加]**を選択します。
 1. **[API を選択します]** を選択します。
 1. IdentityExperienceFramework という名前を検索します。 結果で **[IdentityExperienceFramework]** を選択して、**[選択]** をクリックします。
-1. **[Access IdentityExperienceFramework] (IdentityExperienceFramework にアクセスする)** の横にあるチェック ボックスをオンにして、**[選択]** を選択します。
+1. **[Access IdentityExperienceFramework] \(IdentityExperienceFramework にアクセスする)** の横にあるチェック ボックスをオンにして、**[選択]** を選択します。
 1. **[完了]**を選択します。
-1. **[Grant Permissions] (アクセス許可の付与)** を選択してから、**[はい]** を選択して確認します。
+1. **[Grant Permissions] \(アクセス許可の付与)** を選択してから、**[はい]** を選択して確認します。
 
 ## <a name="download-starter-pack-and-modify-policies"></a>スターター パックをダウンロードしてポリシーを変更する
 

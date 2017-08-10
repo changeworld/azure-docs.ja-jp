@@ -17,6 +17,7 @@
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
+#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
 
 #### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
 #### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
@@ -84,6 +85,7 @@
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
 #### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-twin-getstarted.md)
+#### [Java バックエンド/Java デバイス](iot-hub-java-java-twin-getstarted.md)
 ### ダイレクト メソッドの使用
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-direct-methods.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-direct-methods.md)
@@ -103,7 +105,8 @@
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
-## Manage
+#### [Java](iot-hub-java-java-schedule-jobs.md)
+## 管理
 ### IoT Hub の作成 
 #### [ポータルの使用](iot-hub-create-through-portal.md)
 #### [PowerShell の使用](iot-hub-create-using-powershell.md)
@@ -150,6 +153,7 @@
 #### [ネイティブ モジュール ホスト](https://github.com/Azure/iot-edge/tree/master/samples/native_module_host_sample)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=iot-hub)
 ## [Azure CLI](/cli/azure/iot)
 ## [.NET (サービス)](/dotnet/api/microsoft.azure.devices)
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
@@ -180,6 +184,7 @@
 ## [ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-hub/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=azureiothub)
 ## [料金](https://azure.microsoft.com/pricing/details/iot-hub/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=iot-hub)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-iot-hub)
 ## [技術的なケース スタディ](https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured)

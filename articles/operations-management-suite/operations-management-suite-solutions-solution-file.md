@@ -23,18 +23,14 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="creating-a-management-solution-file-in-operations-management-suite-oms-preview" class="xliff"></a>
-
-# Operations Management Suite (OMS) での管理ソリューション ファイルの作成 (プレビュー)
+# <a name="creating-a-management-solution-file-in-operations-management-suite-oms-preview"></a>Operations Management Suite (OMS) での管理ソリューション ファイルの作成 (プレビュー)
 > [!NOTE]
 > 本記事は、現在プレビュー段階である OMS の管理ソリューションの作成手順に関する暫定版ドキュメントです。 本記事で説明するスキーマは、変更されることがあります。  
 
 Operations Management Suite (OMS) の管理ソリューションは、[Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)として実装されます。  管理ソリューションの作成を理解するには、[テンプレートを作成する](../azure-resource-manager/resource-group-authoring-templates.md)方法を参照してください。  この記事では、ソリューションに使用するテンプレートと、典型的なソリューション リソースを構成する方法について、詳細を説明します。
 
 
-<a id="tools" class="xliff"></a>
-
-## ツール
+## <a name="tools"></a>ツール
 
 ソリューション ファイルの操作には任意のテキスト エディターを使用できますが、次の記事で説明するように Visual Studio や Visual Studio Code で提供される機能を活用することをお勧めします。
 
@@ -44,9 +40,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 
 
-<a id="structure" class="xliff"></a>
-
-## Structure
+## <a name="structure"></a>Structure
 管理ソリューション ファイルの基本的な構造は、次のような [Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md#template-format)と同じです。  以下の各セクションでは、最上位レベルの要素と、ソリューションにおけるその内容について説明します。  
 
     {
@@ -58,9 +52,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
        "outputs": {  }
     }
 
-<a id="parameters" class="xliff"></a>
-
-## parameters
+## <a name="parameters"></a>parameters
 [パラメーター](../azure-resource-manager/resource-group-authoring-templates.md#parameters)は、管理ソリューションをインストールするときに、ユーザーから必要とする値です。  すべてのソリューションが持つ標準のパラメーターがありますが、特定のソリューションに必要な追加のパラメーターを加えることができます。  ソリューションのインストール時にユーザーがパラメーター値を設定する方法は、特定のパラメーターおよびソリューションのインストール方法によって異なります。
 
 ユーザーが [Azure Marketplace](operations-management-suite-solutions.md#finding-and-installing-management-solutions) または [Azure クイック スタート テンプレート](operations-management-suite-solutions.md#finding-and-installing-management-solutions) から管理ソリューションをインストールすると、[OMS ワークスペースと Automation アカウント](operations-management-suite-solutions.md#oms-workspace-and-automation-account)を選択するよう求めるメッセージが表示されます。  これらは、各標準パラメーターの値の設定に使用されます。  ユーザーは、標準パラメーターに値を直接入力することは求められませんが、追加のパラメーターには値を入力することが求められます。
@@ -86,9 +78,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 | control |文字列パラメーターの追加の機能。<br><br>datetime - Datetime コントロールが表示されます。<br>guid - GUID 値が自動的に生成され、パラメーターは表示されません。 |
 | description |パラメーターの説明です (省略可能)。  パラメーターの横の情報バルーンに表示されます。 |
 
-<a id="standard-parameters" class="xliff"></a>
-
-### 標準パラメーター
+### <a name="standard-parameters"></a>標準パラメーター
 次の表に、すべての管理ソリューションの標準パラメーターを一覧表示します。  Azure Marketplace や クイック スタート テンプレートからソリューションをインストールすると、ユーザーに設定が求められることはなく、これらの値が設定されます。  ソリューションを別の方法でインストールした場合、ユーザーは値を入力する必要があります。
 
 > [!NOTE]
@@ -144,9 +134,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 ソリューション内のその他の要素のパラメーター値は、 **parameters('parameter name')**の構文を使用して参照します。  たとえば、ワークスペース名にアクセスするには、**parameters('workspaceName')** を使用します。
 
-<a id="variables" class="xliff"></a>
-
-## variables
+## <a name="variables"></a>variables
 [Variables](../azure-resource-manager/resource-group-authoring-templates.md#variables) は、その他の管理ソリューションで使用する値です。  これらの値は、ソリューションをインストールするユーザーには公開されません。  これは、作成者に 1 つの場所を提供することを意図しており、それによって、ソリューション全体にわたって何度も使用する値を管理できるようにします。 **resources** 要素でハードコーディングするのとは異なり、ソリューション固有の値を変数で記述する必要があります。  これによってコードが読みやすくなるとともに、後のバージョンでこれらの値を簡単に変更することができます。
 
 次の例は、ソリューションで使用される一般的なパラメーターを持つ**variables**要素です。
@@ -175,25 +163,17 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 この場合、構文**variables('variable name').property** を使用してソリューションの変数値を参照します。  たとえば、SolutionName 変数にアクセスするには、**variables('Solution').Name** を使います。
 
-<a id="resources" class="xliff"></a>
-
-## リソース
+## <a name="resources"></a>リソース
 [Resources](../azure-resource-manager/resource-group-authoring-templates.md#resources) は、管理ソリューションがインストールおよび構成するさまざまなリソースを定義します。  この部分が、テンプレートの大半を占め、最も複雑な部分です。  resource 要素の構造と詳細な説明については、[Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md#resources)に関するページを参照してください。  このドキュメントの他の記事では、通常定義するその他のリソースについて説明します。 
 
 
-<a id="dependencies" class="xliff"></a>
-
-### 依存関係
+### <a name="dependencies"></a>依存関係
 **dependsOn** 要素は、他のリソースの[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を指定します。  ソリューションをインストールすると、すべての依存関係が作成されるまでリソースは作成されません。  たとえば、[ジョブ リソース](operations-management-suite-solutions-resources-automation.md#automation-jobs)を使用してソリューションをインストールすると、ソリューションが [Runbook を開始する](operations-management-suite-solutions-resources-automation.md#runbooks)ことがあります。  ジョブ リソースは、ジョブが作成される前に Runbook が作成されたことを確認するために Runbook リソースに依存します。
 
-<a id="oms-workspace-and-automation-account" class="xliff"></a>
-
-### OMS ワークスペースと Automation アカウント
+### <a name="oms-workspace-and-automation-account"></a>OMS ワークスペースと Automation アカウント
 管理ソリューションでは、ビューを格納するために [OMS ワークスペース](../log-analytics/log-analytics-manage-access.md)が、Runbook と関連リソースを格納するために [Automation アカウント](../automation/automation-security-overview.md#automation-account-overview)が必要です。  これらはソリューションのリソースが作成される前に使用できるようにする必要があり、ソリューションそのもので定義すべきではありません。  ユーザーはソリューションのデプロイ時に[ワークスペースとアカウントを指定](operations-management-suite-solutions.md#oms-workspace-and-automation-account)しますが、作成者としては、次の点を考慮する必要があります。
 
-<a id="solution-resource" class="xliff"></a>
-
-## ソリューションのリソース
+## <a name="solution-resource"></a>ソリューションのリソース
 各ソリューションは、ソリューション自体を定義する**resources**要素の中にリソース エントリが必要です。  これは**Microsoft.OperationsManagement/solutions**の 1 つを有し、次の構造を持ちます。 これには、ソリューションのプロパティの定義に通常使用される[標準パラメーター](#parameters)と[変数](#variables)が含まれます。
 
 
@@ -227,14 +207,10 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 
 
-<a id="dependencies" class="xliff"></a>
-
-### 依存関係
+### <a name="dependencies"></a>依存関係
 ソリューション リソースは、ソリューションが作成される前に存在している必要があるため、ソリューションの別のリソースごとに[依存関係](../azure-resource-manager/resource-group-define-dependencies.md)を持つ必要があります。  このために、**dependsOn** 要素にある各リソースにエントリを追加します。
 
-<a id="properties" class="xliff"></a>
-
-### プロパティ
+### <a name="properties"></a>プロパティ
 このソリューション リソースには、次の表のプロパティがあります。  これには、ソリューションに含まれ参照されるリソースが含まれます。ソリューションをインストールした後に、どのようにリソースを管理するかを定義しています。  ソリューション内の各リソースは、**referencedResources** または **containedResources** プロパティのいずれかに表示される必要があります。
 
 | プロパティ | 説明 |
@@ -245,9 +221,7 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 上記の例は、Runbook、スケジュール、およびビューを含むソリューションが対象です。  スケジュールと Runbook は **properties** 要素で*参照されている*ため、ソリューションが削除されても、削除されません。  ビューが *含まれている* ので、ソリューションが削除されたときでも、削除されません。
 
-<a id="plan" class="xliff"></a>
-
-### プラン
+### <a name="plan"></a>プラン
 ソリューション リソースの**プラン** エンティティには、次の表のプロパティがあります。
 
 | プロパティ | Description |
@@ -259,18 +233,14 @@ Operations Management Suite (OMS) の管理ソリューションは、[Resource 
 
 
 
-<a id="sample" class="xliff"></a>
-
-## サンプル
+## <a name="sample"></a>サンプル
 ソリューション リソースを含むソリューション ファイルのサンプルは、次の場所で確認できます。
 
 - [Automation リソース](operations-management-suite-solutions-resources-automation.md#sample)
 - [検索とアラート リソース](operations-management-suite-solutions-resources-searches-alerts.md#sample)
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * 管理ソリューションに、[保存した検索とアラートを追加する](operations-management-suite-solutions-resources-searches-alerts.md)。
 * 管理ソリューションに[ビューを追加する](operations-management-suite-solutions-resources-views.md)。
 * 管理ソリューションに [Runbook とその他の Automation リソースを追加する](operations-management-suite-solutions-resources-automation.md)。

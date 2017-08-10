@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory の属性ベースの動的グループ メンバーシップ | Microsoft Docs"
 description: "サポートされている式のルールの演算子とパラメーターを含む、動的グループ メンバーシップの高度なルールを作成する方法。"
 services: active-directory
@@ -16,12 +15,11 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 2f1d68c7127324477cfc8b87df0fd82dee7cd1d6
+ms.translationtype: HT
+ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
+ms.openlocfilehash: 31c7e517673d7a0df9dec32b3882e7e022ac83d9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
@@ -90,7 +88,8 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
 
-かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。例:
+かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。
+For example:
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
 ```

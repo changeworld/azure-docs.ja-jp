@@ -112,5 +112,6 @@
 # リソース
 ## [Azure リージョン](https://azure.microsoft.com/regions/)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サンプル](https://azure.microsoft.com/resources/samples/)
 ## [ビデオ](https://azure.microsoft.com/resources/videos/home/)

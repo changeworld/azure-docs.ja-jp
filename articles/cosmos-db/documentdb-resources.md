@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 18a2f6fba707ad920df96117f1c5fb4c8cf9142a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f632d94222590f97b7a95edf9d4941a66b0710e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 階層型リソース モデルと中心的概念
@@ -194,7 +193,7 @@ Cosmos DB は真にスキーマのないデータベース システムです。
 インデックス作成ポリシーは、コレクションで PUT を実行することで変更可能です。 これは、[クライアント SDK](documentdb-sdk-dotnet.md)、[Azure Portal](https://portal.azure.com)、または [REST API](/rest/api/documentdb/) を使用して行うことができます。
 
 ### <a name="querying-a-collection"></a>コレクションの照会
-コレクション内のドキュメントは任意のスキーマを持つことができ、事前にスキーマやセカンダリ インデックスを提供しなくても、コレクション内でドキュメントを照会することができます。 高度な階層、関係、および空間演算子と JavaScript ベースの UDF による拡張性を備えた [DocumentDB API SQL 構文](https://msdn.microsoft.com/library/azure/dn782250.aspx)を使用して、コレクションを照会できます。 JSON の文法により、ツリー ノードのラベルを付けたツリーとして JSON ドキュメントをモデリングできます。 これは DocumentDB API の自動インデックス作成技法と DocumentDB API の SQL 方言の両方で利用されています。 DocumentDB API クエリ言語の主な機能には以下の 3 つがあります。   
+コレクション内のドキュメントは任意のスキーマを持つことができ、事前にスキーマやセカンダリ インデックスを提供しなくても、コレクション内でドキュメントを照会することができます。 高度な階層、関係、および空間演算子と JavaScript ベースの UDF による拡張性を備えた [Azure Cosmos DB DocumentDB API: SQL 構文リファレンス](https://msdn.microsoft.com/library/azure/dn782250.aspx)を使用して、コレクションを照会できます。 JSON の文法により、ツリー ノードのラベルを付けたツリーとして JSON ドキュメントをモデリングできます。 これは DocumentDB API の自動インデックス作成技法と DocumentDB API の SQL 方言の両方で利用されています。 DocumentDB API クエリ言語の主な機能には以下の 3 つがあります。   
 
 1. 階層型クエリやプロジェクションなどのツリー構造に自然にマップする少数のクエリ演算子のセット 
 2. コンポジション、フィルター、プロジェクション、集計、自己結合などの関係演算子のサブセット 

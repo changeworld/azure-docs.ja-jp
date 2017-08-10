@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
-ms.openlocfilehash: 7d8b691905c07b11543505ed1961d908ff4de654
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: b1d1dcb47f74aa097406da1d685c40e9ebd3339d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/13/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="release-notes-archive-for-hadoop-components-on-azure-hdinsight"></a>Azure HDInsight の Hadoop コンポーネントのリリース ノート (アーカイブ)
@@ -36,7 +35,7 @@ ms.lasthandoff: 05/13/2017
 * R Server 8.0.5 - 主にバグの修正プログラムのリリースです。 詳細については、 [R Server リリース ノート](https://msdn.microsoft.com/microsoft-r/notes/r-server-notes) を参照してください。
 * エッジ ノードでの AzureML パッケージ – [この R パッケージ](https://cran.r-project.org/web/packages/AzureML/vignettes/getting_started.html)により、R モデルが Azure ML Web サービスとして発行され、使用されます。  詳細については、「[HDInsight の R Server の概要](hdinsight-hadoop-r-server-overview.md)」の記事の「[モデルの運用化](hdinsight-hadoop-r-server-overview.md#operationalize-a-model)」のセクションを参照してください。
 * [上位 100 の最も一般的な R パッケージ](https://github.com/metacran/cranlogs) の Linux の依存関係 – これらの Linux パッケージの依存関係は、あらかじめインストールされています。
-* オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。 詳しくは、「[HDInsight での R Server の概要](hdinsight-hadoop-r-server-get-started.md)」をご覧ください。
+* オプション R をデータ ノードに追加するときに、CRAN リポジトリを使用するオプションです。 詳細については、「[HDInsight での R Server の概要](hdinsight-hadoop-r-server-get-started.md)」を参照してください。
 * クラスターが作成されるときの、R Server のプロビジョニングの信頼性が向上しました。
 
 ## <a name="notes-for-08012016-release-of-hdinsight"></a>HDInsight の 2016 年 8 月 1 日リリース ノート
@@ -110,7 +109,7 @@ ms.lasthandoff: 05/13/2017
 | [HDInsight Tools for IntelliJ (IntelliJ 用 HDInsight ツール)](hdinsight-apache-spark-intellij-tool-plugin.md) |HDInsight Spark クラスター用の IntelliJ IDEA プラグインが、IntelliJ の Azure Toolkit と統合されました。 Azure SDK v2.9.1、最新の Java SDK をサポートし、IntelliJ のスタンドアロンの HDInsight プラグインのすべての機能が含まれています。 |ツール |Spark |該当なし |
 | [HDInsight Tools for Eclipse (Eclipse 用 HDInsight ツール)](hdinsight-apache-spark-eclipse-tool-plugin.md) |Azure Toolkit for Eclipse が、HDInsight Spark クラスターをサポートするようになりました。 次の機能が有効になります。 <ul><li>IntelliSense、自動書式設定、エラー チェックなど、優れたオーサリング サポートを使用して、Spark アプリケーションを Scala および Java で作成し記述します。</li><li>ローカルで Spark アプリケーションをテストします。</li><li>HDInsight Spark クラスターにジョブを送信し、結果を取得します。</li><li>Azure にログインし、Azure サブスクリプションに関連付けられているすべての Spark クラスターにアクセスします。</li><li>HDInsight Spark クラスターに関連付けられたすべてのストレージ リソースをナビゲートします。</li></ul> |ツール |Spark |該当なし |
 
-今回のリリースから、Linux ベースの HDInsight クラスターに対するゲスト OS 更新プログラムの適用ポリシーが変更されました。 新しいポリシーの目的は、修正プログラム適用のための再起動の回数を大幅に削減することです。 新しいポリシーでは、Linux クラスターの仮想マシン (VM) への修正プログラム適用が継続されます。修正プログラム適用は、指定されたクラスターのノード間で交互に、毎週月曜日または木曜日の午前 12 時 (UTC) に開始されます。 ただし、どの VM も、ゲスト OS の修正プログラム適用のための再起動は 30 日ごとに最大で 1 回のみです。 また、新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内には行われません。
+今回のリリースから、Linux ベースの HDInsight クラスターに対するゲスト OS 更新プログラムの適用ポリシーが変更されました。 新しいポリシーの目的は、修正プログラム適用のための再起動の回数を大幅に削減することです。 新しいポリシーでは、Linux クラスター上の仮想マシン (VM) への修正プログラムの適用が、指定されたクラスターのノード間で交互に、毎週月曜日または木曜日の午前 12 時 (UTC) に開始されます。 ただし、どの VM も、ゲスト OS の修正プログラム適用のための再起動は 30 日ごとに最大で 1 回のみです。 また、新しく作成したクラスターの最初の再起動は、クラスターの作成日から 30 日以内には行われません。
 
 > [!NOTE]
 > これらの変更は、このリリース バージョン以上の新しく作成したクラスターにのみ適用されます。
@@ -1333,7 +1332,7 @@ HDInsight 3.1 クラスターでデプロイされたカスタムの Oozie メ�
 Oozie メタストアは特定のクラスターに接続されるものであり、クラスター間で共有できません。
 
 ### <a name="breaking-changes"></a>重大な変更
-**プレフィックスの構文**: HDInsight 3.1 と 3.0 クラスターでは、"wasbs://" 構文のみがサポートされます。 旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.1 クラスターまたは 3.0 クラスターではサポートされません。 つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。 代わりに、"wasbs://" 構文を使用する必要があります。 また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。 これらのメタストアは、"wasbs://" 構文を使用してリソースをアドレス指定するように再作成する必要があります。
+**プレフィックスの構文**: HDInsight 3.1 と 3.0 クラスターでは、"wasb://" 構文のみがサポートされます。 旧バージョンの "asv://" 構文は、HDInsight 2.1 および 1.6 クラスターではサポートされますが、HDInsight 3.1 クラスターまたは 3.0 クラスターではサポートされません。 つまり、"asv://" 構文を明示的に使用するジョブを HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。 代わりに、"wasb://" 構文を使用する必要があります。 また、既存のメタストアにより、asv:// 構文を使用してリソースへの明示的な参照を含むジョブを作成し、HDInsight 3.1 または 3.0 クラスターに送信すると、そのジョブは失敗します。 これらのメタストアは、"wasb://" 構文を使用してリソースをアドレス指定するように再作成する必要があります。
 
 **ポート**: HDInsight サービスで使用されるポートが変更されました。 これまで使用されてきたポート番号は、Windows オペレーティング システムの一時的なポート範囲内の番号です。 ポートは、短期間のインターネット プロトコル ベースの通信に対して一時的に事前定義される範囲から自動的に割り当てられます。 今回 Hortonworks Data Platform (HDP) サービスに許可された新しいポート番号のセットは、この範囲の外部にあり、ヘッドノードで実行するサービスが使用するポート番号の競合の可能性が回避されます。 新しいポート番号によって重大な変更が発生することはありません。 使用される番号は以下のとおりです。
 

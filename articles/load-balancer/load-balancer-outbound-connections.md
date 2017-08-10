@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 5/31/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: bb490e7ba64f4db454e1bd7171d600ed9dd9e257
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 03cb14b5710b6dd17599a3c4eab21380c76c2b40
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -72,7 +72,9 @@ VM が Azure Load Balancer からのヘルス プローブ要求を受け取る�
 
 ## <a name="limitations"></a>制限事項
 
-保証されていませんが、現時点で使用可能な SNAT ポートの最大数は 64,511 (65,535 から特権ポート 1024 を差し引いた数) です。  これがそのまま接続数に変換されるわけではありません。SNAT ポートがどのタイミングでいくつ割り当てられるかについて、またこの有限なリソースを管理する方法については、上記を参照してください。
-
 [複数の (パブリック) IP アドレスがロード バランサーに関連付けられている](load-balancer-multivip-overview.md)場合、すべてのパブリック IP アドレスが送信フローの候補になります。
+
+Azure に使用されているアルゴリズムは、利用できる SNAT ポートの数をプールのサイズから判断します。  現時点では、これを構成によって変更することはできません。
+
+利用できる SNAT ポートの数が、そのまま接続数に変換されるわけではないことに注意してください。 SNAT ポートがどのタイミングでいくつ割り当てられるかについて、またこの有限なリソースを管理する方法については、上記を参照してください。
 

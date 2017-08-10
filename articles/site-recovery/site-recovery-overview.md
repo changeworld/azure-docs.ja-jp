@@ -14,21 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: a442d398cf5c54b00dc92ebcbe62597fb3ece30c
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
-# Site Recovery とは
-<a id="what-is-site-recovery" class="xliff"></a>
+# <a name="what-is-site-recovery"></a>Site Recovery とは
 
 Azure Site Recovery サービスへようこそ。 この記事では、サービスの概要を簡単に説明します。
 
-## Azure Recovery Services を使用したビジネス継続性とディザスター リカバリー (BDCR)
-<a id="business-continuity-and-disaster-recovery-bdcr-with-azure-recovery-services" class="xliff"></a>
+## <a name="business-continuity-and-disaster-recovery-bcdr-with-azure-recovery-services"></a>Azure Recovery Services を使用したビジネス継続性とディザスター リカバリー (BCDR)
 
 機能が停止したときに、それが計画されたものであれ、計画外のものであれ、どのような方法でデータの安全性を確保し、アプリやワークロードの実行状態を維持するかは、組織内で明確化しておく必要があります。
 
@@ -43,8 +40,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 - オンプレミスの仮想マシンと物理サーバーを Azure (またはセカンダリ サイト) にレプリケートする。
 
 
-## Site Recovery で提供されるもの
-<a id="what-does-site-recovery-provide" class="xliff"></a>
+## <a name="what-does-site-recovery-provide"></a>Site Recovery で提供されるもの
 
 **機能** | **詳細**
 --- | ---
@@ -63,8 +59,7 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 **ネットワーク設定の管理** | Site Recovery は、アプリケーションのネットワーク管理 (IP アドレスの予約、ロード バランサーの構成、Azure Traffic Manager の統合による効率的なネットワーク切り替えを含む) を簡素化するために、Azure と統合できます。
 
 
-## レプリケート対象
-<a id="what-can-i-replicate" class="xliff"></a>
+## <a name="what-can-i-replicate"></a>レプリケート対象
 
 **サポートされています** | **詳細**
 --- | ---
@@ -75,15 +70,13 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 **レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 
-## Azure Portal に関する考慮事項
-<a id="azure-portal-considerations" class="xliff"></a>
+## <a name="azure-portal-considerations"></a>Azure Portal に関する考慮事項
 
 * Site Recovery は、[Azure Portal](https://portal.azure.com) でデプロイすることができます。
 * Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery を管理できます。
 - クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 * [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。
 * [リージョン間の Azure VM のレプリケーション](site-recovery-azure-to-azure.md)、[Azure への VMware のレプリケーション](vmware-walkthrough-overview.md)、[Azure への Hyper-V のレプリケーション](hyper-v-site-walkthrough-overview.md)の概要を確認する。
 

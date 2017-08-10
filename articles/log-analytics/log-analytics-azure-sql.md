@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/06/2017
 ms.author: banders
 ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: f5f9aa186480926df1110928983566e05f79efb8
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 165568731debf2cd81a88170833f95ca2e7080e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -104,19 +104,28 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ### <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
 
-このソリューションには、データを分析するのに役立つ便利なクエリが用意されています。 右へスクロールすると、使用頻度の高いいくつかのクエリがダッシュボードに一覧表示されます。そのクエリをクリックすると、Azure SQL データを探す[ログ検索](log-analytics-log-searches.md)が実行されます。
+アラートは、Azure SQL Database リソースから送られるデータを使用して簡単に作成できます。 アラートに使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリを以下に 2 つ示しました。
 
-![クエリ](./media/log-analytics-azure-sql/azure-sql-queries.png)
+*高 DTU (Azure SQL Database 上)*
 
-このソリューションには、上に示したように、Azure SQL データベースとエラスティック プールの両方の特定のしきい値に関してアラートを生成するために使用できる、"*アラートに基づくクエリ*" がいくつか用意されています。
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/DATABASES/"* MetricName=dtu_consumption_percent | measure Avg(Average) by Resource interval 5minutes
+```
+
+*高 DTU (Azure SQL Database エラスティック プール上)*
+
+```
+Type=AzureMetrics ResourceProvider="MICROSOFT.SQL" ResourceId=*"/ELASTICPOOLS/"* MetricName=dtu_consumption_percent | measure avg(Average) by Resource interval 5minutes
+```
+
+こうしたアラートに基づくクエリを使用して、Azure SQL Database とエラスティック プールの両方の特定のしきい値に関してアラートを生成することができます。 OMS ワークスペースのアラートを構成するには:
 
 #### <a name="to-configure-an-alert-for-your-workspace"></a>ワークスペースのアラートの構成方法
 
 1. [OMS ポータル](http://mms.microsoft.com/)に移動し、サインインします。
 2. ソリューション用に構成したワークスペースを開きます。
 3. [概要] ページの **[Azure SQL Analytics (Preview) (Azure SQL Analytics (プレビュー))]** タイルをクリックします。
-4. 右にスクロールし、クエリをクリックして、アラートの作成を開始します。  
-![アラート クエリ](./media/log-analytics-azure-sql/alert-query.png)
+4. いずれかのクエリの例を実行します。
 5. [ログ検索] で **[アラート]** をクリックします。  
 ![検索でアラートを作成](./media/log-analytics-azure-sql/create-alert01.png)
 6. **[アラート ルールの追加]** ページで、適切なプロパティと特定のしきい値を構成し、**[保存]** をクリックします。  

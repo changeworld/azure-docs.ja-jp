@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/12/2017
+ms.date: 07/12/2017
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 783b9b48251c5f092121288af8834e2caf31f5d7
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7513f405d5c7c05a8e6e2b7b0e6313f23a319c84
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="syslog-data-sources-in-log-analytics"></a>Log Analytics の Syslog データ ソース
@@ -27,8 +26,8 @@ Syslog は、Linux に共通のイベント ログ プロトコルです。  ア
 
 > [!NOTE]
 > Log Analytics では、rsyslog または syslog-ng によって送信されたメッセージの収集がサポートされています。rsyslog は既定のデーモンです。 syslog イベントの収集に関して、バージョン 5 の Red Hat Enterprise Linux、CentOS、Oracle Linux 版の既定の syslog デーモン (sysklog) はサポートされません。 このバージョンの各種ディストリビューションから syslog データを収集するには、 [rsyslog デーモン](http://rsyslog.com) をインストールし、sysklog を置き換えるように構成する必要があります。
-> 
-> 
+>
+>
 
 ![Syslog collection](media/log-analytics-data-sources-syslog/overview.png)
 
@@ -49,8 +48,8 @@ OMS Agent for Linux は、構成で指定されているファシリティと重
 
 > [!NOTE]
 > syslog 構成を編集した場合、変更を有効にするには、syslog デーモンを再起動する必要があります。
-> 
-> 
+>
+>
 
 #### <a name="rsyslog"></a>rsyslog
 rsyslog の構成ファイルは、 **/etc/rsyslog.d/95-omsagent.conf**にあります。  既定の内容を以下に示します。  これは、ローカル エージェントから送信された、すべてのファシリティの警告レベル以上の syslog メッセージを収集します。
@@ -138,7 +137,7 @@ syslog-ng の構成ファイルは、**/etc/syslog-ng/syslog-ng.conf** にあり
 
 
 ### <a name="collecting-data-from-additional-syslog-ports"></a>追加の Syslog ポートからデータを収集する
-OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージを待ち受けます。  エージェントをインストールすると、既定の syslog 構成が適用され、次の場所で見つかります。 
+OMS エージェントは、ポート 25224 でローカル クライアント上の Syslog メッセージを待ち受けます。  エージェントをインストールすると、既定の syslog 構成が適用され、次の場所で見つかります。
 
 * Rsyslog: `/etc/rsyslog.d/95-omsagent.conf`
 * Syslog-ng: `/etc/syslog-ng/syslog-ng.conf`
@@ -162,7 +161,7 @@ OMS エージェントは、ポート 25224 でローカル クライアント�
 
     > [!NOTE]
     > 構成ファイル `95-omsagent.conf` でこの値を変更すると、エージェントが既定の構成を適用したときに上書きされます。
-    > 
+    >
 
         # OMS Syslog collection for workspace %WORKSPACE_ID%
         kern.warning              @127.0.0.1:%SYSLOG_PORT%
@@ -174,7 +173,7 @@ OMS エージェントは、ポート 25224 でローカル クライアント�
 
     > [!NOTE]
     > 構成ファイルの既定値を変更すると、エージェントが既定の構成を適用したときに上書きされます。
-    > 
+    >
 
         filter f_custom_filter { level(warning) and facility(auth; };
         destination d_custom_dest { udp("127.0.0.1" port(%SYSLOG_PORT%)); };
@@ -206,9 +205,18 @@ Syslog レコードの型は **Syslog** になり、次の表に示すプロパ�
 | Type=Syslog &#124; measure count() by Computer |コンピューターごとの Syslog レコードの数です。 |
 | Type=Syslog &#124; measure count() by Facility |ファシリティごとの Syslog レコードの数です。 |
 
-## <a name="next-steps"></a>次のステップ
-* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。 
-* [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
-* [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。 
+>[!NOTE]
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
 
+> | クエリ | Description |
+|:--- |:--- |
+| syslog |すべての Syslog です。 |
+| Syslog &#124; where SeverityLevel == "error" |重大度がエラーであるすべての Syslog レコードです。 |
+| Syslog &#124; summarize AggregatedValue = count() by Computer |コンピューターごとの Syslog レコードの数です。 |
+| Syslog &#124; summarize AggregatedValue = count() by Facility |ファシリティごとの Syslog レコードの数です。 |
+
+## <a name="next-steps"></a>次のステップ
+* [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。
+* [カスタム フィールド](log-analytics-custom-fields.md) を使用して、syslog レコードのデータを個別のフィールドに解析します。
+* [Linux エージェントを構成](log-analytics-linux-agents.md) して、他の種類のデータを収集します。
 

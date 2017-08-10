@@ -22,15 +22,11 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="manage-key-vault-using-cli" class="xliff"></a>
-
-# CLI を使用した Key Vault の管理
+# <a name="manage-key-vault-using-cli"></a>CLI を使用した Key Vault の管理
 
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
 
-<a id="introduction" class="xliff"></a>
-
-## はじめに
+## <a name="introduction"></a>はじめに
 
 このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナー (資格情報コンテナー) を Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。 ここでは、Azure クロスプラットフォーム コマンドライン インターフェイスを使用して、Azure アプリケーションで使用できるキーまたはパスワードを含む資格情報コンテナーを作成するプロセスについて説明します。 アプリケーションがそのキーやパスワードを使用する方法についても説明します。
 
@@ -45,9 +41,7 @@ Azure Key Vault は、ほとんどのリージョンで使用できます。 詳
 
 Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vault-whatis.md)
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -55,9 +49,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 * コマンドライン インターフェイス バージョン 0.9.1 以降。 最新バージョンをインストールして、Azure サブスクリプションに接続するには、「 [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成](../cli-install-nodejs.md)」を参照してください。
 * このチュートリアルで作成したキーやパスワードを使用して構成されるアプリケーション。 サンプル アプリケーションは、[Microsoft ダウンロード センター](http://www.microsoft.com/download/details.aspx?id=45343)から入手できます。 手順については、付属の Readme ファイルをご覧ください。
 
-<a id="getting-help-with-azure-cross-platform-command-line-interface" class="xliff"></a>
-
-## Azure クロスプラットフォーム コマンドライン インターフェイスでのヘルプの取得
+## <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Azure クロスプラットフォーム コマンドライン インターフェイスでのヘルプの取得
 
 このチュートリアルでは、コマンドライン インターフェイス (Bash、Terminal、Command プロンプト) に慣れていることを前提としています。
 
@@ -76,9 +68,7 @@ Azure Key Vault の概要については、「 [Azure Key Vault とは](key-vaul
 * [Azure クロスプラットフォーム コマンド ライン インターフェイスのインストールと構成方法](../cli-install-nodejs.md)
 * [Azure リソース マネージャーでの、Mac、Linux、および Windows 用 Azure CLI の使用](../xplat-cli-azure-resource-manager.md)
 
-<a id="connect-to-your-subscriptions" class="xliff"></a>
-
-## サブスクリプションへの接続
+## <a name="connect-to-your-subscriptions"></a>サブスクリプションへの接続
 
 組織のアカウントを使用してログインするには、次のコマンドを使用します。
 
@@ -113,34 +103,26 @@ Microsoft Azure での組織アカウントの使用の詳細については、�
 
 Azure クロスプラットフォーム コマンドライン インターフェイスの構成方法については、「 [Azure クロスプラットォーム コマンドライン インターフェイスのインストールと構成方法](../cli-install-nodejs.md)」をご覧ください。
 
-<a id="switch-to-using-azure-resource-manager" class="xliff"></a>
-
-## Azure リソース マネージャーの使用に切り替える
+## <a name="switch-to-using-azure-resource-manager"></a>Azure リソース マネージャーの使用に切り替える
 Key Vault では Azure リソース マネージャーが必要なため、次のように入力して Azure リソース マネージャー モードに切り替えます。
 
     azure config mode arm
 
-<a id="create-a-new-resource-group" class="xliff"></a>
-
-## 新しいリソース グループを作成する
+## <a name="create-a-new-resource-group"></a>新しいリソース グループを作成する
 Azure リソース マネージャーを使用すると、すべての関連するリソースが 1 つのリソース グループ内に作成されます。 このチュートリアルでは、'ContosoResourceGroup' という新しいリソース グループを作成します。
 
     azure group create 'ContosoResourceGroup' 'East Asia'
 
 最初のパラメーターはリソース グループ名で、2 番目のパラメーターは場所です。 場所の場合には、 `azure location list` コマンドを使用して別の場所をこの例の場所に指定する方法を識別します。 詳細情報が必要な場合は、 `azure help location`
 
-<a id="register-the-key-vault-resource-provider" class="xliff"></a>
-
-## Key Vault リソース プロバイダーの登録
+## <a name="register-the-key-vault-resource-provider"></a>Key Vault リソース プロバイダーの登録
 Key Vault リソース プロバイダーがサブスクリプションに登録されていることを確認します。
 
 `azure provider register Microsoft.KeyVault`
 
 これは、サブスクリプションごとに 1 回だけ実行する必要があります。
 
-<a id="create-a-key-vault" class="xliff"></a>
-
-## Key Vault を作成します
+## <a name="create-a-key-vault"></a>Key Vault を作成します
 
 `azure keyvault create` コマンドを使用して、Key Vault を作成します。 このスクリプトには、3 つの必須パラメーター (リソース グループ名、Key Vault 名、地理的な場所) が含まれています。
 
@@ -155,9 +137,7 @@ Key Vault リソース プロバイダーがサブスクリプションに登録
 
 Azure アカウントは、この Key Vault ですべての操作の実行が許可されるようになりました。 まだ、どのユーザーも許可されていません。
 
-<a id="add-a-key-or-secret-to-the-key-vault" class="xliff"></a>
-
-## キーやシークレットを Key Vault に追加します
+## <a name="add-a-key-or-secret-to-the-key-vault"></a>キーやシークレットを Key Vault に追加します
 
 Azure Key Vault でソフトウェアで保護されたキーを作成する場合は、`azure key create` コマンドを使用して次のように入力します。
 
@@ -180,9 +160,7 @@ Azure Key Vault に追加したパスワードは、その URI を使用する�
 * キーを表示するには、次のように入力します。`azure keyvault key list --vault-name 'ContosoKeyVault'`
 * シークレットを表示するには、次のように入力します。`azure keyvault secret list --vault-name 'ContosoKeyVault'`
 
-<a id="register-an-application-with-azure-active-directory" class="xliff"></a>
-
-## Azure Active Directory にアプリケーションを登録します
+## <a name="register-an-application-with-azure-active-directory"></a>Azure Active Directory にアプリケーションを登録します
 
 この手順は通常、開発者が別のコンピューター上で行います。 これは Azure Key Vault に固有のものではありませんが、完全を期すために説明します。
 
@@ -212,9 +190,7 @@ Azure Active Directory にアプリケーションを登録するには:
 9. **[キー]** セクションまでスクロールし、期間を選択して **[保存]** をクリックします。 ページが更新され、キーの値が表示されます。 このキーと**クライアント ID** の値を使用してアプリケーションを構成する必要があります  (この構成の手順はアプリケーション固有です)。
 10. このページからクライアント ID 値をコピーします。この値は、資格情報コンテナーに権限を設定するために次の手順で使用します
 
-<a id="authorize-the-application-to-use-the-key-or-secret" class="xliff"></a>
-
-## キーまたはシークレットを使用してアプリケーションを承認します
+## <a name="authorize-the-application-to-use-the-key-or-secret"></a>キーまたはシークレットを使用してアプリケーションを承認します
 資格情報コンテナーのキーやシークレットにアクセスするアプリケーションを承認するには、 `azure keyvault set-policy` コマンドを使用します。
 
 たとえば、資格情報コンテナー名が ContosoKeyVault で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed の場合、アプリケーションの暗号化を解除し、資格情報コンテナー内のキーで署名することを承認するには、次のように実行します。
@@ -230,9 +206,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
     azure keyvault set-policy --vault-name 'ContosoKeyVault' --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --perms-to-secrets '[\"get\"]'
 
-<a id="if-you-want-to-use-a-hardware-security-module-hsm" class="xliff"></a>
-
-## ハードウェア セキュリティ モジュール (HSM) を使用する場合
+## <a name="if-you-want-to-use-a-hardware-security-module-hsm"></a>ハードウェア セキュリティ モジュール (HSM) を使用する場合
 さらに安心感を高めたい場合には、ハードウェア セキュリティ モジュール (HSM) でキーのインポートや生成を行うことができ、キーは HSM の境界内から出ることはありません。 HSM は、FIPS 140-2 レベル 2 で検証済みです。 この要件が自分に当てはまらない場合は、このセクションをスキップし、 [Key Vault と関連するキーとシークレットを削除する](#delete-the-key-vault-and-associated-keys-and-secrets)に進んでください。
 
 これらの HSM で保護されたキーを作成するには、HSM で保護されたキーをサポートする資格情報コンテナーのサブスクリプションが必要です。
@@ -255,9 +229,7 @@ Azure Active Directory にアプリケーションを登録するには:
 
 この BYOK パッケージを生成する方法の詳細な手順については、「 [Azure Key Vault の HSM 保護キーを生成し、転送する方法](key-vault-hsm-protected-keys.md)」をご覧ください。
 
-<a id="delete-the-key-vault-and-associated-keys-and-secrets" class="xliff"></a>
-
-## Key Vault と関連するキーとシークレットを削除する
+## <a name="delete-the-key-vault-and-associated-keys-and-secrets"></a>Key Vault と関連するキーとシークレットを削除する
 Key Vault と、これに含まれるキーやシークレットが不要になった場合は、Azure Key Vault の削除コマンドを使用して Key Vault を削除できます。
 
     azure keyvault delete --vault-name 'ContosoKeyVault'
@@ -267,9 +239,7 @@ Key Vault と、これに含まれるキーやシークレットが不要にな�
     azure group delete --name 'ContosoResourceGroup'
 
 
-<a id="other-azure-cross-platform-command-line-interface-commands" class="xliff"></a>
-
-## その他の Azure クロスプラットフォーム コマンドライン インターフェイスのコマンド
+## <a name="other-azure-cross-platform-command-line-interface-commands"></a>その他の Azure クロスプラットフォーム コマンドライン インターフェイスのコマンド
 Azure Key Vault の管理に役立つその他のコマンドは次のとおりです。
 
 このコマンドは、すべてのキーと選択したプロパティを表形式で一覧表示します。
@@ -293,9 +263,7 @@ Azure Key Vault の管理に役立つその他のコマンドは次のとおり�
     azure keyvault secret delete --vault-name 'ContosoKeyVault' --secret-name 'SQLPassword'
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
 
 

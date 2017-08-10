@@ -10,20 +10,24 @@
 ### <a name="what-are-the-algorithms-and-key-strengths-supported-in-the-custom-policy"></a>カスタム ポリシーでサポートされるアルゴリズムとキーの強度を教えてください。
 以下の表は、サポートされている暗号アルゴリズムと、ユーザーが構成できるキーの強度を一覧にしたものです。 各フィールドについて、オプションを 1 つ選択する必要があります。
 
-| **IPsec/IKEv2**  | **オプション**                                                                 |
-| ---              | ---                                                                         |
-| IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                           |
-| IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                   |
-| DH グループ         | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
-| IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし    |
-| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                          |
-| PFS グループ        | ECP384、ECP256、PFS24、PFS2048、PFS14、PFS2、PFS1、なし                     |
-| QM SA の有効期間*  | 秒 (整数: **最小 300**) およびキロバイト数 (整数: **最小 1024**)                                      |
-| トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False; default $False)                             |
-|                  |                                                                             |
+| **IPsec/IKEv2**  | **オプション**                                                                   |
+| ---              | ---                                                                           |
+| IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                             |
+| IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                     |
+| DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14 (DHGroup2048)、DHGroup2、DHGroup1、なし |
+| IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし      |
+| IPsec 整合性  | GCMAES256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                            |
+| PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし                              |
+| QM SA の有効期間   | 秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1024**/既定値 102,400,000 キロバイト)           |
+| トラフィック セレクター | UsePolicyBasedTrafficSelectors ($True/$False - 既定値 $False)                 |
+|                  |                                                                               |
 
-* (*) Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。
-* (**) "UsePolicyBasedTrafficSelectors" については、次の FAQ 項目を参照してください。
+> [!IMPORTANT]
+> 1. DHGroup2048 および PFS2048 は、IKE および IPsec PFS の Diffie-Hellman グループ **14** と同じです。 完全なマッピングについては、[Diffie-Hellman グループ](#DH)に関するセクションを参照してください。
+> 2. GCMAES アルゴリズムでは、IPSec 暗号化と整合性の両方に同じ GCMAES アルゴリズムとキーの長さを指定する必要があります。
+> 3. Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。
+> 4. QM SA の有効期間は省略可能なパラメーターです。 指定されていない場合は、既定値の 27,000 秒 (7.5 時間) および 102,400,000 キロバイト (102 GB) が使用されます。
+> 5. UsePolicyBasedTrafficSelector は接続に関する省略可能なパラメーターです。 "UsePolicyBasedTrafficSelectors" については、次の FAQ 項目を参照してください。
 
 ### <a name="does-everything-need-to-match-between-the-azure-vpn-gateway-policy-and-my-on-premises-vpn-device-configurations"></a>Azure VPN Gateway のポリシーとオンプレミス VPN デバイスの構成とが、すべて一致してる必要はありますか。
 ご使用のオンプレミス VPN デバイスの構成は、Azure IPsec/IKE ポリシーで指定した次のアルゴリズムおよびパラメーターと一致している (または含んでいる) 必要があります。
@@ -45,6 +49,21 @@ SA の有効期間は、ローカルの指定のみとなります。一致し�
 * 10.2.0.0/16 <====> 172.16.0.0/16
 
 このオプションを使用する方法について詳しくは、[複数のオンプレミス ポリシー ベース VPN デバイスを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページをご覧ください。
+
+### <a name ="DH"></a>どの Diffie-Hellman グループがサポートされていますか。
+次の表に、IKE (DHGroup) と IPsec (PFSGroup) でサポートされている Diffie-Hellman グループを示します。
+
+| **Diffie-Hellman グループ**  | **DHGroup**              | **PFSGroup** | **キーの長さ** |
+| ---                       | ---                      | ---          | ---            |
+| 1                         | DHGroup1                 | PFS1         | 768 ビット MODP   |
+| 2                         | DHGroup2                 | PFS2         | 1024 ビット MODP  |
+| 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 ビット MODP  |
+| 19                        | ECP256                   | ECP256       | 256 ビット ECP    |
+| 20                        | ECP384                   | ECP284       | 384 ビット ECP    |
+| 24                        | DHGroup24                | PFS24        | 2048 ビット MODP  |
+|                           |                          |              |                |
+
+詳細については、[RFC3526](https://tools.ietf.org/html/rfc3526) と [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 
 ### <a name="does-the-custom-policy-replace-the-default-ipsecike-policy-sets-for-azure-vpn-gateways"></a>Azure VPN ゲートウェイに対する既定の IPsec/IKE ポリシー セットは、カスタム ポリシーによって置き換えられるのでしょうか。
 はい。特定の接続に対してカスタム ポリシーが指定されると、Azure VPN ゲートウェイは、IKE イニシエーターと IKE レスポンダーのどちらとして機能する場合も、その接続に対してそのポリシーのみを使用するようになります。

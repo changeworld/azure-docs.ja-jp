@@ -22,14 +22,10 @@ ms.lasthandoff: 05/09/2017
 
 
 ---
-<a id="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace" class="xliff"></a>
-
-# Azure Marketplace 向け仮想マシン イメージ作成ガイド
+# <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
 
-<a id="1-define-offers-and-skus" class="xliff"></a>
-
-## 1.プランと SKU の定義
+## <a name="1-define-offers-and-skus"></a>1.プランと SKU の定義
 このセクションでは、プランおよびそれと関連付けられている SKU の定義について説明します。
 
 プランは、そのプランに属するすべての SKU の "親" です。 複数のプランを定義できます。 プランをどのように構成するかは、それぞれの状況によって異なります。 プランをステージングにプッシュすると、そのすべての SKU も一緒にプッシュされます。 URL に表示されるため、SKU の ID を慎重に検討します。
@@ -46,16 +42,12 @@ SKU は、VM イメージの取引名です。 VM イメージには、1 個の�
 >
 >
 
-<a id="11-add-an-offer" class="xliff"></a>
-
-### 1.1 プランの追加
+### <a name="11-add-an-offer"></a>1.1 プランの追加
 1. 販売者アカウントを使用して、[発行ポータル][link-pubportal]にサインインします。
 2. 発行ポータルの **[Virtual Machines]** タブを選択します。 フィールドにプラン名を入力します。 通常、プラン名は Azure Marketplace で販売する計画の製品またはサービスの名前です。
 3. **[作成]**を選択します。
 
-<a id="12-define-a-sku" class="xliff"></a>
-
-### 1.2 SKU の定義
+### <a name="12-define-a-sku"></a>1.2 SKU の定義
 プランを追加した後、SKU を定義および特定する必要があります。 複数のプランを作成し、各プランに複数の SKU を定義できます。 プランをステージングにプッシュすると、そのすべての SKU も一緒にプッシュされます。
 
 1. **SKU を追加します。** SKU には ID が必要です。これは、URL で使用します。 ID は、発行プロファイル内で一意である必要がありますが、他の発行元との ID の競合が発生するリスクはありません。
@@ -67,19 +59,13 @@ SKU は、VM イメージの取引名です。 VM イメージには、1 個の�
 2. **SKU の概要説明を追加します。** 概要説明は顧客に表示されるので、読みやすくする必要があります。 この情報は、"ステージングにプッシュ" フェーズまでロックする必要はありません。 それまでは、自由に編集できます。
 3. Windows ベースの SKU を使用する場合、表示されたリンクに従って、Windows Server の承認されたバージョンを取得します。
 
-<a id="2-create-an-azure-compatible-vhd-linux-based" class="xliff"></a>
-
-## 2.Azure と互換性のある VHD の作成 (Linux ベース)
+## <a name="2-create-an-azure-compatible-vhd-linux-based"></a>2.Azure と互換性のある VHD の作成 (Linux ベース)
 このセクションでは、Azure Marketplace 用 Linux ベースの VM イメージを作成するためのベスト プラクティスについて説明します。 詳細な手順については、「[Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード](../virtual-machines/linux/classic/create-upload-vhd.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 
-<a id="3-create-an-azure-compatible-vhd-windows-based" class="xliff"></a>
-
-## 手順 3.Azure と互換性のある VHD の作成 (Windows ベース)
+## <a name="3-create-an-azure-compatible-vhd-windows-based"></a>手順 3.Azure と互換性のある VHD の作成 (Windows ベース)
 このセクションでは、Azure Marketplace 用の Windows Server に基づいて SKU を作成するためのステップについて説明します。
 
-<a id="31-ensure-that-you-are-using-the-correct-base-vhds" class="xliff"></a>
-
-### 3.1 正しい基本 VHD を使用していることの確認
+### <a name="31-ensure-that-you-are-using-the-correct-base-vhds"></a>3.1 正しい基本 VHD を使用していることの確認
 VM イメージのオペレーティング システム VHD は、Azure 承認の基本イメージに基づいている必要があります (Windows Server、SQL Server など)。
 
 始めに、[Microsoft Azure Portal][link-azure-portal] にある次のイメージのいずれかから VM を作成します。
@@ -95,9 +81,7 @@ VM イメージのオペレーティング システム VHD は、Azure 承認�
 >
 >
 
-<a id="32-create-your-windows-based-vm" class="xliff"></a>
-
-### 3.2 Windows ベースの VM の作成
+### <a name="32-create-your-windows-based-vm"></a>3.2 Windows ベースの VM の作成
 Microsoft Azure ポータルから承認された基本イメージに基づいて、簡単な数ステップ実行して VM を作成できます。 大まかな手順を以下に示します。
 
 1. 基本イメージ ページで、**[仮想マシンの作成]** を選択して新しい [Microsoft Azure Portal][link-azure-portal] に移動します。
@@ -132,9 +116,7 @@ Microsoft Azure ポータルから承認された基本イメージに基づい�
     ![図][img-portal-vm-location]
 7. **[作成]**をクリックします。 VM がデプロイを開始します。 数分でデプロイメントが完了し、SKU のイメージの作成を開始できます。
 
-<a id="33-develop-your-vhd-in-the-cloud" class="xliff"></a>
-
-### 3.3 クラウドでの VHD の開発
+### <a name="33-develop-your-vhd-in-the-cloud"></a>3.3 クラウドでの VHD の開発
 リモート デスクトップ プロトコル (RDP) を使用してクラウドで VHD を開発することを強くお勧めします。 プロビジョニングではユーザー名とパスワードを指定して RDP に接続します。
 
 > [!IMPORTANT]
@@ -170,31 +152,23 @@ RDP について詳しくは、MSDN の記事「 [RDP または SSH を使用し
 
 オペレーティング システム VHD がダウンロードされた後、Hyper-V を使って、SKU の作成を開始するように VM を構成します。 詳細な手順については、TechNet リンク「 [Hyper-V の役割のインストールと仮想マシンの構成](http://technet.microsoft.com/library/hh846766.aspx)」を参照してください。
 
-<a id="34-choose-the-correct-vhd-size" class="xliff"></a>
-
-### 3.4 適切な VHD サイズの選択
+### <a name="34-choose-the-correct-vhd-size"></a>3.4 適切な VHD サイズの選択
 VM イメージ内の Windows オペレーティング システム VHD は、128 GB 固定形式 VHD として作成する必要があります。  
 
 物理サイズが 128 GB 未満の場合、VHD が疎になります。 Windows と SQL Server の基本イメージがこれらの要件を既に満たしている場合は、取得された VHD の形式またはサイズを変更しないでください。  
 
 データ ディスクは 1 TB にすることができます。 ディスク サイズを決めるときに、顧客はデプロイメント時にイメージ内の VHD をサイズ変更できないことに注意してください。 データ ディスク VHD は固定形式の VHD として作成する必要があります。 また、疎にする必要もあります。 データ ディスクは空にすることも、データを含むこともできます。
 
-<a id="35-install-the-latest-windows-patches" class="xliff"></a>
-
-### 3.5 最新の Windows 更新プログラムのインストール
+### <a name="35-install-the-latest-windows-patches"></a>3.5 最新の Windows 更新プログラムのインストール
 基本イメージには、発行日の時点における最新の更新プログラムが含まれています。 作成したオペレーティング システム VHD を発行する前に、Windows Update が実行されていること、すべての最新の "重要な" セキュリティ更新プログラムがインストールされていることを確認してください。
 
-<a id="36-perform-additional-configuration-and-schedule-tasks-as-necessary" class="xliff"></a>
-
-### 3.6 必要に応じて追加の構成およびタスクのスケジュールを実行
+### <a name="36-perform-additional-configuration-and-schedule-tasks-as-necessary"></a>3.6 必要に応じて追加の構成およびタスクのスケジュールを実行
 追加の構成が必要な場合は、デプロイ後に最終的な変更が VM に反映されるように、起動時にスケジュールされたタスクを使用することを検討してください。
 
 * 実行が正常に完了したら、タスクが自動的に削除されるように設定するのがベスト プラクティスです。
 * ドライブ C または D は常設の唯一のドライブであるため、構成はこれら以外を使用して設定するようにしてください。 ドライブ C はオペレーティング システム ディスクで、ドライブ D は一時的なローカル ディスクです。
 
-<a id="37-generalize-the-image" class="xliff"></a>
-
-### 3.7 イメージの汎用化
+### <a name="37-generalize-the-image"></a>3.7 イメージの汎用化
 Azure Marketplace のすべてのイメージは汎用的な方法で再利用できる必要があります。 つまり、オペレーティング システム VHD を一般化する必要があります。
 
 * Windows では、イメージが "sysprep 済み" で、 **sysprep** コマンドをサポートしない構成を設定しないことが必要です。
@@ -204,9 +178,7 @@ Azure Marketplace のすべてのイメージは汎用的な方法で再利用�
 
   OS を sysprep する方法のガイダンスについては、MSDN の記事「[Windows Server VHD の作成と Azure へのアップロード](../virtual-machines/windows/classic/createupload-vhd.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)」の手順を参照してください。
 
-<a id="4-deploy-a-vm-from-your-vhds" class="xliff"></a>
-
-## 4.VHD からの VM のデプロイ
+## <a name="4-deploy-a-vm-from-your-vhds"></a>4.VHD からの VM のデプロイ
 VHD (汎用化されたオペレーティング システム VHD および 0 個以上のデータ ディスク VHD) を Azure ストレージ アカウントにアップロードした後、これらをユーザー VM イメージとして登録できます。 その後、そのイメージをテストできます。 オペレーティング システム VHD は汎用化されるため、VHD URL を指定して VM を直接デプロイすることはできません。
 
 VM イメージの詳細については、次のブログを参照してください。
@@ -215,36 +187,26 @@ VM イメージの詳細については、次のブログを参照してくだ�
 * [VM Image PowerShell How To (VM イメージ PowerShell ハウツー)](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [Azure のバーチャル マシン イメージについて](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-<a id="set-up-the-necessary-tools-powershell-and-azure-cli" class="xliff"></a>
-
-### 必要なツール、PowerShell、Azure CLI をセットアップする
+### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>必要なツール、PowerShell、Azure CLI をセットアップする
 * [PowerShell をセットアップする方法](/powershell/azure/overview)
 * [Azure CLI をセットアップする方法](../cli-install-nodejs.md)
 
-<a id="41-create-a-user-vm-image" class="xliff"></a>
-
-### 4.1 ユーザー VM イメージの作成
-<a id="capture-vm" class="xliff"></a>
-
-#### VM のキャプチャ
+### <a name="41-create-a-user-vm-image"></a>4.1 ユーザー VM イメージの作成
+#### <a name="capture-vm"></a>VM のキャプチャ
 API/PowerShell/Azure CLI を使って VM をキャプチャする方法については、次のリンクをご覧ください。
 
 * [API](https://msdn.microsoft.com/library/mt163560.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure CLI](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-<a id="generalize-image" class="xliff"></a>
-
-### イメージの汎用化
+### <a name="generalize-image"></a>イメージの汎用化
 API/PowerShell/Azure CLI を使って VM をキャプチャする方法については、次のリンクをご覧ください。
 
 * [API](https://msdn.microsoft.com/library/mt269439.aspx)
 * [PowerShell](../virtual-machines/windows/capture-image.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 * [Azure CLI](../virtual-machines/linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-<a id="42-deploy-a-vm-from-a-user-vm-image" class="xliff"></a>
-
-### 4.2 ユーザー VM イメージからの VM のデプロイ
+### <a name="42-deploy-a-vm-from-a-user-vm-image"></a>4.2 ユーザー VM イメージからの VM のデプロイ
 ユーザー VM イメージから VM をデプロイするには、既存の [Azure ポータル](https://manage.windowsazure.com) または PowerShell を使用します。
 
 **現在の Azure ポータルからの VM のデプロイ**
@@ -275,16 +237,12 @@ API/PowerShell/Azure CLI を使って VM をキャプチャする方法につい
 >
 >
 
-<a id="5-obtain-certification-for-your-vm-image" class="xliff"></a>
-
-## 5.VM イメージの証明書の取得
+## <a name="5-obtain-certification-for-your-vm-image"></a>5.VM イメージの証明書の取得
 Azure Marketplace 用の VM イメージを準備するための次のステップは、イメージの認定です。
 
 このプロセスには、特別な認定ツールの実行、検証結果の Azure コンテナー (VHD が配置された) へのアップロード、プランの追加、SKU の定義、認定のための VM イメージの送信などがあります。
 
-<a id="51-download-and-run-the-certification-test-tool-for-azure-certified" class="xliff"></a>
-
-### 5.1 Azure 認定用の認定テスト ツールのダウンロードと実行
+### <a name="51-download-and-run-the-certification-test-tool-for-azure-certified"></a>5.1 Azure 認定用の認定テスト ツールのダウンロードと実行
 認定ツールを、ユーザー VM イメージからプロビジョニングされた実行中の VM で実行して、VM イメージが Microsoft Azure と互換性があることを証明します。 VHD の準備に関するガイダンスと要件を満たしているかどうかを検証します。 ツールの出力の互換性レポートを、認定要求のときに発行ポータルにアップロードする必要があります。
 
 認定ツールは、Windows および Linux VM の両方で使用できます。 Windows ベースの VM には PowerShell から接続し、Linux VM には SSH.Net から接続します。
@@ -294,9 +252,7 @@ Azure Marketplace 用の VM イメージを準備するための次のステッ�
 3. **[テスト情報]** 画面で、実行するテストの名前を入力します。
 4. Linux VM か Windows VM かを選択します。 選択内容に基づいて、後続のオプションを選択します。
 
-<a id="connect-the-certification-tool-to-a-linux-vm-image" class="xliff"></a>
-
-### **Linux VM イメージへの認定ツールの接続**
+### <a name="connect-the-certification-tool-to-a-linux-vm-image"></a>**Linux VM イメージへの認定ツールの接続**
 1. SSH 認証モード (パスワードまたはキー ファイル) を選択します。
 2. パスワード ベースの認証を使う場合は、ドメイン ネーム システム (DNS) 名、ユーザー名、およびパスワードを入力します。
 3. キー ファイル認証を使う場合は、DNS 名、ユーザー名、および秘密キーの場所を入力します。
@@ -305,9 +261,7 @@ Azure Marketplace 用の VM イメージを準備するための次のステッ�
 
    ![Linux VM イメージのキー ファイル認証][img-cert-vm-key-lnx]
 
-<a id="connect-the-certification-tool-to-a-windows-based-vm-image" class="xliff"></a>
-
-### **Windows ベースの VM イメージへの認定ツールの接続**
+### <a name="connect-the-certification-tool-to-a-windows-based-vm-image"></a>**Windows ベースの VM イメージへの認定ツールの接続**
 1. 完全修飾 VM DNS 名 (MyVMName.Cloudapp.net など) を入力します。
 2. ユーザー名とパスワードを入力します。
 
@@ -333,9 +287,7 @@ Linux または Windows ベースの VM イメージに適したオプション�
 
 ![認定テスト結果の保存][img-cert-vm-results]
 
-<a id="52-get-the-shared-access-signature-uri-for-your-vm-images" class="xliff"></a>
-
-### 5.2 VM イメージの Shared Access Signature の URI の取得
+### <a name="52-get-the-shared-access-signature-uri-for-your-vm-images"></a>5.2 VM イメージの Shared Access Signature の URI の取得
 発行プロセスにおいて、SKU として作成した各 VHD にリンクされた Uniform Resource Identifier (URI) を指定します。 マイクロソフトは、認定プロセスでこれらの VHD にアクセスします。 そのため、VHD ごとに Shared Access Signature URI を作成する必要があります。 これは、発行ポータルの **[イメージ]** タブに入力する URI です。
 
 作成した Shared Access Signature URI は次の要件を満たす必要があります。
@@ -536,9 +488,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 10.    SKU 内の各 VHD に対してこれらのステップを繰り返します。
 
 
-<a id="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal" class="xliff"></a>
-
-### 5.3 VM イメージに関する情報の指定と発行ポータルでの証明書の要求
+### <a name="53-provide-information-about-the-vm-image-and-request-certification-in-the-publishing-portal"></a>5.3 VM イメージに関する情報の指定と発行ポータルでの証明書の要求
 プランと SKU を作成した後は、その SKU に関連するイメージの詳細を入力する必要があります。
 
 1. [発行ポータル][link-pubportal]に移動し、販売者アカウントでサインインします。
@@ -559,9 +509,7 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
     ![図](media/marketplace-publishing-vm-image-creation/vm-image-pubportal-skus-3.png)
 
 
-<a id="common-sas-url-issues--fixes" class="xliff"></a>
-
-## SAS URL に関する一般的な問題と解決策
+## <a name="common-sas-url-issues--fixes"></a>SAS URL に関する一般的な問題と解決策
 
 |問題|エラー メッセージ|解決策|ドキュメント リンク|
 |---|---|---|---|
@@ -572,14 +520,10 @@ Azure CLI を使用して SAS URL を生成するための手順を次に示し�
 |イメージのコピーに失敗する - SAS URL の承認エラー|Failure: Copying Images. (エラー: イメージのコピー。) Not able to download blob due to authorization error (承認エラーのため BLOB をダウンロードできません)|SAS URL を再生成します|[https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/en-us/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 
-<a id="next-step" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 SKU の詳細について入力が完了したら、[Azure Marketplace のマーケティング コンテンツ ガイド][link-pushstaging]のページに進むことができます。 発行プロセスのそのステップでは、**ステップ 3: ステージングでの VM プランのテスト**の前に必要なマーケティング コンテンツ、価格、その他の情報を提供します。ステップ 3 では、プランを Azure Marketplace にデプロイして一般に公開して購入できるようにする前にさまざまなユース ケース シナリオをテストします。  
 
-<a id="see-also" class="xliff"></a>
-
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Microsoft Azure Marketplace へのプランの発行方法](marketplace-publishing-getting-started.md)
 
 [img-acom-1]:media/marketplace-publishing-vm-image-creation/vm-image-acom-datacenter.png

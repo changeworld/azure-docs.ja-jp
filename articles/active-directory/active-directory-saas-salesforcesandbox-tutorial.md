@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 7ddce64d7ce6107f530b970235bc33a05f49480f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 90e08b9cf2feb93de4877bec9734352949896dca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-salesforce-sandbox"></a>チュートリアル: Azure Active Directory と Salesforce Sandbox の統合
@@ -144,7 +143,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 10. 左側のナビゲーション ウィンドウで、**[セキュリティ コントロール]** をクリックし、**[シングル サインオンの設定]** をクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-salesforcesandbox-tutorial/IC781025.png)
-11. [シングル サインオンの設定] セクションで、「 ![シングル サインオンの構成](./media/active-directory-saas-salesforcesandbox-tutorial/IC781026.png)」の手順に従います。
+11. [シングル サインオンの設定] セクションで、「![シングル サインオンの構成](./media/active-directory-saas-salesforcesandbox-tutorial/IC781026.png)」の手順に従います。
      
      a.  **[SAML Enabled]**を選択します。 
 
@@ -168,7 +167,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     g. **[Identity provider login URL]\(ID プロバイダー ログイン URL\)** テキストボックスに **[シングル サインオン サービス URL]** を貼り付けます。 
 
-    h. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL (ID プロバイダー ログアウト URL)]** ボックスに「https://login.windows.net/common/wsfederation?wa=wsignout1.0」を貼り付けます。
+    h. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL] (ID プロバイダー ログアウト URL)** ボックスに「https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0」を貼り付けます。
 
     i. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。 
 
@@ -272,7 +271,7 @@ SSO の設定をテストする場合は、アクセス パネルを開きます
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [ユーザー プロビジョニングの構成](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
+* [[ユーザー プロビジョニングの構成]](active-directory-saas-salesforce-sandbox-provisioning-tutorial.md)
 
 
 

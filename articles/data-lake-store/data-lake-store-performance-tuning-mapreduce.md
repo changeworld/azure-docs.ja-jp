@@ -42,7 +42,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 * **Mapreduce.reduce.memory.mb** – 各 Reducer に割り当てるメモリの量
 * **Mapreduce.job.reduces** – ジョブごとの Reduce タスクの数
 
-**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] (構成) タブを表示します。  YARN メモリが表示されます。  
+**Mapreduce.map.memory/Mapreduce.reduce.memory** Map タスクや Reduce タスクで必要なメモリの量に基づき、この数値を調整する必要があります。  Mapreduce.map.memory と Mapreduce.reduce.memory の既定値は Ambari の YARN 構成で参照できます。  Ambari で YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリが表示されます。  
 
 **Mapreduce.job.maps/Mapreduce.job.reduces** 作成される Mapper や Reducer の最大数を決定します。  分割の数によって MapReduce ジョブに作成される Mapper の数が決まります。  そのため、要求した Mapper の数よりも分割が少ないと、要求したよりも少ない数の Mapper を取得する場合があります。       
 
@@ -52,7 +52,7 @@ MapReduce ジョブの実行時に、ADLS のパフォーマンスを向上さ�
 
 **手順 2: Mapreduce.map.memory/Mapreduce.reduce.memory を設定する** – Map タスクと Reduce タスクのメモリ サイズは、特定のジョブに依存します。  同時実行性を向上させるには、メモリ サイズを小さくします。  同時に実行できるタスクの数は、コンテナー数によって異なります。  Mapper や Reducer ごとのメモリの量を減らすことで、より多くのコンテナーを作成できるため、より多くの Mapper や Reducer を同時に実行できます。  メモリの量を減らし過ぎると、一部のプロセスでメモリが不足する場合があります。  ジョブの実行時にヒープ エラーが発生する場合は、Mapper や Reducer ごとのメモリを増やす必要があります。  コンテナーをさらに追加すると、追加された各コンテナーに余分なオーバーヘッドが加わり、パフォーマンスを低下させる可能性がある点を考慮する必要があります。  別の方法としては、メモリ容量が大きいクラスターを使用してメモリ量を増やすか、クラスター内のノード数を増やすことが挙げられます。  メモリの量が増えると使用できるコンテナーの数も増えて、同時実行性が向上されます。  
 
-**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] (構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
+**手順 3: 合計 YARN メモリを決定する** - Mapreduce.job.maps/Mapreduce.job.reduces をチューニングするには、使用可能な合計 YARN メモリの量を考慮する必要があります。  この情報は Ambari で利用できます。  YARN に移動し、[Configs] \(構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  合計 YARN メモリを取得するには、YARN メモリと、クラスター内のノードの数を掛けます。
 
     Total YARN memory = nodes * YARN memory per node
 空のクラスターを使用している場合、メモリはクラスターの合計 YARN メモリになります。  ほかのアプリケーションでメモリを使用している場合は、Mapper や Reducer の数を使用するコンテナーの数に減らすことで、クラスターのメモリの一部のみを使用するように選択できます。  
@@ -93,7 +93,7 @@ CPU スケジューリングと CPU の分離は既定ではオフになって�
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 
-1. [Ambari] > [YARN] > [Config] (構成) > [Advanced yarn-log4j] (詳細な yarn-log4j) の順に進み、log4j プロパティに log4j.logger.com.microsoft.azure.datalake.store=DEBUG を入力します。
+1. [Ambari] > [YARN] > [Config] \(構成) > [Advanced yarn-log4j] \(詳細な yarn-log4j) の順に進み、log4j プロパティに log4j.logger.com.microsoft.azure.datalake.store=DEBUG を入力します。
 
 2. すべてのノードとサービスを再起動し、構成を有効にします。
 

@@ -8,17 +8,16 @@ ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.date: 05/08/2017
+ms.date: 07/09/2017
 ms.author: gauravbh; tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 56dd68e328abd6c1dacdf7a8e051ca6b3cd07083
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 623d728cf70a5aa0b91b6acd9e314ca5c009c0aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="create-and-publish-an-azure-managed-application"></a>Azure マネージ アプリケーションの作成と発行 
+# <a name="create-and-publish-service-catalog-managed-application"></a>サービス カタログ マネージ アプリケーションの作成と発行
 
 [マネージ アプリケーションの概要](managed-application-overview.md)に関する記事で説明したように、マネージ アプリケーションには、その利用形態を全体として見た場合に 2 つのシナリオが存在します。 1 つは、顧客向けにマネージ アプリケーションを作成する発行元 (ISV) のシナリオです。 もう 1 つは、そのマネージ アプリケーションを利用する顧客 (コンシューマー) のシナリオです。 この記事では 1 つ目のシナリオに焦点を絞り、ISV としてマネージ アプリケーションを作成して発行する方法を説明します。 
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 05/11/2017
 
 ## <a name="create-managed-application-package"></a>マネージ アプリケーション パッケージの作成
 
-最初に行う作業は、主要なテンプレート ファイルを含んだマネージ アプリケーション パッケージの作成です。 発行元 (ISV) は、3 つのファイルを作成します。 
+最初に行う作業は、主要なテンプレート ファイルを含んだマネージ アプリケーション パッケージの作成です。 発行元 (ISV) は、3 つのファイルを作成します。 3 つのファイルをすべて .zip ファイルにパッケージして、アクセス可能な場所にアップロードする必要があります。
 
 * 1 つ目のファイルは **applianceMainTemplate.json** です。 このテンプレート ファイルには、マネージ アプリケーションの構成要素としてプロビジョニングされる実際のリソースが定義されます。 たとえばマネージ アプリケーションを使ってストレージ アカウントを作成する場合、applianceMainTemplate.json には次の内容が記述されます。 
 
@@ -208,6 +207,8 @@ az managedapp definition create -n ravtestAppDef4 -l "westcentralus"
 
 * マネージ アプリケーションの概要については、「[Azure マネージ アプリケーションの概要](managed-application-overview.md)」を参照してください。
 * サンプル ファイルについては、[マネージ アプリケーションのサンプル](https://github.com/Azure/azure-managedapp-samples/tree/master/samples)に関するページを参照してください。
-* コンシューマーから見た利用形態については、「[Azure マネージ アプリケーションの実行](managed-application-consumption.md)」を参照してください。
+* サービス カタログ マネージ アプリケーションの使用については、[サービス カタログ マネージ アプリケーションの使用](managed-application-consumption.md)に関するページを参照してください。
+* マネージ アプリケーションを Marketplace に発行する方法については、「[Azure Managed Applications in the Marketplace (Marketplace における Azure マネージ アプリケーション)](managed-application-author-marketplace.md)」を参照してください。
+* Marketplace からマネージ アプリケーションを使用する方法については、「[Consume Azure managed applications in the Marketplace (Marketplace での Azure マネージ アプリケーションの使用)](managed-application-consume-marketplace.md)」を参照してください。
 * マネージ アプリケーションの UI 定義ファイルの作成については、「[CreateUiDefinition の基本概念](managed-application-createuidefinition-overview.md)」を参照してください。
 

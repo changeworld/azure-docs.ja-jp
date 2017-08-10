@@ -1,6 +1,6 @@
 ---
 title: "Azure IoT Hub の使用 (Java) | Microsoft Docs"
-description: "Azure IoT SDK for Java を使用して Azure IoT Hub デバイスでデバイスからクラウドへのメッセージを送信する方法。 メッセージを送信するシミュレーション対象デバイス アプリ、ID レジストリにデバイスを登録するサービス アプリ、およびデバイスからクラウドへのメッセージを IoT Hub から読み取るサービス アプリを作成します。"
+description: "IoT SDK for Java を使用して Azure IoT Hub にデバイスからクラウドへのメッセージを送信する方法について説明します。 デバイスを登録し、メッセージを送信して、IoT ハブからメッセージを読み取るために、シミュレートされたデバイスとサービス アプリを作成します。"
 services: iot-hub
 documentationcenter: java
 author: dominicbetts
@@ -15,23 +15,20 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 7b44762ffea876d628886192376b6275bbc0b83b
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: 0c8a4b518c6946781c2340f79ab479612b595c74
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="connect-your-simulated-device-to-your-iot-hub-using-java" class="xliff"></a>
-
-# Java を使用してシミュレーション対象デバイスを IoT Hub に接続する
+# <a name="connect-your-device-to-your-iot-hub-using-java"></a>Java を使用してデバイスを IoT ハブに接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
 
 このチュートリアルの最後には、次の 3 つの Java コンソール アプリが完成します。
 
-* **create-device-identity**。デバイス ID と関連付けられているセキュリティ キーを作成し、シミュレーション対象デバイス アプリを接続します。
-* **read-d2c-messages**。シミュレーション対象デバイス アプリから送信されたテレメトリを表示します。
+* **create-device-identity**。デバイス ID および関連付けられているセキュリティ キーを作成し、デバイス アプリを接続します。
+* **read-d2c-messages**。デバイス アプリから送信されたテレメトリを表示します。
 * **simulated-device**。以前に作成したデバイス ID で IoT Hub に接続し、MQTT プロトコルを使用して 1 秒ごとにテレメトリ メッセージを送信します。
 
 > [!NOTE]
@@ -51,9 +48,7 @@ ms.lasthandoff: 07/04/2017
 
 IoT Hub の作成は以上です。 このチュートリアルを完了するために必要な IoT Hub ホスト名、IoT Hub 接続文字列、IoT Hub 主キー、Event Hub 対応の名前、Event Hub 対応エンドポイントが入手できました。
 
-<a id="create-a-device-identity" class="xliff"></a>
-
-## デバイス ID の作成
+## <a name="create-a-device-identity"></a>デバイス ID の作成
 このセクションでは、IoT ハブの ID レジストリにデバイス ID を作成する Java コンソール アプリケーションを作成します。 IoT hub に接続するデバイスは、あらかじめ ID レジストリに登録されている必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]の **ID レジストリ**に関するセクションをご覧ください。 このコンソール アプリケーションを実行すると、デバイスからクラウドへのメッセージを IoT Hub に送信するときにそのデバイスを識別する一意の ID とキーが生成されます。
 
 1. "iot-java-get-started" という名前の空のフォルダーを作成します。 コマンド プロンプトで次のコマンドを実行し、iot-java-get-started フォルダーに **create-device-identity** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
@@ -98,6 +93,7 @@ IoT Hub の作成は以上です。 このチュートリアルを完了する�
     private static final String connectionString = "{yourhubconnectionstring}";
     private static final String deviceId = "myFirstJavaDevice";
     ```
+[!INCLUDE [iot-hub-pii-note-naming-device](../../includes/iot-hub-pii-note-naming-device.md)]
 
 8. **main** メソッドのシグネチャを変更し、下の例外を追加します。
 
@@ -168,9 +164,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 > [!NOTE]
 > IoT Hub の ID レジストリには、IoT ハブに対するセキュリティで保護されたアクセスを有効にするためのデバイス ID のみが格納されます。 セキュリティ資格情報として使用するキーとデバイス ID、そして個々のデバイスについてアクセスを無効にすることのできる有効/無効フラグが格納されます。 その他デバイス固有のメタデータをアプリで保存する必要がある場合は、アプリ固有のストアを使用する必要があります。 詳細については、[IoT Hub 開発者ガイド][lnk-devguide-identity]をご覧ください。
 
-<a id="receive-device-to-cloud-messages" class="xliff"></a>
-
-## デバイスからクラウドへのメッセージの受信
+## <a name="receive-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの受信
 
 このセクションでは、デバイスからクラウドへのメッセージを IoT Hub から読み取る Java コンソール アプリケーションを作成します。 IoT Hub は、デバイスからクラウドへのメッセージを読み取るための、[イベント ハブ][lnk-event-hubs-overview]と互換性のあるエンドポイントを公開します。 わかりやすくするために、このチュートリアルで作成するリーダーは基本的なものであり、高スループットのデプロイメントには適していません。 [デバイスからクラウドへのメッセージの処理][lnk-process-d2c-tutorial]に関するチュートリアルでは、デバイスからクラウドへのメッセージを大規模に処理する方法を紹介しています。 「[Event Hubs の使用][lnk-eventhubs-tutorial]」チュートリアルでは、Event Hubs からのメッセージを処理する方法について詳しく説明しています。また、このチュートリアルは IoT Hub のイベント ハブと互換性のあるエンドポイントに当てはまります。
 
@@ -309,10 +303,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
     mvn clean package -DskipTests
     ```
 
-<a id="create-a-simulated-device-app" class="xliff"></a>
-
-## シミュレーション対象デバイス アプリの作成
-
+## <a name="create-a-device-app"></a>デバイス アプリの作成
 このセクションでは、デバイスからクラウドへのメッセージを IoT ハブに送信するデバイスをシミュレートする Java コンソール アプリを作成します。
 
 1. コマンド プロンプトで次のコマンドを実行し、「*デバイス ID の作成*」セクションで作成した iot-java-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
@@ -383,9 +374,8 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
       }
     }
     ```
-
-9. 次の入れ子になった **EventCallback** クラスを **App** クラス内に追加し、シミュレーション対象デバイス アプリからのメッセージを処理するときに IoT Hub が返す受信確認ステータスを表示します。 このメソッドにより、メッセージが処理されたときのアプリのメイン スレッドも通知されます。
-
+9. 次の入れ子になった **EventCallback** クラスを **App** クラス内に追加して、デバイス アプリからのメッセージを処理するときに IoT ハブが返す受信確認ステータスが表示されるようにします。 このメソッドにより、メッセージが処理されたときのアプリのメイン スレッドも通知されます。
+   
     ```java
     private static class EventCallback implements IotHubEventCallback {
       public void execute(IotHubStatusCode status, Object context) {
@@ -472,9 +462,7 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、[一時的な障害処理][lnk-transient-faults]に関する MSDN の記事で推奨されているように、再試行ポリシー (指数関数的バックオフなど) を実装することをお勧めします。
 
-<a id="run-the-apps" class="xliff"></a>
-
-## アプリの実行
+## <a name="run-the-apps"></a>アプリの実行
 
 これで、アプリを実行する準備が整いました。
 
@@ -498,11 +486,8 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 
     ![Azure portal Usage tile showing number of messages sent to IoT Hub][43]
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
-
-このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 シミュレーション対象デバイス アプリでデバイスからクラウドへのメッセージを IoT Hub に送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。
+## <a name="next-steps"></a>次のステップ
+このチュートリアルでは、Azure Portal で新しい IoT Hub を構成し、IoT Hub の ID レジストリにデバイス ID を作成しました。 デバイス アプリでデバイスからクラウドへのメッセージを IoT ハブに送信できるようにするために、このデバイス ID を使用しました。 また、IoT Hub で受け取ったメッセージを表示するアプリを作成しました。
 
 引き続き IoT Hub の使用方法を確認すると共に、他の IoT のシナリオについて調べるには、次のページを参照してください。
 

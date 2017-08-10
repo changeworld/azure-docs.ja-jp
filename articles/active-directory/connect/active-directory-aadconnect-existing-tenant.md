@@ -33,7 +33,7 @@ Azure AD 内のオブジェクトは、クラウド (Azure AD) とオンプレ�
 オンプレミスの AD にも存在するユーザーを Azure AD で管理していて、後になって Connect が必要になった場合、いくつか追加の懸念事項を考慮する必要があります。
 
 ## <a name="sync-with-existing-users-in-azure-ad"></a>Azure AD の既存のユーザーとの同期
-Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、**userPrincipalName**、**proxyAddresses**、**sourceAnchor**/**immutableID** の&3; つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、**あいまい一致**と呼ばれます。 **sourceAnchor** の一致は、**完全一致**と呼ばれます。 **proxyAddresses** 属性では、**SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
+Azure AD Connect をインストールして同期を開始すると、(Azure AD の) Azure AD 同期サービスによってすべての新しいオブジェクトがチェックされ、一致する既存のオブジェクトが検索されます。 このプロセスでは、**userPrincipalName**、**proxyAddresses**、**sourceAnchor**/**immutableID** の 3 つの属性が使用されます。 **userPrincipalName** と **proxyAddresses** の一致は、**あいまい一致**と呼ばれます。 **sourceAnchor** の一致は、**完全一致**と呼ばれます。 **proxyAddresses** 属性では、**SMTP:** 付きの値 (つまり、プライマリ電子メール アドレス) のみが評価に使用されます。
 
 一致は、Connect で生成された新しいオブジェクトについてのみ評価されます。 これらの属性のいずれかに一致するように既存のオブジェクトを変更すると、エラーが発生します。
 

@@ -461,6 +461,7 @@ Azure AD の Service Fabric クラスターでの構成に関する手順の一�
 ```
 
 ### <a "configure-arm" ></a>Resource Manager テンプレート パラメーターの構成
+<!--- Loc Comment: It seems that <a "configure-arm" > must be replaced with <a name="configure-arm"></a> since the link seems not to be redirecting correctly --->
 最後に、Key Vault と Azure AD PowerShell コマンドからの出力値を使用してパラメーター ファイルを作成します。
 
 ```json
@@ -555,7 +556,8 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myresourcegroup" -Templat
 >
 >
 
- <a name="secure-linux-cluster"></a>
+ <a name="secure-linux-clusters"></a>
+ <!--- Loc Comment: It seems that letter S in cluster was missing, which caused the wrong redirection of the link --->
 
 ## <a name="create-secure-clusters-on-linux"></a>セキュリティで保護されたクラスターを Linux 上に作成する
 プロセス簡略化のために、[ヘルパー スクリプト](http://github.com/ChackDan/Service-Fabric/tree/master/Scripts/CertUpload4Linux)を用意しました。 このヘルパー スクリプトを使用する前に、Azure コマンド ライン インターフェイス (CLI) が既にインストールされており、パス内にあることを確認します。 ダウンロード後、必ず `chmod +x cert_helper.py` を実行して、スクリプトに実行権限を割り当ててください。 まず、CLI から `azure login` コマンドを実行して Azure アカウントにサインインします。 Azure アカウントへのサインイン後、次のコマンドに示すように、証明機関の署名入りの証明書と一緒にヘルパー スクリプトを指定します。

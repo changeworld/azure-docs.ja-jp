@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 4c373eef77605ab45c9a08ed7f60476abafa229c
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fe6a28afbee573351186e361126ddca7db764311
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>新しいリソース グループまたはサブスクリプションへのリソースの移動
@@ -125,6 +124,7 @@ ms.lasthandoff: 06/30/2017
 ## <a name="services-that-do-not-enable-move"></a>移動が不可能なサービス
 現在、リソースの移動が不可能なサービスは、次のとおりです。
 
+* AD Domain Services
 * AD Hybrid Health Service
 * Application Gateway
 * Managed Disks を使用する Virtual Machines の可用性セット

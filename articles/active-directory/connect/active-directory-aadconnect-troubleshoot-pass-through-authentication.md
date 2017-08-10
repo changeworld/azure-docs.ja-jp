@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/28/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 05d7c50aaa1209220b6cff3305fdb05dd2c421f8
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -30,6 +30,14 @@ ms.lasthandoff: 06/17/2017
 >パススルー認証でユーザーのサインインの問題が発生している場合、フォールバックするためのクラウド専用グローバル管理者アカウントを用意せずに機能を無効にしたり、パススルー認証エージェントをアンインストールしたりしないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
 
 ## <a name="general-issues"></a>一般的な問題
+
+### <a name="check-status-of-the-feature-and-authentication-agents"></a>機能と認証エージェントの状態を確認する
+
+テナントでパススルー認証機能がまだ**有効**であること、および認証エージェントの状態が**アクティブ**であり、**非アクティブ**ではないことを確認します。 このことは、[Azure Portal](https://portal.azure.com/) の **[Azure AD Connect]** ブレードで確認できます。
+
+![Azure Portal - Azure AD Connect ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+
+![Azure Portal - パススルー認証ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>ユーザーに表示されるサインインのエラー メッセージ
 
@@ -43,13 +51,13 @@ ms.lasthandoff: 06/17/2017
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|一時的なエラーです。 要求をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the agent logs for more information and verify that Active Directory is operating as expected. (エージェント ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください。)
 
-### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センターでのサインイン失敗の理由
+### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Azure Portal でのサインイン失敗の理由
 
-パススルー認証使用時にユーザーのサインインに関する問題のトラブルシューティングを行う場合、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を調べることは、適切な始め方です。
+ユーザー サインインの問題のトラブルシューティングでは最初に、[Azure Portal](https://portal.azure.com/) で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を確認します。
 
 ![サインイン レポート](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]**  ->  **[サインイン]** と移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[SIGN-IN ERROR CODE] (サインイン エラー コード)** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Portal](https://portal.azure.com/) で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
 |サインイン エラー コード|サインインが失敗した理由|解決策
 | --- | --- | ---
@@ -64,10 +72,6 @@ ms.lasthandoff: 06/17/2017
 | 80011 | 認証エージェントは復号化キーを取得できません。 | 一貫して問題を再現できる場合は、新しい認証エージェントをインストールして登録します。 また、現在のものはアンインストールします。
 
 ## <a name="authentication-agent-installation-issues"></a>認証エージェントのインストールに関する問題
-
-### <a name="an-azure-ad-application-proxy-connector-already-exists"></a>Azure AD アプリケーション プロキシ コネクタが既に存在する
-
-パススルー認証エージェントを [Azure AD アプリケーション プロキシ](../../active-directory/active-directory-application-proxy-get-started.md) コネクタと同じサーバーにインストールすることはできません。 パススルー認証エージェントは別個のサーバーにインストールしてください。
 
 ### <a name="an-unexpected-error-occurred"></a>予期しないエラーが発生する
 
@@ -115,16 +119,16 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="authentication-agent-event-logs"></a>認証エージェントのイベント ログ
 
-認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**Application and Service Logs\Microsoft\AadApplicationProxy\Connector\Admin** の下を調べます。
+認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
 
 詳細な分析が必要な場合は "セッション" ログを有効にします。 通常の操作中に、このログを有効にして認証エージェントを実行しないでください。これはトラブルシューティングにのみ使用します。 ログの内容は、ログを再度無効にした後にのみ表示されます。
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 
-ユーザー サインイン エラーのトラブルシューティングを行うときは、**C:\ProgramData\Microsoft\Microsoft AAD Application Proxy Connector\Trace** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の[表](#sign-in-failure-reasons-on-the-Azure-portal)に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
+ユーザー サインイン エラーのトラブルシューティングを行うときは、**%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の[表](#sign-in-failure-reasons-on-the-Azure-portal)に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
 
 ```
-    ApplicationProxyConnectorService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
+    AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.
         ThreadId=5
         DateTime=xxxx-xx-xxTxx:xx:xx.xxxxxxZ
 ```
@@ -142,7 +146,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 ```
     <QueryList>
     <Query Id="0" Path="Security">
-    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft AAD App Proxy Connector\ApplicationProxyConnectorService.exe')]]</Select>
+    <Select Path="Security">*[EventData[Data[@Name='ProcessName'] and (Data='C:\Program Files\Microsoft Azure AD Connect Authentication Agent\AzureADConnectAuthenticationAgentService.exe')]]</Select>
     </Query>
     </QueryList>
 ```

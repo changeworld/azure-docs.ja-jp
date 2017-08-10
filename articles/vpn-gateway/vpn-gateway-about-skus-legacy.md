@@ -13,19 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/05/2017
+ms.date: 08/01/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: ba380d88704d33353518c55fdc91493e804c0746
+ms.translationtype: HT
+ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
+ms.openlocfilehash: 01ef2f0309848be5a891749178196e60fff2930e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/03/2017
 
 ---
-# <a name="working-with-virtual-network-gateway-skus-old-skus"></a>仮想ネットワーク ゲートウェイ SKU (旧 SKU) の使用
+# <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
-この記事では、以前の仮想ネットワーク ゲートウェイ SKU についての情報を取り上げています。 最新の SKU については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
+この記事には、従来の (古い) 仮想ネットワーク ゲートウェイ SKU に関する情報が含まれています。 従来の SKU は、作成済みの VPN ゲートウェイの両方のデプロイメント モデルで引き続き動作します。 クラシック VPN ゲートウェイでは、既存のゲートウェイと新しいゲートウェイの両方に対して従来の SKU が引き続き使用されます。 新しい Resource Manager VPN ゲートウェイを作成する場合は、新しいゲートウェイ SKU を使用します。 新しい SKU については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
 ## <a name="gateway-skus"></a>ゲートウェイの SKU
 
@@ -39,10 +38,31 @@ ms.lasthandoff: 06/08/2017
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 
-## <a name="migrating-to-the-new-gateway-skus"></a>新しいゲートウェイ SKU への移行
+## <a name="resize"></a>ゲートウェイのサイズを変更する (ゲートウェイ SKU を変更する)
+
+同じ SKU ファミリ内のゲートウェイ SKU のサイズを変更することができます。 たとえば、Standard SKU の場合は、HighPerformance SKU にサイズ変更可能です。 古い SKU と新しい SKU ファミリとの間で VPN ゲートウェイのサイズを変更することはできません。 たとえば、Standard SKU を VpnGw2 SKU にすることはできません。 
+
+クラシック デプロイメント モデルのゲートウェイ SKU のサイズを変更するには、次のコマンドを使用します。
+
+```powershell
+Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerformance
+```
+
+Resource Manager デプロイメント モデルのゲートウェイ SKU のサイズを変更するには、次のコマンドを使用します。
+
+```powershell
+$gw = Get-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg
+Resize-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $gw -GatewaySku HighPerformance
+```
+
+## <a name="migrate"></a>新しいゲートウェイ SKU に移行する
+
+Resource Manager デプロイメント モデルで作業している場合は、新しいゲートウェイ SKU に移行することができます。 クラシック デプロイメント モデルで作業している場合は、新しい SKU に移行することはできません。したがって、引き続き従来の SKU を使用する必要があります。
 
 [!INCLUDE [Migrate SKU](../../includes/vpn-gateway-migrate-legacy-sku-include.md)]
 
+## <a name="next-steps"></a>次のステップ
+
 新しいゲートウェイ SKU の詳細については、「[ゲートウェイの SKU](vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
-
+構成設定の詳細については、「[VPN ゲートウェイの構成設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。

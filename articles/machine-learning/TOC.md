@@ -173,6 +173,7 @@
 
 # リファレンス
 
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=machine-learning)
 ## [PowerShell モジュール (新規)](/powershell/module/azurerm.machinelearning)
 ## [PowerShell モジュール (クラシック)](machine-learning-powershell-module.md)
 ## [アルゴリズムとモジュールのリファレンス](https://msdn.microsoft.com/library/azure/dn905974.aspx)
@@ -215,6 +216,7 @@
 
 ## [Net# ニューラル ネットワーク仕様言語](machine-learning-azure-ml-netsharp-reference-guide.md)
 ## [料金](https://azure.microsoft.com/pricing/details/machine-learning/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=machine-learning)
 ## [ブログ](http://blogs.technet.com/b/machinelearning/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning)

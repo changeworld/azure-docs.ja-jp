@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 02/13/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 11ffd3df669c805297eee5085145f4ce27a09e15
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 5c971ed2e09bd275dc34da3ea94b3ff4a6338c9a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="technical-articles-for-windows-vms-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルにおける Windows VM に関する技術解説記事
@@ -57,7 +56,7 @@ ms.lasthandoff: 05/10/2017
 
 [仮想マシンのサイズ](windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
-[H シリーズとコンピューティング集中型 A シリーズの VM について](windows/a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+[ハイ パフォーマンス コンピューティング VM のサイズ](windows/sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [Azure Virtual Machines に対する計画的なメンテナンス](windows/planned-maintenance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 

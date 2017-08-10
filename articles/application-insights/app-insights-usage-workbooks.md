@@ -12,11 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 44ea03d30c1f2eabc92af63b549823c03a6901e2
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -88,9 +88,9 @@ Application Insights の [分析クエリ] セクションをブックに追加�
 
 * 使用状況が減少したのと同じ期間にサイトが投げた例外の数はいくつですか?
 * あるページを閲覧しているユーザーのページ読み込み時間の分布は何でしたか?
-* サイトのある一連のページを閲覧したユーザーのうち、ある別の一連のページを閲覧しなかったユーザーの数は? これは、サイトの機能の異なるサブセットを使用する (Analytics クエリ言語で `join` 演算子を `kind=leftanti` 修飾子とともに使用する) ユーザーのクラスターが存在する場合に理解するのに便利です。
+* サイトのある一連のページを閲覧したユーザーのうち、ある別の一連のページを閲覧しなかったユーザーの数は? これは、サイトの機能の異なるサブセットを使用する (Log Analytics クエリ言語で `join` 演算子を `kind=leftanti` 修飾子とともに使用する) ユーザーのクラスターが存在する場合に理解するのに便利です。
 
-クエリの記述について詳しくは、[Analytics クエリ言語のリファレンス](app-insights-analytics-reference.md)に関するページをご覧ください。
+クエリの記述について詳しくは、[Log Analytics クエリ言語のリファレンス](https://docs.loganalytics.io/)に関するページをご覧ください。
 
 ## <a name="adding-text-and-markdown-sections"></a>テキストと [マークダウン] セクションを追加する
 

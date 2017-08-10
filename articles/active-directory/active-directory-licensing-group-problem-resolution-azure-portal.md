@@ -18,10 +18,10 @@ ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 21ba840f62ea50e943bf5b82f8cc0afd94bb0fef
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: bfa951a897c9b383072c0d29c9a4266c163fe753
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -108,6 +108,20 @@ Azure Active Directory (Azure AD) のグループベースのライセンスで�
 グループに指定したすべてのライセンスは、Azure AD によって各ユーザーに割り当てられます。 Azure AD が、ビジネス ロジックの問題 (ライセンス数の不足、ユーザーに対して有効な他のサービスとの競合など) が原因でいずれかの製品を割り当てることができない場合、グループの他のライセンスも割り当てられません。
 
 割り当てが失敗したユーザーとその失敗の影響を受けている製品を確認できます。
+
+## <a name="license-assignment-fails-silently-for-a-user-due-to-duplicate-proxy-addresses-in-exchange-online"></a>Exchange Online でプロキシ アドレスの重複があるために、ユーザーのライセンス割り当てがエラーを記録することなく失敗する
+
+Exchange Online を使用している場合は、テナント内の一部のユーザーが、同じプロキシ アドレスの値で間違って構成されている可能性があります。 グループ ベースのライセンスがこのようなユーザーにライセンス割り当てを試みると、失敗し、エラーは記録されません (上で説明した他のエラーの場合と異なります)。これは、この機能のプレビュー バージョンの制限によるもので、*一般提供*が開始されるまでには対応する予定です。
+
+> [!TIP]
+> 一部のユーザーがライセンスを得られず、そのユーザーに関してエラーが記録されていない場合は、まず、ユーザーに重複するプロキシ アドレスがないかどうか確認してください。
+> これは、次の PowerShell コマンドレットを Exchange Online に対して実行することで確認できます。
+```
+Run Get-Recipient | where {$_.EmailAddresses -match "user@contoso.onmicrosoft.com"} | fL Name, RecipientType,emailaddresses
+```
+> [リモート PowerShel を使用して Exchange Online に接続する方法](https://technet.microsoft.com/library/jj984289.aspx)など、この問題の詳細については、[こちらの記事](https://support.microsoft.com/help/3042584/-proxy-address-address-is-already-being-used-error-message-in-exchange-online)をご覧ください。
+
+割り当てに失敗したユーザーのプロキシ アドレスの問題が解決した後には、グループのライセンス処理を強制して、ライセンスを再度適用できるようになったことを確認してください。
 
 ## <a name="how-do-you-force-license-processing-in-a-group-to-resolve-errors"></a>グループでライセンスの処理を強制してエラーを解決する方法
 

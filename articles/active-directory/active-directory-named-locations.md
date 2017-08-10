@@ -11,7 +11,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: Human Translation
@@ -40,7 +40,7 @@ Azure Active Directory の名前付きの場所機能を使用して、組織内
     ![[条件付きアクセス] コマンド](./media/active-directory-named-locations/05.png)
 
 
-4. **[条件付きアクセス]** ブレードの **[管理]** セクションで、**[Named locations] (名前付きの場所)** をクリックします。
+4. **[条件付きアクセス]** ブレードの **[管理]** セクションで、**[Named locations] \(名前付きの場所)** をクリックします。
 
     ![[名前付きの場所] コマンド](./media/active-directory-named-locations/06.png)
 

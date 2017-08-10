@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/02/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: ffd8c494d821d41532c9a31613b10b521ff4d86b
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
@@ -75,6 +74,14 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 > [!NOTE]
 > 一部のサービスは、特定のクラスターの種類でのみ利用できます。 たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
+
+### <a name="ambari"></a>Ambari
+
+| サービス | Nodes | ポート | パス | プロトコル | 
+| --- | --- | --- | --- | --- |
+| Ambari Web UI | ヘッド ノード | 8080 | / | HTTP |
+| Ambari REST API | ヘッド ノード | 8080 | /api/v1 | HTTP |
+
 
 ### <a name="hdfs-ports"></a>HDFS ポート
 

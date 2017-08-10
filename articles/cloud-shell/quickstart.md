@@ -7,18 +7,18 @@ author: jluk
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 07/10/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 6fbe0dbe159fecb73833260d18aade7d294f040f
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 7a2ed1c890eb22b3aff9aaadf2b420eeb21dd207
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -29,8 +29,7 @@ ms.lasthandoff: 06/09/2017
 ## <a name="start-cloud-shell"></a>Cloud Shell の起動
 1. Azure Portal 上部のナビゲーションから **Cloud Shell** を起動します。 <br>
 ![](media/shell-icon.png)
-2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。 <br>
-![](media/storage-prompt.png)
+2. ストレージ アカウントと Azure ファイル共有の作成に使用するサブスクリプションを選択します。
 3. [Create storage]\(ストレージの作成\) を選択します。
 
 > [!TIP]
@@ -43,7 +42,7 @@ ms.lasthandoff: 06/09/2017
 `az account set --subscription my-subscription-name`
 
 > [!TIP]
-> 設定したサブスクリプションは、$Home ディレクトリに格納される `azureProfile.json` を使って今後のセッション用に記憶されます。
+> 設定したサブスクリプションは、`/home/<user>/.azure/azureProfile.json` を使って今後のセッション用に記憶されます。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 "MyRG" という名前の新しいリソース グループを WestUS に作成します。 <br>
@@ -74,4 +73,4 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
-[Azure File Storage について](https://docs.microsoft.com/azure/storage/storage-introduction#file-storage) <br>
+[Azure File Storage について](../storage/storage-files-introduction.md) <br>

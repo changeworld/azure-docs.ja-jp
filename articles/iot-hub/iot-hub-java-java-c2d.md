@@ -22,8 +22,7 @@ ms.lasthandoff: 07/04/2017
 
 
 ---
-# IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
-<a id="send-cloud-to-device-messages-with-iot-hub-java" class="xliff"></a>
+# <a name="send-cloud-to-device-messages-with-iot-hub-java"></a>IoT Hub を使用したクラウドからデバイスへのメッセージの送信 (Java)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
 
 Azure IoT Hub は、何百万ものデバイスとソリューション バックエンドの間に信頼性のある保護された双方向通信を確立するのに役立つ、完全に管理されたサービスです。 [IoT Hub の概要]チュートリアルには、IoT ハブの作成方法、IoT ハブでデバイス ID をプロビジョニングする方法、およびデバイスからクラウドへのメッセージを送信するシミュレートされたデバイス アプリをコード化する方法が示されています。
@@ -51,8 +50,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * [Maven 3](https://maven.apache.org/install.html)
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
-## シミュレートされたデバイス アプリでメッセージを受信する
-<a id="receive-messages-in-the-simulated-device-app" class="xliff"></a>
+## <a name="receive-messages-in-the-simulated-device-app"></a>シミュレートされたデバイス アプリでメッセージを受信する
 
 このセクションでは、[IoT Hub の概要]に関するページで作成したシミュレートされたデバイス アプリを、クラウドからデバイスへのメッセージを IoT ハブから受信するように変更します。
 
@@ -89,8 +87,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     mvn clean package -DskipTests
     ```
 
-## C2D メッセージを送信する
-<a id="send-a-cloud-to-device-message" class="xliff"></a>
+## <a name="send-a-cloud-to-device-message"></a>C2D メッセージを送信する
 
 このセクションでは、クラウドからデバイスへのメッセージを、シミュレーション済みデバイス アプリに送信する Java コンソール アプリを作成します。 [IoT Hub の概要] のチュートリアルで追加したデバイスのデバイス ID が必要です。 また、ハブの IoT Hub 接続文字列も必要です ([Azure Portal] で確認できます)。
 
@@ -177,8 +174,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
     mvn clean package -DskipTests
     ```
 
-## アプリケーションの実行
-<a id="run-the-applications" class="xliff"></a>
+## <a name="run-the-applications"></a>アプリケーションの実行
 
 これで、アプリケーションを実行する準備が整いました。
 
@@ -198,8 +194,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
     ![クラウドからデバイスへのメッセージを送信するコマンドを実行する][img-send-command]
 
-## 次のステップ
-<a id="next-steps" class="xliff"></a>
+## <a name="next-steps"></a>次のステップ
 
 このチュートリアルでは、クラウドからデバイスへのメッセージを送受信する方法を学習しました。 
 

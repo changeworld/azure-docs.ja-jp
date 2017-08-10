@@ -1,5 +1,4 @@
 ---
-
 title: "Azure セキュリティの技術的な機能 | Microsoft Docs"
 description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 549f11d3d55d13f3a2ddf7bd0a2bc58e527d1d11
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2983ce5c068e5188fb70ffc9443ce58d6c188c50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
@@ -196,7 +194,7 @@ RBAC を使用して、チーム内で職務を分離し、職務に必要なア
 | ----------------  | ----------------- | ----------------- | --------------- |
 | サーバーの暗号化 | サーバーの暗号化 | サーバーの暗号化 | クライアントの暗号化
 | サービス管理キーを使用したサーバー側暗号化 | ユーザーが管理する Azure Key Vault キーを使用したサーバー側暗号化 | オンプレミスの顧客管理キーを使用したサーバー側暗号化 |
-| •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>•    お客様が Azure Key Vault を使用してキーを制御する<br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>•    お客様がオンプレミスのキーを制御する <br> •    完全なクラウド機能| •    Azure のサービスは解読されたデータを表示できない <br>•    お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>•    制限されたクラウド機能|
+| • Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br> •    マイクロソフトがキーを管理する <br>•    完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する<br>• お客様が Azure Key Vault を使用してキーを制御する<br>• 完全なクラウド機能 | •    Azure リソース プロバイダーが暗号化操作と解読操作を実行する <br>• お客様がオンプレミスのキーを制御する <br> •   完全なクラウド機能| • Azure のサービスは解読されたデータを表示できない <br>• お客様がオンプレミス (または別のセキュリティで保護されたストア) にキーを保持する。 キーは Azure のサービスでは使用できません <br>• 制限されたクラウド機能|
 
 ### <a name="enabling-encryption-at-rest"></a>保存時の暗号化を有効にする
 

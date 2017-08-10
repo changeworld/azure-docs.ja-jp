@@ -24,14 +24,10 @@ ms.lasthandoff: 05/08/2017
 
 
 ---
-<a id="assign-a-user-to-administrator-roles-in-azure-active-directory" class="xliff"></a>
-
-# Azure Active Directory でユーザーを管理者ロールに割り当てる
+# <a name="assign-a-user-to-administrator-roles-in-azure-active-directory"></a>Azure Active Directory でユーザーを管理者ロールに割り当てる
 この記事では、Azure Active Directory (Azure AD) でユーザーに管理者ロールを割り当てる方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。 既定では、追加されたユーザーに管理者のアクセス許可はありませんが、ロールはいつでも割り当てることができます。
 
-<a id="assign-a-role-to-a-user" class="xliff"></a>
-
-## ユーザーにロールを割り当てる
+## <a name="assign-a-role-to-a-user"></a>ユーザーにロールを割り当てる
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
@@ -45,9 +41,7 @@ ms.lasthandoff: 05/08/2017
       ![ユーザーをロールに割り当てる](./media/active-directory-users-assign-role-azure-portal/create-users-assign-role.png)
 6. [ **保存**] を選択します。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)
 * [新しい Azure Portal でのユーザーのパスワードのリセット](active-directory-users-reset-password-azure-portal.md)
 * [ユーザーの勤務先情報の変更](active-directory-users-work-info-azure-portal.md)

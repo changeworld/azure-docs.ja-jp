@@ -74,6 +74,7 @@
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
 
 # リファレンス
+## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 用語集
 ### [アプリケーションの種類](active-directory-b2c-apps.md)
 ### [認証プロトコル](active-directory-b2c-reference-protocols.md)
@@ -92,6 +93,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [よく寄せられる質問](active-directory-b2c-faqs.md)
 ## [料金](https://azure.microsoft.com/pricing/details/active-directory-b2c/)
+## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=active-directory-b2c)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-ad-b2c)
 ## [サポート](active-directory-b2c-support.md)

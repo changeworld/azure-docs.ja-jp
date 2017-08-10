@@ -12,22 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 07/15/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 21fba224d4d2600e04c9aa6dcfe47e71d2248a0e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 128e70e4abc68ed8c9589dd08a9aec3a52fa49be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)
-この記事では、Azure Portal を使用して、Azure Active Directory (Azure AD) ディレクトリの Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
-
-> [!div class="op_single_selector"]
-> * [プレビュー - Azure Portal を使って Azure AD Domain Services を有効にする](active-directory-ds-getting-started.md)
-> * [Azure クラシック ポータルを使って Azure AD Domain Services を有効にする](active-directory-ds-getting-started-create-group.md)
+この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
 
 
 **[Azure AD Domain Services の有効化]** ウィザードを起動するには、次の手順を実行します。
@@ -52,9 +47,7 @@ ms.lasthandoff: 06/30/2017
 
 1. 管理対象ドメインの **DNS ドメイン名**を選択します。
 
-   * ディレクトリの既定のドメイン名 (**.onmicrosoft.com** のサフィックスがあるもの) が既定で選択されます。
-
-   * 一覧には、Azure AD ディレクトリに対して構成されたすべてのドメインが含まれます。つまり、**[ドメイン]** タブで構成するドメインのうち、確認済みのドメインと未確認のドメインが、両方ともこの一覧に含まれます。
+   * ディレクトリの既定のドメイン名 (**.onmicrosoft.com** のサフィックスがあるもの) が既定で指定されます。
 
    * カスタム ドメイン名を入力することもできます。 この例でのカスタム ドメイン名は、*contoso100.com* です。
 

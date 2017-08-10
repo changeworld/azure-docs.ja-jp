@@ -1,5 +1,5 @@
 ---
-title: "Azure  IoT Hub ファイルのアップロードについて | Microsoft Docs"
+title: "Azure IoT Hub ファイルのアップロードについて | Microsoft Docs"
 description: "開発者ガイド - IoT Hub のファイルのアップロード機能を使用して、デバイスから Azure Storage Blob コンテナーへのファイルのアップロードを管理します。"
 services: iot-hub
 documentationcenter: .net
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 3acefebb9d1007a0c035fa561191ca43a3f66896
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f09813af5f758b49e819f36664ffe22ca22b16ec
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="file-uploads-with-iot-hub"></a>IoT Hub を使用したファイルのアップロード
@@ -62,7 +61,7 @@ IoT Hub は次のデータを返します。デバイスはこのデータを使
 ```json
 {
     "correlationId": "somecorrelationid",
-    "hostname": "contoso.azure-devices.net",
+    "hostName": "contoso.azure-devices.net",
     "containerName": "testcontainer",
     "blobName": "test-device1/image.jpg",
     "sasToken": "1234asdfSAStoken"

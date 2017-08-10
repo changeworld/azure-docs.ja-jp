@@ -14,28 +14,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/20/2017
-ms.author: genemi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 069656b495929d66f6a47b38141f56b6bf0ac92f
+ms.date: 07/31/2017
+ms.author: genemi;carlrab
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: d9731cf5399cce6f103129ccda521f2867bd8da6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="design-an-azure-sql-database-and-connect-with-cx23-and-adonet"></a>C&#x23; と ADO.NET で Azure SQL データベースを設計し、接続する
 
-Azure SQL Database は、Microsoft Cloud ("Azure") のサービスとしてのリレーショナル データベース (DBaaS) です。 このチュートリアルでは、Azure Portal と ADO.NET を使用して次のことを行う方法を説明します。 
+Azure SQL Database は、Microsoft Cloud ("Azure") のサービスとしてのリレーショナル データベース (DBaaS) です。 このチュートリアルでは、Azure Portal、ADO.NET、および Visual Studio を使用して以下の手順を実行する方法を説明します。 
 
 > [!div class="checklist"]
 > * Azure Portal でデータベースを作成する
 > * Azure Portal でサーバーレベルのファイアウォール規則を設定する
-> * ADO.NET を使用してデータベースに接続する
+> * ADO.NET と Visual Studio を使用してデータベースに接続する
 > * ADO.NET を使用してテーブルを作成する
-> * ADO.NET を使用してデータを挿入する 
+> * ADO.NET を使用してデータを挿入、更新、削除する 
 > * ADO.NET を使用してデータのクエリを実行する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウントを作成](https://azure.microsoft.com/free/)してください。
+
+## <a name="prerequisites"></a>前提条件
+
+[Visual Studio Community 2017、Visual Studio Professional 2017、Visual Studio Enterprise 2017 のいずれか](https://www.visualstudio.com/downloads/)のインストール。
 
 <!-- The following included .md, sql-database-tutorial-portal-create-firewall-connection-1.md, is long.
 And it starts with a ## H2.
@@ -53,8 +57,18 @@ And it starts with a ## H2.
 
 ## <a name="next-steps"></a>次のステップ
 
-次のステップを使用できます。
+このチュートリアルでは、データベースとテーブルの作成、データの読み込みとクエリ実行、以前の特定の時点へのデータベースの復元などの基本的なデータベース タスクについて学習しました。 以下の方法について学習しました。
+> [!div class="checklist"]
+> * データベースの作成
+> * ファイアウォール規則の設定
+> * [Visual Studio と C#](sql-database-connect-query-dotnet-visual-studio.md) を使用して SQL Database に接続する
+> * テーブルの作成
+> * データを挿入、更新、削除する
+> * データのクエリを実行する
 
-- [SQL クエリに関して C# プログラムの LINQ を使用する](https://msdn.microsoft.com/library/bb425822.aspx)
-- [SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
+次のチュートリアルに進み、データの移行について確認してください。
+
+> [!div class="nextstepaction"]
+>[SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
+
 

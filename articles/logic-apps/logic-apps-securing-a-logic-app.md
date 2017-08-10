@@ -23,9 +23,7 @@ ms.lasthandoff: 05/04/2017
 
 ---
 
-<a id="secure-access-to-your-logic-apps" class="xliff"></a>
-
-# ロジック アプリへのアクセスのセキュリティ保護
+# <a name="secure-access-to-your-logic-apps"></a>ロジック アプリへのアクセスのセキュリティ保護
 
 ロジック アプリのセキュリティ保護に役立つさまざまなツールを利用できます。
 
@@ -35,21 +33,15 @@ ms.lasthandoff: 05/04/2017
 * ワークフローのアクション内のパラメーターまたは入力のセキュリティ保護
 * ワークフローからの要求を受信するサービスに対するアクセスのセキュリティ保護
 
-<a id="secure-access-to-trigger" class="xliff"></a>
-
-## トリガーへのアクセスのセキュリティ保護
+## <a name="secure-access-to-trigger"></a>トリガーへのアクセスのセキュリティ保護
 
 HTTP 要求 ([要求](../connectors/connectors-native-reqres.md)または [Webhook](../connectors/connectors-native-webhook.md)) で起動するロジック アプリを使用する場合は、承認されたクライアントのみがロジック アプリを起動できるようにアクセスを制限できます。 ロジック アプリへのすべての要求は、SSL により暗号化され保護されます。
 
-<a id="shared-access-signature" class="xliff"></a>
-
-### Shared Access Signature
+### <a name="shared-access-signature"></a>Shared Access Signature
 
 ロジック アプリのすべての要求エンドポイントには、URL の一部として [Shared Access Signature (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md) が含まれます。 各 URL には、`sp`、`sv`、および `sig` クエリ パラメーターが含まれます。 アクセス許可の指定は `sp` によって行い、許可される HTTP メソッドに相当します。`sv` は生成に使用されるバージョンであり、`sig` はトリガーへのアクセスの認証に使用されます。 署名は、SHA256 アルゴリズムと秘密鍵を使用してすべての URL パスとプロパティで生成されます。 この秘密鍵が公開されることはなく、ロジック アプリの一部として暗号化されて格納されます。 ロジック アプリでは、秘密鍵を使って作成された有効な署名を含むトリガーのみが認証されます。
 
-<a id="regenerate-access-keys" class="xliff"></a>
-
-#### アクセス キーを再生成する
+#### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
 
 セキュリティ キーは、REST API または Azure Portal を通じていつでも再生成できます。 以前に古いキーを使って生成された現在の URL はすべて無効になり、ロジック アプリの起動が承認されなくなります。
 
@@ -59,9 +51,7 @@ HTTP 要求 ([要求](../connectors/connectors-native-reqres.md)または [Webho
 
 再生成後に取得した URL は、新しいアクセス キーで署名されます。
 
-<a id="creating-callback-urls-with-an-expiration-date" class="xliff"></a>
-
-#### 有効期限付きのコールバック URL を作成する
+#### <a name="creating-callback-urls-with-an-expiration-date"></a>有効期限付きのコールバック URL を作成する
 
 URL を他の関係者と共有している場合は、必要に応じて、キーと有効期限を指定して URL を生成できます。 その後、シームレスにキーを切り替えたり、アプリを起動するアクセスを一定期間に制限したりすることができます。 URL の有効期限は、[ロジック アプリの REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) で指定できます。
 
@@ -72,9 +62,7 @@ POST
 
 本文には、`NotAfter` プロパティを JSON 日付文字列として含めます。これにより、`NotAfter` の日時までに限り有効なコールバック URL が返されます。
 
-<a id="creating-urls-with-primary-or-secondary-secret-key" class="xliff"></a>
-
-#### プライマリまたはセカンダリの秘密鍵を使用して URL を作成する
+#### <a name="creating-urls-with-primary-or-secondary-secret-key"></a>プライマリまたはセカンダリの秘密鍵を使用して URL を作成する
 
 要求ベースのトリガーに対するコールバック URL を生成または一覧表示する場合、URL の署名に使用するキーを指定することもできます。  特定のキーで署名した URL を生成するには、次のように[ロジック アプリの REST API](https://docs.microsoft.com/rest/api/logic/workflowtriggers) を使用します。
 
@@ -85,9 +73,7 @@ POST
 
 本文では、`KeyType` プロパティに `Primary` または `Secondary` を指定します。  これにより、指定したセキュリティ キーによって署名された URL が返されます。
 
-<a id="restrict-incoming-ip-addresses" class="xliff"></a>
-
-### 受信 IP アドレスの制限
+### <a name="restrict-incoming-ip-addresses"></a>受信 IP アドレスの制限
 
 Shared Access Signature に加えて、ロジック アプリの呼び出しを特定のクライアントからのみに制限することもできます。  たとえば、Azure API Management でエンドポイントを管理すると、API Management インスタンスの IP アドレスから要求を受信した場合にのみ、ロジック アプリが要求を受け入れるように制限できます。
 
@@ -102,9 +88,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 > [!NOTE]
 > 要求トリガーのあるロジック アプリは、IP に関係なく引き続き REST API と Management の `/triggers/{triggerName}/run` で実行できます。 このシナリオでは Azure REST API に対する認証が必要であり、すべてのイベントが Azure の監査ログに表示されます。 アクセス制御ポリシーを適切に設定してください。
 
-<a id="setting-ip-ranges-on-the-resource-definition" class="xliff"></a>
-
-#### リソース定義で IP 範囲を設定する
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>リソース定義で IP 範囲を設定する
 
 [デプロイ テンプレート](logic-apps-create-deploy-template.md)を使ってデプロイを自動化する場合、リソース テンプレートで IP 範囲を設定できます。  
 
@@ -132,15 +116,11 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 
 ```
 
-<a id="adding-azure-active-directory-oauth-or-other-security" class="xliff"></a>
-
-### Azure Active Directory、OAuth、またはその他のセキュリティの追加
+### <a name="adding-azure-active-directory-oauth-or-other-security"></a>Azure Active Directory、OAuth、またはその他のセキュリティの追加
 
 ロジック アプリに認証プロトコルを追加できるように、[Azure API Management](https://azure.microsoft.com/services/api-management/) は、ロジック アプリを API として公開する機能に加えてあらゆるエンドポイント向けの監視、セキュリティ、ポリシー、およびドキュメントを備えています。 Azure API Management ではロジック アプリに対して、Azure Active Directory、証明書、OAuth などのセキュリティ標準を利用可能なパブリックまたはプライベート エンドポイントを公開できます。 要求を受信すると、Azure API Management が要求をロジック アプリに転送し、必要な変換や制限が転送中に行われます。 ロジック アプリの受信 IP 範囲の設定を使用して、ロジック アプリが API Management からのみトリガーされるようにすることができます。
 
-<a id="secure-access-to-manage-or-edit-logic-apps" class="xliff"></a>
-
-## ロジック アプリを管理または編集するアクセスのセキュリティ保護
+## <a name="secure-access-to-manage-or-edit-logic-apps"></a>ロジック アプリを管理または編集するアクセスのセキュリティ保護
 
 ロジック アプリの管理操作へのアクセスを制限して、リソースに対する操作を特定のユーザーまたはグループのみが実行できるようにすることが可能です。 ロジック アプリでは Azure の[役割ベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) 機能が使用されており、同じツールでカスタマイズできます。  また、サブスクリプションのメンバーに割り当てることのできる組み込みの役割もいくつかあります。
 
@@ -149,9 +129,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 
 [Azure のリソース ロック](../azure-resource-manager/resource-group-lock-resources.md)を使用して、ロジック アプリの変更や削除を防止することもできます。 この機能は、運用リソースが変更されたり削除されることを防ぐために役立ちます。
 
-<a id="secure-access-to-contents-of-the-run-history" class="xliff"></a>
-
-## 実行履歴の内容へのアクセスのセキュリティ保護
+## <a name="secure-access-to-contents-of-the-run-history"></a>実行履歴の内容へのアクセスのセキュリティ保護
 
 過去の実行の入力または出力の内容に対するアクセスを、特定の IP アドレス範囲に制限できます。  
 
@@ -163,9 +141,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 1. **[設定]** の **[Access control configuration] \(アクセス制御の構成)** メニュー項目をクリックします。
 1. 内容にアクセスする IP アドレス範囲の一覧を指定します。
 
-<a id="setting-ip-ranges-on-the-resource-definition" class="xliff"></a>
-
-#### リソース定義で IP 範囲を設定する
+#### <a name="setting-ip-ranges-on-the-resource-definition"></a>リソース定義で IP 範囲を設定する
 
 [デプロイ テンプレート](logic-apps-create-deploy-template.md)を使ってデプロイを自動化する場合、リソース テンプレートで IP 範囲を設定できます。  
 
@@ -192,15 +168,11 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 }
 ```
 
-<a id="secure-parameters-and-inputs-within-a-workflow" class="xliff"></a>
-
-## ワークフロー内のパラメーターと入力のセキュリティ保護
+## <a name="secure-parameters-and-inputs-within-a-workflow"></a>ワークフロー内のパラメーターと入力のセキュリティ保護
 
 複数環境でデプロイを行う場合、ワークフロー定義にはパラメーター化をした方がよい点がいくつかあります。 また、これらのパラメーターの中には、HTTP アクションの [Azure Active Directory 認証](../connectors/connectors-native-http.md#authentication)で使用されるクライアント ID やクライアント シークレットなど、ワークフローの編集時に表示しない方がよいセキュリティ保護されたパラメーターもあります。
 
-<a id="using-parameters-and-secure-parameters" class="xliff"></a>
-
-### パラメーターとセキュリティ保護されたパラメータの使用
+### <a name="using-parameters-and-secure-parameters"></a>パラメーターとセキュリティ保護されたパラメータの使用
 
 実行時にリソース パラメーターの値にアクセスするために、[ワークフロー定義言語](http://aka.ms/logicappsdocs)では `@parameters()` 操作を使用できます。 また、[リソース デプロイ テンプレートでパラメーターを指定](../azure-resource-manager/resource-group-authoring-templates.md#parameters)することもできます。 ただし、パラメーターの型を `securestring` に指定すると、パラメーターはリソース定義の残りの部分と一緒には返されなくなり、デプロイ後にリソースを表示してアクセスすることもできなくなります。
 
@@ -208,9 +180,7 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 > パラメーターを要求のヘッダーまたは本文で使用している場合、実行履歴と発信 HTTP 要求にアクセスすることでパラメーターが表示される場合があります。 コンテンツ アクセス ポリシーを適切に設定してください。
 > Authorization ヘッダーは入力や出力では表示されません。 このため、このヘッダーでシークレットを使用する場合、シークレットを取得することはできません。
 
-<a id="resource-deployment-template-with-secrets" class="xliff"></a>
-
-#### シークレットを含むリソース デプロイ テンプレート
+#### <a name="resource-deployment-template-with-secrets"></a>シークレットを含むリソース デプロイ テンプレート
 
 実行時に `secret` のセキュリティ保護されたパラメーターを参照するデプロイの例を次に示します。 別のパラメーター ファイルで `secret` の環境値を指定するか、または [Azure Resource Manager KeyVault](../azure-resource-manager/resource-manager-keyvault-parameter.md) を使用してデプロイ時にシークレットを取得することもできます。
 
@@ -277,51 +247,35 @@ Shared Access Signature に加えて、ロジック アプリの呼び出しを�
 }
 ```
 
-<a id="secure-access-to-services-receiving-requests-from-a-workflow" class="xliff"></a>
-
-## ワークフローからの要求を受信するサービスに対するアクセスのセキュリティ保護
+## <a name="secure-access-to-services-receiving-requests-from-a-workflow"></a>ワークフローからの要求を受信するサービスに対するアクセスのセキュリティ保護
 
 ロジック アプリでアクセスする必要があるエンドポイントのセキュリティ保護に役立つさまざまな方法があります。
 
-<a id="using-authentication-on-outbound-requests" class="xliff"></a>
-
-### 送信要求に対する認証を使用する
+### <a name="using-authentication-on-outbound-requests"></a>送信要求に対する認証を使用する
 
 HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用する場合は、送信される要求に認証を追加することができます。 追加できる認証には、基本認証、証明書認証、Azure Active Directory 認証があります。 この認証の構成方法の詳細については、[こちらの記事](../connectors/connectors-native-http.md#authentication)を参照してください。
 
-<a id="restricting-access-to-logic-app-ip-addresses" class="xliff"></a>
-
-### ロジック アプリの IP アドレスへのアクセスを制限する
+### <a name="restricting-access-to-logic-app-ip-addresses"></a>ロジック アプリの IP アドレスへのアクセスを制限する
 
 ロジック アプリからのすべての呼び出しは、リージョンごとの特定の IP アドレス セットから送信されます。 これらの専用 IP アドレスからの要求のみを受け入れるように、フィルターを追加できます。 これらの IP アドレスの一覧については、「[ロジック アプリの制限と構成](logic-apps-limits-and-config.md#configuration)」を参照してください。
 
-<a id="on-premises-connectivity" class="xliff"></a>
-
-### オンプレミスの接続
+### <a name="on-premises-connectivity"></a>オンプレミスの接続
 
 ロジック アプリは、セキュリティで保護され信頼性の高いオンプレミス通信を実現する、いくつかのサービスとの統合機能を備えています。
 
-<a id="on-premises-data-gateway" class="xliff"></a>
-
-#### オンプレミスのデータ ゲートウェイ
+#### <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
 
 ロジック アプリの多くの管理対象コネクタは、オンプレミス システム (File System、SQL、SharePoint、DB2 など) にセキュリティで保護された接続を備えています。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ、エージェントからの安全な送信トラフィックとして生成されます。 詳細については、「[ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
-<a id="azure-api-management" class="xliff"></a>
-
-#### Azure API Management
+#### <a name="azure-api-management"></a>Azure API Management
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間 VPN と ExpressRoute の統合など、オンプレミス接続オプションがあります。 ロジック アプリ デザイナーでは、Azure API Management から公開された API をワークフロー内ですばやく選択して、オンプレミス システムへ迅速にアクセスすることができます。
 
-<a id="hybrid-connections-from-azure-app-service" class="xliff"></a>
-
-#### Azure App Services からのハイブリッド接続
+#### <a name="hybrid-connections-from-azure-app-service"></a>Azure App Services からのハイブリッド接続
 
 Azure API と Web アプリでは、オンプレミスとの通信にハイブリッド接続機能を使用できます。  ハイブリッド接続と構成方法の詳細については、[こちらの記事](../app-service-web/web-sites-hybrid-connection-get-started.md)を参照してください。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 [デプロイ テンプレートを作成する](logic-apps-create-deploy-template.md)  
 [例外処理](logic-apps-exception-handling.md)  
 [ロジック アプリを監視する](logic-apps-monitor-your-logic-apps.md)  

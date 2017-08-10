@@ -1,8 +1,7 @@
 <!--author=alkohli last changed: 01/20/17-->
 
 
-#### StorSimple デバイス マネージャー サービスと同じ Azure サブスクリプションにストレージ アカウントの資格情報を追加するには、次の手順を実行します。
-<a id="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service" class="xliff"></a>
+#### <a name="to-add-a-storage-account-credential-in-the-same-azure-subscription-as-the-storsimple-device-manager-service"></a>StorSimple デバイス マネージャー サービスと同じ Azure サブスクリプションにストレージ アカウントの資格情報を追加するには、次の手順を実行します。
 
 1. StorSimple デバイス マネージャー サービスに移動します。 **[構成]** セクションで **[ストレージ アカウントの資格情報]** をクリックします。
 

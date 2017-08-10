@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 08/31/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 1895094b28d9596eec644078b6f9a877b526b89e
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: f9a8984400378d154a504af8a41609900128d052
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-ad-fs-authentication"></a>AD FS 認証を使用した基幹業務 Azure アプリの作成
@@ -105,7 +104,7 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
    &lt;add key="ClientValidationEnabled" value="true" /&gt;
    &lt;add key="UnobtrusiveJavaScriptEnabled" value="true" /&gt;
    <mark><del>&lt;add key="ida:Wtrealm" value="[Enter the App ID URI of WebApp-WSFederation-DotNet https://contoso.onmicrosoft.com/WebApp-WSFederation-DotNet]" /&gt;</del></mark>
-   <mark><del>&lt;add key="ida:AADInstance" value="https://login.windows.net" /&gt;</del></mark>
+   <mark><del>&lt;add key="ida:AADInstance" value="https://login.microsoftonline.com" /&gt;</del></mark>
    <mark><del>&lt;add key="ida:Tenant" value="[Enter tenant name, e.g. contoso.onmicrosoft.com]" /&gt;</del></mark>
    <mark>&lt;add key="ida:RPIdentifier" value="[Enter the relying party identifier as configured in AD FS, e.g. https://localhost:44320/]" /&gt;</mark>
    <mark>&lt;add key="ida:ADFS" value="[Enter the FQDN of AD FS service, e.g. adfs.contoso.com]" /&gt;</mark>
@@ -132,7 +131,7 @@ Azure App Service Web アプリで次の機能を持つ基本的な ASP.NET ア�
 5. すべての必須フィールドに必要事項を入力します。 後でオンプレミス データに接続するため、この Web アプリ用のデータベースは作成しません。
    
     ![](./media/web-sites-dotnet-lob-application-adfs/02-create-website.png)
-6. **[作成]**をクリックします。 Web アプリが作成されると、[Web の発行] ダイアログが開きます。
+6. ページの下部にある **[Create]**」を参照してください。 Web アプリが作成されると、[Web の発行] ダイアログが開きます。
 7. **[宛先 URL]** で、**http** を **https** に変更します。 後で使用するために URL 全体をテキスト エディターにコピーします。 **[発行]**をクリックします。
    
     ![](./media/web-sites-dotnet-lob-application-adfs/03-destination-url.png)
@@ -180,7 +179,7 @@ AD FS を使用してサンプル アプリケーションの認証を実際に�
    ![](./media/web-sites-dotnet-lob-application-adfs/4-configure-url.png)
    
    > [!NOTE]
-   > この URL は、認証が成功した後にクライアントを転送する宛先を指定します。 デバッグ環境では、 <code>https://localhost:&lt;port&gt;/</code>にする必要があります。 発行した Web アプリに対しては、Web アプリの URL を指定します。
+   > この URL は、認証が成功した後にクライアントを転送する宛先を指定します。 デバッグ環境では、<code>https://localhost:&lt;port&gt;/</code> にする必要があります。 発行した Web アプリに対しては、Web アプリの URL を指定します。
    > 
    > 
 9. **[識別子の構成]** ページで、プロジェクトの SSL URL が表示されていることを確認し、**[次へ]** をクリックします。 ウィザードの最後まで **[次へ]** をクリックして、既定値を受け入れます。

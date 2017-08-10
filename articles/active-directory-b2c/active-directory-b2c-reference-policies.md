@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2017
 ms.author: sama
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: e6943eb619963dd56b1c3909a57ae7d6cefd0ddc
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 2b92d8343918075f1469c5b8cc0b042e5f418382
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-b2c-built-in-policies"></a>Azure Active Directory B2C: 組み込みのポリシー
@@ -202,7 +201,7 @@ client_id=2d4d11a2-f814-46a7-890a-274a72a7309e      // Your registered Applicati
 
 5. **[ID プロバイダー]** を選択してから、**[Reset password using email address] (電子メール アドレスを使用してパスワードをリセットする)** を選択します。 **[OK]**をクリックします。
 
-6. **[アプリケーション クレーム]** を選択します。 ここで、正常なパスワード リセット エクスペリエンスの後にアプリケーションに送り返されるトークンで返してほしい要求を選択します。 たとえば、**[User's Object ID] (ユーザーのオブジェクト ID)** を選択します。
+6. **[アプリケーション クレーム]** を選択します。 ここで、正常なパスワード リセット エクスペリエンスの後にアプリケーションに送り返されるトークンで返してほしい要求を選択します。 たとえば、**[表示名]** と **[User's Object ID] (ユーザーのオブジェクト ID)** を選択します。
 
 7. **[作成]**を選択します。 作成されたポリシーが **[Password reset policies (パスワード リセット ポリシー)]** ブレードに **B2C_1_SSPR** として表示されることに注意してください (**B2C\_1\_** フラグメントは自動的に追加されます)。
 

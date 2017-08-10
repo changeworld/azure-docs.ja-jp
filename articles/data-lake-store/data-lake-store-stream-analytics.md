@@ -22,8 +22,7 @@ ms.lasthandoff: 01/06/2017
 
 
 ---
-<a id="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics" class="xliff"></a>
-# Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
+# <a name="stream-data-from-azure-storage-blob-into-data-lake-store-using-azure-stream-analytics"></a>Azure Stream Analytics を使用した Azure Storage BLOB から Data Lake Store へのデータ ストリーム
 この記事では、Azure Data Lake Store を Azure Stream Analytics ジョブの出力として使用する方法について説明します。 ここでは、Azure Storage BLOB (入力) からデータを読み取り、そのデータを Data Lake Store (出力) に書き込む簡単なシナリオを紹介します。
 
 > [!NOTE]
@@ -31,8 +30,7 @@ ms.lasthandoff: 01/06/2017
 >
 >
 
-<a id="prerequisites" class="xliff"></a>
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
@@ -41,8 +39,7 @@ ms.lasthandoff: 01/06/2017
   
 * **Azure Data Lake Store アカウント**。 「 [Azure ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」の手順に従ってください。 **asadatalakestore** という名前の Data Lake Store アカウントを持っているとします。 
 
-<a id="create-a-stream-analytics-job" class="xliff"></a>
-## Stream Analytics のジョブの作成
+## <a name="create-a-stream-analytics-job"></a>Stream Analytics のジョブの作成
 まず、入力ソースと出力先を含む Stream Analytics ジョブを作成します。 このチュートリアルでは、ソースは Azure BLOB コンテナー、出力先は Data Lake Store です。
 
 1. [Azure ポータル](https://portal.azure.com)にサインオンします。
@@ -55,8 +52,7 @@ ms.lasthandoff: 01/06/2017
     > ストレージ アカウントと同じリージョンにジョブを作成していることを確認してください。そうでない場合、リージョン間でのデータ転送で追加料金が発生します。
     >
 
-<a id="create-a-blob-input-for-the-job" class="xliff"></a>
-## ジョブに BLOB 入力を作成
+## <a name="create-a-blob-input-for-the-job"></a>ジョブに BLOB 入力を作成
 
 1. Stream Analytics ジョブのページを開き、左側のウィンドウで **[入力]** タブをクリックし、**[追加]** をクリックします。
 
@@ -79,8 +75,7 @@ ms.lasthandoff: 01/06/2017
     **[作成]**をクリックします。 これで、ポータルは、この入力を追加して接続をテストします。
 
 
-<a id="create-a-data-lake-store-output-for-the-job" class="xliff"></a>
-## ジョブに Data Lake Store 出力を作成
+## <a name="create-a-data-lake-store-output-for-the-job"></a>ジョブに Data Lake Store 出力を作成
 
 1. Stream Analytics ジョブのページを開き、**[出力]** タブをクリックし、**[追加]** をクリックします。
 
@@ -108,8 +103,7 @@ ms.lasthandoff: 01/06/2017
     
     **[作成]**をクリックします。 これで、ポータルは、この出力を追加して接続をテストします。
     
-<a id="run-the-stream-analytics-job" class="xliff"></a>
-## Stream Analytics ジョブの実行
+## <a name="run-the-stream-analytics-job"></a>Stream Analytics ジョブの実行
 
 1. Stream Analytics ジョブを実行するには、**[クエリ]** タブからクエリを実行する必要があります。 このチュートリアルでは、次の画面キャプチャに示すように、プレースホルダーをジョブの入力および出力エイリアスで置き換えて、サンプル クエリを実行することができます。
 
@@ -133,7 +127,6 @@ ms.lasthandoff: 01/06/2017
 
     [データ エクスプローラー] ウィンドウで、Data Lake Store 出力設定 (`streamanalytics/job/output/{date}/{time}`) で指定したフォルダー パスに出力が書き込まれていることがわかります。  
 
-<a id="see-also" class="xliff"></a>
-## 関連項目
+## <a name="see-also"></a>関連項目
 * [Azure ポータルを使用して、Data Lake Store を使用する HDInsight クラスターを作成する](data-lake-store-hdinsight-hadoop-use-portal.md)
 

@@ -13,14 +13,14 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 07/17/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: 170a3e98c6164c52561c4fc068aa02a731bf4a07
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: ad96b5dcb3bce98abc7ab776880dfec4f4a91620
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-python-user-defined-functions-udf-with-hive-and-pig-in-hdinsight"></a>HDInsight における Hive および Pig での Python ユーザー定義関数 (UDF) の使用
@@ -33,17 +33,29 @@ Python2.7 は HDInsight 3.0 以降に既定でインストールされます。 
 
 HDInsight には、Java で記述された Python 実装である Jython も付属しています。 Jython は、Java 仮想マシン上で直接実行し、ストリームを使いません。 Jython は、Pig で Python を使うときに推奨される Python インタープリターです。
 
-## <a name="hivepython"></a>Hive と Python
+> [!WARNING]
+> このドキュメントの手順では、次のことが前提条件となっています。 
+>
+> * ローカル開発環境に Python スクリプトを作成します。
+> * ローカル Bash セッションの `scp` コマンドまたは提供された PowerShell スクリプトを使って、HDInsight にスクリプトをアップロードします。
+>
+> [Azure Cloud Shell (bash)](https://docs.microsoft.com/azure/cloud-shell/overview) プレビューを使って HDInsight を処理する場合は、以下のことが必要です。
+>
+> * クラウド シェル環境内でスクリプトを作成します。
+> * `scp` を使って、クラウド シェルから HDInsight にファイルをアップロードします。
+> * クラウド シェルから `ssh` を使って HDInsight に接続し、例を実行します。
 
-Python は、HiveQL の `TRANSFORM` ステートメントを通じて Hive から UDF として使うことができます。 たとえば、次の HiveQL は `streaming.py` ファイルに格納されている Python スクリプトを呼び出します。
+## <a name="hivepython"></a>Hive UDF
+
+Python は、HiveQL の `TRANSFORM` ステートメントを通じて Hive から UDF として使うことができます。 たとえば、次の HiveQL は、クラスターの既定の Azure Storage アカウントに格納されている `hiveudf.py` ファイルを呼び出します。
 
 **Linux ベースの HDInsight**
 
 ```hiveql
-add file wasbs:///streaming.py;
+add file wasb:///hiveudf.py;
 
 SELECT TRANSFORM (clientid, devicemake, devicemodel)
-    USING 'python streaming.py' AS
+    USING 'python hiveudf.py' AS
     (clientid string, phoneLable string, phoneHash string)
 FROM hivesampletable
 ORDER BY clientid LIMIT 50;
@@ -52,10 +64,10 @@ ORDER BY clientid LIMIT 50;
 **Windows ベースの HDInsight**
 
 ```hiveql
-add file wasbs:///streaming.py;
+add file wasb:///hiveudf.py;
 
 SELECT TRANSFORM (clientid, devicemake, devicemodel)
-    USING 'D:\Python27\python.exe streaming.py' AS
+    USING 'D:\Python27\python.exe hiveudf.py' AS
     (clientid string, phoneLable string, phoneHash string)
 FROM hivesampletable
 ORDER BY clientid LIMIT 50;
@@ -66,13 +78,16 @@ ORDER BY clientid LIMIT 50;
 
 この例では以下のように処理されます。
 
-1. ファイルの先頭の `add file` ステートメントで `streaming.py` ファイルが分散キャッシュに追加されるので、クラスター内のすべてのノードからアクセスできます。
-2. `SELECT TRANSFORM ... USING` ステートメントは、`hivesampletable` からデータを選択します。 また、clientid、devicemake、devicemodel の各値を `streaming.py` スクリプトに渡します。
-3. `AS` 句では、`streaming.py` から返されるフィールドを記述します。
+1. ファイルの先頭の `add file` ステートメントで `hiveudf.py` ファイルが分散キャッシュに追加されるので、クラスター内のすべてのノードからアクセスできます。
+2. `SELECT TRANSFORM ... USING` ステートメントは、`hivesampletable` からデータを選択します。 また、clientid、devicemake、devicemodel の各値を `hiveudf.py` スクリプトに渡します。
+3. `AS` 句では、`hiveudf.py` から返されるフィールドを記述します。
 
 <a name="streamingpy"></a>
 
-次に、HiveQL の例で使われる `streaming.py` ファイルを示します。
+### <a name="create-the-hiveudfpy-file"></a>hiveudf.py ファイルを作成する
+
+
+開発環境で、`hiveudf.py` という名前のテキスト ファイルを作成します。 このファイルの内容として、以下のコードを使用します。
 
 ```python
 #!/usr/bin/env python
@@ -103,16 +118,17 @@ while True:
 
 HDInsight クラスターでこの例を実行する方法については「[例を実行する](#running)」を参照してください。
 
-## <a name="pigpython"></a>Pig と Python
+## <a name="pigpython"></a>Pig UDF
 
 `GENERATE` ステートメントを使って、Pig から Python スクリプトを UDF として使うことができます。 スクリプトは Jython または C Python を使用して実行できます。
 
-違いは、Jython は JVM 上で実行され、Pig からネイティブに呼び出すことができるのに対し、 C Python は外部プロセスです。そのため、JVM 上の Pig からのデータが、Python のプロセスで実行されているスクリプトに送信されます。 Python スクリプトの出力が Pig に返送されます。
+* Jython は JVM 上で実行され、Pig からネイティブに呼び出すことができるのに対し、
+* C Python は外部プロセスです。そのため、JVM 上の Pig からのデータが、Python のプロセスで実行されているスクリプトに送信されます。 Python スクリプトの出力が Pig に返送されます。
 
 Python インタープリターを指定するには、Python スクリプトを参照するときに `register` を使います。 次の例では、スクリプトを `myfuncs` として Pig に登録します。
 
-* **Jython を使用するには**: `register '/path/to/pig_python.py' using jython as myfuncs;`
-* **C Python を使用するには**: `register '/path/to/pig_python.py' using streaming_python as myfuncs;`
+* **Jython を使用するには**: `register '/path/to/pigudf.py' using jython as myfuncs;`
+* **C Python を使用するには**: `register '/path/to/pigudf.py' using streaming_python as myfuncs;`
 
 > [!IMPORTANT]
 > Jython を使用する場合、pig_jython ファイルへのパスには、ローカル パスまたは WASB:// パスが指定できます。 ただし、C Python を使用する場合は、Pig ジョブの送信に使用しているノードのローカル ファイル システム上のファイルを参照する必要があります。
@@ -120,7 +136,7 @@ Python インタープリターを指定するには、Python スクリプトを
 一度登録したこの例では、Pig Latin は両方について同じです:
 
 ```pig
-LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
+LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
 LOG = FILTER LOGS by LINE is not null;
 DETAILS = FOREACH LOG GENERATE myfuncs.create_structure(LINE);
 DUMP DETAILS;
@@ -133,7 +149,9 @@ DUMP DETAILS;
 3. 次に、`LOG` のレコードを反復処理し、`GENERATE` を使って、`myfuncs` として読み込まれた Python/Jython スクリプトに含まれる `create_structure` メソッドを呼び出します。 `LINE` を使って、現在のレコードを関数に渡します。
 4. 最後に、`DUMP` コマンドを使って出力が STDOUT にダンプされます。 このコマンドは、操作完了後に結果を表示します。
 
-C Python と Jython の Python スクリプト ファイルは似ています。 唯一の違いは、C Python では、`pig_util` からインポートする必要があることです。 次に示すのは `pig_python.py` スクリプトです。
+### <a name="create-the-pigudfpy-file"></a>pigudf.py ファイルを作成する
+
+開発環境で、`pigudf.py` という名前のテキスト ファイルを作成します。 このファイルの内容として、以下のコードを使用します。
 
 <a name="streamingpy"></a>
 
@@ -149,10 +167,7 @@ def create_structure(input):
     return date, time, classname, level, detail
 ```
 
-> [!NOTE]
-> "pig_util" は、インストールの必要はありません。スクリプトで自動的に使用可能です。
-
-入力の一貫したスキーマがないため、先ほどは、`LINE` 入力を chararray として定義しました。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
+Pig Latin の例では、入力の一貫したスキーマがないため、`LINE` 入力を chararray として定義しました。 この Python スクリプトでは、出力用に、データを一貫したスキーマに変換します。
 
 1. `@outputSchema` ステートメントは、Pig に返されるデータの形式を定義します。 この場合、Pig のデータ型である、 **data bag**になります。 この bag には以下のフィールドが含まれ、すべて chararray (文字列) です。
 
@@ -172,7 +187,7 @@ def create_structure(input):
 
 Pig に返された時点のデータは、`@outputSchema` ステートメントで定義されている一貫したスキーマになっています。
 
-## <a name="running"></a>例を実行する
+## <a name="running"></a>例をアップロードして実行する
 
 > [!IMPORTANT]
 > **SSH** の手順は、Linux ベースの HDInsight クラスターでのみ実行できます。 **PowerShell** の手順は、Linux または Windows どちらの HDInsight クラスターでも実行できますが、Windows クライアントが必要です。
@@ -181,39 +196,37 @@ Pig に返された時点のデータは、`@outputSchema` ステートメント
 
 SSH の使用方法の詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページをご覧ください。
 
-1. Python の例の [streaming.py](#streamingpy) と [pig_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
-
-2. `scp` を使用して HDInsight クラスターにファイルをコピーします。 たとえば、次のコマンドは **mycluster** という名前のクラスターにファイルをコピーします。
+1. `scp` を使用して HDInsight クラスターにファイルをコピーします。 たとえば、次のコマンドは **mycluster** という名前のクラスターにファイルをコピーします。
 
     ```bash
-    scp streaming.py pig_python.py myuser@mycluster-ssh.azurehdinsight.net:
+    scp hiveudf.py pigudf.py myuser@mycluster-ssh.azurehdinsight.net:
     ```
 
-3. SSH を使用してクラスターに接続します。
+2. SSH を使用してクラスターに接続します。
 
     ```bash
     ssh myuser@mycluster-ssh.azurehdinsight.net
     ```
 
-4. 以前アップロードした python のファイルを SSH セッションからクラスターの WASB ストレージに追加します。
+3. 以前アップロードした python のファイルを SSH セッションからクラスターの WASB ストレージに追加します。
 
     ```bash
-    hdfs dfs -put streaming.py /streaming.py
-    hdfs dfs -put pig_python.py /pig_python.py
+    hdfs dfs -put hiveudf.py /hiveudf.py
+    hdfs dfs -put pigudf.py /pigudf.py
     ```
 
 ファイルをアップロードした後、次の手順に従って、Hive ジョブと Pig ジョブを実行します。
 
-#### <a name="hive"></a>Hive
+#### <a name="use-the-hive-udf"></a>Hive UDF を使用する
 
 1. `hive` コマンドを使用して hive シェルを起動します。 シェルが読み込まれると、 `hive>` プロンプトが表示されます。
 
 2. `hive>` プロンプトで、次のクエリを入力します。
 
    ```hive
-   add file wasbs:///streaming.py;
+   add file wasb:///hiveudf.py;
    SELECT TRANSFORM (clientid, devicemake, devicemodel)
-       USING 'python streaming.py' AS
+       USING 'python hiveudf.py' AS
        (clientid string, phoneLabel string, phoneHash string)
    FROM hivesampletable
    ORDER BY clientid LIMIT 50;
@@ -227,15 +240,15 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
         100042    Apple iPhone 4.2.x    375ad9a0ddc4351536804f1d5d0ea9b9
 
-#### <a name="pig"></a>Pig
+#### <a name="use-the-pig-udf"></a>Pig UDF を使用する
 
 1. `pig` コマンドを使用してシェルを起動します。 シェルが読み込まれると、`grunt>` プロンプトが表示されます。
 
 2. `grunt>` プロンプトで、次のステートメントを入力します。
 
    ```pig
-   Register wasbs:///pig_python.py using jython as myfuncs;
-   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
+   Register wasb:///pigudf.py using jython as myfuncs;
+   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -249,10 +262,10 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
         ((2012-02-03,20:11:56,SampleClass3,[TRACE],verbose detail for id 1718828806))
         ((2012-02-03,20:11:56,SampleClass3,[INFO],everything normal for id 530537821))
 
-4. `quit` を使用して Grunt シェルを終了し、次のコマンドを使ってローカル ファイル システムで pig_python.py ファイルを編集します:
+4. `quit` を使って Grunt シェルを終了し、次のコマンドを使ってローカル ファイル システムで pigudf.py ファイルを編集します。
 
     ```bash
-    nano pig_python.py
+    nano pigudf.py
     ```
 
 5. エディターを使い、次の各行で、行の先頭から`#`文字を削除してコメント解除します:
@@ -266,8 +279,8 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
 6. `pig` コマンドを使用してシェルを再起動します。 `grunt>` プロンプトが出たら、次のステートメントを使って C Python インタープリターを使用する Python スクリプトを実行します。
 
    ```pig
-   Register 'pig_python.py' using streaming_python as myfuncs;
-   LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);
+   Register 'pigudf.py' using streaming_python as myfuncs;
+   LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);
    LOG = FILTER LOGS by LINE is not null;
    DETAILS = foreach LOG generate myfuncs.create_structure(LINE);
    DUMP DETAILS;
@@ -275,64 +288,67 @@ SSH の使用方法の詳細については、[HDInsight での SSH の使用](h
 
     このジョブが完了すると、以前に Jython を使用してスクリプトを実行したときと同じ出力が表示されます。
 
-### <a name="powershell"></a>PowerShell
+### <a name="powershell-upload-the-files"></a>PowerShell: ファイルをアップロードする
 
-次の手順では、Azure PowerShell を使用します。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
+PowerShell を使って、HDInsight サーバーにファイルをアップロードできます。 Python ファイルをアップロードするには、次のスクリプトを使います。
 
-1. Python の例の [streaming.py](#streamingpy) と [pig_python.py](#jythonpy) を使用して、開発用コンピューターにファイルのローカル コピーを作成します。
-2. 次の PowerShell スクリプトを使って、Python ファイルをサーバーにアップロードします。
+> [!IMPORTANT] 
+> このセクションの手順では、Azure PowerShell を使います。 Azure PowerShell の使用方法の詳細については、「[Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」をご覧ください。
 
-   ```powershell
-    # Log in to your Azure subscription
-    # Is there an active Azure subscription?
-    $sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
-    if(-not($sub))
-    {
-        Add-AzureRmAccount
-    }
+```powershell
+# Login to your Azure subscription
+# Is there an active Azure subscription?
+$sub = Get-AzureRmSubscription -ErrorAction SilentlyContinue
+if(-not($sub))
+{
+    Add-AzureRmAccount
+}
 
-    # Get cluster info
-    $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
-    # Change the path to match the file location on your system
-    $pathToStreamingFile = "C:\path\to\streaming.py"
-    $pathToJythonFile = "C:\path\to\pig_python.py"
+# Get cluster info
+$clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
+# Change the path to match the file location on your system
+$pathToStreamingFile = "C:\path\to\hiveudf.py"
+$pathToJythonFile = "C:\path\to\pigudf.py"
 
-    $clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
-    $resourceGroup = $clusterInfo.ResourceGroup
-    $storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
-    $container=$clusterInfo.DefaultStorageContainer
-    $storageAccountKey=(Get-AzureRmStorageAccountKey `
-        -Name $storageAccountName `
-    -ResourceGroupName $resourceGroup)[0].Value
+$clusterInfo = Get-AzureRmHDInsightCluster -ClusterName $clusterName
+$resourceGroup = $clusterInfo.ResourceGroup
+$storageAccountName=$clusterInfo.DefaultStorageAccount.split('.')[0]
+$container=$clusterInfo.DefaultStorageContainer
+$storageAccountKey=(Get-AzureRmStorageAccountKey `
+    -Name $storageAccountName `
+-ResourceGroupName $resourceGroup)[0].Value
 
-    #Create a storage content and upload the file
-    $context = New-AzureStorageContext `
-        -StorageAccountName $storageAccountName `
-        -StorageAccountKey $storageAccountKey
+#Create a storage content and upload the file
+$context = New-AzureStorageContext `
+    -StorageAccountName $storageAccountName `
+    -StorageAccountKey $storageAccountKey
 
-    Set-AzureStorageBlobContent `
-        -File $pathToStreamingFile `
-        -Blob "streaming.py" `
-        -Container $container `
-        -Context $context
+Set-AzureStorageBlobContent `
+    -File $pathToStreamingFile `
+    -Blob "hiveudf.py" `
+    -Container $container `
+    -Context $context
 
-    Set-AzureStorageBlobContent `
-        -File $pathToJythonFile `
-        -Blob "pig_python.py" `
-        -Container $container `
-        -Context $context
-   ```
+Set-AzureStorageBlobContent `
+    -File $pathToJythonFile `
+    -Blob "pigudf.py" `
+    -Container $container `
+    -Context $context
+```
+> [!IMPORTANT]
+> `C:\path\to` の値を、開発環境でのファイルへのパスに変更します。
 
-    このスクリプトは、HDInsight クラスターの情報を取得してから、既定のストレージ アカウント用にアカウントとキーを抽出します。その後、ファイルをコンテナーのルートにアップロードします。
+このスクリプトは、HDInsight クラスターの情報を取得してから、既定のストレージ アカウント用にアカウントとキーを抽出します。その後、ファイルをコンテナーのルートにアップロードします。
 
-   > [!NOTE]
-   > ファイルをアップロードする方法について詳しくは、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」ドキュメントをご覧ください。
+> [!NOTE]
+> ファイルをアップロードする方法について詳しくは、「[HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」ドキュメントをご覧ください。
 
-ファイルのアップロード後、次の PowerShell スクリプトを使用してジョブを開始します。 ジョブが完了すると、PowerShell コンソールに出力が書き込まれます。
+#### <a name="powershell-use-the-hive-udf"></a>PowerShell: Hive UDF を使用する
 
-#### <a name="hive"></a>Hive
+PowerShell を使って、Hive クエリをリモートで実行することもできます。 **hiveudf.py** スクリプトを使う Hive クエリを実行するには、次の PowerShell スクリプトを使います。
 
-次のスクリプトでは、**streaming.py** スクリプトを実行します。 実行前に、HDInsight クラスターの HTTPs/Admin アカウント情報の入力を求められます。
+> [!IMPORTANT]
+> 実行前に、HDInsight クラスターの HTTPs/管理者アカウント情報の入力を求められます。
 
 ```powershell
 # Login to your Azure subscription
@@ -348,10 +364,10 @@ $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
 $creds=Get-Credential -Message "Enter the login for the cluster"
 
 # If using a Windows-based HDInsight cluster, change the USING statement to:
-# "USING 'D:\Python27\python.exe streaming.py' AS " +
-$HiveQuery = "add file wasbs:///streaming.py;" +
+# "USING 'D:\Python27\python.exe hiveudf.py' AS " +
+$HiveQuery = "add file wasb:///hiveudf.py;" +
                 "SELECT TRANSFORM (clientid, devicemake, devicemodel) " +
-                "USING 'python streaming.py' AS " +
+                "USING 'python hiveudf.py' AS " +
                 "(clientid string, phoneLabel string, phoneHash string) " +
                 "FROM hivesampletable " +
                 "ORDER BY clientid LIMIT 50;"
@@ -391,7 +407,7 @@ Get-AzureRmHDInsightJobOutput `
 
 #### <a name="pig-jython"></a>Pig (Jython)
 
-次のスクリプトでは、Jython インタープリターを使用して **pig_python.py** スクリプトを使用します。 実行前に、HDInsight クラスターの HTTPs/Admin 情報の入力を求められます。
+PowerShell を使って Pig Latin ジョブを実行することもできます。 **pigudf.py** スクリプトを使う Pig Latin ジョブを実行するには、次の PowerShell スクリプトを使います。
 
 > [!NOTE]
 > PowerShell を使用してジョブをリモートで送信するときは、C Python をインタープリターとして使用することはできません。
@@ -409,8 +425,8 @@ if(-not($sub))
 $clusterName = Read-Host -Prompt "Enter the HDInsight cluster name"
 $creds=Get-Credential -Message "Enter the login for the cluster"
 
-$PigQuery = "Register wasbs:///pig_python.py using jython as myfuncs;" +
-            "LOGS = LOAD 'wasbs:///example/data/sample.log' as (LINE:chararray);" +
+$PigQuery = "Register wasb:///pigudf.py using jython as myfuncs;" +
+            "LOGS = LOAD 'wasb:///example/data/sample.log' as (LINE:chararray);" +
             "LOG = FILTER LOGS by LINE is not null;" +
             "DETAILS = foreach LOG generate myfuncs.create_structure(LINE);" +
             "DUMP DETAILS;"
@@ -461,7 +477,7 @@ Hive ジョブを実行しているときに、次のテキストようなエラ
 ファイルを HDInsight にアップロードする前に、次の PowerShell ステートメントを使用して CR 文字を削除できます。
 
 ```powershell
-$original_file ='c:\path\to\streaming.py'
+$original_file ='c:\path\to\hiveudf.py'
 $text = [IO.File]::ReadAllText($original_file) -replace "`r`n", "`n"
 [IO.File]::WriteAllText($original_file, $text)
 ```

@@ -41,6 +41,8 @@
       href: tutorial-vsts-iis-cicd.md
 - name: サンプル
   items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=virtual-machines'
     - name: PowerShell
       href: powershell-samples.md
     - name: Azure CLI
@@ -50,34 +52,28 @@
     - name: リージョンと可用性
       href: regions-and-availability.md
     - name: ストレージ
-      href: >-
-        ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: ネットワーク
       href: network-overview.md
     - name: VM スケール セット
-      href: >-
-        ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: インスタンス メタデータ サービス
       href: ../virtual-machines-instancemetadataservice-overview.md
     - name: コンテナー
       href: containers.md
     - name: リソース マネージャー
-      href: >-
-        ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
       items:
         - name: デプロイ モデル
-          href: >-
-            ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: VM 用のテンプレート
           href: template-description.md
     - name: Azure Windows エージェント
       href: agent-user-guide.md
     - name: Azure Security Center
-      href: >-
-        ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../security-center/security-center-virtual-machine.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: ディザスター リカバリー
-      href: >-
-        ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Azure の計画メンテナンス
       href: planned-maintenance.md
       items:
@@ -160,17 +156,14 @@
         - name: VM のサイズを変更する
           href: resize-vm.md
         - name: タグを使用する
-          href: >-
-            ../../resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../resource-group-using-tags.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
           items:
             - name: VM にタグを付ける
               href: tag.md
         - name: Recovery Services を使用してバックアップする
-          href: >-
-            ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../backup/backup-azure-vms-first-look-arm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: PowerShell を使用したバックアップの管理
-          href: >-
-            ../../backup/backup-azure-vms-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../backup/backup-azure-vms-automation.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: VM テンプレートのダウンロード
           href: download-template.md
         - name: 一般的な PowerShell タスク
@@ -234,13 +227,11 @@
       href: ps-common-network-ref.md
       items:
         - name: 仮想ネットワークを作成する
-          href: >-
-            ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-networks-create-vnet-arm-pportal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: 複数 NIC を持つ VM の作成
           href: multiple-nics.md
         - name: 静的パブリック IP を作成する
-          href: >-
-            ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../virtual-network/virtual-network-deploy-static-pip-arm-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: ポート、エンドポイント、セキュリティを構成する
           href: endpoints-in-resource-manager.md
         - name: VM へのアクセスの許可
@@ -250,8 +241,7 @@
             - name: Azure ポータル
               href: nsg-quickstart-portal.md
         - name: DNS 名前解決のオプション
-          href: >-
-            ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../dns/dns-for-azure-services.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: ポータルを使用して FDQN を作成する
           href: portal-create-fqdn.md
     - name: スケールと可用性
@@ -266,8 +256,7 @@
           href: load-balance.md
           items:
             - name: ロード バランサーの作成
-              href: >-
-                ../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+              href: ../../load-balancer/load-balancer-get-started-internet-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: VMSS を使用して複数の VM をスケール調整する
           href: vmss-powershell-creating.md
         - name: 複数の Azure 仮想マシンを作成する
@@ -285,8 +274,7 @@
         - name: Azure AD での職場または学校の ID の作成
           href: create-aad-work-id.md
         - name: アクセスを管理する
-          href: >-
-            ../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+          href: ../../active-directory/active-directory-accessmanagement-groups-with-advanced-rules.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
         - name: ディスクの暗号化
           href: encrypt-disks.md
         - name: VM へのポリシーの適用
@@ -428,8 +416,7 @@
 - name: リソース
   items:
     - name: テンプレートの作成
-      href: >-
-        ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
+      href: ../../azure-resource-manager/resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: コミュニティ テンプレート
@@ -441,7 +428,6 @@
     - name: スタック オーバーフロー
       href: 'http://stackoverflow.com/questions/tagged/azure-virtual-machine'
     - name: ビデオ
-      href: >-
-        https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
+      href: 'https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines'
     - name: FAQ
       href: faq.md

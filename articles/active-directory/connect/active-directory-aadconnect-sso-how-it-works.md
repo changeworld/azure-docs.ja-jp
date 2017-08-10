@@ -12,21 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 07/24/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 6db2fa2f568c3cf8296bd91214b380a01b85c134
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 1f12a8e3e11bc7eee1fc536e231f71c1d17c3fe4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory シームレス シングル サインオン: 技術的な詳細
 
-この記事では、Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) 機能の技術的なしくみについて説明します。
+この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) 機能の技術的なしくみについて説明します。
 
-## <a name="how-does-azure-ad-seamless-sso-work"></a>Azure AD シームレス SSO のしくみ
+## <a name="how-does-seamless-sso-work"></a>シームレス SSO のしくみ
 
 このセクションは、2 つの部分に分かれています。
 1. シームレス SSO 機能の設定。
@@ -41,6 +41,9 @@ ms.lasthandoff: 06/16/2017
 
 >[!NOTE]
 > (Azure AD Connect を使用して) Azure AD と同期する各 AD フォレストとシームレス SSO を有効にするユーザー用に、コンピューター アカウントと Kerberos SPN が作成されます。 同じ方法で管理され削除されないことを保証するために、その他のコンピューター アカウントが格納されている `AZUREADSSOACCT` コンピューター アカウントに、組織単位 (OU) が移動されます。
+
+>[!IMPORTANT]
+>少なくとも 30 日ごとに、`AZUREADSSOACCT` コンピューター アカウントの [Kerberos の復号化キーをロールオーバーする](active-directory-aadconnect-sso-faq.md#how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account)ことを強くお勧めします。
 
 ### <a name="how-does-sign-in-with-seamless-sso-work"></a>シームレス SSO でのサインインのしくみ
 

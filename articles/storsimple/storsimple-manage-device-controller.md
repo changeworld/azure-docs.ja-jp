@@ -22,12 +22,8 @@ ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="manage-your-storsimple-device-controllers" class="xliff"></a>
-
-# StorSimple デバイス コントローラーを管理する
-<a id="overview" class="xliff"></a>
-
-## 概要
+# <a name="manage-your-storsimple-device-controllers"></a>StorSimple デバイス コントローラーを管理する
+## <a name="overview"></a>概要
 このチュートリアルでは、StorSimple デバイス コントローラーに対して実行できる各種の操作について説明します。 StorSimple デバイスでは、ピア コントローラーがアクティブ/パッシブ構成で冗長化されています。 特定の時点でアクティブなコントローラーは 1 台だけで、そのコントローラーがすべてのディスク操作とネットワーク操作を処理します。 その他のコントローラーはパッシブ モードになります。 アクティブなコントローラーに障害が発生すると、パッシブ コントローラーが自動的にアクティブになります。
 
 このチュートリアルでは、以下の手段を使ってデバイス コントローラーを管理するための手順を取り上げています。
@@ -43,9 +39,7 @@ ms.lasthandoff: 07/06/2017
 * StorSimple デバイスをシャットダウンする
 * StorSimple デバイスを出荷時の設定にリセットする
 
-<a id="restart-or-shut-down-a-single-controller" class="xliff"></a>
-
-## 単一のコントローラーの再起動とシャットダウン
+## <a name="restart-or-shut-down-a-single-controller"></a>単一のコントローラーの再起動とシャットダウン
 通常のシステム運用の中でコントローラーの再起動またはシャットダウンが必要になることはありません。 単一デバイス コントローラーのシャットダウン操作が一般的に行われるのは、障害の発生したデバイスのハードウェア コンポーネントを交換しなければならないケースです。 また、過剰なメモリの使用やコントローラーの不調などでパフォーマンスに影響が生じている状況でコントローラーの再起動が必要となる場合もあります。 無事交換したコントローラーを有効にしてテストする場合にも、コントローラーを再起動する必要があります。
 
 デバイスを再起動しても、パッシブ コントローラーが利用できる状態にあれば、接続されているイニシエーターに悪影響は生じません。 パッシブ コントローラーが利用できない、またはオフになっている場合は、アクティブ コントローラーを再起動すると、サービスの機能不全やダウンタイムが生じます。
@@ -60,9 +54,7 @@ StorSimple Manager サービスの Azure クラシック ポータルまたは S
 
 Azure クラシック ポータルからデバイス コントローラーを管理するには、次の手順を実行します。
 
-<a id="to-restart-or-shut-down-a-controller-in-classic-portal" class="xliff"></a>
-
-#### クラシック ポータルでコントローラーを再起動またはシャットダウンするには
+#### <a name="to-restart-or-shut-down-a-controller-in-classic-portal"></a>クラシック ポータルでコントローラーを再起動またはシャットダウンするには
 1. **[デバイス]、[メンテナンス]** の順にクリックします。
 2. **[ハードウェアの状態]** に移動し、デバイスの両方のコントローラーのステータスが **[正常]** であることを確認します。
    
@@ -97,9 +89,7 @@ Azure クラシック ポータルからデバイス コントローラーを管
 | 3. |パッシブ コントローラーをシャットダウンする。 |"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。 このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>この操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。 |
 | 4. |アクティブ コントローラーをシャットダウンする。 |"シャットダウンが完了した後で、コントローラーの電源ボタンを押して電源をオンにする必要があります。 このコントローラーをシャットダウンしてもよろしいですか?" というメッセージが表示されます。 </br>この操作を続行するように選択した場合、その後の手順は、パッシブ コントローラーを再起動する手順 (「選択肢 1」を参照) と同じです。 |
 
-<a id="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple" class="xliff"></a>
-
-#### StorSimple 用 Windows PowerShell でコントローラーを再起動またはシャットダウンするには
+#### <a name="to-restart-or-shut-down-a-controller-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でコントローラーを再起動またはシャットダウンするには
 StorSimple デバイスの単一のコントローラーを Azure クラシック ポータルからシャットダウンまたは再起動するには、次の手順を実行します。
 
 1. リモート コンピューターからシリアル コンソールまたは Telnet セッションを使ってデバイスにアクセスします。 「 [PuTTY を使用してデバイスのシリアル コンソールに接続する](storsimple-deployment-walkthrough.md#use-putty-to-connect-to-the-device-serial-console)」の手順に従い、コントローラー 0 またはコントローラー 1 に接続します。
@@ -117,9 +107,7 @@ StorSimple デバイスの単一のコントローラーを Azure クラシッ�
      
        これで接続先のコントローラーが再起動されます。 アクティブ コントローラーを再起動した場合、パッシブ コントローラーにフェールオーバーした後でアクティブ コントローラーが再起動されます。
 
-<a id="shut-down-a-storsimple-device" class="xliff"></a>
-
-## StorSimple デバイスをシャットダウンする
+## <a name="shut-down-a-storsimple-device"></a>StorSimple デバイスをシャットダウンする
 このセクションでは、実行中の StorSimple デバイスまたは障害の発生した StorSimple デバイスをリモート コンピューターからシャットダウンする方法について説明します。 両方のデバイス コントローラーをシャットダウンすると、デバイスはオフになります。 デバイスのシャットダウンは、そのデバイスを物理的に移動するか、または運用から外すときに行います。
 
 > [!IMPORTANT]
@@ -127,9 +115,7 @@ StorSimple デバイスの単一のコントローラーを Azure クラシッ�
 > 
 > 
 
-<a id="to-shut-down-a-storsimple-device" class="xliff"></a>
-
-#### StorSimple デバイスをシャットダウンするには
+#### <a name="to-shut-down-a-storsimple-device"></a>StorSimple デバイスをシャットダウンするには
 1. [コントローラーの再起動とシャットダウン](#restart-or-shut-down-a-single-controller) の手順に従って、デバイス上のパッシブ コントローラーを特定し、シャットダウンします。 この操作は、Azure クラシック ポータルまたは StorSimple 用 Windows PowerShell でのみ実行できます。
 2. 上の手順を繰り返してアクティブ コントローラーをシャットダウンします。
 3. ここでデバイスのバックプレーンを確認する必要があります。 2 つのコントローラーが完全にシャットダウンされた後、両方のコントローラーのステータス LED が赤色に点滅しています。 この時点でデバイスの電源を完全にオフにする必要がある場合は、両方の電源/冷却モジュール (PCM) の電源スイッチをオフの位置に設定してください。 これでデバイスの電源が切れます。
@@ -152,9 +138,7 @@ StorSimple デバイスの単一のコントローラーを Azure クラシッ�
 
 1. After both the controllers are completely shut down, the status LEDs on both should be blinking red. If you need to turn off the device completely at this time, flip the power switches on both Power and Cooling Modules (PCMs) to the OFF position.-->
 
-<a id="reset-the-device-to-factory-default-settings" class="xliff"></a>
-
-## デバイスを出荷時の設定にリセットする
+## <a name="reset-the-device-to-factory-default-settings"></a>デバイスを出荷時の設定にリセットする
 > [!IMPORTANT]
 > デバイスを出荷時の設定にリセットする必要がある場合は、Microsoft サポートにお問い合わせください。 次に示す手順は、Microsoft サポートと共に実行する場合にのみ使用してください。
 > 
@@ -165,9 +149,7 @@ StorSimple デバイスの単一のコントローラーを Azure クラシッ�
 
 Microsoft Azure StorSimple デバイスを出荷時の設定にリセットするには、次の手順に従います。
 
-<a id="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple" class="xliff"></a>
-
-### StorSimple 用 Windows PowerShell でデバイスを既定の設定にリセットするには
+### <a name="to-reset-the-device-to-default-settings-in-windows-powershell-for-storsimple"></a>StorSimple 用 Windows PowerShell でデバイスを既定の設定にリセットするには
 1. シリアル コンソールを使ってデバイスにアクセスします。 アクティブ コントローラーに接続されていることをバナー メッセージで確認してください。
 2. シリアル コンソール メニューで、オプション 1 を選択し、 **フル アクセスでログイン**します。
 3. プロンプトで次のコマンドを入力して、クラスター全体をリセットし、すべてのデータ、メタデータ、コントローラー設定を削除します。
@@ -184,9 +166,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
    > 
    > 
 
-<a id="questions-and-answers-about-managing-device-controllers" class="xliff"></a>
-
-## デバイス コントローラーの管理に関する FAQ
+## <a name="questions-and-answers-about-managing-device-controllers"></a>デバイス コントローラーの管理に関する FAQ
 このセクションでは、StorSimple デバイス コントローラーの管理に関して、よく寄せられる質問とその答えを掲載しています。
 
 **Q.** デバイスの両方のコントローラーが正常で電源が投入されているときに、アクティブ コントローラーを再起動またはシャットダウンした場合、どうなりますか。
@@ -223,9 +203,7 @@ Microsoft Azure StorSimple デバイスを出荷時の設定にリセットす�
 
 **A.** コントローラーを運用状態に戻すには、「 [StorSimple デバイスのコントローラー モジュールを交換する](storsimple-controller-replacement.md)に関するページを参照してください。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * このチュートリアルで紹介した手順では解決できないような問題が StorSimple デバイス コントローラーで発生した場合は、 [Microsoft サポートにお問い合わせ](storsimple-contact-microsoft-support.md)ください。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
 

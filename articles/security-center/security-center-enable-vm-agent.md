@@ -15,16 +15,14 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 83328eb874485d4541ff2131f736a30f350a0eb6
+ms.sourcegitcommit: f532f1aea9b8c4be6707862be4001099aa3c1d32
+ms.openlocfilehash: 337a7adfd93c76882a749685702bea6d1524c96a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
+ms.lasthandoff: 07/06/2017
 
 
 ---
-<a id="enable-vm-agent-in-azure-security-center" class="xliff"></a>
-
-# Azure Security Center での VM エージェントの有効化
+# <a name="enable-vm-agent-in-azure-security-center"></a>Azure Security Center での VM エージェントの有効化
 VM エージェントは、 [データ収集を有効にする](security-center-enable-data-collection.md)ために、仮想マシン (VM) にインストールする必要があります。  Azure Security Center では、VM エージェントを必要とする VM を確認することができ、それらの VM で VM エージェントを有効にするよう推奨されます。
 
 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 「 [VM エージェントと拡張機能 – パート 2](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/) 」の記事には、VM エージェントのインストール方法が記載されています。
@@ -34,17 +32,13 @@ VM エージェントは、 [データ収集を有効にする](security-center-
 >
 >
 
-<a id="implement-the-recommendation" class="xliff"></a>
-
-## 推奨事項の実装
+## <a name="implement-the-recommendation"></a>推奨事項の実装
 1. **[推奨事項]** ブレードで、**[VM エージェントを有効にする]** を選択します。
    ![VM エージェントの有効化][1]
 2. **[VM エージェントが見つからないか、応答していません]**ブレードが開きます。 このブレードには、VM エージェントを必要とする VM が一覧表示されます。 ブレードの指示に従って、VM エージェントをインストールします。
    ![VM エージェントが見つからない][2]
 
-<a id="see-also" class="xliff"></a>
-
-## 関連項目
+## <a name="see-also"></a>関連項目
 セキュリティ センターの詳細については、次を参照してください。
 
 * 「[Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md)」-- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 3fc66d775f97333ad497cf3773643c188ec7c1d6
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: db6e654de074fc6651fd0d7479ee52038f944745
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -60,7 +59,7 @@ ms.lasthandoff: 06/08/2017
 #### <a name="azure-clusters"></a>Azure クラスター
 パッチ オーケストレーション アプリケーションは、Service Fabric ランタイム バージョン v5.5 以降がインストールされている Azure クラスターで実行する必要があります。
 
-#### <a name="standalone-on-premise-clusters"></a>スタンドアロン オンプレミス クラスター
+#### <a name="standalone-on-premises-clusters"></a>スタンドアロン オンプレミス クラスター
 パッチ オーケストレーション アプリケーションは、Service Fabric ランタイム バージョン v5.6 以降がインストールされているスタンドアロン クラスターで実行する必要があります。
 
 ### <a name="enable-the-repair-manager-service-if-its-not-running-already"></a>修復マネージャー サービスを有効にする (まだ実行されていない場合)
@@ -149,10 +148,9 @@ Azure 診断を有効にする方法については、「[Azure 診断でログ�
 - 24afa313-0d3b-4c7c-b485-1047fd964b60
 - 05dc046c-60e9-4ef7-965e-91660adffa68
 
-Resource Manager テンプレートの `WadCfg` セクション内に次のセクションを追加します。 
+Resource Manager テンプレートで、`WadCfg` の下の `EtwEventSourceProviderConfiguration` セクションに移動して、以下のエントリを追加します。
 
 ```json
-"PatchOrchestrationApplication": [
   {
     "provider": "e39b723c-590c-4090-abb0-11e3e6616346",
     "scheduledTransferPeriod": "PT5M",
@@ -180,8 +178,7 @@ Resource Manager テンプレートの `WadCfg` セクション内に次のセ�
     "DefaultEvents": {
     "eventDestination": " PatchOrchestrationApplicationTable"
     }
-  },
-]
+  }
 ```
 
 > [!NOTE]

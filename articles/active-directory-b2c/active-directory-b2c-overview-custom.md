@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 0a0d91d622ed72ed22cfaaa0350b31ca653de483
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 33f62a33ea7a3fadb6e7b045de10df25f5edbe83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシー
@@ -41,7 +41,7 @@ ms.lasthandoff: 06/02/2017
 | 属性のカスタマイズ | 標準属性とカスタム属性 | 同じ |
 |トークンおよびセッション管理 | カスタム トークンおよび複数のセッション オプション | 同じ |
 |[ID プロバイダー]| **現在**: 定義済みのローカルのソーシャル プロバイダ<br><br>**将来**: 標準ベースの OIDC、SAML、OAuth | **現在**: 標準ベースの OIDC、OAUTH、SAML<br><br>**将来**: WsFed |
-|ID タスク (例) | ローカルおよび多くのソーシャル アカウントによるサインアップまたはサインイン<br><br>パスワードのリセット<br><br>プロファイルの編集<br><br>多要素認証のシナリオ<br><br>トークンとセッションのカスタマイズ<br><br>アクセス トークンのフロー | カスタム ID プロバイダーまたはカスタム スコープを使用して、組み込みのポリシーと同じタスクを完了<br><br>登録時に別のシステムでのユーザーのプロビジョニング<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信<br><br>B2C の外部のユーザー ストアを使用<br><br>ユーザーが指定した情報を API 経由の信頼できるシステムで検証 |
+|ID タスク (例) | ローカルおよび多くのソーシャル アカウントによるサインアップまたはサインイン<br><br>セルフサービスのパスワード リセット<br><br>プロファイルの編集<br><br>多要素認証のシナリオ<br><br>トークンとセッションのカスタマイズ<br><br>アクセス トークンのフロー | カスタム ID プロバイダーまたはカスタム スコープを使用して、組み込みのポリシーと同じタスクを完了<br><br>登録時に別のシステムでのユーザーのプロビジョニング<br><br>独自の電子メール サービス プロバイダを使用して、ウェルカム メールを送信<br><br>B2C の外部のユーザー ストアを使用<br><br>ユーザーが指定した情報を API 経由の信頼できるシステムで検証 |
 
 ## <a name="policy-files"></a>ポリシー ファイル
 
@@ -97,7 +97,7 @@ Azure AD B2C テナント内の Identity Experience Framework の動作を定義
 |---------------------|--------------------|-----------------|---------------|
 | BASE |TrustFrameworkBase.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_BASE1.xml | マイクロソフトによって構成された主要な要求スキーマ、要求変換、要求プロバイダー、およびユーザー ジャーニーが含まれています<br><br>このファイルへの変更は最小限にしてください | なし |
 | Extension (EXT) | TrustFrameworkExtensions.xml<br><br>Mytenant.onmicrosoft.com-B2C-1A_EXT.xml | BASE ファイルへの変更をここに統合します<br><br>変更された要求プロバイダー<br><br>変更されたユーザー ジャーニー<br><br>独自のカスタム スキーマ定義 | BASE ファイル |
-| 証明書利用者 (RP) | | | Extensions ファイル |
+| 証明書利用者 (RP) | B2C_1A_sign_up_sign_in.xml| トークンの形状およびセッション設定はここで変更します| Extensions(EXT) ファイル |
 
 ### <a name="inheritance-model"></a>継承モデル
 

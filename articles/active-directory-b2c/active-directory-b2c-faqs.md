@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2017
 ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6683b116e5e42c0ba6f1d0f381143bf846bd9810
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: f06e02cb15532a4e0f6660ca3a88a7031d498632
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-faqs"></a>Azure Active Directory B2C: FAQ
@@ -52,7 +51,7 @@ Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意�
 いいえ。アプリケーションは任意の場所でホストできます (クラウドまたはオンプレミス)。 Azure AD B2C とやり取りするために必要なのは、パブリックにアクセス可能なエンドポイントで HTTP 要求を送受信する機能のみです。
 
 ### <a name="i-have-multiple-azure-ad-b2c-tenants-how-can-i-manage-them-on-the-azure-portal"></a>複数の Azure AD B2C テナントがあります。 Azure Portal でこれらのテナントを管理するにはどうすればよいですか。
-Azure Portal には、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。 Azure Portal で特定のテナントの B2C 機能ブレードに移動する方法については、「 [Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) 」を参照してください。 ほとんどのブラウザーでは、Azure Portal で Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
+Azure Portal には、Azure AD B2C テナントごとに独自の B2C 機能ブレードがあります。 Azure Portal で特定のテナントの B2C 機能ブレードに移動する方法については、「 [Azure Active Directory B2C: アプリケーションを登録する](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) 」を参照してください。 ほとんどのブラウザーでは、Azure Portal で Azure AD B2C ディレクトリを切り替えると、B2C 機能ブレードは開いたままにはなりません。
 
 ### <a name="how-do-i-customize-verification-emails-the-content-and-the-from-field-sent-by-azure-ad-b2c"></a>Azure AD B2C によって送信される検証電子メールをカスタマイズするにはどうすればいいですか (コンテンツおよび "From:" フィールド)。
 検証電子メールの内容をカスタマイズするには、 [会社のブランド化機能](../active-directory/active-directory-add-company-branding.md) を使用します。 具体的には、電子メールの次の 2 つの要素をカスタマイズできます。
@@ -109,7 +108,7 @@ Azure AD B2C は、SharePoint 外部パートナー共有のシナリオには�
 ### <a name="how-do-i-delete-my-azure-ad-b2c-tenant"></a>Azure AD B2C テナントを削除する方法はありますか。
 Azure AD B2C テナントを削除するには、次の手順に従います。
 
-1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-the-b2c-features-blade) します。
+1. この手順に従って、Azure Portal で [B2C 機能ブレードに移動](active-directory-b2c-app-registration.md#navigate-to-b2c-settings) します。
 1. **[アプリケーション]**、**[ID プロバイダー]**、**[すべてのポリシー]** の各ブレードで、そのすべてのエントリを削除します。
 1. 次に、サブスクリプション管理者として [Azure クラシック ポータル](https://manage.windowsazure.com/)にサインインします  (Azure へのサインアップに使用したものと同じ職場/学校アカウント、または同じ Microsoft アカウントを使用します)。
 1. 左側の Active Directory 拡張機能に移動し、B2C テナントをクリックします。

@@ -1,36 +1,32 @@
 ---
 title: "Azure Time Series Insights 環境へのイベントの送信 | Microsoft Docs"
-description: "このチュートリアルでは、Time Series Insights 環境にイベントをプッシュする方法について説明します"
+description: "このチュートリアルでは、Time Series Insights 環境にイベントをプッシュする手順について説明します"
 keywords: 
-services: time-series-insights
+services: tsi
 documentationcenter: 
 author: venkatgct
-manager: almineev
-editor: cgronlun
+manager: jhubbard
+editor: 
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/21/2017
+ms.date: 07/21/2017
 ms.author: venkatja
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9f2d3b57a42efb7b04566278d3267b3cdbed713a
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: b4ef96a045393f28b3cd750068fe82a5a8411afa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 07/24/2017
 
 ---
-<a id="send-events-to-a-time-series-insights-environment-via-event-hub" class="xliff"></a>
-
-# イベント ハブ経由で Time Series Insights 環境にイベントを送信する
+# <a name="send-events-to-a-time-series-insights-environment-using-event-hub"></a>イベント ハブを使用して Time Series Insights 環境にイベントを送信する
 
 このチュートリアルでは、イベント ハブを作成および構成し、サンプル アプリケーションを実行してイベントをプッシュする方法について説明します。 JSON 形式のイベントを含む既存のイベント ハブがある場合は、このチュートリアルをスキップし、[Time Series Insights](https://insights.timeseries.azure.com) で環境を表示してください。
 
-<a id="configure-an-event-hub" class="xliff"></a>
-
-## イベント ハブを構成する
+## <a name="configure-an-event-hub"></a>イベント ハブを構成する
 1. イベント ハブを作成するには、イベント ハブに関する[ドキュメント](https://docs.microsoft.com/azure/event-hubs/event-hubs-create)の手順に従います。
 
 2. Time Series Insights のイベント ソースで排他的に使用されるコンシューマー グループを作成していることを確認します。
@@ -46,18 +42,14 @@ ms.lasthandoff: 07/01/2017
 
   ![[新しい共有アクセス ポリシーの追加]](media/send-events/shared-access-policy-2.png)  
 
-<a id="create-time-series-insights-event-source" class="xliff"></a>
-
-## Time Series Insights のイベント ソースを作成する
-1. イベント ソースを作成していない場合は、[こちら](time-series-insights-add-event-source.md)に示された指示に従って、イベント ソースを作成します。
+## <a name="create-time-series-insights-event-source"></a>Time Series Insights のイベント ソースを作成する
+1. イベント ソースを作成していない場合は、[こちらの手順](time-series-insights-add-event-source.md)に従って、イベント ソースを作成します。
 
 2. タイムスタンプ プロパティ名として "deviceTimestamp" を指定します。このプロパティは、CSharp サンプルで実際のタイムスタンプとして使用されます。 タイムスタンプ プロパティ名は大文字と小文字が区別されます。また、JSON としてイベント ハブに送信される際、値は __yyyy-MM-ddTHH:mm:ss.FFFFFFFK__ 形式にする必要があります。 このプロパティがイベントに存在しない場合は、イベント ハブにエンキューされた時刻が使用されます。
 
   ![イベント ソースの作成](media/send-events/event-source-1.png)
 
-<a id="sample-code-to-push-events" class="xliff"></a>
-
-## イベントをプッシュするサンプル コード
+## <a name="sample-code-to-push-events"></a>イベントをプッシュするサンプル コード
 1. イベント ハブ ポリシー "MySendPolicy" に移動し、ポリシー キーを含む接続文字列をコピーします。
 
   ![MySendPolicy の接続文字列のコピー](media/send-events/sample-code-connection-string.png)
@@ -131,16 +123,10 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-<a id="supported-json-shapes" class="xliff"></a>
+## <a name="supported-json-shapes"></a>サポートされている JSON 構造
+### <a name="sample-1"></a>サンプル 1
 
-## サポートされている JSON 構造
-<a id="sample-1" class="xliff"></a>
-
-### サンプル 1
-
-<a id="input" class="xliff"></a>
-
-#### 入力
+#### <a name="input"></a>入力
 
 単純な JSON オブジェクト。
 
@@ -150,21 +136,15 @@ namespace Microsoft.Rdx.DataGenerator
     "timestamp":"2016-01-08T01:08:00Z"
 }
 ```
-<a id="output---1-event" class="xliff"></a>
-
-#### 出力 - 1 件のイベント
+#### <a name="output---1-event"></a>出力 - 1 件のイベント
 
 |id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 
-<a id="sample-2" class="xliff"></a>
+### <a name="sample-2"></a>サンプル 2
 
-### サンプル 2
-
-<a id="input" class="xliff"></a>
-
-#### 入力
+#### <a name="input"></a>入力
 2 つの JSON オブジェクトを含む JSON 配列。 各 JSON オブジェクトはイベントに変換されます。
 ```json
 [
@@ -178,21 +158,15 @@ namespace Microsoft.Rdx.DataGenerator
     }
 ]
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### 出力 - 2 件のイベント
+#### <a name="output---2-events"></a>出力 - 2 件のイベント
 
 |id|timestamp|
 |--------|---------------|
 |device1|2016-01-08T01:08:00Z|
 |device2|2016-01-08T01:17:00Z|
-<a id="sample-3" class="xliff"></a>
+### <a name="sample-3"></a>サンプル 3
 
-### サンプル 3
-
-<a id="input" class="xliff"></a>
-
-#### 入力
+#### <a name="input"></a>入力
 
 2 つの JSON オブジェクトを含む入れ子になった JSON 配列を含む JSON オブジェクト。
 ```json
@@ -211,9 +185,7 @@ namespace Microsoft.Rdx.DataGenerator
 }
 
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### 出力 - 2 件のイベント
+#### <a name="output---2-events"></a>出力 - 2 件のイベント
 "location" プロパティは各イベントにコピーされます。
 
 |location|events.id|events.timestamp|
@@ -221,13 +193,9 @@ namespace Microsoft.Rdx.DataGenerator
 |WestUs|device1|2016-01-08T01:08:00Z|
 |WestUs|device2|2016-01-08T01:17:00Z|
 
-<a id="sample-4" class="xliff"></a>
+### <a name="sample-4"></a>サンプル 4
 
-### サンプル 4
-
-<a id="input" class="xliff"></a>
-
-#### 入力
+#### <a name="input"></a>入力
 
 2 つの JSON オブジェクトを含む入れ子になった JSON 配列を含む JSON オブジェクト。 この入力は、グローバル プロパティが複雑な JSON オブジェクトによって表現できることを示しています。
 
@@ -260,18 +228,14 @@ namespace Microsoft.Rdx.DataGenerator
     ]
 }
 ```
-<a id="output---2-events" class="xliff"></a>
-
-#### 出力 - 2 件のイベント
+#### <a name="output---2-events"></a>出力 - 2 件のイベント
 
 |location|manufacturer.name|manufacturer.location|events.id|events.timestamp|events.data.type|events.data.units|events.data.value|
 |---|---|---|---|---|---|---|---|
 |WestUs|manufacturer1|EastUs|device1|2016-01-08T01:08:00Z|pressure|psi|108.09|
 |WestUs|manufacturer1|EastUs|device2|2016-01-08T01:17:00Z|vibration|abs G|217.09|
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境を表示する
 

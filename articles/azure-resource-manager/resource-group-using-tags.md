@@ -12,13 +12,13 @@ ms.workload: multiple
 ms.tgt_pltfrm: AzurePortal
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
+ms.date: 07/17/2017
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 0e1ee94504ebff235c1da9128e0ac68c2b28bc59
-ms.openlocfilehash: 2f56314769d90a1f0f9ebb5ece9c8e54b23b8936
-ms.lasthandoff: 02/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9345971b8dff683c7d079c29168437f601633eb1
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="use-tags-to-organize-your-azure-resources"></a>タグを使用した Azure リソースの整理
@@ -33,52 +33,37 @@ ms.lasthandoff: 02/21/2017
 
 リソース ポリシーを使用して、組織の標準的なルールを作成することができます。 リソースが適切な値でタグ付けされることを保証するポリシーを作成することができます。 詳細については、「[タグに関するリソース ポリシーを適用する](resource-manager-policy-tags.md)」を参照してください。
 
-## <a name="templates"></a>テンプレート
-
-[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
-
-## <a name="portal"></a>ポータル
-[!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
-
 ## <a name="powershell"></a>PowerShell
 [!INCLUDE [resource-manager-tag-resources-powershell](../../includes/resource-manager-tag-resources-powershell.md)]
 
-## <a name="azure-cli-20"></a>Azure CLI 2.0
+## <a name="azure-cli"></a>Azure CLI
 
-Azure CLI 2.0 では、リソースとリソース グループにタグを追加し、タグの値を使用してリソースをクエリすることができます。
-
-リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに保持する必要がある既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。 その方法を次に示します。
-
-* タグのないリソース グループにタグを追加する。
-
-  ```azurecli
-  az group update -n TagTestGroup --set tags.Environment=Test tags.Dept=IT
-  ```
-
-* タグのないリソースにタグを追加する。
-
-  ```azurecli
-  az resource tag --tags Dept=IT Environment=Test -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
-  ``` 
-
-既にタグ付けされているリソースにタグを追加するには、最初に既存のタグを取得します。 
+**リソース グループ**の既存のタグを表示するには、次のコマンドを使用します。
 
 ```azurecli
-az resource show --query tags --output list -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
+az group show -n examplegroup --query tags
 ```
 
 次の形式が返されます。
 
-```
-Dept        : Finance
-Environment : Test
+```json
+{
+  "Dept"        : "IT",
+  "Environment" : "Test"
+}
 ```
 
-既存のタグをリソースを再適用し、新しいタグを追加します。
+**特定のリソース ID に該当するリソース**の既存のタグを表示するには、次のコマンドを使用します。
 
 ```azurecli
-az resource tag --tags Dept=Finance Environment=Test CostCenter=IT -g TagTestGroup -n storageexample --resource-type "Microsoft.Storage/storageAccounts"
-``` 
+az resource show --id {resource-id} --query tags
+```
+
+**特定の名前、種類、リソース グループに該当するリソース**の既存のタグを表示するには、次のコマンドを使用します。
+
+```azurecli
+az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+```
 
 特定のタグを持つリソース グループを取得するには、`az group list` を使用します。
 
@@ -92,8 +77,70 @@ az group list --tag Dept=IT
 az resource list --tag Dept=Finance
 ```
 
-## <a name="azure-cli-10"></a>Azure CLI 1.0
-[!INCLUDE [resource-manager-tag-resources-cli](../../includes/resource-manager-tag-resources-cli.md)]
+リソースまたはリソース グループにタグを適用するたびに、そのリソースまたはリソース グループの既存のタグが上書きされます。 したがって、リソースまたはリソース グループに既存のタグがあるかどうかに基づいて、異なるアプローチを使用する必要があります。 
+
+**既存のタグのないリソース グループ**にタグを追加するには、次のコマンドを使用します。
+
+```azurecli
+az group update -n examplegroup --set tags.Environment=Test tags.Dept=IT
+```
+
+**既存のタグのないリソース**にタグを追加するには、次のコマンドを使用します。
+
+```azurecli
+az resource tag --tags Dept=IT Environment=Test -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+``` 
+
+既にタグがあるリソースにタグを追加し、既存のタグを取得してその値の形式を変更したうえで、それらのタグを新しいタグと共に再適用するには、次のように入力します。 
+
+```azurecli
+jsonrtag=$(az resource show -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks" --query tags)
+rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
+az resource tag --tags $rt Project=Redesign -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+```
+
+**リソースにある既存のタグを保持せずに**、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+
+```azurecli
+groups=$(az group list --query [].name --output tsv)
+for rg in $groups 
+do 
+  jsontag=$(az group show -n $rg --query tags)
+  t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
+  r=$(az resource list -g $rg --query [].id --output tsv) 
+  for resid in $r 
+  do 
+    az resource tag --tags $t --id $resid
+  done 
+done
+```
+
+**リソースにある既存のタグを保持したうえで**、リソース グループのすべてのタグをリソースに適用するには、次のスクリプトを使用します。
+
+```azurecli
+groups=$(az group list --query [].name --output tsv)
+for rg in $groups 
+do 
+  jsontag=$(az group show -n $rg --query tags)
+  t=$(echo $jsontag | tr -d '"{},' | sed 's/: /=/g')
+  r=$(az resource list -g $rg --query [].id --output tsv) 
+  for resid in $r 
+  do 
+    jsonrtag=$(az resource show --id $resid --query tags)
+    rt=$(echo $jsonrtag | tr -d '"{},' | sed 's/: /=/g')
+    az resource tag --tags $t$rt --id $resid
+  done 
+done
+```
+
+
+## <a name="templates"></a>テンプレート
+
+[!INCLUDE [resource-manager-tags-in-templates](../../includes/resource-manager-tags-in-templates.md)]
+
+## <a name="portal"></a>ポータル
+[!INCLUDE [resource-manager-tag-resource](../../includes/resource-manager-tag-resources.md)]
+
 
 ## <a name="rest-api"></a>REST API
 ポータルと PowerShell のどちらも、バックグラウンドで [リソース マネージャーの REST AP](https://docs.microsoft.com/rest/api/resources/) を使用します。 別の環境にタグ付けを統合する必要がある場合、リソース ID に対する GET 操作でタグを取得し、PATCH 呼び出しでタグのセットを更新できます。

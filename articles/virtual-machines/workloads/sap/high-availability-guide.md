@@ -23,7 +23,6 @@ ms.openlocfilehash: a5cec02045e7db70dffbe8089c44e8c3a2b37cd4
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
-
 ---
 
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
@@ -366,7 +365,7 @@ ms.lasthandoff: 04/03/2017
 
 [sap-ha-guide-figure-6003]:media/virtual-machines-shared-sap-high-availability-guide/6003-sap-multi-sid-full-landscape.png
 
-[powershell-install-configure]:https://docs.microsoft.com/powershell/azureps-cmdlets-docs
+[powershell-install-configure]:https://docs.microsoft.com/powershell/azure/install-azurerm-ps
 [resource-group-authoring-templates]:../../../resource-group-authoring-templates.md
 [resource-group-overview]:../../../../../azure-resource-manager/resource-group-overview.md
 [resource-groups-networking]:../../../virtual-network/resource-groups-networking.md
@@ -416,13 +415,8 @@ ms.lasthandoff: 04/03/2017
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 [virtual-machines-ps-create-preconfigure-windows-resource-manager-vms]:../../virtual-machines-windows-ps-create.md
 [virtual-machines-sizes]:../../virtual-machines-windows-sizes.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-alwayson-availability-groups.md
-[./windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener]:../../windows/sqlclassic/virtual-machines-windows-classic-ps-sql-int-listener.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
-[./windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
-[./windows/sql/virtual-machines-sql-server-high-availability-and-disaster-recovery-solutions]:../../windows/sql/virtual-machines-windows-sql-high-availability-dr.md
-[./windows/sql/virtual-machines-sql-server-infrastructure-services]:../../windows/sql/virtual-machines-windows-sql-server-iaas-overview.md
-[./windows/sql/virtual-machines-sql-server-performance-best-practices]:../../windows/sql/virtual-machines-windows-sql-performance.md
+[virtual-machines-windows-portal-sql-alwayson-availability-groups-manual]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-availability-groups-manual.md
+[virtual-machines-windows-portal-sql-alwayson-int-listener]:../../windows/sql/virtual-machines-windows-portal-sql-alwayson-int-listener.md
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
@@ -1027,7 +1021,7 @@ _**図 15:** Azure 内部ロード バランサーの既定の ASCS/SCS 負荷�
 
 SAP ASCS または SCS インスタンスに別の番号を使う場合は、それらのポートの名前と値を既定値から変更する必要があります。
 
-1.  Azure Portal で、*[*<*SID*>-lb-ascs ロード バランサー]**、**[負荷分散規則]**の順に選択します。
+1.  Azure Portal で、*[*<*SID*>-lb-ascs ロード バランサー]** 、 **[負荷分散規則]**の順に選択します。
 2.  SAP ASCS または SCS インスタンスに属するすべての負荷分散規則について、以下の値を変更します。
 
   * 名前
@@ -1602,7 +1596,7 @@ _**図 60:** SAP ERS インスタンスのサービスの種類を遅延自動�
 
 ### <a name="2477e58f-c5a7-4a5d-9ae3-7b91022cafb5"></a> SAP プライマリ アプリケーション サーバーのインストール
 
-プライマリ アプリケーション サーバー (PAS) のインスタンス <SID>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。** Azure または DataKeeper 固有の設定に対する依存関係はありません。
+プライマリ アプリケーション サーバー (PAS) のインスタンス <*SID*>-di-0 を、PAS のホストとして指定した仮想マシンにインストールします。 Azure または DataKeeper 固有の設定に対する依存関係はありません。
 
 ### <a name="0ba4a6c1-cc37-4bcf-a8dc-025de4263772"></a> SAP 追加アプリケーション サーバーのインストール
 

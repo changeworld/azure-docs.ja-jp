@@ -14,7 +14,7 @@ SLA と機能セットに違いがあるため、"*運用環境と開発テス�
 | **開発テストまたは概念実証**   | Basic                  |
 |                                    |                        |
 
-古い SKU を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU については、[ゲートウェイ SKU (古い SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。
+古い SKU を使用している場合、運用環境で推奨される SKU は、Standard SKU と HighPerformance SKU です。 古い SKU については、[ゲートウェイ SKU (レガシ SKU)](../articles/vpn-gateway/vpn-gateway-about-skus-legacy.md) に関するページを参照してください。
 
 ###  <a name="feature"></a>ゲートウェイ SKU の機能セット
 
@@ -22,9 +22,11 @@ SLA と機能セットに違いがあるため、"*運用環境と開発テス�
 
 | **SKU**| **機能**|
 | ---    | ---         |
-| VpnGw1<br>VpnGw2<br>VpnGw3|最大 30 トンネルのルートベースの VPN* <br>P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 <br><br>* "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。 |
 |Basic   | ルートベース: 10 トンネル。P2S あり<br>ポリシー ベース (IKEv1): 1 トンネル。P2S なし|
+| VpnGw1、VpnGw2、VpnGw3 |最大 30 トンネルのルートベースの VPN (*) <br>P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
+
+(*) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。
 
 ###  <a name="resize"></a>ゲートウェイ SKU のサイズ変更
 

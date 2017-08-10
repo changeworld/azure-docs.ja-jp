@@ -15,26 +15,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/01/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 22f5dda489f94ebb5a22e017b72c2524a8f22d6a
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: b382e545e47353a177b3b02b3931001ab22d53c8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 
-<a id="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell" class="xliff"></a>
 
-# PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する
+# <a name="move-a-windows-vm-from-amazon-web-services-aws-to-azure-using-powershell"></a>PowerShell を使用してアマゾン ウェブ サービス (AWS) から Azure に Windows VM を移行する
 
 ワークロードのホストについて Azure 仮想マシンを評価する場合、既存のアマゾン ウェブ サービス (AWS) EC2 Windows VM インスタンスをエクスポートしてから、仮想ハード ディスク (VHD) を Azure にアップロードできます。 VHD のアップロード後、その VHD から Azure に新しい VM を作成できます。 
 
 このトピックでは、AWS から Azure に 1 つの VM を移行する方法について説明します。 規模を拡大して AWS から Azure に複数の VM を移行したい場合は、「[Azure Site Recovery を使用してアマゾン ウェブ サービス (AWS) から Azure に仮想マシンを移行する](../../site-recovery/site-recovery-migrate-aws-to-azure.md)」を参照してください。
 
-<a id="prepare-the-vm" class="xliff"></a>
-
-## VM を準備する 
+## <a name="prepare-the-vm"></a>VM を準備する 
  
 一般化された VHD と特殊化された VHD のいずれも Azure にアップロードできます。 どちらのタイプも、AWS からエクスポートする前に VM を準備する必要があります。 
 
@@ -50,9 +46,7 @@ ms.lasthandoff: 07/06/2017
     * IP アドレスと DNS 設定を DHCP で取得するよう VM が構成されていることを確認。 これにより、サーバーが起動時に VNet 内の IP アドレスを取得します。  
 
 
-<a id="export-and-download-the-vhd" class="xliff"></a>
-
-## VHD をエクスポートおよびダウンロードする 
+## <a name="export-and-download-the-vhd"></a>VHD をエクスポートおよびダウンロードする 
 
 Amazon S3 バケット内の VHD に EC2 インスタンスをエクスポートします。 Amazon ドキュメント トピック「[Exporting an Instance as a VM Using VM Import/Export (VM Import/Export を使用して VM としてインスタンスをエクスポート)](http://docs.aws.amazon.com/vm-import/latest/userguide/vmexport.html)」で説明されている手順に従って [create-instance-export-task](http://docs.aws.amazon.com/cli/latest/reference/ec2/create-instance-export-task.html) コマンドを実行し、EC2 インスタンスを VHD ファイルにエクスポートします。 
 
@@ -69,9 +63,7 @@ VHD のエクスポートが完了したら、「[How Do I Download an Object fr
 > VHD をダウンロードする場合、AWS からデータ転送料金が請求されます。 詳細については、「[Amazon S3 Pricing (Amazon S3 の料金)](https://aws.amazon.com/s3/pricing/)」を参照してください。
 
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 これで、VHD を Azure にアップロードして新しい VM を作成できるようになりました。 
 

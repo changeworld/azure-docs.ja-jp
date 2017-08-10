@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c88b2b5cff70e7a4b3642c53502f348f2e789e81
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 
@@ -75,7 +74,7 @@ Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を�
 
 上記の両方のコード スニペットには、シンクを記述するために "applicationInsights" という名前が使用されていました。 これは要件ではなく、シンクの名前が "sinks" に含まれている限り、任意の文字列で名前を設定できます。
 
-現時点では、クラスターのログは AI のログ ビューアーにトレースとして表示されます。 インフラストラクチャ レベルのトレースのほとんどは "情報" タイプであるため、シンクの構成を変更して "重大" または "エラー" タイプのログだけを送信することも検討できます。 これは、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
+現時点では、クラスターのログは AI のログ ビューアーにトレースとして表示されます。 プラットフォームからのトレースのほとんどは "情報" レベルであるため、シンクの構成を変更して "重大" または "エラー" タイプのログのみを送信することも検討できます。 これは、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明するように、シンクに "チャネル" を追加することで実現できます。
 
 >[!NOTE]
 >ポータルまたは Resource Manager テンプレートのいずれかで間違った AI IKey を使用した場合、手動でキーを変更してクラスターを更新するか、再デプロイする必要があります。 

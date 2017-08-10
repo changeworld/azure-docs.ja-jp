@@ -1,6 +1,6 @@
 ---
-title: "C++ から File Storage を使用する方法 | Microsoft Docs"
-description: "Azure File storage を使用してクラウドにファイル データを格納します。"
+title: "C++ での Azure File Storage 用の開発 | Microsoft Docs"
+description: "Azure File Storage を使用してファイル データを格納する C++ アプリケーションとサービスを開発する方法を説明します。"
 services: storage
 documentationcenter: .net
 author: renashahmsft
@@ -12,29 +12,35 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 05/27/2017
 ms.author: renashahmsft
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: f8ecb68fddf4293592e546c0c10d0c86664bd090
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fc0d8451442f1337db4a36718c3fc746f8eb5125
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
-# <a name="how-to-use-file-storage-from-c"></a>C++ から File Storage を使用する方法
+
+# <a name="develop-for-azure-file-storage-with-c"></a>C++ での Azure File Storage 用の開発
 [!INCLUDE [storage-selector-file-include](../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../includes/storage-try-azure-tools-files.md)]
 
-[!INCLUDE [storage-file-overview-include](../../includes/storage-file-overview-include.md)]
-
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、Microsoft Azure File Storage サービスで基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Microsoft Azure の File Storage サービスを初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で役立ちます。
 
-[!INCLUDE [storage-file-concepts-include](../../includes/storage-file-concepts-include.md)]
+このチュートリアルでは、Azure File Storage で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Azure File Storage を初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で役立ちます。
 
-[!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
+
+* Azure ファイル共有を作成および削除する
+* ディレクトリを作成および削除する
+* Azure ファイル共有のファイルとディレクトリを列挙する
+* ファイルのアップロード、ダウンロード、および削除
+* Azure ファイル共有のクォータ (最大サイズ) を設定する
+* 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
+
+> [!Note]  
+> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 C++ I/O クラスと関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage C++ SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
 サンプルをビルドするには、C++ 用 Azure Storage クライアント ライブラリ 2.4.0 をインストールする必要があります。 また、Azure ストレージ アカウントを作成しておく必要があります。
@@ -48,8 +54,8 @@ C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-file-storage"></a>File Storage を使用するようにアプリケーションを設定する
-Azure Storage API を使用してファイルにアクセスする C++ ファイルの先頭に、次の include ステートメントを追加します。
+## <a name="set-up-your-application-to-use-azure-file-storage"></a>Azure File Storage を使用するようにアプリケーションを設定する
+Azure File Storage を操作する C++ ファイルの先頭に、次の include ステートメントを追加します。
 
 ```cpp
 #include <was/storage_account.h>
@@ -74,16 +80,16 @@ azure::storage::cloud_storage_account storage_account =
   azure::storage::cloud_storage_account::parse(storage_connection_string);
 ```
 
-## <a name="how-to-create-a-share"></a>共有を作成する方法
-ファイル ストレージのすべてのファイルとディレクトリは「 **Share**」という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、ファイル ストレージ クライアントを使用する必要があります。
+## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
+Azure File Storage のすべてのファイルとディレクトリは **Share** という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、Azure File Storage クライアントを使用する必要があります。
 
 ```cpp
-// Create the file storage client.
+// Create the Azure File storage client.
 azure::storage::cloud_file_client file_client = 
   storage_account.create_cloud_file_client();
 ```
 
-ファイル ストレージ クライアントを使用し、共有への参照を取得できます。
+Azure File Storage クライアントを使用し、共有への参照を取得できます。
 
 ```cpp
 // Get a reference to the file share
@@ -101,8 +107,84 @@ if (share.create_if_not_exists()) {
 
 この時点で、**share** は「**my-sample-share**」という名前の共有の参照を保持します。
 
-## <a name="how-to-upload-a-file"></a>ファイルをアップロードする方法
-Azure File Storage 共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
+## <a name="delete-an-azure-file-share"></a>Azure ファイル共有を削除する
+cloud_file_share オブジェクトで **delete_if_exists** メソッドを呼び出すと共有が削除されます。 次がそのサンプル コードです。
+
+```cpp
+// Get a reference to the share.
+azure::storage::cloud_file_share share = 
+  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
+
+// delete the share if exists
+share.delete_share_if_exists();
+```
+
+## <a name="create-a-directory"></a>ディレクトリを作成する
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することができます。 Azure File Storage では、自分のアカウントで許可されるだけのディレクトリを作成できます。 次のコードは、ルート ディレクトリの下に **my-sample-directory** という名前のディレクトリを作成し、さらに **my-sample-subdirectory** という名前のサブディレクトリを作成します。
+
+```cpp
+// Retrieve a reference to a directory
+azure::storage::cloud_file_directory directory = share.get_directory_reference(_XPLATSTR("my-sample-directory"));
+
+// Return value is true if the share did not exist and was successfully created.
+directory.create_if_not_exists();
+
+// Create a subdirectory.
+azure::storage::cloud_file_directory subdirectory = 
+  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
+subdirectory.create_if_not_exists();
+```
+
+## <a name="delete-a-directory"></a>ディレクトリを削除する
+ディレクトリの削除は単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
+
+```cpp
+// Get a reference to the share.
+azure::storage::cloud_file_share share = 
+  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
+
+// Get a reference to the directory.
+azure::storage::cloud_file_directory directory = 
+  share.get_directory_reference(_XPLATSTR("my-sample-directory"));
+
+// Get a reference to the subdirectory you want to delete.
+azure::storage::cloud_file_directory sub_directory =
+  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
+
+// Delete the subdirectory and the sample directory.
+sub_directory.delete_directory_if_exists();
+
+directory.delete_directory_if_exists();
+```
+
+## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Azure ファイル共有のファイルとディレクトリを列挙する
+**cloud_file_directory** 参照で **list_files_and_directories** を呼び出すと、共有内のファイルとディレクトリの一覧を簡単に取得できます。 返された **list_file_and_directory_item** の豊富なプロパティとメソッドのセットにアクセスするには、**list_file_and_directory_item.as_file** メソッドを呼び出して **cloud_file** オブジェクトを取得するか、**list_file_and_directory_item.as_directory** メソッドを呼び出して **cloud_file_directory** オブジェクトを取得する必要があります。
+
+次のコードは、共有のルート ディレクトリ内の各アイテムの URI を取得して出力する方法を示しています。
+
+```cpp
+//Get a reference to the root directory for the share.
+azure::storage::cloud_file_directory root_dir = 
+  share.get_root_directory_reference();
+
+// Output URI of each item.
+azure::storage::list_file_and_diretory_result_iterator end_of_results;
+
+for (auto it = directory.list_files_and_directories(); it != end_of_results; ++it)
+{
+    if(it->is_directory())
+    {
+        ucout << "Directory: " << it->as_directory().uri().primary_uri().to_string() << std::endl;
+    }
+    else if (it->is_file())
+    {
+        ucout << "File: " << it->as_file().uri().primary_uri().to_string() << std::endl;
+    }        
+}
+```
+
+## <a name="upload-a-file"></a>ファイルをアップロードする
+Azure ファイル共有には、少なくとも、ファイルが置かれるルート ディレクトリが含まれます。 このセクションでは、ローカル ストレージから共有のルート ディレクトリにファイルをアップロードする方法を紹介します。
 
 ファイルをアップロードするための最初の手順は、ファイルを置くディレクトリの参照を取得することです。 これを行うには、share オブジェクトの **get_root_directory_reference** メソッドを呼び出します。
 
@@ -133,49 +215,7 @@ azure::storage::cloud_file file4 =
 file4.upload_from_file(_XPLATSTR("DataFile.txt"));    
 ```
 
-## <a name="how-to-create-a-directory"></a>ディレクトリを作成する方法
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することもできます。 Azure ファイル ストレージ サービスでは、自分のアカウントで許可されるだけのディレクトリを作成できます。 次のコードは、ルート ディレクトリの下に **my-sample-directory** という名前のディレクトリを作成し、さらに **my-sample-subdirectory** という名前のサブディレクトリを作成します。
-
-```cpp
-// Retrieve a reference to a directory
-azure::storage::cloud_file_directory directory = share.get_directory_reference(_XPLATSTR("my-sample-directory"));
-
-// Return value is true if the share did not exist and was successfully created.
-directory.create_if_not_exists();
-
-// Create a subdirectory.
-azure::storage::cloud_file_directory subdirectory = 
-  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
-subdirectory.create_if_not_exists();
-```
-
-## <a name="how-to-list-files-and-directories-in-a-share"></a>共有のファイルとディレクトリを一覧表示する方法
-**cloud_file_directory** 参照で **list_files_and_directories** を呼び出すと、共有内のファイルとディレクトリの一覧を簡単に取得できます。 返された **list_file_and_directory_item** の豊富なプロパティとメソッドのセットにアクセスするには、**list_file_and_directory_item.as_file** メソッドを呼び出して **cloud_file** オブジェクトを取得するか、**list_file_and_directory_item.as_directory** メソッドを呼び出して **cloud_file_directory** オブジェクトを取得する必要があります。
-
-次のコードは、共有のルート ディレクトリ内の各アイテムの URI を取得して出力する方法を示しています。
-
-```cpp
-//Get a reference to the root directory for the share.
-azure::storage::cloud_file_directory root_dir = 
-  share.get_root_directory_reference();
-
-// Output URI of each item.
-azure::storage::list_file_and_diretory_result_iterator end_of_results;
-
-for (auto it = directory.list_files_and_directories(); it != end_of_results; ++it)
-{
-    if(it->is_directory())
-    {
-        ucout << "Directory: " << it->as_directory().uri().primary_uri().to_string() << std::endl;
-    }
-    else if (it->is_file())
-    {
-        ucout << "File: " << it->as_file().uri().primary_uri().to_string() << std::endl;
-    }        
-}
-```
-
-## <a name="how-to-download-a-file"></a>ファイルをダウンロードする方法
+## <a name="download-a-file"></a>ファイルをダウンロードする
 ファイルをダウンロードするには、まずファイルの参照を取得し、**download_to_stream** メソッドを呼び出して、ローカル ファイルに保存できるストリーム オブジェクトにファイルの内容を転送します。 代わりに、**download_to_file** メソッドを使用して、ローカル ファイルにファイルの内容をダウンロードすることもできます。 また、**download_text** メソッドを使用して、ファイルの内容をテキスト文字列としてダウンロードすることもできます。
 
 次の例は、**download_to_stream** メソッドと **download_text** メソッドを使用して、前のセクションで作成したファイルをダウンロードする方法を示しています。
@@ -200,8 +240,8 @@ outfile.write((char *)&data[0], buffer.size());
 outfile.close();
 ```
 
-## <a name="how-to-delete-a-file"></a>ファイルを削除する方法
-もう 1 つの一般的なファイル ストレージ操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
+## <a name="delete-a-file"></a>ファイルを削除する
+もう 1 つの一般的な Azure File Storage 操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
 
 ```cpp
 // Get a reference to the root directory for the share.    
@@ -217,41 +257,7 @@ azure::storage::cloud_file file =
 file.delete_file_if_exists();
 ```
 
-## <a name="how-to-delete-a-directory"></a>ディレクトリを削除する方法
-ディレクトリの削除は単純な作業です。ただし、注意するべきことは、ファイルや他のディレクトリが含まれるディレクトリは削除できないということです。
-
-```cpp
-// Get a reference to the share.
-azure::storage::cloud_file_share share = 
-  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
-
-// Get a reference to the directory.
-azure::storage::cloud_file_directory directory = 
-  share.get_directory_reference(_XPLATSTR("my-sample-directory"));
-
-// Get a reference to the subdirectory you want to delete.
-azure::storage::cloud_file_directory sub_directory =
-  directory.get_subdirectory_reference(_XPLATSTR("my-sample-subdirectory"));
-
-// Delete the subdirectory and the sample directory.
-sub_directory.delete_directory_if_exists();
-
-directory.delete_directory_if_exists();
-```
-
-## <a name="how-to-delete-a-share"></a>共有を削除する方法
-cloud_file_share オブジェクトで **delete_if_exists** メソッドを呼び出すと共有が削除されます。 次がそのサンプル コードです。
-
-```cpp
-// Get a reference to the share.
-azure::storage::cloud_file_share share = 
-  file_client.get_share_reference(_XPLATSTR("my-sample-share"));
-
-// delete the share if exists
-share.delete_share_if_exists();
-```
-
-## <a name="set-the-maximum-size-for-a-file-share"></a>ファイル共有の最大サイズの設定
+## <a name="set-the-quota-maximum-size-for-an-azure-file-share"></a>Azure ファイル共有のクォータ (最大サイズ) を設定する
 ファイル共有のクォータ (最大サイズ) をギガバイト単位で設定することができます。 また、共有に現在格納されているデータの量も確認できます。
 
 共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。 共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、新しいファイルを作成できなくなったりします。ただし、これらのファイルが空である場合は除きます。
@@ -349,9 +355,6 @@ if (share.exists())
 
 }
 ```
-
-Shared Access Signature の作成方法と使用方法の詳細については、「[Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
-
 ## <a name="next-steps"></a>次のステップ
 Azure Storage についてさらに学習するには、次のリソースを参照してください。
 
@@ -359,5 +362,3 @@ Azure Storage についてさらに学習するには、次のリソースを参
 * [C++ での Azure Storage ファイル サービスのサンプル](https://github.com/Azure-Samples/storage-file-cpp-getting-started)
 * [Azure Storage Explorer](http://go.microsoft.com/fwlink/?LinkID=822673&clcid=0x409)
 * [Azure Storage のドキュメント](https://azure.microsoft.com/documentation/services/storage/)
-
-

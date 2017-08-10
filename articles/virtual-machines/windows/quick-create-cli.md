@@ -53,11 +53,7 @@ az group create --name myResourceGroup --location eastus
 次の例では、*myVM* という名前の VM を作成します。 この例では、管理ユーザーの名前に *azureuser*、パスワードに *myPassword12* を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、仮想マシンとの接続を作成する際に必要です。
 
 ```azurecli-interactive 
-az vm create `
-  --resource-group myResourceGroup `
-  --name myVM --image win2016datacenter `
-  --admin-username azureuser `
-  --admin-password myPassword12
+az vm create --resource-group myResourceGroup --name myVM --image win2016datacenter --admin-username azureuser --admin-password myPassword12
 ```
 
 VM が作成されると、Azure CLI によって次の例のような情報が表示されます。 `publicIpAaddress` を書き留めておきます。 このアドレスは、VM へのアクセスに使用されます。

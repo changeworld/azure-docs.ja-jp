@@ -15,16 +15,15 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 2ec31c5444f72c7255d8925bdb3ea85854cfaf1a
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 19be1d693fe13af0f6c1ab0cb6f7bc829b9fad5a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="set-up-a-windows-rdma-cluster-with-hpc-pack-to-run-mpi-applications"></a>Set up a Windows RDMA cluster with HPC Pack to run MPI applications (HPC Pack を使用して Windows RDMA クラスターをセットアップして MPI アプリケーションを実行する)
-Azure で [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と [H シリーズまたはコンピューティング集中型 A シリーズ インスタンス](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使用して Windows RDMA クラスターを設定し、並列 Message Passing Interface (MPI) アプリケーションを実行します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
+並列 Message Passing Interface (MPI) アプリケーションを実行するように、[Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029) と[ハイ パフォーマンス コンピューティング VM サイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)を使って Azure の Windows RDMA クラスターを設定します。 HPC Pack クラスターで RDMA 対応の Windows Server ベースのノードを設定すると、MPI アプリケーションは、リモート ダイレクト メモリ アクセス (RDMA) テクノロジに基づく Azure の低待機時間で高スループットのネットワークを介して効率的に通信します。
 
 Linux VM 上で Azure RDMA ネットワークにアクセスする MPI ワークロードを実行する場合は、「 [MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](../../linux/classic/rdma-cluster.md)」を参照してください。
 
@@ -36,7 +35,7 @@ Microsoft HPC Pack は、追加コストなしで提供され、Windows また�
 * シナリオ 1. コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 * シナリオ 2. 計算ノードをコンピューティング集中型 VM にデプロイする (IaaS)
 
-Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「[H シリーズとコンピューティング集中型 A シリーズの VM について](../../virtual-machines-windows-a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+Windows でコンピューティング集中型インスタンスを使用するための一般的な前提条件については、「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 ## <a name="scenario-1-deploy-compute-intensive-worker-role-instances-paas"></a>シナリオ 1: コンピューティング集中型 worker ロール インスタンスをデプロイする (PaaS)
 既存の HPC Pack クラスターから、クラウド サービスで実行される Azure worker ロール インスタンス (Azure ノード) にコンピューティング リソースを追加します (PaaS)。 HPC Pack からの "Azure へのバースト" とも呼ばれるこの機能は、worker ロール インスタンスのサイズの範囲をサポートしています。 Azure ノードを追加するときは、RDMA 対応のサイズのいずれかを指定します。
@@ -103,7 +102,7 @@ Windows でコンピューティング集中型インスタンスを使用する
    * **Windows Server オペレーティング システム**: RDMA 接続をサポートするには、計算ノード VM 用に Windows Server 2012 R2 または Windows Server 2012 オペレーティング システムを指定します。
    * **クラウド サービス**: ヘッド ノードと計算ノードは、それぞれ異なるクラウド サービスにデプロイすることをお勧めします。
    * **ヘッド ノードのサイズ**: このシナリオでは、ヘッド ノードに少なくとも A4 (XL) サイズを用意することを検討してください。
-   * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[H シリーズとコンピューティング集中型 A シリーズの VM について](../a8-a9-a10-a11-specs.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#access-to-the-rdma-network)」を参照してください。
+   * **HpcVmDrivers 拡張機能**: デプロイ スクリプトは、Windows Server オペレーティング システムを持つ A8 または A9 サイズの計算ノードをデプロイするときに、Azure VM エージェントと HpcVmDrivers 拡張機能を自動的にインストールします。 HpcVmDrivers は、RDMA ネットワークに接続するためのドライバーを計算ノード VM にインストールします。 RDMA 対応の H シリーズの VM では、HpcVmDrivers 拡張機能を手動でインストールする必要があります。 「[ハイ パフォーマンス コンピューティング VM のサイズ](../sizes-hpc.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
    * **クラスター ネットワークの構成**: デプロイ スクリプトにより、HPC Pack クラスターはトポロジ 5 (Enterprise ネットワークのすべてのノード) で自動的にセットアップされます。 このトポロジは、VM でのすべての HPC Pack クラスターのデプロイに必要です。 クラスター ネットワークのトポロジを後で変更しないでください。
 2. **計算ノードをオンラインにしてジョブを実行できるようにする**
    
