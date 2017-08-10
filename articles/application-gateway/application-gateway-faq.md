@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dbf870ca6e0ab85c96290a93eafd47d4b574dbc7
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 3a57646922236a10cf51ae3dd86c67c87c6d7f7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -36,7 +36,7 @@ Application Gateway は、SSL オフロードとエンド ツー エンド SSL�
 
 **Q.Application Gateway と Azure Load Balancer の違いは何ですか?**
 
-Application Gateway はレイヤー 7 のロード バランサーです。 つまり、Application Gateway は Web トラフィック (HTTP/HTTPS/WebSocket) のみを処理します。 また、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンド ロビンによるトラフィックの負荷分散などのアプリケーションの負荷分散機能をサポートします。 Load Balancer は、レイヤー 4 (TCP/UDP) でトラフィックを負荷分散します。
+Application Gateway はレイヤー 7 のロード バランサーです。つまり、Web トラフィックのみ (HTTP/HTTPS/WebSocket) で機能します。 また、SSL ターミネーション、Cookie ベースのセッション アフィニティ、ラウンド ロビンによるトラフィックの負荷分散などの機能をサポートします。 Load Balancer は、レイヤー 4 (TCP/UDP) でトラフィックを負荷分散します。
 
 **Q.Application Gateway はどのようなプロトコルをサポートしますか?**
 
@@ -44,11 +44,11 @@ Application Gateway は、HTTP、HTTPS、および WebSocket をサポートし�
 
 **Q.現在、バックエンド プールの一部としてどのようなリソースがサポートされますか?**
 
-バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、および完全修飾ドメイン名 (FQDN) で構成できます。 現時点では、Azure Web Apps はサポートされていません。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
+バックエンド プールは、NIC、仮想マシン スケール セット、パブリック IP、内部 IP、完全修飾ドメイン名 (FQDN)、および Azure Web Apps などのマルチテナント バックエンドで構成できます。 Application Gateway のバックエンド プールのメンバーは、可用性セットに関連付けられていません。 バックエンド プールのメンバーは、IP 接続されている限り、クラスターおよびデータ センター間、または Azure の外部に配置できます。
 
 **Q.このサービスは、どのリージョンで利用できますか?**
 
-Application Gateway は、パブリック Azure のすべてのリージョンで利用できます。 また、[Azure China](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) で利用することもできます。
+Application Gateway は、グローバル Azure のすべてのリージョンで利用できます。 また、[Azure China](https://www.azure.cn/) と [Azure Government](https://azure.microsoft.com/en-us/overview/clouds/government/) で利用することもできます。
 
 **Q.Application Gateway はサブスクリプション専用のデプロイメントですか? または、複数の顧客と共有されますか?**
 
@@ -106,7 +106,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 * 着信トラフィックの例外は、バックエンドのヘルスが正しく動作するように、65503 ~ 65534 のポートに配置する必要があります。
 
-* 送信インターネット接続をブロックしないようにしてください。
+* 送信インターネット接続はブロックできません。
 
 * AzureLoadBalancer タグからのトラフィックを許可する必要があります。
 
@@ -136,7 +136,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.ルールはどのように処理されますか?**
 
-ルールは、構成されている順序で処理されます。 マルチサイト ルールが評価される前にポートに基づいて基本ルールがトラフィックと一致することでトラフィックが不適切なバックエンドにルーティングされる可能性を下げるため、基本ルールの前にマルチサイト ルールを構成することをお勧めします。
+ルールは、構成されている順序で処理されます。 基本ルールの前にマルチサイト ルールを構成することをお勧めします。 マルチサイト リスナーを先に構成することで、トラフィックが不適切なバックエンドにルーティングされる可能性が低くなります。 このルーティング問題は、マルチサイト ルールが評価される前に、基本ルールがポートに基づくトラフィックと一致するときに発生する可能性があります。
 
 **Q.カスタム プローブの [ホスト] フィールドは何を表しますか?**
 
@@ -144,7 +144,7 @@ Application Gateway は IP 接続がある限り、仮想ネットワークの�
 
 **Q.Application Gateway アクセスを少数のソース IP に限定できますか?**
 
-Application Gateway サブネットの NSG を使用して行うことができます。 次の制約を次の優先順位でサブネットに適用する必要があります。
+このシナリオは、Application Gateway サブネットの NSG を使用して行うことができます。 次の制約を次の優先順位でサブネットに適用する必要があります。
 
 * ソース IP と IP 範囲からの着信トラフィックを許可します。
 
@@ -168,7 +168,7 @@ Application Gateway サブネットの NSG を使用して行うことができ�
 
 **Q.Auto Scaling はサポートされていますか?**
 
-いいえ。ただし、Application Gateway には、しきい値に達した場合にアラートを生成するために使用できるスループット メトリックが用意されています。 手動でインスタンスを追加したり、サイズを変更したりしても、ゲートウェイは再起動されず、既存のトラフィックには影響しません。
+いいえ。ただし、Application Gateway には、しきい値に達したときにアラートを生成するために使用できるスループット メトリックが用意されています。 手動でインスタンスを追加したり、サイズを変更したりしても、ゲートウェイは再起動されず、既存のトラフィックには影響しません。
 
 **Q.手動でのスケールアップまたはスケールダウンによってダウンタイムが発生しますか?**
 
@@ -176,7 +176,7 @@ Application Gateway サブネットの NSG を使用して行うことができ�
 
 **Q.インスタンスを中断せずにサイズを中から大に変更できますか?**
 
-はい。Azure は、インスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによってスケーラビリティをサポートします。
+はい。Azure は、インスタンスを更新ドメインと障害ドメインに分散して、すべてのインスタンスで同時に障害が発生しないようにします。 Application Gateway は、同じゲートウェイの複数のインスタンスを追加して負荷を共有することによるスケーリングをサポートします。
 
 ## <a name="ssl-configuration"></a>SSL の構成
 
@@ -288,9 +288,9 @@ WAF は診断ログを通じて監視されます。診断ログについて詳�
 
 Application Gateway で使用できるログは 3 つあります。 これらのログとその他の診断機能について詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 
-- **ApplicationGatewayAccessLog** - このログには、Application Gateway フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。 アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。
-- **ApplicationGatewayPerformanceLog** - このログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。
-- **ApplicationGatewayFirewallLog** - このログには、Web アプリケーション ファイアウォールが構成されたアプリケーション ゲートウェイの、検出モードまたは防止モードでログに記録された要求が含まれます。
+- **ApplicationGatewayAccessLog** - アクセス ログには、Application Gateway フロントエンドに送信された各要求が格納されます。 このデータには、呼び出し元の IP、要求された URL、応答の待機時間、リターン コード、入出力バイトが含まれます。 アクセス ログは 300 秒ごとに収集されます。 このログには、Application Gateway のインスタンスごとに 1 つのレコードが含まれます。
+- **ApplicationGatewayPerformanceLog** - パフォーマンス ログでは、インスタンスごとのパフォーマンス情報 (処理された要求の総数、スループット (バイト単位)、失敗した要求の数、正常および異常なバックエンド インスタンスの数など) が取得されます。
+- **ApplicationGatewayFirewallLog** - ファイアウォール ログには、Web アプリケーション ファイアウォールが構成されたアプリケーション ゲートウェイの、検出モードまたは防止モードでログに記録された要求が含まれます。
 
 **Q.バックエンド プールのメンバーが正常かどうかを確認するにはどうすればよいですか?**
 
@@ -308,7 +308,7 @@ Application Gateway では監査ログを使用できます。 ポータルで�
 
 はい。Application Gateway はアラートをサポートしており、メトリックに基づいてアラートが構成されます。  現時点で Application Gateway に用意されているのは "スループット" のメトリックです。アラートを生成するためにこのメトリックを構成できます。 アラートについて詳しくは、「[アラート通知の受信](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)」をご覧ください。
 
-**Q.バックエンドの正常性から不明な状態が返されるのですが、どのような原因が考えられますか?**
+**Q.バックエンドの正常性から不明な状態が返されるのですが、この状態はどのような原因が考えられますか?**
 
 最も一般的な理由は、バックエンドへのアクセスが NSG またはカスタム DNS によってブロックされていることです。 詳しくは、「[Application Gateway のバックエンドの正常性、診断ログ、およびメトリック](application-gateway-diagnostics.md)」をご覧ください。
 

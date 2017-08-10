@@ -15,10 +15,10 @@ ms.date: 12/01/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7270d4a2b01d0e746a575e6ec7f0e786684c7e3d
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 073763143e1131aded74f610037cd4aa1fd92f5e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="sap-hana-large-instances-overview-and-architecture-on-azure"></a>SAP HANA on Azure (L インスタンス) の概要とアーキテクチャ 
@@ -111,7 +111,7 @@ Azure Virtual Machines で異なる VM の種類から選択できるのと同�
 
 2017 年 7 月時点で、SAP HANA on Azure (L インスタンス) は、米国西部、米国東部、オーストラリア東部、オーストラリア南東部、西ヨーロッパ、北ヨーロッパの各 Azure リージョンで、次のような複数の構成で提供されています。
 
-| SAP ソリューション | CPU | RAM | Storage | 可用性 |
+| SAP ソリューション | CPU | メモリ | Storage | 可用性 |
 | --- | --- | --- | --- | --- |
 | OLAP 用に最適化: SAP BW、BW/4HANA、<br /> または SAP HANA (一般的な OLAP ワークロード向け) | SAP HANA on Azure S72<br /> – 2 x Intel® Xeon® プロセッサ E7-8890 v3 |  768 GB |  3 TB | 使用可能 |
 | --- | SAP HANA on Azure S144<br /> – 4 x Intel® Xeon® プロセッサ E7-8890 v3 |  1.5 TB |  6 TB | 提供終了 |
@@ -290,8 +290,8 @@ Type I クラスの HANA L インスタンスには、ストレージ ボリュ�
 | S192 | 4,608 GB | 1,024 GB | 1,536 GB | 1,024 GB |
 | S192m | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
 | S384 | 11,520 GB | 1,536 GB | 1,792 GB | 1,536 GB |
-| S384m | 12,000 GB | 2,050 GB | 2,050 GB | 20,450 GB |
-| S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2,050 GB |
+| S384m | 12,000 GB | 2,050 GB | 2,050 GB | 2040 GB |
+| S384xm | 16,000 GB | 2,050 GB | 2,050 GB | 2040 GB |
 | S576 | 20,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S768 | 28,000 GB | 3,100 GB | 2,050 GB | 3,100 GB |
 | S960 | 36,000 GB | 4,100 GB | 2,050 GB | 4,100 GB |

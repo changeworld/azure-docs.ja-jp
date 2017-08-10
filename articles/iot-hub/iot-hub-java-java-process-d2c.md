@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/29/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a5528e01ca7ad9bc807b621e08de991ce1ab9fd8
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: d1aca8f39e305105d4ec9f63fbe7bee95487e294
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 # <a name="process-iot-hub-device-to-cloud-messages-java"></a>IoT Hub のデバイスからクラウドへのメッセージの処理 (Java)
@@ -36,12 +36,7 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 * **read-critical-queue**。IoT hub に接続された Service Bus キューから重大なメッセージをデキューします。
 
 > [!NOTE]
-<<<<<<< HEAD IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのデバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法の手順については、[Azure IoT デベロッパー センター]を参照してください。
-> 
-> 
-=======
-> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのシミュレート対象デバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法の手順については、 [Azure IoT デベロッパー センター]を参照してください。
->>>>>>> master
+> IoT Hub には、多数のデバイス プラットフォームや言語 (C、Java、JavaScript など) に対する SDK サポートがあります。 このチュートリアルのデバイスを物理デバイスに置き換える方法と、IoT Hub にデバイスを接続する方法の手順については、[Azure IoT デベロッパー センター]を参照してください。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -52,14 +47,8 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
 
 [Azure Storage] と [Azure Service Bus] について、ある程度の基礎知識が必要です。
 
-<<<<<<< HEAD
 ## <a name="send-interactive-messages-from-a-device-app"></a>デバイス アプリからの対話型メッセージの送信
-<a name="in-this-section-you-modify-the-device-app-you-created-in-the-get-started-with-iot-hub-tutorial-to-occasionally-send-messages-that-require-immediate-processing"></a>このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
-=======
-## <a name="send-interactive-messages-from-a-simulated-device-app"></a>シミュレート対象デバイス アプリからの対話型メッセージの送信
-
-このセクションでは、「[IoT Hub の使用]」チュートリアルで作成したシミュレート デバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
->>>>>>> master
+このセクションでは、[IoT Hub の使用]に関するチュートリアルで作成したデバイス アプリを変更して、すぐに処理する必要があるメッセージをランダムに送信するようにします。
 
 1. テキスト エディターを使用し、simulated-device\src\main\java\com\mycompany\app\App.java ファイルを開きます。 このファイルには、 **IoT Hub の概要** のチュートリアルで作成した [IoT Hub の使用] アプリのコードが含まれています。
 
@@ -110,21 +99,11 @@ Azure IoT Hub は、何百万ものデバイスとソリューション バッ�
         }
     }
     ```
-<<<<<<< HEAD
    
-    This method randomly adds the property `"level": "critical"` to messages sent by the device, which simulates a message that requires immediate action by the application back-end. The application passes this information in the message properties, instead of in the message body, so that IoT Hub can route the message to the proper message destination.
+    このメソッドは、デバイスによって送信されたメッセージに `"level": "critical"` プロパティをランダムに追加して、アプリケーションのバックエンドによる早急な対応を必要とするメッセージをシミュレートします。 アプリケーションは、この情報を、メッセージの本文ではなくメッセージのプロパティに渡して、IoT Hub がそのメッセージを適切な送信先にルーティングできるようにします。
    
    > [!NOTE]
    > メッセージのプロパティを使用したメッセージのルーティングは、ここで示すホット パスの例に加え、コールド パス処理などのさまざまなシナリオで使用できます。
-   > 
-   > 
-=======
-
-    This method randomly adds the property `"level": "critical"` to messages sent by the simulated device, which simulates a message that requires immediate action by the application back-end. The application passes this information in the message properties, instead of in the message body, so that IoT Hub can route the message to the proper message destination.
-
-    > [!NOTE]
-    > You can use message properties to route messages for various scenarios including cold-path processing, in addition to the hot path example shown here.
->>>>>>> master
 
 2. simulated-device\src\main\java\com\mycompany\app\App.java を保存して閉じます。
 

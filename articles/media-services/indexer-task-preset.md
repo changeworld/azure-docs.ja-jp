@@ -11,13 +11,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: adsolank;juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: db5aa78749b53a2b853840b53dca0f5cf7ff6d18
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: daf86fa55ec402d55763bfbb616e17ce7619a8a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="task-preset-for-azure-media-indexer"></a>Azure Media Indexer 用のタスク プリセット
@@ -36,7 +36,7 @@ Azure Media Indexer はメディア プロセッサであり、メディア フ�
 |metadata|false|指定した資産ファイルのメタデータです。<br/>```<metadata key="..." value="..." />```<br/><br/>事前定義済みのキーに対して値を指定できます。 <br/><br/>現在サポートされているキーは次のとおりです。<br/><br/>**title**、**description** - 言語モデルを更新して音声認識の精度を向上させるために使われます。<br/>```<metadata key="title" value="[Title of the media file]" /><metadata key="description" value="[Description of the media file]" />```<br/><br/>**username**、**password** - http または https でインターネット ファイルをダウンロードするときの認証に使われます。<br/>```<metadata key="username" value="[UserName]" /><metadata key="password" value="[Password]" />```<br/>username と password の値は、入力マニフェストのすべてのメディア URL に適用されます。|
 |features<br/><br/>バージョン 1.2 で追加。 現時点でサポートされている機能は、音声認識 ("ASR") のみです。|false|音声認識機能には、次の設定キーがあります。<br/><br/>Language:<br/>- マルチメディア ファイル内で認識される自然言語。<br/>- English、Spanish<br/><br/>CaptionFormats:<br/>- 出力キャプション形式をセミコロンで区切ったリスト (存在する場合)<br/>- ttml;sami;webvtt<br/><br/><br/>GenerateAIB:<br/>- (SQL Server とお客様の Indexer IFilter で使用するために) AIB ファイルが必要かどうかを指定するブール値のフラグ。 詳しくは、「AIB ファイルを Azure Media Indexer および SQL Server で使用する」をご覧ください。<br/>- True; False<br/><br/>GenerateKeywords:<br/>- キーワード XML ファイルが必要かどうかを指定するブール型のフラグ。<br/>- True; False|
 
-## <a name="the-following-example-shows-the-azure-media-indexer-configuration-xml"></a>Azure Media Indexer 構成 XML の例を次に示します。
+## <a name="azure-media-indexer-configuration-xml-example"></a>Azure Media Indexer 構成 XML の例
 
 ``` 
 <?xml version="1.0" encoding="utf-8"?>  
