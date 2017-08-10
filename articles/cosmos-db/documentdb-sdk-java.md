@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB Java API、SDK、およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
+title: "Azure Cosmos DB: DocumentDB Java API、SDK、およびリソース | Microsoft Docs"
+description: "リリース日、提供終了日、Azure Cosmos DB DocumentDB Java SDK の各バージョン間の変更など、Java API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: java
 author: rnagpal
@@ -16,13 +16,13 @@ ms.date: 07/11/2017
 ms.author: khdang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: a1b824ce7898323c007ee24e852f9649da24e741
+ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
+ms.openlocfilehash: 089bb12b66e772b1fe62eeca9a306b5723fc8c06
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="documentdb-java-sdk-release-notes-and-resources"></a>DocumentDB Java SDK: リリース ノートとリソース
+# <a name="azure-cosmos-db-documentdb-java-sdk-release-notes-and-resources"></a>Azure Cosmos DB:DocumentDB Java SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
@@ -46,7 +46,7 @@ ms.lasthandoff: 07/21/2017
 
 <tr><td>**作業開始**</td><td>[Java SDK の開始](documentdb-java-get-started.md)</td></tr>
 
-<tr><td>**Web アプリ チュートリアル**</td><td>[DocumentDB による Web アプリケーション開発](documentdb-java-application.md)</td></tr>
+<tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](documentdb-java-application.md)</td></tr>
 
 <tr><td>**現在サポートされているランタイム**</td><td>[JDK 7](http://www.oracle.com/technetwork/java/javase/downloads/jdk7-downloads-1880260.html)</td></tr>
 </table></br>
@@ -163,7 +163,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 提供終了の SDK を使用した Cosmos DB への要求は、サービスによって拒否されます。
 
 > [!WARNING]
-> バージョン **1.0.0** 以前のすべてのバージョンの Azure DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
+> バージョン **1.0.0** 以前のすべてのバージョンの DocumentDB SDK for Java は **2016 年 2 月 29 日**で提供が終了します。
 > 
 > 
 

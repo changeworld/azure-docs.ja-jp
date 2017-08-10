@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: adsolank;juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e7a756d6648f8ac3c76c6d206d783b23e96e2d36
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: dfcf3d972ef34a550e111bd30ede3b986daf2505
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="indexing-media-files-with-azure-media-indexer-2-preview"></a>Azure Media Indexer 2 プレビューによるメディア ファイルのインデックス作成
@@ -97,7 +97,7 @@ Azure Media Indexer 2 プレビューは、次の言語の音声をテキスト�
 このプログラムでは次の方法を示します。
 
 1. 資産を作成し、その資産にメディア ファイルをアップロードします。
-2. 次の JSON プリセットを含む構成ファイルに基づくインデックス作成タスクを持つジョブを作成します。
+2. 次の json プリセットを含む構成ファイルに基づいて、インデックス作成タスクを持つジョブを作成します。
    
         {
           "version":"1.0",

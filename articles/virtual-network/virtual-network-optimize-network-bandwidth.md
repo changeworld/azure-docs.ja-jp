@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/07/2017
+ms.date: 07/24/2017
 ms.author: steveesp
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a7c32f07516ca83bc2fb5ad5a9a526631932ad4a
+ms.translationtype: HT
+ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
+ms.openlocfilehash: 914747983d4d974810836be66d6c6af343f58b60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 
@@ -78,10 +77,27 @@ apt-get -y upgrade
 省略可能なコマンド:
 
 `apt-get -y dist-upgrade`
+#### <a name="ubuntu-azure-preview-kernel"></a>Ubuntu Azure Preview カーネル
+> [!WARNING]
+> この Azure Linux Preview カーネルは、一般公開されている Marketplace イメージおよびカーネルと同じレベルの可用性と信頼性がない可能性があります。 機能はサポート対象ではなく、機能が制限されることもあります。また、既定のカーネルと同じ信頼性ではない可能性があります。 運用環境のワークロードにはこのカーネルを使用しないでください。
+
+提案される Azure Linux カーネルをインストールすると、スループットのパフォーマンスが大幅に向上する可能性があります。 このカーネルを試すには、次の行を /etc/apt/sources.list に追加します。
+
+```bash
+#add this to the end of /etc/apt/sources.list (requires elevation)
+deb http://archive.ubuntu.com/ubuntu/ xenial-proposed restricted main multiverse universe
+```
+
+ルート権限で次のコマンドを実行します。
+```bash
+apt-get update
+apt-get install "linux-azure"
+reboot
+```
 
 ### <a name="centos"></a>CentOS
 
-最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 5 月時点で次のバージョンが該当します。
+最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 7 月時点で次のバージョンが該当します。
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
@@ -89,7 +105,7 @@ apt-get -y upgrade
 "Version": "latest"
 ```
 更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
-スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを入力して、LIS をインストールします。
+スループットの最適化は、LIS の 4.2.2-2 以降に含まれています。 次のコマンドを入力して、LIS をインストールします。
 
 ```bash
 sudo yum update
@@ -99,21 +115,21 @@ sudo yum install microsoft-hyper-v
 
 ### <a name="red-hat"></a>Red Hat
 
-最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 1 月時点で次のバージョンが該当します。
+最適化を行うには、最初に、サポートされている最新バージョンに更新します。2017 年 7 月時点で次のバージョンが該当します。
 ```json
 "Publisher": "RedHat"
 "Offer": "RHEL"
 "Sku": "7.3"
-"Version": "7.3.2017062722"
+"Version": "7.3.2017071923"
 ```
 更新が完了したら、最新の Linux Integration Services (LIS) をインストールします。
 スループットの最適化は、LIS の 4.2 以降に含まれています。 次のコマンドを実行して、LIS をダウンロードしてインストールします。
 
 ```bash
-mkdir lis4.2.1
-cd lis4.2.1
-wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.1-1.tar.gz
-tar xvzf lis-rpms-4.2.1-1.tar.gz
+mkdir lis4.2.2-2
+cd lis4.2.2-2
+wget https://download.microsoft.com/download/6/8/F/68FE11B8-FAA4-4F8D-8C7D-74DA7F2CFC8C/lis-rpms-4.2.2-2.tar.gz
+tar xvzf lis-rpms-4.2.2-2.tar.gz
 cd LISISO
 install.sh #or upgrade.sh if prior LIS was previously installed
 ```

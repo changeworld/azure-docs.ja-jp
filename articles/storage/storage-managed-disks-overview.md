@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 1eef8d38e33f80880d54ce6019eb837b82aba341
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 88a356e61c32f529d511aa1c9c68bdfa47acadb5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -52,7 +52,6 @@ Managed Disks で Azure Backup サービスを使用して、時間ベースの�
 ## <a name="pricing-and-billing"></a>価格と課金
 
 Managed Disks を使用するときには、課金に関する次の考慮事項が適用されます。
-
 * ストレージの種類
 
 * ディスク サイズ
@@ -88,7 +87,12 @@ Standard 管理ディスクで提供されるディスク サイズを次に示�
 
 **送信データ転送**: [送信データ転送](https://azure.microsoft.com/pricing/details/data-transfers/) (Azure データ センターから送信されるデータ) では、帯域幅の使用量に対して課金されます。
 
-**管理ディスク スナップショット (フル ディスク コピー) **: 管理スナップショットは管理ディスクの読み取り専用のフル コピーであり、デフォルトで Standard 管理ディスクとして保存されます。 スナップショットを使用すると、任意の時点の管理ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しい管理ディスクの作成に使用できます。 これらは使用済みサイズに基づいて請求されます。 たとえば、64 GB のプロビジョニング済み容量で管理ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GB である場合、スナップショットは使用されたデータ サイズである 10 GB 分のみ課金されます。  
+Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
+
+
+## <a name="managed-disk-snapshots"></a>管理ディスクのスナップショット
+
+管理スナップショットは管理ディスクの読み取り専用のフル コピーであり、デフォルトで Standard 管理ディスクとして保存されます。 スナップショットを使用すると、任意の時点の管理ディスクのバックアップを作成できます。 これらのスナップショットはソース ディスクとは独立して存在し、新しい管理ディスクの作成に使用できます。 これらは使用済みサイズに基づいて請求されます。 たとえば、64 GB のプロビジョニング済み容量で管理ディスクのスナップショットを作成し、実際に使用されたデータ サイズが 10 GB である場合、スナップショットは使用されたデータ サイズである 10 GB 分のみ課金されます。  
 
 Managed Disks では[増分スナップショット](storage-incremental-snapshots.md)は現在サポートされていませんが、今後サポートされる予定です。
 
@@ -97,8 +101,6 @@ Managed Disks でスナップショットを作成する方法の詳細につい
 * [Windows のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/windows/snapshot-copy-managed-disk.md)
 * [Linux のスナップショットを使用して管理ディスクとして格納された VHD のコピーを作成する](../virtual-machines/linux/snapshot-copy-managed-disk.md)
 
-
-Managed Disks の価格の詳細については、「[Managed Disks の価格](https://azure.microsoft.com/pricing/details/managed-disks)」をご覧ください。
 
 ## <a name="images"></a>イメージ
 

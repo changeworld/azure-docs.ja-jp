@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 07/28/2017
 ms.author: maquaran
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c05faeca0ef831dd85fea85793c919d1e34e4f15
+ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
+ms.openlocfilehash: b2987800aa0d8aaf237f46a9435d53fec7372a92
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/31/2017
 
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
@@ -39,6 +39,8 @@ ms.lasthandoff: 07/21/2017
 
 <tr><td>**SDK のダウンロード**</td><td>[NuGet](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB.ChangeFeedProcessor/)</td></tr>
 
+<tr><td>**API ドキュメント**</td><td>[Change Feed Processor ライブラリ API リファレンス ドキュメント](/dotnet/api/microsoft.azure.documents.changefeedprocessor?view=azure-dotnet)</td></tr>
+
 <tr><td>**概要**</td><td>[DocumentDB Change Feed Processor .NET SDK の概要](change-feed.md)</td></tr>
 
 <tr><td>**現在サポートされているフレームワーク**</td><td>[Microsoft .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653)</td></tr>
@@ -48,6 +50,7 @@ ms.lasthandoff: 07/21/2017
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
+* [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) バージョン 1.14.1 以下と互換性があります。
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
 Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。

@@ -5,24 +5,24 @@ services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: yossib
 ms.assetid: 
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 07/14/2017
 ms.author: kgremban
-ms.custom: H1Hack27Feb2017,it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 46f5761caf2883d6083245a9a1fe689ea0529212
+ms.reviewer: yossib
+ms.custom: H1Hack27Feb2017; it-pro
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: f9058ca12cb52c1a9d4a3d05f4ccb3e2c030873e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 07/26/2017
 
 ---
-# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication---public-preview"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合 - パブリック プレビュー
+# <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
 Azure MFA のネットワーク ポリシー サーバー (NPS) 拡張機能は、既存のサーバーを使用してクラウド ベースの MFA 機能を認証インフラストラクチャに追加します。 NPS 拡張機能を使用すると、新しいサーバーをインストール、構成、管理することなく、電話、SMS、またはモバイル アプリによる検証を既存の認証フローに追加できます。 
 
@@ -107,9 +107,8 @@ NPS 用にサーバーを指定したので、VPN ソリューションからの
 NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 つの要素があります。
 
 1. RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
-   - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
-   - **CHAPV2** は、電話とモバイル アプリの通知をサポートします。
-   - **EAP** はサポートされていません。
+   - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
+   - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
 2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
 
 NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
@@ -121,9 +120,9 @@ Azure で[サポートされていない認証方法を無効にする](multi-fa
 完全な NPS 拡張機能をデプロイする前に、2 段階認証を実行するユーザーに対して MFA を有効にする必要があります。 もっと早く、拡張機能をデプロイ時にテストするには、Multi-Factor Authentication に対して完全に登録されている少なくとも 1 つのテスト アカウントが必要です。
 
 テスト アカウントを開始するには、次の手順を使用します。
-1. [アカウントの MFA を有効にします](multi-factor-authentication-get-started-user-states.md)。
-2. https://portal.azure.com などの Azure AD 認証を開始する任意の Web サイトに移動します。
-3. [2 段階認証に登録します](./end-user/multi-factor-authentication-end-user-first-time.md)。
+1. テスト アカウントで [https://aka.ms/mfasetup](https://aka.ms/mfasetup) にサインインします。 
+2. 表示されたメッセージに従って、確認方法を設定します。
+3. 条件付きアクセス ポリシーを作成するか、[ユーザー状態を変更](multi-factor-authentication-get-started-user-states.md)して、テスト アカウントの 2 段階認証を要求します。 
 
 NPS 拡張機能を使って認証するには、この手順に従って登録しておく必要もあります。
 
@@ -169,14 +168,13 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 
 このセクションでは、NPS 拡張機能を正常にデプロイするために必要な設計上の考慮事項と提案を示します。
 
-### <a name="configurations-limitations"></a>構成の制限事項
+### <a name="configuration-limitations"></a>構成の制限
 
 - Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
 - NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。 代替ログイン ID や カスタム AD フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することはできません。  
 - すべての暗号化プロトコルで、すべての検証メソッドがサポートされるわけではありません。
    - **PAP** は、電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コードをサポートします。
-   - **CHAPV2** は、電話とモバイル アプリの通知をサポートします。
-   - **EAP** はサポートされていません。
+   - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
 
 ### <a name="control-radius-clients-that-require-mfa"></a>MFA を必須とする RADIUS クライアントの制御
 
@@ -225,7 +223,7 @@ Get-MsolServicePrincipalCredential -AppPrincipalId "981f26a1-7f43-403b-a875-f8b0
 1. NPS サーバーを再起動します。
 2. クライアント証明書が正常にインストールされていることを確認します。
 3. 証明書が Azure AD のテナントに関連付けられていることを確認します。
-4. 拡張機能を実行しているサーバーから https://login.windows.net/ にアクセスできることを確認します。
+4. 拡張機能を実行しているサーバーから https://login.microsoftonline.com/ にアクセスできることを確認します。
 
 -------------------------------------------------------------
 
@@ -242,5 +240,7 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure MFA を [Active Directory](multi-factor-authentication-get-started-server-dirint.md)、[RADIUS 認証](multi-factor-authentication-get-started-server-radius.md)、および [LDAP 認証](multi-factor-authentication-get-started-server-ldap.md) と統合する方法を参照してください。
+- ログインに別の ID を設定するか、「[Advanced configuration options for the NPS extension for Multi-Factor Authentication](nps-extension-advanced-configuration.md)」 (Multi-Factor Authentication の NPS 拡張機能の高度な構成オプション) の 2 段階認証を実行しない IP の例外リストを設定する
+
+- [Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](multi-factor-authentication-nps-errors.md)
 

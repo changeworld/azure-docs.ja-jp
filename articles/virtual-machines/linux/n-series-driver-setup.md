@@ -17,10 +17,10 @@ ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9cb7aa1e0b4e96a6f40620685b5505587b94ec66
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: bdeb4d5ca1d9ff4d7dfd0961690412dd7530572a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -81,12 +81,18 @@ NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM 
 
 6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
 
-7. インストールが完了したら、次を `/etc/nvidia/gridd.conf.template` に追加します。
+7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
+
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+
+8. 次を `/etc/nvidia/gridd.conf` に追加します。
  
   ```
   IgnoreSP=TRUE
   ```
-8. VM を再起動して、インストールの確認に進みます。
+9. VM を再起動して、インストールの確認に進みます。
 
 
 ### <a name="centos-based-73-or-red-hat-enterprise-linux-73"></a>CentOS ベース 7.3 または Red Hat Enterprise Linux 7.3
@@ -139,12 +145,18 @@ NV VM に NVIDIA GRID ドライバーをインストールするには、各 VM 
   ``` 
 6. nvidia-xconfig ユーティリティを実行して X 構成ファイルを更新するかどうかを尋ねられたら、**[はい]** を選択します。
 
-7. インストールが完了したら、次を `/etc/nvidia/gridd.conf.template` に追加します。
+7. インストールが完了したら、/etc/nvidia/gridd.conf.template を、/etc/nvidia/ にある新しいファイル gridd.conf にコピーします。
+  
+  ```bash
+  sudo cp /etc/nvidia/gridd.conf.template /etc/nvidia/gridd.conf
+  ```
+  
+8. 次を `/etc/nvidia/gridd.conf` に追加します。
  
   ```
   IgnoreSP=TRUE
   ```
-8. VM を再起動して、インストールの確認に進みます。
+9. VM を再起動して、インストールの確認に進みます。
 
 ### <a name="verify-driver-installation"></a>ドライバーのインストールの確認
 
@@ -349,3 +361,4 @@ sudo reboot
     * [NVIDIA Tesla M60](http://www.nvidia.com/object/tesla-m60.html) (Azure NV VM 用)
 
 * NVIDIA ドライバーがインストールされている Linux VM のイメージをキャプチャするには、「[Linux 仮想マシンを一般化してキャプチャする方法](capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」を参照してください。
+

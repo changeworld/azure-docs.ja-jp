@@ -3,7 +3,7 @@ title: "最初の Azure SQL Database の設計 | Microsoft Docs"
 description: "最初の Azure SQL Database を設計する方法について説明します。"
 services: sql-database
 documentationcenter: 
-author: janeng
+author: CarlRabeler
 manager: jhubbard
 editor: 
 tags: 
@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 06/20/2017
-ms.author: janeng
+ms.date: 07/31/2017
+ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d5e63e7079b652e69a089aef495952d29cae67a2
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: ec3b2debcd65f733041462940196a61c109bf051
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
@@ -49,7 +49,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [Azure ポータル](https://portal.azure.com/)にログインします。
 
-## <a name="create-a-blank-sql-database-in-the-azure-portal"></a>Azure Portal で空の SQL データベースを作成する
+## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
 Azure SQL データベースは、定義済みの一連の[コンピューティング リソースとストレージ リソース](sql-database-service-tiers.md)を使って作成されます。 データベースは、[Azure リソース グループ](../azure-resource-manager/resource-group-overview.md)内と [Azure SQL Database 論理サーバー](sql-database-features.md)内に作成されます。 
 
@@ -97,7 +97,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
    ![通知](./media/sql-database-get-started-portal/notification.png)
 
-## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
+## <a name="create-a-server-level-firewall-rule"></a>サーバーレベルのファイアウォール規則を作成する
 
 SQL Database サービスは、外部のアプリケーションやツールに、サーバーまたはサーバー上のすべてのデータベースへの接続を禁止するファイアウォールをサーバーレベルで作成します。それらに接続するためには、特定の IP アドレスに対してファイアウォールを開放するファイアウォール規則が作成されている必要があります。 以下の手順に従い、クライアントの IP アドレスに対して [SQL Database サーバーレベルのファイアウォール規則](sql-database-firewall-configure.md)を作成し、その IP アドレスのみに SQL Database ファイアウォールを介して外部接続できるようにします。 
 
@@ -131,7 +131,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 > [!IMPORTANT]
 > 既定では、すべての Azure サービスで、SQL Database ファイアウォール経由のアクセスが有効になります。 すべての Azure サービスに対して無効にするには、このページの **[オフ]** をクリックします。
 
-## <a name="sql-server-connection-information-in-the-azure-portal"></a>Azure Portal での SQL Server の接続情報
+## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
@@ -169,7 +169,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
    ![データベース オブジェクト](./media/sql-database-connect-query-ssms/connected.png)  
 
-## <a name="create-tables-in-the-database-with-ssms"></a>SSMS を使用してデータベースのテーブルを作成する 
+## <a name="create-tables-in-the-database"></a>データベースのテーブルを作成する 
 
 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) を用いた大学の生徒管理システムを構成する、4 つのテーブルのデータベース スキーマを作成します。
 
@@ -240,7 +240,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
    ![作成済み SSMS テーブル](./media/sql-database-design-first-database/ssms-tables-created.png)
 
-## <a name="load-data-into-the-tables-with-ssms"></a>SSMS を使用してテーブルにデータを読み込む
+## <a name="load-data-into-the-tables"></a>テーブルにデータを読み込む
 
 1. Downloads フォルダーに **SampleTableData** という名前のフォルダーを作成し 、データベースのサンプル データを格納します。 
 
@@ -264,7 +264,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 これで、先ほど作成したテーブルにサンプル データが読み込まれました。
 
-## <a name="query-the-tables-with-ssms"></a>SSMS を使用してテーブルに対してクエリを実行する
+## <a name="query-data"></a>データのクエリを実行する
 
 データベース テーブルから情報を取得するには、次のクエリを実行します。 SQL クエリの記述に関する詳細は、[SQL クエリの記述](https://technet.microsoft.com/library/bb264565.aspx)を参照してください。 最初のクエリでは 4 つのテーブルをすべて結合し、'Dominick Pope' のクラスで 75% 以上の成績の生徒をすべて検索し ます。 次のクエリでは 4 つのテーブルをすべて結合し、'Noe Coleman' がこれまでに登録したコースをすべて検索します。
 
@@ -301,7 +301,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
    AND person.LastName = 'Coleman'
    ```
 
-## <a name="restore-a-database-to-a-previous-point-in-time-using-the-azure-portal"></a>Azure Portal を使って以前の時点にデータベースを復元する
+## <a name="restore-a-database-to-a-previous-point-in-time"></a>データベースを以前の状態に復元する
 
 テーブルを誤って削除した場合を想定してください。 データの復元は容易なことではありません。 Azure SQL Database では、過去最長 35 日間における任意の時点に戻り、新しいデータベースに過去のデータを復元することができます。 このデータベースを用いることで、削除済みデータの復元が可能です。 次の手順を実行して、テーブルが追加される前の状態にサンプル データベースを復元します。
 
@@ -330,8 +330,10 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 > * テーブルの作成
 > * データの一括読み込み
 > * データのクエリ実行
-> * SQL Database の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能を使用した、以前の特定の時点へのデータベースの復元。次のチュートリアルに進み、データの移行について学習してください。
+> * SQL Database の[ポイントインタイム リストア](sql-database-recovery-using-backups.md#point-in-time-restore)機能を使用した、以前の特定の時点へのデータベースの復元
+
+次のチュートリアルでは、Visual Studio と C# を使用したデータベースの設計について学びます。
 
 > [!div class="nextstepaction"]
->[SQL Server データベースを Azure SQL Database に移行する](sql-database-migrate-your-sql-server-database.md)
+>[C# と ADO.NET で Azure SQL データベースを設計し、接続する](sql-database-design-first-database-csharp.md)
 
