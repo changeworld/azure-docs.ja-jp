@@ -108,7 +108,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_samlbase.png)
 
-3. **[BetterWorks Domain and URLs] (BetterWorks のドメインと URL)** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
+3. **[BetterWorks Domain and URLs] \(BetterWorks のドメインと URL)** セクションで、**IDP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url.png)
 
@@ -116,7 +116,7 @@ BetterWorks で Azure AD のシングル サインオンを構成してテスト
 
     b. **[応答 URL]** ボックスに、`https://app.betterworks.com/saml2/acs/` のパターンを使用して URL を入力します。
 
-4. **[BetterWorks Domain and URLs] (BetterWorks のドメインと URL)** セクションで、**SP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
+4. **[BetterWorks Domain and URLs] \(BetterWorks のドメインと URL)** セクションで、**SP 開始モード**でアプリケーションを構成する場合は次の手順を実行します。
     
     ![[シングル サインオンの構成]](./media/active-directory-saas-betterworks-tutorial/tutorial_betterworks_url1.png)
 

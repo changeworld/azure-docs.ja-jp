@@ -108,7 +108,7 @@ BambooHR で Azure AD のシングル サインオンを構成およびテスト
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_samlbase.png)
 
-3. **[BambooHR Domain and URLs] (BambooHR のドメインと URL)** セクションで、次の手順を実行します。
+3. **[BambooHR Domain and URLs] \(BambooHR のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_url.png)
 
@@ -125,7 +125,7 @@ BambooHR で Azure AD のシングル サインオンを構成およびテスト
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_general_400.png)
 
-6. **[BambooHR Configuration] (BambooHR 構成)** セクションで、**[Configure BambooHR] (BambooHR の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[BambooHR Configuration] \(BambooHR 構成)** セクションで、**[Configure BambooHR] \(BambooHR の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-bamboo-hr-tutorial/tutorial_bamboohr_configure.png) 
 
@@ -145,7 +145,7 @@ BambooHR で Azure AD のシングル サインオンを構成およびテスト
    
     ![SAML シングル サインオン](./media/active-directory-saas-bamboo-hr-tutorial/ic796692.png "SAML Single Sign-On")
    
-    a. **SAML シングル サインオン サービス URL** 値を **[SSO Login Url] (SSO ログイン URL)** テキスト ボックスに貼り付けます。
+    a. **SAML シングル サインオン サービス URL** 値を **[SSO Login Url] \(SSO ログイン URL)** テキスト ボックスに貼り付けます。
       
     b. Azure Portal からダウンロードされた Base-64 でエンコードされた証明書をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[X.509 証明書]** テキスト ボックスに貼り付けます
    
