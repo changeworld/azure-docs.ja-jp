@@ -12,12 +12,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/25/2017
 ms.author: sama
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 03c65775d7fe7eee0d14ca4551ae8a332dbc39b2
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 3c7c49ee5fbd98762da0eef6f02e7c2f036453cb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-using-language-customization"></a>Azure Active Directory B2C: 言語のカスタマイズの使用
@@ -40,7 +39,7 @@ ms.lasthandoff: 06/28/2017
 
 ## <a name="support-uilocales-requested-languages"></a>ui_locales で要求した言語のサポート 
 ポリシーで [言語のカスタマイズ] を有効にし、ui_locales パラメーターを追加することで、ユーザー体験の言語を制御できるようになりました。
-1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します。](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-the-b2c-features-blade)
+1. [この手順に従って、Azure Portal で B2C 機能ブレードに移動します。](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-app-registration#navigate-to-b2c-settings)
 2. 翻訳を有効にするポリシーに移動します。
 3. **[言語のカスタマイズ]** をクリックします。
 4. 警告をよく読みます。  [言語のカスタマイズ] は、一度有効にすると、オフにすることはできません。

@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 37e8d04f1786187a947a435b3cfd299546617c8b
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 7dda9520ce3d93bf0e86bd2481ad06c268d087c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
@@ -42,7 +42,7 @@ ms.lasthandoff: 07/21/2017
 
 セキュリティで保護されたクラスターとは、管理操作に対する未承認のアクセスを防止するクラスターで、この操作には、アプリケーション、サービス、また格納されたデータのデプロイ、アップグレード、削除が含まれます。 セキュリティで保護されていないクラスターとは、だれでも管理操作にいつでも接続し、実行できるクラスターを指します。 セキュリティで保護されていないクラスターを作成することもできますが、**セキュリティで保護されたクラスターを作成することを強くお勧めします**。 セキュリティで保護されていないクラスターを**後でセキュリティで保護することはできません**。新しいクラスターを作成する必要があります。
 
-セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-cluster)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
+セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 このガイドでは [Azure PowerShell][azure-powershell] を使用します。 新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/16/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: aeddf1aba1e8df74750538ba798d34a1a957e83f
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: a6f417ea6575b81258998ae3b31c10e9df59b603
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="custom-script-extension-for-windows"></a>Windows でのカスタムのスクリプト拡張機能
@@ -62,7 +62,7 @@ Windows 用のカスタム スクリプト拡張機能では、ターゲット�
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.8",
+        "typeHandlerVersion": "1.9",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -85,7 +85,7 @@ Windows 用のカスタム スクリプト拡張機能では、ターゲット�
 | apiVersion | 2015-06-15 |
 | publisher | Microsoft.Compute |
 | type | 拡張機能 |
-| typeHandlerVersion | 1.8 |
+| typeHandlerVersion | 1.9 |
 | fileUris (例) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 |
 | commandToExecute (例) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 |
 | storageAccountName (例) | examplestorageacct |

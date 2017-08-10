@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 62221d7d174de128bf0089fb79a143d73fbe550a
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 11244e0044eef8441e3a37ab8aeff0da30dacdb8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -130,7 +130,7 @@ Azure と企業ネットワークとの間に、プライベート ピアリン�
 
 **シナリオ:** アプリは米国内の組織のネットワークにあり、ユーザーは世界中に分散している。 Azure データセンターと企業ネットワークの間に ExpressRoute または VPN は存在しません。
 
-**推奨事項:** 前のセクションで説明したパターン 2 に従います。 
+**推奨事項:** 前のセクションで説明したパターン 1 に従います。 
 
 繰り返しますが、一般的なパターンはホップ 3 の最適化です。これにより、コネクタはアプリの近くに配置されます。 ホップ 3 は、すべて同じリージョン内にある場合、通常、コストは高くありません。 ただし、世界各地のユーザーが米国内のアプリケーション プロキシ インスタンスにアクセスするため、ユーザーの場所によってはホップ 1 のコストが高くなる可能性があります。 どのプロキシ ソリューションも、グローバルに分散しているユーザーに関して類似した特性を持つことは注目に値します。
 

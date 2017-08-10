@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/23/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: a7594c37a5d8b92144a1984d58ededd04927d189
+ms.translationtype: HT
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f96b9b212b9322d0677e49ff95184d0feccca2df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-powershell-on-windows-10"></a>Windows 10 での PowerShell を使用したポイント対サイト接続の証明書の生成とエクスポート
@@ -39,7 +38,7 @@ ms.lasthandoff: 05/25/2017
 
 この記事の手順は、Windows 10 を実行するコンピューターで実行する必要があります。 証明書の生成に使用する PowerShell コマンドレットは、Windows 10 オペレーティング システムの一部であり、その他のバージョンの Windows では機能しません。 Windows 10 コンピューターは、証明書の生成にのみ必要です。 証明書が生成されたら、それらをアップロードしたり、サポートされる任意のクライアント オペレーティング システムにインストールしたりできます。 
 
-Windows 10 コンピューターを使用できない場合は、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使用して証明書を生成できます。 ただし、MakeCert は、SHA-2 証明書を生成することはできず、SHA-1 しか生成できません。 SHA-1 証明書は、まだポイント対サイト接続に有効ですが、SHA-1 で使用している暗号化ハッシュは、SHA-2 ほど強力ではありません。 この理由から、可能であれば PowerShell の手順を使用することをお勧めします。 いずれかの方法を使用して生成した証明書は、[サポートされている](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)任意のクライアント オペレーティング システムにインストールです。
+Windows 10 コンピューターを使用できない場合は、[MakeCert](vpn-gateway-certificates-point-to-site-makecert.md) を使用して証明書を生成できます。 いずれかの方法を使用して生成した証明書は、[サポートされている](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)任意のクライアント オペレーティング システムにインストールです。
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 

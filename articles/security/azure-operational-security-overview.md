@@ -15,17 +15,15 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: d51ba4a40ff39f84ccad28c953fe57c845542b38
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: f2153e783adb955cf9055b09ba9aa2592f51e4b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="azure-operational-security-overview"></a>Azure で運用可能なセキュリティの概要
 Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。 [Azure で運用可能なセキュリティ](https://docs.microsoft.com/azure/security/azure-operational-security)は、Microsoft セキュリティ開発ライフサイクル (Security Development Lifecycle: SDL)、Microsoft セキュリティ レスポンス センター プログラム、サイバー セキュリティの脅威状況に対する深い認識など、Microsoft に固有のさまざまな機能の使用経験から得られた知識が組み込まれたフレームワークです。
-
-Azure で運用可能なセキュリティとは、ユーザーのデータ、アプリケーション、および Microsoft Azure にあるその他の資産を保護するために使用できる、サービス、コントロール、機能を指します。
 
 この記事、「Azure で運用可能なセキュリティの概要」では、以下の領域を重点的に取り上げます。
 

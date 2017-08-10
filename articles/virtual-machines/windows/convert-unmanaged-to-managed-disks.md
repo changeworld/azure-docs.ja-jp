@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8e6950fb44207824baf18d666db7ba26f0e360f0
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 53681c58ca1eff394d6a3db2d6a026845ac03df1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -137,19 +137,6 @@ Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzureRmVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
-
-
-## <a name="managed-disks-and-azure-storage-service-encryption"></a>Managed Disks と Azure Storage Service Encryption
-
-[Azure Storage Service Encryption](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) で暗号化された履歴があるストレージ アカウントに非管理対象ディスクが存在する場合は、前述の手順で非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある非管理対象ディスクをコピーして使用する方法について詳しく説明します。
-
-1. [AzCopy](../../storage/storage-use-azcopy.md) を使用して、Azure Storage Service Encryption が有効にされたことのないストレージ アカウントに VHD をコピーします。
-
-2. コピーした VM は、次の方法のいずれかで使用します。
-
-   * Managed Disks を使う VM を作成し、`New-AzureRmVm` での作成時にその VHD ファイルを指定します。
-
-   * `Add-AzureRmVmDataDisk` を使用して、管理ディスクを使用する実行中の VM にコピーした VHD を接続します。
 
 
 ## <a name="next-steps"></a>次のステップ

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/08/2017
 ms.author: terrylan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ad47c198b98f235b5a75fed6c403493a33594429
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 3bc1023d084205171b6b405932cf80f3da59fe8b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>ジャスト イン タイムを使用して仮想マシンへのアクセスを管理する
@@ -157,7 +157,7 @@ VM の既存のジャスト イン タイム ポリシーを編集するには�
 ## <a name="using-just-in-time-vm-access-via-powershell"></a>PowerShell によるジャスト イン タイム VM アクセスの使用
 
 PowerShell でジャスト イン タイム ソリューションを使用するためには、[最新バージョンの](/powershell/azure/install-azurerm-ps) Azure PowerShell があることを確認してください。
-確認できたら、[最新の](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.10) Azure Security Center を PowerShell ギャラリーからインストールする必要があります。
+確認できたら、[最新の](https://www.powershellgallery.com/packages/Azure-Security-Center/0.0.12) Azure Security Center を PowerShell ギャラリーからインストールする必要があります。
 
 ### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>VM のジャスト イン タイム ポリシーの構成
 

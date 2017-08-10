@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaa162df8a6cd60cb174242e6a353439f2da58b4
-ms.openlocfilehash: eb3a0ad811a4286df1bac963904bd9154c0ccfa3
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 195751d4c5ac4021eb929e96d39b9d0e72d3070f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/10/2016
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
@@ -28,7 +28,7 @@ ms.lasthandoff: 12/10/2016
 開始する前に、アクティビティ ログのアーカイブ先の[ストレージ アカウントを作成](../storage/storage-create-storage-account.md#create-a-storage-account)する必要があります。 既存のストレージ アカウントを使用しないことを強くお勧めします。既存のストレージ アカウントには、監視データへのアクセスをさらに制御するために保存されている他の非監視データがあります。 ただし、診断ログとメトリックもストレージ アカウントにアーカイブする場合は、中央の場所にすべての監視データを保持するために、アクティビティ ログのそのストレージ アカウントも使用するのが適切であることがあります。 使用するストレージ アカウントは、BLOB ストレージ アカウントではなく、一般的な目的のストレージ アカウントである必要があります。 設定を構成するユーザーが両方のサブスクリプションに対して適切な RBAC アクセスを持っている限り、ストレージ アカウントは、ログを出力するのと同じサブスクリプションに属している必要はありません。
 
 ## <a name="log-profile"></a>ログ プロファイル
-以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 [ログ プロファイルの詳細については、こちらを参照してください](monitoring-overview-activity-logs.md#export-the-activity-log-with-log-profiles)。 
+以下の方法のいずれかを使用して、アクティビティ ログをアーカイブするには、サブスクリプションに **ログ プロファイル** を設定します。 ログ プロファイルは、保存またはストリーミングされたイベントの種類と、ストレージ アカウントまたはイベント ハブの出力の種類を定義します。 また、ストレージ アカウントに格納されたイベントの保持ポリシー (保持する日数) も定義します。 保持ポリシーが 0 に設定されている場合は、イベントが無制限に保存されます。 それ以外の場合は、1 ～ 2,147, 483,647 の範囲の任意の値に設定できます。 保持ポリシーは日単位で適用されるため、その日の終わり (UTC) に、保持ポリシーの期間を超えることになるログは削除されます。 たとえば、保持ポリシーが 1 日の場合、その日が始まった時点で、一昨日のログは削除されます。 [ログ プロファイルの詳細については、こちらを参照してください](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)。 
 
 ## <a name="archive-the-activity-log-using-the-portal"></a>ポータルを使用したアクティビティ ログのアーカイブ
 1. ポータルで、左側のナビゲーションの **[アクティビティ ログ]** リンクをクリックします。 アクティビティ ログのリンクが表示されない場合は、最初に **[More Services (詳細なサービス)]** リンクをクリックします。
@@ -60,7 +60,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 azure insights logprofile add --name my_log_profile --storageId /subscriptions/s1/resourceGroups/insights-integration/providers/Microsoft.Storage/storageAccounts/my_storage --locations global,westus,eastus,northeurope --retentionInDays 180 –categories Write,Delete,Action
 ```
 
-| プロパティ | 必須 | Description |
+| プロパティ | 必須 | 説明 |
 | --- | --- | --- |
 | name |はい |ログ プロファイルの名前。 |
 | storageId |なし |アクティビティ ログの保存先となるストレージ アカウントのリソース ID。 |

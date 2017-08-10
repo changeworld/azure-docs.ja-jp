@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: 16a13909079306256ded06f2100815c46ff562a3
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 8221f34641f2e59bbcaf05c3a17f23411df6b634
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="log-events-for-diagnostic-evaluation-and-monitoring-of-batch-solutions"></a>Batch ソリューションの診断の評価と監視のログ イベント
@@ -46,7 +45,7 @@ ms.lasthandoff: 02/28/2017
 ## <a name="enable-diagnostic-logging"></a>診断ログの有効化
 診断ログは Batch アカウントに関して既定では無効です。 監視する Batch アカウントごとに診断ログを明示的に有効化する必要があります。
 
-[診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-diagnostic-logs)
+[診断ログの収集を有効にする方法](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#how-to-enable-collection-of-resource-diagnostic-logs)
 
 「[Azure 診断ログの概要](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」をすべて読み、ログを有効化する方法だけではなく、さまざまな Azure サービスでサポートされるログ カテゴリについて理解することをお勧めします。 たとえば、Azure Batch で現在サポートされている 1 つのログ カテゴリは**サービス ログ**です。
 

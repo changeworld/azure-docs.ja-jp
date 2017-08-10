@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
-ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 2eba6fb24c11add12ac16d04d3445e19a3486216
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-classic-deployment-model"></a>クラシック デプロイ モデルを使用して SSL オフロード用にアプリケーション ゲートウェイを構成する
@@ -26,6 +27,7 @@ ms.openlocfilehash: 9c56914091ecac3eb97977dd5afc2dc4588a052c
 > * [Azure ポータル](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-ssl-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
@@ -210,10 +212,5 @@ DnsName       : appgw-4c960426-d1e6-4aae-8670-81fd7a519a43.cloudapp.net
 
 * [Azure Load Balancer](https://azure.microsoft.com/documentation/services/load-balancer/)
 * [Azure の Traffic Manager](https://azure.microsoft.com/documentation/services/traffic-manager/)
-
-
-
-
-<!--HONumber=Jan17_HO4-->
 
 

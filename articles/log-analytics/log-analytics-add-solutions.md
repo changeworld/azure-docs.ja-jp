@@ -16,10 +16,10 @@ ms.date: 07/27/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 494d9445ac1e1add24d085bd33ccd73aa152ec47
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: ee0191c63f12ae32708095362b8028a61ca731cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="add-azure-log-analytics-management-solutions-to-your-workspace"></a>Azure Log Analytics 管理ソリューションをワークスペースに追加する
@@ -156,7 +156,7 @@ Log Analytics Windows エージェントと System Center Operations Manager エ
 | ネットワーク パフォーマンス監視 | Windows | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | TCP ハンドシェイク (5 秒ごと)、データ送信 (3 分ごと) |
 | Office 365 分析 (プレビュー) |Windows |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |通知時 |
 | Service Fabric 分析 |Windows |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |5 分 |
-| サービス マップ | Windows および Linux | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | 15 秒 |
+| サービス マップ | Windows および Linux | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | 15 秒 |
 | SQL の評価 |Windows |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) |7 日 |
 | SurfaceHub |Windows |![[はい]](./media/log-analytics-add-solutions/oms-bullet-green.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) |![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) |着信時 |
 | System Center Operations Manager Assessment (プレビュー) | Windows | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![あり](./media/log-analytics-add-solutions/oms-bullet-green.png) | ![なし](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![いいえ](./media/log-analytics-add-solutions/oms-bullet-red.png) | ![はい](./media/log-analytics-add-solutions/oms-bullet-green.png) | 7 日 |
