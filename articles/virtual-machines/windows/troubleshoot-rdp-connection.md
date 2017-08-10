@@ -14,14 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 06/14/2017
+ms.date: 07/25/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ed9945ae007d22c18d259984ee68f9c669927f9a
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 2c42ff5b7ab87e8ef8af2c244a1313fb55503c37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
@@ -67,25 +66,8 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
     Azure Portal で VM を選択します。 [設定] ウィンドウを、一覧の下部付近の **[サポートとトラブルシューティング]** セクションまで下にスクロールします。 **[Reset password]** ボタンをクリックします。 **[モード]** を **[Reset configuration only]** に設定し、**[更新]** ボタンをクリックします。
    
     ![Azure Portal で RDP 構成をリセットする](./media/troubleshoot-rdp-connection/reset-rdp.png)
-2. **ネットワーク セキュリティ グループの規則を確認する**。 このトラブルシューティングの手順では、RDP トラフィックを許可するように、ネットワーク セキュリティ グループに規則があることを確認します。 RDP の既定のポートは、TCP ポート 3389 です。 RDP トラフィックを許可する規則は、VM を作成する際に自動で作成されない場合があります。
-   
-    Azure Portal で VM を選択します。 [設定] ウィンドウの **[ネットワーク インターフェイス]** をクリックします。
-   
-    ![Azure Portalで VM のネットワーク インターフェイスを表示する](./media/troubleshoot-rdp-connection/select-network-interfaces.png)
-   
-    一覧からネットワーク インターフェイスを選択します (通常は 1 つのみ)。
-   
-    ![Azure Portal でネットワーク インターフェイスを選択する](./media/troubleshoot-rdp-connection/select-interface.png)
-   
-    **[ネットワーク セキュリティ グループ]** を選択して、ネットワーク インターフェイスに関連付けられているネットワーク セキュリティ グループを表示します。
-   
-    ![Azure Portal でネットワーク セキュリティ グループを選択する](./media/troubleshoot-rdp-connection/select-nsg.png)
-   
-    TCP ポート 3389 で RDP トラフィックを許可する受信の規則が存在することを確認します。 次の例では、RDP トラフィックを許可する有効なセキュリティ規則が表示されています。 `Service` と `Action` が正しく構成されていることがわかります。
-   
-    ![Azure Portal の RDP NSG 規則を検証する](./media/troubleshoot-rdp-connection/verify-nsg-rules.png)
-   
-    RDP トラフィックを許可する規則がない場合、[ネットワーク セキュリティ グループの規則を作成します](nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)。 TCP ポート 3389 を使用できます。
+2. **ネットワーク セキュリティ グループの規則を確認する**。 [IP フロー検証](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、RDP ポート (既定では 3389) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow)」を参照してください。
+
 3. **VM のブート診断を確認する**。 このトラブルシューティングの手順では、VM コンソール ログを確認し、VM が問題を報告しているかどうかを確認します。 すべての VM でブート診断を有効にしているとは限らないため、このトラブルシューティングの手順は省略できます。
    
     この記事では、具体的なトラブルシューティング手順については説明しませんが、RDP 接続に影響を与える、より広範な問題は示す場合があります。 コンソール ログと VM のスクリーン ショットの確認について詳しくは、「[VM のブート診断 (ブログの投稿)](boot-diagnostics.md)」をご覧ください。

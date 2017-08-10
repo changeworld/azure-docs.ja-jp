@@ -1,6 +1,6 @@
 ---
 title: "Terraform を使用して Azure に基本的なインフラストラクチャを作成する | Microsoft Docs"
-description: "Terraform を使用して Azure リソースを作成する方法について説明します。"
+description: "Terraform を使用して Azure リソースを作成する方法について説明します"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: echuvyrov
@@ -15,26 +15,26 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/14/2017
 ms.author: echuvyrov
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 8b8b3b0b46f79058ee69b9a2014581df433f8d3f
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 9660a95b440c2e4311829979e270d9f10099f624
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/02/2017
 
 ---
 
-# <a name="create-basic-infrastructure-in-azure-using-terraform"></a>Terraform を使用して Azure に基本的なインフラストラクチャを作成する
-この記事では、仮想マシンとその基になるインフラストラクチャを Azure にプロビジョニングするために必要な手順を詳しく説明します。 Terraform スクリプトを記述する方法のほか、クラウド インフラストラクチャに変更を加える前にそれらを視覚化する方法が記載されています。 また、Terraform を使用して Azure にインフラストラクチャを作成する方法についても説明します。
+# <a name="create-basic-infrastructure-in-azure-by-using-terraform"></a>Terraform を使用して Azure に基本的なインフラストラクチャを作成する
+この記事では、仮想マシンとその基になるインフラストラクチャを Azure にプロビジョニングするために実行する必要がある手順を示します。 Terraform スクリプトを記述する方法のほか、クラウド インフラストラクチャに変更を加える前にそれらを視覚化する方法を説明します。 さらに、Terraform を使用して Azure にインフラストラクチャを作成する方法についても説明します。
 
-まず、任意のテキスト エディター (Visual Studio Code、Sublime、Vim など) で _terraform_azure101.tf_ というファイルを作成します。 厳密なファイル名は重要ではありません。Terraform にフォルダー名をパラメーターとして渡すと、そのフォルダー内のすべてのスクリプトが実行されます。 次のコードを新しいファイルに貼り付けます。
+開始するには、任意のテキスト エディター (Visual Studio Code、Sublime、Vim など) で \terraform_azure101.tf という名前のファイルを作成します。 Terraform では、フォルダー名がパラメーターとして使用され、そのフォルダー内のすべてのスクリプトが実行されるため、ファイルの名前は重要ではありません。 次のコードを新しいファイルに貼り付けます。
 
 ~~~~
 # Configure the Microsoft Azure Provider
 # NOTE: if you defined these values as environment variables, you do not have to include this block
 provider "azurerm" {
   subscription_id = "your_subscription_id_from_script_execution"
-  client_id       = "your_client_id_from_script_execution"
-  client_secret   = "your_client_secret_from_script_execution"
+  client_id       = "your_appId_from_script_execution"
+  client_secret   = "your_password_from_script_execution"
   tenant_id       = "your_tenant_id_from_script_execution"
 }
 
@@ -44,33 +44,45 @@ resource "azurerm_resource_group" "helloterraform" {
     location = "West US"
 }
 ~~~~
-スクリプトの "provider" セクションで、スクリプトに記述されたリソースを Azure プロバイダーでプロビジョニングするよう Terraform に命令します。 subscription_id、client_id、client_secret、tenant_id の値を取得する方法については、[Terraform のインストールと構成](terraform-install-configure.md)に関するガイドを参照してください。 なお、このブロックでこれらの値の環境変数を作成した場合、このブロックをインクルードする必要はありません。 
+スクリプトの `provider` セクションで、このスクリプトに記述されたリソースを Azure プロバイダーでプロビジョニングするように Terraform に命令しています。 subscription_id、appId、password、および tenant_id の値を取得するには、『[Install and configure Terraform (Terraform のインストールおよび構成)](terraform-install-configure.md)』ガイドを参照してください。 このブロックに含まれるこれらの値を環境変数で作成している場合は、このブロックをインクルードする必要はありません。 
 
-"azure_rm_resource_group" リソースでは、新しいリソース グループを作成するよう Terraform に命令しています。 以降のスクリプトを見るとわかるように、Terraform では他にもさまざまな種類のリソースを利用できます。
+resource `azurerm_resource_group` は、新しいリソース グループを作成するように Terraform に命令しています。 Terraform で使用できるリソースの種類については、この記事で後述します。
 
-## <a name="executing-the-script"></a>スクリプトの実行
-スクリプトを保存してコンソール/コマンド ラインに戻り、次のように入力します。
+## <a name="execute-the-script"></a>スクリプトを実行する
+スクリプトを保存したら、コンソール/コマンド ラインに戻り、次のように入力します。
+```
+terraform init
+```
+Azure 用の Terraform プロバイダーを初期化します。 その後、次のように入力します。
 ```
 terraform plan terraformscripts
 ```
-このコマンドの "terraformscripts" は、スクリプトの保存先フォルダーです。 Terraform の "plan" コマンドは、スクリプトに定義されているリソースを探し、Terraform によって保存されている状態情報と比較したうえで、実際には Azure にリソースを "_作成せずに_"、予定された実行内容を出力します。 
+ここでは、スクリプトが保存されたフォルダーが `terraformscripts` であると想定しています。 `plan` Terraform コマンドを使用していますが、これはスクリプトに定義されているリソースを調べるものです。 このコマンドは、リソースを Terraform によって保存されている状態情報と比較した後、予定される実行の内容を出力します。Azure にリソースが実際に作成されることは "_ありません_"。 
 
 上記のコマンドを実行すると、次のような画面が表示されます。
 
-![Terraform の plan コマンドの画像](linux/media/terraform/tf_plan2.png)
+![Terraform プラン](linux/media/terraform/tf_plan2.png)
 
-問題がないようなので、この新しいリソース グループを Azure にプロビジョニングしましょう。次のコマンドを実行します。 
+問題がないようであれば、次のコマンドを実行して、この新しいリソース グループを Azure にプロビジョニングします。 
 ```
 terraform apply terraformscripts
 ```
-ここで Azure Portal を見ると、新しく "terraformtest" という空のリソース グループを確認できます。 次のセクションでは、仮想マシンとそれに関連して必要なすべてのインフラストラクチャをリソース グループに追加します。
+Azure ポータルに、`terraformtest` という名前の新しい空のリソース グループが表示されます。 次のセクションでは、仮想マシンと、その仮想マシンをサポートするすべてのインフラストラクチャをリソース グループに追加します。
 
-## <a name="provisioning-ubuntu-vm-with-terraform"></a>Terraform を使用した Ubuntu VM のプロビジョニング
-先ほど作成した Terraform スクリプトに手を加えて、Ubuntu を実行する仮想マシンのプロビジョニングに必要な情報を追加しましょう。 以降の各セクションでプロビジョニングするリソースは、サブネットが 1 つ含まれたネットワークと、ネットワーク インターフェイス カード、ストレージ コンテナーが含まれたストレージ アカウント、パブリック IP、そしてこれらすべてのリソースを利用する仮想マシンです。 Azure Terraform リソースごとの詳しい説明については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)を参照してください。
+## <a name="provision-an-ubuntu-vm-with-terraform"></a>Terraform を使用して Ubuntu VM をプロビジョニングする
+先ほど作成した Terraform スクリプトに手を加えて、Ubuntu を実行する仮想マシンをプロビジョニングするために必要な情報を追加します。 この後のセクションでプロビジョニングするリソースを次に示します。
+
+* サブネットが 1 つあるネットワーク
+* ネットワーク インターフェイス カード 
+* ストレージ コンテナーを使用するストレージ アカウント
+* パブリック IP
+* 上記のすべてのリソースを使用する仮想マシン 
+
+各 Azure Terraform リソースの詳細なドキュメントについては、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)を参照してください。
 
 完全版の[プロビジョニング スクリプト](#complete-terraform-script)もぜひご利用ください。
 
-### <a name="extending-the-terraform-script"></a>Terraform スクリプトの拡張
+### <a name="extend-the-terraform-script"></a>Terraform スクリプトを拡張する
 先ほど作成したスクリプトを次のリソースを使用して拡張します。 
 ~~~~
 # create a virtual network
@@ -89,7 +101,7 @@ resource "azurerm_subnet" "helloterraformsubnet" {
     address_prefix = "10.0.2.0/24"
 }
 ~~~~
-このスクリプトでは、仮想ネットワークを作成し、その仮想ネットワーク内にサブネットを作成します。 あらかじめ "${azurerm_resource_group.helloterraform.name}" で作成しておいたリソース グループが、仮想ネットワークとサブネットの両方の定義で参照されている点に注意してください。
+上のスクリプトは、仮想ネットワークを作成し、その仮想ネットワーク内にサブネットを作成します。 "${azurerm_resource_group.helloterraform.name}" で作成しておいたリソース グループが、仮想ネットワークとサブネットの両方の定義で参照されている点に注目してください。
 
 ~~~~
 # create public IP
@@ -119,12 +131,17 @@ resource "azurerm_network_interface" "helloterraformnic" {
     }
 }
 ~~~~
-上のスクリプト スニペットは、パブリック IP を作成すると共に、その作成したパブリック IP を利用するネットワーク インターフェイスを作成しています。 subnet_id と public_ip_address_id の参照に注目してください。 それらのリソースにネットワーク インターフェイスが依存していて、ネットワーク インターフェイスを作成する前にそれらのリソースを作成しておく必要があることが、Terraform に組み込まれているインテリジェンス機能によって認識されます。
+上のスクリプト スニペットは、パブリック IP を作成し、そのパブリック IP を利用するネットワーク インターフェイスを作成しています。 subnet_id と public_ip_address_id の参照に注目してください。 Terraform には、ネットワーク インターフェイスが特定のリソースに依存していること、ネットワーク インターフェイスを作成する前にそのリソースを作成する必要があることを認識するインテリジェンス機能が組み込まれています。
 
 ~~~~
+# create a random id
+resource "random_id" "randomId" {
+  byte_length = 4
+}
+
 # create storage account
 resource "azurerm_storage_account" "helloterraformstorage" {
-    name = "helloterraformstorage"
+    name                = "tfstorage${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.helloterraform.name}"
     location = "westus"
     account_type = "Standard_LRS"
@@ -143,7 +160,7 @@ resource "azurerm_storage_container" "helloterraformstoragestoragecontainer" {
     depends_on = ["azurerm_storage_account.helloterraformstorage"]
 }
 ~~~~
-このコードでは、ストレージ アカウントを作成し、そこにストレージ コンテナーを定義しています。今から作成しようとしている仮想マシンの VHD は、このストレージ コンテナーに格納することになります。
+ここでは、ストレージ アカウントを作成し、そのストレージ アカウント内にストレージ コンテナーを定義しています。 このストレージ アカウントは、これから作成する仮想マシンの仮想ハード ディスク (VHD) の格納場所です。
 
 ~~~~
 # create virtual machine
@@ -183,16 +200,18 @@ resource "azurerm_virtual_machine" "helloterraformvm" {
     }
 }
 ~~~~
-最後に、上のスニペットで仮想マシンを作成します。これまでプロビジョニングしてきたすべてのリソース、つまり仮想ハード ディスク (VHD) のストレージ アカウントとコンテナー、パブリック IP とサブネットを指定したネットワーク インターフェイス、既に作成したリソース グループは、この仮想マシンで利用します。 vm_size プロパティに注目してください。このスクリプトでは、Azure A0 SKU を指定しています。
+最後に、上のスニペットは、既にプロビジョニングされたすべてのリソースを使用する仮想マシンを作成しています。 すべてのリソースとは、VHD 用のストレージ アカウントとコンテナー、パブリック IP とサブネットが指定されたネットワーク インターフェイス、および作成済みのリソース グループです。 vm_size プロパティに注目してください。このスクリプトでは、Azure A0 SKU を指定しています。
 
-### <a name="executing-the-script"></a>スクリプトの実行
-完全なスクリプトを保存してコンソール/コマンド ラインに戻り、次のように入力します。
+### <a name="execute-the-script"></a>スクリプトを実行する
+完全なスクリプトを保存したら、コンソール/コマンド ラインに戻り、次のように入力します。
 ```
 terraform apply terraformscripts
 ```
-しばらくすると、Azure Portal の "terraformtest" リソース グループに一連のリソース (仮想マシンを含む) が表示されます。
+しばらくすると、Azure ポータルの `terraformtest` リソース グループに、仮想マシンを含むリソースが表示されます。
 
 ## <a name="complete-terraform-script"></a>完全な Terraform スクリプト
+
+便宜のため、下に示すのは、この記事で説明するすべてのインフラストラクチャをプロビジョニングする完全な Terraform スクリプトです。
 
 ```
 variable "resourcesname" {
@@ -257,9 +276,14 @@ resource "azurerm_network_interface" "helloterraformnic" {
     }
 }
 
+# create a random id
+resource "random_id" "randomId" {
+  byte_length = 4
+}
+
 # create storage account
 resource "azurerm_storage_account" "helloterraformstorage" {
-    name = "helloterraformstorage"
+    name                = "tfstorage${random_id.randomId.hex}"
     resource_group_name = "${azurerm_resource_group.helloterraform.name}"
     location = "westus"
     account_type = "Standard_LRS"
@@ -317,4 +341,5 @@ resource "azurerm_virtual_machine" "helloterraformvm" {
 ```
 
 ## <a name="next-steps"></a>次のステップ
-Terraform を使用して Azure に基本的なインフラストラクチャを作成しました。 ロード バランサーや仮想マシン スケール セットを使用した例など、さらに複雑なシナリオについては、[Azure を対象とした Terraform の例](https://github.com/hashicorp/terraform/tree/master/examples)が数多く用意されているので、そちらを参照してください。 サポートされている Azure プロバイダーを網羅した最新の一覧は、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)に記載されています。
+Terraform を使用して、Azure に基本的なインフラストラクチャを作成しました。 さらに複雑なシナリオ (ロード バランサーや仮想マシン スケール セットを使用する例など) については、[Azure を対象とした Terraform の例](https://github.com/hashicorp/terraform/tree/master/examples)を参照してください。 サポートされている Azure プロバイダーの最新の一覧については、[Terraform のドキュメント](https://www.terraform.io/docs/providers/azurerm/index.html)を参照してください。
+

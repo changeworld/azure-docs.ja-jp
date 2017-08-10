@@ -8,18 +8,18 @@ manager: timlt
 editor: tysonn
 tags: azure-resource-manager
 ms.assetid: 
-ms.service: 
+ms.service: azure
 ms.devlang: 
 ms.topic: 
 ms.tgt_pltfrm: 
 ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 692391385e0fbfd6c7fdd0d04464ebe1cc4dc482
+ms.translationtype: HT
+ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
+ms.openlocfilehash: a9dfb0af80ef018e5e655e6e5c78fb0b7e426794
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 07/24/2017
 
 ---
 
@@ -191,7 +191,7 @@ Azure コマンド ライン インターフェイスは、コマンド ライ�
 
 Azure サービスを利用するには、サブスクリプションが必要です。 いくつかの種類のサブスクリプションを利用できます。
 
-**無料アカウント**: [Azure Web サイト](https://azure.microsoft.com/)に、無料アカウントの新規登録リンクがあります。 無料アカウントでは、30 日間のコースで $200 クレジットが与えられます。Azure のリソースをあらゆる組み合わせでお試しいただけます。 クレジット額を超えると、アカウントが一時停止されます。 試用期間が終わると、サービスが撤去され、使用不可になります。 従量課金のサブスクリプションにいつでもアップグレードできます。
+**無料アカウント**: [Azure Web サイト](https://azure.microsoft.com/)に、無料アカウントの新規登録リンクがあります。 無料アカウントでは、30 日間のコースでクレジットが与えられます。Azure のリソースをあらゆる組み合わせでお試しいただけます。 クレジット額を超えると、アカウントが一時停止されます。 試用期間が終わると、サービスが撤去され、使用不可になります。 従量課金のサブスクリプションにいつでもアップグレードできます。
 
 **MSDN サブスクリプション**: MSDN サブスクリプションを契約すると、毎月、Azure クレジットに一定の額が与えられます。 たとえば、 MSDN サブスクリプション付きの Microsoft Visual Studio Enterprise を契約すると、Azure クレジットに毎月 \$150 与えられます。
 
@@ -408,7 +408,7 @@ Azure File Storage は、標準のサーバー メッセージ ブロック (SMB
 
 File Storage 共有は標準の SMB ファイル共有であるため、Azure で実行されているアプリケーションは、ファイル システム I/O API を介して共有内のデータにアクセスできます。 そのため、開発者は、既存のコードとスキルを利用し、既存のアプリケーションを移行することができます。 IT プロフェッショナルは、Azure アプリケーションの管理の一部として、PowerShell コマンドレットを使用して、File Storage 共有を作成、マウント、管理できます。
 
-詳しくは、「[Windows で Azure File Storage を使用する](../../storage/storage-dotnet-how-to-use-files.md)」または「[Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md)」をご覧ください。
+詳しくは、「[Windows で Azure File Storage を使用する](../../storage/storage-file-how-to-use-files-windows.md)」または「[Linux で Azure File Storage を使用する方法](../../storage/storage-how-to-use-files-linux.md)」をご覧ください。
 
 **Table Storage**
 

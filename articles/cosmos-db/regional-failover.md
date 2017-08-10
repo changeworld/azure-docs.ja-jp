@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: ff6900cf4516a173e212728a069587d908f9fe11
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー
@@ -103,7 +102,7 @@ Azure のリージョン内障害やデータセンターの停止はめった�
 
 ## <a id="ManualFailovers"></a>手動フェールオーバー
 
-自動フェールオーバーに加えて、指定の Cosmos DB アカウントの現在の書き込みリージョンは、手動で動的に、既存の書き込みリージョンのいずれかに変更することができます。 手動フェールオーバーは、Azure Portal から、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)開始することができます。 
+自動フェールオーバーに加えて、指定の Cosmos DB アカウントの現在の書込みリージョンは、手動で動的に、既存の書込みリージョンのいずれかに変更することができます。 手動フェールオーバーは、Azure Portal から、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)開始することができます。 
 
 手動フェールオーバーは**データ損失なし**および**可用性の損失なし**を保証するもので、指定した Cosmos DB アカウントの書き込みリージョンを元のリージョンから新しいリージョンに適切に移行します。 自動フェールオーバーの場合と同様に、Cosmos DB SDK は手動フェールオーバー時に自動的に書き込みリージョンの変更処理を行い、呼び出しが自動的に新しい書き込みリージョンにリダイレクトされるようにします。 フェールオーバー管理のためにお使いのアプリケーションのコードや構成を変更する必要はありません。 
 
@@ -122,7 +121,7 @@ Azure のリージョン内障害やデータセンターの停止はめった�
 ## <a id="NextSteps"></a>次のステップ
 * Cosmos DB の[グローバル配布](distribute-data-globally.md)サポートについて確認する
 * [Azure Cosmos DB とのグローバルな整合性](consistency-levels.md)について確認する
-* Azure Cosmos DB の [DocumentDB SDK](../cosmos-db/tutorial-global-distribution-documentdb.md) を使用して複数リージョンで開発する
+* Azure Cosmos DB の [DocumentDB API](../cosmos-db/tutorial-global-distribution-documentdb.md) を使用して複数のリージョンで開発する
 * Azure DocumentDB を使用して[複数リージョン ライター アーキテクチャ](multi-region-writers.md)を作成する方法を確認する
 
 

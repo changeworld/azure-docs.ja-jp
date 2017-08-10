@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/10/2016
 ms.author: zivr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 062ab97d00622419e2bca1fcd0a17f6b6b4f6f81
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 793803bfc12059a68ec881da9de37116f7a0eb8c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="azure-metadata-service---scheduled-events-preview"></a>Azure Metadata Service: スケジュールされたイベント (プレビュー)
@@ -42,8 +41,8 @@ ms.lasthandoff: 05/23/2017
 今後のイベントについて管理者に通知したり、そのようなイベントのログを記録したりすることで、クラウドでホストされているアプリケーションのサービスの向上につながる場合があります。
 
 Azure Metadata Service では、次のユース ケースでスケジュールされたイベントを表示します。
--    プラットフォームによって開始されたメンテナンス (ホスト OS ロールアウトなど)
--    ユーザーが開始した呼び出し (ユーザーによる再起動や VM の再デプロイなど)
+-   プラットフォームによって開始されたメンテナンス (ホスト OS ロールアウトなど)
+-   ユーザーが開始した呼び出し (ユーザーによる再起動や VM の再デプロイなど)
 
 
 ## <a name="scheduled-events---the-basics"></a>スケジュールされたイベントの基本  
@@ -69,9 +68,16 @@ Virtual Machine が Virtual Network 内で作成されていない場合 (クラ
 ### <a name="enabling-scheduled-events"></a>スケジュールされたイベントの有効化
 スケジュールされたイベントを初めて呼び出すとき、Azure はこの機能を Virtual Machine で暗黙的に有効化します。 そのため、最初の呼び出しでは最大 2 分の応答遅延が発生すると予想されます。
 
-### <a name="testing-your-logic-with-user-initiated-operations"></a>ユーザーが開始した操作によるロジックのテスト
-ロジックをテストするには、Azure Portal、API、CLI、または PowerShell を使用して、スケジュールされたイベントが発生する操作を開始します。 仮想マシンを再起動すると、イベントの種類が `Reboot` であるスケジュールされたイベントが発生します。 仮想マシンを再デプロイすると、イベントの種類が `Redeploy` であるスケジュールされたイベントが発生します。
-どちらの場合も、スケジュールされたイベントにより、アプリケーションがグレースフル シャットダウンに時間をかけられるようになるため、ユーザーが開始した操作の完了に時間がかかります。 
+### <a name="user-initiated-maintenance"></a>ユーザーが開始したメンテナンス
+ユーザーが Azure Portal、API、CLI または PowerShell を使用して開始した仮想マシンのメンテナンスによって、スケジュールされたイベントが発生します。 これによって、アプリケーションでメンテナンス準備ロジックをテストすることができ、アプリケーションでは、ユーザーが開始したメンテナンスのための準備することができます。
+
+仮想マシンを再起動すると、`Reboot` 型のイベントがスケジュールされます。 仮想マシンを再デプロイすると、`Redeploy` 型のイベントがスケジュールされます。
+
+> [!NOTE] 
+> 現在、最大で 10 ユーザーが開始したメンテナンス操作を同時にスケジュールできます。 この制限は、スケジュールされたイベントが一般公開される前に緩和されます。
+
+> [!NOTE] 
+> 現在、スケジュールされたイベントが発生する結果となる、ユーザーが開始したメンテナンスは構成することができません。 構成機能は、将来のリリースで予定されています。
 
 ## <a name="using-the-api"></a>API を使用する
 
@@ -373,3 +379,4 @@ if __name__ == '__main__':
 - [インスタンス メタデータ サービス](virtual-machines-instancemetadataservice-overview.md)で使用可能な API の詳細についてご覧ください。
 - [Azure での Windows 仮想マシンの計画メンテナンス](windows/planned-maintenance.md)に関するページをご覧ください。
 - [Azure での Linux 仮想マシンの計画的メンテナンス](linux/planned-maintenance.md)に関するページをご覧ください。
+

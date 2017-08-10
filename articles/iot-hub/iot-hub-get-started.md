@@ -13,39 +13,38 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/28/2017
+ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: c02b4bb6e01bc6e6e5b7e373a8d6d2ab2d2395da
+ms.translationtype: HT
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: 2e1387e6cf5fedb983063a7f72ffe74c73948534
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT Hub 入門チュートリアル
 
-モ ノのインターネット (IoT) ソリューションを構築するには、Azure IoT Hub および Azure IoT device SDK を使用します。
+モノのインターネット (IoT) ソリューションを構築するには、Azure IoT Hub および Azure IoT device SDK を使用します。
 
 * Azure IoT Hub は、クラウド内で完全に管理されたサービスで、IoT デバイスを安全に接続し、監視し、管理します。 Azure IoT Device SDK を使用して、IoT デバイスを実装します。
-* レガシ デバイス、帯域幅のコスト、セキュリティ ポリシーおよびプライバシー ポリシー、エッジ データ処理などの要因を考慮する必要がある複雑な IoT シナリオでは、IoT ゲートウェイを使用します。 これらのシナリオでは、Azure IoT Edge を使用して、IoT Hub にデバイスを接続するゲートウェイを作成します。
+* IoT のより複雑なシナリオでは、IoT ゲートウェイを使用します。 レガシ デバイス、帯域幅のコスト、セキュリティ ポリシーおよびプライバシー ポリシー、エッジ データ処理などの要因を考慮する必要がある場合などです。 これらのシナリオでは、Azure IoT Edge を使用して、IoT Hub にデバイスを接続するゲートウェイを作成します。
 
 ## <a name="what-the-tutorials-cover"></a>チュートリアルの内容
 
 以下のチュートリアルでは、Azure IoT Hub と Device SDK について紹介します。 このチュートリアルでは、一般的な IoT シナリオを使用して、IoT Hub の機能を説明します。 また、チュートリアルでは、IoT Hub を他の Azure サービスやツールと組み合わせて、より強力な IoT ソリューションを構築する方法も提示します。 チュートリアルでは、シミュレートされた IoT デバイスまたは実際の IoT デバイスのいずれかを選択できます。 また、ゲートウェイを使用して IoT hub にデバイスを接続できるようにする方法についても説明します。
 
-## <a name="setup-your-device-connect-iot-device-or-gateway-to-azure-iot-hub"></a>デバイスのセットアップ: Azure IoT Hub への IoT デバイスまたはゲートウェイの接続
+## <a name="set-up-your-device"></a>デバイスのセットアップ
 
-実際のデバイスまたはシミュレートされたデバイスを選択して、開始します。
+Azure IoT Hub に IoT デバイスまたはゲートウェイを接続します。 物理デバイスまたはシミュレートされたデバイスを選択して、開始します。
 
 | IoT デバイス                       | プログラミング言語 |
-|---------------------------------|----------------------|
-| Raspberry Pi                    | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]           |
-| Intel Edison                    | [Node.js][Ed_Nd][C][Ed_C]           |
-| Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
-| Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |
-| Adafruit Feather M0             | [Arduino][M0_Ard]              |
-| PC のシミュレート デバイス          | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth]              |
+|----------------------------------|----------------------|
+| Raspberry Pi                     | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]    |
+| Intel Edison                     | [Node.js][Ed_Nd][C][Ed_C]    |
+| Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
+| Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
+| Adafruit Feather M0              | [Arduino][M0_Ard]              |
+| PC のシミュレート デバイス           | [.NET][Sim_NET]、[Java][Sim_Jav]、[Node.js][Sim_Nd]、[Python][Sim_Pyth] |
 | オンライン デバイス シミュレーター         | [Raspberry Pi (Node.js)][Ol_Sim] |
 
 また、IoT Edge ゲートウェイを使用すると、IoT hub にデバイスを接続できます。
@@ -57,10 +56,9 @@ ms.lasthandoff: 07/08/2017
 
 [!INCLUDE [iot-hub-get-started-extended](../../includes/iot-hub-get-started-extended.md)]
 
-
 [Pi_Nd]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Pi_C]: iot-hub-raspberry-pi-kit-c-get-started.md
-[Pi_Py]: iot-hub-raspberry-pi-kit-node-get-started.md
+[Pi_Py]: iot-hub-raspberry-pi-kit-python-get-started.md
 [Ed_Nd]: iot-hub-intel-edison-kit-node-get-started.md
 [Ed_C]: iot-hub-intel-edison-kit-c-get-started.md
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md

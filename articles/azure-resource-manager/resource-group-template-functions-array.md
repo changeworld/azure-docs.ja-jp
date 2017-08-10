@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 74982663b0501d3a5c7973a5f383e14e0f964696
+ms.translationtype: HT
+ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
+ms.openlocfilehash: 0bd9ec41761c9ce575f3bcf4d1f8e8578b83e01c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/02/2017
 
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
@@ -34,6 +33,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 * [empty](#empty)
 * [first](#first)
 * [intersection](#intersection)
+* [json](#json)
 * [last](#last)
 * [length](#length)
 * [min](#min)
@@ -613,6 +613,53 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 | ---- | ---- | ----- |
 | objectOutput | オブジェクト | {"one": "a", "three": "c"} |
 | arrayOutput | array | ["two", "three"] |
+
+
+## <a name="json"></a>json
+`json(arg1)`
+
+JSON オブジェクトを返します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+|:--- |:--- |:--- |:--- |
+| arg1 |あり |string |JSON に変換する値。 |
+
+
+### <a name="return-value"></a>戻り値
+
+**null** が指定された場合は、指定された文字列の JSON オブジェクト、または空のオブジェクト。
+
+### <a name="example"></a>例
+
+次の例では、intersection を配列およびオブジェクトと共に使用する方法を示します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "resources": [
+    ],
+    "outputs": {
+        "jsonOutput": {
+            "type": "object",
+            "value": "[json('{\"a\": \"b\"}')]"
+        },
+        "nullOutput": {
+            "type": "bool",
+            "value": "[empty(json('null'))]"
+        }
+    }
+}
+```
+
+既定値を使用した場合の前の例の出力は次のようになります。
+
+| 名前 | 型 | 値 |
+| ---- | ---- | ----- |
+| jsonOutput | オブジェクト | {"a": "b"} |
+| nullOutput | Boolean | True |
 
 <a id="last" />
 

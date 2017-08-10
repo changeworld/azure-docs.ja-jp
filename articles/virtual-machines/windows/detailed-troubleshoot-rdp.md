@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 05/31/2017
+ms.date: 07/25/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 05517573232f5b5234364865d92d5a2d1b7096e6
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
@@ -109,18 +109,9 @@ RDP 接続には以下のコンポーネントが関連しています。
 問題の原因がエンドポイントかどうかを確認するには、現在使用されているエンドポイントを削除してから新しいエンドポイントを作成します。このとき、外部ポート番号の範囲 49152 ～ 65535 からランダムなポート番号を選択します。 詳細については、[仮想マシンに対してエンドポイントを設定する方法](classic/setup-endpoints.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)に関するページを参照してください。
 
 ## <a name="source-4-network-security-groups"></a>ソース 4: ネットワーク セキュリティ グループ
-ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。 インターネットからのリモート デスクトップ トラフィックが、ネットワーク セキュリティ グループの規則で許可されていることを確認してください。
+ネットワーク セキュリティ グループでは、許可された受信トラフィックと送信トラフィックをより細かく制御できます。 Azure 仮想ネットワーク内のサブネットまたはクラウド サービスの全体に適用されるルールを作成することができます。
 
-* Azure ポータルで VM を選択します。
-* **[すべての設定]** | 、**[ネットワーク インターフェイス]** の順にクリックし、該当するネットワーク インターフェイスを選択します。
-* **[すべての設定]** | 、**[ネットワーク セキュリティ グループ]** の順にクリックし、該当するネットワーク セキュリティ グループを選択します。
-* **[すべての設定]** | 、**[受信セキュリティ規則]** の順にクリックし、TCP ポート 3389 の RDP を許可する規則が存在することを確認します。
-  * 規則が存在しない場合は、 **[追加]** をクリックして規則を作成します。 プロトコルに「**TCP**」と入力し、宛先ポート範囲に「**3389**」と入力します。
-  * アクションが **[許可]** に設定されていることを確認し、[OK] をクリックして新しい受信規則を保存します。
-
-詳細については、「 [ネットワーク セキュリティ グループ (NSG) について](../../virtual-network/virtual-networks-nsg.md)
-
-NSG 構成の検証に IP Verify を使用することもできます。 詳細については、「[Azure のネットワーク監視の概要](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-monitoring-overview)」を参照してください。 
+[IP フロー検証](../../network-watcher/network-watcher-check-ip-flow-verify-portal.md)を使用して、ネットワーク セキュリティ グループ規則によって、仮想マシンから送受信されるトラフィックがブロックされていないかどうかを確認します。 有効なセキュリティ グループ規則を確認して、RDP ポート (既定では 3389) に対して受信 "許可" NSG 規則が存在し、優先されていることを確認することもできます。 詳細については、「[有効なセキュリティ規則を使用した VM トラフィック フローのトラブルシューティング](../../virtual-network/virtual-network-nsg-troubleshoot-portal.md#using-effective-security-rules-to-troubleshoot-vm-traffic-flow)」を参照してください。
 
 ## <a name="source-5-windows-based-azure-vm"></a>ソース 5: Windows ベースの Azure VM
 ![](./media/detailed-troubleshoot-rdp/tshootrdp_5.png)

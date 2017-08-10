@@ -13,10 +13,10 @@ ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f7ca0c1aa67b8a5f5487dd93a142ac9da094f945
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 4c502784a57850d6f11200e95f7432d2206e920a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 
@@ -92,15 +92,20 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="managed-disks-template-formatting"></a>管理ディスクのテンプレートの書式
 
-Azure Managed Disks を使用した場合、そのディスクが最上位のリソースとなり、ユーザーによって作成されるストレージ アカウントは不要となります。 管理ディスクは、`2016-04-30-preview` API バージョンで公開されており、現在ではこれが既定のディスクの種類になっています。 以降のセクションでは、既定の設定とディスクのカスタマイズ方法について詳しく見ていきます。
+Azure Managed Disks を使用した場合、そのディスクが最上位のリソースとなり、ユーザーによって作成されるストレージ アカウントは不要となります。 管理ディスクは、最初 `2016-04-30-preview` の API バージョンで公開され、その後のすべての API バージョンで使用でき、既定のディスク タイプになりました。 以降のセクションでは、既定の設定とディスクのカスタマイズ方法について詳しく見ていきます。
+
+> [!NOTE]
+> `2016-04-30-preview` と `2017-03-30` の間で大きな変更があったため、`2016-04-30-preview` 以降の API バージョンを使うことをお勧めします。
+>
+>
 
 ### <a name="default-managed-disk-settings"></a>管理ディスクの既定の設定
 
-今後、管理ディスクを使用して VM を作成する場合、ストレージ アカウント リソースを作成する必要はありません。既存の仮想マシン リソースは次のように更新することができます。 具体的には、`apiVersion` に `2016-04-30-preview` が反映され、`osDisk` と `dataDisks` には、VHD の具体的な URI が指定されていません。 デプロイ時に別途プロパティを指定しない限り、ディスクには [Standard LRS ストレージ](storage-redundancy.md)が使用されます。 名前を指定しなかった場合、OS ディスクには `<VMName>_OsDisk_1_<randomstring>` 形式の名前が、各データ ディスクには `<VMName>_disk<#>_<randomstring>` 形式の名前が付きます。 既定では、Azure Disk Encryption が無効になり、キャッシュは、OS ディスクの場合は "読み取り/書き込み" に、データ ディスクの場合は "なし" になります。 下の例を見るとわかるように、ストレージ アカウントの依存関係は依然として存在します。ただし、これはあくまで診断のストレージ用であって、ディスク ストレージに必要なものではありません。
+今後、管理ディスクを使用して VM を作成する場合、ストレージ アカウント リソースを作成する必要はありません。既存の仮想マシン リソースは次のように更新することができます。 具体的には、`apiVersion` に `2017-03-30` が反映され、`osDisk` と `dataDisks` には、VHD の具体的な URI が指定されていません。 デプロイ時に別途プロパティを指定しない限り、ディスクには [Standard LRS ストレージ](storage-redundancy.md)が使用されます。 名前を指定しなかった場合、OS ディスクには `<VMName>_OsDisk_1_<randomstring>` 形式の名前が、各データ ディスクには `<VMName>_disk<#>_<randomstring>` 形式の名前が付きます。 既定では、Azure Disk Encryption が無効になり、キャッシュは、OS ディスクの場合は "読み取り/書き込み" に、データ ディスクの場合は "なし" になります。 下の例を見るとわかるように、ストレージ アカウントの依存関係は依然として存在します。ただし、これはあくまで診断のストレージ用であって、ディスク ストレージに必要なものではありません。
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
@@ -143,23 +148,25 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 {
     "type": "Microsoft.Compute/disks",
     "name": "[concat(variables('vmName'),'-datadisk1')]",
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "location": "[resourceGroup().location]",
+    "sku": {
+        "name": "Standard_LRS"
+    },
     "properties": {
         "creationData": {
             "createOption": "Empty"
         },
-        "accountType": "Standard_LRS",
         "diskSizeGB": 1023
     }
 }
 ```
 
-このディスク オブジェクトは、その後 VM オブジェクト内で参照することでアタッチすることができます。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 この機能を使用するためには、VM リソースの `apiVersion` が `2016-04-30-preview` になっている必要があります。 また、VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係を作成していることに注意してください。 
+このディスク オブジェクトは、その後 VM オブジェクト内で参照することでアタッチすることができます。 作成した管理ディスクのリソース ID を `managedDisk` プロパティに指定しておけば、VM が作成されるときにディスクがアタッチされます。 VM リソースの `apiVersion` は `2017-03-30` に設定されています。 また、VM の作成前にディスク リソースが作成されるように、ディスク リソースへの依存関係を作成していることに注意してください。 
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/virtualMachines",
     "name": "[variables('vmName')]",
     "location": "[resourceGroup().location]",
@@ -200,11 +207,11 @@ Azure Managed Disks を使用した場合、そのディスクが最上位のリ
 
 ### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>管理ディスクを使った VM で構成される管理された可用性セットを作成する
 
-管理ディスクを使った VM で構成される管理された可用性セットを作成するには、可用性セット リソースに `sku` オブジェクトを追加し、その `name` プロパティを `Aligned` に設定します。 これにより、各 VM のディスクが単一障害点とならないよう互いに分離されます。 この機能を使用するためには、可用性セット リソースの `apiVersion` が `2016-04-30-preview` になっている必要があります。
+管理ディスクを使った VM で構成される管理された可用性セットを作成するには、可用性セット リソースに `sku` オブジェクトを追加し、その `name` プロパティを `Aligned` に設定します。 これにより、各 VM のディスクが単一障害点とならないよう互いに分離されます。 また、可用性セット リソース の `apiVersion` は `2017-03-30` に設定されています。
 
 ```
 {
-    "apiVersion": "2016-04-30-preview",
+    "apiVersion": "2017-03-30",
     "type": "Microsoft.Compute/availabilitySets",
     "location": "[resourceGroup().location]",
     "name": "[variables('avSetName')]",

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dd5ba797fe973dddc16231f42d5f561e1956b91c
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: e5f7697b1069186b9ab6b6594fa5efb069252475
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
@@ -88,7 +88,7 @@ ms.lasthandoff: 07/21/2017
 1. ターミナルに戻り、npm で **async** モジュールをインストールします。
    
         npm install async --save
-2. npm で **documentdb** モジュールをインストールします。 このモジュールで、DocumentDB のすべての操作を行います。
+2. npm で **documentdb** モジュールをインストールします。 このモジュールで、Azure Cosmos DB のすべての操作を行います。
    
         npm install documentdb --save
 3. アプリケーションの **package.json** ファイルを簡単に確認すると、追加モジュールが表示されます。 このファイルは、アプリケーションの実行時にどのパッケージをダウンロードし、インストールする必要があるかを Azure に伝えます。 表示される内容は以下の例のようになります。
@@ -390,8 +390,8 @@ ms.lasthandoff: 07/21/2017
    
         var config = {}
    
-        config.host = process.env.HOST || "[the URI value from the DocumentDB Keys blade on http://portal.azure.com]";
-        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the DocumentDB Keys blade on http://portal.azure.com]";
+        config.host = process.env.HOST || "[the URI value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
+        config.authKey = process.env.AUTH_KEY || "[the PRIMARY KEY value from the Azure Cosmos DB Keys blade on http://portal.azure.com]";
         config.databaseId = "ToDoList";
         config.collectionId = "Items";
    
@@ -456,45 +456,46 @@ ms.lasthandoff: 07/21/2017
     **layout.jade** ファイルを保存して閉じます。
 
 3. アプリケーションが使用するビューである **index.jade** ファイルを開き、そのファイルの中身を次のコードに置き換えます。
-
-    ```
-    extends layout
-    block content
-      h1 #{title}
-      br
-    
-      form(action="/completetask", method="post")
-        table.table.table-striped.table-bordered
-          tr
-            td Name
-            td Category
-            td Date
-            td Complete
-          if (typeof tasks === "undefined")
-            tr
-              td
-          else
-            each task in tasks
-              tr
-                td #{task.name}
-                td #{task.category}
-                - var date  = new Date(task.date);
-                - var day   = date.getDate();
-                - var month = date.getMonth() + 1;
-                - var year  = date.getFullYear();
-                td #{month + "/" + day + "/" + year}
-                td
-                  input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
-        button.btn(type="submit") Update tasks
-      hr
-      form.well(action="/addtask", method="post")
-        label Item Name:
-        input(name="name", type="textbox")
-        label Item Category:
-        input(name="category", type="textbox")
-        br
-        button.btn(type="submit") Add item
-    ```
+   
+        extends layout
+        block content
+           h1 #{title}
+           br
+        
+           form(action="/completetask", method="post")
+             table.table.table-striped.table-bordered
+               tr
+                 td Name
+                 td Category
+                 td Date
+                 td Complete
+               if (typeof tasks === "undefined")
+                 tr
+                   td
+               else
+                 each task in tasks
+                   tr
+                     td #{task.name}
+                     td #{task.category}
+                     - var date  = new Date(task.date);
+                     - var day   = date.getDate();
+                     - var month = date.getMonth() + 1;
+                     - var year  = date.getFullYear();
+                     td #{month + "/" + day + "/" + year}
+                     td
+                       input(type="checkbox", name="#{task.id}", value="#{!task.completed}", checked=task.completed)
+             button.btn.btn-primary(type="submit") Update tasks
+           hr
+           form.well(action="/addtask", method="post")
+             .form-group
+               label(for="name") Item Name:
+               input.form-control(name="name", type="textbox")
+             .form-group
+               label(for="category") Item Category:
+               input.form-control(name="category", type="textbox")
+             br
+             button.btn(type="submit") Add item
+   
 
     これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
    
@@ -505,27 +506,6 @@ ms.lasthandoff: 07/21/2017
     2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
 
     アプリケーションが動作するために必要なコードはこれですべてです。
-4. **public\stylesheets** ディレクトリ内の **style.css** ファイルを開き、そのコードを次のコードに置き換えます。
-   
-        body {
-          padding: 50px;
-          font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-        }
-        a {
-          color: #00B7FF;
-        }
-        .well label {
-          display: block;
-        }
-        .well input {
-          margin-bottom: 5px;
-        }
-        .btn {
-          margin-top: 5px;
-          border: outset 1px #C8C8C8;
-        }
-   
-    この **style.css** ファイルを保存して閉じます。
 
 ## <a name="_Toc395783181"></a>手順 6: ローカルでのアプリケーションの実行
 1. ローカル コンピューターでアプリケーションをテストするには、ターミナルで `npm start` を実行してアプリケーションを起動し、[http://localhost:3000](http://localhost:3000) ブラウザー ページを更新します。 ページは、次の画像のようになります。
