@@ -12,7 +12,7 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: HT
 ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: 28d32d1e2d82519fc7b2ad4edca8435c3759594f

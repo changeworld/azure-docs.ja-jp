@@ -12,13 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/10/2017
+ms.date: 08/03/2017
 ms.author: twooley
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3083ef504dc32d6adf32ccabe7d22ae7e5cad372
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: c62b4c165cdeeb0a038521ad9e43e061044c921c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack administration basics
@@ -109,7 +109,7 @@ Before a user can access services, they must [subscribe to an offer](azure-stack
 
 ## <a name="where-to-get-support"></a>Where to get support
 
-For the Azure Stack Development Kit, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). These forums are regularly monitored. Because the development kit is an evaluation environment, there is no official support offered through Microsoft Customer Support Services (CSS).
+For the Azure Stack Development Kit, you can ask support-related questions in the [Microsoft forums](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack). If you click the Help and support icon (question mark) in the upper-right corner of the administrator portal, and then click **New support request**, this opens the forums site directly. These forums are regularly monitored. Because the development kit is an evaluation environment, there is no official support offered through Microsoft Customer Support Services (CSS).
 
 ## <a name="next-steps"></a>Next steps
 

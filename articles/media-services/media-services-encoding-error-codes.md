@@ -12,12 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b341416f837d03e0532b4f8c0a3f3f85641a8995
 ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 01/27/2017
 
 ---
 
@@ -52,9 +53,4 @@ ms.openlocfilehash: d1e6421404d9c8845eb3ccd30d84c0c8cf5930b8
 
 <!--Reference links in article-->
 [1]: http://azure.microsoft.com/pricing/details/media-services/
-
-
-
-<!--HONumber=Jan17_HO4-->
-
 

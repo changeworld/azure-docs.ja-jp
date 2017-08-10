@@ -12,23 +12,20 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e1ceaf7baef021f97f70a6b1a5203e178db613db
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
 
-
 ---
-<a id="create-application-insights-resources-using-powershell" class="xliff"></a>
-#  PowerShell を使用した Application Insights リソースの作成
+#  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。
 
 これらのリソースを作成する際に重要となるのが、[Azure Resource Manager](../azure-resource-manager/powershell-azure-resource-manager.md) の JSON テンプレートです。 簡単に言うと、既存のリソースの JSON 定義をダウンロードし、名前などの特定の値をパラメーター化して、新しいリソースを作成するときに、テンプレートを実行するという手順になります。 いくつかのリソースをまとめてパッケージ化することで、すべてを一度に作成できます (例、可用性テスト、アラート、および連続エクスポート用の記憶域を使用したアプリの監視)。 パラメーター化の一部には、いくつか細かい点があります。それについては、以降で説明します。
 
-<a id="one-time-setup" class="xliff"></a>
-## 1 回限りのセットアップ
+## <a name="one-time-setup"></a>1 回限りのセットアップ
 以前に Azure サブスクリプションで PowerShell を使用したことがない場合
 
 スクリプトを実行するコンピューターに Azure PowerShell モジュールをインストールします。
@@ -36,8 +33,7 @@ ms.lasthandoff: 04/03/2017
 1. [Microsoft Web Platform Installer (v5 以上)](http://www.microsoft.com/web/downloads/platform.aspx)をインストールします。
 2. このインストーラーを使用して Microsoft Azure PowerShell をインストールします。
 
-<a id="create-an-azure-resource-manager-template" class="xliff"></a>
-## Azure Resource Manager テンプレートの作成
+## <a name="create-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの作成
 新しい .json ファイルを作成します (この例では、 `template1.json` と呼びます)。 ファイルに、次のコンテンツをコピーします。
 
 ```JSON
@@ -157,8 +153,7 @@ ms.lasthandoff: 04/03/2017
 
 
 
-<a id="create-application-insights-resources" class="xliff"></a>
-## Application Insights リソースの作成
+## <a name="create-application-insights-resources"></a>Application Insights リソースの作成
 1. PowerShell で Azure にサインインします。
    
     `Login-AzureRmAccount`
@@ -178,8 +173,7 @@ ms.lasthandoff: 04/03/2017
 
 その他のパラメーターを追加することもできます。テンプレートのパラメーター セクションに説明があります。
 
-<a id="to-get-the-instrumentation-key" class="xliff"></a>
-## インストルメンテーション キーを取得するには
+## <a name="to-get-the-instrumentation-key"></a>インストルメンテーション キーを取得するには
 アプリケーション リソースを作成したら、インストルメンテーション キーが必要になります。 
 
 ```PS
@@ -190,8 +184,7 @@ ms.lasthandoff: 04/03/2017
 
 
 <a id="price"></a>
-<a id="set-the-price-plan" class="xliff"></a>
-## 料金プランの設定
+## <a name="set-the-price-plan"></a>料金プランの設定
 
 [料金プラン](app-insights-pricing.md)を設定できます。
 
@@ -216,8 +209,7 @@ ms.lasthandoff: 04/03/2017
 
 
 
-<a id="add-a-metric-alert" class="xliff"></a>
-## メトリック アラートの追加
+## <a name="add-a-metric-alert"></a>メトリック アラートの追加
 
 アプリ リソースと同時にメトリック アラートを設定するには、次のように、テンプレート ファイルにコードをマージします。
 
@@ -290,8 +282,7 @@ ms.lasthandoff: 04/03/2017
 その他のアラート ルールのタイプ名と詳しい構成を確認するには、ルールを手動で作成した後、[Azure Resource Manager](https://resources.azure.com/) でそれらを調べます。 
 
 
-<a id="add-an-availability-test" class="xliff"></a>
-## 可用性テストの追加
+## <a name="add-an-availability-test"></a>可用性テストの追加
 
 ここでは、(単一ページをテストするための) ping テストの例を示します。  
 
@@ -396,8 +387,7 @@ ms.lasthandoff: 04/03/2017
 
 他のテスト場所のコードを見つけたり、より複雑な Web テストの作成を自動化するには、サンプルを手動で作成した後、[Azure Resource Manager](https://resources.azure.com/) からコードをパラメーター化します。
 
-<a id="add-more-resources" class="xliff"></a>
-## リソースの追加
+## <a name="add-more-resources"></a>リソースの追加
 
 他のリソース (任意の種類) の作成を自動化するには、サンプルを手動で作成した後、[Azure Resource Manager](https://resources.azure.com/) からそのコードをパラメーター化します。 
 
@@ -422,8 +412,7 @@ ms.lasthandoff: 04/03/2017
    
     `"apiVersion": "2015-05-01",`
 
-<a id="parameterize-the-template" class="xliff"></a>
-### テンプレートのパラメーター化
+### <a name="parameterize-the-template"></a>テンプレートのパラメーター化
 ここでは、特定の名前をパラメーターで置き換える必要があります。 [テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)をパラメーター化するには、[一連のヘルパー関数](../azure-resource-manager/resource-group-template-functions.md)を使用して式を記述します。 
 
 文字列の一部のみをパラメーター化することはできません。そのため、`concat()` を使用して、文字列を構築します。
@@ -441,8 +430,7 @@ ms.lasthandoff: 04/03/2017
 | `"myappname"` (小文字) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>` Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`<br/>Guid と Id を削除します。 |
 
-<a id="set-dependencies-between-the-resources" class="xliff"></a>
-### リソース間の依存関係の設定
+### <a name="set-dependencies-between-the-resources"></a>リソース間の依存関係の設定
 Azure では、厳密な順序でリソースを設定する必要があります。 次の設定を開始する前に、確実に 1 つの設定を完了するために、依存関係の行を追加します。
 
 * 可用性テスト リソース
@@ -454,8 +442,7 @@ Azure では、厳密な順序でリソースを設定する必要がありま�
 
 
 
-<a id="next-steps" class="xliff"></a>
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 自動化に関するその他の記事:
 
 * [Application Insights リソースを作成するための PowerShell スクリプト](app-insights-powershell-script-create-resource.md) - テンプレートを使用しない簡単な方法

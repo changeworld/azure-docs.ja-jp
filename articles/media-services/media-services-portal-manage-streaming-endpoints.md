@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Portal を使用したストリーミング エンドポイントの管理 | Microsoft Docs"
 description: "このトピックでは、Azure ポータルを使用してストリーミング エンドポイントを管理する方法について説明します。"
 services: media-services
@@ -14,13 +13,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/05/2017
+ms.date: 08/09/2017
 ms.author: juliako
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
 ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 
@@ -63,7 +62,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
     ![ストリーミング エンドポイント](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
-## <a name="a-idconfigurestreamingendpointsaconfiguring-the-streaming-endpoint"></a><a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
+## <a id="configure_streaming_endpoints"></a>ストリーミング エンドポイントの構成
 ストリーミング エンドポイントでは、次のプロパティを構成できます。
 
 * Access control
@@ -89,7 +88,7 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 
 詳細については、 [こちらの](media-services-portal-scale-streaming-endpoints.md) トピックを参照してください。
 
-## <a name="a-idenablecdnaenable-azure-cdn-integration"></a><a id="enable_cdn"></a>Azure CDN 統合を有効にする
+## <a id="enable_cdn"></a>Azure CDN 統合を有効にする
 
 新しいアカウントを作成すると、既定のストリーミング エンドポイント Azure CDN 統合が既定で有効になります。
 

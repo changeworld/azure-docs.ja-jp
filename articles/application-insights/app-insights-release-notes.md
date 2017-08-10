@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: Human Translation
 ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
 ms.openlocfilehash: a8c636ac3b3b12543bfc597489345b3cf153daa6
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/19/2017
-
 
 ---
 # <a name="sdk-release-notes---application-insights"></a>SDK リリース ノート - Application Insights

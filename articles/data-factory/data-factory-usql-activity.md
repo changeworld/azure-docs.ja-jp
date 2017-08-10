@@ -12,7 +12,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 08/10/2017
 ms.author: spelluru
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
@@ -83,7 +83,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
         "type": "AzureDataLakeAnalytics",
         "typeProperties": {
             "accountName": "adftestaccount",
-            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
             "servicePrincipalId": "<service principal id>",
             "servicePrincipalKey": "<service principal key>",
             "tenant": "<tenant info, e.g. microsoft.onmicrosoft.com>",
@@ -110,7 +110,7 @@ U-SQL アクティビティでは、Data Lake Analytics に対して次の種類
         "type": "AzureDataLakeAnalytics",
         "typeProperties": {
             "accountName": "adftestaccount",
-            "dataLakeAnalyticsUri": "datalakeanalyticscompute.net",
+            "dataLakeAnalyticsUri": "azuredatalakeanalytics.net",
             "authorization": "<authcode>",
             "sessionId": "<session ID>", 
             "subscriptionId": "<optional, subscription id of ADLA>",
