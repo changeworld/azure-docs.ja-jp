@@ -108,7 +108,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-birst-tutorial/tutorial_birst_samlbase.png)
 
-3. **[Birst Agile Business Analytics Domain and URLs] (Birst Agile Business Analytics のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Birst Agile Business Analytics Domain and URLs] \(Birst Agile Business Analytics のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-birst-tutorial/tutorial_birst_url.png)
 
@@ -131,7 +131,7 @@ Birst Agile Business Analytics で Azure AD のシングル サインオンを�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-birst-tutorial/tutorial_general_400.png)
 
-6. **[Birst Agile Business Analytics Configuration] (Birst Agile Business Analytics 構成)** セクションで、**[Configure Birst Agile Business Analytics] (Birst Agile Business Analytics の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[Birst Agile Business Analytics Configuration] \(Birst Agile Business Analytics 構成)** セクションで、 **[Configure Birst Agile Business Analytics] \(Birst Agile Business Analytics の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-birst-tutorial/tutorial_birst_configure.png) 
 
