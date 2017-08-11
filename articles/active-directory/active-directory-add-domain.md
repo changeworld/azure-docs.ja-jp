@@ -3,7 +3,7 @@ title: "Azure Active Directory へのカスタム ドメイン名の追加 | Mic
 description: "Azure Active Directory に会社のドメイン名を追加する方法とドメイン名を検証する方法"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 35a6e20a-9907-432b-9d36-16b916a5c249

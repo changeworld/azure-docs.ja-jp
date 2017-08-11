@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブの出力の構成 | ラーニング パ
 keywords: "データ出力、データ移動"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 3bbea3da-bfce-4af1-a15e-d4b23874034f
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/26/2017
-ms.author: jeffstok
+ms.author: samacha
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: e3878c02f39025eeb5a2c40db9e5a9bb07055a69
