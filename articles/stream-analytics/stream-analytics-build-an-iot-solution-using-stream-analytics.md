@@ -4,7 +4,7 @@ description: "料金所ブースを例に Stream Analytics を使った基本的
 keywords: "IOT ソリューション, ウィンドウ関数"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
+ms.author: samacha
 ms.translationtype: HT
 ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 1031cd63dede9ed202fdc11b153a550766d9cb19

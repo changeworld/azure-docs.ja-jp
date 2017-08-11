@@ -3,7 +3,7 @@ title: "Azure Active Directory へのカスタム ドメイン名の追加とフ
 description: "企業のドメイン名を Azure Active Directory に追加し、Azure Active Directory とオンプレミスのフェデレーション ソリューションの間でのフェデレーション サインインを設定する方法について説明します"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: jeffgilb
 manager: femila
 editor: 
 ms.assetid: 27126c7e-e6d6-4ef3-a4fb-f5f0706e749d
