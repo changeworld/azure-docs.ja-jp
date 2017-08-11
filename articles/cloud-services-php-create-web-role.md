@@ -14,9 +14,10 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: 89092e75d10ece044be61ceba0baf16c9e1599be
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
 
 
