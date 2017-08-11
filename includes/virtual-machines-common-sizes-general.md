@@ -7,7 +7,7 @@
 
 - オリジナルの D シリーズに続く Dv2 シリーズには、より強力な CPU が備わっています。 Dv2 シリーズの CPU は D シリーズの CPU よりも、およそ 35% 高速です。 これは最新世代の 2.4 GHz Intel Xeon® E5-2673 v3 (Haswell) プロセッサに基づいており、Intel Turbo Boost Technology 2.0 を使用することで、最大 3.1 GHz まで実現できます。 Dv2 シリーズのメモリ構成とディスク構成は D シリーズと同じです。
 
-- Basic レベルのサイズは主に、負荷分散や自動スケール、メモリ消費量の多い仮想マシンのいずれも必要としない用途 (開発ワークロードなど) 向けです。 より運用環境の用途に適した VM サイズについては、[仮想マシンのサイズ](virtual-machines-size-specs.md)に関するページを参照してください。VM の料金については、[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/)に関するページを参照してください。
+- Basic レベルのサイズは主に、負荷分散や自動スケール、メモリ消費量の多い仮想マシンのいずれも必要としない用途 (開発ワークロードなど) 向けです。 より運用環境の用途に適した VM サイズについては、(仮想マシンのサイズ)\[virtual-machines-size-specs.md] に関するページを参照してください。VM の料金については、[Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/) に関するページを参照してください。
 
 ## <a name="dsv3-series"></a>Dsv3 シリーズ
 
