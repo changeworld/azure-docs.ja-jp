@@ -10,11 +10,12 @@ tags: draft, helm, acs, azure-container-service
 keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, Draft, Azure"
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2017
 ms.author: rasquill
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: b70d2340c0f1286fa355a78a4cd0cb1ce37cbc39

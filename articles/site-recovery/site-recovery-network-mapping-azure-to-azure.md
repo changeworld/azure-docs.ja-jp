@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 5/25/2017
+ms.date: 08/11/2017
 ms.author: pratshar
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 34f5caa13aa94dc982ed497d7c8ddeceed61a6d8
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/15/2017
-
 
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>2 つの Azure リージョン間でのネットワーク マッピング

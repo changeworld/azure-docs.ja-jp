@@ -14,6 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/08/2016
 ms.author: jucoriol
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: b6687b4e5df73e61acc599133e53385987742937

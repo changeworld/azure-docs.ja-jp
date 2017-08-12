@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/13/2017
+ms.date: 08/11/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: 92a3250a4b07a8a473bd3343181176a2623cd476
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/16/2017
-
 
 ---
 # <a name="reprotect-from-failed-over-azure-region-back-to-primary-region"></a>フェールオーバーされた Azure リージョンからプライマリ リージョンに戻るときの再保護

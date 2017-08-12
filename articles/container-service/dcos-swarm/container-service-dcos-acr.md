@@ -11,11 +11,12 @@ keywords: "Docker, コンテナー, マイクロサービス, Mesos, Azure, File
 ms.assetid: 
 ms.service: container-service
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/23/2017
 ms.author: juliens
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: fa07135d550bf9ea0f6d1e03089b988cf0d5dddc
