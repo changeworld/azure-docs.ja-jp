@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service
 keywords: "コンテナー, マクロサービス, DC/OS, Azure"
-ms.assetid: f0ab5645-2636-42de-b23b-4c3a7e3aa8bb
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: rogardle
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: b0ab5a47e335998a7f1135b5715e9c50b89b6a68

@@ -1,7 +1,7 @@
 ---
 title: "最初の Azure Container Instances コンテナーの作成 | Azure Docs"
 description: "Azure Container Instances でのデプロイおよび作業の開始"
-services: container-service
+services: container-instances
 documentationcenter: 
 author: seanmck
 manager: timlt
@@ -9,14 +9,14 @@ editor:
 tags: 
 keywords: 
 ms.assetid: 
-ms.service: 
+ms.service: container-instances
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2017
 ms.author: seanmck
-ms.custom: 
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: ad053391e6b3927ab11faaf4d9e70b610e86f3c3

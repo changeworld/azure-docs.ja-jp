@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service
 keywords: "コンテナー, DC/OS, Azure"
-ms.assetid: 91d9a28a-3a52-4194-879e-30f2fa3d946b
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2016
 ms.author: saudas
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 9ee460b29deba598e648e72958b08e77015a5505

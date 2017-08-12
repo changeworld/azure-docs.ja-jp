@@ -14,6 +14,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: e68f06925fd7c72d72610ca68fab58a6fa2f4561

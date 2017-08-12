@@ -8,15 +8,14 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service
 keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
-ms.assetid: 52da4163-1182-4b2e-be00-4951e5c1da16
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2017
 ms.author: rogardle
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: d51f0fab9cd7904071c70f23aa6e424682b4b667

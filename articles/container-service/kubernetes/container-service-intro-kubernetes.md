@@ -11,12 +11,12 @@ keywords: "Kubernetes, Docker, コンテナー, マイクロサービス, Azure"
 ms.assetid: 
 ms.service: container-service
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2017
 ms.author: gamonroy
-ms.custom: 
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: ed3193cce078b4b81f269fe01a40d3aa4465782d

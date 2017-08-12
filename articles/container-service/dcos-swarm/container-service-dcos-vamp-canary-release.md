@@ -11,6 +11,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/17/2017
 ms.author: rasquill
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: db2e0bd43161aad02ffce61b4cd9325892844dde

@@ -16,6 +16,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/17/2017
 ms.author: danlep
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: e2ac0d65eea9cea25a2a9cb1f99a35c689eed976

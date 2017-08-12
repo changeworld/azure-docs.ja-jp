@@ -16,6 +16,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/13/2016
 ms.author: rogardle
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: a4c44b356ac97f4ee4c1122885d4d13f85c80cbc
