@@ -4,13 +4,13 @@
 ## [可用性](configure-availability.md)
 ## [FAQ](faq.md)
 
-# [作業の開始](../opensource-links.md)
+# 作業の開始
 ## [ポータルを使用した Linux VM の作成](createportal.md)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
 ## [SSH キーの作成](../mac-create-ssh-keys.md)
 
 # 方法
-## [Compute](../intro-on-azure.md)
+## 計算
 ### [カスタム VM の作成](create-custom.md)
 ### [VM のキャプチャ](capture-image.md)
 ### [Linux VM でリモート デスクトップを使用する](remote-desktop.md)
