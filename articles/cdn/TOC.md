@@ -10,6 +10,8 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
+### [CDN にカスタム ドメインをマップする](cdn-map-content-to-custom-domain.md)
+### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
 ## コンテンツの最適化
 ### [最適化の概要](cdn-optimization-overview.md)
 ####[大きなファイルの最適化](cdn-large-file-optimization.md)
@@ -17,12 +19,10 @@
 ####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
 ### [PowerShell で管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
-### [CDN にカスタム ドメインをマップする](cdn-map-content-to-custom-domain.md)
 ### [国ごとにアクセスを制限する](cdn-restrict-access-by-country.md)
 ### [ファイル圧縮によるパフォーマンスの向上](cdn-improve-performance.md)
 ### クエリ文字列別にコンテンツをキャッシュする
