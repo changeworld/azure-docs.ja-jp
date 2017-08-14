@@ -1,7 +1,7 @@
 ---
 title: "SendGrid 電子メール サービスの使用方法 (.NET) | Microsoft Docs"
 description: "Azure で SendGrid 電子メール サービスを使用して電子メールを送信する方法について説明します。 コード サンプルは C# で記述され、.NET API を使用しています。"
-services: app-service\web
+services: app-service-web
 documentationcenter: .net
 author: thinkingserious
 manager: erikre
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 126bc0658af3a27643bc0da2848545546f158f0c
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>SendGrid を使用した Azure での電子メールの送信方法

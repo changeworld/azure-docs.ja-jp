@@ -2,24 +2,24 @@
 title: "Azure SDK for Java を使用した Azure App Service での Web アプリの作成"
 description: "Azure SDK for Java を使用してプログラムで Azure App Service の Web アプリを作成する方法について説明します。"
 tags: azure-classic-portal
-services: app-service\web
+services: app-service-web
 documentationcenter: Java
 author: donntrenton
 manager: erikre
 editor: jimbe
 ms.assetid: 8954c456-1275-4d57-aff4-ca7d6374b71e
-ms.service: multiple
+ms.service: app-service-web
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: v-donntr
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: 19ddcc3e8e1bb3b52eeb06d81e27793c25c1e230
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="create-a-web-app-in-azure-app-service-using-the-azure-sdk-for-java"></a>Azure SDK for Java を使用した Azure App Service での Web アプリの作成

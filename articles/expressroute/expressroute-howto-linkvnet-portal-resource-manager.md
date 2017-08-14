@@ -31,7 +31,7 @@ ms.lasthandoff: 07/28/2017
 > * [PowerShell (クラシック)](expressroute-howto-linkvnet-classic.md)
 > 
 
-この記事では、Resource Manager デプロイメント モデルと Azure ポータルを使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかいまいません。
+この記事では、Resource Manager デプロイ モデルと Azure ポータルを使用して Azure ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法について説明します。 仮想ネットワークは、同じサブスクリプションにあっても、別のサブスクリプションの一部であってもかまいません。
 
 ## <a name="before-you-begin"></a>開始する前に
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)、[ルーティングの要件](expressroute-routing.md)、[ワークフロー](expressroute-workflows.md)を確認します。
