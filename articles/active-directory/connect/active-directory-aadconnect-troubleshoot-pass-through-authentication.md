@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4a687e1edbb2c9b3db3079a70162886092ede521
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 72bd39bcf720cf5704274fcdfa0f2b8fc44a77bc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -33,11 +33,11 @@ ms.lasthandoff: 08/01/2017
 
 ### <a name="check-status-of-the-feature-and-authentication-agents"></a>機能と認証エージェントの状態を確認する
 
-テナントでパススルー認証機能がまだ**有効**であること、および認証エージェントの状態が**アクティブ**であり、**非アクティブ**ではないことを確認します。 このことは、[Azure Portal](https://portal.azure.com/) の **[Azure AD Connect]** ブレードで確認できます。
+テナントでパススルー認証機能がまだ**有効**であること、および認証エージェントの状態が**アクティブ**であり、**非アクティブ**ではないことを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
 
-![Azure Portal - Azure AD Connect ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
+![Azure Active Directory 管理センター - [Azure AD Connect] ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta7.png)
 
-![Azure Portal - パススルー認証ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
+![Azure Active Directory 管理センター - [パススルー認証] ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta11.png)
 
 ### <a name="user-facing-sign-in-error-messages"></a>ユーザーに表示されるサインインのエラー メッセージ
 
@@ -51,13 +51,13 @@ ms.lasthandoff: 08/01/2017
 |AADSTS80005|Validation encountered unpredictable WebException (検証で予測外の WebException が発生しました)|一時的なエラーです。 要求をやり直してください。 引き続きエラーが発生する場合は、Microsoft サポートに連絡してください。
 |AADSTS80007|An error occurred communicating with Active Directory (Active Directory との通信中にエラーが発生しました)|Check the agent logs for more information and verify that Active Directory is operating as expected. (エージェント ログで詳細を確認し、Active Directory が期待通りに動作していることを確認してください。)
 
-### <a name="sign-in-failure-reasons-on-the-azure-portal"></a>Azure Portal でのサインイン失敗の理由
+### <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センターでのサインイン失敗の理由
 
-ユーザー サインインの問題のトラブルシューティングでは最初に、[Azure Portal](https://portal.azure.com/) で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を確認します。
+ユーザー サインインの問題のトラブルシューティングでは、最初に [Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を確認します。
 
-![サインイン レポート](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
+![Azure Active Directory 管理センター - サインイン レポート](./media/active-directory-aadconnect-pass-through-authentication/pta4.png)
 
-[Azure Portal](https://portal.azure.com/) で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
+[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
 |サインイン エラー コード|サインインが失敗した理由|解決策
 | --- | --- | ---
@@ -97,7 +97,7 @@ Azure AD Connect またはスタンドアロンの認証エージェントのイ
 
 テナントでパススルー認証を有効にしている場合に、Azure AD Connect をアンインストールしようとすると、"Users will not be able to sign-in to Azure AD unless you have other pass-through authentication agents installed on other servers. (他のサーバーに他のパススルー認証エージェントがインストールされていない場合、ユーザーは Azure AD にサインインできなくなります。)" という警告メッセージが表示されます。
 
-ユーザーのサインインを中断しないようにするため、Azure AD Connect をアンインストールする前に、セットアップの種類が[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)であることを確認します。
+ユーザーのサインインを中断しないようにするため、Azure AD Connect をアンインストールする前に、セットアップの種類が[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)であることを確認します。
 
 ## <a name="issues-with-enabling-the-feature"></a>機能の有効化に関する問題
 
@@ -112,6 +112,18 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 ### <a name="enabling-the-feature-failed-due-to-token-or-account-authorization-errors"></a>トークンまたはアカウント認証エラーのため、機能の有効化に失敗した
 
 機能を有効にする場合は、クラウド専用グローバル管理者アカウントを使用するようにします。 Multi-Factor Authentication (MFA) 対応グローバル管理者アカウントには既知の問題があります。回避策として、MFA を一時的にオフにします (操作を完了するためのみ)。
+
+## <a name="exchange-activesync-configuration-issues"></a>Exchange ActiveSync の構成に関する問題
+
+これは、パススルー認証のために Exchange ActiveSync のサポートを構成するときによく起こる問題です。
+
+### <a name="exchange-powershell-issue"></a>Exchange PowerShell の問題
+
+"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません。\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
+
+### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync が機能していない
+
+構成が有効になるまでには時間がかかります。この時間は、お使いの環境によって異なります。 この状態が長く続く場合は、Microsoft サポートに問い合わせてください。
 
 ## <a name="collecting-pass-through-authentication-agent-logs"></a>パススルー認証エージェントのログの収集
 
@@ -150,4 +162,13 @@ Azure AD Connect がインストールされているサーバーが、[こち�
     </Query>
     </QueryList>
 ```
+
+### <a name="performance-monitor-counters"></a>パフォーマンス モニター カウンター
+
+認証エージェントを監視するもう 1 つの方法は、認証エージェントがインストールされている各サーバーで特定のパフォーマンス モニター カウンターを追跡することです。 下記に示すグローバルなカウンター (**# PTA authentications**、**#PTA failed authentications**、**#PTA successful authentications**) とエラー カウンター (**# PTA authentication errors**) を使用します。
+
+![パススルー認証のパフォーマンス モニター カウンター](./media/active-directory-aadconnect-pass-through-authentication/pta12.png)
+
+>[!IMPORTANT]
+>パススルー認証では、負荷分散_ではなく_、複数の認証エージェントを使用して高可用性を確保します。 お使いの構成によっては、必ずしもすべての認証エージェントがほぼ_同数_の要求を受け取るとは_限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。
 

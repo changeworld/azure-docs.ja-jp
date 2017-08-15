@@ -12,20 +12,20 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/15/2017
+ms.date: 08/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 74809ce12a2a273a18ff3e0559aefd79fb4d2da7
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 0853e8605e07c28867676e9c13b89263ade67c88
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>HDInsight にストレージ アカウントを追加する
 
-Linux をオペレーティング システムとして使用する既存の HDInsight クラスターに Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。
+HDInsight に Azure ストレージ アカウントを追加するためにスクリプト アクションを使用する方法について説明します。 このドキュメントの手順では、既存の Linux ベースの HDInsight クラスターにストレージ アカウントを追加します。
 
 > [!IMPORTANT]
 > このドキュメントでは、クラスターの作成後に、そのクラスターにストレージを追加する方法を取り上げています。 クラスター作成時にストレージ アカウントを追加する方法については、「[Hadoop、Spark、Kafka などの HDInsight クラスターをセットアップする](hdinsight-hadoop-provision-linux-clusters.md)」をご覧ください。
@@ -50,7 +50,7 @@ Linux をオペレーティング システムとして使用する既存の HDI
 
 * core-site.xml ファイルにストレージ アカウントを追加します。
 
-* Oozie、YARN、MapReduce2、および HDFS サービスが新しいストレージ アカウント情報を取得できるように、これらのサービスを停止してから再開します。
+* Oozie、YARN、MapReduce2、および HDFS の各サービスを停止して再起動します。 これらのサービスを停止して再起動することで、新しいストレージ アカウントを使用できるようになります。
 
 > [!WARNING]
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。
@@ -65,12 +65,14 @@ __要件__:
 
 ## <a name="to-use-the-script"></a>スクリプトを使用するには
 
-Azure Portal、Azure PowerShell、および Azure CLI を通じてスクリプト アクションを使用する方法については、ドキュメント「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」の「実行中のクラスターにスクリプト アクションを適用する」セクションを参照してください。
+このスクリプトは、Azure Portal、Azure PowerShell、または Azure CLI 1.0 で使用できます。 詳しくは、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)」を参照してください。
 
-カスタマイズのドキュメントに記載された情報を利用する場合は、サンプル スクリプト アクション URI を、このスクリプトの URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh) に置き換えます。 例として使用されているすべてのパラメーターを、クラスターに追加するストレージ アカウントの Azure ストレージ アカウント名とキーに置き換えます。
-
-> [!NOTE]
-> このスクリプトは、クラスターの Ambari 構成を直接更新するため、__Persisted__ としてマークする必要はありません。
+> [!IMPORTANT]
+> カスタマイズのドキュメントに記載された手順を使用する場合は、次の情報を使用してこのスクリプトを適用します。
+>
+> * サンプル スクリプトのアクション URI を、このスクリプトの URI (https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh) に置き換えます。
+> * 例として使用されているすべてのパラメーターを、クラスターに追加するストレージ アカウントの Azure ストレージ アカウント名とキーに置き換えます。 Azure Portal を使用している場合は、これらのパラメーターをスペースで区切る必要があります。
+> * このスクリプトは、クラスターの Ambari 構成を直接更新するため、__Persisted__ としてマークする必要はありません。
 
 ## <a name="known-issues"></a>既知の問題
 
@@ -142,7 +144,7 @@ curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/cluster
 
 ### <a name="additional-charges"></a>追加料金が発生する
 
-ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 エグレス料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても、データがリージョンのデータ センターの外に出る場合に適用されます。
+ストレージ アカウントが HDInsight クラスターとは異なるリージョンにある場合は、Azure の課金にエグレス料金が追加されていることがあります。 データが地域データ センターを離れると、エグレス料金が適用されます。 この料金は、トラフィックが他のリージョンの別の Azure データ センター宛てであっても適用されます。
 
 > [!WARNING]
 > HDInsight クラスター以外の場所でストレージ アカウントを使用することはできません。

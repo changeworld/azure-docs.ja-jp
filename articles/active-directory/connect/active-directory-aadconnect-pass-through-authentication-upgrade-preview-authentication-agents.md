@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: c43b1286220a3f8c72551f309e1d109237c99735
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 940cb4466ef5d730c42d04d0107f6901f55eb155
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -37,12 +37,12 @@ ms.lasthandoff: 08/01/2017
 
 以下の手順に従って、認証エージェントがインストールされている場所を確認します。
 
-1. テナントのグローバル管理者の資格情報を使って、[Azure Portal](https://portal.azure.com) にサインインします。
+1. テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
 2. 左側のナビゲーションで、**[Azure Active Directory]** を選びます。
 3. **[Azure AD Connect]** を選びます。 
 4. **[パススルー認証]** を選びます。 このブレードには、認証エージェントがインストールされているサーバーが一覧表示されます。
 
-![Azure Portal - パススルー認証ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta8.png)
+![Azure Active Directory 管理センター - [パススルー認証] ブレード](./media/active-directory-aadconnect-pass-through-authentication/pta8.png)
 
 ### <a name="step-2-check-the-versions-of-your-authentication-agents"></a>ステップ 2: 認証エージェントのバージョンを確認する
 
@@ -59,7 +59,7 @@ ms.lasthandoff: 08/01/2017
 アップグレードの前に、次のことを行っておく必要があります。
 
 1. **クラウド専用のグローバル管理者アカウントを作成する**: パススルー認証エージェントが正常に動作していない緊急の状況で使うクラウド専用のグローバル管理者アカウントを用意しないで、アップグレードを行わないでください。 クラウド専用のグローバル管理者アカウントを追加する手順については、[こちら](../active-directory-users-create-azure-portal.md)をご覧ください。 これを実行することは欠かせない手順で、テナントからロックアウトされないようになります。
-2.  **高可用性を確保する**: まだ行っていない場合、[こちらの説明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)に従って、サインイン要求に高可用性を提供するための 2 番目のスタンドアロン認証エージェントをインストールします。
+2.  **高可用性を確保する**: まだ行っていない場合、[こちらの説明](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)に従って、サインイン要求に高可用性を提供するための 2 番目のスタンドアロン認証エージェントをインストールします。
 
 ## <a name="upgrading-the-authentication-agent-on-your-azure-ad-connect-server"></a>Azure AD Connect サーバーの認証エージェントをアップグレードする
 
@@ -67,18 +67,24 @@ ms.lasthandoff: 08/01/2017
 
 1. **Azure AD Connect をアップグレードする**: [こちらの記事](./active-directory-aadconnect-upgrade-previous-version.md)に従って、最新バージョンの Azure AD Connect にアップグレードします。
 2. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
-3. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Portal](https://portal.azure.com) にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、認証エージェントの最新バージョンをダウンロードします。
+3. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、認証エージェントの最新バージョンをダウンロードします。
 4. **最新バージョンの認証エージェントをインストールする**: ステップ 3 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 5. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** のエントリがあることを確認します。
+
+>[!NOTE]
+>上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。
 
 ## <a name="upgrading-the-authentication-agent-on-other-servers"></a>他のサーバーの認証エージェントをアップグレードする
 
 以下の手順のようにして、(Azure AD Connect がインストールされていない) 他のサーバーで認証エージェントをアップグレードします。
 
 1. **プレビュー バージョンの認証エージェントをアンインストールする**: [この PowerShell スクリプト](https://aka.ms/rmpreviewagent)をダウンロードし、サーバーで管理者として実行します。
-2. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Portal](https://portal.azure.com) にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、最新バージョンをダウンロードします。
+2. **最新バージョン (1.5.193.0 以降) の認証エージェントをダウンロードする**: テナントのグローバル管理者の資格情報で [Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。 **[Azure Active Directory] -> [Azure AD Connect] -> [パススルー認証] -> [エージェントのダウンロード]** の順に選びます。 サービスの条項に同意し、最新バージョンをダウンロードします。
 3. **最新バージョンの認証エージェントをインストールする**: ステップ 2 でダウンロードした実行可能ファイルを実行します。 求められたら、テナントのグローバル管理者の資格情報を入力します。
 4. **最新バージョンがインストールされたことを確認する**: 前と同じように **[コントロール パネル] -> [プログラム] -> [プログラムと機能]** に移動し、**[Microsoft Azure AD Connect Authentication Agent]\(Microsoft Azure AD Connect 認証エージェント\)** というエントリがあることを確認します。
+
+>[!NOTE]
+>上記の手順を完了した後に [Azure Active Directory 管理センター](https://aad.portal.azure.com)の [パススルー認証] ブレードを見ると、各サーバーに**アクティブ**と**非アクティブ**の 2 つの認証エージェントのエントリがあることがわかります。 これは "_予期されること_" です。 **非アクティブ**のエントリは、数日後に自動的に削除されます。
 
 ## <a name="next-steps"></a>次のステップ
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 機能に関する一般的な問題を解決する方法を確認します。
