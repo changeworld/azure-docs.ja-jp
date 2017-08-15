@@ -79,13 +79,13 @@ Web デプロイは VM 上に WebPI 経由で手動でインストールでき�
 
 Azure Resource Manager テンプレートを使用して Web デプロイのインストールを自動化する方法の例を示します。[Azure VM への Web アプリの作成、構成、およびデプロイ](https://azure.microsoft.com/en-us/resources/templates/201-web-app-vm-dsc/)
 
-ASP.NET MVC アプリケーションを展開する場合、Server Manager の **[役割と機能の追加] | [Web サーバー (IIS)] | [Web サーバー] | [Application Development] (アプリケーション開発)** へ移動して、サーバーで ASP.NET 4.5 を有効にする必要があります。
+ASP.NET MVC アプリケーションを展開する場合、Server Manager の **[役割と機能の追加] | [Web サーバー (IIS)] | [Web サーバー] | [Application Development] \(アプリケーション開発)** へ移動して、サーバーで ASP.NET 4.5 を有効にする必要があります。
 ![Add ASP.NET](./media/enable-profiler-compute/addaspnet45.png)
 
 ## <a name="install-azure-application-insights-sdk-to-your-project"></a>Azure Application Insights SDK のプロジェクトへのインストール
 * Visual Studio で ASP.NET Web アプリを開く
 * プロジェクトを右クリックして、**[追加] | [接続されたサービス]** を選択する
-* [Application Insights] (アプリケーション インサイト) を選択する
+* [Application Insights] \(アプリケーション インサイト) を選択する
 * このページで説明されている手順に従う。 先ほど作成した Application Insights リソースを選択する
 * **[登録]** ボタンをクリックする
 
