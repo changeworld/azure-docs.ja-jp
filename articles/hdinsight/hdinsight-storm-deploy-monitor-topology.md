@@ -95,7 +95,7 @@ Storm UI のメイン ページには、次の情報が表示されます。
 
   * **再調整**: トポロジの並列処理を調整します。 クラスターのノード数を変更した場合は、実行中のトポロジを再調整する必要があります。 この操作で、クラスター内のノード数の増減に合わせて、トポロジの並列処理を調整できます。
 
-      詳しくは、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」(http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) をご覧ください。
+      詳しくは、「[Understanding the parallelism of a Storm topology (Storm トポロジの並列処理) (http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)](http://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html)」をご覧ください。
 
   * **強制終了**: 指定したタイムアウト後に Storm トポロジを停止します。
 
