@@ -316,7 +316,7 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
     ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-storage.png)
 
-2.  ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] (パスを入力)** を使用しています。
+2.  ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] \(パスを入力)** を使用しています。
 
     ![Data Lake Tools for Visual Studio Code のストレージ パス リスト選択方法](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
 
@@ -405,7 +405,7 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
     ![Data Lake Tools for Visual Studio Code でのローカル パスの入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-auto-input-local-path.png)
 
-3. ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] (パスを入力)** を使用しています。
+3. ストレージ パスをリストに加える方法を選択します。 ここでは、例として **[Enter a path] \(パスを入力)** を使用しています。
 
     ![Data Lake Tools for Visual Studio Code のストレージ パスのリスト](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-list-account-selectoneway.png)
     >[!NOTE]
@@ -421,7 +421,7 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 
        ![Data Lake Tools for Visual Studio Code のストレージ パスの入力](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-input-preview-file.png)
 
-6. Azure ストレージ パスを入力してリストに加えます。 **[Choose current folder] (現在のフォルダーを選択)** を選択します。
+6. Azure ストレージ パスを入力してリストに加えます。 **[Choose current folder] \(現在のフォルダーを選択)** を選択します。
 
     ![Data Lake Tools for Visual Studio Code のフォルダーの選択](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-choose-current-folder.png)
 
@@ -442,10 +442,10 @@ VSCode で ADLS 関連コマンドを使用して、ADLS リソースのナビ�
 ファイルをストレージにアップロードする別の便利な方法として、スクリプト エディターでファイルのフルパスまたはファイルの相対パスの右クリック メニューを使用する方法があります。 ローカル ファイル パスを入力し、アカウントを選択すると、出力ウィンドウにアップロード ステータスが表示されます。 
 
 ### <a name="open-web-azure-storage-explorer"></a>Web Azure ストレージ エクスプローラーを開く
-コマンド **[ADL: Open Web Azure Storage Explorer] (Web Azure ストレージ エクスプローラーを開く)** を使用するか、右クリック メニューで、**Web Azure ストレージ エクスプローラー**を開くことができます。
+コマンド **[ADL: Open Web Azure Storage Explorer] \(Web Azure ストレージ エクスプローラーを開く)** を使用するか、右クリック メニューで、**Web Azure ストレージ エクスプローラー**を開くことができます。
 
 1. Ctrl + Shift + P キーを押してコマンド パレットを開きます。
-2. 「**Open Web Azure Storage Explorer**」と入力するか、スクリプト エディターで相対パスまたは完全なパスを右クリックして、**[Open Web Azure Storage Explorer] (Web Azure ストレージ エクスプローラーを開く)** を選択します。
+2. 「**Open Web Azure Storage Explorer**」と入力するか、スクリプト エディターで相対パスまたは完全なパスを右クリックして、**[Open Web Azure Storage Explorer] \(Web Azure ストレージ エクスプローラーを開く)** を選択します。
 3. Data Lake Analytics アカウントを選択します。
 
 ADL Tools によってポータルに Azure ストレージ パスが開かれます。 パスにアクセスして Web でファイルのプレビューを確認できます。
