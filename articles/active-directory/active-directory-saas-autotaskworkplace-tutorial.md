@@ -84,7 +84,7 @@ Azure AD への Autotask Workplace の統合を構成するには、ギャラリ
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Autotask Workplace ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Autotask Workplace の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-Autotask Workplace で、Azure AD の **[ユーザー名]** の値を **[Username] (ユーザー名)** の値として割り当ててリンク関係を確立します。
+Autotask Workplace で、Azure AD の **[ユーザー名]** の値を **[Username] \(ユーザー名)** の値として割り当ててリンク関係を確立します。
 
 Autotask Workplace で Azure AD のシングル サインオンを構成してテストするには、次の構成要素を完了する必要があります。
 
