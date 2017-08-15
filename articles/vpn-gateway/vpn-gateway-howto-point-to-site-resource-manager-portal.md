@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2017
+ms.date: 08/03/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 171159fece2e3927458aff6e6185b96c792e17c8
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 28bc587204be30b1b29da7c2235e347d778b908e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-azure-portal"></a>証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
@@ -91,7 +91,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 ## <a name="dns"></a>4 - DNS サーバーの指定 (省略可能)
 
-仮想ネットワークを作成した後は、名前解決を処理するために、DNS サーバーの IP アドレスを追加できます。 指定された DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーである必要があります。 後続の手順で生成する VPN クライアント構成パッケージには、この設定で指定した DNS サーバーの IP アドレスが追加されます。 将来 DNS サーバーのリストを更新する必要が生じた場合は、その新しいリストを反映した新しい VPN クライアント構成パッケージを生成してインストールすることができます。
+仮想ネットワークを作成した後は、名前解決を処理するために、DNS サーバーの IP アドレスを追加できます。 指定する DNS サーバーは、接続するリソースの名前を解決できる DNS サーバーである必要があります。
 
 [!INCLUDE [vpn-gateway-add-dns-rm-portal](../../includes/vpn-gateway-add-dns-rm-portal-include.md)]
 
@@ -146,7 +146,7 @@ VNet が作成されたら、アドレス空間とサブネットをさらに追
 
 ## <a name="clientconfig"></a>9 - VPN クライアント構成パッケージのインストール
 
-ポイント対サイト VPN を使って VNet に接続するには、ネイティブ Windows VPN クライアントを構成するためのパッケージをクライアントごとにインストールする必要があります。 構成パッケージは、仮想ネットワークへの接続に必要な設定を使ってネイティブ Windows VPN クライアントを構成します。したがって VNet の DNS サーバーを指定した場合、クライアントの名前解決に使用される DNS サーバーの IP アドレスが構成パッケージに追加されます。 指定した DNS サーバーを後から、クライアント構成パッケージの生成後に変更する場合は、必ず新しいクライアント構成パッケージを生成してクライアント コンピューターにインストールしてください。
+ポイント対サイト VPN を使って VNet に接続するには、ネイティブ Windows VPN クライアントを構成するためのパッケージをクライアントごとにインストールする必要があります。 構成パッケージは、仮想ネットワークに接続するために必要な設定を使って、ネイティブ Windows VPN クライアントを構成します。
 
 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 

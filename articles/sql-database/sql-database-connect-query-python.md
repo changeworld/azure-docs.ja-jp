@@ -13,13 +13,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 07/11/2017
+ms.date: 08/08/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b7c217be41b979f8a7246109cc95a01341dadf3d
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: afffcb9a4938bf97626f182bb4f4d099d807d411
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
@@ -40,15 +40,15 @@ ms.lasthandoff: 07/21/2017
 
 - ご使用のオペレーティング システムに対応した Python とそれに関連するソフトウェアをインストール済みであること。
 
-    - **MacOS**: Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2.、手順 1.3.、手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/Python/mac/) を参照してください。
-    - **Ubuntu**: Python と他の必須パッケージをインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2. と手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/node/ubuntu/) を参照してください。
-    - **Windows**: 最新バージョンの Python をインストールし (環境変数は自動で構成されるようになりました)、ODBC ドライバーと SQLCMD をインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2.、手順 1.3.、手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/node/windows/) を参照してください。 
+    - **MacOS**: Homebrew と Python をインストールし、ODBC ドライバーと SQLCMD をインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2、1.3、および 2.1](https://www.microsoft.com/sql-server/developer-get-started/python/mac/) を参照してください。
+    - **Ubuntu**: Python と他の必須パッケージをインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2、1.3、および 2.1](https://www.microsoft.com/sql-server/developer-get-started/python/ubuntu/) を参照してください。
+    - **Windows**: 最新バージョンの Python をインストールし (環境変数は自動で構成されるようになりました)、ODBC ドライバーと SQLCMD をインストールした後、Python Driver for SQL Server をインストールします。 [手順 1.2.、手順 1.3.、手順 2.1.](https://www.microsoft.com/sql-server/developer-get-started/python/windows/) を参照してください。 
 
 ## <a name="sql-server-connection-information"></a>SQL Server の接続情報
 
 Azure SQL データベースに接続するために必要な接続情報を取得します。 後の手順で、完全修飾サーバー名、データベース名、ログイン情報が必要になります。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. データベースの **[概要]** ページで、次の図に示すように、完全修飾サーバー名を確認します。 サーバー名をポイントすると、**[コピーするにはクリックします]** オプションが表示されます。  
 

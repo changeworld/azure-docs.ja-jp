@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: hero-article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ed096cf202a85f44755c9eee110b1b7c5c4074ad
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: d7d3aef1e713cf080b23575f56321e00a0b4af1f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="create-your-first-function-in-the-azure-portal"></a>Azure Portal で初めての関数を作成する
@@ -51,7 +51,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 1. 新しい Function App を展開し、**[関数]** の横にある **+** ボタンをクリックします。
 
-2.  **[関数への早道]** ページで、**[webhook + API]** を選択し、関数の言語を選択して、**[この関数を作成する]** をクリックします。 
+2.  **[関数への早道]** ページで、**[webhook + API]** を選択し、関数の**言語を選択**して、**[この関数を作成する]** をクリックします。 
    
     ![Azure Portal での関数のクイック スタート。](./media/functions-create-first-azure-function/function-app-quickstart-node-webhook.png)
 

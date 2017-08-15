@@ -13,17 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 23715879b46dd6d56a91fac2908964ea87fe569a
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: c41a16a3c43064a094b0980bc1a8294b093c6130
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="quick-start-azure-ad-self-service-password-reset"></a>クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット
+# <a name="quickstart-azure-ad-self-service-password-reset"></a>クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット
+
+> [!IMPORTANT]
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 
 ## <a name="rapidly-deploy-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットを迅速にデプロイする
 
@@ -77,6 +80,12 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 セルフ サービスによるパスワードのリセットを無効にするのは簡単です。Azure AD テナントを開き、**[パスワード リセット]、[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** で **[なし]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
+
+このクイック スタートでは、ユーザーのためにセルフ サービスによるパスワードのリセットを構成する方法について説明しました。 引き続き Azure Portal でこれらの手順を実行するには、以下のリンクからポータルにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [セルフ サービスのパスワード リセットを有効にする](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します

@@ -17,10 +17,10 @@ ms.topic: get-started-article
 ms.date: 7/21/2017
 ms.author: markgal;arunak;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 6f204f2f0dca33e68b9853af3c94934af65ca1f9
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: a765aeffbaa7fd94aa0ef8e3885c03e5b5098c6e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Azure Backup サービスについての質問
@@ -53,8 +53,9 @@ ms.lasthandoff: 07/24/2017
 バックアップ コンテナーのクラシック VM の回復ポイントは、VM をクラシックから Resource Manager モードに移行しても、Recovery Services コンテナーに自動的に移行されません。 VM バックアップを移行するには、次の手順に従います。
 
 1. バックアップ コンテナーで、**[保護された項目]** タブに移動して VM を選択します。 [[保護の停止]](backup-azure-manage-vms-classic.md#stop-protecting-virtual-machines) をクリックします。 *[関連付けられたバックアップ データを削除します]* オプションは **オフ**のままにしておきます。
-2. 仮想マシンをクラシック モードから Resource Manager モードに移行します。 その仮想マシンに対応するストレージとネットワークの情報も Resource Manager モードに移行されていることを確認してください。
-3. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、[Recovery Services コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look-arm.md)に関する記事を参照してください。
+2. バックアップ/スナップショット拡張機能を VM から削除します。
+3. 仮想マシンをクラシック モードから Resource Manager モードに移行します。 その仮想マシンに対応するストレージとネットワークの情報も Resource Manager モードに移行されていることを確認してください。
+4. コンテナー ダッシュボードの上部にある **[バックアップ]** アクションを使用して、移行先の仮想マシンに Recovery Services コンテナーを作成し、バックアップを構成します。 Recovery Services コンテナーへの VM のバックアップについて詳しくは、[Recovery Services コンテナーを使用した Azure VM の保護](backup-azure-vms-first-look-arm.md)に関する記事を参照してください。
 
 ## <a name="azure-backup-agent"></a>Azure Backup エージェント
 [Azure ファイル フォルダー バックアップに関する FAQ](backup-azure-file-folder-backup-faq.md) に一連の質問が掲載されています。
