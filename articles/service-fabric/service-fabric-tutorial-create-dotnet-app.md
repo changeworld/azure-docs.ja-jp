@@ -12,33 +12,37 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2017
+ms.date: 08/09/2017
 ms.author: ryanwi, mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8f824e451abd2ca87875c416184e4d7265e8c72b
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 71d910bc0e459528805521ba991e5291396a3b8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>ASP.NET Core Web API フロントエンド サービスとステートフルなバックエンド サービスを含むアプリケーションを作成およびデプロイする
-このチュートリアルでは、ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。
+このチュートリアルはシリーズの第 1 部です。ASP.NET Core Web API フロント エンドとステートフルなバックエンド サービスを含む Azure Service Fabric アプリケーションを作成し、データを格納する方法を説明します。 
 
 ![アプリケーション ダイアグラム](./media/service-fabric-tutorial-create-dotnet-app/application-diagram.png)
 
-このチュートリアルで学習する内容は次のとおりです。
+シリーズの第 1 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * ASP.NET Core Web API サービスをリライアブル サービスとして作成する
 > * ステートフル リライアブル サービスの作成
 > * サービス リモート処理とサービス プロキシの使用の実装
 
-チュートリアルは 3 つの記事に分かれています。この記事は 1 つ目です。
+このチュートリアル シリーズで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * .NET Service Fabric アプリケーションを構築する
+> * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * [Visual Studio Team Services を使用して CI/CD を構成する](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを読み始める前に、次の条件を満たす必要があります。
-- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成してください。
+このチュートリアルを開始する前に
+- Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
 - [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 - [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 

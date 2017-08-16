@@ -14,20 +14,27 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/04/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 2327945b5f5fe6b6e63660fd5d607d3cc8092f8b
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: b43dd20be9f481270b782de3c889abac762bd9cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="use-oozie-with-hadoop-to-define-and-run-a-workflow-on-linux-based-hdinsight"></a>Hadoop で Oozie を使用して Linux ベースの HDInsight でワークフローを定義して実行する
 
 [!INCLUDE [oozie-selector](../../includes/hdinsight-oozie-selector.md)]
 
-HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Hadoop スタックと統合されていて、Apache MapReduce、Apache Pig、Apache Hive、Apache Sqoop の Hadoop ジョブをサポートしています。 Java プログラムやシェル スクリプトなど、システムに固有のジョブのスケジュールを設定する際にも使用できます。
+HDInsight で Apache Oozie と Hadoop を使用する方法を説明します。 Apache Oozie は Hadoop ジョブを管理するワークフローおよび調整システムです。 Oozie は Hadoop スタックと統合されており、次のジョブをサポートしています。
+
+* Apache MapReduce
+* Apache Pig
+* Apache Hive
+* Apache Sqoop
+
+Oozie は、Java プログラムやシェル スクリプトなどの、システムに固有のジョブをスケジュールする際にも使用できます。
 
 > [!NOTE]
 > HDInsight でワークフローを定義するもう 1 つのオプションは、Azure Data Factory です。 Azure Data Factory の詳細については、「[Data Factory で Pig と Hive を使用する][azure-data-factory-pig-hive]」をご覧ください。
@@ -136,7 +143,7 @@ hdfs dfs -put /usr/share/java/sqljdbc_4.1/enu/sqljdbc*.jar /tutorials/useoozie/
     hdfs dfs -put useooziewf.hql /tutorials/useoozie/useooziewf.hql
     ```
 
-    これらのコマンドにより、このクラスターに関連付けられている Azure ストレージ アカウントに **useooziewf.hql** ファイルが保存されるため、クラスターが削除されてもファイルは保持されます。
+    これらのコマンドには、クラスターの HDFS 互換ストレージ上の **useooziewf.hql** ファイルが含まれています。
 
 ## <a name="define-the-workflow"></a>ワークフローの定義
 
@@ -467,7 +474,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
     ------------------------------------------------------------------------------------------------------------------------------------
     ```
 
-    このジョブの状態は `PREP` です。 これは、ジョブは送信済みですが、まだ開始されていないことを示しています。
+    このジョブの状態は `PREP` です。 この状態は、ジョブが作成されたが開始されていないことを示します。
 
 5. ジョブを開始するには次のコマンドを使用します。
 
@@ -504,7 +511,7 @@ Azure SQL Database を作成するには、[SQL Database の作成](../sql-datab
         Windows Phone   1791
         (6 rows affected)
 
-Oozie コマンドの詳細については、 [Oozie コマンド ライン ツール](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)に関するページをご覧ください。
+Oozie コマンドの詳細については、[Oozie コマンドライン ツール](https://oozie.apache.org/docs/4.1.0/DG_CommandLineTool.html)に関するページをご覧ください。
 
 ## <a name="oozie-rest-api"></a>Oozie REST API
 
@@ -568,9 +575,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
 ## <a name="scheduling-jobs"></a>ジョブのスケジュール設定
 
-コーディネーターを使用すると、ジョブの開始時刻、終了時刻、発生頻度を指定して、ジョブを特定の時間にスケジュールできます。
-
-ワークフローのスケジュールを定義するには、次の手順に従います。
+コーディネーターを使用すると、ジョブの開始時刻、終了時刻、発生頻度を指定できます。 ワークフローのスケジュールを定義するには、次の手順に従います。
 
 1. 次のコマンドを使用して、**coordinator.xml** という名前のファイルを作成します。
 
@@ -615,9 +620,9 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
     次の変更を行います。
 
-   * `<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。 この値は、ワークフロー ファイルではなく、コーディネーター ファイルを実行するよう Oozie に指示します。
+   * ワークフロー ファイルではなく、コーディネーター ファイルを実行するように Oozie に指示するには、`<name>oozie.wf.application.path</name>` を `<name>oozie.coord.application.path</name>` に変更します。
 
-   * 次の XML を追加します。 これは、coordinator.xml で使用される変数を、workflow.xml の場所を参照するように設定します。
+   * コーディネーターが使用する `workflowPath` 変数を設定するには、次の XML を追加します。
 
         ```xml
         <property>
@@ -628,7 +633,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
 
        `wasb://mycontainer@mystorageaccount.blob.core.windows` テキストを、job.xml ファイルの他のエントリで使用されている値に置き換えます。
 
-   * 次の XML を追加します。 これは、coordinator.xml ファイルで使用する開始時刻、終了時刻、頻度を定義します。
+   * コーディネーターが使用する開始時刻、終了時刻、頻度を定義するには、次の XML を追加します。
 
         ```xml
         <property>
@@ -652,7 +657,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
         </property>
         ```
 
-       これらの値は、開始時刻を 2017 年 5 月 10 日 12:00 PM に、終了時刻を 2017 年 5 月 12 日 12:00 PM に設定します。 このジョブの実行間隔は毎日です。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
+       これらの値によって、開始時刻が 2017 年 5 月 10 日 12:00 PM に、終了時刻が 2017 年 5 月 12 日 12:00 PM に設定されます。 このジョブの実行間隔は毎日です。 頻度は分単位であるため、24 時間 x 60 分 = 1440 分になります。 最後に、タイムゾーンを UTC に設定しています。
 
 5. Ctrl + X キーを押した後、**Y** キーと **Enter** キーを押してファイルを保存します。
 
@@ -675,7 +680,7 @@ Oozie Web UI にアクセスするには、次の手順に従います。
     ![コーディネーター ジョブ情報](./media/hdinsight-use-oozie-linux-mac/coordinatorjobinfo.png)
 
     > [!NOTE]
-    > これは、スケジュールされたワークフロー内の個々のアクションではなく、ジョブの正常な実行のみを示しています。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。
+    > この画像には、正常に実行されたジョブのみが表示されており、スケジュールされたワークフロー内の個々のアクションについては表示されません。 個々のアクションを表示するには、 **[Action]** エントリのいずれかを選択します。
 
     ![アクション情報](./media/hdinsight-use-oozie-linux-mac/coordinatoractionjob.png)
 

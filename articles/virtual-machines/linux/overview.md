@@ -16,10 +16,10 @@ ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: c82459bfddc2755a56fdad6eb8ab4c8bb41862f6
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: abddbe6b78c5c15d4deac68ff8c2504d2321fab0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -100,7 +100,7 @@ Azure の使用を開始するには、Azure アカウント、Azure CLI のイ�
 Azure クラウドを使用する最初の手順は、Azure アカウントにサインアップすることです。  開始するには、 [Azure アカウントのサインアップ](https://azure.microsoft.com/pricing/free-trial/) ページに移動します。
 
 ### <a name="install-the-cli"></a>CLI をインストールする
-新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install) をインストールします。
+新しい Azure アカウントを使用すると、Web ベースの管理パネルである Azure Portal の使用を直ちに開始することができます。  コマンド ラインから Azure クラウドを管理するには、 `azure-cli`をインストールします。  Mac または Linux ワークステーションに [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
 
 ### <a name="create-an-ssh-key-pair"></a>SSH キー ペアの作成
 これで Azure アカウント、Azure Web Portal、Azure CLI の準備ができました。  次の手順では、パスワードを使用せずに Linux で SSH を使用するための SSH キー ペアを作成します。  [Linux および Mac で SSH キーを作成](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) し、パスワードのないログインとセキュリティの強化を実現します。
@@ -124,13 +124,13 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 ## <a name="storage"></a>Storage
 * [Microsoft Azure Storage の概要](../../storage/storage-introduction.md)
 * [Azure CLI を使用して Linux VM にディスクを追加する](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure ポータルで Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal で Linux VM にデータ ディスクを接続する方法](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="networking"></a>ネットワーク
 * [仮想ネットワークの概要](../../virtual-network/virtual-networks-overview.md)
 * [Azure 内の IP アドレス](../../virtual-network/virtual-network-ip-addresses-overview-arm.md)
 * [Azure での Linux VM へのポートの開放](nsg-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure ポータルでの完全修飾ドメイン名の作成](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure Portal での完全修飾ドメイン名の作成](portal-create-fqdn.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="containers"></a>コンテナー
 * [Virtual Machines とコンテナーが Azure にもたらすメリット](containers.md)

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 04/26/2017
+ms.date: 08/07/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: b9421e4d899982af5e4caf9d23eebb73188a8db1
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 45fe7584c8b769113da9d287fea56d68d3d6c55a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
@@ -28,7 +27,7 @@ ms.lasthandoff: 05/09/2017
 ## <a name="introduction"></a>はじめに
 Azure では **Storage キュー**と **Service Bus キュー**の 2 種類のキュー メカニズムをサポートしています。
 
-**Storage キュー**は、[Azure Storage](https://azure.microsoft.com/services/storage/) インフラストラクチャの一部であり、単純な REST ベースの Get/Put/Peek インターフェイスを使用して、サービス内およびサービス間で信頼性の高い永続的なメッセージングを提供します。
+**Storage キュー**は、[Azure Storage](https://azure.microsoft.com/services/storage/) インフラストラクチャの一部であり、単純な REST ベースの GET/PUT/PEEK インターフェイスを使用して、サービス内およびサービス間で信頼性の高い永続的なメッセージングを提供します。
 
 **Service Bus キュー**は、より大きな [Azure メッセージング](https://azure.microsoft.com/services/service-bus/) インフラストラクチャの一部です。このインフラストラクチャでは、キュー処理だけでなく、パブリッシュ/サブスクライブなどの高度な統合パターンがサポートされています。 Service Bus キュー、トピック、およびサブスクリプションの詳細情報については、[Service Bus メッセージングの概要](service-bus-messaging-overview.md)に関するページを参照してください。
 
@@ -192,13 +191,12 @@ Service Bus キューには高度な機能が数多く用意されているた�
 ## <a name="next-steps"></a>次のステップ
 次の記事では、Storage キューや Service Bus キューの使用に関する詳細情報を提供します。
 
-* [Service Bus キューの使用方法](service-bus-dotnet-get-started-with-queues.md)
+* [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
 * [キュー Storage Service を使用する方法](../storage/storage-dotnet-how-to-use-queues.md)
 * [Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
-* [Azure Service Bus のキューとトピックの概要](http://www.code-magazine.com/article.aspx?quickid=1112041)
+* [Azure Service Bus のキューとトピックの概要 (ブログの投稿)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 * [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)
 * [Using the Queuing Service in Azure (Azure でのキュー サービスの使用)](http://www.developerfusion.com/article/120197/using-the-queuing-service-in-windows-azure/)
-* [Azure Storage の課金について - 帯域幅、トランザクション、容量 (ブログの投稿)](http://blogs.msdn.com/b/windowsazurestorage/archive/2010/07/09/understanding-windows-azure-storage-billing-bandwidth-transactions-and-capacity.aspx)
 
 [Azure portal]: https://portal.azure.com
 

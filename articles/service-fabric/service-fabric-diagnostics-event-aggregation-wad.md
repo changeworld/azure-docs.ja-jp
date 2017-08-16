@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/17/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e1eff2abf8512870661cbe539bd34aa5c33ded14
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: cea811918147a25947ec654bb06f2c994bae5ce6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -176,7 +176,7 @@ extensions 配列内に次のコードを追加し、 template.json ファイル
 
 Service Fabric リリース 5.4 以降、正常性と負荷のメトリック イベントを収集できるようになりました。 これらのイベントは、[ReportPartitionHealth](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportpartitionhealth.aspx) や [ReportLoad](https://msdn.microsoft.com/library/azure/system.fabric.iservicepartition.reportload.aspx) などの正常性または負荷レポート API を使うことでシステムやユーザーのコードによって生成されるイベントを反映します。 これにより、一定期間のシステムの正常性を集計および表示したり、正常性または負荷のイベントに基づいてアラートを生成したりできます。 Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000008" を追加します。
 
-イベントを収集するには、リソース マネージャー テンプレートに次の行を追加します。
+イベントを収集するには、Resource Manager テンプレートに次の行を追加します。
 
 ```json
   "EtwManifestProviderConfiguration": [
@@ -190,6 +190,47 @@ Service Fabric リリース 5.4 以降、正常性と負荷のメトリック �
       }
     }
 ```
+
+## <a name="collect-reverse-proxy-events"></a>リバース プロキシ イベントの収集
+
+Service Fabric リリース 5.7 以降、[リバース プロキシ](service-fabric-reverseproxy.md) イベントを収集できるようになりました。
+リバース プロキシは 2 つのチャネルに対してイベントを生成します。1 つは要求処理エラーを反映するエラー イベントを含むチャネル、もう 1 つはリバース プロキシで処理されるすべての要求に関する詳細イベントを含むチャネルです。 
+
+1. エラー イベントの収集: Visual Studio の診断イベント ビューアーでこれらのイベントを表示するには、ETW プロバイダーのリストに "Microsoft-ServiceFabric:4:0x4000000000000010" を追加します。
+Azure クラスターからイベントを収集するには、Resource Manager テンプレートに次の行を追加します。
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387920",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+
+2. すべての要求処理イベントの収集: Visual Studio の診断イベント ビューアーで、ETW プロバイダーのリストの Microsoft-ServiceFabric エントリを "Microsoft-ServiceFabric:4:0x4000000000000020" に変更します。
+Azure Service Fabric クラスターの場合、Resource Manager テンプレートを変更して以下の内容を含めます。
+
+```json
+  "EtwManifestProviderConfiguration": [
+    {
+      "provider": "cbd93bc2-71e5-4566-b3a7-595d8eeca6e8",
+      "scheduledTransferLogLevelFilter": "Information",
+      "scheduledTransferKeywordFilter": "4611686018427387936",
+      "scheduledTransferPeriod": "PT5M",
+      "DefaultEvents": {
+        "eventDestination": "ServiceFabricSystemEventTable"
+      }
+    }
+```
+> このチャネルはリバース プロキシ経由のすべてのトラフィックを収集し、ストレージ容量を短時間で消費する可能性があるため、このチャネルから生成されるイベントの収集を有効にする場合は慎重に検討することをお勧めします。
+
+Azure Service Fabric クラスターの場合、すべてのノードから生成されたイベントが収集され、SystemEventTable に集計されます。
+リバース プロキシ イベントのトラブルシューティングの詳細については、[リバース プロキシの診断ガイド](service-fabric-reverse-proxy-diagnostics.md)を参照してください。
 
 ## <a name="collect-from-new-eventsource-channels"></a>新しい EventSource チャネルから収集する
 
@@ -217,21 +258,22 @@ template.json ファイル内の `EtwEventSourceProviderConfiguration` セクシ
 
 たとえば、ここでは 15 秒ごとにサンプリングされ、1 分ごとに適切なストレージ テーブルに転送されるパフォーマンス カウンターを 1 つ設定しています (サンプリング間隔は変更できます。"PT\<時間>\<単位>" の形式に従います。たとえば、PT3M の場合、3 分間隔でサンプリングされます)。
 
-    ```json
-    "PerformanceCounters": {
-        "scheduledTransferPeriod": "PT1M",
-        "PerformanceCounterConfiguration": [
-            {
-                "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
-                "sampleRate": "PT15S",
-                "unit": "Percent",
-                "annotation": [
-                ],
-                "sinks": ""
-            }
-        ]
-    }
-    ```
+  ```json
+  "PerformanceCounters": {
+      "scheduledTransferPeriod": "PT1M",
+      "PerformanceCounterConfiguration": [
+          {
+              "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
+              "sampleRate": "PT15S",
+              "unit": "Percent",
+              "annotation": [
+              ],
+              "sinks": ""
+          }
+      ]
+  }
+  ```
+  
 次のセクションで説明するように、Application Insights のシンクを使用しており、これらのメトリックを Application Insights に表示する場合は、上記の "sinks" セクションにシンク名を追加する必要があります。 さらに、パフォーマンス カウンターによって、有効にしている他のログ チャネルからのデータが押し出されないように、パフォーマンス カウンターの送信先として別のテーブルを作成することを検討してください。
 
 

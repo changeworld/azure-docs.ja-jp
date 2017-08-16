@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/08/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 963749bce0a84a97a0938f5531ebf7d694a3ca58
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 4bbfbbe41eb3f70c27f0721a6b35a8f7f1831af4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -28,11 +28,25 @@ ms.lasthandoff: 07/06/2017
 
 セルフサービスのパスワード リセットで問題が発生した場合に、以下の項目が問題の解決に役立つ場合があります。
 
-## <a name="troubleshoot-password-reset-configuration-in-the-azure-portal"></a>Azure ポータルでのパスワード リセット構成のトラブルシューティング
+## <a name="troubleshoot-self-service-password-reset-errors-that-a-user-may-see"></a>ユーザーに表示される可能性のあるセルフ サービス パスワード リセット エラーをトラブルシューティングします。
+
+| エラー | 詳細 | 技術的な詳細 |
+| --- | --- | --- |
+| TenantSSPRFlagDisabled = 9 | 申し訳ありません。 <br> 管理者が組織のパスワード リセットを無効にしたため、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、この機能を有効にするように依頼してください。 詳細については、[Azure AD パスワードを忘れた場合](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-update-your-own-password#common-problems-and-their-solutions)に関する記事を参照してください。 | SSPR_0009: パスワード リセットが管理者によって有効にされていないと検出されました。 管理者に連絡して、組織のパスワード リセットを有効にするように依頼してください。 |
+| WritebackNotEnabled = 10 |申し訳ありません。 <br> 管理者が組織に必要なサービスを有効にしていないため、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、組織の構成を確認するように依頼してください。 この必要なサービスの詳細については、「[パスワード ライトバックの構成](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-writeback#configuring-password-writeback)」を参照してください。 | SSPR_0010: パスワード ライトバックが有効になっていないことが検出されました。 管理者に連絡して、パスワード ライトバックを有効にするように依頼してください。 |
+| SsprNotEnabledInUserPolicy = 11 | 申し訳ありません。  <br> 管理者が組織のパスワード リセットを構成していないため、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワード リセットを構成するように依頼してください。 パスワード リセット構成の詳細については、「[クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-getting-started)」を参照してください。 | SSPR_0011: 組織でパスワード リセット ポリシーを定義していません。 管理者に連絡して、パスワード リセット ポリシーを定義するように依頼してください。 |
+| UserNotLicensed = 12 | 申し訳ありません。 <br> 組織で必要なライセンスが不足しているために、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、ライセンスの割り当てを確認するように依頼してください。 ライセンスの詳細については、「[Azure AD のセルフ サービスによるパスワード リセットのライセンス要件](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-licensing)」を参照してください。 | SSPR_0012: 組織には、パスワードのリセットを実行するために必要なライセンスがありません。 管理者に連絡して、ライセンスの割り当てを見直すように依頼してください。 |
+| UserNotMemberOfScopedAccessGroup = 13 | 申し訳ありません。 <br> 管理者が、お使いのアカウントでパスワード リセットを使用するように構成していないため、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、お使いのアカウントでパスワード リセットを構成するように依頼してください。 パスワード リセットのアカウント構成の詳細については、「[ユーザーのパスワード リセットの展開](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-best-practices)」を参照してください。 | SSPR_0012: パスワード リセットが有効になっているグループのメンバーではありません。 管理者に連絡して、このグループに追加してもらうよう依頼してください。 |
+| UserNotProperlyConfigured = 14 | 申し訳ありません。 <br> お使いのアカウントでは必要な情報が不足しているために、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 もう一度自分のアカウントにアクセスできるようになったら、「[セルフサービスによるパスワードのリセットを登録する](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-reset-register)」にある手順に従って必要な情報を登録する方法を確認してください。 | SSPR_0014: パスワードをリセットするための追加のセキュリティ情報が必要です。 続行するには、管理者に連絡して、パスワードをリセットしてもらうよう依頼してください。 自分のアカウントにアクセスできるようになったら、https://aka.ms/ssprsetup で追加のセキュリティ情報を登録することができます。 管理者は[パスワード リセットの認証データの設定と読み取り](https://docs.microsoft.com/azure/active-directory/active-directory-passwords-data#set-and-read-authentication-data-using-powershell)に関する手順に従って、お使いのアカウントに追加のセキュリティ情報を追加することができます。 |
+| OnPremisesAdminActionRequired = 29 | 申し訳ありません。 <br> 組織のパスワード リセット構成に問題があるため、この時点ではパスワードをリセットできません。 この状況を解決するためにご自分で行える処理はありません。 管理者に連絡して、調査するように依頼してください。 潜在的な問題の詳細については、「[パスワード ライトバックのトラブルシューティング](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback)」を参照してください。 | SSPR_0029: オンプレミス構成でのエラーのため、パスワードをリセットすることができません。 管理者に連絡して、調査するように依頼してください。 |
+| OnPremisesConnectivityError = 30 | 申し訳ありません。 <br> 組織への接続に問題があるため、この時点ではパスワードをリセットできません。 今すぐ実行すべきアクションはありませんが、後でもう一度試してみて、問題が解決する場合があります。 問題が解決しない場合は、管理者に連絡して、調査するように依頼してください。 接続の問題の詳細については、「[パスワード ライトバックの接続のトラブルシューティング](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-passwords-troubleshoot#troubleshoot-password-writeback-connectivity)」を参照してください。 | SSPR_0030: オンプレミス環境との接続状況が悪いため、パスワードをリセットできません。 管理者に連絡して、調査するように依頼してください。|
+
+
+## <a name="troubleshoot-password-reset-configuration-in-the-azure-portal"></a>Azure Portal でのパスワード リセット構成のトラブルシューティング
 
 | **エラー** | 解決策 |
 | --- | --- |
-| Azure ポータルで Azure AD の下に **[パスワードのリセット]** セクションが表示されません | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> この問題は、[ライセンスの割り当て、検証、および問題の解決](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)に関する記事に従って、対象の管理者アカウントにライセンスを割り当てることで解決する場合があります。 |
+| Azure Portal で Azure AD の下に **[パスワードのリセット]** セクションが表示されません | これは、この操作を実行する管理者に割り当てられる Azure AD Premium または Azure AD Basic のライセンスを持っていない場合に発生します。 <br> この問題は、[ライセンスの割り当て、検証、および問題の解決](active-directory-licensing-group-assignment-azure-portal.md#step-1-assign-the-required-licenses)に関する記事に従って、対象の管理者アカウントにライセンスを割り当てることで解決する場合があります。 |
 | 特定の構成オプションが表示されません | UI の多くの要素は、必要になるまで表示されません。 表示する必要のあるすべてのオプションを有効にしてください。 |
 | **[オンプレミスの統合]** タブが表示されません | このオプションは、Azure AD Connect をダウンロードし、パスワード ライトバックを構成した場合にのみ表示されます。 このトピックについて詳しくは、「[簡単設定を使用した Azure AD Connect の開始](./connect/active-directory-aadconnect-get-started-express.md)」をご覧ください。 |
 

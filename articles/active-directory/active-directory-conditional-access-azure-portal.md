@@ -13,20 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/21/2017
+ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 5a1ce66e02943caedd52976c5dcb3cf75c23bd49
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-conditional-access-azure-portal.md)
+> * [Azure Portal](active-directory-conditional-access-azure-portal.md)
 > * [Azure クラシック ポータル](active-directory-conditional-access.md)
 
 モバイル ファースト、クラウド ファーストの世界で、Azure Active Directory を使用してデバイス、アプリ、およびサービスにどこからでもサインオンできます。 デバイス (BYOD を含みます) や企業ネットワーク外での作業、サードパーティが提供する SaaS アプリの急増によって、IT プロフェッショナルは、次の 2 つの対立する目標を達成することを迫られています。
@@ -121,26 +121,54 @@ SharePoint での制限付きアクセスを要求する方法について詳し
 
 Azure Active Directory の現在の実装では、次の領域の条件を定義できます。
 
-- **サインイン リスク** – サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を追跡する目的で Azure Active Directory が利用するオブジェクトです。 このオブジェクトには、この可能性 (高、中、低) が[サインイン リスク レベル](active-directory-reporting-risk-events.md#risk-level)と呼ばれる属性で格納されます。 このオブジェクトは、ユーザーのサインイン中に Azure Active Directory がサインイン リスクを検出した場合に生成されます。 詳細については、「[Risky sign-ins (リスクの高いサインイン)](active-directory-identityprotection.md#risky-sign-ins)」を参照してください。  
+- サインイン リスク
+- デバイス プラットフォーム
+- 場所
+- クライアント アプリ
+
+![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+
+### <a name="sign-in-risk"></a>サインイン リスク
+
+サインイン リスクは、サインイン試行がユーザー アカウントの正当な所有者によって行われなかった可能性を追跡する目的で Azure Active Directory が利用するオブジェクトです。 このオブジェクトには、この可能性 (高、中、低) が[サインイン リスク レベル](active-directory-reporting-risk-events.md#risk-level)と呼ばれる属性で格納されます。 このオブジェクトは、ユーザーのサインイン中に Azure Active Directory がサインイン リスクを検出した場合に生成されます。 詳細については、「[Risky sign-ins (リスクの高いサインイン)](active-directory-identityprotection.md#risky-sign-ins)」を参照してください。  
 計算されたサインイン リスク レベルを条件付きアクセス ポリシーの条件として利用できます。 
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/22.png)
+![条件](./media/active-directory-conditional-access-azure-portal/22.png)
 
-- **デバイス プラットフォーム**: デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます (Android、iOS、Windows Phone、Windows)。 ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
+### <a name="device-platforms"></a>デバイス プラットフォーム
+
+デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます (Android、iOS、Windows Phone、Windows)。 ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
 デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
+![条件](./media/active-directory-conditional-access-azure-portal/02.png)
 
-- **場所**: 場所は、Azure Active Directory に接続するために使用しているクライアントの IP アドレスによって識別されます。 この条件を設定するには、信頼できる IP を理解している必要があります。 信頼できる IP は多要素認証の機能であり、この機能を使用して、組織のイントラネットを表す、信頼できる IP アドレスの範囲を定義できます。 場所の条件を構成するとき、信頼できる IP アドレスによって、組織のネットワークとそれ以外のすべての場所からの接続を区別できます。 詳細については、「[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)」を参照してください。  
+### <a name="locations"></a>場所
+
+場所は、Azure Active Directory に接続するために使用しているクライアントの IP アドレスによって識別されます。 この条件を設定するには、**名前付きの場所**と **MFA の信頼できる IP** を理解している必要があります。  
+
+**名前付きの場所**は Azure Active Directory の機能で、組織内の信頼された IP アドレス範囲にラベル付けできます。 環境内では、条件付きアクセスと同様に、[リスク イベント](active-directory-reporting-risk-events.md)の検出のコンテキストで、名前付きの場所を使用できます。 Azure Active Directory で名前付きの場所を構成する方法の詳細については、「[Azure Active Directory における名前付きの場所](active-directory-named-locations.md)」をご覧ください。
+
+構成できる名前付きの場所は、Azure AD の関連オブジェクトのサイズによって制約されます。 利用できる構成は、次のとおりです。
+ 
+ - 1 つの名前付きの場所で、最大 500 の IP 範囲
+ - 最大 60 の名前付きの場所 (プレビュー) で、それぞれ 1 つ割り当てられる IP 範囲 
+
+
+**MFA の信頼できる IP** は多要素認証の機能であり、この機能を使用して、組織のイントラネットを表す、信頼できる IP アドレスの範囲を定義できます。 場所の条件を構成するとき、信頼できる IP アドレスによって、組織のネットワークとそれ以外のすべての場所からの接続を区別できます。 詳細については、「[信頼できる IP](../multi-factor-authentication/multi-factor-authentication-whats-next.md#trusted-ips)」をご覧ください。  
+
+
+
 すべての場所を含める、すべての信頼できるIP アドレスを含める、または信頼できるすべての IP アドレスを除外することができます。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/03.png)
+![条件](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
-- **クライアント アプリ**: クライアント アプリは、Azure Active Directory に接続するために使用している汎用レベルのアプリ (Web ブラウザー、モバイル アプリ、デスクトップ クライアント) アプリが可能です。または、Exchange Active Sync を明確に選択できます。  
+### <a name="client-app"></a>クライアント アプリ
+
+クライアント アプリは、Azure Active Directory に接続するために使用している汎用レベルのアプリ (Web ブラウザー、モバイル アプリ、デスクトップ クライアント) で可能です。または、具体的に Exchange Active Sync を選択できます。  
 従来の認証とは、最新の認証を使用しない古い Office クライアントなどの基本認証を使用しているクライアントを指します。 現時点では、従来の認証では条件付きアクセスはサポートされません。
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
+![条件](./media/active-directory-conditional-access-azure-portal/04.png)
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ

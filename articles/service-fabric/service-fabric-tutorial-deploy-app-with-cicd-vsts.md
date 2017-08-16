@@ -12,20 +12,20 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/12/2017
+ms.date: 08/09/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c528974951d3b4a83111cb92b931810a91f660f4
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: dda5ea77b35fa8491128135ea7709016781f2aea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
 # <a name="deploy-an-application-with-cicd-to-a-service-fabric-cluster"></a>CI/CD を使用して Service Fabric クラスターへアプリケーションをデプロイする
-このチュートリアルでは、Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
+このチュートリアルはシリーズの第 3 部です。Visual Studio Team Services を使用して、Azure Service Fabric アプリケーションの継続的インテグレーションとデプロイを設定する方法について説明します。  既存の Service Fabric アプリケーションが必要で、[.NET アプリケーション ビルド](service-fabric-tutorial-create-dotnet-app.md)で作成されたアプリケーションを例として使用します。
 
-このチュートリアルで学習する内容は次のとおりです。
+シリーズの第 3 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * プロジェクトにソース管理を追加する
@@ -33,7 +33,11 @@ ms.lasthandoff: 07/21/2017
 > * Team Services でリリース定義を作成する
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
-チュートリアルは 3 つの記事に分かれています。これは 3 つ目の記事です。
+このチュートリアル シリーズで学習する内容は次のとおりです。
+> [!div class="checklist"]
+> * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
+> * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
+> * Visual Studio Team Services を使用して CI/CD を構成する
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
