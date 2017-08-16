@@ -167,7 +167,7 @@ Salesforce Sandbox で Azure AD のシングル サインオンを構成して�
 
     g. **[Identity provider login URL]\(ID プロバイダー ログイン URL\)** テキストボックスに **[シングル サインオン サービス URL]** を貼り付けます。 
 
-    h. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL] (ID プロバイダー ログアウト URL)** ボックスに「https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0」を貼り付けます。
+    h. SFDC は SAML ログアウトをサポートしていません。  回避策として、**[Identity Provider Logout URL] \(ID プロバイダー ログアウト URL)** ボックスに「https://login.microsoftonline.com/common/wsfederation?wa=wsignout1.0」を貼り付けます。
 
     i. **[サービス プロバイダーが開始した要求のバインド]** で **[HTTP POST]** を選択します。 
 
