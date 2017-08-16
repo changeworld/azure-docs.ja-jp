@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/28/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 0cb70d36bd6e8d4cf5fcd5ed4a3e85c42f3cf81d
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: d4548c6f21d04effd57ea36e4fc0d15f77568903
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -57,9 +57,8 @@ ssh-keygen \
 
 `ssh-keygen` = キーの作成に使用するプログラム。
 
-`-t rsa` = 作成するキーの種類。RSA 形式 [wikipedia](https://en.wikipedia.org/wiki/RSA_(cryptosystem) で指定します。
-
-`-b 2048` = キーのビット数。
+`-t rsa` = RSA 形式で作成するキーの種類 [wikipedia][末尾のかっこ](`https://en.wikipedia.org/wiki/RSA_(cryptosystem) `)
+`-b 2048` = キーのビット数
 
 `-C "azureuser@myserver"` = 識別しやすいように公開キー ファイルの末尾に追記されたコメント。  通常は電子メール アドレスがコメントとして使用されますが、インフラストラクチャに最適な他の文字列を使用してもかまいません。
 

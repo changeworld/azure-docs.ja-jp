@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 67cb42394a596f9e5c0a5d6a5042363e26ed0ac0
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: cb5ec1a105c632626c5caf39e4fd356177883123
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -121,7 +121,7 @@ Event Hubs の発行/サブスクライブのメカニズムは、"*コンシュ
 
 ### <a name="common-consumer-tasks"></a>一般的なコンシューマー タスク
 
-すべての Event Hubs コンシューマーは、AMQP 1.0 セッションと、状態に対応する双方向の通信チャネルを介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
+すべての Event Hubs コンシューマーは、AMQP 1.0 セッション (状態に対応する双方向の通信チャネル) を介して接続します。 各パーティションには、パーティションによって分離されたイベントの転送を容易にする AMQP 1.0 セッションがあります。
 
 #### <a name="connect-to-a-partition"></a>パーティションに接続する
 

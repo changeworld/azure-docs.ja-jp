@@ -18,14 +18,14 @@ ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 36b21b7655af2505f92c81a136d494200f84d7e1
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8f34fd29fe6c93eb4cd1a05c79bf9b47072451f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
-# <a name="using-sap-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) における SAP の使用
+# <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
 [773830]:https://launchpad.support.sap.com/#/notes/773830
 [826037]:https://launchpad.support.sap.com/#/notes/826037
@@ -295,9 +295,16 @@ ms.lasthandoff: 08/03/2017
 [xplat-cli]:../../../cli-install-nodejs.md
 [xplat-cli-azure-resource-manager]:../../../xplat-cli-azure-resource-manager.md
 
-Microsoft Azure を SAP 対応クラウド パートナーとして選択すると、ミッション クリティカルな SAP ワークロードを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、Linux から Windows、そして SAP HANA から SQL まで対応しています。 
+Microsoft Azure を SAP 対応クラウド パートナーとして選択することで、ミッション クリティカルな SAP ワークロードとシナリオを、拡張性が高く、SAP に準拠した、エンタープライズで実証済みのプラットフォームで確実に実行できます。  Azure を使用して、拡張性と柔軟性、そしてコストの削減を実現しましょう。 Microsoft と SAP のパートナーシップの拡大により、Azure で開発/テストから運用までのシナリオを通じて SAP アプリケーションを実行できるうえ、そのすべてがサポートされます。 SAP NetWeaver から SAP S4/HANA、SAP BI、Linux から Windows、SAP HANA から SQL まで対応しています。 
 
-Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタンスにより、Microsoft は包括的な IaaS (Infrastructure as a Service) プラットフォームを提供しています。 幅広い SAP ソリューションが Azure でサポートされているため、この "入門ドキュメント" は、Microsoft が現在公開している一連の SAP ドキュメントの目次として機能します。 ドキュメント ライブラリにさらにタイトルが追加されると、ここにもそれが追加されます。 
+SAP NetWeaver シナリオをさまざまな DBMS を使用して Azure でホストすることに加え、その他の SAP ワークロード シナリオ (SAP BI など) も Azure でホストできます。 Azure のネイティブ Virtual Machines での SAP NetWeaver のデプロイに関するドキュメントについては、「Azure Virtual Machines 上の SAP NetWeaver」セクションを参照してください。 
+
+Azure には、SAP HANA を活用する SAP ワークロードに対応するように CPU とメモリ リソースのサイズを大きくする、ネイティブ Azure Virtual Machine 製品があります。 このトピックの詳細については、「Azure Virtual Machines 上の SAP HANA」セクションを参照してください。
+
+Azure for SAP HANA の独自性は、その製品の独自性にあります。これにより、Azure は、競合製品の中で特に優れています。 SAP HANA が関与するより多くのメモリと CPU リソースを必要とする SAP シナリオをホストできるようにするため、Azure では、お客様専用のベア メタル ハードウェアの使用を提案しています。その目的は、S/4HANA またはその他の SAP HANA ワークロードで最大 20 TB (60 TB のスケールアウト) のメモリを必要とする SAP HANA のデプロイを実行することです。 このSAP HANA on Azure (L インスタンス) の独自の Azure ソリューションによって、SAP アプリケーション レイヤーまたはネイティブ Azure Virtual Machines でホストされるワークロードのミドルウェア レイヤーを使用して、SAP HANA を専用のベア メタル ハードウェア上で実行できます。 このソリューションについては、さまざまなドキュメントの「SAP HANA on Azure (L インスタンス)」セクションで説明されています。   
+
+Azure で SAP ワークロードをホストするシナリオでは、さまざまな SAP コンポーネントと SAP SaaS または PaaS 製品に対する Activity Directory を使用した ID 統合要件とシングル サインオンを構成できます。 Azure Active Directory (AAD) と SAP のエンティティを使用したこのような統合とシングル サインオンのシナリオについては、「AAD SAP ID 統合およびシングル サインオン」セクションに一覧と説明があります。
+
 
 ## <a name="sap-hana-on-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の SAP HANA
 
@@ -328,7 +335,7 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 
 [ガイドはこちら](hana-installation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の高可用性と障害復旧
+### <a name="high-availability-and-disaster-recovery-of-sap-hana-on-azure-large-instances"></a>SAP HANA on Azure (L インスタンス) の高可用性とディザスター リカバリー | Microsoft Docs
 タイトル: SAP HANA on Azure (L インスタンス) の高可用性と障害復旧
 
 概要: 高可用性 (HA) と障害復旧 (DR) は、ミッション クリティカルな SAP HANA on Azure (L インスタンス) サーバーを実行する場合の重要な要素です。 正しい HA/DR 戦略を適切に構築、実装するには、SAP、システム インテグレーター、Microsoft と協力することが重要です。 環境に固有の目標復旧時点 (RPO) と目標復旧時間 (RTO) のような重要な考慮事項を検討する必要があります。  このドキュメントでは、お客様に必要なレベルの HA と DR を実現するためのオプションについて説明します。
@@ -425,7 +432,7 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 
 [ガイドはこちら](suse-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-## <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
+### <a name="3da0389e-708b-4e82-b2a2-e92f132df89c"></a>計画と導入
 タイトル: Azure Virtual Machines (VM) への SAP NetWeaver の導入 – 計画/導入ガイド
 
 概要: このドキュメントは、SAP NetWeaver を Azure Virtual Machines で実行することを検討している場合に最初に参照するガイドです。 この計画/導入ガイドは、既存または導入を予定している SAP NetWeaver ベースのシステムを Azure Virtual Machines 環境にデプロイできるかどうかを評価するうえで参考になります。 SAP NetWeaver のデプロイに伴うさまざまなシナリオのほか、Azure に固有の SAP 構成も取り上げています。 このホワイト ペーパーには、ハイブリッド SAP ランドスケープを運用するために SAP/Azure 側で必要となる構成情報が詳細に説明されています。 SAP NetWeaver ベースのシステムの高可用性を IaaS で確保するために講じることのできる対策についても触れています。
@@ -461,7 +468,7 @@ Microsoft Azure 仮想マシン サービスと SAP HANA on Azure L インスタ
 
 [ガイドはこちら][deployment-guide]
 
-## <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
+### <a name="1343ffe1-8021-4ce6-a08d-3a1553a4db82"></a>DBMS デプロイ ガイド
 タイトル: SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 
 概要: このホワイト ペーパーでは、SAP と連携させる DBMS システムの計画と導入に関する注意点を取り上げています。 最初のパートでは、全般的な注意点が列挙されています。 その後、SAP でサポートされる各種 DBMS を Azure にデプロイする作業に関連した説明が続きます。 紹介されている他の DBMS は、SQL Server、SAP ASE、Oracle です。 この各パートでは、これらの DBMS と共に SAP システムを Azure で実行する際に考慮する必要のある事柄について説明しています。 Azure 上の各種 DBMS でサポートされるバックアップと高可用性の手法といったテーマは、SAP アプリケーションの使用法の観点から取り上げています。

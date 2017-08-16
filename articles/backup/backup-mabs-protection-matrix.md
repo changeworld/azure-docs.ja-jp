@@ -13,10 +13,10 @@ ms.topic: article
 ms.author: markgal,masaran
 manager: carmonm
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: ffd19e25e2931ac7af472b4c88eccbce73b10ff4
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 3608c310f43ff9f97563d252437d50d962162f47
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -26,7 +26,7 @@ ms.lasthandoff: 07/24/2017
 
 ## <a name="protection-support-matrix"></a>保護のサポート マトリックス
 
-|ワークロード|バージョン|Azure Backup Server</br> installation|Azure Backup</br> Server v2|Azure Backup</br> Server v1 |保護と回復|
+|ワークロード|バージョン|Azure Backup Server</br> インストール|Azure Backup</br> Server v2|Azure Backup</br> Server v1 |保護と回復|
 |------------|-----------|--------------------|--------------------------------------------|--------------------------------|---------------------------|
 |System Center VMM|VMM 2016、<br/>VMM 2012、SP1、R2|物理サーバー<br /><br />Hyper-V 仮想マシン|Y|Y|すべてのデプロイ シナリオ: データベース|
 |クライアント コンピューター (64 ビットおよび 32 ビット)|Windows 10|物理サーバー<br /><br />Hyper-V 仮想マシン<br /><br />VMware 仮想マシン|Y|Y|ファイル<br /><br />保護されるボリュームは NTFS である必要があります。 FAT および FAT32 はサポートされていません。<br /><br />ボリュームは少なくとも 1 GB である必要があります。 DPM はボリューム シャドウ コピー サービス (VSS) を使用してデータ スナップショットを取得し、そのスナップショットはボリュームが少なくとも 1 GB である場合にのみ機能します。|
@@ -92,6 +92,7 @@ ms.lasthandoff: 07/24/2017
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2012 - Datacenter および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008 R2 SP1 - Enterprise および Standard|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|Y|Y|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
 |Hyper-V ホスト - Hyper-V ホスト サーバー、クラスター、または VM 上の DPM 保護エージェント|Windows Server 2008|物理サーバー<br /><br />オンプレミスの Hyper-V 仮想マシン|N|N|保護: Hyper-V コンピューター、クラスター共有ボリューム (CSV)<br /><br />回復: 仮想マシン、ファイルとフォルダー、ボリューム、仮想ハード ドライブの項目レベルの回復|
+|VMware VM|VMware server 5.5、6.0、または 6.5 |オンプレミスの Hyper-V 仮想マシン|Y|Y (UR1 による)|VMware VMs on クラスターの共有ボリューム (CSV) 上の VMware VM、NFS、および SAN ストレージ。<br /> 項目レベルのファイルとフォルダーの回復は Windows でのみ使用できます。<br /> VMware vApps はサポートされません。|
 |Linux|Hyper-V または VMware ゲストとして実行されている Linux|オンプレミスの Hyper-V 仮想マシン|Y|Y|Hyper-V が Windows Server 2012 R2 または Windows Server 2016 上で実行されている必要があります。 保護: 仮想マシン全体<br /><br />回復: 仮想マシン全体|
 
 ## <a name="cluster-support"></a>クラスターのサポート

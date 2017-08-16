@@ -13,14 +13,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/08/2016
+ms.date: 08/03/2017
 ms.author: chrande; glenga
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 31661e5840a6b65f54f9df027a7e3ecab8768055
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 256bc04684ba337fe8a403d977079c96b63ca61d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
@@ -57,7 +57,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 
 <a name="function"></a>
 
-## <a name="functions-vs-webjobs"></a>Functions とWeb ジョブ
+## <a name="functions-vs-webjobs"></a>Functions とWebJobs
 Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この 2 つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この 2 つは、以下の点がよく似ています。 
 
 * どちらも [Azure App Service](../app-service/app-service-value-prop-what-is.md) の上に構築されたものであり、[ソース管理](../app-service-web/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service-web/web-sites-monitor.md)などの機能を利用可能
@@ -82,15 +82,15 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
 | トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
-| ブラウザーでの開発 |○ | |
-| ウィンドウ スクリプト |試験段階 |○ |
-| PowerShell |試験段階 |○ |
-| C# |○ |○ |
-| F# |○ | |
-| Bash |試験段階 |○ |
-| PHP |試験段階 |○ |
-| Python |試験段階 |○ |
-| JavaScript |○ |○ |
+| ブラウザーでの開発 |サポート対象 | サポート対象外 |
+| ウィンドウ スクリプト |試験段階 |サポート対象 |
+| PowerShell |試験段階 |サポート対象 |
+| C# |サポート対象 |サポート対象 |
+| F# |サポート対象 |サポート対象外 |
+| Bash |試験段階 |サポート対象 |
+| PHP |試験段階 |サポート対象 |
+| Python |試験段階 |サポート対象 |
+| JavaScript |サポート対象 |サポート対象 |
 
 最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 他の Azure サービスまたはサードパーティ製アプリのコード スニペットを実行する必要がある場合、App Service アプリとは別の環境で統合コード スニペットを管理したい場合、またはロジック アプリからコード スニペットを呼び出す必要がある場合には、Functions で改善された機能を使用します。  
 
