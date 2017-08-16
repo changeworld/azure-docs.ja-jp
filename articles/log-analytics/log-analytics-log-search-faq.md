@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/08/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b4031e5ec5ab38863e1e74f5b6ebb117f23a327e
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 2de9a87390da11a034c6cebaa37d4cc89edf3cad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -52,7 +52,6 @@ A: いいえ。  アップグレードはワークスペースごとに 1 つず
 ログ検索ページで言語コンバーター ツールを使用して、1 つずつ変換できます。  ワークスペースをアップグレードしないで、複数の検索を自動的に変換することはできません。
 
 
-
 ## <a name="alerts"></a>アラート
 
 ### <a name="i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>警告ルールが多数あります。 アップグレード後、そのルールを新しい言語で作成し直す必要がありますか。  
@@ -61,9 +60,12 @@ A: いいえ。  アップグレードはワークスペースごとに 1 つず
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="does-anything-change-with-powerbi-integration"></a>PowerBI 統合で変更はありますか。
-はい。  ワークスペースのアップグレードが完了すると、Power BI への Log Analytics データのエクスポート プロセスは動作しなくなります。  また、アップグレード前に作成した既存のスケジュールすべてが無効になります。  アップグレード後、Azure Log Analytics では、Application Insights と同じプラットフォームが使用されるため、ユーザーは、[Application Insights クエリを Power BI にエクスポートするプロセス](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)と同じプロセスを使用して、Power BI に Log Analytics クエリをエクスポートします。
+はい。  ワークスペースのアップグレードが完了すると、Power BI への Log Analytics データのエクスポート プロセスは動作しなくなります。  また、アップグレード前に作成した既存のスケジュールすべてが無効になります。  アップグレード後、Azure Log Analytics では Application Insights と同じプラットフォームが使用されるため、[Application Insights クエリを Power BI にエクスポートするプロセス](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)と同じプロセスを使用して、Power BI に Log Analytics クエリをエクスポートします。
 
+## <a name="dashboards"></a>ダッシュボード
 
+### <a name="can-i-still-use-dashboards"></a>ダッシュボードは引き続き使用できますか。
+ワークスペースがアップグレードされる前に作成したダッシュボードは引き続き使用できますが、それらのダッシュボードを編集したり、新しいダッシュボードを作成したりすることはできません。  ビューの作成と編集は引き続き[ビュー デザイナー](log-analytics-view-designer.md)で行うことができます。 
 
 ## <a name="next-steps"></a>次のステップ
 

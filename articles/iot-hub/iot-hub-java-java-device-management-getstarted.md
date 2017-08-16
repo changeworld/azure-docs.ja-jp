@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/12/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: f4690097da1b56a7688754294ab63ec88a457761
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 5abf1d80a62344f93d4c5491adba65a3e7400258
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -48,7 +47,7 @@ ms.lasthandoff: 05/19/2017
 * 更新済みの報告されたプロパティを表示します。
 
 > [!NOTE]
-> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 Azure IoT SDK については、[Azure IoT SDK][lnk-hub-sdks] に関する記事を参照してください。
+> デバイス上で動作するアプリケーションの作成とソリューションのバックエンドで動作するアプリケーションの開発に利用できる各種 SDK については、「[Azure IoT SDK][lnk-hub-sdks]」をご覧ください。
 
 このチュートリアルを完了するには、次のものが必要です。
 
@@ -62,11 +61,17 @@ ms.lasthandoff: 05/19/2017
 
 ## <a name="trigger-a-remote-reboot-on-the-device-using-a-direct-method"></a>ダイレクト メソッドを使用してデバイスのリモート再起動をトリガーする
 
-このセクションでは、シミュレートされたデバイス アプリで再起動ダイレクト メソッドを呼び出し、応答を表示する Java コンソール アプリを作成します。 次にアプリは、デバイスから送信された報告されたプロパティをポーリングして、再起動が完了したタイミングを判断します。 このコンソール アプリは IoT Hub に接続して、ダイレクト メソッドを呼び出し、報告されたプロパティを読み取ります。
+このセクションでは、次の操作を行う Java コンソール アプリを作成します。
+
+1. シミュレートされたデバイス アプリで再起動ダイレクト メソッドを呼び出します。
+1. 応答を表示します。
+1. デバイスから送信された報告されたプロパティをポーリングして、再起動が完了したタイミングを判断します。
+
+このコンソール アプリは IoT Hub に接続して、ダイレクト メソッドを呼び出し、報告されたプロパティを読み取ります。
 
 1. dm-get-started という名前の空のフォルダーを作成します。
 
-1. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **trigger-reboot** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **trigger-reboot** という名前の Maven プロジェクトを作成します。 1 つの長いコマンドを次に示します。
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=trigger-reboot -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
@@ -78,7 +83,7 @@ ms.lasthandoff: 05/19/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.5.22</version>
+      <version>1.7.23</version>
       <type>jar</type>
     </dependency>
     ```
@@ -123,7 +128,7 @@ ms.lasthandoff: 05/19/2017
     import java.util.concurrent.ExecutorService;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 **{youriothubconnectionstring}** を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
+1. 次のクラスレベル変数を **App** クラスに追加します。 `{youriothubconnectionstring}` を、「*IoT Hub の作成*」セクションで書き留めた IoT Hub 接続文字列で置換します。
 
     ```java
     public static final String iotHubConnectionString = "{youriothubconnectionstring}";
@@ -207,7 +212,7 @@ ms.lasthandoff: 05/19/2017
 
 このセクションでは、デバイスをシミュレートする Java コンソール アプリを作成します。 アプリは、IoT hub からの再起動ダイレクト メソッド呼び出しをリッスンし、その呼び出しに直ちに応答します。 次にアプリは、しばらくスリープし、再起動プロセスをシミュレートしてから、報告されたプロパティを使用して、**trigger-reboot** バックエンド アプリに、再起動が完了したことを通知します。
 
-1. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 これは、1 つの長いコマンドであることに注意してください。
+1. コマンド プロンプトで次のコマンドを実行し、dm-get-started フォルダーに **simulated-device** という名前の Maven プロジェクトを作成します。 1 つの長いコマンドを次に示します。
 
     `mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=simulated-device -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false`
 
@@ -219,7 +224,7 @@ ms.lasthandoff: 05/19/2017
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.30</version>
+      <version>1.3.32</version>
     </dependency>
     ```
 
@@ -262,7 +267,7 @@ ms.lasthandoff: 05/19/2017
     import java.util.HashSet;
     ```
 
-1. 次のクラスレベル変数を **App** クラスに追加します。 **{yourdeviceconnectionstring}** を「*デバイス ID の作成*」セクションで書き留めたデバイス接続文字列に置き換えます。
+1. 次のクラスレベル変数を **App** クラスに追加します。 `{yourdeviceconnectionstring}` を「*デバイス ID の作成*」セクションで書き留めたデバイス接続文字列に置き換えます。
 
     ```java
     private static final int METHOD_SUCCESS = 200;
@@ -369,14 +374,14 @@ ms.lasthandoff: 05/19/2017
     public static void main(String[] args) throws IOException, URISyntaxException
     ```
 
-1. **main** メソッドに次のコードを追加し、**DeviceClient** をインスタンス化します。
+1. **DeviceClient** をインスタンス化するには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Starting device client sample...");
     client = new DeviceClient(connString, protocol);
     ```
 
-1. **main** メソッドに次のコードを追加し、ダイレクト メソッド呼び出しのリッスンを開始します。
+1. ダイレクト メソッド呼び出しのリッスンを開始するには、**main** メソッドに次のコードを追加します。
 
     ```java
     try
@@ -394,7 +399,7 @@ ms.lasthandoff: 05/19/2017
     }
     ```
 
-1. **main** メソッドに次のコードを追加し、デバイス シミュレーターをシャット ダウンします。
+1. デバイス シミュレーターをシャットダウンするには、**main** メソッドに次のコードを追加します。
 
     ```java
     System.out.println("Press any key to exit...");

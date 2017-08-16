@@ -1,6 +1,6 @@
 ---
-title: "Azure 仮想マシン スケール セットの規模を設計する | Microsoft Docs"
-description: "Azure 仮想マシン スケール セットの規模を設計する方法について説明します"
+title: "Azure 仮想マシン スケール セットの設計上の考慮事項 | Microsoft Docs"
+description: "Azure 仮想マシン スケール セットの設計上の考慮事項について説明します"
 keywords: "Linux 仮想マシン,仮想マシン スケール セット"
 services: virtual-machine-scale-sets
 documentationcenter: 
@@ -17,13 +17,13 @@ ms.topic: article
 ms.date: 06/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 88ab6322fed853c73af981a1de4cd2c2f480c959
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 615361975e2ee15ce80f6efb39f57cae381209e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="designing-scale-sets-for-scale"></a>スケール セットの規模を設計する
+# <a name="design-considerations-for-scale-sets"></a>スケール セットの設計上の考慮事項
 このトピックでは、仮想マシン スケール セットの設計に関する考慮事項について説明します。 仮想マシン スケール セットに関する情報については、「 [仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
 
 ## <a name="when-to-use-scale-sets-instead-of-virtual-machines"></a>仮想マシンではなくスケール セットを使用するケース

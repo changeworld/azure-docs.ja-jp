@@ -13,20 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/19/2017
+ms.date: 08/09/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 858ce2c748c3383afb6d66ed7b66a5f019902594
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 4c51edac3b1cdafae8f9543bd0e3133b6a050f73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="generate-and-export-certificates-for-point-to-site-connections-using-makecert"></a>MakeCert を使用したポイント対サイト接続の証明書の生成とエクスポート
-
-> [!NOTE]
-> Windows 10 を実行しているコンピューターへのアクセス権がない場合にのみ、この記事の手順を使用して証明書を生成します。 それ以外の場合は、この記事の手順ではなく、[Windows 10 の PowerShell を使用した自己署名証明書の生成](vpn-gateway-certificates-point-to-site.md)に関する記事を参照することをお勧めします。
->
 
 ポイント対サイト接続では、認証に証明書を使用します。 この記事では、MakeCert を使用した自己署名ルート証明書の作成方法とクライアント証明書の生成方法について説明します。 ルート証明書のアップロード方法など、ポイント対サイトの設定の手順をお探しの場合は、ポイント対サイトの構成に関する記事の いずれかを以下の一覧から選択してください。
 
@@ -41,8 +37,7 @@ ms.lasthandoff: 07/28/2017
 
 [Windows 10 PowerShell の手順](vpn-gateway-certificates-point-to-site.md)を使用して証明書を作成することをお勧めしますが、別の手段としてこれらの MakeCert による手順も提供しています。 いずれかの方法を使用して生成した証明書は、[サポートされている任意のクライアント オペレーティング システム](vpn-gateway-howto-point-to-site-resource-manager-portal.md#faq)にインストールできます。 ただし、MakeCert には次の制限事項があります。
 
-* MakeCert は、SHA-2 証明書を生成することはできず、SHA-1 しか生成できません。 SHA-1 証明書は、まだポイント対サイト接続に有効ですが、SHA-1 で使用している暗号化ハッシュは、SHA-2 ほど強力ではありません。
-* MakeCert は推奨されていません。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使って既に生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
+* MakeCert は推奨されていません。 これは、任意の時点でこのツールが削除される可能性があることを意味します。 MakeCert が利用できなくなった場合も、MakeCert を使用してすでに生成されたすべての証明書に影響はありません。 MakeCert は、検証メカニズムとしてではなく、証明書の生成にのみ使用されます。
 
 ## <a name="rootcert"></a>自己署名ルート証明書の作成
 
@@ -57,7 +52,7 @@ ms.lasthandoff: 07/28/2017
 3. コンピューターの個人証明書ストアで証明書を作成し、インストールします。 次の例は、P2S を構成するときに Azure にアップロードする、対応する *.cer* ファイルを作成します。 'P2SRootCert' と 'P2SRootCert.cer' を証明書に使う名前に置き換えます。 証明書は 'Current User\Personal\Certificates' にあります。
 
   ```cmd
-  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha1 -len 2048 -ss My
+  makecert -sky exchange -r -n "CN=P2SRootCert" -pe -a sha256 -len 2048 -ss My
   ```
 
 ## <a name="cer"></a>公開キー (.cer) のエクスポート
@@ -88,7 +83,7 @@ ms.lasthandoff: 07/28/2017
   下の例を変更せずに実行すると、ルート証明書 P2SRootCert から生成された個人用証明書ストアに P2SChildcert という名前のクライアント証明書が作成されます。
 
   ```cmd
-  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha1
+  makecert.exe -n "CN=P2SChildCert" -pe -sky exchange -m 96 -ss My -in "P2SRootCert" -is my -a sha256
   ```
 
 ### <a name="clientexport"></a>クライアント証明書のエクスポート

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 927eb9f4f40759c0a79daa6dd3e91e5ab0853520
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 486405aca760922ebed5f413495d3a0e1e339229
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -52,7 +52,7 @@ Azure 内で信頼性の高い VM ベースのソリューションをデプロ�
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
-可用性セットは、[az vm availability-set create](/cli/azure/availability-set#create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
+可用性セットは、[az vm availability-set create](/cli/azure/vm/availability-set#create) を使用して作成できます。 この例では、*myResourceGroupAvailability* リソース グループ内の *myAvailabilitySet* という名前の可用性セットに対して、更新ドメインと障害ドメインの両方の数として *2* を設定します。
 
 リソース グループを作成します。
 

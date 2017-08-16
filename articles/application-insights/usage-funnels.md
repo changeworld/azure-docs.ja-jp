@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8d20995ebb63e8cf1e4d15c57628b80aaf9e036b
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2b25ffd844507074a8467b1135b1331feb9d3ed7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -45,4 +45,9 @@ ms.lasthandoff: 07/21/2017
 ![データを示したファネルのブレード](./media/app-insights-understand-usage-patterns/funnel1.png)
 
 ## <a name="next-steps"></a>次のステップ
-- [利用状況分析](app-insights-usage-overview.md)の詳細を見る
+  * [利用状況の概要](app-insights-usage-overview.md)
+  * [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
+  * [保持](app-insights-usage-retention.md)
+  * [ブック](app-insights-usage-workbooks.md)
+  * [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
+

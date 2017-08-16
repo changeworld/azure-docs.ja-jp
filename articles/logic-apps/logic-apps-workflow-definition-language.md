@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b9cd83e6891c723f843825b99dce0e0158fc6ef6
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -49,8 +49,8 @@ ms.lasthandoff: 07/21/2017
 |$schema|いいえ|定義言語のバージョンが記述されている JSON スキーマ ファイルの場所を指定します。 この場所は、外部の定義を参照する場合に必要です。 このドキュメントの場所は次のとおりです。 <p>`https://schema.management.azure.com/providers/Microsoft.Logic/schemas/2015-08-01-preview/workflowdefinition.json#`|  
 |contentVersion|いいえ|定義のバージョンを指定します。 定義を使ってワークフローをデプロイするとき、この値を使って、正しい定義が確実に使われるようにすることができます。|  
 |parameters|なし|定義へのデータの入力に使うパラメーターを指定します。 最大 50 個のパラメーターを定義することができます。|  
-|トリガー|いいえ|ワークフローを開始するトリガーの情報を指定します。 最大 250 個のトリガーを定義できます。|  
-|アクション|いいえ|フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
+|トリガー|いいえ|ワークフローを開始するトリガーの情報を指定します。 最大 10 個のトリガーを定義できます。|  
+|actions|いいえ|フローの実行時に行うアクションを指定します。 最大 250 個のアクションを定義できます。|  
 |outputs|いいえ|デプロイされるリソースに関する情報を指定します。 最大 10 個の出力を定義できます。|  
   
 ## <a name="parameters"></a>parameters
