@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 88a356e61c32f529d511aa1c9c68bdfa47acadb5
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: b9bc70ec9e271a8e0b34ed415e27cd350390b21d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -41,6 +41,10 @@ Managed Disks では、1 つのサブスクリプションで最大 10,000 個�
 ### <a name="better-reliability-for-availability-sets"></a>可用性セットの信頼性の向上
 
 管理ディスクでは、[可用性セットの VM](../virtual-machines/windows/manage-availability.md#use-managed-disks-for-vms-in-an-availability-set) のディスクが、単一障害点にならないように相互に十分に分離されるため、可用性セットの信頼性が向上します。 これは、ディスクをさまざまなストレージ スケール ユニット (スタンプ) に自動的に配置することによって実現されます。 ハードウェアやソフトウェアの障害によってスタンプが機能しなくなった場合、そのスタンプ上のディスクを使用する VM インスタンスだけが機能しなくなります。 たとえば、5 台の VM 上で実行されているアプリケーションがあり、これらの VM が可用性セットに含まれているとします。 各 VM のディスクはすべて同じスタンプに格納されるわけではないため、1 つのスタンプがダウンしても、アプリケーションの他のインスタンスは引き続き実行されます。
+
+### <a name="highly-durable-and-available"></a>優れた持続性と可用性
+
+Azure ディスクは、99.999% の可用性で設計されています。 3 つのデータ レプリカで高い持続性を実現できるため、安心してお使いいただけます。 1 つのレプリカに問題が発生しても (またはそれが 2 つのレプリカであっても)、残りのレプリカでデータを維持し、高い耐障害性を確保します。 このアーキテクチャにより、Azure は IaaS ディスクのエンタープライズ レベルの持続性を、業界トップレベルの年間故障率 0% で一貫して提供できます。 
 
 ### <a name="granular-access-control"></a>詳細なアクセス制御
 
