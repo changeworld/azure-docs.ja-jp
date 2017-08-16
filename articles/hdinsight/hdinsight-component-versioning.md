@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 04/14/2017
 ms.author: bprakash
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 406a1d0af58cb7b9145a836027d470272be17004
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 26512049dba3d4dde575c5a67ba884fb56374236
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>HDInsight で使用可能な Hadoop コンポーネントとバージョンとは
@@ -38,7 +38,7 @@ HDInsight クラスター バージョンに対応するコンポーネントの
 > [!NOTE]
 > HDInsight サービスの既定のバージョンは、予告なく変更される場合があります。 バージョンの依存関係がある場合は、Azure PowerShell や Azure CLI を含む .NET SDK を使用してクラスターを作成する際に HDInsight バージョンを指定してください。
 
-| コンポーネント | HDInsight 3.6 | HDInsight 3.5 (既定値) | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
+| コンポーネント | HDInsight 3.6 (既定) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop と YARN |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -85,7 +85,7 @@ HDInsight の最新バージョンに関する追加のリリース ノートは
 | HDInsight のバージョン | HDP のバージョン | VM の OS | 高可用性 | リリース日 | Azure Portal での可用性 | サポート有効期限 | 提供終了日 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16 |あり |2017 年 4 月 4 日 |あり | | |
-| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |あり |2016 年 9 月 30 日 |あり |2017 年 7 月 5 日 |2018 5 月 31 日 |
+| HDInsight 3.5 |HDP 2.5 |Ubuntu 16 |あり |2016 年 9 月 30 日 |あり |2017 年 9 月 5 日 |2018 5 月 31 日 |
 | HDInsight 3.4 |HDP 2.4 |Ubuntu 14.0.4 LTS |あり |2016 年 3 月 29 日 |あり |2016 年 12 月 29 日 |2018 年 1 月 9 日 |
 | HDInsight 3.3 |HDP 2.3 |Windows Server 2012 R2 |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2018 年 7 月 31日 |
 | HDInsight 3.3 |HDP 2.3 |Ubuntu 14.0.4 LTS |あり |2015 年 12 月 2 日 |あり |2016 年 6 月 27 日 |2017 年 7 月 31 日 |

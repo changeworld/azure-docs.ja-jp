@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 9d5a4bef0c22f637a35390c6a8a245967fb02118
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 270d79944465176d3df467f7145ff82594302c3d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric クラスターの容量計画に関する考慮事項
@@ -96,7 +96,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 ### <a name="operational-recommendations-for-the-node-type-that-you-have-set-to-silver-or-gold-durability-level"></a>Silver または Gold 耐久性レベルに設定したノード タイプの操作上の推奨事項
 
 1. クラスターとアプリケーションを常に正常な状態に維持し、アプリケーションが適切なタイミングですべての[サービス レプリカのライフサイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ビルドのレプリカが停止するなど) に応答することを確認します。
-2. VM の SKU を変更する場合はより安全な方法を採用します (スケールアップ/ダウン)。仮想マシン スケール セットの VM SKU の変更は本質的に安全でない操作であるため、可能な場合はより安全な方法を回避しないでください。 一般的な問題を避けるために実行できる手順は次のとおりです。
+2. VM の SKU を変更する場合はより安全な方法を採用します (スケールアップ/ダウン)。仮想マシン スケール セットの VM SKU の変更は本質的に安全でない操作であるため、可能な限り避けるようにしてください。 一般的な問題を避けるために実行できる手順は次のとおりです。
     - **非プライマリ nodetypes の場合:** 新しい仮想マシン スケール セットを作成し、サービス配置制約を新しい仮想マシン スケール セット/ノード タイプを含めるように変更したら、古い仮想マシン スケール セット インスタンスの数を、一度に 1 ノードずつ 0 に減らします (このようにするのは、ノードの削除がクラスターの信頼性に影響しないようにするためです)。
     - **プライマリ nodetype の場合**: プライマリ ノード タイプの VM SKU は変更しないことをお勧めします。 新しい SKU の理由が容量である場合は、インスタンスを追加するか、可能であれば、新しいクラスターを作成することをお勧めします。 選択肢がない場合は、新しい SKU が反映されるように仮想マシン スケール セットのモデル定義を変更します。 クラスターに nodetype が 1 つしかない場合は、すべてのステートフルなアプリケーションが、適切なタイミングですべての[サービス レプリカのライフ サイクル イベント](service-fabric-reliable-services-advanced-usage.md#stateful-service-replica-lifecycle) (ビルドでのレプリカの停止など) に応答すること、サービス レプリカのリビルド時間が 5 分未満であることを確認します (Silver 耐久性レベルの場合)。 
 3. MR が有効な任意の仮想マシン スケール セットに最小数 5 つのノードを用意します。
@@ -123,7 +123,7 @@ Silver または Gold 耐久性は、頻繁なスケールイン (VM インス�
 
 ### <a name="recommendations-for-the-reliability-tier"></a>信頼性レベルに関する推奨事項。
 
- クラスターのサイズ (すべてのノード タイプの VM インスタンスの総数) を増減するときには、クラスターの信頼性を 1 つのレベルから別のレベルに更新する必要があります。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。  アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行します。
+ クラスターのサイズ (すべてのノード タイプの VM インスタンスの総数) を増減するときには、クラスターの信頼性を別のレベルに更新する必要があります。 クラスターの信頼性レベルを変更すると、システム サービスのレプリカ セット数を変更するために必要なクラスターのアップグレードが開始されます。 ノードの追加など、クラスターにさらに変更を行う場合は、このアップグレードが完了してからにしてください。  アップグレードの進行状況を監視するには、Service Fabric Explorer を使用するか、[Get-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/get-servicefabricclusterupgrade?view=azureservicefabricps) を実行します。
 
 以下に、信頼性レベルを選択するときの推奨事項を示します。
 

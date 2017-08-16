@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
-ms.author: cfreeman
+ms.author: sewhee
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 7f472bf6669bcf0c1cab048a3a5969fc71aadd8e
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 97db1c51a16fbf62abe8062938beefa16a4f7afd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
@@ -59,19 +59,13 @@ Analytics へのインポートは、次の 3 つの状況で役に立ちます�
 
  * 対象の BLOB に対して専用のストレージ アカウントを作成することをお勧めします。 BLOB が他のプロセスと共有されている場合は、BLOB を読み取るプロセスの所要時間が長くなります。
 
-2. この機能がプレビュー中である間は、アクセス権を申請する必要があります。
-
- * [Azure ポータル](https://portal.azure.com)の Application Insights リソースから、Analytics を開きます。 
- * [スキーマ] ペインの下部で、**[Other Data Sources (他のデータ ソース)]** の [お問い合わせ] リンクをクリックします。 
- * [データ ソースの追加] が表示された場合は、既にアクセス権が付与されています。
-
 
 ## <a name="define-your-schema"></a>スキーマの定義
 
 データをインポートする前に、*データ ソース*を定義する必要があります。これにより、データのスキーマを指定します。
 Application Insights リソースには、最大 50 のデータ ソースが許可されます。
 
-1. データ ソース ウィザードを起動します。
+1. データ ソース ウィザードを起動します。 [新しいデータ ソースの追加] ボタンを使用します。 または、右上隅の設定ボタンをクリックして、ドロップダウン メニューから [データ ソース] を選択します。
 
     ![新しいデータ ソースの追加](./media/app-insights-analytics-import/add-new-data-source.png)
 

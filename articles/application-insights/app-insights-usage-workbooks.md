@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: cfreeman
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: ecd3d86db1d6b3b65015d1d560027cedb4f2df58
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 05e3246de51e1c092a7d8a15dddea3c99b6e5b15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -118,9 +118,11 @@ Workbooks は Application Insights リソース内の、ユーザー個人の **
 
 ## <a name="next-steps"></a>次のステップ
 
-* [利用状況の概要](app-insights-usage-overview.md)
-* [ユーザー、セッション、およびイベント](app-insights-usage-segmentation.md)
-* [保持](app-insights-usage-retention.md)
-* [アプリにカスタム イベントを追加する](app-insights-api-custom-events-metrics.md)
-
+## <a name="next-steps"></a>次のステップ
+- 使用状況を把握できるようにするには、[カスタム イベント](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-api-custom-events-metrics#trackevent)または[ページ ビュー](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views)の送信を開始します。
+- カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
+    - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+    - [ファネル](usage-funnels.md)
+    - [保持](app-insights-usage-retention.md)
+    - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 

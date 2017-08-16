@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: 5d1dc8caab804914ac7e94be7f080b713674bc0a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 87b9da134bce20b037e2dce7e1c9f54454fafe9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Azure Web App on Linux の概要
@@ -65,13 +64,13 @@ Kudu の場合、基本的な機能の一部を使用できます。
 
 * 環境
 * デプロイメント
-* 基本的なコンソール
+* 基本コンソール
 * SSH
 
 開発運用の場合:
 
 * ステージング環境
-* DockerHub CI/CD
+* ACR および DockerHub CI/CD
 
 ## <a name="limitations"></a>制限事項
 Azure Portal では、Web App on Linux で現在使用できる機能のみが表示され、残りは非表示となります。 さらに機能を有効にすると、その機能がポータルに表示されます。
@@ -81,9 +80,13 @@ Azure Portal では、Web App on Linux で現在使用できる機能のみが�
 このパブリック プレビューは現在、次のリージョンでのみご利用いただけます。
 
 * 米国西部
-* 西ヨーロッパ 
+* 米国東部
+* 西ヨーロッパ
+* 北ヨーロッパ
 * 東南アジア
 * オーストラリア東部
+* 東日本
+* ブラジル南部
 
 Web Apps on Linux は専用 App Service プランでのみサポートされており、Free レベルまたは Shared レベルは存在しません。 また、標準の Web アプリと Linux 向け Web アプリの App Service プランは相互に排他的であり、Linux 向けでない App Service プラン内で Linux 向け Web アプリを作成することはできません。
 

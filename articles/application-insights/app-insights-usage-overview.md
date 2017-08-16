@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/03/2017
 ms.author: cfreeman
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9ac6ed0d6171b572e0d5729a4fe7c8bd7869525d
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 33aebd002458d40a5a09b6fe334ad43ec578df83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -41,6 +41,10 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
     アプリを発行し、アプリのパフォーマンスを監視してユーザーがアプリを使って何をしているか確認します。
 
+## <a name="include-user-and-session-id-in-your-telemetry"></a>ユーザー ID とセッション ID をテレメトリに含める
+Application Insights で一定期間にわたってユーザーを追跡するためには、それらのユーザーを識別する手段が必要となります。 ユーザー ID やセッション ID を必要としない使用状況ツールはイベント ツールだけです。
+
+これらの ID の送信方法については、[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context)をご覧ください。
 
 ## <a name="explore-usage-demographics-and-statistics"></a>使用状況の人口統計データや統計を調査する
 ユーザーがアプリをいつ使い、どのページに最も興味があり、ユーザーがどこにいて、どのようなブラウザーやオペレーティング システムを使っているかを確認しましょう。 
@@ -166,9 +170,9 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
 すべての新しい TelemetryClients により、指定したプロパティ値が自動的に追加されます。 個々のテレメトリ イベントは、既定値を上書きすることができます。
 
 ## <a name="next-steps"></a>次のステップ
-
-* [ユーザーとセッション](app-insights-usage-segmentation.md)
-* [保持](app-insights-usage-retention.md)
-* [カスタム イベントのコーディング](app-insights-api-custom-events-metrics.md)
-
+   - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
+   - [ファネル](usage-funnels.md)
+   - [保持](app-insights-usage-retention.md)
+   - [ブック](app-insights-usage-workbooks.md)
+   - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 

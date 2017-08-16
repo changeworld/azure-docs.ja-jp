@@ -16,10 +16,10 @@ ms.author: joflore
 ms.custom: it-pro
 ms.reviewer: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 1748ca50a2debac8dfc72576a19c80008c21f31c
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 7ed79cad4e796aa98e54065180ecfb5244903509
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="saas-application-integration-with-azure-active-directory"></a>SaaS アプリケーションと Azure Active Directory の統合
@@ -43,7 +43,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_360Online.png)| [360 Online](active-directory-saas-360online-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-8x8virtualoffice-tutorial.png)| [8x8 Virtual Office](active-directory-saas-8x8virtualoffice-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-abintegro-tutorial.png)| [Abintegro](active-directory-saas-abintegro-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/saasapp_absorblms.png)| [Absorb LMS](active-directory-saas-absorblms-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-absorblms-tutorial.png)| [Absorb LMS](active-directory-saas-absorblms-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_AdaptiveSuite.png)| [Adaptive Suite](active-directory-saas-adaptivesuite-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_AdobeCreateiveCloud.png)| [Adobe Creative Cloud](active-directory-saas-adobe-creative-cloud-tutorial.md)
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_AdobeEchoSign.png)| [Adobe EchoSign](active-directory-saas-adobe-echosign-tutorial.md)|
@@ -149,7 +149,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-freshgrade-tutorial.png)| [FreshGrade](active-directory-saas-freshgrade-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Freshservice.png)| [FreshService](active-directory-saas-freshservice-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-front-tutorial.png)| [Front](active-directory-saas-front-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Fuse.png)| [Fuse](active-directory-saas-fuse-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-fuse-tutorial.png)| [Fuse](active-directory-saas-fuse-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Fuze.png)| [Fuze](active-directory-saas-fuze-tutorial.md)
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_GaggleAMP.png)| [GaggleAMP](active-directory-saas-gaggleamp-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Gigya.png)| [Gigya](active-directory-saas-gigya-tutorial.md)|
@@ -174,7 +174,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_IglooSoftware.png)| [Igloo Software](active-directory-saas-igloo-software-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/saasapp_ilms.png)| [iLMS](active-directory-saas-ilms-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_ImageRelay.png)| [Image Relay](active-directory-saas-imagerelay-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_InforRetail.png)| [Infor Retail - Information Management](active-directory-saas-inforretailinformationmanagement-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-inforretailinformationmanagement-tutorial.png)| [Infor Retail - Information Management](active-directory-saas-inforretailinformationmanagement-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Inkling.png)| [Inkling](active-directory-saas-inkling-tutorial.md)
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-innotas-tutorial.png)| [Innotas](active-directory-saas-innotas-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-insideview-tutorial.png)| [InsideView](active-directory-saas-insideview-tutorial.md)|
@@ -245,10 +245,10 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_NewSignature.png)| [New Signature Cloud Management Portal for Microsoft Azure](active-directory-saas-newsignature-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Nexonia.png)| [Nexonia](active-directory-saas-nexonia-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-nomadesk-tutorial.png)| [Nomadesk](active-directory-saas-nomadesk-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Nomadic.png)| [Nomadic](active-directory-saas-nomadic-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-nomadic-tutorial.png)| [Nomadic](active-directory-saas-nomadic-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-novatus-tutorial.png)| [Novatus](active-directory-saas-novatus-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-oc-tanner-tutorial.png)| [O.C. Tanner - AppreciateHub](active-directory-saas-oc-tanner-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_OfficeSpaceSoftware.png)| [OfficeSpace Software](active-directory-saas-officespace-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-officespace-tutorial.png)| [OfficeSpace Software](active-directory-saas-officespace-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-oneteam-tutorial.png)| [Oneteam](active-directory-saas-oneteam-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-onit-tutorial.png)| [Onit](active-directory-saas-onit-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-opsgenie-tutorial.png)| [OpsGenie](active-directory-saas-opsgenie-tutorial.md)|
@@ -278,11 +278,12 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-promapp-tutorial.png)| [Promapp](active-directory-saas-promapp-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_ProofpointOnDemand.png)| [Proofpoint on Demand](active-directory-saas-proofpoint-ondemand-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/saasapp_purelyhr.png)| [PurelyHR](active-directory-saas-purelyhr-tutorial.md)|
-| ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_QlikSenseEnterprise.png)| [Qlik Sense Enterprise](active-directory-saas-qliksense-enterprise-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-qliksense-enterprise-tutorial.png)| [Qlik Sense Enterprise](active-directory-saas-qliksense-enterprise-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Qualtrics.png)| [Qualtrics](active-directory-saas-qualtrics-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Questetra_BPM_Suite.png)| [Questetra BPM Suite](active-directory-saas-questetra-bpm-suite-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-quickhelp-tutorial.png)| [QuickHelp](active-directory-saas-quickhelp-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_RallySoftware.png)| [Rally Software](active-directory-saas-rally-software-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-realtimeboard-tutorial.png)| [RealtimeBoard](active-directory-saas-realtimeboard-tutorial.md)||
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-recognize-tutorial.png)| [Recognize](active-directory-saas-recognize-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-redvector-tutorial.png)| [RedVector](active-directory-saas-redvector-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Replicon.png)| [Replicon](active-directory-saas-replicon-tutorial.md)|
@@ -335,6 +336,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_SuccessFactors.png)| [SuccessFactors](active-directory-saas-successfactors-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-sugarcrm-tutorial.png)| [SugarCRM](active-directory-saas-sugarcrm-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-sumologic-tutorial.png)| [SumoLogic](active-directory-saas-sumologic-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-symantec-tutorial.png)| [Symantec Web Security Service (WSS)](active-directory-saas-symantec-tutorial.md)||
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Syncplicity.png)| [Syncplicity](active-directory-saas-syncplicity-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Synergi.png)| [Synergi](active-directory-saas-synergi-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/saasapp_tandeexpress.png)| [T&E Express](active-directory-saas-tyeexpress-tutorial.md)|
@@ -388,6 +390,7 @@ Azure AD に事前に統合されている SaaS アプリの包括的な一覧�
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-yonyx-tutorial.png)| [Yonyx Interactive Guides](active-directory-saas-yonyx-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-youearnedit-tutorial.png)| [YouEarnedIt](active-directory-saas-youearnedit-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/SaaSApp_Zendesk.png)| [Zendesk](active-directory-saas-zendesk-tutorial.md)|
+| ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-zivver-tutorial.png)| [ZIVVER](active-directory-saas-zivver-tutorial.md)
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-zoho-mail-tutorial.png)| [Zoho Mail](active-directory-saas-zoho-mail-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-zoom-tutorial.png)| [Zoom](active-directory-saas-zoom-tutorial.md)|
 | ![ロゴ](./media/active-directory-saas-tutorial-list/active-directory-saas-zscaler-beta-tutorial.png)| [Zscaler Beta](active-directory-saas-zscaler-beta-tutorial.md)|

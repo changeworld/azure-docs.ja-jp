@@ -15,22 +15,21 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/14/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 458459e9bed5ebee6188b5f282e66df1e2a988a8
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 8ff39e31d790b9d7040ec0398a42fb104890915f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="create-an-azure-analysis-services-server-in-azure-portal"></a>Azure Portal で Azure Analysis Services サーバーを作成する
 この記事では、Azure サブスクリプションで Analysis Services サーバー リソースを作成する手順について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
-開始するには、以下が必要です。
+このクイック スタートを完了するための要件を次に示します。
 
 * **Azure サブスクリプション**: [Azure 無料試用版](https://azure.microsoft.com/offers/ms-azr-0044p/)でアカウントを作成します。
-* **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 Microsoft アカウントはサポートされていません。 詳しくは、[ユーザー認証](analysis-services-overview.md#secure)に関するセクションをご覧ください。
+* **Azure Active Directory**: サブスクリプションは、Azure Active Directory テナントに関連付けられている必要があります。 また、その Azure Active Directory でアカウントを使用して Azure にサインインしている必要があります。 Microsoft アカウントはサポートされていません。 詳細については、「[認証とユーザーのアクセス許可](analysis-services-manage-users.md)」を参照してください。
 * **リソース グループ**: 既存のリソース グループを使うか、[新しいリソース グループを作成](../azure-resource-manager/resource-group-overview.md)します。
 
 > [!NOTE]
@@ -39,7 +38,7 @@ ms.lasthandoff: 06/17/2017
 > 
 
 ## <a name="to-create-a-server-in-azure-portal"></a>Azure Portal でサーバーを作成するには
-1. [Azure ポータル](https://portal.azure.com)にサインインします。  
+1. [Azure Portal](https://portal.azure.com) にサインインします。  
 2. **[+ 新規]** > **[データ + 分析]** > **[Analysis Services]** の順にクリックします。
 3. **[Analysis Services]** ブレードで、必要なフィールドを入力して **[作成]** をクリックします。
    

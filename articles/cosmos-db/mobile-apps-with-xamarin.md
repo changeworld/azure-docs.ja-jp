@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/03/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 50c47061eaacbe7f7463c4d0bcc82869e31d26e6
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 4dfe9c755f3e7d5414ae04dd4027defd6cef2e4a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="build-mobile-applications-with-xamarin-and-azure-cosmos-db"></a>Xamarin と Azure Cosmos DB を使用したモバイル アプリケーションの構築
@@ -45,7 +45,7 @@ Azure Cosmos DB は、モバイル アプリ開発者向けの次の主要な機
 ### <a name="get-started"></a>作業開始
 Azure Cosmos DB の利用を開始するのは簡単です。 Azure Portal に移動して、新しい Azure Cosmos DB アカウントを作成します。 **[クイック スタート]** タブをクリックします。 Azure Cosmos DB アカウントにあらかじめ接続されている Xamarin Forms のタスク一覧のサンプルをダウンロードします。 
 
-![モバイル アプリ向けの Azure Cosmos DB の [クイック スタート]](media/mobile-apps-with-xamarin/documentdb-quickstart.png)
+![モバイル アプリ向けの Azure Cosmos DB の [クイック スタート]](media/mobile-apps-with-xamarin/cosmos-db-quickstart.png)
 
 または、既存の Xamarin アプリがある場合は、[Azure Cosmos DB NuGet パッケージ](documentdb-sdk-dotnet-core.md)を追加できます。 Azure Cosmos DB では、Xamarin.IOS、Xamarin.Android、および Xamarin Forms の共有ライブラリをサポートしています。
 
@@ -90,18 +90,18 @@ To-Do List アプリをマルチ ユーザーの To-Do List アプリに変更�
 ### <a name="scale-on-demand"></a>オンデマンドでの拡張
 Azure Cosmos DB は、管理された DBaaS (database as a service) です。 ユーザー ベースが拡大しても、VM のプロビジョニングやコア数の増加について心配する必要はありません。 必要なのは、アプリに必要な 1 秒あたりの操作数 (スループット) を Azure Cosmos DB に指示することだけです。 **[スケール]** タブで、1 秒あたりの要求ユニット (RU) と呼ばれるスループットの尺度を使用して、スループットを指定できます。 たとえば、1 KB のドキュメントの読み取り操作には 1 RU が必要です。 また、**スループット** メトリックにアラートを追加して、トラフィックの増加を監視し、アラートの発生に応じてスループットをプログラムで変更することもできます。
 
-![オンデマンドでの Azure Cosmos DB のスループットの拡張](media/mobile-apps-with-xamarin/documentdb-scale.png)
+![オンデマンドでの Azure Cosmos DB のスループットの拡張](media/mobile-apps-with-xamarin/cosmos-db-xamarin-scale.png)
 
 ### <a name="go-planet-scale"></a>世界規模化
 アプリが普及すると、ユーザーが世界中に広がる可能性があります。 または、不測の事態に備える必要があるかもしれません。 Azure Portal に移動して、Azure Cosmos DB アカウントを開きます。 地図上でクリックすると、世界中の任意の数のリージョンにデータを継続的にレプリケートできます。 この機能により、ユーザーがどこにいてもデータを利用できるようになります。 不測の事態に備えるためにフェールオーバー ポリシーを追加することもできます。
 
-![地理的リージョンをまたいだ Azure Cosmos DB の拡張](media/mobile-apps-with-xamarin/documentdb-replicate-globally.png)
+![地理的リージョンをまたいだ Azure Cosmos DB の拡張](media/mobile-apps-with-xamarin/cosmos-db-xamarin-replicate.png)
 
 おめでとうございます。 ソリューションが完成し、モバイル アプリで Xamarin と Azure Cosmos DB を利用できるようになりました。 同様の手順に従って、Azure Cosmos DB JavaScript SDK を使用した Cordova アプリや、Azure Cosmos DB REST API を使用したネイティブ iOS/Android アプリを構築することができます。
 
 ## <a name="next-steps"></a>次のステップ
 * [GitHub の Xamarin と Azure Cosmos DB](https://github.com/Azure/azure-documentdb-dotnet/tree/master/samples/xamarin) のソース コードを確認する。
-* [DocumentDB .NET Core SDK](documentdb-sdk-dotnet-core.md) をダウンロードする。
+* [Azure Cosmos DB .NET Core SDK](documentdb-sdk-dotnet-core.md) をダウンロードする。
 * [.NET アプリケーション](documentdb-dotnet-samples.md)向けの他のコード サンプルを探す。
 * [Azure Cosmos DB のリッチ クエリ機能](documentdb-sql-query.md)について確認する。
 * [Azure Cosmos DB の地理空間サポート](geospatial.md)について確認する。

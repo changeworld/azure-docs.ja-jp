@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: d55cfc354ad5a9fc0f06b671f441ba4a0616bb9a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: f51cacb33251d479f48a39014cc2db60a23358d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -33,7 +32,7 @@ App Service は、事前定義済みのアプリケーション スタックを 
 
 
 ## <a name="how-to-set-a-custom-docker-image-for-a-web-app"></a>Web アプリのカスタム Docker イメージを設定する方法
-カスタム Docker イメージは、新規の Web アプリと既存の Web アプリのどちらにでも設定できます。 [Azure Portal](https://portal.azure.com) を使用して Linux で Web アプリを作成する場合、**[コンテナーの構成]** をクリックしてカスタム Docker イメージを設定します。
+カスタム Docker イメージは、新規の Web アプリと既存の Web アプリのどちらにでも設定できます。 [Azure Portal](https://portal.azure.com/#create/Microsoft.AppSvcLinux) を使用して Linux で Web アプリを作成する場合、**[コンテナーの構成]** をクリックしてカスタム Docker イメージを設定します。
 
 ![Linux の新しい Web アプリのカスタム Docker イメージ][1]
 
@@ -65,18 +64,20 @@ Docker Hub からカスタム Docker イメージを使用するには、次の�
 
 ## <a name="how-to-set-the-port-used-by-your-docker-image"></a>Docker イメージで使用されるポートを設定する方法 ##
 
-Web アプリ向けにカスタム Docker イメージを使用する場合、Dockerfile 内で `PORT` 環境変数を使用することができます。この環境変数は、生成されたコンテナーに追加されます。 Ruby アプリケーションの場合は、次の Docker ファイルの例を検討してみてください。
+Web アプリ向けにカスタム Docker イメージを使用する場合、Dockerfile 内で `WEBSITES_PORT` 環境変数を使用することができます。この環境変数は、生成されたコンテナーに追加されます。 Ruby アプリケーションの場合は、次の Docker ファイルの例を検討してみてください。
 
     FROM ruby:2.2.0
     RUN mkdir /app
     WORKDIR /app
     ADD . /app
     RUN bundle install
-    CMD bundle exec puma config.ru -p $PORT -e production
+    CMD bundle exec puma config.ru -p WEBSITES_PORT -e production
 
-コマンドの最後の行で、実行時に PORT 環境変数が渡されることが確認できます。 コマンドでは大文字小文字の区別が重要ですので注意してください。
+コマンドの最後の行で、実行時に WEBSITES_PORT 環境変数が渡されることが確認できます。 コマンドでは大文字小文字の区別が重要ですので注意してください。
 
-他のユーザーによって作成された既存の Docker イメージを使用する場合は、アプリケーション用のポート 80 以外のポートを指定する必要がある場合があります。 ポートを構成するには、次に示す値を使用して、`PORT` というアプリケーション設定を追加します。
+以前はプラットフォームが `PORT` アプリ設定を使用していましたが、このアプリ設定の使用は止めて、`WEBSITES_PORT` だけを使用するようにする変更を予定しています。
+
+他のユーザーによって作成された既存の Docker イメージを使用する場合は、アプリケーション用のポート 80 以外のポートを指定する必要がある場合があります。 ポートを構成するには、次に示す値を使用して、`WEBSITES_PORT` というアプリケーション設定を追加します。
 
 ![カスタム Docker イメージの PORT アプリ設定の構成][6]
 
@@ -94,8 +95,8 @@ Web アプリ向けにカスタム Docker イメージを使用する場合、Do
 
 ## <a name="troubleshooting"></a>トラブルシューティング ##
 
-カスタム Docker イメージを使用してアプリケーションを起動できない場合は、LogFiles/docker ディレクトリで Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
-コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Web サーバー ログ]** を有効にする必要があります。
+カスタム Docker イメージを使用してアプリケーションを起動できない場合は、LogFiles ディレクトリで Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
+コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
 
 ![ログ記録の有効化][8]
 
