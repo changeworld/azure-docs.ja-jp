@@ -11,7 +11,7 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: article
 ms.date: 8/2/2017
 ms.author: markgal;
 ms.translationtype: HT
