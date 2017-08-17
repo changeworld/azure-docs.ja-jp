@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 06/12/2017
+ms.date: 08/08/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 28eb505bf58943f7a687b79af3427a0ee74fe9bb
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 05538e1633d6e8353cc7980d081af3672a3f97d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
@@ -57,6 +57,14 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
+
+*   スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
+
+### <a name="a-name140140"></a><a name="1.4.0"/>1.4.0
+
+*   [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) のインスタンス化時にカスタム JsonSerializerSettings を指定するためのサポートが追加されました。
 
 ### <a name="a-name132132"></a><a name="1.3.2"/>1.3.2
 
@@ -125,6 +133,8 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
+| [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |
 | [1.3.2](#1.3.2) |2017 年 6 月 12 日 |--- |
 | [1.3.1](#1.3.1) |2017 年 5 月 23 日 |--- |
 | [1.3.0](#1.3.0) |2017 年 5 月 10 日 |--- |

@@ -15,44 +15,46 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 926e6b1024a75fc29cfecfb6a02550e7fbd9007b
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 3ac234b27a0675f484018c357a65ab65049ceee0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
-# <a name="limitations-for-azure-cloud-shell"></a>Azure Cloud Shell の制限
+# <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 Azure Cloud Shell には、次の既知の制限があります。
 
 ## <a name="system-state-and-persistence"></a>システム状態と永続化
-Cloud Shell セッションを提供するコンピューターは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、ファイル共有をマウントする必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをプロビジョニングできることが必要です。
-* マウントされた記憶域内でのみ、`$Home` ディレクトリまたは `clouddrive` ディレクトリ内の変更が永続化されます。
-  * ファイル共有は、[割当済みリージョン](persisting-shell-storage.md#pre-requisites-for-manual-mounting)内からのみマウントできます。
-  * Azure Files は、LRS および GRS のストレージ アカウントのみをサポートします。
+Cloud Shell セッションを提供するマシンは一時的であり、セッションが 20 分間非アクティブの状態になると、リサイクルされます。 Cloud Shell では、ファイル共有をマウントする必要があります。 そのため、Cloud Shell にアクセスするには、ご利用のサブスクリプションでストレージ リソースをセットアップできることが必要です。 その他の考慮事項:
+* マウントされたストレージでは、`$Home` ディレクトリまたは `clouddrive` ディレクトリ内の変更のみが永続化されます。
+* ファイル共有は、[割り当て済みリージョン](persisting-shell-storage.md#mount-a-new-clouddrive)内からのみマウントできます。
+* Azure Files は、ローカル冗長ストレージと geo 冗長ストレージのアカウントのみをサポートします。
 
 ## <a name="user-permissions"></a>ユーザーのアクセス許可
-権限は、sudo アクセスのない、通常のユーザーとして設定されます。 $Home 外のインストールはすべて失われます。
-`clouddrive` ディレクトリ内の `git clone` などの特定のコマンドには適切なアクセス許可がありませんが、$Home ディレクトリにはアクセス許可があります。
+権限は、sudo アクセスのない、通常のユーザーとして設定されます。 `$Home` ディレクトリ外のインストールはすべて失われます。
+`clouddrive` ディレクトリ内の `git clone` などの特定のコマンドには適切なアクセス許可がありませんが、`$Home` ディレクトリにはアクセス許可があります。
 
 ## <a name="browser-support"></a>ブラウザーのサポート
 Cloud Shell では、Microsoft Edge、Microsoft Internet Explorer、Google Chrome、Mozilla Firefox、および Apple Safari の最新バージョンがサポートされます。 プライベート モードの Safari はサポートされません。
 
 ## <a name="copy-and-paste"></a>コピーと貼り付け
-Ctrl + V キーと Ctrl + C キーは Windows マシンでコピー/貼り付けとして機能しません。コピー/貼り付けには、Ctrl + Insert キーと Shift + Insert キーをお使いください。
-右クリックしてコピー/貼り付けのオプションを使用することもできますが、これはブラウザー固有のクリップボード アクセスに依存します。
+Ctrl + C と Ctrl + V は Windows マシンでキーボード ショートカットとして機能しないため、代わりに Ctrl + Insert と Shift + Insert を使用してコピーと貼り付けを実行します。
+
+右クリックしてコピー/貼り付けのオプションを使用することもできますが、右クリックの機能はブラウザー固有のクリップボード アクセスに依存します。
 
 ## <a name="editing-bashrc"></a>.bashrc の編集
-.bashrc を編集する際は注意が必要です。Cloud Shell で予期しないエラーが発生する場合があります。
+.bashrc を編集すると Cloud Shell で予期しないエラーが発生する可能性があるため、編集には注意が必要です。
 
 ## <a name="bashhistory"></a>.bash_history
 バッシュ コマンドの履歴は、Cloud Shell セッションの中断または同時セッションにより、一致していない場合があります。
 
 ## <a name="usage-limits"></a>Usage limits (使用状況の制限)
-Cloud Shell は対話型のユース ケース向けであるため、実行時間の長い非対話型セッションは、警告なしで終了します。
+Cloud Shell は対話型のユース ケースを想定しています。 そのため、実行時間の長い非対話型セッションは、警告なしで終了します。
 
 ## <a name="network-connectivity"></a>ネットワーク接続
-Cloud Shell での待機時間はローカル インターネット接続の影響によって生じますが、Cloud Shell は送信される命令について機能しようとし続けます。
+Cloud Shell の待機時間はローカル インターネット接続の影響によるもので、Cloud Shell は送信される命令の実行を引き続き試行します。
 
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell のクイック スタート](quickstart.md)
+

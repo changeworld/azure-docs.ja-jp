@@ -59,7 +59,7 @@
       href: sql-database-powershell-samples.md
 - name: 概念
   items:
-    - name: データベースとサーバー
+    - name: サービスの機能
       items:
         - name: 概要
           href: sql-database-servers-databases.md
@@ -69,6 +69,8 @@
           href: sql-database-elastic-pool.md
         - name: 接続のアーキテクチャ
           href: sql-database-connectivity-architecture.md
+        - name: ファイアウォール規則
+          href: sql-database-firewall-configure.md
         - name: DTU と eDTU
           href: sql-database-what-is-a-dtu.md
         - name: DTU ベンチマーク
@@ -77,7 +79,25 @@
           href: sql-database-resource-limits.md
         - name: PaaS または IaaS
           href: sql-database-paas-vs-sql-server-iaas.md
-        - name: Features (機能)
+        - name: 監査
+          href: sql-database-auditing.md
+        - name: 脅威の検出
+          href: sql-database-threat-detection.md
+        - name: データベースのバックアップ
+          href: sql-database-automated-backups.md
+        - name: バックアップ保有期間
+          href: sql-database-long-term-retention.md
+        - name: フェールオーバー グループ
+          href: sql-database-geo-replication-overview.md
+        - name: エラスティック クライアント ライブラリ
+          href: sql-database-elastic-database-client-library.md
+        - name: エラスティック クエリ
+          href: sql-database-elastic-query-overview.md
+        - name: エラスティック トランザクション
+          href: sql-database-elastic-transactions-overview.md
+        - name: エラスティック ジョブ
+          href: sql-database-elastic-jobs-overview.md
+        - name: SQL Server の共通機能
           href: sql-database-features.md
     - name: セキュリティ
       items:
@@ -85,34 +105,22 @@
           href: sql-database-security-overview.md
         - name: Access control
           href: sql-database-control-access.md
-        - name: ファイアウォール規則
-          href: sql-database-firewall-configure.md
         - name: Azure AD
           href: sql-database-aad-authentication.md
         - name: ログインとユーザー
           href: sql-database-manage-logins.md
         - name: 多要素認証
           href: sql-database-ssms-mfa-authentication.md
-        - name: 監査
-          href: sql-database-auditing.md
         - name: テーブルの監査と TDS
           href: sql-database-auditing-and-dynamic-data-masking-downlevel-clients.md
-        - name: 脅威の検出
-          href: sql-database-threat-detection.md
         - name: データ マスク
           href: sql-database-dynamic-data-masking-get-started.md
     - name: ビジネス継続性
       items:
         - name: 概要
           href: sql-database-business-continuity.md
-        - name: データベースのバックアップ
-          href: sql-database-automated-backups.md
-        - name: バックアップ保有期間
-          href: sql-database-long-term-retention.md
         - name: データベースの回復
           href: sql-database-recovery-using-backups.md
-        - name: フェールオーバー グループ
-          href: sql-database-geo-replication-overview.md
         - name: セキュリティを構成する
           href: sql-database-geo-replication-security-config.md
         - name: アプリの設計と回復
@@ -159,16 +167,10 @@
           href: sql-database-compatibility-level-query-performance-130.md
         - name: インメモリの監視
           href: sql-database-in-memory-oltp-monitoring.md
-    - name: アプリのスケールアウト
+    - name: スケールアウト
       items:
         - name: 概要
           href: sql-database-elastic-scale-introduction.md
-        - name: SaaS の設計パターン
-          href: sql-database-design-patterns-multi-tenancy-saas-applications.md
-        - name: SaaS アプリのセキュリティ
-          href: sql-database-elastic-tools-multi-tenant-row-level-security.md
-        - name: エラスティック クライアント ライブラリ
-          href: sql-database-elastic-database-client-library.md
         - name: シャード マップ
           href: sql-database-elastic-scale-shard-map-management.md
         - name: クエリのルーティング
@@ -185,16 +187,12 @@
           href: sql-database-elastic-scale-working-with-dapper.md
         - name: エラスティック ツールに関する FAQ
           href: sql-database-elastic-scale-faq.md
-        - name: エラスティック クエリ
-          href: sql-database-elastic-query-overview.md
-        - name: 行方向のデータ
-          href: sql-database-elastic-query-horizontal-partitioning.md
-        - name: 列方向のデータ
-          href: sql-database-elastic-query-vertical-partitioning.md
-        - name: トランザクション
-          href: sql-database-elastic-transactions-overview.md
-        - name: エラスティック ジョブ
-          href: sql-database-elastic-jobs-overview.md
+    - name: マルチテナント SaaS
+      items:
+        - name: SaaS の設計パターン
+          href: sql-database-design-patterns-multi-tenancy-saas-applications.md
+        - name: SaaS アプリのセキュリティ
+          href: sql-database-elastic-tools-multi-tenant-row-level-security.md
     - name: データベースの開発
       items:
         - name: JSON データ
@@ -225,6 +223,26 @@
           href: sql-database-develop-direct-route-ports-adonet-v12.md
 - name: ハウツー ガイド
   items:
+    - name: サービスの機能
+      items:
+        - name: エラスティック データベース クライアント ライブラリのアップグレード
+          href: sql-database-elastic-scale-upgrade-client-library.md
+        - name: エラスティック ジョブのインストール
+          href: sql-database-elastic-jobs-service-installation.md
+        - name: ジョブの作成 - ポータル
+          href: sql-database-elastic-jobs-create-and-manage.md
+        - name: ジョブの作成 - PowerShell
+          href: sql-database-elastic-jobs-powershell.md
+        - name: ジョブの作成 - サンプル アプリ
+          href: sql-database-elastic-jobs-getting-started.md
+        - name: エラスティック ジョブのアンインストール
+          href: sql-database-elastic-jobs-uninstall.md
+        - name: 垂直方向にパーティション分割されたデータに対するクエリ
+          href: sql-database-elastic-query-getting-started-vertical.md
+        - name: スケールアウトされたデータ層のレポート
+          href: sql-database-elastic-query-horizontal-partitioning.md
+        - name: スキーマが異なるテーブル間のクエリ
+          href: sql-database-elastic-query-vertical-partitioning.md
     - name: セキュリティ
       items:
         - name: Azure AD 認証の構成
@@ -285,10 +303,12 @@
           href: sql-database-manage-automation.md
         - name: Azure RemoteApp
           href: sql-database-ssms-remoteapp.md
-    - name: アプリのスケールアウト
+    - name: スケールアウト
       items:
         - name: シャード化されたアプリの作成
           href: sql-database-elastic-scale-get-started.md
+        - name: 水平方向のシャード データに対するクエリ
+          href: sql-database-elastic-query-getting-started.md
         - name: シャード データの移動
           href: sql-database-elastic-scale-configure-deploy-split-and-merge.md
         - name: セキュリティ構成
@@ -303,24 +323,26 @@
           href: sql-database-elastic-database-perf-counters.md
         - name: Entity Framework を使用する
           href: sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md
-        - name: クライアントのアップグレード
-          href: sql-database-elastic-scale-upgrade-client-library.md
-        - name: エラスティック ジョブのインストール
-          href: sql-database-elastic-jobs-service-installation.md
-        - name: ジョブの作成 - ポータル
-          href: sql-database-elastic-jobs-create-and-manage.md
-        - name: ジョブの作成 - PowerShell
-          href: sql-database-elastic-jobs-powershell.md
-        - name: ジョブの作成 - サンプル アプリ
-          href: sql-database-elastic-jobs-getting-started.md
-        - name: エラスティック ジョブのアンインストール
-          href: sql-database-elastic-jobs-uninstall.md
-        - name: 行方向のデータに対するクエリ実行
-          href: sql-database-elastic-query-getting-started.md
-        - name: 列方向のデータに対するクエリ実行
-          href: sql-database-elastic-query-getting-started-vertical.md
-        - name: SaaS アプリのチュートリアル
+    - name: マルチテナント SaaS
+      items:
+        - name: チュートリアルの概要
           href: sql-database-wtp-overview.md
+        - name: サンプル アプリのデプロイ
+          href: sql-database-saas-tutorial.md
+        - name: テナントのプロビジョニング
+          href: sql-database-saas-tutorial-provision-and-catalog.md
+        - name: データベース パフォーマンスの監視
+          href: sql-database-saas-tutorial-performance-monitoring.md
+        - name: Log Analytics による監視
+          href: sql-database-saas-tutorial-log-analytics.md
+        - name: シングル テナントの復元
+          href: sql-database-saas-tutorial-restore-single-tenant.md
+        - name: テナント スキーマの管理
+          href: sql-database-saas-tutorial-schema-management.md
+        - name: アドホック クエリの実行
+          href: sql-database-saas-tutorial-adhoc-analytics.md
+        - name: 分析用の ETL
+          href: sql-database-saas-tutorial-tenant-analytics.md
     - name: アプリケーションの開発
       items:
         - name: C と C++

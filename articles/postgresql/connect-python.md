@@ -1,6 +1,6 @@
 ---
 title: "Python から Azure Database for PostgreSQL に接続する | Microsoft Docs"
-description: "Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Python コード サンプルを紹介します。"
+description: "このクイックスタートでは、Azure Database for PostgreSQL に接続してデータを照会するために使用できる、Python コード サンプルを紹介します。"
 services: postgresql
 author: SaloniSonpal
 ms.author: salonis
@@ -10,12 +10,12 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 07/07/2017
+ms.date: 08/10/2017
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f6ae1ef3855711a86333857f26400f29dfd7c54e
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 0d52a7728e2292946e9328065b973ca7ad37b4f5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Python を使用した接続とデータの照会
@@ -41,15 +41,15 @@ pip install psycopg2
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
-2. Azure ポータルの左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバー「**mypgserver-20170401**」を検索します。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバー「**mypgserver-20170401**」を検索します。
 3. サーバー名 **[mypgserver-20170401]** をクリックします。
 4. サーバーの **[概要]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
  ![Azure Database for PostgreSQL - サーバー管理者ログイン](./media/connect-python/1-connection-string.png)
 5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
 ## <a name="how-to-run-python-code"></a>Python コードを実行する方法
-- 任意のテキスト エディターで postgres.py という新しいファイルを作成し、プロジェクト フォルダーに保存します。 以下に掲載したサンプル コードをコピーし、テキスト ファイルに貼り付けて保存します。 Windows OS でファイルを保存するときは必ず UTF-8 エンコードを選択してください。 
+- 任意のテキスト エディターで postgres.py という新しいファイルを作成し、プロジェクト フォルダーに保存します。 以下に掲載したサンプル コードをコピーし、テキスト ファイルに貼り付けます。 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 そのうえでファイルを保存します。 Windows OS でファイルを保存するときは必ず UTF-8 エンコードを選択してください。 
 - このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (例: `cd postgresql`)。 そのうえで、python コマンドに続けてファイル名を入力します (例: `python postgres.py`)。
 
 > [!NOTE]

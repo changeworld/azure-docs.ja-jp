@@ -62,7 +62,7 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | Search query (検索クエリ) |実行するクエリ。 |
 | フレンドリ名 |ユーザーに表示されるクエリのわかりやすい名前。 |
 
-## <a name="number--list-part"></a>[Number & list] (番号とリスト) パーツ
+## <a name="number--list-part"></a>[Number & list] \(番号とリスト) パーツ
 ヘッダーには、ログ検索クエリのレコード数を示す数字が表示されます。  リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
 ![[クエリのリスト] ビュー](media/log-analytics-view-designer/view-number-list.png)
@@ -90,10 +90,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | **リスト** |**> しきい値** |
 | Enable Thresholds (しきい値を有効にする) |しきい値を有効にする場合に選択します。  詳細については、「[共通設定](#thresholds)」をご覧ください。 |
 
-## <a name="two-numbers--list-part"></a>[Two numbers & list] (2 つの番号とリスト) パーツ
+## <a name="two-numbers--list-part"></a>[Two numbers & list] \(2 つの番号とリスト) パーツ
 別のログ検索クエリのレコード数を示す 2 つの数字がヘッダーに表示されます。  リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Two numbers & list] (2 つの番号とリスト) ビュー](media/log-analytics-view-designer/view-two-numbers-list.png)
+![[Two numbers & list] \(2 つの番号とリスト) ビュー](media/log-analytics-view-designer/view-two-numbers-list.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -119,10 +119,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | **リスト** |**> しきい値** |
 | Enable Thresholds (しきい値を有効にする) |しきい値を有効にする場合に選択します。  詳細については、「[共通設定](#thresholds)」をご覧ください。 |
 
-## <a name="donut--list-part"></a>[Donut & list] (ドーナツとリスト) パーツ
+## <a name="donut--list-part"></a>[Donut & list] \(ドーナツとリスト) パーツ
 ヘッダーには、ログ クエリの値列を集計した 1 つの数字が表示されます。  ドーナツには、上位 3 件のレコードの結果がグラフィカルに表示されます。
 
-![[Donut & list] (ドーナツとリスト) ビュー](media/log-analytics-view-designer/view-donut-list.png)
+![[Donut & list] \(ドーナツとリスト) ビュー](media/log-analytics-view-designer/view-donut-list.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -159,10 +159,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | **リスト** |**> しきい値** |
 | Enable Thresholds (しきい値を有効にする) |しきい値を有効にする場合に選択します。  詳細については、「[共通設定](#thresholds)」をご覧ください。 |
 
-## <a name="two-timelines--list-part"></a>[Two timelines & list] (2 つのタイムラインとリスト) パーツ
+## <a name="two-timelines--list-part"></a>[Two timelines & list] \(2 つのタイムラインとリスト) パーツ
 ヘッダーには、一定期間の 2 つのログ クエリの結果が棒グラフとして表示され、ログ クエリの 1 つの値列を集計した 1 つの数字がコールアウトに示されます。  リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Two timelines & list] (2 つのタイムラインとリスト) ビュー](media/log-analytics-view-designer/view-two-timelines-list.png)
+![[Two timelines & list] \(2 つのタイムラインとリスト) ビュー](media/log-analytics-view-designer/view-two-timelines-list.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -189,10 +189,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | **リスト** |**> しきい値** |
 | Enable Thresholds (しきい値を有効にする) |しきい値を有効にする場合に選択します。  詳細については、「[共通設定](#thresholds)」をご覧ください。 |
 
-## <a name="information-part"></a>[Information] (情報) パーツ
+## <a name="information-part"></a>[Information] \(情報) パーツ
 ヘッダーには、静的テキストとリンク (オプション) が表示されます。  リストには、静的テキストとタイトルを含む 1 つ以上の項目が表示されます。
 
-![[Information] (情報) ビュー](media/log-analytics-view-designer/view-information.png)
+![[Information] \(情報) ビュー](media/log-analytics-view-designer/view-information.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -210,10 +210,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | タイトル |各項目のタイトルに表示されるテキスト。 |
 | コンテンツ |各項目に表示されるテキスト。 |
 
-## <a name="line-chart-callout--list-part"></a>[Line chart, callout, & list] (折れ線グラフ、コールアウト、およびリスト) パーツ
+## <a name="line-chart-callout--list-part"></a>[Line chart, callout, & list] \(折れ線グラフ、コールアウト、およびリスト) パーツ
 ヘッダーには、一定期間のログ クエリの複数のデータ系列を含む折れ線グラフと、集計値を示すコールアウトが表示されます。  リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Line chart, callout, & list] (折れ線グラフ、コールアウト、およびリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![[Line chart, callout, & list] \(折れ線グラフ、コールアウト、およびリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -249,10 +249,10 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 | **リスト** |**> しきい値** |
 | Enable Thresholds (しきい値を有効にする) |しきい値を有効にする場合に選択します。  詳細については、「[共通設定](#thresholds)」をご覧ください。 |
 
-## <a name="line-chart--list-part"></a>[Line chart & list] (折れ線グラフとリスト) パーツ
+## <a name="line-chart--list-part"></a>[Line chart & list] \(折れ線グラフとリスト) パーツ
 ヘッダーには、一定期間のログ クエリの複数のデータ系列を含む折れ線グラフが表示されます。  リストには、クエリの上位 10 件の結果と、数値列の相対値または値の経時的な変化を示すグラフが表示されます。
 
-![[Line chart & list] (折れ線グラフとリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
+![[Line chart & list] \(折れ線グラフとリスト) ビュー](media/log-analytics-view-designer/view-line-chart-callout-list.png)
 
 | 設定 | 説明 |
 |:--- |:--- |
@@ -311,7 +311,7 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 ### <a name="name-value-separator">Name & Value Separator (名前と値区切り)</a>
 リスト クエリのテキスト プロパティを複数の値として解析する場合の 1 文字の区切り記号。  区切り記号を指定する場合、同じ区切り記号で区切られる各フィールドに、[名前] ボックスで名前を付けることができます。
 
-たとえば、*Location* というプロパティに、*Redmond-Building 41* や *Bellevue-Building12* のような値が含まれるとします。  [Name & Value Separator] (名前と値区切り) に「-」を指定し、[名前] に「*City-Building*」を指定できます。  こうすると、それぞれの値が *City* と *Building* という名前の 2 つのプロパティとして解析されます。
+たとえば、*Location* というプロパティに、*Redmond-Building 41* や *Bellevue-Building12* のような値が含まれるとします。  [Name & Value Separator] \(名前と値区切り) に「-」を指定し、[名前] に「*City-Building*」を指定できます。  こうすると、それぞれの値が *City* と *Building* という名前の 2 つのプロパティとして解析されます。
 
 ### <a name="navigation-query">ナビゲーション クエリ</a>
 ユーザーがリストの項目を選択したときに実行されるクエリ。  *{selected item}* を使用して、ユーザーが選択した項目の構文を含めます。

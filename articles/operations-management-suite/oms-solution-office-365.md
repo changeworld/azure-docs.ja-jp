@@ -49,9 +49,9 @@ Operations Management Suite (OMS) 用の Office 365 ソリューションでは�
 [Office 365 ソリューションをサブスクリプションに追加](../log-analytics/log-analytics-add-solutions.md)したら、ソリューションを Office 365 サブスクリプションに接続する必要があります。
 
 1. [ソリューションの追加](../log-analytics/log-analytics-add-solutions.md)に関するページの手順に従って、アラート管理ソリューションを OMS ワークスペースに追加します。
-2. OMS ポータルで **[Settings] (設定)** に進みます。
-3. **[Connected Sources] (接続済みソース)** で、**[Office 365]** を選択します。
-4. **[Connect Office 365] (Office 365 を接続)** をクリックします。<br>![Office 365 を接続する](media/oms-solution-office-365/configure.png)
+2. OMS ポータルで **[Settings] \(設定)** に進みます。
+3. **[Connected Sources] \(接続済みソース)** で、**[Office 365]** を選択します。
+4. **[Connect Office 365] \(Office 365 を接続)** をクリックします。<br>![Office 365 を接続する](media/oms-solution-office-365/configure.png)
 5. サブスクリプションのグローバル管理者であるアカウントで Office 365 にサインインします。 
 6. ソリューションが監視するワークロードと共に、サブスクリプションが一覧表示されます。<br>![Office 365 を接続する](media/oms-solution-office-365/connected.png) 
 
@@ -71,7 +71,7 @@ OMS ワークスペースに Office 365 ソリューションを追加すると�
 
 ![Office 365 ダッシュボード](media/oms-solution-office-365/dashboard.png)  
 
-ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] (すべて表示) をクリックするか、列ヘッダーをクリックします。
+ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定のスコープと時間範囲について、その列の基準に該当するアラート数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、列の一番下にある [See all] \(すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | 分割 | Description |
 |:--|:--|
@@ -291,7 +291,7 @@ Log Analytics ワークスペースで Office 365 ソリューションによっ
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-Office 365 ソリューションで期待どおりにデータが収集されない場合、**[Settings] (設定)** -> **[Connected Sources] (接続済みソース)** -> **[Office 365]** から OMS ポータルにアクセスし、ソリューションの状態を確認します。 次の表は、それぞれの状態の説明です。
+Office 365 ソリューションで期待どおりにデータが収集されない場合、**[Settings] \(設定)** -> **[Connected Sources] \(接続済みソース)** -> **[Office 365]** から OMS ポータルにアクセスし、ソリューションの状態を確認します。 次の表は、それぞれの状態の説明です。
 
 | 状態 | Description |
 |:--|:--|

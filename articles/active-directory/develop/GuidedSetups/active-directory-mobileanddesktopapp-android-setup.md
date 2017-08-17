@@ -29,15 +29,15 @@ ms.contentlocale: ja-jp
 
 
 ### <a name="create-a-new-project"></a>新しいプロジェクトを作成する 
-1.  Android Studio を開き、[`File`] (ファイル)  >  [`New`] (新規)  >  [`New Project`] (新しいプロジェクト) に移動します。
-2.  アプリケーションに名前を付けて、[`Next`] (次へ) をクリックします。
-3.  *API 21 以降 (Android 5.0)* を選択して、[`Next`] (次へ) をクリックします。
-4.  [`Empty Activity`] (空のアクティビティ) はそのままにして [`Next`] (次へ) をクリックし、[`Finish`] (完了) をクリックします。
+1.  Android Studio を開き、[`File`] \(ファイル)  >  [`New`] \(新規)  >  [`New Project`] \(新しいプロジェクト) に移動します。
+2.  アプリケーションに名前を付けて、[`Next`] \(次へ) をクリックします。
+3.  *API 21 以降 (Android 5.0)* を選択して、[`Next`] \(次へ) をクリックします。
+4.  [`Empty Activity`] \(空のアクティビティ) はそのままにして [`Next`] \(次へ) をクリックし、[`Finish`] \(完了) をクリックします。
 
 
 ### <a name="add-the-microsoft-authentication-library-msal-to-your-project"></a>プロジェクトへの Microsoft Authentication Library (MSAL) の追加
-1.  Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] (Gradle のビルド) に移動します。
-2.  [`Dependencies`] (依存関係) で次のコードをコピーして貼り付けます。
+1.  Android Studio で、[`Gradle Scripts`]  >  [`build.gradle (Module: app)`] \(Gradle のビルド) に移動します。
+2.  [`Dependencies`] \(依存関係) で次のコードをコピーして貼り付けます。
 
 ```ruby  
 compile ('com.microsoft.identity.client:msal:0.1.+') {
@@ -54,7 +54,7 @@ compile 'com.android.volley:volley:1.0.0'
 
 ## <a name="create-your-applications-ui"></a>アプリケーションの UI の作成
 
-1.  `activity_main.xml` を開きます ([`res`]  >  [`layout`] (レイアウト) の順)。
+1.  `activity_main.xml` を開きます ([`res`]  >  [`layout`] \(レイアウト) の順)。
 2.  アクティビティのレイアウトを `android.support.constraint.ConstraintLayout` やその他から `LinearLayout` に変更します。
 3.  プロパティ `android:orientation="vertical"` をノード `LinearLayout` に追加します。
 4.  次のコードをノード `LinearLayout` にコピーして貼り付け、現在の内容を置き換えます。

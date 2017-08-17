@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 824f900545136428f6e377c52e2dda7e3ab97cfe
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
@@ -98,17 +98,18 @@ Batch アカウントを作成するときに、コンピューティング ノ�
 
 次の表で、Batch サービスとユーザー サブスクリプションのプール割り当てモードを比較します。
 
-| **プール割り当てモード:**                 | **Batch サービス**                                                                                       | **ユーザー サブスクリプション**                                                              |
+| **プール割り当てモード**                 | **Batch サービス**                                                                                       | **ユーザー サブスクリプション**                                                              |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------|
-| **プールが割り当てられる場所:**               | Azure で管理されたサブスクリプション                                                                           | Batch アカウントが作成されるユーザー サブスクリプション                        |
-| **サポートされている構成:**             | <ul><li>クラウド サービス構成</li><li>仮想マシン構成 (Linux と Windows)</li></ul> | <ul><li>仮想マシン構成 (Linux と Windows)</li></ul>                |
-| **サポートされている VM イメージ:**                  | <ul><li>Azure Marketplace イメージ</li></ul>                                                              | <ul><li>Azure Marketplace イメージ</li><li>カスタム イメージ</li></ul>                   |
-| **サポートされているコンピューティング ノード タイプ:**         | <ul><li>専用ノード</li><li>優先順位の低いノード</li></ul>                                            | <ul><li>専用ノード</li></ul>                                                  |
-| **サポートされている認証:**             | <ul><li>共有キー</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
-| **Azure Key Vault の必要性:**             | いいえ                                                                                                      | あり                                                                                |
-| **コア クォータ:**                           | Batch コア クォータによって決まる                                                                          | サブスクリプション コア クォータによって決まる                                              |
-| **Azure Virtual Network (VNet) のサポート:** | クラウド サービス構成で作成されるプール                                                      | 仮想マシン構成で作成されるプール                               |
-| **サポートされている Vnet デプロイメント モデル:**      | クラシック デプロイメント モデルで作成した Vnet                                                             | クラシック デプロイメント モデルまたは Azure Resource Manager で作成した Vnet |
+| **プールが割り当てられる場所**               | Azure で管理されたサブスクリプション                                                                           | Batch アカウントが作成されるユーザー サブスクリプション                        |
+| **サポートされている構成**             | <ul><li>クラウド サービス構成</li><li>仮想マシン構成 (Linux と Windows)</li></ul> | <ul><li>仮想マシン構成 (Linux と Windows)</li></ul>                |
+| **サポートされている VM イメージ**                  | <ul><li>Azure Marketplace イメージ</li></ul>                                                              | <ul><li>Azure Marketplace イメージ</li><li>カスタム イメージ</li></ul>                   |
+| **サポートされているコンピューティング ノード タイプ**         | <ul><li>専用ノード</li><li>優先順位の低いノード</li></ul>                                            | <ul><li>専用ノード</li></ul>                                                  |
+| **サポートされている認証**             | <ul><li>共有キー</li><li>Azure AD</li></ul>                                                           | <ul><li>Azure AD</li></ul>                                                         |
+| **Azure Key Vault の必要性**             | いいえ                                                                                                      | あり                                                                                |
+| **コア クォータ**                           | Batch コア クォータによって決まる                                                                          | サブスクリプション コア クォータによって決まる                                              |
+| **Azure Virtual Network (VNet) のサポート** | クラウド サービス構成で作成されるプール                                                      | 仮想マシン構成で作成されるプール                               |
+| **サポートされている Vnet デプロイメント モデル**      | クラシック デプロイメント モデルで作成した Vnet                                                             | クラシック デプロイメント モデルまたは Azure Resource Manager で作成した Vnet |
+
 ## <a name="azure-storage-account"></a>Azure ストレージ アカウント
 
 ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。  
@@ -171,6 +172,8 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
     * Cloud Services 内の worker ロールと同様、"*OS バージョン*" を指定できます (worker ロールの詳細については、[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md)に関するページの「[Cloud Services の概要](../cloud-services/cloud-services-choose-me.md#tell-me-about-cloud-services)」セクションを参照してください)。
     * worker ロールの場合と同様に、"*OS バージョン*" には `*` を指定することをお勧めします。これにより、ノードは自動的にアップグレードされ、新たにリリースされたバージョンに対応するための作業が不要になります。 特定の OS バージョンを選択するのは、主にアプリケーションの互換性を確保する必要がある場合です。こうすることで、バージョンの更新を許可する前に旧バージョンとの互換性をテストできます。 検証が終わると、プールの "*OS バージョン*" を更新して、新しい OS イメージをインストールできます。その際、実行中のタスクはすべて中断され、再びキューに置かれます。
 
+プールを作成するときは、VHD のベース イメージの OS に応じて、適切な **nodeAgentSkuId** を選択する必要があります。 [サポートされるノード エージェント SKU をリスト表示する](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作を呼び出して、使用可能なノード エージェント SKU ID と OS イメージ参照のマッピングを取得できます。
+
 Batch アカウントを作成する際のプール割り当てモードの設定の詳細については、「[アカウント](#account)」セクションを参照してください。
 
 #### <a name="custom-images-for-virtual-machine-pools"></a>仮想マシン プールのカスタム イメージ
@@ -195,8 +198,6 @@ Batch アカウントを作成する際のプール割り当てモードの設�
 - 現在、Standard 汎用ストレージ アカウントしかサポートされていません。 Azure Premium Storage は、将来的にサポートされる予定です。
 - 複数のカスタム VHD BLOB を含む 1 つのストレージ アカウントを指定するか、それぞれが 1 つの BLOB を含む複数のストレージ アカウントを指定できます。 複数のストレージ アカウントを使用してパフォーマンスを向上させることをお勧めします。
 - 一意の 1 つのカスタム イメージ VHD BLOB でサポートできるのは、最大 40 個の Linux VM インスタンスまたは最大 20 個の Windows VM インスタンスです。 さらに多くの VM を含むプールを作成するには、VHD BLOB のコピーを作成する必要があります。 たとえば、200 個の Windows VM を含む 1 つのプールは、一意の VHD BLOB 10 個を **osDisk** プロパティに指定する必要があります。
-
-プールを作成するときは、VHD のベース イメージの OS に応じて、適切な **nodeAgentSkuId** を選択する必要があります。 [サポートされるノード エージェント SKU をリスト表示する](https://docs.microsoft.com/rest/api/batchservice/list-supported-node-agent-skus)操作を呼び出して、使用可能なノード エージェント SKU ID と OS イメージ参照のマッピングを取得できます。
 
 Azure Portal を使用してカスタム イメージからプールを作成するには:
 

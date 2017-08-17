@@ -16,7 +16,7 @@ Azure は、次の Docker の価値を提供します。
 
 [Linux コンテナー](http://en.wikipedia.org/wiki/LXC)と、docker ツールを使用して作成およびホストされたコンテナーは、分離を提供するためにハイパーバイザーを使用しません。 コンテナーでは、コンテナー ホストによって Linux カーネルのプロセスとファイル システムの分離機能が使用され、コンテナー、そのアプリ、特定のカーネル機能、その独自の分離型ファイル システムに公開されます。 コンテナーの内部で実行されるアプリから見ると、コンテナーは独立した OS インスタンスのように見えます。 内部のアプリからは、コンテナーの外部にあるプロセスやその他のリソースは見えません。
 
-Docker コンテナーでは、VM で使用されるよりもはるかに少ないリソースが使用されます。 Docker コンテナーでは、Docker ホストのカーネルを共有しないアプリケーションの分離と実行モデルが使用されます。 コンテナーには OS 全体が含まれないため、そのディスク フットプリントははるかに小さくなります。 起動時間と必要なディスク領域は VM よりも大幅に少なくなります。
+Docker コンテナーでは、VM で使用されるよりもはるかに少ないリソースが使用されます。 Docker コンテナーでは、Docker ホストのカーネルを共有しない、アプリケーションの分離と実行モデルが使用されます。 コンテナーには OS 全体が含まれないため、そのディスク フットプリントははるかに小さくなります。 起動時間と必要なディスク領域は VM よりも大幅に少なくなります。
 Windows コンテナーは、Linux コンテナーと同じメリットを Windows 上で実行されるアプリに提供するためのものです。 Windows コンテナーは、Docker イメージのフォーマットと Docker API をサポートしていますが、PowerShell を使用して管理することもできます。 2 つのコンテナーのランタイムは、Windows コンテナー、Windows コンテナー、Hyper-V コンテナーで使用可能です。 Hyper-V コンテナーは、非常に強力に最適化された VM で各コンテナーをホストすることで分離のレイヤーを追加します。 Windows コンテナーの詳細については、 [Windows コンテナーに関するページ](https://msdn.microsoft.com/virtualization/windowscontainers/about/about_overview)をご覧ください。 Azure で Windows コンテナーを扱うには、まず[Azure Container Service クラスターのデプロイ方法](../articles/container-service/dcos-swarm/container-service-deployment.md)を参照してください。
 
 ## <a name="what-are-containers-good-for"></a>コンテナーのメリット
@@ -92,21 +92,20 @@ IT コンテナーと仮想マシンの組み合わせは、オペレーショ�
 Azure では先ごろ、[Azure リソース管理](../articles/resource-manager-deployment-model.md) REST API と、この API を簡単に使用できるように更新された PowerShell および Azure CLI ツールをリリースしました。 [Azure Resource Manager テンプレート](../articles/resource-group-authoring-templates.md) と Azure リソース管理 API、および下記のツールを使用すれば、アプリケーション トポロジ全体を効率的にデプロイ、変更、または再デプロイできます。
 
 * [テンプレートを使用した Azure Portal](https://github.com/Azure/azure-quickstart-templates) &mdash; "DeployToAzure" ボタンを使用するなど
-* [Azure CLI](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* [Azure PowerShell モジュール](../articles/virtual-machines/linux/cli-deploy-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
+* [Azure CLI](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ### <a name="deployment-and-management-of-entire-groups-of-azure-vms-and-containers"></a>Azure VM とコンテナーのグループの一括的なデプロイメントと管理
 複数の VM グループを一括でデプロイし、それらのデプロイメントに Docker (またはその他の Linux コンテナー ホスト システム) をインストールして、自動化可能なグループにするための主なシステムを紹介します。 ダイレクト リンクについては、以降の[コンテナーとツール](#containers-and-vm-technologies)に関するセクションを参照してください。 機能の範囲はシステムによって異なります。また、ここに挙げるものがこの種のシステムのすべてというわけではありません。 どのシステムが便利かは、ユーザーのスキル セットやシナリオによって変わってきます。
 
 Docker は、独自の VM 作成ツール セット ([docker-machine](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) と、負荷分散に対応した Docker コンテナー クラスター管理ツール ([swarm](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)) を提供しています。 また [Azure Docker VM Extension](https://github.com/Azure/azure-docker-extension/blob/master/README.md) では、構成済みのアプリケーション コンテナーを複数のコンテナーにわたってデプロイできる、[`docker-compose`](https://docs.docker.com/compose/) が既定でサポートされています。
 
-[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com/install/azurecluster/)も有効なシステムです。 DCOS は、 [Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。 DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。 Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。 また、 **swarm** をオーケストレーション エンジンとして使用することもできます。
+[Mesosphere のデータ センター オペレーティング システム (DCOS)](http://docs.mesosphere.com)も有効なシステムです。 DCOS は、 [Mesos](http://mesos.apache.org/) というオープン ソースの "分散システム カーネル" をベースにしています、このカーネルでは、データ センターが 1 つのアドレス可能サービスとして扱われます。 DCOS には、いくつかの重要なシステム ([Spark](http://spark.apache.org/) や [Kafka](http://kafka.apache.org/) など) に対応した組み込みパッケージが備わっているほか、[Marathon](https://mesosphere.github.io/marathon/) (コンテナー管理システム) や [Chronos](https://mesos.github.io/chronos/) (分散スケジューラー) などの組み込みサービスも含まれています。 Mesos は、Twitter、AirBnb、およびその他の Web スケール ビジネスに影響を受けて開発されたものです。 また、 **swarm** をオーケストレーション エンジンとして使用することもできます。
 
 [Kubernetes](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/) は、Google に影響を受けて開発された、VM およびコンテナー グループ管理のためのオープン ソース システムです。 [Kubernetes を Weave と併用して、ネットワーク サポートを提供する](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)こともできます。
 
-[Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (サービスとしてのプラットフォーム) です。 Deis はDocker と CoreOS をベースとしており、それによって、Heroku に似たワークフローを使用した軽量な PaaS を実現しています。 Azure では、[3 ノードの Azure VM グループを簡単に作成して Deis をインストール](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)した後、[Hello World Go アプリケーションをインストール](../articles/virtual-machines/linux/deis-cluster.md#deploy-and-scale-a-hello-world-application)できます。
+[Deis](http://deis.io/overview/) は、独自のサーバー上アプリケーションを簡単にデプロイして管理できる、オープン ソースの PaaS (サービスとしてのプラットフォーム) です。 Deis はDocker と CoreOS をベースとしており、それによって、Heroku に似たワークフローを使用した軽量な PaaS を実現しています。
 
-[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](https://coreos.com/using-coreos/clustering/) というコンテナー グループ管理ツールも備えています。
+[CoreOS](https://coreos.com/os/docs/latest/booting-on-azure.html) は、最適なフット プリントと Docker サポート、および独自のコンテナー システム ([rkt](https://github.com/coreos/rkt)) を備えた Linux ディストリビューションで、[fleet](https://coreos.com/fleet/docs/latest/) というコンテナー グループ管理ツールも備えています。
 
 Ubuntu も非常にポピュラーな Linux ディストリビューションで、Docker のサポートに優れているほか、 [Linux (LXC スタイル) クラスター](https://help.ubuntu.com/lts/serverguide/lxc.html)もサポートしています 。
 
@@ -133,7 +132,7 @@ Windows コンテナー関連のリンク:
 
 Visual Studio Docker 関連のリンク:
 
-* [Visual Studio 2015 RC Tools for Docker - Preview](https://visualstudiogallery.msdn.microsoft.com/6f638067-027d-4817-bcc7-aa94163338f0)
+* [Visual Studio Tools for Docker](https://docs.microsoft.com/en-us/dotnet/core/docker/visual-studio-tools-for-docker)
 
 Docker ツール:
 
@@ -147,7 +146,7 @@ Docker on Microsoft Azure:
 * [Azure での Linux 用 Docker VM 拡張機能](../articles/virtual-machines/linux/dockerextension.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure の Docker 用 VM 拡張機能のユーザー ガイド](https://github.com/Azure/azure-docker-extension/blob/master/README.md)
 * [Azure コマンド ライン インターフェイス (Azure CLI) での Docker VM 拡張機能の使用](../articles/virtual-machines/linux/classic/cli-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
-* [Azure ポータルでの Docker VM 拡張機能の使用](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
+* [Azure Portal での Docker VM 拡張機能の使用](../articles/virtual-machines/linux/classic/portal-use-docker.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Azure で docker マシンを使用する方法](../articles/virtual-machines/linux/docker-machine.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure 上の Swarm における Docker の使用方法](../articles/virtual-machines/virtual-machines-linux-docker-swarm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure での Docker および Compose の概要](../articles/virtual-machines/linux/docker-compose-quickstart.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
@@ -161,20 +160,17 @@ Linux ディストリビューションと Azure での導入例:
 
 構成、クラスター管理、およびコンテナー オーケストレーション:
 
-* [CoreOS の Fleet](https://coreos.com/using-coreos/clustering/)
+* [CoreOS の Fleet](https://coreos.com/fleet/docs/latest/)
 * Deis
-
-  * [3 ノードの Azure VM グループを作成し、Deis をインストールして、Hello World Go アプリケーションを起動する方法](../articles/virtual-machines/linux/deis-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-* Kubernetes
 
   * [CoreOS と Weave を使用した Kubernetes クラスターのデプロイの自動化に関する包括的なガイド](https://github.com/GoogleCloudPlatform/kubernetes/blob/master/docs/getting-started-guides/coreos/azure/README.md#kubernetes-on-azure-with-coreos-and-weave)
   * [Kubernetes Visualizer](https://azure.microsoft.com/blog/2014/08/28/hackathon-with-kubernetes-on-azure/)
 * [Mesos](http://mesos.apache.org/)
 
-  * [Mesosphere のデータ センター オペレーティング システム (DCOS)](http://beta-docs.mesosphere.com/install/azurecluster/)
-* [Jenkins](https://jenkins-ci.org/) と [Hudson](http://hudson-ci.org/)
+  * [Mesosphere のデータ センター オペレーティング システム (DCOS)](https://docs.mesosphere.com/1.7/overview/design/azure-container-service/)
+* [Jenkins](https://jenkins.io/) と [Hudson](http://hudson-ci.org/)
 
-  * [ブログ: Azure 用 Jenkins スレーブ プラグイン](http://msopentech.com/blog/2014/09/23/announcing-jenkins-slave-plugin-azure/)
+  * [Azure 用 Jenkins VM エージェント プラグイン](https://wiki.jenkins.io/display/JENKINS/Azure+VM+Agents+plugin)
   * [GitHub のリポジトリ: Azure 用 Jenkins ストレージ プラグイン](https://github.com/jenkinsci/windows-azure-storage-plugin)
   * [サード パーティ: Azure 用 Hudson スレーブ プラグイン](http://wiki.hudson-ci.org/display/HUDSON/Azure+Slave+Plugin)
   * [サード パーティ: Azure 用 Hudson ストレージ プラグイン](https://github.com/hudson3-plugins/windows-azure-storage-plugin)

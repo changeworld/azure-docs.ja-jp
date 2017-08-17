@@ -92,9 +92,11 @@
 
 ### 使用法
 #### [概要](app-insights-usage-overview.md)
+#### [ユーザー コンテキストの送信](app-insights-usage-send-user-context.md)
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
 #### [ファネル](usage-funnels.md)
 #### [保持](app-insights-usage-retention.md)
+#### [ユーザー フロー](app-insights-usage-flows.md)
 #### [ブック](app-insights-usage-workbooks.md)
 
 ### 分析

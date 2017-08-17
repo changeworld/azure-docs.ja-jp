@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 08/08/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 8d6b953ae95713dc8b5a4037fa59bec49ea52b85
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
@@ -52,6 +52,13 @@ ms.lasthandoff: 07/25/2017
 </table></br>
 
 ## <a name="release-notes"></a>リリース ノート
+
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+*   JsonSerializerSettings が DocumentClient コンストラクターの省略可能なパラメーターとして導入されたことでアプリケーションの再コンパイルを余儀なくされる問題を修正しました。
+* JsonSerializerSettings パラメーターを渡す際、ConnectionPolicy パラメーターと ConsistencyLevel パラメーターに既定値を使用できるようにするために、最終パラメーターとしての JsonSerializerSettings が必須であった DocumentClient コンストラクターが古い形式としてマークされました。
 
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 *   [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) のインスタンス化時にカスタム JsonSerializerSettings を指定するためのサポートが追加されました。
@@ -247,6 +254,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
+| [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 5 月 23 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 5 月 10 日 |--- |

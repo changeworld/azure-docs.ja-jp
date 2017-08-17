@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 3fb0f6b26f36ef4044c9733ace05c4f59909ddda
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: ff4f4ecd12bc26fcc44a20a193d73f952ed56f1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -44,7 +43,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 ## <a name="management"></a>管理
 
-**Q:** Azure ポータルで [再起動] ボタンを押すと何が起こりますか。
+**Q:** Azure Portal で [再起動] ボタンを押すと何が起こりますか。
 
 **A:** これは Docker の再起動時に相当します。
 
@@ -56,7 +55,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:** 自分の Web アプリでは、Docker Hub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。 カスタム コンテナーの継続的な統合/デプロイはサポートしていますか。
 
-**A:** DockerHub イメージの継続的な統合/デプロイを設定するには、「[Web App on Linux での Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)」を参照してください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
+**A:** Azure Container Registry または DockerHub イメージの継続的インテグレーション/デプロイをセットアップするには、「[Azure Web App on Linux での継続的なデプロイ](./app-service-linux-ci-cd.md)」を参照してください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
 
 **Q:** ステージング環境はサポートしていますか。
 
@@ -64,7 +63,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:** **Web デプロイ**を使用して Web アプリをデプロイすることはできますか。
 
-**A:** はい。`UseWebDeployScm` というアプリ設定を `false` に設定する必要があります。
+**A:** はい。`WEBSITE_WEBDEPLOY_USE_SCM` というアプリ設定を `false` に設定する必要があります。
 
 ## <a name="language-support"></a>言語のサポート
 
@@ -88,7 +87,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:**プライベート レジストリ オプションのイメージ名の形式は何ですか。
 
-**A:** プライベート レジストリ の URI を含む完全なイメージ名を追加する必要があります (例:  myacr.azurecr.io/dotnet:latest)。
+**A:** プライベート レジストリの URL を含む完全なイメージ名を追加する必要があります (例:  myacr.azurecr.io/dotnet:latest)
 
 **Q:** カスタム コンテナー イメージで 1 つ以上のポートを公開したいと思っています。 可能でしょうか。
 
@@ -104,7 +103,7 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **Q:** カスタム コンテナーがポート 80 以外のポートをリッスンしています。 そのポートに要求をルーティングするようにアプリを構成するにはどうすればよいですか。
 
-**A:** ポートの検出は自動化されていますが、**PORT** というアプリケーション設定を指定して必要なポート番号の値を設定することもできます。
+**A:** ポートの検出は自動化されていますが、**WEBSITES_PORT** というアプリケーション設定を指定して必要なポート番号の値を設定することもできます。 以前はプラットフォームが `PORT` アプリ設定を使用していましたが、このアプリ設定の使用は止めて、`WEBSITES_PORT` だけを使用するようにする変更を予定しています。
 
 **Q:** カスタム コンテナーに HTTPS を実装する必要がありますか。
 
@@ -131,5 +130,5 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 * [Azure Web App on Linux で Web アプリを作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure Web App on Linux での SSH のサポート](./app-service-linux-ssh-support.md)
 * [Azure App Service でステージング環境を設定する](./web-sites-staged-publishing.md)
-* [Azure Web App on Linux での Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)
+* [Azure Web App on Linux での継続的なデプロイ](./app-service-linux-ci-cd.md)
 

@@ -46,6 +46,7 @@
 ### [ログ検索ポータル](log-analytics-log-search-portals.md)
 #### [ログ検索ポータルの使用](log-analytics-log-search-log-search-portal.md)
 ### [従来の言語からの切り替え](log-analytics-log-search-transition.md)
+### [Flow コネクタ](log-analytics-flow-tutorial.md)
 
 ## データを分析する
 ### [ダッシュボード](log-analytics-dashboards.md)

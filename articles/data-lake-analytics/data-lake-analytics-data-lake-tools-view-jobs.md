@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 10/17/2016
+ms.date: 08/02/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 2e5dbaf595e3d3cd7dee09431fbb1cb6f2403ef4
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8f1729f84a4fde2a56427a41b356d6263818519e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="use-job-browser-and-job-view-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブに対するジョブ ブラウザーとジョブ ビューの使用
@@ -31,7 +30,7 @@ Data Lake Analytics サービスは、既定で 30 日間ジョブをアーカ�
 [Azure Data Lake Tools for Visual Studio の前提条件](data-lake-analytics-data-lake-tools-get-started.md#prerequisites)を参照してください。
 
 ## <a name="open-the-job-browser"></a>ジョブ ブラウザーを開く
-ジョブ ブラウザーにアクセスするには、Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data Lake Analytics]、[ジョブ]** の順に選択します。  このブラウザーを使用すると、Data Lake Analytics アカウントのクエリ ストアにアクセスできます。 ジョブ ブラウザーでは、ジョブの基本情報を示すクエリ ストアが左側に、特定のジョブの詳細な情報を示すジョブ ビューが右側に表示されます。
+Visual Studio で **[サーバー エクスプローラー]、[Azure]、[Data Lake Analytics]、[ジョブ]** の順に選択して、ジョブ ブラウザーにアクセスします。  このジョブ ブラウザーを使用して、Data Lake Analytics アカウントのクエリ ストアにアクセスできます。 ジョブ ブラウザーには、ジョブの基本情報を示すクエリ ストアが左側に表示され、ジョブの詳細情報を示すジョブ ビューが右側に表示されます。
 
 ## <a name="job-view"></a>ジョブ ビュー
 ジョブ ビューには、特定のジョブの詳細な情報が示されます。 ジョブを開くには、ジョブ ブラウザーでジョブをダブルクリックするか、Data Lake メニューの [Job View (ジョブ ビュー)] をクリックします。 ジョブの URL が設定されたダイアログが表示されます。

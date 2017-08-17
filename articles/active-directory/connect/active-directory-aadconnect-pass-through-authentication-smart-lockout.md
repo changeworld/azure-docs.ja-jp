@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 08/02/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 0781a06635219443e8ff794e72d77b967df52c40
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -38,7 +38,7 @@ Azure AD は、ブルート フォース パスワード攻撃から保護し、
 パススルー認証はパスワード検証要求をオンプレミスの Active Directory (AD) に転送するため、攻撃者がユーザーの AD アカウントをロックアウトするのを防ぐ必要があります。 独自の AD アカウント ロックアウト ポリシーがあるので (具体的には、[**アカウントのロックアウトのしきい値**](https://technet.microsoft.com/library/hh994574(v=ws.11).aspx)と[**ロックアウト カウンターのリセット ポリシー**](https://technet.microsoft.com/library/hh994568(v=ws.11).aspx))、攻撃者がオンプレミスの AD に到達する前にクラウド内で排除されるよう、Azure AD のロックアウトしきい値とロックアウト期間の値を適切に構成する必要があります。
 
 >[!NOTE]
->スマート ロックアウト機能は無料で、すべてのユーザーに対して既定で_オン_になっています。 ただし、Graph API を使って Azure AD のロックアウトしきい値とロックアウト期間の値を変更するのは、Azure AD Premium P2 の機能です。
+>スマート ロックアウト機能は無料で、すべてのユーザーに対して既定で_オン_になっています。 ただし、Graph API を使って Azure AD のロックアウトしきい値とロックアウト期間の値を変更するには、テナントが Azure AD Premium P2 のライセンスを少なくとも 1 つは所有している必要があります。 パススルー認証を使ったスマート ロックアウト機能を利用するために "_ユーザーごと_" の Azure AD Premium P2 ライセンスは必要ありません。
 
 ユーザーのオンプレミスの AD アカウントを適切に保護するには、以下のようにする必要があります。
 

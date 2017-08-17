@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/03/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: f1ef6c3cc3ad2eda9fbcf79bf729918a847d27d7
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: c6ead651133eb17fd55f7567cdb14dc3bcd64245
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -61,13 +61,15 @@ Azure AD アプリケーション プロキシはリバース プロキシであ
 
 企業ネットワークへの受信接続を開く必要がありません。
 
-Azure AD コネクタは、Azure AD アプリケーション プロキシ サービスへの送信接続のみを使用します。つまり、受信接続用のファイアウォール ポートを開放する必要はありません。 従来のプロキシでは、境界ネットワーク ("*DMZ*"、"*非武装地帯*"、"*スクリーン サブネット*" とも呼ばれます) が必要であり、認証されていない接続へのアクセスをネットワーク境界で許可する必要がありました。 このシナリオでは、Web アプリケーション ファイアウォール製品に多くの追加投資をしてトラフィックを分析し、環境への保護を追加する必要がありました。 アプリケーション プロキシでは、すべての接続が送信用で、セキュリティで保護されたチャネルを介しているため、境界ネットワークは不要です。
+アプリケーション プロキシ コネクタは、Azure AD アプリケーション プロキシ サービスへの送信接続のみを使用します。つまり、受信接続用のファイアウォール ポートを開放する必要はありません。 従来のプロキシでは、境界ネットワーク ("*DMZ*"、"*非武装地帯*"、"*スクリーン サブネット*" とも呼ばれます) が必要であり、認証されていない接続へのアクセスをネットワーク境界で許可する必要がありました。 このシナリオでは、Web アプリケーション ファイアウォール製品に多くの追加投資をしてトラフィックを分析し、環境への保護を追加する必要がありました。 アプリケーション プロキシでは、すべての接続が送信用で、セキュリティで保護されたチャネルを介しているため、境界ネットワークは不要です。
+
+コネクタの詳細については、「[Understand Azure AD Application Proxy connectors (Azure AD アプリケーション プロキシ コネクタについて)](application-proxy-understand-connectors.md)」を参照してください。
 
 ### <a name="cloud-scale-analytics-and-machine-learning"></a>クラウド規模の分析と機械学習 
 
 最先端のセキュリティ保護を得ることができます。
 
-[Azure AD Identity Protection](active-directory-identityprotection.md) と、機械学習を活用したインテリジェンスとデータは、Microsoft の Digital Crimes Unit および Microsoft セキュリティ レスポンス センターから情報を取得しています。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように、リアルタイムで保護します。 感染したデバイスからのアクセス、匿名ネットワークを経由したアクセス、一般的でない場所や異常な場所からのアクセスなど、多数の要因が考慮されます。
+アプリケーション プロキシは Azure Active Directory の一部であるため、[Azure AD Identity Protection](active-directory-identityprotection.md)、機械学習を使用したインテリジェンス、Microsoft の Security Response Center やデジタル犯罪対策部門からのデータを活用できます。 これらの組織は ID が攻撃されたアカウントを被害の発生前に特定し、危険性の高いサインインが実行されないように、リアルタイムで保護します。 感染したデバイスからのアクセス、匿名ネットワークを経由したアクセス、一般的でない場所や異常な場所からのアクセスなど、多数の要因が考慮されます。
 
 これらのレポートとイベントの多くは、お客様のセキュリティ情報およびイベント管理 (SIEM) システムとの統合を可能にする API を通じて既に使用可能です。
 
@@ -119,7 +121,7 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 
 ユーザーが公開されたアプリケーションにアクセスすると、アプリケーション プロキシ サービスとアプリケーション プロキシ コネクタの間で次のイベントが発生します。
 
-1. [サービスがアプリの構成設定を確認する](#the-service-checks-the-configuration-settings-for-the-app)
+1. [サービスは、アプリケーションのユーザーを認証します。](#the-service-checks-the-configuration-settings-for-the-app)
 2. [サービスがコネクタのキューに要求を配置する](#The-service-places-a-request-in-the-connector-queue)
 3. [コネクタがキューの要求を処理する](#the-connector-receives-the-request-from-the-queue)
 4. [コネクタが応答のために待機する](#the-connector-waits-for-a-response)
@@ -128,7 +130,7 @@ Azure AD アプリケーション プロキシは、以下の 2 つで構成さ�
 これらの各手順の詳細について、この後説明します。
 
 
-#### <a name="1-the-service-checks-the-configuration-settings-for-the-app"></a>1.サービスがアプリの構成設定を確認する
+#### <a name="1-the-service-authenticates-the-user-for-the-app"></a>1.サービスは、アプリケーションのユーザーを認証します。
 
 事前認証方法としてパススルーを使用するようにアプリを構成した場合は、このセクションの手順はスキップされます。
 

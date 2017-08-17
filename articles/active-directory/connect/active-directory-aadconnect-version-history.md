@@ -44,7 +44,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 
 * 既定の同期規則 “AD への送信 – ユーザー ImmutableId” の削除を招く問題を修正しました。
 
-  * この問題は、Azure AD Connect をアップグレードする際か、Azure AD Connect ウィザード内のタスク オプション*[Update Synchronization Configuration](同期構成の更新)* を使用して Azure AD Connect 同期構成を更新する際に発生します。
+  * この問題は、Azure AD Connect をアップグレードする際か、Azure AD Connect ウィザード内のタスク オプション*[Update Synchronization Configuration] \(同期構成の更新)* を使用して Azure AD Connect 同期構成を更新する際に発生します。
   
   * この同期規則は、[ソース アンカーとしての msDS-ConsistencyGuid 機能](active-directory-aadconnect-design-concepts.md#using-msds-consistencyguid-as-sourceanchor)を有効にしているお客様に適用されます。 この機能は、バージョン 1.1.524.0 以降で導入されました。 この同期規則が削除されると、Azure AD Connect でオンプレミスの AD ms-DS-ConsistencyGuid 属性に ObjectGuid 属性値を設定することができなくなります。 これによって新しいユーザーが Azure AD にプロビジョニングされなくなることはありません。
   

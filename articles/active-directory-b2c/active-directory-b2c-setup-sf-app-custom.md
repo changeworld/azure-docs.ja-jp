@@ -59,8 +59,8 @@ Azure AD B2C が Salesforce と通信できるようにするには、Salesforce
 
 1. [Salesforce にサインインします](https://login.salesforce.com/)。 
 2. 左側のメニューで、**[設定]** の下の **[ID]** を展開し、**[ID プロバイダー]** をクリックします。
-3. **[Enable Identity Provider](ID プロバイダーを有効にする)** をクリックします。
-4. **[Select the certificate](証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 (既定の証明書を使用できます。)[ **Save**] をクリックします。 
+3. **[Enable Identity Provider] \(ID プロバイダーを有効にする)** をクリックします。
+4. **[Select the certificate] \(証明書の選択)** の下から、Azure AD B2C と通信するときに Salesforce で使用する証明書を選択します。 (既定の証明書を使用できます。)[ **Save**] をクリックします。 
 
 ### <a name="create-a-connected-app-in-salesforce"></a>Salesforce での接続されたアプリの作成
 

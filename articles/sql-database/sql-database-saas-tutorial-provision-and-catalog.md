@@ -14,13 +14,13 @@ ms.workload: data-management
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/04/2017
 ms.author: sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 658c316d8d9d14ce11dbb92188afbf0e68c00493
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: c019ea9207379ea1b88ec5d990e1c2b8565092a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="provision-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログに登録する
@@ -82,8 +82,8 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
 
 この演習では、バッチを使って追加のテナントをプロビジョニングします。 他の Wingtip SaaS チュートリアルを完了する前に、テナントのバッチをプロビジョニングして、多くのデータベースを操作できるようにしておくことをお勧めします。
 
-1. *PowerShell ISE* で ...\\Learning Modules\\Utilities\\*Demo-ProvisionAndCatalog.ps1* を開き、*$DemoScenario* パラメーターを 3 に設定します。
-   * **$DemoScenario** = **3**。*バッチを使ってテナントをプロビジョニングする*場合は **3** に変更します。
+1. *PowerShell ISE* で ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1* を開き、*$DemoScenario* パラメーターを 3 に設定します。
+   * **$DemoScenario** = **3**。"*バッチを使ってテナントをプロビジョニングする*" 場合は **3** に変更します。
 1. **F5** キーを押して、スクリプトを実行します。
 
 このスクリプトにより、追加のテナントのバッチがデプロイされます。 このスクリプトでは、バッチを制御し、各データベースのプロビジョニングをリンクされているテンプレートに委任する [Azure Resource Manager テンプレート](../azure-resource-manager/resource-manager-template-walkthrough.md)を使用しています。 テンプレートをこのように使用することによって、Azure Resource Manager がスクリプトのプロビジョニングの処理を仲介できるようになっています。 テンプレートでは、データベースを可能な限り並行してプロビジョニングします。また、必要があればプロセス全体を最適化しながら再試行を処理します。 このスクリプトはべき等です。そのため、スクリプトがなんらかの理由で失敗または停止した場合はもう一度実行してください。
@@ -95,24 +95,31 @@ Wingtip SaaS のスクリプトとアプリケーション ソース コード�
    ![データベースの一覧](media/sql-database-saas-tutorial-provision-and-catalog/database-list.png)
 
 
-## <a name="provision-and-catalog-details"></a>プロビジョニングとカタログ登録の詳細
+## <a name="stepping-through-the-provision-and-catalog-implementation-details"></a>プロビジョニングとカタログの実装の詳細をステップ実行で確認する
 
 Wingtip アプリケーションで新しいテナントのプロビジョニングの実装がどのようになっているかについて理解を深めるため、もう一度 *Demo-ProvisionAndCatalog* スクリプトを実行して別のテナントをプロビジョニングしてみましょう。 今回は、ブレークポイントを設定してワークフローをステップ実行していきます。
 
-1. ...\\Learning Modules\Utilities\_Demo-ProvisionAndCatalog.ps1_ を開いて、次のパラメーターを設定します。
+1. ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ を開いて、次のパラメーターを設定します。
    * **$TenantName** = テナント名は一意である必要があるため、既存のテナントとは異なる名前に設定します (たとえば、*Hackberry Hitters*)。
    * **$VenueType** = 事前に定義しておいた会場の種類のいずれか ("*柔道*" など) を使用します。
-   * **$DemoScenario** = **1**。*シングル テナントのプロビジョニング*を行うする場合は **1** に設定します。
+   * **$DemoScenario** = **1**。"*シングル テナントのプロビジョニング*" を行う場合は **1** に設定します。
 
-1. ブレークポイントを追加します。これには、*New-Tenant `* の行のどこかにカーソルを合わせて、**F9** キーを押します。
+1. ブレークポイントを追加します。これには、48 行目 (*New-Tenant `* と記述されている行) のどこかにカーソルを置いて、**F9** キーを押します。
 
    ![ブレーク ポイント](media/sql-database-saas-tutorial-provision-and-catalog/breakpoint.png)
 
-1. **F5** キーを押して、スクリプトを実行します。 ブレークポイントに達したら、**F11** キーを押してステップ インします。 呼び出された関数にステップ オーバーしたりステップ インしたりする **F10** キーや **F11** キーなどのデバッグのメニュー オプションを使用して、スクリプトの実行をトレースします。 PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+1. **F5** キーを押して、スクリプトを実行します。
 
-### <a name="examine-the-provision-and-catalog-implementation-in-detail-by-stepping-through-the-script"></a>スクリプトのステップ実行によるプロビジョニングとカタログの実装の詳細確認
+1. ブレークポイントでスクリプトの実行が停止したら、**F11** キーを押してコードにステップ インします。
 
-今回使用したスクリプトでは、以下のステップに従って新しいテナントをプロビジョニングし、カタログに登録しています。
+   ![ブレーク ポイント](media/sql-database-saas-tutorial-provision-and-catalog/debug.png)
+
+
+
+呼び出された関数にステップ オーバーしたりステップ インしたりする **F10** キーや **F11** キーなどの**デバッグ**のメニュー オプションを使用して、スクリプトの実行をトレースします。 PowerShell スクリプトのデバッグの詳細については、「[PowerShell スクリプトの使用とデバッグに関するヒント](https://msdn.microsoft.com/powershell/scripting/core-powershell/ise/how-to-debug-scripts-in-windows-powershell-ise)」を参照してください。
+
+
+次の記述は、明示的に従う手順ではなく、スクリプトのデバッグ中にたどるワークフローの説明です。
 
 1. **SubscriptionManagement.psm1 モジュールのインポート**。このモジュールには、Azure にサインインして、使用する Azure サブスクリプションを選択するための関数が含まれています。
 1. **CatalogAndDatabaseManagement.psm1 モジュールのインポート**。このモジュールは、カタログとテナントレベルで[シャード管理](sql-database-elastic-scale-shard-map-management.md)関数を抽象化するものです。 このモジュールは、カタログ パターンの大部分をカプセル化するという点で重要であるため、確認する価値があります。

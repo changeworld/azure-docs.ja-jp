@@ -23,7 +23,6 @@ ms.openlocfilehash: 07b292064178aee9ff94dc47554be2b0098ef807
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
 
-
 ---
 # <a name="run-the-mapreduce-examples-included-in-hdinsight"></a>HDInsight に含まれる MapReduce サンプルを実行する
 
@@ -224,7 +223,6 @@ GraySort はベンチマーク ソートです。 その評価尺度は、大量
 * [HDInsight での Hive と Hadoop の使用][hdinsight-use-hive]
 * [HDInsight での MapReduce と Hadoop の使用][hdinsight-use-mapreduce]
 
-[hdinsight-errors]: hdinsight-debug-jobs.md
 [hdinsight-use-mapreduce]: hdinsight-use-mapreduce.md
 [hdinsight-sdk-documentation]: https://msdn.microsoft.com/library/azure/dn479185.aspx
 

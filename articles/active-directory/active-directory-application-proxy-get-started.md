@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/04/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 5f500e1e0d3f9cafa67f255d1603e8db5716d469
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 67f7f5b8d411d11c97a8666d1bfc3c0c5f1174ce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -66,15 +66,14 @@ Azure AD アプリケーション プロキシを使用すると、次のよう�
 
 外部エンドポイントは、ユーザーがネットワークの外部からアプリケーションに到達する方法です。 決定した外部 URL に直接移動するか、MyApps ポータルからアプリケーションにアクセスすることができます。 ユーザーは、これらのエンドポイントの 1 つに移動すると、Azure AD で認証され、コネクタを介してオンプレミスのアプリケーションにルーティングされます。
 
- ![Azure AD アプリケーション プロキシ ダイアグラム](./media/active-directory-appssoaccess-whatis/azureappproxxy.png)
+ ![Azure AD アプリケーション プロキシ ダイアグラム](./media/active-directory-application-proxy-get-started/azureappproxxy.png)
 
-1. ユーザーがアプリケーション プロキシ経由でアプリケーションにアクセスすると、認証のための Azure AD サインイン ページが表示されます。
-2. サインインに成功すると、トークンが生成され、ユーザーに送信されます。
-3. ユーザーはここでアプリケーション プロキシにトークンを送信します。アプリケーション プロキシは、そのトークンからユーザー プリンシパル名 (UPN) とセキュリティ プリンシパル名 (SPN) を取得し、コネクタに要求を送信します。
-4. コネクタは、ユーザーの代理として内部 (Windows) 認証に使用できる Kerberos チケットを要求します。 この手順は Kerberos の制約付き委任として知られています。
-5. Active Directory では、Kerberos チケットを取得します。
-6. チケットは、アプリケーション サーバーに送信されて検証されます。
-7. 応答がアプリケーション プロキシ経由でエンドユーザーに送信されます。
+1. ユーザーがアプリケーション プロキシ サービス経由でアプリケーションにアクセスすると、認証のための Azure AD サインイン ページが表示されます。
+2. サインインに成功するとトークンが生成され、クライアント デバイスに送信されます。
+3. クライアントはここでアプリケーション プロキシ サービスにトークンを送信します。アプリケーション プロキシ サービスは、そのトークンからユーザー プリンシパル名 (UPN) とセキュリティ プリンシパル名 (SPN) を取得し、アプリケーション プロキシ コネクタに要求を送信します。
+4. シングル サインオンを構成した場合、コネクタはユーザーの代わりに必要な追加の認証を実行します。
+5. コネクタはオンプレミスのアプリケーションに要求を送信します。  
+6. 応答はアプリケーション プロキシ サービスとコネクタ経由でユーザーに送信されます。
 
 ### <a name="single-sign-on"></a>シングル サインオン
 Azure AD アプリケーション プロキシは、統合 Wndows 認証 (IWA) や要求に対応するアプリケーションへのシングル サインオン (SSO) を提供します。 発行対象のアプリケーションで IWA が使用されている場合、アプリケーション プロキシが Kerberos の制約付き委任を使い、見かけ上ユーザーとして振る舞うことで、SSO を実現します。 Azure Active Directory を信頼している要求に対応するアプリケーションでは、Azure AD によってユーザーが認証済みであるために SSO が機能します。

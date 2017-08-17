@@ -12,28 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 05fb966e3e18b8d5242a2795248b9b72352d894d
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 977108687734a5eb7f7a30419de2a6bdef184d0e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory シームレス シングル サインオン: クイック スタート
 
+## <a name="how-to-deploy-seamless-sso"></a>シームレス SSO をデプロイする方法
+
 Azure Active Directory シームレス シングル サインオン (Azure AD シームレス SSO) では、ユーザーが企業ネットワークに接続される会社のデスクトップを使用するときに、自動的にサインインを行います。 この機能により、追加のオンプレミス コンポーネントを必要とせずに、ユーザーはクラウド ベースのアプリケーションに簡単にアクセスできるようになります。
 
-## <a name="how-to-deploy-azure-ad-seamless-sso"></a>Azure AD シームレス SSO をデプロイする方法
+>[!IMPORTANT]
+>シームレス SSO 機能は現在プレビュー段階です。
 
 シームレス SSO をデプロイするには、以下の手順に従います。
-1. *前提条件を確認する*: 機能を有効にする前に、テナントとオンプレミス環境を正しく設定します。
-2. *機能を有効にする*: Azure AD Connect を使用して、テナントでシームレス SSO を有効にします。
-3. *機能をロールアウトする*: グループ ポリシーを使って一部またはすべてのユーザーに機能をロールアウトします。
-4. *機能をテストする*: シームレス SSO を使用して、ユーザー サインインをテストします。
-5. "*キーをロール オーバーする*": コンピューター アカウントの Kerberos 復号化キーを頻繁にロール オーバーします。
 
 ## <a name="step-1-check-prerequisites"></a>手順 1: 前提条件を確認する
 
@@ -63,6 +61,15 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 >[!NOTE]
 > ドメイン管理者の資格情報は Azure AD Connect にも Azure AD にも保存されず、機能の有効化のみに使用されます。
+
+この手順に従って、シームレス SSO の有効化を正しく行ったことを確認します。
+
+1. テナントのグローバル管理者の資格情報を使って、[Azure Active Directory 管理センター](https://aad.portal.azure.com)にサインインします。
+2. 左側のナビゲーションで、**[Azure Active Directory]** を選びます。
+3. **[Azure AD Connect]** を選びます。
+4. **[シームレスなシングル サインオン]** 機能が **[有効]** になっていることを確認します。
+
+![Azure Portal - Azure AD Connect ブレード](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="step-3-roll-out-the-feature"></a>手順 3: 機能をロールアウトする
 
@@ -118,6 +125,9 @@ Mac ユーザーがサードパーティの Active Directory グループ ポリ
 #### <a name="known-limitations"></a>既知の制限事項
 
 シームレス SSO は、Firefox および Edge ブラウザーのプライベート ブラウズ モードでは動作しません。 拡張保護モードで実行されている場合は、Internet Explorer ブラウザーでも機能しません。
+
+>[!IMPORTANT]
+>お客様から報告された問題を調査するために、Edge のサポートを最近ロールバックしました。
 
 ## <a name="step-4-test-the-feature"></a>手順 4: 機能をテストする
 

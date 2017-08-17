@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: af4d41f8fa04902c766cd85d7e90f61dff8133e7
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 2d0f9d7f32ad79f49d58165d734b9df4af862835
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期の概要 (プレビュー)
@@ -29,8 +29,12 @@ ms.lasthandoff: 06/30/2017
 
 SQL データ同期の概要については、[データの同期](sql-database-sync-data.md)に関するページを参照してください。
 
+SQL データ同期を構成する方法を示す完全な PowerShell の例については、次の記事を参照してください。
+-   [PowerShell を使用して複数の Azure SQL Database 間で同期を行う](scripts/sql-database-sync-data-between-sql-databases.md)
+-   [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](scripts/sql-database-sync-data-between-azure-onprem.md)
+
 > [!NOTE]
-> これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は PDF として [こちら](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)でダウンロードできます。
+> これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は .PDF ドキュメントとして [こちら](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)でダウンロードできます。
 
 ## <a name="step-1---create-sync-group"></a>手順 1 - 同期グループの作成
 

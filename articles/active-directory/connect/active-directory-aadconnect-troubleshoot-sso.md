@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 39dd859d60e7f1dcf697e3c59b8f084e400bbae0
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -29,14 +29,23 @@ ms.lasthandoff: 07/25/2017
 ## <a name="known-issues"></a>既知の問題
 
 - 30 以上の AD フォレストを同期している場合は、Azure AD Connect を使用するシームレスな SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-azure-ad-seamless-sso)にします。
-- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net) を "ローカル イントラネット" ゾーンではなく "信頼済みサイト" ゾーンに追加すると、ユーザーのサインインがブロックされます。
-- シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
+- Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net) を "ローカル イントラネット" ゾーンではなく "信頼済みサイト" ゾーンに追加すると、**ユーザーのサインインがブロック**されます。
+- シームレス SSO は、Firefox および Edge のプライベート ブラウズ モードでは動作しません。 また、Internet Explorer の拡張保護モードがオンになっている場合も動作しません。
+
+>[!IMPORTANT]
+>お客様から報告された問題を調査するために、Edge のサポートを最近ロールバックしました。
+
+## <a name="check-status-of-the-feature"></a>機能の状態の確認
+
+テナントでシームレス SSO 機能が引き続き **[有効]** になっていることを確認します。 機能の状態は、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)の **[Azure AD Connect]** ブレードで確認できます。
+
+![Azure Active Directory 管理センター - [Azure AD Connect] ブレード](./media/active-directory-aadconnect-sso/sso10.png)
 
 ## <a name="sign-in-failure-reasons-on-the-azure-active-directory-admin-center"></a>Azure Active Directory 管理センターでのサインイン失敗の理由
 
 シームレス SSO 使用時のユーザーのサインインに関する問題のトラブルシューティングを行う場合、[Azure Active Directory 管理センター](https://aad.portal.azure.com/)で[サインイン アクティビティ レポート](../active-directory-reporting-activity-sign-ins.md)を調べることは、適切な始め方です。
 
-![サインイン レポート](./media/active-directory-aadconnect-sso/sso9.png)
+![Azure Active Directory 管理センター - サインイン レポート](./media/active-directory-aadconnect-sso/sso9.png)
 
 [Azure Active Directory 管理センター](https://aad.portal.azure.com/)で **[Azure Active Directory]** -> **[サインイン]** に移動し、特定のユーザーのサインイン アクティビティをクリックします。 **[サインインのエラー コード]** フィールドを探します。 次の表を使用して、そのフィールドの値を、失敗の理由と解決策にマップします。
 
@@ -81,7 +90,7 @@ ms.lasthandoff: 07/25/2017
     </QueryList>
 ```
 
-## <a name="manual-reset-of-azure-ad-seamless-sso"></a>Azure AD シームレス SSO の手動リセット
+## <a name="manual-reset-of-the-feature"></a>機能の手動リセット
 
 トラブルシューティングを行っても改善しなかった場合は、テナントでシームレス SSO 機能を手動でリセットできます。 Azure AD Connect が実行されているオンプレミス サーバーで次の手順を実行します。
 

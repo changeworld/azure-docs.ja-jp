@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/08/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 5101d0356460160aed8559a314e8287ff5845121
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 8cde51313f683fbf96a89c8335eb75348b05dee6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -41,6 +41,7 @@ ms.lasthandoff: 08/01/2017
 - **スマート分析。**  新しい言語には、データセット内のパターンを評価し、さまざまなデータセットを比較する高度なアルゴリズムが用意されています。
 - **高度な分析ポータル。**  高度な分析ポータルでは、複数行でのクエリの編集、追加の視覚化、高度な診断など、Log Analytics ポータルでは使用できない分析機能を使用できます。
 - **他のアプリケーションとの一貫性。**  新しい言語と高度な分析ポータルは、既に Application Insights での分析に使用されています。  これを Log Analytics 用に実装することで、Azure サービス全体で一貫性が確保されます。
+- **改善された Power BI との統合。** 新しい言語のクエリを Power BI Desktop にエクスポートして、豊富なデータ変換機能を活用できます。
 - **その他。** 新しい言語の詳細とチュートリアルについては、「[Azure Log Analytics Query Language (Azure Log Analytics クエリ言語)](https://docs.loganalytics.io/index.html)」のサイトを参照してください。
 
 
@@ -60,7 +61,7 @@ ms.lasthandoff: 08/01/2017
 ![従来のワークスペースの復元](media/log-analytics-log-search-upgrade/restore-legacy-b.png)
 
 ## <a name="how-do-i-perform-the-upgrade"></a>アップグレードの実行方法
-ポータル上部に紫のバナーが表示されたら、ワークスペースをアップグレードできます。  アップグレードを実行できるのは、OMS ポータルだけであることに注意してください。ただし、アップグレード完了後、変換されたワークスペースは Azure Portal でも使用できます。
+ポータル上部に紫のバナーが表示されたら、ワークスペースをアップグレードできます。  
 
 1.  **[詳細を表示して、アップグレードする]** と表示されている紫のバナーをクリックして、アップグレード プロセスを開始します。<br>![アップグレード 2](media/log-analytics-log-search-upgrade/upgrade-01a.png)<br>
 2.  アップグレード情報ページでアップグレードに関する追加情報を確認します。<br>![アップグレード 2](media/log-analytics-log-search-upgrade/upgrade-03.png)<br>

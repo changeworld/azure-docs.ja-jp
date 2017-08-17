@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 9776bd4f703227f49f83f563489cfa7c44604fb8
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 3c7a6ac092854bc2d78ac23079d168cf8b5a2201
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
@@ -105,7 +104,7 @@ private const string StorageAccountKey  = "";
 ```
 
 > [!IMPORTANT]
-> 既に述べたとおり、現時点では、Azure Storage では **汎用** ストレージ アカウントの資格情報を指定する必要があります。 Batch アプリケーションでは、 **汎用** ストレージ アカウント内で Blob Storage が使用されます。 アカウントの種類として *[Blob Storage]* を選択して作成されたストレージ アカウントの資格情報を指定しないでください。
+> 既に述べたとおり、現時点では、Azure Storage では **汎用**ストレージ アカウントの資格情報を指定する必要があります。 Batch アプリケーションでは、**汎用**ストレージ アカウント内で Blob Storage が使用されます。 アカウントの種類として *[Blob Storage]* を選択して作成されたストレージ アカウントの資格情報を指定しないでください。
 >
 >
 
@@ -363,7 +362,12 @@ private static async Task CreatePoolIfNotExistAsync(BatchClient batchClient, str
 }
 ```
 
-[CreatePool][net_pool_create] を使用してプールを作成する場合は、コンピューティング ノードの数、[ノードのサイズ](../cloud-services/cloud-services-sizes-specs.md)、ノードのオペレーティング システムなど、いくつかのパラメーターを指定します。 *DotNetTutorial* では、[CloudServiceConfiguration][net_cloudserviceconfiguration] を使用して、[Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) から Windows Server 2012 R2 を指定します。 ただし、代わりに [VirtualMachineConfiguration][net_virtualmachineconfiguration] を指定することにより、Marketplace イメージから作成されたノードのプールを作成できます。これには、Windows と Linux 両方のイメージが含まれます。詳細については、「[Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
+[CreatePool][net_pool_create] を使用してプールを作成する場合は、コンピューティング ノードの数、[ノードのサイズ](../cloud-services/cloud-services-sizes-specs.md)、ノードのオペレーティング システムなど、いくつかのパラメーターを指定します。 *DotNetTutorial* では、[CloudServiceConfiguration][net_cloudserviceconfiguration] を使用して、[Cloud Services](../cloud-services/cloud-services-guestos-update-matrix.md) から Windows Server 2012 R2 を指定します。 
+
+また、プールの [VirtualMachineConfiguration][net_virtualmachineconfiguration] を指定して、Azure Virtual Machines (VM) であるコンピューティング ノードのプールを作成することもできます。 VM コンピューティング ノードのプールは、Windows または [Linux イメージ](batch-linux-nodes.md)から作成できます。 VM イメージのソースは、次のいずれかになります。
+
+- [Azure Virtual Machines Marketplace][vm_marketplace]。すぐに使用できる Windows および Linux の両方のイメージを提供します。 
+- 自身で準備して提供するカスタム イメージ。 カスタム イメージの詳細については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md#pool)」を参照してください。
 
 > [!IMPORTANT]
 > Batch のコンピューティング リソースには料金がかかります。 コストを最小限に抑えるために、サンプルを実行する前に `targetDedicatedComputeNodes` を 1 に引き下げることもできます。
@@ -741,6 +745,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 * このサービスを初めて扱う場合は、 [Azure Batch 機能の概要](batch-api-basics.md) に関する記事を確認することをお勧めします。
 * [Batch ラーニング パス][batch_learning_path]の「**開発の詳細**」にある他の Batch 開発記事をお読みください。
 * [TopNWords][github_topnwords] サンプルで、Batch を使用した "上位 N 個の単語" ワークロードの処理について、さまざまな実装を確認してください。
+* Batch .NET の[リリース ノート](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/Batch/DataPlane/changelog.md#azurebatch-release-notes)でライブラリの最新の変更点を確認します。
 
 [azure_batch]: https://azure.microsoft.com/services/batch/
 [azure_free_account]: https://azure.microsoft.com/free/
@@ -788,6 +793,7 @@ Batch ソリューションの基本的なワークフローを理解したと�
 [nuget_restore]: https://docs.nuget.org/consume/package-restore/msbuild-integrated#enabling-package-restore-during-build
 [storage_explorers]: http://storageexplorer.com/
 [visual_studio]: https://www.visualstudio.com/vs/
+[vm_marketplace]: https://azure.microsoft.com/marketplace/virtual-machines/
 
 [1]: ./media/batch-dotnet-get-started/batch_workflow_01_sm.png "Azure Storage でコンテナーを作成する"
 [2]: ./media/batch-dotnet-get-started/batch_workflow_02_sm.png "タスク アプリケーションと入力 (データ) ファイルをコンテナーにアップロードする"

@@ -13,17 +13,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/17/2017
+ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 23715879b46dd6d56a91fac2908964ea87fe569a
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c7f3ad066c735054cb339f6e09aa4d7d23f23a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/11/2017
 
 ---
-# <a name="quick-start-azure-ad-self-service-password-reset"></a>クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット
+# <a name="quickstart-azure-ad-self-service-password-reset"></a>クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット
+
+> [!IMPORTANT]
+> **サインインに問題がありますか?** その場合は、[自分のパスワードを変更してリセットする方法をここから参照してください](active-directory-passwords-update-your-own-password.md)にお進みください。
 
 ## <a name="rapidly-deploy-self-service-password-reset"></a>セルフ サービスによるパスワードのリセットを迅速にデプロイする
 
@@ -76,7 +79,7 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 
 セルフ サービスによるパスワードのリセットを無効にするのは簡単です。Azure AD テナントを開き、**[パスワード リセット]、[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** で **[なし]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
+### <a name="learn-more"></a>詳細情報
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
@@ -88,4 +91,12 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
 * [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+
+## <a name="next-steps"></a>次のステップ
+
+このクイック スタートでは、ユーザーのためにセルフ サービスによるパスワードのリセットを構成する方法について説明しました。 引き続き Azure Portal でこれらの手順を実行するには、以下のリンクからポータルにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [セルフ サービスのパスワード リセットを有効にする](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 

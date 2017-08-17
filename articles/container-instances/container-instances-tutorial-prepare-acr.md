@@ -11,16 +11,17 @@ keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, DC/OS,
 ms.assetid: 
 ms.service: container-instances
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: seanmck
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 5f3fc5f3624cf1ef881adf2af0cb69ad67d09ad3
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 
@@ -61,7 +62,7 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 ## <a name="get-azure-container-registry-information"></a>Azure Container Registry 情報の取得
 
-コンテナー レジストリが作成されると、そのログイン サーバーとパスワードにクエリを実行できます。 次のコードでは、こうした値が返されます。 それぞれの値をメモします。各値はこのチュートリアルを通じて参照されます。
+コンテナー レジストリが作成されると、そのログイン サーバーとパスワードにクエリを実行できます。 次のコードでは、こうした値が返されます。 ログイン サーバーとパスワードの値をメモします。これらの値はこのチュートリアル全体で参照されます。
 
 コンテナー レジストリ ログイン サーバー (レジストリ名で更新):
 
@@ -74,14 +75,14 @@ az acr show --name <acrName> --query loginServer
 コンテナー レジストリ パスワード:
 
 ```azurecli
-az acr credential show --name <acrName> --query passwords[0].value
+az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
 このチュートリアルの残りの部分では、コンテナー レジストリ パスワードの値のプレースホルダーとして `<acrPassword>` を使用します。
 
 ## <a name="login-to-the-container-registry"></a>コンテナー レジストリへのログイン
 
-イメージをプッシュする前に、コンテナー レジストリ インスタンスにログインする必要があります。 [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、操作を完了します。 docker login を実行する場合は、レジストリ ログイン サーバー名と資格情報を入力する必要があります。
+イメージをプッシュする前に、コンテナー レジストリ インスタンスにログインする必要があります。 [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、操作を完了します。 docker login を実行するときは、レジストリ ログイン サーバーの名前と資格情報を入力する必要があります。
 
 ```bash
 docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
@@ -91,7 +92,7 @@ docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
 
 ## <a name="tag-container-image"></a>コンテナー イメージのタグ付け
 
-プライベート レジストリからコンテナー イメージをデプロイするには、レジストリの `loginServer` 名でイメージにタグを付ける必要があります。
+コンテナー イメージをプライベート レジストリからデプロイするには、レジストリの `loginServer` 名でイメージにタグを付ける必要があります。
 
 現在のイメージの一覧を表示するには、`docker images` コマンドを使用します。
 
@@ -179,3 +180,4 @@ v1
 
 > [!div class="nextstepaction"]
 > [コンテナーを Azure Container Instances にデプロイする](./container-instances-tutorial-deploy-app.md)
+

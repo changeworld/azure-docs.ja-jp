@@ -3,7 +3,7 @@ title: "PowerShell サンプル - SQL Database と SQL Server オンプレミス
 description: "Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行うための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
-author: douglaslms
+author: jognanay
 manager: jhubbard
 editor: 
 tags: 

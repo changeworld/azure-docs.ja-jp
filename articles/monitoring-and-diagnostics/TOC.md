@@ -39,6 +39,7 @@
 ### [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
 ### [リソース マネージャーの監査操作](../azure-resource-manager/resource-group-audit.md?toc=%2fazure%2fmonitoring-and-diagnostics%2ftoc.json)
 ### [Resource Manager でアクティビティ ログ アラートを作成する](monitoring-create-activity-log-alerts-with-resource-manager-template.md)
+### [アクティビティ ログ アラートに移行する](monitoring-migrate-management-alerts.md)
 ## サービスの通知の使用
 ### [サービスの通知を表示する](monitoring-service-notifications.md)
 ### [サービスの通知でアラートを構成する](monitoring-activity-log-alerts-on-service-notifications.md)

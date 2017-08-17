@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 37405fb9e8b85040fbbd1e91efd44a80c4f87ff0
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 7dafb491cec908ffbb3683991919654f3d3eb452
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -35,9 +35,9 @@ ms.lasthandoff: 08/01/2017
 この記事のセクションに記載された手順を始める前に、次のタスクを完了してください。
 
 - ネットワーク インターフェイスの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事を参照してください。
-- Azure アカウントを使用して、[Azure Portal](https://portal.azure.com)、Azure コマンド ライン インターフェイス (CLI)、または Azure PowerShell にログインします。 まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
+- Azure アカウントを使用して、Azure [Portal](https://portal.azure.com)、Azure コマンド ライン インターフェイス (CLI)、または Azure PowerShell にログインします。 まだ Azure アカウントを持っていない場合は、[無料試用版アカウント](https://azure.microsoft.com/free)にサインアップしてください。
 - PowerShell コマンドを使用してこの記事のタスクを実行する場合は、[Azure PowerShell をインストールして構成します](/powershell/azureps-cmdlets-docs?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure PowerShell コマンドレットがインストールされていることを確認してください。 PowerShell コマンドのヘルプとサンプルを表示するには、「`get-help <command> -full`」と入力します。
-- Azure コマンド ライン インターフェイス (CLI) のコマンドを使ってこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使用できます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使用するには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**> _**] ボタンをクリックします。
+- Azure コマンド ライン インターフェイス (CLI) のコマンドを使ってこの記事のタスクを実行する場合は、[Azure CLI をインストールして構成します](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)。 最新バージョンの Azure CLI がインストールされていることを確認してください。 CLI コマンドのヘルプを表示するには、「`az <command> --help`」と入力します。 CLI とその前提条件をインストールする代わりに、Azure Cloud Shell を使うことができます。 Azure Cloud Shell は、Azure Portal 内で直接実行できる無料の Bash シェルです。 Azure CLI が事前にインストールされており、アカウントで使用できるように構成されています。 Cloud Shell を使うには、[ポータル](https://portal.azure.com)の上部にある [Cloud Shell**> _**] ボタンをクリックします。
 
 ## <a name="create-a-network-interface"></a>ネットワーク インターフェイスの作成
 
@@ -52,12 +52,12 @@ Azure Portal を使用して仮想マシンを作成すると、既定の設定�
     |---|---|---|
     |名前|あり|選択したリソース グループ内で一意となる名前を使用してください。 長い期間の間には、Azure サブスクリプションに複数のネットワーク インターフェイスを作成する可能性があります。 複数のネットワーク インターフェイスを管理しやすいように、名前付け規則を作成する際は、[名前付け規則](/azure/architecture/best-practices/naming-conventions?toc=%2fazure%2fvirtual-network%2ftoc.json#naming-rules-and-restrictions)に関する記事に記載された推奨事項をご覧ください。 名前は、ネットワーク インターフェイスの作成後に変更することはできません。|
     |Virtual Network|あり|ネットワーク インターフェイスの仮想ネットワークを選択します。 ネットワーク インターフェイスの割り当てが可能なのは、そのネットワーク インターフェイスと同じサブスクリプションおよび場所に存在する仮想ネットワークのみです。 いったんネットワーク インターフェイスが作成されると、それが割り当てられた仮想ネットワークを変更することはできません。 ネットワーク インターフェイスを追加する仮想マシンも、そのネットワーク インターフェイスと同じ場所およびサブスクリプション内に存在する必要があります。|
-    |サブネット|あり|選択したネットワーク インターフェイス内のサブネットを選択します。 ネットワーク インターフェイスの割り当て先のサブネットは、作成後に変更できます。|
+    |サブネット|あり|選択した仮想ネットワーク内のサブネットを選択します。 ネットワーク インターフェイスの割り当て先のサブネットは、作成後に変更できます。|
     |プライベート IP アドレスの割り当て|あり| この設定では、IPv4 アドレスの割り当て方法を選択します。 次の割り当て方法から選択します。**動的:** このオプションを選択すると、選択したサブネットのアドレス空間から使用可能なアドレスが自動的に割り当てられます。 ネットワーク インターフェイスがある仮想マシンが、停止 (割り当て解除) 状態になった後に起動された場合、そのネットワーク インターフェイスに異なるアドレスが割り当てられる可能性があります。 仮想マシンが、停止 (割り当て解除) 状態にならずに再起動された場合、アドレスは変わりません。 **静的:** このオプションを選択した場合は、選択したサブネットのアドレス空間内から使用可能な IP アドレスを手動で割り当てる必要があります。 静的アドレスは、ユーザーが変更するか、ネットワーク インターフェイスが削除されるまで変化しません。 ネットワーク インターフェイスの作成後に、割り当て方法を変更することができます。 このアドレスは Azure DHCP サーバーによって、仮想マシンのオペレーティング システム内のネットワーク インターフェイスに割り当てられます。|
     |ネットワーク セキュリティ グループ|いいえ| **[なし]** に設定されたままにするか、既存の[ネットワーク セキュリティ グループ](virtual-networks-nsg.md)を選択するか、[ネットワーク セキュリティ グループを作成する](virtual-networks-create-nsg-arm-pportal.md)ことができます。 ネットワーク セキュリティ グループによって、ネットワーク インターフェイスから送受信されるネットワーク トラフィックをフィルター処理できます。 ネットワーク インターフェイスには、0 個または 1 個のネットワーク セキュリティ グループを適用できます。 0 個または 1 つのネットワーク セキュリティ グループは、ネットワーク インターフェイスの割り当て先サブネットにも適用できます。 ネットワーク セキュリティ グループを、ネットワーク インターフェイスと、その割り当て先のサブネットに適用すると、予期しない結果が発生する場合があります。 ネットワーク インターフェイスとサブネットに適用したネットワーク セキュリティ グループのトラブルシューティングを行うには、「[ネットワーク セキュリティ グループのトラブルシューティング](virtual-network-nsg-troubleshoot-portal.md#nsg)」の記事を参照してください。|
     |[サブスクリプション]|あり|ご利用の Azure [サブスクリプション](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription)を 1 つ選択します。 ネットワーク インターフェイスのアタッチ先の仮想マシンと、接続先の仮想ネットワークは、同じサブスクリプション内に存在する必要があります。|
-    |[Private IP address (IPv6)] (プライベート IP アドレス (IPv6))|いいえ| このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の [IPv6](#IPv6) についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
-    |[IPv6 name] (IPv6 名) (**[Private IP address (IPv6)] (プライベート IP アドレス (IPv6))**  チェック ボックスがオンの場合にのみ表示されます) |はい (**[Private IP address (IPv6)] (プライベート IP アドレス (IPv6))**  チェック ボックスがオンの場合)。| この名前は、ネットワーク インターフェイスのセカンダリ IP 構成に割り当てられます。 IP 構成の詳細については、この記事の「[ネットワーク インターフェイス設定の表示](#view-network-interface-settings)」セクションで説明しています。|
+    |[プライベート IP アドレス (IPv6)]|いいえ| このチェック ボックスをオンにすると、ネットワーク インターフェイスに割り当てられた IPv4 アドレスに加えて、IPv6 アドレスがネットワーク インターフェイスに割り当てられます。 ネットワーク インターフェイスでの IPv6 の使用に関する重要な情報については、この記事の [IPv6](#IPv6) についてのセクションを参照してください。 IPv6 アドレスの割り当て方法を選択することはできません。 IPv6 アドレスを割り当てることを選択した場合、動的な方法で割り当てが行われます。
+    |[IPv6 名] (**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合にのみ表示されます) |はい (**[プライベート IP アドレス (IPv6)]** チェック ボックスがオンの場合)。| この名前は、ネットワーク インターフェイスのセカンダリ IP 構成に割り当てられます。 IP 構成の詳細については、この記事の「[ネットワーク インターフェイス設定の表示](#view-network-interface-settings)」セクションで説明しています。|
     |リソース グループ|あり|既存の[リソース グループ](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group)を選択するか、新しく作成することができます。 ネットワーク インターフェイスは、アタッチ先の仮想マシンや接続先の仮想ネットワークと同じリソース グループに存在することも、違うリソース グループに存在することも可能です。|
     |場所|あり|ネットワーク インターフェイスのアタッチ先の仮想マシンと接続先の仮想ネットワークは、リージョンとも呼ばれる同じ[場所](https://azure.microsoft.com/regions)の中に存在する必要があります。|
 
@@ -97,7 +97,7 @@ IPv6 アドレスがネットワーク インターフェイスに割り当て�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic list](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#list) ではサブスクリプションのネットワーク インターフェイスを表示します。[az network nic show](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#show) ではネットワーク インターフェイスの設定を表示します。|
-|PowerShell|[Get-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します。|
+|PowerShell|[Get-AzureRmNetworkInterface](/powershell/module/azurerm.network/get-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) では、サブスクリプションのネットワーク インターフェイスまたはネットワーク インターフェイスの設定を表示します。|
 
 ## <a name="change-dns-servers"></a>DNS サーバーの変更
 
@@ -108,7 +108,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 3. 表示される **[ネットワーク インターフェイス]** ブレードで、設定を表示または変更するネットワーク インターフェイスをクリックします。
 4. 選択したネットワーク インターフェイスのブレードで、**[設定]** にある **[DNS サーバー]** をクリックします。
 5. 次のいずれかをクリックします。
-    - **[仮想ネットワークから継承する] (既定)**: このオプションを選択すると、ネットワーク インターフェイスの割り当て先の仮想ネットワークで定義されている DNS サーバー設定を継承します。 仮想ネットワーク レベルでは、カスタム DNS サーバーまたは Azure 提供の DNS サーバーのいずれかが定義されます。 Azure 提供の DNS サーバーは、同じ仮想ネットワークに割り当てられているリソースの名前を解決できます。 異なる仮想ネットワークに割り当てられているリソースの名前解決には、FQDN を使用する必要があります。
+    - **[仮想ネットワークから継承する] (既定)**: このオプションを選択すると、ネットワーク インターフェイスの割り当て先の仮想ネットワークで定義されている DNS サーバー設定を継承します。 仮想ネットワーク レベルでは、カスタム DNS サーバーまたは Azure 提供の DNS サーバーのいずれかが定義されます。 Azure 提供の DNS サーバーは、同じ仮想ネットワークに割り当てられているリソースのホスト名を解決できます。 異なる仮想ネットワークに割り当てられているリソースの名前解決には、FQDN を使用する必要があります。
     - **[カスタム]**: 複数の仮想ネットワークにわたって名前を解決する独自の DNS サーバーを構成できます。 DNS サーバーとして使用するサーバーの IP アドレスを入力します。 指定した DNS サーバー アドレスは、このネットワーク インターフェイスにのみ割り当てられて、ネットワーク インターフェイス割り当て先の仮想ネットワークの DNS 設定をすべてオーバーライドします。
 6. [ **Save**] をクリックします。
 
@@ -117,7 +117,7 @@ DNS サーバーは Azure DHCP サーバーによって、仮想マシンのオ�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="enable-or-disable-ip-forwarding"></a>IP 転送の有効化と無効化
 
@@ -139,7 +139,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic update](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRmNetworkInterface](/powershell/module/azurerm.network/set-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-subnet-assignment"></a>サブネットの割り当ての変更
 
@@ -160,7 +160,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 
 ## <a name="delete-a-network-interface"></a>ネットワーク インターフェイスの削除
@@ -179,7 +179,7 @@ IP 転送によって、ネットワーク インターフェイスのアタッ�
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic delete](/cli/azure/network/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|PowerShell|[Remove-AzureRmNetworkInterface](/powershell/resourcemanager/azurerm.network/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Remove-AzureRmNetworkInterface](/powershell/module/azurerm.network/remove-azurermnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="next-steps"></a>次のステップ
 複数のネットワーク インターフェイスまたは IP アドレスを持つ仮想マシンを作成するには、以下の記事を参照してください。

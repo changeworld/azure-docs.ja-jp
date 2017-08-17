@@ -33,7 +33,7 @@ ms.contentlocale: ja-jp
 > ### <a name="create-your-aspnet-project"></a>ASP.NET プロジェクトを作成する
 
 > 1. Visual Studio で、[`File`] > [`New`] > [`Project`] を選択します。<br/>
-> 2. *Visual C#\Web* で、[`ASP.NET Web Application (.NET Framework)`] (ASP.NET Web アプリケーション (.NET Framework)) を選択します。
+> 2. *Visual C#\Web* で、[`ASP.NET Web Application (.NET Framework)`] \(ASP.NET Web アプリケーション (.NET Framework)) を選択します。
 > 3. アプリケーションに名前を付けて、*[OK]* をクリックします。
 > 4. [`Empty`] を選択し、`MVC` 参照を追加するチェック ボックスを選択します。
 <!--end-collapse-->

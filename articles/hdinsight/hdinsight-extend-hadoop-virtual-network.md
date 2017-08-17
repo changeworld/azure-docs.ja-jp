@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/11/2017
+ms.date: 08/04/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7244103d952e32c330743ddc3dd68e417cb7fb9b
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 19095d65188ff935b99d1b89cefbc92ef06ebc6f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
@@ -53,7 +53,10 @@ ms.lasthandoff: 07/21/2017
 
 ## <a id="existingvnet"></a>既存の仮想ネットワークへの HDInsight の追加
 
-このセクションの手順を使用して、HDInsight を既存の Azure Virtual Network に追加する方法をご確認ください。
+このセクションの手順を使用して、新しい HDInsight を既存の Azure Virtual Network に追加する方法をご確認ください。
+
+> [!NOTE]
+> 仮想ネットワークに既存の HDInsight クラスターを追加することはできません。
 
 1. 使用中の仮想ネットワークは、従来の配置モデルですか、Resource Manager の配置モデルですか。
 
@@ -103,6 +106,16 @@ ms.lasthandoff: 07/21/2017
         ```
 
         詳細については、「 [ルートのトラブルシューティング](../virtual-network/virtual-network-routes-troubleshoot-portal.md)」をご覧ください。
+
+4. HDInsight クラスターを作成し、構成時に Azure Virtual Network を選択します。 次のドキュメントの手順を使って、クラスターの作成プロセスを理解してください。
+
+    * [Azure Portal を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-portal.md)
+    * [Azure PowerShell を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
+    * [Azure CLI 1.0 を使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Azure Resource Manager テンプレートを使用した HDInsight の作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+
+  > [!IMPORTANT]
+  > 仮想ネットワークへの HDInsight の追加はオプションの構成手順です。 必ず、クラスターを構成するときに仮想ネットワークを選択してください。
 
 ## <a id="multinet"></a>複数のネットワークの接続
 

@@ -84,7 +84,7 @@ Cosmos DB アカウントから火山データを取得し、次のレポート�
 5. **[Azure]** をクリックし、**[Microsoft Azure DocumentDB (ベータ版)]** を選択して、**[接続]** をクリックします。 
 
     ![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
-6. **[Preview Connector] (プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Microsoft Azure DocumentDB 接続]** ウィンドウが表示されます。
+6. **[Preview Connector] \(プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Microsoft Azure DocumentDB 接続]** ウィンドウが表示されます。
 7. 次のように、データを取得する Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[[キー]](manage-account.md#keys)** ブレードにある [URI] ボックスから URL を取得できます。 デモ アカウントを使用するには、URL として `https://analytics.documents.azure.com` を入力します。 
    
     データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。  代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
@@ -109,7 +109,7 @@ Cosmos DB アカウントから火山データを取得し、次のレポート�
 12. データを変換するには、**[編集]** をクリックしてクエリ エディターを新しいウィンドウで起動します。
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON ドキュメントをフラット化して変換する
-1. [Power BI Query Editor] (Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
+1. [Power BI Query Editor] \(Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
    ![Power BI Desktop クエリ エディター](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
 2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択し、**[OK]** をクリックします。
    

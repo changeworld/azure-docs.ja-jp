@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 516618653064fd4e334197bba767a013a805260a
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: 78737c681a91f24f73502a9cc25a301efc9304a4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/07/2017
 
 ---
 # <a name="require-secure-transfer"></a>安全な転送が必要
@@ -50,6 +50,64 @@ Azure Files サービスを使用している場合、[安全な転送が必須]
 1. [**安全な転送が必須**] で、[**有効**] を選択します。
 
   ![スクリーンショット](./media/storage-require-secure-transfer/secure_transfer_field_in_portal_en_2.png)
+
+## <a name="enable-secure-transfer-required-programmatically"></a>プログラムを使用して [安全な転送が必須] を有効にする
+
+ストレージ アカウントのプロパティの設定名は _supportsHttpsTrafficOnly_ です。 [安全な転送が必須] の設定は、REST API、ツール、またはライブラリで有効にできます。
+
+* **REST API** (バージョン: 2016-12-01): [リリース パッケージ](https://docs.microsoft.com/en-us/rest/api/storagerp/storageaccounts)
+* **PowerShell** (バージョン: 4.1.0): [リリース パッケージ](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/set-azurermstorageaccount?view=azurermps-4.1.0)
+* **CLI** (バージョン: 2.0.11): [リリース パッケージ](https://pypi.python.org/pypi/azure-cli-storage/2.0.11)
+* **NodeJS** (バージョン: 1.1.0): [リリース パッケージ](https://www.npmjs.com/package/azure-arm-storage/)
+* **.NET SDK** (バージョン: 6.3.0): [リリース パッケージ](https://www.nuget.org/packages/Microsoft.Azure.Management.Storage/6.3.0-preview)
+* **Python SDK** (バージョン: 1.1.0): [リリース パッケージ](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0)
+* **Ruby SDK** (バージョン: 0.11.0): [リリース パッケージ](https://rubygems.org/gems/azure_mgmt_storage)
+
+### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>REST API で [安全な転送が必須] の設定を有効にする
+
+REST API でのテストを簡略化するには、[ArmClient](https://github.com/projectkudu/ARMClient) を使用してコマンド ラインから呼び出します。
+
+ 以下のコマンド ラインを使用して REST API の設定を確認できます。
+
+```
+# Login Azure and proceed with your credentials
+> armclient login
+
+> armclient GET  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01
+```
+
+応答には、_supportsHttpsTrafficOnly_ 設定があります。 サンプル:
+
+```Json
+{
+  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
+  "kind": "Storage",
+  ...
+  "properties": {
+    ...
+    "supportsHttpsTrafficOnly": false
+  },
+  "type": "Microsoft.Storage/storageAccounts"
+}
+```
+
+以下のコマンド ラインを使用して、REST API の設定を有効にできます。
+
+```
+# Login Azure and proceed with your credentials
+> armclient login
+
+> armclient PUT /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01 < Input.json
+```
+Input.json のサンプル:
+```Json
+{
+  "location": "westus",
+  "properties": {
+    "supportsHttpsTrafficOnly": true
+  }
+}
+```
 
 ## <a name="next-steps"></a>次のステップ
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、 [Storage セキュリティ ガイド](storage-security-guide.md)に関する記事を参照してください。

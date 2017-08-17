@@ -3,13 +3,14 @@
 ## [Azure の ID 管理について](identity-fundamentals.md)
 ## [Azure ID ソリューションについて](understand-azure-identity-solutions.md)
 ## [ハイブリッド ID ソリューションの選択](choose-hybrid-identity-solution.md)
+## [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)
 ## [FAQ](active-directory-faq.md)
 
 # 作業開始
-## [Azure AD テナントを取得する](active-directory-howto-tenant.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
-## [Azure サブスクリプションを関連付ける](active-directory-how-subscriptions-associated-directory.md)
-## [クイックスタート: セルフサービスによるパスワードのリセット](active-directory-passwords-getting-started.md)
+## [カスタム ドメイン名の追加](add-custom-domain.md)
+## [会社のブランドの構成](customize-branding.md)
+## [セルフサービスによるパスワードのリセットの構成](active-directory-passwords-getting-started.md)
 ## Azure AD ライセンスの管理
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
 ### [クラシック ポータル](active-directory-licensing-what-is.md)
@@ -19,8 +20,7 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
-## [Azure Active Directory のサポートを利用する](active-directory-troubleshooting-support-howto.md)
-## [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
+
 
 # 方法
 ## 計画と設計
@@ -55,7 +55,6 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
-
 ### [他のディレクトリからユーザーを追加する (クラシック ポータル)](active-directory-create-users-external.md)
 ### [ユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
@@ -144,6 +143,7 @@
 
 
 ## デバイスを管理する
+### [はじめに](device-management-introduction.md)
 ### [デバイスを登録する](active-directory-device-registration-overview.md)
 #### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
@@ -164,6 +164,7 @@
 ## アプリを管理する
 ### [概要](active-directory-enable-sso-scenario.md)
 ### [使用の開始](active-directory-integrating-applications-getting-started.md)
+### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](active-directory-cloudappdiscovery-whatis.md)
 #### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
 #### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
@@ -239,18 +240,9 @@
 ### [Azure AD Connect](./connect/active-directory-aadconnect.md)
 ### カスタム ドメイン名
 #### [概要](active-directory-add-domain-concepts.md)
-#### ドメイン名を追加する
-##### [Azure Portal](active-directory-domains-add-azure-portal.md)
-##### [クラシック ポータル](active-directory-add-domain.md)
-##### [AD FS を使用](active-directory-add-domain-federated.md)
-#### [ユーザーを割り当てる](active-directory-add-domain-add-users.md)
 #### ドメイン名を管理する
 ##### [Azure Portal](active-directory-domains-manage-azure-portal.md)
 ##### [クラシック ポータル](active-directory-add-manage-domain-names.md)
-### サインイン ページをカスタマイズする
-#### [Azure Portal](active-directory-branding-custom-signon-azure-portal.md)
-#### [言語固有](active-directory-branding-localize-azure-portal.md)
-#### [クラシック ポータル](active-directory-add-company-branding.md)
 ### [ディレクトリを管理する](active-directory-administer.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [O365 ディレクトリ](active-directory-manage-o365-subscription.md)
@@ -270,6 +262,7 @@
 #### [セルフサービス サインアップ ポータルのサンプル](active-directory-b2b-self-service-portal.md)
 #### [招待メール](active-directory-b2b-invitation-email.md)
 #### [招待の利用](active-directory-b2b-redemption-experience.md)
+#### [招待を使用せずに B2B ユーザーを追加する](active-directory-b2b-add-user-without-invite.md)
 #### [B2B 向けの条件付きアクセス](active-directory-b2b-mfa-instructions.md)
 #### [B2B の共有ポリシー](active-directory-b2b-delegate-invitations.md)
 #### [B2B ユーザーをロールに追加する](active-directory-b2b-add-guest-to-role.md)
@@ -357,7 +350,8 @@
 ### [高可用性](active-directory-adfs-in-azure-with-azure-traffic-manager.md)
 ### [署名ハッシュ アルゴリズムを変更する](active-directory-federation-sha256-guidance.md)
 
-## [トラブルシューティング](active-directory-troubleshooting.md)
+## [トラブルシューティング](active-directory-troubleshooting-support-howto.md)
+### [Active Directory 項目が不足しているか使用できない場合のトラブルシューティング](active-directory-troubleshooting.md)
 
 ## Azure AD の概念実証 (PoC) のデプロイ
 ### [PoC プレイブック: はじめに](active-directory-playbook-intro.md)

@@ -34,11 +34,11 @@ Azure DNS は、カスタム ドメインをサポートする、または完全
 
 Azure Function App 用のカスタム ドメインを構成するために、Function App 自体での構成に加えて CNAME レコードが作成されます。
  
-**[Other] (その他)** > **[Function App]** に移動して Function App を選択します。 **[Platform features] (プラットフォーム機能)** をクリックし、**[NETWORKING]** で **[Custom domains] (カスタム ドメイン)** をクリックします。
+**[Other] \(その他)** > **[Function App]** に移動して Function App を選択します。 **[Platform features] \(プラットフォーム機能)** をクリックし、**[NETWORKING]** で **[Custom domains] \(カスタム ドメイン)** をクリックします。
 
 ![Function App ブレード](./media/dns-custom-domain/functionapp.png)
 
-**[Custom domains] (カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
+**[Custom domains] \(カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/functionshostname.png)
 
@@ -52,7 +52,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | adatumfunction.azurewebsites.net        | 別名を作成している DNS 名。この例では、既定で Function App によって提供される adatumfunction.azurewebsites.net という DNS 名です。        |
 
-Function App に戻り、**[Platform features] (プラットフォーム機能)** をクリックし、**[NETWORKING] (ネットワーク)** で **[Custom domains] (カスタム ドメイン)** をクリックし、**[Hostnames] (ホスト名)** で **[+ Add hostname] (ホスト名の追加)** をクリックします。
+Function App に戻り、**[Platform features] \(プラットフォーム機能)** をクリックし、**[NETWORKING] \(ネットワーク)** で **[Custom domains] \(カスタム ドメイン)** をクリックし、**[Hostnames] \(ホスト名)** で **[+ Add hostname] \(ホスト名の追加)** をクリックします。
 
 **[Add hostname] (ホスト名の追加)** ブレードで、CNAME レコードを **[hostname] (ホスト名)** テキスト フィールドに入力して **[Validate] (検証)** をクリックします。 レコードが見つからなかった場合、**[Add hostname] (ホスト名の追加)** ボタンが表示されます。 **[Add hostname] (ホスト名の追加)** をクリックして別名を追加します。
 
@@ -108,9 +108,9 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 
 次の手順では、App Service Web アプリ用のカスタム ドメインを構成する方法を説明します。
 
-**[Web & Mobile] (Web とモバイル)** > **[App Service] (アプリ サービス)** に移動し、カスタム ドメイン名を構成しているリソースを選択し、**[Custom domains] (カスタム ドメイン)** をクリックします。
+**[Web & Mobile] \(Web とモバイル)** > **[App Service] \(アプリ サービス)** に移動し、カスタム ドメイン名を構成しているリソースを選択し、**[Custom domains] \(カスタム ドメイン)** をクリックします。
 
-**[Custom domains] (カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
+**[Custom domains] \(カスタム ドメイン)** ブレードの現在の URL をメモしてください。このアドレスは、作成される DNS レコードの別名として使用されます。
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
 
@@ -128,7 +128,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 ![CNAME レコードを作成する](./media/dns-custom-domain/createcnamerecord.png)
 
-カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] (カスタム ドメイン)** をクリックし、**[Hostnames] (ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、**[+ Add hostname] (ホスト名の追加)** をクリックします。
+カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] \(カスタム ドメイン)** をクリックし、**[Hostnames] \(ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、**[+ Add hostname] (ホスト名の追加)** をクリックします。
 
 ![図 1](./media/dns-custom-domain/figure1.png)
 

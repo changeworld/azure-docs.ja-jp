@@ -11,20 +11,19 @@ ms.service: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: na
-ms.date: 06/26/2017
+ms.workload8: na
+ms.date: 08/07/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: e6aefe5f16e7148f7837a8741355c61851618495
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 9b9285ec659e7d3d3f6aa42a88bb6e822e2dfc91
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="azure-log-integration-frequently-asked-questions-faq"></a>Azure ログ統合のよく寄せられる質問 (FAQ)
-この FAQ では、Azure ログ統合に関する質問に回答します。このサービスを使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
+この FAQ では、Azure ログ統合に関する質問に回答します。Windows オペレーティング システム サービスを使用すると、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できます。 この統合は、すべての資産に対してオンプレミスまたはクラウドの統合ダッシュボードを提供します。これにより、アプリケーションに関連付けられているセキュリティ イベントの集計、関連付け、分析を実行し、警告を生成できます。
 
 ## <a name="is-the-azure-log-integration-software-free"></a>Azure ログ統合ソフトウェアは無料ですか。
 はい。 Azure ログ統合ソフトウェアに料金はかかりません。
@@ -33,18 +32,18 @@ ms.lasthandoff: 06/28/2017
 
 現時点では、Azure 商用および Azure Government サービスで利用できます。中国やドイツでは利用できません。
 
-## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs-from"></a>Azure ログ統合が Azure VM ログの取得元としているストレージ アカウントを表示するには、どうすればよいですか。
+## <a name="how-can-i-see-the-storage-accounts-from-which-azure-log-integration-is-pulling-azure-vm-logs"></a>Azure ログ統合が Azure VM ログの取得元としているストレージ アカウントを表示するには、どうすればよいですか。
 **azlog source list**コマンドを実行します。
 
 ## <a name="how-can-i-tell-which-subscription-the-azure-log-integration-logs-are-from"></a>Azure ログ統合でログの取得元となっているサブスクリプションはどのようにしてわかりますか。
 
-AzureResourcemanagerJson ディレクトリに格納される監査ログの場合、サブスクリプション ID はログのファイル名で確認できます。 AzureSecurityCenterJson フォルダー内のログについても同様です。 例:
+**AzureResourcemanagerJson** ディレクトリに格納される監査ログの場合、サブスクリプション ID はログのファイル名で確認できます。 **AzureSecurityCenterJson** フォルダー内のログについても同様です。 For example:
 
 20170407T070805_2768037.0000000023.**1111e5ee-1111-111b-a11e-1e111e1111dc**.json
 
 Azure Active Directory 監査ログには、名前の一部として、テナント ID が含まれます。
 
-Even Hub から読み取られた診断ログには、名前の一部にサブスクリプション ID は含まれませんが、代わりに、Event Hub ソースの作成の一部として指定されたフレンドリ名が含まれます。 
+イベント ハブから読み取られた診断ログには、名前の一部にサブスクリプション ID が含まれていません。 イベント ハブ ソースの作成の一環で指定された表示名が含まれます。 
 
 ## <a name="how-can-i-update-the-proxy-configuration"></a>プロキシ構成を更新するには、どうすればよいですか。
 プロキシ設定で Azure ストレージ アクセスが直接許可されていない場合は、**c:\Program Files\Microsoft Azure Log Integration** で **AZLOG.EXE.CONFIG** ファイルを開きます。 ファイルを更新して、 **defaultProxy** セクションに組織のプロキシ アドレスを追加します。 更新の完了後、サービスを停止するには **net stop azlog** コマンドを、開始するには **net start azlog** コマンドを使用します。
@@ -66,7 +65,7 @@ Even Hub から読み取られた診断ログには、名前の一部にサブ�
       </system.diagnostics>   
 
 ## <a name="how-can-i-see-the-subscription-information-in-windows-events"></a>Windows イベントのサブスクリプション情報を表示するには、どうすればよいですか。
-ソースを追加しているときに、 **subscriptionid** を表示名に追加します。
+ソースを追加するときに、**サブスクリプション ID** を表示名に追加します。
 
     Azlog source add <sourcefriendlyname>.<subscription id> <StorageName> <StorageKey>  
 イベント XML には、次に示すサブスクリプション ID などのメタデータが含まれます。
@@ -74,7 +73,7 @@ Even Hub から読み取られた診断ログには、名前の一部にサブ�
 ![イベント XML][1]
 
 ## <a name="error-messages"></a>エラー メッセージ
-### <a name="when-running-command-azlog-createazureid-why-do-i-get-the-following-error"></a>**azlog createazureid**コマンドを実行すると、次のエラーが表示されるのはなぜですか。
+### <a name="when-running-command-azlog-createazureid-why-do-i-get-the-following-error"></a>```azlog createazureid``` コマンドを実行すると、次のエラーが表示されるのはなぜですか?
 エラー:
 
   *Failed to create AAD Application - Tenant 72f988bf-86f1-41af-91ab-2d7cd011db37 - Reason = 'Forbidden' - Message = 'Insufficient privileges to complete the operation.'*
@@ -125,7 +124,7 @@ Windows の Azure 診断 [(WAD)](../virtual-machines/windows/ps-extensions-diagn
 
 インストールおよび構成中に問題が発生した場合、[サポート要求](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)を作成し、サポートを要求するサービスとして **[ログ統合]** を選択します。
 
-### <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-into-my-siem"></a>Azure ログ統合を使用して Network Watcher のログを自分の SIEM に統合することはできますか。
+### <a name="can-i-use-azure-log-integration-to-integrate-network-watcher-logs-in-to-my-siem"></a>Azure ログ統合を使用して Network Watcher のログを自分の SIEM に統合することはできますか?
 
 Network Watcher では大量のログ情報が生成されますが、これらのログを SIEM に送信することは想定されていません。 Network Watcher のログの送信先としてサポートされているのは、ストレージ アカウントのみです。 Azlog では、これらのログを読み取って SIEM で利用できようにすることはできません。
 

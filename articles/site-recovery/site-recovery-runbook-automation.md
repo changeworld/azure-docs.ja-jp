@@ -34,15 +34,15 @@ Azure Automation が初めての場合は、[サインアップ](https://azure.m
     ![[カスタマイズ] ボタンをクリックします。](media/site-recovery-runbook-automation-new/essentials-rp.png)
 
 
-2. **[Group 1: Start] (グループ 1: 開始)** を右クリックしてから、**[Add post action] (事後アクションを追加する)** を選択します。
+2. **[Group 1: Start] \(グループ 1: 開始)** を右クリックしてから、**[Add post action] \(事後アクションを追加する)** を選択します。
 
-    ![[Group 1: Start] (グループ 1: 開始) の右クリックおよび事後アクションの追加](media/site-recovery-runbook-automation-new/customize-rp.png)
+    ![[Group 1: Start] \(グループ 1: 開始) の右クリックおよび事後アクションの追加](media/site-recovery-runbook-automation-new/customize-rp.png)
 
-3. **[Choose a script] (スクリプトを選択する)** をクリックします。
+3. **[Choose a script] \(スクリプトを選択する)** をクリックします。
 
-4. **[Update action] (アクションの更新)** ブレードで、スクリプトに **Hello World** という名前を付けます。
+4. **[Update action] \(アクションの更新)** ブレードで、スクリプトに **Hello World** という名前を付けます。
 
-    ![[Update action] (アクションの更新) ブレード](media/site-recovery-runbook-automation-new/update-rp.png)
+    ![[Update action]\ (アクションの更新) ブレード](media/site-recovery-runbook-automation-new/update-rp.png)
 
 5. Automation アカウント名を入力します。
     >[!NOTE]

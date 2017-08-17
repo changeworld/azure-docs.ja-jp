@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2017
+ms.date: 08/16/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 2ea15afa857e568a10b0ef802764afd1eab0d3f3
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 8e21861de95308a99beab3ff5ed5bd95c4f04e33
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
@@ -154,6 +154,9 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
 > [!NOTE]
 > Azure Cosmos DB Emulator でサポートされているマスター キーは、エミュレーターで使用することのみを目的としています。 Azure Cosmos DB Emulator で運用環境の Azure Cosmos DB アカウントとキーを使用することはできません。 
 
+> [!NOTE] 
+> /Key オプションを使用してエミュレーターを開始した場合は、"C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==" の代わりに生成されたキーを使用します。
+
 さらに、Azure Cosmos DB サービスと同様に、Azure Cosmos DB Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
 ## <a name="running-the-emulator-on-a-local-network"></a>ローカル ネットワークでのエミュレーターの実行
@@ -175,6 +178,9 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
     mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true&3t.sslSelfSignedCerts=true
 
 Azure Cosmos DB Emulator には、[Azure DocumentDB Studio](https://github.com/mingaliu/DocumentDBStudio) などの既存のツールを使用して接続できます。 [Azure Cosmos DB データ移行ツール](https://github.com/azure/azure-documentdb-datamigrationtool)を使用して、Azure Cosmos DB Emulator と Azure Cosmos DB サービスの間でデータを移行することもできます。
+
+> [!NOTE] 
+> /Key オプションを使用してエミュレーターを開始した場合は、"C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==" の代わりに生成されたキーを使用します。
 
 Azure Cosmos DB Emulator を使用して、既定で最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 この値を変更する方法の詳細については、[PartitionCount 値の設定](#set-partitioncount)に関するトピックを参照してください。
 
@@ -305,7 +311,7 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 <tr>
   <td>GenKeyFile</td>
   <td>新しい承認キーを生成し、指定したファイルに保存します。 生成されたキーは、/Key オプションまたは/KeyFile オプションで使用できます。</td>
-  <td>CosmosDB.Emulator.exe  /GenKeyFile</td>
+  <td>CosmosDB.Emulator.exe  /GenKeyFile=&lt;キー ファイルへのパス&gt;</td>
   <td></td>
 </tr>
 <tr>

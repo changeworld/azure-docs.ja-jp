@@ -1,5 +1,5 @@
 ---
-title: "Jenkins と Azure CLI を使用して Azure App Service にデプロイする | Microsoft Docs"
+title: "Jenkins で Azure CLI を実行する | Microsoft Docs"
 description: "Azure CLI を使用して Java Web アプリを Jenkins パイプラインで Azure にデプロイする方法について説明します"
 services: app-service\web
 documentationcenter: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: web
 ms.date: 6/7/2017
 ms.author: mlearned
-ms.custom: mvc
+ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d0d20c10c7b14ff8873bb71feb9047a1c49700ef
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 

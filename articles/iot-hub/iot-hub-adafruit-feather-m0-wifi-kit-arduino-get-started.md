@@ -13,7 +13,7 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 7/12/2017
+ms.date: 8/16/2017
 ms.author: xshi
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
@@ -161,7 +161,7 @@ Ubuntu の場合は、Feather M0 WiFi の USB ポートを操作するアクセ�
 1. **[File]\(ファイル)\** > **[Preferences]\(設定\)** をクリックする (Windows/Linux) か、**[Arduino]** > **[Preferences]\(設定\)** をクリック (Mac) し、以下のリンクをコピーして Arduino IDE の設定の **[Additional Boards Manager URLs]\(ボード マネージャーの追加の URL\)** に貼り付けます。
    
    ```
-   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
+   https://adafruit.github.io/arduino-board-index/package_adafruit_index.json, https://adafruit.github.io/arduino-board-index/package_adafruit_index.json
    ```
 
 1. **[Tools]\(ツール\)** > **[Board]\(ボード\)** > **[Boards Manager]\(ボード マネージャー\)** の順にクリックし、`Arduino SAMD Boards` バージョン `1.6.2` 以降をインストールします。 

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/27/2017
+ms.date: 08/03/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 6735049b6068d9afe192b6ea4450e970fcf5f7d4
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 6b0faf24963c6055ce7c54b9d46b5aa0851f40b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>証明書認証 (クラシック) を使用した VNet へのポイント対サイト接続の構成 (クラシック): Azure Portal
@@ -95,7 +95,7 @@ ms.lasthandoff: 07/28/2017
 
   ![仮想ネットワーク タイルの作成](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png)
 10. 仮想ネットワークが作成されると、Azure クラシック ポータルの [ネットワーク] ページの **[状態]** に **[作成済み]** と表示されます。
-11. DNS サーバーを追加します (省略可)。 仮想ネットワークを作成した後は、名前解決に使用する DNS サーバーの IP アドレスを追加できます。 VNet 内のリソースの名前解決に使用できる DNS サーバーを指定する必要があります。<br>DNS サーバーを追加するには、仮想ネットワークの設定を開き、[DNS サーバー] をクリックして、実際に使用する DNS サーバーの IP アドレスを追加します。 後続の手順で生成するクライアント構成パッケージには、この設定で指定した DNS サーバーの IP アドレスが追加されます。 将来 DNS サーバーのリストを更新する必要が生じた場合は、その更新後のリストを反映した新しい VPN クライアント構成パッケージを生成してインストールすることができます。
+11. DNS サーバーを追加します (省略可)。 仮想ネットワークを作成した後は、名前解決に使用する DNS サーバーの IP アドレスを追加できます。 指定する DNS サーバーの IP アドレスは、VNet 内のリソースの名前を解決できる DNS サーバーのアドレスである必要があります。<br>DNS サーバーを追加するには、仮想ネットワークの設定を開き、[DNS サーバー] をクリックして、実際に使用する DNS サーバーの IP アドレスを追加します。
 
 ### <a name="gateway"></a>パート 2: ゲートウェイ サブネットと動的ルーティング ゲートウェイの作成
 
@@ -161,7 +161,7 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="vpnclientconfig"></a>セクション 4: クライアントの構成
 
-ポイント対サイト VPN を使って VNet に接続するには、ネイティブ Windows VPN クライアントを構成するためのパッケージをクライアントごとにインストールする必要があります。 構成パッケージは、仮想ネットワークへの接続に必要な設定を使ってネイティブ Windows VPN クライアントを構成します。したがって VNet の DNS サーバーを指定した場合、クライアントの名前解決に使用される DNS サーバーの IP アドレスが構成パッケージに追加されます。 指定した DNS サーバーを後から、クライアント構成パッケージの生成後に変更する場合は、必ず新しいクライアント構成パッケージを生成してクライアント コンピューターにインストールしてください。
+ポイント対サイト VPN を使って VNet に接続するには、ネイティブ Windows VPN クライアントを構成するためのパッケージをクライアントごとにインストールする必要があります。 構成パッケージは、仮想ネットワークに接続するために必要な設定を使って、ネイティブ Windows VPN クライアントを構成します。
 
 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 

@@ -8,25 +8,29 @@ editor: TomShinder
 ms.assetid: 
 ms.service: security
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 08/07/2017
 ms.author: Barclayn
 ms.custom: AzLog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a648852fadfeb5c9a4ff61c85bbe0af856e445d4
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 4503234080e0bf737dad2e18907b47c3bf39d9da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
-Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベントを取得し、セキュリティ情報およびイベント管理 (SIEM) システムで使用できます。 このチュートリアルでは、イベント ハブにログが記録された Azure Key Vault アクティビティを取得し、SIEM システムで JSON ファイルとして使用できるようにするプロセスについて説明します。 その後、JSON ファイルを処理するように SIEM システムを構成できます。
+Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベントを取得し、セキュリティ情報およびイベント管理 (SIEM) システムで使用できます。 このチュートリアルの目的は、Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を手順を追って説明することです。 この記事を参照し、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
+
+>[!WARNING]
+このチュートリアルで使用されている手順とコマンドは、コピー アンド ペーストで使用するためのものではありません。あくまでも例として示しています。 このチュートリアルの PowerShell コマンドを実際の環境で "そのまま" 使用しないでください。 お客様固有の環境に基づいてカスタマイズする必要があります。
+
+
+このチュートリアルでは、イベント ハブにログが記録された Azure Key Vault アクティビティを取得し、SIEM システムで JSON ファイルとして使用できるようにするプロセスについて説明します。 その後、JSON ファイルを処理するように SIEM システムを構成できます。
 
 >[!NOTE]
->このチュートリアルで説明する手順の大半は、キー コンテナー、ストレージ アカウント、およびイベント ハブの構成に関するものです。 具体的な Azure ログ統合手順は、このチュートリアルの末尾に記載されています。
+>このチュートリアルで説明する手順の大半は、キー コンテナー、ストレージ アカウント、およびイベント ハブの構成に関するものです。 具体的な Azure ログ統合手順は、このチュートリアルの末尾に記載されています。 運用環境ではこれらの手順を実行しないでください。ラボ環境のみで使用してください。 運用環境で使用する前に、手順をカスタマイズする必要があります。
 
 その過程で提供される情報は、各手順の背景情報を理解するのに役立ちます。 他の記事へのリンクは特定のトピックの詳細を提供します。
 

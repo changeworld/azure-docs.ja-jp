@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/08/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6037c1ea1655aa027a0933b1eea5f864103cfd5b
+ms.translationtype: HT
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 88f20287e2a6935b9694a25a21b607d658b8eb68
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
@@ -67,25 +66,25 @@ Site Recovery は、サポート対象のマシンで実行されているすべ
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory と DNS のレプリケート
 Active Directory と DNS インフラストラクチャは多くのエンタープライズ アプリにとって不可欠な要素です。 障害復旧の際は、これらのインフラストラクチャ コンポーネントを保護して復旧した後に、ワークロードとアプリケーションを復旧することが必要になります。
 
-Site Recovery を使用すると、Active Directory と DNS に合わせて完全な自動障害復旧計画を作成できます。 たとえば、プライマリ サイトからセカンダリ サイトに SharePoint や SAP をフェールオーバーする場合は、まず Active Directory をフェールオーバーする復旧計画を策定してから、Active Directory に依存する他のアプリをフェールオーバーするためのアプリごとの復旧計画を追加で策定します。
+Site Recovery を使用すると、Active Directory と DNS に合わせて完全な自動ディザスター リカバリー計画を作成できます。 たとえば、プライマリ サイトからセカンダリ サイトに SharePoint や SAP をフェールオーバーする場合は、まず Active Directory をフェールオーバーする復旧計画を策定してから、Active Directory に依存する他のアプリをフェールオーバーするためのアプリごとの復旧計画を追加で策定します。
 
 [こちら](site-recovery-active-directory.md) を参照してください。
 
 ## <a name="protect-sql-server"></a>SQL Server の保護
 SQL Server は、オンプレミスのデータセンターの多くのビジネス アプリにデータ サービス基盤を提供します。  Site Recovery を SQL Server HA/DR テクノロジと共に使用して、SQL Server を使用する多層エンタープライズ アプリを保護できます。 Site Recovery で提供されるものは次のとおりです。
 
-* SQL Server に対応したシンプルでコスト効率の良い障害復旧ソリューション。 SQL Server のスタンドアロン サーバーとクラスターの複数のバージョンとエンドポイントを Azure またはセカンダリ サイトにレプリケートします。  
+* SQL Server に対応したシンプルでコスト効率の良いディザスター リカバリー ソリューション。 SQL Server のスタンドアロン サーバーとクラスターの複数のバージョンとエンドポイントを Azure またはセカンダリ サイトにレプリケートします。  
 * SQL AlwaysOn 可用性グループとの統合。これにより、Azure Site Recovery の復旧計画を使用してフェールオーバーとフェールバックを管理できます。
 * SQL Server データベースなど、アプリケーションのすべての層に対応するエンド ツー エンドの復旧計画。
 * Site Recovery による、ピーク時の負荷に対応した SQL Server のスケーリング。このために、Azure でより大きな IaaS 仮想マシン サイズに負荷を "バースト" します。
-* SQL Server 障害復旧の容易なテスト。 テスト フェールオーバーを実行して、運用環境に影響を与えることなく、データの分析とコンプライアンス チェックを実施できます。
+* SQL Server ディザスター リカバリーの容易なテスト。 テスト フェールオーバーを実行して、運用環境に影響を与えることなく、データの分析とコンプライアンス チェックを実施できます。
 
 [こちら](site-recovery-sql.md) を参照してください。
 
 ## <a name="protect-sharepoint"></a>SharePoint の保護
 Azure Site Recovery は、SharePoint デプロイの保護に次のように役立ちます。
 
-* 障害復旧用のスタンバイ ファームを用意する必要がなくなり、関連するインフラストラクチャ コストも削減されます。 Site Recovery を使用して、ファーム全体 (Web 層、アプリケーション層、データベース層) を Azure またはセカンダリ サイトにレプリケートできます。
+* ディザスター リカバリー用のスタンバイ ファームを用意する必要がなくなり、関連するインフラストラクチャ コストも削減されます。 Site Recovery を使用して、ファーム全体 (Web 層、アプリケーション層、データベース層) を Azure またはセカンダリ サイトにレプリケートできます。
 * アプリケーションのデプロイと管理が簡易になります。 プライマリ サイトにデプロイされた更新プログラムは自動的にレプリケートされるため、ファームをセカンダリ サイトにフェールオーバーして復旧した後で利用できます。 また、スタンバイ ファームを最新の状態に保つための複雑な管理が不要になり、関連するコストも削減されます。
 * テストやデバッグ用に必要に応じて運用環境に似たレプリカ環境のコピーを作成することで、SharePoint アプリケーションの開発とテストが簡単になります。
 * Site Recovery を使用して SharePoint のデプロイメントを Azure に移行することで、クラウドへの移行が簡単になります。
@@ -120,18 +119,20 @@ Site Recovery は、Exchange の保護に次のように役立ちます。
 
 * 単一サーバーやスタンドアロン サーバーなど、小規模な Exchange デプロイの場合、Site Recovery では Azure またはセカンダリ サイトへのレプリケートとフェールオーバーを実行できます。
 * 大規模なデプロイでは、Exchange DAG と統合します。
-* Exchange DAG は、企業における Exchange の障害復旧に推奨されるソリューションです。  Site Recovery の復旧計画に DAG を含めることで、サイト全体の DAG のフェールオーバーを調整できます。
+* Exchange DAG は、企業における Exchange のディザスター リカバリーに推奨されるソリューションです。  Site Recovery の復旧計画に DAG を含めることで、サイト全体の DAG のフェールオーバーを調整できます。
+
 
 [こちら](https://gallery.technet.microsoft.com/Exchange-DR-Solution-using-11a7dcb6) を参照してください。
 
 ## <a name="protect-sap"></a>SAP の保護
 Site Recovery を使用して、SAP デプロイを次のように保護できます。
 
-* 複数のデプロイ層を Azure またはセカンダリ サイトにレプリケートして、SAP デプロイ全体を保護できます。
+* コンポーネントを Azure にレプリケートすることによって、オンプレミスで実行されている SAP NetWeaver および非 NetWeaver 運用アプリケーションの保護を有効にします。
+* コンポーネントを他の Azure データセンターにレプリケートすることによって、Azure で実行されている SAP NetWeaver および非 NetWeaver 運用アプリケーションの保護を有効にします。
 * Site Recovery を使用して SAP デプロイを Azure に移行することで、クラウド移行を簡略化します。
-* 必要に応じてアプリケーションのテストとデバッグ用に運用環境に似たコピーを作成できるため、SAP の開発とテストが簡単になります。
+* SAP アプリケーションをテストするためのオンデマンドの運用クローンを作成することによって、SAP プロジェクトのアップグレード、テスト、および、プロトタイプ作成を簡略化します。
 
-[こちら](http://aka.ms/asr-sap) を参照してください。
+[こちら](site-recovery-sap.md) を参照してください。
 
 ## <a name="protect-iis"></a>IIS の保護
 Site Recovery を使用して、IIS デプロイを次のように保護できます。
@@ -152,11 +153,11 @@ Site Recovery を使用して、Citrix XenApp と XenDesktop のデプロイを�
 * (AD DNS サーバー、SQL データベース サーバー、Citrix Delivery Controller、StoreFront サーバー、XenApp マスター (VDA)、Citrix XenApp ライセンス サーバーなどの) 各種のデプロイ層を Azure にレプリケートして、Citrix XenApp と XenDesktop のデプロイの保護を有効にします。
 * Site Recovery を使用して Citrix XenApp と XenDesktop のデプロイを Azure に移行することで、クラウド移行を簡略化します。
 * 必要に応じてテストとデバッグ用に運用環境に似たコピーを作成して、Citrix XenApp/XenDesktop のテストを簡略化します。
-* このソリューションは、Windows Server オペレーティング システム仮想デスクトップにのみ適用でき、クライアント仮想デスクトップには適用できません。これは、Azure のライセンスでクライアント仮想デスクトップがまだサポートされていないためです。 
+* このソリューションは、Windows Server オペレーティング システム仮想デスクトップにのみ適用でき、クライアント仮想デスクトップには適用できません。これは、Azure のライセンスでクライアント仮想デスクトップがまだサポートされていないためです。
 Azure におけるクライアント/サーバー デスクトップのライセンスについては、[こちら](https://azure.microsoft.com/pricing/licensing-faq/)を参照してください。
 
-Citrix XenApp と XenDesktop のデプロイの保護については、[こちら](site-recovery-citrix-xenapp-and-xendesktop.md)を参照してください。 同じ情報は、[Citrix のホワイトペーパー](https://aka.ms/citrix-xenapp-xendesktop-with-asr)でもご覧いただけます。 
+Citrix XenApp と XenDesktop のデプロイの保護については、[こちら](site-recovery-citrix-xenapp-and-xendesktop.md)を参照してください。 同じ情報は、[Citrix のホワイトペーパー](https://aka.ms/citrix-xenapp-xendesktop-with-asr)でもご覧いただけます。
 
 ## <a name="next-steps"></a>次のステップ
-[前提条件を確認する](site-recovery-prereq.md) 
+[前提条件を確認する](site-recovery-prereq.md)
 

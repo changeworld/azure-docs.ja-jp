@@ -7,6 +7,7 @@
 ## [URL ルーティング](application-gateway-url-route-overview.md)
 ## [マルチサイト](application-gateway-multi-site-overview.md)
 ## [エンド ツー エンド SSL](application-gateway-backend-ssl.md)
+## [SSL ポリシー](application-gateway-ssl-policy-overview.md)
 ## [リダイレクト](application-gateway-redirect-overview.md)
 ## [マルチテナントのサポート](application-gateway-web-app-overview.md)
 ## [WebSocket](application-gateway-websocket.md)
@@ -31,12 +32,13 @@
 ## Web アプリケーション ファイアウォール規則のカスタマイズ
 ### [ポータル](application-gateway-customize-waf-rules-portal.md)
 ### [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
-## SSL オフロードを構成する
+## SSL の構成
 ### [ポータル](application-gateway-ssl-portal.md)
 ### [PowerShell](application-gateway-ssl-arm.md)
 ### [PowerShell (クラシック)](application-gateway-ssl.md)
 ### [Azure CLI 2.0](application-gateway-ssl.md)
-### [ポリシーとエンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
+### [エンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
+### [SSL ポリシー](application-gateway-configure-ssl-policy-powershell.md)
 ## URL パス ベースのルーティングを構成する
 ### [ポータル](application-gateway-create-url-route-portal.md)
 ### [PowerShell](application-gateway-create-url-route-arm-ps.md)

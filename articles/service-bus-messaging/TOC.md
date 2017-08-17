@@ -36,7 +36,8 @@
 ### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 ### [キューを使用するアプリ](service-bus-create-queues.md)
 ### [トピック/サブスクリプションを使用するアプリ](service-bus-create-topics-subscriptions.md)
-### [認証と権限承認](service-bus-sas.md)
+### [認証と権限承認](service-bus-authentication-and-authorization.md)
+#### [Shared Access Signature による認証](service-bus-sas.md)
 ### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
 ### [配達不能キュー](service-bus-dead-letter-queues.md)
 ### [トランザクション処理](service-bus-transactions.md)
@@ -56,8 +57,8 @@
 
 # リファレンス
 ## .NET
-### [Microsoft.ServiceBus.Messaging](/dotnet/api/microsoft.servicebus.messaging)
-### [Microsoft.Azure.Management.ServiceBus](/dotnet/api/microsoft.azure.management.servicebus)
+### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
+### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
 ## [PowerShell](/powershell/module/azurerm.servicebus)
 ## [REST](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)

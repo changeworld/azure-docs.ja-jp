@@ -33,12 +33,13 @@
 # ガイド
 ## [アプリケーションの登録](active-directory-integrating-applications.md)
 ## [マルチテナント アプリ](active-directory-devhowto-multi-tenant-overview.md)
+## [条件付きアクセス](active-directory-conditional-access-developer.md)
 ## OAuth と OpenID Connect
 ### [OpenID Connect プロトコル](active-directory-protocols-openid-connect-code.md)
 ### [OAuth 2.0 認証コード付与](active-directory-protocols-oauth-code.md)
 ### [OAuth 2.0 の暗黙的な付与](active-directory-dev-understanding-oauth2-implicit-grant.md)
 ## [SAML 2.0](active-directory-saml-protocol-reference.md)
-### [要求のカスタマイズ](active-directory-saml-claims-customization.md)
+### [要求をカスタマイズする](active-directory-saml-claims-customization.md)
 ### [SAML ベースの SSO をデバッグする](active-directory-saml-debugging.md)
 ### [シングル サインオンの SAML プロトコル](active-directory-single-sign-on-protocol-reference.md)
 ### [シングル サインアウトの SAML プロトコル](active-directory-single-sign-out-protocol-reference.md)
