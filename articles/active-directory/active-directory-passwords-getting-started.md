@@ -17,10 +17,10 @@ ms.date: 08/07/2017
 ms.author: joflore
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: c41a16a3c43064a094b0980bc1a8294b093c6130
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 07c7f3ad066c735054cb339f6e09aa4d7d23f23a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="quickstart-azure-ad-self-service-password-reset"></a>クイック スタート: Azure AD のセルフ サービスによるパスワードのリセット
@@ -79,13 +79,7 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 
 セルフ サービスによるパスワードのリセットを無効にするのは簡単です。Azure AD テナントを開き、**[パスワード リセット]、[プロパティ]** の順に移動し、**[セルフ サービスによるパスワードのリセットが有効]** で **[なし]** を選択します。
 
-## <a name="next-steps"></a>次のステップ
-
-このクイック スタートでは、ユーザーのためにセルフ サービスによるパスワードのリセットを構成する方法について説明しました。 引き続き Azure Portal でこれらの手順を実行するには、以下のリンクからポータルにアクセスしてください。
-
-> [!div class="nextstepaction"]
-> [セルフ サービスのパスワード リセットを有効にする](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
-
+### <a name="learn-more"></a>詳細情報
 次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
 
 * [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します
@@ -97,4 +91,12 @@ Azure AD へのオンプレミスの ID 同期を有効にするには、組織�
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
 * [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+
+## <a name="next-steps"></a>次のステップ
+
+このクイック スタートでは、ユーザーのためにセルフ サービスによるパスワードのリセットを構成する方法について説明しました。 引き続き Azure Portal でこれらの手順を実行するには、以下のリンクからポータルにアクセスしてください。
+
+> [!div class="nextstepaction"]
+> [セルフ サービスのパスワード リセットを有効にする](https://aad.portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/PasswordReset)
+
 

@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 08/07/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: afa4fe6cdef298e4504ddcf3e344ee6a5c181653
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: f29e9dcc2bed968937627d48f1a98e3b084853b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
@@ -61,7 +61,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     グラフ ID|sample-graph|新しいグラフの ID。 グラフ名の文字要件はデータベース ID と同じです。
     ストレージの容量| 10 GB|既定値をそのまま使用します。 これは、データベースの記憶域容量です。
     スループット|400 RU|既定値をそのまま使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
-    RU/m|オフ|既定値をそのまま使用します。 後でワークロードの急増に対処する必要が生じた場合は、その時点で [RU/m](request-units-per-minute.md) 機能を有効にすることができます。
+    RU/m|オフ|既定値をそのまま使用します。
     パーティション キー|空白|このクイックスタートの目的上、パーティション キーは空白のままにしておきます。
 
 3. フォームに入力したら、**[OK]** をクリックします。
