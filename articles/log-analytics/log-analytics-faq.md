@@ -75,13 +75,13 @@ Log Analytics は UTC 時間を使用し、各日は UTC 午前 0 時に開始�
 A: データ収集が停止したときに通知を受けるには、「[アラート ルールを作成する](log-analytics-alerts-creating.md#create-an-alert-rule)」で説明されている手順を使用します。
 
 データ収集が停止したときのアラートを作成する場合は、次のように設定します。
-- **[名前]** を *[Data collection stopped] (データ収集が停止した)* に
+- **[名前]** を *[Data collection stopped] \(データ収集が停止した)* に
 - **[重大度]** を *[警告]* に
 - **[検索クエリ]** を `Type=Operation OperationCategory="Data Collection Status" OperationStatus=Warning` に
 - **[時間枠]** を *[2 時間]* に。
 - 使用状況データは 1 時間に 1 回しか更新されないため、**[アラートの頻度]** を 1 時間に。
-- **[Generate alert based on] (アラートを生成する基準)** を *[結果の数]* に
-- **[結果の数]** を *[Greater than 0] (0 を超える)* に
+- **[Generate alert based on] \(アラートを生成する基準)** を *[結果の数]* に
+- **[結果の数]** を *[Greater than 0] \(0 を超える)* に
 
 「[add actions to alert rules (アラート ルールにアクションを追加する)](log-analytics-alerts-actions.md)」で説明されている手順を使用して、アラート ルールの電子メール、Webhook、または Runbook アクションを構成します。
 

@@ -117,7 +117,7 @@ ms.lasthandoff: 07/08/2017
 
    ![Machine Learning Studio のテスト結果](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-test-results.png)  
 
-7. **[アプリ]** 列で、**[Excel 2010 or earlier workbook](Excel 2010 以前のブック)** リンクをクリックして、Excel ブックをダウンロードします。 このブックには、後で Stream Analytics ジョブをセットアップする際に必要になる API キーと URL が含まれています。
+7. **[アプリ]** 列で、**[Excel 2010 or earlier workbook]\(Excel 2010 以前のブック)** リンクをクリックして、Excel ブックをダウンロードします。 このブックには、後で Stream Analytics ジョブをセットアップする際に必要になる API キーと URL が含まれています。
 
     ![Stream Analytics Machine Learning, 概要](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-machine-learning-integration-tutorial-quick-glance.png)  
 

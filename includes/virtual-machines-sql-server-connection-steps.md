@@ -28,19 +28,8 @@
 必要に応じて他のコンポーネント用に追加のポートを開きます。 詳細については、「 [SQL Server のアクセスを許可するための Windows ファイアウォールの構成](http://msdn.microsoft.com/library/cc646023.aspx)」を参照してください。
 
 ### <a name="configure-sql-server-to-listen-on-the-tcp-protocol"></a>TCP プロトコルでリッスンするように SQL Server を構成する
-1. 仮想マシンに接続している間に、[スタート] ページで「 **SQL Server 構成マネージャー** 」と入力し、Enter キーを押します。
-   
-    ![SSCM を開く](./media/virtual-machines-sql-server-connection-steps/9Click-SSCM.png)
-2. SQL Server 構成マネージャーのコンソール ペインで、 **[SQL Server ネットワークの構成]**を展開します。
-3. コンソール ペインで、**[MSSQLSERVER のプロトコル]** (既定のインスタンス名) をクリックします。詳細ウィンドウで、**[TCP]** を右クリックし、有効になっていない場合は **[有効]** をクリックします。
-   
-    ![TCP を有効にする](./media/virtual-machines-sql-server-connection-steps/10Enable-TCP.png)
-4. コンソール ペインで、 **[再起動]**をクリックします。 詳細ペインで **[SQL Server (*インスタンス名*)]** (既定のインスタンスでは **[SQL Server (MSSQLSERVER)]**) を右クリックして、**[再起動]** をクリックします。これにより、SQL Server のインスタンスが停止し、再起動されます。
-   
-    ![データベース エンジンの再起動](./media/virtual-machines-sql-server-connection-steps/11Restart.png)
-5. SQL Server 構成マネージャーを閉じます。
 
-SQL Server データベース エンジン用のプロトコルを有効にする方法の詳細については、「 [サーバー ネットワーク プロトコルの有効化または無効化](http://msdn.microsoft.com/library/ms191294.aspx)」を参照してください。
+[!INCLUDE [Enable TCP](virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ### <a name="configure-sql-server-for-mixed-mode-authentication"></a>混合モード認証用に SQL Server を構成する
 ドメイン環境がない場合、SQL Server データベース エンジンで Windows 認証を使用することはできません。 別のコンピューターからデータベース エンジンに接続するには、混合モード認証用に SQL Server を構成します。 混合モード認証では、SQL Server 認証と Windows 認証の両方が許可されます

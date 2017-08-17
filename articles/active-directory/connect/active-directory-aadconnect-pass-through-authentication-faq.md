@@ -12,19 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 08/03/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: ae45179d51fd093f1a3704690dd1b795533d9700
+ms.translationtype: HT
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: ded80330ad323a0019ad59ac54d076a78b70f521
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) パススルー認証に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
+
+>[!IMPORTANT]
+>パススルー認証機能は現在プレビュー段階です。
 
 ## <a name="which-of-the-azure-ad-sign-in-methods---pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs---should-i-choose"></a>Azure AD のサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
 
@@ -48,11 +51,11 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
-いいえ。パスワード ハッシュ同期は、パススルー認証への汎用フォールバックとして機能しません。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+いいえ。パスワード ハッシュ同期は、パススルー認証への汎用フォールバックとして機能しません。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)向けにパススルー認証を構成する必要があります。
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../active-directory-application-proxy-get-started.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
-いいえ。この構成はサポートされて "_いません_"。
+はい、この構成は、パススルー認証エージェント (バージョン 1.5.193.0 以降) のブランド名変更バージョンでサポートされます。
 
 ## <a name="what-versions-of-azure-ad-connect-and-pass-through-authentication-agent-do-you-need"></a>どのバージョンの Azure AD Connect とパススルー認証エージェントが必要ですか。
 
@@ -62,15 +65,19 @@ ms.lasthandoff: 07/06/2017
 
 特定のユーザーに対して[パスワード ライトバック](../active-directory-passwords-update-your-own-password.md)を構成済みの場合は、パススルー認証を使用してサインインしたユーザーは、パスワードを変更またはリセットできます。 パスワードはオンプレミス Active Directory に想定どおりに書き戻されます。
 
-ただし、パスワード ライトバックが構成されていない場合、またはユーザーに有効な Azure AD ライセンスが割り当てられていない場合、ユーザーはクラウドでパスワードを更新できません。 自身のパスワードの有効期限が切れた場合でも、そのパスワードを更新することはできません。 代わりに、"このサイトでパスワードを変更することをお客様の組織が許可していません。 組織によって推奨されている方法でパスワードを更新するか、サポートが必要な場合は管理者にお問い合わせください。" というメッセージが表示されます。 ユーザーまたは管理者は、オンプレミスの Active Directory でパスワードをリセットする必要があります。
+ただし、特定のユーザーにパスワード ライトバックが構成されていない場合、またはユーザーに有効な Azure AD ライセンスが割り当てられていない場合、ユーザーはクラウドでパスワードを更新できません。 自身のパスワードの有効期限が切れた場合でも、そのパスワードを更新することはできません。 代わりに、"このサイトでパスワードを変更することをお客様の組織が許可していません。 組織によって推奨されている方法でパスワードを更新するか、サポートが必要な場合は管理者にお問い合わせください。" というメッセージが表示されます。 ユーザーまたは管理者は、オンプレミスの Active Directory でパスワードをリセットする必要があります。
+
+## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>パススルー認証はどのようにブルート フォース パスワード攻撃からの保護となりますか。
+
+詳細については、[こちらの記事](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)を参照してください。
 
 ## <a name="what-do-pass-through-authentication-agents-communicate-over-ports-80-and-443"></a>パススルー認証エージェントはポート 80 およびポート 443 で何をやり取りしますか。
 
-- 認証エージェントは、機能の有効化、すべてのユーザー サインイン要求の処理など、すべての機能操作について、ポート 443 で HTTPS 要求を行います。
+- 認証エージェントは、すべての機能操作について、ポート 443 で HTTPS 要求を行います。
 - 認証エージェントは、SSL 証明書失効リストをダウンロードするために、ポート 80 で HTTP 要求を行います。
 
      >[!NOTE]
-     >最近の更新では、認証エージェントが Azure AD と通信するために必要なポートの数が削減されました。 古いバージョンの Azure AD Connect やスタンドアロン認証エージェントを実行している場合は、その他のポート (5671、8080、9090、9091、9350、9352、10100 ～ 10120) を引き続き開いておく必要があります。
+     >この機能に必要なポートの数は、最近の更新で減らされています。 以前のバージョンの Azure AD Connect または認証エージェントを使用している場合は、5671、8080、9090、9091、9350、9352、および 10100 ～ 10120 の各ポートも開放しておいてください。
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>パススルー認証エージェントは、送信 Web プロキシ サーバーで通信できますか。
 
@@ -78,7 +85,7 @@ ms.lasthandoff: 07/06/2017
 
 ## <a name="can-i-install-two-or-more-pass-through-authentication-agents-on-the-same-server"></a>同じサーバーに複数のパススルー認証エージェントをインストールできますか。
 
-いいえ。1 つのサーバーにインストールできるパススルー認証エージェントは 1 つだけです。 高可用性向けにパススルー認証を構成する必要がある場合は、こちらの[記事](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)の手順に従ってください。
+いいえ。1 つのサーバーにインストールできるパススルー認証エージェントは 1 つだけです。 高可用性向けにパススルー認証を構成する必要がある場合は、こちらの[記事](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)の手順に従ってください。
 
 ## <a name="i-already-use-active-directory-federation-services-ad-fs-for-azure-ad-sign-in-how-do-i-switch-it-to-pass-through-authentication"></a>Azure AD のサインインに Active Directory フェデレーション サービス (AD FS) を既に使っています。 これをパススルー認証に切り替えるには、どうすればよいですか。
 
@@ -95,7 +102,7 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 ## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>パススルー認証エージェントは、負荷分散機能を提供しますか。
 
-いいえ、複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-4-ensure-high-availability)が確保されますが、負荷分散は提供されません。 1 つまたは 2 つの認証エージェントにより、大部分のサインイン要求を処理することになります。
+いいえ、複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されますが、負荷分散は提供されません。 1 つまたは 2 つの認証エージェントにより、大部分のサインイン要求を処理することになります。
 
 認証エージェントが処理する必要があるパスワード検証要求は軽量です。 したがって、ほとんどのお客様のピーク負荷および平均負荷が、合計で 2 ～ 3 の認証エージェントによって容易に処理されます。
 
@@ -109,11 +116,12 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 推奨事項は次のとおりです。
 
-- 合計で 2 ～ 3 の認証エージェントをインストールします。 この数でほとんどのお客様に対応できます。
+- 合計で 2 ～ 3 の認証エージェントをインストールします。 この構成でほとんどのユーザーの用途に対応できます。
 - サインインの待機時間を向上させるには、認証エージェントを、ドメイン コントローラーに、またはドメイン コントローラーのできるだけ近くにインストールします。
 - パスワードの検証が必要なユーザーと同じ AD フォレストに、(認証エージェントがインストールされている) サーバーが追加されていることを確認します。
 
-認証エージェントの数は、テナントあたり 12 個に制限されています。
+>[!NOTE]
+>認証エージェントの数は、テナントあたり 12 個に制限されています。
 
 ## <a name="how-can-i-disable-pass-through-authentication"></a>パススルー認証を無効にするには、どうすればよいですか。
 

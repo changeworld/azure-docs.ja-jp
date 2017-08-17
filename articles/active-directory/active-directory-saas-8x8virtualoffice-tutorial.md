@@ -108,7 +108,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_samlbase.png)
 
-3. **[8x8 Virtual Office Domain and URLs] (8x8 Virtual Office のドメインと URL)** セクションで、次の手順を実行します。
+3. **[8x8 Virtual Office Domain and URLs] \(8x8 Virtual Office のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_url.png)
 
@@ -136,7 +136,7 @@ Azure AD への 8x8 Virtual Office の統合を構成するには、ギャラリ
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_general_400.png)
 
-6. **[8x8 Virtual Office Configuration] (8x8 Virtual Office 構成)** セクションで、**[Configure 8x8 Virtual Office] (8x8 Virtual Office の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[8x8 Virtual Office Configuration] \(8x8 Virtual Office 構成)** セクションで、**[Configure 8x8 Virtual Office] \(8x8 Virtual Office の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-8x8virtualoffice-tutorial/tutorial_8x8virtualoffice_configure.png) 
 

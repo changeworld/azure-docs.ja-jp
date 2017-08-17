@@ -105,7 +105,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_samlbase.png)
 
-3. **[Ceridian Dayforce HCM Domain and URLs] (Ceridian Dayforce HCM のドメインと URL)** セクションで、次の手順を実行します。
+3. **[Ceridian Dayforce HCM Domain and URLs] \(Ceridian Dayforce HCM のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_url.png)
     
@@ -164,7 +164,7 @@ Ceridian Dayforce HCM で Azure AD のシングル サインオンを構成し�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_general_400.png)
     
-8. **[Ceridian Dayforce HCM Configuration] (Ceridian Dayforce HCM 構成)** セクションで、**[Configure Ceridian Dayforce HCM] (Ceridian Dayforce HCM の構成)** をクリックして **[Configure sign-on] (サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+8. **[Ceridian Dayforce HCM Configuration] \(Ceridian Dayforce HCM 構成)** セクションで、**[Configure Ceridian Dayforce HCM] \(Ceridian Dayforce HCM の構成)** をクリックして **[Configure sign-on] \(サインオンの構成)** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
     ![Ceridian Dayforce HCM の構成](./media/active-directory-saas-ceridiandayforcehcm-tutorial/tutorial_ceridiandayforcehcm_configure.png) 
 

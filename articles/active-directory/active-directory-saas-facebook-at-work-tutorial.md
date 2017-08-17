@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 30f2ee64-95d3-44ef-b832-8a0a27e2967c
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/04/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b752e69629469e7274ed3111ba05fd912af0e571
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 4889303f07fadef287f0c375923fa8118e276780
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workplace-by-facebook"></a>チュートリアル: Azure Active Directory と Workplace by Facebook の統合
@@ -45,7 +46,7 @@ Azure AD と Workplace by Facebook の統合を構成するには、次のもの
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、[こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -60,30 +61,26 @@ Azure AD への Workplace by Facebook の統合を構成するには、ギャラ
 
 1. **[Azure Portal](https://portal.azure.com)** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。 
 
-    ![Active Directory][1]
+    ![Azure Active Directory のボタン][1]
 
 2. **[エンタープライズ アプリケーション]** に移動します。 次に、**[すべてのアプリケーション]** に移動します。
 
-    ![アプリケーション][2]
+    ![[エンタープライズ アプリケーション] ブレード][2]
     
 3. 新しいアプリケーションを追加するには、ダイアログの上部にある **[新しいアプリケーション]** をクリックします。
 
-    ![アプリケーション][3]
+    ![[新しいアプリケーション] ボタン][3]
 
-4. 検索ボックスに、「**Workplace by Facebook**」と入力します。
+4. 検索ボックスに「**Workplace by Facebook**」と入力し、結果ウィンドウで **Workplace by Facebook** を選び、**[追加]** をクリックしてアプリケーションを追加します。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
-
-5. 結果ウィンドウで **[Workplace by Facebook]** を選択し、**[追加]** をクリックしてアプリケーションを追加します。
-
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_addfromgallery.png)
+    ![結果リストの Workplace by Facebook](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_search.png)
 
 ##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成とテスト
 このセクションでは、"Britta Simon" というテスト ユーザーに基づいて、Workplace by Facebook で Azure AD のシングル サインオンを構成し、テストします。
 
 シングル サインオンを機能させるには、Azure AD ユーザーに対応する Workplace by Facebook ユーザーが Azure AD で認識されている必要があります。 言い換えると、Azure AD ユーザーと Workplace by Facebook の関連ユーザーの間で、リンク関係が確立されている必要があります。
 
-このリンク関係は、Azure AD の **[ユーザー名]** の値を、Workplace by Facebook の **[Username]** の値として割り当てることで確立されます。
+このリンク関係は、Azure AD の **[ユーザー名]** の値を、Workplace by Facebook の **[Username]\(ユーザー名\)** の値として割り当てることで確立されます。
 
 Workplace by Facebook で Azure AD のシングル サインオンを構成してテストするには、次の一連の作業を完了させる必要があります。
 
@@ -102,52 +99,52 @@ Workplace by Facebook で Azure AD のシングル サインオンを構成し�
 
 1. Azure Portal の **Workplace by Facebook** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![[シングル サインオンの構成]][4]
+    ![シングル サインオン構成のリンク][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
-    ![[シングル サインオンの構成]](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_samlbase.png)
+    ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_samlbase.png)
 
-3. **[Workplace by Facebook Domain and URLs]\(Workplace by Facebook Domain のドメインと URL\)** セクションで、次の手順を実行します。
+3. **[Workplace by Facebook のドメインと URL]** セクションで、次の手順を実行します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_url.png)
+    ![[SAP HANA のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<instancename>.facebook.com` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<scim company id>.facebook.com` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://www.facebook.com/company/<instancename>` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://www.facebook.com/company/<scim company id>` の形式で URL を入力します。
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Workplace by Facebook クライアント サポート チーム](https://workplace.fb.com/faq/)にお問い合わせください。 
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![Configure Single Sign-On](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
+    ![証明書のダウンロードのリンク](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_400.png)
+    ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_general_400.png)
 
-6. **[Workplace by Facebook Configuration]\(Workplace by Facebook の構成\)** セクションで、**[Configure Workplace by Facebook]\(Workplace by Facebook を構成する\)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[Workplace by Facebook 構成]** セクションで、**[Workplace by Facebook の構成する]** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-facebook-at-work-tutorial/config.png) 
+    ![Workplace by Facebook の構成](./media/active-directory-saas-facebook-at-work-tutorial/config.png) 
 
 7. 別の Web ブラウザーのウィンドウで、Workplace by Facebook 企業サイトに管理者としてログインします。
   
    > [!NOTE] 
    > SAML 認証プロセスの一環として、Azure AD にパラメーターを渡すために Workplace が最大サイズ 2.5 KBのクエリ文字列を使用する可能性があります。
 
-8. **[Company Dashboard]\(会社のダッシュボード\)** で、**[認証]** タブに移動します。
+8. **[Company Dashboard]\(会社のダッシュボード\)** で、**[Authentication]\(認証\)** タブに移動します。
 
-9. **[SAML 認証]** で、ボックスの一覧から **[SSO Only]\(SSO のみ\)** を選択します。
+9. **[SAML Authentication]\(SAML 認証\)** で、ドロップダウン リストの一覧から **[SSO Only]\(SSO のみ\)** を選択します。
 
-10. Azure Portal の **[Workplace by Facebook Configuration]\(Workplace by Facebook の構成\)** セクションからコピーした値を対応するフィールドに入力します。
+10. Azure Portal の **[Workplace by Facebook の構成]** セクションからコピーした値を対応するフィールドに入力します。
 
-    *   **[SAML URL]** ボックスに、Azure Portal からコピーした **[シングル サインオン サービス URL]** の値を貼り付けます。
-    *   **[SAML Issuer URL]\(SAML 発行者のURL\) ボックス**に、Azure Portal からコピーした **[SAML Entity ID]\(SAML エンティティ ID\)** の値を貼り付けます。
-    *   **[SAML Logout redirect]\(SAML ログアウト リダイレクト\)** (オプション) に、Azure Portal からコピーした **[サインアウト URL]** の値を貼り付けます。
-    *   Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML 証明書]** ボックスに貼り付けます。
+    *   **[SAML URL]** ボックスに、Azure Portal からコピーした**シングル サインオン サービス URL** の値を貼り付けます。
+    *   **[SAML Issuer URL]\(SAML 発行者のURL\)** ボックスに、Azure Portal からコピーした **SAML エンティティ ID** の値を貼り付けます。
+    *   **[SAML Logout redirect]\(SAML ログアウト リダイレクト\)** (オプション) に、Azure Portal からコピーした**サインアウト URL** の値を貼り付けます。
+    *   Azure Portal からダウンロードした **Base-64 でエンコードされた証明書**をメモ帳で開き、その内容をクリップボードにコピーしてから、それを **[SAML Certificate]\(SAML 証明書\)** ボックスに貼り付けます。
 
-11. **[SAML Configuration]\(SAML の構成\)** セクションで一覧表示されている [Audience URL]、[Recipient URL]、[ACS (Assertion Consumer Service) URL] の入力が必要になる場合もあります。
+11. **[SAML Configuration]\(SAML の構成\)** セクションに一覧表示されている [Audience URL]、[Recipient URL]、[ACS (Assertion Consumer Service) URL] の入力が必要になる場合もあります。
 
 12. セクションの下部にスクロールし、**[Test SSO]\(SSO のテスト\)** をクリックします。 これにより、Azure AD ログイン ページで表示されるポップアップ ウィンドウが表示されます。 通常どおり資格情報を入力して認証を行います。 
 
@@ -184,19 +181,19 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 1. **Azure Portal** の左側のナビゲーション ウィンドウで、**[Azure Active Directory]** アイコンをクリックします。
 
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
+    ![Azure Active Directory のボタン](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_01.png) 
 
 2. **[ユーザーとグループ]** に移動し、**[すべてのユーザー]** をクリックして、ユーザーの一覧を表示します。
     
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
+    ![[ユーザーとグループ] と [すべてのユーザー] リンク](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_02.png) 
 
 3. ダイアログの上部にある **[追加]** をクリックして、**[ユーザー]** ダイアログを開きます。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
+    ![[追加] ボタン](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_03.png) 
 
 4. **[ユーザー]** ダイアログ ページで、次の手順を実行します。
  
-    ![Azure AD のテスト ユーザーの作成](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
+    ![[ユーザー] ダイアログ ボックス](./media/active-directory-saas-facebook-at-work-tutorial/create_aaduser_04.png) 
 
     a. **[名前]** ボックスに「**BrittaSimon**」と入力します。
 
@@ -204,7 +201,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある「**[Create]**」を参照してください。
+    d. ページの下部にある **[Create]**」を参照してください。
  
 ### <a name="creating-a-workplace-by-facebook-test-user"></a>Workplace by Facebook テスト ユーザーの作成
 
@@ -229,15 +226,15 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 2. アプリケーションの一覧で **[Workplace by Facebook]** を選択します。
 
-    ![[シングル サインオンの構成]](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
+    ![アプリケーションの一覧の Workplace by Facebook リンク](./media/active-directory-saas-facebook-at-work-tutorial/tutorial_workplacebyfacebook_app.png) 
 
 3. 左側のメニューで **[ユーザーとグループ]** をクリックします。
 
-    ![ユーザーの割り当て][202] 
+    ![[ユーザーとグループ] リンク][202] 
 
 4. **[追加]** ボタンをクリックします。 次に、**[割り当ての追加]** ダイアログで **[ユーザーとグループ]** を選択します。
 
-    ![ユーザーの割り当て][203]
+    ![[割り当ての追加] ウィンドウ][203]
 
 5. **[ユーザーとグループ]** ダイアログで、ユーザーの一覧から **[Britta Simon]** を選択します。
 
@@ -255,7 +252,7 @@ SAML チェックの要求を毎日、3 日ごと、1 週間ごと、2 週間ご
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
-* [ユーザー プロビジョニングの構成](active-directory-saas-facebook-at-work-provisioning-tutorial.md)
+* [[ユーザー プロビジョニングの構成]](active-directory-saas-facebook-at-work-provisioning-tutorial.md)
 
 
 

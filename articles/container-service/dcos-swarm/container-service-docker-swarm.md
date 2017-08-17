@@ -8,7 +8,6 @@ manager: madhana
 editor: 
 tags: acs, azure-container-service
 keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
-ms.assetid: af8f6fb2-13dc-429c-b82a-24a741168d42
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2016
 ms.author: rogardle
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 50f084b8e5fc7c113e54c3be094cbf06413eb035

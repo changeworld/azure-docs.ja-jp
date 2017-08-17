@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 08/01/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 01ecb98c02b2a01007c7f76805d4db4b7aeee1f0
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: bfcaee441c54453677e7747b0bca55a8afc59391
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート
@@ -35,6 +35,21 @@ Azure Active Directory は、ユーザー アカウントに関連する疑わ�
 Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、セキュリティ レポートを確認できます。  
 
 ![リスクの高いサインイン](./media/active-directory-reporting-security-user-at-risk/10.png)
+
+
+
+## <a name="what-azure-ad-license-do-you-need-to-access-a-security-report"></a>セキュリティ レポートにアクセスするために必要な Azure AD ライセンス  
+
+"リスクのフラグ付きユーザー" レポートは、Azure Active Directory の全エディションで利用できます。  
+ただしエディションによってレポートの粒度が異なります。 
+
+- リスクのフラグ付きユーザーは、**Azure Active Directory の Free エディションと Basic エディション**でも一覧表示できます。 
+
+- **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
+
+- **Azure Active Directory Premium 2** エディションでは、基になるリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
+
+
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory の Free および Basic エディション
 

@@ -7,6 +7,8 @@
 - name: クイック スタート
   expanded: true
   items:
+    - name: Docker Swarm Linux
+      href: container-service-swarm-walkthrough.md
     - name: DC/OS Linux
       href: container-service-dcos-quickstart.md
 - name: チュートリアル
@@ -29,7 +31,7 @@
       href: container-service-connect.md
     - name: ACS クラスターをスケールする
       href: container-service-scale.md
-    - name: DC/OS による管理
+    - name: DC/OS
       items:
         - name: コンテナー管理 - DC/OS UI
           href: container-service-mesos-marathon-ui.md
@@ -55,8 +57,10 @@
               href: container-service-monitoring-sysdig.md
             - name: Dynatrace で監視する
               href: container-service-monitoring-dynatrace.md
-    - name: Docker Swarm による管理
+    - name: Docker Swarm
       items:
+        - name: Swarm モードのクイック スタート
+          href: container-service-swarm-mode-walkthrough.md
         - name: Docker と Docker Compose
           href: container-service-docker-swarm.md
         - name: Docker Swarm と VSTS を使用した CI/CD

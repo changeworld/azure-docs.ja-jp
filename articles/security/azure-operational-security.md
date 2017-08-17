@@ -112,7 +112,7 @@ Azure Backup で保護されるデータは、特定の地域リージョンに�
 
 必要な更新プログラムをインストールするために、デプロイ作成時に [Azure Automation](https://docs.microsoft.com/azure/automation/automation-intro) の Runbook が使用されます。 このプロセスはすべてポータルで管理するため、根底にある詳細について配慮する必要はありません。
 
-## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 サービス内では、Azure サブスクリプションに対してだけでなく[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#resource-groups)に対してもポリシーを定義できるので、より細かい定義が行えます。
 

@@ -8,7 +8,7 @@
 # 作業の開始
 ## [チュートリアル: パイプラインを作成してデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
 ### [コピー ウィザード](data-factory-copy-data-wizard-tutorial.md)
-### [Azure ポータル](data-factory-copy-activity-tutorial-using-azure-portal.md)
+### [Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)
 ### [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)
 ### [PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)
 ### [Azure Resource Manager テンプレート](data-factory-copy-activity-tutorial-using-azure-resource-manager-template.md)
@@ -61,7 +61,10 @@
 #### [Sybase](data-factory-onprem-sybase-connector.md)
 #### [Teradata](data-factory-onprem-teradata-connector.md)
 #### [Web テーブル](data-factory-web-table-connector.md)
-### [Data Management Gateway](data-factory-data-management-gateway.md)
+### Data Management Gateway
+#### [概要](data-factory-data-management-gateway.md)
+#### [高可用性とスケーラビリティ (プレビュー)](data-factory-data-management-gateway-high-availability-scalability.md)
+#### [チュートリアル: オンプレミスの SQL Server から Azure Blob Storage にデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
 
 
 ## [データを変換する](data-factory-data-transformation-activities.md)

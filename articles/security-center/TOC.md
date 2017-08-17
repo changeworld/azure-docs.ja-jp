@@ -57,9 +57,10 @@
 ## 検出と応答
 ### [検出機能](security-center-detection-capabilities.md)
 ### [セキュリティ アラートの管理](security-center-managing-and-responding-alerts.md)
+### [セキュリティ アラートの種類](security-center-alerts-type.md)
+### [アラートの検証](security-center-alert-validation.md)
 ### [セキュリティ インシデントの管理](security-center-incident.md)
 ### [Azure ログ統合](security-center-integrating-alerts-with-log-integration.md)
-### [セキュリティ アラートの種類](security-center-alerts-type.md)
 ### [脅威インテリジェンス レポート](security-center-threat-report.md)
 
 ## トラブルシューティング

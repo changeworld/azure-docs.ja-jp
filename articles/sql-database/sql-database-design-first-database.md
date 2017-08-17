@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 07/31/2017
+ms.date: 08/03/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: ec3b2debcd65f733041462940196a61c109bf051
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 69cfffdae5ce2db53acc6d668dbe468c3ef22dc2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
@@ -43,11 +43,11 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 このチュートリアルを完了するには、以下がインストールされていることを確認してください。
 - 最新バージョンの [SQL Server Management Studio](https://msdn.microsoft.com/library/ms174173.aspx) (SSMS)。
-- 最新バージョンの [BCP と SQLCMD][https://www.microsoft.com/download/details.aspx?id=36433]。
+- 最新バージョンの [BCP と SQLCMD](https://www.microsoft.com/download/details.aspx?id=36433)。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
 
-[Azure ポータル](https://portal.azure.com/)にログインします。
+[Azure Portal](https://portal.azure.com/) にログインします。
 
 ## <a name="create-a-blank-sql-database"></a>空の SQL データベースを作成する
 
@@ -135,7 +135,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名を取得します。 その完全修飾サーバー名は、SQL Server Management Studio でのサーバーへの接続に使用します。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. 左側のメニューから **[SQL データベース]** を選択し、**[SQL データベース]** ページで目的のデータベースをクリックします。 
 3. そのデータベースの Azure Portal ページの **[要点]** ウィンドウで、**サーバー名**を見つけてコピーします。
 

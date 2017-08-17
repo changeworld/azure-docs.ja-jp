@@ -16,29 +16,28 @@ ms.date: 06/19/2017
 ms.author: curtand
 ms.reviewer: rodejo
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 720fd28f7ff5d1bc1c3a32cb98d5d7e1eb88e816
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b9b5ddf42958a2b4e241d0252101d979009e7dc0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 07/25/2017
 
 ---
 
-# <a name="populate-groups-dynamically-based-on-object-attributes"></a>オブジェクト属性に基づいてグループのメンバーを動的に設定する 
+# <a name="populate-groups-dynamically-based-on-object-attributes"></a>オブジェクト属性に基づいてグループのメンバーを動的に設定する
 Azure クラシック ポータルでは、Azure Active Directory (Azure AD) グループに対して、より複雑な属性ベースの動的メンバーシップを有効化できます。  
 
-ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、このユーザーまたはデバイスの属性変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループにメンバーとして追加されます。 メンバーになっているグループのルールを満たさなくなった場合は、そのグループのメンバーから削除されます。
+ユーザーまたはデバイスのいずれかの属性が変更されると、システムはディレクトリ内のすべての動的なグループ ルールを評価して、この変更によってグループの追加または削除がトリガーされるかどうかを確認します。 ユーザーまたはデバイスがグループのルールを満たしている場合、それらはそのグループのメンバーとして追加されます。 ルールを満たさなくなると、削除されます。
 
 > [!NOTE]
-> セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。 
+> - セキュリティ グループまたは Office 365 グループには、動的メンバーシップのルールを設定できます。
 >
-> グループの動的メンバーシップを実行するには、次のユーザーに Azure AD Premium ライセンスが割り当てられている必要があります。
+> - この機能を使うには、少なくとも 1 つの動的グループに追加される各ユーザー メンバーに Azure AD Premium P1 ライセンスが必要です。
 >
-> * グループに対するルールを管理する管理者
-> * グループのすべてのメンバー
->
-> デバイスまたはユーザーの動的グループは作成できても、ユーザー オブジェクトとデバイス オブジェクトの両方を選択するルールは作成できないことにも、注意してください。 
+> - デバイスまたはユーザーの動的グループは作成できても、ユーザー オブジェクトとデバイス オブジェクトの両方を含むルールは作成できません。
 
-## <a name="to-create-the-advanced-rule"></a>高度なルールを作成するには
+> - 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
+
+## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
 2. **[グループ]** タブを選択し、編集するグループを開きます。
 3. **[構成]** タブを選択し、**[高度なルール]** オプションを選択して、テキスト ボックスに高度なルールを入力します。
@@ -93,7 +92,7 @@ user.mail –ne null
 
 ## <a name="operator-precedence"></a>演算子の優先順位
 
-すべての演算子を優先順位の低い順から以下に示します。同じ行にある演算子の優先順位は同じです。-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch
+すべての演算子を優先順位の低い順から並べると、-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn となります。同じ行にある演算子は優先順位が同じです。
 
 すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
 
@@ -135,8 +134,8 @@ user.mail –ne null
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
-| accountEnabled |true false |user.accountEnabled -eq true) |
-| dirSyncEnabled |true false null |(user.dirSyncEnabled -eq true) |
+| accountEnabled |true false |user.accountEnabled -eq true |
+| dirSyncEnabled |true false |user.dirSyncEnabled -eq true |
 
 ### <a name="properties-of-type-string"></a>文字列型のプロパティ
 使用可能な演算子
@@ -149,11 +148,14 @@ user.mail –ne null
 * -notContains
 * -match
 * -notMatch
+* -in
+* -notIn
 
 | プロパティ | 使用できる値 | 使用法 |
 | --- | --- | --- |
 | city |任意の文字列値または $null |(user.city -eq "value") |
 | country |任意の文字列値または $null |(user.country -eq "value") |
+| companyName | 任意の文字列値または $null | (user.companyName -eq "value") |
 | department |任意の文字列値または $null |(user.department -eq "value") |
 | displayName |任意の文字列値 |(user.displayName -eq "value") |
 | facsimileTelephoneNumber |任意の文字列値または $null |(user.facsimileTelephoneNumber -eq "value") |
@@ -188,6 +190,34 @@ user.mail –ne null
 | otherMails |任意の文字列値 |(user.otherMails -contains "alias@domain") |
 | proxyAddresses |SMTP: alias@domain smtp: alias@domain |(user.proxyAddresses -contains "SMTP: alias@domain") |
 
+## <a name="multi-value-properties"></a>複数値プロパティ
+使用可能な演算子
+
+* -any (コレクション内の少なくとも 1 つの項目が条件に一致するときに満たされる)
+* -all (コレクション内のすべての項目が条件に一致するときに満たされる)
+
+| プロパティ | 値 | 使用法 |
+| --- | --- | --- |
+| assignedPlans |コレクション内の各オブジェクトは、capabilityStatus、service、servicePlanId の文字列プロパティを公開します。 |user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled") |
+
+複数値プロパティは、同じ型のオブジェクトのコレクションです。 コレクション内の 1 つの項目またはすべての項目に条件を適用するには、それぞれ -any および -all 演算子を使用できます。 For example:
+
+assignedPlans は、ユーザーに割り当てられたすべてのサービス プランをリストする複数値プロパティです。 次の式は、同様に [有効] 状態にある Exchange Online (プラン 2) サービス プランを持っているユーザーを選択します。
+
+```
+user.assignedPlans -any (assignedPlan.servicePlanId -eq "efb87545-963c-4e0d-99df-69c6916d9eb0" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
+(Guid 識別子は、Exchange Online (プラン 2) サービス プランを識別します。)
+
+> [!NOTE]
+> これは、Office 365 (またはその他の Microsoft Online Service) 機能が有効になっているすべてのユーザーを (たとえば、特定のポリシー セットによって対象にするために) 識別する場合に役立ちます。
+
+次の式は、Intune サービス (サービス名 "SCO" によって識別されます) に関連付けられた何らかのサービス プランを持っているすべてのユーザーを選択します。
+```
+user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabilityStatus -eq "Enabled")
+```
+
 ## <a name="use-of-null-values"></a>Null 値の使用
 
 ルールで null 値を指定するには、null または $null を使用します。 例:
@@ -209,52 +239,47 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 
 カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
 
-## <a name="support-for-multi-value-properties"></a>複数値プロパティのサポート
+## <a name="direct-reports-rule"></a>"直接の部下" のルール
+マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直接の部下が変更された場合、グループのメンバシップは自動的に調整されます。
 
-ルールに複数値プロパティを含めるには、次のように、-any 演算子を使用します。
+> [!NOTE]
+> 1. このルールを機能させるには、テナント内のユーザーについて **[Manager ID] \(マネージャー ID)** プロパティが正しく設定されていることを確認してください。 各ユーザーの現在の値は、そのユーザーの **[プロファイル] タブ**で確認できます。
+> 2. このルールは、**直接の**部下のみをサポートします。 現在、入れ子になった階層のグループ (たとえば、直接の部下とその部下が含まれたグループ) を作成することはできません。
 
-  user.assignedPlans -any assignedPlan.service -startsWith "SCO"
+**グループを構成するには**
 
-## <a name="direct-reports-rule"></a>直接の部下のルール
-ユーザーのマネージャー属性に基づいてグループにメンバーを設定できます。
+1. 「[高度なルールを作成するには](#to-create-the-advanced-rule)」のセクションの手順 1. ～ 5. に従い、**[Dynamic User] \(動的ユーザー)** の **[Membership type] \(メンバシップの種類)** を選択します。
+2. **[Dynamic membership rules (動的メンバーシップのルール)]** ブレードで、次の構文を使用してルールを入力します。
 
-**"Manager" グループとしてグループを構成するには**
+    *Direct Reports for "{obectID_of_manager}"*
 
-1. Azure クラシック ポータルで **[Active Directory]**をクリックし、該当する組織のディレクトリ名をクリックします。
-2. **[グループ]** タブを選択し、編集するグループを開きます。
-3. **[構成]** タブを選択し、**[高度なルール]** を選択します。
-4. 次の構文を使用してルールを入力します。
+    有効なルールの例:
+```
+                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863"
+```
+    where “62e19b97-8b3d-4d4a-a106-4ce66896a863” is the objectID of the manager. The object ID can be found on manager's **Profile tab**.
+3. ルールを保存した後、指定されたマネージャー ID 値を持つすべてのユーザーがグループに追加されます。
 
-    直属の部下用の場合は、*Direct Reports for {obectID_of_manager}* です。 直属の部下の有効なルールの例を示します。
-
-                    Direct Reports for "62e19b97-8b3d-4d4a-a106-4ce66896a863”
-
-    ここで、"62e19b97-8b3d-4d4a-a106-4ce66896a863" はマネージャーのオブジェクト ID を示しています。 オブジェクト ID は、Azure AD にある、マネージャーであるユーザーのユーザー ページの **[プロファイル] タブ** で確認できます。
-5. このルールを保存すると、ルールに該当するすべてのユーザーがグループのメンバーとして結合されます。 最初は、グループを設定するのに数分かかることがあります。
-
-# <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
+## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
-| プロパティ | 使用できる値 | 使用法 |
-| --- | --- | --- |
-| accountEnabled |true false |(device.accountEnabled -eq true) |
-| displayName |任意の文字列値 |(device.displayName -eq "Rob Iphone”) |
-| deviceOSType |任意の文字列値 |(device.deviceOSType -eq "IOS") |
-| deviceOSVersion |任意の文字列値 |(device.OSVersion -eq "9.1") |
-| isDirSynced |true false null |(device.isDirSynced -eq true) |
-| isManaged |true false null |(device.isManaged -eq false) |
-| isCompliant |true false null |(device.isCompliant -eq true) |
-| deviceCategory |任意の文字列値 |(device.deviceCategory -eq "") |
-| deviceManufacturer |任意の文字列値 |(device.deviceManufacturer -eq "Microsoft") |
-| deviceModel |任意の文字列値 |(device.deviceModel -eq "IPhone 7+") |
-| deviceOwnership |任意の文字列値 |(device.deviceOwnership -eq "") |
-| domainName |任意の文字列値 |(device.domainName -eq "contoso.com") |
-| enrollmentProfileName |任意の文字列値 |(device.enrollmentProfileName -eq "") |
-| isRooted |true false null |(device.isRooted -eq true) |
-| managementType |任意の文字列値 |(device.managementType -eq "") |
-| organizationalUnit |任意の文字列値 |(device.organizationalUnit -eq "") |
-| deviceId |有効なデバイス ID |(device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId |有効な AAD objectId |(device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+| プロパティ              | 使用できる値                  | 使用法                                                       |
+|-------------------------|---------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
+| displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
+| deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
+| deviceCategory          | 任意の文字列値                | (device.deviceCategory -eq "")                              |
+| deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
+| deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
+| deviceOwnership         | 任意の文字列値                | (device.deviceOwnership -eq "")                             |
+| domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
+| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
+| managementType          | 任意の文字列値                | (device.managementType -eq "")                              |
+| organizationalUnit      | 任意の文字列値                | (device.organizationalUnit -eq "")                          |
+| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | 有効な AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 > [!NOTE]
 > Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。

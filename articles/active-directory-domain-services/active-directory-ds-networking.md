@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 08/04/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 0749a73569286daf9bbbe2c4064db472f41d7171
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 8306c1ff72d348f5f327b79617e1422a78e26bdb
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
@@ -75,6 +75,16 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 | 5986 |ドメインの管理 |
 | 636 |管理対象ドメインへのセキュリティで保護された LDAP (LDAPS) アクセス |
 
+### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG
+次の表は、Azure AD Domain Services の管理対象ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則は、上記の指定ポートからの受信トラフィックで、Microsoft による修正プログラムの適用、更新、監視が行われる管理対象ドメインを確認できるようにします。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。
+
+また、この NSG では、インターネット経由での、セキュリティで保護された LDAP アクセスをロック ダウンする方法も示しています。 インターネット経由での管理対象ドメインへのセキュリティで保護された LDAP アクセスを行えないようにしている場合は、この規則についてはスキップしてください。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
+
+![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
+
+**詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+
+
 ## <a name="network-connectivity"></a>ネットワーク接続
 Azure AD Domain Services の管理対象ドメインは、Azure の 1 つのクラシック仮想ネットワーク内のみで有効にすることができます。 Azure Resource Manager を使用して作成された仮想ネットワークはサポートされていません。
 
@@ -109,4 +119,5 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 * [Azure 仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)
 * [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 

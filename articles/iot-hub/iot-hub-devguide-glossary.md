@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/08/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c3646fef95bc06f8febe45718f4f9aeb9aefb42a
+ms.translationtype: HT
+ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
+ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
@@ -107,7 +106,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 デバイス データとは、IoT Hub の [ID レジストリ](#identity-registry)に格納されている個々のデバイスのデータを指します。 このデータのインポートおよびエクスポートを行うことができます。
 
 ## <a name="device-explorer"></a>デバイス エクスプローラー
-[デバイス エクスプ ローラー](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer)は、Windows で実行されるツールで、[ID レジストリ](#identity-registry)でデバイスを管理し、デバイスへのメッセージを送受信できます。
+[Device Explorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) は Windows で実行されるツールで、[ID レジストリ](#identity-registry)でデバイスを管理できます。また、デバイスへのメッセージを送受信することもできます。
 
 ## <a name="device-identities-rest-api"></a>デバイス ID REST API
 [デバイス ID REST API](https://docs.microsoft.com/rest/api/iothub/iothubresource) では、REST API を使用して、[ID レジストリ](#identity-registry)に登録されているデバイスを管理できます。 IoT Hub チュートリアルで示されているように、通常、高レベルの[サービス SDK](#azure-iot-service-sdks) のいずれかを使用する必要があります。
@@ -116,7 +115,7 @@ IoT においては、デバイスは、通常は、データの収集や他の�
 デバイス ID は、[ID レジストリ](#identity-registry)に登録されているすべてのデバイスに割り当てられた、一意の識別子です。
 
 ## <a name="device-management"></a>デバイス管理
-デバイス管理には、計画、プロビジョニング、構成、監視、およびインベントリからの削除を含む、IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
+デバイス管理には、計画、プロビジョニング、構成、監視、インベントリからの削除などを含む IoT ソリューション内のデバイスの管理に関連するライフ サイクル全体が含まれます。
 
 ## <a name="device-management-patterns"></a>デバイス管理パターン
 [IoT Hub](#iot-hub) では、デバイスでの再起動、工場出荷時リセットの実行、ファームウェア更新プログラムの実行など、一般的なデバイス管理のパターンを使用できます。
@@ -175,8 +174,8 @@ IoT Hub は、何百万ものデバイスとソリューションのバックエ
 ## <a name="iot-hub-query-language"></a>IoT Hub クエリ言語
 [IoT Hub クエリ言語](iot-hub-devguide-query-language.md)は SQL に似た言語であり、[ジョブ](#job)とデバイス ツインにクエリを実行できます。
 
-## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub リソース プロバイダー REST API
-[IoT Hub リソース プロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
+## <a name="iot-hub-resource-provider-rest-api"></a>IoT Hub リソースプロバイダー REST API
+[IoT Hub リソースプロバイダー REST API](https://docs.microsoft.com/rest/api/iothub/resourceprovider/iot-hub-resource-provider-rest) を使用して、ハブの作成、更新、削除などの操作を実行する [Azure サブスクリプション](#subscription)の IoT Hub を管理できます。
 
 ## <a name="iot-suite"></a>IoT Suite
 Azure IoT Suite では、複数の Azure サービスと構成済みソリューションがパッケージ化されています。 一般的な IoT シナリオをエンド ツー エンドで実装して、すぐに使い始めることができます。 詳細については、「[Azure IoT Suite とは](../iot-suite/iot-suite-overview.md)」を参照してください。

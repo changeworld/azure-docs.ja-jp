@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 06/19/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d1b887e68b1040ea9340235cd215028300c14fac
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: a26477d692cc98ed16c195233ade5434cc536a36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="azure-cosmos-db-migrate-an-existing-nodejs-mongodb-web-app"></a>Azure Cosmos DB: 既存の Node.js MongoDB Web アプリを移行する 
@@ -101,6 +101,9 @@ az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kin
 `--kind MongoDB` パラメーターにより、MongoDB のクライアント接続が有効になります。
 
 Azure Cosmos DB アカウントが作成されると、Azure CLI によって次の例のような情報が表示されます。 
+
+> [!NOTE]
+> この例では、Azure CLI の出力形式として JSON を使用しています (既定)。 別の出力形式を使用する場合は、「[Azure CLI 2.0 コマンドの出力形式](https://docs.microsoft.com/cli/azure/format-output-azure-cli)」を参照してください。
 
 ```json
 {
@@ -191,13 +194,13 @@ MEAN.js サンプル アプリケーションでは、ユーザー データを�
 
 ## <a name="view-data-in-data-explorer"></a>データ エクスプローラーにデータを表示する
 
-Azure Cosmos DB によって格納されたデータは、Azure ポータルで表示、クエリ、およびビジネス ロジックを実行するために使用できます。
+Azure Cosmos DB によって格納されたデータは、Azure Portal で表示、クエリ、およびビジネス ロジックを実行するために使用できます。
 
-前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure ポータル](https://portal.azure.com)にログインします。
+前の手順で作成されたユーザー データを、表示、クエリ、操作するには、Web ブラウザーで [Azure Portal](https://portal.azure.com) にログインします。
 
 上部の検索ボックスに、「Azure Cosmos DB」と入力します。 [Cosmos DB アカウント] ブレードが開いたら、自分の Cosmos DB アカウントを選択します。 左側のナビゲーションで、[データ エクスプローラー] をクリックします。 [コレクション] ウィンドウでコレクションを展開します。これで、コレクション内のドキュメントの表示とデータのクエリを実行でき、ストアド プロシージャ、トリガー、および UDF の作成と実行も行うことができます。 
 
-![Azure ポータルでのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
+![Azure Portal でのデータ エクスプローラー](./media/create-mongodb-nodejs/cosmosdb-connect-mongodb-data-explorer.png)
 
 
 ## <a name="deploy-the-nodejs-application-to-azure"></a>Azure に Node.js アプリケーションをデプロイする

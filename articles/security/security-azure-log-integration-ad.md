@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 05/09/2017
+ms.date: 08/08/2017
 ms.author: barclayn
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: d4cf9f394f209fe3dfd633f6ca2954e9770d5949
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 9a4fa6ea1784ab0247659d5498c6fe3ae30355c4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 08/09/2017
 
 ---
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/18/2017
 Azure Active Directory 監査イベントを利用すると、Azure Active Directory で発生した特権アクションを識別できます。 [Azure Active Directory 監査レポートのイベント](/active-directory/active-directory-reporting-audit-events#list-of-audit-report-events.md)を確認することで、追跡できるイベントのタイプを確認できます。
 
 >[!NOTE]
-この記事の手順を実行する前に、[作業開始](security-azure-log-integration-get-started.md)に関する記事を確認し、**インストール後と検証**に関するセクションの 3 番までの手順をすべて完了してください。
+[基本](security-azure-log-integration-get-started.md)に関する記事を読み、手順を完了してから、この記事の手順を試してください。
 
 ## <a name="steps-to-integrate-azure-active-directory-audit-logs"></a>Azure Active Directory 監査ログを統合する手順
 
@@ -58,7 +57,8 @@ Azure Active Directory 監査イベントを利用すると、Azure Active Direc
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure-Security-Videos/Azure-Log-Integration-Videos-Azure-AD-Integration/player]
 
 
-標準的な SIEM ファイル フォワーダー コネクタで、SIEM インスタンスにデータをパイプ処理する適切なフォルダーをポイントします。 使用している SIEM 製品に基づいて、フィールド マッピングが必要になる可能性があります。
+>[!NOTE]
+JSON ファイルの情報を SIEM に移行する具体的な手順については、お使いの SIEM のベンダーに問い合わせてください。
 
 [Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 

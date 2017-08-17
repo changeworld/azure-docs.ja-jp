@@ -17,10 +17,10 @@ ms.date: 5/27/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dc99c78ea4c3b67ff3426feeaf0c4d25cfde63a1
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: e7853892af550ec66fbc48b669a6c9b8ff18df8c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 
@@ -35,9 +35,9 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="what-you-do"></a>作業内容
 
-* Raspberry Pi をセットアップします。
 * IoT Hub を作成します。
 * Pi のデバイスを IoT Hub に登録します。
+* Raspberry Pi をセットアップします。
 * Pi でサンプル アプリケーションを実行し、センサー データを IoT Hub に送信します。
 
 作成した IoT Hub に Raspberry Pi を接続します。 次に、BME280 センサーから気温と湿度のデータを収集するために、Pi のサンプル アプリケーションを実行します。 最後に、センサー データを IoT Hub に送信します。
@@ -82,7 +82,7 @@ ms.lasthandoff: 07/21/2017
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Jessie with Pixel (.zip ファイル) をダウンロードします](https://www.raspberrypi.org/downloads/raspbian/)。
+   1. [Raspbian Jessie with Desktop (.zip ファイル) をダウンロードします](https://www.raspberrypi.org/downloads/raspbian/)。
    1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
 1. microSD カードに Raspbian をインストールします。
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
@@ -108,7 +108,7 @@ SSH と I2C を有効にする際の参考ドキュメントは [raspberrypi.org
 
 ### <a name="connect-the-sensor-to-pi"></a>センサーを Pi に接続する
 
-ブレッドボードとジャンパー ワイヤを使用して、次のように LED と BME280 を Pi に接続します。 センサーがない場合は、このセクションをスキップします。
+ブレッドボードとジャンパー ワイヤを使用して、次のように LED と BME280 を Pi に接続します。 センサーがない場合は、[このセクションをスキップ](#connect-pi-to-the-network)します。
 
 ![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
@@ -145,9 +145,16 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>サンプル アプリケーションの複製と前提条件となるパッケージのインストール
 
 1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
-    - Windows では [PuTTY](http://www.putty.org/)。 SSH を使用して接続するために、Pi の IP アドレスが必要です。
-    - Ubuntu または macOS では組み込みの SSH クライアント。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
-
+   
+   **Windows ユーザー**
+   1. Windows 版の [PuTTY](http://www.putty.org/) をダウンロードしてインストールします。 
+   1. Pi の IP アドレスをホスト名 (または IP アドレス) セクションにコピーし、接続の種類として SSH を選択します。
+   
+   ![PuTTy](media/iot-hub-raspberry-pi-kit-node-get-started/7_putty-windows.png)
+   
+   **Mac ユーザーおよび Ubuntu ユーザー**
+   
+   Ubuntu または macOS に組み込まれている SSH クライアントを使用します。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
    > [!NOTE] 
    既定のユーザー名は `pi` で、パスワードは`raspberry` です。
 
@@ -181,7 +188,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    > [!NOTE] 
    ネットワーク接続によっては、このインストール プロセスが終了するまで数分かかる場合があります。
 
-### <a name="configure-the-sample-application"></a>サンプル アプリケーションの構成
+### <a name="configure-the-sample-application"></a>サンプル アプリケーションを構成する
 
 1. 次のコマンドを実行して、config ファイルを開きます。
 
@@ -191,7 +198,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    ![config ファイル](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   このファイルには、構成可能な 2 つの項目があります。 1 つ目は `interval` で、クラウドに送信する 2 つのメッセージの時間間隔を定義します。 2 つ目は `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
+   このファイルには、構成可能な 2 つの項目があります。 1 つ目は `interval` で、クラウドに送信する 2 つのメッセージの時間間隔 (ミリ秒) を定義します。 2 つ目は `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
 
    **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
@@ -199,10 +206,10 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
 ### <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
 
-1. 次のコマンドを実行して、サンプル アプリケーションを実行します。
+次のコマンドを実行して、サンプル アプリケーションを実行します。
 
    ```bash
-   sudo node index.js '<your Azure IoT hub device connection string>'
+   sudo node index.js '<YOUR AZURE IOT HUB DEVICE CONNECTION STRING>'
    ```
 
    > [!NOTE] 
@@ -215,7 +222,7 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="next-steps"></a>次のステップ
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 Raspberry Pi から IoT Hub に送信したメッセージやコマンド ライン インターフェイスで Raspberry Pi に送信したメッセージを確認するには、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
 

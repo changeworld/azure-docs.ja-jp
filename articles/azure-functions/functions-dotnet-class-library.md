@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/09/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: dbcec586fe5ee06da38c37cf1ead2469386cc5c3
+ms.translationtype: HT
+ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
+ms.openlocfilehash: 0613bb96d3afb85ff7e684246b128e4eef518d23
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Azure Functions での .NET クラス ライブラリの使用
@@ -267,6 +266,30 @@ Azure Functions は、プログラムによって電子メールを送信する�
 
 属性 `[SendGrid]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid] で定義されます。
 
+Service Bus キュー トリガーの使用と`SendGridMessage`を使用した SendGrid 出力バインドの例を次に示します。
+
+```csharp
+[FunctionName("SendEmail")]
+public static void Run(
+    [ServiceBusTrigger("myqueue", AccessRights.Manage, Connection = "ServiceBusConnection")] OutgoingEmail email,
+    [SendGrid] out SendGridMessage message)
+{
+    message = new SendGridMessage();
+    message.AddTo(email.To);
+    message.AddContent("text/html", email.Body);
+    message.SetFrom(new EmailAddress(email.From));
+    message.SetSubject(email.Subject);
+}
+
+public class OutgoingEmail
+{
+    public string To { get; set; }
+    public string From { get; set; }
+    public string Subject { get; set; }
+    public string Body { get; set; }
+}
+```
+
 <a name="service-bus"></a>
 
 ### <a name="service-bus-trigger-and-output"></a>Service Bus トリガー と出力
@@ -418,3 +441,4 @@ C# スクリプトでの Azure 関数の使用の詳細については、「[Azu
 [HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
 [ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
 [TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
+

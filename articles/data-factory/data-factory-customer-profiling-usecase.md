@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 2/24/2017
+ms.date: 08/14/2017
 ms.author: shlo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
 ms.openlocfilehash: a03f097d0106ac153ef45e0c10b677597c76207a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
-
 
 ---
 # <a name="use-case---customer-profiling"></a>使用事例 - 顧客プロファイル

@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 07/31/2017
 ms.author: juliako;
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7f5d43e337b610f0bcf8273432b4dcd0a757937d
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 74f38ae61d4a360cabe8a9fbd33d30a6b0751654
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
@@ -133,7 +133,37 @@ foo_IDList.txt の例
      1
      2
      3
+
+## <a name="blur-types"></a>ぼかしの種類
+
+**Combined** モードまたは **Redact** モードには、**Low**、**Med**、**High**、**Debug**、**Black** の 5 種類のぼかしモードがあり、JSON 入力構成で選択することができます。 既定では **Med** が使用されます。
+
+ぼかしの種類のサンプルを以下に示します。
+
+### <a name="example-json"></a>サンプル JSON:
+
+    {'version':'1.0', 'options': {'Mode': 'Combined', 'BlurType': 'High'}}
+
+#### <a name="low"></a>低
+
+![低](./media/media-services-face-redaction/blur1.png)
  
+#### <a name="med"></a>Med
+
+![Med](./media/media-services-face-redaction/blur2.png)
+
+#### <a name="high"></a>高
+
+![高](./media/media-services-face-redaction/blur3.png)
+
+#### <a name="debug"></a>デバッグ
+
+![デバッグ](./media/media-services-face-redaction/blur4.png)
+
+#### <a name="black"></a>黒
+
+![黒](./media/media-services-face-redaction/blur5.png)
+
 ## <a name="elements-of-the-output-json-file"></a>出力 JSON ファイルの要素
 
 Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フレーム内で最大 64 個の人の顔を検出できます。 顔が正面を向いているときに最善の結果が得られ、横顔や小さい顔 (24 x 24 ピクセル以下) のときは精度が低下することがあります。
@@ -314,8 +344,7 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
         }
     }
 
-## <a name="next-step"></a>次のステップ
-Media Services のラーニング パスを確認します。
+## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
 

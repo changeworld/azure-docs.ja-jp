@@ -105,9 +105,6 @@
       href: consistency-levels.md
     - name: スループット
       href: request-units.md
-      items:
-        - name: 1 分あたりの要求ユニット
-          href: request-units-per-minute.md
     - name: マルチモデルの API
       items:
         - name: DocumentDB

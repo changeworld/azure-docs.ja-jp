@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/21/2017
+ms.date: 08/09/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: d1acbc609d1928101eb3e4b9eaa6ea05856e17d3
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 530749275b720caefd7e7e57291b4bc0d313faf0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -94,12 +94,18 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 2. **VoteDataController.cs** ファイルを開き、この Web API の **Put** メソッド (50 行目) にブレークポイントを設定します。
 
 3. ブラウザーに戻り、投票の選択肢をクリックするか、新しい選択肢を追加します。 Web フロントエンドの API コントローラーで 1 つ目のブレークポイントに到達します。
-    - ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。 このフロントエンド サービスのコントローラーは、ReverseProxy を使ってバックエンド サービスに PUT 要求を送信します。
+    - ここは、JavaScript がブラウザーからフロントエンド サービスの Web API コントローラーに要求を送信する部分です。
+    
+    ![投票フロントエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-frontend.png)
+
+    - 最初にバックエンド サービスの ReverseProxy の URL を構築します **(1)**。
+    - 次に HTTP PUT 要求を ReverseProxy に送信します **(2)**。
+    - 最後にバックエンド サービスからの応答をクライアントに返します **(3)**。
 
 4. **F5** キーを押して続行します。
     - 今度は、バックエンド サービスのブレークポイントに到達します。
     
-    ![投票を追加するための非同期メソッド](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
+    ![投票バックエンド サービスの追加](./media/service-fabric-quickstart-dotnet/addvote-backend.png)
 
     - メソッド **(1)** の先頭行では、`StateManager` を使用して信頼性の高いディクショナリ (`counts`) を取得または追加しています。
     - 信頼性の高いディクショナリ内の値とのすべてのやり取りにはトランザクションが必要です。この using ステートメント **(2)** によってトランザクションが作成されます。
@@ -109,7 +115,9 @@ Visual Studio でアプリケーションをデバッグするときは、ロー
 デバッグ セッションを停止するには、**Shift + F5** キーを押します。
 
 ## <a name="deploy-the-application-to-azure"></a>Azure にアプリケーションをデプロイする
-Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターを作成する方法と、パーティ クラスターを使用する方法とがあります。 パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順に従って](http://aka.ms/tryservicefabric)クラスターにアクセスしてください。 
+Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターを作成する方法と、パーティ クラスターを使用する方法とがあります。
+
+パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
 
 独自クラスターの作成については、「[Azure で初めての Service Fabric クラスターを作成する](service-fabric-get-started-azure-cluster.md)」を参照してください。
 

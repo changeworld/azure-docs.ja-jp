@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/03/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 40d07ce6e480924c7c1af601cc25e4a74280141f
+ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
+ms.openlocfilehash: 37c0ea094d02208f2516a4a040f75894e046c670
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 
@@ -34,13 +34,14 @@ ms.lasthandoff: 07/26/2017
 - すべての Web ブラウザー ベースのアプリケーションへのユーザー サインイン。
 - [最新の認証](https://aka.ms/modernauthga)をサポートする Office 365 クライアント アプリケーションへのユーザー サインイン。
 - Windows 10 デバイスの Azure AD Join。
+- Exchange ActiveSync のサポート。
 
 ## <a name="unsupported-scenarios"></a>サポートされていないシナリオ
 
 プレビュー期間中、次のシナリオはサポート_されていません_。
 
-- 従来の Office クライアント アプリケーションと Exchange ActiveSync (モバイル デバイス上のネイティブ電子メール アプリケーション) へのユーザー サインイン。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access.md)機能を使用して ID をセキュリティで保護することもできます。
-- Skype for Business クライアント アプリケーションへのユーザー サインイン。
+- 従来の Office クライアント アプリケーション (Office 2013 以前) へのユーザー サインイン。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access.md)機能を使用してユーザー アカウントをセキュリティで保護することもできます。
+- Skype for Business クライアント アプリケーション (Skype for Business 2016 を含む) へのユーザー サインイン。
 - PowerShell v1.0 へのユーザー サインイン。 代わりに、PowerShell v2.0 を使用することをお勧めします。
 
 >[!IMPORTANT]

@@ -35,14 +35,14 @@ ms.lasthandoff: 07/22/2017
 * [Service Fabric SDK およびツール](service-fabric-get-started.md)。
 *  Docker for Windows。  [Docker CE for Windows (安定版) を入手します](https://store.docker.com/editions/community/docker-ce-desktop-windows?tab=description)。 Docker をインストールして起動したら、トレイ アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択します。 これは、Windows に基づいて Docker イメージを実行するために必要です。
 
-Windows Server 2016 上で実行されている 3 つ以上のノードがあり、コンテナーを含む Windows クラスター。[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、[無料で Service Fabric を試してください](https://aka.ms/tryservicefabric)。 
+Windows Server 2016 上で実行されている 3 つ以上のノードがあり、コンテナーを含む Windows クラスター。[クラスターを作成する](service-fabric-cluster-creation-via-portal.md)か、[無料で Service Fabric を試してください](https://aka.ms/tryservicefabric)。
 
-Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。 
+Azure Container Registry のレジストリ。Azure サブスクリプションに[コンテナー レジストリを作成します](../container-registry/container-registry-get-started-portal.md)。
 
 ## <a name="define-the-docker-container"></a>Docker コンテナーを定義する
-Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。 
+Docker Hub にある [Python イメージ](https://hub.docker.com/_/python/)を基にしてイメージをビルドします。
 
-Dockerfile で Docker コンテナーを定義します。 Dockerfile には、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順が含まれています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。 
+Dockerfile で Docker コンテナーを定義します。 Dockerfile には、コンテナー内で環境をセットアップし、実行するアプリを読み込み、ポートを割り当てるための手順が含まれています。 Dockerfile はイメージを作成する `docker build` コマンドへの入力です。
 
 空のディレクトリを作成し、*Dockerfile* というファイル (ファイル拡張子なし) を作成します。 *Dockerfile* に次のコードを追加して変更を保存します。
 
@@ -86,13 +86,14 @@ app = Flask(__name__)
 
 @app.route("/")
 def hello():
-    
+
     return 'Hello World!'
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
+<a id="Build-Containers"></a>
 ## <a name="build-the-image"></a>イメージをビルドする
 `docker build` コマンドを実行して、Web アプリケーションを実行するイメージを作成します。 PowerShell ウィンドウを開き、Dockerfile が格納されているディレクトリに移動します。 次のコマンドを実行します。
 
@@ -106,7 +107,7 @@ docker build -t helloworldapp .
 
 ```
 $ docker images
-    
+
 REPOSITORY                    TAG                 IMAGE ID            CREATED             SIZE
 helloworldapp                 latest              8ce25f5d6a79        2 minutes ago       10.4 GB
 ```
@@ -141,6 +142,7 @@ docker stop my-web-site
 docker rm my-web-site
 ```
 
+<a id="Push-Containers"></a>
 ## <a name="push-the-image-to-the-container-registry"></a>コンテナー レジストリにイメージをプッシュする
 コンテナーが開発コンピューターで実行されることを確認したら、イメージを Azure Container Registry のレジストリにプッシュします。
 
@@ -170,7 +172,7 @@ Service Fabric SDK およびツールには、コンテナー化されたアプ�
 1. Visual Studio を起動します。  **[ファイル]** > **[新規作成]** > **[プロジェクト]** の順に選択します。
 2. **[Service Fabric アプリケーション]** を選択し、"MyFirstContainer" という名前を付けて、**[OK]** をクリックします。
 3. **[サービス テンプレート]** の一覧から **[ゲスト コンテナー]** を選択します。
-4. **[Image Name]\(イメージ名\)** に、コンテナー リポジトリにプッシュされたイメージである "myregistry.azurecr.io/samples/helloworldapp" を入力します。 
+4. **[Image Name]\(イメージ名\)** に、コンテナー リポジトリにプッシュされたイメージである "myregistry.azurecr.io/samples/helloworldapp" を入力します。
 5. サービスに名前を付けて、**[OK]** をクリックします。
 
 ## <a name="configure-communication"></a>通信を構成する
@@ -183,8 +185,8 @@ Service Fabric SDK およびツールには、コンテナー化されたアプ�
   </Endpoints>
 </Resources>
 ```
-    
-Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。  同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。  コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。  通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。 
+
+Service Fabric は、エンドポイントを定義することによって、ネーム サービスにそのエンドポイントを発行します。  同じクラスターで実行されている他のサービスは、このコンテナーを名前解決することができます。  コンテナー対コンテナーの通信は、[リバース プロキシ](service-fabric-reverseproxy.md)を使用して実行することもできます。  通信は、リバース プロキシ HTTP リスニング ポートおよび通信先のサービスの名前を環境変数として設定することで実行します。
 
 ## <a name="configure-and-set-environment-variables"></a>環境変数の構成と設定
 環境変数は、サービス マニフェストのコード パッケージごとに指定できます。 この機能は、コンテナー、プロセス、またはゲスト実行可能ファイルとしてデプロイされているかどうかに関係なく、すべてのサービスで使用できます。 環境変数の値は、アプリケーション マニフェスト内で上書きすることも、デプロイ中にアプリケーションのパラメーターとして指定することもできます。
@@ -211,7 +213,7 @@ Service Fabric は、エンドポイントを定義することによって、�
 ```
 
 ## <a name="configure-container-port-to-host-port-mapping-and-container-to-container-discovery"></a>コンテナー ポート対ホスト ポートのマッピングおよびコンテナー対コンテナーの検出を構成する
-コンテナーとの通信に使用するホスト ポートを構成します。 このポートのバインドでは、サービスがコンテナー内部でリッスンしているポートをホスト上のポートにマップします。 `PortBinding` 要素は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` 要素に追加します。  この記事では、`ContainerPort` は 80 で (コンテナーは Dockerfile で指定されたとおりにポート 80 を公開します)、`EndpointRef` は "Guest1TypeEndpoint" です (あらかじめサービス マニフェストで定義したエンドポイントです)。  ポート 8081 のサービスへの受信要求は、コンテナーのポート 80 にマッピングされています。 
+コンテナーとの通信に使用するホスト ポートを構成します。 このポートのバインドでは、サービスがコンテナー内部でリッスンしているポートをホスト上のポートにマップします。 `PortBinding` 要素は、ApplicationManifest.xml ファイルの `ContainerHostPolicies` 要素に追加します。  この記事では、`ContainerPort` は 80 で (コンテナーは Dockerfile で指定されたとおりにポート 80 を公開します)、`EndpointRef` は "Guest1TypeEndpoint" です (あらかじめサービス マニフェストで定義したエンドポイントです)。  ポート 8081 のサービスへの受信要求は、コンテナーのポート 80 にマッピングされています。
 
 ```xml
 <Policies>
@@ -312,7 +314,7 @@ Windows では、コンテナーの 2 つの分離モード (プロセスおよ�
 
 **[クラスター エンドポイント]** に、クラスターの管理エンドポイントを入力します   (例: "containercluster.westus2.cloudapp.azure.com:19000")。 [Azure Portal](https://portal.azure.com) にある、お使いのクラスターの [概要] ブレードで、クライアントの接続エンドポイントを探すことができます。
 
-**[発行]**をクリックします。 
+**[発行]**をクリックします。
 
 [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) は、Service Fabric クラスター内のアプリケーションとノードを検査および管理するための Web ベースのツールです。 ブラウザーを開き、http://containercluster.westus2.cloudapp.azure.com:19080/Explorer/ に移動して、アプリケーションのデプロイを進めます。  アプリケーションはデプロイされますが、クラスター ノードにイメージがダウンロードされるまではエラー状態となります (イメージのサイズによって時間がかかる場合があります)。![エラー][1]
 
@@ -360,17 +362,17 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
       <EnvironmentVariable Name="HttpGatewayPort" Value=""/>
       <EnvironmentVariable Name="BackendServiceName" Value=""/>
     </EnvironmentVariables>
-    
+
   </CodePackage>
 
-  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an 
+  <!-- Config package is the contents of the Config directoy under PackageRoot that contains an
        independently-updateable and versioned set of custom configuration settings for your service. -->
   <ConfigPackage Name="Config" Version="1.0.0" />
 
   <Resources>
     <Endpoints>
-      <!-- This endpoint is used by the communication listener to obtain the port on which to 
-           listen. Please note that if your service is partitioned, this port is shared with 
+      <!-- This endpoint is used by the communication listener to obtain the port on which to
+           listen. Please note that if your service is partitioned, this port is shared with
            replicas of different partitions that are placed in your code. -->
       <Endpoint Name="Guest1TypeEndpoint" UriScheme="http" Port="8081" Protocol="http"/>
     </Endpoints>
@@ -388,8 +390,8 @@ docker rmi myregistry.azurecr.io/samples/helloworldapp
   <Parameters>
     <Parameter Name="Guest1_InstanceCount" DefaultValue="-1" />
   </Parameters>
-  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion 
-       should match the Name and Version attributes of the ServiceManifest element defined in the 
+  <!-- Import the ServiceManifest from the ServicePackage. The ServiceManifestName and ServiceManifestVersion
+       should match the Name and Version attributes of the ServiceManifest element defined in the
        ServiceManifest.xml file. -->
   <ServiceManifestImport>
     <ServiceManifestRef ServiceManifestName="Guest1Pkg" ServiceManifestVersion="1.0.0" />
@@ -411,10 +413,10 @@ NtTvlzhk11LIlae/5kjPv95r3lw6DHmV4kXLwiCNlcWPYIWBGIuspwyG+28EWSrHmN7Dt2WqEWqeNQ==
     </Policies>
   </ServiceManifestImport>
   <DefaultServices>
-    <!-- The section below creates instances of service types, when an instance of this 
-         application type is created. You can also create one or more instances of service type using the 
+    <!-- The section below creates instances of service types, when an instance of this
+         application type is created. You can also create one or more instances of service type using the
          ServiceFabric PowerShell module.
-         
+
          The attribute ServiceTypeName below must match the name defined in the imported ServiceManifest.xml file. -->
     <Service Name="Guest1">
       <StatelessService ServiceTypeName="Guest1Type" InstanceCount="[Guest1_InstanceCount]">

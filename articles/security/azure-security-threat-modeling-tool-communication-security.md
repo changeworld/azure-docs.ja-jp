@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: rodsan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 125a9cd2ac9892a090b729a0a5a5a2f7d4580507
+ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
+ms.openlocfilehash: 955d67795caff67c1ffff55f74f04622c952ed05
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -210,38 +210,74 @@ ms.lasthandoff: 07/21/2017
 | ----------------------- | ------------ |
 | コンポーネント               | Azure Storage (Azure Storage) | 
 | SDL フェーズ               | 構築 |  
-| 適用できるテクノロジ | ジェネリック、Windows Phone |
+| 適用できるテクノロジ | ジェネリック、Windows Mobile |
 | 属性              | 該当なし  |
 | 参照              | [証明書と公開キーのピン留め](https://www.owasp.org/index.php/Certificate_and_Public_Key_Pinning#.Net) |
-| 手順 | <p>証明書のピン留めは Man-In-The-Middle (MITM) 攻撃に対する防御策で、 ホストを、予想される X509 証明書または公開キーに関連付けます。 ホストに認識または表示された証明書や公開キーは、そのホストに関連付けられます。つまり、"ピン留め" されます。 </p><p>SSL ハンドシェイク中に 敵が SSL MITM 攻撃を実行しようとしたとき、攻撃者のサーバーのキーが、ピン留めされた証明書のキーが異なっていると、その要求は破棄されます。したがって、MITM 証明書のピン留めを回避するには、ServicePointManager の `ServerCertificateValidationCallback` 委任を実装します。</p>|
+| 手順 | <p>証明書のピン留めは TLS ベースの Man-In-The-Middle (MITM) 攻撃に対する防御策です。 ピン留めでは、TLS 接続を、予想される X.509 証明書または公開キーに関連付けるプロセスです。 この関連付けは、最初に成功した接続 (Trust On First Use) の後、またはその前 (事前読み込みが必要) に実行されます。</p><p>敵対者が TLS MITM 攻撃をしようとすると、クライアントは、受信した証明書/キーが期待値と一致することを確認します。 このため、敵対者が何らかの方法で有効で信頼できる証明書を所有していたとしても、接続はやはり失敗します。</p><p>証明書のピン留めは、[HttpWebRequest.ServerCertificateValidationCallback](https://docs.microsoft.com/dotnet/api/system.net.httpwebrequest.servercertificatevalidationcallback) (推奨) または[ServicePointManager.ServerCertificateValidationCallback](https://docs.microsoft.com/dotnet/api/system.net.servicepointmanager.servercertificatevalidationcallback) 委任のいずれかを .NET で実装することによって実装できます。 次の例では、ハードコードされた公開キーとアルゴリズムに対して検証しますが、実際のアプリケーションではこれらの値はセキュリティ保護された構成領域に保存、必要に応じて更新されます。</p>|
 
 ### <a name="example"></a>例
 ```C#
-private static String PUB_KEY = "30818902818100C4A06B7B52F8D17DC1CCB47362" +
-    "C64AB799AAE19E245A7559E9CEEC7D8AA4DF07CB0B21FDFD763C63A313A668FE9D764E" +
-    "D913C51A676788DB62AF624F422C2F112C1316922AA5D37823CD9F43D1FC54513D14B2" +
-    "9E36991F08A042C42EAAEEE5FE8E2CB10167174A359CEBF6FACC2C9CA933AD403137EE" +
-    "2C3F4CBED9460129C72B0203010001";
+using System;
+using System.Net;
+using System.Net.Security;
+using System.Security.Cryptography;
 
-public static void Main(string[] args)
+namespace CertificatePinningExample
 {
-  ServicePointManager.ServerCertificateValidationCallback = PinPublicKey;
-  WebRequest wr = WebRequest.Create("https://encrypted.google.com/");
-  wr.GetResponse();
-}
+    class CertificatePinningExample
+    {
+        /* Note: In this example, we're hardcoding a the certificate's public key and algorithm for 
+           demonstration purposes. In a real-world application, this should be stored in a secure
+           configuration area that can be updated as needed. */
 
-public static bool PinPublicKey(object sender, X509Certificate certificate, X509Chain chain,
-                                SslPolicyErrors sslPolicyErrors)
-{
-  if (null == certificate)
-    return false;
+        private static readonly string PINNED_ALGORITHM = "RSA";
 
-  String pk = certificate.GetPublicKeyString();
-  if (pk.Equals(PUB_KEY))
-    return true;
+        private static readonly string PINNED_PUBLIC_KEY = "3082010A0282010100B0E75B7CBE56D31658EF79B3A1" +
+            "294D506A88DFCDD603F6EF15E7F5BCBDF32291EC50B2B82BA158E905FE6A83EE044A48258B07FAC3D6356AF09B2" +
+            "3EDAB15D00507B70DB08DB9A20C7D1201417B3071A346D663A241061C151B6EC5B5B4ECCCDCDBEA24F051962809" +
+            "FEC499BF2D093C06E3BDA7D0BB83CDC1C2C6660B8ECB2EA30A685ADE2DC83C88314010FFC7F4F0F895EDDBE5C02" +
+            "ABF78E50B708E0A0EB984A9AA536BCE61A0C31DB95425C6FEE5A564B158EE7C4F0693C439AE010EF83CA8155750" +
+            "09B17537C29F86071E5DD8CA50EBD8A409494F479B07574D83EDCE6F68A8F7D40447471D05BC3F5EAD7862FA748" +
+            "EA3C92A60A128344B1CEF7A0B0D94E50203010001";
 
-  // Bad dog
-  return false;
+
+        public static void Main(string[] args)
+        {
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://azure.microsoft.com");
+            request.ServerCertificateValidationCallback = (sender, certificate, chain, sslPolicyErrors) =>
+            {
+                if (certificate == null || sslPolicyErrors != SslPolicyErrors.None)
+                {
+                    // Error getting certificate or the certificate failed basic validation
+                    return false;
+                }
+
+                var targetKeyAlgorithm = new Oid(certificate.GetKeyAlgorithm()).FriendlyName;
+                var targetPublicKey = certificate.GetPublicKeyString();
+                
+                if (targetKeyAlgorithm == PINNED_ALGORITHM &&
+                    targetPublicKey == PINNED_PUBLIC_KEY)
+                {
+                    // Success, the certificate matches the pinned value.
+                    return true;
+                }
+                // Reject, either the key or the algorithm does not match the expected value.
+                return false;
+            };
+
+            try
+            {
+                var response = (HttpWebResponse)request.GetResponse();
+                Console.WriteLine($"Success, HTTP status code: {response.StatusCode}");
+            }
+            catch(Exception ex)
+            {
+                Console.WriteLine($"Failure, {ex.Message}");
+            }
+            Console.WriteLine("Press any key to end.");
+            Console.ReadKey();
+        }
+    }
 }
 ```
 

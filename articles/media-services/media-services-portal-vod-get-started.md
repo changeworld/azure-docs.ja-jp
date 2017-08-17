@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal を使用した VoD 配信の概要 | Microsoft Docs"
-description: "このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。"
+description: "このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure Portal を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。"
 services: media-services
 documentationcenter: 
 author: Juliako
@@ -12,19 +12,19 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/12/2017
+ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 555e0b6340d09517bfd87efe209f0304f3266788
-ms.openlocfilehash: 76fd245f91e1bfab3df68120859c69e459283e5b
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: cbb67ef92386a6288b3317bf77ebb67f15ce7fb2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
+ms.lasthandoff: 08/08/2017
 
 ---
-# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Azure ポータルを使用したオンデマンド コンテンツ配信の概要
+# <a name="get-started-with-delivering-content-on-demand-using-the-azure-portal"></a>Azure Portal を使用したオンデマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
 
-このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure ポータルを使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
+このチュートリアルでは、Azure Media Services (AMS) アプリケーションと Azure Portal を使用した基本的なビデオ オン デマンド (VoD) コンテンツ配信サービスの実装手順を紹介します。
 
 ## <a name="prerequisites"></a>前提条件
 チュートリアルを完了するには次のものが必要です。
@@ -42,14 +42,14 @@ ms.lasthandoff: 01/27/2017
 
 ## <a name="start-streaming-endpoints"></a>ストリーミング エンドポイントを開始する 
 
-アダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の&1; つです。 Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
+アダプティブ ビットレート ストリーミングでのビデオ配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services にはダイナミック パッケージ機能があり、アダプティブ ビットレート MP4 でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまますぐに配信することができます。つまり、事前にパッケージされたこれらのストリーミング形式のバージョンを保存しておく必要がありません。
 
 >[!NOTE]
 >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
 
 ストリーミング エンドポイントを開始するには、次の操作を行います。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. [設定] ウィンドウで [ストリーミング エンドポイント] をクリックします。 
 3. 既定のストリーミング エンドポイントをクリックします。 
 
@@ -79,7 +79,8 @@ Azure Media Services を使用してビデオをストリーミングするに�
 アップロードが完了すると、 **[資産]** ウィンドウの一覧に新しい資産が表示されます。 
 
 ## <a name="encode-assets"></a>Encode assets
-クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の&1; つです。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。 アダプティブ ビットレート ストリーミング用にビデオを準備するには、ソース ビデオをマルチビットレートのファイルにエンコードする必要があります。 ビデオのエンコードには **Media Encoder Standard** エンコーダーを使用する必要があります。  
+
+クライアントに対するアダプティブ ビットレート ストリーミング配信は、Azure Media Services の代表的な用途の 1 つです。 Media Services でサポートされるアダプティブ ビットレート ストリーミング テクノロジは、HTTP ライブ ストリーミング (HLS)、Smooth Streaming、および MPEG DASH です。 アダプティブ ビットレート ストリーミング用にビデオを準備するには、ソース ビデオをマルチビットレートのファイルにエンコードする必要があります。 ビデオのエンコードには **Media Encoder Standard** エンコーダーを使用する必要があります。  
 
 また、Media Services にはダイナミック パッケージ機能があり、マルチビットレート MP4 でエンコードされたコンテンツを、MPEG DASH、HLS、Smooth Streaming のストリーミング形式でそのまま配信することができます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。 ダイナミック パッケージを使用した場合、保存と課金の対象となるのは、単一のストレージ形式のファイルのみです。Media Services がクライアントからの要求に応じて適切な応答を構築して返します。
 
@@ -91,7 +92,7 @@ Azure Media Services を使用してビデオをストリーミングするに�
 1. **[設定]** ウィンドウで、**[資産]** を選択します。  
 2. **[資産]** ウィンドウで、エンコードする資産を選択します。
 3. **[エンコード]** ボタンをクリックします。
-4. **[資産のエンコード]** ウィンドウで、"Media Encoder Standard" プロセッサとプリセットを選択します。 たとえば、入力ビデオの解像度が 1920 x 1080 ピクセルであるとわかっている場合は、"H264 Multiple Bitrate 1080p" のプリセットを使用できます。 プリセットについて詳しくは、[こちら](media-services-mes-presets-overview.md)の記事をご覧ください。重要なのは、入力ビデオに最適なプリセットを選択することです。 低解像度 (640 x 360) のビデオの場合は、既定の "H264 Multiple Bitrate 1080p" のプリセットは使用しないでください。
+4. **[資産のエンコード]** ウィンドウで、"Media Encoder Standard" プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [MES 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 どちらのエンコード プリセットを使用するかを制御する場合は、入力ビデオに最適なプリセットを選択することが重要である点を覚えておいてください。 たとえば、入力ビデオの解像度が 1920 x 1080 ピクセルであるとわかっている場合は、"H264 Multiple Bitrate 1080p" のプリセットを使用できます。 低解像度 (640 x 360) のビデオの場合は、"H264 Multiple Bitrate 1080p" のプリセットは使用しないでください。
    
    出力資産とジョブの名前を編集するオプションを利用すると、効率よく管理を行えます。
    
@@ -147,7 +148,7 @@ SAS URL には次の形式があります。
 URL が **[発行された URL]**の一覧に追加されます。
 
 ## <a name="play-content-from-the-portal"></a>ポータルでコンテンツを再生する
-ビデオは、Azure ポータルにあるコンテンツ プレーヤーを使用してテストできます。
+ビデオは、Azure Portal にあるコンテンツ プレーヤーを使用してテストできます。
 
 目的のビデオをクリックし、 **[再生]** ボタンをクリックします。
 
@@ -155,6 +156,7 @@ URL が **[発行された URL]**の一覧に追加されます。
 
 いくつかの考慮事項が適用されます。
 
+* ストリーミングを開始するには、**既定**のストリーミング エンドポイントの実行を開始してください。
 * ビデオが発行されたことを確認します。
 * この **メディア プレイヤー** は既定のストリーミング エンドポイントから再生を行います。 既定以外のストリーミング エンドポイントから再生する場合は、URL をクリックしてコピーし、別のプレーヤーを使用します。 ( [Azure Media Services プレーヤーなど](http://amsplayer.azurewebsites.net/azuremediaplayer.html))。
 

@@ -17,14 +17,14 @@ ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: abceba7d250622d8cf27e41d3bb37f3d8a995b5f
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: 888d2b7b7c118fede82d39881570a3b3d7b09961
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 
-# <a name="use-azure-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Azure CLI を使用して Azure SQL Database の SQL エラスティック プールをスケーリングする
+# <a name="use-cli-to-scale-a-sql-elastic-pool-in-azure-sql-database"></a>CLI を使用して Azure SQL Database の SQL エラスティック プールをスケーリングする
 
 この Azure CLI サンプル スクリプトでは、SQL エラスティック プールが作成され、プールされたデータベースが移動され、エラスティック プールのパフォーマンス レベルが変更されます。 
 

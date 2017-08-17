@@ -35,7 +35,7 @@ ms.contentlocale: ja-jp
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app)に移動して、アプリケーションを登録します
 2. アプリケーションの名前とお使いのメール アドレスを入力します 
 3.  ガイド付きセットアップのオプションがオフになっていることを確認します
-4.  [`Add Platform`] (プラットフォームの追加) をクリックし、[`Web`] を選択します
+4.  [`Add Platform`] \(プラットフォームの追加) をクリックし、[`Web`] を選択します
 5.  Visual Studio に戻り、ソリューション エクスプローラーでプロジェクトを選択して [プロパティ] ウィンドウを確認します ([プロパティ] ウィンドウが表示されない場合は、F4 キーを押します)
 6.  [SSL 有効] を `True` に変更します
 7.  SSL URL をコピーし、登録ポータルのリダイレクト URL の一覧にこの URL を追加します<br/><br/>![プロジェクトのプロパティ](media/active-directory-serversidewebapp-aspnetwebappowin-configure/vsprojectproperties.png)<br />

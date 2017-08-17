@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/03/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 5dbb669d9f78ef7ba3f2668855b08750b7447040
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: 2279e609a5d81ecd40bd469a3e98b5cdf81fde2f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションを使用して Active Directory 環境を最適化する
@@ -53,7 +53,21 @@ Active Directory 評価ソリューションを使用して、サーバー環境
   >
 
 ## <a name="active-directory-assessment-data-collection-details"></a>Active Directory 評価データ収集の詳細
-Active Directory 評価では、有効になっているエージェントを使用して、WMI データ、レジストリ データ、パフォーマンス データを収集します。
+
+Active Directory Assessment では、有効にしたエージェントを使用して、次のソースからデータを収集します。
+
+- レジストリ コレクター
+- LDAP コレクター
+- .NET Framework
+- イベント ログ コレクター
+- Active Directory サービス インターフェイス (ADSI)
+- Windows PowerShell
+- ファイル データ コレクター
+- Windows Management Instrumentation (WMI)
+- DCDIAG ツール API
+- ファイル レプリケーション サービス (NTFRS) API
+- カスタム C# コード
+
 
 次の表に、エージェントのデータ収集方法、Operations Manager (SCOM) が必要であるかどうか、およびどのくらいの頻度でデータがエージェントによって収集されるかを示します。
 

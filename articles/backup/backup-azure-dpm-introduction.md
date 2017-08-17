@@ -3,8 +3,8 @@ title: "DPM を使用してワークロードを Azure Portal にバックアッ
 description: "Azure Backup サービスを使用した DPM サーバーのバックアップの概要"
 services: backup
 documentationcenter: 
-author: Nkolli1
-manager: shreeshd
+author: adigan
+manager: nkolli
 editor: 
 keywords: "System Center Data Protection Manager, Data Protection Manager, DPM バックアップ"
 ms.assetid: c8c322cf-f5eb-422c-a34c-04a4801bfec7
@@ -13,13 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/08/2016
+ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2224ddf52283d7da599b1b4842ca617d28b28668
 ms.openlocfilehash: 973730bfdd4d13714ce7d0256a32af9eb8183e7a
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/27/2017
-
 
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備

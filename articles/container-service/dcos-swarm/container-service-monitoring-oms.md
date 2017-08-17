@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service
 keywords: 
-ms.assetid: 01f1a77e-f3e1-4ec0-ad4c-d91298afa55c
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,6 +15,7 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure
 ms.date: 11/17/2016
 ms.author: keikhara
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: 9c6eab099057ef91f79ff1a97e1cc1bd397fc946

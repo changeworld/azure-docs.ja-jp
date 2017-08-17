@@ -88,7 +88,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-service-client</artifactId>
-      <version>1.6.23</version>
+      <version>1.7.23</version>
       <type>jar</type>
     </dependency>
     ```
@@ -300,7 +300,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     <dependency>
       <groupId>com.microsoft.azure.sdk.iot</groupId>
       <artifactId>iot-device-client</artifactId>
-      <version>1.3.30</version>
+      <version>1.3.32</version>
     </dependency>
     ```
 

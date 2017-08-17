@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: 0bec803e4b49f3ae53f2cc3be6b9cb2d256fe5ea
-ms.openlocfilehash: a9cb2d921d1be226661311d91367b2b6f44fa0dc
-ms.lasthandoff: 03/24/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: f61be0cc4c9274c9914f7c468ce48a2a3d0a4f4a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-portal"></a>ポータルを使用した SSL オフロード用のアプリケーション ゲートウェイの構成
 
 > [!div class="op_single_selector"]
-> * [Azure ポータル](application-gateway-ssl-portal.md)
+> * [Azure Portal](application-gateway-ssl-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-ssl-arm.md)
 > * [Azure Classic PowerShell (Azure クラシック PowerShell)](application-gateway-ssl.md)
+> * [Azure CLI 2.0](application-gateway-ssl-cli.md)
 
 Azure Application Gateway をゲートウェイでの Secure Sockets Layer (SSL) セッションを停止するように構成し、Web ファーム上で発生するコストのかかる SSL 暗号化解除タスクを回避することができます。 また、SSL オフロードはフロントエンド サーバーのセットアップと Web アプリケーションの管理も簡素化します。
 
@@ -70,7 +71,7 @@ Azure Portal に移動し、既存のアプリケーション ゲートウェイ
 
 ## <a name="create-a-rule-and-associate-it-to-the-listener"></a>ルールの作成とリスナーへの関連付け
 
-ここまでで、リスナーが作成されました。 今度は、リスナーからのトラフィックを処理するルールを作成します。 ルールは、cookie ベースのセッション アフィニティを使用するかどうか、プロトコル、ポートと正常性プローブなど、複数の構成設定に基づくバックエンド プールにトラフィックをルーティングする方法を定義します。
+ここまでで、リスナーが作成されました。 今度は、リスナーからのトラフィックを処理するルールを作成します。 ルールは、cookie ベースのセッション アフィニティを使用するかどうか、プロトコル、ポート、正常性プローブなど、複数の構成設定に基づいてバックエンド プールにトラフィックをルーティングする方法を定義します。
 
 ### <a name="step-1"></a>手順 1
 

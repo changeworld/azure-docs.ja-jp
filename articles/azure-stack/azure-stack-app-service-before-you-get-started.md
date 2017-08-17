@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 7/3/2017
 ms.author: anwestg
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 56454b77c6c4f2b49609765d342750e704e5bfaf
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 3cba11acc6279f24d0a47af8978610180724c0a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>Before you get started with App Service on Azure Stack
@@ -71,7 +71,7 @@ Because App Service deploys a number of virtual machines, it requires a Windows 
 
 ## <a name="SQL-Server"></a>SQL Server
 
-App Service on Azure Stack requires access to a SQL Server instance to create and host two databases to run the App Service resource provider. You can choose the SQL Server instance to use when you complete the options in the App Service on Azure Stack installer.
+App Service on Azure Stack requires access to a SQL Server instance to create and host two databases to run the App Service resource provider.  Should you choose to deploy a SQL Server VM on Azure Stack it must have the SQL connectivity level set to **Public**.  You can choose the SQL Server instance to use when you complete the options in the App Service on Azure Stack installer.
 
 ## <a name="next-steps"></a>Next steps
 

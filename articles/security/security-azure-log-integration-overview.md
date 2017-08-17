@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 08/08/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 1adabc7f249d9b01f3ad1a819f75b2ef47f72998
+ms.translationtype: HT
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 5e672bd6b9356ce16663e843e4a4e7365cb159c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
-
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="introduction-to-microsoft-azure-log-integration"></a>Microsoft Azure ログ統合の概要
@@ -48,7 +46,7 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 現在のところ Azure ログ統合は、Azure アクティビティ ログ、Azure サブスクリプション内の Windows 仮想マシンからの Windows イベント ログ、Azure Security Center アラート、Azure 診断ログ、および Azure Active Directory 監査ログの統合をサポートしています。
 
 >[!NOTE]
-Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって Azure Storage のコストが発生します。
+Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって発生する Azure Storage のコストがあります。
 
 次の表では、ログのカテゴリと SIEM 統合の詳細について説明します。
 
@@ -72,7 +70,7 @@ Azure ログの統合は無料のソリューションですが、ログ ファ�
 
 * [Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
 * [Azure ログ統合の使用](security-azure-log-integration-get-started.md) – このチュートリアルでは、Azure ログ統合のインストール、Azure WAD ストレージのログ、Azure アクティビティ ログ、Azure Security Center の警告、および Azure Active Directory の監査ログの統合について説明します。
-* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
+* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。 このブログでは、パートナー ソリューションの構成に関する Microsoft の現在の見解を紹介しています。 すべての場合において、まずパートナー ソリューションのドキュメントを参照してください。
 * [Activity and ASC alerts over syslog to QRadar (QRadar に syslog 経由で送られるアクティビティ アラートと ASC アラート)](https://blogs.msdn.microsoft.com/azuresecurity/2016/09/24/integrate-azure-logs-to-qradar/)– このブログ投稿では、アクティビティ アラートと Azure Security Center アラートを syslog 経由で QRadar に送信する手順が示されています
 * [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
 * [Security Center の警告と Azure ログの統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を Azure ログ統合と同期させる方法について説明しています。

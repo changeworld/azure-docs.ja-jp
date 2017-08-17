@@ -5,7 +5,7 @@ services: active-directory-b2c
 documentationcenter: 
 author: parakhj
 manager: krassk
-editor: parakhj
+editor: PatAltimore
 ms.assetid: 20e92275-b25d-45dd-9090-181a60c99f69
 ms.service: active-directory-b2c
 ms.workload: identity
@@ -14,89 +14,68 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 6/13/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 3499ff57e650c70679dfa018eec5dbe1a6173a33
+ms.translationtype: HT
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: 3d4fe2fa10d848c8b29e4d22d284c0d378f07ae0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="azure-active-directory-b2c-register-your-application"></a>Azure Active Directory B2C: アプリケーションを登録する
 
-> [!IMPORTANT]
-> Azure Portal の Azure AD B2C ブレードから作成したアプリケーションは、同じ場所から管理する必要があります。 PowerShell または別のポータルを使用して B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなる可能性があります。 詳しくは[下記](#faulted-apps)をお読みください。
->
+このクイック スタートを読むと、Microsoft Azure Active Directory (Azure AD) B2C テナントに数分でアプリケーションを登録できるようになります。 完了すると、Azure B2C テナントで使用するアプリケーションが登録されます。
 
-## <a name="prerequisite"></a>前提条件
+## <a name="prerequisites"></a>前提条件
 
-コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。 「 [Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に書かれている手順に従って独自のテナントを取得してください。 この記事のすべての手順を実行したら、B2C 機能ブレードがスタート画面にピン留めされているはずです。
+コンシューマーのサインアップおよびサインインを受け付けるアプリケーションを作成するには、最初にアプリケーションを Azure Active Directory B2C テナントに登録する必要があります。 「 [Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)」に書かれている手順に従って独自のテナントを取得してください。
 
-[!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
+Azure Portal の Azure AD B2C ブレードから作成したアプリケーションは、同じ場所から管理する必要があります。 PowerShell または別のポータルを使用して B2C アプリケーションを編集すると、そのアプリケーションはサポート対象外となり、Azure AD B2C で動作しなくなります。 詳細については、「[アプリの障害](#faulted-apps)」セクションを参照してください。 
 
-## <a name="navigate-to-the-b2c-features-blade"></a>B2C 機能ブレードに移動する
+## <a name="navigate-to-b2c-settings"></a>B2C の設定に移動する
 
-B2C 機能ブレードがスタート画面にピン留めされている場合、B2C テナントの全体管理者として [Azure ポータル](https://portal.azure.com/) にサインインするとすぐに、B2C 機能ブレードが表示されます。
+B2C テナントの全体管理者として [Azure Portal](https://portal.azure.com/) にログインします。 
 
-また、[Azure Portal](https://portal.azure.com/) の左側のナビゲーション ウィンドウで **[その他のサービス]** をクリックし、"**Azure AD B2C**" を検索して、このブレードにアクセスすることもできます。
+[!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
-> [!IMPORTANT]
-> B2C 機能ブレードにアクセスするには、B2Cテナントのグローバル管理者である必要があります。 他のテナントのグローバル管理者やテナントのユーザーはアクセスできません。  Azure Portal の右上隅にあるテナント スイッチャーを使用して、B2C テナントに切り替えることができます。
->
->
+[!INCLUDE [active-directory-b2c-portal-navigate-b2c-service](../../includes/active-directory-b2c-portal-navigate-b2c-service.md)]
 
-## <a name="register-a-web-application"></a>Web アプリケーションの登録
+登録するアプリケーションの種類に応じた手順に進みます。
 
-1. Azure ポータルの B2C 機能ブレードで、 **[アプリケーション]**をクリックします。
-1. ブレードの上部にある **[+追加]** をクリックします。
-1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso B2C app」などと入力します。
-1. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
-1. **[応答 URL]** に[適切な](#limitations)値 (アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイント) を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。
-1. **[作成]** をクリックして、アプリケーションを登録します。
-1. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
-1. Web アプリケーションで、Azure AD B2C によってセキュリティ保護された Web API も呼び出す場合は、次の手順が必要になります。
-    1. **[キー]** ブレードに移動して **[キーの生成]** ボタンをクリックし、**アプリケーション シークレット**を作成します。
-    1. **[API アクセス]**、**[追加]** の順にクリックし、Web API とスコープ (アクセス許可) を選択します。
+* [Web アプリケーションの登録](#register-a-web-app)
+* [Web API の登録](#register-a-web-api)
+* [モバイル/ネイティブ アプリケーションの登録](#register-a-mobile-or-native-app)
+ 
+## <a name="register-a-web-app"></a>Web アプリの登録
+
+[!INCLUDE [active-directory-b2c-register-web-app](../../includes/active-directory-b2c-register-web-app.md)]
+
+Web アプリケーションから、Azure AD B2C によって保護された Web API を呼び出す場合、次の手順を実行します。
+   1. **[キー]** ブレードに移動して **[キーの生成]** ボタンをクリックし、アプリケーション シークレットを作成します。 **[アプリ キー]** の値をメモしておきます。 アプリケーションのコード内では、この値をアプリケーション シークレットとして使用します。
+   2. **[API アクセス]**、**[追加]** の順にクリックし、Web API とスコープ (アクセス許可) を選択します。
 
 > [!NOTE]
 > **アプリケーション シークレット** は重要なセキュリティ資格情報であり、適切にセキュリティで保護する必要があります。
->
+> 
+
+[**次の手順**に進む](#next-steps)
 
 ## <a name="register-a-web-api"></a>Web API の登録
 
-1. Azure ポータルの B2C 機能ブレードで、 **[アプリケーション]**をクリックします。
-1. ブレードの上部にある **[+追加]** をクリックします。
-1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso B2C api」などと入力します。
-1. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
-1. **[応答 URL]** に[適切な](#choosing-a-web-app/api-reply-url)値 (アプリケーションが要求したトークンを Azure AD B2C が返すエンドポイント) を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。
-1. **アプリケーション ID/URI** を入力します。 これは Web API に使用される ID です。 たとえば「notes」と入力します。 その下に完全な識別子 URI が生成されます。
-1. **[作成]** をクリックして、アプリケーションを登録します。
-1. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
-1. **[Published scopes (公開スコープ)]** をクリックします。 ここで、他のアプリケーションに付与できるアクセス許可 (スコープ) を定義します。
-1. 必要に応じてスコープを追加します。 既定では、"user_impersonation" スコープが定義されます。 これで他のアプリケーションが、サインイン ユーザーの代わりにこの API にアクセスできるようになります。 不要であれば、これは削除してもかまいません。
-1. [ **Save**] をクリックします。
+[!INCLUDE [active-directory-b2c-register-web-api](../../includes/active-directory-b2c-register-web-api.md)]
 
-## <a name="register-a-mobilenative-application"></a>モバイル/ネイティブ アプリケーションの登録
+必要に応じて **[公開済みスコープ ]** をクリックしてスコープを追加します。 既定では、"user_impersonation" スコープが定義されます。 user_impersonation スコープによって、他のアプリケーションが、サインイン ユーザーの代わりにこの API にアクセスできるようになります。 不要であれば user_impersonation スコープは削除してかまいません。
 
-1. Azure ポータルの B2C 機能ブレードで、 **[アプリケーション]**をクリックします。
-1. ブレードの上部にある **[+追加]** をクリックします。
-1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso B2C app」などと入力します。
-1. **[Include native client (ネイティブ クライアントを含める)]** スイッチを **[はい]** に切り替えます。
-1. カスタム スキームを含めた**リダイレクト URI** を入力します。 たとえば、com.onmicrosoft.contoso.appname://redirect/path です。 [正常に機能するリダイレクト URI](#choosing-a-native-application-redirect-uri) を選択し、アンダースコアなどの特殊文字は含めないようにしてください。
-1. **[保存]** をクリックして、アプリケーションを登録します。
-1. 作成したアプリケーションをクリックし、後でコードの作成時に使用するために、グローバルに一意の **アプリケーション クライアント ID** をメモしておきます。
-1. ネイティブ アプリケーションで、Azure AD B2C によってセキュリティ保護された Web API も呼び出す場合は、次の手順が必要になります。
-    1. **[キー]** ブレードに移動して **[キーの生成]** ボタンをクリックし、**アプリケーション シークレット**を作成します。
-    1. **[API アクセス]**、**[追加]** の順にクリックし、Web API とスコープ (アクセス許可) を選択します。
+[**次の手順**に進む](#next-steps)
 
-> [!NOTE]
-> **アプリケーション シークレット** は重要なセキュリティ資格情報であり、適切にセキュリティで保護する必要があります。
->
+## <a name="register-a-mobile-or-native-app"></a>モバイル/ネイティブ アプリの登録
+
+[!INCLUDE [active-directory-b2c-register-mobile-native-app](../../includes/active-directory-b2c-register-mobile-native-app.md)]
+
+[**次の手順**に進む](#next-steps)
 
 ## <a name="limitations"></a>制限事項
 
-### <a name="choosing-a-web-appapi-reply-url"></a>Web アプリ/API の応答 URL の選択
+### <a name="choosing-a-web-app-or-api-reply-url"></a>Web アプリ/API の応答 URL の選択
 
 現時点では、Azure AD B2C に登録されるアプリは、限られた応答 URL 値に制限されています。 Web アプリと Web サービスの応答 URL は `https` スキームで始まる必要があり、すべての応答 URL 値で 1 つの DNS ドメインを共有する必要があります。 たとえば、次の応答 URL のいずれかを使用する Web アプリを登録することはできません。
 
@@ -131,7 +110,7 @@ B2C 機能ブレードがスタート画面にピン留めされている場合�
 
 後の 2 つの応答 URL を追加できるのは、これらが 1 つ目の contoso.com という応答 URL のサブドメインであるためです。
 
-### <a name="choosing-a-native-application-redirect-uri"></a>ネイティブ アプリケーションのリダイレクト URI の選択
+### <a name="choosing-a-native-app-redirect-uri"></a>ネイティブ アプリケーションのリダイレクト URI の選択
 
 モバイル/ネイティブ アプリケーションのリダイレクト URI を選択する際には、2 つの重要な考慮事項があります。
 
@@ -155,3 +134,5 @@ B2C アプリケーションは次の手段で編集しないでください。
 
 アプリケーションを Azure AD B2C に登録したので、いずれかの[クイック スタート チュートリアル](active-directory-b2c-overview.md#get-started)を実行して使い始めることができます。
 
+> [!div class="nextstepaction"]
+> [サインアップ、サインイン、パスワード リセット機能を備えた ASP.NET Web アプリを作成する](active-directory-b2c-devquickstarts-web-dotnet-susi.md)

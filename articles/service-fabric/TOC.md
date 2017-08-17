@@ -69,6 +69,7 @@
 ##### [DNS サービス](service-fabric-dnsservice.md)
 ##### [リバース プロキシ](service-fabric-reverseproxy.md)
 ##### [セキュリティで保護された通信用のリバース プロキシの構成](service-fabric-reverseproxy-configure-secure-communication.md)
+##### [リバース プロキシの診断](service-fabric-reverse-proxy-diagnostics.md)
 ### [アプリケーションのスケーラビリティ](service-fabric-concepts-scalability.md)
 ### [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
@@ -132,10 +133,12 @@
 ### コンテナー サービスの構築
 #### [Windows コンテナー アプリケーションの作成](service-fabric-get-started-containers.md)
 #### [Linux コンテナー アプリケーションの作成](service-fabric-get-started-containers-linux.md)
-#### [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+#### [コンテナー セキュリティ](service-fabric-securing-containers.md)
 #### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
 #### [コンテナーとサービスのリソース ガバナンス](service-fabric-resource-governance.md)
 #### [ボリュームとログ ドライバー](service-fabric-containers-volume-logging-drivers.md)
+#### [コンテナー内のサービス](service-fabric-services-inside-containers.md)
+#### [コンテナー ネットワーク モード](service-fabric-networking-modes.md)
 
 ### Reliable Services サービスの構築
 #### [概要](service-fabric-reliable-services-introduction.md)
@@ -173,10 +176,10 @@
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-actors-get-started.md)
 ##### [Linux での Java](service-fabric-reliable-actors-get-started-java.md)
-#### [通知の送信](service-fabric-reliable-actors-events.md) 
+#### [通知の送信](service-fabric-reliable-actors-events.md)
 #### [タイマーとアラームの設定](service-fabric-reliable-actors-timers-reminders.md)
 #### [KvsActorStateProvider の構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
-#### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md) 
+#### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [ReliableDictionaryActorStateProvider の構成](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
 
 ### [セキュリティで保護された通信用のリバース プロキシの構成](service-fabric-reverseproxy-configure-secure-communication.md)
@@ -240,17 +243,17 @@
 
 ## クラスターを作成および管理する
 ### Azure 上のクラスター
-#### 作成 
+#### 作成
 ##### [Azure で初めてのクラスターを作成する](service-fabric-get-started-azure-cluster.md)
-##### [Azure ポータル](service-fabric-cluster-creation-via-portal.md)
+##### [Azure Portal](service-fabric-cluster-creation-via-portal.md)
 ##### [Azure リソース マネージャー](service-fabric-cluster-creation-via-arm.md)
-#### スケール 
+#### スケール
 ##### [手動で](service-fabric-cluster-scale-up-down.md)
 ##### [プログラムで](service-fabric-cluster-programmatic-scaling.md)
 #### [アップグレード](service-fabric-cluster-upgrade.md)
 #### [アクセス制御の設定](service-fabric-cluster-security-roles.md)
 #### [構成](service-fabric-cluster-fabric-settings.md)
-#### [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md) 
+#### [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md)
 #### [削除](service-fabric-cluster-delete.md)
 
 ### スタンドアロンのクラスター
@@ -264,7 +267,7 @@
 #### [スケール](service-fabric-cluster-windows-server-add-remove-nodes.md)
 #### [アクセス制御の設定](service-fabric-cluster-security-roles.md)
 #### [構成](service-fabric-cluster-manifest.md)
-#### [アップグレード](service-fabric-cluster-upgrade-windows-server.md) 
+#### [アップグレード](service-fabric-cluster-upgrade-windows-server.md)
 
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
@@ -333,4 +336,3 @@
 ## [サポート オプション](service-fabric-support.md)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-fabric)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-fabric)
-

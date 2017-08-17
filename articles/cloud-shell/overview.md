@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 865c72b7525c185d047d6c9f57b642a195e56fd4
+ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
+ms.openlocfilehash: 7165633cd354eeea2e3619f839338e6af1524e56
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 # <a name="overview-of-azure-cloud-shell-preview"></a>Azure Cloud Shell (プレビュー) の概要
@@ -49,7 +49,7 @@ Cloud Shell の初回起動時に、リソース グループとストレージ 
 
 以下の 3 つのリソースが自動的に作成されます。
 1. `cloud-shell-storage-<region>` という名前のリソース グループ
-2. `cs-uniqueGuid` という名前のストレージ アカウント
+2. `cs<uniqueGuid>` という名前のストレージ アカウント
 3. `cs-<user>-<domain>-com-uniqueGuid` という名前のファイル共有
 
 > [!Note]
@@ -88,3 +88,4 @@ Cloud Shell は、Chrome、Edge、Safari での使用をお勧めします。 Cl
 1. Azure Active Directory サブスクリプションを使っているとき、400 DisallowedOperation エラーのためのストレージを作成できません。 これを解決するには、ストレージ リソースを作成できる Azure サブスクリプションを使用してください。 AD サブスクリプションでは、Azure のリソースを作成できません。
 
 具体的に確認されている制限については、[Cloud Shell の制限](limitations.md)に関するページを参照してください。
+

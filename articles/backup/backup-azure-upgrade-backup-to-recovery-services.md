@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 08/02/2017
-ms.author: markgal;arunak
+ms.date: 08/03/2017
+ms.author: sogup;markgal;arunak
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: cf5a7c1ac323a33c5f6985fb25b5b005ae06657c
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: dff0bb9b4040ea712519a94bf2bc04de634209c2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/04/2017
 
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
@@ -108,11 +108,11 @@ Recovery Services コンテナーでは、バックアップ ポリシーでの�
 
 Backup コンテナーを Recovery Services コンテナーにアップグレードすると、そのコンテナーのセキュリティ設定が自動的に有効になります。 セキュリティ設定が有効になると、バックアップの削除やパスフレーズの変更などの特定の操作で [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md) の PIN が必要になります。 強化されたセキュリティの詳細については、[ハイブリッド バックアップを保護するためのセキュリティ機能](backup-azure-security-feature.md)に関する記事をご覧ください。 
 
-強化されたセキュリティを有効にすると、データは課金対象のデータがコンテナーから削除されてから最大 14 日間保持されます。 このデータ リテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager のバックアップされたデータに適用されます。
+強化されたセキュリティを有効にすると、データは、復旧ポイント情報がコンテナーから削除されてから最大 14 日間保持されます。 このセキュリティ データのストレージに対して課金されます。 セキュリティ データのリテンション期間は、Azure Backup エージェント、Azure Backup Server、System Center Data Protection Manager に対して作成された復旧ポイントに適用されます。 
 
 ## <a name="gather-data-on-your-vault"></a>コンテナー上のデータの収集
 
-Recovery Services コンテナーにアップグレードしたら、Azure Backup のレポート (IaaS VM および Microsoft Azure Recovery Services (MARS) 用) を構成し、Power BI を使用してレポートにアクセスします。
+Recovery Services コンテナーにアップグレードしたら、Azure Backup のレポート (IaaS VM および Microsoft Azure Recovery Services (MARS) 用) を構成し、Power BI を使用してレポートにアクセスします。 データの収集の詳細については、記事「[Azure Backup のレポートを構成する](backup-azure-configure-reports.md)」を参照してください。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
@@ -135,7 +135,7 @@ Recovery Services コンテナーにアップグレードしたら、Azure Backu
 はい。 アップグレードの最初の手順は、リソースがアップグレード可能であることを検証することです。 前提条件の検証が失敗した場合は、アップグレードを完了できない理由をすべて通知するメッセージが表示されます。
 
 **コンテナーのアップグレードを開始するために必要なアクセス許可は何ですか?**</br>
-コンテナーのアップグレードを実行するには、Azure クラシック ポータルにサブスクリプションの共同管理者として追加されている必要があります。 これは、Azure Portal に所有者として既に表示されている場合でも必要です。 試しに、Azure クラシック ポータルでサブスクリプションの共同管理者の追加を実行して、自分がサブスクリプションの共同管理者になっているかどうかを確認してください。 共同管理者を追加できない場合は、サブスクリプションのサービス管理者または共同管理者に連絡して、共同管理者として追加してもらってください。
+コンテナーのアップグレードを実行するには、Azure クラシック ポータルにサブスクリプションの共同管理者として追加されている必要があります。 これは、Azure ポータルに所有者として既に表示されている場合でも必要です。 試しに、Azure クラシック ポータルでサブスクリプションの共同管理者の追加を実行して、自分がサブスクリプションの共同管理者になっているかどうかを確認してください。 共同管理者を追加できない場合は、サブスクリプションのサービス管理者または共同管理者に連絡して、共同管理者として追加してもらってください。
 
 **CSP ベースの Backup コンテナーはアップグレードできますか?**</br>
 いいえ。 現時点では、CSP ベースのバックアップ コンテナーはアップグレードできません。 次のリリースで、CSP ベースのバックアップ コンテナーのアップグレードのサポートが追加される予定です。

@@ -13,43 +13,42 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/07/2016
+ms.date: 07/25/2016
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6221f5fa113bf58ed3f5e0767b79b2b647005c71
+ms.translationtype: HT
+ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
+ms.openlocfilehash: 398abb0a56f1a12ad563dce889c602af4a5b9bcf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/26/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
 [PowerBI.com](https://powerbi.microsoft.com/) は、ユーザーとその組織の重要なデータを使用してダッシュボードおよびレポートを作成し、共有することができるオンライン サービスです。  Power BI Desktop は、各種データ ソースのデータを取得し、データの結合と変換および強力なレポートと視覚エフェクトの作成を行い、レポートを Power BI に発行することができるレポート作成専用ツールです。  最新バージョンの Power BI Desktop では、Power BI 用 Cosmos DB コネクタ経由で Cosmos DB アカウントに接続できるようになりました。   
 
-この Power BI チュートリアルでは、Power BI Desktop で Cosmos DB アカウントに接続し、ナビゲーターを使用してデータを抽出するコレクションに移動して、Power BI Desktop クエリ エディターで JSON データを表形式に変換し、レポートを作成して PowerBI.com に発行する手順について説明します。
+この Power BI チュートリアルでは、Power BI Desktop で Cosmos DB アカウントに接続し、ナビゲーターを使用してデータを抽出するコレクションに移動し、Power BI Desktop クエリ エディターを使用して JSON データを表形式に変換し、レポートを構築して PowerBI.com に発行する手順について説明します。
 
 この Power BI チュートリアルを完了すると、次の項目について説明できるようになります。  
 
 * Power BI Desktop では、どのようにして Cosmos DB のデータでレポートを作成できますか?
-* Power BI Desktop では、どのようにして Cosmos DB アカウントに接続できますか?
+* Power BI Desktop で Cosmos DB アカウントに接続するにはどうすればよいですか?
 * Power BI Desktop では、どのようにしてコレクションからデータを取得できますか?
 * Power BI Desktop では、どのようにして入れ子になった JSON データを変換できますか?
 * PowerBI.com では、どのようにしてレポートを発行して共有できますか?
 
 ## <a name="prerequisites"></a>前提条件
-この Power BI チュートリアルの手順を実行する前に、次のものを備えておく必要があります。
+この Power BI チュートリアルの手順に従う前に、次のリソースにアクセスできることを確認してください。
 
 * [最新バージョンの Power BI Desktop](https://powerbi.microsoft.com/desktop)。
 * Cosmos DB アカウント内のデモ アカウントまたはデータへのアクセス。
-  * デモ アカウントには、このチュートリアルで示される火山データが設定されています。 このデモ アカウントは、どの SLA の制約も受けず、目的がデモンストレーションに限定されています。  Microsoft では、事前の通知や理由の提示なしでいつでもこのデモ アカウントに変更を加える権利を保有しています。これには、アカウントの終了、キーの変更、アクセスの制限、データの変更と削除などが含まれます。
+  * デモ アカウントには、このチュートリアルで示される火山データが設定されています。 このデモ アカウントは、どの SLA の制約も受けず、目的がデモンストレーションに限定されています。  当社は、事前の通知や理由なく、いつでもこのデモ アカウントに変更を加える権利を留保しています。これには、アカウントの終了、キーの変更、アクセスの制限、データの変更および削除が含まれますが、これに限定されるわけではありません。
     * URL: https://analytics.documents.azure.com
     * 読み取り専用キー: MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==
   * または、独自のアカウントを作成する場合は、[Azure Portal を使用した Azure Cosmos DB データベース アカウントの作成](https://azure.microsoft.com/documentation/articles/create-account/)に関するページをご覧ください。 その後で、このチュートリアルで使用されるデータと同様のサンプル火山データ (ただし、GeoJSON ブロックは含まれていません) を取得するために、[NOAA サイト](https://www.ngdc.noaa.gov/nndc/struts/form?t=102557&s=5&d=5)にアクセスし、[Azure Cosmos DB データ移行ツール](import-data.md)を使用してデータをインポートしてください。
 
-PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro の詳細については、 [https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing)を参照してください。
+PowerBI.com でレポートを共有するには、PowerBI.com のアカウントが必要です。  Power BI (無料) および Power BI Pro の詳細については、[https://powerbi.microsoft.com/pricing](https://powerbi.microsoft.com/pricing) を参照してください。
 
 ## <a name="lets-get-started"></a>作業を開始する
-このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。  火山データは Cosmos DB アカウントに格納されており、JSON ドキュメントは次のようになっています。
+このチュートリアルでは、ユーザーが世界中の火山を研究している地質学者であると仮定します。  火山データは Cosmos DB アカウントで格納されており、JSON ドキュメントは次のサンプル ドキュメントのようになっています。
 
     {
         "Volcano Name": "Rainier",
@@ -68,7 +67,7 @@ PowerBI.com でレポートを共有するには、PowerBI.com のアカウン�
           "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
     }
 
-Cosmos DB アカウントから火山データを取得し、次のような対話型の Power BI レポートでデータを視覚化する必要があります。
+Cosmos DB アカウントから火山データを取得し、次のレポートのような対話型の Power BI レポートでデータを視覚化する必要があります。
 
 ![この Power BI チュートリアルを Power BI コネクタを使用して完了することで、Power BI Desktop 火山レポートでデータを視覚化できます。](./media/powerbi-visualize/power_bi_connector_pbireportfinal.png)
 
@@ -82,30 +81,35 @@ Cosmos DB アカウントから火山データを取得し、次のような対�
    
     ![Power BI Desktop のレポート ビュー- Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbireportview.png)
 4. **[ホーム]** リボンをクリックし、**[データの取得]** をクリックします。  **[データの取得]** ウィンドウが表示されます。
-5. **[Azure]** をクリックし、**[Microsoft Azure Cosmos DB (ベータ版)]** を選択して、**[接続]** をクリックします。  **[Microsoft Azure Cosmos DB 接続]** ウィンドウが表示されます。
-   
-    ![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)
-6. 次のように、データを取得する Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 URL は、Azure ポータルの **[[キー]](manage-account.md#keys)** ブレードで [URI] ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `https://analytics.documents.azure.com` になります)。 
+5. **[Azure]** をクリックし、**[Microsoft Azure DocumentDB (ベータ版)]** を選択して、**[接続]** をクリックします。 
+
+    ![Power BI Desktop のデータの取得 - Power BI コネクタ](./media/powerbi-visualize/power_bi_connector_pbigetdata.png)   
+6. **[Preview Connector] \(プレビュー コネクタ)** ページで、**[続行]** をクリックします。 **[Microsoft Azure DocumentDB 接続]** ウィンドウが表示されます。
+7. 次のように、データを取得する Cosmos DB アカウント エンドポイント URL を指定し、**[OK]** をクリックします。 独自のアカウントを使用するには、Azure Portal の **[[キー]](manage-account.md#keys)** ブレードにある [URI] ボックスから URL を取得できます。 デモ アカウントを使用するには、URL として `https://analytics.documents.azure.com` を入力します。 
    
     データベース名、コレクション名、および SQL ステートメントは省略可能なフィールドなので、空白のままにします。  代わりに、ナビゲーターを使用して、データを取得するデータベースとコレクションを選択します。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
-7. このエンドポイントに初めて接続した場合は、アカウント キーの入力を求められます。  キーは、Azure ポータルの **[[読み取り専用キー]](manage-account.md#keys)** ブレードで **[プライマリ キー]** ボックスから取得するか、デモ アカウントを使用できます (この場合、URL は `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` になります)。 アカウント キーを入力し、 **[接続]**をクリックします。
+8. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[[Read-only Keys] (読み取り専用キー)](manage-account.md#keys)** ブレードにある **[主キー]** ボックスからキーを取得します。 デモ アカウントの場合、キーは `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` です。 適切なキーを入力し、**[接続]** をクリックします。
    
     レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure ポータルの [[キー]](manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - アカウント キー](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
-8. アカウントが正常に接続されると、 **ナビゲーター** が表示されます。  **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
-9. レポート用のデータを取得するデータベースをクリックして展開します。デモ アカウントを使用する場合は、**[volcanodb]** を選択します。   
-10. 次に、データを取得するコレクションを選択します。 デモ アカウントを使用する場合は、 **[volcano1]**を選択します。
+    
+    > [!NOTE] 
+    > "The specified database was not found. (指定されたデータベースが見つかりませんでした。)" というエラーが表示された場合は、 この [Power BI の問題](https://community.powerbi.com/t5/Issues/Document-DB-Power-BI/idi-p/208200)にある回避手順を参照してください。
+    
+9. アカウントが正常に接続されると、 **ナビゲーター** が表示されます。  **ナビゲーター** には、アカウントで利用できるデータベースの一覧が表示されます。
+10. レポート用のデータを取得するデータベースをクリックして展開します。デモ アカウントを使用する場合は、**[volcanodb]** を選択します。   
+11. 次に、データを取得するコレクションを選択します。 デモ アカウントを使用する場合は、 **[volcano1]**を選択します。
     
     プレビュー ウィンドウに、 **Record** アイテムの一覧が表示されます。  Power BI では、ドキュメントは **Record** タイプとして表されます。 同様に、ドキュメント内の入れ子になった JSON ブロックも、 **Record**として表されます。
     
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - ナビゲーション ウィンドウ](./media/powerbi-visualize/power_bi_connector_pbinavigator.png)
-11. データを変換するために、 **[編集]** をクリックしてクエリ エディターを起動します。
+12. データを変換するには、**[編集]** をクリックしてクエリ エディターを新しいウィンドウで起動します。
 
 ## <a name="flattening-and-transforming-json-documents"></a>JSON ドキュメントをフラット化して変換する
-1. Power BI クエリ エディターの中央のウィンドウに **[ドキュメント]** 列が表示されます。
+1. [Power BI Query Editor] \(Power BI クエリ エディター) ウィンドウに切り替えます。中央のウィンドウに **[ドキュメント]** 列が表示されます。
    ![Power BI Desktop クエリ エディター](./media/powerbi-visualize/power_bi_connector_pbiqueryeditor.png)
 2. **[ドキュメント]** 列ヘッダーの右側にある展開コントロールをクリックします。  フィールドの一覧を示すコンテキスト メニューが表示されます。  Volcano Name、Country、Region、Location、Elevation、Type、Status、Last Know Eruption など、レポートに必要なフィールドを選択し、**[OK]** をクリックします。
    

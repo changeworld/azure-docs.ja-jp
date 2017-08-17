@@ -1,6 +1,6 @@
 ---
-title: "Linux で Azure Files を使用する方法 | Microsoft Docs"
-description: "この詳しい手順を示したチュートリアルでは、クラウドに Azure ファイル共有を作成します。 Linux を実行している Azure の仮想マシン (VM) または SMB 3.0 をサポートするオンプレミスのアプリケーションから、ファイル共有のコンテンツを管理し、ファイル共有をマウントします。"
+title: "Linux で Azure File Storage を使用する | Microsoft Docs"
+description: "Linux で SMB 経由で Azure File 共有をマウントする方法。"
 services: storage
 documentationcenter: na
 author: RenaShahMSFT
@@ -14,150 +14,111 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/8/2017
 ms.author: renash
-translationtype: Human Translation
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: 201ceaec874c2367c232076faba25bdae128e7e1
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
+ms.openlocfilehash: d93c82b9c2e66c7241ddd579c1be74396174fd65
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/07/2017
 
 ---
-# <a name="how-to-use-azure-file-storage-with-linux"></a>Linux で Azure File Storage を使用する方法
-## <a name="overview"></a>概要
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 Azure Files を使用すると、ファイル サーバーを利用しているエンタープライズ アプリケーションを Azure に移行できます。 Azure で実行されているアプリケーションでは、Linux を実行している Azure の仮想マシンからファイル共有を簡単にマウントできます。 また、File Storage の最新のリリースでは、SMB 3.0 をサポートしているオンプレミス アプリケーションからファイル共有をマウントできます。
+# <a name="use-azure-file-storage-with-linux"></a>Linux で Azure File Storage を使用する
+[Azure File Storage](storage-dotnet-how-to-use-files.md) は、Microsoft の使いやすいクラウド ファイル システムです。 [Samba プロジェクト](https://www.samba.org/) の[cifs-utils パッケージ](https://wiki.samba.org/index.php/LinuxCIFS_utils)を使用して、Linux ディストリビューションに Azure File 共有をマウントできます。 この記事では、Azure File 共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
 
-Azure のファイル共有は、 [Azure ポータル](https://portal.azure.com)、Azure Storage の PowerShell コマンドレット、Azure Storage のクライアント ライブラリ、または Azure Storage の REST API を使用して作成することができます。 また、ファイル共有は SMB 共有であるため、それらには標準のファイル システム API を使用してアクセスできます。
+> [!NOTE]  
+> Azure File 共有がホストされている Azure リージョン以外の場所 (オンプレミスや他の Azure リージョンなど) に Azure File 共有をマウントするには、OS が SMB 3.0 の暗号化機能をサポートしている必要があります。 Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に 16.04 以上の Ubuntu に移植されました。
 
-File Storage は、BLOB、Table、および Queue Storage と同じテクノロジ上に構築されているため、可用性、持続性、スケーラビリティ、および Azure Storage プラットフォームに組み込まれている geo 冗長性を利用できます。 File Storage のパフォーマンスのターゲットと制限事項の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)」を参照してください。
 
-File ストレージは現在一般に提供されており、SMB 2.1 と SMB 3.0 の両方をサポートしています。 File Storage の詳細については、「 [ファイル サービスの REST API](https://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
+## <a name="prerequisities-for-mounting-an-azure-file-share-with-linux-and-the-cifs-utils-package"></a>Linux で cifs-utils パッケージを使用してAzure File 共有をマウントするための前提条件
+* **cifs-utils パッケージがインストールされている Linux ディストリビューションを選択する**: Microsoft では、Azure イメージ ギャラリーの次の Linux ディストリビューションをお勧めしています。
 
-> [!NOTE]
-> Linux の SMB クライアントでは暗号化はまだサポートされていないため、Linux からファイル共有をマウントするには、クライアントがファイル共有と同じ Azure リージョンに存在する必要があります。 ただし、Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。 今後の暗号化をサポートする Linux ディストリビューションによって、任意の場所から Azure File 共有をマウントできるようになります。
-> 
-> 
+    * Ubuntu Server 14.04+
+    * RHEL 7+
+    * CentOS 7+
+    * Debian 8
+    * openSUSE 13.2+
+    * SUSE Linux Enterprise Server 12   
 
-## <a name="video-using-azure-file-storage-with-linux"></a>ビデオ: Linux で Azure File ストレージを使用する方法
-このビデオでは、Linux で Azure のファイル共有を作成して使用する方法について説明しています。
+    > [!Note]  
+    > cifs-utils パッケージの最新バージョンをダウンロードしてインストールするかコンパイルするすべての Linux ディストリビューションで Azure File Storage を使用できます。
 
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-File-Storage-with-Linux/player]
-> 
-> 
+* <a id="install-cifs-utils"></a>**cifs-utils パッケージがインストールされている**: cifs-utils は、選択した Linux ディストリビューションのパッケージ マネージャーを使用してインストールできます。 
 
-## <a name="choose-a-linux-distribution-to-use"></a>使用する Linux ディストリビューションの選択
-Azure で Linux 仮想マシンを作成するときに、Azure イメージ ギャラリーの SMB 2.1 以降をサポートする Linux イメージを指定できます。 推奨される Linux イメージの一覧を次に示します。
+    **Ubuntu** と **Debian ベースの**ディストリビューションでは、`apt-get` パッケージ マネージャーを使用します。
 
-* Ubuntu Server 14.04+
-* RHEL 7+
-* CentOS 7+
-* Debian 8
-* openSUSE 13.2+
-* SUSE Linux Enterprise Server 12
-* SUSE Linux Enterprise Server 12 (Premium Image)
+    ```
+    sudo apt-get update
+    sudo apt-get install cifs-utils
+    ```
 
-## <a name="mount-the-file-share"></a>ファイル共有をマウントする
-使用するディストリビューションに組み込みのクライアントがない場合に Linux を実行する仮想マシンからファイル共有をマウントするには、SMB/CIFS クライアントをインストールする必要があります。 次に示すのは、1 つの選択肢である cifs-utils をインストールするための Ubuntu のコマンドです。
+    **RHEL** と **CentOS** では、`yum` パッケージ マネージャーを使用します。
 
-```
-sudo apt-get install cifs-utils
-```
+    ```
+    sudo yum install samba-client samba-common cifs-utils
+    ```
 
-次に、マウント ポイント (mkdir mymountpoint) を作成した後、次のような mount コマンドを発行する必要があります。
+    **openSUSE** では、`zypper` パッケージ マネージャーを使用します。
 
-```
-sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename ./mymountpoint -o vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-```
+    ```
+    sudo zypper install samba*
+    ```
 
-共有は、/etc/fstab に設定を追加することでマウントすることもできます。
+    他のディストリビューションでは、適切なパッケージ マネージャーを使用するか、[ソースからコンパイル](https://wiki.samba.org/index.php/LinuxCIFS_utils#Download)します。
 
-ここでの 0777 は、すべてのユーザーに実行/読み取り/書き込みアクセス許可を与えるディレクトリ/ファイルのアクセス許可を表します。 Linux ファイルのアクセス許可に関するドキュメントに従って、他のファイル アクセス許可コードに置き換えることができます。
+* **マウントされた共有のディレクトリ/ファイルのアクセス権限を決定する**: この後の例では、0777 を使用して、すべてのユーザーに読み取り、書き込み、および実行権限を与えています。 必要に応じて、他の [chmod 権限](https://en.wikipedia.org/wiki/Chmod)に置き換えることができます。 
 
-再起動後にマウントされているファイル共有を保持するために、次のような設定を /etc/fstab に追加できます。
+* **ストレージ アカウント名**: Azure File 共有をマウントするには、ストレージ アカウントの名前が必要です。
 
-```
-//myaccountname.file.core.windows.net/mysharename /mymountpoint cifs vers=3.0,username=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-```
+* **ストレージ アカウント キー**: Azure File 共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-たとえば、Linux image Ubuntu Server 15.04 (Azure イメージ ギャラリーから入手可能) を使用して Azure VM を作成した場合、次のようにファイルをマウントできます。
+* **ポート 445 が開いていることを確認する**: SMB は、TCP ポート 445 経由で通信します。ファイアウォールによってクライアント コンピューターの TCP ポート 445 がブロックされないことを確認してください。
 
-```
-azureuser@azureconubuntu:~$ sudo apt-get install cifs-utils
-azureuser@azureconubuntu:~$ sudo mkdir /mnt/mountpoint
-azureuser@azureconubuntu:~$ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@azureconubuntu:~$ df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+## <a name="mount-the-azure-file-share-on-demand-with-mount"></a>Azure Files 共有を `mount` を使用してオンデマンドでマウントする
+1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)**。
 
-CentOS 7.1 を使用する場合は、次に示すようにファイルをマウントできます。
+2. **マウント ポイント用のフォルダーを作成する**: これは、ファイル システムで任意の場所で実行することができます。
 
-```
-[azureuser@AzureconCent ~]$ sudo yum install samba-client samba-common cifs-utils
-[azureuser@AzureconCent ~]$ sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-[azureuser@AzureconCent ~]$ df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+    ```
+    mkdir mymountpoint
+    ```
 
-Open SUSE 13.2 を使用する場合は、次に示すようにファイルをマウントできます。
+3. **mount コマンドを使用して Azure File共有をマウントします**。`<storage-account-name>``<share-name>`、および `<storage-account-key>` を適切な情報に置き換えることを忘れないでください。
 
-```
-azureuser@AzureconSuse:~> sudo zypper install samba*  
-azureuser@AzureconSuse:~> sudo mkdir /mnt/mountpoint
-azureuser@AzureconSuse:~> sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@AzureconSuse:~> df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+    ```
+    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    ```
 
-RHEL 7.3 を使用する場合は、次に示すようにファイルをマウントできます。
+> [!Note]  
+> Azure File 共有の使用を完了したら、`sudo umount ./mymountpoint` を使用して共有を解除できます。
 
-```
-azureuser@AzureconRedhat:~> sudo yum install cifs-utils
-azureuser@AzureconRedhat:~> sudo mkdir /mnt/mountpoint
-azureuser@AzureconRedhat:~> sudo mount -t cifs //myaccountname.file.core.windows.net/mysharename /mnt/mountpoint -o vers=3.0,user=myaccountname,password=StorageAccountKeyEndingIn==,dir_mode=0777,file_mode=0777,serverino
-azureuser@AzureconRedhat:~> df -h /mnt/mountpoint
-Filesystem  Size  Used Avail Use% Mounted on
-//myaccountname.file.core.windows.net/mysharename  5.0T   64K  5.0T   1% /mnt/mountpoint
-```
+## <a name="create-a-persistent-mount-point-for-the-azure-file-share-with-etcfstab"></a>Azure File 共有の永続的なマウント ポイントを作成する`/etc/fstab`
+1. **[使用する Linux ディストリビューション用の cifs-utils パッケージをインストールします](#install-cifs-utils)**。
 
-## <a name="manage-the-file-share"></a>ファイル共有の管理
-[Azure ポータル](https://portal.azure.com) では、Azure File Storage を管理するためのユーザー インターフェイスを使用できます。 Web ブラウザーから、次の操作を実行できます。
+2. **マウント ポイント用のフォルダーを作成します**。これはファイル システムの任意の場所に作成できますが、フォルダーの絶対パスを書き留めておく必要があります。 次の例では、ルートの下にフォルダーを作成します。
 
-* ファイル共有からのファイルのアップロードおよびダウンロード
-* 各ファイル共有の実際の使用状況の監視
-* ファイル共有のサイズ クォータの調整
-* Windows クライアントからファイル共有をマウントするために使用する `net use` コマンドのコピー
+    ```
+    sudo mkdir /mymountpoint
+    ```
 
-また、Linux から Azure のクロスプラットフォームのコマンドライン インターフェイス (Azure CLI) を使用してファイル共有を管理することもできます。 Azure CLI には、File Storage など、Azure Storage を処理できるオープン ソースのクロスプラットフォーム コマンド セットが用意されています。 豊富なデータ アクセス機能だけでなく、Azure ポータルにあるものと同じ機能の多くを使用できます。 たとえば、「 [Azure Storage での Azure CLI の使用](storage-azure-cli.md)」をご覧ください。
+3. **次のコマンドを使用して、次の行を `/etc/fstab` に追加します**。`<storage-account-name>`、`<share-name>`、および `<storage-account-key>` を適切な情報に置き換えることを忘れないでください。
 
-## <a name="develop-with-file-storage"></a>File ストレージを使用した開発
-開発者は、 [Azure Storage Client Library for Java](https://github.com/azure/azure-storage-java)を使用して、File ストレージでアプリケーションを作成できます。 コード サンプルについては、「 [Java からファイル ストレージを使用する方法](storage-java-how-to-use-file-storage.md)」をご覧ください。
+    ```
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    ```
 
-[Azure Storage Client Library for Node.js](https://github.com/Azure/azure-storage-node) を使用して File ストレージに対して開発することもできます。
+> [!Note]  
+> `/etc/fstab` を編集した後、再起動する代わりに、`sudo mount -a` を使用して、Azure File 共有をマウントできます。
 
-## <a name="feedback-and-more-information"></a>フィードバックと詳細情報
+## <a name="feedback"></a>フィードバック
 Linux ユーザーからのご意見をお待ちしています。
 
-Azure File storage for Linux ユーザーのグループによって、File ストレージを Linux で評価および使用するときにフィードバックを共有できるフォーラムが提供されています。 [Azure File Storage Linux ユーザー](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザーのグループに参加してください。
+Azure File storage for Linux ユーザーのグループによって、File ストレージを Linux で評価および使用するときにフィードバックを共有できるフォーラムが提供されています。 [Azure File Storage Linux ユーザー](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
 
 ## <a name="next-steps"></a>次のステップ
 Azure File Storage の詳細については、次のリンクを参照してください。
-
-### <a name="conceptual-articles-and-videos"></a>概念に関する記事とビデオ
-* [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Windows で Azure File Storage を使用する](storage-dotnet-how-to-use-files.md)
-
-### <a name="tooling-support-for-file-storage"></a>File Storage 用のツールのサポート
-* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)
-* [ファイル共有を作成および管理する](storage-azure-cli.md#create-and-manage-file-shares) 
-
-### <a name="reference"></a>リファレンス
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-* [Azure Files のトラブルシューティングに関する記事](storage-troubleshoot-file-connection-problems.md)
-
-### <a name="blog-posts"></a>ブログ記事
-* [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-* [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
-* [Microsoft Azure Files への接続の維持](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/27/persisting-connections-to-microsoft-azure-files.aspx)
+* [Azure Storage での Azure PowerShell の使用](storage-powershell-guide-full.md)
+* [Microsoft Azure Storage で AzCopy を使用する方法](storage-use-azcopy.md)
+* [Azure Storage での Azure CLI の使用](storage-azure-cli.md#create-and-manage-file-shares)
+* [FAQ](storage-files-faq.md)
+* [トラブルシューティング](storage-troubleshoot-file-connection-problems.md)
 

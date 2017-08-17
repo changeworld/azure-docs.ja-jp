@@ -11,11 +11,12 @@ keywords: "Docker, コンテナー, マイクロサービス, Kubernetes, Azure"
 ms.assetid: 
 ms.service: container-service
 ms.devlang: aurecli
-ms.topic: sample
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: danlep
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
 ms.openlocfilehash: c851e40cd03e98e04f10973321c10525c2d8d8e9

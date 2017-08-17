@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
-ms.author: banders
+ms.date: 08/08/2017
+ms.author: magoedte;banders
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 524c63d358ce22c10b7a23e5bcf0b33e9f2e5f26
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 5fe0c4c5642fcaa83bcfc830e64600986b8fbf7f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/09/2017
 
 ---
 # <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
@@ -50,21 +50,25 @@ ms.lasthandoff: 08/03/2017
 | Linux サーバー<br>(スタンドアロン) | | あり | | あり | あり | あり | あり | あり | | あり |
 
 
-### <a name="supported-linux-operating-system"></a>サポートされている Linux オペレーティング システム
+### <a name="docker-versions-supported-on-linux"></a>Linux でサポートされている Docker のバージョン
 
 - Docker 1.11 ～ 1.13
-- Docker CE および EE v17.03
+- Docker CE と EE v17.06
 
-次の x64 Linux ディストリビューションは、コンテナー ホストとしてサポートされます。
+### <a name="x64-linux-distributions-supported-as-container-hosts"></a>コンテナー ホストとしてサポートされている x64 Linux ディストリビューション
 
-- Ubuntu 14.04 LTS、16.04 LTS
+- Ubuntu 14.04 LTS と 16.04 LTS
 - CoreOS (Stable)
 - Amazon Linux 2016.09.0
 - openSUSE 13.2
 - openSUSE LEAP 42.2
-- CentOS 7.2、7.3
+- CentOS 7.2 と 7.3
 - SLES 12
-- RHEL 7.2、7.3
+- RHEL 7.2 と 7.3
+- Red Hat OpenShift Container Platform (OCP) 3.4 と 3.5
+- ACS Mesosphere DC/OS 1.7.3 ～ 1.8.8
+- ACS Kubernetes 1.4.5 ～ 1.6
+- ACS Docker Swarm
 
 ### <a name="supported-windows-operating-system"></a>サポートされている Windows オペレーティング システム
 
@@ -73,29 +77,27 @@ ms.lasthandoff: 08/03/2017
 
 ### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
 
-- Docker 1.12 ～ 1.13
+- Docker 1.12 と 1.13
 - Docker 17.03.0 
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-コンテナー ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
+1. コンテナー ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
 
-OMS と共に Docker をインストールして使用する方法はいくつかあります。
+2. OMS で Docker をインストールして使用します。  オペレーティング システムにより、次の方法から選択できます。
 
-* サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、OMS Agent for Linux をインストールして構成します。
-* CoreOS では、OMS Agent for Linux を実行できません。 代わりに、OMS Agent for Linux のコンテナー化されたバージョンを実行します。
-* Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。
-
-
-お使いのコンテナー ホストでサポートされている Docker および Linux オペレーティング システムのバージョンは、[GitHub](https://github.com/Microsoft/OMS-docker) で確認できます。
+  * サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、OMS Agent for Linux をインストールして構成します。  
+  * CoreOS では、OMS Agent for Linux を実行できません。 代わりに、OMS Agent for Linux のコンテナー化されたバージョンを実行します。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
+  * Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。  
 
 ### <a name="container-services"></a>コンテナー サービス
 
-- Azure Container Service を使用する Kubernetes クラスターがある場合、詳細については、「[Microsoft Operations Management Suite (OMS) を使用して Azure Container Service クラスターを監視する](../container-service/kubernetes/container-service-kubernetes-oms.md)」をご覧ください。
+- Red Hat OpenShift 環境がある場合は、[Red Hat OpenShift の OMS エージェントの構成](#configure-an-oms-agent-for-red-hat-openshift)に関する記事をご覧ください。
+- Azure Container Service を使用する Kubernetes クラスターがある場合は、[Microsoft Operations Management Suite (OMS) を使用した Azure Container Service クラスターの監視](../container-service/kubernetes/container-service-kubernetes-oms.md)に関する記事をご覧ください。
 - Azure Container Service DC/OS クラスターがある場合、詳細については、「[Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視](../container-service/dcos-swarm/container-service-monitoring-oms.md)」をご覧ください。
 - Docker Swarm モード環境がある場合、詳細については、「[Docker Swarm 用の OMS エージェントを構成する](#configure-an-oms-agent-for-docker-swarm)」をご覧ください。
-- Service Fabric でコンテナーを使用する場合は、[Azure Service Fabric の概要](../service-fabric/service-fabric-overview.md)ページで詳細情報を確認してください。
+- Service Fabric でコンテナーを使用する場合、詳しくは「[Azure Service Fabric の概要](../service-fabric/service-fabric-overview.md)」をご覧ください。
 - Windows を実行しているコンピューターに Docker エンジンをインストールして構成する方法の詳細については、「[Windows 上の Docker エンジン](https://docs.microsoft.com/virtualization/windowscontainers/manage-docker/configure-docker-daemon)」をご覧ください。
 
 > [!IMPORTANT]
@@ -107,12 +109,11 @@ OMS と共に Docker をインストールして使用する方法はいくつ�
 
 ## <a name="linux-container-hosts"></a>Linux コンテナー ホスト
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 [OMS ワークスペース ID とキー](log-analytics-agent-linux.md)が必要になります。
-
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページの上部のメニューで **[設定]** を選択し、**Connected Sources\Windows Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>CoreOS を除くすべての Linux コンテナー ホスト
 
-- OMS Agent for Linux のインストール方法の詳細と手順については、「[Linux コンピューターを Operations Management Suite (OMS) に接続する](log-analytics-agent-linux.md)」を参照してください。
+- OMS Agent for Linux のインストール方法の詳細と手順については、「[Linux コンピューターを Operations Management Suite (OMS) に接続する](log-analytics-agent-linux.md)」をご覧ください。
 
 ### <a name="for-all-linux-container-hosts-including-coreos"></a>CoreOS を含むすべての Linux コンテナー ホスト
 
@@ -130,13 +131,12 @@ sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -e 
 sudo docker run --privileged -d -v /var/run/docker.sock:/var/run/docker.sock -v /var/log:/var/log -e WSID="your workspace id" -e KEY="your key" -e DOMAIN="opinsights.azure.us" -p 127.0.0.1:25225:25225 -p 127.0.0.1:25224:25224/udp --name="omsagent" -h=`hostname` --restart=always microsoft/oms
 ```
 
-
 ### <a name="switching-from-using-an-installed-linux-agent-to-one-in-a-container"></a>インストール済みの Linux エージェントからコンテナー内のエージェントの使用への切り替え
-これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux)」を参照してください。
+これまで直接インストールされたエージェントを使用しており、今後はコンテナーで実行されているエージェントを使用したい場合は、まず OMS Agent for Linux を削除する必要があります。 エージェントを正しくアンインストール方法について詳しくは、「[OMS Agent for Linux のアンインストール](log-analytics-agent-linux.md#uninstalling-the-oms-agent-for-linux)」をご覧ください。  
 
 ### <a name="configure-an-oms-agent-for-docker-swarm"></a>Docker Swarm 用の OMS エージェントを構成する
 
-Docker Swarm で、OMS エージェントをグローバル サービスとして実行できます。 次の情報を使用して、OMS Agent サービスを作成します。 ワークスペース ID と主キーを挿入する必要があります。
+Docker Swarm で、OMS エージェントをグローバル サービスとして実行できます。 次の情報を使用して、OMS Agent サービスを作成します。 OMS のワークスペース ID と主キーを挿入する必要があります。
 
 - マスター ノードで、次を実行します。
 
@@ -144,9 +144,119 @@ Docker Swarm で、OMS エージェントをグローバル サービスとし�
     sudo docker service create  --name omsagent --mode global  --mount type=bind,source=/var/run/docker.sock,destination=/var/run/docker.sock  -e WSID="<WORKSPACE ID>" -e KEY="<PRIMARY KEY>" -p 25225:25225 -p 25224:25224/udp  --restart-condition=on-failure microsoft/oms
     ```
 
-### <a name="secure-your-secret-information-for-container-services"></a>コンテナー サービス用のシークレット情報を保護する
+### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Red Hat OpenShift 用の OMS エージェントを構成する
+Red Hat OpenShift に OMS エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 つの方法が用意されています。 
+ 
+* OpenShift の各ノードに直接 [OMS Agent for Linux をインストールする](log-analytics-agent-linux.md)  
+* Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](log-analytics-azure-vm-extension.md)  
+* OMS エージェントを OpenShift デーモン セットとしてインストールする  
 
-Docker Swarm と Kubernetes 用のシークレット OMS ワークスペース ID と主キーを保護できます。
+このセクションでは、OMS エージェントを OpenShift デーモン セットとしてインストールするために必要な手順を説明します。  
+
+1. OpenShift のマスター ノードにサインオンし、yaml ファイル [ocp-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-omsagent.yaml) を GitHub からマスター ノードにコピーして、値を OMS のワークスペース ID と 主キーに変更します。
+2. 次のコマンドを実行して OMS のプロジェクトを作成し、ユーザー アカウントを設定します。
+
+    ```
+    oadm new-project omslogging --node-selector='zone=default'
+    oc project omslogging  
+    oc create serviceaccount omsagent  
+    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    ```
+
+4. デーモン セットをデプロイするには、次の手順を実行します。 
+    
+    `oc create -f ocp-omsagent.yaml`
+
+5. 構成と動作が正しいことを確認するには、次を入力します。 
+
+    `oc describe daemonset omsagent`  
+    
+    出力は次のようになります。
+
+    ```
+    [ocpadmin@khm-0 ~]$ oc describe ds oms  
+    Name:           oms  
+    Image(s):       microsoft/oms  
+    Selector:       name=omsagent  
+    Node-Selector:  zone=default  
+    Labels:         agentVersion=1.4.0-12  
+                    dockerProviderVersion=10.0.0-25  
+                    name=omsagent  
+    Desired Number of Nodes Scheduled: 3  
+    Current Number of Nodes Scheduled: 3  
+    Number of Nodes Misscheduled: 0  
+    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
+    No events.  
+    ```
+
+OMS Agent デーモン セットの yaml ファイルを使用するときにシークレットを使用して OMS のワークスペース ID と主キーをセキュリティで保護するには、次の手順を実行します。
+
+1. OpenShift のマスター ノードにサインオンして、yaml ファイル [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) とシークレットを生成するスクリプト [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) を GitHub からコピーします。  このスクリプトにより OMS のワークスペース ID と主キーのシークレット yaml ファイルが生成され、秘密情報がセキュリティで保護されます。  
+2. 次のコマンドを実行して OMS のプロジェクトを作成し、ユーザー アカウントを設定します。 シークレットを生成するスクリプトは OMS のワークスペース ID <WSID> と主キー <KEY> を要求し、完了すると ocp-secret.yaml ファイルが作成されます。  
+    
+    ```
+    oadm new-project omslogging --node-selector='zone=default'  
+    oc project omslogging  
+    oc create serviceaccount omsagent  
+    oadm policy add-cluster-role-to-user cluster-reader   system:serviceaccount:omslogging:omsagent  
+    oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
+    ```
+
+4. 次のコマンドを実行して、シークレット ファイルをデプロイします。
+
+    `oc create -f ocp-secret.yaml`
+
+5. 次を実行して、デプロイを確認します。 
+
+    `oc describe secret omsagent-secret`  
+
+    出力は次のようになります。  
+    
+    ```
+    [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
+    Name:           oms  
+    Image(s):       microsoft/oms  
+    Selector:       name=omsagent  
+    Node-Selector:  zone=default  
+    Labels:         agentVersion=1.4.0-12  
+                    dockerProviderVersion=10.0.0-25  
+                    name=omsagent  
+    Desired Number of Nodes Scheduled: 3  
+    Current Number of Nodes Scheduled: 3  
+    Number of Nodes Misscheduled: 0  
+    Pods Status:    3 Running / 0 Waiting / 0 Succeeded / 0 Failed  
+    No events.  
+    ```
+
+6. 次を実行して、OMS エージェントのデーモン セット yaml ファイルをデプロイします。 
+
+    `oc create -f ocp-ds-omsagent.yaml`  
+  
+7. 次を実行して、デプロイを確認します。 
+
+    `oc describe ds oms`
+  
+    出力は次のようになります。
+
+    ```
+    [ocpadmin@khocp-master-0 ~]$ oc describe secret omsagent-secret  
+    Name:           omsagent-secret  
+    Namespace:      omslogging  
+    Labels:         <none>  
+    Annotations:    <none>  
+    
+    Type:   Opaque  
+    
+     Data  
+     ====  
+     KEY:    89 bytes  
+     WSID:   37 bytes  
+    ```
+
+### <a name="secure-your-secret-information-for-docker-swarm-and-kubernetes"></a>Docker Swarm と Kubernetes の秘密情報の安全を確保する 
+
+Docker Swarm と Kubernetes コンテナー サービス用のシークレットの OMS のワークスペース ID と主キーをセキュリティで保護できます。
 
 #### <a name="secure-secrets-for-docker-swarm"></a>Docker Swarm 用のシークレットを保護する
 
@@ -182,7 +292,7 @@ Docker Swarm では、ワークスペース ID と主キーのシークレット
 Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット .yaml ファイルを生成します。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページに、シークレット情報を使用して、または使用せずに使うことができるファイルがあります。
 
 - シークレット情報がない既定の OMS Agent DaemonSet (omsagent.yaml)
-- シークレット情報 (omsagent-ds-secrets.yaml) と、シークレット yaml (omsagentsecret.yaml) ファイルを生成するシークレット生成スクリプトを使用する OMS Agent DaemonSet yaml ファイル
+- シークレット情報 (omsagent-ds-secrets.yaml) と、シークレット yaml (omsagentsecret.yaml) ファイルを生成するシークレット生成スクリプトを使用する OMS Agent DaemonSet yaml ファイル。
 
 omsagent DaemonSet は、シークレットを使用して作成するか使用せずに作成するかを選択できます。
 
@@ -200,7 +310,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
     1. スクリプトとシークレット テンプレート ファイルをコピーし、それらが同じディレクトリにあることを確認します。
         - シークレット生成スクリプト: secret-gen.sh
         - シークレット テンプレート: secret-template.yaml
-    2. 次の例のように、スクリプトを実行します。 このスクリプトでは、OMS ワークスペース ID と主キーの入力を求められます。それらを入力すると、シークレット .yaml ファイルが作成され、実行できるようになります。   
+    2. 次の例のように、スクリプトを実行します。 このスクリプトでは、OMS のワークスペース ID と主キーの入力を求められます。それらを入力すると、シークレット yaml ファイルが作成され、実行できるようになります。   
 
         ```
         #> sudo bash ./secret-gen.sh
@@ -276,7 +386,6 @@ WSID:   36 bytes
 KEY:    88 bytes
 ```
 
-
 ## <a name="windows-container-hosts"></a>Windows コンテナー ホスト
 
 ### <a name="preparation-before-installing-windows-agents"></a>Windows エージェントをインストールする前の準備
@@ -311,7 +420,7 @@ Windows コンテナーで使用する Docker デーモン構成の詳細につ�
 
 ### <a name="install-windows-agents"></a>Windows エージェントのインストール
 
-Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターにエージェントをインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agents.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
+Windows および Hyper-V コンテナーの監視を有効にするには、コンテナー ホストである Windows コンピューターに Microsoft Monitoring Agent (MMA) をインストールします。 Windows を実行しているオンプレミス環境のコンピューターの場合、[Log Analytics への Windows コンピューターの接続](log-analytics-windows-agents.md)に関する記事をご覧ください。 Azure で実行されている仮想マシンの場合、[仮想マシン拡張機能](log-analytics-azure-vm-extension.md)を使用して Log Analytics に接続します。
 
 Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-azure-vm-extension.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-windows-agents.md)のみです。
 
@@ -340,7 +449,7 @@ Service Fabric で実行されている Windows コンテナーを監視でき�
 | --- | --- | --- | --- | --- | --- | --- |
 | Azure |![はい](./media/log-analytics-containers/oms-bullet-green.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |3 分おき |
 
-次の表に、コンテナー ソリューションによって収集されるデータ型およびログ検索と結果に使用されるデータ型の例を示します。
+次の表に、Containers ソリューションによって収集されるデータ型およびログ検索と結果に使用されるデータ型の例を示します。
 
 | データ型 | ログ検索のデータ型 | フィールド |
 | --- | --- | --- |

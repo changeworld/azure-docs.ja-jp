@@ -11,16 +11,17 @@ keywords:
 ms.assetid: 
 ms.service: container-instances
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/04/2017
 ms.author: seanmck
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: e48477a79e28db2c40c99fd46d9c5b84506a4279
+ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
+ms.openlocfilehash: d8c2056734bc1fdea71543157debd089a9ca743d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/08/2017
 
 ---
 
@@ -46,41 +47,34 @@ az acr show --name <acrName> --query loginServer
 コンテナー レジストリ パスワード:
 
 ```azurecli-interactive
-az acr credential show --name <acrName> --query passwords[0].value
+az acr credential show --name <acrName> --query "passwords[0].value"
 ```
 
 1 CPU コアおよび 1 GB メモリのリソース要求でコンテナー レジストリからコンテナー イメージをデプロイするには、次のコマンドを実行します。
 
 ```azurecli-interactive
-az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-login-server <acrLoginServer> --registry-username <acrName> --registry-password <acrPassword> --ip-address public -g myResourceGroup
+az container create --name aci-tutorial-app --image <acrLoginServer>/aci-tutorial-app:v1 --cpu 1 --memory 1 --registry-password <acrPassword> --ip-address public -g myResourceGroup
 ```
 
 数秒以内に、Azure Resource Manager から最初の応答を受信します。 デプロイの状態を表示するには、次を使用します。
 
 ```azurecli-interactive
-az container show --name aci-tutorial-app --resource-group myResourceGroup
+az container show --name aci-tutorial-app --resource-group myResourceGroup --query state
 ```
 
-出力には、ブラウザーでアプリにアクセスするときに使用できるパブリック IP アドレスが含まれます。
-
-```json
-...
-"ipAddress": {
-      "ip": "13.88.176.27",
-      "ports": [
-        {
-          "port": 80,
-          "protocol": "TCP"
-        }
-      ]
-    }
-...
-```
-
+状態が "*[保留中]*" から "*[実行中]*" に変更されるまで、このコマンドを実行し続けることができます。 その後、次に進むことができます。
 
 ## <a name="view-the-application-and-container-logs"></a>アプリケーションとコンテナー ログを表示する
 
-デプロイに成功したら、ブラウザーを開いて、`az container show` の出力に示されている IP アドレスにアクセスできます。
+デプロイに成功したら、ブラウザーを開いて、次のコマンドの出力に示されている IP アドレスにアクセスします。
+
+```bash
+az container show --name aci-tutorial-app --resource-group myResourceGroup --query ipAddress.ip
+```
+
+```json
+"13.88.176.27"
+```
 
 ![ブラウザーでの Hello World アプリ][aci-app-browser]
 

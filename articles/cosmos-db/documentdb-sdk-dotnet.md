@@ -1,6 +1,6 @@
 ---
-title: "Azure DocumentDB .NET SDK およびリソース | Microsoft Docs"
-description: "リリース日、提供終了日、DocumentDB .NET SDK の各バージョン間の変更など、.NET API と SDK に関するあらゆる詳細を提供します。"
+title: "Azure Cosmos DB .NET SDK およびリソース | Microsoft Docs"
+description: "リリース日、提供終了日、Azure Cosmos DB .NET SDK の各バージョン間の変更など、.NET API と SDK に関するあらゆる詳細を提供します。"
 services: cosmos-db
 documentationcenter: .net
 author: rnagpal
@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 08/08/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a41df84034dbc2f1ec6c61d027ced77694354d51
+ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
+ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/09/2017
 
 ---
-# <a name="documentdb-net-sdk-download-and-release-notes"></a>DocumentDB .NET SDK: ダウンロードおよびリリース ノート
+# <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-sdk-dotnet.md)
 > * [.NET Change Feed](documentdb-sdk-dotnet-changefeed.md)
@@ -44,7 +44,7 @@ ms.lasthandoff: 07/21/2017
 
 <tr><td>**サンプル**</td><td>[.NET コード サンプル](documentdb-dotnet-samples.md)</td></tr>
 
-<tr><td>**作業開始**</td><td>[DocumentDB .NET SDK の使用](documentdb-get-started.md)</td></tr>
+<tr><td>**概要**</td><td>[Azure Cosmos DB .NET SDK を開始する](documentdb-get-started.md)</td></tr>
 
 <tr><td>**Web アプリ チュートリアル**</td><td>[Azure Cosmos DB を使用した Web アプリケーションの開発](documentdb-dotnet-application.md)</td></tr>
 
@@ -53,11 +53,18 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
+* スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
+
+### <a name="a-name11601160"></a><a name="1.16.0"/>1.16.0
+*   JsonSerializerSettings が DocumentClient コンストラクターの省略可能なパラメーターとして導入されたことでアプリケーションの再コンパイルを余儀なくされる問題を修正しました。
+* JsonSerializerSettings パラメーターを渡す際、ConnectionPolicy パラメーターと ConsistencyLevel パラメーターに既定値を使用できるようにするために、最終パラメーターとしての JsonSerializerSettings が必須であった DocumentClient コンストラクターが古い形式としてマークされました。
+
 ### <a name="a-name11501150"></a><a name="1.15.0"/>1.15.0
 *   [DocumentClient](/dotnet/api/microsoft.azure.documents.client.documentclient?view=azure-dotnet) のインスタンス化時にカスタム JsonSerializerSettings を指定するためのサポートが追加されました。
 
 ### <a name="a-name11411141"></a><a name="1.14.1"/>1.14.1
-*   SSE4 命令をサポートせず、DocumentDB API クエリの実行時に SEHException をスローする x64 マシンに影響を与える問題を修正しました。
+*   SSE4 命令をサポートせず、Azure Cosmos DB DocumentDB API クエリの実行時に SEHException をスローする x64 マシンに影響を与える問題を修正しました。
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
 *   1 分あたりの要求ユニット (RU/m) 機能のサポートが追加されました。
@@ -143,7 +150,7 @@ ms.lasthandoff: 07/21/2017
 ### <a name="a-name192192"></a><a name="1.9.2"/>1.9.2
 * パーティション分割コレクションの並列クエリのサポートを追加しました。
 * パーティション分割コレクションのクロス パーティションの ORDER BY および TOP クエリに対するサポートを追加しました。
-* DocumentDB NuGet パッケージについての参照で、 DocumentDB プロジェクトを参照するときに必要なDocumentDB.Spatial.Sql.dll と Microsoft.Azure.Documents.ServiceInterop.dll への参照の不足を修正しました。
+* Azure Cosmos DB NuGet パッケージについての参照で、Azure Cosmos DB プロジェクトを参照するときに必要な DocumentDB.Spatial.Sql.dll と Microsoft.Azure.Documents.ServiceInterop.dll への参照の不足を修正しました。
 * LINQ でのユーザー定義関数の使用時に各種パラメーターを使用する機能を修正しました。 
 * Upsert コールが書き込み専用ロケーションではなく、読み取り専用ロケーションにダイレクトされる、グローバルにレプリケートされたアカウントのバグを修正しました。
 * IDocumentClient インターフェイスに、不足していた次のメソッドを追加しました。 
@@ -156,7 +163,7 @@ ms.lasthandoff: 07/21/2017
 * 複数リージョンのデータベース アカウントのサポートを追加しました。
 * 調整された要求での再試行のサポートを追加しました。  ユーザーは、ConnectionPolicy.RetryOptions プロパティを構成することで、再試行の回数と最大待機時間をカスタマイズできます。
 * すべての DocumenClient プロパティおよびメソッドの署名を定義できる新しい IDocumentClient インターフェイスを追加しました。  また、この変更の一環として、IQueryable と IOrderedQueryable を作成する拡張メソッドを DocumentClient クラス自体のメソッドに変更しました。
-* 特定の DocumentDB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
+* 特定の Azure Cosmos DB エンドポイント URI の ServicePoint.ConnectionLimit を設定する構成オプションを追加しました。  ConnectionPolicy.MaxConnectionLimit を使用して既定値 (50) を変更できます。
 * IPartitionResolver とその実装を廃止しました。  IPartitionResolver のサポートは廃止されました。 大量のストレージとスループットを必要とする場合は、パーティション分割コレクションの使用をお勧めします。
 
 ### <a name="a-name171171"></a><a name="1.7.1"/>1.7.1
@@ -172,7 +179,7 @@ ms.lasthandoff: 07/21/2017
 * [パーティション分割コレクション](partition-data.md)と[ユーザー定義のパフォーマンス レベル](performance-levels.md)を実装しました。 
 
 ### <a name="a-name153153"></a><a name="1.5.3"/>1.5.3
-* **[修正済み]** DocumentDB エンドポイントのクエリを実行すると、"System.Net.Http.HttpRequestException: コンテンツをストリームにコピーしている間にエラーが発生しました" というエラーがスローされます。
+* **[修正済み]** Azure Cosmos DB エンドポイントのクエリを実行すると、"System.Net.Http.HttpRequestException: コンテンツをストリームにコピーしている間にエラーが発生しました" というエラーがスローされます。
 
 ### <a name="a-name152152"></a><a name="1.5.2"/>1.5.2
 * ページング、条件式、および範囲比較用の新しい演算子を使用できるように LINQ を拡張しました。
@@ -247,6 +254,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
+| [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |
 | [1.14.1](#1.14.1) |2017 年 5 月 23 日 |--- |
 | [1.14.0](#1.14.0) |2017 年 5 月 10 日 |--- |

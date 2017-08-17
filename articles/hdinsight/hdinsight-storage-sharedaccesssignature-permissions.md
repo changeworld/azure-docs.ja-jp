@@ -16,11 +16,10 @@ ms.workload: big-data
 ms.date: 05/22/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: be747170a0d8a7a6defd790a3f8a122c4d397671
-ms.openlocfilehash: 353ec1ff1973e3ffaab0f1c5e1a289407114071c
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 5cd05743425069925e71e85a616967c812bd3491
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 07/08/2017
 
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
@@ -44,7 +43,7 @@ HDInsight には、クラスターに関連付けられた Azure Storage アカ�
 * Linux ベースの HDInsight クラスターまたは [Azure PowerShell][powershell] - 既存の Linux ベースのクラスターがある場合は、Ambari を使用して、クラスターに Shared Access Signature を追加することができます。 ない場合は、Azure PowerShell を使用してクラスターを作成し、クラスターの作成時に Shared Access Signature を追加することができます。
 
     > [!IMPORTANT]
-    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+    > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * サンプル ファイルは、 [https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature](https://github.com/Azure-Samples/hdinsight-dotnet-python-azure-storage-shared-access-signature)にあります。 このリポジトリには、以下が含まれます。
 
@@ -225,25 +224,25 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
 1. プロンプトから次のように入力します。 **SASCONTAINER** を SAS ストレージ アカウントに対して作成されたコンテナーの名前に置き換えます。 **SASACCOUNTNAME** を SAS に使用するストレージ アカウントの名前に置き換えます。
 
-        hdfs dfs -ls wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
+        hdfs dfs -ls wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/
 
     このコマンドは、コンテナーと SAS の作成時にアップロードされたファイルを含む、コンテナーの内容を一覧表示します。
 
 2. 次のコマンドを使用して、ファイルの内容を読み取ることができることを確認します。 前の手順のとおりに、**SASCONTAINER** と **SASACCOUNTNAME** を置き換えます。 **FILENAME** を前のコマンドで表示されたファイルの名前に置き換えます。
 
-        hdfs dfs -text wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
+        hdfs dfs -text wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME
 
     このコマンドにより、ファイルの内容が一覧表示されます。
 
 3. 次のコマンドを使用して、ローカル ファイル システムにファイルをダウンロードします。
 
-        hdfs dfs -get wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
+        hdfs dfs -get wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/FILENAME testfile.txt
 
     このコマンドは、**testfile.txt** という名前のローカル ファイルにファイルをダウンロードします。
 
 4. 次のコマンドを使用して、ローカル ファイルを SAS ストレージ上の **testupload.txt** という名前の新しいファイルにアップロードします。
 
-        hdfs dfs -put testfile.txt wasbs://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
+        hdfs dfs -put testfile.txt wasb://SASCONTAINER@SASACCOUNTNAME.blob.core.windows.net/testupload.txt
 
     次のテキストのようなメッセージが返されます。
 
@@ -251,7 +250,7 @@ SAS を使用する HDInsight クラスターを作成する例は、リポジ�
 
     このエラーは、ストレージの場所が読み取りと一覧表示のみであるために発生します。 次のコマンドを使用して、書き込み可能なクラスターの既定のストレージ上にデータを置きます。
 
-        hdfs dfs -put testfile.txt wasbs:///testupload.txt
+        hdfs dfs -put testfile.txt wasb:///testupload.txt
 
     このとき、操作が正常に完了する必要があります。
 

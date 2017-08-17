@@ -12,13 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 06/26/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: c6bfa094f5f06483a9c59a1e0167e5fa7f8f053e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/28/2017
-
 
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要

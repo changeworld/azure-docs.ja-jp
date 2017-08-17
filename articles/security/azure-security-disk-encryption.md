@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 09de76a9147466f002ceb7faa5b1f9a10a2af75b
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: ab95c39a3b5c4ac2c07bf5de36abbdc22fde7e7d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
@@ -36,7 +36,7 @@ Azure Disk Encryption は、Windows および Linux IaaS 仮想マシン ディ�
 Azure Disk Encryption ソリューションでは、次の顧客シナリオがサポートされています。
 
 * 事前に暗号化した VHD と暗号化キーから作成された新しい IaaS VM での暗号化を有効にする
-* Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする
+* サポートされている Azure ギャラリー イメージから作成された新しい IaaS VM での暗号化を有効にする
 * Azure で実行されている既存の IaaS VM での暗号化を有効にする
 * Windows IaaS VM での暗号化を無効にする
 * Linux IaaS VM でのデータ ドライブの暗号化を無効にする
@@ -48,7 +48,7 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 
 * Azure Key Vault との統合
 * Standard レベルの VM: [A、D、DS、G、GS、F などの IaaS VM シリーズ](https://azure.microsoft.com/pricing/details/virtual-machines/)
-* Windows および Linux IaaS VM、および管理ディスク VM での暗号化を有効にする
+* サポートされている Azure ギャラリー イメージから Windows および Linux IaaS VM、および管理ディスク VM での暗号化を有効にする
 * Windows IaaS VM および管理ディスク VM での OS およびデータ ドライブの暗号化を無効にする
 * Linux IaaS VM および管理ディスク VM でのデータ ドライブの暗号化を無効にする
 * Windows クライアント OS を実行している IaaS VM での暗号化を有効にする
@@ -63,7 +63,9 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 
 * Basic レベルの IaaS VM
 * Linux IaaS VM の OS ドライブの暗号化を無効にする
+* OS ドライブが Linux Iaas VM で暗号化されている場合にデータ ドライブの暗号化を無効にする
 * 従来の VM の作成方法を使用して作成された IaaS VM
+* Windows および Linux IaaS VM ユーザーのカスタム イメージでの暗号化を有効にする機能はサポートされていません。 Linux LVM OS ディスクでの暗号化を有効にする機能は現時点ではサポートされていません。 このサポートはすぐに追加されます。
 * オンプレミス キー管理サービスとの統合
 * Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
 * キー暗号化キーを使用せずに暗号化された、暗号化 VM のバックアップと復元。
@@ -79,7 +81,7 @@ Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると�
 * ストレージに保存中のブート ボリュームを保護するために OS ボリュームを暗号化する
 * ストレージに保存中のデータ ボリュームを保護するためにデータ ボリュームを暗号化する
 * Windows IaaS VM での OS およびデータ ドライブの暗号化を無効にする
-* Linux IaaS VM でのデータ ドライブの暗号化を無効にする
+* Linux IaaS VM でのデータ ドライブの暗号化を無効にする (OS ドライブが暗号化されていない場合のみ)
 * Key Vault サブスクリプションの暗号化キーとシークレットを保護する
 * 暗号化された IaaS VM の暗号化状態をレポートする
 * IaaS 仮想マシンからディスク暗号化構成設定を削除する
@@ -129,12 +131,13 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
 
 1. Azure Disk Encryption Resource Manager テンプレートまたは PowerShell コマンドレットを使用して暗号化解除の構成を指定することで、Azure で実行中の IaaS VM での暗号化を無効に (暗号化解除) します。
 
- この手順によって、Windows IaaS VM で実行されている OS またはデータ ボリューム、もしくはその両方の暗号化が無効になります。 ただし、先のセクションで述べたように、Linux で OS ディスクの暗号化を無効にすることはサポートされていません。 暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
+ この手順によって、Windows IaaS VM で実行されている OS またはデータ ボリューム、もしくはその両方の暗号化が無効になります。 ただし、先のセクションで述べたように、Linux で OS ディスクの暗号化を無効にすることはサポートされていません。 OS ディスクが暗号化されていない限り、暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
 2. Azure によって VM サービス モデルが更新され、IaaS VM は暗号化解除済みとしてマークされます。 VM の内容は保存時に暗号化されなくなります。
 
 > [!NOTE]
 > 暗号化を無効にしても、Key Vault や暗号化キー マテリアル (Windows システムの場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) は削除されません。
  > Linux 用の OS ディスク暗号化の無効化は、サポートされていません。 暗号化解除の手順は、Linux VM のデータ ドライブでのみ許可されます。
+OS ドライブが暗号化されている場合、Linux のデータ ディスクの暗号化を無効にする機能はサポートされていません。
 
 ## <a name="prerequisites"></a>前提条件
 概要セクションに記載されているサポート対象シナリオの Azure IaaS VM で Azure Disk Encryption を有効にする前に、以下の前提条件を確認してください。
@@ -146,7 +149,7 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
 > [!NOTE]
 > Windows Server 2008 R2 の場合、Azure で暗号化を有効にする前に、.Net Framework 4.5 をインストールする必要があります。 オプションの更新プログラムである Windows Server 2008 R2 x64 ベース システム用の Microsoft .NET Framework 4.5.2 ([KB2901983](https://support.microsoft.com/kb/2901983)) をインストールし、Windows 更新プログラムからこれをインストールすることができます。
 
-* Azure Disk Encryption は、以下の Linux サーバーのディストリビューションおよびバージョンでサポートされます。
+* Azure Disk Encryption は、以下の Azure ギャラリー ベースの Linux サーバーのディストリビューションおよびバージョンでサポートされます。
 
 | Linux ディストリビューション | バージョン | 暗号化がサポートされているボリューム タイプ|
 | --- | --- |--- |
@@ -229,7 +232,7 @@ IaaS VM のディスク暗号化を無効にするには、以下の手順に従
 
 * 再帰的にマウントされているデータ ディスクは、Linux 用 Azure Disk Encryption でサポートされていません。 たとえば、ターゲット システムの /foo/bar 上にディスクがマウントされ、/foo/bar/baz 上に別のディスクがマウントされている場合、/foo/bar/baz の暗号化は成功しますが、/foo/bar の暗号化は失敗します。 
 
-* Azure Disk Encryption は、前述の前提条件を満たすギャラリー イメージでのみサポートされます。  カスタム イメージにはカスタムのパーティション スキームとプロセス動作が存在する可能性があるため、カスタム イメージはサポートされません。  また、最初は前提条件を満たしていて、作成後に変更されたギャラリー イメージも、互換性がない可能性があります。  そのため、Linux VM の暗号化手順として、クリーンなギャラリー イメージから始めて、VM を暗号化し、必要に応じてカスタム ソフトウェアまたはデータを VM に追加することをお勧めします。  
+* Azure Disk Encryption は、前述の前提条件を満たす Azure ギャラリーがサポートしているイメージでのみサポートされます。 ユーザーのカスタム イメージにはカスタムのパーティション スキームとプロセス動作が存在する可能性があるため、カスタム イメージはサポートされません。 また、最初は前提条件を満たしていて、作成後に変更されたギャラリー イメージも、互換性がない可能性があります。  そのため、Linux VM の暗号化手順として、クリーンなギャラリー イメージから始めて、VM を暗号化し、必要に応じてカスタム ソフトウェアまたはデータを VM に追加することをお勧めします。  
 
 > [!NOTE]
 > 暗号化された VM のバックアップと復元は、KEK 構成を使用して暗号化された VM についてのみサポートされています。 KEK を使用せずに暗号化された VM については、サポートされていません。 KEK は、VM を有効にするための省略可能なパラメーターです。
@@ -245,7 +248,7 @@ Azure で実行中の VM に対して暗号化を有効にする必要がある�
 ##### <a name="create-an-azure-ad-application-by-using-azure-powershell"></a>Azure PowerShell を使用して Azure AD アプリケーションを作成する
 次の PowerShell コマンドレットを使用して Azure AD アプリケーションを作成します。
 
-    $aadClientSecret = “yourSecret”
+    $aadClientSecret = "yourSecret"
     $azureAdApplication = New-AzureRmADApplication -DisplayName "<Your Application Display Name>" -HomePage "<https://YourApplicationHomePage>" -IdentifierUris "<https://YouApplicationUri>" -Password $aadClientSecret
     $servicePrincipal = New-AzureRmADServicePrincipal –ApplicationId $azureAdApplication.ApplicationId
 
@@ -699,7 +702,7 @@ IaaS VM の暗号化状態は、ディスク暗号化 CLI コマンド `azure vm
 暗号化を無効にする手順を実行すると、Windows IaaS VM で実行されている OS、データ ボリューム、またはその両方の暗号化が無効になります。 OS ボリュームの暗号化を無効にして、データ ボリュームを暗号化されたままにすることはできません。 暗号化を無効にする手順を実行すると、Azure クラシック デプロイメント モデルによって VM サービス モデルが更新され、Windows IaaS VM は暗号化解除済みとしてマークされます。 VM の内容は保存時に暗号化されなくなります。 暗号化を解除しても、Key Vault や暗号化キー マテリアル (Windows の場合は BitLocker 暗号化キー、Linux の場合はパスフレーズ) は削除されません。
 
 ##### <a name="linux-vm"></a>Linux VM
-暗号化を無効にする手順を実行すると、Linux IaaS VM で実行されているデータ ボリュームの暗号化が無効になります。
+暗号化を無効にする手順を実行すると、Linux IaaS VM で実行されているデータ ボリュームの暗号化が無効になります。 この手順は、OS ディスクが暗号化されていない場合にのみ機能します。
 
 > [!NOTE]
 > Linux VM では、OS ディスクの暗号化を無効にすることは許可されていません。

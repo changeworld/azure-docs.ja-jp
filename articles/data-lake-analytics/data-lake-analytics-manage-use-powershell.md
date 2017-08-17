@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/26/2017
+ms.date: 07/23/2017
 ms.author: mahi
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d4e4bb5e18b63a9d9494a2294743fa9f45b64fa1
+ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
+ms.openlocfilehash: b79f6dd20d2e8e298b8d1824b70ff9f0d0fde9aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -128,8 +128,6 @@ Get-AdlAnalyticsAccount -ResourceGroupName $rg
 
 ## <a name="managing-firewall-rules"></a>ファイアウォール規則の管理
 
-### <a name="add-or-remove-firewall-rules"></a>ファイアウォール規則の追加または削除
-
 ファイアウォール規則を一覧表示します。
 
 ```powershell
@@ -158,13 +156,7 @@ Set-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName -StartIpAddress $sta
 Remove-AdlAnalyticsFirewallRule -Account $adla -Name $ruleName
 ```
 
-### <a name="enable-or-disable-firewall-rules"></a>ファイアウォール規則の有効化または無効化
 
-ファイアウォール規則を有効にします。
-
-```powershell
-Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
-```
 
 Azure の IP アドレスを許可します。
 
@@ -172,9 +164,8 @@ Azure の IP アドレスを許可します。
 Set-AdlAnalyticsAccount -Name $adla -AllowAzureIpState Enabled
 ```
 
-ファイアウォール規則を無効にします。
-
 ```powershell
+Set-AdlAnalyticsAccount -Name $adla -FirewallState Enabled
 Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 ```
 
@@ -193,26 +184,22 @@ $adla_acct = Get-AdlAnalyticsAccount -Name $adla
 $dataLakeStoreName = $adla_acct.DefaultDataLakeAccount
 ```
 
-または、データ ソースの一覧を列挙している場合。 既定の Data Lake Store アカウントは、次のパターンを使用して検索することができます。
+データソースの一覧を `IsDefault` プロパティでフィルター処理して既定の Data Lake Store アカウントを検索できます。
 
 ```powershell
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
 ```
 
-### <a name="add-data-sources"></a>データ ソースの追加
-
-追加のストレージ (BLOB) アカウントを追加します。
+### <a name="add-a-data-source"></a>データ ソースの追加
 
 ```powershell
+
+# Add an additional Storage (Blob) account.
 $AzureStorageAccountName = "<AzureStorageAccountName>"
 $AzureStorageAccountKey = "<AzureStorageAccountKey>"
-
 Add-AdlAnalyticsDataSource -Account $adla -Blob $AzureStorageAccountName -AccessKey $AzureStorageAccountKey
-```
 
-追加の Data Lake Store アカウントを追加します。
-
-```powershell
+# Add an additional Data Lake Store account.
 $AzureDataLakeStoreName = "<AzureDataLakeStoreAccountName"
 Add-AdlAnalyticsDataSource -Account $adla -DataLakeStore $AzureDataLakeStoreName 
 ```
@@ -230,11 +217,9 @@ Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "DataLakeStore
 Get-AdlAnalyticsDataSource -Name $adla | where -Property Type -EQ "Blob"
 ```
 
-## <a name="managing-jobs"></a>ジョブの管理
+## <a name="submit-u-sql-jobs"></a>U-SQL ジョブを送信する
 
-### <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
-
-U-SQL スクリプトとして文字列を送信します。
+### <a name="submit-a-string-as-a-u-sql-script"></a>U-SQL スクリプトとして文字列を送信する
 
 ```powershell
 $script = @"
@@ -256,7 +241,7 @@ Submit-AdlJob -AccountName $adla -Script $script -Name "Demo"
 ```
 
 
-U-SQL スクリプトとしてファイルを送信します。
+### <a name="submit-a-file-as-a-u-sql-script"></a>U-SQL スクリプトとしてファイルを送信する
 
 ```powershell
 $scriptpath = "d:\test.usql"
@@ -264,13 +249,16 @@ $script | Out-File $scriptpath
 Submit-AdlJob -AccountName $adla –ScriptPath $scriptpath -Name "Demo"
 ```
 
-### <a name="list-jobs"></a>ジョブのリスト
+## <a name="list-jobs-in-an-account"></a>アカウントのジョブを一覧表示する
 
-アカウントに存在するすべてのジョブを一覧表示します。 出力結果には、現在実行されているジョブと最近完了したジョブが含まれます。
+### <a name="list-all-the-jobs-in-the-account"></a>アカウントに存在するすべてのジョブを一覧表示します。 
+
+出力結果には、現在実行されているジョブと最近完了したジョブが含まれます。
 
 ```powershell
 Get-AdlJob -Account $adla
 ```
+
 
 ### <a name="list-a-specific-number-of-jobs"></a>特定の数のジョブを一覧表示します。
 
@@ -280,44 +268,83 @@ Get-AdlJob -Account $adla
 $jobs = Get-AdlJob -Account $adla -Top 10
 ```
 
+
 ### <a name="list-jobs-based-on-the-value-of-job-property"></a>ジョブ プロパティの値に基づいてジョブを一覧表示します。
 
-最後の日に送信されたジョブを一覧表示します。
+`-State` パラメーターの使用 下記の値を任意に組み合わせることができます。
 
-```
-$d = [DateTime]::Now.AddDays(-1)
-Get-AdlJob -Account $adla -SubmittedAfter $d
-```
-
-過去 5 日間に送信され、正常に完了したジョブを一覧表示します。
-
-```
-$d = (Get-Date).AddDays(-5)
-Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
-```
-
-成功したジョブを一覧表示します。
-
-```
-Get-AdlJob -Account $adla -State Ended -Result Succeeded
-```
-
-失敗したジョブを一覧表示します。
+* `Accepted`
+* `Compiling`
+* `Ended`
+* `New`
+* `Paused`
+* `Queued`
+* `Running`
+* `Scheduling`
+* `Start`
 
 ```powershell
+# List the running jobs
+Get-AdlJob -Account $adla -State Running
+
+# List the jobs that have completed
+Get-AdlJob -Account $adla -State Ended
+
+# List the jobs that have not started yet
+Get-AdlJob -Account $adla -State Accepted,Compiling,New,Paused,Scheduling,Start
+```
+
+`-Result` パラメーターを使って、終了したジョブが正常完了したかどうかを検出します。 次の値があります。
+
+* キャンセル
+* Failed
+* なし
+* Succeeded
+
+``` powershell
+# List Successful jobs.
+Get-AdlJob -Account $adla -State Ended -Result Succeeded
+
+# List Failed jobs.
 Get-AdlJob -Account $adla -State Ended -Result Failed
 ```
 
-過去 7 日以内に "joe@contoso.com" によって送信されたすべての失敗したジョブを一覧表示します。
+
+`-Submitter` パラメーターを使うと、ジョブを送信したユーザーを特定できます。
 
 ```powershell
+Get-AdlJob -Account $adla -Submitter "joe@contoso.com"
+```
+
+`-SubmittedAfter` はフィルタ処理して時間の範囲を特定する際に役に立ちます。
+
+
+```powershell
+# List  jobs submitted in the last day.
+$d = [DateTime]::Now.AddDays(-1)
+Get-AdlJob -Account $adla -SubmittedAfter $d
+
+# List  jobs submitted in the last seven day.
+$d = [DateTime]::Now.AddDays(-7)
+Get-AdlJob -Account $adla -SubmittedAfter $d
+```
+
+### <a name="common-scenarios-for-listing-jobs"></a>ジョブを一覧表示する一般的なシナリオ
+
+
+```
+# List jobs submitted in the last five days and that successfully completed.
+$d = (Get-Date).AddDays(-5)
+Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
+
+# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
 Get-AdlJob -Account $adla `
     -Submitter "joe@contoso.com" `
     -SubmittedAfter (Get-Date).AddDays(-7) `
     -Result Failed
 ```
 
-### <a name="filtering-a-list-of-jobs"></a>ジョブの一覧のフィルター処理
+## <a name="filtering-a-list-of-jobs"></a>ジョブの一覧のフィルター処理
 
 現在の PowerShell セッションにジョブの一覧ができると、 通常の PowerShell コマンドレットを使用して、フィルター処理できます。
 
@@ -383,18 +410,32 @@ $jobs = Get-AdlJob -Account $adla -Top 10
 $jobs = $jobs | %{ annotate_job( $_ ) }
 ```
 
-### <a name="get-information-about-a-job"></a>ジョブに関する情報の取得
+## <a name="get-information-about-pipelines-and-recurrences"></a>パイプラインと繰り返しについての情報を取得する
+
+`Get-AdlJobPipeline` コマンドレットを使って前に送信したジョブのパイプライン情報を確認します。
+
+```powershell
+$pipelines = Get-AdlJobPipeline -Account $adla
+
+$pipeline = Get-AdlJobPipeline -Account $adla -PipelineId "<pipeline ID>"
+```
+
+`Get-AdlJobRecurrence` コマンドレットを使って前に送信したジョブの繰り返し情報を確認します。
+
+```powershell
+$recurrences = Get-AdlJobRecurrence -Account $adla
+
+$recurrence = Get-AdlJobRecurrence -Account $adla -RecurrenceId "<recurrence ID>"
+```
+
+## <a name="get-information-about-a-job"></a>ジョブに関する情報の取得
+
+### <a name="get-job-status"></a>ジョブの状態の取得
 
 特定のジョブの状態を取得します。
 
 ```powershell
 Get-AdlJob -AccountName $adla -JobId $job.JobId
-```
-
-ジョブが完了するまで `Get-AdlAnalyticsJob` を繰り返す替わりに、`Wait-AdlJob` コマンドレットを使用してジョブの終了を待機できます。
-
-```powershell
-Wait-AdlJob -Account $adla -JobId $job.JobId
 ```
 
 ### <a name="examine-the-job-outputs"></a>ジョブ出力を確認
@@ -405,16 +446,46 @@ Wait-AdlJob -Account $adla -JobId $job.JobId
 Get-AdlStoreChildItem -Account $adls -Path "/"
 ```
 
-ファイルの存在を確認します。
-
-```powershell
-Test-AdlStoreItem -Account $adls -Path "/data.csv"
-```
+## <a name="manage-running-jobs"></a>実行中のジョブの管理
 
 ### <a name="cancel-a-job"></a>ジョブを取り消す
 
 ```powershell
 Stop-AdlJob -Account $adls -JobID $jobID
+```
+
+### <a name="wait-for-a-job-to-finish"></a>ジョブが終了するまで待機する
+
+ジョブが完了するまで `Get-AdlAnalyticsJob` を繰り返す替わりに、`Wait-AdlJob` コマンドレットを使用してジョブの終了を待機できます。
+
+```powershell
+Wait-AdlJob -Account $adla -JobId $job.JobId
+```
+
+## <a name="manage-compute-policies"></a>コンピューティング ポリシーを管理する
+
+### <a name="list-existing-compute-policies"></a>既存のコンピューティング ポリシーを一覧表示する
+
+`Get-AdlAnalyticsComputePolicy` コマンドレットは、Data Lake Analytics アカウントのコンピューティング ポリシーの情報を取得します。
+
+```powershell
+$policies = Get-AdlAnalyticsComputePolicy -Account $adla
+```
+
+### <a name="create-a-compute-policy"></a>コンピューティング ポリシーを作成する
+
+`New-AdlAnalyticsComputePolicy` コマンドレットは、Data Lake Analytics アカウントの新しいコンピューティング ポリシーを作成します。 この例では、指定したユーザーが使用可能な最大 AU を 50、最小のジョブ優先順位 を 250 に設定します。
+
+```powershell
+$userObjectId = (Get-AzureRmAdUser -SearchString "garymcdaniel@contoso.com").Id
+
+New-AdlAnalyticsComputePolicy -Account $adla -Name "GaryMcDaniel" -ObjectId $objectId -ObjectType User -MaxDegreeOfParallelismPerJob 50 -MinPriorityPerJob 250
+```
+
+## <a name="check-for-the-existence-of-a-file"></a>ファイルの存在を確認します。
+
+```powershell
+Test-AdlStoreItem -Account $adls -Path "/data.csv"
 ```
 
 ## <a name="uploading-and-downloading"></a>アップロードとダウンロード
@@ -447,10 +518,10 @@ Export-AdlStoreItem -AccountName $adls -Path "/" -Destination "c:\myData\" -Recu
 > アップロードまたはダウンロードのプロセスが中断された場合は、``-Resume`` フラグでコマンドレットを再度実行して、プロセスの再開を試みることができます。
 
 ## <a name="manage-catalog-items"></a>カタログ項目の管理
+
 U-SQL カタログを使用して、U-SQL スクリプトで共有できるように、データとコードを構成します。 カタログでは、Azure Data Lake のデータを使用して可能な限り最高のパフォーマンスを実現できます。 詳細については、「 [U-SQL カタログの使用](data-lake-analytics-use-u-sql-catalog.md)」を参照してください。
 
 ### <a name="list-items-in-the-u-sql-catalog"></a>U-SQL カタログ内の項目を一覧表示する
-
 
 ```powershell
 # List U-SQL databases
@@ -530,6 +601,7 @@ Write-Host '$subid' " = ""$adla_subid"" "
 Write-Host '$adla' " = ""$adla_name"" "
 Write-Host '$adls' " = ""$adla_defadlsname"" "
 ```
+
 ## <a name="working-with-azure"></a>Azure の操作
 
 ### <a name="get-details-of-azurerm-errors"></a>AzureRm エラーの詳細の取得

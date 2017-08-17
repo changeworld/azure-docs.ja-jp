@@ -5,10 +5,11 @@
 ## [コンピューティングのセキュリティ](security-virtual-machines-overview.md)
 ## [運用上のセキュリティ](azure-operational-security-overview.md)
 ## [セキュリティの管理と監視](security-management-and-monitoring-overview.md)
+## [Service Fabric のセキュリティ](azure-service-fabric-security-overview.md)
 ## [ID 管理](security-identity-management-overview.md)
 ## [IoT のセキュリティ](../iot-suite/iot-security-architecture.md#security-in-iot)
 ## [セキュリティのアーキテクチャ](azure-security-architecture-overview.md)
-### [運用上のセキュリティ](azure-operational-security.md)
+### [運用上のセキュリティの有効化](azure-operational-security.md)
 ### [高度な脅威検出](azure-threat-detection.md)
 ### [ログ記録と監査](azure-log-audit.md)
 ### [パブリック クラウドでの分離](azure-isolation.md)
@@ -40,6 +41,9 @@
 #### [ディスクの暗号化のトラブルシューティング](azure-security-disk-encryption-tsg.md)
 ### [Azure VM の暗号化](../security-center/security-center-disk-encryption.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
+## 運用上のセキュリティ
+### [運用上のセキュリティのベスト プラクティス](azure-operational-security-best-practices.md)
+
 ## セキュリティの管理と監視
 ### [セキュリティ管理](azure-security-management.md)
 ### [Azure Security Center](../security-center/security-center-intro.md?toc=%2fazure%2fsecurity%2ftoc.json)
@@ -49,6 +53,10 @@
 #### [Security Center のアラートの統合](security-azure-log-integration-security-center.md)
 #### [Event Hubs を使用した Key Vault のログの統合](security-azure-log-integration-keyvault-eventhub.md)
 #### [FAQ](security-azure-log-integration-faq.md)
+
+## Service Fabric
+### [Service Fabric のベスト プラクティス](azure-service-fabric-security-best-practices.md)
+### [Service Fabric のチェックリスト](azure-service-fabric-security-checklist.md)
 
 ## ID 管理
 ### [ID 管理セキュリティのベスト プラクティス](azure-security-identity-management-best-practices.md)

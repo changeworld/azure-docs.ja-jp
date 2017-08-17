@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 3/31/2017
+ms.date: 08/11/2017
 ms.author: ruturajd
 ms.translationtype: Human Translation
 ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: 3116e2c15242ea7be8eeb77281b40bc4b38b846e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/15/2017
-
 
 ---
 

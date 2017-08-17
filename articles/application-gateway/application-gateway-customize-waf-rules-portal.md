@@ -15,18 +15,22 @@ ms.custom:
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 094ae187ec8ba5ff38f174ee4cf139d30db7e057
+ms.translationtype: HT
+ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
+ms.openlocfilehash: c3e93614f012eecff0e88f5f2ad13db199406f4a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/04/2017
 
 ---
 
 # <a name="customize-web-application-firewall-rules-through-the-portal"></a>ポータルを使用した Web アプリケーション ファイアウォール ルールのカスタマイズ
 
-Application Gateway Web アプリケーション ファイアウォールは、Web アプリケーションを保護します。 こうした保護は、OWASP CRS ルールセットによって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。  このため、アプリケーション ゲートウェイには、Web アプリケーション ファイアウォール対応アプリケーション ゲートウェイでルールグループとルールをカスタマイズする機能が用意されています。 特定のルール グループおよびルールの詳細については、[Web アプリケーション ファイアウォール CRS のルール グループおよびルール](application-gateway-crs-rulegroups-rules.md)に関するページをご覧ください
+> [!div class="op_single_selector"]
+> * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
+> * [PowerShell](application-gateway-customize-waf-rules-powershell.md)
+> * [Azure CLI 2.0](application-gateway-customize-waf-rules-cli.md)
+
+Application Gateway Web アプリケーション ファイアウォールは、Web アプリケーションを保護します。 こうした保護は、OWASP CRS ルールセットによって提供されます。 ルールによっては誤検出を発生させて、実際のトラフィックを妨げることがあります。  このため、アプリケーション ゲートウェイには、Web アプリケーション ファイアウォール対応アプリケーション ゲートウェイに対するルール グループとルールをカスタマイズする機能が用意されています。 特定のルール グループおよびルールの詳細については、[Web アプリケーション ファイアウォール CRS のルール グループおよびルール](application-gateway-crs-rulegroups-rules.md)に関するページをご覧ください
 
 >[!NOTE]
 > アプリケーション ゲートウェイが WAF レベルを使用していない場合、次の図に示すように、アプリケーション ゲートウェイを WAF レベルにアップグレードするオプションが表示されます。
@@ -35,7 +39,7 @@ Application Gateway Web アプリケーション ファイアウォールは、W
 
 ## <a name="view-rule-groups-and-rules"></a>ルール グループとルールの表示
 
-アプリケーション ゲートウェイに移動し、**[Web アプリケーション ファイアウォール]** を選択します。  **[Advanced rule configuration (詳細なルール構成)]** をクリックします。  これにより、すべてのルール グループが示されているテーブルがページに表示されます。このテーブルでは、ルール セットが選択されています。
+アプリケーション ゲートウェイに移動し、**[Web アプリケーション ファイアウォール]** を選択します。  **[Advanced rule configuration (詳細なルール構成)]** をクリックします。  このビューでは、選択されたルール セットによって提供されるすべてのルール グループのテーブルがページに表示されます。
 
 ![無効化されたルールを構成する][1]
 
@@ -47,13 +51,13 @@ Application Gateway Web アプリケーション ファイアウォールは、W
 
 ## <a name="disable-rule-groups-and-rules"></a>ルール グループとルールの無効化
 
-ルールの無効化は、ルール グループ全体を対象にすることも、1 つまたは複数のルール グループに含まれる特定のルールを対象にすることもできます。  無効にするルールのチェックボックスをオフにして、**[保存]** をクリックします。  これにより変更がアプリケーション ゲートウェイに保存されます。
+ルールの無効化は、ルール グループ全体を対象にすることも、1 つまたは複数のルール グループに含まれる特定のルールを対象にすることもできます。  無効にするルールのチェックボックスをオフにして、**[保存]** をクリックします。  この手順により、変更がアプリケーション ゲートウェイに保存されます。
 
 ![変更を保存する][3]
 
 ## <a name="next-steps"></a>次のステップ
 
-無効になっているルールを構成したら、[Application Gateway 診断](application-gateway-diagnostics.md#diagnostic-logs)に関するページで WAF ログの表示方法を確認します
+無効になっているルールを構成したら、[Application Gateway 診断](application-gateway-diagnostics.md#diagnostic-logging)に関するページで WAF ログの表示方法を確認します
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

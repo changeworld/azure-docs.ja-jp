@@ -13,13 +13,7 @@
 ## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 作業の開始
-## [Azure VM をレプリケートする (プレビュー)](azure-to-azure-walkthrough-overview.md)
-### [手順 1: アーキテクチャを確認する](azure-to-azure-walkthrough-architecture.md)
-### [手順 2: 開始する前に](azure-to-azure-walkthrough-prerequisites.md)
-### [手順 3: ネットワークを計画する](azure-to-azure-walkthrough-network.md)
-### [手順 4: コンテナーを作成する](azure-to-azure-walkthrough-vault.md)
-### [手順 5: レプリケーションを有効にする](azure-to-azure-walkthrough-enable-replication.md)
-### [手順 6: テスト フェールオーバーを実行する](azure-to-azure-walkthrough-test-failover.md)
+## [Azure VM をレプリケートする (プレビュー)](site-recovery-azure-to-azure.md)
 ## [VMware VM を Azure にレプリケート](vmware-walkthrough-overview.md)
 ### [手順 1: アーキテクチャを確認する](vmware-walkthrough-architecture.md)
 ### [手順 2: 前提条件と制限事項を確認する](vmware-walkthrough-prerequisites.md)
@@ -70,17 +64,7 @@
 ### [手順 9: モビリティ サービスをインストールする](physical-walkthrough-install-mobility.md)
 ### [手順 10: レプリケーションを有効にする](physical-walkthrough-enable-replication.md)
 ### [手順 11: テスト フェールオーバーを実行する](physical-walkthrough-test-failover.md)
-## [Hyper-V VM をセカンダリ サイトにレプリケートする (VMM 使用)](vmm-to-vmm-walkthrough-overview.md)
-### [手順 1: アーキテクチャを確認する](vmm-to-vmm-walkthrough-architecture.md)
-### [手順 2: 前提条件と制限事項を確認する](vmm-to-vmm-walkthrough-prerequisites.md)
-### [手順 3: ネットワークを計画する](vmm-to-vmm-walkthrough-network.md)
-### [手順 4: VMM と Hyper-V を準備する](vmm-to-vmm-walkthrough-vmm-hyper-v.md)
-### [手順 5: コンテナーを作成する](vmm-to-vmm-walkthrough-create-vault.md)
-### [手順 6: ソースとターゲットを設定する](vmm-to-vmm-walkthrough-source-target.md)
-### [手順 7: ネットワーク マッピングを構成する](vmm-to-vmm-walkthrough-network-mapping.md)
-### [手順 8: レプリケーション ポリシーを作成する](vmm-to-vmm-walkthrough-replication.md)
-### [手順 9: レプリケーションを有効にする](vmm-to-vmm-walkthrough-enable-replication.md)
-### [手順 10: テスト フェールオーバーを実行する](vmm-to-vmm-walkthrough-test-failover.md)
+## [Hyper-V VM をセカンダリ サイトにレプリケートする (VMM 使用)](site-recovery-vmm-to-vmm.md)
 ## [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
 ## [マルチテナント デプロイで VMware VM を Azure にレプリケートする (CSP)](site-recovery-multi-tenant-support-vmware-using-csp.md)
 
@@ -144,7 +128,8 @@
 ### [Azure への Hyper-V のレプリケーションの自動化 (VMM なし)](site-recovery-deploy-with-powershell-resource-manager.md)
 ### [Azure への Hyper-V のレプリケーションの自動化 (VMM を使用)](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 ### [セカンダリ サイトへの Hyper-V のレプリケーションの自動化 (VMM を使用)](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
-## Manage
+## 管理
+### [Site Recovery コンテナーから Recovery Services コンテナーへのアップグレード](upgrade-site-recovery-vaults.md)
 ### [Azure でのプロセス サーバーの管理](site-recovery-vmware-setup-azure-ps-resource-manager.md)
 ### [構成サーバーの管理](site-recovery-vmware-to-azure-manage-configuration-server.md)
 ### [スケールアウト プロセス サーバーの管理](site-recovery-vmware-to-azure-manage-scaleout-process-server.md)

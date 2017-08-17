@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 07/15/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e6dcd3f6f9c7c8765409c3b0d50e4b3843bab5c6
-ms.openlocfilehash: e39ee63d190308b87ebeb43adeb8b3e5db86df57
+ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 9a9ca74b959d1940bf30a903a8eab65cad87b74a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
@@ -85,7 +85,23 @@ ms.lasthandoff: 02/22/2017
 
 **A:**: 最近 Premium バージョン (試用版を含む) に切り替えた場合、初めは 7 日間分までのデータを見ることができます。 データが累積すると、30 日間分まで見られるようになります。
 
- 
+---
+
+**Q: Identity Protection にリスク イベントがありますが、すべてのサインインの中に対応するサインインを確認できません。これは想定されますか。**
+**A:**: はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
+
+---
+
+**Q: Azure Portal で "リスクのフラグ付きユーザー" レポートはどうすればダウンロードできますか。**
+
+**A:** "リスクのフラグ付きユーザー" レポートをダウンロードするオプションは、近日中に追加されます。
+
+---
+
+**Q: Azure Portal でサインインまたはユーザーにリスクのフラグが付けられた理由はどうすれば調べることができますか。**
+
+**A:** Premium エディションのお客様は、[リスクのフラグ付きユーザー] に含まれるユーザーをクリックするか、[危険なサインイン] をクリックすれば、基になるリスク イベントについて確認できます。 無料および Basic エディションのお客様には、基になるリスク イベント情報なしで、リスクのあるユーザーとサインインが表示されます。
+
 ---
 
 

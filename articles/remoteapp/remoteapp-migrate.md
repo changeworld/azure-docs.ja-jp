@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 39dd726078c4dcc55063300bdca998ad822feadd
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
+ms.openlocfilehash: ba3cf4c6834279bbd7f94d666fd8abbb7ac05bf0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/22/2017
 
 ---
 # <a name="how-to-migrate-data-into-and-out-of-azure-remoteapp"></a>Azure RemoteApp を移行先または移行元とするデータの移行方法
@@ -61,5 +61,11 @@ RemoteApp で OneDrive for Business 同期エージェントを有効にする�
 
 ## <a name="copy-files-by-using-drive-redirection"></a>ドライブ リダイレクトを使用してファイルをコピーする
 [ドライブ リダイレクト](remoteapp-redirection.md)を有効にしている場合、ユーザー用にマップされたドライブが既に作成されています。 この場合、ユーザーはリダイレクトされたドライブ上でファイルを zip 圧縮してから、ローカル PC に保存できます。
+
+## <a name="how-administrators-can-export-data"></a>管理者がデータをエクスポートする方法
+
+Azure RemoteApp の管理者は、サブスクリプション内のすべてのコレクションについて、すべてのユーザー プロファイル ディスク (UPD) を、Azure PowerShell コマンドレット Export-AzureRemoteAppUserDisk を使用して、Azure Storage にエクスポートすることができます。  UPD を個別に選択する機能はありません。  この PowerShell コマンドを実行すると、各ユーザー ディスクは 50 GB の固定ディスク サイズになり、Azure Storage にエクスポートされます。  Azure Storage のコストは、このストレージに対して直ちに発生します。  このコマンドを実行するときは、セッションが 1 つもないことを確認してください。セッションがあると、エクスポートは失敗します。
+
+ドメインに参加している Azure RemoteApp デプロイの UPD の再利用は、RDS デプロイ内でのみ可能です。ドメインに参加していないデプロイは使用できません。  RDS デプロイでこれらのディスクを使用する場合は、RDS デプロイに UPD をエクスポート、変換、インポートする[自動化スクリプト](https://github.com/arcadiahlyy/aramigration)の利用をお勧めします。
 
 

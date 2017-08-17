@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 07/25/2017
 ms.author: tomfitz
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 09537fb4058f1fd27469fb9386bc52d938c027ec
+ms.translationtype: HT
+ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
+ms.openlocfilehash: 6a9128f45d4199404019cee594842d59c7f1aaf3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 07/26/2017
 
 ---
 
@@ -55,7 +55,7 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 リソース プロバイダーを登録するには、名前空間を指定します。
+リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーで機能するように構成します。 登録の範囲は常にサブスクリプションです。 既定では、多くのリソース プロバイダーが自動的に登録されます。 ただし、一部、手動で登録する必要があるリソース プロバイダーもあります。 リソース プロバイダーを登録するには、リソース プロバイダーの `/register/action` 操作を実行するための権限が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。
 
 ```powershell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Batch
@@ -69,6 +69,8 @@ RegistrationState : Registering
 ResourceTypes     : {batchAccounts, operations, locations, locations/quotas}
 Locations         : {West Europe, East US, East US 2, West US...}
 ```
+
+サブスクリプション内に特定のリソース プロバイダーからのリソース タイプがまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
 特定のリソース プロバイダーの情報を表示するには、次のコマンドを使用します。
 
@@ -157,13 +159,15 @@ Microsoft.CognitiveServices      Registered
 ...
 ```
 
-既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 リソース プロバイダーを登録するには、名前空間を指定します。
+リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーで機能するように構成します。 登録の範囲は常にサブスクリプションです。 既定では、多くのリソース プロバイダーが自動的に登録されます。 ただし、一部、手動で登録する必要があるリソース プロバイダーもあります。 リソース プロバイダーを登録するには、リソース プロバイダーの `/register/action` 操作を実行するための権限が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。
 
 ```azurecli
 az provider register --namespace Microsoft.Batch
 ```
 
 登録が進行中であることを示すメッセージが返されます。
+
+サブスクリプション内に特定のリソース プロバイダーからのリソース タイプがまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
 特定のリソース プロバイダーの情報を表示するには、次のコマンドを使用します。
 
@@ -255,9 +259,11 @@ Azure ですべてのリソース プロバイダおよびサブスクリプシ�
 
 ![リソース プロバイダーの表示](./media/resource-manager-supported-services/show-resource-providers.png)
 
-既定では、多くのリソース プロバイダーが自動的に登録されます。ただし、一部のリソース プロバイダーは手動で登録することが必要な場合があります。 リソース プロバイダーを登録するには、**[登録]** を選択します。
+リソース プロバイダーの登録によって、サブスクリプションがリソース プロバイダーで機能するように構成します。 登録の範囲は常にサブスクリプションです。 既定では、多くのリソース プロバイダーが自動的に登録されます。 ただし、一部、手動で登録する必要があるリソース プロバイダーもあります。 リソース プロバイダーを登録するには、リソース プロバイダーの `/register/action` 操作を実行するための権限が必要です。 この操作は、共同作成者ロールと所有者ロールに含まれます。 リソース プロバイダーを登録するには、**[登録]** を選択します。
 
 ![リソース プロバイダーの登録](./media/resource-manager-supported-services/register-provider.png)
+
+サブスクリプション内に特定のリソース プロバイダーからのリソース タイプがまだある場合、そのリソース プロバイダーの登録を解除することはできません。
 
 特定のリソース プロバイダーの情報を表示するには、**[その他のサービス]** を選択します。
 

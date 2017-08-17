@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 08/03/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3c59f777b8b42d67f85fb078c883f0b36a972ddb
+ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
+ms.openlocfilehash: b9aec6f8f293cdd31456a7f50e3efe792804c7c8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/05/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>チュートリアル: Azure Active Directory と Springer Link の統合
@@ -87,9 +87,8 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
 1. **[Azure AD シングル サインオンの構成](#configure-azure-ad-single-sign-on)** - ユーザーがこの機能を使用できるようにします。
 2. **[Azure AD のテスト ユーザーの作成](#create-an-azure-ad-test-user)** - Britta Simon で Azure AD のシングル サインオンをテストします。
-3. **[Springer Link テスト ユーザーの作成](#create-a-springer-link-test-user)** - Springer Link で Britta Simon に対応するユーザーを作成し、Azure AD の Britta Simon にリンクさせます。
-4. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
-5. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
+3. **[Azure AD テスト ユーザーの割り当て](#assign-the-azure-ad-test-user)** - Britta Simon が Azure AD シングル サインオンを使用できるようにします。
+4. **[シングル サインオンのテスト](#test-single-sign-on)** - 構成が機能するかどうかを確認します。
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Azure AD シングル サインオンの構成
 
@@ -105,22 +104,25 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_samlbase.png)
 
-3. **[Springer Link のドメインと URL]** セクションで、次の手順を実行します。
+3. **[Springer Link のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
+
+    ![[Springer Link のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url1.png)
+
+    a. **[識別子]** ボックスに次の URL を入力します。`https://fsso.springer.com`
+
+    b. **[応答 URL]** ボックスに、URL として「`https://fsso-qa1.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。    
+
+4. **[詳細な URL 設定の表示]** をクリックします。 **SP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[Springer Link のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-springerlink-tutorial/tutorial_springerlink_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<companyname>.live.cf.public.springer.com/athens-shibboleth-login?previousUrl=https%3A%2F%2Fcore-qa.live.cf.public.springer.com%2F` のパターンを使用して URL を入力します。
+    **[サインオン URL]** テキストボックスに、URL として「`https://fsso.springer.com/federation/Consumer/metaAlias/SpringerServiceProvider`」と入力します。    
 
-    b. **[識別子]** ボックスに、`https://<companyname>.springer.com` の形式で URL を入力します。
-
-    > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Springer Link クライアント サポート チーム](https://www.springer.com/gp/help/contact)に連絡してください。 
-
-4. **[保存]** ボタンをクリックします。
+5. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-springerlink-tutorial/tutorial_general_400.png)
 
-5. **メタデータ** URL を生成するには、次の手順を実行します。
+6. **メタデータ** URL を生成するには、次の手順を実行します。
 
     a. **[アプリの登録]** をクリックします。
     
@@ -140,11 +142,11 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     e. 次のパターンを使用して**メタデータ URL** を生成します。`<FEDERATION METADATA DOCUMENT url>?appid=<application id>`
 
-6. **Springer Link** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [Springer Link サポート チーム](http://www.springer.com/gp/help/contact)に送る必要があります。
+7. **Springer Link** 側でシングル サインオンを構成するには、生成された**メタデータ URL** を [Springer Link サポート チーム](mailto:identity@springernature.com)に送る必要があります。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
-> 
+
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD のテスト ユーザーの作成
 
@@ -176,12 +178,8 @@ Springer Link で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **[作成]**をクリックします。
  
-### <a name="create-a-springer-link-test-user"></a>Springer Link テスト ユーザーの作成
-
-このセクションでは、Springer Link で Britta Simon というユーザーを作成します。 [Springer Link サポート チーム](http://www.springer.com/gp/help/contact)と協力して、Springer Link プラットフォームにユーザーを追加します。 シングル サインオンを使用する前に、ユーザーを作成し、有効化する必要があります。 
-
 ### <a name="assign-the-azure-ad-test-user"></a>Azure AD テスト ユーザーの割り当て
 
 このセクションでは、Britta Simon に Springer Link へのアクセスを許可することで、このユーザーが Azure シングル サインオンを使用できるようにします。
