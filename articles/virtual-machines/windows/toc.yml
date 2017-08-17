@@ -55,8 +55,6 @@
       href: network-overview.md
     - name: VM スケール セット
       href: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
-    - name: インスタンス メタデータ サービス
-      href: ../virtual-machines-instancemetadataservice-overview.md
     - name: コンテナー
       href: containers.md
     - name: リソース マネージャー
@@ -153,6 +151,10 @@
           href: download-template.md
         - name: Azure VM エージェント
           href: agent-user-guide.md
+        - name: スケジュールされたイベント
+          href: scheduled-events.md
+        - name: メタデータの監視
+          href: instance-metadata-service.md
     - name: イメージの使用
       items:
         - name: イメージを検索および使用する

@@ -96,7 +96,7 @@
 #### [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
 #### [ファネル](usage-funnels.md)
 #### [保持](app-insights-usage-retention.md)
-#### [フロー](app-insights-usage-flows.md)
+#### [ユーザー フロー](app-insights-usage-flows.md)
 #### [ブック](app-insights-usage-workbooks.md)
 
 ### 分析

@@ -133,11 +133,12 @@
 ### コンテナー サービスの構築
 #### [Windows コンテナー アプリケーションの作成](service-fabric-get-started-containers.md)
 #### [Linux コンテナー アプリケーションの作成](service-fabric-get-started-containers-linux.md)
-#### [Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+#### [コンテナー セキュリティ](service-fabric-securing-containers.md)
 #### [Docker Compose (プレビュー)](service-fabric-docker-compose.md)
 #### [コンテナーとサービスのリソース ガバナンス](service-fabric-resource-governance.md)
 #### [ボリュームとログ ドライバー](service-fabric-containers-volume-logging-drivers.md)
 #### [コンテナー内のサービス](service-fabric-services-inside-containers.md)
+#### [コンテナー ネットワーク モード](service-fabric-networking-modes.md)
 
 ### Reliable Services サービスの構築
 #### [概要](service-fabric-reliable-services-introduction.md)

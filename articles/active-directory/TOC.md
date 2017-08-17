@@ -9,6 +9,7 @@
 # 作業開始
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
+## [会社のブランドの構成](customize-branding.md)
 ## [セルフサービスによるパスワードのリセットの構成](active-directory-passwords-getting-started.md)
 ## Azure AD ライセンスの管理
 ### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
@@ -142,6 +143,7 @@
 
 
 ## デバイスを管理する
+### [はじめに](device-management-introduction.md)
 ### [デバイスを登録する](active-directory-device-registration-overview.md)
 #### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
@@ -241,10 +243,6 @@
 #### ドメイン名を管理する
 ##### [Azure Portal](active-directory-domains-manage-azure-portal.md)
 ##### [クラシック ポータル](active-directory-add-manage-domain-names.md)
-### サインイン ページをカスタマイズする
-#### [Azure Portal](active-directory-branding-custom-signon-azure-portal.md)
-#### [言語固有](active-directory-branding-localize-azure-portal.md)
-#### [クラシック ポータル](active-directory-add-company-branding.md)
 ### [ディレクトリを管理する](active-directory-administer.md)
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [O365 ディレクトリ](active-directory-manage-o365-subscription.md)
