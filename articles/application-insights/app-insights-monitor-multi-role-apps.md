@@ -11,7 +11,7 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: sewhee
+ms.author: bwren
 ms.translationtype: HT
 ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: d8b466caba7201a5bb8612e773ad61943f6d1cf2

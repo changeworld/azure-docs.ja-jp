@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/12/2017
 ms.author: yushwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 12502c91f7dff01651e3edcfd1dfa6a9d5ffe234
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: d645855e8edddee092d244e18c9937c19237a49a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>S2S VPN または VNet-to-VNet 接続の IPsec/IKE ポリシーを構成する
@@ -39,7 +38,9 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 * [パート 5 - 管理 (作成、追加、削除) 接続の IPSEC/IKE ポリシー](#managepolicy)
 
 > [!IMPORTANT]
-> 1. IPsec/IKE ポリシーは、***Standard*** および ***HighPerformance*** の "***ルート ベースの***" VPN ゲートウェイでのみ機能することに注意してください。
+> 1. IPsec/IKE ポリシーは、次のゲートウェイ SKU でのみ機能します。
+>     - ***VpnGw1、VpnGw2、VpnGw3*** (ルート ベース)
+>     - ***Standard*** および ***HighPerformance*** (ルート ベース)
 > 2. ある特定の接続に対して指定できるポリシーの組み合わせは ***1 つ***だけです。
 > 3. IKE (メイン モード) と IPsec (クイック モード) の両方について、すべてのアルゴリズムとパラメーターを指定する必要があります。 ポリシーを部分的に指定することはできません。
 > 4. オンプレミスの VPN デバイスでポリシーがサポートされることを、VPN デバイス ベンダーの仕様で確認してください。 ポリシーに対応していない場合、S2S または VNet-to-VNet 接続を確立することはできません。
@@ -64,23 +65,38 @@ IPsec/IKE 標準プロトコルは、幅広い暗号アルゴリズムをさま�
 | ---              | ---                                                                         |
 | IKEv2 暗号化 | AES256、AES192、AES128、DES3、DES                                           |
 | IKEv2 整合性  | SHA384、SHA256、SHA1、MD5                                                   |
-| DH グループ         | ECP384、ECP256、DHGroup24、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
+| DH グループ         | DHGroup24、ECP384、ECP256、DHGroup14、DHGroup2048、DHGroup2、DHGroup1、なし |
 | IPsec 暗号化 | GCMAES256、GCMAES192、GCMAES128、AES256、AES192、AES128、DES3、DES、なし    |
 | IPsec 整合性  | GCMASE256、GCMAES192、GCMAES128、SHA256、SHA1、MD5                          |
-| PFS グループ        | ECP384、ECP256、PFS24、PFS2048、PFS14、PFS2、PFS1、なし                     |
-| QM SA の有効期間*  | 秒 (整数) およびキロバイト数 (整数)                                      |
-| トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False - 既定値は $False)            |
+| PFS グループ        | PFS24、ECP384、ECP256、PFS2048、PFS2、PFS1、なし                            |
+| QM SA の有効期間   | (**オプション**: 指定されていない場合、既定値が使用されます)<br>秒 (整数: **最小 300**/既定値 27,000 秒)<br>キロバイト数 (整数: **最小 1,024**/既定値 102,400,000 キロバイト)                                                                                |
+| トラフィック セレクター | UsePolicyBasedTrafficSelectors** ($True/$False； **Optional**、指定されていない場合、既定値は $False)                                                                         |
 |                  |                                                                             |
 
-> [!NOTE]
-> * (*) Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます。
-> * (**) 接続の "UsePolicyBasedTrafficSelectors" を $True に設定すると、Azure VPN ゲートウェイは、オンプレミスのポリシー ベースの VPN ファイアウォールに接続するように構成されます。 PolicyBasedTrafficSelectors を有効にする場合は、オンプレミス ネットワーク (ローカル ネットワーク ゲートウェイ) プレフィックスと Azure Virtual Network プレフィックスのすべての組み合わせに対応するトラフィック セレクターが VPN デバイスに定義されている必要があります (any-to-any は不可)。 たとえば、オンプレミス ネットワークのプレフィックスが 10.1.0.0/16 と 10.2.0.0/16 で、仮想ネットワークのプレフィックスが 192.168.0.0/16 と 172.16.0.0/16 である場合、次のトラフィック セレクターを指定する必要があります。
->   * 10.1.0.0/16 <====> 192.168.0.0/16
->   * 10.1.0.0/16 <====> 172.16.0.0/16
->   * 10.2.0.0/16 <====> 192.168.0.0/16
->   * 10.2.0.0/16 <====> 172.16.0.0/16
+> [!IMPORTANT]
+> 1. **IPsec 暗号化アルゴリズム用として GCMAES を使用する場合は、IPsec 整合性に、同じ GCMAES アルゴリズムとキーの長さを選択する必要があります。たとえば、両方に GCMAES128 を使用するなどです。**
+> 2. Azure VPN ゲートウェイでは、IKEv2 メイン モード SA の有効期間が 28,800 秒に固定されます
+> 3. 接続の "UsePolicyBasedTrafficSelectors" を $True に設定すると、Azure VPN ゲートウェイは、オンプレミスのポリシー ベースの VPN ファイアウォールに接続するように構成されます。 PolicyBasedTrafficSelectors を有効にする場合は、オンプレミス ネットワーク (ローカル ネットワーク ゲートウェイ) プレフィックスと Azure Virtual Network プレフィックスのすべての組み合わせに対応するトラフィック セレクターが VPN デバイスに定義されている必要があります (any-to-any は不可)。 たとえば、オンプレミス ネットワークのプレフィックスが 10.1.0.0/16 と 10.2.0.0/16 で、仮想ネットワークのプレフィックスが 192.168.0.0/16 と 172.16.0.0/16 である場合、次のトラフィック セレクターを指定する必要があります。
+>    * 10.1.0.0/16 <====> 192.168.0.0/16
+>    * 10.1.0.0/16 <====> 172.16.0.0/16
+>    * 10.2.0.0/16 <====> 192.168.0.0/16
+>    * 10.2.0.0/16 <====> 172.16.0.0/16
 
 ポリシー ベースのトラフィック セレクターの詳細については、[複数のオンプレミスのポリシー ベースの VPN デバイスへの接続](vpn-gateway-connect-multiple-policybased-rm-ps.md)に関する記事を参照してください。
+
+以下の表は、カスタム ポリシーでサポートされている、対応する Diffie-Hellman グループを示したものです。
+
+| **Diffie-Hellman グループ**  | **DHGroup**              | **PFSGroup** | **キーの長さ** |
+| ---                       | ---                      | ---          | ---            |
+| 1                         | DHGroup1                 | PFS1         | 768 ビット MODP   |
+| 2                         | DHGroup2                 | PFS2         | 1024 ビット MODP  |
+| 14                        | DHGroup14<br>DHGroup2048 | PFS2048      | 2048 ビット MODP  |
+| 19                        | ECP256                   | ECP256       | 256 ビット ECP    |
+| 20                        | ECP384                   | ECP284       | 384 ビット ECP    |
+| 24                        | DHGroup24                | PFS24        | 2048 ビット MODP  |
+|                           |                          |              |                |
+
+詳細については、[RFC3526](https://tools.ietf.org/html/rfc3526) と [RFC5114](https://tools.ietf.org/html/rfc5114) を参照してください。
 
 ## <a name ="crossprem"></a>パート 3 - IPsec/IKE ポリシーを使用して新しい S2S VPN 接続を作成する
 
@@ -159,11 +175,21 @@ New-AzureRmLocalNetworkGateway -Name $LNGName6 -ResourceGroupName $RG1 -Location
 
 #### <a name="1-create-an-ipsecike-policy"></a>1.IPsec/IKE ポリシーを作成する
 次のサンプル スクリプトは、次のアルゴリズムとパラメーターを使用して IPsec/IKE ポリシーを作成します。
+
 * IKEv2: AES256、SHA384、DHGroup24
 * IPsec: AES256、SHA256、PFS24、SA の有効期間 7,200 秒および 2,048 KB
 
 ```powershell
 $ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption AES256 -IpsecIntegrity SHA256 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 2048
+```
+
+IPsec に GCMAES を使用する場合、IPsec 暗号化と整合性の両方で同じ GCMAES アルゴリズムとキーの長さを使用する必要があります。以下に例を示します。
+
+* IKEv2: AES256、SHA384、DHGroup24
+* IPsec: **GCMAES256、GCMAES256**、PFS24、SA の有効期間 7,200 秒および 2,048 KB
+
+```powershell
+$ipsecpolicy6 = New-AzureRmIpsecPolicy -IkeEncryption AES256 -IkeIntegrity SHA384 -DhGroup DHGroup24 -IpsecEncryption GCMAES256 -IpsecIntegrity GCMAES256 -PfsGroup PFS24 -SALifeTimeSeconds 7200 -SADataSizeKilobytes 2048
 ```
 
 #### <a name="2-create-the-s2s-vpn-connection-with-the-ipsecike-policy"></a>2.IPsec/IKE ポリシーを使用して S2S VPN 接続を作成する

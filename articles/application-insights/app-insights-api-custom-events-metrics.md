@@ -12,17 +12,15 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/17/2017
-ms.author: cfreeman
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 8793744f63388c5df04a167585d5f7b99ec7acee
+ms.author: bwren
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: fe769fb433d65374109fec60c6c6d032b1ad97fb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>カスタムのイベントとメトリックのための Application Insights API
-
 
 アプリケーションに数行のコードを挿入して、ユーザーの行動を調べたり、問題の診断に役立つ情報を取得したりすることができます。 デバイスとデスクトップ アプリケーション、Web クライアント、Web サーバーからテレメトリを送信できます。 [Azure Application Insights](app-insights-overview.md) コア テレメトリ API を使用すると、カスタムのイベントやメトリック、独自バージョンの標準テレメトリを送信できます。 この API は、Application Insights の標準のデータ コレクターで使用される API と同じものです。
 
@@ -42,7 +40,7 @@ ms.lasthandoff: 05/19/2017
 これらのテレメトリの呼び出しのほとんどに [プロパティとメトリックをアタッチ](#properties) できます。
 
 ## <a name="prep"></a>開始する前に
-次のことをまだ実行していない場合は、実行します。
+Application Insights SDK の参照がまだない場合:
 
 * Application Insights SDK をプロジェクトに追加します。
 
@@ -58,7 +56,7 @@ ms.lasthandoff: 05/19/2017
     *Java:* `import com.microsoft.applicationinsights.TelemetryClient;`
 
 ## <a name="constructing-a-telemetryclient-instance"></a>TelemetryClient インスタンスの作成
-TelemetryClient インスタンスを作成します (Web ページの JavaScript を除く)。
+`TelemetryClient` インスタンスを作成します (Web ページの JavaScript を除く)。
 
 *C#*
 
@@ -79,7 +77,7 @@ TelemetryClient はスレッド セーフです。
 ## <a name="trackevent"></a>TrackEvent
 Application Insights の*カスタム イベント*はデータ ポイントであり、[メトリックス エクスプローラー](app-insights-metrics-explorer.md)では集計カウントとして、[診断検索](app-insights-diagnostic-search.md)では個々の発生として表示できます。 (これは MVC にも他のフレームワークの "イベント" にも関連していません)。
 
-TrackEvent 呼び出しをコードに挿入すると、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度を測定できます。
+さまざまなイベントをカウントするために、`TrackEvent` 呼び出しを挿入します。 これによって、ユーザーが特定の機能を使用する頻度や、特定の目標を達成する頻度、特定の種類の間違いを起こす頻度をカウントできます。
 
 たとえば、ゲーム アプリで、ユーザーが勝利したときにイベントを送信します。
 
@@ -99,8 +97,7 @@ TrackEvent 呼び出しをコードに挿入すると、ユーザーが特定の
 
     telemetry.trackEvent("WinGame");
 
-
-### <a name="view-your-events-in-the-azure-portal"></a>Azure ポータルでイベントを表示する
+### <a name="view-your-events-in-the-microsoft-azure-portal"></a>Microsoft Azure ポータルでイベントを表示する
 イベントの件数を表示するには、[[メトリックス エクスプローラー]](app-insights-metrics-explorer.md) ブレードを開き、新しいグラフを追加して **[イベント]** を選択します。  
 
 ![カスタム イベント件数の表示](./media/app-insights-api-custom-events-metrics/01-custom.png)
@@ -109,7 +106,7 @@ TrackEvent 呼び出しをコードに挿入すると、ユーザーが特定の
 
 ![グラフの種類およびグループ化の設定](./media/app-insights-api-custom-events-metrics/07-grid.png)
 
-グリッドでイベント名をクリックすると、そのイベントの個々の発生の情報が表示されます。 任意のインスタンスをクリックすると、詳細が表示されます。
+グリッドでイベント名をクリックすると、そのイベントの個々の発生の情報が表示されます。 詳細を表示するには、リストの任意の発生をクリックします。
 
 ![イベントをドリルスルーする](./media/app-insights-api-custom-events-metrics/03-instances.png)
 
@@ -121,7 +118,7 @@ Search またはメトリックス エクスプローラーで特定のイベン
 
 テレメトリは、[Application Insights Analytics](app-insights-analytics.md) の `customEvents` テーブルにあります。 各行は、アプリでの `trackEvent(..)` に対する呼び出しを表します。 
 
-[サンプリング](app-insights-sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvent | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackEvent() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 カスタム イベントの正しい数を取得するには、`customEvent | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 
 ## <a name="trackmetric"></a>TrackMetric
@@ -130,7 +127,7 @@ Application Insights では、特定のイベントに関連付けられてい�
 
 Application Insights にメトリックを送信するために、`TrackMetric(..)` API を使用できます。 メトリックを送信するには、次の 2 つの方法があります。 
 
-* 単一の値。 アプリケーションで、測定を実行するたびに、対応する値を Application Insights に送信します。 たとえば、コンテナー内の項目数を記述するメトリックがあるとします。 特定の期間で、まずコンテナーに 3 つの項目を配置し、次に 2 つの項目を削除するとします。 したがって、`TrackMetric` を 2 回呼び出します。最初に値 `3` を渡して、次に値 `-2` を渡します。 Application Insights は、両方の値を自動的に格納します。 
+* 単一の値。 アプリケーションで、測定を実行するたびに、対応する値を Application Insights に送信します。 たとえば、コンテナー内の項目数を記述するメトリックがあるとします。 特定の期間に、まずコンテナーに 3 つの項目を配置し、次に 2 つの項目を削除します。 したがって、`TrackMetric` を 2 回呼び出します。最初に値 `3` を渡して、次に値 `-2` を渡します。 Application Insights は、両方の値を自動的に格納します。 
 
 * 集計。 メトリックを使用する場合、個々の測定値はあまり重要ではありません。 代わりに特定の期間に、発生したことの概要が重要です。 このような概要は_集計_と呼ばれます。 上記の例で、その期間の集計メトリックの合計は `1` で、メトリック値のカウントは `2` です。 集計アプローチを使用する場合、期間ごとに `TrackMetric` を 1 回だけ呼び出し、集計値を送信します。 これは、すべての関連情報を収集しながら、Application Insights に送信するデータ ポイントを少なくすることによって、コストとパフォーマンスのオーバーヘッドを大幅に削減できるため、推奨される方法です。
 
@@ -405,21 +402,20 @@ ID を設定する最も簡単な方法は、次のパターンを使用して�
 *C#*
 
 ```C#
+// Establish an operation context and associated telemetry item:
+using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
+{
+    // Telemetry sent in here will use the same operation ID.
+    ...
+    telemetry.TrackTrace(...); // or other Track* calls
+    ...
+    // Set properties of containing telemetry item--for example:
+    operation.Telemetry.ResponseCode = "200";
 
-    // Establish an operation context and associated telemetry item:
-    using (var operation = telemetry.StartOperation<RequestTelemetry>("operationName"))
-    {
-        // Telemetry sent in here will use the same operation ID.
-        ...
-        telemetry.TrackEvent(...); // or other Track* calls
-        ...
-        // Set properties of containing telemetry item--for example:
-        operation.Telemetry.ResponseCode = "200";
+    // Optional: explicitly send telemetry item:
+    telemetry.StopOperation(operation);
 
-        // Optional: explicitly send telemetry item:
-        telemetry.StopOperation(operation);
-
-    } // When operation is disposed, telemetry item is sent.
+} // When operation is disposed, telemetry item is sent.
 ```
 
 操作コンテキストの設定に合わせて、指定した種類のテレメトリ項目を `StartOperation` で作成します。 テレメトリ項目は、操作を破棄するか `StopOperation` を明示的に呼び出すと送信されます。 テレメトリの種類として `RequestTelemetry` を使用する場合、その継続時間は開始から停止までの間の一定の間隔に設定されます。
@@ -429,6 +425,8 @@ ID を設定する最も簡単な方法は、次のパターンを使用して�
 検索では、操作コンテキストを使用して**関連項目**の一覧が作成されます。
 
 ![関連項目](./media/app-insights-api-custom-events-metrics/21.png)
+
+カスタム操作の追跡の詳細については、[application-insights-custom-operations-tracking.md] を参照してください。
 
 ### <a name="requests-in-analytics"></a>Analytics での要求 
 
@@ -488,13 +486,13 @@ SDK が多数の例外を自動的にキャッチするため、常に TrackExce
 
 [Application Insights Analytics](app-insights-analytics.md) で、例外は `exceptions` テーブルに表示されます。
 
-[サンプリング](app-insights-sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](app-insights-sampling.md)が実行中の場合は、`itemCount` プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackException() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 例外の種類別にセグメント化された例外の正しい数を取得するには、次のようなコードを使用します。
 
 ```
 exceptions | summarize sum(itemCount) by type
 ```
 
-重要なスタック情報の大部分は個別の変数に既に抽出されていますが、さらに '詳細' な構造を取得できます。 これは動的な構造であるため、結果を期待する型にキャストする必要があります。 For example:
+重要なスタック情報の大部分は既に個別の変数に抽出されていますが、`details` 構造を分析してさらに詳細な情報を取得できます。 この構造は動的なので、期待する型に結果をキャストする必要があります。 For example:
 
 ```AIQL
 exceptions
@@ -537,25 +535,24 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 [Application Insights Analytics](app-insights-analytics.md) で、TrackTrace への呼び出しは `traces` テーブルに表示されます。
 
-[サンプリング](app-insights-sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackTrace() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 トレース呼び出しの正しい数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
+[サンプリング](app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば、itemCount==10 は、サンプリング プロセスで転送されたのは `trackTrace()` への 10 回の呼び出しのうち 1 回だけであることを意味します。 トレース呼び出しの正確な数を取得するには、`traces | summarize sum(itemCount)` などのコードを使用する必要があります。
 
 ## <a name="trackdependency"></a>TrackDependency
 応答時間と外部コードの呼び出しの成功率を追跡するには、TrackDependency 呼び出しを使用します。 結果は、ポータルの依存関係グラフに表示されます。
 
 ```C#
-
-            var success = false;
-            var startTime = DateTime.UtcNow;
-            var timer = System.Diagnostics.Stopwatch.StartNew();
-            try
-            {
-                success = dependency.Call();
-            }
-            finally
-            {
-                timer.Stop();
-                telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
-            }
+var success = false;
+var startTime = DateTime.UtcNow;
+var timer = System.Diagnostics.Stopwatch.StartNew();
+try
+{
+    success = dependency.Call();
+}
+finally
+{
+    timer.Stop();
+    telemetry.TrackDependency("myDependency", "myCall", startTime, timer.Elapsed, success);
+}
 ```
 
 サーバー SDK には、データベースや REST API などに対する依存関係の呼び出しを自動的に検出して追跡する[依存関係モジュール](app-insights-asp-net-dependencies.md)が含まれています。 このモジュールを機能させるには、サーバーにエージェントをインストールする必要があります。 この呼び出しは、自動追跡ではキャッチされない呼び出しを追跡する場合、またはエージェントをインストールしない場合に使用します。
@@ -566,7 +563,7 @@ TrackTrace の利点は、比較的長いデータをメッセージの中に配
 
 [Application Insights Analytics](app-insights-analytics.md) で、trackDependency 呼び出しは `dependencies` テーブルに表示されます。
 
-[サンプリング](app-insights-sampling.md) を操作中の場合は、itemCount プロパティに 1 より大きい値が表示されます。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
+[サンプリング](app-insights-sampling.md)が実行中の場合は、itemCount プロパティは 1 より大きい値を示します。 たとえば itemCount==10 は trackDependency() への 10 回の呼び出しで、サンプリング プロセスはそれらのうちの 1 つだけを転送したことを意味します。 ターゲット コンポーネント別にセグメント化された依存関係の正しい数を取得するには、次のようなコードを使用します。
 
 ```
 dependencies | summarize sum(itemCount) by target
@@ -599,12 +596,12 @@ Web アプリでは、ユーザーは (既定では) Cookie により識別さ�
 *JavaScript*
 
 ```JS
-    // Called when my app has identified the user.
-    function Authenticated(signInId) {
-      var validatedId = signInId.replace(/[,;=| ]+/g, "_");
-      appInsights.setAuthenticatedUserContext(validatedId);
-      ...
-    }
+// Called when my app has identified the user.
+function Authenticated(signInId) {
+    var validatedId = signInId.replace(/[,;=| ]+/g, "_");
+    appInsights.setAuthenticatedUserContext(validatedId);
+    ...
+}
 ```
 
 ASP.NET Web MVC アプリケーションでの例:
@@ -622,7 +619,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 ユーザーの実際のサインイン名を使用する必要はありません。 必要なのは、そのユーザーに一意の ID であるということだけです。 ID には、スペースや `,;=|` を含めることはできません。
 
-ユーザー ID はセッション Cookie にも設定され、サーバーに送信されます。 サーバー SDK がインストールされている場合、認証されたユーザーの ID は、クライアントおよびサーバー テレメトリの両方のコンテキスト プロパティの一部として送信されます。 送信後、フィルター処理や検索を行うことができます。
+ユーザー ID はセッション Cookie にも設定され、サーバーに送信されます。 サーバー SDK がインストールされている場合、認証されたユーザー ID は、クライアントおよびサーバー テレメトリの両方のコンテキスト プロパティの一部として送信されます。 送信後、フィルター処理や検索を行うことができます。
 
 アカウントにアプリのグループ ユーザーがある場合、アカウントの識別子も渡すことができます (同じ文字制約が適用されます)。
 
@@ -753,7 +750,7 @@ ASP.NET Web MVC アプリケーションでの例:
 
 [Analytics](app-insights-analytics.md) で、カスタム メトリックとプロパティは、各テレメトリ レコードの `customMeasurements` および `customDimensions` 属性に表示されます。
 
-たとえば、要求テレメトリに "game" というプロパティを追加した場合、このクエリは "game" のさまざまな値の出現数をカウントし、カスタム メトリックの "score" の平均を表示します。
+たとえば、要求テレメトリに "game" というプロパティを追加した場合、このクエリは "game" のさまざまな値の出現数をカウントし、カスタム メトリック "score" の平均を表示します。
 
 ```
 requests
@@ -925,7 +922,7 @@ TelemetryClient には、すべてのテレメトリ データとともに送信
 * **Operation**: Web アプリでは現在の HTTP 要求。 他の種類のアプリケーションでは、イベントをグループ化するために、これを設定できます。
   * **Id**: 診断検索でイベントを調べるときに関連項目を見つけることができるように、さまざまなイベントを関連付けるために生成される値。
   * **名前**: 識別子。通常は HTTP 要求の URL です。
-  * **SyntheticSource**: null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、これはメトリックス エクスプローラーでの計算から除外されます。
+  * **SyntheticSource**: null 値または空ではない場合に、要求元がロボットまたは Web テストとして識別されたことを示す文字列。 既定で、メトリックス エクスプローラーの計算から除外されます。
 * **Properties**: すべてのテレメトリ データとともに送信されるプロパティ。 個々 の Track* 呼び出しでオーバーライドできます。
 * **Session**: ユーザーのセッション。 ID は生成された値に設定されますが、ユーザーがしばらくの間アクティブでない場合には変更されます。
 * **User**: ユーザー情報。

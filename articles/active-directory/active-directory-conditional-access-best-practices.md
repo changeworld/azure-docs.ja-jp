@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/22/2017
+ms.date: 07/12/2017
 ms.author: markvi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 9cecbfd1fd5db8fffc9fbdfb2d6ca949b6ff385a
+ms.reviewer: calebb
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
+ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 07/21/2017
 
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
@@ -29,11 +29,28 @@ ms.lasthandoff: 06/22/2017
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-### <a name="do-i-need-to-assign-a-user-to-my-policy"></a>ポリシーにユーザーを割り当てる必要がありますか。
+### <a name="whats-required-to-make-a-policy-work"></a>ポリシーを機能させるために必要なこと
 
-条件付きアクセス ポリシーを構成するときは、少なくとも 1 つのグループを割り当てる必要があります。 ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。
+新しいポリシーを作成するとき、ユーザー、グループ、アプリケーション、アクセスの制御は選択されていません。
 
-ポリシーに複数のユーザーとグループを割り当てる予定の場合は、ユーザーまたはグループを 1 つだけ割り当てて構成をテストすることから始めてください。 ポリシーが期待どおりに動作したら、追加の割り当てを行うことができます。  
+![クラウド アプリ](./media/active-directory-conditional-access-best-practices/02.png)
+
+
+ポリシーを機能させるには、以下を構成する必要があります。
+
+
+|対象           | 方法                                  | 理由|
+|:--            | :--                                  | :-- |
+|**クラウド アプリ** |1 つまたは複数のアプリを選択する必要があります。  | 条件付きアクセス ポリシーの目的は、許可されているユーザーがどのようにアプリケーションにアクセスできるかを微調整できるようにすることです。|
+| **ユーザーとグループ** | 選択したクラウド アプリにアクセスする権限を与えられたユーザーまたはグループを、少なくとも 1 人は選択する必要があります。 | ユーザーとグループが割り当てられていない条件付きアクセス ポリシーは、トリガーされることはありません。 |
+| **アクセスの制御** | アクセスの制御を少なくとも 1 つ選択する必要があります。 | 条件が満たされた場合のポリシー プロセッサの対応を決める必要があります。|
+
+
+これらの基本的な要件に加えて、多くの場合、条件も構成する必要があります。 ポリシーは構成された条件なしでも機能しますが、条件はアプリケーションへのアクセスの微調整の推進要因となります。
+
+
+![クラウド アプリ](./media/active-directory-conditional-access-best-practices/04.png)
+
 
 
 ### <a name="how-are-assignments-evaluated"></a>割り当てはどのように評価されますか。

@@ -13,7 +13,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/27/2017
+ms.date: 08/16/2017
 ms.author: arramac
 ms.translationtype: HT
 ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38

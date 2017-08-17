@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 05/31/2017
 ms.author: larryfr
 ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: ee011bce9203dc3739134ba8287185f9e5783be3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.openlocfilehash: 36487c0c34e5a4bb955bbc15c8c96b9e838aeb44
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 07/08/2017
 
 
 ---
@@ -43,7 +43,7 @@ Power BI を使用すると、データをレポートとして視覚的に表�
 * HDInsight クラスター。 詳細については、[HDInsight での Storm の使用](hdinsight-apache-storm-tutorial-get-started-linux.md)に関する記事をご覧ください。
 
   > [!IMPORTANT]
-  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+  > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 * 下記のいずれかのバージョンの Visual Studio
 
