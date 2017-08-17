@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/25/2017
+ms.date: 04/30/2017
 ms.author: vikdesai
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
 ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/25/2017
-
 
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
