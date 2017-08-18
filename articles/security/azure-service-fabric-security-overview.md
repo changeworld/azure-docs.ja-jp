@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/04/2017
 ms.author: tomsh
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 0445df244848469cc2071681bec4b8f4c5fceeac
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 4cbd2791649c6d2dd005521cedb44c17aa874073
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-service-fabric-security-overview"></a>Azure Service Fabric セキュリティの概要
-[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題にも対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
+[Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) は、拡張性と信頼性に優れたマイクロサービスのパッケージ化とデプロイ、管理を簡単に行うことができる分散システム プラットフォームです。 Service Fabric は、クラウド アプリケーションの開発と管理における重要な課題に対処します。 開発者と管理者は複雑なインフラストラクチャの問題を避けることができ、スケーラブルで信頼性が高く、管理しやすい、ミッション クリティカルで要求の厳しいワークロードの実装に重点を置くことができます。
 
 この記事、「Azure Service Fabric セキュリティの概要」では、以下の領域を重点的に取り上げます。
 

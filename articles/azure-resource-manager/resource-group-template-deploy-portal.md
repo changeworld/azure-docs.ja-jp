@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/19/2016
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 85545ab2774097c7af9353fe8fc92c34e47354d9
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: a4cac5834c667976b0a2d1f2748e4309a166d16a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Resource Manager テンプレートと Azure ポータルを使用したリソースのデプロイ
@@ -108,6 +108,5 @@ ms.lasthandoff: 07/21/2017
 * デプロイ エラーをトラブルシューティングするには、「[デプロイ操作の表示](resource-manager-deployment-operations.md)」を参照してください。
 * デプロイまたはリソース グループからテンプレートを取得するには、「 [既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-* デプロイの自動化についての 4 回シリーズの解説については、「[Automating application deployments to Azure Virtual Machines (Azure Virtual Machines へのアプリケーションのデプロイの自動化)](../virtual-machines/windows/dotnet-core-1-landing.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。 このシリーズでは、アプリケーションのアーキテクチャ、アクセスとセキュリティ、可用性と拡張性、およびアプリケーションのデプロイについて説明しています。
 
 

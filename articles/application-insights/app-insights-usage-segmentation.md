@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 1775ddaf548bdc62f37f8bac0b6f3f33870e5dd5
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 4c0040db9e232b2bb1506282cad57175c61a5b81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -71,6 +71,7 @@ Application Insights ポータルのユーザー、セッション、または�
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ファネル](usage-funnels.md)
     - [保持](app-insights-usage-retention.md)
+    - [ユーザー フロー](app-insights-usage-flows.md)
     - [ブック](app-insights-usage-workbooks.md)
     - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
 

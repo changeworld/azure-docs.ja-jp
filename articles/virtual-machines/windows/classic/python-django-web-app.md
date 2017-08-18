@@ -15,25 +15,17 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: huvalo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6adaf7026d455210db4d7ce6e7111d13c2b75374
-ms.openlocfilehash: a9ccbb3da29670da9a377be2212905c67b3ec7d0
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 283a296fb39863c2801be1093cc4f56904786abd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="django-hello-world-web-app-on-a-windows-server-vm"></a>Windows Server VM での Django Hello World Web アプリ
-> [!div class="op_single_selector"]
-> * [Windows](python-django-web-app.md)
-> * [Mac/Linux](../../linux/python-django-web-app.md)
-> 
-> 
-
-<br>
 
 > [!IMPORTANT] 
-> Azure には、リソースの作成と操作に関して、[Azure Resource Manager デプロイ モデルとクラシックデプロイ モデル](../../../resource-manager-deployment-model.md)の 2 種類があります。 この記事では、クラシック デプロイ モデルについて説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。 Django のデプロイに使うことができる Resource Manager テンプレートについては、「[Deploy a Django app](https://azure.microsoft.com/documentation/templates/django-app/)」をご覧ください。
+> Azure には、リソースの作成と操作に関して、[Azure Resource Manager デプロイ モデルとクラシックデプロイ モデル](../../../resource-manager-deployment-model.md)の 2 種類があります。 この記事では、クラシック デプロイ モデルについて説明します。 ほとんどの新しいデプロイでは、Resource Manager モデルを使用することをお勧めします。
 
 このチュートリアルでは、Azure Virtual Machines の Windows Server で Django ベースの Web サイトをホストする方法を説明します。 このチュートリアルは Azure の使用経験がなくても読むことができます。 このチュートリアルを最後まで読むと、Django ベースのアプリケーションをクラウドで稼働させることができます。
 

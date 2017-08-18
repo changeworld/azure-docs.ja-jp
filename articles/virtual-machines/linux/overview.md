@@ -16,10 +16,10 @@ ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: abddbe6b78c5c15d4deac68ff8c2504d2321fab0
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 84406b3068a6705bf0a4c5f17ace5a586398da4f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
@@ -117,8 +117,6 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 
 ### <a name="login-using-ssh-without-a-password"></a>パスワードを使わずに SSH を使用してログインする
 これで VM が Azure 上で実行され、ログインする準備ができました。  パスワードを使用して SSH からログインする方法は、安全ではなく、時間がかかります。  ログインの手段として最も安全性が高く、かつすばやい方法は、SSH キーを使用することです。  ポータルまたは CLI から Linux VM を作成する場合、認証の選択肢が 2 つあります。  SSH のパスワードを選択した場合、Azure はパスワードによるログインを許可するように VM を構成します。  SSH 公開キーを選択した場合、Azure は SSH キーを使用したログインのみを許可するように VM を構成し、パスワードのログインは無効になります。 SSH キーのログインのみを許可することにより Linux VM をセキュリティで保護するには、Portal または CLI で VM を作成するときに SSH 公開キーのオプションを使用します。
-
-* [SSHD の構成により Linux VM で SSH パスワードを無効化する](mac-disable-ssh-password-usage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 ## <a name="related-azure-components"></a>関連する Azure のコンポーネント
 ## <a name="storage"></a>Storage

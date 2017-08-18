@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 87b9da134bce20b037e2dce7e1c9f54454fafe9e
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 69156ec555b34d066a65bdc202267cfc53de47a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Azure Web App on Linux の概要
@@ -83,10 +83,14 @@ Azure Portal では、Web App on Linux で現在使用できる機能のみが�
 * 米国東部
 * 西ヨーロッパ
 * 北ヨーロッパ
+* 米国中南部
+* 米国中北部
 * 東南アジア
+* 東アジア
 * オーストラリア東部
 * 東日本
 * ブラジル南部
+* インド南部
 
 Web Apps on Linux は専用 App Service プランでのみサポートされており、Free レベルまたは Shared レベルは存在しません。 また、標準の Web アプリと Linux 向け Web アプリの App Service プランは相互に排他的であり、Linux 向けでない App Service プラン内で Linux 向け Web アプリを作成することはできません。
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/11/2017
 ms.author: helaw
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b94bcdfcc1bc6769a27b3df9367e76873aaaf079
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 019d743b0b3104e16a6690f438e7841fa63f09d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -46,7 +46,7 @@ This topic also assumes that you have some knowledge of Azure and Azure Stack. I
 
 ### <a name="azure-stack"></a>Azure Stack
  - [Deploy Azure Stack](azure-stack-run-powershell-script.md).  The installation usually takes a few hours to complete, so plan accordingly.
- - Deploy [SQL](azure-stack-sql-resource-provider-deploy.md) and [App Service](azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
+ - Deploy [App Service](azure-stack-app-service-deploy.md) PaaS services to Azure Stack.
  - Create a Web App and configure it for [FTP publishing](azure-stack-app-service-enable-ftp.md).  Make note of the new Web App URL, as it is used later.  
 
 ### <a name="developer-tools"></a>Developer tools

@@ -14,28 +14,22 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 036902801189c71eb336900107f07319dfe817f2
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="check-connectivity-with-azure-network-watcher-using-powershell"></a>PowerShell を使用して Azure Network Watcher で接続を確認する
 
 > [!div class="op_single_selector"]
+> - [ポータル](network-watcher-connectivity-portal.md)
 > - [PowerShell](network-watcher-connectivity-powershell.md)
 > - [CLI 2.0](network-watcher-connectivity-cli.md)
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続を使用する方法について説明します。
-
-この記事では、接続チェックのシナリオについて説明します。
-
-* [仮想マシンへの接続を確認する](#check-connectivity-to-a-virtual-machine)
-* [ルーティングの問題を確認する](#validate-routing-issues)
-* [Web サイトの待ち時間を確認する](#check-website-latency)
-* [ストレージ エンドポイントへの接続を確認する](#check-connectivity-to-a-storage-endpoint)
 
 ## <a name="before-you-begin"></a>開始する前に
 
