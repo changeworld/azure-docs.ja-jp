@@ -16,10 +16,10 @@ ms.date: 08/02/2017
 ms.author: trinadhk;markgal;
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: eb94f7222476af3d15089589a5e69556f7d6888b
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: d876bb1759600fa29a26730bfa8b4ec19db1e442
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="manage-common-azure-backup-jobs-and-trigger-alerts-in-the-classic-portal"></a>クラシック ポータルで一般的な Azure Backup ジョブを管理してアラートをトリガーする
@@ -244,7 +244,7 @@ PS C:\> Add-AzureRmLogAlertRule -Name backupFailedAlert -Location "East US" -Res
 イベント ベースのアラートには、次の制限事項が適用されます。
 
 1. アラートは、バックアップ コンテナー内のすべての仮想マシン上でトリガーされます。 バックアップ コンテナー内の特定の仮想マシンのセットのアラートを取得するようにカスタマイズすることはできません。
-2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-alert-rules)
+2. この機能はプレビュー段階にあります。 [詳細情報](../monitoring-and-diagnostics/insights-powershell-samples.md#create-metric-alerts)
 3. "alerts-noreply@mail.windowsazure.com" からアラートを受け取ります。 現時点で、電子メールの送信者を変更することはできません。
 
 ## <a name="next-steps"></a>次のステップ

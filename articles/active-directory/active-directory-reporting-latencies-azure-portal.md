@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 07/15/2017
 ms.author: markvi;dhanyahk
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: a1e385c235c3530744a83527574880c5f37caadd
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 93cb0baeab8f13f81257ed1bd32ed08561c54b72
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-reporting-latencies"></a>Azure Active Directory レポートの待機時間
@@ -72,7 +72,7 @@ Azure Active Directory では、アダプティブ機械学習アルゴリズム
 | 匿名の IP アドレスからのサインイン |5 分 |約 15 分 |2 時間 |
 | 未知の場所からのサインイン |5 分 |約 15 分 |2 時間 |
 | 資格情報が漏洩したユーザー |2 時間 |4 時間 |8 時間 |
-| 特殊な場所へのあり得ない移動 |2 時間 |4 時間 |8 時間  |
+| 特殊な場所へのあり得ない移動 |5 分 |1 時間 |8 時間  |
 | 感染しているデバイスからのサインイン |2 時間 |4 時間 |8 時間  |
 | 不審なアクティビティのある IP アドレスからのサインイン |2 時間 |4 時間 |8 時間  |
 

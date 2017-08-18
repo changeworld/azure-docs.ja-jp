@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: lmazuel
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: 90c8c6d91de667f2d234b1d4e89ce7336813fb62
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3e6bcf301a9257a60e6b921934bb6a04b4dd5d53
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="installing-python-and-the-sdk"></a>Python と SDK のインストール
@@ -112,7 +111,7 @@ Linux または MacOS の場合は、主に次の Azure シナリオがサポー
 
 最初のシナリオでは、Azure REST API 用の Python ラッパーを介して Azure の PaaS 機能 ([BLOB ストレージ](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)、[キュー ストレージ](storage/storage-python-how-to-use-queue-storage.md)、[テーブル ストレージ](storage/storage-python-how-to-use-table-storage.md)など) を利用する優れた Web アプリケーションを作成できます。 これらは、Windows、Mac、Linux とまったく同じように動作します。  また、ローカルの開発マシンや Linux 仮想マシンからこれらのクライアント ライブラリを使うこともできます。
 
-VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows、Mac、または Linux のコンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。 詳細については、「[Azure での IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
+VM のシナリオでは、選択した Linux VM (Ubuntu、CentOS、Suse) を起動し、必要なものを実行または管理するだけです。  たとえば、Windows、Mac、または Linux のコンピューター上で [IPython][IPython] REPL/Notebook を実行し、Azure 上で IPython エンジンを実行している Linux または Windows の複数プロセッサの VM をブラウザーで指定することができます。
 
 Linux 仮想マシンのセットアップの詳細については、「[Linux を実行する仮想マシンの作成](virtual-machines/linux/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)」チュートリアルをご覧ください。
 
@@ -131,7 +130,6 @@ Azure Websites を開発して公開する詳細については、[Django を使
 * [NumPy - Python の数値計算ライブラリ][NumPy - A numerics library for Python]
 * [Django Project - 進化した Web フレームワーク/CMS][Django Project - A mature web framework/CMS]
 * [IPython - 高度な Python 用 REPL/Notebook][IPython - an advanced REPL/Notebook for Python]
-* [Azure での IPython Notebook](virtual-machines/linux/jupyter-notebook.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [GitHub の Python Tools for Visual Studio][Python Tools for Visual Studio on GitHub]
 * [Python デベロッパー センター](/develop/python/)
 

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 81b0f76538b74edf1ebdfb40ff9190e5072e71c8
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: c1deaa40bfda0bf3858ad56d3d6a90df34351278
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -29,13 +29,6 @@ ms.lasthandoff: 07/21/2017
 > - [Azure REST API](network-watcher-connectivity-rest.md)
 
 仮想マシンから指定されたエンドポイントへの直接の TCP 接続が確立されたかどうかを確認するために、接続を使用する方法について説明します。
-
-この記事では、接続チェックのシナリオについて説明します。
-
-* [仮想マシンへの接続を確認する](#check-connectivity-to-a-virtual-machine)
-* [ルーティングの問題を確認する](#validate-routing-issues)
-* [Web サイトの待ち時間を確認する](#check-website-latency)
-* [ストレージ エンドポイントへの接続を確認する](#check-connectivity-to-a-storage-endpoint)
 
 ## <a name="before-you-begin"></a>開始する前に
 
