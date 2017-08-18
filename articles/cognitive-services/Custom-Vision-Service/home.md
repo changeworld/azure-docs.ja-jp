@@ -1,6 +1,6 @@
 ---
-title: Custom Vision Service machine learning の概要 | Microsoft Docs
-description: これを使えばあなたのアプリケーションに機械学習の力を持ち込むことができます。
+title: Custom Vision Service 機械学習の概要
+description: これを使えばあなたのアプリケーションに機械学習の力を与えることができます。
 services: cognitive-services
 author: v-royhar
 manager: juliakuz
@@ -19,22 +19,22 @@ ms.lasthandoff: 05/10/2017
 
 # <a name="overview"></a>概要
 
-## <a name="custom-vision-service-brings-the-power-of-machine-learning-to-your-apps"></a>Custom Vision Service はあなたのアプリケーションに機械学習の力を取り込みます
+## <a name="custom-vision-service-brings-the-power-of-machine-learning-to-your-apps"></a>Custom Vision Service でアプリケーションに機械学習の力を与える
 
-Custom Vision Service は Custom image の分類機を構築するためのツールです。それは、簡単そして素早く、構築・デプロイすることができます。さらに、画像の分類を向上させることができます。私たちは REST API や Web インターフェイスを通し 画像をアップロード、そして train します。
+Custom Vision Service は画像のカスタム分類子を構築するためのツールです。画像の分類子を簡単に素早く構築、デプロイし、その性能を向上させることができます。画像をアップロードしてトレーニングするための REST API や Web インターフェイスを提供します。
 
-## <a name="what-can-custom-vision-service-do-well-what-cant-it-do"></a>Custom Vision Service は何ができる？何ができない？
+## <a name="what-can-custom-vision-service-do-well-what-cant-it-do"></a>Custom Vision Service で出来ること、出来ないこと
 
-Custom Vision Service は 画像の分類機を作成するともに、時間が経つごとによりよいものを作成します。もしあなたが、「Daisies」「Daffodils」「Dahlias」の画像を分類をするツールが必要な時は、 あなたは、 分類するためのものを学習させることができます。 あなたはCustom Vision Service を通じて認識させたい画像ごとにタグ付けして学習させることができます。
+Custom Vision Service は画像のカスタム分類子を構築し、時間の経過とともにその性能を向上させます。例えば、"ひなぎく"、"すいせん"、"ダリア"の画像を特定するツールが必要な時は、分類子をトレーニングすることで実現できます。 認識したいタグごとの画像を Custom Vision Service に提供することで行います。
 
-Custom Vision Service は 分類したい画像が目立つときに一番良く働きます。 Custom Vision Service は 画像の分類機です。しかし、 「オブジェクト検出」ではありません。 これが意味するのは、 Custom Vision Service は画像内にオブジェクトがあるかどうかは判定しますが、オブジェクトがどこにあるかは識別しません。
+Custom Vision Service は、分類したい項目が画像の中で目立つ場合に最も良く動作します。 Custom Vision Service は "画像の分類" を行いますが、"オブジェクトの検出" は行いません。つまり、Custom Vision Service は画像が特定のオブジェクトのものであるかどうかは識別しますが、オブジェクトがその画像のどこにあるかは識別しません。
 
-分類機を作るためには、とても多くの画像を要求します。 --　一つのクラスのプロトタイプを作成するのに必要な画像は 30枚必要です。この方法を Custom Vision Serviceが使っているのは 強固な違いを作るためです。 もしあなたが、少ないデータでプロトタイプを作成してしまったら、 Custom Vision Service は 微妙な違いを検出するのは難しくなります。 (例えば、 品質保証する場面での 微妙な 壊れやへこみなど)
+分類子を作るのに必要な画像はほんの少数です。クラスごとに 30 枚もあれば、プロトタイプを作り始めることができます。Custom Vision Service が使用する方法は差異の影響を受けづらいため、データが少なくてもプロトタイプを作り始めることができるのです。しかしこれは、ごく微妙な違いを検出したいシナリオ (例えば品質保証のシナリオにおける小さな割れやへこみなど) には Custom Vision Service があまり適さないということを意味します。
 
-Custom Vision Service は 簡単に分類機を作成できるようにデザインされています。そして、 時間が経つごとにあなたの分類機の性能の向上を助けます。
+Custom Vision Service は 簡単に分類子の構築を始められるように、そして時間の経過とともに分類子の性能向上を手助けするように設計されています。
 
 
 ## <a name="next-steps"></a>次のステップ
 
-[Build a Classifier](getting-started-build-a-classifier.md)
+[分類子の構築](getting-started-build-a-classifier.md)
 
