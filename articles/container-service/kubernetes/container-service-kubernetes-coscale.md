@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/22/2017
 ms.author: saudas
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fb5004f268d570288098cc84257513de6c8ec596
-ms.openlocfilehash: 8e1f8968c8b64511aabdde4ddbf7079ca440774b
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: f894191baced710fc0f5a8c8692df98033341a48
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 
