@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 5/16/2017
 ms.author: msfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: be8504b492bdbdf7445abcdf1fb55e375eda133e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: f770b6181a99d24ea6a6e945d505da914e1b6128
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="service-fabric-and-containers"></a>Service Fabric とコンテナー
@@ -48,13 +47,13 @@ Service Fabric は Linux と Windows の両方でコンテナーをサポート�
 
 ### <a name="docker-containers-on-linux"></a>Linux 上の Docker コンテナー
 Docker は、Linux カーネル コンテナー上でコンテナーを作成、管理するための上位レベルの API を提供します。 Docker Hub は、コンテナー イメージの格納と取得に使用する中央リポジトリです。
-チュートリアルについては、「[Service Fabric への Linux コンテナーのデプロイ](service-fabric-deploy-container-linux.md)」を参照してください。
+チュートリアルについては、「[Service Fabric への Linux コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)」を参照してください。
 
 ### <a name="windows-server-containers"></a>Windows Server コンテナー
 Windows Server 2016 には、分離レベルの異なる 2 種類のコンテナーが用意されています。 Windows Server コンテナーと Docker コンテナーは、名前空間とファイル システムが分離されていても、カーネルをコンテナーの実行されているホストと共有するという点で似ています。 Linux では、`cgroups` や `namespaces` によって分離を行うのが通例でした。Windows Server コンテナーも同様に動作します。
 
 Windows Hyper-V コンテナーでは、各コンテナーがオペレーティング システム カーネルを他のコンテナーまたはホストと共有しないため、より多くの分離とセキュリティが提供されます。 この高度なセキュリティの分離により、Hyper-V コンテナーは、悪意のあるマルチテナント シナリオで効果を発揮します。
-チュートリアルについては、「[Service Fabric への Windows コンテナーのデプロイ](service-fabric-deploy-container.md)」を参照してください。
+チュートリアルについては、「[Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)」を参照してください。
 
 次の図は、オペレーティング システムで利用可能なさまざまな種類の仮想化と分離のレベルを示しています。
 ![Service Fabric プラットフォーム][Image1]
@@ -88,9 +87,9 @@ Service Fabric には、コンテナー化されたマイクロサービスで�
 ## <a name="next-steps"></a>次のステップ
 この記事では、Service Fabric がコンテナー オーケストレーターとなるコンテナーについて説明したほか、Service Fabric にはコンテナーをサポートする機能があることについても説明しました。 次のステップとして、各機能の例の紹介と、その使用方法の解説に進みます。
 
-[Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
+[Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 
-[Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+[Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)
 
 [Image1]: media/service-fabric-containers/Service-Fabric-Types-of-Isolation.png
 

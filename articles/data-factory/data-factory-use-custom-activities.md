@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 662db10a30d4581a77c75204f49e7f5c731342ac
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 78945ec210c56106833291167ecaf920794f717f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -54,7 +53,7 @@ Data Factory でサポートされていないデータ ストアとの間でデ
 ## <a name="walkthrough-create-a-custom-activity"></a>チュートリアル: カスタム アクティビティの作成
 ### <a name="prerequisites"></a>前提条件
 * Visual Studio 2012/2013/2015
-* [Azure .NET SDK][azure-developer-center] のダウンロードとインストール
+* [Azure .NET SDK](https://azure.microsoft.com/downloads/)
 
 ### <a name="azure-batch-prerequisites"></a>Azure Batch の前提条件
 このチュートリアルでは、コンピューティング リソースとして Azure Batch を使用して、カスタム .NET アクティビティを実行します。 **Azure Batch** は、大規模な並列コンピューティングやハイ パフォーマンス コンピューティング (HPC) のアプリケーションをクラウドで効率的に実行するためのプラットフォーム サービスです。 多くのコンピューティング処理を要する作業を管理された**仮想マシンの集合**で実行するようにスケジュール設定し、ジョブのニーズに合わせてコンピューティング リソースを自動的に拡大/縮小できます。 Azure Batch サービスの詳細については、[Azure Batch の基礎][batch-technical-overview]に関するページをご覧ください。
@@ -1174,7 +1173,6 @@ GitHub の [Azure Data Factory - ローカル環境](https://github.com/gbrueckl
 [azure-batch-blog]: http://blogs.technet.com/b/windowshpc/archive/2014/10/28/using-azure-powershell-to-manage-azure-batch-account.aspx
 
 [nuget-package]: http://go.microsoft.com/fwlink/?LinkId=517478
-[azure-developer-center]: http://azure.microsoft.com/develop/net/
 [adf-developer-reference]: http://go.microsoft.com/fwlink/?LinkId=516908
 [azure-preview-portal]: https://portal.azure.com/
 

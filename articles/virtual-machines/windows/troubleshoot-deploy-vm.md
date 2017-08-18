@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/22/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: e5f3fc57292102afb8f0ffb1f851953e97d7478a
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 2180a11c53a3b283fed35844c5821aef744fb95e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="troubleshoot-deploying-windows-virtual-machine-issues-in-azure"></a>Azure での Windows 仮想マシンのデプロイに関する問題のトラブルシューティング
@@ -110,7 +110,7 @@ Azure では現在、Windows Server および Linux オペレーティング シ
 適切な Visual Studio (以前は MSDN) サブスクリプションがある場合は、Azure で Windows 7、Windows 8、または Windows 10 を開発/テストのシナリオに使用できます。 
 
 - [対象となる開発/テスト プラン](client-images.md#eligible-offers)内で、Azure ギャラリーから Windows 10 イメージを使用できます。 
-- また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md)し、[Azure にアップロード](upload-image.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
+- また、任意の種類のプラン内にあるVisual Studio サブスクライバーは、64 ビットの Windows 7、Windows 8、または Windows 10 イメージを[適切に準備および作成](prepare-for-upload-vhd-image.md)し、[Azure にアップロード](upload-generalized-managed.md)することもできます。 その使用は、アクティブな Visual Studio サブスクライバーによって開発/テストに引き続き限定されます。
 
 この[記事](client-images.md)では、Azure で Windows クライアントを実行するための資格要件と、Azure ギャラリーのイメージの使用について説明します。
 

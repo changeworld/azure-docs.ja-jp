@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3109da1dac6ebb6564c94b5c6635ded77ea9be8d
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f7ba456a0d23560ee70f14ecb61c0d016e24e7e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -96,17 +96,6 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
     ```azurecli
     az vm start --resource-group myResourceGroup --name myVM
     ```
-
-## <a name="managed-disks-and-azure-storage-service-encryption"></a>Managed Disks と Azure Storage Service Encryption
-[Azure Storage Service Encryption](../../storage/storage-service-encryption.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) で暗号化された履歴があるストレージ アカウントに非管理対象ディスクが存在する場合は、前述の手順で非管理対象ディスクを管理ディスクに変換することはできません。 次の手順では、暗号化されたストレージ アカウントにある非管理対象ディスクをコピーして使用する方法について詳しく説明します。
-
-1. Azure Storage Service Encryption が有効になった履歴がないストレージ アカウントに、[az storage blob copy start](/cli/azure/storage/blob/copy#start) を使用して VHD をコピーします。
-
-2. コピーした VM は、次の方法のいずれかで使用します。
-
-   * [az vm create](/cli/azure/vm#create) を使用して、管理ディスクを使用する VM を作成し、その VHD ファイルを指定します。
-
-   * [az vm disk attach](/cli/azure/vm/disk#attach) を使用して、管理ディスクを使用する実行中の VM にコピーした VHD を接続します。
 
 ## <a name="next-steps"></a>次のステップ
 ストレージのオプションについて詳しくは、「[Azure Managed Disks の概要](../../storage/storage-managed-disks-overview.md)」をご覧ください。

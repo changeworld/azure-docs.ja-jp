@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 907e5b80aeeee4ab2eb0466490ba9ef9b0348144
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 61e9cab7ba0b1b86a54b5282662bef3bdfba6e7d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -281,7 +281,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 いくつかのプロファイル要素は、仮想マシン リソースを定義する際に使用されます。 必須のものもあれば、省略可能なものもあります。 たとえば、hardwareProfile、osProfile、storageProfile、networkProfile 要素は必須で、diagnosticsProfile 要素は省略可能です。 これらのプロファイルは、次のような設定を定義します。
    
 - [サイズ](sizes.md)
-- [名前](../linux/infrastructure-naming-guidelines.md)と資格情報
+- [名前](/architecture/best-practices/naming-conventions)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
 - [ネットワーク インターフェイス](../../virtual-network/virtual-networks-multiple-nics.md) 
 - ブート診断

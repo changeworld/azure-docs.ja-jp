@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service, kubernetes
 keywords: 
-ms.assetid: what-goes-here?
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,11 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/09/2016
 ms.author: bburns
-translationtype: Human Translation
-ms.sourcegitcommit: f7377b3d0c0b89d7e196a31890173575688687cf
-ms.openlocfilehash: 901cbf5093c6a547f5dffa7ed6d71fe67caaadb9
-ms.lasthandoff: 03/02/2017
-
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 40b34457447a8f80d8cdf77579750e0c42df22d0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -57,7 +57,7 @@ Datadog は監視サービスです。Azure コンテナー サービス クラ�
 最初に[アカウントを作成](https://www.datadoghq.com/lpg/)する必要があります
 
 ## <a name="installing-the-datadog-agent-with-a-daemonset"></a>DaemonSet を使用した Datadog エージェントのインストール
-DaemonSet は Kubernetes によって使用され、クラスターのホストごとに&1; つのコンテナーの&1; つのインスタンスを実行します。
+DaemonSet は Kubernetes によって使用され、クラスターのホストごとに 1 つのコンテナーの 1 つのインスタンスを実行します。
 この DaemonSet は、監視エージェントの実行に最適です。
 
 Datadog にログインしたら、[Datadog の手順](https://app.datadoghq.com/account/settings#agent/kubernetes)に従って、DaemonSet を使用して Datadog エージェントをクラスターにインストールします。

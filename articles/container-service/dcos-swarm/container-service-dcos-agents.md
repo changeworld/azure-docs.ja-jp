@@ -8,7 +8,6 @@ manager: timlt
 editor: 
 tags: acs, azure-container-service
 keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
-ms.assetid: 36d657c9-8845-4bf7-bed2-088323b67406
 ms.service: container-service
 ms.devlang: na
 ms.topic: article
@@ -16,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: danlep
-translationtype: Human Translation
-ms.sourcegitcommit: be10411e735c5b96702ee8dcb893f1a48e479f6f
-ms.openlocfilehash: cffc65e25ae8eab90a9879a0030b78b3b77890b7
-ms.lasthandoff: 01/06/2017
-
+ms.custom: mvc
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: da4a196b1a73c78dfff7d8310edcc349b8d10665
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="dcos-agent-pools-for-azure-container-service"></a>Azure Container Service の DC/OS エージェント プール
-Azure Container Service の DC/OS クラスターでは、エージェント ノードを&2; つのプール (パブリック プールとプライベート プール) に格納します。 アプリケーションはどちらのプールにもデプロイできますが、コンテナー サービス内のコンピューター間のアクセスに影響があります。 コンピューターはインターネットに公開することも (パブリック)、内部だけで維持することも (プライベート) できます。 この記事では、パブリック プールとプライベート プールがある理由の概要について説明します。
+Azure Container Service の DC/OS クラスターでは、エージェント ノードを 2 つのプール (パブリック プールとプライベート プール) に格納します。 アプリケーションはどちらのプールにもデプロイできますが、コンテナー サービス内のコンピューター間のアクセスに影響があります。 コンピューターはインターネットに公開することも (パブリック)、内部だけで維持することも (プライベート) できます。 この記事では、パブリック プールとプライベート プールがある理由の概要について説明します。
 
 
 * **プライベート Agents**: プライベート エージェント ノードは、ルーティング不可能なネットワークを介して実行されます。 このネットワークには、管理者ゾーンまたはパブリック ゾーン エッジ ルーターを介してのみアクセスできます。 既定では、DC/OS は、プライベート エージェント ノードでアプリを起動します。 

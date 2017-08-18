@@ -16,11 +16,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: 30d02322f302ca58e6c1b2b674d9f242b7c40518
-ms.lasthandoff: 04/21/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e690e87df92bd3614e575010d90b7a40521dadc9
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -87,7 +87,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
 
 1. お使いのサブスクリプションで、[Azure Portal](http://portal.azure.com) にログインします。
 
-1. [Azure 可用性セットを作成します](../create-availability-set.md)。
+1. [Azure 可用性セットを作成します](../tutorial-availability-sets.md)。
 
    可用性セットを利用すると、障害ドメインと更新ドメインの仮想マシンがグループ化されます。 可用性セットがあると、アプリケーションがネットワーク スイッチ、サーバーのラックの電源装置など、単一障害点の影響を受けないようにすることができます。
 
@@ -223,14 +223,14 @@ UI を使用してクラスターを検証するには、いずれかの仮想�
 
 1. **[サーバー マネージャー]** で、**[ツール]**、**[フェールオーバー クラスター マネージャー]** の順にクリックします。
 1. **[フェールオーバー クラスター マネージャー]** で、**[操作]** をクリックし、**[構成の検証...]** をクリックします。
-1. **[次へ]**をクリックします。
+1. **[次へ]** をクリックします。
 1. **[サーバーまたはクラスターの選択]** で、両方の仮想マシンの名前を入力します。
-1. **[テスト オプション]** で、**[選択するテストのみを実行する]** を選択します。 **[次へ]**をクリックします。
+1. **[テスト オプション]** で、**[選択するテストのみを実行する]** を選択します。 **[次へ]** をクリックします。
 1. **[テストの選択]** で、**[ストレージ]** 以外のすべてのテストを含めます。 次の図を参照してください。
 
    ![テストを検証する](./media/virtual-machines-windows-portal-sql-create-failover-cluster/10-validate-cluster-test.png)
 
-1. **[次へ]**をクリックします。
+1. **[次へ]** をクリックします。
 1. **[確認]** で**[次へ]** をクリックします。
 
 **構成の検証ウィザード**により、検証テストが実行されます。

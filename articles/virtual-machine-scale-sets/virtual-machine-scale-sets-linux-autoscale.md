@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 7d67ae1bd0c53f99d9c298f5ae8f161e6a484359
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでの Linux マシンの自動スケール
@@ -55,7 +55,7 @@ Resource Manager のリソースの詳細については、「[Azure Resource Ma
     ```
    
     > [!NOTE]
-    > 職場または学校の ID を所有していて、2 要素認証が有効になっていない場合は、ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。 職場または学校の ID がない場合は、 [個人の Microsoft アカウントから職場または学校の ID を作成](../virtual-machines/linux/create-aad-work-id.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)できます。
+    > 職場または学校の ID を所有していて、2 要素認証が有効になっていない場合は、ID と共に `azure login -u` を使うと、対話型セッションを使わずにログインできます。 職場または学校の ID がない場合は、 [個人の Microsoft アカウントから職場または学校の ID を作成](../active-directory/active-directory-users-create-azure-portal.md)できます。
     
 2. **リソース グループの作成**  
 リソースはすべてリソース グループにデプロイする必要があります。 このチュートリアルでは、リソース グループに **vmsstest1** という名前を付けます。

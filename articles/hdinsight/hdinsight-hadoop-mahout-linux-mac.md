@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/15/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 15df34278db6fbda48b03123993a29909910ba67
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 28450d72f19a5467d88bc787d11f6c37c5afbf9a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="generate-movie-recommendations-by-using-apache-mahout-with-linux-based-hadoop-in-hdinsight-ssh"></a>HDInsight で Apache Mahout と Linux ベースの Hadoop を使用した映画のリコメンデーションの生成 (SSH)
@@ -38,6 +37,8 @@ Mahout は、Apache Hadoop の[機械学習][ml]ライブラリの 1 つです�
 
 > [!IMPORTANT]
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
+
+* SSH クライアント 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するドキュメントを参照してください。
 
 ## <a name="mahout-versioning"></a>Mahout のバージョン
 
@@ -168,16 +169,10 @@ mahout recommenditembased -s SIMILARITY_COOCCURRENCE -i /HdiSamples/HdiSamples/M
 
     **Ctrl-X**、**Y**、**Enter** の順に押して、データを保存します。
 
-4. 次のコマンドを使用し、実行可能ファイルを作成します。
+4. Python スクリプトを実行します。 次のコマンドは、すべてのファイルがダウンロードされているディレクトリにいることが前提となっています。
 
     ```bash
-    chmod +x show_recommendations.py
-    ```
-
-5. Python スクリプトを実行します。 次のコマンドは、すべてのファイルがダウンロードされているディレクトリにいることが前提となっています。
-
-    ```bash
-    ./show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
+    python show_recommendations.py 4 user-ratings.txt moviedb.txt recommendations.txt
     ```
 
     このコマンドは、ユーザー ID 4 に対して生成されたリコメンデーションを表示します。

@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8d884d660d4124e8eafdf3690fe8956904f50827
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: a8740f3b78de37c09ff7a9250682d47fa9bec1e3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
@@ -126,7 +126,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 ベスト プラクティスとして、必ず、すべてのインターネット接続がプレゼンテーション層にのみ転送されるようにします。 プレゼンテーション レイヤーがビジネス層にアクセスし、ビジネス層がデータ層にアクセスします。 プレゼンテーション層へのアクセスを許可する方法の詳細については、「[Azure ポータルを使用して VM への外部アクセスを許可する](../nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
-Azure Load Balancer はオンプレミスの環境のロード バランサーと同じような動作をします。 詳細については、「[Azure インフラストラクチャ サービスの負荷分散](../load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
+Azure Load Balancer はオンプレミスの環境のロード バランサーと同じような動作をします。 詳細については、「[Azure インフラストラクチャ サービスの負荷分散](../tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
 
 また、Azure Virtual Network を使用して、仮想マシン用のプライベート ネットワークをセットアップすることもお勧めします。 これにより、仮想マシン間でプライベート IP アドレスを使用して通信できるようになります。 詳細については、 [Azure Virtual Network](../../../virtual-network/virtual-networks-overview.md)に関するページを参照してください。
 
@@ -159,7 +159,7 @@ Azure Load Balancer はオンプレミスの環境のロード バランサー�
 
 次の図には、オンプレミスのシナリオとそのクラウド対応ソリューションを示します。 このシナリオでは、プレゼンテーション層とビジネス層のコンポーネントを Azure の複数の仮想マシンにスケールアウトします。 また、Azure に SQL Server データベースの High Availability and Disaster Recovery (HADR) 手法を実装します。
 
-アプリケーションの複数のコピーを別々の VM で実行すると、VM 間で要求が負荷分散されます。 複数の仮想マシンがある場合は、単一時点ですべての VM が稼働し、アクセスできるようにする必要があります。 負荷分散を構成すると、Azure Load Balancer は VM の正常性を追跡し、着信呼び出しを、正常に機能している VM ノードに適切に転送します。 仮想マシンの負荷分散を設定する方法の詳細については、「[Azure インフラストラクチャ サービスの負荷分散](../load-balance.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 ロード バランサーの背後に Web サーバーとアプリケーション サーバーのインスタンスを複数配置すると、プレゼンテーション層とビジネス層の高可用性が確保されます。
+アプリケーションの複数のコピーを別々の VM で実行すると、VM 間で要求が負荷分散されます。 複数の仮想マシンがある場合は、単一時点ですべての VM が稼働し、アクセスできるようにする必要があります。 負荷分散を構成すると、Azure Load Balancer は VM の正常性を追跡し、着信呼び出しを、正常に機能している VM ノードに適切に転送します。 仮想マシンの負荷分散を設定する方法の詳細については、「[Azure インフラストラクチャ サービスの負荷分散](../tutorial-load-balancer.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。 ロード バランサーの背後に Web サーバーとアプリケーション サーバーのインスタンスを複数配置すると、プレゼンテーション層とビジネス層の高可用性が確保されます。
 
 ![スケールアウトと高可用性](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728012.png)
 
