@@ -374,7 +374,7 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 [2]: ./media/app-service-mobile-migrating-from-mobile-services/triggering-job-with-postman.png
 
 <!-- Links -->
-[App Service の価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
+[App Service 価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
 [自動スケール]: ../app-service-web/web-sites-scale.md
 [Azure App Service]: ../app-service/app-service-value-prop-what-is.md
