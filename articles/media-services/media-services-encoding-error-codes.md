@@ -29,7 +29,7 @@ ms.lasthandoff: 01/27/2017
 | ErrorDetail.Code | 考えられる原因 |
 | --- | --- |
 | Unknown |タスクの実行中に発生する不明なエラー |
-| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ&0; のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
+| ErrorDownloadingInputAssetMalformedContent |無効なファイル名、サイズ 0 のファイル、不正なファイル形式など、入力資産のダウンロード中に発生するエラーのカテゴリ |
 | ErrorDownloadingInputAssetServiceFailure |ダウンロード中のネットワーク エラーやストレージ エラーなど、サービス側での問題に関するエラーのカテゴリ |
 | ErrorParsingConfiguration |構成が有効なシステム プリセットではない、構成に無効な XML が含まれているなど、タスク <see cref="MediaTask.PrivateData"/> (構成) が有効でない場合に発生するエラーのカテゴリ。 |
 | ErrorExecutingTaskMalformedContent |入力メディア ファイル内の問題が障害の原因となり、タスクの実行中に発生するエラーのカテゴリ |
