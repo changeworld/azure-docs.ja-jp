@@ -42,7 +42,7 @@ Azure Function App 用のカスタム ドメインを構成するために、Fun
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/functionshostname.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 |プロパティ  |値  |Description  |
 |---------|---------|---------|
@@ -54,7 +54,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 Function App に戻り、**[Platform features] \(プラットフォーム機能)** をクリックし、**[NETWORKING] \(ネットワーク)** で **[Custom domains] \(カスタム ドメイン)** をクリックし、**[Hostnames] \(ホスト名)** で **[+ Add hostname] \(ホスト名の追加)** をクリックします。
 
-**[Add hostname] (ホスト名の追加)** ブレードで、CNAME レコードを **[hostname] (ホスト名)** テキスト フィールドに入力して **[Validate] (検証)** をクリックします。 レコードが見つからなかった場合、**[Add hostname] (ホスト名の追加)** ボタンが表示されます。 **[Add hostname] (ホスト名の追加)** をクリックして別名を追加します。
+**[Add hostname] \(ホスト名の追加)** ブレードで、CNAME レコードを **[hostname] \(ホスト名)** テキスト フィールドに入力して **[Validate] \(検証)** をクリックします。 レコードが見つからなかった場合、**[Add hostname] \(ホスト名の追加)** ボタンが表示されます。 **[Add hostname] \(ホスト名の追加)** をクリックして別名を追加します。
 
 ![Function App のホスト名追加ブレード](./media/dns-custom-domain/functionaddhostname.png)
 
@@ -62,11 +62,11 @@ Function App に戻り、**[Platform features] \(プラットフォーム機能)
 
 Azure IoT には、サービス自体で必要なカスタマイズは何もありません。 IoT Hub でカスタム ドメインを使用するには、リソースを指示した CNAME レコードだけが必要です。
 
-**[Internet of Things] (モノのインターネット)** > **[IoT Hub]** に移動し、IoT Hub を選択します。 **[Overview] (概要)** ブレードで、IoT Hub の FQDN をメモします。
+**[Internet of Things] \(モノのインターネット)** > **[IoT Hub]** に移動し、IoT Hub を選択します。 **[Overview] \(概要)** ブレードで、IoT Hub の FQDN をメモします。
 
 ![IoT hub blade](./media/dns-custom-domain/iot.png)
 
-次に、DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -83,11 +83,11 @@ Azure IoT には、サービス自体で必要なカスタマイズは何もあ�
 
 Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Classic VM などの、パブリック IP アドレスを使用するサービス用のカスタム ドメインを構成するために、CNAME レコードが使用されます。
 
-**[Networking] (ネットワーク)** > **[Public IP address] (パブリック IP アドレス)** に移動し、パブリック IP リソースを選択して **[Configuration] (構成)** をクリックします。 表示されている IP address をメモします。
+**[Networking] \(ネットワーク)** > **[Public IP address] \(パブリック IP アドレス)** に移動し、パブリック IP リソースを選択して **[Configuration] \(構成)** をクリックします。 表示されている IP address をメモします。
 
 ![パブリック IP ブレード](./media/dns-custom-domain/publicip.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -114,7 +114,7 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -128,7 +128,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 ![CNAME レコードを作成する](./media/dns-custom-domain/createcnamerecord.png)
 
-カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] \(カスタム ドメイン)** をクリックし、**[Hostnames] \(ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、**[+ Add hostname] (ホスト名の追加)** をクリックします。
+カスタム ドメイン名が構成されているアプリ サービスに戻ります。 **[Custom domains] \(カスタム ドメイン)** をクリックし、**[Hostnames] \(ホスト名)** をクリックします。 作成した CNAME レコードを追加するには、**[+ Add hostname] \(ホスト名の追加)** をクリックします。
 
 ![図 1](./media/dns-custom-domain/figure1.png)
 
@@ -144,11 +144,11 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 次の手順では、asverify の手法を使用して BLOB ストレージ アカウント用の CNAME レコードを構成する方法を説明します。 この手法はダウンタイムがないことを保証します。
 
-**[Storage] (ストレージ)** > **[Storage Accounts] (ストレージ アカウント)** に移動し、ストレージ アカウントを選択し、**[Custom domain] (カスタム ドメイン)** をクリックします。 ステップ 2 の FQDN をメモします。この値は、最初の CNAME レコードを作成するために使用されます
+**[Storage] \(ストレージ)** > **[Storage Accounts] \(ストレージ アカウント)** に移動し、ストレージ アカウントを選択し、**[Custom domain] \(カスタム ドメイン)** をクリックします。 ステップ 2 の FQDN をメモします。この値は、最初の CNAME レコードを作成するために使用されます
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/blobcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -159,7 +159,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | asverify.adatumfunctiona9ed.blob.core.windows.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる asverify.adatumfunctiona9ed.blob.core.windows.net という DNS 名です。        |
 
-**[Storage] (ストレージ)** > **[Storage Accounts] (ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain](カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、[**Use indirect CNAME] (**間接 CNAME を使用) 検証をチェックし、**[Save] (保存)** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
+**[Storage] \(ストレージ)** > **[Storage Accounts] \(ストレージ アカウント)** をクリックしてストレージ アカウントに戻り、ストレージ アカウントを選択して **[Custom domain] \(カスタム ドメイン)** をクリックします。 作成した別名から asverify プレフィックスを除いたものをテキスト ボックスに入力し、[**Use indirect CNAME] \(**間接 CNAME を使用) 検証をチェックし、**[Save] \(保存)** をクリックします。 この手順が完了したら、DNS ゾーンに戻り、asverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/indirectvalidate.png)
 
@@ -171,13 +171,13 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 次の手順では、cdnverify の手法を使用して、CDN エンドポイント用の CNAME レコードを構成する方法を説明します。 この手法はダウンタイムがないことを保証します。
 
-**[Networking] (ネットワーク)** > **[CDN Profiles] (CDN プロファイル)** に移動し、CDN プロファイルを選択し、**[General] (全般)** の **[Endpoints] (エンドポイント)** をクリックします。
+**[Networking] \(ネットワーク)** > **[CDN Profiles] \(CDN プロファイル)** に移動し、CDN プロファイルを選択し、**[General] \(全般)** の **[Endpoints] \(エンドポイント)** をクリックします。
 
-対象のエンドポイントを選択して **[+ Custom domain] (カスタム ドメインの追加)** をクリックします。 **[Endpoint hostname] (エンドポイントのホスト名)** の値は CNAME レコードが指すレコードであるため、これをメモします。
+対象のエンドポイントを選択して **[+ Custom domain] \(カスタム ドメインの追加)** をクリックします。 **[Endpoint hostname] \(エンドポイントのホスト名)** の値は CNAME レコードが指すレコードであるため、これをメモします。
 
 ![CDN カスタム ドメイン](./media/dns-custom-domain/endpointcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 |プロパティ  |値  |Description  |
 |---------|---------|---------|
@@ -187,7 +187,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 |TTL の単位     | 時間        | 時間数は時間の単位として使用されます         |
 |エイリアス     | cdnverify.adatumcdnendpoint.azureedge.net        | 別名を作成している DNS 名。この例では、既定でストレージ アカウントに与えられる cdnverify.adatumcdnendpoint.azureedge.net という DNS 名です。        |
 
-**[Networking] (ネットワーク)** > **[CDN Profiles] (CDN プロファイル)** をクリックして CDN エンドポイントに戻り、CDN プロファイルを選択します。 **[+ Custom domain] (カスタム ドメインの追加)** をクリックし、CNAME レコードの別名から cdnverify プレフィックスを除いたものを入力して **[Add] (追加)** をクリックします。
+**[Networking] \(ネットワーク)** > **[CDN Profiles] \(CDN プロファイル)** をクリックして CDN エンドポイントに戻り、CDN プロファイルを選択します。 **[+ Custom domain] \(カスタム ドメインの追加)** をクリックし、CNAME レコードの別名から cdnverify プレフィックスを除いたものを入力して **[Add] \(追加)** をクリックします。
 
 この手順が完了したら、DNS ゾーンに戻り、cdnverify プレフィックスなしで CNAME レコードを作成します。  それ以降は、cdnverify プレフィックスの付いた CNAME レコードを削除しても安全です。 CDN の詳細と、中間登録手順なしでカスタム ドメインを構成する方法については、[カスタム ドメインへの Azure CDN コンテンツのマッピング](../cdn/cdn-map-content-to-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
 
