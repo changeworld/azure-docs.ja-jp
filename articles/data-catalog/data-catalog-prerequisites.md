@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 6ae024e59d29d20c223243b71aceae1db7eefdf5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/21/2017
-
 
 ---
 # <a name="azure-data-catalog-prerequisites"></a>Azure Data Catalog の前提条件

@@ -3,8 +3,8 @@ title: "Node.js モジュールの操作"
 description: "Azure App Service または Cloud Services を使用する際の Node.js モジュールの使用方法について説明します。"
 services: 
 documentationcenter: nodejs
-author: rmcmurray
-manager: cfowler
+author: TomArcher
+manager: routlaw
 editor: 
 ms.assetid: c0e6cd3d-932d-433e-b72d-e513e23b4eb6
 ms.service: multiple
@@ -12,8 +12,8 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 07/31/2017
-ms.author: robmcm
+ms.date: 08/17/2016
+ms.author: tarcher
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 94ddae4473b2d9d212e05d3df089eb6b2b87cbd8

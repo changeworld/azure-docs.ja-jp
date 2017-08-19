@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/22/2016
+ms.date: 08/15/2017
 ms.author: owend
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
 ms.openlocfilehash: 25c8b49401486edfad0a1a60fe2258a586f6adc2
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/23/2017
-
 
 ---
 # <a name="manage-server-administrators"></a>サーバー管理者の管理

@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 08/15/2017
 ms.author: owend
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: ff96602642c56a3cd02aeada056c059573707731
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="connect-with-excel"></a>Excel を使用した接続
