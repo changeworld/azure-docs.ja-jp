@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 63f951fbfc9ab5adad8f9225c2827abcbdb7f784
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/02/2017
-
 
 ---
 # <a name="azure-data-catalog-common-scenarios"></a>Azure Data Catalog の一般的なシナリオ

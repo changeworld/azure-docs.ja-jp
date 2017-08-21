@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/26/2016
+ms.date: 08/15/2017
 ms.author: owend
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: 766b2fc3b68d223d80de1da9ef36aec269fe0de9
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/28/2017
-
 
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可

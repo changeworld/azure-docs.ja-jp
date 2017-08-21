@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 04/18/2017
+ms.date: 08/15/2017
 ms.author: owend
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 194910a3e4cb655b39a64d2540994d90d34a68e4
 ms.openlocfilehash: 90a0cfb7c7cd7d3364ff42559dd7fdc7b2951abf
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/16/2017
-
 
 ---
 # <a name="create-an-office-data-connection-odc-file"></a>Office データ接続 (.odc) ファイルの作成

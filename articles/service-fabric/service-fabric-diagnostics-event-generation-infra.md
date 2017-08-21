@@ -70,7 +70,7 @@ Service Fabric には、次の記事で詳述する独自の正常性モデル�
 メトリックを報告するには、次のようなコードを使用します。
 
   ```csharp
-    this.ServicePartition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
+    this.Partition.ReportLoad(new List<LoadMetric> { new LoadMetric("MemoryInMb", 1234), new LoadMetric("metric1", 42) });
   ```
 
 ### <a name="service-fabric-support-logs"></a>Service Fabric のサポート ログ

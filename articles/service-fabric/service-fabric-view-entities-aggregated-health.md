@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/18/2017
 ms.author: oanapl
 ms.translationtype: HT
 ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
@@ -36,9 +36,15 @@ Service Fabric には、エンティティの正常性の集計を取得する�
 
 ```xml
 <Service Name="WordCountService">
+<<<<<<< HEAD
+    <StatefulService ServiceTypeName="WordCountServiceType" TargetReplicaSetSize="7" MinReplicaSetSize="3">
+      <UniformInt64Partition PartitionCount="1" LowKey="1" HighKey="26" />
+    </StatefulService>
+=======
   <StatefulService ServiceTypeName="WordCountServiceType" TargetReplicaSetSize="7" MinReplicaSetSize="2">
     <UniformInt64Partition PartitionCount="[WordCountService_PartitionCount]" LowKey="1" HighKey="26" />
   </StatefulService>
+>>>>>>> 5e84dbdd8e45a5d6b36f435a550b7433b873bf11
 </Service>
 ```
 

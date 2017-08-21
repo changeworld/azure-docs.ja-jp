@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 06/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 4d818112d8b6cc07a73d2521ef229c90e0d5884b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/17/2017
-
 
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能

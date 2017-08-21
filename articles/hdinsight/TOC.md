@@ -199,7 +199,6 @@
 #### [Hadoop のメモリとパフォーマンス](hdinsight-hadoop-stack-trace-error-messages.md)
 #### [Linux での Hadoop YARN アプリケーション ログへのアクセス](hdinsight-hadoop-access-yarn-app-logs-linux.md)
 #### [Hadoop サービスのヒープ ダンプの有効化](hdinsight-hadoop-collect-debug-heap-dump-linux.md)
-#### [HDInsight ログの分析](hdinsight-debug-jobs.md)
 #### [WebHCat エラーの説明と解決策](hdinsight-hadoop-templeton-webhcat-debug-errors.md)
 #### [メモリ不足エラーを修正するための Hive 設定](hdinsight-hadoop-hive-out-of-memory-error-oom.md)
 #### [Ambari ビューを使用して Tez ジョブをデバッグする](hdinsight-debug-ambari-tez-view.md)

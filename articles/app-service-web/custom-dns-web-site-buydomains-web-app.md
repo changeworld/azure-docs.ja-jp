@@ -3,8 +3,8 @@ title: "Azure Web Apps のカスタム ドメイン名を購入する"
 description: "Azure App Service の Web アプリでカスタム ドメイン名を購入する方法について説明します。"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
-manager: erikre
+author: cephalin
+manager: cfowler
 editor: 
 ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.service: app-service-web
@@ -12,8 +12,8 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
-ms.author: robmcm
+ms.date: 08/17/2016
+ms.author: cephalin
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 44d350d2d098be14ad254066a8528fe117200ec4

@@ -102,7 +102,7 @@ Azure Data Lake Analytics で U-SQL スクリプトをコンパイルして実�
 
     ![Data Lake Tools for Visual Studio Code のコマンド パレット](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login.png)
     ![Data Lake Tools for Visual Studio Code のログイン情報](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-login-info.png)
-3. Ctrl キーを押しながらログイン URL「https://aka.ms/devicelogin」をクリックして、ログイン Web ページを開きます。 コード「G567LX42V」をコピーし、下のテキスト ボックスに貼り付けてから、[続行] をクリックし次に進みます。
+3. Ctrl キーを押しながらログイン URL「https://aka.ms/devicelogin」 をクリックして、ログイン Web ページを開きます。 コード「G567LX42V」をコピーし、下のテキスト ボックスに貼り付けてから、[続行] をクリックし次に進みます。
 
    ![Data Lake Tools for Visual Studio Code のログイン時に貼り付けるコード](./media/data-lake-analytics-data-lake-tools-for-vscode/data-lake-tools-for-vscode-extension-login-paste-code.png )   
 4.  手順に従って Web ページからサインインします。 接続すると、VSCode ウィンドウの左下にあるステータス バーに Azure アカウント名が表示されます。 

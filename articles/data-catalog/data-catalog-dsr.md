@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 05/15/2017
+ms.date: 08/15/2017
 ms.author: maroche
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 1ef3903bc4c401988c0f8b27dc9f9f0f3ec99466
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
-
 
 ---
 
