@@ -76,11 +76,6 @@
       href: ../virtual-machines-disaster-recovery-guidance.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: Azure の計画メンテナンス
       href: planned-maintenance.md
-      items:
-        - name: 保持メンテナンス
-          href: maintenance-in-place.md
-        - name: 再起動メンテナンス
-          href: impactful-maintenance.md
     - name: VM サイズ
       items:
         - name: VM サイズの概要

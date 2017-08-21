@@ -4,8 +4,6 @@
   items:
     - name: Azure Cosmos DB について
       href: introduction.md
-    - name: DocumentDB ユーザーへの対応
-      href: 'https://azure.microsoft.com/blog/dear-documentdb-customers-welcome-to-azure-cosmos-db/'
 - name: クイック スタート
   expanded: true
   items:
