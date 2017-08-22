@@ -1,5 +1,3 @@
-リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
-
 1. Azure 仮想マシンが作成され、実行されてから、Azure Portal の [仮想マシン] アイコンをクリックして、VM を表示します。
 
 1. 新しい VM の省略記号 **[...]** をクリックします。
@@ -16,6 +14,4 @@
 
    ![リモート デスクトップ認証](./media/virtual-machines-sql-server-remote-desktop-connect/remote-desktop-connect.png)
 
-SQL Server 仮想マシンに接続した後は、SQL Server Management Studio を起動し、ローカル管理者の資格情報を使用して Windows 認証で接続できます。 SQL Server 認証を有効にした場合は、プロビジョニングの間に構成した SQL のログインとパスワードを使用して SQL 認証で接続することもできます。
-
-マシンにアクセスすると、要件に基づいてマシンと SQL Server の設定を直接変更することができます。 たとえば、ファイアウォールの設定を構成したり、SQL Server の構成設定を変更したりできます。
+1. **[OK]** をクリックして接続します。
