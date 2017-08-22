@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: rest-api
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/15/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 5cc565adf4a4b6820ad676d9689c9697e9158b9f
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 4af05aa1563341ca62c63c4b8256f11118c38efd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
@@ -53,14 +53,15 @@ Change Feed を使用すると、大量の書き込みが発生する大規模�
 
 Azure Cosmos DB を使用すると、デバイス、センサー、インフラストラクチャ、アプリケーションからイベント データを受信して格納し、[Azure Stream Analytics](../stream-analytics/stream-analytics-documentdb-output.md)、[Apache Storm](../hdinsight/hdinsight-storm-overview.md)、または [Apache Spark](../hdinsight/hdinsight-apache-spark-overview.md) を使用して、これらのイベントをリアルタイムで処理できます。 
 
-Web やモバイル アプリ内で、お客様のプロファイル、設定、または場所への変更などのイベントを追跡し、[Azure Functions](../azure-functions/functions-bindings-documentdb.md) や [App Services](https://azure.microsoft.com/services/app-service/) を使用して各デバイスにプッシュ通知を送信するなど特定のアクションをトリガーできます。 たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
+[サーバーレス](https://azure.microsoft.com/services/app-service/) Web やモバイル アプリ内で、お客様のプロファイル、設定、または場所への変更などのイベントを追跡し、[Azure Functions](http://azure.com/serverless) や [App Services](../azure-functions/functions-bindings-documentdb.md) を使用して各デバイスにプッシュ通知を送信するなど特定のアクションをトリガーできます。 たとえば、Azure Cosmos DB を使用してゲームを構築する場合、Change Feed を使用して完了したゲームのスコアに基づくリアルタイムのスコアボードを実装できます。
 
 ## <a name="how-change-feed-works-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed のしくみ
 Azure Cosmos DB では、Azure Cosmos DB コレクションの更新を増分的に読み取ることができます。 この Change Feed には、次の特長があります。
 
 * 変更は Azure Cosmos DB 内で保持され、非同期的に処理できます。
 * コレクション内のドキュメントへの変更は、Change Feed ですぐに利用できます。
-* 各ドキュメントに対する変更は Change Feed に 1 回だけ反映されます。 変更ログには、特定のドキュメントの最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
+* ドキュメントに加えられた変更は Change Feed 内に 1 回だけ出現し、クライアントがそれらのチェックポイント処理ロジックを管理します。 Change Feed プロセッサ ライブラリは、自動チェックポイント処理と "最低 1 回" というセマンティクスを提供します。
+* 変更ログには、特定のドキュメントの最新の変更のみが含まれます。 途中の変更は利用できない場合があります。
 * Change Feed はパーティション キー値ごとに変更日時順に並べ替えられます。 パーティション キー値が異なる場合、順序は保証されません。
 * 変更の同期は任意の時点から行うことが可能です。つまり、変更内容を利用できるデータ保持期間は固定されていません。
 * 変更内容は、パーティション キーの範囲として利用できます。 この機能により、大規模コレクションの変更を複数のコンシューマーやサーバーで並行処理できるようになります。
@@ -70,7 +71,7 @@ Azure Cosmos DB の Change Feed は、すべてのアカウントで既定で有
 
 ![Azure Cosmos DB の Change Feed の分散処理](./media/change-feed/changefeedvisual.png)
 
-クライアント コードで Change Feed を実装する場合、方法がいくつかあります。 以降のセクションでは、Azure Cosmos DB REST API と DocumentDB SDK を使用して Change Feed を実装する方法を説明します。 ただし、.NET アプリケーションの場合、新しい [Change Feed プロセッサ ライブラリ](#change-feed-processor)を使用して、Change Feed のイベントを処理することをお勧めします。このライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。
+クライアント コードで Change Feed を実装する場合、方法がいくつかあります。 以降のセクションでは、Azure Cosmos DB REST API と DocumentDB SDK を使用して Change Feed を実装する方法を説明します。 ただし、.NET アプリケーションの場合、新しい [Change Feed プロセッサ ライブラリ](#change-feed-processor)を使用して、Change Feed のイベントを処理することをお勧めします。このライブラリを使用すると、パーティション全体での変更の読み取りが簡素化され、複数のスレッドが並列で動作することが可能になります。 
 
 ## <a id="rest-apis"></a>REST API と DocumentDB SDK の使用
 Azure Cosmos DB では、**コレクション**と呼ばれるストレージとスループットの弾力性のあるコンテナーを提供します。 コレクション内のデータはスケーラビリティとパフォーマンスのために、[パーティション キー](partition-data.md)を使用して論理的にグループ化されます。 Azure Cosmos DB には、ID による検索 (Read/Get)、クエリ、読み取りフィード (スキャン) など、このデータにアクセスするためのさまざまな API が用意されています。 Change Feed は、DocumentDB の `ReadDocumentFeed` API に 2 つの新しい要求ヘッダーを設定することで取得でき、複数のパーティション キー範囲で並列処理できます。
@@ -198,7 +199,7 @@ Azure Cosmos DB では、オプションの `x-ms-documentdb-partitionkeyrangeid
 ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処理について、次のシナリオ/タスクをサポートします。
 
 * 最初から (つまりコレクション作成時から) のドキュメントへのすべての変更を読み取る。
-* 現在からドキュメントに対する今後の更新へのすべての変更を読み取る。
+* 現在時刻から今後のドキュメントの更新に対するすべての変更またはユーザーが指定した時刻以降の変更を読み取る。
 * コレクションの論理バージョン (ETag) からのドキュメントへのすべての変更を読み取る。 増分のフィード読み取り要求から返された ETag に基づいてコンシューマーのチェックポイントを作成できます。
 
 変更内容にはドキュメントへの挿入と更新が含まれます。 削除をキャプチャするには、ドキュメント内で「論理的な削除」プロパティを使用するか、[組み込み型 TTL プロパティ](time-to-live.md)を使用し、Change Feed で保留中の削除を通知する必要があります。
@@ -210,7 +211,7 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
 <table>
     <tr>
         <th>ヘッダー名</th>
-        <th>Description</th>
+        <th>説明</th>
     </tr>
     <tr>
         <td>A-IM</td>
@@ -220,10 +221,14 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
         <td>If-None-Match</td>
         <td>
             <p>ヘッダーなし: 最初 (コレクション作成時) からのすべての変更を返します</p>
-            <p>"*": コレクションに含まれるデータへのすべての新しい変更を返します</p>
+            <p>"*": コレクションに含まれるデータへのすべての新しい変更を返します</p>           
             <p>&lt;etag&gt;: ETag がコレクションに設定されている場合、その論理タイムスタンプ以降に行われたすべての変更を返します</p>
         </td>
     </tr>
+    <tr>    
+        <td>If-Modified-Since</td> 
+        <td>RFC 1123 時刻形式。If-None-Match が指定されている場合は無視されます</td> 
+    </tr> 
     <tr>
         <td>x-ms-documentdb-partitionkeyrangeid</td>
         <td>読み取りデータのパーティション キー範囲の ID です。</td>
@@ -232,8 +237,7 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
 
 **増分 ReadDocumentFeed の応答ヘッダー**:
 
-<table>
-    <tr>
+<table> <tr>
         <th>ヘッダー名</th>
         <th>説明</th>
     </tr>
@@ -263,6 +267,8 @@ ReadDocumentFeed は、Azure Cosmos DB コレクションの変更の増分処�
 
 > [!NOTE]
 > Change Feed を使用すると、ストアド プロシージャまたはトリガー内で複数のドキュメントが挿入または更新された場合に、`x-ms-max-item-count` で指定した数よりも多くの項目が 1 ページで返される場合があります。 
+
+.NET SDK (1.17.0) を使用している場合は、`CreateDocumentChangeFeedQuery` が呼び出されたときに `StartTime` 以降に変更されたドキュメントを直接返すように `ChangeFeedOptions`の `StartTime` フィールドを設定します。 BREST API を使用する `If-Modified-Since` を指定することで、要求は、ドキュメント自体ではなく、応答ヘッダー内に継続トークンまたは `etag` を返します。 指定した時刻に変更されたドキュメントでを返すには、`If-None-Match` を指定した次回の要求で継続トークン `etag` を使用して実際のドキュメントを返す必要があります。 
 
 .NET SDK には、コレクションに加えられた変更にアクセスする、[CreateDocumentChangeFeedQuery](/dotnet/api/microsoft.azure.documents.client.documentclient.createdocumentchangefeedquery?view=azure-dotnet) および [ChangeFeedOptions](/dotnet/api/microsoft.azure.documents.client.changefeedoptions?view=azure-dotnet) ヘルパー クラスが用意されています。 次のスニペットは、単一のクライアントから .NET SDK を使用して開始からのすべての変更を取得する方法を示します。
 
@@ -429,7 +435,7 @@ Change Feed プロセッサ ライブラリを使用するには、プロセッ�
 <table>
     <tr>
         <th>プロパティ名</th>
-        <th>Description</th>
+        <th>説明</th>
     </tr>
     <tr>
         <td>MaxItemCount</td>
@@ -458,7 +464,7 @@ Change Feed プロセッサ ライブラリを使用するには、プロセッ�
     <tr>
         <th>プロパティ名</th>
         <th>型</th>
-        <th>Description</th>
+        <th>説明</th>
     </tr>
     <tr>
         <td>LeaseRenewInterval</td>

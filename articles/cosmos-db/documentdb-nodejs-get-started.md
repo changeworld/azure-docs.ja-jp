@@ -13,16 +13,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: node
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/14/2017
 ms.author: anhoh
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 04b147d98a6d9d508deea40e68a68d3e421f51fa
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 6510e0270bb2efa252a2b2ad40014c5d26b74a81
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="nodejs-tutorial-documentdb-nodejs-console-application"></a>Node.js チュートリアル: DocumentDB Node.js コンソール アプリケーション
+# <a name="nodejs-tutorial-use-the-documentdb-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Node.js チュートリアル: Azure Cosmos DB の DocumentDB API を使用して Node.js コンソール アプリケーションを作成する
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -61,7 +61,7 @@ Node.js チュートリアルを完了した後で、このページの上部ま
 * [Node.js](https://nodejs.org/) バージョン v0.10.29 以降
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
-それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「 [Node.js アプリケーションをセットアップする](#SetupNode)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Node.js アプリケーションをセットアップする](#SetupNode)」に進んでください。
+それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「[Node.js アプリケーションをセットアップする](#SetupNode)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Node.js アプリケーションをセットアップする](#SetupNode)」に進んでください。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
@@ -85,7 +85,7 @@ Node.js チュートリアルを完了した後で、このページの上部ま
 
 次に、以下にコード スニペットをコピーして貼り付け、プロパティ ```config.endpoint``` と ```config.primaryKey``` を Azure Cosmos DB エンドポイント URI および主キーに設定します。 これらの構成はどちらも [Azure ポータル](https://portal.azure.com)にあります。
 
-![Node.js チュートリアル - Azure Cosmos DB アカウントを示す Azure Portal のスクリーン ショット。アクティブなハブが強調表示され、[Azure Cosmos DB account]\(Azure Cosmos DB アカウント\) ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている - ノード データベース][keys]
+![Node.js チュートリアル - Azure Cosmos DB アカウントを示す Azure ポータルのスクリーンショット。アクティブなハブが強調表示され、[Azure Cosmos DB アカウント] ブレードで [キー] ボタンが強調表示され、[キー] ブレードで URI 値、プライマリ キー値、およびセカンダリ キーの値が強調表示されている - ノード データベース][keys]
 
     // ADD THIS PART TO YOUR CODE
     var config = {}
@@ -259,7 +259,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB データベースが作成されました。
+お疲れさまでした。 これで、Azure Cosmos DB データベースが作成されました。
 
 ## <a id="CreateColl"></a>手順 6: コレクションを作成する
 > [!WARNING]
@@ -313,7 +313,7 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB コレクションが作成されました。
+お疲れさまでした。 これで、Azure Cosmos DB コレクションが作成されました。
 
 ## <a id="CreateDoc"></a>手順 7: ドキュメントを作成する
 [ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](https://azure.github.io/azure-documentdb-node/DocumentClient.html) 関数を使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 これで、Azure Cosmos DB にドキュメントを挿入できます。
@@ -365,9 +365,9 @@ NOTFOUND の HTTP ステータス、データベースの URL、コレクショ�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB ドキュメントが作成されました。
+お疲れさまでした。 これで、Azure Cosmos DB ドキュメントが作成されました。
 
-![Node.js チュートリアル - アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図 - ノード データベース](./media/documentdb-nodejs-get-started/node-js-tutorial-account-database.png)
+![Node.js チュートリアル - アカウント、データベース、コレクション、およびドキュメントの間の階層関係を示す図 - ノード データベース](./media/documentdb-nodejs-get-started/node-js-tutorial-cosmos-db-account.png)
 
 ## <a id="Query"></a>手順 8: Azure Cosmos DB リソースにクエリを実行する
 Azure Cosmos DB では、各コレクションに格納された JSON ドキュメントに対する[豊富なクエリ](documentdb-sql-query.md)がサポートされています。 次のサンプル コードは、コレクションでドキュメントに対して実行できるクエリを示しています。
@@ -424,7 +424,7 @@ Azure Cosmos DB クエリのスコープは既に 1 つのコレクションに�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB ドキュメントにクエリが実行されました。
+お疲れさまでした。 これで、Azure Cosmos DB ドキュメントにクエリが実行されました。
 
 ## <a id="ReplaceDocument"></a>手順 9: ドキュメントを置換する
 Azure Cosmos DB は、JSON ドキュメントの置換をサポートします。
@@ -471,7 +471,7 @@ Azure Cosmos DB は、JSON ドキュメントの置換をサポートします�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB ドキュメントが置換されました。
+お疲れさまでした。 これで、Azure Cosmos DB ドキュメントが置換されました。
 
 ## <a id="DeleteDocument"></a>手順 10: ドキュメントを削除する
 Azure Cosmos DB は、JSON ドキュメントの削除をサポートします。
@@ -515,7 +515,7 @@ Azure Cosmos DB は、JSON ドキュメントの削除をサポートします�
 
 ターミナルで、```app.js``` ファイルを見つけ、コマンド ```node app.js``` を実行します。
 
-ご利用ありがとうございます。 これで、Azure Cosmos DB ドキュメントが削除されました。
+お疲れさまでした。 これで、Azure Cosmos DB ドキュメントが削除されました。
 
 ## <a id="DeleteDatabase"></a>手順 11: ノード データベースを削除する
 作成したデータベースを削除すると、データベースとすべての子リソース (コレクション、ドキュメントなど) が削除されます。
@@ -601,7 +601,7 @@ Azure Cosmos DB は、JSON ドキュメントの削除をサポートします�
     Completed successfully
     Press any key to exit
 
-ご利用ありがとうございます。 Node.js チュートリアルが完了し、初めての Azure Cosmos DB コンソール アプリケーションが完成しました。
+お疲れさまでした。 Node.js チュートリアルが完了し、初めての Azure Cosmos DB コンソール アプリケーションが完成しました。
 
 ## <a id="GetSolution"></a>完全な Node.js チュートリアル ソリューションを入手する
 このチュートリアルの手順を実行する時間がない場合や、コードをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/documentdb-node-getting-started) から入手できます。

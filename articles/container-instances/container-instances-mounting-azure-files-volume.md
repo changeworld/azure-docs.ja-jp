@@ -11,16 +11,17 @@ keywords:
 ms.assetid: 
 ms.service: container-instances
 ms.devlang: azurecli
-ms.topic: sample
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/01/2017
 ms.author: seanmck
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: d0e56fb385c4997bd1a14d1afed0af7a38181b22
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 4248a3769ba8a0fb067b3904d55d487fe67e5778
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -116,11 +117,14 @@ Azure ファイル共有をボリュームとしてコンテナーにマウン�
         "properties": {
           "image": "seanmckenna/aci-hellofiles",
           "resources": {
-            "request": {
+            "requests": {
               "cpu": 1,
               "memoryInGb": 1.5
             }
           },
+          "ports": [{
+            "port": 80
+          }],
           "volumeMounts": [{
             "name": "myvolume",
             "mountPath": "/aci/logs/"
@@ -128,12 +132,19 @@ Azure ファイル共有をボリュームとしてコンテナーにマウン�
         }  
       }],
       "osType": "Linux",
+      "ipAddress": {
+        "type": "Public",
+        "ports": [{
+          "protocol": "tcp",
+          "port": "80"
+        }]
+      },
       "volumes": [{
         "name": "myvolume",
         "azureFile": {
-            "shareName": "acishare",
-            "storageAccountName": "[parameters('storageaccountname')]",
-            "storageAccountKey": "[parameters('storageaccountkey')]"
+          "shareName": "acishare",
+          "storageAccountName": "[parameters('storageaccountname')]",
+          "storageAccountKey": "[parameters('storageaccountkey')]"
         }
       }]
     }
@@ -179,7 +190,13 @@ az keyvault show --name $KEYVAULT_NAME --query [id] -o tsv
 az group deployment create --name hellofilesdeployment --template-file azuredeploy.json --parameters @azuredeploy.parameters.json --resource-group myResourceGroup
 ```
 
-コンテナーの起動後、指定したマウント パスで共有内のファイルを管理できます。
+コンテナーが起動したら、**seanmckenna/aci-hellofiles** イメージ経由でデプロイされる単純な Web アプリを使用して、指定したマウント パスにある Azure ファイル共有のファイルを管理できます。 この Web アプリの IP アドレスは以下を使用して取得します。
+
+```azurecli-interactive
+az container show --resource-group myResourceGroup --name hellofiles -o table
+```
+
+[Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)などのツールを使用して、ファイル共有に書き込まれるファイルを取得して検査できます。
 
 >[!NOTE]
 > Azure Resource Manager テンプレートやパラメーター ファイルの使用、および Azure CLI でのデプロイの詳細については、「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](../azure-resource-manager/resource-group-template-deploy-cli.md)」を参照してください。

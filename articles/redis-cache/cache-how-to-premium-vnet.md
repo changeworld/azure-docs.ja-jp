@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 05/15/2017
 ms.author: sdanie
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c758aa5955362d04abf69c760d2aed7983cdf102
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 59d46990e02c0719d2b4df01e216a97fd649c509
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-redis-cache"></a>Premium Azure Redis Cache の Virtual Network のサポートを構成する方法
@@ -109,31 +109,31 @@ Azure Redis Cache が VNet でホストされている場合は、次の表に�
 - 3 つのポートは、Azure Storage と Azure DNS を提供する Azure エンドポイントにトラフィックをルーティングします。
 - その他のポート範囲は、内部の Redis サブネット通信用です。 内部 Redis サブネット通信用にサブネット NSG 規則は必要ありません。
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
-| --- | --- | --- | --- | --- |
-| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 |* |
-| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 |* |
-| 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
-| 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |
-| 20226 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 13000-13999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 15000-15999 |送信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| ポート | 方向 | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
+| --- | --- | --- | --- | --- | --- |
+| 80、443 |送信 |TCP |Azure Storage/PKI (インターネット) に対する Redis の依存関係 | (Redis サブネット) |* |
+| 53 |送信 |TCP/UDP |DNS (インターネット/VNet) に対する Redis の依存関係 | (Redis サブネット) |* |
+| 8443 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
+| 10221-10231 |送信 |TCP |Redis の内部通信 | (Redis サブネット) | (Redis サブネット) |
+| 20226 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 13000-13999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 15000-15999 |送信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 
 ### <a name="inbound-port-requirements"></a>受信ポートの要件
 
 受信ポートの範囲には、8 個の要件があります。 これらの範囲の受信要件は、同じ VNET でホストされている他のサービスからの受信、または Redis サブネット通信への内部の要件です。
 
-| ポート | 方向 | トランスポート プロトコル | 目的 | リモート IP |
-| --- | --- | --- | --- | --- |
-| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 8443 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
-| 8500 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
-| 10221-10231 |受信 |TCP |Redis の内部通信 |(Redis サブネット)、Azure Load Balancer |
-| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 |Virtual Network、Azure Load Balancer |
-| 16001 |受信 |TCP/UDP |Azure 負荷分散 |Azure Load Balancer |
-| 20226 |受信 |TCP |Redis の内部通信 |(Redis サブネット) |
+| ポート | 方向 | トランスポート プロトコル | 目的 | ローカル IP | リモート IP |
+| --- | --- | --- | --- | --- | --- |
+| 6379, 6380 |受信 |TCP |Redis へのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 8443 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
+| 8500 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
+| 10221-10231 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット)、Azure Load Balancer |
+| 13000-13999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 15000-15999 |受信 |TCP |Redis クラスターへのクライアント通信、Azure 負荷分散 | (Redis サブネット) |Virtual Network、Azure Load Balancer |
+| 16001 |受信 |TCP/UDP |Azure 負荷分散 | (Redis サブネット) |Azure Load Balancer |
+| 20226 |受信 |TCP |Redis の内部通信 | (Redis サブネット) |(Redis サブネット) |
 
 ### <a name="additional-vnet-network-connectivity-requirements"></a>その他の VNET ネットワーク接続の要件
 

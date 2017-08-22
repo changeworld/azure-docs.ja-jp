@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: article
-ms.date: 7/21/2017
+ms.date: 08/08/2017
 ms.author: robmcm;yungez;kevinzha
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 9e4decbcbbfca72475bfac032d39d1df7bdd4019
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 273cc750857c5e466882060a38ac0f3475811e98
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -53,7 +53,7 @@ Azure Cosmos DB は、開発者が DocumentDB、MongoDB、Graph、Table API な�
 
    ![Azure ポータル][AZ02]
 
-1. **[Azure Cosmos DB]** ブレードで、次の情報を入力します。
+1. **[Azure Cosmos DB]** ページで、次の情報を入力します。
 
    * データベースの URI として使用する一意の **ID** を入力します。 例: *wingtiptoysdata.documents.azure.com*。
    * API として **[SQL (Document DB)]\(SQL (Document DB)\)** を選択します。
@@ -65,11 +65,11 @@ Azure Cosmos DB は、開発者が DocumentDB、MongoDB、Graph、Table API な�
 
    ![Azure ポータル][AZ03]
 
-1. データベースが作成されると、それが Azure **ダッシュボード**に表示され、**[すべてのリソース]** ブレードと **[Azure Cosmos DB]** ブレードにも表示されます。 これらのいずれかの場所でデータベースをクリックすると、キャッシュのプロパティ ブレードを開くことができます。
+1. データベースが作成されると、それが Azure **ダッシュボード**に表示され、**[すべてのリソース]** ページと **[Azure Cosmos DB]** ページにも表示されます。 これらのいずれかの場所でデータベースをクリックすると、キャッシュのプロパティ ページを開くことができます。
 
    ![Azure ポータル][AZ04]
 
-1. データベースのプロパティ ブレードが表示されたら、**[アクセス キー]** をクリックし、データベースの URI とアクセス キーをコピーします。これらの値は Spring Boot アプリケーションで使用します。
+1. データベースのプロパティ ページが表示されたら、**[アクセス キー]** をクリックし、データベースの URI とアクセス キーをコピーします。これらの値は Spring Boot アプリケーションで使用します。
 
    ![Azure ポータル][AZ05]
 
@@ -151,76 +151,9 @@ Azure Cosmos DB は、開発者が DocumentDB、MongoDB、Graph、Table API な�
 
 ## <a name="add-sample-code-to-implement-basic-database-functionality"></a>基本的なデータベース機能を実装するサンプル コードを追加する
 
-### <a name="modify-the-main-application-class"></a>アプリケーションのメイン クラスを変更する
+このセクションでは、ユーザー データを格納するための 2 つの Java クラスを作成します。その後、アプリケーションのメイン クラスを変更してユーザー クラスのインスタンスを作成し、それをデータベースに保存します。
 
-1. アプリのパッケージ ディレクトリでメイン アプリケーションの Java ファイルを探します。次に例を示します。
-
-   `C:\SpringBoot\wingtiptoys\src\main\java\com\example\wingtiptoys\WingtiptoysApplication.java`
-
-   または
-
-   `/users/example/home/wingtiptoys/src/main/java/com/example/wingtiptoys/WingtiptoysApplication.java`
-
-   ![アプリケーションの Java ファイルを探す][JV01]
-
-1. テキスト エディターでメイン アプリケーションの Java ファイルを開き、ファイルに次の行を追加します。
-
-   ```java
-   package com.example.wingtiptoys;
-
-   import org.springframework.boot.SpringApplication;
-   import org.springframework.boot.autoconfigure.SpringBootApplication;
-   import org.springframework.beans.factory.annotation.Autowired;
-   import org.springframework.boot.CommandLineRunner;
-
-   @SpringBootApplication
-   public class WingtiptoysApplication implements CommandLineRunner {
-
-      @Autowired
-      private UserRepository repository;
-    
-      public static void main(String[] args) {
-         SpringApplication.run(WingtiptoysApplication.class, args);
-      }
-
-      public void run(String... var1) throws Exception {
-         final User testUser = new User("testId", "testFirstName", "testLastName");
-
-         repository.deleteAll();
-         repository.save(testUser);
-
-         final User result = repository.findOne(testUser.getId());
-
-         System.out.printf("\n\n%s\n\n",result.toString());
-      }
-   }
-   ```
-   > [!NOTE]
-   >
-   > アプリケーション クラスでは、*UserRepository* と *User* の 2 つのクラスを使用します。これは後で定義し、実装します。
-   >
-
-1. メイン アプリケーションの Java ファイルを保存して閉じます。
-
-### <a name="define-a-data-repository-interface"></a>データ リポジトリ インターフェイスを定義する
-
-1. *UserRepository.java* という名前の新しいファイルをメイン アプリケーションの Java ファイルと同じディレクトリに作成します。
-
-1. テキスト エディターで *UserRepository.java* ファイルを開き、既定の DocumentDB リポジトリ インターフェイスを拡張するユーザー リポジトリ インターフェイスを定義する次の行をファイルに追加します。
-
-   ```java
-   package com.example.wingtiptoys;
-
-   import com.microsoft.azure.spring.data.documentdb.repository.DocumentDbRepository;
-   import org.springframework.stereotype.Repository;
-
-   @Repository
-   public interface UserRepository extends DocumentDbRepository<User, String> {}   
-   ```
-
-1. *UserRepository.java* ファイルを保存して閉じます。
-
-### <a name="define-a-basic-class-for-storing-data"></a>データを格納するための基本クラスを定義する
+### <a name="define-a-basic-class-for-storing-user-data"></a>ユーザー データを格納するための基本クラスを定義する
 
 1. *User.java* という名前の新しいファイルをメイン アプリケーションの Java ファイルと同じディレクトリに作成します。
 
@@ -273,6 +206,71 @@ Azure Cosmos DB は、開発者が DocumentDB、MongoDB、Graph、Table API な�
 
 1. *User.java* ファイルを保存して閉じます。
 
+### <a name="define-a-data-repository-interface"></a>データ リポジトリ インターフェイスを定義する
+
+1. *UserRepository.java* という名前の新しいファイルをメイン アプリケーションの Java ファイルと同じディレクトリに作成します。
+
+1. テキスト エディターで *UserRepository.java* ファイルを開き、既定の DocumentDB リポジトリ インターフェイスを拡張するユーザー リポジトリ インターフェイスを定義する次の行をファイルに追加します。
+
+   ```java
+   package com.example.wingtiptoys;
+
+   import com.microsoft.azure.spring.data.documentdb.repository.DocumentDbRepository;
+   import org.springframework.stereotype.Repository;
+
+   @Repository
+   public interface UserRepository extends DocumentDbRepository<User, String> {}   
+   ```
+
+1. *UserRepository.java* ファイルを保存して閉じます。
+
+### <a name="modify-the-main-application-class"></a>アプリケーションのメイン クラスを変更する
+
+1. アプリのパッケージ ディレクトリでメイン アプリケーションの Java ファイルを探します。次に例を示します。
+
+   `C:\SpringBoot\wingtiptoys\src\main\java\com\example\wingtiptoys\WingtiptoysApplication.java`
+
+   または
+
+   `/users/example/home/wingtiptoys/src/main/java/com/example/wingtiptoys/WingtiptoysApplication.java`
+
+   ![アプリケーションの Java ファイルを探す][JV01]
+
+1. テキスト エディターでメイン アプリケーションの Java ファイルを開き、ファイルに次の行を追加します。
+
+   ```java
+   package com.example.wingtiptoys;
+
+   import org.springframework.boot.SpringApplication;
+   import org.springframework.boot.autoconfigure.SpringBootApplication;
+   import org.springframework.beans.factory.annotation.Autowired;
+   import org.springframework.boot.CommandLineRunner;
+
+   @SpringBootApplication
+   public class WingtiptoysApplication implements CommandLineRunner {
+
+      @Autowired
+      private UserRepository repository;
+    
+      public static void main(String[] args) {
+         SpringApplication.run(WingtiptoysApplication.class, args);
+      }
+
+      public void run(String... var1) throws Exception {
+         final User testUser = new User("testId", "testFirstName", "testLastName");
+
+         repository.deleteAll();
+         repository.save(testUser);
+
+         final User result = repository.findOne(testUser.getId());
+
+         System.out.printf("\n\n%s\n\n",result.toString());
+      }
+   }
+   ```
+
+1. メイン アプリケーションの Java ファイルを保存して閉じます。
+
 ## <a name="build-and-test-your-app"></a>アプリのビルドとテスト
 
 1. コマンド プロンプトを開き、ディレクトリを *pom.xml* ファイルが置かれているフォルダーに変更します。次に例を示します。
@@ -294,7 +292,7 @@ Azure Cosmos DB は、開発者が DocumentDB、MongoDB、Graph、Table API な�
 
    ![アプリケーションからの正常な出力][JV02]
 
-1. 省略可能: Azure Portal を使用して、**[ドキュメント エクスプローラー]** をクリックし、表示されたリストから項目を選んで内容を表示することで、データベースのプロパティ ブレードから Azure Cosmos DB の内容を表示できます。
+1. 省略可能: Azure ポータルで **[ドキュメント エクスプローラー]** をクリックし、表示されたリストから項目を選んで内容を表示することで、データベースのプロパティ ページから Azure Cosmos DB の内容を表示できます。
 
    ![ドキュメント エクスプローラーを使用してデータを表示する][JV03]
 

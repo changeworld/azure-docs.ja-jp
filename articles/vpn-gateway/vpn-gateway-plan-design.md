@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/27/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: b9b53ca61ff9448b4b587f6c406046b3d1a80d15
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 0ebc3ef4a64432e993dd6ed69766bb64544fe433
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="planning-and-design-for-vpn-gateway"></a>VPN ゲートウェイの計画と設計
@@ -40,13 +40,13 @@ ms.lasthandoff: 08/03/2017
 * 作成するソリューションにはどのような種類の VPN Gateway が必要か。
 * どのゲートウェイ SKU を使用するか。
 
-### <a name="planning-table"></a>計画表
+### <a name="planningtable"></a>計画表
 
 次の表は、ソリューションに最適な接続オプションを決定するのに役立ちます。
 
 [!INCLUDE [vpn-gateway-cross-premises](../../includes/vpn-gateway-cross-premises-include.md)]
 
-### <a name="gateway-skus"></a>ゲートウェイの SKU
+### <a name="gwsku"></a>ゲートウェイの SKU
 
 [!INCLUDE [vpn-gateway-table-gwtype-aggtput](../../includes/vpn-gateway-table-gwtype-aggtput-include.md)]
 
@@ -69,7 +69,7 @@ ms.lasthandoff: 08/03/2017
 
 以降のセクションでは、VPN ゲートウェイの基本について説明します。 
 
-#### <a name="networking-services-limits"></a>ネットワーク サービスの制限
+#### <a name="servicelimits"></a>ネットワーク サービスの制限
 
 テーブルをスクロールして、[ネットワーク サービスの制限](../azure-subscription-service-limits.md#networking-limits)を表示します。 示されている制限が設計に影響する可能性があります。
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/23/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 53681c58ca1eff394d6a3db2d6a026845ac03df1
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: c1eaefa792a78c7bb182771473484c4a2da2298f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -99,47 +99,14 @@ Managed Disks に変換する VM が可用性セット内にある場合は、�
   ```
 
 
-## <a name="convert-standard-managed-disks-to-premium"></a>Standard Managed Disks を Premium に変換する
-VM を Managed Disks に変換したら、管理されるディスクに変換した後は、ストレージ タイプを切り替えることができます。 Standard Storage を使用するディスクと Premium Storage を使用するディスクは混在させることができます。 
-
-次の例では、標準から Premium のストレージに切り替える方法を示します。 Premium Managed Disks を使用するには、Premium Storage に対応している [VM のサイズ](sizes.md)を使用している必要があります。 この例は、Premium ストレージに対応するサイズへの切り替えも行います。
-
-```powershell
-$rgName = 'myResourceGroup'
-$vmName = 'YourVM'
-$size = 'Standard_DS2_v2'
-$vm = Get-AzureRmVM -Name $vmName -resourceGroupName $rgName
-
-# Stop and deallocate the VM before changing the size
-Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
-
-# Change the VM size to a size that supports premium storage
-$vm.HardwareProfile.VmSize = $size
-Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
-
-# Get all disks in the resource group of the VM
-$vmDisks = Get-AzureRmDisk -ResourceGroupName $rgName 
-
-# For disks that belong to the selected VM, convert to premium storage
-foreach ($disk in $vmDisks)
-{
-    if ($disk.OwnerId -eq $vm.Id)
-    {
-        $diskUpdateConfig = New-AzureRmDiskUpdateConfig –AccountType PremiumLRS
-        Update-AzureRmDisk -DiskUpdate $diskUpdateConfig -ResourceGroupName $rgName `
-        -DiskName $disk.Name
-    }
-}
-
-Start-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-```
-
 ## <a name="troubleshooting"></a>トラブルシューティング
 
 変換中にエラーが発生する場合、または以前の変換の問題のために VM がエラー状態になっている場合は、`ConvertTo-AzureRmVMManagedDisk` コマンドレットをもう一度実行します。 通常再試行するだけで状況が好転します。
 
 
 ## <a name="next-steps"></a>次のステップ
+
+[Standard 管理ディスクを Premium 管理ディスクに変換する](convert-disk-storage.md)
 
 [スナップショット](snapshot-copy-managed-disk.md)を使用して、VM の読み取り専用コピーを取得します。
 

@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 07/11/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ad3549a9e8278c3364533ec2cd2321744ecda3b9
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: d74ff0bc33576812b1d30289dd9c503c73956911
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -220,7 +220,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     > [!IMPORTANT]
     > `dns.mynetwork.net` は、オンプレミス ネットワークのリソースの完全修飾ドメイン名 (FQDN) で置き換えます。
     >
-    > `10.0.0.4` は、仮想ネットワークのカスタム DNS サーバーの__内部 IP アドレス__で置き換えます。
+    > `10.0.0.4` は、仮想ネットワークのカスタム DNS サーバーの__内部 IP アドレス__に置き換えます。
 
     次のテキストのような応答が表示されます。
 
@@ -335,6 +335,7 @@ HDInsight のほとんどのドキュメントは、インターネット経由�
 
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
-* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関すページをご覧ください。
+* ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。
 
-* ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」を参照してください。
+* ユーザー定義のルートの詳細については、「[ユーザー定義のルートと IP 転送](../virtual-network/virtual-networks-udr-overview.md)」に関するページをご覧ください。
+

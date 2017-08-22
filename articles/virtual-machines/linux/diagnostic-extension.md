@@ -9,11 +9,11 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: jasonzio
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
-ms.openlocfilehash: d1efdf9b6b005852e570491aeb723a5758a4c839
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 525d706bd709ae72f2dca1c21e06db533ccf32b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Linux Diagnostic Extension を使用して、メトリックとログを監視する
@@ -42,7 +42,7 @@ Linux Diagnostic Extension は、Microsoft Azure で実行中の Linux VM の正
 
 Azure ポータルを使用して、LAD 3.0 を有効化し、構成することはできません。 代わりに、Azure ポータルはバージョン 2.3 をインストールし、構成します。 Azure ポータルのグラフとアラートは、両方のバージョンの拡張機能のデータを処理します。
 
-このインストール手順と[ダウンロード可能なサンプル構成](https://github.com/Azure/azure-linux-extensions/blob/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
+このインストール手順と[ダウンロード可能なサンプル構成](https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json)により、LAD 3.0 は次のように構成されます。
 
 * LAD 2.3 で提供されたものと同じメトリックをキャプチャし、保存します。
 * LAD 3.0 の新機能である、便利な一連のファイル システム メトリックをキャプチャします。
@@ -55,7 +55,8 @@ Azure ポータルを使用して、LAD 3.0 を有効化し、構成すること
 
 * **Azure Linux エージェント バージョン 2.2.0 以降**。 ほとんどの Azure VM Linux ギャラリー イメージには、バージョン 2.2.7 以降が含まれています。 `/usr/sbin/waagent -version` を実行して、VM にインストールされているバージョンを確認します。 VM で古いバージョンのゲスト エージェントを実行している場合は、[次の手順](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/update-agent)に従って更新します。
 * **Azure CLI**。 マシンに [Azure CLI 2.0 環境をセットアップ](https://docs.microsoft.com/cli/azure/install-azure-cli)します。
-* データを格納する既存のストレージ アカウントと、必要なアクセス権を付与する関連の SAS トークン。
+* wget コマンド。まだ持っていない場合は `sudo apt-get install wget` を実行します。
+* 既存の Azure サブスクリプションと、データをその中に格納するための既存のストレージ アカウント。
 
 ### <a name="sample-installation"></a>サンプル インストール
 
@@ -70,8 +71,11 @@ my_diagnostic_storage_account=<your_azure_storage_account_for_storing_vm_diagnos
 # Should login to Azure first before anything else
 az login
 
+# Select the subscription containing the storage account
+az account set --subscription <your_azure_subscription_id>
+
 # Download the sample Public settings. (You could also use curl or any web browser)
-wget https://github.com/Azure/azure-linux-extensions/blob/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
+wget https://raw.githubusercontent.com/Azure/azure-linux-extensions/master/Diagnostic/tests/lad_2_3_compatible_portal_pub_settings.json -O portal_public_settings.json
 
 # Build the VM resource ID. Replace storage account name and resource ID in the public settings.
 my_vm_resource_id=$(az vm show -g $my_resource_group -n $my_linux_vm --query "id" -o tsv)
@@ -250,7 +254,7 @@ mdsdHttpProxy | (省略可能) [保護された設定](#protected-settings)で�
 eventVolume | (省略可能) ストレージ テーブル内で作成されるパーティションの数を制御します。 `"Large"`、`"Medium"`、`"Small"` のいずれかである必要があります。 指定しない場合は、既定値の `"Medium"` が使用されます。
 sampleRateInSeconds | (省略可能) 生の (未集計) メトリックを収集する既定の間隔。 サポートされている最小サンプル レートは 15 秒です。 指定しない場合は、既定値の `15` が使用されます。
 
-#### <a name="metrics"></a>[Metrics]
+#### <a name="metrics"></a>metrics
 
 ```json
 "metrics": {
@@ -441,7 +445,7 @@ PercentPrivilegedTime | 非アイドル時間のうち、特権 (カーネル) �
 
 "メモリ" クラスのメトリックは、メモリの使用率、ページング、スワップに関する情報を提供します。
 
-counter | 意味
+カウンター | 意味
 ------- | -------
 AvailableMemory | 使用可能な物理メモリ (MiB)
 PercentAvailableMemory | 合計メモリに対する使用可能な物理メモリの割合
@@ -461,7 +465,7 @@ PercentUsedSwap | 合計スワップに対する使用中のスワップ領域�
 
 "ネットワーク" クラスのメトリックは、起動後の個々のネットワーク インターフェイス上のネットワーク アクティビティに関する情報を提供します。 LAD は、ホスト メトリックから取得できる帯域幅メトリックを公開しません。
 
-counter | 意味
+カウンター | 意味
 ------- | -------
 BytesTransmitted | 起動後に送信された合計バイト数
 BytesReceived | 起動後に受信した合計バイト数
@@ -478,7 +482,7 @@ TotalCollisions | 起動後にネットワーク ポートによって報告さ�
 
 "ファイルシステム" クラスのメトリックは、ファイル システムの使用状況に関する情報を提供します。 絶対値と割合の値は、(root ではなく) 通常のユーザーに表示されるように報告されます。
 
-counter | 意味
+カウンター | 意味
 ------- | -------
 FreeSpace | 使用可能なディスク領域 (バイト単位)
 UsedSpace | 使用済みディスク領域 (バイト単位)
@@ -499,7 +503,7 @@ TransfersPerSecond | 1 秒あたりの読み取りまたは書き込み操作
 
 "ディスク" クラスのメトリックは、ディスク デバイスの使用状況に関する情報を提供します。 これらの統計情報は、ドライブ全体に適用されます。 デバイス上に複数のファイル システムが存在する場合、そのデバイスのカウンターは、実際にはファイル システム全体で集計されます。
 
-counter | 意味
+カウンター | 意味
 ------- | -------
 ReadsPerSecond | 1 秒あたりの読み取り操作
 WritesPerSecond | 1 秒あたりの書き込み操作
