@@ -15,13 +15,12 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 04/18/2016
-ms.author: chrande; glenga
+ms.author: glenga
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 2c0cb8ee1690f9b36b76c87247e3c7223876b269
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/10/2017
-
 
 ---
 # <a name="azure-functions-cosmos-db-bindings"></a>Azure Functions における Cosmos DB のバインド
@@ -173,7 +172,7 @@ module.exports = function (context, input) {
     for (var i = 0; i < documents.length; i++) {
         var document = documents[i];
         // operate on each document
-    }        
+    }       
     context.done();
 };
 ```

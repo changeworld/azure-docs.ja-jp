@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
-ms.author: cephalin;aelnably
+ms.author: cephalin
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
 ms.openlocfilehash: 61396e8a3521c25eaf49c66a4948e520377d342a
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/09/2017
-
 
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元

@@ -2,7 +2,9 @@
 title: "Function App の作成と GitHub からの関数コードのデプロイ | Microsoft Docs"
 description: "Function App の作成と GitHub からの関数コードのデプロイ"
 services: functions
+ms.service: functions
 keywords: 
+ms.devlang: azurecli
 author: syntaxc4
 ms.author: cfowler
 ms.date: 04/27/2017

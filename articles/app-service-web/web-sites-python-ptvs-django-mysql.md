@@ -11,14 +11,14 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: python
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 07/07/2016
 ms.author: huvalo
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
 ms.openlocfilehash: 1c29cfc0a5b6361a7f526c37d5421ee4be3fe2c1
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/20/2017
-
 
 ---
 # <a name="django-and-mysql-on-azure-with-python-tools-22-for-visual-studio"></a>Python Tools 2.2 for Visual Studio を使用した Azure 上の Django と MySQL

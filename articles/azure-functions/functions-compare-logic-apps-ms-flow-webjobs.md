@@ -10,11 +10,11 @@ keywords: "Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure W
 ms.assetid: e9ccf7ad-efc4-41af-b9d3-584957b1515d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/03/2017
-ms.author: chrande; glenga
+ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df

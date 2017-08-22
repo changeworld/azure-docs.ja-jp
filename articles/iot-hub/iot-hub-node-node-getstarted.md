@@ -76,8 +76,9 @@ IoT Hub の作成は以上です。 以降の作業に必要な IoT Hub ホス�
 6. 次のコードを追加して、IoT Hub で ID レジストリにデバイスの定義を作成します。 このコードは、デバイス ID が ID レジストリに存在しない場合にはデバイスを作成し、存在している場合には既存のデバイスのキーを返します。
    
     ```
-    var device = new iothub.Device(null);
-    device.deviceId = 'myFirstNodeDevice';
+    var device = {
+      deviceId: 'myFirstNodeDevice'
+    }
     registry.create(device, function(err, deviceInfo, res) {
       if (err) {
         registry.get(device.deviceId, printDeviceInfo);

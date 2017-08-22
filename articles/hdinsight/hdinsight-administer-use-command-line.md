@@ -22,7 +22,6 @@ ms.openlocfilehash: 5102d44ebd447b638ab6e26fa1826bad224ed6c3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/09/2017
 
-
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Azure CLI を使用した HDInsight での Hadoop クラスターの管理
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
@@ -95,7 +94,7 @@ Hadoop クラスターのサイズを変更するには:
 * [Azure CLI の使い方][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
-[azure-create-storageaccount]: ../storage-create-storage-account.md
+[azure-create-storageaccount]:../storage/common/storage-create-storage-account.md
 [azure-purchase-options]: http://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: http://azure.microsoft.com/pricing/member-offers/
 [azure-free-trial]: http://azure.microsoft.com/pricing/free-trial/

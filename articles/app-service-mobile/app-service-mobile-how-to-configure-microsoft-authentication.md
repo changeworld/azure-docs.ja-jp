@@ -37,8 +37,7 @@ ms.lasthandoff: 03/09/2017
    > [!NOTE]
    > リダイレクト URI は、アプリケーションの URL にパス */.auth/login/microsoftaccount/callback* を追加したものです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/microsoftaccount/callback`」のように入力します。   
    > HTTPS スキームを使用していることを確認します。
-   > 
-   > 
+   
 7. [アプリケーション シークレット] で **[新しいパスワードを生成]**をクリックします。 表示される値をメモします。 ページから移動すると、このパスワードが再度表示されることはありません。
 
     > [!IMPORTANT]
