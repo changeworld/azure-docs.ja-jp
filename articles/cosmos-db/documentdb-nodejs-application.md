@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 08/14/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: e5f7697b1069186b9ab6b6594fa5efb069252475
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/26/2017
 
 この Node.js チュートリアルでは、Azure Cosmos DB と DocumentDB API を使用して、Azure Websites にホストされた Node.js Express アプリケーションからデータを格納する方法やデータにアクセスする方法について説明します。 タスクを作成、取得、完了する機能を備えた、単純な Web ベースのタスク管理アプリケーション (ToDo アプリ) を作成します。 タスクは、JSON ドキュメントとして Azure Cosmos DB に保存するものとします。 このチュートリアルでは、アプリの作成とデプロイの手順を示し、各スニペットの動作を説明します。
 
-![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image1.png)
+![この Node.js チュートリアルで作成した、My Todo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-mytodo.png)
 
 チュートリアルを最後まで実施する時間はないが、完成済みのソリューションが必要な場合は、 [GitHub][GitHub] から完全なサンプル ソリューションを入手できます。 アプリケーションを実行する手順については、[Readme](https://github.com/Azure-Samples/documentdb-node-todo-app/blob/master/README.md) ファイルを参照してください。
 
@@ -78,7 +78,7 @@ ms.lasthandoff: 07/26/2017
         npm start
 6. ブラウザーで [http://localhost:3000](http://localhost:3000) に移動すると、新しいアプリケーションを表示できます。
    
-    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image12.png)
+    ![Node.js について学習する - ブラウザー ウィンドウでの Hello World アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-express.png)
 
     次に、アプリケーションを停止するために、ターミナル ウィンドウで Ctrl + C キーを押し、**[y]** をクリックして、バッチ ジョブを終了します。
 
@@ -190,12 +190,6 @@ ms.lasthandoff: 07/26/2017
    
         module.exports = DocDBUtils;
    
-   > [!TIP]
-   > createCollection が受け取る省略可能な requestOptions パラメーターを使用すると、コレクションのプランの種類を指定できます。 requestOptions.offerType の値を指定しないと、コレクションは既定のプランの種類を使用して作成されます。
-   > 
-   > Azure Cosmos DB のプランの種類の詳細については、[Azure Cosmos DB のパフォーマンス レベル](performance-levels.md)に関するページを参照してください。 
-   > 
-   > 
 5. **docdbUtils.js** ファイルを保存して閉じます。
 6. **taskDao.js** ファイルの先頭に、**DocumentDBClient** と、上の手順で作成した **docdbUtils.js** を参照する次のコードを追加します。
    
@@ -497,20 +491,20 @@ ms.lasthandoff: 07/26/2017
              button.btn(type="submit") Add item
    
 
-    これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
+これはレイアウトを拡張するためのコードで、前述の **layout.jade** ファイル内の **content** プレースホルダーの内容を定義します。
    
-    このレイアウトでは、2 つの HTML フォームを作成しています。
+このレイアウトでは、2 つの HTML フォームを作成しています。
 
-    1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。
+1 つ目のフォームは、データ用のテーブルと、コントローラーの **/completetask** メソッドに対するポストによって項目の更新ができるボタンを含みます。
     
-    2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
+2 つ目のフォームは、2 つの入力フィールドと、コントローラーの **/addtask** メソッドに対するポストによって新しい項目を作成できるボタンを含みます。
 
-    アプリケーションが動作するために必要なコードはこれですべてです。
+アプリケーションが動作するために必要なコードはこれですべてです。
 
 ## <a name="_Toc395783181"></a>手順 6: ローカルでのアプリケーションの実行
 1. ローカル コンピューターでアプリケーションをテストするには、ターミナルで `npm start` を実行してアプリケーションを起動し、[http://localhost:3000](http://localhost:3000) ブラウザー ページを更新します。 ページは、次の画像のようになります。
    
-    ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image18.png)
+    ![ブラウザー ウィンドウでの MyTodo List アプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-localhost.png)
 
     > [!TIP]
     > layout.jade ファイルまたは index.jade ファイルのインデントについてのエラーが表示される場合は、両方のファイルの最初の 2 行がスペースなしで左揃えになっていることを確認してください。 最初の 2 行の前にスペースがある場合は、そのスペースを削除し、両方のファイルを保存してから、ブラウザー ウィンドウを更新します。 
@@ -518,7 +512,7 @@ ms.lasthandoff: 07/26/2017
 2. [Item]、[Item Name]、[Category] フィールドを使用して新しいタスクを入力し、**[Add Item]** をクリックします。 これらのプロパティに基づいて、Azure Cosmos DB にドキュメントが作成されます。 
 3. ページが更新され、ToDo リストに新しく作成された項目が表示されます。
    
-    ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/image19.png)
+    ![ToDo リストに新しい項目があるアプリケーションのスクリーン ショット](./media/documentdb-nodejs-application/cosmos-db-node-js-added-task.png)
 4. タスクを完了するには、[Complete] 列のチェック ボックスをオンにし、 **[Update tasks]**をクリックします。 既に作成したドキュメントが更新されます。
 
 5. アプリケーションを停止するために、ターミナル ウィンドウで Ctrl キーを押しながら C キーを押し、**[Y]** をクリックしてバッチ ジョブを終了します。
@@ -533,7 +527,7 @@ ms.lasthandoff: 07/26/2017
         git push azure master
 4. 数秒すると、Git による Web アプリケーションの発行が完了し、ブラウザーが起動します。作成したアプリケーションが Azure で動作しているようすを確認できます。
 
-    ご利用ありがとうございます。 ここでは初めての方を対象に、Azure Cosmos DB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
+    お疲れさまでした。 ここでは初めての方を対象に、Azure Cosmos DB を使用した Node.js Express Web アプリケーションを作成し、Azure Websites に発行する方法を説明しました。
 
     このチュートリアルの完全な参照アプリケーションをダウンロードするか参照する場合は、[GitHub][GitHub] からダウンロードできます。
 

@@ -1,6 +1,6 @@
 ---
 title: "Redis Cache を使用するように Spring Boot Initializer アプリを構成する方法"
-description: "Spring Boot Initializer で作成されたアプリケーションを、Azure Redis Cache を使用するように構成する方法について説明します。"
+description: "Spring Initializer で作成された Spring Boot アプリケーションを、Azure Redis Cache を使用するように構成する方法について説明します。"
 services: redis-cache
 documentationcenter: java
 author: rmcmurray
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 7/21/2017
 ms.author: robmcm;zhijzhao;yidon
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ea85a9cfe7079ade33a437987798a165a056dc02
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: fb3fc96a2136b7c326bb0eb291b7204e7acf0190
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/28/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-この記事の手順を実行するには、次の前提条件が必要です。
+この記事の手順に従うには、次の前提条件が必要です。
 
 * Azure サブスクリプション。Azure サブスクリプションをまだお持ちでない場合は、[MSDN サブスクライバーの特典]を有効にするか、または[無料の Azure アカウント]にサインアップできます。
 
@@ -49,19 +49,19 @@ ms.lasthandoff: 07/28/2017
 
 1. **[データベース]** をクリックし、**[Redis Cache]** をクリックします。
 
-   ![Azure Portal][AZ02]
+   ![Azure ポータル][AZ02]
 
-1. **[新規 Redis Cache]** ブレードで、キャッシュの **DNS 名**を入力し、**[サブスクリプション]**、**[リソース グループ]**、**[場所]** および **[価格レベル]** を指定します。 これらのオプションの指定後、**[作成]** をクリックしてキャッシュを作成します。
+1. **[新規 Redis Cache]** ページで、キャッシュの **DNS 名**を入力し、**[サブスクリプション]**、**[リソース グループ]**、**[場所]**、および **[価格レベル]** を指定します。 これらのオプションの指定後、**[作成]** をクリックしてキャッシュを作成します。
 
-   ![Azure Portal][AZ03]
+   ![Azure ポータル][AZ03]
 
-1. キャッシュが作成されると、Azure の**ダッシュボード**のほか、**[すべてのリソース]** ブレードと **[Redis Cach]** ブレードにも作成したキャッシュが表示されます。 これらのいずれかの場所でキャッシュをクリックすると、そのキャッシュのプロパティ ブレードを開くことができます。
+1. キャッシュが作成されると、Azure の**ダッシュボード**のほか、**[すべてのリソース]** ブレードと **[Redis Cach]** ページにも作成したキャッシュが表示されます。 これらのいずれかの場所でキャッシュをクリックすると、そのキャッシュのプロパティ ページを開くことができます。
 
-   ![Azure Portal][AZ04]
+   ![Azure ポータル][AZ04]
 
-1. キャッシュのプロパティの一覧が含まれているブレードが表示されたら、**[アクセス キー]** をクリックし、キャッシュのアクセス キーをコピーします。
+1. キャッシュのプロパティの一覧が含まれているページが表示されたら、**[アクセス キー]** をクリックし、キャッシュのアクセス キーをコピーします。
 
-   ![Azure Portal][AZ05]
+   ![Azure ポータル][AZ05]
 
 ## <a name="create-a-custom-application-using-the-spring-initializr"></a>Spring Initializr を使用してカスタム アプリケーションを作成する
 
@@ -98,10 +98,13 @@ ms.lasthandoff: 07/28/2017
 
    ```yaml
    # Specify the DNS URI of your Redis cache.
-   spring.redisHost=myspringbootcache.redis.cache.windows.net
+   spring.redis.host=myspringbootcache.redis.cache.windows.net
+
+   # Specify the port for your Redis cache.
+   spring.redis.port=6380
 
    # Specify the access key for your Redis cache.
-   spring.redisPassword=447564652c20426f6220526f636b7321
+   spring.redis.password=57686f6120447564652c2049495320526f636b73=
    ```
 
    ![application.properties ファイルの編集][RE02]
@@ -116,7 +119,7 @@ ms.lasthandoff: 07/28/2017
 
    `/users/example/home/myazuredemo/src/main/java/com/contoso/myazuredemo/controller`
 
-1. 作成した *controller* フォルダーに *HelloController.java* という名前のファイルを作成し、次のコードを追加します。
+1. *HelloController.java* という名前の新しいファイルを *controller* フォルダー内に作成します。 テキスト エディターでそのファイルを開き、次の行を追加します。
 
    ```java
    package com.contoso.myazuredemo;
@@ -131,11 +134,15 @@ ms.lasthandoff: 07/28/2017
    public class HelloController {
    
       // Retrieve the DNS name for your cache.
-      @Value("${spring.redisHost}")
+      @Value("${spring.redis.host}")
       private String redisHost;
 
+      // Retrieve the port for your cache.
+      @Value("${spring.redis.port}")
+      private int redisPort;
+
       // Retrieve the access key for your cache.
-      @Value("${spring.redisPassword}")
+      @Value("${spring.redis.password}")
       private String redisPassword;
 
       @RequestMapping("/")
@@ -143,7 +150,7 @@ ms.lasthandoff: 07/28/2017
       public String hello() {
       
          // Create a JedisShardInfo object to connect to your Redis cache.
-         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, 6380, true);
+         JedisShardInfo jedisShardInfo = new JedisShardInfo(redisHost, redisPort, true);
          // Specify your access key.
          jedisShardInfo.setPassword(redisPassword);
          // Create a Jedis object to store/retrieve information from your cache.
@@ -165,8 +172,8 @@ ms.lasthandoff: 07/28/2017
 1. Spring Boot アプリケーションを Maven でビルドし、実行します。次に例を示します。
 
    ```shell
-   mvn package
-   java -jar target/myazuredemo-0.0.1-SNAPSHOT.jar
+   mvn clean package
+   mvn spring-boot:run
    ```
 
 1. Web ブラウザーを使用して http://localhost:8080 を参照することによって Web アプリをテストするか、または curl が使用可能な場合は次の例のような構文を使用します。
@@ -183,7 +190,7 @@ Azure での Spring Boot アプリケーションの使用の詳細について�
 
 * [Spring Boot アプリケーションを Azure App Service にデプロイする](../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
 
-* [Azure Container Service での Kubernetes クラスター上の Spring Boot アプリケーションの実行](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
+* [Running a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service (Azure Container Service での Kubernetes クラスター上の Spring Boot アプリケーションの実行)](../container-service/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 

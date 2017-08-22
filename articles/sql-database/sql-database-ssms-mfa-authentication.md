@@ -25,7 +25,7 @@ ms.lasthandoff: 08/08/2017
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 
-**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 このトピックのすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  最新の接続ダイアログ ボックスは、[![1mfa-universal-connect]] のように表示されます。(./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "[ユーザー名] ボックスに入力します。")  
+**最新の SSMS のダウンロード** - クライアント コンピューターで、「[SQL Server Management Studio (SSMS) のダウンロード](https://msdn.microsoft.com/library/mt238290.aspx)」から SSMS の最新版をダウンロードします。 このトピックのすべての機能を使用するには、2017 年 7 月以降のバージョン 17.2 を使用してください。  最新の接続ダイアログ ボックスは、のように表示されます。 ![1mfa-universal-connect](./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png "ユーザー名 ボックスに入力します。")  
 
 ## <a name="the-five-authentication-options"></a>5 つの認証オプション  
 - Active Directory ユニバーサル認証は、2 つの非対話型の認証方式 (`Active Directory - Password` 認証と `Active Directory - Integrated` 認証) をサポートします。 非対話型 `Active Directory - Password` および `Active Directory - Integrated` 認証方式は、さまざまなアプリケーション (ADO.NET、JDBC、ODBC など) で使用できます。 これら 2 つの方式では、ポップアップ ダイアログ ボックスは表示されません。

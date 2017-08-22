@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
-ms.date: 05/24/2017
+ms.date: 08/14/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 297fe8850499212ca41b0b5ca132b7de8c761297
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 4376a5c07b5f00311ce0fe3c0056efdf79c273f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="azure-cosmos-db-nodejs-sdk-release-notes-and-resources"></a>Azure Cosmos DB Node.js SDK: リリース ノートとリソース
@@ -62,19 +62,27 @@ ms.lasthandoff: 07/25/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="1.12.2"/>1.12.2</a>
+*   npm のドキュメントを修正しました。
+
+### <a name="1.12.1"/>1.12.1</a>
+* ドキュメントに Unicode の特殊文字 (LS、PS) が含まれている場合の executeStoredProcedure のバグを修正しました。
+* パーティション キーで Unicode 文字が使用されているドキュメントを処理する際のバグを修正しました。
+* 名前メディアでコレクションを作成するためのサポートを修正しました。 Github 問題 #114。
+* アクセス許可承認トークンのサポートを修正しました。 Github 問題 #178。
+
 ### <a name="1.12.0"/>1.12.0</a>
-* [1 分あたりの要求ユニット (RU/m)](../cosmos-db/request-units-per-minute.md) 機能のサポートが追加されました。
 * ConsistentPrefix と呼ばれる新しい[一貫性レベル](consistency-levels.md)に対応するようになりました。
 * UriFactory のサポートを追加しました。
-* Unicode サポートのバグを修正しました。 (GitHub の問題 #171)
+* Unicode サポートのバグを修正しました。 GitHub 問題 #171。
 
 ### <a name="1.11.0"/>1.11.0</a>
 * 集計クエリ (COUNT、MIN、MAX、SUM、および AVG) のサポートを追加しました。
 * クロス パーティション クエリの並列処理の次数を制御するオプションを追加しました。
 * Azure Cosmos DB エミュレーターに対しての実行時に、SSL 検証を無効にするためのオプションを追加しました。
 * パーティション分割コレクションの最小スループットが 10,100 RU/秒から 2,500 RU/秒になりました。
-* 単一パーティション コレクションに関する継続トークンのバグを修正しました (github #107)。
-* 0 を単一パラメーター として処理する際の executeStoredProcedure バグを修正しました (github #155)。
+* 単一パーティション コレクションに関する継続トークンのバグを修正しました。 Github 問題 #107。
+* 0 を単一パラメーターとして処理する際の executeStoredProcedure のバグを修正しました。 Github 問題 #155。
 
 ### <a name="1.10.2"/>1.10.2</a>
 * SDK バージョンを含めるようにユーザー エージェント ヘッダーを修正しました。
@@ -160,7 +168,7 @@ ms.lasthandoff: 07/25/2017
 * GA SDK。
 
 ## <a name="release--retirement-dates"></a>リリース日と提供終了日
-Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月** 前に通知します。
+Microsoft は、新しい/サポートされるバージョンに速やかに移行する目的で、SDK の提供終了を少なくともその **12 か月**前に通知します。
 
 新しい機能と最適化は現在の SDK にのみ追加されます。そのため、常に可能な限り最新の SDK バージョンにアップグレードすることが推奨されます。
 
@@ -170,6 +178,8 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.12.2](#1.12.2) |2017 年 8 月 10 日 |--- |
+| [1.12.1](#1.12.1) |2017 年 8 月 10 日 |--- |
 | [1.12.0](#1.12.0) |2017 年 5 月 10 日 |--- |
 | [1.11.0](#1.11.0) |2017 年 3 月 16 日 |--- |
 | [1.10.2](#1.10.2) |2017 年 1 月 27 日 |--- |

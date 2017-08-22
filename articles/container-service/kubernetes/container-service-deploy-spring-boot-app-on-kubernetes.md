@@ -1,24 +1,25 @@
 ---
 title: "Azure Container Service で Spring Boot アプリケーションを Kubernetes にデプロイする | Microsoft Docs"
 description: "このチュートリアルでは、Microsoft Azure の Kubernetes クラスターに Spring Boot アプリケーションをデプロイする方法について説明します。"
-services: 
+services: container-service
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
-ms.service: multiple
+ms.service: container-service
 ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/20/2017
+ms.date: 08/04/2017
 ms.author: asirveda;robmcm
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 824eaf3362243763c8e24080c351e5c43d319ad7
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7f726436b2d459b8c16abb02e07de099abfd8974
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -298,10 +299,7 @@ ms.lasthandoff: 07/25/2017
 Azure での Spring Boot の使用の詳細については、次の記事を参照してください。
 
 * [Spring Boot アプリケーションを Azure App Service にデプロイする](../../app-service/app-service-deploy-spring-boot-web-app-on-azure.md)
-
-* [Azure Container Service で Spring Boot アプリを Kubernetes にデプロイする](container-service-deploy-spring-boot-app-on-linux.md)
-
-## <a name="additional-resources"></a>その他のリソース
+* [Azure Container Service で Spring Boot アプリケーションを Linux にデプロイする](container-service-deploy-spring-boot-app-on-linux.md)
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 

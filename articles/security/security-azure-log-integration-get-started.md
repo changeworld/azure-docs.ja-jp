@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ums.workload: na
-ms.date: 05/20/2017
+ms.date: 07/26/2017
 ms.author: TomSh
 ms.custom: azlog
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9ae8e8948d82b9695d7d144d458fe8180294084
-ms.openlocfilehash: 02b3095bb77a122fddd74e636395628333a13936
+ms.translationtype: HT
+ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
+ms.openlocfilehash: a5c51817688140cc2778602b4c1d5184ae4729a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/23/2017
-
+ms.lasthandoff: 08/01/2017
 
 ---
 # <a name="azure-log-integration-with-azure-diagnostics-logging-and-windows-event-forwarding"></a>Azure 診断ログおよび Windows イベント転送による Azure ログ統合
@@ -58,7 +57,7 @@ Azure Portal を使って仮想マシンを作成するプロセスの簡単な�
 
 
 
-## <a name="deployment-considerations"></a>デプロイメントに関する考慮事項
+## <a name="deployment-considerations"></a>デプロイに関する考慮事項
 Azure ログ統合のテスト中は、オペレーティング システムの最小要件を満たす任意のシステムを使用することができます。 ただし運用環境によっては、負荷のスケールアップまたはスケールアウトの検討が必要な場合もあります。
 
 イベント量が高い場合は、Azure ログ統合サービスの複数インスタンス (物理または仮想マシンごとに 1 つのインスタンス) を実行できます。 また、Windows 用 Azure 診断 (WAD) ストレージ アカウントの負荷分散が可能です。インスタンスに提供するサブスクリプションの数は、容量をベースにする必要があります。
@@ -102,7 +101,7 @@ Azure ログ統合サービスは、インストール先のマシンから利�
 ![インストール画面で利用統計情報チェック ボックスをオンに](./media/security-azure-log-integration-get-started/loaded-modules.png) </br></br>
 3. 特定の Azure 環境を使用して AzLog を構成する必要があります。 「Azure 環境」とは、使用する Azure のクラウド データ センターの「種類」です。 この時点では複数の Azure 環境が存在しますが、現在対象となるオプションは **AzureCloud** または**AzureUSGovernment** のいずれかです。   管理者特権の PowerShell 環境では、**c:\program files \Microsoft Azure ログ統合\**内であることを確認します。 </br></br>
     確認したらコマンドを実行します。 </br>
-    ``Set-AzlogAzureEnvironment -Name AzureCloud``(Azure 商用)
+    ``Set-AzlogAzureEnvironment -Name AzureCloud`` (Azure 商用)
 
       >[!NOTE]
       コマンドの成功時に、フィードバックは提供されません。  米国政府の Azure クラウドを使用する場合、米国政府クラウド向け **AzureUSGovernment** (Name 変数) が使用されます。 その他の Azure クラウドは、現時点ではサポートされていません。  
@@ -136,7 +135,7 @@ Azure ログ統合サービスは、インストール先のマシンから利�
  ![その他のサービス](./media/security-azure-log-integration-get-started/more-services.png)
  3. **[フィルター]** テキスト ボックスで、**ストレージ**を入力します。 **[ストレージ アカウント]** (**ストレージ**入力後に表示されます) をクリックします。
 
-  ![フィルター ボックス](./media/security-azure-log-integration-get-started/filter.png)
+   ![フィルター ボックス](./media/security-azure-log-integration-get-started/filter.png)
  4. ストレージ アカウント一覧が表示されたら、ログの記憶域に割り当てられているアカウントをダブルクリックします。
 
    ![ストレージ アカウント一覧](./media/security-azure-log-integration-get-started/storage-accounts.png)
@@ -182,8 +181,8 @@ Azure ログの統合の詳細については、次のドキュメントを参�
 
 * [Azure ログ用の Microsoft Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324) – Azure ログ統合の詳細情報、システム要件、およびインストール手順のダウンロード センター。
 * [Azure ログ統合の概要](security-azure-log-integration-overview.md) – このドキュメントでは、Azure ログ統合と、その主な機能およびしくみについて紹介します。
-* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。
+* [パートナーの構成手順](https://blogs.msdn.microsoft.com/azuresecurity/2016/08/23/azure-log-siem-configuration-steps/) – このブログ投稿では、Splunk、HP ArcSight、IBM QRadar などのパートナー ソリューションを使用できるように、Azure ログ統合を構成する方法について説明します。 これは、SIEM コンポーネントを構成する方法に関する現在のガイダンスです。 詳細については、まず SIEM ベンダーに確認してください。
 * [Azure ログ統合のよく寄せられる質問 (FAQ)](security-azure-log-integration-faq.md) – この FAQ は、Azure ログ統合について寄せられる質問とその回答です。
-* [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure 監査ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
+* [Azure ログ統合への Security Center の警告の統合](../security-center/security-center-integrating-alerts-with-log-integration.md) – このドキュメントでは、Azure Security Center の警告を、Azure 診断および Azure アクティビティ ログによって収集された仮想マシンのセキュリティ イベントとともに、ログ分析または SIEM ソリューションと同期させる方法について説明します。
 * [Azure 診断および Azure 監査ログの新機能](https://azure.microsoft.com/blog/new-features-for-azure-diagnostics-and-azure-audit-logs/) – このブログ投稿では、Azure 監査ログと、Azure リソースの操作の洞察を得るのに役立つその他の機能を紹介します。
 

@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/14/2017
 ms.author: maquaran
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: b2987800aa0d8aaf237f46a9435d53fec7372a92
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 40c796bc5af1220c46950a6fac062ffdd243e59f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="documentdb-net-change-feed-processor-sdk-download-and-release-notes"></a>DocumentDB .NET Change Feed Processor SDK: ダウンロードおよびリリース ノート
@@ -48,6 +48,10 @@ ms.lasthandoff: 07/31/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name110110"></a><a name="1.1.0"/>1.1.0
+* Change Feed に処理が残っている作業の推定量を取得するメソッドが追加されました。
+* [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) バージョン 1.13.2 以降と互換性があります。
+
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
 * GA SDK
 * [DocumentDB .NET SDK](documentdb-sdk-dotnet.md) バージョン 1.14.1 以下と互換性があります。
@@ -63,6 +67,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.1.0](#1.1.0) |2017 年 8 月 13 日 |--- |
 | [1.0.0](#1.0.0) |2017 年 7 月 7 日 |--- |
 
 

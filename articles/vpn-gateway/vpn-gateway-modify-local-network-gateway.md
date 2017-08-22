@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: d920793926d8ab4c95882fb82170a8a3077b1187
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 2a095b96a8c352abeca72640d37c0d629b447763
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-powershell"></a>PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更
@@ -34,15 +33,15 @@ ms.lasthandoff: 06/20/2017
 >
 >
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="before"></a>開始する前に
 
 Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azureps-cmdlets-docs) 」を参照してください。
 
-## <a name="modify-ip-address-prefixes"></a>IP アドレスのプレフィックスを変更する
+## <a name="ipaddprefix"></a>IP アドレスのプレフィックスを変更する
 
 [!INCLUDE [vpn-gateway-modify-ip-prefix-rm](../../includes/vpn-gateway-modify-ip-prefix-rm-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>ゲートウェイの IP アドレスを変更する
+## <a name="gwip"></a>ゲートウェイの IP アドレスを変更する
 
 [!INCLUDE [vpn-gateway-modify-lng-gateway-ip-rm](../../includes/vpn-gateway-modify-lng-gateway-ip-rm-include.md)]
 

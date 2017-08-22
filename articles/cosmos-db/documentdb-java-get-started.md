@@ -1,6 +1,6 @@
 ---
-title: "NoSQL チュートリアル: Azure DocumentDB Java SDK | Microsoft Docs"
-description: "DocumentDB Java SDK を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure DocumentDB は、JSON 用の NoSQL データベースです。"
+title: "Node.js チュートリアル: Azure Cosmos Java SDK 用 DocumentDB API | Microsoft Docs"
+description: "Azure Cosmos DB 用 DocumentDB API を使用してオンライン データベースと Java コンソール アプリケーションを作成する NoSQL チュートリアル。 Azure DocumentDB は、JSON 用の NoSQL データベースです。"
 keywords: "NoSQL チュートリアル, オンライン データベース, Java コンソール アプリケーション"
 services: cosmos-db
 documentationcenter: Java
@@ -15,15 +15,14 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: d69e70ae178c9ae889d44998938cb2c215ff10ba
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: ce1857395176ef50a16a7291170fb220896fd792
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
-# <a name="nosql-tutorial-build-a-documentdb-java-console-application"></a>NoSQL チュートリアル: DocumentDB Java コンソール アプリケーションの作成
+# <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL チュートリアル: DocumentDB API Java コンソール アプリケーションの作成
 > [!div class="op_single_selector"]
 > * [.NET](documentdb-get-started.md)
 > * [.NET Core](documentdb-dotnetcore-get-started.md)
@@ -34,7 +33,7 @@ ms.lasthandoff: 06/20/2017
 >  
 > 
 
-Azure DocumentDB Java SDK の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、DocumentDB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
+Azure Cosmos DB Java SDK 用 DocumentDB API の NoSQL チュートリアルへようこそ。 このチュートリアルに従うことで、Azure Cosmos DB リソースを作成し、クエリするコンソール アプリケーションを準備することができます。
 
 説明内容は次のとおりです。
 
@@ -72,7 +71,7 @@ Azure DocumentDB Java SDK の NoSQL チュートリアルへようこそ。 こ�
 
     cd azure-cosmos-db-documentdb-java-getting-started
 
-ディレクトリには、プロジェクトの `pom.xml` のほか、Java ソース コードが含まれた `src` フォルダーがあります。このフォルダーには、ドキュメントの作成やコレクション内のデータのクエリなど、Azure DocumentDB での単純な操作の実行方法を示す `Program.java` が含まれています。 `pom.xml` には、[DocumentDB Java SDK on Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) の依存関係が含まれています。
+ディレクトリには、プロジェクトの `pom.xml` のほか、Java ソース コードが含まれた `src` フォルダーがあります。このフォルダーには、ドキュメントの作成やコレクション内のデータのクエリなど、Azure Cosmos DB での単純な操作の実行方法を示す `Program.java` が含まれています。 `pom.xml` には、[DocumentDB Java SDK on Maven](https://mvnrepository.com/artifact/com.microsoft.azure/azure-documentdb) の依存関係が含まれています。
 
     <dependency>
         <groupId>com.microsoft.azure</groupId>
@@ -120,7 +119,7 @@ Azure Cosmos DB [データベース](documentdb-resources.md#databases)は、**D
     this.client.createCollection("/dbs/familydb", collectionInfo, requestOptions);
 
 ## <a id="CreateDoc"></a>手順 6: JSON ドキュメントを作成する
-[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、DocumentDB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
+[ドキュメント](documentdb-resources.md#documents)は、**DocumentClient** クラスの [createDocument](/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用して作成できます。 ドキュメントは、ユーザー定義の (ユーザーが自由に定義できる) JSON コンテンツです。 ここで 1 つ以上のドキュメントを挿入できます。 データベースに保存するデータが既にある場合には、Azure Cosmos DB の[データ移行ツール](import-data.md)を使用して、データをデータベースにインポートできます。
 
     // Insert your Java objects as documents 
     Family andersenFamily = new Family();

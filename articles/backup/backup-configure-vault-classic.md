@@ -13,14 +13,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 08/11/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 3cd32a85c225d1670887d086c324db1eadd61262
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a8daa6a4655b72936b6299c0fa5b80459ffa5da3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="back-up-a-windows-server-or-workstation-to-azure-using-the-classic-portal"></a>クラシック ポータルを使用して Windows サーバーまたはワークステーションを Azure にバックアップします
@@ -32,11 +31,7 @@ ms.lasthandoff: 06/16/2017
 
 この記事では、環境を準備し、Windows サーバー (またはワークステーション) を Azure にバックアップするための手順について説明します。 また、バックアップ ソリューションのデプロイに関する考慮事項についても説明します。 Azure Backup を初めて使用してみる場合は、この記事ですばやく操作を実習できます。
 
-
-> [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
->
->
+Azure には、リソースの作成と操作に関して 2 種類のデプロイメント モデルがあります。Resource Manager デプロイメント モデルとクラシック デプロイメント モデルです。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイメントでは、リソース マネージャー モデルを使用することをお勧めします。
 
 ## <a name="before-you-start"></a>開始する前に
 サーバー (またはクライアント) を Azure にバックアップするには、Azure アカウントが必要です。 アカウントがない場合は、 [無料アカウント](https://azure.microsoft.com/free/) を数分で作成できます。
@@ -47,7 +42,7 @@ ms.lasthandoff: 06/16/2017
 > [!IMPORTANT]
 > 2017 年 3 月以降、クラシック ポータルを使用してバックアップ コンテナーを作成することはできなくなります。
 >
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降、PowerShell を使用してバックアップ コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 1 日以降**:
 >- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >

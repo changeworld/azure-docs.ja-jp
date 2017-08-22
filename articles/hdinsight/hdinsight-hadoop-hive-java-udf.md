@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/26/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6fe228ee8967c1d290e9bd515733d8207a721466
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 481d234eaf88bdb210821084ee4154159470eda0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="use-a-java-udf-with-hive-in-hdinsight"></a>HDInsight で Hive と Java UDF を使用する
@@ -215,12 +214,12 @@ Hive と連携する Java ベースのユーザー定義関数 (UDF) を作成�
 2. `jdbc:hive2://localhost:10001/>` プロンプトが表示されたら、次のように入力して、UDF を Hive に追加し、関数として公開します。
 
     ```hiveql
-    ADD JAR wasbs:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
+    ADD JAR wasb:///example/jars/ExampleUDF-1.0-SNAPSHOT.jar;
     CREATE TEMPORARY FUNCTION tolower as 'com.microsoft.examples.ExampleUDF';
     ```
 
     > [!NOTE]
-    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasbs:///` の値を `adl:///` に変更します。
+    > この例では、Azure ストレージが、クラスターの既定のストレージであることを前提としています。 クラスターが代わりに Data Lake Store を使用する場合は、`wasb:///` の値を `adl:///` に変更します。
 
 3. UDF を使用して、テーブルから取得した値を小文字の文字列に変換します。
 

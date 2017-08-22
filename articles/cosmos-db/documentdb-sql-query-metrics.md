@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/21/2017
+ms.date: 08/15/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: d8b0bde3778054042c32dbc9c9e08d0b2f1fd3ca
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: c6c929c568cf7246c2c2e414723a38429727df36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="tuning-query-performance-with-azure-cosmos-db"></a>Azure Cosmos DB を使用したクエリ パフォーマンスのチューニング
@@ -45,7 +45,7 @@ Azure Cosmos DB にクエリを発行すると、SDK はこれらの論理手順
 
 SDK は、クエリの実行にさまざまなオプションを提供します。 たとえば、.NET では、これらのオプションは `FeedOptions` クラスで提供されています。 次の表は、これらのオプションと、オプションがクエリ実行時間に及ぼす影響を示しています。 
 
-| オプション | Description |
+| オプション | 説明 |
 | ------ | ----------- |
 | `EnableCrossPartitionQuery` | 1 つ以上のパーティションにわたって実行する必要があるクエリでは true に設定する必要があります。 これは、開発時にパフォーマンスのトレードオフを意識的に評価するための明示的なフラグです。 |
 | `EnableScanInQuery` | インデックスを作成しないことを選択したが、スキャンを使用してクエリを実行する必要がある場合は、true に設定する必要があります。 要求されたフィルター パスのインデックス作成が無効になっている場合のみ適用されます。 | 
@@ -131,7 +131,7 @@ Date: Tue, 27 Jun 2017 21:59:49 GMT
 
 クエリから返されたキーの応答ヘッダー、次のとおりです。
 
-| オプション | Description |
+| オプション | 説明 |
 | ------ | ----------- |
 | `x-ms-item-count` | 応答で返される項目の数。 これは、指定された `x-ms-max-item-count` や、応答の最大ペイロード サイズ、プロビジョニングされたスループット、およびクエリの実行時間の範囲内に収まる項目数によって異なります。 |  
 | `x-ms-continuation:` | その他の結果が利用可能な場合は、クエリの実行を再開する継続トークンです。 | 
@@ -153,7 +153,7 @@ Azure Cosmos DB クエリのパフォーマンスに影響を与える最も一�
 | クエリ実行メトリック | クエリ実行メトリックを分析して、クエリおよびデータ図形の書き換えの必要性を特定します。  |
 
 ### <a name="provisioned-throughput"></a>プロビジョニング スループット
-Cosmos DB では、秒あたりおよび分当たりの要求ユニット (RU) で表される予約済みスループットで各データのコンテナーを作成します。 1 KB のドキュメントの読み取りは 1 RU で、各操作 (クエリを含む) は、その複雑性に基づいて固定された RU 数に正規化されます。 たとえば、1000 RU/秒がコンテナーにプロビジョニングされており、5 RU を消費する `SELECT * FROM c WHERE c.city = 'Seattle'` のようなクエリの場合、このクエリは秒あたり、(1000 RU/秒) / (5 RU/クエリ) = 200 個のクエリを実行できます。 
+Cosmos DB では、秒あたりの要求ユニット (RU) で表される予約済みスループットで各データのコンテナーを作成します。 1 KB のドキュメントの読み取りは 1 RU で、各操作 (クエリを含む) は、その複雑性に基づいて固定された RU 数に正規化されます。 たとえば、1000 RU/秒がコンテナーにプロビジョニングされており、5 RU を消費する `SELECT * FROM c WHERE c.city = 'Seattle'` のようなクエリの場合、このクエリは秒あたり、(1000 RU/秒) / (5 RU/クエリ) = 200 個のクエリを実行できます。 
 
 1 秒あたり 200 個を超えるクエリを送信した場合、サービスは、1 秒あたり 200 クエリを超えて受け取った要求に対し速度制限を開始します。 SDK では、バックオフ/再試行を実行することによって、このような事態を自動的に処理するため、これらのクエリの待ち時間が長くなっているように見えることがあります。 プロビジョニング スループットを必要な値に引き上げることで、クエリの待ち時間やスループットが改善されます。 
 
@@ -174,12 +174,51 @@ Azure Cosmos DB では、通常、最も実行時間が短く、効率的なク�
 ### <a name="sdk-and-query-options"></a>SDK とクエリのオプション
 Azure Cosmos DB でクライアント側のパフォーマンスを最適化する方法については、「[パフォーマンスに関するヒント](performance-tips.md)」と「[パフォーマンス テスト](performance-testing.md)」を参照してください。 これには、最新の SDK を使用する、既定の接続数、ガベージ コレクション頻度などのプラットフォーム固有の構成を設定すること、Direct/TCP などの軽量な接続オプションを使用することが含まれます。 
 
-クエリでは、(パーティション キー値に対するフィルターを使用せず) 異なるプラットフォームにわたってクエリを実行する場合は特に、使用しているアプリケーションに最適な構成になるよう `MaxBufferedItemCount` や `MaxDegreeOfParallelism` を調整します。
+
+#### <a name="max-item-count"></a>最大項目数
+クエリでは、`MaxItemCount` の値は、エンド ツー エンドのクエリ時間に大きな影響を与えることができます。 サーバーへの各ラウンド トリップでは、`MaxItemCount` を超える数の項目が返ることはありません (既定値は 100 項目)。 この値を大きく設定する (-1 が最大値であり推奨値です) と、サーバーとクライアント間のラウンド トリップの回数を制限することによって、全体的なクエリの実行時間が向上します。これは、結果セットが大きい場合に特に当てはまります。
+
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        MaxItemCount = -1, 
+    }).AsDocumentQuery();
+```
+
+#### <a name="max-degree-of-parallelism"></a>並列処理の最大限度
+クエリでは、`MaxDegreeOfParallelism` を調整して、アプリケーションに最適な構成を識別します。これは、(パーティション キー値に対するフィルターなしで) クロス プラットフォーム クエリを実行する場合に特に当てはまります。 `MaxDegreeOfParallelism` は、並列タスクの最大数、つまり並列でアクセスされるパーティションの最大数を制御します。 
+
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        MaxDegreeOfParallelism = -1, 
+        EnableCrossPartitionQuery = true 
+    }).AsDocumentQuery();
+```
+
+以下を仮定しましょう。
+* D = 並列処理の既定の最大数 (= クライアント コンピューター上のプロセッサの総数)
+* P = ユーザー指定の並列タスクの最大数
+* N = クエリに応答するためにアクセスする必要があるパーティションの数
+
+P の値が異なると、並列クエリがどのように動作するかの結果を次に示します。
+* (P == 0) => シリアル モード
+* (P == 1) => 最大 1 つのタスク
+* (P > 1) => Min (P, N) の並列タスク 
+* (P < 1) => Min (N, D) の並列タスク
 
 SDK リリース ノート、および実装されているクラスとメソッドの詳細については、[DocumentDB SDK](documentdb-sdk-dotnet.md) を参照してください。
 
 ### <a name="network-latency"></a>ネットワーク待ち時間
 グローバル配布を設定し、最も近い地域に接続する方法については、「[Azure Cosmos DB グローバル配布](tutorial-global-distribution-documentdb.md)」を参照してください。 ネットワーク待ち時間は、複数のラウンド トリップを実行したり、クエリから大量の結果セットを取得する必要がある場合は、クエリのパフォーマンスに大きな影響を及ぼします。 
+
+「クエリ実行メトリック」セクションに、サーバーでのクエリの実行時間を取得する方法 (`totalExecutionTimeInMs`) の説明があるので、クエリを実行するために費やされた時間とネットワークを通過するために費やされた時間を区別できます。
 
 ### <a name="indexing-policy"></a>インデックス作成ポリシー
 インデックス作成のパス、種類、モード、クエリ実行への影響については、「[インデックス作成ポリシーを構成する](indexing-policies.md)」を参照してください 既定では、等値クエリには有効だが範囲クエリ/並べ替えクエリには有効ではない文字列に対しハッシュ インデックスを使用するインデックス作成ポリシーが採用されています。 文字列の範囲クエリが必要な場合は、すべての文字列に対し範囲インデックス タイプを指定することをお勧めします。 
@@ -187,7 +226,23 @@ SDK リリース ノート、および実装されているクラスとメソッ
 ## <a name="query-execution-metrics"></a>クエリ実行メトリック
 省略可能な `x-ms-documentdb-populatequerymetrics`ヘッダーを渡す (`FeedOptions.PopulateQueryMetrics` .NET SDK で) ことで、クエリの実行に関する詳細なメトリックを取得できます。 `x-ms-documentdb-query-metrics` で返される値には、クエリの実行の高度なトラブルシューティングに使用できる次のキー/値ペアが含まれています。 
 
-| メトリック | 単位 | Description | 
+```cs
+IDocumentQuery<dynamic> query = client.CreateDocumentQuery(
+    UriFactory.CreateDocumentCollectionUri(DatabaseName, CollectionName), 
+    "SELECT * FROM c WHERE c.city = 'Seattle'", 
+    new FeedOptions 
+    { 
+        PopulateQueryMetrics = true, 
+    }).AsDocumentQuery();
+
+FeedResponse<dynamic> result = await query.ExecuteNextAsync();
+
+// Returns metrics by partition key range Id
+IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
+
+```
+
+| メトリック | 単位 | 説明 | 
 | ------ | -----| ----------- |
 | `totalExecutionTimeInMs` | ミリ秒 | クエリ実行時間 | 
 | `queryCompileTimeInMs` | ミリ秒 | クエリのコンパイル時間  | 
@@ -209,7 +264,7 @@ SDK リリース ノート、および実装されているクラスとメソッ
 
 以下は、クエリの例とクエリ実行から返されたメトリックを解釈する方法です。 
 
-| クエリ | メトリックの例 | Description | 
+| クエリ | メトリックの例 | 説明 | 
 | ------ | -----| ----------- |
 | `SELECT TOP 100 * FROM c` | `"RetrievedDocumentCount": 101` | 取得されたドキュメントの数は、TOP 句と一致した 100 + 1 になっています。 スキャンであるため、クエリ時間の大部分が `WriteOutputTime` と `DocumentLoadTime` で費やされています。 | 
 | `SELECT TOP 500 * FROM c` | `"RetrievedDocumentCount": 501` | RetrievedDocumentCount が高くなっています (TOP 句と一致する 500 + 1 になっています)。 | 

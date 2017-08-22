@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 05538e1633d6e8353cc7980d081af3672a3f97d8
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a7ce4d771e9c655687f72f4b46c7405cf64aeb74
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
@@ -58,6 +58,11 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
 
+### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
+
+* クエリの結果をパーティション キーの特定の範囲の値にスコープするための FeedOption として PartitionKeyRangeIdresults のサポートが追加されました。 
+* 指定時刻以後の変更の検索を開始するための ChangeFeedOption として StartTime のサポートが追加されました。 
+
 ### <a name="a-name141141"></a><a name="1.4.1"/>1.4.1
 
 *   スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
@@ -76,8 +81,7 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 ### <a name="a-name130130"></a><a name="1.3.0"/>1.3.0
 
-*   1 分あたりの要求ユニット (RU/分) 機能のサポートが追加されました。
-*   ConsistentPrefix と呼ばれる新しい一貫性レベルに対応するようになりました。
+*   ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
 *   個別のパーティションに対するメトリックのクエリに対応するようになりました。
 *   クエリの継続トークンのサイズ制限に対応するようになりました。
 *   失敗した要求の詳細なトレースに対応するようになりました。
@@ -133,6 +137,7 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
 | [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
 | [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |
 | [1.3.2](#1.3.2) |2017 年 6 月 12 日 |--- |

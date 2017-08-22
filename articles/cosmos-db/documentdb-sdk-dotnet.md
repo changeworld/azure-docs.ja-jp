@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/11/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 2c796156df6ed2a891d423030bdd07b5c19f3235
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 317792e04244a96cf8e47bc7e4a7f633f7a6d8c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-cosmos-db-net-sdk-download-and-release-notes"></a>Azure Cosmos DB .NET SDK: ダウンロードおよびリリース ノート
@@ -53,6 +53,11 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="release-notes"></a>リリース ノート
 
+### <a name="a-name11701170"></a><a name="1.17.0"/>1.17.0 
+
+* クエリの結果をパーティション キーの特定の範囲の値にスコープするための FeedOption として PartitionKeyRangeIdresults のサポートが追加されました。 
+* 指定時刻以後の変更の検索を開始するための ChangeFeedOption として StartTime のサポートが追加されました。
+
 ### <a name="a-name11611161"></a><a name="1.16.1"/>1.16.1
 * スタック オーバーフローの例外を引き起こす可能性のある JsonSerializable クラスの問題を修正しました。
 
@@ -67,7 +72,6 @@ ms.lasthandoff: 08/09/2017
 *   SSE4 命令をサポートせず、Azure Cosmos DB DocumentDB API クエリの実行時に SEHException をスローする x64 マシンに影響を与える問題を修正しました。
 
 ### <a name="a-name11401140"></a><a name="1.14.0"/>1.14.0
-*   1 分あたりの要求ユニット (RU/m) 機能のサポートが追加されました。
 *   ConsistentPrefix と呼ばれている新しい一貫性レベルに対応するようになりました。
 *   個別のパーティションに対するメトリックのクエリに対応するようになりました。
 *   クエリの継続トークンのサイズ制限に対応するようになりました。
@@ -254,6 +258,7 @@ Microsoft は、新しい/サポートされるバージョンに速やかに移
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.17.0](#1.17.0) |2017 年 8 月 10 日 |--- |
 | [1.16.1](#1.16.1) |2017 年 8 月 7 日 |--- |
 | [1.16.0](#1.16.0) |2017 年 8 月 2 日 |--- |
 | [1.15.0](#1.15.0) |2017 年 6 月 30 日 |--- |
