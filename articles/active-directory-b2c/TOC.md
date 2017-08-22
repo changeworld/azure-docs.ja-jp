@@ -83,6 +83,7 @@
 ## [課金の有効化](active-directory-b2c-how-to-enable-billing.md)
 ## [脅威管理](active-directory-b2c-reference-threat-management.md)
 ## [ディレクトリを作成する際の問題](active-directory-b2c-support-create-directory.md)
+## [Extensions アプリ](active-directory-b2c-reference-extensions-app.md)
 
 # 関連項目
 ## [Azure Active Directory](../active-directory/active-directory-whatis.md)

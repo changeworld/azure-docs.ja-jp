@@ -3,9 +3,10 @@
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
 
 ## Team Data Science Process
-### [概要](http://aka.ms/datascienceprocess)
-### [ライフサイクル](data-science-process-overview.md)
+### [概要](data-science-process-overview.md)
+### [ライフサイクル](data-science-process-lifecycle.md)
 ### [チュートリアル](data-science-process-walkthroughs.md)
+### [Azure ML の使用](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
 ### [Studio とは](machine-learning-what-is-ml-studio.md)

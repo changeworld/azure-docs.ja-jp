@@ -2,6 +2,7 @@
 ## [Azure Analysis Services とは](analysis-services-overview.md)
 ## [サポートされるデータ ソース](analysis-services-datasource.md)
 ## [認証とユーザーのアクセス許可](analysis-services-manage-users.md)
+## [オンプレミスのデータ ソースへの接続](analysis-services-gateway.md)
 ## [互換性レベル](analysis-services-compat-level.md)
 ## [高可用性](analysis-services-bcdr.md)
 
@@ -15,7 +16,7 @@
 ## [サーバーの管理](analysis-services-manage.md)
 ## [データベース ユーザーの管理](analysis-services-database-users.md)
 ## [サーバー管理者の管理](analysis-services-server-admins.md)
-## [オンプレミスのデータ ゲートウェイのインストール](analysis-services-gateway.md)
+## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ## [バックアップと復元](analysis-services-backup.md)
 ## [Excel を使用した接続](analysis-services-connect-excel.md)
