@@ -29,7 +29,7 @@ ms.lasthandoff: 08/04/2017
 AppSource でスタンドアロン SaaS アプリケーションを一覧表示するには、Azure Active Directory を持つ会社または組織の職場アカウントからのシングル サインオンをアプリケーションで許可する必要があります。 サインイン プロセスで [OpenID Connect](./active-directory-protocols-openid-connect-code.md) または [OAuth 2.0](./active-directory-protocols-oauth-code.md) プロトコルを使用する必要があります。 AppSource 認定では SAML 統合はサポートされていません。
 
 ## <a name="guides-and-code-samples"></a>ガイドとコード サンプル
-OpenID Connect を使用してアプリケーションを Azure Active Directory と統合する方法について学習するには、[Azure Active Directory 開発者ガイド]の(./active-directory-developers-guide.md#get-started "開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
+OpenID Connect を使用してアプリケーションを Azure Active Directory と統合する方法について学習するには、[Azure Active Directory 開発者ガイド](./active-directory-developers-guide.md#get-started "の開発者用 Azure AD で作業開始")に関するページにある説明とコード サンプルに従ってください。
 
 ## <a name="multi-tenant-applications"></a>マルチテナント アプリケーション
 
