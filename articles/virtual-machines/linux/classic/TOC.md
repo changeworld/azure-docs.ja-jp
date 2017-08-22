@@ -54,14 +54,12 @@
 ### [Visual Studio による Web アプリケーション](web-app-visual-studio.md)
 ### [MPI アプリケーションを実行するための RDMA クラスター](rdma-cluster.md)
 ### [Azure スレーブ プラグインを Hudson CI で使用する方法](../../virtual-machines-azure-slave-plugin-for-hudson.md)
-
-
-## HPC Pack
-### [MPI アプリを実行するための Windows RDMA クラスター](hpcpack-cluster.md)
-### [HPC Pack IaaS デプロイ スクリプトを使用したWidows HPC クラスターの作成](hpcpack-cluster-starccm.md)
-### [コンピューティング ノードの数と可用性を管理する](hpcpack-cluster-powershell-script.md)
-### [オンデマンドによるノードの追加](hpcpack-cluster-openfoam.md)
-### [リソースの自動スケール](hpcpack-cluster-namd.md)
+### HPC Pack
+#### [Linux ワークロード用のクラスターの作成](hpcpack-cluster-powershell-script.md)
+#### [Linux ノードを含むクラスターの管理](hpcpack-cluster.md)
+#### [STAR-CCM+ の実行](hpcpack-cluster-starccm.md)
+#### [OpenFOAM の実行](hpcpack-cluster-openfoam.md)
+#### [NAMD の実行](hpcpack-cluster-namd.md)
 
 ## トラブルシューティング
 ### [VM のデプロイ](troubleshoot-deployment-new-vm.md)

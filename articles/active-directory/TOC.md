@@ -144,8 +144,14 @@
 
 ## デバイスを管理する
 ### [はじめに](device-management-introduction.md)
-### [デバイスを登録する](active-directory-device-registration-overview.md)
-#### [セットアップ](active-directory-conditional-access-automatic-device-registration-setup.md)
+### [FAQ](device-management-faq.md)
+### タスク
+#### [ハイブリッド Azure AD 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### トラブルシューティング
+##### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
+##### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+
+### デバイスを登録する
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [FAQ](active-directory-device-registration-faq.md)
 #### トラブルシューティング
