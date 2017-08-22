@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 1b3ce3d87e02a6ffb6fcbf4e6778017f5a129ef9
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 862594bcbd6df8a2c62a12340ceb8096fb6bd691
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="sql-queries-for-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API の SQL クエリ
@@ -928,9 +928,9 @@ TOP キーワードを使用すると、クエリの値数を制限できます�
 |-------|-------------|
 | COUNT | 式の項目の数を返します。 |
 | SUM   | 式のすべての値の合計を返します。 |
-| 最小   | 式の最小値を返します。 |
-| 最大   | 式の最大値を返します。 |
-| 平均   | 式の値の平均を返します。 |
+| MIN   | 式の最小値を返します。 |
+| MAX   | 式の最大値を返します。 |
+| AVG   | 式の値の平均を返します。 |
 
 配列の反復処理の結果に対して集計を実行することもできます。 詳細については、[クエリでの配列の反復処理](#Iteration)の項目を参照してください。
 
