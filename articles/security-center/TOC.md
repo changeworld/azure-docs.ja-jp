@@ -6,6 +6,7 @@
 ### [インシデント対応](security-center-incident-response.md)
 ### [推奨事項を使用してセキュリティを強化する](security-center-using-recommendations.md)
 ## [プラットフォームの移行](security-center-platform-migration.md)
+### [プラットフォームの移行に関する FAQ](security-center-platform-migration-faq.md)
 
 # 作業開始
 ## [クイック スタート](security-center-get-started.md)
