@@ -20,7 +20,6 @@ ms.openlocfilehash: 6ef92be812bb0adcb2c817926eeeebbc8e55a5a7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/01/2017
 
-
 ---
 
 # <a name="event-hubs-capture-walkthrough-python"></a>Event Hubs Capture チュートリアル: Python
@@ -173,7 +172,7 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 [Azure portal]: https://portal.azure.com/
 [Overview of Event Hubs Capture]: event-hubs-archive-overview.md
 [1]: ./media/event-hubs-archive-python/event-hubs-python1.png
-[About Azure storage accounts]: ../storage/storage-create-storage-account.md
+[About Azure storage accounts]:../storage/common/storage-create-storage-account.md
 [Visual Studio Code]: https://code.visualstudio.com/
 [Event Hubs overview]: event-hubs-overview.md
 [sample application that uses Event Hubs]: https://code.msdn.microsoft.com/Service-Bus-Event-Hub-286fd097

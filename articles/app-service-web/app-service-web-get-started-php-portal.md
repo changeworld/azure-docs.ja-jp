@@ -11,10 +11,9 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: article
 ms.date: 02/13/2017
 ms.author: cephalin
-ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 0921b01bc930f633f39aba07b7899ad60bd6a234
 ms.openlocfilehash: 7ef5802866bf96859d3f44cdb58cbb412b08a700

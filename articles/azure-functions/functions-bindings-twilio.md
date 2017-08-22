@@ -15,13 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 10/20/2016
-ms.author: wesmc, glenga
+ms.author: wesmc
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2fd12dd32ed3c8479c7460cbc0a1cac3330ff4f4
 ms.openlocfilehash: 9355aae6e3fbf70aae08cc829d7addd2decc44fd
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/01/2017
-
 
 ---
 # <a name="send-sms-messages-from-azure-functions-using-the-twilio-output-binding"></a>Twilio 出力バインディングを使用した Azure Functions からの SMS メッセージの送信

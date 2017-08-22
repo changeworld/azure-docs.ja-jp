@@ -11,11 +11,11 @@ keywords: "Azure Functions, 関数, イベント処理, Cosmos DB, 動的コン�
 ms.assetid: 
 ms.service: functions
 ms.devlang: csharp
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/03/2017
-ms.author: rachelap, glenga
+ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947

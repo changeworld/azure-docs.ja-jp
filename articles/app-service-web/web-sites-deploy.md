@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 01/05/2017
-ms.author: cephalin;dariac
+ms.author: cephalin
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 7eff46740cdbc8467c711aada5e6022d82930e31
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="deploy-your-app-to-azure-app-service"></a>Azure App Service へのアプリのデプロイ

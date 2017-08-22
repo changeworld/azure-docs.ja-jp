@@ -15,7 +15,7 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
-ms.author: donnam, glenga
+ms.author: glenga
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: f39f674bf576a2661a0e03710b9005b0515b3aa5

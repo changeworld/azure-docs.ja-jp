@@ -11,9 +11,10 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: java
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
 ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769

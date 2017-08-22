@@ -173,6 +173,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-az-resource-command]: https://docs.microsoft.com/cli/azure/resource
 [lnk-az-iot-command]: https://docs.microsoft.com/cli/azure/iot
 [lnk-iot-pricing]: https://azure.microsoft.com/pricing/details/iot-hub/
-[lnk-manage-storage]: ../storage/storage-azure-cli.md#manage-storage-accounts
-[lnk-portal-storage]: ../storage/storage-create-storage-account.md
+[lnk-manage-storage]:../storage/common/storage-azure-cli.md#manage-storage-accounts
+[lnk-portal-storage]:../storage/common/storage-create-storage-account.md
 [lnk-cli-create-iothub]: https://docs.microsoft.com/cli/azure/iot/hub#create
