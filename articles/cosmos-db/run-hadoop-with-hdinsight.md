@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: denlee
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: dc947bb132b14278f38b378bc80ca232c94fcdb7
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: 427864fc4e494c19fcda4cfd454a9923499f6337
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="Azure Cosmos DB-HDInsight"></a>Azure Cosmos DB と HDInsight を使用した Apache Hive、Pig、または Hadoop ジョブの実行
@@ -57,7 +56,7 @@ ms.lasthandoff: 06/09/2017
     <tr><th>サポートされる HDInsight のバージョン</th>
         <td>3.1、3.2</td></tr>
     <tr><th>変更履歴</th>
-        <td>DocumentDB Java SDK 1.6.0 への更新</br>
+        <td>Azure Cosmos DB Java SDK を 1.6.0 に更新</br>
             ソースとシンクの両方としてのパーティション分割コレクションのサポートの追加</br>
         </td></tr>
 </table>
@@ -178,9 +177,9 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
         # Provide the HDInsight cluster name where you want to run the Hive job.
         $clusterName = "<HDInsightClusterName>"
-2. <p>クエリ文字列の作成から始めましょう。 作成する Hive クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
+2. <p>クエリ文字列の作成から始めましょう。 作成する Hive クエリでは、Azure Cosmos DB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい Azure Cosmos DB コレクションに格納します。</p>
 
-    <p>まず、DocumentDB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
+    <p>まず、Azure Cosmos DB コレクションから Hive テーブルを作成します。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid だけにドキュメントをトリミングするためのオプションである DocumentDB.query パラメーターが含まれていることを確認してください。</p>
 
    > [!NOTE]
    > **DocumentDB.inputCollections という名前は誤りではありません。** 次のように、複数のコレクションを 1 つの入力として追加することができます。 </br>
@@ -256,8 +255,8 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
    1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
    2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
-   3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。 </br>
-   4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Hive クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
+   3. <strong>Azure Cosmos DB アカウント</strong>を見つけてクリックします。 </br>
+   4. 次に、自分の <strong>Azure Cosmos DB アカウント</strong>、<strong>Azure Cosmos DB データベース</strong>、Hive クエリで指定した出力コレクションに関連付けられた <strong>Azure Cosmos DB コレクション</strong>を見つけます。</br>
    5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
 
    Hive クエリの結果が表示されます。
@@ -277,7 +276,7 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
         # Provide HDInsight cluster name where you want to run the Pig job.
         $clusterName = "Azure HDInsight Cluster Name"
-2. <p>クエリ文字列の作成から始めましょう。 作成する Pig クエリでは、DocumentDB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい DocumentDB コレクションに格納します。</p>
+2. <p>クエリ文字列の作成から始めましょう。 作成する Pig クエリでは、Azure Cosmos DB コレクションからすべてのドキュメントのシステム生成のタイムスタンプ (_ts) と一意の ID (_rid) を取得し、すべてのドキュメントを分単位で集計して、その結果を新しい Azure Cosmos DB コレクションに格納します。</p>
     <p>まず、Cosmos DB から HDInsight にドキュメントを読み込みます。 次のコード スニペットを PowerShell スクリプト ウィンドウの #1 から始まっているコード スニペットの<strong>後に</strong>追加します。 _ts および _rid に合わせてドキュメントをトリミングするためのオプションの DocumentDB.query パラメーターが DocumentDB クエリに追加されていることを確認してください。</p>
 
    > [!NOTE]
@@ -343,20 +342,20 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
     1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。 </br>
     2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。 </br>
-    3. <strong>[DocumentDB アカウント]</strong> を見つけてクリックします。 </br>
-    4. 次に、自分の <strong>DocumentDB アカウント</strong>、<strong>DocumentDB データベース</strong>、Pig クエリで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。</br>
+    3. <strong>Azure Cosmos DB アカウント</strong>を見つけてクリックします。 </br>
+    4. 次に、自分の <strong>Azure Cosmos DB アカウント</strong>、<strong>Azure Cosmos DB データベース</strong>、Pig クエリで指定した出力コレクションに関連付けられた <strong>Azure Cosmos DB コレクション</strong>を見つけます。</br>
     5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。</br></p>
 
     Pig クエリの結果が表示されます。
 
     ![Pig クエリの結果][image-pig-query-results]
 
-## <a name="RunMapReduce"></a>手順 5: DocumentDB と HDInsight を使用して MapReduce ジョブを実行する
+## <a name="RunMapReduce"></a>手順 5: Azure Cosmos DB と HDInsight を使用して MapReduce ジョブを実行する
 1. PowerShell スクリプト ウィンドウで次の変数を設定します。
 
         $subscriptionName = "<SubscriptionName>"   # Azure subscription name
         $clusterName = "<ClusterName>"             # HDInsight cluster name
-2. DocumentDB コレクションから各ドキュメント プロパティの発生回数を集計する MapReduce ジョブを実行します。 このスクリプト スニペットを上記のスニペットの **後に** 追加します。
+2. Azure Cosmos DB コレクションから各ドキュメント プロパティの発生回数を集計する MapReduce ジョブを実行します。 このスクリプト スニペットを上記のスニペットの **後に** 追加します。
 
         # Define the MapReduce job.
         $TallyPropertiesJobDefinition = New-AzureHDInsightMapReduceJobDefinition -JarFile "wasb:///example/jars/TallyProperties-v01.jar" -ClassName "TallyProperties" -Arguments "<DocumentDB Endpoint>","<DocumentDB Primary Key>", "<DocumentDB Database Name>","<DocumentDB Input Collection Name>","<DocumentDB Output Collection Name>","<[Optional] DocumentDB Query>"
@@ -384,8 +383,8 @@ DNS 名の最初と最後の文字は英数字にする必要があります。�
 
    1. 左側ウィンドウの <strong>[参照]</strong> をクリックします。
    2. 参照ウィンドウの右上にある <strong>[すべて]</strong> をクリックします。
-   3. <strong>Cosmos DB アカウント</strong>を見つけてクリックします。
-   4. 次に、自分の <strong>Cosmos DB アカウント</strong>、<strong>Cosmos DB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>DocumentDB コレクション</strong>を見つけます。
+   3. <strong>Azure Cosmos DB アカウント</strong>を見つけてクリックします。
+   4. 次に、自分の <strong>Azure Cosmos DB アカウント</strong>、<strong>Azure Cosmos DB データベース</strong>、MapReduce ジョブで指定した出力コレクションに関連付けられた <strong>Azure Cosmos DB コレクション</strong>を見つけます。
    5. 最後に、<strong>[開発者ツール]</strong> の下にある <strong>[ドキュメント エクスプローラー]</strong> をクリックします。
 
       MapReduce ジョブの結果が表示されます。
