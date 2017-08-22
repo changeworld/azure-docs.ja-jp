@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート | Microsoft Docs"
-description: "Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポートについて説明します。"
+title: "Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート | Microsoft Docs"
+description: "Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポートについて説明します。"
 services: active-directory
 author: MarkusVi
 manager: femila
@@ -10,27 +10,27 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/01/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: bfcaee441c54453677e7747b0bca55a8afc59391
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 76413d6e9c619a66ae34f032eb0b8f9d42c27c9d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
-# <a name="users-at-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルの危険な状態のユーザー セキュリティ レポート
+# <a name="users-flagged-for-risk-security-report-in-the-azure-active-directory-portal"></a>Azure Active Directory ポータルのリスクのフラグ付きユーザー セキュリティ レポート
 
 Azure Active Directory (Azure AD) のセキュリティ レポートでは、環境内でユーザー アカウントが侵害されている確率を調べることができます。 
 
-Azure Active Directory は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"*リスク イベント*" と呼ばれるレコードが作成されます。 詳細については、「[Azure Active Directory risk events (Azure Active Directory リスク イベント)](active-directory-identity-protection-risk-events.md)」を参照してください。 
+Azure Active Directory は、ユーザー アカウントに関連する疑わしい動作を検出します。 検出された動作ごとに、"*リスク イベント*" と呼ばれるレコードが作成されます。 詳細については、「[Azure Active Directory リスク イベント](active-directory-identity-protection-risk-events.md)」を参照してください。 
 
 検出されたリスク イベントは、以下のものの計算に使用されます。
 
-- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「[Risky sign-ins (リスクの高いサインイン)](active-directory-identityprotection.md#risky-sign-ins)」を参照してください。 
+- **リスクの高いサインイン** - リスクの高いサインインは、ユーザー アカウントの正当な所有者ではない人によって行われた可能性があるサインイン試行の指標です。 詳細については、「[リスクの高いサインイン](active-directory-identityprotection.md#risky-sign-ins)」を参照してください。 
 
-- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「[Users flagged for risk (リスクのフラグ付きユーザー)](active-directory-identityprotection.md#users-flagged-for-risk)」を参照してください。  
+- **リスクのフラグ付きユーザー** - リスクの高いユーザーは、侵害された可能性があるユーザー アカウントの指標です。 詳細については、「[リスクのフラグ付きユーザー](active-directory-identityprotection.md#users-flagged-for-risk)」を参照してください。  
 
 Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュリティ]** セクションで、セキュリティ レポートを確認できます。  
 
@@ -47,13 +47,13 @@ Azure Portal では、**[Azure Active Directory]** ブレードの **[セキュ�
 
 - **Azure Active Directory Premium 1** エディションではこのモデルが拡張され、各レポートについて検出された、基になるリスク イベントの一部を調べることができます。 
 
-- **Azure Active Directory Premium 2** エディションでは、基になるリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
+- **Azure Active Directory Premium 2** エディションでは、基になるすべてのリスク イベントについて最も詳しい情報が得られます。また、構成されているリスク レベルに対して自動的に対応するセキュリティ ポリシーを構成することができます。
 
 
 
 ## <a name="azure-active-directory-free-and-basic-edition"></a>Azure Active Directory の Free および Basic エディション
 
-Azure Active Directory の Free および Basic エディションの危険な状態のユーザー レポートでは、侵害された可能性があるユーザー アカウントの一覧を提供します。 
+Azure Active Directory の Free および Basic エディションのリスクのフラグ付きユーザー レポートでは、侵害された可能性があるユーザー アカウントの一覧を提供します。 
 
 
 ![リスクの高いサインイン](./media/active-directory-reporting-security-user-at-risk/03.png)
@@ -65,7 +65,7 @@ Azure Active Directory の Free および Basic エディションの危険な�
 
 ## <a name="azure-active-directory-premium-editions"></a>Azure Active Directory Premium エディション
 
-Azure Active Directory Premium エディションの危険な状態のユーザー レポートで提供される情報を以下に示します。
+Azure Active Directory Premium エディションのリスクのフラグ付きユーザー レポートで提供される情報を以下に示します。
 
 - 侵害された可能性のある[ユーザー アカウントの一覧](active-directory-identityprotection.md#users-flagged-for-risk) 
 
@@ -92,8 +92,7 @@ Azure Active Directory Premium エディションの危険な状態のユーザ�
 ![リスクの高いサインイン](./media/active-directory-reporting-security-user-at-risk/324.png)
 
 
-リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択します。  
-このリスク イベントの **[詳細]** ブレードが開きます。 **[詳細]** ブレードで、[リスク イベントを手動で閉じる](active-directory-identityprotection.md#closing-risk-events-manually)か、手動で閉じたリスク イベントを再アクティブ化することができます。 
+リスク イベントを調査するには、一覧からリスク イベントを 1 つ選択してその **[詳細]** ブレードを表示します。 **[詳細]** ブレードで、[リスク イベントを手動で閉じる](active-directory-identityprotection.md#closing-risk-events-manually)か、手動で閉じたリスク イベントを再アクティブ化することができます。 
 
 
 ![リスクの高いサインイン](./media/active-directory-reporting-security-user-at-risk/325.png)

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 85d89568f5022dafd44ae7f8578e0bebb22d472d
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ae42f661b39e8b6170fd415d758404fb33009ccc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-azure-cli"></a>Azure CLI を使用して VNet 間の VPN ゲートウェイ接続を構成する
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/03/2017
 
 ![接続について](./media/vpn-gateway-howto-vnet-vnet-cli/aboutconnections.png)
 
-### <a name="why-connect-virtual-networks"></a>仮想ネットワークを接続する理由
+### <a name="why"></a>仮想ネットワークを接続する理由
 
 仮想ネットワークを接続するのは次のような場合です。
 
@@ -185,11 +185,11 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
   az network vnet-gateway create -n VNet4GW -l westus --public-ip-address VNet4GWIP -g TestRG4 --vnet TestVNet4 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-4---create-the-connections"></a>手順 4 - 接続を作成する
+### <a name="createconnect"></a>手順 4 - 接続を作成する
 
 ここまでで、VPN ゲートウェイを備えた VNet を 2つ用意できました。 次の手順では、仮想ネットワーク ゲートウェイの間に VPN ゲートウェイ接続を作成します。 上記の例を使用した場合、VNet ゲートウェイは異なるリソース グループに存在します。 ゲートウェイが異なるリソース グループにある場合は、接続時に各ゲートウェイのリソース ID を特定して指定する必要があります。 VNet が同じリソース グループにある場合は、リソース ID を指定する必要がないため、[2 番目の手順](#samerg)を使用できます。
 
-### <a name="to-connect-vnets-that-reside-in-different-resource-groups"></a>異なるリソース グループにある VNet を接続するには
+### <a name="diffrg"></a>異なるリソース グループにある VNet を接続するには
 
 1. 次のコマンドの出力から、VNet1GW のリソース ID を取得します。
 
@@ -322,7 +322,7 @@ VNet 間接続の詳細については、この記事の最後にある「[VNet 
   az network vnet-gateway create -n VNet5GW -l japaneast --public-ip-address VNet5GWIP -g TestRG5 --vnet TestVNet5 --gateway-type Vpn --sku VpnGw1 --vpn-type RouteBased --no-wait
   ```
 
-### <a name="step-8---create-the-connections"></a>手順 8 - 接続を作成する
+### <a name="connections5"></a>手順 8 - 接続を作成する
 
 ゲートウェイが異なるサブスクリプションにあるため、**[サブスクリプション 1]** と **[サブスクリプション 5]** というマークの付いた 2 つの CLI セッションにこの手順を分けました。 サブスクリプションを切り替えるには、"az account list --all" を実行して、アカウントで使用できるサブスクリプションを一覧表示します。次に、"az account set --subscription <subscriptionID>" を実行して、使用するサブスクリプションに切り替えます。
 

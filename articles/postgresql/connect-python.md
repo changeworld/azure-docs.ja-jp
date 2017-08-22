@@ -10,16 +10,17 @@ ms.service: postgresql-database
 ms.custom: mvc
 ms.devlang: python
 ms.topic: hero-article
-ms.date: 08/10/2017
+ms.date: 08/15/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 0d52a7728e2292946e9328065b973ca7ad37b4f5
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 481e2552e2a2cd91d026774438788143109b28df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/16/2017
 
 ---
+
 # <a name="azure-database-for-postgresql-use-python-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Python を使用した接続とデータの照会
-このクイックスタートでは、Mac OS、Ubuntu Linux、Windows の各プラットフォームから [Python](https://python.org) を使用して Azure Database for PostgreSQL に接続し、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法について説明します。 この記事の手順では、Python を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for PostgreSQL に接続する方法を紹介します。 また、macOS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法も紹介します。 この記事の手順では、Python を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -28,29 +29,43 @@ ms.lasthandoff: 08/10/2017
 
 以下も必要です。
 - [python](https://www.python.org/downloads/) がインストールされていること。
-- [pip](https://pip.pypa.io/en/stable/installing/) パッケージがインストールされていること ([python.org](https://python.org) からダウンロードした Python 2 (2.7.9 以上) または Python 3 (3.4 以上) のバイナリをご利用の場合、pip は既にインストールされていますが、pip のアップグレードが必要となります)。
+- [pip](https://pip.pypa.io/en/stable/installing/) パッケージがインストールされていること ([python.org](https://python.org) からダウンロードした Python 2 (2.7.9 以上) または Python 3 (3.4 以上) のバイナリをご利用の場合、pip は既にインストールされています)。
 
 ## <a name="install-the-python-connection-libraries-for-postgresql"></a>PostgreSQL 用 Python 接続ライブラリのインストール
-[psycopg2](http://initd.org/psycopg/docs/install.html) パッケージをインストールします。これにより、データベースに接続してクエリを実行できるようになります。 psycopg2 は、最も一般的なプラットフォーム (Linux、OSX、Windows) を対象に [wheel](http://pythonwheels.com/) パッケージ形式で [PyPI に公開](https://pypi.python.org/pypi/psycopg2/)されているため、pip install を使用して、すべての依存関係を含んだバイナリ バージョンのモジュールを取得できます。
+[psycopg2](http://initd.org/psycopg/docs/install.html) パッケージをインストールします。これにより、データベースに接続してクエリを実行できるようになります。 psycopg2 は、最も一般的なプラットフォーム (Linux、OSX、Windows) を対象に [wheel](http://pythonwheels.com/) パッケージ形式で [PyPI に公開](https://pypi.python.org/pypi/psycopg2/)されています。 pip install を使用して、すべての依存関係を含んだバイナリ バージョンのモジュールを取得してください。
 
-```cmd
-pip install psycopg2
-```
-必ず最新バージョンの pip を使用してください (「`pip install -U pip`」のようにしてアップグレードできます)。
+1. ご使用のコンピューター上のコマンド ライン インターフェイスを起動します。
+    - Linux では、Bash シェルを起動します。
+    - macOS では、ターミナルを起動します。
+    - Windows では、[スタート] メニューからコマンド プロンプトを起動します。
+2. 次のようなコマンドを実行して、使用している pip が最新バージョンであることを確認します。
+    ```cmd
+    pip install -U pip
+    ```
+
+3. 次のコマンドを実行して、psycopg2 パッケージをインストールします。
+    ```cmd
+    pip install psycopg2
+    ```
 
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
-2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバー「**mypgserver-20170401**」を検索します。
+2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したばかりのサーバー **mypgserver-20170401** を検索します。
 3. サーバー名 **[mypgserver-20170401]** をクリックします。
-4. サーバーの **[概要]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
+4. サーバーの **[概要]** ページを選択し、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。
  ![Azure Database for PostgreSQL - サーバー管理者ログイン](./media/connect-python/1-connection-string.png)
 5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
 ## <a name="how-to-run-python-code"></a>Python コードを実行する方法
-- 任意のテキスト エディターで postgres.py という新しいファイルを作成し、プロジェクト フォルダーに保存します。 以下に掲載したサンプル コードをコピーし、テキスト ファイルに貼り付けます。 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。 そのうえでファイルを保存します。 Windows OS でファイルを保存するときは必ず UTF-8 エンコードを選択してください。 
-- このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (例: `cd postgresql`)。 そのうえで、python コマンドに続けてファイル名を入力します (例: `python postgres.py`)。
+このトピックでは、それぞれが特定の機能を実行する合計 4 つのコードサンプルを紹介しています。 テキスト ファイルを作成し、コード ブロックを挿入して、後で実行できるようファイルを保存する方法を次の手順で説明します。 独立した 4 つのファイル (コード ブロックごとに 1 つ) を作成してください。
+
+- 任意のテキスト エディターで新しいファイルを作成します。
+- 以降のセクションにあるいずれかのコード サンプルをコピーしてテキスト ファイルに貼り付けます。 **host**、**dbname**、**user**、**password** の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。
+- このファイルを .py という拡張子でプロジェクト フォルダーに保存します (例: postgres.py)。 Windows OS を実行している場合は、ファイルを保存するときに必ず UTF-8 エンコーディングを選択してください。 
+- コマンド プロンプトまたは Bash シェルを起動し、ディレクトリをプロジェクト フォルダー (`cd postgres` など) に変更します。
+-  コードを実行するには、Python コマンドに続けてファイル名を入力します (例: `Python postgres.py`)。
 
 > [!NOTE]
 > Python バージョン 3 以降では、以下のコード ブロックを実行するときに "`SyntaxError: Missing parentheses in call to 'print'`" というエラーが表示される場合があります。 その場合は、`print "string"` コマンドの呼び出し箇所をすべて、丸かっこを使用した関数呼び出しに置き換えてください (例: `print("string")`)。
@@ -94,6 +109,10 @@ conn.commit()
 cursor.close()
 conn.close()
 ```
+
+コードが正常に実行されると、次の出力結果が表示されます。
+
+![コマンド ライン出力](media/connect-python/2-example-python-output.png)
 
 ## <a name="read-data"></a>データの読み取り
 [cursor.execute](http://initd.org/psycopg/docs/cursor.html#execute) 関数と共に **SELECT** SQL ステートメントを使用して、挿入したデータを読み取るには、次のコードを使用します。 この関数はクエリを受け取り、[cursor.fetchall()](http://initd.org/psycopg/docs/cursor.html#cursor.fetchall) を使用して反復処理できる結果セットを返します。 host、dbname、user、password の各パラメーターは、サーバーとデータベースの作成時に指定した値に置き換えてください。

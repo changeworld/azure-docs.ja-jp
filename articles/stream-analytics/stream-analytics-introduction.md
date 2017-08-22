@@ -4,7 +4,7 @@ description: "モノのインターネット (IoT) からのストリーミン�
 keywords: "サービスとしての分析、管理されたサービス、ストリーム プロセス、Stream Analytics、Stream Analytics とは"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: jenniehubbard
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/16/2017
-ms.author: jeffstok
+ms.date: 08/08/2017
+ms.author: jhubbard
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2fda07b8444b196d831e5e9fe7ade3e5017d36f9
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -27,11 +27,11 @@ ms.lasthandoff: 07/21/2017
 
 Azure Stream Analytics は、完全に管理されたイベント処理エンジンであり、ストリーミング データを対象としたリアルタイム分析の計算を設定することができます。 対象となるデータは、デバイス、センサー、Web サイト、ソーシャル メディア フィード、アプリケーション、インフラストラクチャ システムなどから得ることができます。 
 
-## <a name="what-can-i-use-stream-analytics-for"></a>Stream Analytics を使ってできること
+## <a name="what-can-i-do-with-stream-analytics"></a>Stream Analytics を使ってできること
 
 Stream Analytics を使うと、デバイスやプロセスから流れてくる大量のデータを観察し、データ ストリームから情報を抽出して、パターンや傾向、関係を調べることができます。 データの内容に応じて、アプリケーションのタスクを実行することができます。 そのようなタスクの例としては、アラートの生成やオートメーション ワークフローの開始、レポート ツール (Power BI など) への情報のフィード、将来調査に使用するデータの保存などが考えられます。 
 
-Stream Analytics の使用例を次に示します。
+次に例を示します。
 
 * 金融サービス会社が個人に合わせて提供する株式取引のリアルタイム分析とアラート。
 * トランザクション データを観察することによって不正行為をリアルタイムに検出。 
@@ -42,7 +42,7 @@ Stream Analytics の使用例を次に示します。
 
 ## <a name="how-does-stream-analytics-work"></a>Stream Analytics の動作
 
-次の図は、Stream Analytics パイプラインでデータが取り込まれ、分析されて、表示または処理のために送信されるようすを示したものです。 
+この図は、Stream Analytics パイプラインでデータが取り込まれ、分析されて、表示または処理のために送信されるようすを示したものです。 
 
 ![Stream Analytics パイプライン](./media/stream-analytics-introduction/stream_analytics_intro_pipeline.png)
 
@@ -69,7 +69,7 @@ Stream Analytics は、ストリーム データの取り込みに関しては [
 
 ジョブの入力に参照データ (静的なデータや変化の速度が遅いデータ) を含めることもできます。 この参照データにストリーミング データを結合すれば、データベースのクエリと同様のルックアップ操作を行うことができます。
 
-Stream Analytics ジョブの出力は、さまざまな宛先にルーティングすることができます。 書き込み先に使用できるストレージとして、Azure Storage の BLOB やテーブル、Azure SQL DB、Azure Data Lake Store、Azure Cosmos DB などがあります。 そこに格納されたデータは、Azure HDInsight で一括分析することができます。 出力結果をイベント ハブや Azure Service Bus のトピック、キューなどのサービスに送って、別の処理に投入することもできます。 出力結果を Power BI に送れば、データを視覚化することができます。
+Stream Analytics ジョブの出力は、さまざまな方向にルーティングすることができます。 書き込み先に使用できるストレージとして、Azure Storage の BLOB やテーブル、Azure SQL DB、Azure Data Lake Store、Azure Cosmos DB などがあります。 そこに格納されたデータは、Azure HDInsight で一括分析することができます。 出力結果をイベント ハブや Azure Service Bus のトピック、キューなどのサービスに送って、別の処理に投入することもできます。 出力結果を Power BI に送れば、データを視覚化することができます。
 
 ### <a name="ease-of-use"></a>使いやすさ
 
@@ -98,6 +98,6 @@ Stream Analytics は、クラウド内で管理されるサービスであるた
 * Stream Analytics で使用される SQL に似たクエリ言語と、[ウィンドウ関数](stream-analytics-window-functions.md)に見られるような独特の概念について理解を深める。
 * [Stream Analytics ジョブをスケーリング](stream-analytics-scale-jobs.md)する方法について調べる。 
 * [Stream Analytics と Azure Machine Learning を統合](stream-analytics-machine-learning-integration-tutorial.md)する方法について調べる。
-* [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)で Stream Analytics に関する質問とその回答を参照する。
+* [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)で Stream Analytics に関する質問の回答を見つける。
 
 

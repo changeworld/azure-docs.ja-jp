@@ -13,13 +13,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 396d8b9532eb55341670ad61bd4c2a16882b35e4
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 49ca4ed2452d71dec17cedebaf48bbd5ab9e615f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway の概要
@@ -42,6 +42,7 @@ Microsoft Azure Application Gateway は専用の仮想アプライアンスで�
 * **[マルチサイト ルーティング](application-gateway-multi-site-overview.md)** - Application Gateway では、単一のアプリケーション ゲートウェイに最大 20 個の Web サイトを統合できます。
 * **[WebSocket のサポート](application-gateway-websocket.md)** - Application Gateway のもう 1 つの優れた機能として、WebSocket がネイティブでサポートされます。
 * **[正常性の監視](application-gateway-probe-overview.md)** - Application Gateway は、バックエンド リソースの既定の正常性の監視と、より具体的なシナリオを監視するカスタム プローブを提供します。
+* **[SSL ポリシーと暗号](application-gateway-ssl-policy-overview.md)** - この機能によって、サポートされる SSL プロトコルのバージョンと暗号スイート、およびそれらが処理される順序を制限することができます。
 * **[要求のリダイレクト](application-gateway-redirect-overview.md)** - HTTP の要求を HTTPS リスナーにリダイレクトする機能です。
 * **[マルチテナント バックエンドのサポート](application-gateway-web-app-overview.md)** - Application Gateway では、Azure Web Apps や API ゲートウェイなどのマルチテナント バックエンド サービスをバックエンド プール メンバーとして構成できます。 
 * **[高度な診断](application-gateway-diagnostics.md)** - Application Gateway は、完全な診断とアクセス ログを提供します。 WAF が有効になっているアプリケーション ゲートウェイに対してファイアウォールのログを使用できます。

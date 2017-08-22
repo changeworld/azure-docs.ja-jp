@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/26/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 02d0ce093bc42cffa4f3993826c61c8aeca4d033
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/01/2017
 ## <a name="what-will-be-accomplished"></a>作業内容
 このチュートリアルに含まれる手順は次のとおりです。
 
-1. Azure ポータルを使用して Service Bus 名前空間を作成する。
+1. Azure Portal を使用して Service Bus 名前空間を作成する。
 2. Azure Portal を使用して Service Bus キューを作成する。
 3. メッセージを送信するコンソール アプリケーションを記述する。
 4. 直前の手順で送信されたメッセージを受信するためのコンソール アプリケーションを作成する。
@@ -38,12 +38,12 @@ ms.lasthandoff: 07/01/2017
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure Portal を使用した名前空間の作成
 Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したキューの作成](#2-create-a-queue-using-the-azure-portal)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure ポータルを使用したキューの作成
+## <a name="2-create-a-queue-using-the-azure-portal"></a>2.Azure Portal を使用したキューの作成
 Service Bus キューを既に作成している場合は、「[キューへのメッセージの送信](#3-send-messages-to-the-queue)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-queue-portal](../../includes/service-bus-create-queue-portal.md)]

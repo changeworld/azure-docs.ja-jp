@@ -3,13 +3,13 @@ Azure Portal を使用して Resource Manager デプロイメント モデルで
 1. ブラウザーから [Azure Portal](http://portal.azure.com) に移動します。必要であれば Azure アカウントでサインインします。
 2. ページの下部にある **+**」の説明に従って、アプリケーションにシングル サインオンできるようになります。 **[Marketplace を検索]** フィールドに「仮想ネットワーク」と入力します。 検索結果の一覧から **[仮想ネットワーク]** を探してクリックし、**[仮想ネットワーク]** ページを開きます。
 
-  ![仮想ネットワーク リソース ページの検索](./media/vpn-gateway-basic-vnet-rm-portal-include/newvnetportal700.png "仮想ネットワーク リソース ページの検索")
+  ![仮想ネットワーク リソース ページの検索](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/newvnetportal700.png "仮想ネットワーク リソース ページの検索")
 3. [仮想ネットワーク] ページの下の方にある **[デプロイ モデルの選択]** の一覧で、**[リソース マネージャー]** を選択し、**[作成]** をクリックします。
 
-  ![[リソース マネージャー] を選択](./media/vpn-gateway-basic-vnet-rm-portal-include/resourcemanager250.png "[リソース マネージャー] を選択")
+  ![[リソース マネージャー] を選択](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/resourcemanager250.png "[リソース マネージャー] を選択")
 4. **[仮想ネットワークの作成]** ページで、VNet の設定を構成します。 フィールドへの入力時、入力された文字が有効であれば、赤色の感嘆符が緑色のチェック マークに変わります。 自動的に入力される値もあります。 そのような値については、実際の値に変更してください。 **[仮想ネットワークの作成]** ページは、次のようになっています。
 
-  ![[仮想ネットワークの作成] ページ](./media/vpn-gateway-basic-vnet-rm-portal-include/createvnet300.png "[仮想ネットワークの作成] ページ")
+  ![フィールドの検証](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/createp2sgvnet.png "フィールドの検証")
 5. **[名前]**: 仮想ネットワークの名前を入力します。
 6. **[アドレス空間]**: アドレス空間を入力します。 追加するアドレス空間が複数ある場合は、1 つ目のアドレス空間を追加してください。 その他のアドレス空間は後で、VNet を作成した後に追加できます。
 7. **[サブネット名]**: サブネットの名前とアドレス範囲を追加します。 その他のサブネットは後で、VNet を作成した後に追加できます。
@@ -18,7 +18,7 @@ Azure Portal を使用して Resource Manager デプロイメント モデルで
 10. **[場所]**: VNet の場所を選択します。 この場所の設定によって、この VNet にデプロイしたリソースの配置先が決まります。
 11. ダッシュボードで VNet を簡単に検索できるようにするには、**[ダッシュボードにピン留めする]** を選択します。その後、**[作成]** をクリックします。
 
- ![ダッシュボードにピン留めする](./media/vpn-gateway-basic-vnet-rm-portal-include/pintodashboard150.png "ダッシュボードにピン留めする")
+ ![ダッシュボードにピン留めする](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/pintodashboard150.png "ダッシュボードにピン留めする")
 12. **[作成]** をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。 タイルは、VNet の作成が進むに従って変化します。
 
-  ![仮想ネットワークの作成タイル](./media/vpn-gateway-basic-vnet-rm-portal-include/deploying150.png "仮想ネットワークの作成タイル")
+  ![仮想ネットワークの作成タイル](./media/vpn-gateway-basic-p2s-vnet-rm-portal-include/deploying150.png "仮想ネットワークの作成タイル")

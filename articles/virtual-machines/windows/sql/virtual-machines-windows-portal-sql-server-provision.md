@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 08/08/2017
+ms.date: 08/14/2017
 ms.author: jroth
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 98e307bc3b2dd876b74d64fbdeec162827a2e86e
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: c923f9aae4c7a1b8bd4f5760d0ec4f33923b9321
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での SQL Server 仮想マシンのプロビジョニング
@@ -46,17 +46,17 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
    > [!NOTE]
    > Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2. Azure Portal で、**[新規]**をクリックします。 **[新規]** ブレードが開きます。
+2. Azure Portal で、**[新規]**をクリックします。 **[新規]** ウィンドウが開きます。
 
-3. **[新規]** ブレードで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
+3. **[新規]** ウィンドウで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
 
-   ![Azure の新しいコンピューティング ブレード](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
+   ![新しい [Compute] ウィンドウ](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
 
 4. [検索] フィールドに「**SQL Server**」と入力し、Enter キーを押します。
 
-5. 次に、**[フィルター]** アイコンをクリックし、発行元として **Microsoft** を選択します。 フィルター ブレードで **[完了]** をクリックし、結果を Microsoft 発行の SQL Server イメージだけにフィルター処理します。
+5. 次に、**[フィルター]** アイコンをクリックし、発行元として **Microsoft** を選択します。 フィルター ウィンドウで **[完了]** をクリックし、結果を Microsoft 発行の SQL Server イメージだけにフィルター処理します。
 
-   ![Azure Virtual Machines Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
+   ![Azure Virtual Machines ウィンドウ](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
 5. 使用可能な SQL Server イメージを確認します。 各イメージは、SQL Server のバージョンとオペレーティング システムを示しています。
 
@@ -77,7 +77,7 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
 ## <a name="configure-the-vm"></a>VM を構成する
-SQL Server 仮想マシンを構成するための 5 つのブレードがあります。
+SQL Server 仮想マシンを構成するための 5 つのウィンドウがあります。
 
 | 手順 | Description |
 | --- | --- |
@@ -89,7 +89,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 ## <a name="1-configure-basic-settings"></a>1.基本設定を構成する
 
-**[基本]** ブレードで次の情報を指定します。
+**[基本]** ウィンドウで、次の情報を指定します。
 
 * 仮想マシンの一意の **名前**を入力します。
 
@@ -110,14 +110,14 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 * **[OK]** をクリックして設定を保存します。
 
-    ![SQL Basics Blade](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
+    ![SQL の [基本] ウィンドウ](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-basic.png)
 
 ## <a name="2-choose-virtual-machine-size"></a>2.仮想マシンのサイズを選択する
 
-この**サイズ**設定の手順では、**[サイズの選択]** ブレードで仮想マシンのサイズを選択します。 ブレードには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。
+この**サイズ**設定の手順では、**[サイズの選択]** ウィンドウで仮想マシンのサイズを選択します。 ウィンドウには、選択したイメージに基づいて推奨されるマシン サイズが最初に表示されます。
 
 > [!IMPORTANT]
-> **[サイズの選択]** ブレードに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」も参照してください。
+> **[サイズの選択]** ウィンドウに表示される月額料金の見積もりには、SQL Server のライセンス費用は含まれていません。 この料金は VM 単体の費用です。 SQL Server Express エディションと SQL Server Developer エディションでは、この料金が概算費用の合計になります。 他のエディションについては、「[Windows Virtual Machines の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)」で、ターゲットの SQL Server エディションを選択して確認できます。 また、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」も参照してください。
 
 ![SQL VM Size Options](./media/virtual-machines-windows-portal-sql-server-provision/azure-sql-vm-choose-a-size.png)
 
@@ -130,7 +130,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 
 ## <a name="3-configure-optional-features"></a>3.オプション機能を構成する
 
-**[設定]** ブレードで、仮想マシン用に Azure Storage、ネットワーク、監視を構成します。
+**[設定]** ウィンドウで、仮想マシン用に Azure Storage、ネットワーク、監視を構成します。
 
 * **[ストレージ]** で、**[Managed Disks を使用]** の下の **[はい]** を選択します。
 
@@ -146,7 +146,7 @@ SQL Server 仮想マシンを構成するための 5 つのブレードがあり
 これらの設定の構成が済んだら、 **[OK]**をクリックします。
 
 ## <a name="4-configure-sql-server-settings"></a>4.SQL Server の設定を構成する
-**[SQL Server の設定]** ブレードで、SQL Server の個々の設定と最適化を構成します。 SQL Server について構成できる設定は次のとおりです。
+**[SQL Server の設定]** ウィンドウで、SQL Server の個々の設定と最適化を構成します。 SQL Server について構成できる設定は次のとおりです。
 
 | Setting |
 | --- |
@@ -259,7 +259,7 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 
 ### <a name="r-services"></a>R Services
 
-[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) を有効にするオプションがあります。 これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。 **[有効]** on the **SQL Server Settings** ブレードが開きます。
+[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) を有効にするオプションがあります。 これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[Enable]\(有効にする\)** をクリックします。
 
 > [!NOTE]
 > SQL Server 2016 Developer Edition では、このオプションはポータルによって誤って無効にされています。 Developer Edition の場合は、VM を作成した後、R Services を手動で有効にする必要があります。
@@ -270,35 +270,42 @@ SQL Server の設定の構成が完了したら、 **[OK]**をクリックしま
 
 ## <a name="5-review-the-summary"></a>5.概要を確認する
 
-**[概要]** ブレードで概要を確認し、**[購入]** をクリックして、この VM に対して指定した SQL Server、リソース グループ、およびリソースを作成します。
+**[概要]** ウィンドウで概要を確認し、**[購入]** をクリックして、この VM に対して指定した SQL Server、リソース グループ、およびリソースを作成します。
 
-Azure Portal でデプロイメントを監視できます。 画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
+Azure Portal でデプロイを監視できます。 画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
 
 > [!NOTE]
 > デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。 このテスト デプロイには完了までに合計 26 分間かかりました。 ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。
 
 ## <a name="open-the-vm-with-remote-desktop"></a>リモート デスクトップを使用して VM を開く
 
+リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
+
 > [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-remote-desktop-connect.md)]
+
+SQL Server 仮想マシンに接続した後は、SQL Server Management Studio を起動し、ローカル管理者の資格情報を使用して Windows 認証で接続できます。 SQL Server 認証を有効にした場合は、プロビジョニングの間に構成した SQL のログインとパスワードを使用して SQL 認証で接続することもできます。
+
+マシンにアクセスすると、要件に基づいてマシンと SQL Server の設定を直接変更することができます。 たとえば、ファイアウォールの設定を構成したり、SQL Server の構成設定を変更したりできます。
+
+## <a name="enable-tcpip-for-developer-and-express-editions"></a>Developer および Express エディションの TCP/IP を有効にする
+
+SQL Server Developer および Express エディションの場合、新しい SQL Server VM をプロビジョニングするときに TCP/IP プロトコルは自動的に有効に設定されません。 TCP/IP を手動で有効にして IP アドレスでリモート接続できるようにするための手順を次に示します。
+
+次の手順では、**SQL Server 構成マネージャー**を使用して、SQL Server Developer および Express エディションの TCP/IP プロトコルを有効にします。
+
+> [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
 ## <a name="connect-to-sql-server-remotely"></a>SQL Server にリモート接続する
 
 このチュートリアルでは、仮想マシンと **SQL Server 認証**に**パブリック** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 
 > [!NOTE]
-> プロビジョニング時に [パブリック] を選択しなかった場合、インターネット経由で SQL Server インスタンスにアクセスするには、追加の手順が必要です。 詳細については、[SQL Server 仮想マシンへの接続](virtual-machines-windows-sql-connect.md)に関するページを参照してください。
-> 
-> 
+> プロビジョニング中に [パブリック] を選択しなかった場合は、プロビジョニング後にポータルで SQL 接続設定を変更できます。 詳細については、「[Change your SQL connectivity settings (SQL 接続設定の変更)](virtual-machines-windows-sql-connect.md#change)」を参照してください。
 
 次のセクションでは、インターネット経由で別のコンピューターから VM の SQL Server インスタンスに接続する方法を示します。
 
 > [!INCLUDE [Connect to SQL Server in a VM Resource Manager](../../../../includes/virtual-machines-sql-server-connection-steps-resource-manager.md)]
-> 
-> 
 
 ## <a name="next-steps"></a>次のステップ
+
 Azure での SQL Server の使用に関するその他の情報については、[Azure 仮想マシンにおける SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) に関する記事と[よく寄せられる質問](virtual-machines-windows-sql-server-iaas-faq.md)に関するページを参照してください。
-
-Azure 仮想マシン上の SQL Server の概要に関するビデオについては、「 [Azure VM is the best platform for SQL Server 2016 (Azure VM は SQL Server 2016 に最適なプラットフォーム)](https://channel9.msdn.com/Events/DataDriven/SQLServer2016/Azure-VM-is-the-best-platform-for-SQL-Server-2016)」をご覧ください。
-
-[ラーニング パスを調べます](https://azure.microsoft.com/documentation/learning-paths/sql-azure-vm/) 。
