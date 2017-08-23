@@ -17,13 +17,13 @@ ms.workload: big-data
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: daf03179c3a9383c6ff3ca11215cc760164f96d5
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 71482e24e519319d506d61e0582420e35f1cae70
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/10/2017
 
 ---
-# <a name="example-storm-toplogies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight での Apache Storm の Storm トポロジとコンポーネントの例
+# <a name="example-storm-topologies-and-components-for-apache-storm-on-hdinsight"></a>HDInsight 上の Apache Storm 用 Storm トポロジとコンポーネントの例
 
 HDInsight での Apache Storm の使用に関してマイクロソフトが作成して管理している例の一覧を次に示します。 これらの例では、基本的な C# および Java トポロジの作成から、Event Hubs、Cosmos DB、Power BI、SQL Database、HDInsight での HBase、Azure Storage などの Azure サービスの使用まで、さまざまなトピックがカバーされています。 また一部の例には、Azure 以外のテクノロジや、さらには SignalR や Socket.IO などのマイクロソフト以外のテクノロジを使用する方法についても示されています。
 
@@ -46,7 +46,7 @@ HDInsight での Apache Storm の使用に関してマイクロソフトが作�
 | [HDInsight の Storm での Python の使用](hdinsight-storm-develop-python-topology.md) |Flux トポロジを使用する Python コンポーネント |Python |
 | [HDInsight の Storm での Kafka の使用](hdinsight-apache-storm-with-kafka.md) | Apache Storm を使用した Apache Kafka の読み取りと書き込み | Java |
 
-## <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次のステップ
 
 * [HDInsight での Apache Storm の使用][2b8c3488]
 * [HDInsight での Apache Storm のデプロイと管理][6eb0d3b8]

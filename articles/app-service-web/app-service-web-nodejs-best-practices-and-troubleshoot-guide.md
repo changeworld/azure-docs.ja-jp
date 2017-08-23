@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/06/2016
-ms.author: ranjithr;wadeh
+ms.author: ranjithr
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
 ms.openlocfilehash: 656c5b3e363bd2eaa7550ffc673606d26f7d06de
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/07/2017
-
 
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド

@@ -1,3 +1,24 @@
+---
+title: "Azure AD v2 iOS の概要 - 構成 | Microsoft Docs"
+description: "iOS (Swift) アプリケーションで、アクセス トークンを必要とする API を Azure Active Directory v2 エンドポイントから呼び出す方法"
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mbaldwin
+editor: 
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 05/09/2017
+ms.author: andret
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 8a4f412102c0e75654030f5d4f8aab575fdcebba
+ms.contentlocale: ja-jp
+
+---
 
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
@@ -49,3 +70,4 @@ Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコ
 <i><code>[Your_Application_Id_Here]</code></i> を、さきほど登録したアプリケーション ID に置き換えます
 </li>
 </ol>
+

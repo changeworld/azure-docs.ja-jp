@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/30/2017
+ms.date: 08/14/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: f4134d10e57ff7c8ea6308f076f33e4dc703082c
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 93afa49166c5b31d23237c308b9d34f6d6f3507d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
@@ -48,7 +47,7 @@ ms.lasthandoff: 07/08/2017
 5. **証明書の目的** - 証明書は、SSL サーバー認証に対して有効である必要があります。
 
 > [!NOTE]
-> **エンタープライズ証明機関:** Azure AD Domain Services では、現在、組織のエンタープライズ証明機関によって発行された、セキュリティで保護された LDAP 証明書の使用はサポートされていません。 この制限が適用されるのは、サービスが、エンタープライズ CA をルート証明機関として信頼していないためです。 エンタープライズ CA のサポートは今後追加する予定です。 エンタープライズ CA によって発行された証明書を使用する必要がある場合は、対処方法について[お問い合わせください](active-directory-ds-contact-us.md)。
+> **エンタープライズ証明機関:** Azure AD Domain Services では、組織のエンタープライズ証明機関によって発行された、セキュリティで保護された LDAP 証明書の使用はサポートされていません。 この制限が適用されるのは、サービスが、エンタープライズ CA をルート証明機関として信頼していないためです。 
 >
 >
 

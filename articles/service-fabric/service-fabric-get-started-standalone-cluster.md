@@ -3,7 +3,7 @@ title: "スタンドアロン Azure Service Fabric クラスターのセット�
 description: "同じコンピューター上で動作する 3 つのノードで開発用のスタンドアロン クラスターを作成します。 このセットアップを終えれば、いつでも複数マシンのクラスターを作成することができます。"
 services: service-fabric
 documentationcenter: .net
-author: rwike77
+author: dkkapur
 manager: timlt
 editor: 
 ms.assetid: 
@@ -13,13 +13,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/06/2017
-ms.author: ryanwi
+ms.author: dekapur
 ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: a96150a6a7f83d1c220e0450f7704634a1f6ed1b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 

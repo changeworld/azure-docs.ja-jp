@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 99386a92b76d0d58f7f5c94d30d3423559eee685
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: f22bd42302b96118dba0d4e5e387c6798a0b8777
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-use-perfinsights"></a>PerfInsights を使用する方法 
@@ -311,7 +311,7 @@ PhysicalDisk 分析観点 (DiskMap) のテーブルには、ディスクで実�
 
 ターゲット VM で SQL Server インスタンスがホストされている場合は、レポートに **SQL Server** という名前の追加のタブが表示されます。
 
-![SQL タブ](media/how-to-use-perfInsights/sqltab.png)
+![[SQL Server] タブ](media/how-to-use-perfInsights/sqltab.png)
 
 このセクションには、"概要" サブ タブと、VM でホストされている SQL Server インスタンスごとに追加のサブ タブがあります。
 
@@ -350,3 +350,4 @@ Microsoft サポートに連絡すると、トラブルシューティング プ
 セキュリティを強化するために、最初にパスワードを変更する必要があります。
 
 DTM にログインすると、PerfInsights によって収集された **CollectedData\_yyyy-MM-dd\_hh\_mm\_ss.zip** ファイルをアップロードするダイアログ ボックスが表示されます。
+

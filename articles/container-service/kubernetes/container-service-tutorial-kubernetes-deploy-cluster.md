@@ -14,7 +14,7 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2017
+ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
@@ -45,7 +45,7 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 [前のチュートリアル](./container-service-tutorial-kubernetes-prepare-acr.md)では、*myResourceGroup* という名前のリソース グループを作成しました。 まだ作成していない場合、ここでこのリソース グループ作成してください。
 
 ```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+az group create --name myResourceGroup --location westeurope
 ```
 
 [az acs create](/cli/azure/acs#create) コマンドを使用して Azure Container Service に Kubernetes クラスターを作成します。 

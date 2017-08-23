@@ -53,7 +53,7 @@ ADFS 管理者は、[サインイン ページの説明の追加](https://docs.m
 
 ADFS サーバーで次のコマンドを使用して、ADFS ログイン ページへのリンクを追加できます。これにより、ユーザーは直接、セルフサービスによるパスワードのリセット ワークフローに入ることができます。
 
-``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?<A/></p>" ```
+``` Set-ADFSGlobalWebContent -SigninPageDescriptionText "<p><A href=’https://passwordreset.microsoftonline.com’>Can’t access your account?</A></p>" ```
 
 ## <a name="customize-the-sign-in-and-access-panel-look-and-feel"></a>サインインとアクセス パネルの外観のカスタマイズ
 

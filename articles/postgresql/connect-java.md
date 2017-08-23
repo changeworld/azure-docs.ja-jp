@@ -6,10 +6,10 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: mvc
 ms.devlang: java
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 06/23/2017
 ms.translationtype: Human Translation
 ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
@@ -19,14 +19,10 @@ ms.lasthandoff: 06/26/2017
 
 ---
 
-<a id="azure-database-for-postgresql-use-java-to-connect-and-query-data" class="xliff"></a>
-
-# Azure Database for PostgreSQL: Java を使用した接続とデータの照会
+# <a name="azure-database-for-postgresql-use-java-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Java を使用した接続とデータの照会
 このクイックスタートでは、Java アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Java を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
 - [DB の作成 - ポータル](quickstart-create-server-database-portal.md)
 - [DB の作成 - Azure CLI](quickstart-create-server-database-azure-cli.md)
@@ -35,9 +31,7 @@ ms.lasthandoff: 06/26/2017
 - ご使用のバージョンの Java および Java Development Kit に合った [PostgreSQL JDBC ドライバー](https://jdbc.postgresql.org/download.html)をダウンロードします。
 - PostgreSQL JDBC jar ファイル (例: postgresql-42.1.1.jar) をアプリケーションの classpath に追加します。 詳細については、[classpath の設定](https://jdbc.postgresql.org/documentation/head/classpath.html)に関するページを参照してください。
 
-<a id="get-connection-information" class="xliff"></a>
-
-## 接続情報の取得
+## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for PostgreSQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
 1. [Azure Portal](https://portal.azure.com/) にログインします。
@@ -47,9 +41,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
  ![Azure Database for PostgreSQL - サーバー管理者ログイン](./media/connect-java/1-connection-string.png)
 5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
-<a id="connect-create-table-and-insert-data" class="xliff"></a>
-
-## 接続、テーブルの作成、データの挿入
+## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
 接続し、**INSERT** SQL ステートメントが含まれた関数を使用してデータを読み込むには、次のコードを使用します。 接続、テーブルの削除、テーブルの作成には、[getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html)、[executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) の各メソッドを使用します。 [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) オブジェクトは、パラメーター値をバインドする setString() および setInt() と共に、挿入コマンドの作成に使用されます。 [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) メソッドは、パラメーターの各セットに対してコマンドを実行します。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -149,9 +141,7 @@ public class CreateTableInsertRows {
 }
 ```
 
-<a id="read-data" class="xliff"></a>
-
-## データの読み取り
+## <a name="read-data"></a>データの読み取り
 **SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 接続、select ステートメントの作成、select ステートメントの実行には、[getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[createStatement()](https://jdbc.postgresql.org/documentation/head/query.html)、[executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) の各メソッドを使用します。 結果は、[ResultSet](https://www.postgresql.org/docs/7.4/static/jdbc-query.html) オブジェクトを使用して処理されます。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -238,9 +228,7 @@ public class ReadTable {
 
 ```
 
-<a id="update-data" class="xliff"></a>
-
-## データの更新
+## <a name="update-data"></a>データの更新
 **UPDATE** SQL ステートメントを使用してデータを変更するには、次のコードを使用します。 接続、update ステートメントの準備、update ステートメントの実行には、[getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html)、[executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) の各メソッドを使用します。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -320,9 +308,7 @@ public class UpdateTable {
     }
 }
 ```
-<a id="delete-data" class="xliff"></a>
-
-## データの削除
+## <a name="delete-data"></a>データの削除
 **DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 接続、delete ステートメントの準備、delete ステートメントの実行には、[getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html)、[prepareStatement()](https://jdbc.postgresql.org/documentation/head/query.html)、[executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) の各メソッドを使用します。 
 
 host、database、user、password の各パラメーターは、独自のサーバーとデータベースの作成時に指定した値に置き換えてください。
@@ -402,9 +388,7 @@ public class DeleteTable {
 }
 ```
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./howto-migrate-using-export-and-import.md)
 

@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 08/14/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 73dcb0db2f940f75bca0edfb12b3e713628ced6a
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 3aafe209aad7383cd0610d147b5fdba673023c93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services の管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
@@ -121,13 +120,13 @@ ms.lasthandoff: 07/08/2017
 
 このタスクを開始する前に、 [タスク 4](#task-4---enable-secure-ldap-access-over-the-internet)で説明した手順が完了していることを確認してください。
 
-LDAPS アクセスのために管理対象ドメインをインターネットにさらす行為はセキュリティ上の脅威となります。 セキュリティで保護されている LDAP に使用されるポート (ポート 636) でインターネットから管理対象ドメインに到達できます。 そのため、管理対象ドメインへのアクセスを特定の既知の IP アドレスに制限できます。 セキュリティを強化する目的で、ネットワーク セキュリティ グループ (NSG) を作成し、それと仮想ネットワークを関連付けます。
+LDAPS アクセスのために管理対象ドメインをインターネットにさらす行為はセキュリティ上の脅威となります。 セキュリティで保護されている LDAP に使用されるポート (ポート 636) でインターネットから管理対象ドメインに到達できます。 そのため、管理対象ドメインへのアクセスを特定の既知の IP アドレスに制限できます。 セキュリティを強化する目的で、ネットワーク セキュリティ グループ (NSG) を作成し、それと Azure AD Domain Services を有効にしたサブネットを関連付けます。
 
 次の表は NSG のサンプルです。このように設定し、セキュリティで保護された LDAP を利用してインターネット経由でアクセスする機能を停止できます。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
 
 ![サンプル NSG。セキュリティで保護された LDAPS を利用し、インターネット経由でアクセスします。](./media/active-directory-domain-services-admin-guide/secure-ldap-sample-nsg.png)
 
-**詳細** - [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
+**詳細** - [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
 
 <br>
 
@@ -135,4 +134,6 @@ LDAPS アクセスのために管理対象ドメインをインターネット�
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [Azure Active Directory Domain Services によって管理されるドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
+* [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
+* [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
 
