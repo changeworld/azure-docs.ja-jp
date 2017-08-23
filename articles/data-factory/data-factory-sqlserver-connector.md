@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Server との間でのデータの移動 | Microsoft Docs"
 description: "Azure Data Factory を使用してオンプレミスまたは Azure VM の SQL Server データベースとの間でデータを移動する方法を説明します。"
 services: data-factory

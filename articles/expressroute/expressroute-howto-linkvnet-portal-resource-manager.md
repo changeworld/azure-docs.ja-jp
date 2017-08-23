@@ -1,4 +1,4 @@
----
+﻿---
 title: "仮想ネットワークを ExpressRoute 回線にリンクする: Azure Portal | Microsoft Docs"
 description: "このドキュメントでは、ExpressRoute 回線に仮想ネットワーク (VNet) をリンクする方法の概要を示します。"
 services: expressroute

@@ -1,4 +1,4 @@
----
+﻿---
 title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
 description: "Azure Active Directory と LINE WORKS の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory

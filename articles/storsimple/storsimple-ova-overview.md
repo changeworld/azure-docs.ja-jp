@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure StorSimple Virtual Array の概要 | Microsoft Docs"
 description: "オンプレミス仮想アレイと Microsoft Azure クラウド ストレージ間でストレージ タスクを管理する統合ストレージ ソリューションである StorSimple Virtual Array について説明します。"
 services: storsimple
