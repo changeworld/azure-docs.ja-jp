@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 976c4752cc3c3cc1c74adf7d57c3539d39aef556
+ms.sourcegitcommit: 495a695466c47c6030716d97c52b3bbf5ce9bf99
+ms.openlocfilehash: 6c073d70debfdc3560405955d65fa9ccaa7d8b1f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-active-directory-b2c-sign-in-by-using-azure-ad-accounts"></a>Azure Active Directory B2C: Azure AD アカウントを使用したサインイン
@@ -142,7 +142,7 @@ Azure AD エンドポイントからトークンを取得するには、Azure AD
 
 特定の Azure AD テナントの構成設定を反映するため、前に触れた XML ファイルの `<Metadata>` セクションを更新する必要があります。 この XML ファイルで、次のようにメタデータ値を更新します。
 
-1. `<Item Key="METADATA">` を `https://login.microsoftonline.com/yourAzureADtenant/.well-known/openid-configuration` に設定します。ここで、`yourAzureADtenant` は Azure AD テナント名 ( contoso.com) です。
+1. `<Item Key="METADATA">` を `https://login.windows.net/yourAzureADtenant/.well-known/openid-configuration` に設定します。ここで、`yourAzureADtenant` は Azure AD テナント名 ( contoso.com) です。
 1. ブラウザーを開き、更新したばかりの `METADATA` の URL に移動します。
 1. ブラウザーで '発行者' オブジェクトを検索し、その値をコピーします。 値は `https://sts.windows.net/{tenantId}/` のようになります。
 1. 値を XML ファイルの `<Item Key="ProviderName">` に貼り付けます。
