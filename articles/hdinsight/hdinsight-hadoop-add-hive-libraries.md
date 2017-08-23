@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/14/2017
+ms.date: 07/12/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 6a9e676149a8a6fd6da4db1325638e8ec0b83a7b
+ms.translationtype: HT
+ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
+ms.openlocfilehash: 3412864384961e8820d6700c1bf22a4cae64ba4b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 07/28/2017
 
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
@@ -47,7 +47,7 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 **Windows ベースのクラスター**: [https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1](https://hdiconfigactions.blob.core.windows.net/setupcustomhivelibsv01/setup-customhivelibs-v01.ps1)
 
 > [!IMPORTANT]
-> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdi-version-33-nearing-retirement-date)に関する記事を参照してください。
+> Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
 
 **要件**
 
@@ -57,7 +57,7 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
 * jar ファイルのライブラリを含むストレージ アカウントを、作成時に HDInsight クラスターにリンクする**必要があります**。 既定のストレージ アカウントまたは__オプションの構成__を通じて追加されたアカウントである必要があります。
 
-* コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウントの **libs** というコンテナーに格納されている場合、パラメーターは **wasbs://libs@mystorage.blob.core.windows.net/** となります。
+* コンテナーへの WASB パスは、スクリプト アクションのパラメーターとして指定する必要があります。 たとえば、jar が **mystorage** という名前のストレージ アカウントの **libs** というコンテナーに格納されている場合、パラメーターは **wasb://libs@mystorage.blob.core.windows.net/** となります。
 
   > [!NOTE]
   > このドキュメントでは、既にストレージ アカウントと BLOB コンテナーを作成し、そこにファイルをアップロードしていることを前提としています。
@@ -85,7 +85,7 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
    * **[ZOOKEEPER]**: 空白のままにします。
 
-   * **[パラメーター]**: jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、**wasbs://libs@mystorage.blob.core.windows.net/** です。
+   * **[パラメーター]**: jar が格納されているコンテナーとストレージ アカウントの WASB アドレスを入力します。 たとえば、**wasb://libs@mystorage.blob.core.windows.net/** です。
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。
 

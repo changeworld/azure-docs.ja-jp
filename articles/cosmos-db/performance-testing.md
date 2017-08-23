@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: a3f2e8634981ac158312e6b9700db92415e9e6c5
+ms.translationtype: HT
+ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
+ms.openlocfilehash: b5a1edd08819e82437c5b22d8eb131665d7c9645
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 07/25/2017
 
 ---
 # <a name="performance-and-scale-testing-with-azure-cosmos-db"></a>Azure Cosmos DB のパフォーマンスとスケールのテスト
@@ -50,7 +49,7 @@ Cosmos DB のパフォーマンスを向上させるためのクライアント�
 **手順 2:** App.config で EndpointUrl、AuthorizationKey、CollectionThroughput、DocumentTemplate (任意) の設定を変更します。
 
 > [!NOTE]
-> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)でコレクションあたりのコストを見積もってください。 Cosmos DB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に DocumentDB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
+> 高スループットでコレクションをプロビジョニングすることになるので、事前に[料金に関するページ](https://azure.microsoft.com/pricing/details/cosmos-db/)でコレクションあたりのコストを見積もってください。 Azure Cosmos DB では、記憶域とスループットが別々に時間単位で課金されます。そのためテスト後に Azure Cosmos DB コレクションのスループットを下げるかコレクションを削除することでコストを節約できます。
 > 
 > 
 
