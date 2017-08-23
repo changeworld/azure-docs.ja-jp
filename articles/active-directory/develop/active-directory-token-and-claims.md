@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure AD でサポートされているさまざまなトークンとクレームの種類について | Microsoft Docs"
 description: "Azure Active Directory (AAD) によって発行された SAML 2.0 トークンおよび JSON Web トークン (JWT) のクレームを、理解および評価するためのガイド"
 documentationcenter: na

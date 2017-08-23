@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Multi-Factor Authentication Server の概要 | Microsoft Docs"
 description: "Azure MFA Server を開始する方法について説明する Azure Multi-Factor Authentication のページです。"
 services: multi-factor-authentication
