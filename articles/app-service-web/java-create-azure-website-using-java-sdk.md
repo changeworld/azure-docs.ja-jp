@@ -26,7 +26,7 @@ ms.lasthandoff: 03/01/2017
 <!-- Azure Active Directory workflow is not yet available on the Azure Portal -->
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、[Azure App Service][Azure App Service] 内で Web アプリを作成する Azure SDK for Java アプリケーションを作成し、Web サイトにアプリケーションをデプロイする方法について説明します。 次の&2; つの部分から構成されます。
+このチュートリアルでは、[Azure App Service][Azure App Service] 内で Web アプリを作成する Azure SDK for Java アプリケーションを作成し、Web サイトにアプリケーションをデプロイする方法について説明します。 次の 2 つの部分から構成されます。
 
 * パート 1 では、Web アプリを作成する Java アプリケーションをビルドする方法を説明します。
 * パート 2 では、簡単な JSP の "Hello World" アプリケーションを作成する方法を説明し、FTP クライアントを使用して App Service にコードをデプロイします。
@@ -117,7 +117,7 @@ Windows コマンド プロンプト (管理者として実行) で、証明書�
 このセクションでは、AzureWebDemo という名前の Web アプリ作成アプリケーションのワークスペースと Maven プロジェクトを作成します。
 
 1. 新しい Maven プロジェクトを作成します。 **[ファイル] > [新規作成] > [Maven プロジェクト]** の順にクリックします。 **[New Maven Project (新しい Maven プロジェクト)]** で、**[Create a simple project (シンプルなプロジェクトの作成)]** と **[Use default workspace location (既定のワークスペースの場所を使用)]** を選択します。
-2. **[New Maven Project]**の&2; ページ目で、次にように指定します。
+2. **[New Maven Project]**の 2 ページ目で、次にように指定します。
    
    * Group ID: `com.<username>.azure.webdemo`
    * Artifact ID: AzureWebDemo
@@ -128,7 +128,7 @@ Windows コマンド プロンプト (管理者として実行) で、証明書�
      **[完了]**をクリックします。
 3. プロジェクト エクスプローラーで、新しいプロジェクトの pom.xml ファイルを開きます。 **[依存関係]** タブを選択します。 これは新しいプロジェクトなので、まだパッケージが表示されていません。
 4. Maven リポジトリ ビューを開きます。 **[Window] > [ビューを表示] > [その他] > [Maven] > [Maven リポジトリ]** の順にクリックし、**[OK]** をクリックします。 **[Maven リポジトリ]** ビューが IDE の下部に表示されます。
-5. **[グローバル リポジトリ]** を開き、**[中央]** リポジトリを右クリックして **[インデックスの再構築] **を選択します。
+5. **[グローバル リポジトリ]** を開き、**[中央]** リポジトリを右クリックして **[インデックスの再構築]** を選択します。
    
     ![][1]
    
@@ -396,7 +396,7 @@ FTP を使用した App Service Web アプリへのデプロイの詳細につ�
     デプロイ資格情報は、Microsoft アカウントと関連付けられています。 Git と FTP を使用してデプロイする際のユーザー名パスワードを指定する必要があります。 これらの資格情報を使用すると、Microsoft アカウントに関連付けられているすべての Azure サブスクリプション内の任意の Web アプリにデプロイできます。 Git と FTP のデプロイ資格情報をダイアログ ボックスに入力し、後で使用するためにパスワードとユーザー名を記録します。
 
 #### <a name="get-ftp-connection-information"></a>FTP の接続情報を取得する
-FTP を使用して、新しく作成された Web アプリにアプリケーション ファイルをデプロイするには、接続情報を取得する必要があります。 接続情報を取得するには、2 つの方法があります。 1 つは、Web アプリの **ダッシュボード** ページにアクセスする方法、もう&1; つは、Web アプリの発行プロファイルをダウンロードする方法です。 発行プロファイルは、FTP ホスト名やログオン資格情報などの情報を Azure App Service の Web アプリに提供する XML ファイルです。 このユーザー名とパスワードを使用すると、この Web アプリだけでなく、Azure アカウントに関連付けられているすべてのサブスクリプション内の任意の Web アプリにデプロイできます。
+FTP を使用して、新しく作成された Web アプリにアプリケーション ファイルをデプロイするには、接続情報を取得する必要があります。 接続情報を取得するには、2 つの方法があります。 1 つは、Web アプリの **ダッシュボード** ページにアクセスする方法、もう 1 つは、Web アプリの発行プロファイルをダウンロードする方法です。 発行プロファイルは、FTP ホスト名やログオン資格情報などの情報を Azure App Service の Web アプリに提供する XML ファイルです。 このユーザー名とパスワードを使用すると、この Web アプリだけでなく、Azure アカウントに関連付けられているすべてのサブスクリプション内の任意の Web アプリにデプロイできます。
 
 [Azure Portal][Azure Portal] で、Web アプリのブレードから FTP 接続情報を取得するには:
 
@@ -433,7 +433,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
 4. **[Save]**をクリックします。
 
 #### <a name="publish-your-application-using-kudu"></a>Kudu を使用してアプリケーションを発行する
-アプリケーションを発行する&1; つの方法は、Azure に組み込まれている Kudu デバッグ コンソールを使用することです。 Kudu は安定性があり、App Service Web Apps や Tomcat サーバーと一貫性があることが知られています。 ブラウザーから次の形式の URL を参照して、Web アプリのコンソールにアクセスします。
+アプリケーションを発行する 1 つの方法は、Azure に組み込まれている Kudu デバッグ コンソールを使用することです。 Kudu は安定性があり、App Service Web Apps や Tomcat サーバーと一貫性があることが知られています。 ブラウザーから次の形式の URL を参照して、Web アプリのコンソールにアクセスします。
 
 `https://<webappname>.scm.azurewebsites.net/DebugConsole`
 
@@ -462,7 +462,7 @@ FTP を使用して、新しく作成された Web アプリにアプリケー�
   ![][10]
 
 #### <a name="publish-your-application-using-filezilla-optional"></a>FileZilla を使用してアプリケーションを発行する (省略可能)
-アプリケーションの発行に使用できるもう&1; つのツールは、FileZilla です。これは、サード パーティの一般的な FTP クライアントで、使いやすいグラフィカル UI を備えています。 まだ入手していない場合は、[http://filezilla-project.org/](http://filezilla-project.org/) から FileZilla をダウンロードしてインストールできます。 クライアントの使用方法については、[FileZilla に関するドキュメント](https://wiki.filezilla-project.org/Documentation)と「[FTP Clients - Part 4: FileZilla (FTP クライアント - パート 4: FileZilla)](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx)」を参照してください。
+アプリケーションの発行に使用できるもう 1 つのツールは、FileZilla です。これは、サード パーティの一般的な FTP クライアントで、使いやすいグラフィカル UI を備えています。 まだ入手していない場合は、[http://filezilla-project.org/](http://filezilla-project.org/) から FileZilla をダウンロードしてインストールできます。 クライアントの使用方法については、[FileZilla に関するドキュメント](https://wiki.filezilla-project.org/Documentation)と「[FTP Clients - Part 4: FileZilla (FTP クライアント - パート 4: FileZilla)](http://blogs.msdn.com/b/robert_mcmurray/archive/2008/12/17/ftp-clients-part-4-filezilla.aspx)」を参照してください。
 
 1. FileZilla で、**[ファイル] > [Site Manager]** の順にクリックします。
 2. **[Site Manager]** ダイアログ ボックスで、**[新しいサイト]** をクリックします。 新しい空の FTP サイトが表示され、 **[Select Entry]** に名前を指定するように求められます。 この手順では、 `AzureWebDemo-FTP`という名前を付けます。
