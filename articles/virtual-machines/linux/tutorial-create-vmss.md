@@ -13,13 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: fceaf1b1d1c243ef8cff6ba6b188bb66514d0591
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 2b8d519e11f70eda164bd8f6e131a3989f242ab0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -49,7 +49,9 @@ Azure プラットフォーム イメージを使う場合、スケール セッ
 ## <a name="create-an-app-to-scale"></a>スケーリングするアプリを作成する
 運用環境で使う場合は、インストールと構成が済んだアプリケーションを含む[カスタム VM イメージを作成](tutorial-custom-images.md)できます。 このチュートリアルでは、スケール セットの動作をすぐに確認できるように初回起動時に VM をカスタマイズします。
 
-前のチュートリアルでは、cloud-init を使って [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)を説明しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 *cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。
+前のチュートリアルでは、cloud-init を使って [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)を説明しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 
+
+現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -107,14 +109,14 @@ az group create --name myResourceGroupScaleSet --location eastus
 az vmss create \
   --resource-group myResourceGroupScaleSet \
   --name myScaleSet \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+  --image UbuntuLTS \
   --upgrade-policy-mode automatic \
   --custom-data cloud-init.txt \
   --admin-username azureuser \
   --generate-ssh-keys      
 ```
 
-すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。
+すべてのスケール セットのリソースと VM を作成および構成するのに数分かかります。 Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。
 
 
 ## <a name="allow-web-traffic"></a>Web トラフィックを許可する
@@ -215,14 +217,14 @@ az vmss list-instance-connection-info \
 
 ```azurecli-interactive 
 az vmss create \
-  --resource-group myResourceGroupScaleSet \
-  --name myScaleSetDisks \
-  --image Canonical:UbuntuServer:14.04.4-LTS:latest \
-  --upgrade-policy-mode automatic \
-  --custom-data cloud-init.txt \
-  --admin-username azureuser \
-  --generate-ssh-keys \
-  --data-disk-sizes-gb 50
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSetDisks \
+    --image UbuntuLTS \
+    --upgrade-policy-mode automatic \
+    --custom-data cloud-init.txt \
+    --admin-username azureuser \
+    --generate-ssh-keys \
+    --data-disk-sizes-gb 50
 ```
 
 インスタンスがスケール セットから削除されると、アタッチされているデータ ディスクも削除されます。
@@ -231,10 +233,10 @@ az vmss create \
 スケール セット内のインスタンスにデータ ディスクを追加するには、[az vmss disk attach](/cli/azure/vmss/disk#attach) を使用します。 次の例では、各インスタンスに *50* Gb のディスクを追加します。
 
 ```azurecli-interactive 
-az vmss disk attach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
-    --size-gb 50 `
+az vmss disk attach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
+    --size-gb 50 \
     --lun 2
 ```
 
@@ -242,9 +244,9 @@ az vmss disk attach `
 スケール セット内のインスタンスからデータ ディスクを削除するには、[az vmss disk detach](/cli/azure/vmss/disk#detach) を使用します。 以下の例では、各インスタンスから LUN *2* のデータ ディスクを削除します。
 
 ```azurecli-interactive 
-az vmss disk detach `
-    --resource-group myResourceGroupScaleSet `
-    --name myScaleSet `
+az vmss disk detach \
+    --resource-group myResourceGroupScaleSet \
+    --name myScaleSet \
     --lun 2
 ```
 

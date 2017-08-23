@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 9f040a87367219a937d4f5a83fd23ce1ba328c8c
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -64,14 +64,14 @@ Azure PowerShell または CLI を使用すると、ポータルでは使用で�
 ポータルで VM を作成すると、ネットワーク インターフェイスが既定の設定で自動的に作成され、VM にアタッチされます。 新しい VM への既存のネットワーク インターフェイスの追加と、複数のネットワーク インターフェイスがアタッチされた VM の作成は、Azure ポータルでは実行できません。 この 2 つは CLI または PowerShell を使用して行うことができます。 ネットワーク インターフェイスは、作成する VM のサイズでサポートされている数まで VM に追加できます。 各サイズの VM でサポートされるネットワーク インターフェイスの数については、[Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Windows](../virtual-machines/virtual-machines-windows-sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM のサイズに関する記事をご覧ください。 その時点で別の VM にアタッチされているネットワーク インターフェイスを VM に追加することはできません。 ネットワーク インターフェイスの作成の詳細については、[ネットワークインターフェイスの管理](virtual-network-network-interface.md#create-a-network-interface)に関する記事を参照してください。
 
 > [!WARNING]
-> ネットワーク インターフェイスにプライベート IPv6 アドレスが割り当てられている場合、仮想マシンの作成時に、そのネットワーク インターフェイスのみを仮想マシンに追加できます。 ネットワーク インターフェイスに IPv6 アドレスが割り当てられ、ネットワーク インターフェイスが仮想マシンにアタッチされている場合、仮想マシンの作成時、または仮想マシンの作成後に、その仮想マシンにさらにネットワーク インターフェイスを追加することはできません。 IP アドレスをネットワーク インターフェイスに割り当てる方法については、[ネットワーク インターフェイスの IP アドレス](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
+> ネットワーク インターフェイスにプライベート IPv6 アドレスが割り当てられている場合、仮想マシンの作成時に、そのネットワーク インターフェイスのみを仮想マシンに追加できます。 仮想マシンにアタッチされたネットワーク インターフェイスに IPv6 アドレスが割り当てられている場合、仮想マシンの作成時、または仮想マシンの作成後に、その仮想マシンに複数のネットワーク インターフェイスをアタッチすることはできません。 IP アドレスをネットワーク インターフェイスに割り当てる方法については、[ネットワーク インターフェイスの IP アドレス](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
 
 **コマンド**
 
 |ツール|コマンド|
 |---|---|
 |CLI|[az vm create](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[New-AzureRmVM](/powershell/resourcemanager/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-add-nic"></a>既存のネットワーク インターフェイスを既存の VM に追加する
 
@@ -83,7 +83,7 @@ Azure PowerShell または CLI を使用すると、ポータルでは使用で�
 |ツール|コマンド|
 |---|---|
 |CLI|[az vm nic add](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#add) (参照) または [detailed steps](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-a-vm)|
-|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照) or [detailed steps](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
+|PowerShell|[Add-AzureRmVMNetworkInterface](/powershell/module/azurerm.compute/add-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照) or [detailed steps](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#add-a-nic-to-an-existing-vm)|
 
 ## <a name="vm-view-nic"></a>VM のネットワーク インターフェイスを表示する
 
@@ -99,18 +99,25 @@ VM にアタッチされているネットワーク インターフェイスを�
 |ツール|コマンド|
 |---|---|
 |CLI|[az vm show](/cli/azure/vm?toc=%2fazure%2fvirtual-network%2ftoc.json#show)|
-|PowerShell|[Get-AzureRmVM](/powershell/resourcemanager/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Get-AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="vm-remove-nic"></a> ネットワーク インターフェイスを VM から削除する
 
-ネットワーク インターフェイスを削除する VM は、停止 (割り当て解除) 状態になっており、2 つ以上のネットワーク インターフェイスがアタッチされている必要があります。 任意のネットワーク インターフェイスを削除できますが、削除後の VM には、常に 1 つ以上のネットワーク インターフェイスがアタッチされている必要があります。 プライマリ ネットワーク インターフェイスを削除した場合は、VM に最も長い時間アタッチされているネットワーク インターフェイスにプライマリ属性が自動的に割り当てられます。 任意のネットワーク インターフェイスをプライマリとして指定することもできます。 Azure ポータルでは、VM からのネットワーク インターフェイスの削除とネットワーク インターフェイスに対するプライマリ属性の設定は実行できません。この 2 つは CLI または PowerShell を使用して行うことができます。 
+ネットワーク インターフェイスを削除 (デタッチ) する VM は、停止 (割り当て解除) 状態になっており、2 つ以上のネットワーク インターフェイスがアタッチされている必要があります。 任意のネットワーク インターフェイスを削除できますが、削除後の VM には、常に 1 つ以上のネットワーク インターフェイスがアタッチされている必要があります。 プライマリ ネットワーク インターフェイスを削除した場合は、VM に最も長い時間アタッチされているネットワーク インターフェイスにプライマリ属性が自動的に割り当てられます。 
+
+1. ご利用のサブスクリプションの所有者、共同作成者、またはネットワーク共同作成者いずれかのロールが割り当てられているアカウントで、[Azure Portal](https://portal.azure.com) にログインします。 アカウントへのロールの割り当ての詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)」を参照してください。
+2. Azure Portal 上部に "*リソースの検索*" というテキストが表示されたボックスがあります。そこに "*仮想マシン*" と入力します。 検索結果に **[仮想マシン]** が表示されたら、それをクリックします。
+3. 表示される **[仮想マシン]** ブレードで、ネットワーク インターフェイスを削除する VM の名前をクリックします。
+4. 選択した VM に対して表示される [仮想マシン] ブレードの **[設定]** で、**[ネットワーク インターフェイス]** をクリックします。 ネットワーク インターフェイスの設定とそれらを変更する方法については、[ネットワーク インターフェイスの管理](virtual-network-network-interface.md)に関する記事を参照してください。 ネットワーク インターフェイスに割り当てられる IP アドレスの追加、変更、または削除については、[IP アドレスの管理](virtual-network-network-interface-addresses.md)に関する記事を参照してください。
+5. 表示される [ネットワーク インターフェイス] ブレードで、デタッチするネットワーク インターフェイスの右にある **[...]**をクリックします。
+6. **[デタッチ]** をクリックします。 仮想マシンにアタッチされているネットワーク インターフェイスが 1 つだけの場合、**[デタッチ]** オプションは使用できません。 表示された確認ボックスで、**[はい]** をクリックします。
 
 **コマンド**
 
 |ツール|コマンド|
 |---|---|
 |CLI|[az vm nic remove](/cli/azure/vm/nic?toc=%2fazure%2fvirtual-network%2ftoc.json#remove) (参照) または [detailed steps](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-a-vm)|
-|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/resourcemanager/azurerm.compute/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照) または [detailed steps](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
+|PowerShell|[Remove-AzureRMVMNetworkInterface](/powershell/module/azurerm.compute/remove-azurermvmnetworkinterface?toc=%2fazure%2fvirtual-network%2ftoc.json) (参照) または [detailed steps](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#remove-a-nic-from-an-existing-vm)|
 
 ## <a name="next-steps"></a>次のステップ
 複数のネットワーク インターフェイスまたは IP アドレスを持つ VM を作成する方法については、次の記事をご覧ください。

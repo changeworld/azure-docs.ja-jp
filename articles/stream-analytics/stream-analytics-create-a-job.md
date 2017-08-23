@@ -4,7 +4,7 @@ description: "Stream Analytics のデータ分析処理ジョブの作成 | ラ�
 keywords: "データ分析処理"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: e825fbcf-69e9-443f-b402-3b7a4568f415
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 2e989ab0cb95a1caef44b2f235b162f2c12a79cc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 4c6950cee71477700b92c3ad5493737821fabec0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Stream Analytics のデータ分析処理ジョブを作成する方法
@@ -45,11 +44,11 @@ Stream Analytics の使用を開始するには、まず新しい Stream Analyti
    ![データ分析処理ジョブの通知ハブ](./media/stream-analytics-create-a-job/2-stream-analytics-create-a-job.png)  
    
    ![Azure ポータルのデータ分析処理ジョブのジョブの作成](./media/stream-analytics-create-a-job/5-stream-analytics-create-a-job.png)  
-5. 新しいジョブが **[作成済み]**の状態で表示されます。 **[開始]** ボタンが無効になっていることに注意してください。 ジョブが開始できるようになるには、ジョブの入力、クエリ、出力を構成する必要があります。
+5. 新しいジョブに **[作成済み]** の状態が表示されます。 **[開始]** ボタンが無効になっていることに注意してください。 ジョブが開始できるようにするには、事前にジョブの入力、クエリ、出力を構成します。
    
-   ![データ分析処理ジョブのジョブの状態](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
+   ![データ分析処理ジョブの状態](./media/stream-analytics-create-a-job/3-stream-analytics-create-a-job.png)  
    
-   ![Azure ポータルのデータ分析処理ジョブのジョブの状態](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
+   ![Azure ポータルのデータ分析処理ジョブの状態](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>問い合わせ
 さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)

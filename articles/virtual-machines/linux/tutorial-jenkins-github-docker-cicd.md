@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: b606d2c3070f8020cdd9aad3f12f8f1e43125138
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a77cb296c44f94a70adc5dee551ad411de5fe850
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 ## <a name="create-jenkins-instance"></a>Jenkins インスタンスを作成する
 [Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 このチュートリアルでは、cloud-init ファイルを使用して、Jenkins と Docker を VM にインストールします。 
 
-*cloud-init-jenkins.txt* という名前の cloud-init ファイルを作成して､次の内容を貼り付けます｡
+現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init-jenkins.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -115,6 +115,8 @@ Jenkins インストール用の `initialAdminPassword` を表示し､コピー
 sudo cat /var/lib/jenkins/secrets/initialAdminPassword
 ```
 
+ファイルがまだ使用できない場合、 cloud-init が Jenkins および Docker のインストールを完了するまで、さらに数分待機します。
+
 Web ブラウザーを開いて､`http://<publicIps>:8080` に移動します｡ 次のようにして Jenkins の初期設定を行います｡
 
 - 前の手順で VM から入手した *initialAdminPassword* を入力します｡
@@ -143,11 +145,11 @@ GitHub との統合を構成するには､Azures サンプル リポジトリ�
 
 Jenkins Web サイトのホームページから [**Create new jobs**] をクリックします｡
 
-- ジョブ名として *HelloWorld* を入力します｡ **Freestyle project** を選択し､[**OK**] をクリックします｡
+- ジョブ名として *HelloWorld* を入力します｡ **Freestyle プロジェクト**を選択し､**[OK]** をクリックします｡
 - [**General**] セクションから **GitHub** プロジェクトを選択し､フォークしたレポジトリの URL (例: *https://github.com/iainfoulds/nodejs-docs-hello-world*) を入力します｡
 - [**Source code management**] セクションから**Git** を選択し､フォークしたレポジトリ *.git* の URL を入力します(例: *https://github.com/iainfoulds/nodejs-docs-hello-world.git*)｡
 - [**Build Triggers**] セクションから **GitHub hook trigger for GITscm polling** を選択します｡
-- **Build**｣ セクションで **Add build step** をクリックします｡ **Execute shell** を選択し､コマンド ウィンドウに `echo "Testing"` を入力します｡
+- **[ビルド]** セクションで **[ビルド ステップの追加]** をクリックします｡ **Execute shell** を選択し､コマンド ウィンドウに `echo "Testing"` を入力します｡
 - ジョブ ウィンドウの下部にある **[保存]** をクリックします。
 
 
@@ -157,7 +159,7 @@ Jenkins との GitHub の統合をテストするには､フォークの変更�
 GitHub の Web UI に戻り､フォークしたレポジトリを選択して､**index.js** ファイルをクリックします｡ 鉛筆アイコンをクリックして､このファイルを編集し､6 行目を次のように変更します｡
 
 ```nodejs
-response.end("Hello World!");`.
+response.end("Hello World!");
 ```
 
 変更をコミットするには､下部にある [**変更をコミット**] ボタンをクリックします。
@@ -174,7 +176,7 @@ VM への SSH 接続から､前の手順で作成したジョブにちなんだ
 cd /var/lib/jenkins/workspace/HelloWorld
 ```
 
-このワークスペース ディレクトリに `Dockerfile` という名前のファイルを作成し､次の内容を貼り付けます｡
+このワークスペース ディレクトリに `sudo sensible-editor Dockerfile` という名前のファイルを作成し､次の内容を貼り付けます｡ Dockerfile 全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 FROM node:alpine
@@ -197,7 +199,7 @@ Jenkins インスタンスに戻り､前の手順で作成したジョブを選
 
 - 既存の `echo "Test"` ビルド ステップを削除します｡ 既存のビルド ステップ ボックスの右上隅にある赤い十字をクリックします｡
 - [**Add build step**] をクリックして､[**Execute shell**] を選択します｡
-- [**Command**] ボックスに次の Docker コマンドを入力します｡
+- **[コマンド]** ボックスに次の Docker コマンドを入力して、**[保存]** を選択します。
 
   ```bash
   docker build --tag helloworld:$BUILD_NUMBER .

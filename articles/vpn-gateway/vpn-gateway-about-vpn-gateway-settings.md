@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/26/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 6873f74168a4247cebb74e704f169f679a9aa180
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 07aa6946b9c3994c5afc5c88837f23567b95d8a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
@@ -67,7 +67,7 @@ New-AzureRmVirtualNetworkGateway -Name vnetgw1 -ResourceGroupName testrg `
 -GatewayType Vpn -VpnType RouteBased
 ```
 
-#### <a name="change-resize-a-gateway-sku"></a>ゲートウェイ SKU の変更 (サイズ変更)
+#### <a name="resize"></a>ゲートウェイ SKU の変更 (サイズ変更)
 
 ゲートウェイ SKU をより強力な SKU にアップグレードする場合、`Resize-AzureRmVirtualNetworkGateway` PowerShell コマンドレットを使用できます。 このコマンドレットを使用してゲートウェイ SKU のサイズをダウングレードすることもできます。
 

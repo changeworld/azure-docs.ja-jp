@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: a80a46aaeb52c170ff8defc5cf4e53eb59b73dd0
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 51f9052cb673e6b0dc6ed38c1ce28556f844970f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/25/2017
 
 Azure Cosmos DB プロジェクトは、Microsoft 社内の大規模なインターネット規模のアプリケーションに直面する開発者の問題に対処するために、"Project Florence" として 2011 年に開始されました。 これらの問題が Microsoft のアプリケーションに固有のものではないことを観察した結果、2015 年に Azure Cosmos DB を [Azure DocumentDB](https://azure.microsoft.com/blog/documentdb-moving-to-general-availability/) の形で外部の開発者に一般公開することにしました。 このサービスは Microsoft 内部のあらゆる場所で使用され、外部の Azure 開発者にも使用されている最も成長著しいサービスの 1 つとなりました。 
 
-Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要があるアプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [MongoDB](mongodb-introduction.md)、[DocumentDB SQL](documentdb-introduction.md)、[Gremlin](graph-introduction.md)、[Azure テーブル](table-introduction.md)を含むデータ アクセス用の多数の API を、ネイティブおよび拡張可能な方法でサポートします。 
+Azure Cosmos DB は、さまざまなアプリケーションやユース ケースで使用されている、グローバルに分散されたマルチモデル データベースです。 ミリ秒レベルの高速な応答時間を必要とし、迅速かつグローバルにスケーリングする必要がある [サーバーレス](http://azure.com/serverless) アプリケーションに最適です。 複数のデータ モデル (キー値、ドキュメント、グラフ、多桁式) および [MongoDB](mongodb-introduction.md)、[DocumentDB SQL](documentdb-introduction.md)、[Gremlin](graph-introduction.md)、[Azure テーブル](table-introduction.md)を含むデータ アクセス用の多数の API を、ネイティブおよび拡張可能な方法でサポートします。 
 
 Azure Cosmos DB を、グローバルな展開を視野に入れた高性能アプリケーションに最適なものにしている属性のいくつかを次に示します。
 
@@ -57,7 +57,7 @@ IoT のユース ケースでは、データの取り込み、処理、および
 
 大量データの取り込みは、待機時間が短く高スループットのデータ取り込みが可能な Azure Event Hubs で実行できます。 取り込んだデータを処理してリアルタイムのインサイトを得る必要がある場合は、Azure Stream Analytics にデータを投入してリアルタイムで分析できます。 アドホック クエリのためにデータを Azure Cosmos DB に読み込むことができます。 データが Azure Cosmos DB に読み込まれたら、そのデータはクエリの準備ができています。  Azure Cosmos DB 内のデータは、リアルタイム分析の一部として参照データとして使用できます。 さらに、Azure Cosmos DB データを Pig、Hive、または Map/Reduce ジョブ用に HDInsight に接続することによって、データをさらに絞り込んで処理できます。  絞り込まれたデータはその後、レポート作成のために元の Azure Cosmos DB に読み込まれます。   
 
-Azure Cosmos DB、EventHubs、および Storm を使用したサンプルの IoT ソリューションについては、[hdinsight-storm-examples repository on GitHub (GitHub 上の hdinsight-storm-examples リポジトリ)](https://github.com/hdinsight/hdinsight-storm-examples/)を参照してください。
+Azure Cosmos DB、EventHubs、および Storm を使用したサンプルの IoT ソリューションについては、「[hdinsight-storm-examples repository on GitHub (GitHub 上の hdinsight-storm-examples リポジトリ)](https://github.com/hdinsight/hdinsight-storm-examples/)」を参照してください。
 
 IoT に対する Azure サービスの詳細については、[モノのインターネットの作成](http://www.microsoft.com/server-cloud/internet-of-things.aspx)に関するページを参照してください。 
 
@@ -77,7 +77,7 @@ Azure Cosmos DB は、[Next Games](http://www.nextgames.com/) による [The Wal
 
 * Azure Cosmos DB では、パフォーマンスを柔軟にスケールアップまたはスケールダウンできます。 これにより、同時にプレイしている数十から数百万ものプレイヤーのプロファイルや統計の更新を、1 回の API 呼び出しだけで処理することができます。
 * Azure Cosmos DB は、ゲーム プレイ中の遅延の回避に役立つように、ミリ秒の読み取り/書き込みをサポートしています。
-* Azure Cosmos DB の自動インデックス作成により、複数のさまざまなプロパティに対してリアルタイムにフィルター処理できます。たとえば、内部のプレーヤー ID や GameCenter、Facebook、Google ID によってプレーヤーを見つけたり、ギルド内のプレーヤー メンバシップに基づいてクエリを実行したりできます。 複雑なインデックスやシャーディング インフラストラクチャを構築する必要もありません。
+* Azure Cosmos DB の自動インデックス作成により、複数のさまざまなプロパティに対してリアルタイムにフィルター処理できます。たとえば、内部のプレーヤー ID や GameCenter、Facebook、Google ID によってプレーヤーを見つけたり、ギルド内のプレーヤー メンバーシップに基づいてクエリを実行したりできます。 複雑なインデックスやシャーディング インフラストラクチャを構築する必要もありません。
 * ゲーム内チャット メッセージ、ギルド メンバーシップ、ミッション完了、スコアボード、ソーシャル グラフなどのソーシャル機能は、柔軟なスキーマで簡単に実装できます。
 * Azure Cosmos DB は、管理されたサービスとしてのプラットフォーム (PaaS) として、迅速な繰り返しを可能にして製品化までの時間を短縮するために必要なセットアップや管理作業が最小限に抑えられます。
 
@@ -87,7 +87,7 @@ Azure Cosmos DB は、[Next Games](http://www.nextgames.com/) による [The Wal
 Azure Cosmos DB は一般に Web およびモバイル アプリケーション内で使用され、ソーシャル インタラクションのモデル化、サード パーティ サービスとの統合、および豊富な個人別のエクスペリエンスの構築に特に適しています。 Cosmos DB SDK を使用すると、一般的な [Xamarin フレームワーク](mobile-apps-with-xamarin.md)を使って豊富な iOS および Android アプリケーションを構築できます。  
 
 ### <a name="social-applications"></a>ソーシャル アプリケーション
-Azure Cosmos DB の一般的なユースケースは、Web およびモバイル アプリケーション (特にソーシャル メディア アプリケーション) のためのユーザーが生成したコンテンツ (UGC) の格納およびクエリの実行です。 UGC の例には、チャット セッション、ツイート、ブログの投稿、評価、コメントなどがあります。 ソーシャル メディア アプリケーション内の UGC は、多くの場合、厳格な構造による制約のない、自由形式のテキスト、プロパティ、タグ、およびリレーションシップが組み合わさったものです。 チャット、コメント、投稿などのコンテンツは Cosmos DB に格納でき、変換や複雑なオブジェクト リレーショナル マッピング層は必要ありません。  開発者がアプリケーション コードを反復処理する際、要件に合うようにデータのプロパティを簡単に追加または変更できるため、迅速な開発が促進されます。  
+Azure Cosmos DB の一般的なユース ケースは、Web およびモバイル アプリケーション (特にソーシャル メディア アプリケーション) のためのユーザーが生成したコンテンツ (UGC) の格納およびクエリの実行です。 UGC の例には、チャット セッション、ツイート、ブログの投稿、評価、コメントなどがあります。 ソーシャル メディア アプリケーション内の UGC は、多くの場合、厳格な構造による制約のない、自由形式のテキスト、プロパティ、タグ、およびリレーションシップが組み合わさったものです。 チャット、コメント、投稿などのコンテンツは Cosmos DB に格納でき、変換や複雑なオブジェクト リレーショナル マッピング層は必要ありません。  開発者がアプリケーション コードを反復処理する際、要件に合うようにデータのプロパティを簡単に追加または変更できるため、迅速な開発が促進されます。  
 
 サード パーティ ソーシャル ネットワークを統合するアプリケーションは、これらのネットワークから届くスキーマの変更に応答する必要があります。 Cosmos DB では既定で自動的にデータにインデックスが設定されるため、データに対していつでもクエリを実行できます。 これにより、これらのアプリケーションでは、それぞれのニーズに応じて柔軟にプロジェクションを取得できます。
 

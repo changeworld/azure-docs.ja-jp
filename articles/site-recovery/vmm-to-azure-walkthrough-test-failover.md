@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 8d7b3b8293120bb7e9f00a90da09f94ca7cba29b
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1f45c6b04fa2c1520b9ae7dd63d873a6f4dffbd5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -66,9 +66,9 @@ ms.lasthandoff: 07/26/2017
     ![Enable replication](./media/vmm-to-azure-walkthrough-test-failover/test-failover2.png)
 3. **[コンピューティングとネットワーク]** では、次の操作を行うことができます。
     - Azure VM 名を変更する。 この名前は [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たす必要があります。
-    - フェールオーバー後の[リソース グループ](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md)を指定する。
+    - フェールオーバー後の [リソース グループ] を指定する。
     - Azure VM のターゲット サイズを指定する。
-    - [可用性セット](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)を選択する。
+    - [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)を選択する。
     - [管理ディスク](#managed-disk-considerations)を使用するかどうかを指定する。 Azure への移行時に管理ディスクをマシンに接続する場合は、**[はい]** を選択します。
     - ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示または変更する。
 

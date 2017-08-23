@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/12/2017
 ms.author: yushwang
-translationtype: Human Translation
-ms.sourcegitcommit: 5961c73c3f147ab6b3eca4e9d920003df1ca2c82
-ms.openlocfilehash: 298eab8ad562cfb32edf8609ac29052dc403f406
-ms.lasthandoff: 01/14/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 60d8dd45ecbd4a075721c25acadb21d4e2fd5448
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="overview-of-bgp-with-azure-vpn-gateways"></a>Azure VPN ゲートウェイを使用した BGP の概要

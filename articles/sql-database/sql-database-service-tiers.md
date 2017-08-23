@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 06/30/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a3c287c5317bd7db2b560e37ddacc9e43d7292d1
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: b25ff5331f119efd44c61808f7d1d5decb226bd6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="what-performance-options-are-available-for-an-azure-sql-database"></a>Azure SQL Database で利用可能なパフォーマンス オプション
@@ -97,8 +97,9 @@ ms.lasthandoff: 07/21/2017
 
 * より上位のサービス レベルまたはパフォーマンス レベルにアップグレードしても、より大きな最大サイズを明示的に指定しない限り、最大データベース サイズは増加しません。
 * データベースをダウングレードするには、データベースがダウングレード後のサービス レベルで許可されている最大サイズより小さい必要があります。 
-* [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをアップグレードする場合、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードします (一般的なガイダンス)。
-* **Premium** サービス レベルから下位のサービス レベルにダウングレードするときは、最初に geo レプリケーション リレーションシップをすべて終了する必要があります。 [障害からの回復](sql-database-disaster-recovery.md)に関する記事に記載されている手順に従って、プライマリ データベースとセカンダリ データベース間のレプリケーション プロセスを停止できます。
+* [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをアップグレードする場合、そのセカンダリ データベースを目的のパフォーマンス レベルにアップグレードしてから、プライマリ データベースをアップグレードします (一般的なガイダンス)。 別のエディションにアップグレードする場合は、最初にセカンダリ データベースのアップグレードが必要です。 
+* [geo レプリケーション](sql-database-geo-replication-portal.md)が有効な状態でデータベースをダウングレードする場合、目的のパフォーマンス レベルにセカンダリ データベースをダウングレードしてから、プライマリ データベースをダウングレードします (一般的なガイダンス)。 別のエディションにダウングレードする場合は、最初にプライマリ データベースのダウングレードが必要です。 
+
 * サービス階層によって、提供されている復元サービスは異なります。 **Basic** レベルにダウングレードする場合は、バックアップのリテンション期間が短くなります。[Azure SQL Database のバックアップ](sql-database-automated-backups.md)に関する記事を参照してください。
 * データベースに対する新しいプロパティは、変更が完了するまで適用されません。
 

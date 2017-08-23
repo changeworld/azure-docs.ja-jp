@@ -13,14 +13,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/02/2017
+ms.date: 08/11/2017
 ms.author: iainfou
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 9dd85d38a64f0557fb4ef250b0e177e21bb84e53
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7b3a089d2f6386afcc46cbc4377594be0d758fc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -167,7 +167,9 @@ done
 ## <a name="create-virtual-machines"></a>仮想マシンを作成する
 
 ### <a name="create-cloud-init-config"></a>cloud-init 構成を作成する
-[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。 *cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。
+[Linux 仮想マシンを初回起動時にカスタマイズする方法](tutorial-automate-vm-deployment.md)に関する先行のチュートリアルで、cloud-init を使用して VM のカスタマイズを自動化する方法を学習しました。 同じ cloud-init 構成ファイルを使って、NGINX をインストールし、単純な "Hello World" Node.js アプリを実行することができます。
+
+現在のシェルで、*cloud-init.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 `sensible-editor cloud-init.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
 ```yaml
 #cloud-config
@@ -219,9 +221,7 @@ runcmd:
 ```azurecli-interactive 
 az vm availability-set create \
     --resource-group myResourceGroupLoadBalancer \
-    --name myAvailabilitySet \
-    --platform-fault-domain-count 3 \
-    --platform-update-domain-count 2
+    --name myAvailabilitySet
 ```
 
 これで、[az vm create](/cli/azure/vm#create) を使用して VM を作成できるようになりました。 次の例では、3 台の VM を作成し、SSH キーを生成します (まだ存在していない場合)。
@@ -233,7 +233,7 @@ for i in `seq 1 3`; do
         --name myVM$i \
         --availability-set myAvailabilitySet \
         --nics myNic$i \
-        --image Canonical:UbuntuServer:14.04.4-LTS:latest \
+        --image UbuntuLTS \
         --admin-username azureuser \
         --generate-ssh-keys \
         --custom-data cloud-init.txt \
@@ -241,7 +241,7 @@ for i in `seq 1 3`; do
 done
 ```
 
-3 台の VM をすべて作成して構成するには、数分かかります。 それぞれの VM でアプリがいつ実行されるかは、ロード バランサーの正常性プローブによって自動的に検出されます。 アプリが実行状態になると、ロード バランサー規則によってトラフィックの負荷分散が開始されます。
+Azure CLI がプロンプトに戻った後にも引き続き実行するバック グラウンド タスクがあります。 `--no-wait` パラメーターは、すべてのタスクが完了するまで待機しません。 アプリにアクセスできるようになるには、さらに数分かかる場合があります。 それぞれの VM でアプリがいつ実行されるかは、ロード バランサーの正常性プローブによって自動的に検出されます。 アプリが実行状態になると、ロード バランサー規則によってトラフィックの負荷分散が開始されます。
 
 
 ## <a name="test-load-balancer"></a>ロード バランサーをテストする
@@ -255,7 +255,7 @@ az network public-ip show \
     --output tsv
 ```
 
-このパブリック IP アドレスを Web ブラウザーに入力できます。 次の例のように、アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
+このパブリック IP アドレスを Web ブラウザーに入力できます。 ロード バランサーがトラフィックの分散を開始する前に、VM の準備が整うまで数分かかることを忘れないでください。 次の例のように、アプリが表示され、ロード バランサーによって負荷分散されたトラフィックの宛先となった VM のホスト名が表示されます。
 
 ![実行中の Node.js アプリ](./media/tutorial-load-balancer/running-nodejs-app.png)
 

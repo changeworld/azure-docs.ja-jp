@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: cherylmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: ebe57f497a007c5219c3b7f543ffb3bae9d161a8
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: bdd6f90fe97408bd45a72adf58bfdc190207de46
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="modify-local-network-gateway-settings-using-the-azure-portal"></a>Azure Portal を使用したローカル ネットワーク ゲートウェイの設定の変更
@@ -35,13 +34,13 @@ ms.lasthandoff: 06/20/2017
 >
 
 
-## <a name="modify-ip-address-prefixes"></a>IP アドレスのプレフィックスを変更する
+## <a name="ipaddprefix"></a>IP アドレスのプレフィックスを変更する
 
 IP アドレス プレフィックスを変更するときに従う手順は、ローカル ネットワーク ゲートウェイ接続が存在するかどうかによって異なります。
 
 [!INCLUDE [modify prefix](../../includes/vpn-gateway-modify-ip-prefix-portal-include.md)]
 
-## <a name="modify-the-gateway-ip-address"></a>ゲートウェイの IP アドレスを変更する
+## <a name="gwip"></a>ゲートウェイの IP アドレスを変更する
 
 接続先の VPN デバイスのパブリック IP アドレスが変更された場合には、ローカル ネットワーク ゲートウェイを変更してアドレスの変更を反映する必要があります。 パブリック IP アドレスを変更するときに従う手順は、ローカル ネットワーク ゲートウェイ接続が存在するかどうかによって異なります。
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 345217452a25448f31fabdcc25dca182bbcf72eb
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: a47961dfdaf178a6b793bd68105d9792a9275bb3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -54,7 +54,8 @@ Cloud Shell では、各セッションが別の Bash プロセスとして存�
 * マウスまたはタッチパッドを使用してスクロールし、端末のテキストを移動します。
 
 ## <a name="exit-command"></a>exit コマンド
-`exit` を実行すると、アクティブなセッションが終了します。 この動作は既定では 10 分後に発生します (操作が行われない場合)。
+`exit` を実行すると、アクティブなセッションが終了します。 この動作は既定では 20 分後に発生します (操作が行われない場合)。
 
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell のクイック スタート](quickstart.md)
+

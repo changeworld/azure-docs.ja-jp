@@ -16,25 +16,25 @@ ms.workload: infrastructure-services
 ms.date: 08/01/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 01ef2f0309848be5a891749178196e60fff2930e
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 3b2126b1ecd1613950bbf311ae08fafd4af0d51f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>仮想ネットワーク ゲートウェイ SKU (従来の SKU) の使用
 
 この記事には、従来の (古い) 仮想ネットワーク ゲートウェイ SKU に関する情報が含まれています。 従来の SKU は、作成済みの VPN ゲートウェイの両方のデプロイメント モデルで引き続き動作します。 クラシック VPN ゲートウェイでは、既存のゲートウェイと新しいゲートウェイの両方に対して従来の SKU が引き続き使用されます。 新しい Resource Manager VPN ゲートウェイを作成する場合は、新しいゲートウェイ SKU を使用します。 新しい SKU については、「[VPN Gateway について](vpn-gateway-about-vpngateways.md)」を参照してください。
 
-## <a name="gateway-skus"></a>ゲートウェイの SKU
+## <a name="gwsku"></a>ゲートウェイの SKU
 
 [!INCLUDE [Legacy gateway SKUs](../../includes/vpn-gateway-gwsku-legacy-include.md)]
 
-## <a name="estimated-aggregate-throughput-by-sku"></a>SKU の予測される合計スループット
+## <a name="agg"></a>SKU の予測される合計スループット
 
 [!INCLUDE [Aggregated throughput by legacy SKU](../../includes/vpn-gateway-table-gwtype-legacy-aggtput-include.md)]
 
-## <a name="supported-configurations-by-sku-and-vpn-type"></a>SKU と VPN の種類別のサポートされる構成
+## <a name="config"></a>SKU と VPN の種類別のサポートされる構成
 
 [!INCLUDE [Table requirements for old SKUs](../../includes/vpn-gateway-table-requirements-legacy-sku-include.md)]
 

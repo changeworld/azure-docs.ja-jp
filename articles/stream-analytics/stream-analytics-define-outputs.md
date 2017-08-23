@@ -4,7 +4,7 @@ description: "分析結果の Power BI など、Stream Analytics データ出力
 keywords: "データ変換、分析結果、データ ストレージ オプション"
 services: stream-analytics,documentdb,sql-database,event-hubs,service-bus,storage
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: ba6697ac-e90f-4be3-bafd-5cfcf4bd8f1f
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: fdecfe8b63d56983846f1601971ed680d624118d
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 1a7ce4810bc0488a289dfeca7ffc233e8a8cac9a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="stream-analytics-outputs-options-for-storage-analysis"></a>Stream Analytics の出力: ストレージのオプション、分析
@@ -32,7 +31,7 @@ Stream Analytics ジョブを作成するときは、生成されたデータが
 Stream Analytics は [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)をサポートしています。 この記憶域を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。 また、Data Lake Store にアクセスするには、Stream Analytics を承認する必要があります。 承認と (必要に応じて) Data Lake Store にサインアップする方法の詳細については、[Data Lake 出力の記事](stream-analytics-data-lake-output.md)を参照してください。
 
 ### <a name="authorize-an-azure-data-lake-store"></a>Azure Data Lake Store の承認
-Data Lake Storage を Microsoft Azure 管理ポータルで出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
+Data Lake Storage を Azure Portal で出力として選択すると、既存の Data Lake Store への接続を承認するように求められます。  
 
 ![Data Lake Store の承認](./media/stream-analytics-define-outputs/06-stream-analytics-define-outputs.png)  
 
@@ -134,7 +133,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 </tr>
 <tr>
 <td>ストレージ コンテナー</td>
-<td>コンテナーにより、Microsoft Azure BLOB サービスに格納される BLOB が論理的にグループ化されます。 BLOB を BLOB サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
+<td>コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Blob service にアップロードするとき、その BLOB のコンテナーを指定する必要があります。</td>
 </tr>
 <tr>
 <td>パス プレフィックスのパターン [省略可能]</td>
@@ -189,7 +188,7 @@ BLOB ストレージを使用すると、大量の非構造化データをクラ
 [Power BI](https://powerbi.microsoft.com/) を使用し、分析結果の豊富な視覚化エクスペリエンスを提供できます。 この機能は、操作ダッシュボード、レポート生成、およびメトリック ドリブン レポート作成に使用できます。
 
 ### <a name="authorize-a-power-bi-account"></a>Power BI アカウントを承認する
-1. Power BI を Microsoft Azure 管理ポータルで出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
+1. Power BI を Azure Portal で出力として選択すると、既存の Power BI ユーザーを承認するか、新しい Power BI アカウントを作成するように求められます。  
    
    ![Authorize Power BI User](./media/stream-analytics-define-outputs/01-stream-analytics-define-outputs.png)  
 2. まだアカウントを持っていない場合は新しいアカウントを作成し、[今すぐ承認] をクリックします。  次のような画面が表示されます。  

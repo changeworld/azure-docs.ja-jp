@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: f6722365e5a5e4c58d91dd178de264a403d53c02
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/15/2017
 
 ---
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 08/01/2017
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config create](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#create)|
-|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Add-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/add-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="change-ip-address-settings"></a>IP アドレス設定を変更する
 
@@ -84,7 +84,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config update](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#update)|
-|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Set-AzureRMNetworkInterfaceIpConfig](/powershell/module/azurerm.network/set-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="remove-ip-addresses"></a>IP アドレスを削除する
 
@@ -102,7 +102,7 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 |ツール|コマンド|
 |---|---|
 |CLI|[az network nic ip-config delete](/cli/azure/network/nic/ip-config?toc=%2fazure%2fvirtual-network%2ftoc.json#delete)|
-|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/resourcemanager/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
+|PowerShell|[Remove-AzureRmNetworkInterfaceIpConfig](/powershell/module/azurerm.network/remove-azurermnetworkinterfaceipconfig?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 
 ## <a name="ip-configurations"></a>IP 構成
 
@@ -142,13 +142,13 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 ただし、仮想マシンのオペレーティング システム内のネットワーク インターフェイスの IP アドレスを手動で設定することが必要な場合もあります。 たとえば、Azure の仮想マシンに複数の IP アドレスを追加するときは、Windows オペレーティング システムのプライマリとセカンダリの IP アドレスを、手動で設定する必要があります。 Linux 仮想マシンの場合、セカンダリ IP アドレスを手動で設定することだけが必要な場合があります。 詳細については、「[VM オペレーティング システムに IP アドレスを追加する](virtual-network-multiple-ip-addresses-portal.md#os-config)」を参照してください。 オペレーティング システム内の IP アドレスを手動で設定するときは、常に (動的ではなく) 静的な割り当て方法を使ってネットワーク インターフェイスの IP 構成にアドレスを割り当てることをお勧めします。 静的な方法を使ってアドレスを割り当てると、Azure 内でアドレスが変化しないことが保証されます。 IP 構成に割り当てられているアドレスを変更する必要がある場合は、次のようにすることをお勧めします。
 
-1. IP アドレスの割り当てをオペレーティング システム内の DHCP に戻してから仮想マシンを再起動し、仮想マシンが Azure の DHCP サーバーからアドレスを受け取るようにします。
+1. 仮想マシンが Azure の DHCP サーバーからアドレスを受け取るようにするために、IP アドレスの割り当てをオペレーティング システム内の DHCP に戻してから仮想マシンを再起動します。
 2. 仮想マシを停止します (割り当て解除)。
 3. Azure 内で IP 構成の IP アドレスを変更します。
 4. 仮想マシンを開始します。
 5. オペレーティング システム内のセカンダリ IP アドレス (および Windows 内のプライマリ IP アドレス) を、Azure での設定と一致するように、[手動で構成](virtual-network-multiple-ip-addresses-portal.md#os-config)します。
  
-この手順に従うと、Azure 内と、仮想マシンのオペレーティング システム内で、ネットワーク インターフェイスに異なるプライベート IP アドレスが割り当てられることがなくなります。 サブスクリプションのどの仮想マシンに、オペレーティング システム内で IP アドレスを手動設定したかを追跡するには、Azure の[タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)を仮想マシンに追加することを検討します。 たとえば、"IP address assignment: Static" のようなタグを使います。 このようにすると、オペレーティング システムで IP アドレスを手動設定した仮想マシンを、サブスクリプション内で簡単に見つけることができます。
+この手順に従うと、Azure 内と、仮想マシンのオペレーティング システム内で、ネットワーク インターフェイスに割り当てられるプライベート IP アドレスは同じままです。 サブスクリプションのどの仮想マシンに、オペレーティング システム内で IP アドレスを手動設定したかを追跡するには、Azure の[タグ](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#tags)を仮想マシンに追加することを検討します。 たとえば、"IP address assignment: Static" のようなタグを使います。 このようにすると、オペレーティング システムで IP アドレスを手動設定した仮想マシンを、サブスクリプション内で簡単に見つけることができます。
 
 仮想マシンが同じ仮想ネットワーク内または接続された仮想ネットワーク内の他のリソースと通信できるようになるだけでなく、プライベート IP アドレスを使うと、仮想マシンはインターネットに通信を送信することもできます。 送信接続は、Azure によって予測できないパブリック IP アドレスに変換されたソース ネットワーク アドレスです。 Azure からインターネットへの送信接続の詳細については、[Azure からインターネットへの送信接続](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 インターネットから仮想マシンのプライベート IP アドレスへの受信通信はできません。
 
@@ -183,17 +183,15 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 
 ### <a name="ipv6"></a>IPv6
 
-ネットワーク インターフェイスの 1 つのセカンダリ IP 構成には、プライベート [IPv6](#ipv6) アドレスを 1 つ割り当てることができます (割り当てなくてもかまいません)。 ネットワーク インターフェイスは、既存のセカンダリ IP 構成を使うことはできません。 ポータルを使って、IPv6 アドレスが割り当てられた IP 構成を追加することはできません。 プライベート IPv6 アドレスが割り当てられた IP 構成を既存のネットワーク インターフェイスに追加するには、PowerShell または CLI を使う必要があります。 ネットワーク インターフェイスを既存の VM にアタッチすることはできません。
+ネットワーク インターフェイスの 1 つのセカンダリ IP 構成には、プライベート [IPv6](#ipv6) アドレスを 1 つ割り当てることができます (割り当てなくてもかまいません)。 ネットワーク インターフェイスは、既存のセカンダリ IP 構成を使うことはできません。 ポータルを使って、IPv6 アドレスが割り当てられた IP 構成を追加することはできません。 PowerShell または CLI を使用して、プライベート IPv6 アドレスが割り当てられた IP 構成を既存のネットワーク インターフェイスに追加します。 ネットワーク インターフェイスを既存の VM にアタッチすることはできません。
 
 > [!NOTE]
-> ポータルを使って IPv6 アドレスが割り当てられたネットワーク インターフェイスを作成することはできますが、ポータルを使って、プライベート IPv6 アドレスが割り当てられた仮想マシンを作成すること、または仮想マシンを作成するときにネットワーク インターフェイスをアタッチすることはできません。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスをアタッチするには、PowerShell または Azure CLI 2.0 を使う必要があります。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを既存の仮想マシンにアタッチすることはできません。 どのツール (ポータル、CLI、PowerShell) を使っても、仮想マシンにアタッチされたネットワーク インターフェイスの IP 構成にプライベート IPv6 アドレスを追加することはできません。
+> ポータルを使用して IPv6 アドレスを割り当てたネットワーク インターフェイスを作成することはできますが、ポータルを使用して既存のネットワーク インターフェイスを新規または既存の仮想マシンに追加することはできません。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスをアタッチするには、PowerShell または Azure CLI 2.0 を使用します。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを既存の仮想マシンにアタッチすることはできません。 どのツール (ポータル、CLI、PowerShell) を使っても、仮想マシンにアタッチされたネットワーク インターフェイスの IP 構成にプライベート IPv6 アドレスを追加することはできません。
 
 プライマリ IP 構成またはセカンダリ IP 構成に、パブリック IPv6 アドレスを割り当てることはできません。
 
 ## <a name="next-steps"></a>次のステップ
 異なる IP 構成で仮想マシンを作成する方法については、次の記事をご覧ください。
-
-**コマンド**
 
 |タスク|ツール|
 |---|---|
