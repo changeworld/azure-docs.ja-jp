@@ -14,7 +14,7 @@
 
 **[B2C_1_SiIn]** をクリックすることによってポリシーを開きます。
 
-**[アプリケーション]** ドロップダウンで **[Contoso B2C app] (Contoso B2C アプリ)** を、また **[Reply URL / Redirect URI] (応答 URL/リダイレクト URI)** ドロップダウンで `https://localhost:44321/` を選択します。
+**[アプリケーション]** ドロップダウンで **[Contoso B2C app] \(Contoso B2C アプリ)** を、また **[Reply URL / Redirect URI] \(応答 URL/リダイレクト URI)** ドロップダウンで `https://localhost:44321/` を選択します。
 
 **[今すぐ実行]**をクリックします。 新しいブラウザー タブが開き、アプリケーションへのサインインのコンシューマー エクスペリエンスを確認できます。
 
