@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/14/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ad2ba8688761a7fa2541906fe04987dfb1997a81
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: cbfdc3c4b6a6d0f3174c9d7512c3aadd926a56df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-action"></a>スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする
@@ -75,7 +74,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
         URI の例については、「[スクリプト アクションのサンプル スクリプト](#example-script-action-scripts)」セクションを参照してください。
 
         > [!WARNING]
-        > __汎用__の Azure Storage アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
+        > __汎用__の Azure ストレージ アカウントがサポートされるのは HDInsight のみです。 現時点では、__Blob Storage__ タイプのアカウントはサポートされません。
 
 * **特定のノード タイプでのみ実行するように** (ヘッド ノードやワーカー ノードなど) に制限できます。
 
@@ -130,7 +129,7 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 > [!IMPORTANT]
 > スクリプト アクションは 60 分以内に完了する必要があります。そうしないと、タイムアウトします。 クラスターのプロビジョニング中に、スクリプトは他のセットアップ プロセスや構成プロセスと同時に実行されます。 CPU 時間やネットワーク帯域幅などのリソースの競合が原因で、開発環境の場合よりスクリプトの完了に時間がかかる可能性があります。
 >
-> スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。 代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure Storage に格納して、 クラスターにアプリケーションをすばやくダウンロードできるようにします。
+> スクリプトの実行時間を最小限に抑えるために、ソースからアプリケーションをダウンロードしてコンパイルするなどのタスクを実行しないようにしてください。 代わりに、アプリケーションを事前にコンパイルし、バイナリを Azure Storage に格納して、
 
 
 ### <a name="script-action-on-a-running-cluster"></a>実行中のクラスターでのスクリプト アクション
@@ -138,15 +137,15 @@ HDInsight には、クラスターをカスタマイズするカスタム スク
 クラスターの作成時に使用されるスクリプトとは異なり、既に実行中のクラスターで実行されたスクリプトのエラーによって、クラスターの状態が自動的に失敗に変更されることはありません。 スクリプトが完了すると、クラスターは "実行中" 状態に戻ります。
 
 > [!IMPORTANT]
-> これは、実行中のクラスターが、正しくない処理を実行するスクリプトの影響を受けないという意味ではありません。 たとえば、スクリプトによって、クラスターに必要なファイルが削除されることがあります。
+> クラスターが "実行中" 状態であっても、失敗したスクリプトによって何かが破壊されている可能性があります。 たとえば、スクリプトによって、クラスターに必要なファイルが削除されることがあります。
 >
 > スクリプト アクションはルート権限で実行されるため、スクリプトをクラスターに適用する前に、そのスクリプトによる処理を必ず理解しておく必要があります。
 
 スクリプトをクラスターに適用すると、スクリプトが適切であれば、クラスターの状態は **[実行中]** から **[承諾済み]**、**[HDInsight 構成]** の順に変わり、最後に **[実行中]** に戻ります。 スクリプトの状態はスクリプト アクションの履歴に記録されます。その情報を使用して、スクリプトが成功したか失敗したかを確認できます。 たとえば、`Get-AzureRmHDInsightScriptActionHistory` PowerShell コマンドレットを使用して、スクリプトの状態を表示できます。 次のテキストのような情報が返されます。
 
     ScriptExecutionId : 635918532516474303
-    StartTime         : 2/23/2016 7:40:55 PM
-    EndTime           : 2/23/2016 7:41:05 PM
+    StartTime         : 8/14/2017 7:40:55 PM
+    EndTime           : 8/14/2017 7:41:05 PM
     Status            : Succeeded
 
 > [!NOTE]
@@ -179,13 +178,13 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-azure-portal"></a>クラスターの作成時に Azure Portal からスクリプト アクションを使用する
 
-1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。 __[クラスターの概要]__ ブレードに達したら、停止します。
+1. [HDInsight での Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)に関する記事の説明に従って、クラスターの作成を開始します。 __[クラスターの概要]__ セクションに達したら、停止します。
 
-2. __[クラスターの概要]__ ブレードで、__[詳細設定]__ の __[編集]__ リンクを選択します。
+2. __[クラスターの概要]__ セクションで、__[詳細設定]__ の __[編集]__ リンクを選択します。
 
     ![[詳細設定] リンク](./media/hdinsight-hadoop-customize-cluster-linux/advanced-settings-link.png)
 
-3. __[詳細設定]__ ブレードで、__[スクリプト アクション]__ を選択します。 __[スクリプト アクション]__ ブレードで、__[+ 新規で送信]__ を選択します。
+3. __[詳細設定]__ セクションで、__[スクリプト アクション]__ を選択します。 __[スクリプト アクション]__ セクションで、__[+ 新規で送信]__ を選択します。
 
     ![新しいスクリプト アクションの送信](./media/hdinsight-hadoop-customize-cluster-linux/add-script-action.png)
 
@@ -197,25 +196,25 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
 
     | プロパティ | 値 |
     | --- | --- |
-    | スクリプトの選択 | 事前に作成されたスクリプトのいずれかを選択するか、独自のスクリプトを使用する場合は __[カスタム]__ を選択します。 |
+    | スクリプトの選択 | 独自のスクリプトを使用するには、__[カスタム]__ を選択します。 それ以外の場合は、用意されているスクリプトのいずれかを選択します。 |
     | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。 |
     | ヘッド/ワーカー/Zookeeper |カスタマイズ スクリプトが実行されるノード (**[ヘッド]**、**[ワーカー]**、または **[ZooKeeper]**) を指定します。 |
-    | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
+    | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
 
-    クラスターをスケールアップするときに、worker ノードに適用されるようにする場合は、__[Persist this script action]\(このスクリプト アクションを保持\)__ エントリを使用します。
+    スケーリング操作中にスクリプトが確実に適用されるようにするには、__[Persist this script action]\(このスクリプト アクションを保持\)__ エントリを使用します。
 
 5. __[作成]__ を選択してスクリプトを保存します。 別のスクリプトを追加するには、__[+ 新規で送信]__ を使用します。
 
     ![複数のスクリプト アクション](./media/hdinsight-hadoop-customize-cluster-linux/multiple-scripts.png)
 
-    スクリプトの追加が完了したら、__[選択]__ ボタンをクリックし、__[次へ]__ ボタンをクリックして、__[クラスターの概要]__ ブレードに戻ります。
+    スクリプトの追加が完了したら、__[選択]__ ボタンをクリックし、__[次へ]__ ボタンをクリックして、__[クラスターの概要]__ セクションに戻ります。
 
-3. クラスターを作成するには、__[クラスターの概要__] ブレードで、__[作成]__ を選択します。
+3. クラスターを作成するには、__[クラスターの概要__] セクションで、__[作成]__ を選択します。
 
 ### <a name="use-a-script-action-from-azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレートからスクリプト アクションを使用する
 
-このセクションでは、HDInsight クラスターの作成時に Azure Resource Manager テンプレートでスクリプト アクションを使用する方法を示します。
+このセクションの例は、Azure Resource Manager テンプレートでスクリプト アクションを使用する方法を示しています。
 
 #### <a name="before-you-begin"></a>開始する前に
 
@@ -387,7 +386,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
         Id                             Type       ...
         --                             ----
         someone@example.com            User       ...
-3. 複数のサブスクリプションがある場合、デプロイメントに使用するサブスクリプション ID を提供します。
+3. 複数のサブスクリプションがある場合、デプロイに使用するサブスクリプション ID を提供します。
 
         Select-AzureRmSubscription -SubscriptionID <YourSubscriptionId>
 
@@ -408,7 +407,13 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
                             *
         ResourceId        : /subscriptions/######/resourceGroups/ExampleResourceGroup
 
-5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。 パラメーターにはデプロイメントの名前、リソース グループの名前、作成したテンプレートへのパスまたは URL が含まれます。 テンプレートでパラメーターが必要な場合は、それらのパラメーターも渡す必要があります。 この場合は、クラスターに R をインストールするスクリプト アクションでパラメーターは必要ありません。
+5. リソース グループに新しいデプロイを作成するには、**New-AzureRmResourceGroupDeployment** コマンドを実行して必要なパラメーターを指定します。 パラメーターには、次のデータが含まれます。
+
+    * デプロイの名前
+    * リソース グループの名前
+    * 作成したテンプレートのパスまたは URL
+
+  テンプレートでパラメーターが必要な場合は、それらのパラメーターも渡す必要があります。 この場合は、クラスターに R をインストールするスクリプト アクションでパラメーターは必要ありません。
 
         New-AzureRmResourceGroupDeployment -Name mydeployment -ResourceGroupName myresourcegroup -TemplateFile <PathOrLinkToTemplate>
 
@@ -419,7 +424,7 @@ HDInsight は、HDInsight クラスターで次のコンポーネントをイン
           DeploymentName    : mydeployment
           ResourceGroupName : myresourcegroup
           ProvisioningState : Succeeded
-          Timestamp         : 8/17/2015 7:00:27 PM
+          Timestamp         : 8/14/2017 7:00:27 PM
           Mode              : Incremental
           ...
 
@@ -449,14 +454,14 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 1. [Azure ポータル](https://portal.azure.com)で HDInsight クラスターを選択します。
 
-2. [HDInsight クラスター] ブレードから **[スクリプト アクション]** タイルを選択します。
+2. HDInsight クラスターの概要から **[スクリプト アクション]** タイルを選択します。
 
     ![Script actions tile](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
 
    > [!NOTE]
-   > **[すべての設定]** を選択した後、[設定] ブレードから **[スクリプト アクション]** を選択してもかまいません。
+   > **[すべての設定]** を選択した後、[設定] セクションから **[スクリプト アクション]** を選択してもかまいません。
 
-3. [スクリプト アクション] ブレードの上部で、**[新規で送信]** を選択します。
+3. [スクリプト アクション] セクションの上部の **[+ 新規で送信]** を選択します。
 
     ![実行中のクラスターにスクリプトを追加する](./media/hdinsight-hadoop-customize-cluster-linux/add-script-running-cluster.png)
 
@@ -468,13 +473,13 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
     | プロパティ | 値 |
     | --- | --- |
-    | スクリプトの選択 | 事前に作成されたスクリプトのいずれかを選択するか、独自のスクリプトを使用する場合は __[カスタム]__ を選択します。 |
+    | スクリプトの選択 | 独自のスクリプトを使用するには、__[カスタム]__ を選択します。 それ以外の場合、提供されているスクリプトを選択します。 |
     | 名前 |スクリプト アクションの名前を指定します。 |
     | Bash スクリプト URI |クラスターのカスタマイズのために呼び出されるスクリプトへの URI を指定します。 |
     | ヘッド/ワーカー/Zookeeper |カスタマイズ スクリプトが実行されるノード (**[ヘッド]**、**[ワーカー]**、または **[ZooKeeper]**) を指定します。 |
-    | parameters |スクリプトで必要な場合は、パラメーターを指定します。 |
+    | パラメーター |スクリプトで必要な場合は、パラメーターを指定します。 |
 
-    クラスターをスケールアップするときに、worker ノードに適用されるようにする場合は、__[Persist this script action]\(このスクリプト アクションを保持\)__ エントリを使用します。
+    スケーリング操作中にスクリプトが確実に適用されるようにするには、__[スクリプト操作を保持する]__ エントリを使用します。
 
 5. 最後に、**[作成]** ボタンを使用して、スクリプトをクラスターに適用します。
 
@@ -486,7 +491,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=105-117)]
 
-操作が完了すると、次のような情報が表示されます。
+操作が完了すると、次のようなテキストが表示されます。
 
     OperationState  : Succeeded
     ErrorMessage    :
@@ -501,7 +506,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 [!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
 
-1. シェル セッション、ターミナル、コマンド プロンプト、またはシステムのその他のコマンド ラインを開き、次のコマンドを使用して Azure Resource Manager モードに切り替えます。
+1. Azure Resource Manager モードに切り替えるには、コマンド ラインで次のコマンドを実行します。
 
         azure config mode arm
 
@@ -543,22 +548,22 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 1. [Azure ポータル](https://portal.azure.com)で HDInsight クラスターを選択します。
 
-2. [HDInsight クラスター] ブレードから **[スクリプト アクション]** タイルを選択します。
+2. HDInsight クラスターの概要から **[スクリプト アクション]** タイルを選択します。
 
     ![Script actions tile](./media/hdinsight-hadoop-customize-cluster-linux/scriptactionstile.png)
 
    > [!NOTE]
-   > **[すべての設定]** を選択した後、[設定] ブレードから **[スクリプト アクション]** を選択してもかまいません。
+   > **[すべての設定]** を選択した後、[設定] セクションから **[スクリプト アクション]** を選択してもかまいません。
 
-4. [スクリプト アクション] ブレードに、このクラスター用のスクリプトの履歴が表示されます。 この情報には、保存されたスクリプトの一覧が含まれています。 次のスクリーンショットでは、Solr スクリプトがこのクラスターで実行されていますが、 保存されたスクリプト アクションはありません。
+4. [スクリプト アクション] セクションに、このクラスター用のスクリプトの履歴が表示されます。 この情報には、保存されたスクリプトの一覧が含まれています。 次のスクリーンショットでは、Solr スクリプトがこのクラスターで実行されていますが、 保存されたスクリプト アクションはありません。
 
-    ![Script Actions blade](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
+    ![[スクリプト アクション] セクション](./media/hdinsight-hadoop-customize-cluster-linux/script-action-history.png)
 
-5. 履歴からスクリプトを選択すると、このスクリプトの [プロパティ] ブレードが表示されます。 ブレードの上部で、スクリプトを再実行または昇格できます。
+5. 履歴からスクリプトを選択すると、そのスクリプトの [プロパティ] セクションが表示されます。 画面の上部から、スクリプトを再実行または昇格できます。
 
-    ![Script actions properties blade](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
+    ![スクリプト アクションの [プロパティ] ブレード](./media/hdinsight-hadoop-customize-cluster-linux/promote-script-actions.png)
 
-6. [スクリプト アクション] ブレードのエントリの右側にある **[...]** を使用してアクションを実行することもできます。
+6. [スクリプト アクション] セクションのエントリの右側にある **[...]** を使用してアクションを実行することもできます。
 
     ![Script actions ... usage](./media/hdinsight-hadoop-customize-cluster-linux/deletepromoted.png)
 
@@ -601,7 +606,7 @@ HDInsight .NET SDK は、.NET アプリケーションから HDInsight を簡単
 
 ## <a name="support-for-open-source-software-used-on-hdinsight-clusters"></a>HDInsight クラスターで使用するオープン ソース ソフトウェアのサポート
 
-Microsoft Azure HDInsight サービスは Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、次に説明するいくつかのコンポーネントについてさらに高いレベルのサポートを受けることができます。
+Microsoft Azure HDInsight サービスは Hadoop を中心に形成されたオープン ソース テクノロジのエコシステムを利用します。 Microsoft Azure は、オープン ソース テクノロジの一般的なレベルのサポートを提供します。 詳細については、「[Azure サポートに関する FAQ](https://azure.microsoft.com/support/faq/)」の**サポート範囲**に関するセクションを参照してください。 HDInsight サービスでは、組み込みのコンポーネントに対してさらに高いレベルのサポートを提供しています。
 
 HDInsight サービスで利用できるオープン ソース コンポーネントには、2 つの種類があります。
 
@@ -611,7 +616,7 @@ HDInsight サービスで利用できるオープン ソース コンポーネ�
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、 これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 Microsoft サポートによって問題が解決する場合もあれば、オープン ソース テクノロジに関する深い専門知識を入手できる場所への参加をお願いする場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) などのプロジェクト サイトもあります。
 
 HDInsight サービスでは、カスタム コンポーネントを使用する方法をいくつか用意しています。 コンポーネントの用途やクラスターへのインストール方法にかかわらず、同じレベルのサポートが適用されます。 以下は、HDInsight クラスターでのカスタム コンポーネントの用途として、最も一般的な方法の一覧です。
 
@@ -643,7 +648,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 ### <a name="access-logs-from-the-default-storage-account"></a>既定のストレージ アカウントからログにアクセスする
 
-スクリプト アクションで発生したエラーが原因でクラスターの作成に失敗した場合、既定のストレージ アカウントからスクリプト アクション ログに直接アクセスすることもできます。
+スクリプト アクションで発生したエラーが原因でクラスターの作成に失敗した場合、クラスター ストレージ アカウントからスクリプト アクション ログに直接アクセスすることもできます。
 
 * ストレージ ログは、 `\STORAGE_ACCOUNT_NAME\DEFAULT_CONTAINER_NAME\custom-scriptaction-logs\CLUSTER_NAME\DATE`にあります。
 
@@ -667,7 +672,7 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 
 * 同じ日に同じ名前のスクリプト アクション クラスターを作成する場合は、一意のプレフィックスを使用して該当するログ ファイルを識別できます。
 
-* 1 日の最後にクラスターを作成すると、ログ ファイルが 2 日間にまたがる場合があります。 そのような場合は、同じクラスターに日付が異なる 2 つのフォルダーが作成されます。
+* 12:00 AM (深夜 0 時) 近くにクラスターを作成すると、ログ ファイルが 2 日間にまたがる可能性があります。 そのような場合は、同じクラスターに日付が異なる 2 つのフォルダーが作成されます。
 
 * 既定のコンテナーへのログ ファイルのアップロードは、特に大きなクラスターの場合、最大 5 分かかることがあります。 そのため、ログにアクセスする必要がある場合は、スクリプト アクションが失敗したときにクラスターをすぐに削除しないでください。
 
@@ -676,9 +681,9 @@ Ambari の Web UI を使用すると、スクリプト アクションによっ�
 > [!WARNING]
 > Linux ベースの HDInsight クラスターでは、Ambari ウォッチドッグ (hdinsightwatchdog) のパスワードは変更しないでください。 このアカウントのパスワードを変更すると、HDInsight クラスターで新しいスクリプト アクションを実行できなくなります。
 
-### <a name="cannot-import-name-blobservice"></a>名前 BlobService をインポートできない
+### <a name="cant-import-name-blobservice"></a>名前 BlobService をインポートできない
 
-__症状__: スクリプト アクションが失敗し、Ambari で操作を表示するときに次のようなエラーが表示されます。
+__現象__: スクリプトの操作が失敗します。 Ambari で操作を表示すると、次のエラーに似たテキストが表示されます。
 
 ```
 Traceback (most recent call list):
@@ -707,7 +712,7 @@ SSH を使用してクラスターに接続する方法については、[HDInsi
 
 * クラスターの作成時に複数のスクリプト アクションを使用した場合、複数のスクリプトに対して同じ名前を使用した場合、または複数のスクリプトに対して同じ名前と URI、異なるパラメーターを使用した場合。 この場合は、次のエラーが発生します。
 
-    既存のスクリプトでスクリプト名が競合するため、このクラスターで新しいスクリプト アクションを実行できません。 クラスターの作成時に指定されるスクリプト名はすべて一意である必要があります。 既存のスクリプトは、サイズ変更時に引き続き実行されます。
+    既存のスクリプトでスクリプト名が競合するため、このクラスターでは新しいスクリプト アクションを実行できません。 クラスターの作成時に指定されるスクリプト名はすべて一意である必要があります。 既存のスクリプトは、サイズ変更時に実行されます。
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -1,6 +1,6 @@
 ---
-title: "Compute リソース 用に Azure Application Insights Profiler を有効化 | Microsoft Docs"
-description: "Profiler の設定方法の詳細"
+title: "Azure Application Insights Profiler を Cloud Services リソースで有効にする | Microsoft Docs"
+description: "Azure Cloud Services リソースによってホストされる ASP.NET アプリケーションに Profiler を設定する方法を説明します。"
 services: application-insights
 documentationcenter: 
 author: CFreemanwa
@@ -11,32 +11,32 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
-ms.author: sewhee
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: cde0b0bce2e332243e555a72088b8e9eeb680bdb
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 750dd6c3b50a15d566d170390ac5faa0cb11a628
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
-# <a name="how-to-enable-application-insights-profiler-on-azure-compute-resources"></a>Azure Compute リソースで Application Insights Profiler を有効にする方法
+# <a name="enable-application-insights-profiler-on-an-azure-cloud-services-resource"></a>Azure Application Insights Profiler を Cloud Services リソースで有効にする
 
-このチュートリアルでは、Azure Compute リソースによってホストされる ASP.NET アプリケーションで Application Insights Profiler を有効にする方法を示します。 この例には、Virtual Machines、仮想マシン スケール セット、および Services Fabric のサポートが含まれています。 この例は、すべて Azure Resource Management デプロイメント モデルをサポートするテンプレートを活用しています。 デプロイメント モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
+このチュートリアルでは、Azure Cloud Services リソースによってホストされる ASP.NET アプリケーションで Azure Application Insights Profiler を有効にする方法を示します。 例には、Azure Virtual Machines、仮想マシン スケール セット、および Azure Services Fabric のサポートが含まれています。 すべての例は、Azure Resource Manager デプロイメント モデルをサポートするテンプレートを活用しています。 デプロイメント モデルについて詳しくは、「[Azure Resource Manager とクラシック デプロイ: デプロイ モデルとリソースの状態について](/azure-resource-manager/resource-manager-deployment-model)」を参照してください。
 
 ## <a name="overview"></a>概要
 
-次の図に、Profiler が Azure Compute リソースを利用する方法を示します。 例として、Azure Virtual Machine を使用しています。
+次の図に、プロファイラーが Azure Cloud Services リソースを利用する方法を示します。 例として、Azure 仮想マシンを使用しています。
 
-![概要](./media/enable-profiler-compute/overview.png)Azure Portal で処理および表示するための情報を収集するには Azure Compute リソースの診断エージェント コンポーネントをインストールする必要があります。 このチュートリアルの残りの部分では、診断エージェントをインストールして構成し、Application Insights Profiler を有効にする方法を説明します。
+![概要](./media/enable-profiler-compute/overview.png) Azure ポータルで処理して表示する情報を収集するには、Azure Cloud Services リソース用の診断エージェント コンポーネントをインストールする必要があります。 このチュートリアルの残りの部分では、診断エージェントをインストールして構成し、Application Insights Profiler を有効にする方法を説明します。
 
 ## <a name="prerequisites-for-the-walkthrough"></a>このチュートリアルの前提条件
 
-* VM またはスケール セット に Profiler エージェントをインストールするデプロイメント Resource Manager テンプレートをダウンロードします。
+* profiler エージェントを VM ([WindowsVirtualMachine.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json)) またはスケール セット ([WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json)) にインストールするデプロイメント Resource Manager テンプレート。
 
-    [WindowsVirtualMachine.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json) | [WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json)
-* プロファイリングのために有効化されている Application Insights インスタンス。 https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler を参照して、実行する方法を確認してください。
-* .NET framework >= 4.6.1 がターゲットの Azure Compute リソースにインストールされています。
+* プロファイリングのために有効化されている Application Insights インスタンス。 手順については、「[プロファイルを有効にする](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)」を参照してください。
+
+* ターゲットの Azure Cloud Services リソースにインストールされている .NET Framework 4.6.1 以降。
 
 ## <a name="create-a-resource-group-in-your-azure-subscription"></a>Azure サブスクリプションにリソース グループを作成する
 PowerShell スクリプトを使用してリソース グループを作成する方法を次の例で説明します。
@@ -45,92 +45,116 @@ PowerShell スクリプトを使用してリソース グループを作成す�
 New-AzureRmResourceGroup -Name "Replace_With_Resource_Group_Name" -Location "Replace_With_Resource_Group_Location"
 ```
 
-## <a name="create-an-application-insights-resource-in-the-resource-group"></a>リソース グループでの Application Insights リソースの作成
+## <a name="create-an-application-insights-resource-in-the-resource-group"></a>リソース グループに Application Insights リソースを作成する
+**[Application Insights]** ブレードで、この例で示すように、リソースの情報を入力します。 
 
-![Application Insights の作成](./media/enable-profiler-compute/createai.png)
+![[Application Insights] ブレード](./media/enable-profiler-compute/createai.png)
 
-## <a name="apply-application-insights-instrumentation-key-in-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートでの Application Insights のインストルメンテーション キーの適用
-テンプレートをまだダウンロードしていない場合は、下記の場所からダウンロードしてください。 [WindowsVirtualMachine.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json)
+## <a name="apply-an-application-insights-instrumentation-key-in-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの Application Insights のインストルメンテーション キーを適用する
+1. テンプレートをまだダウンロードしていない場合は、[GitHub](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json)からダウンロードしてください。
 
-![AI キーの検索](./media/enable-profiler-compute/copyaikey.png)
+2. Application Insights キーを見つけます。
+   
+   ![キーの場所](./media/enable-profiler-compute/copyaikey.png)
 
-![テンプレートの値の置換](./media/enable-profiler-compute/copyaikeytotemplate.png)
+3. テンプレートの値を置換します。
+   
+   ![テンプレート内の置換される値](./media/enable-profiler-compute/copyaikeytotemplate.png)
 
-## <a name="create-azure-vm-to-host-the-web-application"></a>Web アプリをホストする Azure VM の作成
-* パスワードを保護するセキュアな文字列の作成
-```
-$password = ConvertTo-SecureString -String "Replace_With_Your_Password" -AsPlainText -Force
-```
+## <a name="create-an-azure-vm-to-host-the-web-application"></a>Web アプリケーションをホストする Azure VM を作成する
+1. パスワードを保護するセキュアな文字列を作成します。
 
-* Azure Resource Manager テンプレートのデプロイ
+   ```
+   $password = ConvertTo-SecureString -String "Replace_With_Your_Password" -AsPlainText -Force
+   ```
 
-PowerShell コンソール内のディレクトリを Resource Manager テンプレートが含まれているフォルダーに変更します。 テンプレートをデプロイするには、以下のコマンドを実行します。
+2. Azure Resource Manager テンプレートをデプロイします。
 
-```
-New-AzureRmResourceGroupDeployment -ResourceGroupName "Replace_With_Resource_Group_Name" -TemplateFile .\WindowsVirtualMachine.json -adminUsername "Replace_With_your_user_name" -adminPassword $password -dnsNameForPublicIP "Replace_WIth_your_DNS_Name" -Verbose
-```
+   PowerShell コンソール内のディレクトリを Resource Manager テンプレートが含まれているフォルダーに変更します。 テンプレートをデプロイするには、次のコマンドを実行します。
 
-スクリプトが正常に実行されると、リソース グループ内に *MyWindowsVM* という名前の VM ができます。
+   ```
+   New-AzureRmResourceGroupDeployment -ResourceGroupName "Replace_With_Resource_Group_Name" -TemplateFile .\WindowsVirtualMachine.json -adminUsername "Replace_With_your_user_name" -adminPassword $password -dnsNameForPublicIP "Replace_WIth_your_DNS_Name" -Verbose
+   ```
+
+スクリプトが正常に実行されると、リソース グループ内に **MyWindowsVM** という名前の VM ができます。
 
 ## <a name="configure-web-deploy-on-the-vm"></a>VM での Web デプロイの構成
-**Web デプロイ**が VM で有効になっており、Web アプリケーションを Visual Studio から公開できることを確認してください。
+Web アプリケーションを Visual Studio から公開できるように、VM で Web 配置が有効になっていることを確認してください。
 
-Web デプロイは VM 上に WebPI 経由で手動でインストールできます。[IIS 8.0 以降への Web デプロイのインストールおよび構成](https://docs.microsoft.com/en-us/iis/install/installing-publishing-technologies/installing-and-configuring-web-deploy-on-iis-80-or-later)
+WebPI 経由で VM に Web 配置を手動でインストールするには、[IIS 8.0 以降への Web 配置のインストールと構成](https://docs.microsoft.com/en-us/iis/install/installing-publishing-technologies/installing-and-configuring-web-deploy-on-iis-80-or-later)に関するページを参照してください。 Azure Resource Manager テンプレートを使用して Web 配置のインストールを自動化する方法の例については、[Azure VM への Web アプリの作成、構成、および配置](https://azure.microsoft.com/en-us/resources/templates/201-web-app-vm-dsc/)に関するページを参照してください。
 
-Azure Resource Manager テンプレートを使用して Web デプロイのインストールを自動化する方法の例を示します。[Azure VM への Web アプリの作成、構成、およびデプロイ](https://azure.microsoft.com/en-us/resources/templates/201-web-app-vm-dsc/)
+ASP.NET MVC アプリケーションをデプロイする場合は、サーバー マネージャーに移動し、**[役割と機能の追加]** > **[Web サーバー (IIS)]** > **[Web サーバー]** > **[アプリケーション開発]** を選択して、サーバーで ASP.NET 4.5 を有効にします。
 
-ASP.NET MVC アプリケーションを展開する場合、Server Manager の **[役割と機能の追加] | [Web サーバー (IIS)] | [Web サーバー] | [Application Development] \(アプリケーション開発)** へ移動して、サーバーで ASP.NET 4.5 を有効にする必要があります。
-![Add ASP.NET](./media/enable-profiler-compute/addaspnet45.png)
+![Add ASP.NET を追加する](./media/enable-profiler-compute/addaspnet45.png)
 
-## <a name="install-azure-application-insights-sdk-to-your-project"></a>Azure Application Insights SDK のプロジェクトへのインストール
-* Visual Studio で ASP.NET Web アプリを開く
-* プロジェクトを右クリックして、**[追加] | [接続されたサービス]** を選択する
-* [Application Insights] \(アプリケーション インサイト) を選択する
-* このページで説明されている手順に従う。 先ほど作成した Application Insights リソースを選択する
-* **[登録]** ボタンをクリックする
+## <a name="install-the-azure-application-insights-sdk-for-your-project"></a>Azure Application Insights SDK をプロジェクトにインストールする
+1. Visual Studio で ASP.NET Web アプリケーションを開きます。
 
+2. プロジェクトを右クリックし、**[追加]** > **[接続済みサービス]** を選択します。
 
-## <a name="publish-the-project-to-azure-vm"></a>プロジェクトを Azure VM に公開する
-Azure VM にアプリケーションを公開するにはいくつかの方法があります。 その 1 つは、Visual Studio 2017 を使用する方法です。
-公開プロセスを完了するには、プロジェクトを右クリックして [Publish...].(発行...) を選択します。 公開ターゲットとして Azure Virtual Machine を選択し、次の手順に従います。
+3. **[Application Insights]**を選択します。
 
-![Publish-FromVS](./media/enable-profiler-compute/publishtoVM.png)
+4. このページで説明されている手順に従います。 先ほど作成した Application Insights リソースを選択します。
 
-アプリケーションに対してロード テストを実行します。 結果は Application Insights のインスタンス ポータル の Web ページで確認できます。
+5. **[登録]** ボタンをクリックします。
 
 
-## <a name="enable-the-profiler-in-application-insights"></a>Application Insights での Profiler の有効化
-Application Insights の [パフォーマンス] ブレードに移動します。 [設定] アイコンと [プロファイラーを有効にする] をクリックします。
+## <a name="publish-the-project-to-an-azure-vm"></a>プロジェクトを Azure VM に公開する
+Azure VM にアプリケーションを公開するにはいくつかの方法があります。 1 つの方法は、Visual Studio 2017 を使用することです。
 
-![Profiler の有効化手順 1](./media/enable-profiler-compute/enableprofiler1.png)
+1. プロジェクトを右クリックし、**[発行]** を選択します。
 
-![Profiler の有効化手順 2](./media/enable-profiler-compute/enableprofiler2.png)
+2. 公開ターゲットとして **[Microsoft Azure Virtual Machines]** を選択し、次の手順に従います。
 
-## <a name="add-an-availability-test-to-your-application"></a>可用性テストのアプリケーションへの追加
-先ほど作成した Application Insights リソースを参照します。 [可用性] ブレードに移動し、アプリケーションの URL に Web リクエストを送信するパフォーマンス テストを追加します。 このようにして、Application Insights Profiler に表示されるサンプル データを収集することができます。
+   ![Publish-FromVS](./media/enable-profiler-compute/publishtoVM.png)
 
-![Add Performance Test][./media/enable-profiler-compute/add-test.png]
+3. アプリケーションに対してロード テストを実行します。 結果は、Application Insights のインスタンス ポータルの Web ページに表示されます。
+
+
+## <a name="enable-the-profiler"></a>プロファイラーを有効にする
+1. Application Insights の **[パフォーマンス]** ブレードに移動し、**[構成]** を選択します。
+   
+   ![[構成] アイコン](./media/enable-profiler-compute/enableprofiler1.png)
+ 
+2. **[Profiler の有効化]** を選択します。
+   
+   ![[Profiler の有効化] アイコン](./media/enable-profiler-compute/enableprofiler2.png)
+
+## <a name="add-a-performance-test-to-your-application"></a>アプリケーションにパフォーマンス テストを追加する
+次の手順に従うと、Application Insights Profiler に表示されるサンプル データを収集できます。
+
+1. 先ほど作成した Application Insights リソースを参照します。 
+
+2. **[可用性]** ブレードに移動し、アプリケーションの URL に Web リクエストを送信するパフォーマンス テストを追加します。 
+
+   ![パフォーマンス テストを追加する](./media/enable-profiler-compute/AvailabilityTest.png)
 
 ## <a name="view-your-performance-data"></a>パフォーマンス データの表示
 
-Profiler がデータを収集して分析するまで 10 - 15 分待ちます。 AI リソースの [パフォーマンス] ブレードに移動し、アプリケーションに負荷がかかったときのパフォーマンスを表示します。
+1. Profiler がデータを収集して分析するまで 10 ～ 15 分待ちます。 
 
-![View Performance][./media/enable-profiler-compute/view-aiperformance.png]
+2. Application Insights リソースの **[パフォーマンス]** ブレードに移動し、アプリケーションに負荷がかかったときのパフォーマンスを表示します。
 
-[Examples with open the Trace View] ブレードの下のアイコンをクリックします。
+   ![パフォーマンスの表示](./media/enable-profiler-compute/aiperformance.png)
 
-![Trace View][./media/enable-profiler-compute/traceview.png]
+3. **[例]** の下のアイコンを選択して **[トレース ビュー]** ブレードを開きます。
+
+   ![[トレース ビュー] ブレードを開く](./media/enable-profiler-compute/traceview.png)
 
 
 ## <a name="work-with-an-existing-template"></a>既存のテンプレートの使用
 
-1. デプロイ テンプレートで Windows Azure 診断 (WAD) リソース宣言を見つけます。
-  * もしまだない場合は作成します (作成の方法は詳細な例で確認してください)。
-  * Azure Resource の Web サイト (https://resources.azure.com) でテンプレートを更新することができます。
-2. 公開元を "Microsoft.Azure.Diagnostics" から "AIP.Diagnostics.Test" に変更します。
-3. typeHandlerVersion を "0.0" として使用します。
-4. autoUpgradeMinorVersion が true に設定されていることを確認します。
-5. 次の例に示すように、新しい ApplicationInsightsProfiler シンク インスタンスを WadCfg settings オブジェクトに追加します。
+1. デプロイ テンプレートで Azure 診断 リソース宣言を見つけます。
+   
+   宣言がない場合は、次の例に示した宣言に似た宣言を作成できます。 [Azure Resource Explorer Web サイト](https://resources.azure.com)でテンプレートを更新できます。
+
+2. 公開元を `Microsoft.Azure.Diagnostics` から `AIP.Diagnostics.Test` に変更します。
+
+3. `typeHandlerVersion` では `0.0` を使用します。
+
+4. `autoUpgradeMinorVersion` が `true` に設定されていることを確認します。
+
+5. 次の例に示すように、新しい `ApplicationInsightsProfiler` シンク インスタンスを `WadCfg` オブジェクトに追加します。
 
 ```
 "resources": [
@@ -166,23 +190,25 @@ Profiler がデータを収集して分析するまで 10 - 15 分待ちます�
 ]
 ```
 
-## <a name="enable-the-profiler-on-virtual-machine-scale-sets"></a>Virtual Machine Scale Sets での Profiler の有効化
-[WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json) テンプレートをダウンロードして、Profiler を有効にする方法を確認します。 VM テンプレートと同じ変更を仮想マシン スケール セットの分析拡張リソースに適用します。
-スケール セット内の各インスタンスがインターネットにアクセスできることを確認します。これによって、Profiler Agent が収集したサンプルを Application Insights に送信し、分析および表示することができます。
+## <a name="enable-the-profiler-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットで Profiler を有効にする
+Profiler を有効にする方法を確認するには、[WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json) テンプレートをダウンロードします。 VM テンプレートと同じ変更を、仮想マシン スケール セットの診断拡張リソースに適用します。
 
-## <a name="enable-the-profiler-on-service-fabric-applications"></a>Service Fabric アプリケーションでの Profiler の有効化
-現在、Service Fabric アプリケーションで Profiler を有効にするには、次のことが必要です。
-1. Service Fabric クラスター が Profiler エージェントをインストールする WAD 拡張を持つようプロビジョニングする
-2. Application Insights SDK をプロジェクトにインストールし、 AI キーを構成する
-3. アプリケーション コードにインストルメント テレメトリを追加する
+スケール セット内の各インスタンスが、インターネットにアクセスできることを確認します。 これで、Profiler Agent は、収集されたサンプルを、表示と分析のために Application Insights に送信できます。
 
-## <a name="provision-the-service-fabric-cluster-have-the-wad-extension-that-installs-the-profiler-agent"></a>Service Fabric クラスター が Profiler エージェントをインストールする WAD 拡張を持つようプロビジョニングする
-Service Fabric クラスターはセキュリティ保護するかしないかを選択できます。 1 つのゲートウェイ クラスターをセキュリティ保護しない設定とすることで、アクセスに証明書が不要となります。 ビジネス ロジックとデータをホストするクラスターは、セキュリティで保護する必要があります。 Profiler は、セキュリティ保護されている Service Fabric クラスターとセキュリティ保護されていない Service Fabric クラスターの両方で有効にすることができます。 このチュートリアルでは、Profiler を有効にするために必要な変更を説明する目的で、セキュリティ保護されていないクラスターを例として使用しています。 セキュリティ保護されたクラスターも同じ方法でプロビジョニングできます。
+## <a name="enable-the-profiler-on-service-fabric-applications"></a>Service Fabric アプリケーションで Profiler を有効化する
+1. Profiler Agent をインストールする Azure 診断拡張を持つように Service Fabric クラスターをプロビジョニングします。
 
-[ServiceFabricCluster.json](https://github.com/CFreemanwa/samples/blob/master/ServiceFabricCluster.json) をダウンロードします。 VM および仮想マシン スケール セットと同様に、Application Insights キーを AI キーで置き換えます。
+2. Application Insights SDK をプロジェクトにインストールし、Application Insights キーを構成します。
 
-```
-"publisher": "AIP.Diagnostics.Test",
+3. テレメトリをインストルメント化するアプリケーション コードを追加します。
+
+### <a name="provision-the-service-fabric-cluster-to-have-the-azure-diagnostics-extension-that-installs-the-profiler-agent"></a>Profiler Agent をインストールする Azure 診断拡張を持つように Service Fabric クラスターをプロビジョニングします。
+Service Fabric クラスターはセキュリティ保護するかしないかを選択できます。 1 つのゲートウェイ クラスターをセキュリティ保護なしの設定にすることで、アクセスするための証明書を不要にすることができます。 ビジネス ロジックとデータをホストするクラスターは、セキュリティで保護する必要があります。 Profiler は、セキュリティ保護されている Service Fabric クラスターとセキュリティ保護されていない Service Fabric クラスターの両方で有効にすることができます。 このチュートリアルでは、Profiler を有効にするために必要な変更を説明する目的で、セキュリティ保護されていないクラスターを例として使用しています。 セキュリティ保護されたクラスターも同じ方法でプロビジョニングできます。
+
+1. [ServiceFabricCluster.json](https://github.com/CFreemanwa/samples/blob/master/ServiceFabricCluster.json) をダウンロードします。 VM と仮想マシン スケール セット用の操作と同じように、`Application_Insights_Key` を Application Insights キーで置き換えます。
+
+   ```
+   "publisher": "AIP.Diagnostics.Test",
                  "settings": {
                    "WadCfg": {
                      "SinksConfig": {
@@ -193,24 +219,29 @@ Service Fabric クラスターはセキュリティ保護するかしないか�
                          }
                        ]
                      },
-```
+   ```
 
-PowerShell スクリプトを使用してテンプレートをデプロイします。
-```
-Login-AzureRmAccount
-New-AzureRmResourceGroup -Name [Your_Resource_Group_Name] -Location [Your_Resource_Group_Location] -Verbose -Force
-New-AzureRmResourceGroupDeployment -Name [Choose_An_Arbitrary_Name] -ResourceGroupName [Your_Resource_Group_Name] -TemplateFile [Path_To_Your_Template]
+2. PowerShell スクリプトを使用してテンプレートをデプロイします。
 
-```
+   ```
+   Login-AzureRmAccount
+   New-AzureRmResourceGroup -Name [Your_Resource_Group_Name] -Location [Your_Resource_Group_Location] -Verbose -Force
+   New-AzureRmResourceGroupDeployment -Name [Choose_An_Arbitrary_Name] -ResourceGroupName [Your_Resource_Group_Name] -TemplateFile [Path_To_Your_Template]
 
-## <a name="install-application-insights-sdk-in-the-project-and-configure-ai-key"></a>Application Insights SDK をプロジェクトにインストールし、 AI キーを構成する
-Install Application Insights SDK を NuGet Package からインストールします。 安定バージョンの 2.3 以降をインストールします。 [Microsoft.ApplicationInsights.Web](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/) プロジェクトでの Application Insights の構成については、[Application Insights での Service Fabric の使用](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md) を参照してください。
+   ```
 
-## <a name="add-application-code-to-instrument-telemetry"></a>アプリケーション コードにインストルメント テレメトリを追加する
-インストルメント化するすべてのコードについて、周辺に "using" ステートメントを追加します。 次の例では、下の RunAsync メソッドによって、telemetryClient クラスが開始からテレメトリをキャプチャします。 イベントにはアプリケーション全体で一意の名前を付ける必要があります。
+### <a name="install-the-application-insights-sdk-in-the-project-and-configure-the-application-insights-key"></a>Application Insights SDK をプロジェクトにインストールし、Application Insights キーを構成します。
+Install Application Insights SDK を [NuGet パッケージ](https://www.nuget.org/packages/Microsoft.ApplicationInsights.Web/)からインストールします。 必ず、安定バージョンの 2.3 以降をインストールしてください。 
 
-```
-protected override async Task RunAsync(CancellationToken cancellationToken)
+プロジェクトでの Application Insights の構成の詳細については、「[Using Service Fabric with Application Insights](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/blob/dev/appinsights/ApplicationInsights.md)」(Service Fabric と Application Insights の使用) を参照してください。
+
+### <a name="add-application-code-to-instrument-telemetry"></a>テレメトリをインストルメント化するアプリケーション コードを追加する
+1. インストルメント化するすべてのコードについて、その近くに using ステートメントを追加します。 
+
+   次の例では、`RunAsync` メソッドが何らかの動作を行い、`telemetryClient` クラスがテレメトリの開始後にそれをキャプチャします。 イベントにはアプリケーション全体で一意の名前を付ける必要があります。
+
+   ```
+   protected override async Task RunAsync(CancellationToken cancellationToken)
        {
            // TODO: Replace the following sample code with your own logic
            //       or remove this RunAsync override if it's not needed in your service.
@@ -230,9 +261,9 @@ protected override async Task RunAsync(CancellationToken cancellationToken)
 
            }
        }
-```
+   ```
 
-Service Fabric クラスターにアプリケーションをデプロイします。 アプリの実行まで 10 分待ちます。 さらに効果を高めるため、アプリのロード テストも実行できます。 Application Insights ポータルの [パフォーマンス] ブレードで、プロファイルのトレースの例が表示されるのが確認できます。
+2. Service Fabric クラスターにアプリケーションをデプロイします。 アプリの実行まで 10 分待ちます。 さらに効果を高めるため、アプリのロード テストも実行できます。 Application Insights ポータルの **[パフォーマンス]** ブレードで、プロファイリング トレースの例が表示されるのを確認できます。
 
 <!---
 Commenting out these sections for now
@@ -246,7 +277,7 @@ Commenting out these sections for now
 
 ## <a name="next-steps"></a>次のステップ
 
-- プロファイラーの問題のトラブルシューティングに関するヘルプを探す [Profiler troubleshooting](app-insights-profiler.md#troubleshooting)
+- Profiler の問題をトラブルシューティングするためのヘルプを [Profilerのトラブルシューティング](app-insights-profiler.md#troubleshooting)に関する項で探します。
 
-- プロファイラーについて詳しく読む [Application Insights Profiler](app-insights-profiler.md).
+- [Application Insights Profiler](app-insights-profiler.md) で profiler の詳細を確認します。
 

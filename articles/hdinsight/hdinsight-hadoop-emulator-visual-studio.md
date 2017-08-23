@@ -13,25 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/22/2017
+ms.date: 08/11/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: da8029f5cd69f3fd9d423c8e3ff22f2a7527f480
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 574ccaa8b2d9448a60ddf8adc7f92fa3683b1d61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
 # <a name="use-the-azure-data-lake-tools-for-visual-studio-with-the-hortonworks-sandbox"></a>Hortonworks サンドボックスで Azure Data Lake Tools for Visual Studio を使用する
 
-Azure Data Lake には、Data Lake と Azure HDInsight を操作するためのツールに加えて、汎用的な Hadoop クラスターを操作するためのツールも含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで、Data Lake ツールを使用するために必要な手順を説明します。
+Azure Data Lake には、汎用の Hadoop クラスターで動作するツールが含まれています。 このドキュメントでは、ローカルの仮想マシンで実行されている Hortonworks サンドボックスで Data Lake ツールを使用するために必要な手順を説明します。
 
 Hortonworks サンドボックスを使用すると、ローカルの開発環境で Hadoop を使用できます。 開発したソリューションを大規模にデプロイしたい場合に、HDInsight クラスターに移行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
-* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントの執筆とテストには、Oracle VirtualBox で実行されたサンドボックスを使用しています。 そのセットアップは、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md)に関するページの情報を参考にして行いました。
+* 開発環境の仮想マシンで実行されている Hortonworks サンドボックス。 このドキュメントの執筆とテストには、Oracle VirtualBox で実行されたサンドボックスを使用しています。 サンドボックスをセットアップする方法については、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md) に関する記事を参照してください。
 
 * Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017 (エディションは任意)。
 
@@ -41,7 +40,7 @@ Hortonworks サンドボックスを使用すると、ローカルの開発環�
 
 ## <a name="configure-passwords-for-the-sandbox"></a>サンドボックスのパスワードを構成する
 
-Hortonworks サンドボックスが実行中であることを確認します。 その後、[Hadoop エコシステムの使用方法](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関するページに記載された手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
+Hortonworks サンドボックスが実行中であることを確認します。 次に、[Hortonworks サンドボックスの概要](hdinsight-hadoop-emulator-get-started.md#set-sandbox-passwords)に関する記事の手順に従います。 これにより、SSH `root` アカウントと Ambari `admin` アカウントのパスワードを構成します。 これらのパスワードは、Visual Studio からサンドボックスに接続する際に使用されます。
 
 ## <a name="connect-the-tools-to-the-sandbox"></a>サンドボックスにツールを接続する
 
@@ -80,19 +79,19 @@ Hortonworks サンドボックスが実行中であることを確認します�
 
 ## <a name="write-a-hive-query"></a>Hive クエリを記述する
 
-Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順では、ローカル クラスターにアドホック クエリを実行する方法を示します。
+Hive には、構造化データを操作するための、SQL に似たクエリ言語 (HiveQL) が用意されています。 次の手順は、ローカル クラスターに対してオンデマンド クエリを実行する方法を示しています。
 
 1. **サーバー エクスプローラー**で、前の手順で追加したローカル クラスターのエントリを右クリックし、**[Hive クエリの作成]** を選択します。
 
     ![サーバー エクスプローラーのスクリーンショット ([Hive クエリの作成] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/write-hive-query.png)
 
-    新しいクエリ ウィンドウが開き、短時間でクエリを作成して、ローカル クラスターに送信できます。
+    新しいクエリ ウィンドウが表示されます。 このウィンドウでローカル クラスターに対するクエリをすぐに作成して送信できます。
 
 2. 新しいクエリ ウィンドウに、次のコマンドを入力します。
 
         select count(*) from sample_08;
 
-    クエリ ウィンドウの上部で、ローカル クラスターの構成が選択されていることを確認し、**[送信]** をクリックします。 他の値 (**[バッチ]** とサーバー名) は既定値のままにします。
+    クエリを実行するには、ウィンドウの上部にある **[送信]** を選択します。 他の値 (**[バッチ]** とサーバー名) は既定値のままにします。
 
     ![クエリ ウィンドウのスクリーンショット ([送信] ボタンを強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/submit-hive.png)
 
@@ -124,7 +123,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
 ## <a name="create-a-hive-project"></a>Hive プロジェクトを作成する
 
-複数の Hive スクリプトを含むプロジェクトを作成することもできます。 プロジェクトは、複数の関連スクリプトを 1 つにまとめる必要がある場合や、バージョン管理システムを使用して管理する場合に便利です。
+複数の Hive スクリプトを含むプロジェクトを作成することもできます。 関連するスクリプトがある場合やバージョン管理システムにスクリプトを格納する場合は、プロジェクトを使用します。
 
 1. Visual Studio で、**[ファイル]**、**[新規]**、**[プロジェクト]** の順に選択します。
 
@@ -132,7 +131,7 @@ Hive には、構造化データを操作するための、SQL に似たクエ�
 
     ![[新しいプロジェクト] ウィンドウのスクリーンショット ([Azure Data Lake]、[HIVE]、[Hive Sample]\(Hive サンプル\)、[OK] を強調表示)](./media/hdinsight-hadoop-emulator-visual-studio/new-hive-project.png)
 
-**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンをクリックします。
+**[Hive Sample (Hive サンプル)]** プロジェクトには、**WebLogAnalysis.hql** と **SensorDataAnalysis.hql** という 2 つのスクリプトが含まれています。 これらのスクリプトを送信する際も、ウィンドウの上部にある **[送信]** ボタンを使用できます。
 
 ## <a name="create-a-pig-project"></a>Pig プロジェクトを作成する
 

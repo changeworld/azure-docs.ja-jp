@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 9d14022f46c15db531bb3430f302eb49e1335083
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: e9808af4aa875c5199279825325688afc69e6de6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
@@ -49,7 +49,7 @@ Azure Cosmos DB は、自動スケール、予測可能なパフォーマンス�
 
 キー/値 (テーブル)、多桁式、ドキュメント、およびグラフ データ モデルは、Azure Cosmos DB のベースである ARS (アトム、レコード、およびシーケンス) 設計のため、すべてネイティブにサポートされています。 アトム、レコード、およびシーケンスは、さまざまなデータ モデルに容易にマップしたり投影したりできます。 モデルのサブセット用の API は今すぐ使用でき (DocumentDB、MongoDB、Table、および Graph API)、追加のデータ モデルに固有のその他の API は将来使用可能になります。
 
-Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムからストレージ レイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 Cosmos DB はまた、一連のワイヤ プロトコルおよび API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することにより、一意に複数のデータ モデルをネイティブにサポートできるようになる機能も備えています。
+Azure Cosmos DB は、開発者にスキーマやセカンダリ インデックスを要求することなく、取り込んだすべてのデータを自動的にインデックス作成できるスキーマ独立型インデックス作成エンジンを備えています。 このエンジンは、インデックスおよびクエリ処理サブシステムから記憶域のレイアウトを分離する一連の論理インデックス レイアウト (転置、多桁式、ツリー) に依存しています。 Cosmos DB はまた、一連のワイヤ プロトコルおよび API を拡張可能な方法でサポートし、それらをコア データ モデル (1) と論理インデックス レイアウト (2) に効率的に変換することにより、一意に複数のデータ モデルをネイティブにサポートできるようになる機能も備えています。
 
 ### <a name="is-azure-cosmos-db-hipaa-compliant"></a>Azure Cosmos DB は HIPAA 準拠ですか?
 はい。Azure Cosmos DB は HIPAA 準拠です。 HIPAA は、個別に識別できる医療情報の使用、開示、および保護するための要件を確立しています。 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/en-us/TrustCenter/Compliance/HIPAA)を参照してください。
@@ -106,7 +106,7 @@ DocumentDB API の [.NET](documentdb-dotnet-samples.md)、[Java](https://github.
 ### <a name="what-is-a-collection"></a>コレクションとは何ですか?
 コレクションとは、ドキュメントと、関連する JavaScript アプリケーション ロジックのグループです。 コレクションは課金対象のエンティティであり、その[コスト](performance-levels.md)は、スループットと使用しているストレージによって決まります。 コレクションは、1 つ以上のパーティションまたはサーバーにまたがって存在することができ、拡張性があるので、対応できるストレージまたはスループットの量には実質的に制限はありません。
 
-コレクションは、Azure Cosmos DB の課金エンティティでもあります。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「[Azure Cosmos DB Pricing (Azure Cosmos DB の価格)](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。 
+コレクションは、Azure Cosmos DB の課金エンティティでもあります。 各コレクションは、プロビジョニング済みスループットと使用されたストレージ領域に基づいて時間単位で課金されます。 詳細については、「[Azure Cosmos DB の価格](https://azure.microsoft.com/pricing/details/cosmos-db/)」を参照してください。 
 
 ### <a name="how-do-i-create-a-database"></a>どのようにしてデータベースを作成しますか?
 データベースは、[Azure Portal](https://portal.azure.com) (「[コレクションの追加](create-documentdb-dotnet.md#create-collection)」を参照)、[Azure Cosmos DB SDK](documentdb-sdk-dotnet.md) のいずれか、または [REST API](/rest/api/documentdb/) を使用して作成できます。 
@@ -126,13 +126,13 @@ DocumentDB API は、HTTP エンティティ タグ (ETag) によるオプティ
 .NET でオプティミスティック同時実行制御を使用するには、 [AccessCondition](https://msdn.microsoft.com/library/azure/microsoft.azure.documents.client.accesscondition.aspx) クラスを使用します。 .NET サンプルについては、GitHub にある DocumentManagement サンプルの [Program.cs](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/DocumentManagement/Program.cs) を参照してください。
 
 ### <a name="how-do-i-perform-transactions-in-the-documentdb-api"></a>DocumentDB API でトランザクションを実行するにはどうすればよいですか?
-DocumentDB API は、JavaScript のストアド プロシージャとトリガーによる、統合言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Server-side JavaScript programming for Azure Cosmos DB (Azure Cosmos DB のためのサーバー側の JavaScript プログラミング)](programming.md)」を参照してください。
+DocumentDB API は、JavaScript のストアド プロシージャとトリガーによる、統合言語のトランザクションをサポートしています。 スクリプト内のすべてのデータベース操作は、スナップショット分離下で実行されます。 単一パーティション コレクションの場合は、コレクションが実行対象となります。 コレクションがパーティション分割されている場合は、コレクション内の同じパーティション キー値を持つドキュメントが実行対象となります。 ドキュメント バージョン (ETag) のスナップショットは、トランザクションの開始時に取得され、スクリプトが成功された場合のみコミットされます。 JavaScript がエラーをスローした場合、トランザクションはロールバックされます。 詳細については、「[Azure Cosmos DB のサーバー側プログラミング](programming.md)」を参照してください。
 
 ### <a name="how-can-i-bulk-insert-documents-into-cosmos-db"></a>ドキュメントを Cosmos DB に一括挿入するにはどうすればよいですか?
 Azure Cosmos DB へのドキュメントの一括挿入は、次のいずれかの方法で実行できます。
 
-* データ移行ツール。「[Database migration tool for Azure Cosmos DB (Azure Cosmos DB 用のデータベース移行ツール)](import-data.md)」で説明されています。
-* ストアド プロシージャ。「[Server-side JavaScript programming for Azure Cosmos DB (Azure Cosmos DB のためのサーバー側の JavaScript プログラミング)](programming.md)」で説明されています。
+* データ移行ツール。[Azure Cosmos DB 用のデータベース移行ツール](import-data.md)に関する記事で説明されています。
+* ストアド プロシージャ。[Azure Cosmos DB のサーバー側 JavaScript プログラミング](programming.md)に関する記事で説明されています。
 
 ### <a name="does-the-documentdb-api-support-resource-link-caching"></a>DocumentDB API はリソース リンク キャッシュをサポートしていますか?
 はい。Azure Cosmos DB は RESTful サービスであるため、リソース リンクは不変であり、キャッシュできます。 DocumentDB API クライアントは、ドキュメントやコレクションなどのリソースに対する読み取りに "If-None-Match" ヘッダーを指定し、サーバー バージョンが変更されたらローカル コピーを更新できます。
@@ -327,18 +327,15 @@ app.config ファイルに JSON 形式の文字列で指定します。
 ```
 
 ### <a name="azure-cosmos-db-as-a-platform-seems-to-have-lot-of-capabilities-such-as-sorting-aggregates-hierarchy-and-other-functionality-will-you-be-adding-these-capabilities-to-the-table-api"></a>プラットフォームとしての Azure Cosmos DB は、並べ替え、集計、階層などの多数の機能を備えているようですが、 これらの機能は Table API に追加される予定ですか? 
-プレビューでは、Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API の追加機能が提供される予定です。 詳細については、「[SQL queries for Azure Cosmos DB DocumentDB API (Azure Cosmos DB DocumentDB API 用の SQL クエリ)](../documentdb/documentdb-sql-query.md)」を参照してください。
+プレビューでは、Table API は Azure Table Storage と同じクエリ機能を提供します。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API の追加機能が提供される予定です。 詳細については、「[Azure Cosmos DB DocumentDB API の SQL クエリ](../documentdb/documentdb-sql-query.md)」を参照してください。
  
 ### <a name="when-should-i-change-tablethroughput-for-the-table-api-preview"></a>Table API (プレビュー) の TableThroughput は、どのようなときに変更する必要がありますか?
 次のいずれかの条件に該当する場合は、TableThroughput を変更してください。
 * データの抽出、変換、読み込み (ETL) を実行している。または、短時間に大量のデータをアップロードする必要がある。 
-* バックエンドでコンテナーのスループットを増やす必要がある  (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、「[Set throughput for Azure Cosmos DB containers (Azure Cosmos DB コンテナーのスループットを設定する)](set-throughput.md)」を参照してください。
+* バックエンドでコンテナーのスループットを増やす必要がある  (たとえば、使用されたスループットがプロビジョニング スループットを超えており、調整が行われている)。 詳細については、「[Azure Cosmos DB コンテナーのスループットの設定](set-throughput.md)」を参照してください。
 
 ### <a name="can-i-scale-up-or-scale-down-the-throughput-of-my-table-api-preview-table"></a>Table API (プレビュー) のテーブルのスループットはスケールアップまたはスケールダウンできますか? 
 はい。スループットのスケーリングは、Azure Cosmos DB ポータルのスケール ウィンドウを使用して実行できます。 詳細については、[スループットの設定](set-throughput.md)に関する記事をご覧ください。
-
-### <a name="can-the-premium-table-api-preview-take-advantage-of-the-ru-per-minute-offering"></a>Premium Table API (プレビュー) では、1 分あたりの RU を利用できますか? 
-はい。Premium Table API (プレビュー) では、Azure Cosmos DB の機能を利用して、パフォーマンス、待機時間、可用性、整合性の SLA を提供します。 この機能により、テーブルで 1 分あたりの RU を使用できるようになります。 詳細については、「[Azure Cosmos DB の要求ユニット](request-units.md)」をご覧ください。 この機能により、ピーク時にプロビジョニングしなくて済むようになり、ワークロードのスパイクを平滑化できます。
 
 ### <a name="is-a-default-tablethroughput-set-for-newly-provisioned-tables"></a>新しくプロビジョニングされたテーブルには、既定の TableThroughput が設定されるのですか?
 はい。app.config で TableThroughput を上書きしておらず、Azure Cosmos DB であらかじめ作成されているコンテナーを使用していない場合、スループットが 400 に設定されたテーブルが作成されます。
@@ -400,7 +397,7 @@ Azure Cosmos DB は、Microsoft 社内の大規模なアプリケーションを
 
 重要なことですが、DocumentDB の [SQL Dialect](../documentdb/documentdb-sql-query.md) は、基になる Azure Cosmos DB でサポートされる多数の API の 1 つにすぎません。 Azure Cosmos DB のように、完全に管理されたサービスを使用する開発者にとって、そのサービスとの唯一のインターフェイスは、サービスによって公開されている API です。 DocumentDB を既に利用されているお客様の場合、実際には何も変わりません。 Azure Cosmos DB では、DocumentDB で提供されるものとまったく同じ SQL API を利用できます。 現在 (そして今後も)、以前は利用できなかった他の機能を利用できます。 
 
-Microsoft のたゆみない作業のもう 1 つの成果は、スループットとストレージを世界規模で伸縮自在にスケールする素地です。 スケーラビリティを最初に明示したものの 1 つとして、[1 分あたりの要求ユニット](../cosmos-db/request-units-per-minute.md)がありますが、さまざまなワークロードでお客様のコスト削減を支援する追加機能を発表する予定です。 Microsoft はグローバル分散サブシステムに対し、いくつかの根本的な機能強化を実施しました。 多くの開発者向け機能の 1 つに、"一貫性のあるプレフィックス" 整合性モデルがあります。これで、明確に定義された整合性モデルは全部で 5 つになります。 ほかにも多くの魅力的な機能があり、完成の域に達した時点でリリースしていく予定です。 
+Microsoft のたゆみない作業のもう 1 つの成果は、スループットとストレージを世界規模で伸縮自在にスケールする素地です。 Microsoft はグローバル分散サブシステムに対し、いくつかの根本的な機能強化を実施しました。 多くの開発者向け機能の 1 つに、"一貫性のあるプレフィックス" 整合性モデルがあります。これで、明確に定義された整合性モデルは全部で 5 つになります。 ほかにも多くの魅力的な機能があり、完成の域に達した時点でリリースしていく予定です。 
 
 ### <a name="what-do-i-need-to-do-to-ensure-that-my-documentdb-resources-continue-to-run-on-azure-cosmos-db"></a>DocumentDB リソースを Azure Cosmos DB で引き続き実行できるようにするには何をすればよいですか?
 
@@ -418,7 +415,7 @@ DocumentDB は、Azure サービスとしてポータルに表示されなくな
 
 ### <a name="are-there-changes-to-pricing"></a>料金に変更はありますか?
 
-いいえ。Azure Cosmos DB でアプリを実行するコストは以前と同じです。 ただし、新しい "1 分あたりの要求ユニット" 機能 は利用価値がありますので、ぜひご検討ください。 詳細については、[スループットの分単位でのスケール](../cosmos-db/request-units-per-minute.md)に関する記事を参照してください。
+いいえ。Azure Cosmos DB でアプリを実行するコストは以前と同じです。
 
 ### <a name="are-there-changes-to-the-slas"></a>SLA に変更はありますか?
 

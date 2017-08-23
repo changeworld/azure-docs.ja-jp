@@ -1,5 +1,4 @@
 ---
-
 title: "Azure でのガバナンス | Microsoft Docs"
 description: "クラウドベースのコンピューティング サービスについて学びます。これには、アプリケーションまたはエンタープライスのニーズを満たすために自動的にスケールアップとスケールダウンを行うことができる、コンピューティング インスタンスとサービスの多様な選択肢が含まれます。"
 services: security
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: TomSh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 91fb3c70d95cca46dd68e3f15ad67c914cfbfa5b
+ms.translationtype: HT
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: f3fbca281dbbfca7ff9392d003429719c589afbd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -387,7 +385,7 @@ AD DS GPO の Azure セキュリティ ガバナンスを使用すると、フ�
 
 [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) では、サブスクリプション内のリソースのセキュリティの状態を一元的に表示することができ、リソースの侵害を防ぐうえで役立つ推奨事項が提供されます。 また、より詳細なポリシーを設定することもできます (たとえば、特定のリソース グループにポリシーを適用して、企業が対処しようとしているリスクへの対策を調整できます)。
 
-![[Azure Security Center] \(Azure Security Center)](./media/governance-in-azure/security-governance-in-azure-fig7.png)
+![Azure Security Center](./media/governance-in-azure/security-governance-in-azure-fig7.png)
 
 Security Center は、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。 サブスクリプションのリソースに対して[セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policies)を有効にすると、Security Center は、リソースのセキュリティを分析して潜在的な脆弱性を特定します。 ネットワークの構成に関する情報は、すぐに利用可能になります。
 
@@ -424,7 +422,7 @@ Microsoft には、Microsoft のすべてのサービスを監視して評価す
 
 Operations Management Suite (OMS) は、最初からクラウド用に設計された一連の管理サービスです。 オンプレミスのリソースのデプロイと管理は行わず、OMS コンポーネント全体が Azure にホストされます。 構成が最小限で済むため、文字どおり数分で稼働させることができます。
 
-![Operation Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
+![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig8.png)
 
 OMS サービスがクラウドで実行されるからといって、オンプレミスの環境を効果的に管理できないわけではありません。
 
@@ -434,7 +432,7 @@ OMS サービスがクラウドで実行されるからといって、オンプ�
 
 OMS のコア機能は、Azure で実行される一連のサービスによって提供されます。 サービスごとに固有の管理機能があり、サービスを組み合わせてさまざまな管理シナリオを実現できます。
 
-![Operation Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
+![Operations Manager Suite](./media/governance-in-azure/security-governance-in-azure-fig9.JPG)
 
 Azure Operation Manager の機能は、管理ソリューションを提供することによって拡張されます。 [管理ソリューション](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)は、1 つ以上の OMS サービスを活用する管理シナリオが実装された、パッケージになった一連のロジックです。
 

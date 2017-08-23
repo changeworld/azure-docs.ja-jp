@@ -18,10 +18,10 @@ ms.date: 03/29/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 8f34fd29fe6c93eb4cd1a05c79bf9b47072451f2
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: c35892421c3d3019204c9e763980e813930d19a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -234,14 +234,14 @@ ms.lasthandoff: 08/04/2017
 [sap-templates-2-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-2-tier-user-image%2Fazuredeploy.json
 [sap-templates-3-tier-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image%2Fazuredeploy.json
 [sap-templates-3-tier-user-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-user-image%2Fazuredeploy.json
-[storage-azure-cli]:../../../storage/storage-azure-cli.md
-[storage-azure-cli-copy-blobs]:../../../storage/storage-azure-cli.md#copy-blobs
-[storage-introduction]:../../../storage/storage-introduction.md
-[storage-powershell-guide-full-copy-vhd]:../../../storage/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/storage-premium-storage.md
-[storage-redundancy]:../../../storage/storage-redundancy.md
-[storage-scalability-targets]:../../../storage/storage-scalability-targets.md
-[storage-use-azcopy]:../../../storage/storage-use-azcopy.md
+[storage-azure-cli]:../../../storage/common/storage-azure-cli.md
+[storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
+[storage-introduction]:../../../storage/common/storage-introduction.md
+[storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
+[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-redundancy]:../../../storage/common/storage-redundancy.md
+[storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
+[storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
 [template-201-vm-from-specialized-vhd]:https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-from-specialized-vhd
 [templates-101-simple-windows-vm]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-simple-windows-vm
 [templates-101-vm-from-user-image]:https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-from-user-image
@@ -477,12 +477,12 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 
 [ガイドはこちら][dbms-guide]
 
-### <a name="using-azure-as-dr-site-for-an-sap-on-premise-landscape"></a>SAP オンプレミス ランドスケープ用 DR サイトとしての Azure の使用
-タイトル: SAP NetWeaver: Hyper-V と Microsoft Azure ベースのディザスター リカバリー ソリューションの構築 
+### <a name="using-azure-site-recovery-for-sap-workload"></a>SAP ワークロード用の Azure Site Recovery
+タイトル: SAP NetWeaver: Azure Site Recovery を使用したディザスター リカバリー ソリューションの構築 
 
-概要: このドキュメントでは、Azure Site Recovery Services を使用して、オンプレミス SAP ランドスケープのディザスター リカバリーの場所として Azure をどのように使用できるかについて説明しています。 Azure Site Recovery Services については、最初のステップで説明しています。 2 番目のステップでは、ディザスター リカバリーを目的として SAP NetWeaver システムを Azure にレプリケートするために Azure Site Recovery Services を使用する設計を文書化しています。 
+概要: このドキュメントでは、ディザスター リカバリー シナリオを処理することを目的として Azure Site Recovery サービスを使用する方法を説明しています。 Azure Site Recovery Services を使用した オンプレミス SAP ランドスケープのディザスター リカバリーの場所として Azure を使用する事例が説明されています。 このドキュメントで説明されている別のシナリオは Azure-to-Azure (A2A) ディザスター リカバリー事例であり、それを Azure Site Recovery で管理する方法も説明されています。  
 
-更新日: 2016 年 2 月
+更新日: 2017 年 8 月
 
 [ガイドはこちら](http://aka.ms/asr-sap)
 
