@@ -13,7 +13,7 @@ ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
 ms.date: 07/12/2017
-ms.author: donnam, glenga
+ms.author: glenga
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 07ad15c61bd4b3912dfa2f629218deebdebd6dc8

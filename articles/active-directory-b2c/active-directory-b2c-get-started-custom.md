@@ -14,11 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: joroja;parahk;gsacavdm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 1cc36d1fd40121fed23ab6a84429a303690c2726
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 3c4c7e78b25bd4210a8909e5582e8a31764f17c2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
@@ -31,20 +31,21 @@ ms.lasthandoff: 06/08/2017
 
 作業を進める前に、すべてのユーザー、アプリ、ポリシーなどのコンテナーである Azure AD B2C テナントを準備しておくようにします。 まだない場合は、[Azure AD B2C テナントを作成する](active-directory-b2c-get-started.md)必要があります。 先に進む前に、Azure AD B2C 組み込みポリシーのチュートリアルを完了し、組み込みポリシーを使用してアプリケーションを構成することを、すべての開発者に強くお勧めします。 アプリケーションは、カスタム ポリシーを呼び出すようにポリシー名をわずかに変更すれば、どちらの種類のポリシーでも動作します。
 
-カスタム ポリシーの編集にアクセスするには、テナントにリンクされている有効な Azure サブスクリプションが必要です。
+>[!NOTE]
+>カスタム ポリシーの編集にアクセスするには、テナントにリンクされている有効な Azure サブスクリプションが必要です。 [Azure AD B2C テナントを Azure サブスクリプションにリンクしていない場合](active-directory-b2c-how-to-enable-billing.md)、または Azure サブスクリプションが無効になっている場合は、[Identity Experience Framework] ボタンは使用できません。
 
 ## <a name="add-signing-and-encryption-keys-to-your-b2c-tenant-for-use-by-custom-policies"></a>カスタム ポリシーで使用する署名キーと暗号化キーを B2C テナントに追加する
 
 1. Azure AD B2C テナント設定の **[Identity Experience Framework]** ブレードを開きます。
 2. **[ポリシー キー]** を選択して、テナント内で利用できるキーを表示します。
 3. 存在しない場合は、B2C_1A_TokenSigningKeyContainer を作成します。<br>
-    a.  **[追加]**を選択します。 <br>
-    b.  **[Generate] \(生成)** を選択します。<br>
+    a. **[追加]**を選択します。 <br>
+    b. **[Generate] \(生成)** を選択します。<br>
     c. **[名前]** には `TokenSigningKeyContainer` を使用します。 <br> 
     プレフィックス `B2C_1A_` が自動的に追加される場合があります。<br>
     d. **[キーの種類]** には **[RSA]** を使用します。<br>
     e. **[日付]** には既定値を使用します。 <br>
-    f. **[キー使用法]** には **[署名]** を使用します。<br>
+    f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **[キー使用法]** には **[署名]** を使用します。<br>
     g. **[作成]**を選択します。<br>
 4. 存在しない場合は、B2C_1A_TokenEncryptionKeyContainer を作成します。<br>
  a. **[追加]**を選択します。<br>

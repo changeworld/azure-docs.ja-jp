@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: saeeda
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: f06e02cb15532a4e0f6660ca3a88a7031d498632
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 3321eaea6ce56e284b7ff0d92ce895e08d0ea177
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 # <a name="azure-active-directory-b2c-faqs"></a>Azure Active Directory B2C: FAQ
@@ -36,7 +36,11 @@ Azure AD テナントでは、テナントに属するユーザーは、`<xyz>@<
 Azure AD B2C テナントでは、ユーザーは大部分のアプリに任意のメール アドレス (joe@comcast.net、bob@gmail.com、sarah@contoso.com、jim@live.com など) を使用してサインインします。 この種類のアカウントはローカル アカウントです。  ローカル アカウントとして任意のユーザー名もサポートしています (joe、bob、sarah、jim など)。 Azure Portal で Azure AD B2C サービスを構成することで、これらの 2 種類のローカル アカウントのいずれかを選択できます。
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>現在サポートされているソーシャル ID プロバイダーはどれですか。 将来サポートする予定のプロバイダーはどれですか。
-現在、Facebook、Google+、LinkedIn、Microsoft アカウント、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。  お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを継続的に追加する予定です。
+現在、Facebook、Google+、LinkedIn、Amazon、Twitter (プレビュー)、WeChat (プレビュー)、Weibo (プレビュー)、および QQ (プレビュー) をサポートしています。 お客様のご要望に基づいて、他の人気のあるソーシャル ID プロバイダーのサポートを追加する予定です。
+
+Azure AD B2C でも[カスタム ポリシー](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)のサポートがを追加されています。  開発者は、これらの[カスタム ポリシー](https://docs.microsoft.com/en-us/azure/active-directory-b2c/active-directory-b2c-overview-custom)を使用して、[OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) または SAML をサポートする任意の ID プロバイダーで独自のポリシーを作成できます。 
+
+[カスタム ポリシー スターター パック](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack)を使ってカスタム ポリシーの作成をお試しください。
 
 ### <a name="can-i-configure-scopes-to-gather-more-information-about-consumers-from-various-social-identity-providers"></a>さまざまなソーシャル ID プロバイダーからお客様に関する情報をさらに収集するためにスコープを構成できますか。
 いいえ。ただし、この機能は検討中です。 サポートされている一連のソーシャル ID プロバイダーに使用されている、既定のスコープは次のとおりです。

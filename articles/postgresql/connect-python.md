@@ -6,10 +6,10 @@ author: SaloniSonpal
 ms.author: salonis
 manager: jhubbard
 editor: jasonwhowell
-ms.service: postgresql-database
+ms.service: postgresql
 ms.custom: mvc
 ms.devlang: python
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 08/15/2017
 ms.translationtype: HT
 ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b

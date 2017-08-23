@@ -12,17 +12,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/23/2017
+ms.date: 08/11/2017
 ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 54b5b8d0040dc30651a98b3f0d02f5374bf2f873
-ms.openlocfilehash: 24396f7c82bcc0fb076c4fceca0ec4b0963d36e8
+ms.reviewer: 
+ms.custom: oldportal;it-pro;
+robots: NOINDEX
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: de6dec5a19380170a69e361b063d7ed0f7117795
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
+ms.lasthandoff: 08/15/2017
 
 ---
-# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
+# <a name="how-to-enable-native-client-apps-to-interact-with-proxy-ppplications"></a>ネイティブ クライアント アプリケーションからプロキシ アプリケーションを操作できるようにする方法
+
+>[!NOTE]
+>この記事は、提供が終了した Azure クラシック ポータルに適用されます。 代わりに、[Azure Portal](https://portal.azure.com) を使うことをお勧めします。 Azure Portal のアプリケーション プロキシ アプリには、他の SaaS アプリと同じ条件付きアクセス機能があります。 条件付きアクセスについて詳しくは、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」をご覧ください。
+
 Azure Active Directory アプリケーション プロキシは、SharePoint、Outlook Web Access、カスタムの基幹業務アプリケーションなどのブラウザー アプリケーションを公開するために幅広く使用されています。 また、デバイスにインストールされる点が Web アプリとは異なるネイティブ クライアント アプリケーションを発行する際にも使用できます。 この場合、標準の Authorize HTTP ヘッダーで送信された Azure AD 発行トークンをサポートしている必要があります。
 
 ![エンド ユーザー、Azure Active Directory、および発行済みアプリケーション間の関係](./media/active-directory-application-proxy-native-client/richclientflow.png)

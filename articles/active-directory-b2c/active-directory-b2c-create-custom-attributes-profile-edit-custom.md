@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/29/2017
 ms.author: joroja
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: fb4302f028ecacf095adbe1b52e31e0432102776
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 6334c8e04f89159d28b94e104fcdcca667bb71b8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
@@ -76,7 +76,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して `ApplicationObjectId` を追加する
 
-拡張属性の読み取りまたは書き込みを行う TechnicalProfile ごとに、前の手順で取得した ApplicationObjectId および ClientId という 2 つの項目を含む `<Metadata>` 要素を追加する必要があります。
+拡張属性の読み取りまたは書き込みを行う TechnicalProfile ごとに、前の手順で取得した ApplicationObjectId (上記からのオブジェクト ID) および ClientId (上記からのアプリケーション ID) という 2 つの項目を含む `<Metadata>` 要素を追加する必要があります。
 
 ```xml
     <ClaimsProviders>

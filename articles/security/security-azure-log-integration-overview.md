@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 08/10/2017
 ms.author: TomSh
 ms.custom: azlog
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 5e672bd6b9356ce16663e843e4a4e7365cb159c3
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 1aa93ac52d1d5c4efe222c6da505e3639170cf55
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="introduction-to-microsoft-azure-log-integration"></a>Microsoft Azure ログ統合の概要
@@ -29,10 +29,10 @@ Azure ログ統合と、その主な機能およびしくみについて紹介�
 
 Azure ログ統合は無料のソリューションで、未加工のログを、Azure リソースからオンプレミスのセキュリティ情報/イベント管理 (SIEM) システムに統合できるようにします。
 
-Azure ログ統合では、Windows イベント ビューアー チャネルからの Windows イベント、[Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure Security Center アラート](../security-center/security-center-intro.md)、および Azure リソースからの [Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 この統合は、SIEM ソリューションですべての資産についてのオンプレミスまたはクラウドの統合ダッシュボードを提供する助けとなります。これによりセキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
+Azure ログ統合では、Windows イベント ビューアー ログの Windows イベントと、Azure リソースの [Azure アクティビティ ログ](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)、[Azure Security Center アラート](../security-center/security-center-intro.md)、および [Azure 診断ログ](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)を収集します。 この統合は、SIEM ソリューションですべての資産についてのオンプレミスまたはクラウドの統合ダッシュボードを提供する助けとなります。これによりセキュリティ イベントの集計、関連付け、分析を実行し、アラートを生成できます。
 
 >[!NOTE]
-現時点でサポートされているクラウドは、Azure 商用クラウドおよび Azure Government クラウドのみです。 その他のクラウドは現時点ではサポートされていません。
+現時点でサポートされているクラウドは、Azure 商用クラウドおよび Azure Government クラウドのみです。 その他のクラウドはサポートされていません。
 
 ![Azure ログ統合][1]
 
@@ -43,23 +43,10 @@ Azure サービスでは、すべてのサービスの広範なログ記録を�
 * **データ プレーン ログ**は、Azure リソース使用の一環として発生するイベントの可視性を提供します。 このタイプのログの例は、Windows 仮想マシンにおける Windows イベント ビューアーの**システム**、**セキュリティ**、および**アプリケーション**の各チャンネルです。 もう 1 つの例は、Azure Monitor によって構成される診断ログです。
 * **処理済みイベント**は、ユーザーに代わって処理された分析済みのイベントとアラートを提供します。 このタイプのイベントの例は、Azure Security Center アラートです。Azure Security Center は、ユーザーのサブスクリプションを処理および分析して、ユーザーの現在のセキュリティ体制に関するアラートを提供します。
 
-現在のところ Azure ログ統合は、Azure アクティビティ ログ、Azure サブスクリプション内の Windows 仮想マシンからの Windows イベント ログ、Azure Security Center アラート、Azure 診断ログ、および Azure Active Directory 監査ログの統合をサポートしています。
+Azure ログ統合は、ArcSight、QRadar、および Splunk をサポートしています。 いずれの場合でも、ご利用の SIEM ベンダーにネイティブ コネクタがあるかどうかを評価することを問い合わせてください。 ネイティブ コネクタを使用できる場合、状況によっては Azure ログ統合を使用する必要はありません。 サポートされているログの種類の詳細については、よく寄せられる質問 (FAQ) のページを参照してください。
 
 >[!NOTE]
 Azure ログの統合は無料のソリューションですが、ログ ファイル情報の保存によって発生する Azure Storage のコストがあります。
-
-次の表では、ログのカテゴリと SIEM 統合の詳細について説明します。
-
-| ログのタイプ  |JSON (Splunk、ELK) をサポートする Log Analytics| ArcSight  | QRadar  |   
-|---|---|---|---|
-|  AAD 監査ログ |  あり | FlexConnector JSON パーサー ファイルの作成が必要です。 詳しくは、ArcSight のドキュメントをご覧ください。  |  ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |  
-| アクティビティ ログ  | はい  |  ダウンロード センターおよび Azure ログ統合ダウンロードで入手可能な FlexConnector JSON パーサー ファイル |  [QRadar DSM](https://www.ibm.com/support/knowledgecenter/SSKMKU/com.ibm.dsm.doc/c_dsm_guide_microsoft_azure_overview.html) (Syslog 経由で送信) |  
-| ASC アラート  | はい  |  FlexConnector JSON パーサー ファイルの作成が必要です。 詳しくは、ArcSight のドキュメントをご覧ください。 | [QRadar DSM](https://www.ibm.com/support/knowledgecenter/SSKMKU/com.ibm.dsm.doc/c_dsm_guide_microsoft_azure_overview.html) (Syslog 経由で送信)   |   
-| 診断ログ (リソース ログ) | はい | エンド ユーザーは FlexConnector JSON パーサー ファイルを作成する必要があります。 方法については ArcSight のドキュメントをご覧ください。 | ログ ソース拡張機能を作成する必要があります。 詳しくは、QRadar のドキュメントをご覧ください。 |
-| VM ログ | はい (JSON 経由ではなく転送されたイベントの場合) | はい (転送されたイベントの場合) | はい (転送されたイベントの場合) |
-
-サポートされているログの種類の詳細については、[FAQ](security-azure-log-integration-faq.md) のページを参照してください。
-
 
 [Azure ログ統合に関する MSDN フォーラム](https://social.msdn.microsoft.com/Forums/office/home?forum=AzureLogIntegration)を通して、コミュニティの支援を受けることができます。 このフォーラムでは、AzLog コミュニティに、Azure ログ統合を最大限に活用する方法についての質問、回答、ヒント、およびコツによる相互サポート機能を提供しています。 さらに、Azure ログ統合チームがこのフォーラムを監視しており、可能なときにはいつでも支援を提供します。
 
