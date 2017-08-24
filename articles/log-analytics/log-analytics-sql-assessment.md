@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 045c4cd49e7b7b1e0b02cc7dc6ede636d0622208
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: d2aed3315fe60ace46dfb4176dc13aa417257b0c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="optimize-your-sql-server-environment-with-the-sql-assessment-solution-in-log-analytics"></a>Log Analytics で SQL 評価ソリューションを使用して SQL Server 環境を最適化する
@@ -66,7 +66,7 @@ SQL 評価では、有効になっているエージェントを使用して、W
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![あり](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![あり](./media/log-analytics-sql-assessment/oms-bullet-green.png) |![なし](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![いいえ](./media/log-analytics-sql-assessment/oms-bullet-red.png) |![あり](./media/log-analytics-sql-assessment/oms-bullet-green.png) |7 日 |
+| Windows | &#8226; | &#8226; |  |  | &#8226; |7 日 |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS で使用される Operations Manager の実行アカウント
 OMS の Log Analytics では、データの収集と OMS サービスへのデータの送信に、Operations Manager エージェントと管理グループを使用します。 OMS は、ワークロード用の管理パックを基に付加価値サービスを実現しています。 それぞれのワークロードがさまざまなセキュリティ コンテキストで管理パックを実行するためには、ワークロード固有の特権が必要となります (ドメイン アカウントなど)。 Operations Manager の実行アカウントを構成して資格情報を与えることが必要です。

@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2016
+ms.date: 08/16/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 398abb0a56f1a12ad563dce889c602af4a5b9bcf
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 7f56f6d89a9990ab7e7f50a86993e9e22b73d646
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Azure Cosmos DB 用の Power BI チュートリアル: Power BI コネクタでデータを視覚化する
@@ -34,6 +34,9 @@ ms.lasthandoff: 07/26/2017
 * Power BI Desktop では、どのようにしてコレクションからデータを取得できますか?
 * Power BI Desktop では、どのようにして入れ子になった JSON データを変換できますか?
 * PowerBI.com では、どのようにしてレポートを発行して共有できますか?
+
+> [!NOTE]
+> Azure Cosmos DB 用の Power BI コネクタは、データの抽出および変換のために Power BI Desktop に接続します。 Power BI Desktop で作成されたレポートは、後で PowerBI.com に発行できます。 PowerBI.com では、Azure Cosmos DB データの直接抽出および変換は実行できません。 
 
 ## <a name="prerequisites"></a>前提条件
 この Power BI チュートリアルの手順に従う前に、次のリソースにアクセスできることを確認してください。
@@ -92,7 +95,7 @@ Cosmos DB アカウントから火山データを取得し、次のレポート�
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - Desktop Connect ウィンドウ](./media/powerbi-visualize/power_bi_connector_pbiconnectwindow.png)
 8. このエンドポイントに初めて接続している場合は、アカウント キーの入力を求められます。 独自のアカウントの場合は、Azure Portal の **[[Read-only Keys] (読み取り専用キー)](manage-account.md#keys)** ブレードにある **[主キー]** ボックスからキーを取得します。 デモ アカウントの場合、キーは `MSr6kt7Gn0YRQbjd6RbTnTt7VHc5ohaAFu7osF0HdyQmfR+YhwCH2D2jcczVIR1LNK3nMPNBD31losN7lQ/fkw==` です。 適切なキーを入力し、**[接続]** をクリックします。
    
-    レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure ポータルの [[キー]](manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
+    レポートを作成する際は読み取り専用キーを使用することをお勧めします。  これにより、マスター キーが不用意に公開される潜在的なセキュリティ リスクを抑えることができます。 読み取り専用キーは、Azure Portal の [[キー]](manage-account.md#keys) ブレードで取得できます。また、上記のデモ アカウント情報を使用することもできます。
    
     ![Azure Cosmos DB Power BI コネクタの Power BI チュートリアル - アカウント キー](./media/powerbi-visualize/power_bi_connector_pbidocumentdbkey.png)
     

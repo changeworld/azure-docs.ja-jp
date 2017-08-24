@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f4d2fe502e6b6a93c0e455a5369b63deb9074c82
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a874bc48cc94fff32382ccdb832f0fbd3d08e03f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API の概要
@@ -103,13 +103,14 @@ HTTP 要求を行うときに使用できる HTTP 動詞の完全な一覧を次
 | MERGE |名前付きプロパティを変更して、既存のオブジェクトを更新します。 |
 | HEAD |GET 応答に対するオブジェクトのメタデータを返します。 |
 
-## <a name="limitation"></a>制限事項
-パブリック REST v2 では、クエリ結果が 1000 件に制限されているため、エンティティを照会するときには、一度に返されるエンティティが 1000 個に制限されます。 [この .NET の例](media-services-dotnet-manage-entities.md#enumerating-through-large-collections-of-entities)と[この REST API の例](media-services-rest-manage-entities.md#enumerating-through-large-collections-of-entities)に示すように、**Skip** および **Take** (.NET)/**top** (REST) を使用する必要があります。 
-
-## <a name="discovering-media-services-model"></a>Media Services のモデルの検出
+## <a name="discover-media-services-model"></a>Media Services のモデルの検出
 Media Services のエンティティを見つけやすくするには、$metadata 操作を使用できます。 これによって、すべての有効なエンティティの種類、エンティティのプロパティ、関連付け、関数、アクションなどを取得できます。 次の例は、URI を作成する方法を示しています。 https://media.windows.net/API/$metadata
 
 ブラウザーにメタデータを表示する場合は　URI の末尾に "?api-version=2.x" を追加してください。または、要求に　x-ms-version　を含めないでください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 

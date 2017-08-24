@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: nini
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6f864581fe1d1771371d6805407cb881fedb4187
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 8c564c0dcbb2f9be286917b2f4d8a40da5406fae
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="assess-service-fabric-applications-and-micro-services-with-the-azure-portal"></a>Azure Portal を使用して Service Fabric アプリケーションとマイクロ サービスを評価する
@@ -56,11 +56,12 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 ![Service Fabric](./media/log-analytics-service-fabric/3.png)
 
-デプロイを開始するには、法律条項に同意して [作成] をクリックします。 展開が完了すると、新しいワークスペースと作成したクラスターが表示され、WADServiceFabric*Event、WADWindowsEventLogs、および WADETWEvent テーブルが追加されます。
+法律条項に同意して **[作成]** をクリックすると、デプロイが開始されます。 展開が完了すると、新しいワークスペースと作成したクラスターが表示され、WADServiceFabric*Event、WADWindowsEventLogs、および WADETWEvent テーブルが追加されます。
 
 ![Service Fabric](./media/log-analytics-service-fabric/4.png)
 
 ## <a name="deploy-a-service-fabric-cluster-connected-to-a-log-analytics-workspace-with-vm-extension-installed"></a>VM 拡張機能がインストールされている Log Analytics ワークスペースに接続されている Service Fabric クラスターのデプロイ
+
 このテンプレートは、次の処理を実行します。
 
 1. 既に Log Analytics ワークスペースに接続されている Azure Service Fabric クラスターをデプロイします。 新しいワークスペースを作成するか、既存のワークスペースを使用することができます。
@@ -75,48 +76,53 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ![Service Fabric](./media/log-analytics-service-fabric/5.png)
 
 ### <a name="viewing-performance-data"></a>パフォーマンス データの表示
+
 ノードからパフォーマンス データを表示するには、次の処理を行います。
-</br>
+
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 
-* Azure Portal から Log Analytics ワークスペースを起動します。
-
-![Service Fabric](./media/log-analytics-service-fabric/6.png)
-
-* 左側のウィンドウの [設定] に移動して、[データ]、[Windows パフォーマンス カウンター] の順に選択して [選選択したパフォーマンス カウンターを追加する] で ![Service Fabric](./media/log-analytics-service-fabric/7.png) を選択します。
-* [ログ検索] で、次のクエリを使用してノードに関する主要なメトリックを詳しく調べます。
-  </br>
+- Azure Portal から Log Analytics ワークスペースを起動します。
+  ![Service Fabric](./media/log-analytics-service-fabric/6.png)
+- 左側のウィンドウの [設定] に移動して、[データ]、[Windows パフォーマンス カウンター] の順に選択して [選選択したパフォーマンス カウンターを追加する] で ![Service Fabric](./media/log-analytics-service-fabric/7.png) を選択します。
+- [ログ検索] で、次のクエリを使用してノードに関する主要なメトリックを詳しく調べます。
 
     a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 過去 1 時間におけるすべてのノードの平均 CPU 使用率を比較して、どのノードで問題が発生し、どの期間にノードの使用率が急上昇しているかを確認します。
 
-    ``` Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR. ```
+    ```
+    Type=Perf ObjectName=Processor CounterName="% Processor Time"|measure avg(CounterValue) by Computer Interval 1HOUR.
+    ```
 
     ![Service Fabric](./media/log-analytics-service-fabric/10.png)
 
     b. 次のクエリを使用して、各ノードで利用可能なメモリについて同様の線グラフを表示します。
 
-    ```Type=Perf ObjectName=Memory CounterName="Available MBytes Memory" | measure avg(CounterValue) by Computer Interval 1HOUR.```
+    ```
+    Type=Perf ObjectName=Memory CounterName="Available MBytes Memory" | measure avg(CounterValue) by Computer Interval 1HOUR.
+    ```
 
     各ノードの Available MBytes の正確な平均値を示すすべてのノードの一覧を表示するには、次のクエリを使用します。
 
-    ```Type=Perf (ObjectName=Memory) (CounterName="Available MBytes") | measure avg(CounterValue) by Computer ```
+    ```
+    Type=Perf (ObjectName=Memory) (CounterName="Available MBytes") | measure avg(CounterValue) by Computer
+    ```
 
     ![Service Fabric](./media/log-analytics-service-fabric/11.png)
 
-
     c. 1 時間ごとの平均値、最小値、最大値、および 75 パーセンタイルの CPU 使用率を調べることによって特定のノードにドリルダウンする場合は、次のクエリを使用できます ([Computer] フィールドを置き換えます)。
 
-    ```Type=Perf CounterName="% Processor Time" InstanceName=_Total Computer="BaconDC01.BaconLand.com"| measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR```
+    ```
+    Type=Perf CounterName="% Processor Time" InstanceName=_Total Computer="BaconDC01.BaconLand.com"| measure min(CounterValue), avg(CounterValue), percentile75(CounterValue), max(CounterValue) by Computer Interval 1HOUR
+    ```
 
     ![Service Fabric](./media/log-analytics-service-fabric/12.png)
 
-    Log Analytics でのパフォーマンス メトリックについての詳細は、[ここを参照してください。] (https://blogs.technet.microsoft.com/msoms/tag/metrics/)
+Log Analytics でのパフォーマンス メトリックの詳細については、「[Operations Management Suite blog (Operations Management Suite ブログ)](https://blogs.technet.microsoft.com/msoms/tag/metrics/)」をご覧ください。
 
 
 ## <a name="adding-an-existing-storage-account-to-log-analytics"></a>既存のストレージ アカウントの Log Analytics への追加
+
 このテンプレートは、既存のストレージ アカウントを新規または既存の Log Analytics ワークスペースに追加します。
-</br>
 
 [![Azure へのデプロイ](./media/log-analytics-service-fabric/deploybutton.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Foms-existing-storage-account%2Fazuredeploy.json)
 
@@ -130,6 +136,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 ![Service Fabric](./media/log-analytics-service-fabric/9.png)
 
 ## <a name="view-service-fabric-events"></a>Service Fabric イベントの表示
+
 展開が完了し、Service Fabric ソリューションがワークスペースで有効になったら、Log Analytics ポータルで **[Service Fabric]** タイルを選択して Service Fabric ダッシュ ボードを起動します。 ダッシュボードには、次の表に示した列が存在します。 それぞれの列には、特定の時間の範囲について、その列の基準に該当するイベント数の上位 10 件が表示されます。 ログ検索を実行してアラート全件を取得するには、各列の右下にある **[See all]** (すべて表示) をクリックするか、列ヘッダーをクリックします。
 
 | **Service Fabric イベント** | **description** |
@@ -148,7 +155,7 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 
 | プラットフォーム | 直接エージェント | Operations Manager エージェント | Azure Storage (Azure Storage) | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![いいえ](./media/log-analytics-malware/oms-bullet-red.png) |![あり](./media/log-analytics-malware/oms-bullet-green.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |![なし](./media/log-analytics-malware/oms-bullet-red.png) |10 分 |
+| Windows |  |  | &#8226; |  |  |10 分 |
 
 > [!NOTE]
 > ダッシュボードの上部にある **[Data based on last 7 days] \(過去 7 日間に基づくデータ)** をクリックして、Service Fabric ソリューションのこれらのイベントの範囲を変更することができます。 また、過去 7 日、過去 1 日、過去 6 時間のいずれかの時間範囲内に生成されたイベントを表示できます。 **[Custom]** (カスタム) を選択して、独自の日付範囲を指定することもできます。
@@ -156,5 +163,6 @@ Service Fabric ソリューションでは Service Fabric VM からの Azure 診
 >
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md) を使用して、詳細な Service Fabric イベント データを確認してください。
 

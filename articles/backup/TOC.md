@@ -55,6 +55,7 @@
 #### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
 #### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
 #### [システムの状態とベア メタル回復の保護](backup-mabs-system-state-and-bmr.md)
+### [Azure Backup Server からのデータ復旧](backup-azure-alternate-dpm-server.md)
 
 ## Data Protection Manager
 ### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)

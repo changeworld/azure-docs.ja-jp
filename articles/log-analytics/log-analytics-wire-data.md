@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: banders
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: a552bbce2c6a1b60ab73e3e945985ff3dccbc93a
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 
@@ -400,7 +400,7 @@ OMS ポータルで、**[Wire Data 2.0]** タイルをクリックして、ワ�
 
 ![ログ検索例](./media/log-analytics-wire-data/log-search-example01.png)
 
-同様に、**[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
+同様に、**[ローカル サブネット]** ブレードを使用して、サブネットを通過しているネットワーク トラフィックの量を確認することができます。 ユーザーは、多くの場合、アプリケーションにとって重要な領域の周辺にサブネットを定義します。 このブレードによって、これらの領域へのビューが提供されます。
 
 ![ログ検索例](./media/log-analytics-wire-data/log-search-example02.png)
 

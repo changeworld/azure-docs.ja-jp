@@ -1,5 +1,5 @@
 ---
-title: "REST を使用してメディア プロセッサを作成する方法 | Microsoft Docs"
+title: "REST を使用してメディア プロセッサ インスタンスを取得する方法 | Microsoft Docs"
 description: "メディア プロセッサ コンポーネントを作成し、Azure Media Services 用にメディア コンテンツのエンコード、形式の変換、暗号化、または復号化を行う方法について説明します。"
 services: media-services
 documentationcenter: 
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 4983069924f0edaeee7ffc91131bb83d9f9f4508
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 0650d3727df1b6738f140439ce4c22078d188d83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-get-a-media-processor-instance"></a>方法: メディア プロセッサ インスタンスを取得する
@@ -33,19 +33,22 @@ ms.lasthandoff: 08/01/2017
 
 ## <a name="azure-media-processors"></a>Azure メディア プロセッサ 
 
-以下のトピックに、メディア プロセッサの一覧を示しています。
+次のトピックは、メディア プロセッサの一覧です。
 
 * [Encoding メディア プロセッサ](scenarios-and-availability.md#encoding-media-processors)
 * [Analytics メディア プロセッサ](scenarios-and-availability.md#analytics-media-processors)
 
-## <a name="get-mediaprocessor"></a>MediaProcessor の取得
-> [!NOTE]
-> Media Services REST API を使用する場合は、次のことに考慮します。
-> 
-> Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
-> 
-> に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。 AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
-> 
+>[!NOTE]
+>Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+
+## <a name="get-a-media-processor"></a>メディア プロセッサを取得する
 
 次の REST 呼び出しは、メディア プロセッサ インスタンスを名前 (ここでは **Media Encoder Standard**) で取得する方法を示しています。 
 

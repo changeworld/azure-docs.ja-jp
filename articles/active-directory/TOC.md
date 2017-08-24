@@ -10,16 +10,9 @@
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
 ## [会社のブランドの構成](customize-branding.md)
+## [Azure AD へのユーザーの追加](add-users-azure-active-directory.md)
+## [ユーザーへのライセンスの割り当て](license-users-groups.md)
 ## [セルフサービスによるパスワードのリセットの構成](active-directory-passwords-getting-started.md)
-## Azure AD ライセンスの管理
-### [Azure Portal](active-directory-licensing-get-started-azure-portal.md)
-### [クラシック ポータル](active-directory-licensing-what-is.md)
-### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
-#### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
-#### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
-#### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
-#### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
-#### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
 
 
 # 方法
@@ -44,11 +37,6 @@
 #### [ツールの比較](active-directory-hybrid-identity-design-considerations-tools-comparison.md)
 
 ## ユーザーの管理
-### Add users
-#### [Azure Portal](active-directory-users-create-azure-portal.md)
-#### [クラシック ポータル](active-directory-create-users.md)
-
-
 ### [グループを使用してライセンスを割り当てる](active-directory-licensing-whatis-azure-portal.md)
 #### [グループにライセンスを割り当てる](active-directory-licensing-group-assignment-azure-portal.md)
 #### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
@@ -147,16 +135,10 @@
 ### [FAQ](device-management-faq.md)
 ### タスク
 #### [ハイブリッド Azure AD 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md) 
-#### トラブルシューティング
-##### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
-##### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-
-### デバイスを登録する
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
-#### [FAQ](active-directory-device-registration-faq.md)
-#### トラブルシューティング
-##### [Windows 10 と Windows Server 2016 のトラブルシューティング](active-directory-device-registration-troubleshoot-windows.md)
-##### [Windows ダウンレベル クライアントのトラブルシューティング](active-directory-device-registration-troubleshoot-windows-legacy.md)
+### トラブルシューティング
+#### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
+#### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
 ### [Azure AD Join](active-directory-azureadjoin-overview.md)
 #### [プラン](active-directory-azureadjoin-deployment-aadjoindirect.md)
 #### [デバイスの登録の設定](active-directory-azureadjoin-setup.md)

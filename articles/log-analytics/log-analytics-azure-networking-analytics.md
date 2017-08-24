@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2017
 ms.author: richrund
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 10ca10b2f644c29aad244abab720d2ce5586714f
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 06b67322b3812a668a515ecc357171ede1d85441
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="azure-networking-monitoring-solutions-in-log-analytics"></a>Log Analytics の Azure Networking 監視ソリューション
@@ -64,7 +63,7 @@ Azure Application Gateway とネットワーク セキュリティ グループ�
 
 | プラットフォーム | 直接エージェント | Systems Center Operations Manager エージェント | Azure | Operations Manager が必要か | 管理グループによって送信される Operations Manager エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |![あり](./media/log-analytics-azure-networking/oms-bullet-green.png) |![なし](./media/log-analytics-azure-networking/oms-bullet-red.png) |![いいえ](./media/log-analytics-azure-networking/oms-bullet-red.png) |ログの際 |
+| Azure |  |  |&#8226; |  |  |ログの際 |
 
 
 ## <a name="azure-application-gateway-analytics-solution-in-log-analytics"></a>Log Analytics の Azure Application Gateway 分析ソリューション

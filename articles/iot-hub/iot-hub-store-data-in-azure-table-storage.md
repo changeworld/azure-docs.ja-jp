@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/12/2017
+ms.date: 08/16/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ed867e1e7702d3f178feeab007ac94fb1d67c140
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 06503f9564e00ef62587d02f2da4778974e246c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="save-iot-hub-messages-that-contain-sensor-data-to-your-azure-table-storage"></a>センサー データを含む IoT Hub メッセージを Azure Table Storageに保存する
@@ -47,11 +47,11 @@ Azure ストレージ アカウントと Azure 関数アプリを作成し、IoT
 
 ## <a name="create-an-azure-storage-account"></a>Azure のストレージ アカウントの作成
 
-1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[ストレージ]** > **[ストレージ アカウント]** > **[作成]** の順にクリックします。
 
 2. ストレージ アカウントに必要な情報を入力します。
 
-   ![Azure ポータルでのストレージ アカウントの作成](media\iot-hub-store-data-in-azure-table-storage\1_azure-portal-create-storage-account.png)
+   ![Azure Portal でのストレージ アカウントの作成](media\iot-hub-store-data-in-azure-table-storage\1_azure-portal-create-storage-account.png)
 
    * **[名前]**: ストレージ アカウントの名前。 名前はグローバルに一意である必要があります。
 
@@ -109,11 +109,11 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 
 ## <a name="create-and-deploy-an-azure-function-app"></a>Azure 関数アプリを作成してデプロイする
 
-1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[Compute]** > **[Function App]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com/) で、**[新規]** > **[Compute]** > **[Function App]** > **[作成]** の順にクリックします。
 
 2. 関数アプリに必要な情報を入力します。
 
-   ![Azure ポータルでの関数アプリの作成](media\iot-hub-store-data-in-azure-table-storage\3_azure-portal-create-function-app.png)
+   ![Azure Portal での関数アプリの作成](media\iot-hub-store-data-in-azure-table-storage\3_azure-portal-create-function-app.png)
 
    * **アプリ名**: 関数アプリの名前。 名前はグローバルに一意である必要があります。
 
@@ -153,7 +153,7 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 
    a. **[統合]** > **[新しい出力]** > **[Azure Table Storage]** > **[選択]** の順にクリックします。
 
-      ![Azure ポータルでテーブル ストレージを関数アプリに追加する](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
+      ![Azure Portal でテーブル ストレージを関数アプリに追加する](media\iot-hub-store-data-in-azure-table-storage\4_azure-portal-function-app-add-output-table-storage.png)
 
    b. 必要な情報を入力します。
 
@@ -169,7 +169,7 @@ IoT Hub は、アプリケーションによる IoT Hub メッセージの読み
 
 8. **[イベント ハブ コンシューマー グループ]** で、作成したコンシューマー グループの名前を入力し、**[保存]** をクリックします。
 
-9. **[開発]** をクリックし、**[ファイルの表示]** をクリックします。
+9. 左側で作成した関数をクリックし、右側で **[ファイルの表示]** をクリックします。
 
 10. `index.js` のコードを次のコードに置き換えます。
 

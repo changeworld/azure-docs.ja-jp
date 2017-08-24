@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 08/10/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 50cff5d8e2d88b855bb0297bef1d183ab1533801
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 4ec324d94717fa1f93eda6f24d9dbd9fc0cdc455
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-encode-an-asset-by-using-media-encoder-standard"></a>Media Encoder Standard を使用して資産をエンコードする方法
@@ -39,14 +39,22 @@ ms.lasthandoff: 08/01/2017
 * タスクは、Job エンティティの Tasks ナビゲーション プロパティを使用して、インラインで定義できます。
 * OData バッチ処理を使用します。
 
-中間ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
+ソース ファイルは常にアダプティブ ビットレート MP4 セットにエンコードして、その後 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を使用して目的の形式に変換することをお勧めします。
 
 出力資産がストレージで暗号化されている場合は、資産配信のポリシーを構成する必要があります。 詳細については、「[方法: アセットの配信ポリシーを構成する](media-services-rest-configure-asset-delivery-policy.md)」を参照してください。
 
-> [!NOTE]
-> メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
->
->
+## <a name="considerations"></a>考慮事項
+
+Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。
+
+メディア プロセッサの参照を開始する前に、正しいメディア プロセッサの ID を使用していることを確認してください。 詳細については、[メディア プロセッサの取得](media-services-rest-get-media-processor.md)に関するページをご覧ください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
 
 ## <a name="create-a-job-with-a-single-encoding-task"></a>1 つのエンコード タスクを持つジョブの作成
 > [!NOTE]

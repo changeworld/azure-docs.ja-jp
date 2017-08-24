@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 2e1387e6cf5fedb983063a7f72ffe74c73948534
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 033a137d121f3478c7c680f24de344dcd4965f2c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-iot-hub-get-started-tutorials"></a>Azure IoT Hub 入門チュートリアル
@@ -40,6 +40,7 @@ Azure IoT Hub に IoT デバイスまたはゲートウェイを接続します�
 | IoT デバイス                       | プログラミング言語 |
 |----------------------------------|----------------------|
 | Raspberry Pi                     | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]    |
+| IoT DevKit                       | [DevKit][DevKit]     |
 | Intel Edison                     | [Node.js][Ed_Nd][C][Ed_C]    |
 | Adafruit Feather HUZZAH ESP8266  | [Arduino][Hu_Ard]              |
 | Sparkfun ESP8266 Thing Dev       | [Arduino][Th_Ard]              |
@@ -59,6 +60,7 @@ Azure IoT Hub に IoT デバイスまたはゲートウェイを接続します�
 [Pi_Nd]: iot-hub-raspberry-pi-kit-node-get-started.md
 [Pi_C]: iot-hub-raspberry-pi-kit-c-get-started.md
 [Pi_Py]: iot-hub-raspberry-pi-kit-python-get-started.md
+[DevKit]: iot-hub-arduino-iot-devkit-az3166-get-started.md
 [Ed_Nd]: iot-hub-intel-edison-kit-node-get-started.md
 [Ed_C]: iot-hub-intel-edison-kit-c-get-started.md
 [Hu_Ard]: iot-hub-arduino-huzzah-esp8266-get-started.md

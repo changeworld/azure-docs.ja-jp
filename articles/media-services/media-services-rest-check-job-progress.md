@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2017
+ms.date: 08/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 0f66bb4291d4e8c457f592734437513a727ecc29
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 23b6c0f7abd40d67792d45e4ea0fae02efeae861
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/13/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="how-to-check-job-progress"></a>方法: ジョブの進行状況をチェックする
@@ -30,6 +30,15 @@ ms.lasthandoff: 01/13/2017
 > 
 
 ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 ジョブの状態プロパティを使用して、ジョブの状態を調べることができます。 状態プロパティの詳細については、 [Job Entity Properties (Job エンティティのプロパティ)](https://docs.microsoft.com/rest/api/media/operations/job#job_entity_properties)をご覧ください。
+
+## <a name="connect-to-media-services"></a>Media Services への接続
+
+AMS API に接続する方法については、「[Azure AD 認証を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
+
+>[!NOTE]
+>に正常に接続されると、 https://media.windows.net 別の Media Services の URI を指定する 301 リダイレクトを受け取ります。 その新しい URI に再度コールする必要があります。
+
+## <a name="check-job-progress"></a>ジョブの進行状況をチェックする
 
 要求:
 
@@ -67,4 +76,7 @@ ms.lasthandoff: 01/13/2017
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
 
+## <a name="see-also"></a>関連項目
+
+[Media Services Operations REST API の概要](media-services-rest-how-to-use.md)
 

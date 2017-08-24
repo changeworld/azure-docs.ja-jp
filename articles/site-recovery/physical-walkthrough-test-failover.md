@@ -14,17 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: e6ebab3e4d7deeefbab395b0a898fbf441d75b5d
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: ffbdd93adbe9c89b0e7614f73e93627f6bc45fb5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="step-11-run-a-test-failover-of-physical-servers-to-azure"></a>手順 11: Azure への物理サーバーのテスト フェールオーバーを実行する
 
-この記事では、Azure ポータルで [Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの物理サーバーから Azure へのテスト フェールオーバーを実行する方法について説明します。
+この記事では、Azure Portal で [Azure Site Recovery](site-recovery-overview.md) サービスを使用してオンプレミスの物理サーバーから Azure へのテスト フェールオーバーを実行する方法について説明します。
 
 コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に投稿してください。
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 06/29/2017
 - 管理ディスクは、Resource Manager モデルを使用してデプロイされた Azure VM に対してのみ作成することができます。  
 - この設定が有効な場合、**[管理ディスクを使用]** が有効になっているリソース グループの可用性セットのみを選択できます。 管理ディスクを持つ VM は、**[管理ディスクを使用]** が **[はい]** に設定されている可用性セットに含まれている必要があります。 VM に対してこの設定が有効でない場合は、有効な管理ディスクを持たないリソース グループの可用性セットのみを選択できます。
 - 管理ディスクと可用性セットの詳細については、[こちら](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)を参照してください。
-- レプリケーションに使用するストレージ アカウントが Storage Service Encryption によって暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、VM の保護を無効にした後、暗号化が有効でないストレージ アカウントを使用して再度有効にします。 [詳細情報](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)。
+- レプリケーションに使用するストレージ アカウントが Storage Service Encryption によって暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、VM の保護を無効にした後、暗号化が有効でないストレージ アカウントを使用して再度有効にします。 [詳細情報](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)
 
 
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
@@ -69,10 +68,10 @@ ms.lasthandoff: 06/29/2017
 1. **[保護されているアイテム]** で、**[レプリケートされたアイテム]** をクリックし、マシンをクリックします。
 2. **[レプリケートされたアイテム]** ウィンドウには、マシン情報、正常性状態、および最新の使用可能な復旧ポイントの概要が表示されます。 **[プロパティ]** をクリックすると、詳細が表示されます。
 3. **[コンピューティングとネットワーク]** では、次の操作を行うことができます。
-    - Azure VM 名を変更する。 名前は [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たしている必要があります。
-    - フェールオーバー後の[リソース グループ](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md)を指定する。
+    - Azure VM 名を変更する。 この名前は [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たす必要があります。
+    - フェールオーバー後の [リソース グループ] を指定する。
     - Azure VM のターゲット サイズを指定する。
-    - [可用性セット](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)を選択する。
+    - [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)を選択する。
     - [管理ディスク](#managed-disk-considerations)を使用するかどうかを指定する。 Azure への移行時に管理ディスクをマシンに接続する場合は、**[はい]** を選択します。
     - ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示または変更する。
 4. **[ディスク]** で、VM のオペレーティング システム ディスクとデータ ディスクに関する情報を確認できます。
@@ -82,8 +81,8 @@ ms.lasthandoff: 06/29/2017
 すべてのセットアップが完了したら、テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。
 
 - フェールオーバー後に RDP を使用して Azure VM に接続する場合は、[接続の準備](site-recovery-test-failover-to-azure.md#prepare-to-connect-to-azure-vms-after-failover)をします。
- - すべてをテストするには、テスト環境に Active Directory と DNS をコピーする必要があります。 [詳細情報](site-recovery-active-directory.md#test-failover-considerations)。
- - テスト フェールオーバーの詳細については、[この記事](site-recovery-test-failover-to-azure.md)を参照してください。
+ - すべてをテストするには、テスト環境に Active Directory と DNS をコピーする必要があります。 [詳細情報](site-recovery-active-directory.md#test-failover-considerations)
+ - テスト フェールオーバーの詳細については、[こちらの記事](site-recovery-test-failover-to-azure.md)を参照してください。
 - 始める前に、簡単なビデオ概要を見ます。
 
      
@@ -101,7 +100,7 @@ ms.lasthandoff: 06/29/2017
 
 4. **[OK]** をクリックすると、フェールオーバーが開始されます。 進行状況を追跡するには、マシンをクリックしてそのプロパティを開くか、コンテナー名 > **[設定]** > **[ジョブ]** > **[Site Recovery ジョブ]** で **[テスト フェールオーバー]** ジョブをクリックします。
 
-5. フェールオーバーの完了後は、Azure ポータルの **[仮想マシン]** にレプリカの Azure も表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
+5. フェールオーバーの完了後は、Azure Portal の **[仮想マシン]** にレプリカの Azure も表示されるようになります。 VM が適切なサイズであること、適切なネットワークに接続していること、実行されていることを確認する必要があります。
 
 6. フェールオーバー後の接続の準備が完了したら、Azure VM に接続できるようになります。
 

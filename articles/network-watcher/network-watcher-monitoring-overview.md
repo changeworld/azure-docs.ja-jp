@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 31c1bbdd04423d98dba0f8da435930ad3fed52e2
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: db1034ea9e48e1daa7da43a8f0d6efc5df2abf7d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -54,8 +54,26 @@ Network Watcher は地域サービスであり、ネットワーク シナリオ
 
 Network Watcher では、[Azure のロールベースのアクセス制御 (RBAC) モデル](../active-directory/role-based-access-control-what-is.md)を使用しています。 Network Watcher には次のアクセス許可が必要です。 Network Watcher API を開始またはポータルから Network Watcher を使用するために用いるロールには、必ず必要なアクセスを設定してください。
 
-|リソース| アクセス許可| | |---|---| | |Microsoft.
-|Microsoft.Storage/ |読み取り| | |Microsoft.Authorization/| 読み取り| | |Microsoft.Resources/subscriptions/resourceGroups/| 読み取り| | |Microsoft.Storage/storageAccounts/listServiceSas/ | アクション| | |Microsoft.Storage/storageAccounts/listAccountSas/ | アクション| | |Microsoft.Storage/storageAccounts/listKeys/ | アクション| | |Microsoft.Compute/virtualMachines/ |読み取り| | |Microsoft.Compute/virtualMachines/ |書き込み| | |Microsoft.Compute/virtualMachineScaleSets/ |読み取り| | |Microsoft.Compute/virtualMachineScaleSets/ |書き込み| | |Microsoft.Network/networkWatchers/packetCaptures/| 読み取り| | |Microsoft.Network/networkWatchers/packetCaptures/| 書き込み| | |Microsoft.Network/networkWatchers/packetCaptures/| 削除| | |Microsoft.Network/networkWatchers/ |書き込み| | |Microsoft.Network/networkWatchers/| 読み取り| | |Microsoft.Insights/alertRules/ |*| | |Microsoft.Support/| *| |
+|リソース| アクセス許可| |
+|---|---| 
+|Microsoft.|
+|Microsoft.Storage/ |読み取り| |
+|Microsoft.Authorization/| 読み取り| |
+|Microsoft.Resources/subscriptions/resourceGroups/| 読み取り| |
+|Microsoft.Storage/storageAccounts/listServiceSas/ | アクション| |
+|Microsoft.Storage/storageAccounts/listAccountSas/ |アクション| |
+|Microsoft.Storage/storageAccounts/listKeys/ | アクション| |
+|Microsoft.Compute/virtualMachines/ |読み取り| |
+|Microsoft.Compute/virtualMachines/ |書き込み| |
+|Microsoft.Compute/virtualMachineScaleSets/ |読み取り| |
+|Microsoft.Compute/virtualMachineScaleSets/ |書き込み| |
+|Microsoft.Network/networkWatchers/packetCaptures/| 読み取り| |
+|Microsoft.Network/networkWatchers/packetCaptures/| 書き込み| |
+|Microsoft.Network/networkWatchers/packetCaptures/| 削除| |
+|Microsoft.Network/networkWatchers/ |書き込み| |
+|Microsoft.Network/networkWatchers/| 読み取り| |
+|Microsoft.Insights/alertRules/ |*| |
+|Microsoft.Support/| *| |
 
 ### <a name="network-subscription-limits"></a>ネットワーク サブスクリプションの制限
 

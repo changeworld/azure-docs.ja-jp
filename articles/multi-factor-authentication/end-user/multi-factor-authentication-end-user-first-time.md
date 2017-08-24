@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 58ddf3913a5d00ee9a89a1fa112f3d55d9a815ed
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b05672744dadb15f2780af100f3dd41412e55265
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定

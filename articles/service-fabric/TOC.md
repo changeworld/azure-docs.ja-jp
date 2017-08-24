@@ -176,11 +176,14 @@
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-actors-get-started.md)
 ##### [Linux での Java](service-fabric-reliable-actors-get-started-java.md)
+##### [Linux での Java アクター](service-fabric-create-your-first-linux-application-with-java.md)
 #### [通知の送信](service-fabric-reliable-actors-events.md)
 #### [タイマーとアラームの設定](service-fabric-reliable-actors-timers-reminders.md)
 #### [KvsActorStateProvider の構成](service-fabric-reliable-actors-kvsactorstateprovider-configuration.md)
 #### [通信の設定の構成](service-fabric-reliable-actors-fabrictransportsettings.md)
 #### [ReliableDictionaryActorStateProvider の構成](service-fabric-reliable-actors-reliabledictionarystateprovider-configuration.md)
+
+### [Maven への対応を目的とした従来の Java アプリケーションの移行](service-fabric-migrate-old-javaapp-to-use-maven.md)
 
 ### [セキュリティで保護された通信用のリバース プロキシの構成](service-fabric-reverseproxy-configure-secure-communication.md)
 
