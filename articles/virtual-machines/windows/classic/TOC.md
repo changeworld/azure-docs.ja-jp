@@ -1,6 +1,6 @@
 # 概要
 ## [仮想マシンについて](../../virtual-machines-windows-about.md)
-## [ディスクと VHD](../../../storage/storage-about-disks-and-vhds-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+## [ディスクと VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)
 ## [FAQ](faq.md)
 ## [VM、Web サイト、およびクラウド サービスの比較](../../../app-service-web/choose-web-site-cloud-service-vm.md)

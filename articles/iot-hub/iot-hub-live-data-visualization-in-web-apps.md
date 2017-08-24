@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/16/2017
 ms.author: xshi
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4f30643926def3259e603a94c741b8f65427b8da
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: e037f5c29cabf8e5d0d3e7ded187280a0652d5c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-by-using-the-web-apps-feature-of-azure-app-service"></a>Azure App Service の Web Apps 機能を使用して Azure IoT Hub からのリアルタイム センサー データを視覚化する
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="what-you-do"></a>作業内容
 
-- Azure ポータルで Web アプリを作成する。
+- Azure Portal で Web アプリを作成する。
 - コンシューマー グループを追加して、データにアクセスできるよう IoT ハブを準備する。
 - IoT ハブからセンサー データを読み取る Web アプリを構成する。
 - Web アプリでホストされる Web アプリケーションをアップロードする。
@@ -112,6 +112,9 @@ Web アプリの **[概要]** ページで、URL をクリックして Web ア�
 IoT ハブから取得したリアルタイムの温度と湿度のデータが表示されます。
 
 ![リアルタイムの温度と湿度を示す Web アプリのページ](media/iot-hub-live-data-visualization-in-web-apps/9_web-app-page-show-real-time-temperature-humidity-azure.png)
+
+> [!NOTE]
+> デバイスでサンプル アプリケーションが実行されていることを確認します。 実行されていない場合は、空のグラフを取得し、チュートリアルの[デバイスのセットアップ](iot-hub-raspberry-pi-kit-node-get-started.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 Web アプリを使用して、IoT ハブからのリアルタイム センサー データを視覚化することができました。

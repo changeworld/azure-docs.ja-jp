@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: 26428ad0d3acda959235ffa780294154ba61bca5
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: d72f0e149c7137631d3e6f0b51a24955c81a0b5b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -32,8 +32,8 @@ Cloud Shell の初回起動時に、セッション間でファイルを維持�
 
 基本設定を使用し、サブスクリプションのみを選択すると、Cloud Shell では、最寄りのサポートされるリージョンに 3 つのリソースが自動的に作成されます。
 * リソース グループ: `cloud-shell-storage-<region>`
-* ストレージ アカウント: `cs-uniqueGuid`
-* ファイル共有: `cs-<user>-<domain>-com-uniqueGuid`
+* ストレージ アカウント: `cs<uniqueGuid>`
+* ファイル共有: `cs-<user>-<domain>-com-<uniqueGuid>`
 
 ![サブスクリプション設定](media/basic-storage.png)
 

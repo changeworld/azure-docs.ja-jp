@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/01/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 91c443f6d9998f15f4b1b1eaad33f0a319fcf4d4
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: aa1cec2ef11da6aa8a8c4089be36994ab5f61682
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Azure にアップロードする Windows VHD または VHDX を準備する
@@ -265,9 +265,12 @@ Set-Service -Name RemoteRegistry -StartupType Auto
     ```
     クリーンで正常なディスクがレポートに示されていることを確認してください。
 
-2. ブート構成データ (BCD) を設定します。 管理者特権のコマンド ウィンドウで次のコマンドを実行します。
+2. ブート構成データ (BCD) を設定します。 
+
+    > [!Note]
+    > PowerShell **ではなく**、必ず管理者特権のコマンド ウィンドウでこれらのコマンドを実行してください。
    
-   ```PowerShell
+   ```CMD
    bcdedit /set {bootmgr} integrityservices enable
    
    bcdedit /set {default} device partition=C:

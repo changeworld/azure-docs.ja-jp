@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 5c2cb05ced7841899c2bd19f627d13b86a4b05cc
+ms.translationtype: HT
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: c6568e491429f6046ab164ab5eacd0ae5846e201
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/14/2017
 
 ---
 # <a name="network-performance-monitor-solution-in-log-analytics"></a>Log Analytics のネットワーク パフォーマンス モニター ソリューション
@@ -218,7 +217,7 @@ Windows を実行しているコンピューターのファイアウォール規
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![あり](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![あり](./media/log-analytics-network-performance-monitor/oms-bullet-green.png) |![なし](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![いいえ](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |![なし](./media/log-analytics-network-performance-monitor/oms-bullet-red.png) |TCP ハンドシェイク/ICMP ECHO メッセージを 5 秒おきに収集し、3 分おきにデータを送信 |
+| Windows | &#8226; | &#8226; |  |  |  |TCP ハンドシェイク/ICMP ECHO メッセージを 5 秒おきに収集し、3 分おきにデータを送信 |
 
 このソリューションは、代理トランザクションを使用してネットワークの正常性を評価します。 ネットワーク上のいたるところにインストールされた OMS エージェントどうしが、(監視用に選択されたプロトコルに応じて) TCP パケットまたは ICMP エコーを交換します。 エージェントは、このプロセスを通じて、ラウンドトリップ時間とパケット損失 (発生した場合) を把握します。 各エージェントはさらに、他のエージェントに対して traceroute を定期的に実行し、テストが必要なネットワークのさまざまなルートをすべて検出します。 このデータを使用することで、エージェントはネットワーク待機時間とパケット損失の数値を推定できます。 テストは 5 秒おきに繰り返され、データはエージェントによって 3 分間集計されて Log Analytics サービスにアップロードされます。
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/06/2017
+ms.date: 08/15/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 24d970faa0b4b1a74629b55efb034e9d79eddb1d
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: ffb78384b49c980040dbdee91a5216093b95892e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -100,16 +100,19 @@ OMS Agent for Linux のパッケージをインストールした後、システ
 ### <a name="upgrade-from-a-previous-release"></a>以前のリリースからのアップグレード
 このリリースでは、1.0.0-47 より前のバージョンからのアップグレードがサポートされます。 `--upgrade` コマンドを使用してインストールを実行すると、エージェントのすべてのコンポーネントが最新バージョンにアップグレードされます。
 
-## <a name="install-the-oms-agent-for-linux"></a>OMS Agent for Linux のインストール
-OMS Agent for Linux は自己解凍型のインストール可能なシェル スクリプト バンドルで提供されます。 このバンドルにはエージェント コンポーネントのそれぞれの Debian および RPM パッケージが含まれており、直接インストールすることも、抽出して個々のパッケージを取得することもできます。 x64 アーキテクチャ用と x86 アーキテクチャ用のバンドルがそれぞれ 1 つ提供されます。 
+## <a name="installing-the-agent"></a>エージェントのインストール
 
-### <a name="installing-the-agent"></a>エージェントのインストール
+このセクションでは、バンドルを使用して OMS Agent for Linux をインストールする方法について説明します。これには、エージェント コンポーネントごとに Debian パッケージと RPM パッケージが含まれており、  直接インストールすることも、抽出して個々のパッケージを取得することもできます。  
 
-1. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
-2. `--install` または `--upgrade` 引数を使用して、バンドルをインストールします。 
+まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページで、上部のメニューから **[設定]** を選択し、**Connected Sources\Linux Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
+
+1. 最新の [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) または [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh) をGitHub からダウンロードします。  
+2. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
+3. `--install` または `--upgrade` 引数を使用して、バンドルをインストールします。 
 
     > [!NOTE]
     > 既存のパッケージがインストールされている場合 (Linux 用の System Center Operations Manager エージェントが既にインストールされている場合など) は、`--upgrade` 引数を使用します。 インストール中に Operations Management Suite に接続するには、`-w <WorkspaceID>` および `-s <Shared Key>` パラメーターを指定します。
+
 
 ### <a name="bundle-command-line-arguments"></a>バンドルのコマンドライン引数
 ```
@@ -310,7 +313,7 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 3. このトピックの前述のインストール手順に従って、正しいワークスペース ID とワークスペース キーを使用して再オンボードします。
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題: オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
-これは既知の問題であり、OMS ワークスペースへの Linux データの最初のアップロード時に発生します。 送信されているデータやサービス エクスペリエンスには影響しません。
+これは、Linux データを OMS ワークスペースに最初にアップロードするときに発生する既知の問題です。 送信されているデータやサービス エクスペリエンスには影響しません。
 
 ### <a name="issue--you-are-not-seeing-any-data-in-the-oms-portal"></a>問題: OMS ポータルにデータが表示されない
 

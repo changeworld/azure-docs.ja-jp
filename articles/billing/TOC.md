@@ -32,6 +32,7 @@
 ### [サインアップの問題](billing-troubleshoot-azure-sign-up-issues.md)
 ### [拒否されたカード](billing-credit-card-fails-during-azure-sign-up.md)
 ### [サインインの問題](billing-cannot-login-subscription.md)
+### [サブスクリプションが見つからない](billing-no-subscriptions-found.md)
 
 # リファレンス
 ## [API の概要](billing-usage-rate-card-overview.md)

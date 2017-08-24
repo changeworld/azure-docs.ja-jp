@@ -1,12 +1,11 @@
 ---
-title: "2 段階認証を使用した Azure MFA サインイン エクスペリエンス | Microsoft Docs"
+title: "2 段階認証を使用した Azure MFA サインイン | Microsoft Docs"
 description: "このページでは、Azure MFA で利用可能な各種サインイン方法を確認できる参照先情報を示します。"
 keywords: "ユーザー認証, サインイン エクスペリエンス, 携帯電話でのサインイン, 会社の電話でのサインイン"
 services: multi-factor-authentication
 documentationcenter: 
 author: kgremban
 manager: femila
-editor: pblachar
 ms.assetid: b310b762-471b-4b26-887a-a321c9e81d46
 ms.service: multi-factor-authentication
 ms.workload: identity
@@ -15,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
 ms.author: kgremban
+ms.reviewer: librown
 ms.custom: end-user
-translationtype: Human Translation
-ms.sourcegitcommit: 2f03ba60d81e97c7da9a9fe61ecd419096248763
-ms.openlocfilehash: e972446ea92e8fd31406c9ccff7832b7441f3a2a
-ms.lasthandoff: 03/04/2017
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: d12115be61ca00dfb86dd822ccae9f9096fa796a
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/16/2017
 
 ---
+
 # <a name="the-sign-in-experience-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使用したサインイン エクスペリエンス
 > [!NOTE]
 > この記事では、一般的なサインイン エクスペリエンスを紹介しています。 サインインに関するヘルプやトラブルシューティングについては、「[2 段階認証で発生する問題](multi-factor-authentication-end-user-troubleshoot.md)」を参照してください。
@@ -38,23 +40,21 @@ ms.lasthandoff: 03/04/2017
 | [通常の方法を使用できないので、別の方法でサインインする](#signing-in-with-an-alternate-method) |
 
 ## <a name="signing-in-with-a-phone-call"></a>電話の呼び出しを使用してサインインする
-ユーザーの携帯電話または職場の電話への呼び出しによる&2; 段階認証のエクスペリエンスは次のとおりです。
+ユーザーの携帯電話または職場の電話への呼び出しによる 2 段階認証のエクスペリエンスは次のとおりです。
 
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。  
 2. Microsoft がユーザーに電話をかけます。  
 3. 電話に出て、# キーを押します。  
-4. これでサインインできます。  
 
 ## <a name="signing-in-with-a-text-message"></a>テキスト メッセージを使用してサインインする
-ユーザーの携帯電話へのテキスト メッセージによる&2; 段階認証のエクスペリエンスは次のとおりです。
+ユーザーの携帯電話へのテキスト メッセージによる 2 段階認証のエクスペリエンスは次のとおりです。
 
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。 
 2. Microsoft からユーザーに、番号コードを含むテキスト メッセージが送信されます。 
 3. サインイン ページのボックスにコードを入力します。 
-4. これでサインインできます。 
 
 ## <a name="signing-in-with-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリを使用してサインインする 
-2 段階認証に Microsoft Authenticator アプリを使用するエクスペリエンスは次のとおりです。 アプリを使用したサインインの方法は&2; 種類あります。 デバイスでプッシュ通知を受け取るか、アプリを開いて確認コードを取得します。
+2 段階認証に Microsoft Authenticator アプリを使用するエクスペリエンスは次のとおりです。 アプリを使用したサインインの方法は 2 種類あります。 デバイスでプッシュ通知を受け取るか、アプリを開いて確認コードを取得します。
 
 ### <a name="to-sign-in-with-a-notification-from-the-microsoft-authenticator-app"></a>Microsoft Authenticator アプリの通知を使用してサインインするには
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
@@ -75,17 +75,15 @@ Microsoft Authenticator アプリを使用して確認コードを取得する�
   ![検証コードを入力する](./media/multi-factor-authentication-end-user-signin/verify3.png)
 
 3. お客様の電話で Microsoft Authenticatior アプリを開き、サインインのためのボックスにコードを入力します。
-4. これでサインインできます。
 
 ## <a name="signing-in-with-an-alternate-method"></a>別の方法を使用してサインインする
 場合によっては、通常の確認方法として設定した電話やデバイスを使用できないこともあります。 アカウントにバックアップの方法を設定することをお勧めするのはそのためです。 次のセクションでは、主要な方法が使用できないときに、別の方法でサインインする方法を示します。
 
 1. Office 365 などのアプリケーションまたはサービスにユーザー名とパスワードを使用してサインインします。
 2. **[別の確認オプションを使用する]** を選択します。 設定済みの確認オプションが表示されます。
+3. 代替方法を選択し、サインインします。
 
   ![別の方法を使用する](./media/multi-factor-authentication-end-user-signin/alt.png)
-
-3. 代替方法を選択し、サインインします。
 
 ## <a name="next-steps"></a>次のステップ
 

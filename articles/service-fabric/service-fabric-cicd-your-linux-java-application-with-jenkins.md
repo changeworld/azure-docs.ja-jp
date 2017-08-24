@@ -12,14 +12,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/29/2017
+ms.date: 08/23/2017
 ms.author: saysa
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 32d39e2c19348bc4a1ba218cfc411a70f9f212e3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Jenkins を使用した Linux Java アプリケーションのビルドとデプロイ
@@ -49,7 +48,7 @@ cd service-fabric-java-getting-started/Services/JenkinsDocker/
 
 3. Jenkins コンテナー インスタンスの状態を保持する Azure Storage ファイル共有の接続オプションの詳細が必要です。 同様に Microsoft Azure Portal を使用している場合は、Azure Storage アカウント (例: ``sfjenkinsstorage1``) の作成の手順に従ってください。 そのストレージ アカウントの下に、**ファイル共有** (例: ``sfjenkins``) を作成します。 そのファイル共有の **[接続]** をクリックして、**[Linux からの接続]** の下に表示される値をメモします。たとえば、次のように表示されています。
 ```sh
-sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777
+sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
 4. ```setupentrypoint.sh``` スクリプトのプレースホルダーの値を、対応する Azure Storage の内容に更新します。
@@ -60,8 +59,8 @@ vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
 ``[FILE_SHARE_CONNECT_OPTIONS_STRING]`` を上記 3 の値 ``vers=3.0,username=sfjenkinsstorage1,password=GB2NPUCQY9LDGeG9Bci5dJV91T6SrA7OxrYBUsFHyueR62viMrC6NIzyQLCKNz0o7pepGfGY+vTa9gxzEtfZHw==,dir_mode=0777,file_mode=0777`` に置き換えます。
 
 5. クラスターに接続し、コンテナー アプリケーションをインストールします。
-```sh
-azure servicefabric cluster connect http://PublicIPorFQDN:19080   # Azure CLI cluster connect command
+```azurecli
+sfctl cluster select --endpoint http://PublicIPorFQDN:19080   # cluster connect command
 bash Scripts/install.sh
 ```
 これでクラスターに Jenkins コンテナーがインストールされます。このコンテナーは Service Fabric Explorer を使用して監視できます。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 91c747a4fbb3c3c3d799741e7d3b5d4646931136
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -72,7 +72,7 @@ ms.lasthandoff: 08/09/2017
 
    ![[OMS ポータル] を選択する](media/logic-apps-monitor-your-logic-apps-oms/oms-portal-page.png)
 
-4. OMS のホーム ページで、**[ソリューション ギャラリー]** を選択します。
+4. OMS ホーム ページに、アップグレード バナーが表示されている場合は、そのバナーを選択して、最初に OMS ワークスペースをアップグレードします。 その後で、**[ソリューション ギャラリー]** を選択します。
 
    ![[ソリューション ギャラリー] を選択する](media/logic-apps-monitor-your-logic-apps-oms/solutions-gallery.png)
 
@@ -91,6 +91,11 @@ ms.lasthandoff: 08/09/2017
 1. ロジック アプリの実行の数と状態を確認するには、OMS ワークスペースの概要ページに移動します。 **[Logic Apps Management]\(Logic Apps 管理\)** タイルの詳細を確認します。
 
    ![ロジック アプリの実行の数と状態を示す概要タイル](media/logic-apps-monitor-your-logic-apps-oms/overview.png)
+
+   > [!Note]
+   > [Logic Apps Management]\(Logic Apps 管理\) タイルではなく、このアップグレード バナーが表示されている場合は、そのバナーを選択して、最初に OMS ワークスペースをアップグレードします。
+  
+   > !["OMS ワークスペース" をアップグレードする](media/logic-apps-monitor-your-logic-apps-oms/oms-upgrade-banner.png)
 
 2. ロジック アプリの実行に関する詳細が含まれる概要を確認するには、**[Logic Apps Management]\(Logic Apps 管理\)** タイルを選択します。
 

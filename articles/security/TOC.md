@@ -8,6 +8,7 @@
 ## [Service Fabric のセキュリティ](azure-service-fabric-security-overview.md)
 ## [ID 管理](security-identity-management-overview.md)
 ## [IoT のセキュリティ](../iot-suite/iot-security-architecture.md#security-in-iot)
+## [Azure 暗号化の概要](security-azure-encryption-overview.md)
 ## [セキュリティのアーキテクチャ](azure-security-architecture-overview.md)
 ### [運用上のセキュリティの有効化](azure-operational-security.md)
 ### [高度な脅威検出](azure-threat-detection.md)
@@ -30,7 +31,7 @@
 
 ## ストレージのセキュリティ
 ### [データ セキュリティと暗号化のベスト プラクティス](azure-security-data-encryption-best-practices.md)
-### [Storage のセキュリティ ガイド](../storage/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
+### [Storage のセキュリティ ガイド](../storage/common/storage-security-guide.md?toc=%2fazure%2fsecurity%2ftoc.json)
 
 ## コンピューティングのセキュリティ
 ### [Azure VM のベスト プラクティス](azure-security-best-practices-vms.md)
@@ -63,11 +64,12 @@
 
 ## PaaS サービス
 ### [PaaS デプロイをセキュリティで保護する](security-paas-deployments.md)
-#### [SQL を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-sql.md)
-#### [SQL Database のセキュリティに関するベスト プラクティス](azure-database-security-best-practices.md)
-#### [SQL Database のセキュリティのチェックリスト](azure-database-security-checklist.md)
 #### [App Services を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-app-services.md)
+#### [SQL を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-sql.md)
+##### [SQL Database のセキュリティに関するベスト プラクティス](azure-database-security-best-practices.md)
+##### [SQL Database のセキュリティのチェックリスト](azure-database-security-checklist.md)
 ####[運用上のセキュリティのチェックリスト](azure-operational-security-checklist.md)
+#### [Azure Storage を使用して PaaS の Web アプリケーションとモバイル アプリケーションをセキュリティで保護する](security-paas-applications-using-storage.md)
 
 ## モノのインターネット
 ### [IoT デプロイのセキュリティ保護](../iot-suite/iot-suite-security-deployment.md)

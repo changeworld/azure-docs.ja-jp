@@ -13,19 +13,18 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/14/2017
+ms.date: 08/11/2017
 ms.author: trinadhk; jimpark;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: c6f00c51456ebf5b2a0c2464272bffcec2959266
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: fc52c909df5e91741ec1fa21fb911487be039fdc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="restore-virtual-machines-in-azure"></a>Azure での仮想マシンの復元
 > [!div class="op_single_selector"]
-> * [Azure ポータルでの VM の復元](backup-azure-arm-restore-vms.md)
+> * [Azure Portal での VM の復元](backup-azure-arm-restore-vms.md)
 > * [クラシック ポータルでの VM の復元](backup-azure-restore-vms.md)
 >
 >
@@ -33,7 +32,7 @@ ms.lasthandoff: 06/16/2017
 Azure Backup コンテナーに格納されているバックアップから新しい VM に仮想マシンを復元するには、以下の手順を実行します。
 
 > [!IMPORTANT]
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 11 月 1 日以降**:
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降、PowerShell を使用してバックアップ コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 1 日以降**:
 >- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
 >- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
 >
@@ -99,7 +98,7 @@ Azure Backup コンテナーに格納されているバックアップから新�
 
 ![復元ジョブの完了](./media/backup-azure-restore-vms/restore-job-complete.png)
 
-仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure ポータルで仮想マシンの [エンドポイントを変更する](../virtual-machines/windows/classic/setup-endpoints.md) 必要がある場合があります。
+仮想マシンを復元したら、元の仮想マシンにある拡張機能を再インストールし、Azure Portal で仮想マシンの [エンドポイントを変更する](../virtual-machines/windows/classic/setup-endpoints.md) 必要がある場合があります。
 
 ## <a name="post-restore-steps"></a>復元後の手順
 Ubuntu など cloud-init ベースの Linux ディストリビューションを使用している場合、セキュリティ上の理由から、復元後にパスワードがブロックされます。 復元した VM は、VMAccess 拡張機能を使用して [パスワードをリセット](../virtual-machines/linux/classic/reset-access.md)してください。 これらのディストリビューションでは、SSH キーを使用して、復元後のパスワード リセットを回避するようお勧めします。
@@ -111,18 +110,18 @@ Ubuntu など cloud-init ベースの Linux ディストリビューションを
 VM が稼働しているプライマリ データ センターが被災した場合、Backup コンテナーが geo 冗長に構成されていると、Azure Backup ではバックアップされた VM をペアのデータセンターに復元することができます。 このようなシナリオでは、ペアのデータセンター内に存在するストレージ アカウントを選択する必要があります。これ以外の復元処理は同じとなります。 Azure Backup では、ペアの geo からコンピューティング サービスを使って、復元された仮想マシンを作成します。 詳しくは、[Azure データ センターの回復性に関するページ](../resiliency/resiliency-technical-guidance-recovery-loss-azure-region.md)をご覧ください。
 
 ## <a name="restoring-domain-controller-vms"></a>ドメイン コントローラー の VM の復元
-ドメイン コントローラー (DC) の仮想マシンのバックアップは、Azure Backup でサポートされているシナリオです。 ただし、この復元プロセスでは注意が必要です。 適切な復元プロセスは、ドメインの構造によって異なります。 最も単純なケースでは、1 つのドメインに DC が 1 つだけ存在します。 運用負荷がかかる一般的な環境では、1 つのドメインに複数の DC があり、一部の DC がオンプレミスであると考えられます。 さらに、複数のドメインが含まれたフォレストが存在する場合もあります。
+ドメイン コントローラー (DC) の仮想マシンのバックアップは、Azure Backup でサポートされているシナリオです。 ただし、この復元プロセスでは注意が必要です。 適切な復元プロセスは、ドメインの構造によって異なります。 最も単純なのは、1 つのドメインに 1 つの DC があるケースです。 運用環境の負荷としてより一般的なのは、1 つのドメインに複数の DC があるケースです。オンプレミスにいくつかの DC があるケースも考えられます。 そして、1 つのフォレストに複数のドメインがあるケースもあります。
 
-Active Directory の観点から見ると、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure で VM コンソールを使用できないことです。 コンソールは、ベア メタル回復 (BMR) バックアップを使用した回復などの特定のシナリオで必要となります。 ただし、BMR はバックアップ コンテナーからの VM の復元に完全に置き換えることができます。 また、Active Directory 復元モード (DSRM) も使用できるので、すべての Active Directory 回復シナリオが実行可能です。 詳しい背景情報については、「[Backup and Restore Considerations for Virtualized Domain Controllers (仮想化ドメイン コントローラーのバックアップと復元に関する考慮事項)](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)」および「[Planning for Active Directory Forest Recovery (Active Directory フォレストの回復計画)](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)」をご覧ください。
+Active Directory の観点からは、Azure VM は、サポートされている最新のハイパーバイザー上にある他の VM と変わりません。 オンプレミスのハイパーバイザーとの大きな違いは、Azure では VM コンソールが使用できないことです。 コンソールは、ベア メタル回復 (BMR) タイプのバックアップを使用して回復するといった特定のシナリオで必要です。 ただし、バックアップ コンテナーからの VM の復元が、BMR の代わりとなります。 Active Directory 復元モード (DSRM) も利用できるので、Active Directory の復元シナリオはすべて実行可能です。 背景情報について詳しくは、「[Backup and Restore considerations for virtualized Domain Controllers (仮想化されたドメイン コントローラーのバックアップと復元についての考慮事項)](https://technet.microsoft.com/en-us/library/virtual_active_directory_domain_controller_virtualization_hyperv(v=ws.10).aspx#backup_and_restore_considerations_for_virtualized_domain_controllers)」と「[Planning for Active Directory Forest Recovery (Active Directory Forest Recovery の計画)](https://technet.microsoft.com/en-us/library/planning-active-directory-forest-recovery(v=ws.10).aspx)」をご覧ください。
 
-### <a name="single-dc-in-a-single-domain"></a>1 つのドメインの 1 つの DC
-VM は、(他の VM と同様に) Azure ポータルから復元するか、または PowerShell を使用して復元することができます。
+### <a name="single-dc-in-a-single-domain"></a>1 つのドメインに 1 つの DC がある
+VM は、(他の VM と同様に) Azure Portal から復元するか、または PowerShell を使用して復元することができます。
 
-### <a name="multiple-dcs-in-a-single-domain"></a>1 つのドメインの複数の DC
-同じドメインの他の DC にネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 DC がドメインに最後に残っている DC の場合や、分離されたネットワークで回復を実行する場合は、フォレストの回復手順に従う必要があります。
+### <a name="multiple-dcs-in-a-single-domain"></a>1 つのドメインに複数の DC がある
+同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ドメインの最後の DC の場合や、分離ネットワークの回復を実行した場合は、フォレスト回復の手順に従う必要があります。
 
-### <a name="multiple-domains-in-one-forest"></a>1 つのフォレストの複数のドメイン
-同じドメインの他の DC にネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ただし、それ以外の場合は、フォレストの回復をお勧めします。
+### <a name="multiple-domains-in-one-forest"></a>1 つのフォレストに複数のドメインがある
+同じドメインの他の DC に、ネットワーク経由で到達できる場合は、VM と同様に DC を復元できます。 ただし、それ以外の場合は、フォレストの回復をお勧めします。
 
 <!--- WK: this following original supportability statement is incorrect, taking it out.
 The challenge arises because DSRM mode is not present in Azure. So to restore such a VM, you cannot use the Azure portal. The only supported restore mechanism is disk-based restore using PowerShell.

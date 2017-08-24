@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/23/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 41fcccae7b3d306c25f4429d47e81884d88cd83e
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: c67e98b2982c8ee6708b4b39f9ade787e087c508
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="logic-app-limits-and-configuration"></a>ロジック アプリの制限と構成
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/07/2017
 
 |名前|制限|メモ|
 |----|----|----|
-|再試行|4|[再試行ポリシー パラメーター](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)で構成できます。|
+|再試行|10| 既定値は 4 です。 [再試行ポリシー パラメーター](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)で構成できます。|
 |再試行の最大間隔|1 時間|[再試行ポリシー パラメーター](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)で構成できます。|
 |再試行の最小間隔|5 秒|[再試行ポリシー パラメーター](https://msdn.microsoft.com/en-us/library/azure/mt643939.aspx)で構成できます。|
 
@@ -64,6 +63,8 @@ ms.lasthandoff: 06/07/2017
 |最小の繰り返し間隔|1 秒|| App Service プランを持つロジック アプリでは 15 秒
 |最大の繰り返し間隔|500 日||
 
+通常の処理フローで実行継続期間またはストレージ リテンション期間の制限を超えることが見込まれる場合の要件の詳細については、[お問い合わせ](mailto://logicappsemail@microsoft.com)ください。
+
 
 ### <a name="looping-and-debatching-limits"></a>ループと分割処理の制限
 
@@ -74,7 +75,7 @@ ms.lasthandoff: 06/07/2017
 |ForEach 項目数|100,000|必要に応じて [クエリ アクション](../connectors/connectors-native-query.md) を使用することで、さらに大きな配列にフィルターを適用できます。|
 |Until 反復数|5,000||
 |SplitOn 項目数|100,000||
-|ForEach 並列処理|20|`"operationOptions": "Sequential"` を `foreach` アクションに追加することによってシーケンシャルな foreach に設定できます。|
+|ForEach 並列処理|50| 既定値は 20 です。 `"operationOptions": "Sequential"` を `foreach` アクションに追加することによってシーケンシャルな foreach に設定できます。または、`runtimeConfiguration` を使用して、特定のレベルの並列処理に設定できます|
 
 
 ### <a name="throughput-limits"></a>スループットの制限
@@ -97,8 +98,8 @@ ms.lasthandoff: 06/07/2017
 
 |名前|制限|メモ|
 |----|----|----|
-|ワークフローごとのアクション数|250|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
-|アクションの入れ子に許容される深さ|5|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
+|ワークフローごとのアクション数|500|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
+|アクションの入れ子に許容される深さ|8|この制限は、入れ子にしたワークフローを必要に応じて追加することで拡張できます。|
 |サブスクリプションごとの 1 リージョンあたりのワークフロー数|1,000||
 |ワークフローごとのトリガー数|10||
 |スコープ ケースの切り替えの制限|25||

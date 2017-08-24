@@ -126,7 +126,7 @@ Small Improvements で Azure AD のシングル サインオンを構成して�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-smallimprovements-tutorial/tutorial_general_400.png)
 
-6. **[Small Improvements Configuration] (Small Improvements 構成)** セクションで、**[Configure Small Improvements] (Small Improvements の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[Small Improvements Configuration] \(Small Improvements 構成)** セクションで、**[Configure Small Improvements] \(Small Improvements の構成)** をクリックして **[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-smallimprovements-tutorial/tutorial_smallimprovements_configure.png) 
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/31/2017
 ms.author: LADocs; padmavc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 4a41d9eb8b28aed499bb20e17e3c979962c78bcd
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 1bfaa7b31bfed3ada22c83516839ebd95a351854
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="exchange-x12-messages-for-enterprise-integration-with-logic-apps"></a>Logic Apps を使用したエンタープライズ統合の X12 メッセージを交換する
@@ -272,6 +271,9 @@ Azure Logic Apps の X12 メッセージを交換する前に、X12 契約を作
 | Replacement Character |X12 送信メッセージが生成されるときに、ペイロード データ内のすべての区切り文字を置換する文字を入力します。 |
 | Segment Terminator |EDI セグメントの終端を示す単一の文字を入力します。 |
 | サフィックス |セグメント識別子と共に使用される文字を選択します。 サフィックスを指定する場合は、セグメント終端記号のデータ要素が空でもかまいません。 セグメント終端記号を空にする場合は、サフィックスを指定する必要があります。 |
+
+> [!TIP]
+> 特殊文字の値を指定するには、契約を JSON として編集し、特殊文字の ASCII 値を指定します。
 
 ### <a name="validation"></a>検証
 

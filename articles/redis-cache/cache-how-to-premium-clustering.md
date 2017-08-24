@@ -1,4 +1,4 @@
----
+﻿---
 title: "Premium Azure Redis Cache の Redis クラスタリングの構成方法 | Microsoft Docs"
 description: "Premium レベルの Azure Redis Cache インスタンス用に Redis を作成して管理する方法について説明します"
 services: redis-cache

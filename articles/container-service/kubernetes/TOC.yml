@@ -33,17 +33,15 @@
   items:
     - name: コンテナーをセキュリティ保護する
       href: container-service-security.md
-    - name: サービス プリンシパル - Kubernetes
-      href: container-service-kubernetes-service-principal.md
 - name: ハウツー ガイド
   items:
-    - name: Windows と連携する Kubernetes のクイック スタート
+    - name: Windows と連携する Kubernetes
       href: container-service-kubernetes-windows-walkthrough.md
-    - name: コンテナー管理 - Kubernetes UI
+    - name: Kubernetes Web インターフェイス
       href: container-service-kubernetes-ui.md
     - name: Helm グラフのデプロイ
       href: container-service-kubernetes-helm.md
-    - name: Kubernetes と Jenkins を使用した CI/CD
+    - name: Jenkins と ACS Kubernetes
       href: container-service-kubernetes-jenkins.md
     - name: ACR と ACS で Draft を使用する
       href: container-service-draft-up.md

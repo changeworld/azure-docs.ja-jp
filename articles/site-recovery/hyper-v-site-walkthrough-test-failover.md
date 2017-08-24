@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: d62a4463bb24760e5abea7a870e6987e1275d0be
+ms.translationtype: HT
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: eb2510cecffeb2bfe21e39180b18e7fa47f298d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 06/23/2017
 - 管理ディスクは、Resource Manager デプロイメント モデルでデプロイされた VM に対してのみ作成することができます。
 - Azure からオンプレミス Hyper-V 環境へのフェールバックは、現時点では、管理ディスクを使用するマシンではサポートされていません。 移行だけ (フェールバックのない Azure へのフェールオーバー) を行っている場合にのみ、**[管理ディスクを使用]** を **[はい]** に設定する必要があります。
 - この設定が有効な場合、**[管理ディスクを使用]** が有効になっているリソース グループの可用性セットのみを選択できます。 管理ディスクを持つ VM は、**[管理ディスクを使用]** が **[はい]** に設定されている可用性セットに含まれている必要があります。 VM に対してこの設定が有効でない場合は、有効な管理ディスクを持たないリソース グループの可用性セットのみを選択できます。 [詳細情報](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#use-managed-disks-for-vms-in-an-availability-set)
-- - レプリケーションに使用するストレージ アカウントが Storage サービスの暗号化で暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、または VM の保護をいったん無効にしてから再度有効にして、暗号化が有効でないストレージ アカウントを使用できるようにします。 [詳細情報](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)
+- - レプリケーションに使用するストレージ アカウントが Storage サービスの暗号化で暗号化されている場合、フェールオーバー時に管理ディスクを作成することはできません。 この場合は、管理ディスクの使用を有効にしないか、VM の保護を無効にした後、暗号化が有効でないストレージ アカウントを使用して再度有効にします。 [詳細情報](https://docs.microsoft.com/azure/storage/storage-managed-disks-overview#managed-disks-and-encryption)
 
  
 ## <a name="network-considerations"></a>ネットワークに関する考慮事項
@@ -65,10 +65,10 @@ ms.lasthandoff: 06/23/2017
 
     ![Enable replication](./media/hyper-v-site-walkthrough-test-failover/test-failover2.png)
 3. **[コンピューティングとネットワーク]** では、次の操作を行うことができます。
-    - Azure VM 名を変更する。 名前は [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たす必要があります。
-    - フェールオーバー後の[リソース グループ](../virtual-machines/windows/infrastructure-resource-groups-guidelines.md)を指定する
-    - Azure VM のターゲット サイズを指定する
-    - [可用性セット](../virtual-machines/windows/infrastructure-availability-sets-guidelines.md)を選択する。
+    - Azure VM 名を変更する。 この名前は [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)を満たす必要があります。
+    - フェールオーバー後の [リソース グループ] を指定する。
+    - Azure VM のターゲット サイズを指定する。
+    - [可用性セット](../virtual-machines/windows/tutorial-availability-sets.md)を選択する。
     - [管理ディスク](#managed-disk-considerations)を使用するかどうかを指定する。 Azure への移行時に管理ディスクをマシンに接続する場合は、**[はい]** を選択します。
     - ネットワーク設定 (フェールオーバー後に Azure VM が配置されるネットワークやサブネット、割り当てられる IP アドレスなど) を表示または変更する。
 

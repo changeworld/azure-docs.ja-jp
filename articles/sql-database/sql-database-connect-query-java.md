@@ -135,7 +135,8 @@ Azure SQL データベースに接続するために必要な接続情報を取�
                                System.out.println(resultSet.getString(1) + " "
                                    + resultSet.getString(2));
                            }
-                   }
+                    connection.close();
+                   }                   
            }
            catch (Exception e) {
                    e.printStackTrace();

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7a2ed1c890eb22b3aff9aaadf2b420eeb21dd207
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 148dc64efd7b4379afad046f21fc2bd97f8f6718
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/21/2017
 `az group create -l westus -n MyRG` <br>
 
 ### <a name="create-a-linux-vm"></a>Linux VM の作成
-新しいリソース グループに Ubuntu VM を作成します。 Azure CLI 2.0 によって ssh キーが作成され、そのキーを使って VM が設定されます。 <br>
+新しいリソース グループに Ubuntu VM を作成します。 Azure CLI 2.0 によって SSH キーが作成され、そのキーを使って VM が設定されます。 <br>
 `az vm create -n my_vm_name -g MyRG --image UbuntuLTS --generate-ssh-keys`
 
 > [!NOTE]
@@ -74,3 +74,4 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 [Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
 [Azure File Storage について](../storage/storage-files-introduction.md) <br>
+

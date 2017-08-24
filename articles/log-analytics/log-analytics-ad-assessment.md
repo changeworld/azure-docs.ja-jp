@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 08/15/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 2279e609a5d81ecd40bd469a3e98b5cdf81fde2f
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 97368f0b9e89ffd0cd982b6e8670d5a1f62ad42c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="optimize-your-active-directory-environment-with-the-active-directory-assessment-solution-in-log-analytics"></a>Log Analytics で Active Directory 評価ソリューションを使用して Active Directory 環境を最適化する
@@ -73,7 +73,7 @@ Active Directory Assessment では、有効にしたエージェントを使用�
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |![なし](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![いいえ](./media/log-analytics-ad-assessment/oms-bullet-red.png) |![あり](./media/log-analytics-ad-assessment/oms-bullet-green.png) |7 日 |
+| Windows |&#8226; |&#8226; |  |  |&#8226; |7 日 |
 
 ## <a name="understanding-how-recommendations-are-prioritized"></a>推奨事項の優先順位設定方法について
 提供されるすべての推奨事項には、推奨事項の相対的な重要度を示す重み付け値が与えられます。 最も重要な 10 個の推奨事項のみが表示されます。
@@ -176,13 +176,6 @@ OMS の評価ソリューションを使用するには、ソリューション�
 *データの収集にはどれくらいの時間がかかりますか?*
 
 * サーバー上での実際のデータ収集には約 1 時間かかります。 Active Directory サーバーの数が多いサーバーでは、もっと長くなる可能性があります。
-
-*どのような種類のデータが収集されますか?*
-
-* 次の種類のデータが収集されます。
-  * WMI
-  * レジストリ
-  * パフォーマンス カウンター
 
 *データが収集されるタイミングを構成する方法はありますか?*
 

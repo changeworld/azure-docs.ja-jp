@@ -18,10 +18,10 @@ ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: a1f844ec3eebe908ddd9115b5eb61d41c83c2a2f
+ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
+ms.openlocfilehash: 9595148f4ecc3cbdeaf5f49c3c3a22a308c1fb0b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/11/2017
 
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines の計画と実装
@@ -523,7 +523,7 @@ Azure リソース マネージャーでは、宣言型のテンプレートを�
 
 Resource Manager テンプレートの使用方法の詳細については、次の資料を参照してください。
 
-* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理][virtual-machines-linux-cli-deploy-templates]
+* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理][../../linux/create-ssh-secured-vm-from-template.md]
 * [Azure Resource Manager と PowerShell を使用した仮想マシンの管理][virtual-machines-deploy-rmtemplates-powershell]
 * <https://azure.microsoft.com/documentation/templates/>
 
@@ -835,12 +835,12 @@ Azure に関連する PowerShell コマンドの全般的な一覧について�
 
 ### <a name="management-via-microsoft-azure-cli-commands"></a>Microsoft Azure CLI コマンドを使用した管理
 Linux を使用するお客様で、Azure のリソースを管理したいお客様には、Powershell をお勧めします。 Microsoft では、その代替ツールとして、Azure CLI を提供しています。
-Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。 Azure CLI では、Azure ポータルと同じ機能の多くが使用できます。
+Azure CLI は、Azure Platform で使用できるオープン ソース、クロスプラットフォームのコマンド群です。 Azure CLI では、Azure Portal と同じ機能の多くが使用できます。
 
 CLI のインストール方法、構成方法、および CLI コマンドを使用して Azure タスクを実行する方法については、次のリンクを参照してください。
 
 * [Azure CLI のインストール][xplat-cli]
-* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理][virtual-machines-linux-cli-deploy-templates]
+* [Azure Resource Manager テンプレートと Azure CLI を使用した仮想マシンのデプロイと管理][../../linux/create-ssh-secured-vm-from-template.md]
 * [Azure Resource Manager での Mac、Linux、および Windows 用 Azure CLI の使用][xplat-cli-azure-resource-manager]
 
 また、Azure CLI を使用して Azure Monitoring Extension for SAP をデプロイする方法については、[デプロイ ガイド][planning-guide]の「[Linux VM 向け Azure CLI][deployment-guide-4.5.2]」の章を参照してください。

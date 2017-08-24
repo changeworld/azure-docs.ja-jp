@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/07/2017
+ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 8094f6e619bde8b25323cddb42bc04b1ead62113
+ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
+ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/14/2017
 
 ---
 
@@ -67,7 +67,7 @@ System Center Operations Manager Assessment は、有効化されたサーバー
 
 | プラットフォーム | 直接エージェント | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |  ![なし](./media/log-analytics-scom-assessment/oms-bullet-red.png) | ![いいえ](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | ![いいえ](./media/log-analytics-scom-assessment/oms-bullet-red.png)  |  ![あり](./media/log-analytics-scom-assessment/oms-bullet-green.png) | ![なし](./media/log-analytics-scom-assessment/oms-bullet-red.png)  | 7 日 |
+| Windows | | | | &#8226; | | 7 日 |
 
 ## <a name="operations-manager-run-as-accounts-for-oms"></a>OMS で使用される Operations Manager の実行アカウント
 

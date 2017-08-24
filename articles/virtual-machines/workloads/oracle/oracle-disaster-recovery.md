@@ -1,6 +1,6 @@
 ---
 title: "Azure 環境における Oracle ディザスター リカバリー シナリオの概要 | Microsoft Docs"
-description: "Azure 環境内の Oracle Database 12c のディザスター リカバリー シナリオについて説明します。"
+description: "Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー シナリオ"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: v-shiuma
@@ -16,14 +16,14 @@ ms.workload: infrastructure
 ms.date: 6/2/2017
 ms.author: rclaus
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4f6fc6ed79606f0510bc3d6258205d1e6105de25
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: f17ebb2b74cd7ad872f88483ed7cdb4f239ee069
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
-# <a name="disaster-recovery-dr-of-oracle-12c-database-on-an-azure-environment"></a>Azure 環境上の Oracle 12c データベースのディザスター リカバリー (DR)
+# <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Azure 環境内の Oracle Database 12c データベースのディザスター リカバリー
 
 ## <a name="assumptions"></a>前提条件
 
@@ -31,70 +31,73 @@ ms.lasthandoff: 07/21/2017
 
 
 ## <a name="goals"></a>目標
-- DR の要件を満たすトポロジと構成を設計すること。
+- ディザスター リカバリー (DR) の要件を満たすトポロジと構成を設計すること
 
-## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>シナリオ 1 (Azure 上のプライマリー サイトと DR サイト)
+## <a name="scenario-1-primary-and-dr-sites-on-azure"></a>シナリオ 1: Azure 上のプライマリ サイトと DR サイト
 
-Oracle データベースがプライマリー サイトにセットアップされています。 DR サイトは別のリージョンにあります。 Oracle Data Guard はこれらのサイト間の迅速な回復に使用されます。 また、プライマリー サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
+Oracle データベースがプライマリ サイトにセットアップされています。 DR サイトは別のリージョンにあります。 Oracle Data Guard はこれらのサイト間での迅速な回復に使用されます。 また、プライマリ サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
 
 ### <a name="topology"></a>トポロジ
 
 Azure セットアップの概要は次のとおりです。
 
 - 2 つのサイト (プライマリ サイトと DR サイト)
-- 2 つの Virtual Network (VNet)
+- 2 つの仮想ネットワーク
 - Data Guard を備えた 2 つの Oracle データベース (プライマリとスタンバイ)
 - Golden Gate または Data Guard を備えた 2 つの Oracle データベース (プライマリ サイトのみ)
-- プライマリ サイトに 2 つ、DR サイトに 1 つのアプリケーション サービス
-- プライマリ サイト上のデータベースおよびアプリケーション サービスに '可用性セット' が使用されている
+- 2 つのアプリケーション サービス (プライマリ サイトに 1 つ、DR サイトに 1 つ)
+- プライマリ サイト上のデータベースおよびアプリケーション サービスに使用されている "*可用性セット*"
 - 各サイトに 1 つのジャンプボックス (プライベート ネットワークへのアクセスを制限し、管理者によるサインインのみを許可)
-- ジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイは別個のサブネット上にある
-- アプリケーションおよびデータベースのサブネットに NSG が適用されている
+- 別個のサブネット上にあるジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイ
+- アプリケーションおよびデータベースのサブネットに適用されている NSG
 
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_01.png)
 
-## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2 (オンプレミスのプライマリ サイトと Azure 上の DR サイト)
+## <a name="scenario-2-primary-site-on-premises-and-dr-site-on-azure"></a>シナリオ 2: オンプレミスのプライマリ サイトと Azure 上の DR サイト
 
-Oracle データベースがオンプレミスにセットアップされています (プライマリ サイト)。 DR サイトは Azure にあります。 Oracle Data Guard はこれらのサイト間の迅速な回復に使用されます。 また、プライマリー サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
+Oracle データベースがオンプレミスにセットアップされています (プライマリ サイト)。 DR サイトは Azure にあります。 Oracle Data Guard はこれらのサイト間の迅速な回復に使用されます。 また、プライマリ サイトにはレポートの作成や他の用途のためにセカンダリ データベースが用意されています。 
 
 このセットアップには 2 つのアプローチがあります。
 
-### <a name="1-direct-connections-between-on-premises-and-azure-required-open-tcp-ports-on-firewall-this-approach-is-not-recommended-as-it-expose-the-tcp-ports-to-outside-world"></a>1.オンプレミスと Azure を直接接続する。ファイアウォールの TCP ポートを開くために必要です。 TCP ポートが外部に公開されるため、このアプローチは推奨されません。
+### <a name="approach-1-direct-connections-between-on-premises-and-azure-requiring-open-tcp-ports-on-the-firewall"></a>アプローチ 1: オンプレミスと Azure を直接接続する (ファイアウォールの TCP ポートを開く必要がある) 
 
-### <a name="topology"></a>トポロジ
+直接接続は、外部に TCP ポートが公開されるため、お勧めしません。
+
+#### <a name="topology"></a>トポロジ
 
 Azure セットアップの概要は次のとおりです。
 
-- 1 つのサイト (DR サイト)
-- 1 つの Virtual Network (VNet)
-- Data Guard を備えた 1 つの Oracle データベースと (アクティブ)
+- 1 つの DR サイト 
+- 1 つの仮想ネットワーク
+- Data Guard を備えた 1 つの Oracle データベース (アクティブ)
 - DR サイトに 1 つのアプリケーション サービス
 - 1 つのジャンプボックス (プライベート ネットワークへのアクセスを制限し、管理者によるサインインのみを許可)
-- ジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイは別個のサブネット上にある
-- アプリケーションおよびデータベースのサブネットに NSG が適用されている
-- NSG ポリシー/ルールを追加して受信 TCP ポート 1521 (またはユーザーが定義) を許可する
-- NSG ポリシー/ルールは、オンプレミス (DB またはアプリケーション) の IP アドレスから VNet へのアクセスのみを制限するときに追加します。
+- 別個のサブネット上にあるジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイ
+- アプリケーションおよびデータベースのサブネットに適用されている NSG
+- 受信 TCP ポート 1521 (またはユーザー定義ポート) を許可するNSG ポリシー/ルール
+- オンプレミス (DB またはアプリケーション) の IP アドレスから仮想ネットワークへのアクセスのみを制限するための NSG ポリシー/ルール
 
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_02.png)
 
-### <a name="2-a-better-approach-is-using-site-to-site-vpn-more-information-about-setting-up-vpn-is-available-from-this-linkhttpsdocsmicrosoftcomen-usazurevpn-gatewayvpn-gateway-howto-site-to-site-resource-manager-cli"></a>2.より優れたアプローチは、サイト間 VPN を使用します。 VPN をセットアップする方法について詳しくは、こちらの[リンク](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)をご覧ください。
+### <a name="approach-2-site-to-site-vpn"></a>アプローチ 2: サイト対サイト VPN
+サイト対サイト VPN は、より優れたアプローチです。 VPN の設定に関する詳細については、「[CLI を使用したサイト間 VPN 接続を持つ仮想ネットワークの作成](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-cli)」を参照してください。
 
-### <a name="topology"></a>トポロジ
+#### <a name="topology"></a>トポロジ
 
 Azure セットアップの概要は次のとおりです。
 
-- 1 つのサイト (DR サイト)
-- 1 つの Virtual Network (VNet)
-- Data Guard を備えた 1 つの Oracle データベースと (アクティブ)
+- 1 つの DR サイト 
+- 1 つの仮想ネットワーク 
+- Data Guard を備えた 1 つの Oracle データベース (アクティブ)
 - DR サイトに 1 つのアプリケーション サービス
 - 1 つのジャンプボックス (プライベート ネットワークへのアクセスを制限し、管理者によるサインインのみを許可)
 - ジャンプボックス、アプリケーション サービス、データベース、および VPN ゲートウェイは別個のサブネット上にある
-- アプリケーションおよびデータベースのサブネットに NSG が適用されている
+- アプリケーションおよびデータベースのサブネットに適用されている NSG
 - オンプレミスと Azure 間のサイト間 VPN 接続
 
 ![DR トポロジ ページのスクリーンショット](./media/oracle-disaster-recovery/oracle_topology_03.png)
 
-## <a name="additional-readings"></a>こちらもご覧ください。
+## <a name="additional-reading"></a>その他の情報
 
 - [Azure での Oracle データベースの設計と実装](oracle-design.md)
 - [Oracle Data Guard の構成](configure-oracle-dataguard.md)
@@ -104,7 +107,6 @@ Azure セットアップの概要は次のとおりです。
 
 ## <a name="next-steps"></a>次のステップ
 
-[チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
-
-[VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
+- [チュートリアル: 高可用性 VM の作成](../../linux/create-cli-complete.md)
+- [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
 

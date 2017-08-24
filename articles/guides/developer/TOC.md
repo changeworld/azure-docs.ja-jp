@@ -64,12 +64,12 @@
 ### [テンプレートからの Linux VM](../../virtual-machines/virtual-machines-linux-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 ### [テンプレートからの Windows VM](../../virtual-machines/virtual-machines-windows-app-frameworks.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## データの保存
-### [BLOB](../../storage/storage-dotnet-how-to-use-blobs.md)
-### [ファイル共有](../../storage/storage-dotnet-how-to-use-files.md)
-### [キーと値のペア](../../storage/storage-dotnet-how-to-use-tables.md)
+### [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+### [ファイル共有](../../storage/files/storage-dotnet-how-to-use-files.md)
+### [キーと値のペア](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 ### [JSON ドキュメント](../../documentdb/documentdb-get-started.md)
 ### [リレーショナル テーブル](../../sql-database/sql-database-get-started.md)
-### [メッセージ キュー](../../storage/storage-dotnet-how-to-use-queues.md)
+### [メッセージ キュー](../../storage/queues/storage-dotnet-how-to-use-queues.md)
 
 ## スケール
 ### [Web アプリとモバイル アプリ](../../app-service-web/web-sites-scale.md)

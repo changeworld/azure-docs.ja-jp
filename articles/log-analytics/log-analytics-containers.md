@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 08/11/2017
 ms.author: magoedte;banders
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 5fe0c4c5642fcaa83bcfc830e64600986b8fbf7f
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 054c1892c86876f9d8d812c4e2e05b62ef4b4a8a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
@@ -36,18 +36,18 @@ ms.lasthandoff: 08/09/2017
 ## <a name="system-requirements"></a>システム要件
 始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
 
-### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート 
+### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート
 次の表は、Log Analytics によるコンテナー インベントリ、パフォーマンス、およびログの Docker オーケストレーションとオペレーティング システムの監視サポートの概要を示しています。   
 
-| | ACS | Linux | Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>イベント | イベント<br>ログ | コンテナー<br>ログ | 
+| | ACS | Linux | Windows | コンテナー<br>インベントリ | イメージ<br>インベントリ | ノード<br>インベントリ | コンテナー<br>パフォーマンス | コンテナー<br>イベント | イベント<br>ログ | コンテナー<br>ログ |
 |-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
-| Kubernetes | あり | あり | | あり | あり | あり | あり | あり | あり | あり | 
-| Mesosphere<br>DC/OS | あり | あり | | あり | あり | あり | あり| あり | あり | あり | 
-| Docker<br>Swarm | あり | あり | あり | あり | あり | あり | あり | あり | | あり |
-| サービス<br>Fabric | | | あり | あり | あり | あり | あり | あり | あり | あり | 
-| Red Hat Open<br>Shift | | あり | | あり | あり| あり | あり | あり | | あり | 
-| Windows Server<br>(スタンドアロン) | | | あり | あり | あり | あり | あり | あり | | あり |
-| Linux サーバー<br>(スタンドアロン) | | あり | | あり | あり | あり | あり | あり | | あり |
+| Kubernetes | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Mesosphere<br>DC/OS | &#8226; | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; |
+| Docker<br>Swarm | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| サービス<br>Fabric | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; |
+| Red Hat Open<br>Shift | | &#8226; | | &#8226; | &#8226;| &#8226; | &#8226; | &#8226; | | &#8226; |
+| Windows Server<br>(スタンドアロン) | | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
+| Linux サーバー<br>(スタンドアロン) | | &#8226; | | &#8226; | &#8226; | &#8226; | &#8226; | &#8226; | | &#8226; |
 
 
 ### <a name="docker-versions-supported-on-linux"></a>Linux でサポートされている Docker のバージョン
@@ -78,7 +78,7 @@ ms.lasthandoff: 08/09/2017
 ### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
 
 - Docker 1.12 と 1.13
-- Docker 17.03.0 
+- Docker 17.03.0
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
@@ -109,7 +109,7 @@ ms.lasthandoff: 08/09/2017
 
 ## <a name="linux-container-hosts"></a>Linux コンテナー ホスト
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページの上部のメニューで **[設定]** を選択し、**Connected Sources\Windows Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページで、上部のメニューから **[設定]** を選択し、**Connected Sources\Linux Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>CoreOS を除くすべての Linux コンテナー ホスト
 
@@ -145,8 +145,8 @@ Docker Swarm で、OMS エージェントをグローバル サービスとし�
     ```
 
 ### <a name="configure-an-oms-agent-for-red-hat-openshift"></a>Red Hat OpenShift 用の OMS エージェントを構成する
-Red Hat OpenShift に OMS エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 つの方法が用意されています。 
- 
+Red Hat OpenShift に OMS エージェントを追加してコンテナーの監視データの収集を開始するには、次の 3 つの方法が用意されています。
+
 * OpenShift の各ノードに直接 [OMS Agent for Linux をインストールする](log-analytics-agent-linux.md)  
 * Azure 内に存在する OpenShift の各ノードで [Log Analytics VM 拡張機能を有効にする](log-analytics-azure-vm-extension.md)  
 * OMS エージェントを OpenShift デーモン セットとしてインストールする  
@@ -164,14 +164,14 @@ Red Hat OpenShift に OMS エージェントを追加してコンテナーの監
     oadm policy add-scc-to-user privileged system:serviceaccount:omslogging:omsagent  
     ```
 
-4. デーモン セットをデプロイするには、次の手順を実行します。 
-    
+4. デーモン セットをデプロイするには、次の手順を実行します。
+
     `oc create -f ocp-omsagent.yaml`
 
-5. 構成と動作が正しいことを確認するには、次を入力します。 
+5. 構成と動作が正しいことを確認するには、次を入力します。
 
     `oc describe daemonset omsagent`  
-    
+
     出力は次のようになります。
 
     ```
@@ -194,7 +194,7 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
 
 1. OpenShift のマスター ノードにサインオンして、yaml ファイル [ocp-ds-omsagent.yaml](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-ds-omsagent.yaml) とシークレットを生成するスクリプト [ocp-secretgen.sh](https://github.com/Microsoft/OMS-docker/blob/master/OpenShift/ocp-secretgen.sh) を GitHub からコピーします。  このスクリプトにより OMS のワークスペース ID と主キーのシークレット yaml ファイルが生成され、秘密情報がセキュリティで保護されます。  
 2. 次のコマンドを実行して OMS のプロジェクトを作成し、ユーザー アカウントを設定します。 シークレットを生成するスクリプトは OMS のワークスペース ID <WSID> と主キー <KEY> を要求し、完了すると ocp-secret.yaml ファイルが作成されます。  
-    
+
     ```
     oadm new-project omslogging --node-selector='zone=default'  
     oc project omslogging  
@@ -207,12 +207,12 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
 
     `oc create -f ocp-secret.yaml`
 
-5. 次を実行して、デプロイを確認します。 
+5. 次を実行して、デプロイを確認します。
 
     `oc describe secret omsagent-secret`  
 
     出力は次のようになります。  
-    
+
     ```
     [ocpadmin@khocp-master-0 ~]$ oc describe ds oms  
     Name:           oms  
@@ -229,14 +229,14 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
     No events.  
     ```
 
-6. 次を実行して、OMS エージェントのデーモン セット yaml ファイルをデプロイします。 
+6. 次を実行して、OMS エージェントのデーモン セット yaml ファイルをデプロイします。
 
     `oc create -f ocp-ds-omsagent.yaml`  
-  
-7. 次を実行して、デプロイを確認します。 
+
+7. 次を実行して、デプロイを確認します。
 
     `oc describe ds oms`
-  
+
     出力は次のようになります。
 
     ```
@@ -245,16 +245,16 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
     Namespace:      omslogging  
     Labels:         <none>  
     Annotations:    <none>  
-    
+
     Type:   Opaque  
-    
+
      Data  
      ====  
      KEY:    89 bytes  
      WSID:   37 bytes  
     ```
 
-### <a name="secure-your-secret-information-for-docker-swarm-and-kubernetes"></a>Docker Swarm と Kubernetes の秘密情報の安全を確保する 
+### <a name="secure-your-secret-information-for-docker-swarm-and-kubernetes"></a>Docker Swarm と Kubernetes の秘密情報の安全を確保する
 
 Docker Swarm と Kubernetes コンテナー サービス用のシークレットの OMS のワークスペース ID と主キーをセキュリティで保護できます。
 
@@ -439,15 +439,15 @@ Service Fabric で実行されている Windows コンテナーを監視でき�
 
 | プラットフォーム | [OMS Agent for Linux](log-analytics-linux-agents.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Linux |![[はい]](./media/log-analytics-containers/oms-bullet-green.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |3 分おき |
+| Linux |&#8226; |  |  |  |  |3 分おき |
 
 | プラットフォーム | [Windows エージェント](log-analytics-windows-agents.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Windows |![[はい]](./media/log-analytics-containers/oms-bullet-green.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |3 分おき |
+| Windows | &#8226; |  |  |  |  |3 分おき |
 
 | プラットフォーム | [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
 | --- | --- | --- | --- | --- | --- | --- |
-| Azure |![はい](./media/log-analytics-containers/oms-bullet-green.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![いいえ](./media/log-analytics-containers/oms-bullet-red.png) |![なし](./media/log-analytics-containers/oms-bullet-red.png) |3 分おき |
+| Azure | &#8226; |  |  |  |  |3 分おき |
 
 次の表に、Containers ソリューションによって収集されるデータ型およびログ検索と結果に使用されるデータ型の例を示します。
 
