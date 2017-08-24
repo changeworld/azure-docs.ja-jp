@@ -17,9 +17,9 @@
 ### [Node.js アプリケーションの構築とデプロイ](cloud-services-nodejs-develop-deploy-app.md)
 ### [Express を使用した Node.js Web アプリケーションの構築](cloud-services-nodejs-develop-deploy-express-app.md)
 ### Storage と Visual Studio
-#### [Blob Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-blobs.md)
-#### [Queue Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-queues.md)
-#### [Table Storage および接続されたサービス](../storage/vs-storage-cloud-services-getting-started-tables.md)
+#### [Blob Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-blobs.md)
+#### [Queue Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-queues.md)
+#### [Table Storage および接続されたサービス](../visual-studio/vs-storage-cloud-services-getting-started-tables.md)
 ### 継続的なビルドおよびデプロイのためのパッケージの構成
 #### [TFS およびチームのビルド](cloud-services-dotnet-continuous-delivery.md)
 ### [ロールのトラフィック規則の構成](cloud-services-enable-communication-role-instances.md)

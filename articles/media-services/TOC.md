@@ -24,10 +24,7 @@
 ### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
 
 # 方法
-## Manage
-### アカウント
-#### [PowerShell](media-services-manage-with-powershell.md)
-#### [REST ()](/rest/api/media/mediaservice)
+## 管理
 ### エンティティ
 #### [.NET](media-services-dotnet-manage-entities.md)
 #### [REST ()](media-services-rest-manage-entities.md)
@@ -111,7 +108,6 @@
 ### [オンプレミス エンコーダー](media-services-live-streaming-with-onprem-encoders.md)
 #### [ポータル](media-services-portal-live-passthrough-get-started.md)
 #### [.NET](media-services-dotnet-live-encode-with-onpremises-encoders.md)
-#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/channel)
 ### [クラウド エンコーダーを使用したライブ ストリーミング](media-services-manage-live-encoder-enabled-channels.md)
 #### [ポータル](media-services-portal-creating-live-encoder-enabled-channel.md)
 #### [.NET](media-services-dotnet-creating-live-encoder-enabled-channel.md)
@@ -169,7 +165,6 @@
 ### [メディア処理](media-services-scale-media-processing-overview.md)
 #### [ポータル](media-services-portal-scale-media-processing.md)
 #### [.NET](media-services-dotnet-encoding-units.md)
-#### [REST ()](https://docs.microsoft.com/rest/api/media/operations/encodingreservedunittype)
 ### ストリーミング エンドポイント
 #### [ポータル](media-services-portal-scale-streaming-endpoints.md)
 

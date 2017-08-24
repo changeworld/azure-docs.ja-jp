@@ -50,12 +50,12 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
-**Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
-**Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
-**Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceDeleteCancel**: リソースの削除が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
+- **Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
+- **Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
+- **Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceDeleteCancel**: リソースの削除が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
 
 ### <a name="example-event-schema"></a>イベント スキーマの例
 
@@ -91,12 +91,12 @@ Azure サブスクリプションは、VM が作成されたりストレージ �
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
-**Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
-**Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
-**Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
-**Microsoft.Resources.ResourceDeleteCancel**: リソースの削除が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
+- **Microsoft.Resources.ResourceWriteSuccess**: リソースの作成または更新操作が成功したときに発生します。  
+- **Microsoft.Resources.ResourceWriteFailure**: リソースの作成または更新操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceWriteCancel**: リソースの作成または更新操作が取り消されたときに発生します。  
+- **Microsoft.Resources.ResourceDeleteSuccess**: リソースの削除操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceDeleteFailure**: リソースの削除操作が失敗したときに発生します。  
+- **Microsoft.Resources.ResourceDeleteCancel**: リソースの削除が取り消されたときに発生します。 これは、テンプレートのデプロイが取り消された場合に発生します。
 
 ### <a name="example-event"></a>イベントの例
 
@@ -132,7 +132,7 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
-**Microsoft.EventHub.CaptureFileCreated**: キャプチャ ファイルが作成されたときに発生します。
+- **Microsoft.EventHub.CaptureFileCreated**: キャプチャ ファイルが作成されたときに発生します。
 
 ### <a name="example-event"></a>イベントの例
 
@@ -143,7 +143,7 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
     {
         "topic": "/subscriptions/{subscription-id}/resourcegroups/{resource-group}/providers/Microsoft.EventHub/namespaces/{event-hubs-ns}",
         "subject": "eventhubs/eh1",
-        "eventType": "captureFileCreated",
+        "eventType": "Microsoft.EventHub.CaptureFileCreated",
         "eventTime": "2017-07-11T00:55:55.0120485Z",
         "id": "bd440490-a65e-4c97-8298-ef1eb325673c",
         "data": {
@@ -170,8 +170,8 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
 
 ### <a name="available-event-types"></a>使用可能なイベントの種類
 
-**Microsoft.Storage.BlobCreated**: BLOB が作成されたときに発生します。
-**Microsoft.Storage.BlobDeleted**: BLOB が削除されたときに発生します。
+- **Microsoft.Storage.BlobCreated**: BLOB が作成されたときに発生します。
+- **Microsoft.Storage.BlobDeleted**: BLOB が削除されたときに発生します。
 
 ### <a name="example-event"></a>イベントの例
 
@@ -234,3 +234,4 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
 
 * Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。
+
