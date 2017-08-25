@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: compute
 ms.date: 04/26/2017
 ms.author: mbaldwin
-translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: d32d91f7bbfcea61caba6ccc3033929d307f14be
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 348e154f8398b5e60ad5a698cd319fa381de2fa5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-any-windows-app-on-any-device-with-azure-remoteapp"></a>Azure RemoteApp を使用して任意のデバイス上で任意の Windows アプリを実行する
@@ -88,7 +88,7 @@ Access はデータベースです。せっかくのデータベースが役立�
 1. まず、コマンド ライン インターフェイス (cmd.exe) を発行します。 **[発行しています]** タブで **[cmd]** を選択し、次に **[発行]、[パスを使用したプログラムの発行]** の順にクリックします。
 2. アプリの名前、およびパスを入力します。 ここでは、名前には「File Explorer」、パスには「%SYSTEMDRIVE%\windows\explorer.exe」を使用します。
    ![cmd.exe ファイルの発行](./media/remoteapp-anyapp/ra-publishcmd.png)
-3. ここで、Azure [ストレージ アカウント](../storage/storage-create-storage-account.md)を作成する必要があります。 サンプルには「accessstorage」という名前が付いています。 わかりやすい名前を 1 つ選んでください (「accessstorage」という名前は 1 つしか使えないため)。 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
+3. ここで、Azure [ストレージ アカウント](../storage/common/storage-create-storage-account.md)を作成する必要があります。 サンプルには「accessstorage」という名前が付いています。 わかりやすい名前を 1 つ選んでください (「accessstorage」という名前は 1 つしか使えないため)。 ![Azure ストレージ アカウント](./media/remoteapp-anyapp/ra-anyappazurestorage.png)
 4. 次に、ダッシュボードに戻り、ストレージ (エンドポイントの場所) へのパスを取得します。 しばらくの間使用するので、このパスをどこかにコピーしておいてください。
    ![ストレージ アカウント パス](./media/remoteapp-anyapp/ra-anyappstoragelocation.png)
 5. ストレージ アカウントが作成されたら、次は、プライマリ アクセス キーが必要になります。 **[アクセス キーの管理]**をクリックして、プライマリ アクセス キーをコピーします。

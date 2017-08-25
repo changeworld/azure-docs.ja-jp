@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 03/04/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d22fc3d4c46457880962bebefccffde84203ee53
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: dc8b5cb299da74c88aa5ae82636dc345ddd45a2c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="introduction-to-key-vault-in-azure-stack"></a>Introduction to Key Vault in Azure Stack
@@ -28,7 +28,7 @@ This article assumes the following:
 
 * Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
 * Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
-* [PowerShell is configured for use with Azure Stack](azure-stack-powershell-configure.md) 
+* [PowerShell is configured for use with Azure Stack](azure-stack-powershell-configure-user.md) 
  
 ## <a name="key-vault-basics"></a>Key Vault basics
 Key Vault in Azure Stack helps safeguard cryptographic keys and secrets that cloud applications and services use. By using Key Vault, you can encrypt keys and secrets (such as authentication keys, storage account keys, data encryption keys, .pfx files, and passwords).

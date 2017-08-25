@@ -14,27 +14,24 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/07/2017
+ms.date: 08/21/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 5e9cae224e5a36e1529c962ad8cbab77176dda8c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 370b2f081930fe88527436a1a127309aed6681f0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Azure HDInsight の安全な転送のストレージ アカウントで Hadoop クラスターを作成する
 
-"[安全な転送が必須](../storage/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求にセキュリティで保護された接続を経由するように強制することで、Azure ストレージ アカウントのセキュリティを強化します。 この機能と wasbs スキーマは、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。 
-
->[!NOTE] 
-> .NET SDK を使用して、安全な転送が有効になっているストレージ アカウントでクラスターを作成することは、現在はサポートされていません。 この問題を回避するには、コア サイト構成で ClusterCreateParametersExtended の一部としてプロパティ "fs.defaultFS" の "wasbs" を設定します。
+"[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)" 機能は、アカウントへのすべての要求にセキュリティで保護された接続を経由するように強制することで、Azure ストレージ アカウントのセキュリティを強化します。 この機能と wasbs スキーマは、HDInsight クラスター バージョン 3.6 以降でのみサポートされます。 
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**: 1 か月間の無料試用版アカウントを [azure.microsoft.com/free](https://azure.microsoft.com/free)で作成できます。
-* **安全な転送が有効になっている Azure ストレージ アカウント**。 手順については、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」と「[安全な転送が必須](../storage/storage-require-secure-transfer.md)」を参照してください。
+* **安全な転送が有効になっている Azure ストレージ アカウント**。 手順については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」と「[安全な転送が必須](../storage/common/storage-require-secure-transfer.md)」を参照してください。
 * **ストレージ アカウント上の BLOB コンテナー**。 
 ## <a name="create-cluster"></a>クラスターの作成
 

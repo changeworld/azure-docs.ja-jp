@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 32569d7e75a7a4ddee28041c0487ff158c20fd78
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: d30c09d23a84200ba81df133c9de5b11910ffb61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="batch-and-hpc-solutions-for-large-scale-computing-workloads"></a>大規模コンピューティング ワークロード用の Batch および HPC ソリューション
@@ -106,7 +106,7 @@ Azure Compute Services はビッグ コンピューティング ソリューシ�
 ### <a name="storage-services"></a>ストレージ サービス
 ビッグ コンピューティング ソリューションは、通常、一連の入力データを処理して、結果のデータを生成します。 ビッグ コンピューティング ソリューションで使用される Azure ストレージ サービスには次のようなものがあります。
 
-* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。 たとえば、大きな技術的データ セットや、アプリケーションが処理する入力イメージまたはメディア ファイルには BLOB ストレージを使用する場合があります。 ソリューションでの非同期通信にはキューを使用する場合があります。 「 [Microsoft Azure Storage の概要](../storage/storage-introduction.md)」を参照してください。
+* [BLOB、テーブル、キュー ストレージ](https://azure.microsoft.com/documentation/services/storage/) - ワークフローと通信のために大量の非構造化データ、NoSQL データ、およびメッセージを管理します。 たとえば、大きな技術的データ セットや、アプリケーションが処理する入力イメージまたはメディア ファイルには BLOB ストレージを使用する場合があります。 ソリューションでの非同期通信にはキューを使用する場合があります。 「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」を参照してください。
 * [Azure File Storage](https://azure.microsoft.com/services/storage/files/) - 一部の HPC クラスター ソリューションに必要な標準の SMB プロトコルを使用して Azure 内の一般的なファイルとデータを共有します。
 * [Data Lake Store](https://azure.microsoft.com/services/data-lake-store/) - クラウド向けのハイパースケール Apache Hadoop 分散ファイル システムで、バッチ分析、リアルタイム分析、インタラクティブ分析で高い利便性を発揮します。
 

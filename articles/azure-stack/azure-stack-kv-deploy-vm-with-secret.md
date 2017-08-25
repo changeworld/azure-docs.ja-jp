@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 08/08/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 16ba3b1476bf4465563bda31a677b4e135431266
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: a1137ffefbc3fafbd7e9492819058f6a72537e22
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Create a virtual machine by retrieving the password stored in a Key Vault
@@ -32,7 +32,7 @@ In this article, we walk you through the steps required to deploy a Windows virt
 * Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
 * Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
 * [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* [Configure PowerShell for use with Azure Stack.](azure-stack-powershell-configure.md)
+* [Configure the Azure Stack user's PowerShell environment.](azure-stack-powershell-configure-user.md)
 
 The following steps describe the process required to create a virtual machine by retrieving the password stored in a Key Vault:
 
