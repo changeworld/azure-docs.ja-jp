@@ -19,7 +19,6 @@ ms.openlocfilehash: 4f40ba0eb6ce3e55a1e5458bc6e83060fcf6624c
 ms.contentlocale: ja-jp
 
 ---
-
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>JavaScript Single Page Application (SPA) から Microsoft Graph API を呼び出す
 
 このガイドでは、JavaScript Single Page Application (SPA) が個人アカウント、または職場および学校アカウントにサインインし、アクセス トークンを取得し、Microsoft Graph API またはアクセス トークンを必要とする他の API を、Azure Active Directory v2 エンドポイントから呼び出す方法について説明します。

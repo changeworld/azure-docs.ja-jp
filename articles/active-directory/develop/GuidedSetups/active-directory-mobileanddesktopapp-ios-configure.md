@@ -19,7 +19,6 @@ ms.openlocfilehash: 8a4f412102c0e75654030f5d4f8aab575fdcebba
 ms.contentlocale: ja-jp
 
 ---
-
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
 1. [Microsoft アプリケーション登録ポータル](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=ios&step=configure)でアプリケーションを登録します。

@@ -19,7 +19,6 @@ ms.openlocfilehash: ceec3760648535aecdb1d9ed6a1d1750dc2d0334
 ms.contentlocale: ja-jp
 
 ---
-
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
 1.  `app.js` という名前でファイルを作成します。 Visual Studio を使用している場合は、プロジェクト (プロジェクト ルート フォルダー) を選択し、右クリックして `Add` > `New Item` > `JavaScript File` を選択します。
