@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8ec9709bfb553f6ee89611e92330dedb6129055d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
@@ -45,7 +45,7 @@ az vmss create -g dsktest -n dskvmss --image ubuntults --instance-count 10 --dat
 
 ## <a name="next-steps"></a>次のステップ
 
-管理ディスクの詳細については、[こちらの記事](../storage/storage-managed-disks-overview.md)をご覧ください。
+管理ディスクの詳細については、[こちらの記事](../virtual-machines/windows/managed-disks-overview.md)をご覧ください。
 
 Resource Manager テンプレートを変換して、管理ディスクを使用するスケール セットをプロビジョニングする方法については、[こちらの記事](./virtual-machine-scale-sets-convert-template-to-md.md)をご覧ください。 Resource Manager テンプレートの変更は、Azure REST API にも同様に適用されます。
 

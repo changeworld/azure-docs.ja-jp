@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 7/24/2017
 ms.author: xiaofmao
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 1fa65c30cea953f2fa319cf8d893ca4765735e32
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 3178f596703ee880caef4d9788040fe39ccf4f23
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Connect Storage Explorer to an Azure Stack subscription
@@ -33,7 +33,7 @@ After you connect to your Azure Stack subscription, you can use the [Azure Stora
 
 ## <a name="prepare-an-azure-stack-subscription"></a>Prepare an Azure Stack subscription
 
-You need access to the Azure Stack host machine's desktop or a VPN connection for Storage Explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-with-vpn).
+You need access to the Azure Stack host machine's desktop or a VPN connection for Storage Explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
 
 For the Azure Stack Development Kit, you need to export the Azure Stack authority root certificate.
 
@@ -123,7 +123,7 @@ Now you are ready to connect Storage Explorer to an Azure Stack subscription.
 * [Azure Stack Storage: differences and considerations](azure-stack-acs-differences.md)
 
 
-* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](..\storage\storage-introduction.md)
+* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
 
 [25]: ./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png
 [26]: ./media/azure-stack-storage-connect-se/export-root-cert-azure-stack.png

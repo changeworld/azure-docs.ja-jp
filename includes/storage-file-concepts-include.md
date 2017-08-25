@@ -17,7 +17,7 @@ File ストレージには次の構成要素があります。
 
 ![files-concepts](./media/storage-file-concepts-include/files-concepts.png)
 
-* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/storage-scalability-targets.md) を参照してください。
+* **ストレージ アカウント** : Azure Storage にアクセスする場合には必ず、ストレージ アカウントを使用します。 ストレージ アカウントの容量の詳細については、 [Azure Storage の拡張性とパフォーマンスのターゲットに関するページ](../articles/storage/common/storage-scalability-targets.md) を参照してください。
 * **共有** : File ストレージ共有は、Azure 内の SMB ファイル共有です。 
   ディレクトリとファイルはすべて親の共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ファイル共有の合計容量 5 TB まで増やすことができます。
 * **ディレクトリ** : ディレクトリの階層 (オプション)。 

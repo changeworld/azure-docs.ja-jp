@@ -16,10 +16,10 @@ ms.date: 06/29/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 0c8a4b518c6946781c2340f79ab479612b595c74
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 707356a49970bcd76a55ee1b8a6fbddf6a6ba390
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="connect-your-device-to-your-iot-hub-using-java"></a>Java を使用してデバイスを IoT ハブに接続する
@@ -181,16 +181,13 @@ RegistryManager registryManager = RegistryManager.createFromConnectionString(con
 
 3. テキスト エディターを使用して、read-d2c-messages フォルダー内の pom.xml ファイルを開き、次の依存関係を **dependencies** ノードに追加します。 この依存関係により、アプリの eventhubs-client パッケージを利用して、イベント ハブと互換性のあるエンドポイントから読み込めるようになります。
 
-    ```java
+    ```xml
     <dependency> 
         <groupId>com.microsoft.azure</groupId> 
         <artifactId>azure-eventhubs</artifactId> 
         <version>0.13.0</version> 
     </dependency>
     ```
-
-    > [!NOTE]
-    > [Maven 検索][lnk-maven-eventhubs-search]を使用して、**azure-eventhubs** の最新バージョンを確認できます。
 
 4. pom.xml ファイルを保存して閉じます。
 

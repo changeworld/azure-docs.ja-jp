@@ -8,10 +8,10 @@ ms.date: 7/21/2017
 ms.topic: get-started-article
 ms.service: azure-stack
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: d056f4778713801691616ef2a6adc87f7216c535
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a4c1c316022f992750fe60d28b9be61b17242a64
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -139,39 +139,39 @@ EndpointSuffix=local.azurestack.external
 
 The following Azure Blob storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
 
-* [Get started with Azure Blob storage using .NET](../storage/storage-dotnet-how-to-use-blobs.md)
-* [How to use Blob storage from Java](../storage/storage-java-how-to-use-blob-storage.md)
-* [How to use Blob storage from Node.js](../storage/storage-nodejs-how-to-use-blob-storage.md)
-* [How to use Blob storage from C++](../storage/storage-c-plus-plus-how-to-use-blobs.md)
-* [How to use Blob storage from PHP](../storage/storage-php-how-to-use-blobs.md)
-* [How to use Azure Blob storage from Python](../storage/storage-python-how-to-use-blob-storage.md)
-* [How to use Blob storage from Ruby](../storage/storage-ruby-how-to-use-blob-storage.md)
+* [Get started with Azure Blob storage using .NET](../storage/blobs/storage-dotnet-how-to-use-blobs.md)
+* [How to use Blob storage from Java](../storage/blobs/storage-java-how-to-use-blob-storage.md)
+* [How to use Blob storage from Node.js](../storage/blobs/storage-nodejs-how-to-use-blob-storage.md)
+* [How to use Blob storage from C++](../storage/blobs/storage-c-plus-plus-how-to-use-blobs.md)
+* [How to use Blob storage from PHP](../storage/blobs/storage-php-how-to-use-blobs.md)
+* [How to use Azure Blob storage from Python](../storage/blobs/storage-python-how-to-use-blob-storage.md)
+* [How to use Blob storage from Ruby](../storage/blobs/storage-ruby-how-to-use-blob-storage.md)
 
 ## <a name="queue-storage"></a>Queue storage
 
 The following Azure Queue storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
 
-* [Get started with Azure Queue storage using .NET](../storage/storage-dotnet-how-to-use-queues.md)
-* [How to use Queue storage from Java](../storage/storage-java-how-to-use-queue-storage.md)
-* [How to use Queue storage from Node.js](../storage/storage-nodejs-how-to-use-queues.md)
-* [How to use Queue storage from C++](../storage/storage-c-plus-plus-how-to-use-queues.md)
-* [How to use Queue storage from PHP](../storage/storage-php-how-to-use-queues.md)
-* [How to use Queue storage from Python](../storage/storage-python-how-to-use-queue-storage.md)
-* [How to use Queue storage from Ruby](../storage/storage-ruby-how-to-use-queue-storage.md)
+* [Get started with Azure Queue storage using .NET](../storage/queues/storage-dotnet-how-to-use-queues.md)
+* [How to use Queue storage from Java](../storage/queues/storage-java-how-to-use-queue-storage.md)
+* [How to use Queue storage from Node.js](../storage/queues/storage-nodejs-how-to-use-queues.md)
+* [How to use Queue storage from C++](../storage/queues/storage-c-plus-plus-how-to-use-queues.md)
+* [How to use Queue storage from PHP](../storage/queues/storage-php-how-to-use-queues.md)
+* [How to use Queue storage from Python](../storage/queues/storage-python-how-to-use-queue-storage.md)
+* [How to use Queue storage from Ruby](../storage/queues/storage-ruby-how-to-use-queue-storage.md)
 
 
 ## <a name="table-storage"></a>Table storage
 
 The following Azure Table storage tutorials are applicable to Azure Stack. Note the specific endpoint suffix requirement for Azure Stack described in the previous [Examples](#examples) section.
 
-* [Get started with Azure Table storage using .NET](../storage/storage-dotnet-how-to-use-tables.md)
-* [How to use Table storage from Java](../storage/storage-java-how-to-use-table-storage.md)
-* [How to use Azure Table storage from Node.js](../storage/storage-nodejs-how-to-use-table-storage.md)
-* [How to use Table storage from C++](../storage/storage-c-plus-plus-how-to-use-tables.md)
-* [How to use Table storage from PHP](../storage/storage-php-how-to-use-table-storage.md)
-* [How to use Table storage in Python](../storage/storage-python-how-to-use-table-storage.md)
-* [How to use Table storage from Ruby](../storage/storage-ruby-how-to-use-table-storage.md)
+* [Get started with Azure Table storage using .NET](../cosmos-db/table-storage-how-to-use-dotnet.md)
+* [How to use Table storage from Java](../cosmos-db/table-storage-how-to-use-java.md)
+* [How to use Azure Table storage from Node.js](../cosmos-db/table-storage-how-to-use-nodejs.md)
+* [How to use Table storage from C++](../cosmos-db/table-storage-how-to-use-c-plus.md)
+* [How to use Table storage from PHP](../cosmos-db/table-storage-how-to-use-php.md)
+* [How to use Table storage in Python](../cosmos-db/table-storage-how-to-use-python.md)
+* [How to use Table storage from Ruby](../cosmos-db/table-storage-how-to-use-ruby.md)
 
 ## <a name="next-steps"></a>Next steps
 
-* [Introduction to Microsoft Azure Storage](../storage/storage-introduction.md)
+* [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
