@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/14/2017
+ms.date: 08/22/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -22,7 +22,6 @@ ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
 
 ---
-
 [!INCLUDE [1. Introduction](active-directory-singlepageapp-javascriptspa-introduction.md)]
 [!INCLUDE [2. Setup](active-directory-singlepageapp-javascriptspa-setup.md)]
 [!INCLUDE [3. Use](active-directory-singlepageapp-javascriptspa-use.md)]

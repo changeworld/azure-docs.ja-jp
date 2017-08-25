@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/31/2017
+ms.date: 08/24/2017
 ms.author: elioda
 ms.translationtype: HT
 ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
