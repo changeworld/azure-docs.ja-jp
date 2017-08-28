@@ -1,14 +1,16 @@
-## <a name="meaning-of-migration-of-iaas-resources-from-classic-to-resource-manager"></a>クラシックから Resource Manager への IaaS リソース移行の意味
+## <a name="meaning-of-migration-of-iaas-resources-from-the-classic-deployment-model-to-resource-manager"></a>クラシック デプロイメント モデルから Resource Manager への IaaS リソース移行の意味
 詳しく説明する前に、IaaS リソースでのデータ プレーンと管理プレーンの操作の違いについて簡単に説明したいと思います。
 
 * "*管理/コントロール プレーン*" は、リソースを変更するための管理/コントロール プレーンまたは API を指します。 たとえば、VM の作成、VM の再起動、新しいサブネットでの仮想ネットワークの更新などの操作は、実行中のリソースを管理しますが、 インスタンスへの接続には直接影響しません。
 * *データ プレーン* (アプリケーション) はアプリケーション自体のランタイムを指します。Azure API を経由しないインスタンスとの対話が含まれます。 Web サイトへのアクセスまたは実行中の SQL Server インスタンスや MongoDB サーバーからのデータのプルは、データ プレーンまたはアプリケーション対話と見なされます。 ストレージ アカウントから BLOB をコピーすることや、パブリック IP アドレスにアクセスして RDP または SSH で仮想マシンに接続することもデータ プレーンです。 これらの操作の場合、計算、ネットワーク、およびストレージでアプリケーションは実行されたままになります。
 
+バックグラウンドでは、クラシック デプロイメント モデル スタックと Resource Manager スタックとの間にデータ プレーンの違いはありません。 クラシック デプロイメント モデルのリソースは、移行プロセス時に自動で、Resource Manager スタックにおける表現に変換されます。 したがって、Resource Manager スタックのリソースは、新しいツール、API、SDK を使って管理する必要があります。
+
 ![管理/コントロール プレーンとデータ プレーンの違いを示すスクリーンショット](../articles/virtual-machines/media/virtual-machines-windows-migration-classic-resource-manager/data-control-plane.png)
+
 
 > [!NOTE]
 > 一部の移行シナリオでは、Azure Platform が仮想マシンを停止および割り当て解除してから再起動します。 これにより、短時間のデータ プレーン ダウンタイムが発生します。
->
 >
 
 ## <a name="the-migration-experience"></a>移行エクスペリエンス
@@ -31,25 +33,40 @@
 >
 
 ### <a name="validate"></a>検証
-検証操作は、移行プロセスの最初の手順です。 この手順の目標は、移行対象のリソースのデータをバックグラウンドで分析し、リソースを移行できるかどうかを示すコード (成功/失敗) を返すことです。
+検証操作は、移行プロセスの最初の手順です。 この手順の目的は、クラシック デプロイメント モデルから移行するリソースの状態を分析し、そのリソースを移行できるかどうかの情報 (成功/失敗) を得ることです。
 
-移行を検証する仮想ネットワークまたはホストされるサービス (仮想ネットワークでない場合) を選択します。
+移行を検証する仮想ネットワークまたはクラウド サービス (仮想ネットワークでない場合) を選択します。
 
 * リソースを移行できない場合は、移行がサポートされていない理由がすべて Azure Platform でリストされます。
 
-ストレージ サービスを検証するときは、ストレージ アカウントの名前に "-Migrated" が付加された名前のリソース グループで、移行されたアカウントを探します。  たとえば、ストレージ アカウントの名前が "mystorage" である場合は、"mystorage-Migrated" という名前のリソース グループで Azure Resource Manager が有効なリソースを探します。それには、"mystorage" という名前のストレージ アカウントが含まれています。
+#### <a name="checks-not-done-in-validate"></a>検証で実施されないチェック
+
+検証操作で分析されるのは、クラシック デプロイメント モデルにおけるリソースの状態に限られます。 クラシック デプロイメント モデルの各種構成に起因する障害やサポート対象外のシナリオについてはすべてチェックすることができます。 一方、移行中に Azure Resource Manager スタックが原因で起こりうるリソースの問題については一切チェックすることができません。 これらの問題は、移行に続く "準備" 手順でそれらのリソースに変換処理が適用されるときにだけチェックされます。 以下の表は、検証操作でチェックされないすべての問題を一覧にしたものです。
+
+
+|検証で実施されないネットワーク チェック|
+|-|
+|Virtual Network に ER ゲートウェイと VPN ゲートウェイの両方が割り当てられている|
+|Virtual Network ゲートウェイ接続が切断状態|
+|Azure Resource Manager スタックにすべての ER 回線が事前に移行されている|
+|Azure Resource Manager のネットワーク リソース (静的パブリック IP、動的パブリック IP、ロード バランサー、ネットワーク セキュリティ グループ、ルート テーブル、ネットワーク インターフェイス) のクォータ チェック |
+| デプロイ/VNET 全域ですべてのロード バランサー規則が有効であることのチェック |
+| 同じ VNet に存在する停止済み (割り当て解除済み) VM 間で競合するプライベート IP のチェック |
 
 ### <a name="prepare"></a>準備
-準備操作は、移行プロセスの 2 番目の手順です。 この手順の目的は、クラシックから Resource Manager リソースへの IaaS リソースの変換をシミュレートし、これを並行して示し、視覚化することです。
+準備操作は、移行プロセスの 2 番目の手順です。 この手順の目的は、クラシック デプロイメント モデルから Resource Manager リソースへの IaaS リソースの変換をシミュレートし、これを並行して示し、視覚化することです。
 
-移行を準備する仮想ネットワークまたはホストされるサービス (仮想ネットワークでない場合) を選択します。
+> [!NOTE] 
+> この手順では、クラシック リソースに変更は加えられません。 そのため、この手順で安全に移行を試すことができます。 
+
+移行を準備する仮想ネットワークまたはクラウド サービス (仮想ネットワークでない場合) を選択します。
 
 * リソースを移行できない場合は、移行プロセスが停止され、準備操作が失敗した理由がリストされます。
 * リソースを移行できる場合は、最初に、移行対象のリソースに対する管理プレーン操作がロックされます。 たとえば、移行中、VM にデータ ディスクを追加することはできません。
 
-次に、リソースを移行するために、クラシックから Resource Manager へのメタデータの移行が Azure Platform で開始されます。
+次に、リソースを移行するために、クラシック デプロイメント モデルから Resource Manager へのメタデータの移行が Azure Platform で開始されます。
 
-準備操作が完了すると、クラシックと Resource Manager の両方でリソースを視覚化するためのオプションが表示されます。 クラシック デプロイメント モデルのすべてのクラウド サービスに対して、 `cloud-service-name>-Migrated`というパターンのリソース グループ名が Azure Platform で作成されます。
+準備操作が完了すると、クラシック デプロイメント モデルと Resource Manager の両方でリソースを視覚化するためのオプションが表示されます。 クラシック デプロイメント モデルのすべてのクラウド サービスに対して、 `cloud-service-name>-Migrated`というパターンのリソース グループ名が Azure Platform で作成されます。
 
 > [!NOTE]
 > 移行されるリソースのために作成されたリソース グループの名前 ("-Migrated" など) を選択することはできません。ただし、移行の完了後には、Azure Resource Manager の移動機能を使用して、リソースを任意のリソース グループに移動できます。 詳しくは、「[新しいリソース グループまたはサブスクリプションへのリソースの移動](../articles/resource-group-move-resources.md)」を参照してください。
@@ -60,9 +77,12 @@
 
 ![準備中のポータル Azure Resource Manager リソースを示すスクリーンショット](../articles/virtual-machines/windows/media/migration-classic-resource-manager/portal-arm.png)
 
+ここで、準備フェーズ完了後のリソースを概観しておきましょう。 データ プレーンのリソースは同じであることに注意してください。 管理プレーン (クラシック デプロイメント モデル) とコントロール プレーン (Resource Manager) の両方で表されています。
+
+![準備フェーズの概観図](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-prepare.png)
+
 > [!NOTE]
 > 従来の仮想ネットワークにない仮想マシンは、この移行フェーズで "停止済みかつ割り当て解除済み" になります。
->
 >
 
 ### <a name="check-manual-or-scripted"></a>チェック (手動またはスクリプト)
@@ -77,27 +97,33 @@
 問題がある場合は、いつでも移行を中止し、クラシック デプロイメント モデルに戻ることができます。 戻ると、Azure Platform でリソースに対する管理プレーン操作が開始されるため、クラシック デプロイメント モデルでその VM に対する通常の操作を再開することができます。
 
 ### <a name="abort"></a>中止
-中止は省略可能な手順です。この手順により、クラシック デプロイメント モデルへの変更を元に戻し、移行を中止できます。
+中止は省略可能な手順です。この手順により、クラシック デプロイメント モデルへの変更を元に戻し、移行を中止できます。 前の準備手順で作成されたリソースの Resource Manager メタデータは、この操作で削除されます。 
+
+![中止フェーズの概観図](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-abort.png)
+
 
 > [!NOTE]
 > コミット操作をトリガーしたら、この操作は実行できません。     
 >
->
 
 ### <a name="commit"></a>コミット
-検証が完了したら、移行をコミットできます。 リソースは Resource Manager デプロイメント モデルでのみ使用できるようになります。クラシックには表示されません。 つまり、移行されたリソースは新しいポータルでのみ管理できます。
+検証が完了したら、移行をコミットできます。 リソースは Resource Manager デプロイメント モデルでのみ使用できるようになります。クラシック デプロイメント モデルには表示されません。 つまり、移行されたリソースは新しいポータルでのみ管理できます。
 
 > [!NOTE]
 > これはべき等操作です。 失敗した場合は、操作を再試行することをお勧めします。 失敗が続く場合は、サポート チケットを作成するか、 [VM フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=WAVirtualMachinesforWindows)でフォーラム投稿を作成し、ClassicIaaSMigration タグを付けてください。
 >
 >
-<br>
-移行プロセスの手順のフローチャートを次に示します。
+
+![コミット フェーズの概観図](../articles/virtual-machines/windows/media/migration-classic-resource-manager/behind-the-scenes-commit.png)
+
+## <a name="where-to-begin-migration"></a>どこから移行を開始するか
+
+以下のフローチャートで移行の流れを示します。
 
 ![移行手順を示すスクリーンショット](../articles/virtual-machines/windows/media/migration-classic-resource-manager/migration-flow.png)
 
-## <a name="translation-of-classic-to-azure-resource-manager-resources"></a>クラシック リソースから Azure Resource Manager リソースへの変換
-次の表では、リソースはクラシックと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
+## <a name="translation-of-classic-deployment-model-to-azure-resource-manager-resources"></a>クラシック デプロイメント モデル リソースから Azure Resource Manager リソースへの変換
+次の表では、リソースはクラシック デプロイメント モデルと Resource Manager で呼称が異なる場合があります。 その他の機能とリソースは現在サポートされていません。
 
 | クラシック表示 | Resource Manager の表示 | 注記 |
 | --- | --- | --- |

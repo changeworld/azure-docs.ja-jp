@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/01/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 94d228f38a760b40f1acb4685702e6244f03bb5d
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: ff03ce6463176bad8e8d89985441d23c7d76b183
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
@@ -34,7 +34,7 @@ Analysis Services では、複数のソースからのデータをマッシュ�
 [このビデオ](https://sec.ch9.ms/ch9/d6dd/a1cda46b-ef03-4cea-8f11-68da23c5d6dd/AzureASoverview_high.mp4)では、Azure Analysis Services が Microsoft の BI 機能全体にどのように組み込まれ、データ モデルのクラウドへの移行によりどのようなメリットが得られるのかを説明しています。
 
 ## <a name="built-on-sql-server-analysis-services"></a>SQL Server Analysis Services が基礎
-Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](https://docs.microsoft.com/sql/analysis-services/tabular-models/compatibility-level-for-tabular-models-in-analysis-services) 1200 と 1400 の表形式モデルをサポートしています。 パーティション、行レベルセキュリティ、双方向リレーションシップ、翻訳はすべてサポートされています。 インメモリ モードと DirectQuery モードは、大規模かつ複雑なデータセットに対する高速なクエリを意味します。
+Azure Analysis Services には、SQL Server Analysis Services Enterprise Edition が既に備えている数多くの優れた機能との互換性があります。 Azure Analysis Services は、[互換性レベル](analysis-services-compat-level.md) 1200 と 1400 の表形式モデルをサポートしています。 パーティション、行レベルセキュリティ、双方向リレーションシップ、翻訳はすべてサポートされています。 インメモリ モードと DirectQuery モードは、大規模かつ複雑なデータセットに対する高速なクエリを意味します。
 
 表形式モデルは開発に要する時間が短く、高度なカスタマイズも可能です。 開発者向けに、表形式モデルには、モデル オブジェクトを記述するための表形式オブジェクト モデル (TOM) が用意されています。 TOM は、[Tabular Model Scripting Language (TMSL)](https://docs.microsoft.com/sql/analysis-services/tabular-model-scripting-language-tmsl-reference) を通じて JSON 形式で公開され、[Microsoft.AnalysisServices.Tabular](https://msdn.microsoft.com/library/microsoft.analysisservices.tabular.aspx) 名前空間を通じて AMO データ定義言語で公開されています。
 

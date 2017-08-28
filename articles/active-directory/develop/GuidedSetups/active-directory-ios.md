@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 08/22/2017
 ms.author: andret
 ms.custom: aaddev
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: c1cad034162844a889967253dbdc1d3a5ec48ab7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
-
 
 ---
 [!INCLUDE [1. Introduction](active-directory-mobileanddesktopapp-ios-introduction.md)]

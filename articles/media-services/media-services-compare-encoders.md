@@ -4,7 +4,7 @@ description: "このトピックでは、**Media Encoder Standard** と **Media 
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: a79437c0-4832-423a-bca8-82632b2c47cc
 ms.service: media-services

@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 3c7a6ac092854bc2d78ac23079d168cf8b5a2201
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf8fdca51a6a4ad1b7cd4fe6980543199f6b36e0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="get-started-building-solutions-with-the-batch-client-library-for-net"></a>.NET 向け Batch クライアント ライブラリを使用してソリューション作成を開始する
@@ -31,7 +31,7 @@ ms.lasthandoff: 08/04/2017
 >
 >
 
-この記事では、C# サンプル アプリケーションについて順を追って説明しながら、[Azure Batch][azure_batch] と [Batch .NET][net_api] ライブラリの基礎を学習します。 サンプル アプリケーションで Batch サービスを活用してクラウド内の並列ワークロードを処理する方法のほか、[Azure Storage](../storage/storage-introduction.md) とやり取りしてファイルのステージングと取得を行う方法を示します。 また、一般的な Batch アプリケーション ワークフローと、ジョブ、タスク、プール、コンピューティング ノードなど、Batch の主なコンポーネントの基本も理解できます。
+この記事では、C# サンプル アプリケーションについて順を追って説明しながら、[Azure Batch][azure_batch] と [Batch .NET][net_api] ライブラリの基礎を学習します。 サンプル アプリケーションで Batch サービスを活用してクラウド内の並列ワークロードを処理する方法のほか、[Azure Storage](../storage/common/storage-introduction.md) とやり取りしてファイルのステージングと取得を行う方法を示します。 また、一般的な Batch アプリケーション ワークフローと、ジョブ、タスク、プール、コンピューティング ノードなど、Batch の主なコンポーネントの基本も理解できます。
 
 ![Batch ソリューションのワークフロー (基本)][11]<br/>
 
@@ -41,10 +41,10 @@ ms.lasthandoff: 08/04/2017
 ### <a name="accounts"></a>アカウント
 * **Azure アカウント**: まだ Azure サブスクリプションを持っていない場合は、[無料 Azure アカウントを作成][azure_free_account]します。
 * **Batch アカウント**: Azure サブスクリプションの用意ができたら、 [Azure Batch アカウントを作成](batch-account-create-portal.md)します。
-* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **ストレージ アカウント**: 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
 > [!IMPORTANT]
-> 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5. 「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。
+> 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5. 「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類 "*のみ*" がサポートされています。
 >
 >
 
@@ -128,7 +128,7 @@ private const string StorageAccountKey  = "";
 ![Azure Storage でコンテナーを作成する][1]
 <br/>
 
-Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、 [Azure Blob Storage](../storage/storage-introduction.md)で 3 つのコンテナーを作成することです。
+Batch には、Azure Storage とやり取りするための組み込みのサポートが含まれています。 Storage アカウントのコンテナーは、Batch アカウントで実行するタスクで必要なファイルを提供します。 また、タスクによって生成される出力データを格納する場所も提供します。 *DotNetTutorial* クライアント アプリケーションで最初に実行する手順は、 [Azure Blob Storage](../storage/common/storage-introduction.md)で 3 つのコンテナーを作成することです。
 
 * **application**: このコンテナーには、タスクによって実行されるアプリケーションと、DLL などの依存するファイルが格納されます。
 * **input**: タスクで、 *input* コンテナーから処理対象のデータ ファイルをダウンロードします。
@@ -188,7 +188,7 @@ private static async Task CreateContainerIfNotExistAsync(
 コンテナーを作成すると、アプリケーションから、タスクで使用するファイルをアップロードできるようになります。
 
 > [!TIP]
-> [.NET から Blob Storage を使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)に関するページに、Azure Storage コンテナーと BLOB の操作がわかりやすく示されています。 Batch を扱う場合は、この記事を早い段階で読むことをお勧めします。
+> [.NET から Blob Storage を使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページに、Azure Storage コンテナーと BLOB の操作がわかりやすく示されています。 Batch を扱う場合は、この記事を早い段階で読むことをお勧めします。
 >
 >
 
@@ -286,7 +286,7 @@ Shared Access Signature (SAS) は、URL の一部に含めると、Azure Storage
 * **コンテナー Shared Access Signature**: 各タスクでコンピューティング ノードでの処理が完了すると、出力ファイルは Azure Storage の *output* コンテナーにアップロードされます。 この処理を実行するために、TaskApplication では、ファイルをアップロードするときに、パスの一部としてコンテナーへの書き込みアクセス権を提供するコンテナー Shared Access Signature を使用します。 コンテナー Shared Access Signature の取得は、BLOB Shared Access Signature を取得するときと同様の方法で行います。 DotNetTutorial では、`GetContainerSasUrl` ヘルパー メソッドがこれを行う [CloudBlobContainer.GetSharedAccessSignature][net_sas_container] を呼び出します。 TaskApplication でコンテナー Shared Access Signature を使用する方法の詳細については、「手順 6: タスクを監視する」を参照してください。
 
 > [!TIP]
-> Storage アカウントのデータへの安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB ストレージでの Shared Access Signature (SAS) の作成と使用](../storage/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
+> Storage アカウントのデータへの安全なアクセスを提供する方法については、Shared Access Signature に関する 2 つの記事、[第 1 部: SAS モデルの概要](../storage/common/storage-dotnet-shared-access-signature-part-1.md)と[第 2 部: BLOB ストレージでの Shared Access Signature (SAS) の作成と使用](../storage/blobs/storage-dotnet-shared-access-signature-part-2.md)に関するページをご覧ください。
 >
 >
 

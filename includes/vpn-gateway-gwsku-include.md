@@ -22,8 +22,8 @@ SLA と機能セットに違いがあるため、"*運用環境と開発テス�
 
 | **SKU**| **機能**|
 | ---    | ---         |
-|Basic   | ルートベース: 10 トンネル。P2S あり<br>ポリシー ベース (IKEv1): 1 トンネル。P2S なし|
-| VpnGw1、VpnGw2、VpnGw3 |最大 30 トンネルのルートベースの VPN (*) <br>P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
+|**Basic**   | **ルートベース VPN**: 10 トンネル。P2S あり<br><br>**ポリシーベース VPN**: (IKEv1): 1 トンネル。P2S なし|
+| **VpnGw1、VpnGw2、および VpnGw3** | **ルートベース VPN**: 最大 30 トンネル (*)、P2S、BGP、アクティブ/アクティブ、カスタム IPsec/IKE ポリシー、ExpressRoute/VPN 共存 |
 |        |             |
 
 (*) "PolicyBasedTrafficSelectors" を構成することによって、ルートベースの VPN ゲートウェイ (VpnGw1、VpnGw2、VpnGw3) を、オンプレミスにある複数のポリシーベース ファイアウォール デバイスに接続することができます。 詳細については、[PowerShell を使って複数のオンプレミス ポリシーベース VPN デバイスに VPN ゲートウェイを接続する方法](../articles/vpn-gateway/vpn-gateway-connect-multiple-policybased-rm-ps.md)に関するページを参照してください。

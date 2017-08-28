@@ -16,10 +16,10 @@ ms.date: 06/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 233965bf54cbca79c7ff059aaccfa5780d672cab
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c2f2a878414e4efd626d674ef9a182ae52eeb1ff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/09/2017
 次のセクションでは、これ以外にも、分散コンピューティングのシナリオを実現する Batch の各種リソースについて説明します。
 
 > [!NOTE]
-> Batch サービスを利用するには、[Batch アカウント](#account)が必要です。 また、ほぼすべての Batch ソリューションでファイルの保存と取得に [Azure Storage][azure_storage] アカウントが使用されています。 「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類のみがサポートされています。
+> Batch サービスを利用するには、[Batch アカウント](#account)が必要です。 また、ほぼすべての Batch ソリューションでファイルの保存と取得に [Azure Storage][azure_storage] アカウントが使用されています。 「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で**汎用**のストレージ アカウントの種類のみがサポートされています。
 >
 >
 
@@ -114,7 +114,7 @@ Batch アカウントを作成するときに、コンピューティング ノ�
 
 ほとんどの Batch ソリューションでは、リソース ファイルまたは出力ファイルを格納するために Azure Storage を使用します。  
 
-「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で汎用のストレージ アカウントの種類のみがサポートされています。 Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では、汎用のストレージ アカウントに存在するリソース ファイルを指定する必要があります。
+「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」の手順 5.「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」で説明されているように、Batch では、現時点で汎用のストレージ アカウントの種類のみがサポートされています。 Batch タスク (標準タスク、開始タスク、ジョブ準備タスク、ジョブ解放タスクなど) では、汎用のストレージ アカウントに存在するリソース ファイルを指定する必要があります。
 
 
 ## <a name="compute-node"></a>コンピューティング ノード

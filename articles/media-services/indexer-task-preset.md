@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Media Indexer のタスク プリ
 services: media-services
 documentationcenter: 
 author: Asolanki
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.service: media-services
 ms.workload: media

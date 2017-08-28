@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 16x9 for iOS | Microsoft Docs
 description: "このトピックでは、**H264 Multiple Bitrate 16x9 for iOS** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

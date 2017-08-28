@@ -4,7 +4,7 @@ description: "このトピックでは、setRuntimeProperties を使って複数
 services: media-services
 documentationcenter: 
 author: xpouyat
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 7fb35bdd-9891-4401-a65b-ef3cc8190e8a
 ms.service: media-services

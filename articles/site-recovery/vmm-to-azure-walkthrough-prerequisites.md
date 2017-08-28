@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 87a5d721ca785329b407d31126bd0b211b17ccf3
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47c178c66ec98fe5d333edd725b64465026e73ed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/26/2017
 **要件** | **詳細**
 --- | ---
 **Azure アカウント** | [Microsoft Azure アカウント](http://azure.microsoft.com/)が必要です。
-**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要です。<br/><br/> ストレージ アカウントは、Azure Recovery Services コンテナーと同じリージョンに存在する必要があります。<br/><br/>[geo 冗長ストレージ](../storage/storage-redundancy.md#geo-redundant-storage)またはローカル冗長ストレージを使うことができます。 geo 冗長ストレージをお勧めします。 geo 冗長ストレージを使用すると、地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できます。<br/><br/> 標準の Azure ストレージ アカウントを使用するか、Azure [Premium Storage](../storage/storage-premium-storage.md) を使用することができます。 Premium Storage では I/O 集中型ワークロードをホストでき、通常、常に高 I/O パフォーマンスと低待機時間を必要とする VM に使用されます。 レプリケートしたデータに Premium Storage を使用する場合は、Standard Storage アカウントも必要です。 Standard Storage アカウントでは、オンプレミス データの継続的な変更をキャプチャするレプリケーション ログを保存します。
+**Azure Storage** | レプリケートしたデータを格納するには Azure ストレージ アカウントが必要です。<br/><br/> ストレージ アカウントは、Azure Recovery Services コンテナーと同じリージョンに存在する必要があります。<br/><br/>[geo 冗長ストレージ](../storage/common/storage-redundancy.md#geo-redundant-storage)またはローカル冗長ストレージを使うことができます。 geo 冗長ストレージをお勧めします。 geo 冗長ストレージを使用すると、地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できます。<br/><br/> 標準の Azure ストレージ アカウントを使用するか、Azure [Premium Storage](../storage/common/storage-premium-storage.md) を使用することができます。 Premium Storage では I/O 集中型ワークロードをホストでき、通常、常に高 I/O パフォーマンスと低待機時間を必要とする VM に使用されます。 レプリケートしたデータに Premium Storage を使用する場合は、Standard Storage アカウントも必要です。 Standard Storage アカウントでは、オンプレミス データの継続的な変更をキャプチャするレプリケーション ログを保存します。
 **Azure ネットワーク** | フェールオーバー後に Azure VM の接続先となる [Azure ネットワーク](../virtual-network/virtual-network-get-started-vnet-subnet.md)が必要です。 Azure ネットワークは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
 **オンプレミスの VMM サーバー** | System Center 2012 R2 以降を実行している、1 つ以上の VMM サーバーが必要です。<br/><br/> 各 VMM サーバーには 1 つ以上のプライベート クラウドが必要です。 各クラウドには 1 つ以上のホスト グループが必要です。<br/><br/> VMM サーバーがインターネットにアクセスできる必要があります。
 **オンプレミスの Hyper-V** | Hyper-V ホスト サーバーは、Hyper-V ロールが有効な Windows Server 2012 R2 以降か、Microsoft Hyper-V Server 2012 R2 を実行している必要があります。 最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V ホストは、(VMM クラウド内にある) VMM ホスト グループに属している必要があります。<br/><br/> ホストにはレプリケートする 1 つ以上の VM が必要です。<br/><br/> Hyper-V ホストは、Azure へのレプリケーションのために、直接またはプロキシを経由してインターネットに接続されている必要があります。 Hyper-V サーバーには、記事 [2961977](https://support.microsoft.com/kb/2961977) で説明されている修正プログラムが必要です。

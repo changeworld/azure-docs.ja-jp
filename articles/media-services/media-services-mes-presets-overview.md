@@ -2,7 +2,7 @@
 title: "MES (Media Encoder Standard) 用のタスク プリセット | Microsoft Docs"
 description: "このトピックでは、MES (Media Encoder Standard) 用のタスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

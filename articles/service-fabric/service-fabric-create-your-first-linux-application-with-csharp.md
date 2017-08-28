@@ -12,13 +12,13 @@ ms.devlang: csharp
 ms.topic: hero-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 8/21/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 4baf144cc28eeff0ab8f8b60e837f8a2bad903af
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: adcafaa5522fcddc0a01eb1dc8deba04ebfc38f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>最初の Azure Service Fabric アプリケーションを作成する
@@ -34,10 +34,29 @@ Service Fabric では、.NET Core と Java の両方で Linux 上のサービス
 ## <a name="prerequisites"></a>前提条件
 作業を開始する前に、 [Linux 開発環境がセットアップ](service-fabric-get-started-linux.md)されていることを確認してください。 Mac OS X を使用している場合は、 [Vagrant を使用して仮想マシンに Linux ワンボックス環境を設定](service-fabric-get-started-mac.md)します。
 
-また、アプリケーションをデプロイするために、[Azure CLI 2.0](service-fabric-azure-cli-2-0.md) (推奨) または [XPlat CLI](service-fabric-azure-cli.md) を構成してください。
+また、[Service Fabric CLI](service-fabric-cli.md) をインストールしてください。
+
+### <a name="install-and-set-up-the-generators-for-csharp"></a>CSharp のジェネレーターのインストールとセットアップ
+Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric CSharp アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに CSharp 用の Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
+1. マシンに nodejs と NPM をインストールします。
+
+  ```bash
+  sudo apt-get install npm
+  sudo apt install nodejs-legacy
+  ```
+2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+
+  ```bash
+  sudo npm install -g yo
+  ```
+3. NPM から Service Fabric Yeo Java アプリケーション ジェネレーターをインストールします。
+
+  ```bash
+  sudo npm install -g generator-azuresfcsharp
+  ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
-Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 Linux 用の Service Fabric SDK には、[Yeoman](http://yeoman.io/) ジェネレーターが含まれています。これを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
+Service Fabric のアプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスを 1 つ以上含めることができます。 直前の手順でインストールした CSharp 用の Service Fabric [Yeoman](http://yeoman.io/) ジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。 Yeoman を使用して、単一のサービスを持つアプリケーションを作成しましょう。
 
 1. ターミナルで、コマンド「`yo azuresfcsharp`」を入力してスキャフォールディングの構築を開始します。
 2. アプリケーションに名前を付けます。
@@ -62,12 +81,10 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 ビルドしたアプリケーションは、ローカル クラスターにデプロイできます。
 
-### <a name="using-xplat-cli"></a>XPlat CLI の使用
-
 1. ローカルの Service Fabric クラスターに接続します。
 
     ```bash
-    azure servicefabric cluster connect
+    sfctl cluster select --endpoint http://localhost:19080
     ```
 
 2. テンプレートに用意されているインストール スクリプトを実行してクラスターのイメージ ストアにアプリケーション パッケージをコピーし、アプリケーションの種類を登録して、アプリケーションのインスタンスを作成します。
@@ -76,14 +93,11 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
     ./install.sh
     ```
 
-### <a name="using-azure-cli-20"></a>Azure CLI 2.0 の使用
-
-ビルドしたアプリケーションは、他のすべての Service Fabric アプリケーションと同じようにデプロイできます。 詳細な手順については、[Azure CLI を使用した Service Fabric アプリケーションの管理](service-fabric-application-lifecycle-azure-cli-2-0.md)についてのドキュメントを参照してください。
+ビルドしたアプリケーションは、他のすべての Service Fabric アプリケーションと同じようにデプロイできます。 詳細な手順については、[Service Fabric CLI を使用した Service Fabric アプリケーションの管理](service-fabric-application-lifecycle-sfctl.md)についてのドキュメントを参照してください。
 
 これらのコマンドのパラメーターは、アプリケーション パッケージ内の生成されたマニフェストで確認できます。
 
-アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。
-次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
+アプリケーションのデプロイ後、ブラウザーを開いて [http://localhost:19080/Explorer](http://localhost:19080/Explorer) の [Service Fabric Explorer](service-fabric-visualizing-your-cluster.md) に移動します。 次に、**Applications** ノードを展開し、アプリケーションの種類のエントリと、その種類の最初のインスタンスのエントリができたことを確認してください。
 
 ## <a name="start-the-test-client-and-perform-a-failover"></a>テスト クライアントの起動と、フェールオーバーの実行
 アクター プロジェクトは、それ自体では何も行いません。 これにメッセージを送信する別のサービスまたはクライアントが必要です。 アクター テンプレートには、アクター サービスとの対話に使用できる簡単なテスト スクリプトが含まれています。
@@ -101,7 +115,7 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 
 ## <a name="adding-more-services-to-an-existing-application"></a>既存アプリケーションへのサービスの追加
 
-`yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。 
+`yo` を使用して作成したアプリケーションにサービスを追加するには、次の手順を実行します。
 1. ディレクトリを既存アプリケーションのルートに変更します。  たとえば、Yeoman で作成したアプリケーションが `MyApplication` の場合は、`cd ~/YeomanSamples/MyApplication` です。
 2. `yo azuresfcsharp:AddService` を実行します。
 
@@ -111,14 +125,11 @@ Service Fabric Yeoman テンプレートには、ビルド スクリプトが含
 3. build.sh でプロジェクト ファイルの名前を csproj ファイルに更新します。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Service Fabric Reliable Actors の概要](service-fabric-reliable-actors-introduction.md)
-* [Azure CLI を使用した Service Fabric クラスターの対話操作](service-fabric-azure-cli.md)
+* [Service Fabric CLI を使用した Service Fabric クラスターの対話操作](service-fabric-cli.md)
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
-
-## <a name="related-articles"></a>関連記事:
-
-* [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)
+* [Service Fabric CLI の概要](service-fabric-cli.md)
 
 <!-- Images -->
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-csharp/yeoman-csharp.png

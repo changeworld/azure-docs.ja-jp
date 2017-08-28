@@ -4,7 +4,7 @@ description: "この記事では、PlayReady と Widevine DRM の両方を使用
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 5bcad5a4-c0bb-4871-9cce-808a913c53e6
 ms.service: media-services

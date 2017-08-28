@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 4/25/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 451d3c956b863ab90f86509fd80a5c96e27525ce
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 22c7e589efa9a9f401549ec9b95c58c4eaf07b94
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-attached-data-disks"></a>Azure VM スケール セットと接続されたデータ ディスク
@@ -99,10 +99,21 @@ Update-AzureRmVmss -ResourceGroupName myvmssrg -Name myvmss -VirtualMachineScale
     }          
 ]
 ```
+
 次に、_[PUT]_ を選択して、スケール セットに変更を適用します。 この例は、3 台以上の接続されたデータ ディスクがサポートされる VM サイズを使用している場合に有効です。
 
 > [!NOTE]
 > データ ディスクを追加または削除するなど、スケール セット定義に変更を加えた場合、変更された定義は新しく作成されるすべての VM に適用されます。既存の VM に対しては、_upgradePolicy_ プロパティが "Automatic" に設定されている場合にのみ、変更された定義が適用されます。 このプロパティが "Manual" に設定されている場合は、新しいモデルを既存の VM に手動で適用する必要があります。 これをポータルで実行するには、_Update-AzureRmVmssInstance_ PowerShell コマンドを使用するか、_az vmss update-instances_ CLI コマンドを使用します。
+
+## <a name="adding-pre-populated-data-disks-to-an-existent-scale-set"></a>データ投入済みディスクを現行のスケール セットに追加する 
+> 現行のスケール セット モデルにディスクを追加すると、そのディスクは常時、意図的に空の状態で作成されます。 このシナリオには、スケール セットによって作成される新しいインスタンスも含まれます。 この振る舞いの理由は、スケールセット定義に空のデータ ディスクが存在するためです。 現行のスケール セット モデル用にデータ投入済みドライブを作成するには、次の 2 とおりの方法があります。
+
+* カスタム スクリプトを実行してインスタンス 0 の VM から他の VM のデータ ディスクにデータをコピーする。
+* OS ディスクと (必要なデータが格納された) データ ディスクとを含んだマネージ イメージを作成し、そのイメージを使って新しいスケールセットを作成する。 そうすることで、そのスケールセットの定義に指定されたデータ ディスクが、新たに作成されるすべての VM に割り当てられるようになります。 この定義によって参照されるイメージには、カスタマイズされたデータを格納したデータ ディスクが含まれるため、そのスケールセットの各仮想マシンは自動的に、それらの変更が反映された状態で作成されます。
+
+> カスタム イメージを作成する方法については、「[Azure で一般化された VM の管理対象イメージを作成する](/azure/virtual-machines/windows/capture-image-resource/)」を参照してください。 
+
+> 必要なデータを含んだインスタンス 0 の VM をユーザーがキャプチャしたうえで、その vhd をイメージの定義に使用する必要があります。
 
 ## <a name="removing-a-data-disk-from-a-scale-set"></a>スケール セットからのデータ ディスクの削除
 Azure CLI の _az vmss disk detach_ コマンドを使用して、データ ディスクを VM スケール セットから削除することができます。 たとえば、次のコマンドを実行すると、LUN 2 で定義されているディスクが削除されます。
