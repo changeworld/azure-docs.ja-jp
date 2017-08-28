@@ -4,7 +4,7 @@ description: "Media Analytics のパブリック プレビュー (エンター�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: c56e3781-8510-4f7f-b5ff-a218c1bb6f4c
 ms.service: media-services
@@ -19,7 +19,6 @@ ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
 ms.openlocfilehash: 63dd4299f5d4bcd98f87fa78c2d7da080a105696
 ms.contentlocale: ja-jp
 ms.lasthandoff: 04/15/2017
-
 
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Services プラットフォームの Media Analytics

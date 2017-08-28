@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: micflan
+ms.custom: accessibility
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 2d3046381892978e3aea12752f526d7cdf8184f5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 # <a name="supported-browsers-and-devices-for-the-azure-portal"></a>Azure Portal でサポートされるブラウザーとデバイス

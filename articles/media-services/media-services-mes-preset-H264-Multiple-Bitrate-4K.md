@@ -2,7 +2,7 @@
 title: "H264 Multiple Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs"
 description: "このトピックでは、**H264 Multiple Bitrate 4K** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

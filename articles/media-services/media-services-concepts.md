@@ -1,10 +1,10 @@
-﻿---
+---
 title: "Azure Media Services の概念 | Microsoft Docs"
 description: "このトピックでは、Azure Media Services の概念の概要を説明します。"
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: dcefc8bc-e2ea-4b38-a643-9010f4436fb5
 ms.service: media-services
@@ -75,7 +75,7 @@ BLOB コンテナーは、BLOB のセットをグループ化します。 BLOB �
 ### <a id="locators"></a>ロケーター
 [ロケーター](https://docs.microsoft.com/rest/api/media/operations/locator)は、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 アクセス ポリシーは、指定された資産に対してクライアントが保持するアクセス許可およびアクセス許可の期間を定義するために使用されます。 ロケーターはアクセス ポリシーに対して多対 1 の関係を持つことができるので、同じアクセス許可とアクセス期間の設定を使用しながら、複数のロケーターが複数のクライアントに対して異なる開始時間や接続の種類を提供できます。ただし、Azure Storage サービスで設定されている共有アクセス ポリシーの制限により、特定の資産に対して、5 つを超える一意のロケーターを一度に関連付けることはできません。 
 
-Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、Smooth Streaming など) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
+Media Services では、2 種類のロケーターがサポートされています。OnDemandOrigin ロケーターはメディアのストリーミング (MPEG DASH、HLS、Smooth Streamingなど) またはメディアのプログレッシブ ダウンロードに使用し、SAS URL ロケーターは Azure Storage へのメディア ファイルのアップロードまたは Azure Storage からのダウンロードに使用します。 
 
 >[!NOTE]
 >一覧表示のアクセス許可 (AccessPermissions.List) は、OnDemandOrigin ロケーターを作成するときには使用しないでください。 
@@ -94,7 +94,7 @@ Azure Media Services には、クラウド内のメディア エンコーディ�
 Media Services を使い始める場合、コーデックとファイル形式の違いを理解することが重要です。
 コーデックは圧縮/展開アルゴリズムを実装するソフトウェアで、ファイル形式は圧縮されたビデオを保持するコンテナーです。
 
-Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 または Smooth Streaming でエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
+Media Services には動的パッケージ化機能があり、アダプティブ ビットレート MP4 またはSmooth Streamingでエンコードされたコンテンツを、Media Services でサポートされるストリーミング形式 (MPEG DASH、HLS、Smooth Streaming) でそのまま配信できます。つまり、これらのストリーミング形式に再度パッケージ化する必要がありません。
 
 [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md)を活用するには、mezzanine (ソース) ファイルを一連のアダプティブ ビットレート MP4 ファイルまたはアダプティブ ビットレート Smooth Streaming ファイルにエンコードし、少なくとも 1 つの標準またはプレミアム ストリーミング エンドポイントを開始済み状態にする必要があります。
 
@@ -108,7 +108,7 @@ Media Services は次のオンデマンド エンコーダーをサポートし�
 ## <a name="live-streaming"></a>ライブ ストリーミング
 Azure Media Services では、チャネルは、ライブ ストリーミング コンテンツを処理するためのパイプラインを表します。 チャネルは、次の 2 つの方法のいずれかでライブ入力ストリームを受信します。
 
-* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP または Smooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、Tricaster エンコーダーは、RTMP を出力するライブ エンコーダーです。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
+* オンプレミスのライブ エンコーダーは、マルチ ビットレート RTMP またはSmooth Streaming (Fragmented MP4) をチャネルに送信します。 マルチビットレートの Smooth Streaming を出力するライブ エンコーダーとして、MediaExcel、Ateme、Imagine Communications、Envivio、Cisco、Elemental を使用できます。 Adobe Flash Live Encoder、Telestream Wirecast、Teradek、Haivision、Tricaster エンコーダーは、RTMP を出力するライブ エンコーダーです。 取り込んだストリームは、追加のコード変換やエンコードを必要とせずにチャネルを通過します。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 * RTP (MPEG-TS)、RTMP、Smooth Streaming (Fragmented MP4) のいずれかの形式のシングル ビットレート ストリームは、Media Services による Live Encoding が有効なチャネルに送信されます。 次に、受信したシングル ビットレート ストリームのマルチ ビットレート (アダプティブ) ビデオ ストリームへのライブ エンコードがチャネルで実行されます。 Media Services は、要求に応じて、ストリームを顧客に配信します。
 
 ### <a name="channel"></a>チャネル

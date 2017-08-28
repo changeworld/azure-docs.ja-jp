@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/05/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: ad473a2c9006e2593a84364f03e3954a569adcab
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 98c5bacd0a040d3a2d83bfe088b11d0f15449ed9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 05/09/2017
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 
-## <a name="use-the-azure-portal"></a>Azure ポータルの使用
+## <a name="use-the-azure-portal"></a>Azure Portal の使用
 
 Azure Portal ([http://portal.azure.com](http://portal.azure.com)) にログインします。
 

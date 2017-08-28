@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: dba483c21afc46b1b9f0a74ebfb24ed644080e09
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB の概要: DocumentDB API
@@ -49,8 +49,10 @@ DocumentDB API を使った場合の Azure Cosmos DB の主な機能とメリッ
 
 * **自動インデックス作成:** 既定では、Azure Cosmos DB がデータベース内のすべてのドキュメントについて自動的にインデックスを作成するため、スキーマや、セカンダリ インデックスの作成は不要です。 すべてにはインデックスを作成したくない場合もあります。 その場合は、 [JSON ファイルでパスを除外](indexing-policies.md) することもできます。
 
+* **Change Feed サポート:** Change Feed からは、Azure Cosmos DB コレクション内の一連のドキュメントをその更新日時順に並べ替えて取得することができます。 このフィードを使ってデータに対する変更をリッスンし、更新時にデータのレプリケート、API 呼び出しのトリガー、ストリーミング処理などを行うことができます。 Change Feed は自動的に有効になります。また使い方は簡単です。Change Feed について詳しくは、[こちら](https://docs.microsoft.com/azure/cosmos-db/change-feed)をご覧ください。 
+
 ## <a name="data-management"></a>DocumentDB API を使ってデータを管理する方法
-DocumentDB API には明確に定義されたデータベース リソースが用意されているため、JSON データの管理に役立ちます。 これらのリソースは、高可用性を確保するためにレプリケートされ、論理 URI によって一意にアドレス指定されます。 DocumentDB API のすべてのリソースには、HTTP ベースのシンプルで RESTful なプログラミング モデルを適用することができます。 
+DocumentDB API は、明確に定義されたデータベース リソースを通じて JSON データを管理するのに役立ちます。 これらのリソースは、高可用性を確保するためにレプリケートされ、論理 URI によって一意にアドレス指定されます。 DocumentDB API のすべてのリソースには、HTTP ベースのシンプルで RESTful なプログラミング モデルを適用することができます。 
 
 
 Azure Cosmos DB データベース アカウントは、Azure Cosmos DB にアクセスできる一意の名前空間です。 データベース アカウントを作成するには、事前に Azure サブスクリプションが必要です。このサブスクリプションで、多様な Azure サービスにアクセスできます。 

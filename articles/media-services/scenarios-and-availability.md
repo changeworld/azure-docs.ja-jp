@@ -4,7 +4,7 @@ description: "このトピックでは、Microsoft Azure Media Services のシ�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.service: media-services
 ms.workload: media

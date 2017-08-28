@@ -2,7 +2,7 @@
 title: "REST を使用して Azure Media Services コンテンツを発行する"
 description: "ストリーミング URL の構築に使用するロケーターを作成する方法について説明します。 コードは REST API を使用しています。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

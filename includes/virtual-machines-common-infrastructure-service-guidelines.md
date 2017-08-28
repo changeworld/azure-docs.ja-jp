@@ -72,7 +72,7 @@ Azure では、リソースを簡単に管理できるように、作成時の�
 Azure Virtual Machine の名前と基になるオペレーティング システムのコンピューター名を同じにすることをお勧めします。 このため、「 [Microsoft NetBIOS コンピューターの名前付け規則](https://support.microsoft.com/kb/188997/)」で説明されている NetBIOS 名前付け規則に従います。
 
 ### <a name="storage-account-names"></a>ストレージ アカウント名
-ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳細については、「 [ストレージ アカウントの作成](../articles/storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
+ストレージ アカウン名の管理には特別な規則があります。 小文字と数字のみを使用できます。 詳細については、「 [ストレージ アカウントの作成](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。 また、ストレージ アカウント名は、core.windows.net と組み合わせ、グローバルで有効な一意の DNS 名にする必要があります。 たとえば、ストレージ アカウントの名前が「mystorageaccount」の場合、次の DNS 名が一意となります。
 
 * mystorageaccount.blob.core.windows.net
 * mystorageaccount.table.core.windows.net
@@ -131,7 +131,7 @@ Azure Storage は多くの Azure ソリューションにおいて不可欠な�
 
 Azure では 2 種類のストレージ アカウントを使用できます。 標準ストレージ アカウントでは、BLOB ストレージ (Azure 仮想マシン ディスクの保存に利用)、テーブル ストレージ、キュー ストレージ、ファイル ストレージにアクセスできます。 Premium Storage は、AlwaysOn クラスター内の SQL Server などの高パフォーマンス アプリケーション用に設計されており、現在は Azure 仮想マシン ディスクのみをサポートします。
 
-ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。 Azure ストレージの現在の制限については、「 [Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#storage-limits) 」をご覧ください。 また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)」もご覧ください。
+ストレージ アカウントはスケーラビリティ ターゲットと関連付けられています。 Azure ストレージの現在の制限については、「 [Microsoft Azure サブスクリプションとサービスの制限、クォータ、制約](../articles/azure-subscription-service-limits.md#storage-limits) 」をご覧ください。 また、「[Azure ストレージのスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)」もご覧ください。
 
 Azure で作成される仮想マシンには、オペレーティング システム ディスク、一時ディスク、および 0 個以上のオプションのデータ ディスクが含まれます。 オペレーティング システム ディスクとデータ ディスクは Azure ページ BLOB です。一時ディスクは、コンピューターが存在するノードにローカル保存されます。 このため、コンピューターのノードが変更されたことが認識されないとそのディスクのデータが失われる可能性があるため、一時ディスクはシステム リサイクルの間に保持する必要があるデータには適していません。 一時ドライブには何も格納しないでください。
 
@@ -171,7 +171,7 @@ Azure データ ディスクにディスク ストライピングを使用する
 
 タスク:
 
-* 名前付け規則を使用してストレージ アカウントのセットを作成します。 Azure ポータル、Azure クラシック ポータル、または **New-AzureStorageAccount** PowerShell コマンドレットを使用できます。
+* 名前付け規則を使用してストレージ アカウントのセットを作成します。 Azure Portal、Azure クラシック ポータル、または **New-AzureStorageAccount** PowerShell コマンドレットを使用できます。
 
 ## <a name="4-cloud-services"></a>4.サブスクリプションあたりの
 クラウド サービスは、PaaS と IaaS の両方のサービスに関して、Azure サービス管理の基本的な構成要素です。 PaaS では、クラウド サービスはインスタンスが相互に通信できるロールの関連付けを表します。 クラウド サービスは、パブリック仮想 IP (VIP) アドレスおよびロード バランサーに関連付けられており、インターネットからの着信トラフィックを受け取って、そのトラフィックを受信するように構成されているロールに負荷分散します。
@@ -259,7 +259,7 @@ Azure サブスクリプションは、最大 200 個のクラウド サービ�
 * 仮想ネットワークのアドレス空間を定義します。
 * サブネットのセットおよびそれぞれに対するアドレス空間を定義します。
 * クロスプレミス仮想ネットワークの場合、仮想ネットワーク内の仮想マシンが到達する必要のあるオンプレミスの場所に対するローカル ネットワーク アドレス空間のセットを定義します。
-* 名前付け規則を使用して仮想ネットワークを作成します。 Azure ポータルまたは Azure クラシック ポータルを使用できます。
+* 名前付け規則を使用して仮想ネットワークを作成します。 Azure Portal または Azure クラシック ポータルを使用できます。
 
 ## <a name="6-availability-sets"></a>6.可用性セット
 Azure PaaS の場合、クラウド サービスにはアプリケーションのコードを実行する 1 つ以上のロールが含まれます。 ロールは、ファブリックが自動的にプロビジョニングする 1 つまたは複数の仮想マシン インスタンスを持つことができます。 Azure はいつでもこれらのロールのインスタンスを更新できますが、同じロールの一部であるため、ロールのサービスが停止するのを防ぐため、同時にすべてを更新してはならないことを Azure は認識しています。
@@ -294,7 +294,7 @@ Azure PaaS では、Azure が仮想マシンとそれに関連付けられてい
 タスク:
 
 * 名前付け規則を使用して各仮想マシンの名前を定義します。
-* Azure ポータル、Azure クラシック ポータル、 **New-AzureVM** PowerShell コマンドレット、Azure CLI、またはリソース マネージャー テンプレートを使用して、仮想マシンを作成します。
+* Azure Portal、Azure クラシック ポータル、 **New-AzureVM** PowerShell コマンドレット、Azure CLI、またはリソース マネージャー テンプレートを使用して、仮想マシンを作成します。
 
 ## <a name="example-of-an-it-workload-the-contoso-financial-analysis-engine"></a>IT ワークロードの例: Contoso 金融分析エンジン
 Contoso Corporation は、将来の市場取引を支援するために最先端の独自アルゴリズムで次世代の金融分析エンジンを開発しました。 このエンジンを Azure 内のサーバーのセットとして顧客が利用できるようにしたいと考えています。次のもので構成されます。
@@ -338,7 +338,7 @@ Contoso は、2 つのストレージ アカウントが必要であると判断
 ### <a name="a-virtual-network-with-subnets"></a>サブネットを含む仮想ネットワーク
 仮想ネットワークは Contoso のオンプレミス ネットワークに常時接続している必要はないので、Contoso はクラウド専用の仮想ネットワークに決定しました。
 
-Contoso は、Azure ポータルを使用して次の設定でクラウド専用仮想ネットワークを作成しました。
+Contoso は、Azure Portal を使用して次の設定でクラウド専用仮想ネットワークを作成しました。
 
 * 名前: AZFAE-USE-VN01
 * 場所: East US 2
@@ -392,7 +392,7 @@ Contoso は、Azure Virtual Machines に対して次の名前を決定しまし�
 
 [仮想マシンのサイズ](../articles/virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
-[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/storage-scalability-targets.md)
+[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](../articles/storage/common/storage-scalability-targets.md)
 
 [データセンター拡張機能の参照アーキテクチャの図](https://gallery.technet.microsoft.com/Datacenter-extension-687b1d84)
 

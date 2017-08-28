@@ -2,7 +2,7 @@
 title: "H264 Single Bitrate 1080p Media Encoder Standard プリセット - Azure | Microsoft Docs"
 description: "このトピックでは、**H264 Single Bitrate 1080p** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

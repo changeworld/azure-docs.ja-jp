@@ -3,8 +3,8 @@ title: "ストレージ エクスプローラー (プレビュー) の概要 | M
 description: "ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
 services: storage
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
@@ -13,7 +13,7 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 7/17/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0abc33bb5b0ffe46397baa5a2d53637bc3f2984c

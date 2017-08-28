@@ -15,14 +15,14 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 06/01/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 40aac182af22d03c4cff535fd8c87b29ecae376a
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ebd160372fc75c6d0fc323be9e948fa2475b71cf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
-# <a name="lesson-1-create-a-new-tabular-model-project"></a>レッスン 1: 新しい表形式モデル プロジェクトを作成する
+# <a name="lesson-1-create-a-tabular-model-project"></a>レッスン 1: 表形式モデル プロジェクトを作成する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
@@ -65,7 +65,7 @@ ms.lasthandoff: 06/03/2017
 
 ![aas-lesson1-tme](../tutorials/media/aas-lesson1-tme.png)
 
-**[Solution Explorer]** タブをクリックします｡ このタブに **Model.bim** ファイルがあります｡ 左側にデザイナー ウィンドウが表示されない場合は (Model.bim タブのウィンドウが空)､ **AW Internet Sales Project** の下の **Solution Explorer** で **Model.bim** ファイルをクリックします｡ Model.bim ファイルには､モデル プロジェクトのメタデータが含まれます｡ 
+**[Solution Explorer]** タブをクリックします｡このタブに **Model.bim** ファイルがあります｡ 左側にデザイナー ウィンドウが表示されない場合は (Model.bim タブのウィンドウが空)､ **AW Internet Sales Project** の下の **Solution Explorer** で **Model.bim** ファイルをクリックします｡ Model.bim ファイルには､モデル プロジェクトのメタデータが含まれます｡ 
 
 ![aas-lesson1-se](../tutorials/media/aas-lesson1-se.png)
   
