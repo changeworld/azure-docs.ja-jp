@@ -4,7 +4,7 @@ description: "アセットに安全にアクセスできる ContentKey を作成
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 225b05e5-7d30-409c-b5b7-3ef0634310c7
 ms.service: media-services

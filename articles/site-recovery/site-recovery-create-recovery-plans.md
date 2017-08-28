@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 618c6fead3dbad385c4ded39352eea0cfcf1b134
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成
@@ -44,6 +44,7 @@ ms.lasthandoff: 06/16/2017
     - VMM から Azure への場合は、**[ソースの種類]** > **[VMM]** の順に選択します。  ソース VMM サーバーと、ターゲットとしての **Azure** を選択します。
     - Hyper-V レプリケーションから Azure (VMM なし) への場合は、**[ソースの種類]** > **[Hyper-V サイト]** の順に選択します。 そのサイトをソースとして選択し、**Azure** をターゲットとして選択します。
     - VMware VM またはオンプレミスの物理サーバーから Azure への場合は、構成サーバーをソースとして選択し、**Azure** をターゲットとして選択します。
+    - Azure 間の復旧計画の場合は、ソースとして Azure リージョンを選択し、ターゲットとしてセカンダリ Azure リージョンを選択します。 セカンダリ Azure リージョンは、仮想マシンが保護されているリージョンのみです。
 2. **[仮想マシンの選択]** で、復旧計画の既定のグループ (グループ 1) に追加する必要のある仮想マシン (またはレプリケーション グループ) を選択します。
 
 ## <a name="customize-and-extend-recovery-plans"></a>復旧計画のカスタマイズと拡張

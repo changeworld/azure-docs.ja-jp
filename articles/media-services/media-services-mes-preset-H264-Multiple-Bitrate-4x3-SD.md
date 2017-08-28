@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 4x3 SD | Microsoft Docs
 description: "このトピックでは、**H264 Multiple Bitrate 4x3 SD** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

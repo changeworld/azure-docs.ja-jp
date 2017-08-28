@@ -11,22 +11,22 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
-ms.author: cfreeman
+ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 75abfb977a47ccef45bcc2124b31fbd06ea7d68e
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 2363e725d44facc5417c0baf3f80c8b55fdca470
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
 # <a name="user-retention-analysis-for-web-applications-with-application-insights"></a>Azure Application Insights による Web アプリケーションのユーザー リテンション期間分析
 
-[Azure Application Insights](app-insights-overview.md) のリテンション期間ブレードを使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
+[Azure Application Insights](app-insights-overview.md) のリテンション期間機能を使用すると、アプリに戻るユーザーの数、およびそのユーザーが特定のタスクを実行したり目標を達成したりする頻度を分析できます。 たとえば、ゲームのサイトを運営する場合は、ゲームに負けた後にサイトに戻るユーザーの数と、勝った後に戻るユーザーの数を比較できます。 このデータによって、ユーザー エクスペリエンスとビジネス戦略の両方の強化に役立ちます。
 
 ## <a name="get-started"></a>作業開始
 
-Application Insights ポータルのリテンション期間ブレードにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](app-insights-usage-overview.md)してください。
+Application Insights ポータルのリテンション期間ツールにデータがまだ表示されていない場合は、[利用状況ツールの使用方法を確認](app-insights-usage-overview.md)してください。
 
 ## <a name="the-retention-tool"></a>リテンション期間ツール
 
@@ -39,6 +39,9 @@ Application Insights ポータルのリテンション期間ブレードにデ�
 5. このグリッドには、2 のクエリ ビルダーに従って維持されたユーザー数が表示されます。 各行は、表示された期間に選択したいずれかのイベントを実行したユーザーのコーホートを表します。 行の各セルは、そのコーホートの中で、その後の期間に 1 回以上戻ったユーザーの数を示しています。 複数の期間にユーザーが戻る可能性があります。 
 6. リテンション期間レポートを把握しやすいよう、開始イベントの上位 5 件と返されたイベントの上位 5 件が洞察カードに表示されます。 
 
+![リテンション期間のマウス ホバー](./media/app-insights-usage-retention/hover.png)
+
+リテンション期間ツールのセルにポインタを合わせると、分析ボタンと、セルの意味を説明するヒントが表示されます。 分析ボタンを使用すると、そのセルからユーザーを生成するようにあらかじめ設定されている分析ツールに移動します。 
 
 ## <a name="use-business-events-to-track-retention"></a>ビジネス イベントを使用してリテンション期間を追跡する
 
@@ -66,6 +69,9 @@ Application Insights ポータルのリテンション期間ブレードにデ�
 - カスタム イベントまたはページ ビューを既に送信した場合は、使用状況ツールを見て、自分のサービスがユーザーにどのように使用されているかを把握します。
     - [ユーザー、セッション、イベント](app-insights-usage-segmentation.md)
     - [ファネル](usage-funnels.md)
+    - [ユーザー フロー](app-insights-usage-flows.md)
     - [ブック](app-insights-usage-workbooks.md)
     - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
+
+
 

@@ -1,4 +1,24 @@
+---
+title: "Azure AD v2 iOS の概要 - 設定 | Microsoft Docs"
+description: "iOS (Swift) アプリケーションで、アクセス トークンを必要とする API を Azure Active Directory v2 エンドポイントから呼び出す方法"
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mbaldwin
+editor: 
+ms.service: active-directory
+ms.devlang: na
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 05/09/2017
+ms.author: andret
+ms.translationtype: HT
+ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
+ms.openlocfilehash: 78c6ca83a2711ad81b7819a8723869980a1925a3
+ms.contentlocale: ja-jp
 
+---
 ## <a name="setting-up-your-ios-application"></a>iOS アプリケーションをセットアップする
 
 このセクションでは、新しいプロジェクトの作成方法について順を追って説明し、iOS アプリケーション (Swift) に *"Microsoft でサインイン"* を統合して、トークンを必要とする Web API でクエリを実行できるようにする方法を示します。
@@ -137,3 +157,4 @@ Main.storyboard ファイルは、プロジェクト テンプレートの一部
     </scene>
 </scenes>
 ```
+

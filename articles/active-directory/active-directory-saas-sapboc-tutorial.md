@@ -5,19 +5,20 @@ services: active-directory
 documentationCenter: na
 author: jeevansd
 manager: femila
+ms.reviewer: joflore
 ms.assetid: 6c5e44f0-4e52-463f-b879-834d80a55cdf
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/16/2017
+ms.date: 08/14/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 85723eeb9c030dc51bdad47ea8e0996ff7868336
+ms.translationtype: HT
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: a09e965b6fc9b89023c09092860fcf79773a4518
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-business-object-cloud"></a>チュートリアル: Azure Active Directory と SAP Business Object Cloud の統合
@@ -45,7 +46,7 @@ Azure AD と SAP Business Object Cloud の統合を構成するには、次の�
 このチュートリアルの手順をテストするには、次の推奨事項に従ってください。
 
 - 必要な場合を除き、運用環境は使用しないでください。
-- Azure AD の評価環境がない場合は、 [こちら](https://azure.microsoft.com/pricing/free-trial/)から 1 か月の評価版を入手できます。
+- Azure AD の評価環境がない場合は、[1 か月の評価版を入手できます](https://azure.microsoft.com/pricing/free-trial/)。
 
 ## <a name="scenario-description"></a>シナリオの説明
 このチュートリアルでは、テスト環境で Azure AD のシングル サインオンをテストします。 このチュートリアルで説明するシナリオは、主に次の 2 つの要素で構成されています。
@@ -111,9 +112,17 @@ SAP Business Object Cloud で Azure AD のシングル サインオンを構成�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-sapboc-tutorial/tutorial_sapboc_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<sub-domain>.projectorca.cloud/` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、次の形式で URL を入力します。 
+    | |
+    |-|-|
+    | `https://<sub-domain>.sapanalytics.cloud/` |
+    | `https://<sub-domain>.sapbusinessobjects.cloud/` |
 
-    b. **[識別子]** ボックスに、`<sub-domain>.projectorca.cloud` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    | |
+    |-|-|
+    | `<sub-domain>.sapbusinessobjects.cloud` |
+    | `<sub-domain>.sapanalytics.cloud` |
 
     > [!NOTE] 
     > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 サインオン URL を取得するには、[SAP Business Object Cloud クライアント サポート チーム](https://www.sap.com/product/analytics/cloud-analytics.support.html)に問い合わせてください。SAP Business Object Cloud メタデータをダウンロードするための識別子は、このチュートリアルで後述する管理コンソールから取得できます。 
@@ -195,8 +204,7 @@ SAP Business Object Cloud で Azure AD のシングル サインオンを構成�
  
 ### <a name="creating-an-sap-business-object-cloud-test-user"></a>SAP Business Object Cloud のテスト ユーザーの作成
 
-Azure AD ユーザーが SAP Business Object Cloud にログインできるようにするには、そのユーザーを SAP Business Object Cloud にプロビジョニングする必要があります。  
-SAP Business Object Cloud の場合、プロビジョニングは手動で行います。
+Azure AD ユーザーが SAP Business Object Cloud にログインできるようにするには、そのユーザーを SAP Business Object Cloud にプロビジョニングする必要があります。 SAP Business Object Cloud では、プロビジョニングは手動で行います。
 
 **ユーザー アカウントをプロビジョニングするには、次の手順に従います。**
 

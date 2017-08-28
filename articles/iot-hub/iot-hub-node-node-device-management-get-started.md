@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 08/25/2017
 ms.author: juanpere
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 7de541ac45fd277f3cfc91d598c654c24af187fc
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/17/2017
-
 
 ---
 # <a name="get-started-with-device-management-node"></a>デバイス管理の開始 (Node)

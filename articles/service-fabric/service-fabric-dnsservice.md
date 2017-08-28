@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 7/27/2017
 ms.author: msfussell
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 691325bdc34f960aed0c65797abc1edd2a76efd2
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 9871bc5aa4e74ab0faef401d67c4e9558eb5e14b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="dns-service-in-azure-service-fabric"></a>Azure Service Fabric の DNS サービス
@@ -45,7 +45,7 @@ DNS サービスによって DNS 名はサービス名にマップされ、ネ�
     }
     ```
 
-2. 次のスニペットのように、`addonFeatures` セクションを `fabricSettings` セクションの後に追加して、DNS サービスを有効にします。 
+2. 次のスニペットのように、`fabricSettings` セクションの後に次の `addonFeatures` セクションを追加して DNS サービスを有効にします。 
 
     ```json
         "fabricSettings": [

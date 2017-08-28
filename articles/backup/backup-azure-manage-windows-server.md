@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/9/2017
+ms.date: 08/15/2017
 ms.author: markgal
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 70ea11a7ee273d8c8497a6f12693ddb41ac7cb77
+ms.translationtype: HT
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 5922e308f5c205a07bd329c28322ae82cea0e1fa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="monitor-and-manage-azure-recovery-services-vaults-and-servers-for-windows-machines"></a>Windows コンピューター用 Azure Recovery Services コンテナーとサーバーの監視と管理
@@ -38,7 +37,7 @@ ms.lasthandoff: 06/29/2017
 
 Recovery Services コンテナーのダッシュボードには、Recovery Services コンテナーの詳細または属性が示されています。
 
-1. Azure サブスクリプションを使用して、 [Azure ポータル](https://portal.azure.com/) にサインインします。
+1. Azure サブスクリプションを使用して、 [Azure Portal](https://portal.azure.com/) にサインインします。
 2. ハブ メニューの **[その他のサービス]** をクリックします。
 
     ![Open list of Recovery Services vaults step 1](./media/backup-azure-manage-windows-server/open-rs-vault-list.png) <br/>
@@ -291,7 +290,7 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 **Q1.Azure Backup エージェントではバックアップ ジョブの状態が完了済みになっているのに、その状態がポータルにすぐに反映されないのはなぜですか。**
 
-A1. Azure Backup エージェントのバックアップ ジョブの状態が Azure ポータルに反映されるには、最大で 15 分かかります。
+A1. Azure Backup エージェントのバックアップ ジョブの状態が Azure Portal に反映されるには、最大で 15 分かかります。
 
 **Q2. バックアップ ジョブが失敗した場合、アラートが発生するまでどのくらい時間がかかりますか。**
 
@@ -314,8 +313,7 @@ A3. アラートのノイズを軽減する目的で、次の場合は通知が�
 2. プロセスが実行中でなかった場合には、**コントロール パネル**を開いてサービスの一覧を参照し、 **Microsoft Azure Recovery Services 管理エージェント**を開始または再起動します。
 
     詳細については、以下の場所にあるログを参照してください。<br/>
-   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*`
-   例:<br/>
+   `<AzureBackup_agent_install_folder>\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider*` 次に例を示します。<br/>
    `C:\Program Files\Microsoft Azure Recovery Services Agent\Temp\GatewayProvider0.errlog`
 
 ## <a name="next-steps"></a>次のステップ

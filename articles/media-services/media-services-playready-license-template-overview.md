@@ -2,7 +2,7 @@
 title: "Media Services PlayReady ライセンス テンプレートの概要"
 description: "このトピックでは、PlayReady ライセンスの設定に使用する PlayReady ライセンス テンプレートの概要を示します。"
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

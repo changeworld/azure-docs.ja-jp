@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/15/2017
 ms.author: pkc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 70b2fefa654a73693a8064654cde1d767bfdd496
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 78e68cff3a757cbbcd8dc6f53120e6a4af54591a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="azure-service-fabric-support-options"></a>Azure Service Fabric のサポート オプション
@@ -83,7 +83,8 @@ Azure Service Fabric の問題は、[Service-Fabric-issues git リポジトリ](
 | 5.3.* |バージョン 2.3 以前 |2017 年 2 月 24 日 |
 | 5.4.* |バージョン 2.4 以前 |2017 年 5 月 10 日     |
 | 5.5.* |バージョン 2.5 以前 |2017 年 8 月 10 日    |
-| 5.6.* |バージョン 2.6 以前 |最新バージョンのため、終了日はありません
+| 5.6.* |バージョン 2.6 以前 |2017 年 10 月 13 日    |
+| 5.7.* |バージョン 2.7 以前 |最新バージョンのため、終了日はありません
 
 <a id="previewversion"></a>
 ## <a name="service-fabric-preview-versions---unsupported-for-production-use"></a>Service Fabric プレビュー バージョン - 運用環境で使用がサポートされていません。

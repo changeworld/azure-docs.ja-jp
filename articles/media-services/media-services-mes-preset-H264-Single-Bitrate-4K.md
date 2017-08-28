@@ -2,7 +2,7 @@
 title: "H264 Single Bitrate 4K Media Encoder Standard プリセット - Azure | Microsoft Docs"
 description: "このトピックでは、**H264 Single Bitrate 4K** タスク プリセットの概要について説明します。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

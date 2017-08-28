@@ -2,7 +2,7 @@
 title: "H264 Multiple Bitrate 1080p Media Encoder Standard プリセット - Azure | Microsoft Docs"
 description: "このトピックでは、**H264 Multiple Bitrate 1080p** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
