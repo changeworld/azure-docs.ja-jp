@@ -4,7 +4,7 @@ description: "このトピックでは、.NET を使用して、Media Encoder St
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: 03431b64-5518-478a-a1c2-1de345999274
 ms.service: media-services

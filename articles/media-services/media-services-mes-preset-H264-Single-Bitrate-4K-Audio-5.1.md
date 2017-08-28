@@ -2,7 +2,7 @@
 title: H264 Single Bitrate 4K Audio 5.1 | Microsoft Docs
 description: "このトピックでは、**H264 Single Bitrate 4K Audio 5.1** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 services: media-services
 documentationcenter: 

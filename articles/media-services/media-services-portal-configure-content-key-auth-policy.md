@@ -4,7 +4,7 @@ description: "コンテンツ キー承認ポリシーを構成する方法に�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: erikre
+manager: SyntaxC4
 editor: 
 ms.assetid: ee82a3fa-c34b-48f2-a108-8ba321f1691e
 ms.service: media-services
