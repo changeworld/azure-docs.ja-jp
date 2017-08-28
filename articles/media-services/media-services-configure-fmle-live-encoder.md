@@ -4,7 +4,7 @@ description: "このトピックでは、Flash Media Live Encoder (FMLE) エン�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 3113f333-517a-47a1-a1b3-57e200c6b2a2
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: f6d6b7b1051a22bbc865b237905f8df84e832231
 ms.openlocfilehash: b94b2f867d30fe2c121904821404b8228ee1e899
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/11/2017
-
 
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
@@ -72,7 +72,7 @@ ms.lasthandoff: 01/11/2017
 >
 >
 
-## <a name="a-idconfigurefmlertmpaconfigure-the-fmle-encoder"></a><a id=configure_fmle_rtmp></a>FMLE エンコーダーを構成する
+## <a id=configure_fmle_rtmp></a>FMLE エンコーダーを構成する
 このチュートリアルでは、次の出力設定が使用されます。 このセクションの残りの部分では、構成の手順の詳細について説明します。
 
 **ビデオ**:

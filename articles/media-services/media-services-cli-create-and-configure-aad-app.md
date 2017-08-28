@@ -4,7 +4,7 @@ description: "このトピックでは、CLI 2.0 を使用して Azure AD アプ
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

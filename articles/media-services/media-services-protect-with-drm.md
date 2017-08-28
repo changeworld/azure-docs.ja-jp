@@ -4,7 +4,7 @@ description: "Microsoft Azure Media Services を使用すると、MPEG DASH、Sm
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 548d1a12-e2cb-45fe-9307-4ec0320567a2
 ms.service: media-services

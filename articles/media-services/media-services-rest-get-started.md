@@ -4,7 +4,7 @@ description: "このチュートリアルでは、Azure Media Services と REST 
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 88194b59-e479-43ac-b179-af4f295e3780
 ms.service: media-services

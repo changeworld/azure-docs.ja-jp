@@ -4,7 +4,7 @@ description: "Microsoft® Smooth Streaming Client Porting Kit のライセンス
 services: media-services
 documentationcenter: 
 author: xpouyat
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: e3b488e7-8428-4c10-a072-eb3af46c82ad
 ms.service: media-services

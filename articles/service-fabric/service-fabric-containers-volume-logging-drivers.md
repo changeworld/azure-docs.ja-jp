@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 6/28/2017
+ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 868c3051f60c27f15bfd99f66e50b65595951a00
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: b12ef95add6347621f7d4865fac46568f91a1e12
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -58,12 +58,21 @@ Service Fabric では、コンテナー サービスへの [Docker ボリュー�
 </ApplicationManifest>
 ```
 
-上記の例では、`Volume`の `Source` タグはソース フォルダーを指します。 ソース フォルダーは、コンテナーまたは永続的なリモート ストアをホストする VM のフォルダーである場合があります。 `Destination` タグは、実行中のコンテナー内で `Source` がマップされる場所です。 ボリューム プラグインを使用する場合、プラグインの名前 (`Driver` タグ) を上記の例で示したように指定します。  Docker ログ ドライバーが指定されている場合は、クラスター内のログを処理するエージェント (またはコンテナー) をデプロイする必要があります。 
+上記の例では、`Volume`の `Source` タグはソース フォルダーを指します。 ソース フォルダーは、コンテナーまたは永続的なリモート ストアをホストする VM のフォルダーである場合があります。 `Destination` タグは、実行中のコンテナー内で `Source` がマップされている場所です。 
+
+ボリュームのプラグインを指定すると、Service Fabric は指定されたパラメーターを使用して自動的にボリュームを作成します。 `Source` タグはボリュームの名前を示し、`Driver` タグはボリュームのドライバー プラグインを指定します。 次のスニペットに示すように、`DriverOption` タグを使用してオプションを指定することができます。
+
+```xml
+<Volume Source="myvolume1" Destination="c:\testmountlocation4" Driver="azurefile" IsReadOnly="true">
+           <DriverOption Name="share" Value="models"/>
+</Volume>
+```
+
+Docker ログ ドライバーが指定されている場合は、クラスター内のログを処理するエージェント (またはコンテナー) をデプロイする必要があります。  `DriverOption` タグを使用してログのドライバー オプションを指定することもできます。
 
 Service Fabric クラスターにコンテナーをデプロイするには、以下の記事をご覧ください。
 
-[Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-deploy-container.md)
 
-[Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-deploy-container-linux.md)
+[Windows で初めての Service Fabric コンテナー アプリケーションを作成する](service-fabric-deploy-container.md)
 
 

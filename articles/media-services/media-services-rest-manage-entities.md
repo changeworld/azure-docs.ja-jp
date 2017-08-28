@@ -2,7 +2,7 @@
 title: "REST による Media Services エンティティの管理 | Microsoft Docs"
 description: "REST API を使用して Media Services エンティティを管理する方法について説明します。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

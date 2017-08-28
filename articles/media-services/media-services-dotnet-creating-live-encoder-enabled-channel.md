@@ -4,7 +4,7 @@ description: "このチュートリアルでは、.NET SDK を使用して、シ
 services: media-services
 documentationcenter: 
 author: anilmur
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 4df5e690-ff63-47cc-879b-9c57cb8ec240
 ms.service: media-services

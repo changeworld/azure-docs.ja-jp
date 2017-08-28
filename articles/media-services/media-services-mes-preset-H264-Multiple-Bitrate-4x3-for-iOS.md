@@ -2,7 +2,7 @@
 title: H264 Multiple Bitrate 4x3 for iOS | Microsoft Docs
 description: "このトピックでは、**H264 Multiple Bitrate 4x3 for iOS** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

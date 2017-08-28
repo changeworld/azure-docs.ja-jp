@@ -3,8 +3,8 @@ title: "Azure Tools を使用したクラウド サービスの発行 | Microsof
 description: "Visual Studio を使用して Azure クラウド サービス プロジェクトを発行する方法について説明します。"
 services: visual-studio-online
 documentationcenter: na
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 1a07b6e4-3678-4cbf-b37e-4520b402a3d9
 ms.service: multiple
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/14/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: HT
 ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 23cea0486a769d4f446f5114016d5accbe8113cf

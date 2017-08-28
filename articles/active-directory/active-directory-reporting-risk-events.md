@@ -2,7 +2,7 @@
 title: "Azure Active Directory リスク イベント | Microsoft Docs"
 description: "このトピックでは、リスク イベントの詳細な概要を示します。"
 services: active-directory
-keywords: "azure active directory identity protection, セキュリテ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
+keywords: "azure active directory identity protection, セキュリティ, リスク, リスク レベル, 脆弱性, セキュリティ ポリシー"
 author: MarkusVi
 manager: femila
 ms.assetid: fa2c8b51-d43d-4349-8308-97e87665400b
@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: cb36fdd0032d6d3c47e68a782d3bba427fe9fcd5
+ms.translationtype: HT
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
@@ -50,7 +50,14 @@ Microsoft は引き続き検出プロセスに投資して、次を実現して�
 
 ### <a name="leaked-credentials"></a>漏洩した資格情報
 
-漏洩した資格情報が悪質な Web で公開されていることを、Microsoft のセキュリティ調査員が発見します。 通常、このような資格情報はプレーン テキストで発見されます。 発見された資格情報は、Azure AD の資格情報と照合されて、一致した場合は、Identity Protection で "漏洩した資格情報" として報告されます。
+サイバー犯罪者によって正規ユーザーの有効なパスワードが漏洩すると、多くの場合、この資格情報は犯罪者で共有されます。 これは通常、闇サイトや貼り付けサイトに公開したり、資格情報を闇市場で取引したり販売したりして行われます。 Microsoft の漏洩した資格情報サービスでは、パブリック サイトや闇サイトを監視したり、下記の人々と連携したりして、ユーザー名とパスワードのペアを取得します。
+
+- 研究者
+- 法執行機関
+- Microsoft のセキュリティ チーム
+- その他の信頼できる発行元 
+
+ユーザー名とパスワードのペアをサービスが取得する際、AAD ユーザーの現在の有効な資格情報と照合します。 一致するペアが見つかった場合、ユーザーのパスワードが漏洩していたことを意味し、*漏洩した資格情報のリスク イベント*が作成されます。
 
 ### <a name="sign-ins-from-anonymous-ip-addresses"></a>匿名の IP アドレスからのサインイン
 

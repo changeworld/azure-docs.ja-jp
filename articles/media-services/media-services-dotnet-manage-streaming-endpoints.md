@@ -5,7 +5,7 @@ services: media-services
 documentationcenter: 
 author: Juliako
 writer: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 0da34a97-f36c-48d0-8ea2-ec12584a2215
 ms.service: media-services
