@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 0f26a9b62a376daf2b1314ff5972293a2bc7f379
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ecfe6dab6e4deaa75d073badcb88d536396fe678
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="about-vpn-gateway"></a>VPN Gateway について
@@ -28,7 +28,7 @@ VPN ゲートウェイは、暗号化されたトラフィックをパブリッ�
 
 各仮想ネットワークには VPN ゲートウェイを 1 つだけ作成できますが、同一の VPN ゲートウェイに対して複数の接続を作成することができます。 その一例は、マルチサイト接続構成です。 同一の VPN ゲートウェイへの複数の接続を作成する場合、そのゲートウェイで利用できる帯域幅は、(ポイント対サイト VPN を含め) すべての VPN トンネルによって共有されます。
 
-### <a name="what-is-a-virtual-network-gateway"></a>仮想ネットワーク ゲートウェイとは
+### <a name="whatis"></a>仮想ネットワーク ゲートウェイとは
 
 仮想ネットワーク ゲートウェイは、GatewaySubnet と呼ばれる特定のサブネットにデプロイされる 2 台以上の仮想マシンで構成されます。 GatewaySubnet に配置される VM は、仮想ネットワーク ゲートウェイの作成時に作成されます。 仮想ネットワーク ゲートウェイの VM は、ゲートウェイ固有のルーティング テーブルとゲートウェイ サービスを含むように構成されます。 仮想ネットワーク ゲートウェイの一部である VM を直接構成することはできません。また、GatewaySubnet に、その他のリソースをデプロイすべきではありません。
 
@@ -38,19 +38,19 @@ VPN ゲートウェイは、暗号化されたトラフィックをパブリッ�
 
 [!INCLUDE [vpn-gateway-gwsku-include](../../includes/vpn-gateway-gwsku-include.md)]
 
-## <a name="configuring-a-vpn-gateway"></a>VPN ゲートウェイの構成
+## <a name="configuring"></a>VPN ゲートウェイの構成
 
 VPN ゲートウェイ接続は、特定の設定で構成された複数のリソースに依存します。 ほとんどのリソースは個別に構成できますが、場合によってはある一定の順序で構成を行う必要があります。
 
-### <a name="settings"></a>[設定]
+### <a name="settings"></a>設定
 
 リソースごとに選択した設定は、適切な接続を作成するうえで非常に重要です。 VPN Gateway の個々のリソースと設定については、「 [VPN Gateway の設定について](vpn-gateway-about-vpn-gateway-settings.md)」を参照してください。 この記事には、ゲートウェイの種類、VPN の種類、接続の種類、ゲートウェイ サブネット、ローカル ネットワーク ゲートウェイ、検討が必要なその他のさまざまなリソース設定を把握するのに役立つ情報が記載されています。
 
-### <a name="deployment-tools"></a>デプロイ ツール
+### <a name="tools"></a>デプロイ ツール
 
 Azure Portal などの構成ツールをどれか 1 つ使用して、リソースの作成と構成を開始できます。 その後、追加のリソースを構成したり、適用できる場合に既存のリソースを変更したりするために、PowerShell などの別のツールに切り替えることができます。 現時点では、すべてのリソースとリソースの設定を Azure Portal で構成することはできません。 各接続トポロジの記事の手順では、特定の構成ツールが必要な場合が指定されています。 
 
-### <a name="deployment-model"></a>デプロイメント モデル
+### <a name="models"></a>デプロイメント モデル
 
 VPN ゲートウェイを構成する手順は、仮想ネットワークの作成に使用したデプロイメント モデルによって異なります。 たとえば、クラシック デプロイメント モデルを使用して VNet を作成した場合は、クラシック デプロイメント モデルに対応したガイドラインと手順を使用して VPN ゲートウェイ設定を作成し、構成します。 デプロイメント モデルの詳細については、 [Resource Manager デプロイメント モデルとクラシック デプロイメント モデルについて](../azure-resource-manager/resource-manager-deployment-model.md)のページを参照してください。
 
@@ -64,7 +64,7 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 図と説明を参考にして、要件を満たす接続トポロジを選択できます。 図は主要なベースライン トポロジを示していますが、図をガイドラインとして使用して、より複雑な構成を構築することもできます。
 
-## <a name="site-to-site-and-multi-site-ipsecike-vpn-tunnel"></a>サイト間とマルチサイト (IPsec/IKE VPN トンネル)
+## <a name="s2smulti"></a>サイト間とマルチサイト (IPsec/IKE VPN トンネル)
 
 ### <a name="S2S"></a>サイト間
 
@@ -84,7 +84,11 @@ VPN ゲートウェイ接続ではさまざまな構成が利用できること�
 
 ## <a name="P2S"></a>ポイント対サイト (VPN over SSTP)
 
-ポイント対サイト (P2S) VPN ゲートウェイ接続では、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 P2S は、SSTP (Secure Socket トンネリング プロトコル) 経由の VPN 接続です。 S2S 接続とは異なり、P2S 接続には、オンプレミスの公開 IP アドレスまたは VPN デバイスは必要ありません。 VPN 接続を確立するには、クライアント コンピューターから接続を開始します。 これは、自宅や会議室など、リモートの場所から VNet に接続する場合や、VNet に接続する必要があるクライアントの数が少ない場合などに便利です。 P2S 接続と S2S 接続は、両者の構成要件がすべて両立する場合に、同じ VPN ゲートウェイを使って組み合わせて使用できます。
+ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。 
+
+S2S 接続とは異なり、P2S 接続には、オンプレミスの公開 IP アドレスまたは VPN デバイスは必要ありません。 P2S 接続と S2S 接続は、両者の構成要件がすべて両立する場合に、同じ VPN ゲートウェイを使って組み合わせて使用できます。
+
+P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用します。これは、SSL ベースの VPN プロトコルです。 P2S VPN 接続は、クライアント コンピューターから接続を開始することによって確立されます。
 
 ![Azure VPN Gateway ポイント対サイト接続の例](./media/vpn-gateway-about-vpngateways/vpngateway-point-to-site-connection-diagram.png)
 

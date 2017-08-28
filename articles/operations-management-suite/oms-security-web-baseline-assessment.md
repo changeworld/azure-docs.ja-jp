@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/28/2017
+ms.date: 08/18/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 8be49b182df675fe3235d148b87379e1dff3a384
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 40b0c6ca933ea02ac9f5fe3bfaaf87a310542a8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="web-baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションでの Web ベースライン評価
@@ -29,6 +29,9 @@ ms.lasthandoff: 08/01/2017
 現在、OMS Security は、オペレーティング システムのセキュリティ ベースライン評価を提供します。 24 時間ごとにサーバーの OS の設定をスキャンし、潜在的に脆弱な設定に関する情報を提供します。 詳細については、「[Baseline Assessment in Operations Management Suite Security and Audit Solution (Operations Management Suite のセキュリティと監査ソリューションでのベースライン評価)](https://docs.microsoft.com/azure/operations-management-suite/oms-security-baseline)」を参照してください。
 
 Web ベースライン評価の目的は、Web サーバーの潜在的に脆弱な設定を見つけることです。 Web ベースラインの構成の 3 つの主要ソースは、.NET、ASP.NET、および IIS の構成です。  オペレーティング システムのベースライン評価と同じように、OMS Security は、24 時間ごとに Web サーバーをスキャンし、セキュリティの状態に関する情報を提供します。  インターネット インフォメーション サービス (IIS) では、構成を高度にカスタマイズできるため、さまざまなサイトやアプリケーション レベルを上書きできます。 スキャナーは、既定のルート レベルだけでなく、各アプリケーションおよびサイト レベルでも設定を確認します。 そのため、潜在的に脆弱な設定を特定してすぐに修復し、これらの設定に対する推奨事項を適用できます。
+
+>[!NOTE] 
+>OMS Security で使われている一般的な構成識別子および基準規則は、こちらの[ページ](https://gallery.technet.microsoft.com/Azure-Security-Center-a789e335?redir=0)からダウンロードできます。
 
 
 ## <a name="web-security-baseline-assessment"></a>Web セキュリティ ベースライン評価

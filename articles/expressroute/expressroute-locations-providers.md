@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/08/2017
+ms.date: 08/17/2017
 ms.author: kaanan
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: a98c216fcc4351a339554ce0adcf8fccb717d3e0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a10986ac0b36a3f2065f02533f9e321c755d4cc8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
@@ -83,7 +83,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **ロンドン** |AT&T NetBond、British Telecom、Colt、Equinix、InterCloud、Internet Solutions - Cloud Connect、Interxion、Jisc、Level 3 Communications、Megaport、MTN、NTT Communications、Orange、Tata Communications、Telecity Group、Telehouse - KDDI、Telenor、Verizon、Vodafone、Zayo Group+ |
 | **ロサンゼルス** |CoreSite、Equinix、Megaport、NTT、Zayo Group |
 | **メルボルン** |AARNet、Equinix、Megaport、NEXTDC、Telstra Corporation |
-| **マイアミ** |C3ntro+、Megaport |
+| **マイアミ** |C3ntro+、Megaport、Neutrona Networks |
 | **モントリオール** |Bell Canada、Cologix |
 | **ムンバイ** |Airtel+、Sify、Tata Communications |
 | **ニューヨーク** |CoreSite、Equinix、Megaport、Zayo Group |
@@ -92,9 +92,9 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **パリ** |Colt、Interxion、Equinix、Orange |
 | **ケベック シティ** | Megaport |
 | **サンアントニオ** |Megaport |
-| **サンパウロ** |Ascenty Data Centers+、Equinix、Level 3 Communications、Telefonica、UOLDIVEO |
+| **サンパウロ** |Ascenty Data Centers+、Equinix、Level 3 Communications、Neutrona Networks、Telefonica、UOLDIVEO |
 | **シアトル** |Equinix、Level 3 Communications、Megaport |
-| **ソウル** |KINX、Sejong Telecom |
+| **ソウル** |KINX、LG CNS、Sejong Telecom |
 | **シリコン バレー** |Aryaka Networks、AT&T NetBond、British Telecom、CenturyLink+、Comcast、Console、Equinix、Level 3 Communications、Megaport、Orange、Tata Communications、Verizon、Zayo Group |
 | **シンガポール** |Aryaka Networks、AT&T NetBond、British Telecom、Equinix、InterCloud、Level 3 Communications、Megaport、NTT Communications、Orange、SingTel、Tata Communications、Verizon |
 | **シドニー** |AARNet、AT&T NetBond、British Telecom、Equinix、Megaport、NEXTDC、Orange、Telstra Corporation、Verizon |

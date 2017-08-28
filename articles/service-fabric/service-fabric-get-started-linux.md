@@ -12,13 +12,13 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/10/2017
+ms.date: 8/23/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: da6a8b4824d7215eb1db131680856ac04003f5aa
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 4f51030446d2d2a5a11018b1fce7d7e9193f3dfc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Linux で開発環境を準備する
@@ -44,7 +44,7 @@ Linux の開発コンピューターに [Azure Service Fabric アプリケーシ
 2. ソース リストに Service Fabric リポジトリを追加します。
 
     ```bash
-    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ trusty main" > /etc/apt/sources.list.d/servicefabric.list'
+    sudo sh -c 'echo "deb [arch=amd64] http://apt-mo.trafficmanager.net/repos/servicefabric/ xenial main" > /etc/apt/sources.list.d/servicefabric.list'
     ```
 
 3. ソース リストに `dotnet` リポジトリを追加します。
@@ -79,125 +79,84 @@ Linux の開発コンピューターに [Azure Service Fabric アプリケーシ
     sudo apt-get update
     ```
 
-## <a name="install-and-set-up-the-sdk-for-containers-and-guest-executables"></a>コンテナーとゲスト実行可能ファイルを作成するための SDK をインストールしてセットアップする
+## <a name="install-and-set-up-the-sdk-for-local-cluster-setup"></a>ローカル クラスターのセットアップに使用する SDK をインストールしてセットアップする
 
-ソースを更新したら、SDK をインストールできます。
-
-1. Service Fabric SDK パッケージをインストールします。インストールを確認して、ライセンス契約に同意してください。
-
-    ```bash
-    sudo apt-get install servicefabricsdkcommon
-    ```
-
-    >   [!TIP]
-    >   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
-    >   ```bash
-    >   echo "servicefabric servicefabric/accepted-eula-v1 select true" | sudo debconf-set-selections
-    >   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | sudo debconf-set-selections
-    >   ```
-    
-2. SDK のセットアップ スクリプトを実行します。
-
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/common/sdkcommonsetup.sh
-    ```
-
-共通 SDK パッケージをインストールした後、`yo azuresfguest` または `yo azuresfcontainer` を実行すると、ゲスト実行可能サービスまたはコンテナー サービスが含まれたアプリを作成できるようになります。 場合によっては、$NODE_PATH 環境変数をノード モジュールの配置場所に設定する必要があります。 
-
+ソースを更新したら、SDK をインストールできます。 Service Fabric SDK パッケージをインストールします。インストールを確認して、ライセンス契約に同意してください。
 
 ```bash
-    export NODE_PATH=$NODE_PATH:$HOME/.node/lib/node_modules 
+sudo apt-get install servicefabricsdkcommon
 ```
 
-環境をルートとして使用している場合、次のコマンドを使用して変数を設定しなければならない場合があります。
-
-```bash
-    export NODE_PATH=$NODE_PATH:/root/.node/lib/node_modules 
-```
-
-
-> [!TIP]
-> これらのコマンドは、ログインのたびに環境変数を設定する必要がないように、~/.bashrc ファイルに追加できます。
->
-
-## <a name="set-up-the-xplat-service-fabric-cli"></a>XPlat Service Fabric CLI をセットアップする
-[XPlat CLI][azure-xplat-cli-github] には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 この CLI は Node.js をベースにしているため、[Node がインストールされていることを確認][install-node]してから、以下の手順に進んでください。
-
-1. 開発用マシンに GitHub リポジトリをクローンします。
-
-    ```bash
-    git clone https://github.com/Azure/azure-xplat-cli.git
-    ```
-
-2. クローンしたリポジトリに移動し、Node Package Manager (npm) を使用して CLI の依存関係をインストールします。
-
-    ```bash
-    cd azure-xplat-cli
-    npm install
-    ```
-
-3. クローンしたリポジトリの `bin/azure` フォルダーから `/usr/bin/azure` へのシンボリック リンクを作成します。
-
-    ```bash
-    sudo ln -s $(pwd)/bin/azure /usr/bin/azure
-    ```
-
-4. 最後に、オート コンプリート Service Fabric コマンドを有効にします。
-
-    ```bash
-    azure --completion >> ~/azure.completion.sh
-    echo 'source ~/azure.completion.sh' >> ~/.bash_profile
-    source ~/azure.completion.sh
-    ```
-
-### <a name="set-up-azure-cli-20"></a>Azure CLI 2.0 をセットアップする
-
-XPlat CLI に代わる方法として、Azure CLI に Service Fabric コマンド モジュールが追加されました。
-
-Azure CLI 2.0 のインストールと Service Fabric コマンドの使用の詳細については、「[Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)」を参照してください。
+>   [!TIP]
+>   Service Fabric パッケージのライセンス受け取りを自動化するコマンドを以下に示します。
+>   ```bash
+>   echo "servicefabric servicefabric/accepted-eula-v1 select true" | sudo debconf-set-selections
+>   echo "servicefabricsdkcommon servicefabricsdkcommon/accepted-eula-v1 select true" | sudo debconf-set-selections
+>   ```
 
 ## <a name="set-up-a-local-cluster"></a>ローカル クラスターをセットアップする
-インストールが成功すれば、ローカル クラスターを起動できます。
+  インストールが成功すれば、ローカル クラスターを起動できます。
 
-1. クラスターのセットアップ スクリプトを実行します。
+  1. クラスターのセットアップ スクリプトを実行します。
 
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
-    ```
+      ```bash
+      sudo /opt/microsoft/sdk/servicefabric/common/clustersetup/devclustersetup.sh
+      ```
 
-2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) に移動します。 クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。
+  2. Web ブラウザーを開いて､[Service Fabric Explorer](http://localhost:19080/Explorer) に移動します。 クラスターが起動されている場合は、Service Fabric Explorer ダッシュボードが表示されます。
 
-    ![Service Fabric Explorer on Linux][sfx-linux]
+      ![Service Fabric Explorer on Linux][sfx-linux]
 
-これで、構築済みの Service Fabric アプリケーション パッケージか、ゲスト コンテナーやゲスト実行可能ファイルをベースに新規作成したパッケージをデプロイできるようになりました。 Java 用 SDK または .NET Core 用 SDK を使用して新しいサービスを構築するには、後続のセクションに示す設定手順を実行します。
+  これで、構築済みの Service Fabric アプリケーション パッケージか、ゲスト コンテナーやゲスト実行可能ファイルをベースに新規作成したパッケージをデプロイできるようになりました。 Java 用 SDK または .NET Core 用 SDK を使用して新しいサービスを構築するには、後続のセクションに示す設定手順を実行します。
 
 
-> [!NOTE]
-> スタンドアロン クラスターは Linux ではサポートされません。 プレビューでサポートされるのは、ワンボックス クラスターと Azure Linux マルチマシン クラスターだけです。
->
+  > [!NOTE]
+  > スタンドアロン クラスターは Linux ではサポートされません。 プレビューでサポートされるのは、ワンボックス クラスターと Azure Linux マルチマシン クラスターだけです。
+  >
 
-## <a name="install-the-java-sdk-optional-if-you-want-to-use-the-java-programming-models"></a>Java SDK をインストールする (省略可能。Java プログラミング モデルを使用したい場合)
-Java SDK には、Java を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
+## <a name="set-up-the-service-fabric-cli"></a>Service Fabric CLI のセットアップ
 
-1. Java SDK パッケージをインストールします。
+[Service Fabric CLI](service-fabric-cli.md) には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 Python がベースになっているため、あらかじめ Python と pip がインストールされていることを確認してから、次のコマンドを実行してください。
 
-    ```bash
-    sudo apt-get install servicefabricsdkjava
-    ```
+```bash
+pip install sfctl
+```
 
-2. SDK のセットアップ スクリプトを実行します。
+## <a name="install-and-set-up-the-generators-for-containers-and-guest-executables"></a>コンテナーとゲスト実行可能ファイルを作成するためのジェネレーターをインストールしてセットアップする
+Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
 
-    ```bash
-    sudo /opt/microsoft/sdk/servicefabric/java/sdkjavasetup.sh
-    ```
+1. マシンに nodejs と NPM をインストールします。
+
+  ```bash
+  sudo apt-get install npm
+  sudo apt install nodejs-legacy
+  ```
+2. NPM からマシンに [Yeoman](http://yeoman.io/) テンプレート ジェネレーターをインストールします。
+
+  ```bash
+  sudo npm install -g yo
+  ```
+3. NPM から Service Fabric Yeo のコンテナー ジェネレーターとゲスト実行可能ジェネレーターをインストールします。
+
+  ```bash
+  sudo npm install -g generator-azuresfcontainer  # for Service Fabric container application
+  sudo npm install -g generator-azuresfguest      # for Service Fabric guest executable application
+  ```
+
+前述のジェネレーターをインストールした後、`yo azuresfguest` または `yo azuresfcontainer` を実行すると、それぞれゲスト実行可能サービスまたはコンテナー サービスが含まれたアプリを作成できるようになります。
+
+## <a name="install-the-necessary-java-artifacts-optional-if-you-want-to-use-the-java-programming-models"></a>必要な Java アーティファクトをインストールする (省略可能。Java プログラミング モデルを使用したい場合)
+
+Service Fabric サービスを Java で構築するには、ビルド タスクを実行するための Gradle と共に、JDK 1.8 がインストールされている必要があります。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
+
+  ```bash
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+  ```
 
 ## <a name="install-the-eclipse-neon-plug-in-optional"></a>Eclipse Neon プラグインをインストールする (省略可能)
 
 **Eclipse IDE for Java Developers** 内から Service Fabric 用 Eclipse プラグインをインストールできます。 Eclipse を使用すると、Service Fabric Java アプリケーションのほかに、Service Fabric ゲスト実行可能アプリケーションと Service Fabric コンテナー アプリケーションを作成できます。
-
-> [!NOTE]
-> Eclipse プラグインをゲスト実行可能ファイルとコンテナー アプリケーションにしか使わないとしても、Java SDK は Eclipse プラグインを使用するうえで必須です。
->
 
 1. 最新の Eclipse Neon と Buildship バージョン (1.0.17 以降) がインストールされていることを Eclipse で確認します。 **[Help]\(ヘルプ\)** > **[Installation Details]\(インストールの詳細\)** の順に選択して、インストールされたコンポーネントのバージョンを確認できます。 Buildship は、「[Eclipse Buildship: Eclipse Plug-ins for Gradle (Eclipse Buildship: Gradle 用の Eclipse プラグイン)][buildship-update]」の手順に従って更新できます。
 
@@ -213,24 +172,16 @@ Java SDK には、Java を使用して Service Fabric サービスを構築す�
 
 6. インストール手順を完了し、使用許諾契約書に同意します。
 
-Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 **[Help]\(ヘルプ\)** > **[Installation Details]\(インストールの詳細\)** を選択し、インストールされているプラグインの一覧で Service Fabric を探すことで確認できます。 より新しいバージョンが使用できる場合は **[Update]\(更新\)** を選択します。
+Service Fabric Eclipse プラグインを既にインストールしてある場合は、最新バージョンを使用していることを確認してください。 **[Help]\(ヘルプ\)** > **[Installation Details]\(インストールの詳細\)** を選択し、インストールされているプラグインの一覧で Service Fabric を探すことで確認できます。より新しいバージョンが使用できる場合は **[Update]\(更新\)** を選択します。
 
 詳細については、「[Eclipse Java アプリケーション開発用の Service Fabric プラグイン](service-fabric-get-started-eclipse.md)」を参照してください。
 
 
 ## <a name="install-the-net-core-sdk-optional-if-you-want-to-use-the-net-core-programming-models"></a>.NET Core SDK をインストールする (省略可能。.NET Core プログラミング モデルを使用したい場合)
-.NET Core SDK には、.NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。
-
-1. .NET Core SDK パッケージをインストールします。
+.NET Core SDK には、.NET Core を使用して Service Fabric サービスを構築するために必要なライブラリとテンプレートが用意されています。 次のコマンドを実行して .NET Core SDK パッケージをインストールします。
 
    ```bash
    sudo apt-get install servicefabricsdkcsharp
-   ```
-
-2. SDK のセットアップ スクリプトを実行します。
-
-   ```bash
-   sudo /opt/microsoft/sdk/servicefabric/csharp/sdkcsharpsetup.sh
    ```
 
 ## <a name="update-the-sdk-and-runtime"></a>SDK とランタイムを更新する
@@ -239,25 +190,22 @@ SDK とランタイムを最新バージョンに更新するには、次のコ�
 
 ```bash
 sudo apt-get update
-sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp servicefabricsdkjava
+sudo apt-get install servicefabric servicefabricsdkcommon servicefabricsdkcsharp
 ```
-
+Maven からの Java SDK バイナリを更新するには、``build.gradle`` ファイルで、最新バージョンが参照されるように、対応するバイナリのバージョン情報を更新する必要があります。 具体的なバージョンの更新箇所については、[こちら](https://github.com/Azure-Samples/service-fabric-java-getting-started)にある Service Fabric 入門用サンプルの任意の ``build.gradle`` ファイルを参照してください。
 
 > [!NOTE]
 > 上記のパッケージを更新すると、ローカルの開発クラスターが停止する可能性があります。 このページの手順に従って、アップグレード後にローカル クラスターを再起動してください。
 
 ## <a name="next-steps"></a>次のステップ
+
 * [Yeoman を使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-create-your-first-linux-application-with-java.md)
 * [Eclipse 用の Service Fabric プラグインを使用して Linux で最初の Service Fabric Java アプリケーションを作成してデプロイする](service-fabric-get-started-eclipse.md)
 * [Linux で最初の CSharp アプリケーションを作成する](service-fabric-create-your-first-linux-application-with-csharp.md)
 * [OSX で開発環境を準備する](service-fabric-get-started-mac.md)
-* [XPlat CLI を使用した Service Fabric アプリケーションの管理](service-fabric-azure-cli.md)
+* [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 * [Service Fabric における Windows と Linux の違い](service-fabric-linux-windows-differences.md)
-
-## <a name="related-articles"></a>関連記事
-
-* [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)
+* [Service Fabric CLI の概要](service-fabric-cli.md)
 
 <!-- Links -->
 
