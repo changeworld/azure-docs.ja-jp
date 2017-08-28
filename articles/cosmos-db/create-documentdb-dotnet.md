@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 9bb863261da64c97f99757d4a0cb3474a7755591
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-documentdb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: .NET と Azure Portal による DocumentDB API Web アプリの構築
@@ -130,7 +130,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
     `<add key="endpoint" value="FILLME" />`
 
-4. ポータルから PRIMARY KEY 値をコピーし、web.config の authKey の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+4. ポータルから PRIMARY KEY 値をコピーし、web.config の authKey の値に設定します。これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
     `<add key="authKey" value="FILLME" />`
     
