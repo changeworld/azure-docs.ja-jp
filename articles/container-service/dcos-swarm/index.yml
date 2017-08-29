@@ -28,6 +28,10 @@ sections:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
             text: DC/OS クラスターの作成
             href: /azure/container-service/container-service-dcos-quickstart
+          - image:
+              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+            text: Docker Swarm クラスターの作成
+            href: /azure/container-service/dcos-swarm/container-service-swarm-walkthrough
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph

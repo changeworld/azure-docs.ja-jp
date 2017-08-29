@@ -64,6 +64,7 @@
 ## [監視データのソース](monitoring-data-sources.md)
 ## [サポートされるメトリックスの一覧](monitoring-supported-metrics.md)
 ## [アクティビティ ログのイベント スキーマ](monitoring-activity-log-schema.md)
+## [診断ログでサポートされているサービス、カテゴリ、スキーマ](monitoring-diagnostic-logs-schema.md)
 ## [PowerShell](/powershell/module/azurerm.insights)
 ## [.NET](https://msdn.microsoft.com/library/azure/dn802153)
 ## [REST ()](/rest/api/monitor/)

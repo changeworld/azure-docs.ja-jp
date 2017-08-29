@@ -55,10 +55,13 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業の開始](active-directory-b2c-get-started-custom.md)
-### OIDC プロバイダーの構成
+### [概要](active-directory-b2c-get-started-custom.md)
+### OIDC/OAUTH2 プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
 ### SAML プロバイダーの構成
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API の統合
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
@@ -72,7 +75,7 @@
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
-
+### [信頼フレームワークの定義](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 用語集
