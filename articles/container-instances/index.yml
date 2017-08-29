@@ -24,7 +24,7 @@ sections:
         style: icon48
         items:
           - image:
-              src: /azure/container-instances/media/container-instances.png
+              src: /azure/container-instances/media/container-instances.svg
             text: コンテナー インスタンスの作成
             href: /azure/container-instances/container-instances-quickstart
   - title: ステップバイステップのチュートリアル

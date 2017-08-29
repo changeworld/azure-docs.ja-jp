@@ -11,7 +11,7 @@ ms.topic: hero-article
 ms.service: functions
 ms.custom: mvc
 ms.devlang: azure-cli
-manager: erikre
+manager: cfowler
 ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 8bd3e4bb7423db44c48b04f25edcf1074e6ea0bd
