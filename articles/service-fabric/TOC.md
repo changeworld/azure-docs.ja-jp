@@ -18,7 +18,9 @@
 # サンプル
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
-## [Azure CLI](samples-cli.md)
+## [Service Fabric CLI](samples-cli.md)
+### [サンプルのデプロイ](scripts/cli-deploy-application.md)
+### [サンプルの削除](scripts/cli-remove-application.md)
 # 概念
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [全体像](service-fabric-content-roadmap.md)
@@ -221,7 +223,7 @@
 ### アプリケーションをデプロイまたは削除する
 #### [ローカル クラスターへのアプリケーションのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
-#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
+#### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
@@ -256,6 +258,7 @@
 #### [アップグレード](service-fabric-cluster-upgrade.md)
 #### [アクセス制御の設定](service-fabric-cluster-security-roles.md)
 #### [構成](service-fabric-cluster-fabric-settings.md)
+#### [ロード バランサーでポートを開く](create-load-balancer-rule.md)
 #### [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md)
 #### [削除](service-fabric-cluster-delete.md)
 
@@ -275,8 +278,7 @@
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
-### [XPlat CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
-### [Azure CLI 2.0 コマンドを使用したクラスターの管理](service-fabric-azure-cli-2-0.md)
+### [Service Fabric CLI を使用したクラスターの管理](service-fabric-cli.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する

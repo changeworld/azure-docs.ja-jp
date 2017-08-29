@@ -29,11 +29,13 @@
           href: connect-cpp.md
         - name: Go
           href: connect-go.md
-- name: チュートリアル
+        - name: MySQL Workbench
+          href: connect-workbench.md
+- name: Tutorials (チュートリアル)
   items:
     - name: 1 - データベースの設計
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: tutorial-design-database-using-portal.md
         - name: Azure CLI
           href: tutorial-design-database-using-cli.md
@@ -85,17 +87,17 @@
   items:
     - name: サーバーの管理
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-create-manage-server-portal.md
     - name: ファイアウォール規則
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-manage-firewall-using-portal.md
         - name: Azure CLI
           href: howto-manage-firewall-using-cli.md
     - name: サーバーの復元
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-restore-server-portal.md
     - name: アプリケーションの接続
       items:
@@ -107,7 +109,7 @@
           href: howto-connect-webapp.md
     - name: サーバー パラメーターの構成
       items:
-        - name: Azure ポータル
+        - name: Azure Portal
           href: howto-server-parameters.md
 - name: リファレンス
   items:
