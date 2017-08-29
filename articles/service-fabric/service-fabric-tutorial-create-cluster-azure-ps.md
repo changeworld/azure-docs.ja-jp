@@ -72,7 +72,7 @@ Service Fabric クラスターを作成する方法について詳しくは、�
 5. 次のコマンドを実行して、クラスターとその証明書を作成します。
 
    ```powershell
-      New-AzureRmServiceFabricCluster
+      New-AzureRmServiceFabricCluster `
           -TemplateFile C:\Users\me\Desktop\azuredeploy.json `
           -ParameterFile C:\Users\me\Desktop\azuredeploy.parameters.json `
           -CertificateOutputFolder C:\Users\me\Desktop\ `

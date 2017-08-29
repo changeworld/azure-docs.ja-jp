@@ -4,7 +4,7 @@ description: "Azure CLI スクリプトのサンプル - Azure Cosmos DB に接�
 services: functions
 documentationcenter: functions
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: functions
 ms.assetid: 

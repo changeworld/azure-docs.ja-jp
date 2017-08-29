@@ -4,7 +4,7 @@ description: "Azure 関数を Azure Functions で実行する前に、ローカ�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.service: functions

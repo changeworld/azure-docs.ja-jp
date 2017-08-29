@@ -3,7 +3,7 @@ title: "Azure Functions を使用してサーバーレス API を作成する | 
 description: "Azure Functions を使用してサーバーレス API を作成する方法"
 services: functions
 author: mattchenderson
-manager: erikre
+manager: cfowler
 ms.service: functions
 ms.tgt_pltfrm: na
 ms.devlang: multiple

@@ -4,7 +4,7 @@ description: "Azure Functions で、トリガーとバインドを使用して�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: cc41debb2523df77be4db05817a4c7ac55604439
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/23/2017
-
 
 ---
 

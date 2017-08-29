@@ -4,7 +4,7 @@ description: "Azure Functions の外部ファイル バインディングを使�
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
