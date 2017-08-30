@@ -11,7 +11,7 @@ ms.service: active-directory-ds
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: 
+ms.topic: article
 ms.date: 07/07/2017
 ms.author: maheshu
 ms.translationtype: Human Translation
@@ -19,7 +19,6 @@ ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: dcee3363522d41e2f9b1c2343ffcaf74ebb11042
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="enable-the-preview-experience-to-administer-your-managed-domain-from-the-azure-portal"></a>プレビュー エクスペリエンスを有効にして、Azure Portal から管理対象ドメインを管理する

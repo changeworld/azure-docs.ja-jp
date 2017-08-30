@@ -99,7 +99,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
  
     ![[シングル サインオン] ダイアログ ボックス](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_samlbase.png)
 
-3. **[IBM Kenexa Survey Enterprise Domain and URLs] (IBM Kenexa Survey Enterprise のドメインと URL)** セクションで、次の手順を実行します。
+3. **[IBM Kenexa Survey Enterprise Domain and URLs] \(IBM Kenexa Survey Enterprise のドメインと URL)** セクションで、次の手順を実行します。
 
     ![[IBM Kenexa Survey Enterprise のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_url.png)
 
@@ -124,7 +124,7 @@ IBM Kenexa Survey Enterprise で Azure AD の SSO を構成してテストする
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_general_400.png)
 
-6. **[サインオンの構成]** ウィンドウを開くには、**[IBM Kenexa Survey Enterprise Configuration] (IBM Kenexa Survey Enterprise の構成)** で **[Configure IBM Kenexa Survey Enterprise] (IBM Kenexa Survey Enterprise を構成する)** をクリックします。 
+6. **[サインオンの構成]** ウィンドウを開くには、**[IBM Kenexa Survey Enterprise Configuration] \(IBM Kenexa Survey Enterprise の構成)** で **[Configure IBM Kenexa Survey Enterprise] \(IBM Kenexa Survey Enterprise を構成する)** をクリックします。 
  
     ![IBM Kenexa Survey Enterprise の構成リンク](./media/active-directory-saas-kenexasurvey-tutorial/tutorial_kenexasurvey_configure.png)
 

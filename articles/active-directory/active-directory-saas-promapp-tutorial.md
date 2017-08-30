@@ -126,7 +126,7 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-6. **[Promapp Configuration] (Promapp 構成)** セクションで、**[Configure Promapp] (Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+6. **[Promapp Configuration] \(Promapp 構成)** セクションで、**[Configure Promapp] \(Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
