@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 07/31/2017
-ms.author: genemi;carlrab
+ms.date: 08/25/2017
+ms.author: genemi
 ms.translationtype: HT
 ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
 ms.openlocfilehash: d9731cf5399cce6f103129ccda521f2867bd8da6
