@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/24/2017
+ms.date: 08/18/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 80b58ac0a5a34a9ff573d161ca26dbfd2dba25c7
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 50bd4eb02be8f03baf186255429bec51c036aa43
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 07/25/2017
  
 ## <a name="whats-new-in-azure-cosmos-db-security"></a>Azure Cosmos DB のセキュリティの新機能
 
-保存時の暗号化が、政府関係リージョン、中国での Azure、およびドイツでの Azure を除く、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントに利用できるようになりました。 その他のリージョンは、バックアップの保存時の暗号化と共に、来週から有効になります。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
+保存時の暗号化が、すべての Azure リージョンの Azure Cosmos DB に保存されたドキュメントとバックアップに利用できるようになりました。 保存時の暗号化は、これらのリージョンの新規顧客と既存の顧客の両方に自動的に適用されます。 何も構成する必要はありません。従来通り、保存時の暗号化によってデータが安全にセキュリティで保護されるメリットと同様に素晴らしい待機時間、スループット、可用性、および機能を手に入れることができます。
 
 ## <a name="how-do-i-secure-my-database"></a>データベースをセキュリティ保護する方法 
 

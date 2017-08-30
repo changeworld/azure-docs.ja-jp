@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 07d5056fdea9d4975fe91a5b842a9208385e779e
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: f97be571d104e3cc1c6ee732886fa7133ba0dc83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="azure-app-service-plans-in-depth-overview"></a>Azure App Service プランの詳細な概要
@@ -33,7 +33,7 @@ App Service プランには、次の定義があります。
 - インスタンス サイズ (Small、Medium、Large)
 - SKU (Free、Shared、Basic、Standard、Premium)
 
-[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps、Mobile Apps、Function Apps (または Functions) は、すべて App Service プラン内で実行されます。  同じサブスクリプション、リージョン、およびリソース グループ内のアプリは、App Service プランを共有できます。 
+[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) の Web Apps、Mobile Apps、Function Apps (または Functions) は、すべて App Service プラン内で実行されます。  同じサブスクリプションとリージョン内のアプリは、App Service プランを共有できます。 
 
 **App Service プラン**に割り当てられたすべてのアプリケーションは、プランで定義されたリソースを共有します。 この共有により、1 つの App Service プランで複数のアプリをホストする場合にコストを節約できます。
 

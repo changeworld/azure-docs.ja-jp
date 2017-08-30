@@ -1,3 +1,4 @@
+
 ---
 title: "Visual Studio を使用して Azure で初めての関数を作成する | Microsoft Docs"
 description: "Azure Functions Tools for Visual Studio を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。"
@@ -11,26 +12,24 @@ keywords: "Azure Functions, 関数, イベント処理, コンピューティン
 ms.assetid: 82db1177-2295-4e39-bd42-763f6082e796
 ms.service: functions
 ms.devlang: multiple
-ms.topic: hero-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 07/05/2017
 ms.author: glenga
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 4a6b706b63c4e1b0df3c46bce4ff6877efca4ead
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 7e1fcecbf77da402b8c223caf6a2e81c704c3219
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
 Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。
 
-> [!IMPORTANT]
-> このトピックでは、手順の実行に Visual Studio のプレビュー バージョンを使用します。 前もって [Visual Studio 2017 プレビュー バージョン 15.3](https://www.visualstudio.com/vs/preview/)をインストールしておいてください。
-
-このトピックでは、Azure Function Tools for Visual Studio 2017 を使用して、"hello world" 関数を作成してローカルでテストする方法を学習します。 その後、関数コードを Azure に発行します。
+このトピックでは、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" 関数を作成してローカルでテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 バージョン 15.3 以降の Azure 開発ワークロードの一部として利用できます。
 
 ![Visual Studio プロジェクトの Azure Functions コード](./media/functions-create-your-first-function-visual-studio/functions-vstools-intro.png)
 
@@ -38,17 +37,14 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このチュートリアルを完了するには、以下をインストールしてください。
 
-* [Visual Studio 2017 Preview バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
+* [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
 
     ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
+    
+    >[!NOTE]  
+    Visual Studio 2017 バージョン 15.3 をインストールするか、このバージョンにアップグレードした後、Visual Studio 2017 Tools for Azure Functions も手動で更新しなければならない場合があります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** > **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-## <a name="install-azure-functions-tools-for-visual-studio-2017"></a>Azure Functions Tools for Visual Studio 2017 をインストールする
-
-開始する前に、Azure Functions Tools for Visual Studio 2017 をダウンロードしてインストールする必要があります。 これらのツールは、Visual Studio 2017 Preview バージョン 15.3 以降のバージョンのみで使用できます。 Azure Functions Tools を既にインストールしてある場合は、このセクションを省略できます。
-
-[!INCLUDE [Install the Azure Functions Tools for Visual Studio](../../includes/functions-install-vstools.md)]   
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 
 ## <a name="create-an-azure-functions-project-in-visual-studio"></a>Visual Studio で Azure Functions プロジェクトを作成する
 

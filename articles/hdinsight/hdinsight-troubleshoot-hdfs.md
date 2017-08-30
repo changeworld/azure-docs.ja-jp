@@ -1,6 +1,6 @@
 ---
-title: "HDFS のトラブルシューティング - Azure HDinsight | Microsoft Docs"
-description: "HDFS のよくあるご質問を使って、Azure HDInsight プラットフォームの HDFS に関する一般的な質問に回答します。"
+title: "Azure HDInsight を使用した HDFS のトラブルシューティング | Microsoft Docs"
+description: "HDFS と Azure HDInsight の操作についてよく寄せられる質問とその回答を示します。"
 keywords: "Azure HDInsight, HDFS, FAQ, トラブルシューティング ガイド, よくあるご質問"
 services: Azure HDInsight
 documentationcenter: na
@@ -16,85 +16,86 @@ ms.topic: article
 ms.date: 7/7/2017
 ms.author: arijitt
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 09af06c2f0fa45940dbb5fb863e4c29ee895b8ee
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 58f3d160c1f2a32025b706f10863e0055d67bfcd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
-# <a name="hdfs-troubleshooting"></a>HDFS のトラブルシューティング
+# <a name="troubleshoot-hdfs-by-using-azure-hdinsight"></a>Azure HDInsight を使用した HDFS のトラブルシューティング
 
-この記事では、Apache Ambari での HDFS ペイロードの操作に関連する主な問題とその解決策について説明します。
+Apache Ambari で Hadoop 分散ファイル システム (HDFS) ペイロードを操作するときに発生する主な問題とその解決策について説明します。
 
 ## <a name="how-do-i-access-local-hdfs-from-inside-a-cluster"></a>クラスター内からローカルの HDFS にアクセスする方法
 
-### <a name="issue"></a>問題:
+### <a name="issue"></a>問題
 
-HDInsight クラスター内から WASB または ADLS にアクセスするのではなく、コマンド ラインおよびアプリケーション コードからローカル HDFS にアクセスする。   
+HDInsight クラスター内から Azure Blob Storage または Azure Data Lake Store を使用するのではなく、コマンド ラインおよびアプリケーション コードからローカル HDFS にアクセスする。   
 
-### <a name="resolution-steps"></a>解決手順:
+### <a name="resolution-steps"></a>解決手順
 
-- コマンド ラインでは、次のコマンドのように `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` をそのまま使います。
+1. コマンド プロンプトでは、次のコマンドのように `hdfs dfs -D "fs.default.name=hdfs://mycluster/" ...` をそのまま使います。
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
-Found 3 items
-drwxr-xr-x   - hdiuser hdfs          0 2017-03-24 14:12 /EventCheckpoint-30-8-24-11102016-01
-drwx-wx-wx   - hive    hdfs          0 2016-11-10 18:42 /tmp
-drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
-```
+    ```apache
+    hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -ls /
+    Found 3 items
+    drwxr-xr-x   - hdiuser hdfs          0 2017-03-24 14:12 /EventCheckpoint-30-8-24-11102016-01
+    drwx-wx-wx   - hive    hdfs          0 2016-11-10 18:42 /tmp
+    drwx------   - hdiuser hdfs          0 2016-11-10 22:22 /user
+    ```
 
-- ソース コードでは、次のサンプル アプリケーションのように URI `hdfs://mycluster/` をそのまま使います。
+2. ソース コードでは、次のサンプル アプリケーションのように URI `hdfs://mycluster/` をそのまま使います。
 
-```csharp
-import java.io.IOException;
-import java.net.URI;
-import org.apache.commons.io.IOUtils;
-import org.apache.hadoop.conf.Configuration;
-import org.apache.hadoop.fs.*;
+    ```csharp
+    import java.io.IOException;
+    import java.net.URI;
+    import org.apache.commons.io.IOUtils;
+    import org.apache.hadoop.conf.Configuration;
+    import org.apache.hadoop.fs.*;
 
-public class JavaUnitTests {
+    public class JavaUnitTests {
 
-    public static void main(String[] args) throws Exception {
+        public static void main(String[] args) throws Exception {
 
-        Configuration conf = new Configuration();
-        String hdfsUri = "hdfs://mycluster/";
-        conf.set("fs.defaultFS", hdfsUri);
-        FileSystem fileSystem = FileSystem.get(URI.create(hdfsUri), conf);
-        RemoteIterator<LocatedFileStatus> fileStatusIterator = fileSystem.listFiles(new Path("/tmp"), true);
-        while(fileStatusIterator.hasNext()) {
-            System.out.println(fileStatusIterator.next().getPath().toString());
+            Configuration conf = new Configuration();
+            String hdfsUri = "hdfs://mycluster/";
+            conf.set("fs.defaultFS", hdfsUri);
+            FileSystem fileSystem = FileSystem.get(URI.create(hdfsUri), conf);
+            RemoteIterator<LocatedFileStatus> fileStatusIterator = fileSystem.listFiles(new Path("/tmp"), true);
+            while(fileStatusIterator.hasNext()) {
+                System.out.println(fileStatusIterator.next().getPath().toString());
+            }
         }
     }
-}
-```
-- HDInsight クラスターで次のコマンドを使ってコンパイル済みの JAR (例: `java-unit-tests-1.0.jar`) を実行します。
+    ```
 
-```apache
-hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
-hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.info
-hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.lck
-hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
-hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
-```
+3. HDInsight クラスターで次のコマンドを使ってコンパイル済みの .jar ファイル (例: `java-unit-tests-1.0.jar` という名前のファイル) を実行します。
+
+    ```apache
+    hdiuser@hn0-spark2:~$ hadoop jar java-unit-tests-1.0.jar JavaUnitTests
+    hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.info
+    hdfs://mycluster/tmp/hive/hive/5d9cf301-2503-48c7-9963-923fb5ef79a7/inuse.lck
+    hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.info
+    hdfs://mycluster/tmp/hive/hive/a0be04ea-ae01-4cc4-b56d-f263baf2e314/inuse.lck
+    ```
 
 
-## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>クラスターで HDFS のセーフ モードを無効にする方法
+## <a name="how-do-i-force-disable-hdfs-safe-mode-in-a-cluster"></a>クラスターで HDFS のセーフ モードを強制的に無効にする方法
 
-### <a name="issue"></a>問題:
+### <a name="issue"></a>問題
 
 HDInsight クラスター上のローカル HDFS がセーフ モードでスタックする。   
 
-### <a name="detailed-description"></a>詳しい説明:
+### <a name="detailed-description"></a>詳しい説明
 
-次のような単純な HDFS コマンドの実行に失敗します。
+次の HDFS コマンドを実行すると、エラーが発生します。
 
 ```apache
 hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
 ```
 
-上記のコマンドを実行しようとしているときに発生したエラーは次のとおりです。
+このコマンドを実行したときに発生するエラーは次のとおりです。
 
 ```apache
 hdiuser@hn0-spark2:~$ hdfs dfs -D "fs.default.name=hdfs://mycluster/" -mkdir /temp
@@ -148,97 +149,89 @@ It was turned on manually. Use "hdfs dfsadmin -safemode leave" to turn safe mode
 mkdir: Cannot create directory /temp. Name node is in safe mode.
 ```
 
-### <a name="probable-cause"></a>考えられる原因:
+### <a name="probable-cause"></a>考えられる原因
 
-HDFS レプリケーション係数未満かそれに近いごく少数のノードにまで、HDInsight クラスターがスケールダウンされました。
+HDInsight クラスターが少数のノードにスケールダウンされています。 ノード数が HDFS レプリケーション係数未満か、それに近い数になっています。
 
-### <a name="resolution-steps"></a>解決手順: 
+### <a name="resolution-steps"></a>解決手順 
 
-- HDInsight クラスター上の HDFS のステータスをレポートするには、次のコマンドを使用します。
+1. 次のコマンドを使用して、HDInsight クラスター上の HDFS の状態を取得します。
 
-```apache
-hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-```
+    ```apache
+    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+    ```
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
-Safe mode is ON
-Configured Capacity: 3372381241344 (3.07 TB)
-Present Capacity: 3138625077248 (2.85 TB)
-DFS Remaining: 3102710317056 (2.82 TB)
-DFS Used: 35914760192 (33.45 GB)
-DFS Used%: 1.14%
-Under replicated blocks: 0
-Blocks with corrupt replicas: 0
-Missing blocks: 0
-Missing blocks (with replication factor 1): 0
+    ```apache
+    hdiuser@hn0-spark2:~$ hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -report
+    Safe mode is ON
+    Configured Capacity: 3372381241344 (3.07 TB)
+    Present Capacity: 3138625077248 (2.85 TB)
+    DFS Remaining: 3102710317056 (2.82 TB)
+    DFS Used: 35914760192 (33.45 GB)
+    DFS Used%: 1.14%
+    Under replicated blocks: 0
+    Blocks with corrupt replicas: 0
+    Missing blocks: 0
+    Missing blocks (with replication factor 1): 0
 
--------------------------------------------------
-Live datanodes (8):
+    -------------------------------------------------
+    Live datanodes (8):
 
-Name: 10.0.0.17:30010 (10.0.0.17)
-Hostname: 10.0.0.17
-Decommission Status : Normal
-Configured Capacity: 421547655168 (392.60 GB)
-DFS Used: 5288128512 (4.92 GB)
-Non DFS Used: 29087272960 (27.09 GB)
-DFS Remaining: 387172253696 (360.58 GB)
-DFS Used%: 1.25%
-DFS Remaining%: 91.85%
-Configured Cache Capacity: 0 (0 B)
-Cache Used: 0 (0 B)
-Cache Remaining: 0 (0 B)
-Cache Used%: 100.00%
-Cache Remaining%: 0.00%
-Xceivers: 2
-Last contact: Wed Apr 05 16:22:00 UTC 2017
-...
-```
+    Name: 10.0.0.17:30010 (10.0.0.17)
+    Hostname: 10.0.0.17
+    Decommission Status : Normal
+    Configured Capacity: 421547655168 (392.60 GB)
+    DFS Used: 5288128512 (4.92 GB)
+    Non DFS Used: 29087272960 (27.09 GB)
+    DFS Remaining: 387172253696 (360.58 GB)
+    DFS Used%: 1.25%
+    DFS Remaining%: 91.85%
+    Configured Cache Capacity: 0 (0 B)
+    Cache Used: 0 (0 B)
+    Cache Remaining: 0 (0 B)
+    Cache Used%: 100.00%
+    Cache Remaining%: 0.00%
+    Xceivers: 2
+    Last contact: Wed Apr 05 16:22:00 UTC 2017
+    ...
+    ```
 
-- 次のコマンドで、HDInsight クラスター上の HDFS の整合性をチェックします。
+2. 次のコマンドを使用して、HDInsight クラスター上の HDFS の整合性をチェックします。
 
-```apache
-hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
-```
+    ```apache
+    hdiuser@hn0-spark2:~$ hdfs fsck -D "fs.default.name=hdfs://mycluster/" /
+    ```
 
-```apache
-Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
-FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
-....................................................................................................
+    ```apache
+    Connecting to namenode via http://hn0-spark2.2oyzcdm4sfjuzjmj5dnmvscjpg.dx.internal.cloudapp.net:30070/fsck?ugi=hdiuser&path=%2F
+    FSCK started by hdiuser (auth:SIMPLE) from /10.0.0.22 for path / at Wed Apr 05 16:40:28 UTC 2017
+    ....................................................................................................
 
-....................................................................................................
-..................Status: HEALTHY
- Total size:    9330539472 B
- Total dirs:    37
- Total files:   2618
- Total symlinks:                0 (Files currently being written: 2)
- Total blocks (validated):      2535 (avg. block size 3680686 B)
- Minimally replicated blocks:   2535 (100.0 %)
- Over-replicated blocks:        0 (0.0 %)
- Under-replicated blocks:       0 (0.0 %)
- Mis-replicated blocks:         0 (0.0 %)
- Default replication factor:    3
- Average block replication:     3.0
- Corrupt blocks:                0
- Missing replicas:              0 (0.0 %)
- Number of data-nodes:          8
- Number of racks:               1
-FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
+    ....................................................................................................
+    ..................Status: HEALTHY
+    Total size:    9330539472 B
+    Total dirs:    37
+    Total files:   2618
+    Total symlinks:                0 (Files currently being written: 2)
+    Total blocks (validated):      2535 (avg. block size 3680686 B)
+    Minimally replicated blocks:   2535 (100.0 %)
+    Over-replicated blocks:        0 (0.0 %)
+    Under-replicated blocks:       0 (0.0 %)
+    Mis-replicated blocks:         0 (0.0 %)
+    Default replication factor:    3
+    Average block replication:     3.0
+    Corrupt blocks:                0
+    Missing replicas:              0 (0.0 %)
+    Number of data-nodes:          8
+    Number of racks:               1
+    FSCK ended at Wed Apr 05 16:40:28 UTC 2017 in 187 milliseconds
 
+    The filesystem under path '/' is HEALTHY
+    ```
 
-The filesystem under path '/' is HEALTHY
-```
+3. 欠落しているブロック、破損しているブロック、またはレプリケーション数が足りないブロックが存在しないことがわかった場合や、それらのブロックを無視できると判断した場合は、次のコマンドを実行してネーム ノードのセーフ モードを解除します。
 
-- 欠落しているブロックや破損しているブロック、レプリケート数不足のブロックが存在しないと確信している場合や、それらのブロックを無視できる場合は、次のコマンドを実行して、ネーム ノードのセーフ モードを解除します。
-
-```apache
-hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
-```
-
-
-
-
-
-
-
+    ```apache
+    hdfs dfsadmin -D "fs.default.name=hdfs://mycluster/" -safemode leave
+    ```
 
