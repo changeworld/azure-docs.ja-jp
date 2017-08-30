@@ -65,6 +65,10 @@
           href: sql-database-servers-databases.md
         - name: サービス階層
           href: sql-database-service-tiers.md
+        - name: リソース制限
+          href: sql-database-resource-limits.md
+        - name: Single Database
+          href: sql-database-single-database-resources.md
         - name: エラスティック プール
           href: sql-database-elastic-pool.md
         - name: 接続のアーキテクチャ
@@ -75,8 +79,6 @@
           href: sql-database-what-is-a-dtu.md
         - name: DTU ベンチマーク
           href: sql-database-benchmark-overview.md
-        - name: 制限
-          href: sql-database-resource-limits.md
         - name: PaaS または IaaS
           href: sql-database-paas-vs-sql-server-iaas.md
         - name: 監査

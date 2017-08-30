@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/31/2017
+ms.date: 08/22/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 3b55e2f382d2ee9a1f6d459c7fdec0378f2de9d1
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: b7f9a2b7eb3dbf4cc97fac9a410359e068e67eb1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="use-the-storsimple-device-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Device Manager サービスを使用して StorSimple アラートを表示および管理する
@@ -68,7 +68,7 @@ StorSimple デバイスごとに、アラート状態について電子メール
    
    1. **[電子メール通知の送信]** フィールドで、**[はい]** を選択します。
    2. サービス管理者とすべての共同管理者がアラートの通知を受信するように設定する場合は、**[電子メール サービスの管理者]** フィールドで **[はい]** を選択します。
-   3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。 名前は *someone@somewhere.com* の形式で入力します。 電子メール アドレスはセミコロンで区切ります。 1 つのデバイスで構成できる電子メール アドレスは最大 20 件です。 
+   3. **[その他の電子メールの受信者]** フィールドに、アラートの通知を受信するその他すべての受信者の電子メール アドレスを入力します。 名前は *someone@somewhere.com* の形式で入力します。電子メール アドレスはセミコロンで区切ります。 1 つのデバイスで構成できる電子メール アドレスは最大 20 件です。 
       
 3. 電子メールのテスト通知を送信するには、**[テスト電子メールの送信]** をクリックします。 テスト通知を転送すると、StorSimple デバイス マネージャー サービスに状態メッセージが表示されます。
 
@@ -202,12 +202,13 @@ StorSimple デバイス マネージャーのサービスの概要ブレード�
 | StorSimple サービスを開始できませんでした。 |データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 | 'Data0' で、重複する IP アドレスが検出されました。 | |システムによって、IP アドレス '10.0.0.1' の競合が検出されました。 デバイス *<device1>* のネットワーク リソース 'Data0' がオフラインになっています。 この IP アドレスが、このネットワーク内の他のエンティティによって使用されていないことを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 この問題を解決する方法については、ネットワーク管理者にお問い合わせください。 問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |
 | 'Data0' の IPv4 (または IPv6) アドレスがオフラインです。 | |IP アドレス '10.0.0.1' を使用するネットワーク リソース 'Data0'  (デバイス *<device1>* でプレフィックス長 '22') がオフラインになっています。 このインターフェイスが接続されているスイッチ ポートが動作可能であることを確認してください。 ネットワークの問題のトラブルシューティングについては、「 [Get-NetAdapter コマンドレットを使用したトラブルシューティング](storsimple-troubleshoot-deployment.md#troubleshoot-with-the-get-netadapter-cmdlet)」を参照してください。 |
+| 認証サービスに接続できませんでした。 |データパス エラー |認証に使用されている URL はアクセスできません。 StorSimple デバイスに指定された URL パターンがファイアウォール規則に含まれていることを確認してください。 Azure Portal の URL パターンの詳細については、https://aka.ms/ss-8000-network-reqs をご覧ください。 Azure Government Cloud を使用している場合は、https://aka.ms/ss8000-gov-network-reqs の URL パターンをご覧ください。|
 
 ### <a name="performance-alerts"></a>パフォーマンスのアラート
 
 | アラートのテキスト | イベント | 追加情報 / 推奨される対処法 |
 |:--- |:--- |:--- |
-| デバイスの負荷が <*しきい値*> を超えています。 |応答時間が予想よりも長くかかっています。 |デバイスの入出力に大きな負荷がかかっていることが報告されています。 これにより、デバイスが予期したとおりには動作しない可能性があります。 デバイスに割り当てたワークロードを確認して、別のデバイスに移すことのできるワークロードまたはもう必要ないワークロードがないか判断してください。<br>現在の状態を把握する方法については、「[StorSimple Device Manager サービスを使用してデバイスを監視する](storsimple-monitor-device.md)」をご覧ください。 |
+| デバイスの負荷が <*しきい値*> を超えています。 |応答時間が予想よりも長くかかっています。 |デバイスの入出力に大きな負荷がかかっていることが報告されています。 これにより、デバイスが予期したとおりには動作しない可能性があります。 デバイスに割り当てたワークロードを確認して、別のデバイスに移すことのできるワークロードまたはもう必要ないワークロードがないか判断してください。| StorSimple サービスを開始できませんでした。 |データパス エラー |問題が解決しない場合は、Microsoft サポートにお問い合わせください。 |現在の状態については、「[StorSimple Device Manager サービスを使用してデバイスを監視する](storsimple-monitor-device.md)」をご覧ください。 |
 
 ### <a name="security-alerts"></a>セキュリティのアラート
 
