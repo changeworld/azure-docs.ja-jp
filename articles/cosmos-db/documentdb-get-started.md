@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/22/2017
+ms.date: 08/16/2017
 ms.author: anhoh
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 312cb366924767cd0ad645dc4a435dd549494188
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: 72f66081a6409f980ec6bca5188f585489245a36
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 # <a name="azure-cosmos-db-documentdb-api-getting-started-tutorial"></a>Azure Cosmos DB: DocumentDB API の使用に関するチュートリアル
@@ -58,7 +58,7 @@ Azure Cosmos DB の DocumentDB API を実際に使ってみるチュートリア
 
 * アクティブな Azure アカウント。 お持ちでない場合は、 [無料アカウント](https://azure.microsoft.com/free/)にサインアップしてください。 
     * また、このチュートリアルには、[Azure Cosmos DB Emulator](local-emulator.md) を使用することもできます。
-* [Visual Studio 2013/Visual Studio 2015](http://www.visualstudio.com/)。
+* [Visual Studio Community 2017](http://www.visualstudio.com/)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-account"></a>手順 1: Azure Cosmos DB アカウントを作成する
 それでは、Azure Cosmos DB アカウントを作成してみましょう。 使用するアカウントが既にある場合は、「 [Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでかまいません。 Azure Cosmos DB Emulator を使用する場合は、[Azure Cosmos DB Emulator](local-emulator.md) に関する記事に記載されている手順に従ってエミュレーターをセットアップし、「[Visual Studio ソリューションをセットアップする](#SetupVS)」に進んでください。
@@ -66,7 +66,7 @@ Azure Cosmos DB の DocumentDB API を実際に使ってみるチュートリア
 [!INCLUDE [create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 
 ## <a id="SetupVS"></a>手順 2: Visual Studio ソリューションをセットアップする
-1. コンピューターで **Visual Studio 2015** を開きます。
+1. コンピューターで **Visual Studio 2017** を開きます。
 2. **[ファイル]** メニューで、**[新規]**、**[プロジェクト]** の順に選択します。
 3. **[新しいプロジェクト]** ダイアログで、**[テンプレート]** / **[Visual C#]** / **[コンソール アプリケーション]** の順に選択し、プロジェクトの名前を指定して、**[OK]** をクリックします。
    ![[新しいプロジェクト] ウィンドウのスクリーン ショット](./media/documentdb-get-started/nosql-tutorial-new-project-2.png)
@@ -503,7 +503,7 @@ Azure Cosmos DB は、JSON ドキュメントの削除をサポートします�
 ## <a id="Run"></a>手順 11: C# コンソール アプリケーションの全体的な実行の流れ
 Visual Studio で F5 キーを押して、デバッグ モードでアプリケーションをビルドします。
 
-開始したアプリケーションの出力が表示されます。 出力では追加したクエリの結果が表示されます。次の例のようなものになるはずです。
+開始したアプリケーションの出力がコンソール ウィンドウに表示されます。 出力では追加したクエリの結果が表示されます。次の例のようなものになるはずです。
 
     Created FamilyDB
     Press any key to continue ...
@@ -526,7 +526,7 @@ Visual Studio で F5 キーを押して、デバッグ モードでアプリケ�
     Deleted Family Andersen.1
     End of demo, press any key to exit.
 
-ご利用ありがとうございます。 チュートリアルが完了し、実際に動作する C# コンソール アプリケーションが完成しました。
+お疲れさまでした。 チュートリアルが完了し、実際に動作する C# コンソール アプリケーションが完成しました。
 
 ## <a id="GetSolution"></a>チュートリアルのソリューションの完全版を入手する
 このチュートリアルの手順を実行する時間がない場合や、コード サンプルをダウンロードするだけの場合は、[GitHub](https://github.com/Azure-Samples/documentdb-dotnet-getting-started) から入手できます。 
@@ -543,11 +543,11 @@ Visual Studio で Azure Cosmos DB .NET SDK への参照を復元するには、�
 
 
 ## <a name="next-steps"></a>次のステップ
-* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 [Azure Cosmos DB を使用した ASP.NET MVC Web アプリケーションの構築](documentdb-dotnet-application.md)に関するページを参照してください。
+* さらに詳しい ASP.NET MVC チュートリアルが必要な場合には、 「[ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発](documentdb-dotnet-application.md)」を参照してください。
 * Azure Cosmos DB のスケールとパフォーマンスをテストする場合には、 「[Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)」を参照してください。
-* [Azure Cosmos DB アカウントを監視する](monitor-accounts.md)方法を学習します。
+* [Azure Cosmos DB の要求、使用状況、およびストレージを監視する](monitor-accounts.md)方法を確認します。
 * [クエリのプレイ グラウンド](https://www.documentdb.com/sql/demo)でサンプル データセットに対してクエリを実行します。
-* プログラミング モデルの詳細については、[Azure Cosmos DB のドキュメントに関するページ](https://azure.microsoft.com/documentation/services/documentdb/)の開発に関するセクションを参照してください。
+* Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](https://docs.microsoft.com/azure/cosmos-db/introduction)」を参照してください。
 
 [keys]: media/documentdb-get-started/nosql-tutorial-keys.png
 [cosmos-db-create-account]: create-documentdb-dotnet.md#create-account

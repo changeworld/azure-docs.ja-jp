@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/02/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: a67e2bcca630b93d6e378cc208f10f9efb0a4317
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f21984b4680eff78cd87b53561a604b49683705e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-iot-hub-get-started-with-physical-devices-tutorials"></a>Azure IoT Hub と物理デバイス入門チュートリアル
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/16/2017
 | IoT デバイス                       | プログラミング言語 |
 |---------------------------------|----------------------|
 | Raspberry Pi                    | [Node.js][Pi_Nd]、[C][Pi_C]、[Python][Pi_Py]           |
-| IoT DevKit                       | [DevKit][DevKit]     |
+| IoT DevKit                      | [VSCode の Arduino][DevKit]     |
 | Intel Edison                    | [Node.js][Ed_Nd][C][Ed_C]           |
 | Adafruit Feather HUZZAH ESP8266 | [Arduino][Hu_Ard]              |
 | Sparkfun ESP8266 Thing Dev      | [Arduino][Th_Ard]              |

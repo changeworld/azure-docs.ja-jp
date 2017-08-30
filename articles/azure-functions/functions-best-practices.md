@@ -4,7 +4,7 @@ description: "Azure Functions のベスト プラクティスとパターンに�
 services: functions
 documentationcenter: na
 author: wesmc7777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, パターン, ベスト プラクティス, 関数, イベント処理, webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 06/13/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 5408bf986b67d420d4d1359961ec83510c97cd05
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 645a5dd16e72619e7c2470ab8f03098f0fa6c7f8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -88,9 +87,9 @@ Function App 内の関数はリソースを共有します。 たとえば、メ
 
 
 
-## <a name="use-async-code-but-avoid-taskresult"></a>非同期コードを使用する。ただし Task.Result は避ける
+## <a name="use-async-code-but-avoid-blocking-calls"></a>非同期コードを使用し、呼び出しのブロックは避ける
 
-非同期プログラミングは、推奨されるベスト プラクティスです。 ただし、`Task.Result` プロパティを参照することは必ず避けてください。 この手法により、スレッドが枯渇する可能性があります。
+非同期プログラミングは、推奨されるベスト プラクティスです。 ただし、`Task` インスタンスの `Result` プロパティを参照したり `Wait` メソッドを呼び出したりすることは、常に避けるようにします。 この手法により、スレッドが枯渇する可能性があります。
 
 
 [!INCLUDE [HTTP client best practices](../../includes/functions-http-client-best-practices.md)]

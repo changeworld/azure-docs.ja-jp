@@ -4,23 +4,23 @@ description: "Azure Functions を使用して、Azure Storage キューに送信
 services: azure-functions
 documentationcenter: na
 author: ggailey777
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 ms.assetid: 0b609bc0-c264-4092-8e3e-0784dcc23b5d
 ms.service: functions
 ms.devlang: multiple
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/02/2017
+ms.date: 08/17/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3eae02f7cf756e8e24d4f1952d12c37f2ad4b400
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57c59273a9da55f3e357764c522b444ae2d73cb5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="add-messages-to-an-azure-storage-queue-using-functions"></a>Functions を使用して Azure Storage キューにメッセージを追加する
@@ -39,7 +39,7 @@ Azure Functions では、入力および出力バインディングによって�
  
 1. Function App と関数の両方を展開します。
 
-2. **[統合]** と **[+ 新しい出力]** を選択し、**[Azure Queue storage]** を選択して、**[選択]** を選択します。
+2. **[統合]** と **[+ 新しい出力]** を選択し、**[Azure Queue Storage]** を選択して、**[選択]** を選択します。
     
     ![Azure Portal 内の関数に Queue Storage の出力バインディングを追加します。](./media/functions-integrate-storage-queue-output-binding/function-add-queue-storage-output-binding.png)
 
@@ -51,7 +51,7 @@ Azure Functions では、入力および出力バインディングによって�
     | ------------ |  ------- | -------------------------------------------------- |
     | **キュー名**   | myqueue-items    | ストレージ アカウント内の接続先のキューの名前。 |
     | **ストレージ アカウント接続** | AzureWebJobStorage | Function App によって既に使用されているストレージ アカウント接続を使用するか、新しく作成できます。  |
-    | **メッセージ パラメーター名** | outQueueItem | 出力バインディング パラメーターの名前。 | 
+    | **メッセージ パラメーター名** | outputQueueItem | 出力バインディング パラメーターの名前。 | 
 
 4. **[保存]** をクリックしてバインディングを追加します。
  
@@ -61,11 +61,11 @@ Azure Functions では、入力および出力バインディングによって�
 
 1. 関数を選択し、エディターに関数コードを表示します。 
 
-2. C# 関数の場合は、次のように関数定義を更新して、**outQueueItem** ストレージ バインディング パラメーターを追加します。 JavaScript 関数の場合は、この手順をスキップします。
+2. C# 関数の場合は、次のように関数定義を更新して、**outputQueueItem** ストレージ バインディング パラメーターを追加します。 JavaScript 関数の場合は、この手順をスキップします。
 
     ```cs   
     public static async Task<HttpResponseMessage> Run(HttpRequestMessage req, 
-        ICollector<string> outQueueItem, TraceWriter log)
+        ICollector<string> outputQueueItem, TraceWriter log)
     {
         ....
     }
@@ -74,12 +74,12 @@ Azure Functions では、入力および出力バインディングによって�
 3. メソッドが戻る直前に、関数に次のコードを追加します。 関数の言語に合ったスニペットを使用します。
 
     ```javascript
-    context.bindings.outQueueItem = "Name passed to the function: " + 
+    context.bindings.outputQueueItem = "Name passed to the function: " + 
                 (req.query.name || req.body.name);
     ```
 
     ```cs
-    outQueueItem.Add("Name passed to the function: " + name);     
+    outputQueueItem.Add("Name passed to the function: " + name);     
     ```
 
 4. **[保存]** を選択して変更を保存します。
@@ -100,7 +100,7 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
 
 既に Storage エクスプローラーをインストールしてストレージ アカウントに接続している場合は、最初の 3 つの手順をスキップします。    
 
-1. 関数で、**[統合]** と新しい **[Azure Queue storage]** 出力バインディングを選択し、**[ドキュメント]** を展開します。 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。
+1. 関数で、**[統合]** と新しい **[Azure Queue Storage]** 出力バインディングを選択し、**[ドキュメント]** を展開します。 **[アカウント名]** と **[アカウント キー]** の両方をコピーします。 これらの資格情報を使用して、ストレージ アカウントに接続します。
  
     ![ストレージ アカウント接続の資格情報を取得します。](./media/functions-integrate-storage-queue-output-binding/function-get-storage-account-credentials.png)
 
@@ -112,7 +112,7 @@ HTTP トリガーに渡される値は、キューに追加されるメッセー
   
     ![ストレージ資格情報を貼り付けて接続します。](./media/functions-integrate-storage-queue-output-binding/functions-storage-manager-connect-2.png)
 
-4. 接続されたストレージ アカウントを展開し、**[Queues] \(キュー)** を右クリックして、**myqueue-items** という名前のキューが存在することを確認します。 既にメッセージもキューに表示されているはずです。  
+4. 接続されたストレージ アカウントを展開し、**[キュー]** を展開して、**myqueue-items** という名前のキューが存在することを確認します。 既にメッセージもキューに表示されているはずです。  
  
     ![ストレージ キューを作成します。](./media/functions-integrate-storage-queue-output-binding/function-queue-storage-output-view-queue.png)
  

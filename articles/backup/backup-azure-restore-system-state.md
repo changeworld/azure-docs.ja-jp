@@ -12,13 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/31/2017
+ms.date: 8/18/2017
 ms.author: saurse;trinadhk;markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: c58f363035a654f60bec4efa43e0743e9a76c22f
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 320c85f8045d9b72cf7f430d2e2736ba8e5ec269
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="restore-system-state-to-windows-server"></a>Windows Server へのシステム状態の復元
@@ -178,7 +178,7 @@ Azure Recovery Services エージェントを使用してシステム状態を�
 システム状態バックアップには、Active Directory のデータが含まれています。 Active Directory Domain Services (AD DS) を現在の状態から以前の状態に復元するには、次の手順に従います。
 
 1. ディレクトリ サービス復元モード (DSRM) でドメイン コントローラーを再起動します。
-2. ここでの手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
+2. [ここ](https://technet.microsoft.com/en-us/library/cc794755(v=ws.10).aspx)での手順に従い、Windows Server バックアップ コマンドレットを使用して、AD DS を回復します。
 
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>システム状態の復元に失敗した場合のトラブルシューティング

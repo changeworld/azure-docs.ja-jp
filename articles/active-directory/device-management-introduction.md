@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 08/21/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 679daadc2be7b55c2c180f5f88c2595844a81ea1
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c8b8408f76534a808fd60e331282f8191905df58
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
@@ -145,7 +145,9 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 ## <a name="next-steps"></a>次のステップ
 
-ハイブリッド Azure AD 参加済みデバイスを設定するには、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](device-management-hybrid-azuread-joined-devices-setup.md)」を参照してください。
+- デバイスベースの条件付きアクセスについて詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイスベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」を参照してください。
+
+- ハイブリッド Azure AD 参加済みデバイスを設定するには、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](device-management-hybrid-azuread-joined-devices-setup.md)」を参照してください。
 
 
 

@@ -1,9 +1,9 @@
 ---
-title: "Azure Active Directory B2C: Application Insights を使用したカスタム ポリシーのトラブルシューティング | Microsoft Docs"
+title: "Application Insights を使用したカスタム ポリシーのトラブルシューティング - Azure AD B2C | Microsoft Docs"
 description: "カスタム ポリシーの実行を追跡するための Application Insights の設定方法"
 services: active-directory-b2c
 documentationcenter: 
-author: saeeda
+author: saeedakhter-msft
 manager: krassk
 editor: parakhj
 ms.assetid: 658c597e-3787-465e-b377-26aebc94e46d
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
-ms.author: saeeda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 125f05f5dce5a0e4127348de5b280f06c3491d84
-ms.openlocfilehash: db658319637f1a45616091e034a0fc4db44885d4
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ad31e5f4ef3be78d8d2dd6b9c7d83e447d9ef776
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -32,7 +32,7 @@ Azure AD B2C では、Application Insights にデータを送信するための�
 
 ### <a name="setup-application-insights"></a>Application Insights を設定する
 
-1. [Azure ポータル](https://portal.azure.com)にアクセスします。 (Azure AD B2C テナントではなく) Azure サブスクリプションがあるテナントにいることを確認します。
+1. [Azure Portal](https://portal.azure.com) にアクセスします。 (Azure AD B2C テナントではなく) Azure サブスクリプションがあるテナントにいることを確認します。
 1. 左側のナビゲーション メニューで、**[+ New]**(+ 新規) をクリックします。
 1. **Application Insights** を探して選択し、**[Create]**(作成) をクリックします。
 1. フォームに入力して **[Create]**(作成) をクリックします。 **[Application Type]**(アプリケーションの種類) は **[General]**(一般) を選択します。
