@@ -3,7 +3,7 @@ title: "2 段階認証の概要 |Microsoft Docs"
 description: "この Azure Multi-factor Authentication ページは、エンドユーザーが Azure Multi-Factor Authentication を開始するのを支援します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: e02cc045-2ac0-41ff-b07f-e9255e320383
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
 ms.translationtype: Human Translation
@@ -48,5 +48,4 @@ ms.lasthandoff: 06/22/2017
 | [設定の変更](multi-factor-authentication-end-user-manage-settings.md) |電話番号や優先登録方法など、設定の変更方法を示します。 |
 | [アプリ パスワードに関するヘルプ](multi-factor-authentication-end-user-app-passwords.md) |アプリ パスワードの作成と使用に関する情報があります。 |
 | [モバイル アプリの使用](microsoft-authenticator-app-how-to.md) |Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
-
 

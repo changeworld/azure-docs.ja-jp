@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
 ms.openlocfilehash: 77eb83b80312eca401e6f60d57ed6a5668ea442e
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/09/2017
-
 
 ---
 # <a name="create-hdinsight-clusters-with-data-lake-store-as-default-storage-by-using-powershell"></a>PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターを作成する

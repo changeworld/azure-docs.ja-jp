@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Data Lake Store に関してよく寄せられる質問 | Microsoft Docs"
 description: "Azure Data Lake Store に関する問題のトラブルシューティングまたは問題を軽減する方法に関するガイダンス"
 services: data-lake-store
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 094729399070a64abc1aa05a9f585a0782142cbf
 ms.openlocfilehash: 258e2a4957178d60c8c691d8a29878b2f1b8e799
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/05/2017
-
 
 ---
 # <a name="frequently-asked-questions-for-azure-data-lake-store"></a>Azure Data Lake Store に関してよく寄せられる質問
@@ -31,11 +30,11 @@ Azure Data Lake Store アカウントのデータは、リージョン内で発�
 ### <a name="disaster-recovery-guidance"></a>ディザスター リカバリーの ガイダンス
 すべての顧客が独自のディザスター リカバリー計画を準備することが重要です。 ディザスター リカバリー計画を作成する場合は、次の Azure ドキュメントをご覧ください。 独自の計画を作成する際に役立つリソースがあります。
 
-* [Azure アプリケーションの災害復旧と高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
+* [Azure アプリケーションのディザスター リカバリーと高可用性](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Azure の回復性技術ガイダンス](../resiliency/resiliency-technical-guidance.md)
 
 #### <a name="best-practices"></a>ベスト プラクティス
-災害復旧計画のニーズに合った頻度で、別のリージョンにある別の Data Lake Store アカウントに重要なデータをコピーすることをお勧めします。 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) など、データをコピーするさまざまな方法があります。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
+ディザスター リカバリー計画のニーズに合った頻度で、別のリージョンにある別の Data Lake Store アカウントに重要なデータをコピーすることをお勧めします。 [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md)、[Azure PowerShell](data-lake-store-get-started-powershell.md)、[Azure Data Factory](../data-factory/data-factory-azure-datalake-connector.md) など、データをコピーするさまざまな方法があります。 Azure Data Factory は、データ移動パイプラインを作成して定期的にデプロイできる便利なサービスです。
 
 リージョンの障害が発生しても、データがコピーされているリージョンのデータにアクセスできます。また、[Azure サービス正常性ダッシュボード](https://azure.microsoft.com/status/)を監視することで、世界中の Azure サービスの状態を確認できます。
 

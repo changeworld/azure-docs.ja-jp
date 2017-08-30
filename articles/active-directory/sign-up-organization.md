@@ -11,8 +11,10 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 08/28/2017
 ms.author: curtand
+ms.reviewer: jeffsta
+ms.custom: it-pro
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 07ad266ad87028996c4a7b3e4365c11b019f8529

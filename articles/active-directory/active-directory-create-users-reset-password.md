@@ -12,9 +12,10 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.custom: H1Hack27Feb2017;it-pro
+ms.reviewer: asteen
 ms.translationtype: HT
 ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: deec642a240cb6f088210748b0ef3a3636a88405

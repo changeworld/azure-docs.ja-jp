@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/06/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
 ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684

@@ -4,7 +4,7 @@ description: "Visual Studio の Azure Stream Analytics ツールに関する入�
 keywords: Visual Studio
 documentationcenter: 
 services: stream-analytics
-author: 
+author: samacha
 manager: 
 editor: 
 ms.assetid: a473ea0a-3eaa-4e5b-aaa1-fec7e9069f20
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 
-ms.author: 
+ms.author: samacha
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 618c1055795a75e0ed71dacddba3e076f81f4946
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/04/2017
-
 
 ---
 # <a name="use-azure-stream-analytics-tools-for-visual-studio"></a>Visual Studio の Azure Stream Analytics ツールの使用
