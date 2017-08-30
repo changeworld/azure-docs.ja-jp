@@ -1,6 +1,6 @@
 ---
-title: "Azure Portal のダッシュボード アクセス | Microsoft Docs"
-description: "この記事では、Azure ポータルのダッシュボードへのアクセスを共有する方法について説明します。"
+title: "RBAC を使用した Azure Portal ダッシュボードの共有 | Microsoft Docs"
+description: "この記事では、Azure Portal でロールベースのアクセス制御を使用して、ダッシュボードを共有する方法について説明します。"
 services: azure-portal
 documentationcenter: 
 author: tfitzmac
@@ -14,14 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
-
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 927ec9251b5231a5d9a0e8278f5dc46e9abdde0e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="sharing-azure-dashboards"></a>Azure ダッシュボードの共有
-構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードへのアクセスを第三者に許可するには、Azure の [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
+# <a name="share-azure-dashboards-by-using-role-based-access-control"></a>ロール ベースのアクセス制御を使用した Azure ダッシュ ボードの共有
+構成したダッシュボードは、発行して組織内の他のユーザーと共有することができます。 ダッシュボードを第三者が表示できるようにするには、Azure の[ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を使用します。 特定のユーザーまたはユーザーのグループをロールに割り当て、発行したダッシュボードの表示または変更をそれらのユーザーに許可するかどうかをそのロールで定義します。 
 
 発行したダッシュボードはすべて Azure リソースとして実装されます。つまり、それらは管理可能な要素としてサブスクリプションに存在し、リソース グループに属します。  アクセス制御の見地からは、ダッシュボードはその他のリソース (仮想マシン、ストレージ アカウントなど) と変わりありません。
 
@@ -76,10 +77,5 @@ ms.openlocfilehash: a2f3252aa271c0ec6750c38c6d5060dbfe73a0e2
 ## <a name="next-steps"></a>次のステップ
 * 一連のロールについては、「 [RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
 * リソース管理の詳細については、「 [ポータルを使用した Azure リソースの管理](resource-group-portal.md)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
