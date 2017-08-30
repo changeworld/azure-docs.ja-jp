@@ -162,7 +162,6 @@
 ##### [サポート パッケージを作成する](storsimple-8000-create-manage-support-package.md)
 
 ### 移行
-#### [5000 - 7000 シリーズから](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
@@ -301,16 +300,17 @@
 ##### [サポート パッケージを作成する](storsimple-create-manage-support-package.md)
 
 ### 移行
-#### [5000 - 7000 シリーズから](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)
 #### [他のストレージ デバイスから](http://download.microsoft.com/download/9/4/A/94AB8165-CCC4-430B-801B-9FD40C8DA340/Migrating Data to StorSimple Volumes_09-02-15.pdf)
 
 ### 更新
+#### [Update 5 のインストール - 最新](storsimple-install-update-5.md)
 #### [Update 4 をインストールする](storsimple-install-update-4.md)
 #### [Update 3 をインストールする](storsimple-install-update-3.md)
 #### [デバイスを更新する](storsimple-update-device.md)
 
 ## リリース ノート
-### [Update 4 - 最新](storsimple-update4-release-notes.md)
+### [Update 5 - 最新](storsimple-update5-release-notes.md)
+### [Update 4](storsimple-update4-release-notes.md)
 ### [Update 3](storsimple-update3-release-notes.md)
 ### [Update 2.2](storsimple-update21-release-notes.md)
 
