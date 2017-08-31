@@ -3,7 +3,7 @@ title: "Azure API Management の FAQ | Microsoft Docs"
 description: "Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。"
 services: api-management
 documentationcenter: 
-author: miaojiang
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 2fa193cd-ea71-4b33-a5ca-1f55e5351e23

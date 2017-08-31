@@ -8,7 +8,7 @@ author: venkatgct
 manager: almineev
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -23,15 +23,11 @@ ms.lasthandoff: 07/04/2017
 
 ---
 
-<a id="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Ibiza ポータルを使用して Time Series Insights 環境の参照データ セットを作成する
+# <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Ibiza ポータルを使用して Time Series Insights 環境の参照データ セットを作成する
 
 参照データ セットは、イベント ソースからのイベントによって増幅される項目の集まりです。 イベント ソースから受信したイベントは、Time Series Insights のイングレス エンジンによって、指定した参照データ セット内の項目と結合されます。 こうして増幅されたイベントをクエリで利用することができます。 この結合操作は、参照データ セットに定義されているキーに基づいて行われます。
 
-<a id="steps-to-add-a-reference-data-set-to-your-environment" class="xliff"></a>
-
-## 参照データ セットを環境に追加する手順
+## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>参照データ セットを環境に追加する手順
 
 1. [Ibiza ポータル](https://portal.azure.com)にサインインします。
 2. Ibiza ポータルの左側のメニューで [すべてのリソース] をクリックします。
@@ -50,9 +46,7 @@ ms.lasthandoff: 07/04/2017
 
 7. [作成] をクリックします。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * プログラムで[参照データを管理](time-series-insights-manage-reference-data-csharp.md)する。
 * 詳細な API リファレンスについては、[参照データ API](/rest/api/time-series-insights/time-series-insights-reference-reference-data-api) に関するドキュメントを参照してください。

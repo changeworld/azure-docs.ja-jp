@@ -1,13 +1,24 @@
 ---
-layout: LandingPage
 title: "Service Bus Relay のドキュメント"
 description: "クラウドとオンプレミスのハイブリッド環境における Azure Relay サービスの動作を学習します。ハウツー、チュートリアル、ビデオ、API リファレンスなどが用意されています。"
+services: service-bus
+author: czeumault
+manager: carolz
+layout: LandingPage
+ms.assetid: 
+ms.service: service-bus
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: landing-page
+ms.date: 03/14/2017
+ms.author: carolz
 ms.translationtype: HT
 ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 43d2c5ca34e4903a41160496fdb4d975cb665de7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 08/04/2017
 
+---
 ---
 # <a name="service-bus-relay-documentation"></a>Service Bus Relay のドキュメント
 企業のエンタープライズ ネットワークとパブリック クラウド内にあるオンプレミスとクラウド環境の間でハイブリッド アプリケーションに Azure Relay サービスを使用する方法を学習します。その際、ファイアウォール接続を開くことも、企業ネットワークのインフラストラクチャへの大幅な変更を要求することも必要ありません。

@@ -2,7 +2,7 @@
 title: "Azure Data Lake Store のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "あらゆるサイズ、種類、および取り込み速度のデータの分析を目的として、Hadoop と互換性のある超大規模な Data Lake リポジトリを設定、管理、アクセスする方法について説明します。"
 services: data-lake-store
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

@@ -2,7 +2,7 @@
 title: "Azure HDInsight のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "HDInsight での Hadoop の概要。 ドキュメントでは、Hadoop、Spark、HBase、R-Server などを使用して、ビッグ データを処理、分析し、洞察を得る方法について説明します。"
 services: hdinsight
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 
