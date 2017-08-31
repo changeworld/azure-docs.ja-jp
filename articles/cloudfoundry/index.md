@@ -2,15 +2,15 @@
 title: "Azure での Cloud Foundry"
 description: "Azure での Cloud Foundry"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: mlearned
+ms.author: carolz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: 371b10be09fd6719c8c946bed47d2f5fd0625793

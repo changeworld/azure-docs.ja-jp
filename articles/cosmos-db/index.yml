@@ -6,7 +6,7 @@ metadata:
   title: Azure Cosmos DB のドキュメント - チュートリアル、API リファレンス
   description: Azure Cosmos DB を使用して、グローバルに分散されたマルチモデル データベースを構築する方法について説明します。 チュートリアルでは、ドキュメント、キー/値、グラフ データベースを作成して照会する方法について説明します。
   services: cosmos-db
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: cosmos-db
   ms.tgt_pltfrm: na

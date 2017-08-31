@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 13: デプ�
 description: "Azure Analysis Services にチュートリアル用プロジェクトをデプロイする方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

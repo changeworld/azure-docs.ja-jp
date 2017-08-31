@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアルの補足のレッスン: �
 description: "この Azure Analysis Services チュートリアルでは、行フィルターを使用して、動的なセキュリティの使用方法について説明します。"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

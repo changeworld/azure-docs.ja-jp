@@ -3,7 +3,7 @@ title: "Azure Analysis Services チュートリアル - レッスン 1: 新し�
 description: "新しい Azure Analysis Services チュートリアル プロジェクトを作成する方法を説明します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

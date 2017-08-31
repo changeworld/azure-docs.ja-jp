@@ -6,14 +6,14 @@ metadata:
   title: Azure PostgreSQL のドキュメント - チュートリアル、API リファレンス
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいて開発者向けに構築された、Microsoft クラウドのリレーショナル データベース サービスです。
   services: postgresql
-  author: jasonwhowell
-  manager: jhubbard
+  author: czeumault
+  manager: carolz
   ms.service: postgresql
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
   ms.date: 01/23/2017
-  ms.author: jasonh
+  ms.author: carolz
 abstract:
   description: Azure Database for PostgreSQL は、オープンソースの PostgreSQL データベース エンジンに基づいたリレーショナル データベース サービスです。  完全管理型のサービスとしてのデータベースであり、予測可能なパフォーマンス、セキュリティ、高可用性、動的なスケーラビリティを実現しながら、ミッション クリティカルなワークロードを処理できます。  Azure Database for PostgreSQL では、任意のオープンソース ツールとプラットフォームを利用してアプリケーションを開発できます。  Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Database for PostgreSQL の使用方法を確認してください。
 sections:

@@ -8,7 +8,7 @@ author: op-ravi
 manager: santoshb
 editor: cgronlun
 ms.assetid: 
-ms.service: time-series-insights
+ms.service: tsi
 ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
@@ -23,15 +23,11 @@ ms.lasthandoff: 07/01/2017
 
 ---
 
-<a id="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal" class="xliff"></a>
-
-# Ibiza ポータルを使用して Time Series Insights 環境のイベント ソースを作成する
+# <a name="create-an-event-source-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Ibiza ポータルを使用して Time Series Insights 環境のイベント ソースを作成する
 
 Time Series Insights のイベント ソースは、Azure Event Hubs のようなイベント ブローカーから派生しています。 Time Series Insights は直接イベント ソースに接続するため、ユーザーがコードを 1 行も記述する必要なく、データ ストリームを取り込みます。 現在 Time Series Insights では、Azure Event Hubs と Azure IoT Hub がサポートされています。 将来的にはさらにイベント ソースが追加される予定です。
 
-<a id="steps-to-add-an-event-source-to-your-environment" class="xliff"></a>
-
-## 環境にイベント ソースを追加する手順
+## <a name="steps-to-add-an-event-source-to-your-environment"></a>環境にイベント ソースを追加する手順
 
 1.  [Ibiza ポータル](https://portal.azure.com)にサインインします。
 2.  Ibiza ポータルの左側のメニューで [すべてのリソース] をクリックします。
@@ -55,9 +51,7 @@ Time Series Insights のイベント ソースは、Azure Event Hubs のよう�
 
 イベント ソースの作成後、Time Series Insights は自動的に環境へのデータのストリーミングを開始します。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 * イベント ソースに[イベントを送信する](time-series-insights-send-events.md)
 * [Time Series Insights ポータル](https://insights.timeseries.azure.com)で環境を表示する
