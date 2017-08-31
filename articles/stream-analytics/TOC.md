@@ -13,6 +13,7 @@
 ### [ソーシャル メディア](stream-analytics-twitter-sentiment-analysis-trends.md)
 ### [Machine Learning を使用したリアルタイムのスコアリング](stream-analytics-machine-learning-integration-tutorial.md)
 ### [リアルタイム イベント処理](stream-analytics-real-time-event-processing-reference-architecture.md)
+### [Azure 使用ガイドでの異常検出 (プレビュー)](stream-analytics-machine-learning-anomaly-detection.md)
 
 ## ジョブの作成
 ### [入力を作成する](stream-analytics-define-inputs.md)
@@ -66,7 +67,7 @@
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [ブログ](http://blogs.msdn.com/b/streamanalytics/)
 ## [フィードバック フォーラム](http://feedback.azure.com/forums/270577-azure-stream-analytics)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 ## [料金](https://azure.microsoft.com/pricing/details/stream-analytics/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [リリース ノート](stream-analytics-release-notes.md)

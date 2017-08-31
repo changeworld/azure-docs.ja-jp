@@ -19,8 +19,6 @@
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
 ## [Service Fabric CLI](samples-cli.md)
-### [サンプルのデプロイ](scripts/cli-deploy-application.md)
-### [サンプルの削除](scripts/cli-remove-application.md)
 # 概念
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [全体像](service-fabric-content-roadmap.md)
@@ -115,11 +113,14 @@
 #### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
+## [API Management との統合](service-fabric-api-management-overview.md)
+
 ## 監視と診断
 ### [概要](service-fabric-diagnostics-overview.md)
 ### [正常性モデル](service-fabric-health-introduction.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
+### [Reliable Service Remoting のパフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md)
 
 # ハウツー ガイド
 ## 開発環境を設定する
@@ -128,6 +129,7 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 
 ## アプリケーションのビルド
+### [Visual Studio での最初の C# アプリの作成](service-fabric-create-your-first-application-in-visual-studio.md)
 ### ゲスト実行可能サービスの構築
 #### [Windows での Node.js アプリケーションのホスト](quickstart-guest-app.md)
 #### [ゲスト実行可能ファイルをデプロイする](service-fabric-deploy-existing-app.md)
@@ -208,9 +210,7 @@
 ### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## API Management との統合
-### [概要](service-fabric-api-management-overview.md)
-### [クイック スタート](service-fabric-api-management-quick-start.md)
+## [API Management と Service Fabric を Azure にデプロイする](service-fabric-api-management-quick-start.md)
 
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
