@@ -4,7 +4,7 @@ description: "モノのインターネット (IoT) からのストリーミン�
 keywords: "サービスとしての分析、管理されたサービス、ストリーム プロセス、Stream Analytics、Stream Analytics とは"
 services: stream-analytics
 documentationcenter: 
-author: jenniehubbard
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 613c9b01-d103-46e0-b0ca-0839fee94ca8
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 08/08/2017
-ms.author: jhubbard
+ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 5081ecaf569aef9e2f99cc27e91c4b64a25b0deb
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6bb70ba7588b8c6e9261fca097403e7fccb041eb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -98,6 +98,6 @@ Stream Analytics は、クラウド内で管理されるサービスであるた
 * Stream Analytics で使用される SQL に似たクエリ言語と、[ウィンドウ関数](stream-analytics-window-functions.md)に見られるような独特の概念について理解を深める。
 * [Stream Analytics ジョブをスケーリング](stream-analytics-scale-jobs.md)する方法について調べる。 
 * [Stream Analytics と Azure Machine Learning を統合](stream-analytics-machine-learning-integration-tutorial.md)する方法について調べる。
-* [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)で Stream Analytics に関する質問の回答を見つける。
+* [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)で Stream Analytics に関する質問の回答を見つける。
 
 
