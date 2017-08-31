@@ -463,7 +463,7 @@ TestVNet1 と TestVNet1 の VPN ゲートウェイを作成して構成するに
 
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
-[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-vnet-vnet-faq-include.md)]
+[!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

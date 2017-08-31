@@ -53,7 +53,7 @@ IPsec/IKE ポリシーを作成し、新規または既存の接続に適用す�
 
 ## <a name="ipsecike-policy-faq"></a>IPsec/IKE ポリシーに関する FAQ
 
-[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-ipsecikepolicy-faq-include.md)]
+[!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
 
 ## <a name="next-steps"></a>次のステップ
