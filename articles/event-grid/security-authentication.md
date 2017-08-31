@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 1153aed6504eb3c31d99f44be8359506477d9336
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: b6e1c7587c0b47d04862b4850741aaa3b7d191a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -37,9 +37,9 @@ Event Grid に独自の webhook エンドポイントを登録すると、エン
 * イベント サブスクリプションの作成時または更新時に、Event Grid は "SubscriptionValidationEvent" イベントをターゲット エンドポイントに投稿します。
 * このイベントには、ヘッダー値 "Event-Type: Validation" が含まれています。
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
-* イベント データには、ランダムに生成された文字列 ("validation_code: acb13…" など) が指定された "alidation_code" プロパティが含まれています。
+* イベント データには、ランダムに生成された次のような文字列が指定された "ValidationCode" プロパティが含まれています。"ValidationCode: acb13…"。
 
-エンドポイントの所有権を証明するために、検証コード ("validation_response: acb13…" など) をエコーで返します。
+エンドポイントの所有権を証明するために、検証コード ("ValidationResponse: acb13…" など) をエコーで返します。
 
 最後に、Azure Event Grid がサポートするのは HTTPS webhook エンドポイントのみであることに中尉してください。
 ## <a name="event-subscription"></a>イベント サブスクリプション

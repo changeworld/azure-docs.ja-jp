@@ -1,7 +1,7 @@
 ---
-title: "Site Recovery コンテナーを Recovery Services コンテナーにアップグレードする"
+title: "Site Recovery コンテナーから Azure Recovery Services コンテナーへのアップグレード"
 description: "Azure Site Recovery コンテナーを Recovery Services コンテナーにアップグレードする方法について説明します"
-ddocumentationcenter: 
+documentationcenter: 
 author: rajani-janaki-ram
 manager: rochakm
 editor: 
@@ -14,125 +14,127 @@ ms.workload: storage-backup-recovery
 ms.date: 07/31/2017
 ms.author: rajani-janaki-ram
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 523cab85b195d85007bd85c45dbe3645f7a00ab1
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: fdb33ea0d08353b491f2934fcf885fcb6910b9a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="upgrade-site-recovery-vaults-to-azure-resource-manager-based-recovery-services-vaults"></a>Site Recovery コンテナーを Azure Resource Manager ベースの Recovery Services コンテナーにアップグレードする
+# <a name="upgrade-a-site-recovery-vault-to-an-azure-resource-manager-based-recovery-services-vault"></a>Site Recovery コンテナーから Azure Resource Manager ベースの Recovery Services コンテナーへのアップグレード
 
-この記事では、進行中のレプリケーションに影響を与えることなく、'Site Recovery コンテナー' を Azure Resource Manager ベースの 'Recovery Service コンテナー' にアップグレードする方法について説明します。 Azure Resource Manager の機能と利点について詳しくは、[こちら](../azure-resource-manager/resource-group-overview.md)で確認できます。
+この記事では、進行中のレプリケーションに影響を与えることなく、Azure Site Recovery コンテナーを Azure Resource Manager ベースの Recovery Service コンテナーにアップグレードする方法について説明します。 Azure Resource Manager の機能とメリットの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
 
 ## <a name="introduction"></a>はじめに
-Recovery Services コンテナーはバックアップやディザスター リカバリーのニーズをクラウドでネイティブに管理できる、Azure Resource Manager のリソースです。 これは新しい Azure Portal で使用できる統合コンテナーで、従来の Backup コンテナーと Site Recovery コンテナーに代わるものです。
+Recovery Services コンテナーは、バックアップやディザスター リカバリーをクラウドでネイティブに管理できる、Azure Resource Manager のリソースです。 これは新しい Azure Portal で使用できる統合コンテナーであり、従来のバックアップ コンテナーと Site Recovery コンテナーに代わるものです。
 
-Recovery Services コンテナーは次のような機能の配列を開きます。
+Recovery Services コンテナーは次のようなさまざまな機能を提供します。
 
--   Azure Resource Manager のサポート: お使いの仮想マシンや物理マシンを保護し、Azure Resource Manager のスタックにフェールオーバーできます。
+* Azure Resource Manager のサポート: お使いの仮想マシンや物理マシンを保護し、Azure Resource Manager スタックにフェールオーバーできます。
 
--   ディスクの除外 - 一時ファイルまたは高チャーンのデータで帯域幅を使い切りたくない場合は、ボリュームをレプリケーションから除外できます。 この機能は現在、'VMware から Azure へ' および 'Hyper-V から Azure へ' で有効になっており、他のシナリオにも拡張される予定です。
+* ディスクの除外: 一時ファイルまたは高チャーンのデータで帯域幅を使い切りたくない場合は、ボリュームをレプリケーションから除外できます。 この機能は現在、*VMware から Azure* および *Hyper-V から Azure* で有効になっており、他のシナリオにも拡張される予定です。
 
-- Premium およびローカル冗長ストレージ (LRS) のサポート - サーバーを Premium Storage アカウントで保護し、高い IOPS 下で顧客のアプリケーションを保護できるようになりました。 この機能は現在、'VMware から Azure へ' で有効になっています。
+* Premium およびローカル冗長ストレージのサポート: Premium Storage アカウントのサーバーを保護し、1 秒あたりの高い入出力操作 (IOPS) 下で顧客のアプリケーションを保護できるようになりました。 この機能は現在、*VMware から Azure* で有効になっています。
 
--   効率的な 'はじめに' エクスペリエンス - 'はじめに' エクスペリエンスの機能が拡張され、ディザスター リカバリーの設定が簡単になるようにカスタマイズされました。
+* 効率的な入門エクスペリエンス: 入門エクスペリエンスの機能が拡張され、ディザスター リカバリーの設定が簡単になるように設計されました。
 
-- 同じコンテナーから Backup と Site Recovery を管理する - ディザスター リカバリー用にサーバーを保護し、同じコンテナーからバックアップを実行することで、管理オーバーヘッドを大幅に削減できるようになりました。
+* 同じコンテナーからの Backup と Site Recovery の管理: ディザスター リカバリー用にサーバーを保護、または同じコンテナーからバックアップを実行できるようになり、管理オーバーヘッドを大幅に削減できるようになりました。
 
-アップグレードされたエクスペリエンスと機能について詳しくは、こちらの[ブログ](https://azure.microsoft.com/blog/azure-site-recovery-now-available-in-a-new-experience-with-support-for-arm-and-csp/)をご覧ください。
+アップグレードされたエクスペリエンスと機能の詳細については、[保存、バックアップおよび復旧に関するブログ](https://azure.microsoft.com/blog/azure-site-recovery-now-available-in-a-new-experience-with-support-for-arm-and-csp/)をご覧ください。
 
 ## <a name="salient-features"></a>注目すべき機能
 
-- **進行中のレプリケーションに影響なし**: アップグレード中およびアップグレード後に中断なく進行中のレプリケーションを継続できます。
+* 進行中のレプリケーションに影響なし: アップグレード中およびアップグレード後に中断なく進行中のレプリケーションを継続できます。
 
-- **追加コストなし** – 追加コストなしで新しい機能のセットをすべて使用できます。
+* 追加コストなし: 更新された機能のセット全体を追加コストなしで入手できます。
 
-- **データ損失なし** – 移行ではなくアップグレードであるため、既存のレプリケーション情報 (復旧ポイント、レプリケーションの設定など) はアップグレード中およびアップグレード後もそのまま残ります。
+* データ損失なし: このプロセスは移行ではなくアップグレードであるため、既存のレプリケーションの復旧ポイントや設定は、アップグレード中およびアップグレード後もそのまま残ります。
 
 
-## <a name="what-happens-during-the-upgrade"></a>アップグレード中の動作
+## <a name="what-happens-during-the-vault-upgrade"></a>コンテナーのアップグレード中の動作はどうなりますか?
 
-アップグレード中は、新しいサーバーを登録したり、VM のレプリケーションを有効にしたりすることは許可されません。 保護された項目の進行中のレプリケーションなど、コンテナーに対するデータの読み書きのみが関与する操作については、引き続き中断されずに行われます。
+アップグレード中は、新しいサーバーの登録や、仮想マシン (VM) のレプリケーションの有効化などの操作を実行できません。 進行中の保護された項目のコンテナーへのレプリケーションなど、コンテナーに対するデータの読み書きに関与する操作については、引き続き中断されずに行われます。
 
-## <a name="changes-to-your-automation-and-tooling-after-vault-upgrade"></a>コンテナーのアップグレード後のオートメーションおよびツールの変更
-クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへのアップグレードの一環として、既存のオートメーションまたはツールを、アップグレード後も確実に機能し続けるように更新する必要があります。
+### <a name="changes-to-automation-and-tooling-after-the-upgrade"></a>アップグレード後のオートメーションとツールの変更
+コンテナーの種類をクラシック デプロイメント モデルから Resource Manager デプロイメント モデルにアップグレードする際は、既存のオートメーションまたはツールを、アップグレード後も確実に機能し続けるよう更新してください。
 
-## <a name="preparing-your-environment-for-vault-upgrade"></a>コンテナーをアップグレードする環境を準備する
+### <a name="prepare-your-environment-for-the-upgrade"></a>アップグレードのための環境を準備する
 
-1.  この[リンク](https://www.microsoft.com/download/details.aspx?id=50395)を使用して PowerShell をインストールまたはバージョン 5 以上にアップグレードする
+* [PowerShell をインストール、またはバージョン 5 以降にアップグレードする](https://www.microsoft.com/download/details.aspx?id=50395)
+* [最新バージョンの Azure PowerShell MSI をインストールする](https://github.com/Azure/azure-powershell/releases)
+* [Recovery Services コンテナーのアップグレード スクリプトをダウンロードする](https://aka.ms/vaultupgradescript)
 
-2.  [こちら](https://github.com/Azure/azure-powershell/releases)から最新の Azure PowerShell MSI をインストールする
+### <a name="prerequisites"></a>前提条件
+Site Recovery コンテナーを Azure Resource Manager ベースの Recovery Service コンテナーにアップグレードするには、次の条件を満たす必要があります。
 
-3.  コンテナーをアップグレードするスクリプトを[ダウンロード](https://aka.ms/vaultupgradescript)する
+* エージェントの最小バージョン: サーバー上にインストールされている Azure Site Recovery プロバイダーのバージョンが 5.1.1700.0 以降である必要があります。
 
-## <a name="prerequisites-for-upgrade"></a>アップグレードの前提条件
-Site Recovery のコンテナーを Azure Resource Manager ベースの Recovery Service のコンテナーにアップグレードするには、次の前提条件を満たす必要があります。
+* サポートされている構成: コンテナーを記憶域ネットワーク (SAN) または SQL Server AlwaysOn 可用性グループで構成することはできません。 その他のすべての構成はサポートされています。
 
-- エージェントの最小バージョン: アップグレードするには、サーバー上にインストールされている Azure Site Recovery プロバイダーのバージョンが 5.1.1700.0 以上である必要があります。
+    >[!NOTE]
+    >アップグレード後は、ストレージ マッピングの管理には PowerShell を使用する必要があります。
 
-- サポートされている構成: コンテナーが SAN、SQL Always 可用性グループで構成されていないこと。 その他のすべての構成はサポートされています。
+* サポートされているデプロイ シナリオ: コンテナーが従来の *VMware から Azure* のデプロイメント モデルでないこと。 続行する前に、まず拡張されたデプロイ モデルに移行します。
 
->[!NOTE]
-> ストレージのマッピングはアップグレード後に PowerShell を介してのみ管理できます。
-
-- サポートされているデプロイ シナリオ - コンテナーが従来の 'VMware から Azure へ' のデプロイメント モデルでないこと。  続行するにはまず拡張されたデプロイメント モデルに移動する必要があります。
-
-- ユーザーによって開始された管理プレーン操作が関与するアクティブなジョブがない: アップグレード中には管理プレーンへのアクセスが制限されているため、管理プレーンのすべてのアクションを完了してからアップグレードをトリガーする必要があります。 これには進行中のレプリケーションは含まれません。
+* ユーザーによって開始された、管理プレーン操作が関与するアクティブなジョブがない: アップグレード中は管理プレーンへのアクセスが制限されているため、管理プレーンのすべてのアクションを完了してからアップグレードをトリガーしてください。 このプロセスには進行中のレプリケーションは含まれません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 
-- このアップグレードは進行中のレプリケーションに影響しますか?
+**このアップグレードは進行中のレプリケーションに影響しますか?**
 
-  いいえ。 進行中のレプリケーションはアップグレード中およびアップグレード後も中断されずに続行されます。
+いいえ。 進行中のレプリケーションは、アップグレード中およびアップグレード後も中断されずに続行されます。
 
-- サイト間 VPN、IP 設定などのネットワーク設定はどうなりますか?
+**サイト間 VPN や IP 設定などのネットワーク設定はどうなりますか?**
 
-  アップグレードはネットワーク設定には影響せず、Azure からオンプレミスへの接続はすべてそのまま残ります。
-- 近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?
+アップグレードはネットワーク設定に影響しません。 Azure からオンプレミスへの接続はすべてそのまま残ります。
 
-  以前の Azure Portal における Site Recovery コンテナーのサポートは 9 月より廃止されます。 このため、アップグレード機能を使用して新しいポータルに移行することを強くお勧めします。
+**近日中にアップグレードする予定がない場合、コンテナーはどうなりますか?**
 
-- 既存のツールにとって、この移行計画はどのような意味がありますか?  
+以前の Azure Portal における Site Recovery コンテナーのサポートは 2017 年 9 月より廃止されます。 アップグレード機能を使用して、新しいポータルに移行することを強くお勧めします。
 
-  Recovery Services コンテナーがベースにしている Resource Manager デプロイメント モデルへのツールの更新は、アップグレード プランで考慮する必要がある最も重要な変更の 1 つです。
+**既存のツールにとって、この移行計画はどのような意味がありますか?**  
 
-- 管理プレーンのダウンタイムはどれくらいですか?
+Resource Manager デプロイメント モデルへのツールの更新は、アップグレード計画で考慮する必要がある最も重要な変更の 1 つです。 Recovery Services コンテナーは、Resource Manager デプロイメント モデルに基づいています。 
 
-  アップグレードには 15 ～ 30 分ほどかかります。 最大で 1 時間かかります。
+**管理プレーンのダウンタイムはどれくらい続きますか?**
 
-- アップグレード後にロールバックすることはできますか?
+通常、アップグレードには約 15 分から 30 分かかり、最大で 1 時間かかる場合があります。
 
-  いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
+**アップグレード後にロールバックすることはできますか?**
 
-- サブスクリプションまたはリソースがアップグレードが可能かどうかを確認できますか?
+いいえ。 リソースが正常にアップグレードされた後のロールバックはサポートされていません。
 
-  はい。 プラットフォームでサポートされるアップグレード オプションでは、アップグレードの最初の手順として、リソースをアップグレードできるかどうかを検証します。 前提条件の検証に失敗すると、該当するエラーや警告を受け取ります。
+**サブスクリプションまたはリソースがアップグレード可能かどうかを確認できますか?**
 
-- アップグレードの問題を報告するにはどうすればよいですか?
+はい。 プラットフォームでサポートされるアップグレード オプションでは、アップグレードの最初の手順として、リソースをアップグレードできるかどうかを検証します。 検証に失敗すると、該当するエラー メッセージや警告が表示されます。
 
-  アップグレード中にエラーが発生した場合は、エラーに示されている OperationId をメモしてください。 Microsoft サポートは、積極的に問題の解決に取り組みます。 お客様からサポート チームに問い合わせることもできます。その際、サブスクリプション ID、コンテナーの名前、および OperationId をお知らせください。 できるだけ早く問題を解決するように努力します。 Microsoft による明確な指示がない限り、操作をやり直さないでください。
+**アップグレードの問題を報告するにはどうすればよいですか?**
 
-## <a name="how-to-run-the-script"></a>スクリプトはどのように実行できますか?
+アップグレード中にエラーが発生した場合、エラーに記載されている操作 ID をメモしてください。 Microsoft サポートは、積極的に問題の解決に取り組みます。 サポート チームにお問い合わせいただくこともできます。その際は、サブスクリプション ID、コンテナーの名前、操作 ID をお知らせください。 サポート チームは、可能な限り早く問題を解決できるよう取り組みます。 Microsoft からの明確な指示がない限りは、操作をやり直さないでください。
 
-PowerShell プロンプトから、次のコマンドを実行します。
+## <a name="run-the-script"></a>スクリプトを実行する
+
+PowerShell で次のコマンドを実行します。
 
     PS > .\RecoveryServicesVaultUpgrade-1.0.0.ps1 -SubscriptionID <subscriptionID>  -VaultName <vaultname> -Location <location> -ResourceType HyperVRecoveryManagerVault -TargetResourceGroupName <rgname>
 
-- SubscriptionID: アップグレードするコンテナーに関連付けられているサブスクリプション ID
-- VaultName: アップグレードするコンテナーの名前
-- Location: アップグレードするコンテナーの場所
-- ResourceType: Site Recovery コンテナーの HyperVRecoveryManagerVault
-- TargetResourceGroupName: アップグレードされたコンテナーを配置するリソース グループ TargetResourceGroupName には Azure Resource Manager 内の既存の ResourceGroup を指定することも、新しいものにもできます。 指定された TargetResourceGroupName が存在しない場合、アップグレードの一環としてコンテナーと同じ場所に作成されます。 リソース グループについて詳しくは、[こちら](../azure-resource-manager/resource-group-overview.md#resource-groups)をクリックしてください。
+* SubscriptionID: アップグレードするコンテナーに関連付けられているサブスクリプション ID。
 
->[!NOTE]
->リソース グループの名前には制約があります。 これに従わないとコンテナーのアップグレードが失敗する場合があります。
+* VaultName: アップグレードするコンテナーの名前。
 
-例:
+* Location: アップグレードするコンテナーの場所。
 
-    .\RecoveryServicesVaultUpgrade-1.0.0.ps1 -SubscriptionId 1234-54123-354354-56416-8645 -VaultName gen2dr -Location "north europe" -ResourceType hypervrecoverymanagervault -TargetResourceGroupName abc
+* ResourceType: Site Recovery コンテナーの HyperVRecoveryManagerVault。
 
+* TargetResourceGroupName: アップグレードされたコンテナーを配置するリソース グループ。 TargetResourceGroupName には、Azure Resource Manager 内の既存のリソース グループ、または新しいリソース グループを指定できます。 指定された TargetResourceGroupName が存在しない場合、アップグレードの一環としてコンテナーと同じ場所に作成されます。 詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」の "リソース グループ" セクションをご覧ください。
 
-代わりに以下のスクリプトを実行すると、必要なすべてのパラメーターの入力が求められます。
+    >[!NOTE]
+    >リソース グループの名前付けには、特定の制約があります。 コンテナーのアップグレード エラーを防ぐために、注意して名前付け規則を遵守してください。
+    >
+    >For example:
+    >
+    >.\RecoveryServicesVaultUpgrade-1.0.0.ps1 -SubscriptionId 1234-54123-354354-56416-8645 -VaultName gen2dr -Location "north europe" -ResourceType hypervrecoverymanagervault -TargetResourceGroupName abc
+
+代わりに、次のスクリプトを実行してもかまいません。 必要なパラメーターの値を入力します。
 
     PS > .\RecoveryServicesVaultUpgrade-1.0.0.ps1
     cmdlet RecoveryServicesVaultUpgrade-1.0.0.ps1 at command pipeline position 1
@@ -144,44 +146,44 @@ PowerShell プロンプトから、次のコマンドを実行します。
     ResourceType:
     TargetResourceGroupName:
 
-1.  PowerShell スクリプトによって、資格情報を入力することを求められます。 資格情報は 2 回入力します。1 回目の入力は ASM アカウント用であり、2 回目は Azure Resource Manager アカウント用です。
+1. PowerShell スクリプトによって、資格情報を入力することを求められます。 資格情報を 2 回入力します。1 回目の入力はクラシック デプロイメント モデルのアカウント用であり、2 回目は Azure Resource Manager アカウント用です。
 
-2.  資格情報が入力されると、スクリプトで前提条件チェックが実行され、インフラストラクチャの設定がこのドキュメントの前半で説明した前提条件を満たしていることを判定します。
+2. 資格情報を入力するとスクリプトはチェックを開始し、インフラストラクチャの設定が上述の要件を満たしているかどうかを確認します。
 
-3.  前提条件のチェックが完了すると、コンテナーのアップグレードを続行するかどうかの確認が求められます。 確認すると、アップグレート プロセスが開始され、コンテナーがアップグレードされます。 アップグレードの完了までに 15 ～ 30 分かかります。
+3. 前提条件のチェックが完了して確認がとれると、コンテナーのアップグレードを開始するよう求められます。 アップグレード プロセスがコンテナーのアップグレードを開始します。 アップグレードの完了までに 15 分から 30 分かかる場合があります。
 
-4.  アップグレードが正常に完了すると、新しい Azure Portal でアップグレードされたコンテナーにアクセスできます。
+4. アップグレードが正常に完了すると、アップグレードされたコンテナーに新しい Azure Portal でアクセスできます。
 
-## <a name="management-experience-post-upgrade"></a>アップグレード後の管理エクスペリエンス
+## <a name="post-upgrade-vault-management"></a>アップグレード後のコンテナー管理
 
-### <a name="how-to-replicate-using-azure-site-recovery-in-the-recovery-services-vault"></a>Recovery Services コンテナーで Azure Site Recovery を使用してレプリケートする方法
+### <a name="replicate-by-using-azure-site-recovery-in-the-recovery-services-vault"></a>Recovery Services コンテナーで Azure Site Recovery を使用してレプリケートする
 
-- リージョン別に Azure VM を保護できるようになります。 詳しくは、[こちら](site-recovery-azure-to-azure.md)のドキュメントをご覧ください。
+* リージョン別に Azure VM を保護できるようになります。 詳細については、「[Azure Site Recovery を使用したリージョン間での Azure VM のレプリケーション](site-recovery-azure-to-azure.md)」をご覧ください。
 
-- Azure に VMware VM をレプリケートする方法について詳しくは、[こちら](vmware-walkthrough-overview.md)のドキュメントをご覧ください。
+* Azure への VMware VM のレプリケーションの詳細については、「[Site Recovery を使用して VMware VM を Azure にレプリケートする](vmware-walkthrough-overview.md)」をご覧ください。
 
-- Azure に Hyper-VM (VMM なし) をレプリケートする方法について詳しくは、[こちら](hyper-v-site-walkthrough-overview.md)のドキュメントをご覧ください。
+* Azure への Hyper-V VM (VMM なし) のレプリケーションの詳細については、「[Hyper-V 仮想マシン (VMM なし) を Azure にレプリケートする](hyper-v-site-walkthrough-overview.md)」をご覧ください。
 
-- Azure に Hyper-VM (VMM あり) をレプリケートする方法について詳しくは、[こちら](vmm-to-azure-walkthrough-overview.md)のドキュメントをご覧ください。
+* Azure への Hyper-V VM (VMM あり) のレプリケーションの詳細については、「[Azure Portal の Site Recovery を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする](vmm-to-azure-walkthrough-overview.md)」をご覧ください。
 
-- セカンダリ サイトに Hyper-VM (VMM あり) をレプリケートする方法について詳しくは、[こちら](site-recovery-vmm-to-vmm.md)のドキュメントをご覧ください。
+* セカンダリ サイトへの Hyper-V VM (VMM あり) のレプリケーションの詳細については、「[Azure Portal を使用して VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする](site-recovery-vmm-to-vmm.md)」をご覧ください。
 
-- セカンダリ サイトに VMware VM をレプリケートする方法について詳しくは、[こちら](site-recovery-vmware-to-vmware.md)のドキュメントをご覧ください。
+* セカンダリ サイトへの VMware VM のレプリケーションの詳細については、「[Azure クラシック ポータルでオンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)」をご覧ください。
 
-### <a name="how-to-view-your-replicated-items"></a>レプリケートされたアイテムを表示する方法
+### <a name="view-your-replicated-items"></a>レプリケートされたアイテムを表示する
 
-以下の画面は Recovery Services コンテナーのダッシュボード ページを示します。ここにはコンテナーのキー エンティティが表示されます。 コンテナーで保護されたエンティティの一覧を表示するには、**[Site Recovery]** -> **[レプリケートされたアイテム]** をクリックします。
+次の図は、Recovery Services コンテナーのダッシュボード ページです。コンテナーのキー エンティティが表示されています。 コンテナーで保護されたエンティティの一覧を表示するには、**[Site Recovery]**  >  **[レプリケートされたアイテム]** をクリックします。
 
 
 ![レプリケートされたアイテム](./media/upgrade-site-recovery-vaults/replicateditems.png)
 
-以下の画面は、レプリケートされたアイテムを表示するワークフローと、フェールオーバーを開始する方法を示します。
+次の図では、レプリケートされたアイテムを表示するためのワークフローと、フェールオーバーを開始するための **[フェールオーバー]** コマンドを示しています。
 
 ![レプリケートされたアイテム](./media/upgrade-site-recovery-vaults/failover.png)
 
-### <a name="how-to-view-your-replication-settings"></a>レプリケーションの設定を表示する方法
+### <a name="view-your-replication-settings"></a>レプリケーションの設定を表示する
 
-Site Recovery コンテナーでは、各保護グループがレプリケーション設定 (コピーの頻度、復旧ポイントのリテンション期間、アプリケーションの整合性スナップショットの作成頻度など) で構成されています。 Recovery Services コンテナーでは、これらの設定はレプリケーション ポリシーとして構成されています。 ポリシーの名前は保護グループの名前 または ’primarycloud_Policy’ です。
+Site Recovery コンテナーでは、各保護グループは、コピーの頻度、復旧ポイントのリテンション期間、アプリケーションの整合性スナップショットの作成頻度などのレプリケーション設定で構成されています。 Recovery Services コンテナーでは、これらの設定はレプリケーション ポリシーとして構成されています。 ポリシーの名前は保護グループの名前、または *primarycloud_Policy* です。
 
-レプリケーション ポリシーについて詳しくは、[こちら](site-recovery-setup-replication-settings-vmware.md)をご覧ください。
+レプリケーション ポリシーの詳細については、「[VMware から Azure へのレプリケーション ポリシーの管理](site-recovery-setup-replication-settings-vmware.md)」をご覧ください。
 

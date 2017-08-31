@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 38afe40cf45cf13d587faf13cc5216e4326b84a0
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c8d4733e57eb760dbb8e8ca96f6ba55671d1742f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="retiring-the-s1-s2-and-s3-performance-levels"></a>S1、S2、および S3 パフォーマンス レベルの提供の中止
@@ -59,7 +58,7 @@ S1、S2、S3 パフォーマンス レベルでは、DocumentDB API コレクシ
 |最大スループット|無制限|10,000 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最小スループット|2,500 RU/秒|400 RU/秒|250 RU/秒|1,000 RU/秒|2,500 RU/秒|
 |最大ストレージ容量|無制限|10 GB|10 GB|10 GB|10 GB|
-|料金|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|25 米ドル|50 米ドル|100 米ドル|
+|料金 (月額)|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|スループット: 100 RU/秒 あたり 6 ドル<br><br>ストレージ: 1 GB あたり 0.25 ドル|25 米ドル|50 米ドル|100 米ドル|
 
 EA をご使用の場合は、 「[EA を使用している場合どのような影響を受けますか?](#ea-customer)」を参照してください。
 

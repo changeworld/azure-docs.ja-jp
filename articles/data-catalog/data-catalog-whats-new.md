@@ -13,17 +13,40 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-catalog
-ms.date: 08/15/2017
+ms.date: 08/22/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 4d818112d8b6cc07a73d2521ef229c90e0d5884b
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 7ee836b4c0c87fc7d271f59dcb16f3293e68dc9a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
+
+## <a name="whats-new-for-august-2017"></a>2017 年 8 月の新機能 
+2017 年 8 月の時点で、Azure Data Catalog には次の機能が追加されています。
+
+*   新しい開発者サンプルが利用できるようになり、Data Catalog REST API を使用したリレーションシップのメタデータの作成および管理ができるようになりました。 *"Data Catalog へのリレーションシップ情報のインポート"* のサンプルを、[Data Catalog のコード サンプル ページ](https://azure.microsoft.com/resources/samples/?service=data-catalog&sort=0)から入手できます。 
+* データ ソースの登録ツールを使用して関連するテーブルを登録するときに、結合リレーションシップのメタデータを Teradata データ ソースから抽出できるようになりました。
+* データ ソースの登録ツールを使用して SQL Server データ ソースを登録するときに、SQL Server テーブル値関数 (TVF) オブジェクトがサポートされました。
+* 更新と調整を重ね、Data Catalog ポータルのパフォーマンスと使いやすさを改善しました。
+
+## <a name="whats-new-for-july-2017"></a>2017 年 7 月の新機能 
+2017 年 7 月の時点で、Azure Data Catalog には次の機能が追加されています。
+*   次の操作を含む、許可されたメタデータ操作のよりきめ細かい制御がサポートされました。
+    - カタログ管理者は、ユーザーがタグおよび関連するメタデータをカタログに投稿できる機能を制限できるため、カタログへのアクセスを読み取り専用にできます。
+    - カタログ管理者は、ユーザーがカタログに新しいデータ ソースを登録できる機能を制限できます。
+    - カタログ管理者は、ユーザーがカタログのデータ資産メタデータの所有権を得られる機能を制限できます。
+    - Azure Active Directory セキュリティ グループとユーザーに、アクセス許可の管理を容易にするための許可を与えることができます。
+* 登録済みのデータ資産間のリレーションシップ、および Data Catalog ポータル上の関連するデータ資産の検出がサポートされるようになりました。これには、次のサポートも含まれます。
+    - Data Catalog データ ソースの登録ツールを使用した SQL Server (Azure SQL Database を含む)、Oracle および MySQL データ ソースからのリレーションシップのメタデータの抽出。
+    - Data Catalog ポータル上の資産メタデータ閲覧時に関連するデータ資産を検出。
+    - Data Catalog REST API を使用したデータ資産間のリレーションシップの定義、検出および管理操作。
+
+Data Catalog のアクセス許可を管理する方法の詳細については、「[データ カタログとデータ資産へのアクセスをセキュリティで保護する方法](data-catalog-how-to-secure-catalog.md)」をご覧ください。
+Data Catalog のリレーションシップの詳細については、「[Azure Data Catalog で関連するデータ資産を表示する方法を説明します。](data-catalog-how-to-view-related-data-assets.md)」をご覧ください。
 
 ## <a name="whats-new-for-june-2017"></a>2017 年 6 月の新機能 
 2017 年 6 月の時点で、Azure Data Catalog には次の機能が追加されています。
@@ -120,7 +143,7 @@ ms.lasthandoff: 06/17/2017
 
 * Azure Data Catalog データ ソース登録ツールでのデータ ソース選択の操作性が再設計されました。 データ ソース登録ツールが更新され、Azure Data Catalog がサポートするデータ ソースからの特定と選択が簡単になりました。
 * Azure Data Catalog ポータルとデータ ソース登録ツールが追加の 10 言語に対応するようになりました。 英語に加え、Azure Data Catalog 環境はドイツ語、スペイン語、フランス語、イタリア語、日本語、韓国語、ポルトガル語 (ブラジル)、ロシア語、簡体字中国語、繁体字中国語で利用できます。 Azure Data Catalog ユーザー エクスペリエンスは、Windows またはユーザーの Web ブラウザーに指定された言語設定に基づいてローカライズされます。
-* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「 [ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
+* ビジネス継続性と障害復旧のための Azure Data Catalog データの geo レプリケーションがサポートされるようになりました。 データ ソースのメタデータとクラウドソースの注釈を含むすべての Azure Data Catalog コンテンツが、お客様への追加コストなしで 2 つの Azure リージョン間でレプリケートされるようになりました。 Azure リージョンは、「[ビジネス継続性と障害復旧 (BCDR): Azure のペアになっているリージョン](../best-practices-availability-paired-regions.md)」に記載された対応表に従い、500 マイル以上離れた Azure リージョンと事前にペアリングされています。
 * Azure Data Catalog によって使用される Azure サブスクリプションの変更のサポート。 Azure Data Catalog の管理者は、Azure Data Catalog ポータルの [設定] ページを使用して、課金用に別の Azure サブスクリプションを選択できます。
 
 ## <a name="whats-new-for-january-2016"></a>2016 年 1 月の新機能

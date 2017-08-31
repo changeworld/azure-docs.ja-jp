@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 05/22/2017
+ms.date: 08/17/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 2d840f1c70e9668ae0a8b76cd9623258c2563d98
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 2c03b498b1530388a48db4d2925debc2e03e30aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
@@ -59,6 +59,10 @@ ms.lasthandoff: 07/25/2017
 > 既定では、Azure Cosmos DB はハッシュ インデックスに応じたドキュメント内のすべての文字列プロパティと、範囲インデックスを含む数値プロパティのインデックスを作成します。  
 > 
 > 
+
+### <a name="customizing-the-indexing-policy-using-the-portal"></a>ポータルを使用したインデックス作成ポリシーのカスタマイズ
+
+Azure Portalを使用して、コレクションのインデックス作成ポリシーを変更できます。 Azure Portal で Azure Cosmos DB アカウントを開いてコレクションを選択し、左のナビゲーション メニューで **[設定]** をクリックしてから **[インデックス作成ポリシー]** をクリックします。 **[インデックス作成ポリシー]** ブレードでインデックス作成ポリシーを変更してから、**[OK]** をクリックして変更を保存します。 
 
 ### <a id="indexing-modes"></a>データベース インデックス作成モード
 Azure Cosmos DB は、Azure Cosmos DB コレクションのインデックス作成ポリシーを使用して構成できる、同期 (Consistent)、非同期 (Lazy)、なし (None) の 3 つのインデックス作成モードをサポートしています。
