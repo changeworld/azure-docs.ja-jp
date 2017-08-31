@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/10/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: e8ff96587a840236adfb277b3a33b11db71f7d8e
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 482bcf08b1256e26e15f7093fda621da4fdd5344
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -131,10 +131,10 @@ Site Recovery を使用して移行された VM | サポートされています
 
 **構成** | **サポートされるかどうか** | **解説**
 --- | --- | ---
-OS ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
-データ ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../storage/storage-about-disks-and-vhds-windows.md#disks-used-by-vms)」を参照してください。
+OS ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
+データ ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
 データ ディスクの数 | 特定の Azure VM サイズでサポートされている最大数 64 | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください
-一時ディスク | 常にレプリケーションから除外 | 一時ディスクは常にレプリケーションから除外されます。 Azure ガイダンスに従って、一時ディスクには永続データを配置しないでください。 詳細については、[Azure VM の一時ディスク](../storage/storage-about-disks-and-vhds-windows.md#temporary-disk)に関する記事をご覧ください。
+一時ディスク | 常にレプリケーションから除外 | 一時ディスクは常にレプリケーションから除外されます。 Azure ガイダンスに従って、一時ディスクには永続データを配置しないでください。 詳細については、[Azure VM の一時ディスク](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)に関する記事をご覧ください。
 ディスク上のデータの変更率 | ディスクあたり最大 6 MBps | ディスク上の平均データ変更率が継続的に 6 MBps を超えると、レプリケーションが追いつきません。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 6 MBps を超えてから低下する場合は、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。
 Standard Storage アカウントのディスク | サポートされています |
 Premium Storage アカウントのディスク | サポートされています | VM のディスクが Premium Storage アカウントと Standard Storage ストレージ アカウントに分散している場合は、ディスクごとに異なるターゲット ストレージ アカウントを選択して、ターゲット リージョンのストレージ構成を確実に同じできます。
@@ -152,7 +152,7 @@ ZRS | サポートされていません |
 クールおよびホット ストレージ | サポートされていません | 仮想マシン ディスクは、クールおよびホット ストレージではサポートされません
 
 >[!IMPORTANT]
-> ご使用のソース Azure 仮想マシンでパフォーマンスの問題が発生しないように、必ず[ストレージのガイダンス](../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)に従ってください。 既定の設定に従うと、ソースの構成に基づいて、必要なストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズし、独自の設定を選択する場合は、ソース VM として必ず (../storage/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) に従ってください。
+> ご使用のソース Azure 仮想マシンでパフォーマンスの問題が発生しないように、必ず[ストレージのガイダンス](../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks)に従ってください。 既定の設定に従うと、ソースの構成に基づいて、必要なストレージ アカウントが Site Recovery によって作成されます。 設定をカスタマイズし、独自の設定を選択する場合は、ソース VM として必ず (../storage/common/storage-scalability-targets.md#scalability-targets-for-virtual-machine-disks) に従ってください。
 
 ## <a name="support-for-network-configuration"></a>ネットワーク構成のサポート
 **構成** | **サポートされるかどうか** | **解説**

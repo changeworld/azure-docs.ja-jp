@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/05/2017
+ms.date: 08/17/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 55227c7302285c721381886c63b7cbfdc114b0bb
+ms.sourcegitcommit: 2d978248c78b84fe4ad37ecf7429e827a25d896f
+ms.openlocfilehash: 44fc8226480cafc130720fbe78aa85ee95caec6c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/18/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-merchlogix"></a>チュートリアル: Azure Active Directory と Merchlogix の統合
@@ -109,9 +109,12 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 
     ![[Merchlogix のドメインと URL] のシングル サインオン情報](./media/active-directory-saas-merchlogix-tutorial/tutorial_merchlogix_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://<domain>/login.php?saml=true` のパターンを使用して URL を入力します。
+    a. **[サインオン URL]** ボックスに、`https://<DOMAIN>/login.php?saml=true` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<domain>/simplesaml/module.php/saml/sp/metadata.php/login-windows-net` の形式で URL を入力します。
+    b. **[識別子]** ボックスに、`https://<DOMAIN>/simplesaml/module.php/saml/sp/metadata.php/<SAML_NAME>` の形式で URL を入力します。
+    
+    > [!NOTE]
+    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Merchlogix サポート チーム](http://www.merchlogix.com/contact/)に問い合わせてください。
 
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
@@ -121,7 +124,7 @@ Merchlogix で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-merchlogix-tutorial/tutorial_general_400.png)
 
-6. **[Merchlogix 構成]** セクションで、**[Configure Merchlogix]\(Merchlogix を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID、SAML シングル サインオン サービス URL** をコピーします。
+6. **[Merchlogix 構成]** セクションで、**[Configure Merchlogix]\(Merchlogix を構成する\)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから、**サインアウト URL、SAML エンティティ ID**、**SAML シングル サインオン サービス URL** をコピーします。
 
     ![Merchlogix 構成](./media/active-directory-saas-merchlogix-tutorial/tutorial_merchlogix_configure.png) 
 

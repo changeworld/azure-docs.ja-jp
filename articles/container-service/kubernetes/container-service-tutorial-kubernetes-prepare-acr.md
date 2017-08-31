@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/25/2017
+ms.date: 08/21/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: f8346fd6bd78c32cd67a2f988046cad2a8fc2455
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 3e1f7617bf2fc52ee4c15598f51a46276f4dc57d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -40,50 +40,32 @@ Azure Container Registry (ACR) は、Docker コンテナー イメージ用の A
 
 [前のチュートリアル](./container-service-tutorial-kubernetes-prepare-app.md)では、単純な Azure Voting アプリケーション用のコンテナー イメージを作成しました。 このチュートリアルでは、このイメージを Azure Container Registry にプッシュします。 Azure Voting アプリのイメージを作成していない場合、[チュートリアル 1 - コンテナー イメージの作成](./container-service-tutorial-kubernetes-prepare-app.md)に関するページに戻ってください。 または、ここで説明する手順では、任意のコンテナー イメージを使用できます。
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 ## <a name="deploy-azure-container-registry"></a>Azure Container Registry のデプロイ
 
 Azure Container Registry をデプロイする場合、まず、リソース グループが必要です。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *eastus* リージョンに作成されます。
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 この例では、*myResourceGroup* という名前のリソース グループが *westeurope* リージョンに作成されます。
 
-```azurecli-interactive
-az group create --name myResourceGroup --location eastus
+```azurecli
+az group create --name myResourceGroup --location westeurope
 ```
 
-[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。 次の例では、myContainerRegistry007 という名前を使用します。
+[az acr create](/cli/azure/acr#create) コマンドで Azure Container Registry を作成します。 コンテナー レジストリの名前は**一意でなければなりません**。
 
-```azurecli-interactive
-az acr create --resource-group myResourceGroup --name myContainerRegistry007 --sku Basic --admin-enabled true
+```azurecli
+az acr create --resource-group myResourceGroup --name <acrName> --sku Basic --admin-enabled true
 ```
 
 このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして「acrname」を使用します。
 
-## <a name="get-registry-information"></a>レジストリ情報の取得 
-
-ACR のインスタンスが作成されたら、名前、ログイン サーバー名、および認証パスワードが必要です。 次のコードでは、これら値それぞれが返されます。 それぞれの値をメモします。各値はこのチュートリアルを通じて参照されます。  
-
-Container Registry ログイン サーバー (使用するレジストリ名で更新):
-
-```azurecli-interactive
-az acr show --name <acrName> --query loginServer
-```
-
-Container Registry パスワード:
-
-```azurecli-interactive
-az acr credential show --name <acrName> --query passwords[0].value
-```
-
 ## <a name="container-registry-login"></a>Container Registry のログイン
 
-イメージをプッシュする前に、ACR のインスタンスにログインする必要があります。 [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、操作を完了します。 docker login を実行する場合は、ACR のログイン サーバー名と ACR の資格情報を入力する必要があります。
+イメージをプッシュする前に、ACR のインスタンスにログインする必要があります。 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
-```bash
-docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
+```azurecli
+az acr login --name <acrName>
 ```
 
 このコマンドは、完了すると 'Login Succeeded’(ログインに成功しました) というメッセージを返します。
@@ -107,7 +89,13 @@ redis                        latest              a1b99da73d05        7 days ago 
 tiangolo/uwsgi-nginx-flask   flask               788ca94b2313        9 months ago        694MB
 ```
 
-*azure-vote-front* イメージにコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:redis-v1` を付加します。 このタグは、イメージのバージョンを示します。
+loginServer 名を取得するには、次のコマンドを実行します。
+
+```azurecli
+az acr show --name <acrName> --query loginServer --output table
+```
+
+ここで、*azure-vote-front* イメージにコンテナー レジストリの loginServer をタグ付けします。 また、イメージ名の末尾に `:redis-v1` を付加します。 このタグは、イメージのバージョンを示します。
 
 ```bash
 docker tag azure-vote-front <acrLoginServer>/azure-vote-front:redis-v1
@@ -145,8 +133,8 @@ docker push <acrLoginServer>/azure-vote-front:redis-v1
 
 Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 ACR のインスタンス名でコマンドを更新します。
 
-```azurecli-interactive
-az acr repository list --name <acrName> --username <acrName> --password <acrPassword> --output table
+```azurecli
+az acr repository list --name <acrName> --output table
 ```
 
 出力:
@@ -159,8 +147,8 @@ azure-vote-front
 
 次に特定のイメージのタグを表示するには、[az acr repository show-tags](/cli/azure/acr/repository#show-tags) コマンドを使用します。
 
-```azurecli-interactive
-az acr repository show-tags --name <acrName> --username <acrName> --password <acrPassword> --repository azure-vote-front --output table
+```azurecli
+az acr repository show-tags --name <acrName> --repository azure-vote-front --output table
 ```
 
 出力:

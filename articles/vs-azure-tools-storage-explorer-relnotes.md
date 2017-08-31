@@ -9,54 +9,68 @@ editor:
 ms.assetid: 
 ms.service: storage
 ms.devlang: multiple
-ms.topic: release-notes
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: cawa
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 3525661bd55aead07ce8d97464ba16393d28c04c
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 63a24f6b153390533bba0888fd1051508c65bf6e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="microsoft-azure-storage-explorer-preview-release-notes"></a>Microsoft Azure ストレージ エクスプローラー (プレビュー) のリリース ノート
 
-この記事には、Azure ストレージ エクスプローラー 0.8.15 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
+この記事には、Azure ストレージ エクスプローラー 0.8.16 (プレビュー) のリリース ノート、および以前のバージョンのリリース ノートが含まれています。
 
 [Microsoft Azure ストレージ エクスプローラー (プレビュー)](./vs-azure-tools-storage-manage-with-storage-explorer.md) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。
 
-## <a name="version-0815-preview"></a>バージョン 0.8.15 (プレビュー)
-7/13/2017
+## <a name="version-0816-preview"></a>バージョン 0.8.16 (プレビュー)
+8/21/2017
 
-### <a name="download-azure-storage-explorer-0815-preview"></a>Azure ストレージ エクスプローラー 0.8.15 (プレビュー) をダウンロードする
-- [Windows 用 Azure ストレージ エクスプローラー 0.8.15 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
-- [Mac 用 Azure ストレージ エクスプローラー 0.8.15 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
-- [Linux 用 Azure ストレージ エクスプローラー 0.8.15 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
+### <a name="download-azure-storage-explorer-0816-preview"></a>Azure ストレージ エクスプローラー 0.8.16 (プレビュー) をダウンロードする
+- [Windows 用 Azure ストレージ エクスプローラー 0.8.16 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708343)
+- [Mac 用 Azure ストレージ エクスプローラー 0.8.16 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=708342)
+- [Linux 用 Azure ストレージ エクスプローラー 0.8.16 (プレビュー)](https://go.microsoft.com/fwlink/?LinkId=722418)
 
 ### <a name="new"></a>新規
+* 変更が検出された場合は、BLOB を開いたときに、ダウンロードしたファイルをアップロードするようストレージ エクスプ ローラーから求められます。
+* 改善された Azure Stack サインイン エクスペリエンス
+* 同時に多数の小さなファイルをアップロード/ダウンロードしたときのパフォーマンスの向上
 
-* BLOB のアップロードと BLOB のダウンロードのパフォーマンスが向上しました。
-* BLOB のアップロードと BLOB のダウンロードの競合ファイルのエクスペリエンスが向上しました。
-* BLOB のアップロードと BLOB のダウンロード中のアクティビティ ログのエラー表示が改善されました。
-* BLOB のアップロードとダウンロードの最大サイズが、ページ BLOB は 8TB、ブロック BLOB は 4.7TB にまで増加しました。
 
-### <a name="known-issues"></a>既知の問題
+### <a name="fixes"></a>修正
+* BLOB の種類によっては、アップロード競合中に "置換" を選択すると、アップロードが再開されることがあります。 
+* バージョン 0.8.15 では、アップロードが 99% 完了した時点で停止する場合があります。
+* ファイル共有にファイルをアップロードする場合、まだ存在しないディレクトリへのアップロードを選択すると、アップロードは失敗します。
+* ストレージ エクスプ ローラーで共有アクセス署名とテーブル クエリに対するタイムスタンプが正しく生成されませんでした。
 
-* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、[Azure Storage ノード ライブラリの制限](https://github.com/Azure/azure-storage-node/issues/317)です。
-* BLOB のアップロードが完了したら、アップロードを開始するタブが更新されます。 これは以前の動作から変更されており、選択しているコンテナーのルートに戻ることになります。 
-* 誤った PIN/スマートカードの証明書を選択した場合、ストレージ エクスプローラーがその決定を忘れるように、ストレージ エクスプローラーを再起動する必要があります。
-* サブスクリプションをフィルターするために、資格情報の再入力が必要であることがアカウント設定パネルに表示されることがあります。
+
+既知の問題
+* 名前とキー接続文字列は現在使用できません。 この問題は次のリリースで修正される予定です。 それまでは、名前とキーの添付を使用できます。
+* 無効な Windows ファイル名のファイルを開こうとすると、ダウンロード中にファイルが見つからないというエラーが発生します。
+* タスクの [キャンセル] をクリックすると、そのタスクのキャンセルに少し時間がかかる場合があります。 これは、Azure Storage ノード ライブラリの制限事項です。
+* BLOB のアップロードが完了したら、アップロードを開始するタブが更新されます。 これは以前の動作から変更されており、選択しているコンテナーのルートに戻ることになります。
+* 誤った PIN/スマートカードの証明書を選択した場合、その記録をストレージ エクスプローラーから消すためには、再起動する必要があります
+* サブスクリプションをフィルターするために資格情報の再入力が必要であると、アカウント設定パネルに表示されることがあります。
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。
-* Ubuntu 14.04 のインストールには、更新またはアップグレードされた gcc バージョンが必要です。アップグレードの手順は次のとおりです。 
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
-* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。 
-    * sudo apt-get install libgconf-2-4
+* Ubuntu 14.04 のユーザーの場合、GCC が最新版であることを確認する必要があります。これは、次のコマンドを実行し、コンピューターを再起動して行います。
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+* Ubuntu 17.04 のユーザーの場合、GConf をインストールする必要があります。次のコマンドを実行し、マシンを再起動して、この操作を行うことができます。
+
+    ```
+    sudo apt-get install libgconf-2-4
+    ```
 
 ## <a name="version-0814-preview"></a>バージョン 0.8.14 (プレビュー)
 06/22/2017
@@ -82,10 +96,16 @@ ms.lasthandoff: 08/02/2017
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。 
 * Ubuntu 14.04 のインストールには、更新またはアップグレードされた gcc バージョンが必要です。アップグレードの手順は次のとおりです。
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
+
+
 
 ## <a name="previous-releases"></a>以前のリリース
 
@@ -104,6 +124,7 @@ ms.lasthandoff: 08/02/2017
 * [バージョン 0.7.20160129.1](#version-07201601291)
 * [バージョン 0.7.20160105.0](#version-07201601050)
 * [バージョン 0.7.20151116.0](#version-07201511160)
+
 
 ### <a name="version-0813"></a>バージョン 0.8.13
 05/12/2017
@@ -131,10 +152,14 @@ ms.lasthandoff: 08/02/2017
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。 
 * Ubuntu 14.04 のインストールには、更新またはアップグレードされた gcc バージョンが必要です。アップグレードの手順は次のとおりです。
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-0812--0811--0810"></a>バージョン 0.8.12 / 0.8.11 / 0.8.10
 04/07/2017
@@ -170,10 +195,14 @@ ms.lasthandoff: 08/02/2017
 * BLOB の名前の変更で (個別または名前を変更する BLOB コンテナーの内部)、スナップショットが保持されません。 BLOB、ファイル、エンティティの他のすべてのプロパティとメタデータは、名前変更の間に保持されます。
 * 現在、Azure Stack ではファイル共有をサポートしていませんが、ファイル共有ノードがアタッチされた Azure Stack ストレージ アカウントの下に表示され続けます。 
 * Ubuntu 14.04 のインストールには、更新またはアップグレードされた gcc バージョンが必要です。アップグレードの手順は次のとおりです。
-    * sudo add-apt-repository ppa:ubuntu-toolchain-r/test
-    * sudo apt-get update
-    * sudo apt-get upgrade
-    * sudo apt-get dist-upgrade
+
+    ```
+    sudo add-apt-repository ppa:ubuntu-toolchain-r/test
+    sudo apt-get update
+    sudo apt-get upgrade
+    sudo apt-get dist-upgrade
+    ```
+
 
 ### <a name="version-089--088"></a>バージョン 0.8.9 / 0.8.8
 02/23/2017
@@ -243,7 +272,7 @@ ms.lasthandoff: 08/02/2017
 #### <a name="new"></a>新規
 
 * 最もよく使うサービスを簡単にアクセスできるようにクイック アクセスにピン留めできます
-* 複数のエディターを別のタブで開けるようになりました。 シングルクリックで一時的なタブが開き、ダブルクリックで永続的なタブが開きます。 一時的なタブをクリックして永続的なタブにすることもできます
+* 複数のエディターを別のタブで開けるようになりました。 シングルクリックで一時的なタブが開き、ダブルクリックで永続的なタブが開きます。一時的なタブをクリックして永続的なタブにすることもできます
 * アップロードとダウンロードでのパフォーマンスと安定性を大幅に向上させました (特に高速コンピューターでの大きいファイルの場合)
 * 空の "仮想" フォルダーを BLOB コンテナーに作成できます
 * 新しく拡張されたサブ文字列の検索で範囲指定の検索を再導入したため、検索には次の 2 つのオプションがあります。 

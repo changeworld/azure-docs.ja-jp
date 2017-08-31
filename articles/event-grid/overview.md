@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 08/16/2017
+ms.date: 08/18/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 37798f3ca1b8518543c818a30b4ab4bcb3a3845f
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 59a834f32793e349d5639baf3c80dbcba274dfa8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 
@@ -22,9 +22,13 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 
 フィルターを使用することで、特定のイベントをさまざまなエンドポイントにルーティングしたり、複数のエンドポイントにマルチキャストしたり、イベントを確実に配信したりできます。 Event Grid には、カスタムおよびサード パーティのイベントに対するサポートも組み込まれています。
 
+プレビュー リリースの Event Grid では、**westus2** と **westcentralus** の場所がサポートされます。 他のリージョンも追加される予定です。
+
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。
 
 ![Event Grid 機能モデル](./media/overview/event-grid-functional-model.png)
+
+現在、Blob Storage は、発行元として公開されていません。
 
 ## <a name="concepts"></a>概念
 
@@ -53,7 +57,7 @@ Azure Event Grid の主要な特長を次に示します。
 
 ## <a name="built-in-publisher-and-handler-integration"></a>組み込みの発行元とハンドラーの統合
 
-Azure では、発行元およびハンドラーの両方を含む、多数のサービスを使用して、組み込みイベントがサポートされています。 今年は、さらに多くが追加されます。
+Azure では、発行元およびハンドラーの両方を含む、多数のサービスを使用して、組み込みイベントがサポートされています。
 
 ### <a name="publishers"></a>発行元
 
@@ -64,6 +68,8 @@ Azure では、発行元およびハンドラーの両方を含む、多数の�
 * Event Hubs
 * カスタム トピック
 
+今年は、他の Azure サービスが追加される予定です。
+
 ### <a name="handlers"></a>ハンドラー
 
 現時点で、次の Azure サービスで、Event Grid の組み込みハンドラーがサポートされています。 
@@ -72,6 +78,8 @@ Azure では、発行元およびハンドラーの両方を含む、多数の�
 * Logic Apps
 * Azure Automation
 * WebHook
+
+今年は、他の Azure サービスが追加される予定です。
 
 ## <a name="what-can-i-do-with-event-grid"></a>Event Grid でできること
 
