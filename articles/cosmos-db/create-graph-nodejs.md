@@ -13,24 +13,20 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 07/14/2017
+ms.date: 08/29/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 6d14719938af0ce825955389824441e111024869
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 60cb187cf40f72fce86c421891bea02d3d6d708a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Graph API を使用した Node.js アプリケーションの構築
 
 Azure Cosmos DB は、Microsoft が提供するグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイックスタートの記事では、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin-secure) ドライバーを使用して、コンソール アプリを構築し実行します。  
-
-> [!NOTE]
-> npm モジュール `gremlin-secure` は、Azure Cosmos DB との接続に必要な SSL と SASL がサポートされている、`gremlin` モジュールを変更したバージョンです。 ソース コードは [GitHub](https://github.com/CosmosDB/gremlin-javascript) から入手できます。
->
+このクイックスタートの記事では、Azure Portal を使用した Graph API (プレビュー) 用の Azure Cosmos DB アカウント、データベース、およびグラフの作成方法を説明します。 続いてオープンソース [Gremlin Node.js](https://www.npmjs.com/package/gremlin) ドライバーを使用して、コンソール アプリを構築し実行します。  
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -133,7 +129,7 @@ module.exports = config;
 
 1. ターミナル ウィンドウを開き、`cd` コマンドを使用して、プロジェクトに含まれる package.json ファイルのインストール ディレクトリに移動します。  
 
-2. `npm install` を実行し、`gremlin-secure`など、必要な npm モジュールをインストールします。
+2. `npm install` を実行し、`gremlin`など、必要な npm モジュールをインストールします。
 
 3. ターミナルで `node app.js` を実行し、node アプリケーションを起動します。
 
