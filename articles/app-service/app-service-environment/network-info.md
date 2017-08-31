@@ -48,7 +48,7 @@ ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、We
 
 通常のアプリのアクセス ポートは次のとおりです。
 
-| 最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、 | ファイル | To |
+| 用途 | From | To |
 |----------|---------|-------------|
 |  HTTP/HTTPS  | ユーザーが構成可能 |  80、443 |
 |  FTP/FTPS    | ユーザーが構成可能 |  21、990、10001-10020 |
@@ -60,7 +60,7 @@ ILB ASE が存在する場合、ILB の IP アドレスは、HTTP/S、FTP/S、We
 
 ASE の着信アクセスの依存関係は次のとおりです。
 
-| 最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、 | ファイル | To |
+| 用途 | From | To |
 |-----|------|----|
 | 管理 | インターネット | ASE サブネット: 454、455 |
 |  ASE 内部通信 | ASE サブネット: すべてのポート | ASE サブネット: すべてのポート
@@ -70,7 +70,7 @@ ASE の着信アクセスの依存関係は次のとおりです。
 
 発信アクセスについては、ASE は複数の外部システムに依存します。 これらのシステム依存関係は DNS 名で定義され、固定された一連の IP アドレスにはマップされません。 そのため、ASE には、ASE サブネットからさまざまなポートにまたがるすべての外部 IP への送信アクセスが必要です。 ASE には、次の発信の依存関係があります。
 
-| 最初の起動時にドメインに参加しているマシンになるように VM をプロビジョニングするには、 | ファイル | To |
+| 用途 | From | To |
 |-----|------|----|
 | Azure Storage (Azure Storage) | ASE サブネット | table.core.windows.net、blob.core.windows.net、queue.core.windows.net、file.core.windows.net: 80、443、445 (445 は ASEv1 にのみ必要です。) |
 | Azure SQL Database | ASE サブネット | database.windows.net: 1433、11000-11999、14000-14999 (詳細については、「[SQL Database V12 port usage (SQL Database V12 ポートの使用)](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md)を参照。)|
