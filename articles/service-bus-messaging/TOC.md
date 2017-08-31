@@ -77,7 +77,7 @@
 ## [ServiceBus360](https://www.servicebus360.com/)
 ## [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=service-bus)
-## [Stack Overflow](http://stackoverflow.com/questions/tagged/servicebus)
+## [Stack Overflow](http://stackoverflow.com/questions/tagged/azureservicebus)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=service-bus)
 
 

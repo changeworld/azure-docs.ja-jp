@@ -117,8 +117,6 @@
               href: app-service-linux-intro.md
             - name: CLI を使用した管理
               href: app-service-linux-cli.md
-            - name: Linux の Web アプリの作成
-              href: app-service-linux-how-to-create-web-app.md
             - name: Linux の Ruby Web アプリ
               href: app-service-linux-ruby-get-started.md
             - name: Linux の Node.js Web アプリ
