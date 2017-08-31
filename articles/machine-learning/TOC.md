@@ -3,8 +3,8 @@
 ## [Machine Learning とは](machine-learning-what-is-machine-learning.md)
 
 ## Team Data Science Process
-### [概要](http://aka.ms/datascienceprocess)
-### [ライフサイクル](data-science-process-overview.md)
+### [概要](data-science-process-overview.md)
+### [ライフサイクル](data-science-process-lifecycle.md)
 ### [チュートリアル](data-science-process-walkthroughs.md)
 ####[PySpark と Scala を使用した Spark](data-science-process-walkthroughs-spark.md)
 ##### [データを調査する](machine-learning-data-science-spark-data-exploration-modeling.md)
@@ -14,6 +14,7 @@
 ####[Azure Data Lake での U-SQL の使用](data-science-process-walkthroughs-azure-data-lake.md)
 ####[SQL Server での R、Python、T-SQL の使用](data-science-process-walkthroughs-sql-server.md)
 ####[SQL DW での T-SQL と Python の使用](data-science-process-walkthroughs-sql-data-warehouse.md)
+### [Azure ML の使用](http://aka.ms/datascienceprocess)
 
 ## Machine Learning Studio
 ### [Studio とは](machine-learning-what-is-ml-studio.md)

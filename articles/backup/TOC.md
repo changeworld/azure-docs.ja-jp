@@ -8,9 +8,27 @@
 ## [VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
 
 # 方法
+
+## Azure Backup Server
+### [Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
+### インストールまたはアップグレード
+#### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
+#### [クラシック ポータルでの Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup-classic.md)
+#### [Azure Backup Server へのストレージの追加](backup-mabs-add-storage.md)
+#### [Azure Backup Server の v.2 へのアップグレード](backup-mabs-upgrade-to-v2.md)
+#### [Azure Backup Server の無人インストール](backup-mabs-unattended-install.md)
+### ワークロードの保護
+#### [Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
+#### [Azure Backup Server を使用した Exchange のバックアップ](backup-azure-exchange-mabs.md)
+#### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
+#### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
+#### [システムの状態とベア メタル回復の保護](backup-mabs-system-state-and-bmr.md)
+### [Azure Backup Server からのデータ復旧](backup-azure-alternate-dpm-server.md)
+
 ## Azure VM
 ### VM を準備する
 #### [Resource Manager によりデプロイされた仮想マシンの準備](backup-azure-arm-vms-prepare.md)
+#### [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)
 #### [Azure 仮想マシンの準備](backup-azure-vms-prepare.md)
 ### 環境を計画する
 #### [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
@@ -29,6 +47,32 @@
 #### [Azure での仮想マシンの復元](backup-azure-restore-vms.md)
 #### [暗号化された VM の Key Vault のキーとシークレットを復元](backup-azure-restore-key-secret.md)
 
+## Azure Backup のレポートを構成する
+### [Azure Backup レポートの構成](backup-azure-configure-reports.md)
+### [Azure Backup レポートのデータ モデル](backup-azure-reports-data-model.md)
+### [Azure Backup の Log Analytics データ モデル](backup-azure-log-analytics-data-model.md)
+
+## Data Protection Manager
+### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)
+### [クラシック ポータルでの DPM ワークロードの準備](backup-azure-dpm-introduction-classic.md)
+### [System Center DPM を使った Exchange サーバーのバックアップ](backup-azure-backup-exchange-server.md)
+### [別の DPM サーバーへのデータ復旧](backup-azure-alternate-dpm-server.md)
+### [DPM を使った SQL Server ワークロードのバックアップ](backup-azure-backup-sql.md)
+### [DPM を使った SharePoint ファームのバックアップ](backup-azure-backup-sharepoint.md)
+
+## PowerShell の使用
+### [Azure Portal での Azure VM](backup-azure-vms-automation.md)
+### [クラシック ポータルでの Azure VM](backup-azure-vms-classic-automation.md)
+### [Azure Portal での DPM](backup-dpm-automation.md)
+### [クラシック ポータルでの DPM](backup-dpm-automation-classic.md)
+### [Azure Portal での Windows Server](backup-client-automation.md)
+### [クラシック ポータルでの Windows Server](backup-client-automation-classic.md)
+
+## Azure SQL Database
+### [長期のバックアップ リテンション期間の構成](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [Recovery Services コンテナー内のバックアップの表示](../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [長期のバックアップ リテンション期間からの復元](../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
+### [長期的な Azure SQL バックアップの削除](../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json)
 
 ## Windows Server
 ### [Windows Server のファイルとフォルダーのバックアップ](backup-configure-vault.md)
@@ -41,48 +85,10 @@
 #### [クラシック デプロイメント モデルを使用した Backup 資格情報コンテナーの管理](backup-azure-manage-windows-server-classic.md)
 #### [クラシック デプロイメント モデルを使用した Windows Server へのファイルの回復](backup-azure-restore-windows-server-classic.md)
 
-## Azure Backup Server
-### [Azure Backup Server の保護マトリックス](backup-mabs-protection-matrix.md)
-### インストールまたはアップグレード
-#### [Azure Portal での Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup.md)
-#### [クラシック ポータルでの Azure Backup Server ワークロードの準備](backup-azure-microsoft-azure-backup-classic.md)
-#### [Azure Backup Server へのストレージの追加](backup-mabs-add-storage.md)
-#### [Azure Backup Server の v.2 へのアップグレード](backup-mabs-upgrade-to-v2.md)
-#### [Azure Backup Server の無人インストール](backup-mabs-unattended-install.md)
-### ワークロードの保護
-#### [Azure Backup Server を使用した VMware サーバーのバックアップ](backup-azure-backup-server-vmware.md)
-#### [Azure Backup Server を使用した Exchange のバックアップ](backup-azure-exchange-mabs.md)
-#### [Azure Backup Server を使用した SharePoint ファームのバックアップ](backup-azure-backup-sharepoint-mabs.md)
-#### [Azure Backup Server を使用した SQL のバックアップ](backup-azure-sql-mabs.md)
-#### [システムの状態とベア メタル回復の保護](backup-mabs-system-state-and-bmr.md)
-### [Azure Backup Server からのデータ復旧](backup-azure-alternate-dpm-server.md)
-
-## Data Protection Manager
-### [Azure Portal での DPM ワークロードの準備](backup-azure-dpm-introduction.md)
-### [クラシック ポータルでの DPM ワークロードの準備](backup-azure-dpm-introduction-classic.md)
-### [System Center DPM を使った Exchange サーバーのバックアップ](backup-azure-backup-exchange-server.md)
-### [別の DPM サーバーへのデータ復旧](backup-azure-alternate-dpm-server.md)
-### [DPM を使った SQL Server ワークロードのバックアップ](backup-azure-backup-sql.md)
-### [DPM を使った SharePoint ファームのバックアップ](backup-azure-backup-sharepoint.md)
-
-## Azure SQL Database
-### [長期のバックアップ リテンション期間の構成](../sql-database/sql-database-configure-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
-### [Recovery Services コンテナー内のバックアップの表示](../sql-database/sql-database-view-backups-in-vault.md?toc=%2fazure%2fbackup%2ftoc.json)
-### [長期のバックアップ リテンション期間からの復元](../sql-database/sql-database-restore-from-long-term-retention.md?toc=%2fazure%2fbackup%2ftoc.json)
-### [長期的な Azure SQL バックアップの削除](../sql-database/sql-database-long-term-retention-delete.md?toc=%2fazure%2fbackup%2ftoc.json)
-
-## PowerShell の使用
-### [Azure Portal での Azure VM](backup-azure-vms-automation.md)
-### [クラシック ポータルでの Azure VM](backup-azure-vms-classic-automation.md)
-### [Azure Portal での DPM](backup-dpm-automation.md)
-### [クラシック ポータルでの DPM](backup-dpm-automation-classic.md)
-### [Azure Portal での Windows Server](backup-client-automation.md)
-### [クラシック ポータルでの Windows Server](backup-client-automation-classic.md)
-
-## FAQ
-### [Recovery Services コンテナーに関する FAQ](backup-azure-backup-faq.md)
-### [Azure VM バックアップに関する FAQ](backup-azure-vm-backup-faq.md)
-### [Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ](backup-azure-file-folder-backup-faq.md)
+## Recovery Services コンテナー
+### [Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)
+### [Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)
+### [Recovery Services コンテナーの削除](backup-azure-delete-vault.md)
 
 ## トラブルシューティング
 ### [Azure Portal での Azure VM のバックアップに関する問題](backup-azure-vms-troubleshoot.md)
@@ -92,17 +98,17 @@
 ### [Azure Backup Server のトラブルシューティング](backup-azure-mabs-troubleshoot.md)
 
 # 概念
-## [Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)
-## [Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)
-## [Recovery Services コンテナーの削除](backup-azure-delete-vault.md)
+
+## FAQ
+### [Recovery Services コンテナーに関する FAQ](backup-azure-backup-faq.md)
+### [Azure VM バックアップに関する FAQ](backup-azure-vm-backup-faq.md)
+### [Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ](backup-azure-file-folder-backup-faq.md)
+
 ## [ロールベースのアクセス制御](backup-rbac-rs-vault.md)
 ## [ハイブリッド バックアップのセキュリティ](backup-azure-security-feature.md)
-## [Azure Backup レポートの構成](backup-azure-configure-reports.md)
-## [Azure Backup レポートのデータ モデル](backup-azure-reports-data-model.md)
-## [Azure Backup の Log Analytics データ モデル](backup-azure-log-analytics-data-model.md)
 ## [オフライン バックアップの構成](backup-azure-backup-import-export.md)
 ## [テープ ライブラリの交換](backup-azure-backup-cloud-as-tape.md)
-## [Linux VM のアプリケーション整合性バックアップ](backup-azure-linux-app-consistent.md)
+
 
 # リファレンス
 ## [PowerShell](/powershell/module/azurerm.recoveryservices.backup)
