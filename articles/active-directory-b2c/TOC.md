@@ -46,6 +46,7 @@
 ## [トークンを構成する](active-directory-b2c-token-session-sso.md)
 ## [MFA を有効にする](active-directory-b2c-reference-mfa.md)
 ## [カスタム属性を使用する](active-directory-b2c-reference-custom-attr.md)
+## [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity.md)
 ## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
 ### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
@@ -71,6 +72,7 @@
 #### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity-custom.md)
 ### トラブルシューティング
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス

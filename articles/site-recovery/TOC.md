@@ -140,6 +140,8 @@
 ## 監視とトラブルシューティング
 ### [Azure から Azure へのレプリケーションの問題](site-recovery-azure-to-azure-troubleshoot-errors.md)
 ### [オンプレミスから Azure へのレプリケーションの問題](site-recovery-vmware-to-azure-protection-troubleshoot.md)
+### [モビリティ サービスのインストールの問題](site-recovery-vmware-to-azure-push-install-error-codes.md)
+### [Azure へのフェールオーバーの問題](site-recovery-failover-to-azure-troubleshoot.md)
 ### [ログの収集とオンプレミスの問題のトラブルシューティング](site-recovery-monitoring-and-troubleshooting.md)
 
 # リファレンス

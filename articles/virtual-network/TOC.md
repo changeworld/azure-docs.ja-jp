@@ -72,7 +72,7 @@
 ###### [CLI](virtual-network-deploy-multinic-classic-cli.md)
 
 #### 複数の IP アドレスを持つ VM を作成する
-##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
+##### [Azure Portal](virtual-network-multiple-ip-addresses-portal.md)
 ##### [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
 ##### [CLI](virtual-network-multiple-ip-addresses-cli.md)
 ##### [テンプレート](virtual-network-multiple-ip-addresses-template.md)
@@ -140,6 +140,7 @@
 #### [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 ### [スループットのテスト](virtual-network-bandwidth-testing.md)
 ### [仮想ネットワークを削除できない](virtual-network-troubleshoot-cannot-delete-vnet.md)
+### [VM 間の接続に関する問題](virtual-network-troubleshoot-connectivity-problem-between-vms.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=virtual-network)
