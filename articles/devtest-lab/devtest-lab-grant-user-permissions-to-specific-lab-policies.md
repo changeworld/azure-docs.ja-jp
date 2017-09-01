@@ -20,7 +20,6 @@ ms.openlocfilehash: f1524fa83de6ce53f853ed6859de15076e20ea3b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
-
 ---
 # <a name="grant-user-permissions-to-specific-lab-policies"></a>特定のラボ ポリシーに対するアクセス許可をユーザーに付与する
 ## <a name="overview"></a>Overview
@@ -75,7 +74,7 @@ Azure PowerShell コマンドレットを設定すると、次のタスクを実
 
 ユーザーの **ObjectId** とカスタム ロール名を取得したら、**New-AzureRmRoleAssignment** コマンドレットを使用してユーザーにそのロールを割り当てることができます。
 
-    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/policies/AllowedVmSizesInLab
+    PS C:\>New-AzureRmRoleAssignment -ObjectId 05DEFF7B-0AC3-4ABF-B74D-6A72CD5BF3F3 -RoleDefinitionName "Policy Contributor" -Scope /subscriptions/<SubscriptionID>/resourceGroups/<ResourceGroupName>/providers/Microsoft.DevTestLab/labs/<LabName>/policySets/default/policies/AllowedVmSizesInLab
 
 前の例では、 **AllowedVmSizesInLab** ポリシーを使用しました。 次のようなポリシーを使用することもできます。
 

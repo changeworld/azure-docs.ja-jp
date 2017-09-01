@@ -85,7 +85,7 @@ az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 次のコマンドを使用して、仮想マシンとのリモート デスクトップ セッションを作成します。 IP アドレスを仮想マシンのパブリック IP アドレスに置き換えます。 メッセージが表示されたら、仮想マシンの作成時に使用した資格情報を入力します。
 
 ```bash 
-mstsc /v:<Public IP Address>
+mstsc /v:Public IP Address
 ```
 
 ## <a name="install-iis-using-powershell"></a>PowerShell を使用した IIS のインストール
