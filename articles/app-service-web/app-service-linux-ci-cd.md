@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6b6c173c6c4bb3f670c54208c80e6d966a1f396e
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 026c4491818c8719c68a759ee9595ad9c765d526
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="continuous-deployment-with-azure-web-app-on-linux"></a>Azure Web App on Linux での継続的なデプロイ
@@ -32,7 +32,13 @@ ms.lasthandoff: 07/21/2017
 
 Azure Portal (http://portal.azure.com) にサインインします
 
-## <a name="step-2---enable-docker-hub-continuous-deployment"></a>手順 2 - Docker Hub の継続的なデプロイを有効にする
+## <a name="step-2---enable-container-continuous-deployment-feature"></a>手順 2 - コンテナーの継続的なデプロイ機能を有効にする
+
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) で次のコマンドを実行して、継続的なデプロイ機能を有効にできます。
+
+```azurecli-interactive
+az webapp deployment container config -n sname -g rgname -e true
+``` 
 
 **[Azure Portal](https://portal.azure.com/)** で、ページの左側にある **[App Service]** オプションをクリックします。
 
@@ -43,6 +49,12 @@ Docker Hub の継続的なデプロイを構成するアプリの名前をクリ
 ![アプリ設定のイメージを挿入](./media/app-service-webapp-service-linux-ci-cd/step2.png)
 
 ## <a name="step-3---prepare-webhook-url"></a>手順 3 - Webhook URL を準備する
+
+[Azure CLI](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) で次のコマンドを実行して、Webhook URL を取得できます。
+
+```azurecli-interactive
+az webapp deployment container -n sname1 -g rgname -e true --show-cd-url
+``` 
 
 Webhook URL には、エンドポイント `https://<publishingusername>:<publishingpwd>@<sitename>.scm.azurewebsites.net/docker/hook` が必要です。
 
@@ -83,6 +95,7 @@ Docker Hub ページで、**[Webhooks (Webhook)]**、**[CREATE A WEBHOOK (Webhoo
 * [Azure Web App on Linuxで Ruby を使用する](app-service-linux-ruby-get-started.md)
 * [Azure Web App on Linux 向けにカスタム Docker イメージを使用する方法](./app-service-linux-using-custom-docker-image.md)
 * [Azure App Service Web App on Linux の FAQ](./app-service-linux-faq.md) 
+* [Web App on Linux を Azure CLI 2.0 で管理する](./app-service-linux-cli.md)
 
 
 

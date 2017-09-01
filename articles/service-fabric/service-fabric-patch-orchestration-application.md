@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 5/9/2017
 ms.author: nachandr
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: db6e654de074fc6651fd0d7479ee52038f944745
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 2c5842822e347113e388d570f6ae603a313944d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -70,9 +70,14 @@ ms.lasthandoff: 07/21/2017
 
 Azure クラスターの持続性層がシルバーの場合、修復マネージャー サービスが既定で有効になっています。 Azure クラスターの持続性層がゴールドの場合、クラスターが作成された時期によって、修復マネージャー サービスが有効になっている場合となっていない場合があります。 Azure クラスターの持続性層がブロンズの場合、既定では修復マネージャー サービスは有効になっていません。 サービスが既に有効になっている場合、Service Fabric Explorer のシステム サービス セクションでサービスが実行されていることを確認できます。
 
-[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることができます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Resource Manager テンプレートを作成することもできます。 
+##### <a name="azure-portal"></a>Azure ポータル
+クラスターの設定時に Azure Portal から修復マネージャーを有効にすることができます。 クラスターの構成時に [`Add on features`] で [`Include Repair Manager`] オプションを選択します。
+![Azure Portal から修復マネージャーを有効にする画像](media/service-fabric-patch-orchestration-application/EnableRepairManager.png)
 
-修復マネージャー サービスを有効にするには、次の手順に従います。
+##### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
+[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して、新規および既存の Service Fabric クラスターで修復マネージャー サービスを有効にすることもできます。 デプロイするクラスター用テンプレートを用意します。 サンプル テンプレートを使用することも、カスタムの Resource Manager テンプレートを作成することもできます。 
+
+[Azure Resource Manager テンプレート](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-arm)を使用して修復マネージャー サービスを有効にするには:
 
 1. まず、次のスニペットに示すように、`Microsoft.ServiceFabric/clusters` リソースの `apiversion` が `2017-07-01-preview` に設定されていることを確認します。 値が異なる場合は、`apiVersion` を `2017-07-01-preview` に更新する必要があります。
 
@@ -135,9 +140,11 @@ Windows Update の自動更新を有効にすると、複数のクラスター �
 
 ### <a name="optional-enable-azure-diagnostics"></a>省略可能: Azure 診断を有効にする
 
-パッチ オーケストレーション アプリケーションのログは、クラスター ノードごとにローカルで収集されます。 また、Service Fabric ランタイム バージョン `5.6.220.9494` 以降を実行しているクラスターでは、Service Fabric のログの一部としてログが収集されます。
+Service Fabric ランタイム バージョン `5.6.220.9494` 以降を実行しているクラスターでは、Service Fabric ログの一部としてパッチ オーケストレーション アプリ ログが収集されます。
+Service Fabric ランタイム バージョン `5.6.220.9494` 以降でクラスターが実行されている場合、この手順をスキップすることができます。
 
-`5.6.220.9494` より前の Service Fabric ランタイム バージョンを実行しているクラスターでは、すべてのノードから中央の場所にログをアップロードするように Azure 診断を構成することをお勧めします。
+バージョン `5.6.220.9494` よりも前の Service Fabric ランタイムを実行しているクラスターの場合、パッチ オーケストレーション アプリのログは、各クラスター ノードのローカルに収集されます。
+すべてのノードから中央の場所にログをアップロードするように Azure 診断を構成することをお勧めします。
 
 Azure 診断を有効にする方法については、「[Azure 診断でログを収集する方法](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-how-to-setup-wad)」をご覧ください。
 
@@ -294,7 +301,7 @@ Windows Update の結果を照会するには、クラスターにログイン�
 
 #### <a name="locally-on-each-node"></a>個々のノードのローカル
 
-Service Fabric クラスターの各ノード上のローカルでログを収集します。 ログの場所は、\[Service Fabric\_Installation\_Drive\]:\\PatchOrchestrationApplication\\logs です。
+Service Fabric ランタイム バージョンが `5.6.220.9494` よりも前の場合、各 Service Fabric クラスター ノードのローカルでログが収集されます。 ログの場所は、\[Service Fabric\_Installation\_Drive\]:\\PatchOrchestrationApplication\\logs です。
 
 たとえば、Service Fabric が D ドライブにインストールされている場合、このパスは D:\\PatchOrchestrationApplication\\logs になります。
 
@@ -354,6 +361,10 @@ A. パッチ オーケストレーション アプリケーションが必要と
 - 更新プログラムをダウンロードしてインストールするために必要な平均時間。平均時間が 2 ～ 3 時間を超えることは通常ありません。
 - VM とネットワーク帯域幅のパフォーマンス。
 
+Q. **Windows Update の一部の更新プログラムが REST API 経由で取得されたと表示されますが、コンピューターの Windows Update 履歴には表示されないのはなぜですか?**
+
+A. 一部の製品更新プログラムは、各更新プログラム/パッチ履歴で確認する必要があります。 たとえば、Windows Defender の更新プログラムは、Windows Server 2016 の Windows Update 履歴には表示されません。
+
 ## <a name="disclaimers"></a>免責事項
 
 - ユーザーに代わって、パッチ オーケストレーション アプリケーションが Windows Update の使用許諾契約に同意します。 必要に応じて、アプリケーションの構成でこの設定をオフにすることもできます。
@@ -391,4 +402,18 @@ A. パッチ オーケストレーション アプリケーションが必要と
 Windows Update の問題によって、特定のノードまたはアップグレード ドメインでアプリケーションやクラスターの正常性が低下する場合があります。 パッチ オーケストレーション アプリケーションは、クラスターが正常な状態に戻るまで、以降の Windows Update 操作を中止します。
 
 管理者が介入し、Windows Update によってアプリケーションやクラスターが異常な状態になった原因を特定する必要があります。
+
+## <a name="release-notes-"></a>リリース ノート:
+
+### <a name="version-110"></a>バージョン 1.1.0
+- 公開リリース
+
+### <a name="version-111"></a>バージョン 1.1.1
+- NodeAgentNTService をインストールできない NodeAgentService の SetupEntryPoint のバグを修正しました。
+
+### <a name="version-120-latest"></a>バージョン 1.2.0 (最新)
+
+- システム再起動ワークフローに関連するバグを修正しました。
+- 修復タスクの準備中に正常性チェックが予定どおりに実行されないために発生する RM タスク作成時のバグを修正しました。
+- Windows サービス POANodeSvc のスタートアップ モードを auto から delayed-auto に変更しました。
 
