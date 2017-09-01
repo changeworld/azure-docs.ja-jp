@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 35d7f6d655f53891c00ca6c736c8c12b99fdc5ef
+ms.translationtype: HT
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 1ebabe4844732412e04bab8c277f7ebbc4a5737c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="get-started-with-reliable-services"></a>Reliable Services 使用
@@ -166,22 +165,17 @@ Yeoman スキャフォールディングには、アプリケーションをビ�
 $ gradle
 ```
 
-これにより、Service Fabric Azure CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。
+これにより、Service Fabric CLI を使ってデプロイできる Service Fabric アプリケーション パッケージが生成されます。
 
-### <a name="deploy-with-xplat-cli"></a>XPlat CLI でデプロイする
+### <a name="deploy-with-service-fabric-cli"></a>Service Fabric CLI を使用したデプロイ
 
-XPlat CLI を使っている場合、install.sh スクリプトには、アプリケーション パッケージをデプロイするために必要な Azure CLI コマンドが含まれています。 アプリケーションをデプロイするには、install.sh スクリプトを実行します。
+Install.sh スクリプトには、アプリケーション パッケージを展開するために必要な Service Fabric CLI コマンドが含まれています。 アプリケーションをデプロイするには、install.sh スクリプトを実行します。
 
 ```bash
 $ ./install.sh
 ```
 
-### <a name="deploy-with-azure-cli-20"></a>Azure CLI 2.0 でデプロイする
+## <a name="next-steps"></a>次のステップ
 
-Azure CLI 2.0 を使っている場合は、[Azure CLI 2.0 を使ったアプリケーションのライフ サイクル](service-fabric-application-lifecycle-azure-cli-2-0.md)の管理に関する参照ドキュメントをご覧ください。
-
-## <a name="related-articles"></a>関連記事:
-
-* [Service Fabric と Azure CLI 2.0 の概要](service-fabric-azure-cli-2-0.md)
-* [Service Fabric XPlat CLI の概要](service-fabric-azure-cli.md)
+* [Service Fabric CLI の概要](service-fabric-cli.md)
 

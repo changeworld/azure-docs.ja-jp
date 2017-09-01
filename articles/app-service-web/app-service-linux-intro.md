@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 69156ec555b34d066a65bdc202267cfc53de47a0
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 67dee77dd4e46d097358d86626a859b7dc7982e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Azure Web App on Linux の概要
@@ -39,6 +39,9 @@ Web App on Linux を使用して、サポートされているアプリケーシ
     * 6.6
     * 6.9
     * 6.10
+    * 6.11
+    * 8.0
+    * 8.1
 * PHP
     * 5.6
     * 7.0
@@ -96,6 +99,17 @@ Web Apps on Linux は専用 App Service プランでのみサポートされて�
 
 Web Apps on Linux は、Linux 向けでない Web アプリが同じリージョンにないリソース グループ内で作成される必要があります。
 
+## <a name="troubleshooting"></a>トラブルシューティング ##
+
+アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
+コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
+
+![ログ記録の有効化][2]
+
+![Kudu を使用した Docker のログの表示][1]
+
+SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
+
 ## <a name="next-steps"></a>次のステップ
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
@@ -109,4 +123,6 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 * [Azure App Service でステージング環境を設定する](./web-sites-staged-publishing.md)
 * [Azure Web App on Linux での Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)
 
-
+<!--Image references-->
+[1]: ./media/app-service-linux-intro/kudu-docker-logs.png
+[2]: ./media/app-service-linux-intro/logging.png
