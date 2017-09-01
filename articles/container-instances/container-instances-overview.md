@@ -27,7 +27,7 @@ ms.lasthandoff: 07/26/2017
 
 # <a name="azure-container-instances"></a>Azure Container Instances
 
-コンテナーは、クラウド アプリケーションのパッケージ化、デプロイ、および管理を行う方法として急速に選ばれるようになりました。 Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。 
+コンテナーは、クラウド アプリケーションのパッケージ化、デプロイ、および管理を行う方法として急速に選ばれるようになりました。 Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
 
 Azure Container Instances は、単純なアプリケーション、タスク自動化、ジョブ作成など、分離されたコンテナーで操作できるあらゆるシナリオ向けの、優れたソリューションです。 複数コンテナー間でのサービスの検出、自動スケーリング、およびアプリケーションの調整されたアップグレードなど、コンテナーの完全なオーケストレーションが必要なシナリオには、[Azure Container Service](https://docs.microsoft.com/azure/container-service/) をお勧めします。
 
