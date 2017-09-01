@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c167f68fec05ce65d239c883f6226b5953fa58a7
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: bdb51f681b56450d653fe533b79c48c9bd389e32
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -28,9 +28,9 @@ This article helps you get started to create and manage Key Vault in Azure Stack
 
 ## <a name="prerequisites"></a>Prerequisites
 * [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
+* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Key Vault service.  
 * Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service. 
-* [Configure PowerShell for use with Azure Stack.](azure-stack-powershell-configure.md)
+* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)
 
 ## <a name="enable-your-tenant-subscription-for-vault-operations"></a>Enable your tenant subscription for vault operations
 

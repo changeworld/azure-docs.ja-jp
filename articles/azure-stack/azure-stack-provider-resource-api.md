@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: alfredop
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f43ec070e0269fad89b83c3075101e610a90ad96
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0b15ee20f4461af6d0173495fd8456d7a7a29aba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="provider-resource-usage-api"></a>Provider Resource Usage API
-The term provider applies to the service administrator and to any delegated providers. Service admins and delegated providers can use the Provider Usage API to view the usage of their direct tenants. For example, P0 can call the Provider API to get usage information on P1's and P2's direct usage, and P1 can call for usage information on P3 and P4.
+The term provider applies to the service administrator and to any delegated providers. Azure Stack operator's and delegated providers can use the Provider Usage API to view the usage of their direct tenants. For example, P0 can call the Provider API to get usage information on P1's and P2's direct usage, and P1 can call for usage information on P3 and P4.
 
 ![Conceptual model of provider hierarchy](media/azure-stack-provider-resource-api/image1.png)
 
