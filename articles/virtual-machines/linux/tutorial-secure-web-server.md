@@ -1,4 +1,3 @@
-
 ---
 title: "Azure での SSL 証明書を使用した Web サーバーのセキュリティ保護 | Microsoft Docs"
 description: "Azure 上の Linux VM で SSL 証明書を使用して NGINX Web サーバーをセキュリティ保護する方法について説明します。"
@@ -11,7 +10,7 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
