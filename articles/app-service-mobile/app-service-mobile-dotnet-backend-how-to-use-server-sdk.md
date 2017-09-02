@@ -343,7 +343,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 `Query()` メソッドは、フィルター処理を行うために LINQ で操作できる `IQueryable` を返します。
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプロジェクトを追加する
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプッシュ通知を追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。
