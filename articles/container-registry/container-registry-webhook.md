@@ -11,7 +11,7 @@ keywords: "Docker, コンテナー, ACR"
 ms.assetid: 
 ms.service: container-registry
 ms.devlang: na
-ms.topic: sample
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2017

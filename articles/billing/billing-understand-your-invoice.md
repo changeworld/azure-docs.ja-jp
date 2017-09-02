@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: a5be3c9bcdd99128217e441d62ce9650c9764580
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="understand-terms-on-your-microsoft-azure-invoice"></a>Microsoft Azure の請求書の用語を確認します。
@@ -32,6 +31,10 @@ ms.lasthandoff: 07/08/2017
 -   前回の請求期間末の最大 24 時間分の使用状況が、現在の請求書に表示される場合があります。
 
 -   米国以外のお客様向けの課金明細書に記載されている料金は、見積もりとしての使用を目的として提供されています。 銀行ではさまざまな費用に通貨換算率を適用している場合があります。
+
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/jWG1lyJe3Mg" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## <a name="detailed-terms-and-descriptions-of-your-invoice"></a>請求書の用語と説明の詳細
 次のセクションでは、請求書に表示される主要な用語と、各用語の説明を一覧に示します。

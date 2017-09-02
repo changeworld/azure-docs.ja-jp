@@ -9,17 +9,17 @@ editor: masnider
 ms.assetid: bbcc652a-a790-4bc4-926b-e8cd966587c0
 ms.service: service-fabric
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 07/02/2017
 ms.author: mfussell
+ms.custom: mvc
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 32e84984a61bb54ea459826f191de7fc25fc2158
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/06/2017
-
 
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要

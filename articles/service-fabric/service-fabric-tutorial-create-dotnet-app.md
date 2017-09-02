@@ -9,11 +9,12 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/09/2017
-ms.author: ryanwi, mikhegn
+ms.author: ryanwi
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: ef50adf3af19bce494c3256308b443c8eaccdcea

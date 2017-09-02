@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 0d4f2e19ec3417b7ca111f777e34b1ce66ddb32d
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/08/2017
-
 
 ---
 # <a name="understand-terms-on-your-microsoft-azure-detailed-usage-charges"></a>Microsoft Azure の詳細な利用料金の用語を理解する 
@@ -29,6 +28,11 @@ ms.lasthandoff: 07/08/2017
 このファイルは、スプレッドシート アプリケーションで開くことができるコンマ区切り値 (.csv) ファイル形式で入手できます。 使用可能なバージョンが 2 つ表示される場合は、バージョン 2 をダウンロードします。 こちらが最新のファイル形式になります。
 
 利用料金は、サブスクリプションの**月額**料金の合計です。 利用料金では、クレジットや割引は考慮されません。
+
+
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/p13S350M2Vk" frameborder="0" allowfullscreen></iframe>
+</div>
 
 ## <a name="detailed-terms-and-descriptions-of-your-detailed-usage-file"></a>詳細な使用状況ファイルの用語と説明 (詳細)
 次のセクションでは、バージョン 2 の詳細な使用状況ファイルに表示される重要な用語について説明します。

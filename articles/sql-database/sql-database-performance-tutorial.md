@@ -12,7 +12,7 @@ ms.custom: mvc,monitor & tune
 ms.workload: sql-database
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 05/07/2017
 ms.author: janeng
 ms.translationtype: Human Translation
@@ -20,7 +20,6 @@ ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
 ms.openlocfilehash: f9ae96cdc80c347593f229cb2fce3f2d4d8e7caf
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/15/2017
-
 
 ---
 # <a name="troubleshoot-performance-issues-and-optimize-your-database"></a>パフォーマンスの問題のトラブルシューティングとデータベースの最適化

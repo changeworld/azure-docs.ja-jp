@@ -6,10 +6,10 @@ author: seanli1988
 ms.author: seal
 manager: janders
 editor: jasonwhowell
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
 ms.devlang: C++
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 08/03/2017
 ms.translationtype: HT
 ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
