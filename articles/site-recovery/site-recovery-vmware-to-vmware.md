@@ -1,5 +1,5 @@
 ---
-title: "VMVware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
+title: "VMware VM または物理サーバーを別のサイトにレプリケートする (Azure クラシック ポータル) | Microsoft Docs"
 description: "VMware VM または Windows/Linux 物理サーバーを Azure Site Recovery を使用してセカンダリ サイトにレプリケートする場合は、この記事を参照してください。"
 services: site-recovery
 documentationcenter: 
