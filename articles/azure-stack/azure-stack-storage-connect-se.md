@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 7/24/2017
 ms.author: xiaofmao
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 3178f596703ee880caef4d9788040fe39ccf4f23
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 3c1ee7665da41c0fae9ddd492127495fe7e5581b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Connect Storage Explorer to an Azure Stack subscription
@@ -76,40 +76,19 @@ Now you are ready to connect Storage Explorer to an Azure Stack subscription.
 
     ![Add an Azure Stack account][29]
 
-9. In the **Connect to Azure Storage** dialog box, under **Azure environment**, select **Create Custom Environment**, and then click **Next**.
+9. In the **Connect to Azure Storage** dialog box, under **Azure environment**, select **Use Azure Stack Environment**, and then click **Next**.
 
-10. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to a Custom Cloud Environment** dialog box.  
+10. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to Azure Stack Environment** dialog box.  
 
     The details for each field are as follows:
 
     * **Environment name**: The field can be customized by user.
-    * **Authority**: The value should be https://login.microsoftonline.com.
-    * **Sign in resource id**: Retrieve the value by running one of the following PowerShell scripts:
-
-        If you are a cloud operator:
-
-        ```powershell
-        (Invoke-RestMethod `
-         -Uri https://adminmanagement.local.azurestack.external/metadata/endpoints?api-version=1.0 `
-         -Method Get).authentication.audiences[0]
-        ```
-
-        If you are a user:
-
-        ```powershell
-        (Invoke-RestMethod `
-         -Uri https://management.local.azurestack.external/metadata/endpoints?api-version=1.0 `
-         -Method Get).authentication.audiences[0]
-        ```
-
-    * **Graph endpoint**: The value should be https://graph.windows.net.
-    * **ARM resource id**: Use the same value as **Sign in resource id**.
     * **ARM resource endpoint**: The samples of Azure Resource Manager resource endpoints:
 
         * For cloud operator:<br> https://adminmanagement.local.azurestack.external   
         * For tenant:<br> https://management.local.azurestack.external
  
-    * **Tenant Ids**: Optional. The value is given only when the directory must be specified.
+    * **Tenant Id**: Optional. The value is given only when the directory must be specified.
 
 12. After you successfully sign in with an Azure Stack account, the left pane is populated with the Azure Stack subscriptions associated with that account. Select the Azure Stack subscriptions that you want to work with, and then select **Apply**. (Selecting or clearing the **All subscriptions** check box toggles selecting all or none of the listed Azure Stack subscriptions.)
 
