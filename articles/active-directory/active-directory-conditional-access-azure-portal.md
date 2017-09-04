@@ -13,21 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/02/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0f7e00d1fe6e47e4a04eb2853f09e195a03405ce
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 20572ecbde79bc2722f3a25f297c92d8e722a3e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
-
-> [!div class="op_single_selector"]
-> * [Azure Portal](active-directory-conditional-access-azure-portal.md)
-> * [Azure クラシック ポータル](active-directory-conditional-access.md)
 
 モバイル ファースト、クラウド ファーストの世界で、Azure Active Directory を使用してデバイス、アプリ、およびサービスにどこからでもサインオンできます。 デバイス (BYOD を含みます) や企業ネットワーク外での作業、サードパーティが提供する SaaS アプリの急増によって、IT プロフェッショナルは、次の 2 つの対立する目標を達成することを迫られています。
 
@@ -73,11 +69,11 @@ Azure Active Directory の現在の実装では、次の許可コントロール
 
 - **多要素認証**: 多要素認証による強力な認証を要求できます。 プロバイダーとして、Azure Multi-Factor またはオンプレミスの多要素認証プロバイダーを Active Directory Federation Services (AD FS) と組み合わせて使用できます。 多要素認証を使用すると、承認されていないユーザーが有効なユーザーの資格情報を入手してリソースにアクセスするのを防ぐことができます。
 
-- **準拠デバイス**: 条件付きアクセス ポリシーをデバイス レベルで設定できます。 準拠しているコンピューターのみ、またはモバイル デバイス管理アプリケーションに登録されているモバイル デバイスのみが組織のリソースにアクセスできるポリシーを設定できます。 たとえば、ユーザーがアプリケーションへのアクセスを試みたときに、Intune を使用してデバイスの準拠を確認し、その結果を Azure AD に報告することができます。 Intune を使用してアプリとデータを保護する方法の詳細なガイダンスについては、「Microsoft Intune でアプリとデータを保護する」を参照してください。 また、Intune を使用して紛失したデバイスや盗難されたデバイスのデータ保護を適用することもできます。 詳細については、「Microsoft Intune のフル ワイプまたは選択的ワイプを使用してデータを保護する」を参照してください。
+- **準拠デバイス**: 条件付きアクセス ポリシーをデバイス レベルで設定できます。 準拠しているコンピューターのみ、またはモバイル デバイス管理に登録されているモバイル デバイスのみが組織のリソースにアクセスできるポリシーを設定できます。 たとえば、ユーザーがアプリケーションへのアクセスを試みたときに、Intune を使用してデバイスの準拠を確認し、その結果を Azure AD に報告することができます。 Intune を使用してアプリとデータを保護する方法の詳細なガイダンスについては、「[Microsoft Intune でアプリとデータを保護する](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)」を参照してください。 また、Intune を使用して紛失したデバイスや盗難されたデバイスのデータ保護を適用することもできます。 詳細については、「 [Help protect your data with full or selective wipe using Microsoft Intune (Microsoft Intune を使用した全体または選択的ワイプによるデータの保護)](https://docs.microsoft.com/intune-classic/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)」を参照してください。
 
-- **ドメイン参加済みデバイス**: Azure Active directory に接続するために使用しているデバイスがドメインに参加しているデバイスであることを要求できます。 このポリシーは、Windows のデスクトップ、ノート PC、およびエンタープライズ タブレットに適用されます。 Azure AD へのドメイン参加済みデバイスの自動登録をセットアップする方法の詳細については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動デバイス登録](active-directory-conditional-access-automatic-device-registration.md)」を参照してください。
+- **ドメイン参加済みデバイス**: Azure Active directory に接続するために使用しているデバイスがオンプレミスの Active Directory (AD) のドメインに参加済みであることを要求できます。 このポリシーは、Windows のデスクトップ、ノート PC、およびエンタープライズ タブレットに適用されます。 
 
-条件付きアクセス ポリシーで複数の要件を選択した場合は、それらの適用方法を構成できます。 選択したコントロールをすべて適用するか、いずれかを適用することを選択できます。
+複数のコントロールを選択した場合は、ポリシーの処理時にそれらのすべてを適用する必要があるかどうかを構成することもできます。
 
 ![コントロール](./media/active-directory-conditional-access-azure-portal/06.png)
 
@@ -137,10 +133,19 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ### <a name="device-platforms"></a>デバイス プラットフォーム
 
-デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます (Android、iOS、Windows Phone、Windows)。 ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
-デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
+デバイス プラットフォームは、デバイスで実行されているオペレーティング システムによって分類されます。
+
+- Android
+- iOS
+- Windows Phone
+- Windows
+- macOS (プレビュー) 
 
 ![条件](./media/active-directory-conditional-access-azure-portal/02.png)
+
+ポリシーの対象とするデバイス プラットフォームだけでなく、ポリシーから除外するデバイス プラットフォームも定義できます。  
+デバイス プラットフォームをポリシーで使用するには、構成トグル スイッチを **[はい]** に変更してから、ポリシーを適用するデバイス プラットフォームを選択します (すべてを選択するか、個別に選択します)。 デバイス プラットフォームを個別に選択した場合、ポリシーは、選択したプラットフォームにのみ影響します。 この場合、サポートされているその他のプラットフォームへのサインインがポリシーに影響されることはありません。
+
 
 ### <a name="locations"></a>場所
 
@@ -198,4 +203,4 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 
-条件付きアクセス ポリシーを構成するときに知っておくべきことと避けるべきことについては、次をご覧ください。 
+環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
