@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 750dd6c3b50a15d566d170390ac5faa0cb11a628
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: c2cae6129386260f2bf35f75d44fa001f7541d40
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 08/17/2017
 
 ## <a name="prerequisites-for-the-walkthrough"></a>このチュートリアルの前提条件
 
-* profiler エージェントを VM ([WindowsVirtualMachine.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json)) またはスケール セット ([WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json)) にインストールするデプロイメント Resource Manager テンプレート。
+* profiler エージェントを VM ([WindowsVirtualMachine.json](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)) またはスケール セット ([WindowsVirtualMachineScaleSet.json](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json)) にインストールするデプロイメント Resource Manager テンプレート。
 
 * プロファイリングのために有効化されている Application Insights インスタンス。 手順については、「[プロファイルを有効にする](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-profiler#enable-the-profiler)」を参照してください。
 
@@ -51,7 +51,8 @@ New-AzureRmResourceGroup -Name "Replace_With_Resource_Group_Name" -Location "Rep
 ![[Application Insights] ブレード](./media/enable-profiler-compute/createai.png)
 
 ## <a name="apply-an-application-insights-instrumentation-key-in-the-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの Application Insights のインストルメンテーション キーを適用する
-1. テンプレートをまだダウンロードしていない場合は、[GitHub](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachine.json)からダウンロードしてください。
+
+1. テンプレートをまだダウンロードしていない場合は、[GitHub](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachine.json)からダウンロードしてください。
 
 2. Application Insights キーを見つけます。
    
@@ -191,7 +192,7 @@ Azure VM にアプリケーションを公開するにはいくつかの方法�
 ```
 
 ## <a name="enable-the-profiler-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットで Profiler を有効にする
-Profiler を有効にする方法を確認するには、[WindowsVirtualMachineScaleSet.json](https://github.com/CFreemanwa/samples/blob/master/WindowsVirtualMachineScaleSet.json) テンプレートをダウンロードします。 VM テンプレートと同じ変更を、仮想マシン スケール セットの診断拡張リソースに適用します。
+Profiler を有効にする方法を確認するには、[WindowsVirtualMachineScaleSet.json](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/WindowsVirtualMachineScaleSet.json) テンプレートをダウンロードします。 VM テンプレートと同じ変更を、仮想マシン スケール セットの診断拡張リソースに適用します。
 
 スケール セット内の各インスタンスが、インターネットにアクセスできることを確認します。 これで、Profiler Agent は、収集されたサンプルを、表示と分析のために Application Insights に送信できます。
 
@@ -205,7 +206,7 @@ Profiler を有効にする方法を確認するには、[WindowsVirtualMachineS
 ### <a name="provision-the-service-fabric-cluster-to-have-the-azure-diagnostics-extension-that-installs-the-profiler-agent"></a>Profiler Agent をインストールする Azure 診断拡張を持つように Service Fabric クラスターをプロビジョニングします。
 Service Fabric クラスターはセキュリティ保護するかしないかを選択できます。 1 つのゲートウェイ クラスターをセキュリティ保護なしの設定にすることで、アクセスするための証明書を不要にすることができます。 ビジネス ロジックとデータをホストするクラスターは、セキュリティで保護する必要があります。 Profiler は、セキュリティ保護されている Service Fabric クラスターとセキュリティ保護されていない Service Fabric クラスターの両方で有効にすることができます。 このチュートリアルでは、Profiler を有効にするために必要な変更を説明する目的で、セキュリティ保護されていないクラスターを例として使用しています。 セキュリティ保護されたクラスターも同じ方法でプロビジョニングできます。
 
-1. [ServiceFabricCluster.json](https://github.com/CFreemanwa/samples/blob/master/ServiceFabricCluster.json) をダウンロードします。 VM と仮想マシン スケール セット用の操作と同じように、`Application_Insights_Key` を Application Insights キーで置き換えます。
+1. [ServiceFabricCluster.json](https://github.com/Azure/azure-docs-json-samples/blob/master/application-insights/ServiceFabricCluster.json) をダウンロードします。 VM と仮想マシン スケール セット用の操作と同じように、`Application_Insights_Key` を Application Insights キーで置き換えます。
 
    ```
    "publisher": "AIP.Diagnostics.Test",

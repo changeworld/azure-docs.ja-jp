@@ -4,7 +4,7 @@ description: "C# を使用して Azure Functions を開発する方法につい�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 1d0143d72ab18deeba7a32cc732445cc7ba64019
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 25c5f72be8dc79d8b33a598c7be494bd955eb850
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Azure Functions C# スクリプト開発者向けリファレンス
@@ -178,7 +177,7 @@ public static Task<HttpResponseMessage> Run(HttpRequestMessage req, TraceWriter 
 * `Microsoft.Azure.WebJobs.Host`
 * `Microsoft.Azure.WebJobs.Extensions`
 * `System.Web.Http`
-* `System.Net.Http.Formatting`」を参照してください。
+* `System.Net.Http.Formatting`
 
 次のアセンブリは、単純な名前で参照できます (たとえば、`#r "AssemblyName"`)。
 
@@ -446,3 +445,4 @@ public static async Task Run(string input, Binder binder)
 * [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
 
 [host\.json]: https://github.com/Azure/azure-webjobs-sdk-script/wiki/host.json
+

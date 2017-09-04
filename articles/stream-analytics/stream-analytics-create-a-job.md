@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 4c6950cee71477700b92c3ad5493737821fabec0
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 05fdf1e20efd129cdfc27e1d37bc9e124edf5dcd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-create-a-data-analytics-processing-job-for-stream-analytics"></a>Stream Analytics のデータ分析処理ジョブを作成する方法
@@ -51,7 +51,7 @@ Stream Analytics の使用を開始するには、まず新しい Stream Analyti
    ![Azure ポータルのデータ分析処理ジョブの状態](./media/stream-analytics-create-a-job/6-stream-analytics-create-a-job.png)  
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

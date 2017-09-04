@@ -4,7 +4,7 @@ description: "このドキュメントでは、メディア エンコーダー �
 services: media-services
 documentationcenter: 
 author: xstof
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 1ba52865-b4a8-4ca0-ac96-920d55b9d15b
 ms.service: media-services
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: christoc;xpouyat;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 602f86f17baffe706f27963e8d9963f082971f54
-ms.openlocfilehash: 5cb610b4b2387af48ef29acdcc5e40e154f515a7
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 565497bd5a35e3c4d69d29512307cf3ca2364bdd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="advanced-media-encoder-premium-workflow-tutorials"></a>高度なメディア エンコーダー プレミアム ワークフローのチュートリアル
@@ -510,7 +510,7 @@ Azure Media Services の動的パッケージング機能と連動させるた�
 *トリミングの追加先となる出発点のワークフロー*
 
 ### <a id="time_based_trim_use_stream_trimmer"></a>ストリーム トリマーの使用
-ストリーム トリマー コンポーネントを使用すると、入力ストリームの開始と終了をタイミング情報 (秒、分など) に基づいてトリミングすることができます。 フレーム ベースのトリミングは、このトリマーではサポートされません。
+ストリーム トリマー コンポーネントを使用すると、入力ストリームの開始と終了をタイミング情報 (秒、分など) に基づいてトリミングすることができます。フレーム ベースのトリミングは、このトリマーではサポートされません。
 
 ![ストリーム トリマー](./media/media-services-media-encoder-premium-workflow-tutorials/media-services-stream-trimmer.png)
 
@@ -596,7 +596,7 @@ processInputScript の内容を消去し、realizeScript のエディターを�
 
 *Hello world のログ出力*
 
-先ほど node オブジェクトの log メソッドを呼び出しましたが、この node オブジェクトが参照しているのは、現在の "ノード"、つまりスクリプトの作成先となっているコンポーネントです。 このように、すべてのコンポーネントにはログ データを出力する機能があり、[システム] タブからそのログにアクセスすることができます。 この例では、"hello world" という文字列リテラルを出力しました。 スクリプトが "実際に何をしているか" について深く知ることができるという点で、これはきわめて優れたデバッグ ツールといえます。
+先ほど node オブジェクトの log メソッドを呼び出しましたが、この node オブジェクトが参照しているのは、現在の "ノード"、つまりスクリプトの作成先となっているコンポーネントです。 このように、すべてのコンポーネントにはログ データを出力する機能があり、[システム] タブからそのログにアクセスすることができます。この例では、"hello world" という文字列リテラルを出力しました。 スクリプトが "実際に何をしているか" について深く知ることができるという点で、これはきわめて優れたデバッグ ツールといえます。
 
 このスクリプト環境内から、他のコンポーネントのプロパティにアクセスすることもできます。 次のコードを実行してみてください。
 

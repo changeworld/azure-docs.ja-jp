@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: ce1857395176ef50a16a7291170fb220896fd792
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 5c4bcda308f001572e1c34e991616fc209250a02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="nosql-tutorial-build-a-documentdb-api-java-console-application"></a>NoSQL チュートリアル: DocumentDB API Java コンソール アプリケーションの作成
@@ -82,11 +82,11 @@ Azure Cosmos DB Java SDK 用 DocumentDB API の NoSQL チュートリアルへ�
 ## <a id="Connect"></a>手順 3: Azure Cosmos DB アカウントに接続する
 次に、[Azure Portal](https://portal.azure.com) に戻り、エンドポイントとプライマリ マスター キーを取得します。 Azure Cosmos DB のエンドポイントとプライマリ キーは、アプリケーションが接続先を認識し、Azure Cosmos DB がアプリケーションの接続を信頼するために必要です。
 
-Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `<your endpoint URI>` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `<your key>`に貼り付けます。
+Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** をクリックします。 ポータルから URI をコピーし、Program.java ファイルの `https://FILLME.documents.azure.com` に貼り付けます。 次に、ポータルからプライマリ キーをコピーし、 `FILLME`に貼り付けます。
 
     this.client = new DocumentClient(
-        "<your endpoint URI>",
-        "<your key>"
+        "https://FILLME.documents.azure.com",
+        "FILLME"
         , new ConnectionPolicy(),
         ConsistencyLevel.Session);
 

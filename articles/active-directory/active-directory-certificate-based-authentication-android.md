@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/28/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: d37f0fcf4c91879c31b04dfd19cadee00e98ba91
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 239d2e1724f2759a52cccdac11fc781d57393125
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-android"></a>Android での Azure Active Directory の証明書ベースの認証
@@ -41,15 +41,15 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 ## <a name="office-mobile-applications-support"></a>Office モバイル アプリケーションのサポート
 | アプリケーション | サポート |
 | --- | --- |
-| Word/Excel/PowerPoint |![○][1] |
+| Azure Information Protection アプリ |![○][1] |
+| Microsoft Teams |![○][1] |
 | OneNote |![○][1] |
 | OneDrive |![○][1] |
 | Outlook |![○][1] |
-| Yammer |![○][1] |
+| Power BI |![○][1] |
 | Skype for Business |![○][1] |
-| Azure Information Protection アプリ |![○][1] |
-| Microsoft Teams |![○][1] |
-
+| Word/Excel/PowerPoint |![○][1] |
+| Yammer |![○][1] |
 
 
 ### <a name="implementation-requirements"></a>実装要件

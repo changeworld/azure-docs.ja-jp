@@ -2,7 +2,7 @@
 title: "Media Encoder Standard スキーマ | Microsoft Docs"
 description: "このトピックでは、Media Encoder Standard スキーマの概要を示します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: 13a3da67da28a1cdebd784e9e33021bb2c2668ce
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c9333e745c75f134e045ee6d15c3552449d8edc3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard スキーマ
@@ -64,7 +64,7 @@ ms.lasthandoff: 07/26/2017
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。 これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。|
+| **Condition** |**xs:string** | 入力に映像が含まれていない場合、モノクロのビデオ トラックを挿入するようエンコーダーに強制できます。これを実行するには、Condition="InsertBlackIfNoVideoBottomLayerOnly" (最も低いビットレートでのみビデオを挿入) または Condition="InsertBlackIfNoVideo" (すべてのビットレートでビデオを挿入) を使用します。 詳細については、 [こちらの](media-services-advanced-encoding-with-mes.md#no_video) トピックを参照してください。|
 
 ## <a name="H264Layers"></a> H264Layers
 

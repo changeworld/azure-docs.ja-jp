@@ -3,8 +3,8 @@ title: "BLOB ストレージと Visual Studio 接続済みサービスの概要 
 description: "Visual Studio 接続済みサービスを使用して Azure Storage に接続した後、Web ジョブ プロジェクトで BLOB ストレージの使用を開始する方法について説明します。"
 services: storage
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 324c9376-0225-4092-9825-5d1bd5550058
 ms.service: storage
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vs-getting-started
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 6ef7bff5dcf58cfb26e3d3fa39204ae61e69e400
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: a50a265feff8c0aec28825eb0bc4e33585ea5a02
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure BLOB ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
@@ -85,7 +86,7 @@ ms.openlocfilehash: 6ef7bff5dcf58cfb26e3d3fa39204ae61e69e400
 * **ICloudBlob**
 * **CloudBlockBlob**
 * **CloudPageBlob**
-*  [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
+* [ICloudBlobStreamBinder](#getting-serialized-blob-content-by-using-icloudblobstreambinder)
 
 Azure ストレージ アカウントを直接操作する場合は、メソッド シグネチャに **CloudStorageAccount** パラメーターを追加することもできます。
 
@@ -219,10 +220,5 @@ BLOB を強制的に再処理する場合は、 *azure-webjobs-hosts* コンテ�
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure BLOB を操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

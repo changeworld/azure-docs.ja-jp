@@ -3,8 +3,8 @@ title: "Azure での TFS を使用したクラウド サービスの継続的な
 description: "Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。 MSBuild コマンド ライン ステートメントおよび PowerShell スクリプトのコード サンプル。"
 services: cloud-services
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: 4f3c93c6-5c82-4779-9d19-7404a01e82ca
 ms.service: cloud-services
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/12/2017
-ms.author: tarcher
+ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f18605ec638a628805f5bd1c7207e9d874f104f3
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>Azure での Cloud Services の継続的な配信
@@ -85,7 +85,7 @@ Azure パッケージをビルドするために TFS を構成するには、次
 2. **[トリガー]** タブを選択し、パッケージのビルドを実行する条件を指定します。 たとえば、ソース管理でチェックインが実行されるたびにパッケージをビルドするには、 **[継続的インテグレーション]** を指定します。
 3. **[ソースの設定]** タブをクリックします。プロジェクト フォルダーが **[ソース管理フォルダー]** 列に表示されていて、状態が **[アクティブ]** になっていることを確認します。
 4. **[ビルドの既定値]** タブをクリックします。[ビルド コントローラー] で、ビルド サーバーの名前を確認します。  さらに、**[ビルド出力を次の格納フォルダーにコピーする]** オプションを選択し、目的の格納場所を指定します。
-5. **[プロセス]** タブを選択します。 [プロセス] タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの **[ビルド]** セクションの **[詳細設定]** セクションを展開します。
+5. **[プロセス]** タブを選択します。[プロセス] タブで、既定のテンプレートを選択します。**[ビルド]** で、プロジェクトがまだ選択されていない場合はこれを選択し、グリッドの **[ビルド]** セクションの **[詳細設定]** セクションを展開します。
 6. **[MSBuild 引数]** を選択し、上の手順 2. で説明したように適切な MSBuild コマンド ライン引数を設定します。 たとえば、パッケージをビルドしてパッケージ ファイルを \\\\myserver\\drops\\ にコピーするには、「**/t:Publish /p:PublishDir=\\\\myserver\\drops\\**」と入力します。
 
    ![MSBuild arguments][2]

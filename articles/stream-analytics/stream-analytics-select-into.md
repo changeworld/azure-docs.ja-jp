@@ -4,7 +4,7 @@ description: "Stream Analytics で SELECT INTO ステートメントを使用し
 keywords: 
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 9952e2cf-b335-4a5c-8f45-8d3e1eda2e20
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 04/20/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 5d782e2a23c76a95f5fa1e1f9c78369feb4e051b
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 6ffa756eef0cfa44d7dd397e43afbf054ac2df7a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="debug-queries-by-using-select-into-statements"></a>SELECT INTO ステートメントを使用したクエリのデバッグ
@@ -76,7 +75,7 @@ Azure Stream Analytics ジョブの次のサンプル クエリには、1 つの
 
 ## <a name="get-help"></a>問い合わせ
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

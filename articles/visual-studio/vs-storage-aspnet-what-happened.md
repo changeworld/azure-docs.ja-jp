@@ -3,8 +3,8 @@ title: "ASP.NET プロジェクトの変更点 | Microsoft Docs"
 description: "Visual Studio 接続済みサービスを使用して ASP.NET プロジェクトに Azure Storage を追加した後の変更点について説明します。"
 services: storage
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: e1fe1b6d-4e3d-476d-8b2f-f7ade050515e
 ms.service: storage
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 086c2259aa4686e82f5fd121c4545f573c378414
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 680960f51201a98c81db4bce3615e1602e795651
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-happened-to-my-aspnet-project-visual-studio-azure-storage-connected-service"></a>ASP.NET プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
@@ -38,10 +39,5 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの web.config ファイル内に要素が作成されました。
 
 詳細については、「 [ASP.NET](http://www.asp.net)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 964b39053cf91285202f3af165f4313a15e9f9ee
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: feee7a5c91d213a6b0bfdaf264a4da4d9e79cbe7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="ssh-support-for-azure-web-app-on-linux"></a>Azure App Service Web Apps on Linux での SSH のサポート
@@ -111,7 +111,6 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
 ## <a name="next-steps"></a>次のステップ
 Web App on Linux の詳細については、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-* [Azure Web App on Linux でアプリを作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure Web App on Linux 向けにカスタム Docker イメージを使用する方法](app-service-linux-using-custom-docker-image.md)
 * [Azure Web App on Linuxで Node.js の PM2 構成を使用する](app-service-linux-using-nodejs-pm2.md)
 * [Azure Web App on Linux で .NET Core を使用する](app-service-linux-using-dotnetcore.md)

@@ -383,7 +383,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 ## <a name="get-support"></a>サポートを受ける
 
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 

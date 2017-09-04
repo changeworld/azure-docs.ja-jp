@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: ea8f28183f2621e25a53ea7a73ab9f6c5c2b8d07
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8bdbcf78f2892cbd1e1cc09cef220dff08dd9490
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="add-a-streaming-data-input-or-reference-data-to-a-stream-analytics-job"></a>Stream Analytics ジョブへのストリーミング データ入力または参照データの追加
 Event Hubs からのストリーミング データ入力または BLOB ストレージの参照データとしてデータ ソースを Stream Analytics ジョブに接続する方法について説明します。
 
-Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。 データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。 Stream Analytics は、ジョブ サブスクリプションの内外の [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) および [Azure BLOB Storage](../storage/storage-dotnet-how-to-use-blobs.md) と高度に統合されています。
+Azure Stream Analytics ジョブを 1 つ以上のデータ入力に接続できます。各データ入力では、既存のデータ ソースへの接続が定義されています。 データがそのデータ ソースに送信されると、Stream Analytics ジョブによって使用され、リアルタイムでストリーミング データとして処理されます。 Stream Analytics は、ジョブ サブスクリプションの内外の [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) および [Azure BLOB Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) と高度に統合されています。
 
 この記事は、 [Stream Analytics のラーニング パス](/documentation/learning-paths/stream-analytics/)の 1 ステップです。
 
@@ -74,7 +74,7 @@ Stream Analytics ジョブに入力を追加するには:
     ![ストリーミング データ入力のテスト接続](./media/stream-analytics-add-inputs/11-stream-analytics-add-inputs.png)  
 
 ## <a name="get-help-with-streaming-data-inputs"></a>ストリーミング データ入力に関するヘルプ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

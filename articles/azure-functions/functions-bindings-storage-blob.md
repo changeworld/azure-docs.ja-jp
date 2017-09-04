@@ -4,7 +4,7 @@ description: "Azure Functions で Azure Storage のトリガーとバインド�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 24ca844007acf445455714c9a530bfe1ad9a9c32
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b123578dbac48018f674f85ec923e4c6e65fb9f8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions における Blob Storage のバインディング
@@ -214,7 +214,8 @@ module.exports = function(context) {
     context.done();
 };
 ```
-<a name="outputusage"></a> <a name=storage-blob-output-binding"></a>
+<a name="outputusage"></a>
+<a name="storage-blob-output-binding"></a>
 
 ## <a name="using-a-blob-output-binding"></a>BLOB 出力バインドの使用
 

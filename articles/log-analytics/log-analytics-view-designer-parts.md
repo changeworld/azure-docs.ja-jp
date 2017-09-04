@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: c1e0f89e2447189c7422368f1ccf7355aac6065b
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 40a6101576708936404447576d704a49666143fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Log Analytics ビュー デザイナー視覚エフェクト パーツのリファレンス
@@ -30,7 +30,7 @@ Log Analytics のビュー デザイナーを使用すると、OMS コンソー�
 * [タイル リファレンス](log-analytics-view-designer-tiles.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語で](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)記述する必要があります。  ワークスペースのアップグレード前に作成されたすべてのビューは、自動的に変換されます。
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語で](https://go.microsoft.com/fwlink/?linkid=856078)記述する必要があります。  ワークスペースのアップグレード前に作成されたすべてのビューは、自動的に変換されます。
 
 次の表では、ビュー デザイナーで使用できるさまざまな種類のタイルについて説明します。  その後のセクションで、各タイルの種類の詳細とそのプロパティについて説明します。
 

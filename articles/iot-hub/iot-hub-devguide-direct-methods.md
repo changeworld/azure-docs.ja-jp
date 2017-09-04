@@ -12,15 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/05/2017
+ms.date: 08/25/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 52f19377d89d92111b44ec4ffd2795d12c930457
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 77e788a32097edbcb1cd4faaa45f35812eabd94a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
