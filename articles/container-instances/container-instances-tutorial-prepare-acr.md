@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/19/2017
+ms.date: 08/24/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: 7ec6c7fd2125293ba47a48feb83250eeb667d1a6
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: cc96ba9f5abd45a7503ba3327b30e1f809391384
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -60,32 +60,12 @@ az acr create --resource-group myResourceGroup --name mycontainerregistry082 --s
 
 このチュートリアルの残りの部分では、選択したコンテナー レジストリ名のプレースホルダーとして `<acrname>` を使用します。
 
-## <a name="get-azure-container-registry-information"></a>Azure Container Registry 情報の取得
+## <a name="container-registry-login"></a>Container Registry のログイン
 
-コンテナー レジストリが作成されると、そのログイン サーバーとパスワードにクエリを実行できます。 次のコードでは、こうした値が返されます。 ログイン サーバーとパスワードの値をメモします。これらの値はこのチュートリアル全体で参照されます。
-
-コンテナー レジストリ ログイン サーバー (レジストリ名で更新):
+イメージをプッシュする前に、ACR のインスタンスにログインする必要があります。 [az acr login](https://docs.microsoft.com/en-us/cli/azure/acr#login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意の名前が必要です。
 
 ```azurecli
-az acr show --name <acrName> --query loginServer
-```
-
-このチュートリアルの残りの部分では、コンテナー レジストリ ログイン サーバーの値のプレースホルダーとして `<acrLoginServer>` を使用します。
-
-コンテナー レジストリ パスワード:
-
-```azurecli
-az acr credential show --name <acrName> --query "passwords[0].value"
-```
-
-このチュートリアルの残りの部分では、コンテナー レジストリ パスワードの値のプレースホルダーとして `<acrPassword>` を使用します。
-
-## <a name="login-to-the-container-registry"></a>コンテナー レジストリへのログイン
-
-イメージをプッシュする前に、コンテナー レジストリ インスタンスにログインする必要があります。 [docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して、操作を完了します。 docker login を実行するときは、レジストリ ログイン サーバーの名前と資格情報を入力する必要があります。
-
-```bash
-docker login --username=<acrName> --password=<acrPassword> <acrLoginServer>
+az acr login --name <acrName>
 ```
 
 このコマンドは、完了すると 'Login Succeeded’(ログインに成功しました) というメッセージを返します。
@@ -105,6 +85,12 @@ docker images
 ```bash
 REPOSITORY                   TAG                 IMAGE ID            CREATED              SIZE
 aci-tutorial-app             latest              5c745774dfa9        39 seconds ago       68.1 MB
+```
+
+loginServer 名を取得するには、次のコマンドを実行します。
+
+```azurecli
+az acr show --name <acrName> --query loginServer --output table
 ```
 
 コンテナー レジストリの loginServer で *aci-tutorial-app* イメージにタグを付けます。 また、イメージ名の末尾に `:v1` を付加します。 このタグは、イメージのバージョン番号を示します。
@@ -142,7 +128,7 @@ docker push <acrLoginServer>/aci-tutorial-app:v1
 Azure Container Registry にプッシュされたイメージの一覧を返すには、[az acr repository list](/cli/azure/acr/repository#list) コマンドを使用します。 コンテナー レジストリ名でコマンドを更新します。
 
 ```azurecli
-az acr repository list --name <acrName> --username <acrName> --password <acrPassword> --output table
+az acr repository list --name <acrName> --output table
 ```
 
 出力:
@@ -156,7 +142,7 @@ aci-tutorial-app
 次に特定のイメージのタグを表示するには、[az acr repository show-tags](/cli/azure/acr/repository#show-tags) コマンドを使用します。
 
 ```azurecli
-az acr repository show-tags --name <acrName> --username <acrName> --password <acrPassword> --repository aci-tutorial-app --output table
+az acr repository show-tags --name <acrName> --repository aci-tutorial-app --output table
 ```
 
 出力:

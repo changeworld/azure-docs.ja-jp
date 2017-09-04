@@ -1,12 +1,12 @@
 ---
 title: "Azure ID 管理の基礎 | Microsoft Docs"
-description: 
+description: "ユーザーが企業のアプリケーションやデータにいつ、どのようにアクセスしたかを制御し可視化する最良の方法は、現時点ではクラウド ベース識別です。"
 keywords: 
 author: jeffgilb
 manager: femila
 ms.reviewr: jsnow
 ms.author: jeffgilb
-ms.date: 7/5/2017
+ms.date: 07/05/2017
 ms.topic: article
 ms.prod: 
 ms.service: azure
@@ -14,10 +14,10 @@ ms.technology:
 ms.assetid: 
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4b2e8d17811df58fdc628de7140cdb0a4800476d
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 52f05ee8a5c07fc008da40aef12d1ad8e8136429
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="fundamentals-of-azure-identity-management"></a>Azure ID 管理の基礎
@@ -37,7 +37,7 @@ Microsoft は、どこでも使用できる ID だけでなく、組織の IT �
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>オンプレミスの Active Directory を Azure AD と Office 365 に接続する
 オンプレミスの Active Directory に大規模な投資を行った組織は、オンプレミスのディレクトリと Azure AD を[ハイブリッド ID 管理](https://docs.microsoft.com/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview)に統合することによって、その投資をクラウドに拡張することができます。 こうすると、場所に関係なくリソースにアクセスするための共通 ID を提供できるため、ユーザーの生産性が向上します。 ユーザーと組織は、シングル サインオン (SSO) を使用して、オンプレミス リソースとクラウド サービス (Office 365 など) の両方にアクセスできます。
 
-[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) は、統合の実施に必要な唯一のツールです。 Azure AD Connect は、ID 同期のニーズをサポートするための機能を備えた、DirSync や Azure AD Sync などの古いバージョンの ID 統合ツールに代わる機能です。 Azure AD Connect を使用すると、次の機能によってオンプレミスと Azure AD 間の ID 管理と同期が可能になります。
+[Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) は、統合の実施に必要な唯一のツールです。 Azure AD Connect は、ID 同期のニーズをサポートするための機能を備えた、DirSync や Azure AD Sync などの古いバージョンの ID 統合ツールに代わる機能です。Azure AD Connect を使用すると、次の機能によってオンプレミスと Azure AD 間の ID 管理と同期が可能になります。
 
 - 同期 - ユーザーやグループなどのオブジェクトを作成するためのコンポーネントです。 さらに、オンプレミス ユーザーやオンプレミス グループの ID 情報をクラウド側と一致させる働きをします。 ユーザーが Azure AD でパスワードを更新したときにオンプレミスのディレクトリを同期した状態にしておくために、パスワード ライトバックも有効にすることができます。
 - AD FS - フェデレーションは Azure AD Connect によって提供されるオプション機能です。オンプレミスの AD FS インフラストラクチャを使用することで、ハイブリッド環境を構成できます。 シングル サインオンや AD サインイン ポリシーの適用、スマート カードやサード パーティの MFA など、複雑なデプロイに対応する組織でフェデレーションを利用できます。

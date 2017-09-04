@@ -2,7 +2,7 @@
 title: "Media Services .NET SDK を使用するアセットと関連エンティティの管理"
 description: "Media Services SDK for .NET を使用してアセットと関連エンティティを管理する方法について説明します。"
 author: juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e3de7c26af5cbc930defe542727a1250825fb1f8
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 5efe16a09808267d0797521f9e1df2b60aec9cbb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="managing-assets-and-related-entities-with-media-services-net-sdk"></a>Media Services .NET SDK を使用するアセットと関連エンティティの管理
@@ -38,8 +38,7 @@ ms.lasthandoff: 07/21/2017
 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 
 ## <a name="get-an-asset-reference"></a>アセット参照を取得する
-頻繁に実行するタスクでは、Media Services の既存のアセットへの参照を取得します。 次のコード例では、アセット ID に基づいて、サーバー コンテキスト オブジェクトで Assets コレクションからアセット参照を取得する方法を示します。
-次のコード例では、Linq クエリを使用して、既存の IAsset オブジェクトへの参照を取得します。
+頻繁に実行するタスクでは、Media Services の既存のアセットへの参照を取得します。 次のコード例では、アセット ID に基づいて、サーバー コンテキスト オブジェクトで Assets コレクションからアセット参照を取得する方法を示します。次のコード例では、Linq クエリを使用して、既存の IAsset オブジェクトへの参照を取得します。
 
     static IAsset GetAsset(string assetId)
     {
@@ -95,7 +94,7 @@ ms.lasthandoff: 07/21/2017
 
 ## <a name="get-a-job-reference"></a>ジョブ参照を取得する
 
-Media Services のコードで処理タスクを使用するときは、多くの場合、ID に基づいて既存のジョブへの参照を取得する必要があります。 次のコード例では、Jobs コレクションから IJob オブジェクトへの参照を取得する方法を示します。
+Media Services のコードで処理タスクを使用するときは、多くの場合、ID に基づいて既存のジョブへの参照を取得する必要があります。次のコード例では、Jobs コレクションから IJob オブジェクトへの参照を取得する方法を示します。
 
 実行時間の長いエンコード ジョブを開始するときは、ジョブ参照を取得し、スレッドのジョブの状態を確認する必要があります。 このような場合は、メソッドがスレッドから返されるときに、更新されたジョブ参照を取得する必要があります。
 

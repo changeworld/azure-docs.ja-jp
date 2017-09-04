@@ -4,7 +4,7 @@ description: "Azure App Service Web Apps on Linux で Ruby を使用します。
 keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS, Ruby"
 services: app-service
 documentationCenter: 
-authors: aelnably
+author: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/16/2017
 ms.author: aelnably;wesmc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: ad724b99426c1873c173da905c89b471ee64ffa6
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 56105d1bc153e552e12c0c408c8f6075e4eff9d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -49,7 +48,6 @@ Ruby アプリの作成の詳細については、[ファースト ステップ 
 
 ## <a name="next-steps"></a>次のステップ
 * [Web App on Linux とは何か](app-service-linux-intro.md)
-* [Web App on Linux で Web Apps を作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure App Service へのローカル Git デプロイ](app-service-deploy-local-git.md)
 * [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)
 * [Azure Web App on Linux で Ruby アプリを作成する](app-service-linux-ruby-get-started.md)

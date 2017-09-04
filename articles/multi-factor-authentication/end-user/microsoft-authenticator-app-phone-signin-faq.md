@@ -3,7 +3,7 @@ title: "Microsoft Authenticator で携帯電話からサインインする - Azu
 description: "パスワードを入力する代わりに、携帯電話を使って Microsoft アカウントにサインインします。 この記事では、この機能についてのよく寄せられる質問に回答します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,44 +12,44 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
-ms.author: kgremban
+ms.author: barlan
 ms.reviewer: librown
 ms.custom: end-user
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 002b850221c25111c33c145cb45973488bbbb4e1
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 9fb25f9f26a220c90f82add02fa5bdb954a926c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="sign-in-with-your-phone-not-your-password"></a>パスワードではなく携帯電話でサインインする
 
-Microsoft Authenticator アプリを使うと、パスワードを入力した後で 2 段階認証を実行することにより、アカウントの安全性を維持できます。 さらに、この機能を使うと、個人用 Microsoft アカウントのパスワードを完全に置き換えることができます。 
+Microsoft Authenticator アプリを使うと、パスワードを入力した後で 2 段階認証を実行することにより、アカウントの安全性を維持できます。 さらに、この機能を使うと、個人用 Microsoft アカウントのパスワードを完全に置き換えることができます。
 
-この機能は、iOS および Android デバイスで利用でき、個人の Microsoft アカウントで動作します。 
+この機能は、iOS および Android デバイスで利用でき、個人の Microsoft アカウントで動作します。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-多くのユーザーは、Microsoft アカウントにサインインするときの 2 段階認証用に Microsoft Authenticator アプリを使います。 パスワードを入力した後、アプリに移動して、通知を承認するか、検証コードを取得します。 携帯電話でのサインインでは、パスワードの入力を省略し、ID 確認のすべての操作を携帯電話で行うことができます。 携帯電話でのサインインは 2 段階認証であるため、本人確認には引き続き "知っていること" と "持っているもの" を指定する必要があります。 携帯電話が "持っているもの" で、携帯電話の PIN または生体認証キーは "知っていること" です。 
+多くのユーザーは、Microsoft アカウントにサインインするときの 2 段階認証用に Microsoft Authenticator アプリを使います。 パスワードを入力した後、アプリに移動して、通知を承認するか、検証コードを取得します。 携帯電話でのサインインでは、パスワードの入力を省略し、ID 確認のすべての操作を携帯電話で行うことができます。 携帯電話でのサインインは 2 段階認証であるため、本人確認には引き続き "知っていること" と "持っているもの" を指定する必要があります。 携帯電話が "持っているもの" で、携帯電話の PIN または生体認証キーは "知っていること" です。
 
 ## <a name="how-to-get-started"></a>ファースト ステップ
 
-携帯電話で個人の Microsoft アカウントにサインインするには、次の手順のようにします。 
+携帯電話で個人の Microsoft アカウントにサインインするには、次の手順のようにします。
 
-1. アカウントで携帯電話によるサインインを有効にします。 
+1. アカウントで携帯電話によるサインインを有効にします。
 
   - Microsoft Authenticator アプリがまだない場合は、[Microsoft Authenticator のページ](microsoft-authenticator-app-how-to.md)の手順に従って、アプリをインストールし、個人の Microsoft アカウントを追加します。 新しく追加されたアカウントは自動的に有効になります。
 
   - Microsoft Authenticator を 2 段階認証に既に使っている場合は、アプリのホーム ページでアカウントを選び、ドロップダウン メニューから **[電話によるサインインを有効にする]** を選びます。
 
-  >[!NOTE] 
-  >アカウントを保護するには、PIN または生体認証ロックがデバイスに必要です。 携帯電話がロック解除状態のままにされている場合、アプリは、電話でのサインインを有効にする前に、ロックを設定するよう求めるメッセージを表示します。 
+  >[!NOTE]
+  >アカウントを保護するには、PIN または生体認証ロックがデバイスに必要です。 携帯電話がロック解除状態のままにされている場合、アプリは、電話でのサインインを有効にする前に、ロックを設定するよう求めるメッセージを表示します。
 
-3. Microsoft アカウントのパスワードを通常入力するほとんどのページには、**[代わりにアプリを使用する]** というリンクがあります。 携帯電話でサインインするには、このリンクを選びます。 
+3. Microsoft アカウントのパスワードを通常入力するほとんどのページには、**[代わりにアプリを使用する]** というリンクがあります。 携帯電話でサインインするには、このリンクを選びます。
 
 4. Microsoft から携帯電話に通知が送信されます。 通知を承認してアカウントにサインインします。   
 
-## <a name="faq"></a>FAQ 
+## <a name="faq"></a>FAQ
 
 ### <a name="how-is-signing-in-with-my-phone-more-secure-than-typing-a-password"></a>携帯電話でのサインインは、パスワードの入力よりどの程度安全ですか。  
 
@@ -61,11 +61,11 @@ Microsoft Authenticator アプリを使うと、パスワードを入力した�
 
 現在、携帯電話でのサインイン機能を使用できるのは、個人の Microsoft アカウントを利用している Web アプリとサービス、個人の Microsoft アカウントを使っている iOS アプリまたは Android アプリ、個人の Microsoft アカウントを使っている Windows 10 上のアプリだけです。 これらの Web サイトまたはアプリにサインインするときは、通常であればパスワードを入力するページに、**[代わりにアプリを使用する]** というリンクが表示されます。 
 
-現時点では、Windows PC、XBOX、デスクトップ バージョンの Microsoft アプリ (Office アプリなど) を、携帯電話によるサインインを使ってロック解除することはできません。 
+現時点では、Windows PC、XBOX、デスクトップ バージョンの Microsoft アプリ (Office アプリなど) を、携帯電話によるサインインを使ってロック解除することはできません。
  
 ### <a name="does-this-replace-two-step-verification-should-i-turn-it-off"></a>この機能は 2 段階認証に代わるものですか。 2 段階認証を向こうにする必要がありますか。   
 
-場合によります。 携帯電話によるサインインを使用できる範囲を広げる作業を行っていますが、Microsoft のエコシステムの中にはこの機能をサポートしない部分がまだ存在します。 そのような場所では、サインインのセキュリティ保護に 2 段階認証がまだ使われています。 そのため、アカウントの 2 段階認証は無効にしないでください。 
+場合によります。 携帯電話によるサインインを使用できる範囲を広げる作業を行っていますが、Microsoft のエコシステムの中にはこの機能をサポートしない部分がまだ存在します。 そのような場所では、サインインのセキュリティ保護に 2 段階認証がまだ使われています。 そのため、アカウントの 2 段階認証は無効にしないでください。
  
 ### <a name="okay-if-i-keep-two-step-verification-turned-on-for-my-account-do-i-have-to-approve-two-notifications"></a>アカウントの 2 段階認証を有効にしたままにする場合、2 つの通知を承認する必要がありますか。
 
@@ -73,7 +73,7 @@ Microsoft Authenticator アプリを使うと、パスワードを入力した�
 
 ### <a name="what-if-i-lose-my-phone-or-dont-have-it-with-me-how-can-i-access-my-account"></a>電話をなくした場合、または電話が手元にない場合は、どのようにしてアカウントにアクセスできますか。  
 
-サインイン ページの **[代わりにパスワードを使用する]** をクリックすればいつでも、パスワードの使用に戻すことができます。 2 段階認証を使っている場合は、やはり第 2 の方法でサインインを確認する必要があることに注意してください。 そのため、余分な最新のセキュリティ情報をアカウントに保持することを強くお勧めします。 セキュリティ情報は https://account.live.com/proofs/manage で管理できます。 
+サインイン ページの **[代わりにパスワードを使用する]** をクリックすればいつでも、パスワードの使用に戻すことができます。 2 段階認証を使っている場合は、やはり第 2 の方法でサインインを確認する必要があることに注意してください。 そのため、余分な最新のセキュリティ情報をアカウントに保持することを強くお勧めします。 セキュリティ情報は https://account.live.com/proofs/manage で管理できます。
  
 ### <a name="how-do-i-stop-using-this-feature-and-go-back-to-entering-my-password"></a>この機能の使用を停止してパスワードの入力に戻すにはどうすればよいですか。
 
@@ -89,7 +89,7 @@ PC の場合は、Windows 10 で顔、指紋、または PIN を使って Window
 現時点では、Windows Phone の Microsoft Authenticator 用のこの機能は開発されていません。 
 
 ## <a name="next-steps"></a>次のステップ
-Microsoft Authenticator アプリをダウンロードしていない場合は、ダウンロードしてください。 このアプリは [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で使用でき、携帯電話でのサインインは [Android](http://go.microsoft.com/fwlink/?Linkid=825072) および [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) 用の Microsoft Authenticator アプリで使用できます。
+Microsoft Authenticator アプリをダウンロードしていない場合は、ダウンロードしてください。このアプリは [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071) で使用でき、携帯電話でのサインインは [Android](http://go.microsoft.com/fwlink/?Linkid=825072) および [IOS](http://go.microsoft.com/fwlink/?Linkid=825073) 用の Microsoft Authenticator アプリで使用できます。
 
 アプリに関する一般的な質問については、「[Microsoft Authenticator アプリに関する FAQ](microsoft-authenticator-app-faq.md)」をご覧ください。
 

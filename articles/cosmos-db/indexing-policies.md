@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/17/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 2c03b498b1530388a48db4d2925debc2e03e30aa
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 30a21645831f0cfcb3b52c797dbddfa6b5283960
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="how-does-azure-cosmos-db-index-data"></a>Azure Cosmos DB のデータ インデックス作成のしくみ
@@ -77,8 +77,6 @@ Azure Cosmos DB は、Azure Cosmos DB コレクションのインデックス作
 > インデックス作成ポリシーを "なし (None)" で設定すると、既存のインデックスを削除してしまうという影響があります。 アクセス パターンで必要なのが "ID" か "自己リンク" (または両方) のみの場合は、このオプションを使用します。
 > 
 > 
-
-次に示すサンプルは、すべてのドキュメントの挿入に一貫性のある自動インデックス作成と .NET SDK を使用して Azure Cosmos DB コレクションを作成する方法を示します。
 
 次の表は、コレクション用に構成されたインデックス作成モード (同期 (Consistent) と非同期 (Lazy)) に基づいたクエリの一貫性と、クエリ要求に指定された一貫性レベルを示します。 これは、任意のインターフェイス (REST API、SDK) を使用して作成されたクエリや、ストアド プロシージャやトリガーから作成されたクエリに適用されます。 
 

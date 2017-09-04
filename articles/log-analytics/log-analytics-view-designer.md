@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 29ffb61715d803340abdb7e02aa64e9233676798
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: e3c463d749dc4179df58286b9bb75584880a6bc6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-view-designer-to-create-custom-views-in-log-analytics"></a>Log Analytics のビュー デザイナーを使用してカスタム ビューを作成する
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/28/2017
 * [視覚化パーツ リファレンス](log-analytics-view-designer-parts.md) - カスタム ビューで使用できるタイルごとの設定のリファレンス。
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語で](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)記述する必要があります。  ワークスペースのアップグレード前に作成されたすべてのビューは、自動的に変換されます。
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、すべてのビューのクエリを[新しいクエリ言語](https://go.microsoft.com/fwlink/?linkid=856078)で記述する必要があります。  ワークスペースのアップグレード前に作成されたすべてのビューは、自動的に変換されます。
 
 ## <a name="concepts"></a>概念
 ビュー デザイナーで作成されるビューには、次の表に示す要素が含まれます。

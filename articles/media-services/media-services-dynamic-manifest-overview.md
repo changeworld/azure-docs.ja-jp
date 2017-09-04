@@ -4,7 +4,7 @@ description: "このトピックでは、クライアントがストリームの
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: ff102765-8cee-4c08-a6da-b603db9e2054
 ms.service: media-services
@@ -14,12 +14,11 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: cenkd;juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b77e338e1c7f0f79ea3c25b0b073296f7de0dcf
-ms.openlocfilehash: d0f9899d6b8cc83ea4f2836444b41a9dabe7fea7
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 4034fd0aa64627c107a43208dcca766f7f44d5d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/14/2016
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="filters-and-dynamic-manifests"></a>フィルターと動的マニフェスト
@@ -121,7 +120,7 @@ Media Services のリリース 2.11 以降では、資産にフィルターを�
 ![演奏フィルター処理][renditions1]
 
 ## <a name="removing-language-tracks"></a>言語トラックを削除する
-アセットには、英語、スペイン語、フランス語などの複数のオーディオ言語が含まれる場合があります。通常、Player SDK マネージャーには、既定のオーディオ トラックと、ユーザーによって選択された使用可能なオーディオ トラックがあります。 このような Player SDK の開発は、デバイス固有のプレーヤー フレームワークによってさまざまな実装が必要になるため困難です。 また、一部のプラットフォームでは Player API に制限があり、オーディオ選択機能が含まれません。このため、ユーザーは既定のオーディオ トラックを選択、変更できません。 アセット フィルターを使用すれば、目的のオーディオ言語のみを含むフィルターを作成することで、動作を制御できます。
+アセットには、英語、スペイン語、フランス語などの複数のオーディオ言語が含まれる場合があります。通常、Player SDK マネージャーには、既定のオーディオ トラックと、ユーザーによって選択された使用可能なオーディオ トラックがあります。 このような Player SDK の開発は、デバイス固有のプレーヤー フレームワークによってさまざまな実装が必要になるため困難です。 また、一部のプラットフォームでは Player API に制限があり、オーディオ選択機能が含まれません。このため、ユーザーは既定のオーディオ トラックを選択、変更できません。アセット フィルターを使用すれば、目的のオーディオ言語のみを含むフィルターを作成することで、動作を制御できます。
 
 ![言語トラックのフィルター処理][language_filter]
 

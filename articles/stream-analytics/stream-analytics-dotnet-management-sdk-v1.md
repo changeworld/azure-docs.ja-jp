@@ -4,7 +4,7 @@ description: "Stream Analytics 管理用 .NET SDK の使用 分析ジョブを�
 keywords: ".net SDK、analytics API"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 5e93de87-0c6f-4f4b-be98-08d63f832897
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/06/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 84dbf32de5f1f2ba8d377fdf98f325aafcb3c558
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: cd8f4e0dd07be8878d6bbb1739fb84a3cc96a186
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="management-net-sdk-v1x-set-up-and-run-analytics-jobs-using-the-azure-stream-analytics-api-for-net"></a>管理用 .NET SDK v1.x: .NET 用 Azure Stream Analytics API を使用した分析ジョブの設定と実行
@@ -302,7 +302,7 @@ Stream Analytics ジョブとその入力、出力、変換を作成したら、
     LongRunningOperationResponse jobDeleteResponse = client.StreamingJobs.Delete(resourceGroupName, streamAnalyticsJobName);
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 分析ジョブを作成して実行するために .NET SDK を使用する方法の基本を学習できました。 詳細については、次の記事を参照してください。

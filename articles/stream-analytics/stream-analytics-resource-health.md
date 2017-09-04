@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブのトラブルシューティングを�
 keywords: "トラブルシューティングのフローチャート, リソース ブレード"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 05/01/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4ad6b8feff4c46b01613e422c090c0d30ee9c7a2
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 554dec5fbbe5c98585f8be58f5d4e8203d788a00
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -41,7 +40,7 @@ Stream Analytics ジョブのリソース正常性を確認するには、**[リ
 ![Stream Analytics のトラブルシューティング フロー - マップ](media/stream-analytics-resource-health/stream-analytics-troubleshooting-map.png)
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、[Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Stream Analytics の概要](stream-analytics-introduction.md)

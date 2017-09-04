@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 07f8189d1380f5956db8614e82b8b704b152fb26
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Log Analytics でのログ検索について
@@ -33,7 +33,7 @@ Log Analytics からデータを取得するにはログ検索が必要です。
 
 Log Analytics のログ検索は、次に示すさまざまな方法で使用します。
 
-- **ポータル。** [ログ検索ポータル](log-analytics-log-search-log-search-portal.md)または[高度な分析ポータル](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)を使用して、リポジトリで対話式のデータ分析を実行できます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  作成するクエリのほとんどがポータルのいずれかで開始され、期待どおりに動作することが確認された後に、コピーされます。
+- **ポータル。** [ログ検索ポータル](log-analytics-log-search-log-search-portal.md)または[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)を使用して、リポジトリで対話式のデータ分析を実行できます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  作成するクエリのほとんどがポータルのいずれかで開始され、期待どおりに動作することが確認された後に、コピーされます。
 - **警告ルール。** [警告ルール](log-analytics-alerts.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
 - **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](log-analytics-view-designer.md)を使用します。  ログ検索が提供するのは、各ビューの[タイル](log-analytics-view-designer-tiles.md)および[視覚化パーツ](log-analytics-view-designer-parts.md)で使用するデータです。  視覚化パーツからログ検索ポータルにドリルダウンすると、データをさらに詳しく分析できます。
 - **エクスポート。**  Log Analytics ワークスペースからExcel または [Power BI](log-analytics-powerbi.md) にデータをエクスポートする場合は、ログ検索を作成して、エクスポートするデータを定義します。
@@ -83,5 +83,5 @@ Log Analytics のログ検索の中核をなすのは[広範なクエリ言語](
 ## <a name="next-steps"></a>次のステップ
 
 - [ログ検索の作成および編集に使用するポータル](log-analytics-log-search-portals.md)について学習します。
-- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)を確認します。
+- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](https://go.microsoft.com/fwlink/?linkid=856078)を確認します。
 

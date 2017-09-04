@@ -3,8 +3,8 @@ title: "ASP.NET 5 プロジェクトの変更点 (Visual Studio 接続済みサ�
 description: "Visual Studio 接続済みサービスを使用して Visual Studio ASP.NET 5 プロジェクトの Azure ストレージ アカウントに接続した後の変更点について説明します。"
 services: storage
 documentationcenter: 
-author: TomArcher
-manager: douge
+author: kraigb
+manager: ghogen
 editor: 
 ms.assetid: e7caa9fa-c780-45eb-a546-299fc1c68455
 ms.service: storage
@@ -13,11 +13,12 @@ ms.tgt_pltfrm: vs-what-happened
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: tarcher
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: a5c0c7bdc6ad699be04c8ca803c18ad4e8126ce5
-
+ms.author: kraigb
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 2a25c24fd7625374d269622a805f386fcd52bb5f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="what-happened-to-my-aspnet-5-project-visual-studio-azure-storage-connected-services"></a>ASP.NET 5 プロジェクトの変更点 (Visual Studio Azure Storage 接続済みサービス)
@@ -40,10 +41,5 @@ Visual Studio プロジェクトに Azure Storage の NuGet パッケージが�
 選択されたストレージ アカウントの接続文字列とキーを使用して、プロジェクトの config.json ファイル内に要素が作成されました。
 
 詳細については、「 [ASP.NET 5](http://www.asp.net/vnext)」を参照してください。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

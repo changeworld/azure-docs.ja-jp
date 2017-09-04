@@ -4,7 +4,7 @@ description: "リアルタイム Twitter センチメント分析で Stream Anal
 keywords: "リアルタイム Twitter 傾向分析、センチメント分析、ソーシャル メディア分析、傾向分析の例"
 services: stream-analytics
 documentationcenter: 
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 42068691-074b-4c3b-a527-acafa484fda2
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 67951a5afbd0dcdda327abf4a88bb9f169f4134f
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 98230a8b61d1776a9ab23fd416af306efc700959
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -76,7 +76,7 @@ Twitter のトレンド トピックをリアルタイムで特定するには�
 
 ### <a name="grant-access-to-the-event-hub"></a>イベント ハブへのアクセスを許可する
 
-プロセスがイベント ハブにデータを送信できるようにするには、イベント ハブに、適切なアクセスを許可するポリシーが必要です。 アクセス ポリシーにより、認証情報を含む接続文字列が生成されます。
+プロセスがイベント ハブにデータを送信できるようにするには、イベント ハブに、適切なアクセスを許可するポリシーが必要です。 アクセス ポリシーにより、承認情報を含む接続文字列が生成されます。
 
 1.  イベント名前空間ブレードで、**[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
 
@@ -254,7 +254,7 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 4. **[分]** を 3 に設定し、**[OK]** をクリックします。 
     
-    !["3 分" が選択された入力ストリームのサンプリング オプション](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
+    !["3 分" が選択された入力ストリームのサンプリング オプション。](./media/stream-analytics-twitter-sentiment-analysis-trends/stream-analytics-input-create-sample-data.png)
 
     入力ストリームから 3 分間分のデータがサンプリングされ、サンプル データの準備ができると通知されます  (少し時間がかかります)。 
 
@@ -304,13 +304,13 @@ Stream Analytics は、変換を記述するための単純な宣言型のクエ
 
 2. **[出力]** ブレードで **[+&nbsp;追加]** をクリックし、ブレードに次の値を入力します。
 
-    * **[出力のエイリアス]**: `TwitterStream-Output` という名前を使用します。 
+    * **[出力エイリアス]**: `TwitterStream-Output` という名前を使います。 
     * **[シンク]**: **[Blob ストレージ]** を選択します。
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。
     * **[ストレージ アカウント]**:  **[新しいストレージ アカウントを作成する]** を選択します。
     * **[ストレージ アカウント]** (2 つ目のボックス):  「`YOURNAMEsa`」と入力します。`YOURNAME` は、自分の名前または別の一意の文字列です。 名前には小文字と数字だけを使用できます。名前は Azure 全体で一意である必要があります。 
     * **[コンテナー]**:  「`socialtwitter`」を入力します。
-    Blob Storage の URI を指定する際に、次のようにストレージ アカウント名とコンテナー名を組み合わせて使用します。 
+    ストレージ アカウント名とコンテナー名は、BLOB ストレージの URI を指定するときに次のように組み合わせて使われます。 
 
     `http://YOURNAMEsa.blob.core.windows.net/socialtwitter/...`
     
@@ -377,7 +377,7 @@ Twitter のセンチメントを理解するために使用できるもう 1 つ
 
 
 ## <a name="get-support"></a>サポートを受ける
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)

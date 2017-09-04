@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: robinsh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: d0c7f35a0f7336bab59007c35803d4f13054e35a
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 051f1b37eab254d4ab4f806166ac8d0b8cab944d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="introduction-to-blob-storage"></a>Blob Storage の概要
@@ -33,9 +33,9 @@ BLOB ストレージの一般的な用途には、次のようなものがあり
 * バックアップと復元、障害復旧、アーカイブのためのデータを格納する
 * 内部設置型サービスまたは Azure ホステッド サービスで分析する データを格納する
 
-## <a name="blob-service-concepts"></a>Blob service の概念
+## <a name="blob-service-concepts"></a>BLOB サービスの概念
 
-Blob service には、次のコンポーネントが含まれます。
+BLOB サービスには、次のコンポーネントが含まれます。
 
 ![BLOB アーキテクチャ](./media/storage-blobs-introduction/blob1.png)
 
@@ -54,4 +54,4 @@ Blob service には、次のコンポーネントが含まれます。
 ## <a name="next-steps"></a>次のステップ
 
 * [ストレージ アカウントの作成](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [.NET を使用して Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [.NET を使用して Blob Storage を使用する](storage-dotnet-how-to-use-blobs.md)
