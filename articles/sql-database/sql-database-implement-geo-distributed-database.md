@@ -386,7 +386,8 @@ Java および Maven 環境をインストールして構成する方法に関�
       -ServerName $mydrservername
    $fileovergroup.ReplicationRole
    ```
-## <a name="next-steps"></a>次のステップ 
+
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
 

@@ -11,7 +11,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 8/11/2017
+ms.date: 08/11/2017
 ms.author: bwren
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
