@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/28/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7f420d60862adf61e4f21e5abac2932a742bd55d
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: dd4a45c4eae6832026bce82670e914f5a02bbff7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)
@@ -33,12 +33,12 @@ ms.lasthandoff: 07/21/2017
 
 1. **[仮想ネットワーク]** をクリックし、仮想ネットワークを選択します。
 2. **[仮想ネットワークの選択]** ブレードに、既存の仮想ネットワークがすべて表示されます。 **[基本]** ウィザード ページで選択したリソース グループと Azure の場所に属している仮想ネットワークのみが表示されます。
-
-3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 新しい仮想ネットワークを作成する場合は、**[新規作成]** をクリックします。 Azure AD Domain Services の専用サブネットを使用することを強くお勧めします。 既存の仮想ネットワークを選択する場合、[仮想ネットワークの拡張機能を使用して専用サブネットを作成し](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)、そのサブネットを選択します。 
+3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 既存の仮想ネットワークを選択することも、新しい仮想ネットワークを作成することもできます。
+4. **仮想ネットワークの作成:** **[新規作成]** をクリックして、新しい仮想ネットワークを作成します。 Azure AD Domain Services の専用サブネットを使用することを強くお勧めします。 たとえば、"DomainServices" という名前のサブネットを作成すると、サブネット内にデプロイされている内容を他の管理者が理解しやすくなります。 完了したら **[OK]**をクリックします。
 
     ![仮想ネットワークを選択する](./media/getting-started/domain-services-blade-network-pick-vnet.png)
 
-4. **[サブネット]** をクリックして、新しい管理対象ドメインを有効にする、仮想ネットワーク内の専用サブネットを選択します。 **[サブネットの作成]** ブレードで、サブネットの名前を指定し、完了したら **[OK]** をクリックします。 たとえば、"DomainServices" という名前のサブネットを作成すると、サブネット内にデプロイされている内容を他の管理者が理解しやすくなります。
+5. **既存の仮想ネットワーク:** 既存の仮想ネットワークを選択することを計画している場合、[仮想ネットワークの拡張機能を使って専用サブネットを作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)し、そのサブネットを選択します。 **[仮想ネットワーク]** をクリックして、既存の仮想ネットワークを選択します。 **[サブネット]** をクリックして、新しい管理対象ドメインを有効にする、既存の仮想ネットワーク内の専用サブネットを選択します。 完了したら **[OK]**をクリックします。
 
     ![仮想ネットワーク内のサブネットを選択する](./media/getting-started/domain-services-blade-network-pick-subnet.png)
 
@@ -49,7 +49,7 @@ ms.lasthandoff: 07/21/2017
   3. 選択したサブネットが、利用可能なアドレス空間を十分に持ち、使用可能な IP アドレスが少なくとも 3 ～5 個あることを確認します。
   >
 
-5. 完了したら、**[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに移動します。
+6. 完了したら、**[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに移動します。
 
 
 ## <a name="next-step"></a>次のステップ

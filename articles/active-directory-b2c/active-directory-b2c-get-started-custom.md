@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/04/2017
+ms.date: 08/04/2017
 ms.author: joroja;parahk;gsacavdm
 ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
-ms.openlocfilehash: 3c4c7e78b25bd4210a8909e5582e8a31764f17c2
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 4f14dbf4b66f10290cd4f98d56a005f97cc6a207
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-get-started-with-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーの概要
@@ -84,8 +84,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
    * **[サインオン URL]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントのドメイン名です。
 5. **[作成]**を選択します。
 6. 作成されたら、新しく作成されたアプリケーション **IdentityExperienceFramework** を選択します。<br>
-   a. **[プロパティ]**を選択します。<br>
-   b. アプリケーション ID をコピーし、後のために保存します。
+   * **[プロパティ]**を選択します。<br>
+   * アプリケーション ID をコピーし、後のために保存します。
 
 ### <a name="create-the-proxyidentityexperienceframework-application"></a>ProxyIdentityExperienceFramework アプリケーションを作成する
 
@@ -96,8 +96,8 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
    * **[リダイレクト URI]** には `https://login.microsoftonline.com/yourtenant.onmicrosoft.com` を使用します。ここで `yourtenant` は、ご利用の Azure AD B2C テナントです。
 1. **[作成]**を選択します。
 1. 作成されたら、アプリケーション **ProxyIdentityExperienceFramework** を選択します。<br>
-   a. **[プロパティ]**を選択します。 <br>
-   b. アプリケーション ID をコピーし、後のために保存します。
+   * **[プロパティ]**を選択します。 <br>
+   * アプリケーション ID をコピーし、後のために保存します。
 1. **[必要なアクセス許可]** を選択します。
 1. **[追加]**を選択します。
 1. **[API を選択します]** を選択します。
@@ -111,17 +111,17 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 カスタム ポリシーは、Azure AD B2C テナントにアップロードする必要のある XML ファイルのセットです。 操作を簡単にするために、スターター パックが用意されています。 次の一覧の各スターター パックには、説明したシナリオを実現するために必要な最低限の技術プロファイルとユーザー体験が含まれています。
  * LocalAccounts。 ローカル アカウントのみの使用を可能にします。
  * SocialAccounts。 ソーシャル (フェデレーション) アカウントのみの使用を可能にします。
- * **SocialAndLocalAccounts**。 チュートリアルではこのファイルを使用します。
+ * **SocialAndLocalAccounts**。 チュートリアルではこのファイルを使います。
  * SocialAndLocalAccountsWithMFA。 ここにはソーシャル、ローカル、および Multi-Factor Authentication のオプションが含まれています。
 
 各スターター パックには以下が含まれています。
 
 * ポリシーの[ベース ファイル](active-directory-b2c-overview-custom.md#policy-files)。 ベースにはいくつかの変更が必要です。
 * ポリシーの[拡張ファイル](active-directory-b2c-overview-custom.md#policy-files)。  このファイルは、ほとんどの構成変更が行われる場所です。
-* [証明書利用者ファイル](active-directory-b2c-overview-custom.md#policy-files)。 これらは、アプリケーションによって呼び出される、タスク固有のファイルです。
+* [証明書利用者ファイル](active-directory-b2c-overview-custom.md#policy-files)はタスク固有のファイルであり、アプリケーションによって呼び出されます。
 
 >[!NOTE]
->XML エディターが検証をサポートする場合、スターター パックのルート ディレクトリにある TrustFrameworkPolicy_0.3.0.0.xsd という XML スキーマ ファイルに対してファイルを検証できます。 XML スキーマ検証では、アップロードする前にエラーを識別します。
+>XML エディターが検証をサポートする場合、スターター パックのルート ディレクトリにある TrustFrameworkPolicy_0.3.0.0.xsd という XML スキーマに対してファイルを検証します。 XML スキーマ検証では、アップロードする前にエラーを識別します。
 
  次の手順で作業を開始します:
 
@@ -144,7 +144,7 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
     PublicPolicyUri="http://yourtenant.onmicrosoft.com">
     ```
    >[!NOTE]
-   >`PolicyId` は、ポータルに表示されるポリシー名であり、他のポリシー ファイルがこのポリシー ファイルを参照するときに使用する名前です。
+   >`PolicyId` は、ポータルに表示されるポリシー名であり、他のポリシー ファイルがこのポリシー ファイルを参照するときに使う名前です。
 
 5. ファイルを保存します。
 6. Open TrustFrameworkExtensions.xml。 `yourtenant.onmicrosoft.com` を Azure AD B2C テナントに置き換えることによって、2 つの同じ変更を加えます。 同じ置き換えを要素 `<TenantId>` で行います。変更は合計 3 つになります。 ファイルを保存します。
@@ -167,7 +167,7 @@ Azure AD B2C では、ユーザーのサインアップとサインインのた�
 
 1. [Azure Portal](https://portal.azure.com) で、[Azure AD B2C テナントのコンテキストに切り替え](active-directory-b2c-navigate-to-b2c-context.md)、**[Azure AD B2C]** ブレードを開きます。
 2. **[Identity Experience Framework]** を選択します。
-3. **[ポリシーのアップロード]** を選択し、ポリシー ファイルをアップロードします。
+3. **[ポリシーのアップロード]** を選択します。
 
     >[!WARNING]
     >カスタム ポリシー ファイルは、次の順序でアップロードする必要があります:

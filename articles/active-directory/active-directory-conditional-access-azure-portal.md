@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/22/2017
+ms.date: 08/24/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 20572ecbde79bc2722f3a25f297c92d8e722a3e8
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: c97f05caec4c302c847e2297d136c6614e82fd93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
@@ -69,9 +69,9 @@ Azure Active Directory の現在の実装では、次の許可コントロール
 
 - **多要素認証**: 多要素認証による強力な認証を要求できます。 プロバイダーとして、Azure Multi-Factor またはオンプレミスの多要素認証プロバイダーを Active Directory Federation Services (AD FS) と組み合わせて使用できます。 多要素認証を使用すると、承認されていないユーザーが有効なユーザーの資格情報を入手してリソースにアクセスするのを防ぐことができます。
 
-- **準拠デバイス**: 条件付きアクセス ポリシーをデバイス レベルで設定できます。 準拠しているコンピューターのみ、またはモバイル デバイス管理に登録されているモバイル デバイスのみが組織のリソースにアクセスできるポリシーを設定できます。 たとえば、ユーザーがアプリケーションへのアクセスを試みたときに、Intune を使用してデバイスの準拠を確認し、その結果を Azure AD に報告することができます。 Intune を使用してアプリとデータを保護する方法の詳細なガイダンスについては、「[Microsoft Intune でアプリとデータを保護する](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)」を参照してください。 また、Intune を使用して紛失したデバイスや盗難されたデバイスのデータ保護を適用することもできます。 詳細については、「 [Help protect your data with full or selective wipe using Microsoft Intune (Microsoft Intune を使用した全体または選択的ワイプによるデータの保護)](https://docs.microsoft.com/intune-classic/deploy-use/use-remote-wipe-to-help-protect-data-using-microsoft-intune)」を参照してください。
+- **準拠デバイス**: デバイス ベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠デバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」をご覧ください。
 
-- **ドメイン参加済みデバイス**: Azure Active directory に接続するために使用しているデバイスがオンプレミスの Active Directory (AD) のドメインに参加済みであることを要求できます。 このポリシーは、Windows のデスクトップ、ノート PC、およびエンタープライズ タブレットに適用されます。 
+- **ドメインに参加しているデバイス**: ドメインに参加しているデバイスの要求は、デバイス ベースの条件付きアクセス ポリシーを構成する必要がある別のオプションです。 この要件は、Windows デスクトップ、ラップトップ、およびオンプレミスの Active Directory に参加しているエンタープライズ タブレットを参照します。 詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」をご覧ください。
 
 複数のコントロールを選択した場合は、ポリシーの処理時にそれらのすべてを適用する必要があるかどうかを構成することもできます。
 
@@ -80,11 +80,11 @@ Azure Active Directory の現在の実装では、次の許可コントロール
 ### <a name="session-controls"></a>セッション コントロール
 セッション コントロールでは、クラウド アプリ内のエクスペリエンスを制限できます。 セッション コントロールは、クラウド アプリによって適用され、Azure AD がアプリに提供するセッションに関する追加情報に依存します。
 
-![コントロール](./media/active-directory-conditional-access-azure-portal/session-control-pic.png)
+![コントロール](./media/active-directory-conditional-access-azure-portal/31.png)
 
 #### <a name="use-app-enforced-restrictions"></a>アプリによって適用される制限を使用する
 このコントロールを使用して、デバイス情報をクラウド アプリに渡すよう Azure AD に要求できます。 これにより、クラウド アプリは、ユーザーが準拠デバイスとドメイン参加済みデバイスのどちらからアクセスしているかを把握できます。 このコントロールは、現在、クラウド アプリとしての SharePoint でのみサポートされます。 SharePoint では、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
-SharePoint での制限付きアクセスを要求する方法について詳しくは、[こちら](https://aka.ms/spolimitedaccessdocs)をご覧ください。
+SharePoint での制限付きアクセスを要求する方法について詳しくは、[「非管理対象デバイスからのアクセスを制御する」](https://aka.ms/spolimitedaccessdocs)をご覧ください。
 
 ## <a name="condition-statement"></a>条件文
 
@@ -95,22 +95,29 @@ SharePoint での制限付きアクセスを要求する方法について詳し
 ![コントロール](./media/active-directory-conditional-access-azure-portal/07.png)
 
 
-- **誰が**: 多くの場合、コントロールは、ユーザーの特定のセットに適用します。 条件文では、ポリシーを適用するユーザーとグループを選択することで、このセットを定義できます。 必要であれば、ユーザーを除外することで、明示的にポリシーの対象外にすることもできます。  
-ユーザーとグループを選択することで、ポリシーが適用されるユーザーの範囲を定義します。    
+### <a name="who"></a>誰がですか?
 
-    ![コントロール](./media/active-directory-conditional-access-azure-portal/08.png)
+条件付きアクセス ポリシーを構成する場合、ポリシーの適用対象のユーザーまたはグループを選択する必要があります。 多くの場合、コントロールはユーザーの特定のセットに適用します。 条件文では、ポリシーを適用する必要のあるユーザーとグループを選択することで、このセットを定義できます。 必要であれば、ユーザーを除外することで、明示的にポリシーの対象外にすることもできます。  
+
+![コントロール](./media/active-directory-conditional-access-azure-portal/08.png)
 
 
 
-- **何を**: 通常、環境内で実行されているアプリの中には、保護の観点から見て、他のアプリよりも注意が必要なアプリがあります。 たとえば、機密データにアクセスするアプリがそうです。
+### <a name="what"></a>何ですか?
+
+条件付きアクセス ポリシーを構成する場合、ポリシーの適用対象のクラウド アプリを選択する必要があります。
+通常、環境内のアプリの中には、保護の観点から見て、他のアプリよりも注意が必要なアプリがあります。 たとえば、機密データにアクセスするアプリがそうです。
 クラウド アプリを選択することで、ポリシーが適用されるクラウド アプリの範囲を定義します。 必要であれば、一連のアプリを、明示的にポリシーの対象から除外することもできます。
 
-    ![コントロール](./media/active-directory-conditional-access-azure-portal/09.png)
+![コントロール](./media/active-directory-conditional-access-azure-portal/09.png)
 
+条件付きアクセス ポリシーで使用できるクラウド アプリの一覧については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](active-directory-conditional-access-technical-reference.md#cloud-apps-assignments)」をご覧ください。
 
-- **どのように**: アプリへのアクセスが制御可能な状況で実行されている限り、ユーザーがどのようにクラウド アプリにアクセスしているかについて、さらに制限する必要はありません。 ただし、クラウド アプリへのアクセスが、たとえば信頼されていないネットワークや準拠していないデバイスから実行される場合は、状況は異なります。 条件文に、アプリへのアクセスがどのように実行されているかを示す追加要件があるアクセス条件を定義できます。
+### <a name="how"></a>方法
 
-    ![条件](./media/active-directory-conditional-access-azure-portal/21.png)
+アプリへのアクセスが制御可能な状況で実行されている限り、ユーザーがどのようにクラウド アプリにアクセスしているかについて、さらに制限する必要はありません。 ただし、クラウド アプリへのアクセスが、たとえば信頼されていないネットワークや準拠していないデバイスから実行される場合は、状況は異なります。 条件文に、アプリへのアクセスがどのように実行されているかを示す追加要件があるアクセス条件を定義できます。
+
+![条件](./media/active-directory-conditional-access-azure-portal/21.png)
 
 
 ## <a name="conditions"></a>条件
@@ -168,12 +175,16 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 ![条件](./media/active-directory-conditional-access-azure-portal/03.png)
 
 
-### <a name="client-app"></a>クライアント アプリ
+### <a name="client-apps"></a>クライアント アプリ
 
 クライアント アプリは、Azure Active Directory に接続するために使用している汎用レベルのアプリ (Web ブラウザー、モバイル アプリ、デスクトップ クライアント) で可能です。または、具体的に Exchange Active Sync を選択できます。  
 従来の認証とは、最新の認証を使用しない古い Office クライアントなどの基本認証を使用しているクライアントを指します。 現時点では、従来の認証では条件付きアクセスはサポートされません。
 
 ![条件](./media/active-directory-conditional-access-azure-portal/04.png)
+
+
+条件付きアクセス ポリシーで使用できるクライアント アプリの一覧については、「[Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス](active-directory-conditional-access-technical-reference.md#client-apps-conditions)」をご覧ください。
+
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
@@ -201,6 +212,6 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ## <a name="next-steps"></a>次のステップ
 
-条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
+- 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 
-環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
+- 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 

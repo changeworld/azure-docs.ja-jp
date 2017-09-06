@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: asmalser-msft
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 8f9c3fa677a93be109bcf423af651a5cd91c7679
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 84613b7f8d7bd031d492a62da0bc53be96ac45a3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -105,9 +105,9 @@ Cerner Central にユーザー アカウントをプロビジョニングする�
 
    * **[テナント URL]** フィールドに、次の形式で URL を入力します。その際、"User-Roster-Realm-ID" を手順 4. で取得した領域 ID に置き換えます。
 
-> サンドボックス: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> サンドボックス: https://user-roster-api.sandboxcernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
-> 運用環境: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/Users 
+> 運用環境: https://user-roster-api.cernercentral.com/scim/v1/Realms/User-Roster-Realm-ID/ 
 
    * **[シークレット トークン]** フィールドに、手順 3 で生成した OAuth ベアラー トークンを入力し、**[テスト接続]** をクリックします。
 
