@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 09/04/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: ecdd56c91a8fc2011b3d7abe93b9d27c1e1e0bef
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/08/2017
-
 
 ---
 # <a name="azure-iot-edge-architectural-concepts"></a>Azure IoT Edge アーキテクチャの概念

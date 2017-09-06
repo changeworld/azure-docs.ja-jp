@@ -12,23 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 06/28/2017
+ms.date: 08/28/2017
 ms.author: maheshu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: ed72325ca9db99405c6173eb882a92f80cd77f47
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e3f8dd4b820da8a14437aa313e4296dc17111674
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
-<a id="enable-azure-active-directory-domain-services-using-the-azure-classic-portal" class="xliff"></a>
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-classic-portal"></a>Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする
 
-# Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする
+> [!IMPORTANT]
+> この記事で紹介している、Azure クラシック ポータルを使って Azure AD Domain Services を有効にする方法は間もなく廃止されます。 新たにデプロイする場合は、[**新しい (プレビュー) Azure Portal を使った方法を使用**](active-directory-ds-getting-started.md)してください。
+>
 
-<a id="task-3-enable-azure-active-directory-domain-services" class="xliff"></a>
-
-## タスク 3: Azure Active Directory Domain Services を有効にする
+## <a name="task-3-enable-azure-active-directory-domain-services"></a>タスク 3: Azure Active Directory Domain Services を有効にする
 このタスクでは、以下の手順に従い、ディレクトリに対して Azure Active Directory Domain Services (Azure AD DS) を有効にします。
 
 1. [Azure クラシック ポータル](https://manage.windowsazure.com)に移動します。
@@ -99,8 +98,6 @@ ms.lasthandoff: 06/30/2017
 >
 >
 
-<a id="next-step" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-step"></a>次のステップ
 [タスク 4: Azure 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-update-dns.md)
 

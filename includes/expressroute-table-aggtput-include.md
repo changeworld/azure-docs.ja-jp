@@ -1,4 +1,4 @@
-|  | **ExpressRoute ゲートウェイのスループット (最大)** | **VPN Gateway と ExpressRoute の共存** |
+﻿|  | **ExpressRoute ゲートウェイのスループット (最大)** | **VPN Gateway と ExpressRoute の共存** |
 | --- | --- | --- |
 | **Basic SKU (廃止)** |500 Mbps |不可 |
 | **Standard SKU** |1000 Mbps |可能 |

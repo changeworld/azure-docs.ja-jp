@@ -14,23 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/16/2017
+ms.date: 08/17/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 823508c0bd9e379361dd26f70b3960259a8d4292
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: ccd3a0c777510e0694170b2f9acc8da0e7dcde9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight を簡単に操作できる .NET クライアント ライブラリを提供します。 この記事では、.NET SDK を使用して Linux ベースの HDInsight クラスターを作成する方法について説明します。
+
+.NET SDK を使用して、Azure HDInsight クラスターで Hadoop クラスターを作成する方法について説明します。
 
 > [!IMPORTANT]
-> このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後の拡大で 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14GB 以上のサイズのヘッド ノードを選択する必要があります。
+> このドキュメントの手順では、worker ノードが 1 つあるクラスターを作成します。 クラスター作成または作成後のスケーリングで 32 以上の worker ノードを予定している場合、コア数が 8 個以上で RAM が 14 GB 以上のサイズのヘッド ノードを選択する必要があります。
 >
 > ノードのサイズと関連コストに関する詳細については、「 [HDInsight の価格](https://azure.microsoft.com/pricing/details/hdinsight/)」を参照してください。
 
@@ -39,7 +40,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* **Azure ストレージ アカウント**。 「[ストレージ アカウントを作成する](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 * **Visual Studio 2013、Visual Studio 2015、または Visual Studio 2017**。
 
 ## <a name="create-clusters"></a>クラスターの作成
@@ -192,7 +193,7 @@ HDInsight .NET SDK は、.NET Framework アプリケーションから HDInsight
     ```
 
 6. クラス メンバーの値を置き換えます。
-7. **F5** キーを押してアプリケーションを実行します。 コンソール ウィンドウが開き、アプリケーションの状態が表示されます。 Azure アカウントの資格情報の入力も求められます。 HDInsight クラスターの作成は数分かかる場合があります。通常は 15 分程度です。
+7. **F5** キーを押してアプリケーションを実行します。 コンソール ウィンドウが開き、アプリケーションの状態が表示されます。 Azure アカウント資格情報の入力を求められます。 HDInsight クラスターの作成は数分かかる場合があります。通常は 15 分程度です。
 
 ## <a name="use-bootstrap"></a>ブートストラップの使用
 

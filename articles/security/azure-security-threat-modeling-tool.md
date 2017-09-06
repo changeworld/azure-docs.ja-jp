@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 381922a7e83a65a855dc906a22c354380914f31e
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 6e26b0af2a16a872c8e02b736e24019b47ed5780
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool 
+# <a name="microsoft-threat-modeling-tool"></a>Microsoft Threat Modeling Tool
 
 Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイクル (SDL) の主要な要素です。 これを使用すると、ソフトウェア アーキテクトは早い段階で潜在的なセキュリティの問題を特定し、危険を軽減することができます。早い段階であれば、問題の解決は比較的容易で、コスト効率も良くなります。 そのため、開発総コストを大幅に軽減できます。 また、このツールはセキュリティの専門家ではないユーザーを想定して設計され、脅威モデルの作成と分析に関するわかりやすいガイダンスが用意されているため、すべての開発者が簡単に脅威をモデリングできます。 
 
@@ -43,10 +43,24 @@ Threat Modeling Tool は、Microsoft セキュリティ開発ライフサイク�
 
 ## <a name="next-steps"></a>次のステップ
 
+次の表は、Threat Modeling Tool を初めて使用する場合に重要なリンクの一覧です。
+
+| 手順  | 説明                                                                                   |
+| ----- | --------------------------------------------------------------------------------------------- |
+| **1** | [Threat Modeling Tool をダウンロードします](https://aka.ms/tmtpreview)                                |
+| **2** | [ファースト ステップ ガイドを読みます](./azure-security-threat-modeling-tool-getting-started.md)    |
+| **3** | [機能について理解を深めます](./azure-security-threat-modeling-tool-feature-overview.md)   |
+| **4** | [生成される脅威のカテゴリについて学びます](./azure-security-threat-modeling-tool-threats.md)   |
+| **5** | [生成される脅威の軽減策を見つけます](./azure-security-threat-modeling-tool-mitigations.md) |
+
+## <a name="resources"></a>リソース
+
 今日の脅威モデリングにも関連する以前の記事:
+
 * [脅威モデリングの重要性に関する記事](https://msdn.microsoft.com/magazine/dd347831.aspx)
 * [Trustworthy Computing (信頼できるコンピューティング) 発行のトレーニング](https://www.microsoft.com/download/details.aspx?id=16420)
 
 Threat Modeling Tool の専門家による記事:
+
 * [Threats Manager](https://simoneonsecurity.com/threatsmanagersetup-v1-5-10/)
 * [Simone Curzi のセキュリティ ブログ](https://simoneonsecurity.com/)

@@ -4,7 +4,7 @@ description: "Web App on Linux を Azure CLI 2.0 を使用して管理します�
 keywords: "Azure App Service, Web アプリ, CLI, Linux, OSS"
 services: app-service
 documentationCenter: 
-authors: ahmedelnably
+author: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: e0c913ef50db3572940928d9f739e26994c96981
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 04aceecf0cb4cad5c838b7254bf7079a36bbd0d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -48,6 +48,14 @@ Web アプリを作成し、カスタム Docker コンテナーを実行する�
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -i elnably/dockerimagetest
+```
+ 
+## <a name="activate-the-docker-container-logging"></a>Docker コンテナーのログ記録をアクティブにする
+
+Docker コンテナーのログ記録をアクティブにするには、次のコマンドを使用できます。
+
+```azurecli-interactive
+az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
  
 ## <a name="change-the-custom-docker-container-for-an-existing-web-app-on-linux-app"></a>既存の Web App on Linux アプリのカスタム Docker コンテナーを変更する
@@ -103,7 +111,6 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [Azure Web App on Linux とは](app-service-linux-intro.md)
 * [Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (プレビュー)](../cloud-shell/overview.md)
-* [Azure Web App on Linux で Web アプリを作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure App Service でステージング環境を設定する](./web-sites-staged-publishing.md)
 * [Azure Web App on Linux での継続的なデプロイ](./app-service-linux-ci-cd.md)
 

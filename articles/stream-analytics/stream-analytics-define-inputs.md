@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 09066927641054acb8c53a3585e111df87893e50
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
@@ -126,7 +126,7 @@ Stream Analytics の Blob Storage イベントの既定のタイムスタンプ�
 CSV 形式の入力についても、データ セットのフィールドを定義するためのヘッダー行が "*必須*" です。 また、ヘッダー行のフィールドはすべて一意であることが必要です。
 
 > [!NOTE]
-> Stream Analytics では、既存の BLOB にコンテンツを追加できません。 Stream Analytics は BLOB を 1 回だけ表示します。ジョブがデータを読み取った後に BLOB で発生した変更は処理されません。 ベスト プラクティスとしては、すべてのデータを一度にアップロードし、BLOB ストアにイベントを追加しないことです。
+> Stream Analytics では、既存の BLOB ファイルにコンテンツを追加できません。 Stream Analytics は各ファイルを 1 回だけ表示します。ジョブがデータを読み取った後にファイルで発生した変更は処理されません。 ベスト プラクティスとして、すべての BLOB ファイルのデータを一度にアップロードし、追加の新しいイベントを、別の新しい BLOB ファイルに追加することをお勧めします。
 > 
 
 ### <a name="configure-blob-storage-as-a-data-stream-input"></a>データ ストリーム入力として Blob Storage を構成する
@@ -165,7 +165,7 @@ FROM Input
 ````
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)を参照してください。
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 ここでは、Azure での Stream Analytics ジョブのデータ接続オプションについて説明しました。 Stream Analytics の詳細については、以下を参照してください。

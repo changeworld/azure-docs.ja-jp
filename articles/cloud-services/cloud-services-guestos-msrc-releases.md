@@ -12,17 +12,31 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2017
+ms.date: 8/24/2017
 ms.author: raiye
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: c1bcfa2d93a77a655092dca250d2a3e2c86b944d
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 09c433ccf54c84ee2ae40c3ba3ccd84e7462124c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-guest-os"></a>Azure ゲスト OS
 次の表に、Azure ゲスト OS に適用される Microsoft セキュリティ レスポンス センター (MSRC) の更新プログラムを示します。 この記事を検索して、使用しているゲスト OS に特定の更新プログラムが適用されるかどうかを確認できます。 更新プログラムは、それが導入された特定の[ファミリ][family-explain]内で常に繰り越されます。
+
+## <a name="august-guest-os"></a>8 月のゲスト OS
+| 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
+| --- | --- | --- | --- | --- |
+| Rel 17-07 | [4034658] |Windows 10 の更新プログラム |5.10 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034679] |Windows セキュリティのみ |2.65 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034672] |Windows セキュリティのみ |4.45 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034666] |Windows セキュリティのみ |3.52 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034733] |Internet Explorer |2.65, 3.52, 4.45, 5.10 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034664], [4034665], [4034681] |Windows 月間ロールアップ |2.65, 3.52, 4.45 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4034668], [4034660], [4034658], [4034674] |CVE-2017-0071 の再リリース、CVE-2017-0228 の再リリース |5.10 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4025341] |7 月のセキュリティ以外のロールアップ |2.65 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4025331] |7 月のセキュリティ以外のロールアップ |3.52 |2017 年 8 月 8 日 |
+| Rel 17-07 | [4025336] |7 月のセキュリティ以外のロールアップ |4.45 |2017 年 8 月 8 日 |
 
 ## <a name="july-guest-os"></a>7 月のゲスト OS
 | 製品カテゴリ | 親のサポート技術情報の記事 | 脆弱性の説明 | ゲスト OS | 最初に導入された日付 |
@@ -509,6 +523,23 @@ ms.lasthandoff: 08/04/2017
 | 該当なし |[3007054] |Windows で Windows ストア アプリケーション内のドキュメントを印刷するときに、PIN で保護された印刷オプションが常に表示される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2999802] |点線ではなく実線が Windows で印刷される |4.15、3.22、2.34 |2015 年 1 月 13 日 |
 | 該当なし |[2896881] |Windows でのログオン プロセス中にユーザーのプリンターをマップする AddPrinterConnection VBScript コマンドを使用するとログオン時間が長い |4.15、3.22、2.34 |2015 年 1 月 13 日 |
+
+
+[4034658]: http://support.microsoft.com/kb/4034658
+[4034679]: http://support.microsoft.com/kb/4034679
+[4034672]: http://support.microsoft.com/kb/4034672
+[4034666]: http://support.microsoft.com/kb/4034666
+[4034733]: http://support.microsoft.com/kb/4034733
+[4034664]: http://support.microsoft.com/kb/4034664
+[4034665]: http://support.microsoft.com/kb/4034665
+[4034681]: http://support.microsoft.com/kb/4034681
+[4034668]: http://support.microsoft.com/kb/4034668
+[4034660]: http://support.microsoft.com/kb/4034660
+[4034658]: http://support.microsoft.com/kb/4034658
+[4034674]: http://support.microsoft.com/kb/4034674
+[4025341]: http://support.microsoft.com/kb/4025341
+[4025331]: http://support.microsoft.com/kb/4025331
+[4025336]: http://support.microsoft.com/kb/4025336
 
 [4025339]: http://support.microsoft.com/kb/4025337
 [4025337]: http://support.microsoft.com/kb/4025333

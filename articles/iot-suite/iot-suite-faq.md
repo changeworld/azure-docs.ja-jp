@@ -15,21 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/15/2017
 ms.author: corywink
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: 9f850175be843b29432c4803a150ddb2ec79780d
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 85867fb8d18377637b3aa848555831a8d9b53512
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="frequently-asked-questions-for-iot-suite"></a>IoT スイートに関してよく寄せられる質問
+
+コネクテッド ファクトリ固有の [FAQ](iot-suite-faq-cf.md) に関するページもご覧ください。
 
 ### <a name="where-can-i-find-the-source-code-for-the-preconfigured-solutions"></a>事前構成済みソリューションのソース コードはどこで入手できますか?
 
 ソース コードは、次の GitHub リポジトリに格納されています。
 * [リモート監視の事前構成済みソリューション][lnk-remote-monitoring-github]
 * [予測的なメンテナンスの構成済みソリューション][lnk-predictive-maintenance-github]
+* [コネクテッド ファクトリの事前構成済みソリューション](https://github.com/Azure/azure-iot-connected-factory)
 
 ### <a name="how-do-i-update-to-the-latest-version-of-the-remote-monitoring-preconfigured-solution-that-uses-the-iot-hub-device-management-features"></a>IoT Hub デバイス管理機能を使用している、リモート監視の事前構成済みソリューションを最新バージョンに更新するにはどうすればよいですか?
 
@@ -95,22 +97,14 @@ ms.lasthandoff: 05/26/2017
 
 [Azure AD テナントの削除方法][lnk-delete-aad-tennant]に関する Eric Golpe のブログ投稿を参照してください。
 
-### <a name="what-is-opc-ua"></a>OPC UA とは
-
-2008年にリリースされた OPC Unified Architecture (UA) は、プラットフォームに依存しないサービス指向の相互運用性標準であり、産業用の PC、PLC、センサーなど、さまざまな産業システムとデバイスで使われています。 OPC UA では、個別の OPC Classic 仕様のすべての機能が、セキュリティを組み込まれた 1 つの拡張可能なフレームワークに統合されています。 これは、OPC Foundation によって主導されている標準です。 [OPC Foundation][lnk-opc-foundation] は非営利組織であり、440 を超えるメンバーが、OPC 仕様を使ってマルチ ベンダーでマルチ プラットフォームの安全で信頼性の高い相互運用性を促進するための、インフラストラクチャ、仕様、技術、プロセスを提供するという共通の目標を共有しています。
-
-### <a name="why-did-microsoft-choose-opc-ua-for-the-connected-factory-preconfigured-solution"></a>Microsoft が接続済みファクトリの事前に構成されたソリューションとして OPC UA を選んだ理由
-
-Microsoft が OPC UA を選んだのは、それがオープンであり、特定の企業が占有する技術ではなく、プラットフォームから独立しており、業界で認められた実績のある標準であるためです。 OPC UA は、製造プロセスと機器の広範なセットの間の相互運用性を保証する Industrie 4.0 (RAMI4.0) 参照アーキテクチャ ソリューションの要件になっています。 Microsoft には、お客様から Industrie 4.0 ソリューション構築の要望が寄せられています。 OPC UA をサポートすることで、お客様が目標を達成するときの障害が低くなり、ビジネス価値がお客様に直接提供されます。
-
 ### <a name="next-steps"></a>次のステップ
 
 IoT Suite の事前構成済みのソリューションの他の機能について学習できます。
 
 * [予測的なメンテナンスの構成済みソリューションの概要][lnk-predictive-overview]
+* [コネクテッド ファクトリ事前構成済みソリューションの概要](iot-suite-connected-factory-overview.md)
 * [IoT の徹底的なセキュリティ][lnk-security-groundup]
 
-[lnk-opc-foundation]: http://opcfoundation.org/
 [lnk-predictive-overview]: iot-suite-predictive-overview.md
 [lnk-security-groundup]: securing-iot-ground-up.md
 

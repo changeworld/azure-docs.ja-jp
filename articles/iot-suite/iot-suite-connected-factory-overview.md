@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: a7d31be48ef06064b01cdb2dfd0331b34adbec4d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: d502c8e2e2715899279f6ebcf7ed89c19a1bb9a6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="get-started-with-the-connected-factory-preconfigured-solution"></a>コネクテッド ファクトリ事前構成済みソリューションの概要
@@ -53,7 +53,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 4. タイルをクリックし、右側のウィンドウでソリューションの詳細を確認します。
 
 > [!NOTE]
-> 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と [FAQ][lnk-faq] を参照してください。 それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
+> 構成済みソリューションのデプロイの問題が発生している場合は、「[azureiotsuite.com サイトでのアクセス許可][lnk-permissions]」と[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。 それでも問題が解決しない場合は、[ポータル][lnk-portal]でサービス チケットを作成してください。
 
 ソリューションの一覧に予測どおりに表示されない詳細がありますか? [ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)のページで機能に関する提案をお寄せください。
 
@@ -81,7 +81,7 @@ Azure IoT Suite の[事前構成済みソリューション][lnk-preconfigured-s
 
 ダッシュボードには次の情報が表示されます。
 
-* **工場の一覧**パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 初めてソリューションを実行すると、シミュレートされたデバイスが多数表示されます。 この生産ラインのシミュレーションでは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバーが生産ラインあたり 3 台構成されています。 OPC UA の詳細については、[FAQ][lnk-faq] を参照してください。
+* **工場の一覧**パネル: ソリューションに接続された工場の状態、場所、および現在の生産構成が表示されます。 初めてソリューションを実行すると、シミュレートされたデバイスが多数表示されます。 この生産ラインのシミュレーションでは、シミュレートされたタスクを実行してデータを共有する実際の OPC UA サーバーが生産ラインあたり 3 台構成されています。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 * **マップ**: ソリューションに接続されている各デバイスの場所が表示されます。 ソリューションは Bing Maps API を使用して、マップに情報をプロットします。 サブスクリプションで Bing Maps Enterprise API が有効になっている場合は、この機能が自動的に使用されます。 有効になっていない場合は、マップを動的に表示する方法について、[よく寄せられる質問][lnk-faq]に関するページを参照してください。
 * **[アラート]** パネル: テレメトリまたは OEE/KPI の値が、指定されたしきい値を超えた場合に、アラートが生成されて表示されます。
 * **[Overall Equipment Efficiency (総合設備効率)]** パネル: 企業全体または表示中の工場/生産ライン/ステーションの OEE 値が表示されます。 この値は、各ステーション ビューから全社レベルに集計されます。 OEE の数値とその構成要素は、さらに詳しく分析できます。

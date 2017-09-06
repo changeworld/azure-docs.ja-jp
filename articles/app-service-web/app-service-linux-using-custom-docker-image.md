@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: f51cacb33251d479f48a39014cc2db60a23358d5
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 1458217a31c4781b28877c030a665f5b22819e13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -81,6 +81,13 @@ Web アプリ向けにカスタム Docker イメージを使用する場合、Do
 
 ![カスタム Docker イメージの PORT アプリ設定の構成][6]
 
+## <a name="how-to-set-the-startup-time-for-your-docker-image"></a>Docker イメージの起動時間を設定する方法 ##
+
+既定では、コンテナーが 230 秒より前に起動しない場合、プラットフォームがコンテナーを再起動します。 カスタム Docker イメージの起動時間が 230 秒を超える場合は、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を使用できます。これによって、プラットフォームは、コンテナーを再起動する前に、指定された秒数の間、コンテナーを実行し続けることができます。 既定値は 230 秒であり、最大許容値は 600 秒です。
+
+## <a name="how-to-unmount-the-platform-provided-storage"></a>プラットフォームによって提供される記憶域をマウント解除する方法 ##
+
+既定では、プラットフォームは、永続的な記憶域共有を `\home\` ディレクトリにマウントします。 コンテナー イメージで永続的な共有が必要ない場合は、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を `false` に設定することで、その記憶域のマウントを無効にすることができます。 無効にした場合でも、SCM サイトからその記憶域にアクセスでき、すべての Docker ログ (有効になっている場合) は、プラットフォームによって生成されるログ ファイルに書き込まれます。
 
 ## <a name="how-to-switch-back-to-using-a-built-in-image"></a>組み込みイメージを使用するように切り替える方法 ##
 
@@ -109,7 +116,6 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 Web App on Linux の使用を開始するには、次のリンクを参照してください。   
 
 * [App Service on Linux の概要](./app-service-linux-intro.md)
-* [Azure Web App on Linux で Web Apps を作成する](./app-service-linux-how-to-create-web-app.md)
 * [Azure Web App on Linuxで Node.js の PM2 構成を使用する](./app-service-linux-using-nodejs-pm2.md)
 * [Azure App Service Web App on Linux の FAQ](app-service-linux-faq.md)
 

@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 08/24/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 97414ee55663662fb40a91b930d61634c83e30fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 19cb8f436fa4d86f323013a5d4b3b50bf6c80a1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ を使用して HDInsight クラスター向けの Spark アプリケーションを作成する
@@ -172,15 +172,6 @@ Azure Toolkit for IntelliJ プラグインを使用して Scala で記述され�
 ## <a name="run-or-debug-a-spark-scala-application-on-an-hdinsight-spark-cluster"></a>HDInsight Spark クラスターでの Spark Scala アプリケーションの実行またはデバッグ
 クラスターに Spark アプリケーションを送信するお勧めの方法はほかにもあります。 それは、**実行/デバッグ構成**の IDE でパラメーターを設定する方法です。 詳細については、「[Azure Toolkit for IntelliJ を使用して HDInsight クラスター上で SSH により Spark アプリケーションをリモートでデバッグする](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh)」を参照してください。
 
-## <a name="choose-azure-data-lake-store-as-spark-scala-application-storage"></a>Spark Scala アプリケーション ストレージとして Azure Data Lake Store を選択する
-アプリケーションを Azure Data Lake Store に送信するには、Azure サインイン プロセスで **[Interactive]\(インタラクティブ\)** モードを選択します。 
-
-![サインイン時の [Interactive]\(インタラクティブ\) オプション](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-interactive.png)
-
-**[Automated]\(自動\)** モードを選択した場合、次のエラーが発生します。
-
-![サインイン エラー](./media/hdinsight-apache-spark-intellij-tool-plugin/authentication-error.png)
-
 ## <a name="access-and-manage-hdinsight-spark-clusters-by-using-azure-toolkit-for-intellij"></a>Azure Toolkit for IntelliJ を使用して HDInsight Spark クラスターにアクセスして管理する
 Azure Toolkit for IntelliJ を使用してさまざまな操作を実行できます。
 
@@ -306,6 +297,13 @@ Spark 1.6 で 32 ビットの Java SDK を使用している場合、ローカ�
     -Xms128m -Xmx512m -XX:MaxPermSize=300m -ea
 
 ![IntelliJ の [VM options]\(VM オプション\) ボックスへのオプションの追加](./media/hdinsight-apache-spark-intellij-tool-plugin/change-heap-size.png)
+
+## <a name="faq"></a>FAQ
+アプリケーションを Azure Data Lake Store に送信するには、Azure サインイン プロセスで **[Interactive]\(インタラクティブ\)** モードを選択します。 **[Automated]\(自動\)** モードを選択した場合は、エラーが発生することがあります。
+
+![対話型のサインイン](./media/hdinsight-apache-spark-intellij-tool-plugin/interative-signin.png)
+
+これで解決されました。 Azure Data Lake クラスターを選択して、任意のサインイン方法でアプリケーションを送信することができます。
 
 ## <a name="feedback-and-known-issues"></a>フィードバックと既知の問題
 現在、Spark の出力を直接表示する機能はサポートされていません。

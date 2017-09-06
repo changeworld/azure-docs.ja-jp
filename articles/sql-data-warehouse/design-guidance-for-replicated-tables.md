@@ -15,10 +15,10 @@ ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: efb5361496a2199a960564f6213f509b693e3cfa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -130,11 +130,11 @@ WHERE d.FiscalYear = 2004
 ```
 `DimDate` と `DimSalesTerritory` をラウンドロビン テーブルとして作成し直しました。 結果として、このクエリでは次のクエリ プランが示されました。これには、複数のブロードキャスト移動操作が含まれています。 
  
-![ラウンド ロビン クエリ プラン](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg "ラウンド ロビン クエリ プラン") 
+![ラウンドロビン クエリ プラン](media/design-guidance-for-replicated-tables/round-robin-tables-query-plan.jpg) 
 
 `DimDate` と `DimSalesTerritory` をレプリケート テーブルとして作成し直し、もう一度このクエリを実行しました。 その結果のクエリ プランは非常に短くなり、ブロードキャスト移動は含まれていません。
 
-![レプリケート クエリ プラン](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg "レプリケート クエリ プラン") 
+![レプリケートされたクエリ プラン](media/design-guidance-for-replicated-tables/replicated-tables-query-plan.jpg) 
 
 
 ## <a name="performance-considerations-for-modifying-replicated-tables"></a>レプリケート テーブルを変更する場合のパフォーマンスに関する考慮事項
