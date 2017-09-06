@@ -12,21 +12,21 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
-ms.date: 08/07/2017
+ms.topic: quickstart
+ms.date: 08/24/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: f29e9dcc2bed968937627d48f1a98e3b084853b9
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 0273072c7c10e219ab8d6c85eb252badafc17147
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
-このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってグラフ データベースを作成します。 また、グラフ データベースを使った Java コンソール アプリを OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) ドライバーですばやく作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、グラフ リソースの作成と変更を行うことができるようになります。 
+このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってグラフ データベースを作成します。 また、グラフ データベースを使った Java コンソール アプリを OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) ドライバーですばやく作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートに従うと、UI とプログラムのどちらか好きな方法で、グラフ リソースの作成と変更を行うことができるようになります。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -53,7 +53,7 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
 1. Azure Portal の左側のナビゲーション メニューで、**[データ エクスプローラー (プレビュー)]** をクリックします。 
 2. **[データ エクスプローラー (プレビュー)]** ブレードで **[New Graph]\(新しいグラフ\)** をクリックし、以下の情報を使用してページに必要事項を入力します。
 
-    ![Azure Portal でのデータ エクスプローラー](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
+    ![Azure Portal のデータ エクスプローラー](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
 
     設定|推奨値|Description
     ---|---|---
@@ -61,7 +61,6 @@ Azure Portal でデータ エクスプローラー ツールを使用してグ�
     グラフ ID|sample-graph|新しいグラフの ID。 グラフ名の文字要件はデータベース ID と同じです。
     ストレージの容量| 10 GB|既定値をそのまま使用します。 これは、データベースの記憶域容量です。
     スループット|400 RU|既定値をそのまま使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
-    RU/m|オフ|既定値をそのまま使用します。
     パーティション キー|空白|このクイックスタートの目的上、パーティション キーは空白のままにしておきます。
 
 3. フォームに入力したら、**[OK]** をクリックします。

@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 81ecd5771be544e250ea0df31aa274f0850527ad
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
 IoT Suite コネクテッド ファクトリの[事前構成済みソリューション][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
 
-* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[FAQ][lnk-faq] を参照してください。
+* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 * このようなデバイスと生産ラインの運用 KPI と OEE を表示します。
 * OPC UA サーバー システムを操作するためにクラウドベースのアプリケーションがどのように使用されているかを示します。
 * 独自の OPC UA サーバー デバイスを接続できるようにします。
@@ -40,6 +40,8 @@ IoT Suite コネクテッド ファクトリの[事前構成済みソリュー�
 * ソリューションの問題のトラブルシューティングを行う。
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
 * Azure サービスを利用する独自の IoT ソリューションを設計する。
+
+詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
@@ -128,6 +130,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+* [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -138,4 +141,4 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-[lnk-faq]: iot-suite-faq.md
+
