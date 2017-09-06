@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: 25ad960e456d20a3695d4245ddddc9772cbf47a0
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
@@ -46,7 +46,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
 
 **simulated-device** は IoT Hub に接続して、**lockDoor** ダイレクト メソッドを実装し、必要なプロパティの変更を処理します。
 
-**Schedule-jobs** はジョブを使用して **lockDoor** ダイレクト メソッドを呼び出し、複数のデバイスでデバイス ツインの必要なプロパティを更新します。
+**schedule-jobs** はジョブを使用して **lockDoor** ダイレクト メソッドを呼び出し、複数のデバイスでデバイス ツインの必要なプロパティを更新します。
 
 > [!NOTE]
 > デバイス アプリとバックエンド アプリの両方をビルドするために使用できる Azure IoT SDK については、記事「[Azure IoT SDK](iot-hub-devguide-sdks.md)」を参照してください。

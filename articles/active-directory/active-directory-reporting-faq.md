@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9a9ca74b959d1940bf30a903a8eab65cad87b74a
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
@@ -87,14 +87,15 @@ ms.lasthandoff: 07/21/2017
 
 ---
 
-**Q: Identity Protection にリスク イベントがありますが、すべてのサインインの中に対応するサインインを確認できません。これは想定されますか。**
-**A:**: はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
+**Q: Identity Protection にリスク イベントがありますが、すべてのサインインの中に対応するサインインを確認できません。これは期待される動作ですか?**
+
+**A:** はい、Identity Protection では、対話型または非対話型にかかわらず、すべての認証フローについてリスクを評価します。 それに対して、すべてのサインインのレポートには、対話型のサインインだけが表示されます。
 
 ---
 
 **Q: Azure Portal で "リスクのフラグ付きユーザー" レポートはどうすればダウンロードできますか。**
 
-**A:** "リスクのフラグ付きユーザー" レポートをダウンロードするオプションは、近日中に追加されます。
+**A:** *リスクのフラグ付きユーザー* レポートをダウンロードするオプションは、近日中に追加されます。
 
 ---
 
@@ -104,4 +105,9 @@ ms.lasthandoff: 07/21/2017
 
 ---
 
+**Q: サインインとリスクの高いサインイン レポートでは、IP アドレスはどのように計算されていますか。**
+
+**A:** IP アドレスは、IP アドレスとそのアドレスを持つコンピューターの物理的な配置場所との間に明確な関連性がないような方法で発行されます。 これは、クライアント デバイスの実際の使用場所から遠く離れたところにある中央プールから IP アドレスを発行するモバイル プロバイダーや VPN などの要因によって複雑になります。 これにより、IP アドレスの物理的な場所の変換は、トレース、レジストリ データ、逆引き参照、およびその他の情報に基づくベスト エフォートで対応されています。 
+
+---
 

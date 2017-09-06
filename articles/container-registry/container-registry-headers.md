@@ -8,7 +8,7 @@ manager: balans
 editor: dlepow
 ms.service: container-registry
 ms.devlang: na
-ms.topic: how-to-article
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/22/2017
@@ -18,7 +18,6 @@ ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
 ms.openlocfilehash: dd4feff057269ed7106990bb63eed7fcffa2dbec
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/10/2017
-
 
 ---
 # <a name="azure-container-registry-repositories"></a>Azure Container Registry リポジトリ

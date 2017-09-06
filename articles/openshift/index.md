@@ -2,15 +2,15 @@
 title: "Azure 上の OpenShift Origin"
 description: "Azure 上の OpenShift Origin"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 06/19/2017
-ms.author: mlearned
+ms.author: carolz
 ms.translationtype: Human Translation
 ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
 ms.openlocfilehash: a3f81d16be7b01d9162c02f07a42f25ae8edac26

@@ -1,6 +1,6 @@
 ---
-title: "Azure Log Analytics のコンテナー ソリューション | Microsoft Docs"
-description: "Log Analytics のコンテナー ソリューションを使用すると、Docker および Windows コンテナー ホストを 1 か所で表示して管理できます。"
+title: "Azure Log Analytics のコンテナー監視ソリューション | Microsoft Docs"
+description: "Log Analytics のコンテナー監視ソリューションを使用すると、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できます。"
 services: log-analytics
 documentationcenter: 
 author: bandersmsft
@@ -12,28 +12,36 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 08/18/2017
 ms.author: magoedte;banders
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 054c1892c86876f9d8d812c4e2e05b62ef4b4a8a
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: b2e03531ee401f4552198e5dd50fbfe1d970f0e5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/24/2017
 
 ---
-# <a name="containers-preview-solution-in-log-analytics"></a>Log Analytics のコンテナー (プレビュー) ソリューション
+# <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
 
 ![コンテナーのシンボル](./media/log-analytics-containers/containers-symbol.png)
 
-この記事では、Docker および Windows コンテナー ホストを 1 か所で表示して管理できる、Log Analytics のコンテナー ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
+この記事では、Docker と Windows のコンテナー ホストを 1 か所で表示して管理できる、Log Analytics のコンテナー監視ソリューションを設定して使用する方法について説明します。 Docker は、IT インフラストラクチャへのソフトウェアのデプロイを自動化するコンテナーを作成するために使用されるソフトウェア仮想化システムです。
 
-このソリューションを使用すれば、コンテナー ホストで実行されているコンテナーとコンテナー内で実行されているイメージを確認できます。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。 Windows を実行しているコンピューターでは、Windows Server、Hyper-V、Docker の各コンテナーのログを一元化して比較できます。
+このソリューションは、どのコンテナーが実行中か、何のコンテナー イメージが実行中か、コンテナーがどこで実行中かを表示します。 コンテナーで使用されるコマンドを示す詳細な監査情報を確認できます。 また、Docker または Windows ホストをリモートで確認しなくても、一元化されたログを表示および検索して、コンテナーのトラブルシューティングを行うことができます。 ホストで余分なリソースを使用しているコンテナーや、ノイズが大きいコンテナーを特定できます。 また、コンテナーについて、CPU、メモリ、ストレージ、ネットワークの使用量とパフォーマンスに関する情報を一元的に確認できます。 Windows を実行しているコンピューターでは、Windows Server、Hyper-V、Docker の各コンテナーのログを一元化して比較できます。 このソリューションは、次のコンテナー オーケストレーターをサポートしています。
+
+- Docker Swarm
+- DC/OS
+- Kubernetes
+- Service Fabric
+- Red Hat OpenShift
+
 
 次のダイアグラムは、OMS を使用するさまざまなコンテナー ホストとエージェント間の関係を示しています。
 
 ![コンテナー ダイアグラム](./media/log-analytics-containers/containers-diagram.png)
 
 ## <a name="system-requirements"></a>システム要件
+
 始める前に、次の詳細を確認し、前提条件が満たされていることを確認してください。
 
 ### <a name="container-monitoring-solution-support-for-docker-orchestrator-and-os-platform"></a>Docker Orchestrator と OS プラットフォームのコンテナー監視ソリューションのサポート
@@ -78,16 +86,16 @@ ms.lasthandoff: 08/16/2017
 ### <a name="docker-versions-supported-on-windows"></a>Windows でサポートされている Docker のバージョン
 
 - Docker 1.12 と 1.13
-- Docker 17.03.0
+- Docker 17.03.0 以降
 
 ## <a name="installing-and-configuring-the-solution"></a>ソリューションのインストールと構成
 次の情報を使用して、ソリューションをインストールおよび構成します。
 
-1. コンテナー ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
+1. コンテナー監視ソリューションを OMS ワークスペースに追加します。[Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.ContainersOMS?tab=Overview) から追加するか、[ソリューション ギャラリーからの Log Analytics ソリューションの追加](log-analytics-add-solutions.md)に関するページで説明されている手順に従って追加してください。
 
-2. OMS で Docker をインストールして使用します。  オペレーティング システムにより、次の方法から選択できます。
+2. OMS エージェントで Docker をインストールして使用します。  オペレーティング システムにより、次の方法から選択できます。
 
-  * サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、OMS Agent for Linux をインストールして構成します。  
+  * サポートされている Linux オペレーティング システムでは、Docker をインストールして実行し、[OMS エージェント for Linux](log-analytics-agent-linux.md) をインストールして構成します。  
   * CoreOS では、OMS Agent for Linux を実行できません。 代わりに、OMS Agent for Linux のコンテナー化されたバージョンを実行します。 Azure Government Cloud のコンテナーで作業をしている場合は、[CoreOS を含む Linux コンテナー ホスト](#for-all-linux-container-hosts-including-coreos)または [CoreOS を含む Azure Government Linux コンテナー](#for-all-azure-government-linux-container-hosts-including-coreos)に関する記事をご覧ください。
   * Windows Server 2016 および Windows 10 では、Docker エンジンとクライアントをインストールした後、エージェントを接続して情報を収集し、Log Analytics に送信します。  
 
@@ -102,14 +110,11 @@ ms.lasthandoff: 08/16/2017
 
 > [!IMPORTANT]
 > Docker は、[OMS Agent for Linux](log-analytics-agent-linux.md) をコンテナー ホストにインストールする**前**に実行しておく必要があります。 Docker をインストールするより先にエージェントをインストールしてある場合は、OMS Agent for Linux を再インストールする必要があります。 Docker の詳細については、[Docker の Web サイト](https://www.docker.com)を参照してください。
->
->
 
-コンテナーを監視するには、コンテナー ホストで次の設定を構成しておくことが必要です。
 
 ## <a name="linux-container-hosts"></a>Linux コンテナー ホスト
 
-Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページで、上部のメニューから **[設定]** を選択し、**Connected Sources\Linux Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
+Docker をインストールした後で、コンテナー ホストの次の設定を使用して、Docker で使用するためにエージェントを構成します。 まず、OMS のワークスペース ID とキーが必要です。これらは Azure Portal で見つけることができます。 ワークスペースで **[クイック スタート]** > **[コンピューター]** をクリックして、**ワークスペース ID** と**主キー**を表示します。  両方をコピーしてお使いのエディターに貼り付けます。
 
 ### <a name="for-all-linux-container-hosts-except-coreos"></a>CoreOS を除くすべての Linux コンテナー ホスト
 
@@ -424,43 +429,46 @@ Windows および Hyper-V コンテナーの監視を有効にするには、コ
 
 Service Fabric で実行されている Windows コンテナーを監視できます。 ただし、現在 Service Fabric でサポートされているのは、[Azure で実行される仮想マシン](log-analytics-azure-vm-extension.md)と[オンプレミス環境で Windows を実行するコンピューター](log-analytics-windows-agents.md)のみです。
 
-コンテナー ソリューションが正しく設定されていることを確認するには、次の手順を実行します。
-
-- 管理パックが正常にダウンロードされているかどうかを確認し、*ContainerManagement.xxx* を探します。
-    - ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
-- **[コントロール パネル]** > **[システムとセキュリティ]** に移動して、OMS ワークスペース ID が正しいことを確認します。
-    - **Microsoft Monitoring Agent** を開き、ワークスペース情報が正しいことを確認します。
+Windows でコンテナー監視ソリューションが正しく設定されていることを確認できます。 管理パックが正常にダウンロードされているかどうかを確認するには、*ContainerManagement.xxx* を探します。 ファイルは C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs フォルダーにあります。
 
 
-## <a name="containers-data-collection-details"></a>コンテナーのデータ収集の詳細
-コンテナー ソリューションでは、有効化されたエージェントを使用して、コンテナー ホストとコンテナーからさまざまなパフォーマンス メトリックとログ データを収集します。
+## <a name="solution-components"></a>ソリューションのコンポーネント
 
-次の表は、コンテナーのデータ収集手段とデータ収集方法に関する各種情報をまとめたものです。
+Windows エージェントを使用している場合、このソリューションを追加するときに、各コンピューターにエージェントと共に次の管理パックがインストールされます。 この管理パックは構成や保守が不要です。
 
-| プラットフォーム | [OMS Agent for Linux](log-analytics-linux-agents.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Linux |&#8226; |  |  |  |  |3 分おき |
+- *ContainerManagement.xxx* は、C:\Program Files\Microsoft Monitoring Agent\Agent\Health Service State\Management Packs にインストールされます。
 
-| プラットフォーム | [Windows エージェント](log-analytics-windows-agents.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Windows | &#8226; |  |  |  |  |3 分おき |
+## <a name="container-data-collection-details"></a>コンテナーのデータ収集の詳細
+コンテナー監視ソリューションでは、有効化されたエージェントを使用して、コンテナー ホストとコンテナーからさまざまなパフォーマンス メトリックとログ データを収集します。
 
-| プラットフォーム | [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md) | SCOM エージェント | Azure Storage (Azure Storage) | SCOM の要否 | 管理グループによって送信される SCOM エージェントのデータ | 収集の頻度 |
-| --- | --- | --- | --- | --- | --- | --- |
-| Azure | &#8226; |  |  |  |  |3 分おき |
+データは、次のエージェントの種類によって 3 分ごとに収集されます。
 
-次の表に、Containers ソリューションによって収集されるデータ型およびログ検索と結果に使用されるデータ型の例を示します。
+- [OMS Agent for Linux](log-analytics-linux-agents.md)
+- [Windows エージェント](log-analytics-windows-agents.md)
+- [Log Analytics VM 拡張機能](log-analytics-azure-vm-extension.md)
+
+
+### <a name="container-records"></a>コンテナー レコード
+
+次の表に、コンテナー監視ソリューションによって収集されるレコードと、ログ検索結果に表示されるデータ型の例を示します。
 
 | データ型 | ログ検索のデータ型 | フィールド |
 | --- | --- | --- |
 | ホストとコンテナーのパフォーマンス | `Type=Perf` | Computer、ObjectName、CounterName (%Processor Time、Disk Reads MB、Disk Writes MB、Memory Usage MB、Network Receive Bytes、Network Send Bytes、Processor Usage sec、Network)、CounterValue、TimeGenerated、CounterPath、SourceSystem |
-| コンテナー インベントリ | `Type=ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContinerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
+| コンテナー インベントリ | `Type=ContainerInventory` | TimeGenerated、Computer、container name、ContainerHostname、Image、ImageTag、ContainerState、ExitCode、EnvironmentVar、Command、CreatedTime、StartedTime、FinishedTime、SourceSystem、ContainerID、ImageID |
 | コンテナー イメージ インベントリ | `Type=ContainerImageInventory` | TimeGenerated、Computer、Image、ImageTag、ImageSize、VirtualSize、Running、Paused、Stopped、Failed、SourceSystem、ImageID、TotalContainer |
 | コンテナー ログ | `Type=ContainerLog` | TimeGenerated、Computer、image ID、container name、LogEntrySource、LogEntry、SourceSystem、ContainerID |
 | コンテナー サービス ログ | `Type=ContainerServiceLog`  | TimeGenerated、Computer、TimeOfCommand、Image、Command、SourceSystem、ContainerID |
+| コンテナー ノード インベントリ | `Type=ContainerNodeInventory_CL`| TimeGenerated、Computer、ClassName_s、DockerVersion_s、OperatingSystem_s、Volume_s、Network_s、NodeRole_s、OrchestratorType_s、InstanceID_g、SourceSystem|
+| Kubernetes インベントリ | `Type=KubePodInventory_CL` | TimeGenerated、Computer、PodLabel_deployment_s、PodLabel_deploymentconfig_s、PodLabel_docker_registry_s、Name_s、Namespace_s、PodStatus_s、PodIp_s、PodUid_g、PodCreationTimeStamp_t、SourceSystem |
+| コンテナー プロセス | `Type=ContainerProcess_CL` | TimeGenerated、Computer、Pod_s、Namespace_s、ClassName_s、InstanceID_s、Uid_s、PID_s、PPID_s、C_s、STIME_s、Tty_s、TIME_s、Cmd_s、Id_s、Name_s、SourceSystem |
+| Kubernetes イベント | `Type=KubeEvents_CL` | TimeGenerated、Computer、Name_s、ObjectKind_s、Namespace_s、Reason_s、Type_s、SourceComponent_s、SourceSystem、Message |
+
+*PodLabel* データ型に付加されるラベルは、独自のカスタム ラベルです。 表に示されている、付加された PodLabel ラベルは一例です。 そのため、`PodLabel_deployment_s`、`PodLabel_deploymentconfig_s`、`PodLabel_docker_registry_s` はご利用の環境のデータ セットによって異なり、一般的には `PodLabel_yourlabel_s` に似ています。
+
 
 ## <a name="monitor-containers"></a>コンテナーの監視
-OMS ポータルでソリューションを有効にすると、コンテナー ホストとホストで実行されているコンテナーに関する情報が **[コンテナー]** タイルに表示されます。
+OMS ポータルでソリューションを有効にすると、コンテナー ホストと、ホストで実行されているコンテナーに関する概要情報が **[コンテナー]** タイルに表示されます。
 
 ![[コンテナー] タイル](./media/log-analytics-containers/containers-title.png)
 
@@ -469,57 +477,68 @@ OMS ポータルでソリューションを有効にすると、コンテナー 
 ### <a name="using-the-containers-dashboard"></a>コンテナー ダッシュボードの使用
 **[コンテナー]** タイルをクリックします。 ここに表示される情報は、次の項目で整理されます。
 
-* コンテナーのイベント
-* エラー
-* コンテナーの状態
-* コンテナー イメージ インベントリ
-* CPU とメモリのパフォーマンス
+- **コンテナー イベント** - コンテナーの状態と、失敗したコンテナーがあるコンピューターを示します。
+- **コンテナー ログ** - 生成されたコンテナー ログ ファイルの一定期間のグラフと、ログ ファイル数が最も多いコンピューターの一覧を示します。
+- **Kubernetes イベント** - 生成された Kubernetes イベントの一定期間のグラフと、ポッドがイベントを生成した理由の一覧を示します。 *このデータ セットは、Linux 環境でのみ使用します。*
+- **Kubernetes 名前空間のインベントリ** - 名前空間とポッドの数、およびそれらの階層を示します。 *このデータ セットは、Linux 環境でのみ使用します。*
+- **コンテナー ノードのインベントリ** - コンテナー ノード/ホストで使用されるオーケストレーションの種類の数を示します。 コンピューター ノード/ホストも、コンテナーの数として一覧表示されます。 *このデータ セットは、Linux 環境でのみ使用します。*
+- **コンテナー イメージのインベントリ** - 使用されるコンテナー イメージの総数と、イメージの種類の数を示します。 イメージの数も、イメージ タグで一覧表示されます。
+- **コンテナーの状態** - 実行中のコンテナーがあるコンテナー ノード/ホスト コンピューターの総数を示します。 コンピューターも、実行中のホストの数として一覧表示されます。
+- **コンテナー プロセス** - 実行されているコンテナー プロセスの一定期間の折れ線グラフを示します。 コンテナーも、コンテナー内で実行中のコマンド/プロセスとして一覧表示されます。 *このデータ セットは、Linux 環境でのみ使用します。*
+- **コンテナー CPU のパフォーマンス** - コンピューター ノード/ホストの平均 CPU 使用率の一定期間の折れ線グラフを示します。 平均 CPU 使用率に基づいてコンピューター ノード/ホストも一覧表示されます。
+- **コンテナー メモリのパフォーマンス** - メモリ使用量の一定期間の折れ線グラフを示します。 インスタンス名に基づいてコンピューターのメモリ使用率も一覧表示されます。
+- **コンピューターのパフォーマンス** - CPU パフォーマンスの一定期間のパーセント、メモリ使用量の一定期間のパーセント、一定期間の空きディスク領域のメガバイトについての折れ線グラフを示します。 グラフの線にマウス オーバーすると詳細を表示できます。
 
-ダッシュボードの各ペインは、収集されたデータに対して実行された検索を視覚的に表したものです。
+
+ダッシュボードの各エリアは、収集されたデータに対して実行された検索の結果を視覚的に表したものです。
 
 ![コンテナー ダッシュボード](./media/log-analytics-containers/containers-dash01.png)
 
 ![コンテナー ダッシュボード](./media/log-analytics-containers/containers-dash02.png)
 
-**[Container Status (コンテナーの状態)]** ブレードで、次に示すように最上部をクリックします。
+**[コンテナーの状態]** エリアで、上部のエリアをクリックすると次のように表示されます。
 
 ![コンテナーの状態](./media/log-analytics-containers/containers-status.png)
 
-[ログ検索] が開き、ホストとホストで実行されているコンテナーに関する情報が表示されます。
+[ログ検索] が開き、コンテナーの状態に関する情報が表示されます。
 
 ![コンテナーの [ログ検索]](./media/log-analytics-containers/containers-log-search.png)
 
 ここで検索クエリを編集して、関心のある情報のみが見つかるように変更できます。 ログ検索の詳細については、「[Log Analytics におけるログの検索](log-analytics-log-searches.md)」を参照してください。
 
-たとえば、検索クエリの **[実行中]** を **[停止]** に変更して、実行中のコンテナーの代わりに停止している全コンテナーが表示されるようにすることもできます。
-
 ## <a name="troubleshoot-by-finding-a-failed-container"></a>失敗したコンテナーを特定してトラブルシューティングを行う
-ゼロ以外の終了コードで終了したコンテナーは、OMS によって **[失敗]** とマークされます。 **[失敗したコンテナー]** ブレードで、環境におけるエラーと失敗の概要を確認できます。
+
+ゼロ以外の終了コードで終了したコンテナーは、Log Analytics によって **[失敗]** とマークされます。 **[失敗したコンテナー]** エリアで、環境におけるエラーと失敗の概要を確認できます。
 
 ### <a name="to-find-failed-containers"></a>失敗したコンテナーを特定するには
-1. **[Container Events (コンテナー イベント)]** ブレードをクリックします。  
-   ![コンテナー イベント](./media/log-analytics-containers/containers-events.png)
+1. **[コンテナーの状態]** エリアをクリックします。  
+   ![コンテナーの状態](./media/log-analytics-containers/containers-status.png)
 2. [ログ検索] が開き、次のようにコンテナーの状態が表示されます。  
-   ![コンテナーの状態](./media/log-analytics-containers/containers-container-state.png)
-3. 次に、失敗の値をクリックして、停止または失敗したイメージのサイズや数などの追加情報を表示できます。 **[表示数を増やす]** を展開してイメージ ID を表示します。  
-   ![失敗したコンテナー](./media/log-analytics-containers/containers-state-failed.png)
-4. 次に、このイメージを実行しているコンテナーを検索します。 検索クエリに以下を入力します。
-   `Type=ContainerInventory <ImageID>` これによりログが表示されます。 スクロールして失敗したコンテナーを表示できます。  
+   ![コンテナーの状態](./media/log-analytics-containers/containers-log-search.png)
+3. 次に、失敗したコンテナーの集計値をクリックして、追加情報を表示します。 **[表示数を増やす]** を展開してイメージ ID を表示します。  
+   ![失敗したコンテナー](./media/log-analytics-containers/containers-state-failed.png)  
+4. 次に、検索クエリに以下を入力します。 `Type=ContainerInventory <ImageID>` により、停止したイメージと失敗したイメージのサイズと数など、イメージに関する詳細が表示されます。  
    ![失敗したコンテナー](./media/log-analytics-containers/containers-failed04.png)
 
 ## <a name="search-logs-for-container-data"></a>コンテナー データのログの検索
 特定のエラーのトラブルシューティングを実行する際には、環境のどこでそのエラーが発生しているのかを確認すると役立つ場合があります。 次のログの種類は、目的の情報を返すクエリを作成するうえで役立ちます。
 
-* **ContainerInventory** – この種類は、コンテナーの場所、コンテナーの名前、実行中のイメージに関する情報が必要な場合に使用します。
-* **ContainerImageInventory** – この種類は、イメージ別に整理された情報を見つける場合や、イメージの ID やサイズなどのイメージ情報を確認する場合に使用します。
-* **ContainerLog** – この種類は、特定のエラー ログの情報やエントリを見つける場合に使用します。
-* **ContainerServiceLog** – この種類は、開始、停止、削除、プルのコマンドなど、Docker デーモンの監査証跡情報を見つける場合に使用します。
+
+- **ContainerImageInventory** – この種類は、イメージ別に整理された情報を見つける場合や、イメージの ID やサイズなどのイメージ情報を確認する場合に使用します。
+- **ContainerInventory** – この種類は、コンテナーの場所、コンテナーの名前、実行中のイメージに関する情報が必要な場合に使用します。
+- **ContainerLog** – この種類は、特定のエラー ログの情報やエントリを見つける場合に使用します。
+- **ContainerNodeInventory_CL** – コンテナーが置かれているホスト/ノードに関する情報が必要な場合に使用します。 これにより、Docker のバージョン、オーケストレーションの種類、ストレージ、ネットワーク情報を取得できます。
+- **ContainerProcess_CL** – コンテナー内で実行中のプロセスをすぐに確認したいときに使用します。
+- **ContainerServiceLog** – この種類は、開始、停止、削除、プルのコマンドなど、Docker デーモンの監査証跡情報を見つける場合に使用します。
+- **KubeEvents_CL** – Kubernetes イベントを確認するときに使用します。
+- **KubePodInventory_CL** – クラスター階層に関する情報を把握したいときに使用します。
+
 
 ### <a name="to-search-logs-for-container-data"></a>コンテナー データのログを検索するには
 * 最近失敗したことがわかっているイメージを選択し、そのエラー ログを見つけます。 まず、**ContainerInventory** 検索で、そのイメージを実行しているコンテナー名を特定します。 たとえば、`Type=ContainerInventory ubuntu Failed` を検索します。  
     ![Ubuntu コンテナーの検索](./media/log-analytics-containers/search-ubuntu.png)
 
-  **[名前]** の横にあるコンテナーの名前をメモし、そのログを検索します。 この例では `Type=ContainerLog adoring_meitner` です。
+  **[名前]** の横にあるコンテナーの名前と、それらのログを検索します。 この例では `Type=ContainerLog cranky_stonebreaker` です。
 
 **パフォーマンス情報の表示**
 
@@ -530,10 +549,6 @@ Type=Perf
 ```
 
 ![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf01.png)
-
-結果の **[メトリック]** という単語をクリックすると、よりグラフィカルな形式で表示できます。
-
-![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf02.png)
 
 表示されているパフォーマンス データのスコープを特定のコンテナーに制限するには、その名前をクエリの右側に入力します。
 
@@ -546,7 +561,7 @@ Type=Perf <containerName>
 ![コンテナーのパフォーマンス](./media/log-analytics-containers/containers-perf03.png)
 
 ## <a name="example-log-search-queries"></a>検索クエリの例
-クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[注目すべきクエリ]** ブレードを試してみると、より高度なクエリを作成するのに役立ちます。
+クエリの作成の際には、多くの場合、1 ～ 2 個の例で始め、その後環境に合わせて変更するとうまくいきます。 まず、**[サンプル クエリ]** エリアで試すと、より高度なクエリを作成しやすくなります。
 
 [!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
 

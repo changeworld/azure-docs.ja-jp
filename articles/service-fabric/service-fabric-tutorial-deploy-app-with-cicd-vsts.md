@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: dda5ea77b35fa8491128135ea7709016781f2aea
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 631f9794994530092d05a33b06ebf8c07f331649
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -48,6 +48,13 @@ ms.lasthandoff: 08/10/2017
 - [このチュートリアルに従って](service-fabric-tutorial-create-cluster-azure-ps.md)、たとえば、Azure 上に Windows Service Fabric クラスターを作成します。
 - [Team Services アカウント](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services) を作成します。
 
+## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
+[このチュートリアル シリーズの第 1 部](service-fabric-tutorial-create-dotnet-app.md)で投票サンプル アプリケーションをビルドしていない場合は、ダウンロードすることができます。 コマンド ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製します。
+
+```
+git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
+```
+
 ## <a name="prepare-a-publish-profile"></a>発行プロファイルの準備
 ここまでで、[アプリケーションを作成し](service-fabric-tutorial-create-dotnet-app.md)、[アプリケーションを Azure にデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)しました。これで、継続的インテグレーションをセットアップする準備ができました。  まず、Team Services 内で実行されるデプロイ プロセスで使用する発行プロファイルを、アプリケーション内に準備します。  発行プロファイルは、あらかじめ作成したクラスターを対象とするように構成する必要があります。  Visual Studio を起動し、既存の Service Fabric アプリケーション プロジェクトを開きます。  **ソリューション エクスプローラー**で、プロジェクトを右クリックし、**[発行]** を選択します。
 
@@ -71,47 +78,44 @@ Visual Studio の右下隅のステータス バーにある **[ソース管理*
 リポジトリを公開すると、ローカル リポジトリと同じ名前の新しいチーム プロジェクトが自分のアカウントに作成されます。 既存のチーム プロジェクトでリポジトリを作成するには、**[リポジトリ]** 名の横にある **[詳細]** をクリックして、チーム プロジェクトを選択します。 **[See it on the web]\(Web を参照\)** を選択すると、Web でコードを表示できます。
 
 ## <a name="configure-continuous-delivery-with-vsts"></a>VSTS を利用した継続的配信を設定する
-Visual Studio のウィザード内のビルドを使用して、VSTS を利用した継続的配信を構成します。
+Team Services のビルド定義では、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド定義を作成します。 Team Services のビルド定義の詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。 
 
-1. **ソリューション エクスプローラー**で **[MyApplication]** アプリケーション プロジェクトを右クリックし、**[** -> **VSTS を利用した継続的配信の追加]** を選択します。 必要な構成を入力するためのダイアログ ボックスが表示されます。
+Team Services のリリース定義では、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します ビルド定義とリリース定義を併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Team Services のリリース定義の詳細については、 [こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
 
-    ![VSTS を利用した継続的配信][continuous-delivery-with-VSTS]
+### <a name="create-a-build-definition"></a>ビルド定義の作成
+Web ブラウザーを開き、新しいチーム プロジェクト (https://myaccount.visualstudio.com/Voting/Voting%20Team/_git/Voting) に移動します。 
 
-    **[アカウント]**、**[プロジェクト]**、および **[Git リポジトリ]** 値が自動的に入力されます。
+**[ビルドとリリース]** タブ、**[ビルド]**、**[+ 新しい定義]** の順に選択します。  **[テンプレートの選択]** で **[Azure Service Fabric アプリケーション]** テンプレートを選択し、**[適用]** をクリックします。 
 
-2. エージェント キューとして **[ホステッド VS2017]** を選択します。
+![ビルド テンプレートを選択する][select-build-template] 
 
-3. **[クラスター接続]** ドロップダウンで **[接続の作成]** を選択すると、VSTS でサービス エンドポイントを構成する Web サイトが開きます。 
+投票アプリケーションには、.NET Core プロジェクトが含まれているので、依存関係を復元するタスクを追加します。 **[タスク]** ビューの左下にある **[+ タスクの追加]** を選択します。 「コマンド ライン」を検索して、コマンドライン タスクを見つけて **[追加]** をクリックします。 
 
-4. ブラウザー ウィンドウにフォーカスを設定して、**[新しいサービス エンドポイント]** -> **[Service Fabric]** を選択します。
+![タスクを追加する][add-task] 
 
-    ![新しいサービス エンドポイント][new-service-endpoint]
+新しいタスクの **[表示名]** に「Run dotnet.exe」、**[ツール]** に「dotnet.exe」、**[引数]** に「restore」と入力します。 
 
-    新しい Service Fabric 接続を追加するダイアログ ボックスが表示されます。
-    
-5. **[証明書ベース]** を選択し、ダイアログを完了します。
+![新しいタスク][new-task] 
 
-    ![[新しいサービス エンドポイント] ダイアログ][new-service-endpoint-dialog]
+**[トリガー]** ビューで、**[継続的インテグレーション]** の **[このトリガーを有効にする]** スイッチをクリックします。 
 
-    1. **[接続名]** を入力します。
-    2. クラスターの管理エンドポイント (たとえば、"tcp://mycluster.eastus.cloudapp.azure.com:19000") を、**[クラスター エンドポイント]** フィールドに入力します。 プロトコルとして「tcp://」を指定します。  既定の管理エンドポイント ポートは、「19000」です。
-    3. [**サーバー証明書サムプリント**] を入力します。  サムプリントは、クラスター (https://mycluster.eastus.cloudapp.azure.com:19080) の Service Fabric Explorer を開くと取得できます。
-        - ツリー ビューの **[クラスター]** ノードと、右側のウィンドウにある **[マニフェスト]** タブを選択します。
-        - XML ファイル内で**<ServerCertificate>**要素を検索し、**X509FindValue** 属性の内容をコピーします。
-    4. **[クライアント証明書]** フィールドに、ビルド エージェントにインストールされている証明書を取得するために必要な、Base64 でエンコードされた文字列としての証明書を入力します。
-        - 使用可能な PFX ファイルとして証明書があることを確認してください。
-        - クリップボードに Base64 でエンコードされた文字列として PFX ファイルを出力する場合は、次の PowerShell コマンドを実行します。`[System.Convert]::ToBase64String([System.IO.File]::ReadAllBytes(C:\path\to\certificate.pfx)) | clip`
-        - クリップボードから、値をダイアログ ボックスのフィールドに貼り付け (ctrl キーを押しながら v) ます。
-    5. **[パスワード]** フィールドに **[証明書のパスワード]** を入力し、**[OK]** をクリックします。
+**[保存してキューに登録]** を選択し、**[エージェント キュー]** に「Hosted VS2017」と入力します。 **[キュー]** を選択して、ビルドを手動で開始します。  プッシュまたはチェックイン時にもビルドがトリガーされます。
 
-6. Visual Studio の **[VSTS を利用した継続的な配信]** ダイアログの **[クラスター接続]** フィールドで**<Refresh>**選択します。 先ほど作成したクラスター エンドポイントが、ドロップダウン リストに表示されるはずです。
+ビルドの進行状況を確認するには、**[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース定義を定義します。 
 
-7. 既定のビルドおよびリリース定義名を選択するか、またはダイアログ ボックスで提案された名前を変更します。 完了したら **[OK]** をクリックします。
+### <a name="create-a-release-definition"></a>リリース定義の作成  
 
-しばらくすると、ブラウザーでビルドとリリース定義を開くかどうかたずねるダイアログ ボックスが Visual Studio に表示されます。 構成状態を調べるためにブラウザーで開くことを選択できますが、このチュートリアルを完了するためには必要ありません。
+**[ビルドとリリース]** タブ、**[リリース]**、**[+ 新しい定義]** の順に選択します。  **[リリース定義の作成]** で一覧から **[Azure Service Fabric の配置]** テンプレートを選択し、**[次へ]** をクリックします。  **[ビルド]** ソースを選択し、**[継続的配置]** チェックボックスをオンにして **[作成]** をクリックします。 
 
-- Team Services のビルド定義では、順次実行される一連のビルド ステップで構成されたワークフローを記述します。 Service Fabric クラスターをデプロイするため、Service Fabric アプリケーション パッケージおよび他のアーティファクトを生成するビルド定義を作成します。 Team Services のビルド定義の詳細については、[こちら](https://www.visualstudio.com/docs/build/define/create)をご覧ください。
-- Team Services のリリース定義では、クラスターにアプリケーション パッケージをデプロイするワークフローを記述します ビルド定義とリリース定義を併用すると、ソース ファイルから始まり、クラスターでのアプリケーションの実行で終わるワークフロー全体を実行できます。 Team Services のリリース定義の詳細については、 [こちら](https://www.visualstudio.com/docs/release/author-release-definition/more-release-definition)をご覧ください。
+**[環境]** ビューで、**[クラスターの接続]** の右にある **[追加]** をクリックします。  "mysftestcluster" の接続名、"tcp://mysftestcluster.westus.cloudapp.azure.com:19000" のクラスター エンドポイント、およびクラスターの Azure Active Directory または証明書の資格情報を指定します。 Azure Active Directory の資格情報について、**[ユーザー名]** フィールドと **[パスワード]** フィールドにクラスターへの接続で使用する資格情報を指定します。 証明書ベースの認証について、**[クライアント証明書]** フィールドにクライアント証明書ファイルの Base64 エンコードを定義します。  この値の取得方法については、このフィールドのポップアップ ヘルプをご覧ください。  証明書がパスワードで保護されている場合は、 **[パスワード]** フィールドでパスワードを定義します。  **[保存]** をクリックしてリリース定義を保存します。
+
+![クラスターの接続を追加する][add-cluster-connection] 
+
+**[エージェントで実行]** をクリックし、**[配置キュー]** に **[Hosted VS2017]** を選択します。 **[保存]** をクリックしてリリース定義を保存します。
+
+![エージェントで実行][run-on-agent]
+
+**[+ リリース]** -> **[リリースの作成]** -> **[作成]** を選択してリリースを手動で作成します。  デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、[http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/) に移動します。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。 
 
 ## <a name="commit-and-push-changes-trigger-a-release"></a>変更のコミットとプッシュ、リリースのトリガー
 Team Services へのコード変更をチェックインして、継続的インテグレーション パイプラインが機能していることを確認します。    
@@ -130,7 +134,7 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 
 ビルドの進行状況を確認するには、Visual Studio の**チーム エクスプローラー**で **[ビルド]** タブに切り替えます。  ビルドが正常に実行されることを確認したら、クラスターにアプリケーションをデプロイするリリース定義を定義します。
 
-デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、[http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/) に移動します。  この例では、アプリケーション バージョンは「1.0.0.20170616.3」となっていることに注意してください。
+デプロイが成功し、アプリケーションがクラスターで実行されていることを確認します。  Web ブラウザーを開き、[http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/](http://mysftestcluster.westus.cloudapp.azure.com:19080/Explorer/) に移動します。  この例では、アプリケーション バージョンが "1.0.0.20170815.3" である点に注意してください。
 
 ![Service Fabric Explorer][sfx1]
 
@@ -141,7 +145,7 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 
 ![Service Fabric Explorer][sfx2]
 
-アプリケーションのアップグレードには数分かかる場合があります。 アップグレードが完了すると、アプリケーションは次のバージョンで実行されます。  この例では「1.0.0.20170616.4」です。
+アプリケーションのアップグレードには数分かかる場合があります。 アップグレードが完了すると、アプリケーションは次のバージョンで実行されます。  この例では "1.0.0.20170815.4" です。
 
 ![Service Fabric Explorer][sfx3]
 
@@ -179,3 +183,4 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 [continuous-delivery-with-VSTS]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/VSTS-Dialog.png
 [new-service-endpoint]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpoint.png
 [new-service-endpoint-dialog]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/NewServiceEndpointDialog.png
+[run-on-agent]: ./media/service-fabric-tutorial-deploy-app-with-cicd-vsts/RunOnAgent.png

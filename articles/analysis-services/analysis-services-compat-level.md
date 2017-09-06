@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/07/2016
+ms.date: 08/16/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: acb69621babf0f562bfafedfe5547e16e8f2c8af
+ms.sourcegitcommit: 368589509b163cacf495fd0be893a8953fe2066e
+ms.openlocfilehash: b11ba54c2cdc2675ec535368e7076613a5290212
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/09/2017
 
 Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モデルをサポートしています。
 
-最新の互換性レベルは、1400 (プレビュー) です。 このレベルは、SQL Server 2017 Analysis Services と一致します。 互換性レベル 1400 の主な機能は次のとおりです。
+最新の互換性レベルは、1400 です。 このレベルは、SQL Server 2017 Analysis Services と一致します。 互換性レベル 1400 の主な機能は次のとおりです。
 
 *  データ接続の新しいインフラストラクチャーおよび TOM API と TMSL スクリプトをサポートする表形式モデルへのインポート。 この新しい機能により、Azure Blob Storage などの他のデータ ソースのサポートが有効になります。
 *  Get Data 式と M 式の使用による、データ変換およびデータ マッシュ アップ機能。
@@ -37,11 +37,6 @@ Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モ�
 *  表と列に含まれるデータに加え、その表と列の名前のオブジェクト レベルのセキュリティ。
 *  不規則な階層のサポートの強化。
 *  パフォーマンスと監視の機能強化。
-
-
-
-> [!IMPORTANT]
-> 互換性レベル 1400 はまだプレビュー段階です。 一部の機能は完全に機能しない可能性があります。 実稼働環境では 1400 の表形式モデルを使用しないことをお勧めします。 
   
 ## <a name="set-compatibility-level"></a>互換性レベルの設定 
  SSDT で新しい表形式モデル プロジェクトを作成する場合、**[テーブル モデル デザイナー]** ダイアログボックスで互換性レベルを指定します。 
@@ -63,3 +58,4 @@ Azure Analysis Services は、互換性レベル 1200 と 1400 の表形式モ�
 ## <a name="next-steps"></a>次のステップ
   [Azure Portal でモデルを作成する](analysis-services-create-model-portal.md)   
   [Analysis Services を管理する](analysis-services-manage.md)  
+

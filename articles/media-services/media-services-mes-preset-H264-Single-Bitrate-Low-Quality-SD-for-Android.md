@@ -2,7 +2,7 @@
 title: H264 Single Bitrate Low Quality SD for Android | Microsoft Docs
 description: "このトピックでは、**H264 Single Bitrate Low Quality SD for Android** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

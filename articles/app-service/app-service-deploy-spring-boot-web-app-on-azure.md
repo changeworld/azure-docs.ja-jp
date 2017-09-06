@@ -4,7 +4,7 @@ description: "このチュートリアルは、開発者に Spring Boot Getting 
 services: app-service\web
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: multiple
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 05/20/2017
+ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: a071cd1933caafce1f176cd5c5c4f41a60c54357
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -91,7 +91,7 @@ ms.lasthandoff: 07/25/2017
 
 1. Azure Portal で自分のアカウントにログインしたら、**[App Services]** のメニュー アイコンをクリックします。
    
-   ![Azure ポータル][AZ01]
+   ![Azure Portal][AZ01]
 
 1. **[App Services]** ページが表示されたら、**[+ 追加]** をクリックして新しい App Service を作成します。
 
@@ -196,11 +196,9 @@ ms.lasthandoff: 07/25/2017
 
 Azure での Spring Boot アプリケーションの使用の詳細については、次の記事を参照してください。
 
-* [Running a Spring Boot Application on Linux in the Azure Container Service (Azure Container Service での Linux 上の Spring Boot アプリケーションの実行)](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md)
+* [Azure Container Service で Spring Boot アプリケーションを Linux にデプロイする](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-linux.md)
 
-* [Running a Spring Boot Application on a Kubernetes Cluster in the Azure Container Service (Azure Container Service での Kubernetes クラスター上の Spring Boot アプリケーションの実行)](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-kubernetes.md)
-
-## <a name="additional-resources"></a>その他のリソース
+* [Azure Container Service で Spring Boot アプリケーションを Kubernetes クラスターにデプロイする](../container-service/kubernetes/container-service-deploy-spring-boot-app-on-kubernetes.md)
 
 Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
 

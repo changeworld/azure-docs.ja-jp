@@ -4,7 +4,7 @@ description: "このトピックでは、Media Encoder Standard のタスク プ
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: ec95392f-d34a-4c22-a6df-5274eaac445b
 ms.service: media-services

@@ -11,14 +11,14 @@ ms.service: app-service-web
 ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: article
 ms.date: 05/12/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 34cccf6a0962f72e04a90516fa7643db2533d85d
-ms.lasthandoff: 04/06/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: cf07c4142d025517637e31b27f1f34b6d402d6fe
+ms.contentlocale: ja-jp
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="add-functionality-to-your-first-web-app"></a>初めての Web アプリに機能を追加する
@@ -58,7 +58,7 @@ ms.lasthandoff: 04/06/2017
     そのため、認証されていないセッションを別のブラウザーで開いた場合は、同じ URL に移動するときにログイン画面が表示されます。  
     <!-- ![Authenticate - login page](./media/app-service-web-get-started/aad-login-browse.png)  -->
     Azure Active Directory で操作を行ったことがない場合、既定のディレクトリに Azure AD ユーザーが含まれていないことがあります。 その場合、既定のディレクトリに含まれているのは、Azure サブスクリプションのある Microsoft アカウントのみになります。 同一のブラウザーでアプリに自動的にログインされる場合があるのは、このためです。
-   その同じ Microsoft アカウントを使用して、このログイン ページにもログインできます。
+    その同じ Microsoft アカウントを使用して、このログイン ページにもログインできます。
 
 これで、Web アプリへのすべてのトラフィックが認証されます。
 
@@ -151,7 +151,7 @@ Web アプリをスケールする方法は、簡単に言うと次の 2 つで�
 * [アプリをバックアップする](web-sites-backup.md) - Web アプリのバックアップと復元を設定します。 予期しない障害と、それからの復旧を準備します。
 * [診断ログを有効にする](web-sites-enable-diagnostic-log.md) - Azure またはアプリケーションのトレースからの IIS ログを読みます。 ストリームで読んだり、ダウンロードしたり、ターンキー分析のために [Application Insights](../application-insights/app-insights-overview.md) に取り込んだりします。
 * [アプリの脆弱性をスキャンする](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/) -
-  [Tinfoil Security](https://www.tinfoilsecurity.com/) によって提供されるサービスを使用して、Web アプリの最新の脅威をスキャンします。
+   [Tinfoil Security](https://www.tinfoilsecurity.com/) によって提供されるサービスを使用して、Web アプリの最新の脅威をスキャンします。
 * [バックグラウンド ジョブを実行する](../azure-functions/functions-overview.md) - データ処理、レポート作成などのジョブを実行します。
 * [App Service の特長](../app-service/app-service-how-works-readme.md)
 

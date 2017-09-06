@@ -4,7 +4,7 @@ description: "Azure CLI のサンプル - Azure Functions"
 services: functions
 documentationcenter: functions
 author: syntaxc4
-manager: erikre
+manager: cfowler
 editor: ggailey777
 tags: azure-service-management
 ms.assetid: 577d2f13-de4d-40d2-9dfc-86ecc79f3ab0

@@ -2,7 +2,7 @@
 title: "Azure Batch のドキュメント - チュートリアル、API リファレンス | Microsoft Docs"
 description: "Batch を使用して、大規模な並列コンピューティングやハイパフォーマンス コンピューティングのアプリケーションを効率的に実行する方法について説明します。 チュートリアルや API リファレンスなどのドキュメントを提供します。"
 services: batch
-author: carolz
+author: czeumault
 manager: carolz
 layout: LandingPage
 ms.assetid: 

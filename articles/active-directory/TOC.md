@@ -44,7 +44,6 @@
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
 ### [他のディレクトリからユーザーを追加する (クラシック ポータル)](active-directory-create-users-external.md)
-### [ユーザーを削除する](active-directory-users-delete-user-azure-portal.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 ### [パスワードをリセットする](active-directory-users-reset-password-azure-portal.md)
 ### [ユーザーの作業情報を管理する](active-directory-users-work-info-azure-portal.md)
@@ -132,10 +131,14 @@
 
 ## デバイスを管理する
 ### [はじめに](device-management-introduction.md)
+### [Azure Portal の使用](device-management-azure-portal.md)
 ### [FAQ](device-management-faq.md)
 ### タスク
+#### [Azure AD 登録済み Windows 10 デバイスの構成](device-management-azuread-registered-devices-windows10-setup.md)
+#### [Azure AD 参加済みデバイスの構成](device-management-azuread-joined-devices-setup.md)
 #### [ハイブリッド Azure AD 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
+#### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
 ### トラブルシューティング
 #### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
@@ -297,7 +300,6 @@
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
-#### [サポート対象アプリ](active-directory-conditional-access-supported-apps.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
 #### [修復](active-directory-conditional-access-device-remediation.md)

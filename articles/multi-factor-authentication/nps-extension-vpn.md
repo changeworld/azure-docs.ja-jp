@@ -17,10 +17,10 @@ ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: c101f4a589d07039f17566566b0248e753b5ab45
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 3dfcf25856ede50266336c2ebb057dd3f7b8897e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -421,8 +421,6 @@ NPS 拡張機能の構成の一環として、管理者資格情報と Azure AD 
 
 Azure MFA で以前に構成したセカンダリ検証方法で認証に成功すると、リソースに接続されます。 ただし、セカンダリ認証に失敗した場合、リソースへのアクセスは拒否されます。 
 
-プライマリ認証の資格情報の入力が正常に完了すると、VPN。 Azure MFA で以前に構成したセカンダリ検証方法で認証に成功すると、リソースに接続されます。 ただし、セカンダリ認証に失敗した場合、リソースへのアクセスは拒否されます。 
-
 次の例では、Windows Phone の Authenticator アプリを使用してセカンダリ認証を提供しています。
 
  ![アカウントの確認](./media/nps-extension-vpn/image43.png)
@@ -448,7 +446,7 @@ Azure MFA の NPS 拡張機能がインストールされているサーバー�
  ![イベント数](./media/nps-extension-vpn/image46.png)
 
 ## <a name="troubleshoot-guide"></a>トラブルシューティング ガイド
-構成が予想どおりに動作していない場合、トラブルシューティングでは、まず、Azure MFA を使用するようにユーザーが構成されていることを確認します。 ユーザーに、[https://portal.azure.com](https://portal.azure.com) に接続してもらいます。 ユーザーがセカンダリ認証を求められ、正常に認証できれば、Azure MFA の構成には問題がないことがわかります。
+構成が予想どおりに動作していない場合、トラブルシューティングでは、まず、Azure MFA を使用するようにユーザーが構成されていることを確認します。 ユーザーに、[https://portal.azure.com](https://portal.azure.com) に接続してもらいます。ユーザーがセカンダリ認証を求められ、正常に認証できれば、Azure MFA の構成には問題がないことがわかります。
 
 ユーザーの Azure MFA が機能している場合、関連するイベント ログを確認する必要があります。 関連するイベント ログとして、前のセクションで説明したセキュリティ イベント ログ、ゲートウェイの操作ログ、Azure MFA ログがあります。 
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/09/2017
+ms.date: 08/24/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: bc8ca9bb349f41a6ae7371b4fc33cc09fb179c11
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="pen-testing"></a>侵入テスト
@@ -43,5 +43,5 @@ Azure でホストされるアプリケーションの侵入テストを行う�
 
 実行できないテストの種類の 1 つは、 [サービス拒否 (DoS)](https://en.wikipedia.org/wiki/Denial-of-service_attack) 攻撃です。 これには、Dos 攻撃自体を開始したり、DoS 攻撃の種類の判断、デモンストレーション、またはシミュレートを実行する可能性がある関連テストを実行したりすることも含まれます。
 
-Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://security-forms.azure.com/penetration-testing/terms) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
+Microsoft Azure でホストされているアプリケーションの侵入テストを行う準備はできていますか? その場合は、「 [侵入テストの概要](https://technet.microsoft.com/library/mt784683.aspx) 」ページに進みます (また、ページの下部にある [テスト要求を作成] ボタンをクリックします)。 また、侵入テストの契約条件の詳細と、Azure やその他の Microsoft サービスに関連するセキュリティの不備を報告する方法に関する役立つリンクを見つけることもできます。
 

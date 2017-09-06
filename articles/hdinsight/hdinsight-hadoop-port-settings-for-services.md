@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/02/2017
+ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b1a4ca17a53a6d337d704bc4eef6d441de1f32d8
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: f4e42ca177ac6c11111d4ffc0d772cafc13f8657
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
@@ -75,13 +75,19 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 > [!NOTE]
 > 一部のサービスは、特定のクラスターの種類でのみ利用できます。 たとえば、HBase を利用できるのは、クラスターの種類が HBase の場合のみです。
 
+> [!IMPORTANT]
+> 一部のサービスは、一度に 1 つのヘッド ノード上でしか実行されません。 プライマリのヘッド ノード上のサービスに接続しようとして 404 エラーが発生した場合は、セカンダリのヘッド ノードを使用して再試行してください。
+
 ### <a name="ambari"></a>Ambari
 
-| サービス | Nodes | ポート | パス | プロトコル | 
+| サービス | Nodes | Port | URL パス | プロトコル | 
 | --- | --- | --- | --- | --- |
 | Ambari Web UI | ヘッド ノード | 8080 | / | HTTP |
 | Ambari REST API | ヘッド ノード | 8080 | /api/v1 | HTTP |
 
+次に例を示します。
+
+* Ambari REST API: `curl -u admin "http://10.0.0.11:8080/api/v1/clusters"`
 
 ### <a name="hdfs-ports"></a>HDFS ポート
 
@@ -161,6 +167,11 @@ HDInsight クラスターのすべてのノードは Azure Virtual Network 内�
 
 ### <a name="spark-ports"></a>Spark ポート
 
-| サービス | Nodes | ポート | プロトコル | Description |
-| --- | --- | --- | --- | --- |
-| Spark Thrift サーバー |ヘッド ノード |10002 |Thrift |Spark SQL に接続するためのサービス (Thrift/JDBC) |
+| サービス | Nodes | ポート | プロトコル | URL パス | Description |
+| --- | --- | --- | --- | --- | --- |
+| Spark Thrift サーバー |ヘッド ノード |10002 |Thrift | &nbsp; | Spark SQL に接続するためのサービス (Thrift/JDBC) |
+| Livy サーバー | ヘッド ノード | 8998 | HTTP | /batches | ステートメント、ジョブ、およびアプリケーションを実行するためのサービス |
+
+次に例を示します。
+
+* Livy: `curl "http://10.0.0.11:8998/batches"`. この例の `10.0.0.11` は、Livy サービスをホストするヘッド ノードの IP アドレスです。

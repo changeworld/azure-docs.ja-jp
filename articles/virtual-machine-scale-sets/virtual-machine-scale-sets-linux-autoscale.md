@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: adegeo
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: 3a8a5d25123905e6c5cf91c4bc0c04258e442b5c
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: eff4add1cb16fe25022787668dc1d2277845dd95
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="automatically-scale-linux-machines-in-a-virtual-machine-scale-set"></a>仮想マシン スケール セットでの Linux マシンの自動スケール
@@ -46,7 +46,7 @@ Resource Manager のリソースの詳細については、「[Azure Resource Ma
 ## <a name="step-1-create-a-resource-group-and-a-storage-account"></a>手順 1: リソース グループとストレージ アカウントの作成
 
 1. **Microsoft Azure へのサインイン**  
-コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) で、Resource Manager モードに切り替え、[職場または学校用の ID を使用してログイン](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。 Azure アカウントに対話型の操作でログインするためのプロンプトに従います。
+コマンド ライン インターフェイス (Bash、ターミナル、コマンド プロンプト) で、Resource Manager モードに切り替え、[職場または学校用の ID を使用してログイン](../xplat-cli-connect.md#scenario-1-azure-login-with-interactive-login)します。Azure アカウントに対話型の操作でログインするためのプロンプトに従います。
 
     ```cli   
     azure config mode arm
@@ -591,6 +591,6 @@ azure group delete vmsstestrg1
 * Azure Monitor の監視機能の例については、「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」をご覧ください。
 * 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
 * [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法についてご確認ください。
-* 仮想マシン スケール セットの自動スケール機能を使うための LAMP スタックをセットアップする [Ubuntu/Apache/PHP アプリを実行する VM スケール セットの自動スケール](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-lapstack-autoscale) テンプレートを確認します。
+* 仮想マシン スケール セットの自動スケール機能を演習するための Python/bottle アプリをセットアップする [ Ubuntu 16.04 上の自動スケール デモ アプリ](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale) テンプレートを参照してください。
 
 

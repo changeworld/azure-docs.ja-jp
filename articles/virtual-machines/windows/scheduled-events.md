@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2017
 ms.author: zivr
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: e1602fb9ac5b7a85a5965cd4b87bdd09a80ec5a3
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 7198fa8d1a512d10ca7022078aa2ea7bde3a4c02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="azure-metadata-service-scheduled-events-preview-for-windows-vms"></a>Azure Metadata Service: Windows VM のスケジュールされたイベント (プレビュー)
@@ -29,6 +29,8 @@ ms.lasthandoff: 08/16/2017
 >
 
 スケジュールされたイベント機能は、Azure Metadata Service のサブサービスの 1 つです。 今後のイベント (再起動など) に関する情報が表示されるため、アプリケーションはそのイベントに備え、中断を最小限に抑えることができます。 このサービスは、PaaS と IaaS を含むすべての Azure Virtual Machine の種類で利用できます。 スケジュールされたイベント機能により、Virtual Machine が予防的タスクを実行する時間が確保され、イベントの影響を最小限に抑えることができます。 
+
+スケジュールされたイベントは、Linux VM と Windows VM で利用できます。 Linux のスケジュールされたイベントの詳細については、[Linux VM のスケジュールされたイベント](../windows/scheduled-events.md)に関する記事をご覧ください。
 
 ## <a name="why-scheduled-events"></a>スケジュールされたイベントを使用する理由
 

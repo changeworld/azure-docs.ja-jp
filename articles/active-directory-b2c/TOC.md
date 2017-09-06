@@ -46,6 +46,7 @@
 ## [トークンを構成する](active-directory-b2c-token-session-sso.md)
 ## [MFA を有効にする](active-directory-b2c-reference-mfa.md)
 ## [カスタム属性を使用する](active-directory-b2c-reference-custom-attr.md)
+## [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity.md)
 ## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
 ### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
@@ -55,10 +56,13 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業の開始](active-directory-b2c-get-started-custom.md)
-### OIDC プロバイダーの構成
+### [概要](active-directory-b2c-get-started-custom.md)
+### OIDC/OAUTH2 プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
+#### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
+#### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
 ### SAML プロバイダーの構成
+#### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API の統合
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
@@ -68,11 +72,12 @@
 #### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
+#### [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity-custom.md)
 ### トラブルシューティング
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
-
+### [信頼フレームワークの定義](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 用語集

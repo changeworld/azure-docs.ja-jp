@@ -5,7 +5,7 @@ metadata:
   title: Azure Container Instances のドキュメント - チュートリアル | Microsoft Docs
   description: Azure Container Instances には、仮想マシンをプロビジョニングしたり、より高度なサービスを採用したりせずに、Azure で最も高速かつ簡単にコンテナーを実行する方法が用意されています。
   services: container-instances
-  author: carolz
+  author: czeumault
   manager: carolz
   ms.service: container-instances
   ms.tgt_pltfrm: na
@@ -24,7 +24,7 @@ sections:
         style: icon48
         items:
           - image:
-              src: /azure/container-instances/media/container-instances.png
+              src: /azure/container-instances/media/container-instances.svg
             text: コンテナー インスタンスの作成
             href: /azure/container-instances/container-instances-quickstart
   - title: ステップバイステップのチュートリアル

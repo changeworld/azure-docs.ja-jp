@@ -53,6 +53,7 @@
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
 ## [FAQ](iot-suite-faq.md)
+## [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
 ## [IoT Suite ラーニング パス](https://azure.microsoft.com/documentation/learning-paths/iot-suite/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 

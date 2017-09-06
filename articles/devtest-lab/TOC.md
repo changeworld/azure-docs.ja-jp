@@ -42,8 +42,11 @@
 ## 再利用可能なテンプレートの管理
 ### [アーティファクトとテンプレート用の Git リポジトリの追加](devtest-lab-add-artifact-repo.md)
 ### [Resource Manager テンプレートの使用](devtest-lab-use-resource-manager-template.md)
-### [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
 ### [数式の管理](devtest-lab-manage-formulas.md)
+
+## アーティファクトの管理
+### [カスタム アーティファクトの作成](devtest-lab-artifact-author.md)
+### [アーティファクトの失敗の診断](devtest-lab-troubleshoot-artifact-failure.md)
 
 ## 仮想ネットワークの管理
 ### [仮想ネットワークの構成](devtest-lab-configure-vnet.md)

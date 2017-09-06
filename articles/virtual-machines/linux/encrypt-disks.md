@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/05/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3dc48f5dcb50db81d9f461c41570640839fcce26
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 172b4c8f5c098d776cb689543f5d8f163b8895b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="how-to-encrypt-virtual-disks-on-a-linux-vm"></a>Linux VM の仮想ディスクを暗号化する方法
@@ -273,15 +273,13 @@ OS ディスクとデータ ディスクの状態がどちらも **Encrypted** �
 
 
 ## <a name="add-additional-data-disks"></a>新しいデータ ディスクを追加する
-データ ディスクを暗号化した後で、別の仮想ディスクを VM に追加して暗号化することもできます。 `az vm encryption enable` コマンドを実行するときに、`--sequence-version` パラメーターを使ってシーケンスのバージョンを増やします。 このシーケンス バージョン パラメーターを使うと、同じ VM に対して操作を繰り返し実行できます。
-
-たとえば、次のようにして 2 番目の仮想ディスクを VM に追加できます。
+データ ディスクを暗号化した後で、別の仮想ディスクを VM に追加して暗号化することもできます。 たとえば、次のようにして 2 番目の仮想ディスクを VM に追加できます。
 
 ```azurecli
 az vm disk attach-new --resource-group myResourceGroup --vm-name myVM --size-in-gb 5
 ```
 
-コマンドを再度実行して仮想ディスクを暗号化します。今度は、`--sequence-version` パラメーターを追加し、次のように最初の実行から値を増分します。
+次のようにコマンドを再実行して、仮想ディスクを暗号化します。
 
 ```azurecli
 az vm encryption enable \
@@ -291,8 +289,7 @@ az vm encryption enable \
     --aad-client-secret $sp_password \
     --disk-encryption-keyvault $keyvault_name \
     --key-encryption-key myKey \
-    --volume-type all \
-    --sequence-version 2
+    --volume-type all
 ```
 
 

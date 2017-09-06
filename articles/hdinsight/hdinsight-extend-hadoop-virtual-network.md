@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/10/2017
+ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: e83c114777783ded5267cd030f8679c362c547da
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 00f2ecbf0d8542741bd78dcfe2692e6627b1f3cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/12/2017
 
 1. 使用中の仮想ネットワークは、従来の配置モデルですか、Resource Manager の配置モデルですか。
 
-    HDInsight 3.4 以降では、Resource Manager の仮想ネットワークが必要です。 以前のバージョンの HDInsight は従来の仮想ネットワークを必要としますが、これらのバージョンはすでに使用されなくなったか、まもなく使用されなくなります。
+    HDInsight 3.4 以降では、Resource Manager の仮想ネットワークが必要です。 HDInsight の以前のバージョンでは、従来の仮想ネットワークが必要です。
 
     使用している既存のネットワークが従来の仮想ネットワークの場合は、Resource Manager の仮想ネットワークを作成してから、それぞれのネットワークを接続する必要があります。 [従来の VNet を新しい VNet に接続します](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)。
 
@@ -201,7 +201,7 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
     az network nic list --resource-group <resourcegroupname> --output table --query "[?contains(name,'node')].{NICname:name,InternalIP:ipConfigurations[0].privateIpAddress,InternalFQDN:dnsSettings.internalFqdn}"
     ```
 
-    返されたノードの一覧で、ヘッド ノードの FQDN を見つけ、それを使用してAmbari やその他の Web サービスに接続します。 たとえば、`http://<headnode-fqdn>:8080` を使用して Ambari にアクセスします。
+    返されたノードの一覧で、ヘッド ノードの FQDN を見つけ、その FQDN を使用してAmbari やその他の Web サービスに接続します。 たとえば、`http://<headnode-fqdn>:8080` を使用して Ambari にアクセスします。
 
     > [!IMPORTANT]
     > ヘッド ノードでホストされている一部のサービスは、一度に 1 つのノードでのみアクティブになります。 一方のヘッド ノードのサービスにアクセスしようとして、404 エラーが返された場合は、もう一方のヘッド ノードに切り替えてください。
@@ -213,6 +213,9 @@ HDInsight のほとんどのドキュメントでは、インターネット経�
 Azure Virtual Network のネットワーク トラフィックは次のメソッドを使用してコントロールできます。
 
 * **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
+
+    > [!WARNING]
+    > HDInsight では、送信トラフィックの制限をサポートしていません。
 
 * **ユーザー定義ルート**(UDR) は、ネットワーク内のリソース間のトラフィックのフローを定義します。 ユーザー定義ルートの詳細については、「[user-defined routes and IP forwarding (ユーザー定義ルートと IP 転送)](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
 
@@ -228,7 +231,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 1. HDInsight を使用する予定の Azure リージョンを特定します。
 
-2. HDInsight が必要とする IP アドレスを特定します。 許可される IP アドレスは、HDInsight クラスターと Virtual Network が存在するリージョンに固有である必要があります。 リージョン別の IP アドレスの一覧については、「[IP Addresses required by HDInsight (HDInsight が必要とする IP アドレス)](#hdinsight-ip)」のセクションをご覧ください。
+2. HDInsight が必要とする IP アドレスを特定します。 詳細ついては、[HDInsight が必要とする IP アドレス](#hdinsight-ip)に関するセクションをご覧ください。
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループまたはユーザー定義のルートを作成または変更します。
 
@@ -247,51 +250,59 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 ## <a id="hdinsight-ip"></a>必須 IP アドレス
 
-次の一覧には、HDInsight クラスターを監視する Azure の正常性と監視サービスの IP アドレスが含まれています。 この一覧は、ネットワーク セキュリティ グループやユーザー定義のルートを使用する場合にのみ重要です。 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
-
-次の表を参照して、使用しているリージョンに適した IP アドレスを探します。
-
-| 国 | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
-| ---- | ---- | ---- | ---- | ----- |
-| アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | 443 | 受信 |
-| &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | 443 | 受信 |
-| オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | 443 | 受信 |
-| &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | 443 | 受信 |
-| ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | 443 | 受信 |
-| カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | 443 | 受信 |
-| &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 | 443 | 受信 |
-| 中国 | 中国 (北部) | 42.159.96.170</br>139.217.2.219 | 443 | 受信 |
-| &nbsp; | 中国 (東部) | 42.159.198.178</br>42.159.234.157 | 443 | 受信 |
-| ヨーロッパ | 北ヨーロッパ | 52.164.210.96</br>13.74.153.132 | 443 | 受信 |
-| &nbsp; | 西ヨーロッパ| 52.166.243.90</br>52.174.36.244 | 443 | 受信 |
-| ドイツ | ドイツ中部 | 51.4.146.68</br>51.4.146.80 | 443 | 受信 |
-| &nbsp; | ドイツ北東部 | 51.5.150.132</br>51.5.144.101 | 443 | 受信 |
-| インド | インド中部 | 52.172.153.209</br>52.172.152.49 | 443 | 受信 |
-| 日本 | 東日本 | 13.78.125.90</br>13.78.89.60 | 443 | 受信 |
-| &nbsp; | 西日本 | 40.74.125.69</br>138.91.29.150 | 443 | 受信 |
-| 韓国 | 韓国中部 | 52.231.39.142</br>52.231.36.209 | 433 | 受信 |
-| &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | 443 | 受信
-| 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
-| &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 | 受信 |
-| 米国 | 米国中央部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
-| &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | 443 | 受信 |
-| &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | 443 | 受信 |
-| &nbsp; | 米国西部 2 | 52.175.211.210</br>52.175.222.222 | 443 | 受信 |
-
-Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
-
-__使用しているリージョンが表にない場合は__、次の IP アドレスでポート __443__ にトラフィックを許可します。
-
-* 168.61.49.99
-* 23.99.5.239
-* 168.61.48.131
-* 138.91.141.162
-
 > [!IMPORTANT]
-> HDInsight では、送信トラフィックの制限をサポートしていません。受信トラフィックのみをサポートしています。
+> Azure の正常性と管理サービスは、HDInsight と通信できる必要があります。 ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、これらのサービスの IP アドレスからのトラフィックが HDInsight に到達できるように許可してください。
+>
+> トラフィックの制御に、ネットワーク セキュリティ グループもユーザー定義のルートも使用しない場合は、このセクションを無視してもかまいません。
 
-> [!NOTE]
-> 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
+
+1. 常に次の IP アドレスからのトラフィックを許可する必要があります。
+
+    | IP アドレス | 許可されたポート | 方向 |
+    | ---- | ----- | ----- |
+    | 168.61.49.99 | 443 | 受信 |
+    | 23.99.5.239 | 443 | 受信 |
+    | 168.61.48.131 | 443 | 受信 |
+    | 138.91.141.162 | 443 | 受信 |
+
+2. HDInsight クラスターが次のリージョンのいずれかにある場合は、そのリージョンに対して表示されている IP アドレスからのトラフィックを許可する必要があります。
+
+    > [!IMPORTANT]
+    > 使用している Azure リージョンが一覧にない場合は、手順 1. の 4 つの IP アドレスのみを使用してください。
+
+    | 国 | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
+    | ---- | ---- | ---- | ---- | ----- |
+    | アジア | 東アジア | 23.102.235.122</br>52.175.38.134 | 443 | 受信 |
+    | &nbsp; | 東南アジア | 13.76.245.160</br>13.76.136.249 | 443 | 受信 |
+    | オーストラリア | オーストラリア東部 | 104.210.84.115</br>13.75.152.195 | 443 | 受信 |
+    | &nbsp; | オーストラリア南東部 | 13.77.2.56</br>13.77.2.94 | 443 | 受信 |
+    | ブラジル | ブラジル南部 | 191.235.84.104</br>191.235.87.113 | 443 | 受信 |
+    | カナダ | カナダ東部 | 52.229.127.96</br>52.229.123.172 | 443 | 受信 |
+    | &nbsp; | カナダ中部 | 52.228.37.66</br>52.228.45.222 | 443 | 受信 |
+    | 中国 | 中国 (北部) | 42.159.96.170</br>139.217.2.219 | 443 | 受信 |
+    | &nbsp; | 中国 (東部) | 42.159.198.178</br>42.159.234.157 | 443 | 受信 |
+    | ヨーロッパ | 北ヨーロッパ | 52.164.210.96</br>13.74.153.132 | 443 | 受信 |
+    | &nbsp; | 西ヨーロッパ| 52.166.243.90</br>52.174.36.244 | 443 | 受信 |
+    | ドイツ | ドイツ中部 | 51.4.146.68</br>51.4.146.80 | 443 | 受信 |
+    | &nbsp; | ドイツ北東部 | 51.5.150.132</br>51.5.144.101 | 443 | 受信 |
+    | インド | インド中部 | 52.172.153.209</br>52.172.152.49 | 443 | 受信 |
+    | 日本 | 東日本 | 13.78.125.90</br>13.78.89.60 | 443 | 受信 |
+    | &nbsp; | 西日本 | 40.74.125.69</br>138.91.29.150 | 443 | 受信 |
+    | 韓国 | 韓国中部 | 52.231.39.142</br>52.231.36.209 | 433 | 受信 |
+    | &nbsp; | 韓国南部 | 52.231.203.16</br>52.231.205.214 | 443 | 受信
+    | 英国 | 英国西部 | 51.141.13.110</br>51.141.7.20 | 443 | 受信 |
+    | &nbsp; | 英国南部 | 51.140.47.39</br>51.140.52.16 | 443 | 受信 |
+    | 米国 | 米国中央部 | 13.67.223.215</br>40.86.83.253 | 443 | 受信 |
+    | &nbsp; | 米国中北部 | 157.56.8.38</br>157.55.213.99 | 443 | 受信 |
+    | &nbsp; | 米国中西部 | 52.161.23.15</br>52.161.10.167 | 443 | 受信 |
+    | &nbsp; | 米国西部 2 | 52.175.211.210</br>52.175.222.222 | 443 | 受信 |
+
+    Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
+
+3. 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+
+詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
 
 ## <a id="hdinsight-ports"></a>必須ポート
 
@@ -322,7 +333,7 @@ __使用しているリージョンが表にない場合は__、次の IP アド
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-次の PowerShell スクリプトを使用して、受信トラフィックを制限するが、北ヨーロッパ リージョンの HDInsight が必要とする IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。
+次の PowerShell スクリプトを使用して、受信トラフィックを制限しながら北ヨーロッパ リージョンの IP アドレスからのトラフィックは許可する仮想ネットワークを作成します。
 
 > [!IMPORTANT]
 > この例で使用されている IP アドレスを、使用している Azure のリージョンに合わせて変更してください。 詳細については、「[HDInsight でネットワーク セキュリティ グループとユーザー定義のルートを使用](#hdinsight-ip)」のセクションをご覧ください。
@@ -368,6 +379,50 @@ $nsg = New-AzureRmNetworkSecurityGroup `
         -Priority 301 `
         -Direction Inbound `
     | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 168.61.49.99" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "168.61.49.99" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 302 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 23.99.5.239" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "23.99.5.239" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 303 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 168.61.48.131" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "168.61.48.131" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 304 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
+        -Name "hdirule2" `
+        -Description "HDI health and management 138.91.141.162" `
+        -Protocol "*" `
+        -SourcePortRange "*" `
+        -DestinationPortRange "443" `
+        -SourceAddressPrefix "138.91.141.162" `
+        -DestinationAddressPrefix "VirtualNetwork" `
+        -Access Allow `
+        -Priority 305 `
+        -Direction Inbound `
+    | Add-AzureRmNetworkSecurityRuleConfig `
         -Name "blockeverything" `
         -Description "Block everything else" `
         -Protocol "*" `
@@ -394,7 +449,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 > 次の例では、インターネットからの SSH アクセスを可能にする方法を示します。
 >
 > ```powershell
-> Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 304 -Direction Inbound
+> Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
 ### <a name="azure-cli"></a>Azure CLI
@@ -417,6 +472,10 @@ Set-AzureRmVirtualNetworkSubnetConfig `
     ```azurecli
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule1 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "52.164.210.96" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 300 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "13.74.153.132" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 301 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.49.99" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 302 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "23.99.5.239" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 303 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "168.61.48.131" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
+    az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule2 --protocol "*" --source-port-range "*" --destination-port-range "443" --source-address-prefix "138.91.141.162" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 305 --direction "Inbound"
     az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n block --protocol "*" --source-port-range "*" --destination-port-range "*" --source-address-prefix "Internet" --destination-address-prefix "VirtualNetwork" --access "Deny" --priority 500 --direction "Inbound"
     ```
 
@@ -446,7 +505,7 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 > 次の例では、インターネットからの SSH アクセスを可能にする方法を示します。
 >
 > ```azurecli
-> az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 304 --direction "Inbound"
+> az network nsg rule create -g RESOURCEGROUPNAME --nsg-name hdisecure -n hdirule5 --protocol "*" --source-port-range "*" --destination-port-range "22" --source-address-prefix "*" --destination-address-prefix "VirtualNetwork" --access "Allow" --priority 306 --direction "Inbound"
 > ```
 
 ## <a id="example-dns"></a> 例: DNS の構成

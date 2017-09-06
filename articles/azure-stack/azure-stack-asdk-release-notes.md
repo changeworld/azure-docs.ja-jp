@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 08/29/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 2cf11155dbd524260329f8b271ce4d9b19095b6a
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 9e82cf367bdc03aaafe1050078194cc3bd746bac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -42,6 +42,7 @@ Starting with the [20170627.1](azure-stack-updates.md#determine-the-current-vers
 * You may notice deployment taking longer than previous releases. 
 * Get-AzureStackLogs generates diagnostic logs, however, does not log progress to the console.
 * You must use the new [deployment experience](azure-stack-run-powershell-script.md) to deploy Azure Stack, or deployment may fail.
+* Deployments using the *PublicVLANID* parameter will fail.
 
 #### <a name="portal"></a>Portal
 * You may see a blank dashboard in the portal.  You can recover the dashboard by selecting the gear in the upper right of the portal, and selecting "Restore default settings".

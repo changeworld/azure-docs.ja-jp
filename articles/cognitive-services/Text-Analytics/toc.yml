@@ -1,20 +1,45 @@
-- name: Text Analytics Documentation
+- name: Text Analytics のドキュメント
   href: ../index.md
-- name: Overview
+- name: 概要
   href: overview.md
-- name: Quick Start Guide
-  href: quick-start.md
-- name: Reference
+  items: null
+- name: クイック スタート
   items:
-    - name: API Reference content
+    - name: 'C#'
+      href: quick-start.md
+- name: ハウツー ガイド
+  items:
+    - name: サインアップ
+      href: text-analytics-howto-signup.md
+    - name: アクセス キーを取得する
+      href: text-analytics-howto-accesskey.md
+    - name: Text Analytics API を呼び出す
+      href: text-analytics-howto-call-api.md
+    - name: 言語を検出する
+      href: text-analytics-howto-language-detection.md
+    - name: センチメントを分析する
+      href: text-analytics-howto-sentiment-analysis.md
+    - name: キーワードを抽出する
+      href: text-analytics-howto-keyword-extraction.md
+- name: リファレンス
+  items:
+    - name: API リファレンス
       href: 'https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c7'
-    - name: Windows SDK
-      href: 'https://github.com/Microsoft/Cognitive-TextAnalytics-Windows'
-    - name: Android SDK
-      href: 'https://github.com/Microsoft/Cognitive-TextAnalytics-Android'
-    - name: .Net Standard SDK
+    - name: .NET Standard SDK
       href: 'https://github.com/Microsoft/Cognitive-TextAnalytics-DotNet'
-- name: Resources
+- name: リソース
   items:
-    - name: Azure Roadmap
+    - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: お問い合わせ
+      href: 'https://azure.microsoft.com/overview/sales-number/'
+    - name: 外部とコミュニティのコンテンツ
+      href: text-analytics-resource-external-community.md
+    - name: FAQ
+      href: text-analytics-resource-faq.md
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/'
+    - name: スタック オーバーフロー
+      href: 'https://stackoverflow.com/questions/tagged/text-analytics-api'
+    - name: ユーザーの声
+      href: 'https://cognitive.uservoice.com/forums/555922-text-analytics'

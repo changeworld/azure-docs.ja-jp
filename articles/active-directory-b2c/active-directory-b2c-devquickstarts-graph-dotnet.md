@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C: Graph API を使用する | Microsoft Docs"
+title: "Graph API の使用 - Azure AD B2C | Microsoft Docs"
 description: "アプリケーション ID を使用して B2C テナント用の Graph API を呼び出してプロセスを自動化する方法。"
 services: active-directory-b2c
 documentationcenter: .net
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: c838fcad21875c4f813159ad78d4c87129a40a86
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 1e6748f40c7b825615b3f58243afd9d50348214d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Graph API を使用する
@@ -38,25 +38,25 @@ B2C テナントでは、主に 2 つのモードで Graph API と通信しま�
 B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通じてアプリケーションを登録する必要があります。
 
 > [!IMPORTANT]
-> B2C テナントを持つ Graph API を使用するには、Azure AD B2C の *[アプリケーション]* ブレード**ではなく**、Azure Portal の汎用 *[アプリケーション登録]* ブレードを使用して専用アプリケーションを登録する必要があります。 Azure AD B2C の *[アプリケーション]* ブレードに登録済みの既存の B2C アプリケーションを再利用することはできません。
+> B2C テナントを持つ Graph API を使うには、Azure AD B2C の "*[アプリケーション]*" メニュー**ではなく**、Azure Portal の汎用 "*[アプリの登録]*" メニューを使って専用アプリケーションを登録する必要があります。 Azure AD B2C の "*[アプリケーション]*" メニューに登録済みの既存の B2C アプリケーションを再利用することはできません。
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. ページの右上隅のアカウント名を選択して、Azure AD B2C テナントを選択します。
 3. 左側のナビゲーション ウィンドウで **[More Services (その他のサービス)]** を選択し、**[アプリの登録]**、**[追加]** の順にクリックします。
 4. 画面の指示に従い、新しいアプリケーションを作成します。 
     1. アプリケーション タイプとして **[Web App / API]** (Web アプリ/API) を選択します。    
     2. **任意のリダイレクト URI** (例: https://B2CGraphAPI) を入力します。ただし、この例には関係ありません。  
 5. この時点でアプリケーションの一覧に表示されたアプリケーションをクリックして、**アプリケーション ID** (クライアント ID とも呼ばれます) を取得します。 後のセクションで必要になるため、この ID をコピーします。
-6. [設定] ブレードで、**キー**をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
+6. [設定] メニューで、**[キー]** をクリックして、新しいキー (クライアント シークレットとも呼ばれます) を追加します。 後のセクションで必要になるため、このキーもコピーします。
 
 ## <a name="configure-create-read-and-update-permissions-for-your-application"></a>アプリケーション用に作成、読み取り、および更新アクセス許可を構成する
 ここでは、ユーザーの作成、読み取り、更新、および削除に必要なすべてのアクセス許可を取得するようにアプリケーションを構成する必要があります。
 
-1. Azure Portal の [アプリケーション登録] ブレードで手順を続行し、アプリケーションを選択します。
-2. [設定] ブレードで **[必要なアクセス許可]** をクリックします。
-3. [必要なアクセス許可] ブレードで、**[Windows Azure Active Directory]** をクリックします。
-4. [アクセスの有効化] ブレードで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
-5. 最後に、[必要なアクセス許可] ブレードに戻り、**[アクセス許可の付与]** ボタンをクリックします。
+1. Azure Portal の [アプリの登録] メニューで手順を続行し、アプリケーションを選択します。
+2. [設定] メニューで **[必要なアクセス許可]** をクリックします。
+3. [必要なアクセス許可] メニューで、**[Windows Azure Active Directory]** をクリックします。
+4. [アクセスの有効化] メニューで、**[アプリケーション アクセス許可]** から **[ディレクトリ データの読み取りと書き込み]** を選択し、**[保存]** をクリックします。
+5. 最後に、[必要なアクセス許可] メニューに戻り、**[アクセス許可の付与]** をクリックします。
 
 これで B2C テナントに対してユーザーの作成、読み取り、更新を実行する権限を持つアプリケーションが用意されました。
 

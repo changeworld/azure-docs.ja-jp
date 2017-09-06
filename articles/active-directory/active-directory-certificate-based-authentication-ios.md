@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/03/2017
+ms.date: 08/28/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 350576cd7290fdfbfacd526de50c14e5f20b81dc
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: af9d0c7ba9c1a3026cc042872e1ab773eb3c4c8e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="azure-active-directory-certificate-based-authentication-on-ios"></a>iOS での Azure Active Directory の証明書ベースの認証
@@ -41,14 +41,16 @@ Office 365 US Government Defense プランと Federal プランでは、この�
 
 | アプリケーション | サポート |
 | --- | --- |
-| Word/Excel/PowerPoint |![○][1] |
+| Azure Information Protection アプリ |![○][1] |
+| Microsoft Teams |![○][1] |
 | OneNote |![○][1] |
 | OneDrive |![○][1] |
 | Outlook |![○][1] |
-| Yammer |![○][1] |
+| Power BI |![○][1] |
 | Skype for Business |![○][1] |
-| Azure Information Protection アプリ |![○][1] |
-| Microsoft Teams |![○][1] |
+| Word/Excel/PowerPoint |![○][1] |
+| Yammer |![○][1] |
+
 
 ## <a name="requirements"></a>必要条件 
 

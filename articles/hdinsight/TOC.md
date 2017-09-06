@@ -57,14 +57,11 @@
 ### [DataFu と Pig を使用する](hdinsight-hadoop-use-pig-datafu-udf.md)
 ### [オンデマンド クラスター](hdinsight-hadoop-create-linux-clusters-adf.md)
 ### [Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)
-## R Server の使用
-### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
-### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
-### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
-### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## メモリ内の処理への Spark の使用
+### 概要 - Spark 開発者
+#### [スタンドアロン アプリを作成する](hdinsight-apache-spark-create-standalone-application.md)
+#### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md) 
 ### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
-### [スタンドアロン アプリを作成する](hdinsight-apache-spark-create-standalone-application.md)
 ### [Eclipse を使用してアプリを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [IntelliJ を使用してアプリを作成する](hdinsight-apache-spark-intellij-tool-plugin.md)
 ### [ストリーミング イベントを処理する](hdinsight-apache-spark-eventhub-streaming.md)
@@ -78,9 +75,13 @@
 ### [cell magic を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)
 ### [Script Action を使用して Jupyter で外部のパッケージを使用する](hdinsight-apache-spark-python-package-installation.md)
 ### [ローカルの Jupyter Notebook を使用する](hdinsight-apache-spark-jupyter-notebook-install-locally.md)
-### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md)
 ### [VPN を介して IntelliJ を使用してリモートでジョブをデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 ### [既知の問題](hdinsight-apache-spark-known-issues.md)
+## R Server の使用
+### [ストレージ オプション](hdinsight-hadoop-r-server-storage.md)
+### [RStudio のインストール](hdinsight-hadoop-r-server-install-r-studio.md)
+### [Compute コンテキスト](hdinsight-hadoop-r-server-compute-contexts.md)
+### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## HBase の使用
 ### [Phoenix および SQLLine を使用する](hdinsight-hbase-phoenix-squirrel-linux.md)
 ### [リアルタイムのツイートの分析](hdinsight-hbase-analyze-twitter-sentiment.md)

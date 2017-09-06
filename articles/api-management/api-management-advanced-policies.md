@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9ae7e129b381d3034433e29ac1f74cb843cb5aa6
-ms.openlocfilehash: f9272946fe4a03a732aa686680bba054c8ef1688
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/08/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
@@ -28,7 +28,9 @@ ms.lasthandoff: 05/08/2017
   
 -   [制御フロー](api-management-advanced-policies.md#choose) - ブール[式](api-management-policy-expressions.md)の評価の結果に基づいてポリシー ステートメントを条件付きで適用します。  
   
--   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。  
+-   [要求を転送する](#ForwardRequest) - バックエンド サービスに要求を転送します。
+
+-   [同時実行を制限する](#LimitConcurrency) - 含まれているポリシーが指定された数を超える要求によって同時に実行されないようにします。
   
 -   [イベント ハブにログを記録する](#log-to-eventhub) - 指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 
 
@@ -136,7 +138,7 @@ ms.lasthandoff: 05/08/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |choose|ルート要素。|はい|  
 |when|`choose` ポリシーの `if` または `ifelse` の部分に使用する条件。 `choose` ポリシーに複数の `when` セクションがある場合、これらのセクションは順番に評価されます。 when 要素のいずれかの `condition` が `true` に評価されると、それ以降の `when` 条件は評価されません。|はい|  
@@ -144,7 +146,7 @@ ms.lasthandoff: 05/08/2017
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |condition="ブール式 &#124; ブール型定数"|含んでいる `when` ポリシー ステートメントが評価されるときに評価されるブール式または定数。|はい|  
   
@@ -248,13 +250,13 @@ ms.lasthandoff: 05/08/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |forward-request|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |timeout="整数"|バックエンド サービスの呼び出しが失敗するまでのタイムアウト間隔 (秒単位)。|いいえ|タイムアウトなし|  
 |follow-redirects="true &#124; false"|バックエンド サービスからのリダイレクトについて、その後にゲートウェイが続くか、それとも呼び出し元に返されるかを指定します。|なし|false|  
@@ -266,6 +268,56 @@ ms.lasthandoff: 05/08/2017
   
 -   **ポリシー スコープ:** すべてのスコープ  
   
+##  <a name="LimitConcurrency"></a>同時実行を制限する  
+ `limit-concurrency` ポリシーは、含まれているポリシーが特定の時点で指定された数を超える要求によって実行されないようにします。 しきい値を超えた場合、新しい要求は、キューの最大長に達するまでキューに追加されます。 キューがいっぱいになると、新しい要求はすぐに失敗します。
+  
+###  <a name="LimitConcurrencyStatement"></a> ポリシー ステートメント  
+  
+```xml  
+<limit-concurrency key="expression" max-count="number" timeout="in seconds" max-queue-length="number">
+        <!— nested policy statements -->  
+</limit-concurrency>
+``` 
+
+### <a name="examples"></a>例  
+  
+####  <a name="ChooseExample"></a> 例  
+ 次の例は、コンテキスト変数の値に基づいてバックエンドに転送される要求の数を制限する方法を示しています。
+ 
+```xml  
+<policies>
+  <inbound>…</inbound>
+  <backend>
+    <limit-concurrency key="@((string)context.Variables["connectionId"])" max-count="3" timeout="60">
+      <forward-request timeout="120"/>
+    <limit-concurrency/>
+  </backend>
+  <outbound>…</outbound>
+</policies>
+```
+
+### <a name="elements"></a>要素  
+  
+|要素|説明|必須|  
+|-------------|-----------------|--------------|    
+|limit-concurrency|ルート要素。|はい|  
+  
+### <a name="attributes"></a>属性  
+  
+|属性|説明|必須|既定値|  
+|---------------|-----------------|--------------|--------------|  
+|key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|あり|該当なし|  
+|max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|あり|該当なし|  
+|timeout|整数。 式を使用できます。 要求がスコープに入るまでに待機する必要がある秒数を指定します。この秒数を経過すると、要求は "429 要求が多すぎます" で失敗します。|いいえ|Infinity|  
+|max-queue-length|整数。 式を使用できます。 キューの最大長を指定します。 キューがいっぱいになっている場合、このポリシーに入ろうとしている受信した要求は、"429 要求が多すぎます" で終了します。|いいえ|Infinity|  
+  
+###  <a name="ChooseUsage"></a> 使用法  
+ このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  
+  
+-   **ポリシー セクション:** inbound、outbound、backend、on-error  
+  
+-   **ポリシー スコープ:** すべてのスコープ  
+
 ##  <a name="log-to-eventhub"></a> イベント ハブにログを記録する  
  `log-to-eventhub` ポリシーは、指定された形式のメッセージを Logger エンティティによって定義されたイベント ハブに送信します。 その名前が示すように、このポリシーは、オンラインまたはオフライン分析のために、選択された要求または応答コンテキスト情報を保存するために使用します。  
   
@@ -298,13 +350,13 @@ ms.lasthandoff: 05/08/2017
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |log-to-eventhub|ルート要素。 この要素の値は、イベント ハブに記録する文字列です。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |logger-id|API Management サービスに登録されているロガーの ID。|はい|  
 |partition-id|メッセージが送信されるパーティションのインデックスを指定します。|省略可能。 `partition-key` を使用する場合はこの属性を使用できません。|  
@@ -341,13 +393,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |mock-response|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|--------------|  
 |status-code|応答の状態コードを指定し、対応する例またはスキーマを選択するために使用します。|なし|200|  
 |content-type|`Content-Type` 応答のヘッダー値を指定し、対応する例またはスキーマを選択するために使用します。|なし|なし|  
@@ -397,13 +449,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |retry|ルート要素。 他のポリシーを子要素として含めることができます。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |condition|再試行を停止する (`false`) か続行する (`true`) かを指定するブール型リテラルまたは[式](api-management-policy-expressions.md)。|はい|該当なし|  
 |count|最大再試行回数を指定する正の数。|はい|該当なし|  
@@ -452,7 +504,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |return-response|ルート要素。|はい|  
 |set-header|[set-header](api-management-transformation-policies.md#SetHTTPheader) ポリシー ステートメント。|いいえ|  
@@ -461,7 +513,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |response-variable-name|たとえば、アップストリームの [send-request](api-management-advanced-policies.md#SendRequest) ポリシーから参照され、`Response` オブジェクトを含むコンテキスト変数の名前|省略可能。|  
   
@@ -518,7 +570,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |send-one-way-request|ルート要素。|はい|  
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
@@ -528,7 +580,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ|新規|  
 |name|設定するヘッダーの名前を指定します。|はい|該当なし|  
@@ -597,7 +649,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |send-request|ルート要素。|はい|  
 |url|要求の URL。|いいえ (mode=copy の場合)。はい (それ以外の場合)。|  
@@ -607,7 +659,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |mode="文字列"|これが新しい要求であるか現在の要求のコピーであるかを判定します。 送信モードでの mode=copy の場合、要求本文は初期化されません。|いいえ|新規|  
 |response-variable-name="文字列"|存在しない場合、`context.Response` が使用されます。|なし|該当なし|  
@@ -643,13 +695,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |proxy|ルート要素|あり|  
 
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |url="string"|http://host:port の形式のプロキシ URL。|あり|該当なし |  
 |username="string"|プロキシで認証に使用するユーザー名。|いいえ|該当なし |  
@@ -703,7 +755,7 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |set-method|ルート要素。 要素の値は、HTTP メソッドを指定します。|はい|  
   
@@ -743,13 +795,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |set-status|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |code="整数"|返される HTTP 状態コード。|はい|該当なし|  
 |reason="文字列"|状態コードを返す理由の説明。|はい|該当なし|  
@@ -779,13 +831,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |set-variable|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|  
+|属性|説明|必須|  
 |---------------|-----------------|--------------|  
 |name|変数の名前。|はい|  
 |値|変数の値。 式またはリテラル値を指定できます。|はい|  
@@ -877,13 +929,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |trace|ルート要素。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |source|メッセージのソースを指定する、トレース ビューアーにとって意味のある文字列リテラル。|はい|該当なし|  
   
@@ -944,13 +996,13 @@ status code and media type. If no example or schema found, the content is empty.
   
 ### <a name="elements"></a>要素  
   
-|要素|Description|必須|  
+|要素|説明|必須|  
 |-------------|-----------------|--------------|  
 |wait|ルート要素。 `send-request` ポリシー、`cache-lookup-value` ポリシー、および `choose` ポリシーのみを子要素として含めることができます。|はい|  
   
 ### <a name="attributes"></a>属性  
   
-|Attribute|Description|必須|既定値|  
+|属性|説明|必須|既定値|  
 |---------------|-----------------|--------------|-------------|  
 |for|`wait` ポリシーがすべての直接の子ポリシーが完了するまで待機するか、1 つが完了するまで待機するかを決定します。 使用できる値は、以下のとおりです。<br /><br /> -   `all` - すべての直接の子ポリシーが完了するまで待機します。<br />- any - いずれかの直接の子ポリシーが完了するまで待機します。 最初の直接の子ポリシーが完了すると、`wait` ポリシーが完了し、他の直接の子ポリシーの実行が終了します。|いいえ|すべて|  
   
@@ -963,6 +1015,6 @@ status code and media type. If no example or schema found, the content is empty.
   
 ## <a name="next-steps"></a>次のステップ
 ポリシーを使用する方法の詳細については、次のトピックを参照してください。
--    [API Management のポリシー](api-management-howto-policies.md) 
--    [ポリシー式](api-management-policy-expressions.md)
+-   [API Management のポリシー](api-management-howto-policies.md) 
+-   [ポリシー式](api-management-policy-expressions.md)
 

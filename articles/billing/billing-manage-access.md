@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/30/2017
+ms.date: 08/22/2017
 ms.author: vikdesai
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
-ms.openlocfilehash: 247782a86a0d20486513dff0dae0c1564b5ecb72
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c70904097f139bc2178feed83f1cf1274f3c738d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="manage-access-to-billing-information-for-azure-using-role-based-access-control"></a>ロールに基づくアクセス制御を使用した Azure の課金情報へのアクセスの管理
@@ -34,7 +34,11 @@ Azure 課金情報へのアクセス権をチームのメンバーに与える�
 
 1. **[請求書]** を選択し、**[Access to invoices (請求書へのアクセス)]** を選択します。
 
-1. アクセスを **[On (オン)]** にします。
+    ![請求書へのアクセスの委任方法を示すスクリーンショット](./media/billing-manage-access/AA-optin.png)
+
+1. アクセスを**有効**にして変更を保存し、サブスクリプション スコープ ロール内のユーザーが請求書をダウンロードできるようにします。
+
+    ![請求書へのアクセスの委任のオン/オフを示すスクリーンショット](./media/billing-manage-access/AA-optinAllow.png)
 
 オプトインにより、サブスクリプションのサービス管理者、共同管理者、所有者、共同作成者、閲覧者または請求閲覧者が、Azure Portal で PDF 請求書をダウンロードできるようになります。 ただし、現時点では、2016 年 12 月よりも前の請求書を入手できるのはアカウント管理者のみです。
 

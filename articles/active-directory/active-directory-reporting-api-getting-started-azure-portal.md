@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 08/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b0ff68902f671518ff53772b1956272a7f6e1614
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 9944cbd2b1b7c4acb18d37da1394c0bbc170f77d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="getting-started-with-the-azure-active-directory-reporting-api"></a>Azure Active Directory Reporting API の概要
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/21/2017
 Azure Active Directory は多様なレポートを提供しています。 これらのレポートのデータは、SIEM システム、監査、ビジネス インテリジェンス ツールなどのアプリケーションに非常に役立ちます。 Azure AD レポート API は、一連の REST ベースの API を使用してプログラムによってデータにアクセスできるようにします。 これらの API は、さまざまなプログラミング言語とツールから呼び出すことができます。
 
 この記事では、Azure AD のレポート API の使用を開始するために必要な情報を提供します。
-次のセクションでは、監査 API およびサインイン API の使用に関して詳しく説明します。 その他すべての API については、[Azure AD のレポートとイベント](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-reports-and-events-preview)に関する記事を参照してください。
+次のセクションでは、監査 API およびサインイン API の使用に関して詳しく説明します。 
 
 よく寄せられる質問については、こちらの [FAQ](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-reporting-faq) を参照してください。 問題については、[サポート チケットを提出](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-troubleshooting-support-howto)してください。
 
@@ -43,6 +43,6 @@ Azure Active Directory は多様なレポートを提供しています。 こ�
    * [サインイン アクティビティ レポート API リファレンスの使用](active-directory-reporting-api-sign-in-activity-reference.md)
 
 ## <a name="next-steps"></a>次のステップ
-提供されているすべての Azure AD Graph API エンドポイントは、[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta) でご覧ください。
+提供されているすべての Azure AD Graph API エンドポイントを確認するには、次のリンクを使用してください。[https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta](https://graph.windows.net/tenant-name/activities/$metadata?api-version=beta)
 
 

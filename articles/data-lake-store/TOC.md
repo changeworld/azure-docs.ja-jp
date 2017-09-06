@@ -39,12 +39,14 @@
 ### [HDInsight の Storm と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-storm.md)
 
 ## Azure サービスと統合する
+### HDInsight を使用
+#### [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [Azure テンプレートの使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
-### [Data Lake Store を使用する HDInsight - ポータル](data-lake-store-hdinsight-hadoop-use-portal.md)
-### [既定のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-### [追加のストレージとして Data Lake Store を使用する HDInsight - PowerShell](data-lake-store-hdinsight-hadoop-use-powershell.md)
-### [Data Lake Store を使用する HDInsight - Azure テンプレート](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
+### [Azure Event Hubs で使用する](data-lake-store-archive-eventhub-capture.md)
 ### [Data Factory で使用する](../data-factory/data-factory-azure-datalake-connector.md)
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)

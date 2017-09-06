@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 69fd656ee9ae440d5769aca82ff8d49fb59d7780
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: c733c61132a79381d5e025819ff944507fc3fb9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
@@ -33,7 +33,7 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 ## <a name="enable-vpn"> </a>VNET 接続の有効化
 > [!NOTE]
-> VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。 レベルを切り替えるには、Azure Portal で API Management サービスを開き、**[スケールと料金]** タブを開きます。 **[価格レベル]** セクションで、Premium または Developer レベルを選択し、[保存] をクリックします。
+> VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。 レベルを切り替えるには、Azure Portal で API Management サービスを開き、**[スケールと料金]** タブを開きます。**[価格レベル]** セクションで、Premium または Developer レベルを選択し、[保存] をクリックします。
 >
 
 VNET 接続を有効にするには、Azure Portal で API Management サービスを開き、**[仮想ネットワーク]** ページに切り替えます。
@@ -108,11 +108,11 @@ API Management サービス インスタンスが VNET でホストされてい�
 | * / 11000 - 11999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 14000 - 14999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / 5671 |送信 |AMQP |Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| 6381 - 6383 / 6381 - 6383 |受信および送信 |UDP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
+| 6381 - 6383 / 6381 - 6383 |受信および送信 |TCP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |-
 | * / 445 |送信 |TCP |GIT のための Azure ファイル共有への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
 | * / * | 受信 |TCP |Azure インフラストラクチャの Load Balancer | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部 / 内部 |
 
-* **SSL 機能**: SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。 API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
+* **SSL 機能**: SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
 
 * **DNS アクセス**: DNS サーバーとの通信には、ポート 53 での発信アクセスが必要です。 カスタム DNS サーバーが VPN ゲートウェイの相手側にある場合、DNS サーバーは API Management をホストしているサブネットから到達できる必要があります。
 

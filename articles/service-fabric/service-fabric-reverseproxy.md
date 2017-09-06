@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: cb37c7209a3449047bad97ce50344e1530f0e222
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
@@ -135,6 +135,15 @@ http://10.0.0.5:10592/3f0d39ad-924b-4233-b4a7-02617c6308a6-130834621071472715/
 この HTTP 応答ヘッダーは、要求されたリソースが存在しないという通常の HTTP 404 の状況を示すので、Application Gateway はサービス アドレスの解決を再度試みることはなくなります。
 
 ## <a name="setup-and-configuration"></a>セットアップと構成
+
+### <a name="enable-reverse-proxy-via-azure-portal"></a>Azure Portal でリバース プロキシを有効にする
+
+Azure Portal には、新しい Service Fabric クラスターを作成するときに、リバース プロキシを有効にするオプションがあります。
+**[Service Fabric クラスターの作成]** の [手順 2: クラスター構成] の [ノード タイプの構成] で、[リバース プロキシを有効にする] チェックボックスをオンにします。
+セキュリティで保護されたリバース プロキシを構成するには、[手順 3: セキュリティ] の[クラスターのセキュリティ設定の構成] で SSL 証明書を指定し、[リバース プロキシの SSL 証明書を含める] チェックボックスをオンにして、証明書の詳細を入力します。
+
+### <a name="enable-reverse-proxy-via-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートでリバース プロキシを有効にする
+
 [Azure Resource Manager テンプレート](service-fabric-cluster-creation-via-arm.md)を使用して、クラスターで Service Fabric のリバース プロキシを有効にすることができます。
 
 証明書を使用してセキュリティで保護されたリバース プロキシを構成する Azure Resource Manager テンプレートのサンプルと、証明書のロールオーバーの処理については、「[Configure HTTPS Reverse Proxy in a secure cluster (セキュリティで保護されたクラスターで HTTPS リバース プロキシを構成する)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM Templates/ReverseProxySecureSample#configure-https-reverse-proxy-in-a-secure-cluster)」をご覧ください。

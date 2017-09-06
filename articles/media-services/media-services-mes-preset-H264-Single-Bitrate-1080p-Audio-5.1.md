@@ -2,7 +2,7 @@
 title: H264 Single Bitrate 1080p Audio 5.1 | Microsoft Docs
 description: "このトピックでは、**H264 Single Bitrate 1080p Audio 5.1** タスク プリセットの概要を説明します。"
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 

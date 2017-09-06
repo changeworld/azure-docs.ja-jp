@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/30/2017
+ms.date: 08/21/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 9f13e6300f77e2d9e84b0f7ce7f3cf289c327157
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4b606ea3797d685b9deacf72f1bd31e0ef007f98
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-ssh-tunneling-to-access-ambari-web-ui-jobhistory-namenode-oozie-and-other-web-uis"></a>SSH トンネリングを使用して Ambari Web UI、JobHistory、NameNode、Oozie、およびその他の Web UI にアクセスする
@@ -40,6 +39,9 @@ Ambari のメニューのいくつかは、SSH トンネル経由でのみ機能
 * HBase Master と Logs の UI
 
 クラスターをカスタマイズするスクリプト アクションを使用する場合、インストールするサービスまたはユーティリティで Web UI を公開するには、SSH トンネルが必要です。 たとえば、スクリプト アクションを使用して Hue をインストールする場合、SSH トンネルを使用して Hue Web UI にアクセスする必要があります。
+
+> [!IMPORTANT]
+> 仮想ネットワーク経由で HDInsight に直接アクセスできる場合は、SSH トンネルを使用する必要はありません。 仮想ネットワーク経由で HDInsight に直接アクセスする例については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」をご覧ください。
 
 ## <a name="what-is-an-ssh-tunnel"></a>SSH トンネルとは
 
@@ -114,7 +116,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
    > [!NOTE]
    > **リモート DNS** を選択すると、ドメイン ネーム システム (DNS) 要求は HDInsight クラスターを使用して解決されます。 この設定は、クラスターのヘッド ノードを使って DNS を解決します。
 
-2. [http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トンネルが動作することを確認します。 プロキシが正しく構成されている場合、返される IP アドレスは Microsoft Azure データセンター内のコンピューターの IP アドレスになります。
+2. [http://www.whatismyip.com/](http://www.whatismyip.com/) などのサイトにアクセスして、トンネルが動作することを確認します。 返される IP は、Microsoft Azure データ センターで使用されるものです。
 
 ## <a name="verify-with-ambari-web-ui"></a>Ambari Web UI を使用して確認する
 
@@ -134,7 +136,7 @@ ssh -C2qTnNf -D 9876 USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
     ![QuickLinks メニューが展開された画像](./media/hdinsight-linux-ambari-ssh-tunnel/namenodedropdown.png)
 
    > [!NOTE]
-   > __[Quick Links]\(クイック リンク\)__ を選択すると、待機インジケーターが表示されることがあります。 低速のインターネット接続を使っている場合に発生する可能性があります。 サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
+   > __[Quick Links]\(クイック リンク\)__ を選択すると、待機インジケーターが表示されることがあります。 この状態は、低速のインターネット接続を使っている場合に発生する可能性があります。 サーバーからデータが取得されるまで 1 ～ 2 分待ってから、改めて一覧を表示してみてください。
    >
    > **[Quick Links]\(クイック リンク\)** メニューの一部のエントリが、画面の右側で切れている場合があります。 その場合は、マウスを使ってメニューを拡大し、右矢印キーを使って画面を右にスクロールして、メニューの残りを表示します。
 

@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
+ms.date: 08/21/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: d72f0e149c7137631d3e6f0b51a24955c81a0b5b
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 61a8bfcf3704f361432400771d8fcc8b81927b53
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -41,7 +41,7 @@ Cloud Shell の初回起動時に、セッション間でファイルを維持�
 
 ### <a name="use-existing-resources"></a>既存のリソースの使用
 
-詳細設定オプションを使用すると、既存のリソースを関連付けることができます。 ストレージのセットアップを促す画面が表示されたら、**[詳細設定の表示]** を選択して、追加オプションを表示します。 既存のファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のユーザー イメージが割り当てられます。 ドロップダウン メニューは、割り当てられている Cloud Shell リージョン、ローカル冗長ストレージ アカウント、geo 冗長ストレージ アカウントに合わせて絞り込まれます。
+詳細設定オプションを使用すると、既存のリソースを関連付けることができます。 ストレージのセットアップを促す画面が表示されたら、**[詳細設定の表示]** を選択して、追加オプションを表示します。 既存のファイル共有には、`$Home` ディレクトリの永続化に使用できる 5 GB のユーザー イメージが割り当てられます。 ドロップダウン メニューは、ユーザーの Cloud Shell リージョン、ローカル冗長ストレージ アカウント、geo 冗長ストレージ アカウントに合わせて絞り込まれます。
 
 ![リソース グループ設定](media/advanced-storage.png)
 
@@ -71,7 +71,7 @@ Cloud Shell では、`clouddrive` というコマンドを実行できます。�
 * 自分の割り当てリージョンに存在すること。 オンボーディング時に、自分に割り当てられているリージョンが、リソース グループ名 `cloud-shell-storage-<region>` として表示されます。
 
 ### <a name="supported-storage-regions"></a>サポートされているストレージ リージョン
-マウント対象の Cloud Shell マシンと同じリージョンに Azure Files が存在していることが必要です。 Cloud Shell マシンは、次の各リージョンに存在します。
+マウント対象の Cloud Shell マシンと同じリージョンに Azure Files が存在していることが必要です。 Cloud Shell クラスターは、現在は次の各リージョンに存在します。
 |領域|リージョン|
 |---|---|
 |アメリカ|米国東部、米国中南部、米国西部|
@@ -94,7 +94,7 @@ clouddrive mount -s mySubscription -g myRG -n storageAccountName -f fileShareNam
 !["clouddrive mount" コマンドを実行する](media/mount-h.png)
 
 ## <a name="unmount-clouddrive"></a>`clouddrive` のマウントを解除する
-Cloud Shell にマウントされたファイル共有は、いつでもマウントを解除することができます。 ただし、Cloud Shell にはマウントされたファイル共有が必要なので、削除した場合は、次回のセッション時に新しいファイル共有を作成してマウントするように求められます。
+Cloud Shell にマウントされたファイル共有は、いつでもマウントを解除することができます。 ファイル共有のマウントを解除するとすぐに、次のセッションの前に新しいファイル共有をマウントするように求められます。
 
 Cloud Shell からファイル共有を削除するには:
 1. `clouddrive unmount` を実行します。
@@ -107,7 +107,7 @@ Cloud Shell からファイル共有を削除するには:
 !["clouddrive unmount" コマンドを実行する](media/unmount-h.png)
 
 > [!WARNING]
-> このコマンドを実行してもリソースは削除されませんが、Cloud Shell にマップされているリソース グループ、ストレージ アカウント、またはファイル共有を手動で削除すると、ファイル共有内にある `$Home` ディレクトリ ディスク イメージとすべてのファイルは削除されます。 この削除操作は元に戻すことができません。
+> このコマンドを実行してもリソースは一切削除されません。 Cloud Shell にマッピングされたリソース グループ、ストレージ アカウント、ファイル共有のいずれかを手動で削除すると、ファイル共有内にある `$Home` ディレクトリ イメージと他のすべてのファイルが永久に削除されます。 この削除操作は元に戻すことができません。
 
 ## <a name="list-clouddrive-file-shares"></a>`clouddrive` ファイル共有を一覧表示する
 `clouddrive` としてマウントされているファイル共有を検出するには、次の `df` コマンドを実行します。 
@@ -116,14 +116,14 @@ clouddrive へのファイル パスの URL に、お使いのストレージ �
 
 ```
 justin@Azure:~$ df
-Filesystem                                          1K-blocks   Used  Available Use% Mounted on
-overlay                                             29711408 5577940   24117084  19% /
-tmpfs                                                 986716       0     986716   0% /dev
-tmpfs                                                 986716       0     986716   0% /sys/fs/cgroup
-/dev/sda1                                           29711408 5577940   24117084  19% /etc/hosts
-shm                                                    65536       0      65536   0% /dev/shm
-//mystoragename.file.core.windows.net/fileshareName 5368709120    64 5368709056   1% /home/justin/clouddrive
-justin@Azure:~$
+Filesystem                                               1K-blocks     Used Available Use% Mounted on
+overlay                                                   30428648 15585636  14826628  52% /
+tmpfs                                                       986704        0    986704   0% /dev
+tmpfs                                                       986704        0    986704   0% /sys/fs/cgroup
+/dev/sda1                                                 30428648 15585636  14826628  52% /etc/hosts
+shm                                                          65536        0     65536   0% /dev/shm
+//mystoragename.file.core.windows.net/fileshareName        6291456  5242944   1048512  84% /usr/justin/clouddrive
+/dev/loop0                                                 5160576   601652   4296780  13% /home/justin
 ```
 
 ## <a name="transfer-local-files-to-cloud-shell"></a>Cloud Shell にローカル ファイルを転送する

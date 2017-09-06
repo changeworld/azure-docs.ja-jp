@@ -4,7 +4,7 @@ description: "このトピックでは、Elemental Live エンコーダーを構
 services: media-services
 documentationcenter: 
 author: cenkdin
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 9c6bf6a9-6273-4fdd-9477-f0e565280b5b
 ms.service: media-services
@@ -43,7 +43,7 @@ ms.lasthandoff: 01/11/2017
 
 ## <a name="tips"></a>ヒント
 * 可能な限り、有線のインターネット接続を使用します。
-* 帯域幅要件の目安は、ストリーミングのビットレートの&2; 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
+* 帯域幅要件の目安は、ストリーミングのビットレートの 2 倍です。 これは必須の要件ではありませんが、ネットワークの混雑の影響を軽減することができます。
 * ソフトウェア ベースのエンコーダーを使用する際は、不要なプログラムを終了します。
 
 ## <a name="elemental-live-with-rtp-ingest"></a>RTP インジェストを使用する Elemental Live

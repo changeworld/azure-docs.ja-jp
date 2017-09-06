@@ -3,7 +3,7 @@ title: "Azure Analysis Services Adventure Works チュートリアル | Microsof
 description: "Azure Analysis Services の Adventure Works チュートリアルを紹介します｡"
 services: analysis-services
 documentationcenter: 
-author: minewiskan
+author: Minewiskan
 manager: erikre
 editor: 
 tags: 

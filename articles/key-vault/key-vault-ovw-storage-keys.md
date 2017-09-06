@@ -10,10 +10,10 @@ ms.author: bruceper
 manager: mbaldwin
 ms.date: 07/25/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: c7b20c83b356dd698e66919483c9ff6f0e8a36ef
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3148088c88236c64e089fd25c98eb8ac7cdcbfea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
@@ -28,13 +28,14 @@ Azure Storage アカウントの概要情報については、「[Azure Storage 
 
 Azure Storage アカウント キーの機能は、REST、.NET/C#、PowerShell の各インターフェイスで最初は使用できます。 詳細については、「[Key Vault のドキュメント](https://docs.microsoft.com/azure/key-vault/)」をご覧ください。
 
+
 ## <a name="storage-account-keys-behavior"></a>ストレージ アカウント キーの動作
 
 ### <a name="what-key-vault-manages"></a>Key Vault による管理
 
 Key Vault では、ストレージ アカウント キーを使用するときに、いくつかの内部管理機能を自動的に実行します。
 
-1. Azure Key Vault は、Azure Storage アカウント (SAS) のキーを管理します。 
+1. Azure Key Vault は、Azure Storage アカウント (ASA) のキーを管理します。 
     - 内部的には、Azure Key Vault では、Azure Storage アカウントを使用してキーの一覧表示 (同期) ができます。  
     - Azure Key Vault は定期的にキーを再生成 (回転) します。 
     - キーの値は、呼び出し元に応答で返されることはありません。 
@@ -65,6 +66,9 @@ var blobClient = storageAccount.CreateCloudBlobClient();
 ### <a name="after-azure-key-vault-storage-keys"></a>Azure Key Vault ストレージ キー以後 
 
 ```
+//Please make sure to set storage permissions appropriately on your key vault
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourVault' -ObjectId yourObjectId -PermissionsToStorage all
+
 //Use PowerShell command to get Secret URI 
 
 Set-AzureKeyVaultManagedStorageSasDefinition -Service Blob -ResourceType Container,Service -VaultName yourKV  
@@ -124,7 +128,7 @@ Key Vault では、ID がキー再生成の所有権を取得する前に、そ�
 - Key Vault は、ストレージ アカウント リソースに対するRBAC 権限を一覧表示します。
 - Key Vault は、アクションとアクション以外の正規表現の照合によって応答を検証します。 
 
-サポートされるその他の例は、[Key Vault - 管理対象のストレージ アカウント キーのサンプル](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)に関するページをご覧ください。
+その他の補助的な例は、「[Key Vault に管理されているストレージ アカウント キーのサンプル](https://github.com/Azure/azure-sdk-for-net/blob/psSdkJson6/src/SDKs/KeyVault/dataPlane/Microsoft.Azure.KeyVault.Samples/samples/HelloKeyVault/Program.cs#L167)」に関するページをご覧ください。
 
 ID に*再生成*の権限がない場合、あるいは Key Vault のファースト パーティ ID に*一覧表示*または*再生成*の権限がない場合、オンボード要求は失敗し、適切なエラー コードとメッセージを返します。 
 

@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 08/9/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 2d45090b09d83a98cc0811dca8d6f2384d1b11ad
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 50df1e3db239a6aa34ac91bfbd582625c5b0041b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="examples-and-common-scenarios-for-azure-logic-apps"></a>Azure Logic Apps の例と一般的なシナリオ
@@ -31,7 +31,7 @@ Azure Logic Apps には、さまざまなサービスに対して、耐障害性
 
 ## <a name="respond-to-triggers-and-extend-actions"></a>トリガーへの応答とアクションの拡張
 
-すべてのロジック アプリがトリガーによって開始します。 たとえば、ワークフローは、スケジュール イベント、手動の呼び出し、または外部システムからのイベント ( "ファイルが FTP サーバーに追加されたとき" トリガーなど) によって開始できます。 Azure Logic Apps では、オンプレミスの SAP から Azure Cognitive Services まで、現在 100 を超えるすぐに使用可能なコネクタがサポートされています。 コネクタを発行していない可能性があるシステムおよびサービスについては、ロジック アプリを拡張することもできます。
+すべてのロジック アプリがトリガーによって開始します。 たとえば、ワークフローは、スケジュール イベント、手動の呼び出し、または外部システムからのイベント ( "ファイルが FTP サーバーに追加されたとき" トリガーなど) によって開始できます。 Azure Logic Apps では現時点で、オンプレミスの SAP から Microsoft Cognitive Services に及ぶ、100 を超える数のすぐに使用可能なコネクタがサポートされています。 コネクタを発行していない可能性があるシステムおよびサービスについては、ロジック アプリを拡張することもできます。
 
 * [カスタムのトリガーまたはアクションを作成する](../logic-apps/logic-apps-create-api-app.md)
 * [ワークフロー実行に対して実行時間の長いアクションを設定する](../logic-apps/logic-apps-create-api-app.md)
@@ -75,6 +75,10 @@ Azure Logic Apps [ワークフロー定義言語](http://aka.ms/logicappsdocs)�
 * [ロジック アプリから Azure Functions を呼び出す](../logic-apps/logic-apps-azure-functions.md)
 * [シナリオ: Azure Functions を使用してロジック アプリをトリガーする](../logic-apps/logic-apps-scenario-function-sb-trigger.md)
 * [ブログ: ロジック アプリから SOAP エンドポイントを呼び出す](https://blogs.msdn.microsoft.com/logicapps/2016/04/07/using-soap-services-with-logic-apps/)
+
+## <a name="end-to-end-scenarios"></a>エンド ツー エンドのシナリオ
+
+* [ホワイト ペーパー: Logic Apps などの Azure サービスを使用したエンタープライズ統合のエンド ツー エンド ケース管理](https://aka.ms/enterprise-integration-e2e-case-management-utilities-logic-apps)
 
 ## <a name="next-steps"></a>次のステップ
 

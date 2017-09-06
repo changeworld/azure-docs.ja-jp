@@ -11,7 +11,7 @@ ms.assetid:
 ms.service: sql-database
 ms.custom: mvc,business continuity
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/26/2017
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
 ms.openlocfilehash: 9f53f318e20dac9248906bdbe898ba4dacb286ac
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/30/2017
-
 
 ---
 
@@ -387,7 +386,8 @@ Java および Maven 環境をインストールして構成する方法に関�
       -ServerName $mydrservername
    $fileovergroup.ReplicationRole
    ```
-## <a name="next-steps"></a>次のステップ 
+
+## <a name="next-steps"></a>次のステップ
 
 詳細については、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関するページをご覧ください。
 

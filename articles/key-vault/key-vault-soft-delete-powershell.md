@@ -8,13 +8,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 08/04/2017
+ms.date: 08/21/2017
 ms.author: bruceper
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: b5ce7d5e0e353002803991f58dde78ab5c4627b9
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 8cf0674f7eb139e50da4a3c22a8d8376a86b0dcc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>PowerShell で Key Vault の論理的な削除を使用する方法
@@ -27,6 +27,11 @@ Azure Key Vault の論理的な削除機能を使用すると、削除された�
 ## <a name="prerequisites"></a>前提条件
 
 - Azure PowerShell 4.0.0 以上: まだセットアップしていない場合は、Azure PowerShell をインストールしてお使いの Azure サブスクリプションに関連付けます。詳しくは、「[Azure PowerShell のインストールおよび構成方法](https://docs.microsoft.com/powershell/azure/overview)」をご覧ください。 
+
+>[!NOTE]
+> Key Vault PowerShell 出力書式設定ファイルには古いバージョンがあり、正しいバージョンではなく、これが環境に読み込まれる**可能性があります**。 PowerShell の更新バージョンには出力書式設定に必要な修正が含まれることを想定しており、このトピックはその時点で更新されます。 この出力書式設定に関する問題が発生した場合の現在の対処法は次のとおりです。
+> - このトピックで説明されている論理的な削除が有効なプロパティが表示されない場合は、クエリ `$vault = Get-AzureRmKeyVault -VaultName myvault; $vault.EnableSoftDelete` を使用します。
+
 
 PowerShell における Key Vault の具体的な参照情報については、[Azure Key Vault の PowerShell のリファレンス](https://docs.microsoft.com/powershell/module/azurerm.keyvault/?view=azurermps-4.2.0)に関するページをご覧ください。
 

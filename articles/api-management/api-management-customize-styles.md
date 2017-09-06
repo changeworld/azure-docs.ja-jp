@@ -3,7 +3,7 @@ title: "Azure API Management での開発者ポータルのスタイルのカス
 description: "Azure API Management で開発者ポータルの任意のページで使用されているスタイルを変更する方法について説明します。"
 services: api-management
 documentationcenter: 
-author: antonba
+author: vladvino
 manager: vlvinogr
 editor: 
 ms.assetid: 186128fe-41c0-4efb-9efe-2478ad4d103f
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 336d4f80f0357796fb29eb9314c11edfce831a69
 ms.openlocfilehash: bd08eb476a4bd7298c5650977b88ba0b24deddec
+ms.contentlocale: ja-jp
 ms.lasthandoff: 02/23/2017
-
 
 ---
 # <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>Azure API Management での開発者ポータルのスタイルのカスタマイズ

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b415141f152e88e13678c464eddc4f73df2da54e
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 29dfa31d38f85574f84ed351bc5c26224b1a7e16
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="portals-for-creating-and-editing-log-queries-in-azure-log-analytics"></a>Azure Log Analytics でログ クエリを作成および編集するためのポータル
@@ -50,6 +50,6 @@ Log Analytics のさまざまな場所でログ検索を使用して、ワーク
 
 ## <a name="next-steps"></a>次のステップ
 
-- [ログ検索ポータル](log-analytics-log-search-log-search-portal.md)または[高度な分析ポータル](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)でのクエリ作成に関するチュートリアルを実行します。
-- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](https://docs.loganalytics.io/learn/tutorial_getting_started_with_queries.html)を確認します。
+- [ログ検索ポータル](log-analytics-log-search-log-search-portal.md)または[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)でのクエリ作成に関するチュートリアルを実行します。
+- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](https://go.microsoft.com/fwlink/?linkid=856078)を確認します。
 

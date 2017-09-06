@@ -12,21 +12,22 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 08/28/2017
 ms.author: maheshu
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 5ed0125e05928cf0f6d9941e099b433ecb46e6e2
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: 22e311b530b32504931c39491dc8324894ab4091
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-classic-portal"></a>Azure クラシック ポータルを使って Azure Active Directory Domain Services を有効にする
-この記事では、Azure Active Directory (Azure AD) テナントの Azure Active Directory Domain Services (Azure AD DS) を有効にするために必要な構成タスクについて説明します。
-
-> [!NOTE]
-> [**代わりに、新しい (プレビューの) Azure Portal のエクスペリエンスをお試しください**](active-directory-ds-getting-started.md)。 
+> [!IMPORTANT]
+> この記事で紹介している、Azure クラシック ポータルを使って Azure AD Domain Services を有効にする方法は間もなく廃止されます。 新たにデプロイする場合は、[**新しい (プレビュー) Azure Portal を使った方法を使用**](active-directory-ds-getting-started.md)してください。
 >
+
+この記事は、Azure クラシック ポータルを使って、Azure Active Directory (Azure AD) テナントの Azure Active Directory Domain Services (Azure AD DS) を有効にするのに役立ちます。
+
 
 ## <a name="task-1-create-the-azure-ad-dc-administrators-group"></a>タスク 1: "Azure AD DC 管理者" グループを作成する
 最初のタスクは、Azure AD テナントでの管理グループの作成です。 この特別な管理グループは、 *AAD DC 管理者*と呼ばれます。 このグループのメンバーには、Azure Active Directory Domain Services 管理対象ドメインにドメイン参加するコンピューターへの管理権限が付与されます。 ドメインに参加しているコンピューターでは、このグループは管理者グループに追加されます。 さらに、このグループのメンバーは、リモート デスクトップを使用して、ドメインに参加しているコンピューターにリモート接続できます。  

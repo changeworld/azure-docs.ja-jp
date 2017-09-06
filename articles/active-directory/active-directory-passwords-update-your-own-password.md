@@ -4,7 +4,7 @@ description: "セルフサービス パスワード リセットを使用して�
 services: active-directory
 keywords: 
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: barlanmsft
 manager: femila
 ms.reviewer: gahug
 ms.assetid: 7ba69b18-317a-4a62-afa3-924c4ea8fb49
@@ -13,8 +13,8 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/17/2017
-ms.author: joflore
+ms.date: 08/28/2017
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
@@ -48,9 +48,9 @@ ms.lasthandoff: 07/06/2017
 
    > [!NOTE]
    > この機能が IT スタッフによって有効にされていない場合は、IT スタッフが電子メールや自分の Web ポータルを通じてサポートできるように、"管理者に連絡してください" というリンクが表示されます。
-   > 
+   >
    > アカウントのロックを解除する必要がある場合は、この時点で、[パスワードは覚えていますが、サインインできません] オプションを選択します。
-   > 
+   >
 
 3. IT スタッフによる SSPR の構成内容に応じて、以下の項目のうち 1 つ以上が表示されます。 「[セルフサービスによるパスワードのリセットを登録する](active-directory-passwords-reset-register.md)」の記事で使用する前に、自分または IT スタッフがこれらの情報の一部を設定しています。
 

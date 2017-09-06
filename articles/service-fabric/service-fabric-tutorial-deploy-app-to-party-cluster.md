@@ -9,16 +9,17 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/09/2017
 ms.author: mikhegn
+ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: c0546fd5b1398759ef98afa267146ced8a4084da
+ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
+ms.openlocfilehash: 6624d683edb548a65d07ab4012c599faaf940ed0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/17/2017
 
 ---
 
@@ -42,6 +43,13 @@ ms.lasthandoff: 08/10/2017
 - [Visual Studio 2017 をインストール](https://www.visualstudio.com/)し、**Azure 開発**ワークロードと **ASP.NET および Web 開発**ワークロードをインストールします。
 - [Service Fabric SDK をインストール](service-fabric-get-started.md)します。
 
+## <a name="download-the-voting-sample-application"></a>投票サンプル アプリケーションをダウンロードする
+[このチュートリアル シリーズの第 1 部](service-fabric-tutorial-create-dotnet-app.md)で投票サンプル アプリケーションをビルドしていない場合は、ダウンロードすることができます。 コマンド ウィンドウで、次のコマンドを実行して、サンプル アプリのリポジトリをローカル コンピューターに複製します。
+
+```
+git clone https://github.com/Azure-Samples/service-fabric-dotnet-quickstart
+```
+
 ## <a name="set-up-a-party-cluster"></a>パーティ クラスターをセットアップする
 パーティ クラスターは、Azure でホストされる無料の期間限定の Service Fabric クラスターであり、Service Fabric チームによって実行されます。このクラスターには、だれでもアプリケーションをデプロイして、プラットフォームについて学習することができます。 無料試用版をお試しください!
 
@@ -50,16 +58,28 @@ ms.lasthandoff: 08/10/2017
 > [!NOTE]
 > パーティ クラスターはセキュリティで保護されないため、ご利用のアプリケーションとそれに入力するデータが他のユーザーに表示される可能性があります。 他のユーザーに見せたくないものは一切デプロイしないでください。 使用条件の詳細に必ず目を通してください。
 
-## <a name="make-your-application-ready-for-deployment"></a>アプリケーションをデプロイできるように準備する
-ASP.NET Core Web API サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしてください。 サービスの **ServiceManifest.xml** ファイルでポートを指定します。
+## <a name="configure-the-listening-port"></a>リスニング ポートを構成する
+VotingWeb フロントエンド サービスが作成されると、Visual Studio は、リッスンするサービスのポートをランダムに選択します。  VotingWeb サービスは、このアプリケーションのフロント エンドとして機能して外部のトラフィックを受け入れるため、このサービスを固定のウェルノウン ポートにバインドしましょう。 ソリューション エクスプローラーで、*VotingWeb/PackageRoot/ServiceManifest.xml* を開きます。  **Resources** セクションの **Endpoint** リソースを検索し、**Port** 値を 80 に変更します。
 
-1. ソリューション エクスプローラーで、**[WebAPIFrontEnd] -> [PackageRoot] -> [ServiceManifest.xml]** の順に開きます。
-2. 既存の **Endpoint** 要素の **Port** 属性を **80** に変更して、変更内容を保存します。
+```xml
+<Resources>
+    <Endpoints>
+      <!-- This endpoint is used by the communication listener to obtain the port on which to 
+           listen. Please note that if your service is partitioned, this port is shared with 
+           replicas of different partitions that are placed in your code. -->
+      <Endpoint Protocol="http" Name="ServiceEndpoint" Type="Input" Port="80" />
+    </Endpoints>
+  </Resources>
+```
+
+また、Voting プロジェクトの Application URL プロパティ値を更新し、F5 キーを押してデバッグするときに正しいポートに対して Web ブラウザーが開くようにします。  ソリューション エクスプローラーで、**Voting** プロジェクトを選択し、**Application URL** プロパティを更新します。
+
+![アプリケーションの URL](./media/service-fabric-tutorial-deploy-app-to-party-cluster/application-url.png)
 
 ## <a name="deploy-the-app-to-the-azure"></a>Azure にアプリケーションをデプロイする
 これで、アプリケーションの準備ができたので、Visual Studio から直接パーティ クラスターにデプロイできます。
 
-1. ソリューション エクスプローラーで **[MyApplication]** を右クリックして、**[発行]** を選択します。
+1. ソリューション エクスプローラーで **[Voting]** を右クリックして、**[発行]** を選択します。
 
     ![[発行] ダイアログ](./media/service-fabric-tutorial-deploy-app-to-party-cluster/publish-app.png)
 
@@ -67,7 +87,7 @@ ASP.NET Core Web API サービスは、このアプリケーションのフロ�
 
     発行が完了した後は、ブラウザーからアプリケーションに要求を送信できます。
 
-3. 好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力して、この URL に `/api/values` を追加します。
+3. 好みのブラウザーを開き、クラスター アドレス (ポート情報を除いた接続エンドポイント。たとえば、win1kw5649s.westus.cloudapp.azure.com) を入力します。
 
     アプリケーションをローカルで実行するときに確認したのと同じ結果が表示されます。
 
@@ -76,21 +96,22 @@ ASP.NET Core Web API サービスは、このアプリケーションのフロ�
 ## <a name="remove-the-application-from-a-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用してクラスターからアプリケーションを削除する
 Service Fabric Explorer は、Service Fabric クラスター内のアプリケーションを参照および管理するためのグラフィカル ユーザー インターフェイスです。
 
-パーティ クラスターにデプロイしたアプリケーションを削除するには、次の手順を実行します。
+パーティ クラスターからアプリケーションを削除するには:
 
 1. パーティ クラスターのサインアップ ページで提供されるリンクを使用して、Service Fabric Explorer を参照します。 たとえば、http://win1kw5649s.westus.cloudapp.azure.com:19080/Explorer/index.html にアクセスします。
 
-2. Service Fabric Explorer で、左側にあるツリー ビューの **[fabric://MyApplication]** ノードに移動します。
+2. Service Fabric Explorer で、左側にあるツリービューの **[fabric://Voting]** ノードに移動します。
 
 3. 右側の **[基本]** ウィンドウの **[アクション]** をクリックして、**[アプリケーションの削除]** を選択します。 アプリケーション インスタンスの削除を承認すると、クラスターで実行されているアプリケーション インスタンスが削除されます。
 
 ![Service Fabric Explorer でのアプリケーションの削除](./media/service-fabric-tutorial-deploy-app-to-party-cluster/delete-application.png)
 
+## <a name="remove-the-application-type-from-a-cluster-using-service-fabric-explorer"></a>Service Fabric Explorer を使用してクラスターからアプリケーションの型を削除する
 アプリケーションは、Service Fabric クラスター内にアプリケーションの型としてデプロイされます。これにより、アプリケーションの複数のインスタンスやバージョンをクラスター内で実行できます。 アプリケーションの実行中のインスタンスを削除した後は、その型も削除でき、デプロイのクリーンアップを完了できます。
 
-Service Fabric のアプリケーション モデルの詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」をご覧ください。
+Service Fabric のアプリケーション モデルの詳細については、「[Service Fabric でのアプリケーションのモデル化](service-fabric-application-model.md)」を参照してください。
 
-1. ツリービューの **[MyApplicationType]** ノードに移動します。
+1. ツリービューの **[VotingType]** ノードに移動します。
 
 2. 右側の **[基本]** ウィンドウの **[アクション]** をクリックして、**[Unprovision Type]\(型のプロビジョニングを解除\)** を選択します。 アプリケーションの型のプロビジョニング解除を承認します。
 

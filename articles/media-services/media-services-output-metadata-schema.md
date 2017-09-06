@@ -2,7 +2,7 @@
 title: "Azure Media Services 出力メタデータのスキーマ | Microsoft Docs"
 description: "このトピックでは、Azure Media Services 出力メタデータのスキーマの概要を説明します。"
 author: Juliako
-manager: erikre
+manager: cfowler
 editor: 
 services: media-services
 documentationcenter: 
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/19/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c3c5a3ee123fe021444370583c7f37737a03edce
-ms.openlocfilehash: 2e21c8df29a78da77505b6f67434d97698f7a212
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: c175d359f93e7cd8cd73aa498ad8b71c4ec497f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="output-metadata"></a>出力メタデータ
@@ -97,7 +97,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このビデオ トラックの 0 から始まるインデックス。 **注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このビデオ トラックの 0 から始まるインデックス。**注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **FourCC**<br/><br/> 必須 |**xs:string** |ビデオ コーデックの FourCC コード。 |
 | **プロファイル** |**xs:string** |H264 プロファイル (H264 コーデックのみに適用されます)。 |
 | **Level** |**xs:string** |H264 レベル (H264 コーデックのみに適用されます)。 |
@@ -129,7 +129,7 @@ XML の例については、「[XML の例](media-services-output-metadata-schem
 ### <a name="attributes"></a>属性
 | 名前 | 型 | 説明 |
 | --- | --- | --- |
-| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このオーディオ トラックの 0 から始まるインデックス。 **注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
+| **Id**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |このオーディオ トラックの 0 から始まるインデックス。**注:** これは、必ずしも MP4 ファイルで使用されている TrackID であるとは限りません。 |
 | **Codec** |**xs:string** |オーディオ トラック コーデック文字列。 |
 | **EncoderVersion** |**xs:string** |省略可能なエンコーダー バージョン文字列。EAC3 の場合は必須。 |
 | **Channels**<br/><br/> minInclusive ="0"<br/><br/> 必須 |**xs:int** |オーディオ チャネルの数。 |

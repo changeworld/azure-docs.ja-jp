@@ -4,7 +4,7 @@ description: "PowerShell で Azure Active Directory (Azure AD) アプリを作�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

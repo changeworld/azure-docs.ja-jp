@@ -4,7 +4,7 @@ description: "Microsoft Azure Media Services では、AES 128 ビット暗号化
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 4d2c10af-9ee0-408f-899b-33fa4c1d89b9
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/25/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4996df4623a706e51ab00538c17590ebf2d71fc4
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: ae1b36c26e688e74eb8fcc1a4cdbd3be0c014c08
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="using-aes-128-dynamic-encryption-and-key-delivery-service"></a>AES-128 動的暗号化とキー配信サービスの使用
@@ -177,7 +177,11 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
     Fragments(video=0,format=m3u8-aapl)
     #EXT-X-ENDLIST
 
+>[!NOTE] 
+>Safari で AES 暗号化された HLS を再生することを計画している場合には、[このブログ](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)をご覧ください。
+
 ### <a name="request-the-key-from-the-key-delivery-service"></a>キー配信サービスにキーを要求する
+
 次のコードは、キー配信 URI (マニフェストから抽出) とトークンを使用して、Media Services のキー配信サービスに要求を送信する方法を示しています (Secure Token Service から Simple Web Token を取得する方法は、このトピックでは扱いません)。
 
     private byte[] GetDeliveryKey(Uri keyDeliveryUri, string token)
@@ -220,7 +224,9 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
         return key;
     }
 
-## <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
+## <a name="protect-your-content-with-aes-128-using-net"></a>AES 128 によるコンテンツの保護 (.NET 使用)
+
+### <a name="create-and-configure-a-visual-studio-project"></a>Visual Studio プロジェクトの作成と構成
 
 1. 「[.NET を使用した Media Services 開発](media-services-dotnet-how-to-use.md)」の説明に従って、開発環境をセットアップし、app.config ファイルに接続情報を指定します。 
 2. app.config ファイルで定義されている **appSettings** に次の要素を追加します。
@@ -228,7 +234,7 @@ HLS の場合、ルート マニフェストはセグメント ファイルに�
         <add key="Issuer" value="http://testacs.com"/>
         <add key="Audience" value="urn:test"/>
 
-## <a id="example"></a>例
+### <a id="example"></a>例
 
 Program.cs ファイルのコードを、このセクションで示されているコードで上書きします。
  

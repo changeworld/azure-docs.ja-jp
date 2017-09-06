@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 78778e2601ca91c1921a5d987ec7845332c8e27a
+ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
+ms.openlocfilehash: 425c7a733a0a2383f01d2122e7155d3e3a9071be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/10/2017
 
 ---
 
@@ -32,7 +32,7 @@ Log Analytics は、Azure ストレージ テーブルまたはエージェン�
 
 OMS が構成されているときは特定の *OMS ワークスペース*にアクセスして、ダッシュボード内でデータを照会したり視覚化したりできます。
 
-Log Analytics がデータを受け取った後、OMS にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 調査してみる価値のあるソリューションが他にもいくつかあり、OMS ではカスタム ソリューションを作成することもできます。詳細については[こちら](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-solutions)をご覧ください。 クラスターに使用するために選択する各ソリューションは、同じ OMS ワークスペース内に Log Analytics と一緒に構成されます。 ワークスペースでは、カスタム ダッシュボードを作成でき、データを視覚化したり、収集、処理、および分析するデータに変更を加えたりできます。
+Log Analytics がデータを受け取った後、OMS にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 調査してみる価値のあるソリューションが他にもいくつかあり、OMS ではカスタム ソリューションを作成することもできます。詳細については[こちら](../operations-management-suite/operations-management-suite-solutions.md)をご覧ください。 クラスターに使用するために選択する各ソリューションは、同じ OMS ワークスペース内に Log Analytics と一緒に構成されます。 ワークスペースでは、カスタム ダッシュボードを作成でき、データを視覚化したり、収集、処理、および分析するデータに変更を加えたりできます。
 
 ## <a name="setting-up-an-oms-workspace-with-the-service-fabric-solution"></a>Service Fabric ソリューションによる OMS ワークスペースの設定
 
@@ -61,9 +61,9 @@ OMS ワークスペースをプロビジョニングして構成する方法は 
 
 ## <a name="using-the-oms-agent"></a>OMS エージェントの使用
 
-EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS を使用することを決定していて、イベント分析のために OMS を引き続き使用することを希望する場合は (使用する唯一のプラットフォームである必要はなく、少なくともプラットフォームの 1 つであればいい)、 [OMS エージェント](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents)を設定してみることをお勧めします。
+EventFlow と WAD を集計ソリューションとして使用することをお勧めします。診断と監視をモジュール方式で使用できます。 たとえば、EventFlow からの出力を変更する場合は、実際のインストルメンテーションを変更する必要はなく、構成ファイルを変更するだけで済みます。 ただし、OMS を使用することを決定していて、イベント分析のために OMS を引き続き使用することを希望する場合は (使用する唯一のプラットフォームである必要はなく、少なくともプラットフォームの 1 つであればいい)、 [OMS エージェント](../log-analytics/log-analytics-windows-agents.md)を設定してみることをお勧めします。 クラスターにコンテナーをデプロイするときは、次の説明のように OMS エージェントも使用する必要があります。
 
-設定処理は比較的簡単です。エージェントを仮想マシン スケール セット拡張機能として Resource Manager テンプレートに追加するだけです。これで各ノードに確実にインストールされます。 サンプル Resource Manager テンプレートは[ここ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Sample)で見つかります。OMS ワークスペースを Service Fabric ソリューションで展開し (上記)、エージェントをノードに追加するものです。 
+設定処理は比較的簡単です。エージェントを仮想マシン スケール セット拡張機能として Resource Manager テンプレートに追加するだけです。これで各ノードに確実にインストールされます。 Service Fabric ソリューション (前述の説明を参照) を使用して OMS ワークスペースをデプロイし、エージェントをノードに追加するサンプル Resource Manager テンプレートが、[Windows](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows) または [Linux](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Linux) を実行するクラスター用に用意されています。
 
 これの利点は次のとおりです。
 

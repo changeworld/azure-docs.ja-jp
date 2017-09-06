@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: bd1b931681331d4de06e227983dfce98b4cc84f2
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード同期のトラブルシューティング
@@ -165,7 +165,7 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 
     ![パスワード同期設定からの PowerShell スクリプトの出力](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/psverifyconfig.png)  
 
-3. この機能が Azure AD で有効ではない場合、または同期チャネルの状態が有効ではない場合は、Connect のインストール ウィザードを実行してください。 **[同期オプションのカスタマイズ]** を選択し、パスワード同期の選択を解除します。 この変更により、一時的に機能が無効になります。 その後、もう一度ウィザードを実行し、パスワード同期を再度有効にします。 スクリプトを再実行して、構成が正しいことを確認します。
+3. この機能が Azure AD で有効ではない場合、または同期チャネルの状態が有効ではない場合は、Connect のインストール ウィザードを実行してください。 **[同期オプションのカスタマイズ]** を選択し、パスワード同期の選択を解除します。この変更により、一時的に機能が無効になります。 その後、もう一度ウィザードを実行し、パスワード同期を再度有効にします。スクリプトを再実行して、構成が正しいことを確認します。
 
 4. イベント ログでエラーを調べます。 問題を示す次のイベントを探します。
     * "Source: "Directory synchronization" ID: 0, 611, 652, 655" イベントが表示されている場合は、接続に問題があります。 イベント ログ メッセージに、問題のあるフォレストの情報が含まれています。 詳細については、「[接続に関する問題](#connectivity problem)」を参照してください。
@@ -205,7 +205,7 @@ Azure AD との接続がありますか。
  
 8. **[ディレクトリ パーティションの選択]** でドメインを選択し、**[Only use preferred domain controller]\(優先ドメイン コントローラーのみ使用する\)** チェック ボックスをオンにして、**[構成]** をクリックします。 
 
-9. 一覧で、Connect がパスワード同期に使用するドメイン コントローラーを入力します。 同じ一覧がインポートとエクスポートにも使用されます。 すべてのドメインに対してこの手順を実行します。
+9. 一覧で、Connect がパスワード同期に使用するドメイン コントローラーを入力します。同じ一覧がインポートとエクスポートにも使用されます。 すべてのドメインに対してこの手順を実行します。
 
 10. スクリプトによってハートビートがないことが示されたら、「[すべてのパスワードの完全同期の開始](#trigger-a-full-sync-of-all-passwords)」にあるスクリプトを実行します。
 
@@ -250,11 +250,11 @@ Azure AD との接続がありますか。
 
     **cloudFiltered** 属性が存在しないことを確認します。 ドメイン属性 (domainFQDN と domainNetBios) に必要な値があることを確認します。
 
-    j. **[コネクタ]** タブをクリックします。 オンプレミスの Active Directory と Azure AD の両方へのコネクタが表示されることを確認します。
+    j. **[コネクタ]** タブをクリックします。オンプレミスの Active Directory と Azure AD の両方へのコネクタが表示されることを確認します。
 
     ![メタバース情報](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/mvconnectors.png)  
 
-    k. Azure AD を表す行を選択し、**[プロパティ]**、**[系列]** タブの順にクリックします。 コネクタ スペース オブジェクトでは、**[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]**という名前の同期規則です。  
+    k. Azure AD を表す行を選択し、**[プロパティ]**、**[系列]** タブの順にクリックします。コネクタ スペース オブジェクトでは、**[PasswordSync]** 列の送信規則が **True** に設定されている必要があります。 既定の構成では、 **[Out to AAD - User Join]**という名前の同期規則です。  
 
     ![[コネクタ スペース オブジェクトのプロパティ] ダイアログ ボックス](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/cspasswordsync2.png)  
 
@@ -269,6 +269,10 @@ Azure AD との接続がありますか。
 | SourceConnectorNotPresent |オンプレミスの Active Directory コネクタ スペースにオブジェクトがありません。 |
 | TargetNotExportedToDirectory |Azure AD コネクタ スペースのオブジェクトはまだエクスポートされていません。 |
 | MigratedCheckDetailsForMoreInfo |ログ エントリはビルド 1.0.9125.0 より前に作成されており、従来の状態で表示されます。 |
+| エラー |サービスから不明なエラーが返されました。 |
+| Unknown |パスワード ハッシュのバッチを処理するときにエラーが発生しました。  |
+| MissingAttribute |Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できません。 |
+| RetryRequestedByTarget |以前、Azure AD Domain Services で必要な特定の属性 (たとえば、Kerberos ハッシュ) を使用できませんでした。 ユーザーのパスワード ハッシュの再同期が試行されました。 |
 
 ## <a name="scripts-to-help-troubleshooting"></a>トラブルシューティングに役立つスクリプト
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: cb5ec1a105c632626c5caf39e4fd356177883123
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -54,7 +54,7 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 
 ## <a name="capture"></a>キャプチャ
 
-[Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントにアーカイブすることができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure BLOB ストレージ アカウントとコンテナーを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
+[Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー または Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
 ## <a name="partitions"></a>パーティション
 
@@ -151,7 +151,7 @@ Event Hubs のスループット容量は、"*スループット単位*" によ�
 * イングレス: 1 秒あたり最大で 1 MB または 1,000 イベント (どちらか先に到達した方)
 * エグレス: 1 秒あたり最大で 2 MB
 
-購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.azure.eventhubs.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット単位を管理することもできます。
+購入済みのスループット単位の容量を超えると、イングレスが調整され、[ServerBusyException](/dotnet/api/microsoft.servicebus.messaging.serverbusyexception) が返されます。 エグレスではスロットル例外は発生しませんが、購入済みのスループット単位の容量に制限されます。 発行率の例外を受信するか、より高いエグレスが予想される場合は、名前空間に対して購入したスループット単位の数を確認してください。 スループット単位は、[Azure Portal](https://portal.azure.com) の名前空間の **[スケール]** ブレードで管理できます。 [Event Hubs API](event-hubs-api-overview.md) を使用して、プログラムでスループット単位を管理することもできます。
 
 スループット単位は 1 時間ごとに課金され、事前に購入します。 スループット単位を購入すると、少なくとも 1 時間の料金が課金されます。 Event Hubs の名前空間に対して最大 20 のスループット単位を購入でき、名前空間内のすべての Event Hubs で共有できます。
 
@@ -169,8 +169,8 @@ Event Hubs の詳細については、次のリンクを参照してください
 * [Event Hubs のプログラミング ガイド](event-hubs-programming-guide.md)
 * [Event Hubs における可用性と一貫性](event-hubs-availability-and-consistency.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-* [Event Hubs を使用するサンプル アプリケーション][]
+* [Event Hubs サンプル][]
 
 [Event Hubs tutorial]: event-hubs-dotnet-standard-getstarted-send.md
-[Event Hubs を使用するサンプル アプリケーション]: https://github.com/Azure/azure-event-hubs/tree/master/samples
+[Event Hubs サンプル]: https://github.com/Azure/azure-event-hubs/tree/master/samples
 

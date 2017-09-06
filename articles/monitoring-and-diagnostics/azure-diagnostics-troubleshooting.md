@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: robb
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: df53e92b877b4790bb700f176a1988d265ec4678
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: a0cb529836b14df71e83616f4f625a002c535b7b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Azure 診断のトラブルシューティング
@@ -56,6 +56,34 @@ Azure 診断の使用に関連する情報をトラブルシューティング�
 | **ログ収集ユーティリティのパス** | C:\WindowsAzure\Packages |
 | **MonAgentHost ログ ファイル** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\<DiagnosticsVersion>\WAD0107\Configuration\MonAgentHost.<シーケンシャル番号>.log |
 
+## <a name="metric-data-doesnt-show-in-azure-portal"></a>メトリック データが Azure ポータルに表示されない
+Microsoft Azure 診断には、Azure ポータルに表示できる多数のメトリック データが用意されています。 これらのデータのポータルでの表示に問題がある場合は、診断ストレージ アカウント の WADMetrics\* テーブルで、該当するメトリック レコードが存在するかどうかを確認します。 ここで、テーブルの PartitionKey は、仮想マシンまたは仮想マシン スケール セットのリソース ID であり、RowKey は、メトリック名 (つまりパフォーマンス カウンターの名前) です。
+
+リソース ID が間違っている場合は、[診断構成] -> [メトリック] -> [ResourceId] で、リソース ID が正しく設定されているかどうかを確認します。
+
+特定のメトリックのデータがない場合は、[診断構成] -> [PerformanceCounter] で、メトリック (パフォーマンス カウンター) が含まれているかどうかを確認します。 次のカウンターは、既定で有効になっています。
+- \Processor(_Total)\% Processor Time
+- \Memory\Available Bytes
+- \ASP.NET Applications(__Total__)\Requests/Sec
+- \ASP.NET Applications(__Total__)\Errors Total/Sec
+- \ASP.NET\Requests Queued
+- \ASP.NET\Requests Rejected
+- \Processor(w3wp)\% Processor Time
+- \Process(w3wp)\Private Bytes
+- \Process(WaIISHost)\% Processor Time
+- \Process(WaIISHost)\Private Bytes
+- \Process(WaWorkerHost)\% Processor Time
+- \Process(WaWorkerHost)\Private Bytes
+- \Memory\Page Faults/sec
+- \.NET CLR Memory(_Global_)\% Time in GC
+- \LogicalDisk(C:)\Disk Write Bytes/sec
+- \LogicalDisk(C:)\Disk Read Bytes/sec
+- \LogicalDisk(D:)\Disk Write Bytes/sec
+- \LogicalDisk(D:)\Disk Read Bytes/sec
+
+構成は正しく設定されているにもかかわらず、メトリック データを表示できない場合は、以下のガイドラインに従って、さらに調査してください。
+
+
 ## <a name="azure-diagnostics-is-not-starting"></a>Azure 診断が起動しない
 診断が起動しない理由について詳しくは、前述のログ ファイルの場所にある **DiagnosticsPluginLauncher.log** ファイルと **DiagnosticsPlugin.log** ファイルを参照してください。 
 
@@ -79,7 +107,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 
 解決方法: 診断構成を修正し、診断を再インストールします。
 
-ストレージ アカウントが正しく構成されている場合は、マシンにリモート デスクトップ接続し、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 これらが実行されていない場合は、「[Azure 診断が起動しない](#azure-diagnostics-is-not-starting)」に記載されている手順に従ってください。 プロセスが実行されている場合は、「[データがローカルでキャプチャされている](#is-data-getting-captured-locally)」に移動し、以降の手順に従ってください。
+ストレージ アカウントが正しく構成されている場合は、マシンにリモート デスクトップ接続し、DiagnosticsPlugin.exe と MonAgentCore.exe が実行されていることを確認します。 これらが実行されていない場合は、「[Microsoft Azure 診断が起動しない](#azure-diagnostics-is-not-starting)」に記載されている手順に従ってください。 プロセスが実行されている場合は、「[データがローカルでキャプチャされている](#is-data-getting-captured-locally)」に移動し、以降の手順に従ってください。
 
 ### <a name="part-of-the-data-is-missing"></a>一部のデータが見つからない
 一部のデータのみ取得する場合です。 つまり、データの収集/転送パイプラインが正しく設定されています。 問題を絞り込むには、以下のサブセクションに記載されている手順に従ってください。
@@ -87,9 +115,9 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 診断構成には、特定の型のデータを収集するように指示する部分が含まれています。 [構成を確認](#how-to-check-diagnostics-extension-configuration)し、収集用に構成されていないデータを探していないかどうかをチェックします。
 #### <a name="is-the-host-generating-data"></a>ホストがデータを生成している
 - **パフォーマンス カウンター**: Perfmon を開き、カウンターを確認します。
-- **トレース ログ**: VM にリモート デスクトップ接続し、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  http://msdn.microsoft.com/en-us/library/sk36c28t.aspx を参照し、テキスト リスナーをセットアップしてください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
+- **トレース ログ**: VM にリモート デスクトップ接続し、アプリケーションの構成ファイルに TextWriterTraceListener を追加します。  http://msdn.microsoft.com/library/sk36c28t.aspx を参照し、テキスト リスナーをセットアップしてください。  `<trace>` 要素が `<trace autoflush="true">` になっていることを確認します。<br />
 トレース ログが生成されてない場合は、「[トレース ログが見つからない場合の詳細](#more-about-trace-logs-missing)」に記載されている手順に従ってください。
-- **ETW トレース**: VM にリモート デスクトップ接続し、PerfView をインストールします。  PerfView で、[ファイル] -> [ユーザー コマンド] -> [Listen etwprovder1,etwprovider2,etc.]\(etwprovder1,etwprovider2,... のリッスン\) を実行します。Listen コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。  コマンドを実行できない場合は、Perfview ツールの右下にある [ログ] ボタンをクリックすると、実行しようとした内容とその結果を確認できます。  入力が正しい場合は、新しいウィンドウがポップアップ表示され、数秒で ETW トレースの表示が開始されます。
+- **ETW トレース**: VM にリモート デスクトップ接続し、PerfView をインストールします。  PerfView で、[ファイル] -> [ユーザー コマンド] -> [etwprovder1 のリッスン] や [etwprovider2 のリッスン] を実行します。Listen コマンドは大文字と小文字が区別され、コンマ区切りの一覧の ETW プロバイダー間にスペースを使用することはできません。  コマンドを実行できない場合は、Perfview ツールの右下にある [ログ] ボタンをクリックすると、実行しようとした内容とその結果を確認できます。  入力が正しい場合は、新しいウィンドウがポップアップ表示され、数秒で ETW トレースの表示が開始されます。
 - **イベント ログ**: VM にリモート デスクトップ接続します。 `Event Viewer` を開き、イベントが存在することを確認します。
 #### <a name="is-data-getting-captured-locally"></a>データがローカルでキャプチャされている: 
 次に、データがローカルでキャプチャされていることを確認します。
@@ -122,13 +150,13 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 たとえば次のようになります。
 
 ```XML
-        <EtwEventSourceProviderConfiguration provider=”prov1”>
-          <Event id=”1” />
-          <Event id=”2” eventDestination=”dest1” />
+        <EtwEventSourceProviderConfiguration provider="prov1">
+          <Event id="1" />
+          <Event id="2" eventDestination="dest1" />
           <DefaultEvents />
         </EtwEventSourceProviderConfiguration>
-        <EtwEventSourceProviderConfiguration provider=”prov2”>
-          <DefaultEvents eventDestination=”dest2” />
+        <EtwEventSourceProviderConfiguration provider="prov2">
+          <DefaultEvents eventDestination="dest2" />
         </EtwEventSourceProviderConfiguration>
 ```
 ```JSON
@@ -218,8 +246,8 @@ ETW イベントを保持する Azure Storage 内のテーブルの名前には�
 
 **メモ:** ここに記載されている内容は、IaaS VM で実行されているアプリケーションで DiagnosticsMonitorTraceListener を構成した場合を除き、クラウド サービスに該当します。 
 
-- DiagnosticMonitorTraceListener が web.config または app.config で構成されていることを確認します。  既定では、DiagnosticsMonitorTraceListener はクラウド サービス プロジェクトで構成されますが、一部のお客様は DiagnosticsMonitorTraceListener をコメント アウトしているため、トレース ステートメントが診断によって収集されません。 
-- ログが OnStart メソッドまたは Run メソッドから書き込まれていない場合は、DiagnosticMonitorTraceListener が app.config に含まれていることを確認します。  既定では、DiagnosticsMonitorTraceListener は web.config に含まれていますが、w3wp.exe 内で実行されるコードにのみ適用されます。WaIISHost.exe で実行されるトレースをキャプチャするには、app.config に DiagnosticsMonitorTraceListener を追加する必要があります。
+- DiagnosticMonitorTraceListener が web.config または app.config で構成されていることを確認します。既定では、DiagnosticsMonitorTraceListener はクラウド サービス プロジェクトで構成されますが、一部のお客様は DiagnosticsMonitorTraceListener をコメント アウトしているため、トレース ステートメントが診断によって収集されません。 
+- ログが OnStart メソッドまたは Run メソッドから書き込まれていない場合は、DiagnosticMonitorTraceListener が app.config に含まれていることを確認します。既定では、DiagnosticsMonitorTraceListener は web.config に含まれていますが、w3wp.exe 内で実行されるコードにのみ適用されます。WaIISHost.exe で実行されるトレースをキャプチャするには、app.config に DiagnosticsMonitorTraceListener を追加する必要があります。
 - Diagnostics.Debug.WriteXXX ではなく Diagnostics.Trace.TraceXXX を使用していることを確認します。  デバッグ ステートメントはリリース ビルドから削除されます。
 - コンパイルしたコードに Diagnostics.Trace 行があることを確認します (Reflector、ildasm、または ILSpy を使用して確認してください)。  条件付きコンパイル シンボルである TRACE を使用しない限り、Diagnostics.Trace コマンドはコンパイルしたバイナリから削除されます。  msbuild を使用してプロジェクトをビルドする場合は、これが問題になります。
 
@@ -240,7 +268,8 @@ System.IO.FileLoadException: Could not load file or assembly 'System.Threading.T
 **2.パフォーマンス カウンターのデータがストレージでは使用できるが、ポータルに表示されない**
 
 既定では、仮想マシンのポータル エクスペリエンスには特定のパフォーマンス カウンターが表示されます。 これらのカウンターが表示されず、データが生成されていることがわかっている (データがストレージで使用可能なため) 場合は、 次のことを確認してください。
-- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合は、ポータルのメトリック グラフが名前を認識できません。
+- ストレージ内のデータのカウンター名が英語であるかどうか。 カウンターの名前が英語でない場合、ポータルのメトリック グラフは名前を認識できません。
 - パフォーマンス カウンター名にワイルドカード (\*) を使用している場合、ポータルでは構成済みのカウンターと収集されたカウンターを関連付けることができません。
 
 **軽減策**: システム アカウント用に、マシンの言語を英語に変更します。 [コントロール パネル] -> [地域と言語] -> [管理] -> [設定のコピー] に移動して、[ようこそ画面システム アカウント] チェック ボックスをオフにします。これで、ユーザー定義の言語がシステム アカウントに適用されません。 また、ポータルの消費エクスペリエンスを重視する場合は、ワイルドカードを使用していないことを確認してください。
+

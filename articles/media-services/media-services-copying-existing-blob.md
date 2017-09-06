@@ -4,7 +4,7 @@ description: "このトピックでは、既存の BLOB を Media Services 資�
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 6a63823f-f3c9-424c-91b8-566f70bec346
 ms.service: media-services

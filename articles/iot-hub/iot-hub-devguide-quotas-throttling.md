@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/16/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 3aab67303fd349195c2ffb8d0854efec74e47070
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: dfe06ee6b8fadfe6d34397661c974181f870239e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
@@ -44,7 +43,7 @@ ms.lasthandoff: 06/20/2017
 | クラウドからデバイスへの送信 | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
 | クラウドからデバイスへの受信 <br/> (デバイスが HTTP を使用する場合のみ)| 16.67/sec/unit (1000/分/単位) | 16.67/sec/unit (1000/分/単位) | 833.33/sec/unit (50000/分/単位) |
 | ファイルのアップロード | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 83.33 ファイル アップロード通知/秒/単位 (5000/分/単位) |
-| ダイレクト メソッド | 10/秒/ユニット | 30/秒/ユニット | 1500/秒/ユニット | 
+| ダイレクト メソッド | 20/秒/ユニット | 60/秒/ユニット | 3,000/秒/ユニット | 
 | デバイス ツインの読み取り | 10/秒 | 最大 10 数/秒または 1/秒/ユニット | 50/秒/ユニット |
 | デバイス ツインの更新 | 10/秒 | 最大 10 数/秒または 1/秒/ユニット | 50/秒/ユニット |
 | ジョブ操作 <br/> (作成、更新、一覧表示、削除) | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |

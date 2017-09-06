@@ -4,7 +4,7 @@ description: "プログラミング言語とバインドを問わず、Azure で
 services: functions
 documentationcenter: na
 author: christopheranderson
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "開発者向けガイド, Azure Functions, 関数, イベント処理, webhook, 動的コンピューティング, サーバーレス アーキテクチャ"
@@ -21,7 +21,6 @@ ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/01/2017
-
 
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド

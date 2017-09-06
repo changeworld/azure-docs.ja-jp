@@ -4,7 +4,7 @@ description: "Azure ポータルを使用して Azure Active Directory (Azure AD
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.service: media-services
 ms.workload: media

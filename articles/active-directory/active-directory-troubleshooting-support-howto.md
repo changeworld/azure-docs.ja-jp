@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 06/07/2017
+ms.date: 08/28/2017
 ms.author: curtand
+ms.reviewer: jeffsta
+ms.custom: it-pro
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: f55e6c009cfccce8434d3e13c337a9adb72a4f70
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/08/2017
-
 
 ---
 # <a name="how-to-get-support-for-azure-active-directory"></a>Azure Active Directory のサポートを受ける方法

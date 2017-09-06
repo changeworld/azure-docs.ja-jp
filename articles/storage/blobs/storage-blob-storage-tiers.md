@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 9f8648b0d6774bd45b57f50a4810535a8dacbab6
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: ホット、クール、およびアーカイブ (プレビュー) ストレージ層
@@ -153,9 +153,9 @@ BLOB ストレージ アカウントでは、ストレージ層に基づいた B
 
 以下の例では、設定がストレージ アカウント全体に適用されるため、アクセス層をアーカイブに設定することはできません。 アーカイブは、特定の BLOB に対してのみ設定できます。
 
-### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Azure Portal を使用した BLOB ストレージ アカウントの作成
+### <a name="create-a-blob-storage-account-using-the-azure-portal"></a>Azure ポータルを使用した BLOB ストレージ アカウントの作成
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. ハブ メニューで、**[新規]** > **[データ + ストレージ]** > **[ストレージ アカウント]** をクリックします。
 
@@ -189,9 +189,9 @@ BLOB ストレージ アカウントでは、ストレージ層に基づいた B
 
 11. **[作成]** をクリックしてストレージ アカウントを作成します。
 
-### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Azure Portal を使用した BLOB ストレージ アカウントのストレージ層の変更
+### <a name="change-the-storage-tier-of-a-blob-storage-account-using-the-azure-portal"></a>Azure ポータルを使用した BLOB ストレージ アカウントのストレージ層の変更
 
-1. [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
 2. ストレージ アカウントに移動するには、[すべてのリソース] を選択し、ストレージ アカウントを選択します。
 
@@ -228,7 +228,7 @@ BLOB ストレージ アカウントに格納されたデータの格納とア�
 詳細については、「[About Storage Analytics Metrics (Storage Analytics Metrics について)](https://msdn.microsoft.com/library/azure/hh343258.aspx)」と「[Storage Analytics Metrics Table Schema (Storage Analytics Metrics のテーブル スキーマ)](https://msdn.microsoft.com/library/azure/hh343264.aspx)」を参照してください。
 
 > [!NOTE]
-> BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table service エンドポイントを公開します。
+> BLOB ストレージ アカウントは、そのアカウントのメトリック データの格納とアクセスのためだけに Table サービス エンドポイントを公開します。
 
 Blob Storage サービスのストレージ使用量を監視するには、容量メトリックを有効にする必要があります。
 これを有効にすると、ストレージ アカウントの Blob service に関する容量データが毎日記録されます。これは、同じストレージ アカウント内の *$MetricsCapacityBlob* テーブルに書き込まれるテーブル エントリとして記録されます。
@@ -302,7 +302,7 @@ Azure Storage Data Movement Library for .NET は、AzCopy を動作させてい�
 
 Azure クライアント ライブラリのいずれかまたは Azure ストレージ サービス REST API を使用して、データを BLOB ストレージ アカウントに移行するためのカスタム アプリケーションを作成することができます。 Azure Storage には、.NET、Java、C++、Node.js、PHP、Ruby、Python などの複数の言語とプラットフォーム用の豊富なクライアント ライブラリが用意されています。 クライアント ライブラリは、再試行ロジック、ログ、並列アップロードといった高度な機能を提供します。 また、REST API を直接使用して開発することもでき、HTTP/HTTPS 要求を行うどの言語からでも呼び出すことができます。
 
-詳細については、 [Azure Blob Storage の概要](storage-dotnet-how-to-use-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。
+詳細については、 [Azure Blob Storage の概要](storage-dotnet-how-to-use-blobs.md)に関するページを参照してください。
 
 > [!NOTE]
 > クライアント側の暗号化を使用して暗号化された BLOB には、その BLOB と共に格納される暗号化関連メタデータが格納されます。 すべてのコピー メカニズムで、BLOB メタデータと、特に暗号化に関連するメタデータが必ず保持されることがきわめて重要です。 このメタデータなしで BLOB をコピーした場合、BLOB コンテンツを再度取得することはできません。 暗号化関連メタデータの詳細については、[Azure Storage のクライアント側の暗号化](../common/storage-client-side-encryption.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)に関するページを参照してください。

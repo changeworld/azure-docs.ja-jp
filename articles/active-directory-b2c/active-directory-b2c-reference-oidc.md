@@ -1,25 +1,24 @@
 ---
-title: "Azure Active Directory B2C: OpenID Connect による Web サインイン | Microsoft Docs"
+title: "OpenID Connect による Web サインイン- Azure AD B2C | Microsoft Docs"
 description: "OpenID Connect 認証プロトコルの Azure Active Directory 実装を使用した Web アプリケーションの構築"
 services: active-directory-b2c
 documentationcenter: 
-author: dstrockis
-manager: mbaldwin
-editor: 
+author: saeedakhter-msft
+manager: krassk
+editor: parakhj
 ms.assetid: 21d420c8-3c10-4319-b681-adf2e89e7ede
 ms.service: active-directory-b2c
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/07/2017
-ms.author: dastrock
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
-ms.openlocfilehash: 8457865d21bbf4d1c0cc91167a1e75cd82ad8306
+ms.date: 08/16/2017
+ms.author: saeedakhter-msft
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b0c33a47dd0cae79eab32ac578448fae8bf59be5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-active-directory-b2c-web-sign-in-with-openid-connect"></a>Azure Active Directory B2C: OpenID Connect による Web サインイン
@@ -78,7 +77,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &p=b2c_1_edit_profile
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
 | response_type |必須 |応答の種類。これには、OpenID Connect の ID トークンが含まれている必要があります。 Web アプリが Web API を呼び出すためのトークンも必要とする場合は、ここで行なったように `code+id_token` を使用できます。 |
@@ -103,7 +102,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q...
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | id_token |アプリが要求した ID トークン。 この ID トークンを使用してユーザーの本人性を確認し、そのユーザーとのセッションを開始することができます。 ID トークンとその内容に関する詳細は、「[Azure AD B2C トークン リファレンス](active-directory-b2c-reference-tokens.md)」に含まれています。 |
 | code |アプリが要求した承認コード (`response_type=code+id_token` を使用した場合)。 アプリは、承認コードを使用してターゲット リソースのアクセス トークンを要求できます。 承認コードの有効期間は非常に短時間です。 通常、約 10 分で期限が切れます。 |
@@ -118,11 +117,11 @@ error=access_denied
 &state=arbitrary_data_you_can_receive_in_the_response
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
-| state |詳細についてはこのセクションの最初の表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の中の `state` 値が同一であることを検証する必要があります。 |
+| state |詳細についてはこのセクションの最初の表を参照してください。 要求に `state` パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 アプリは、要求と応答の `state` 値が同一であることを検証する必要があります。 |
 
 ## <a name="validate-the-id-token"></a>ID トークンの検証
 ユーザーを認証するには、ID トークンを受信するだけでは不十分です。 ID トークンの署名を検証し、アプリの要件ごとにトークン内の要求を確認する必要があります。 Azure AD B2C は、[JSON Web トークン (JWT)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) と公開キー暗号を使用してトークンに署名し、それらが有効であることを証明します。
@@ -148,7 +147,7 @@ ID トークンの署名を検証した後、確認する必要のあるいく�
 * ID トークンが自分のアプリに対して発行されたことを確認するために、`aud` 要求を検証する必要があります。 その値がアプリのアプリケーション ID と一致している必要があります。
 * ID トークンが期限切れになっていないことを確認するために、`iat` および `exp` 要求を検証する必要があります。
 
-また、実行する必要のあるその他の検証もいつくか存在します。 これらは、「[OpenID Connect Core Spec (OpenID Connect コアの仕様)](http://openid.net/specs/openid-connect-core-1_0.html)」で詳細に説明されています。  シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
+また、実行する必要のあるその他の検証もいつくか存在します。 これらは、「[OpenID Connect Core Spec (OpenID Connect コアの仕様)](http://openid.net/specs/openid-connect-core-1_0.html)」で詳細に説明されています。シナリオに応じてその他の要求も検証することができます。 以下に一般的な検証の例をいくつか挙げます。
 
 * ユーザー/組織がアプリにサインアップ済みであることを確認する。
 * 適切な承認/特権がユーザーにあることを確認する。
@@ -172,7 +171,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | p |必須 |認証コードの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは `POST` 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
@@ -194,7 +193,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
@@ -212,7 +211,7 @@ grant_type=authorization_code&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&sco
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -237,7 +236,7 @@ Content-Type: application/x-www-form-urlencoded
 grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=openid offline_access&refresh_token=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...&redirect_uri=urn:ietf:wg:oauth:2.0:oob&client_secret=<your-application-secret>
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | p |必須 |元の更新トークンの取得に使用されたポリシー。 この要求に別のポリシーを使用することはできません。 このパラメーターは POST 本文ではなく、クエリ文字列に追加することに注意してください。 |
 | client_id |必須 |[Azure Portal](https://portal.azure.com/) によってアプリに割り当てられたアプリケーション ID。 |
@@ -259,7 +258,7 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
     "refresh_token": "AAQfQmvuDy8WtUv-sd0TBwWVQs1rC-Lfxa_NDkLqpg50Cxp5Dxj0VPF1mx2Z...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | not_before |トークンが有効と見なされる時間 (エポック時間)。 |
 | token_type |トークン タイプ値。 Azure AD でサポートされるのは `Bearer` のみです。 |
@@ -277,13 +276,13 @@ grant_type=refresh_token&client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6&scope=op
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生するエラーの種類を分類したり、エラーに対応したりするために使用できるエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
 
 ## <a name="send-a-sign-out-request"></a>サインアウト要求を送信する
-ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトするには、ユーザーを Azure AD にリダイレクトする必要もあります。 そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
+ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。 サインアウトするには、ユーザーを Azure AD にリダイレクトする必要もあります。そうしない場合、ユーザーは資格情報を再入力しなくてもアプリで再認証されることがあります。 これは、Azure AD のシングル サインオン セッションが有効であるためです。
 
 前に「ID トークンの検証」のセクションで説明した OpenID Connect メタデータ ドキュメントに一覧表示されている `end_session` エンドポイントに単純にユーザーをリダイレクトできます。
 
@@ -293,10 +292,10 @@ p=b2c_1_sign_in
 &post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| パラメーター | 必須 | Description |
+| パラメーター | 必須 | 説明 |
 | --- | --- | --- |
 | p |必須 |ユーザーをアプリケーションからサインアウトさせるために使用するポリシー。 |
-| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。 これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
+| post_logout_redirect_uri |推奨 |サインアウトの正常終了後にユーザーをリダイレクトする URL。これが含まれていない場合、Azure AD B2C はユーザーに一般的なメッセージを表示します。 |
 
 > [!NOTE]
 > ユーザーを `end_session` エンドポイントにリダイレクトすると、そのユーザーの Azure AD B2C でのシングル サインオン状態の一部がクリアされますが、そのユーザーが自分のソーシャル ID プロバイダー (IDP) セッションからサインアウトされるわけではありません。 ユーザーがその後のサインインで同じ IDP を選択した場合は、資格情報を入力しなくても再認証されます。 ユーザーが B2C アプリケーションからサインアウトしようとする場合、そのユーザーは必ずしも自分の Facebook アカウントからサインアウトしようとしているとは限りません。 ただし、ローカル アカウントの場合、ユーザーのセッションを適切に終了できなければなりません。

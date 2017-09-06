@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/04/2017
+ms.date: 08/28/2017
 ms.author: curtand
-ms.custom: H1Hack27Feb2017
+ms.reviewer: piotrci
+ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 0b861bea8948c7022d2ce95a2a7975a5ad7ad8a7
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
@@ -37,14 +38,12 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 > - 現時点では、ユーザーの属性の所有に基づいてデバイス グループを作成することはできません。 デバイスのメンバーシップのルールは、ディレクトリ内のデバイス オブジェクトの直接の属性のみを参照できます。
 
 ## <a name="to-create-an-advanced-rule"></a>高度なルールを作成するには
-1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
-
-   ![ユーザー管理を開く](./media/active-directory-groups-dynamic-membership-azure-portal/search-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
+1. グローバル管理者またはユーザー アカウントの管理者であるアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+2. **[ユーザーとグループ]** を選択します。
+3. **[すべてのグループ]** を選択します。
 
    ![グループ ブレードを開く](./media/active-directory-groups-dynamic-membership-azure-portal/view-groups-blade.png)
-4. **[Users and groups - All groups (ユーザーとグループ - すべてのグループ)]** ブレードで、**[追加]** をクリックします。
+4. **[すべてグループ]** で、**[新しいグループ]** を選択します。
 
    ![新しいグループを追加する](./media/active-directory-groups-dynamic-membership-azure-portal/add-group-type.png)
 5. **[グループ]** ブレードで、新しいグループの名前と説明を入力します。 **[メンバーシップの種類]** で、ユーザーとデバイスのどちらのルールを作成するかに応じて、**[動的ユーザー]** または **[動的デバイス]** を選択し、**[動的クエリの追加]** をクリックします。 デバイスのルールに使用する属性については、「 [属性を使用したデバイス オブジェクトのルールの作成](#using-attributes-to-create-rules-for-device-objects)」をご覧ください。
@@ -74,8 +73,6 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 > [!NOTE]
 > 文字列演算と正規表現演算は、大文字と小文字が区別されません。 定数に $null を使用することで Null チェックを実行することもできます (例: user.department -eq $null)。
 > 二重引用符 (") を含んだ文字列は、バック クォート文字 (`) でエスケープする必要があります (例: user.department -eq \`"Sales")。
->
->
 
 ## <a name="supported-expression-rule-operators"></a>サポートされている式のルール演算子
 次の表に、高度なルール本体で使用できる、サポートされているすべての式のルール演算子とその構文を示します。
@@ -95,11 +92,15 @@ Azure Active Directory (Azure AD) では、グループの複雑な属性ベー�
 
 ## <a name="operator-precedence"></a>演算子の優先順位
 
-すべての演算子を優先順位の低い順から並べると、-any -all -or -and -not -eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn となります。同じ行にある演算子は優先順位が同じです。
-
-すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。
-
-かっこは必ずしも必要ではなく、優先順位が要件を満たさない場合にのみかっこを追加する必要があることに注意してください。
+すべての演算子を優先順位の低い順に以下に示します。 同じ行にある演算子の優先順位は同じです。
+````
+-any -all
+-or
+-and
+-not
+-eq -ne -startsWith -notStartsWith -contains -notContains -match –notMatch -in -notIn
+````
+すべての演算子は、ハイフンのプレフィックスあり、またはなしで使用できます。 優先順位が要件を満たさない場合にのみ、かっこを追加する必要があります。
 For example:
 ```
    user.department –eq "Marketing" –and user.country –eq "US"
@@ -273,23 +274,23 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
-| プロパティ              | 使用できる値                  | 使用法                                                       |
-|-------------------------|---------------------------------|-------------------------------------------------------------|
-| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
-| displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
-| deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
-| deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 任意の文字列値                | (device.deviceCategory -eq "")                              |
-| deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
-| deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 任意の文字列値                | (device.deviceOwnership -eq "")                             |
-| domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
-| enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
-| managementType          | 任意の文字列値                | (device.managementType -eq "")                              |
-| organizationalUnit      | 任意の文字列値                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId                | 有効な AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+ デバイス属性  | 値 | 例
+ ----- | ----- | ----------------
+ accountEnabled | true false | (device.accountEnabled -eq true)
+ displayName | 任意の文字列値 |(device.displayName -eq "Rob Iphone”)
+ deviceOSType | 任意の文字列値 | (device.deviceOSType -eq "IOS")
+ deviceOSVersion | 任意の文字列値 | (device.OSVersion -eq "9.1")
+ deviceCategory | 有効なデバイス カテゴリ名 | (device.deviceCategory -eq "BYOD")
+ deviceManufacturer | 任意の文字列値 | (device.deviceManufacturer -eq "Samsung")
+ deviceModel | 任意の文字列値 | (device.deviceModel -eq "iPad Air")
+ deviceOwnership | 個人、会社、不明 | (device.deviceOwnership -eq "Company")
+ domainName | 任意の文字列値 | (device.domainName -eq "contoso.com")
+ enrollmentProfileName | Apple Device Enrollment Profile 名 | (device.enrollmentProfileName -eq "DEP iPhones")
+ isRooted | true false | (device.isRooted -eq true)
+ managementType | MDM (モバイル デバイスの場合)<br>PC (Intune PC エージェントによって管理されるコンピューターの場合) | (device.managementType -eq "MDM")
+ organizationalUnit | オンプレミスの Active Directory で設定される組織単位の名前と一致する任意の文字列値 | (device.organizationalUnit -eq "US PCs")
+ deviceId | 有効な Azure AD デバイス ID | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d")
+ objectId | 有効な Azure AD オブジェクト ID |  (device.objectId -eq 76ad43c9-32c5-45e8-a272-7b58b58f596d")
 
 
 

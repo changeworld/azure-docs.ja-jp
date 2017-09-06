@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/16/2017
 ms.author: naziml;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 69156ec555b34d066a65bdc202267cfc53de47a0
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: bbe2e0bafe48b39f12c5a8a46511e9275926d4b6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-azure-web-app-on-linux"></a>Azure Web App on Linux の概要
@@ -27,79 +27,75 @@ ms.lasthandoff: 08/17/2017
 [!INCLUDE [app-service-linux-preview](../../includes/app-service-linux-preview.md)]
 
 ## <a name="overview"></a>概要
-Web App on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。 
+[Web App](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview) は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 Web App on Linux を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。 
 
-## <a name="features"></a>機能
-現時点では、Web App on Linux は、次のアプリケーション スタックをサポートしています。
+### <a name="languages"></a>言語
 
-* Node.js
-    * 4.4.
-    * 4.5
-    * 6.2
-    * 6.6
-    * 6.9
-    * 6.10
-* PHP
-    * 5.6
-    * 7.0
-* .NET Core
-    * 1.0
-    * 1.1
-* Ruby
-    * 2.3
+|Node.js|PHP|.NET Core|Ruby|
+|:------------------:|:---:|:---------:|:----:|
+|4.4, 4.5|5.6|1.0-1.1|2.3|
+|6.2, 6.6, 6.9-6.11|7.0|||
+|8.0-8.1||||
 
-顧客は次のものを使用してアプリケーションをデプロイすることができます。
+### <a name="deployments"></a>デプロイメント
 
 * FTP
 * ローカル Git
 * GitHub
 * Bitbucket
 
-アプリケーションのスケーリング方法は次のとおりです。
+### <a name="devops"></a>DevOps
 
-* App Service プランのレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
-* SKU の範囲内で、アプリケーションをスケールアウトして、複数のアプリ インスタンスを実行することができます。
+* ステージング環境
+* [Azure Container Registry](https://docs.microsoft.com/en-us/azure/container-registry/container-registry-intro) と DockerHub CI/CD
 
-Kudu の場合、基本的な機能の一部を使用できます。
+### <a name="console-publishing-and-debugging"></a>コンソール、公開、およびデバッグ
 
 * 環境
 * デプロイメント
 * 基本コンソール
 * SSH
 
-開発運用の場合:
+### <a name="scaling"></a>スケーリング
 
-* ステージング環境
-* ACR および DockerHub CI/CD
+* [App Service プラン](https://docs.microsoft.com/en-us/azure/app-service/azure-web-sites-web-hosting-plans-in-depth-overview?toc=%2fazure%2fapp-service-web%2ftoc.json)のレベルを変更することで、Web アプリのスケールアップとスケールダウンを実行できます。
 
 ## <a name="limitations"></a>制限事項
-Azure Portal では、Web App on Linux で現在使用できる機能のみが表示され、残りは非表示となります。 さらに機能を有効にすると、その機能がポータルに表示されます。
+Azure ポータルでは、Web App on Linux で現在使用できる機能のみが表示されます。 他の機能は、有効になったときにポータルに表示されるようになります。
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
 このパブリック プレビューは現在、次のリージョンでのみご利用いただけます。
 
-* 米国西部
-* 米国東部
-* 西ヨーロッパ
-* 北ヨーロッパ
-* 米国中南部
-* 米国中北部
-* 東南アジア
-* 東アジア
-* オーストラリア東部
-* 東日本
-* ブラジル南部
-* インド南部
+|アメリカ|アジア太平洋|ヨーロッパ|
+|:----------------:|:--------------:|:------------:|
+|ブラジル南部|オーストラリア東部|北ヨーロッパ|
+|米国東部|東アジア|西ヨーロッパ|
+|米国中北部|東日本||
+|米国中南部|インド南部||
+|米国西部|東南アジア||
 
-Web Apps on Linux は専用 App Service プランでのみサポートされており、Free レベルまたは Shared レベルは存在しません。 また、標準の Web アプリと Linux 向け Web アプリの App Service プランは相互に排他的であり、Linux 向けでない App Service プラン内で Linux 向け Web アプリを作成することはできません。
+他のリージョンでの使用可能時期については、[Azure の状態ダッシュボード](https://azure.microsoft.com/status)を参照してください。
 
-Web Apps on Linux は、Linux 向けでない Web アプリが同じリージョンにないリソース グループ内で作成される必要があります。
+Web Apps on Linux は [Basic、Standard、および Premium](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/en-us/pricing/details/app-service/plans/) レベルはありません。 Web App on Linux には、次の重要な制約もあります。
+
+* Web App on Linux は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
+* Web App on Linux を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリージョンに App Service プランを作成する必要があります。
+
+## <a name="troubleshooting"></a>トラブルシューティング ##
+
+アプリケーションが起動しない場合、またはアプリのログ記録を調べる場合は、LogFiles ディレクトリの Docker のログを確認してください。 このディレクトリには、SCM サイトまたは FTP 経由でアクセスできます。
+コンテナーから `stdout` および `stderr` をログ記録するには、**[診断ログ]** で **[Docker Container ログ]** を有効にする必要があります。
+
+![ログ記録の有効化][2]
+
+![Kudu を使用した Docker のログの表示][1]
+
+SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]** からアクセスできます。
 
 ## <a name="next-steps"></a>次のステップ
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-* [Azure Web App on Linux で Web Apps を作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure Web App on Linux 向けにカスタム Docker イメージを使用する方法](app-service-linux-using-custom-docker-image.md)
 * [Azure Web App on Linuxで Node.js の PM2 構成を使用する](app-service-linux-using-nodejs-pm2.md)
 * [Azure App Service Web Apps on Linux で .NET Core を使用する](app-service-linux-using-dotnetcore.md)
@@ -109,4 +105,7 @@ App Service on Linux の使用を開始するには、次のリンクを参照�
 * [Azure App Service でステージング環境を設定する](./web-sites-staged-publishing.md)
 * [Azure Web App on Linux での Docker Hub の継続的なデプロイ](./app-service-linux-ci-cd.md)
 
+<!--Image references-->
+[1]: ./media/app-service-linux-intro/kudu-docker-logs.png
+[2]: ./media/app-service-linux-intro/logging.png
 

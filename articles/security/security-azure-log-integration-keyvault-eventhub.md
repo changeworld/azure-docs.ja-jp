@@ -12,25 +12,27 @@ ms.date: 08/07/2017
 ms.author: Barclayn
 ms.custom: AzLog
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 4503234080e0bf737dad2e18907b47c3bf39d9da
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 02dde6366a8897a060df451c7f514f79e6733681
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
 # <a name="azure-log-integration-tutorial-process-azure-key-vault-events-by-using-event-hubs"></a>Azure ログ統合チュートリアル: Event Hubs を使用した Azure Key Vault イベントの処理
 
-Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベントを取得し、セキュリティ情報およびイベント管理 (SIEM) システムで使用できます。 このチュートリアルの目的は、Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を手順を追って説明することです。 この記事を参照し、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
+Azure ログ統合を使用すると、ログに記録されたイベントを取得し、Security Information and Event Management (SIEM) システムで使用できます。 このチュートリアルでは、Azure Event Hubs で取得されるログの処理に Azure ログ統合を使用する方法の例を説明しています。
+ 
+このチュートリアルを使用して、次の手順例に従い、各手順が解決策をどのようにサポートしているかを理解することで、Azure ログ統合と Event Hubs を連携する方法に慣れることをお勧めします。 ここで学習した内容を利用して、自社に固有の要件をサポートする独自の手順を作成することができます。
 
 >[!WARNING]
-このチュートリアルで使用されている手順とコマンドは、コピー アンド ペーストで使用するためのものではありません。あくまでも例として示しています。 このチュートリアルの PowerShell コマンドを実際の環境で "そのまま" 使用しないでください。 お客様固有の環境に基づいてカスタマイズする必要があります。
+このチュートリアルで使用されている手順とコマンドは、コピー アンド ペーストで使用するためのものではありません。 あくまでも例として示しています。 このチュートリアルの PowerShell コマンドを実際の環境で "そのまま" 使用しないでください。 お客様固有の環境に基づいてカスタマイズする必要があります。
 
 
 このチュートリアルでは、イベント ハブにログが記録された Azure Key Vault アクティビティを取得し、SIEM システムで JSON ファイルとして使用できるようにするプロセスについて説明します。 その後、JSON ファイルを処理するように SIEM システムを構成できます。
 
 >[!NOTE]
->このチュートリアルで説明する手順の大半は、キー コンテナー、ストレージ アカウント、およびイベント ハブの構成に関するものです。 具体的な Azure ログ統合手順は、このチュートリアルの末尾に記載されています。 運用環境ではこれらの手順を実行しないでください。ラボ環境のみで使用してください。 運用環境で使用する前に、手順をカスタマイズする必要があります。
+>このチュートリアルで説明する手順の大半は、キー コンテナー、ストレージ アカウント、およびイベント ハブの構成に関するものです。 具体的な Azure ログ統合手順は、このチュートリアルの末尾に記載されています。 運用環境ではこれらの手順を実行しないでください。 ラボ環境のみで使用してください。 運用環境で使用する前に、手順をカスタマイズする必要があります。
 
 その過程で提供される情報は、各手順の背景情報を理解するのに役立ちます。 他の記事へのリンクは特定のトピックの詳細を提供します。
 
@@ -50,20 +52,22 @@ Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベ�
 2. Azure ログ統合のインストール要件を満たす、インターネットにアクセス可能なシステム。 このシステムは、クラウド サービスでも、オンプレミスでホストされていても構いません。
 
 3. [Azure ログ統合](https://www.microsoft.com/download/details.aspx?id=53324)がインストールされている。 インストールするには:
-   1. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。
-   2. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。
-   3. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項の条件に同意します。
-   4. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
+
+   a. リモート デスクトップを使用して、手順 2 で説明したシステムに接続します。   
+   b. Azure ログ統合のインストーラーをシステムにコピーします。 [ここからインストール ファイルをダウンロード](https://www.microsoft.com/download/details.aspx?id=53324)できます。   
+   c. インストーラーを起動し、マイクロソフト ソフトウェア ライセンス条項に同意します。   
+   d. 利用統計情報を提供する場合は、チェック ボックスをオンのままにします。 使用状況に関する情報をマイクロソフトに送信しない場合は、チェック ボックスをオフにします。
    
-   Azure ログ統合とインストール方法について詳しくは、「[Azure 診断ログと Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
+   Azure ログ統合とインストール方法について詳しくは、「[Azure 診断ログおよび Windows イベント転送による Azure ログ統合](security-azure-log-integration-get-started.md)」をご覧ください。
 
 4. 最新の PowerShell バージョン。
  
    Windows Server 2016 がインストールされている場合は、PowerShell 5.0 以上が必要です。 その他のバージョンの Windows Server を使用している場合は、それ以前のバージョンの PowerShell がインストールされている可能性があります。 PowerShell ウィンドウで ```get-host``` と入力すると、バージョンを確認できます。 PowerShell 5.0 がインストールされていない場合は、こちらから[ダウンロード](https://www.microsoft.com/download/details.aspx?id=50395)できます。
 
    PowerShell 5.0 以上がインストールされていれば、最新バージョンのインストールに進むことができます。
-   1. PowerShell ウィンドウで、「```Install-Module Azure```」と入力して Enter キーを押します。 インストール手順を完了します。 
-   2. 「```Install-Module AzureRM```」と入力して Enter キーを押します。 インストール手順を完了します。
+   
+   a. PowerShell ウィンドウで、```Install-Module Azure``` コマンドを入力します。 インストール手順を完了します。    
+   b. ```Install-Module AzureRM``` コマンドを入力します。 インストール手順を完了します。
 
    詳しくは、[Azure PowerShell のインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.0.0)に関する記事をご覧ください。
 
@@ -71,12 +75,11 @@ Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベ�
 ## <a name="create-supporting-infrastructure-elements"></a>サポート インフラストラクチャ要素を作成する
 
 1. 管理者特権の PowerShell ウィンドウを開き、**C:\Program Files\Microsoft Azure Log Integration** に移動します。
-2. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 (次のコマンドで "\" を確認してください。)「`.\LoadAzLogModule.ps1`」と入力して Enter キーを押します。
-次のような結果が表示されます。</br>
+2. LoadAzLogModule.ps1 スクリプトを実行して AzLog コマンドレットをインポートします。 `.\LoadAzLogModule.ps1` コマンドを入力します。 (このコマンドの ".\" に注意してください)。次のような結果が表示されます。</br>
 
    ![読み込まれたモジュール一覧](./media/security-azure-log-integration-keyvault-eventhub/loaded-modules.png)
 
-3. 「`Login-AzureRmAccount`」と入力して Enter キーを押します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
+3. `Login-AzureRmAccount` コマンドを入力します。 ログイン ウィンドウで、このチュートリアルで使用するサブスクリプションの資格情報を入力します。
 
    >[!NOTE]
    >これがこのマシンから Azure への初回ログインの場合、マイクロソフトによる PowerShell 使用状況データの収集を許可するかどうかに関するメッセージが表示されます。 使用状況データの収集は Azure PowerShell の向上に利用されるため、有効にすることをお勧めします。
@@ -84,9 +87,9 @@ Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベ�
 4. 認証およびログインに成功すると、次のスクリーンショットの情報が表示されます。 サブスクリプション ID と サブスクリプション名をメモに取ります。後の手順で使用します。
 
    ![PowerShell ウィンドウ](./media/security-azure-log-integration-keyvault-eventhub/login-azurermaccount.png)
-5. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力して、各行で Enter キーを押します。 使用する環境に合わせて値を調整する必要がある場合があります。
+5. 後で使用される値を格納する変数を作成します。 次の PowerShell の各行を入力します。 使用する環境に合わせて値を調整する必要がある場合があります。
     - ```$subscriptionName = ‘Visual Studio Ultimate with MSDN’``` (サブスクリプション名が異なる可能性があります。 前のコマンドの出力の一部として確認できます。)
-    - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した他の場所のものに変更できます。)
+    - ```$location = 'West US'``` (この変数はリソースが作成される場所を渡すために使用されます。 この変数を選択した場所のものに変更できます。)
     - ```$random = Get-Random```
     - ``` $name = 'azlogtest' + $random``` (この名前は何でも構いませんが、英小文字と数字のみにする必要があります。)
     - ``` $storageName = $name``` (この変数はストレージ アカウント名に使用されます。)
@@ -99,7 +102,7 @@ Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベ�
     
     ```$rg = New-AzureRmResourceGroup -Name $rgname -Location $location```
     
-   この時点で「`$rg`」と入力して Enter キーを押した場合、このスクリーンショットに似た出力が表示されます。
+   この時点で「`$rg`」と入力した場合、このスクリーンショットのような出力が表示されます。
 
    ![リソース グループ作成後の出力](./media/security-azure-log-integration-keyvault-eventhub/create-rg.png)
 8. 状態情報の追跡に使用されるストレージ アカウントを作成します。
@@ -113,18 +116,18 @@ Azure ログ統合 (AzLog) を使用すると、ログに記録されたイベ�
     ```$sbruleid = $eventHubNameSpace.Id +'/authorizationrules/RootManageSharedAccessKey' ```
 11. 指定可能なすべての Azure の場所を取得し、後の手順で使用できる変数に名前を追加します。
     
-    1. ```$locationObjects = Get-AzureRMLocation```    
-    2. ```$locations = @('global') + $locationobjects.location```
+    a. ```$locationObjects = Get-AzureRMLocation```    
+    b. ```$locations = @('global') + $locationobjects.location```
     
-    この時点で「`$locations`」と入力して Enter キーを押すと、場所の名前が表示されますが、Get-AzureRmLocation によって返される追加情報は表示されません。
+    この時点で「`$locations`」と入力すると、場所の名前が表示されますが、Get-AzureRmLocation によって返される追加情報は表示されません。
 12. Azure Resource Manager ログ プロファイルを作成します。 
     
     ```Add-AzureRmLogProfile -Name $name -ServiceBusRuleId $sbruleid -Locations $locations```
     
     Azure ログ プロファイルについて詳しくは、「[Azure アクティビティ ログの概要](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)」をご覧ください。
 
->[!NOTE]
->ログ プロファイルを作成しようとすると、エラー メッセージが表示される場合があります。 その後、Get-AzureRmLogProfile および Remove-AzureRmLogProfile のドキュメントを確認できます。 Get-AzureRmLogProfile を実行すると、ログ プロファイルに関する情報が表示されます。 「```Remove-AzureRmLogProfile -name 'Log Profile Name' ```」と入力して Enter キーを押すと、既存のログ プロファイルを削除できます。
+> [!NOTE]
+> ログ プロファイルを作成しようとすると、エラー メッセージが表示される場合があります。 その後、Get-AzureRmLogProfile および Remove-AzureRmLogProfile のドキュメントを確認できます。 Get-AzureRmLogProfile を実行すると、ログ プロファイルに関する情報が表示されます。 ```Remove-AzureRmLogProfile -name 'Log Profile Name' ``` コマンドを入力すると、既存のログ プロファイルを削除できます。
 >
 >![リソース マネージャーのプロファイル エラー](./media/security-azure-log-integration-keyvault-eventhub/rm-profile-error.png)
 
@@ -153,8 +156,7 @@ Key Vault にログ アクティビティ生成の要求を送信する必要が
    ```Get-AzureRmStorageAccountKey -Name $storagename -ResourceGroupName $rgname  | ft -a```
 4. シークレットを設定して読み取り、追加のログ エントリを生成します。
     
-   1. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)```    
-   2. ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
+   a. ```Set-AzureKeyVaultSecret -VaultName $name -Name TestSecret -SecretValue (ConvertTo-SecureString -String 'Hi There!' -AsPlainText -Force)``` b.  ```(Get-AzureKeyVaultSecret -VaultName $name -Name TestSecret).SecretValueText```
 
    ![返されるシークレット](./media/security-azure-log-integration-keyvault-eventhub/keyvaultsecret.png)
 

@@ -10,7 +10,7 @@ tags: acs, azure-container-service
 keywords: "Docker、コンテナー、マイクロ サービス、Mesos、Azure"
 ms.service: container-service
 ms.devlang: na
-ms.topic: quickstart
+ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/01/2017

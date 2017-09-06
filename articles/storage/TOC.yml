@@ -10,3 +10,7 @@
   href: ./files/storage-files-introduction.md
 - name: キュー
   href: ./queues/storage-queues-introduction.md
+- name: テーブル
+  href: ../cosmos-db/table-storage-overview.md
+- name: ディスク
+  href: ../virtual-machines/windows/managed-disks-overview.md

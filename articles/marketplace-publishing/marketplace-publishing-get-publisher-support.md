@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/01/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.translationtype: Human Translation
 ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
 ms.openlocfilehash: 4bf5b2c53b91199e446836e76cefee6cd2878e25
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/17/2017
-
 
 ---
 # <a name="accessing-publisher-support-for-the-azure-marketplace"></a>Azure Marketplace の発行元サポートへのアクセス

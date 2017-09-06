@@ -4,7 +4,7 @@ description: "このトピックでは、Azure Portal を使用して Media Anal
 services: media-services
 documentationcenter: 
 author: Juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: 18213fc1-74f5-4074-a32b-02846fe90601
 ms.service: media-services

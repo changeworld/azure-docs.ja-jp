@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9687b8342723239d1ab07bcaf59176f4a0911215
+ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
+ms.openlocfilehash: 181ed544ae4697753490642fea8eef636322a114
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 # <a name="reprotect-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへの再保護
@@ -58,7 +58,10 @@ ms.lasthandoff: 07/21/2017
 
     マスター ターゲットには、「[Common things to check on a master target before reprotect (再保護の前にマスター ターゲット上で確認すべき一般的な事項)](site-recovery-how-to-reprotect.md#common-things-to-check-after-completing-installation-of-the-master-target-server)」に一覧表示されているその他の前提条件があります。
 
-* フェールバックするときは、構成サーバーがオンプレミスに必要です。 フェールバック中、仮想マシンが構成サーバー データベースに存在している必要があります。 それ以外の場合、フェールバックは失敗します。 必ず、サーバーを定期的にバックアップするようスケジュールを設定します。 障害が発生した場合は、フェールバックが機能するように、同じ IP アドレスを持つサーバーを復元します。
+* フェールバックするときは、構成サーバーがオンプレミスに必要です。 フェールバック中、仮想マシンが構成サーバー データベースに存在している必要があります。 それ以外の場合、フェールバックは失敗します。 
+
+> [!IMPORTANT]
+> 必ず、構成サーバーを定期的にバックアップするようスケジュールを設定します。 障害が発生した場合は、フェールバックが機能するように、同じ IP アドレスを持つサーバーを復元します。
 
 * VMware でマスター ターゲット仮想マシンの構成パラメーターに `disk.EnableUUID=true` を設定します。 この行が存在しない場合は追加してください。 この設定は、一貫性のある UUID を仮想マシン ディスク (VMDK) に提供することでマウントが適切に実行されるようにするために必要です。
 
@@ -115,7 +118,7 @@ Azure ベースのプロセス サーバーのインストールについては�
 
 #### <a name="what-datastore-types-are-supported-on-the-on-premises-esxi-host-during-failback"></a>フェールバック中にオンプレミスの ESXi ホストでサポートされるデータストアの種類
 
-現在、Azure Site Recovery は、仮想マシン ファイル システム (VMFS) データストアへのフェールバックのみをサポートしています。 vSAN または NFS データストアはサポートされていません。 この制限のために、再保護画面上のデータストア選択の入力は NFS データストアの場合は空です。または、vSAN データストアが表示されますが、ジョブ中に失敗します。 フェールバックする予定がある場合は、VMFS データストアをオンプレミスに作成し、それにフェールバックできます。 このフェールバックによって、VMDK の完全なダウンロードが実行されます。
+現在、Azure Site Recovery は、仮想マシン ファイル システム (VMFS) または vSAN データストアへのフェールバックのみをサポートしています。 NFS データストアはサポートされていません。 この制限のために、再保護画面上のデータストア選択の入力は NFS データストアの場合は空です。または、vSAN データストアが表示されますが、ジョブ中に失敗します。 フェールバックする予定がある場合は、VMFS データストアをオンプレミスに作成し、それにフェールバックできます。 このフェールバックによって、VMDK の完全なダウンロードが実行されます。
 
 ### <a name="common-things-to-check-after-completing-installation-of-the-master-target-server"></a>マスター ターゲット サーバーのインストール完了後の一般的なチェック事項
 

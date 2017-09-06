@@ -38,6 +38,8 @@
           href: storage-blob-storage-tiers.md
         - name: RA-GRS を使用した HA アプリの設計
           href: ../common/storage-designing-ha-apps-with-ragrs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: イベントへの反応
+          href: storage-blob-event-overview.md
         - name: スケーラビリティとパフォーマンスのターゲット
           href: ../common/storage-scalability-targets.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: パフォーマンスとスケーラビリティのチェックリスト
@@ -74,6 +76,8 @@
           href: storage-properties-metadata.md
         - name: ストレージ エミュレーターの使用
           href: ../common/storage-use-emulator.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: カスタム エンドポイントへのイベントのルーティング
+          href: storage-blob-event-quickstart.md
         - name: カスタム ドメイン
           href: storage-custom-domain-name.md
         - name: Azure Search を使用した Blob Storage の検索

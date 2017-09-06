@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: bec61dd630348e4657862077f07b1313ed0ed373
+ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
+ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/16/2017
 
 ---
 
@@ -78,7 +78,7 @@ Azure には、ネットワーク セキュリティについて議論する上�
 
 ### <a name="basic-network-connectivity"></a>基本的なネットワーク接続
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を使用して、VNet どうしを接続したり、オンプレミスのネットワークと接続したりできます。
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を使用して、VNet 同士を接続したり、オンプレミスのネットワークと接続したりできます。
 
 ![基本的なネットワーク接続](media/azure-network-security/azure-network-security-fig-2.png)
 
@@ -125,7 +125,7 @@ VNet は相互に[分離](https://docs.microsoft.com/azure/virtual-network/virtu
 
 Azure では、VNet に接続されている VM ロール インスタンスと [Cloud Services](https://azure.microsoft.com/services/cloud-services/) ロール インスタンス用に内部名前解決が用意されています。 必要に応じて、Azure の内部名前解決を使用する代わりに、独自の DNS サーバーを使用するよう VNet を構成できます。
 
-各 Azure [サブスクリプション](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json)と Azure [リージョン](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json)内に複数の VNet を実装できます。 VNet どうしは分離されています。 各 VNet では、次のことを実行できます。
+各 Azure [サブスクリプション](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json)と Azure [リージョン](https://docs.microsoft.com/azure/azure-glossary-cloud-terminology?toc=%2fazure%2fvirtual-network%2ftoc.json)内に複数の VNet を実装できます。 VNet 同士は分離されています。 各 VNet では、次のことを実行できます。
 
 -   パブリックおよびプライベート (RFC 1918) アドレスを使用して、カスタム プライベート IP アドレス空間を指定する。 Azure は、VNet に接続されているリソースに、割り当てたアドレス空間のプライベート IP アドレスを割り当てます。
 
@@ -314,7 +314,7 @@ VM からパブリック インターネットへの通信も同様であり、A
 
 -   VNet から VPN Gateway を通してオンプレミスのネットワークに。
 
-多くの企業にはセキュリティおよびコンプライアンスに関する厳密な要件があり、すべてのネットワーク パケットをオンプレミスで検査して特定のポリシーを適用する必要があります。 Azure には[強制トンネリング](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)と呼ばれるメカニズムが用意されており、カスタム ルートを作成するか、ExpressRoute または VPN を介した[境界ゲートウェイ プロトコル (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) のアドバタイズにより、VM からのトラフィックをオンプレミスにルーティングします。 ExpressRoute または VPN を介したアドバタイズ
+多くの企業にはセキュリティおよびコンプライアンスに関する厳密な要件があり、すべてのネットワーク パケットをオンプレミスで検査して特定のポリシーを適用する必要があります。 Azure には[強制トンネリング](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-forced-tunneling)と呼ばれるメカニズムが用意されており、カスタム ルートを作成するか、ExpressRoute または VPN を介した[境界ゲートウェイ プロトコル (BGP)](https://docs.microsoft.com/windows-server/remote/remote-access/bgp/border-gateway-protocol-bgp) のアドバタイズにより、VM からのトラフィックをオンプレミスにルーティングします。
 
 Azure では、強制トンネリングは仮想ネットワークのユーザー定義ルート (UDR) を使用して構成されます。 オンプレミス サイトへのトラフィックのリダイレクトは、Azure VPN Gateway への既定のルートとして表されます。
 
@@ -386,7 +386,6 @@ Application Gateway を使用すると、CPU に負担をかける SSL ターミ
 
 
 アプリケーション ゲートウェイの一部として、[Web アプリケーション ファイアウォール (WAF)](https://docs.microsoft.com/azure/application-gateway/application-gateway-web-application-firewall-overview) も提供されています。 一般的な Web の脆弱性や悪用から Web アプリケーションを保護します。 Application Gateway は、インターネット接続ゲートウェイ、または内部的にのみ使用されるゲートウェイのいずれかとして構成できるほか、この両方を組み合わせて使用することも可能です。
-インターネット接続ゲートウェイ、内部的にのみ使用されるゲートウェイ、またはその両方の組み合わせ。
 
 Application Gateway の WAF は検出モードや保護モードで実行できます。 管理者が検出モードで実行する一般的な用途は、悪意のあるパターンがないかどうかトラフィックを監視することです。 潜在的な悪用が検出されたら、保護モードに切り替えて疑わしい着信トラフィックをブロックします。
 

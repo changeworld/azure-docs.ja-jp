@@ -4,7 +4,7 @@ description: "Stream Analytics ジョブで、ユーザー定義関数および 
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: cfced01f-ccaa-4bc6-81e2-c03d1470a7a2
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/06/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 6d374a622a43396a0b26d7e3f21050fe35244442
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 243ee799d2cddb1baf5b8046eee6eaf182463d2e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 
@@ -157,7 +157,7 @@ ms.lasthandoff: 07/08/2017
     * **[ソース]**: **[Blob Storage]** を選択します。
     * **[インポート オプション]**: **[現在のサブスクリプションの BLOB ストレージを使う]** を選択します。 
     * **[ストレージ アカウント]**:  以前に作成したストレージ アカウントを選択します。
-    * **[コンテナー]**:  以前に作成したコンテナー (`azuresamldemoblob`) を選択します。
+    * **[コンテナー]**。 以前に作成したコンテナー (`azuresamldemoblob`) を選択します。
     * **[イベントのシリアル化の形式]**。 **[CSV]** を選択します。
 
     ![新しいジョブ入力の設定](./media/stream-analytics-machine-learning-integration-tutorial/stream-analytics-create-sa-input-new-portal.png)
@@ -225,7 +225,7 @@ Stream Analytics は、SQL ベースの宣言型クエリを使用し、入力�
     SELECT text, sentiment(text) as result from datainput  
     )  
 
-    Select text, result.[Scored Labels]  
+    Select text, result.[Score]  
     Into datamloutput
     From sentiment  
     ```    
@@ -269,8 +269,7 @@ Azure Machine Learning 関数に関連するメトリックも表示できます
 
 * **[関数要求]** は、Machine Learning Web サービスに対して送信された要求数を示します。  
 * **[関数イベント]** は、要求内のイベントの数を示します。 既定では、Machine Learning Web サービスへの各要求には、最大 1,000 件のイベントが含まれています。  
-  
-    ![Stream Analytics Machine Learning, Machine Learning モニター ビュー](./media/stream-analytics-machine-learning-integration-tutorial/job-monitor.png)  
+
 
 ## <a name="next-steps"></a>次のステップ
 

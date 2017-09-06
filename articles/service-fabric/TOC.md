@@ -18,7 +18,7 @@
 # サンプル
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=service-fabric)
 ## [PowerShell](service-fabric-powershell-samples.md)
-## [Azure CLI](samples-cli.md)
+## [Service Fabric CLI](samples-cli.md)
 # 概念
 ## [マイクロサービスの概要](service-fabric-overview-microservices.md)
 ## [全体像](service-fabric-content-roadmap.md)
@@ -113,11 +113,14 @@
 #### [調整](service-fabric-cluster-resource-manager-advanced-throttling.md)
 #### [サービスの移動](service-fabric-cluster-resource-manager-movement-cost.md)
 
+## [API Management との統合](service-fabric-api-management-overview.md)
+
 ## 監視と診断
 ### [概要](service-fabric-diagnostics-overview.md)
 ### [正常性モデル](service-fabric-health-introduction.md)
 ### [ステートフル Reliable Services における診断](service-fabric-reliable-services-diagnostics.md)
 ### [Reliable Actors の診断](service-fabric-reliable-actors-diagnostics.md)
+### [Reliable Service Remoting のパフォーマンス カウンター](service-fabric-reliable-serviceremoting-diagnostics.md)
 
 # ハウツー ガイド
 ## 開発環境を設定する
@@ -126,6 +129,7 @@
 ### [Mac OS](service-fabric-get-started-mac.md)
 
 ## アプリケーションのビルド
+### [Visual Studio での最初の C# アプリの作成](service-fabric-create-your-first-application-in-visual-studio.md)
 ### ゲスト実行可能サービスの構築
 #### [Windows での Node.js アプリケーションのホスト](quickstart-guest-app.md)
 #### [ゲスト実行可能ファイルをデプロイする](service-fabric-deploy-existing-app.md)
@@ -206,9 +210,7 @@
 ### [Eclipse での Java サービスのデバッグ](service-fabric-debugging-your-application-java.md)
 ### [ローカルでの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally-linux.md)
 
-## API Management との統合
-### [概要](service-fabric-api-management-overview.md)
-### [クイック スタート](service-fabric-api-management-quick-start.md)
+## [API Management と Service Fabric を Azure にデプロイする](service-fabric-api-management-quick-start.md)
 
 ## Cloud Services から移行する
 ### [Cloud Services と Service Fabric の比較](service-fabric-cloud-services-migration-differences.md)
@@ -221,7 +223,7 @@
 ### アプリケーションをデプロイまたは削除する
 #### [ローカル クラスターへのアプリケーションのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
 #### [PowerShell](service-fabric-deploy-remove-applications.md)
-#### [Azure CLI 2.0](service-fabric-application-lifecycle-azure-cli-2-0.md)
+#### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
 #### [FabricClient API](service-fabric-deploy-remove-applications-fabricclient.md)
 
@@ -256,6 +258,7 @@
 #### [アップグレード](service-fabric-cluster-upgrade.md)
 #### [アクセス制御の設定](service-fabric-cluster-security-roles.md)
 #### [構成](service-fabric-cluster-fabric-settings.md)
+#### [ロード バランサーでポートを開く](create-load-balancer-rule.md)
 #### [クラスター証明書の管理](service-fabric-cluster-security-update-certs-azure.md)
 #### [削除](service-fabric-cluster-delete.md)
 
@@ -275,8 +278,7 @@
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
-### [XPlat CLI を使用したクラスターの管理](service-fabric-azure-cli.md)
-### [Azure CLI 2.0 コマンドを使用したクラスターの管理](service-fabric-azure-cli-2-0.md)
+### [Service Fabric CLI を使用したクラスターの管理](service-fabric-cli.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する

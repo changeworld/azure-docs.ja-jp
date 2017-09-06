@@ -11,29 +11,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/11/2017
+ms.date: 08/21/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: d74ff0bc33576812b1d30289dd9c503c73956911
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 6fc863010cc59e20e7d86ea9344489e574be75f2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="connect-hdinsight-to-your-on-premise-network"></a>オンプレミス ネットワークへの HDInsight の接続
 
-Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプレミス ネットワークに接続する方法について説明します。 このドキュメントでは次の情報を提供します。
+Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプレミス ネットワークに接続する方法について説明します。 このドキュメントでは、次の計画情報を提供します。
 
-* オンプレミス ネットワークに接続する Azure Virtual Network を作成する方法。
+* オンプレミス ネットワークに接続する Azure Virtual Network で HDInsight を使用する方法。
 
-* 仮想ネットワークとオンプレミス ネットワークの間の DNS 名前解決を有効にする方法。
+* 仮想ネットワークとオンプレミス ネットワークの間の DNS 名前解決を構成する方法。
 
-* ネットワーク セキュリティ グループを使用して HDInsight へのインターネット アクセスを制限する方法。
+* ネットワーク セキュリティ グループを構成して HDInsight へのインターネット アクセスを制限する方法。
 
-* HDInsight によって提供されるポートを仮想ネットワークで検出する方法。
+* 仮想ネットワーク上の HDInsight によって提供されるポート。
 
 ## <a name="create-the-virtual-network-configuration"></a>仮想ネットワーク構成を作成する
+
+> [!IMPORTANT]
+> Azure Virtual Network を使用して HDInsight をオンプレミス ネットワークに接続するための詳しい手順については、「[オンプレミス ネットワークへの HDInsight の接続](connect-on-premises-network.md)」を参照してください。
 
 次のドキュメントを使用して、オンプレミス ネットワークに接続されている Azure Virtual Network を作成する方法を学習してください。
     
@@ -77,7 +80,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
     ![Ubuntu 仮想マシンを作成する](./media/connect-on-premises-network/create-ubuntu-vm.png)
 
-2. __[基本]__ ブレードで、次の情報を入力します。
+2. __[基本]__ セクションで、次の情報を入力します。
 
     * __名前__: この仮想マシンを特定するフレンドリ名。 例、__DNSProxy__。
     * __ユーザー名__: SSH アカウントの名前。
@@ -89,9 +92,9 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
     他のエントリは既定値のままにして、__[OK]__ を選択します。
 
-3. __[サイズの選択]__ ブレードで、VM サイズを選択します。 このチュートリアルでは、最小および最低コストのオプションを選択します。 続行するには、__[選択]__ をクリックします。
+3. __[サイズの選択]__ セクションで、VM サイズを選択します。 このチュートリアルでは、最小および最低コストのオプションを選択します。 続行するには、__[選択]__ をクリックします。
 
-4. __[設定]__ ブレードで、次の情報を入力します。
+4. __[設定]__ セクションで、次の情報を入力します。
 
     * __仮想ネットワーク__: 前に作成した仮想ネットワークを選択します。
 
@@ -103,9 +106,9 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
 
     他のエントリは既定値のままにし、__[OK]__ を選択して続行します。
 
-5. __[購入]__ ブレードで、__[購入]__ ボタンを選択して仮想マシンを作成します。
+5. __[購入]__ セクションで、__[購入]__ ボタンを選択して仮想マシンを作成します。
 
-6. 仮想マシンが作成されると、__[概要]__ ブレードが表示されます。 左側の一覧で、__[プロパティ]__ を選択します。 __パブリック IP アドレス__と__プライベート IP アドレス__の値を保存します。 これは次のセクションで使用します。
+6. 仮想マシンが作成されると、__[概要]__ セクションが表示されます。 左側の一覧で、__[プロパティ]__ を選択します。 __パブリック IP アドレス__と__プライベート IP アドレス__の値を保存します。 これは次のセクションで使用します。
 
     ![パブリックおよびプライベート IP アドレス](./media/connect-on-premises-network/vm-ip-addresses.png)
 
@@ -120,7 +123,7 @@ Azure Virtual Network と VPN Gateway を使用して、HDInsight をオンプ�
     `sshuser` は、クラスターの作成時に指定した SSH ユーザー アカウントで置き換えます。
 
     > [!NOTE]
-    > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、通常、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
+    > `ssh` ユーティリティは、さまざまな方法で取得できます。 Linux、Unix、および macOS では、オペレーティング システムの一部として提供されます。 Windows を使用している場合は、次のオプションのいずれかを検討してください。
     >
     > * [Azure Cloud Shell](../cloud-shell/quickstart.md)
     > * [Bash on Ubuntu on Windows 10](https://msdn.microsoft.com/commandline/wsl/about)

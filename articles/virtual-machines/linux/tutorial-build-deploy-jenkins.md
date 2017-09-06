@@ -8,17 +8,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/15/2017
 ms.author: ahomer
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 967cd38f0961cd11871c538d753cab9951c2f1f5
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a40e26a8681df31fad664e4d1df4c1513311900d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -255,7 +255,7 @@ Team Services でリリース定義を作成するには:
 > * Azure 仮想マシンの配置グループを作成する
 > * VM の構成とアプリの配置に使用するリリース定義を作成する
 
-次のリンクをクリックして、あらかじめ用意されている仮想マシン スクリプト サンプルをご覧ください。
+LAMP を展開する方法の詳細 (Linux、Apache、MySQL、および PHP) については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
-> [Windows 仮想マシンのスクリプト サンプル](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/virtual-machine)
+> [LAMP スタックのデプロイ](tutorial-lamp-stack.md)

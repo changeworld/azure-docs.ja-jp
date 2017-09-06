@@ -4,7 +4,7 @@ description: "Media Services SDK for .NET を使用した Media Services の前�
 services: media-services
 documentationcenter: 
 author: juliako
-manager: SyntaxC4
+manager: cfowler
 editor: 
 ms.assetid: ec2804c7-c656-4fbf-b3e4-3f0f78599a7f
 ms.service: media-services
@@ -12,13 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/16/2017
+ms.date: 08/23/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ca5e537bd4347e17190ff4f66cc4d42a36870936
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 15828bc74937a036871b26493498232ec7cf6f06
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
@@ -66,7 +66,7 @@ ms.lasthandoff: 07/21/2017
     [ユーザー認証](media-services-use-aad-auth-to-access-ams-api.md#types-of-authentication)を使用している場合、構成ファイルには、おそらく、Azure AD テナントのドメインおよび AMS REST API エンドポイントに対する値が含まれています。
     
     >[!Important]
-    >Azure Media Services のドキュメント セットのサンプルでは、AMS API への接続に対する認証の種類としてユーザー (対話型) を使用します。 この認証方法は、ネイティブ アプリ (例: モバイル アプリ、Windows アプリ、コンソール アプリケーション) の管理や監視に適しています。 この認証方法は、サーバー、Web サービス、API という種類のアプリケーションには適していません。  詳細については、「[Azure AD Authentication を使用した AMS API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
+    >Azure Media Services のドキュメント セットのコード サンプルのほとんどで、AMS API への接続に対する認証の種類としてユーザー (対話型) が使用されます。 この認証方法は、ネイティブ アプリ (例: モバイル アプリ、Windows アプリ、コンソール アプリケーション) の管理や監視に適しています。 この認証方法は、サーバー、Web サービス、API という種類のアプリケーションには適していません。  詳細については、「[Azure AD Authentication を使用した AMS API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。
 
         <configuration>
         ...

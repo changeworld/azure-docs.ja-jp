@@ -32,7 +32,9 @@
 ### [Azure ポータル](expressroute-howto-add-gateway-portal-resource-manager.md)
 ### [PowerShell](expressroute-howto-add-gateway-resource-manager.md)
 ## [ExpressRoute 接続とサイト間接続の共存を構成する](expressroute-howto-coexist-resource-manager.md)
-## [Microsoft ピアリングのルート フィルターを構成する](how-to-routefilter-powershell.md)
+## Microsoft ピアリングにルート フィルターを構成する
+### [Azure ポータル](how-to-routefilter-portal.md)
+### [PowerShell](how-to-routefilter-powershell.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成

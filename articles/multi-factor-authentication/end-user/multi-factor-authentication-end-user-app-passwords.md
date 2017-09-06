@@ -3,7 +3,7 @@ title: "Azure MFA でアプリ パスワードを使用する方法 | Microsoft 
 description: "このページは、アプリ パスワードの詳細と、Azure MFA に関連した用途を理解するのに役立ちます。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: barlanmsft
 manager: femila
 editor: yossib
 ms.assetid: 345b757b-5a2b-48eb-953f-d363313be9e5
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
-ms.author: kgremban
+ms.author: barlan
 ms.custom: end-user
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a30a90682948b657fb31dd14101172282988cbf0
@@ -36,21 +36,21 @@ ms.lasthandoff: 05/25/2017
 
 * アプリ パスワードはユーザーが作成するわけではなく、 自動的に生成されます。 アプリ パスワードはアプリごとに 1 回を入力するだけなので、覚えやすいパスワードを作るよりも、自動的に生成されたより複雑なパスワードを使用する方が安全です。
 * 現在は、1 ユーザーあたり 40 個というパスワード数の制限があります。 制限に達した後に作成しようとした場合、新しいものを作成できるよう既存のアプリ パスワードのいずれかを削除するよう求められます。
-* アプリ パスワードは、アプリケーションごとではなく、デバイスごとに作成することをお勧めします。 たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。 次に、デスクトップ PC 上のすべてのアプリに使用する 2 番目のアプリ パスワードを作成します。 
+* アプリ パスワードは、アプリケーションごとではなく、デバイスごとに作成することをお勧めします。 たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。 次に、デスクトップ PC 上のすべてのアプリに使用する 2 番目のアプリ パスワードを作成します。
 * 最初に 2 段階認証の登録をしたときに、アプリ パスワードが 1 つ提供されます。  追加のアプリ パスワードが必要な場合は、作成できます。
 
 
 
 ## <a name="creating-and-deleting-app-passwords"></a>アプリ パスワードの作成と削除
-最初のサインイン時に、使用可能なアプリ パスワードが提供されます。  さらに、後でアプリ パスワードを作成したり、削除したりすることもできます。  そうする方法は、多要素認証を使用する方法によって異なります。 次の質問に答えていくと、アプリ パスワードを管理できる場所がわかります。 
+最初のサインイン時に、使用可能なアプリ パスワードが提供されます。  さらに、後でアプリ パスワードを作成したり、削除したりすることもできます。  そうする方法は、多要素認証を使用する方法によって異なります。 次の質問に答えていくと、アプリ パスワードを管理できる場所がわかります。
 
 1. 個人の Microsoft アカウントで 2 段階認証を使用していますか。 使用している場合は、「[アプリ パスワードと 2 段階認証](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)」を参照してください。 使用していない場合は、次に進んでください。
 
-2. あなたは職場または学校のアカウントで 2 段階認証を使用しているようです。 Office 365 アプリへのサインインに 2 段階認証を使用していますか。 使用している場合は、「[Office 365 のアプリ パスワードを作成する](https://support.office.com/article/Create-an-app-password-for-Office-365-3e7c860f-bda4-4441-a618-b53953ee1183)」を参照してください。 使用していない場合は、次に進んでください。 
+2. あなたは職場または学校のアカウントで 2 段階認証を使用しているようです。 Office 365 アプリへのサインインに 2 段階認証を使用していますか。 使用している場合は、「[Office 365 のアプリ パスワードを作成する](https://support.office.com/article/Create-an-app-password-for-Office-365-3e7c860f-bda4-4441-a618-b53953ee1183)」を参照してください。 使用していない場合は、次に進んでください。
 
 3. Microsoft Azure で 2 段階認証を使用していますか。 使用している場合は、この記事の「[Azure Portal でアプリ パスワードを管理する](#manage-app-passwords-in-the-Azure-portal)」セクションに進んでください。 使用していない場合は、次に進んでください。
 
-4. 2 段階認証をどこで使用しているかわからない場合は、 この記事の「[MyApps ポータルでアプリ パスワードを管理する](#manage-app-passwords-with-the-myapps-portal)」セクションに進んでください。 
+4. 2 段階認証をどこで使用しているかわからない場合は、 この記事の「[MyApps ポータルでアプリ パスワードを管理する](#manage-app-passwords-with-the-myapps-portal)」セクションに進んでください。
 
 
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Azure Portal でアプリ パスワードを管理する
@@ -63,7 +63,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 4. **[作成]**をクリックします。
 5. アプリ パスワードの名前を入力し、 **[次へ]**
 6. アプリ パスワードをクリップボードにコピーし、アプリに貼り付けます。
-   
+
    ![クラウド](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
 
 
@@ -115,5 +115,5 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
-- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する 
+- SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する
 

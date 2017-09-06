@@ -4,7 +4,7 @@ description: "Azure App Service Web App on Linux の FAQ です。"
 keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS"
 services: app-service
 documentationCenter: 
-authors: ahmedelnably
+author: ahmedelnably
 manager: erikre
 editor: 
 ms.assetid: 
@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: ff4f4ecd12bc26fcc44a20a193d73f952ed56f1a
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 6122f28b35d143ec26a379ae9aa8aee9bdaaff9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -51,6 +51,10 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 **A:** はい、SCM サイトを通して行うことができます。詳細については、「[Web App on Linux での SSH のサポート](./app-service-linux-ssh-support.md)」を参照してください。
 
+**Q:** Linux App Service プランを SDK または ARM テンプレートを使用して作成する方法を教えてください。
+
+**A:** アプリ サービスの `reserved` フィールドを `true` に設定する必要があります。
+
 ## <a name="continuous-integrationdeployment"></a>継続的インテグレーション/デプロイ
 
 **Q:** 自分の Web アプリでは、Docker Hub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。 カスタム コンテナーの継続的な統合/デプロイはサポートしていますか。
@@ -80,6 +84,14 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 **Q:** 自分が所有するカスタム コンテナーを使用しています。 私のアプリは `\home\` ディレクトリに存在しますが、[SCM サイト](https://github.com/projectkudu/kudu)や FTP クライアントを使用して内容を参照してもファイルが見つかりません。 ファイルはどこにありますか?
 
 **A:** SMB 共有は `\home\` ディレクトリにマウントされます。 これにより、その場所にあるコンテンツが上書きされます。
+
+**Q:** 自分が所有するカスタム コンテナーを使用しています。 プラットフォームによる SMB 共有の `\home\` へのマウントを望んでいません。
+
+**A:** これは、`WEBSITES_ENABLE_APP_SERVICE_STORAGE` アプリ設定を `false` に設定することで実現できます。
+
+**Q:** カスタム コンテナーの起動に時間がかかり、起動が終了する前にプラットフォームがコンテナーを再起動します。
+
+**A:** プラットフォームがコンテナーを再起動する前の待機時間を構成できます。 これは、`WEBSITES_CONTAINER_START_TIME_LIMIT` アプリ設定を目的の値 (秒単位) に設定することで実現できます。 既定値は 230 秒であり、最大値は 600 秒です。
 
 **Q:**プライベート レジストリ サーバーの URL の形式は何ですか。
 
@@ -127,7 +139,6 @@ Azure App Service on Linux のリリースでは、機能の追加とプラッ�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Web App on Linux とは](app-service-linux-intro.md)
-* [Azure Web App on Linux で Web アプリを作成する](app-service-linux-how-to-create-web-app.md)
 * [Azure Web App on Linux での SSH のサポート](./app-service-linux-ssh-support.md)
 * [Azure App Service でステージング環境を設定する](./web-sites-staged-publishing.md)
 * [Azure Web App on Linux での継続的なデプロイ](./app-service-linux-ci-cd.md)

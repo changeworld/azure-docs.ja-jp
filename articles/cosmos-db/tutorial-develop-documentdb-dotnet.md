@@ -10,7 +10,7 @@ tags:
 ms.assetid: 
 ms.service: cosmos-db
 ms.devlang: dotnet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
@@ -115,7 +115,7 @@ Azure Portal で Azure Cosmos DB アカウントに移動し、**[キー]** を�
 ここでは、**DocumentClient** の新しいインスタンスを作成します。
 
 ```csharp
-DocumentClient client = new DocumentClient(new Uri(endpoint), authKey);
+DocumentClient client = new DocumentClient(new Uri(EndpointUrl), PrimaryKey);
 ```
 
 ## <a id="create-database"></a>データベースを作成する

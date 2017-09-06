@@ -1,150 +1,116 @@
 ---
-title: "Azure で Linux (Ubuntu) VM に初めての Jenkins マスターを作成する"
-description: "ソリューション テンプレートを使って Jenkins をデプロイします。"
-services: app-service\web
-documentationcenter: 
+title: "Azure に Jenkins サーバーを作成する"
+description: "Jenkins ソリューション テンプレートから Azure Linux 仮想マシンに Jenkins をインストールし、サンプル Java アプリケーションをビルドする方法について説明します。"
 author: mlearned
 manager: douge
-editor: 
-ms.assetid: 8bacfe3e-7f0b-4394-959a-a88618cb31e1
 ms.service: multiple
 ms.workload: web
-ms.tgt_pltfrm: na
-ms.devlang: na
+ms.devlang: java
 ms.topic: hero-article
-ms.date: 6/7/2017
+ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
-ms.openlocfilehash: 06d6d305eb9711768dc62a04726359e6280d1b69
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
-# <a name="create-your-first-jenkins-master-on-a-linux-ubuntu-vm-on-azure"></a>Azure で Linux (Ubuntu) VM に初めての Jenkins マスターを作成する
+# <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
-このクイックスタートでは、最新の安定したバージョンの Jenkins と、Azure で動作するように構成されたツールおよびプラグインを、Linux (Ubuntu 14.04 LTS) VM にインストールする方法について説明します。 ツールには次のものが含まれます。
-<ul>
-<li>ソース管理用の Git</li>
-<li>安全に接続するための Azure 資格情報プラグイン</li>
-<li>エラスティック ビルド、テスト、継続的インテグレーションのための Azure VM エージェント プラグイン</li>
-<li>成果物を格納するための Azure Storage プラグイン</li>
-<li>スクリプトを使ってアプリをデプロイするための Azure CLI</li>
-</ul>
+このクイックスタートでは、Ubuntu Linux VM に [Jenkins](https://jenkins.io) をインストールする方法について説明します。Azure で動作するように構成されたプラグインとツールのインストールも行います。 最終的には、[GitHub](https://github.com) からのサンプル Java アプリをビルドする Jenkins サーバーが Azure で稼働することになります。
 
-このチュートリアルで学習する内容は次のとおりです。
+## <a name="prerequisites"></a>前提条件
 
-> [!div class="checklist"]
-> * 無料の Azure アカウントを作成します。
-> * ソリューション テンプレートを使って Azure VM に Jenkins マスターを作成します。 
-> * Jenkins 用の初期構成を行います。
-> * 推奨されるプラグインをインストールします。
+* Azure サブスクリプション
+* コンピューターのコマンド ラインでの SSH アクセス (Bash シェル、[PuTTY](http://www.putty.org/) など)
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-vm-in-azure-by-deploying-the-solution-template-for-jenkins"></a>Jenkins 用のソリューション テンプレートをデプロイして Azure に VM を作成する
+## <a name="create-the-jenkins-vm-from-the-solution-template"></a>ソリューション テンプレートからの Jenkins VM の作成
 
-Azure クイックスタート テンプレートを使うと、Azure に複雑なテクノロジを迅速かつ確実にデプロイできます。  Azure Resource Manager では、[宣言型のテンプレート](https://azure.microsoft.com/en-us/resources/templates/?term=jenkins)を使ってアプリケーションをプロビジョニングすることができます。 1 つのテンプレートで、複数のサービスをその依存関係と共にデプロイできます。 アプリケーション ライフサイクルの各ステージで、同じテンプレートを使用してアプリケーションを繰り返しデプロイします。
-
-コストのオプションについては、このテンプレートの[プランと価格](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)に関する情報をご覧ください。
-
-[Jenkins の Marketplace イメージ](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/azure-oss.jenkins?tab=Overview)に移動し、**[今すぐ入手する]** をクリックします。  
-
-Azure Portal で、**[作成]** をクリックします。  このテンプレートでは、テンプレート モデルのドロップダウンが無効になっているため、Resource Manager を使う必要があります。
+Web ブラウザーから [Jenkins の Marketplace イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/azure-oss.jenkins?tab=Overview)を開き、ページ左側から **[今すぐ入手する]** を選択します。 料金の詳細を確認して **[続行]** を選択し、**[作成]** を選択して、Azure Portal で Jenkins サーバーを構成します。 
    
 ![Azure Portal ダイアログ](./media/install-jenkins-solution-template/ap-create.png)
 
-**[基本設定の構成]** タブで次のようにします。
+**[基本設定の構成]** タブで、次のフィールドに入力します。
 
 ![基本設定を構成する](./media/install-jenkins-solution-template/ap-basic.png)
 
-* Jenkins インスタンスの名前を指定します。
-* VM ディスクの種類を選択します。  運用環境のワークロードでは、パフォーマンス向上のために大容量の VM と SSD を選択します。  Azure ディスクの種類について詳しくは、[こちら](https://docs.microsoft.com/en-us/azure/storage/storage-premium-storage)をご覧ください。
-* ユーザー名: 長さの要件を満たし、予約語またはサポートされない文字が含まれないようにする必要があります。 "admin" のような名前を指定することはできません。  ユーザー名とパスワードの要件について詳しくは、[こちら](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/faq)をご覧ください。
-* 認証の種類: パスワードまたは [SSH 公開キー](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/ssh-from-windows)で保護されているインスタンスを作成します。 パスワードを使う場合は、1 つの小文字、1 つの大文字、1 つの数字、1 つの特殊文字という要件のうち、3 つを満たしている必要があります。
-* Jenkins のリリースの種類は、**LTS** のままにしておきます
-* サブスクリプションを選択します。
-* リソース グループを作成するか、空の既存のグループを使用します。 
-* 場所を選択します。
+* **[名前]** には **Jenkins** を使用します。
+* **[ユーザー名]** を入力します。 ユーザー名は、[特定の要件](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしている必要があります。
+* **[認証の種類]** として **[パスワード]** を選択し、パスワードを入力します。 パスワードには、大文字と数字に加え、1 つの特殊文字を含んでいる必要があります。
+* **[リソース グループ]** には「**myJenkinsResourceGroup**」を使用します。
+* **[場所]** ドロップダウンから **[米国東部]** の [Azure リージョン](https://azure.microsoft.com/regions/)を選択します。
 
-**[Configure additional options\(追加オプションの構成\)]** タブで次のようにします。
+**[OK]** を選択して、**[Configure additional options]\(追加オプションの構成\)** タブに移動します。一意のドメイン名を入力して Jenkins サーバーを指定し、**[OK]** を選択します。
 
-![追加オプションの設定](./media/install-jenkins-solution-template/ap-addtional.png)
+![追加オプションの設定](./media/install-jenkins-solution-template/ap-addtional.png)  
 
-* Jenkins マスターを一意に識別するドメイン名ラベルを指定します。
+ 検証に成功したら、**[概要]** タブから再度 **[OK]** を選択します。最後に、**[購入]** を選択して Jenkins VM を作成します。 サーバーの準備が完了すると、Azure Portal に次のような通知が表示されます。   
 
-**[OK]** をクリックして次のステップに進みます。 
-
-検証に合格したら、**[OK]** をクリックしてテンプレートとパラメーターをダウンロードします。 
-
-次に、**[購入]** を選択してすべてのリソースをプロビジョニングします。
-
-## <a name="setup-ssh-port-forwarding"></a>SSH ポート フォワーディングを設定する
-
-既定では、Jenkins インスタンスは http プロトコルを使い、ポート 8080 でリッスンします。 ユーザーは、セキュリティ保護されていないプロトコルで認証を行わないようにする必要があります。
-    
-ポート フォワーディングを設定して、ローカル コンピューターに Jenkins UI を表示します。
-
-### <a name="if-you-are-using-windows"></a>Windows を使っている場合:
-
-パスワードを使って Jenkins を保護している場合は、PuTTY をインストールして次のコマンドを実行します。
-```
-putty.exe -ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-* ログインするには、パスワードを入力します。
-
-![ログインするには、パスワードを入力します。](./media/install-jenkins-solution-template/jenkins-pwd.png)
-
-SSH を使っている場合は、次のコマンドを実行します。
-```
-putty -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-
-### <a name="if-you-are-using-linux-or-mac"></a>Linux または Mac を使っている場合:
-
-パスワードを使って Jenkins マスターを保護している場合は、次のコマンドを実行します。
-```
-ssh -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
-* ログインするには、パスワードを入力します。
-
-SSH を使っている場合は、次のコマンドを実行します。
-```
-ssh -i <private key file including path> -L 8080:localhost:8080 <username>@<Domain name label>.<location>.cloudapp.azure.com
-```
+![Jenkins の準備が完了したことを示す通知](./media/install-jenkins-solution-template/jenkins-deploy-notification-ready.png)
 
 ## <a name="connect-to-jenkins"></a>Jenkins に接続する
-トンネルを開始した後、ローカル コンピューターで http://localhost:8080/ に移動します。
 
-初めて使うときは、初期管理パスワードを使って Jenkins ダッシュボードのロックを解除します。
+Web ブラウザーから対象の仮想マシン (例: http://jenkins2517454.eastus.cloudapp.azure.com/) にアクセスします。 セキュリティで保護されていない HTTP 経由では Jenkins コンソールにアクセスできません。そのためこのページには、ご使用のコンピューターから SSH トンネルを使って安全に Jenkins コンソールにアクセスする手順が掲載されています。
+
+![Jenkins のロックを解除する](./media/install-jenkins-solution-template/jenkins-ssh-instructions.png)
+
+このページのコマンド ラインから `ssh` コマンドを使用してトンネルを設定します。`username` は、先ほどソリューション テンプレートから仮想マシンをセットアップするときに選択した仮想マシンの管理者ユーザーの名前に置き換えてください。
+
+```bash
+ssh -L 127.0.0.1:8080:localhost:8080 jenkinsadmin@jenkins2517454.eastus.cloudapp.azure.com
+```
+
+トンネルを開始した後、ローカル コンピューターで http://localhost:8080/ に移動します。 
+
+Jenkins VM に SSH 接続している状態で、コマンド ラインから次のコマンドを実行して初期パスワードを取得します。
+
+```bash
+`sudo cat /var/lib/jenkins/secrets/initialAdminPassword`.
+```
+
+初めて使うときは、この初期パスワードを使って Jenkins ダッシュボードのロックを解除します。
 
 ![Jenkins のロックを解除する](./media/install-jenkins-solution-template/jenkins-unlock.png)
 
-トークンを取得するには、VM に SSH で接続し、`sudo cat /var/lib/jenkins/secrets/initialAdminPassword` を実行します。
-
-![Jenkins のロックを解除する](./media/install-jenkins-solution-template/jenkins-ssh.png)
-
-推奨されるプラグインのインストールを求められます。
-
-次に、Jenkins マスターの管理者ユーザーを作成します。
-
-Jenkins インスタンスを使用する準備ができました。 http://\<作成したインスタンスのパブリック DNS 名\> に移動することで、読み取り専用のビューにアクセスできます。
+次のページの **[Install suggested plugins]\(推奨プラグインのインストール\)** を選択し、Jenkins ダッシュボードへのアクセスに使用した Jenkins 管理者ユーザーを作成します。
 
 ![Jenkins の準備ができました。](./media/install-jenkins-solution-template/jenkins-welcome.png)
 
+Jenkins サーバーでコードをビルドする準備が整いました。
+
+## <a name="create-your-first-job"></a>最初のジョブの作成
+
+Jenkins コンソールから **[Create new jobs]\(新しいジョブの作成\)** を選択して **mySampleApp** という名前を付け、**[Freestyle project]\(フリースタイル プロジェクト\)** を選択して **[OK]** を選択します。
+
+![新しいジョブの作成](./media/install-jenkins-solution-template/jenkins-new-job.png) 
+
+**[ソース コード管理]** タブを選択して **[Git]** を有効にし、**[リポジトリの URL]** フィールドに次の URL を入力します。`https://github.com/spring-guides/gs-spring-boot.git`
+
+![Git リポジトリの定義](./media/install-jenkins-solution-template/jenkins-job-git-configuration.png) 
+
+**[ビルド]** タブを選択し、**[ビルド ステップの追加]**、**[Invoke Gradle script]\(Gradle スクリプトの呼び出し\)** の順に選択します。 **[Use Gradle Wrapper]\(Gradle ラッパーの使用\)** を選択して、**[Wrapper location]\(ラッパーの場所\)** に「`complete`」、**[タスク]** に「`build`」と入力します。
+
+![Gradle ラッパーを使用したビルド](./media/install-jenkins-solution-template/jenkins-job-gradle-config.png) 
+
+**[Advanced]\(詳細設定\)** を選択し、 **[Root Build script]\(ルート ビルド スクリプト\)** フィールドに「`complete`」と入力します。 [ **保存**] を選択します。
+
+![Gradle ラッパー ビルド ステップの詳細設定](./media/install-jenkins-solution-template/jenkins-job-gradle-advances.png) 
+
+## <a name="build-the-code"></a>コードのビルド
+
+**[Build Now]\(今すぐビルド\)** を選択してコードをコンパイルし、サンプル アプリをパッケージします。 ビルドが完了したら、プロジェクトの **[ワークスペース]** リンクを選択します。
+
+![ワークスペースを参照画面で選択し、ビルドから JAR ファイルを取得します。](./media/install-jenkins-solution-template/jenkins-access-workspace.png) 
+
+ビルドが成功したことを確かめるために、`complete/build/libs` に移動し、`gs-spring-boot-0.1.0.jar` が存在することを確認します。 Azure 上の Jenkins サーバーで独自のプロジェクトをビルドする準備が整いました。
+
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次のことを行いました。
-
-> [!div class="checklist"]
-> * ソリューション テンプレートを使って Jenkins マスターを作成しました。
-> * Jenkins の初期構成を実行しました。
-> * プラグインをインストールしました。
-
-Jenkins との継続的インテグレーションのために Azure VM エージェントを使う方法については、次のリンクをご覧ください。
-
 > [!div class="nextstepaction"]
-> [Jenkins エージェントとしての Azure VM](jenkins-azure-vm-agents.md)
+> [Azure VM を Jenkins エージェントとして追加する](jenkins-azure-vm-agents.md)
 

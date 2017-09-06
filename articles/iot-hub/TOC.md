@@ -15,11 +15,11 @@
 ### [オンライン シミュレーターを使用する](iot-hub-raspberry-pi-web-simulator-get-started.md)
 
 ### [物理デバイスを使用する](iot-hub-get-started-physical.md)
+#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
 #### [Node.js での Raspberry Pi](iot-hub-raspberry-pi-kit-node-get-started.md)
 #### [C での Raspberry Pi](iot-hub-raspberry-pi-kit-c-get-started.md)
-#### [Python での Raspberry Pi](iot-hub-raspberry-pi-kit-python-get-started.md)
 
-#### [Visual Studio Code での IoT DevKit](iot-hub-arduino-iot-devkit-az3166-get-started.md)
+#### [Arduino での MXChip IoT DevKit](iot-hub-arduino-iot-devkit-az3166-get-started.md)
 
 #### [Node.js での Intel Edison](iot-hub-intel-edison-kit-node-get-started.md)
 #### [C での Intel Edison](iot-hub-intel-edison-kit-c-get-started.md)
