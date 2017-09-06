@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 08/23/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 04e1c7a70db712dbc54e8846e9453d932016a043
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 6fc556ceb34cde26d5f3789a2397cdaa34b0b84d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-log-searches-in-azure-log-analytics-using-the-log-search-portal"></a>ログ検索ポータルを使用して Azure Log Analytics でログ検索を作成する
@@ -27,9 +27,9 @@ ms.lasthandoff: 07/28/2017
 >
 > ワークスペースが新しいクエリ言語にアップグレードされていない場合は、ログ検索ポータルの現在のバージョンについて「[ログ検索を使用してデータを探す](log-analytics-log-searches.md)」を参照してください。
 
-この記事のチュートリアルでは、ログ検索ポータルを使用してログ検索を作成し、Log Analytics ワークスペースに保存されたデータを分析する方法を説明します。  このチュートリアルでは、さまざまな種類のデータを返すシンプルなクエリを実行し、結果を分析します。  これは、クエリを直接変更するのではなく、ログ検索ポータルで変更する機能に重点を置いています。  クエリを直接編集する方法の詳細については、[クエリ言語リファレンス](https://docs.loganalytics.io/queryLanguage/query_language.html)を参照してください。
+この記事のチュートリアルでは、ログ検索ポータルを使用してログ検索を作成し、Log Analytics ワークスペースに保存されたデータを分析する方法を説明します。  このチュートリアルでは、さまざまな種類のデータを返すシンプルなクエリを実行し、結果を分析します。  これは、クエリを直接変更するのではなく、ログ検索ポータルで変更する機能に重点を置いています。  クエリを直接編集する方法の詳細については、[クエリ言語リファレンス](https://go.microsoft.com/fwlink/?linkid=856079)を参照してください。
 
-ログ検索ポータルではなく、高度な分析ポータルで検索を作成するには、「[Getting Started with the Analytics Portal (分析ポータルの概要)](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)」を参照してください。  どちらのポータルも同じクエリ言語を使用して、Log Analytics ワークスペースの同じデータにアクセスします。
+ログ検索ポータルではなく、高度な分析ポータルで検索を作成するには、「[Getting Started with the Analytics Portal (分析ポータルの概要)](https://go.microsoft.com/fwlink/?linkid=856587)」を参照してください。  どちらのポータルも同じクエリ言語を使用して、Log Analytics ワークスペースの同じデータにアクセスします。
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルでは、1 つ以上のソースが接続された Log Analytics ワークスペースが既にあり、クエリで分析するデータが生成されることを前提としています。  
@@ -99,12 +99,12 @@ Syslog | where (SeverityLevel == "err")
 
 ![[フィルター] メニュー](media/log-analytics-log-search-log-search-portal/log-search-portal-01a.png)
 
-1 つのプロパティで結果をグループ化するには、レコード メニューで **[グループ化]** オプションを選択します。  これにより、グラフの結果を表示する [summarize](https://docs.loganalytics.io/queryLanguage/query_language_summarizeoperator.html) 演算子がクエリに追加されます。  複数のプロパティでグループ化できますが、クエリを直接編集する必要があります。  **Computer** プロパティの横にあるレコード メニューを選択し、**['Computer' でグループ化]** を選択します。  
+1 つのプロパティで結果をグループ化するには、レコード メニューで **[グループ化]** オプションを選択します。  これにより、グラフの結果を表示する [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) 演算子がクエリに追加されます。  複数のプロパティでグループ化できますが、クエリを直接編集する必要があります。  **Computer** プロパティの横にあるレコード メニューを選択し、**['Computer' でグループ化]** を選択します。  
 
 ![コンピューターでグループ化](media/log-analytics-log-search-log-search-portal/log-search-portal-10.png)
 
 ## <a name="work-with-results"></a>結果を操作する
-ログ検索ポータルには、クエリの結果を操作するためのさまざまな機能が用意されています。  結果の並べ替え、フィルター処理、およびグループ化機能を使用すると、実際のクエリを変更せずに、データを分析できます。
+ログ検索ポータルには、クエリの結果を操作するためのさまざまな機能が用意されています。  結果の並べ替え、フィルター処理、およびグループ化機能を使用すると、実際のクエリを変更せずに、データを分析できます。  既定では、クエリの結果は並べ替えられません。
 
 フィルター処理および並べ替えの追加オプションが用意されたテーブル フォームでデータを表示するには、**[テーブル]** をクリックします。  
 
@@ -145,7 +145,7 @@ Perf | where (ObjectName == "Processor")  | where (CounterName == "% Processor T
 
 ![プロセッサ使用率](media/log-analytics-log-search-log-search-portal/log-search-portal-12.png)
 
-これによりデータが特定のカウンターに制限されますが、特に便利なフォームには、まだデータが入力されません。  データは折れ線グラフに表示できますが、最初に Computer と TimeGenerated でデータをグループ化する必要があります。  複数のフィールドでグループ化するには、クエリを直接変更する必要があるため、次のようにクエリを変更します。  これにより、**CounterValue** プロパティで [avg](https://docs.loganalytics.io/queryLanguage/query_language_avg_aggfunction.html) 関数が使用され、1 時間ごとに平均値が計算されます。
+これによりデータが特定のカウンターに制限されますが、特に便利なフォームには、まだデータが入力されません。  データは折れ線グラフに表示できますが、最初に Computer と TimeGenerated でデータをグループ化する必要があります。  複数のフィールドでグループ化するには、クエリを直接変更する必要があるため、次のようにクエリを変更します。  これにより、**CounterValue** プロパティで [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) 関数が使用され、1 時間ごとに平均値が計算されます。
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated
@@ -153,7 +153,7 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ![パフォーマンス データのグラフ](media/log-analytics-log-search-log-search-portal/log-search-portal-13.png)
 
-データが適切にグループ化されたので、[render](https://docs.loganalytics.io/queryLanguage/query_language_renderoperator.html) 演算子を追加して、データをビジュアル グラフに表示できます。  
+データが適切にグループ化されたので、[render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator) 演算子を追加して、データをビジュアル グラフに表示できます。  
 
 ```
 Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor Time") | summarize avg(CounterValue) by Computer, TimeGenerated | render timechart
@@ -163,6 +163,6 @@ Perf  | where (ObjectName == "Processor")  | where (CounterName == "% Processor 
 
 ## <a name="next-steps"></a>次のステップ
 
-- 「[Getting Started with the Analytics Portal (分析ポータルの概要)](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)」で、Log Analytics クエリ言語の詳細について確認します。
-- ログ検索ポータルと同じクエリを実行し、同じデータにアクセスできる[高度な分析ポータル](https://docs.loganalytics.io/learn/tutorial_getting_started_with_analytics_portal.html)を使用するチュートリアルを実行します。
+- 「[Getting Started with the Analytics Portal (分析ポータルの概要)](https://go.microsoft.com/fwlink/?linkid=856079)」で、Log Analytics クエリ言語の詳細について確認します。
+- ログ検索ポータルと同じクエリを実行し、同じデータにアクセスできる[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)を使用するチュートリアルを実行します。
 

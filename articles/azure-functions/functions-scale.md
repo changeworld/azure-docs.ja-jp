@@ -4,7 +4,7 @@ description: "ユーザーのイベント ドリブン ワークロードのニ�
 services: functions
 documentationcenter: na
 author: lindydonna
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 機能, イベント処理, Webhook, 動的コンピューティング, サーバーなしのアーキテクチャ"
@@ -15,14 +15,13 @@ ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/12/2017
-ms.author: donnam, glenga
+ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 5131a432a5de26ed1fc82005446d101d3094ef8b
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 0e677fb35279d155241a95cd5f33b63e8294fad2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-functions-consumption-and-app-service-plans"></a>Azure Functions の従量課金プランと App Service プラン 
@@ -61,9 +60,10 @@ App Service プランでは、関数アプリは Web Apps と同様に、Basic�
 
 次のような場合に App Service プランを検討してください。
 - 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。
-- Function App を継続的に、またはほぼ継続的に実行したい。
+- Function App を継続的に、またはほぼ継続的に実行したい。 この場合、App Service プランは、さらにコスト効率性に優れています。
 - 従量課金プランで提供されるよりも多くの CPU またはメモリのオプションが必要である。
 - 従量課金プランで許可されている最大実行時間よりも長く実行する必要がある。
+- App Service 環境、VNET/VPN 接続、大規模な VM のサポートなど、App Service プランでのみ使用できる機能が必要である。 
 
 VM を使用すると、コストが実行時間とメモリ サイズの両方から切り離されます。 このため、割り当てた VM インスタンスのコストを超えて課金されることはありません。 App Service プランの仕組みの詳細については、「[Azure App Service プランの詳細な概要](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)」を参照してください。 
 
@@ -81,7 +81,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 関数アプリを使用するには、従量課金プランと App Service プランのどちらでも、Azure BLOB、キュー、Table Storage をサポートする Azure ストレージ アカウントが必要です。 内部的には、Azure Functions はトリガーの管理や関数実行のログなどの操作に Azure Storage を使用します。 BLOB 専用のストレージ アカウント (Premium Storage を含む)、ゾーン冗長ストレージ レプリケーションを使用する汎用ストレージ アカウントなど、一部のストレージ アカウントでは、キューとテーブルがサポートされません。 これらのアカウントは、関数アプリの作成時に **[ストレージ アカウント]** ブレードから除外されます。
 
-ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/storage-introduction.md#introducing-the-azure-storage-services)に関する記事をご覧ください。
+ストレージ アカウントの種類の詳細については、[Azure Storage サービスの概要](../storage/common/storage-introduction.md#introducing-the-azure-storage-services)に関する記事をご覧ください。
 
 ## <a name="how-the-consumption-plan-works"></a>従量課金プランの仕組み
 
@@ -92,7 +92,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 > [!NOTE]
 > 従量課金プランで BLOB トリガーを使用しているときに関数アプリがアイドル状態になると、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 この初期段階の遅延を避けるために、次のオプションのいずれかを検討してください。
 > - 常時接続が有効な App Service プランを使用する。
-> - 別のメカニズムを使用して、BLOB 名を含むキュー メッセージなどの BLOB 処理をトリガーする。 例については、[BLOB 入力バインドでのキュー トリガー](functions-bindings-storage-blob.md#input-sample)に関する記事をご覧ください。
+> - BLOB 名を含むキュー メッセージなど、別のメカニズムを使用して BLOB 処理をトリガーする。 例については、[BLOB 入力バインドでのキュー トリガー](functions-bindings-storage-blob.md#input-sample)に関する記事をご覧ください。
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 

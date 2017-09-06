@@ -1,7 +1,7 @@
 ---
 title: "Azure Monitor のメトリック - サポートされているメトリック (リソースの種類別) | Microsoft Docs"
 description: "Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。"
-author: johnkemnetz
+author: anirudhcavale
 manager: orenr
 editor: 
 services: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/05/2017
-ms.author: johnkem
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: b034251438c65dd13d9ca0bb116699532e3960ef
+ms.date: 8/24/2017
+ms.author: ancav
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 51255244a286fe1aed75b342e6a9b8d4681a1979
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
@@ -74,6 +74,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ShortParsingIdleThreads|スレッド: 短時間解析を行っているアイドル状態のスレッド|カウント|平均|短時間解析を行っているスレッド プール内にあるアイドル状態のスレッドの数。|
 |ShortParsingJobQueueLength|スレッド: 短時間解析を行っているジョブ キューの長さ|カウント|平均|短時間解析を行っているスレッド プールのキューに登録されているジョブの数。|
 |memory_thrashing_metric|メモリ スラッシング|Percent|平均|平均的なメモリ スラッシング。|
+|mashup_engine_qpu_metric|M エンジン QPU|カウント|平均|マッシュアップ エンジン プロセスによる QPU 使用率|
+|mashup_engine_memory_metric|M エンジン メモリ|Bytes|平均|マッシュアップ エンジン プロセスによるメモリ使用率|
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
@@ -84,6 +86,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |UnauthorizedRequests|未承認ゲートウェイ要求|カウント|合計|未承認ゲートウェイ要求の数|
 |FailedRequests|失敗したゲートウェイ要求|カウント|合計|ゲートウェイ要求における失敗の数|
 |OtherRequests|その他のゲートウェイ要求|カウント|合計|その他のゲートウェイ要求の数|
+|時間|ゲートウェイ要求の全体の期間|ミリ秒|平均値、最大値|ゲートウェイ要求の全体の期間 (ミリ秒単位)|
+|容量|容量 (プレビュー)|Percent|平均値、最大値|ApiManagement サービスの使用状況メトリック|
+
+## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|TotalJob|合計ジョブ数|カウント|合計|ジョブの合計数|
 
 ## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
 
@@ -284,6 +294,30 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |cacheRead9|キャッシュの読み取り (シャード 9)|BytesPerSecond|最大値||
 |percentProcessorTime9|CPU (シャード 9)|Percent|最大値||
 
+## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|
+|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|
+|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|
+|ディスク読み取りバイト数/秒|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|
+|ディスクの書き込みバイト数/秒|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|
+|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|
+|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|
+
+## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|
+|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|
+|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|
+|ディスク読み取りバイト数/秒|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|
+|ディスクの書き込みバイト数/秒|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|
+|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|
+|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|
+
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
@@ -374,6 +408,16 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |JobAUEndedFailure|Failed AU Time (失敗した AU 時間)|Seconds|合計|失敗したジョブの AU 時間の合計。|
 |JobAUEndedCancelled|Cancelled AU Time (取り消された AU 時間)|Seconds|合計|取り消されたジョブの AU 時間の合計。|
 
+## <a name="microsoftdatalakestoreaccounts"></a>Microsoft.DataLakeStore/accounts
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|TotalStorage|保存量の合計|Bytes|最大値|アカウントに保存されたデータの総量。|
+|DataWritten|データ書き込み量|Bytes|合計|アカウントに書き込まれたデータの総量。|
+|DataRead|データ読み取り量|Bytes|合計|アカウントから読み取られたデータの総量。|
+|WriteRequests|書き込み要求|カウント|合計|アカウントへのデータ書き込み要求の数。|
+|ReadRequests|読み取り要求|カウント|合計|アカウントへのデータ読み取り要求の数。|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
@@ -428,6 +472,10 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |d2c.endpoints.latency.serviceBusTopics|Service Bus トピック エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージと Service Bus トピック エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
 |d2c.endpoints.egress.builtIn.events|組み込みエンドポイント (イベント/メッセージ) に配信されたメッセージ|カウント|合計|メッセージが組み込みエンドポイント (イベント/メッセージ) に正常に書き込まれた回数|
 |d2c.endpoints.latency.builtIn.events|組み込みエンドポイント (イベント/メッセージ) のメッセージ待機時間|ミリ秒|平均|IoT ハブの受信メッセージと組み込みエンドポイント (メッセージ/イベント) の受信メッセージの間の平均待機時間 (ミリ秒) |
+|d2c.endpoints.egress.storage|ストレージ エンドポイントに配信されたメッセージ|カウント|合計|メッセージがストレージ エンドポイントに正常に書き込まれた回数|
+|d2c.endpoints.latency.storage|ストレージ エンドポイントのメッセージの待機時間|ミリ秒|平均|IoT ハブの受信メッセージとストレージ エンドポイントの受信メッセージの間の平均待機時間 (ミリ秒)|
+|d2c.endpoints.egress.storage.bytes|ストレージに書き込まれたデータ|Bytes|合計|ストレージ エンドポイントに書き込まれたデータ量 (バイト)|
+|d2c.endpoints.egress.storage.blobs|ストレージに書き込まれた BLOB|カウント|合計|ストレージ エンドポイントに書き込まれた BLOB の数|
 |d2c.twin.read.success|成功したデバイスからのツイン読み取り|カウント|合計|デバイスが開始して成功したツイン読み取りの数。|
 |d2c.twin.read.failure|失敗したデバイスからのツイン読み取り|カウント|合計|デバイスが開始したツイン読み取りの失敗数。|
 |d2c.twin.read.size|デバイスからのツイン読み取りの応答サイズ|バイト|平均|デバイスが開始して成功したツイン読み取りの平均、最小、および最大サイズ。|
@@ -519,14 +567,14 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|スループット|スループット|BytesPerSecond|平均||
+|スループット|スループット|BytesPerSecond|平均|Application Gateway が処理した 1 秒あたりのバイト数|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|BytesIn|BytesIn|カウント|合計||
-|BytesOut|BytesOut|カウント|合計||
+|BytesIn|BytesIn|カウント|合計|Azure の受信バイト数|
+|BytesOut|BytesOut|カウント|合計|Azure の送信バイト数|
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
@@ -794,6 +842,41 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
 |FunctionExecutionUnits|関数の実行単位|カウント|平均|関数の実行単位|
 |FunctionExecutionCount|関数の実行回数|カウント|平均|関数の実行回数|
+
+## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft.Web/hostingEnvironments/multiRolePools
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|要求数|要求数|カウント|合計|要求数|
+|BytesReceived|受信データ|Bytes|合計|受信データ|
+|BytesSent|送信データ|Bytes|合計|送信データ|
+|Http101|Http 101|カウント|合計|Http 101|
+|Http2xx|HTTP 2xx|カウント|合計|HTTP 2xx|
+|Http3xx|HTTP 3xx|カウント|合計|HTTP 3xx|
+|Http401|HTTP 401|カウント|合計|HTTP 401|
+|Http403|HTTP 403|カウント|合計|HTTP 403|
+|Http404|HTTP 404|カウント|合計|HTTP 404|
+|Http406|HTTP 406|カウント|合計|HTTP 406|
+|Http4xx|HTTP 4xx|カウント|合計|HTTP 4xx|
+|Http5xx|HTTP サーバー エラー|カウント|合計|HTTP サーバー エラー|
+|AverageResponseTime|平均応答時間|Seconds|平均|平均応答時間|
+|CpuPercentage|CPU の割合|Percent|平均|CPU の割合|
+|MemoryPercentage|メモリの割合|Percent|平均|メモリの割合|
+|DiskQueueLength|ディスク キューの長さ|カウント|合計|ディスク キューの長さ|
+|HttpQueueLength|HTTP キューの長さ|カウント|合計|HTTP キューの長さ|
+|ActiveRequests|アクティブな要求数|カウント|合計|アクティブな要求数|
+|TotalFrontEnds|フロント エンドの合計|カウント|平均|フロント エンドの合計|
+|SmallAppServicePlanInstances|S App Service プランの worker の数|カウント|平均|S App Service プランの worker の数|
+|MediumAppServicePlanInstances|M App Service プランの worker の数|カウント|平均|M App Service プランの worker の数|
+|LargeAppServicePlanInstances|L App Service プランの worker の数|カウント|平均|L App Service プランの worker の数|
+
+## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft.Web/hostingEnvironments/workerPools
+
+|メトリック|メトリックの表示名|単位|集計の種類|Description|
+|---|---|---|---|---|
+|WorkersTotal|worker の合計数|カウント|平均|worker の合計数|
+|WorkersAvailable|利用可能な worker の数|カウント|平均|利用可能な worker の数|
+|WorkersUsed|使用済みの worker の数|カウント|平均|使用済みの worker の数|
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Monitor のメトリックを確認します](monitoring-overview-metrics.md)

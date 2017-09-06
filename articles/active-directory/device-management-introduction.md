@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: c8b8408f76534a808fd60e331282f8191905df58
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: fdc597c9e88e932eace5962c79af4dc3805685a0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-device-management-in-azure-active-directory"></a>Azure Active Directory のデバイス管理の概要
@@ -31,7 +31,9 @@ ms.lasthandoff: 08/23/2017
 
 ユーザーは、デバイスを通して企業の資産にアクセスしています。 IT 管理者は、企業の資産を保護するために、これらのデバイスを管理します。 管理することによって、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを確信できます。 
 
-このトピックでは、Azure AD のデバイス管理によって、この目標を達成する方法について説明します。
+デバイス管理は、[デバイスに基づく条件付きアクセス](active-directory-conditional-access-policy-connected-applications.md)の基礎でもあります。 デバイスベースの条件付きアクセスによって、環境内のリソースへのアクセスは、信頼されているデバイスだけで実行できるようにすることができます。   
+
+このトピックでは、Azure Active Directory でのデバイス管理のしくみについて説明します。
 
 ## <a name="getting-devices-under-the-control-of-azure-ad"></a>デバイスを Azure AD の管理下におく
 
@@ -145,9 +147,14 @@ Azure AD のデバイス管理を使用して、次の操作を実行できま�
 
 ## <a name="next-steps"></a>次のステップ
 
+- Azure Portal でデバイスを管理する方法の概要については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください
+
 - デバイスベースの条件付きアクセスについて詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイスベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」を参照してください。
 
-- ハイブリッド Azure AD 参加済みデバイスを設定するには、「[ハイブリッド Azure Active Directory 参加済みデバイスの構成方法](device-management-hybrid-azuread-joined-devices-setup.md)」を参照してください。
+- セットアップするには:
+    - Azure Active Directory 登録済み Windows 10 デバイスの場合は、[Azure Active Directory 登録済み Windows 10 デバイスを構成する方法](device-management-azuread-registered-devices-windows10-setup.md)に関するページを参照してください。
+    - Azure Active Directory 参加済みデバイスの場合は、[Azure Active Directory 参加済みデバイスを構成する方法](device-management-azuread-joined-devices-setup.md)に関するページを参照してください。
+    - ハイブリッド Azure AD 参加済みデバイスの場合は、[ハイブリッド Azure Active Directory 参加済みデバイスを構成する方法](device-management-hybrid-azuread-joined-devices-setup.md)に関するページを参照してください。
 
 
 

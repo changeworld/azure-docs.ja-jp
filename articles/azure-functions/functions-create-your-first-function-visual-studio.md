@@ -1,11 +1,10 @@
-
 ---
 title: "Visual Studio を使用して Azure で初めての関数を作成する | Microsoft Docs"
 description: "Azure Functions Tools for Visual Studio を使用して、HTTP によってトリガーされる単純な関数を作成し、Azure に発行します。"
 services: functions
 documentationcenter: na
 author: rachelappel
-manager: erikre
+manager: cfowler
 editor: 
 tags: 
 keywords: "Azure Functions, 関数, イベント処理, コンピューティング, サーバーなしのアーキテクチャ"
@@ -19,10 +18,10 @@ ms.date: 07/05/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7e1fcecbf77da402b8c223caf6a2e81c704c3219
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: 8291986b123ed98b9c2bd4ec915e1a18b6e0cbb7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
@@ -60,6 +59,10 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
     ![新しい Azure 関数の作成](./media/functions-create-your-first-function-visual-studio/functions-vstools-add-new-function-2.png)
 
+    コード ファイルが、関数コードを実装するクラスを含むプロジェクトに追加されます。 このコードは、値を受け取ってエコー バックするテンプレートに基づいています。 **FunctionName** 属性は関数の名前を設定し、 **HttpTrigger** 属性は、関数をトリガーするメッセージを示します。 
+
+    ![関数コード ファイル](./media/functions-create-your-first-function-visual-studio/functions-code-page.png)
+
 HTTP によってトリガーされる関数を作成できたので、この関数をローカル コンピューターでテストすることができます。
 
 ## <a name="test-the-function-locally"></a>関数をローカルでテストする
@@ -72,7 +75,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
     ![Azure ローカル ランタイム](./media/functions-create-your-first-function-visual-studio/functions-vstools-f5.png)
 
-3. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `&name=<yourname>` を追加して、要求を実行します。 関数によって返されたローカルの GET 要求に対するブラウザーでの応答を次に示します。 
+3. HTTP 要求の URL をブラウザーのアドレス バーに貼り付けます。 この URL にクエリ文字列 `?name=<yourname>` を追加して、要求を実行します。 関数によって返されたローカルの GET 要求に対するブラウザーでの応答を次に示します。 
 
     ![ブラウザーでの関数 localhost の応答](./media/functions-create-your-first-function-visual-studio/functions-test-local-browser.png)
 
@@ -88,7 +91,7 @@ Azure Functions Core Tools を使用すると、ローカルの開発用コン�
 
 ## <a name="test-your-function-in-azure"></a>Azure で関数をテストする
 
-1. [発行プロファイル] ページから関数アプリのベース URL をコピーします。 関数をローカルでテストしたときに使用した URL の `localhost:port` 部分を新しいベース URL に置き換えます。 前と同様に、この URL にクエリ文字列 `&name=<yourname>` を追加してから、要求を実行します。
+1. [発行プロファイル] ページから関数アプリのベース URL をコピーします。 関数をローカルでテストしたときに使用した URL の `localhost:port` 部分を新しいベース URL に置き換えます。 前と同様に、この URL にクエリ文字列 `?name=<yourname>` を追加してから、要求を実行します。
 
     HTTP によってトリガーされる関数を呼び出す URL は、次のようになります。
 

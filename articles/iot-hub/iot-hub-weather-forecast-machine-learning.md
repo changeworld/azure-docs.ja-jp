@@ -13,13 +13,13 @@ ms.devlang: arduino
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 08/25/2017
 ms.author: xshi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
-ms.openlocfilehash: 872930fd127729e0f444942ad1ee6fa11465ceb9
+ms.translationtype: HT
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 50ae54b9476c49b80236e295c0bf244df8236cff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/25/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Azure Machine Learning で IoT Hub からのセンサー データを使用して天気予報を行う
@@ -55,7 +55,7 @@ Azure Machine Learning で Azure IoT Hub から取得した気温と湿度のデ
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>天気予報モデルを Web サービスとしてデプロイする
 
 1. [[weather prediction model] \(天気予報モデル) ページ](https://gallery.cortanaintelligence.com/Experiment/Weather-prediction-model-1)に移動します。
-1. Microsoft Azure Machine Leaning Studio の **[Studio で開く]** をクリックします。
+1. Microsoft Azure Machine Learning Studio の **[Studio で開く]** をクリックします。
    ![Cortana Intelligence ギャラリーで [weather prediction model] \(天気予報モデル) ページを開く](media/iot-hub-weather-forecast-machine-learning/2_weather-prediction-model-in-cortana-intelligence-gallery.png)
 1. **[実行]** をクリックしてモデルの手順を検証します。 この手順の完了までに約 2 分かかります。
    ![Azure Machine Learning Studio で天気予報モデルを開く](media/iot-hub-weather-forecast-machine-learning/3_open-weather-prediction-model-in-azure-machine-learning-studio.png)

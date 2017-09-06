@@ -16,17 +16,17 @@ ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 86a4d6d3ab4d29fba8f554265958ffa079b69ec2
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 90a6172dbd887ecda5a9f5d9082a4e136092bc10
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="customize-how-the-connected-factory-solution-displays-data-from-your-opc-ua-servers"></a>コネクテッド ファクトリ ソリューションによる OPC UA サーバー データの表示方法をカスタマイズする
 
 ## <a name="introduction"></a>はじめに
 
-コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[FAQ][lnk-faq] を参照してください。
+コネクテッド ファクトリ ソリューションは、自身に接続されている OPC UA サーバーのデータを集計して表示します。 このソリューションでは OPC UA サーバーを参照し、コマンドを送信することができます。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) に関するページをご覧ください。
 
 ソリューションの集計データの例には、ダッシュボードで確認できるファクトリ レベル、ライン レベル、およびステーション レベルの総合設備効率 (OEE) と主要業績評価指標 (KPI) が含まれます。 次のスクリーンショットは、**ミュンヘン** ファクトリの**生産ライン 1** にある**アセンブリ** ステーションの OEE 値と KPI 値を示しています。
 
@@ -173,8 +173,9 @@ JSON ファイルの内容は、ファクトリ ノード、生産ライン ノ�
 コネクテッド ファクトリ事前構成済みソリューションの詳細については、次の記事を参照してください。
 
 * [コネクテッド ファクトリ事前構成済みソリューションのチュートリアル][lnk-rm-walkthrough]
-* [コネクティッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
+* [コネクテッド ファクトリ用のゲートウェイをデプロイする][lnk-connect-cf]
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
+* [コネクテッド ファクトリに関する FAQ](iot-suite-faq-cf.md)
 * [FAQ][lnk-faq]
 
 

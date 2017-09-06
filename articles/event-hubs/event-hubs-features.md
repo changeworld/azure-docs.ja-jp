@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/17/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: d790eec30b669469a0837ccdc14b771d1953829b
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: a74d767d57eb5ce2b3a716f9ba908a451f25f538
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -54,7 +54,7 @@ Event Hubs では、 *発行元ポリシー*を介してイベント プロデ�
 
 ## <a name="capture"></a>キャプチャ
 
-[Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントにアーカイブすることができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure BLOB ストレージ アカウントとコンテナーを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
+[Event Hubs Capture](event-hubs-capture-overview.md) では、Event Hubs のストリーミング データを自動でキャプチャし、任意の BLOB ストレージ アカウントまたは Azure Data Lake Service アカウントのいずれかに保存することができます。 Azure Portal から Capture を有効にし、キャプチャを実行する最小サイズと時間枠を指定できます。 Event Hubs Capture を使用すると、キャプチャされたデータを格納するための独自の Azure Blob Storage アカウントとコンテナー または Azure Data Lake Service アカウントを指定することができます。 キャプチャされたデータは、Apache Avro 形式で書き込まれます。
 
 ## <a name="partitions"></a>パーティション
 

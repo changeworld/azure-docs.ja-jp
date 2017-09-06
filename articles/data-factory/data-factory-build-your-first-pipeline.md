@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: b01a03fa362f8a9677e625945a2864c77d49f1bb
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 08e2988d455cca21726162d9fb128e91fd51f463
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>チュートリアル: Hadoop クラスターを使用してデータを変換する最初のパイプラインを作成する
@@ -81,7 +81,7 @@ adfgetstarted/partitioneddata/year=2016/month=3/000000_0
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 1. **Azure サブスクリプション** - Azure サブスクリプションがない場合は、無料試用版アカウントを数分で作成することができます。 無料試用版アカウントの取得方法については、「 [無料試用版](https://azure.microsoft.com/pricing/free-trial/) 」を参照してください。
-2. **Azure Storage** – このチュートリアルのデータは、Azure ストレージ アカウントを使用して格納します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 ストレージ アカウントを作成したら、**アカウント名**と**アクセス キー**をメモしておきます。 「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
+2. **Azure Storage** - このチュートリアルでは、データの格納に汎用 (Standard) の Azure ストレージ アカウントを使用します。 汎用 (Standard) の Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 ストレージ アカウントを作成したら、**アカウント名**と**アクセス キー**をメモしておきます。 「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/common/storage-create-storage-account.md#view-and-copy-storage-access-keys)」を参照してください。
 3. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) にある Hive クエリ ファイル (**HQL**) をダウンロードして確認します。 このクエリが、入力データを変換して出力データを生成します。 
 4. [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log) にあるサンプル入力ファイル (**input.log**) をダウンロードして確認します。
 5. Azure Blob Storage に **adfgetstarted** という名前の BLOB コンテナーを作成します。 

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2017
 ms.author: ganesr;cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: def88b869b82d2d675ef7e071ee58b08278321d7
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: f17bf3e475a33cfc617e8a026e9606b3792101f3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="configure-route-filters-for-microsoft-peering"></a>Microsoft ピアリングにルート フィルターを構成する
@@ -133,17 +133,17 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ## <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
 
-**この操作は PowerShell のみで実行できます。**
+ルート フィルターから回線をデタッチするには、その回線を右クリックし、[関連付け解除] をクリックします。
 
-ExpressRoute 回線からルート フィルターをデタッチした後は、いずれのプレフィックスも BGP セッションを通じてアドバタイズされません。 ExpressRoute 回線からルート フィルターをデタッチするには、次のコマンドを使用します。
-  
-```powershell
-$ckt.Peerings[0].RouteFilter = $null
-Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
-```
+![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
+
 
 ## <a name="delete"></a>ルート フィルターを削除するには
 
 ルート フィルターを削除するには、[削除] ボタンを選択します。 
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DeleteRouteFilter.png) 
+
+## <a name="next-steps"></a>次のステップ
+
+ExpressRoute の詳細については、「 [ExpressRoute のFAQ](expressroute-faqs.md)」をご覧ください。

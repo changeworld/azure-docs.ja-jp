@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/28/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 9253e05931e7434f9e69765fa552f1157b1c8cbb
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -31,7 +31,7 @@ Azure Active Directory アプリケーション プロキシと PingAccess の�
 
 PingAccess for Azure Active Directory は、認証用のヘッダーを使用するアプリケーションにユーザーがシングル サインオンでアクセスできるようにする PingAccess のサービスです。 これらのアプリは、アプリケーション プロキシによって他のアプリと同じように扱われます。Azure AD を使ってアクセスが認証され、コネクタ サービスを通じてトラフィックが受け渡されます。 PingAccess は、アプリケーションが読み取り可能な形式で認証を受け取れるよう、アプリケーションの手前で Azure AD からのアクセス トークンをヘッダーに変換します。
 
-社内のアプリにサインインするユーザーからは、何が起こっているかは見えません。 ユーザーはいつもどおり、任意のデバイスでどこからでも作業を行うことができます。 ユーザーが職場にいる場合は、アプリケーション プロキシも PingAccess もトラフィックを遮断することはないため、ユーザーはいつもと同じエクスペリエンスを得ます。
+社内のアプリにサインインするユーザーからは、何が起こっているかは見えません。 ユーザーはいつもどおり、任意のデバイスでどこからでも作業を行うことができます。 
 
 アプリケーション プロキシ コネクタは、その認証の種類に関係なくすべてのアプリへのリモート トラフィックを誘導します。そのため負荷分散も引き続き自動的に行われます。
 
@@ -131,6 +131,20 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 6. [アプリの登録] ブレードを閉じるか、左側いっぱいにスクロールして、Azure Active Directory メニューに戻ります。
 7. **[プロパティ]**を選択します。
 8. **[ディレクトリ ID]** の GUID を保存します。
+
+### <a name="optional---update-graphapi-to-send-custom-fields"></a>省略可能 - GraphAPI を更新してカスタム フィールドを送信する
+
+Azure AD が認証のために送信するセキュリティ トークンの一覧については、「[Azure AD のトークン リファレンス](./develop/active-directory-token-and-claims.md)」を参照してください。 他のトークンを送信するカスタム要求が必要な場合は、GraphAPI を使用して、アプリのフィールド *acceptMappedClaims* を**True**に設定します。 この構成を行うには、Azure AD Graph Explorer または MS Graph のいずれかを使用できます。 
+
+次の例では、Graph Explorer を使用しています。
+
+```
+PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_your_application> 
+
+{
+  "acceptMappedClaims":true
+}
+```
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>PingAccess をダウンロードしてアプリを構成する
 

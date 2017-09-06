@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5574a234076797852b32631b90bb563441bbc6e7
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 00f2ecbf0d8542741bd78dcfe2692e6627b1f3cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
@@ -214,6 +214,9 @@ Azure Virtual Network のネットワーク トラフィックは次のメソッ
 
 * **ネットワーク セキュリティ グループ** (NSG) を使用すると、ネットワーク の送受信トラフィックをフィルター処理できます。 詳細については、「[ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング](../virtual-network/virtual-networks-nsg.md)」をご覧ください。
 
+    > [!WARNING]
+    > HDInsight では、送信トラフィックの制限をサポートしていません。
+
 * **ユーザー定義ルート**(UDR) は、ネットワーク内のリソース間のトラフィックのフローを定義します。 ユーザー定義ルートの詳細については、「[user-defined routes and IP forwarding (ユーザー定義ルートと IP 転送)](../virtual-network/virtual-networks-udr-overview.md)」をご覧ください。
 
 * **ネットワーク仮想アプライアンス**は、ファイアウォールやルーターなどのデバイスの機能をレプリケートします。 詳細については、「[ネットワーク アプライアンス](https://azure.microsoft.com/solutions/network-appliances)」をご覧ください。
@@ -228,7 +231,7 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 1. HDInsight を使用する予定の Azure リージョンを特定します。
 
-2. HDInsight が必要とする IP アドレスを特定します。 許可される IP アドレスは、HDInsight クラスターと Virtual Network が存在するリージョンに固有である必要があります。 リージョン別の IP アドレスの一覧については、「[IP Addresses required by HDInsight (HDInsight が必要とする IP アドレス)](#hdinsight-ip)」のセクションをご覧ください。
+2. HDInsight が必要とする IP アドレスを特定します。 詳細ついては、[HDInsight が必要とする IP アドレス](#hdinsight-ip)に関するセクションをご覧ください。
 
 3. HDInsight をインストールする予定のサブネットのネットワーク セキュリティ グループまたはユーザー定義のルートを作成または変更します。
 
@@ -247,11 +250,14 @@ HDInsight では、いくつかのポート上のサービスを公開します�
 
 ## <a id="hdinsight-ip"></a>必須 IP アドレス
 
-Azure の正常性と管理サービスは、HDInsight と通信できる必要があります。 ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、これらのサービスの IP アドレスからのトラフィックが HDInsight に到達できるように許可してください。
+> [!IMPORTANT]
+> Azure の正常性と管理サービスは、HDInsight と通信できる必要があります。 ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、これらのサービスの IP アドレスからのトラフィックが HDInsight に到達できるように許可してください。
+>
+> トラフィックの制御に、ネットワーク セキュリティ グループもユーザー定義のルートも使用しない場合は、このセクションを無視してもかまいません。
 
-IP アドレスには、次の 2 種類があります。
+ネットワーク セキュリティ グループまたはユーザー定義のルートを使用する場合は、Azure の正常性および管理サービスからのトラフィックが HDInsight に到達できるように許可する必要があります。 次の手順を使用して、許可する必要がある IP アドレスを見つけます。
 
-* 許可が必要な 4 つの__グローバルな__ IP アドレス:
+1. 常に次の IP アドレスからのトラフィックを許可する必要があります。
 
     | IP アドレス | 許可されたポート | 方向 |
     | ---- | ----- | ----- |
@@ -260,10 +266,10 @@ IP アドレスには、次の 2 種類があります。
     | 168.61.48.131 | 443 | 受信 |
     | 138.91.141.162 | 443 | 受信 |
 
-* 許可が必要な__地域ごと__の IP アドレス:
+2. HDInsight クラスターが次のリージョンのいずれかにある場合は、そのリージョンに対して表示されている IP アドレスからのトラフィックを許可する必要があります。
 
     > [!IMPORTANT]
-    > 使用している Azure リージョンが一覧にない場合は、上で説明した 4 つのグローバル IP アドレスのみを使用してください。
+    > 使用している Azure リージョンが一覧にない場合は、手順 1. の 4 つの IP アドレスのみを使用してください。
 
     | 国 | リージョン | 許可された IP アドレス | 許可されたポート | 方向 |
     | ---- | ---- | ---- | ---- | ----- |
@@ -294,11 +300,7 @@ IP アドレスには、次の 2 種類があります。
 
     Azure Government に使用する IP アドレスについては、「[Azure Government Intelligence + Analytics (Azure Government のインテリジェンスと分析)](https://docs.microsoft.com/azure/azure-government/documentation-government-services-intelligenceandanalytics)」をご覧ください。
 
-> [!WARNING]
-> HDInsight では、送信トラフィックの制限をサポートしていません。受信トラフィックのみをサポートしています。
-
-> [!IMPORTANT]
-> 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
+3. 仮想ネットワークでカスタム DNS サーバーを使用する場合は、__168.63.129.16__ からのアクセスを許可する必要もあります。 これは、Azure の再帰リゾルバーのアドレスです。 詳細については、「[Name resolution for VMs and Role instances (VM とロール インスタンスの名前解決)](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」をご覧ください。
 
 詳細については、「[ネットワーク トラフィックのコントロール](#networktraffic)」のセクションをご覧ください。
 

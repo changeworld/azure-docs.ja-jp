@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 0c65ac74316421a0258f01143baa25ffecb5be3b
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: e5a658e0d20d42911870f2522f6c1bab7529ea11
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="api-management-advanced-policies"></a>API Management の高度なポリシー
@@ -308,8 +308,8 @@ ms.lasthandoff: 08/23/2017
 |---------------|-----------------|--------------|--------------|  
 |key|文字列。 式を使用できます。 同時実行スコープを指定します。 複数のポリシーで共有できます。|あり|該当なし|  
 |max-count|整数。 ポリシーに入力できる要求の最大数を指定します。|あり|該当なし|  
-|timeout|整数。 式を使用できます。 要求がスコープに入るまでに待機する必要がある秒数を指定します。この秒数を経過すると、要求は "403 要求が多すぎます" で失敗します。|いいえ|Infinity|  
-|max-queue-length|整数。 式を使用できます。 キューの最大長を指定します。 キューがいっぱいになっている場合、このポリシーに入ろうとしている受信した要求は、"403 要求が多すぎます" で終了します。|いいえ|Infinity|  
+|timeout|整数。 式を使用できます。 要求がスコープに入るまでに待機する必要がある秒数を指定します。この秒数を経過すると、要求は "429 要求が多すぎます" で失敗します。|いいえ|Infinity|  
+|max-queue-length|整数。 式を使用できます。 キューの最大長を指定します。 キューがいっぱいになっている場合、このポリシーに入ろうとしている受信した要求は、"429 要求が多すぎます" で終了します。|いいえ|Infinity|  
   
 ###  <a name="ChooseUsage"></a> 使用法  
  このポリシーは、次のポリシー [セクション](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#sections)と[スコープ](http://azure.microsoft.com/documentation/articles/api-management-howto-policies/#scopes)で使用できます。  

@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/10/2017
+ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 337c6142c27314150a21f1c80a17aae17cd0d67f
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 70483cc7edf0aa9eaac03bbd0dc9b7e8b946a7ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="securing-data-stored-in-azure-data-lake-store"></a>Azure Data Lake Store に格納されているデータのセキュリティ保護
 Azure Data Lake Store のデータをセキュリティで保護するには 3 つの手順が必要です。
 
-1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 Azure ポータルで、これらのセキュリティ グループを使用してロールベースのアクセス制御 (RBAC) を実装します。 詳細については、「 [Microsoft Azure でのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)」を参照してください。
+1. まず、Azure Active Directory (AAD) でセキュリティ グループを作成します。 これらのセキュリティ グループを使用して、Azure Portal でロールベースのアクセス制御 (RBAC) を実装します。 詳細については、[Microsoft Azure でのロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)に関するページを参照してください。
 2. AAD セキュリティ グループを Azure Data Lake Store アカウントに割り当てます。 これにより、ポータルから Data Lake Store アカウントへのアクセス、およびポータルまたは API による管理操作が制御されます。
 3. AAD セキュリティ グループをアクセス制御リスト (ACL) として Data Lake Store ファイル システムに割り当てます。
 4. さらに、Data Lake Store 内のデータにアクセスできるクライアントの IP アドレスの範囲を設定することもできます。
@@ -41,7 +41,7 @@ Azure Data Lake Store のデータをセキュリティで保護するには 3 �
 AAD セキュリティ グループを作成する手順および AAD セキュリティ グループにユーザーを追加する手順については、「 [Azure Active Directory のセキュリティ グループの管理](../active-directory/active-directory-accessmanagement-manage-groups.md)」を参照してください。
 
 > [!NOTE] 
-> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、グループにサービス プリンシパルを追加するには、[Azure AD の PowerShell モジュール](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)を使用してください。
+> Azure Portal を使用すると、Azure AD のグループにユーザーとその他のグループの両方を追加できます。 ただし、サービス プリンシパルをグループに追加するには、[Azure AD の PowerShell モジュール](../active-directory/active-directory-accessmanagement-groups-settings-v2-cmdlets.md)を使用します。
 > 
 > ```powershell
 > # Get the desired group and service principal and identify the correct object IDs

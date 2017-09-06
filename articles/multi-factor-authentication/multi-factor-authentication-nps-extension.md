@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 872ff2ac90f982f294ee6e6345dd1936323a1fb5
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: b9061283952ae6b14431f5e88295eefac173ae01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
@@ -109,7 +109,7 @@ NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 �
 1. RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
    - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
-2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
+2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにする何らかの手段があるかどうか。
 
 NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
 
@@ -174,7 +174,7 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 ### <a name="configuration-limitations"></a>構成の制限
 
 - Azure MFA の NPS 拡張機能には、MFA サーバーからクラウドにユーザーと設定を移行するためのツールは含まれません。 このため、既存のデプロイではなく、新しいデプロイに拡張機能を使用することをお勧めします。 既存のデプロイで拡張機能を使用する場合、ユーザーはクラウドに MFA の詳細を設定するために、再度セキュリティ確認を実行する必要があります。  
-- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。 代替ログイン ID や カスタム AD フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成することはできません。  
+- NPS 拡張機能は、オンプレミスの Active Directory の UPN を使用して Azure MFA のユーザーを識別し、セカンダリ認証を行います。代替ログイン ID や カスタム Active Directory フィールドなど、UPN 以外の識別子を使用するように NPS 拡張機能を構成できます。 詳細については、[Multi-Factor Authentication の NPS の拡張機能の詳細構成オプション](multi-factor-authentication-advanced-vpn-configurations.md)に関するページをご覧ください。
 - すべての暗号化プロトコルで、すべての検証メソッドがサポートされるわけではありません。
    - **PAP** は、電話、テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コードをサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
@@ -244,6 +244,8 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 ## <a name="next-steps"></a>次のステップ
 
 - ログインに別の ID を設定するか、「[Advanced configuration options for the NPS extension for Multi-Factor Authentication](nps-extension-advanced-configuration.md)」 (Multi-Factor Authentication の NPS 拡張機能の高度な構成オプション) の 2 段階認証を実行しない IP の例外リストを設定する
+
+- NPS 拡張機能を使用して[リモート デスクトップ ゲートウェイ](nps-extension-remote-desktop-gateway.md)と [VPN サーバー](nps-extension-vpn.md)を統合する方法を学習する
 
 - [Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](multi-factor-authentication-nps-errors.md)
 

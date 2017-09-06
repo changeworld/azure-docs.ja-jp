@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 43bb5a1aa246004346765d1be4aea236ca17abd2
+ms.translationtype: HT
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: e49d1a0e0ccc6567d0a6841817667717ff5dba76
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Data Lake Analytics の管理
@@ -146,6 +146,24 @@ U-SQL 開発者が Data Lake Analytics サービスを使用できるように�
 1. Azure Portal で Data Lake Analytics アカウントに移動します。
 2. **[すべてのジョブの表示]** をクリックします。 アカウントのすべてのアクティブなジョブと最近終了したジョブの一覧が表示されます。
 3. 必要に応じて **[フィルター]** をクリックして、**[時間の範囲]**、**[ジョブ名]**、および **[作成者]** の値でジョブを見つけやすくします。 
+
+### <a name="monitoring-pipeline-jobs"></a>パイプライン ジョブの監視
+パイプラインの一部であるジョブは、特定のシナリオを実現するために、通常は順次実行されます。 たとえば、Customer Insights 用に利用状況をクリーンアップ、抽出、変換、集約するパイプラインがあります。 パイプライン ジョブは、ジョブの送信時に "Pipeline" プロパティを使用して識別されます。 ADF V2 を使用してスケジュールされたジョブには、このプロパティが自動的に設定されます。 
+
+パイプラインの一部である U-SQL ジョブの一覧を表示するには、次の手順を実行します。 
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
+3. **[パイプライン ジョブ]** タブをクリックします。パイプライン ジョブの一覧が、各パイプラインの集計された統計と共に表示されます。
+
+### <a name="monitoring-recurring-jobs"></a>定期的なジョブの監視
+定期的なジョブとは、ビジネス ロジックは同一で、入力データが実行するたびに異なるジョブです。 定期的なジョブは、常に成功し、実行時間も比較的安定していることが理想的です。定期的なジョブの動作を監視することは、ジョブの正常性を保つのに役立ちます。 定期的なジョブは、"Recurrence" プロパティを使用して識別されます。 ADF V2 を使用してスケジュールされたジョブには、このプロパティが自動的に設定されます。
+
+定期的に実行される U-SQL ジョブの一覧を表示するには、次の手順を実行します。 
+
+1. Azure Portal で Data Lake Analytics アカウントに移動します。
+2. **[ジョブ洞察]** をクリックします。 既定では [すべてのジョブ] タブに移動し、実行中のジョブ、キューに登録済みのジョブ、終了したジョブの一覧が表示されます。
+3. **[定期的なジョブ]** タブをクリックします。定期的なジョブの一覧が、それぞれのジョブの集計された統計と共に表示されます。
 
 ## <a name="manage-policies"></a>ポリシーの管理
 

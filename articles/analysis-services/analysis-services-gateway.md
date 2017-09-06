@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/21/2017
 ms.author: owend
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 8c142c5e89c5e4eb45bddd0943a6a130cc876f5a
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 514b5404e8cbfa0baa657eb41736e20cad502638
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Azure のオンプレミスのデータゲートウェイを使用してオンプレミスのデータ ソースに接続する
@@ -80,10 +80,10 @@ ms.lasthandoff: 08/24/2017
 | *.login.windows.net |443 |HTTPS |
 | *.servicebus.windows.net |5671 ～ 5672 |Advanced Message Queuing Protocol (AMQP) |
 | *.servicebus.windows.net |443、9350 ～ 9354 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *. frontend.clouddatahub.net |443 |HTTPS |
+| *. frontend.clouddatahub.net |使用します |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
+| *. msftncsi.com |使用します |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 
 ### <a name="force-https"></a>Azure Service Bus との HTTPS 通信の強制
@@ -99,11 +99,11 @@ ms.lasthandoff: 08/24/2017
 
 ### <a name="general"></a>全般
 
-**Q**: SQL Azure など、クラウドのデータ ソースにゲートウェイは必要ですか? <br/>
+**Q**: クラウドにデータ ソースのゲートウェイ (Azure SQL Database など) は必要ですか? <br/>
 **A**: いいえ。 ゲートウェイは、オンプレミス データ ソースのみに接続します。
 
 **Q**: ゲートウェイはデータ ソースと同じコンピューターにインストールする必要がありますか? <br/>
-**A**: いいえ。 ゲートウェイは、指定された接続情報を使用してデータ ソースに接続します。 その意味ではゲートウェイをクライアント アプリケーションと見なすことができます。 ゲートウェイに必要なのは、指定されたサーバー名に接続する機能だけです。
+**A**: いいえ。 ゲートウェイは、指定された接続情報を使用してデータ ソースに接続します。 その意味ではゲートウェイをクライアント アプリケーションと見なすことができます。 ゲートウェイに必要なのは、通常は同じネットワーク上にある、指定されたサーバー名に接続する機能だけです。
 
 <a name="why-azure-work-school-account"></a>
 
@@ -130,7 +130,7 @@ ms.lasthandoff: 08/24/2017
 **A**: ゲートウェイが使用するポートとホストを確認してください。
 
 **Q**: 実際の Windows サービスは何と呼ばれていますか?<br/>
-**A**: サービスでは、ゲートウェイは、Power BI Enterprise Gateway Service と呼ばれています。
+**A**: Service では、ゲートウェイは、オンプレミスのデータ ゲートウェイ サービスと呼ばれています。
 
 **Q**: ゲートウェイ Windows サービスは、Azure Active Directory アカウントを使用して実行できますか? <br/>
 **A**: いいえ。 Windows サービスには有効な Windows アカウントが必要です。 既定では、Windows サービスはサービス SID の NT SERVICE\PBIEgwService を使用して実行されます。
@@ -151,7 +151,7 @@ ms.lasthandoff: 08/24/2017
 クエリをトレースするためにデータ ソースに用意されているツールを使用することもできます。 たとえば、SQL Server 用の拡張イベントまたは SQL Profiler や Analysis Services を使用できます。
 
 **Q**: ゲートウェイのログはどこにありますか? <br/>
-**A**: このトピックの後半の「ツール」を参照してください。
+**A**: このトピックの後半の「ログ」を参照してください。
 
 ### <a name="update"></a>最新バージョンへの更新
 

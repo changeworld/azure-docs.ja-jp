@@ -4,7 +4,7 @@ description: "Azure Functions での OpenAPI サポートの概要"
 services: functions
 documentationcenter: 
 author: alexkarcher-msft
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: functions
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: c144e22654629f600b8f630363239efc82ac79d7
+ms.translationtype: HT
+ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
+ms.openlocfilehash: e9499d036c8c5ef5a56a70f7e7ecf9afbff4e6b0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Azure Functions での OpenAPI 2.0 メタデータのサポート (プレビュー)
@@ -33,9 +32,9 @@ Azure Functions での OpenAPI 2.0 (旧称 Swagger) メタデータ サポート
 >特定の機能の詳細について学習するには、[概要チュートリアル](./functions-api-definition-getting-started.md)から始めて後でこのドキュメントに戻ることをお勧めします。
 
 ## <a name="enable"></a>OpenAPI 定義のサポートの有効化
-すべての OpenAPI 設定を関数アプリの設定の **API の定義 (プレビュー)** ページで構成できます。
+すべての OpenAPI 設定を、関数アプリの**プラットフォーム機能**の **API の定義**ページで構成できます。
 
-ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、**[API 定義のソース]** を **[関数]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
+ホストされる OpenAPI と定義およびクイック スタート定義の生成を有効にするには、**[API 定義のソース]** を **[関数 (プレビュー)]** に設定します。 **外部 URL** を使用して、他の場所でホストされている OpenAPI 定義を自分の関数で使用できます。
 
 ## <a name="generate-definition"></a>関数のメタデータからの Swagger スケルトンの生成
 テンプレートは、最初の OpenAPI 定義の記述を開始するのに役立ちます。 定義テンプレート機能では、HTTP トリガー関数ごとに、function.json ファイル内のすべてのメタデータを使用してスパース OpenAPI 定義が作成されます。 要求や応答のテンプレートなど、[OpenAPI 仕様](http://swagger.io/specification/)から API に関する詳細情報を入力する必要があります。

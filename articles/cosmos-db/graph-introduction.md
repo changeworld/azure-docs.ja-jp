@@ -10,21 +10,24 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 05/21/2017
+ms.date: 08/29/2017
 ms.author: denlee
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 4ee52c2665d5856cb0022365edf0485458b629fe
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: af4c67accf43c2f4f1498e3cafad6e9087a923af
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="introduction-to-azure-cosmos-db-graph-api"></a>Azure Cosmos DB の概要: Graph API
 
 [Azure Cosmos DB](introduction.md) は、ミッション クリティカルなアプリケーション向けの、Microsoft のグローバル分散マルチモデル データベース サービスです。 Azure Cosmos DB は、[ターン キー グローバル配布](distribute-data-globally.md)、[スループットとストレージの世界規模でのエラスティック スケーリング](partition-data.md)、99 パーセンタイルの 1 桁ミリ秒の待機時間、[明確に定義された 5 種類の整合性レベル](consistency-levels.md)を提供し、高可用性を保証します。これらはすべて[業界最高レベルの SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) によってサポートされています。 Azure Cosmos DB は、[データのインデックスを自動的に作成](http://www.vldb.org/pvldb/vol8/p1668-shukla.pdf)します。スキーマとインデックスの管理に対処する必要はありません。 Azure Cosmos DB はマルチモデルであり、ドキュメント、キーと値、グラフ、列指向の各データ モデルをサポートします。
 
-![Gremlin、グラフ、Azure Cosmos DB](./media/graph-introduction/graph-gremlin.png)
+最初に、Kirill Gavrylyuk が Azure Cosmos DB でグラフを利用する方法について解説している次のビデオを視聴することをお勧めします。
 
+> [!VIDEO https://channel9.msdn.com/Shows/Azure-Friday/Graphs-with-Azure-Cosmos-DB-Gremlin-API/player]
+> 
+> 
 Azure Cosmos DB Graph API には次のものが含まれています。
 
 - グラフのモデリング

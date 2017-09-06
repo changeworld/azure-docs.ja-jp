@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/18/2017
+ms.date: 08/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: a1b8445a4547f8742c8a60de2df8f3b535dfab5d
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 1deb3d91049d45fe26791783e13bd23e0a7d9f95
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -61,6 +61,8 @@ ms.lasthandoff: 07/31/2017
 ## <a name="linked-sign-on"></a>リンクされたサインオン
 
 オンプレミスの ID に対してシングル サインオン ソリューションを既に設定している場合は、**[リンクされたサインオン]** を選択します。 このオプションは、Azure Active Directory が既存の SSO ソリューションを利用して、ユーザーがアプリケーションにリモート アクセスできるようにします。 
+
+リンクされたサインオン (公式には既存のシングル サインオンとして知られています) の詳細については、「[Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md#how-does-single-sign-on-with-azure-active-directory-work)」をご覧ください。
 
 ## <a name="integrated-windows-authentication"></a>統合 Windows 認証
 
