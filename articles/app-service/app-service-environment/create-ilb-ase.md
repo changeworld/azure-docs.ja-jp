@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/13/2017
 ms.author: ccompy
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 58c5b984c677bf9119db52d5721d5687c00a83fa
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e7f85aaf2d940f114248d5925a1e97fe0f6bda6c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="create-and-use-an-internal-load-balancer-with-an-app-service-environment"></a>App Service Environment で内部ロード バランサーを作成して使用する #
@@ -170,24 +170,27 @@ SSL 証明書を .pfx ファイルとして変換/保存します。 .pfx ファ
 
 6. ASE ドメインで使用する DNS を設定します。 お使いの DNS のドメインにワイルドカードを使用できます。 いくつかの簡単なテストを行うには、ご使用の VM 上の hosts ファイルを編集して、Web アプリの名前を VIP の IP アドレスに設定します。
 
-    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。 その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
+    a. ASE のドメイン名が _.ilbase.com_ で、_mytestapp_ という名前の Web アプリを作成した場合、アドレスは _mytestapp.ilbase.com_ になります。その後 _mytestapp.ilbase.com_ を設定して ILB アドレスを解決します。 (Windows では、ホスト ファイルは _C:\Windows\System32\drivers\etc\_ にあります。)
 
     b. Web デプロイの発行または高度なコンソールへのアクセスをテストするには、_mytestapp.scm.ilbase.com_ のレコードを作成します。
 
-7. その VM でブラウザーを使用して、http://mytestapp.ilbase.com に移動します。 (またはドメインに Web アプリ名が含まれるいずれかのアドレスに移動します。)
+7. その VM でブラウザーを使用して、http://mytestapp.ilbase.com に移動します。(またはドメインに Web アプリ名が含まれるいずれかのアドレスに移動します。)
 
-8. その VM でブラウザーを使用して、https://mytestapp.ilbase.com に移動します。 自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
+8. その VM でブラウザーを使用して、https://mytestapp.ilbase.com に移動します。自己署名証明書を使用する場合は、セキュリティが確保されないことを受け入れます。
 
     ご使用の ILB の IP アドレスの一覧は **[IP アドレス]** の下に表示されます。 この一覧には、外部 VIP で使用される IP アドレスや受信管理トラフィック用の IP アドレスも含まれます。
 
     ![ILB の IP アドレス][5]
 
-### <a name="functions-and-the-ilb-ase"></a>関数と ILB ASE
+## <a name="web-jobs-functions-and-the-ilb-ase"></a>Web ジョブ、関数および ILB ASE ##
 
-ILB ASE で Azure Functions を使用するときに、"現在、関数を取得できません。 後でもう一度やり直してください。" というエラー メッセージが表示されることがあります。 このエラーは、Functions UI が HTTPS を介して scm サイトを使用することが原因で発生します。 この状況は、ブラウザーのルート証明書がない HTTP 証明書を ASE に使用している場合に、発生することがあります。 さらに、Internet Explorer\Edge ブラウザーでは *accept-invalid-cert* 設定がタブ間で共有されません。 したがって、次の 2 つのいずれかを行うことができます。
+関数と Web ジョブはどちらも ILB ASE 上でサポートされますが、それらとポータルを連動するには、SCM サイトへのネットワーク アクセスが必要です。  つまり、お使いのブラウザーが、仮想ネットワーク内のホストまたは仮想ネットワークに接続しているホストに存在する必要があります。  
 
-- 信頼された証明書ストアへの証明書の追加。 
-- Chrome の使用。 ただし、まず scm サイトに移動し、信頼されていない証明書を受け入れる必要があります。 それからポータルに戻ります。
+ILB ASE で Azure Functions を使用するときに、"現在、関数を取得できません。 後でもう一度やり直してください。" というエラー メッセージが表示されることがあります。 このエラーが発生するのは、Functions UIが SCM サイトを HTTPS で利用し、ルート証明書がブラウザーの信頼チェーンに存在しないためです。 Web ジョブにも同様の問題があります。 この問題を回避するには、次のいずれかの操作を行います。
+
+- 信頼された証明書ストアへの証明書の追加。 これで、Edge や Internet Explorer のブロックが解除されます。
+- Chrome を使用し、先に SCM サイトにアクセスし、信頼されていない証明書を受け入れてからポータルに移動します。
+- ブラウザーの信頼チェーンにある商用証明書を使用します。  これが最適な方法です。  
 
 ## <a name="dns-configuration"></a>DNS の構成 ##
 

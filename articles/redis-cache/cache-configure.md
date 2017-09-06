@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
-ms.date: 07/13/2017
+ms.date: 08/22/2017
 ms.author: sdanie
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: c1de192c405f2e93483527569c65d368cac40a9b
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 0274e58eb2e83202d4dbc58da0c67d0fdde22ede
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="how-to-configure-azure-redis-cache"></a>Azure Redis Cache の構成方法
@@ -224,29 +224,13 @@ Redis キースペース通知は、 **[詳細設定]** ブレードで構成し
 
 
 ### <a name="redis-data-persistence"></a>Redis データの保持
-**[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。
+**[Redis データ永続化]** をクリックして、Premium Cache のデータ永続化を有効にする、無効にする、または構成することができます。 Azure Redis Cache では、[RDB の永続化](cache-how-to-premium-persistence.md#configure-rdb-persistence)または [AOF の永続化](cache-how-to-premium-persistence.md#configure-aof-persistence)を使用して Redis の永続化を行うことができます。
 
-![Redis データの保持](./media/cache-configure/redis-cache-persistence-settings.png)
+詳細については、「 [Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
 
-Redis の永続化を有効にするには、 **[有効]** をクリックして RDB (Redis データベース) のバックアップを有効にします。 Redis の永続化を無効にするには、 **[無効]**をクリックします。
-
-バックアップの間隔を構成するには、次の **[バックアップの頻度]** ボックスの一覧のうち、いずれかをクリックします。 
-
-- **15 分**
-- **30 分**
-- **60 分**
-- **6 時間**
-- **12 時間**
-- **24 時間**
-
-前のバックアップ操作が正常に完了すると、バックアップ間隔のカウントダウンが開始され、期間が経過すると新しいバックアップが開始されます。
-
-**[ストレージ アカウント]** をクリックして使用するストレージ アカウントを選択し、**[ストレージ キー]** ボックスの一覧から使用する**プライマリ キー**または**セカンダリ キー**を選択します。 Cache と同じリージョンのストレージ アカウントを選択する必要があり、また、スループットが高いため **Premium Storage** アカウントを使用することをお勧めします。 永続化アカウントのストレージ キーが再生成された場合は常に、**[ストレージ キー]** ボックスの一覧から目的のキーを再選択する必要があります。
-
-**[OK]** をクリックして永続化の構成を保存します。
 
 > [!IMPORTANT]
-> Redis のデータ永続化は、Premium Cache でのみ使用できます。 詳細については、「 [Premium Azure Redis Cache の永続化の構成方法](cache-how-to-premium-persistence.md)」を参照してください。
+> Redis のデータ永続化は、Premium Cache でのみ使用できます。 
 > 
 > 
 

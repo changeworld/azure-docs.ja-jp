@@ -6,15 +6,15 @@ author: jasonwhowell
 ms.author: jasonh
 manager: jhubbard
 editor: seanli1988
-ms.service: mysql-database
+ms.service: mysql
 ms.custom: mvc
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/23/2017
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: ffeca6670521fe2b43c4ac47cac26fd2ad30f968
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 20a1f31ce42abb924504c4008f85420fc49aec89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 
@@ -71,7 +71,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 6.   新しい SQL タブが開き、クエリを入力できる空白のエディターが表示されます。
 
     > [!NOTE]
-    > ご使用のサーバーには SSL が既定で適用されるため、正常に接続するためには追加の構成が必要です。 「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  このクイックスタートで SSL を無効にしたい場合は、Azure Portal にアクセスし、[接続のセキュリティ] ページをクリックして、[強制 SSL 接続] トグル ボタンをオフにして無効にします。
+    > 既定では、SSL 接続のセキュリティは必須であり、Azure Database for MySQL サーバーに適用されます。 通常、MySQL ワークベンチがサーバーに接続するために、SSL 証明書を使用した追加構成は必要ありません。 SSL の詳細については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  SSL を無効にしたい場合は、Azure Portal にアクセスし、[接続のセキュリティ] ページをクリックして、[強制 SSL 接続] トグル ボタンをオフにして無効にします。
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>テーブルの作成、データの挿入/読み取り/更新/削除
 1. いくつかのサンプル データを示すために、サンプル SQL コードをコピーして空の SQL タブに貼り付けます。
@@ -108,7 +108,7 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
     ![サンプル SQL コードを実行するための MySQL Workbench の SQL タブ](media/connect-workbench/3-workbench-sql-tab.png)
 
 2. サンプル SQL コードを実行するには、**[SQL File]\(SQL ファイル\)** タブのツールバーにある稲妻アイコンをクリックします。
-3. ページ中央の **[Result Set]\(結果セット\)** セクションの 3 つのタブに結果が表示されていることに注目してください。 
+3. ページ中央の **[結果グリッド]** セクションの 3 つのタブに結果が表示されていることに注目してください。 
 4. ページの下部にある **[Output]\(出力\)** リストに注目してください。 各コマンドの状態が表示されています。 
 
 これで、MySQL Workbench を使用して Azure Database for MySQL に接続し、SQL 言語を使用してデータを照会できました。

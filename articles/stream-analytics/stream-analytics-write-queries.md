@@ -4,7 +4,7 @@ description: "Stream Analytics でのクエリ記述とクエリ データ | ラ
 keywords: "クエリの記述方法、クエリ データ、クエリの記述、クエリの記述"
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 0e9cdadd-0ee0-4bee-b65b-4a06fb863c95
@@ -14,24 +14,23 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: abfc94fe9a4b35dae33de7bc39d5dac2fcb59afc
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 215b774c20d80a67b1cefa2634131bd44860c692
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="how-to-write-queries-in-stream-analytics"></a>Stream Analytics でクエリを記述する方法
 Azure Stream Analytics のストリーム処理ロジックのクエリ記述は、ジョブが開始する前に定義され、ジョブに到着したデータに対して実行される、"継続クエリ" として実装されます。 データの変換は、SQL に似たクエリ言語で表されます。この言語は、主として T-SQL のサブセットであり、時間的なセマンティクスを表すために使用される[ウィンドウ化](https://msdn.microsoft.com/library/azure/dn835019.aspx)などの言語拡張機能が追加されています。
 
 ## <a name="writing-queries"></a>クエリの記述:
-1. Microsoft Azure 管理ポータルの Stream Analytics ジョブで、 **[クエリ]**をクリックします。
+1. Azure Portal の Stream Analytics ジョブで、**[クエリ]** をクリックします。
    
     ![クエリの選択](./media/stream-analytics-write-queries/1-stream-analytics-write-queries.png)  
    
-    Azure ポータルで、 **[クエリ]**をクリックします。
+    Azure Portalで、**[クエリ]** をクリックします。
    
     ![クエリの選択のプレビュー](./media/stream-analytics-write-queries/query-preview-portal.png)  
 2. 作業を始めやすいように、新しいジョブにはクエリ テンプレートが付いています。 クエリ テンプレートは、入力イベントのすべてのフィールドを出力に反映させる「パススルー」クエリを実行します。  
@@ -45,25 +44,25 @@ Azure Stream Analytics のストリーム処理ロジックのクエリ記述は
 テスト データを含むローカル JSON ファイルを使用してブラウザーでクエリを実行することにより、クエリが意図したとおりに動作することを確認できます。 これを行っても、ジョブが開始したり、課金に影響することはありません。
 
 > [!NOTE]
-> 現在、Azure ポータルでは、ブラウザー内クエリ テストはサポートされていません。  
+> 現在、Azure Portal では、ブラウザー内クエリ テストはサポートされていません。  
 > 
 > 
 
 1. クエリにエラーがないことを確認し (エラーがある場合は [テスト] ボタンが無効になります)、[テスト] ボタンをクリックします。  
    
    ![クエリ データ テスト](./media/stream-analytics-write-queries/3-stream-analytics-write-queries.png)  
-2. クエリで参照されている各入力に対するファイルの指定を求められます。 この例では、テンプレートのクエリをそのままに使用しているので、ダイアログで要求される入力の名前は "yourinputalias" です。  
+2. クエリで参照されている各入力に対するファイルの指定を求められます。 この例では、テンプレートのクエリをそのままに使用しているので、ダイアログで要求される入力の名前は "yourinputalias" です。
    
    ![テスト データ クエリ](./media/stream-analytics-write-queries/4-stream-analytics-write-queries.png)  
-3. テスト ファイルを参照します。 [github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。  
+3. テスト ファイルを参照します。 [github](https://github.com/Azure/azure-stream-analytics/tree/master/Sample Data) では複数のサンプル ファイルを入手でき、[入力] タブの [サンプル データ] 機能で独自のデータ ストリーム入力からサンプル データを取得することもできます。
    
    ![クエリの入力](./media/stream-analytics-write-queries/5-stream-analytics-write-queries.png)  
-4. ダイアログ ボックスを閉じると、テスト データに対してクエリが実行され、[クエリ] ページの下部に結果が表示されます。  
+4. ダイアログ ボックスを閉じると、テスト データに対してクエリが実行され、[クエリ] ページの下部に結果が表示されます。
    
    ![クエリの概要](./media/stream-analytics-write-queries/6-stream-analytics-write-queries.png)  
 
 ## <a name="get-help"></a>問い合わせ
-さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureStreamAnalytics)
+さらにサポートが必要な場合は、 [Azure Stream Analytics フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureStreamAnalytics)
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stream Analytics の概要](stream-analytics-introduction.md)
