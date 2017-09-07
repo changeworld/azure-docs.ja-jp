@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/18/2017
+ms.date: 08/24/2017
 ms.author: fimguy
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 426f58a24798fd43f5079dd153b9e84d324da622
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: 313145f4d8e5faa91fb3504cb0fd0ba87ca2e379
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="connector-version-release-history"></a>コネクタ バージョンのリリース履歴
@@ -39,7 +39,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 * [Lotus Domino コネクタ](active-directory-aadconnectsync-connector-domino.md) リファレンス ドキュメント
 
 
-## <a name="116040-aadconnect-11xxx0"></a>1.1.604.0 (AADConnect 1.1.XXX.0)
+## <a name="116040-aadconnect-pending-release"></a>1.1.604.0 (AADConnect 保留中のリリース)
 
 
 ### <a name="fixed-issues"></a>修正された問題:
@@ -74,7 +74,7 @@ Forefront Identity Manager (FIM) と Microsoft Identity Manager (MIM) のコネ�
 ### <a name="enhancements"></a>強化された機能:
 
 * Generic SQL:
-  * **シナリオ: 再実装:** "*" 機能
+  * **シナリオ: デザインを刷新して実装済み:** "*" 機能
   * **ソリューションの説明:** [複数値参照属性処理](active-directory-aadconnectsync-connector-genericsql.md)の手法を変更。
 
 

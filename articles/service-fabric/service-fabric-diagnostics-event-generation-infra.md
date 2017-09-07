@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2017
+ms.date: 08/24/2017
 ms.author: dekapur
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2e320339f60b593c1cff68ca047c95f9cb7b33e2
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: c5857515ae8357b003f0999c4b11bd666c32bbf9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 
@@ -31,7 +31,9 @@ ms.lasthandoff: 07/21/2017
 Service Fabric には、すぐに使える 5 種類のログ チャネルが用意されています。これらのチャネルでは、次のイベントが生成されます。
 
 * 稼働チャネル: Service Fabric とクラスターで実行される高度な操作。ノードの起動、新しいアプリケーションのデプロイ、SF アップグレードのロールバックなどのイベントが含まれます。
-* 顧客情報チャネル: 正常性レポートと負荷分散の決定
+* 稼働チャネル - 詳細: 正常性レポートと負荷分散の決定
+* データおよびメッセージング チャネル: メッセージング (現時点では ReverseProxy のみ) とデータ パス (Reliable Services モデル) で生成された重要なログおよびイベント
+* データおよびメッセージング チャネル - 詳細: クラスター内のデータおよびメッセージングからの重大でないすべてのログを含む詳細チャンネル (このチャネルには大量のイベントが含まれます)   
 * [Reliable Services イベント](service-fabric-reliable-services-diagnostics.md): プログラミング モデル固有のイベント
 * [Reliable Actors イベント](service-fabric-reliable-actors-diagnostics.md): プログラミング モデル固有のイベントとパフォーマンス カウンター
 * サポート ログ: 弊社がサポートを提供する場合にのみ使用する Service Fabric によって生成されたシステム ログ
@@ -79,9 +81,9 @@ Azure Service Fabric クラスターに関する支援を得るために Microso
 
 ## <a name="enabling-diagnostics-for-a-cluster"></a>クラスターの診断の有効化
 
-これらのログを利用するために、クラスターの作成時に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Windows Azure 診断が稼働、Reliable Services、Reliable Actors の各チャネルを認識し、**こちら**で説明するようにデータを保存できるようになります。
+これらのログを利用するために、クラスターの作成時に [診断] を有効にしておくことを強くお勧めします。 診断をオンにすることで、クラスターをデプロイしたときに、Microsoft Azure 診断が、稼働、Reliable Services、Reliable Actors の各チャネルを認識し、データを保存できるようになります。詳細については、「[Windows Azure 診断を使用したイベントの集計と収集](service-fabric-diagnostics-event-aggregation-wad.md)」を参照してください。
 
-上に示すように、Application Insights (AppInsights) のインストルメンテーション キーを追加するオプションのフィールドもあります。 任意のイベント分析に AppInsights を使用する場合は (詳細については**こちら**を参照)、ここで AppInsights リソースのインストルメンテーション キー (GUID) を指定します。
+上に示すように、Application Insights (AI) のインストルメンテーション キーを追加するオプションのフィールドもあります。 任意のイベント分析に AI を使用する場合は (詳細については[「Application Insights を使用したイベント分析と視覚化」](service-fabric-diagnostics-event-analysis-appinsights.md)を参照)、ここで AppInsights リソースのinstrumentationKey (GUID) を指定します。
 
 
 クラスターにコンテナーをデプロイする場合は、WAD を有効にし、"WadCfg > DiagnosticMonitorConfiguration" に次のコードを追加して Docker の統計情報を取得します。
