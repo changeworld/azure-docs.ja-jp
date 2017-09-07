@@ -12,14 +12,14 @@ ms.custom: quick start connect, mvc
 ms.workload: 
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/28/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: a973b81ea5b06c5826cc31c399aae9dec43f5b72
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12c9bf626de8738fac95bd41965b0a2bf8758ed2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用した .NET アプリケーションの構築
@@ -109,7 +109,7 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
     ![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-dotnet/keys.png)
 
-3. ポータルから **[URI]** の値をコピーし、App.config の Endpoint キーの値に設定します。 前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
+3. ポータルから **[URI]** の値をコピーし、App.config の Endpoint キーの値に設定します。前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
 
     `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
 

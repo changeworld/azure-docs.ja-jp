@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 47f211237332dba3402339780c3c13fdf03c96bb
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 8ca04ac79665d5ecc639addd48939f71825f2024
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="service-fabric-container-networking-modes"></a>Service Fabric コンテナー ネットワーク モード
@@ -337,7 +337,7 @@ Windows クラスターの場合、アプリケーション内のサービス全
 この記事では、Service Fabric が提供しているネットワーク モードについて説明します。  
 
 * [Service Fabric のアプリケーション モデル](service-fabric-application-model.md)
-* [Service Fabric サービス マニフェスト リソース](service-fabric-application-model.md)
+* [Service Fabric サービス マニフェスト リソース](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-service-manifest-resources)
 * [Windows Server 2016 上での Service Fabric への Windows コンテナーのデプロイ](service-fabric-get-started-containers.md)
 * [Linux 上での Service Fabric への Docker コンテナーのデプロイ](service-fabric-get-started-containers-linux.md)
 

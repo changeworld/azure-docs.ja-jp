@@ -10,17 +10,17 @@ tags: azure-service-management
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: d77dd2b44dca8cee6fa2e93e79cda76c80ccfe1a
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 9eb32e545bdefb8cc0a8ae05bd58d750afeb469e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -203,7 +203,7 @@ exit
 
 VM をデプロイしたら、オペレーティング システム ディスクまたは接続されたデータ ディスクのサイズを増やすことができます。 記憶域の容量を増やしたりパフォーマンスのレベル (P10、P20、P30) を高める必要がある場合、ディスク サイズを大きくすることは有益です。 ディスク サイズは縮小できないことに注意してください。
 
-ディスク サイズを増やす前に、ディスクの ID または名前が必要です。 [az disk list](/cli/azure/vm/disk#list) コマンドを使用して、リソース グループ内のすべてのディスクを取得します。 サイズ変更するディスク名を書き留めます。
+ディスク サイズを増やす前に、ディスクの ID または名前が必要です。 [az disk list](/cli/azure/disk#az_disk_list) コマンドを使用して、リソース グループ内のすべてのディスクを取得します。 サイズ変更するディスク名を書き留めます。
 
 ```azurecli-interactive 
 az disk list -g myResourceGroupDisk --query '[*].{Name:name,Gb:diskSizeGb,Tier:accountType}' --output table
@@ -235,7 +235,7 @@ az vm start --resource-group myResourceGroupDisk --name myVM
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 
-仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) コマンドを使用します。 この例では、後の手順で使用するために、ディスク ID を変数に格納します。
+仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) コマンドを使用します。この例では、後の手順で使用するために、ディスク ID を変数に格納します。
 
 ```azurecli-interactive 
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)

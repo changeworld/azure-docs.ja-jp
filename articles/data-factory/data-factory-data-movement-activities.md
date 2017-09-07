@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0cefbe1303de1cfa46cc4b771c0cd3aa7819597c
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 26fb0914de571aa0e398f0e2a2f8e439d3d27680
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-by-using-copy-activity"></a>コピー アクティビティを使用したデータの移動
@@ -109,11 +109,13 @@ Azure Data Factory は、米国西部、米国東部、北ヨーロッパ リー
 | &nbsp; | 東アジア | 東南アジア |
 | オーストラリア | オーストラリア東部 | オーストラリア東部 |
 | &nbsp; | オーストラリア南東部 | オーストラリア南東部 |
-| 日本 | 東日本 | 東日本 |
-| &nbsp; | 西日本 | 東日本 |
 | インド | インド中部 | インド中部 |
 | &nbsp; | インド西部 | インド中部 |
 | &nbsp; | インド南部 | インド中部 |
+| 日本 | 東日本 | 東日本 |
+| &nbsp; | 西日本 | 東日本 |
+| 韓国 | 韓国中部 | 韓国中部 |
+| &nbsp; | 韓国南部 | 韓国中部 |
 
 また、コピー アクティビティ `typeProperties` で `executionLocation` プロパティを使用して、コピーで使用する Data Factory サービスのリージョンを明示的に指定することもできます。 上記の「**データ移動に使用するリージョン**」列には、このプロパティでサポートされる値が示されています。 コピー中のデータは、ネットワーク経由でこのリージョンを通過します。 たとえば、韓国の Azure Store 間でコピーするには、日本リージョン経由でルーティングされるように `"executionLocation": "Japan East"` を指定します ([JSON のサンプル](#by-using-json-scripts)を参照してください)。
 

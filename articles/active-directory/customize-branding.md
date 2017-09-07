@@ -3,7 +3,7 @@ title: "Azure Active Directory でサインイン ページをカスタマイズ
 description: "Azure サインイン ページに会社のブランドを追加する方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: jeffgilb
+author: curtand
 manager: femila
 editor: 
 ms.assetid: f8b932bc-8b4f-42b5-a2d3-f2c076234a78
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/11/2017
-ms.author: jeffgilb
+ms.date: 09/06/2017
+ms.author: curtand
+ms.reviewer: kexia
 custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: bddf2542eecce8bdeccda6053203bf2c2ba0ffb2
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 6bfce3d4ec243779229cc4f39e1c22149229a66a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="quickstart-add-company-branding-to-your-sign-in-page-in-azure-ad"></a>クイック スタート: Azure AD のサインイン ページに会社のブランドを追加する
@@ -62,7 +63,7 @@ ms.lasthandoff: 08/15/2017
 ### <a name="sign-in-page-image"></a>サインイン ページの画像  
 説明 | 制約 | 推奨事項
 ------- | ------- | ----------
-これはサインイン ページの背景に表示され、表示可能な領域の中央に固定されて、ブラウザー ウィンドウを埋めるように拡大したりトリミングしたりします。    <br>携帯電話のように小さい画面では、この画像は表示されません。<br>ページが読み込まれるときに、コードによってこの画像に不透明度 0.55 の黒いマスクが適用されます。 | JPG または PNG<br>画像サイズ: 1920 x 1080 ピクセル<br>ファイル サイズ: &gt; 300 KB | <br>強調して表示したいものが集中していない場所でこの画像を使用します。 非透過のサインイン フォームがこの画像の中央に覆いかぶさるように表示され、ブラウザー ウィンドウのサイズに応じて画像の一部を覆うことができます。<br>ファイル サイズをできるだけ小さくして読み込み時間を短縮します。 
+これはサインイン ページの背景に表示され、表示可能な領域の中央に固定されて、ブラウザー ウィンドウを埋めるように拡大したりトリミングしたりします。    <br>携帯電話のように小さい画面では、この画像は表示されません。<br>ページが読み込まれるときに、コードによってこの画像に不透明度 0.55 の黒いマスクが適用されます。 | JPG または PNG<br>画像サイズ: 1920 x 1080 ピクセル<br>ファイル サイズ: &lt; 300 KB | <br>強調して表示したいものが集中していない場所でこの画像を使用します。 非透過のサインイン フォームがこの画像の中央に覆いかぶさるように表示され、ブラウザー ウィンドウのサイズに応じて画像の一部を覆うことができます。<br>ファイル サイズをできるだけ小さくして読み込み時間を短縮します。 
 
 ### <a name="background-color"></a>背景色
 説明 | 制約 | 推奨事項
@@ -103,7 +104,7 @@ Azure AD サインインでは、ユーザーはブラウザーを閉じたり�
 
     ![言語固有のブランド要素を追加する](./media/active-directory-branding-localize-azure-portal/add-language.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
-6. **[保存]** をクリックします。
+6. [ **Save**] をクリックします。
 
 サインイン ページのブランドに加えた変更が表示されるまでに、最大 1 時間かかる場合があります。
 
