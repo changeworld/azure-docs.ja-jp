@@ -3,7 +3,7 @@ title: "Azure Network Watcher で接続を確認する - Azure REST API | Micros
 description: "このページは、Azure REST API を使用して Network Watcher で接続を確認する方法について説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: ca62bea581acb59d3c3c0b8a204cc9d42de2b27f

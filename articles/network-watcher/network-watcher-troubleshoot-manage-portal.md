@@ -3,7 +3,7 @@ title: "Azure 仮想ネットワーク ゲートウェイと接続のトラブ�
 description: "このページでは、Azure Network Watcher を使用して PowerShell コマンドレットのトラブルシューティングを行う方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: f6f0a813-38b6-4a1f-8cfc-1dfdf979f595
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: e135e719d8f267f6a189d0f8a903a49980a5a035
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/20/2017
-
 
 ---
 

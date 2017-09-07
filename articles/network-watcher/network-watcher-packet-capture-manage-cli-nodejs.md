@@ -3,7 +3,7 @@ title: "Azure Network Watcher でパケット キャプチャを管理する - A
 description: "このページでは、Azure CLI 1.0 を使って Network Watcher のパケット キャプチャ機能を管理する方法を説明します"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: 91588910334859c1ea77186674d5bfb31b311b36

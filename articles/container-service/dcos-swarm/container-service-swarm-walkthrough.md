@@ -76,7 +76,7 @@ az acs create --name mySwarmCluster --orchestrator-type Swarm --resource-group m
 
 
 ```bash
-az network public-ip list --resource-group myResourceGroup --query '[*].{Name:name,IPAddress:ipAddress}' -o table
+az network public-ip list --resource-group myResourceGroup --query "[*].{Name:name,IPAddress:ipAddress}" -o table
 ```
 
 出力:
