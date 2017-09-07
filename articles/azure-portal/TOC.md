@@ -6,11 +6,13 @@
 ## [Azure リソース マネージャー](../azure-resource-manager/resource-group-overview.md)
 ## [キーボード ショートカット](azure-portal-keyboard-shortcuts.md)
 ## [サポートされているブラウザーとデバイス](../azure-preview-portal-supported-browsers-devices.md)
+## [Azure ダッシュボードの構造](azure-portal-dashboards-structure.md)
 # ハウツー ガイド
 ## デプロイ
 ### [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)
 ### [Resource Manager テンプレートを使用したデプロイ](../azure-resource-manager/resource-group-template-deploy.md)
 ### [Azure ダッシュボードの作成と共有](azure-portal-dashboards.md)
+### [プログラムによる Azure ダッシュボードの作成](azure-portal-dashboards-create-programmatically.md)
 ## 管理
 ### [ハイコントラストの有効化またはテーマの変更](azure-portal-change-theme-high-contrast.md)
 ### [ポータルを使用したリソースの管理](../azure-resource-manager/resource-group-portal.md)

@@ -6,8 +6,8 @@
 ## [マネージ アプリケーション](managed-application-overview.md)
 
 # 作業開始
-## [テンプレートをエクスポートする](resource-manager-export-template.md)
 ## [テンプレートを作成してデプロイする](resource-manager-create-first-template.md)
+## [テンプレート用の VS Code 拡張機能](resource-manager-vscode-extension.md)
 ## [Visual Studio と Resource Manager](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
 
 # サンプル
@@ -20,8 +20,8 @@
 
 # 方法
 ## テンプレートの作成
-### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [テンプレート セクション](resource-group-authoring-templates.md)
+### [テンプレートのベスト プラクティス](resource-manager-template-best-practices.md)
 ### [他のテンプレートにリンクする](resource-group-linked-templates.md)
 ### [リソース間の依存関係を定義する](resource-group-define-dependencies.md)
 ### [複数のインスタンスの作成](resource-group-create-multiple.md)
@@ -33,6 +33,7 @@
 ### [リンク済みテンプレート間の状態を共有する](best-practices-resource-manager-state.md)
 ### [テンプレートの設計パターン](best-practices-resource-manager-design-templates.md)
 
+
 ## デプロイ
 ### PowerShell
 #### [テンプレートのデプロイ](resource-group-template-deploy.md)
@@ -42,7 +43,9 @@
 #### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
-### [ポータル](resource-group-template-deploy-portal.md)
+### ポータル
+#### [リソースのデプロイ](resource-group-template-deploy-portal.md)
+#### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
 ### [リソース グループ間のデプロイ](resource-manager-cross-resource-group-deployment.md)
 ### [Visual Studio Team Services を使用した継続的インテグレーション](../vs-azure-tools-resource-groups-ci-in-vsts.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
