@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/24/2017
+ms.date: 8/31/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 51255244a286fe1aed75b342e6a9b8d4681a1979
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 83a32dba7b74a303b7fd2167b5fc41212087f8ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
@@ -642,52 +642,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |notificationhub.pushes|All Outgoing Notifications (すべての送信通知)|カウント|合計|Notification Hub のすべての送信通知|
 |incoming.all.requests|すべての受信要求|カウント|合計|Notification Hub の受信要求の合計数|
 |incoming.all.failedrequests|失敗したすべての受信要求|カウント|合計|Notification Hub の失敗した受信要求の合計数|
-
-## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
-
-|メトリック|メトリックの表示名|単位|集計の種類|説明|
-|---|---|---|---|---|
-|qpu_metric|QPU|カウント|平均|QPU。 範囲は S1 で 0 ～ 100、S2 で 0 ～ 200、S4 で 0 ～ 400|
-|memory_metric|メモリ|バイト|平均|メモリ。 範囲は S1 で 0 ～ 25 GB、S2 で 0 ～ 50 GB、S4 で 0 ～ 100 GB|
-|TotalConnectionRequests|合計接続要求数|カウント|平均|合計接続要求数。 これらは到着した接続要求です。|
-|SuccessfullConnectionsPerSec|成功した接続数 (秒単位)|CountPerSecond|平均|接続が正常に完了した割合。|
-|TotalConnectionFailures|合計接続失敗数|カウント|平均|失敗した接続試行数の合計。|
-|CurrentUserSessions|現在のユーザー セッション|カウント|平均|確立された現在のユーザー セッションの数。|
-|QueryPoolBusyThreads|クエリ プール ビジー スレッド|カウント|平均|クエリ スレッド プールのビジー スレッドの数。|
-|CommandPoolJobQueueLength|コマンド プールのジョブ キューの長さ|カウント|平均|コマンド スレッド プールのキュー内のジョブの数。|
-|ProcessingPoolJobQueueLength|処理プール ジョブ キューの長さ|カウント|平均|処理スレッド プールのキュー内の非 I/O ジョブの数。|
-|CurrentConnections|接続: 現在の接続|カウント|平均|現在確立されているクライアント接続の数。|
-|CleanerCurrentPrice|メモリ: クリーナーの現在の価格|カウント|平均|現在のメモリ価格 ($/バイト/時刻)。標準は 1,000 です。|
-|CleanerMemoryShrinkable|メモリ: クリーナーの圧縮可能なメモリ|Bytes|平均|バックグラウンド クリーナーによる削除の対象となるメモリの量 (バイト単位)。|
-|CleanerMemoryNonshrinkable|メモリ: クリーナーの圧縮不可能なメモリ|Bytes|平均|バックグラウンド クリーナーによる削除の対象とならないメモリの量 (バイト単位)。|
-|MemoryUsage|メモリ: メモリ使用量|Bytes|平均|クリーナー メモリの価格の計算で使用されるサーバー プロセスのメモリ使用量。 Process\PrivateBytes カウンターの値に、メモリがマップされたデータのサイズを加えた値と等しくなります。xVelocity インメモリ分析エンジン (VertiPaq) によって xVelocity エンジンのメモリの制限を超えてマップされた (割り当てられた) メモリは無視されます。|
-|MemoryLimitHard|メモリ: メモリの制限 - ハード|Bytes|平均|構成ファイルに指定されているハードのメモリの制限。|
-|MemoryLimitHigh|メモリ: メモリの制限 - 高|Bytes|平均|構成ファイルに指定されているメモリの上限。|
-|MemoryLimitLow|メモリ: メモリの制限 - 低|Bytes|平均|構成ファイルに指定されているメモリの下限。|
-|MemoryLimitVertiPaq|メモリ: メモリの制限 - VertiPaq|Bytes|平均|構成ファイルに指定されているインメモリの制限。|
-|クォータ|メモリ: クォータ|Bytes|平均|現在のメモリ クォータ (バイト単位)。 メモリ クォータはメモリ付与またはメモリ予約とも呼ばれます。|
-|QuotaBlocked|メモリ: ブロックされているクォータ|カウント|平均|他のメモリ クォータが解放されるまでブロックされている現在のクォータ要求の数。|
-|VertiPaqNonpaged|メモリ: VertiPaq 非ページ|Bytes|平均|メモリ内エンジン用にワーキング セットでロックされているメモリの量 (バイト単位)。|
-|VertiPaqPaged|メモリ: VertiPaq ページ|Bytes|平均|メモリ内エンジン用に使用されているページ メモリの量 (バイト単位)。|
-|RowsReadPerSec|処理: 1 秒あたりの読み取り行数|CountPerSecond|平均|すべてのリレーショナル データベースから読み取った行の比率。|
-|RowsConvertedPerSec|処理: 1 秒あたりの変換行数|CountPerSecond|平均|処理中に変換された行の比率。|
-|RowsWrittenPerSec|処理: 1 秒あたりの書き込み行数|CountPerSecond|平均|処理中に書き込まれた行の比率。|
-|CommandPoolBusyThreads|スレッド: コマンド プールのビジー状態のスレッド|カウント|平均|コマンド スレッド プール内にあるビジー状態のスレッドの数。|
-|CommandPoolIdleThreads|スレッド: コマンド プールのアイドル状態のスレッド|カウント|平均|コマンド スレッド プール内にあるアイドル状態のスレッドの数。|
-|LongParsingBusyThreads|スレッド: 長時間解析を行っているビジー状態のスレッド|カウント|平均|長時間解析を行っているスレッド プール内にあるビジー状態のスレッドの数。|
-|LongParsingIdleThreads|スレッド: 長時間解析を行っているアイドル状態のスレッド|カウント|平均|長時間解析を行っているスレッド プール内にあるアイドル状態のスレッドの数。|
-|LongParsingJobQueueLength|スレッド: 長時間解析を行っているジョブのキューの長さ|カウント|平均|長時間解析を行っているスレッド プールのキューに登録されているジョブの数。|
-|ProcessingPoolBusyIOJobThreads|スレッド: 処理中のプールのビジー状態の I/O ジョブのスレッド|カウント|平均|処理中のスレッド プール内で I/O ジョブを実行しているスレッドの数。|
-|ProcessingPoolBusyNonIOThreads|スレッド: 処理中のプールのビジー状態の I/O 以外のスレッド|カウント|平均|処理中のスレッド プール内で I/O 以外のジョブを実行しているスレッドの数。|
-|ProcessingPoolIOJobQueueLength|スレッド: 処理中のプール I/O ジョブ キューの長さ|カウント|平均|処理中のスレッド プールのキューに登録されている I/O ジョブの数。|
-|ProcessingPoolIdleIOJobThreads|スレッド: 処理中のプールのアイドル状態の I/O ジョブのスレッド|カウント|平均|処理中のスレッド プール内にある I/O ジョブのアイドル状態のスレッドの数。|
-|ProcessingPoolIdleNonIOThreads|スレッド: 処理中のプールのアイドル状態の I/O 以外のスレッド|カウント|平均|I/O 以外のジョブ専用の、処理中のスレッド プール内にあるアイドル状態のスレッドの数。|
-|QueryPoolIdleThreads|スレッド: クエリ プールのアイドル状態のスレッド|カウント|平均|処理中のスレッド プール内にある I/O ジョブのアイドル状態のスレッドの数。|
-|QueryPoolJobQueueLength|スレッド: クエリ プール ジョブ キューの長さ|カウント|平均|クエリ スレッド プールのキューに登録されているジョブの数。|
-|ShortParsingBusyThreads|スレッド: 短時間解析を行っているビジー状態のスレッド|カウント|平均|短時間解析を行っているスレッド プール内にあるビジー状態のスレッドの数。|
-|ShortParsingIdleThreads|スレッド: 短時間解析を行っているアイドル状態のスレッド|カウント|平均|短時間解析を行っているスレッド プール内にあるアイドル状態のスレッドの数。|
-|ShortParsingJobQueueLength|スレッド: 短時間解析を行っているジョブ キューの長さ|カウント|平均|短時間解析を行っているスレッド プールのキューに登録されているジョブの数。|
-|memory_thrashing_metric|メモリ スラッシング|Percent|平均|平均的なメモリ スラッシング。|
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft.Search/searchServices
 

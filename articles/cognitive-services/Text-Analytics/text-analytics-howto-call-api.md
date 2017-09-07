@@ -10,10 +10,10 @@ ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: heidist
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 68facc48f72f974ad40da4ae14727f3cb6632e09
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: da23176ca5703f3c5fbe8e3b1709a2f327d5a284
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -92,7 +92,7 @@ The service accepts request up to 1 MB in size. If you are using Postman or anot
 
 ## <a name="next-steps"></a>Next steps
 
-+ [Quickstart](quick-start.md) is a walk through of the REST API calls written in C#. Learn how to submit text, choose an analysis, and view results with minimal code.
++ [Quickstart](quick-start.md) is a walkthrough of the REST API calls written in C#. Learn how to submit text, choose an analysis, and view results with minimal code.
 
 + [API reference documentation](//go.microsoft.com/fwlink/?LinkID=759346) provides the technical documentation for the APIs. The documentation supports embedded calls so that you can call the API from each documentation page.
 

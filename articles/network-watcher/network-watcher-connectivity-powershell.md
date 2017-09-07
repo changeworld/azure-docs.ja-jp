@@ -3,7 +3,7 @@ title: "Azure Network Watcher で接続を確認する - PowerShell | Microsoft 
 description: "このページは、PowerShell を使用して Azure Network Watcher で接続をテストする方法について説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.service: network-watcher
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
 ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
 ms.openlocfilehash: a8f936cd23838759dc30b04688d3c6544e4895cc

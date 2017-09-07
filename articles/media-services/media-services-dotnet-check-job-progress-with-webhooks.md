@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 615b1886137031b405eb512f2b175de34d0e1115
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: a54ea21ea2d5ce62aabaeca7c5d25281a7d3f4be
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="use-azure-webhooks-to-monitor-media-services-job-notifications-with-net"></a>Azure webhook を使用して .NET で Media Services ジョブ通知を監視する
@@ -71,13 +71,13 @@ Media Services の関数を開発するときは、自分が開発するさま�
 3. **[汎用 webhook - C#]** を選択します。
 4. webhook に名前を付けて、**[作成]** を押します。
 
-## <a name="files"></a>ファイル
+### <a name="files"></a>ファイル
 
 Azure 関数は、コード ファイルなど、このセクションで取り上げる各種ファイルに関連付けることになります。 既定では、**function.json** ファイルと **run.csx** (C#) ファイルに関数が関連付けられます。 **project.json** ファイルを追加する必要があります。 以降このセクションでは、これらのファイルの定義を紹介していきます。
 
 ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
-### <a name="functionjson"></a>function.json
+#### <a name="functionjson"></a>function.json
 
 function.json ファイルは、関数バインドとその他の構成設定を定義します。 ランタイムはこのファイルを使用して、監視対象のイベントを特定し、関数の実行との間でデータを渡したりデータを受け取ったりする方法を判断します。 
 
@@ -100,7 +100,7 @@ function.json ファイルは、関数バインドとその他の構成設定を
 }
 ```
 
-### <a name="projectjson"></a>project.json
+#### <a name="projectjson"></a>project.json
 
 project.json ファイルには、依存関係が含まれています。 
 
@@ -119,7 +119,7 @@ project.json ファイルには、依存関係が含まれています。
 }
 ```
     
-### <a name="runcsx"></a>run.csx
+#### <a name="runcsx"></a>run.csx
 
 このセクションのコードは、Webhook である Azure 関数の実装を示します。 このサンプルでは、関数が Media Services 通知からの Webhook の呼び出しをリッスンし、ジョブが完了すると、出力資産を発行します。
 
@@ -346,7 +346,7 @@ internal sealed class NotificationMessage
 
 関数を保存して、実行します。
 
-## <a name="function-output"></a>関数の出力
+### <a name="function-output"></a>関数の出力
 
 webhook がトリガーされると、上記の例により次の出力が生成されますが、ご自身の値は異なる場合があります。
 

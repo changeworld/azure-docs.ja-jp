@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/05/2017
+ms.date: 07/19/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ef61aa610957024d85f4231d957869858fd545c5
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 8a44f10eda396aec72e05e87e406ff80834294d8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -31,8 +31,8 @@ Azure SQL データベースは Microsoft Azure で管理されるデータベ�
 
 Azure SQL データベースには以下が相当します。
 
-- 単一のデータベースとその[独自のリソースのセット](sql-database-what-is-a-dtu.md#what-are-database-transaction-units-dtus) (DTU)
-- [一連のリソースを共有する](sql-database-what-is-a-dtu.md#what-are-elastic-database-transaction-units-edtus) [SQL エラスティック プール](sql-database-elastic-pool.md)の一部 (eDTU)
+- [単一のデータベース](sql-database-single-database-resources.md)とその独自のリソースのセット
+- 一連のリソースを共有する[エラスティック プール](sql-database-elastic-pool.md)の一部
 - [シャード化されたデータベースのスケール アウトされたセット](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling)の一部 (単一またはプールされたデータベースのいずれか)
 - [マルチテナント SaaS デザイン パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md)に参加しているデータベースのセットの一部 (これらのデータベースは、単一またはプールされたデータベースのいずれか (またはその両方)) 
 
@@ -46,7 +46,7 @@ Azure SQL データベースには以下が相当します。
 
 ## <a name="what-is-an-azure-sql-logical-server"></a>Azure SQL 論理サーバーとは何か
 
-論理サーバーは、[SQL エラスティック プール](sql-database-elastic-pool.md)、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-geo-replication-overview.md)など、複数のデータベースの中央管理ポイントとして機能します。 論理サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL データベースを作成するには、先に論理サーバーが存在している必要があります。 サーバー上のすべてのデータベースは、論理サーバーと同じリージョン内で作成されます。 
+論理サーバーは、[エラスティック プール](sql-database-elastic-pool.md)、[ログイン](sql-database-manage-logins.md)、[ファイアウォール規則](sql-database-firewall-configure.md)、[監査規則](sql-database-auditing.md)、[脅威検出ポリシー](sql-database-threat-detection.md)、[フェールオーバー グループ](sql-database-geo-replication-overview.md)など、複数のデータベースの中央管理ポイントとして機能します。 論理サーバーは、そのリソース グループとは別のリージョンに入ることができます。 Azure SQL データベースを作成するには、先に論理サーバーが存在している必要があります。 サーバー上のすべてのデータベースは、論理サーバーと同じリージョン内で作成されます。 
 
 
 > [!IMPORTANT]
@@ -79,7 +79,7 @@ Azure SQL Database 論理サーバーは、
 
 ## <a name="azure-sql-databases-protected-by-sql-database-firewall"></a>SQL Database ファイアウォールで保護される Azure SQL データベース
 
-データを保護するために、[SQL Database ファイアウォール](sql-database-firewall-configure.md)は、Azure サブスクリプション接続経由でサーバーに直接接続する以外の、データベース サーバーまたはそのデータベースに対するあらゆるアクセスを禁止します。 追加の接続を有効にするには、[1 つまたは複数のファイアウォール ルールを作成する](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)必要があります。 SQL エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
+データを保護するために、[SQL Database ファイアウォール](sql-database-firewall-configure.md)は、Azure サブスクリプション接続経由でサーバーに直接接続する以外の、データベース サーバーまたはそのデータベースに対するあらゆるアクセスを禁止します。 追加の接続を有効にするには、[1 つまたは複数のファイアウォール ルールを作成する](sql-database-firewall-configure.md#creating-and-managing-firewall-rules)必要があります。 エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-portal"></a>Azure Portal を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
@@ -99,7 +99,8 @@ Azure SQL Database 論理サーバーは、
 
   ![データベースの作成 -1](./media/sql-database-get-started-portal/create-database-1.png)
 
-> [重要] データベースの価格レベルを選択する方法については、「[サービス層](sql-database-service-tiers.md)」を参照してください。
+> [!IMPORTANT]
+> データベースの価格レベルを選択する方法については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。
 >
 
 ### <a name="manage-an-existing-sql-server"></a>既存の SQL Server を管理する
@@ -122,7 +123,7 @@ Azure SQL Database 論理サーバーは、
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-powershell"></a>PowerShell を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
-Azure PowerShell を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 SQL エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
+Azure PowerShell を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の PowerShell コマンドレットを使用します。 PowerShell をインストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
 | コマンドレット | Description |
 | --- | --- |
@@ -146,7 +147,7 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-azure-cli"></a>Azure CLI を利用して Azure SQL Server、データベース、ファイアウォールを管理します。
 
-[Azure CLI](/cli/azure/overview) を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 SQL エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
+[Azure CLI](/cli/azure/overview) を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の [Azure CLI SQL Database](/cli/azure/sql/db) コマンドを使用します。 [Cloud Shell](/azure/cloud-shell/overview) を使用して CLI をブラウザーで実行することも、macOS、Linux、または Windows に[インストール](/cli/azure/install-azure-cli)することもできます。 エラスティック プールの作成と管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
 | コマンドレット | Description |
 | --- | --- |
@@ -176,7 +177,7 @@ Azure PowerShell を利用して Azure SQL のサーバー、データベース�
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-transact-sql"></a>Transact-SQL を利用して Azure SQL Server、データベース、ファイアウォールを管理する
 
-Transact-SQL を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の T-SQL コマンドレットを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 SQL エラスティック プールの管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事を参照してください。
+Transact-SQL を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理するには、次の T-SQL コマンドレットを使用します。 これらのコマンドは、Azure Portal、[SQL Server Management Studio](/sql/ssms/use-sql-server-management-studio)、[Visual Studio Code](https://code.visualstudio.com/docs)、または Azure SQL Database サーバーに接続して Transact-SQL コマンドを渡すことができるその他のプログラムを使用して実行できます。 エラスティック プールの管理については、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 
 > [!IMPORTANT]
 > Transact-SQL を利用してサーバーを作成または削除することはできません。
@@ -206,11 +207,33 @@ Transact-SQL を利用して Azure SQL のサーバー、データベース、�
 
 ## <a name="manage-azure-sql-servers-databases-and-firewalls-using-the-rest-api"></a>REST API を利用して Azure SQL のサーバー、データベース、ファイアウォールを管理する
 
-REST API を利用して Azure SQL のサーバー、データベース、ファイアウォールを作成し、管理する方法については、「[Azure SQL Database REST API](/rest/api/sql/)」を参照してください。
+Azure SQL のサーバー、データベース、ファイアウォールを作成して管理するには、以下の REST API 要求を使います。
+
+| コマンド | Description |
+| --- | --- |
+|[サーバー - 作成または更新](/rest/api/sql/servers/createorupdate)|新しいサーバーを作成または更新します。|
+|[サーバー - 削除](/rest/api/sql/servers/delete)|SQL サーバーを削除します。|
+|[サーバー - 取得](/rest/api/sql/servers/get)|サーバーを取得します。|
+|[サーバー - 一覧取得](/rest/api/sql/servers/list)|サーバーの一覧を返します。|
+|[サーバー - リソース グループで一覧取得](/rest/api/sql/servers/listbyresourcegroup)|リソース グループ内のサーバーの一覧を取得します。|
+|[サーバー - 更新](/rest/api/sql/servers/update)|既存のサーバーを更新します。|
+|[サーバー - Sql](/rest/api/sql/servers%20-%20sql)|指定した名前でリソースを作成できるかどうかを判断します。|
+|[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
+|[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
+|[データベース - エラスティック プールで取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
+|[データベース - 推奨されるエラスティック プールで取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
+|[データベース - エラスティック プールで一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - 推奨されるエラスティック プールで一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーで一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新](/api/sql/databases/update)|既存のデータベースを更新します。|
+|[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
+|[ファイアウォール規則 - 削除](/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|
+|[ファイアウォール規則 - 取得](/rest/api/sql/firewallrules/get)|ファイアウォール規則を取得します。|
+|[ファイアウォール規則 - サーバーで一覧取得](/rest/api/sql/firewallrules/listbyserver)|ファイアウォール規則の一覧を返します。|
 
 ## <a name="next-steps"></a>次のステップ
 
-- SQL エラスティック プールを利用したプーリング データベースについては、「[エラスティック プール](sql-database-elastic-pool.md)」を参照してください。
+- エラスティック プールを利用したプーリング データベースについては、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
 - Azure SQL Database のサービスについては、「[SQL Database とは](sql-database-technical-overview.md)」を参照してください。
 - SQL Server データベースを Azure に移行する方法については、「[Azure SQL Database に移行](sql-database-cloud-migrate.md)」を参照してください。
 - サポートされている機能については、[機能](sql-database-features.md)に関する記事をご覧ください。

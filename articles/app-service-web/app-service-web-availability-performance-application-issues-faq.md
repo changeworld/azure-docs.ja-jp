@@ -13,13 +13,13 @@ ms.workload: web
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 07/10/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 5c3e0a7f731fa3f7b34902c93bae8f67a0e8153d
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 80dada771ef336a1da59262ae48e29bf2347406a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
@@ -175,7 +175,7 @@ Web ジョブは、バックグラウンド処理用に設計されています�
 
 App Service のローカル キャッシュ機能を使用する場合は、App Service インスタンスに対する LogFiles および Data フォルダーのフォルダー構造が影響を受けます。 ローカル キャッシュが使用されている場合は、LogFiles および Data フォルダーのストレージ内にサブフォルダが作成されます。 これらのサブフォルダは、"一意識別子" + タイムスタンプという名前付けパターンを使用します。 各サブフォルダは、Web アプリが実行されているか、または実行された VM インスタンスに対応します。
 
-ローカル キャッシュを使用しているかどうかを判定するには、App Service の **[アプリケーションの設定]** タブを確認します。 ローカル キャッシュが使用されている場合、アプリの設定 `WEBSITE_LOCAL_CACHE_OPTION` は `Always` に設定されています。 ローカル キャッシュの詳細については、「[App Service のローカル キャッシュの概要](https://docs.microsoft.com/azure/app-service/app-service-local-cache)」を参照してください。
+ローカル キャッシュを使用しているかどうかを判定するには、App Service の **[アプリケーションの設定]** タブを確認します。ローカル キャッシュが使用されている場合、アプリの設定 `WEBSITE_LOCAL_CACHE_OPTION` は `Always` に設定されています。 ローカル キャッシュの詳細については、「[App Service のローカル キャッシュの概要](https://docs.microsoft.com/azure/app-service/app-service-local-cache)」を参照してください。
 
 ローカル キャッシュを使用していないときにこの問題が発生する場合は、サポート要求を送信してください。
 

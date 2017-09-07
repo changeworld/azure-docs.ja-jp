@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
-ms.openlocfilehash: c187819e9392908c8979556f80e8c94739eb14d5
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: b829ebd90034031721dfe2e97427e624306da1e9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="use-azure-devtest-labs-for-developers"></a>開発者のための Azure DevTest Labs の使用
@@ -99,7 +98,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    | タスク | 学習内容 |
    | --- | --- |
    | [ラボのポリシーの定義](devtest-lab-set-lab-policy.md) |ラボでポリシーを設定してコストを管理します。 |
-   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-can-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |開発が完了したときに、1 回の操作ですべてのラボを削除します。|
+   | [PowerShell スクリプトを使用したすべてのラボ VM の削除](devtest-lab-faq.md#how-do-i-automate-the-process-of-deleting-all-the-vms-in-my-lab) |開発が完了したときに、1 回の操作ですべてのラボを削除します。|
 
 1. **仮想ネットワークを VM に追加する** 
    
@@ -133,7 +132,7 @@ Azure DevTest Labs を使うと多くの重要なシナリオを実装できま�
    
    | タスク | 学習内容 |
    | --- | --- |
-   | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-an-azure-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
+   | [Resource Manager テンプレートを使用したラボの作成](devtest-lab-faq.md#how-do-i-create-a-lab-from-a-resource-manager-template) |Resource Manager テンプレートを使用して Azure DevTest Labs でラボを作成します。 |
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

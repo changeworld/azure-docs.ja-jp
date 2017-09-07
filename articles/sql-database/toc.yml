@@ -43,11 +43,7 @@
       href: sql-database-migrate-your-sql-server-database.md
     - name: 3 - SQL DB をセキュリティ保護する
       href: sql-database-security-tutorial.md
-    - name: 4 - SQL DB のパフォーマンス向上
-      href: sql-database-performance-tutorial.md
-    - name: 5 - マルチテナント アプリの実装
-      href: sql-database-multi-tenant-application.md
-    - name: 6 - 地理的に分散したデータベースの実装
+    - name: 4 - 地理的に分散したデータベースの実装
       href: sql-database-implement-geo-distributed-database.md
 - name: サンプル
   items:

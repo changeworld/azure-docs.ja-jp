@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.devlang: na
-ms.date: 04/29/2017
+ms.date: 08/04/2017
 ms.author: joroja
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 6334c8e04f89159d28b94e104fcdcca667bb71b8
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: 67c9f6eca18e2dd77e00b8bc8c7bcc546ea3936e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
@@ -39,18 +39,15 @@ Azure Active Directory (Azure AD) B2C ディレクトリには、組み込みの
 
 Azure AD B2C では、各ユーザー アカウントで保存される属性セットを拡張できます。 また、 [Azure AD Graph API](active-directory-b2c-devquickstarts-graph-dotnet.md)を使用してこれらの属性を読み書きすることもできます。
 
->[!NOTE]
->カスタム属性または拡張プロパティは、Azure AD B2C ディレクトリの機能として扱います。  拡張プロパティは、ディレクトリ内のユーザー オブジェクトのスキーマを拡張します。  カスタム属性をポリシーでカスタム要求として使用するには、ポリシーの `ClaimsSchema` 内でそれを定義します。
+拡張プロパティは、ディレクトリ内のユーザー オブジェクトのスキーマを拡張します。  用語の拡張機能プロパティ、カスタム属性、およびカスタム要求では、この記事のコンテキストと同じ内容を参照します。名前は、コンテキスト (アプリケーション、オブジェクト、ポリシー) によって異なります。
+
+拡張プロパティは、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 プロパティは、アプリケーションに関連付けられます。 アプリケーション オブジェクトには、拡張プロパティを登録するための書き込みアクセス権が付与されている必要があります。 1 つのオブジェクトに対して、100 個の拡張プロパティ (すべての型とすべてのアプリケーションでの合計) を書き込むことができます。 拡張プロパティは、対象のディレクトリ タイプに追加され、Azure AD B2C ディレクトリ テナント内ですぐに利用できる状態になります。
+アプリケーションを削除すると、このような拡張プロパティも、それらに含まれている、すべてのユーザーに関するデータと共に削除されます。 拡張プロパティは、アプリケーションによって削除されると、対象ディレクトリ オブジェクトで削除され、その値も削除されます。
+
+拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する TechnicalProfile に含まれている必要があります。
 
 >[!NOTE]
->拡張プロパティは、ユーザーに関するデータを保持できる場合でも、アプリケーション オブジェクトにしか登録できません。 プロパティは、アプリケーションに関連付けられます。 アプリケーション オブジェクトには、拡張プロパティを登録するための書き込みアクセス権が付与されている必要があります。 1 つのオブジェクトに対して、100 個の拡張プロパティ (すべての型とすべてのアプリケーションでの合計) を書き込むことができます。 拡張プロパティは、対象のディレクトリ タイプに追加され、Azure AD B2C ディレクトリ テナント内ですぐに利用できる状態になります。
-アプリケーションを削除すると、このような拡張プロパティも、それらに含まれている、すべてのユーザーに関するデータと共に削除されます。 拡張プロパティは、アプリケーションによって削除されると、対象ディレクトリ オブジェクトで削除され、そのプロパティに含まれているデータもすべて削除されます。
-
->[!NOTE]
->拡張プロパティは、テナント内の登録されたアプリケーションのコンテキストにのみ存在します。 そのアプリケーションのオブジェクト ID は、それを使用する TechnicalProfile に含まれている必要があります。
-
->[!NOTE]
->Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  これを行うための手順については、この記事の「`NEXT STEPS`」のセクションで説明しています。
+>Azure AD B2C ディレクトリには、通常、`b2c-extensions-app` という名前の Web アプリが含まれています。  このアプリケーションは、主に、Azure Portal で作成されたカスタム要求用の B2C 組み込みポリシーによって使用されます。  このアプリケーションを使用して拡張プロパティを B2C カスタム ポリシーに登録することは、上級ユーザーのみにお勧めします。  これを行うための手順については、この記事の「次のステップ」のセクションをご覧ください。
 
 
 ## <a name="creating-a-new-application-to-store-the-extension-properties"></a>拡張プロパティを格納するための新しいアプリケーションを作成する
@@ -62,7 +59,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
   * Web アプリケーションの名前を指定します: **WebApp-GraphAPI-DirectoryExtensions**
   * アプリケーションの種類: Web アプリ/API
   * サインオン URL: https://{tenantName}.onmicrosoft.com/WebApp-GraphAPI-DirectoryExtensions
-1. **[作成]** を選択します。 正常に完了したことが**通知**に表示されます。
+1. [**作成] を選択します。 正常に完了したことが**通知**に表示されます。
 1. 新しく作成された Web アプリケーション **WebApp-GraphAPI-DirectoryExtensions** を選択します。
 1. 設定として **[必要なアクセス許可]** を選択します。
 1. API として **Windows Active Directory** を選択します。
@@ -74,9 +71,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 
 
-## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して `ApplicationObjectId` を追加する
-
-拡張属性の読み取りまたは書き込みを行う TechnicalProfile ごとに、前の手順で取得した ApplicationObjectId (上記からのオブジェクト ID) および ClientId (上記からのアプリケーション ID) という 2 つの項目を含む `<Metadata>` 要素を追加する必要があります。
+## <a name="modifying-your-custom-policy-to-add-the-applicationobjectid"></a>カスタム ポリシーを変更して ApplicationObjectId を追加する
 
 ```xml
     <ClaimsProviders>
@@ -102,14 +97,10 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 ```
 
 >[!NOTE]
-><TechnicalProfile Id="AAD-Common"> は、その要素が、次の要素を使用することによってすべての Azure Active Directory TechnicalProfile で再利用されるため、"共通" します。
-
-```
-      <IncludeTechnicalProfile ReferenceId="AAD-Common" />
-```
+><TechnicalProfile Id="AAD-Common"> は、その要素が、次の要素を使用することによってすべての Azure Active Directory TechnicalProfile に含まれて再利用されるため、"共通" と呼ばれます。`<IncludeTechnicalProfile ReferenceId="AAD-Common" />`
 
 >[!NOTE]
->TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。これは、プロパティが見つからない場合に作成されるためです。  .*  
+>TechnicalProfile が新しく作成された拡張プロパティに初めて書き込むときに、1 回限りのエラーが発生することがあります。  拡張機能プロパティは、初めて使われるときに作成されます。  
 
 ## <a name="using-the-new-extension-property--custom-attribute-in-a-user-journey"></a>ユーザー体験で新しい拡張機能プロパティ/カスタム属性を使用する
 
@@ -133,7 +124,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
    </TechnicalProfile>
  </RelyingParty>
  ```
-3. 要求の定義を、次のように、拡張ポリシー ファイル `TrustFrameworkExtensions.xml` の ``<ClaimsSchema>`` 要素の内部に追加します。
+3. 要求の定義を、次のように、拡張ポリシー ファイル `TrustFrameworkExtensions.xml` の `<ClaimsSchema>` 要素の内部に追加します。
 ```xml
 <ClaimsSchema>
         <ClaimType Id="extension_loyaltyId">
@@ -145,15 +136,9 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 </ClaimsSchema>
 ```
 4. 同じ要求の定義を基本ポリシー ファイル `TrustFrameworkBase.xml` に追加します。  
-
->[!NOTE]
 >`ClaimType` 定義は、通常、基本ファイルと拡張ファイルの両方に追加する必要はありません。ただし、次の手順で基本ファイルの TechnicalProfile に extension_loyaltyId を追加するため、この定義がないと、ポリシー検証で基本ファイルのアップロードが拒否されます。
-
->[!NOTE]
 >TrustFrameworkBase.xml ファイルの "ProfileEdit" という名前のユーザー体験の実行を追跡すると役立つ場合があります。  エディターで同じ名前のユーザー体験を検索し、オーケストレーション手順 5. で TechnicalProfileReferenceID="SelfAsserted-ProfileUpdate" が呼び出されることを確認します。  この TechnicalProfile を検索して調査すると、処理の流れについて理解が深まります。
-
 5. TechnicalProfile "SelfAsserted-ProfileUpdate" で、入力および出力要求として loyaltyId を追加します。
-
 ```xml
 <TechnicalProfile Id="SelfAsserted-ProfileUpdate">
           <DisplayName>User ID signup</DisplayName>
@@ -189,7 +174,6 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
         </TechnicalProfile>
 ```
 6. ディレクトリの現在のユーザーに関する、拡張プロパティ内の要求の値を保持する要求を TechnicalProfile "AAD-UserWriteProfileUsingObjectId" に追加します。
-
 ```xml
 <TechnicalProfile Id="AAD-UserWriteProfileUsingObjectId">
           <Metadata>
@@ -214,8 +198,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
           <IncludeTechnicalProfile ReferenceId="AAD-Common" />
         </TechnicalProfile>
 ```
-7. ユーザーがログインするたびに拡張属性の値を読み取る要求を TechnicalProfile "AAD-UserReadUsingObjectId" に追加します。
-注: ここまで、TechnicalProfile は、ローカル アカウントのフローだけで変更されてきました。  ソーシャル/フェデレーション アカウントのフローで新しい属性が必要な場合は、TechnicalProfile の別のセットを変更する必要があります。 「次のステップ」を参照してください。
+7. ユーザーがログインするたびに拡張属性の値を読み取る要求を TechnicalProfile "AAD-UserReadUsingObjectId" に追加します。 ここまで、TechnicalProfile は、ローカル アカウントのフローだけで変更されてきました。  ソーシャル/フェデレーション アカウントのフローで新しい属性が必要な場合は、TechnicalProfile の別のセットを変更する必要があります。 「次のステップ」をご覧ください。
 
 ```xml
 <!-- The following technical profile is used to read data after user authenticates. -->
@@ -243,13 +226,12 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 
 >[!IMPORTANT]
->上記の IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
+>IncludeTechnicalProfile 要素では、この TechnicalProfile に AAD-Common のすべての要素が追加されています。
 
 ## <a name="test-the-custom-policy-using-run-now"></a>[今すぐ実行] を使用してカスタム ポリシーをテストする
-
-     1. Open the **Azure AD B2C Blade** and navigate to **Identity Experience Framework > Custom policies**.
-     2. Select the custom policy that you uploaded, and click the **Run now** button.
-     3. You should be able to sign up using an email address.
+1. **[Azure AD B2C] ブレード**を開き、**[Identity Experience Framework] > [カスタム ポリシー]** に移動します。
+1. アップロードしたカスタム ポリシーを選択し、**[Run now]**(今すぐ実行) ボタンをクリックします。
+1. メール アドレスを使用してサインアップできることを確認します。
 
 アプリケーションに送り返される ID トークンには、extension_loyaltyId で始まるカスタム要求として新しい拡張プロパティが含まれます。 例を参照してください。
 
@@ -272,14 +254,15 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
 
 ## <a name="next-steps"></a>次のステップ
 
-### <a name="add-the-new-claim-to-the-flows-for-social-account-logins-by-changing-the-technicalprofiles-listed-below-these-two-technicalprofiles-are-used-by-socialfederated-account-logins-to-write-and-read-the-user-data-using-the-alternativesecurityid-as-the-locator-of-the-user-object"></a>以下に示す TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
+TechnicalProfile を変更することで、新しい要求をソーシャル アカウント ログインのフローに追加します。 この 2 つの TechnicalProfile は、ユーザー オブジェクトのロケーターとして alternativeSecurityId を使用してユーザー データの書き込みと読み取りを行うために、ソーシャル/フェデレーション アカウント ログインで使用されます。
 ```
   <TechnicalProfile Id="AAD-UserWriteUsingAlternativeSecurityId">
 
   <TechnicalProfile Id="AAD-UserReadUsingAlternativeSecurityId">
 ```
-### <a name="using-the-same-extension-attributes-between-built-in-and-custom-policies"></a>組み込みポリシーとカスタム ポリシーの間での同じ拡張属性の使用
-ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app** を使用して登録されます。  カスタム ポリシーでこれらの拡張属性を使用するには、次の手順に従います。
+
+組み込みポリシーとカスタム ポリシー間で同じ拡張属性を使用します。
+ポータルのエクスペリエンスを使用して拡張属性 (カスタム属性とも呼ばれます) を追加すると、これらの属性が、すべての B2C テナントに存在する **b2c-extensions-app を使用して登録されます。  カスタム ポリシーでこれらの拡張属性を使用するには、次の手順に従います。
 1. portal.azure.com の B2C テナント内で、**[Azure Active Directory]** に移動し、**[アプリの登録]** を選択します。
 2. 自分の **b2c-extensions-app** を検索して選択します。
 3. 'Essentials' で、**アプリケーション ID** と**オブジェクト ID** を記録します。
@@ -299,7 +282,7 @@ Azure AD B2C では、各ユーザー アカウントで保存される属性セ
               </Metadata>
 ```
 
-5. ポータルのエクスペリエンスとの整合性を保つには、カスタム ポリシーで使用する "*前*" に、ポータルの UI を使用してこれらの属性を作成します。  ポータルで属性 "ActivationStatus" を作成するときに、次のようにこの属性を参照する必要があります。
+ポータルのエクスペリエンスとの整合性を保つには、カスタム ポリシーで使用する "*前*" に、ポータルの UI を使用してこれらの属性を作成します。  ポータルで属性 "ActivationStatus" を作成するときに、次のようにこの属性を参照する必要があります。
 
 ```
 extension_ActivationStatus in the custom policy
@@ -315,5 +298,5 @@ extension_<app-guid>_ActivationStatus via the Graph API.
 * 拡張プロパティの詳細な取り扱いについては、記事「[ディレクトリ スキーマ拡張機能 | Graph API の概念](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-directory-schema-extensions)」を参照してください。
 
 >[!NOTE]
->Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使用して名前が付けられます。カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
+>Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。 カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
 

@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/15/2017
+ms.date: 08/28/2017
 ms.author: tomfitz
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 36b4cd0674e0f9cec6fb2b00e809c71ee38a80c0
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 9d4ab890c35eebb2e59a9f4fa96843c854636272
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する
@@ -62,7 +62,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {ID} がディレクトリにありません" というエラーが表示されます。
 
 次のスクリプトでは、既定のサブスクリプション以外のスコープを指定することができ、エラーが発生した場合は、ロールの割り当てを再試行します。
 
@@ -117,7 +117,7 @@ Param (
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -127,7 +127,7 @@ Param (
 * 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
 * ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
 *  この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
-* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {ID} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
 
@@ -136,7 +136,7 @@ Param (
 
 ```powershell   
 $creds = Get-Credential
-Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId {tenant-id}
+Login-AzureRmAccount -Credential $creds -ServicePrincipal -TenantId {tenant-ID}
 ```
 
 テナント ID は機密情報ではないため、スクリプトに直接埋め込むことができます。 テナント ID を取得する必要がある場合は、次のコマンドを使用します。
@@ -159,7 +159,7 @@ Sleep 20
 New-AzureRmRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $sp.ApplicationId
 ```
 
-この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+この例では、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、20 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {ID} がディレクトリにありません" というエラーが表示されます。
 
 次のスクリプトでは、既定のサブスクリプション以外のスコープを指定することができ、エラーが発生した場合は、ロールの割り当てを再試行します。 Windows 10 または Windows Server 2016 上の Azure PowerShell 2.0 が必要です。
 
@@ -212,7 +212,7 @@ Param (
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Scope | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
 ```
@@ -222,7 +222,7 @@ Param (
 * 既定のサブスクリプションに ID アクセスを許可する場合は、ResourceGroup パラメーターも SubscriptionId パラメーターも指定する必要はありません。
 * ResourceGroup パラメーターはロールの割り当てスコープを特定のリソース グループに制限する場合にのみ指定します。
 * この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
-* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {ID} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
 **Windows 10 または Windows Server 2016 Technical Preview をお使いでない**場合は、Microsoft スクリプト センターから [Self-signed certificate generator](https://gallery.technet.microsoft.com/scriptcenter/Self-signed-certificate-5920a7c6/) スクリプトをダウンロードします。 ダウンロードしたファイルを展開し、必要なコマンドレットをインポートします。
@@ -292,20 +292,14 @@ Param (
  Login-AzureRmAccount
  Import-Module AzureRM.Resources
  Set-AzureRmContext -SubscriptionId $SubscriptionId
-
- $KeyId = (New-Guid).Guid
+ 
  $CertPassword = ConvertTo-SecureString $CertPlainPassword -AsPlainText -Force
 
  $PFXCert = New-Object -TypeName System.Security.Cryptography.X509Certificates.X509Certificate2 -ArgumentList @($CertPath, $CertPassword)
  $KeyValue = [System.Convert]::ToBase64String($PFXCert.GetRawCertData())
 
- $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
- $KeyCredential.StartDate = $PFXCert.NotBefore
- $KeyCredential.EndDate= $PFXCert.NotAfter
- $KeyCredential.KeyId = $KeyId
- $KeyCredential.CertValue = $KeyValue
-
- $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName -KeyCredentials $keyCredential
+ $ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName $ApplicationDisplayName
+ New-AzureRmADSpCredential -ObjectId $ServicePrincipal.Id -CertValue $KeyValue -StartDate $PFXCert.NotBefore -EndDate $PFXCert.NotAfter
  Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id 
 
  $NewRole = $null
@@ -315,7 +309,7 @@ Param (
     # Sleep here for a few seconds to allow the service principal application to become active (should only take a couple of seconds normally)
     Sleep 15
     New-AzureRMRoleAssignment -RoleDefinitionName Contributor -ServicePrincipalName $ServicePrincipal.ApplicationId | Write-Verbose -ErrorAction SilentlyContinue
-    $NewRole = Get-AzureRMRoleAssignment -ServicePrincipalName $ServicePrincipal.ApplicationId -ErrorAction SilentlyContinue
+    $NewRole = Get-AzureRMRoleAssignment -ObjectId $ServicePrincipal.Id -ErrorAction SilentlyContinue
     $Retries++;
  }
  
@@ -326,7 +320,7 @@ Param (
 
 * アクセスのスコープは、サブスクリプションに制限されます。
 * この例では、共同作成者ロールにサービス プリンシパルを追加します。 その他のロールについては、「[RBAC: 組み込みのロール](../active-directory/role-based-access-built-in-roles.md)」を参照してください。
-* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {id} がディレクトリにありません" というエラーが表示されます。
+* スクリプトは、新しいサービス プリンシパルが Azure Active Directory 全体に反映されるまでの時間を設けるために、15 秒間スリープします。 スクリプトの待機時間が不足している場合、"PrincipalNotFound: プリンシパル {ID} がディレクトリにありません" というエラーが表示されます。
 * サービス プリンシパルのアクセスを複数のサブスクリプションまたはリソース グループに許可する必要がある場合は、異なるスコープを指定して `New-AzureRMRoleAssignment` コマンドレットを再び実行します。
 
 ### <a name="provide-certificate-through-automated-powershell-script"></a>自動化された PowerShell スクリプトから証明書を渡す
@@ -398,7 +392,7 @@ New-AzureRmADAppCredential -ApplicationId 8bc80782-a916-47c8-a47e-4d76ed755275 -
 Save-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 ```
    
-プロファイルを開いて中身を確かめます。 アクセス トークンが含まれていることを確認します。 手動でもう一度ログインするのではなく、プロファイルをロードするだけで済みます。
+プロファイルを開いて中身を確かめます。 アクセス トークンが含まれていることを確認します。 手動でもう一度ログインするのではなく、プロファイルを読み込むだけで済みます。
    
 ```powershell
 Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
@@ -414,7 +408,7 @@ Select-AzureRmProfile -Path c:\Users\exampleuser\profile\exampleSP.json
 
 サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
 
-* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
 
 * アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:**このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 369389f7f8ce56435dcbb9d9264c2db48a294d55
+ms.sourcegitcommit: 79b215eed38959efd630e21633d235cbc857abd8
+ms.openlocfilehash: dde9d9b8be1faede7d2e9e45597070e6ce51ac02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 

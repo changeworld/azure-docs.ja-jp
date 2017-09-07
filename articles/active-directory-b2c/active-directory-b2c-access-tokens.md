@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory B2C: アクセス トークンの要求 | Microsoft Docs"
+title: "アクセス トークンの要求 - Azure AD B2C | Microsoft Docs"
 description: "この記事では、クライアント アプリケーションをセットアップし、アクセス トークンを取得する方法について説明します。"
 services: active-directory-b2c
 documentationcenter: android
@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: parakhj
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 4b361a8e69f885d5b89ac9b2086e2731ee4d8b48
+ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
+ms.openlocfilehash: 7202be4e0e9b8b28b5ec1443d6d248c1738da6fb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 # <a name="azure-ad-b2c-requesting-access-tokens"></a>Azure AD B2C: アクセス トークンの要求
@@ -40,8 +40,8 @@ ms.lasthandoff: 08/09/2017
 
 ### <a name="register-a-web-api"></a>Web API の登録
 
-1. Azure Portal の B2C 機能ブレードで、 **[アプリケーション]**をクリックします。
-1. ブレードの上部にある **[+追加]** をクリックします。
+1. Azure Portal の Azure AD B2C 機能メニューで、**[アプリケーション]** をクリックします。
+1. メニューの上部にある **[+追加]** をクリックします。
 1. アプリケーションの **[名前]** には、コンシューマーがアプリケーションの機能を把握できるような名前を設定します。 たとえば、「Contoso API」と入力します。
 1. **[Include web app / web API (Web アプリ/Web API を含める)]** スイッチを **[はい]** に切り替えます。
 1. **[返信 URL]** に任意の値を入力します。 たとえば、「 `https://localhost:44316/`」のように入力します。 API は Azure AD B2C から直接トークンを受け取らないため、この値は重要ではありません。
@@ -53,7 +53,7 @@ ms.lasthandoff: 08/09/2017
 
 スコープはアクセス許可に似ていますが、これはアプリが API を呼び出すときに必要となります。 スコープの例には "読み取り" や "書き込み" などがあります。 Web アプリまたはネイティブ アプリで API から "読み取り" を行うとします。 アプリは Azure AD B2C を呼び出し、"読み取り" スコープにアクセスするためのアクセス トークンを要求します。 Azure AD B2C でこのようなアクセス トークンを発行するには、特定の API からの "読み取り" アクセス許可がアプリに付与されている必要があります。 これを行うには、まず API で "読み取り" スコープを発行する必要があります。
 
-1. Azure AD B2C の **[アプリケーション]** ブレードで、Web API アプリケーション ("Contoso API") を開きます。
+1. Azure AD B2C の **[アプリケーション]** メニュー内で、Web API アプリケーション ("Contoso API") を開きます。
 1. **[Published scopes (公開スコープ)]** をクリックします。 ここで、他のアプリケーションに付与できるアクセス許可 (スコープ) を定義します。
 1. 必要に応じて**スコープ値**を追加します (たとえば、"read")。 既定では、"user_impersonation" スコープが定義されます。 これは、不要であれば無視できます。 **[スコープ名]** 列にスコープの説明を入力します。
 1. [ **Save**] をクリックします。
@@ -65,7 +65,7 @@ ms.lasthandoff: 08/09/2017
 
 API を構成してスコープを発行したら、Azure Portal を使用して、クライアント アプリケーションにこれらのスコープへのアクセス許可を付与する必要があります。
 
-1. B2C 機能ブレードの **[アプリケーション]** メニューに移動します。
+1. Azure AD B2C 機能メニューの **[アプリケーション]** メニューに移動します。
 1. まだであれば、クライアント アプリケーション ([Web アプリ](active-directory-b2c-app-registration.md#register-a-web-app)または[ネイティブ クライアント](active-directory-b2c-app-registration.md#register-a-mobile-or-native-app)) を登録します。 出発点としてこのガイドを利用している場合は、クライアント アプリケーションを登録する必要があります。
 1. **[API アクセス]** をクリックします。
 1. **[追加]** をクリックします。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: dekapur
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: b8b4c3e48136c47eff6154abcf7ea5d7720be827
+ms.translationtype: HT
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: f57c915dd566e9da9b751bb776a1170842d87297
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -158,3 +157,4 @@ servicefabric:/<section-name>/<setting-name>
 * [Application Insights を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-appinsights.md)
 * [OMS を使用したイベントの分析と視覚化](service-fabric-diagnostics-event-analysis-oms.md)
 * [EventFlow のドキュメント](https://github.com/Azure/diagnostics-eventflow)
+

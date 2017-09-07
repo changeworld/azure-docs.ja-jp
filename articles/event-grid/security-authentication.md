@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b6e1c7587c0b47d04862b4850741aaa3b7d191a8
+ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
+ms.openlocfilehash: ccef224ef1c2919a3e5469c1bbe0980c6963705b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/30/2017
 
 ---
 
@@ -38,6 +38,28 @@ Event Grid に独自の webhook エンドポイントを登録すると、エン
 * このイベントには、ヘッダー値 "Event-Type: Validation" が含まれています。
 * イベント本文のスキーマは、他の Event Grid イベントと同じです。
 * イベント データには、ランダムに生成された次のような文字列が指定された "ValidationCode" プロパティが含まれています。"ValidationCode: acb13…"。
+
+SubscriptionValidationEvent の例を次に示します。
+```json
+[{
+  "Id": "2d1781af-3a4c-4d7c-bd0c-e34b19da4e66",
+  "Topic": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx",
+  "Subject": "",
+  "Data": {
+    "validationCode": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+  },
+  "EventType": "Microsoft.EventGrid/SubscriptionValidationEvent",
+  "EventTime": "2017-08-06T22:09:30.740323Z"
+}]
+```
+
+エンドポイントの所有権を証明するために、検証コード ("validation_response: acb13…" など) をエコーで返します。例を次に示します。
+
+```json
+{
+  "validationResponse": "512d38b6-c7b8-40c8-89fe-f46f9e9622b6"
+}
+```
 
 エンドポイントの所有権を証明するために、検証コード ("ValidationResponse: acb13…" など) をエコーで返します。
 
@@ -176,7 +198,7 @@ Azure Event Grid では、次の操作がサポートされています。
   ] 
 }
 ```
- 
+
 **EventGridContributorRole.json**: すべての Event Grid アクションを許可します。  
 ```json
 { 

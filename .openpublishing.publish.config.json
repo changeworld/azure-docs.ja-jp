@@ -22,7 +22,8 @@
   "notification_subscribers": [],
   "branches_to_filter": [
     "master",
-    "master-sync-work"
+    "master-sync-work",
+    "live-sxs"
   ],
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.ja-jp",
   "git_repository_branch_open_to_public_contributors": "live",
