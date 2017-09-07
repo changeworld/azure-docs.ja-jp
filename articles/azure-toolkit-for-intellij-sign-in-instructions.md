@@ -1,10 +1,10 @@
 ---
-title: "Azure Toolkit for IntelliJ のサインイン手順 | Microsoft Docs"
+title: "Azure Toolkit for IntelliJ のサインイン手順"
 description: "Azure Toolkit for IntelliJ を使用して Microsoft Azure にサインインする方法について説明します。"
 services: 
 documentationcenter: java
 author: rmcmurray
-manager: erikre
+manager: routlaw
 editor: 
 ms.assetid: 
 ms.service: multiple
@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: Java
 ms.topic: article
-ms.date: 04/14/2017
+ms.date: 08/20/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 4e2ed072bdaea0a71fef042c0c72b7656a42bbe8
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: def5957b2ed58aee2e03c879ba9fd3d6c714e358
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,46 +26,12 @@ ms.lasthandoff: 05/15/2017
 
 Azure Toolkit for IntelliJ には、Azure アカウントにサインインするための 2 つの方法が用意されています。
 
-  * **対話型**: Azure アカウントにサインインするたびに、Azure 資格情報を入力します。
   * **自動**: Azure アカウントに自動的にサインインするために使用できる資格情報ファイルを作成します。
+  * **対話型**: Azure アカウントにサインインするたびに、Azure 資格情報を入力します。
 
 以下のセクションで、各方法の使用方法について説明します。
 
 [!INCLUDE [azure-toolkit-for-intellij-prerequisites](../includes/azure-toolkit-for-intellij-prerequisites.md)]
-
-## <a name="sign-in-to-your-azure-account-interactively"></a>Azure アカウントに対話形式でサインインする
-
-Azure 資格情報を手動で入力して Azure にサインインするには、次の手順に従います。
-
-1. IntelliJ IDEA でプロジェクトを開きます。
-
-2. **[ツール]** をクリックし、**[Azure]** をポイントし、**[Azure サインイン]** をクリックします。
-
-   ![IntelliJ Azure サインイン コマンド][I01]
-
-3. **[Azure サインイン]** ウィンドウで、**[対話型]** を選択し、**[サインイン]** をクリックします。
-
-   ![[対話型] が選択されている [Azure サインイン] ウィンドウ][I02]
-
-4. **[Azure ログイン]** ダイアログ ボックスが表示されたら、Azure 資格情報を入力し、**[サインイン]** をクリックします。
-
-   ![[Azure ログイン] ダイアログ ウィンドウ][I03]
-
-5. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、**[OK]** をクリックします。
-
-   ![[サブスクリプションの選択] ダイアログ ボックス][I04]
-
-## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>対話形式でサインインした後で Azure アカウントからサインアウトする
-
-前の手順を使用してアカウントを構成すると、IntelliJ IDEA を再起動するたびに Azure アカウントから自動的にサインアウトします。 ただし、IntelliJ IDEA を*再起動せずに* Azure アカウントからサインアウトするには、以下の手順を実行します。
-
-1. IntelliJ IDEA で、**[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインアウト]** をクリックします。
-
-   ![IntelliJ Azure サインアウト コマンド][L01]
-
-2. **[Azure サインアウト]** 確認ウィンドウで、**[はい]** をクリックします。
-
-   ![[Azure サインアウト] 確認ウィンドウ][L02]
 
 ## <a name="sign-in-to-your-azure-account-automatically"></a>Azure アカウントに自動的にサインインする
 
@@ -140,36 +105,58 @@ IntelliJ IDEA を使用しているときに Azure アカウントからサイ�
 
    ![[サブスクリプションの選択] ダイアログ ボックス][A07]
 
+## <a name="sign-in-to-your-azure-account-interactively"></a>Azure アカウントに対話形式でサインインする
+
+Azure 資格情報を手動で入力して Azure にサインインするには、次の手順に従います。
+
+1. IntelliJ IDEA でプロジェクトを開きます。
+
+2. **[ツール]** をクリックし、**[Azure]** をポイントし、**[Azure サインイン]** をクリックします。
+
+   ![IntelliJ Azure サインイン コマンド][I01]
+
+3. **[Azure サインイン]** ウィンドウで、**[対話型]** を選択し、**[サインイン]** をクリックします。
+
+   ![[対話型] が選択されている [Azure サインイン] ウィンドウ][I02]
+
+4. **[Azure ログイン]** ダイアログ ボックスが表示されたら、Azure 資格情報を入力し、**[サインイン]** をクリックします。
+
+   ![[Azure ログイン] ダイアログ ウィンドウ][I03]
+
+5. **[サブスクリプションの選択]** ダイアログ ボックスで、使用するサブスクリプションを選択し、**[OK]** をクリックします。
+
+   ![[サブスクリプションの選択] ダイアログ ボックス][I04]
+
+## <a name="sign-out-of-your-azure-account-after-you-have-signed-in-interactively"></a>対話形式でサインインした後で Azure アカウントからサインアウトする
+
+前の手順を使用してアカウントを構成すると、IntelliJ IDEA を再起動するたびに Azure アカウントから自動的にサインアウトします。 ただし、IntelliJ IDEA を*再起動せずに* Azure アカウントからサインアウトするには、以下の手順を実行します。
+
+1. IntelliJ IDEA で、**[ツール]** メニューの **[Azure]** をポイントし、**[Azure サインアウト]** をクリックします。
+
+   ![IntelliJ Azure サインアウト コマンド][L01]
+
+2. **[Azure サインアウト]** 確認ウィンドウで、**[はい]** をクリックします。
+
+   ![[Azure サインアウト] 確認ウィンドウ][L02]
+
 ## <a name="next-steps"></a>次のステップ
-Azure Toolkits for Java IDE の詳細については、次のリンクをご覧ください。
 
-* [Azure Toolkit for Eclipse]
-  * [Azure Toolkit for Eclipse の新機能]
-  * [Azure Toolkit for Eclipse のインストール]
-  * [Azure Toolkit for Eclipse のサインイン手順]
-  * [Eclipse で Azure 用の Hello World Web アプリを作成する]
-* [Azure Toolkit for IntelliJ]
-  * [Azure Toolkit for IntelliJ の新機能]
-  * [Azure Toolkit for IntelliJ のインストール]
-  * *Azure Toolkit for IntelliJ のサインイン手順 (この記事)*
-  * [IntelliJ で Azure 用の Hello World Web アプリを作成する]
-
-Java での Azure の使用の詳細については、 [Azure Java デベロッパー センター] と[Java Tools for Visual Studio Team Services] を参照してください。
+[!INCLUDE [azure-toolkit-additional-resources](../includes/azure-toolkit-additional-resources.md)]
 
 <!-- URL List -->
 
 [Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse.md
 [Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij.md
-[Eclipse で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
-[IntelliJ で Azure 用の Hello World Web アプリを作成する]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
-[Azure Toolkit for Eclipse のインストール]: ./azure-toolkit-for-eclipse-installation.md
-[Azure Toolkit for IntelliJ のインストール]: ./azure-toolkit-for-intellij-installation.md
-[Azure Toolkit for Eclipse のサインイン手順]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
+[Create a Hello World Web App for Azure in Eclipse]: ./app-service-web/app-service-web-eclipse-create-hello-world-web-app.md
+[Create a Hello World web app for Azure in IntelliJ]: ./app-service-web/app-service-web-intellij-create-hello-world-web-app.md
+[Installing the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-installation.md
+[Installing the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-installation.md
+[Sign-in instructions for the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-sign-in-instructions.md
 [Sign-in instructions for the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-sign-in-instructions.md
-[Azure Toolkit for Eclipse の新機能]: ./azure-toolkit-for-eclipse-whats-new.md
-[Azure Toolkit for IntelliJ の新機能]: ./azure-toolkit-for-intellij-whats-new.md
+[What's new in the Azure Toolkit for Eclipse]: ./azure-toolkit-for-eclipse-whats-new.md
+[What's new in the Azure Toolkit for IntelliJ]: ./azure-toolkit-for-intellij-whats-new.md
 
-[Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
+[Azure Java Developer Center]: https://azure.microsoft.com/develop/java/
 [Java Tools for Visual Studio Team Services]: https://java.visualstudio.com/
 
 <!-- IMG List -->

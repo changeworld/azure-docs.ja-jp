@@ -12,14 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 08/28/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 7ac9a67fe79cbbc73300f9b43b6af0d9ec143b65
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: f2db3449187d655248b13198b268841052570626
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="restore-key-vault-key-and-secret-for-encrypted-vms-using-azure-backup"></a>Azure Backup を使用して暗号化された VM の Key Vault のキーとシークレットを復元
@@ -46,7 +46,6 @@ PS C:\> $properties = $details.properties
 PS C:\> $storageAccountName = $properties["Target Storage Account Name"]
 PS C:\> $containerName = $properties["Config Blob Container Name"]
 PS C:\> $encryptedBlobName = $properties["Encryption Info Blob Name"]
-PS C:\> $containerName = $properties["Config Blob Container Name"]
 ```
 
 Azure ストレージ コンテキストを設定し、暗号化された VM のキーとシークレットの詳細を含む JSON 構成ファイルを復元します。
@@ -68,7 +67,7 @@ PS C:\> Restore-AzureKeyVaultKey -VaultName '<target_key_vault_name>' -InputFile
 ```
 
 ## <a name="restore-secret"></a>シークレットの復元
-前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。
+前の手順で生成した JSON ファイルを使用してシークレットの名前と値を取得し、これをフィードしてシークレットのコマンドレットを設定し、Key Vault にシークレット (BEK) を戻します。 **このようなコマンドレットを使用するのは、VM が BEK と KEK を使用して暗号化されている場合です。**
 
 ```
 PS C:\> $secretdata = $encryptionObject.OsDiskKeyAndSecretDetails.SecretData
@@ -78,6 +77,14 @@ PS C:\> $Tags = @{'DiskEncryptionKeyEncryptionAlgorithm' = 'RSA-OAEP';'DiskEncry
 PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secretname -SecretValue $Secret -ContentType  'Wrapped BEK' -Tags $Tags
 ```
 
+VM が **BEK のみを使用して暗号化**されている場合は、JSON からシークレット BLOB ファイルを生成し、そのファイルをフィードしてシークレット コマンドレットを復元し、シークレット (BEK) をキー コンテナーに戻します。
+
+```
+PS C:\> $secretDestination = 'C:\secret.blob'
+PS C:\> [io.file]::WriteAllBytes($secretDestination, [System.Convert]::FromBase64String($encryptionObject.OsDiskKeyAndSecretDetails.KeyVaultSecretBackupData))
+PS C:\> Restore-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -InputFile $secretDestination -Verbose
+```
+
 > [!NOTE]
 > 1. $encryptionObject.OsDiskKeyAndSecretDetails.SecretUrl の出力を参照し、secrets/ の後に続くテキスト (output secret URL is https://keyvaultname.vault.azure.net/secrets/B3284AAA-DAAA-4AAA-B393-60CAA848AAAA/xx000000xx0849999f3xx30000003163 and secret name is B3284AAA-DAAA-4AAA-B393-60CAA848AAAA など) を使って、$secretname の値を取得できます。
 > 2. タグ DiskEncryptionKeyFileName の名前は、シークレットの名前と同じです。
@@ -85,10 +92,10 @@ PS C:\> Set-AzureKeyVaultSecret -VaultName '<target_key_vault_name>' -Name $secr
 >
 
 ## <a name="create-virtual-machine-from-restored-disk"></a>復元されたディスクからの仮想マシンの作成
-暗号化された VM を Azure VM Backup を使用してバックアップしておいた場合、上記の PowerShell コマンドレットを使用して、キーとシークレットを Key Vault に復元することができます。 これらを復元した後で、復元したディスク、キー、およびシークレットから暗号化された VM を作成するには、[PowerShell を使用した Azure VM のバックアップと復元の管理](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)に関する記事をご覧ください。
+暗号化された VM を Azure VM Backup を使用してバックアップしておいた場合、上記の PowerShell コマンドレットを使用して、キーとシークレットをキー コンテナーに復元することができます。 これらを復元した後で、復元したディスク、キー、およびシークレットから暗号化された VM を作成するには、[PowerShell を使用した Azure VM のバックアップと復元の管理](backup-azure-vms-automation.md#create-a-vm-from-restored-disks)に関する記事をご覧ください。
 
 ## <a name="legacy-approach"></a>従来の手法
-上述した手法はすべての復旧ポイントで有効ですが、2017 年 7 月 11 日より前の復旧ポイントでは、復旧ポイントからキーとシークレットを取得する従来の手法も有効です。 [PowerShell ステップ](backup-azure-vms-automation.md#restore-an-azure-vm)を使って、暗号化された VM のディスクの復元 ジョブが完了したら、$rp に有効な値が設定されていることを確認してください。
+上述した手法はすべての復旧ポイントで有効です。 ただし、BEK と KEK を使用して暗号化された VM の場合、2017 年 7 月 11 日より前の復旧ポイントでは、復旧ポイントからキーとシークレットを取得する従来の手法も有効です。 [PowerShell ステップ](backup-azure-vms-automation.md#restore-an-azure-vm)を使って、暗号化された VM のディスクの復元 ジョブが完了したら、$rp に有効な値が設定されていることを確認してください。
 
 ### <a name="restore-key"></a>キーの復元
 以下のコマンドレットを使用して復旧ポイントからキー (KEK) 情報を取得し、この情報をフィードしてキーのコマンドレットを復元し、Key Vault に戻します。

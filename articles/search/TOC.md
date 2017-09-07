@@ -59,7 +59,8 @@
 #### [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
 #### [Lucene 構文クエリの例](search-query-lucene-examples.md)
 #### [フィルター式構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
-### カスタム検索
+### Azure Search のアナライザー
+#### [概要](search-analyzers.md)
 #### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
 ### [ページングの結果](search-pagination-page-layout.md)

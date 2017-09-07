@@ -4,7 +4,7 @@ description: "診断図機能を使用してセルフサービスのトラブル
 keywords: 
 documentationcenter: 
 services: stream-analytics
-author: jeffstokes72
+author: samacha
 manager: jhubbard
 editor: cgronlun
 ms.assetid: d87841cd-c59f-4a46-b46e-8b904fdc12e9
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: jeffstok
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 18c39a025f750cf5a17c535ab40923b7cafe413d
+ms.author: samacha
+ms.translationtype: HT
+ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
+ms.openlocfilehash: 820b73a5dbf9bb108e189313cf6ee2b924ab04c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/29/2017
 
 ---
 # <a name="visualize-and-troubleshoot-stream-analytics-jobs"></a>Stream Analytics ジョブの視覚化とトラブルシューティング
@@ -29,7 +28,7 @@ Stream Analytics では、他のクラウドベースのテクノロジと同様
 視覚化パネルでは、入力が表示されるだけでなく、実行中のクエリとクエリの結果として構成されたすべての出力が表示されます。 接続や構成の問題を明らかにすることができ、構成を視覚的に表示する際にも役立ちます。
 
 ## <a name="using-the-diagnosis-diagram-tool"></a>診断図ツールの使用
-このビジュアライザーにアクセスするには、Stream Analytics ジョブの [設定] ブレードで [診断図] をクリックします。
+このビジュアライザーにアクセスするには、Stream Analytics ジョブの [設定] 領域で [診断図] をクリックします。
 
 ![stream-analytics-troubleshoot-visualization-diagnosis-diagram](./media/stream-analytics-troubleshoot-visualization/stream-analytics-troubleshoot-visualization-diagnosis-diagram1.png)
 

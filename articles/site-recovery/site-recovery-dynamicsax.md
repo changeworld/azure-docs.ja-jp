@@ -12,14 +12,13 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 8/24/2017
 ms.author: asgang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: cf568d20f60709dbb64774bcbcc1b4aa6c43d8d3
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 03127c8f4841b67436c4819628319705af0b2cd5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="replicate-a-multi-tier-dynamics-ax-application-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX アプリケーションをレプリケートする
@@ -59,7 +58,7 @@ Azure Site Recovery を使用して Dynamics AX アプリケーションのデ�
 **VMware** | はい | はい
 **物理サーバー** | はい | あり
 
-## <a name="enable-dr-of-dynamics-ax-application-using-asr"></a>ASR を使用して Dynamics AX アプリケーションの DR を有効にする
+## <a name="enable-dr-of-dynamics-ax-application-using-azure-site-recovery"></a>Azure Site Recovery を使用して Dynamics AX アプリケーションの DR を有効にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
 アプリケーションの完全なレプリケーションと復旧を有効にするには、Dynamics AX 内の各コンポーネントを保護する必要があります。 このセクションの内容について説明します。
 
@@ -103,7 +102,7 @@ VM が[HYPER-V](site-recovery-hyper-v-site-to-azure.md)と [VMware](site-recover
 ### <a name="4-configure-networking"></a>4.ネットワークを構成する
 VM Compute とネットワーク設定を構成する
 
-AX クライアントと AOS VM は、VM ネットワークがフェールオーバー後に適切な DR ネットワークに接続されるように、ASR でネットワーク設定を構成します。 これらの層の DR ネットワークが、SQL 層にルーティング可能なことを確認します。
+AX クライアントと AOS VM は、VM ネットワークがフェールオーバー後に適切な DR ネットワークに接続されるように、Azure Site Recovery でネットワーク設定を構成します。 これらの層の DR ネットワークが、SQL 層にルーティング可能なことを確認します。
 
 ネットワーク設定を構成するには、次のスナップショットに示すように、レプリケートされた項目で VM を選択します。
 
@@ -115,9 +114,9 @@ AX クライアントと AOS VM は、VM ネットワークがフェールオー
 
 ### <a name="5-creating-a-recovery-plan"></a>5.復旧計画の作成
 
-ASR で復旧計画を作成し、フェールオーバー プロセスを自動化することができます。 復旧計画には、アプリ層と Web 層を追加します。 アプリ層の前にフロントエンドがシャットダウンするように、異なるグループに順序付けます。
+Azure Site Recovery で復旧計画を作成し、フェールオーバー プロセスを自動化することができます。 復旧計画には、アプリ層と Web 層を追加します。 アプリ層の前にフロントエンドがシャットダウンするように、異なるグループに順序付けます。
 
-1)  サブスクリプションで ASR コンテナーを選択し、[復旧計画] タイルをクリックします。
+1)  サブスクリプションで Azure Site Recovery コンテナーを選択し、[復旧計画] タイルをクリックします。
 
 2)  [+ 復旧計画] をクリックして名前を指定します。
 

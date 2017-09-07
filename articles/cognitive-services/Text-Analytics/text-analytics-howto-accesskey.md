@@ -10,10 +10,10 @@ ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: heidist
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 5ae1e94fed96de06e3cdc2cbe0837f32ec806e0b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: d1ebd7c6d1442b3d6040314e0ff58b77d4171c08
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -39,7 +39,7 @@ If you need help finding the key, or to determine whether your subscription alre
 
 + [Learn how to call the API](text-analytics-howto-call-api.md) with REST.
 
-+ [Quickstart](quick-start.md) is a walk through of the main capabilities. Learn how to submit text, perform an analysis, and view results with minimal code.
++ [Quickstart](quick-start.md) is a walkthrough of the main capabilities. Learn how to submit text, perform an analysis, and view results with minimal code.
 
 + [API reference documentation](//go.microsoft.com/fwlink/?LinkID=759346) provides technical documentation for the APIs. The documentation supports embedded requests so that you can call the API from each documentation page.
 

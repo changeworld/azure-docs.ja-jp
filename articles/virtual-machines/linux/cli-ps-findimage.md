@@ -13,20 +13,32 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/11/2017
+ms.date: 08/24/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 72c5c2efe2c8a60f13d18b595062448e6a0d1816
+ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
+ms.openlocfilehash: e0c27a7ee9e9a7ab1a3b004e070fa556b56a36a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Azure CLI を使用して Azure Marketplace の Linux VM イメージを見つける方法
 このトピックでは、Azure CLI 2.0 を使用して Azure Marketplace で VM イメージを見つける方法を説明します。 この情報は、Linux VM の作成時に Marketplace イメージを指定するためにご利用ください。
 
 [Azure CLI 2.0 ](/cli/azure/install-az-cli2)の最新版がインストール済みであることと、Azure アカウントにログインしていること (`az login`) を確認してください。
+
+## <a name="terminology"></a>用語集
+
+Marketplace イメージは、CLI および他の Azure ツールで階層に基づいて識別されます。
+
+* **発行元** -イメージを作成した組織です。 例: Canonical
+* **プラン** - 発行元によって作成された関連するイメージのグループです。 例: Ubuntu Server
+* **SKU** - ディストリビューションのメジャー リリースなど、プランのインスタンス。 例: 16.04-LTS
+* **バージョン** - イメージの SKU のバージョン番号。 イメージを指定するときにバージョン番号を "latest" で置き換えることもできます。このようにすると、ディストリビューションの最新バージョンが選択されます。
+
+Marketplace イメージを指定するとき、通常はイメージの *URN* を使用します。 URN は、*Publisher*:*Offer*:*Sku*:*Version* のように、これらの値を組み合わせてコロン (:) で区切ったものです。 
+
 
 ## <a name="list-popular-images"></a>よく使われるイメージを一覧表示する
 
@@ -36,7 +48,7 @@ ms.lasthandoff: 07/21/2017
 az vm image list --output table
 ```
 
-出力には、*Publisher*:*Offer*:*Sku*:*Version* という形式で、URN (*Urn* 列の値) が含まれます。 `az vm create` で VM を作成するときは、この値を使ってイメージを指定します。 よく使われる VM イメージのいずれかを使用して VM を作成する場合は、代わりに、*UbuntuLTS* などの URN の別名を指定することもできます。
+この出力には URN (*Urn* 列の値) が含まれます。これを使用してイメージを指定します。 よく使われる Marketplace イメージのいずれかを使用して VM を作成する場合は、代わりに、*UbuntuLTS* などの URN の別名を指定することもできます。
 
 ```
 You are viewing an offline list of images, use --all to retrieve an up-to-date list
@@ -49,42 +61,21 @@ openSUSE-Leap  SUSE                    42.2                SUSE:openSUSE-Leap:42
 RHEL           RedHat                  7.3                 RedHat:RHEL:7.3:latest                                          RHEL                 latest
 SLES           SUSE                    12-SP2              SUSE:SLES:12-SP2:latest                                         SLES                 latest
 UbuntuServer   Canonical               16.04-LTS           Canonical:UbuntuServer:16.04-LTS:latest                         UbuntuLTS            latest
-WindowsServer  MicrosoftWindowsServer  2016-Datacenter     MicrosoftWindowsServer:WindowsServer:2016-Datacenter:latest     Win2016Datacenter    latest
-WindowsServer  MicrosoftWindowsServer  2012-R2-Datacenter  MicrosoftWindowsServer:WindowsServer:2012-R2-Datacenter:latest  Win2012R2Datacenter  latest
-WindowsServer  MicrosoftWindowsServer  2012-Datacenter     MicrosoftWindowsServer:WindowsServer:2012-Datacenter:latest     Win2012Datacenter    latest
-WindowsServer  MicrosoftWindowsServer  2008-R2-SP1         MicrosoftWindowsServer:WindowsServer:2008-R2-SP1:latest         Win2008R2SP1         latest
+...
 ```
-
-## <a name="list-all-current-images"></a>現在のすべてのイメージを一覧表示する
-
-Marketplace にあるすべての VM イメージの現在の一覧を取得するには、`az vm image list` コマンドを `--all` オプションと組み合わせて使用します。 このバージョンのコマンドは、完了するまでに少し時間がかかります。
-
-
-```azurecli
-az vm image list --all
-```
-
-`--location` オプションを使って特定の場所を指定しない場合は、既定で `westus` の値が返されます  (`az configure --defaults location=<location>` を実行すると、別の既定の場所を設定できます)。
-
-
-対話的に調査したい場合は、出力をローカル ファイルに指定します。 For example:
-
-```azurecli
-az vm image list --all > allImages.json
-```
-
-
-
 
 ## <a name="find-specific-images"></a>特定のイメージを検索する
 
-追加のオプションと組み合わせて `az vm image list` を使用して、特定の場所、プラン、発行元、または SKU に検索範囲を制限します。 たとえば、次のコマンドではすべての Debian プランが表示されます (`--all` スイッチがなければ、一般的なイメージのローカル キャッシュを検索するだけであることを忘れないでください)。
+Marketplace で特定の VM イメージを検索するには、`az vm image list` コマンドと `--all` オプションを使用します。 このバージョンのコマンドは完了するまでに少し時間がかかります。また、大量の出力が返されることがあるため、通常は `--publisher` または他のパラメーターを使用してリストをフィルター処理します。 
+
+たとえば、次のコマンドではすべての Debian プランが表示されます (`--all` スイッチがなければ、一般的なイメージのローカル キャッシュを検索するだけであることを忘れないでください)。
 
 ```azurecli
 az vm image list --offer Debian --all --output table 
+
 ```
 
-出力は長い一覧になる場合があるため、ここでは一部を示しています。 
+出力の一部を次に示します。 
 ```
 Offer    Publisher    Sku                Urn                                              Version
 -------  -----------  -----------------  -----------------------------------------------  --------------
@@ -95,11 +86,26 @@ Debian   credativ     7                  credativ:Debian:7:7.0.201604200        
 Debian   credativ     7                  credativ:Debian:7:7.0.201606280                  7.0.201606280
 Debian   credativ     7                  credativ:Debian:7:7.0.201609120                  7.0.201609120
 Debian   credativ     7                  credativ:Debian:7:7.0.201611020                  7.0.201611020
+Debian   credativ     8                  credativ:Debian:8:8.0.201602010                  8.0.201602010
+Debian   credativ     8                  credativ:Debian:8:8.0.201603020                  8.0.201603020
+Debian   credativ     8                  credativ:Debian:8:8.0.201604050                  8.0.201604050
+Debian   credativ     8                  credativ:Debian:8:8.0.201604200                  8.0.201604200
+Debian   credativ     8                  credativ:Debian:8:8.0.201606280                  8.0.201606280
+Debian   credativ     8                  credativ:Debian:8:8.0.201609120                  8.0.201609120
+Debian   credativ     8                  credativ:Debian:8:8.0.201611020                  8.0.201611020
+Debian   credativ     8                  credativ:Debian:8:8.0.201701180                  8.0.201701180
+Debian   credativ     8                  credativ:Debian:8:8.0.201703150                  8.0.201703150
+Debian   credativ     8                  credativ:Debian:8:8.0.201704110                  8.0.201704110
+Debian   credativ     8                  credativ:Debian:8:8.0.201704180                  8.0.201704180
+Debian   credativ     8                  credativ:Debian:8:8.0.201706190                  8.0.201706190
+Debian   credativ     8                  credativ:Debian:8:8.0.201706210                  8.0.201706210
+Debian   credativ     8                  credativ:Debian:8:8.0.201708040                  8.0.201708040
 ...
 ```
 
-
 `--location`、`--publisher`、および `--sku` オプションを指定して、同様のフィルターを適用します。 すべての Debian イメージを見つけるために `--offer Deb` を検索するなど、フィルターに対して部分一致を実行することもできます。
+
+`--location` オプションを使って特定の場所を指定しない場合は、既定で `westus` の値が返されます  (`az configure --defaults location=<location>` を実行すると、別の既定の場所を設定できます)。
 
 たとえば、次のコマンドでは、`westeurope` にあるすべての Debian 8 SKU を一覧表示します。
 
@@ -107,7 +113,7 @@ Debian   credativ     7                  credativ:Debian:7:7.0.201611020        
 az vm image list --location westeurope --offer Deb --publisher credativ --sku 8 --all --output table
 ```
 
-出力:
+出力の一部を次に示します。
 
 ```
 Offer    Publisher    Sku                Urn                                              Version
@@ -128,7 +134,6 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 ...
 ```
 
-
 ## <a name="navigate-the-images"></a>イメージの移動 
 任意の場所にあるイメージを検索する別の方法として、[az vm image list-publishers](/cli/azure/vm/image#list-publishers)、[az vm image list-offers](/cli/azure/vm/image#list-offers)、および[az vm image list-skus](/cli/azure/vm/image#list-skus) コマンドを連続で実行します。 これらのコマンドを使用する際は、以下の値を決定します。
 
@@ -143,11 +148,12 @@ Debian   credativ     8                  credativ:Debian:8:8.0.201706210        
 az vm image list-publishers --location westus --output table
 ```
 
-出力:
+出力の一部を次に示します。
 
 ```
 Location    Name
 ----------  ----------------------------------------------------
+westus      1e
 westus      4psa
 westus      7isolutions
 westus      a10networks
@@ -161,7 +167,7 @@ westus      activeeon
 westus      adatao
 ...
 ```
-これらの一覧は長くなる場合があるため、この例の出力は一部のみを示しています。 特定の発行元からのプランを検索するには、この情報を使用します。 たとえば、Canonical が米国西部の場所になっているイメージ発行元の場合、`azure vm image list-offers` を実行することでプランを検索します。 次の例のように、場所と発行元を渡します。
+特定の発行元からのプランを検索するには、この情報を使用します。 たとえば、Canonical が米国西部に存在するイメージ発行元の場合、`azure vm image list-offers` を実行することでプランを検索します。 次の例のように、場所と発行元を渡します。
 
 ```azurecli
 az vm image list-offers --location westus --publisher Canonical --output table
@@ -214,7 +220,7 @@ westus      17.04-DAILY
 westus      17.10-DAILY
 ```
 
-最後に、`az vm image list` コマンドを使用して、**14.04-LTS**など、目的とする特定のバージョンの SKU を検索します。
+最後に、`az vm image list` コマンドを使用して、**16.04-LTS** など、目的とする特定のバージョンの SKU を検索します。
 
 ```azurecli
 az vm image list --location westus --publisher Canonical --offer UbuntuServer --sku 16.04-LTS --all --output table
@@ -245,7 +251,12 @@ UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201705160  16.04.201705160
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201706100  16.04.201706100
 UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201706191  16.04.201706191
+UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201707210  16.04.201707210
+UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201707270  16.04.201707270
+UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708030  16.04.201708030
+UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708110  16.04.201708110
+UbuntuServer  Canonical    16.04-LTS  Canonical:UbuntuServer:16.04-LTS:16.04.201708151  16.04.201708151
 ```
 ## <a name="next-steps"></a>次のステップ
-これで、URN 値をメモして、使用するイメージを正確に選べるようになりました。 イメージを指定するときに、必要に応じて URN のバージョン番号を "latest" に置き換えることができます。 このバージョンは常に、ディストリビューションの最新バージョンです。 検索した URN 情報を使って仮想マシンをすぐに作成するには、[Azure CLI を使用した Linux VM の作成](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)に関するページをご覧ください。
+これで、URN 値をメモして、使用するイメージを正確に選べるようになりました。 [az vm create](/cli/azure/vm#create) コマンドで VM を作成するときに、この値を `--image` パラメーターを使用して渡します。 必要に応じて URN のバージョン番号を "latest" に置き換えられることに注意してください。 このバージョンは常に、ディストリビューションの最新バージョンです。 URN 情報を使って仮想マシンをすぐに作成するには、「[Azure CLI を使用した Linux VM の作成と管理](tutorial-manage-vm.md)」をご覧ください。
 

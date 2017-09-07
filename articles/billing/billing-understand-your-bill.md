@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/14/2017
+ms.date: 08/31/2017
 ms.author: tonguyen
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 547b035646ccb80d1001591ae59e6a0871d1ed2c
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 2bf75dc55d190522597eb8958d378aa1469027b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Microsoft Azure の課金内容の確認
@@ -31,8 +31,11 @@ Azure の課金内容を確認するには、詳細な毎日の使用状況フ�
 
 コスト管理レポートの詳細については、[Azure ポータルのコスト管理](https://docs.microsoft.com/en-us/azure/billing/billing-getting-started)に関する記事をご覧ください。
 
-
 ## <a name="charges"></a>請求書の料金が正しいことを確認する方法
+<div style="padding-top: 56.25%; position: relative; width: 100%;">
+<iframe style="position: absolute;top: 0;left: 0;right: 0;bottom: 0;" width="100%" height="100%" src="https://www.youtube.com/embed/3YegFD769Pk" frameborder="0" allowfullscreen></iframe>
+</div>
+
 請求書上に詳細を知りたい料金がある場合は、次の 2 つの選択肢があります。
 
 ### <a name="option-1-review-your-invoice-and-compare-the-usage-and-costs-with-the-detailed-usage-csv-file"></a>オプション 1: 請求書を確認し、使用状況およびコストを使用状況の詳細の CSV ファイルと比較する
@@ -72,7 +75,7 @@ CSV の各列については、[Azure の詳細な利用状況の確認](billing
 
 ### <a name="option-2-review-your-invoice-and-compare-with-the-usage-and-costs-in-the-azure-portal"></a>オプション 2: 請求書を確認し、Azure ポータルの使用状況およびコストと比較する
 
-Azure ポータルで料金を確認することもできます。 Azure ポータルは、請求書の使用状況と料金の概要を示すコスト管理グラフを提供します。
+Azure Portal で料金を確認することもできます。Azure Portal は、請求書の使用状況と料金の概要を示すコスト管理グラフを提供します。
 
 上記の例から続行するには、[[サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動してサブスクリプションを選択し、**[コスト分析]** を選択します。 そこから、期間を指定して、Azure Scheduler サービスの使用料金を確認できます。
 

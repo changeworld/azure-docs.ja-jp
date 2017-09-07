@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/27/2017
 ms.author: samacha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4c0c7c185943eb292d816e2047de930245a3e1e1
+ms.translationtype: HT
+ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
+ms.openlocfilehash: 97044cb5d7b0b3fcb3b85328df618a265bc59b61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
+ms.lasthandoff: 08/28/2017
 
 ---
 # <a name="choosing-a-streaming-analytics-platform-comparing-apache-storm-and-azure-stream-analytics"></a>Stream Analytics プラットフォームの選択: Apache Storm と Azure Stream Analytics との比較
@@ -231,29 +231,12 @@ Azure にはストリーミング データを分析するソリューション�
         <tr>
             <td width="174" valign="top">
                 <p>
-                    <strong>ユーザー定義関数 (UDF) のサポート</strong>
-                </p>
-            </td>
-            <td width="204" valign="top">
-                <p>
-クエリで JavaScript UDF を使用できます。 詳細については、<a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">JavaScript UDF の統合</a>に関する記事をご覧ください。
-                </p>
-            </td>
-            <td width="246" valign="top">
-                <p>
-UDF は、C#、Java や任意の言語で記述できます。
-                </p>
-            </td>
-        </tr>
-        <tr>
-            <td width="174" valign="top">
-                <p>
                     <strong>カスタム コードで拡張可能</strong>
                 </p>
             </td>
             <td width="204" valign="top">
                 <p>
-いいえ。 Stream Analytics では、拡張可能コードのサポートはありません。
+JavaScript UDF では部分的にサポートします。 詳細については、<a href="https://docs.microsoft.com/azure/stream-analytics/stream-analytics-javascript-user-defined-functions">JavaScript UDF の統合</a>に関する記事をご覧ください。
                 </p>
             </td>
             <td width="246" valign="top">

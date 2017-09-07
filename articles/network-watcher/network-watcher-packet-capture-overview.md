@@ -3,7 +3,7 @@ title: "Azure Network Watcher のパケット キャプチャの概要 | Microso
 description: "このページでは、Network Watcher のパケット キャプチャ機能の概要を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 3a81afaa-ecd9-4004-b68e-69ab56913356
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 4fdd007c2cfad7b42f26ab2cacfba06d95c8dad3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/27/2017
-
 
 ---
 

@@ -3,7 +3,7 @@ title: "Azure Network Watcher のインスタンスの作成 | Microsoft Docs"
 description: "このページでは、ポータルと Azure REST API を使用して Network Watcher のインスタンスを作成する手順について説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: b1314119-0b87-4f4d-b44c-2c4d0547fb76
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
 ms.openlocfilehash: 2aeaffdd5ab552e18677cbd1a24a748dd14bf172

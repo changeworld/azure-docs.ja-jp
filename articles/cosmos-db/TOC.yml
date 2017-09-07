@@ -4,6 +4,8 @@
   items:
     - name: Azure Cosmos DB について
       href: introduction.md
+    - name: 20 日のヒント
+      href: 20-days-of-tips.md
 - name: クイック スタート
   expanded: true
   items:
@@ -49,8 +51,12 @@
       items:
         - name: DocumentDB
           href: tutorial-develop-documentdb-dotnet.md
-        - name: MongoDB
+        - name: .NET での MongoDB
           href: tutorial-develop-mongodb.md
+        - name: Angular での MongoDB
+          href: tutorial-develop-mongodb-nodejs.md
+        - name: React での MongoDB
+          href: tutorial-develop-mongodb-react.md
         - name: テーブル
           href: tutorial-develop-table-dotnet.md
         - name: Graph
@@ -208,7 +214,19 @@
               href: mongodb-mongochef.md
             - name: Robomongo の使用
               href: mongodb-robomongo.md
-            - name: Tutorials (チュートリアル)
+            - name: Angular チュートリアル シリーズ
+              items:
+                - name: パート 2 - Node アプリの作成
+                  href: tutorial-develop-mongodb-nodejs-part2.md
+                - name: パート 3 - Angular UI の追加
+                  href: tutorial-develop-mongodb-nodejs-part3.md
+                - name: パート 4 - Cosmos DB の作成
+                  href: tutorial-develop-mongodb-nodejs-part4.md
+                - name: パート 5 - Cosmos DB への接続
+                  href: tutorial-develop-mongodb-nodejs-part5.md
+                - name: パート 6 - アプリへの書き込み
+                  href: tutorial-develop-mongodb-nodejs-part6.md
+            - name: その他のチュートリアル
               items:
                 - name: Node.js コンソール アプリ
                   href: mongodb-samples.md

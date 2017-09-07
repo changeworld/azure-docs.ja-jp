@@ -16,10 +16,10 @@ ms.custom: performance
 ms.date: 08/23/2017
 ms.author: joeyong;barbkess;kavithaj
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b1ab2a8253684c62be650eed2ea5f69c62188a22
+ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
+ms.openlocfilehash: eaf2d43286dbaa52ada1430fbb7ce1e37f41c0d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/25/2017
 
 ---
 # <a name="concurrency-and-workload-management-in-sql-data-warehouse"></a>SQL Data Warehouse での同時実行とワークロード管理
@@ -152,7 +152,7 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 ## <a name="concurrency-slot-consumption"></a>使用される同時実行スロット数  
 より上位のリソース クラスで実行されるクエリには、より多くのメモリが与えられます。 メモリは、固定のリソースです。  そのため、1 つのクエリに割り当てられるメモリが多くなるほど、同時に実行できるクエリの数が少なくなります。 次の表で、これまでに説明したすべての概念を 1 つにまとめ、各 DWU で利用可能な同時実行スロットの数と各リソース クラスで使用されるスロットの数を示します。  
 
-### <a name="allocation-and-consumption-of-concurrency-slots"></a>同時実行スロットの割り当てと使用数  
+### <a name="allocation-and-consumption-of-concurrency-slots-for-dynamic-resource-classes"></a>動的リソース クラスの同時実行スロットの割り当てと使用量  
 | DWU | 同時クエリの最大数 | 割り当てられる同時実行スロット数 | smallrc で使用されるスロット数 | mediumrc で使用されるスロット数 | largerc で使用されるスロット数 | xlargerc で使用されるスロット数 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |1 |2 |4 |
@@ -168,7 +168,7 @@ EXEC sp_addrolemember 'largerc', 'loaduser'
 | DW3000 |32 |120 |1 |16 |32 |64 |
 | DW6000 |32 |240 |1 |32 |64 |128 |
 
-### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>静的リソース クラスの同時実行スロットの割り当てと使用量
+### <a name="allocation-and-consumption-of-concurrency-slots-for-static-resource-classes"></a>静的リソース クラスの同時実行スロットの割り当てと使用量  
 | DWU | 同時クエリの最大数 | 割り当てられる同時実行スロット数 |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:--- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | DW100 |4 |4 |1 |2 |4 |4 |4 |4 |4 |4 |
