@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c6670b97ebc0545dbcb01d2b0cb1e260f99cfed9
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 # OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
@@ -266,7 +266,7 @@ JSON Web トークンに関する詳細については、[JWT の IETF ドラフ
 | invalid_client |クライアント認証に失敗しました。 |クライアント資格情報が有効ではありません。 修正するには、アプリケーション管理者が資格情報を更新します。 |
 | unsupported_grant_type |承認サーバーが承認付与の種類をサポートしていません。 |要求の付与の種類を変更します。 この種のエラーは、開発時にのみ発生し、初期テスト中に検出する必要があります。 |
 | invalid_resource |対象のリソースは、存在しない、Azure AD が見つけられない、または正しく構成されていないために無効です。 |これは、リソース (存在する場合) がテナントで構成されていないことを示します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
-| interaction_required |要求にユーザーの介入が必要です。 たとえば、追加の認証手順が必要です。 |同じリソースで要求を再試行します。 |
+| interaction_required |要求にユーザーの介入が必要です。 たとえば、追加の認証手順が必要です。 | 同じリソースに対して、非対話型の要求ではなく、対話型の承認要求で再試行してください。 |
 | temporarily_unavailable |サーバーが一時的にビジー状態であるため、要求を処理できません。 |要求をやり直してください。 クライアント アプリケーションは、一時的な状況が原因で応答が遅れることをユーザーに説明する場合があります。 |
 
 ## リソースにアクセスするためにアクセス トークンを使用します。
@@ -329,15 +329,6 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &resource=https%3A%2F%2Fservice.contoso.com%2F
 &client_secret=JqQX2PNo9bpM0uEihUPzyrh    // NOTE: Only required for web apps
 ```
-| パラメーター | Description |
-| --- | --- |
-| access_token |要求された新しいアクセス トークン。 |
-| expires_in |トークンの残りの有効期間を秒単位で表したもの。 標準的な値は 3600 (1 時間) です。 |
-| expires_on |トークンの有効期限が切れる日付と時刻。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 |
-| refresh_token |新しい OAuth 2.0 の refresh_token で、応答中にアクセス トークンの有効期限が切れた時に、新しいアクセス トークンを要求するために使用します。 |
-| resource |アクセス トークンを使ってアクセスできる保護されたリソースを識別します。 |
-| scope |ネイティブ クライアント アプリケーションに付与される偽装アクセス許可。 既定のアクセス許可は **user_impersonation** です。 ターゲット リソースの所有者は、代替の値を Azure AD に登録できます。 |
-| token_type |トークンのタイプ。 サポートされている値は **bearer**のみです。 |
 
 ### 成功応答
 正常なトークン応答は次のようになります。
@@ -352,6 +343,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
   "refresh_token": "AwABAAAAv YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfcUl4VBbiSHZyd1NVZG5QTIOcbObu3qnLutbpadZGAxqjIbMkQ2bQS09fTrjMBtDE3D6kSMIodpCecoANon9b0LATkpitimVCrl PM1KaPlrEqdFSBzjqfTGAMxZGUTdM0t4B4rTfgV29ghDOHRc2B-C_hHeJaJICqjZ3mY2b_YNqmf9SoAylD1PycGCB90xzZeEDg6oBzOIPfYsbDWNf621pKo2Q3GGTHYlmNfwoc-OlrxK69hkha2CF12azM_NYhgO668yfmVCrl-NyfN3oyG4ZCWu18M9-vEou4Sq-1oMDzExgAf61noxzkNiaTecM-Ve5cq6wHqYQjfV9DOz4lbceuYCAA"
 }
 ```
+| パラメーター | Description |
+| --- | --- |
+| token_type |トークンのタイプ。 サポートされている値は **bearer**のみです。 |
+| expires_in |トークンの残りの有効期間を秒単位で表したもの。 標準的な値は 3600 (1 時間) です。 |
+| expires_on |トークンの有効期限が切れる日付と時刻。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 |
+| resource |アクセス トークンを使ってアクセスできる保護されたリソースを識別します。 |
+| scope |ネイティブ クライアント アプリケーションに付与される偽装アクセス許可。 既定のアクセス許可は **user_impersonation** です。 ターゲット リソースの所有者は、代替の値を Azure AD に登録できます。 |
+| access_token |要求された新しいアクセス トークン。 |
+| refresh_token |新しい OAuth 2.0 の refresh_token で、応答中にアクセス トークンの有効期限が切れた時に、新しいアクセス トークンを要求するために使用します。 |
 
 ### エラー応答
 エラー応答の例は次のようになります。
