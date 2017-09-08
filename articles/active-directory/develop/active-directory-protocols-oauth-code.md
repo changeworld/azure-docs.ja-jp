@@ -19,7 +19,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
