@@ -12,10 +12,10 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/07/2017
 ms.author: curtand
-ms.reviewer: rodejo
-ms.custom: it-pro
+ms.reviewer: kairaz.contractor
+ms.custom: it-pro;oldportal
 ms.translationtype: Human Translation
 ms.sourcegitcommit: a4a78b92c8bb9e8aff25fd724ed78283de8f2fd8
 ms.openlocfilehash: 92b9c88ec49424c96c3bd21bc5c4ce390352c17b

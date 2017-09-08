@@ -12,7 +12,7 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 11/28/2016
+ms.date: 09/08/2017
 ms.author: masaran;jimpark;delhan;trinadhk;markgal
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
@@ -20,16 +20,11 @@ ms.openlocfilehash: 2ee4bfa8c7dce45c6366ddc8aa6e723fe91431a7
 ms.contentlocale: ja-jp
 ms.lasthandoff: 11/17/2016
 
-
 ---
-<a id="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm" class="xliff"></a>
-
-# System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
+# <a name="back-up-an-exchange-server-to-azure-backup-with-system-center-2012-r2-dpm"></a>System Center 2012 R2 DPM を使用して Exchange サーバーを Azure Backup にバックアップする
 この記事では、Microsoft Exchange Server を Azure Backup にバックアップするために System Center 2012 R2 Data Protection Manager (DPM) サーバーを構成する方法を説明します。  
 
-<a id="updates" class="xliff"></a>
-
-## 更新プログラム
+## <a name="updates"></a>更新プログラム
 Azure Backup に DPM サーバーを正常に登録するには、System Center 2012 R2 DPM 用の最新の更新プログラムのロールアップと、Azure Backup エージェントの最新バージョンをインストールする必要があります。 [Microsoft カタログ](http://catalog.update.microsoft.com/v7/site/Search.aspx?q=System%20Center%202012%20R2%20Data%20protection%20manager)から最新の更新プログラムのロールアップを取得します。
 
 > [!NOTE]
@@ -37,9 +32,7 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 >
 >
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 先に進む前に、Microsoft Azure Backup を使用してワークロードを保護する上で必要なすべての [前提条件](backup-azure-dpm-introduction.md#prerequisites) が満たされていることを確認します。 該当する前提条件を以下に示します。
 
 * Azure サイトに対するバックアップ コンテナーが作成済みである。
@@ -48,17 +41,13 @@ Azure Backup に DPM サーバーを正常に登録するには、System Center 
 * コンテナーの資格情報を使用して DPM サーバーを登録済みである。
 * Exchange 2016 を保護する場合は、DPM 2012 R2 UR9 以降にアップグレードしてください。
 
-<a id="dpm-protection-agent" class="xliff"></a>
-
-## DPM 保護エージェント
+## <a name="dpm-protection-agent"></a>DPM 保護エージェント
 Exchange サーバーに DPM 保護エージェントをインストールするには、次の手順に従います。
 
 1. ファイアウォールが正しく構成されていることを確認します。 「 [エージェントに対するファイアウォール例外の構成](https://technet.microsoft.com/library/Hh758204.aspx)」を参照してください。
 2. DPM 管理者コンソールで **[管理]、[エージェント]、[インストール]** の順にクリックし、Exchange サーバーにエージェントをインストールします。 詳細な手順については、「 [DPM 保護エージェントのインストール](https://technet.microsoft.com/library/hh758186.aspx?f=255&MSPPError=-2147217396) 」を参照してください。
 
-<a id="create-a-protection-group-for-the-exchange-server" class="xliff"></a>
-
-## Exchange サーバーの保護グループを作成する
+## <a name="create-a-protection-group-for-the-exchange-server"></a>Exchange サーバーの保護グループを作成する
 1. DPM 管理者コンソールで **[保護]** をクリックし、次にツール リボンの **[新規]** をクリックして **[新しい保護グループの作成]** ウィザードを開きます。
 2. ウィザードの **[ようこそ]** 画面で **[次へ]** をクリックします。
 3. **[保護グループの種類の選択]** 画面で、**[サーバー]** を選択し、**[次へ]** をクリックします。
@@ -119,9 +108,7 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 18. 設定を確認し、 **[グループの作成]**をクリックします。
 19. **[閉じる]**をクリックします。
 
-<a id="recover-the-exchange-database" class="xliff"></a>
-
-## Exchange データベースを回復する
+## <a name="recover-the-exchange-database"></a>Exchange データベースを回復する
 1. Exchange データベースを回復するには、DPM 管理者コンソールで **[回復]** をクリックします。
 2. 回復する Exchange データベースを特定します。
 3. *[回復時刻]* ドロップダウン リストからオンライン回復ポイントを選択します。
@@ -137,8 +124,6 @@ Exchange サーバーに DPM 保護エージェントをインストールする
 
     ![オンライン レプリケーションの選択](./media/backup-azure-backup-exchange-server/choose-online-replication.png)
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 * [Azure Backup FAQ](backup-azure-backup-faq.md)
 
