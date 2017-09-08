@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
-ms.openlocfilehash: 7be5e5095b8aa6f2ae3d8c0b636883c4ff7ced63
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2cf955b52010869a4e753c441e17bdd32fd2e63d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-using-azure-data-factory"></a>Azure Data Factory を使用した Azure Blob Storage との間でのデータのコピー
@@ -71,7 +70,7 @@ Azure Storage を Azure Data Factory にリンクするときに使用できる�
 
 データセットの定義に利用できる JSON のセクションとプロパティの完全一覧については、[データセットの作成](data-factory-create-datasets.md)に関する記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
 
-Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS 準拠の .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
+Data Factory は、Azure BLOB などの読み取りデータ ソースのスキーマに "structure" で型情報を提供するために、Int16、Int32、Int64、Single、Double、Decimal、Byte[]、Bool、String、Guid、Datetime、Datetimeoffset、Timespan などの CLS に準拠している .NET ベースの型値をサポートしています。 また、ソース データ ストアのデータをシンク データ ストアにデータを移動するときに、型変換を自動的に実行します。
 
 **typeProperties** セクションは、データセットの型ごとに異なり、データ ストアのデータの場所や書式などに関する情報を提供します。 **AzureBlob** 型のデータセットの typeProperties セクションには次のプロパティがあります。
 
@@ -168,7 +167,7 @@ Data Factory は、Azure BLOB などの読み取りデータ ソースのスキ�
 Azure Blob Storage との間でデータをすばやくコピーする方法を確認してみましょう。 このチュートリアルでは、コピー元データ ストアとコピー先データ ストアの両方の種類が Azure Blob Storage です。 このチュートリアルのパイプラインは、同じ BLOB コンテナー内のフォルダー間でデータをコピーします。 ここではチュートリアルを意図的にシンプルにして、Blob Storage をコピー元またはシンクとして使用するときの設定とプロパティを示しています。 
 
 ### <a name="prerequisites"></a>前提条件
-1. 汎用 **Azure ストレージ アカウント**を作成します (お持ちでない場合)。 このチュートリアルでは、**コピー元**データ ストアおよび**コピー先データ ストア**として Blob Storage を使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+1. 汎用 **Azure ストレージ アカウント**を作成します (お持ちでない場合)。 このチュートリアルでは、**コピー元**データ ストアおよび**コピー先データ ストア**として Blob Storage を使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
 2. ストレージ アカウントに **adfblobconnector** という名前の BLOB コンテナーを作成します。 
 4. **adfblobconnector** コンテナーに **input** という名前のフォルダーを作成します。
 5. 次のコンテンツを含む **emp.txt** という名前のファイルを作成し、[Azure ストレージ エクスプローラー](https://azurestorageexplorer.codeplex.com/)などのツールを使って、**input** フォルダーにアップロードします
@@ -263,8 +262,7 @@ Azure Blob Storage との間でデータをすばやくコピーする方法を�
 ### <a name="monitor-the-pipeline-copy-task"></a>パイプラインの監視 (コピー タスク)
 
 1. **[デプロイ]** ページで `Click here to monitor copy pipeline` リンクをクリックします。 
-2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。 
-    ![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
+2. 新しいタブで **[Monitor and Manage application (アプリケーションの監視および管理)]** が表示されます。![アプリの監視および管理](media/data-factory-azure-blob-connector/monitor-manage-app.png)
 3. **開始**時間を `04/19/2017` に、**終了**時間を `04/27/2017` に変更し、**[適用]** をクリックします。 
 4. **[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストに 5 つのアクティビティ ウィンドウが表示されます。 **[Window Start (ウィンドウの開始)]** 時間には、すべての日付のパイプライン開始時間からパイプライン終了時間が表示されます。 
 5. すべてのアクティビティ ウィンドウの状態が [準備完了] に設定されるまで、**[ACTIVITY WINDOWS (アクティビティ ウィンドウ)]** リストの **[更新]** を何度かクリックします。 
