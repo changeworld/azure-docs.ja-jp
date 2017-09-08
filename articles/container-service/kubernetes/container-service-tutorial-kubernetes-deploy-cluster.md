@@ -53,7 +53,7 @@ az group create --name myResourceGroup --location westeurope
 次の例では、1 つの Linux マスター ノードと 3 つの Linux エージェント ノードを含む、*myK8sCluster* という名前のクラスターを作成します。
 
 ```azurecli-interactive 
-az acs create --orchestrator-type=kubernetes --resource-group myResourceGroup --name=myK8SCluster --generate-ssh-keys 
+az acs create --orchestrator-type kubernetes --resource-group myResourceGroup --name myK8SCluster --generate-ssh-keys 
 ```
 
 数分してコマンドが完了すると、この ACS デプロイに関する情報が JSON 形式で表示されます。
@@ -77,7 +77,7 @@ Windows では、既定のインストールは *c:\program files (x86)\kubectl.
 Kubernetes クラスターに接続するように `kubectl` を構成するには、[az acs kubernetes get-credentials](/cli/azure/acs/kubernetes#get-credentials) コマンドを実行します。
 
 ```azurecli-interactive 
-az acs kubernetes get-credentials --resource-group=myResourceGroup --name=myK8SCluster
+az acs kubernetes get-credentials --resource-group myResourceGroup --name myK8SCluster
 ```
 
 クラスターへの接続を確認するには、[kubectl get nodes](https://kubernetes.io/docs/user-guide/kubectl/v1.6/#get) コマンドを実行します。

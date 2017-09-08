@@ -1183,7 +1183,7 @@ RTrim 関数は文字列の末尾の空白文字を削除します。
 * condition: 属性内の項目を処理できる任意の関数
 
 **例:**  
-`Select($item,[otherPhone],Replace($item,“-”,“”))`  
+`Select($item,[otherPhone],Replace($item,"-",""))`  
 ハイフン (-) の削除後に、複数値の属性 otherPhone 内のすべての値を返します。
 
 - - -
