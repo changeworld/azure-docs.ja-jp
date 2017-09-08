@@ -142,7 +142,7 @@ Concatenate メソッドと String.Concat が実行時間の大部分を占め�
 
 ![Compare performance reports option][15]
 
-レポートに&2; つの実行の相違点が示されます。
+レポートに 2 つの実行の相違点が示されます。
 
 ![Comparison report][16]
 

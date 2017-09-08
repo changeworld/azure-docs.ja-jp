@@ -14,7 +14,7 @@ ms.devlang: PowerShell
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: -9/06/2017
 ms.author: janeng
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21

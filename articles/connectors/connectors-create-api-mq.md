@@ -1,4 +1,3 @@
- 
 ---
 title: "Azure Logic Apps で MQ コネクタを使用する方法 | Microsoft Docs"
 description: "ロジック アプリ ワークフローからオンプレミスまたは Azure の MQ サーバーに接続し、WebSphere MQ との間でメッセージの参照、受信、送信を行う"
