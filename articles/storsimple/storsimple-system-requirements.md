@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 9fb4d440fad8e4c5af8030c91e6871c6418ab9be
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 55e1cd90df0e4413ce027361c636257d823a50d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="storsimple-software-high-availability-and-networking-requirements"></a>StorSimple ソフトウェア、高可用性、ネットワークの要件
@@ -65,9 +64,9 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |はい |送信ポートは、StorSimple Manager サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |In |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |In |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |In |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
@@ -93,7 +92,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 #### <a name="url-patterns-for-azure-portal"></a>Azure ポータルの URL パターン
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*` |StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus |クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.com/*`<br>`https://*.accesscontrol.windows.net/*`<br>`https://*.servicebus.windows.net/*`<br>`https://login.windows.net` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
 | `https://*.backup.windowsazure.com` |デバイス登録 |DATA 0 のみ |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.windows.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |クラウド対応のネットワーク インターフェイス |
@@ -104,7 +103,7 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 #### <a name="url-patterns-for-azure-government-portal"></a>Azure Government ポータルの URL パターン
 | URL パターン | コンポーネント/機能 | デバイスの IP |
 | --- | --- | --- |
-| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` |StorSimple Manager サービス<br>Access Control Service<br>Azure Service Bus |クラウド対応のネットワーク インターフェイス |
+| `https://*.storsimple.windowsazure.us/*`<br>`https://*.accesscontrol.usgovcloudapi.net/*`<br>`https://*.servicebus.usgovcloudapi.net/*` <br>`https://login-us.microsoftonline.com` |StorSimple デバイス マネージャー サービス<br>Access Control Service<br>Azure Service Bus<br>認証サービス |クラウド対応のネットワーク インターフェイス |
 | `https://*.backup.windowsazure.us` |デバイス登録 |DATA 0 のみ |
 | `http://crl.microsoft.com/pki/*`<br>`http://www.microsoft.com/pki/*` |証明書の失効 |クラウド対応のネットワーク インターフェイス |
 | `https://*.core.usgovcloudapi.net/*` <br>`https://*.data.microsoft.com`<br>`http://*.msftncsi.com` |Azure ストレージ アカウントと監視 |クラウド対応のネットワーク インターフェイス |
