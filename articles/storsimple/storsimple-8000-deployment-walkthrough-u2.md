@@ -18,7 +18,7 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3d2023c3e129cfdea27f343a41b3cc373c0c3b8f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="deploy-your-on-premises-storsimple-device-update-3-and-later"></a>オンプレミスの StorSimple デバイス (Update 3 以降) のデプロイ
