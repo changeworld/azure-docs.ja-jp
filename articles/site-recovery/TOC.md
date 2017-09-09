@@ -13,7 +13,7 @@
 ## [概要を見る](https://azure.microsoft.com/resources/videos/index/?services=site-recovery)
 
 # 作業の開始
-## [Azure VM をレプリケートする (プレビュー)](site-recovery-azure-to-azure.md)
+## [Azure VM を Azure にレプリケートする (プレビュー)](site-recovery-azure-to-azure.md)
 ## [VMware VM を Azure にレプリケート](vmware-walkthrough-overview.md)
 ### [手順 1: アーキテクチャを確認する](vmware-walkthrough-architecture.md)
 ### [手順 2: 前提条件と制限事項を確認する](vmware-walkthrough-prerequisites.md)

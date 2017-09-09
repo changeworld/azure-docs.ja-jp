@@ -120,6 +120,8 @@
           href: connect-logon.md
         - name: AHUB ライセンスの使用
           href: hybrid-use-benefit-licensing.md
+        - name: Windows 10 のマルチテナント ホスティング権限の使用
+          href: windows-desktop-multitenant-hosting-deployment.md
     - name: VM のセキュリティ保護
       items:
         - name: 暗号化

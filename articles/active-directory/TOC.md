@@ -132,6 +132,7 @@
 ## デバイスを管理する
 ### [はじめに](device-management-introduction.md)
 ### [Azure Portal の使用](device-management-azure-portal.md)
+### [Azure AD Join の計画](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [FAQ](device-management-faq.md)
 ### タスク
 #### [Azure AD 登録済み Windows 10 デバイスの構成](device-management-azuread-registered-devices-windows10-setup.md)
@@ -142,15 +143,6 @@
 ### トラブルシューティング
 #### [ハイブリッド Azure AD 参加済みの Windows 10 および Windows Server 2016 デバイス](device-management-troubleshoot-hybrid-join-windows-current.md)
 #### [ハイブリッド Azure AD 参加済みの従来の Windows デバイス](device-management-troubleshoot-hybrid-join-windows-legacy.md)
-### [Azure AD Join](active-directory-azureadjoin-overview.md)
-#### [プラン](active-directory-azureadjoin-deployment-aadjoindirect.md)
-#### [デバイスの登録の設定](active-directory-azureadjoin-setup.md)
-#### [新しいデバイスを登録する](active-directory-azureadjoin-user-frx.md)
-#### [デプロイする](active-directory-azureadjoin-devices-group-policy.md)
-#### [Windows 10 の統合について](active-directory-azureadjoin-windows10-devices-overview.md)
-#### [Windows 10 デバイスの使用](active-directory-azureadjoin-windows10-devices.md)
-#### [デバイスを参加させる](active-directory-azureadjoin-personal-device.md)
-#### [Windows 10 デバイスを参加させる](active-directory-azureadjoin-user-upgrade.md)
 
 ## アプリを管理する
 ### [概要](active-directory-enable-sso-scenario.md)
@@ -299,6 +291,8 @@
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
+#### [VPN 接続](active-directory-conditional-access-vpn-connectivity-windows10.md)
+#### [モバイル アプリの管理](active-directory-conditional-access-mam.md)
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [デバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### [接続されているアプリに対するアクセスのセットアップ](active-directory-conditional-access-policy-connected-applications.md)
@@ -306,7 +300,6 @@
 #### [FAQ](active-directory-conditional-faqs.md)
 #### [クラシック ポータル](active-directory-conditional-access.md)
 ##### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
-
 
 ### Windows Hello
 #### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)

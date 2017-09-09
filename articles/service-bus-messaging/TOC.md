@@ -52,7 +52,13 @@
 
 ## 管理
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
-### [Azure Resource Manager テンプレートを使用する](service-bus-resource-manager-overview.md)
+### [Azure Resource Manager テンプレートの使用](service-bus-resource-manager-overview.md)
+#### [名前空間を作成する](service-bus-resource-manager-namespace.md)
+#### [名前空間とキューを作成する](service-bus-resource-manager-namespace-queue.md)
+#### [トピックとサブスクリプションを含んだ名前空間を作成する](service-bus-resource-manager-namespace-topic.md)
+#### [名前空間とキューの承認規則を作成する](service-bus-resource-manager-namespace-auth-rule.md)
+#### [トピック、サブスクリプション、ルールを含んだ名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
+#### 
 ### [PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
 # リファレンス

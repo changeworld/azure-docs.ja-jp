@@ -27,6 +27,8 @@
       href: container-service-security.md
 - name: ハウツー ガイド
   items:
+    - name: ACS クラスターを作成する
+      href: container-service-create-acs-cluster-cli.md
     - name: ACS クラスターに接続する
       href: container-service-connect.md
     - name: ACS クラスターをスケールする
@@ -65,12 +67,14 @@
           href: container-service-docker-swarm.md
         - name: Docker Swarm と VSTS を使用した CI/CD
           href: container-service-docker-swarm-setup-ci-cd.md
+        - name: Docker Swarm (ACS Engine) と VSTS を使用した CI/CD
+          href: container-service-docker-swarm-mode-setup-ci-cd-acs-engine.md
 - name: リファレンス
   items:
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST ()
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: リソース
   items:
     - name: Azure のロードマップ

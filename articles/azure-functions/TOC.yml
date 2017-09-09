@@ -49,7 +49,7 @@
       href: functions-cli-samples.md
 - name: 概念
   items:
-    - name: 従量課金プランと App Service プラン
+    - name: ホスティング プランの比較
       href: functions-scale.md
     - name: トリガーとバインド
       href: functions-triggers-bindings.md
