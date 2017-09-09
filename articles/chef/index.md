@@ -2,20 +2,20 @@
 title: "Azure 上の Chef"
 description: "Chef をデプロイして Azure と統合する"
 services: multiple
-author: mlearned
-manager: douge
+author: czeumault
+manager: carolz
 layout: LandingPage
 ms.service: multiple
 ms.tgt_pltfrm: na
 ms.devlang: devops
 ms.topic: landing-page
 ms.date: 04/25/2017
-ms.author: mlearned
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: 1ed0790f0df205ee08f5596e771f635fc875ccd7
+ms.author: carolz
+ms.translationtype: HT
+ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
+ms.openlocfilehash: 384597b6a34ba41fb5337d6d42fe2790b138fb83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 <div class="content">

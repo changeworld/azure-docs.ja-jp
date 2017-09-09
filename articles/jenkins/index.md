@@ -13,14 +13,14 @@ ms.date: 06/20/2017
 ms.author: carolz
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: aad1e4839154b552b39258f65e6ed97bf1de90fb
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: e2f5caf8c4d3eab600bb015db5a4403314a4f6e3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 <div class="content">
-    <h1>Azure 上の Jenkins</h1>
+    <h1>Azure 上の Jenkins®</h1>
     <div class="introHolder" style="justify-content: space-between;">
        <div class="intro" style="min-width: 200px">
             <img src="media/Jenkins.png" align="right" alt="Jenkins Logo"> Jenkins は、広く普及しているオープンソースのオートメーション サーバーで、Azure とシームレスに統合することで、継続的インテグレーション (CI) と継続的配信 (CD) が可能になります。  Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure のツールやサービスで Jenkins をインストール、構成、使用する方法を確認してください。
@@ -43,5 +43,7 @@ ms.lasthandoff: 08/04/2017
 <a href="https://plugins.jenkins.io/azure-vm-agents">Azure VM Agents プラグイン</a><br/>
 <a href="https://plugins.jenkins.io/windows-azure-storage">Azure Storage プラグイン</a><br/>
 <a href="https://jenkins.io">Jenkins について</a><br/>
+<h4>      
+Jenkins® は、Software in the Public Interest, Inc. の登録商標です。[Jenkins® のロゴ](https://wiki.jenkins.io/display/JENKINS/Logo)は、[Jenkins プロジェクト](https://jenkins.io)の [CC BY SA 3.0](https://creativecommons.org/licenses/by-sa/3.0/) に基づいて使用が許諾されています。</h4>
 </div>
 

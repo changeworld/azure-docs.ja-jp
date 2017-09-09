@@ -33,6 +33,8 @@
   items:
     - name: コンテナーをセキュリティ保護する
       href: container-service-security.md
+    - name: サービス プリンシパル - Kubernetes
+      href: container-service-kubernetes-service-principal.md
 - name: ハウツー ガイド
   items:
     - name: Windows と連携する Kubernetes
@@ -49,8 +51,12 @@
       href: container-service-connect.md
     - name: ACS クラスターをスケールする
       href: container-service-scale.md
+    - name: Kubernetes ACS クラスターの負荷を分散する
+      href: container-service-kubernetes-load-balancing.md
     - name: 監視
       items:
+        - name: OMS で監視する
+          href: container-service-kubernetes-oms.md
         - name: Datadog で監視する
           href: container-service-kubernetes-datadog.md
         - name: Sysdig で監視する
@@ -68,7 +74,7 @@
     - name: Azure CLI 2.0
       href: /cli/azure/acs
     - name: REST ()
-      href: /rest/api/compute/containerservices
+      href: /rest/api/container-services
 - name: リソース
   items:
     - name: Azure のロードマップ

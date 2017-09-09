@@ -16,7 +16,7 @@
 ### [カスタム設定](active-directory-aadconnect-get-started-custom.md)
 ### [DirSync からのアップグレード](active-directory-aadconnect-dirsync-upgrade-get-started.md)
 ### [以前のバージョンからのアップグレード](active-directory-aadconnect-upgrade-previous-version.md)
-
+### [既存の ADSync データベースを使用したインストール](active-directory-aadconnect-existing-database.md)
 
 # 方法
 ## 計画と設計

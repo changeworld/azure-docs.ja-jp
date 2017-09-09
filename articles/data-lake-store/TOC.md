@@ -57,7 +57,7 @@
 
 ## 管理
 ### [診断ログにアクセスする](data-lake-store-diagnostic-logs.md)
-### [高可用性向けの計画](data-lake-store-troubleshooting-guidance.md)
+### [高可用性向けの計画](data-lake-store-disaster-recovery-guidance.md)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)

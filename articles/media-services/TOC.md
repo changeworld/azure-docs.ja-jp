@@ -143,6 +143,8 @@
 #### [ポータル](media-services-portal-configure-content-key-auth-policy.md)
 #### [.NET](media-services-dotnet-configure-content-key-auth-policy.md)
 #### [REST ()](media-services-rest-configure-content-key-auth-policy.md)
+### [Safari での AES 暗号化 HLS の再生](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
+### [認証トークンを渡す](http://mingfeiy.com/how-client-pass-tokens-to-azure-media-services-key-delivery-services)
 
 ## [分析](media-services-analytics-overview.md)
 ### [ポータルを使用したメディアの分析](media-services-portal-analyze.md)
@@ -190,7 +192,6 @@
 #### [Adobe Open Source Media Framework プレーヤー](media-services-use-osmf-smooth-streaming-client-plugin.md)
 ### [クライアント側での広告の挿入](media-services-inserting-ads-on-client-side.md)
 ### [Microsoft Smooth Streaming Client Porting Kit のライセンス](media-services-sspk.md)
-### [Safari での AES 暗号化 HLS の再生](https://azure.microsoft.com/blog/how-to-make-token-authorized-aes-encrypted-hls-stream-working-in-safari/)
 
 ## 統合
 ### [Media Services を使用する Azure 関数の使用](media-services-dotnet-how-to-use-azure-functions.md)

@@ -2,7 +2,7 @@
   items:
     - name: はじめに
       href: ./common/storage-introduction.md
-    - name: BLOB、ファイル、またはデータ ディスクの選択
+    - name: BLOB、ファイル、またはディスクの選択
       href: ./common/storage-decide-blobs-files-disks.md
 - name: BLOB
   href: ./blobs/storage-blobs-introduction.md

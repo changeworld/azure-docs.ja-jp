@@ -21,6 +21,8 @@
           href: container-instances-tutorial-deploy-app.md
 - name: 概念
   items:
+    - name: リージョンと可用性
+      href: container-instances-region-availability.md
     - name: オーケストレーターとの関係
       href: container-instances-orchestrator-relationship.md
     - name: コンテナー グループ
