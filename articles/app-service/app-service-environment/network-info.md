@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service Environment でのネットワークの考慮事項"
 description: "ASE ネットワーク トラフィックと、ASE を使用して NSG と UDR を設定する方法について説明します"
 services: app-service
