@@ -13,12 +13,6 @@
 ### [タスク 3: 管理者グループを構成して Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
 ### [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
 ### [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
-## Azure クラシック ポータル (廃止)
-### [タスク 1: 管理者グループを作成する](active-directory-ds-getting-started-create-group.md)
-### [タスク 2: 仮想ネットワークを作成または選択する](active-directory-ds-getting-started-vnet.md)
-### [タスク 3: Azure AD Domain Services を有効にする](active-directory-ds-getting-started-enableaadds.md)
-### [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-update-dns.md)
-### [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
 ## 管理対象ドメインに参加する
