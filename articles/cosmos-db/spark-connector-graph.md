@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Cosmos DB: Spark と Apache TinkerPop Gremlin を使用してグラフ分析を実行する | Microsoft Docs"
 description: "この記事では、Azure Cosmos DB で Spark と TinkerPop SparkGraphComputer を使用して、グラフ分析と並列計算を設定して実行するための手順を示します。"
 services: cosmosdb
@@ -14,14 +13,13 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: gremlin
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 09/08/2017
 ms.author: khdang
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: 4f35ed6399df777edd90d1944f22dce91e76952f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/13/2017
-
 
 ---
 # <a name="azure-cosmos-db-perform-graph-analytics-by-using-spark-and-apache-tinkerpop-gremlin"></a>Azure Cosmos DB: Spark と Apache TinkerPop Gremlin を使用してグラフ分析を実行する
@@ -46,11 +44,11 @@ Azure HDInsight Spark クラスターをセットアップする方法の詳細�
 
 まず、次の手順に従って、Graph API を持つデータベース アカウントを作成します。
 
-[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
+[!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount-graph.md)]
 
 ## <a name="add-a-collection"></a>コレクションの追加
 
-[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-collection.md)]
+[!INCLUDE [cosmos-db-create-collection](../../includes/cosmos-db-create-graph.md)]
 
 ## <a name="get-apache-tinkerpop"></a>Apache TinkerPop を入手する
 
