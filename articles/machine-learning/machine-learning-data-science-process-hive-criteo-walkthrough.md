@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: 8af9c566a267e6e9d332805c5b3e82503c092d22
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 8e6143bca819c9a0484221f8b4feb319aaaa73f5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>Team Data Science Process の活用 - 1 TB データセットでの Azure HDInsight Hadoop クラスターの使用
@@ -64,7 +63,7 @@ Criteo データは、gzip で圧縮された約 370 GB の TSV ファイル (�
 
 HDInsight クラスターを使用して予測分析ソリューションを構築するために、3 つの手順で Azure のデータ サイエンス環境をセット アップします。
 
-1. [ストレージ アカウントの作成](../storage/storage-create-storage-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
+1. [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md): このストレージ アカウントは、Azure BLOB ストレージにデータを格納するために使用します。 ここには、HDInsight クラスターで使用するデータが格納されます。
 2. [Azure HDInsight Hadoop Clusters for Data Science のカスタマイズ](machine-learning-data-science-customize-hadoop-cluster.md): この手順では、すべてのノードにインストールされている 64 ビット Anaconda Python 2.7 を使用して Azure HDInsight Hadoop クラスターを作成します。 HDInsight クラスターをカスタマイズするときに実行する、2 つの重要な手順があります (このトピックで説明します)。
    
    * 作成時に、手順 1. で作成したストレージ アカウントを HDInsight クラスターにリンクする必要があります。 このストレージ アカウントは、クラスター内で処理可能なデータにアクセスするために使用されます。
@@ -78,7 +77,7 @@ HDInsight クラスターを使用して予測分析ソリューションを構�
 
 **[Continue to Download (ダウンロードの続行)]** をクリックしてデータセットとその可用性に関する詳細をお読みください。
 
-このデータはパブリック [Azure Blob Storage](../storage/storage-dotnet-how-to-use-blobs.md) の wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ にあります。 "wasb" は、Azure BLOB ストレージの場所を表します。 
+このデータはパブリック [Azure Blob Storage](../storage/blobs/storage-dotnet-how-to-use-blobs.md) の wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/ にあります。 "wasb" は、Azure BLOB ストレージの場所を表します。 
 
 1. このパブリック Blob Storage 内のデータは、解凍されたデータの 3 つのサブフォルダーで構成されています。
    

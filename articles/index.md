@@ -4,10 +4,10 @@ hide_bc: true
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: cec37e94b31d08930d7262b2f30dd3e84793af46
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: d9ccc9778b9612d7da7336984db6d0d84641ce72
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 <div id="main" class="v2">
@@ -156,7 +156,7 @@ ms.lasthandoff: 08/25/2017
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/cosmos-db/">Cosmos DB</a></li>
+                                                    <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
                                                 <h4>AI と Cognitive Services</h4>
                                                 <ul class="noBullet">
@@ -311,7 +311,7 @@ ms.lasthandoff: 08/25/2017
                                         <li>
                                             <a href="/azure/cosmos-db/">
                                                 <img src="media/index/cosmosdb.svg" alt="" />
-                                                <p>Cosmos DB</p>
+                                                <p>Azure Cosmos DB</p>
                                             </a>
                                         </li>
                                         <li>
@@ -855,6 +855,12 @@ ms.lasthandoff: 08/25/2017
                                             <a href="/azure/iot-hub/">
                                                 <img src="media/index/IoTHub.svg" alt="" />
                                                 <p>Azure IoT Hub</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/iot-dps/">
+                                                <img src="media/index/dps.svg" alt="" />
+                                                <p>IoT Hub Device Provisioning Service</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1991,8 +1997,8 @@ ms.lasthandoff: 08/25/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Cosmos DB</h3>
-                                                    <p>管理された、サービスとしての NoSQL ドキュメント データベース</p>
+                                                    <h3>Azure Cosmos DB</h3>
+                                                    <p>あらゆるスケールに対応するグローバル分散型のマルチモデル データベース</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2464,6 +2470,25 @@ ms.lasthandoff: 08/25/2017
                                                 <div class="cardText">
                                                     <h3>Azure IoT Hub</h3>
                                                     <p>何十億もの IoT 資産を接続して、監視、制御します</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/iot-dps/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/dps.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>IoT Hub Device Provisioning Service</h3>
+                                                    <p>Azure IoT Hub へのゼロタッチでジャストインタイムなプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>

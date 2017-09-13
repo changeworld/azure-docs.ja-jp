@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 49ca4ed2452d71dec17cedebaf48bbd5ab9e615f
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: c8f54c81481ebced16ed259f07736b0a4bc80567
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="overview-of-application-gateway"></a>Application Gateway の概要

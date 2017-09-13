@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: 41019b4ae022602d2688399d1fc309151174e157
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 175a2ad70b1f554d05846eb62fb685d4f259af7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark ストリーミング: HDInsight で Spark クラスターを使用して Azure Event Hub のデータを処理する
@@ -266,7 +266,7 @@ Scala で記述された Spark ストリーミングのサンプル アプリケ
        ![Apache Spark ストリーミング サンプル - 抽出した jar を削除](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-delete-output-jars.png "Apache Spark ストリーミング サンプル - 抽出した jar を削除")
       
        **[Build on make] \(作成時にビルド)** ボックスが選択されていることを確認します。それにより、プロジェクトがビルドまたは更新されるたびに jar が確実に作成されます。 **[Apply]**をクリックします。
-   6. **[Output Layout] \(出力レイアウト)** タブで、右側にある **[Available Elements] \(利用可能な要素)** ボックスの下部に、先ほどプロジェクト ライブラリに追加した SQL JDBC jar があります。 これは **[Output Layout (出力レイアウト)]** タブに追加する必要があります。 jar ファイルを右クリックし、 **[Extract Into Output Root (出力ルートに抽出)]**をクリックします。
+   6. **[Output Layout] \(出力レイアウト)** タブで、右側にある **[Available Elements] \(利用可能な要素)** ボックスの下部に、先ほどプロジェクト ライブラリに追加した SQL JDBC jar があります。 これは **[Output Layout (出力レイアウト)]** タブに追加する必要があります。jar ファイルを右クリックし、 **[Extract Into Output Root (出力ルートに抽出)]**をクリックします。
       
        ![Apache Spark ストリーミング サンプル - 依存関係 jar の抽出](./media/hdinsight-apache-spark-eventhub-streaming/spark-streaming-example-extract-dependency-jar.png "Apache Spark ストリーミング サンプル - 依存関係 jar の抽出")  
       
@@ -287,7 +287,7 @@ Scala で記述された Spark ストリーミングのサンプル アプリケ
 
         java -cp com-microsoft-azure-eventhubs-client-example-0.2.0.jar com.microsoft.eventhubs.client.example.EventhubsClientDriver --eventhubs-namespace "mysbnamespace" --eventhubs-name "myeventhub" --policy-name "mysendpolicy" --policy-key "<policy key>" --message-length 32 --thread-count 32 --message-count -1
 
-2. ストリーミング jar (**spark-streaming-data-persistence-examples.jar**) を、クラスターに関連付けられた Azure Blob Storage にコピーします。 これにより、jar で Livy にアクセスできるようになります。 コピーには、[**AzCopy**](../storage/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
+2. ストリーミング jar (**spark-streaming-data-persistence-examples.jar**) を、クラスターに関連付けられた Azure Blob Storage にコピーします。 これにより、jar で Livy にアクセスできるようになります。 コピーには、[**AzCopy**](../storage/common/storage-use-azcopy.md) コマンド ライン ユーティリティを使用できます。 データのアップロードに使用できるクライアントは、他にも多数あります。 詳細については、「 [HDInsight での Hadoop ジョブ用データのアップロード](hdinsight-upload-data.md)」を参照してください。
 3. これらのアプリケーションを実行するコンピューターに CURL をインストールします。 CURL を使用して、ジョブをリモートで実行する Livy エンドポイントを呼び出します。
 
 ### <a name="run-the-spark-streaming-application-to-receive-the-events-into-an-azure-storage-blob-as-text"></a>Azure Storage Blob へのイベントをテキストとして受信する Spark ストリーミング アプリケーションを実行する

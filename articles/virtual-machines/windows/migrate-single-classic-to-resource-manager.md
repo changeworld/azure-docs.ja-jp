@@ -15,19 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: 4bae56abfdc609ad40e6fbefe120493f1cd4e66d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 82389834d85981c0ed71bdcc891fbfdbe1377654
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
 # <a name="manually-migrate-a-classic-vm-to-a-new-arm-managed-disk-vm-from-the-vhd"></a>VHD から新しい ARM Managed Disk VM にクラシック VM を手動で移行する 
 
 
-このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](../../storage/storage-managed-disks-overview.md) する方法を説明します。
+このセクションでは、Resource Manager デプロイメント モデルで、既存の Azure VM をクラシック デプロイメント モデルから [Managed Disks](managed-disks-overview.md) する方法を説明します。
 
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画

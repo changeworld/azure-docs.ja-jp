@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 6/01/2017
 ms.author: negat
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3ab1d432a2f90db57b99f0e7d419d85e2958c308
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 338144eb103c68c7fff407cbeccce11734c1c34b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-vm-scale-sets-and-managed-disks"></a>Azure VM スケール セットと管理ディスク
@@ -30,7 +30,7 @@ Azure [仮想マシン スケール セット](/azure/virtual-machine-scale-sets
 
 * スケール セットに管理データ ディスクを接続できます。
 
-* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 100 台の VM 分の容量をスケール セットで使用できます。
+* 管理ディスクを使用すると、プラットフォーム イメージに基づく場合は 1,000 台の VM、カスタム イメージに基づく場合は 300 台の VM 分の容量をスケール セットで使用できます。
 
 ## <a name="get-started"></a>作業開始
 

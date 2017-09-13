@@ -17,10 +17,10 @@ ms.date: 07/18/2017
 ms.author: davidmu
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: d84c20dc74feedd7329cd390ff35765532bcf74d
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ddab80262fe27c1f5995858ec7de75d7c46df081
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -204,7 +204,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName "myResourceGroup" -Name "m
 ```
 
 > [!NOTE]
-> ローカル ファイルからテンプレートとパラメーターをデプロイすることもできます。 詳細については、「[Azure Storage での Azure PowerShell の使用](../../storage/storage-powershell-guide-full.md)」をご覧ください。
+> ローカル ファイルからテンプレートとパラメーターをデプロイすることもできます。 詳細については、「[Azure Storage での Azure PowerShell の使用](../../storage/common/storage-powershell-guide-full.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

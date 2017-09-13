@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: e9db37e180b01dee6731dde13c9c382720793236
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f1a6df56a2bb0094d972d2e659057cc124156b88
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="step-12-run-a-test-failover-to-azure-for-vmware-vms"></a>手順 12: VMware VM の Azure へのテスト フェールオーバーを実行する
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="managed-disk-considerations"></a>管理ディスクに関する考慮事項
 
-[管理ディスク](../storage/storage-managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理することで、Azure VM のディスク管理が簡素化されます。 
+[管理ディスク](../virtual-machines/windows/managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理することで、Azure VM のディスク管理が簡素化されます。 
 
 - VM の保護を有効にすると、VM データがストレージ アカウントにレプリケートされます。 管理ディスクは、フェールオーバーが発生した場合にのみ作成され、VM に接続されます。
 - 管理ディスクは、Resource Manager モデルを使用してデプロイされた VM に対してのみ作成することができます。  
@@ -86,7 +86,7 @@ ms.lasthandoff: 08/11/2017
 - 始める前に、簡単なビデオ概要を見ます。
 
 
-     >[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video4-Recovery-Plan-DR-Drill-and-Failover/player]
+>[!VIDEO https://channel9.msdn.com/Series/Azure-Site-Recovery/VMware-to-Azure-with-ASR-Video4-Recovery-Plan-DR-Drill-and-Failover/player]
 
 
 ここで、フェールオーバーを実行します。

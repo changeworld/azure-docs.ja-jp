@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/26/2016
+ms.date: 08/15/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: c1a8321c3c03dc9022048e39b3c8614ae683b955
+ms.translationtype: HT
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: d0bc7d7514f111b4bbde33bd60ae21264bd797fc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="manage-database-roles-and-users"></a>データベース ロールとユーザーの管理

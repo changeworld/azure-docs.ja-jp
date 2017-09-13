@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 42a0421b4589b95c0da806be0ec8875b7d62c91d
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -43,7 +43,7 @@ Hyper-V では 2 種類のバックアップを使用します。1 つは標準�
 3. **[コピーの頻度]**で、初期レプリケーションの後、差分データをレプリケートする頻度 (30 秒ごと、5 分ごと、または 15 分ごと) を指定します。
 
     > [!NOTE]
-    > Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる BLOB ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../storage/storage-premium-storage.md#snapshots-and-copy-blob)。
+    > Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる BLOB ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)。
 
 4. **[復旧ポイントの保持期間]** で、各復旧ポイントのリテンション期間の長さ (時間単位) を指定します。 VM はこの期間内のどのポイントにも復旧できます。
 5. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (1 - 12 時間) を指定します。

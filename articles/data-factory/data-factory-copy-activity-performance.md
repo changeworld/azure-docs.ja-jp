@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: jingwang
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: d89a09a41d6b57134a0de95750410b1f09cadbd2
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2779655aee3af3a351b30f18b4c9d9918e9f2210
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
@@ -402,7 +402,7 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 ## <a name="reference"></a>リファレンス
 ここでは、サポートされているいくつかのデータ ストアについて、パフォーマンスの監視とチューニングに関するリファレンス情報をいくつか示します。
 
-* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/storage-performance-checklist.md)に関する記事
+* Azure Storage (Blob Storage と Table Storage を含む): [Azure Storage のスケーラビリティのターゲット](../storage/common/storage-scalability-targets.md)に関する記事と [Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage/common/storage-performance-checklist.md)に関する記事
 * Azure SQL Database: [パフォーマンスを監視](../sql-database/sql-database-single-database-monitor.md) し、データベース トランザクション ユニット (DTU) の割合を確認できます。
 * Azure SQL Data Warehouse: 処理能力は Data Warehouse ユニット (DWU) で測定されます。「[Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)](../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)」を参照してください。
 * Azure Cosmos DB: [Azure Cosmos DB のパフォーマンス レベル](../documentdb/documentdb-performance-levels.md)に関する記事

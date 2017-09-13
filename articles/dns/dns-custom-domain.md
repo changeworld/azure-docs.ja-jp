@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 071c9c55d412514172106109eacc048722ab173e
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e0e7144c38c36f1583e0bcb7dfffba26e9a8bdad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -66,7 +66,7 @@ Azure IoT には、サービス自体で必要なカスタマイズは何もあ�
 
 ![IoT hub blade](./media/dns-custom-domain/iot.png)
 
-次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -87,7 +87,7 @@ Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Clas
 
 ![パブリック IP ブレード](./media/dns-custom-domain/publicip.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -114,7 +114,7 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -148,7 +148,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/blobcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -165,7 +165,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 `nslookup` を実行して DNS 解決を検証する
 
-カスタム ドメインを BLOB ストレージ エンドポイントにマップする方法について、詳しくは[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../storage/storage-custom-domain-name.md?toc=%dns%2ftoc.json)を参照してください。
+カスタム ドメインを BLOB ストレージ エンドポイントにマップする方法について、詳しくは[BLOB ストレージ エンドポイントのカスタム ドメイン名の構成](../storage/blobs/storage-custom-domain-name.md?toc=%dns%2ftoc.json)を参照してください。
 
 ## <a name="azure-cdn"></a>Azure CDN
 
@@ -177,7 +177,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![CDN カスタム ドメイン](./media/dns-custom-domain/endpointcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 |プロパティ  |値  |Description  |
 |---------|---------|---------|

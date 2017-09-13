@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 9b212bcfcb604319ff9bc39fd284a5eb98c0d2c3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b4c97e8f51581f9a3f7c5a8d8e82562255fe7b48
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-and-manage-sql-database-elastic-jobs-using-powershell-preview"></a>PowerShell を使用した SQL Database のエラスティック ジョブの作成と管理 (プレビュー)
@@ -610,7 +609,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
     Write-Output $jobTriggers
 
 ## <a name="to-create-a-data-tier-application-dacpac-for-execution-across-databases"></a>複数のデータベースに対する横断的実行に対応したデータ層アプリケーション (DACPAC) を作成するには
-DACPAC の作成については、 [データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)に関するページを参照してください。 DACPAC をデプロイするには、 [New-AzureSqlJobContent コマンドレット](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent)を使用します。 サービスから DACPAC にアクセスできることが必要です。 作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の [Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md) を作成することをお勧めします。
+DACPAC の作成については、 [データ層アプリケーション](https://msdn.microsoft.com/library/ee210546.aspx)に関するページを参照してください。 DACPAC をデプロイするには、 [New-AzureSqlJobContent コマンドレット](/powershell/module/elasticdatabasejobs/new-azuresqljobcontent)を使用します。 サービスから DACPAC にアクセスできることが必要です。 作成した DACPAC は Azure Storage にアップロードし、DACPAC 用の [Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md) を作成することをお勧めします。
 
     $dacpacUri = "{Uri}"
     $dacpacName = "{Dacpac Name}"

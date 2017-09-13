@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: c9eb4bad1c0069b3f8ed2df30ef72b2c530ffab3
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
@@ -34,7 +33,7 @@ Azure リソースには、他の Azure リソース、オンプレミス ネッ
 > Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、Resource Manager を使用することをお勧めします。 Resource Manager の IP アドレスについて詳しくは、「[IP アドレス](virtual-network-ip-addresses-overview-arm.md)」の記事をご覧ください。
 
 ## <a name="public-ip-addresses"></a>パブリック IP アドレス
-パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure Storage](../storage/storage-introduction.md) など、Azure の公開されたサービスと通信できます。
+パブリック IP アドレスを使用すると、Azure リソースはインターネットのほか、[Azure Redis Cache](https://azure.microsoft.com/services/cache/)、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[SQL Database](../sql-database/sql-database-technical-overview.md)、[Azure Storage](../storage/common/storage-introduction.md) など、Azure の公開されたサービスと通信できます。
 
 パブリック IP アドレスは、次の種類のリソースと関連付けられます。
 

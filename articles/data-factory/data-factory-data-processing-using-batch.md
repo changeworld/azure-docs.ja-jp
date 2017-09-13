@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1e6f2b9de47d1ce84c4043f5f6e73d462e0c1271
-ms.openlocfilehash: 65709ef9f6cdd50fb8650a1a11c9321defb9cf5b
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9defbf7a6a515740fa3b3cb1c67a2f5f9d9baa01
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
@@ -83,7 +82,7 @@ Data Factory には、ソース データ ストアからコピー先のデー�
 Azure サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 「 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)」を参照してください。
 
 #### <a name="azure-storage-account"></a>Azure ストレージ アカウント
-このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
+このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
 [Azure Portal](http://manage.windowsazure.com/) を使用して、Azure Batch アカウントを作成します。 「 [Azure Batch アカウントの作成と管理](../batch/batch-account-create-portal.md)」を参照してください。 Azure Batch のアカウント名とアカウント キーをメモしておきます。 また、 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して、Azure Batch アカウントを作成することもできます。 このコマンドレットの使用に関する詳細な手順については、「 [Azure Batch PowerShell コマンドレットの概要](../batch/batch-powershell-cmdlets-get-started.md) 」を参照してください。
@@ -374,7 +373,7 @@ public IDictionary<string, string> Execute(
 #### <a name="execute-method"></a>Execute メソッド
 ここでは、Execute メソッドのコードの詳細と注意事項について説明します。
 
-1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。 BLOB コレクションの反復処理では、 **BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、「 [.NET から BLOB ストレージを使用する方法](../storage/storage-dotnet-how-to-use-blobs.md)」を参照してください。 基本的なループを次に示します。
+1. 入力コレクションを反復処理するメンバーは、 [Microsoft.WindowsAzure.Storage.Blob](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.blob.aspx) 名前空間にあります。 BLOB コレクションの反復処理では、 **BlobContinuationToken** クラスを使用する必要があります。 基本的に、既存のループのメカニズムとして、トークンに do-while ループを使用する必要があります。 詳細については、「 [.NET から BLOB ストレージを使用する方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」を参照してください。 基本的なループを次に示します。
 
     ```csharp
     // Initialize the continuation token.
@@ -513,7 +512,7 @@ test custom activity Microsoft test custom activity Microsoft
 
    ![](./media/data-factory-data-processing-using-batch/image7.png)
 
-3. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+3. **accountname** は Azure ストレージ アカウントの名前に、**accountkey** は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。
 
@@ -531,7 +530,7 @@ test custom activity Microsoft test custom activity Microsoft
    4. **batchUri** JSON プロパティにバッチ URI を入力します。
 
       > [!IMPORTANT]
-      > **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: \<accountname\>.\<region\>.batch.azure.com。 JSON の **batchUri** プロパティでは、URL から **"accountname." を削除** する必要があります。 例: `"batchUri": "https://eastus.batch.azure.com"`.
+      > **[Azure Batch アカウント] ブレード**の **URL** は、次の形式です: \<accountname\>.\<region\>.batch.azure.com。JSON の **batchUri** プロパティでは、URL から **"accountname." を削除** する必要があります。 例: `"batchUri": "https://eastus.batch.azure.com"`.
       >
       >
 

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 05/27/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67b8e2e0039c8bc63f50f177e3c0d18b07df45e6
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -27,16 +27,19 @@ ms.lasthandoff: 08/22/2017
 
 Azure ファイル共有がホストされている Azure リージョンの外の Azure ファイル共有 (オンプレミスの共有、他の Azure リージョン内の共有など) をマウントするために、OS は SMB 3.0 をサポートする必要があります。 
 
-Azure ファイル共有は、OS バージョンに応じて、オンプレミスまたは Azure VM の Windows マシン上でマウントできます。 次の表に示します。 
+Azure ファイル共有は、Azure VM とオンプレミスのどちらかで実行されている Windows インストール済み環境でマウントできます。 以下の表は、ファイル共有のマウントがサポートされる環境を OS バージョンごとに示したものです。
 
-| Windows のバージョン        | SMB のバージョン |Azure VM 上でマウント可能|オンプレミスでマウント可能|
-|------------------------|-------------|---------------------|---------------------|
-| Windows 7              | SMB 2.1     | あり                 | いいえ                  |
-| Windows Server 2008 R2 | SMB 2.1     | あり                 | いいえ                  |
-| Windows 8              | SMB 3.0     | あり                 | あり                 |
-| Windows Server 2012    | SMB 3.0     | あり                 | あり                 |
-| Windows Server 2012 R2 | SMB 3.0     | あり                 | あり                 |
-| Windows 10             | SMB 3.0     | あり                 | あり                 |
+| Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
+|------------------------|-------------|-----------------------|----------------------|
+| Windows 10<sup>1</sup>  | SMB 3.0 | あり | あり |
+| Windows Server 2016    | SMB 3.0     | あり                   | あり                  |
+| Windows 8.1            | SMB 3.0     | あり                   | あり                  |
+| Windows Server 2012 R2 | SMB 3.0     | あり                   | あり                  |
+| Windows Server 2012    | SMB 3.0     | あり                   | あり                  |
+| Windows 7              | SMB 2.1     | あり                   | いいえ                   |
+| Windows Server 2008 R2 | SMB 2.1     | あり                   | いいえ                   |
+
+<sup>1</sup>Windows 10 バージョン 1507、1511、1607、1703
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。

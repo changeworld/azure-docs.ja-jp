@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: eb2510cecffeb2bfe21e39180b18e7fa47f298d8
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0974b9eda2cb7e3ba54a4a0fad0a768db644caf9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/11/2017
 
 ## <a name="managed-disk-considerations"></a>管理ディスクに関する考慮事項
 
-[管理ディスク](../storage/storage-managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
+[管理ディスク](../virtual-machines/windows/managed-disks-overview.md)を使用すると、VM ディスクに関連付けられているストレージ アカウントを管理できるため、Azure VM のディスク管理が簡素化されます。 
 
 - 管理ディスクは、Azure へのフェールオーバーが発生した場合にのみ作成され、VM に接続されます。 保護を有効にすると、オンプレミスの VM からのデータがストレージ アカウントにレプリケートされます。
 - 管理ディスクは、Resource Manager デプロイメント モデルでデプロイされた VM に対してのみ作成することができます。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 7/14/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b8a68af8714b321efc9a877ad4e1f87040faaf99
+ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.openlocfilehash: 5b2c04d2cbc06e1572dc2e40712f6cf9d886aa1e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/24/2017
 
 ---
 
@@ -27,7 +27,7 @@ Adding your content to the [Azure Stack Marketplace](azure-stack-marketplace.md)
 
 
 ## <a name="prerequisites"></a>Prerequisites
- - You must run the toolkit on the Azure Stack host or have [VPN](azure-stack-connect-azure-stack.md#connect-with-vpn) connectivity from the machine where you run the tool.
+ - You must run the toolkit on the Azure Stack host or have [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) connectivity from the machine where you run the tool.
 
  - Download the [Azure Stack Quickstart templates](https://github.com/Azure/AzureStack-QuickStart-Templates/archive/master.zip) and extract.
 

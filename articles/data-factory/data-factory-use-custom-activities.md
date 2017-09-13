@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 78945ec210c56106833291167ecaf920794f717f
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f3d265f31cb653d32076747e586383d67bbccc41
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
@@ -450,7 +450,7 @@ adftutorial\customactivityoutput folder フォルダーには、1 つ以上の�
 2. コマンド バーの **[新しいデータ ストア]** をクリックし、**[Azure Storage]** を選択します。 Azure Storage のリンクされたサービスを作成するための JSON スクリプトがエディターに表示されます。
     
     ![[新しいデータ ストア] - [Azure Storage]](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
+3. `<accountname>` は Azure Storage アカウントの名前に、`<accountkey>` は Azure ストレージ アカウントのアクセス キーに置き換えます。 ストレージ アクセス キーを取得する方法については、「 [ストレージ アクセス キーの表示、コピーおよび再生成](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」を参照してください。
 
     ![Azure Storage のリンクされたサービス](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. コマンド バーの **[デプロイ]** をクリックして、リンク サービスをデプロイします。

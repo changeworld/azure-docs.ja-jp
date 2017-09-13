@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6d4379248cff45b601e32e8554f86bb7a1846570
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
@@ -36,12 +36,12 @@ ms.lasthandoff: 07/21/2017
 * [Azure Dev/Test Lab](https://azure.microsoft.com/documentation/services/devtest-lab/)
 
 ## <a name="azure-storage-security"></a>Azure Storage セキュリティ
-* [Azure Storage Service Encryption](../storage/storage-service-encryption.md)
+* [Azure Storage Service Encryption](../storage/common/storage-service-encryption.md)
 * [StorSimple のハイブリッド ストレージの暗号化](https://azure.microsoft.com/documentation/services/storsimple/)
-* [Azure のクライアント側の暗号化](../storage/storage-client-side-encryption.md)
-* [Azure Storage Shared Access Signature](../storage/storage-dotnet-shared-access-signature-part-1.md)
-* [Azure ストレージ アカウント キー](../storage/storage-create-storage-account.md)
-* [SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/storage-dotnet-how-to-use-files.md)
+* [Azure のクライアント側の暗号化](../storage/common/storage-client-side-encryption.md)
+* [Azure Storage Shared Access Signature](../storage/common/storage-dotnet-shared-access-signature-part-1.md)
+* [Azure ストレージ アカウント キー](../storage/common/storage-create-storage-account.md)
+* [SMB 3.0 の暗号化を使用した Azure ファイル共有](../storage/files/storage-dotnet-how-to-use-files.md)
 * [Azure Storage Analytics](https://msdn.microsoft.com/library/hh343270.aspx)
 
 ## <a name="azure-database-security"></a>Azure Database Security

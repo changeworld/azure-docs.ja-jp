@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: gokuma;weig;bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: b154bd42c0f8bc6e185fa871b21249cad2869e72
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 45af1cd3a05b483429d2307659f1882ef28921f6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできる 10 のこと
@@ -250,7 +250,7 @@ Visual Studio から同じクローン操作を行うこともできます。 �
 
 ![Git in Visual Studio](./media/machine-learning-data-science-vm-do-ten-things/VSGit.PNG)
 
-Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。 [チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
+Git を使った GitHub リポジトリの操作の詳細については、github.com で公開されているさまざまなリソースをご覧ください。[チート シート](https://training.github.com/kit/downloads/github-git-cheat-sheet.pdf) を参照すると便利です。
 
 ## <a name="7-access-various-azure-data-and-analytics-services"></a>7.Azure のさまざまなデータ サービスと分析サービスにアクセスする
 ### <a name="azure-blob"></a>Azure BLOB
@@ -262,7 +262,7 @@ Azure BLOB は、大規模データにも小規模データにも対応する信
 
 ![Create_Azure_Blob](./media/machine-learning-data-science-vm-do-ten-things/Create_Azure_Blob.PNG)
 
-* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、 [AzCopy のドキュメント](../storage/storage-use-azcopy.md)
+* プレインストールされたコマンド ライン AzCopy ツールが ```C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy.exe```にあることを確認します。 azcopy.exe を含むディレクトリを PATH 環境変数に追加すると、このツールの実行時に完全なコマンド パスを入力せずに済みます。 AzCopy ツールの詳細については、 [AzCopy のドキュメント](../storage/common/storage-use-azcopy.md)
 * Azure ストレージ エクスプローラー ツールを起動します。 このツールは、 [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のページからダウンロードできます。 
 
 ![AzureStorageExplorer_v4](./media/machine-learning-data-science-vm-do-ten-things/AzureStorageExplorer_v4.png)

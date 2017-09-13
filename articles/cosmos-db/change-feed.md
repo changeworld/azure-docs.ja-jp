@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 4af05aa1563341ca62c63c4b8256f11118c38efd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 160fbc98e0f3dcc7d17cbe0c7f7425811596a896
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="working-with-the-change-feed-support-in-azure-cosmos-db"></a>Azure Cosmos DB での Change Feed サポートの使用
@@ -42,7 +42,7 @@ Azure Cosmos DB での変更は保持され、非同期的に処理できます�
 Change Feed を使用すると、大量の書き込みが発生する大規模なデータセットを効率的に処理できるので、データセット全体に対してクエリを実行する代わりに、Change Feed を使用して変更を特定できます。 たとえば、次のタスクを効率よく実行できます。
 
 * Azure Cosmos DB に格納されたデータで、キャッシュ、検索インデックス、データ ウェアハウスを更新する。
-* アプリケーション レベルのデータの階層化とアーカイブを実装する ("ホット データ" を Azure Cosmos DB に格納し、"コールド データ" を [Azure Blob Storage](../storage/storage-introduction.md) または [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) にエイジアウトする)。
+* アプリケーション レベルのデータの階層化とアーカイブを実装する ("ホット データ" を Azure Cosmos DB に格納し、"コールド データ" を [Azure Blob Storage](../storage/common/storage-introduction.md) または [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md) にエイジアウトする)。
 * [Apache Hadoop](run-hadoop-with-hdinsight.md) を使用してデータの一括分析を実装する。
 * Azure Cosmos DB を使用して [Azure でラムダ パイプライン](https://blogs.technet.microsoft.com/msuspartner/2016/01/27/azure-partner-community-big-data-advanced-analytics-and-lambda-architecture/)を実装する。 Azure Cosmos DB は、取り込みとクエリの両方を処理し、低 TCO でラムダ アーキテクチャを実装できる、スケーラブルなデータベース ソリューションを提供します。 
 * パーティション スキームが異なる別の Azure Cosmos DB アカウントへの移行をダウンタイムなしに実行する。
@@ -464,7 +464,7 @@ Change Feed プロセッサ ライブラリを使用するには、プロセッ�
     <tr>
         <th>プロパティ名</th>
         <th>型</th>
-        <th>説明</th>
+        <th>Description</th>
     </tr>
     <tr>
         <td>LeaseRenewInterval</td>

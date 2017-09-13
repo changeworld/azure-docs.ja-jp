@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 2/7/2017
+ms.date: 9/1/2017
 ms.author: guybo
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 9e9eae1623e55c1c05e97aa0b836819ce5dc16f9
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 12303e4283de3d179590e599d4d2fe8f14167eda
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="working-with-large-virtual-machine-scale-sets"></a>大規模な仮想マシン スケール セットの使用
@@ -37,7 +37,7 @@ ms.lasthandoff: 07/21/2017
 
 - 大規模なスケール セットには、Azure Managed Disks が必要です。 Managed Disks を使用して作成されていないスケール セットには、複数のストレージ アカウントが必要です (VM 20 個につき 1 つ)。 大規模なスケール セットは、ストレージの管理オーバーヘッドを軽減し、サブスクリプションのストレージ アカウントの上限に達するリスクを回避するために、Managed Disks のみで動作するように設計されています。 Managed Disks を使用しない場合、スケール セットは 100 個の VM に制限されます。
 - Azure Marketplace イメージから作成されたスケール セットは、最大 1,000 個の VM にスケールアップできます。
-- カスタム イメージ (自身で作成してアップロードした VM イメージ) から作成されたスケール セットは、現在、最大 100 個の VM にスケールアップできます。
+- カスタム イメージ (自身で作成してアップロードした VM イメージ) から作成されたスケール セットは、現在、最大 300 個の VM にスケールアップできます。
 - Azure Load Balancer によるレイヤー 4 の負荷分散は、複数の配置グループで構成されたスケール セットではまだサポートされていません。 Azure Load Balancer を使用する必要がある場合は、スケール セットが 1 つの配置グループを使用するよう構成されていることを確認してください。これは既定の設定です。
 - Azure Application Gateway によるレイヤー 7 の負荷分散は、すべてのスケール セットでサポートされています。
 - 1 つのスケール セットは 1 つのサブネットで定義されます。サブネットには、必要なすべての VM にとって十分な規模のアドレス空間があることを確認してください。 既定では、スケール セットはオーバープロビジョニングされ (デプロイ時またはスケールアウト時に追加の VM が作成されますが、これについては課金されません)、デプロイの信頼性とパフォーマンスが向上します。 スケールする予定の VM の数よりもアドレス空間が 20% 大きくなることを考慮に入れておいてください。

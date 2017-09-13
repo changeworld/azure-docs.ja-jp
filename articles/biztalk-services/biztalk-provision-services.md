@@ -152,7 +152,7 @@ Access Control の値は、どのアプリケーションでも使用できま�
 Access Control サービス ID は、アプリケーションまたはクライアントが Access Control で直接認証してトークンを受け取るための一連の資格情報です。
 
 > [!IMPORTANT]
-> BizTalk サービスでは、既定のサービス ID の**所有者**と**パスワード**値が使用されます。 パスワード値の代わりに対称キー値を使用した場合、次のエラーが発生する可能性があります。<br/><br/>"*指定された資格情報を使用して Access Control 管理サービス アカウントに接続できませんでした*"
+> BizTalk サービスでは、既定のサービス ID の**所有者**と**パスワード**値が使用されます。 パスワード値の代わりに対称キー値を使用した場合、次のエラーが発生する可能性があります。<br/><br/>*Could not connect to the Access Control Management Service account with the specified credentials*
 > 
 > 
 

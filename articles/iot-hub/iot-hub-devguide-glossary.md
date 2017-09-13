@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 0e08557b126620a6c7dbbdb5dece423e7a0c2535
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5631484bd2106ab5abff79dd3cbbf539c62bb164
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
@@ -56,7 +56,7 @@ Azure リソースのプロビジョニングと管理は、[Microsoft Azure Por
 [Service Bus](../service-bus/index.md) は、エンタープライズ メッセージングと中継通信の機能を持つクラウド対応通信で、オンプレミスのソリューションをクラウドに接続するのに役立ちます。 一部の IoT Hub チュートリアルでは、Service Bus [キュー](../service-bus-messaging/service-bus-messaging-overview.md)を利用します。
 
 ## <a name="azure-storage"></a>Azure Storage (Azure Storage)
-[Azure Storage](../storage/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
+[Azure Storage](../storage/common/storage-introduction.md) は、クラウド ストレージ ソリューションです。 非構造化オブジェクト データの格納に使用できる Blob Storage サービスが含まれています。 一部の IoT Hub チュートリアルでは、Blob Storage を使用します。
 
 ## <a name="back-end-app"></a>バックエンド アプリ
 [IoT Hub](#iot-hub) においては、バックエンド アプリは、IoT Hub 上のサービス向けエンドポイントのいずれかに接続するアプリです。 たとえば、バックエンド アプリは[デバイスからクラウド](#device-to-cloud)へのメッセージの取得や、[ID レジストリ](#identity-registry)の管理を行います。 通常、バック エンド アプリはクラウドで実行されますが、チュートリアルの多くでは、バックエンド アプリはローカル開発用コンピューターで実行されるコンソール アプリです。

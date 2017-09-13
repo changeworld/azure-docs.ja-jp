@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 475c878e34a83d06cffca5e114ccd920c7956256
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 565091e24a8c0009793e2e2365fb95013cad5028
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Data Management Gateway を使用してオンプレミスのソースとクラウドの間でデータを移動する
@@ -46,7 +46,7 @@ ms.lasthandoff: 08/10/2017
 このチュートリアルを開始する前に、以下の前提条件を満たしている必要があります。
 
 * **Azure サブスクリプション**。  サブスクリプションがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [無料試用版](http://azure.microsoft.com/pricing/free-trial/) のページを参照してください。
-* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
+* **Azure ストレージ アカウント**。 このチュートリアルでは、BLOB ストレージを**コピー先/シンク** データ ストアとして使用します。 Azure ストレージ アカウントがない場合、ストレージ アカウントの作成手順については、「 [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account) 」をご覧ください。
 * **SQL Server**。 このチュートリアルでは、オンプレミスの SQL Server データベースを**ソース** データ ストアとして使用します。 
 
 ## <a name="create-data-factory"></a>データ ファクトリの作成
@@ -129,7 +129,7 @@ ms.lasthandoff: 08/10/2017
    * 1 日の特定の時刻に更新がインストールされるように**スケジュールを設定**する。
    * ゲートウェイの**最終更新日時**を確認する。
    * ゲートウェイへの更新プログラムをインストールできる時刻を指定します。
-8. **[設定]** タブに切り替えます。 **[証明書]** セクションに示されている証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号化解除に使用されます。 独自の証明書を使用するには、 **[変更]** をクリックします (省略可能)。 既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
+8. **[設定]** タブに切り替えます。**[証明書]** セクションに示されている証明書は、ポータルで指定したオンプレミス データ ストアの資格情報の暗号化/暗号化解除に使用されます。 独自の証明書を使用するには、 **[変更]** をクリックします (省略可能)。 既定では、ゲートウェイは Data Factory サービスによって自動生成される証明書を使用します。
 
     ![ゲートウェイ証明書の構成](./media/data-factory-move-data-between-onprem-and-cloud/gateway-certificate.png)
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
 ms.author: vvasic
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 71c286061e214898a7f10fa8dfd6c6d86af8db39
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bf41aa530c68ea0e94a09d1dab63237c6f42bce7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Azure SQL Database のメトリックと診断のロギング 
@@ -223,7 +222,7 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 
 ### <a name="download-metrics-and-logs-from-azure-storage"></a>Azure Storage からメトリックとログをダウンロードする
 
-[Azure Storage からメトリックとログをダウンロードする方法](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
+[Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
 
 ## <a name="1-minute-metrics"></a>1 分メトリック
 
@@ -240,5 +239,5 @@ insights-{metrics|logs}-{category name}/resourceId=/SUBSCRIPTIONS/{subscription 
 - Event Hubs については次の記事をご覧ください。
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- [Azure Storage からメトリックとログをダウンロードする方法](../storage/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
+- [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
 

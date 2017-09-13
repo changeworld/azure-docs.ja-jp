@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/10/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 5c8e99f3ba52ef5d6f9f99ac24891c38e8970fff
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: cc9018d95ffce3b5b4a5ee20d5c78a2122e0223e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-azure-portal"></a>証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
@@ -134,7 +134,7 @@ P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用し�
 
 バージョンがクライアントのアーキテクチャと一致すれば、各クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、この記事の最後にある「[ポイント対サイト接続に関してよく寄せられる質問](#faq)」を参照してください。
 
-### <a name="step-1---generate-and-download-the-client-configuration-package"></a>手順 1 - クライアント構成パッケージを生成およびダウンロードする
+### <a name="1-generate-and-download-the-client-configuration-package"></a>1.クライアント構成パッケージを生成およびダウンロードする
 
 1. **[ポイント対サイトの構成]** ページで **[VPN クライアントのダウンロード]** をクリックして、**[VPN クライアントのダウンロード]** ページを開きます。 パッケージの生成には 1 ～ 2 分かかります。
 
@@ -143,7 +143,7 @@ P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用し�
 
   ![VPN クライアントのダウンロード 2](./media/vpn-gateway-howto-point-to-site-resource-manager-portal/vpnclient.png)
 
-### <a name="step-2---install-the-client-configuration-package"></a>手順 2 - クライアント構成パッケージをインストールする
+### <a name="2-install-the-client-configuration-package"></a>2.クライアント構成パッケージをインストールする
 
 1. 仮想ネットワークに接続するコンピューターのローカルに構成ファイルをコピーします。 
 2. .exe ファイルをダブルクリックしてパッケージをクライアント コンピューターにインストールします。 構成パッケージを作成したのは皆さん自身であり、署名されていないために警告が表示されることがあります。 Windows SmartScreen ポップアップが表示された場合は、**[詳細]** (左側)、**[実行]** の順にクリックして、パッケージをインストールします。
@@ -227,7 +227,7 @@ P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用し�
 
 ## <a name="faq"></a>ポイント対サイト接続に関してよく寄せられる質問
 
-[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-point-to-site-faq-include.md)]
+[!INCLUDE [Point-to-Site FAQ](../../includes/vpn-gateway-faq-point-to-site-include.md)]
 
 ## <a name="next-steps"></a>次のステップ
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。

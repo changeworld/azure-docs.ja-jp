@@ -10,7 +10,7 @@
 ## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
-## [サポートを受ける](sql-data-warehouse-get-started-create-support-ticket.md)
+
 
 
 # 方法
@@ -139,18 +139,22 @@
 # リファレンス
 
 ## [容量制限](sql-data-warehouse-service-capacity-limits.md)
-## [T-SQL 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
-## [T-SQL ステートメント](sql-data-warehouse-reference-tsql-statements.md)
-## [T-SQL システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
+## T-SQL
+### [完全なリファレンス](https://docs.microsoft.com/sql/t-sql/language-reference/)
+### [SQL DW 言語要素](sql-data-warehouse-reference-tsql-language-elements.md)
+### [SQL DW ステートメント](sql-data-warehouse-reference-tsql-statements.md)
+## [システム ビュー](sql-data-warehouse-reference-tsql-system-views.md)
 ## [PowerShell コマンドレット](sql-data-warehouse-reference-powershell-cmdlets.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=databases)
-## [フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureSQLDataWarehouse)
+## [フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=AzureSQLDataWarehouse)
 ## [料金](https://azure.microsoft.com/pricing/details/sql-data-warehouse/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
+## [機能に関する要求](https://feedback.azure.com/forums/307516-sql-data-warehouse/)
 ## [サービスの更新情報](https://azure.microsoft.com/updates/?product=sql-data-warehouse)
 ## [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-sqldw/)
+## [サポート](sql-data-warehouse-get-started-create-support-ticket.md)
 ## [ビデオ](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
 
 ## パートナー

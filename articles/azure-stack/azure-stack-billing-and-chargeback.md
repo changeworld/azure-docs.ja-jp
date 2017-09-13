@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2016
 ms.author: alfredop
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c8e80b9288d3c12a4c3ccb5e4ea5b95fc5049349
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 631e9bf47830b35ad5bc4b11cd103fa2c265c4c7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Usage and billing in Azure Stack
@@ -40,7 +40,7 @@ After the usage data has been collected, it is [reported to Azure](azure-stack-u
 To generate the usage data, you should have resources that are running and actively using the system. If you’re not sure whether you have any resources running in Azure Stack Marketplace, deploy a virtual machine (VM), and verify the VM monitoring blade to make sure it’s running. Use the following PowerShell cmdlets to view the usage data:
 
 1. [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)
-2. [Configure PowerShell and sign in to your Azure Stack administrator or user subscription.](azure-stack-powershell-configure.md)
+2. * [Configure the Azure Stack user's](azure-stack-powershell-configure-user.md) or the [Azure Stack operator's](azure-stack-powershell-configure-admin.md) PowerShell environment 
 3. To retrieve the usage data, use the [Get-UsageAggregates](/powershell/module/azurerm.usageaggregates/get-usageaggregates) PowerShell cmdlet:
    ```PowerShell
    Get-UsageAggregates -ReportedStartTime "<Start time for usage reporting>" -ReportedEndTime "<end time for usage reporting>" -AggregationGranularity <Hourly or Daily>

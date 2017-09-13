@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 657c436cc45bb3818f89b922d74e03cae894778e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e68f1d72965d9516e0552c84d03d234c21739390
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
@@ -175,7 +175,7 @@ write-host "Storage Account Key: $destStorageAccountKey"
 Write-host "`nScript completed" -ForegroundColor Green
 ```
 
-この PowerShell スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure PowerShell の使用](../storage/storage-powershell-guide-full.md)」を参照してください。 Azure CLI を代わりに使用する場合は、Azure CLI スクリプトの「[付録](#appendix)」セクションを参照してください。
+この PowerShell スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure PowerShell の使用](../storage/common/storage-powershell-guide-full.md)」を参照してください。 Azure CLI を代わりに使用する場合は、Azure CLI スクリプトの「[付録](#appendix)」セクションを参照してください。
 
 **ストレージ アカウントとその内容を確認するには**
 
@@ -595,5 +595,5 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adfhiveactivity/script/partitionweblogs.hql" --dest-account-name "<Azure Storage Account Name>" --dest-account-key "<Azure Storage Account Key>" --dest-container "adfgetstarted"
 ```
 
-コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/storage-azure-cli.md)」を参照してください。
+コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
 

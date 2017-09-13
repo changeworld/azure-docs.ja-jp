@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 7ff58a488298573372b32f4daa495c9da1c0eaa2
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2bdec82891bbd61e3526bd4498f802a0de068f87
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
@@ -133,7 +133,7 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 * [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](site-recovery-deploy-with-powershell-resource-manager.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントが必要ですか。
-* **Azure クラシック ポータル**: Azure クラシック ポータルで Site Recovery をデプロイする場合は、[Standard geo 冗長ストレージ アカウント](../storage/storage-redundancy.md#geo-redundant-storage)が必要です。 Premium Storage は現在サポートされていません。 アカウントは、Site Recovery コンテナーと同じリージョンにある必要があります。
+* **Azure クラシック ポータル**: Azure クラシック ポータルで Site Recovery をデプロイする場合は、[Standard geo 冗長ストレージ アカウント](../storage/common/storage-redundancy.md#geo-redundant-storage)が必要です。 Premium Storage は現在サポートされていません。 アカウントは、Site Recovery コンテナーと同じリージョンにある必要があります。
 * **Azure Portal**: Azure Portal で Site Recovery をデプロイする場合は、LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされるようになりました。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。

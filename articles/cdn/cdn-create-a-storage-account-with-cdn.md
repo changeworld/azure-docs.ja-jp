@@ -14,19 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 35896cc9891e2439df004cc4eab339219d47b805
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure ストレージ アカウントと Azure CDN との統合
 CDN を使用して、Azure ストレージのコンテンツをキャッシュできます。 CDN は、米国、ヨーロッパ、アジア、オーストラリア、および南米にある物理ノードで、コンピューティング インスタンスの BLOB と静的コンテンツをキャッシュすることで、高帯域幅コンテンツを配信するグローバル ソリューションを開発者に提供します。
 
 ## <a name="step-1-create-a-storage-account"></a>ステップ 1: ストレージ アカウントを作成する
-Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使用すると、Azure のストレージ サービスにアクセスできます。 ストレージ アカウントは、BLOB サービス、Queue サービス、および Table サービスという Azure の各ストレージ サービス コンポーネントへのアクセスに使用する最高レベルの名前空間です。 詳しくは、「 [Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。
+Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使用すると、Azure のストレージ サービスにアクセスできます。 ストレージ アカウントは、BLOB サービス、Queue サービス、および Table サービスという Azure の各ストレージ サービス コンポーネントへのアクセスに使用する最高レベルの名前空間です。 詳しくは、「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 
 ストレージ アカウントを作成するには、関連付けられているサブスクリプションのサービス管理者または共同管理者である必要があります。
 
@@ -109,7 +108,7 @@ http://<*EndpointName*\>.azureedge.net/<*myPublicContainer*\>/<*BlobName*\>
 ## <a name="step-5-remove-content-from-the-cdn"></a>ステップ 5: CDN からコンテンツを削除する
 Azure Content Delivery Network (CDN) にオブジェクトをキャッシュする必要がなくなった場合は、次のいずれかの手順を実行できます。
 
-* コンテナーをパブリックではなくプライベートに設定できます。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../storage/storage-manage-access-to-resources.md) 」を参照してください。
+* コンテナーをパブリックではなくプライベートに設定できます。 詳細については、「 [コンテナーと BLOB への匿名読み取りアクセスを管理する](../storage/blobs/storage-manage-access-to-resources.md) 」を参照してください。
 * 管理ポータルを使用して CDN エンドポイントを無効にしたり削除したりできます。
 * オブジェクトの要求に応答しなくなるようにホストされるサービスを変更できます。
 

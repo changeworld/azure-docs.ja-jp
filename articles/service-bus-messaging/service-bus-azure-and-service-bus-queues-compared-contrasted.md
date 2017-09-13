@@ -15,10 +15,10 @@ ms.workload: tbd
 ms.date: 08/07/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 45fe7584c8b769113da9d287fea56d68d3d6c55a
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 555759073507219188b59af76a82be74b112c57c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Storage キューと Service Bus キューの比較
@@ -132,7 +132,7 @@ Storage キューと Service Bus キューは、どちらも現在 Microsoft Azu
 
 | 比較条件 | Storage キュー | Service Bus キュー |
 | --- | --- | --- |
-| 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
+| 最大キュー サイズ |**500 TB**<br/><br/>([1 つのストレージ アカウントの容量](../storage/common/storage-introduction.md#queue-storage)に制限) |**1 GB ～ 80 GB**<br/><br/>(キューの作成時と[パーティション分割を有効化](service-bus-partitioning.md)するときに定義します。追加情報セクションをご覧ください) |
 | 最大メッセージ サイズ |**64 KB**<br/><br/>(**Base64** エンコードを使用する場合は 48 KB)<br/><br/>Azure では、キューと BLOB を組み合わせることでサイズの大きいメッセージをサポートし、1 つのアイテムに対して最大 200 GB までのメッセージをエンキューできます。 |**256 KB** ～ **1 MB**<br/><br/>(ヘッダーと本文の両方を含む。ヘッダーの最大サイズは 64 KB)<br/><br/>[サービス レベル](service-bus-premium-messaging.md)に依存します。 |
 | メッセージの最大 TTL |**7 日** |**`TimeSpan.Max`** |
 | キューの最大数 |**無制限** |**10,000**<br/><br/>(サービス名前空間あたり。増やすことができます) |
@@ -192,7 +192,7 @@ Service Bus キューには高度な機能が数多く用意されているた�
 次の記事では、Storage キューや Service Bus キューの使用に関する詳細情報を提供します。
 
 * [Service Bus キューの使用](service-bus-dotnet-get-started-with-queues.md)
-* [キュー Storage Service を使用する方法](../storage/storage-dotnet-how-to-use-queues.md)
+* [キュー Storage Service を使用する方法](../storage/queues/storage-dotnet-how-to-use-queues.md)
 * [Service Bus の仲介型メッセージングを使用したパフォーマンス向上のためのベスト プラクティス](service-bus-performance-improvements.md)
 * [Azure Service Bus のキューとトピックの概要 (ブログの投稿)](http://www.code-magazine.com/article.aspx?quickid=1112041)
 * [The Developer's Guide to Service Bus (Service Bus の開発者向けガイド)](http://www.cloudcasts.net/devguide/Default.aspx?id=11030)

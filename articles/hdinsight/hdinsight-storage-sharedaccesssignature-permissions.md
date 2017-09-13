@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 470d4a57adf161b41a0b41061bec3840ddbf7f27
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
@@ -77,7 +77,7 @@ Shared Access Signature には、次の 2 つのフォームがあります。
 
 保存済みのアクセス ポリシーを常に使用することをお勧めします。 保存済みのポリシーを使用している場合、必要に応じて署名を失効させるか、有効期限を延長することができます。 ドキュメント内のこれらの手順は、保存済みのアクセス ポリシーを使用して、SAS を生成します。
 
-Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
+Shared Access Signature の詳細については、「 [SAS モデルについて](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」を参照してください。
 
 ### <a name="create-a-stored-policy-and-sas-using-c"></a>C\# を使用して保存済みのポリシーと SAS を作成する
 

@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 07/09/2017
 ms.author: eslesar
 ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
-ms.openlocfilehash: 6f7df68f8bc594ebd2b58798f02c1c513c0d86c7
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e511eee2f9eac3969b15ad3d45558dc7034f330a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/25/2017
 
 これにより、Azure リソースのデプロイを自動化できます。 Azure Storage など、セキュリティで保護された一元的な場所に Resource Manager テンプレートを維持することができます。
 
-このトピックでは、[Azure Storage](../storage/storage-introduction.md) に格納されている Resource Manager テンプレートを使用して新しい Azure Storage アカウントをデプロイする PowerShell Runbook を作成します。
+このトピックでは、[Azure Storage](../storage/common/storage-introduction.md) に格納されている Resource Manager テンプレートを使用して新しい Azure Storage アカウントをデプロイする PowerShell Runbook を作成します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,7 +35,7 @@ ms.lasthandoff: 07/25/2017
 
 * として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
 * [Automation アカウント](automation-sec-configure-azure-runas-account.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
-* Resource Manager テンプレートを格納する [Azure Storage アカウント](../storage/storage-create-storage-account.md)
+* Resource Manager テンプレートを格納する [Azure Storage アカウント](../storage/common/storage-create-storage-account.md)
 * ローカル コンピューターにインストールされている Azure Powershell。 Azure PowerShell の取得方法の詳細については、[Azure PowerShell のインストールと構成の方法](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.1.0)に関するページを参照してください。
 
 ## <a name="create-the-resource-manager-template"></a>Resource Manager テンプレートの作成
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/25/2017
 ## <a name="save-the-resource-manager-template-in-azure-storage"></a>Resource Manager テンプレートを Azure Storage に保存する
 
 PowerShell を使用して Azure Storage ファイル共有を作成し、`TemplateTest.json` ファイルをアップロードします。
-Azure Portal でファイル共有を作成し、ファイルをアップロードする方法については、[Windows での Azure File Storage の概要](../storage/storage-dotnet-how-to-use-files.md)に関する記事をご覧ください。
+Azure Portal でファイル共有を作成し、ファイルをアップロードする方法については、[Windows での Azure File Storage の概要](../storage/files/storage-dotnet-how-to-use-files.md)に関する記事をご覧ください。
 
 ローカル コンピューターで PowerShell を起動し、次のコマンドを実行して、ファイル共有を作成し、そのファイル共有に Resource Manager テンプレートをアップロードします。
 
@@ -242,7 +242,7 @@ Get-AzureRmStorageAccount
 ## <a name="next-steps"></a>次のステップ
 
 * Resource Manager テンプレートについて詳しくは、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」をご覧ください。
-* Azure Storage の概要については、「[Microsoft Azure Storage の概要](../storage/storage-introduction.md)」をご覧ください。
+* Azure Storage の概要については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 * 役に立つその他の Azure Automation Runbook を探すには、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」をご覧ください。
 * 役に立つその他の Resource Manager テンプレートを探すには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」をご覧ください。
 

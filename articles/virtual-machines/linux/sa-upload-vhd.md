@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 323f69eb2d259a7d98791b5fc9ee24f739da13e6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9159960af396e89f373da711e0cc46fdd996ab83
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Azure CLI 2.0 を使用してカスタム ディスクをアップロードし、Linux VM を作成する
@@ -141,7 +141,7 @@ az storage account create --resource-group myResourceGroup --location westus \
 ```
 
 ## <a name="list-storage-account-keys"></a>ストレージ アカウント キーの一覧表示
-Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#list) を使用します。
+Azure では、ストレージ アカウントごとに 2 つの 512 ビット アクセス キーが生成されます。 これらのアクセス キーは、書き込み操作を実行する場合など、ストレージ アカウントを認証するときに使用します。 ストレージへのアクセス管理の詳細については [こちら](../../storage/common/storage-create-storage-account.md#manage-your-storage-account)をご覧ください。 アクセス キーを表示するには、[az storage account keys list](/cli/azure/storage/account/keys#list) を使用します。
 
 作成したストレージ アカウントのアクセス キーは次のようにして表示します。
 
