@@ -22,7 +22,7 @@ ms.lasthandoff: 02/23/2017
 
 ---
 # <a name="customize-the-styling-of-the-developer-portal-in-azure-api-management"></a>Azure API Management での開発者ポータルのスタイルのカスタマイズ
-Azure API Management で開発者ポータルをカスタマイズする基本的な方法は&3; つあります。
+Azure API Management で開発者ポータルをカスタマイズする基本的な方法は 3 つあります。
 
 * [静的なページの内容とページ レイアウト要素を編集する][modify-content-layout]
 * [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles] (このガイドで説明します)
@@ -44,7 +44,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 
 ![カスタマイズ ツール バー ボタン][api-management-customization-toolbar-button]
 
-スタイルのルールを編集する方法は、主に&2; つあります。1 つ目は、既定で表示される、いずれかの場所で使用されているすべてのスタイル ルールの一覧でスタイルを探し、必要に応じて変更する方法です。もう&1; つは、**[Select an element on the page (ページの要素を選択)]** を選択し、ページの任意の場所をクリックして、その要素のスタイルだけを表示する方法です。
+スタイルのルールを編集する方法は、主に 2 つあります。1 つ目は、既定で表示される、いずれかの場所で使用されているすべてのスタイル ルールの一覧でスタイルを探し、必要に応じて変更する方法です。もう 1 つは、**[Select an element on the page (ページの要素を選択)]** を選択し、ページの任意の場所をクリックして、その要素のスタイルだけを表示する方法です。
 
 ![Customization toolbar][api-management-customization-toolbar]
 
@@ -54,7 +54,7 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 > 
 > 
 
-見出しテキストの色を変更してみましょう。 **@headings-color** ボックスの入力内容を選択し、「**#000000**」と入力します。 これは、黒色を表す&16; 進コードです。 すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。 このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
+見出しテキストの色を変更してみましょう。 **@headings-color** ボックスの入力内容を選択し、「**#000000**」と入力します。 これは、黒色を表す 16 進コードです。 すると、テキスト ボックスの端に正方形のカラー インジケーターが表示されます。 このインジケーターをクリックするとカラー ピッカーが表示され、色を選択することができます。
 
 ![Color picker][api-management-customization-toolbar-color-picker]
 
