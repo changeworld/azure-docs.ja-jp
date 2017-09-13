@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service の特長"
 description: "App Service の特長"
 keywords: "App Service, Azure App Service, スケール, スケーラブル, App Service プラン, App Service コスト"
