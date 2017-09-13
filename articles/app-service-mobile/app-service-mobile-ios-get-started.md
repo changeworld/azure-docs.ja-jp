@@ -27,7 +27,7 @@ ms.lasthandoff: 07/21/2017
 ## <a name="overview"></a>概要
 このチュートリアルでは、 [Azure Mobile Apps](app-service-mobile-value-prop.md)(クラウドのバックエンド サービス) を iOS アプリに追加する方法について説明します。 まず、新しいモバイル バックエンドを作成します。 その後、簡単な *Todo リスト* iOS アプリを使用して Azure にデータを格納します。
 
-このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/)
+このチュートリアルを完了するには、Mac と [Azure アカウント](https://azure.microsoft.com/pricing/free-trial/) が必要です。
 
 ## <a name="step-i-create-a-new-azure-mobile-app-backend"></a>手順 I: 新しい Azure Mobile App バックエンドの作成
 [!INCLUDE [app-service-mobile-dotnet-backend-create-new-service](../../includes/app-service-mobile-dotnet-backend-create-new-service.md)]
