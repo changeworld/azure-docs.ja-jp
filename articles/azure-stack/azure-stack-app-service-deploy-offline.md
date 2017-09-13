@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 7/3/2017
 ms.author: anwestg
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: bdcb06de072b4e86aae29f6531b0e9ddf2817a91
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: b733851d4459ead1ae437604a27ca7720e2a3a87
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Add an App Service resource provider to a disconnected Azure Stack environment secured by AD FS
@@ -178,7 +178,7 @@ Follow these steps:
 
 2. Go to the location of the scripts downloaded and extracted in the [prerequisite step](#Download-Required-Components).
 
-3. [Install and configure an Azure Stack PowerShell environment](azure-stack-powershell-configure.md). Follow the instructions to create an AzureStackAdmin environment, and sign in to the AzureStackAdmin environment.
+3. [Install](azure-stack-powershell-install.md) and [configure an Azure Stack PowerShell environment](azure-stack-powershell-configure-admin.md).
 
 4. In the same PowerShell session, run the **CreateIdentityApp.ps1** script. When you're prompted for your Azure Active Directory (Azure AD) tenant ID, enter **ADFS**.
 

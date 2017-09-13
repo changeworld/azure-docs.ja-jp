@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f26f4dda442320c7c224c02a38aa36dbe5d4d1a6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 064a6782970b950543f93c24800998c1f104c8df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
@@ -249,7 +249,7 @@ workflow AddPublicIPAndNSG {
 
 サンプル スクリプトを Automation アカウントにデプロイするには、**[Azure へのデプロイ]** ボタンをクリックします。
 
-![[Azure にデプロイ] ボタン](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)
+[![Azure へのデプロイ](https://azurecomcdn.azureedge.net/mediahandler/acomblog/media/Default/blog/c4803408-340e-49e3-9a1f-0ed3f689813d.png)](https://aka.ms/asr-automationrunbooks-deploy)
 
 別の例として、次の動画を参照してください。 これは、2 層 WordPress アプリケーションを Azure に復旧する方法を示しています。
 

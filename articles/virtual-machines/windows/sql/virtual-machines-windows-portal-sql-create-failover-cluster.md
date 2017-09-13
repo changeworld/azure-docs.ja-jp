@@ -17,10 +17,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: e690e87df92bd3614e575010d90b7a40521dadc9
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 439353b7d22fb7376049ea8e1433a8d5840d3e0f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -164,7 +164,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
    | SQL Server | 1433 | SQL Server の既定のインスタンスの通常のポートです。 ギャラリーからイメージを使用した場合、このポートが自動的に開きます。
    | 正常性プローブ | 59999 | 開いている任意の TCP ポートです。 後の手順で、このポートを使用するようにロード バランサーの[正常性プローブ](#probe)とクラスターを構成します。  
 
-1. 仮想マシンにストレージを追加します。 詳細については、[ストレージの追加](../../../storage/storage-premium-storage.md)に関するページを参照してください。
+1. 仮想マシンにストレージを追加します。 詳細については、[ストレージの追加](../../../storage/common/storage-premium-storage.md)に関するページを参照してください。
 
    両方の仮想マシンに、少なくとも 2 つのデータ ディスクが必要です。
 

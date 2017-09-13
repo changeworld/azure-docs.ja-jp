@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 7/28/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 84e4d4ed9f6ff5c03378c8bd90c2ae659257a251
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: 22251dd0428b959069dfc392f4ccdda19b08b9de
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Manage Azure policy using the Azure Stack Policy Module
@@ -27,7 +27,7 @@ The Azure Stack Policy module allows you to configure an Azure subscription with
 ## <a name="install-the-module"></a>Install the module
 1. Install the required version of the AzureRM PowerShell module, as described in Step1 of [Install PowerShell for Azure Stack](azure-stack-powershell-install.md).   
 2. [Download the Azure Stack tools from GitHub](azure-stack-powershell-download.md)  
-3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure.md)
+3. [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure-user.md)
 
 4. Import the AzureStack.Policy.psm1 module:
 

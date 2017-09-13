@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 3c7db401442c41bbe1343b1adc48f4f1b7d88b49
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bc6f293db0d537990d7fb1238fe4a19c704f57a1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="provision-the-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンのプロビジョニング
@@ -62,7 +62,7 @@ Linux データ サイエンス仮想マシンはそうした問題の大部分�
 Linux データ サイエンス仮想マシンを作成する前に、次を用意する必要があります。
 
 * **Azure サブスクリプション**: これを取得する場合は、 [Azure 無試用版の取得](https://azure.microsoft.com/free/)に関するページを参照してください。
-* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
+* **Azure ストレージ アカウント**: Azure ストレージ アカウントを作成するには、 [Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)に関するセクションをご覧ください。 既存のアカウントを使用しない場合は、VM の作成プロセスの一環としてストレージ アカウントを作成することもできます。
 
 ## <a name="create-your-linux-data-science-virtual-machine"></a>Linux データ サイエンス仮想マシンの作成
 Linux データ サイエンス仮想マシンのインスタンスを作成する手順を以下に示します。

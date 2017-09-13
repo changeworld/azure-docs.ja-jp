@@ -3,7 +3,7 @@ title: "パケット キャプチャを使用してアラートと Azure Functio
 description: "この記事では、Azure Network Watcher を使用して、アラートでトリガーされるパケット キャプチャを作成する方法について説明します"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: 75e6e7c4-b3ba-4173-8815-b00d7d824e11
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 8e0b9181bcd43692619726e7215e90116e5b9221
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b813172fc1fc1cc683f463f05370c95bfec10f8d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>パケット キャプチャを使用してアラートと Azure Functions によるプロアクティブなネットワーク監視を実行する
@@ -362,7 +362,7 @@ webhook POST 要求のペイロードでカスタム プロパティが必要な
 
 キャプチャ ファイルがローカルに格納されている場合は、仮想マシンにサインインすることで取得できます。
 
-Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](http://storageexplorer.com/)を使うことができます。
+Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob Storage を使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 他のツールとしては、[ストレージ エクスプローラー](http://storageexplorer.com/)を使うことができます。
 
 ダウンロードしたキャプチャは、**.cap** ファイルを読み取ることができる任意のツールを使って表示できます。 次に示すのはそのような 2 つのツールへのリンクです。
 

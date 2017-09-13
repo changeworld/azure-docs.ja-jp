@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/22/2017
 ms.author: eugenesh
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: b60662cbe655eea11cba2aaaaa4671209bf018f4
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 023c343122f872943fb3ab3eed7b4caedfae9ac4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -92,7 +92,7 @@ BLOB インデックス作成の場合は、次の必須プロパティがデー
 - **ストレージ アカウントの共有アクセス署名** (SAS) 接続文字列: `BlobEndpoint=https://<your account>.blob.core.windows.net/;SharedAccessSignature=?sv=2016-05-31&sig=<the signature>&spr=https&se=<the validity end time>&srt=co&ss=b&sp=rl`SAS には、コンテナーとオブジェクト (ここでは BLOB) の一覧と読み取りアクセス許可が必要です。
 -  **コンテナの共有アクセス署名**: `ContainerSharedAccessUri=https://<your storage account>.blob.core.windows.net/<container name>?sv=2016-05-31&sr=c&sig=<the signature>&se=<the validity end time>&sp=rl`SAS にはコンテナーの一覧および読み取りアクセス許可が必要です。
 
-Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
+Shared Access Signature について詳しくは、「[Shared Access Signature の使用](../storage/common/storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
 > [!NOTE]
 > SAS の資格情報を使用する場合は、その有効期限が切れないように、データ ソースの資格情報を更新された署名で定期的に更新する必要があります。 SAS の資格情報の有効期限が切れると、インデクサーは「`Credentials provided in the connection string are invalid or have expired.`」のようなエラー メッセージで失敗します。  
@@ -268,7 +268,7 @@ Azure Search のドキュメント抽出ロジックは完璧ではないため�
 
 BLOB のどの部分にインデックスを作成するかは、`dataToExtract` 構成パラメーターを使用して制御できます。 次の値を使用できます。
 
-* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
+* `storageMetadata` - [標準的な BLOB のプロパティおよびユーザー指定のメタデータ](../storage/blobs/storage-properties-metadata.md)のみにインデックスを作成するように指定します。
 * `allMetadata` - ストレージ メタデータと、BLOB コンテンツから抽出された[コンテンツの種類固有のメタデータ](#ContentSpecificMetadata)にインデックスを作成するように指定します。
 * `contentAndMetadata` - すべてのメタデータと、BLOB から抽出されたテキスト コンテンツにインデックスを作成するように指定します。 これが既定値です。
 

@@ -13,6 +13,7 @@
 # 方法
 ## 計画と設計
 ### [認証とセキュリティ](relay-authentication-and-authorization.md)
+#### [ACS から SAS への移行](relay-migrate-acs-sas.md)
 ### [ハイブリッド接続のプロトコル](relay-hybrid-connections-protocol.md)
 ## 開発
 ### [利用可能な API](relay-api-overview.md)

@@ -17,10 +17,10 @@ ms.date: 08/09/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a2bc8beb764f90c038a511ddcfe8c5b3d04913a7
+ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
+ms.openlocfilehash: ed5284b5a265840c43dbc9890082a7c038d22975
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 08/19/2017
 
 ---
 # <a name="build-a-python-flask-web-application-using-azure-cosmos-db"></a>Azure Cosmos DB を使用した Python Flask Web アプリケーションの作成
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/12/2017
 * [Python 2.7 用の Microsoft Visual C++ コンパイラ](https://www.microsoft.com/en-us/download/details.aspx?id=44266)。
 
 ## <a name="step-1-create-an-azure-cosmos-db-database-account"></a>手順 1: Azure Cosmos DB データベース アカウントを作成する
-まず最初に、Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに Azure Cosmos DB Emulator を使用する場合は、「[手順 2. 新しい Python Flask Web アプリケーションを作成する](#step-2:-create-a-new-python-flask-web-application)」に進むことができます。
+まず最初に、Cosmos DB アカウントを作成します。 アカウントが既にある場合や、このチュートリアルに Azure Cosmos DB Emulator を使用する場合は、「[手順 2. 新しい Python Flask Web アプリケーションを作成する](#step-2-create-a-new-python-flask-web-application)」に進むことができます。
 
 [!INCLUDE [cosmos-db-create-dbaccount](../../includes/cosmos-db-create-dbaccount.md)]
 

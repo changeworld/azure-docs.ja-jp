@@ -4,6 +4,8 @@
 
 # クイック スタート
 ## [.NET アプリケーションの作成](service-fabric-quickstart-dotnet.md)
+## [Windows コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers.md)
+## [Linux コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers-linux.md)
 
 # Tutorials (チュートリアル)
 ## .NET アプリのデプロイ

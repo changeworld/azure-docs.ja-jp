@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: f41132d69dbbc9e5871851220e5f7de933c50efe
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Azure Backup コンテナーとサーバーの管理
@@ -93,7 +93,7 @@ ms.lasthandoff: 08/03/2017
 
 ![構成](./media/backup-azure-manage-windows-server-classic/configure.png)
 
-ストレージの冗長性の詳細については、 [こちらの記事](../storage/storage-redundancy.md)をご覧ください。
+ストレージの冗長性の詳細については、 [こちらの記事](../storage/common/storage-redundancy.md)をご覧ください。
 
 ## <a name="microsoft-azure-backup-agent-tasks"></a>Microsoft Azure Backup エージェントのタスク
 ### <a name="console"></a>コンソール

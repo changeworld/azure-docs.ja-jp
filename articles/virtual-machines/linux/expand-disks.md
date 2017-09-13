@@ -12,13 +12,13 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 05/11/2017
+ms.date: 08/21/2017
 ms.author: iainfou
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 0850e3d4d4b36a2358da9410390c67c630561e60
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: b82cc0473c003da767ee230ab485c69b233977d1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -63,7 +63,7 @@ Azure の Linux 仮想マシン (VM) では、通常、オペレーティング 
     ```
 
     > [!NOTE]
-    > 管理ディスクを拡張すると、更新されたサイズが管理ディスクの最も近いサイズにマップされます。 管理ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../../storage/storage-managed-disks-overview.md#pricing-and-billing)」をご覧ください。
+    > 管理ディスクを拡張すると、更新されたサイズが管理ディスクの最も近いサイズにマップされます。 管理ディスクの利用可能なサイズとレベルの表については、「[Azure Managed Disks の概要 - 価格と課金](../windows/managed-disks-overview.md#pricing-and-billing)」をご覧ください。
 
 3. [az vm start](/cli/azure/vm#start) を使用して VM を起動します。 次の例では、*myResourceGroup* という名前のリソース グループ内の *myVM* という VM を起動します。
 

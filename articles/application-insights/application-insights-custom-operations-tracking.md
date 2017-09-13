@@ -10,13 +10,13 @@ ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 06/31/2017
+ms.date: 06/30/2017
 ms.author: sergkanz
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 0c4ddfe4533dc232047f0b1a0af270e7f9372c84
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -203,7 +203,7 @@ public async Task Process(BrokeredMessage message)
 ```
 
 ### <a name="azure-storage-queue"></a>Azure Storage キュー
-[Azure Storage キュー](../storage/storage-dotnet-how-to-use-queues.md)の操作を追跡し、プロデューサー、コンシューマー、Azure Storage 間でテレメトリを相互に関連付ける例を次に示します。 
+[Azure Storage キュー](../storage/queues/storage-dotnet-how-to-use-queues.md)の操作を追跡し、プロデューサー、コンシューマー、Azure Storage 間でテレメトリを相互に関連付ける例を次に示します。 
 
 Storage キューには HTTP API があります。 キューに対するすべての呼び出しは、Application Insights の HTTP 要求の依存関係コレクターによって追跡されます。
 `Microsoft.ApplicationInsights.DependencyCollector.HttpDependenciesParsingTelemetryInitializer` が `applicationInsights.config` に含まれていることを確認してください。 ない場合は、[Application Insights SDK におけるフィルター処理と前処理](app-insights-api-filtering-sampling.md)に関する記事に従って、プログラムによって追加してください。
@@ -221,7 +221,7 @@ module.Initialize(TelemetryConfiguration.Active);
 // Do not forget to dispose of the module during application shutdown.
 ```
 
-Application Insights の操作 ID を Storage の要求 ID に関連付けることもできます。 Storage の要求クライアントとサーバーの要求 ID の設定および取得方法については、「[Azure Storage の監視、診断、およびトラブルシューティング](../storage/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)」を参照してください。
+Application Insights の操作 ID を Storage の要求 ID に関連付けることもできます。 Storage の要求クライアントとサーバーの要求 ID の設定および取得方法については、「[Azure Storage の監視、診断、およびトラブルシューティング](../storage/common/storage-monitoring-diagnosing-troubleshooting.md#end-to-end-tracing)」を参照してください。
 
 #### <a name="enqueue"></a>Enqueue
 Storage キューは HTTP API をサポートしているため、キューを使ったすべての操作は自動的に ApplicationInsights によって追跡されます。 多くのケースには、このインストルメンテーションで対応することができます。 ただし、コンシューマー側のトレースとプロデューサー側のトレースを相互に関連付けるには、関連付け用の HTTP プロトコルでの実行方法に似た関連付けコンテキストを渡す必要があります。 

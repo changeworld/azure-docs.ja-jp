@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/10/2017
 ms.author: juluk
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 148dc64efd7b4379afad046f21fc2bd97f8f6718
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 75676eb0ab784e2adbfd27b170c1dee5599b74ac
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -73,5 +73,4 @@ SSH 接続を確立すると、Ubuntu のウェルカム プロンプトが表�
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell でのストレージの永続化について](persisting-shell-storage.md) <br>
 [Azure CLI 2.0 について](https://docs.microsoft.com/cli/azure/) <br>
-[Azure File Storage について](../storage/storage-files-introduction.md) <br>
-
+[Azure File Storage について](../storage/files/storage-files-introduction.md) <br>

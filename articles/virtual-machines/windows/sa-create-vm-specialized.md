@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: c5fa164c1095a343402d28142efb92a832441d23
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 974d89aa96cba94fedfd1acbaf4f1d30ac8e6257
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="create-a-vm-from-a-specialized-vhd-in-a-storage-account"></a>ストレージ アカウントでの特殊化された VHD からの VM の作成
@@ -120,7 +119,7 @@ C:\Users\Public\Doc...  https://mystorageaccount.blob.core.windows.net/mycontain
 次のことを確認してください。
 
 * **コピー元とコピー先のストレージ アカウント**に関する情報があること。 コピー元の VM については、ストレージ アカウント名とコンテナー名が必要です。 通常、コンテナー名は **vhds** になります。 また、コピー先のストレージ アカウントも持っている必要があります。 まだ持っていない場合は、ポータルを使用する (**[その他のサービス]**、[ストレージ アカウント]、[追加] の順に選択する) か [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/new-azurermstorageaccount) コマンドレットを使用して、作成できます。 
-* [AzCopy ツール](../../storage/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
+* [AzCopy ツール](../../storage/common/storage-use-azcopy.md)をダウンロードしてインストール済みであること。 
 
 ### <a name="deallocate-the-vm"></a>VM の割り当てを解除する
 VM の割り当てを解除して、コピーする VHD を解放します。 
@@ -147,7 +146,7 @@ Get-AzureRmVM -ResourceGroupName "myResourceGroup" -Name "myVM"
 ``` 
 
 ## <a name="get-the-storage-access-keys"></a>ストレージ アクセス キーを取得する
-コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/storage-create-storage-account.md)」を参照してください。
+コピー元とコピー先のストレージ アカウントのアクセス キーを探します。 アクセス キーの詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」を参照してください。
 
 * **Portal**: **[その他のサービス]** > **[ストレージ アカウント]** > *[ストレージ アカウント]* > **[アクセス キー]** の順にクリックします。 **key1**としてラベル付されているキーをコピーします。
 * **Powershell**: [Get-AzureRmStorageAccountKey](/powershell/module/azurerm.storage/get-azurermstorageaccountkey) を使用して、リソース グループ **myResourceGroup** 内にあるストレージ アカウント **mystorageaccount** のストレージ キーを取得します。 **key1** のラベルが付いているキーをコピーします。

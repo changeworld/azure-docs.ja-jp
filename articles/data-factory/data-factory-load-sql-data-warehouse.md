@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80be19618bd02895d953f80e5236d1a69d0811af
-ms.openlocfilehash: c1485205f49dae28adbddbf679fc120a6e52bff6
+ms.translationtype: HT
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: c29f1f01b660c4eb780e178a68036327fafa9ba6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/07/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
@@ -43,7 +43,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 >
 
 ## <a name="prerequisites"></a>前提条件
-* Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
+* Azure Blob Storage: この実験では、Azure Blob Storage (GRS) を使用して、TPC-H テスト データセットを格納します。  Azure ストレージ アカウントがない場合は、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 * [TPC-H](http://www.tpc.org/tpch/) データ: テスト データセットとして TPC-H を使用します。  これを行うには、TPC-H ツールキットの `dbgen` を使用する必要があります。これにより、データセットを簡単に生成できます。  `dbgen` のソース コードを [TPC Tools](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) からダウンロードして自分でコンパイルするか、コンパイル済みのバイナリを [GitHub](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TPCHTools) からダウンロードします。  次のコマンドで dbgen.exe を実行して、10 個のファイルに分散される `lineitem` テーブルの 1 TB のフラット ファイルを生成します。
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -77,7 +77,7 @@ Azure SQL Data Warehouse は、**Azure Data Factory** の使用によって、�
 
     この実験では、`xlargerc` リソース クラスを使用して Azure SQL Data Warehouse にデータを読み込みます。
 
-    最高のスループットを実現するには、`xlargerc` リソース クラスに所属する SQL Data Warehouse ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#change-a-user-resource-class-example)」で、実行方法を確認してください。  
+    最高のスループットを実現するには、`xlargerc` リソース クラスに所属する SQL Data Warehouse ユーザーでコピーを実行する必要があります。  「[ユーザー リソース クラスの変更例](../sql-data-warehouse/sql-data-warehouse-develop-concurrency.md#changing-user-resource-class-example)」で、実行方法を確認してください。  
 * 次の DDL ステートメントを実行して、Azure SQL Data Warehouse データベースに変換先テーブル スキーマを作成します。
 
     ```SQL  

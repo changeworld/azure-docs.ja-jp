@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8bacd408e49eb5f6eeb4b8f7eb10feac21830bb0
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -175,7 +175,7 @@ Azure Log Analytics と併せて、ロジック アプリの診断データを�
 * [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-設定するオプションに基づいて、[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md)または[Azure イベント ハブの作成](../event-hubs/event-hubs-create.md)を最初に行うようにしてください。 その後、診断データの送信先のオプションを選択してください。
+設定するオプションに基づいて、[Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)または[Azure イベント ハブの作成](../event-hubs/event-hubs-create.md)を最初に行うようにしてください。 その後、診断データの送信先のオプションを選択してください。
 
 ![データを Azure ストレージ アカウントまたはイベント ハブに送信する](./media/logic-apps-monitor-your-logic-apps/storage-account-event-hubs.png)
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/29/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 4bdef3c0a68b07ee2d6e0ab5344ff7cc41965f1e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 68b767c9c93f2daff476a21029b9813f347590b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-storage-account"></a>StorSimple Manager サービスを使用してストレージ アカウントを管理する
@@ -53,7 +52,7 @@ ms.lasthandoff: 07/06/2017
 StorSimple デバイスで使用できるストレージ アカウントには、次の 3 つの種類があります。
 
 * **自動生成されたストレージ アカウント** - 名前のとおり、このストレージ アカウントは、サービスが最初に作成されるときに自動的に生成されます。 このストレージ アカウントの作成方法の詳細については、「[オンプレミスの StorSimple デバイスのデプロイ](storsimple-deployment-walkthrough.md)」の「[手順 1. 新しいサービスを作成する](storsimple-deployment-walkthrough-u1.md#step-1-create-a-new-service)」をご覧ください。 
-* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/storage-create-storage-account.md)に関するページを参照してください。 
+* **サービス サブスクリプションのストレージ アカウント** - サービスと同じサブスクリプションに関連付けられている Azure ストレージ アカウントです。 このストレージ アカウントの作成方法の詳細については、 [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md)に関するページを参照してください。 
 * **サービス サブスクリプションの外部のストレージ アカウント** - これらは、サービスに関連付けられていない、サービスが作成される前に存在していた可能性のある Azure ストレージ アカウントです。
 
 ## <a name="add-a-storage-account"></a>ストレージ アカウントの追加

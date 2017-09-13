@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: b25e2d5738a5d8a0f98470678ff03950b0aa4e36
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 40abff72278c9f8d9f701023fd473fe52c17b421
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="step-5-prepare-azure-resources-for-vmware-replication-to-azure"></a>手順 5: Azure への VMware レプリケーション用の Azure リソースを準備する
@@ -54,9 +53,9 @@ ms.lasthandoff: 06/29/2017
 ## <a name="set-up-an-azure-storage-account"></a>Azure Storage アカウントを設定
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
-- レプリケートされるデータ用に [Azure ストレージ アカウント](../storage/storage-create-storage-account.md#create-a-storage-account)をセットアップします。
-- Azure Portal の Site Recovery では、Resource Manager またはクラシック モードで設定されたストレージ アカウントを使用できます。
-- このストレージ アカウントには、Standard または [Premium](../storage/storage-premium-storage.md) を使用できます。
+- レプリケートされるデータ用に [Azure ストレージ アカウント](../storage/common/storage-create-storage-account.md#create-a-storage-account)をセットアップします。
+- Azure ポータルの Site Recovery では、Resource Manager またはクラシック モードで設定されたストレージ アカウントを使用できます。
+- このストレージ アカウントには、Standard または [Premium](../storage/common/storage-premium-storage.md) を使用できます。
 - Premium アカウントを設定する場合は、ログ データ用の Standard アカウントも別途必要になります。
 
 

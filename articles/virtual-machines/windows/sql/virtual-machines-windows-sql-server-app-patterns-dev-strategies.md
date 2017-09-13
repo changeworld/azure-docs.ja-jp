@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: ninarn
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: a8740f3b78de37c09ff7a9250682d47fa9bec1e3
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: a716de21e21148a082f49f0f416b14ca0eaa8192
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="application-patterns-and-development-strategies-for-sql-server-in-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server のアプリケーション パターンと開発計画
@@ -51,7 +51,7 @@ Azure 環境で SQL Server ベースのアプリケーションに使用する�
 
 この記事を読む前に、SQL Server と Azure の基本的な概念に関する知識が必要です。 詳細については、[SQL Server オンライン ブック](https://msdn.microsoft.com/library/bb545450.aspx)、[Azure Virtual Machines における SQL Server ](virtual-machines-windows-sql-server-iaas-overview.md)に関するページ、および [Azure.com](https://azure.microsoft.com/) をご覧ください。
 
-この記事では、単純なアプリケーションおよび非常に複雑なエンタープライズ アプリケーションに適したいくつかのアプリケーション パターンについて説明します。 各パターンの詳細を読む前に、[Azure Storage](../../../storage/storage-introduction.md)、[Azure SQL Database](../../../sql-database/sql-database-technical-overview.md)、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) など、Azure で利用可能なデータ ストレージ サービスについて理解しておくことをお勧めします。 アプリケーションの設計に関して最適な決断を下すには、いつ、どのデータ ストレージ サービスを使用するかを明確に把握する必要があります。
+この記事では、単純なアプリケーションおよび非常に複雑なエンタープライズ アプリケーションに適したいくつかのアプリケーション パターンについて説明します。 各パターンの詳細を読む前に、[Azure Storage](../../../storage/common/storage-introduction.md)、[Azure SQL Database](../../../sql-database/sql-database-technical-overview.md)、[Azure の仮想マシン内の SQL Server](virtual-machines-windows-sql-server-iaas-overview.md) など、Azure で利用可能なデータ ストレージ サービスについて理解しておくことをお勧めします。 アプリケーションの設計に関して最適な決断を下すには、いつ、どのデータ ストレージ サービスを使用するかを明確に把握する必要があります。
 
 ### <a name="choose-sql-server-in-an-azure-virtual-machine-when"></a>次の場合に、Azure の仮想マシン内の SQL Server を選択します。
 * SQL Server および Windows を制御する必要がある。 たとえば、制御対象には、SQL Server バージョン、特別な修正プログラム、パフォーマンスの構成などがあります。
@@ -192,7 +192,7 @@ Cloud Services を使用すると、Azure がユーザーに代わってイン�
 
 ![アプリケーション パターン (Cloud Services)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728013.png)
 
-このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。 このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。 Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、[Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/)、[Azure Table Storage](../../../storage/storage-dotnet-how-to-use-tables.md)、[Azure SQL Database](../../../sql-database/sql-database-technical-overview.md) のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします。
+このアプリケーション パターンを実装する別の方法としては、次の図に示すように、プレゼンテーション層とビジネス層の両方のコンポーネントを含む統合 Web ロールを使用します。 このアプリケーション パターンは、ステートフルな設計を必要とするアプリケーションに有効です。 Azure では Web ロールと worker ロールでステートレスなコンピューティング ノードが提供されるため、[Azure Caching](https://azure.microsoft.com/documentation/services/redis-cache/)、[Azure Table Storage](../../../cosmos-db/table-storage-how-to-use-dotnet.md)、[Azure SQL Database](../../../sql-database/sql-database-technical-overview.md) のいずれかのテクノロジを使用して、セッション状態を格納するロジックを実装することをお勧めします。
 
 ![アプリケーション パターン (Cloud Services)](./media/virtual-machines-windows-sql-server-app-patterns-dev-strategies/IC728014.png)
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: sdanie
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 453314d603fdc25cfc0e37622e5394fc148a11a6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 5e6d731f0a1cecc1a191c74a45e37a9b94fd98ee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Azure Redis Cache でデータをインポートまたはエクスポートする
@@ -40,7 +40,7 @@ Import/Export により、異なる Azure Redis Cache インスタンス間で�
 Import は、任意のクラウドまたは環境で稼働している任意の Redis サーバー (Linux や Windows のほか、アマゾン ウェブ サービスをはじめとする各種クラウド プロバイダーで稼働している Redis など) から Redis と互換性のある RDB ファイルを取り込むときに使うことができます。 データをインポートすると、あらかじめデータが入力されたキャッシュを簡単に作成できます。 インポート処理中に、Azure Redis Cache は RDB ファイルを Azure ストレージからメモリに読み込み、キーをキャッシュに挿入します。
 
 > [!NOTE]
-> インポート操作を開始する前に、Redis データベース (RDB) ファイルが、Azure Redis Cache インスタンスと同じリージョンとサブスクリプションにある Azure Storage 内のページ BLOB またはブロック BLOB にアップロードされる設定になっていることを確認してください。 詳細については、 [Azure Blob Storage の使用](../storage/storage-dotnet-how-to-use-blobs.md)に関するページをご覧ください。 [Azure Redis Cache の Export](#export) 機能を使って RDB ファイルをエクスポートした場合、そのファイルは既にページ BLOB に格納されており、インポートの準備ができています。
+> インポート操作を開始する前に、Redis データベース (RDB) ファイルが、Azure Redis Cache インスタンスと同じリージョンとサブスクリプションにある Azure Storage 内のページ BLOB またはブロック BLOB にアップロードされる設定になっていることを確認してください。 詳細については、 [Azure Blob Storage の使用](../storage/blobs/storage-dotnet-how-to-use-blobs.md)に関するページをご覧ください。 [Azure Redis Cache の Export](#export) 機能を使って RDB ファイルをエクスポートした場合、そのファイルは既にページ BLOB に格納されており、インポートの準備ができています。
 >
 >
 
@@ -78,7 +78,7 @@ Import は、任意のクラウドまたは環境で稼働している任意の 
 2. **[ストレージ コンテナーの選択]** をクリックし、目的のストレージ アカウントを選択します。 ストレージ アカウントは、キャッシュと同じサブスクリプションおよびリージョン内にある必要があります。
 
    > [!IMPORTANT]
-   > Export が機能するページ BLOB はクラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされていますが、現時点では [Blob ストレージ アカウント](../storage/storage-blob-storage-tiers.md#blob-storage-accounts)ではサポートされていません。
+   > Export が機能するページ BLOB はクラシック ストレージ アカウントと Resource Manager ストレージ アカウントの両方でサポートされていますが、現時点では [Blob ストレージ アカウント](../storage/blobs/storage-blob-storage-tiers.md#blob-storage-accounts)ではサポートされていません。
    >
    >
 
@@ -156,7 +156,7 @@ Import/Export では、Azure Redis Cache へのデータの取り込みと Azure
 これを解決するには、インポート操作またはエクスポート操作を 15 分以内に開始してください。
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Azure Blob Storage にデータをエクスポートしているときにエラーが発生しました。 なぜでしょうか?
-Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、クール層またはホット層の Blob Storage アカウントも含め、現時点ではサポートされていません。 詳細については、「[BLOB ストレージ アカウント](../storage/storage-blob-storage-tiers.md#blob-storage-accounts)」を参照してください。
+Export は、ページ BLOB として格納されている RDB ファイルでのみ機能します。 それ以外のタイプの BLOB は、クール層またはホット層の Blob Storage アカウントも含め、現時点ではサポートされていません。 詳細については、「[BLOB ストレージ アカウント](../storage/blobs/storage-blob-storage-tiers.md#blob-storage-accounts)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 Premium キャッシュ機能をさらに使用する方法を学習します。

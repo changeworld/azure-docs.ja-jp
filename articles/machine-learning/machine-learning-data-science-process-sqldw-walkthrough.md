@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev;hangzh;weig
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 244684bc875e3917b8fd0d1a6bc1464a7c36a938
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: ce7de48af0f2f21576c66a962b88635a0f9f8333
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Team Data Science Process の活用: SQL Data Warehouse の使用
@@ -71,7 +71,7 @@ Azure データ サイエンス環境をセット アップするには、以下
 **独自の Azure BLOB ストレージ アカウントを作成する**
 
 * 独自の Azure BLOB ストレージをプロビジョニングするときに、**米国中南部**内またはその場所にできるだけ近い Azure BLOB ストレージのジオロケーションを選択します。このストレージに NYC タクシー データが格納されています。 データは、AzCopy を使用してパブリック BLOB ストレージ コンテナーから独自のストレージ アカウント内のコンテナーにコピーされます。 Azure BLOB ストレージが米国中南部に近いほど、このタスク (ステップ 4) の完了が早くなります。
-* 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../storage/storage-create-storage-account.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
+* 独自の Azure ストレージ アカウントを作成するには、「[Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)」に示されている手順に従います。 以下のストレージ アカウントの資格情報の値は必ずメモしておいてください。これらはチュートリアルの後半で必要になります。
   
   * **ストレージ アカウント名**
   * **ストレージ アカウント キー**

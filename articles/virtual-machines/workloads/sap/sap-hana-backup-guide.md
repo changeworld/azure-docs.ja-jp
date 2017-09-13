@@ -13,12 +13,11 @@ ums.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 3/13/2017
 ms.author: rclaus
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e3952c6be537e28f7f2cde8f33750b1894fde8e4
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 9e5b124643b753f404ba6012d3df998f567be59a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -73,7 +72,7 @@ _いいえ。現在データとログのバックアップを作成できるの�
 
 ### <a name="why-sap-hana-backup"></a>SAP HANA バックアップが必要な理由
 
-Azure Storage には、高可用性と信頼性が最初から備わっています (Azure Storage の詳細については「[Microsoft Azure Storage の概要](../../../storage/storage-introduction.md)」を参照)。
+Azure Storage には、高可用性と信頼性が最初から備わっています (Azure Storage の詳細については「[Microsoft Azure Storage の概要](../../../storage/common/storage-introduction.md)」を参照)。
 
 最小限の &quot;バックアップ&quot; は、Azure の SLA を利用して、SAP HANA サーバー VM に接続された Azure VHD 上にある SAP HANA のデータ ファイルとログ ファイルを保持する処理です。 この手法では、VM の障害には対応できるものの、SAP HANA のデータ ファイルとログファイルが破損するリスクや、データまたはファイルの意図しない削除などの論理エラーに対応できません。 さらに、コンプライアンス上または法律上の理由からもバックアップが求められます。 このため、SAP HANA バックアップは常に必要になります。
 
@@ -171,7 +170,7 @@ Microsoft Azure では、IaaS VM 暗号化機能を使用して暗号化でき�
 
 Azure Backup サービスでは、暗号化された VM/ディスクを処理することができます (「[暗号化された仮想マシンを Azure Backup でバックアップおよび復元する方法](../../../backup/backup-azure-vms-encryption.md)」を参照)。
 
-このほか、暗号化を行わずに SAP HANA VM とそのディスクを保持し、暗号化が有効になっているストレージ アカウントに SAP HANA バックアップ ファイルを格納する方法があります (「[Azure Storage Service Encryption for Data at Rest (保存データ向け Azure Storage Service Encryption)](../../../storage/storage-service-encryption.md)」を参照)。
+このほか、暗号化を行わずに SAP HANA VM とそのディスクを保持し、暗号化が有効になっているストレージ アカウントに SAP HANA バックアップ ファイルを格納する方法があります (「[Azure Storage Service Encryption for Data at Rest (保存データ向け Azure Storage Service Encryption)](../../../storage/common/storage-service-encryption.md)」を参照)。
 
 ## <a name="test-setup"></a>テストの設定
 

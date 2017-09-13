@@ -16,10 +16,10 @@ ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 59aa8fc907d68485b7d78ae7466e2d2298d7d7d6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -96,7 +96,7 @@ ms.lasthandoff: 07/21/2017
 
 4. 次に、ログ用の OMS ワークスペースとイベント カテゴリを次に示すように選択します。
 
-   1. **[Log Analytics に送信]** を選択します。 
+   1. **[Log Analytics への送信]** を選択します。 
    2. **[Log Analytics]** で、**[構成]** を選択します。 
    3. **[OMS ワークスペース]** で、ログで使用する OMS ワークスペースを選択します。
    4. **[ログ]** で、**[IntegrationAccountTrackingEvents]** カテゴリを選択します。
@@ -110,15 +110,15 @@ ms.lasthandoff: 07/21/2017
 
 Azure Log Analytics と併せて、ロジック アプリの診断データを他の Azure サービスで使用する方法を次のように拡張できます。 
 
-* [Azure Storage に Azure 診断ログをアーカイブする](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
+* [Azure 診断ログを Azure Storage にアーカイブする](../monitoring-and-diagnostics/monitoring-archive-diagnostic-logs.md)
 * [Azure 診断ログを Azure Event Hubs にストリーミングする](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md) 
 
-これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスからのテレメトリと分析を使用して、リアルタイム監視を取得できます。 次に例を示します。
+これにより、[Azure Stream Analytics](../stream-analytics/stream-analytics-introduction.md) や [Power BI](../log-analytics/log-analytics-powerbi.md) などの他のサービスのテレメトリと分析を使用したリアルタイム監視が可能になります。 For example:
 
-* [Event Hub からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
+* [Event Hubs からStream Analytics にデータをストリーミングする](../stream-analytics/stream-analytics-define-inputs.md)
 * [ストリーミング データを Stream Analytics で分析し、Power BI でリアルタイム分析ダッシュボードを作成する](../stream-analytics/stream-analytics-power-bi-dashboard.md)
 
-設定するオプションに基づいて、[Azure ストレージ アカウントの作成](../storage/storage-create-storage-account.md)または[Azure イベント ハブの作成](../event-hubs/event-hubs-create.md)を先に行ってください。 その後で、診断データの送信先のオプションを選択してください。
+設定するオプションに基づいて、[Azure ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md)または[Azure イベント ハブの作成](../event-hubs/event-hubs-create.md)を最初に行うようにしてください。 その後、診断データの送信先のオプションを選択してください。
 
 ![データを Azure ストレージ アカウントまたはイベント ハブに送信する](./media/logic-apps-monitor-b2b-message/storage-account-event-hubs.png)
 

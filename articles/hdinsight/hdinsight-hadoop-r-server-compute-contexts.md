@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 09b65ccd77f6e0898f07c4262940e517a8f913fa
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
@@ -30,7 +29,7 @@ Azure HDInsight 上の Microsoft R Server は、コンピューティング コ�
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
 ## <a name="microsoft-r-server-on-azure-hdinsight"></a>Azure HDInsight での Microsoft R Server
-[Azure HDInsight の Microsoft R Server](hdinsight-hadoop-r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../storage/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
+[Azure HDInsight の Microsoft R Server](hdinsight-hadoop-r-server-overview.md) は、R ベースの分析を行うための最新の機能を備えています。 HDFS 内の [Azure BLOB](../storage/common/storage-introduction.md "Azure Blob Storage") ストレージ アカウントのコンテナー、Data Lake Store、またはローカルの Linux ファイル システムに格納されているデータを使用します。 R Server はオープン ソース R を基盤としているため、自ら構築する R ベースのアプリケーションで 8,000 を超えるオープン ソース R パッケージを活用できます。 また、[RevoScaleR](https://msdn.microsoft.com/microsoft-r/scaler/scaler) (R Server に付属する Microsoft のビッグ データ分析パッケージ) のルーチンも使用できます。  
 
 ## <a name="compute-contexts-for-an-edge-node"></a>エッジ ノードに対する計算コンテキスト
 一般に、エッジ ノードの R Server で実行される R スクリプトは、そのノードの R インタープリター内で実行されます。 ScaleR 関数を呼び出すステップは例外です。 ScaleR 呼び出しは、ScaleR コンピューティング コンテキストの設定方法によって決定されるコンピューティング環境で実行されます。  エッジ ノードから R スクリプトを実行する際に設定可能なコンピューティング コンテキストの値は次のとおりです。

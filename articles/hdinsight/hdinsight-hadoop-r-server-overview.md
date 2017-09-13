@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: 0e1812bf867abff1ddd1b0534ceae692fad70484
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: c88bf04f904d6784b882f524ac8737ca70003c91
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
@@ -39,11 +38,11 @@ HDInsight の R Server は、Azure Blob Storage または Data Lake Storage に�
 HDInsight クラスターに R Server を含めるには、Azure ポータルを使用して HDInsight クラスターを作成するときに、R Server クラスター タイプを選択する必要があります。 この R Server クラスター タイプは、クラスターのデータ ノード上の R Server と、R Server ベースの分析用のランディング ゾーンとしてのエッジ ノードを組み込みます。 クラスターの作成手順については、[HDInsight での R Server の使用](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。
 
 ## <a name="learn-about-data-storage-options"></a>データ ストレージ オプションについて
-HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Store と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても、確実に永続化されます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../storage/storage-use-azcopy.md) ユーティリティなどがあります。
+HDInsight クラスターの HDFS ファイル システムの既定のストレージを、Azure ストレージ アカウントまたは Azure Data Lake Store と関連付けることができます。 この関連付けにより、分析中にクラスター ストレージにアップロードされるデータがどのようなものであっても、確実に永続化されます。 選択したストレージ オプションへのデータ転送を担うさまざまなツールが用意されています。これには、ストレージ アカウントのポータル ベースのアップロード機能や [AzCopy](../storage/common/storage-use-azcopy.md) ユーティリティなどがあります。
 
 選択したプライマリ ストレージにかかわらず、クラスター プロビジョニング プロセス中に追加の BLOB および Data Lake Store へのアクセスを追加することができます。 アカウント アクセスの追加については、[HDInsight での R Server の使用](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-get-started)に関する記事をご覧ください。 複数のストレージ アカウントの使用について詳しくは、補足記事「[HDInsight の R Server 向けの Azure Storage オプション](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-r-server-storage)」をご覧ください。
 
-エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../storage/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの R Server を対象としたこれらのデータ ストレージ オプションについて詳しくは、「[HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)」をご覧ください。
+エッジ ノードで使用するストレージ オプションとして、 [Azure Files](../storage/files/storage-how-to-use-files-linux.md) を使用することもできます。 Azure Files では、Azure Storage で作成されたファイル共有を Linux ファイル システムにマウントできます。 HDInsight クラスターの R Server を対象としたこれらのデータ ストレージ オプションについて詳しくは、「[HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)」をご覧ください。
 
 ## <a name="access-r-server-on-the-cluster"></a>クラスターでの R Server へのアクセス
 プロビジョニング プロセスで RStudio Server を含めることを選択した場合、ブラウザーを使用してエッジ ノードの R Server に接続できます。 クラスターのプロビジョニング時に RStudio Server をインストールしなかった場合は、後から追加することができます。 クラスターの作成後に RStudio Server をインストールする方法については、[HDInsight クラスターへの RStudio Server のインストール](hdinsight-hadoop-r-server-install-r-studio.md)に関する記事をご覧ください。 R Server には、SSH/PuTTY で R コンソールにアクセスすることによって接続することもできます。 

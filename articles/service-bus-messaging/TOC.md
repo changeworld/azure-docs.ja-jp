@@ -37,6 +37,7 @@
 ### [キューを使用するアプリ](service-bus-create-queues.md)
 ### [トピック/サブスクリプションを使用するアプリ](service-bus-create-topics-subscriptions.md)
 ### [認証と権限承認](service-bus-authentication-and-authorization.md)
+#### [ACS から SAS への移行](service-bus-migrate-acs-sas.md)
 #### [Shared Access Signature による認証](service-bus-sas.md)
 ### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
 ### [配達不能キュー](service-bus-dead-letter-queues.md)

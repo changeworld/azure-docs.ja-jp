@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: d9cca5d529d96d505f304736547c23362796e16e
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: f69fa4f838b22ccbb25186c08cac9744bb31c6d1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
@@ -39,7 +38,7 @@ ms.lasthandoff: 07/08/2017
 この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/)に関するページを参照してください。
-* **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。 Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。 Azure ストレージ アカウントの作成の詳細については、 [ストレージ アカウントの作成方法](../storage/storage-create-storage-account.md)に関するページを参照してください。
+* **Azure ストレージ アカウント** - HDInsight クラスターは、既定のファイル システムとして Azure BLOB ストレージ コンテナーを使用します。 Azure BLOB ストレージと HDInsight クラスターのシームレスな統合の詳細については、 [HDInsight での Azure BLOB ストレージの使用](hdinsight-hadoop-use-blob-storage.md)に関するページを参照してください。 Azure ストレージ アカウントの作成の詳細については、 [ストレージ アカウントの作成方法](../storage/common/storage-create-storage-account.md)に関するページを参照してください。
 
 ## <a name="open-the-portal"></a>ポータルを開く
 1. [https://portal.azure.com](https://portal.azure.com)にサインインします。

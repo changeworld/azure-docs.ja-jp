@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/03/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 56dc177d8ba661695bd860f5e4664257ca30807a
+ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
+ms.openlocfilehash: b6767969084d91950d20ca8f1623c8ab24f951f0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 08/23/2017
 
 ---
 
@@ -131,6 +131,7 @@ In a disconnected scenario, you must first download the PowerShell modules to a 
 ## <a name="next-steps"></a>Next steps
 
 * [Download Azure Stack tools from GitHub](azure-stack-powershell-download.md)
-* [Configure PowerShell for use with Azure Stack](azure-stack-powershell-configure.md)  
+* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)  
+* [Configure the Azure Stack operator's PowerShell environment](azure-stack-powershell-configure-admin.md) 
 * [Manage API version profiles in Azure Stack](azure-stack-version-profiles.md)  
 

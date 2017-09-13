@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 46d71ebd493004bc1ac1b7634722d2abe8b67343
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
@@ -87,7 +87,7 @@ Azure で Linux HPC ワークロードを実行する他のオプションにつ
 > 
 
 ## <a name="set-up-a-file-share-for-linux-nodes"></a>Linux ノード用にファイル共有をセットアップする
-SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。 ヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。 共有は、現在 Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。 Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../../../storage/storage-how-to-use-files-linux.md)」をご覧ください。 HPC Pack でのその他のファイル共有オプションについては、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md)」をご覧ください。
+SMB ファイル共有をセットアップし、すべての Linux ノード上に共有フォルダーをマウントすることで、すべての Linux ノードが共通のパスを使用して NAMD ファイルにアクセスできるようにしました。 ヘッド ノード上への共有フォルダーのマウント手順は以下のとおりです。 共有は、現在 Azure File Service がサポートされていない CentOS 6.6 などのディストリビューションの場合にお勧めします。 Linux ノードで Azure File 共有がサポートされている場合は、「[Linux で Azure File Storage を使用する方法](../../../storage/files/storage-how-to-use-files-linux.md)」をご覧ください。 HPC Pack でのその他のファイル共有オプションについては、「[Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md)」をご覧ください。
 
 1. ヘッド ノードにフォルダーを作成します。読み書き権限を設定して、フォルダーを全員で共有します。 この例では、\\\\CentOS66HN\Namd がフォルダーの名前です。ここで、CentOS66HN はヘッド ノードのホスト名です。
 2. 共有フォルダーに namd2 という名前のサブフォルダーを作成します。 namd2 に namdsample という名前の別のサブフォルダーを作成します。
@@ -113,7 +113,7 @@ SMB ファイル共有をセットアップし、すべての Linux ノード上
 ## <a name="create-a-bash-script-to-run-a-namd-job"></a>NAMD ジョブを実行する Bash スクリプトを作成する
 NAMD ジョブでは、NAMD プロセスの開始時に使用するノード数を決定するために、 *charmrun* 用の **nodelist** ファイルが必要になります。 nodelist ファイルを生成してからこの nodelist ファイルを使用して **charmrun** を実行する、Bash スクリプトを作成します。 NAMD HPC クラスター マネージャーでこのスクリプトを呼び出すジョブを送信できます。
 
-任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されている /namd2 フォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。 簡単な概念実証を行う場合、この記事の最後にある hpccharmrun.sh スクリプトのサンプルをコピーして「[NAMD ジョブの送信](#submit-a-namd-job)」に進みます。
+任意のテキスト エディターを使用して、NAMD プログラム ファイルが格納されている /namd2 フォルダーに Bash スクリプトを作成し、hpccharmrun.sh という名前を付けます。簡単な概念実証を行う場合、この記事の最後にある hpccharmrun.sh スクリプトのサンプルをコピーして「[NAMD ジョブの送信](#submit-a-namd-job)」に進みます。
 
 > [!TIP]
 > Linux 改行 (LF のみ、CR LF は対象外) を使用したテキスト ファイルとして、スクリプトを保存します。 これにより、スクリプトは Linux ノード上で適切に動作します。

@@ -24,6 +24,8 @@ Azure Container Service は SLA による保証が付いた Azure サービス�
 
 [ACS Engine](http://github.com/Azure/acs-engine) はオープンソース プロジェクトで、パワー ユーザーがクラスター構成を各レベルでカスタマイズするのに適しています。 インフラとソフトウェアの両方の構成に変更を加えることができるため、ACS Engine には SLA が用意されていません。 サポートは、Microsoft の公式チャネルではなく、GitHub のオープンソース プロジェクトを通じて提供されます。 
 
+詳細については、[コンテナーのサポート ポリシー](https://support.microsoft.com/en-us/help/4035670/support-policy-for-containers)を参照してください。
+
 ## <a name="cluster-management"></a>クラスターの管理
 
 ### <a name="how-do-i-create-ssh-keys-for-my-cluster"></a>クラスターの SSH キーはどのようにして作成するのですか。

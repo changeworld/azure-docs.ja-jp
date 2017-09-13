@@ -12,13 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/18/2017
+ms.date: 08/31/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: 54f137b26bf1c8f966e8ef110dcf3d25abf7ac5b
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 3269af400d091435af56b0093abbb839d8dd7068
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 
@@ -90,7 +90,7 @@ Azure Automation で Azure コマンドレットを使用してリソースに�
 各 Automation アカウントの Automation リソースは単一の Azure リージョンと関連付けられていますが、Automation アカウントではサブスクリプションのすべてのリソースを管理できます。 ポリシーにより、データやリソースを特定のリージョンに分離する必要がある場合は、異なるリージョンで Automation アカウントを作成します。
 
 > [!NOTE]
-> Azure Portal で作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
+> Azure ポータルで作成した Automation アカウントおよび各アカウントに含まれるリソースには、Azure クラシック ポータルでアクセスすることはできません。 これらのアカウントとリソースを Windows PowerShell で管理するには、[Azure リソース マネージャー] モジュールを使用する必要があります。
 > 
 
 Azure Portal で Automation アカウントを作成すると、次の 2 つの認証エンティティが自動的に作成されます。
@@ -170,8 +170,7 @@ Automation の推奨されるオンボード方法は、Marketplace から [Auto
    - 新しい **OMS ワークスペース**の名前を指定します。
    - 関連付ける**サブスクリプション**をドロップダウン リストから選択します (既定値が適切でない場合)。
    - **[リソース グループ]** では、リソース グループを作成するか、既存のリソース グループを選択できます。  
-   - **[場所]**を選択します。  現在選択できる場所は、**オーストラリア南東部**、**米国東部**、**東南アジア**、**米国中西部**、および**西ヨーロッパ**のみです。
-   - **[価格レベル]** を選択します。  このソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
+   - **[場所]**を選択します。  詳細については、[Azure Automation を使用できるリージョン](https://azure.microsoft.com/regions/services/)に関するページを参照してください。  ソリューションは、Free とノードごと (OMS) の 2 つのレベルで提供されています。  Free レベルは、1 日に収集できるデータの量、リテンション期間、Runbook ジョブの実行時間 (分) に上限が設けられています。  ノードごと (OMS) レベルでは 1 日に収集できるデータの量に上限がありません。  
    - **[Automation アカウント]** を選択します。  OMS ワークスペースを新たに作成する場合はさらに、先ほど指定した新しい OMS ワークスペース (Azure サブスクリプション、リソース グループ、リージョンを含む) に関連付ける Automation アカウントを作成する必要があります。  **[Automation アカウントの作成]** を選択し、**[Automation アカウント]** ブレードで次の情報を入力します。 
   - **[名前]** フィールドに、Automation アカウントの名前を入力します。
 
