@@ -549,7 +549,7 @@ Resource Manager には、配列とオブジェクトを操作する関数がい
 
 <a id="intersection" />
 
-## <a name="intersection"></a>共通部分
+## <a name="intersection"></a>intersection
 `intersection(arg1, arg2, arg3, ...)`
 
 パラメーターから共通の要素を持つ 1 つの配列またはオブジェクトを返します。
