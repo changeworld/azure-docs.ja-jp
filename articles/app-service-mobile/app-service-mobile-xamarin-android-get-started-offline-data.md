@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure モバイル アプリ (Xamarin Android) に対するオフライン同期の有効化"
 description: "App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
