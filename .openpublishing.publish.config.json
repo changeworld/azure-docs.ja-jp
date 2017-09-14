@@ -31,7 +31,8 @@
     "master-sync-work",
     "live-sxs"
   ],
-  "skip_source_output_uploading": false,  "need_preview_pull_request": false,
+  "skip_source_output_uploading": false,
+  "need_preview_pull_request": false,
   "git_repository_url_open_to_public_contributors": "https://github.com/Microsoft/azure-docs.ja-jp",
   "git_repository_branch_open_to_public_contributors": "live",
   "enable_incremental_build": true,
