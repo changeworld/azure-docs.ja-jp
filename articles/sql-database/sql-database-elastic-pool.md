@@ -227,7 +227,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![エラスティック プールの監視](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
 
-**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] (過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
+**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] \(過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
 
 ![[データベース リソース使用率] ページ](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
@@ -239,7 +239,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![[カスタム] をクリックする](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
 
-**[Compare databases by] (データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
+**[Compare databases by] \(データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
 
 ![グラフを編集する](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
 
