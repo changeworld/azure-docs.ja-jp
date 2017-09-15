@@ -16,10 +16,10 @@ ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: 9bee0344ba70c50cda36a87ea617906283040ff9
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 45c611e1c429e8c17c0fb1537577a4cbd037c23a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
@@ -67,8 +67,8 @@ Batch で Azure CLI を使用するには、ログインと認証を行う必要
 
 Azure にログインするには、いくつかの方法があります。詳細については、「[Azure CLI 2.0 を使用してログインする](https://docs.microsoft.com/cli/azure/authenticate-azure-cli)」で説明しています。
 
-1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#interactive-log-in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
-2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#logging-in-with-a-service-principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
+1. [対話形式でログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_interactive_log_in)。 コマンド ラインから Azure CLI コマンドを実行しているときに、対話形式でログインします。
+2. [サービス プリンシパルでログインします](https://docs.microsoft.com/cli/azure/authenticate-azure-cli#az_authenticate_azure_cli_logging_in_with_a_service_principal)。 スクリプトまたはアプリケーションから Azure CLI コマンドを実行しているときに、サービス プリンシパルでログインします。
 
 この記事の目的上、対話形式で Azure にログインする方法を示します。 コマンド ラインで「[az login](https://docs.microsoft.com/cli/azure/#login)」と入力します。
 
@@ -85,7 +85,7 @@ az login
 
 ### <a name="log-in-to-your-batch-account"></a>Batch アカウントへのログイン
 
-Azure CLI を使用してプール、ジョブ、タスクなどの Batch リソースを管理するには、Batch アカウントにログインし、認証を行う必要があります。 Batch サービスにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) コマンドを使用します。 
+Azure CLI を使用してプール、ジョブ、タスクなどの Batch リソースを管理するには、Batch アカウントにログインし、認証を行う必要があります。 Batch サービスにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを使用します。 
 
 Batch アカウントでの認証には、次の 2 つの選択肢があります。
 
@@ -99,7 +99,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
     プール割り当てモードを "User Subscription" に設定して Azure Batch アカウントを作成した場合は、Azure AD での認証が必要です。 
 
-    Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) コマンドを呼び出します。 
+    Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを呼び出します。 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount

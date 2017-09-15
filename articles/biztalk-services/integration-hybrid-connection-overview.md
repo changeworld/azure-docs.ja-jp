@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 9367d6f57e694c8a438781004ef29a09de77aaa8
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 8584c74f86b72679c3d6c287a7dbf3ea8bcf7149
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
@@ -93,8 +92,8 @@ ms.lasthandoff: 06/03/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
-[Azure Web Apps をオンプレミス リソースに接続する](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Azure Web アプリからオンプレミスの SQL Server に接続する](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/>
+<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
+[Connect to on-premises SQL Server from an Azure web app](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> -->
 
 ## <a name="see-also"></a>関連項目
 [Microsoft Azure での BizTalk Services の管理用 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)

@@ -10,7 +10,7 @@
 * [Visual Studio を使用して Azure WebJobs をデプロイする方法](../articles/app-service-web/websites-dotnet-deploy-webjobs.md)
 * [Azure 管理ポータルを使用して Web ジョブをデプロイする方法](../articles/app-service-web/web-sites-create-web-jobs.md)
 * [[Azure Web ジョブの追加] ダイアログ ボックス](../articles/app-service-web/websites-dotnet-deploy-webjobs.md#configure)
-* [Azure 管理ポータルでのスケジュール実行の Web ジョブの作成](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduled)
+* [Azure 管理ポータルでのスケジュール実行の Web ジョブの作成](../articles/app-service-web/web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [Scheduling Azure WebJobs with cron expressions (CRON 式を使用して Azure Web ジョブをスケジュールする)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [Web ジョブ ダッシュボードの表示](../articles/app-service-web/websites-dotnet-webjobs-sdk-get-started.md#view-the-webjobs-sdk-dashboard)
 * [Web ジョブ SDK を使用してログを記述し、ダッシュボードに表示する方法](../articles/app-service-web/websites-dotnet-webjobs-sdk-storage-queues-how-to.md#logs)

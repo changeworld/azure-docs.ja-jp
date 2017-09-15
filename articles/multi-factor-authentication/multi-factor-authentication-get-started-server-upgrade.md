@@ -3,7 +3,7 @@ title: "PhoneFactor から Azure MFA Server へのアップグレード | Micros
 description: "古い phonefactor エージェントからアップグレードする場合の Azure MFA Server の概要。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 editor: yossib
 ms.assetid: 42838ff7-bdf2-4d06-bacc-b3839a00cd76
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/06/2017
-ms.author: kgremban
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 7ab7e693909f807781744ae53eed75d425096590
+ms.author: joflore
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: df7815ff16ac66531005f3a29550bdb419f3d052
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="upgrade-the-phonefactor-agent-to-azure-multi-factor-authentication-server"></a>PhoneFactor エージェントから Azure Multi-Factor Authentication Server へのアップグレード
@@ -66,7 +65,7 @@ PhoneFactor エージェント v5.x 以前から Azure Multi-factor Authenticati
 
   2. Web サーバー上にユーザー ポータルをインストールするには、コマンド プロンプトを管理者として開き、MultiFactorAuthenticationUserPortalSetupXX.msi を実行します。
 
-    既定の仮想ディレクトリ名は、**PhoneFactor** ではなく **MultiFactorAuth** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。 既存のユーザーに、新しい URL を通知する必要があります。
+    既定の仮想ディレクトリ名は、**PhoneFactor** ではなく **MultiFactorAuth** になります。 以前の名前を使用する場合は、インストール時に仮想ディレクトリ名を変更する必要があります。 そのようにしない場合、インストールで新しい既定の名前の使用を許可する場合は、Multi-Factor Authentication Server の [ユーザー ポータル] アイコンをクリックし、[設定] タブのユーザー ポータル URL を更新する必要があります。既存のユーザーに、新しい URL を通知する必要があります。
 
   3. ユーザー ポータルのインストール先 (C:\inetpub\wwwroot\MultiFactorAuth など) に移動し、web.config ファイルを編集します。 新しい web.config ファイルへのアップグレード前にバックアップされた元の web.config ファイルから、appSettings および applicationSettings セクションの値をコピーします。 Web サービス SDK をインストールするときに新しい既定の仮想ディレクトリ名が保持された場合は、正しい場所を示すように applicationSettings セクションの URL を変更します。 他の任意の既定値が以前の web.config ファイルで変更された場合、その同様の変更を新しい web.config ファイルに適用します。
 
