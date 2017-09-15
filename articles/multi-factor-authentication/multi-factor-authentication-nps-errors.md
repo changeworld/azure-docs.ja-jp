@@ -3,7 +3,7 @@ title: "Azure MFA NPS 拡張機能のエラー コードのトラブルシュー
 description: "Asure Multi-Factor Authentication の NPS 拡張機能に関する問題を解決するためのヘルプと、一般的なエラー メッセージの具体的な解決策を紹介します"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT

@@ -3,7 +3,7 @@ title: "MFA Server と Windows Server の AD FS | Microsoft Docs"
 description: "この記事では、Azure Multi-Factor Authentication と Windows Server 2012 R2 および 2016 の AD FS の使用を開始する方法について説明します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 57208068-1e55-45b6-840f-fdcd13723074
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/25/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: 
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT

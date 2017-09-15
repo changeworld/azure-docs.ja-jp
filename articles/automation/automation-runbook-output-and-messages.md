@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 505834d7354fb920e7ebd931e3bb31d837a79077
 ms.openlocfilehash: 6f01f97e38aa271034741c8a5e2f8057ab61fcd7
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
@@ -187,6 +188,11 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microso
 
     Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
     –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Output
+    
+    # For more detailed job output, pipe the output of Get-AzureRmAutomationJobOutput to Get-AzureRmAutomationJobOutputRecord
+    Get-AzureRmAutomationJobOutput -ResourceGroupName "ResourceGroup01" `
+    –AutomationAccountName "MyAutomationAccount" -Id $job.JobId –Stream Any | Get-AzureRmAutomationJobOutputRecord
+    
 
 ### <a name="graphical-authoring"></a>グラフィカル作成
 グラフィカル Runbook では、追加のログ記録はアクティビティ レベルのトレースの形式で使用できます。  トレースには Basic および Detailed の 2 つのレベルがあります。  Basic トレースでは、Runbook での各アクティビティの開始および終了時刻と、アクティビティの試行数および開始時刻など、アクティビティの再試行に関連する情報を確認できます。  Detailed トレースでは、各アクティビティの Basic トレースと入出力のデータを取得します。  現時点では詳細ストリームを使用してトレース レコードが書き込まれるため、トレースを有効にする場合は、詳細ログを有効にする必要があることに注意してください。  トレースが有効になっているグラフィカル Runbook では、Basic トレースは同じ目的を達成し、より有益であるため、進捗状況レコードを記録する必要はありません。
@@ -220,10 +226,5 @@ Log Analytics との統合を構成して、ジョブ データを収集、操�
 ## <a name="next-steps"></a>次のステップ
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 
