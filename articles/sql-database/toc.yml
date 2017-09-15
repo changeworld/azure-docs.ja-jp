@@ -261,10 +261,6 @@
           href: sql-database-long-term-backup-retention-configure.md
         - name: geo レプリケーション - Portal
           href: sql-database-geo-replication-portal.md
-        - name: geo レプリケーション - T-SQL - 構成
-          href: sql-database-geo-replication-transact-sql.md
-        - name: geo レプリケーション - T-SQL - フェールオーバー
-          href: sql-database-geo-replication-failover-transact-sql.md
         - name: 1 つのテーブルの回復
           href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
     - name: データの読み込みと移動
@@ -299,8 +295,6 @@
           href: sql-database-troubleshoot-common-connection-issues.md
         - name: Azure Automation
           href: sql-database-manage-automation.md
-        - name: Azure RemoteApp
-          href: sql-database-ssms-remoteapp.md
     - name: スケールアウト
       items:
         - name: シャード化されたアプリの作成

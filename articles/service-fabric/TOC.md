@@ -280,7 +280,7 @@
 ### [クラスターの視覚化](service-fabric-visualizing-your-cluster.md)
 ### [セキュリティ保護されたクラスターへの接続](service-fabric-connect-to-secure-cluster.md)
 
-### [Service Fabric CLI を使用したクラスターの管理](service-fabric-cli.md)
+### [Service Fabric CLI の概要](service-fabric-cli.md)
 ### [クラスター ノードへのパッチの適用](service-fabric-patch-orchestration-application.md)
 
 ### クラスター リソースを管理および調整する
