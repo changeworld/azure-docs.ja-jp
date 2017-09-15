@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 08/31/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: 207c53924863eb51ee369fe46d5ad12fb1905c53
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: cc8a3e7f2a907b1eea4ecf39df2b291b0fb8b207
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="configure-forced-tunneling-using-the-azure-resource-manager-deployment-model"></a>Azure Resource Manager デプロイ モデルを使用した強制トンネリングの構成
@@ -65,15 +65,26 @@ Azure では、強制トンネリングは仮想ネットワークのユーザ�
 
 以下の手順で "DefaultSiteHQ" を強制トンネリングの既定のサイト接続として設定し、強制トンネリングが使用されるように "Midtier" と "Backend" サブネットを構成します。
 
-## <a name="before-you-begin"></a>開始する前に
+## <a name="before"></a>開始する前に
 
 Azure Resource Manager PowerShell コマンドレットの最新版をインストールしてください。 PowerShell コマンドレットのインストールの詳細については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview) 」を参照してください。
+
+> [!IMPORTANT]
+> PowerShell コマンドレットの最新バージョンのインストールが必要です。 最新バージョンをインストールしていない場合、一部のコマンドレットの実行時に検証エラーが発生することがあります。
+>
+>
 
 ### <a name="to-log-in"></a>ログインするには
 
 [!INCLUDE [To log in](../../includes/vpn-gateway-ps-login-include.md)]
 
 ## <a name="configure-forced-tunneling"></a>強制トンネリングについて
+
+> [!NOTE]
+> "The output object type of this cmdlet will be modified in a future release"\(このコマンドレットの出力オブジェクトの種類は将来のリリースで変更されます\) という警告メッセージが表示されることがあります。 これは想定される動作であり、これらの警告は無視してもかまいません。
+>
+>
+
 
 1. リソース グループを作成します。
 
@@ -113,7 +124,7 @@ Azure Resource Manager PowerShell コマンドレットの最新版をインス�
   Set-AzureRmVirtualNetworkSubnetConfig -Name "Backend" -VirtualNetwork $vnet -AddressPrefix "10.1.2.0/24" -RouteTable $rt
   Set-AzureRmVirtualNetwork -VirtualNetwork $vnet
   ```
-6. 既定のサイトでゲートウェイを作成します。 ゲートウェイを作成して構成するため、この手順の完了には 45 分以上かかる場合があります。<br> **-GatewayDefaultSite** は、強制ルーティング構成を動作させるコマンドレット パラメーターです。適切な設定になるように、慎重に構成してください。 このパラメーターは、PowerShell 1.0 以降で利用できます。
+6. 既定のサイトでゲートウェイを作成します。 ゲートウェイを作成して構成するため、この手順の完了には 45 分以上かかる場合があります。<br> **-GatewayDefaultSite** は、強制ルーティング構成を動作させるコマンドレット パラメーターです。適切な設定になるように、慎重に構成してください。 GatewaySKU の値に関する ValidateSet エラーが発生した場合は、[PowerShell コマンドレットの最新バージョン](#before)がインストールされていることを確認してください。 PowerShell コマンドレットの最新バージョンには、最新の Gateway SKU の新しい有効値が含まれています。
 
   ```powershell
   $pip = New-AzureRmPublicIpAddress -Name "GatewayIP" -ResourceGroupName "ForcedTunneling" -Location "North Europe" -AllocationMethod Dynamic
@@ -137,3 +148,4 @@ Azure Resource Manager PowerShell コマンドレットの最新版をインス�
     
   Get-AzureRmVirtualNetworkGatewayConnection -Name "Connection1" -ResourceGroupName "ForcedTunneling"
   ```
+
