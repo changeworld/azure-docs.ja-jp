@@ -15,18 +15,20 @@ ms.workload: na
 ms.date: 08/09/2017
 ms.author: sethm
 ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
-ms.openlocfilehash: 28fb41499c919e5006f1be7daa97610c2a0583af
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: b4b9d5d272bdb172f1d40db379a519a4f617550a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="service-bus-authentication-and-authorization"></a>Service Bus の認証と承認
 
-アプリケーションは、Shared Access Signature (SAS) 認証を使用して Azure Service Bus に対して認証できます。 Shared Access Signature 認証により、アプリケーションは、名前空間、または特定の権限が関連付けられているエンティティで構成されたアクセス キーを使用して Service Bus に対して認証できます。 次に、このキーを使用して、クライアントが Service Bus に対する認証に使用できる Shared Access Signature トークンを生成できます。
+アプリケーションは、Shared Access Signature (SAS) トークン認証を使用して Azure Service Bus 関数に対するアクセス権を取得します。 SAS では、アプリケーションから Service Bus にトークンが提示されます。このトークンはトークン発行者と Service Bus の両方に既知の対称キーで署名されています ("共有")。そのキーは、特定のアクセス権 (メッセージを受信/リッスンまたは送信するアクセス許可など) を付与するルールと直接関連付けられています。 SAS ルールは、名前空間または直接エンティティ (キュー、トピックなど) に対して構成され、詳細にアクセスを制御することができます。
+
+SAS トークンは、Service Bus クライアントから直接生成するか、クライアントが対話する何らかの中間トークン発行エンドポイントから生成することができます。 たとえば、システムはクライアントに対して、Active Directory 承認で保護されている Web サービス エンドポイントを呼び出し、ID とシステム アクセス権を証明するように要求する場合があります。この場合、Web サービスから適切な Service Bus トークンが返されます。 この SAS トークンは、SDK に含まれている Service Bus トークン プロバイダーを使用して簡単に生成できます。 
 
 > [!IMPORTANT]
-> Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) は非推奨になったため、ACS ではなく SAS を使用してください。 SAS は、簡単で柔軟性が高く、使いやすい認証スキームを Service Bus に提供しています。 アプリケーションは、承認された "ユーザー" の概念を管理する必要がないシナリオで SAS を使用できます。 詳細については、 [このブログの投稿](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)を参照してください。
+> Azure Active Directory Access Control (Access Control Service または ACS とも呼ばれます) と Service Bus を組み合わせて使用している場合、この方法のサポートは制限されるようになったため、SAS を使用するようにアプリケーションを移行することをお勧めします。 詳細については、 [このブログの投稿](https://blogs.msdn.microsoft.com/servicebus/2017/06/01/upcoming-changes-to-acs-enabled-namespaces/)を参照してください。
 
 ## <a name="shared-access-signature-authentication"></a>Shared Access Signature 認証
 

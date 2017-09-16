@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/14/2017
+ms.date: 08/30/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4a5ccfa671e6780a3d4305d4e3238c55de8e577c
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 1db13c30e2ec1de62d5103f85b4181a5750403c5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
@@ -58,7 +57,7 @@ Azure Service Fabric は、拡張性と信頼性に優れたマイクロサー�
 
 ステートレスとステートフルの 2 種類のサービスがあります。 ステートレス サービスは、永続的な状態を外部ストレージ サービス (Azure Storage、Azure SQL Database、Azure Cosmos DB など) に保存できます。 永続的なストレージがサービスにまったく存在しない場合は、ステートレス サービスを使用します。 ステートフル サービスは Service Fabric を使用して、その Reliable Collection や Reliable Actors のプログラミング モデルを介してサービスの状態を管理します。 
 
-名前付きサービスを作成するときは、パーティション構成を指定します。 さまざまな状態を伴うサービスでは、データが複数のパーティションに分割されます。 各パーティションは、完全な状態のサービスの一部を担当し、クラスターのノード全体に分散されます。 パーティションには、ステートレスの名前付きサービスの場合はインスタンスが、ステートフルの名前付きサービスの場合はレプリカが格納されます。 通常、ステートレスの名前付きサービスは内部的な状態を持たないため、割り当てられるパーティションは 1 つだけです。 ステートフルの名前付きサービスでは、その状態がレプリカ内で管理されます。それぞれのパーティションが固有のレプリカ セットを持ちます。 読み取りおよび書き込み操作は、1 つのレプリカ (プライマリと呼ばれます) で実行されます。 書き込み操作からの状態の変更は、他の複数のレプリカ (アクティブ セカンダリと呼ばれます) にレプリケートされます。 
+名前付きサービスを作成するときは、パーティション構成を指定します。 さまざまな状態を伴うサービスでは、データが複数のパーティションに分割されます。 各パーティションは、完全な状態のサービスの一部を担当し、クラスターのノード全体に分散されます。  
 
 次の図は、アプリケーションとサービス インスタンス、パーティション、レプリカ間のリレーションシップを示しています。
 
@@ -94,7 +93,10 @@ Service Fabric には、サービスの記述と管理に使用できる複数�
 [Reliable Actors](service-fabric-reliable-actors-introduction.md) フレームワークは Reliable Services 上に構築され、アクター設計パターンに基づいて、Virtual Actor パターンを実装するアプリケーション フレームワークです。 Reliable Actors フレームワークは、独立したコンピューティングのユニットと、アクターという単一スレッドの実行を含む状態を使用します。 Reliable Actors フレームワークには、アクターとプリセットされた状態の永続性とスケールアウト構成に対応する組み込みの通信が用意されています。
 
 ### <a name="aspnet-core"></a>ASP.NET Core
-Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) と統合することで、Web アプリケーションや API アプリケーションを構築するための優れたプログラミング モデルとして機能します。
+Service Fabric は [ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md) と統合することで、Web アプリケーションや API アプリケーションを構築するための優れたプログラミング モデルとして機能します。  ASP.NET Core は、Service Fabric で 2 とおりの方法で使用できます。
+
+- ゲスト実行可能ファイルとしてホストする。 この方法は、主に、コードの変更なしで Service Fabric 上で既存の ASP.NET Core アプリケーションを実行するために使用します。
+- リライアブル サービス内で実行する。 Service Fabric ランタイムとの統合がより密になり、ステートフルな ASP.NET Core サービスが可能になります。
 
 ### <a name="guest-executables"></a>ゲスト実行可能ファイル
 [ゲスト実行可能ファイル](service-fabric-deploy-existing-app.md)は、Service Fabric クラスターで他のサービスとともにホストされる既存の任意の実行可能ファイル (任意の言語で記述されたもの) です。 ゲスト実行可能ファイルは、Service Fabric API に直接統合されません。 ただし、カスタムの正常性と負荷のレポート、REST API を呼び出すことによるサービスの検出可能性など、プラットフォームに備わった機能からメリットを得られます。 また、完全なアプリケーションのライフサイクルのサポートも備えています。 

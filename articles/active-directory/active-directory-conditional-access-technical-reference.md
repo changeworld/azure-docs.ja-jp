@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/28/2017
+ms.date: 09/01/2017
 ms.author: markvi
-ms.reviewer: calebb
+ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: f96189735512090f993f61c0d64a249f650ea2a2
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: f3d8bdbfc29ca1008006837512c0e6ae8cb8f6fe
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
@@ -28,7 +28,11 @@ ms.lasthandoff: 08/29/2017
 
 - クラウド アプリの割り当て
 
+- デバイス プラットフォームの条件 
+
 - クライアント アプリの条件
+
+- 承認されたクライアント アプリケーションの要件 
 
 
 
@@ -75,7 +79,27 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 - Azure AD アプリケーション プロキシを使うアプリケーション。 
 
 
-## <a name="client-apps-conditions"></a>クライアント アプリの条件 
+## <a name="device-platforms-condition"></a>デバイス プラットフォームの条件
+
+条件付きアクセス ポリシーでは、デバイス プラットフォームの条件を構成して、ポリシーとクライアントで実行されているオペレーティング システムを関連付けることができます。
+
+![コントロール](./media/active-directory-conditional-access-technical-reference/41.png)
+
+Azure AD 条件付きアクセスは、次のデバイス プラットフォームをサポートします。
+
+- Android
+
+- iOS
+
+- Windows Phone
+
+- Windows
+
+- macOS (プレビュー)
+
+
+
+## <a name="client-apps-condition"></a>クライアント アプリの条件 
 
 条件付きアクセス ポリシーを構成する場合、[クライアント アプリの条件](active-directory-conditional-access-azure-portal.md#client-apps)を設定できます。 クライアント アプリの条件では、次の種類のクライアント アプリからアクセス試行が行われたときに、アクセスを許可またはブロックすることができます。
 
@@ -83,7 +107,6 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 - モバイル アプリとデスクトップ アプリ
 
 ![コントロール](./media/active-directory-conditional-access-technical-reference/03.png)
-
 
 ### <a name="supported-browsers"></a>サポートされているブラウザー 
 
@@ -124,11 +147,11 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 
 | クライアント アプリ| 対象サービス| プラットフォーム |
-| :-- | --- | --- |
+| --- | --- | --- |
 | アプリ用の MFA と場所のポリシー。 デバイス ベースのポリシーはサポートされていません。| 任意のマイ アプリ アプリ サービス| Android および iOS|
 | Azure リモート アプリ| Azure Remote App サービス| Windows 10、Windows 8.1、Windows 7、iOS、Android、Mac OS X|
 | Dynamics CRM アプリ| Dynamics CRM| Windows 10、Windows 8.1、Windows 7、iOS、Android|
-| Microsoft Teams Services - Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、MAC OS X、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御します| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、Android、および MAC OS X|
+| Microsoft Teams Services - このコントロールは Microsoft Teams とそのすべてのクライアント アプリ (Windows デスクトップ、iOS、Android、WP、および Web クライアント) をサポートするすべてのサービスを制御する| Microsoft Teams| Windows 10、Windows 8.1、Windows 7、iOS、および Android|
 | メール/カレンダー/People アプリ、Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 10|
 | Outlook 2016、Outlook 2013 (先進認証を使用)、Skype for Business (先進認証を使用)| Office 365 Exchange Online| Windows 8.1、Windows 7|
 | Outlook Mobile アプリ| Office 365 Exchange Online| iOS|
@@ -143,15 +166,46 @@ Microsoft クラウド アプリに加えて、次の種類のクラウド ア�
 
 
 
+## <a name="approved-client-app-requirement"></a>承認されたクライアント アプリケーションの要件 
+
+条件付きアクセス ポリシーを構成するときに、承認されたクライアント アプリケーションが接続しようとした場合のみアクセスを許可する要件を選択できます。 
+
+![コントロール](./media/active-directory-conditional-access-technical-reference/21.png)
+
+この設定の承認されたクライアント アプリケーションを次に示します。
+
+- Microsoft Excel
+
+- Microsoft OneDrive
+
+- Microsoft Outlook
+
+- Microsoft OneNote
+
+- Microsoft PowerPoint
+
+- Microsoft SharePoint
+
+- Microsoft Skype for Business
+
+- Microsoft Teams
+
+- Microsoft Visio
+
+- Microsoft Word
 
 
+**解説:**
 
+- これらのアプリは、Microsoft Intune のモバイル アプリケーション管理 (MAM) をサポートします。
 
+- この要件は、
 
+    - [デバイスプラットフォームの条件](#device-platforms-condition)で選択されている IOS と Android のみをサポートする 
 
-
-
-
+    - [クライアント アプリの条件](#supported-browsers)として選択された**ブラウザー**はサポートしない 
+    
+    - [クライアント アプリの条件](#supported-mobile-apps-and-desktop-clients)として **[モバイルアプリとデスクトップ クライアント]** が選択されている場合は、それを優先する  
 
 
 ## <a name="next-steps"></a>次のステップ

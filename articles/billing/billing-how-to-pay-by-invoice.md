@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/14/2017
+ms.date: 08/30/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: edbeba95898a41e645b61aeaaec1fd897afadd61
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 9742187d2739b2d2d3b2073646dd6d7002898009
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払いの要求を送信する
@@ -35,8 +35,11 @@ Azure サポートに要求を送信して、Azure サブスクリプション�
 1. [Azure ポータル](https://portal.azure.com/)にサインインします。 **[ヘルプとサポート]** > **[新しいサポート要求]** の順に選択します。
 
     ![[ヘルプとサポート] ボタン](./media/billing-how-to-pay-by-invoice/helpandsupport.png)
+
 1. [問題の種類] で **[課金]** を選択し、請求書で支払うサブスクリプションを選択します。サポート プランを選択し、**[次へ]** を選択します。
-1. **[問題]** ブレードで、**[問題の種類]** ボックスの **[Pay by Invoice] \(請求書による支払い)** を選択します。
+
+1. **[問題の種類]** ボックスで **[Pay by Invoice (請求書による支払い)]** オプションを選択します。
+
 1. **[詳細]** ボックスに次の情報を入力し、**[次へ]** を選択します。
 
     * 会社名

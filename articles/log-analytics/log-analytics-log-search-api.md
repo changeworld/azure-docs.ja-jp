@@ -12,20 +12,20 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 78afb2f065dde4a3e7a3ab787c939b3c52b72cc6
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 5b51c6fcc69c8dff6579a1a1221e88822eccc1a3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="log-analytics-log-search-rest-api"></a>Log Analytics のログ検索 REST API
 このガイドでは、Log Analytics Search REST API を使用する方法の基本的なチュートリアルについて、例を示しながら説明します。 Log Analytics は Operations Management Suite (OMS) に付属しています。
 
 > [!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、この記事の説明のとおり、ログ検索 API を使用して従来のクエリ言語を使用し続ける必要があります。  アップグレードされたワークスペース用の新しい API がリリースされる予定で、ドキュメントはその時点で更新されます。 
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[新しいバージョンのログ検索 API のドキュメント](https://dev.loganalytics.io/)を参照してください。
 
 > [!NOTE]
 > Log Analytics は以前、オペレーション インサイトと呼ばれていました。そのため、リソース プロバイダーにはその旧称が使用されています。

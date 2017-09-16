@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: dfe0de1bc4cdfcbc0d175f1a3268601bde4da21a
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 06d65878d84fb845cf0c4c333a1e2d12b0aaec2f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="balancing-your-service-fabric-cluster"></a>Service Fabric クラスターの均衡をとる
@@ -175,6 +175,10 @@ ClusterManifest.xml
 ```
 
 分散しきい値とアクティビティしきい値は、両方とも特定のメトリックに関連付けられています。同じメトリックが分散しきい値とアクティビティしきい値の両方を超えた場合にのみ分散処理がトリガーされます。
+
+> [!NOTE]
+> 指定しない場合、メトリックの分散しきい値は 1、アクティビティしきい値は 0 です。 つまり、クラスター リソース マネージャーは、指定された負荷について、そのメトリックが完全に分散された状態を保とうとします。 カスタム メトリックを使用している場合、メトリックの分散しきい値とアクティビティしきい値を明示的に定義することをお勧めします。 
+>
 
 ## <a name="balancing-services-together"></a>同時にサービスの均衡をとる
 クラスターの均衡がとれているかどうかは、クラスター全体の判断です。 しかし、個々のサービス レプリカやインスタンスを移動することでこれを修正します。 ご理解いただけましたでしょうか。 1 つのノードで発生するメモリのスタックは、複数のレプリカやインスタンスが関与している場合があります。 不均衡を修正するには、不均衡なメトリックを使用するステートフル レプリカやステートレス インスタンスを移動する必要がある場合があります。

@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/23/2017
+ms.date: 08/28/2017
 ms.author: alkohli
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: e68dce72d648171faab930bbb4af9fd61816b19b
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: fa7360a44c48d4f15233b937f09285233533a0e8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 シリーズ Update 5 リリース ノート
@@ -43,7 +43,7 @@ Update 5 では、主に次の機能強化とバグ修正が行われていま�
 
     認証 URL がファイアウォール規則に含まれていない場合、StorSimple デバイスがサービスで認証できなかったことを示す重要なアラートが、ユーザーに表示されます。 このアラートが表示されると、ユーザーは新しい認証 URL を含める必要があります。 詳細については、[StorSimple のネットワーク アラート](storsimple-8000-manage-alerts.md#networking-alerts)に関するページをご覧ください。
 
-* **新しいバージョンの StorSimple Snapshot Manager** - StorSimple Snapshot Manager の新しいバージョンは、Update 5 と共にリリースされます。 このバージョンに更新することをお勧めします。 このバージョンは、Update 3 以降を実行しているすべての StorSimple デバイスと互換性があります。 詳細については、「[Deploy StorSimple Snapshot Manager (StorSimple Snapshot Manager のデプロイ)](storsimple-snapshot-manager-deployment.md)」をご覧ください。
+* **新しいバージョンの StorSimple Snapshot Manager** - 新しいバージョンの StorSimple Snapshot Manager が Update 5 でリリースされました。Update 4 以降を実行するすべての StorSimple デバイスと互換性があります。 このバージョンに更新することをお勧めします。 以前のバージョンの StorSimple Snapshot Manager は、Update 3 以前を実行している StorSimple デバイスに使用されます。 [StorSimple Snapshot Manager の適切なバージョンをダウンロード](https://www.microsoft.com/en-us/download/details.aspx?id=44220)し、「[StorSimple Snapshot Manager MMC スナップインのデプロイ](storsimple-snapshot-manager-deployment.md)」を参照してください。
 
 
 ## <a name="issues-fixed-in-update-5"></a>Update 5 で修正された問題
