@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
-ms.openlocfilehash: 7fd0ace35cfe0286c874e4a75b733053aa945d39
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 54a4a37d581f023610cd61835bdc76814fbd46e0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 09/01/2017
 
 ---
 
@@ -93,7 +93,7 @@ $frontendNic = New-AzureRmNetworkInterface `
   -PublicIpAddressId $pip.Id
 ```
 
-[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。
+[Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) を使用して、VM の管理者アカウントに必要なユーザー名とパスワードを設定します。 追加の手順でこれらの資格情報を使用して VM に接続します。
 
 ```powershell
 $cred = Get-Credential
@@ -153,7 +153,7 @@ Get-AzureRmPublicIPAddress `
 mstsc /v:<publicIpAddress>
 ``` 
 
-*myFrontendVM* にログインしているので、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。 PowerShell プロンプトを開き、次のコマンドを実行します。
+*myFrontendVM* にログインしているので、1 行の PowerShell を使用して、IIS をインストールし、Web トラフィックを許可するローカル ファイアウォール規則を有効にできます。 RDP セッションから VM で PowerShell プロンプトを開き、次のコマンドを実行します。
 
 [Install-WindowsFeature](https://technet.microsoft.com/itpro/powershell/windows/servermanager/install-windowsfeature) を使用して、IIS Web サーバーをインストールするカスタム スクリプト拡張機能を実行します。
 

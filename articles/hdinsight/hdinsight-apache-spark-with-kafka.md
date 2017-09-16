@@ -14,13 +14,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/13/2017
+ms.date: 09/06/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 81fa319f6fb94bdabacd8f68d14b9a1063a9749a
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 788ba828d1380b17913cabf18827c1abcc83c725
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="apache-spark-streaming-dstream-example-with-kafka-preview-on-hdinsight"></a>HDInsight 上の Kafka (プレビュー) を用いた Apache Spark ストリーミング (DStream) の例
@@ -53,7 +53,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
     このテンプレートは、Kafka と Spark の両方の HDInsight 3.6 クラスターを作成します。
 
-2. 次の情報に従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
+2. 以下の情報を使用して、**[カスタム デプロイ]** セクションに各エントリを入力します。
    
     ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-spark-with-kafka/parameters.png)
    
@@ -75,9 +75,9 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-リソースが作成されると、クラスターと Web ダッシュボードが含まれているリソース グループのブレードにリダイレクトされます。
+リソースが作成されると、概要ページが表示されます。
 
-![Resource group blade for the vnet and clusters](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
+![vnet とクラスターのリソース グループ概要](./media/hdinsight-apache-spark-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 各 HDInsight クラスターの名前が **spark-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
@@ -86,7 +86,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 このドキュメントで説明する例で使用するコードは、[https://github.com/Azure-Samples/hdinsight-spark-scala-kafka](https://github.com/Azure-Samples/hdinsight-spark-scala-kafka) で入手できます。
 
-`README.md` ファイルの手順に従って、この例を完了します。
+この例を完了するには、`README.md` の手順に従ってください。
 
 ## <a name="delete-the-cluster"></a>クラスターを削除する
 

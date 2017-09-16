@@ -10,17 +10,17 @@ tags: azure-resource-manager
 ms.assetid: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 2366905b8160675f77cbc41ba97540af70be8c01
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: 10dda8b93e003c35c2a97a0aa7ca74d04249e52f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/02/2017
 
 ---
 

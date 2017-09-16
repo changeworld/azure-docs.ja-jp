@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: c95641fc6d20e2911e007d1974b9e2c2398b3133
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 737cfd5d1bbd3d55968d7fc0e67d94aff6ada5ea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="run-sqoop-jobs-using-net-sdk-for-hadoop-in-hdinsight"></a>HDInsight で .NET SDK for Hadoop を使用した Sqoop ジョブの実行
@@ -46,7 +45,7 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 ## <a name="submit-a-sqoop-job"></a>Sqoop ジョブの送信
 
 1. Visual Studio で、C# コンソール アプリケーションを作成します。
-2. Visual Studio パッケージ マネージャー、コンソールから、次の Nuget コマンドを実行し、パッケージをインポートします。
+2. Visual Studio パッケージ マネージャー コンソールから、次の NuGet コマンドを実行し、パッケージをインポートします。
    
         Install-Package Microsoft.Azure.Management.HDInsight.Job
 3. Program.cs ファイルで次のコードを使用します。

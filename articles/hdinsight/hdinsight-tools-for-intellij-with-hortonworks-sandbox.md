@@ -15,13 +15,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c49f185db5a035f70a711bf309b973182d94a2b0
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 5c42b3e519781fa25fe92b286fa65898a7aac173
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-hdinsight-tools-for-intellij-with-hortonworks-sandbox"></a>Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する
@@ -42,7 +42,7 @@ IntelliJ 用 HDInsight ツールを使用して、ワークステーションで
 
 - [IntelliJ IDEA コミュニティ エディション](https://www.jetbrains.com/idea/download)と、[Scala](https://plugins.jetbrains.com/idea/plugin/1347-scala) プラグインおよび [Azure Toolkit for IntelliJ](../azure-toolkit-for-intellij.md) プラグイン。 IntelliJ 用 HDInsight ツールは、Azure Toolkit for IntelliJ に付属しています。 
 
-  プラグインをインストールするには、次の手順に従います。
+  プラグインをインストールするには、以下を行います。
 
   1. IntelliJ IDEA を開きます。
   2. **[Welcome]\(ようこそ\)** 画面で、**[Configure]\(構成\)** を選択し、**[Plugins]\(プラグイン\)** を選択します。
@@ -55,7 +55,7 @@ IntelliJ 用 HDInsight ツールを使用して、ワークステーションで
 
 このセクションでは、IntelliJ IDEA を使用してサンプルの Scala プロジェクトを作成します。 次のセクションで、プロジェクトを送信する前に IntelliJ IDEA を Hortonworks Sandbox (エミュレーター) にリンクします。
 
-1. ワークステーションから IntelliJ IDEA を開きます。 **[新しいプロジェクト]** ダイアログ ボックスで、次の操作を行います。
+1. ワークステーションから IntelliJ IDEA を開きます。 **[新しいプロジェクト]** ダイアログ ボックスで、以下の手順を実行します。
 
    a. **[HDInsight]** > **[Spark on HDInsight (Scala)]\(HDInsight の Spark (Scala)\)** を選択します。
 
@@ -68,7 +68,7 @@ IntelliJ 用 HDInsight ツールを使用して、ワークステーションで
 
 2. **[次へ]**を選択します。
 
-3. 次の **[New Project]\(新しいプロジェクト\)** ダイアログ ボックスで、次の操作を行います。
+3. 次の **[新しいプロジェクト]** ダイアログ ボックスで、以下の手順を実行します。
 
     ![IntelliJ Scala プロジェクトのプロパティを作成する](./media/hdinsight-tools-for-intellij-with-hortonworks-sandbox/intellij-create-scala-project-properties.png)
 
@@ -78,7 +78,7 @@ IntelliJ 用 HDInsight ツールを使用して、ワークステーションで
 
     c. **[Project SDK]\(プロジェクト SDK\)** ドロップダウン リストの横の **[New]\(新規\)** をクリックし、**[JDK]** を選択して、Java JDK バージョン 1.7 以降のフォルダーを指定します。 Spark 2.x クラスターの場合は **Java 1.8** を選択し、Spark 1.x クラスターの場合は **Java 1.7** を選択します。 既定の場所は、C:\Program Files\Java\jdk1.8.x_xxx です。
 
-    d. **[Spark version]\(Spark のバージョン\)** ドロップダウン リストには、Scala プロジェクト作成ウィザードによって Spark SDK と Scala SDK の適切なバージョンが統合されています。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 Scala 2.10.x と示されているレポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
+    d. **[Spark version]\(Spark のバージョン\)** ボックスの一覧には、Spark SDK と Scala SDK の適切なバージョンが組み合わされて表示されます。 Spark クラスターのバージョンが 2.0 より前の場合は、**Spark 1.x** を選択します。 それ以外の場合は、**Spark 2.x** を選択します。 この例では、Spark 1.6.2 (Scala 2.10.5) を使用します。 Scala 2.10.x と示されているレポジトリを使用してください。 Scala 2.11.x と示されているレポジトリは使用しないでください。
 
 4. **[完了]** を選択します。
 
@@ -135,7 +135,7 @@ IntelliJ 用 HDInsight ツールを使用して、ワークステーションで
 
 Hortonworks Sandbox (エミュレーター) にリンクするには、既存の IntelliJ アプリケーションが必要です。
 
-エミュレーターにリンクするには、次の手順に従います。
+エミュレーターにリンクするには、以下の手順を実行します。
 
 1. IntelliJ でプロジェクトを開きます。
 

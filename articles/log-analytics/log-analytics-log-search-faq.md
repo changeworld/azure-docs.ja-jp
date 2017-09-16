@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2017
+ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: d7bd0d780c265cc15ad09a73ede8c5a886005e37
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -68,7 +68,7 @@ ms.lasthandoff: 08/28/2017
 ## <a name="log-search-api"></a>Log Search API
 
 ### <a name="question-does-the-log-search-api-get-updated-after-i-upgrade"></a>質問: アップグレード後に Log Search API は更新されますか。
-[Log Search API](log-analytics-log-search-api.md) は、まだ新しい検索言語にアップグレードされていません。  ワークスペースをアップグレードした後でも、引き続き従来のクエリ言語をこの API とあわせて使用します。  更新版の Log Search API のドキュメントは、API が更新されたときに利用できるようになります。
+従来の [Log Search API](log-analytics-log-search-api.md) は、ワークスペースをアップグレードすると動作しなくなります。  新しい API の詳細については、「[Azure Log Analytics REST API](https://dev.loganalytics.io/)」を参照してください。
 
 
 ## <a name="portals"></a>ポータル

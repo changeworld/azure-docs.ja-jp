@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 04/26/2017
+ms.date: 09/06/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: bd136afebeceb0cd9c24cfc5f15601caa80a755e
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: ee7d40d2ff0ae1ac10b54f4c1f1dd704a70eb70c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="process-and-analyze-json-documents-using-hive-in-hdinsight"></a>HDInsight の Hive を使用した JSON ドキュメントの処理と分析
@@ -141,105 +141,7 @@ Hive コンソールにおけるこのスクリプトの出力:
 JSON\_TUPLE では、Hive で [lateral view](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) 構文を使用します。これによって、json\_tuple は元のテーブルの各行に UDT 関数を適用して、仮想テーブルを作成することができます。  複雑な JSON では LATERAL VIEW が繰り返し使用されるため、処理が難しくなります。 また、JSON_TUPLE では入れ子になった JSON を処理できません。
 
 ### <a name="use-custom-serde"></a>カスタム SerDe を使用する
-SerDe は、入れ子になった JSON ドキュメントを解析するのに最適です。これを使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析できます。 このチュートリアルでは、[Roberto Congiu](https://github.com/rcongiu) によって作成された、最も広く使用されている SerDe の 1 つを使用します。
-
-**カスタムの SerDe を使用するには:**
-
-1. [Java SE Development Kit 7u55 JDK 1.7.0_55](http://www.oracle.com/technetwork/java/javase/downloads/java-archive-downloads-javase7-521261.html#jdk-7u55-oth-JPR) をインストールします。 HDInsight の Windows デプロイメントを使用する場合は、JDK の Windows X64 バージョンを選択します。
-   
-   > [!WARNING]
-   > JDK 1.8 はこの SerDe では機能しません。
-   > 
-   > 
-   
-    インストールが完了したら、新しいユーザーの環境変数を追加します。
-   
-   1. Windows 画面から **[システムの詳細設定の表示]** を開きます。
-   2. **[環境変数]**をクリックします。  
-   3. 新しい **JAVA_HOME** 環境変数を追加します。これは、**C:\Program Files\Java\jdk1.7.0_55** または JDK がインストールされている場所を指します。
-      
-      ![JDK の適切な構成値の設定][image-hdi-hivejson-jdk]
-2. [Maven 3.3.1](http://mirror.olnevhost.net/pub/apache/maven/maven-3/3.3.1/binaries/apache-maven-3.3.1-bin.zip)
-   
-    [コントロール パネル] からアカウントの環境変数の [システム環境変数の編集] に移動して、パスに bin フォルダーを追加します。 次のスクリーンショットに、この操作を示します。
-   
-    ![Maven のセットアップ][image-hdi-hivejson-maven]
-3. [Hive-JSON-SerDe](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) github サイトからプロジェクトを複製します。 そのためには、次のスクリーンショットに示すように、[Zip のダウンロード] ボタンをクリックします。
-   
-    ![プロジェクトの複製][image-hdi-hivejson-serde]
-
-4: このパッケージをダウンロードしたフォルダーに移動して、「mvn package」と入力します。 これにより必要な jar ファイルが作成されるので、クラスターにコピーします。
-
-5: パッケージをダウンロードしたルート フォルダーの下にある対象フォルダーに移動します。 クラスターのヘッド ノードに json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar ファイルをアップロードします。 通常は、Hive バイナリ フォルダーである C:\apps\dist\hive-0.13.0.2.1.11.0-2316\bin などに配置します。
-
-6: Hive プロンプトで、「add jar /path/to/json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar」と入力します。 この例では、jar は C:\apps\dist\hive-0.13.x\bin フォルダーにあるため、次に示す名前の jar を直接追加できます。
-
-    add jar json-serde-1.1.9.9-Hive13-jar-with-dependencies.jar;
-
-   ![プロジェクトへの JAR の追加][image-hdi-hivejson-addjar]
-
-これで、SerDe を使用して、JSON ドキュメントに対してクエリを実行する準備ができました。
-
-次のステートメントは、定義されたスキーマでテーブルを作成します。
-
-    DROP TABLE json_table;
-    CREATE EXTERNAL TABLE json_table (
-      StudentId string,
-      Grade int,
-      StudentDetails array<struct<
-          FirstName:string,
-          LastName:string,
-          YearJoined:int
-          >
-      >,
-      StudentClassCollection array<struct<
-          ClassId:string,
-          ClassParticipation:string,
-          ClassParticipationRank:string,
-          Score:int,
-          PerformedActivity:boolean
-          >
-      >
-    ) ROW FORMAT SERDE 'org.openx.data.jsonserde.JsonSerDe'
-    LOCATION '/json/students';
-
-学生の姓と名を一覧表示するには、次のようにします。
-
-    SELECT StudentDetails.FirstName, StudentDetails.LastName FROM json_table;
-
-Hive コンソールの結果を次に示します。
-
-![SerDe クエリ 1][image-hdi-hivejson-serde_query1]
-
-JSON ドキュメントのスコアの合計を計算するには、次のようにします。
-
-    SELECT SUM(scores)
-    FROM json_table jt
-      lateral view explode(jt.StudentClassCollection.Score) collection as scores;
-
-前述のクエリでは、[lateral view explode](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+LateralView) UDF を使用してスコアの配列を展開し、合計を計算することができます。
-
-Hive コンソールの出力を次に示します。
-
-![SerDe クエリ 2][image-hdi-hivejson-serde_query2]
-
-特定の学生のスコアが 80 点を超えている科目を検索するには、次のようにします。
-
-    SELECT  
-      jt.StudentClassCollection.ClassId
-    FROM json_table jt
-      lateral view explode(jt.StudentClassCollection.Score) collection as score  where score > 80;
-
-上記のクエリは Hive 配列を返します。これは、文字列を返す get\_json\_object とは異なります。
-
-![SerDe クエリ 3][image-hdi-hivejson-serde_query3]
-
-形式が異常な JSON を除外する場合、この SerDe の [wiki ページ](https://github.com/sheetaldolas/Hive-JSON-Serde/tree/master) で説明しているように、以下のコードを入力します。  
-
-    ALTER TABLE json_table SET SERDEPROPERTIES ( "ignore.malformed.json" = "true");
-
-
-
+SerDe は、入れ子になった JSON ドキュメントを解析するのに最適です。これを使用して JSON スキーマを定義し、そのスキーマを使用してドキュメントを解析できます。 手順については、「[How to use a Custom JSON Serde with Microsoft Azure HDInsight (Microsoft Azure HDInsight でのカスタム JSON Serde の使用方法)](https://blogs.msdn.microsoft.com/bigdatasupport/2014/06/18/how-to-use-a-custom-json-serde-with-microsoft-azure-hdinsight/)」を参照してください。
 
 ## <a name="summary"></a>概要
 結論として、Hive で選択する JSON 演算子の種類は、シナリオによって異なります。 JSON ドキュメントが単純で、検索するのが 1 つのフィールドのみの場合には、Hive UDF get\_json\_object を選択できます。 検索対象のキーが複数ある場合には、json_tuple を使用できます。 入れ子になったドキュメントの場合、JSON SerDe を使用する必要があります。

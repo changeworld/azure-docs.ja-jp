@@ -14,14 +14,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 07/05/2017
+ms.date: 09/06/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 8291986b123ed98b9c2bd4ec915e1a18b6e0cbb7
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 8baa8e950164de64d1cd91c0c5bb51d324bbc807
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
@@ -41,7 +41,7 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
     ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
     >[!NOTE]  
-    Visual Studio 2017 バージョン 15.3 をインストールするか、このバージョンにアップグレードした後、Visual Studio 2017 Tools for Azure Functions も手動で更新しなければならない場合があります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** > **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+    >Visual Studio 2017 バージョン 15.3 をインストールするか、このバージョンにアップグレードした後、Visual Studio 2017 Tools for Azure Functions を手動で更新する必要があります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** > **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

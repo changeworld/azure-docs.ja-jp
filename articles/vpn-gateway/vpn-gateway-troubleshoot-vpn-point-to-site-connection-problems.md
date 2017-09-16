@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/23/2017
+ms.date: 08/23/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: de37c8ffd47a2b8e201d18e3a20b5325d528ad59
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: f6e068e60e8c7b3b095e10cb7e109eb68a483de4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
@@ -39,9 +39,17 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 ### <a name="solution"></a>解決策
 
-クライアント証明書が証明書ストア (Certmgr.msc) の次の場所にインストールされていることを確認します。
- 
-**証明書 - 現在のユーザー\個人\証明書**
+この問題を解決するには、次の手順に従ってください。
+
+1. 次の証明書が正しい場所にあることを確認します。
+
+    | 証明書 | 場所 |
+    | ------------- | ------------- |
+    | AzureClient.pfx  | 現在のユーザー\個人\証明書 |
+    | Azuregateway-*GUID*.cloudapp.net  | 現在のユーザー\信頼されたルート証明機関|
+    | AzureGateway-*GUID*.cloudapp.net、AzureRoot.cer    | ローカル コンピューター\信頼されたルート証明機関|
+
+2. Users\<UserName>\AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID> に移動し、ユーザーおよびコンピューターのストアに手動で証明書 (*.cer ファイル) をインストールします。
 
 クライアント証明書をインストールする方法の詳細については、[ポイント対サイト接続の証明書の生成とエクスポート](vpn-gateway-certificates-point-to-site.md)に関する記事をご覧ください。
 
@@ -90,7 +98,7 @@ VPN クライアントを使用して Azure 仮想ネットワークに接続し
 
 次のエラー メッセージが表示されます。
 
-**ファイル ダウンロード エラー: ターゲット URI が指定されていません。**
+**ファイル ダウンロード エラー。ターゲット URI が指定されていません。**
 
 ### <a name="cause"></a>原因 
 
@@ -106,7 +114,7 @@ VPN ゲートウェイの種類は **VPN** で、VPN の種類は **RouteBased**
 
 VPN クライアントを使用して Azure 仮想ネットワークに接続しようとすると、次のエラー メッセージが表示されます。
 
-**カスタム スクリプト (ルーティング テーブルを更新するため) の実行に失敗しました。(エラー 8007026f)**
+**カスタム スクリプト (ルーティング テーブルを更新するため) の実行に失敗しました。(Error 8007026f)**
 
 ### <a name="cause"></a>原因
 

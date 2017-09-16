@@ -1,4 +1,4 @@
-Cu--- title: Azure の暗号化で個人の保存データを保護する | Microsoft Docs description: この記事は、Azure を使用して個人データを保護する方法を説明するシリーズの 1 つです。services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
+title: Azure の暗号化で個人の保存データを保護する | Microsoft Docs description: この記事は、Azure を使用して個人データを保護する方法を説明するシリーズの 1 つです。services: security documentationcenter: na author: Barclayn manager: MBaldwin editor: TomSh
 
 ms.assetid: ms.service: security ms.devlang: na ms.topic: article ms.tgt_pltfrm: na ms.workload: na ms.date: 08/22/2017 ms.author: barclayn ms.custom: 
 
@@ -23,7 +23,7 @@ Encryption at Rest は、データをディスク上で確実に暗号化する�
 
 この会社では、顧客や従業員のデータのプライバシーを保護する必要があり、関係部署が必要な時にいつでもデータにアクセスできるようにしておく必要があります。 (給与を管理する部署や、予約を受け付ける部署など)
 
-このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在と過去の顧客との関係を追跡できる個人情報なども含まれています。
+このクルーズ会社は報酬やロイヤリティ プログラム メンバーについての大規模なデータベースも管理しており、このデータベースには現在および過去の顧客との関係を追跡できる個人情報なども含まれています。
 
 ### <a name="problem-statement"></a>問題の説明
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: 8a2931e462079c101c91497d459d7d3126234244
+ms.translationtype: HT
+ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
+ms.openlocfilehash: ff3e3121102eedaa1f439e517570d0a97cf07c22
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
+ms.lasthandoff: 09/02/2017
 
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>複数のネットワーク インターフェイス カードを使用して Linux 仮想マシンを Azure に作成する方法
@@ -118,6 +117,7 @@ az network nic create \
 
 NIC を既存の VM に追加するには、最初に [az vm deallocate](/cli/azure/vm#deallocate) を使用して VM の割り当てを解除します。 次の例では、*myVM* という名前の VM の割り当てを解除します。
 
+
 ```azurecli
 az vm deallocate --resource-group myResourceGroup --name myVM
 ```
@@ -180,5 +180,75 @@ Azure Resource Manager テンプレートで宣言型の JSON ファイルを使
 
 完全な例については、「 [Resource Manager テンプレートを使用して複数の NIC を作成する](../../virtual-network/virtual-network-deploy-multinic-arm-template.md)」を参照してください。
 
+## <a name="configure-guest-os-for-multiple-nics"></a>複数の NIC 用にゲスト OS を構成する
+
+Linux ゲスト OS ベースの VM に複数の NIC を作成するときは、特定の NIC のみに属するトラフィックの送受信を許可する追加のルーティング規則を作成する必要があります。 定義しない場合、定義済みの既定のルートが原因で、eth1 に属するトラフィックを正しく処理できません。  
+
+
+### <a name="solution"></a>解決策
+
+まず、2 つのルーティング テーブルを /etc/iproute2/rt_tables ファイルに追加します。
+
+```bash
+echo "200 eth0-rt" >> /etc/iproute2/rt_tables
+echo "201 eth1-rt" >> /etc/iproute2/rt_tables
+```
+
+ネットワーク スタックのアクティブ化の間に変更を持続させて適用するには、*/etc/sysconfig/network-scipts/ifcfg-eth0* と */etc/sysconfig/network-scipts/ifcfg-eth1* のファイルを変更する必要があります。
+行 *"NM_CONTROLLED=yes"* を *"NM_CONTROLLED=no"* に変更します。
+この手順を行わなかった場合、追加する規則/ルーティングの効果が現れません。
+ 
+次の手順でルーティング テーブルを拡張します。 次の手順をより見やすくするために、以下の設定が機能していると仮定します。
+
+"*ルーティング*"
+
+```bash
+default via 10.0.1.1 dev eth0 proto static metric 100
+10.0.1.0/24 dev eth0 proto kernel scope link src 10.0.1.4 metric 100
+10.0.1.0/24 dev eth1 proto kernel scope link src 10.0.1.5 metric 101
+168.63.129.16 via 10.0.1.1 dev eth0 proto dhcp metric 100
+169.254.169.254 via 10.0.1.1 dev eth0 proto dhcp metric 100
+```
+    
+"*インターフェイス*"
+
+```bash
+lo: inet 127.0.0.1/8 scope host lo
+eth0: inet 10.0.1.4/24 brd 10.0.1.255 scope global eth0    
+eth1: inet 10.0.1.5/24 brd 10.0.1.255 scope global eth1
+```
+    
+    
+上記の情報を使用すると、ルートとして次の追加ファイルを作成することができます。
+
+*   /etc/sysconfig/network-scripts/rule-eth0
+*   /etc/sysconfig/network-scripts/route-eth0
+*   /etc/sysconfig/network-scripts/rule-eth1
+*   /etc/sysconfig/network-scripts/route-eth1
+
+各ファイルの内容は次のとおりです。
+```bash
+cat /etc/sysconfig/network-scripts/rule-eth0
+from 10.0.1.4/32 table eth0-rt
+to 10.0.1.4/32 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/route-eth0
+10.0.1.0/24 dev eth0 table eth0-rt
+default via 10.0.1.1 dev eth0 table eth0-rt
+
+cat /etc/sysconfig/network-scripts/rule-eth1
+from 10.0.1.5/32 table eth1-rt
+to 10.0.1.5/32 table eth1-rt
+
+cat /etc/sysconfig/network-scripts/route-eth1
+10.0.1.0/24 dev eth1 table eth1-rt
+default via 10.0.1.1 dev eth1 table eth1-rt
+```
+
+ファイルが作成され、設定された後に、ネットワーク サービス `systemctl restart network` を再起動する必要があります。
+
+これで、eth0 と eth1 のどちらにも外部から接続できるようになりました。
+
 ## <a name="next-steps"></a>次のステップ
 複数の NIC を持つ VM を作成する際は、 [Linux VM のサイズ](sizes.md) を確認してください。 VM の各サイズでサポートされている NIC の最大数に注意してください。 
+

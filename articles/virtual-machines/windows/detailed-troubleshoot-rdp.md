@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: support-article
-ms.date: 07/25/2017
+ms.date: 09/06/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 7a9d994e10ec79437d6ccf60531cb12b86f34151
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: 81713fae3f856cad6251e43eecfd7b1e82858aed
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="detailed-troubleshooting-steps-for-remote-desktop-connection-issues-to-windows-vms-in-azure"></a>Azure 上の Windows VM へのリモート デスクトップ接続に関する問題の詳細なトラブルシューティング手順
@@ -43,13 +43,15 @@ RDP 接続には以下のコンポーネントが関連しています。
 先に進む前に、前回 VM に正常にリモート デスクトップ接続できたとき以降、何を変更したかを思い返してみると、役に立つかもしれません。 次に例を示します。
 
 * VM、または VM が含まれるクラウド サービスのパブリック IP アドレス (仮想 IP アドレス ( [VIP](https://en.wikipedia.org/wiki/Virtual_IP_address)) とも呼ばれる) が変更されました。 この RDP 障害は、DNS 名について登録された *古い IP アドレス* が DNS クライアント キャッシュにまだ入っているために発生した可能性があります。 DNS クライアント キャッシュをフラッシュしてから、もう一度 VM に接続してみてください。 または、新しい VIP に直接接続してみてください。
-* Azure ポータルによって生成された接続を使用する代わりに、サード パーティのアプリケーションを使用してリモート デスクトップ接続を管理しています。 アプリケーションの構成にリモート デスクトップのトラフィック用の正しい TCP ポートが含まれていることを確認します。 クラシック仮想マシンのこのポートを確認するには、[Azure Portal](https://portal.azure.com) で VM の [設定]、[エンドポイント] の順にクリックします。
+* Azure Portal によって生成された接続を使用する代わりに、サード パーティのアプリケーションを使用してリモート デスクトップ接続を管理しています。 アプリケーションの構成にリモート デスクトップのトラフィック用の正しい TCP ポートが含まれていることを確認します。 クラシック仮想マシンのこのポートを確認するには、[Azure Portal](https://portal.azure.com) で VM の [設定]、[エンドポイント] の順にクリックします。
 
 ## <a name="preliminary-steps"></a>準備作業
 詳細なトラブルシューティングに進む前に、以下の操作を実行します。
 
 * Azure Portal で、仮想マシンの状態に明らかな問題があるかどうかを確認します。
 * [基本的なトラブルシューティング ガイドの一般的な RDP エラーに対する応急処置の手順](troubleshoot-rdp-connection.md#quick-troubleshooting-steps)に従います。
+* カスタム イメージの場合は、アップロード前に VHD が適切に準備されていることを確認してください。 詳細については、「[Azure にアップロードする Windows VHD または VHDX を準備する](prepare-for-upload-vhd-image.md)」を参照してください。
+
 
 これらの手順を実行してから、リモート デスクトップを介して VM に再接続してみてください。
 

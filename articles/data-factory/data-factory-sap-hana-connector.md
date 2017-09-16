@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 08/31/2017
 ms.author: jingwang
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 37594924f9474d225421d2b2d783a19d9295fcf8
+ms.translationtype: HT
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 08faa2bdb06c0616eeaad7415019ba97b60aac5d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="move-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用した SAP HANA からのデータ移動
@@ -34,12 +33,12 @@ SAP HANA への接続を有効にするには、次のコンポーネントを�
 - **SAP HANA ODBC ドライバー**: ゲートウェイ コンピューターにインストールします。 SAP HANA ODBC ドライバーは [SAP ソフトウェアのダウンロード センター](https://support.sap.com/swdc)からダウンロードできます。 "**SAP HANA CLIENT for Windows**" というキーワードで検索してください。 
 
 ## <a name="getting-started"></a>使用の開始
-さまざまなツール/API を使用して、オンプレミスの Cassandra データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
+さまざまなツール/API を使用して、オンプレミスの SAP HANA データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
 
 - パイプラインを作成する最も簡単な方法は、**コピー ウィザード**を使うことです。 データのコピー ウィザードを使用してパイプラインを作成する簡単な手順については、「 [チュートリアル: コピー ウィザードを使用してパイプラインを作成する](data-factory-copy-data-wizard-tutorial.md) 」をご覧ください。 
-- **Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API** などのツールを使ってパイプラインを作成することもできます。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
+- 次のツールを使ってパイプラインを作成することもできます。**Azure Portal**、**Visual Studio**、**Azure PowerShell**、**Azure Resource Manager テンプレート**、**.NET API**、**REST API**。 コピー アクティビティを含むパイプラインを作成するための詳細な手順については、[コピー アクティビティのチュートリアル](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)をご覧ください。 
 
-ツールまたは API のいずれを使用した場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
+ツールと API のいずれを使用する場合も、次の手順を実行して、ソース データ ストアからシンク データ ストアにデータを移動するパイプラインを作成します。
 
 1. **リンクされたサービス**を作成し、入力データ ストアと出力データ ストアをデータ ファクトリにリンクします。
 2. コピー操作用の入力データと出力データを表す**データセット**を作成します。 
@@ -59,7 +58,7 @@ authenticationType | 認証の種類。 | string。 "Basic" または"Windows" |
 username | SAP サーバーにアクセスするユーザーの名前 | string | はい
 password | ユーザーのパスワード。 | string | はい
 gatewayName | Data Factory サービスが、オンプレミスの SAP HANA インスタンスへの接続に使用するゲートウェイの名前。 | string | はい
-encryptedCredential | 暗号化された資格情報の文字列。 | string | なし
+encryptedCredential | 暗号化された資格情報の文字列。 | string | いいえ
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 データセットの定義に利用できるセクションとプロパティの完全な一覧については、「[データセットの作成](data-factory-create-datasets.md)」という記事を参照してください。 データセット JSON の構造、可用性、ポリシーなどのセクションは、データセットのすべての型 (Azure SQL、Azure BLOB、Azure テーブルなど) でほぼ同じです。
@@ -305,10 +304,10 @@ SAP HANA からデータをコピーする場合、既知の制限事項がい�
 - 有効な日付は 1899/12/30 ～ 9999/12/31 です
 
 ## <a name="map-source-to-sink-columns"></a>ソース列からシンク列へのマップ
-ソース データセット列からシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
+ソース データセット列のシンク データセット列へのマッピングの詳細については、[Azure Data Factory のデータセット列のマッピング](data-factory-map-columns.md)に関するページをご覧ください。
 
-## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能な読み取り
-リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 [リレーショナル ソースからの反復可能な読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するセクションをご覧ください
+## <a name="repeatable-read-from-relational-sources"></a>リレーショナル ソースからの反復可能読み取り
+リレーショナル データ ストアからデータをコピーする場合は、意図しない結果を避けるため、再現性に注意する必要があります。 Azure Data Factory では、スライスを手動で再実行できます。 障害が発生したときにスライスを再実行できるように、データセットの再試行ポリシーを構成することもできます。 いずれかの方法でスライスが再実行された際は、何度スライスが実行されても同じデータが読み取られることを確認する必要があります。 [リレーショナル ソースからの反復可能読み取り](data-factory-repeatable-copy.md#repeatable-read-from-relational-sources)に関するページをご覧ください。
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 Azure Data Factory でのデータ移動 (コピー アクティビティ) のパフォーマンスに影響する主な要因と、パフォーマンスを最適化するための各種方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。

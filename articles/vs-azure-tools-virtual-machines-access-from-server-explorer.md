@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: multiple
-ms.date: 11/18/2016
+ms.date: 8/31/2017
 ms.author: kraigb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: 009b325054737b63d5bdaefbe005d6a613126f52
+ms.translationtype: HT
+ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
+ms.openlocfilehash: 75dcc603327b50718b279f3ce055663ec0bc2596
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
+ms.lasthandoff: 09/01/2017
 
 ---
 # <a name="accessing-azure-virtual-machines-from-server-explorer"></a>サーバー エクスプローラーから Azure Virtual Machines へのアクセス
@@ -28,20 +28,20 @@ Azure でホストされている仮想マシンについての情報は、Visua
 Azure でホストされている仮想マシンには、サーバー エクスプローラーでアクセスできます。 まず Azure サブスクリプションにサインインして、ご利用の Mobile Services を表示してください。 サインインするには、サーバー エクスプローラーで Azure ノードのショートカット メニューを開き、 **[Microsoft Azure への接続]**をクリックします。
 
 ### <a name="to-get-information-about-your-virtual-machines"></a>仮想マシンの情報を取得するには
-1. サーバー エクスプローラーで仮想マシンを選択し、F4 キーを押してプロパティ ウィンドウを表示します。
+1. Cloud Explorer で仮想マシンを選択し、F4 キーを押してプロパティ ウィンドウを表示します。
    
-    次の表に示したのは、アクセスできるプロパティの一覧です。ただし、これらはすべて読み取り専用です。 これらのプロパティを変更するには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。
+    次の表に示したのは、アクセスできるプロパティの一覧です。ただし、これらはすべて読み取り専用です。 これらのプロパティを変更するには、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用します。
    
    | プロパティ | Description |
    | --- | --- |
    | DNS 名 |仮想マシンのインターネット アドレスを含む URL。 |
    | 環境 |仮想マシンの場合、このプロパティの値は常に [運用] です。 |
    | 名前 |仮想マシンの名前。 |
-   | サイズ |仮想マシンのサイズ。使用できるメモリとディスク領域のサイズが反映されます。 詳細については、仮想マシンのサイズの構成方法に関するページを参照してください。 |
-   | 状態 |"開始中"、"開始"、"停止中"、"停止"、"状態を取得中" などの値があります。 "状態を取得中" と表示された場合、現在の状態は不明です。 このプロパティの値は、 [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)で使用される値とは異なります。 |
-   | サブスクリプション ID |ご利用の Azure アカウントのサブスクリプション ID。 この情報を [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885) に表示するには、サブスクリプションのプロパティを表示します。 |
+   | サイズ |仮想マシンのサイズ。使用できるメモリとディスク領域のサイズが反映されます。 詳細については、[仮想マシンのサイズ](https://docs.microsoft.com/azure/cloud-services/cloud-services-sizes-specs)に関する記事をご覧ください。 |
+   | 状態 |"開始中"、"開始"、"停止中"、"停止"、"状態を取得中" などの値があります。 "状態を取得中" と表示された場合、現在の状態は不明です。 このプロパティの値は、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) で使用される値とは異なります。 |
+   | サブスクリプション ID |ご利用の Azure アカウントのサブスクリプション ID。 この情報を [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) に表示するには、サブスクリプションのプロパティを表示します。 |
 2. エンドポイント ノードを選択し、 **[プロパティ]** ウィンドウを表示します。
-3. 次の表は、エンドポイントに関してアクセスできるプロパティの説明です。これらは読み取り専用となります。 仮想マシンのエンドポイントを追加したり編集したりするには、[Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkID=213885)を使用します。 
+3. 次の表は、エンドポイントに関してアクセスできるプロパティの説明です。これらは読み取り専用となります。 仮想マシンのエンドポイントを追加または編集するには、[Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を使用します。 
    
    | プロパティ | Description |
    | --- | --- |

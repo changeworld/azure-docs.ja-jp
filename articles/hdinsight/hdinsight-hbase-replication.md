@@ -1,6 +1,6 @@
 ---
 title: "仮想ネットワーク内で HBase クラスターのレプリケーションを構成する - Azure | Microsoft Docs"
-description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、および障害復旧を実現するために HBase レプリケーションを構成する方法について説明します。"
+description: "負荷分散、高可用性、ダウンタイムなしの移行/HDInsight バージョンの更新、およびディザスター リカバリーを実現するために HBase レプリケーションを構成する方法について説明します。"
 services: hdinsight,virtual-network
 documentationcenter: 
 author: mumian
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/25/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 7a6a473b6db745563b3667da1013a8e78db8593c
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: c885dae8a13c789ccb3c22532e6a2cea2c920752
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-hbase-cluster-replication-within-virtual-networks"></a>仮想ネットワーク内で HBase クラスターのレプリケーションを構成する
@@ -81,7 +80,7 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 **静的 IP アドレスを構成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左側のメニューで **[リソース グループ]** をクリックします。
 3. デスティネーション HBase クラスターを含むリソース グループをクリックします。 これは、Resource Manager テンプレートを使用して環境を作成するときに指定したリソース グループです。 フィルターを使用して一覧を絞り込むことができます。 2 つの仮想ネットワークを含むリソースの一覧を表示できます。
 4. デスティネーション HBase クラスターを含む仮想ネットワークをクリックします。 たとえば、**[xxxx-vnet2]** をクリックします。 **nic-zookeepermode-** で始まる名前を持つ 3 つのデバイスを確認できます。 これらのデバイスは、3 つの ZooKeeper VM です。
@@ -151,7 +150,7 @@ VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプ�
 |-su, --src-ambari-user | ソース HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-du, --dst-ambari-user | デスティネーション HBase クラスターでの Ambari の管理ユーザー名を指定します。 既定値は **admin** です。 |
 |-t, --table-list | レプリケートされるテーブルを指定します。 例: --table-list="table1;table2;table3"。 テーブルを指定しない場合は、すべての既存の HBase テーブルがレプリケートされます。|
-|-m, --machine | スクリプト アクションが実行されるヘッド ノードを指定します。 値は、hn1 または hn0 のいずれかです。 通常は hn0 のほうがビジーになるため、hn1 を使用することをお勧めします。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
+|-m, --machine | スクリプト アクションを実行するヘッド ノードを指定します。 値は、hn1 または hn0 のいずれかです。 通常は hn0 のほうがビジーになるため、hn1 を使用することをお勧めします。 このオプションは、HDInsight ポータルまたは Azure PowerShell からスクリプト アクションとして $0 スクリプトを実行する場合に使用します。|
 |-ip | 2 つの仮想ネットワーク間のレプリケーションを有効にする場合、この引数は必須です。 この引数は、FQDN 名の代わりにレプリカ クラスターの ZooKeeper ノードの静的 IP アドレスを使用するためのスイッチとして機能します。 レプリケーションを有効にする前に静的 IP アドレスを構成しておく必要があります。 |
 |-cp, -copydata | レプリケーションが有効になっているテーブルの既存のデータの移行を有効にします。 |
 |-rpm, -replicate-phoenix-meta | Phoenix システム テーブルのレプリケーションを有効にします。 <br><br>*このオプションは慎重に使用してください。* このスクリプトを使用する前に、レプリカ クラスターで Phoenix テーブルを再作成しておくことをお勧めします。 |
@@ -200,7 +199,7 @@ VNet 間のシナリオの場合は、**hdi_enable_replication.sh**スクリプ�
 - **特定のテーブル (test1、test2、および test3) の現在のタイムスタンプまでに編集されたすべての行をコピーする**:
 
         -m hn1 -t "test1::;test2::;test3::" -p "zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
-  または
+  or
 
         -m hn1 -t "test1::;test2::;test3::" --replication-peer="zk5-hbrpl2;zk1-hbrpl2;zk5-hbrpl2:2181:/hbase-unsecure" -everythingTillNow
 

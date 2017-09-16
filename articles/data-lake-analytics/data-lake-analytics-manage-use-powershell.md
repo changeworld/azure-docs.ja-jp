@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/23/2017
 ms.author: mahi
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: b79f6dd20d2e8e298b8d1824b70ff9f0d0fde9aa
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: 65bf5928428b21e98c893a9de8ca596329329411
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用する Azure Data Lake Analytics の管理
@@ -173,7 +173,7 @@ Set-AdlAnalyticsAccount -Name $adla -FirewallState Disabled
 Azure Data Lake Analytics では現在、以下のデータ ソースがサポートされています。
 
 * [Azure Data Lake Store](../data-lake-store/data-lake-store-overview.md)
-* [Azure Storage](../storage/storage-introduction.md)
+* [Azure Storage](../storage/common/storage-introduction.md)
 
 Analytics アカウントを作成する際には、既定のデータ ソースとして Data Lake Store アカウントを指定する必要があります。 既定の Data Lake Store アカウントは、ジョブ メタデータとジョブ監査ログの格納に使用されます。 Data Lake Analytics アカウントを作成した後で、Data Lake Store アカウントやストレージ アカウントを追加できます。 
 
@@ -329,86 +329,9 @@ $d = [DateTime]::Now.AddDays(-7)
 Get-AdlJob -Account $adla -SubmittedAfter $d
 ```
 
-### <a name="common-scenarios-for-listing-jobs"></a>ジョブを一覧表示する一般的なシナリオ
+### <a name="analyzing-job-history"></a>ジョブ履歴の分析
 
-
-```
-# List jobs submitted in the last five days and that successfully completed.
-$d = (Get-Date).AddDays(-5)
-Get-AdlJob -Account $adla -SubmittedAfter $d -State Ended -Result Succeeded
-
-# List all failed jobs submitted by "joe@contoso.com" within the past seven days.
-Get-AdlJob -Account $adla `
-    -Submitter "joe@contoso.com" `
-    -SubmittedAfter (Get-Date).AddDays(-7) `
-    -Result Failed
-```
-
-## <a name="filtering-a-list-of-jobs"></a>ジョブの一覧のフィルター処理
-
-現在の PowerShell セッションにジョブの一覧ができると、 通常の PowerShell コマンドレットを使用して、フィルター処理できます。
-
-ジョブの一覧をフィルター処理して、過去 24 時間以内に送信されたジョブを抽出
-
-```
-$upperdate = Get-Date
-$lowerdate = $upperdate.AddHours(-24)
-$jobs | Where-Object { $_.EndTime -ge $lowerdate }
-```
-
-ジョブの一覧をフィルター処理して、過去 24 時間以内に完了したジョブを抽出
-
-```
-$upperdate = Get-Date
-$lowerdate = $upperdate.AddHours(-24)
-$jobs | Where-Object { $_.SubmitTime -ge $lowerdate }
-```
-
-ジョブの一覧をフィルター処理して、実行を開始したジョブを抽出します。 ジョブはコンパイル時に失敗することがあり、その場合には開始されません。 実際に実行を開始し、その後に失敗したジョブを見てみましょう。
-
-```powershell
-$jobs | Where-Object { $_.StartTime -ne $null }
-```
-
-### <a name="analyzing-a-list-of-jobs"></a>ジョブの一覧を分析
-
-`Group-Object` コマンドレットを使用してジョブの一覧を分析します。
-
-```
-# Count the number of jobs by Submitter
-$jobs | Group-Object Submitter | Select -Property Count,Name
-
-# Count the number of jobs by Result
-$jobs | Group-Object Result | Select -Property Count,Name
-
-# Count the number of jobs by State
-$jobs | Group-Object State | Select -Property Count,Name
-
-#  Count the number of jobs by DegreeOfParallelism
-$jobs | Group-Object DegreeOfParallelism | Select -Property Count,Name
-```
-分析を実行するときに、ジョブ オブジェクトにプロパティを追加すると、フィルター処理とグループ化を簡素化することができ便利です。 次のスニペットは、JobInfo に計算されたプロパティで注釈を付ける方法を示しています。
-
-```
-function annotate_job( $j )
-{
-    $dic1 = @{
-        Label='AUHours';
-        Expression={ ($_.DegreeOfParallelism * ($_.EndTime-$_.StartTime).TotalHours)}}
-    $dic2 = @{
-        Label='DurationSeconds';
-        Expression={ ($_.EndTime-$_.StartTime).TotalSeconds}}
-    $dic3 = @{
-        Label='DidRun';
-        Expression={ ($_.StartTime -ne $null)}}
-
-    $j2 = $j | select *, $dic1, $dic2, $dic3
-    $j2
-}
-
-$jobs = Get-AdlJob -Account $adla -Top 10
-$jobs = $jobs | %{ annotate_job( $_ ) }
-```
+Azure PowerShell を使用して、Data Lake Analytics で実行されたジョブ履歴を分析することは、効果的な手法です。 Azure PowerShell を使って使用状況とコストに関する情報を把握することができます。 詳細については、[ジョブ履歴分析のサンプル レポジトリ](https://github.com/Azure-Samples/data-lake-analytics-powershell-job-history-analysis)を参照してください。  
 
 ## <a name="get-information-about-pipelines-and-recurrences"></a>パイプラインと繰り返しについての情報を取得する
 

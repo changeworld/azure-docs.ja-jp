@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 05/26/2017
+ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: 13d17083bbe26fa9745ce4c5fef9f56859243c2e
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 342e29b009f51f7d1e9c3134a69cab6e30726bcd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用

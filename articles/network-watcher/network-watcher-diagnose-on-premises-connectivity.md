@@ -3,7 +3,7 @@ title: "Azure Network Watcher を使用して VPN Gateway 経由でオンプレ�
 description: "この記事では、Azure Network Watcher のリソース トラブルシューティングを使用して、VPN Gateway 経由でオンプレミスの接続を診断する方法を説明します。"
 services: network-watcher
 documentationcenter: na
-author: georgewallace
+author: jimdial
 manager: timlt
 editor: 
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: gwallace
+ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 8f5534c83adf2ee4a696131afb45a658c89dd298
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: 94658dfcf93e821e24cabb1f010f8dce0c014700
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -34,7 +34,7 @@ Azure Network Watcher のトラブルシューティング機能により、Gate
 
 1. Virtual Network Gateway - Azure 上の VPN Gateway
 1. Local Network Gateway - Azure クラウドで表示されている、[オンプレミスの (FortiGate) VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#LocalNetworkGateway)
-1. サイト間接続 (ポリシー ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md#createconnection)
+1. サイト間接続 (ルート ベース) - [VPN Gateway とオンプレミス ルーター間の接続](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal#createconnection)
 1. [FortiGate の構成](https://github.com/Azure/Azure-vpn-config-samples/blob/master/Fortinet/Current/Site-to-Site_VPN_using_FortiGate.md)
 
 サイト間構成を構成するための詳細なステップ バイ ステップ ガイダンスについては、「[Azure Portal を使用したサイト間接続を持つ VNet の作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)」をご覧ください。

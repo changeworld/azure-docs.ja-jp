@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/21/2017
+ms.date: 09/05/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 1c05f68235aafd0fa098a3b0edaba1258df09380
+ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
+ms.openlocfilehash: 17b451b1fc91cf9fdc895ad28f2c455af5d28b07
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
@@ -84,7 +84,7 @@ mysql-cimprov | 1.0.1 | OMI の MySQL Server パフォーマンス監視プロ�
 docker-cimprov | 1.0.0 | OMI の Docker プロバイダー。 Docker が検出された場合にインストールされます。
 
 ### <a name="compatibility-with-system-center-operations-manager"></a>System Center Operations Manager との共存
-OMS Agent for Linux は、エージェントのバイナリを System Center Operations Manager エージェントと共有します。 現在 Operations Manager で管理されているシステムに OMS Agent for Linux をインストールすると、コンピューター上の OMI パッケージと SCX パッケージが、より新しいバージョンにアップグレードされます。 このリリースでは、OMS と System Center 2016 - Linux 用の Operations Manager/Operations Manager 2012 R2 エージェントに互換性があります。 
+OMS Agent for Linux は、エージェントのバイナリを System Center Operations Manager エージェントと共有します。 現在 Operations Manager で管理されているシステムに OMS エージェント for Linux をインストールすると、コンピューター上の OMI パッケージと SCX パッケージが、より新しいバージョンにアップグレードされます。 このリリースでは、OMS と System Center 2016 - Linux 用の Operations Manager/Operations Manager 2012 R2 エージェントに互換性があります。 
 
 > [!NOTE]
 > System Center 2012 SP1 以前のバージョンは現在、OMS Agent for Linux と互換性がなく、サポートされていません。<br>
@@ -265,7 +265,7 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題: オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
 これは、Linux データを OMS ワークスペースに最初にアップロードするときに発生する既知の問題です。 送信されているデータやサービス エクスペリエンスには影響しません。
 
-### <a name="issue--you-are-not-seeing-any-data-in-the-oms-portal"></a>問題: OMS ポータルにデータが表示されない
+### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>問題: OMS ポータルにデータが表示されない
 
 #### <a name="probable-causes"></a>考えられる原因
 
@@ -281,4 +281,5 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 
     >[!NOTE]
     >この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
-> 
+
+
