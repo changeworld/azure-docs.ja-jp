@@ -34,8 +34,9 @@ ms.lasthandoff: 06/20/2017
 
 このクイック スタートを完了するには、以下が必要です。
 
-- [Git](https://git-scm.com/)
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] をインストールする
+- [Gitをインストールする](https://git-scm.com/)
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
