@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
-ms.openlocfilehash: ac52924d928b293f4b1b58f0c25375f890c51837
+ms.translationtype: HT
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -39,7 +38,7 @@ HTTP 要求 ([要求](../connectors/connectors-native-reqres.md)または [Webho
 
 ### <a name="shared-access-signature"></a>Shared Access Signature
 
-ロジック アプリのすべての要求エンドポイントには、URL の一部として [Shared Access Signature (SAS)](../storage/storage-dotnet-shared-access-signature-part-1.md) が含まれます。 各 URL には、`sp`、`sv`、および `sig` クエリ パラメーターが含まれます。 アクセス許可の指定は `sp` によって行い、許可される HTTP メソッドに相当します。`sv` は生成に使用されるバージョンであり、`sig` はトリガーへのアクセスの認証に使用されます。 署名は、SHA256 アルゴリズムと秘密鍵を使用してすべての URL パスとプロパティで生成されます。 この秘密鍵が公開されることはなく、ロジック アプリの一部として暗号化されて格納されます。 ロジック アプリでは、秘密鍵を使って作成された有効な署名を含むトリガーのみが認証されます。
+ロジック アプリのすべての要求エンドポイントには、URL の一部として [Shared Access Signature (SAS)](../storage/common/storage-dotnet-shared-access-signature-part-1.md) が含まれます。 各 URL には、`sp`、`sv`、および `sig` クエリ パラメーターが含まれます。 アクセス許可の指定は `sp` によって行い、許可される HTTP メソッドに相当します。`sv` は生成に使用されるバージョンであり、`sig` はトリガーへのアクセスの認証に使用されます。 署名は、SHA256 アルゴリズムと秘密鍵を使用してすべての URL パスとプロパティで生成されます。 この秘密鍵が公開されることはなく、ロジック アプリの一部として暗号化されて格納されます。 ロジック アプリでは、秘密鍵を使って作成された有効な署名を含むトリガーのみが認証されます。
 
 #### <a name="regenerate-access-keys"></a>アクセス キーを再生成する
 
@@ -265,7 +264,7 @@ HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用�
 
 #### <a name="on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイ
 
-ロジック アプリの多くの管理対象コネクタは、オンプレミス システム (File System、SQL、SharePoint、DB2 など) にセキュリティで保護された接続を備えています。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ、エージェントからの安全な送信トラフィックとして生成されます。 詳細については、「[ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
+ロジック アプリの多くの管理対象コネクタは、オンプレミス システム (File System、SQL、SharePoint、DB2 など) にセキュリティで保護された接続を備えています。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 詳細については、「[ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)」を参照してください。
 
 #### <a name="azure-api-management"></a>Azure API Management
 

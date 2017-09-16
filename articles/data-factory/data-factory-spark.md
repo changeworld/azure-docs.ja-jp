@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: c5eda443dcd41a481ad952d8472f7f67f4517abd
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
@@ -52,7 +52,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 4. 手順 2 で作成した HDInsight のリンクされたサービスを参照する、Spark アクティビティを使用したパイプラインを作成します。 アクティビティは、前の手順で出力データセットとして作成したデータセットで構成されます。 出力データセットは、スケジュール (1 時間に 1 回、毎日など) を開始するため、 アクティビティによって出力が実際に生成されていなくても、指定する必要があります。
 
 ### <a name="prerequisites"></a>前提条件
-1. [ストレージ アカウントの作成](../storage/storage-create-storage-account.md#create-a-storage-account)チュートリアルの手順に従って、**汎用の Azure ストレージ アカウント**を作成します。  
+1. [ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)チュートリアルの手順に従って、**汎用の Azure ストレージ アカウント**を作成します。  
 2. **Azure HDInsight での Apache Spark クラスターの作成**チュートリアルの説明に従って、[Azure HDInsight で Apache Spark クラスター](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)を作成します。 手順 1. で作成した Azure ストレージ アカウントをこのクラスターに関連付けます。  
 3. [https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py](https://adftutorialfiles.blob.core.windows.net/sparktutorial/test.py) にある python スクリプト ファイル **test.py** をダウンロードして確認します。  
 3.  Azure Blob Storage の **adfspark** コンテナーにある**pyFiles** フォルダーに **test.py** をアップロードします。 コンテナーとフォルダーが存在しない場合は作成します。
@@ -91,7 +91,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 3. Azure Storage のリンクされたサービスを作成するための **JSON スクリプト**がエディターに表示されます。
 
    ![Azure Storage のリンクされたサービス](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
-4. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
+4. **accountname** と **accountkey** を Azure ストレージ アカウントの名前とアクセス キーで置き換えます。 ストレージ アクセス キーを取得する方法については、「[ストレージ アカウントの管理](../storage/common/storage-create-storage-account.md#manage-your-storage-account)」のストレージ アクセス キーを表示、コピー、再生成する方法に関する情報を参照してください。
 5. リンク サービスをデプロイするには、コマンド バーの **[デプロイ]** をクリックします。 リンクされたサービスが正常にデプロイされると、**[Draft-1]** ウィンドウが消え、**AzureStorageLinkedService** が左側のツリー ビューに表示されます。
 
 #### <a name="create-hdinsight-linked-service"></a>HDInsight のリンクされたサービスを作成する

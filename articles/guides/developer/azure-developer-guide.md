@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b53b044242f339d00dcc947c213dacb5dffdcce6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: bfc69712a1ddcd4a225fd35cfcceb7fa0616887d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 
@@ -123,7 +123,7 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 
     >**使用する場合**: キーと値のペア (テーブル)、BLOB、ファイル共有、メッセージ (キュー) など、非リレーショナル データを格納するアプリケーションの場合。
 
-    >**作業開始**: [BLOB](../../storage/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../storage/storage-dotnet-how-to-use-tables.md)、[クエリ](../../storage/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
+    >**作業開始**: [BLOB](../../storage/blobs/storage-dotnet-how-to-use-blobs.md)、[テーブル](../../cosmos-db/table-storage-how-to-use-dotnet.md)、[クエリ](../../storage/queues/storage-dotnet-how-to-use-queues.md)、または[ファイル](../../storage/files/storage-dotnet-how-to-use-files.md)のいずれかの記憶域から選択します。
 
 -   **Azure DocumentDB**: 完全に管理され、スケーラブルな NoSQL データベース サービスです。オブジェクト データに対して SQL クエリを実行できます。 DocumentDB には、既存の MongoDB ドライバーを使用してアクセスできます。
     >**使用する場合:** アプリケーションから JSON ドキュメントに対して SQL クエリを実行できる必要がある場合、または MongoDB を使用している場合。
@@ -229,7 +229,7 @@ Azure には、Bash、ターミナル、コマンド プロンプト、または
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。 カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
+Azure Portal は Web ベースのアプリケーションであり、Azure のリソースやサービスの作成、管理、削除に利用できます。 Azure Portal は <https://portal.azure.com> にあります。カスタマイズ可能なダッシュボード、Azure リソースを管理するツール、サブスクリプション設定と課金情報へのアクセス機能が含まれています。 詳細については、「[Microsoft Azure Portal の概要](../../azure-portal-overview.md)」を参照してください。
 
 ### <a name="rest-apis"></a>REST API
 

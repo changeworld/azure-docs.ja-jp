@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: e9808af4aa875c5199279825325688afc69e6de6
+ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
+ms.openlocfilehash: 3c7ab236d0a9efee6ac3fa97ed6de85cacbc9a89
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 08/22/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
@@ -210,7 +210,7 @@ Azure Portal を使用してデータを参照できます。 また、Table API
 ### <a name="which-tools-work-with-the-table-api-preview"></a>Table API (プレビュー) で動作するのはどのツールですか? 
 以前のバージョンの Azure Explorer (0.8.9) を使用できます。
 
-以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API (プレビュー) に対応します。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/storage-explorers.md)」をご覧ください。 
+以前に指定した形式の接続文字列を取得する柔軟性を備えたツールは、新しい Table API (プレビュー) に対応します。 テーブル ツールの一覧については、「[Azure Storage クライアント ツール](../storage/common/storage-explorers.md)」をご覧ください。 
 
 ### <a name="do-powershell-or-azure-cli-work-with-the-new-table-api-preview"></a>PowerShell または Azure CLI は新しい Table API (プレビュー) で動作しますか?
 Table API (プレビュー) 用の PowerShell と Azure CLI のサポートを追加する予定です。 
