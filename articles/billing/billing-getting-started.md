@@ -16,21 +16,23 @@ ms.workload: na
 ms.date: 08/10/2017
 ms.author: tonguyen
 experimental_id: a2b2579c-cd2e-41
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 539a3e628dfec1088f683652bc9b743b87875d36
+ms.translationtype: HT
+ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
+ms.openlocfilehash: b172fc1726d2a01ee68aebf8ec03cc1567012ca6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
 # <a name="prevent-unexpected-costs-with-azure-billing-and-cost-management"></a>Azure の課金とコスト管理で予想外のコストを防ぐ
 
-Azure にサインアップしたら、支出を把握するために行えることがいくつかあります。 [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で、サブスクリプションを選択するときに、現在のコストの内訳とバーン レートを確認できます。 また、[過去の請求書や詳細な使用状況ファイルをダウンロード](billing-download-azure-invoice-daily-usage-date.md)することもできます。 さまざまなプロジェクトやチームで使用したリソースのコストをグループ化する場合は、[リソースのタグ付け](../azure-resource-manager/resource-group-using-tags.md)を検討します。 使用したいレポート システムが組織にある場合は、[課金 API](billing-usage-rate-card-overview.md) を確認します。 
+Azure にサインアップしたら、支出を把握するために行えることがいくつかあります。 [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) で、サブスクリプションを選択するときに、現在のコストの内訳とバーン レートを確認できます。 また、ほぼすべての種類のプランの[過去の請求書や詳細な使用状況ファイルをダウンロード](billing-download-azure-invoice-daily-usage-date.md)することもできます。 さまざまなプロジェクトやチームで使用したリソースのコストをグループ化する場合は、[リソースのタグ付け](../azure-resource-manager/resource-group-using-tags.md)を検討します。 使用したいレポート システムが組織にある場合は、[課金 API](billing-usage-rate-card-overview.md) を確認します。 
 
 毎日の使用状況の詳細については、「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
 
-Enterprise Agreement (EA)、クラウド ソリューション プロバイダー (CSP)、または Azure スポンサー プランを介したサブスクリプションの場合は、この記事の機能の多くが適用されません。 代わりに、コスト管理に使用できる別のツール セットが用意されています。 「[EA、CSP、およびスポンサー プラン向けのその他のリソース](#other-offers)」を参照してください。
+クラウド ソリューション プロバイダー (CSP)、または Azure スポンサー プランを介したサブスクリプションの場合は、この記事の機能の多くが適用されません。 代わりに、コスト管理に使用できる別のツール セットが用意されています。 「[EA、CSP、およびスポンサー プラン向けのその他のリソース](#other-offers)」を参照してください。
+
+お客様のサブスクリプションが Enterprise Agreement (EA) の場合は、Azure ポータルで、コストを表示するパブリック プレビューが公開されています。 この記事で説明されている機能の中には、お客様に適用されないものもあるため、[いくつかの項目](#EA)に注意してください。   
 
 サブスクリプションが無料試用版、[Visual Studio](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)、Azure イン オープン プラン (AIO)、または BizSpark の場合は、サブスクリプションが無効化されないように[使用制限](#spending-limit)を確認してください。 
 
@@ -48,7 +50,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 コストを表示するには、[課金情報へのサブスクリプション レベルのアクセス権](billing-manage-access.md)が必要ですが、アカウント管理者のみが[アカウント センター](https://account.windowsazure.com/Home/Index)へのアクセス、課金情報の変更、サブスクリプションの管理を行うことができます。 アカウント管理者は、サインアップ プロセスを完了したユーザーです。 詳細については、「[サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する](billing-add-change-azure-subscription-administrator.md)」をご覧ください。
 
-自分がアカウント管理者かどうかを確認するには、[Azure Portal の [サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、アクセスできるサブスクリプションの一覧を確認します。 **[自分の役割]** を確認します。 ここに *[アカウント管理者]* と表示されていれば問題ありません。 *[所有者]* などの他の役割が表示されている場合は、すべての権限を持っているわけではありません。
+自分がアカウント管理者かどうかを確認するには、[Azure ポータルの [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)に移動し、アクセスできるサブスクリプションの一覧を確認します。 **[自分の役割]** を確認します。 ここに *[アカウント管理者]* と表示されていれば問題ありません。 *[所有者]* などの他の役割が表示されている場合は、すべての権限を持っているわけではありません。
 
 ![Azure Portal の [サブスクリプション] ビューに表示された役割のスクリーンショット](./media/billing-getting-started/sub-blade-view.PNG)
 
@@ -91,7 +93,7 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 ![例: A1 Windows VM の推定月額料金は 66.96 米ドル](./media/billing-getting-started/vm-size-cost.PNG)
 
-### <a name="tags"></a>リソースにタグを追加して課金データをグループ化する
+### <a name="tags"></a>リソースにタグを追加して課金データをグループ化する 
 
 タグを使用して、サポートされているサービスの課金データをグループ化できます。 たとえば、さまざまなチーム用に複数の VM を実行している場合、タグを使用して、コスト センター (HR、マーケティング、財務) または環境 (運用、運用前、テスト) でコストを分類できます。 
 
@@ -117,11 +119,11 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 サービスの実行後、現在のコストを定期的に確認します。 Azure Portal で現在の支出とバーン レートを確認できます。 
 
-1. [Azure Portal の [サブスクリプション] ブレード](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
+1. [Azure ポータルの [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 
 2. 表示するサブスクリプションを選択します。 選択できるサブスクリプションが 1 つしかない場合もあります。
 
-3. ポップアップ ブレードに、コストの内訳とバーン レートが表示されます。 現在のプランでこの機能がサポートされていない場合があります (上部付近に警告が表示されます)。 サービスを追加したら、データが設定されるまで 24 時間待ちます。
+3. ポップアップ ページに、コストの内訳とバーン レートが表示されます。 現在のプランでこの機能がサポートされていない場合があります (上部付近に警告が表示されます)。 サービスを追加したら、データが設定されるまで 24 時間待ちます。  
     
     ![Azure Portal に表示されたバーン レートと内訳のスクリーンショット](./media/billing-getting-started/burn-rate.PNG)
 
@@ -141,9 +143,21 @@ Enterprise Agreement (EA)、クラウド ソリューション プロバイダ�
 
 サービスを選択したときに表示された見積もりと共に、表示されているコストを確認することをお勧めします。 コストが見積もりと大きく異なる場合は、リソースに対して選択した料金プラン (A1 VM と A0 VM など) を再確認します。 
 
-#### <a name="view-costs-for-all-your-subscriptions-in-the-billing-blade"></a>[課金] 情報ブレードにすべてのサブスクリプションのコストを表示する
+#### <a name="EA"></a>Azure Portal 内の プレビュー Enterprise Agreement のコスト ビュー 
 
-アカウント管理者として複数のサブスクリプションを管理している場合は、[[課金]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade) ブレードにすべてのサブスクリプションの課金総額と内訳を表示できます。 
+Enterprise コスト ビューは、現在、パブリック プレビューの中にあります。 注意する項目:
+- サブスクリプションのコストは、使用量に基づいて計算されており、前払い額、超過、含まれる数量、調整、および税は考慮されません。 実際の料金は、登録レベルで計算されます。 
+- Azure ポータルに表示される金額は、エンタープライズ ポータル内の値に比較して遅れる可能性があります。  
+- コストが表示されない場合は、次の理由のいずれかが原因として考えられます。
+    - お客様はアカウント所有者であり、登録管理者が、"AO ビュー料金" 設定を無効にした。  登録管理者に問い合わせて、コストにアクセスできるように設定してもらってください。 
+    - お客様は部門管理者者であり、登録管理者が、"DA ビュー料金" 設定を無効にした。  登録管理者に問い合わせて、アクセスできるように設定してもらってください。 
+    - チャネル パートナーを通して Azure を購入し、パートナーが価格情報を公開していない。  
+- エンタープライズ ポータル内でコストのアクセスに関連する設定が更新されても、Azure ポータルで、変更が反映されるまで、数分の遅延があります。
+- 使用制限、請求の通知と請求書ガイダンスは EA サブスクリプションとは関係ありません。
+
+#### <a name="view-costs-for-all-your-subscriptions-in-the-billing-page"></a>[課金] ページにすべてのサブスクリプションのコストを表示する
+
+アカウント管理者として複数のサブスクリプションを管理している場合は、[[課金]](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade) ページにすべてのサブスクリプションの課金総額と内訳を表示できます。 EA 集計ビューは、現在、Azure ポータルの [課金] ページにありません。  
 
 <!-- Add screenshots of multiple subs each with billed usage -->
 
@@ -161,7 +175,7 @@ Advisor ダッシュボードの **[コスト]** タブで、実施可能な推�
 
 ### <a name="invoice-and-usage"></a> 最初の請求期間の終了後に請求書と使用状況の詳細を取得する
 
-最初の請求期間が終了したら、Portable Document Format (.pdf) の請求書とコンマ区切り値 (.csv) の使用状況の詳細をダウンロードできます。 請求書のメール送信を選ぶこともできます。 これらのファイルは、課税、割引、クレジットを適用した後の最終的な請求金額を把握するのに役立ちます。 サブスクリプションに支払方法が設定されていない場合、これらのファイルを使用できないことがあります。 詳細については、「[Azure の請求書と毎日の使用状況データを取得する方法](billing-download-azure-invoice-daily-usage-date.md)」および「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
+最初の請求期間が終了したら、Portable Document Format (.pdf) の請求書とコンマ区切り値 (.csv) の使用状況の詳細をダウンロードできます。 請求書のメール送信を選ぶこともできます。 これらのファイルは、課税、割引、クレジットを適用した後の最終的な請求金額を把握するのに役立ちます。 サブスクリプションに支払方法が設定されていない場合、これらのファイルを使用できないことがあります。 EA サブスクリプションがある場合、請求書は Azure ポータル内にないため、登録管理者は、電子メールで請求書を受け取ります。 詳細については、「[Azure の請求書と毎日の使用状況データを取得する方法](billing-download-azure-invoice-daily-usage-date.md)」および「[Microsoft Azure の課金内容の確認](billing-understand-your-bill.md)」をご覧ください。
 
 ![.pdf の請求書のスクリーンショット](./media/billing-getting-started/invoice.png)
 

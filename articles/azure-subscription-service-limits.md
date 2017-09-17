@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/21/2017
+ms.date: 09/01/2017
 ms.author: byvinyal
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: a76acd67e9ba7822f2837b3c08e2ede389047f11
+ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
+ms.openlocfilehash: 035150d5a1da49f89d0058692b016596d8881d9c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
@@ -68,6 +68,7 @@ Azure の価格については、 [Azure の価格の概要](https://azure.micro
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [IoT Hub](#iot-hub-limits)
+* [IoT Hub Device Provisioning Service](#iot-hub-device-provisioning-service-limits)
 * [Key Vault](#key-vault-limits)
 * [Log Analytics / Operational Insights](#log-analytics-limits)
 * [Media Services](#media-services-limits)
@@ -229,6 +230,9 @@ Azure Cosmos DB は世界規模のデータベースであり、アプリケー�
 
 ### <a name="iot-hub-limits"></a>IoT Hub の制限
 [!INCLUDE [azure-iothub-limits](../includes/iot-hub-limits.md)]
+
+### <a name="iot-hub-device-provisioning-service-limits"></a>IoT Hub Device Provisioning Service の制限
+[!INCLUDE [azure-iotdps-limits](../includes/iot-dps-limits.md)]
 
 ### <a name="data-factory-limits"></a>Data Factory の制限
 [!INCLUDE [azure-data-factory-limits](../includes/azure-data-factory-limits.md)]
