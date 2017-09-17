@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/10/2017
+ms.date: 08/31/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 5a81dbf6a088e824277275ef13067bdba006d3a9
+ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.openlocfilehash: 144078bbee8e9633fac12231daa07da6c295f46e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 08/31/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
@@ -49,12 +49,20 @@ ms.lasthandoff: 08/30/2017
 **リソース グループ間のコンピューティング、ストレージ、およびネットワークの移動** | サポートされていません |レプリケーションを有効にした後、仮想マシン (またはストレージ、ネットワークなどの関連するコンポーネント) を移動する場合は、レプリケーションを無効にしてから、仮想マシンのレプリケーションを再度有効にする必要があります。
 
 
+
 ## <a name="support-for-deployment-models"></a>デプロイ モデルのサポート
 
 **デプロイ モデル** | **サポートされるかどうか** | **解説**  
 --- | --- | ---
 **クラシック** | サポートされています | クラシック仮想マシンをレプリケートした場合は、クラシック仮想マシンとしてのみ復旧できます。 その仮想マシンを、Resource Manager 仮想マシンとして復旧することはできません。 仮想ネットワークを使用しないで、Azure リージョンに直接クラシック VM をデプロイする場合は、サポートされていません。
 **Resource Manager** | サポートされています |
+
+>[!NOTE]
+>
+> 1. ディザスター リカバリー シナリオで、あるサブスクリプションから別のサブスクリプションに Azure 仮想マシンをレプリケートする処理はサポートされていません。
+> 2. サブスクリプション全体の Azure 仮想マシンの移行はサポートされていません。
+> 3. 同じリージョン内の Azure 仮想マシンの移行はサポートされていません。
+> 4. クラシック デプロイ モデルから Resource Manager デプロイ モデルへの Azure 仮想マシンの移行はサポートされていません。
 
 ## <a name="support-for-replicated-machine-os-versions"></a>レプリケートされるマシンの OS バージョンのサポート
 

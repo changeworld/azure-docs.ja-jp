@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: ad9174c47e1af8d5dba080ec82f2a56fbbf78782
+ms.translationtype: HT
+ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
+ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/05/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
@@ -25,7 +25,7 @@ ms.lasthandoff: 06/29/2017
 
 [Azure Application Insights](app-insights-overview.md) のプロファイリング ツールを使用して、実行中の Web アプリケーションで各メソッドにどれくらい時間がかかっているかを確認できます。 アプリによって処理された要求の詳細なプロファイルがライブ表示され、最も多くの時間がかかっている "ホット パス" が強調表示されます。 また、複数の応答時間が含まれたサンプルが自動的に選択されます。 オーバーヘッドは、さまざまな手法を使用して最小化されます。
 
-このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます  
+このプロファイラーは、現在、Azure App Services で Basic 価格レベル以上で実行されている ASP.NET Web アプリに対して使用できます 
 
 <a id="installation"></a>
 ## <a name="enable-the-profiler"></a>プロファイラーを有効にする

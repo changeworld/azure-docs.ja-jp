@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 11/17/2016
 ms.author: LADocs; mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: dd4e4282d774c2c336889b1df887806bfe512c10
+ms.translationtype: HT
+ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
+ms.openlocfilehash: bfde83e1142bf57e02ee458d477a0a70e78c4ad6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
+ms.lasthandoff: 09/06/2017
 
 ---
 
@@ -148,13 +148,13 @@ HTTP トリガーは、指定されたエンドポイントをポーリングし
 |retryPolicy|なし|4 xx または 5 xx エラーの再試行動作をカスタマイズできるオブジェクトです。|オブジェクト|  
 |authentication|いいえ|要求の認証方法を表します。 このオブジェクトについて詳しくは、「[Scheduler 送信認証](https://docs.microsoft.com/azure/scheduler/scheduler-outbound-authentication)」をご覧ください。 スケジューラの他に、もう 1 つのサポートされるプロパティ `authority` があります。指定しないときの既定値は `https://login.windows.net` ですが、`https://login.windows\-ppe.net` などの別の対象を使うことができます。|オブジェクト|  
   
-HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 次のフィールドが必要です。  
+HTTP トリガーがロジック アプリでうまく動作するには、HTTP API が特定のパターンに準拠している必要があります。 次のプロパティが認識されます。  
   
-|応答|Description|  
-|------------|---------------|  
-|状態コード|状態コード 200 \(OK\) の場合は実行されます。 その他のすべての状態コードでは実行されません。|  
-|Retry\-After ヘッダー|ロジック アプリがエンドポイントを再度ポーリングするまでの秒数です。|  
-|Location ヘッダー|次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。|  
+|応答|必須|Description|  
+|------------|------------|---------------|  
+|状態コード|あり|状態コード 200 \(OK\) の場合は実行されます。 その他のすべての状態コードでは実行されません。|  
+|Retry\-After ヘッダー|いいえ|ロジック アプリがエンドポイントを再度ポーリングするまでの秒数です。|  
+|Location ヘッダー|いいえ|次のポーリング間隔で呼び出す URL です。 指定されていない場合は、元の URL が使われます。|  
   
 異なる要求の種類に対する異なる動作の例を次に示します。  
   
@@ -256,7 +256,7 @@ HTTPWebhook トリガーは、手動トリガーと同様にエンドポイン�
     }
 ```
 
-これらのセクションの多くは省略可能であり、Webhook の動作は、どのセクションがが指定され、どのセクションが省略されたかによって異なります。  
+これらのセクションの多くは省略可能であり、Webhook の動作は、どのセクションが指定され、どのセクションが省略されたかによって異なります。  
 Webhook のプロパティは次のとおりです。  
   
 |要素名|必須|Description|  
