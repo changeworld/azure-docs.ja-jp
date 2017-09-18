@@ -13,35 +13,27 @@
 ## [計画と運用](security-center-planning-and-operations-guide.md)
 ## [アクセス許可](security-center-permissions.md)
 ## [サポートされているプラットフォーム](security-center-os-coverage.md)
-## [パートナー統合](security-center-partner-integration.md)
 ## [FAQ](security-center-faq.md)
 
 # 方法
 
-## 回避
+## セキュリティ ポリシー
+### [データ収集](security-center-enable-data-collection.md)
 ### [セキュリティ ポリシーの設定](security-center-policies.md)
-### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
-### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 
-### [アプリケーションの推奨事項](security-center-application-recommendations.md)
-#### [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)
-#### [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)
+## [オンボード](security-center-onboarding.md)
+## [イベント](security-center-events-dashboard.md)
+## [Search](security-center-search.md)
 
-### [ネットワークの推奨事項](security-center-network-recommendations.md)
-#### [次世代ファイアウォールを追加する](security-center-add-next-generation-firewall.md)
-#### [ネットワーク セキュリティ グループを有効にする](security-center-enable-network-security-groups.md)
-#### [インターネット接続エンドポイント経由のアクセスを制限する](security-center-restrict-access-through-internet-facing-endpoints.md)
-#### [NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
+## 回避
+### [セキュリティ正常性の監視](security-center-monitoring.md)
+### [推奨事項の管理](security-center-recommendations.md)
+### [パートナー ソリューションの統合](security-center-partner-integration.md)
+### [パートナー ソリューションの監視](security-center-partner-solutions.md)
 
-### [SQL サービスの推奨事項](security-center-sql-service-recommendations.md)
-#### [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md)
-#### [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md)
-#### [Transparent Data Encryption を有効にする](security-center-enable-transparent-data-encryption.md)
-
-### [仮想マシンの推奨事項](security-center-virtual-machine-recommendations.md)
+### [Compute](security-center-virtual-machine-recommendations.md)
 #### [ディスク暗号化の適用](security-center-apply-disk-encryption.md)
 #### [システムの更新の適用](security-center-apply-system-updates.md)
-#### [データ収集を有効にする](security-center-enable-data-collection.md)
 #### [Enable encryption for storage account](security-center-enable-encryption-for-storage-account.md)
 #### [VM エージェントの有効化](security-center-enable-vm-agent.md)
 #### [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)
@@ -52,8 +44,22 @@
 #### [OS バージョンの更新](security-center-update-os-version.md)
 #### [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md)
 
-### [セキュリティ正常性の監視](security-center-monitoring.md)
-### [パートナー ソリューションの監視](security-center-partner-solutions.md)
+### [ネットワーク](security-center-network-recommendations.md)
+#### [次世代ファイアウォールを追加する](security-center-add-next-generation-firewall.md)
+#### [ネットワーク セキュリティ グループを有効にする](security-center-enable-network-security-groups.md)
+#### [インターネット接続エンドポイント経由のアクセスを制限する](security-center-restrict-access-through-internet-facing-endpoints.md)
+#### [NGFW 経由に限定したトラフィックのルーティング](security-center-add-next-generation-firewall.md#route-traffic-through-ngfw-only)
+
+### [ストレージとデータ](security-center-sql-service-recommendations.md)
+#### [SQL データベースの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-databases.md)
+#### [SQL サーバーの監査と脅威検出を有効にする](security-center-enable-auditing-on-sql-servers.md)
+#### [Transparent Data Encryption を有効にする](security-center-enable-transparent-data-encryption.md)
+
+### [アプリケーション](security-center-application-recommendations.md)
+#### [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)
+#### [アプリケーション保護を完了する](security-center-add-web-application-firewall.md#finalize-application-protection)
+
+### [ID とアクセス](security-center-identity-access.md)
 
 ## 検出と応答
 ### [検出機能](security-center-detection-capabilities.md)
@@ -62,7 +68,12 @@
 ### [アラートの検証](security-center-alert-validation.md)
 ### [セキュリティ インシデントの管理](security-center-incident.md)
 ### [Azure ログ統合](security-center-integrating-alerts-with-log-integration.md)
+### [脅威インテリジェンス マップ](security-center-threat-intel.md)
 ### [脅威インテリジェンス レポート](security-center-threat-report.md)
+
+## クラウドの防御
+### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
+### [アダプティブ アプリケーション制御](security-center-adaptive-application.md)
 
 ## トラブルシューティング
 ### [トラブルシューティング ガイド](security-center-troubleshooting-guide.md)

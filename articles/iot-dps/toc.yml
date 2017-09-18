@@ -33,6 +33,8 @@
   items:
     - name: デバイス登録の管理
       href: how-to-manage-enrollments.md
+    - name: SDK での HSM の使用
+      href: use-hsm-with-sdk.md
 - name: リファレンス
   items:
     - name: REST ()

@@ -1,0 +1,74 @@
+- name: Azure でのリソース アクセス
+  href: active-directory-understanding-resource-access.md
+- name: ロールベースのアクセス制御
+  href: role-based-access-control-what-is.md
+  items:
+    - name: アクセス権の割り当てを管理する
+      items:
+        - name: ユーザー別
+          href: role-based-access-control-manage-assignments.md
+        - name: リソース別
+          href: role-based-access-control-configure.md
+    - name: 組み込みのロール
+      href: role-based-access-built-in-roles.md
+    - name: カスタム ロール
+      href: role-based-access-control-custom-roles.md
+    - name: 内部ユーザーと外部ユーザーのカスタム ロールの割り当て
+      href: role-based-access-control-create-custom-roles-for-internal-external-users.md
+    - name: レポート
+      href: role-based-access-control-access-change-history-report.md
+    - name: その他のロール管理方法
+      items:
+        - name: Azure CLI の場合
+          href: role-based-access-control-manage-access-azure-cli.md
+        - name: PowerShell の場合
+          href: role-based-access-control-manage-access-powershell.md
+        - name: REST の場合
+          href: role-based-access-control-manage-access-rest.md
+    - name: テナント管理者のアクセス権の昇格
+      href: role-based-access-control-tenant-admin-access.md
+    - name: トラブルシューティング
+      href: role-based-access-control-troubleshooting.md
+    - name: リソース プロバイダー操作
+      href: role-based-access-control-resource-provider-operations.md
+- name: 管理対象のサービス ID
+  href: msi-overview.md
+  items:
+    - name: Windows VM 用の MSI の構成
+      items:
+        - name: Azure Portal の場合
+          href: msi-qs-configure-portal-windows-vm.md
+        - name: PowerShell の場合
+          href: msi-qs-configure-powershell-windows-vm.md
+        - name: Azure CLI の場合
+          href: msi-qs-configure-cli-windows-vm.md
+        - name: Azure Resource Manager テンプレートの場合
+          href: msi-qs-configure-template-windows-vm.md
+    - name: MSI を使用した Azure Resource Manager へのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-arm.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-arm.md
+    - name: MSI を使用した Azure ストレージへのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-storage.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-storage.md
+    - name: MSI を使用した Azure AD 以外のリソースへのアクセス
+      items:
+        - name: Windows VM の場合
+          href: msi-tutorial-windows-vm-access-nonaad.md
+        - name: Linux VM の場合
+          href: msi-tutorial-linux-vm-access-nonaad.md
+    - name: Azure リソースへの MSI アクセスの割り当て
+      items:
+        - name: Azure Portal の場合
+          href: msi-howto-assign-access-portal.md
+        - name: PowerShell の場合
+          href: msi-howto-assign-access-powershell.md
+        - name: Azure CLI の場合
+          href: msi-howto-assign-access-cli.md
+    - name: 既知の問題
+      href: msi-known-issues.md

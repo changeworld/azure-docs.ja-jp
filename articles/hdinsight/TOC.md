@@ -61,10 +61,12 @@
 ## メモリ内の処理への Spark の使用
 ### 概要 - Spark 開発者
 #### [スタンドアロン アプリを作成する](hdinsight-apache-spark-create-standalone-application.md)
-#### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md) 
+#### [対話型の Spark シェルを使用する](hdinsight-spark-shell.md)
+#### [Livy を使用したリモート ジョブ](hdinsight-apache-spark-livy-rest-interface.md)
 ### [Data Lake Store を使用](hdinsight-apache-spark-use-with-data-lake-store.md)
 ### [Eclipse を使用してアプリを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
 ### [IntelliJ を使用してアプリを作成する](hdinsight-apache-spark-intellij-tool-plugin.md)
+### [Spark ストリーミングの概要](hdinsight-spark-streaming-overview.md)
 ### [ストリーミング イベントを処理する](hdinsight-apache-spark-eventhub-streaming.md)
 ### [HVAC パフォーマンスを予測する](hdinsight-apache-spark-ipython-notebook-machine-learning.md)
 ### [食品検査の結果を予測する](hdinsight-apache-spark-machine-learning-mllib-ipython.md)
@@ -109,6 +111,7 @@
 ### [Kafka データのレプリケート](hdinsight-apache-kafka-mirroring.md)
 ### [Kafka の記憶域とスケーラビリティの構成](hdinsight-apache-kafka-scalability.md)
 ### [データの高可用性の構成](hdinsight-apache-kafka-high-availability.md)
+### [Kafka ログの分析](apache-kafka-log-analytics-operations-management.md)
 ### [Virtual Networks での使用](hdinsight-apache-kafka-connect-vpn-gateway.md)
 ### [Spark での使用 (構造化ストリーミング)](hdinsight-apache-kafka-spark-structured-streaming.md)
 ### [Spark での使用 (DStream)](hdinsight-apache-spark-with-kafka.md)

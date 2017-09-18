@@ -136,6 +136,7 @@
 ## 統合
 ### [SendGrid を使用した Azure での電子メールの送信方法](../app-service-web/sendgrid-dotnet-how-to-send-email.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 ### [PowerApps および Microsoft Flow にエクスポートする](../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
+### [管理対象のサービス ID の使用](../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fapp-service-api%2ftoc.json)
 
 ## トラブルシューティング
 ### [診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md?toc=%2fazure%2fapp-service-api%2ftoc.json)

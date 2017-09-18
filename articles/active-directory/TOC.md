@@ -135,9 +135,9 @@
 ### [Azure AD Join の計画](active-directory-azureadjoin-deployment-aadjoindirect.md)
 ### [FAQ](device-management-faq.md)
 ### タスク
-#### [Azure AD 登録済み Windows 10 デバイスの構成](device-management-azuread-registered-devices-windows10-setup.md)
-#### [Azure AD 参加済みデバイスの構成](device-management-azuread-joined-devices-setup.md)
-#### [ハイブリッド Azure AD 参加済みデバイスの構成](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [Azure AD 登録済み Windows 10 デバイスの設定](device-management-azuread-registered-devices-windows10-setup.md)
+#### [Azure AD 参加済みデバイスの設定](device-management-azuread-joined-devices-setup.md)
+#### [ハイブリッド Azure AD 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md) 
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
 ### トラブルシューティング
@@ -266,34 +266,21 @@
 
 ### [Azure AD Connect を使用してオンプレミスの ID を統合する](./connect/active-directory-aadconnect.md)
 
+## [Azure へのアクセスの管理](toc.yml)
+
 ## リソースへのアクセスを委任する
 ### [管理者ロール](active-directory-assign-admin-roles.md)
 #### [管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 ### [管理単位](active-directory-administrative-units-management.md)
-### [Azure でのリソース アクセス](active-directory-understanding-resource-access.md)
-### [ロールベースのアクセス制御](role-based-access-control-what-is.md)
-#### アクセス権の割り当てを管理する
-##### [ユーザー別](role-based-access-control-manage-assignments.md)
-##### [リソース別](role-based-access-control-configure.md)
-#### [組み込みのロール](role-based-access-built-in-roles.md)
-#### [カスタム ロール](role-based-access-control-custom-roles.md)
-#### [内部ユーザーと外部ユーザーのカスタム ロールの割り当て](role-based-access-control-create-custom-roles-for-internal-external-users.md)
-#### [レポート](role-based-access-control-access-change-history-report.md)
-#### その他のロール管理方法
-##### [Azure CLI](role-based-access-control-manage-access-azure-cli.md)
-##### [PowerShell](role-based-access-control-manage-access-powershell.md)
-##### [REST ()](role-based-access-control-manage-access-rest.md)
-#### [テナント管理者のアクセス権の昇格](role-based-access-control-tenant-admin-access.md)
-#### [トラブルシューティング](role-based-access-control-troubleshooting.md)
-#### [リソース プロバイダー操作](role-based-access-control-resource-provider-operations.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
+#### [コントロール](active-directory-conditional-access-controls.md)
 #### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
-#### [タスク]
+#### タスク
 ##### [デバイスベースの条件付きアクセスの設定](active-directory-conditional-access-policy-connected-applications.md)
 ##### [アプリベースの条件付きアクセスの設定](active-directory-conditional-access-mam.md)
 ##### [VPN 接続の設定](active-directory-conditional-access-vpn-connectivity-windows10.md)
