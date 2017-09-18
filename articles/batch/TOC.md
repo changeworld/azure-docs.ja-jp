@@ -64,11 +64,10 @@
 # 関連項目
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Batch と Data Factory を使用したデータ処理](../data-factory/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
-## [Azure クラウドでの Batch ソリューションと HPC ソリューション](batch-hpc-solutions.md)
+## [Azure の Batch、HPC、Big Compute ソリューション](../virtual-machines/linux/high-performance-computing.md?toc=%2fazure%2fbatch%2ftoc.json)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)
-## [大規模なコンピューティング リソース](big-compute-resources.md)
 ## [ブログ](https://blogs.technet.microsoft.com/windowshpc/)
 ## [C# コード サンプル](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/)
 ## [MSDN フォーラム](https://social.msdn.microsoft.com/Forums/en-us/home?forum=azurebatch)

@@ -5,6 +5,7 @@
 ## Runbook のチュートリアル
 ### [グラフィカル Runbook を作成する](automation-first-runbook-graphical.md)
 ### [初めての PowerShell Runbook](automation-first-runbook-textual-powershell.md)
+### [初めての Python Runbook](automation-first-runbook-textual-python2.md)
 ### [PowerShell Workflow Runbook を作成する](automation-first-runbook-textual.md)
 # 方法
 ## 認証とセキュリティ
@@ -37,7 +38,10 @@
 ### [Azure Automation Runbook に JSON オブジェクトを渡す](automation-pass-json-string.md)
 ## Hybrid Runbook Worker
 ### [Hybrid Runbook Worker のデプロイ](automation-hybrid-runbook-worker.md)
+### [Azure Automation の Windows Hybrid Runbook Worker](automation-windows-hrw-install.md)
+### [Azure Automation の Linux Hybrid Runbook Worker](automation-linux-hrw-install.md)
 ### [worker での Runbook の実行](automation-hrw-run-runbooks.md)
+### [Azure Automation の Hybrid Runbook Worker の削除](automation-remove-hrw.md)
 ## 構成管理のデプロイ (DSC)
 ### [Desired State Configuration (DSC) の概要](automation-dsc-overview.md)
 ### [使用の開始](automation-dsc-getting-started.md)

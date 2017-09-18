@@ -4,15 +4,14 @@ hide_bc: true
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: d9ccc9778b9612d7da7336984db6d0d84641ce72
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 81def90a2a17c91db16b2c114e5ead3c59ed2f96
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 <div id="main" class="v2">
     <div class="container">
-        <h1 class="screenReader">Microsoft Azure のドキュメント</h1>
         <ul class="cardsY panelContent featuredContent">
             <li>
                 <a href="/azure/guides/developer/azure-developer-guide">
@@ -71,6 +70,7 @@ ms.lasthandoff: 09/07/2017
         </ul>
     </div>
     <div class="container">
+        <h1 class="screenReader">Microsoft Azure のドキュメント</h1>
         <ul class="pivots">
             <li>
                 <a href="#get-started">作業開始</a>
@@ -105,38 +105,36 @@ ms.lasthandoff: 09/07/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>アプリケーションの開発</h3>
-                                                <div class="cols cols2">
-                                                    <div>
+                                                <ul class="noBullet">
+                                                    <li>
                                                         <a class="barLink" href="/dotnet/azure/?view=azure-dotnet">
                                                             <img src="media/index/logo_NET.svg" alt=""> .NET</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/python/azure/">
                                                             <img src="media/index/logo_python.svg" alt=""> Python</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/java/azure/">
                                                             <img src="media/index/logo_java.svg" alt=""> Java</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/azure/app-service-web/app-service-web-get-started-php">
                                                             <img src="media/index/logo_PHP.svg" alt=""> PHP</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/nodejs/azure/?view=azure-node-2.0.0">
                                                             <img src="media/index/logo_nodejs.svg" alt=""> Node.js</a>
-                                                    </div>
-                                                </div>
-                                                <div>
-                                                    <h4>アプリ モデル</h4>
-                                                    <ul class="noBullet">
-                                                        <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
-                                                        <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
-                                                        <li><a class="barLink" href="/azure/container-instances/">Container Instances</a></li>
-                                                        <li><a class="barLink" href="/azure/container-service/kubernetes/">Kubernetes でのコンテナー</a></li>
-                                                        <li><a class="barLink" href="/azure/service-fabric/">Service Fabric でのマイクロサービス</a></li>
-                                                    </ul>
-                                                </div>
+                                                    </li>
+                                                </ul>
+                                                <h4>アプリ モデル</h4>
+                                                <ul class="noBullet">
+                                                    <li><a class="barLink" href="/azure/app-service-web/">Web アプリ</a></li>
+                                                    <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
+                                                    <li><a class="barLink" href="/azure/container-instances/">Container Instances</a></li>
+                                                    <li><a class="barLink" href="/azure/container-service/kubernetes/">Kubernetes でのコンテナー</a></li>
+                                                    <li><a class="barLink" href="/azure/service-fabric/">Service Fabric でのマイクロサービス</a></li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -150,9 +148,9 @@ ms.lasthandoff: 09/07/2017
                                                 <h3>データと AI の管理</h3>
                                                 <h4>リレーショナル データベース</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/sql-database/">サービスとしての SQL Database</a></li>
-                                                    <li><a class="barLink" href="/azure/postgresql/">サービスとしての PostgreSQL Database</a></li>
-                                                    <li><a class="barLink" href="/azure/mysql/">サービスとしての MySQL Database</a></li>
+                                                    <li><a class="barLink" href="/azure/sql-database/">サービスとしての SQL データベース</a></li>
+                                                    <li><a class="barLink" href="/azure/postgresql/">サービスとしての PostgreSQL データベース</a></li>
+                                                    <li><a class="barLink" href="/azure/mysql/">サービスとしての MySQL データベース</a></li>
                                                 </ul>
                                                 <h4>NoSQL</h4>
                                                 <ul class="noBullet">
@@ -174,16 +172,16 @@ ms.lasthandoff: 09/07/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>コマンド ライン ツール</h3>
-                                                <div class="cols">
-                                                    <div>
+                                                <ul class="noBullet">
+                                                    <li>
                                                         <a class="barLink" href="/cli/azure/overview">
                                                             <img src="media/index/azure_dev-7.svg" alt=""> Azure CLI</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/powershell/azure/overview">
                                                             <img src="media/index/azure_dev-8.svg" alt=""> Azure PowerShell</a>
-                                                    </div>
-                                                </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -195,16 +193,16 @@ ms.lasthandoff: 09/07/2017
                                         <div class="card">
                                             <div class="cardText">
                                                 <h3>DevOps</h3>
-                                                <div class="cols">
-                                                    <div>
+                                                <ul class="noBullet">
+                                                    <li>
                                                         <a class="barLink" href="https://www.visualstudio.com/en-us/docs/build/apps/jenkins/build-deploy-jenkins">
                                                             <img src="https://docs.microsoft.com/en-us/media/logos/logo_visual-studio.svg" alt=""> Visual Studio Team Services</a>
-                                                    </div>
-                                                    <div>
+                                                    </li>
+                                                    <li>
                                                         <a class="barLink" href="/azure/virtual-machines/linux/tutorial-jenkins-github-docker-cicd">
                                                             <img src="https://docs.microsoft.com/en-us/media/logos/logo_jenkins.svg" alt=""> Azure VM 上の Jenkins</a>
-                                                    </div>
-                                                </div>
+                                                    </li>
+                                                </ul>
                                             </div>
                                         </div>
                                     </div>
@@ -252,7 +250,7 @@ ms.lasthandoff: 09/07/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/app-service/">
+                                            <a href="/azure/app-service-web/">
                                                 <img src="media/index/app-service-web.svg" alt="" />
                                                 <p>Web Apps</p>
                                             </a>

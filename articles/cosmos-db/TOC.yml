@@ -358,6 +358,8 @@
   items:
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
+    - name: Azure Cosmos DB を無料で試す
+      href: 'https://azure.microsoft.com/try/cosmosdb/'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/cosmos-db/'
     - name: FAQ
