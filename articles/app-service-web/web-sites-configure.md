@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: cacbcf879555907f81d824dc1069b05579dca010
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 443f49c720b47734f330db9bd6790e6a55ac5f9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/21/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
@@ -49,7 +48,7 @@ ms.lasthandoff: 06/21/2017
 <a name="platform"></a>
 **プラットフォーム**。 Web アプリが 32 ビット環境で実行されるか 64 ビット環境で実行されるかを選択します。 64 ビット環境では Basic モードまたは Standard モードを使用する必要があります。 Free モードと Shared モードは常に 32 ビット環境で実行されます。
 
-**[Web ソケット]**。 WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR] または [socket.io] を使用する場合)。
+**[Web ソケット]**。 WebSocket プロトコルを有効にするには、**[オン]** を設定します (たとえば、Web アプリで [ASP.NET SignalR] または [socket.io](https://socket.io/) を使用する場合)。
 
 <a name="alwayson"></a>
 **常時接続**。 既定では、アイドル状態がしばらく続くと Web アプリはアンロードされます。 これにより、システムではリソースを節約できます。 基本モードと標準モードでは、**[常時接続]** を有効にすると、アプリが常に読み込まれた状態になります。 アプリで継続的な Web ジョブを実行する場合や CRON 式を使ってトリガーされた Web ジョブを実行する場合、**[常時接続]** を有効にする必要があります。そうしないと、Web ジョブの実行の信頼性が低下する可能性があります。
@@ -171,7 +170,6 @@ Web アプリのカスタム ドメイン名を追加します。 詳細につ�
 [Azure App Service での Web Apps の監視の基本]: ./web-sites-monitor.md
 [パイプライン モード]: http://www.iis.net/learn/get-started/introduction-to-iis/introduction-to-iis-architecture#Application
 [Azure App Service での Web アプリの拡張]: ./web-sites-scale.md
-[socket.io]: ./web-sites-nodejs-chat-app-socketio.md
 [Azure App Service アプリケーションの作成]: https://azure.microsoft.com/try/app-service/
 
 <!-- IMG List -->

@@ -16,10 +16,10 @@ ms.date: 6/7/2017
 ms.author: mlearned
 ms.custom: Jenkins
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 5ca8338d4bf343f08fe70081cff755fa76a126a9
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: a1f5329e4e33ae20541e2fdaa09f4609296bddd5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -184,7 +184,7 @@ Web アプリに WAR ファイルが正常にデプロイされたことを確�
 
 Azure Web App on Linux はデプロイを行う別の方法をサポートしていて、この方法では Docker を使用します。 デプロイを行うには、Web アプリとサービス ランタイムを Docker イメージにパッケージ化する Dockerfile を用意する必要があります。 プラグインはイメージを作成して、Docker レジストリに転送し、Web アプリにイメージをデプロイします。
 
-* Linux 上で実行される Azure Web App を作成するには、[こちら](/azure/app-service-web/app-service-linux-how-to-create-web-app)の手順に従ってください。
+* Linux 上で実行される Azure Web App を作成するには、[こちら](../app-service/containers/quickstart-nodejs.md)の手順に従ってください。
 * こちらの[記事](https://docs.docker.com/engine/installation/linux/ubuntu/)の手順に従って、Docker を Jenkins インスタンスにインストールします。
 * [こちら](/azure/container-registry/container-registry-get-started-azure-cli)の手順に従って、Azure ポータルにコンテナー レジストリを作成します。
 * 追加した同じ [Simple Java Web App for Azure](https://github.com/azure-devops/javawebappsample) リポジトリで、**Jenkinsfile2** ファイルを編集します。

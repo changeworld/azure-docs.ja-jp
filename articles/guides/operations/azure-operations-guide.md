@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 06/12/2017
 ms.author: nepeters
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4475baf3632c9e6870ff90244b773993a66b768c
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 1180001c9fe74aab6b51c5b5969b80a8c7e1302f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -89,8 +89,6 @@ Azure は、そのクラウド コンピューティング プラットフォー
 -   App Services (Web Apps、Mobile Apps、Logic Apps、API Apps、Function Apps)
 
 -   Azure Batch (大規模な並列/バッチ コンピューティング ジョブ用)
-
--   Azure RemoteApp
 
 -   Azure Service Fabric
 
@@ -325,7 +323,7 @@ Azure に組み込まれているロールの例:
 
 -   **SQL セキュリティ管理者**: このロールが与えられたユーザーは、SQL のサーバーとデータベースのセキュリティ関連ポリシーを管理できます。
 
--   **ストレージ アカウント共同作成者** : このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
+-   **ストレージ アカウント共同作成者 **: このロールが与えられたユーザーはストレージ アカウントを管理できますが、ストレージ アカウントへのアクセスを管理することはできません。
 
 詳細については、「[Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](../../active-directory/role-based-access-control-configure.md)」を参照してください。
 

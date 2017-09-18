@@ -17,10 +17,10 @@ ms.date: 08/08/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 892d3481b4ec70fb8434cb25013c5cfd8ab85051
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -43,7 +43,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-a-linux-vm"></a>Linux VM の作成
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm#create) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成し、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドで Linux VM を作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
 次の例では、Azure CLI を使用して *myResourceGroupMEAN* という名前のリソース グループを *eastus* に作成します。 既定のキーの場所にまだ SSH キーが存在しない場合は、SSH キーと共に *myVM* という名前の VM も作成します。 特定のキーのセットを使用するには、--ssh-key-value オプションを使用します。
 
@@ -351,7 +351,7 @@ sudo apt-get install -y nodejs
 > * AngularJS によるルートへのアクセス
 > * アプリケーションの実行
 
-次のチュートリアルに進み、SSL を使用して Web サーバーのセキュリティを保護する方法を学習してください。
+SSL 証明書を使用して Web サーバーをセキュリティ保護する方法については、次のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)

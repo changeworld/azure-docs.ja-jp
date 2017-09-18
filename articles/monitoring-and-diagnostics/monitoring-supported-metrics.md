@@ -2,7 +2,7 @@
 title: "Azure Monitor のメトリック - サポートされているメトリック (リソースの種類別) | Microsoft Docs"
 description: "Azure Monitor で使用できるメトリックの一覧 (リソースの種類別) です。"
 author: anirudhcavale
-manager: orenr
+manager: ashwink
 editor: 
 services: monitoring-and-diagnostics
 documentationcenter: monitoring-and-diagnostics
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 8/31/2017
+ms.date: 9/6/2017
 ms.author: ancav
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 83a32dba7b74a303b7fd2167b5fc41212087f8ca
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 6f40f0cdb998bda9d936ecf87089e85713ed9e1b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
@@ -295,18 +295,6 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |percentProcessorTime9|CPU (シャード 9)|Percent|最大値||
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft.ClassicCompute/virtualMachines
-
-|メトリック|メトリックの表示名|単位|集計の種類|Description|
-|---|---|---|---|---|
-|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|
-|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|
-|ディスク読み取りバイト数/秒|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|
-|ディスクの書き込みバイト数/秒|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|
-|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|
-
-## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft.ClassicCompute/domainNames/slots/roles
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|

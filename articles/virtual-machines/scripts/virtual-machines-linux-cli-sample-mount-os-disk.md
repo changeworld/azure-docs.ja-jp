@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: fca1844657821a8ce20deefe0056321c365ce689
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c32ea5e6cade34a9c8dac0eab523ebcaa10ef039
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -42,11 +42,11 @@ ms.lasthandoff: 05/15/2017
 
 | コマンド | メモ |
 |---|---|
-| [az vm show](https://docs.microsoft.com/cli/azure/vm#show) | 仮想マシンの一覧を返します。 このサンプルでは、仮想マシンのオペレーティング システム ディスクを返すクエリ オプションを使用しています。 返された値は、変数名 "uri" に追加されます。 |
-| [az vm delete](https://docs.microsoft.com/cli/azure/vm#delete) | 仮想マシンを削除します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | 仮想マシンを作成します。  |
-| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach) | ディスクを仮想マシンに接続します。 |
-| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#list-ip-addresses) | 仮想マシンの IP アドレスを返します。 |
+| [az vm show](https://docs.microsoft.com/cli/azure/vm#az_vm_show) | 仮想マシンの一覧を返します。 このサンプルでは、仮想マシンのオペレーティング システム ディスクを返すクエリ オプションを使用しています。 返された値は、変数名 "uri" に追加されます。 |
+| [az vm delete](https://docs.microsoft.com/cli/azure/vm#az_vm_delete) | 仮想マシンを削除します。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 仮想マシンを作成します。  |
+| [az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) | ディスクを仮想マシンに接続します。 |
+| [az vm list-ip-addresses](https://docs.microsoft.com/cli/azure/vm#az_vm_list_ip_addresses) | 仮想マシンの IP アドレスを返します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

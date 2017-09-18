@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 68e17ae9e5d82da7f9be9d36e3e2324a2aeadbc4
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 26bddc69c7ff4854c84832ec924ab46ea342f1f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -44,8 +44,8 @@ ms.lasthandoff: 08/23/2017
 
 | コマンド | メモ |
 |---|---|
-| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#show) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティは管理ディスクを作成するために使用されます。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | 管理対象スナップショット Id を使用して管理ディスクを作成します |
+| [az snapshot show](https://docs.microsoft.com/cli/azure/snapshot#az_snapshot_show) | スナップショットの名前とリソース グループのプロパティを使用して、そのスナップショットのすべてのプロパティを取得します。 Id プロパティは管理ディスクを作成するために使用されます。  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 管理対象スナップショット Id を使用して管理ディスクを作成します |
 
 ## <a name="next-steps"></a>次のステップ
 

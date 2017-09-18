@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 5fe1e3595d9459e60b2fd54d6f17f6822731f453
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 73d93622d418359be421e043d0af4e4befc6f4b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -51,13 +51,13 @@ az batch job delete --job-id myjob
 
 | コマンド | メモ |
 |---|---|
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | Batch アカウントに対して認証します。  |
-| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#create) | Batch ジョブを作成します。  |
-| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#set) | Batch ジョブのプロパティを更新します。  |
-| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#show) | 指定された Batch ジョブの詳細を取得します。  |
-| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#create) | 指定された Batch ジョブにタスクを追加します。  |
-| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
-| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#list) | 指定したジョブに関連するタスクを一覧表示します。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | Batch アカウントに対して認証します。  |
+| [az batch job create](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_create) | Batch ジョブを作成します。  |
+| [az batch job set](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_set) | Batch ジョブのプロパティを更新します。  |
+| [az batch job show](https://docs.microsoft.com/cli/azure/batch/job#az_batch_job_show) | 指定された Batch ジョブの詳細を取得します。  |
+| [az batch task create](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_create) | 指定された Batch ジョブにタスクを追加します。  |
+| [az batch task show](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_show) | 指定された Batch ジョブから、タスクの詳細を取得します。  |
+| [az batch task list](https://docs.microsoft.com/cli/azure/batch/task#az_batch_task_list) | 指定したジョブに関連するタスクを一覧表示します。  |
 
 ## <a name="next-steps"></a>次のステップ
 

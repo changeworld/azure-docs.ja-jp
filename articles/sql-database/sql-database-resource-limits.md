@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 3b89ff2c47e0a06587f92e23e6b32bf7bb750a1d
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 66fa69b746ce2404e3083a9c3872300a9efee874
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
@@ -146,5 +146,6 @@ P11 および P15 データベースで 1 TB を超える最大サイズは、�
 - サービス階層については、[サービス レベル](sql-database-service-tiers.md)に関する記事をご覧ください。
 - 単一データベースについては、[単一データベースのリソース](sql-database-resource-limits.md)に関する記事をご覧ください。
 - エラスティック プールについては、[エラスティック プール](sql-database-elastic-pool.md)に関する記事をご覧ください。
-- Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](/azure/azure-subscription-service-limits.md)」をご覧ください。
+- Azure の一般的な制限については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 - DTU と eDTU については、「[データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) の説明](sql-database-what-is-a-dtu.md)」をご覧ください。
+

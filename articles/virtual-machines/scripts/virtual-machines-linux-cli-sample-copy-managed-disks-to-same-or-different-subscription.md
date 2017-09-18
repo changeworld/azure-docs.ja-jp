@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: dcf92babf84872ffbbba81127952f8422104c723
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 9447e7c78849bb7a25d141c454550ce708b781b6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -44,8 +44,8 @@ ms.lasthandoff: 08/22/2017
 
 | コマンド | メモ |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | 管理ディスクの名前とリソース グループのプロパティを使用して、その管理ディスクのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにその管理ディスクをコピーします。  |
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | 親管理ディスクの名前と ID を使用して別のサブスクリプションに新しい管理ディスクを作成することで、管理ディスクをコピーします。  |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | 管理ディスクの名前とリソース グループのプロパティを使用して、その管理ディスクのすべてのプロパティを取得します。 ID プロパティを使用して、別のサブスクリプションにその管理ディスクをコピーします。  |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 親管理ディスクの名前と ID を使用して別のサブスクリプションに新しい管理ディスクを作成することで、管理ディスクをコピーします。  |
 
 ## <a name="next-steps"></a>次のステップ
 

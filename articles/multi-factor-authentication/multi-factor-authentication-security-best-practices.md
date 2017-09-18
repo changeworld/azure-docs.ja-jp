@@ -3,7 +3,7 @@ title: "MFA のセキュリティのベスト プラクティス | Microsoft Doc
 description: "このドキュメントでは、Azure アカウントで Azure MFA を使用する場合のベスト プラクティスについて説明します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
 ms.assetid: 3be7d968-96bb-4320-8701-869fd04a2595
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
-ms.author: kgremban
+ms.author: joflore
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: f43f6e33976325920da9cf0f6aef6decae5bde26
+ms.translationtype: HT
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 6166e20a4652379dc9eeffe522feb651f5e57ea2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -55,7 +55,7 @@ Azure MFA を含むライセンスを持っていない場合は、MFA 認証プ
 * 多要素認証プロバイダーの作成に Azure AD ディレクトリは必要ありませんが、ディレクトリがあるとより高度な機能を利用できます。 Azure AD ディレクトリに認証プロバイダーを関連付けると、次に示す機能が有効になります。  
   * すべてのユーザーを 2 段階認証の対象にする  
   * 管理ポータル、カスタムの案内応答、レポートなどの追加機能をグローバル管理者に提供する
-* オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期する場合は、DirSync または AAD Sync が必要です。 Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリを使用する場合、DirSync または AAD Sync は必要ありません。
+* オンプレミスの Active Directory 環境を Azure AD ディレクトリと同期する場合は、DirSync または AAD Sync が必要です。Active Directory のオンプレミスのインスタンスと同期されない Azure AD ディレクトリを使用する場合、DirSync または AAD Sync は必要ありません。
 * ビジネスに最も適した使用モデルを選択してください。 使用モデルはいったん選択すると変更できません。 2 つのモデルを次に示します。
   * 認証ごと: 認証ごとに課金されます。 特定のユーザーではなく、特定のアプリにアクセスするすべてのユーザーに対して 2 段階認証を実行する場合は、このモデルを使用します。
   * 有効化されたユーザーごと: Azure MFA を有効にしたユーザーごとに課金されます。 Azure AD Premium または Enterprise Mobility Suite ライセンスを所有しているユーザーと所有していないユーザーが混在している場合は、このモデルを使用します。
@@ -89,7 +89,7 @@ Multi-Factor Authentication Server を設定する場合は、次の点を考慮
 組織が SSO で Azure AD とフェデレーションされているときに Azure MFA を使用する場合は、次の詳細に注意してください。
 
 * アプリ パスワードは Azure AD によって検証されます。したがってフェデレーションをバイパスします。 フェデレーションは、アプリ パスワードを設定するときにのみ使用されます。
-* フェデレーション (SSO) ユーザーの場合、パスワードは組織 ID の中に保存されます。 ユーザーが退職した場合、その情報は、DirSync を使用して組織 ID に送信される必要があります。 アカウントの無効化/削除を同期させるには最大 3 時間かかる可能性があり、Azure AD 内のアプリ パスワードの無効化/削除が遅れることがあります。
+* フェデレーション (SSO) ユーザーの場合、パスワードは組織 ID の中に保存されます。ユーザーが退職した場合、その情報は、DirSync を使用して組織 ID に送信される必要があります。 アカウントの無効化/削除を同期させるには最大 3 時間かかる可能性があり、Azure AD 内のアプリ パスワードの無効化/削除が遅れることがあります。
 * オンプレミスのクライアント アクセス制御の設定は、アプリ パスワードでは受け入れられません。
 * アプリ パスワードに対するオンプレミスの認証ログ/監査機能はありません。
 * ある種の高度なアーキテクチャ設計では、2 段階認証をクライアントで使用するときに、認証場所によっては、組織のユーザー名とパスワードをアプリ パスワードと組み合わせて使用する必要があります。 オンプレミスのインフラストラクチャに対して認証するクライアントの場合は、組織のユーザー名とパスワードを使用します。 Azure AD に対して認証するクライアントはアプリケーション パスワードを使用します。

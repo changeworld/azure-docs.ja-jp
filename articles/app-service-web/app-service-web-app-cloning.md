@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/13/2016
 ms.author: aelnably
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: e238f804d4a96e10101e7aa2e2a1bcb78a44e967
-ms.lasthandoff: 11/17/2016
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 3b82f352f89a7857bfb42be6cee136f245fbd5fa
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-app-service-app-cloning-using-powershell"></a>PowerShell を使用した Azure App Service アプリの複製
@@ -27,8 +27,6 @@ Microsoft Azure PowerShell バージョン 1.1.0 のリリースに伴って新�
 アプリの複製は、現在、Premium レベルの App Service プランでのみサポートされています。 この新機能には Web アプリのバックアップ機能と同じ制限が適用されます。[Azure App Service での Web アプリのバックアップ](web-sites-backup.md)に関するページを参照してください。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
-
-Azure Resource Manager ベースの Azure PowerShell コマンドレットを使用して Web アプリを管理する方法については、 [Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)
 
 ## <a name="cloning-an-existing-app"></a>既存のアプリの複製
 シナリオ: 米国中南部リージョンに既存の Web アプリがあり、ユーザーはそのコンテンツを米国中北部の新しい Web アプリに複製したいと考えています。 これを実現するには、PowerShell コマンドレットの Azure Resource Manager バージョンを使用して新しい Web アプリを作成します (-SourceWebApp オプションを指定)。
@@ -107,11 +105,10 @@ Traffic Manager ID を構成した後で、ソース Web アプリの複製を�
 * データベースの内容は複製されない
 
 ### <a name="references"></a>参照
-* [Azure Resource Manager ベースの Azure Web アプリ用 PowerShell コマンド](app-service-web-app-azure-resource-manager-powershell.md)
 * [Azure ポータルを使用した Web アプリの複製](app-service-web-app-cloning-portal.md)
 * [Azure App Service での Web アプリのバックアップ](web-sites-backup.md)
 * [Azure Resource Manager による Azure Traffic Manager プレビューのサポート](../traffic-manager/traffic-manager-powershell-arm.md)
 * [App Service 環境の概要](app-service-app-service-environment-intro.md)
-* [Azure リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)
+* [Azure リソース マネージャーでの Azure PowerShell の使用](../azure-resource-manager/powershell-azure-resource-manager.md)
 
 

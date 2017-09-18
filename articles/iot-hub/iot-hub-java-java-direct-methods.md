@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5fa42c4fe7ad04bc74f70b023715bb61f81806ab
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4fb759ecd7767c126bc22165494652039ba1caa4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="use-direct-methods-java"></a>ダイレクト メソッドの使用 (Java)
@@ -111,7 +111,7 @@ ms.lasthandoff: 08/09/2017
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 現時点では、ダイレクト メソッドを使用するには、MQTT プロトコルを使用する必要があります。
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 
 
 1. IoT Hub に状態コードを返すには、次の入れ子になったクラスを **App** クラスに追加します。
 

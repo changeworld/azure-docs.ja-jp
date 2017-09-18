@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/13/2016
 ms.author: danlep
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e31845f3d7aa08357b0e8a1b3b77d97302442ac3
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 0c0b9875b4153edcc0ec0096577d041d394a842f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="run-namd-with-microsoft-hpc-pack-on-linux-compute-nodes-in-azure"></a>Azure の Linux コンピューティング ノード上で Microsoft HPC Pack を使用して NAMD を実行する
@@ -29,8 +29,6 @@ ms.lasthandoff: 08/22/2017
 
 * **NAMD** (ナノスケール分子力学プログラム) とは、最大で数百万個の原子を含む大規模な生体分子系を高いパフォーマンスでシミュレーションするために設計された並列分子動力学パッケージです。 この生体分子系の例として、ウイルス、セル構造体、巨大タンパク質などがあります。 NAMD は、通常のシミュレーションでは数百個のコアに対応し、大規模なシミュレーションでは 500,000 個を超えるコアに対応します。
 * **Microsoft HPC Pack** は、オンプレミス コンピューターまたは Azure Vertual Machines のクラスター上で大規模な HPC および並列アプリケーションを実行する機能を備えています。 本来 Windows HPC ワークロード用のソリューションとして開発された HPC Pack では、現在、HPC Pack クラスターにデプロイされた Linux コンピューティング ノード VM で Linux HPC アプリケーションを実行する機能をサポートしています。 概要については、「 [Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md) 」を参照してください。
-
-Azure で Linux HPC ワークロードを実行する他のオプションについては、「[Azure における大規模なコンピューティング: バッチとハイ パフォーマンス コンピューティングに関するテクニカル リソース](../../../batch/batch-hpc-solutions.md)」を参照してください。
 
 ## <a name="prerequisites"></a>前提条件
 * **HPC Pack クラスターと Linux コンピューティング ノード** - Azure 上の Linux コンピューティング ノードで、[Azure Resource Manager テンプレート](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)または [Azure PowerShell スクリプト](hpcpack-cluster-powershell-script.md)を使用して HPC Pack クラスターをデプロイします。 どちらのオプションについても、前提条件および手順について詳しくは、「 [Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する](hpcpack-cluster.md) 」を参照してください。 PowerShell スクリプトによるデプロイ オプションを選択した場合は、この記事の最後にあるサンプル ファイルのサンプル構成ファイルを参照してください。 このファイルは、Windows Server 2012 R2 ヘッド ノードおよび 4 つの L サイズの CentOS 6.6 コンピューティング ノードから成る Azure ベースの HPC Pack クラスターを構成します。 必要に応じて、環境に合わせてこのファイルを変更してください。

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 2983ce5c068e5188fb70ffc9443ce58d6c188c50
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 268299d82ce79b10eb8061467f4bad61194457f8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
@@ -265,7 +265,7 @@ Azure Key Vault と統合するには、解読に必要なときに AKV から�
 
 大規模なデータ セットは、[ExpressRoute](https://azure.microsoft.com/services/expressroute/) などの専用高速 WAN リンクを利用して移動できます。 ExpressRoute を使用する場合、[SSL/TLS](https://support.microsoft.com/kb/257591) などのプロトコルを使用してアプリケーション レベルでデータを暗号化することで、さらにセキュリティを強化できます。
 
-Azure ポータルで Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
+Azure Portal で Azure Storage を操作する場合、すべてのトランザクションは HTTPS 経由で行われます。 HTTPS 経由の [Storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) も、[Azure Storage](https://azure.microsoft.com/services/storage/) と [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) の操作に使用できます。
 
 転送中のデータを保護しない場合、[man-in-the-middle 攻撃](https://technet.microsoft.com/library/gg195821.aspx)、[盗聴](https://technet.microsoft.com/library/gg195641.aspx)、セッション ハイジャックに対して脆弱になります。 このような攻撃は、機密データへのアクセスを取得するための最初の手順として実行される場合があります。
 
@@ -344,7 +344,7 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
 
-- [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](https://docs.microsoft.com/azure/app-service-web/web-sites-hybrid-connection-get-started)
+- [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
 Azure App Service では、Azure の Cloud Services および Virtual Machines で使用されるのと同じマルウェア対策ソリューションを使用します。 詳しくは、[マルウェア対策についてのドキュメント](https://docs.microsoft.com/azure/security/azure-security-antimalware)をご覧ください。
 

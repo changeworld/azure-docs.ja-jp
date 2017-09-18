@@ -15,11 +15,11 @@ ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: bbenz
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 5a6e4431ef25c66e1863a679f0db1363a83f4769
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 96f7bda79fd83bffa4ca1d64275a784004547c6d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -54,7 +54,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="prepare-local-mysql"></a>ローカル MySQL を準備する 
 
-この手順では、ローカル コンピューターでアプリをテストするのに使用するローカル MySQL サーバーにデータベースを作成します。
+この手順では、ご利用のローカル コンピューターでのアプリのテストに使用するローカル MySQL サーバーにデータベースを作成します。
 
 ### <a name="connect-to-mysql-server"></a>MySQL サーバーに接続する
 
@@ -84,7 +84,7 @@ quit
 
 ## <a name="create-and-run-the-sample-app"></a>サンプル アプリの作成と実行 
 
-この手順では、サンプル Spring Boot アプリを複製し、ローカルの MySQL データベースを使用するように構成してから、コンピューターで実行します。 
+この手順では、サンプル Spring Boot アプリを複製し、ローカルの MySQL データベースを使用するように構成してから、ご利用のコンピューターで実行します。 
 
 ### <a name="clone-the-sample"></a>サンプルを複製する
 
@@ -132,7 +132,7 @@ az login
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの関連リソースがデプロイおよび管理される論理コンテナーです。 
+[az group create](/cli/azure/group#create) コマンドを使用して、[リソース グループ](../azure-resource-manager/resource-group-overview.md)を作成します。 Azure リソース グループとは、Web アプリ、データベース、ストレージ アカウントなどの関連リソースをデプロイおよび管理される論理コンテナーです。 
 
 次の例は、北ヨーロッパ リージョンにリソース グループを作成します。
 
@@ -185,11 +185,11 @@ az mysql server firewall-rule create \
 ```
 
 > [!NOTE]
-> 現時点では、Azure Database for MySQL (Preview) は、Azure Services からの接続を自動的に有効にすることはできません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 サービスは引き続きプレビュー段階にあり、データベースを保護するためのより優れた方法が利用可能になる予定です。
+> 現時点では、Azure Database for MySQL (プレビュー) は、Azure Services からの接続を自動的に有効にすることはできません。 Azure の IP アドレスは動的に割り当てられるため、当面はすべての IP アドレスを有効にしておくことをお勧めします。 サービスは引き続きプレビュー段階にあり、データベースを保護するためのより優れた方法が利用可能になる予定です。
 
 ## <a name="configure-the-azure-mysql-database"></a>Azure MySQL データベースを構成する
 
-コンピューターのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 `<admin_user>` と `<mysql_server_name>` に指定した値を使用します。
+ご利用のコンピューターのターミナル ウィンドウで、Azure の MySQL サーバーに接続します。 `<admin_user>` と `<mysql_server_name>` に指定した値を使用します。
 
 ```bash
 mysql -u <admin_user>@<mysql_server_name> -h <mysql_server_name>.mysql.database.azure.com -P 3306 -p
@@ -220,7 +220,7 @@ quit
 
 ## <a name="deploy-the-sample-to-azure-app-service"></a>サンプルを Azure App Service にデプロイする
 
-[az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルで Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
+[az appservice plan create](/cli/azure/appservice/plan#create) CLI コマンドを使用して、**Free** 価格レベルの Azure App Service プランを作成します。 App Service プランは、アプリをホストするために使用される物理リソースを定義します。 App Service プランに割り当てられたすべてのアプリケーションは、これらのリソースを共有します。これにより、複数のアプリをホストする際にコストを節約できます。 
 
 ```azurecli-interactive
 az appservice plan create \
@@ -320,9 +320,9 @@ az webapp config appsettings set \
 ```
 
 ### <a name="get-ftp-deployment-credentials"></a>FTP デプロイ資格情報を取得する 
-アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、事前にローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
+アプリケーションを Azure App Service にデプロイするには、FTP、ローカル Git、GitHub、Visual Studio Team Services、BitBucket など、さまざまな方法があります。 この例では、事前にご利用のローカル コンピューターでビルドした .WAR ファイルを Azure App Service にデプロイするために FTP を使用します。
 
-ftp コマンドで Web アプリに渡す資格情報を確認するには、[az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#list-publishing-profiles) コマンドを次のように使用します。 
+ftp コマンドで Web アプリに渡す資格情報を確認するには、[az appservice web deployment list-publishing-profiles](https://docs.microsoft.com/cli/azure/appservice/web/deployment#az_appservice_web_deployment_list_publishing_profiles) コマンドを次のように使用します。 
 
 ```azurecli-interactive
 az webapp deployment list-publishing-profiles \ 
@@ -432,13 +432,13 @@ ToDo リストに項目の作成日の列を追加するように、アプリケ
 
 6. 前記のように更新済みの .WAR を FTP で転送して、既存の *site/wwwroot/webapps/ROOT* ディレクトリと *ROOT.war* を削除し、更新済みの .WAR ファイルを ROOT.war としてアップロードします。 
 
-アプリを更新すると、**Time Created** 列が表示されるようになります。 新しいタスクを追加すると、アプリによってタイムスタンプが自動的に入力されます。 基になるデータ モデルが変更された場合でも、既存のタスクは変更されず、アプリで動作します。 
+アプリを更新すると、**Time Created** 列が表示されるようになります。 新しいタスクを追加すると、アプリによってタイムスタンプが自動的に入力されます。 基になるデータ モデルが変更された場合でも、既存のタスクは変更されず、そのアプリで動作します。 
 
 ![新しい列で更新された Java アプリ](./media/app-service-web-tutorial-java-mysql/appservice-updates-java.png)
       
 ## <a name="stream-diagnostic-logs"></a>診断ログをストリーミングする 
 
-Azure App Service で Java アプリケーションを実行している間、コンソール ログをターミナルに直接パイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
+Azure App Service でその Java アプリケーションを実行している間、コンソール ログをご利用のターミナルに直接パイプできます。 このようにすると、アプリケーション エラーのデバッグに役立つ同じ診断メッセージを取得できます。
 
 ログのストリーミングを開始するには、[az webapp log tail](/cli/azure/appservice/web/log#tail) コマンドを使用します。
 

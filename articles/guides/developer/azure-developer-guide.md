@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bfc69712a1ddcd4a225fd35cfcceb7fa0616887d
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2c90272a9d33795dca7839292bba38fa16fec3da
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -158,7 +158,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: Linux 上の Web アプリを Docker イメージにデプロイする場合。
 
-    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service-web/app-service-linux-using-custom-docker-image.md)。
+    >**作業開始**: [Linux で App Service 用のカスタム Docker イメージを使用します](../../app-service/containers/quickstart-custom-docker-image.md)。
 
 ### <a name="authentication"></a>認証
 
@@ -168,7 +168,7 @@ Azure には、アプリケーションでコンテナーを使用する方法�
 
     >**使用する場合**: SSO エクスペリエンスを提供する場合、Graph ベースのデータを使用する場合、またはドメインベースのユーザーを認証する場合。
 
-    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/active-directory-developers-guide.md)」を参照してください。
+    >**作業開始**: 詳細については、「[開発者のための Azure Active Directory](../../active-directory/develop/active-directory-developers-guide.md)」を参照してください。
 
 -   **App Service 認証**: App Service を選択してアプリをホストする場合、Azure AD の組み込みの認証サポートと共に、ソーシャル ID プロバイダー (Facebook、Google、Microsoft、Twitter など) も利用できます。
 

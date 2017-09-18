@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 09/13/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
@@ -56,7 +56,7 @@ Azure Cosmos DB では、Azure Cosmos DB データベース アカウントに A
 ### <a id="PolicyBasedGeoFencing"></a>ポリシー ベースのジオフェンス
 Azure Cosmos DB は、ポリシー ベースのジオフェンス機能を備えるように設計されています。 ジオフェンスは、データ ガバナンスとコンプライアンスの制限を保証し、アカウントへの特定のリージョンの関連付けを防ぐことができる重要なコンポーネントです。 ジオフェンスの例として、グローバル配布の範囲を主権のあるクラウド内 (中国、ドイツなど) または政府の課税境界内 (オーストラリアなど) のリージョンに設定することが挙げられます。 ポリシーは、Azure サブスクリプションのメタデータを使用して制御されます。
 
-### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加おおよび削除する
+### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加および削除する
 Azure Cosmos DB では、データベース アカウントへのリージョンの追加 (関連付け) とリージョンの削除 (関連付け解除) をいつでも行うことができます ([前の図を参照](#UnlimitedRegionsPerAccount))。 Azure Cosmos DB は、パーティション間でのデータの並列レプリケーションにより、新しいリージョンがオンラインになったときに、最大 100 TB で世界中のどこでも 30 分以内に利用できます。 
 
 ### <a id="FailoverPriorities"></a>フェールオーバーの優先順位
@@ -65,9 +65,6 @@ Azure Cosmos DB では、データベース アカウントへのリージョン
 **Azure Cosmos DB のテナントは、データベース アカウントに関連付けられているリージョンのフェールオーバーの優先順位を構成することが可能 (右側のウィンドウ)**
 
 ![Azure Cosmos DB でのフェールオーバーの優先順位の構成](./media/distribute-data-globally/failover-priorities.png)
-
-### <a id="OfflineRegions"></a>リージョンを動的に "オフライン" にする
-Azure Cosmos DB では、特定のリージョンでデータベース アカウントをオフラインにし、後でオンラインに戻すことができます。 オフラインとしてマークされたリージョンは、レプリケーションにアクティブに関与せず、フェールオーバー シーケンスには含まれません。 これにより、リスクを伴う可能性のあるアップグレードをアプリケーションに展開する前に、読み取りリージョンのいずれかで最後に確認された良好なデータベース イメージを凍結することができます。
 
 ### <a id="ConsistencyLevels"></a>グローバルにレプリケートされたデータベースの明確に定義された複数の整合性モデル
 Azure Cosmos DB では、SLA に支えられた、[明確に定義された複数の整合性レベル](consistency-levels.md)を公開しています。 ワークロードやシナリオに応じて、(使用可能なオプションの一覧から) 特定の整合性モデルを選択できます。 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/22/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 17ad81945deef8d4803898cfe4fc9ddbd88a2a54
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 1f261f97bbd9233d47eadc7e902e00ee87af9e34
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs に関する FAQ
@@ -136,12 +136,12 @@ Azure での開発またはテストに Windows クライアント OS イメー�
 ## <a name="how-do-i-automate-the-process-of-uploading-vhd-files-to-create-custom-images"></a>カスタム イメージを作成するために VHD ファイルをアップロードするプロセスを自動化するにはどうすればよいですか。
 カスタム イメージを作成するために VHD ファイルのアップロードを自動化する場合、次の 2 つのオプションがあります。
 
-* [AzCopy](../storage/common/storage-use-azcopy.md#blob-upload) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
+* [AzCopy](../storage/common/storage-use-azcopy.md#upload-blobs-to-blob-storage) を使用して、ラボに関連付けられているストレージ アカウントに VHD ファイルをコピーまたはアップロードします。
 * [Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用します。 ストレージ エクスプローラーは、Windows、OS X、Linux で動作するスタンドアロン アプリです。   
 
 ラボに関連付けられているコピー先ストレージ アカウントを検索するには、次の手順に従います。
 
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 2. 左側のメニューの **[リソース グループ]** を選択します。
 3. ラボに関連付けられているリソース グループを見つけて選択します。
 4. **[概要]** で、いずれかのストレージ アカウントを選択します。

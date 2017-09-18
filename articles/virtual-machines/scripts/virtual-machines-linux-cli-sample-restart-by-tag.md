@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 03/01/2017
 ms.author: allclark
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: fec7a2738c3b8e74ac335f62189f3d9b1dd346ab
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: ea114f484c774573b7d219cff9102a7308af356e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -88,12 +88,12 @@ az group delete -n myResourceGroup --no-wait --yes
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#create) | 仮想マシンを作成します。  |
-| [az vm list](https://docs.microsoft.com/cli/azure/vm#list) | `--query` と共に使用され、VM を再起動する前にプロビジョニングされるようにし、VM を再起動するために VM の ID を取得します。 |
-| [az resource list](https://docs.microsoft.com/cli/azure/vm#list) | `--query` と共に使用され、タグを使用して VM の ID を取得します。 |
-| [az vm restart](https://docs.microsoft.com/cli/azure/vm#list) | VM を再起動します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm/availability-set#az_vm_availability_set_create) | 仮想マシンを作成します。  |
+| [az vm list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | `--query` と共に使用され、VM を再起動する前にプロビジョニングされるようにし、VM を再起動するために VM の ID を取得します。 |
+| [az resource list](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | `--query` と共に使用され、タグを使用して VM の ID を取得します。 |
+| [az vm restart](https://docs.microsoft.com/cli/azure/vm#az_vm_list) | VM を再起動します。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

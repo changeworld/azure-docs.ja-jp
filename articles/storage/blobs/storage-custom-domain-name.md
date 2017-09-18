@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: marsma
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 67a197ffa04d284e9251d7f79b36a86d03637fd9
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e05f9428b0e0ef94bb499a3caa2e1f9f02d475d3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="configure-a-custom-domain-name-for-your-blob-storage-endpoint"></a>BLOB ストレージ エンドポイントのカスタム ドメイン名の構成
@@ -119,7 +119,7 @@ Azure Portal で次の手順を実行して、カスタム ドメイン設定を
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-[az ストレージ アカウント更新](https://docs.microsoft.com/cli/azure/storage/account#update) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定し、カスタム ドメインの登録を削除します。
+[az ストレージ アカウント更新](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) CLI コマンドを使用して、`--custom-domain` 引数値に空の文字列 (`""`) を指定し、カスタム ドメインの登録を削除します。
 
 * コマンド形式:
 

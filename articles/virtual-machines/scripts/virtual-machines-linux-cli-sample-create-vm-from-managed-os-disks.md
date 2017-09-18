@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 2611698d70a1a5963abaa55c8e9510469c7aa097
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 2141ea4fd25dfc69ada02c54c4f6b6b717b8e7db
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -53,8 +53,8 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az disk show](https://docs.microsoft.com/cli/azure/disk#show) | ディスク名とリソース グループ名を使用して、管理ディスクのプロパティを取得します。 Id プロパティは、管理ディスクを新しい VM に接続を使用するために使用されます。 |
-| [az vm create](https://docs.microsoft.com/cli/azure/vm#create) | 管理 OS ディスクを使用して VM を作成する |
+| [az disk show](https://docs.microsoft.com/cli/azure/disk#az_disk_show) | ディスク名とリソース グループ名を使用して、管理ディスクのプロパティを取得します。 Id プロパティは、管理ディスクを新しい VM に接続を使用するために使用されます。 |
+| [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) | 管理 OS ディスクを使用して VM を作成する |
 ## <a name="next-steps"></a>次のステップ
 
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。

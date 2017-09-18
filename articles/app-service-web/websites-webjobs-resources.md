@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/25/2017
 ms.author: glenga
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 05062d7396bdbb3e589d2ab5f0443d1dca54342a
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 5050b442540632086eda80bd7fecaf2beb8ddb50
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-webjobs-documentation-resources"></a>Azure WebJobs のドキュメント リソース
@@ -69,7 +69,7 @@ Azure ポータルの Web ジョブ ダッシュボードは、Web ジョブ内�
 
 ## <a name="schedule"></a>Web ジョブのスケジュール設定
 * [[Azure Web ジョブの追加] ダイアログ ボックス](websites-dotnet-deploy-webjobs.md#configure)
-* [Azure ポータルでのスケジュール実行の Web ジョブの作成](web-sites-create-web-jobs.md#CreateScheduled)
+* [Azure ポータルでのスケジュール実行の Web ジョブの作成](web-sites-create-web-jobs.md#CreateScheduledCRON)
 * [Hooking up a scheduler job to a WebJob (Web ジョブとスケジューラー ジョブを関連付ける)](http://blog.davidebbo.com/2015/05/scheduled-webjob.html)
 * [Scheduling Azure WebJobs with cron expressions (CRON 式を使用して Azure Web ジョブをスケジュールする)](http://blog.amitapple.com/post/2015/06/scheduling-azure-webjobs/)
 * [Web ジョブ SDK の TimerTrigger を使用した Web ジョブの個々の関数のスケジューリング](websites-dotnet-webjobs-sdk.md#schedule)

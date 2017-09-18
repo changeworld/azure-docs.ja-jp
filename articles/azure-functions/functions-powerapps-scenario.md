@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 89d9fa8f11a4c6ae3860b91e246716aad071870f
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -74,32 +74,7 @@ ms.lasthandoff: 08/29/2017
 
 1. Excel ブックを保存します。
 
-## <a name="export-an-api-definition"></a>API 定義をエクスポートする
-「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」で作成した関数の OpenAPI 定義があります。 このプロセスの次の手順では、API 定義をエクスポートして、PowerApps と Microsoft Flow がカスタム API でこの定義を使用できるようにします。
-
-> [!IMPORTANT]
-> PowerApps および Microsoft Flow テナントと同じ資格情報を使用して、Azure にサインインする必要があることに注意してください。 これにより、Azure がカスタム API を作成し、PowerApps と Microsoft Flow の両方でその API を使用できるように指定できます。
-
-1. 関数アプリ名 (**function-demo-energy** など) > **[プラットフォーム機能]** > **[API 定義]** をクリックします。
-
-    ![[API の定義]](media/functions-powerapps-scenario/api-definition.png)
-
-1. **[Export to PowerApps + Flow]\(PowerApps + Flow へのエクスポート\)** をクリックします。
-
-    ![API 定義のソース](media/functions-powerapps-scenario/export-api-1.png)
-
-1. 右側のウィンドウで、次の表で指定されている設定を使用します。
-
-    |設定|Description|
-    |--------|------------|
-    |**エクスポート モード**|**[高速]** を選択すると、カスタム API が自動生成されます。 **[手動]** を選択すると、API 定義がエクスポートされますが、その定義は、PowerApps と Microsoft Flow に手動でインポートする必要があります。|
-    |**Environment**|カスタム API の保存先の環境を選択します。 詳細については、「[環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)」を参照してください。|
-    |**カスタム API 名**|名前を入力します (`Turbine Repair` など)。|
-    |**API キー名**|カスタム API UI に表示されるアプリとフローのビルダーの名前を入力します。 役に立つ情報が例に含まれていることに注意してください。|
- 
-    ![API 定義のソース](media/functions-powerapps-scenario/export-api-2.png)
-
-1. **[OK]**をクリックします。 カスタム API が作成され、指定した環境に追加されます。
+[!INCLUDE [Export an API definition](../../includes/functions-export-api-definition.md)]
 
 ## <a name="add-a-connection-to-the-api"></a>文字列を API に追加する
 カスタム API (カスタム コネクタとも呼ばれます) は PowerApps で使用できますが、アプリで使用するには、その API に接続しておく必要があります。
@@ -254,7 +229,7 @@ ms.lasthandoff: 08/29/2017
 ## <a name="run-the-app"></a>アプリの実行
 アプリが完成しました。 次はこれを実行し、関数によってアクションが呼び出されるかどうかを確認します。
 
-1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)。
+1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)が必要です。
 
 1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 
