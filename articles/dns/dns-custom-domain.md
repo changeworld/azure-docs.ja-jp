@@ -66,7 +66,7 @@ Azure IoT には、サービス自体で必要なカスタマイズは何もあ�
 
 ![IoT hub blade](./media/dns-custom-domain/iot.png)
 
-次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
