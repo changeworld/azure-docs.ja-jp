@@ -99,7 +99,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 
 **[App Service プラン]** の横にある **[新規]** をクリックします。 
 
-**[App Service プランの構成]** ダイアログ ボックスで、次のスクリーン ショットの表に示した設定を使用します。
+**[App Service プランの構成]** ダイアログ ボックスで、スクリーン ショットの次の表に示した設定を使用します。
 
 ![Create App Service plan](./media/app-service-web-get-started-dotnet/configure-app-service-plan.png)
 
