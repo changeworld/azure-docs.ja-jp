@@ -3,7 +3,7 @@ title: "Azure Application Gateway で SSL ポリシーを構成する - PowerShe
 description: "このページでは、Azure Application Gateway で SSL ポリシーを構成する方法を説明します"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: ece2549a607ffa06602c26cf77db93f67112d029

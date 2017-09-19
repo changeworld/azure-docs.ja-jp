@@ -3,7 +3,7 @@ title: "アプリケーション ゲートウェイを作成する - Azure Porta
 description: "ポータルを使用してアプリケーション ゲートウェイを作成する方法について説明します。"
 services: application-gateway
 documentationcenter: na
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,7 +14,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: d3c39cfe3159cd4059a81f966fb551175188278b
