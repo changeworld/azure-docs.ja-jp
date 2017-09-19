@@ -15,10 +15,10 @@ ms.workload: web
 ms.date: 09/01/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6eadf0a521a32c5bc580908e4e4b7f4305e2bf7e
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 209766e4ebc902d78cf0c83fa8fe0f57c4da73e4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-a-line-of-business-azure-app-with-azure-active-directory-authentication"></a>Azure Active Directory 認証を使用した基幹業務 Azure アプリの作成
@@ -336,7 +336,8 @@ ms.lasthandoff: 07/21/2017
 ## <a name="next-step"></a>次のステップ
 基幹業務 Azure アプリにロールベースのアクセス制御 (RBAC) が必要な場合は、Azure Active Directory チームが提供するサンプルの [WebApp-RoleClaims-DotNet](https://github.com/Azure-Samples/active-directory-dotnet-webapp-roleclaims) をご覧ください。 このサンプルでは、Azure Active Directory アプリケーションに対してロールを有効にし、 `[Authorize]` 装飾を使用してユーザーを承認する方法を示しています。
 
-基幹業務アプリがオンプレミスのデータにアクセスする必要がある場合は、「 [Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](web-sites-hybrid-connection-get-started.md)」をご覧ください。
+<!-- If your line-of-business app needs access to on-premises data, see 
+[Access on-premises resources using hybrid connections in Azure App Service](web-sites-hybrid-connection-get-started.md). -->
 
 <a name="bkmk_resources"></a>
 

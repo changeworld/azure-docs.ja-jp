@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: c0ef886a8c51f43cba875d532835acb194e994d9
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: c99279413b50e7bf1e6058a4151890e3a8f83892
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -37,7 +37,7 @@ ms.lasthandoff: 09/06/2017
 
 ## <a name="select-a-hardware-security-module"></a>ハードウェア セキュリティ モジュールを選択する
 
-[Device Provisioning Service クライアント SDK](https://github.com/Azure/azure-iot-device-auth/tree/master/dps_client) は、次の 2 種類のハードウェア セキュリティ モジュール (HSM) をサポートしています。 
+[Device Provisioning Service クライアント SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/dps_client) は、次の 2 種類のハードウェア セキュリティ モジュール (HSM) をサポートしています。 
 
 - [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)
     - TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの確立された標準です。 デバイスの製造元は、デバイスでこれらの OS のいずれかを実行している場合や、HSM の確立された標準を探している場合に、この HSM を選択できます。 TPM チップを使用すると、Device Provisioning Service に各デバイスを個別に登録できます。 開発のために、Windows または Linux 開発コンピューターで TPM シミュレーターを使用できます。
@@ -79,8 +79,8 @@ Device Provisioning Service クライアント SDK では、Windows または Ub
 ### <a name="develop-your-custom-repository"></a>カスタム リポジトリを作成する
 
 1. HSM にアクセスするための GitHub リポジトリを作成します。 このプロジェクトでは、Device Provisioning SDK で使用するスタティック ライブラリを生成する必要があります。
-1. ライブラリでは、次のヘッダー ファイルで定義されている関数を実装する必要があります。a.  カスタム TPM の場合、`\azure-iot-device-auth\dps_client\adapters\custom_hsm_tpm_impl.h` で定義されている関数を実装します。
-    b. カスタム X.509 の場合、`\azure-iot-device-auth\dps_client\adapters\custom_hsm_x509_impl.h` で定義されている関数を実装します。 
+1. ライブラリでは、次のヘッダー ファイルで定義されている関数を実装する必要があります。a.  カスタム TPM の場合、`\azure-iot-sdk-c\dps_client\adapters\custom_hsm_tpm_impl.h` で定義されている関数を実装します。
+    b. カスタム X.509 の場合、`\azure-iot-sdk-c\dps_client\adapters\custom_hsm_x509_impl.h` で定義されている関数を実装します。 
 1. HSM リポジトリには、ビルドするリポジトリのルートに `CMakeLists.txt` も含まれている必要があります。
 
 ### <a name="integrate-with-the-device-provisioning-service-client"></a>Device Provisioning Service クライアントと統合する
@@ -98,7 +98,7 @@ Device Provisioning Service クライアント SDK では、Windows または Ub
     - ビルド プロセスでは、カスタム リポジトリが複製され、ライブラリがビルドされます。
     - SDK は、cmake コマンドで定義されたカスタム HSM へのリンクを試みます。
 
-1. `\azure-iot-device-auth\dps_client\samples\dps_client_sample\dps_client_sample.c` サンプルを実行して、HSM が正しく実装されているかどうかを確認します。
+1. `\azure-iot-sdk-c\dps_client\samples\dps_client_sample\dps_client_sample.c` サンプルを実行して、HSM が正しく実装されているかどうかを確認します。
 
 <a id="extractsecurity"></a>
 ## <a name="extract-the-security-artifacts"></a>セキュリティ アーティファクトを抽出する

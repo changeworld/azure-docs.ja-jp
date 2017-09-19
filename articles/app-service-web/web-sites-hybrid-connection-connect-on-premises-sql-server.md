@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/09/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: b1a633a86bd1b5997d5cbf66b16ec351f1043901
-ms.openlocfilehash: c940f490908a3b934c108b214b5ef2af44698059
-ms.lasthandoff: 02/16/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 4aaa4d2b739ef39754d7286bef3721a1b814d2a3
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="connect-to-on-premises-sql-server-from-a-web-app-in-azure-app-service-using-hybrid-connections"></a>ハイブリッド接続を使用して Azure App Service の Web アプリからオンプレミスの SQL Server に接続する
@@ -94,7 +94,7 @@ TCP/IP を有効にするには、SQL Server Express をインストールした
 ### <a name="create-a-sql-server-database-on-premises"></a>オンプレミスの SQL Server データベースを作成する
 Visual Studio Web アプリケーションには、Azure がアクセスできるメンバーシップ データベースが必要です。 これには、(既定で MVC テンプレートが使用する LocalDB データベースではなく) SQL Server または SQL Server Express データベースが必要なため、次にメンバーシップ データベースを作成します。
 
-1. SQL Server Management Studio で、インストールした SQL Server に接続します (**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー]** に移動し、**[接続]** をクリックして、**[データベース エンジン]** をクリックします)。 ![[サーバーへの接続]][SSMSConnectToServer]
+1. SQL Server Management Studio で、インストールした SQL Server に接続します (**[サーバーへの接続]** ダイアログが自動的に表示されない場合は、左パネルの **[オブジェクト エクスプローラー]** に移動し、**[接続]** をクリックして、**[データベース エンジン]** をクリックします)。![[サーバーへの接続]][SSMSConnectToServer]
    
     **[サーバーの種類]** には、**[データベース エンジン]** を選択します。 **[サーバー名]** には、**[localhost]**、または使用しているコンピューターの名前を使用します。 **[SQL Server 認証]**を選択し、前に作成したユーザー名とパスワードでログインします。
 2. SQL Server Management Studio を使用して新しいデータベースを作成するには、オブジェクト エクスプローラーで **[データベース]** を右クリックしてから、**[新しいデータベース]** をクリックします。
@@ -146,7 +146,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
    * **[BizTalk Service]** > **[新しい BizTalk サービス]** の順にクリックし、BizTalk サービスの名前を入力します。
      
      ![ハイブリッド接続の追加][TwinCreateHCBlades]
-4. **[OK]** を&2; 回クリックします。
+4. **[OK]** を 2 回クリックします。
    
     処理が完了すると、**[通知]** 領域に緑色の **"SUCCESS"** という文字が点滅します。**[ハイブリッド接続]** ブレードには、状態が **[未接続]** の新しいハイブリッド接続が表示されます。
    
@@ -196,7 +196,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
     接続文字列を作成する際には、次の事項に留意してください。
    
    * 既定のインスタンスではなく、名前付きインスタンス (YourServer\SQLEXPRESS など) に接続している場合は、静的ポートを使用するように SQL Server を構成する必要があります。 静的ポートの構成の詳細については、「[特定のポートでリッスンするように SQL Server を構成する方法](http://support.microsoft.com/kb/823938)」を参照してください。 既定では、名前付きインスタンスは動的ポートと UDP を使用します。これはハイブリッド接続ではサポートされません。
-   * ポート (例に示すように既定では&1433;) を接続文字列に指定することをお勧めします。これにより、ローカル SQL Server で TCP が有効になり、正しいポートが使用されます。
+   * ポート (例に示すように既定では 1433) を接続文字列に指定することをお勧めします。これにより、ローカル SQL Server で TCP が有効になり、正しいポートが使用されます。
    * SQL Server 認証を使用して接続するのを忘れないでください。接続文字列にユーザー ID とパスワードを指定します。
 3. Visual Studio で **[保存]** をクリックして、Web.config ファイルを保存します。
 
@@ -211,7 +211,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
    
     ![ユーザー名とパスワードの入力][HCVSCreateNewAccount]
    
-    これで、アプリケーションのメンバーシップ情報を保持するローカル SQL Server にデータベースが自動的に作成されます。 テーブルの&1; つ (**dbo.AspNetUsers**) に、入力した Web アプリ ユーザー資格情報が保持されます。 このテーブルは後でチュートリアルで使用されます。
+    これで、アプリケーションのメンバーシップ情報を保持するローカル SQL Server にデータベースが自動的に作成されます。 テーブルの 1 つ (**dbo.AspNetUsers**) に、入力した Web アプリ ユーザー資格情報が保持されます。 このテーブルは後でチュートリアルで使用されます。
 4. 既定の Web ページのブラウザー ウィンドウを閉じます。 これで、Visual Studio でアプリケーションが停止します。
 
 これで、アプリケーションを Azure に発行してテストする次の手順に進む準備ができました。
@@ -276,7 +276,7 @@ Visual Studio Web アプリケーションには、Azure がアクセスでき�
 
 [Building a Real-World Hybrid Cloud with Seamless Application Portability (シームレスなアプリケーションの移植性を使用して実際のハイブリッド クラウドをビルドする) (Channel 9 のビデオ)](http://channel9.msdn.com/events/TechEd/NorthAmerica/2014/DCIM-B323#fbid=)
 
-[Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](web-sites-hybrid-connection-get-started.md)
+<!-- [Access on-premises resources using hybrid connections in Azure App Service](web-sites-hybrid-connection-get-started.md) -->
 
 [ASP.NET の ID の概要](http://www.asp.net/identity)
 

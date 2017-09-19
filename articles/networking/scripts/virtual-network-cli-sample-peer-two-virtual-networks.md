@@ -15,11 +15,11 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: a2b8fda288072e2fb0087988bbd68d3e4d9031d8
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: cbb76d9549effc5da117265d0ab10a82134499a7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup --yes
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#create) | Azure 仮想ネットワークとサブネットを作成します。 |
-| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering#create) | 2 つの仮想ネットワーク間のピアリングを作成します。  |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az network vnet create](https://docs.microsoft.com/cli/azure/network/vnet#az_network_vnet_create) | Azure 仮想ネットワークとサブネットを作成します。 |
+| [az network vnet peering create](https://docs.microsoft.com/cli/azure/network/vnet/peering#az_network_vnet_peering_create) | 2 つの仮想ネットワーク間のピアリングを作成します。  |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 12cdb61667f77215c894800d5c439235e767a26b
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -66,7 +65,7 @@ Resource Manager テンプレートを保存したら、使用する前に、テ
 Resource Manager テンプレートを保存して必要に応じてカスタマイズしたら、VM の作成を自動化するのに使用できます。 「[Resource Manager テンプレートと Azure PowerShell を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)」では、Azure PowerShell と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法を説明しています。 「[Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy-cli)」では、Azure CLI と Resource Manager テンプレートを使用して Azure にリソースをデプロイする方法について説明しています。
 
 > [!NOTE]
-> ラボ所有者権限を持つユーザーだけが、Azure PowerShell を使用して Resource Manager テンプレートから VM を作成できます。 Resource Manager テンプレートを使用して VM の作成を自動化する場合でユーザー権限しか持っていない場合は、[CLI で **az lab vm create** コマンド](https://docs.microsoft.com/cli/azure/lab/vm#create) を使用します。
+> ラボ所有者権限を持つユーザーだけが、Azure PowerShell を使用して Resource Manager テンプレートから VM を作成できます。 Resource Manager テンプレートを使用して VM の作成を自動化する場合でユーザー権限しか持っていない場合は、[CLI で **az lab vm create** コマンド](https://docs.microsoft.com/cli/azure/lab/vm#az_lab_vm_create) を使用します。
 
 ### <a name="next-steps"></a>次のステップ
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。

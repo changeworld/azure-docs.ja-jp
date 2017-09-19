@@ -17,10 +17,10 @@ ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 9eb32e545bdefb8cc0a8ae05bd58d750afeb469e
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 882446ba32252490e27056c7c5c9a8f755e26ee6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -104,7 +104,7 @@ Premium ディスクは、SSD ベースの高性能で待機時間の短いデ�
 
 ### <a name="attach-disk-at-vm-creation"></a>VM の作成時にディスクを接続する
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
 ```azurecli-interactive 
 az group create --name myResourceGroupDisk --location eastus
@@ -235,7 +235,7 @@ az vm start --resource-group myResourceGroupDisk --name myVM
 
 ### <a name="create-snapshot"></a>スナップショットの作成
 
-仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#show) コマンドを使用します。この例では、後の手順で使用するために、ディスク ID を変数に格納します。
+仮想マシンのディスクのスナップショットを作成する前に、ディスクの ID または名前が必要です。 ディスク ID を取得するには、[az vm show](https://docs.microsoft.com/en-us/cli/azure/vm#az_vm_show) コマンドを使用します。この例では、後の手順で使用するために、ディスク ID を変数に格納します。
 
 ```azurecli-interactive 
 osdiskid=$(az vm show -g myResourceGroupDisk -n myVM --query "storageProfile.osDisk.managedDisk.id" -o tsv)
@@ -273,13 +273,13 @@ az vm create --resource-group myResourceGroupDisk --name myVM --attach-os-disk m
 
 すべてのデータ ディスクを仮想マシンに再度接続する必要があります。
 
-まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を *datadisk* という変数に格納しています。次の手順でこの変数を使用します。
+まず、[az disk list](https://docs.microsoft.com/cli/azure/disk#az_disk_list) コマンドを使用して、データ ディスクの名前を見つけます。 この例では、このディスク名を *datadisk* という変数に格納しています。次の手順でこの変数を使用します。
 
 ```azurecli-interactive 
 datadisk=$(az disk list -g myResourceGroupDisk --query "[?contains(name,'myVM')].[name]" -o tsv)
 ```
 
-ディスクを接続するには、[az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#attach) コマンドを使用します。
+ディスクを接続するには、[az vm disk attach](https://docs.microsoft.com/cli/azure/vm/disk#az_vm_disk_attach) コマンドを使用します。
 
 ```azurecli-interactive 
 az vm disk attach –g myResourceGroupDisk –-vm-name myVM –-disk $datadisk

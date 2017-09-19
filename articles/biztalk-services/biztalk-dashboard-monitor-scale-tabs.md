@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a087df444c5c88ee1dbcf8eb18abf883549a9024
-ms.openlocfilehash: ec1c54c8520170cd19095bf8d752c79c2fd812d8
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 03/15/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブの確認
@@ -28,7 +27,7 @@ ms.lasthandoff: 03/15/2017
 
 BizTalk サービスを作成してアプリケーションを配置した後は、BizTalk サービスの設定の一部を変更し、アプリケーションのパフォーマンスを監視できます。 
 
-Azure クラシック ポータルを開くと、自動的に [ **すべてのアイテム** ] タブが表示されます。 BizTalk サービスを表示するには、**[すべてのアイテム]** タブで BizTalk サービスを選択するか、**[BizTalk サービス]** タブを選択してから BizTalk サービス名を選択します。
+Azure クラシック ポータルを開くと、自動的に [ **すべてのアイテム** ] タブが表示されます。BizTalk サービスを表示するには、**[すべてのアイテム]** タブで BizTalk サービスを選択するか、**[BizTalk サービス]** タブを選択してから BizTalk サービス名を選択します。
 
 新しいウィンドウが開き、次のタブが表示されます。 このトピックでは、これらのタブについて説明します。
 
@@ -246,7 +245,7 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
    
     淡色表示された円をクリックすると、**[CPU 使用率]** メトリックが有効になり、グラフ内に表示されます。  
    ![[CPU 使用率] メトリックが有効になっている][EnabledMetric]
-6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。 メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。 淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
+6. 特定のメトリックをグラフ表示とリストから削除するには、タスク バーの **[メトリックの削除]** を選択します。 メトリックを再びリストに追加するには、タスク バーの **[メトリックの追加]** を選択し、そのメトリックのチェック ボックスをオンにしてから、チェックマークを選択して **[監視]** タブに戻ります。淡色表示されている円を選択すると、そのメトリックが有効な状態になります。
 
 ## <a name="Metrics"></a>使用可能なメトリック
 次のパフォーマンス カウンター/メトリックを使用できます。
@@ -332,8 +331,6 @@ BizTalk サービス名を選択すると、[監視] タブが選択可能にな
 
 ## <a name="HybridConnections"></a>ハイブリッド接続
 "ハイブリッド接続" を使用すると、Azure のアプリケーション (Azure App Service の Web アプリやモバイル アプリなど) を、静的 TCP ポートを使用するオンプレミスのリソース (たとえば、SQL Server、MySQL、HTTP Web API、ほとんどのカスタム Web サービス) に接続できます。 ハイブリッド接続の管理は、BizTalk Services で、Azure クラシック ポータルを使用して行います。
-
-Azure App Service でのハイブリッド接続については、「[Azure App Service のハイブリッド接続を使用してオンプレミスのリソースにアクセスする](../app-service-web/web-sites-hybrid-connection-get-started.md)」を参照してください。
 
 Azure BizTalk サービスでハイブリッド接続を作成または管理するには、「 [ハイブリッド接続](integration-hybrid-connection-overview.md)」を参照してください。
 

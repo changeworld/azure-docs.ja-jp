@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: c368bdc48f197ff5b491d1796d85abfd339051a6
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 52679af9cd8f6b455f68b9307ed52202ff74349d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -47,11 +47,11 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
-| [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#create) | Azure Traffic Manager プロファイルを作成します。 |
-| [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#create) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Azure Web アプリを作成します。 |
+| [az network traffic-manager profile create](https://docs.microsoft.com/cli/azure/network/traffic-manager/profile#az_network_traffic_manager_profile_create) | Azure Traffic Manager プロファイルを作成します。 |
+| [az network traffic-manager endpoint create](https://docs.microsoft.com/cli/azure/network/traffic-manager/endpoint#az_network_traffic_manager_endpoint_create) | Azure Traffic Manager プロファイルにエンドポイントを追加します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

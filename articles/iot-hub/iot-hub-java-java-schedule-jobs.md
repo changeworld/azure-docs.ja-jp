@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 07/10/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 003a548ef2da2921a699df1aa9f7aee366d341ab
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 9009afc83b40064c6dbf10100f514c681af9b96b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="schedule-and-broadcast-jobs-java"></a>ジョブのスケジュールとブロードキャスト (Java)
@@ -349,7 +349,7 @@ Azure IoT Hub を使用して、数百万のデバイスを更新するジョブ
     private static final int METHOD_NOT_DEFINED = 404;
     ```
 
-    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。 現時点では、デバイス ツインの機能を使用するには、MQTT プロトコルを使用する必要があります。
+    このサンプル アプリでは、**DeviceClient** オブジェクトをインスタンス化するときに **protocol** 変数が使用されます。
 
 1. デバイス ツイン通知をコンソールに出力するには、次の入れ子になったクラスを **App** クラスに追加します。
 

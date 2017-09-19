@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/05/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb794ba3b78881c967f0bb8687b1f70e5dd69c71
-ms.openlocfilehash: 1dc31a0b20f36e28a58896ed63a5e0395ae1d3af
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 946492e1d4b784a2a70b553826b4ec837799ff6d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -52,12 +52,12 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#create) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
-| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#create) | 論理サーバー内にエラスティック プールを作成します。 |
-| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#create) | 単一のデータベースまたはプールされているデータベースとして論理サーバーにデータベースを作成します。 |
-| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#update) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az sql server create](https://docs.microsoft.com/cli/azure/sql/server#az_sql_server_create) | データベースまたはエラスティック プールをホストする論理サーバーを作成します。 |
+| [az sql elastic-pools create](https://docs.microsoft.com/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create) | 論理サーバー内にエラスティック プールを作成します。 |
+| [az sql db create](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_create) | 単一のデータベースまたはプールされているデータベースとして論理サーバーにデータベースを作成します。 |
+| [az sql db update](https://docs.microsoft.com/cli/azure/sql/db#az_sql_db_update) | データベースのプロパティを更新するか、エラスティック プールに対して、エラスティック プールから、またはエラスティック プール間でデータベースを移動します。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/vm/extension#az_vm_extension_set) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

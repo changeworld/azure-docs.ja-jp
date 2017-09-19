@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 1a98509a98bcd2a5de593eb006f905766fe72966
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: bfd970a78becfe3f29518b71c4ece24ada2861b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="_Toc395783175"></a>Azure Cosmos DB を使用した Node.js Web アプリケーションの作成
@@ -45,11 +45,10 @@ ms.lasthandoff: 08/15/2017
 
 この記事の手順を実行する前に、次のソフトウェアがインストールされていることを確認してください。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+* Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-   または
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-   [Azure Cosmos DB Emulator](local-emulator.md) のローカル インストール (Windows のみ)。
 * [Node.js][Node.js] バージョン v0.10.29 以降
 * [Express ジェネレーター](http://www.expressjs.com/starter/generator.html) (`npm install express-generator -g` によってこれをインストールできます)
 * [Git][Git]。

@@ -17,10 +17,10 @@ ms.date: 06/01/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 5a17830ad3b879382b7e82d435f1286c7ecdf7c5
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 87b79d6222f40e3dc1306ecace51bae50b06e484
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="map-a-custom-domain-to-a-function-app"></a>Function App への カスタム ドメインのマッピング
@@ -46,11 +46,11 @@ CLI をローカルにインストールして使用する場合は、Azure CLI 
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | Function App に必要なストレージ アカウントを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | カスタム ドメインをマップするのに必要な App Service プランを作成します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | Function App に必要なストレージ アカウントを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | カスタム ドメインをマップするのに必要な App Service プランを作成します。 |
 | [az functionapp create]() | Function App を作成します。 |
-| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#add) | カスタム ドメインを Function App にマップします。 |
+| [az appservice web config hostname add](https://docs.microsoft.com/cli/azure/appservice/web/config/hostname#az_appservice_web_config_hostname_add) | カスタム ドメインを Function App にマップします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

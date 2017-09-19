@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cosmos DB を使用したデータのグローバル分散 | Microsoft Docs"
 description: "グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。"
 services: cosmos-db
@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/14/2017
+ms.date: 09/13/2017
 ms.author: arramac
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: da2cb358d196e41656bd7f6a06ff77e77c7315c1
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/22/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
@@ -65,9 +65,6 @@ Azure Cosmos DB では、データベース アカウントへのリージョン
 **Azure Cosmos DB のテナントは、データベース アカウントに関連付けられているリージョンのフェールオーバーの優先順位を構成することが可能 (右側のウィンドウ)**
 
 ![Azure Cosmos DB でのフェールオーバーの優先順位の構成](./media/distribute-data-globally/failover-priorities.png)
-
-### <a id="OfflineRegions"></a>リージョンを動的に "オフライン" にする
-Azure Cosmos DB では、特定のリージョンでデータベース アカウントをオフラインにし、後でオンラインに戻すことができます。 オフラインとしてマークされたリージョンは、レプリケーションにアクティブに関与せず、フェールオーバー シーケンスには含まれません。 これにより、リスクを伴う可能性のあるアップグレードをアプリケーションに展開する前に、読み取りリージョンのいずれかで最後に確認された良好なデータベース イメージを凍結することができます。
 
 ### <a id="ConsistencyLevels"></a>グローバルにレプリケートされたデータベースの明確に定義された複数の整合性モデル
 Azure Cosmos DB では、SLA に支えられた、[明確に定義された複数の整合性レベル](consistency-levels.md)を公開しています。 ワークロードやシナリオに応じて、(使用可能なオプションの一覧から) 特定の整合性モデルを選択できます。 

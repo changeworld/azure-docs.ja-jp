@@ -15,18 +15,13 @@ ms.topic: article
 ms.date: 08/10/2016
 ms.author: nicking
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 34a7e1d025c301ca056753d964bb3c5f4f1a62d8
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6866a16e40ea7b6953b13ae72e207f3f69a3030c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="use-powershell-to-back-up-and-restore-app-service-apps"></a>PowerShell を使用して App Service アプリのバックアップと復元を実行する
-> [!div class="op_single_selector"]
-> * [PowerShell](app-service-powershell-backup.md)
-> * [REST API](../app-service-web/websites-csm-backup.md)
-> 
-> 
 
 Azure PowerShell を使用して [App Service アプリ](https://azure.microsoft.com/services/app-service/web/)のバックアップと復元を実行する方法について説明します。 Web アプリのバックアップと、要件や制限事項の詳細については、「 [Azure App Service での Web アプリのバックアップ](../app-service-web/web-sites-backup.md)」を参照してください。
 

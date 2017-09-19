@@ -3,7 +3,7 @@ title: "Application Gateway の作成、起動、または削除 | Microsoft Doc
 description: "このページでは、Azure Application Gateway を作成、構成、起動、および削除する方法について説明します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 577054ca-8368-4fbf-8d53-a813f29dc3bc
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 64bd7f356673b385581c8060b17cba721d0cf8e3
 ms.openlocfilehash: 79e373a69f3b899dea1f10ac447a0284931648f4

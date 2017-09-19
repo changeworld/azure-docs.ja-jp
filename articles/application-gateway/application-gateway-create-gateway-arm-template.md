@@ -3,7 +3,7 @@ title: "Azure Application Gateway を作成する - テンプレート | Microso
 description: "このページでは、Azure リソース マネージャー テンプレートを使用して、Azure Application Gateway を作成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.service: application-gateway
@@ -12,7 +12,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: f44e33ef722cd30787a9d2942ec55ceb73174978

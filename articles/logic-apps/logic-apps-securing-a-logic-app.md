@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 11/22/2016
 ms.author: LADocs; jehollan
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0528d660f590e106f61729f10f8f68da3fe58cb7
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 45a4e476f930e0f5f6633dc5b3b35b66dc6dfa20
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -269,10 +269,6 @@ HTTP、HTTP と Swagger (Open API)、または Webhook アクションを使用�
 #### <a name="azure-api-management"></a>Azure API Management
 
 [Azure API Management](https://azure.microsoft.com/services/api-management/) には、オンプレミス システムへのプロキシと通信のセキュリティ保護を実現するためのサイト間 VPN と ExpressRoute の統合など、オンプレミス接続オプションがあります。 ロジック アプリ デザイナーでは、Azure API Management から公開された API をワークフロー内ですばやく選択して、オンプレミス システムへ迅速にアクセスすることができます。
-
-#### <a name="hybrid-connections-from-azure-app-service"></a>Azure App Services からのハイブリッド接続
-
-Azure API と Web アプリでは、オンプレミスとの通信にハイブリッド接続機能を使用できます。  ハイブリッド接続と構成方法の詳細については、[こちらの記事](../app-service-web/web-sites-hybrid-connection-get-started.md)を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
 [デプロイ テンプレートを作成する](logic-apps-create-deploy-template.md)  

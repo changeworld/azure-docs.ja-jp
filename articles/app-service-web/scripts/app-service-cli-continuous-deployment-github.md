@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: a12085a7a8146c22d6b079381542d4fe3a8e6e87
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 2cb3380c633f0ac182ab23df1666f3b89654e65a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -49,11 +49,11 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
-| [az webapp deployment source config](https://docs.microsoft.com/cli/azure/webapp/deployment/source#config) | Git または Mercurial リポジトリと Azure Web アプリを関連付けます。 |
-| [az webapp browse](https://docs.microsoft.com/cli/azure/webapp#browse) | ブラウザーで Azure Web アプリを開きます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Azure Web アプリを作成します。 |
+| [az webapp deployment source config](https://docs.microsoft.com/cli/azure/webapp/deployment/source#az_webapp_deployment_source_config) | Git または Mercurial リポジトリと Azure Web アプリを関連付けます。 |
+| [az webapp browse](https://docs.microsoft.com/cli/azure/webapp#az_webapp_browse) | ブラウザーで Azure Web アプリを開きます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 61396e8a3521c25eaf49c66a4948e520377d342a
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6bbbe61469363bc3a44adce8ceb632a7eb620a3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="restore-an-app-in-azure"></a>Azure でのアプリの復元
@@ -80,8 +80,8 @@ ms.lasthandoff: 06/09/2017
 
 詳細ブレードに、復元操作に関連する利用可能な情報が表示されます。
 
-## <a name="next-steps"></a>次のステップ
-REST API を使用して、App Service アプリのバックアップと復元を実行することができます (「[REST を使用して App Service アプリのバックアップと復元を実行する](websites-csm-backup.md)」を参照してください)。
+<!-- ## Next Steps
+You can backup and restore App Service apps using REST API. -->
 
 
 <!-- IMAGES -->

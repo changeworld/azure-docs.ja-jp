@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/22/2017
 ms.author: eugenesh
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 023c343122f872943fb3ab3eed7b4caedfae9ac4
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 97c1fc602ba27472fed2f11fd634e617ae9c636f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -28,21 +28,7 @@ ms.lasthandoff: 08/22/2017
 ## <a name="supported-document-formats"></a>サポートされるドキュメントの形式
 BLOB インデクサーは、次の形式のドキュメントからテキストを抽出できます。
 
-* PDF
-* Microsoft Office 形式: DOCX/DOC、XLSX/XLS、PPTX/PPT、MSG (Outlook 電子メール)  
-* HTML
-* XML
-* ZIP
-* EML
-* RTF
-* プレーンテキスト ファイル (「[プレーン テキストのインデックス作成](#IndexingPlainText)」も参照)
-* JSON ([JSON BLOB のインデックス作成](search-howto-index-json-blobs.md)に関する記事を参照)
-* CSV ([CSV BLOB のインデックス作成](search-howto-index-csv-blobs.md)のプレビュー機能を参照)
-
-> [!IMPORTANT]
-> CSV および JSON 配列の機能は現在プレビュー段階です。 これらの形式は、REST API のバージョン **2016-09-01-Preview** または .NET SDK のバージョン 2.x のプレビューを使用する場合のみ利用可能です。 プレビュー版の API は、テストと評価を目的としたものです。運用環境での使用は避けてください。
->
->
+[!INCLUDE [search-blob-data-sources](../../includes/search-blob-data-sources.md)]
 
 ## <a name="setting-up-blob-indexing"></a>BLOB インデックスの設定
 Azure Blob Storage インデクサーを設定するには、以下を使用します。

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9568210d4df6cfcf5b89ba8154a11ad9322fa9cc
-ms.openlocfilehash: 698978fd717091c49a1375e222f46f4325431223
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: fd2f4682a04c557b69bbfce115f41c54a96d462c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -57,16 +57,16 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az batch account create](https://docs.microsoft.com/cli/azure/batch/account#create) | Batch アカウントを作成します。  |
-| [az batch account set](https://docs.microsoft.com/cli/azure/batch/account#set) | Batch アカウントのプロパティを更新します。  |
-| [az batch account show](https://docs.microsoft.com/cli/azure/batch/account#show) | 指定された Batch アカウントの詳細を取得します。  |
-| [az batch account keys list](https://docs.microsoft.com/cli/azure/batch/account/keys#list) | 指定された Batch アカウントのアクセス キーを取得します。  |
-| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | ストレージ アカウントを作成します。 |
-| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#create) | Key Vault を作成します。 |
-| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#set-policy) | 指定した Key Vault のセキュリティ ポリシーを更新します。 |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az batch account create](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_create) | Batch アカウントを作成します。  |
+| [az batch account set](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_set) | Batch アカウントのプロパティを更新します。  |
+| [az batch account show](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_show) | 指定された Batch アカウントの詳細を取得します。  |
+| [az batch account keys list](https://docs.microsoft.com/cli/azure/batch/account/keys#az_batch_account_keys_list) | 指定された Batch アカウントのアクセス キーを取得します。  |
+| [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) | さらに CLI と対話できるように、指定された Batch アカウントを認証します。  |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 |
+| [az keyvault create](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_create) | Key Vault を作成します。 |
+| [az keyvault set-policy](https://docs.microsoft.com/cli/azure/keyvault#az_keyvault_set_policy) | 指定した Key Vault のセキュリティ ポリシーを更新します。 |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/19/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 8a44f10eda396aec72e05e87e406ff80834294d8
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4585be186554d5d7aa9bc79029b6f8506b278701
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
@@ -87,11 +87,7 @@ Azure SQL Database 論理サーバーは、
 
 ### <a name="create-a-blank-sql-server-logical-server"></a>空の SQL サーバー (論理サーバー) を作成する
 
-[Azure ポータル](https://portal.azure.com)を利用して Azure SQL Database サーバーを作成するには、空の SQL サーバー (論理サーバー) フォームに移動します。 次のスクリーンショットでは、空の論理 SQL サーバーを作成するためのフォームを開く方法の 1 つを確認できます。 
-
-   ![論理サーバー作成フォームへの入力](./media/sql-database-migrate-your-sql-server-database/logical-server-create-completed.png)
-
-別の方法でこのフォームを表示しても、フォームの情報は同じになります。
+[Azure ポータル](https://portal.azure.com)を利用して Azure SQL Database サーバーを作成するには、空の SQL サーバー (論理サーバー) フォームに移動します。  
 
 ### <a name="create-a-blank-or-sample-sql-database"></a>空またはサンプルの SQL データベースを作成する
 
@@ -105,9 +101,7 @@ Azure SQL Database 論理サーバーは、
 
 ### <a name="manage-an-existing-sql-server"></a>既存の SQL Server を管理する
 
-既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。 次のスクリーンショットでは、サーバーの**概要**ページからサーバーレベルのファイアウォールの設定を開始する方法を確認できます。 
-
-   ![論理サーバーの概要](./media/sql-database-migrate-your-sql-server-database/logical-server-overview.png)
+既存のサーバーを管理するには、さまざまな方法を利用してサーバーに移動します。たとえば、特定の SQL データベース ページ、**SQL サーバー** ページ、**すべてのリソース** ページから移動します。 
 
 既存のデータベースを管理するには、**SQL データベース** ページに移動し、管理するデータベースをクリックします。 次のスクリーンショットでは、データベースの**概要**ページからデータベースにサーバーレベルのファイアウォールを設定する方法を確認できます。 
 
@@ -220,11 +214,11 @@ Azure SQL のサーバー、データベース、ファイアウォールを作�
 |[サーバー - Sql](/rest/api/sql/servers%20-%20sql)|指定した名前でリソースを作成できるかどうかを判断します。|
 |[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
 |[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールで取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
-|[データベース - 推奨されるエラスティック プールで取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
-|[データベース - エラスティック プールで一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - 推奨されるエラスティック プールで一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーで一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - エラスティック プールごとに取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
+|[データベース - 推奨されるエラスティック プールごとに取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
 |[データベース - 更新](/api/sql/databases/update)|既存のデータベースを更新します。|
 |[ファイアウォール規則 - 作成または更新](/rest/api/sql/firewallrules/createorupdate)|ファイアウォール規則を作成または更新します。|
 |[ファイアウォール規則 - 削除](/rest/api/sql/firewallrules/delete)|ファイアウォール規則を作成します。|

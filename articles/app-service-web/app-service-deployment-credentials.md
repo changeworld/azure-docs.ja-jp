@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
-ms.openlocfilehash: 86a2cd8ae9f97c606a378452e44eec8941700531
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
@@ -47,7 +46,7 @@ ms.lasthandoff: 06/23/2017
 1. [Azure Portal](https://portal.azure.com) で、[App Service] > **&lt;任意のアプリ>**  >  **[デプロイ資格情報]** をクリックします。
 
     > [!NOTE]
-    > ポータルで、[デプロイ資格情報] ブレードにアクセスするには、少なくとも 1 つのアプリが必要です。 ただし、[Azure CLI](app-service-web-app-azure-resource-manager-xplat-cli.md) を使用する場合、ユーザー レベルの資格情報は既存のアプリなしで構成できます。
+    > ポータルで、[デプロイ資格情報] ブレードにアクセスするには、少なくとも 1 つのアプリが必要です。 ただし、[Azure CLI](/cli/azure/webapp/deployment/user#set) を使用する場合、ユーザー レベルの資格情報は既存のアプリなしで構成できます。
 
 2. ユーザー名とパスワードを入力し、**[保存]** をクリックします。
 

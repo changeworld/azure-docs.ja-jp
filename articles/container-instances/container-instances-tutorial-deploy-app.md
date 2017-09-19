@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/04/2017
+ms.date: 09/11/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f5c887487ab74934cb65f9f3fa512baeb5dcaf2f
-ms.openlocfilehash: d8c2056734bc1fdea71543157debd089a9ca743d
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 47208c60b316b580af8bf22d4f90d330ce285f7a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -30,8 +30,8 @@ ms.lasthandoff: 08/08/2017
 これは 3 つのパートで構成されるチュートリアルの最後のタスクです。 前のセクションでは、[コンテナー イメージを作成](container-instances-tutorial-prepare-app.md)して、[Azure Container Registry にプッシュ](container-instances-tutorial-prepare-acr.md)しました。 このセクションで Azure Container Instances にコンテナーをデプロイして、このチュートリアルは完了です。 手順は次のとおりです。
 
 > [!div class="checklist"]
-> * Azure Resource Manager テンプレートを使用したコンテナー グループの定義
-> * Azure CLI を使用したコンテナー グループのデプロイ
+> * Azure CLI を使用した Azure Container Registry からのコンテナーのデプロイ
+> * ブラウザーでのアプリケーションの表示
 > * コンテナー ログの表示
 
 ## <a name="deploy-the-container-using-the-azure-cli"></a>Azure CLI を使用して、コンテナーをデプロイする

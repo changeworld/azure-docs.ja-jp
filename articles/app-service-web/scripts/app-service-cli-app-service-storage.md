@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 2520eecf54b77b88d6aa1ba2e538d05e3407f3d9
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a07c2ae64be2081a2dba172ada810b76bfd7dfd7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -47,12 +47,12 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
-| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#create) | ストレージ アカウントを作成します。 これは、静的なアセットを格納する場所になります。 |
-| [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account#show-connection-string) | |
-| [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Azure Web アプリを作成します。 |
+| [az storage account create](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_create) | ストレージ アカウントを作成します。 これは、静的なアセットを格納する場所になります。 |
+| [az storage account show-connection-string](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_show_connection_string) | |
+| [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

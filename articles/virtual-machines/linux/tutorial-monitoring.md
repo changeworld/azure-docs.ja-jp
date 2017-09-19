@@ -17,10 +17,10 @@ ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 3fe8390e88e609b57a462e066f972346f8e8730e
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c5eab88f1b2311d52e582a0aa1121c8001437376
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="how-to-monitor-a-linux-virtual-machine-in-azure"></a>Azure の Linux 仮想マシンを監視する方法
@@ -49,7 +49,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 az group create --name myResourceGroupMonitor --location eastus
 ```
 
-ここで [az vm create](https://docs.microsoft.com/cli/azure/vm#create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
+ここで [az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) を使用して VM を作成します。 次の例では、*myVM* という名前の VM を作成します。
 
 ```azurecli-interactive 
 az vm create \
@@ -82,7 +82,7 @@ az storage account create \
 bloburi=$(az storage account show --resource-group myResourceGroupMonitor --name $storageacct --query 'primaryEndpoints.blob' -o tsv)
 ```
 
-今度は、[az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#enable) を使用して、ブート診断を有効にします。 `--storage` の値は、前の手順で取得した BLOB の URI です。
+今度は、[az vm boot-diagnostics enable](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_enable) を使用して、ブート診断を有効にします。 `--storage` の値は、前の手順で取得した BLOB の URI です。
 
 ```azurecli-interactive 
 az vm boot-diagnostics enable \
@@ -106,7 +106,7 @@ az vm deallocate --resource-group myResourceGroupMonitor --name myVM
 az vm start --resource-group myResourceGroupMonitor --name myVM
 ```
 
-*myVM* のブート診断データは、次のように [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#get-boot-log) コマンドで取得できます。
+*myVM* のブート診断データは、次のように [az vm boot-diagnostics get-boot-log](https://docs.microsoft.com/cli/azure/vm/boot-diagnostics#az_vm_boot_diagnostics_get_boot_log) コマンドで取得できます。
 
 ```azurecli-interactive 
 az vm boot-diagnostics get-boot-log --resource-group myResourceGroupMonitor --name myVM

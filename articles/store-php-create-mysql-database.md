@@ -15,19 +15,18 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm;cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 66f4b7a5f8eb3f6f125c9420b40caffca3d43dd6
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 017e08b7e1e37c0bcb95ae0d9d702471bb8bc6bc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="create-and-connect-to-a-mysql-database-in-azure"></a>Azure で MySQL データベースを作成して接続する
 このチュートリアルでは、[Azure Portal](https://portal.azure.com) (プロバイダーは [ClearDB](http://www.cleardb.com/)) で MySQL データベースを作成する方法と、[Azure App Service](app-service/app-service-value-prop-what-is.md) で実行されている PHP Web アプリからそのデータベースに接続する方法について説明します。
 
 > [!NOTE]
-> MySQL データベースは、 [Marketplace アプリ テンプレート](app-service-web/app-service-web-create-web-app-from-marketplace.md)の一部として作成することもできます。
+> MySQL データベースは、 <a href="https://portal.azure.com/#create/WordPress.WordPress" target="_blank">Marketplace アプリ テンプレート</a>の一部として作成することもできます。
 >
 >
 

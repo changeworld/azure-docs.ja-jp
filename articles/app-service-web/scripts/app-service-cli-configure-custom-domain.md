@@ -16,11 +16,11 @@ ms.topic: sample
 ms.date: 06/19/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: 6712be8a551731fbafd92ef19564e89399e23e76
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 8e8874b29c620fe3777066e0f86ce018521cf657
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="map-a-custom-domain-to-a-web-app"></a>カスタム ドメインを Web アプリにマップする
@@ -45,10 +45,10 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
-| [az webapp config hostname add](https://docs.microsoft.com/cli/azure/webapp/config/hostname#add) | カスタム ドメインを Web アプリにマップします。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Azure Web アプリを作成します。 |
+| [az webapp config hostname add](https://docs.microsoft.com/cli/azure/webapp/config/hostname#az_webapp_config_hostname_add) | カスタム ドメインを Web アプリにマップします。 |
 
 ## <a name="next-steps"></a>次のステップ
 

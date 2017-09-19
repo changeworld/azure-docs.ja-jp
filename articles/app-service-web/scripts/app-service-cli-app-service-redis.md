@@ -16,11 +16,11 @@ ms.workload: web
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
-ms.openlocfilehash: b697c8508a6c3422b6b0d0ca36843a9c884b505f
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c1277a04e3a63c09b2ed7f9304bfc482ab9189a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -46,12 +46,12 @@ ms.lasthandoff: 06/20/2017
 
 | コマンド | メモ |
 |---|---|
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
-| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#create) | Azure Web アプリを作成します。 |
-| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#create) | 新しい Redis Cache インスタンスを作成します。 これは、データを格納する場所になります。 |
-| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#list-keys) | Redis Cache インスタンスのアクセス キーを一覧表示します。 |
-| [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az appservice plan create](https://docs.microsoft.com/cli/azure/appservice/plan#az_appservice_plan_create) | App Service プランを作成します。 App Service プランとは、Azure Web アプリ用のサーバー ファームのようなものです。 |
+| [az webapp create](https://docs.microsoft.com/cli/azure/webapp#az_webapp_create) | Azure Web アプリを作成します。 |
+| [az redis create](https://docs.microsoft.com/en-us/cli/azure/redis#az_redis_create) | 新しい Redis Cache インスタンスを作成します。 これは、データを格納する場所になります。 |
+| [az redis list-keys](https://docs.microsoft.com/en-us/cli/azure/redis#az_redis_list_keys) | Redis Cache インスタンスのアクセス キーを一覧表示します。 |
+| [az webapp config appsettings set](https://docs.microsoft.com/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set) | Azure Web アプリのアプリケーション設定を作成または更新します。 アプリケーション設定は、アプリの環境変数として公開されます。 |
 
 ## <a name="next-steps"></a>次のステップ
 

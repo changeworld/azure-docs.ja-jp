@@ -12,19 +12,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/08/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: e9b833b07556378f17d9aaff0912c7d73dff44eb
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 9b3a8b964ec2f75c53c03b5099dc1e1eb7d77c65
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
-
-## <a name="introduction"></a>はじめに
 
 Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、ソブリン クラウド、Azure Stack などでホストされている Storage アカウントに接続できます。
 
@@ -32,7 +30,7 @@ Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux
 
 ## <a name="sign-in-issues"></a>サインインの問題
 
-Azure Active Directory (AAD) のアカウントのみがサポートされています。 ADFS アカウントを使用する場合、Storage Explorer へのサインインが機能しないことが予想されます。 続行する前に、アプリケーションを再起動して問題が解決されるかどうかを確認してください。
+続行する前に、アプリケーションを再起動して問題が解決されるかどうかを確認してください。
 
 ### <a name="error-self-signed-certificate-in-certificate-chain"></a>エラー: 証明書チェーンの自己署名証明書
 

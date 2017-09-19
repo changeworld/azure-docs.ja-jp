@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b5f43156d46b1ab9dd10ff5a93427270c1b839ca
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
@@ -223,7 +223,7 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 
 * **continuationToken** - 継続トークンは、一覧表示操作の開始位置を表します。 トークンが指定されていない場合、最初から BLOB を一覧表示します。 0 から設定された最大値まで、BLOB はいくつでも一覧表示できます。 このメソッドによって返される結果が 0 件でも、 `results.continuationToken` が nil でない場合は、一覧表示されていない BLOB がもっとサービス上に存在する可能性があります。
 * **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
-* **useFlatBlobListing** - 「 [コンテナーおよび BLOB の名前付けと参照](#naming-and-referencing-containers-and-blobs) 」セクションで説明したように、BLOB サービスはフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
+* **useFlatBlobListing** - 「 [コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 」セクションで説明したように、BLOB サービスはフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 * **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
   * _AZSBlobListingDetailsNone_: コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
   * _AZSBlobListingDetailsSnapshots_: コミット済みの BLOB と BLOB スナップショットを一覧表示します。

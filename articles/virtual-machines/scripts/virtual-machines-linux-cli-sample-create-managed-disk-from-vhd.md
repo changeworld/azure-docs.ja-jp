@@ -17,10 +17,10 @@ ms.date: 05/19/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 448636e87db126defc804a613bb61ff19a086ad9
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 36d34261325ba3ab120fd6bcf0f3816f84e15182
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -44,7 +44,7 @@ ms.lasthandoff: 08/22/2017
 
 | コマンド | メモ |
 |---|---|
-| [az disk create](https://docs.microsoft.com/cli/azure/disk#create) | 同じサブスクリプション内のストレージ アカウントに VHD の URI を使用して管理ディスクを作成する |
+| [az disk create](https://docs.microsoft.com/cli/azure/disk#az_disk_create) | 同じサブスクリプション内のストレージ アカウントに VHD の URI を使用して管理ディスクを作成する |
 
 ## <a name="next-steps"></a>次のステップ
 

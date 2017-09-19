@@ -17,10 +17,10 @@ ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 7e0867a0db2bbad1e490721e8bb2f59677950c18
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -42,7 +42,7 @@ CLI をローカルにインストールして使用する場合、このチュ�
 
 ## <a name="create-resource-group"></a>Create resource group
 
-[az group create](https://docs.microsoft.com/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドでリソース グループを作成します。 
 
 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 仮想マシンの前にリソース グループを作成する必要があります。 この例では、*myResourceGroupVM* という名前のリソース グループが *eastus* リージョンに作成されます。 
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroupVM --location eastus
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#create) コマンドを使用します。 
+仮想マシンを作成するには、[az vm create](https://docs.microsoft.com/cli/azure/vm#az_vm_create) コマンドを使用します。 
 
 仮想マシンを作成するときに、オペレーティング システム イメージ、ディスクのサイズ、管理者資格情報など、いくつかの選択肢があります。 この例では、Ubuntu Server を実行する *myVM* という名前の仮想マシンを作成します。 
 

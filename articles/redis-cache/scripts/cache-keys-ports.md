@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 08/30/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: cd9adc784bceb0fff5e7c2bbee2be0950c51c8f6
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: aee24e5c478c4453655952cc626d7d6c857e7962
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -40,8 +40,8 @@ ms.lasthandoff: 04/15/2017
 
 | コマンド | メモ |
 |---|---|
-| [az redis の表示](https://docs.microsoft.com/cli/azure/redis#show) | Azure Redis Cache インスタンスの詳細を取得。 |
-| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#list-keys) | Azure Redis Cache インスタンスのアクセス キーを取得。 |
+| [az redis の表示](https://docs.microsoft.com/cli/azure/redis#az_redis_show) | Azure Redis Cache インスタンスの詳細を取得。 |
+| [az redis list-keys](https://docs.microsoft.com/cli/azure/redis#az_redis_list_keys) | Azure Redis Cache インスタンスのアクセス キーを取得。 |
 
 
 ## <a name="next-steps"></a>次のステップ

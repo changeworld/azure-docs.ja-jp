@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 08/22/2017
 ms.author: denlee
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 292115b5603c6f05a5eab3492d4b3e2096b58ed2
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: ddfb10a9688842e4a23b72b4362d75b20d320262
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="build-a-java-web-application-using-azure-cosmos-db-and-the-documentdb-api"></a>Azure Cosmos DB および DocumentDB API を使用した Java Web アプリケーションの作成
@@ -48,11 +48,10 @@ ms.lasthandoff: 08/24/2017
 ## <a id="Prerequisites"></a>この Java Web アプリケーション チュートリアルの前提条件
 このアプリケーション開発チュートリアルを読み始める前に、次の項目を用意する必要があります。
 
-* アクティブな Azure アカウント。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)を参照してください。
+*  Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。 
 
-    または
+  [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-    [Azure Cosmos DB Emulator](local-emulator.md) のローカル インストール。
 * [Java Development Kit (JDK) 7 以降](http://www.oracle.com/technetwork/java/javase/downloads/index.html)。
 * [Eclipse IDE for Java EE Developers。](http://www.eclipse.org/downloads/packages/eclipse-ide-java-ee-developers/lunasr1)
 * [Java ランタイム環境 (Tomcat、Jetty など) が有効な Azure Web サイト。](../app-service-web/web-sites-java-get-started.md)

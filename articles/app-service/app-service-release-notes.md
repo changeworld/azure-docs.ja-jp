@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 10/10/2016
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: dc7b51cd0d015770b1100e895da633e8bde4b8da
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 357e58665f5cdf6ea9a3fcaee4a390f2b0d2045f
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sdk-for-net-251-release-notes"></a>Azure SDK for .NET 2.5.1 リリース ノート
@@ -28,7 +29,7 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 
 * **Web ツールの拡張機能**に関連する新機能とシナリオ。 
   
-  * Azure Websites から Azure App Service への名称変更。 詳細については、「 [Azure App Service と既存の Azure サービス](../app-service-web/app-service-changes-existing-services.md)」を参照してください。
+  * Azure Websites から Azure App Service への名称変更。 
   * Azure API Apps (プレビュー) のサポートが追加されたため、顧客は ASP.NET プロジェクトを API Apps として発行できるようになり、C# プロジェクトで [追加] > [Azure API アプリ クライアント] ジェスチャを使用して、デプロイされた API アプリの構造に基づいてコードを生成することができます。 
   * サーバー エクスプローラーの Websites ノードは廃止予定で、代わりに Azure App Service ノードが使用されます。このノードには、Azure API アプリ、モバイル アプリ、Web アプリのリソース グループ ベースのグループ化のサポートが含まれています。
   * Azure Mobile Apps (プレビュー) のサポートが追加されたため、顧客は新しいモバイル アプリ プロジェクトの作成、モバイル アプリ コントローラーの追加、プロジェクトの発行、アプリケーションのリモート デバッグを実行できます。
@@ -46,7 +47,7 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
     
     詳細については、「 [HDInsight Hadoop Tools for Visual Studio の使用開始](../hdinsight/hdinsight-hadoop-visual-studio-tools-get-started.md)」を参照してください。
 
-## <a name="a-idknownissues251aazure-sdk-for-net-251-known-issues-and-limitations"></a><a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 の既知の問題と制限事項
+## <a id="known_issues_2_5_1"></a>Azure SDK for .NET 2.5.1 の既知の問題と制限事項
 * Azure の API アプリは、モバイル アプリのデプロイメント ターゲットとして表示されます。 今後のリリースまで、Web アプリがモバイル アプリの唯一のデプロイ先である必要があります。 
 * Azure の API アプリのプロビジョニングが成功しても、Azure App Service の [アクティビティ] ウィンドウでの進行状況の更新が断続的に失敗することがあります。 回避策として、Azure ポータルの新しい Azure API アプリで状況を確認します。 
 * [ファイル]、[新しいプロジェクト]、[API アプリ] と移動して F5 キーを押すと、default/index.html がないため、HTTP エラーが発生します。 回避策として、/api/values URL を手動で参照します。 
@@ -62,10 +63,5 @@ Azure SDK for .NET 2.5.1 の新機能と更新点を以下に示します。
 * API アプリ プロジェクトは、クラウド サービス プロジェクトと組み合わせて使用することはできません。
 * API アプリのプロジェクト テンプレートは C# でのみ利用できます。
 * コンテキスト メニューの [Azure API アプリ クライアントの追加] を使用した API アプリの使用は、C# でのみサポートされます。
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

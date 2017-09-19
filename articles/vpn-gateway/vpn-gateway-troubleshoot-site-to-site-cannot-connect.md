@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/21/2017
+ms.date: 09/13/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: e7a3da64895f0307e5d6c3563672205a2f93a7d2
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 2411b2ccd30f2155164d65272f999fdd1f6ba760
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -46,7 +46,7 @@ Azure VPN ゲートウェイの種類を確認します。
 
 1. 使っている [VPN デバイスとオペレーティング システム バージョンが検証済み](vpn-gateway-about-vpn-devices.md#devicetable)であるかどうかを確認します。 検証済みの VPN デバイスではない場合、互換性の問題があるかどうかをデバイスの製造元に問い合わせてください。
 
-2. VPN デバイスが正しく構成されていることを確認します。 詳しくは、「[デバイス構成のサンプルの編集](/vpn-gateway-about-vpn-devices.md#editing)」をご覧ください。
+2. VPN デバイスが正しく構成されていることを確認します。 詳しくは、「[デバイス構成のサンプルの編集](vpn-gateway-about-vpn-devices.md#editing)」をご覧ください。
 
 ### <a name="step-2-verify-the-shared-key"></a>手順 2. 共有キーを確認する
 

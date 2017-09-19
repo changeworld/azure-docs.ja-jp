@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/01/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 5ed888cbb422766cf2094f5980dfd1c599bd431c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ff71194d701fd5de6ffe616c03f7214275f3bc62
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="agile-software-development-with-azure-app-service"></a>Azure App Service を使用したアジャイル ソフトウェア開発
@@ -264,7 +264,9 @@ Git Shell で、次のコマンドを実行します。
     Remove-AzureRmResourceGroup -Name ToDoApp<unique_string>newupdate-group -Force -Verbose
 
 ## <a name="summary"></a>概要
-アジャイル ソフトウェア開発は、アプリケーション プラットフォームとして Azure を採用することを希望する多くの企業になくてはならないものです。 このチュートリアルでは、運用環境の完全なまたは完全に近いレプリカの作成と削除を容易に実行する方法について説明しました。これは複雑なアプリケーションでも同じです。 すべてのコミットを Azure でビルドして構築できる開発プロセス作成機能を活用する方法についても説明しました。 このチュートリアルが、Azure App Service と Azure リソース マネージャーを最大限に利用して、アジャイル手法に対応する DevOps ソリューションを作成する方法の十分な説明になっていれば幸いです。 次に、このシナリオを基にしてビルドするには、[運用環境でのテスト](app-service-web-test-in-production-get-start.md)などの高度な DevOps テクニックを実行します。 一般的な運用環境でのテスト シナリオについては、「[Azure App Service でのフライト デプロイメント (ベータ テスト)](app-service-web-test-in-production-controlled-test-flight.md)」を参照してください。
+アジャイル ソフトウェア開発は、アプリケーション プラットフォームとして Azure を採用することを希望する多くの企業になくてはならないものです。 このチュートリアルでは、運用環境の完全なまたは完全に近いレプリカの作成と削除を容易に実行する方法について説明しました。これは複雑なアプリケーションでも同じです。 すべてのコミットを Azure でビルドして構築できる開発プロセス作成機能を活用する方法についても説明しました。 このチュートリアルが、Azure App Service と Azure リソース マネージャーを最大限に利用して、アジャイル手法に対応する DevOps ソリューションを作成する方法の十分な説明になっていれば幸いです。 
+
+<!-- Next, you can build on this scenario by performing advanced DevOps techniques such as testing in production. For a common testing-in-production scenario, see [Flighting deployment (beta testing) in Azure App Service](app-service-web-test-in-production-controlled-test-flight.md). -->
 
 ## <a name="more-resources"></a>その他のリソース
 * [Azure で複雑なアプリケーションを予測どおりにデプロイする](app-service-deploy-complex-application-predictably.md)

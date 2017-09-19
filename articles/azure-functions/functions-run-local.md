@@ -1,4 +1,4 @@
----
+﻿---
 title: "ローカルでの Azure Functions の開発と実行 | Microsoft Docs"
 description: "Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。"
 services: functions

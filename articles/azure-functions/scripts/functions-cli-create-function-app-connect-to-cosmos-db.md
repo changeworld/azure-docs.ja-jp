@@ -16,11 +16,11 @@ ms.workload:
 ms.date: 04/20/2017
 ms.author: rachelap
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
-ms.openlocfilehash: ba7e934f71824493f29b001cea6dd1c567ef3414
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: c2c3530df62a1f291be51739a7918f7b8ab08487
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="create-an-azure-function-that-connects-to-an-azure-cosmos-db"></a>Azure Cosmos DB に接続する Azure 関数の作成
@@ -52,11 +52,11 @@ CLI をローカルにインストールして使用する場合、このトピ�
 | コマンド | メモ |
 |---|---|
 | [az login](https://docs.microsoft.com/cli/azure/#login) | Azure にログインします。 |
-| [az group create](https://docs.microsoft.com/cli/azure/group#create) | 任意の場所にリソース グループを作成します |
+| [az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) | 任意の場所にリソース グループを作成します |
 | [az storage account create](https://docs.microsoft.com/cli/azure/storage/account) | ストレージ アカウントの作成 |
-| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#create) | 新しい Function App を作成します |
-| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#create) | DocumentDB データベースを作成します |
-| [az group delete](https://docs.microsoft.com/cli/azure/group#delete) | クリーンアップ |
+| [az functionapp create](https://docs.microsoft.com/cli/azure/functionapp#az_functionapp_create) | 新しい Function App を作成します |
+| [az documentdb create](https://docs.microsoft.com/cli/azure/documentdb#az_documentdb_create) | DocumentDB データベースを作成します |
+| [az group delete](https://docs.microsoft.com/cli/azure/group#az_group_delete) | クリーンアップ |
 
 ## <a name="next-steps"></a>次のステップ
 
