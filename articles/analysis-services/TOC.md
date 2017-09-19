@@ -16,6 +16,7 @@
 ## [サーバーの管理](analysis-services-manage.md)
 ## [データベース ユーザーの管理](analysis-services-database-users.md)
 ## [サーバー管理者の管理](analysis-services-server-admins.md)
+## [サーバー メトリックの監視](analysis-services-monitor.md)
 ## [オンプレミス データ ゲートウェイのインストールと構成](analysis-services-gateway-install.md)
 ## [クライアント ライブラリの取得](analysis-services-data-providers.md)
 ## [バックアップと復元](analysis-services-backup.md)
