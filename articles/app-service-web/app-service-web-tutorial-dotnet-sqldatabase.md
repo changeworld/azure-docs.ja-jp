@@ -158,7 +158,7 @@ Visual Studio で *dotnet-sqldb-tutorial-master/DotNetAppSqlDb.sln* ファイル
 
 ![SQL Database を構成する](media/app-service-web-tutorial-dotnet-sqldatabase/configure-sql-database.png)
 
-作成したリソースが **[App Service の作成]** ダイアログに表示されます。 ページの下部にある **[Create]**」を参照してください。 
+作成したリソースが **[App Service の作成]** ダイアログに表示されます。 ページの下部にある **[Create]** をクリックしてください。 
 
 ![作成したリソース](media/app-service-web-tutorial-dotnet-sqldatabase/app_svc_plan_done.png)
 
