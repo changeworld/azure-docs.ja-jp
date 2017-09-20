@@ -142,7 +142,6 @@ Azure Active Directory 管理者アカウントを利用することもできま
 
     ```sql
     CREATE LOGIN MedRCLogin WITH PASSWORD = 'a123reallySTRONGpassword!';
-    CREATE USER LoadingUser FOR LOGIN MedRCLogin;
     ```
 
 3. "*SQL Data Warehouse データベース*" に対してクエリを実行して、データベースにアクセスして操作を実行するためのデータベース ユーザーを、作成したログインに基づいて作成します。

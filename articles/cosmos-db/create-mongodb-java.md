@@ -30,12 +30,12 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="prerequisites"></a>前提条件
 
-* このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
-   * JDK 1.7 以降 (JDK がない場合は、`apt-get install default-jdk` を実行します)
-   * Maven (Maven がない場合は、`apt-get install maven` を実行します)
+このサンプルを実行する前に、以下の前提条件を満たしている必要があります。
+* JDK 1.7 以降 (JDK がない場合は、`apt-get install default-jdk` を実行します)
+* Maven (Maven がない場合は、`apt-get install maven` を実行します)
 
-* [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-* [!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+[!INCLUDE [cosmos-db-emulator-mongodb](../../includes/cosmos-db-emulator-mongodb.md)]
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 

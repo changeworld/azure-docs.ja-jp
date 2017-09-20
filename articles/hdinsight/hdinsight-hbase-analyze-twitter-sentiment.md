@@ -1198,7 +1198,7 @@ Azure Web サイトにこのアプリケーションをデプロイすること�
 * [HDInsight 用 Java MapReduce プログラムの開発][hdinsight-develop-mapreduce]
 
 [hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
-[website-get-started]: ../app-service-web/app-service-web-get-started-dotnet.md
+[website-get-started]: ../app-service/app-service-web-get-started-dotnet.md
 
 
 

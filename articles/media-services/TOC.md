@@ -183,7 +183,7 @@
 ### [ダウンロードで配信する](media-services-deliver-asset-download.md)
 ### [フェールオーバー ストリーミング シナリオ](media-services-implement-failover.md)
 
-## 再生
+## 使用
 ### [既存のプレーヤーを使用したメディアの再生](media-services-playback-content-with-existing-players.md)
 ### [Media Player を使用したメディアの再生](media-services-develop-video-players.md)
 ### その他の再生オプション
