@@ -87,7 +87,7 @@ Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Clas
 
 ![パブリック IP ブレード](./media/dns-custom-domain/publicip.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -114,7 +114,7 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -148,7 +148,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/blobcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -177,7 +177,7 @@ DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)*
 
 ![CDN カスタム ドメイン](./media/dns-custom-domain/endpointcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 |プロパティ  |値  |Description  |
 |---------|---------|---------|
