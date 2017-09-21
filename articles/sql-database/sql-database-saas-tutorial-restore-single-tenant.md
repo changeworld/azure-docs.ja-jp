@@ -1,11 +1,11 @@
 ---
-title: "マルチテナント アプリで Azure SQL Database を復元する | Microsoft Docs"
+title: "マルチテナント SaaS アプリで Azure SQL Database を復元する | Microsoft Docs"
 description: "データを誤って削除した場合にシングル テナントの SQL データベースを復元する方法について説明します"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
 author: stevestein
-manager: jhubbard
+manager: craigg
 editor: 
 ms.assetid: 
 ms.service: sql-database
@@ -16,15 +16,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
-ms.openlocfilehash: 547851972f13ec69a8f65d01290874ad7d07f192
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 792476849e796695dde3f2ec80b56431a17e8fc0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/14/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="restore-a-wingtip-saas-tenants-sql-database"></a>Wingtip SaaS テナントの SQL データベースの復元
+# <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチ テナント SaaS アプリでは、1 つのテナントの Azure SQL データベースを復元します。
 
 Wingtip SaaS アプリは、テナントごとのデータベース モデルを使用して構築されています。このモデルでは、各テナントに独自のデータベースが用意されています。 このモデルの利点の 1 つは、他のテナントに影響を与えることなく、シングル テナントのデータを切り離して簡単に復元できることです。
 

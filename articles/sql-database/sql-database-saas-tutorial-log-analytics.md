@@ -1,6 +1,6 @@
 ---
 title: "SQL Database のマルチテナント アプリで Log Analytics を使用する | Microsoft Docs"
-description: "Azure SQL Database のサンプル Wingtip SaaS アプリで Log Analytics (OMS) を設定して使用します"
+description: "マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
 documentationcenter: 
@@ -17,15 +17,15 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: billgib; sstein
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 26f6f519ecb3abf6343dc2776aa141dff99ced15
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f9428871eab19f56e439ba529a9dcfde833d4fbf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-# <a name="setup-and-use-log-analytics-oms-with-the-wingtip-saas-app"></a>Wingtip SaaS アプリで Log Analytics (OMS) を設定して使用する
+# <a name="setup-and-use-log-analytics-oms-with-a-multi-tenant-azure-sql-database-saas-app"></a>マルチテナント Azure SQL Database SaaS アプリで Log Analytics (OMS) を設定して使用する
 
-このチュートリアルでは、エラスティック プールとデータベースを監視するために、*Log Analytics ([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))* を設定して使用します。 このチュートリアルは[パフォーマンスの監視と管理を行うためのチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)に基づいています。ここでは、*Log Analytics* を使用して、Azure ポータルで提供される監視とアラートの機能を強化する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
+このチュートリアルでは、エラスティック プールおよびデータベースを監視するために、*Log Analytics([OMS](https://www.microsoft.com/cloud-platform/operations-management-suite))*を設定して使用します。 このチュートリアルは、[パフォーマンスの監視と管理のチュートリアル](sql-database-saas-tutorial-performance-monitoring.md)を基礎とします。 *Log Analytics* を使用して、Azure Portal で提供された監視とアラート設定を拡張する方法を示します。 Log Analytics は、数百のプールや数千のデータベースをサポートするため、大規模な監視とアラートに適しています。 それは、単一監視ソリューションも提供し、複数の Azure サブスクリプションのさまざまなアプリケーションと Azure サービスの監視を統合することができます。
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -48,7 +48,7 @@ SQL Database では、データベースとプールに対する監視とアラ�
 
 Log Analytics のワークスペースと分析ソリューションは、Azure ポータルと OMS の両方で開くことができます。 Azure ポータルは新しいアクセス ポイントですが、一部の領域では OMS ポータルの背後に配置される場合があります。
 
-### <a name="start-the-load-generator-to-create-data-to-analyze"></a>ロード ジェネレーターを起動して分析するデータを作成する
+### <a name="create-data-by-starting-the-load-generator"></a>ロード ジェネレーターを開始してデータを作成する 
 
 1. **PowerShell ISE** で **Demo-PerformanceMonitoringAndManagement.ps1** を開きます。 このスクリプトは、このチュートリアル中にいくつかのロード生成シナリオで実行するため、開いたままにしておいてください。
 1. テナント数が 5 未満の場合は、より興味深い監視コンテキストを提供するために、テナントのバッチをプロビジョニングします。

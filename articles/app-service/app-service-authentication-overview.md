@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure App Service での認証と承認 | Microsoft Docs"
 description: "Azure App Service の認証/承認の機能の概念リファレンスと概要"
 services: app-service
@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b75f7aa757679a29a42cdfc04799873ee30bab2e
-ms.openlocfilehash: e89ba5613c615c41af93e8f63b3703da8395095c
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: ea1666007b88cdf45017b0bd91e100dc1218fb2b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/20/2017
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
@@ -32,7 +31,6 @@ App Service では、サード パーティの ID プロバイダーがアカウ
 
 * [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
 * [Azure App Service の API Apps でのユーザー認証][apia-user]
-* [Azure App Service の使用 - 第 2 部][web-getstarted]
 
 ## <a name="how-authentication-works-in-app-service"></a>App Service の認証のしくみ
 いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーから ID とシークレットが提供されるので、それらを App Service に提供します。 これにより信頼関係が完成し、App Service は、ID プロバイダーから、認証トークンなどのユーザー アサーションを検証できるようになります。
@@ -92,7 +90,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
   
     この場合、認証/承認の機能は無効になります。 認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
 
-前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 **[*<プロバイダー名>* でのログイン] **を選択した場合、すべての要求が認証される必要があります。**[要求の許可 (操作不要)]** では、認証に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 [***<プロバイダー名>* でのログイン**] を選択した場合、すべての要求が認証される必要があります。 **[要求の許可 (操作不要)]** では、承認に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
 
 ## <a name="working-with-user-identities-in-your-application"></a>アプリケーションでのユーザー ID の使用
 App Service では、特殊なヘッダーを使用して、アプリケーションにユーザー情報の一部を渡します。 外部要求ではこれらのヘッダーが禁じられており、App Service の認証/承認によって設定された場合にのみ、使用できます。 いくつかのヘッダーの例は次のとおりです。
@@ -160,8 +158,6 @@ Google のクライアント主導のフローを使用する場合は、次の�
 
 [apia-user]: ../app-service-api/app-service-api-dotnet-user-principal-auth.md
 [apia-service]: ../app-service-api/app-service-api-dotnet-service-principal-auth.md
-
-[web-getstarted]: ../app-service-web/app-service-web-get-started-2.md#authenticate-your-users
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md
