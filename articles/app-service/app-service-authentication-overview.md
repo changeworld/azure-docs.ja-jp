@@ -75,7 +75,7 @@ App Service 認証を使用して、サービス間のシナリオを処理す�
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、 [App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md) で説明されています。
 
-## <a name="authorization"></a>App Service の認証のしくみ
+## <a name="authorization"></a>App Service の承認のしくみ
 アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
 
 * 認証済みの要求のみアプリケーションへの到達を許可する。
