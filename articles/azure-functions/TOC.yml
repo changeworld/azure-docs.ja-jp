@@ -100,7 +100,7 @@
         - name: Open API 2.0 定義の作成
           href: functions-api-definition-getting-started.md
         - name: PowerApps および Microsoft Flow にエクスポートする
-          href: ../app-service/app-service-export-api-to-powerapps-and-flow.md?toc=%2fazure%2fazure-functions%2ftoc.json
+          href: app-service-export-api-to-powerapps-and-flow.md
         - name: PowerApps から関数を呼び出す
           href: functions-powerapps-scenario.md
         - name: 管理対象のサービス ID の使用

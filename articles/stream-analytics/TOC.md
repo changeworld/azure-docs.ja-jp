@@ -27,7 +27,7 @@
 ### [出力を作成する](stream-analytics-define-outputs.md)
 ### [Azure Functions に出力する](stream-analytics-functions-redis.md)
 ### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)
-### [DocumentDB に出力する](stream-analytics-documentdb-output.md)
+### [Cosmos DB に出力する](stream-analytics-documentdb-output.md)
 
 ## 監視と最適化
 ### [アラートの追加](stream-analytics-set-up-alerts.md)

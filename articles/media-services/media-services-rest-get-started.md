@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: b5a852619300c0acad1ea21738921eaf1d2f59b4
+ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
+ms.openlocfilehash: 731c32970941c6a3963dcb48bf03ee0f53e0c7af
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 08/12/2017
 
 ---
 # <a name="get-started-with-delivering-content-on-demand-using-rest"></a>REST を使用したオンデマンド コンテンツ配信の概要
@@ -54,7 +54,7 @@ REST API を使用して Media Services での開発を始めるには、次の�
 >[!NOTE]
 >さまざまな AMS ポリシー (ロケーター ポリシーや ContentKeyAuthorizationPolicy など) に 1,000,000 ポリシーの制限があります。 常に同じ日数、アクセス許可などを使う場合は、同じポリシー ID を使う必要があります (たとえば、長期間存在するように意図されたロケーターのポリシー (非アップロード ポリシー))。 詳細については、 [こちらの](media-services-dotnet-manage-entities.md#limit-access-policies) トピックを参照してください。
 
-このトピックで使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
+このトピックで使用する AMS REST エンティティの詳細については、[Azure Media Services REST API リファレンス](/rest/api/media/services/azure-media-services-rest-api-reference)に関するページをご覧ください。 また、「[Azure Media Services の概念](media-services-concepts.md)」も参照してください。
 
 >[!NOTE]
 >Media Services でエンティティにアクセスするときは、HTTP 要求で特定のヘッダー フィールドと値を設定する必要があります。 詳細については、「 [Media Services REST API の概要](media-services-rest-how-to-use.md)」をご覧ください。

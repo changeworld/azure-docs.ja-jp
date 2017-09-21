@@ -15,12 +15,11 @@ ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: d42df0cbfa20741d4848dbefabb9028128b42ae1
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 79f7ccabb3900acfba7216823cecc7fc7bddd4b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>BACPAC ファイルを新しい Azure SQL Database にインポートする
@@ -38,7 +37,7 @@ ms.lasthandoff: 07/08/2017
 
 この記事では、[Azure Portal](https://portal.azure.com) を使って、Azure Blob Storage に保存されている BACPAC ファイルから Azure SQL Database を作成する手順について説明します。 Azure Portal を使用する場合は、Azure Blob Storage からのインポートのみをサポートします。
 
-Azure Portal を使用してデータベースをインポートするには、データベースのページを開き、ツールバーの **[インポート]** をクリックします。 ストレージ アカウントとコンテナーを指定し、インポートする BACPAC ファイルを選択します。 新しいデータベースのサイズ (通常、元のサイズと同じ) を選択し、インポート先の SQL Server 資格情報を指定します。  
+Azure Portal を使用してデータベースをインポートするには、データベースに関連付けられたサーバーのページを開き、ツールバーの **[インポート]** をクリックします。 ストレージ アカウントとコンテナーを指定し、インポートする BACPAC ファイルを選択します。 新しいデータベースのサイズ (通常、元のサイズと同じ) を選択し、インポート先の SQL Server 資格情報を指定します。  
 
    ![データベースのインポート](./media/sql-database-import/import.png)
 
@@ -63,8 +62,6 @@ Azure Portal を使用してデータベースをインポートするには、�
 ```cmd
 SqlPackage.exe /a:import /tcs:"Data Source=mynewserver20170403.database.windows.net;Initial Catalog=myMigratedDatabase;User Id=ServerAdmin;Password=<change_to_your_password>" /sf:AdventureWorks2008R2.bacpac /p:DatabaseEdition=Premium /p:DatabaseServiceObjective=P6
 ```
-
-   ![SQLPackage インポート](./media/sql-database-migrate-your-sql-server-database/sqlpackage-import.png)
 
 > [!IMPORTANT]
 > Azure SQL Database 論理サーバーは、ポート 1433 でリッスンします。 企業のファイアウォール内から Azure SQL Database 論理サーバーに接続する場合、企業のファイアウォールでこのポートが開放されていないと、正しく接続することができません。

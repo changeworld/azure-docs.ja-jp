@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/20/2017
 ms.author: carlrab
 ms.translationtype: HT
 ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6

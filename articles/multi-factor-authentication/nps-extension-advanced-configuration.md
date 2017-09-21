@@ -3,7 +3,7 @@ title: "Azure MFA NPS の拡張機能を構成する | Microsoft Docs"
 description: "NPS の拡張機能をインストールした後に、これらの手順を使用して IP のホワイトリスト登録や UPN の置換などを詳細に構成できます。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.translationtype: HT

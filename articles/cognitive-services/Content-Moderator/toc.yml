@@ -4,6 +4,30 @@
   items:
     - name: Content Moderator について
       href: overview.md
+- name: クイック スタート
+  items:
+    - name: レビュー ツール
+      href: quick-start.md
+    - name: モデレート API
+      items:
+        - name: イメージ API
+          href: try-image-api.md
+        - name: イメージ リスト API
+          href: try-image-list-api.md
+        - name: テキスト API
+          href: try-text-api.md
+        - name: 用語リスト API
+          href: try-terms-list-api.md
+    - name: API の確認
+      items:
+        - name: '[ジョブ]'
+          href: try-review-api-job.md
+        - name: レビュー
+          href: try-review-api-review.md
+        - name: ワークフロー
+          href: try-review-api-workflow.md
+- name: 概念
+  items:
     - name: 画像のモデレート
       href: image-moderation-api.md
     - name: テキストのモデレート
@@ -14,31 +38,9 @@
       href: video-moderation-api.md
     - name: API の確認
       href: review-api.md
-- name: 作業開始
+- name: ハウツー ガイド
   items:
     - name: レビュー ツール
-      href: quick-start.md
-    - name: モデレート API を試す
-      items:
-        - name: イメージ
-          href: try-image-api.md
-        - name: 画像リスト
-          href: try-image-list-api.md
-        - name: テキスト
-          href: try-text-api.md
-        - name: 用語リスト
-          href: try-terms-list-api.md
-    - name: レビュー API を試す
-      items:
-        - name: '[ジョブ]'
-          href: try-review-api-job.md
-        - name: レビュー
-          href: try-review-api-review.md
-        - name: ワークフロー
-          href: try-review-api-workflow.md
-- name: 方法
-  items:
-    - name: レビュー ツールの使用
       items:
         - name: 人間の関与について
           href: Review-Tool-User-Guide/human-in-the-loop.md

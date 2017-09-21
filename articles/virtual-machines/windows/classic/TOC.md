@@ -3,7 +3,7 @@
 ## [ディスクと VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)
 ## [FAQ](faq.md)
-## [VM、Web サイト、およびクラウド サービスの比較](../../../app-service-web/choose-web-site-cloud-service-vm.md)
+## [VM、Web サイト、およびクラウド サービスの比較](../../../app-service/choose-web-site-cloud-service-vm.md)
 ## [コンテナー](../../virtual-machines-windows-containers.md)
 
 # 作業開始

@@ -4,7 +4,7 @@ description: "Multi-Factor Authentication クライアント、各種認証方�
 keywords: 
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 editor: yossib
 ms.assetid: 
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
-ms.author: joflore
+ms.author: kgremban
 ms.translationtype: HT
 ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 525ca7733d509b6831e6c5ab7a6f3a5ce5250156

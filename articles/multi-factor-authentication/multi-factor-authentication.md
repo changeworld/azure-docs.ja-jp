@@ -4,7 +4,7 @@ description: "Multi-Factor Authentication とは、MFA を使用する理由、M
 keywords: "MFA の概要, mfaの概要, mfa とは"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 editor: yossib
 ms.assetid: c40d7a34-1274-4496-96b0-784850c06e9b
@@ -14,7 +14,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/03/2017
-ms.author: joflore
+ms.author: kgremban
 ms.translationtype: HT
 ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 6239e0affd778f8f64222abce769841b27d6be1d
@@ -32,10 +32,6 @@ ms.lasthandoff: 09/14/2017
 <center>![ユーザー名とパスワード](./media/multi-factor-authentication/pword.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![証明書](./media/multi-factor-authentication/phone.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![スマート フォン](./media/multi-factor-authentication/hware.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![スマート カード](./media/multi-factor-authentication/smart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![仮想スマート カード](./media/multi-factor-authentication/vsmart.png) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;![ユーザー名とパスワード](./media/multi-factor-authentication/cert.png)</center>
 
 Azure Multi-Factor Authentication (MFA) は、Microsoft の 2 段階認証ソリューションです。 Azure MFA では、シンプルなサインイン プロセスを好むユーザーのニーズに応えながら、データやアプリケーションへのアクセスを効果的に保護することができます。 電話、テキスト メッセージ、モバイル アプリによる確認など、一連の照合方法を通じて確実な認証を行うことができます。
-
-> [!VIDEO https://channel9.msdn.com/Blogs/Azure/WA-MFA-Overview/player]
->
->
 
 ## <a name="why-use-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication を使う理由
 インターネットの接続人口は今やかつてない水準にまで増加しています。 スマート フォン、タブレット、ノート PC、デスクトップ PC など、インターネットへの接続手段は多様化し、常時接続していることが当たり前の時代となりました。 人々は、どこにいても、自分のアカウントやアプリケーションにアクセスすることができます。そのことが生産性とサービスの質の向上につながっているといえるでしょう。

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: sqldb-performance
 ms.workload: data-management
 ms.date: 11/08/2016
 ms.author: bonova
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 46d33a7b2dbaeb447452d8c94e897e59ec915dcc
-ms.openlocfilehash: 104a2d91ee9ca657fcc431d947d6a4be5d57a056
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: c76934d96530889f529eb887469e05d5a6a45e1e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Azure SQL Database のクエリ ストアの動作

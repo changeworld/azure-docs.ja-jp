@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure でスケジュールに基づいて実行される関数を作成する | Microsoft Docs"
 description: "Azure で定義したスケジュールに基づいて実行する関数を作成する方法について説明します。"
 services: functions
@@ -62,7 +62,7 @@ Azure Functions を使用して、定義したスケジュールに基づいて�
     | **関数名の指定** | TimerTriggerCSharp1 | タイマーによってトリガーされる関数の名前を定義します。 |
     | **[スケジュール](http://en.wikipedia.org/wiki/Cron#CRON_expression)** | 0 \*/1 \* \* \* \* | 関数を毎分実行するようにスケジュールする 6 つのフィールドの [CRON 式](http://en.wikipedia.org/wiki/Cron#CRON_expression)。 |
 
-2. **[Create]** をクリックします。 選択した言語で、毎分実行する関数が作成されます。
+2. **Create** をクリックしてください。 選択した言語で、毎分実行する関数が作成されます。
 
 3. ログに書き込まれたトレース情報を表示して、実行を確認します。
 

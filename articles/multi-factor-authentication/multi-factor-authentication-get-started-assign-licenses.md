@@ -3,7 +3,7 @@ title: "Azure MFA のライセンスを割り当てる | Microsoft Docs"
 description: "Microsoft Azure Multi-Factor Authentication のユーザー ライセンスを割り当てる方法について説明します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: 514ef423-8ee6-4987-8a4e-80d5dc394cf9
 ms.service: multi-factor-authentication
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/13/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ROBOTS: NOINDEX
