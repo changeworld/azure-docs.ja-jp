@@ -1,6 +1,6 @@
 ---
-title: "PowerShell サンプル - インポート - bacpac ファイル - Azure SQL データベース | Microsoft Docs"
-description: "bacpac ファイルを SQL データベースにインポートするための Azure PowerShell サンプル スクリプト"
+title: "BACPAC ファイルを Azure SQL データベースにインポートする PowerShell サンプル | Microsoft Docs"
+description: "BACPAC ファイルを SQL データベースにインポートするための Azure PowerShell サンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,17 +16,17 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: ba477c19a7c7bd6809aa3b78c0ef23e9cc7d5497
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 815ba6e1eb775399e747514843dbd0f201156a3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
-# <a name="use-powershell-to-import-a-bacpac-file-into-an-azure-sql-database"></a>PowerShell を使用して bacpac ファイルを Azure SQL データベースにインポートする
+# <a name="use-powershell-to-import-a-pacpac-file-into-an-azure-sql-database"></a>PowerShell を使用して BACPAC ファイルを Azure SQL データベースにインポートする
 
-この PowerShell サンプル スクリプトは、**bacpac** ファイルから Azure SQL データベースにデータベースをインポートします。  
+この PowerShell サンプル スクリプトは、BACPAC ファイルから Azure SQL データベースにデータベースをインポートします。  
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 06/28/2017
 スクリプト サンプルの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
 
 ```powershell
-Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
+Remove-AzureRmResourceGroup -ResourceGroupName $resourcegroupname
 ```
 
 ## <a name="script-explanation"></a>スクリプトの説明
@@ -51,7 +51,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [New-AzureRmSqlServer](/powershell/module/azurerm.sql/new-azurermsqlserver) | SQL Database をホストする論理サーバーを作成します。 |
 | [New-AzureRmSqlServerFirewallRule](/powershell/module/azurerm.sql/new-azurermsqlserverfirewallrule) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
-| [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) | .bacpac ファイルをインポートし、新しいデータベースをサーバー上に作成します。 |
+| [New-AzureRmSqlDatabaseImport](/powershell/module/azurerm.sql/new-azurermsqldatabaseimport) | BACPAC ファイルをインポートし、新しいデータベースをサーバー上に作成します。 |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ

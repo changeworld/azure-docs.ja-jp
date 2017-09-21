@@ -12,8 +12,9 @@
 ### [1 - .NET アプリケーションの構築](service-fabric-tutorial-create-dotnet-app.md)
 ### [2 - アプリケーションのデプロイ](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 ### [3 - CI/CD の構成](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)
+### [4 - 監視と診断](service-fabric-tutorial-monitoring-aspnet.md)
 
-## アプリのリフト アンド シフト
+## 既存の .NET アプリのコンテナー格納
 ### [1 - Azure でのセキュリティで保護されたクラスターの作成](service-fabric-tutorial-create-cluster-azure-ps.md)
 ### [2 - Docker Compose を使用した .NET アプリのデプロイ](service-fabric-host-app-in-a-container.md)
 

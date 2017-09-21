@@ -11,8 +11,6 @@
 ### [操作を追加する](api-management-howto-add-operations.md)
 ### [API の作成](api-management-howto-create-apis.md)
 ### [API 定義をインポートする](api-management-howto-import-api.md)
-### [リビジョンの使用](api-management-get-started-revise-api.md)
-### [バージョンの使用](api-management-get-started-publish-versions.md)
 ## バックエンドをセキュリティで保護する
 ### [AAD で Web API バックエンドを保護する](api-management-howto-protect-backend-with-aad.md)
 ### [仮想ネットワークに接続する](api-management-using-with-vnet.md)

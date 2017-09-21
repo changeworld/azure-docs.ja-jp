@@ -60,7 +60,6 @@
 ### 自動スケールの構成
 #### [ポータル](cloud-services-how-to-scale-portal.md)
 #### [クラシック ポータル](cloud-services-how-to-scale.md)
-#### [PowerShell](cloud-services-how-to-scale-powershell.md)
 ### [Python を使用した Azure リソースの管理](cloud-services-python-how-to-use-service-management.md)
 
 ### [ゲスト OS の修正プログラム](cloud-services-guestos-msrc-releases.md)

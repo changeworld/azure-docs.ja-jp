@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
+ms.sourcegitcommit: 3f130c7718e204ba2e826c2500d8935a6285f71f
 ms.openlocfilehash: 144078bbee8e9633fac12231daa07da6c295f46e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス

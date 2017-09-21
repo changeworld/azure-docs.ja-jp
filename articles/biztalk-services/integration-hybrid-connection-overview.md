@@ -92,8 +92,6 @@ ms.lasthandoff: 09/07/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Create and manage Hybrid Connections](integration-hybrid-connection-create-manage.md)<br/>
-<!-- [Connect Azure Web Apps to an On-Premises Resource](../app-service-web/web-sites-hybrid-connection-get-started.md)<br/>
-[Connect to on-premises SQL Server from an Azure web app](../app-service-web/web-sites-hybrid-connection-connect-on-premises-sql-server.md)<br/> -->
 
 ## <a name="see-also"></a>関連項目
 [Microsoft Azure での BizTalk Services の管理用 REST API](http://msdn.microsoft.com/library/azure/dn232347.aspx)
@@ -102,7 +100,4 @@ ms.lasthandoff: 09/07/2017
 [BizTalk Services: [ダッシュボード]、[監視]、[スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-[HybridConnectionTab]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionTab.png
-[HCOnPremSetup]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionOnPremSetup.png
-[HCManageConnection]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionManageConn.png
 

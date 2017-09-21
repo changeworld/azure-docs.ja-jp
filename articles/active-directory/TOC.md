@@ -42,6 +42,7 @@
 #### [グループでのライセンスに関する問題を特定して解決する](active-directory-licensing-group-problem-resolution-azure-portal.md)
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
+#### [ユーザーとアプリの使用条件を指定する](active-directory-tou.md)
 #### [グループベースのライセンスの PowerShell の例](active-directory-licensing-ps-examples.md)
 ### [他のディレクトリからユーザーを追加する (クラシック ポータル)](active-directory-create-users-external.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
@@ -197,6 +198,7 @@
 #### [すべてのアプリを表示する](active-directory-coreapps-view-azure-portal.md)
 #### [ユーザー アカウントのプロビジョニング管理](active-directory-enterprise-apps-manage-provisioning.md)
 #### [エンタープライズ アプリのシングル サインオンの管理](active-directory-enterprise-apps-manage-sso.md)
+#### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
@@ -273,6 +275,17 @@
 #### [管理者ロールを割り当てる](active-directory-users-assign-role-azure-portal.md)
 ### [管理単位](active-directory-administrative-units-management.md)
 ### [トークンの有効期間を構成する](active-directory-configurable-token-lifetimes.md)
+
+## アクセス レビュー
+### [アクセス レビューの概要](active-directory-azure-ad-controls-access-reviews-overview.md)
+### [アクセス レビューの完了](active-directory-azure-ad-controls-complete-access-review.md)
+### [アクセス レビューの作成](active-directory-azure-ad-controls-create-access-review.md)
+### [アクセス レビューを実行する方法](active-directory-azure-ad-controls-perform-access-review.md)
+### [アクセスをレビューする方法](active-directory-azure-ad-controls-how-to-review-your-access.md)
+### [アクセス レビューでのゲスト アクセス](active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md)
+### [レビューでのユーザー アクセスの管理](active-directory-azure-ad-controls-manage-user-access-with-access-reviews.md)
+### [プログラムとコントロールの管理](active-directory-azure-ad-controls-manage-programs-controls.md)
+
 
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)

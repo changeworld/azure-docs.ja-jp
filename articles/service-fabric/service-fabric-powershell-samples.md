@@ -10,17 +10,17 @@ tags:
 ms.assetid: b48d1137-8c04-46e0-b430-101e07d7e470
 ms.service: service-fabric
 ms.devlang: na
-ms.topic: sample
+ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: service-fabric
 ms.date: 08/16/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
+ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: b109d1f3082fa3017f34bed685fd008ff3630394
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-powershell-samples"></a>Azure PowerShell のサンプル

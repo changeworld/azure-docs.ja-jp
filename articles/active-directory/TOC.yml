@@ -70,5 +70,5 @@
           href: msi-tutorial-windows-vm-access-nonaad.md
         - name: Linux VM の場合
           href: msi-tutorial-linux-vm-access-nonaad.md
-    - name: 既知の問題
+    - name: FAQ と既知の問題
       href: msi-known-issues.md

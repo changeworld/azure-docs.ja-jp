@@ -1,12 +1,17 @@
 # 概要
 ## [開発者ガイド](azure-developer-guide.md) 
+### [Azure とは](azure-developer-guide.md#what-is-azure)
+### [どこから始めるか](azure-developer-guide.md#where-do-i-start)
+### [Azure リージョン](azure-developer-guide.md#azure-regions)
+### [アプリケーションとプロジェクトを管理する方法](azure-developer-guide.md#how-do-i-manage-my-applications-and-projects)
+### [アカウント、サブスクリプション、課金の概要](azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)
 
-## [Azure サービスの概要](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure)
-## [Portal の概要](https://docs.microsoft.com/azure/azure-portal-overview)
+## [Azure サービスの概要](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
+## [Portal の概要](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [SDK とツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)
 
 # クイック スタート
-## [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-web-get-started-html)
+## [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-html)
 ## 仮想マシン
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/quick-create-portal)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal)
@@ -17,10 +22,10 @@
 
 # チュートリアル
 ## Web アプリを作成してデプロイする
-### [.NET と SQL DB](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-dotnet-sqldatabase)
-### [Node.js と Mongo DB](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-nodejs-mongodb-app)
-### [PHP と MySQL](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-php-mysql)
-### [Java と MySQL](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-java-mysql)
+### [.NET と SQL DB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
+### [Node.js と Mongo DB](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
+### [PHP と MySQL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-php-mysql)
+### [Java と MySQL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-java-mysql)
 ## 複雑な VM テンプレートをデプロイする
 ### [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -29,25 +34,25 @@
 
 # サンプル
 ## Azure CLI
-### [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-cli-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-cli-samples)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/cli-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/cli-samples)
 ## PowerShell
-### [Web Apps](https://docs.microsoft.com/azure/app-service-web/app-service-powershell-samples)
+### [Web Apps](https://docs.microsoft.com/azure/app-service/app-service-powershell-samples)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/powershell-samples)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/powershell-samples)
 
 # 概念
 ## [請求とサブスクリプション](https://docs.microsoft.com/azure/billing/billing-getting-started)
-## [ホスティングの比較](https://docs.microsoft.com/azure/app-service-web/choose-web-site-cloud-service-vm)
-## [App Service とは](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is)
+## [ホスティングの比較](https://docs.microsoft.com/azure/app-service/choose-web-site-cloud-service-vm)
+## [App Service とは](https://docs.microsoft.com/azure/app-service/app-service-web-overview)
 ## 仮想マシン
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/overview)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/overview)
 ## [Service Fabric の概要](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview)
 
 # ハウツー ガイド
-## [プラン](https://docs.microsoft.com/azure/architecture/guide/)
+## プラン
 ### [Web アプリケーションのアーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/managed-web-app/)
 ### [VM のアーキテクチャ](https://docs.microsoft.com/azure/architecture/reference-architectures/virtual-machines-windows/)
 ### [オンプレミス ネットワークに接続する](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/)
@@ -58,7 +63,7 @@
 ### [サーバーレス アプリ](https://docs.microsoft.com/azure/azure-functions/functions-reference)
 ### [マイクロサービス クラスター](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-creation-via-portal)
 ## デプロイ
-### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service-web/app-service-continuous-deployment)
+### [ソース管理からの Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-continuous-deployment)
 ### [ローカルなマイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-get-started-with-a-local-cluster)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-manage-vm)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-manage-vm)
@@ -71,26 +76,25 @@
 ### [メッセージ キュー](https://docs.microsoft.com/azure/storage/queues/storage-dotnet-how-to-use-queues)
 
 ## スケール
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service-web/web-sites-scale)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-scale)
 ### [仮想マシン](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-overview)
 ### [マイクロサービス アプリ](https://docs.microsoft.com/azure/service-fabric/service-fabric-concepts-scalability)
 
 ## セキュリティ保護
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service-web/app-service-web-tutorial-custom-ssl)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
 ## Backup
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service-web/web-sites-backup)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-backup)
 ### [仮想マシン](https://docs.microsoft.com/azure/backup/backup-azure-vms-introduction)
 
 ## 監視
-### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service-web/web-sites-enable-diagnostic-log)
+### [Web アプリとモバイル アプリ](https://docs.microsoft.com/azure/app-service/web-sites-enable-diagnostic-log)
 ### [Linux VM](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-monitoring)
 ### [Windows VM](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-monitoring)
 ### [マイクロサービス](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-overview)
 ### [課金アラート](https://docs.microsoft.com/azure/billing/billing-set-up-alerts)
 
 ## 自動化
-### [アジャイル Web アプリの開発](https://docs.microsoft.com/azure/app-service-web/app-service-agile-software-development)
 ### [Linux VM のスケール](https://docs.microsoft.com/azure/virtual-machines/linux/tutorial-create-vmss)
 ### [Windows VM のスケール](https://docs.microsoft.com/azure/virtual-machines/windows/tutorial-create-vmss)
 

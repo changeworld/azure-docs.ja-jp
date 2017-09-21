@@ -257,14 +257,6 @@
           href: sql-database-ssms-mfa-authentication-configure.md
     - name: ビジネス継続性
       items:
-        - name: コンテナーの構成 - バックアップ
-          href: sql-database-long-term-backup-retention-configure.md
-        - name: geo レプリケーション - Portal
-          href: sql-database-geo-replication-portal.md
-        - name: 1 つのテーブルの回復
-          href: sql-database-cloud-migrate-restore-single-table-azure-backup.md
-    - name: データの読み込みと移動
-      items:
         - name: BCP を使用したデータの読み込み
           href: sql-database-load-from-csv-with-bcp.md
         - name: ADF を使用したデータの読み込み

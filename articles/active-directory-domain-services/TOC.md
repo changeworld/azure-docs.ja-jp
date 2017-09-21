@@ -7,16 +7,15 @@
 ## [互換性のあるサードパーティ製ソフトウェア](active-directory-ds-compatible-software.md)
 
 # 作業開始
-## Azure Portal (プレビュー)
-### [タスク 1: 基本設定を構成する](active-directory-ds-getting-started.md)
-### [タスク 2: ネットワーク設定を構成する](active-directory-ds-getting-started-network.md)
-### [タスク 3: 管理者グループを構成して Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
-### [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
-### [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
+## [タスク 1: 基本設定を構成する](active-directory-ds-getting-started.md)
+## [タスク 2: ネットワーク設定を構成する](active-directory-ds-getting-started-network.md)
+## [タスク 3: 管理者グループを構成して Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
+## [タスク 4: 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
+## [タスク 5: パスワード同期を有効にする](active-directory-ds-getting-started-password-sync.md)
 
 # 方法
 ## 管理対象ドメインに参加する
-### [Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm.md)
+### [Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-portal.md)
 ### [PowerShell を使用して Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [Linux VM を結合する](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## 管理対象ドメインを管理する

@@ -17,10 +17,10 @@ ms.workload:
 ms.date: 06/28/2017
 ms.author: daredis
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 4ae3145daa4968ae619f965f3346ef03bccb0109
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 5dffbf03f07e5d0523ef92eb3b74619b6592782f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="secure-your-azure-sql-database"></a>Azure SQL データベースのセキュリティ保護
@@ -188,7 +188,7 @@ Azure SQL Database の監査では、データベース イベントを追跡し
 5. [ **Save**] をクリックします。
 
 > [!IMPORTANT]
-> 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[Automation (PowerShell / REST API)](sql-database-auditing.md#subheading-7)」セクションを参照してください。
+> 監査対象イベントをカスタマイズする場合、PowerShell または REST API から実行できます。詳細については、「[SQL データベースの監査](sql-database-auditing.md)」をご覧ください。
 >
 
 ## <a name="enable-sql-database-threat-detection"></a>SQL Database の脅威の検出を有効にする

@@ -131,6 +131,8 @@
           href: download-template.md
         - name: Azure VM エージェント
           href: agent-user-guide.md
+        - name: Azure の計画メンテナンス
+          href: maintenance-notifications.md
         - name: スケジュールされたイベント
           href: scheduled-events.md
         - name: メタデータの監視
