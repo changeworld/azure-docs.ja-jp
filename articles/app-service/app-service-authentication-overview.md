@@ -32,7 +32,7 @@ App Service では、サード パーティの ID プロバイダーがアカウ
 * [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
 * [Azure App Service の API Apps でのユーザー認証][apia-user]
 
-## <a name="how-authentication-works-in-app-service"></a>App Service の認証のしくみ
+## <a name="how-authentication-works-in-app-service"></a>App Service の承認のしくみ
 いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーから ID とシークレットが提供されるので、それらを App Service に提供します。 これにより信頼関係が完成し、App Service は、ID プロバイダーから、認証トークンなどのユーザー アサーションを検証できるようになります。
 
 こうしたプロバイダーのいずれかを使用してユーザーをサインインさせるには、そのプロバイダーのユーザーをサインインさせるエンドポイントにユーザーをリダイレクトする必要があります。 顧客が Web ブラウザーを使用している場合は、App Service を使用して、認証されていないすべてのユーザーを、ユーザーをサインインさせるエンドポイントに自動的に転送できます。 それ以外の場合は、顧客を `{your App Service base URL}/.auth/login/<provider>` に転送する必要があります。ここで、`<provider>` は、aad、facebook、google、microsoft、twitter のいずれかの値になります。 モバイルおよび API のシナリオについては、この記事の後のセクションで説明します。
@@ -75,7 +75,7 @@ App Service 認証を使用して、サービス間のシナリオを処理す�
 
 App Service ロジック アプリから API アプリへのサービス アカウント認証は特殊なケースであり、 [App Service でホストされたカスタム API の Logic Apps での使用に関するページ](../logic-apps/logic-apps-custom-hosted-api.md) で説明されています。
 
-## <a name="authorization"></a>App Service の認証のしくみ
+## <a name="authorization"></a>App Service の承認のしくみ
 アプリケーションにアクセスできる要求を完全に制御することができます。 App Service の認証/承認は、次の動作のいずれかになるように構成できます。
 
 * 認証済みの要求のみアプリケーションへの到達を許可する。

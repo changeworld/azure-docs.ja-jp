@@ -13,10 +13,10 @@ manager: timlt
 ms.devlang: na
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 519ea43bfaa9d61de6ff962d838c197eb9e4edc0
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 
@@ -63,7 +63,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 2. Device Provisioning Service の概要ブレードで **[Linked IoT hubs]\(リンクされた IoT ハブ\)** を選択します。 一番上の **[+ 追加]** ボタンをクリックします。 
 
-3. ポータルの **[Add link to IoT hub or pool]\(IoT ハブまたはプールにリンクを追加\)** ブレードで、現在のサブスクリプションを入力するか、または別のサブスクリプションの名前と接続文字列を入力します。 **[リソースの種類]** として *[IoT Hub]* を選択し、ドロップダウン リストからハブの名前を選択します。 完了したら、**[保存]** をクリックします。 
+3. ポータルの **[Add link to IoT hub]\(IoT ハブへのリンクを追加\)** ブレードで、現在のサブスクリプションを入力するか、別のサブスクリプションの名前と接続文字列を入力します。 ドロップダウン リストからハブの名前を選択します。 完了したら、**[保存]** をクリックします。 
 
     ![ポータルのブレードでハブ名を DPS インスタンスにリンク](./media/quick-setup-auto-provision/link-iot-hub-to-dps-portal.png)  
 

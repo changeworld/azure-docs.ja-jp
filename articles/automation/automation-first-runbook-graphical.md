@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/17/2017
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
-ms.openlocfilehash: 9d4b28416376482247127698bec7c99b83308885
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: d06052099acbb5544581ef3e8e2007dd751a7544
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="my-first-graphical-runbook"></a>初めてのグラフィカルな Runbook
@@ -29,17 +28,17 @@ ms.lasthandoff: 05/18/2017
 > * [グラフィカル](automation-first-runbook-graphical.md)
 > * [PowerShell](automation-first-runbook-textual-powershell.md)
 > * [PowerShell ワークフロー](automation-first-runbook-textual.md)
-> 
+> * [Python](automation-first-runbook-textual-python2.md)
 > 
 
 このチュートリアルでは、Azure Automation で [グラフィカルな Runbook](automation-runbook-types.md#graphical-runbooks) を作成する手順を説明します。  簡単な Runbook を作成、テスト、発行しながら、Runbook ジョブの状態を追跡する方法を説明します。  その後、実際に Azure リソースを管理するように Runbook を変更し、ここでは Azure 仮想マシンを開始します。  チュートリアルの最後で、Runbook のパラメーターおよび条件付きリンクを追加することによって、Runbook をいっそう堅牢にします。
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを最後まで行うには、以下のものが必要です。
+このチュートリアルを完了するには、以下が必要です。
 
-* として機能します。  まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、<a href="/pricing/free-account/" target="_blank">[無料アカウントにサインアップ](https://azure.microsoft.com/free/)してください。
-* [Azure Automation アカウント](automation-sec-configure-azure-runas-account.md)。Runbook の保存と Azure リソースへの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
-* Azure 仮想マシン。  マシンを停止して起動するので、運用環境のものは使用しないでください。
+* として機能します。 まだお持ちでない場合は、[MSDN サブスクライバーの特典を有効にする](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)か、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)にサインアップしてください。
+* [Automation アカウント](automation-offering-get-started.md)。Runbook の保存と Azure リソースの認証に使用します。  このアカウントには、仮想マシンを開始および停止するアクセス許可が必要です。
+* Azure 仮想マシン。 マシンを停止して起動するので、運用 VM は使用しないでください。
 
 ## <a name="step-1---create-runbook"></a>手順 1 - Runbook を作成する
 最初に、*Hello World* というテキストを出力する簡単な Runbook を作成します。

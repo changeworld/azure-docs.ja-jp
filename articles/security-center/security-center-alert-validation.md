@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/11/2017
+ms.date: 09/07/2017
 ms.author: yurid
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 121b5d8f023a9b663d0e7af26dce8f81db27672c
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d7aa8544f50b42bacfa1e1f16fdce468d8fc81ef
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="alerts-validation-in-azure-security-center"></a>Azure Security Center でのアラートの検証
@@ -35,12 +35,15 @@ Security Center エージェントをコンピューターにインストール�
 3. コマンド プロンプトを開き、引数 (単なるダミーの引数名) を指定してこのファイルを実行します (たとえば、*ASC_AlertTest_662jfi039N.exe -foo*)。
 4. 5 ～ 10 分待って、Security Center のアラートを開きます。 次のようなアラートが表示されます。
 
-    ![アラートの検証](./media/security-center-alert-validation/security-center-alert-validation-fig1.png)
+    ![アラートの検証](./media/security-center-alert-validation/security-center-alert-validation-fig2.png)
 
 このアラートを確認する際に、[Arguments Auditing Enabled]\(引数の監査が有効\) フィールドの値が [true] になっていることを確認してください。 値が [false] になっている場合は、コマンド ライン引数の監査を有効にする必要があります。 このオプションを有効にするには、次のコマンド ラインを使用します。
 
 *reg add "HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\policies\system\Audit" /f /v "ProcessCreationIncludeCmdLine_Enabled"*
 
+
+> [!NOTE]
+> この機能のデモンストレーションについては、動画「[Alert Validation in Azure Security Center (Azure Security Center でのアラート検証)](https://channel9.msdn.com/Blogs/Azure-Security-Videos/Alert-Validation-in-Azure-Security-Center)」をご覧ください。 
 
 ## <a name="see-also"></a>関連項目
 この記事では、アラートの検証プロセスについて説明しました。 この検証について理解できたら、次の記事をお読みください。

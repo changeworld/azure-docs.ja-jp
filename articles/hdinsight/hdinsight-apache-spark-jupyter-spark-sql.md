@@ -15,18 +15,18 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/21/2017
+ms.date: 09/07/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: ad4330a1fc7f8de154d9aaa8df3acc2ab59b9dc1
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 78051b9df15c62d4caf56d800c9a5f4421ea2254
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-an-apache-spark-cluster-in-azure-hdinsight"></a>Azure HDInsight での Apache Spark クラスターの作成
 
-この記事では、Azure HDInsight で Apache Spark クラスターを作成する方法を説明します。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)」を参照してください。
+この記事では、Azure HDInsight で Apache Spark クラスターを作成し、Hive テーブルに対して Spark SQL クエリを実行する方法を説明します。 HDInsight での Spark について詳しくは、「[概要: Azure HDInsight での Apache Spark](hdinsight-apache-spark-overview.md)」を参照してください。
 
    ![Azure HDInsight に Apache Spark クラスターを作成する手順を説明するクイック スタート図](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-quickstart-interactive-spark-query-flow.png "HDInsight で Apache Spark を使用する Spark のクイック スタート。図に示されている手順: クラスターを作成し、Spark の対話型クエリを実行します")
 
@@ -65,9 +65,15 @@ HDInsight クラスターを作成する際に問題が発生した場合は、�
 >
 >
 
-## <a name="run-a-hive-query-using-spark-sql"></a>Spark SQL を使用した Hive クエリの実行
+## <a name="run-spark-sql-statements-on-a-hive-table"></a>Hive テーブルに対して Spark SQL ステートメントを実行する
 
-HDInsight Spark クラスター用に構成された Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 このセクションでは、Jupyter Notebook を起動し、基本的な Hive クエリを実行する方法について説明します。
+SQL (構造化照会言語) は、データ照会とデータ定義のための言語として最も一般的かつ広く使用されています。 Spark の開発者たちは、そのノウハウを活かし、より多くのアナリストが馴染みのあるデータ照会言語で Hadoop 分散ファイル システム (HDFS) 上のデータを活用する手立てはないだろうかと模索していました。 そうして生まれたのが Spark SQL です。 Apache Spark の拡張機能として導入することで、使い慣れた SQL 構文を使って構造化データを扱うことができます。
+
+Spark SQL では、SQL と HiveQL の両方がクエリ言語としてサポートされます。 その機能には、Python、Scala、Java でのバインディングも含まれます。 それによって、外部データベース、構造化データ ファイル (JSON など)、Hive テーブルなど、さまざまな場所に格納されたデータを照会することができます。
+
+### <a name="running-spark-sql-on-an-hdinsight-cluster"></a>HDInsight クラスターでの Spark SQL の実行
+
+HDInsight Spark クラスター用に構成された Jupyter Notebook を使用すると、Spark SQL を使用して Hive クエリを実行するために使用できるプリセット `sqlContext` が手に入ります。 このセクションでは、Jupyter Notebook を起動し、すべての HDInsight クラスターに用意されている既存の Hive テーブル (**hivesampletable**) に対して基本的な Spark SQL クエリを実行する方法について見ていきます。
 
 1. [Azure Portal](https://portal.azure.com/)を開きます。
 
@@ -87,13 +93,13 @@ HDInsight Spark クラスター用に構成された Jupyter Notebook を使用�
    >
 3. Notebook を作成します。 **[新規]** をクリックし、**[PySpark]** をクリックします。
 
-   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-Spark-SQL-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
+   ![対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-create-jupyter-interactive-spark-sql-query.png "対話型の Spark SQL クエリを実行する Jupyter Notebook を作成する")
 
    Untitled(Untitled.pynb) という名前の新しい Notebook が作成されて開かれます。
 
 4. 上部の Notebook 名をクリックし、目的のわかりやすい名前を入力します。
 
-    ![対話型の Spark クエリを実行する Jupter Notebook に名前を指定する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "対話型の Spark クエリを実行する Jupter Notebook に名前を指定する")
+    ![対話型の Spark クエリを実行する Jupyter Notebook に名前を指定する](./media/hdinsight-apache-spark-jupyter-spark-sql/hdinsight-spark-jupyter-notebook-name.png "対話型の Spark クエリを実行する Jupyter Notebook に名前を指定する")
 
 5.  次のコードを空のセルに貼り付け、**Shift + Enter** キーを押してコードを実行します。 以下のコードでは、`%%sql` (SQL マジックと呼ばれる) により、プリセット `sqlContext` を使用して Hive クエリを実行するよう Jupyter Notebook に指示します。 クエリは、すべての HDInsight クラスターで既定で使用可能な Hive テーブル (**hivesampletable**) から先頭の 10 行を取得します。
 
@@ -117,7 +123,7 @@ HDInsight Spark クラスター用に構成された Jupyter Notebook を使用�
 
 8. 次の手順を後で実行する場合は、必ずこの記事で作成した HDInsight クラスターを削除してください。 
 
-    [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
+[!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
 ## <a name="next-step"></a>次のステップ 
 

@@ -8,7 +8,7 @@
 | [キューとトピック](../articles/azure-functions/functions-bindings-service-bus.md) |Azure Service Bus |✔ | |✔ |  
 | [Storage テーブル](../articles/azure-functions/functions-bindings-storage-table.md) |Azure Storage (Azure Storage) | |✔ |✔ |  
 | [SQL テーブル](../articles/azure-functions/functions-bindings-mobile-apps.md) |Azure Mobile Apps | |✔ |✔ |  
-| [NoSQL DB](../articles/azure-functions/functions-bindings-documentdb.md) | Azure DocumentDB | |✔ |✔ |  
+| [NoSQL DB](../articles/azure-functions/functions-bindings-documentdb.md) | Azure Cosmos DB | |✔ |✔ |  
 | [プッシュ通知](../articles/azure-functions/functions-bindings-notification-hubs.md) |Azure 通知ハブ | | |✔ |  
 | [Twilio SMS テキスト](../articles/azure-functions/functions-bindings-twilio.md) |Twilio | | |✔ |
 | [SendGrid 電子メール](../articles/azure-functions/functions-bindings-sendgrid.md) | SendGrid | | |✔ |
