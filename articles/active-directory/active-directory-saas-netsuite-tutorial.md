@@ -11,14 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/19/2017
+ms.date: 07/31/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 4a19ab310212b93a53495a6fc6c25c77dfb82e79
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f2184f426c0e60ea2b6ce029b80d3d63821794d1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-netsuite"></a>チュートリアル: Azure Active Directory と Netsuite の統合
@@ -115,7 +114,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
     **[応答 URL]** ボックスに、次のパターンを使用して URL を入力します。 `https://<tenant-name>.netsuite.com/saml2/acs` `https://<tenant-name>.na1.netsuite.com/saml2/acs` `https://<tenant-name>.na2.netsuite.com/saml2/acs` `https://<tenant-name>.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na1.sandbox.netsuite.com/saml2/acs` `https://<tenant-name>.na2.sandbox.netsuite.com/saml2/acs`
 
     > [!NOTE] 
-    > これは実際の値ではありません。 実際の応答 URL でこの値を更新します。 この値を取得するには、[Netsuite サポート チーム](http://www.netsuite.com/portal/services/support.shtml)に連絡してください。
+    > これらは実際の値ではありません。 実際の応答 URL で値を更新します。 これらの値を取得するには、[Netsuite サポート チーム](http://www.netsuite.com/portal/services/support.shtml)に連絡してください。
  
 4. **[SAML 署名証明書]** セクションで、**[メタデータ XML]** をクリックし、コンピューターに XML ファイルを保存します。
 
@@ -161,7 +160,7 @@ Netsuite で Azure AD のシングル サインオンを構成してテストす
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-attributes.png)
 
-13. **[属性名]** フィールドに、「`account`」と入力します。 **[属性値]** フィールドに、Netsuite アカウント ID を入力します。この値は定数であり、アカウントによって異なります。 アカウント ID を確認する方法を次に示します。
+13. **[属性名]** フィールドに、「`account`」と入力します。 **[属性値]** フィールドに、Netsuite アカウント ID を入力します。 この値は定数であり、アカウントによって異なります。 アカウント ID を確認する方法を次に示します。
 
       ![[シングル サインオンの構成]](./media/active-directory-saas-Netsuite-tutorial/ns-add-attribute.png)
 

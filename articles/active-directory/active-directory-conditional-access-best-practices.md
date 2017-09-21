@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/12/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3e524c116479c1af6eb6a601c9b57d27a697c5a2
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: fedc72f8fe1ada9a991d417cc77b8ca659589f55
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="best-practices-for-conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセスのベスト プラクティス
@@ -96,6 +96,99 @@ Azure Active Directory によって両方のポリシーが適用されます。
 **すべてのユーザー、すべてのクラウド アプリ、すべてのデバイス プラットフォームに対して:**
 
 - **アクセスのブロック** - この構成では組織全体がブロックされるため、明らかによい方法ではありません。
+
+
+
+## <a name="policy-migration"></a>ポリシーの移行
+
+Azure クラシック ポータルで構成したポリシーがある場合は、以下の理由により、Azure ポータルに移行する必要があります。
+
+
+- Azure クラシック ポータルのポリシーと Azure ポータルのポリシーが適用されるユーザーは、両方のポリシーの要件を満たす必要がある 
+
+- 既存のポリシーを移行しない場合、アクセスを許可するポリシーを実装できない
+
+
+### <a name="migration-from-the-azure-classic-portal"></a>Azure クラシック ポータルからの移行
+
+このシナリオでは: 
+
+- [Azure クラシック ポータル](https://manage.windowsazure.com)で、以下を構成済みです。
+
+    - SharePoint Online
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/14.png)
+
+    - デバイス ベースの条件付きアクセス ポリシー
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを構成します。 
+ 
+
+#### <a name="configuration"></a>構成 
+
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- モバイル アプリケーション管理の条件付きアクセス ポリシーを追加する
+
+
+### <a name="migrating-from-intune"></a>Intune からの移行 
+
+このシナリオでは:
+
+- [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) で、Exchange Online または SharePoint Online 用のモバイル アプリケーション管理の条件付きアクセス ポリシーを構成済みです。
+
+    ![条件付きアクセス](./media/active-directory-conditional-access-best-practices/15.png)
+
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーの使用に移行します。
+
+
+#### <a name="configuration"></a>構成 
+ 
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
+
+- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
+ 
+
+### <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Azure クラシック ポータルと Intune からの移行
+
+このシナリオでは:
+
+- 以下を構成済みです。
+
+    - **Azure クラシック ポータル:** デバイス ベースの条件付きアクセス ポリシー 
+
+    - **Intune:** モバイル アプリケーション管理の条件付きアクセス ポリシー 
+    
+- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを使用するように両方のポリシーを移行します。
+
+
+#### <a name="configuration"></a>構成
+
+- デバイス ベースの条件付きアクセス ポリシーを見直す
+
+- Azure ポータルに移行する 
+
+- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
+
+- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
+
+
+
+
+
+
+
+
+
+
 
 
 ## <a name="common-scenarios"></a>一般的なシナリオ
