@@ -95,10 +95,24 @@
 ## トラブルシューティング
 ### [一般的なデプロイのエラー](resource-manager-common-deployment-errors.md)
 ### [デプロイ エラーについて](resource-manager-troubleshoot-tips.md)
-### [RequestDisallowedByPolicy エラー](resource-manager-policy-requestdisallowedbypolicy-error.md)
+### エラーの解決
+#### [AccountNameInvalid](resource-manager-storage-account-name-errors.md)
+#### [InvalidTemplate](resource-manager-invalid-template-errors.md)
+#### [NoRegisteredProviderFound](resource-manager-register-provider-errors.md)
+#### [NotFound](resource-manager-not-found-errors.md)
+#### [ParentResourceNotFound](resource-manager-parent-resource-errors.md)
+#### [RequestDisallowedByPolicy](resource-manager-policy-requestdisallowedbypolicy-error.md)
+#### [ResourceQuotaExceeded](resource-manager-quota-errors.md)
+#### [SkuNotAvailable](resource-manager-sku-not-available-errors.md)
 ### 仮想マシンのデプロイのエラー
-#### [Linux](../virtual-machines/linux/troubleshoot-deploy-vm.md)
-#### [Windows](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+#### Linux
+##### [デプロイの問題](../virtual-machines/linux/troubleshoot-deploy-vm.md)
+##### [プロビジョニングと割り当ての問題](../virtual-machines/linux/troubleshoot-deployment-new-vm.md)
+##### [一般的なエラー メッセージ](../virtual-machines/linux/error-messages.md)
+#### Windows
+##### [デプロイの問題](../virtual-machines/windows/troubleshoot-deploy-vm.md)
+##### [プロビジョニングと割り当ての問題](../virtual-machines/windows/troubleshoot-deployment-new-vm.md)
+##### [一般的なエラー メッセージ](../virtual-machines/windows/error-messages.md)
 
 # リファレンス
 ## [テンプレートの形式](/azure/templates/)

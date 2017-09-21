@@ -27,6 +27,7 @@
 ### [Azure AD を既に使用している場合](active-directory-aadconnect-existing-tenant.md)
 ## [MAzure AD Connect の管理](active-directory-aadconnect-whats-next.md)
 ### [O365 と Azure AD の証明書を更新する](active-directory-aadconnect-o365-certs.md)
+### [Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新](active-directory-aadconnectfed-ssl-update.md)
 ### [デバイスの書き戻しを有効にする](active-directory-aadconnect-feature-device-writeback.md)
 ### [ユーザー サインオンのオプション](active-directory-aadconnect-user-signin.md)
 #### [シームレス シングル サインオン](active-directory-aadconnect-sso.md)
