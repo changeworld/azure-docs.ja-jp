@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 00fec675bed0137473f7e3c5ddfe9c3c0e8344c6
-ms.lasthandoff: 03/29/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 293042a6ccfc39bd1cca181d058a25211904740e
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="operationalize-spark-built-machine-learning-models"></a>Spark で構築した機械学習モデルの操作
@@ -47,7 +47,7 @@ Spark 1.6 向け Jupyter Notebook を変更して HDInsight Spark 2.0 クラス�
 ## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>セットアップ: ストレージの場所、ライブラリ、プリセットの Spark コンテキスト
 Spark は Azure Storage BLOB (WASB) の読み取りと書き込みを実行できます。 そのため、そこに保存されている既存データはすべて Spark を使って処理でき、結果も再び WASB に保存できます。
 
-WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、 *"wasb///"*で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
+WASB にモデルやファイルを保存するには、パスを正しく指定する必要があります。 Spark クラスターに接続されている既定のコンテナーは、*"wasb///"* で始まるパスを使用して参照できます。 次のコード サンプルでは、読み取るデータの場所と、モデルの出力の保存先となるモデル ストレージ ディレクトリのパスを指定しています。 
 
 ### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>WASB のストレージの場所となるディレクトリ パスの設定
 モデルが保存されるのは、"wasb:///user/remoteuser/NYCTaxi/Models" です。 このパスが正しく設定されていない場合、スコア付けするモデルが読み込まれません。

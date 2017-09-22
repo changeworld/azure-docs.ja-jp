@@ -1,25 +1,10 @@
----
-title: "Azure Application Insights にユーザー コンテキストを送信して使用状況を把握できるようにする | Microsoft Docs"
-description: "Application Insights で各ユーザーに一意の永続 ID 文字列を割り当てた後、サービスにおけるユーザーの行動を追跡します。"
-services: application-insights
-documentationcenter: 
-author: abgreg
-manager: carmonm
-ms.service: application-insights
-ms.workload: tbd
-ms.tgt_pltfrm: ibiza
-ms.devlang: csharp
-ms.topic: article
-ms.date: 08/02/2017
-ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 7d0da5fb0b2c59764b36becd826d8c4cc6efc4ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+タイトル: Azure Application Insights にユーザー コンテキスト ID を送信して使用状況を把握できるようにする | Microsoft Docs 説明: Application Insights で永続的な一意の ID 文字列をユーザーに割り当てることで、ユーザーがどのようにサービスを移動しているかを追跡します。
+services: application-insights documentationcenter: '' author: abgreg manager: carmonm
+
+ms.service: application-insights ms.workload: tbd ms.tgt_pltfrm: ibiza ms.devlang: csharp ms.topic: article ms.date: 08/02/2017 ms.author: bwren
 
 ---
-#  <a name="sending-user-context-to-enable-usage-experiences-in-azure-application-insights"></a>Azure Application Insights にユーザー コンテキストを送信して使用状況を把握できるようにする
+#  <a name="send-user-context-ids-to-enable-usage-experiences-in-azure-application-insights"></a>ユーザー コンテキスト ID を送信して Azure Application Insights で使用状況を把握できるようにする
 
 ## <a name="tracking-users"></a>ユーザーの追跡
 
@@ -47,13 +32,11 @@ ID には、Guid のほか、個々のユーザーを一意に識別できるだ
 
 ユーザーについて個人を特定できる情報を含んだ ID は、ユーザー ID として Application Insights に送信する値としては不適切です。 [認証されたユーザーの ID](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#authenticated-users) を送信することもできますが、そのような ID は、使用状況を把握するために必要なユーザー ID の要件を満たしません。
 
-## <a name="aspnet-apps-set-user-context-in-an-itelemetryinitializer"></a>ASP.NET アプリ: ITelemetryInitializer でのユーザー コンテキストの設定
+## <a name="aspnet-apps-setting-the-user-context-in-an-itelemetryinitializer"></a>ASP.NET アプリ: ITelemetryInitializer でのユーザー コンテキストの設定
 
 テレメトリ初期化子を作成し (詳細については[こちら](https://docs.microsoft.com/azure/application-insights/app-insights-api-filtering-sampling#add-properties-itelemetryinitializer)を参照)、Context.User.Id と Context.Session.Id を設定します。
 
 この例でユーザー ID に設定している識別子は、セッション後に有効期限が切れます。 可能であれば、セッションの終了後も維持されるユーザー ID を使用してください。
-
-*C#*
 
 ```C#
 
@@ -98,4 +81,3 @@ ID には、Guid のほか、個々のユーザーを一意に識別できるだ
     * [ファネル](usage-funnels.md)
     * [保持](app-insights-usage-retention.md)
     * [ブック](app-insights-usage-workbooks.md)
-

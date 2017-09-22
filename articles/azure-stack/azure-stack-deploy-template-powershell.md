@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with PowerShell in Azure Stack | Microsoft Docs
-description: Learn how to deploy a virtual machine using a Resource Manager template and PowerShell.
+title: "Azure Stack で PowerShell を使用してテンプレートをデプロイする | Microsoft Docs"
+description: "Resource Manager テンプレートと PowerShell を使用して仮想マシンをデプロイする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -18,19 +18,19 @@ ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 1f443898bcb9b422fc2db46f4e389ae51b043d87
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="deploy-templates-in-azure-stack-using-powershell"></a>Deploy templates in Azure Stack using PowerShell
-Use PowerShell to deploy Azure Resource Manager templates to the Azure Stack Development Kit.  Resource Manager templates deploy and provision all resources for your application in a single, coordinated operation.
+# <a name="deploy-templates-in-azure-stack-using-powershell"></a>PowerShell を使った Azure Stack でのテンプレートのデプロイ
+PowerShell を使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。  Resource Manager テンプレートは、お使いのアプリケーションのすべてのリソースを、単一の連携した操作でデプロイしてプロビジョニングします。
 
-## <a name="run-azurerm-powershell-cmdlets"></a>Run AzureRM PowerShell cmdlets
-In this example, you run a script to deploy a virtual machine to Azure Stack Development Kit using a Resource Manager template.  Before proceeding, ensure you have [configured PowerShell](azure-stack-powershell-configure-user.md)  
+## <a name="run-azurerm-powershell-cmdlets"></a>Azure PowerShell コマンドレットの実行
+この例では、Resource Manager テンプレートを使って、スクリプトを実行して仮想マシンを Azure Stack Development Kit にデプロイします。  先に進む前に、[PowerShell が構成済み](azure-stack-powershell-configure-user.md)であることを確認します。  
 
-The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
+このサンプル テンプレートで使用している VHD は、WindowsServer-2012-R2-Datacenter です。
 
-1. Go to <http://aka.ms/AzureStackGitHub>, search for the **101-simple-windows-vm** template, and save it to the following location: c:\\templates\\azuredeploy-101-simple-windows-vm.json.
-2. In PowerShell, run the following deployment script. Replace *username* and *password* with your username and password. On subsequent uses, increment the value for the *$myNum* parameter to prevent overwriting your deployment.
+1. <http://aka.ms/AzureStackGitHub> にアクセスし、**101-simple-windows-vm** テンプレートを検索して、c:\\templates\\azuredeploy-101-simple-windows-vm.json に保存します。
+2. PowerShell で、次のデプロイ スクリプトを実行します。 *username* と *password* は自分のユーザー名とパスワードに変更します。 次に使用するときは、*$myNum* パラメーターの値を増分してデプロイが上書きされないようにします。
    
    ```PowerShell
        # Set Deployment Variables
@@ -53,10 +53,10 @@ The VHD used in this example template is WindowsServer-2012-R2-Datacenter.
            -VmName myVM$myNum `
            -WindowsOSVersion 2012-R2-Datacenter
    ```
-3. Open the Azure Stack portal, click **Browse**, click **Virtual machines**, and look for your new virtual machine (*myDeployment001*).
+3. Azure Stack ポータルを開き、**[参照]**、**[仮想マシン]** の順にクリックして、新しい仮想マシン (*myDeployment001*) を探します。
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
+## <a name="next-steps"></a>次のステップ
+[Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
 
 

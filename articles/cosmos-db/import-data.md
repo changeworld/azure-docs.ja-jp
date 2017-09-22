@@ -16,14 +16,14 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: anhoh
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
-ms.openlocfilehash: 23a4a82dbdb611f4da90562af936fca28da9b24d
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a60c47814da2660f17456f5e662f420adbb9158e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
+ms.lasthandoff: 09/09/2017
 
 ---
-# <a name="how-to-import-data-into-azure-cosmos-db-for-the-documentdb-api"></a>DocumentDB API 用に Azure Cosmos DB にデータをインポートする方法
+# <a name="how-to-import-data-into-azure-cosmos-db-with-the-documentdb-api"></a>DocumentDB API を使用して Azure Cosmos DB にデータをインポートする方法
 
 このチュートリアルでは、Azure Cosmos DB: DocumentDB API データ移行ツールの使用方法について説明します。このツールにより、JSON ファイル、CSV ファイル、SQL、MongoDB、Azure Table Storage、Amazon DynamoDB、Azure Cosmos DB DocumentDB API コレクションなど、さまざまなソースからコレクションにデータをインポートして、Azure Cosmos DB および DocumentDB API で使用することができます。 データ移行ツールは、DocumentDB API の 1 つの単一パーティション コレクションから複数パーティション コレクションに移行する場合にも使用できます。
 

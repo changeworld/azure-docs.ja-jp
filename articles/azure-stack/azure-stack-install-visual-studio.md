@@ -1,6 +1,6 @@
 ---
-title: Install Visual Studio and connect to Azure Stack | Microsoft Docs
-description: Learn the steps required to install Visual Studio and connect to Azure Stack
+title: "Visual Studio をインストールして Azure Stack に接続する | Microsoft Docs"
+description: "Visual Studio をインストールして Azure Stack に接続するために必要な手順を説明します。"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -18,40 +18,40 @@ ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 62ad9ebfd829d9555b9e4bc70f8a7f0c8ff0f901
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="install-visual-studio-and-connect-to-azure-stack"></a>Install Visual Studio and connect to Azure Stack
+# <a name="install-visual-studio-and-connect-to-azure-stack"></a>Visual Studio をインストールして Azure Stack に接続する
 
-Use Visual Studio to author and deploy Azure Resource Manager [templates](azure-stack-arm-templates.md) in Azure Stack. You can use the steps described in this article to install Visual Studio either from [Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are connected through [VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn). These steps perform a new installation of Visual Studio 2015 Community Edition. Read more about [coexistence](https://msdn.microsoft.com/library/ms246609.aspx) between other Visual Studio versions.
+Visual Studio を使用して、Azure Resource Manager [テンプレート](azure-stack-arm-templates.md)を作成し、それを Azure Stack にデプロイします。 この記事の手順に従って、[Azure Stack Development Kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop) を使用するか、[VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn) 経由で接続している場合は Windows ベースの外部クライアントを使用して、Visual Studio をインストールできます。 これらの手順を実行すると、Visual Studio 2015 Community Edition が新規にインストールされます。 他の Visual Studio バージョンとの[共存](https://msdn.microsoft.com/library/ms246609.aspx)に関する記事も参照してください。
 
-## <a name="install-visual-studio"></a>Install Visual Studio
-1. Download and run the [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx).             
-2. Search for **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6**, click **Add**, and **Install**.
+## <a name="install-visual-studio"></a>Visual Studio のインストール
+1. [Web Platform Installer](https://www.microsoft.com/web/downloads/platform.aspx) をダウンロードして実行します。             
+2. **Visual Studio Community 2015 with Microsoft Azure SDK - 2.9.6** を探して **[追加]** をクリックし、**[インストール]** をクリックします。
 
-    ![Screenshot of WebPI install steps](./media/azure-stack-install-visual-studio/image1.png) 
+    ![WebPI のインストール手順を示すスクリーンショット](./media/azure-stack-install-visual-studio/image1.png) 
 
-3. Uninstall the **Microsoft Azure PowerShell** that is installed as part of the Azure SDK.
+3. Azure SDK の一部としてインストールされている **Microsoft Azure PowerShell** をアンインストールします。
 
-    ![Screenshot of add/remove programs interface for Azure PowerShell](./media/azure-stack-install-visual-studio/image2.png) 
+    ![Azure PowerShell のプログラムの追加と削除のインターフェイスのスクリーンショット](./media/azure-stack-install-visual-studio/image2.png) 
 
-4. [Install PowerShell for Azure Stack](azure-stack-powershell-install.md)
+4. [PowerShell for Azure Stack のインストール](azure-stack-powershell-install.md)
 
-5. Restart the operating system after the installation completes.
+5. インストールが完了したら、オペレーティング システムを再起動します。
 
-## <a name="connect-to-azure-stack"></a>Connect to Azure Stack
+## <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
-1. Launch Visual Studio.
+1. Visual Studio を起動します。
 
-2. From the **View** menu, select **Cloud Explorer**.
+2. **[表示]** メニューの **[Cloud Explorer]** を選択します。
 
-3. In the new pane, select **Add Account** and sign in with your Azure Active Directory credentials.  
-    ![Screenshot of Cloud Explorer once logged in and connected to Azure Stack](./media/azure-stack-install-visual-studio/image6.png)
+3. 新しいウィンドウで **[アカウントの追加]** を選択し、Azure Active Directory の資格情報を使ってサインインします。  
+    ![ログインして Azure Stack に接続した後の Cloud Explorer のスクリーンショット](./media/azure-stack-install-visual-studio/image6.png)
 
-Once logged in, you can [deploy templates](azure-stack-deploy-template-visual-studio.md) or browse available resource types and resource groups to create your own templates.  
+ログインしたら、[テンプレートをデプロイ](azure-stack-deploy-template-visual-studio.md)するか、使用可能なリソースの種類やリソース グループを参照して独自のテンプレートを作成することができます。  
 
-## <a name="next-steps"></a>Next Steps
+## <a name="next-steps"></a>次のステップ
 
- - [Develop templates for Azure Stack](azure-stack-develop-templates.md)
+ - [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 

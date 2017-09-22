@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/24/2017
+ms.date: 09/10/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 681e91e3581f80c0cda64f95fed5cc01aaac2367
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 19bc7abbbf7e133018b234399d91604dfdbfe73f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
@@ -60,31 +60,22 @@ Azure Active Directory の条件付きアクセスの文脈では、
 
 条件付きアクセス ポリシーでは、条件文が満たされた場合に何をすべきであるかをコントロールが定義します。  
 コントロールを使用して、アクセスをブロックするか、追加要件付きでアクセスを許可することができます。
-アクセスを許可するポリシーを構成するときは、少なくとも 1 つの要件を選択する必要があります。   
+アクセスを許可するポリシーを構成するときは、少なくとも 1 つの要件を選択する必要があります。  
 
-### <a name="grant-controls"></a>許可コントロール
+コントロールには、次の 2 つの種類があります: 
+
+- **許可コントロール**: 許可コントロールは、ユーザーが認証を完了し、サインインしようとしているリソースに到達できるかどうかを司るものです。 複数のコントロールを選択した場合は、ポリシーを処理する際にそのすべてを適用する必要があるかどうかを構成できます。
 Azure Active Directory の現在の実装では、次の許可コントロール要件を構成できます。
 
-![コントロール](./media/active-directory-conditional-access-azure-portal/05.png)
+    ![コントロール](./media/active-directory-conditional-access-azure-portal/05.png)
 
-- **多要素認証**: 多要素認証による強力な認証を要求できます。 プロバイダーとして、Azure Multi-Factor またはオンプレミスの多要素認証プロバイダーを Active Directory Federation Services (AD FS) と組み合わせて使用できます。 多要素認証を使用すると、承認されていないユーザーが有効なユーザーの資格情報を入手してリソースにアクセスするのを防ぐことができます。
+- **セッション コントロール**: セッション コントロールでは、クラウド アプリ内のエクスペリエンスを制限できます。 セッション コントロールは、クラウド アプリによって適用され、Azure AD がアプリに提供するセッションに関する追加情報に依存します。
 
-- **準拠デバイス**: デバイス ベースの条件付きアクセス ポリシーを構成できます。 デバイス ベースの条件付きアクセス ポリシーの目的は、構成されたリソースへのアクセスを、信頼されたデバイスのみに許可することです。 準拠デバイスの要求は、信頼されるデバイスを定義する必要のある 1 つのオプションです。 詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」をご覧ください。
+    ![コントロール](./media/active-directory-conditional-access-azure-portal/31.png)
 
-- **ドメインに参加しているデバイス**: ドメインに参加しているデバイスの要求は、デバイス ベースの条件付きアクセス ポリシーを構成する必要がある別のオプションです。 この要件は、Windows デスクトップ、ラップトップ、およびオンプレミスの Active Directory に参加しているエンタープライズ タブレットを参照します。 詳しくは、「[Azure Active Directory 接続アプリケーションに対するデバイス ベースの条件付きアクセス ポリシーを設定する方法](active-directory-conditional-access-policy-connected-applications.md)」をご覧ください。
 
-複数のコントロールを選択した場合は、ポリシーの処理時にそれらのすべてを適用する必要があるかどうかを構成することもできます。
+詳細については、「[Azure Active Directory の条件付きアクセスのコントロール](active-directory-conditional-access-controls.md)」を参照してください。
 
-![コントロール](./media/active-directory-conditional-access-azure-portal/06.png)
-
-### <a name="session-controls"></a>セッション コントロール
-セッション コントロールでは、クラウド アプリ内のエクスペリエンスを制限できます。 セッション コントロールは、クラウド アプリによって適用され、Azure AD がアプリに提供するセッションに関する追加情報に依存します。
-
-![コントロール](./media/active-directory-conditional-access-azure-portal/31.png)
-
-#### <a name="use-app-enforced-restrictions"></a>アプリによって適用される制限を使用する
-このコントロールを使用して、デバイス情報をクラウド アプリに渡すよう Azure AD に要求できます。 これにより、クラウド アプリは、ユーザーが準拠デバイスとドメイン参加済みデバイスのどちらからアクセスしているかを把握できます。 このコントロールは、現在、クラウド アプリとしての SharePoint でのみサポートされます。 SharePoint では、デバイス情報を使用して、デバイスの状態に応じて制限付きまたは完全なエクスペリエンスをユーザーに提供します。
-SharePoint での制限付きアクセスを要求する方法について詳しくは、[「非管理対象デバイスからのアクセスを制御する」](https://aka.ms/spolimitedaccessdocs)をご覧ください。
 
 ## <a name="condition-statement"></a>条件文
 

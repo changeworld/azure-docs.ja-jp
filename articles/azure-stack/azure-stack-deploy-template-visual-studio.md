@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with Visual Studio in Azure Stack | Microsoft Docs
-description: Learn how to deploy templates with Visual Studio in Azure Stack.
+title: "Azure Stack で Visual Studio を使用してテンプレートをデプロイする | Microsoft Docs"
+description: "Azure Stack で Visual Studio を使用してテンプレートをデプロイする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -18,29 +18,29 @@ ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: e9b467f47f166198d9790f19dbdd3d1d0fd79947
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Deploy templates in Azure Stack using Visual Studio
+# <a name="deploy-templates-in-azure-stack-using-visual-studio"></a>Visual Studio を使用した Azure Stack でのテンプレートのデプロイ
 
-Use Visual Studio to deploy Azure Resource Manager templates to the Azure Stack development kit.
+Visual Studio を使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。
 
-1. [Install and connect](azure-stack-install-visual-studio.md) to Azure Stack with Visual Studio.
-2. Open Visual Studio.
-3. Click **File**, click **New**, and in the **New Project** dialog box click **Azure Resource Group**.
-4. Enter a **Name** for the new project, and then click **OK**.
-5. In the **Select Azure Template** dialog box, change the *Show templates from this location* drop-down to **Azure Stack Quickstart**
-6. Click **101-create-storage-account**, and then click **OK**.  
-7. In your new project, you can see a list of the templates available by expanding the **Templates** node in the **Solution Explorer** pane.
-8. In the **Solution Explorer** pane, right-click the name of your project, click **Deploy**, then click **New Deployment**.
-9. In the **Deploy to Resource Group** dialog box, in the **Subscription** drop-down, select your Microsoft Azure Stack subscription.
-10. In the **Resource Group** list, choose an existing resource group or create a new one.
-11. In the **Resource group location** list, choose a location, and then click **Deploy**.
-12. In the **Edit Parameters** dialog box, enter values for the parameters (which vary by template), and then click **Save**.
+1. Visual Studio で Azure Stack を[インストールして接続](azure-stack-install-visual-studio.md)します。
+2. Visual Studio を開きます。
+3. **[ファイル]****[新規作成]** の順にクリックし、**[新しいプロジェクト]** ダイアログ ボックスで **[Azure リソース グループ]** をクリックします。
+4. 新しいプロジェクトの**名前**を入力し、**[OK]** をクリックします。
+5. **[Azure Template の選択]** ダイアログ ボックスで、*[この場所からテンプレートを参照します]* ドロップダウンを **[Azure Stack Quickstart]** に変更します。
+6. **[101-create-storage-account]** をクリックし、**[OK]** をクリックします。  
+7. 新しいプロジェクトで、利用可能なテンプレートの一覧を表示するには、**[ソリューション エクスプローラー]** ウィンドウで **[テンプレート]** ノードを展開します。
+8. **[ソリューション エクスプローラー]** ウィンドウでプロジェクトの名前を右クリックし、**[デプロイ]****[新しい配置]** の順にクリックします。
+9. **[リソース グループに配置する]** ダイアログ ボックスの **[サブスクリプション]** ドロップダウン リストで、Microsoft Azure Stack サブスクリプションを選択します。
+10. **[リソース グループ]** ボックスの一覧で、既存のリソース グループを選択するか、新しいリソース グループを作成します。
+11. **[リソース グループの場所]** の一覧で場所を選択して、**[デプロイ]** をクリックします。
+12. **[パラメーターの編集]** ダイアログ ボックスで、パラメーターの値 (テンプレートごとに異なる) を入力し、**[保存]** をクリックします。
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with the command line](azure-stack-deploy-template-command-line.md)
+## <a name="next-steps"></a>次のステップ
+[コマンド ラインを使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
-[Develop templates for Azure Stack](azure-stack-develop-templates.md)
+[Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 
 

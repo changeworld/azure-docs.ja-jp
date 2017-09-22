@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 5abf1d80a62344f93d4c5491adba65a3e7400258
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 7e3837582e2020dc560a2b624352f7326ea87c3d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -158,6 +158,12 @@ ms.lasthandoff: 08/09/2017
         }
       }
     }
+    ```
+
+1. **main** メソッドのシグネチャを変更し、次の例外をスローします。
+
+    ```java
+    public static void main(String[] args) throws IOException
     ```
 
 1. シミュレートされたデバイスで再起動ダイレクト メソッドを呼び出すには、**main** メソッドに次のコードを追加します。

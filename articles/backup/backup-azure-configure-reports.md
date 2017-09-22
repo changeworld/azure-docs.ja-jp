@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/24/2017
+ms.date: 09/13/2017
 ms.author: pajosh
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4629665e6fbe26c26eb45af7509de338367c4e18
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 597c3eb49bc3d4f9b2311f232e4280027636266c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup のレポートを構成する
@@ -140,6 +140,12 @@ Recovery Services コンテナーを使用するレポート用にストレー�
 
    はい、複数のコンテナーに対して同じストレージ アカウントを構成して、複数のコンテナーにわたるレポートを表示できます。 また、複数のサブスクリプションの複数のコンテナーに対して同じストレージ アカウントを構成することもできます。 その後、Power BI で Azure Backup コンテンツ パックに接続する際にそのストレージ アカウントを使用して、レポートを表示できます。 ただし、選択するストレージ アカウントは Recovery Services コンテナーと同じリージョンにある必要があります。
    
+## <a name="troubleshooting-errors"></a>エラーのトラブルシューティング
+| エラーの詳細 | 解決策 |
+| --- | --- |
+| バックアップ レポート用のストレージ アカウントの設定後もなお、**[ストレージ アカウント]** に **[構成されていません]** と表示される。 | ストレージ アカウントを正常に構成した場合には、この問題が発生していてもレポート データが挿入されます。 この問題を解決するには、[Azure Portal]、[その他のサービス]、[診断設定]、[RS vault]\(RS コンテナー\)、[設定の編集] の順に移動します。 以前に構成した設定を削除し、同じブレードから新しい設定を作成する必要があります。 今回は、フィールド **[名前]** を **service** と設定します。 これにより、新たに構成されたストレージ アカウントが表示されます。 |
+|Power BI で Azure Backup コンテンツ パックをインポートすると、エラー "**404 - コンテナーが見つかりません**" が表示される。 | このドキュメントで既に示したとおり、Recovery Services コンテナーでレポートを構成してから Power BI で正しくレポートが表示されるまでには、24 時間かかります。 24 時間が経過する前にレポートにアクセスしようとすると、有効なレポートを表示するうえで必要なデータが揃っていないため、このエラーが表示されます。 |
+
 ## <a name="next-steps"></a>次のステップ
 ストレージ アカウントを構成し、Azure Backup コンテンツ パックをインポートしたので、次のステップではこれらのレポートのカスタマイズと、レポート データ モデルを使用したレポートの作成を行います。 詳細については、次の記事をご覧ください。
 

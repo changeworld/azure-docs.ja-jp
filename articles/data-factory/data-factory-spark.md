@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 57894bbdd9208f8c32eb65e29f04e2ae723780ca
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 859035598831c1019304973a435de8f9276c9002
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Azure Data Factory のパイプラインから Spark プログラムを呼び出す
@@ -230,7 +230,7 @@ Spark アクティビティで Data Factory パイプラインを作成する一
 
     ![Jupyter クエリの結果](media/data-factory-spark/jupyter-notebook-results.png)
 
-詳細な手順については、「[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md#run-a-hive-query-using-spark-sql)」を参照してください。 
+詳細な手順については、[Spark SQL クエリの実行](../hdinsight/hdinsight-apache-spark-jupyter-spark-sql.md)に関するページを参照してください。 
 
 ### <a name="troubleshooting"></a>トラブルシューティング
 **getDebugInfo** を **Always** に設定しているので、Azure BLOB コンテナー内の **pyFiles** フォルダーに **log** サブフォルダーが表示されます。 ログ フォルダーのログ ファイルで、追加の詳細情報を取得できます。 このログ ファイルは、エラーが発生している場合に特に便利です。 運用環境では、これを **Failure** に設定してみてください。

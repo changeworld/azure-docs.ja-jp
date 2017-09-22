@@ -1,6 +1,6 @@
 ---
-title: Allow application to retrieve Azure Stack Key Vault secrets  | Microsoft Docs
-description: Use a sample app to work with Azure Stack Key Vault
+title: "アプリケーションに Azure Stack Key Vault のシークレットの取得を許可する | Microsoft Docs"
+description: "サンプル アプリを使用して Azure Stack Key Vault を操作する"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -18,24 +18,24 @@ ms.translationtype: HT
 ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: f586cba0684a0720e82c4bce823adbb5ca13404b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
-# <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Sample application that uses keys and secrets stored in a key vault
+# <a name="sample-application-that-uses-keys-and-secrets-stored-in-a-key-vault"></a>Key Vault に格納されているキーとシークレットを使用するサンプル アプリケーション
 
-In this guide, you'll run a sample application (HelloKeyVault) that retrieves keys and secrets from a key vault in Azure Stack.
+このガイドでは、Azure Stack のキー コンテナーからキーとシークレットを取得するサンプル アプリケーション (HelloKeyVault) を実行します。
 
-## <a name="prerequisites"></a>Prerequisites 
+## <a name="prerequisites"></a>前提条件 
 
-Run the following prerequisites either from the [development kit](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop), or from a Windows-based external client if you are [connected through VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn):
+[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)、または [VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合は Windows ベースの外部クライアントから、次の前提条件を実行します。
 
-* Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
-* Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md). 
+* [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。  
+* [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。 
 
-## <a name="create-and-get-the-key-vault-and-application-settings"></a>Create and get the key vault and application settings
+## <a name="create-and-get-the-key-vault-and-application-settings"></a>キー コンテナーの作成と取得およびアプリケーションの設定
 
-Firstly, you should create a Key Vault in Azure Stack, and register an application in the Active Directory. You can create and register them by using portal or PowerShell, this topic shows you the PowerShell way to do the tasks. By default, this PowerShell script creates a new application in the active directory, however, you can also use one of your existing application. Make sure to provide valuea for the `aadTenantName` and `applicationPassword` variables. If you don't specify a value for the `applicationPassword` variable this script will generate a random password. 
+まず、Azure Stack でキー コンテナーを作成し、Active Directory でアプリケーションを登録する必要があります。 作成と登録は、ポータルまたは PowerShell を使用して行えます。このトピックでは、PowerShell を使用して行う方法を説明します。 既定では、この PowerShell スクリプトは、アクティブなディレクトリに新しいアプリケーションを作成しますが、既存のアプリケーションの 1 つを使用することもできます。 変数 `aadTenantName` と `applicationPassword` の値は必ず指定してください。 変数 `applicationPassword` の値を指定しないと、このスクリプトによりランダムなパスワードが生成されます。 
 
 ```powershell
 $vaultName           = 'myVault'
@@ -126,26 +126,26 @@ Write-Host
 
 ``` 
 
-The following screen shot shows the output of the previous script:
+次のスクリーン ショットは、上のスクリプトの出力を示しています。
 
 ![app config](media/azure-stack-kv-sample-app/settingsoutput.png)
 
-Make a note of the VaultUrl, AuthClientId, AuthClientSecret values returned by the previous script. You will use these values to run the HelloKeyVault application.
+上のスクリプトによって返される VaultUrl、AuthClientId、AuthClientSecret の値をメモしておきます。 これらの値は、HelloKeyVault アプリケーションを実行するために使用します。
 
-## <a name="download-and-run-the-sample-application"></a>Download and run the sample application
+## <a name="download-and-run-the-sample-application"></a>サンプル アプリケーションのダウンロードと実行
 
-Download the key vault sample from the Azure [key vault client samples](https://www.microsoft.com/en-us/download/details.aspx?id=45343) page. Extract the contents of the .zip file onto your development workstation. There are two samples within the samples folder, we will use the HellpKeyVault sample in this topic. Navigate to the Microsoft.Azure.KeyVault.Samples > samples > HelloKeyVault folder and open the HelloKeyVault application in Visual Studio. 
+Azure の [キー コンテナーのクライアント サンプル](https://www.microsoft.com/en-us/download/details.aspx?id=45343)ページから、キー コンテナーのサンプルをダウンロードします。 .zip ファイルの内容を自分の開発ワークステーションに抽出します。 サンプル フォルダーには 2 つのサンプルがありますが、このトピックでは HellpKeyVault サンプルを使用します。 Microsoft.Azure.KeyVault.Samples、samples、HelloKeyVault フォルダーの順に移動し、HelloKeyVault アプリケーションを Visual Studio で開きます。 
 
-Open the HelloKeyVault\App.config file and replace the values of <appSettings> element with the VaultUrl, AuthClientId, AuthClientSecret values returned by the previous script. Note that by default the App.config contains place holder for **AuthCertThumbprint** but you will use **AuthClientSecret** instead. After you replace the settings, rebuild the solution and start the application.
+HelloKeyVault\App.config ファイルを開き、<appSettings> 要素の値を先ほどのスクリプトによって返された VaultUrl、AuthClientId、AuthClientSecret の値に置き換えます。 既定では、App.config には **AuthCertThumbprint** のプレース ホルダーが含まれていますが、代わりに **AuthClientSecret** を使用することに注意してください。 設定を置き換えたら、ソリューションをリビルドし、アプリケーションを起動します。
 
-![app settings](media/azure-stack-kv-sample-app/appconfig.png)
+![アプリケーション設定](media/azure-stack-kv-sample-app/appconfig.png)
  
-The application signs in to Azure AD, then uses that token to authenticate to key vault in Azure Stack. The application performs operations like create, encrypt, wrap, delete etc. on the keys and secrets of the key vault. You can also pass specific parameters such as ‘encrypt’, ‘decrypt’ etc. to the application, which makes sure that the application executes only those operations against the vault. 
+アプリケーションは、Azure AD にサインインし、そのトークンを使用して Azure Stack でキー コンテナーを認証します。 アプリケーションは、キー コンテナーのキーとシークレットで作成、暗号化、ラップ、削除などの操作を実行します。 ‘encrypt’、‘decrypt’ などの特定のパラメーターをアプリケーションに渡して、アプリケーションがそのコンテナーに対して指定した操作のみを実行するようにすることもできます。 
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
+## <a name="next-steps"></a>次のステップ
+[Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
 
-[Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
+[Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
 
 

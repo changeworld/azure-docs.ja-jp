@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/07/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 3c7ab236d0a9efee6ac3fa97ed6de85cacbc9a89
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: e8ac4bef5af7a98857278b82304bb58f1ac6e342
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB の FAQ
@@ -64,12 +64,31 @@ Azure Cosmos DB でコンテナーがサポートできるスループットの�
 詳細については、[Azure Cosmos DB の価格の詳細](https://azure.microsoft.com/pricing/details/cosmos-db/)に関するページをご覧ください。 Azure Cosmos DB の利用料金は、プロビジョニング済みコンテナーの数、コンテナーがオンラインであった時間数、各コンテナーのプロビジョニング スループットによって決まります。 ここで言う "*コンテナー*" とは、DocumentDB API のコレクション、Graph API のグラフ、MongoDB API のコレクション、Table API のテーブルを指します。 
 
 ### <a name="is-a-free-account-available"></a>無料アカウントはありますか?
+はい。契約することなく、期間限定のアカウントに無料でサインアップできます。 サインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスするか、[Try Azure Cosmos DB に関する FAQ](#try-cosmos-db) セクションで詳細を確認してください。
+
 Azure を初めて使用する場合は、[Azure 無料アカウント](https://azure.microsoft.com/free/)にサインアップできます。それにより、30 日間の使用権と、すべての Azure サービスを試すためのクレジットが与えられます。 Visual Studio サブスクリプションを持っている場合は、どの Azure サービスでも使用できる[無料の Azure クレジット](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/)も与えられます。 
 
 また、[Azure Cosmos DB Emulator](local-emulator.md) を使用すると、Azure サブスクリプションを作成しなくても、ローカルでのアプリケーションの開発とテストを無料で行うことができます。 Azure Cosmos DB Emulator でのアプリケーションの動作に満足できたら、クラウドでの Azure Cosmos DB アカウントの使用に切り替えることができます。
 
 ### <a name="how-can-i-get-additional-help-with-azure-cosmos-db"></a>Azure Cosmos DB に関するその他の支援を得るにはどうすればよいですか?
 支援が必要な場合は、[Stack Overflow](http://stackoverflow.com/questions/tagged/azure-cosmosdb) または [MSDN フォーラム](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=AzureDocumentDB)を利用するか、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) にメールを送って、Azure Cosmos DB エンジニアリング チームとの 1 対 1 のチャットをスケジュールしてください。 
+
+<a id="try-cosmos-db"></a>
+## <a name="try-azure-cosmos-db-subscriptions"></a>Try Azure Cosmos DB サブスクリプション
+
+現在、一定期間に限り、サブスクリプション不要で、課金も契約もなしで Azure Cosmos DB をご利用いただけます。 Try Azure Cosmos DB サブスクリプションにサインアップするには、「[Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)」にアクセスしてください。 このサブスクリプションは、[Azure 無料試用版](https://azure.microsoft.com/free/)とは別のもののため、Azure 無料試用版または Azure 有料サブスクリプションに加えて使用できます。 
+
+Try Azure Cosmos DB サブスクリプションは、Azure Portal で、ユーザー ID に関連付けられた他のサブスクリプションの横に表示されます。 
+
+Try Azure Cosmos DB サブスクリプションには、次の条件が適用されます。
+
+* SQL (DocumentDB API)、Gremlin (Graph API)、Table アカウントのサブスクリプションあたり 1 つのコンテナー。
+* MongoDB アカウントのサブスクリプションあたり最大 3 つのコレクション。
+* 10 GB のストレージ容量。
+* グローバルなレプリケーションは、米国中部、北ヨーロッパ、東南アジアという [Azure リージョン](https://azure.microsoft.com/regions/)で利用可能です。
+* 最大スループット 5K RU/秒。
+* サブスクリプションの有効期限は 24 時間後に切れます。これは、合計で最大 48 時間まで延長できます。
+* Try Azure Cosmos DB アカウントでは Azure サポート チケットを作成できません。ただし、既存のサポート プランをご利用のサブスクライバーにはサポートが提供されます。 
 
 ## <a name="set-up-azure-cosmos-db"></a>Azure Cosmos DB の設定
 ### <a name="how-do-i-sign-up-for-azure-cosmos-db"></a>Azure Cosmos DB にサインアップするにはどうすればよいですか?

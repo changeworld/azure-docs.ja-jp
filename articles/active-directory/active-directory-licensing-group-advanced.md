@@ -17,10 +17,10 @@ ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 55e2e095138842f8e2d31a4f79ffb22b81d18dba
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -123,7 +123,7 @@ Microsoft が製品に新しいサービスを追加すると、既定では、�
 
 3. [**[Azure Active Directory] > [ライセンス] > [すべての製品]**](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) ブレードに移動して、*[Office 365 Enterprise E5]* を選択してから、**[ライセンスされているグループ]** を選択し、その製品を持つすべてのグループの一覧を表示します。
 
-4. 確認するグループをクリックします (この場合は、*[O365 E5 - Exchange のみ]*)。 これにより、**[ライセンス]** タブが開きます。 E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
+4. 確認するグループをクリックします (この場合は、*[O365 E5 - Exchange のみ]*)。 これにより、**[ライセンス]** タブが開きます。E5 ライセンスをクリックすると、すべての有効なサービスを一覧表示するブレードが開きます。
 > [!NOTE]
 > このグループで *Exchange Online* サービスに加え、*Microsoft Stream* サービスも自動的に追加され、有効になっています。
 
@@ -213,6 +213,8 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 - ユーザーがグループから削除され、ライセンスを失うと、そのライセンスのサービス プラン (例: SharePoint Online) は、「**中断**」状態に設定されます。 サービス プランは最終的な無効状態には設定されていません。 この予防措置によって、管理者がグループ メンバーシップの管理で間違いを犯した場合にユーザー データが誤って削除されるのを回避することができます。
 
 - 大きなグループ (例: ユーザーが 100,000 人) に対してライセンスを割り当てるまたはライセンスを変更すると、パフォーマンスに影響が及ぶことがあります。 特に、Azure AD のオートメーションによって生成される変更の量によっては、Azure AD とオンプレミスのシステム間のディレクトリの同期のパフォーマンスに悪影響を及ぼす可能性があります。
+
+- ある種の負荷の大きな状況では、ライセンスの処理に遅延が生じ、グループ ライセンスの追加/削除、グループのユーザーの追加/削除などの変更の処理にかかる時間が長くなることがあります。 変更の処理にかかっている時間が 24 時間を超えた場合には、[サポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/supportRequest) Microsoft に調査を依頼してください。 Microsoft では、*一般提供*の開始までにこの機能のパフォーマンス指標を向上させる予定です。
 
 - ライセンス管理のオートメーションは、環境内のすべての種類の変更に自動的には反応しません。 たとえば、ライセンスの不足により一部のユーザーがエラー状態になる場合があります。 使用可能なシート数を解放するために、他のユーザーから直接割り当てられた一部のライセンスを削除できます。 ただし、システムがこの変更に自動的に反応してそのエラー状態のユーザーを修正することはありません。
 

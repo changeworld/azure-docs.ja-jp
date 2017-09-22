@@ -3,7 +3,7 @@ title: ".NET アプリ向け Azure Application Insights スナップショット
 description: "例外が運用 .NET アプリでスローされるときにデバッグ スナップショットが自動的に収集される"
 services: application-insights
 documentationcenter: 
-author: qubitron
+author: pharring
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/03/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: cb0c74e7a3e3a2044262f94275110d0a55ccc19b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 0761339dfdaaaed418a1414472393ce8e0f37b9c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>.NET アプリでの例外でのデバッグ スナップショット
@@ -68,26 +68,13 @@ ms.lasthandoff: 09/06/2017
 
 1. まだ有効にしていない場合は、[ASP.NET Core Web アプリで Application Insights を有効](app-insights-asp-net-core.md)にします。
 
+> [!NOTE]
+> お使いのアプリケーションが、2.1.1 以降のバージョンの Microsoft.ApplicationInsights.AspNetCore パッケージを参照していることを確認します。
+
 2. [Microsoft.ApplicationInsights.SnapshotCollector](http://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) NuGet パッケージをアプリに含めます。
 
-3. `ConfigureServices`アプリケーションのクラスのメソッド`Startup`を変更し、スナップショット コレクターのテレメトリ プロセッサを追加します。 追加する必要があるコードは、Microsoft.ApplicationInsights.ASPNETCore NuGet パッケージの参照されるバージョンによって異なります。
+3. `ConfigureServices`アプリケーションのクラスのメソッド`Startup`を変更し、スナップショット コレクターのテレメトリ プロセッサを追加します。
 
-   Microsoft.ApplicationInsights.AspNetCore 2.1.0 の場合、次を追加します。
-   ```C#
-   using Microsoft.ApplicationInsights.SnapshotCollector;
-   ...
-   class Startup
-   {
-       // This method is called by the runtime. Use it to add services to the container.
-       public void ConfigureServices(IServiceCollection services)
-       {
-           services.AddSingleton<Func<ITelemetryProcessor, ITelemetryProcessor>>(next => new SnapshotCollectorTelemetryProcessor(next));
-           // TODO: Add any other services your application needs here.
-       }
-   }
-   ```
-
-   Microsoft.ApplicationInsights.AspNetCore 2.1.1 の場合、次を追加します。
    ```C#
    using Microsoft.ApplicationInsights.SnapshotCollector;
    ...

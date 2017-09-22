@@ -16,10 +16,10 @@ ms.date: 07/14/2017
 ms.author: mimig
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
-ms.openlocfilehash: c9d04ae0bc11b99f893e5f003f136fbfe0dfccc9
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 5b6f016ce634fd244f1ea3b54361b9a5da9d5483
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 
@@ -28,6 +28,8 @@ ms.lasthandoff: 08/11/2017
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB では、ボタンを 1 つクリックするだけで Azure のリージョンをいくつでもまたいでスループットとストレージを柔軟かつ個別にスケールできます。 このサービスは包括的な[サービス レベル アグリーメント](https://aka.ms/acdbsla) (SLA) により、スループット、待ち時間、可用性、整合性が保証されています。この点は、他のどのデータベース サービスにもないメリットです。
 
 ![Azure Cosmos DB は Microsoft のグローバルに分散されたデータベース サービスであり、柔軟なスケールアウト、短い待ち時間の保証、5 つの整合性モデル、包括的な保証を提供する SLA を特徴としています](./media/introduction/azure-cosmos-db.png)
+
+Azure サブスクリプション不要で、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。
 
 ## <a name="solutions-that-benefit-from-azure-cosmos-db"></a>Azure Cosmos DB の恩恵を受けるソリューション
 

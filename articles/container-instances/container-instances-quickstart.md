@@ -1,5 +1,5 @@
 ---
-title: "最初の Azure Container Instances コンテナーの作成 | Azure Docs"
+title: "クイックスタート - 最初の Azure Container Instances コンテナーの作成"
 description: "Azure Container Instances でのデプロイおよび作業の開始"
 services: container-instances
 documentationcenter: 
@@ -14,20 +14,20 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/12/2017
 ms.author: seanmck
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: ad053391e6b3927ab11faaf4d9e70b610e86f3c3
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 012a48410bb08cb54f42a4f87e952f67ad18c112
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 
-Azure Container Instances を使用すると、Azure でコンテナーを簡単に作成して管理できます。 このクイック スタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数秒で、お使いのブラウザーに次のように表示されます。
+Azure Container Instances を使用すると、仮想マシンをプロビジョニングしたり、より高度なレベルのサービスを採用したりしなくても、Azure の Docker コンテナーを簡単に作成、管理できます。 このクイック スタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、1 つのコマンドで完結します。 わずか数秒で、お使いのブラウザーに次のように表示されます。
 
 ![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
@@ -35,17 +35,17 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-CLI をローカルにインストールして使用する場合、このクイックスタートを実施するには、Azure CLI バージョン 2.0.12 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+CLI をローカルにインストールして使用する場合、このクイック スタートを実施するには、Azure CLI バージョン 2.0.12 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
 Azure Container Instances は、Azure のリソースであり、Azure リソース グループに配置する必要があります。Azure リソース グループとは、Azure のリソースがデプロイおよび管理される論理的なコレクションです。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。
 
 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-```azurecli-interactive 
+```azurecli-interactive
 az group create --name myResourceGroup --location eastus
 ```
 
@@ -54,7 +54,7 @@ az group create --name myResourceGroup --location eastus
 コンテナーを作成するには、名前、Docker イメージ、および Azure リソース グループを指定します。 コンテナーは、必要に応じて、パブリック IP アドレスを使用してインターネットに公開できます。 この例では、[Node.js](http://nodejs.org) で記述された非常にシンプルな Web アプリをホストしているコンテナーを使用します。
 
 ```azurecli-interactive
-az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public 
+az container create --name mycontainer --image microsoft/aci-helloworld --resource-group myResourceGroup --ip-address public
 ```
 
 数秒のうちに、要求に対する応答が得られます。 最初に、コンテナーは**作成中**の状態になりますが、数秒のうちに起動されます。 `show` コマンドを使用して状態を確認することができます。
@@ -81,7 +81,7 @@ az container show --name mycontainer --resource-group myResourceGroup
 ...
 ```
 
-コンテナーが**成功**状態に推移すると、指定した IP アドレスを使用してブラウザー内でこのコンテナーにアクセスすることができます。 
+コンテナーが**成功**状態に推移すると、指定した IP アドレスを使用してお使いのブラウザー内でこのコンテナーにアクセスすることができます。
 
 ![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 

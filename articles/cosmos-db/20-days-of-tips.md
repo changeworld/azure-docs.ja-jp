@@ -1,6 +1,6 @@
 ---
 title: "20 日間の Azure Cosmos DB のヒント | Microsoft Docs"
-description: "Twitter シリーズ「20 日間の Azure Cosmos DB」のヒントをすべてまとめて読むことができます。"
+description: "Simona Cotin の「20 日間の Azure Cosmos DB のヒント」シリーズをすべてまとめて読むことができます。"
 services: cosmos-db
 author: mimig1
 manager: jhubbard
@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 09/13/2017
 ms.author: mimig
 ms.custom: cda
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 95fe39d8124df9b259967ac361c7df6550091ba2
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: 992249949c6bd80e698a0bc21710039c6aa1f67e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -44,6 +44,46 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 > [!VIDEO https://www.youtube.com/embed/4aWL5p_SJDE]
 
 [![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905449095648731136)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311218673575088128)
+
+## <a name="tip-3-replicate-data-globally"></a>ヒント 3: データをグローバルにレプリケート
+
+ヒント 3: 世界中のどこでも、アプリをすぐに活用する必要がありますか。 #cosmosDB でのデータのレプリケートは、非常に簡単です。 [https://aka.ms/nimw2g](https://aka.ms/nimw2g)  
+
+> [!VIDEO https://www.youtube.com/embed/i22R7I_Rgdg]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/905783001937833984)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311547372904214528)
+
+## <a name="tip-4-gremlin-graph-support"></a>ヒント 4: Gremlin グラフのサポート
+
+ヒント 4: Gremlin はお好きですか。 #cosmosdb も Gremlin がお気に入りです。 Azure Portal を使用して、グラフ DB を表示、照会、編集しましょう [https://aka.ms/tfmi37](https://aka.ms/tfmi37)  
+
+> [!VIDEO https://www.youtube.com/embed/oPUTZbiXffk]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/906199438737203201)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6311965366943834112)
+
+## <a name="tip-5-try-azure-cosmos-db-free"></a>ヒント 5: Azure Cosmos DB を無料で試す
+
+ヒント 5: Azure #CosmosDB を無料で試用してみたいですか。 サインアップやクレジット カードは不要です。[https://aka.ms/d81vxr](https://aka.ms/d81vxr) に移動して、コーディングを開始してください。  
+
+> [!VIDEO https://www.youtube.com/embed/Vf8iZCmoG2E]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907258302576431107)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313024454544932864)
+
+## <a name="tip-6-migrate-your-mean-app"></a>ヒント 6: MEAN アプリを移行する
+
+ヒント 6: あなたのアプリは MEAN ですか。 Azure #cosmosDB にアプリを簡単に移行する方法を学習しましょう。 [https://aka.ms/gfh6i5](https://aka.ms/gfh6i5) ビデオ全編: [https://aka.ms/aoojih](https://aka.ms/aoojih)
+
+> [!VIDEO https://www.youtube.com/embed/1DzwI5HmU5w]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907634936160559105)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313400758263967744/)
+
+## <a name="tip-7-build-a-nodejs-app-by-using-graph-api"></a>ヒント 7: Graph API を使用して Node.js アプリを構築する
+
+ヒント 7: Graph API と Azure #CosmosDB を使用して、Node.js アプリを構築します。 詳細については、ドキュメントのページ ([https://aka.ms/X79feg](https://aka.ms/X79feg)) を参照してください
+
+> [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907982218353451009)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313762492686352384)
 
 ## <a name="next-steps"></a>次のステップ
 

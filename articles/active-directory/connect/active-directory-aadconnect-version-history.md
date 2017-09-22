@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 08/30/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 6e2a7c5eafee78d342f735b543624d041b9b3fe5
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 895b538680230170cd29817997a7739b1ba89cfc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
@@ -44,6 +44,7 @@ Azure AD Connect からのアップグレード手順 | Azure AD Connect の [�
 * [シームレス シングル サインオン](active-directory-aadconnect-sso.md)を有効にしているお客様に影響する、Azure AD Connect のアップグレードに関する既知の問題があります。 Azure AD Connect をアップグレードすると、機能は引き続き有効であるにもかかわらず、ウィザードには無効と表示されます。 この問題は、今後のリリースで修正される予定です。 この表示の問題が気になるお客様は、ウィザードでシームレス シングル サインオンを有効にすることで、問題を手動で修正できます。
 
 #### <a name="fixed-issues"></a>修正された問題
+* [ソース アンカーとしての msDS-ConsistencyGuid](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-design-concepts#using-msds-consistencyguid-as-sourceanchor) 機能を有効する際に Azure AD Connect でオンプレミスの ADFS の要求規則を更新できない問題を修正しました。 この問題は、Azure AD Connect の既存のデプロイでサインインの方法として ADFS が構成されている場合に、上記機能を有効にしようとすると発生します。 この問題は、ウィザードで ADFS の要求規則の更新に先立ち ADFS の資格情報の入力を求めるプロンプトを表示していなかったことによるものです。
 * オンプレミスの AD フォレストで NTLM が無効になっている場合に Azure AD Connect のインストールが失敗する問題を修正しました。 この問題は、Kerberos 認証に必要なセキュリティ コンテキストを作成するときに、Azure AD Connect ウィザードが完全に修飾された資格情報を提供しないことによるものです。 それが原因で Kerberos 認証が失敗し、Azure AD Connect ウィザードは NTLM の使用に戻ります。
 
 ### <a name="azure-ad-connect-sync"></a>Azure AD Connect 同期

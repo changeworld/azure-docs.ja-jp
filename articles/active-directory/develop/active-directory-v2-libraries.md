@@ -12,24 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/01/2017
+ms.date: 08/22/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f7479260c7c2e10f242b6d8e77170d4abe8634ac
-ms.openlocfilehash: c8dc0fab1a4da2bf9ae1463cb5e17fc2c2b12e5c
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 50a1cc0bf9e00cf5b866b88b3e88c62b06a2376b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-active-directory-v20-authentication-libraries"></a>Azure Active Directory v2.0 認証ライブラリ
-Azure Active Directory (Azure AD) v2.0 エンドポイントは、業界標準の OAuth 2.0 や OpenID Connect 1.0 プロトコルをサポートします。 v2.0 エンドポイントでは、Microsoft およびその他の組織のさまざまなライブラリを使用することができます。
+[Azure Active Directory (Azure AD) v2.0 エンドポイント](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-compare)は、業界標準の OAuth 2.0 および OpenID Connect 1.0 プロトコルをサポートします。 v2.0 エンドポイントでは、Microsoft およびその他の組織のさまざまなライブラリを使用することができます。
 
 v2.0 エンドポイントを使用するアプリケーションを構築する場合は、[Microsoft が使用する][Microsoft-SDL]ような Microsoft Security Development Lifecycle (SDL) の手法を採用するプロトコル ドメインの専門家が記述したライブラリを使用することをお勧めします。 プロトコルのサポートをハンド コードする場合は、SDL 手法に従い、各プロトコルの標準仕様におけるセキュリティ上の考慮事項によく注意することをお勧めします。
 
+> [!NOTE]
+> Azure AD v1.0 ライブラリ (ADAL) をお探しの場合は、 [ADAL ライブラリ ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-authentication-libraries)を確認してください。 
+> 
+> 
+
 ## <a name="types-of-libraries"></a>ライブラリの種類
-Azure AD v2.0 は、次の 2 種類のライブラリに対応します。
+Azure AD v2.0 エンドポイントは、次の 2 種類のライブラリに対応します。
 
 * **クライアント ライブラリ**。 ネイティブ クライアントとサーバーは、クライアント ライブラリを使用して、Microsoft Graph などのリソースを呼び出すためのアクセス トークンを取得します。
 * **サーバー ミドルウェア ライブラリ**。 Web アプリは、ユーザーのサインインにサーバー ミドルウェア ライブラリを使用します。 Web API は、サーバー ミドルウェア ライブラリを使用して、ネイティブ クライアントまたは他のサーバーによって送信されるトークンを検証します。

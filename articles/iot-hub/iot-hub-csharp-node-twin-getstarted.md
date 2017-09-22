@@ -12,13 +12,13 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/29/2017
+ms.date: 09/07/2017
 ms.author: elioda
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 07797b9159c9b926e9eb47d8864c63048951931a
-ms.lasthandoff: 04/03/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
+ms.openlocfilehash: 4cf607e8e0ccd3aab06be54d715c2bf3777caeb0
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="get-started-with-device-twins-netnode"></a>デバイス ツインの概要 (.NET/Node)
@@ -37,7 +37,7 @@ ms.lasthandoff: 04/03/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

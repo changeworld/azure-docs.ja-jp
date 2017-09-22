@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 08/15/2017
 ms.author: jeedes
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 3c68c3ac7d6be593476d419f8c015931b206eead
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f5f20fee648cf26b4db49b9a8f5f5e5bcecd453e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="tutorial-azure-active-directory-integration-with-absorb-lms"></a>チュートリアル: Azure Active Directory と Absorb LMS の統合
@@ -124,7 +124,7 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![[シングル サインオンの構成] の [保存] ボタン](./media/active-directory-saas-absorblms-tutorial/tutorial_general_400.png)
     
-7. **[Absorb LMS Configuration (Absorb LMS 構成)]** セクションで、**[Configure Absorb LMS (Absorb LMS を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL と SAML シングル サインオン サービス URL** をコピーします。
+7. **[Absorb LMS Configuration (Absorb LMS 構成)]** セクションで、**[Configure Absorb LMS (Absorb LMS を構成する)]** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから**サインアウト URL** をコピーします。
 
     ![Absorb LMS 構成](./media/active-directory-saas-absorblms-tutorial/tutorial_absorblms_configure.png) 
 
@@ -146,15 +146,15 @@ Absorb LMS で Azure AD のシングル サインオンを構成してテスト�
 
     ![Configure Single Sign-On](./media/active-directory-saas-absorblms-tutorial/4.png)
 
-    a. 適切な**モード**を選択します。
+    a. **[Identity Provider Initiated]\(ID プロバイダー開始\)** を選択します。
 
-    b. Azure Portal からダウンロードした証明書をメモ帳で開き、**---BEGIN CERTIFICATE---** および **---END CERTIFICATE---** タグを削除して、残りの内容を **[Key]** ボックスに貼り付けます。
+    b. Azure Portal からダウンロードした証明書をメモ帳で開き、**---BEGIN CERTIFICATE---** および **---END CERTIFICATE---** タグを削除して、残りの内容を **[Key]\(キー\)** ボックスに貼り付けます。
     
     c. **[Id Property]** で、Azure AD でユーザー識別子として構成した該当する属性を選択します (たとえば、Azure AD で userprinciplename を選択した場合、ここでは Username を選択します)。
 
-    d. **[Login URL]** に、Azure Portal の **[サインオンの構成]** ウィンドウでコピーした **SAML シングル サインオン サービス URL** 値を貼り付けます。
+    d. **[Login URL]\(ログイン URL\)** に、Azure Portal の **[プロパティ]** ページから**ユーザーのアクセス URL** を貼り付けます。
 
-    e. **[Logout URL]** に、Azure Portal の **[サインオンの構成]** ウィンドウでコピーした**サインアウト URL** 値を貼り付けます。
+    e. **[Logout URL]\(ログアウト URL\)** に、Azure Portal の **[サインオンの構成]** ウィンドウからコピーした **[サインアウト URL]** の値を貼り付けます。
 
 13. **[Only Allow SSO Login]** を有効にします。
 
@@ -276,6 +276,7 @@ Absorb LMS の場合、プロビジョニングは手動で行います。
 
 * [SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](active-directory-saas-tutorial-list.md)
 * [Azure Active Directory のアプリケーション アクセスとシングル サインオンとは](active-directory-appssoaccess-whatis.md)
+
 
 
 <!--Image references-->

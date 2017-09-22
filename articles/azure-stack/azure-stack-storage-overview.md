@@ -1,6 +1,6 @@
 ---
-title: Introduction to Azure Stack storage
-description: Learn about Azure Stack storage
+title: "Azure Stack Storage の概要"
+description: "Azure Stack Storage について"
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -18,74 +18,74 @@ ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: c698e685fd395791b12c9db68d443de1cb804a3b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="introduction-to-azure-stack-storage"></a>Introduction to Azure Stack storage
+# <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 
-## <a name="overview"></a>Overview
-Azure Stack Storage is a set of cloud storage services including Blobs, Tables and Queues which are consistent with Azure Storage services.
+## <a name="overview"></a>概要
+Azure Stack Storage は、Azure Storage サービスと一貫性がある BLOB、テーブル、およびキューを含むクラウド ストレージ サービスのセットです。
 
-## <a name="azure-stack-storage-services"></a>Azure Stack Storage services
-Azure Stack storage provides the following three services:
+## <a name="azure-stack-storage-services"></a>Azure Stack Storage サービス
+Azure Stack Storage 次の 3 つのサービスを提供します。
 
 * **Blob Storage** 
 
-    Blob storage stores unstructured object data. A blob can be any type of text or binary data, such as a document, media file, or application installer.
-* **Table Storage** 
+    Blob Storage は、非構造化オブジェクト データを格納します。 ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを BLOB として保存できます。
+* **テーブル ストレージ** 
 
-    Table storage stores structured datasets. Table storage is a NoSQL key-attribute data store, which allows for rapid development and fast access to large quantities of data.
+    テーブル ストレージには、構造型データが格納されます。 Table Storage は、NoSQL キー属性データ ストアであるため、開発が迅速化され、大量のデータにすばやくアクセスできます。
 * **Queue Storage** 
 
-    Queue storage provides reliable messaging for workflow processing and for communication between components of cloud services.
+    キュー ストレージは、ワークフロー処理およびクラウド サービスのコンポーネント間通信のための、信頼性の高いメッセージング機能を提供します。
 
-An Azure Stack storage account is a secure account that gives you access to services in Azure Stack Storage. Your storage account provides the unique namespace for your storage resources. The following diagram shows the relationships between the Azure Stack storage resources in a storage account:
+Azure Stack Storage アカウントは、Azure Stack Storage のサービスにアクセスできる安全なアカウントです。 ストレージ アカウントは、ストレージ リソースに対して一意の名前空間を提供します。 以下の図は、ストレージ アカウントにおける Azure Stack Storage のリソース間の関係を示したものです。
 
-![Azure Stack Storage overview](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
-
-
-### <a name="blob-storage"></a>Blob storage
-
-For users with a large amount of unstructured object data to store in the cloud, Blob storage offers an effective and scalable solution. You can use Blob storage to store content such as:
-
-* Documents
-* Social data such as photos, videos, music, and blogs
-* Backups of files, computers, databases, and devices
-* Images and text for web applications
-* Configuration data for cloud applications
-* Big data, such as logs and other large datasets
-
-Every blob is organized into a container. Containers also provide a useful way to assign security policies to groups of objects. A storage account can contain any number of containers, and a container can contain any number of blobs, up to the limit of storage account.
-
-Blob storage offers three types of blobs: 
-* **Block blobs** 
-
-    Block blobs are optimized for streaming and storing cloud objects, and are a good choice for storing documents, media files, backups etc.
-* **Append blobs** 
-
-    Append blobs are similar to block blobs, but are optimized for append operations. An append blob can be updated only by adding a new block to the end. Append blobs are a good choice for scenarios such as logging, where new data needs to be written only to the end of the blob.
-* **Page blobs** 
-
-    Page blobs are optimized for representing IaaS disks and supporting random writes which is up to 1 TB in size. An Azure Stack virtual machine attached IaaS disk is a VHD stored as a page blob.
+![Azure Stack Storage の概要](media/azure-stack-storage-overview/AzureStackStorageOverview.png)
 
 
-### <a name="table-storage"></a>Table storage
-Modern applications often demand data stores with greater scalability and flexibility than previous generations of software required. Table storage offers highly available, massively scalable storage, so that your application can automatically scale to meet user demand. Table storage is Microsoft's NoSQL key/attribute store – it has a schemaless design, making it different from traditional relational databases. With a schemaless data store, it's easy to adapt your data as the needs of your application evolve. Table storage is easy to use, so developers can create applications quickly.
+### <a name="blob-storage"></a>BLOB ストレージ
 
-Table storage is a key-attribute store, meaning that every value in a table is stored with a typed property name. The property name can be used for filtering and specifying selection criteria. A collection of properties and their values comprise an entity. Since Table storage is schemaless, two entities in the same table can contain different collections of properties, and those properties can be of different types.
+大量の非構造化オブジェクト データをクラウドに保存する場合は、Blob Storage を使用すると効率の高いスケーラブルなソリューションが実現します。 Blob Storage には、次のようなコンテンツを格納できます。
 
-You can use Table storage to store flexible datasets, such as user data for web applications, address books, device information, and any other type of metadata that your service requires. For today's Internet-based applications, NoSQL databases like Table storage offer a popular alternative to traditional relational databases.
+* ドキュメント
+* 写真、ビデオ、音楽、ブログなどのソーシャル データ
+* ファイル、コンピューター、データベース、およびデバイスのバックアップ データ
+* Web アプリケーションのイメージとテキスト
+* クラウド アプリケーションの構成データ
+* ログやその他の大きなデータセットなどのビッグ データ
 
-A storage account can contain any number of tables, and a table can contain any number of entities, up to the capacity limit of the storage account.
+すべての BLOB は、コンテナーに編成されます。 コンテナーを使用すると、オブジェクトのグループにセキュリティ ポリシーを便利に割り当てることができます。 ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のコンテナーを含めることができ、コンテナーには任意の数の BLOB を含めることができます。
 
-### <a name="queue-storage"></a>Queue storage
-In designing applications for scale, application components are often decoupled, so that they can scale independently. Queue storage provides a reliable messaging solution for asynchronous communication between application components, whether they are running in the cloud, on the desktop, on an on-premises server, or on a mobile device. Queue storage also supports managing asynchronous tasks and building process workflows.
+BLOB ストレージには、3 つの種類の BLOB が用意されています。 
+* **ブロック BLOB** 
 
-A storage account can contain any number of queues, and a queue can contain any number of messages, up to the capacity limit of the storage account. Individual messages may be up to 64 KB in size.
+    ブロック BLOB はストリーミングとクラウド オブジェクトの格納に最適化されているので、ドキュメント、メディア ファイル、バックアップなどの格納に適しています。
+* **追加 BLOB** 
 
-## <a name="next-steps"></a>Next steps
-* [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
+    追加 BLOB はブロック BLOB に似ていますが、追加操作用に最適化されています。 追加 BLOB は、新しいブロックを最後に追加することによってのみ更新できます。 追加 BLOB は、新しいデータが BLOB の最後のみに書き込まれる必要がある、ログ記録のようなシナリオに適しています。
+* **ページ BLOB** 
 
-* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
+    ページ BLOB は、IaaS のディスクとして使用でき、ランダムな書き込みをサポートするように最適化され、最大 1 TB (テラバイト) までサイズを拡大できます。 Azure Stack 仮想マシンに設置された IaaS ディスクは、ページ BLOB として格納される VHD です。
+
+
+### <a name="table-storage"></a>テーブル ストレージ
+最新のアプリケーションの多くは、前の世代のソフトウェアよりも、拡張性と柔軟性に優れたデータ ストアを必要とします。 Table Storage は、高度な可用性と拡張性を備え、アプリケーションを需要に応じて自動的に拡張できます。 Table Storage は、Microsoft の NoSQL のキーまたは属性ストアですが、従来のリレーショナル データベースと異なり、スキーマなしの設計です。 スキーマなしのデータ ストアでは、アプリケーションの進化のニーズに合わせてデータを容易に修正できます。 Table Storage は使いやすいため、開発者はアプリケーションを迅速に作成できます。
+
+テーブル ストレージは、キー属性ストアであるため、テーブル内のすべての値に型指定されたプロパティ名が付いて保存されます。 このプロパティ名は、フィルタリングや、選択条件の指定に使用できます。 1 つのエンティティは、一連のプロパティとその値で構成されます。 Table Storage はスキーマがないため、同じテーブル内の 2 つのエンティティが異なるコレクションのプロパティを持つことができ、それらのプロパティに異なる型を使用できます。
+
+Table Storage を使用すると、Web アプリケーションのユーザー データ、アドレス帳、デバイス情報、およびサービスに必要なその他の種類のメタデータなど、柔軟なデータセットを保存できます。 今日のインターネットベースのアプリケーションでは、Table Storage のような NoSQL データベースが、従来のリレーショナル データベースの代わりに広く使用されています。
+
+ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のテーブルを含めることができ、テーブルには任意の数のエンティティを保存できます。
+
+### <a name="queue-storage"></a>Queue Storage
+拡張性を重視してアプリケーションを設計する場合、通常、アプリケーション コンポーネントを個別に拡張できるように分離します。 Queue Storage では、アプリケーション コンポーネントがクラウド、デスクトップ、オンプレミスのサーバー、モバイル デバイスのいずれで実行されている場合でも、信頼性の高いメッセージング ソリューションによって、アプリケーション コンポーネント間の非同期通信が実行されます。 Queue Storage ではまた、非同期タスクの管理とプロセス ワークフローの構築もサポートします。
+
+ストレージ アカウントの容量の上限を超えない限り、ストレージ アカウントには任意の数のキューを含めることができ、キューには任意の数のメッセージを保存できます。 1 つのメッセージは、最大 64 KB のサイズにすることができます。
+
+## <a name="next-steps"></a>次のステップ
+* [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
+
+* Azure Storage の詳細については、「[Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)」(Microsoft Azure Storage の概要) を参照してください。
 
 

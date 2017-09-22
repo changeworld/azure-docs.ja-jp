@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: cc8655e0bc65007cacf223ce6d7709291c609327
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 252e1fb070bcdc11494f6f37a9a1ee03fa50509e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
@@ -65,11 +65,17 @@ Web アプリケーションに対する変更を WebDeploy を使用してデ�
 [Azure Compute リソース用の Profiler のプレビュー版](https://go.microsoft.com/fwlink/?linkid=848155)が利用可能です。
 
 
-## <a name="limits"></a>制限
+## <a name="limitations"></a>制限事項
 
 データは既定で 5 日間保持されます。 また、1 日に最大 10 GB のデータを取り込むことができます。
 
 プロファイラー サービスの料金は発生しません。 Web アプリは、少なくとも App Services の Basic レベルでホストする必要があります。
+
+## <a name="overhead-and-sampling-algorithm"></a>オーバーヘッドとサンプリング アルゴリズム
+
+Profiler は、Profiler のトレース キャプチャが有効なアプリケーションをホストする各仮想マシンで、1 時間に 2 分ランダムに実行されます。 Profiler の実行中は、サーバーに 5 ～ 15% の CPU オーバーヘッドが加わります。
+アプリケーションをホスト可能なサーバーの数が多くなるほど、Profiler がアプリケーション パフォーマンス全体に与える影響は低下します。 これは、サンプリング アルゴリズムにより Profiler が常にサーバーの実行時間の 5% しか実行されないためで、より多くのサーバーを利用して Web 要求を処理すれば、Profiler から受けるサーバーのオーバーヘッドを低下させることができます。
+
 
 ## <a name="viewing-profiler-data"></a>プロファイラー データを表示する
 
@@ -191,6 +197,21 @@ Application Insights プロファイラーを有効にすると、Azure サー�
 ### <a name="error-report-in-the-profiling-viewer"></a>プロファイリング ビューアーのエラーの報告
 
 ポータルからサポート チケットを提出してください。 その際、エラー メッセージの関連付け ID を含めてください。
+
+### <a name="deployment-error-directory-not-empty-dhomesitewwwrootappdatajobs"></a>Deployment error Directory Not Empty 'D:\\home\\site\\wwwroot\\App_Data\\jobs'
+
+Web アプリを Profiler が有効な App Services のリソースに再デプロイする場合、次のようなエラーが出る可能性があります: Directory Not Empty 'D:\\home\\site\\wwwroot\\App_Data\\jobs'。スクリプトまたは VSTS 配置パイプラインで Web 配置を実行した場合に、このエラーが発生します。
+この問題を解決するには Web 配置タスクに、次のデプロイ パラメーターを追加します。
+
+```
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*' 
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*'
+-skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+-skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+```
+
+これにより、App Insights Profiler で使用されたフォルダーが削除され、再配置プロセスがブロック解除されます。 現在実行中の Profiler インスタンスには影響はありません。
+
 
 ## <a name="manual-installation"></a>手動のインストール
 

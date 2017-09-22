@@ -11,17 +11,34 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/01/2017
+ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 1ab6a2b949101f60d6eef1ba7603d1c2cf81f90a
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
+
+
+
+**Q: macOS デバイスを登録するにはどうしたらよいですか?**
+
+**A:** macOS デバイスを登録するには: 
+
+1.  [コンプライアンス ポリシーを作成する](https://docs.microsoft.com/intune/compliance-policy-create-mac-os)
+2.  [macOS デバイスの条件付きアクセス ポリシーを定義する](active-directory-conditional-access-azure-portal.md) 
+
+**解説:**
+
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](active-directory-conditional-access-technical-reference.md#supported-mobile-apps-and-desktop-clients) が必要です。 
+
+- 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
+
+---
 
 **Q: 最近、デバイスを登録しました。Azure Portal のユーザー情報にデバイスが表示されないのはなぜですか?**
 
@@ -136,20 +153,10 @@ ms.lasthandoff: 09/05/2017
 
 ---
 
-**Q: 自動デバイス登録の設定方法はどこで確認できますか。**
+**Q: ハイブリッド Azure AD 参加済みデバイスの設定手順はどこで確認できますか?**
 
-**A:** 詳しい手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
+**A:** 詳細な手順については、「[ハイブリッド Azure Active Directory 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md)」を参照してください。
 
----
-
-**Q: デバイスの自動登録に関するトラブルシューティング情報はどこで入手できますか?**
-
-**A:** トラブルシューティング情報については、次の記事をご覧ください。
-
-- [Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-current.md)
-
-- [Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-legacy.md)
- 
 ---
 
 

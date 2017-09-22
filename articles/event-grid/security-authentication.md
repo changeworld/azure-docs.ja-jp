@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: babanisa
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: ccef224ef1c2919a3e5469c1bbe0980c6963705b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9bc82e628df5e380db84e22e1f5fd25f75929fdc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -28,7 +28,7 @@ Azure Event Grid には、3 種類の認証があります。
 
 webhook は、Azure Event Grid からリアルタイムでイベントを受信する多数ある方法の 1 つです。
 
-新しいイベントを配信できる状態になるたびに、Event Grid から、本文にイベントが含まれる HTTP 要求が webhook に送信されます。
+新しいイベントが配信できる状態になるたびに、Event Grid から、本文にイベントが含まれる HTTP 要求がお使いの webhook に送信されます。
 
 Event Grid に独自の webhook エンドポイントを登録すると、エンドポイントの所有権を証明するために、単純な検証コードを含む POST 要求が送信されます。 アプリからは検証コードをエコーで応答する必要があります。 Event Grid は、検証に合格していない webhook イベントにイベントを配信しません。
  

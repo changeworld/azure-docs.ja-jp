@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with the portal in Azure Stack | Microsoft Docs
-description: Learn how to use the Azure Stack portal to deploy templates.
+title: "Azure Stack でポータルを使用してテンプレートをデプロイする | Microsoft Docs"
+description: "Azure Stack ポータルを使用してテンプレートをデプロイする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -18,22 +18,22 @@ ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: eb6e67dc4707b2b999efcceec1c55dc950c5996e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="deploy-templates-using-the-azure-stack-portal"></a>Deploy templates using the Azure Stack portal
-Use the portal to deploy Azure Resource Manager templates to the Azure Stack development kit.
+# <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
+ポータルを使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。
 
-Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
+Resource Manager テンプレートは、お使いのアプリケーションのすべてのリソースを、単一の連携した操作でデプロイしてプロビジョニングします。
 
-1. Log in to the portal, click **New**, click **Custom**, and then click **Template deployment**.
-2. Click **Edit template**, then paste your JSON template code into the blade, and then click **Save**.
-3. Click **Edit parameters**, type values for the parameters listed, and then click **OK**.
-4. Click **Subscription**, choose the subscription you want to use, and then click **OK**.
-5. Click **Resource group**, choose an existing resource group or create a new one, and then click **OK**.
-6. Click **Create**. A new tile on the dashboard tracks the progress of your template deployment.
+1. ポータルにログインし、**[新規]**、**[カスタム]**、**[テンプレートのデプロイ]** の順にクリックします。
+2. **[テンプレートの編集]** をクリックし、JSON テンプレート コードをブレードに貼り付けて、**[保存]** をクリックします。
+3. **[パラメーターの編集]** をクリックし、一覧表示されたパラメーターの値を入力して、**[OK]** をクリックします。
+4. **[サブスクリプション]** をクリックし、使用するサブスクリプションを選択して、**[OK]** をクリックします。
+5. **[リソース グループ]** をクリックし、既存のグループを選択するか新しいグループを作成して、**[OK]** をクリックします。
+6. **[作成]**をクリックします。 ダッシュボードの新しいタイルにより、テンプレート デプロイの進行状況を追跡します。
 
-## <a name="next-steps"></a>Next steps
-[Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
+## <a name="next-steps"></a>次のステップ
+[PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
 
 

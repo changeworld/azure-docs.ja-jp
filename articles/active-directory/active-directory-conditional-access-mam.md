@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory でのモバイル アプリ管理を使用した条件付きアクセス | Microsoft Docs"
-description: "Azure Active Directory でのモバイル アプリ管理を使用した条件付きアクセスのしくみについて説明します。"
+title: "Azure Active Directory のアプリベースの条件付きアクセス | Microsoft Docs"
+description: "Azure Active Directory のアプリベースの条件付きアクセスのしくみについて学習します。"
 services: active-directory
 keywords: "アプリへの条件付きアクセス, Azure AD での条件付きアクセス, 企業リソースへの安全なアクセス, 条件付きアクセス ポリシー"
 documentationcenter: 
@@ -13,66 +13,66 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/01/2017
+ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: spunukol
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: c6bc39dc151c80ffe1306464da60a029e54cc6b1
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: 48c9f55e2296b88acc697ab818f13787695643a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 
 ---
-# <a name="conditional-access-with-mobile-app-management-in-azure-active-directory"></a>Azure Active Directory でのモバイル アプリ管理を使用した条件付きアクセス  
+# <a name="azure-active-directory-app-based-conditional-access"></a>Azure Active Directory のアプリベースの条件付きアクセス  
 
-Azure ポータルの Azure Active Directory (Azure AD) のアプリに基づく条件付きアクセスと Intune アプリ保護ポリシーを組み合わせることで、Intune アプリ保護をサポートしているモバイル アプリへのクラウド アプリからのアクセスを制限できます。たとえば、Exchange Online から Outlook アプリへのアクセスを制限できます。 このサポートにより、Intune MDM による管理対象として登録されていないデバイスでも、会社のデータを保護できます。   
+従業員は個人的な作業と業務上の作業のどちらにもモバイル デバイスを使用します。 そこで、従業員の生産性を確保しながら、データの損失を防止する必要があります。 Azure Active Directory (Azure AD) のアプリベースの条件付きアクセスを使うと、クラウド アプリに対するアクセスを会社のデータを保護できるクライアント アプリだけに制限することができます。  
 
-モバイル アプリ管理の条件付きアクセスをデバイス ベースの条件付きアクセス ポリシーなどの他のポリシーと組み合わせて、個人のデバイスと会社のデバイスの両方でデータを保護することができます。 
+このトピックでは、Azure AD のアプリベースの条件付きアクセスを構成する方法を説明します。
+
+## <a name="overview"></a>概要
+
+[Azure AD の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがリソースにアクセスする方法を微調整できます。 たとえば、クラウド アプリへのアクセスを信頼済みデバイスのみに制限できます。
+
+会社のデータの保護には、[Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy)を利用できます。 Intune のアプリ保護ポリシーでは、モバイル デバイス管理 (MDM) ソリューションデバイスは必要ありません。このため、デバイスをデバイス管理ソリューションに登録しているかどうかに関係なく、会社のデータを保護することができます。
+
+Azure Active Directory のアプリベースの条件付きアクセスを使うと、クラウド アプリに対するアクセスを Intune のアプリ保護ポリシーをサポートしているクライアント アプリのみに制限することができます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。
+
+条件付きアクセスに関する用語では、このようなクライアント アプリを**承認されたクライアント アプリ**と呼んでいます。  
+
+
+![条件付きアクセス](./media/active-directory-conditional-access-mam/05.png)
+
+
+承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)に関するセクションを参照してください。
+
+
+アプリベースの条件付きアクセス ポリシーを[デバイス ベースの条件付きアクセス ポリシー](active-directory-conditional-access-policy-connected-applications.md)などの他のポリシーと組み合わせて、個人のデバイスと会社のデバイスの両方で柔軟にデータを保護することもできます。
+
+ 
+
 
 ##<a name="before-you-begin"></a>開始する前に
 
 このトピックは、次の事項を熟知していることを前提としています。
 
+- [承認されたクライアント アプリの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)に関するテクニカル リファレンス。
+
+
 - [Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)の基本的な概念。
 
 - [条件付きアクセス ポリシーの構成](active-directory-conditional-access-azure-portal-get-started.md)方法。
 
-
-さらに、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を確認できます。  
-
-
+- [条件付きアクセス ポリシーの移行](active-directory-conditional-access-best-practices.md#policy-migration)。
+ 
 
 ## <a name="prerequisites"></a>前提条件
 
-1.  アプリに基づく条件付きアクセス ポリシーを作成する前に、Enterprise Mobility + Security または Azure Active Directory Premium サブスクリプションが必要であり、ユーザーが EMS または Azure AD のライセンスを取得している必要があります。 
-2.  モバイル アプリ管理ポリシーを使用して新しい条件付きアクセスを作成する前に、シナリオと移行に関する考慮事項を確認する必要があります。
-
-## <a name="supported-platforms"></a>サポートされるプラットフォーム
-
--   iOS
-
--   Android
-
-## <a name="approved-client-applications"></a>承認されたクライアント アプリケーション 
-
-- Microsoft Outlook
-
-- Microsoft SharePoint
-
-- Microsoft OneDrive
-
-- Microsoft Teams
-
-- Microsoft Word
-
-- Microsoft Excel
-
-- Microsoft PowerPoint
+アプリベースの条件付きアクセス ポリシーを作成するには、Enterprise Mobility + Security または Azure Active Directory Premium のサブスクリプションが必要であるほか、ユーザーが EMS または Azure AD のライセンスを取得している必要があります。 
 
 
 ## <a name="exchange-online-policy"></a>Exchange Online ポリシー 
 
-このシナリオは、承認されたアプリで Exchange Online にアクセスするためのモバイル アプリ管理ポリシーによる条件付きアクセスで構成されます。
+このシナリオは、Exchange Online にアクセスするためのアプリベースの条件付きアクセス ポリシーで構成されます。
 
 
 ### <a name="scenario-playbook"></a>シナリオのプレイブック
@@ -246,9 +246,9 @@ Azure ポータルの Azure Active Directory (Azure AD) のアプリに基づく
 詳細については、「[Microsoft Intune でアプリとデータを保護する](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)」を参照してください。
 
 
-## <a name="mobile-application-management-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online と SharePoint Online 用のモバイル アプリケーション管理または準拠デバイス ポリシー
+## <a name="app-based-or-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online と SharePoint Online 用のアプリベースまたは準拠デバイス ベースのポリシー
 
-このシナリオは、承認されたアプリで Exchange Online にアクセスするためのモバイル アプリ管理ポリシーまたは準拠デバイス ポリシーによる条件付きアクセスで構成されます。
+このシナリオは、Exchange Online にアクセスするためのアプリベースまたは準拠デバイス ベースの条件付きアクセス ポリシーで構成されます。
 
 
 ### <a name="scenario-playbook"></a>シナリオのプレイブック
@@ -338,9 +338,10 @@ Azure ポータルの Azure Active Directory (Azure AD) のアプリに基づく
 
 
 
-## <a name="mobile-application-management-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online と SharePoint Online 用のモバイル アプリケーション管理および準拠デバイス ポリシー
+## <a name="app-based-and-compliant-device-policy-for-exchange-online-and-sharepoint-online"></a>Exchange Online と SharePoint Online 用のアプリベースで準拠デバイス ベースのポリシー
 
-このシナリオは、承認されたアプリで Exchange Online にアクセスするためのモバイル アプリ管理ポリシーおよび対応デバイス ポリシーによる条件付きアクセスで構成されます。
+このシナリオは、Exchange Online にアクセスするためのアプリベースで準拠デバイス ベースの条件付きアクセス ポリシーで構成されます。
+
 
 ### <a name="scenario-playbook"></a>シナリオのプレイブック
 
@@ -436,87 +437,6 @@ Azure ポータルの Azure Active Directory (Azure AD) のアプリに基づく
 詳細については、「[Microsoft Intune でアプリとデータを保護する](https://docs.microsoft.com/intune-classic/deploy-use/protect-apps-and-data-with-microsoft-intune)」を参照してください。
 
 
-
-## <a name="migration-considerations"></a>移行に関する考慮事項
-
-Azure クラシック ポータルで構成したポリシーがある場合は、以下の理由により、Azure ポータルに移行する必要があります。
-
-
-- Azure クラシック ポータルのポリシーと Azure ポータルのポリシーが適用されるユーザーは、両方のポリシーの要件を満たす必要がある 
-
-- 既存のポリシーを移行しない場合、アクセスを許可するポリシーを実装できない
-
-
-## <a name="migration-from-the-azure-classic-portal"></a>Azure クラシック ポータルからの移行
-
-このシナリオでは: 
-
-- [Azure クラシック ポータル](https://manage.windowsazure.com)で、以下を構成済みです。
-
-    - SharePoint Online
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-mam/14.png)
-
-    - デバイス ベースの条件付きアクセス ポリシー
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-mam/15.png)
-
-- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを構成します。 
- 
-
-### <a name="configuration"></a>構成 
-
-- デバイス ベースの条件付きアクセス ポリシーを見直す
-
-- Azure ポータルに移行する 
-
-- モバイル アプリケーション管理の条件付きアクセス ポリシーを追加する
-
-
-## <a name="migrating-from-intune"></a>Intune からの移行 
-
-このシナリオでは:
-
-- [Intune](https://portal.azure.com/#blade/Microsoft_Intune/SummaryBlade ) で、Exchange Online または SharePoint Online 用のモバイル アプリケーション管理の条件付きアクセス ポリシーを構成済みです。
-
-    ![条件付きアクセス](./media/active-directory-conditional-access-mam/15.png)
-
-- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーの使用に移行します。
-
-
-### <a name="configuration"></a>構成 
- 
-- デバイス ベースの条件付きアクセス ポリシーを見直す
-
-- Azure ポータルに移行する 
-
-- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
-
-- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
- 
-
-## <a name="migrating-from-the-azure-classic-portal-and-intune"></a>Azure クラシック ポータルと Intune からの移行
-
-このシナリオでは:
-
-- 以下を構成済みです。
-
-    - **Azure クラシック ポータル:** デバイス ベースの条件付きアクセス ポリシー 
-
-    - **Intune:** モバイル アプリケーション管理の条件付きアクセス ポリシー 
-    
-- Azure ポータルで、モバイル アプリケーション管理の条件付きアクセス ポリシーを使用するように両方のポリシーを移行します。
-
-
-### <a name="configuration"></a>構成
-
-- デバイス ベースの条件付きアクセス ポリシーを見直す
-
-- Azure ポータルに移行する 
-
-- Intune で、Exchange Online または SharePoint Online 用に構成したモバイル アプリケーション管理の条件付きアクセス ポリシーを見直す
-
-- デバイス ベースの制御に加え、**承認されたアプリケーションを要求する**コントロールを追加する 
 
 
 

@@ -1,6 +1,6 @@
 ---
-title: Deploy a VM with securely stored password on Azure Stack | Microsoft Docs
-description: Learn how to deploy a VM using a password stored in Azure Stack Key Vault
+title: "Azure Stack に安全に格納されたパスワードで VM をデプロイする | Microsoft Docs"
+description: "Azure Stack Key Vault に格納されているパスワードを使って VM をデプロイする方法を説明します"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -18,31 +18,31 @@ ms.translationtype: HT
 ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
 ms.openlocfilehash: 7398cea814a4fd1111bdadbbbd555698076a14f0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Create a virtual machine by retrieving the password stored in a Key Vault
+# <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Key Vault に格納されているパスワードを取得して仮想マシンを作成する
 
-When you need to pass a secure value such as a password during deployment, you can store that value as a secret in an Azure Stack key vault and reference it in the Azure Resource Manager templates. You do not need to manually enter the secret each time you deploy the resources, you can also specify which users or service principals can access the secret. 
+デプロイ時にセキュリティで保護されたパスワードなどの値を渡す必要があるときは、その値をシークレットとして Azure Stack Key Vault に格納し、Azure Resource Manager テンプレートで参照できます。 リソースをデプロイするたびにシークレットを手動で入力する必要はなく、シークレットにアクセスできるユーザーまたはサービス プリンシパルを指定することもできます。 
 
-In this article, we walk you through the steps required to deploy a Windows virtual machine in Azure Stack by retrieving the password that is stored in a Key Vault. Therefore the password is never put in plain text in the template parameter file. You can use these steps either from the Azure Stack Development Kit, or from an external client if you are connected through VPN.
+この記事では、Key Vault に格納されているパスワードを取得することによって Azure Stack に Windows 仮想マシンをデプロイするために必要な手順について説明します。 したがって、パスワードがテンプレート パラメーター ファイルにプレーン テキストで記述されることはありません。 この手順は、Azure Stack 開発キットから、または VPN 経由で接続している場合は外部クライアントから実行できます。
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-* Azure Stack cloud administrators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
-* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
-* [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* [Configure the Azure Stack user's PowerShell environment.](azure-stack-powershell-configure-user.md)
+* Azure Stack クラウド管理者は、Azure Key Vault サービスを含む[プランを作成する](azure-stack-create-offer.md)必要があります。  
+* ユーザーは、Key Vault サービスを含む[プランをサブスクライブする](azure-stack-subscribe-plan-provision-vm.md)必要があります。  
+* [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。  
+* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
 
-The following steps describe the process required to create a virtual machine by retrieving the password stored in a Key Vault:
+次の手順では、Key Vault に格納されているパスワードを取得することによって仮想マシンを作成するために必要なプロセスについて説明します。
 
-1. Create a Key Vault secret.
-2. Update the azuredeploy.parameters.json file.
-3. Deploy the template.
+1. Key Vault シークレットを作成します。
+2. azuredeploy.parameters.json ファイルを更新します。
+3. テンプレートをデプロイします。
 
-## <a name="create-a-key-vault-secret"></a>Create a Key Vault secret
+## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
-The following script creates a key vault, and stores a password in the key vault as a secret. Use the `-EnabledForDeployment` parameter when you're creating the key vault. This parameter makes sure that the key vault can be referenced from Azure Resource Manager templates.
+次のスクリプトは、Key Vault を作成し、パスワードをシークレットとして Key Vault に格納します。 Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使います。 このパラメーターを指定すると、Azure Resource Manager テンプレートから Key Vault を参照できるようになります。
 
 ```powershell
 
@@ -70,13 +70,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-When you run the previous script, the output includes the secret URI. Make a note of this URI. You have to reference it in the [Deploy Windows virtual machine with password in key vault template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). Download the [101-vm-secure-password](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) folder onto your development computer. This folder contains the `azuredeploy.json` and `azuredeploy.parameters.json` files, which you will need in the next steps.
+前のスクリプトを実行すると、出力にはシークレットの URI が含まれます。 この URI を書き留めておきます。 それを、[Key Vault のパスワードでの Windows 仮想マシンのデプロイ テンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv)で参照する必要があります。 開発用コンピューターに [101-vm-secure-password](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) フォルダーをダウンロードします。 このフォルダーには、次の手順で必要な `azuredeploy.json` ファイルと `azuredeploy.parameters.json` ファイルが含まれます。
 
-Modify the `azuredeploy.parameters.json` file according to your environment values. The parameters of special interest are the vault name, the vault resource group, and the secret URI (as generated by the previous script). The following file is an example of a parameter file:
+環境の値に従って `azuredeploy.parameters.json` ファイルを変更します。 特に重要なパラメーターは、コンテナー名、コンテナー リソース グループ、およびシークレットの URI (前のスクリプトによって生成されたもの) です。 パラメーター ファイルの例を次に示します。
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Update the azuredeploy.parameters.json file
+## <a name="update-the-azuredeployparametersjson-file"></a>azuredeploy.parameters.json ファイルを更新する
 
-Update the azuredeploy.parameters.json file with the KeyVault URI, secretName, adminUsername of the virtual machine values as per your environment. The following JSON file shows an example of the template parameters file: 
+環境に従って仮想マシンの値の KeyVault URI、secretName、adminUsername で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。 
 
 ```json
 {
@@ -105,9 +105,9 @@ Update the azuredeploy.parameters.json file with the KeyVault URI, secretName, a
 
 ```
 
-## <a name="template-deployment"></a>Template deployment
+## <a name="template-deployment"></a>テンプレートのデプロイ
 
-Now deploy the template by using the following PowerShell script:
+次の PowerShell スクリプトを使用して、テンプレートをデプロイします。
 
 ```powershell
 New-AzureRmResourceGroupDeployment `
@@ -116,14 +116,14 @@ New-AzureRmResourceGroupDeployment `
   -TemplateFile "<Fully qualified path to the azuredeploy.json file>" `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
-When the template is deployed successfully, it results in the following output:
+テンプレートが正常にデプロイされると、次の出力が表示されます。
 
-![Deployment output](media\azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
+![デプロイの出力](media\azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
 
-## <a name="next-steps"></a>Next steps
-[Deploy a sample app with Key Vault](azure-stack-kv-sample-app.md)
+## <a name="next-steps"></a>次のステップ
+[Key Vault を使ってサンプル アプリをデプロイする](azure-stack-kv-sample-app.md)
 
-[Deploy a VM with a Key Vault certificate](azure-stack-kv-push-secret-into-vm.md)
+[Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
 
 

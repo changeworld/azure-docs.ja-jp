@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/14/2017
 ms.author: bwren
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 6a62f7f70982a07646248188da8293c88fbe1b52
-ms.lasthandoff: 04/27/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 540362e27e0552780d61038cf8285d934795129c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="credential-assets-in-azure-automation"></a>Azure Automation での資格情報資産
@@ -46,8 +46,16 @@ Windows PowerShell で Automation 資格情報資産を作成および管理す�
 
 > [!NOTE]
 > Get-AutomationPSCredential の –Name パラメーターを使用すると、設計時に Runbook または DSC 構成と資格情報資産の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
-> 
-> 
+
+## <a name="python2-functions"></a>Python2 関数
+次の表の関数を使用して、Python2 Runbook の資格情報にアクセスします。
+
+| 関数 | Description |
+|:---|:---|
+| automationassets.get_automation_credential | 資格情報資産に関する情報を取得します。 |
+
+> [!NOTE]
+> 資産関数にアクセスするには、お使いの Python Runbook の上部にある "automationassets" モジュールをインポートする必要があります。
 
 ## <a name="creating-a-new-credential-asset"></a>新しい資格情報資産の作成
 
@@ -96,10 +104,22 @@ Runbook または DSC 構成で資格情報資産を取得するには、**Get-A
 ## <a name="using-a-powershell-credential-in-dsc"></a>DSC での PowerShell 資格情報の使用
 Azure Automation の DSC 構成では **Get-AutomationPSCredential**を使用して資格情報資産を参照できますが、必要に応じて、パラメーターを使用して資格情報資産を渡すこともできます。 詳細については、「 [Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md#credential-assets)」を参照してください。
 
+## <a name="using-credentials-in-python2"></a>Python2 の資格情報の使用
+次のサンプルでは、Python2 Runbook で資格情報にアクセスする例を示します。
+
+    import automationassets
+    from automationassets import AutomationAssetNotFound
+
+    # get a credential
+    cred = automationassets.get_automation_credential("credtest")
+    print cred["username"]
+    print cred["password"]
+
 ## <a name="next-steps"></a>次のステップ
 * グラフィカル作成でのリンクの詳細については、「 [グラフィカル作成でのリンク](automation-graphical-authoring-intro.md#links-and-workflow)
 * Automation のさまざまな認証方法を理解するには、「 [Azure Automation のセキュリティ](automation-security-overview.md)
 * グラフィカルな Runbook の使用を開始するには、「 [初めてのグラフィカルな Runbook](automation-first-runbook-graphical.md)
 * PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md) 
+* Python2 Runbook の使用を開始するには、[初めての Python2 Runbook](automation-first-runbook-textual-python2.md) に関するページをご覧ください 
 
 

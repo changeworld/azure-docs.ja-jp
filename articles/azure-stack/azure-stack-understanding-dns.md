@@ -1,6 +1,6 @@
 ---
-title: Understanding DNS in Azure Stack | Microsoft Docs
-description: Understanding DNS features and capabilities in Azure Stack
+title: "Azure Stack の DNS について | Microsoft Docs"
+description: "Azure Stack の DNS の機能と Azure について"
 services: azure-stack
 documentationcenter: 
 author: ScottNapolitan
@@ -18,40 +18,40 @@ ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 2a19b435777ba848835dcd90a1ebb8a0cbcb0e9b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="introducing-idns-for-azure-stack"></a>Introducing iDNS for Azure Stack
+# <a name="introducing-idns-for-azure-stack"></a>Azure Stack 用の iDNS の概要
 ================================
 
-iDNS is a feature in Azure Stack that allows you to resolve external DNS names (such as http://www.bing.com).
-It also allows you to register internal virtual network names. By doing so, you can resolve VMs on the same virtual network by name rather than IP address, without having to provide custom DNS server entries.
+iDNS は、外部 DNS 名 (http://www.bing.com など) を解決できる Azure Stack の機能です。
+内部仮想ネットワーク名を登録することもできます。 これを行うことで、同じ仮想ネットワーク内の VM を IP アドレスではなく名前で解決することができ、カスタム DNS サーバー エントリを用意する必要はありません。
 
-It’s something that’s always been there in Azure, but it's available in Windows Server 2016 and Azure Stack too.
+これは、Azure では常に使用できるものですが、Windows Server 2016 と Azure Stack でも同じように使用できます。
 
-## <a name="what-does-idns-do"></a>What does iDNS do?
-With iDNS in Azure Stack, you get the following capabilities, without having to specify custom DNS server entries.
+## <a name="what-does-idns-do"></a>iDNS が実行すること
+Azure Stack の iDNS を使用して、カスタム DNS サーバー エントリの指定なしで次の機能を取得できます。
 
-* Shared DNS name resolution services for tenant workloads.
-* Authoritative DNS service for name resolution and DNS registration within the tenant virtual network.
-* Recursive DNS service for resolution of Internet names from tenant VMs. Tenants no longer need to specify custom DNS entries to resolve Internet names (for example, www.bing.com).
+* テナントのワークロードに対する共有 DNS 名前解決サービス。
+* テナントの仮想ネットワーク内で名前解決と DNS 登録を行う権限がある DNS サービス。
+* テナントの VM からインターネット名を解決する再帰的な DNS サービス。 テナントは、インターネット名 (例: www.bing.com) を解決するためにカスタム DNS エントリを指定する必要はもうありません。
 
-You can still bring your own DNS and use custom DNS servers if you want. But now, if you just want to be able to resolve Internet DNS names and be able to connect to other virtual machines in the same virtual network, you don’t need to specify anything and it will just work.
+必要に応じて、引き続き独自の DNS とカスタム DNS サーバーを使用できます。 ただし、インターネット の DNS 名の解決と同じ仮想ネットワーク内の他の仮想マシンへの接続のみが目的の場合は、何の指定もなしで問題なく機能するようになっています。
 
-## <a name="what-does-idns-not-do"></a>What does iDNS not do?
-What iDNS does not allow you to do is create a DNS record for a name that can be resolved from outside the virtual network.
+## <a name="what-does-idns-not-do"></a>iDNS が実行しないこと
+iDNS で実行できないことは、仮想ネットワークの外部から解決できる名前の DNS レコードを作成することです。
 
-In Azure, you have the option of specifying a DNS name label that can be associated with a public IP address. You can choose the label (prefix), but Azure chooses the suffix, which is based on the region in which you create the public IP address.
+Azure には、パブリック IP アドレスに関連付けることができる DNS の名前ラベルを指定するオプションがあります。 ラベル (プレフィックス) は自分で選択できますが、サフィックスは、パブリック IP アドレスを作成するリージョンに基づいて Azure が選択します。
 
-![Screenshot of DNS name label](media/azure-stack-understanding-dns-in-tp2/image3.png)
+![DNS の名前ラベルのスクリーンショット](media/azure-stack-understanding-dns-in-tp2/image3.png)
 
-In the image above, Azure will create an “A” record in DNS for the DNS name label specified under the zone **westus.cloudapp.azure.com**. The prefix and the suffix together compose a Fully Qualified Domain Name (FQDN) that can be resolved from anywhere on the public Internet.
+上の図では、Azure は、指定された DNS の名前ラベルを持つ **westus.cloudapp.azure.com** ゾーンの DNS に "A" レコードを作成します。プレフィックスとサフィックスは、まとまって、パブリック インターネットの任意の場所で解決できる完全修飾ドメイン名 (FQDN) を構成します。
 
-Azure Stack only supports iDNS for internal name registration, so it cannot do the following.
+Azure Stack では、内部名の登録でのみ iDNS をサポートするため、以下を行うことはできません。
 
-* Create a DNS record under an existing hosted DNS zone (for example, local.azurestack.external).
-* Create a DNS zone (such as Contoso.com).
-* Create a record under your own custom DNS zone.
-* Support the purchase of domain names.
+* 既存のホストされている DNS ゾーン (例: local.azurestack.external) に DNS レコードを作成する。
+* DNS ゾーン (Contoso.com など) を作成する。
+* 独自のカスタム DNS ゾーンにレコードを作成する。
+* ドメイン名の購入をサポートする。
 
 

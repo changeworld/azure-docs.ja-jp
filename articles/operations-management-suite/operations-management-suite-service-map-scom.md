@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a7dbe54ffb4daa941c19b51ba263dd3d23b7a98b
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 
@@ -38,7 +38,7 @@ Operations Management Suite のサービス マップでは、Windows および 
 * Operations Management Suite ワークスペースに関連付けられている Azure サブスクリプションにアクセスできるサービス プリンシパル。 詳細については、「[サービス プリンシパルの作成](#creating-a-service-principal)」を参照してください。
 
 ## <a name="install-the-service-map-management-pack"></a>サービス マップ管理パックのインストール
-Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 このバンドルには、次の管理パックが含まれています。
+Operations Manager とサービス マップの統合を有効にするには、Microsoft.SystemCenter.ServiceMap 管理パック バンドル (Microsoft.SystemCenter.ServiceMap.mpb) をインポートします。 管理パックのバンドルは、[Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=55763)からダウンロードできます。 このバンドルには、次の管理パックが含まれています。
 * Microsoft サービス マップ アプリケーション ビュー
 * Microsoft System Center サービス マップ Internal
 * Microsoft System Center サービス マップ
@@ -49,7 +49,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
 サービス マップの統合を構成するには、次の操作を行います。
 
-1. 構成ウィザードを開くには、**[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
+1. 構成ウィザードを開くには、**[サービス マップの概要]** ウィンドウの** [ワークスペースの追加]** をクリックします。  
 
     ![[サービス マップの概要] ウィンドウ](media/oms-service-map/scom-configuration.png)
 

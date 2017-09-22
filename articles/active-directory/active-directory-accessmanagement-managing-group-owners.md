@@ -1,6 +1,6 @@
 ---
-title: "グループを使用したアクセス管理のための次のステップ | Microsoft Docs"
-description: "セキュリティ グループの管理方法とそれらのグループを使用してリソースへのアクセスを管理する方法を上級者向けに説明しています。"
+title: "Azure Active Directory におけるグループ所有者の管理 | Microsoft Docs"
+description: "グループ所有者の管理と、グループを使ってリソースに対するアクセスを管理する方法。"
 services: active-directory
 documentationcenter: 
 author: curtand
@@ -12,43 +12,39 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/13/2017
 ms.author: curtand
-ms.custom: oldportal;it-pro;
+ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
-ms.openlocfilehash: 82fbeb379e90add09f7c569111053f6e9b1bc9c5
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: 70be82fdd673c4f245e306b1e1cfdcd94d4dac53
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="managing-owners-for-a-group"></a>グループの所有者の管理
-リソースの所有者がリソースへのアクセスを Azure AD グループに割り当てたら、そのグループの所有者がグループのメンバーシップを管理します。 実質的には、リソースの所有者が、ユーザーをリソースに割り当てる権限をグループの所有者に委任することになります。
+リソースの所有者が Azure AD グループにリソースに対するアクセス権を割り当てると、その後はグループの所有者がそのグループのメンバーシップを管理することになります。 実質的には、リソースの所有者が、ユーザーをリソースに割り当てる権限をグループの所有者に委任することになります。
 
-> [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 
+## <a name="add-an-owner-to-a-group"></a>グループに所有者を追加する
 
-## <a name="assigning-group-ownership"></a>グループの所有権の割り当て
-**グループに所有者を追加するには**
+1. [Azure AD 管理センター](https://aad.portal.azure.com)で、**[ユーザーとグループ]** を選択します。
+2. **[すべてのグループ]** を選択し、所有者を追加するグループを開きます。
+3. **[所有者]**、**[所有者の追加]** の順に選択します。
+4. **[所有者の追加]** ページで、このグループの所有者として追加するユーザーを選んで**[選択]** をクリックまたはタップします。 
 
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
-2. **[グループ]** タブを選択し、所有者の追加先となるグループを開きます。
-3. **[所有者の追加]**を選択します。
-4. **[所有者の追加]** ページで、このグループの所有者として追加するユーザーを選択し、その名前が **[選択済み]** ウィンドウに追加されていることを確認します。
+## <a name="remove-an-owner-from-a-group"></a>グループから所有者を削除する
 
-**グループから所有者を削除するには**
-
-1. [Azure クラシック ポータル](https://manage.windowsazure.com)で **[Active Directory]**を選択し、該当する組織のディレクトリを開きます。
-2. **[グループ]** タブをクリックし、所有者を削除するグループを開きます。
-3. **[所有者]** タブをクリックします。
-4. このグループから削除する所有者を選択し、 **[削除]**をクリックします。
+1. [Azure AD 管理センター](https://aad.portal.azure.com)で、**[ユーザーとグループ]** を選択します。
+2. **[すべてのグループ]** を選択し、所有者を削除するグループを開きます。
+3. **[所有者]** を選択し、このグループから削除する所有者を選んで **[選択]** をクリックまたはタップします。
+4. 選択した所有者のウィンドウが開くので、そこで **[削除]** を選択します。
 
 ## <a name="additional-information"></a>追加情報
-次の記事は、Azure Active Directory に関する追加情報を示します。
+次の記事は、Azure Active Directory グループに関する追加情報を提供します。
 
-* [Azure Active Directory グループによるリソースのアクセス管理](active-directory-manage-groups.md)
-* [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
-* [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
-* [Azure Active Directory とは](active-directory-whatis.md)
-* [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
+* [既存のグループの表示](active-directory-groups-view-azure-portal.md)
+* [新しいグループの作成とメンバーの追加](active-directory-groups-create-azure-portal.md)
+* [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
+* [グループのメンバーシップの管理](active-directory-groups-membership-azure-portal.md)
+* [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
 

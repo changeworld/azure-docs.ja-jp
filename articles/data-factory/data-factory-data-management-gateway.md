@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/27/2017
 ms.author: abnarain
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: f1f57404734ad6dc77250b180a9c334de60f0af3
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: d032dd38655ef5c7763602739773f9c589cd65a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="data-management-gateway"></a>Data Management Gateway
@@ -139,6 +139,7 @@ ms.lasthandoff: 09/06/2017
 | *.servicebus.windows.net |443、80 |Data Movement Service のバックエンドとの通信に使用 |
 | *.core.windows.net |443 |Azure BLOB を使用した段階的なコピーに使用 (構成されている場合)|
 | *. frontend.clouddatahub.net |443 |Data Movement Service のバックエンドとの通信に使用 |
+| *.servicebus.windows.net |9350-9354, 5671 |コピー ウィザードで使用される TCP 経由でのオプションの Service Bus Relay |
 
 
 Windows のファイアウォール レベルでは、通常これらの送信ポートが有効になっています。 有効でない場合は、ゲートウェイ コンピューターに応じたドメインとポートを構成することができます。

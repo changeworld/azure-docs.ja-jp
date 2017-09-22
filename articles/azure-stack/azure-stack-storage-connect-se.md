@@ -1,6 +1,6 @@
 ---
-title: Connect Storage Explorer to an Azure Stack subscription
-description: Learn how to connect Storage Exporer to an  Azure Stack subscription
+title: "Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する"
+description: "Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する方法"
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -18,91 +18,91 @@ ms.translationtype: HT
 ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 3c1ee7665da41c0fae9ddd492127495fe7e5581b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Connect Storage Explorer to an Azure Stack subscription
+# <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する
 
-Azure Storage Explorer (Preview) is a standalone app that enables you to easily work with Azure Stack Storage data on Windows, macOS, and Linux. There are several tools avaialble to move data to and from Azure Stack Storage. For more information, see [Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md).
+Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Stack Storage のデータを簡単に操作できるスタンドアロン アプリです。 Azure Stack Storage からデータを移動するために利用できるツールは、いくつかあります。 詳細については、「[Data transfer tools for Azure Stack storage](azure-stack-storage-transfer.md)」 (Azure Stack Storage のデータ転送ツール) を参照してください。
 
-In this article, you learn how to connect to your Azure Stack storage accounts using Storage Explorer. 
+この記事では、Microsoft Azure Storage Explorer を使用して Azure Stack Storage アカウントに接続する方法を学習します。 
 
-If you haven't installed Storage Explorer yet, [download](http://www.storageexplorer.com/) and and install it.
+Microsoft Azure Storage Explorer をまだインストールしていない場合は、[ダウンロード](http://www.storageexplorer.com/)し、インストールしてください。
 
-After you connect to your Azure Stack subscription, you can use the [Azure Storage Explorer articles](../vs-azure-tools-storage-manage-with-storage-explorer.md) to work with your Azure Stack data. 
+Azure Stack サブスクリプションに接続したら、[Microsoft Azure Storage Explorer の記事](../vs-azure-tools-storage-manage-with-storage-explorer.md)を使用し、Azure Stack データを操作できます。 
 
-## <a name="prepare-an-azure-stack-subscription"></a>Prepare an Azure Stack subscription
+## <a name="prepare-an-azure-stack-subscription"></a>Azure Stack サブスクリプションを準備する
 
-You need access to the Azure Stack host machine's desktop or a VPN connection for Storage Explorer to access the Azure Stack subscription. To learn how to set up a VPN connection to Azure Stack, see [Connect to Azure Stack with VPN](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn).
+Microsoft Azure Storage Explorer から Azure Stack サブスクリプションにアクセスするには、Azure Stack ホスト コンピューターのデスクトップへのアクセスまたは VPN 接続が必要です。 Azure Stack への VPN 接続を設定する方法の詳細については、[VPN を使用した Azure Stack への接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)に関するページを参照してください。
 
-For the Azure Stack Development Kit, you need to export the Azure Stack authority root certificate.
+Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証明書をエクスポートする必要があります。
 
-### <a name="to-export-and-then-import-the-azure-stack-certificate"></a>To export and then import the Azure Stack certificate
+### <a name="to-export-and-then-import-the-azure-stack-certificate"></a>Azure Stack の証明書をエクスポートしインポートするには
 
-1. Open `mmc.exe` on an Azure Stack host machine, or a local machine with a VPN connection to Azure Stack. 
+1. Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューターで `mmc.exe` を開きます。 
 
-2. In **File**, select **Add/Remove Snap-in**, and then add **Certificates** to manage **Computer account** of **Local Computer**.
-
-
-
-3. Under **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** find **AzureStackSelfSignedRootCert**.
-
-    ![Load the Azure Stack root certificate through mmc.exe][25]
-
-4. Right-click the certificate, select **All Tasks** > **Export**, and then follow the instructions to export the certificate with **Base-64 encoded X.509 (.CER)**.  
-
-    The exported certificate will be used in the next step.
-5. Start Storage Explorer (Preview), and if you see the **Connect to Azure Storage** dialog box, cancel it.
-
-6. On the **Edit** menu, point to **SSL Certificates**, and then click **Import Certificates**. Use the file picker dialog box to find and open the certificate that you exported in the previous step.
-
-    After importing, you are prompted to restart Storage Explorer.
-
-    ![Import the certificate into Storage Explorer (Preview)][27]
-
-Now you are ready to connect Storage Explorer to an Azure Stack subscription.
-
-### <a name="to-connect-an-azure-stack-subscription"></a>To connect an Azure Stack subscription
+2. **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
 
 
-1. After Storage Explorer (Preview) restarts, select the **Edit** menu, and then ensure that **Target Azure Stack** is selected. If it is not selected, select it, and then restart Storage Explorer for the change to take effect. This configuration is required for compatibility with your Azure Stack environment.
 
-    ![Ensure Target Azure Stack is selected][28]
+3. **Console Root\Certificated (Local Computer)\Trusted Root Certification Authorities\Certificates** の直下で **AzureStackSelfSignedRootCert** を探します。
 
-7. In the left pane, select **Manage Accounts**.  
-    All the Microsoft accounts that you are signed in to are displayed.
+    ![Azure Stack のルート証明書を mmc.exe で読み込む][25]
 
-8. To connect to the Azure Stack account, select **Add an account**.
+4. 証明書を右クリックし、**[すべてのタスク]** > **[エクスポート]** の順に選択したら、表示される手順に従って **Base-64 encoded X.509 (.CER)** で証明書をエクスポートします。  
 
-    ![Add an Azure Stack account][29]
+    エクスポートした証明書は、次の手順で使用します。
+5. Microsoft Azure Storage Explorer (プレビュー) を開始し、**[Connect to Azure Storage]\(Azure Storage に接続\)** ダイアログ ボックスが表示されたらそれをキャンセルします。
 
-9. In the **Connect to Azure Storage** dialog box, under **Azure environment**, select **Use Azure Stack Environment**, and then click **Next**.
+6. **[編集]** メニューで、**[SSL 証明書]**、**[証明書のインポート]** の順にクリックします。 ファイル ピッカー ダイアログ ボックスを使用して、前の手順でエクスポートした証明書を検索し、開きます。
 
-10. To sign in with the Azure Stack account that's associated with at least one active Azure Stack subscription, fill in the **Sign in to Azure Stack Environment** dialog box.  
+    インポート後は、ストレージ エクスプローラーの再起動を求めるメッセージが表示されます。
 
-    The details for each field are as follows:
+    ![ストレージ エクスプローラー (プレビュー) に証明書をインポートする][27]
 
-    * **Environment name**: The field can be customized by user.
-    * **ARM resource endpoint**: The samples of Azure Resource Manager resource endpoints:
+これで Microsoft Azure Storage Explorer を Azure Stack サブスクリプションに接続する準備が完了です。
 
-        * For cloud operator:<br> https://adminmanagement.local.azurestack.external   
-        * For tenant:<br> https://management.local.azurestack.external
+### <a name="to-connect-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに接続するには
+
+
+1. ストレージ エクスプローラー (プレビュー) が再起動したら、**[編集]** メニューを選択し、**[Target Azure Stack (Azure Stack を対象にする)]** が選択されていることを確認します。 選択されていない場合は、選択してからストレージ エクスプローラーを再起動し、この変更を反映させます。 この構成は、Azure Stack 環境との互換性を確保するために必要です。
+
+    ![[Target Azure Stack (Azure Stack を対象にする)] が選択されていることを確認する][28]
+
+7. 左側のウィンドウで、**[アカウントの管理]** を選択します。  
+    サインインしている Microsoft アカウントがすべて表示されます。
+
+8. Azure Stack アカウントに接続するには、**[アカウントの追加]** を選択します。
+
+    ![Azure Stack アカウントを追加する][29]
+
+9. **[Connect to Azure Storage]\(Azure Storage に接続\)** ダイアログ ボックスの **[Azure environment]\(Azure 環境\)** で **[Use Azure Stack Environment]\(Azure Stack 環境を使用\)** を選択して、**[次へ]** をクリックします。
+
+10. 少なくとも 1 つのアクティブな Azure Stack サブスクリプションと関連付けられた Azure Stack アカウントでサインインするために、**[Sign in to Azure Stack Environment]\(Azure Stack 環境にサインイン\)** ダイアログ ボックスに情報を入力します。  
+
+    各フィールドの詳細は次のとおりです。
+
+    * **[環境名]**: このフィールドはユーザーがカスタマイズできます。
+    * **[ARM resource endpoint (ARM リソース エンドポイント)]**: Azure Resource Manager リソース エンドポイントの例は次のとおりです。
+
+        * クラウド管理者の場合:<br> https://adminmanagement.local.azurestack.external   
+        * テナントの場合:<br> https://management.local.azurestack.external
  
-    * **Tenant Id**: Optional. The value is given only when the directory must be specified.
+    * **[テナント ID]**: 省略可能です。 ディレクトリを指定する必要がある場合にのみ値を入力します。
 
-12. After you successfully sign in with an Azure Stack account, the left pane is populated with the Azure Stack subscriptions associated with that account. Select the Azure Stack subscriptions that you want to work with, and then select **Apply**. (Selecting or clearing the **All subscriptions** check box toggles selecting all or none of the listed Azure Stack subscriptions.)
+12. Azure Stack アカウントでのサインインに成功すると、左側のウィンドウに、そのアカウントに関連付けられている Azure Stack サブスクリプションが表示されます。 操作する Azure Stack サブスクリプションを選択してから、**[適用]** を選択します  (**[すべてのサブスクリプション]** チェック ボックスをオンまたはオフにすることで、一覧の Azure Stack サブスクリプションがすべて選択された状態と、1 つも選択されていない状態を切り替えることができます)。
 
-    ![Select the Azure Stack subscriptions after filling out the Custom Cloud Environment dialog box][30]  
-    The left pane displays the storage accounts associated with the selected Azure Stack subscriptions.
+    ![カスタム クラウド環境のダイアログ ボックスに情報を入力した後、Azure Stack サブスクリプションを選択する][30]  
+    左側のウィンドウに、選択した Azure Stack サブスクリプションに関連付けられているストレージ アカウントが表示されます。
 
-    ![List of storage accounts including Azure Stack subscription accounts][31]
+    ![Azure Stack サブスクリプション アカウントを含むストレージ アカウントの一覧][31]
 
-## <a name="next-steps"></a>Next steps
-* [Get started with Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure Stack Storage: differences and considerations](azure-stack-acs-differences.md)
+## <a name="next-steps"></a>次のステップ
+* [Microsoft Azure Storage Explorer (プレビュー) の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure Stack Storage: 違いと考慮事項](azure-stack-acs-differences.md)
 
 
-* To learn more about Azure Storage, see [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
+* Azure Storage の詳細については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」を参照してください。
 
 [25]: ./media/azure-stack-storage-connect-se/add-certificate-azure-stack.png
 [26]: ./media/azure-stack-storage-connect-se/export-root-cert-azure-stack.png

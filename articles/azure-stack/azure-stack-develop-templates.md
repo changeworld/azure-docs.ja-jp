@@ -1,6 +1,6 @@
 ---
-title: Develop templates for Azure Stack | Microsoft Docs
-description: Learn Azure Stack template best practices
+title: "Azure Stack のテンプレートの開発 | Microsoft Docs"
+description: "Azure Stack テンプレートのベスト プラクティスを説明します"
 services: azure-stack
 documentationcenter: 
 author: HeathL17
@@ -18,46 +18,46 @@ ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: a8468616f924aebb91447b379cea3f926c39de48
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager template considerations
-As you develop your application, it is important to ensure template portability between Azure and Azure Stack.  This topic provides considerations for developing Azure Resource Manager [templates](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf), so you can prototype your application and test deployment in Azure without access to an Azure Stack environment.
+# <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
+アプリケーションを開発するときは、Azure および Azure Stack 間のテンプレートの移植性を確保する必要があります。  このトピックでは、Azure Resource Manager [テンプレート](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)を開発するための考慮事項を説明して、アプリケーションのプロトタイプ作成とデプロイのテストを、Azure Stack 環境にアクセスせずに Azure で実行できるようにします。
 
-## <a name="public-namespaces"></a>Public namespaces
-Because Azure Stack is hosted in your datacenter, it has different service endpoint namespaces than the Azure public cloud. As a result, hardcoded public endpoints in Resource Manager templates fail when you try to deploy them to Azure Stack. Instead, you can use the *reference* and *concatenate* function to dynamically build the service endpoint based on values retrieved from the resource provider during deployment. For example, rather than specifying *blob.core.windows.net* in your template, retrieve the [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) to dynamically set the *osDisk.URI* endpoint:
+## <a name="public-namespaces"></a>パブリック名前空間
+Azure Stack はデータセンターでホストされるため、そのサービス エンドポイントの名前空間は、Azure パブリック クラウドとは異なります。 その結果、Resource Manager テンプレートにハードコーディングされたパブリック エンドポイントでは、Azure Stack へのデプロイは失敗します。 代わりに、"*参照*" 関数と "*連結*" 関数を使用して、デプロイ時にリソース プロバイダーから取得した値に基づいて、サービス エンドポイントを動的に作成できます。 たとえば、テンプレートに *blob.core.windows.net*と指定する代わりに、[primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) を取得して *osDisk.URI* エンドポイントを動的に設定します。
 
      "osDisk": {"name": "osdisk","vhd": {"uri": 
      "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
       '/',variables('OSDiskName'),'.vhd')]"}}
 
-## <a name="api-versioning"></a>API versioning
-Azure service versions may differ between Azure and Azure Stack. Each resource requires the apiVersion attribute, which defines the capabilities offered. To ensure API version compatibility in Azure Stack, the following are valid API versions for each Resource Provider:
+## <a name="api-versioning"></a>API のバージョン管理
+Azure のサービス バージョンが Azure と Azure Stack で異なる場合があります。 各リソースには、提供される機能を定義する apiVersion 属性が必要です。 Azure Stack での API のバージョンの互換性を確保するための各リソースプロバイダーで有効な API のバージョンは次のとおりです。
 
-| Resource Provider | apiVersion |
+| リソース プロバイダー | apiVersion |
 | --- | --- |
-| Compute |`'2015-06-15'` |
-| Network |`'2015-06-15'`, `'2015-05-01-preview'` |
-| Storage |`'2016-01-01'`, `'2015-06-15'`, `'2015-05-01-preview'` |
+| コンピューティング |`'2015-06-15'` |
+| ネットワーク |`'2015-06-15'`、`'2015-05-01-preview'` |
+| Storage |`'2016-01-01'`、`'2015-06-15'`、`'2015-05-01-preview'` |
 | KeyVault | `'2015-06-01'` |
 | App Service |`'2015-08-01'` |
 | MySQL |`'2015-09-01'` |
 | SQL |`'2014-04-01-preview'` |
 
-## <a name="template-functions"></a>Template functions
-Resource Manager [functions](../azure-resource-manager/resource-group-template-functions.md) provide capabilities required to build dynamic templates. As an example, you can use functions for tasks like:
+## <a name="template-functions"></a>テンプレート関数
+Resource Manager の[関数](../azure-resource-manager/resource-group-template-functions.md)は、動的テンプレートを作成するために必要な機能を提供します。 たとえば、次のようなタスクのために関数を使用できます。
 
-* Concatenating or trimming strings 
-* Reference values from other resources
-* Iterating on resources to deploy multiple instances 
+* 文字列の連結やトリミング 
+* その他のリソースからの値の参照
+* 複数のインスタンスをデプロイするためのリソースの反復処理 
 
-As you build your templates, some functions are not available in Azure Stack Development Kit, and should not be used. These functions are:
+テンプレートを作成する際、一部の関数は Azure Stack Development Kit では使用できないため、使用しないでください。 次の関数が該当します。
 
 * Skip
 * Take
 
-## <a name="resource-location"></a>Resource location
-Resource Manager templates use a location attribute to place resources during deployment. In Azure, locations refer to a region like West US or South America. In Azure Stack, locations are different because Azure Stack is in your datacenter.  To ensure templates are transferrable between Azure and Azure Stack, you should reference the resource group location as you deploy individual resources. You can do this using `[resourceGroup().Location]` to ensure all resources inherit the resource group location.  The following Resource Manager template excerpt is an example of using this function while deploying a storage account:
+## <a name="resource-location"></a>リソースの場所
+Resource Manager テンプレートは、デプロイ時にリソースを配置するのに location 属性を使用します。 Azure では、場所は、米国西部や南アメリカなどのリージョンを指します。 Azure Stack では、Azure Stack はユーザーのデータセンター内にあるため、場所の意味が異なります。  Azure と Azure Stack 間でテンプレートを確実に転送するには、個々のリソースをデプロイするときにリソース グループの場所を参照する必要があります。 そのためには、`[resourceGroup().Location]` を使用して、すべてのリソースがリソース グループの場所を継承するようにします。  次の Resource Manager テンプレートの抜粋は、ストレージ アカウントのデプロイ中にこの関数を使用する例を示しています。
 
     "resources": [
     {
@@ -73,9 +73,9 @@ Resource Manager templates use a location attribute to place resources during de
     ]
 
 
-## <a name="next-steps"></a>Next steps
-* [Deploy templates with PowerShell](azure-stack-deploy-template-powershell.md)
-* [Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
-* [Deploy templates with Visual Studio](azure-stack-deploy-template-visual-studio.md)
+## <a name="next-steps"></a>次のステップ
+* [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
+* [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
+* [Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
 
 

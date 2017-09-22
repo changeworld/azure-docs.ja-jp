@@ -1,6 +1,6 @@
 ---
-title: Deploy templates with the command line in Azure Stack | Microsoft Docs
-description: Learn how to use the cross-platform command line interface (CLI) to deploy templates to Azure Stack.
+title: "Azure Stack でコマンド ラインを使ってテンプレートをデプロイする | Microsoft Docs"
+description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack にテンプレートをデプロイする方法について説明します"
 services: azure-stack
 documentationcenter: 
 author: heathl17
@@ -18,31 +18,31 @@ ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: cd1b61899ead7b4e86a81125841c1b37d019280b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>Deploy templates in Azure Stack using the command line
-Use the command line to deploy Azure Resource Manager templates to the Azure Stack Development Kit. Azure Resource Manager templates deploy and provision all the resources for your application in a single, coordinated operation.
+# <a name="deploy-templates-in-azure-stack-using-the-command-line"></a>コマンド ラインを使った Azure Stack でのテンプレートのデプロイ
+コマンド ラインを使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。 Azure Resource Manager テンプレートは、アプリケーションのすべてのリソースを、単一の連携した操作でデプロイしてプロビジョニングします。
 
-## <a name="before-you-begin"></a>Before you begin
- - [Install and connect](azure-stack-connect-cli.md) to Azure Stack with Azure CLI
- - Download the files *azuredeploy.json* and *azuredeploy.parameters.json* from the [create storage account example template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account).
+## <a name="before-you-begin"></a>開始する前に
+ - Azure CLI で Azure Stack を[インストールして接続](azure-stack-connect-cli.md)します。
+ - [ストレージ アカウントの作成例のテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-create-storage-account)からファイル *azuredeploy.json* と *azuredeploy.parameters.json* をダウンロードします。
  
-## <a name="deploy-template"></a>Deploy template
-Navigate to the folder where these files were downloaded and run the following command to deploy the template:
+## <a name="deploy-template"></a>テンプレートのデプロイ
+これらのファイルをダウンロードしたフォルダーに移動し、次のコマンドを実行してテンプレートをデプロイします。
 
     azure group create "cliRG" "local" –f azuredeploy.json –d "testDeploy" –e azuredeploy.parameters.json
 
-This command deploys the template to the resource group **cliRG** in the Azure Stack POC’s default location.
+このコマンドで、テンプレートが Azure Stack POC の既定の場所のリソース グループ **cliRG** にデプロイされます。
 
-## <a name="validate-template-deployment"></a>Validate template deployment
-To see this resource group and storage account, use the following commands:
+## <a name="validate-template-deployment"></a>テンプレートのデプロイを検証する
+このリソース グループとストレージ アカウントを表示するには、次のコマンドを使用します。
 
     azure group list
 
     azure storage account list
 
-## <a name="next-steps"></a>Next steps
-[Manage user permissions](azure-stack-manage-permissions.md)
+## <a name="next-steps"></a>次のステップ
+[ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
 
 

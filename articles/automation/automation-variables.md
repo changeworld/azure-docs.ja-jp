@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/09/2017
 ms.author: magoedte;bwren
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dc00e1e5fa8df5cb55e7e2672137d1df44133773
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 43a08898abecb220f3df892473dddfb2729f0561
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="variable-assets-in-azure-automation"></a>Azure Automation での変数アセット
@@ -52,7 +52,7 @@ Automation で使用できる変数の型の一覧を次に示します。
 * ブール
 * Null
 
-## <a name="cmdlets-and-workflow-activities"></a>コマンドレットとワークフローのアクティビティ
+## <a name="scripting-the-creation-and-management-of-variables"></a>変数の作成および管理のスクリプト作成
 
 Windows PowerShell で Automation 変数を作成および管理するには、次のテーブルのコマンドレットを使用します。 これらは、Automation Runbook および DSC 構成で使用できる [Azure PowerShell モジュール](../powershell-install-configure.md) に付属しています。
 
@@ -72,6 +72,16 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 > [!NOTE] 
 > Runbook または DSC 構成内で **Get-AutomationVariable** の –Name パラメーターに変数を使用すると、設計時に Runbook または DSC 構成と Automation 変数の間の依存関係の検出が複雑になる可能性があるため、使用しないようにする必要があります。
+
+次の表の関数を使用して、Python2 Runbook の変数にアクセスしてそれを取得します。 
+
+|Python2 関数|Description|
+|:---|:---|
+|automationassets.get_automation_variable|既存の変数の値を取得します。 |
+|automationassets.set_automation_variable|既存の変数の値を設定します。 |
+
+> [!NOTE] 
+> 資産関数にアクセスするには、お使いの Python Runbook の上部にある "automationassets" モジュールをインポートする必要があります。
 
 ## <a name="creating-a-new-automation-variable"></a>新しい Automation 変数の作成
 
@@ -107,7 +117,7 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
 
 ## <a name="using-a-variable-in-a-runbook-or-dsc-configuration"></a>Runbook または DSC 構成で変数を使用する
 
-**Set-AutomationVariable** アクティビティを使用して、Runbook または DSC 構成の Automation 変数の値を設定し、**Get-AutomationVariable** を使用して Automation 変数の値を取得します。  **Set-AzureAutomationVariable** または **Get-AzureAutomationVariable** コマンドレットはワークフローのアクティビティよりも低効率であるため、Runbook または DSC 構成では使用しないでください。  また、 **Get-AzureAutomationVariable**を使用して、セキュリティで保護された変数の値を取得することもできません。  Runbook または DSC 構成内から新しい変数を作成する唯一の方法は、[New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) コマンドレットを使用することです。
+**Set-AutomationVariable** アクティビティを使用して、PowerShell Runbook または DSC 構成の Automation 変数の値を設定し、**Get-AutomationVariable** を使用して Automation 変数の値を取得します。  **Set-AzureAutomationVariable** または **Get-AzureAutomationVariable** コマンドレットはワークフローのアクティビティよりも低効率であるため、Runbook または DSC 構成では使用しないでください。  また、 **Get-AzureAutomationVariable**を使用して、セキュリティで保護された変数の値を取得することもできません。  Runbook または DSC 構成内から新しい変数を作成する唯一の方法は、[New-AzureAutomationVariable](http://msdn.microsoft.com/library/dn913771.aspx) コマンドレットを使用することです。
 
 
 ### <a name="textual-runbook-samples"></a>テキスト形式の Runbook のサンプル
@@ -134,7 +144,6 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
     $vm = Get-AzureVM -ServiceName "MyVM" -Name "MyVM"
     Set-AutomationVariable -Name "MyComplexVariable" -Value $vm
 
-
 次のコードでは、この値は変数から取得され、仮想マシンを起動するために使用されます。
 
     $vmObject = Get-AutomationVariable -Name "MyComplexVariable"
@@ -159,6 +168,27 @@ Windows PowerShell で Automation 変数を作成および管理するには、�
           Start-AzureVM -ServiceName $vmValue.ServiceName -Name $vmValue.Name
        }
     }
+    
+#### <a name="setting-and-retrieving-a-variable-in-python2"></a>Python2 の変数の設定および取得
+次のサンプル コードは、変数の使用方法、変数の設定方法、および Python2 Runbook に存在しない変数の例外処理方法を示します。
+
+    import automationassets
+    from automationassets import AutomationAssetNotFound
+
+    # get a variable
+    value = automationassets.get_automation_variable("test-variable")
+    print value
+
+    # set a variable (value can be int/bool/string)
+    automationassets.set_automation_variable("test-variable", True)
+    automationassets.set_automation_variable("test-variable", 4)
+    automationassets.set_automation_variable("test-variable", "test-string")
+
+    # handle a non-existent variable exception
+    try:
+        value = automationassets.get_automation_variable("non-existing variable")
+    except AutomationAssetNotFound:
+        print "variable not found"
 
 
 ### <a name="graphical-runbook-samples"></a>グラフィカルな Runbook のサンプル

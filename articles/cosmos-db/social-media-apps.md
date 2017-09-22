@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/29/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 43025adeaf954fedfbcee32e636fb30935f2126b
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: a761249e7345991bd570cde6170515fafd692d61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB によるソーシャル化
@@ -240,7 +240,7 @@ Cosmos DB では、指定された**パーティション キー** (ドキュメ
 
 Cosmos DB を使用すると、数回のクリックで[データをグローバルかつ透過的にレプリケート](../cosmos-db/tutorial-global-distribution-documentdb.md)し、使用可能なリージョンの中で、[クライアント コード](../cosmos-db/tutorial-global-distribution-documentdb.md)からそのリージョンを選択できます。 また、これは[複数のフェールオーバー リージョン](regional-failover.md)を確保できることも意味します。 
 
-データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service のクローンを作成して、[パフォーマンス構成](../app-service-web/web-sites-traffic-manager.md)を使用しながら、拡張されたグローバル カバレッジをサポートできます。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
+データをグローバルにレプリケートするときは、クライアントがそのデータを利用できるかどうかを確認する必要があります。 Web フロントエンドを使用する場合、またはモバイル クライアントから API にアクセスする場合は、[Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) をデプロイし、必要なリージョンすべてに Azure App Service の複製を作成します。その際に、拡張されたグローバル カバレッジをサポートするためのパフォーマンス構成を使用します。 フロントエンドまたは API にアクセスしたクライアントは、最も近い App Service にルーティングされ、その APP Service はローカルの Cosmos DB レプリカに接続されます。
 
 ![ソーシャル プラットフォームへのグローバル カバレッジの追加](./media/social-media-apps/social-media-apps-global-replicate.png)
 

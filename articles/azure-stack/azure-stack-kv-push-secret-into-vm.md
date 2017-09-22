@@ -1,6 +1,6 @@
 ---
-title: Deploy a virtual machine with a securely stored certificate on Azure Stack | Microsoft Docs
-description: Learn how to deploy a virtual machine and push a certificate onto it by using a key vault in Azure Stack
+title: "Azure Stack に安全に格納された証明書で仮想マシンをデプロイする | Microsoft Docs"
+description: "Azure Stack の Key Vault を使って、仮想マシンをデプロイして証明書を仮想マシンにプッシュする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -18,33 +18,33 @@ ms.translationtype: HT
 ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 4b4bbf6aa612fe3eca5b860cbddaff8500e21f15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>Create a virtual machine and include certificate retrieved from a key vault
+# <a name="create-a-virtual-machine-and-include-certificate-retrieved-from-a-key-vault"></a>仮想マシンを作成して Key Vault から取得した証明書を含める
 
-This article helps you to create a virtual machine in Azure Stack and push certificates onto it. 
+この記事では、Azure Stack に仮想マシンを作成して証明書をプッシュする方法を説明します。 
 
-## <a name="prerequisites"></a>Prerequisites
+## <a name="prerequisites"></a>前提条件
 
-* Azure Stack operators must have [created an offer](azure-stack-create-offer.md) that includes the Azure Key Vault service.  
-* Users must [subscribe to an offer](azure-stack-subscribe-plan-provision-vm.md) that includes the Key Vault service.  
-* [Install PowerShell for Azure Stack.](azure-stack-powershell-install.md)  
-* [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)
+* Azure Stack オペレーターは、Azure Key Vault サービスを含む[プランを作成する](azure-stack-create-offer.md)必要があります。  
+* ユーザーは、Key Vault サービスを含む[プランをサブスクライブする](azure-stack-subscribe-plan-provision-vm.md)必要があります。  
+* [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。  
+* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
 
-A key vault in Azure Stack is used to store certificates. Certificates are helpful in many different scenarios. For example, consider a scenario where you have a virtual machine in Azure Stack that is running an application that needs a certificate. This certificate can be used for encrypting, for authenticating to Active Directory, or for SSL on a website. Having the certificate in a key vault helps make sure that it's secure.
+Azure Stack の Key Vault を使って証明書を格納します。 証明書はさまざまなシナリオで役立ちます。 たとえば、証明書が必要なアプリケーションを実行している仮想マシンが Azure Stack 内に存在するシナリオを考えてみてください。 この証明書は、暗号化、Active Directory の認証、Web サイトでの SSL に、使うことができます。 Key Vault に証明書を格納すると、証明書をセキュリティで保護できます。
 
-In this article, we walk you through the steps required to push a certificate onto a Windows virtual machine in Azure Stack. You can use these steps either from the Azure Stack Development Kit, or from a Windows-based external client if you are connected through VPN.
+この記事では、Azure Stack の Windows 仮想マシンに証明書をプッシュするために必要な手順を説明します。 この手順は、Azure Stack 開発キットから、または VPN 経由で接続している場合は Windows ベースの外部クライアントから実行できます。
 
-The following steps describe the process required to push a certificate onto the virtual machine:
+次の手順では、仮想マシンに証明書をプッシュするために必要なプロセスについて説明します。
 
-1. Create a Key Vault secret.
-2. Update the azuredeploy.parameters.json file.
-3. Deploy the template
+1. Key Vault シークレットを作成します。
+2. azuredeploy.parameters.json ファイルを更新します。
+3. テンプレートをデプロイします。
 
-## <a name="create-a-key-vault-secret"></a>Create a Key Vault secret
+## <a name="create-a-key-vault-secret"></a>Key Vault シークレットを作成する
 
-The following script creates a certificate in the .pfx format, creates a key vault, and stores the certificate in the key vault as a secret. You must use the `-EnabledForDeployment` parameter when you're creating the key vault. This parameter makes sure that the key vault can be referenced from Azure Resource Manager templates.
+次のスクリプトは、.pfx 形式で証明書を作成し、Key Vault を作成して、Key Vault にシークレットとして証明書を格納します。 Key Vault を作成するときは、`-EnabledForDeployment` パラメーターを使う必要があります。 このパラメーターを指定すると、Azure Resource Manager テンプレートから Key Vault を参照できるようになります。
 
 ```powershell
 
@@ -107,13 +107,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-When you run the previous script, the output includes the secret URI. Make a note of this URI. You have to reference it in the [Push certificate to Windows Resource Manager template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate). Download the [vm-push-certificate-windows template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) folder onto your development computer. This folder contains the `azuredeploy.json` and `azuredeploy.parameters.json` files, which you will need in the next steps.
+前のスクリプトを実行すると、出力にはシークレットの URI が含まれます。 この URI を書き留めておきます。 [Windows Resource Manager に証明書をプッシュするテンプレート](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate)でそれを参照する必要があります。 開発用コンピューターに [vm-push-certificate-windows template](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/201-vm-windows-pushcertificate) フォルダーをダウンロードします。 このフォルダーには、次の手順で必要な `azuredeploy.json` ファイルと `azuredeploy.parameters.json` ファイルが含まれます。
 
-Modify the `azuredeploy.parameters.json` file according to your environment values. The parameters of special interest are the vault name, the vault resource group, and the secret URI (as generated by the previous script). The following file is an example of a parameter file:
+環境の値に従って `azuredeploy.parameters.json` ファイルを変更します。 特に重要なパラメーターは、コンテナー名、コンテナー リソース グループ、およびシークレットの URI (前のスクリプトによって生成されたもの) です。 パラメーター ファイルの例を次に示します。
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Update the azuredeploy.parameters.json file
+## <a name="update-the-azuredeployparametersjson-file"></a>azuredeploy.parameters.json ファイルを更新する
 
-Update the azuredeploy.parameters.json file with the vaultName, secret URI, VmName, and other values as per your environment. The following JSON file shows an example of the template parameters file: 
+環境に従って、vaultName、シークレットの URI、VmName、他の値で azuredeploy.parameters.json ファイルを更新します。 テンプレート パラメーター ファイルの JSON ファイルの例を次に示します。 
 
 ```json
 {
@@ -148,9 +148,9 @@ Update the azuredeploy.parameters.json file with the vaultName, secret URI, VmNa
 }
 ```
 
-## <a name="deploy-the-template"></a>Deploy the template
+## <a name="deploy-the-template"></a>テンプレートのデプロイ
 
-Now deploy the template by using the following PowerShell script:
+次の PowerShell スクリプトを使用して、テンプレートをデプロイします。
 
 ```powershell
 # Deploy a Resource Manager template to create a VM and push the secret onto it
@@ -161,24 +161,24 @@ New-AzureRmResourceGroupDeployment `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
-When the template is deployed successfully, it results in the following output:
+テンプレートが正常にデプロイされると、次の出力が表示されます。
 
-![Deployment output](media\azure-stack-kv-push-secret-into-vm/deployment-output.png)
+![デプロイの出力](media\azure-stack-kv-push-secret-into-vm/deployment-output.png)
 
-When this virtual machine is deployed, Azure Stack pushes the certificate onto the virtual machine. In Windows, the certificate is added to the LocalMachine certificate location, with the certificate store that the user provided. In Linux, the certificate is placed under the /var/lib/waagent directory, with the file name &lt;UppercaseThumbprint&gt;.crt for the X509 certificate file and &lt;UppercaseThumbprint&gt;.prv for the private key.
+この仮想マシンがデプロイされると、Azure Stack は仮想マシンに証明書をプッシュします。 Windows では、証明書はユーザー指定の証明書ストアで LocalMachine の証明書の場所に追加されます。 Linux では、証明書は、X509 証明書ファイルの場合は &lt;UppercaseThumbprint&gt;.crt、秘密キーの場合は &lt;UppercaseThumbprint&gt;.prv というファイル名で、/var/lib/waagent ディレクトリに配置されます。
 
-## <a name="retire-certificates"></a>Retire certificates
+## <a name="retire-certificates"></a>証明書の使用を終了する
 
-In the preceding section, we showed you how to push a new certificate onto a virtual machine. Your old certificate is still on the virtual machine, and it can't be removed. However, you can disable the older version of the secret by using the `Set-AzureKeyVaultSecretAttribute` cmdlet. The following is an example usage of this cmdlet. Make sure to replace the vault name, secret name, and version values according to your environment:
+前のセクションでは、仮想マシンに新しい証明書をプッシュする方法を説明しました。 古い証明書は仮想マシンにまだ存在しており、削除することはできません。 ただし、`Set-AzureKeyVaultSecretAttribute` コマンドレットを使って、古いバージョンのシークレットを無効にできます。 このコマンドレットの使用例を次に示します。 コンテナー名、シークレット名、およびバージョンの値を、環境に従って置き換えてください。
 
 ```powershell
 Set-AzureKeyVaultSecretAttribute -VaultName contosovault -Name servicecert -Version e3391a126b65414f93f6f9806743a1f7 -Enable 0
 ```
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-* [Deploy a VM with a Key Vault password](azure-stack-kv-deploy-vm-with-secret.md)
-* [Allow an application to access Key Vault](azure-stack-kv-sample-app.md)
+* [Key Vault パスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)
+* [アプリケーションが Key Vault にアクセスできるようにする](azure-stack-kv-sample-app.md)
 
 
 

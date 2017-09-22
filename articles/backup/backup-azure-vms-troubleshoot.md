@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 2f74637fe9887a9a1afbb32647d3fa98b9f88761
+ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
+ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
+ms.lasthandoff: 09/08/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
@@ -31,9 +31,13 @@ ms.lasthandoff: 09/05/2017
 次の表に示す情報を使って、Azure Backup の使用中に発生したエラーのトラブルシューティングを行うことができます。
 
 ## <a name="backup"></a>バックアップ
+
+## <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
+
+現在 Azure Backup では、1023 GB より大きいサイズのディスクをサポートしていません。 ディスクを分割してディスクのサイズを制限より小さくしてください。 ディスクを分割するには、データ サイズが 1023 GB を超えるディスクを、サイズが 1023 GB 未満の新しく作成されたディスクにコピーする必要があります。
+
 | エラーの詳細 | 対処法 |
 | --- | --- |
-| 指定されたディスク構成はサポートされていません。http://go.microsoft.com/fwlink/?LinkId=808978 に従ってアラートを解決するか、Microsoft サポートにお問い合わせください。| 現在 Azure Backup では、1023 GB より大きいサイズのディスクをサポートしていません。 ディスクを分割してディスクのサイズを制限より小さくしてください。 ディスクを分割するには、データ サイズが 1023 GB を超えるディスクを、サイズが 1023 GB 未満の新しく作成されたディスクにコピーする必要があります。 |
 | VM が存在しないため、操作を実行できませんでした。 - バックアップ データを削除しないで、仮想マシンの保護を停止してください。 詳細については、 http://go.microsoft.com/fwlink/?LinkId=808124 を参照してください。 |これは、プライマリ VM が削除されているのに、バックアップ ポリシーによってバックアップする VM が検索され続ける場合に発生します。 このエラーを解決するには、次の手順に従います。 <ol><li> 同じ名前と同じリソース グループ名 [クラウド サービス名] を使用して仮想マシンを作成し直します。<br>(または)</li><li> バックアップ データを削除して、または削除しないで、仮想マシンの保護を停止します。 [詳細](http://go.microsoft.com/fwlink/?LinkId=808124)</li></ol> |
 | 仮想マシンがネットワークに接続していないためにスナップショット操作が失敗した - VM がネットワークにアクセスできることを確認してください。 スナップショットを成功させるには、Azure データセンターの IP 範囲をホワイトリストに追加するか、プロキシ サーバーをネットワーク アクセス用にセットアップします。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 を参照してください。 既にプロキシ サーバーを使用している場合は、プロキシ サーバー設定が正しく構成されていることを確認してください | このエラーは、仮想マシンで送信インターネット接続を拒否している場合にスローされます。 インターネット接続は、VM スナップショット拡張機能で仮想マシンの基になるディスクのスナップショットを取得するために必要です。 ネットワーク アクセスのブロックによるスナップショットのエラーを修正する方法については、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#snapshot-operation-failed-due-to-no-network-connectivity-on-the-virtual-machine)を参照してください。 |
 | VM エージェントが Azure Backup サービスと通信できません。 - VM がネットワークに接続でき、最新の VM エージェントが実行されていることを確認します。 詳細については、http://go.microsoft.com/fwlink/?LinkId=800034 を参照してください |VM エージェントに問題があるか、Azure インフラストラクチャへのネットワーク アクセスが何らかの原因でブロックされている場合に、このエラーがスローされます。 VM のスナップショットに関する問題のデバッグについては、[こちら](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#vm-agent-unable-to-communicate-with-azure-backup)を参照してください。<br> VM エージェントで問題が発生していない場合は、VM を再起動してください。 VM の状態が正しくないため問題が発生する場合があります。その場合は、VM を再起動すると、この "正しくない状態" がリセットされます。 |

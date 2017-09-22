@@ -1,6 +1,6 @@
 ---
-title: Tools for Azure Stack storage
-description: Learn about Azure Stack storage data transfer tools
+title: "Azure Stack Storage のツール"
+description: "Azure Stack Storage のデータ転送ツールについて説明します。"
 services: azure-stack
 documentationcenter: 
 author: xiaofmao
@@ -18,75 +18,75 @@ ms.translationtype: HT
 ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 01069b8b7488ae0caaec4ae608c36b0f361e544c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="tools-for-azure-stack-storage"></a>Tools for Azure Stack Storage
+# <a name="tools-for-azure-stack-storage"></a>Azure Stack Storage のツール
 
-Microsoft Azure Stack provides a set of the storage services for disks, blobs, tables, queues, and account management functionality. You can use a set of Azure Storage tools if you want to manage or move data to or from Azure Stack Storage. This article provides a quick overview of the tools available.
+Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack Storage のデータを管理または移動する場合は、Azure Storage のツールのセットを使用ですることができます。 この記事では、使用可能なツールについて簡単に説明します。
 
-The tool that works best for you depends on your requirements:
+最適なツールは、お客様の要件によって異なります。
 * [AzCopy](#azcopy)
 
-    A storage-specific command-line utility that you can download to copy data from one object to another within your storage account, or between storage accounts.
+    ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができるダウンロード可能なストレージ固有のコマンドライン ユーティリティです。
 
 * [Azure PowerShell](#azure-powershell)
 
-    A task-based command-line shell and scripting language designed especially for system administration.
+    タスク ベースのコマンドライン シェルであり、特にシステム管理用に設計されたスクリプト言語です。
 
 * [Azure CLI](#azure-cli)
 
-    An open-source, cross-platform tool that provides a set of commands for working with the Azure and Azure Stack platforms.
+    オープン ソースでクロスプラットフォームの Azure および Azure Stack Platform で使用できるコマンド群が提供されます。
 
-* [Microsoft Storage Explorer (Preview)](#microsoft-azure-storage-explorer)
+* [Microsoft Azure Storage Explorer (プレビュー)](#microsoft-azure-storage-explorer)
 
-    An easy to use standalone app with a user interface.
+    ユーザー インターフェイスを備えた使いやすいスタンドアロンのアプリ。
 
-Due to the Storage services differences between Azure and Azure Stack, there might be some specific requirements for each tool described in the following sections. For a comparison between Azure Stack storage and Azure storage, see [Azure Stack Storage: Differences and considerations](azure-stack-acs-differences.md).
+Azure と Azure Stack の間の記憶域サービスの違いにより、次のセクションで説明されている各ツールにはいくつかの固有の要件があります。 Azure Stack Storage と Azure Storage の間の比較については、「[Azure Stack Storage: Differences and considerations](azure-stack-acs-differences.md)」(Azure Stack Storage: 違いと考慮事項) を参照してください。
 
 
 ## <a name="azcopy"></a>AzCopy
-AzCopy is a command-line utility designed to copy data to and from Microsoft Azure Blob and Table storage using simple commands with optimal performance. You can copy data from one object to another within your storage account, or between storage accounts. There are two version of the AzCopy: AzCopy on Windows and AzCopy on Linux. Azure Stack only supports the Windows version. 
+AzCopy は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure BLOB とテーブルのストレージ間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。 AzCopy には、AzCopy on Windows と AzCopy on Linux という 2 つのバージョンがあります。 Azure Stack は、Windows バージョンのみをサポートします。 
  
-### <a name="download-and-install-azcopy"></a>Download and install AzCopy 
-[Download](https://aka.ms/azcopyforazurestack) the supported Windows version of AzCopy for Azure Stack. You can install and use AzCopy on Azure Stack the same way as Azure. To learn more, see [Transfer data with the AzCopy Command-Line Utility](../storage/common/storage-use-azcopy.md). 
+### <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール 
+Azure Stack 用の AzCopy のサポートされている Windows バージョンを[ダウンロード](https://aka.ms/azcopyforazurestack)します。 Azure と同様の方法で、Azure Stack 上で AzCopy をインストールして使用することができます 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../storage/common/storage-use-azcopy.md)」を参照してください。 
 
-### <a name="azcopy-command-examples-for-data-transfer"></a>AzCopy command examples for data transfer
-The following examples demonstrate a few typical scenarios for copying data to and from Azure Stack blobs. To learn more, see [Transfer data with the AzCopy Command-Line Utility](../storage/storage-use-azcopy.md). 
-#### <a name="download-all-blobs-to-local-disk"></a>Download all blobs to local disk
+### <a name="azcopy-command-examples-for-data-transfer"></a>データ転送するための AzCopy コマンドの例
+以下の例では、Azure Stack BLOB との間でデータをコピーするさまざまなシナリオを紹介しています。 詳細については、「[AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../storage/storage-use-azcopy.md)」を参照してください。 
+#### <a name="download-all-blobs-to-local-disk"></a>すべての BLOB をローカル ディスクにダウンロードします。
 ```azcopy
 AzCopy.exe /source:https://myaccount.blob.local.azurestack.external/mycontainer /dest:C:\myfolder /sourcekey:<key> /S
 ```
-#### <a name="upload-single-file-to-virtual-directory"></a>Upload single file to virtual directory 
+#### <a name="upload-single-file-to-virtual-directory"></a>1 つのファイルを仮想ディレクトリにアップロードする 
 ```azcopy
 AzCopy /Source:C:\myfolder /Dest:https://myaccount.blob.local.azurestack.external/mycontainer/vd /DestKey:key /Pattern:abc.txt
 ```
-#### <a name="move-data-between-azure-and-azure-stack-storage"></a>Move data between Azure and Azure Stack Storage 
-Asynchronous data transfer between Azure Storage and Azure Stack is not supported. you need to specify the transfer with the `/SyncCopy` option. 
+#### <a name="move-data-between-azure-and-azure-stack-storage"></a>Azure と Azure Stack Storage 間でデータを移動します。 
+Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 `/SyncCopy` オプションで転送を指定する必要があります。 
 ```azcopy 
 Azcopy /Source:https://myaccount.blob.local.azurestack.external/mycontainer /Dest:https://myaccount2.blob.core.windows.net/mycontainer2 /SourceKey:AzSKey /DestKey:Azurekey /S /SyncCopy
 ```
 
-### <a name="azcopy-known-issues"></a>Azcopy Known issues
-* Any AzCopy operation on File storage is not available because File Storage is not yet available in Azure Stack.
-* Asynchronous data transfer between Azure Storage and Azure Stack is not supported. You can specify the transfer with the `/SyncCopy` option to copy the data.
-* The Linux version of Azcopy is not supported for Azure Stack Storage. 
+### <a name="azcopy-known-issues"></a>Azcopy の既知の問題
+* ファイル ストレージは、Azure Stack で使用できないために、ファイル ストレージに関する AzCopy 操作は使用できません。
+* Azure Storage と Azure Stack との間の非同期のデータ転送がサポートされていません。 `/SyncCopy` オプションを使用して転送を指定し、データをコピーすることができます。
+* Azure Stack Storage では、Azcopy の Linux バージョンはサポートされていません。 
 
 ## <a name="azure-powershell"></a>Azure PowerShell
-Azure PowerShell is a module that provides cmdlets for managing services on both Azure and Azure Stack. It's a task-based command-line shell and scripting language designed especially for system administration.
+Azure PowerShell は、Azure と Azure Stack の両方ででサービスを管理するためのコマンドレットを提供するモジュールです。 タスク ベースのコマンドライン シェルであり、特にシステム管理用に設計されたスクリプト言語です。
 
-### <a name="install-and-configure-powershell-for-azure-stack"></a>Install and Configure PowerShell for Azure Stack
-Azure Stack compatible Azure PowerShell modules are required to work with Azure Stack. For more information, see [Install PowerShell for Azure Stack](azure-stack-powershell-install.md) and [Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md) to learn more.
+### <a name="install-and-configure-powershell-for-azure-stack"></a>PowerShell for Azure Stack のインストールと構成
+Azure Stack を使用するには、Azure Stack と互換性のある Azure PowerShell モジュールが必要です。 詳細については、「[Install PowerShell for Azure Stack](azure-stack-powershell-install.md)」(PowerShell for Azure Stack のインストール) および「[Configure the Azure Stack user's PowerShell environment](azure-stack-powershell-configure-user.md)」(Azure Stack ユーザーの PowerShell 環境を構成する) を参照してください。
 
-### <a name="powershell-sample-script-for-azure-stack"></a>PowerShell Sample script for Azure Stack 
-This sample assume you have successfully [Install PowerShell for Azure Stack](azure-stack-powershell-install.md). This script will help you conplete the configuration and ask your Azure Stack tenant credentials to add your account to the local PowerShell environemnt. Then, the script will set the default Azure subscription, create a new storage account in Azure, create a new container in this new storage account and upload an existing image file (blob) to that container. After the script lists all blobs in that container, it will create a new destination directory in your local computer and download the image file.
+### <a name="powershell-sample-script-for-azure-stack"></a>Azure Stack 用の PowerShell サンプル スクリプト 
+このサンプルでは、[PowerShell for Azure Stack を正常にインストール](azure-stack-powershell-install.md)していることを前提としています。 このスクリプトは、構成を完了し、ローカルの PowerShell 環境にアカウントを追加するために Azure Stack テナントの資格情報を要求するために役立ちます。 次に、スクリプトは、既定の Azure サブスクリプションを設定して、Azure 内に新しいストレージ アカウントを作成し、この新しいストレージ アカウントに新しいコンテナーを作成して、既存の画像ファイル (BLOB) をこのコンテナーにアップロードします。 このスクリプトにより、コンテナー内のすべての BLOB がリストされると、ローカル コンピューターに新しい格納先ディレクトリが作成され、画像ファイルがダウンロードされます。
 
-1. Install [Azure Stack-compatible Azure PowerShell modules](azure-stack-powershell-install.md).  
-2. Download the [tools required to work with Azure Stack](azure-stack-powershell-download.md).  
-3. Open **Windows PowerShell ISE** and **Run as Administrator**, click **File** > **New** to create a new script file.
-4. Copy the script below and paste to the new script file.
-5. Update the script variables based on your configuration settings. 
-6. Note: this script has to be run under the root of downloaded **AzureStack_Tools**. 
+1. [Azure Stack と互換性のある Azure PowerShell モジュール](azure-stack-powershell-install.md)をインストールします。  
+2. [Azure Stack を操作するために必要なツール](azure-stack-powershell-download.md)をダウンロードします。  
+3. **Windows PowerShell ISE** を開いて、**管理者として実行し**、**[ファイル]** > **[新規作成]** の順にクリックして、新しいスクリプト ファイルを作成します。
+4. 次のスクリプトをコピーして新しいスクリプト ファイルに貼り付けます。
+5. 構成設定に基づいてスクリプト変数を更新します。 
+6. 注: このスクリプトには、ダウンロードした **AzureStack_Tools** のルートの下で実行する必要があります。 
 
 ```PowerShell 
 # begin
@@ -153,10 +153,10 @@ $blobs | Get-AzureStorageBlobContent –Destination $DestinationFolder
 # end
 ```
 
-### <a name="powershell-known-issues"></a>PowerShell Known Issues 
-The current compatible Azure PowerShell module version for Azure Stack is 1.2.10. It’s different from the latest version of Azure PowerShell. This difference impacts storage services operation:
+### <a name="powershell-known-issues"></a>PowerShell の既知の問題 
+Azure Stack の現在の互換性のある Azure PowerShell モジュールのバージョンは 1.2.10 です。 これは Azure PowerShell の最新バージョンとは異なります。 この違いは、ストレージ サービスの操作に影響します。
 
-* The return value format of `Get-AzureRmStorageAccountKey` in version 1.2.10 has two properties: `Key1` and `Key2`, while the current Azure version returns an array containing all the account keys.
+* バージョン 1.2.10 では `Get-AzureRmStorageAccountKey` の戻り値の形式に `Key1` と `Key2` という 2 つのプロパティがありますが、Azure 最新バージョンは、すべてのアカウント キーが含まれる配列を返します。
    ```
    # This command gets a specific key for a Storage account, 
    # and works for Azure PowerShell version 1.4, and later versions.
@@ -169,22 +169,22 @@ The current compatible Azure PowerShell module version for Azure Stack is 1.2.10
    -AccountName "MyStorageAccount").Key1
 
    ```
-   For more information, see [Get-AzureRmStorageAccountKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0).
+   詳細については、[Get-AzureRmStorageAccountKey](https://docs.microsoft.com/en-us/powershell/module/azurerm.storage/Get-AzureRmStorageAccountKey?view=azurermps-4.1.0) を参照してください。
 
 ## <a name="azure-cli"></a>Azure CLI
-The Azure CLI is Azure’s command-line experience for managing Azure resources. You can install it on macOS, Linux, and Windows and run it from the command line. 
+Azure CLI は、Azure リソースを管理するための、Azure のコマンド ライン エクスペリエンスです。 macOS、Linux、および Windows 上にインストールし、コマンド ラインから実行できます。 
 
-Azure CLI is optimized for managing and administering Azure resources from the command line, and for building automation scripts that work against the Azure Resource Manager. It provides many of the same functions found in the Azure Stack portal, including rich data access.
+Azure CLI は、コマンド ラインから Azure リソースを管理したり、Azure Resource Manager を操作対象とする自動化スクリプトを作成したりするために最適化されています。 豊富なデータ アクセスを含む、Azure Stack Portal にあるものと同じ機能の多くを使用できます。
 
-Azure Stack requires Azure CLI version 2.0. For more information about installing and configuring Azure CLI with Azure Stack, see [Install and configure Azure Stack CLI](azure-stack-connect-cli.md). For more information about how to use the Azure CLI 2.0 to perform several tasks working with resources in your Azure Stack Storage account, see [Using the Azure CLI2.0 with Azure Storage](../storage/storage-azure-cli.md)
+Azure Stack には、Azure CLI バージョン 2.0 が必要です。 Azure Stack と Azure CLI のインストールと構成の詳細については、「[Install and configure Azure Stack CLI](azure-stack-connect-cli.md)」(Azure Stack CLI のインストールと構成) を参照してください。 Azure CLI 2.0 を使用して Azure Stack Storage アカウント内のリソースを操作するいくつかのタスクを実行する方法の詳細については、「[Azure ストレージでの Azure CLI2.0 の使用](../storage/storage-azure-cli.md)」を参照してください。
 
-### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure CLI sample script for Azure Stack 
-Once you complete the CLI installation and configuration, you can try the following steps to work with a small shell sample script to interact with Azure Stack Storage resources. The script first creates a new container in your storage account, then uploads an existing file (as a blob) to that container, lists all blobs in the container, and finally, downloads the file to a destination on your local computer that you specify. Before you run this script, make sure you successfully connect and login to the target Azure Stack. 
-1. Open your favorite text editor, then copy and paste the preceding script into the editor.
-2. Update the script's variables to reflect your configuration settings. 
-3. After you've updated the necessary variables, save the script and exit your editor. The next steps assume you've named your script my_storage_sample.sh.
-4. Mark the script as executable, if necessary: `chmod +x my_storage_sample.sh`
-5. Execute the script. For example, in Bash: `./my_storage_sample.sh`
+### <a name="azure-cli-sample-script-for-azure-stack"></a>Azure Stack 用の Azure CLI サンプル スクリプト 
+CLI のインストールと構成が完了したら、次の手順を試し、Azure Stack Storage リソースと対話する小さなシェル サンプル スクリプトを操作することができます。 スクリプトは、最初にストレージ アカウントに新しいコンテナーを作成し、既存のファイル (および BLOB) をそのコンテナーにアップロードし、コンテナー内のすべての BLOB を一覧表示し、最後に、指定したローカル コンピューター上の宛先にファイルをダウンロードします。 このスクリプトを実行する前に、ターゲット Azure Stack に正常に接続してログインしていることを確認してください。 
+1. 好みのテキスト エディターを開き、前述のスクリプトをコピーしてエディターに貼り付けます。
+2. 構成の設定を反映するようにスクリプトの変数を更新します。 
+3. 必要な変数を更新したら、スクリプトを保存してエディターを終了します。 次の手順では、スクリプト名に my_storage_sample.sh 指定したと仮定します。
+4. 必要に応じてスクリプトを実行可能ファイルとしてマークします。`chmod +x my_storage_sample.sh`
+5. スクリプトを実行します。 たとえば Bash の場合は次のようになります。 `./my_storage_sample.sh`
 
 ```bash
 #!/bin/bash
@@ -219,18 +219,18 @@ az storage blob download --container-name $AZURESTACK_STORAGE_CONTAINER_NAME --a
 echo "Done"
 ```
 
-## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure Storage Explorer
+## <a name="microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラー
 
-Microsoft Azure Storage Explorer is a standalone app from Microsoft. It allows you to easily work with both Azure Storage and Azure Stack Storage data on Windows, macOS and Linux. If you want an easy way to manage your Azure Stack Storage data, then consider using Microsoft Azure Storage Explorer.
+Microsoft Azure Storage Explorer は、Microsoft のスタンドアロン アプリです。 このツールは、Windows、macOS、および Linux で Azure Storage および Azure Stack Storage の両方のデータを簡単に操作できます。 簡単に、Azure Stack Storage データを簡単に管理する方法が必要な場合は、Microsoft Azure Storage Explorer の使用を検討してください。
 
-For more information about configuring Azure Storage Explorer to work with Azure Stack, see [Connect Storage Explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md).
+Azure Stack を操作する Microsoft Azure Storage Explorer の構成の詳細については、「[Connect Storage Explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md)」 (Microsoft Azure Storage Explorer を Azure Stack サブスクリプションに接続する) を参照してください。
 
-For more information about Microsoft Azure Storage Explorer, see [Get started with Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+Microsoft Azure Storage Explorer の詳細については、「[Microsoft Azure Storage Explorer (プレビュー) の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)」を参照してください。
 
-## <a name="next-steps"></a>Next steps
-* [Connect Storage Explorer to an Azure Stack subscription](azure-stack-storage-connect-se.md)
-* [Get started with Storage Explorer (Preview)](../vs-azure-tools-storage-manage-with-storage-explorer.md)
-* [Azure-consistent storage: differences and considerations](azure-stack-acs-differences.md)
-* [Introduction to Microsoft Azure Storage](../storage/common/storage-introduction.md)
+## <a name="next-steps"></a>次のステップ
+* [Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する](azure-stack-storage-connect-se.md)
+* [Microsoft Azure Storage Explorer (プレビュー) の概要](../vs-azure-tools-storage-manage-with-storage-explorer.md)
+* [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
+* [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)
 
 

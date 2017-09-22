@@ -1,6 +1,6 @@
 ---
-title: Enable CLI for Azure Stack users | Microsoft Docs
-description: Learn how to use the cross-platform command-line interface (CLI) to manage and deploy resources on Azure Stack
+title: "Azure Stack ユーザーに対する CLI の有効化 | Microsoft Docs"
+description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法について説明します"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -18,22 +18,22 @@ ms.translationtype: HT
 ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: 2f7615e0f0928f4ef70f98b7e2b2dce823621314
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/15/2017
 
 ---
-# <a name="enable-cli-for-azure-stack-users"></a>Enable CLI for Azure Stack users
+# <a name="enable-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する CLI の有効化
 
-There aren't any Azure Stack operator specific tasks that you can perform by using CLI. But before users can manage resources through CLI, Azure Stack operators must provide them with the following:
+CLI を使用して実行できる Azure Stack オペレーターの特定のタスクはありません。 ただし、ユーザーが CLI を使用してリソースを管理できるようにするには、Azure Stack オペレーターがユーザーに以下を提供する必要があります。
 
-* **The Azure Stack CA root certificate** - The root certificate is required if your users are using CLI from a workstation outside the Azure Stack development kit.  
+* **Azure Stack の CA ルート証明書** - ユーザーが Azure Stack Development Kit の外部のワークステーションから CLI を使用する場合は、ルート証明書が必要です。  
 
-* **The virtual machine aliases endpoint** - This endpoint is required to create virtual machines by using CLI.
+* **仮想マシンのエイリアス エンドポイント** - CLI を使用して仮想マシンを作成するには、このエンドポイントが必要です。
 
-The following sections describe how to get these values.
+これらの値の取得方法については、以下のセクションで説明します。
 
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Export the Azure Stack CA root certificate
+## <a name="export-the-azure-stack-ca-root-certificate"></a>Azure Stack の CA ルート証明書をエクスポートする
 
-The Azure Stack CA root certificate is available on the development kit and on a tenant virtual machine that is running within the development kit environment. Sign in to your development kit or the tenant virtual machine and run the following script to export the Azure Stack root certificate in PEM format:
+Azure Stack の CA ルート証明書は、開発キットと、開発キット環境内で実行されているテナント仮想マシンで利用できます。 開発キットまたはテナント仮想マシンにサインインし、次のスクリプトを実行して、PEM 形式で Azure Stack ルート証明書をエクスポートします。
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -52,18 +52,18 @@ Write-Host "Converting certificate to PEM format"
 certutil -encode root.cer root.pem
 ```
 
-## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Set up the virtual machine aliases endpoint
+## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを設定する
 
-Azure Stack operators should set up a publicly accessible endpoint that contains virtual machine image aliases. Azure Stack operators must [Download the image to Azure Stack marketplace](azure-stack-download-azure-marketplace-item.md) before they add it to image aliases endpoint.
+Azure Stack オペレーターは、仮想マシンのイメージ エイリアスを含む、公的にアクセス可能なエンドポイントを設定する必要があります。 Azure Stack オペレーターは、イメージをイメージ エイリアス エンドポイントに追加する前に、[そのイメージを Azure Stack Marketplace にダウンロード](azure-stack-download-azure-marketplace-item.md)する必要があります。
    
-For example, Azure contains uses following URI: https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json. The operator should set up a similar endpoint for Azure Stack with the images that are available in their marketplace.
+たとえば、Azure では、https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json という URI を使用します。 オペレーターはマーケットプレースで使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。
 
-## <a name="next-steps"></a>Next steps
+## <a name="next-steps"></a>次のステップ
 
-[Deploy templates with Azure CLI](azure-stack-deploy-template-command-line.md)
+[Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
-[Connect with PowerShell](azure-stack-connect-powershell.md)
+[PowerShell で接続する](azure-stack-connect-powershell.md)
 
-[Manage user permissions](azure-stack-manage-permissions.md)
+[ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
 
 
