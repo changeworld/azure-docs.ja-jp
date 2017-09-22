@@ -17,10 +17,10 @@ ms.date: 09/07/2017
 ms.author: glenga
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: d8edabe1198f37513fc292e0bffc5c83e7e566e7
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1c39b2d9943532c8ccf0a11d3cf4bc8896669cfb
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
@@ -60,7 +60,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 ## <a name="functions-vs-webjobs"></a>Functions とWebJobs
 Azure Functions と Azure App Service WebJobs はどちらも開発者向けに設計された " *コード第一* " の統合サービスであるため、ここで一緒に説明します。 この 2 つのサービスでは、[新しいストレージ BLOB](functions-bindings-storage.md) や [webhook 要求](functions-bindings-http-webhook.md)など、さまざまなイベントに対する応答としてスクリプトまたはコードを実行できます。 この 2 つは、以下の点がよく似ています。 
 
-* どちらも [Azure App Service](../app-service/app-service-value-prop-what-is.md) の上に構築されたものであり、[ソース管理](../app-service-web/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service-web/web-sites-monitor.md)などの機能を利用可能
+* どちらも [Azure App Service](../app-service/app-service-web-overview.md) の上に構築されたものであり、[ソース管理](../app-service/app-service-continuous-deployment.md)、[認証](../app-service/app-service-authentication-overview.md)、[監視](../app-service/web-sites-monitor.md)などの機能を利用可能
 * どちらも開発者向けのサービスである
 * どちらも標準的なスクリプト言語とプログラミング言語をサポートしている
 * どちらも NuGet および NPM をサポートしている
@@ -81,7 +81,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | スケーリング |構成不要のスケーリング |App Service プランによるスケーリング |
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
-| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage.md) |[Azure Storage](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)、[Azure Service Bus](../app-service-web/websites-dotnet-webjobs-sdk-service-bus.md) |
+| トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage-blob.md) |[Azure Storage](functions-bindings-storage-blob.md)、[Azure Service Bus](functions-bindings-service-bus.md) |
 | ブラウザーでの開発 |サポート対象 | サポート対象外 |
 | Windows スクリプト (.cmd、.bat) |試験段階 |サポート対象 |
 | PowerShell |試験段階 |サポート対象 |
@@ -115,7 +115,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 * [Get started with Microsoft Flow (Microsoft Flow の概要)](https://flow.microsoft.com/en-us/documentation/getting-started/)
 * [ロジック アプリの作成](../logic-apps/logic-apps-create-a-logic-app.md)
 * [初めての Azure 関数の作成](functions-create-first-azure-function.md)
-* [Visual Studio を使用した Web ジョブの展開](../app-service-web/websites-dotnet-deploy-webjobs.md)
+* [Visual Studio を使用した Web ジョブの展開](../app-service/websites-dotnet-deploy-webjobs.md)
 
 ここで紹介した統合サービスの詳しい情報については、以下のリンクを参照してください。
 
@@ -123,6 +123,5 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps のライブ Web キャスト](http://aka.ms/logicappslive)
 * [Microsoft Flow のよくある質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-* [Azure WebJobs のドキュメント リソース](../app-service-web/websites-webjobs-resources.md)
 
 

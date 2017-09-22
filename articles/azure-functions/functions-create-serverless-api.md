@@ -12,10 +12,10 @@ ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 1b4ef5dc0af6bea8af02ad63843acc91713666ad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -72,7 +72,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
 
 プロキシは、以下のような任意の HTTP リソースを指定できます。
 - Azure Functions 
-- [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-value-prop-what-is) 内の API アプリ
+- [Azure App Service](https://docs.microsoft.com/azure/app-service/app-service-web-overview) 内の API アプリ
 - [App Service on Linux](https://docs.microsoft.com/azure/app-service/containers/app-service-linux-intro) 内の Docker コンテナー
 - その他のホストされている API
 
@@ -111,7 +111,7 @@ HTTP 関数をカスタマイズする方法の詳細については、「[Azure
     
 1. Proxies は `/api` ベース パス プレフィックスを提供しないことに注意してください。パス プレフィックスはルート テンプレートで指定する必要があります。
 1. `%HELLO_HOST%` 構文は、以前作成したアプリ設定を参照します。 解決済みの URL は元の関数を指定します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 1. プロキシの URL をコピーし、ブラウザー内、または任意の HTTP クライアントでテストすることで、新しいプロキシを試すことができます。
     1. 匿名関数の場合は、以下を使用します。
         1. `https://YOURPROXYAPP.azurewebsites.net/api/hello?name="Proxies"`
