@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cosmos DB を使用したデータのグローバル分散 | Microsoft Docs"
 description: "グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。"
 services: cosmos-db

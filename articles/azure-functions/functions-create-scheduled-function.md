@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure でスケジュールに基づいて実行される関数を作成する | Microsoft Docs"
 description: "Azure で定義したスケジュールに基づいて実行する関数を作成する方法について説明します。"
 services: functions
