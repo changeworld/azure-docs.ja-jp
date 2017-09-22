@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 5553bcb8f9fd38630f694151dc644a684266387c
+ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
+ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/14/2017
 
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Azure API Management でレート制限を使用して API を保護する
@@ -148,7 +148,7 @@ API Management の成果物は、保護することも開くこともできま�
 </quota>
 ```
 
-**サブスクリプション別の使用量クォータの設定**ポリシーと同様に、**サブスクリプション別の使用量クォータの設定**ポリシーでは、製品の API と操作について制限を設定できます。 このチュートリアルでは、この機能を使用しません。そのため、次の例に示すとおり、**api** 要素と **operation** 要素は **quota** 要素から削除してください。
+**サブスクリプション別の呼び出しレート制限**ポリシーと同様に、**サブスクリプション別の使用量クォータの設定**ポリシーでは、製品の API と操作について制限を設定できます。 このチュートリアルでは、この機能を使用しません。そのため、次の例に示すとおり、**api** 要素と **operation** 要素は **quota** 要素から削除してください。
 
 ```xml
 <quota calls="number" bandwidth="kilobytes" renewal-period="seconds">

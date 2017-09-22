@@ -12,17 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 5/26/2017
+ms.date: 9/13/2017
 ms.author: xujing
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: a986ddf22f059dc55bb9bff5c6eaf27324b716cd
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: f34f65eb1d5375caae8831aedaed8a4b6a9cd098
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="azure-hybrid-use-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Use Benefit
 ソフトウェア アシュアランスを取得したお客様は、Azure Hybrid Use Benefit により、オンプレミスの Windows Server および Windows Client ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Use Benefit には、Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2、Windows Server 2016 が含まれます。 詳細については、 [Azure Hybrid Use Benefit のライセンスに関するページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を参照してください。
+
+> [!IMPORTANT]
+> Azure Marketplace でのエンタープライズ契約のお客様向けに発行された '[HUB]' Windows Server イメージは 2017 年 9 月 11 日に終了となりました。Azure ハイブリッド使用特典の "コスト削減" オプションを使用して標準の Windows Server をご利用ください。 詳しくは、こちらの[記事](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)を参照してください。
+>
 
 > [!NOTE]
 > この記事では、Windows Server イメージのライセンス特典を実装する方法について説明します。 [Windows 10 デスクトップ イメージ](#windows-desktop-multitenant-hosting-deployment)用の手順を実行することもできます。

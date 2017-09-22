@@ -13,16 +13,15 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/10/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 80ba024cd219b10bce8d88c9f11fd2d14d4ed34f
-ms.openlocfilehash: 223fee8930b1aebff94eddaeb82b5c0e364e067c
+ms.translationtype: HT
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 89b4f7cee6d00b5bbbca4799eeca74a280147fc7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 01/11/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-
 
 # <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Azure ポータルを使用したストリーミング エンドポイントの管理
 
@@ -70,6 +69,9 @@ Azure ポータルを使用してストリーミング エンドポイントを�
 * Cross site access policies
 
 これらのプロパティの詳細については、「 [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint)」をご覧ください。
+
+>[!NOTE]
+>CDN が有効になっている場合、IP アクセスにアクセスすることはできません。 IP アクセスは、CDN を指定していない場合にのみ適用されます。
 
 ストリーミング エンドポイントを構成するには、以下の操作を行います。
 

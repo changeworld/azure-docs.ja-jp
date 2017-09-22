@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center で Web アプリケーション ファイアウォールを追加する | Microsoft Docs"
-description: "このドキュメントでは、Azure Security Center の推奨事項である **&quot;Web アプリケーション ファイアウォールを追加する&quot;** と **&quot;アプリケーションの保護を完了する&quot;** を実装する方法について説明します。"
+description: "このドキュメントでは、Azure Security Center の推奨事項である \"**Web アプリケーション ファイアウォールの追加**\" と \"**アプリケーション保護を完了する**\" を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: d04a07237029953d8a9b20704d85e852ce45d867
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: e858db97c3e7a832ad01e16a60d486a758109d7c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
@@ -27,7 +26,7 @@ Azure Security Center では、Web アプリケーションを保護するため
 
 WAF の推奨事項は、開いている受信 Web ポート (80,443) にネットワーク セキュリティ グループが関連付けられている公開 IP (インスタンス レベルの IP または負荷分散された IP) に対して表示されます。
 
-Security Center では、仮想マシン上および App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/app-service-app-service-environments-readme.md)をご覧ください。
+Security Center では、仮想マシン上および App Service 環境 (ASE) の Web アプリケーションを対象とする攻撃から保護するために WAF をプロビジョニングするよう勧めます。 App Service 環境 (ASE) は、Azure App Service アプリを安全に実行するために完全に分離された専用の環境を提供する、Azure App Service の [Premium](https://azure.microsoft.com/pricing/details/app-service/) サービス プラン オプションです。 ASE の詳細については、 [App Service 環境のドキュメント](../app-service/environment/intro.md)をご覧ください。
 
 > [!NOTE]
 > このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。  このドキュメントはステップ バイ ステップ ガイドではありません。
@@ -70,7 +69,7 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
 ## <a name="next-steps"></a>次のステップ
 このドキュメントでは、"Web アプリケーションの追加" というセキュリティ センターの推奨事項を実装する方法について説明しました。 Web アプリケーション ファイアウォールを構成する方法の詳細については、次を参照してください。
 
-* [App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service-web/app-service-app-service-environment-web-application-firewall.md)
+* [App Service 環境の Web アプリケーション ファイアウォール (WAF) を構成する](../app-service/environment/app-service-app-service-environment-web-application-firewall.md)
 
 セキュリティ センターの詳細については、次を参照してください。
 

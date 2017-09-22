@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cca4d126a5c5f012af6afb9a31d0aedc0f7eb155
-ms.openlocfilehash: edb9aaf6dae11c9b8a171b22bc8a17003f80d86b
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7df2371f64f0d8a9fabc0df37c17d4dfbc47cd7e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/16/2016
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
@@ -31,7 +31,7 @@ ms.lasthandoff: 12/16/2016
 Secure Socket Layer (SSL) の暗号化は、インターネットを介して送信されるデータをセキュリティで保護する際に最もよく使用される方法です。 この一般的なタスクでは、Web ロールの HTTPS エンドポイントを指定する方法および SSL 証明書をアップロードしてアプリケーションを保護する方法を説明します。
 
 > [!NOTE]
-> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちらの記事](../app-service-web/web-sites-configure-ssl-certificate.md)をご覧ください。
+> このタスクの手順は、Azure Cloud Services に適用されます。App Services については、[こちらの記事](../app-service/app-service-web-tutorial-custom-ssl.md)をご覧ください。
 > 
 > 
 
@@ -46,7 +46,7 @@ Secure Socket Layer (SSL) の暗号化は、インターネットを介して送
 
 * 証明書は秘密キーを含む必要があります。
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
-* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** である場合は、***.contoso.com** または **www.contoso.com** の証明書を CA に要求します。
+* 証明書の件名はクラウド サービスへのアクセスに使用されるドメインと一致する必要があります。 証明機関 (CA) から cloudapp.net ドメインの SSL 証明書を取得することはできません。 サービスにアクセスするときに使用するカスタム ドメイン名を取得する必要があります。 CA に証明書を要求するときは、証明書の件名がアプリケーションにアクセスするために使用するカスタム ドメイン名と一致している必要があります。 たとえば、カスタム ドメイン名が **contoso.com** である場合は、***.contoso.com** または**www.contoso.com** の証明書を CA に要求します。
 * 証明書では、2048 ビット以上の暗号化を使用する必要があります。
 
 テスト目的で、自己署名証明書を [作成して](cloud-services-certs-create.md) 使用できます。 自己署名証明書は CA を通じて認証されないため、cloudapp.net ドメインを Web サイト URL として使用できます。 たとえば、次のタスクでは自己署名証明書を使用しますが、証明書で使用される共通名 (CN) は **sslexample.cloudapp.net** です。

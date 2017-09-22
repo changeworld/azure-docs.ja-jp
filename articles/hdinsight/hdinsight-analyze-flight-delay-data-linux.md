@@ -17,10 +17,10 @@ ms.date: 07/31/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: d0bd690edcf7dba85cbc316e254d4617bf0ebcb4
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: f333354311b16c00a0d43a691f139f5f80383d1a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-on-linux-based-hdinsight"></a>Linux ベースの HDInsight 上の Hive を使用したフライト遅延データの分析
@@ -267,7 +267,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
     このコマンドにより、先ほど delays テーブルを作成したデータベースを含むデータベースの一覧が返されます。
 
-2. 次のコマンドを使用して、hivesampletable から mobiledata テーブルにデータをエクスポートします。
+2. 次のコマンドを使って、hivesampletable から delays テーブルにデータをエクスポートします。
 
     ```
     sqoop export --connect 'jdbc:sqlserver://<serverName>.database.windows.net:1433;database=<databaseName>' --username <adminLogin> --password <adminPassword> --table 'delays' --export-dir '/tutorials/flightdelays/output' --fields-terminated-by '\t' -m 1
@@ -275,13 +275,13 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
     Sqoop は delays テーブルを含むデータベースに接続して、`/tutorials/flightdelays/output` ディレクトリから delays テーブルにデータをエクスポートします。
 
-3. コマンドが完了したら、次のコマンドを使用して、tsql ユーティリティーによってデータベースに接続します。
+3. sqoop コマンドが完了したら、tsql ユーティリティを使ってデータベースに接続します。
 
     ```
     TDSVER=8.0 tsql -H <serverName>.database.windows.net -U <adminLogin> -P <adminPassword> -p 1433 -D <databaseName>
     ```
 
-    次のステートメントを使用して、データが mobiledata テーブルにエクスポートされたことを確認します。
+    次のステートメントを使って、データが delays テーブルにエクスポートされたことを確認します。
 
     ```
     SELECT * FROM delays
@@ -290,7 +290,7 @@ SQL データベースが既にある場合は、サーバー名を入手する�
 
     テーブル内のデータの一覧が表示されます。 「 `exit` 」と入力して、tsql ユーティリティを終了します。
 
-## <a id="nextsteps"></a> 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 HDInsight でのデータ操作の詳細については、次の記事を参照してください。
 

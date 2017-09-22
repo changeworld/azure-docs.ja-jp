@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 6586cad908e6527b874dc3f0ee256c6b2cea8c49
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
@@ -37,7 +37,7 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 | アクティビティ ログ | イベント | すべての Azure サービス | <ul><li>**REST API:** [Azure Monitor イベント API](https://docs.microsoft.com/rest/api/monitor/events)</li><li>**Storage BLOB またはイベント ハブ:** [ログ プロファイル](monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile)</li></ul> |
 | Azure Monitor 診断ログ | イベント | [この一覧をご覧ください](monitoring-diagnostic-logs-schema.md) | <ul><li>**Storage BLOB またはイベント ハブ:** [診断設定](monitoring-overview-of-diagnostic-logs.md#resource-diagnostic-settings)</li></ul> |
 | ゲスト OS ログ ( IIS、ETW、Syslog など) のコンピューティング | イベント | [Windows](../virtual-machines-dotnet-diagnostics.md) と Linux の仮想マシン (v2)、[Cloud Services](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)、[Service Fabric](../service-fabric/service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md) | <ul><li>**ストレージ テーブルまたは Storage BLOB:** [Windows または Linux の Azure 診断](../cloud-services/cloud-services-dotnet-diagnostics-storage.md)</li><li>**イベント ハブ:** [Windows Azure 診断](../event-hubs/event-hubs-streaming-azure-diags-data.md)</li></ul> |
-| App Service ログ | イベント | App Services | <ul><li>**ファイル、テーブル、または BLOB Storage:** [Web アプリ診断](../app-service-web/web-sites-enable-diagnostic-log.md)</li></ul> |
+| App Service ログ | イベント | App Services | <ul><li>**ファイル、テーブル、または BLOB Storage:** [Web アプリ診断](../app-service/web-sites-enable-diagnostic-log.md)</li></ul> |
 | ストレージ ログ | イベント | Azure Storage (Azure Storage) | <ul><li>**ストレージ テーブル:** [Storage Analytics](https://docs.microsoft.com/rest/api/storageservices/storage-analytics)</li></ul> |
 | Security Center のアラート | イベント | [Azure Security Center] \(Azure Security Center) | <ul><li>**REST API:** [セキュリティ アラート](https://msdn.microsoft.com/library/mt704050.aspx)</li></ul> |
 | Active Directory レポート | イベント | Azure Active Directory | <ul><li>**REST API:** [Azure Active Directory Graph API](../active-directory/active-directory-reporting-api-getting-started.md)</li></ul> |

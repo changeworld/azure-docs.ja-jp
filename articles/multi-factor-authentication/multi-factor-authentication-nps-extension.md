@@ -3,7 +3,7 @@ title: "既存の NPS サーバーを使用して Azure MFA 機能を提供す�
 description: "Azure Multi-Factor Authentication のネットワーク ポリシー サーバー拡張機能は、クラウド ベースの 2 段階認証機能を既存の認証インフラストラクチャに追加するシンプルなソリューションです。"
 services: multi-factor-authentication
 documentationcenter: 
-author: MicrosoftGuyJFlo
+author: kgremban
 manager: femila
 ms.assetid: 
 ms.service: multi-factor-authentication
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/14/2017
-ms.author: joflore
+ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b9061283952ae6b14431f5e88295eefac173ae01
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: 42b0bda033b1721ba5c0f575ea2ce6b0933f0f45
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
@@ -62,8 +62,11 @@ Windows Server 2008 R2 SP1 以上。
 ### <a name="libraries"></a>ライブラリ
 
 これらのライブラリは拡張機能を含めて自動的にインストールされます。
+
 -   [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
 -   [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
+
+Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
 
 ### <a name="azure-active-directory"></a>Azure Active Directory
 
@@ -109,7 +112,7 @@ NPS 拡張機能のデプロイで使用できる認証方法に影響する 2 �
 1. RADIUS クライアント (VPN、Netscaler サーバーなど) と NPS サーバー間で使用されるパスワードの暗号化アルゴリズム。
    - **PAP** は、クラウドでの Azure MFA のすべての認証方法 (電話、一方向テキスト メッセージ、モバイル アプリの通知、およびモバイル アプリの確認コード) をサポートします。
    - **CHAPV2** と **EAP** は、電話とモバイル アプリの通知をサポートします。
-2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにする何らかの手段があるかどうか。
+2. クライアント アプリケーション (VPN、Netscaler サーバーなど) が処理できる入力方式。 たとえば、VPN クライアントに、ユーザーがテキストまたはモバイル アプリから確認コードを入力できるようにするなんらかの手段があるかどうか。
 
 NPS 拡張機能をデプロイするときに、これらの要素を使用して、ユーザーに使用できる方法を評価します。 RADIUS クライアントは PAP をサポートしているが、クライアント UX に確認コードの入力フィールドがない場合は、サポートされるオプションは電話とモバイル アプリの通知の 2 つになります。
 
@@ -158,8 +161,8 @@ NPS 拡張機能を使って認証するには、この手順に従って登録�
 
    `.\AzureMfaNpsExtnConfigSetup.ps1`
 
-4. PowerShell によって、テナント ID の入力が求められます。 前提条件セクションで、 Azure Portal からコピーしたディレクトリ ID の GUID を使用します。
-5. 管理者として Azure AD にログインします。
+4. 管理者として Azure AD にログインします。
+5. PowerShell によって、テナント ID の入力が求められます。 前提条件セクションで、 Azure Portal からコピーしたディレクトリ ID の GUID を使用します。
 6. スクリプトが終了すると、PowerShell によって成功メッセージが表示されます。  
 
 負荷分散用に設定するすべての追加 NPS サーバーで、この手順を繰り返します。

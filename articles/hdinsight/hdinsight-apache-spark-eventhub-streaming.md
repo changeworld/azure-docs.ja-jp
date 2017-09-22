@@ -18,10 +18,10 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 175a2ad70b1f554d05846eb62fb685d4f259af7e
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 14d969ecaf1f24a0bb34da4abe78d83f08627796
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="apache-spark-streaming-process-data-from-azure-event-hubs-with-spark-cluster-on-hdinsight"></a>Apache Spark ストリーミング: HDInsight で Spark クラスターを使用して Azure Event Hub のデータを処理する
@@ -367,17 +367,7 @@ Hive テーブルにイベントをストリーミングするSpark ストリー
 
 パラメーターは、前の手順でテキスト出力用に指定したものと似ています。 繰り返しになりますが、パラメーターとして使用される出力フォルダー (EventCheckpoint、EventCount/EventCount10) または出力 Hive テーブル (EventHiveTable10) を作成する必要はありません。 ストリーミング アプリケーションによって自動的に作成されます。 **jars** および **files** オプションには、ストレージ アカウントにコピーした .jar ファイルおよび hive-site.xml へのパスが含まれています。
 
-Hive テーブルが正常に作成されたことを確認するために、クラスターに SSH 接続して、Hive クエリを実行することができます。 手順については、「 [SSH による HDInsight での Hive と Hadoop の使用](hdinsight-hadoop-use-hive-ssh.md)」を参照してください。 SSH を使用して接続したら、次のコマンドを実行して、 **EventHiveTable10**という Hive テーブルが作成されていることを確認できます。
-
-    show tables;
-
-次のような出力が表示されます。
-
-    OK
-    eventhivetable10
-    hivesampletable
-
-SELECT クエリを実行して、テーブルの内容を表示することもできます。
+Hive テーブルが正常に作成されたことを確認するには、[Ambari Hive ビュー](hdinsight-hadoop-use-hive-ambari-view.md)を使います。 そこでは、SELECT クエリを実行して、テーブルの内容を表示できます。
 
     SELECT * FROM eventhivetable10 LIMIT 10;
 

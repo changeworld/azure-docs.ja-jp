@@ -1,6 +1,6 @@
 ---
 title: "HDInsight での Hadoop ジョブの送信 | Microsoft Docs"
-description: "Hadoop ジョブを Azure HDInsight Hadoop へ送信する方法について説明します。"
+description: "Azure HDInsight で Hadoop ジョブを送信する方法について説明します。"
 editor: cgronlun
 manager: jhubbard
 services: hdinsight
@@ -16,18 +16,20 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: jgao
-ms.translationtype: Human Translation
-ms.sourcegitcommit: acce9907fca6e411d8028e87eff7b50ffa04d575
-ms.openlocfilehash: 4098680a7941ec4732ec0a408c3bf02d6a9906f8
+ms.translationtype: HT
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: a824e6af903e006e6bb4899430741f7f2a9edaca
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/15/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="submit-hadoop-jobs-in-hdinsight"></a>HDInsight での Hadoop ジョブの送信
 
-.NET SDK、Curl、Azure PowerShell を使って、Hadoop ジョブを送信できます。
+Azure HDInsight で Hadoop ジョブを送信するには、HDInsight、curl、または Azure PowerShell 向けの Microsoft .NET SDK を使用します。
 
-- .NET SDK の使用
+## <a name="resources"></a>リソース
+
+- **.NET SDK**:
 
   - [非対話型認証 .NET アプリケーションを作成する](hdinsight-create-non-interactive-authentication-dotnet-applications.md)
   - [HDInsight .NET SDK を使用した Hive クエリの実行](hdinsight-hadoop-use-hive-dotnet-sdk.md)
@@ -35,14 +37,14 @@ ms.lasthandoff: 02/15/2017
   - [HDInsight で .NET SDK for Hadoop を使用した Sqoop ジョブの実行](hdinsight-hadoop-use-sqoop-dotnet-sdk.md)
   - [HDInsight .NET SDK を使用して MapReduce ジョブを実行する](hdinsight-hadoop-use-mapreduce-dotnet-sdk.md)
 
-- CURL
+- **curl**:
 
-  - [Curl を使用した HDInsight の Hadoop での Hive クエリの実行](hdinsight-hadoop-use-hive-curl.md)
-  - [Curl を使用した HDInsight の Hadoop での Pig ジョブの実行](hdinsight-hadoop-use-pig-curl.md)
-  - [HDInsight の Hadoop で Curl を使用して Sqoop ジョブを実行する](hdinsight-hadoop-use-sqoop-curl.md)
-  - [Curl を使用して HDInsight の Hadoop で MapReduce ジョブを実行](hdinsight-hadoop-use-mapreduce-curl.md)
+  - [curl を使用した HDInsight における Hadoop での Hive クエリの実行](hdinsight-hadoop-use-hive-curl.md)
+  - [curl を使用した HDInsight の Hadoop での Pig ジョブの実行](hdinsight-hadoop-use-pig-curl.md)
+  - [curl を使用した HDInsight の Hadoop での Sqoop ジョブの実行](hdinsight-hadoop-use-sqoop-curl.md)
+  - [curl を使用した HDInsight の Hadoop での MapReduce ジョブの実行](hdinsight-hadoop-use-mapreduce-curl.md)
 
-- PowerShell
+- **PowerShell**:
 
   - [PowerShell を使用して Hive クエリを実行](hdinsight-hadoop-use-hive-powershell.md)
   - [PowerShell を使用した Pig ジョブの実行](hdinsight-hadoop-use-pig-powershell.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: asirveda;robmcm
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 0c388862d927a1492745832225c686670c071f86
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 8776142d5452bf5057990702c89aa1a541382ffc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -216,8 +216,8 @@ Web アプリの追加設定の構成の詳細については、「[Configure we
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Azure Portal]: https://portal.azure.com/
-[Configure web apps in Azure App Service (Azure App Service で Web アプリを構成する)]: /azure/app-service-web/web-sites-configure
-[FTP/S を使用した Azure App Service へのアプリのデプロイ]: https://docs.microsoft.com/azure/app-service-web/app-service-deploy-ftp
+[Azure App Service での Web アプリの構成]: /azure/app-service/web-sites-configure
+[FTP/S を使用した Azure App Service へのアプリのデプロイ]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
 [無料の Azure アカウント]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/
 [Java Developer Kit (JDK)]: http://www.oracle.com/technetwork/java/javase/downloads/

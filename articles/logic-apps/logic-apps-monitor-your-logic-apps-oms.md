@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 0e9f0ef3c87b5c0da1cc4ad16d37178c8f5c9625
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -133,7 +133,7 @@ ms.lasthandoff: 08/16/2017
      ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
 
      [Azure Log Analytics] ページで、クエリを更新して表から結果を確認できます。 
-     このクエリは [Kusto クエリ言語](https://docs.loganalytics.io/learn/tutorials/getting_started_with_queries.html)を使用します。他の結果を表示するには編集します。 
+     このクエリは [Kusto クエリ言語](https://docs.loganalytics.io/docs/Language-Reference)を使用します。他の結果を表示するには編集します。 
 
      ![Azure Log Analytics - クエリ ビュー](media/logic-apps-monitor-your-logic-apps-oms/query.png)
 

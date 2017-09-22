@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/30/2017
+ms.date: 09/07/2017
 ms.author: tarcher
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 265a968f902f53c7561c8c7e937f8eacfdb37167
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 9657a4681f6bd9cc126de50883ce7a66357156e0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="create-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でのラボの作成
@@ -38,21 +38,22 @@ Azure DevTest Labs におけるラボとは、Virtual Machines (VM) などのリ
     ![[その他のサービス] メニュー オプション](./media/devtest-lab-create-lab/more-services-menu-option.png)
 
 1. 利用可能なサービスの一覧から **[DevTest Labs]** を選択します。
-1. **[DevTest ラボ]** ブレードで **[追加]** をクリックします。
+1. **[DevTest ラボ]** 領域で **[追加]** をクリックします。
    
     ![Add a lab](./media/devtest-lab-create-lab/add-lab-button.png)
 
-1. **[DevTest ラボの作成]** ブレードで:
+1. **[DevTest Lab の作成]** で次の操作を実行します。
    
     1. 新しいラボの **[ラボ名]** を入力します。
     2. ラボに関連付ける **[サブスクリプション]** を選択します。
     3. ラボを格納する **[場所]** を選択します。
     4. **[自動シャットダウン]** を選択し、ラボのすべての VM の自動シャットダウンを有効にする (およびそのパラメーターを定義する) かどうかを指定します。 自動シャットダウン機能は、主にコストを削減する機能で、VM をいつ自動的にシャットダウンするかを指定することができます。 自動シャットダウンの設定は、ラボの作成後に、「[Azure DevTest Labs でラボのすべてのポリシーを管理](./devtest-lab-set-lab-policy.md#set-auto-shutdown)」という記事に書かれている手順に従って変更することができます。
+    1. カスタム タグを作成して、ラボで作成するすべてのリソースに追加する場合は、**[タグ]** の **[名前]** と **[値]** の情報を入力します。 タグを適用することによって、ラボのリソースをカテゴリ別に管理して整理することができます。 ラボの作成後にタグを追加する方法など、タグの詳細については、[ラボにタグを追加する方法](devtest-lab-add-tag.md)に関するページを参照してください。
     5. ラボのショートカットをポータルのダッシュボードに表示したい場合、**[ダッシュボードにピン留めする]** チェック ボックスをオンにします。
     6. **[Automation オプション]** を選択して、構成を自動化するための Azure Resource Manager テンプレートを取得します。 
-    7. **[作成]**を選択します。 **[作成]** を選択すると、**[DevTest Labs]** ブレードが表示されます。 ラボ作成プロセスの状態は、**[通知]** 領域を見て監視できます。 完了後、ページを最新の情報に更新すると、ラボの一覧に新しく作成されたラボが表示されます。  
+    7. **[作成]**を選択します。 ラボ作成プロセスの状態は、**[通知]** 領域を見て監視できます。 完了後、ページを最新の情報に更新すると、ラボの一覧に新しく作成されたラボが表示されます。  
     
-    ![Create a lab blade](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
+    ![DevTest Labs のラボの作成セクション](./media/devtest-lab-create-lab/create-devtestlab-blade.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 

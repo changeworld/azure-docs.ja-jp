@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 596bcd2f38a39cc1404d422214ab49ae79df744c
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 81c8ba6245565368eab4cdaca297ff7656180605
 ms.contentlocale: ja-jp
-ms.lasthandoff: 02/16/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="upgrade-your-existing-net-azure-mobile-service-to-app-service"></a>既存の .NET Azure Mobile Service を App Service にアップグレードする
@@ -64,7 +64,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 4. (省略可能) 元の移行されたインスタンスを削除する
 
 ## <a name="mobile-app-version"></a>2 番目のアプリケーション インスタンスを作成する
-アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure Portal] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
+アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure ポータル] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
 
 次に、 [.NET バックエンドの作成手順](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)に従って、2 番目のアプリケーション インスタンスを作成します。 App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
 
@@ -258,7 +258,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 
 <!-- URLs. -->
 
-[Azure Portal]: https://portal.azure.com/
+[Azure ポータル]: https://portal.azure.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services
@@ -267,7 +267,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 [Add push notifications to your mobile app]: app-service-mobile-xamarin-ios-get-started-push.md
 [Add authentication to your mobile app]: app-service-mobile-xamarin-ios-get-started-users.md
 [Azure Scheduler]: /en-us/documentation/services/scheduler/
-[Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
+[Web ジョブ]: https://github.com/Azure/azure-webjobs-sdk/wiki
 [.NET サーバー SDK の使用方法]: app-service-mobile-dotnet-backend-how-to-use-server-sdk.md
 [Migrate from Mobile Services to an App Service Mobile App]: app-service-mobile-migrating-from-mobile-services.md
 [Migrate your existing Mobile Service to App Service]: app-service-mobile-migrating-from-mobile-services.md
