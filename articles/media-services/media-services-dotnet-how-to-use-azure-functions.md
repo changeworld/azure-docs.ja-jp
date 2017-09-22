@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/03/2017
 ms.author: juliako
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 096f54b23a8223da89785b2e7f00c9b8a10c2906
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
@@ -32,10 +32,6 @@ Azure Media Services を使用する既存の Azure 関数を探してデプロ�
 - 初めての関数を作成するには、アクティブな Azure アカウントを用意しておく必要があります。 Azure アカウントがない場合は、 [無料アカウントを利用できます](https://azure.microsoft.com/free/)。
 - Azure Media Services (AMS) アカウントでアクションを実行する Azure 関数を作成したり、Media Services から送信されるイベントをリッスンしたりするためには、[こちら](media-services-portal-create-account.md)の説明に従って AMS アカウントを作成する必要があります。
     
-## <a name="considerations"></a>考慮事項
-
--  従量課金プランで実行される Azure Functions には 5 分のタイムアウト制限があります。
-
 ## <a name="create-a-function-app"></a>Function App を作成する
 
 1. [Azure Portal](http://portal.azure.com) に移動し、Azure アカウントでサインインします。
@@ -47,10 +43,6 @@ Azure Media Services を使用する既存の Azure 関数を探してデプロ�
 ## <a name="configure-function-app-settings"></a>関数アプリの設定の構成
 
 Media Services の関数を開発するときは、自分が開発するさまざまな関数で使用する環境変数を追加しておくと便利です。 アプリケーション設定を構成するには、[アプリケーション設定の構成] リンクをクリックします。 詳細については、「[Azure Function App の設定の構成方法](../azure-functions/functions-how-to-use-azure-function-app-settings.md)」を参照してください。 
-
-次に例を示します。
-
-![[設定]](./media/media-services-azure-functions/media-services-azure-functions001.png)
 
 この記事で定義されている関数では、アプリケーション設定に次の環境変数があることを前提としています。
 
@@ -338,12 +330,15 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ##<a name="test-your-function"></a>関数をテストする
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input**  コンテナーに MP4 ファイルをアップロードする必要があります。  
+関数をテストするには、接続文字列で指定したストレージ アカウントの **input ** コンテナーに MP4 ファイルをアップロードする必要があります。  
 
 1. **StorageConnection** 環境変数で指定したストレージ アカウントを選択します。
 2. **[BLOB]** をクリックします。
 3. **[+ Container]** (+ コンテナー) をクリックします。 **input** コンテナーに名前を付けます。
 4. **[アップロード]** を押して、アップロードする .mp4 ファイルを参照します。
+
+>[!NOTE]
+> 従量課金プランで BLOB トリガーを使用していると、関数アプリがアイドル状態になったあと、新しい BLOB の処理が最大で 10 分遅延する場合があります。 関数アプリが実行されると、BLOB は直ちに処理されます。 詳しくは、「[BLOB ストレージ トリガーとバインド](https://docs.microsoft.com/azure/azure-functions/functions-bindings-storage-blob#blob-storage-triggers-and-bindings)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
