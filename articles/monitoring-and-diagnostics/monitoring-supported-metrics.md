@@ -51,7 +51,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |MemoryLimitHigh|メモリ: メモリの制限 - 高|Bytes|平均|構成ファイルに指定されているメモリの上限。|
 |MemoryLimitLow|メモリ: メモリの制限 - 低|Bytes|平均|構成ファイルに指定されているメモリの下限。|
 |MemoryLimitVertiPaq|メモリ: メモリの制限 - VertiPaq|Bytes|平均|構成ファイルに指定されているインメモリの制限。|
-|クォータ|メモリ: クォータ|Bytes|平均|現在のメモリ クォータ (バイト単位)。 メモリ クォータはメモリ付与またはメモリ予約とも呼ばれます。|
+|Quota|メモリ: クォータ|Bytes|平均|現在のメモリ クォータ (バイト単位)。 メモリ クォータはメモリ付与またはメモリ予約とも呼ばれます。|
 |QuotaBlocked|メモリ: ブロックされているクォータ|カウント|平均|他のメモリ クォータが解放されるまでブロックされている現在のクォータ要求の数。|
 |VertiPaqNonpaged|メモリ: VertiPaq 非ページ|Bytes|平均|メモリ内エンジン用にワーキング セットでロックされているメモリの量 (バイト単位)。|
 |VertiPaqPaged|メモリ: VertiPaq ページ|Bytes|平均|メモリ内エンジン用に使用されているページ メモリの量 (バイト単位)。|
@@ -86,8 +86,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |UnauthorizedRequests|未承認ゲートウェイ要求|カウント|合計|未承認ゲートウェイ要求の数|
 |FailedRequests|失敗したゲートウェイ要求|カウント|合計|ゲートウェイ要求における失敗の数|
 |OtherRequests|その他のゲートウェイ要求|カウント|合計|その他のゲートウェイ要求の数|
-|時間|ゲートウェイ要求の全体の期間|ミリ秒|平均値、最大値|ゲートウェイ要求の全体の期間 (ミリ秒単位)|
-|容量|容量 (プレビュー)|Percent|平均値、最大値|ApiManagement サービスの使用状況メトリック|
+|Duration|ゲートウェイ要求の全体の期間|ミリ秒|平均値、最大値|ゲートウェイ要求の全体の期間 (ミリ秒単位)|
+|Capacity|容量 (プレビュー)|Percent|平均値、最大値|ApiManagement サービスの使用状況メトリック|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -298,13 +298,13 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|
-|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|
-|ディスク読み取りバイト数/秒|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|
-|ディスクの書き込みバイト数/秒|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|
-|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|
+|Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合。|
+|Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)。|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)。|
+|Disk Read Bytes/Sec|ディスクの読み取り|BytesPerSecond|平均|監視期間中にディスクから読み取られた平均バイト数。|
+|Disk Write Bytes/Sec|ディスクの書き込み|BytesPerSecond|平均|監視期間中にディスクに書き込まれた平均バイト数。|
+|Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS。|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS。|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -318,43 +318,43 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |ClientErrors|クライアント エラー|カウント|合計|クライアント側のエラー (HTTP 応答コード 4xx) があった呼び出しの回数。|
 |DataIn|受信データ|Bytes|合計|受信データのサイズ (バイト)。|
 |DataOut|送信データ|Bytes|合計|送信データのサイズ (バイト)。|
-|待機時間|待機時間|MilliSeconds|平均|待機時間 (ミリ秒)。|
+|Latency|待機時間|MilliSeconds|平均|待機時間 (ミリ秒)。|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
-|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
-|ディスク読み取りバイト数|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
-|ディスク書き込みバイト数|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
-|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
+|Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
+|Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
+|Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
+|Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
+|Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
-|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
-|ディスク読み取りバイト数|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
-|ディスク書き込みバイト数|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
-|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
+|Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
+|Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
+|Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
+|Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
+|Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|CPU の割合|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
-|ネットワーク受信|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
-|ネットワーク送信|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
-|ディスク読み取りバイト数|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
-|ディスク書き込みバイト数|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
-|ディスク読み取り操作数/秒|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
-|ディスク書き込み操作数/秒|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
+|Percentage CPU|CPU の割合|Percent|平均|仮想マシンで現在使用されている、割り当てられたコンピューティング ユニットの割合|
+|Network In|ネットワーク受信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが受信したバイト数 (受信トラフィック)|
+|Network Out|ネットワーク送信|Bytes|合計|すべてのネットワーク インターフェイスで仮想マシンが送信したバイト数 (送信トラフィック)|
+|Disk Read Bytes|ディスク読み取りバイト数|Bytes|合計|監視期間中にディスクから読み取られた合計バイト数|
+|Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|
+|Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|
+|Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
@@ -555,7 +555,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|スループット|スループット|BytesPerSecond|平均|Application Gateway が処理した 1 秒あたりのバイト数|
+|Throughput|スループット|BytesPerSecond|平均|Application Gateway が処理した 1 秒あたりのバイト数|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
 
@@ -712,7 +712,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |LateInputEvents|遅延入力イベント|カウント|合計|遅延入力イベント|
 |OutputEvents|出力イベント|カウント|合計|出力イベント|
 |ConversionErrors|データ変換エラー|カウント|合計|データ変換エラー|
-|エラー|実行時エラー|カウント|合計|実行時エラー|
+|Errors|実行時エラー|カウント|合計|実行時エラー|
 |DroppedOrAdjustedEvents|順不同のイベント|カウント|合計|順不同のイベント|
 |AMLCalloutRequests|関数の要求|カウント|合計|関数の要求|
 |AMLCalloutFailedRequests|失敗した関数の要求|カウント|合計|失敗した関数の要求|
@@ -734,7 +734,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
 |CpuTime|CPU 時間|Seconds|合計|CPU 時間|
-|要求数|要求数|カウント|合計|要求数|
+|Requests|要求数|カウント|合計|要求数|
 |BytesReceived|受信データ|Bytes|合計|受信データ|
 |BytesSent|送信データ|Bytes|合計|送信データ|
 |Http101|Http 101|カウント|合計|Http 101|
@@ -767,7 +767,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
 |CpuTime|CPU 時間|Seconds|合計|CPU 時間|
-|要求数|要求数|カウント|合計|要求数|
+|Requests|要求数|カウント|合計|要求数|
 |BytesReceived|受信データ|Bytes|合計|受信データ|
 |BytesSent|送信データ|Bytes|合計|送信データ|
 |Http101|Http 101|カウント|合計|Http 101|
@@ -789,7 +789,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|
 |---|---|---|---|---|
-|要求数|要求数|カウント|合計|要求数|
+|Requests|要求数|カウント|合計|要求数|
 |BytesReceived|受信データ|Bytes|合計|受信データ|
 |BytesSent|送信データ|Bytes|合計|送信データ|
 |Http101|Http 101|カウント|合計|Http 101|
