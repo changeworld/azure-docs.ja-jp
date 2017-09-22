@@ -18,10 +18,10 @@ ms.date: 06/12/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 8778dcfdb5859d212a2a3eb28a5ed297b5f07460
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: b2f506a90c6b55624c8fe0392511b8098f058812
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="azure-functions-hosting-plans-comparison"></a>Azure Functions のホスティング プラン
@@ -56,7 +56,7 @@ App Service プランの階層間で拡大縮小することはできます。 �
 
 ## <a name="app-service-plan"></a>App Service プラン
 
-App Service プランでは、関数アプリは Web Apps と同様に、Basic、Standard、および Premium SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。
+App Service プランでは、Function App は Web Apps と同様に、Basic、Standard、Premium、および Isolated SKU の専用 VM 上で実行されます。 専用 VM が App Service アプリに割り当てられるので、Functions ホストは継続的に実行されます。
 
 次のような場合に App Service プランを検討してください。
 - 既に他の App Service インスタンスを実行している、使用率の低い既存の VM がある。
@@ -96,7 +96,7 @@ App Service プランを実行する場合、関数アプリが正常に実行�
 
 ### <a name="runtime-scaling"></a>実行時のスケーリング
 
-Azure Functions は "*スケール コントローラー*" と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールダウンのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
+Azure Functions は "*スケール コントローラー*" と呼ばれるコンポーネントを使用して、イベント レートを監視し、スケールアウトとスケールインのどちらを実行するかを決定します。 スケール コントローラーは、トリガーの種類ごとにヒューリスティックを使用します。 たとえば、Azure Queue Storage トリガーを使用した場合、拡大縮小はキューの長さや最も古いキュー メッセージの経過時間に基づいて実施されます。
 
 スケーリングは Function App 単位で行われます。 関数アプリがスケールアウトするときは、Azure Functions ホストの複数のインスタンスを実行するためのリソースが追加で割り当てられます。 反対に、コンピューティングの需要が減ると、スケール コントローラーにより、関数ホストのインスタンスが削除されます。 Function App 内で関数が何も実行されていない場合、インスタンスの数は最終的に 0 にスケールダウンされます。
 
@@ -104,9 +104,9 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 
 ### <a name="billing-model"></a>課金モデル
 
-従量課金プランの課金の詳細については、[Azure Functions の価格]に関するページをご覧ください。 使用量は関数アプリレベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
+従量課金プランの課金の詳細については、[Azure Functions の価格]に関するページをご覧ください。 使用量は Function App レベルで集計され、関数コードが実行されている期間のみカウントされます。 課金の単位は、次のとおりです。 
 * **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
 * **実行回数**。 バインドによってトリガーされる関数がイベントに応じて実行されるたびにカウントされます。
 
-[Azure Functions の価格]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions の価格に関するページ]: https://azure.microsoft.com/pricing/details/functions
 

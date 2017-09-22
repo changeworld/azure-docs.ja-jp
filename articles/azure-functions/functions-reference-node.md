@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
 description: "JavaScript を使用して関数を開発する方法について説明します。"
 services: functions
