@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 9b3151248a1d036117bbdc9af03a98dff71ca535
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 0130b1d4f3ee7b27786764a275ce4e3c0ee93b2d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
@@ -142,7 +142,7 @@ DDL ステートメントを実行すると、ローカル テーブルである
 * 外部テーブルに対する列の統計情報は、現在サポートされていません。 テーブルの統計情報はサポートされていますが、手動で作成する必要があります。
 
 ## <a name="feedback"></a>フィードバック
-以下に示す Disqus、MSDN フォーラム、または Stackoverflow で、エラスティック クエリに関するノウハウを共有してください。 サービスに関して何でもご意見とご感想をお寄せください (障害、機能差、悪口など)。
+以下に示す Livefyre、MSDN フォーラム、または Stackoverflow で、エラスティック クエリに関するノウハウを共有してください。 サービスに関して何でもご意見とご感想をお寄せください (障害、機能差、悪口など)。
 
 ## <a name="next-steps"></a>次のステップ
 

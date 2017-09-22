@@ -15,13 +15,12 @@ ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 34c8e18e918221f0287b1078df750d8016e2529a
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 565f840e0ac7ec1a68361ac1613da5d42459c979
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/13/2017
 
 ---
-
 # <a name="use-spark-structured-streaming-with-kafka-preview-on-hdinsight"></a>HDInsight 上で Kafka による Spark 構造化ストリーミング (プレビュー) を使用する
 
 Spark 構造化ストリーミングを使って、Azure HDInsight 上で Apache Kafka からデータを読み込む方法を説明します。
@@ -92,7 +91,7 @@ Azure 仮想ネットワーク、Kafka、および Spark クラスターは手�
 
 ## <a name="get-the-kafka-brokers"></a>Kafka ブローカーを取得する
 
-この例のコードは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 2 つの Kafka ブローカー ホストのアドレスを検出するには、以下の PowerShell または Bash の例を使用します。
+この例のコードは、Kafka クラスターにある Kafka ブローカー ホストに接続します。 2 つの Kafka ブローカー ホストのアドレスを検出するには、以下の PowerShell または Bash の例を使います。
 
 ```powershell
 $creds = Get-Credential -UserName "admin" -Message "Enter the HDInsight login"

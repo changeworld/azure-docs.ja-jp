@@ -13,13 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 09/12/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: db5966c920eb29742b2ee0fbd9386319eaaf1c77
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する
@@ -44,7 +44,7 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 共同管理者として追加できるのは所有者のみです。 共同作成者や閲覧者などのロールの他のユーザーは、共同管理者として追加できません。
 
 1. 既に実行していない場合は、上記の手順に従って、所有者として他のユーザーを追加します。
-1. 追加した所有者ユーザーを**右クリック**し、**[共同管理者として追加]** を選択します。 
+2. 追加した所有者ユーザーを**右クリック**し、**[共同管理者として追加]** を選択します。 **[共同管理者として追加]** オプションが表示されない場合は、ページを更新するか、別のインターネット ブラウザーを試してください。 
 
      ![共同管理者追加のスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-coadmin.png)
 
@@ -91,7 +91,7 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 
 「**サブスクリプションのアカウント管理者を確認する**」 次の手順に従います。
 
-1. Azure ポータルの[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
+1. Azure Portal の[サブスクリプション ビュー](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にサインインします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。
 1. **[プロパティ]**を選択します。 サブスクリプションのアカウント管理者が、 **[アカウント管理者]** ボックスに表示されます。  
 

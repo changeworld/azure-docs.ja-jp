@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 0c9825f11733127a547e06e159172a08cef736eb
+ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
+ms.openlocfilehash: 311a1af35b7fecb5f0d4fac7f38af705c945d714
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/13/2017
 
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
 Azure の使用制限は、信用取引金額を超過する支出を防ぐために存在します。 試用版プラン、または複数月にわたるクレジットが含まれるプランにサインアップする新規のすべてのお客様に対して、既定で使用制限が有効化されます。 使用制限は $0 です。 変更することはできません。 使用制限は、従量課金制サブスクリプションやコミットメント プランなどのサブスクリプションの種類では利用できません。 [Azure プランの完全な一覧および使用制限の可用性](https://azure.microsoft.com/support/legal/offer-details/)についてご覧ください。
 
-**課金アラートお探しの場合:**  「[Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](billing-set-up-alerts.md)」をご覧ください。
+**課金アラートお探しの場合: ** 「[Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](billing-set-up-alerts.md)」をご覧ください。
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>使用制限に達するとどうなるか?
 
@@ -69,7 +69,11 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 
 ### <a name="how-do-i-turn-on-the-spending-limit-after-removing-it"></a>削除後、使用制限を有効にするにはどうしたらいいですか。
 
-使用制限は、自動でしか有効になりません。 残念ながら、削除後にユーザー自身で有効にするオプションはありません。 制限の再有効化に懸念がある場合は、**[現在の請求期間の使用制限を削除]** オプションが選択されていることを確認してください。
+この機能は使用制限が無期限に削除された場合にのみ使うことができます。 次の請求期間の開始時に自動的にオンになるように変更します。
+
+1. [アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
+1. 使用制限オプションを変更するには、黄色のバナーをクリックします。
+1. **[次の請求期間に使用制限を有効にする \<請求期間の開始日\>]** を選びます。
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>カスタムの使用制限を設定するにはどうしたらいいですか。
 

@@ -13,19 +13,21 @@ ms.workload: na
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 06/13/2017
+ms.date: 09/13/2017
 ms.author: cjiang
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: ff1cc44c01061aa924917e082d582bdebfb40c21
+ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
+ms.openlocfilehash: b7b3e4539110f68e1e6ef4a75110924a27b40c49
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/14/2017
 
 ---
-# <a name="associate-an-office-365-tenant-to-an-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションに追加します。
-個別の Azure サブスクリプションと Office 365 サブスクリプションをリンクして、Azure サブスクリプションから Office 365 テナントにアクセスできるようにします。 サブスクリプションをリンクするには、Azure サービス管理者アカウントで Azure にサインインし、ディレクトリを追加して、Office 365 組織アカウントを Azure Active Directory テナントに追加します。
+# <a name="link-an-office-365-tenant-to-an-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションにリンクする
+個別の Azure サブスクリプションと Office 365 サブスクリプションをリンクして、Azure サブスクリプションから Office 365 テナントにアクセスできるようにします。 サブスクリプションをリンクするには、Azure サービス管理者アカウントで Azure にサインインし、ディレクトリを追加して、Office 365 の職場または学校アカウントを Azure Active Directory テナントに追加します。
 
-Azure Active Directory インスタンス内にユーザーの Office 365 サブスクリプションが必要な場合、または Office 365 アカウントはあっても Azure アカウントがない場合は、「[Office 365 アカウントを使用して Azure にサインアップする](billing-use-existing-office-365-account-azure-subscription.md)」をご覧ください。 
+**既存の Azure サブスクリプションを Office 365 の職場または学校アカウントに移動する場合** 個人の Microsoft アカウントで Azure にサインアップしていて、それを使いたい場合、または Office 365 のアカウントでサインインしたい場合は、サブスクリプションの所有権を譲渡することを強くお勧めします。 「[別のアカウントに Azure サブスクリプションの所有権を譲渡する](billing-subscription-transfer.md)」をご覧ください。 
+
+**Office 365 を使って Azure にサインアップする場合** 「[Office 365 アカウントを使用して Azure にサインアップする](billing-use-existing-office-365-account-azure-subscription.md)」をご覧ください。 
 
 ## <a name="before-you-begin"></a>開始する前に
 * Azure サブスクリプション サービス管理者の資格情報が必要です。 共同管理者アカウントでは、この記事の手順の一部を実行できません。 サービス管理者を変更する場合は、「[Azure 管理者ロールを追加または変更する方法](billing-add-change-azure-subscription-administrator.md#change-service-administrator-for-a-subscription)」をご覧ください。
@@ -92,6 +94,5 @@ Azure サブスクリプションへの管理者の追加の詳細について�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-
 
 
