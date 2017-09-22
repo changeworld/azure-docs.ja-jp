@@ -17,10 +17,10 @@ ms.author: kgremban
 ms.reviewer: jsnow
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 3dfcf25856ede50266336c2ebb057dd3f7b8897e
+ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
+ms.openlocfilehash: b47e9b321b2fd0d0db9762003531b0fe9f045f07
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/21/2017
 
 ---
 
@@ -92,7 +92,7 @@ Windows Server 2012 以降に NPS 役割サービスをインストールする�
 
 ### <a name="licenses"></a>ライセンス
 
-Azure MFA のライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security (EMS)、または MFA サブスクリプションを通じて入手できます。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テストのために、試用版サブスクリプションを使用できます。
+Azure MFA のライセンスが必要です。ライセンスは、Azure AD Premium、Enterprise Mobility + Security (EMS)、または MFA サブスクリプションを通じて入手できます。 詳細については、「[Azure Multi-Factor Authentication の入手方法](multi-factor-authentication-versions-plans.md)」をご覧ください。 テスト目的で。試用版サブスクリプションをご利用いただけます。
 
 ### <a name="software"></a>ソフトウェア
 
@@ -100,12 +100,12 @@ NPS 拡張機能を使用するには、NPS 役割サービスがインストー
 
 ### <a name="libraries"></a>ライブラリ
 
-次の 2 つのライブラリが必要です。
+これらのライブラリは拡張機能を含めて自動的にインストールされます。
 
-* [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
-* _Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0_ 以上。 最新のリリースとインストール手順については、「[Microsoft Azure Active Directory PowerShell Module Version Release History (Microsoft Azure Active Directory PowerShell モジュールのバージョン リリース履歴)](https://social.technet.microsoft.com/wiki/contents/articles/28552.microsoft-azure-active-directory-powershell-module-version-release-history.aspx)」をご覧ください。
+-   [Visual Studio 2013 (X64) の Visual C++ 再頒布可能パッケージ](https://www.microsoft.com/download/details.aspx?id=40784)
+-   [Windows PowerShell 用 Microsoft Azure Active Directory モジュール バージョン 1.1.166.0](https://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)
 
-これらのライブラリは、既存のドキュメントに記載されていますが、NPS 拡張機能セットアップ ファイル (バージョン 0.9.1.2) と共にパッケージ化されているわけではありません。 少なくとも、Visual Studio 2013 の Visual C++ 再頒布可能パッケージをインストールする必要があります。 Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
+Windows PowerShell 用 Microsoft Azure Active Directory モジュールは、セットアップ プロセスの一環として実行する構成スクリプトによってインストールされます (モジュールがまだ存在しない場合)。 このモジュールをまだインストールしていない場合、事前にインストールする必要はありません。
 
 ### <a name="azure-active-directory-synched-with-on-premises-active-directory"></a>オンプレミスの Active Directory と同期された Azure Active Directory 
 

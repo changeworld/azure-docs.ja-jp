@@ -16,17 +16,17 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: chrande
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 879be48150cfe13e31064475aa637f13f5f5f9d5
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1cb2ec7aa927eceafdf91c35c1184fceecddc49a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="azure-functions-developers-guide"></a>Azure Functions の開発者向けガイド
 Azure Functions の特定の関数は、使用する言語またはバインドに関係なく、いくつかの中核となる技術的な概念とコンポーネントを共有します。 特定の言語またはバインドに固有の詳細を学習する前に、それらすべてに適用されるこの概要をお読みください。
 
-この記事は、「[Azure Functions の概要](functions-overview.md)」を既に読んでいて、[トリガー、バインド、JobHost ランタイムなどの WebJobs SDK の概念](../app-service-web/websites-dotnet-webjobs-sdk.md)を熟知していることを前提として書かれています。 Azure Functions は WebJobs SDK が基になっています。 
+この記事は、「[Azure Functions の概要](functions-overview.md)」を既に読んでいて、[トリガー、バインド、JobHost ランタイムなどの WebJobs SDK の概念](https://github.com/Azure/azure-webjobs-sdk/wiki)を熟知していることを前提として書かれています。 Azure Functions は WebJobs SDK が基になっています。 
 
 ## <a name="function-code"></a>関数のコード
 *関数* は Azure Functions の主要な概念です。 好みの言語を選択して関数のコードを記述し、コードと構成ファイルを同じフォルダーに保存します。 構成の名前は `function.json` で、JSON 構成データを格納します。 さまざまな言語がサポートされており、各言語はその言語での作業向けに最適化された少しずつ異なるエクスペリエンスを備えています。 
@@ -79,7 +79,7 @@ Azure App Service で関数アプリに関数をデプロイするためにプ�
 ## <a id="fileupdate"></a> 関数アプリ ファイルを更新する方法
 Azure ポータルに組み込まれている関数エディターでは、 *function.json* ファイルと関数のコード ファイルを更新できます。 *package.json* や *project.json* などのその他のファイルや依存関係をアップロードまたは更新するには、その他のデプロイ方法を使用する必要があります。
 
-関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service-web/web-sites-deploy.md) はすべて、関数アプリでも利用できます。 ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。 
+関数アプリは App Service 上で構築されるため、[標準 Web アプリで利用できるデプロイ オプション](../app-service/app-service-deploy-local-git.md) はすべて、関数アプリでも利用できます。 ここでは、関数アプリ ファイルをアップロードまたは更新するための方法をいくつか紹介します。 
 
 #### <a name="to-use-app-service-editor"></a>App Service Editor を使用するには
 1. Azure Functions ポータルで、 **[関数アプリの設定]**をクリックします。

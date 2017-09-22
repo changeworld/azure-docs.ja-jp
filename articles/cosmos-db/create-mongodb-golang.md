@@ -9,11 +9,11 @@ ms.service: cosmos-db
 ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: a7da42f4b84b77ad0a82004a56f7712c31567449
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: cb123107178f5e7c0207524c19331a6fa4658739
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -21,7 +21,7 @@ ms.lasthandoff: 06/29/2017
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。
 
-このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の [MongoDB](https://docs.microsoft.com/en-us/azure/cosmos-db/mongodb-introduction) アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、MongoDB のクライアント接続をサポートしています。
+このクイック スタートでは、[Golang](https://golang.org/) で記述された既存の [MongoDB](https://docs.microsoft.com/azure/cosmos-db/mongodb-introduction) アプリを使用する方法と、そのアプリを Azure Cosmos DB データベースに接続する方法を示します。このデータベースは、MongoDB のクライアント接続をサポートしています。
 
 言い換えると、Golang アプリケーションは、MongoDB API を使用してデータベースに接続していることだけを認識します。 データが Azure Cosmos DB に格納されることは、アプリケーションにとっては透過です。
 
