@@ -1,4 +1,4 @@
-デプロイ資格情報を [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) コマンドで作成します。
+Cloud Shell で [az webapp deployment user set](/cli/azure/webapp/deployment/user#set) コマンドを使用してデプロイ資格情報を作成します。
 
 FTP と、Web アプリへのローカル Git のデプロイには、デプロイ ユーザーが必要です。 ユーザー名とパスワードはアカウント レベルです。 "_Azure サブスクリプションの資格情報とは異なります。_"
 

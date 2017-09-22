@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: gwallace
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e0e7144c38c36f1583e0bcb7dfffba26e9a8bdad
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 41c1649bfff035bc641d7c1f5d7803cd105e8297
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -66,7 +66,7 @@ Azure IoT には、サービス自体で必要なカスタマイズは何もあ�
 
 ![IoT hub blade](./media/dns-custom-domain/iot.png)
 
-次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+次に、DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] (レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -87,7 +87,7 @@ Application Gateway、Load Balancer、Cloud Service、Resource Manager VM、Clas
 
 ![パブリック IP ブレード](./media/dns-custom-domain/publicip.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -114,7 +114,7 @@ A レコードが作成されたら、`nslookup` を実行してレコードの�
 
 ![カスタム ドメイン ブレード](./media/dns-custom-domain/url.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -136,9 +136,9 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![図 1](./media/dns-custom-domain/finalnslookup.png)
 
-カスタム ドメインを App Service にマッピングする方法について、詳しくは[既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
+カスタム ドメインを App Service にマッピングする方法について、詳しくは[既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service/app-service-web-tutorial-custom-domain.md?toc=%dns%2ftoc.json)を参照してください。
 
-カスタム ドメインを購入する必要がある場合、App Service ドメインの詳細について[Buy a custom domain name for Azure Web Apps](../app-service-web/custom-dns-web-site-buydomains-web-app.md)を参照してください。
+カスタム ドメインを購入する必要がある場合、App Service ドメインの詳細について[Buy a custom domain name for Azure Web Apps](../app-service/custom-dns-web-site-buydomains-web-app.md)を参照してください。
 
 ## <a name="blob-storage"></a>BLOB ストレージ
 
@@ -148,7 +148,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![BLOB ストレージのカスタム ドメイン](./media/dns-custom-domain/blobcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 
 |プロパティ  |値  |Description  |
@@ -177,7 +177,7 @@ DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)
 
 ![CDN カスタム ドメイン](./media/dns-custom-domain/endpointcustomdomain.png)
 
-DNS ゾーンに移動して **[+ Record set] \(レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
+DNS ゾーンに移動して **[+ Record set] (レコード セットの追加)** をクリックします。 **[Add record set] \(レコード セットの追加)** ブレードで次の情報を入力し、**[OK]** をクリックして作成します。
 
 |プロパティ  |値  |Description  |
 |---------|---------|---------|

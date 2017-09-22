@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 7129137e6deca6ae4cbb5096058b58b32056d415
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: a20179c72b227deb14df442bea7b80cf31728aa7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 04/06/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="specifying-a-nodejs-version-in-an-azure-application"></a>Azure アプリケーションでの Node.js のバージョンの指定
@@ -90,12 +90,12 @@ Azure には Node.js の既定のバージョンが複数用意されていま�
     アプリケーションが発行された後、ブラウザーで Web サイトを開きます。 "Hello from Azure running node version: v0.8.1" というメッセージが表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、デプロイする方法](app-service-web/app-service-web-get-started-nodejs.md)、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
+アプリケーションで使用される Node.js のバージョンを指定する方法が理解できたら、[モジュールの使用方法]、[Node.js Web サイトを構築、デプロイする方法](app-service/app-service-web-get-started-nodejs.md)、[Mac および Linux 用 Azure コマンド ライン ツールの使用方法]に関する各トピックを参照してください。
 
 詳細については、 [Node.js デベロッパー センター](https://azure.microsoft.com/develop/nodejs/)を参照してください。
 
 [Mac および Linux 用 Azure コマンド ライン ツールの使用方法]:cli-install-nodejs.md
 [Azure コマンド ライン ツール]:cli-install-nodejs.md
 [モジュールの使用方法]: nodejs-use-node-modules-azure-apps.md
-[build and deploy a Node.js Web Site]: app-service-web/app-service-web-get-started-nodejs.md
+[build and deploy a Node.js Web Site]: app-service/app-service-web-get-started-nodejs.md
 

@@ -11,11 +11,11 @@ ms.custom: mvc
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 009cc7941dc5d60153f1ab27adb9b86866b9a3f2
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 9beb92895056b51f40988fc6c47dfa6f80ca3294
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 06/30/2017
 - [DB の作成 - Azure CLI](quickstart-create-server-database-azure-cli.md)
 
 ## <a name="install-php"></a>PHP のインストール
-独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-overview)を作成します。
+独自のサーバーに PHP をインストールするか、PHP が含まれた Azure [Web アプリ](../app-service/app-service-web-overview.md)を作成します。
 
 ### <a name="windows"></a>Windows
 - [PHP 7.1.4 非スレッド セーフ バージョン (x64)](http://windows.php.net/download#php-7.1) をダウンロードします。

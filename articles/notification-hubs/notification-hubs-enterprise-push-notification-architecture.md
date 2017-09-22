@@ -14,10 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
@@ -53,8 +54,8 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
 ### <a name="prerequisites"></a>前提条件
 概念と一般的な作成および構成手順を理解するために、以下のチュートリアルを完了する必要があります。
 
-1. [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)] - Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。
-2. [Notification Hubs の使用 - Windows Universal チュートリアル] : Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。
+1. [Service Bus Pub/sub programming (Service Bus のトピックとサブスクリプションの使用方法)] - Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。
+2. [Notification Hubs の使用 - Windows ユニバーサル チュートリアル] : Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。
 
 ### <a name="sample-code"></a>コード サンプル
 完全なコード サンプルは「 [Notification Hubs のサンプル (英語)]」から入手できます。 このサンプルは、3 つのコンポーネントに分割されています。
@@ -259,15 +260,10 @@ ms.openlocfilehash: ae7c1c9644ecfe7fe4ad6e332cc0683a3b5df22f
 
 <!-- Links -->
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Services]: http://azure.microsoft.com/documentation/services/mobile-services/
+[Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJobs]: http://azure.microsoft.com/documentation/articles/web-sites-create-web-jobs/
-[Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
+[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

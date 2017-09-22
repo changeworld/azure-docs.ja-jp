@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: e79ca131bddc9e65dd24da109b9e8a08606f7bc6
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 264bd9ecb413d2685dca351d7f4090efcadf4988
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
+ms.lasthandoff: 09/20/2017
 
 --- 
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
@@ -99,7 +99,7 @@ AppSource に追加するための承認を得る前に、ソリューション�
 | SQL Database と SQL Data Warehouse で使用する AAD | [Azure Active Directory 認証を使用して SQL Database または SQL Data Warehouse を認証する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication) |
 | AAD の構成と管理 | [SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-aad-authentication-configure) |
 | Azure WebApps 認証 | [Azure App Service での認証および承認](https://docs.microsoft.com/en-us/azure/app-service/app-service-authentication-overview) |
-| WebApps を AAD を使用して構成する | [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](https://docs.microsoft.com/en-us/azure/app-service-mobile/app-service-mobile-how-to-configure-active-directory-authentication)|
+| WebApps を AAD を使用して構成する | [Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法](https://docs.microsoft.com/en-us/azure/app-service/app-service-mobile-how-to-configure-active-directory-authentication)|
 
 ### <a name="datasets-accessible-to-end-users-should-support-role-based-access-control"></a>エンドユーザーがアクセスできるデータセットはロールベースのアクセス制御をサポートする必要があります
 評価ツールの実行中に、レポート リソースまたは発行リソースを指定することを求められます。 これらのリソースは、開発者ではなく、エンドユーザーがアクセスすることを前提としています。 エンドユーザーが許可されたデータのみにアクセスできることを保証するために、これらのリソースにはロールベースのアクセス制御 (RBAC) を用意する必要があります。
