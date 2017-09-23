@@ -3,7 +3,7 @@ title: "SSL オフロードの構成 - Azure Application Gateway - PowerShell �
 description: "この記事では、Azure クラシック デプロイメント モデルを使用して、SSL オフロード用にアプリケーション ゲートウェイを作成する方法について説明します"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: tysonn
 ms.assetid: 63f28d96-9c47-410e-97dd-f5ca1ad1b8a4
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
-ms.author: gwallace
+ms.author: davidmu
 ms.translationtype: HT
 ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
 ms.openlocfilehash: bba6f2afb79063409f2a0a5119f7809a2445e29f

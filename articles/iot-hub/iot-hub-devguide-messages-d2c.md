@@ -11,14 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 09/19/2017
 ms.author: dobett
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
 ms.openlocfilehash: d856e26084ee79386a2e8e0e527804bda86b477b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/01/2017
-
 
 ---
 # <a name="send-device-to-cloud-messages-to-iot-hub"></a>device-to-cloud メッセージを IoT Hub に送信する

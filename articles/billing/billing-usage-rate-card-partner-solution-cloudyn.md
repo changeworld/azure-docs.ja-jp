@@ -3,7 +3,7 @@ title: "Cloudyn は Microsoft Azure Usage API と RateCard API を使用して�
 description: "Microsoft Azure 課金パートナーの Cloudyn が Azure Billing API を製品に統合した独自の事例について説明します。  この事例は、Cloudyn for Azure サービスの使用または試用に関心を持っている Azure と Cloudyn のユーザーに特に役立ちます。"
 services: 
 documentationcenter: 
-author: BryanLa
+author: tonguyen10
 manager: tonguyen
 editor: 
 tags: billing
@@ -14,13 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 02/03/2017
-ms.author: mobandyo;bryanla
+ms.author: tonguyen
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
 ms.openlocfilehash: fac0ee2e9cbc87c8b3d04675551bba61f7a532b6
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/28/2017
-
 
 ---
 # <a name="microsoft-azure-usage-and-ratecard-apis-enable-cloudyn-to-provide-itfm-for-customers"></a>Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供
