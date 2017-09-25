@@ -3,7 +3,7 @@ title: "Azure Load Balancer の IPv6 の概要 | Microsoft Docs"
 description: "Azure Load Balancer と負荷分散された VM に対する IPv6 サポートについて説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
@@ -13,7 +13,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
@@ -24,6 +24,9 @@ ms.lasthandoff: 07/21/2017
 ---
 
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
+
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 インターネットに接続するロード バランサーは、IPv6 アドレスでデプロイできます。 これにより、IPv4 接続に加えて次の機能を使用できます。
 

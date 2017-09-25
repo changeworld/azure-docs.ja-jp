@@ -3,7 +3,7 @@ title: "インターネットに接続するロード バランサーの作成 -
 description: "Azure クラシック ポータルを使用し、インターネットに接続するクラシック デプロイ モデルのロード バランサーを作成する方法について説明します"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-service-management
@@ -15,9 +15,10 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: fd5960a4488f2ecd93ba117a7d775e78272cbffd
 ms.openlocfilehash: a022154f5eca6de2d2dbfc1b9aa30d2ea0a7d650
+ms.contentlocale: ja-jp
 ms.lasthandoff: 01/24/2017
 
 ---

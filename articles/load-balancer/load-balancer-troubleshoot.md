@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2017
+ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
 ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
@@ -23,6 +23,8 @@ ms.lasthandoff: 07/21/2017
 ---
 
 # <a name="troubleshoot-azure-load-balancer"></a>Azure Load Balancer のトラブルシューティング
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 このページには、Azure Load Balancer についてよく寄せられる質問のトラブルシューティング情報が示されています。 Load Balancer の接続が利用できない場合の最も一般的な症状を次に示します。 
 - Load Balancer の背後にある VM が正常性プローブに応答しない 

@@ -3,7 +3,7 @@ title: "Load Balancer に関する操作、イベント、カウンターの監�
 description: "Azure Load Balancer でアラート イベントとプローブの正常性状態のログを有効にする方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 tags: azure-resource-manager
 ms.assetid: 56656d74-0241-4096-88c8-aa88515d676d
@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 638ecd5e02889bd8cb6e7429dfcec335feaac4a3
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 ---
 
 # <a name="log-analytics-for-azure-load-balancer"></a>Azure Load Balancer のログ分析
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure の各種ログを使用して、ロード バランサーの管理やトラブルシューティングを行うことができます。 一部のログにはポータルからアクセスできます。 どのログも Azure Blob Storage から抽出し、Excel や PowerBI などのさまざまなツールで表示できます。 各種ログの詳細については、以下の一覧を参照してください。
 

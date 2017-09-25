@@ -12,16 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/11/2016
+ms.date: 09/25/2017
 ms.author: chkuhtz
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 0d8472cb3b0d891d2b184621d62830d1ccd5e2e7
 ms.openlocfilehash: d9e88b859020be2a96a57a01e5624052ed134b64
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/21/2017
 
 ---
 
 # <a name="multiple-vips-for-azure-load-balancer"></a>Azure Load Balancer の複数 VIP
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Load Balancer は、複数のポート、複数の IP アドレス、またはその両方のサービスの負荷を分散できます。 パブリックおよび内部ロード バランサーの定義を使用して、一連の VM のフローの負荷を分散できます。
 

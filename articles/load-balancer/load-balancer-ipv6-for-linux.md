@@ -3,7 +3,7 @@ title: "Linux VM の DHCPv6 の設定 | Microsoft Docs"
 description: "Linux VM の DHCPv6 の構成方法について説明します。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: 
 keywords: "ipv6, azure load balancer, デュアル スタック, パブリック IP, ネイティブ ipv6, モバイル, iot"
@@ -13,16 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/14/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
 ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/29/2017
 
 ---
 
 # <a name="configuring-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の設定
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 Azure Marketplace の Linux 仮想マシン イメージの一部には、既定で構成された DHCPv6 がありません。 IPv6 をサポートするには、使用している Linux OS のディストリビューションに合わせて DHCPv6 を構成する必要があります。 DHCPv6 の構成方法は Linux のディストリビューションによって異なります。ディストリビューションによって使用するパッケージが異なるためです。
 

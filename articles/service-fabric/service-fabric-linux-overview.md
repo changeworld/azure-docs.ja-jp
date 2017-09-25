@@ -3,7 +3,7 @@ title: "Linux 上の Azure Service Fabric | Microsoft Docs"
 description: "Service Fabric クラスターは Linux と Java をサポートするので、Java と C# で記述された Service Fabric アプリケーションを Linux にデプロイし、ホストすることができます。"
 services: service-fabric
 documentationcenter: .net
-author: mani-ramaswamy
+author: rwike77
 manager: timlt
 editor: 
 ms.assetid: 459afade-145d-4ee6-b72b-ddf380ccd1bf
@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
-ms.author: SubramaR
+ms.author: ryanwi
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: dddc9f698d9776999d406117b46285a0f90d9620
