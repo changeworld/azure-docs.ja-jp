@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-translationtype: Human Translation
-ms.sourcegitcommit: 2de3e6d205dd126e1c3d9606ea1419669056d7f1
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: eaadd531b9e05a54446e61f98584ae9d75470a5f
-ms.lasthandoff: 02/22/2017
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Linux 用 Network Watcher Agent 仮想マシン拡張機能

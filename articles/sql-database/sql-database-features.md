@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 968a7d3611d050d15ee398f9c3c5830d5c8e85fb
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
@@ -120,7 +120,6 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 | [テーブル パーティション](https://docs.microsoft.com/sql/relational-databases/partitions/partitioned-tables-and-indexes) | ○ - プライマリ ファイルグループのみ |
 | [一時テーブル](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql#temporary-tables) | ローカルおよびデータベース スコープのグローバル一時テーブルのみ |
 | [テンポラル テーブル](https://docs.microsoft.com/sql/relational-databases/tables/temporal-tables) | あり |
-| [トランザクション](https://docs.microsoft.com/sql/t-sql/language-elements/transactions-transact-sql) | いいえ |
 | [変数](https://docs.microsoft.com/sql/t-sql/language-elements/variables-transact-sql) | あり | 
 | [透過的なデータ暗号化 (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-tde) | あり |
 | [Windows Server フェールオーバー クラスタリング](https://docs.microsoft.com/sql/sql-server/failover-clusters/windows/windows-server-failover-clustering-wsfc-with-sql-server) | × - [フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください |

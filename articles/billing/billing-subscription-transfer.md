@@ -18,10 +18,10 @@ ms.date: 08/15/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: e918e2863384d44533efaee25d3fea3cceedba77
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 15c6d3b8a335be068ead512c9b9d93940086c9ab
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Azure サブスクリプションの所有権を別のアカウントに譲渡する
@@ -104,7 +104,7 @@ ms.lasthandoff: 08/31/2017
 
 ### <a name="whoisaa"></a>サブスクリプションのアカウント管理者は誰ですか。
 
-アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 [アカウント センター](https://account.windowsazure.com/Home/Index)にアクセスし、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行する権限を持ちます。 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
+アカウント管理者は、Azure サブスクリプションのサインアップまたは購入を行ったユーザーです。 [アカウント センター](https://account.azure.com/Subscriptions)にアクセスし、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの課金の変更、サービス管理者の変更などのさまざまな管理タスクを実行する権限を持ちます。 サブスクリプションのアカウント管理者が不明な場合は、次の手順で確認します。
 
 1. [Azure Portal の [サブスクリプション] ページ](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade)にアクセスします。
 1. 確認するサブスクリプションを選択し、**[設定]** を調べます。

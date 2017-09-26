@@ -15,10 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
-translationtype: Human Translation
-ms.sourcegitcommit: 6cf561b269c4d873a894b47265e39a057cc415c3
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
@@ -82,8 +83,3 @@ Windows Azure VM にログインすると、タスク マネージャーを使�
 ## <a name="upgrade-the-vm-agent"></a>VM エージェントのアップグレード
 
 Windows 用の Azure VM エージェントは自動的にアップグレードされます。 新しい仮想マシンが Azure にデプロイされると、最新の VM エージェントが提供されます。 カスタムな VM イメージの場合は、手動で更新を行って新しい VM エージェントを含める必要があります。
-
-
-<!--HONumber=Dec16_HO1-->
-
-
