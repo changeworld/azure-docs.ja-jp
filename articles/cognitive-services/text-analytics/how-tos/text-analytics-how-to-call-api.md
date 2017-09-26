@@ -10,10 +10,10 @@ ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: heidist
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 2a923a9d712a17d9636162ea50e11a86afb17eef
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a8acaed929b901daa8d6741cd0392427ab81b2d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -45,8 +45,8 @@ You can currently submit the same documents for all three operations: sentiment,
 | Element | Valid values | Required? | Usage |
 |---------|--------------|-----------|-------|
 |`id` |The data type is string, but in practice document IDs tend to be integers. | Required | The system uses the IDs you provide to structure the output. Language codes, key phrases, and sentiment scores are generated for each ID in the request.|
-|`text` | Unstructured raw text, up to 5,000 characters. | Required | For language detection, text can be expressed in any language. For sentiment analysis and key phrase extraction, the text must be in a [supported language](../overview.md#supported-languages). |
-|`language` | 2-character [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code for a [supported language](../overview.md#supported-languages) | Varies | Required for sentiment analysis and key phrase extraction, optional for language detection. There is no error if you exclude it, but the analysis is weakened without it. The language code should correspond to the `text` you provide. |
+|`text` | Unstructured raw text, up to 5,000 characters. | Required | For language detection, text can be expressed in any language. For sentiment analysis and key phrase extraction, the text must be in a [supported language](../text-analytics-supported-languages.md). |
+|`language` | 2-character [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes) code for a [supported language](../text-analytics-supported-languages.md) | Varies | Required for sentiment analysis and key phrase extraction, optional for language detection. There is no error if you exclude it, but the analysis is weakened without it. The language code should correspond to the `text` you provide. |
 
 For more information about limits, see [Text Analytics Overview > Data limits](../overview.md#data-limits). 
 
