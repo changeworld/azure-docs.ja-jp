@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c88bf04f904d6784b882f524ac8737ca70003c91
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a9f61ec7c051ccdd867aec94121347db19b059b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 #<a name="introduction-to-r-server-and-open-source-r-capabilities-on-hdinsight"></a>HDInsight での R Server とオープン ソース R の機能の概要
@@ -32,7 +32,7 @@ HDInsight の R Server は、Azure Blob Storage または Data Lake Storage に�
 
 クラスターのエッジ ノードは、クラスターへの接続と R スクリプトの実行に便利な場所です。 エッジ ノードでは、エッジ ノード サーバーのコア間で、ScaleR の並列化された分散関数を実行できます。 また、ScaleR の Hadoop Map Reduce または Spark コンピューティング コンテキストを使用して、クラスターのノード間でこれらの関数を実行することもできます。
 
-分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio](http://studio.azureml.net) などの [Web サービス](../machine-learning/machine-learning-publish-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
+分析によって得られたモデルや予測は、ダウンロードしてオンプレミスで使用できます。 また、[Azure Machine Learning Studio](http://studio.azureml.net) などの [Web サービス](../machine-learning/studio/publish-a-machine-learning-web-service.md)を使用して、Azure の別の場所で運用化することもできます。
 
 ## <a name="get-started-with-r-on-hdinsight"></a>HDInsight での R の使用
 HDInsight クラスターに R Server を含めるには、Azure ポータルを使用して HDInsight クラスターを作成するときに、R Server クラスター タイプを選択する必要があります。 この R Server クラスター タイプは、クラスターのデータ ノード上の R Server と、R Server ベースの分析用のランディング ゾーンとしてのエッジ ノードを組み込みます。 クラスターの作成手順については、[HDInsight での R Server の使用](hdinsight-hadoop-r-server-get-started.md)に関する記事をご覧ください。

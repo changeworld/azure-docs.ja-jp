@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: c84b2406e6373701c83c509342129bd6d7d4034b
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 9a33e83c7453d5b80043599acca3ac4310446562
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -79,7 +79,7 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 1. テナントのグローバル管理者として Graph Explorer にサインインします。 メッセージが表示されたら、要求されたアクセス許可のアクセスを許可します。
 2. [Modify permissions]\(アクセス許可の変更\) をクリックし、"Directory.ReadWrite.All" を選びます。
 3. Graph API の要求で、バージョンを "BETA" に、要求の種類を "POST" に、URL を `https://graph.microsoft.com/beta/<your-tenant-domain>/settings` に設定します。
-4. 次の JSON 要求をコピーし、"Request Body" に貼り付けます。 必要に応じてスマート ロックアウトの値を変更し、`templateId` にはランダムな GUID を使います。
+4. 次の JSON 要求をコピーし、"Request Body" に貼り付けます。
 5. [Run Query]\(クエリの実行\) をクリックして、テナントのスマート ロックアウトの値を設定します。
 
 ```

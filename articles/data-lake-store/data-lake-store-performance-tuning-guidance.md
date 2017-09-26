@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: stewu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: e7ea83465328bd4c7479dec4093cd94700463854
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 900447ab931f15e4d27aedd525eba7881ba813b2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="tuning-azure-data-lake-store-for-performance"></a>Azure Data Lake Store のパフォーマンス チューニング
@@ -55,7 +54,7 @@ Azure Data Lake Store は、あらゆる分析シナリオで必要とされる�
 | Powershell       | PerFileThreadCount、ConcurrentFileCount |  [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-get-started-powershell#performance-guidance-while-using-powershell)   |
 | AdlCopy    | Azure Data Lake Analytics ユニット  |   [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-azure-storage-blob#performance-considerations-for-using-adlcopy)         |
 | DistCp            | -m (マッパー)   | [リンク](https://docs.microsoft.com/en-us/azure/data-lake-store/data-lake-store-copy-data-wasb-distcp#performance-considerations-while-using-distcp)                             |
-| Azure Data Factory| parallelCopies    | [リンク](../data-factory/data-factory-copy-activity-performance.md)                          |
+| Azure Data Factory| parallelCopies    | [リンク](../data-factory/copy-activity-performance.md)                          |
 | Sqoop           | fs.azure.block.size、-m (マッパー)    |   [リンク](https://blogs.msdn.microsoft.com/bigdatasupport/2015/02/17/sqoop-job-performance-tuning-in-hdinsight-hadoop/)        |
 
 ## <a name="structure-your-data-set"></a>データ セットの構成

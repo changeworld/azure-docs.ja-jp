@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b469c0ebe9838a1ea986cff3043e3008941e9aa9
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 1309b44ea99af6d20a4d0f730dd68969f3c3082b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-the-azure-importexport-service-for-offline-copy-of-data-to-data-lake-store"></a>Azure Import/Export サービスを使用した Data Lake Store へのデータのオフライン コピー
@@ -70,7 +70,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
 ## <a name="copy-data-from-azure-storage-blobs-to-azure-data-lake-store"></a>Azure Storage BLOB から Azure Data Lake Store へのデータのコピー
 インポート ジョブの状態が完了になった後、指定した Azure Storage BLOB でデータが使用できるかどうかを確認できます。 その後、さまざまな方法で、そのデータを BLOB から Azure Data Lake Store へ移動することができます。 データのアップロードについて利用可能なすべてのオプションについては、「[Data Lake Store へのデータの取り込み](data-lake-store-data-scenarios.md#ingest-data-into-data-lake-store)」を参照してください。
 
-このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure Portal](../data-factory/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](../data-factory/data-factory-copy-activity-tutorial-using-powershell.md) で使用できます。
+このセクションでは、データをコピーするための Azure Data Factory パイプラインの作成に使用できる JSON 定義を示します。 JSON 定義は、[Azure Portal](../data-factory/v1/data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](../data-factory/v1/data-factory-copy-activity-tutorial-using-powershell.md) で使用できます。
 
 ### <a name="source-linked-service-azure-storage-blob"></a>ソース リンク サービス (Azure Storage BLOB)
 ````
@@ -188,7 +188,7 @@ Import/Export サービスを使用する前に、転送するデータ ファ�
     }
 }
 ````
-詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/data-factory-azure-datalake-connector.md)に関するページを参照してください。
+詳細については、[Azure Data Factory を使用した Azure Storage BLOB から Azure Data Lake Store へのデータの移動](../data-factory/connector-azure-data-lake-store.md)に関するページを参照してください。
 
 ## <a name="reconstruct-the-data-files-in-azure-data-lake-store"></a>Azure Data Lake Store 内でデータ ファイルを再構築する
 初めに、319 GB のファイルを用意して、Azure Import/Export サービスを使用して転送できるように小さなサイズのファイルに分割しました。 データが Azure Data Lake Store 内に置かれたので、ファイルを元のサイズに再構築することができます。 これは、次の Azure PowerShell コマンドレットを使用して実行します。

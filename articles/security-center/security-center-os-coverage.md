@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c33e132037d95fa92fd59a8243a9a8a351ae0224
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c80e78b39b3fba4dcd9523e1e679822758822805
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="supported-platforms-in-azure-security-center"></a>Azure Security Center でサポートされているプラットフォーム
@@ -39,12 +38,6 @@ ms.lasthandoff: 06/17/2017
 * Windows Server 2012 R2
 * Windows Server 2016
 
-> [!NOTE]
->
-* OS の脆弱性評価は、Windows Server 2016 ではまだ利用できません。
-* クラッシュ分析とクラッシュ検出は Windows Server 2012 と Windows Server 2012 R2 でのみサポートされています。
->
->
 
 ## <a name="supported-platforms-for-linux-vms"></a>Linux VM でサポートされているプラットフォーム
 サポートされている Linux オペレーティング システム:

@@ -16,16 +16,16 @@ ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 12a35213e07ff16bdc1c27be106792bcc032ac80
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Data Factory による SQL Data Warehouse へのデータの読み込み
 
-Azure Data Factory を使用して、[サポートされているソース データ ストア](../data-factory/data-factory-data-movement-activities.md#supported-data-stores-and-formats)からデータを Azure SQL Data Warehouse に読み込むことができます。 たとえば、Data Factory を使用して、Azure SQL Database や Oracle データベースのデータを SQL Data Warehouse に読み込めます。 この記事のチュートリアルでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを読み込む方法について説明します。
+Azure Data Factory を使用して、[サポートされているソース データ ストア](../data-factory/copy-activity-overview.md)からデータを Azure SQL Data Warehouse に読み込むことができます。 たとえば、Data Factory を使用して、Azure SQL Database や Oracle データベースのデータを SQL Data Warehouse に読み込めます。 この記事のチュートリアルでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを読み込む方法について説明します。
 
 **Time estimate**: このチュートリアルでは、前提条件が満たされると、完了までに約 10 ～ 15 分かかります。
 
@@ -72,7 +72,7 @@ Azure Data Factory を使用して、[サポートされているソース デ�
     > [!NOTE]
     > ソース データ ストアがオンプレミスまたは Azure IaaS 仮想マシンにある場合は、データ管理ゲートウェイが必要です。 ゲートウェイは、データ ファクトリと 1 対 1 の関係にあります。 別のデータ ファクトリからは使用できませんが、同じデータ ファクトリでは複数のデータ読み込みタスクで使用できます。 ゲートウェイは、データ読み込みタスクを実行するときに複数のデータ ストアへの接続に使用できます。
     >
-    > ゲートウェイの詳細については、「[Data Management Gateway](../data-factory/data-factory-data-management-gateway.md)」に関する記事をご覧ください。
+    > ゲートウェイの詳細については、「[Data Management Gateway](../data-factory/v1/data-factory-data-management-gateway.md)」に関する記事をご覧ください。
 
 3. **[ゲートウェイの作成]** ダイアログ ボックスが表示されます。 [名前] に「**GatewayForDWLoading**」と入力して、**[作成]** をクリックします。
 
@@ -154,9 +154,9 @@ SQL Data Warehouse にデータベースを移行するには、[移行の概要
 
 Azure Data Factory とそのデータ移動機能の詳細については、次の記事をご覧ください。
 
-- [Azure Data Factory の概要](../data-factory/data-factory-introduction.md)
-- [コピー アクティビティを使用したデータの移動](../data-factory/data-factory-data-movement-activities.md)
-- [Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](../data-factory/data-factory-azure-sql-data-warehouse-connector.md)
+- [Azure Data Factory の概要](../data-factory/introduction.md)
+- [コピー アクティビティを使用したデータの移動](../data-factory/copy-activity-overview.md)
+- [Azure Data Factory を使用した Azure SQL Data Warehouse との間でのデータの移動](../data-factory/connector-azure-sql-data-warehouse.md)
 
 SQL Data Warehouse のデータを探索するには、次の記事をご覧ください。
 

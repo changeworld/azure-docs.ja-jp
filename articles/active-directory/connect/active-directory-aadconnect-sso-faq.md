@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 518b2719f24be96dffba3458f6c15e65f16b7e0d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f603c4f0305184bfefe23a02b07cef134c83e678
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory シームレス シングル サインオン: よく寄せられる質問
 
 この記事では、Azure Active Directory シームレス シングル サインオン (シームレス SSO) に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
-
->[!IMPORTANT]
->シームレス SSO 機能は現在プレビュー段階です。
 
 ## <a name="what-sign-in-methods-do-seamless-sso-work-with"></a>シームレス SSO は、どのようなサインイン方法と動作しますか。
 
@@ -49,9 +46,9 @@ ms.lasthandoff: 08/05/2017
 
 はい、このシナリオでは[ワークプレース ジョイン クライアント](https://www.microsoft.com/download/details.aspx?id=53554)のバージョン 2.1 以降が必要です。
 
-## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacct-computer-account"></a>`AZUREADSSOACCT` コンピューター アカウントの Kerberos の復号化キーをロール オーバーするにはどうすればよいですか。
+## <a name="how-can-i-roll-over-the-kerberos-decryption-key-of-the-azureadssoacc-computer-account"></a>`AZUREADSSOACC` コンピューター アカウントの Kerberos の復号化キーをロール オーバーするにはどうすればよいですか。
 
-オンプレミスの AD フォレストで作成した `AZUREADSSOACCT` コンピューター アカウント (Azure AD を表します) の Kerberos の復号化キーを頻繁にロール オーバーすることが重要です。
+オンプレミスの AD フォレストで作成した `AZUREADSSOACC` コンピューター アカウント (Azure AD を表します) の Kerberos の復号化キーを頻繁にロール オーバーすることが重要です。
 
 >[!IMPORTANT]
 >少なくとも 30 日ごとに Kerberos の復号化キーをロールオーバーすることを強くお勧めします。
@@ -70,7 +67,7 @@ Azure AD Connect が実行されているオンプレミス サーバーで次�
 ### <a name="step-2-update-the-kerberos-decryption-key-on-each-ad-forest-that-it-was-set-it-up-on"></a>手順 2. Kerberos の復号化キーが設定された各 AD フォレストでキーを更新します。
 
 1. `$creds = Get-Credential` を呼び出します。 メッセージが表示されたら、目的の AD フォレストのドメイン管理者の資格情報を入力します。
-2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACCT` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
+2. `Update-AzureADSSOForest -OnPremCredentials $creds` を呼び出します。 このコマンドは、この特定の AD フォレスト内で `AZUREADSSOACC` コンピューター アカウントの Kerberos 復号化キーを更新し、Azure AD 内でこのキーを更新します。
 3. 機能が有効に設定されている AD フォレストごとに、上記の手順を繰り返します。
 
 >[!IMPORTANT]

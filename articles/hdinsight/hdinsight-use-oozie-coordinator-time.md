@@ -18,14 +18,14 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 600a70c74a16e2601a874f804ac2e8382c8bfa90
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 709541a88b2b15924b93c630693ad7a3f276e29c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
-この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/data-factory-data-transformation-activities.md)」を参照してください。
+この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。
 
 > [!NOTE]
 > この記事では、Windows ベースの HDInsight クラスターが必要です。 Linux ベースのクラスターで Oozie を使用する方法 (時間ベースのジョブを含む) の詳細については、「 [Linux ベースの HDInsight での Hadoop と Oozie を使用したワークフローの実行](hdinsight-use-oozie-linux-mac.md)

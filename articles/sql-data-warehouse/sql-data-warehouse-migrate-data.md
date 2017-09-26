@@ -16,10 +16,10 @@ ms.custom: migrate
 ms.date: 06/29/2017
 ms.author: joeyong;barbkess
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: dbdf1696cd169aa7e5e23f116027a1170347f4ea
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 0d156bc2eecf8220bd5ff4eb811d91482f216837
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="migrate-your-data"></a>データの移行
@@ -186,10 +186,10 @@ PolyBase を使用したデータ ロードについて詳しくは、「[PolyBa
 <!--Image references-->
 
 <!--Article references-->
-[AZCopy]:../storage/common/storage-use-azcopy.md
-[ADF Copy]: ../data-factory/data-factory-data-movement-activities.md 
-[ADF samples]: ../data-factory/data-factory-samples.md
-[ADF Copy examples]: ../data-factory/data-factory-copy-activity-tutorial-using-visual-studio.md
+[AZCopy]: ../storage/common/storage-use-azcopy.md
+[ADF Copy]: ../data-factory/v1/data-factory-data-movement-activities.md 
+[ADF samples]: ../data-factory/v1/data-factory-samples.md
+[ADF Copy examples]: ../data-factory/v1/data-factory-copy-activity-tutorial-using-visual-studio.md
 [development overview]: sql-data-warehouse-overview-develop.md
 [Migrate your solution to SQL Data Warehouse]: sql-data-warehouse-overview-migrate.md
 [SQL Data Warehouse development overview]: sql-data-warehouse-overview-develop.md

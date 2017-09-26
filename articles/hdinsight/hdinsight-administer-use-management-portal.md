@@ -17,10 +17,10 @@ ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f69fa4f838b22ccbb25186c08cac9744bb31c6d1
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3f1c7bb1795828899148a8ba8a0461a06947d40d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure Portal を使用した HDInsight での Windows ベースの Hadoop クラスターの管理
@@ -211,7 +211,7 @@ Hadoop ジョブの大半は、たまにしか実行されないバッチ ジョ
 
 このプロセスをプログラムで実行する方法は数多くあります。
 
-* Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/data-factory-compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/data-factory-data-transformation-activities.md)」をご覧ください。
+* Azure Data Factory を使用する。 オンデマンドおよび自己定義型の HDInsight のリンクされたサービスについては、「[Azure HDInsight のリンクされたサービス](../data-factory/compute-linked-services.md)」および「[Azure Data Factory を使用した変換と分析](../data-factory/transform-data.md)」をご覧ください。
 * Azure PowerShell を使用する。  「 [HDInsight での Hive を使用したフライト遅延データの分析](hdinsight-analyze-flight-delay-data.md)」をご覧ください。
 * Azure CLI を使用する。 「 [Azure CLI を使用した HDInsight での Hadoop クラスターの管理](hdinsight-administer-use-command-line.md)」をご覧ください。
 * HDInsight .NET SDK を使用する。 「 [HDInsight での Hadoop ジョブの送信](hdinsight-submit-hadoop-jobs-programmatically.md)」をご覧ください。

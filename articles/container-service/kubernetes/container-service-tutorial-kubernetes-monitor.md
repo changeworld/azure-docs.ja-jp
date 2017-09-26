@@ -18,10 +18,10 @@ ms.date: 07/25/2017
 ms.author: danlep
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 65556049d33c84848f015a095acf9c1f69348c6d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ebf35877dcd6f980af75f46b437070a6a29b7c54
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -140,7 +140,7 @@ OMS ポータルの OMS ダッシュボードで、**[コンテナー]** 概要�
 
 同様に、Azure Portal では、**[Log Analytics]** に移動してワークスペースを選択します。 **[コンテナー]** 概要タイルを表示するには、**[ソリューション]** > **[コンテナー]** の順にクリックします。 詳細を表示するには、タイルをクリックします。
 
-監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/index.md)をご覧ください。
+監視データの照会と分析の詳しいガイダンスについては、[Azure Log Analytics のドキュメント](../../log-analytics/index.yml)をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

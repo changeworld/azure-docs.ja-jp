@@ -3,7 +3,7 @@ title: "SQL AlwaysOn のロード バランサーの構成 |Microsoft Docs"
 description: "SQL AlwaysOn と連携するようにロード バランサーを構成し、PowerShell を利用して SQL の実装用にロード バランサーを作成する方法"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 ms.assetid: d7bc3790-47d3-4e95-887c-c533011e4afd
 ms.service: load-balancer
@@ -11,16 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/24/2016
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 0c23ee550d8ac88994e8c7c54a33d348ffc24372
-ms.openlocfilehash: 68aad6253f185d53fdd7f11c8660c7287ef12655
-ms.lasthandoff: 01/11/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3ebbf1c4009d89b1f18b2ff8ff5dd243c456dff8
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="configure-load-balancer-for-sql-always-on"></a>SQL AlwaysOn のロード バランサーの構成
+
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 SQL Server AlwaysOn 可用性グループは、ILB と共に実行できるようになりました。 可用性グループは、高可用性と障害復旧を目的とした SQL Server の主要なソリューションです。 可用性グループ リスナーによって、クライアント アプリケーションは、構成されているレプリカの数に関係なく、プライマリ レプリカにシームレスに接続できます。
 
