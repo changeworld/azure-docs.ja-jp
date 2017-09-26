@@ -12,7 +12,7 @@ ms.devlang: dotNet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 09/25/2017
 ms.author: subramar
 ms.translationtype: HT
 ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
@@ -41,19 +41,19 @@ Docker は、複数コンテナー アプリケーションの定義に [docker-
 PowerShell で次のコマンドを実行して、docker-compose.yml ファイルから Service Fabric Compose アプリケーションを作成します。
 
 ```powershell
-New-ServiceFabricComposeApplication -ApplicationName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
+New-ServiceFabricComposeDeployment -DeploymentName fabric:/TestContainerApp -Compose docker-compose.yml [-RegistryUserName <>] [-RegistryPassword <>] [-PasswordEncrypted]
 ```
 
 `RegistryUserName` および `RegistryPassword` は、コンテナー レジストリのユーザー名とパスワードです。 アプリケーションが完成したら、次のコマンドを使用して、その状態を確認できます。
 
 ```powershell
-Get-ServiceFabricComposeApplicationStatus -ApplicationName fabric:/TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName fabric:/TestContainerApp -GetAllPages
 ```
 
 PowerShell で Compose アプリケーションを削除するには、次のコマンドを使用します。
 
 ```powershell
-Remove-ServiceFabricComposeApplication  -ApplicationName fabric:/TestContainerApp
+Remove-ServiceFabricComposeDeployment  -DeploymentName fabric:/TestContainerApp
 ```
 
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) の使用
