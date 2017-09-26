@@ -10,7 +10,7 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 09/25/2017
 ms.author: bwren
 ms.translationtype: HT
 ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
@@ -57,7 +57,7 @@ ms.lasthandoff: 08/10/2017
     | where EventLevelName == "Error" 
     | where TimeGenerated > ago(1day)
     | summarize count() by Computer
-    | sort by Computerindow. 
+    | sort by Computer
 ```
 
 2. **[グラフの種類]** ボックスで、**[HTML の表]** を選択します。<br><br>![Log Analytics のアクション](media/log-analytics-flow-tutorial/flow03.png)
