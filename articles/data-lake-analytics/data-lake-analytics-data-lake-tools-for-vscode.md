@@ -146,7 +146,8 @@ U-SQL を操作するには、U-SQL ファイルまたはフォルダーを開�
                       D( DepID, DepName );
          
         OUTPUT @departments
-            TO “/Output/departments.csv”
+            TO "/Output/departments.csv"
+        USING Outputters.Csv();
 
     このスクリプトにより、いくつかのデータを含む departments.csv ファイルが /output フォルダーに作成されます。
 
