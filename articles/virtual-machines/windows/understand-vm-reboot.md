@@ -9,7 +9,7 @@ editor:
 tags: 
 ms.service: virtual-machines-windows
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/24/2017
@@ -19,7 +19,6 @@ ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
 ms.openlocfilehash: da8c1bf3d283e7514e1ab13fd31d7d581771ea4f
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/14/2017
-
 
 ---
 

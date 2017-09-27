@@ -9,17 +9,17 @@ editor:
 tags: top-support-issue
 ms.assetid: 73f2672c-602e-4766-8948-2b180115d299
 ms.service: virtual-machines-linux
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: required
 ms.date: 01/10/2017
 ms.devlang: na
 ms.author: delhan
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: c6d4ed45133dc3f4b1f3d17fb5a87d3bf77aa3f7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/03/2017
-
 
 ---
 # <a name="troubleshoot-classic-deployment-issues-with-restarting-or-resizing-an-existing-linux-virtual-machine-in-azure"></a>Azure での既存の Linux 仮想マシンの再起動またはサイズ変更に関するクラシック デプロイメントの問題のトラブルシューティング

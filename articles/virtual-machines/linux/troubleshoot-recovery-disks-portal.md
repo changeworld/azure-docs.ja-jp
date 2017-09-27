@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Portal でトラブルシューティング用 Linux VM を使用する | Microsoft Docs"
 description: "Azure Portal で OS ディスクを復旧 VM に接続して、Linux 仮想マシンの問題のトラブルシューティングを行う方法について説明します。"
 services: virtual-machines-linux
@@ -9,7 +8,7 @@ manager: timlt
 editor: 
 ms.service: virtual-machines-linux
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/14/2016
@@ -19,7 +18,6 @@ ms.sourcegitcommit: afa23b1395b8275e72048bd47fffcf38f9dcd334
 ms.openlocfilehash: c96ff625c3e83f6fc9057f1163c877e8e0aed5e3
 ms.contentlocale: ja-jp
 ms.lasthandoff: 05/13/2017
-
 
 ---
 

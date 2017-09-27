@@ -12,9 +12,10 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/29/2017
 ms.author: cfowler
+ms.custom: mvc
 ms.translationtype: HT
 ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7b3620d3674ea3783af72af37f80db0ea357d325
