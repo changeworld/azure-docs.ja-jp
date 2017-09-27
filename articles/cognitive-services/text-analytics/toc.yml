@@ -4,6 +4,8 @@
   items:
     - name: Text Analytics について
       href: overview.md
+    - name: サポートされている言語
+      href: text-analytics-supported-languages.md
 - name: クイック スタート
   items:
     - name: 'C#'

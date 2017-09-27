@@ -74,6 +74,7 @@
 
 ## クラウドの防御
 ### [ジャスト イン タイム アクセス](security-center-just-in-time.md)
+### [アダプティブ アプリケーション制御](security-center-adaptive-application.md)
 
 ## オートメーションとオーケストレーション
 ### [プレイブック](security-center-playbooks.md)

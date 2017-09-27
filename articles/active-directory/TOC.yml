@@ -1,6 +1,6 @@
 - name: Azure でのリソース アクセス
   href: active-directory-understanding-resource-access.md
-- name: ロールベースのアクセス制御
+- name: ロール ベースのアクセス制御 (RBAC)
   href: role-based-access-control-what-is.md
   items:
     - name: アクセス権の割り当てを管理する
@@ -31,10 +31,14 @@
       href: role-based-access-control-troubleshooting.md
     - name: リソース プロバイダー操作
       href: role-based-access-control-resource-provider-operations.md
+- name: RBAC のための Privileged Identity Management (PIM)
+  href: pim-azure-resource.md
+- name: Azure 管理の条件付きアクセス
+  href: conditional-access-azure-management.md
 - name: 管理対象のサービス ID
   href: msi-overview.md
   items:
-    - name: Windows VM 用の MSI の構成
+    - name: Azure VM 用の MSI の構成
       items:
         - name: Azure Portal の場合
           href: msi-qs-configure-portal-windows-vm.md
