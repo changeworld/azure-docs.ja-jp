@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Functions 用 JavaScript 開発者向けリファレンス | Microsoft Docs"
 description: "JavaScript を使用して関数を開発する方法について説明します。"
 services: functions
@@ -232,7 +232,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
 | _isRaw_   | 応答の書式設定をスキップすることを示します。    |
-| _状態_  | 応答の HTTP 状態コード。                     |
+| _status_  | 応答の HTTP 状態コード。                     |
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 
