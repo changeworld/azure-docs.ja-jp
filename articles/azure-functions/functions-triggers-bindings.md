@@ -349,7 +349,7 @@ Azure Functions には、`{rand-guid}` バインド式を使用してバイン�
       "name": "info",
       "type": "httpTrigger",
       "direction": "in",
-      "webHookType": "genericJson",
+      "webHookType": "genericJson"
     },
     {
       "name": "blobContents",
