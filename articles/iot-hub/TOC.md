@@ -83,7 +83,7 @@
 #### [.NET](iot-hub-csharp-csharp-c2d.md)
 #### [Java](iot-hub-java-java-c2d.md)
 #### [Node.JS](iot-hub-node-node-c2d.md)
-### [デバイスからファイルをアップロードする]
+### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
 ### デバイス ツインを使ってみる

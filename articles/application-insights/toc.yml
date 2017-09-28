@@ -226,6 +226,13 @@
       items:
         - name: 連続エクスポート
           href: app-insights-export-telemetry.md
+          items:
+            - name: コード サンプル
+              items:
+                - name: Stream Analytics を使用して SQL にエクスポートする
+                  href: app-insights-code-sample-export-sql-stream-analytics.md
+                - name: Stream Analytics にエクスポートする
+                  href: app-insights-export-stream-analytics.md
         - name: データのエクスポート モデル
           href: app-insights-export-data-model.md
         - name: Power BI へのエクスポート

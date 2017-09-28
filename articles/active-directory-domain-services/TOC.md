@@ -16,7 +16,7 @@
 # 方法
 ## 管理対象ドメインに参加する
 ### [Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [PowerShell を使用して Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [Azure PowerShell を使用して Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
 ### [Linux VM を結合する](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
 ## 管理対象ドメインを管理する
 ### [管理対象ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
@@ -24,8 +24,7 @@
 ### 管理対象ドメインのセキュリティで保護された LDAP を構成する
 #### [タスク 1: セキュリティで保護された LDAP 用の証明書を取得する](active-directory-ds-admin-guide-configure-secure-ldap.md)
 #### [タスク 2: セキュリティで保護された LDAP 証明書をエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)
-#### [タスク 3: Azure クラシック ポータルを使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
-#### [タスク 3: Azure Portal (プレビュー) を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
+#### [タスク 3: Azure Portal を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
 
 ### [管理されたドメインで OU を作成する](active-directory-ds-admin-guide-create-ou.md)
 ### [管理対象ドメインでグループ ポリシーを管理する](active-directory-ds-admin-guide-administer-group-policy.md)

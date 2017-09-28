@@ -1,3 +1,5 @@
+- name: アクセスの管理の概要
+  href: manage-access-to-azure-resources.md
 - name: Azure でのリソース アクセス
   href: active-directory-understanding-resource-access.md
 - name: ロール ベースのアクセス制御 (RBAC)

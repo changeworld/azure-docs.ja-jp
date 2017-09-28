@@ -23,7 +23,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: FAQ
+    - name: Log Analytics についてよく寄せられる質問
       href: log-analytics-faq.md
     - name: データの使用
       href: log-analytics-usage.md
@@ -31,6 +31,14 @@
       href: log-analytics-manage-access.md
     - name: サービス プロバイダー向けの機能
       href: log-analytics-service-providers.md
+    - name: ログ検索
+      items:
+        - name: ログ検索についてよく寄せられる質問
+          href: log-analytics-log-search-faq.md
+        - name: ログ検索の概要
+          href: log-analytics-log-search-new.md
+        - name: ログ検索ポータル
+          href: log-analytics-log-search-portals.md
 - name: 方法
   items:
     - name: データを収集する
@@ -92,15 +100,6 @@
       items:
         - name: ワークスペースのアップグレード
           href: log-analytics-log-search-upgrade.md
-        - name: FAQ
-          href: log-analytics-log-search-faq.md
-        - name: ログ検索の概要
-          href: log-analytics-log-search-new.md
-        - name: ログ検索ポータル
-          href: log-analytics-log-search-portals.md
-          items:
-            - name: ログ検索ポータルの使用
-              href: log-analytics-log-search-log-search-portal.md
         - name: 従来の言語からの切り替え
           href: log-analytics-log-search-transition.md
         - name: Flow コネクタ

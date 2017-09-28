@@ -9,6 +9,8 @@
 ### [.NET](relay-hybrid-connections-dotnet-get-started.md)
 ### [Node](relay-hybrid-connections-node-get-started.md)
 ## [WCF リレー](relay-wcf-dotnet-get-started.md)
+## [WCF Relay のチュートリアル](service-bus-relay-tutorial.md)
+## [WCF Relay REST のチュートリアル](service-bus-relay-rest-tutorial.md)
 
 # 方法
 ## 計画と設計

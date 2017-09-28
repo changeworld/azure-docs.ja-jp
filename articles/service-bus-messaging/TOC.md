@@ -43,6 +43,7 @@
 ### [配達不能キュー](service-bus-dead-letter-queues.md)
 ### [トランザクション処理](service-bus-transactions.md)
 ### [診断ログ](service-bus-diagnostic-logs.md)
+### [ペアの名前空間の実装](service-bus-paired-namespaces.md)
 ### AMQP
 #### [AMQP の概要](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
@@ -60,14 +61,15 @@
 #### [名前空間とキューの承認規則を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 #### [トピック、サブスクリプション、ルールを含んだ名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
+### [Azure PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
 # リファレンス
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
-## [REST](/rest/api/servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
+## [REST ()](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
 ## [SQLFilter 構文](service-bus-messaging-sql-filter.md)

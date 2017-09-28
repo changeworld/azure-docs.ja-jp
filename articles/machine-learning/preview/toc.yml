@@ -81,7 +81,7 @@
           href: deployment-setup-configuration.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md
-        - name: Web サービスの使用
+        - name: Web サービスを使用する
           href: model-management-consumption.md
         - name: モデル データ コレクションの使用方法
           href: how-to-use-model-data-collection.md
@@ -141,6 +141,8 @@
       items:
         - name: 実行構成
           href: experiment-execution-configuration-reference.md
+        - name: ロギング API
+          href: reference-logging-api.md
     - name: モデル管理
       items:
         - name: モデル管理 API
