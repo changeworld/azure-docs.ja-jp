@@ -12,6 +12,8 @@
   items:
     - name: ロジック アプリを使用した VM の変更の監視
       href: monitor-virtual-machine-changes-event-grid-logic-app.md
+    - name: アップロードされたイメージのサイズ変更
+      href: resize-images-on-storage-blob-upload-event.md
 - name: 概念
   items:
     - name: Event Grid の概念

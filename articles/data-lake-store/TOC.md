@@ -5,18 +5,18 @@
 ## [Azure Data Lake Store で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 
 # 作業開始
-## [ポータルの使用](data-lake-store-get-started-portal.md)
-## [PowerShell の使用](data-lake-store-get-started-powershell.md)
+## [Azure Portal の使用](data-lake-store-get-started-portal.md)
+## [Azure PowerShell の使用](data-lake-store-get-started-powershell.md)
 ## [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
 ## [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
 ## [REST API の使用](data-lake-store-get-started-rest-api.md)
-## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
+## [Azure CLI の使用](data-lake-store-get-started-cli-2.0.md)
 ## [Node.js の使用](data-lake-store-manage-use-nodejs.md)
 ## [Python の使用](data-lake-store-get-started-python.md)
 
 # 方法
 ## データをコピーする
-### [Azure Data Factory の使用](../data-factory/data-factory-azure-datalake-connector.md)
+### [Azure Data Factory の使用](../data-factory/connector-azure-data-lake-store.md)
 ### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
@@ -40,14 +40,14 @@
 
 ## Azure サービスと統合する
 ### HDInsight を使用
-#### [ポータルの使用](data-lake-store-hdinsight-hadoop-use-portal.md)
-#### [PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
-#### [PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
+#### [Azure Portal の使用](data-lake-store-hdinsight-hadoop-use-portal.md)
+#### [Azure PowerShell の使用 (既定のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
+#### [Azure PowerShell の使用 (追加のストレージ)](data-lake-store-hdinsight-hadoop-use-powershell.md)
 #### [Azure テンプレートの使用](data-lake-store-hdinsight-hadoop-use-resource-manager-template.md)
 ### [Azure VNET 内の VM からアクセスする](data-lake-store-connectivity-from-vnets.md)
 ### [Data Lake Analytics で使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 ### [Azure Event Hubs で使用する](data-lake-store-archive-eventhub-capture.md)
-### [Data Factory で使用する](../data-factory/data-factory-azure-datalake-connector.md)
+### [Data Factory で使用する](../data-factory/connector-azure-data-lake-store.md)
 ### [Stream Analytics で使用する](data-lake-store-stream-analytics.md)
 ### [Power BI で使用する](data-lake-store-power-bi.md)
 ### [Data Catalog で使用する](data-lake-store-with-data-catalog.md)
@@ -61,14 +61,14 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=data-lake-store)
-## [PowerShell](/powershell/module/azurerm.datalakestore)
+## [Azure PowerShell](/powershell/module/azurerm.datalakestore)
 ## [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/data-lake-store?view=azure-dotnet)
 ## [Java](/java/api/com.microsoft.azure.datalake.store)
 ## [Node.JS](https://www.npmjs.com/package/azure-arm-datalake-store)
 ## [Python (アカウント管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/sample_azure-mgmt-datalake-store.html)
 ## [Python (ファイルシステム管理)](http://azure-datalake-store.readthedocs.io/en/latest)
 ## [REST ()](/rest/api/datalakestore)
-## [Azure CLI 2.0](https://docs.microsoft.com/cli/azure/dls)
+## [Azure CLI](https://docs.microsoft.com/cli/azure/dls)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

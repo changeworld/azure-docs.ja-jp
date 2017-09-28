@@ -53,7 +53,7 @@
 #### [Windows](notification-hubs-aspnet-backend-windows-dotnet-wns-secure-push-notification.md)
 
 ## 自動化
-### [PowerShell を使用した Notification Hubs のデプロイと管理](notification-hubs-deploy-and-manage-powershell.md)
+### [Azure PowerShell を使用した Notification Hubs のデプロイと管理](notification-hubs-deploy-and-manage-powershell.md)
 ### [スケジュール設定された通知を送信する](notification-hubs-send-push-notifications-scheduled.md)
 
 ## トラブルシューティング
@@ -61,7 +61,7 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=notification-hubs)
-## [PowerShell](/powershell/module/azurerm.notificationhubs)
+## [Azure PowerShell](/powershell/module/azurerm.notificationhubs)
 ## [.NET](/dotnet/api/microsoft.azure.notificationhubs)
 ## [REST ()](/rest/api/notificationhubs)
 

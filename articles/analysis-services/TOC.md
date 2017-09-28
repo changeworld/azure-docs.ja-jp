@@ -8,7 +8,7 @@
 
 # 作業開始
 ## [Azure Portal でサーバーを作成する](analysis-services-create-server.md)
-## [PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
+## [Azure PowerShell を使用してサーバーを作成する](analysis-services-create-powershell.md)
 ## [Visual Studio からモデルをデプロイする](analysis-services-deploy.md)
 ## [Azure Portal でのモデルの作成 (プレビュー)](analysis-services-create-model-portal.md)
 
@@ -43,7 +43,7 @@
 ### [補足のレッスン - 不規則階層](tutorials/aas-supplemental-lesson-ragged-hierarchies.md)  
 
 # リファレンス
-## [PowerShell](analysis-services-powershell.md)
+## [Azure PowerShell](analysis-services-powershell.md)
 ## [REST ()](/rest/api/analysisservices)
 ## [DAX](https://msdn.microsoft.com/library/gg413422.aspx)
 ## [Power Query M](https://msdn.microsoft.com/library/mt211003.aspx)

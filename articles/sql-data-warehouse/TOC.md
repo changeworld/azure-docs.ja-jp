@@ -8,6 +8,7 @@
 # 作業の開始
 
 ## [初心者向けチュートリアル](sql-data-warehouse-get-started-tutorial.md)
+## [エラスティック クエリのチュートリアル](tutorial-elastic-query-with-sql-datababase-and-sql-data-warehouse.md)
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 
@@ -19,9 +20,9 @@
 
 ### [Backup の概要](sql-data-warehouse-backups.md)
 ### [復元の概要](sql-data-warehouse-restore-database-overview.md)
-#### [Azure Portal](sql-data-warehouse-restore-database-portal.md)
-#### [PowerShell](sql-data-warehouse-restore-database-powershell.md)
-#### [REST](sql-data-warehouse-restore-database-rest-api.md)
+#### [Azure ポータル](sql-data-warehouse-restore-database-portal.md)
+#### [Azure PowerShell](sql-data-warehouse-restore-database-powershell.md)
+#### [REST ()](sql-data-warehouse-restore-database-rest-api.md)
 
 ## 接続
 
@@ -34,7 +35,7 @@
 
 ## 作成
 ### [Azure ポータル](sql-data-warehouse-get-started-provision.md)
-### [PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
+### [Azure PowerShell](sql-data-warehouse-get-started-provision-powershell.md)
 ### [T-SQL](sql-data-warehouse-get-started-create-database-tsql.md)
 
 ## 開発
@@ -79,6 +80,8 @@
 ### [Power BI](sql-data-warehouse-integrate-power-bi.md)
 ### [Power BI の視覚化](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 ### [Stream Analytics](sql-data-warehouse-integrate-azure-stream-analytics.md)
+
+### [SQL Database と SQL Data Warehouse で使用するエラスティック クエリ](how-to-use-elastic-query-with-sql-data-warehouse.md)
 
 ## Load
 

@@ -70,7 +70,7 @@
     - name: ドイツ
       tocHref: /azure/germany/
       topicHref: /azure/germany/
-    - name: ポータル
+    - name: Azure ポータル
       tocHref: /azure/azure-portal/
       topicHref: /azure/azure-portal/
     - name: リソース マネージャー
@@ -79,6 +79,9 @@
     - name: Azure Stack
       tocHref: /azure/azure-stack/
       topicHref: /azure/azure-stack/
+    - name: Azure Stack ユーザー
+      tocHref: /azure/azure-stack/user/
+      topicHref: /azure/azure-stack/user/
     - name: サポート
       tocHref: /azure/azure-supportability/
       topicHref: /azure/azure-supportability/
@@ -208,6 +211,19 @@
     - name: Machine Learning
       tocHref: /azure/machine-learning/
       topicHref: /azure/machine-learning/
+      items:
+        - name: サービス (プレビュー)
+          tocHref: /azure/machine-learning/preview
+          topicHref: /azure/machine-learning/preview/
+        - name: スタジオ
+          tocHref: /azure/machine-learning/studio
+          topicHref: /azure/machine-learning/studio/
+        - name: Team Data Science Process
+          tocHref: /azure/machine-learning/team-data-science-process
+          topicHref: /azure/machine-learning/team-data-science-process/overview
+        - name: データ サイエンス仮想マシン
+          tocHref: /azure/machine-learning/data-science-virtual-machine
+          topicHref: /azure/machine-learning/data-science-virtual-machine/virtual-machine-overview
     - name: Marketplace のコンシューマー
       tocHref: /azure/marketplace-consumer/
       topicHref: /azure/marketplace-consumer/

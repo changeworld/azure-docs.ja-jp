@@ -12,7 +12,7 @@
 
 # サンプル
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=azure-resource-manager)
-## PowerShell
+## Azure PowerShell
 ### [テンプレートのデプロイ](resource-manager-samples-powershell-deploy.md)
 
 ## Azure CLI
@@ -35,7 +35,7 @@
 
 
 ## デプロイ
-### PowerShell
+### Azure PowerShell
 #### [テンプレートのデプロイ](resource-group-template-deploy.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-powershell-sas-token.md)
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-powershell.md)
@@ -43,7 +43,7 @@
 #### [テンプレートのデプロイ](resource-group-template-deploy-cli.md)
 #### [SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)
 #### [テンプレートをエクスポートして再デプロイする](resource-manager-export-template-cli.md)
-### ポータル
+### Azure ポータル
 #### [リソースのデプロイ](resource-group-template-deploy-portal.md)
 #### [テンプレートをエクスポートする](resource-manager-export-template.md)
 ### [REST API](resource-group-template-deploy-rest.md)
@@ -52,9 +52,9 @@
 ### [デプロイ時にセキュリティで保護された値を渡す](resource-manager-keyvault-parameter.md)
 
 ## 管理
-### [PowerShell](powershell-azure-resource-manager.md)
+### [Azure PowerShell](powershell-azure-resource-manager.md)
 ### [Azure CLI](xplat-cli-azure-resource-manager.md)
-### [ポータル](resource-group-portal.md)
+### [Azure ポータル](resource-group-portal.md)
 ### [REST API](resource-manager-rest-api.md)
 ### [タグを使用してリソースを整理する](resource-group-using-tags.md)
 ### [リソースを新しいグループまたはサブスクリプションに移動する](resource-group-move-resources.md)
@@ -62,16 +62,16 @@
 
 ## アクセスを制御する
 ### サービス プリンシパルの作成
-#### [PowerShell](resource-group-authenticate-service-principal.md)
-#### [Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
+#### [Azure PowerShell](resource-group-authenticate-service-principal.md)
+#### [Azure CLI](/cli/azure/create-an-azure-service-principal-azure-cli?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 #### [Azure CLI 1.0](resource-group-authenticate-service-principal-cli.md)
-#### [ポータル](resource-group-create-service-principal-portal.md)
+#### [Azure ポータル](resource-group-create-service-principal-portal.md)
 ### [サブスクリプションにアクセスするための認証 API](resource-manager-api-authentication.md)
 ### [リソースのロック](resource-group-lock-resources.md)
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### [ポータルを使用してポリシーを割り当てる](resource-manager-policy-portal.md)
+### [Azure Portal を使用してポリシーを割り当てる](resource-manager-policy-portal.md)
 ### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
 ### 例
 #### [タグ](resource-manager-policy-tags.md)

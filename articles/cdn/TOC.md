@@ -19,7 +19,7 @@
 ####[動的サイト アクセラレーション](cdn-dynamic-site-acceleration.md)
  
 ## 管理
-### [PowerShell で管理する](cdn-manage-powershell.md)
+### [Azure PowerShell を使用して管理する](cdn-manage-powershell.md)
 ### Time to Live を構成する
 #### [Web Apps/Cloud Services、ASP.NET、または IIS のコンテンツ](cdn-manage-expiration-of-cloud-service-content.md)
 #### [Storage Blob service のコンテンツ](cdn-manage-expiration-of-blob-content.md)
@@ -53,7 +53,7 @@
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=cdn)
-## [PowerShell](/powershell/module/azurerm.cdn)
+## [Azure PowerShell](/powershell/module/azurerm.cdn)
 ## [.NET](/dotnet/api/microsoft.azure.management.cdn)
 ## [Java](/java/api/com.microsoft.azure.management.cdn)
 ## [REST ()](/rest/api/cdn/)

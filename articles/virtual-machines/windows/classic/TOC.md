@@ -7,7 +7,7 @@
 ## [コンテナー](../../virtual-machines-windows-containers.md)
 
 # 作業開始
-## [ポータルを使用して VM を作成する](tutorial.md)
+## [Azure Portal を使用して VM を作成する](tutorial.md)
 ## [VM へのログオン](connect-logon.md)
 ## [Azure PowerShell をインストールするには](/powershell/azure/overview)
 ## [Azure CLI のインストール](../../../cli-install-nodejs.md)
@@ -85,7 +85,7 @@
 ### [トラブルシューティング用 VM に仮想ハード ディスクを接続する](troubleshoot-recovery-disks-portal.md)
 
 # リファレンス
-## [PowerShell](/powershell/azure/overview)
+## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/vm)
 ## [Java](/java/api)
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)

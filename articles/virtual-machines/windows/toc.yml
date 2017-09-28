@@ -33,7 +33,7 @@
       href: tutorial-virtual-network.md
     - name: 9 - 仮想マシンのバックアップ
       href: tutorial-backup-vms.md
-    - name: 10 - 仮想マシンの監視
+    - name: 10 - VM の監視と更新
       href: tutorial-monitoring.md
     - name: 11 - VM のセキュリティの管理
       href: tutorial-azure-security.md
@@ -163,6 +163,12 @@
           href: manage-availability.md
         - name: 垂直方向にスケーリングする
           href: vertical-scaling-automation.md
+        - name: 可用性ゾーン内に VM を作成する
+          items:
+            - name: PowerShell
+              href: create-powershell-availability-zone.md
+            - name: ポータル
+              href: create-portal-availability-zone.md
     - name: 自動化ツールの使用
       items:
         - name: Chef
@@ -170,7 +176,7 @@
     - name: アプリケーションの実行
       items:
         - name: SQL Server
-          href: /sql/virtual-machines-windows-sql-server-iaas-overview
+          href: sql/virtual-machines-windows-sql-server-iaas-overview.md
         - name: MongoDB
           href: install-mongodb.md
         - name: SAP on Azure
@@ -342,7 +348,7 @@
   items:
     - name: Azure CLI
       href: /cli/azure/vm
-    - name: PowerShell
+    - name: Azure PowerShell
       href: /powershell/azureps-cmdlets-docs
     - name: .NET
       href: /dotnet/api/microsoft.azure.management.compute

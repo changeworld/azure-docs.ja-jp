@@ -54,11 +54,11 @@
 ## 自動化
 ### [Tools for Visual Studio](stream-analytics-tools-for-visual-studio.md)
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
-### [ワンクリック PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
+### [ワンクリック Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=stream-analytics)
-## [PowerShell](/powershell/module/azurerm.streamanalytics)
+## [Azure PowerShell](/powershell/module/azurerm.streamanalytics)
 ## [.NET](/dotnet/api/microsoft.azure.management.streamanalytics)
 ## [クエリ言語](https://msdn.microsoft.com/library/azure/dn834998)
 ## [REST ()](/rest/api/streamanalytics)
