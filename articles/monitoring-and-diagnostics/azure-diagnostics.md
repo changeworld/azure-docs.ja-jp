@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: e2d3a6725ee53dc6d6986b185fac143901ba6955
-ms.lasthandoff: 03/31/2017
-
+ms.translationtype: HT
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="what-is-azure-diagnostics"></a>Azure 診断について
@@ -48,7 +48,7 @@ Azure 診断拡張機能は、このデータを Azure ストレージ アカウ
 診断情報を収集するサービスを選択し、以下の記事の説明に従って操作を開始してください。 特定のタスクのリファレンスについては、一般的な Azure 診断リンクを使用してください。
 
 ## <a name="web-apps"></a>Web Apps
-Web Apps では Azure 診断が使用されないので注意してください。 Azure 診断に相当する情報については、[Web Apps](../app-service-web/web-sites-enable-diagnostic-log.md) に関するページを参照してください。
+Web Apps では Azure 診断が使用されないので注意してください。 Azure 診断に相当する情報については、[Web Apps](../app-service/web-sites-enable-diagnostic-log.md) に関するページを参照してください。
 
 ## <a name="cloud-services-using-azure-diagnostics"></a>Cloud Services で Azure 診断を使用する
 * Visual Studio を使用する場合は、[Visual Studio を使用した Cloud Services アプリケーションのトレース](../vs-azure-tools-debug-cloud-services-virtual-machines.md)に関するページを参照して操作を開始してください。 それ以外の場合は次を参照してください。

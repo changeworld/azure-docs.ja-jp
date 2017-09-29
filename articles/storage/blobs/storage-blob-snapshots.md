@@ -3,7 +3,7 @@ title: "Azure Storage での BLOB の読み取り専用スナップショット�
 description: "BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 3710705d-e127-4b01-8d0f-29853fb06d0d
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b1d87cd66457b08bba594bfc7de1e9e4e2dff1e6

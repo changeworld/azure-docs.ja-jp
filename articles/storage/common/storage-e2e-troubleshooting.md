@@ -3,7 +3,7 @@ title: "診断と Message Analyzer を使用した Azure Storage のトラブル
 description: "Azure Storage Analytics、AzCopy、Microsoft Message Analyzer を使用したエンド ツー エンド トラブルシューティングについて説明するチュートリアル"
 services: storage
 documentationcenter: dotnet
-author: robinsh
+author: tamram
 manager: timlt
 ms.assetid: 643372a3-1c07-4e88-b4ef-042512a43086
 ms.service: storage
@@ -12,7 +12,7 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/15/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 1aa40c4de48c0117e9d3f9d434972adecccdb548

@@ -3,7 +3,7 @@ title: "Azure Storage の接続文字列を構成する |Microsoft Docs"
 description: "Azure Storage アカウントの接続文字列を構成します。 接続文字列には、アプリケーションがストレージ アカウントに対し、そのアクセスが信頼できるものであることを実行時に証明するうえで必要な情報が格納されます。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: ecb0acb5-90a9-4eb2-93e6-e9860eda5e53
@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
 ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4b21e75fde55f195362809ce486a2615954ff93c

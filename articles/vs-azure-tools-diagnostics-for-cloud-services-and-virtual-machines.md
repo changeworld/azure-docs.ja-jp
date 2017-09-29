@@ -15,14 +15,14 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 2516c0eb8ce470577731db9b844d5b9038465477
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: d3c85cde864d599871e195df2e81548180e647ba
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="configuring-diagnostics-for-azure-cloud-services-and-virtual-machines"></a>Azure クラウド サービスおよび仮想マシン用の診断の構成
-Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用すると Azure 診断が構成しやすくなります。 Azure 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。 Azure の診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+Azure クラウド サービスまたは Azure 仮想マシンのトラブルシューティングを行うときは、Visual Studio を使用すると Azure 診断が構成しやすくなります。 Azure 診断は、クラウド サービスを実行する仮想マシンと仮想マシン インスタンスのシステム データとログ データを取り込み、そのデータを任意のストレージ アカウントに転送します。 Azure の診断ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
 
 このトピックでは、Azure クラウド サービスをデプロイする前と後、さらに Azure 仮想マシンを対象に、Visual Studio で Azure 診断を有効にして構成する方法を示します。 また、収集する診断情報の種類を選択する方法と、収集された情報を表示する方法についても取り上げます。
 
@@ -137,7 +137,7 @@ Azure Virtual Machines の診断データを Visual Studio で収集すること
 
   ![[アプリケーション ログの転送を有効にする]](./media/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines/IC758145.png)
 
-  アプリケーション ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+  アプリケーション ログの詳細については、「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
 
 ### <a name="windows-event-logs"></a>Windows イベント ログ
 Windows イベント ログを取り込むには、 **[Windows イベント ログの転送を有効にする]** チェック ボックスをオンにします。 イベント ログをストレージ アカウントに転送する間隔 (分) は、 **[転送期間 (分)]** の値を変更することで増減できます。 追跡するイベントの種類に該当するチェック ボックスをオンにしてください。
@@ -301,6 +301,6 @@ RoleEntryPoint のメソッドは、IIS ではなく WAIISHost.exe のコンテ�
 **[プロパティ]** ウィンドウで、**[出力ディレクトリにコピー]** プロパティを **[常にコピーする]** に設定します。
 
 ## <a name="next-steps"></a>次のステップ
-Azure の診断ログの詳細については、[Azure Cloud Services および Virtual Machines での診断の有効化](cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](app-service-web/web-sites-enable-diagnostic-log.md)」を参照してください。
+Azure の診断ログの詳細については、[Azure Cloud Services および Virtual Machines での診断の有効化](cloud-services/cloud-services-dotnet-diagnostics.md)に関するページと「[Azure App Service の Web アプリの診断ログの有効化](app-service/web-sites-enable-diagnostic-log.md)」を参照してください。
 
 
