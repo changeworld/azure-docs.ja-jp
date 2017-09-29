@@ -3,7 +3,7 @@ title: "Azure Storage での Azure CLI 2.0 の使用 | Microsoft Docs"
 description: "Azure Storage で Azure コマンドライン インターフェイス (Azure CLI) 2.0 を使用して、ストレージ アカウントの作成と管理および Azure の BLOB やファイルの操作を行う方法について説明します。 Azure CLI 2.0 は、Python で作成されたクロスプラットフォーム ツールです。"
 services: storage
 documentationcenter: na
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: article
 ms.date: 06/02/2017
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 8dfa91de25eadb93186d994095f0a0107fe1a9d0
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: b1f192a935dbf234936690b0d36b6ce708d38b14
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Azure Storage での Azure CLI 2.0 の使用
@@ -317,7 +317,7 @@ az storage blob delete --container-name <container_name> --name <blob_name>
 ```
 
 ## <a name="create-and-manage-file-shares"></a>ファイル共有を作成および管理する
-Azure File ストレージは、Server Message Block (SMB) プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。 ファイル共有とファイル データは、Azure CLI を使用して管理できます。 Azure File ストレージについて詳しくは、「[Windows で Azure File Storage を使用する](../storage-dotnet-how-to-use-files.md)」または「[Linux で Azure File Storage を使用する方法](../storage-how-to-use-files-linux.md)」をご覧ください。
+Azure File は、サーバー メッセージ ブロック (SMB) プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、オンプレミスのアプリケーションと同じように、ファイル データを共有できます。 ファイル共有とファイル データは、Azure CLI を使用して管理できます。 Azure File の詳細については、「[Azure File Storage の概要](../files/storage-files-introduction.md)」を参照してください。
 
 ### <a name="create-a-file-share"></a>ファイル共有を作成する
 Azure File 共有は、Azure 内の SMB ファイル共有です。 ディレクトリとファイルはすべて、ファイル共有に作成する必要があります。 アカウントに含まれる共有の数と、共有に格納できるファイル数には制限がなく、ストレージ アカウントの容量の上限まで増やすことができます。 次の例では、 **myshare**という名前のファイル共有を作成します。
