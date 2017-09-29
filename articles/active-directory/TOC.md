@@ -148,13 +148,14 @@
 ### [使用の開始](active-directory-integrating-applications-getting-started.md)
 ### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
 ### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [Cloud App Discovery とは](active-directory-cloudappdiscovery-whatis.md)
-#### [設定の手順](cloudappdiscovery-get-started.md)
+#### [エージェントレスの検出の設定](cloudappdiscovery-get-started.md)
 #### [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [カスタム ログ パーサーの使用](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-#### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
-#### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
+#### エージェント ベースの検出
+##### [Cloud App Discovery とは](active-directory-cloudappdiscovery-whatis.md)
+##### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
+##### [セキュリティとプライバシーについて](active-directory-cloudappdiscovery-security-and-privacy-considerations.md)
 
 
 ### [アプリ プロキシを使用してリモートでアプリにアクセスする](active-directory-application-proxy-get-started.md)
@@ -293,7 +294,7 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### タスク

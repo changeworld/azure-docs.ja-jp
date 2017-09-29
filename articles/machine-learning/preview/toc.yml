@@ -45,6 +45,8 @@
       items:
         - name: 実行ターゲットの構成
           href: experiment-execution-configuration.md
+        - name: DSVM および HDI Spark クラスターの作成
+          href: how-to-create-dsvm-hdi.md
         - name: GPU によるトレーニング
           href: how-to-use-gpu.md
     - name: データの取得と理解

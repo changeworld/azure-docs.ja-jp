@@ -29,6 +29,11 @@
 ### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)
 ### [Cosmos DB に出力する](stream-analytics-documentdb-output.md)
 
+## Visual Studio ツールの使用
+### [インストール](stream-analytics-tools-for-visual-studio-install.md)
+### [作業の開始](stream-analytics-tools-for-visual-studio.md)
+### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
+
 ## 監視と最適化
 ### [アラートの追加](stream-analytics-set-up-alerts.md)
 ### [ジョブの監視](stream-analytics-monitoring.md)
@@ -52,7 +57,6 @@
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 
 ## 自動化
-### [Tools for Visual Studio](stream-analytics-tools-for-visual-studio.md)
 ### [管理用 .NET SDK を使用する](stream-analytics-dotnet-management-sdk.md)
 ### [ワンクリック Azure PowerShell](https://github.com/Azure/azure-stream-analytics/tree/master/Samples/ASAOneClick)
 
