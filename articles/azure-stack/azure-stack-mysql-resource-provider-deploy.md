@@ -145,9 +145,9 @@ $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
 1. Azure Stack ポータルにサービス管理者としてサインインします。
 
-2. **[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[Hosting Servers] (ホスティング サーバー)** &gt; **[+追加]** をクリックします。
+2. **[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[Hosting Servers] \(ホスティング サーバー)** &gt; **[+追加]** をクリックします。
 
-    **[MySQL Hosting Servers] (MySQL ホスティング サーバー)** ブレードでは、リソース プロバイダーのバックエンドとして機能する MySQL サーバーの実際のインスタンスに MySQL サーバー リソース プロバイダーを接続できます。
+    **[MySQL Hosting Servers] \(MySQL ホスティング サーバー)** ブレードでは、リソース プロバイダーのバックエンドとして機能する MySQL サーバーの実際のインスタンスに MySQL サーバー リソース プロバイダーを接続できます。
 
     ![ホスティング サーバー](./media/azure-stack-mysql-rp-deploy/mysql-add-hosting-server-2.png)
 
@@ -168,7 +168,7 @@ SKU はポータルに表示されるまで最大 1 時間かかることがあ�
 
 1. Azure Stack ポータルにサービス管理者としてサインインします。
 
-2. **[新規]** ボタン &gt; **[データ + ストレージ]** &gt; **[MySQL Database (preview)] (MySQL データベース (プレビュー))** をクリックします。
+2. **[新規]** ボタン &gt; **[データ + ストレージ]** &gt; **[MySQL Database (preview)] \(MySQL データベース (プレビュー))** をクリックします。
 
 3. フォームにデータベースの詳細を入力します。
 
@@ -190,7 +190,7 @@ SKU はポータルに表示されるまで最大 1 時間かかることがあ�
 
 ## <a name="add-capacity"></a>容量を追加する
 
-容量を追加するには、Azure Stack ポータルに追加の MySQL サーバを追加します。 MySQL の別のインスタンスを使用する場合は、**[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[MySQL Hosting Servers] (MySQL ホスティング サーバー)** &gt; **[+追加]** をクリックします。
+容量を追加するには、Azure Stack ポータルに追加の MySQL サーバを追加します。 MySQL の別のインスタンスを使用する場合は、**[リソース プロバイダー]** &gt; **[MySQLAdapter]** &gt; **[MySQL Hosting Servers] \(MySQL ホスティング サーバー)** &gt; **[+追加]** をクリックします。
 
 
 ## <a name="making-mysql-databases-available-to-tenants"></a>MySQL データベースをテナントで使用できるようにする
