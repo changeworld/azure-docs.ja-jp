@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/19/2017
 ms.author: mikhegn
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 484db494e7975df950543d19bf841a4df7cdd139
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 021c695a91ff46274b2a5174918711d04bcff239
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -131,11 +131,11 @@ Azure の Service Fabric で実行するためにアプリケーションを準�
 ### <a name="expose-the-port-for-the-app"></a>アプリのポートの公開
 構成した Service Fabric クラスターでは、クラスターへの着信トラフィックを分散する Azure Load Balancer で既定でポート *80* がオープンされます。 docker-compose.yml ファイルを使用して、このポートでコンテナーを公開できます。
 
-Visual Studio で**ソリューション エクスプローラー**を開き、**docker-compose** を見つけて **docker-compose.override.yml** というファイルを開きます。
+Visual Studio で**ソリューション エクスプローラー**を開き、**docker-compose** を見つけて **docker-compose.yml** というファイルを開きます。
 
 `fabrikamfiber.web:` ノードを変更し、`ports:` という名前の子ノードを追加します。
 
-文字列エントリ `- "80:80"` を追加します。
+文字列エントリ `- "80:80"` を追加します。 docker-compose.yml ファイルは、次のようになります。
 
 ```yml
   version: '3'
@@ -216,6 +216,8 @@ Fabrikam Call Center ソリューションをコンテナー化してデプロ�
 > * Visual Studio での Docker プロジェクトの作成
 > * 既存のアプリケーションのコンテナー格納
 > * Visual Studio と VSTS を使用した継続的インテグレーションのセットアップ
+
+チュートリアルの次の部分で、[コンテナーの監視](service-fabric-tutorial-monitoring-wincontainers.md)をセットアップする方法を学習します。
 
 <!--   NOTE SURE WHAT WE SHOULD DO YET HERE
 
