@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d373ecaf585233f5daa4cf987e55adab9e099f8f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
@@ -118,7 +118,7 @@ SQL Database は、アプリケーションがさまざまなセキュリティ�
 
 ### <a name="data-encryption-at-rest"></a>保存データの暗号化
 
-SQL Database の[透過的なデータ暗号化](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。 2017 年 5 月以降、新しく作成されるすべての Azure SQL データベースは、透過的なデータ暗号化 (TDE) によって自動的に保護されます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL の実証済みの保存データの暗号化テクノロジです。 顧客は、Azure Key Vault を使用して、TDE 暗号化キーとその他のシークレットをセキュリティで保護された準拠する方法で管理できます。
+SQL Database の[透過的なデータ暗号化](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)を使用すると、データベース、関連付けられているバックアップ、保管されているトランザクション ログ ファイルの暗号化と暗号化解除をリアルタイムで実行することにより、悪意のあるアクティビティの脅威からデータを保護できます。アプリケーションを変更する必要はありません。 2017 年 5 月以降、新しく作成されるすべての Azure SQL データベースは、透過的なデータ暗号化 (TDE) によって自動的に保護されます。 TDE は、記憶域メディアの盗難を防ぐために多くのコンプライアンス基準で必要とされている、SQL の実証済みの保存データの暗号化テクノロジです。 顧客は、Azure Key Vault を使用して、TDE 暗号化キーとその他のシークレットをセキュリティで保護された準拠する方法で管理できます。
 
 ### <a name="data-encryption-in-motion"></a>移動中のデータの暗号化
 
