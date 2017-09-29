@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 35132eae4d6a7f85b19a7a49ad4034e795d7df13
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 916652f2d6336da625be91431c3771a730204a73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
@@ -207,7 +207,7 @@ JSON Web トークンに関する詳細については、[JWT の IETF ドラフ
 | 要求の種類 | 説明 |
 | --- | --- |
 | aud |トークンの対象ユーザー。 クライアント アプリケーションにトークンが発行される場合、対象ユーザーは、クライアントの `client_id` です。 |
-| exp |期限切れ日時。 トークンの有効期限が切れる日時。 トークンを有効にするには、現在の日付/時刻が `exp` の値以前である必要があります。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |
+| exp |期限切れ日時。 トークンの有効期限が切れる日時。 トークンを有効にするには、現在の日付/時刻が `exp` の値以前である必要があります。 日時は、UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) からトークンが有効期限切れになるまでの秒数で表されます。|
 | family_name |ユーザーの姓。 アプリケーションでは、この値を表示できます。 |
 | given_name |ユーザーの名。 アプリケーションでは、この値を表示できます。 |
 | iat |発行日時。 JWT が発行された日時。 日時は UTC 1970 年 1 月 1 日 (1970-01-01T0:0:0Z) から、トークンが発行された日時までの秒数で表されます。 |

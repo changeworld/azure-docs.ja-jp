@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/17/2016
 ms.author: juanpere
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e22bd56e0d111add6ab4c08b6cc6e51c364c7f22
-ms.openlocfilehash: def3feb2760c0ec2bb9ff39c6ef8a85bb142a0a7
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: caab61a18fd5bb27ecc62cf1126823f79c3fdf4d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/19/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="get-started-with-device-management-netnode"></a>デバイス管理の開始 (.NET/Node)
@@ -40,7 +40,7 @@ ms.lasthandoff: 05/19/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* Node.js バージョン 0.12.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
+* Node.js バージョン 4.0.x 以降。 <br/>  「[Prepare your development environment (開発環境を準備する)][lnk-dev-setup]」では、このチュートリアルのために Node.js を Windows または Linux にインストールする方法が説明されています。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

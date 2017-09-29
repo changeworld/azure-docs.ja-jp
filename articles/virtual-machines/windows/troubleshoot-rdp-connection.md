@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
-ms.topic: support-article
+ms.topic: troubleshooting
 ms.date: 07/25/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 2c42ff5b7ab87e8ef8af2c244a1313fb55503c37
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: a4d2f0bd548ae98b564f1e0f23476cfde225c209
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Azure 仮想マシンへのリモート デスクトップ接続に関するトラブルシューティング
@@ -85,7 +85,7 @@ Windows ベースの Azure 仮想マシン (VM) に対するリモート デス�
     ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/reset-password.png)
 7. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
-    Azure Portal で VM を選択し、**[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
+    Azure Portal で VM を選択し、**[概要]** タブをクリックします。**[再起動]** ボタンをクリックします。
    
     ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/restart-vm.png)
 8. **アプリケーションを再デプロイする**。 このトラブルシューティングの手順では、プラットフォームやネットワークの根底にある問題を修正するために、Azure 内の別のホストに VM を再デプロイします。
@@ -215,7 +215,7 @@ RDP の問題が解決しない場合は、[サポート要求を申請](https:/
     ![Azure Portal でユーザーの資格情報をリセットする](./media/troubleshoot-rdp-connection/classic-reset-password.png)
 6. **VM を再起動する**。 このトラブルシューティングの手順では、VM 自体で発生している根底にある問題を修正できます。
    
-    Azure Portal で VM を選択し、**[概要]** タブをクリックします。 **[再起動]** ボタンをクリックします。
+    Azure Portal で VM を選択し、**[概要]** タブをクリックします。**[再起動]** ボタンをクリックします。
    
     ![Azure Portal で VM を再起動する](./media/troubleshoot-rdp-connection/classic-restart-vm.png)
 

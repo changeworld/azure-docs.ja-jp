@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 4e4483ce7473070591128375960daa2b2c26a55d
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 2af5be1c2250c3ec363b97c21bc3fa05c8ace984
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -227,7 +227,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![エラスティック プールの監視](./media/sql-database-elastic-pool-manage-portal/basic-3.png)
 
-**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] \(過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
+**[エラスティック データベースの監視]** の下にある **[eDTU usage for databases for the past hour] (過去 1 時間のデータベースの eDTU 使用率)** をクリックします。 これにより **[データベース リソース使用率]** が開き、プール内のデータベース使用率の詳細が表示されます。 ページ下部のグリッドを使用すると、プール内の任意のデータベース (最大 5 件) を選択して、その使用率をグラフに表示できます。 また、 **[グラフの編集]**をクリックすると、グラフに表示されるメトリックと時間範囲をカスタマイズできます。
 
 ![[データベース リソース使用率] ページ](./media/sql-database-elastic-pool-manage-portal/db-utilization.png)
 
@@ -239,7 +239,7 @@ Azure Portal では、エラスティック プールとそのプール内のデ
 
 ![[カスタム] をクリックする](./media/sql-database-elastic-pool-manage-portal/editchart-date-time.png)
 
-**[Compare databases by] \(データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
+**[Compare databases by] (データベースの比較項目)** ドロップダウンをクリックして、データベースを比較するときに使用する異なるメトリックを選択することもできます。
 
 ![グラフを編集する](./media/sql-database-elastic-pool-manage-portal/edit-comparison-metric.png)
 
@@ -375,7 +375,7 @@ SQL Database エラスティック プールを作成して管理するには、
 |[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
 |[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](/api/sql/databases/update)|既存のデータベースを更新します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 ## <a name="next-steps"></a>次のステップ
 

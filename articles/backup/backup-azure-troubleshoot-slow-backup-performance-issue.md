@@ -11,15 +11,14 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: ac68ae449a03b6d9e77e6093531a47c905654f16
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: f1aa4117b389bb127eb7235f69f587dcb715ac25
 ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
@@ -48,7 +47,7 @@ Windows には、これらのボトルネックを検出するための、 [パ�
 | カウンター | 状態 |
 | --- | --- |
 | Logical Disk(Physical Disk)--%idle |• 100 ～ 50% アイドル = 正常</br>• 49 ～ 20% アイドル = 警告または監視</br>• 19 ～ 0% アイドル = 重大または基準不適合 |
-| Logical Disk(Physical Disk)--%Avg. Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
+| Logical Disk(Physical Disk)--%Avg.Disk Sec Read or Write |• 0.001 ～ 0.015 ミリ秒 = 正常</br>• 0.015 ～ 0.025 ミリ秒 = 警告または監視</br>• 0.026 ミリ秒以上 = 重大または基準不適合 |
 | Logical Disk(Physical Disk)--Current Disk Queue Length (全インスタンス) |要求数が 80 件の状態が 6 分超 |
 | Memory--Pool Non Paged Bytes |• プールの 60% 未満を消費 = 正常<br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |
 | Memory--Pool Paged Bytes |• プールの 60% 未満を消費 = 正常</br>• プールの 61 ～ 80% を消費 = 警告または監視</br>• プールの 80% 超を消費 = 重大または基準不適合 |

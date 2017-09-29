@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: elioda
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: ca5ee2733df51faa5025c4d8eb687c81df4a3b4f
+ms.translationtype: HT
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 8f9626fc47e7d32cb104b960bea9b7de9efa6f3e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>必要なプロパティを使用してデバイスを構成する
@@ -37,7 +37,7 @@ ms.lasthandoff: 05/09/2017
 このチュートリアルを完了するには、以下が必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成することができます。
 
 [デバイス ツインの概要][lnk-twin-tutorial]に関するチュートリアルを行った場合は、既に IoT Hub と、**myDeviceId** というデバイス ID があります。 その場合は、「[シミュレートされたデバイス アプリを作成する]」[lnk-how-to-configure-createapp]セクションをスキップできます。

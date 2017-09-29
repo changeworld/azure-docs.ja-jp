@@ -15,17 +15,17 @@ ms.topic: article
 ms.date: 06/06/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7b125aeb9c0ee1dcbb199da98b0ce079820ea85c
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 42644bd97443e827b523503989b0b25d3d48028c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="enable-diagnostics-logging-for-web-apps-in-azure-app-service"></a>Azure App Service の Web アプリの診断ログの有効化
 ## <a name="overview"></a>概要
 Azure では、組み込みの診断機能により、 [App Service Web アプリ](http://go.microsoft.com/fwlink/?LinkId=529714)のデバッグを容易に行うことができます。 この記事では、診断ログを有効にしてインストルメンテーションをアプリケーションに追加する方法と、Azure によってログに記録された情報にアクセスする方法について説明します。
 
-この記事では、 [Azure ポータル](https://portal.azure.com)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
+この記事では、[Azure Portal](https://portal.azure.com)、Azure PowerShell、Azure コマンド ライン インターフェイス (Azure CLI) で診断ログを使用する方法を示します。 Visual Studio で診断ログを使用する方法の詳細については、「 [Visual Studio での Azure のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)」を参照してください。
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../includes/app-service-web-to-api-and-mobile.md)]
 
@@ -275,7 +275,7 @@ Web サーバー ログは [W3C 拡張ログ形式](http://msdn.microsoft.com/li
 >
 
 ## <a name="nextsteps"></a> 次のステップ
-* [Web Apps を監視する方法](http://docs.microsoft.com/en-us/azure/app-service-web/web-sites-monitor)
+* [Web Apps を監視する方法](web-sites-monitor.md)
 * [Visual Studio での Azure の Web Apps のトラブルシューティング](web-sites-dotnet-troubleshoot-visual-studio.md)
 * [HDInsight での Web アプリ ログの分析](http://gallery.technet.microsoft.com/scriptcenter/Analyses-Windows-Azure-web-0b27d413)
 

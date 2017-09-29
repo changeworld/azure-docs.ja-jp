@@ -17,17 +17,17 @@ ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: ac4dde8c175b1632de8c309f01f8dac7fde6426b
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 3a2fe08706ea5bea10da0c8f42188397a2f9f2f4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="use-powershell-to-sync-between-multiple-azure-sql-databases"></a>PowerShell を使用した複数の Azure SQL データベース間の同期
  
 この PowerShell サンプル スクリプトは、複数の Azure SQL データベース間で同期するデータ同期を構成します。
 
-このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このサンプルには、Azure PowerShell モジュール バージョン 4.2 以降が必要です。 インストールされているバージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)に関するページを参照してください。
  
 `Login-AzureRmAccount` を実行して、Azure との接続を作成します。 
 

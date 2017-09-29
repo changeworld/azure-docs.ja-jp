@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 07/05/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: f9003c65d1818952c6a019f81080d595791f63bf
-ms.openlocfilehash: 88ee5b5c4a57b67190f3da2ebc8aed0964b804d5
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 5fbad8beebfaef370ea766e07932f1927f1d42e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
@@ -80,7 +80,7 @@ Azure Portal または API を使用して LTR ポリシーをデータベース
 
 ## <a name="are-backups-encrypted"></a>バックアップは暗号化されますか?
 
-Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-with-azure-sql-database)」をご覧ください。
+Azure SQL データベースに対して TDE が有効になっているとき、バックアップも暗号化されます。 新しい Azure SQL データベースはすべて、既定で TDE が有効になった状態で構成されます。 TDE に関する詳細については、「[Azure SQL Database での Transparent Data Encryption](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

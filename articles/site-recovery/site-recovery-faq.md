@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 05/22/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2bdec82891bbd61e3526bd4498f802a0de068f87
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 95e31d0ca5983e0946ad6fb993e7a89a6a63d2c3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
@@ -113,7 +113,7 @@ Site Recovery は ISO 27001:2013、27018、HIPAA、DPA の認証を受けてお�
 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 レプリケーションは、サイト間 VPN 経由では実行されません。 サイト間 VPN は、Azure 仮想ネットワークで作成できます。 これは Site Recovery のレプリケーションに干渉しません。
 
 ### <a name="can-i-use-expressroute-to-replicate-virtual-machines-to-azure"></a>ExpressRoute を使用して Azure に仮想マシンをレプリケートできますか。
-はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#public-peering)を設定する必要があります。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#private-peering)を使用して、それらのマシンにアクセスできます。
+はい。ExpressRoute を使用して Azure に仮想マシンをレプリケートできます。 Azure Site Recovery は、パブリック エンドポイント経由で Azure ストレージ アカウントにデータをレプリケートします。 Site Recovery のレプリケーションに ExpressRoute を使うには、[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を設定する必要があります。 仮想マシンが Azure 仮想ネットワークにフェールオーバーされた後は、その Azure 仮想ネットワークでセットアップされた[プライベート ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-private-peering)を使用して、それらのマシンにアクセスできます。
 
 ### <a name="are-there-any-prerequisites-for-replicating-virtual-machines-to-azure"></a>仮想マシンを Azure にレプリケートするための前提条件はありますか。
 Azure にレプリケートする仮想マシンは、 [Azure 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に適合している必要があります。

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/02/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 532ff423ff53567b6ce40c0ea7ec09a689cee1e7
-ms.openlocfilehash: 5347bf85cad32b59677369d51a1f36529aef6662
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 0298a93da0d8cd0b1f2e15146a708c8dd6ecb8e6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/06/2017
-
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="azure-wcf-relay-tutorial"></a>Azure WCF Relay のチュートリアル
@@ -56,7 +55,7 @@ ms.lasthandoff: 06/06/2017
 
 3. Service Bus NuGet パッケージをインストールします。 WCF の **System.ServiceModel** と Service Bus ライブラリへの参照が、このパッケージによって自動的に追加されます。 [System.ServiceModel](https://msdn.microsoft.com/library/system.servicemodel.aspx) は、WCF の基本機能にプログラムでアクセスできるようにする名前空間です。 Service Bus は、サービス コントラクトの定義に WCF の多くのオブジェクトと属性を使用します。
 
-    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。
+    ソリューション エクスプローラーでプロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。**[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 対応するプロジェクト名が **[バージョン]** ボックスで選択されていることを確認します。 **[インストール]**をクリックして、使用条件に同意します。
 
     ![][3]
 4. エディターに Program.cs ファイルがまだ表示されていない場合は、ソリューション エクスプローラーでこのファイルをダブルクリックして開きます。
@@ -695,13 +694,11 @@ namespace Microsoft.ServiceBus.Samples
 
     コンソール ウィンドウの出力例を次に示します。 ここで示されている値は例での使用のみを目的としています。
 
-    `Your Service Namespace: myNamespace`
-    `Your SAS Key: <SAS key value>`
+    `Your Service Namespace: myNamespace` `Your SAS Key: <SAS key value>`
 
     次の例に示すように、サービス アプリケーションによってリッスンされているアドレスがコンソール ウィンドウに出力されます。
 
-    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/`
-    `Press [Enter] to exit`
+    `Service address: sb://mynamespace.servicebus.windows.net/EchoService/` `Press [Enter] to exit`
 10. **[EchoClient]** コンソール ウィンドウに、先ほどサービス アプリケーションについて入力したものと同じ情報を入力します。 前の手順に従い、クライアント アプリケーションについても同じサービス名前空間と SAS キーの値を入力してください。
 11. これらの値を入力すると、クライアントはサービスに対するチャネルを開き、次のコンソール出力例に示すように、なんらかのテキストを入力するよう求めます。
 
@@ -725,8 +722,6 @@ Azure Relay の詳細については、次のトピックを参照してくだ�
 * [Azure Service Bus アーキテクチャの概要](../service-bus-messaging/service-bus-fundamentals-hybrid-solutions.md#relays)
 * [Azure Relay の概要](relay-what-is-it.md)
 * [.NET で WCF リレー サービスを使用する方法](relay-wcf-dotnet-get-started.md)
-
-[Azure classic portal]: http://manage.windowsazure.com
 
 [2]: ./media/service-bus-relay-tutorial/create-console-app.png
 [3]: ./media/service-bus-relay-tutorial/install-nuget.png

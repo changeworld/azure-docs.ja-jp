@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5631484bd2106ab5abff79dd3cbbf539c62bb164
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: c2c95373912131445b584fa8518785b26caa9c02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="glossary-of-iot-hub-terms"></a>IoT Hub 用語集
@@ -44,7 +44,7 @@ IoT Edge では、ゲートウェイに接続されたデバイスと [IoT Hub](
 複数の言語で使用可能な_サービス SDK_ があり、IoT Hub と対話する[バックエンド アプリ](#back-end-app)を作成できます。 IoT Hub のチュートリアルでは、これらのサービス SDK を使用する方法を説明します。 サービス SDK のソース コードと詳細については、この GitHub [リポジトリ](https://github.com/Azure/azure-iot-sdks)を参照してください。
 
 ## <a name="azure-portal"></a>Azure Portal
-Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_を使用してそのコンテンツを整理します。 IoT Hub チュートリアルの一部では、[Azure クラシック ポータル](https://manage.windowsazure.com)を使用することが求められる場合があります。
+Azure リソースのプロビジョニングと管理は、[Microsoft Azure Portal](https://portal.azure.com) を使って 1 か所で行うことができます。 Azure Portal は、_ブレード_を使用してそのコンテンツを整理します。
 
 ## <a name="azure-powershell"></a>Azure PowerShell
 [Azure PowerShell](/powershell/azure/overview) は、Windows PowerShell で Azure を管理するために使用できるコマンドレットのコレクションです。 このコマンドレットを使用して、Azure Platform から配信されるソリューションやサービスを、作成、テスト、デプロイ、管理できます。

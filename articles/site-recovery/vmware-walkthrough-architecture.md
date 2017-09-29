@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27.017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: 4aae04a793bab11562c20ceec0e1ae8f1a035a0f
+ms.translationtype: HT
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 2bbab5f1ac0efe9632ad6c818504584e2503cf15
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -48,15 +48,15 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="replication-process"></a>レプリケーション プロセス
 
-1. オンプレミスのコンポーネントと Azure コンポーネントを含むデプロイをセットアップします。 Recovery Services コンテナーでは、レプリケーションのソースとターゲットの指定、構成サーバーのセットアップ、レプリケーション ポリシーの作成、モビリティ サービスのデプロイ、レプリケーションの有効化、テスト フェールオーバーの実行を行います。
+1. オンプレミスのコンポーネントと Azure コンポーネントを含むデプロイをセットアップします。 Recovery Services コンテナーで、レプリケーションのソースとターゲットの指定、構成サーバーのセットアップ、レプリケーション ポリシーの作成、モビリティ サービスのデプロイ、レプリケーションの有効化、およびテスト フェールオーバーを行います。
 2. レプリケーション ポリシーに従ってマシンがレプリケートされると、データの初回コピーが Azure Storage にレプリケートされます。
-3. 初期レプリケーションの終了後、Azure への差分変更のレプリケーションが開始されます。 マシンの追跡された変更は .hrl ファイルに保持されます。
+3. 初回のレプリケーションの終了後、Azure への差分変更のレプリケーションが開始されます。 マシンの追跡された変更は .hrl ファイルに保持されます。
     - レプリケートするマシンは、レプリケーション管理のために、受信ポート HTTPS 443 で構成サーバーと通信します。
     - レプリケートするマシンは、受信ポート HTTPS 9443 でレプリケーション データをプロセス サーバーに送信します (変更可能)。
     - 構成サーバーは、送信ポート HTTPS 443 経由で Azure によるレプリケーション管理を調整します。
     - プロセス サーバーは、ソース マシンからデータを受信し、そのデータを最適化して暗号化し、送信ポート 443 を介して Azure Storage に送信します。
     - マルチ VM 整合性を有効にすると、レプリケーション グループ内のマシンは、ポート 20004 を介して相互に通信します。 フェールオーバー時にクラッシュ整合性復旧ポイントとアプリ整合性復旧ポイントを共有するレプリケーション グループに複数のマシンをグループ化する場合にマルチ VM が使用されます。 これは、これらのマシンが同じワークロードを実行していて、一貫性を持たせる必要がある場合に役立ちます。
-4. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#public-peering)を使用することもできます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
+4. トラフィックは、インターネット経由で Azure Storage のパブリック エンドポイントにレプリケートされます。 また、Azure ExpressRoute の[パブリック ピアリング](../expressroute/expressroute-circuit-peerings.md#azure-public-peering)を使用することもできます。 オンプレミス サイトから Azure へのサイト間 VPN を介したトラフィックのレプリケートはサポートされていません。
 
 
 **図 2: VMware から Azure へのレプリケーション**
@@ -86,5 +86,5 @@ ms.lasthandoff: 06/29/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-[手順 2: 前提条件と制限事項を確認する](vmware-walkthrough-prerequisites.md)方法に関するページに進む
+「[手順 2: 前提条件と制限事項を確認する](vmware-walkthrough-prerequisites.md)」に進みます。
 

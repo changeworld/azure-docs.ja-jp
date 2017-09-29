@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/30/2017
 ms.author: nberdy
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: 9bf02ff15d973ea2c9f00815558507c66c049159
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 76f1d32b4afeacae1488b4cf28be6c8cf7f4ea37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-direct-methods-netnode"></a>ダイレクト メソッドを使用する (.NET/Node)
@@ -37,7 +37,7 @@ ms.lasthandoff: 08/31/2017
 このチュートリアルを完了するには、次のものが必要です。
 
 * Visual Studio 2015 または Visual Studio 2017。
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]

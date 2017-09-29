@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 633b88761de4d2c99cfd196cfac8e664fc83c546
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 67c11277142d6616fe77179e03b55ed08993b818
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した Azure Cosmos DB と Azure App Service Web Apps のデプロイ
@@ -138,7 +138,6 @@ Azure Resource Manager テンプレートを使用して、Azure リソースの
 
 ## <a name="whats-changed"></a>変更内容
 * Websites から App Service への変更ガイドについては、「 [Azure App Service と既存の Azure サービス](http://go.microsoft.com/fwlink/?LinkId=529714)
-* 以前のポータルから新しいポータルへの変更ガイドについては、「 [Azure クラシック ポータル内の移動に関するリファレンス](http://go.microsoft.com/fwlink/?LinkId=529715)
 
 > [!NOTE]
 > Azure アカウントにサインアップする前に Azure App Service の使用を開始したい場合は、「[Azure App Service アプリケーションの作成](http://go.microsoft.com/fwlink/?LinkId=523751)」を参照してください。そこでは、App Service で有効期間の短いスターター Web アプリをすぐに作成できます。 このサービスの利用にあたり、クレジット カードは必要ありません。契約も必要ありません。
