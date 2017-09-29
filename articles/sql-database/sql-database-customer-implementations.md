@@ -16,10 +16,10 @@ ms.workload: NA
 ms.date: 03/03/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3db5be35b3087bbbe87e623a623e7a10156b932f
+ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
+ms.openlocfilehash: 74b04cb7737011423556cbd956ecef770ac82ad4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/09/2017
 
 ---
 # <a name="azure-sql-database-customer-implementation-technical-studies"></a>Azure SQL Database 顧客実装技術スタディ
@@ -37,4 +37,6 @@ ms.lasthandoff: 07/21/2017
 - [Quest](https://customers.microsoft.com/en-US/story/quest): Quest 社では 1 つの目標を念頭に置いて、Spotlight on SQL Server Enterprise サービスを提供しています。その目標とは、データの保護、そのデータの移動、およびデータベース操作の監視に使用できる最適なツールをデータベースの専門家に提供することです。 Spotlight と Microsoft Azure および Azure SQL Database を使用することで、SQL Server データベース管理者は職場や自宅などの場所を問わず、SQL Server におけるパフォーマンスの問題を監視、検出、診断でき、問題を解決するための方法を提供できます。
 
 - [Microsoft Dynamics](https://customers.microsoft.com/story/dynamics365operationsproductteam): この簡単なケース スタディは、完全に管理されたサービスとしてのソフトウェア (SaaS) オファリングをお客様に提供するために、Dynamics 365 for Operations 製品チームが Azure SQL Database に移行した経験から得たベスト プラクティスと教訓に重点を置いています。 Azure SQL Database を使用することで、Dynamics 365 for Operations チームは非常に少ない人員でサービスを管理および運営し、データベースの自動バックアップ、データベースのバックアップ保持、高可用性およびディザスター リカバリー機能など、すぐに使用できる管理容易性機能を利用して簡単にスケーリングすることができました。 単純な自動化によるデータベースのプロビジョニング機能と共に使用することで、Azure SQL Database は大規模なサービスに対応できる優れたプラットフォームとなりました。
+
+- [Microsoft OneDrive および SharePoint Online](https://customers.microsoft.com/story/microsoft-azure-sql-database-dicrete-manufacturing-united-states): このケース スタディの要約は、Microsoft OneDrive と SharePoint Online の Azure SQL Database への移行に関する背景事情と、この移行によってほぼ無制限のエラスティックな容量管理が可能になり、運用コストとインフラストラクチャのオーバーヘッドも大幅に削減できるようになった方法を説明しています。
 

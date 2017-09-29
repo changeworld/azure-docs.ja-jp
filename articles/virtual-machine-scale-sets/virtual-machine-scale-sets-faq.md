@@ -13,14 +13,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/20/2017
+ms.date: 9/14/2017
 ms.author: negat
 ms.custom: na
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f320dd5d1f8c99317792f4ae9e09bc5adaf79e25
+ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
+ms.openlocfilehash: cc5a0ba5474827cedc5b6a42651c206d5f2540b7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 
@@ -329,7 +329,7 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 
 
-## <a name="compliance"></a>コンプライアンス
+## <a name="compliance-and-security"></a>コンプライアンスとセキュリティ
 
 ### <a name="are-virtual-machine-scale-sets-pci-compliant"></a>仮想マシン スケール セットは PCI 準拠ですか。
 
@@ -339,9 +339,9 @@ Base64 文字列として証明書を渡す動作をエミュレートするに�
 
 詳細については、[Microsoft セキュリティ センター](https://www.microsoft.com/TrustCenter/Compliance/PCI)を参照してください。
 
+### <a name="does-azure-managed-service-identityhttpsdocsmicrosoftcomazureactive-directorymsi-overview-work-with-vm-scale-sets"></a>[Azure 管理対象サービス ID](https://docs.microsoft.com/azure/active-directory/msi-overview) は VM スケール セットでも機能しますか。
 
-
-
+はい。 Azure Quickstart テンプレートで、いくつかのサンプル MSI テンプレートを確認できます。 Linux: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-linux)。 Windows: [https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-msi-windows)。
 
 
 ## <a name="extensions"></a>拡張機能
@@ -510,7 +510,7 @@ Update-AzureRmVmss -ResourceGroupName $rgname -Name $vmssname -VirtualMachineSca
 
 ### <a name="how-do-i-do-a-vip-swap-for-virtual-machine-scale-sets-in-the-same-subscription-and-same-region"></a>同じサブスクリプションで同じリージョンの仮想マシン スケール セットの VIP スワップを実行するにはどうすればよいですか。
 
-2 つの仮想マシン スケール セットと Azure Load Balancer フロントエンドがあり、それらが同じサブスクリプションおよびリージョンにある場合、それぞれのパブリック IP アドレスの割り当てを解除し、もう一方に割り当てることができます。 例については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。 しかし、この場合、リソースの割り当て解除/割り当てがネットワーク レベルで行われるため、遅延が生じます。 高速なオプションは、Azure Application Gateway と 2 つのバックエンド プールおよびルーティング規則を使うものです。 または、[Azure App Service](https://azure.microsoft.com/en-us/services/app-service/) でアプリケーションをホストすることもできます。このサービスでは、ステージング スロットと運用スロット間のすばやい切り替えをサポートしています。
+2 つの仮想マシン スケール セットと Azure Load Balancer フロントエンドがあり、それらが同じサブスクリプションおよびリージョンにある場合、それぞれのパブリック IP アドレスの割り当てを解除し、もう一方に割り当てることができます。 例については、「[VIP Swap: Blue-green deployment in Azure Resource Manager (VIP スワップ: Azure Resource Manager での Blue-green デプロイ)](https://msftstack.wordpress.com/2017/02/24/vip-swap-blue-green-deployment-in-azure-resource-manager/)」を参照してください。 しかし、この場合、リソースの割り当て解除/割り当てがネットワーク レベルで行われるため、遅延が生じます。 高速なオプションは、Azure Application Gateway と 2 つのバックエンド プールおよびルーティング規則を使うものです。 または、[Azure App Service](https://azure.microsoft.com/services/app-service/) でアプリケーションをホストすることもできます。このサービスでは、ステージング スロットと運用スロット間のすばやい切り替えをサポートしています。
  
 ### <a name="how-do-i-specify-a-range-of-private-ip-addresses-to-use-for-static-private-ip-address-allocation"></a>静的プライベート IP アドレスの割り当て用に、プライベート IP アドレスの範囲を指定するにはどうすればよいですか。
 

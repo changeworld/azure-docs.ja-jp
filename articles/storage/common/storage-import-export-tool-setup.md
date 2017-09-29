@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5b73fec119a88cd86e68537199e7567afa3fdba8
+ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
+ms.openlocfilehash: 6b5febd051d0b956c90cb14c260dda1881adac3f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/07/2017
 
 ---
 
@@ -40,7 +40,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
 * Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システムがインストールされているコンピューター ("コピー用コンピューター") が必要です。
 * .NET Framework 4 をコピー用コンピューターにインストールする必要があります。
 * コピー用コンピューターで BitLocker を有効にする必要があります。
-* コピー用マシンに接続されている 1 台以上の空の 3.5 インチ SATA ハード ドライブが必要です。
+* コピー用マシンに接続されている 1 台以上の空の 2.5 インチまたは 3.5 インチの SATA II/III ハード ドライブまたは SSD ドライブが必要です。
 * インポートするファイル (ネットワーク共有とローカル ハード ドライブのどちらにある場合でも) にコピー用コンピューターからアクセス可能であることが必要です。
 
 部分的に失敗した**インポートを修復する**場合は、以下が必要です。

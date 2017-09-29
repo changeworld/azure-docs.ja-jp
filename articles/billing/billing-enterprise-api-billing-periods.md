@@ -3,7 +3,7 @@ title: "Azure Billing Enterprise API - 請求期間 |Microsoft Docs"
 description: "Enterprise Azure の顧客がプログラムで消費データを取り出せるようにする Reporting API について説明します。"
 services: 
 documentationcenter: 
-author: aedwin
+author: cwatson-cat
 manager: aedwin
 editor: 
 tags: billing

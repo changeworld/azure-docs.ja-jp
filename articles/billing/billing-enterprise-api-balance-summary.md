@@ -3,7 +3,7 @@ title: "Azure Billing Enterprise API - 残高とサマリー |Microsoft Docs"
 description: "Azure Billing Usage API と RateCard API について説明します。これらの API を使用すると、Azure のリソース消費と傾向を把握できます。"
 services: 
 documentationcenter: 
-author: aedwin
+author: cwatson-cat
 manager: aedwin
 editor: 
 tags: billing
