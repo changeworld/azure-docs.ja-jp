@@ -3,7 +3,7 @@ title: "Azure における複数の IP 構成での負荷分散 | Microsoft Docs
 description: "プライマリ IP 構成とセカンダリ IP 構成の間の負荷分散。"
 services: load-balancer
 documentationcenter: na
-author: kumudd
+author: KumudD
 manager: timlt
 editor: na
 ms.assetid: 244907cd-b275-4494-aaf7-dcfc4d93edfe
@@ -12,12 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 03/22/2017
+ms.date: 09/25/2017
 ms.author: kumud
-translationtype: Human Translation
-ms.sourcegitcommit: 1429bf0d06843da4743bd299e65ed2e818be199d
-ms.openlocfilehash: cf1e68c7b37b2506de007bdf24eea63a27187a33
-ms.lasthandoff: 03/22/2017
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8c0fc8d11a872b99fee2efa3a32a9e1ccce67f3c
+ms.contentlocale: ja-jp
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,7 +29,9 @@ ms.lasthandoff: 03/22/2017
 > * [PowerShell](load-balancer-multiple-ip-powershell.md)
 > * [CLI](load-balancer-multiple-ip-cli.md)
 
-この記事では、1 つのセカンダリ ネットワーク インターフェイス (NIC) に複数の IP アドレスがある Azure Load Balancer の使用方法について説明します。このシナリオには、Windows を実行する 2 つの VM があり、各 VM にプライマリ NIC とセカンダリ NIC が 1 つずつ存在します。 セカンダリ NIC には、どちらも 2 つの IP 構成が割り当てられています。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。 それぞれの Web サイトは、セカンダリ NIC の IP 構成の 1 つにバインドされています。 ここで、Azure Load Balancer を使用して、それぞれの Web サイト用に 2 つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
+[!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
+
+この記事では、1 つのセカンダリ ネットワーク インターフェイス (NIC) に複数の IP アドレスがある Azure Load Balancer の使用方法について説明します。このシナリオには、Windows を実行する 2 つの VM があり、各 VM にプライマリ NIC とセカンダリ NIC が 1 つずつ存在します。 セカンダリ NIC にはそれぞれ 2 つの IP 構成が割り当てられています。 それぞれの VM は、contoso.com と fabrikam.com の両方の Web サイトをホストします。それぞれの Web サイトは、セカンダリ NIC の IP 構成の 1 つにバインドされています。 ここで、Azure Load Balancer を使用して、それぞれの Web サイト用に 2 つのフロントエンド IP アドレスを公開して、トラフィックを Web サイトのそれぞれの IP 構成に分散します。 このシナリオでは、両方のバックエンド プール IP アドレスに加えて、両方のフロントエンドで同じポート番号を使用します。
 
 ![LB シナリオの画像](./media/load-balancer-multiple-ip/lb-multi-ip.PNG)
 
@@ -81,9 +84,9 @@ ms.lasthandoff: 03/22/2017
 3. ポータルで、**[その他のサービス]** をクリックし、フィルター ボックスに「**ロード バランサー**」と入力して、**[ロード バランサー]** をクリックします。  
 4. フロントエンド IP プールを追加するロード バランサー (*mylb*) を選択します。
 5. **[設定]** で、**[Frontend Pools (フロントエンド プール)]** を選択します。 表示されたブレードの上部にある **[追加]** をクリックします。
-6. フロントエンド IP アドレスの名前 (*farbikamfe* または **contosofe*) を入力します。
+6. フロントエンド IP アドレスの名前 (*farbikamfe* または *contosofe*) を入力します。
 7. **[IP アドレス]** をクリックし、**[パブリック IP アドレスの選択]** ブレードで、フロントエンドの IP アドレス (*PublicIP1* または *PublicIP2*) を選択します。
-8. このセクションの手順 3. ～ 7. を繰り返して、2 つ目のフロントエンド IP アドレスを作成します。
+8. 2 つ目のフロントエンド IP アドレスを作成するには、このセクションの手順 3. ～ 7. を繰り返します。
 9. フロントエンド IP プールの構成が完了すると、両方のフロントエンド IP アドレスがロード バランサーの **[フロントエンド IP プール]** ブレードに表示されます。 
     
 ### <a name="step-4-configure-the-backend-pool"></a>手順 4: バックエンド プールを構成する   
@@ -119,13 +122,13 @@ ms.lasthandoff: 03/22/2017
 4. **[ポート]** と **[バックエンド ポート]** については、既定値の **80** のままにします。
 5. **[フローティング IP (ダイレクト サーバー リターン)]** で、**[有効]** をクリックします。
 6. **[OK]**をクリックします。
-7. このセクションの手順 1. ～ 6. を繰り返して、2 つ目の負荷分散規則を作成します。
+7. 2 つ目のロード バランサー規則を作成するには、このセクションの手順 1. ～ 6. を繰り返します。
 8. 負荷分散規則の構成が完了すると、両方の規則 (*HTTPc* と *HTTPf*) がロード バランサーの **[負荷分散規則]** ブレードに表示されます。
 
 ### <a name="step-7-configure-dns-records"></a>手順 7: DNS レコードを構成する
 最後に、ロード バランサーの各フロントエンド IP アドレスを指すように DNS リソース レコードを構成する必要があります。 ドメインを Azure DNS でホストする場合もあります。 Azure DNS を Load Balancer で使用する方法の詳細については、「[Azure DNS を他の Azure サービスで使用する](../dns/dns-for-azure-services.md)」を参照してください。
 
 ## <a name="next-steps"></a>次のステップ
-- Azure で負荷分散サービスを組み合わせて使用する方法の詳細については、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」を参照してください。
-- Azure の各種ログを使用して、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」を参照してください。
+- Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
+- 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」を参照してください。
 

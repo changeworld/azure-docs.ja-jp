@@ -10,7 +10,7 @@ ms.topic: article
 ms.workload: web
 ms.date: 08/02/2017
 ms.author: routlaw
-ms.custom: Jenkins
+ms.custom: Jenkins, devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: dcc60feb4c0b3a961689f3d365d49ac1690696a6

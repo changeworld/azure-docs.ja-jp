@@ -16,7 +16,7 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/06/2017
 ms.author: glenga
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 8baa8e950164de64d1cd91c0c5bb51d324bbc807

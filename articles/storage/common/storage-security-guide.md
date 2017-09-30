@@ -3,7 +3,7 @@ title: "Azure Storage セキュリティ ガイド | Microsoft Docs"
 description: "RBAC、Storage Service Encryption、クライアント側の暗号化、SMB 3.0、Azure Disk Encryption など、Azure Storage をセキュリティで保護するさまざまな方法について、詳しく説明します。"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 6f931d94-ef5a-44c6-b1d9-8a3c9c327fb2
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e71d9baf36ea7acb8dc8fa1daf9ddde3a2856f85
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: c4a0b047ce5c6706b51e96e8cc160c610625869e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
@@ -157,11 +157,14 @@ Azure Key Vault を使用するもう 1 つの利点は、Azure Active Directory
   この記事では、Active Directory を使用して、Azure Key Vault 内の Azure Storage キーへのアクセスを制限する方法について説明しています。 また、Azure Automation ジョブを使用して 1 時間ごとにキーを再生成する方法についても説明しています。
 
 ## <a name="data-plane-security"></a>データ プレーンのセキュリティ
-データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。 これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトへのアクセスを許可するにはどうすればよいのでしょうか。
+データ プレーンのセキュリティとは、Azure Storage に格納されているデータ オブジェクト (BLOB、キュー、テーブル、ファイル) をセキュリティで保護するために使用される方法のことを指します。 これまで、データの転送中にデータを暗号化する方法とセキュリティについて説明してきましたが、オブジェクトへのアクセスを制御するにはどうすればよいのでしょうか。
 
-データ オブジェクト自体に対するアクセスを制御するには、基本的に 2 つの方法があります。 1 つ目は、ストレージ アカウント キーに対するアクセスを制御する方法です。2 つ目は、Shared Access Signature を使用して、一定期間、特定のデータ オブジェクトに対するアクセス権を付与する方法です。
+データ オブジェクト自体に対するアクセスを承認するには、2 つの方法があります。 ストレージ アカウント キーに対するアクセスを制御する方法と、Shared Access Signature を使用して、一定期間、特定のデータ オブジェクトに対するアクセス権を付与する方法です。
 
-注意しなければならない例外が 1 つあります。それは、BLOB に対してパブリック アクセスを許可するには、その BLOB を保持するコンテナーのアクセス レベルを設定するという点です。 コンテナーから BLOB またはコンテナーに対するアクセス権を設定すると、そのコンテナー内の BLOB に対してパブリック読み取りアクセスが許可されます。 つまり、誰でも、そのコンテナー内の BLOB を指す URL をブラウザーで開くことができます。Shared Access Signature を使用する必要や、ストレージ アカウント キーを持っている必要はありません。
+さらに、Blob Storage の場合、BLOB に対してパブリック アクセスを許可するには、その BLOB を保持するコンテナーのアクセス レベルを設定します。 コンテナーから BLOB またはコンテナーに対するアクセス権を設定すると、そのコンテナー内の BLOB に対してパブリック読み取りアクセスが許可されます。 つまり、誰でも、そのコンテナー内の BLOB を指す URL をブラウザーで開くことができます。Shared Access Signature を使用する必要や、ストレージ アカウント キーを持っている必要はありません。
+
+承認を使用してアクセスを制限する以外に、[ファイアウォールと仮想ネットワーク](storage-network-security.md)を使用し、ネットワーク ルールに基づいてストレージ アカウントへのアクセスを制限する方法もあります。  このアプローチを使用すると、パブリック インターネット トラフィックに対するアクセスを拒否し、特定の Azure Virtual Network またはパブリック インターネット IP アドレスの範囲にのみアクセスを許可することができます。
+
 
 ### <a name="storage-account-keys"></a>ストレージ アカウント キー
 ストレージ アカウント キーは、Azure で作成される 512 ビットの文字列です。ストレージ アカウント名と共に使用して、ストレージ アカウントに保存されているデータ オブジェクトへのアクセスに使用できます。
@@ -243,15 +246,7 @@ Shared Access Signature と Stored Access Policy の詳細な使用方法と例�
   * [Shared Access Signature、第 2 部: BLOB サービスによる SAS の作成および使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 
     この記事には、SAS モデルの説明、Shared Access Signature の例、Shared Access Signature のベスト プラクティスの使用の推奨が含まれています。 また、付与されたアクセス許可の無効化についても説明しています。
-* IP アドレスによってアクセスを制御する (IP ACL)
 
-  * [エンドポイント アクセス制御リスト (ACL) とは](../../virtual-network/virtual-networks-acl.md)
-  * [Constructing a Service SAS (サービス SAS の構築)](https://msdn.microsoft.com/library/azure/dn140255.aspx)
-
-    サービスレベル SAS の参照記事です。IP ACL 処理の例も紹介されています。
-  * [Constructing an Account SAS (アカウント SAS の構築)](https://msdn.microsoft.com/library/azure/mt584140.aspx)
-
-    アカウントレベル SAS の参照記事です。IP ACL 処理の例も紹介されています。
 * 認証
 
   * [Azure Storage サービスの認証](https://msdn.microsoft.com/library/azure/dd179428.aspx)
@@ -268,22 +263,21 @@ REST API を呼び出すときや、ストレージ内のオブジェクトに�
 ストレージ アカウントの [[安全な転送が必須]](../storage-require-secure-transfer.md) を有効にすると、ストレージ アカウント内のオブジェクトにアクセスするための REST API を呼び出す際に HTTPS の使用を強制することができます。 このオプションを有効にすると、HTTP を使った接続は拒否されます。
 
 ### <a name="using-encryption-during-transit-with-azure-file-shares"></a>Azure ファイル共有での転送中に暗号化を使用する
-Azure File Storage は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.0 は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、および Windows 10 で使用できるので、リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。
+Azure Files は、REST API の使用時に HTTPS をサポートしていますが、VM にアタッチされる SMB ファイル共有として使用する方が一般的です。 SMB 2.1 は暗号化をサポートしていないので、Azure の同じリージョン内でのみ接続が許可されます。 一方、SMB 3.0 は暗号化をサポートしており、Windows Server 2012 R2、Windows 8、Windows 8.1、および Windows 10 で使用できるので、リージョンをまたがるアクセスや、デスクトップ上のアクセスも許可されます。
 
 Azure ファイル共有は Unix で使用できますが、Linux SMB クライアントはまだ暗号化をサポートしていないため、アクセスは Azure リージョン内でのみ許可されます。 Linux での暗号化のサポートは、SMB 機能を担当している Linux 開発者によって実装される予定です。 暗号化を追加すると、Linux で Azure ファイル共有にアクセスした場合に、Windows と同じ機能を利用できるようになります。
 
 ストレージ アカウントの [[安全な転送が必須]](../storage-require-secure-transfer.md) を有効にすると、Azure Files サービスでの暗号化の使用を強制することができます。 REST API を使う場合は、HTTPS が必須となります。 SMB に関しては、暗号化をサポートした SMB 接続しか正常に接続できなくなります。
 
 #### <a name="resources"></a>リソース
-* [Linux で Azure File Storage を使用する方法](../storage-how-to-use-files-linux.md)
+* [Azure Files の概要](../files/storage-files-introduction.md)
+* [Windows で Azure Files を使用する](../files/storage-how-to-use-files-windows.md)
+
+  この記事では、Azure ファイル共有の概要と、Windows 上でマウントし、使用する方法について説明しています。
+
+* [Linux で Azure Files を使用する方法](../files/storage-how-to-use-files-linux.md)
 
   この記事では、Azure ファイル共有を Linux システムにマウントし、ファイルをアップロード/ダウンロードする方法について説明しています。
-* [Windows で Azure File Storage を使用する](../storage-dotnet-how-to-use-files.md)
-
-  この記事では、Azure ファイル共有の概要と、PowerShell と .NET を使用してマウントし、使用する方法について説明しています。
-* [Inside Azure File Storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
-
-  この記事では、Azure File Storage の一般公開を発表し、SMB 3.0 の暗号化について詳細な技術情報を提供しています。
 
 ### <a name="using-client-side-encryption-to-secure-data-that-you-send-to-storage"></a>クライアント側の暗号化を使用してストレージに送信するデータをセキュリティで保護する
 クライアント アプリケーションと Storage 間でデータが転送されるときにセキュリティで保護するためのもう 1 つのオプションは、クライアント側の暗号化です。 データは暗号化されてから、Azure Storage に転送されます。 Azure Storage からデータを取得するときは、クライアント側で受け取った後にデータが暗号化されます。 データの転送時に暗号化される場合でも、HTTPS も使用することをお勧めします。データ整合性チェックが組み込まれるので、データの整合性に影響があるネットワーク エラーを軽減することができます。
@@ -350,7 +344,7 @@ Azure Disk Encryption は、新しい機能です。 この機能を使用する
 * Linux IaaS VM の OS ドライブの暗号化を無効にする
 * 従来の VM の作成方法を使用して作成された IaaS VM
 * オンプレミス キー管理サービスとの統合
-* Azure File Storage (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
+* Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
 
 
 > [!NOTE]

@@ -1,5 +1,5 @@
 ---
-title: "Linux で Azure File Storage を使用する | Microsoft Docs"
+title: "Linux で Azure Files を使用する | Microsoft Docs"
 description: "Linux で SMB 経由で Azure File 共有をマウントする方法。"
 services: storage
 documentationcenter: na
@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 3/8/2017
+ms.date: 09/19/2017
 ms.author: renash
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: d8987082c559a374b8d19fd69e20cf5e81cb25ef
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 6c80c6814dacf90a0a50dab691899c3a8cc2bf82
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="use-azure-file-storage-with-linux"></a>Linux で Azure File Storage を使用する
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) は、Microsoft の使いやすいクラウド ファイル システムです。 [Samba プロジェクト](https://www.samba.org/) の[cifs-utils パッケージ](https://wiki.samba.org/index.php/LinuxCIFS_utils)を使用して、Linux ディストリビューションに Azure File 共有をマウントできます。 この記事では、Azure File 共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
+# <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
+[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 [Samba プロジェクト](https://www.samba.org/) の[cifs-utils パッケージ](https://wiki.samba.org/index.php/LinuxCIFS_utils)を使用して、Linux ディストリビューションに Azure File 共有をマウントできます。 この記事では、Azure File 共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
 
 > [!NOTE]  
 > Azure File 共有がホストされている Azure リージョン以外の場所 (オンプレミスや他の Azure リージョンなど) に Azure File 共有をマウントするには、OS が SMB 3.0 の暗号化機能をサポートしている必要があります。 Linux 用の SMB 3.0 の暗号化機能は 4.11 カーネルで導入されました。 この機能によって、オンプレミスから、または異なる Azure リージョンから Azure ファイル共有をマウントできます。 この機能は、公開時に 16.04 以上の Ubuntu に移植されました。
@@ -108,10 +108,10 @@ ms.lasthandoff: 08/25/2017
 ## <a name="feedback"></a>フィードバック
 Linux ユーザーからのご意見をお待ちしています。
 
-Azure File storage for Linux ユーザーのグループによって、File ストレージを Linux で評価および使用するときにフィードバックを共有できるフォーラムが提供されています。 [Azure File Storage Linux ユーザー](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
+Azure Files for Linux ユーザーのグループによって、File Storage を Linux で評価および導入するときにフィードバックを共有できるフォーラムが提供されています。 [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure File Storage の詳細については、次のリンクを参照してください。
+Azure Files について詳しくは、次のリンクをご覧ください。
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 * [Microsoft Azure Storage で AzCopy を使用する方法](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Storage での Azure CLI の使用](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)

@@ -206,12 +206,15 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
    
     ```
     var twinPatch = {
-        etag: '*',
-        desired: {
-            building: '43',
-            floor: 3
-        }
+       etag: '*', 
+       properties: {
+           desired: {
+               building: '43', 
+               floor: 3
+           }
+       }
     };
+   
    
     var twinJobId = uuid.v4();
    

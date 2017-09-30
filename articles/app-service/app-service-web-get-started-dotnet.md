@@ -14,7 +14,7 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 107b0a73c7f544aebd0ee685fd1d726d1420495d

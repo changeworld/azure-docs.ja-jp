@@ -261,7 +261,7 @@ PS C:\> $MPG = Get-ModifiableProtectionGroup $PG
 DPM エージェントがインストールされており、DPM サーバーによって管理されるサーバーの一覧を、 [Get-DPMProductionServer](https://technet.microsoft.com/library/hh881600) コマンドレットを使用して取得します。 この例では、フィルター処理をして *productionserver01* という名前を持つ PS のみをバックアップ用に構成します。
 
 ```
-PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”
+PS C:\> $server = Get-ProductionServer -DPMServerName "TestingServer" | where {($_.servername) –contains “productionserver01”}
 ```
 
 [Get-DPMDatasource](https://technet.microsoft.com/library/hh881605) コマンドレットを使用して ```$server``` のデータソースの一覧を取得します。 この例では、バックアップ用に構成するボリューム *D:\* をフィルター処理します。 次に、このデータソースを [Add-DPMChildDatasource](https://technet.microsoft.com/library/hh881732) コマンドレットを使用して保護グループに追加します。 "*変更可能な*" 保護グループ オブジェクト ```$MPG``` を使用して、忘れずに追加します。
