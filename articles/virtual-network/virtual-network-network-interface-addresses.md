@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 17ddb30c87d757176ce9428264135252c02bf713
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 254d5d43f0f665f64ddfe276fe31702f66f16758
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -189,6 +189,13 @@ IPv4 アドレスの割り当て方法の変更、静的 IPv4 アドレスの変
 > ポータルを使用して IPv6 アドレスを割り当てたネットワーク インターフェイスを作成することはできますが、ポータルを使用して既存のネットワーク インターフェイスを新規または既存の仮想マシンに追加することはできません。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを作成し、仮想マシンを作成するときにそのネットワーク インターフェイスをアタッチするには、PowerShell または Azure CLI 2.0 を使用します。 プライベート IPv6 アドレスが割り当てられたネットワーク インターフェイスを既存の仮想マシンにアタッチすることはできません。 どのツール (ポータル、CLI、PowerShell) を使っても、仮想マシンにアタッチされたネットワーク インターフェイスの IP 構成にプライベート IPv6 アドレスを追加することはできません。
 
 プライマリ IP 構成またはセカンダリ IP 構成に、パブリック IPv6 アドレスを割り当てることはできません。
+
+## <a name="skus"></a>SKU
+
+パブリック IP アドレスは基本または標準 SKU で作成されます。  SKU の違いについては、[パブリック IP アドレスの管理](virtual-network-public-ip-address.md)に関するページを参照してください。
+
+> [!NOTE]
+> 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を利用し、所期のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、所期のトラフィックを明示的に許可するまでは、リソースと通信できません。
 
 ## <a name="next-steps"></a>次のステップ
 異なる IP 構成で仮想マシンを作成する方法については、次の記事をご覧ください。

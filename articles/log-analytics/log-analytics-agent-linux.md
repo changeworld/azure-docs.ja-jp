@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/05/2017
+ms.date: 09/23/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 17b451b1fc91cf9fdc895ad28f2c455af5d28b07
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 616505d7884189ddee2edadc4114deb8f08f7475
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -129,8 +129,8 @@ sudo sh ./omsagent-<version>.universal.x64.sh --upgrade
 sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -w <workspace id> -s <shared key> -d opinsights.azure.us
 ```
 
-## <a name="configuring-the-agent-for-use-with-an-http-proxy-server-or-oms-gateway"></a>HTTP プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成
-OMS Agent for Linux では、HTTP や HTTPS プロキシ サーバー、または OMS ゲートウェイを介した OMS サービスとの通信がサポートされています。  匿名と基本の両方の認証 (ユーザー名/パスワード) がサポートされています。  
+## <a name="configuring-the-agent-for-use-with-a-proxy-server-or-oms-gateway"></a>プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成
+OMS エージェント for Linux では、HTTPS プロトコルを使用する、プロキシ サーバーまたは OMS ゲートウェイを介した OMS サービスとの通信がサポートされています。  匿名と基本の両方の認証 (ユーザー名/パスワード) がサポートされています。  
 
 ### <a name="proxy-configuration"></a>[プロキシ構成]
 プロキシ構成の値には次の構文があります。
@@ -139,13 +139,13 @@ OMS Agent for Linux では、HTTP や HTTPS プロキシ サーバー、また�
 
 プロパティ|Description
 -|-
-プロトコル|http または https
-ユーザー|プロキシ認証のオプションのユーザー名
+プロトコル|https
+user|プロキシ認証のオプションのユーザー名
 パスワード|プロキシ認証のオプションのパスワード
 proxyhost|プロキシ サーバー/OMS ゲートウェイのアドレスまたは FQDN
 ポート|プロキシ サーバー/OMS ゲートウェイのオプションのポート番号
 
-次に例を示します。`http://user01:password@proxy01.contoso.com:8080`
+次に例を示します。`https://user01:password@proxy01.contoso.com:30443`
 
 プロキシ サーバーは、インストール中、またはインストール後に proxy.conf 構成ファイルを変更して指定することができます。   
 
@@ -153,13 +153,13 @@ proxyhost|プロキシ サーバー/OMS ゲートウェイのアドレスまた�
 omsagent インストール バンドルの `-p` または `--proxy` 引数で、使用するプロキシ構成を指定します。 
 
 ```
-sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p http://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
+sudo sh ./omsagent-<version>.universal.x64.sh --upgrade -p https://<proxy user>:<proxy password>@<proxy address>:<proxy port> -w <workspace id> -s <shared key>
 ```
 
 ### <a name="define-the-proxy-configuration-in-a-file"></a>ファイルでプロキシ構成を定義する
 プロキシ構成は、`/etc/opt/microsoft/omsagent/proxy.conf` および `/etc/opt/microsoft/omsagent/conf/proxy.conf ` ファイルで設定できます。 これらのファイルは直接作成または編集できますが、そのアクセス許可を更新して、ファイルの読み取りアクセス許可を omiuser ユーザーに付与する必要があります。 For example:
 ```
-proxyconf="https://proxyuser:proxypassword@proxyserver01:8080"
+proxyconf="https://proxyuser:proxypassword@proxyserver01:30443"
 sudo echo $proxyconf >>/etc/opt/microsoft/omsagent/proxy.conf
 sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf
 sudo chmod 600 /etc/opt/microsoft/omsagent/proxy.conf /etc/opt/microsoft/omsagent/conf/proxy.conf  
@@ -240,7 +240,7 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 1. オプション `-v` を有効にして以下のコマンドを使用して、OMS Agent for Linux で OMS サービスに再オンボードします。 そうすると、プロキシ経由で OMS サービスに接続しているエージェントで詳細出力ができるようになります。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
-2. セクション [Configuring the agent for use with an HTTP proxy server(#configuring the-agent-for-use-with-a-http-proxy-server) (HTTP プロキシ サーバーで使用するためのエージェントの構成) を参照し、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
+2. 「[プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway)」を参照し、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
 * 以下の OMS サービス エンドポイントが許可リストに載っていることを再確認します。
 
     |エージェントのリソース| ポート |  

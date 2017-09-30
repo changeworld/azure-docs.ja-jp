@@ -12,14 +12,14 @@ ms.devlang: dotnet
 ms.topic: overview
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/02/2017
-ms.author: mfussell
+ms.date: 09/20/2017
+ms.author: msfussell
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 32e84984a61bb54ea459826f191de7fc25fc2158
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8ff0d38a679b673b148dd808050eda82060cfe80
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="overview-of-azure-service-fabric"></a>Azure Service Fabric の概要
@@ -50,7 +50,9 @@ Service Fabric はどこでも動きます。 Azure、オンプレミス、Windo
 
 ![Service Fabric platform][Image1]
 
-オンプレミスでのクラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
+Windows 開発の場合、Service Fabric .NET SDK は、Visual Studio と PowerShell に統合されています。 「[開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md)」を参照してください。 Linux 開発の場合、Service Fabric Java SDK が Eclipse に統合されており、Java、.NET Core、およびコンテナー アプリケーション用のテンプレートを生成する必要はありません 「[Linux で開発環境を準備する](https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-get-started.md)」を参照してください。
+
+クラスター作成の詳細については、[Windows Server または Linux でのクラスターの作成](service-fabric-deploy-anywhere.md)に関する記事を参照してください。また、Azure でのクラスター作成の詳細については、[Azure Portal を使用したクラスターの作成](service-fabric-cluster-creation-via-portal.md)に関する記事を参照してください。
 
 ## <a name="stateless-and-stateful-microservices-for-service-fabric"></a>Service Fabric 用のステートレス マイクロサービスとステートフル マイクロサービス
 Service Fabric では、マイクロサービスまたはコンテナーで構成されるアプリケーションを構築することができます。 ステートレス マイクロサービス (プロトコル ゲートウェイや Web プロキシなど) では、要求およびそのサービスからの応答以外では変更可能な状態が維持されません。 Azure Cloud Services worker ロールは、ステートレス サービスの一例です。 ステートフル マイクロサービス (ユーザー アカウント、データベース、デバイス、ショッピング カート、キューなど) では、要求およびその応答以外でも変更可能な認証状態が維持されます。 今日のインターネット規模のアプリケーションは、ステートレス マイクロサービスとステートフル マイクロサービスの組み合わせで構成されています。 
@@ -89,7 +91,8 @@ Service Fabric を使用すると、次の操作を実行できます。
 * 詳細:
   * [マイクロサービスの手法でアプリケーションを構築する理由は何ですか。](service-fabric-overview-microservices.md)
   * [用語の概要](service-fabric-technical-overview.md)
-* Service Fabric [開発環境](service-fabric-get-started.md)  
+* [Windows 開発環境](service-fabric-get-started.md)をセットアップする  
+* [Linux 開発環境](service-fabric-get-started-linux.md)をセットアップする
 * [Service Fabric のサポート オプション](service-fabric-support.md)について学びます。
 
 [Image1]: media/service-fabric-overview/Service-Fabric-Overview.png

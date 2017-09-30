@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 09/06/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 507136beef9718dc6a7f42a4b84f8030d4a60563
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 85d4f9bc11de18f171b923b4ae55950fb0a360c0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -130,6 +130,9 @@ ms.lasthandoff: 09/07/2017
 
 ### <a name="known-issue-application-insights-connector"></a>既知の問題: Application Insights Connector
 [Application Insights Connector ソリューション](log-analytics-app-insights-connector.md)のパースペクティブは、現在、アップグレード後のワークスペースではサポートされていません。  この問題の修正は、現在分析中です。
+
+### <a name="known-issue-backup-solution"></a>既知の問題: Microsoft Azure Backup ソリューション
+Microsoft Azure Backup ソリューションは、アップグレードされたワークスペースからデータを収集しません。 アップグレードされたワークスペースで動作する新しい Microsoft Azure Backup ソリューションがまもなく発表されます。
 
 ## <a name="upgrade-process"></a>アップグレード プロセス
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/25/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 0f27db7018e398f71a8d7bd0b86e643367b15875
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 34f4af31773097eafe2613eb7f3400655c387a84
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Log Analytics でのログ検索について
@@ -77,6 +77,13 @@ Log Analytics のログ検索の中核をなすのは[広範なクエリ言語](
     | render timechart    
 
 この簡単な例からわかるように、操作しているデータの種類に関係なく、クエリの構造は似ています。  これは個別のステップに分割できます。このステップで 1 つのコマンドの結果として生成されるデータが、パイプラインを介して次のコマンドに送信されます。
+
+サブスクリプション内の Log Analytics ワークスペース全体でデータをクエリすることもできます。
+
+    union Update, workspace("contoso-workspace").Update
+    | where TimeGenerated >= ago(1h)
+    | summarize dcount(Computer) by Classification 
+
 
 チュートリアル、言語リファレンスなど、Azure Log Analytics クエリ言語の詳細については、[Azure Log Analytics クエリ言語のドキュメント](https://docs.loganalytics.io/)を参照してください。
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/30/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: 1db13c30e2ec1de62d5103f85b4181a5750403c5
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bbad2e501acf024fb5b7f5c62ebe5fa81e19cce7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Service Fabric に興味をお持ちでしょうか。
@@ -139,9 +139,9 @@ Azure で Service Fabric クラスターを実行すると、Azure の他の機�
 
 [Azure Portal](service-fabric-cluster-creation-via-portal.md) 経由で、[テンプレート](service-fabric-cluster-creation-via-arm.md)から、または [Visual Studio](service-fabric-cluster-creation-via-visual-studio.md) から、Azure 上にクラスターを作成できます。
 
-Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。 Service Fabric フレームワーク (Reliable Services と Reliable Actors) は、Linux 上で、C# (.NET Core) に加え Java でも使用できるようになりました。 任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築することもできます。 さらに、プレビューでは、調整 Docker コンテナーもサポートされています。 Docker コンテナーは、ゲスト実行可能ファイルまたはネイティブ Service Fabric サービスを実行できます。これらは、Service Fabric フレームワークを使用します。 詳細については、「[Linux 上の Service Fabric](service-fabric-linux-overview.md)」をご覧ください。
+Linux 上の Service Fabric を使用すると、Windows 上と同じように、Linux で可用性とスケーラビリティの高いアプリケーションを構築、デプロイ、および管理できます。 Service Fabric フレームワーク (Reliable Services と Reliable Actors) は、Linux 上で、C# (.NET Core) に加え Java でも使用できるようになりました。 任意の言語またはフレームワークで[ゲスト実行可能サービス](service-fabric-deploy-existing-app.md)を構築することもできます。 調整 Docker コンテナーもサポートされています。 Docker コンテナーは、ゲスト実行可能ファイルまたはネイティブ Service Fabric サービスを実行できます。これらは、Service Fabric フレームワークを使用します。 詳細については、「[Linux 上の Service Fabric](service-fabric-deploy-anywhere.md)」を参照してください。
 
-Linux での Service Fabric はプレビュー版であるため、Windows ではサポートされているものの Linux ではサポートされていない機能が一部存在します。 詳細については、「[Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い](service-fabric-linux-windows-differences.md)」をご覧ください。
+Windows ではサポートされているものの Linux ではサポートされていない機能が一部存在します。 詳細については、「[Linux での Service Fabric (プレビュー) と Windows での Service Fabric (一般公開) の違い](service-fabric-linux-windows-differences.md)」をご覧ください。
 
 ### <a name="standalone-clusters"></a>スタンドアロンのクラスター
 Service Fabric には、オンプレミスまたは任意のクラウド プロバイダーにスタンドアロン Service Fabric クラスターを作成するインストール パッケージが用意されています。 スタンドアロン クラスターは、任意の場所でクラスターをホストする自由があります。 データがコンプライアンスや法的な制約を課せられる場合、またはデータをローカルに保持する場合は、独自のクラスターとアプリケーションをホストできます。 Service Fabric アプリケーションは、変更せずに複数のホスティング環境で実行できるため、アプリケーションの構築の知識を 1 つのホスティング環境から別の環境に持ち越すことができます。 

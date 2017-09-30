@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 07/02/2017
 ms.author: mfussell;mikhegn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: a1db3dda674ffe43587333d88f3816549af3019c
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: a8579c66cbfb0968a3659316aa5f03b798f4e332
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-a-guest-executable-to-service-fabric"></a>Service Fabric へのゲスト実行可能ファイルのデプロイ
@@ -68,7 +67,7 @@ Service Fabric にアプリケーションをデプロイするには、事前�
 ApplicationPackageRoot には、アプリケーションを定義する ApplicationManifest.xm ファイルが含まれています。 アプリケーションに含まれる各サービスのサブディレクトリには、サービスに必要なすべてのアーティファクトが含まれています。 これらのサブディレクトリは、ServiceManifest.xml と一般的に次のディレクトリです。
 
 * *Code*。 このディレクトリにはサービス コードが含まれています。
-* *Config*:settings.xml ファイル (および、必要に応じてその他のファイル) が含まれています。 実行時にサービスがこのファイルにアクセスし、特定の構成設定を取得します。
+* *Config*:settings.xml ファイル (および、必要に応じてその他のファイル) が含まれています。実行時にサービスがこのファイルにアクセスし、特定の構成設定を取得します。
 * *Data*:追加のローカル データが格納されている追加ディレクトリ。 サービスでこのデータが必要になる場合があります。 データは、一時的なデータのみを格納します。 フェールオーバー中など、サービスの再配置が必要な場合、Service Fabric ではこのデータ ディレクトリには変更がコピー/レプリケートされません。
 
 > [!NOTE]
@@ -101,7 +100,7 @@ Visual Studio には、ゲスト実行可能ファイルを Service Fabric ク�
 6. これで、ローカル クラスターに対してパッケージ化と発行の操作を使用できるようになりました。この操作を行うには、Visual Studio でソリューションをデバッグします。 準備ができたら、アプリケーションをリモート クラスターに発行するか、ソリューションをソース管理にチェックインすることができます。
 7. Service Fabric Explorer で実行されているゲスト実行可能サービスを表示する方法については、この記事の末尾をご覧ください。
 
-## <a name="use-yoeman-to-package-and-deploy-an-existing-executable-on-linux"></a>Linux で Yoeman を使用した既存の実行可能ファイルのパッケージ化とデプロイ
+## <a name="use-yeoman-to-package-and-deploy-an-existing-executable-on-linux"></a>Linux で Yeoman を使用した既存の実行可能ファイルのパッケージ化とデプロイ
 
 Linux でゲスト実行可能ファイルを作成してデプロイする手順は、csharp または java アプリケーションをデプロイする場合と同じです。
 
