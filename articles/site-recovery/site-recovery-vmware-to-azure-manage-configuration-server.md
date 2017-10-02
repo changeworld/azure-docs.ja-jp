@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 36da8c7d0f3ace194522e5288f26069cf46d470e
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: bf62fb21dfac99038e3b3759d9e78c6870f52f9e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -26,15 +26,19 @@ ms.lasthandoff: 06/30/2017
 
 構成サーバーは、Site Recovery サービスとオンプレミス インフラストラクチャの調整役として機能します。 この記事では、構成サーバーを設定、構成、管理する方法について説明します。
 
-## <a name="prerequisites"></a>前提条件
-次の表は、構成サーバーの設定に最低限必要なハードウェア、ソフトウェア、ネットワーク構成を示したものです。
-
 > [!NOTE]
 > [容量計画](site-recovery-capacity-planner.md)は、負荷要件を満たす構成で構成サーバーをデプロイするための重要なステップです。 詳細については、「[構成サーバーのサイズ要件](#sizing-requirements-for-a-configuration-server)」を参照してください。
+
+
+## <a name="prerequisites"></a>前提条件
+次の表は、構成サーバーの設定に最低限必要なハードウェア、ソフトウェア、ネットワーク構成を示したものです。
+> [!IMPORTANT]
+> VMware 仮想マシンを保護するために構成サーバーをデプロイするときは、**高可用性 (HA)** 仮想マシンとしてデプロイすることをお勧めします。
 
 [!INCLUDE [site-recovery-configuration-server-requirements](../../includes/site-recovery-configuration-and-scaleout-process-server-requirements.md)]
 
 ## <a name="downloading-the-configuration-server-software"></a>構成サーバー ソフトウェアのダウンロード
+
 1. Azure Portal にログオンし、Recovery Services コンテナーを参照します。
 2. **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** ([For VMware & Physical Machines (VMware および物理マシン)] の下) に移動します。
 
@@ -131,10 +135,10 @@ ProxyPassword="Password"
 1. 構成サーバーにログインします。
 2. 管理者のコマンド プロンプトで、次のコマンドを実行します
 
-```
-reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
-net stop dra
-```
+    ```
+    reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
+    net stop dra
+    ```
 3. ショートカットを使用して cspsconfigtool.exe を起動します。
 4. **[Vault Registration (コンテナーの登録)]** タブをクリックします。
 5. ポータルから新しい登録ファイルをダウンロードし、これをツールへの入力として指定します。
@@ -149,6 +153,17 @@ net stop dra
     net stop obengine
     net start obengine
     ```
+
+## <a name="updating-a-configuration-server"></a>構成サーバーの更新
+
+> [!WARNING]
+> 更新プログラムがサポートされているのは、N-4 バージョンまでです。 たとえば、販売中の最新バージョンが 9.11 の場合は、バージョン 9.10、9.9、9.8、9.7 から 9.11 に直接更新できます。 ただし、使用しているバージョンが 9.6 以前の場合、構成サーバーに最新の更新プログラムを適用するには、少なくとも 9.7 に更新する必要があります。 以前のバージョンのダウンロード リンクは、「[Azure Site Recovery service updaes (Azure Site Recovery サービスの更新情報)](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)」にあります。
+
+1. 構成サーバーで更新プログラムのインストーラーをダウンロードします。
+2. インストーラーをダブルクリックして起動します。
+3. インストーラーによって、マシンに存在する Site Recovery のコンポーネントのバージョンが検出され、確認メッセージが表示されます。 
+4. [OK] をクリックして確認を行い、アップグレードを続行します。
+
 
 ## <a name="decommissioning-a-configuration-server"></a>構成サーバーの使用停止
 構成サーバーの使用停止操作を始める前に、次のことを確認します。

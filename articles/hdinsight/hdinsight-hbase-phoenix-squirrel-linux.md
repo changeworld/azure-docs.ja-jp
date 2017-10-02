@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 09/22/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 2c7431723906c912eb2a38fb0600dd13d5bc46a5
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 07646927f7f2e829e4f4cc6ac5f51b2b381e9c5a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用
@@ -36,14 +36,13 @@ Azure HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方
 ### <a name="prerequisites"></a>前提条件
 SQLLine を使用するには、以下のものが必要です。
 
-* **HDInsight 環境の HBase クラスター**。 HBase クラスターのプロビジョニングについては、「[HDInsight での Apache HBase の使用][hdinsight-hbase-get-started]」を参照してください。
-* **リモート デスクトップ プロトコルを使用した HBase クラスターへの接続**。 詳細については、[Azure Portal を使用した HDInsight での Hadoop クラスターの管理][hdinsight-manage-portal]に関するページを参照してください。
+* **HDInsight 環境の HBase クラスター**。 作成するには、[HDInsight での Apache HBase の使用](./hdinsight-hbase-tutorial-get-started.md)に関するページを参照してください。
 
 HBase クラスターに接続するときは、いずれかの ZooKeeper VM に接続する必要があります。 各 HDInsight クラスターには 3 つの ZooKeeper VM があります。
 
 **ZooKeeper のホスト名を確認するには**
 
-1. **https://\<cluster name\>.azurehdinsight.net** にアクセスして Ambari を開きます。
+1. **https://\<cluster name\>.azurehdinsight.net** を参照して Ambari を開きます。
 2. HTTP (クラスター) ユーザー名とパスワードを入力してサインインします。
 3. 左側のメニューで **[ZooKeeper]** を選択します。 3 つの **ZooKeeper サーバー** インスタンスが表示されます。
 4. いずれかの **ZooKeeper サーバー** インスタンスを選択します。 **[概要]** ウィンドウで**ホスト名**を確認します。 ホスト名は、*zk1-jdolehb.3lnng4rcvp5uzokyktxs4a5dhd.bx.internal.cloudapp.net* のように表示されます。
@@ -55,7 +54,7 @@ HBase クラスターに接続するときは、いずれかの ZooKeeper VM に
 2. SSH で次のコマンドを実行して、SQLLine を実行します。
 
         cd /usr/hdp/2.2.9.1-7/phoenix/bin
-        ./sqlline.py <ClusterName>:2181:/hbase-unsecure
+        ./sqlline.py <ZOOKEEPER SERVER FQDN>:2181:/hbase-unsecure
 3. HBase テーブルを作成していくつかのデータを挿入するには、次のコマンドを実行します。
 
         CREATE TABLE Company (COMPANY_ID INTEGER PRIMARY KEY, NAME VARCHAR(225));
@@ -84,7 +83,6 @@ HBase クラスターに接続するときは、いずれかの ZooKeeper VM に
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
 
-[hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md

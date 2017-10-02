@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9541cd195e8afa6e692a5a0214b0d614e429c33b
-ms.openlocfilehash: 234f06a858987b03ec2ed0bbe0899423d8f0bcdd
+ms.translationtype: HT
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 12/20/2016
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
@@ -87,6 +87,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeAbortedSyncExeInUse |サーバーで [Sychronization Service Manager UI](active-directory-aadconnectsync-service-manager-ui.md) が開いています。 |
 | UpgradeAbortedSyncOrConfigurationInProgress |インストール ウィザードが実行されているか、同期がスケジューラ以外の場所でスケジュールされました。 |
 | **UpgradeNotSupported** | |
+| UpgradeNotSupportedAdfsSignInMethod | ユーザーがサインイン方法として Adfs を選択しました。 | 
 | UpgradeNotSupportedCustomizedSyncRules |ユーザーが構成に独自のカスタム ルールを追加しました。 |
 | UpgradeNotSupportedDeviceWritebackEnabled |ユーザーが [デバイスの書き戻し](active-directory-aadconnect-feature-device-writeback.md) 機能を有効にしました。 |
 | UpgradeNotSupportedGroupWritebackEnabled |ユーザーが [グループの書き戻し](active-directory-aadconnect-feature-preview.md#group-writeback) 機能を有効にしました。 |
@@ -95,6 +96,8 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |
 | UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
 | UpgradeNotSupportedNonMsolAccount |[AD Connector アカウント](active-directory-aadconnect-accounts-permissions.md#active-directory-account)は、既定の MSOL_ アカウントではなくなりました。 |
+| UpgradeNotSupportedNotConfiguredSignInMethod | ユーザーがサインイン方法として *[構成しない]* を選択しました。 | 
+| UpgradeNotSupportedPtaSignInMethod | ユーザーがサインイン方法として [パススルー認証] を選択しました。 |
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |
 | UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback) 機能を有効にしました。 |
 

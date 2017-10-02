@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/30/2017
+ms.date: 09/20/2017
 ms.author: magoedte;banders
 ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
-ms.openlocfilehash: cd21a08de9dbf795b9a295de22e55a24fa9535ef
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 562a7a73e2d440c0c3e3e8ab9e94ffd6c1fba7d9
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="container-monitoring-solution-in-log-analytics"></a>Log Analytics のコンテナー監視ソリューション
@@ -289,12 +289,12 @@ OMS Agent デーモン セットの yaml ファイルを使用するときにシ
      WSID:   37 bytes  
     ```
 
-#### <a name="configure-an-oms-agent-for-kubernetes"></a>Kubernetes 用の OMS エージェントを構成する
+#### <a name="configure-an-oms-linux-agent-for-kubernetes"></a>Kubernetes 用の OMS Linux エージェントを構成する
 
-Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット .yaml ファイルを生成します。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページに、シークレット情報を使用して、または使用せずに使うことができるファイルがあります。
+Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して OMS エージェント for Linux をインストールします。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes) ページに、シークレット情報を使用して、または使用せずに使うことができるファイルがあります。
 
-- シークレット情報がない既定の OMS Agent DaemonSet (omsagent.yaml)
-- シークレット情報 (omsagent-ds-secrets.yaml) と、シークレット yaml (omsagentsecret.yaml) ファイルを生成するシークレット生成スクリプトを使用する OMS Agent DaemonSet yaml ファイル。
+- 既定の OMS エージェント for Linux DaemonSet には、シークレット情報 (omsagent.yaml) がありません。
+- OMS エージェント for Linux DaemonSet yaml ファイルは、シークレット情報 (omsagent-ds-secrets.yaml) とシークレット生成スクリプトを使用してシークレット yaml (omsagentsecret.yaml) ファイルを生成します。
 
 omsagent DaemonSet は、シークレットを使用して作成するか使用せずに作成するかを選択できます。
 
@@ -371,7 +371,7 @@ omsagent DaemonSet は、シークレットを使用して作成するか使用�
     ```
 
 
-Kubernetes では、スクリプトを使用して、ワークスペース ID と主キー用のシークレット yaml ファイルを生成します。 [omsagent yaml ファイル](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml)で次の例の情報を使用して、シークレット情報を保護します。
+Kubernetes では、スクリプトを使用して、OMS エージェント for Linux 用のワークスペース ID と 主キー用のシークレット yaml ファイルを生成します。 [omsagent yaml ファイル](https://github.com/Microsoft/OMS-docker/blob/master/Kubernetes/omsagent.yaml)で次の例の情報を使用して、シークレット情報を保護します。
 
 ```
 keiko@ubuntu16-13db:~# sudo kubectl describe secrets omsagent-secret
@@ -387,6 +387,98 @@ Data
 WSID:   36 bytes
 KEY:    88 bytes
 ```
+
+#### <a name="configure-an-oms-agent-for-windows-kubernetes"></a>Windows Kubernetes 用の OMS エージェントを構成する
+Windows Kubernetes では、スクリプトを使用して、ワークスペース ID と主キーのシークレット yaml ファイルを生成して OMS エージェントをインストールします。 [OMS Docker Kubernetes GitHub](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes/windows) ページに、シークレット情報を利用して使用できるファイルがあります。  マスター ノードとエージェント ノードに個別に OMS エージェントをインストールする必要があります。  
+
+1. マスター ノードでシークレット情報を使用して OMS エージェント DaemonSet を使用するには、サインインして、まずシークレットを作成します。
+    1. スクリプトとシークレット テンプレート ファイルをコピーし、それらが同じディレクトリにあることを確認します。
+        - シークレット生成スクリプト: secret-gen.sh
+        - シークレット テンプレート: secret-template.yaml
+
+    2. 次の例のように、スクリプトを実行します。 このスクリプトでは、OMS のワークスペース ID と主キーの入力を求められます。それらを入力すると、シークレット yaml ファイルが作成され、実行できるようになります。   
+
+        ```
+        #> sudo bash ./secret-gen.sh
+        ```
+    3. ``` kubectl create -f omsagentsecret.yaml ``` を実行して、omsagent daemon-set を作成します。
+    4. 確認するには、次のコマンドを実行します。
+    
+        ``` 
+        root@ubuntu16-13db:~# kubectl get secrets
+        ```
+
+        出力は、次のようになるはずです。
+
+        ```
+        NAME                  TYPE                                  DATA      AGE
+        default-token-gvl91   kubernetes.io/service-account-token   3         50d
+        omsagent-secret       Opaque                                2         1d
+        root@ubuntu16-13db:~# kubectl describe secrets omsagent-secret
+        Name:           omsagent-secret
+        Namespace:      default
+        Labels:         <none>
+        Annotations:    <none>
+    
+        Type:   Opaque
+    
+        Data
+        ====
+        WSID:   36 bytes
+        KEY:    88 bytes 
+        ```
+
+    5. ```kubectl create -f ws-omsagent-de-secrets.yaml``` を実行して、omsagent daemon-set を作成します。
+
+2. 次のように、OMS Agent DaemonSet が実行されていることを確認します。
+
+    ```
+    root@ubuntu16-13db:~# kubectl get deployment omsagent
+    NAME       DESIRED   CURRENT   NODE-SELECTOR   AGE
+    omsagent   1         1         <none>          1h
+    ```
+
+3. Windows を実行している worker ノードにエージェントをインストールするには、セクション「[Windows コンテナー ホストをインストールして構成する](#install-and-configure-windows-container-hosts)」の手順に従います。 
+
+#### <a name="use-helm-to-deploy-oms-agent-on-linux-kubernetes"></a>Helm を使用して Linux Kubernetes に OMS エージェントをデプロイする 
+Helm を使用して Linux Kubernetes 環境内に OMS エージェントをデプロイするには、次の手順を実行します。
+
+1. ```helm install --name omsagent --set omsagent.secret.wsid=<WSID>,omsagent.secret.key=<KEY> stable/msoms``` を実行して、omsagent daemon-set を作成します。
+2. 結果は次のようになります。
+
+    ```
+    NAME:   omsagent
+    LAST DEPLOYED: Tue Sep 19 20:37:46 2017
+    NAMESPACE: default
+    STATUS: DEPLOYED
+
+    RESOURCES:
+    ==> v1/Secret
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     3s
+
+    ==> v1beta1/DaemonSet
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         3s
+    ```
+3. ```helm status "omsagent"``` を実行して omsagent の状態を確認できます。出力は次のようになります。
+
+    ```
+    keiko@k8s-master-3814F33-0:~$ helm status omsagent
+    LAST DEPLOYED: Tue Sep 19 20:37:46 2017
+    NAMESPACE: default
+    STATUS: DEPLOYED
+ 
+    RESOURCES:
+    ==> v1/Secret
+    NAME            TYPE    DATA  AGE
+    omsagent-msoms  Opaque  3     17m
+ 
+    ==> v1beta1/DaemonSet
+    NAME            DESIRED  CURRENT  READY  UP-TO-DATE  AVAILABLE  NODE-SELECTOR  AGE
+    omsagent-msoms  3        3        3      3           3          <none>         17m
+    ```
+詳細については、[コンテナー ソリューション Helm チャート](https://aka.ms/omscontainerhelm)に関するページを参照してください。
 
 ### <a name="install-and-configure-windows-container-hosts"></a>Windows コンテナー ホストをインストールして構成する
 

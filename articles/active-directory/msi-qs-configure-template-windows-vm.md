@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 266458323ca54d9805aea12108faed79e69d30b0
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 8b599c3e0e7d4fa3ae5bdb156191bff0553249ee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-この記事では、Azure Resource Manager デプロイ テンプレートを使用して Azure Windows VM の MSI を有効化および削除する方法について説明します。
+この記事では、Azure Resource Manager デプロイ テンプレートを使用して Azure VM の MSI を有効化および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -44,15 +44,17 @@ Azure ポータルとスクリプトの場合と同じように、Azure Resource
 
 指定するパスに関係なく、テンプレート構文は、初期デプロイおよび再デプロイ中も同じであるため、新規または既存の VM で MSI を有効にする処理も同じ方法で実行されます。 また、既定では Azure Resource Manager は、デプロイに対して[増分更新](../azure-resource-manager/resource-group-template-deploy.md#incremental-and-complete-deployments)を実行します。
 
-1. テンプレートをエディターに読み込んだら、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 使用するエディターや、編集しているテンプレートが新しいデプロイと既存のデプロイのどちらであるかに応じて、実際の表示は、このスクリーン ショットと多少異なる場合があります。
+1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認する必要があります。
+
+2. テンプレートをエディターに読み込んだら、`resources` セクション内で関心のある `Microsoft.Compute/virtualMachines` リソースを探します。 使用するエディターや、編集しているテンプレートが新しいデプロイと既存のデプロイのどちらであるかに応じて、実際の表示は、このスクリーン ショットと多少異なる場合があります。
 
    >[!NOTE] 
-   > さらに、手順 2 では、変数 `vmName`、 `storageAccountName`、および `nicName` がテンプレートで定義済みであることを前提としています。
+   > この例は、`vmName`、`storageAccountName`、`nicName` などの変数がテンプレートで定義されていることを前提としています。
    >
 
    ![スクリーン ショット前のテンプレート - VM を見つける](./media/msi-qs-configure-template-windows-vm/template-file-before.png) 
 
-2. 次の構文を使用して、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルで `"identity"` プロパティを追加します。
+3. 次の構文を使用して、`"type": "Microsoft.Compute/virtualMachines"` プロパティと同じレベルで `"identity"` プロパティを追加します。
 
    ```JSON
    "identity": { 
@@ -60,10 +62,10 @@ Azure ポータルとスクリプトの場合と同じように、Azure Resource
    },
    ```
 
-3. さらに、次の構文を使用して VM MSI 拡張機能を `resources` 要素として追加します。
+4. さらに、次の構文を使用して VM MSI 拡張機能を `resources` 要素として追加します。
 
    >[!NOTE] 
-   > 次の例では、Windows VM の拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 代わりに、`ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。
+   > 次の例では、Windows VM の拡張機能 (`ManagedIdentityExtensionForWindows`) がデプロイ済みであることを前提としています。 `"name"` と `"type"` の要素について、代わりに `ManagedIdentityExtensionForLinux` を使用して Linux 用に構成することもできます。
    >
 
    ```JSON
@@ -88,13 +90,17 @@ Azure ポータルとスクリプトの場合と同じように、Azure Resource
    }
    ```
 
-4. 完了すると、テンプレートは以下の例のようになります。
+5. 完了すると、テンプレートは以下の例のようになります。
 
    ![ショット後のテンプレート](./media/msi-qs-configure-template-windows-vm/template-file-after.png) 
 
 ## <a name="remove-msi-from-an-azure-vm"></a>Azure VM から MSI を削除する
 
-MSI が不要になった仮想マシンがある場合は、前の例で追加した 2 つの要素、VM の`"identity"` プロパティおよび `"Microsoft.Compute/virtualMachines/extensions"`リソースを削除します。
+MSI が不要になった仮想マシンがある場合は、次のようにします。
+
+1. Azure にローカルでサインインする場合も、Azure Portal を使用してサインインする場合も、VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
+
+2. 前のセクションで追加した 2 つの要素、VM の `"identity"` プロパティと `"Microsoft.Compute/virtualMachines/extensions"` リソースを削除します。
 
 ## <a name="related-content"></a>関連コンテンツ
 

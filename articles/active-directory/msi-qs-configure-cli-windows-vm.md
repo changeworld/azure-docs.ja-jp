@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 78a6164e76f6ceab936874e68bd38bb4eb387e00
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-この記事では、Azure CLI を使用して Azure Windows VM の MSI を有効化および削除する方法について説明します。
+この記事では、Azure CLI を使用して Azure VM の MSI を有効化および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -43,7 +43,7 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>Azure VM の作成中に MSI を有効にする
 
-MSI 対応の新しい Windows 仮想マシンのリソースは、指定した構成パラメーターを使用して、新しいリソース グループ内に作成されます。 これらの多くの関数が実行されてから結果が返されるまでに、数秒または数分かかる可能性があることに注意してください。
+MSI 対応 VM を作成するには
 
 1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
@@ -67,7 +67,7 @@ MSI 対応の新しい Windows 仮想マシンのリソースは、指定した�
 
 既存の仮想マシンで MSI を有効にする必要がある場合は、次のようにします。
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
    ```azurecli-interactive
    az login
@@ -83,13 +83,13 @@ MSI 対応の新しい Windows 仮想マシンのリソースは、指定した�
 
 MSI が不要になった仮想マシンがある場合は、次のようにします。
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
    ```azurecli-interactive
    az login
    ```
 
-2. [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity) を指定した `-n ManagedIdentityExtensionForWindows` スイッチを使用して MSI を削除します。
+2. [az vm extension delete](https://docs.microsoft.com/cli/azure/vm/#assign-identity) で、(VM の種類に応じて) `-n ManagedIdentityExtensionForWindows` または `-n ManagedIdentityExtensionForLinux` スイッチを指定して MSI ファイルを削除します。
 
    ```azurecli-interactive
    az vm extension delete --resource-group myResourceGroup --vm-name myVm -n ManagedIdentityExtensionForWindows
@@ -98,7 +98,10 @@ MSI が不要になった仮想マシンがある場合は、次のようにし�
 ## <a name="related-content"></a>関連コンテンツ
 
 - [管理対象サービス ID の概要](msi-overview.md)
-- この記事の出典元は、MSI 固有の手順を含めるように変更されたクイック スタート「[CLI を使用して Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-cli.md)」です。 
+- 完全な Azure VM 作成のクイックスタートについては、次を参照してください。 
+
+  - [CLI で Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-cli.md)  
+  - [CLI で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-cli.md) 
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
 

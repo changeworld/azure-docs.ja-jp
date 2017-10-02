@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/19/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 9406ba2bbbea41f4677cd0d5aaddf16b0f4f26c8
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 169417530da21e0c8c58cbf770fd1d26660387f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 09/14/2017
 
 管理対象サービス ID は、Azure Active Directory で自動管理対象 ID を使用する Azure サービスを提供します。 この ID を使用して、コードに資格情報が含まれていなくても、Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-この記事では、Azure ポータルを使用して Azure Windows VM の MSI を有効化および削除する方法について説明します。
+この記事では、Azure Portal を使用して Azure VM の MSI を有効化および削除する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -35,13 +35,18 @@ ms.lasthandoff: 09/14/2017
 
 ## <a name="enable-msi-during-creation-of-an-azure-vm"></a>Azure VM の作成中に MSI を有効にする
 
-この記事の執筆時点で、Azure ポータルで VM の作成中に MSI を有効にすることはサポートされていません。 代わりに、 VM を作成する方法の詳細については、クイック スタート「[Azure ポータルで Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)」を参照してください。 続いて、次のセクションに進み、MSI を有効にする方法の詳細を参照します。
+この記事の執筆時点で、Azure ポータルで VM の作成中に MSI を有効にすることはサポートされていません。 代わりに、最初に VM を作成するには、VM 作成に関する次のいずれかのクイックスタートの記事を参照してください。
+
+- [Azure Portal で Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
+- [Azure Portal で Linux 仮想マシンを作成する](../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+
+続いて、次のセクションに進み、VM で MSI を有効にする方法の詳細を参照します。
 
 ## <a name="enable-msi-on-an-existing-azure-vm"></a>既存の Azure VM で MSI を有効にする
 
 最初にプロビジョンされた VM (MSI なし) が存在する場合は、次のようにします。
 
-1. VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure ポータル](https://portal.azure.com)にサインインします。
+1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
 2. 目的の仮想マシンに移動します。
 
@@ -53,7 +58,7 @@ ms.lasthandoff: 09/14/2017
 
 MSI が不要になった仮想マシンがある場合は、次のようにします。
 
-1. VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure ポータル](https://portal.azure.com)にサインインします。
+1. VM が含まれる Azure サブスクリプションに関連付けられているアカウントを使用して、[Azure Portal](https://portal.azure.com) にサインインします。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
 2. 目的の仮想マシンに移動します。
 
@@ -64,7 +69,6 @@ MSI が不要になった仮想マシンがある場合は、次のようにし�
 ## <a name="related-content"></a>関連コンテンツ
 
 - MSI の概要については、[管理対象サービス ID の概要](msi-overview.md)に関する記事をご覧ください。
-- この記事の出典元は、MSI 固有の手順を含めるように変更されたクイック スタート「[Azure ポータルを使用して Windows 仮想マシンを作成する](../virtual-machines/windows/quick-create-portal.md)」です。 
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/29/2017
 ms.author: ryanwi
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d6a13ceb8ccd9207ecacc166247535d496d5dec7
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 76606189e7bed1a5179c7486d7c10f3c253884b5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="connect-to-a-secure-cluster"></a>セキュリティ保護されたクラスターに接続する
@@ -312,6 +312,8 @@ static string GetAccessToken(AzureActiveDirectoryMetadata aad)
 `http://<your-cluster-endpoint>:19080/Explorer`
 
 完全な URL は Azure Portal の [Cluster Essentials] ウィンドウにもあります。
+
+ブラウザーを使用して Windows または OS X のセキュリティで保護されたクラスターに接続する場合、クライアント証明書をインポートすると、ブラウザーによって、クラスターへの接続に使用する証明書を要求されます。  Linux マシンでは、高度なブラウザーの設定 (ブラウザーによってしくみが異なる) を使用して証明書をインポートし、ディスク上の証明書の場所をポイントする必要があります。
 
 ### <a name="connect-to-a-secure-cluster-using-azure-active-directory"></a>セキュリティで保護されたクラスターに Azure Active Directory を使用して接続する
 
