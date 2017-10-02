@@ -3,7 +3,7 @@ title: "PHP から Blob Storage (オブジェクト ストレージ) を使用�
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 documentationcenter: php
 services: storage
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 1af56b59-b3f0-4b46-8441-aab463ae088e
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: marsma
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ae57d8bb5ecf495538f7de703c3a4033488fe93e
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 9de2f7e81d75669267fe6448030c118d06b3f88a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-php"></a>PHP から BLOB ストレージを使用する方法
@@ -76,7 +76,7 @@ UseDevelopmentStorage=true
 いずれの Azure サービス クライアントを作成するにも、 **ServicesBuilder** クラスを使用する必要があります。 そのための方法は次のとおりです。
 
 * 接続文字列を直接渡す
-* Web アプリで環境変数を使用して、接続文字列を格納します。 接続文字列の構成については、[Azure Web アプリ構成の設定](../../app-service-web/web-sites-configure.md)に関するドキュメントを参照してください。
+* Web アプリで環境変数を使用して、接続文字列を格納します。 接続文字列の構成については、[Azure Web アプリ構成の設定](../../app-service/web-sites-configure.md)に関するドキュメントを参照してください。
 
 ここで概説している例では、接続文字列が直接渡されます。
 

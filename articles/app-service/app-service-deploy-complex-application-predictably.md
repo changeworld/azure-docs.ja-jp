@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.author: cephalin
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 87592410e6471219d3262cdcc7b47ee1b0686961
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 3719e037f1564411a8f94d1ca962ba1ef6b5d435
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Azure でマイクロサービスを予測どおりにデプロイする
@@ -89,7 +89,7 @@ Version 0.8.0 以降の Azure PowerShell のインストールには、Azure モ
 これと同じアプリケーションは、何度でもデプロイでき、毎回まったく同じ構成にすることができます。 この手法が持つ反復性と予測可能性によって、拡張性の高いアプリケーションを簡単に自信を持ってデプロイできます。
 
 ## <a name="examine-or-edit-azuredeployjson"></a>AZUREDEPLOY.JSON を確認 (または編集) する
-次に、GitHub リポジトリがどのように設定されたかを見てみましょう。 Azure .NET SDK で JSON エディターを使用します。[Azure .NET SDK 2.6](/downloads/) をまだインストールしていない場合は、今すぐインストールしてください。
+次に、GitHub リポジトリがどのように設定されたかを見てみましょう。 Azure .NET SDK で JSON エディターを使用します。[Azure .NET SDK 2.6](https://azure.microsoft.com/downloads/) をまだインストールしていない場合は、今すぐインストールしてください。
 
 1. お気に入りの git ツールを使用して [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp) リポジトリを複製します。 次のスクリーンショットでは、Visual Studio 2013 のチーム エクスプローラーでこれを実行します。
    

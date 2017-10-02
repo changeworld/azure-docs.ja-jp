@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: b67f95847ac3228aa1d04d89af7e9fe4eeff3220
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 4ba4155515e587038ffe2dbca064ad27aca97445
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
@@ -150,11 +150,11 @@ Google のクライアント主導のフローを使用する場合は、次の�
 
 * [Google Sign-In SDK for iOS を使用する](../app-service-mobile/app-service-mobile-ios-how-to-use-client-library.md#google-sdk)
 
-### <a name="api-applications"></a>API アプリケーション
-次のチュートリアルで、API Apps を保護する方法を示しています。
+<!-- ### API applications
+The following tutorials show how to protect your API apps:
 
-* [Azure App Service での API Apps のユーザー認証][apia-user]
-* [Azure App Service での API Apps のサービス プリンシパル認証][apia-service]
+* [User authentication for API Apps in Azure App Service][apia-user]
+* [Service principal authentication for API Apps in Azure App Service][apia-service] -->
 
 [iOS]: ../app-service-mobile/app-service-mobile-ios-get-started-users.md
 [Android]: ../app-service-mobile/app-service-mobile-android-get-started-users.md

@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 6e1fa23bffc03a8a77c0c9e3342609c042fc4a5b
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: fda9d6c12da382faed5312a677c533f24ffbd824
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -46,7 +46,7 @@ ID を持つアプリを作成するには、アプリケーションで追加�
 
 ### <a name="using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの使用
 
-Azure Resource Manager テンプレートを使って、Azure リソースのデプロイを自動化できます。 App Service および Functions へのデプロイについて詳しくは、「[Automating resource deployment in App Service](../app-service-web/app-service-deploy-complex-application-predictably.md)」(App Service でのリソースのデプロイの自動化) および「[Azure Functions の関数アプリのリソース デプロイを自動化](../azure-functions/functions-infrastructure-as-code.md)」をご覧ください。
+Azure Resource Manager テンプレートを使って、Azure リソースのデプロイを自動化できます。 App Service および Functions へのデプロイについて詳しくは、「[Automating resource deployment in App Service](../app-service/app-service-deploy-complex-application-predictably.md)」(App Service でのリソースのデプロイの自動化) および「[Azure Functions の関数アプリのリソース デプロイを自動化](../azure-functions/functions-infrastructure-as-code.md)」をご覧ください。
 
 種類が `Microsoft.Web/sites` であるすべてのリソースは、リソース定義に次のプロパティを含めることにより、ID を使って作成できます。
 ```json
@@ -145,6 +145,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 > |resource|受信側の Web サービスのアプリケーション ID URI。|
 > |token_type|トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 ベアラー トークンについて詳しくは、「[OAuth 2.0 Authorization Framework: Bearer Token Usage (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt)」(OAuth 2.0 承認フレームワーク: ベアラー トークンの使用法 (RFC 6750)) をご覧ください。|
 
+
 この応答は、[AAD のサービス間アクセス トークン要求に対する応答](../active-directory/develop/active-directory-protocols-oauth-service-to-service.md#service-to-service-access-token-response)と同じです。
 
 ### <a name="rest-protocol-examples"></a>REST プロトコルの例
@@ -192,5 +193,14 @@ const getToken = function(resource, apiver, cb) {
     rp(options)
         .then(cb);
 }
+```
+
+PowerShell では次のとおりです。
+```powershell
+$apiVersion = "2017-09-01"
+$resourceURI = "https://<AAD-resource-URI-for-resource-to-obtain-token>"
+$tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVersion"
+$tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
+$accessToken = $tokenResponse.access_token
 ```
 

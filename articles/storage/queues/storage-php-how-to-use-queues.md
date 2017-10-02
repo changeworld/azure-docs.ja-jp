@@ -3,7 +3,7 @@ title: "PHP から Queue Storage を使用する方法 | Microsoft Docs"
 description: "Azure Queue ストレージを使用して、キューの作成と削除のほか、メッセージの挿入、取得、削除を行う方法を説明します。 サンプルは PHP で記述されています。"
 documentationcenter: php
 services: storage
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 7582b208-4851-4489-a74a-bb952569f55b
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 3900a023f03eb9ce22fdf71030291c7ab5f6f30b
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 5fa4e35184b39bd672bfc8b19b2d41acb164abdf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
@@ -75,7 +75,7 @@ UseDevelopmentStorage=true
 いずれの Azure サービス クライアントを作成するにも、 **ServicesBuilder** クラスを使用する必要があります。 次の手法のうちどちらかを使用できます。
 
 * 接続文字列を直接渡す
-* Web アプリで環境変数を使用して、接続文字列を格納します。 接続文字列の構成については、[Azure Web アプリ構成の設定](../../app-service-web/web-sites-configure.md)に関するドキュメントを参照してください。
+* Web アプリで環境変数を使用して、接続文字列を格納します。 接続文字列の構成については、[Azure Web アプリ構成の設定](../../app-service/web-sites-configure.md)に関するドキュメントを参照してください。
 ここで概説している例では、接続文字列が直接渡されます。
 
 ```php
