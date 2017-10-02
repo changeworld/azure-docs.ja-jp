@@ -109,7 +109,7 @@ ms.lasthandoff: 09/25/2017
 ### <a name="create-azure-hdinsight-linked-service"></a>Azure HDInsight のリンクされたサービスを作成する
 この手順では、オンデマンド HDInsight クラスターをデータ ファクトリにリンクします。 HDInsight クラスターは、実行時に自動的に作成されます。また、処理が終わり、アイドル状態が一定時間続くと削除されます。
 
-1. **Data Factory エディター**で ** ... (その他)**、**[新規計算]** の順にクリックし、**[On-demand HDInsight cluster (オンデマンド HDInsight クラスター)]** を選択します。
+1. **Data Factory エディター**で  **... (その他)**、**[新規計算]** の順にクリックし、**[On-demand HDInsight cluster (オンデマンド HDInsight クラスター)]** を選択します。
 
     ![New compute](./media/data-factory-build-your-first-pipeline-using-editor/new-compute-menu.png)
 2. 次のスニペットをコピーして、 **[Draft-1]** ウィンドウに貼り付けます。 この JSON スニペットは、HDInsight クラスターをオンデマンドで作成するために使用されるプロパティを記述します。
@@ -158,7 +158,7 @@ ms.lasthandoff: 09/25/2017
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService** を参照します。 このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
-1. **Data Factory エディター**のコマンド バーで ** ... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
+1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
@@ -205,7 +205,7 @@ ms.lasthandoff: 09/25/2017
 ### <a name="create-output-dataset"></a>出力データセットの作成
 次に、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
-1. **Data Factory エディター**のコマンド バーで ** ... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
+1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 
     ```JSON
