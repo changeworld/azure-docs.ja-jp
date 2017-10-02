@@ -184,7 +184,7 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment
-[トレーニング実験を予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
+[予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
 [Web サービスとしてデプロイする]: #deploy-it-as-a-web-service
 [新規]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [従来]: #deploy-the-predictive-experiment-as-a-new-Web-service
