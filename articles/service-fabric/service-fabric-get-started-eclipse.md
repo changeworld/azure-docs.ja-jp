@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/21/2016
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 98c1b99972b9ad7a396d72b98e727286f6822e42
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: 4fa77da8665908553072792d7f2ede47bf5567dd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -45,6 +45,10 @@ Service Fabric プラグインを既にインストールしてある場合は�
 
 > [!NOTE]
 > Service Fabric プラグインのインストールまたは更新に時間がかかる場合、Eclipse の設定が原因である可能性があります。 Eclipse は、Eclipse インスタンスに登録されている更新サイトに対するすべての変更のメタデータを収集します。 Service Fabric プラグインの更新プログラムを確認してインストールする手順を高速化するには、**[Available Software Sites (利用できるソフトウェア サイト)]** に移動します。 Service Fabric プラグインの場所 (http://dl.microsoft.com/eclipse/azure/servicefabric) を指すサイトを除き、すべてのサイトのチェック ボックスをオフにします。
+
+> [!NOTE]
+>Eclipse が Mac で意図したように動かない場合、またはスーパー ユーザーとして実行する必要がある場合は、**ECLIPSE_INSTALLATION_PATH** フォルダーの **Eclipse.app/Contents/MacOS** サブフォルダーに移動します。 `./eclipse` を実行して Eclipse を起動します。
+
 
 ## <a name="create-a-service-fabric-application-in-eclipse"></a>Eclipse での Service Fabric アプリケーションの作成
 

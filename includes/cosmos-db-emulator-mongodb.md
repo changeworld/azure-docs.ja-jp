@@ -1,6 +1,5 @@
-または、[[Try Azure Cosmos DB]\(Azure Cosmos DB を試す\)](https://azure.microsoft.com/try/cosmosdb/) サブスクリプションを作成するか、localhost:10255 というユーザー名と次のキーで、このチュートリアルの [Azure Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) を使用してください。   
+または、Azure サブスクリプションを使わず、課金も契約もなしで [Azure Cosmos DB を無料で試す](https://azure.microsoft.com/try/cosmosdb/)ことができます。 または、次の接続文字列で、このチュートリアルの [Azure Cosmos DB Emulator](https://docs.microsoft.com/en-us/azure/cosmos-db/local-emulator) を使うことができます。   
 
-   ```
-   C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-   ```
+    mongodb://localhost:C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==@localhost:10255/admin?ssl=true
+
    
