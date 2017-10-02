@@ -1,6 +1,6 @@
 ---
-title: "Azure App Service Web Apps for Containers での SSH のサポート | Microsoft Docs"
-description: "Azure Web Apps for Containers で SSH を使用する方法について説明します。"
+title: "Azure App Service Web App for Containers での SSH のサポート | Microsoft Docs"
+description: "Azure Web App for Containers で SSH を使用する方法について説明します。"
 keywords: "Azure App Service, Web アプリ, Linux, OSS"
 services: app-service
 documentationcenter: 
@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7cbdbc65bac97aef5d4215fd6b188830795a86f2
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 7ce9b23e8925d4c79827c7c4e8bec63067ce33e0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="ssh-support-for-azure-web-apps-for-containers"></a>Azure Web Apps for Containers での SSH のサポート
+# <a name="ssh-support-for-azure-web-app-for-containers"></a>Azure Web App for Containers での SSH のサポート
 
 [Secure Shell (SSH)](https://en.wikipedia.org/wiki/Secure_Shell) は、ネットワーク サービスを安全に使用するための暗号化ネットワークプロトコルです。 コマンド ラインからシステムにリモートで安全にログインし、管理コマンドをリモートで実行するために最もよく使用されます。
 
-Web Apps for Containers では、新しい Web アプリのランタイム スタックで使用される組み込みの Docker イメージのそれぞれにアプリ コンテナーへの SSH のサポートを提供しています。 
+Web App for Containers では、新しい Web アプリのランタイム スタックで使用される組み込みの Docker イメージのそれぞれにアプリ コンテナーへの SSH のサポートを提供しています。 
 
 ![ランタイム スタック](./media/app-service-linux-ssh-support/app-service-linux-runtime-stack.png)
 
@@ -67,7 +67,7 @@ Azure ポータルでのコンテナーとクライアント間の SSH 通信を
         && echo "root:Docker!" | chpasswd
     ```
 
-1. [sshd_config](http://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/6.11/sshd_config)を参照してください)。
+1. [sshd_config](http://man.openbsd.org/sshd_config) ファイルを */etc/ssh/* ディレクトリにコピーする [`COPY` 命令](https://docs.docker.com/engine/reference/builder/#copy)を Dockerfile に 追加します。 構成ファイルは、GitHub レポジトリに格納されている Azure App Service の sshd_config ファイルに基づいている必要があります ([こちら](https://github.com/Azure-App-Service/node/blob/master/6.11.0/sshd_config)を参照してください)。
 
     > [!NOTE]
     > *sshd_config* ファイルには次の項目を指定する必要があります。指定がない場合、接続は失敗します。 
@@ -103,9 +103,9 @@ Dockerfile では、[`CMD` 命令](https://docs.docker.com/engine/reference/buil
 
 ## <a name="next-steps"></a>次のステップ
 
-Web Apps for Containers の詳細については、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
+Web App for Containers の詳細については、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-* [Azure Web Apps for Containers 向けにカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
-* [Azure Web Apps for Containers で .NET Core を使用する](quickstart-dotnetcore.md)
-* [Azure Web Apps for Containers で Ruby を使用する](quickstart-ruby.md)
+* [Azure Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
+* [Azure Web App for Containers で .NET Core を使用する](quickstart-dotnetcore.md)
+* [Azure Web App for Containers で Ruby を使用する](quickstart-ruby.md)
 * [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)

@@ -3,7 +3,7 @@ title: "Azure での Linux VM のメンテナンスと更新 | Microsoft Docs"
 description: "Azure で実行されている Linux 仮想マシンのメンテナンスと更新の概要。"
 services: virtual-machines-linux
 documentationcenter: 
-author: zivr
+author: cynthn
 manager: timlt
 editor: 
 tags: azure-resource-manager,azure-service-management
@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
-ms.author: zivr
+ms.date: 09/15/2017
+ms.author: cynthn
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 56aa6ea584c9fb8298541969c8b7bbdb00dc3453
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 1bdeebd34f811aee1f3bc2f7767db3263d8e3273
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
-# <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する計画的なメンテナンス
+# <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画的メンテナンス 
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Metadata Service](instance-metadata-service.md) を利用すると、Azure でホストされている仮想マシンに関する情報を発見できます。 
+計画済みのメインテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
+
 
 

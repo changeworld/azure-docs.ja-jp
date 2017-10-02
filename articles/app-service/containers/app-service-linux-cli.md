@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 2.0 を使って Web Apps for Containers を管理する | Microsoft Docs"
-description: "Azure CLI を使って Web Apps for Containers を 管理します。"
+title: "Azure CLI 2.0 を使って Web App for Containers を管理する | Microsoft Docs"
+description: "Azure CLI を使って Web App for Containers を管理します。"
 keywords: "Azure App Service, Web アプリ, CLI, Linux, OSS"
 services: app-service
 documentationCenter: 
@@ -16,15 +16,15 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: d58fab0b423b7bc1382a82f4bf308b6ad7286296
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 5213bec66095d50ef29cc3bec0a7b6307614dc92
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
+ms.lasthandoff: 09/20/2017
 
 ---
-# <a name="manage-web-apps-for-containers-using-azure-cli"></a>Azure CLI を使って Web Apps for Containers を 管理する
+# <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
-この記事のコマンドを使用して、Azure CLI 2.0 を使って Web Apps for Containers を作成および管理できます。
+この記事のコマンドを使用して、Azure CLI 2.0 を使って Web App for Containers を作成および管理できます。
 この CLI の新しいバージョンは、次の 2 つの方法で使用を開始できます。
 
 * [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli) をコンピューターにインストールする
@@ -54,7 +54,7 @@ Docker コンテナーのログ記録をアクティブにするには、次の�
 az webapp log config -n sname -g rgname --web-server-logging filesystem
 ```
 
-## <a name="change-the-custom-docker-container-for-an-existing-web-apps-for-containers-app"></a>既存の Web Apps for Containers アプリのカスタム Docker コンテナーを変更する
+## <a name="change-the-custom-docker-container-for-an-existing-web-app-for-containers-app"></a>既存の Web App for Containers アプリのカスタム Docker コンテナーを変更する
 
 作成済みのアプリの現在の Docker イメージを新しいイメージに変更するには、次のコマンドを使用できます。
 
@@ -78,15 +78,15 @@ az webapp config container set -n sname1 -g rgname -c <container name> -r <serve
 az webapp deployment container config -n sname -g rgname -e true
 ```
 
-## <a name="create-a-web-apps-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>組み込みのランタイム フレームワークの 1 つを使用して Web Apps for Containers アプリを作成する
+## <a name="create-a-web-app-for-containers-app-using-one-of-our-built-in-runtime-frameworks"></a>組み込みのランタイム フレームワークの 1 つを使用して Web App for Containers アプリを作成する
 
-PHP 5.6 Web Apps for Containers アプリを作成するには、次のコマンドを使用できます。
+PHP 5.6 Web App for Containers アプリを作成するには、次のコマンドをご利用いただけます。
 
 ```azurecli-interactive
 az webapp create -n sname -g rgname -p pname -r "php|5.6"
 ```
 
-## <a name="change-framework-version-for-an-existing-web-apps-for-containers-app"></a>既存の Web Apps for Containers アプリのフレームワークのバージョンを変更する
+## <a name="change-framework-version-for-an-existing-web-app-for-containers-app"></a>既存の Web App for Containers アプリのフレームワークのバージョンを変更する
 
 作成済みのアプリの現在のフレームワークのバージョンを Node.js 6.11 に変更するには、次のコマンドを使用できます。
 
@@ -104,9 +104,9 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Web Apps for Containers とは](app-service-linux-intro.md)
+* [Azure Web App for Containers とは](app-service-linux-intro.md)
 * [Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (プレビュー)](../../cloud-shell/overview.md)
-* [Azure App Service でステージング環境を設定する](../../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Azure Web Apps for Containers での継続的なデプロイ](app-service-linux-ci-cd.md)
+* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Azure Web App for Containers での継続的なデプロイ](app-service-linux-ci-cd.md)
 

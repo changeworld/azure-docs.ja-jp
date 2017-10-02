@@ -16,10 +16,10 @@ ms.date: 08/09/2017
 ms.author: ryanwi
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 07e55117d92e2780ea0c2ec24af04832f3f704a7
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: d0f67b1a63c36e878ed5f7c9aa1c45267e5b156c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -39,6 +39,7 @@ ms.lasthandoff: 09/02/2017
 > * [.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)
 > * [アプリケーションをリモート クラスターにデプロイする](service-fabric-tutorial-deploy-app-to-party-cluster.md)
 > * Visual Studio Team Services を使用して CI/CD を構成する
+> * [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md)
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に
@@ -159,10 +160,9 @@ Team Services へ変更をプッシュすると、ビルドが自動的にトリ
 > * リリース定義の作成
 > * アプリケーションを自動的にデプロイおよびアップグレードする
 
-このチュートリアルでは、アプリケーションをデプロイして、継続的インテグレーションを構成しました。次の操作をお試しください。
-- [アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-- [アプリケーションのテスト](service-fabric-testability-overview.md) 
-- [監視と診断](service-fabric-diagnostics-overview.md)
+次のチュートリアルに進みます。
+> [!div class="nextstepaction"]
+> [アプリケーションの監視と診断を設定する](service-fabric-tutorial-monitoring-aspnet.md) 
 
 
 <!-- Image References -->

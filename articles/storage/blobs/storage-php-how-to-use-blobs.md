@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/08/2016
 ms.author: marsma
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4b68844c5d0553eaede3997bf09bff4fe570e850
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ae57d8bb5ecf495538f7de703c3a4033488fe93e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="how-to-use-blob-storage-from-php"></a>PHP から BLOB ストレージを使用する方法
@@ -29,16 +29,16 @@ ms.lasthandoff: 08/22/2017
 ## <a name="overview"></a>概要
 Azure Blob Storage は、非構造化データをクラウド内にオブジェクト/BLOB として格納するサービスです。 Blob Storage は、ドキュメント、メディア ファイル、アプリケーション インストーラーなど、任意の種類のテキスト データやバイナリ データを格納できます。 Blob Storage は、オブジェクト ストレージとも呼ばれます。
 
-このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、BLOB の**アップロード**、**一覧の取得**、**ダウンロード**、および**削除**です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
+このガイドでは、Azure BLOB サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[PHP 用の Azure Storage クライアント ライブラリ][download]を利用しています。 紹介するシナリオは、BLOB の**アップロード**、**一覧の取得**、**ダウンロード**、および**削除**です。 BLOB の詳細については、「 [次のステップ](#next-steps) 」のセクションを参照してください。
 
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Microsoft Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Microsoft Azure SDK for PHP のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
+Azure BLOB サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から [PHP 用の Azure Storage クライアント ライブラリ][download]のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-このガイドで使用するサービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
+このガイドで使用する BLOB ストレージ サービス機能は、PHP アプリケーション内でローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト内で実行されるコードで呼び出すこともできます。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
 [!INCLUDE [get-client-libraries](../../../includes/get-client-libraries.md)]
@@ -51,17 +51,12 @@ Azure BLOB サービス API を使用するには、次の要件があります�
 
 次の例では、オートローダー ファイルをインクルードし、 **ServicesBuilder** クラスを参照する方法を示しています。
 
-> [!NOTE]
-> この記事の例では、Composer を使用して Azure 向け PHP クライアント ライブラリがインストールされていることを前提としています。 ライブラリを手動でインストールした場合は、 `WindowsAzure.php` オートローダー ファイルを参照する必要があります。
->
->
-
 ```php
 require_once 'vendor/autoload.php';
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 ```
 
-下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
+以下の例では、常に `require_once` ステートメントが表示されますが、この例の実行に必要なクラスのみが参照されます。
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
 Azure BLOB サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 BLOB サービスの接続文字列の形式は次のとおりです。
@@ -81,16 +76,16 @@ UseDevelopmentStorage=true
 いずれの Azure サービス クライアントを作成するにも、 **ServicesBuilder** クラスを使用する必要があります。 そのための方法は次のとおりです。
 
 * 接続文字列を直接渡す
-* **CloudConfigurationManager (CCM)** を使用して複数の外部ソースに対して接続文字列を確認する
-  * 既定では 1 つの外部ソース (環境変数) のみサポートされています。
-  * **ConnectionStringSource** クラスを継承して新しいソースを追加できます。
+* Web アプリで環境変数を使用して、接続文字列を格納します。 接続文字列の構成については、[Azure Web アプリ構成の設定](../../app-service-web/web-sites-configure.md)に関するドキュメントを参照してください。
 
-ここで概説している例では、接続文字列を直接渡します。
+ここで概説している例では、接続文字列が直接渡されます。
 
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
+
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
 ```
@@ -103,10 +98,12 @@ $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionSt
 ```php
 require_once 'vendor\autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Blob\Models\CreateContainerOptions;
 use MicrosoftAzure\Storage\Blob\Models\PublicAccessType;
 use MicrosoftAzure\Storage\Common\ServiceException;
+
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create blob REST proxy.
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
@@ -152,7 +149,7 @@ catch(ServiceException $e){
 
 **setPublicAccess(PublicAccessType::CONTAINER\_AND\_BLOBS)** の呼び出しにより、匿名の要求でコンテナーと BLOB データにアクセス可能になります。 **setPublicAccess(PublicAccessType::BLOBS_ONLY)** の呼び出しにより、匿名の要求で BLOB データにのみアクセス可能になります。 コンテナー ACL の詳細については、「[Set container ACL (REST API)][container-acl]」をご覧ください。
 
-BLOB サービスのエラー コードの詳細については、「[BLOB サービスのエラー コード][error-codes]」をご覧ください。
+Blob service のエラー コードの詳細については、「[Blob service のエラー コード][error-codes]」をご覧ください。
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
 BLOB としてファイルをアップロードするには、**BlobRestProxy->createBlockBlob** メソッドを使います。 この処理により、BLOB が存在しない場合は作成され、存在する場合は上書きされます。 次のコード例では、コンテナーが既に作成されていることを前提として、[fopen][fopen] を使用してストリームとしてファイルを開いています。
@@ -160,12 +157,13 @@ BLOB としてファイルをアップロードするには、**BlobRestProxy->c
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Common\ServiceException;
+
+$connectionString = "DefaultEndpointsProtocol=http;AccountName=<accountNameHere>;AccountKey=<accountKeyHere>";
 
 // Create blob REST proxy.
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
-
 
 $content = fopen("c:\myfile.txt", "r");
 $blob_name = "myblob";
@@ -192,12 +190,11 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create blob REST proxy.
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
-
 
 try    {
     // List blobs.
@@ -225,7 +222,7 @@ BLOB をダウンロードするには、**BlobRestProxy->getBlob** メソッド
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create blob REST proxy.
@@ -255,12 +252,11 @@ BLOB を削除するには、コンテナー名と BLOB 名を **BlobRestProxy->
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create blob REST proxy.
 $blobRestProxy = ServicesBuilder::getInstance()->createBlobService($connectionString);
-
 
 try    {
     // Delete blob.
@@ -282,7 +278,7 @@ catch(ServiceException $e){
 ```php
 require_once 'vendor/autoload.php';
 
-use WindowsAzure\Common\ServicesBuilder;
+use MicrosoftAzure\Storage\Common\ServicesBuilder;
 use MicrosoftAzure\Storage\Common\ServiceException;
 
 // Create blob REST proxy.
@@ -305,14 +301,12 @@ catch(ServiceException $e){
 ## <a name="next-steps"></a>次のステップ
 これで、Azure BLOB サービスの基本を学習できました。さらに複雑なストレージ タスクについて学習するには、次のリンク先をご覧ください。
 
-* [Azure Storage チームのブログ](http://blogs.msdn.com/b/windowsazurestorage/)
-* [PHP ブロック BLOB の例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/BlockBlobExample.php)
-* [PHP ページ BLOB の例](https://github.com/WindowsAzure/azure-sdk-for-php-samples/blob/master/storage/PageBlobExample.php)
-* [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+* [Azure Storage PHP クライアント ライブラリの API リファレンス](http://azure.github.io/azure-storage-php/)を参照してください。
+* [詳細な BLOB の例](https://github.com/Azure/azure-storage-php/blob/master/samples/BlobSamples.php)を参照してください。
 
 詳細については、 [PHP デベロッパー センター](/develop/php/)も参照してください。
 
-[download]: http://go.microsoft.com/fwlink/?LinkID=252473
+[download]: https://github.com/Azure/azure-storage-php
 [container-acl]: http://msdn.microsoft.com/library/azure/dd179391.aspx
 [error-codes]: http://msdn.microsoft.com/library/azure/dd179439.aspx
 [file_get_contents]: http://php.net/file_get_contents

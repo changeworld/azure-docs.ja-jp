@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: trinadhk;markgal;jpallavi;
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: bb058b11d211c4c41ff8f8c3849a4630886c78d5
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: d555f7a93a980a35c6b50d480c43de6bdc5c86df
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="troubleshoot-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップのトラブルシューティング
@@ -32,9 +32,13 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="backup"></a>バックアップ
 
-## <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
+### <a name="error-the-specified-disk-configuration-is-not-supported"></a>エラー: 指定されたディスク構成がサポートされていません
 
-現在 Azure Backup では、1023 GB より大きいサイズのディスクをサポートしていません。 ディスクを分割してディスクのサイズを制限より小さくしてください。 ディスクを分割するには、データ サイズが 1023 GB を超えるディスクを、サイズが 1023 GB 未満の新しく作成されたディスクにコピーする必要があります。
+現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
+- 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>
+- 次に、1 TB を超えるディスクから、新規作成した 1 TB より小さいサイズのディスクにデータをコピーします。 <br>
+- すべてのデータがコピーされたことを確認し、1 TB を超えるディスクを取り外します。
+- バックアップを開始します。
 
 | エラーの詳細 | 対処法 |
 | --- | --- |

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 09/21/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: a7e389037a458c91d67643f7c0fca0691c22224f
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 9bda115455ff1e122ac2764cec612546c71365c4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
@@ -41,16 +41,17 @@ HDInsight アプリケーションは、"*ライセンス持ち込み (BYOL)*" �
 ## <a name="define-the-application"></a>アプリケーションの定義
 Marketplace へのアプリケーションの発行は、2 段階の手順で実行されます。 最初に、*createUiDef.json* ファイルを定義します。 createUiDef.json ファイルは、どのクラスターがアプリケーションと互換性があるかを示します。 次に、Azure Portal からテンプレートを発行します。 以下に createUiDef.json ファイルの例を示します。
 
-    {
-        "handler": "Microsoft.HDInsight",
-        "version": "0.0.1-preview",
-        "clusterFilters": {
-            "types": ["Hadoop", "HBase", "Storm", "Spark"],
-            "tiers": ["Standard", "Premium"],
-            "versions": ["3.4"]
-        }
+```json
+{
+    "handler": "Microsoft.HDInsight",
+    "version": "0.0.1-preview",
+    "clusterFilters": {
+        "types": ["Hadoop", "HBase", "Storm", "Spark"],
+        "tiers": ["Standard", "Premium"],
+        "versions": ["3.4"]
     }
-
+}
+```
 
 | フィールド | Description | 指定できる値 |
 | --- | --- | --- |
@@ -64,7 +65,7 @@ Marketplace へのアプリケーションの発行は、2 段階の手順で実
   > [!IMPORTANT]
   > アプリケーションのインストール スクリプトの名前は、個々のクラスターに一意である必要があります。 スクリプト名の形式は、以下のとおりです。
   > 
-  > name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
+  > "name": "[concat('hue-install-v0','-' ,uniquestring(‘applicationName’)]"
   > 
   > スクリプト名は、3 つの部分で構成されます。
   > 

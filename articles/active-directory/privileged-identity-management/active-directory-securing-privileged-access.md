@@ -3,8 +3,8 @@ title: "Azure AD での特権アクセスのセキュリティ保護 | Microsoft
 description: "このトピックでは、Azure、Azure Active Directory、および Microsoft Online Services で特権アクセスを保護するための方法について説明します。"
 services: active-directory
 documentationcenter: 
-author: kgremban
-manager: femila
+author: barclayn
+manager: mbaldwin
 editor: mwahl
 ms.assetid: 235a0ce9-1daf-4433-8f65-9c6afcd64d08
 ms.service: active-directory
@@ -12,15 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: c96a0bd6710d60629bc631fe7e1f642cdb2bada6
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
@@ -52,7 +51,7 @@ Azure Multi-Factor Authentication の概要については、次のビデオを�
 ## <a name="time-bound-privileges"></a>期限付きの特権
 組織によっては、高い特権を持つロールに割り当てられたユーザーが増えすぎることがあります。 サービスのサインアップなど、特定のアクティビティのためにユーザーがロールに追加されたが、その後、ユーザーはあまり権限を使用していないというケースもあります。
 
-特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーがタスクの実行を必要としているときにだけ特権を "ジャスト イン タイム" (JIT) で取得するようにユーザーを制限します。 Azure Active Directory と Microsoft Online Services では、 [Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM)を使用することができます。
+特権の公開期間を短縮し、使用状況の可視性を高めるには、ユーザーが "Just-In-Time" (JIT) 特権を持つように制限するか、短縮された期間に対してこうしたロールを割り当てます。確実に特権は自動失効します。 Azure Active Directory、Azure リソース (プレビュー)、Microsoft Online Services では、[Azure AD Privileged Identity Management (PIM)](http://aka.ms/AzurePIM) をご利用いただけます。
 
 ![PIM dashboard][2]
 

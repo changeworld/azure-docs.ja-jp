@@ -14,10 +14,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/03/2017
 ms.author: sogup;markgal;arunak
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 531d645bab8c80caba96bc5292354b5490a53804
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 28e8b0be0b69f279685109d611fbfb369b96101a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="upgrade-a-backup-vault-to-a-recovery-services-vault"></a>Backup コンテナーを Recovery Services コンテナーにアップグレードする
@@ -69,7 +69,7 @@ RecoveryServicesVaultUpgrade-1.0.2.ps1 **-SubscriptionID** `<subscriptionID>` **
 >[!NOTE]
 > リソース グループの名前には制約があります。 必ずこのガイダンスに従ってください。従わなかった場合、コンテナーのアップグレードが失敗する可能性があります。
 >
->
+>**Azure US Government** のお客様は、スクリプトの実行中に環境を "AzureUSGovernment" に設定する必要があります。
 
 次のコード スニペットは、PowerShell コマンドの例を示しています。
 

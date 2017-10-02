@@ -17,10 +17,10 @@ ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 75cafa6868d54f9d8a7e0dbe9f2a9e85ed43f16f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 
@@ -199,6 +199,16 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 
 >[!TIP]
 > *[ユーザー ライセンスの変更]* に関連する項目をクリックすると、個々のユーザーごとに適用されたライセンスの変更の詳細が表示されます。
+
+## <a name="deleting-a-group-with-an-assigned-license"></a>ライセンスが割り当てられているグループを削除する
+
+アクティブなライセンスが割り当てられているグループを削除することはできません。 管理者がグループを削除できてしまうと、気が付かないうちに、ユーザーからライセンスが削除されてしまいます。このため、こうしたグループを削除するには、最初にそのグループからライセンスを削除する必要があります。
+
+Azure Portal でグループを削除しようとすると、次のようなエラー通知が表示されることがあります。![グループの削除失敗のスクリーンショット](media/active-directory-licensing-group-advanced/groupdeletionfailed.png)
+
+グループの **[ライセンス]** タブに移動し、割り当てられているライセンスがないかどうかを確認します。 ライセンスが割り当てられている場合は、そのライセンスを削除してから、再度グループ削除してみてください。
+
+PowerShell または Graph API でグループを削除しようとした場合も、同様のエラーが発生することがあります。 オンプレミスから同期されたグループを使用している場合、Azure AD でのグループ削除に失敗すると、Azure AD Connect によってエラーが通知されます。 このような場合は、そのグループにライセンスが割り当てられていないかどうかを確認し、そのライセンスを最初に削除します。
 
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
