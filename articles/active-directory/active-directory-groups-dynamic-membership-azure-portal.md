@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 780f94f9863f73834ab72e9daf4362bea28242e9
+ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
+ms.openlocfilehash: edf3b0a80712e8287a66978e0e9574949805a27a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="create-attribute-based-rules-for-dynamic-group-membership-in-azure-active-directory"></a>Azure Active Directory で動的グループ メンバーシップの属性ベースのルールを作成する
@@ -119,15 +119,13 @@ For example:
 
 
 ## <a name="query-error-remediation"></a>クエリ エラーの修復
-次の表では、発生する可能性のあるエラーとその解決方法を示します。
+次の表では、一般的なエラーとその解決方法を示します。
 
 | クエリ解析エラー | 間違った使用法 | 修正後 |
 | --- | --- | --- |
-| エラー: 属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/>プロパティは、[サポートされているプロパティの一覧](#supported-properties)のいずれかと一致している必要があります。 |
-| エラー: 属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/>プロパティはブール型です。 前掲の一覧からブール型でサポートされている演算子 (-eq または -ne) を使用してください。 |
-| エラー: クエリ コンパイル エラー。 |(user.department -eq "Sales") -and (user.department -eq "Marketing")(user.userPrincipalName -match "*@domain.ext") |(user.department -eq "Sales") -and (user.department -eq "Marketing")<br/>論理演算子は、サポートされているプロパティ一覧のいずれかと一致している必要があります。正規表現では (user.userPrincipalName -match ".*@domain.ext")or(user.userPrincipalName -match "@domain.ext$")Error。 |
-| エラー: バイナリ式の形式が正しくありません。 |(user.department –eq “Sales”) (user.department -eq "Sales")(user.department-eq"Sales") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>クエリにいくつかの誤りが存在します。 かっこの位置が正しくありません。 |
-| エラー: 動的メンバーシップの設定中に不明なエラーが発生しました。 |(user.accountEnabled -eq "True" AND user.userPrincipalName -contains "alias@domain") |(user.accountEnabled -eq true) -and (user.userPrincipalName -contains "alias@domain")<br/>クエリにいくつかの誤りが存在します。 かっこの位置が正しくありません。 |
+| エラー: 属性がサポートされていません。 |(user.invalidProperty -eq "Value") |(user.department -eq "value")<br/><br/>該当する属性が、[サポートされているプロパティ一覧](#supported-properties)に記載されていることを確認してください。 |
+| エラー: 属性で演算子がサポートされていません。 |(user.accountEnabled -contains true) |(user.accountEnabled -eq true)<br/><br/>プロパティの型に対してサポートされていない演算子が使用されています (この例では、-contains をブール型で使用することはできません)。 プロパティの型に合った適切な演算子を使用してください。 |
+| エラー: クエリ コンパイル エラー。 |1. (user.department -eq "Sales") (user.department -eq "Marketing")<br/><br/>2. (user.userPrincipalName -match "*@domain.ext") |1.演算子が不足しています。 結合述語を 2 つ使用してください (-and または -or)。<br/><br/>(user.department -eq "Sales") -or (user.department -eq "Marketing")<br/><br/>2. -match に使用されている正規表現に誤りがあります。<br/><br/>(user.userPrincipalName -match ".*@domain.ext") または (user.userPrincipalName -match "@domain.ext$")|
 
 ## <a name="supported-properties"></a>サポートされているプロパティ
 高度なルールで使用できるすべてのユーザー プロパティを次に示します。

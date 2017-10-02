@@ -16,10 +16,10 @@ ms.date: 08/22/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: a26c40351c6b982fd90acb4bf06220ef3f79f399
+ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
+ms.openlocfilehash: a57edd30975ec0e943fd84b2c66137d328a89b8b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
+ms.lasthandoff: 09/15/2017
 
 ---
 # <a name="configure-azure-active-directory-device-based-conditional-access-policies"></a>Azure Active Directory のデバイス ベースの条件付きアクセスポリシーを構成する
@@ -57,7 +57,9 @@ ms.lasthandoff: 08/23/2017
 デバイスは、以下によってディレクトリ内で準拠としてマークできます。
 
 - Intune 
-- Azure AD と統合されるサード パーティ製のモバイル デバイス管理システム  
+- Azure AD 統合によって Windows 10 デバイスを管理するサードパーティ製のモバイル デバイス管理システム 
+ 
+  
 
 Azure AD に接続されているデバイスのみを準拠としてマークできます。 Azure Active Directory にデバイスを接続するには、次のオプションがあります。 
 

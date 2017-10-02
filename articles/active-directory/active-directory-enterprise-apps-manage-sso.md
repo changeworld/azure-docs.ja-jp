@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/05/2017
+ms.date: 09/19/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 73c0917702e2c222f3dc09ddfa2d6d54cf005abf
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 882180a553fffee05a612cf70ddd9a0f30108415
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="managing-single-sign-on-for-enterprise-apps"></a>エンタープライズ アプリのシングル サインオンの管理
@@ -40,7 +40,7 @@ ms.lasthandoff: 09/06/2017
 ## <a name="single-sign-on-modes"></a>シングル サインオン モード
 **[シングル サインオン]**ページの先頭には **[モード]** メニューがあり、これを使用してシングル サインオン モードを構成できます。 利用可能なオプションは、次のとおりです。
 
-* **SAML ベースのサインオン** - アプリケーションで Azure Active Directory と SAML 2.0 プロトコルを使用した完全なフェデレーション シングル サインオンがサポートされている場合は、このオプションを使用できます。
+* **SAML ベースのサインオン** - Azure Active Directory に SAML 2.0 プロトコル、WS-Federation、OpenID Connect プロトコルのいずれかを組み合わせた完全なフェデレーション シングル サインオンがアプリケーションでサポートされている場合は、このオプションを使用できます。
 * **パスワード ベースのサインオン** - Azure AD でこのアプリケーションのパスワード フォームの入力がサポートされている場合は、このオプションを使用できます。
 * **リンクされたサインオン** - 以前は "既存のシングル サインオン" という名前でした。管理者は、このオプションを使用して、ユーザーの Azure AD アクセス パネルまたは Office 365 アプリケーション起動プログラムにこのアプリケーションへのリンクを配置できます。
 
