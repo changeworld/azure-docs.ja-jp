@@ -9,15 +9,17 @@ ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 851f04c8b5eee762ec43060f02c8b83f00c1782e
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
 Azure Service Fabric コマンド ライン インターフェイス (CLI) は、Service Fabric のエンティティを対話的に操作したり管理したりするためのコマンド ライン ユーティリティです。 Service Fabric CLI は、Windows クラスターと Linux クラスターのどちらでも使用できます。 Service Fabric CLI は、Python がサポートされるすべてのプラットフォームで動作します。
+
+[!INCLUDE [links to azure cli and service fabric cli](../../includes/service-fabric-sfctl.md)]
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -55,6 +57,13 @@ pip install sfctl
 sfctl -h
 ```
 
+`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 ### <a name="ubuntu"></a>Ubuntu
 
 Ubuntu 16.04 Desktop では、サードパーティのパーソナル パッケージ アーカイブ (PPA) を使用して Python 3.6 をインストールできます。
@@ -75,6 +84,13 @@ python3.6 -m pip install sfctl
 sfctl -h
 ```
 
+`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 以上の手順は、システムにインストールされた Python 3.5 と Python 2.7 には影響しません。 Ubuntu に関する詳しい知識がない限り、これらのインストールに変更を加えることは避けてください。
 
 ### <a name="macos"></a>MacOS
@@ -92,6 +108,15 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
+
+
+`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
+
+```bash
+export PATH=$PATH:~/.local/bin
+echo "export PATH=$PATH:~/.local/bin" >> .bashrc
+```
+
 
 システムにインストールされた Python 2.7 が、以上の手順によって変更されることはありません。
 
@@ -120,10 +145,10 @@ sfctl cluster select --endpoint http://testcluster.com:19080
 
 クラスターのエンドポイントには、プレフィックスとして `http` または `https` を付けたうえで、 HTTP ゲートウェイのポートを含める必要があります。 このポートとアドレスは、Service Fabric Explorer の URL と同じです。
 
-証明書を使って保護されているクラスターの場合、PEM でエンコードされた証明書を指定できます。 証明書は、単一のファイルとしてまたは証明書とキーのペアとして指定できます。
+証明書を使って保護されているクラスターの場合、PEM でエンコードされた証明書を指定できます。 証明書は、単一のファイルとしてまたは証明書とキーのペアとして指定できます。 CA の署名入りではない自己署名証明書の場合は、`--no-verify` オプションを渡して CA 検証を省略することができます。
 
 ```azurecli
-sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem
+sfctl cluster select --endpoint https://testsecurecluster.com:19080 --pem ./client.pem --no-verify
 ```
 
 詳細については、[セキュリティ保護された Azure Service Fabric クラスターへの接続](service-fabric-connect-to-secure-cluster.md)に関するページを参照してください。
@@ -175,6 +200,12 @@ Service Fabric CLI は、クライアント側の証明書を PEM (拡張子 .pe
 openssl pkcs12 -in certificate.pfx -out mycert.pem -nodes
 ```
 
+同様に、PEM ファイルから PFX ファイルに変換するには、次のコマンドをご利用いただけます (ここではパスワードを指定していません)。
+
+```bash
+openssl  pkcs12 -export -out Certificates.pfx -inkey Certificates.pem -in Certificates.pem -passout pass:'' 
+```
+
 詳細については、[ のドキュメント](https://www.openssl.org/docs/)を参照してください。
 
 ### <a name="connection-problems"></a>接続の問題
@@ -202,6 +233,16 @@ sfctl application -h
 ```azurecli
 sfctl application create -h
 ```
+
+## <a name="updating-the-service-fabric-cli"></a>Service Fabric CLI の更新 
+
+Service Fabric CLI を更新するには、次のコマンドを実行します (最初のインストール時に選択した内容に応じて `pip` を `pip3` で置き換えます)。
+
+```bash
+pip uninstall sfctl 
+pip install sfctl 
+```
+
 
 ## <a name="next-steps"></a>次のステップ
 

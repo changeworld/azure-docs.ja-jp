@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: oldportal;it-pro;
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 283c9903501a1e497e4dde81146d21edb869e9e2
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 081cf2bde44a0b55508cc7f0197fa7f8e378189b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="how-azure-subscriptions-are-associated-with-azure-active-directory"></a>Azure サブスクリプションを Azure Active Directory に関連付ける方法
@@ -48,13 +48,14 @@ Azure AD は、ほとんどの Microsoft クラウド サービスの背後に�
 ## <a name="to-add-an-existing-subscription-to-your-azure-ad-directory"></a>既存のサブスクリプションを Azure AD ディレクトリに追加するには
 対象サブスクリプションが関連付けられている現在のディレクトリとその追加先となるディレクトリとの両方に存在するアカウントでサインインする必要があります。 
 
-1. 所有権を譲渡するサブスクリプションのアカウント管理者であるアカウントで [Azure アカウント センター](https://account.windowsazure.com/Home/Index)にサインインします。
+1. 所有権を譲渡するサブスクリプションのアカウント管理者であるアカウントで [Azure アカウント センター](https://account.azure.com/Subscriptions)にサインインします。
 2. サブスクリプションの所有者となるユーザーが、譲渡先のディレクトリに存在することを確認します。
 3. **[サブスクリプションの譲渡]** をクリックします。
 4. 譲渡先を指定します。 譲渡先には、承認用のリンクが記載された電子メールが自動的に送信されます。
 5. 譲渡先のユーザーは、リンクをクリックして指示に従います (支払情報の入力など)。 受信者が継承すると、サブスクリプションが譲渡されます。 
 6. サブスクリプションの既定のディレクトリが、譲渡先のユーザーが属しているディレクトリに変更されます。
 
+詳細については、「[別のアカウントに Azure サブスクリプションの所有権を譲渡する](../billing/billing-subscription-transfer.md)」を参照してください
 
 ## <a name="suggestions-to-manage-both-a-subscription-and-a-directory"></a>サブスクリプションとディレクトリの両方を管理するうえでの推奨事項
 Azure サブスクリプションの管理ロールは、Azure サブスクリプションに関連付けられているリソースを管理します。 このセクションでは、Azure サブスクリプションの管理者と Azure AD ディレクトリの管理者との違いについて説明します。 管理者ロールについて、また、それらを使ってサブスクリプションを管理するうえでのその他の推奨事項については、「[Azure Active Directory での管理者ロールの割り当て](active-directory-assign-admin-roles.md)」を参照してください。
