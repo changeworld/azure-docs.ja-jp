@@ -3,7 +3,7 @@ title: "保存データ向け Azure Storage Service Encryption | Microsoft Docs"
 description: "データを保存するときにサービス側で Azure Blob Storage を暗号化し、データを取得するときに復号化するには、Azure Storage Service Encryption 機能を使用します。"
 services: storage
 documentationcenter: .net
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: edabe3ee-688b-41e0-b34f-613ac9c3fdfd
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/09/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: bac7b3292f21aa97d02a18dd58f79a4f10485b7d
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: f3486ca87a1797c312caa3fe27f692037c80b747
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-storage-service-encryption-for-data-at-rest"></a>Azure Storage Service Encryption for Data at Rest
@@ -84,7 +84,7 @@ AzCopy は、最適なパフォーマンスの単純なコマンドを使用し�
 詳細については、「 [AzCopy コマンド ライン ユーティリティを使用してデータを転送する](storage-use-azcopy.md)」を参照してください。
 
 #### <a name="using-smb"></a>SMB の使用
-Azure File Storage は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 オンプレミスまたは Azure のクライアントからファイル共有をマウントできます。 マウントすると、Robocopy などのツールを使用して、ファイルを Azure ファイル共有にコピーすることができます。 詳細については、[Windows で Azure ファイル共有をマウントする方法](../files/storage-how-to-use-files-windows.md)に関するページおよび [Linux で Azure ファイル共有をマウントする方法](../storage-how-to-use-files-linux.md)に関するページを参照してください。
+Azure Files は、標準の SMB プロトコルを使用したクラウドでのファイル共有を提供します。 オンプレミスまたは Azure のクライアントからファイル共有をマウントできます。 マウントすると、Robocopy などのツールを使用して、ファイルを Azure ファイル共有にコピーすることができます。 詳細については、[Windows で Azure ファイル共有をマウントする方法](../files/storage-how-to-use-files-windows.md)に関するページおよび [Linux で Azure ファイル共有をマウントする方法](../files/storage-how-to-use-files-linux.md)に関するページを参照してください。
 
 
 #### <a name="using-the-storage-client-libraries"></a>ストレージ クライアント ライブラリの使用

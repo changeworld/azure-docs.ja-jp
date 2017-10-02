@@ -1,6 +1,6 @@
 ---
-title: "Windows での Azure File Storage に関する問題のトラブルシューティング | Microsoft Docs"
-description: "Windows での Azure File Storage に関する問題のトラブルシューティング"
+title: "Windows での Azure Files に関する問題のトラブルシューティング | Microsoft Docs"
+description: "Windows での Azure Files に関する問題のトラブルシューティング"
 services: storage
 documentationcenter: 
 author: genlin
@@ -12,18 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
+ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 0e3bbf5ad2ae9cda72876af6bdf880e3aa4f63ac
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 5aacc8a920c9343c5efa89128aabb1505fc2d9aa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="troubleshoot-azure-file-storage-problems-in-windows"></a>Windows での Azure File Storage に関する問題のトラブルシューティング
+# <a name="troubleshoot-azure-files-problems-in-windows"></a>Windows での Azure Files に関する問題のトラブルシューティング
 
-この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure File Storage に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有の トラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
+この記事では、Windows クライアントから接続するときに生じる、Microsoft Azure Files に関係する一般的な問題を示します。 これらの問題の考えられる原因と解決策についても説明します。 この記事のトラブルシューティングの手順のほかに、[AzFileDiagnostics](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-a9fa1fe5) を使って Windows クライアント環境が前提条件を適切に満たしているかどうかを確認することもできます。 AzFileDiagnostics は、この記事で説明しているほとんどの症状を自動的に検出し、最適なパフォーマンスが得られる環境のセットアップを支援します。 この情報は、[Azure ファイル共有の トラブルシューティング ツール](https://support.microsoft.com/help/4022301/troubleshooter-for-azure-files-shares)で入手することもできます。記載されている手順に従って、Azure ファイル共有の接続、マッピング、マウントに関する問題を解決することができます。
 
 
 <a id="error53-67-87"></a>
@@ -50,7 +50,7 @@ Windows 8 以降および Windows Server 2012 以降の OS であれば、暗号
 
 ### <a name="cause-2-port-445-is-blocked"></a>原因 2: ポート 445 がブロックされている
 
-ポート 445 から Azure File Storage データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
+ポート 445 から Azure Files データセンターへの送信方向の通信がブロックされている場合、システム エラー 53 またはシステム エラー 67 が発生することがあります。 ポート 445 からのアクセスを許可する ISP または許可しない ISP の概要を確認するには、[TechNet](http://social.technet.microsoft.com/wiki/contents/articles/32346.azure-summary-of-isps-that-allow-disallow-access-from-port-445.aspx) を参照してください。
 
 これが "システム エラー 53" メッセージの原因であるかどうかを把握するために、Portqry を使用して、TCP:445 エンドポイントを照会できます。 TCP:445 エンドポイントがフィルター処理済みとして表示される場合、TCP ポートがブロックされています。 クエリの使用例を次に示します。
 
@@ -68,7 +68,7 @@ IT 部門と連携して、ポート 445 の送信方向の通信を [Azure の 
 
 ### <a name="cause-3-ntlmv1-is-enabled"></a>原因 3: NTLMv1 が有効になっている
 
-クライアント側で NTLMv1 通信が有効になっていると、システム エラー 53 またはシステム エラー 87 が発生することがあります。 Azure File Storage では、NTLMv2 認証のみがサポートされています。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure File Storage に対する通信がブロックされます。 
+クライアント側で NTLMv1 通信が有効になっていると、システム エラー 53 またはシステム エラー 87 が発生することがあります。 Azure Files では、NTLMv2 認証のみがサポートされています。 NTLMv1 が有効になっていると、クライアントの安全性が低下します。 そのため、Azure Files に対する通信がブロックされます。 
 
 これがエラーの原因であるかどうかを確認するには、次のレジストリ サブキーで値が 3 に設定されていることを確認します。
 
@@ -94,7 +94,7 @@ IT 部門と連携して、ポート 445 の送信方向の通信を [Azure の 
 ハンドルをいくつか閉じて、同時に開いているハンドルの数を減らしてから、再試行します。 詳細については、「[Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../common/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)」を参照してください。
 
 <a id="slowfilecopying"></a>
-## <a name="slow-file-copying-to-and-from-azure-file-storage-in-windows"></a>Windows で Azure File Storage との間でのファイルのコピーが遅い
+## <a name="slow-file-copying-to-and-from-azure-files-in-windows"></a>Windows で Azure Files との間でのファイルのコピーが遅い
 
 Azure のファイル サービスにファイルを転送しようとした場合に、パフォーマンスが低下することがあります。
 
@@ -153,7 +153,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 - 二重引用符でキーを囲みます。スラッシュが最初の文字である場合を除き、この問題を回避できます。 スラッシュが最初の文字である場合は、対話モードを使用してパスワードを別途入力するか、キーを再生成してスラッシュで始まらないキーを取得します。
 
 <a id="cannotaccess"></a>
-## <a name="application-or-service-cannot-access-a-mounted-azure-file-storage-drive"></a>アプリケーションまたはサービスが、マウントされた Azure File Storage ドライブにアクセスできない
+## <a name="application-or-service-cannot-access-a-mounted-azure-files-drive"></a>アプリケーションまたはサービスが、マウントされた Azure Files ドライブにアクセスできない
 
 ### <a name="cause"></a>原因
 
@@ -174,7 +174,7 @@ net use コマンドは、スラッシュ (/) をコマンド ライン オプ�
 ファイルがネットワーク経由でコピーされる場合、ファイルはコピー元コンピューターで暗号化が解除された後、プレーンテキストとして送信され、コピー先で再暗号化されます。 ただし、暗号化されたファイルをコピーしようとしている場合は、"暗号化をサポートしていない宛先に、ファイルをコピーします" というエラーが表示されることがあります。
 
 ### <a name="cause"></a>原因
-この問題は、暗号化ファイル システム (EFS) を使用している場合に発生することがあります。 BitLocker で暗号化されたファイルは、Azure File Storage にコピーできます。 ただし、Azure File Storage は、NTFS EFS をサポートしていません。
+この問題は、暗号化ファイル システム (EFS) を使用している場合に発生することがあります。 BitLocker で暗号化されたファイルは Azure Files にコピーできます。 ただし、Azure Files は、NTFS EFS をサポートしていません。
 
 ### <a name="workaround"></a>対処法
 ネットワーク経由でファイルをコピーするには、まず、ファイルの暗号化を解除します。 次のいずれかの方法を使用します。
