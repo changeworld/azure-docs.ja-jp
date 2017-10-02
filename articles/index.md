@@ -255,7 +255,7 @@ ms.lasthandoff: 09/25/2017
                 </ul>
             </li>
             <li>
-                <a href="#products">成果物</a>
+                <a href="#products">製品</a>
                 <ul id="products">
                     <li>
                         <a href="#all">すべて</a>
