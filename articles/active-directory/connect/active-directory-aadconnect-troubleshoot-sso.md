@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/04/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: bc4ff9125553c8918df3a1f84041560a5b7d4cd8
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d96f96d6b9d6808d6a7c7ad8d720c2c2773d7d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -28,12 +28,14 @@ ms.lasthandoff: 08/07/2017
 
 ## <a name="known-issues"></a>既知の問題
 
+- 場合によっては、シームレス SSO の有効化に最大 30 分かかることがあります。
+- Edge ブラウザーのサポートは使用できません。
+- Office クライアントでのライセンスのアクティブ化により (特に、共有されたコンピューターのシナリオの場合)、ユーザーに余分なサインイン プロンプトが表示されます。
+- シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。 と 
+- シームレス SSO は、拡張保護モードがオンの場合は Internet Explorer で動作しません。
+- シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。
 - 30 以上の AD フォレストを同期している場合は、Azure AD Connect を使用するシームレスな SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-azure-ad-seamless-sso)にします。
 - Azure AD サービスの URL (https://autologon.microsoftazuread-sso.com、https://aadg.windows.net.nsatc.net) を "ローカル イントラネット" ゾーンではなく "信頼済みサイト" ゾーンに追加すると、**ユーザーのサインインがブロック**されます。
-- シームレス SSO は、Firefox および Edge のプライベート ブラウズ モードでは動作しません。 また、Internet Explorer の拡張保護モードがオンになっている場合も動作しません。
-
->[!IMPORTANT]
->お客様から報告された問題を調査するために、Edge のサポートを最近ロールバックしました。
 
 ## <a name="check-status-of-the-feature"></a>機能の状態の確認
 

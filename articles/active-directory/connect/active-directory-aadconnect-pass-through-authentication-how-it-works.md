@@ -12,20 +12,17 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/20/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: d34ccd40082edbe036d963ad548bff648119bdd4
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 3c648054666a1771187b3862b7c4972831b85f2c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
-
->[!IMPORTANT]
->Azure AD パススルー認証は現在プレビュー段階です。 
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory パススルー認証のしくみ
 
@@ -48,8 +45,8 @@ ms.lasthandoff: 08/01/2017
 ![パススルー認証](./media/active-directory-aadconnect-pass-through-authentication/pta2.png)
 
 ## <a name="next-steps"></a>次のステップ
-- [**現時点での制限事項**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - この機能は、現在プレビューの段階にあります。 サポートされているシナリオと、サポートされていないシナリオを確認します。
-- [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を開始し実行します。
+- [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
 - [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 機能に関する一般的な問題を解決する方法を確認します。
 - [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。

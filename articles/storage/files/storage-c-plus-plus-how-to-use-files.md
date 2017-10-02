@@ -1,6 +1,6 @@
 ---
-title: "C++ での Azure File Storage 用の開発 | Microsoft Docs"
-description: "Azure File Storage を使用してファイル データを格納する C++ アプリケーションとサービスを開発する方法を説明します。"
+title: "C++ での Azure Files 用の開発 | Microsoft Docs"
+description: "Azure Files を使用してファイル データを格納する C++ アプリケーションおよびサービスを開発する方法について説明します。"
 services: storage
 documentationcenter: .net
 author: renashahmsft
@@ -12,24 +12,24 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renashahmsft
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 86c3714327074f5576e535f67a0a2a8e761ffb46
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: d2f55b5ca6348ba8e190c65ec9a72c6f730d869e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
-# <a name="develop-for-azure-file-storage-with-c"></a>C++ での Azure File Storage 用の開発
+# <a name="develop-for-azure-files-with-c"></a>C++ での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
 [!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
 
-このチュートリアルでは、Azure File Storage で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 Azure File Storage を初めて利用する場合、各セクションのコンセプトをお読みください。サンプルを理解する上で役立ちます。
+このチュートリアルでは、Azure Files で基本的な操作を実行する方法を紹介します。 C++ で記述されたサンプルを利用し、共有とディレクトリを作成し、ファイルをアップロード、一覧表示、削除する方法を紹介します。 初めて Azure Files を使用する場合は、次のセクションの概念に目を通すと、サンプルを理解するのに役立ちます。
 
 
 * Azure ファイル共有を作成および削除する
@@ -40,7 +40,7 @@ ms.lasthandoff: 08/22/2017
 * 共有で定義されている共有アクセス ポリシーを使用するファイルの Shared Access Signature (SAS キー) を作成する
 
 > [!Note]  
-> Azure File Storage は SMB 経由でアクセスできるため、ファイル I/O の標準 C++ I/O クラスと関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述することができます。 この記事では、Azure Storage C++ SDK を使用するアプリケーションを記述する方法を説明します。この SDK は、Azure File Storage との通信に [Azure File Storage REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用します。
+> Azure Files には SMB 経由でアクセスできるため、標準の C++ I/O クラスおよび関数を使用して Azure ファイル共有にアクセスする単純なアプリケーションを記述できます。 この記事では、[File REST API](https://docs.microsoft.com/rest/api/storageservices/fileservices/file-service-rest-api) を使用して Azure Files と通信する Azure Storage C++ SDK を使用するアプリケーションを記述する方法について説明します。
 
 ## <a name="create-a-c-application"></a>C++ アプリケーションの作成
 サンプルをビルドするには、C++ 用 Azure Storage クライアント ライブラリ 2.4.0 をインストールする必要があります。 また、Azure ストレージ アカウントを作成しておく必要があります。
@@ -54,8 +54,8 @@ C++ 用 Azure Storage クライアント 2.4.0 をインストールする場合
 Install-Package wastorage
 ```
 
-## <a name="set-up-your-application-to-use-azure-file-storage"></a>Azure File Storage を使用するようにアプリケーションを設定する
-Azure File Storage を操作する C++ ファイルの先頭に、次の include ステートメントを追加します。
+## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
+Azure Files を操作する C++ ソース ファイルの先頭に次の include ステートメントを追加します。
 
 ```cpp
 #include <was/storage_account.h>
@@ -81,15 +81,15 @@ azure::storage::cloud_storage_account storage_account =
 ```
 
 ## <a name="create-an-azure-file-share"></a>Azure ファイル共有を作成する
-Azure File Storage のすべてのファイルとディレクトリは **Share** という名前のコンテナーにあります。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とそのコンテンツへのアクセスを取得するには、Azure File Storage クライアントを使用する必要があります。
+Azure ファイル共有内のすべてのファイルとディレクトリは、**Share** という名前のコンテナー内に存在します。 ストレージ アカウントには、アカウントの容量が許す限りの共有を置くことができます。 共有とその内容へのアクセスを取得するには、Azure Files クライアントを使用する必要があります。
 
 ```cpp
-// Create the Azure File storage client.
+// Create the Azure Files client.
 azure::storage::cloud_file_client file_client = 
   storage_account.create_cloud_file_client();
 ```
 
-Azure File Storage クライアントを使用し、共有への参照を取得できます。
+Azure Files クライアントを使用すると、共有への参照を取得できます。
 
 ```cpp
 // Get a reference to the file share
@@ -120,7 +120,7 @@ share.delete_share_if_exists();
 ```
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
-ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することができます。 Azure File Storage では、自分のアカウントで許可されるだけのディレクトリを作成できます。 次のコードは、ルート ディレクトリの下に **my-sample-directory** という名前のディレクトリを作成し、さらに **my-sample-subdirectory** という名前のサブディレクトリを作成します。
+ルート ディレクトリにすべてのファイルを置くのではなく、サブディレクトリ内に置いてストレージを整理することができます。 Azure Files では、自分のアカウントで許可されるだけのディレクトリを作成できます。 次のコードは、ルート ディレクトリの下に **my-sample-directory** という名前のディレクトリを作成し、さらに **my-sample-subdirectory** という名前のサブディレクトリを作成します。
 
 ```cpp
 // Retrieve a reference to a directory
@@ -241,7 +241,7 @@ outfile.close();
 ```
 
 ## <a name="delete-a-file"></a>ファイルを削除する
-もう 1 つの一般的な Azure File Storage 操作はファイル削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
+Azure Files でのもう 1 つの一般的な操作はファイルの削除です。 次のコードでは、ルート ディレクトリに保存されている my-sample-file-3 という名前のファイルを削除します。
 
 ```cpp
 // Get a reference to the root directory for the share.    

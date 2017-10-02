@@ -3,7 +3,7 @@ title: "Azure Storage での Azure PowerShell の使用 | Microsoft Docs"
 description: "Azure Storage 用の Azure PowerShell コマンドレットを使用して、ストレージ アカウントの作成と管理、BLOB、テーブル、キュー、およびファイルの操作、ストレージ分析の構成と照会、共有アクセス署名の作成を行う方法について説明します。"
 services: storage
 documentationcenter: na
-author: robinsh
+author: tamram
 manager: timlt
 ms.assetid: f4704f58-abc6-4f89-8b6d-1b1659746f5a
 ms.service: storage
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/03/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 87a116111d085fe2913bf6f5f8751c3ff5f3c076
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 8306ae5d4a943b9246da1d941725150c60026ca5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -256,7 +256,7 @@ Azure ストレージ コンテキストは、ストレージ資格情報をカ�
 
     詳しくは、「[New-AzureStorageContainerSASToken](/powershell/module/azure.storage/new-azurestoragecontainersastoken)」および「[Shared Access Signatures (SAS) の使用](../storage-dotnet-shared-access-signature-part-1.md)」をご覧ください。
 
-* 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。 これは、BLOB サービスでストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。 次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
+* 場合によっては、新しいストレージ コンテキストの作成時にサービスのエンドポイントを指定することもあります。 これは、Blob service でストレージ アカウントのカスタム ドメイン名を登録した場合に必要になることがあります。または、アクセスしているストレージ リソースに対して Shared Access Signature を使用します。 次に示すように、接続文字列でサービスのエンドポイントを設定し、このエンドポイントを使用して新しいストレージ コンテキストを作成します。
 
     ```powershell
     $ConnectionString = "DefaultEndpointsProtocol=http;BlobEndpoint=<blobEndpoint>;QueueEndpoint=<QueueEndpoint>;TableEndpoint=<TableEndpoint>;AccountName=<AccountName>;AccountKey=<AccountKey>"
@@ -689,9 +689,9 @@ $Queue.CloudQueue.DeleteMessage($QueueMessage)
 ```
 
 ## <a name="how-to-manage-azure-file-shares-and-files"></a>Azure ファイル共有とファイルを管理する方法
-Azure File Storage は、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File Storage API または Azure PowerShell を介して、共有内のファイル データにアクセスできます。
+Azure Files は、標準的な SMB プロトコルを使用して、アプリケーション用の共有ストレージを提供します。 Microsoft Azure の仮想マシンとクラウド サービスでは、マウントされている共有を介して、アプリケーション コンポーネント間でファイル データを共有できます。オンプレミスのアプリケーションでは、File Storage API または Azure PowerShell を介して、共有内のファイル データにアクセスできます。
 
-Azure File ストレージについて詳しくは、「[Windows で Azure File Storage を使用する](../storage-dotnet-how-to-use-files.md)」と「[ファイル サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」をご覧ください。
+Azure Files の詳細については、「[Get started with Azure Files on Windows (Windows で Azure Files の使用を開始する)](../files/storage-files-introduction.md)」および「[ファイル サービス REST API](http://msdn.microsoft.com/library/azure/dn167006.aspx)」を参照してください。
 
 ## <a name="how-to-set-and-query-storage-analytics"></a>ストレージ分析を設定して照会する方法
 [Azure Storage Analytics](../storage-analytics.md) を使って、Azure ストレージ アカウントからメトリックを収集し、ストレージ アカウントに送信される要求に関するログ データを収集することができます。 ストレージ メトリックを使用すると、ストレージ アカウントの正常性を監視でき、ストレージ ログを使用すると、ストレージ アカウントに関する問題の診断とトラブルシューティングができます。 Azure Portal または Windows PowerShell を使用して監視を構成できます。また、ストレージ クライアント ライブラリを使用したプログラムで監視を構成することもできます。 ストレージ ログはサーバー側で発生し、ストレージ アカウント内の成功した要求と失敗した要求の両方について詳細を記録することが可能になります。 これらのログを使用すると、読み取り、書き込み、削除の各操作の詳細、失敗した要求の原因を確認できます。

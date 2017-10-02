@@ -12,22 +12,19 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2017
+ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: ded80330ad323a0019ad59ac54d076a78b70f521
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: cfc95726c535aa49add98d700740b24bde5ea0f7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) パススルー認証に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
-
->[!IMPORTANT]
->パススルー認証機能は現在プレビュー段階です。
 
 ## <a name="which-of-the-azure-ad-sign-in-methods---pass-through-authentication-password-hash-synchronization-and-active-directory-federation-services-ad-fs---should-i-choose"></a>Azure AD のサインイン方法として、パススルー認証、パスワード ハッシュ同期、Active Directory フェデレーション サービス (AD FS) のうちどれを選択すればよいですか。
 
@@ -132,7 +129,7 @@ Azure AD Connect ウィザードを再実行し、ユーザーのサインイン
 サーバーからパススルー認証エージェントをアンインストールすると、そのサーバーでサインイン要求の受け入れが停止します。 テナントでのユーザーのサインインが中断しないように、この操作を実行する前に、他の認証エージェントが実行されていることを確認してください。
 
 ## <a name="next-steps"></a>次のステップ
-- [**現時点での制限事項**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - この機能は、現在プレビューの段階にあります。 サポートされているシナリオと、サポートされていないシナリオを確認します。
+- [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。

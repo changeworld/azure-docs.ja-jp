@@ -13,13 +13,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/18/2017
+ms.date: 09/12/2017
 ms.author: mimig
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 50bd4eb02be8f03baf186255429bec51c036aa43
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 73d5c33cec1ebec76ea738e03cd29e88d482b905
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -77,7 +77,7 @@ ms.lasthandoff: 08/24/2017
 |オンライン バックアップの自動化|Azure Cosmos DB データベースは定期的にバックアップされ、ジオリダンダント ストアに格納されます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |削除されたデータの復元|自動化されたオンライン バックアップを使用して、誤って削除したデータを最大 30 日以内に回復することができます。 <br><br>詳細については、「[Azure Cosmos DB での自動オンライン バックアップと復元](online-backup-and-restore.md)」を参照してください。|
 |機密データの保護と分離|「[新機能](#whats-new)」に示されているリージョンのすべてのデータが保存時に暗号化されます。<br><br>PII と他の機密データを特定のコレクションと読み取り/書き込みに分離するか、読み取り専用アクセスを特定のユーザーに限定することができます。|
-|攻撃の監視|監査ログとアクティビティ ログを使用することで、アカウントの通常のアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
+|攻撃の監視|[監査ログとアクティビティ ログ](logging.md)を使用すると、アカウントの正常なアクティビティと異常なアクティビティを監視できます。 この表の後のスクリーンショットに示すように、リソースに対して実行された操作、操作を開始した人物、操作の発生日時、操作の状態などを確認できます。|
 |攻撃への対応|Azure のサポートに連絡して攻撃の可能性を報告すると、5 段階のインシデント対応プロセスが開始されます。 この 5 段階のプロセスの目標は、問題が検出され、調査が開始された後、通常のサービスのセキュリティと操作を可能な限り早急に復元することです。<br><br>詳細については、「[Microsoft Azure Security Response in the Cloud (クラウドでの Microsoft Azure のセキュリティへの対応)](https://aka.ms/securityresponsepaper)」を参照してください。|
 |ジオフェンス|Azure Cosmos DB は、主権地域 (ドイツ、中国、米国政府など) に対するデータ ガバナンスとコンプライアンスを保証します。|
 |施設の保護|Azure Cosmos DB のデータは、Azure の保護されたデータセンター内の SSD に格納されます。<br><br>詳細については、[Microsoft グローバルデータセンター](https://www.microsoft.com/en-us/cloud-platform/global-datacenters)に関するページを参照してください。|
@@ -94,6 +94,8 @@ ms.lasthandoff: 08/24/2017
 ## <a name="next-steps"></a>次のステップ
 
 マスター キーとリソース トークンの詳細については、「[Azure Cosmos DB のデータへのアクセスのセキュリティ保護](secure-access-to-data.md)」を参照してください。
+
+監査ログの詳細については、「[Azure Cosmos DB diagnostic logging (Azure Cosmos DB の診断ログ)](logging.md)」を参照してください。
 
 マイクロソフトが取得している認証の詳細については、[Azure セキュリティ センター](https://azure.microsoft.com/support/trust-center/)に関するページを参照してください。
 
