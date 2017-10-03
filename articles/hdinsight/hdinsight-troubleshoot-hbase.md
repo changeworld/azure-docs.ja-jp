@@ -226,7 +226,7 @@ Phoenix に接続するには、アクティブな Zookeeper ノードの IP ア
    ```
 
    > [!Note] 
-   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK* (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
+   > アクティブな Zookeeper ノードの IP アドレスは、Ambari UI から取得できます。 **[HBase]** > **[Quick Links]\(クイック リンク\)** > **[ZK\* (Active)]\(ZK (アクティブ)\)** > **[Zookeeper Info]\(Zookeeper 情報\)** に移動します。 
 
 3. sqlline.py が Phoenix に接続し、タイムアウトしていない場合は、次のコマンドを実行して Phoenix の可用性と正常性を検証します。
 
