@@ -1,9 +1,9 @@
 ### YamlMime:YamlDocument
 documentType: LandingData
-title: Azure コスト管理のドキュメント
+title: Azure Cost Management のドキュメント
 metadata:
-  title: コスト管理のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
-  description: Cloudyn による Azure コスト管理は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+  title: Cost Management のドキュメント - チュートリアル、API リファレンス | Microsoft Docs
+  description: Azure Cost Management by Cloudyn は、Azure や他のクラウド リソースを使用する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
   services: cost-management
   author: czeumault
   manager: carolz
@@ -14,7 +14,7 @@ metadata:
   ms.date: 09/18/2017
   ms.author: carolz
 abstract:
-  description: Cloudyn による Azure コスト管理は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
+  description: Azure Cost Management by Cloudyn は、Azure や他のクラウド リソースを活用し、管理する際に役立つマルチクラウド コスト管理ソリューションです。 Microsoft が提供するクイック スタートとチュートリアルを使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を確認してください。
 sections:
   - title: 5 分間のクイック スタート
     items:
@@ -30,7 +30,7 @@ sections:
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
-        text: コスト管理を使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を説明します。
+        text: Cost Management を使用して、利用状況とコストの確認、コストの積極的な管理、支出の予測、コストの最適化を行う方法を説明します。
       - type: list
         style: ordered
         items:
