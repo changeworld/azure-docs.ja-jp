@@ -3,7 +3,7 @@ title: "Flow、Logic Apps、Functions、WebJobs の比較 | Microsoft Docs"
 description: "Microsoft のクラウド統合サービスを比較対照し、使用するサービスの判断に役立てます。"
 services: functions,app-service\logic
 documentationcenter: na
-author: cephalin
+author: ggailey777
 manager: wpickett
 tags: 
 keywords: "Microsoft Flow, Flow, Logic Apps, Azure Functions, Functions, Azure WebJobs, WebJobs, イベント処理, 動的コンピューティング, サーバーなしのアーキテクチャ"
