@@ -75,8 +75,7 @@ Azure Machine Learning Studio は、予測モデルを構築およびデプロ�
 ### <a name="create-an-azure-data-lake-store"></a>Azure Data Lake Store を作成する
 
 
-
-            [Azure Portal](http://portal.azure.com) から ADLS を作成します。 詳細については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。 そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。 
+[Azure Portal](http://portal.azure.com) から ADLS を作成します。 詳細については、「[Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターを作成する](../../data-lake-store/data-lake-store-hdinsight-hadoop-use-portal.md)」を参照してください。 そこで説明されている **[オプションの構成]** ブレードの **[データソース]** ブレードで、クラスター AAD ID をセットアップする必要があります。 
 
  ![3](./media/data-lake-walkthrough/3-create-ADLS.PNG)
 
@@ -86,8 +85,7 @@ Azure Portal で [ADLA アカウント](http://portal.azure.com)を作成しま�
  ![4](./media/data-lake-walkthrough/4-create-ADLA-new.PNG)
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure BLOB ストレージ アカウントを作成する
-
-            [Azure Portal](http://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
+[Azure Portal](http://portal.azure.com) で Azure BLOB ストレージ アカウントを作成します。 詳細については、「 [Azure ストレージ アカウントについて](../../storage/common/storage-create-storage-account.md)」の「ストレージ アカウントの作成」セクションを参照してください。
 
  ![5](./media/data-lake-walkthrough/5-Create-Azure-Blob.PNG)
 
