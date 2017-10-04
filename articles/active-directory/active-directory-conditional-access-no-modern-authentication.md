@@ -58,7 +58,7 @@ ms.lasthandoff: 09/14/2017
 
 SharePoint Online は、先進認証のほかにレガシ認証プロトコルもサポートしています。 レガシ認証プロトコルが有効になっていると、先進認証を使用していないクライアントについては SharePoint 向けの条件付きアクセス ポリシーが適用されなくなります。
 
-**Set-SPOTenant[](https://technet.microsoft.com/library/fp161390.aspx)** コマンドレットを使うと、SharePoint へのアクセスに関してレガシ認証プロトコルを無効にできます: 
+**[Set-SPOTenant](https://technet.microsoft.com/library/fp161390.aspx)** コマンドレットを使うと、SharePoint へのアクセスに関してレガシ認証プロトコルを無効にできます: 
 
     Set-SPOTenant -LegacyAuthProtocolsEnabled $false
 
