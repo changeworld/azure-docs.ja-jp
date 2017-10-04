@@ -81,7 +81,7 @@ ms.lasthandoff: 09/25/2017
 3. **mount コマンドを使用して Azure File共有をマウントします**。`<storage-account-name>``<share-name>`、および `<storage-account-key>` を適切な情報に置き換えることを忘れないでください。
 
     ```
-    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
+    sudo mount -t cifs //<storage-account-name>.file.core.windows.net/<share-name> ./mymountpoint -o vers=2.1,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino
     ```
 
 > [!Note]  
@@ -99,7 +99,7 @@ ms.lasthandoff: 09/25/2017
 3. **次のコマンドを使用して、次の行を `/etc/fstab` に追加します**。`<storage-account-name>`、`<share-name>`、および `<storage-account-key>` を適切な情報に置き換えることを忘れないでください。
 
     ```
-    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=3.0,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
+    sudo bash -c 'echo "//<storage-account-name>.file.core.windows.net/<share-name> /mymountpoint cifs vers=2.1,username=<storage-account-name>,password=<storage-account-key>,dir_mode=0777,file_mode=0777,serverino" >> /etc/fstab'
     ```
 
 > [!Note]  

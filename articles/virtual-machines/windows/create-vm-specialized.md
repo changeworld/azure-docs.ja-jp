@@ -21,7 +21,6 @@ ms.openlocfilehash: b315a37f72f34d45bb55c2bbe6be20cca8c42424
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/01/2017
 
-
 ---
 # <a name="create-a-windows-vm-from-a-specialized-disk"></a>特殊化されたディスクからの Windows VM の作成
 
@@ -129,7 +128,7 @@ New-AzureRmResourceGroup -Location $location -Name $destinationResourceGroup
 アップロードした VHD から新しい OS ディスクを作成します。 
 
 ```powershell
-$sourceUri = https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
+$sourceUri = (https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd)
 $osDiskName = 'myOsDisk'
 $osDisk = New-AzureRmDisk -DiskName $osDiskName -Disk `
     (New-AzureRmDiskConfig -AccountType StandardLRS  -Location $location -CreateOption Import `

@@ -138,7 +138,7 @@ Azure Storage は、ネイティブでは Azure AD 認証をサポートして�
 > URL のテキストでは大文字小文字が区別されるので、リソース グループに使用されている大文字小文字が正しく反映されていることを確認します。 また、これは GET 要求ではなく POST 要求であることを認識し、-d (NULL を指定可能) を指定して長さの制限を取得するための値を渡すことが重要です。  
 
 ```bash 
-curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 –request POST -d"" -H "Authorization: Bearer <ACCESS TOKEN>" 
+curl https://management.azure.com/subscriptions/<SUBSCRIPTION ID>/resourceGroups/<RESOURCE GROUP>/providers/Microsoft.Storage/storageAccounts/<STORAGE ACCOUNT NAME>/listKeys?api-version=2016-12-01 –-request POST -d "" -H "Authorization: Bearer <ACCESS TOKEN>" 
 ```
 
 CURL 応答では、キーのリストが返されます。  
@@ -158,11 +158,7 @@ echo "This is a test file." > test.txt
  
 
 ```azurecli-interactive
- az storage blob upload --container-name 
-                        --file 
-                        --name 
-                        [--account-name] 
-                        [--account-key] 
+az storage blob upload -c <CONTAINER NAME> -n test.txt -f test.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
 応答: 
@@ -180,11 +176,7 @@ Finished[#############################################################]  100.000
 要求: 
 
 ```azurecli-interactive
-az storage blob download --container-name
-                         --file 
-                         --name 
-                         [--account-name]
-                         [--account-key]  
+az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --account-name <STORAGE ACCOUNT NAME> --account-key <STORAGE ACCOUNT KEY>
 ```
 
 応答: 
@@ -193,18 +185,18 @@ az storage blob download --container-name
 {
   "content": null,
   "metadata": {},
-  "name": "testblob",
+  "name": "test.txt",
   "properties": {
     "appendBlobCommittedBlockCount": null,
     "blobType": "BlockBlob",
-    "contentLength": 16,
-    "contentRange": "bytes 0-15/16",
+    "contentLength": 21,
+    "contentRange": "bytes 0-20/21",
     "contentSettings": {
       "cacheControl": null,
       "contentDisposition": null,
       "contentEncoding": null,
       "contentLanguage": null,
-      "contentMd5": "Aryr///Rb+D8JQ8IytleDA==",
+      "contentMd5": "LSghAvpnElYyfUdn7CO8aw==",
       "contentType": "text/plain"
     },
     "copy": {
@@ -215,8 +207,8 @@ az storage blob download --container-name
       "status": null,
       "statusDescription": null
     },
-    "etag": "\"0x8D4F9929765C139\"",
-    "lastModified": "2017-09-12T03:58:56+00:00",
+    "etag": "\"0x8D5067F30D0C283\"",
+    "lastModified": "2017-09-28T14:42:49+00:00",
     "lease": {
       "duration": null,
       "state": "available",
