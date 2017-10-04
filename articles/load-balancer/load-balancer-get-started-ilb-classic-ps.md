@@ -33,7 +33,7 @@ ms.lasthandoff: 01/24/2017
 [!INCLUDE [load-balancer-get-started-ilb-intro-include.md](../../includes/load-balancer-get-started-ilb-intro-include.md)]
 
 > [!IMPORTANT]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../azure-resource-manager/resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。 [Resource Manager モデルを使用してこれらの手順を実行する](load-balancer-get-started-ilb-arm-ps.md)方法について説明します。
 
 [!INCLUDE [load-balancer-get-started-ilb-scenario-include.md](../../includes/load-balancer-get-started-ilb-scenario-include.md)]
 
@@ -115,7 +115,7 @@ Get-azureinternalloadbalancer コマンドの表示から IP アドレスをメ�
 この構成は次のとおりです。
 
 * 仮想マシンをホストする既存のクラウド サービスの名前は mytestcloud です。
-* 既存の&2; つのデータベース サーバーの名前は DB1 と DB2 です。
+* 既存の 2 つのデータベース サーバーの名前は DB1 と DB2 です。
 * Web 層の Web サーバーは、プライベート IP アドレスを使用してデータベース層のデータベース サーバーに接続します。 仮想ネットワークに独自の DNS を使用し、内部ロード バランサー セットの A レコードを手動で登録することもできます。
 
 次のコマンドは、 **ILBset** という名前の新しい内部ロード バランサー インスタンスを構成し、2 つのデータベース サーバーに対応する仮想マシンにエンドポイントを追加します。
