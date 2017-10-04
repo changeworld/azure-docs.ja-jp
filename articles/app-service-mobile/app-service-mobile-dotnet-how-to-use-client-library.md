@@ -62,7 +62,7 @@ public class TodoItem
 
 [JsonPropertyAttribute][6] を使用して、クライアントのフィールドとテーブルのフィールド間の *PropertyName* のマッピングが定義されます。
 
-Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Easy Tables]設定を使用することもできます。
+Mobile Apps バックエンドにテーブルを作成する方法については、[.NET Server SDK に関するトピック][7]または [Node.js Server SDK に関するトピック][8]を参照してください。 Azure ポータルでクイックスタートを使用してモバイル アプリ バックエンドを作成した場合は、 **Azure ポータル** で [Azure ポータル]設定を使用することもできます。
 
 ### <a name="how-to-install-the-managed-client-sdk-package"></a>方法: 管理されたクライアント SDK パッケージをインストールする
 [NuGet][9] から、Mobile Apps 用の管理されたクライアント SDK パッケージをインストールするには、次のいずれかの方法を使用します。
@@ -517,8 +517,8 @@ PullOptions pullOptions = new PullOptions
 1. Visual Studio で、ソリューション、**[ソリューションの NuGet パッケージの管理...]** の順に右クリックし、ソリューション内のすべてのプロジェクトの **Microsoft.Azure.Mobile.Client.SQLiteStore** NuGet パッケージを探してインストールします。
 2. (省略可能) Windows デバイスをサポートする場合、次の SQLite ランタイム パッケージのいずれかをインストールします。
 
-   * **Windows 8.1 Runtime: **[SQLite for Windows 8.1][3] をインストールします。
-   * **Windows Phone 8.1: **[SQLite for Windows Phone 8.1][4] をインストールします。
+   * **Windows 8.1 Runtime:** [SQLite for Windows 8.1][3] をインストールします。
+   * **Windows Phone 8.1:** [SQLite for Windows Phone 8.1][4] をインストールします。
    * **ユニバーサル Windows プラットフォーム**: [ユニバーサル Windows プラットフォーム用 SQLite][5] をインストールします。
 3. (省略可能)。 Windows デバイスで、**[参照]**、 > **[参照の追加]** の順に右クリックします。**Windows** フォルダー、**[拡張機能]** の順に展開してから、**Visual C++ 2013 Runtime for Windows** SDK と共に適切な **SQLite for Windows** SDK を有効にします。
     Windows プラットフォームによって SQLite SDK の名前はわずかに異なります。
@@ -621,7 +621,7 @@ API が "/" で始まっていない限り、InvokeApiAsync() メソッドは AP
 InvokeApiAsync を使用して、Azure Mobile Apps で定義されていない WebAPI を含むすべての WebAPI を呼び出すことができます。  InvokeApiAsync() を使用した場合は、認証ヘッダーを含む適切なヘッダーが要求と一緒に送信されます。
 
 ## <a name="authentication"></a>ユーザーの認証
-Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [アプリへの認証の追加]」を参照してください。
+Mobile Apps は、Facebook、Google、Microsoft アカウント、Twitter、Azure Active Directory などのさまざまな外部 ID プロバイダーを使用したアプリケーション ユーザーの認証と承認をサポートします。 テーブルのアクセス許可を設定することにより、特定の操作へのアクセスを認証されたユーザーのみに制限できます。 さらに、認証されたユーザーの ID を使用することにより、サーバー スクリプトで承認ルールを実装することもできます。 詳細については、チュートリアル「 [アプリケーションへの認証の追加]」を参照してください。
 
 *クライアント側管理フロー*と*サーバー側管理フロー*の 2 つの認証フローがサポートされています。 サーバー側管理フローには、プロバイダーの Web 認証のインターフェイスを利用する、最も簡単な認証方法が用意されています。 クライアント側管理フローでは、プロバイダー固有とデバイス固有の SDK を利用することから、デバイス固有の機能との統合がさらに進みます。
 
@@ -1093,16 +1093,16 @@ public class MyHandler : DelegatingHandler
 [11]: http://www.symbolsource.org/Public/Wiki/Using
 [12]: https://msdn.microsoft.com/en-us/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient(v=azure.10).aspx
 
-[アプリへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
-[Azure Mobile Apps でのオフライン データ同期]: app-service-mobile-offline-data-sync.md
+[アプリケーションへの認証の追加]: app-service-mobile-windows-store-dotnet-get-started-users.md
+[Azure モバイル アプリでのオフライン データ同期]: app-service-mobile-offline-data-sync.md
 [アプリにプッシュ通知を追加する]: app-service-mobile-windows-store-dotnet-get-started-push.md
 [Microsoft アカウント ログインを使用するためのアプリの登録]: ../app-service/app-service-mobile-how-to-configure-microsoft-authentication.md
-[Azure Active Directory ログインを使用するように App Service を構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
+[Azure Active Directory ログインを使用するように App Service アプリケーションを構成する方法]: ../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md
 
 <!-- Microsoft URLs. -->
 [MobileServiceCollection]: https://msdn.microsoft.com/en-us/library/azure/dn250636(v=azure.10).aspx
 [MobileServiceIncrementalLoadingCollection]: https://msdn.microsoft.com/en-us/library/azure/dn268408(v=azure.10).aspx
-[LoginAsync]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
+[MobileServiceAuthenticationProvider]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceauthenticationprovider(v=azure.10).aspx
 [MobileServiceUser]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser(v=azure.10).aspx
 [MobileServiceAuthenticationToken]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.mobileserviceauthenticationtoken(v=azure.10).aspx
 [GetTable]: https://msdn.microsoft.com/en-us/library/azure/jj554275(v=azure.10).aspx
@@ -1121,8 +1121,8 @@ public class MyHandler : DelegatingHandler
 [Skip]: https://msdn.microsoft.com/en-us/library/azure/dn250573(v=azure.10).aspx
 [UpdateAsync]: https://msdn.microsoft.com/en-us/library/azure/dn250536.(v=azure.10)aspx
 [UserID]: http://msdn.microsoft.com/library/windowsazure/microsoft.windowsazure.mobileservices.mobileserviceuser.userid(v=azure.10).aspx
-[Where]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
-[Easy Tables]: https://portal.azure.com/
+[where]: https://msdn.microsoft.com/en-us/library/azure/dn250579(v=azure.10).aspx
+[Azure ポータル]: https://portal.azure.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [EnableQueryAttribute]: https://msdn.microsoft.com/library/system.web.http.odata.enablequeryattribute.aspx
 [Guid.NewGuid]: https://msdn.microsoft.com/en-us/library/system.guid.newguid(v=vs.110).aspx
