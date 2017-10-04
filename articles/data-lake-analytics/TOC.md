@@ -9,7 +9,7 @@
 
 # 方法
 
-## Data Lake Analytics アカウントの管理
+## Data Lake Analytics の管理
 ### [Azure ポータル](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
