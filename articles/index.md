@@ -803,7 +803,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/virtual-machines/disks/">
                                                 <img src="media/index/Disks-color.svg" alt="" />
-                                                <p>Disk Storage</p>
+                                                <p>ディスク ストレージ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1415,7 +1415,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Cloud Services</h3>
-                                                    <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API を作成</p>
+                                                    <p>高可用性と無限の拡張性を備えたクラウド アプリケーションと API の作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1729,7 +1729,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Disk Storage</h3>
+                                                    <h3>ディスク ストレージ</h3>
                                                     <p>VM 用のディスク ストレージ</p>
                                                 </div>
                                             </div>
@@ -3663,7 +3663,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                         </ul>
                     </li>
                     <li>
-                        <a href="#other">主権クラウド</a>
+                        <a href="#other">ソブリン クラウド</a>
                         <ul id="other" class="cardsA">
                             <li>
                                 <a href="/azure/azure-government/">
@@ -4153,7 +4153,7 @@ Azure CLI </h3>
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>クラウド デザイン パターン</h3>
+                                                    <h3>クラウドの設計パターン</h3>
                                                     <p>クラウド デザイン パターン。各パターンでは、問題、その問題を解決するパターン、Azure に基づく例を説明します。</p>
                                                 </div>
                                             </div>
