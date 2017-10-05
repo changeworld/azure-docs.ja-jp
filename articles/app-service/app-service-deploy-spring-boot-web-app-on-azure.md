@@ -216,7 +216,7 @@ Web アプリの追加設定の構成の詳細については、「[Configure we
 [Azure Container Service]: https://azure.microsoft.com/services/container-service/
 [Azure Java デベロッパー センター]: https://azure.microsoft.com/develop/java/
 [Azure Portal]: https://portal.azure.com/
-[Azure App Service での Web アプリの構成]: /azure/app-service/web-sites-configure
+[Configure web apps in Azure App Service (Azure App Service で Web アプリを構成する)]: /azure/app-service/web-sites-configure
 [FTP/S を使用した Azure App Service へのアプリのデプロイ]: https://docs.microsoft.com/azure/app-service/app-service-deploy-ftp
 [無料の Azure アカウント]: https://azure.microsoft.com/pricing/free-trial/
 [Git]: https://github.com/

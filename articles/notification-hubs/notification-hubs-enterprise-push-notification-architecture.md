@@ -54,8 +54,8 @@ ms.lasthandoff: 09/20/2017
 ### <a name="prerequisites"></a>前提条件
 概念と一般的な作成および構成手順を理解するために、以下のチュートリアルを完了する必要があります。
 
-1. [Service Bus Pub/sub programming (Service Bus のトピックとサブスクリプションの使用方法)] - Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。
-2. [Notification Hubs の使用 - Windows ユニバーサル チュートリアル] : Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。
+1. [Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)] - Service Bus のトピックとサブスクリプションの使用方法、トピックとサブスクリプションを格納する名前空間の作成方法、トピックとサブスクリプションへのメッセージの送信/受信方法の詳細について説明しています。
+2. [Notification Hubs の使用 - Windows Universal チュートリアル] : Windows ストア アプリを設定し、Notification Hubs を使用して通知を登録してから受信する方法について説明しています。
 
 ### <a name="sample-code"></a>コード サンプル
 完全なコード サンプルは「 [Notification Hubs のサンプル (英語)]」から入手できます。 このサンプルは、3 つのコンポーネントに分割されています。
@@ -260,10 +260,10 @@ ms.lasthandoff: 09/20/2017
 
 <!-- Links -->
 [Notification Hubs のサンプル (英語)]: https://github.com/Azure/azure-notificationhubs-samples
-[Azure Mobile Service]: http://azure.microsoft.com/documentation/services/mobile-services/
+[Azure Mobile Services]: http://azure.microsoft.com/documentation/services/mobile-services/
 [Azure Service Bus]: http://azure.microsoft.com/documentation/articles/fundamentals-service-bus-hybrid-solutions/
-[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法) (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
-[Azure WebJob]: ../app-service/web-sites-create-web-jobs.md
-[Notification Hubs の使用 - Windows ユニバーサル チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
+[Service Bus Pub/Sub programming (Service Bus のトピックとサブスクリプションの使用方法)]: http://azure.microsoft.com/documentation/articles/service-bus-dotnet-how-to-use-topics-subscriptions/
+[Azure WebJobs]: ../app-service/web-sites-create-web-jobs.md
+[Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 
