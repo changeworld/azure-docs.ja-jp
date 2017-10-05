@@ -64,7 +64,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 4. (省略可能) 元の移行されたインスタンスを削除する
 
 ## <a name="mobile-app-version"></a>2 番目のアプリケーション インスタンスを作成する
-アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure ポータル] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
+アップグレードの最初のステップは、新しいバージョンのアプリケーションをホストする Mobile App リソースを作成することです。 既存のモバイル サービスを既に移行している場合は、同じホスティング プランでこのバージョンを作成します。 [Azure Portal] を開き、移行済みのアプリケーションに移動します。 実行されている App Service プランをメモしてをおきます。
 
 次に、 [.NET バックエンドの作成手順](app-service-mobile-dotnet-backend-how-to-use-server-sdk.md#create-app)に従って、2 番目のアプリケーション インスタンスを作成します。 App Service プランまたは "ホスティング プラン" を選択するよう求められたら、移行済みアプリケーションのプランを選択します。
 
@@ -258,7 +258,7 @@ AAD、Facebook、Google などの一部のプロバイダーでは、コピー �
 
 <!-- URLs. -->
 
-[Azure ポータル]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
 [Mobile Apps とは]: app-service-mobile-value-prop.md
 [I already use web sites and mobile services – how does App Service help me?]: /en-us/documentation/articles/app-service-mobile-value-prop-migration-from-mobile-services

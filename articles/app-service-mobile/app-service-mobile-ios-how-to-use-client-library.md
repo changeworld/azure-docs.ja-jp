@@ -846,7 +846,7 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 <!-- Images. -->
 
 <!-- URLs. -->
-[Apache Cordova アプリの作成]: app-service-mobile-ios-get-started.md
+[iOS アプリの作成]: app-service-mobile-ios-get-started.md
 
 [Add Mobile Services to Existing App]: /develop/mobile/tutorials/get-started-data
 [Get started with Mobile Services]: /develop/mobile/tutorials/get-started-ios
@@ -869,7 +869,7 @@ Google Sign-In SDK for iOS を使用すると、Google アカウントでユー�
 [Conflict-Handler]: mobile-services-ios-handling-conflicts-offline-data.md#add-conflict-handling
 
 [Fabric Dashboard]: https://www.fabric.io/home
-[Fabric for iOS - Getting Started (Fabric for iOS - 概要) (Fabric for iOS - 概要)]: https://docs.fabric.io/ios/fabric/getting-started.html
+[Fabric for iOS - Getting Started (Fabric for iOS - 概要)]: https://docs.fabric.io/ios/fabric/getting-started.html
 [1]: https://github.com/Azure/azure-mobile-apps-ios-client/blob/master/README.md#ios-client-sdk
 [2]: http://azure.github.io/azure-mobile-apps-ios-client/
 [3]: https://msdn.microsoft.com/library/azure/dn495101.aspx

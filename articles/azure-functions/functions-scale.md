@@ -108,5 +108,5 @@ Azure Functions は "*スケール コントローラー*" と呼ばれるコン
 * **ギガバイト/秒 (GB/秒) 単位でのリソース使用量**。 メモリ サイズと、関数アプリ内の全関数の実行時間の組み合わせとして計算されます。 
 * **実行回数**。 バインドによってトリガーされる関数がイベントに応じて実行されるたびにカウントされます。
 
-[Azure Functions の価格に関するページ]: https://azure.microsoft.com/pricing/details/functions
+[Azure Functions の価格]: https://azure.microsoft.com/pricing/details/functions
 
