@@ -1,6 +1,6 @@
 ---
-title: "Azure サブスクリプションを Azure コスト管理に登録する | Microsoft Docs"
-description: "Azure サブスクリプションを使用して、Cloudyn による Azure コスト管理に登録します。"
+title: "Azure サブスクリプションを Azure Cost Management に登録する | Microsoft Docs"
+description: "Azure サブスクリプションを使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -21,7 +21,7 @@ ms.lasthandoff: 09/25/2017
 
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 
-Azure サブスクリプションを使用して、Cloudyn による Azure コスト管理に登録します。 登録すると、Cloudyn ポータルにアクセスできます。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
+Azure サブスクリプションを使用して、Cloudyn の Azure Cost Management に登録します。 登録すると、Cloudyn ポータルにアクセスできます。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
@@ -47,7 +47,7 @@ Azure サブスクリプションを使用して、Cloudyn による Azure コ�
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、Azure のサブスクリプション情報を使用して、コスト管理に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn による Azure コスト管理については、コスト管理のチュートリアルで続きをご覧ください。
+このクイックスタートでは、Azure のサブスクリプション情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn の Azure Cost Management については、コスト管理のチュートリアルで続きをご覧ください。
 
 > [!div class="nextstepaction"]
 > [コスト データの確認](./tutorial-review-usage.md)
