@@ -12,6 +12,7 @@
 ### [アーカイブ](hdinsight-release-notes-archive.md)
 
 # 作業の開始
+## [HDInsight クラスターの容量計画](hdinsight-capacity-planning.md)
 ## [Hadoop の開始](hdinsight-hadoop-linux-tutorial-get-started.md)
 ## Spark を開始する
 ### [Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)
@@ -167,6 +168,8 @@
 ### [HDInsight で SSH を使用する](hdinsight-hadoop-linux-use-ssh-unix.md)
 ### [SSH トンネリングを使用する](hdinsight-linux-ambari-ssh-tunnel.md)
 ### [データ アクセスを制限する](hdinsight-storage-sharedaccesssignature-permissions.md)
+### [Ambari ビューのユーザーの承認](hdinsight-authorize-users-to-ambari.md)
+### [ファイルおよびフォルダー レベルでのユーザー アクセス許可の管理](hdinsight-add-acls-at-file-folder-levels.md)
 ## 管理
 ### [Linux クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 #### [Azure PowerShell の使用](hdinsight-hadoop-create-linux-clusters-azure-powershell.md)
@@ -200,6 +203,7 @@
 ### [Azure Log Analytics の使用](hdinsight-hadoop-oms-log-analytics-tutorial.md)
 ### [クラスター固有のダッシュボード](hdinsight-hadoop-oms-log-analytics-management-solutions.md)
 ### [Log Analytics でのクエリの使用](hdinsight-hadoop-oms-log-analytics-use-queries.md)
+### [クラスター パフォーマンスの監視](hdinsight-key-scenarios-to-monitor.md)
 ## [トラブルシューティング](hdinsight-troubleshoot-guide.md)
 ### [HBASE のトラブルシューティング](hdinsight-troubleshoot-hbase.md)
 ### [HDFS のトラブルシューティング](hdinsight-troubleshoot-hdfs.md)

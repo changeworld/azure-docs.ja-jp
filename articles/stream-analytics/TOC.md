@@ -25,13 +25,12 @@
 ### [JavaScript UDF を統合する](stream-analytics-javascript-user-defined-functions.md)
 ### [REST API と Machine Learning を統合する](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [出力を作成する](stream-analytics-define-outputs.md)
-### [Azure Functions に出力する](stream-analytics-functions-redis.md)
 ### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)
 ### [Cosmos DB に出力する](stream-analytics-documentdb-output.md)
 
 ## Visual Studio ツールの使用
 ### [インストール](stream-analytics-tools-for-visual-studio-install.md)
-### [作業の開始](stream-analytics-tools-for-visual-studio.md)
+### [作業開始](stream-analytics-tools-for-visual-studio.md)
 ### [CI/CD パイプラインの設定](stream-analytics-tools-for-visual-studio-cicd.md)
 
 ## 監視と最適化
@@ -39,7 +38,8 @@
 ### [ジョブの監視](stream-analytics-monitoring.md)
 ### [プログラムでジョブを監視する](stream-analytics-monitor-jobs.md)
 ### [PowerShell でジョブを監視する](stream-analytics-monitor-and-manage-jobs-use-powershell.md)
-### [ストリーミング ユニットを最適化する](stream-analytics-streaming-unit-consumption.md)
+### [ストリーミング ユニットの理解と調整](stream-analytics-streaming-unit-consumption.md)
+### [クエリ並列処理の利用](stream-analytics-parallelization.md)
 ### [スループット向上のためのスケール](stream-analytics-scale-jobs.md)
 ### [Machine Learning 関数のスケール](stream-analytics-scale-with-machine-learning-functions.md)
 

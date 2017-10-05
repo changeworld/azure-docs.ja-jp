@@ -73,6 +73,8 @@
           href: tutorial-iris-azure-cli.md
         - name: 実行履歴とモデル メトリックの追跡
           href: how-to-use-run-history-model-metrics.md
+        - name: 精度が最適で最短時間の実行を見つける方法
+          href: how-to-find-best-accuracy-cli.md
         - name: ファイルの読み取りと書き込み
           href: how-to-read-write-files.md
         - name: MMLSpark ライブラリ

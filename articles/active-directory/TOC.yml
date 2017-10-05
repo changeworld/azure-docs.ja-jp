@@ -40,6 +40,8 @@
 - name: 管理対象のサービス ID
   href: msi-overview.md
   items:
+    - name: サインイン方法またはトークンの取得方法
+      href: msi-how-to-get-access-token-using-msi.md
     - name: Azure VM 用の MSI の構成
       items:
         - name: Azure Portal の場合
@@ -50,6 +52,8 @@
           href: msi-qs-configure-cli-windows-vm.md
         - name: Azure Resource Manager テンプレートの場合
           href: msi-qs-configure-template-windows-vm.md
+        - name: Azure SDK の場合
+          href: msi-qs-configure-sdk-windows-vm.md
     - name: Azure リソースへの MSI アクセスの割り当て
       items:
         - name: Azure Portal の場合

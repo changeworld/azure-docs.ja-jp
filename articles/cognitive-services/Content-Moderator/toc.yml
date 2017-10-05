@@ -66,6 +66,8 @@
   items:
     - name: Facebook 投稿のモデレート
       href: facebook-post-moderation.md
+    - name: e コマース カタログのモデレート
+      href: ecommerce-retail-catalog-moderation.md
 - name: API リファレンス
   items:
     - name: すべての API

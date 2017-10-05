@@ -16,8 +16,9 @@
 # 方法
 ## 管理対象ドメインに参加する
 ### [Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [Azure PowerShell を使用して Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
-### [Linux VM を結合する](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [PowerShell を使用して Windows Server VM を結合する](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [RedHat Enterprise Linux](active-directory-ds-admin-guide-join-rhel-linux-vm.md)
+### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理対象ドメインを管理する
 ### [管理対象ドメインを管理する](active-directory-ds-admin-guide-administer-domain.md)
 ### [管理対象ドメインで DNS を管理する](active-directory-ds-admin-guide-administer-dns.md)
@@ -36,7 +37,6 @@
 ## トラブルシューティング
 ### [FAQ](active-directory-ds-faqs.md)
 ### [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)
-### [プレビューの Azure Portal のエクスペリエンスを有効にする](active-directory-ds-azure-portal-enable-preview-access.md)
 ### [一致しないテナントのエラーを解決する](active-directory-ds-mismatched-tenant-error.md)
 
 # リファレンス

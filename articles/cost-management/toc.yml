@@ -19,6 +19,8 @@
       href: tutorial-review-usage.md
     - name: 2 - データへのアクセスを制御する
       href: tutorial-user-access.md
+    - name: 3 - 支出を予測する
+      href: tutorial-forecast-spending.md
 - name: リソース
   items:
     - name: Azure のロードマップ

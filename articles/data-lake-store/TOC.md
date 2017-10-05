@@ -1,38 +1,57 @@
 # 概要
 ## [Azure Data Lake Store の概要](data-lake-store-overview.md)
 ## [Azure Data Lake Store と Azure Storage を比較する](data-lake-store-comparison-with-blob-storage.md)
-## [ビッグ データの処理に Azure Data Lake Store を使用する](data-lake-store-data-scenarios.md)
+## [Azure Data Lake Store によるビッグ データの処理](data-lake-store-data-scenarios.md)
 ## [Azure Data Lake Store で機能するオープン ソース アプリケーション](data-lake-store-compatible-oss-other-applications.md)
 
 # 作業開始
-## [Azure Portal の使用](data-lake-store-get-started-portal.md)
-## [Azure PowerShell の使用](data-lake-store-get-started-powershell.md)
-## [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
-## [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
-## [REST API の使用](data-lake-store-get-started-rest-api.md)
-## [Azure CLI の使用](data-lake-store-get-started-cli-2.0.md)
-## [Node.js の使用](data-lake-store-manage-use-nodejs.md)
-## [Python の使用](data-lake-store-get-started-python.md)
+## [ポータルの使用](data-lake-store-get-started-portal.md)
+## [PowerShell の使用](data-lake-store-get-started-powershell.md)
+## [Azure CLI 2.0 の使用](data-lake-store-get-started-cli-2.0.md)
+
 
 # 方法
-## データをコピーする
-### [Azure Data Factory の使用](../data-factory/connector-azure-data-lake-store.md)
+## データの読み込みと移動
+### [Azure Data Factory の使用](../data-factory/data-factory-azure-datalake-connector.md)
 ### [AdlCopy を使用](data-lake-store-copy-data-azure-storage-blob.md)
 ### [DistCp を使用](data-lake-store-copy-data-wasb-distcp.md)
 ### [Sqoop の使用](data-lake-store-data-transfer-sql-sqoop.md)
 ### [オフライン ソースからデータをアップロードする](data-lake-store-offline-bulk-data-upload.md)
 ### [リージョン間で Azure Data Lake Store を移行する](data-lake-store-migration-cross-region.md)
 
-## データをセキュリティで保護する
+## データのセキュリティ保護
 ### [セキュリティの概要](data-lake-store-security-overview.md)
 ### [Data Lake Store のアクセス制御](data-lake-store-access-control.md)
 ### [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-### [サービス間認証](data-lake-store-authenticate-using-active-directory.md)
-### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
 ### [暗号化](data-lake-store-encryption.md)
 
-## [パフォーマンス]
+## Data Lake Store での認証
+### [認証オプション](data-lakes-store-authentication-using-azure-active-directory.md)
+### [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
+#### [Java の使用](data-lake-store-end-user-authenticate-java-sdk.md)
+#### [.NET SDK の使用](data-lake-store-end-user-authenticate-net-sdk.md)
+#### [REST API の使用](data-lake-store-end-user-authenticate-rest-api.md)
+#### [Python の使用](data-lake-store-end-user-authenticate-python.md)
+### [サービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)
+#### [Java の使用](data-lake-store-service-to-service-authenticate-java.md)
+#### [.NET SDK の使用](data-lake-store-service-to-service-authenticate-net-sdk.md)
+#### [REST API の使用](data-lake-store-service-to-service-authenticate-rest-api.md)
+#### [Python の使用](data-lake-store-service-to-service-authenticate-python.md)
+
+## Data Lake Store の操作
+### アカウント管理操作
+#### [.NET SDK の使用](data-lake-store-get-started-net-sdk.md)
+#### [REST API の使用](data-lake-store-get-started-rest-api.md)
+#### [Python の使用](data-lake-store-get-started-python.md)
+### ファイルシステム操作
+#### [.NET SDK の使用](data-lake-store-data-operations-net-sdk.md)
+#### [Java SDK の使用](data-lake-store-get-started-java-sdk.md)
+#### [REST API の使用](data-lake-store-data-operations-rest-api.md)
+#### [Python の使用](data-lake-store-data-operations-python.md)
+
+## パフォーマンス
 ### [Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-guidance.md)
+### [Azure Data Lake Store で PowerShell を使用するためのパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-powershell.md)
 ### [HDInsight のSpark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-spark.md)
 ### [HDInsight の Hive と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-hive.md)
 ### [HDInsight の MapReduce と Azure Data Lake Store のパフォーマンス チューニング ガイダンス](data-lake-store-performance-tuning-mapreduce.md)

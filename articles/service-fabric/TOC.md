@@ -26,8 +26,8 @@
 
 ## クラスターの作成と管理
 ### 1 - Azure でのクラスターの作成
-#### [1a - Azure でのセキュリティで保護された Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
-#### [1b - Azure でのセキュリティで保護された Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
+#### [1a - Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
+#### [1b - Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
 ### [2 - Service Fabric での API Management のデプロイ](service-fabric-tutorial-deploy-api-management.md)
 
 # サンプル
@@ -198,7 +198,6 @@
 ### Reliable Actors サービスの構築
 #### 作業開始
 ##### [Windows での C# ](service-fabric-reliable-actors-get-started.md)
-##### [Linux での Java](service-fabric-reliable-actors-get-started-java.md)
 ##### [Linux での Java アクター](service-fabric-create-your-first-linux-application-with-java.md)
 #### [通知の送信](service-fabric-reliable-actors-events.md)
 #### [タイマーとアラームの設定](service-fabric-reliable-actors-timers-reminders.md)
