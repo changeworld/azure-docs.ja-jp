@@ -14,7 +14,7 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/25/2017
+ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
 ms.translationtype: HT
@@ -435,7 +435,7 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
     $hiveOutputFolder = "$storageUri/tutorials/useoozie/output"
 
     #Sqoop action variables
-    $sqlDatabaseConnectionString = "jdbc:sqlserver://$sqlDatabaseServer.database.windows.net;user=$sqlDatabaseLogin@$sqlDatabaseServer;password=$sqlDatabaseLoginPassword;database=$sqlDatabaseName"
+    $sqlDatabaseConnectionString = "Data Source=$sqlDatabaseServer.database.windows.net;user=$sqlDatabaseLogin@$sqlDatabaseServer;password=$sqlDatabaseLoginPassword;database=$sqlDatabaseName"  
     $sqlDatabaseTableName = "log4jLogsCount"
 
     $passwd = ConvertTo-SecureString $clusterPassword -AsPlainText -Force
@@ -561,7 +561,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
         if($oozieServerSatus -notmatch "NORMAL")
         {
             Write-Host "Oozie server status is $oozieServerSatus...cannot submit Oozie jobs. Check the server status and re-run the job."
-            exit 1
         }
     }
     ```
@@ -616,7 +615,6 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
         if($JobStatus -notmatch "SUCCEEDED")
         {
             Write-Host "Check logs at http://headnode0:9014/cluster for detais."
-            exit -1
         }
     }
     ```

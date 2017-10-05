@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
 ms.translationtype: Human Translation
 ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
 ms.openlocfilehash: 53bf33f6027f1f365bd92251490d5c851fb83f8b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 07/01/2017
-
 
 ---
 # <a name="copy-data-between-data-lake-store-and-azure-sql-database-using-sqoop"></a>Sqoop を使用して Data Lake Store と Azure SQL Database の間でデータをコピーする

@@ -4,7 +4,7 @@ description: "HDInsight で Apache Spark クラスターを作成する方法に
 keywords: "spark クイック スタート,対話型 spark,対話型クエリ,hdinsight spark,azure spark"
 services: hdinsight
 documentationcenter: 
-author: nitinme
+author: maxluk
 manager: jhubbard
 editor: cgronlun
 tags: azure-portal
@@ -16,7 +16,7 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/07/2017
-ms.author: nitinme
+ms.author: maxluk
 ms.translationtype: HT
 ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 78051b9df15c62d4caf56d800c9a5f4421ea2254

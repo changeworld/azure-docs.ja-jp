@@ -35,7 +35,7 @@ ms.lasthandoff: 08/22/2017
 |H:\Video\ |一連のビデオ|12 TB|
 |H:\Photo\ |一連の写真|30 GB|
 |K:\Temp\FavoriteMovie.ISO|Blu-Ray™ ディスク イメージ|25 GB|
-|\\\bigshare\john\music\|ネットワーク共有上の一連の音楽ファイル|10 GB|
+|\\\bigshare\john\music\ |ネットワーク共有上の一連の音楽ファイル|10 GB|
 
 ## <a name="storage-account-destinations"></a>ストレージ アカウント内のインポート先
 
