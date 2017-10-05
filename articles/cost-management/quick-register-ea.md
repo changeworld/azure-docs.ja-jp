@@ -1,6 +1,6 @@
 ---
-title: "Azure エンタープライズ契約を Azure コスト管理に登録する | Microsoft Docs"
-description: "エンタープライズ契約を使用して、Cloudyn による Azure コスト管理に登録します。"
+title: "Azure エンタープライズ契約を Azure Cost Management に登録する | Microsoft Docs"
+description: "エンタープライズ契約を使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management
 keywords: 
 author: bandersmsft
@@ -21,7 +21,7 @@ ms.lasthandoff: 09/25/2017
 
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
-Azure エンタープライズ契約を使用して、Cloudyn による Azure コスト管理に登録します。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn を試用するためのサブスクリプションの作成と Cloudyn ポータルにサインインするために必要な登録プロセスについて詳しく説明します。 コスト データの表示をすぐに開始する方法についても説明します。
+Azure エンタープライズ契約を使用して、Cloudyn の Azure Cost Management に登録します。 この登録によって、Cloudyn ポータルにアクセスできるようになります。 このクイック スタートでは、Cloudyn を試用するためのサブスクリプションの作成と Cloudyn ポータルにサインインするために必要な登録プロセスについて詳しく説明します。 コスト データの表示をすぐに開始する方法についても説明します。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
@@ -48,7 +48,7 @@ Azure エンタープライズ契約を使用して、Cloudyn による Azure �
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイック スタートでは、Azure エンタープライズ契約情報を使用して、コスト管理に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの表示を開始しました。 Azure Cost Management by Cloudyn については、Cost Management のチュートリアルで続きを説明します。
+このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの表示を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 
 > [!div class="nextstepaction"]
 > [コスト データを表示する](./tutorial-review-usage.md)
