@@ -202,7 +202,7 @@ SendGrid のいくつかの API と webhook を使用して、Azure アプリケ
 [documentation]: https://sendgrid.com/docs/Classroom/Send/api_keys.html
 [settings-documentation]: https://sendgrid.com/docs/API_Reference/SMTP_API/apps.html
 
-[クラウドベース電子メール サービス]: https://sendgrid.com/solutions
-[クラウドベース電子メール サービス]: https://sendgrid.com/use-cases/transactional-email
+[クラウドベースの電子メール サービス]: https://sendgrid.com/solutions
+[トランザクション メール配信]: https://sendgrid.com/use-cases/transactional-email
 
 
