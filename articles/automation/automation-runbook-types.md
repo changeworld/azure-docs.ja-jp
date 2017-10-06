@@ -3,7 +3,7 @@ title: "Azure Automation の Runbook の種類 | Microsoft Docs"
 description: "Azure Automation で使用できる Runbook の種類、および使用する種類を決定するときの考慮事項について説明します。 "
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9265c975-4281-4819-a84f-d86641277f36

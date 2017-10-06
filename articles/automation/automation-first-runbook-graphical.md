@@ -3,7 +3,7 @@ title: "Azure Automation での初めてのグラフィカルな Runbook | Micro
 description: "簡単なグラフィカル Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "Runbook, Runbook テンプレート, Runbook Automation, Azure Runbook"

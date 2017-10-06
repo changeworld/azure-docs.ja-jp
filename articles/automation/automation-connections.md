@@ -3,7 +3,7 @@ title: "Azure Automation での接続資産 | Microsoft Docs"
 description: "Azure Automation の接続資産には、Runbook または DSC 構成から外部サービスまたはアプリケーションに接続するために必要な情報が含まれます。 この記事では、接続の詳細およびテキスト作成とグラフィカル作成の両方で接続を使用する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: f0239017-5c66-4165-8cca-5dcb249b8091

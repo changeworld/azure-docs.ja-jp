@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の実行 | Microsoft Docs"
 description: "Azure Automation で Runbook が処理される方法の詳細について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: d10c8ce2-2c0b-4ea7-ba3c-d20e09b2c9ca

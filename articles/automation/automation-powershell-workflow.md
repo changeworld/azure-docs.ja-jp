@@ -3,7 +3,7 @@ title: "Azure Automation の PowerShell ワークフローについて | Microso
 description: "この記事では、PowerShell に慣れている作成者を対象に、PowerShell と PowerShell ワークフローの具体的な違いと、Automation Runbook に適用できる概念ついて簡単に説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 84bf133e-5343-4e0e-8d6c-bb14304a70db
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: magoedte;bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
 ms.openlocfilehash: 4de812c7f863e42a6ed10c2312d61b8377e06431
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/22/2017
-
 
 ---
 # <a name="learning-key-windows-powershell-workflow-concepts-for-automation-runbooks"></a>Automation Runbook 向けの Windows PowerShell ワークフローの基本的な概念の説明 

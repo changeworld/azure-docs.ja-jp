@@ -3,7 +3,7 @@ title: "webhook を使用した Azure Automation の Runbook の開始 | Microso
 description: "HTTP 呼び出しから Azure Automation の Runbook を開始することをクライアントに許可する Webhook。  この記事では、Webhook を作成する方法と、Webhook を呼び出して Runbook を開始する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 9b20237c-a593-4299-bbdc-35c47ee9e55d
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: magoedte;bwren;sngun
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
 ms.openlocfilehash: 6c65427fcd18e41a90dfb872aa9525f758b17b87
+ms.contentlocale: ja-jp
 ms.lasthandoff: 03/18/2017
-
 
 ---
 # <a name="starting-an-azure-automation-runbook-with-a-webhook"></a>webhook を使用した Azure Automation の Runbook の開始

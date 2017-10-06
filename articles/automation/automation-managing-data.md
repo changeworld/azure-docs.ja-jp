@@ -3,7 +3,7 @@ title: "Azure Automation のデータの管理 | Microsoft Docs"
 description: "この記事には、Azure Automation 環境の管理に関する複数のトピックが含まれています。  現在は、データの保持、Azure Automation のバックアップ、Azure Automation でのディザスター リカバリー が含まれています。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: 2896f129-82e3-43ce-b9ee-a3860be0423a
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 92893edc4e02de148f6585e83c6861fd751401bb
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/03/2017
-
 
 ---
 # <a name="managing-azure-automation-data"></a>Azure Automation のデータの管理

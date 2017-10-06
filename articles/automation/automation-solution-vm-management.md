@@ -3,7 +3,7 @@ title: "ピーク時間外 VM 起動/停止 [プレビュー] ソリューショ
 description: "スケジュールに従って Azure Resource Manager 仮想マシンを起動/停止し、Log Analytics からプロアクティブに監視する VM 管理ソリューションについて説明します。"
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 06c27f72-ac4c-4923-90a6-21f46db21883

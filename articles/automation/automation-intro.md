@@ -3,7 +3,7 @@ title: "Azure Automation の概要 | Microsoft Docs"
 description: "Azure Automation が提供する価値について説明し、よく寄せられる質問への回答を示して、Runbook と Azure Automation DSC の作成と使用を始められるようにします。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "Automation とは, Azure Automation, Azure Automation の例"

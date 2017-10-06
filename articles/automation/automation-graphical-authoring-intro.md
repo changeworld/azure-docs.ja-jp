@@ -3,7 +3,7 @@ title: "Azure Automation でのグラフィカル作成 | Microsoft Docs"
 description: "グラフィカル作成では、コードを操作せずに Azure Automation の Runbook を作成することができます。 この記事では、グラフィカル作成の概要と、グラフィカル Runbook の作成を開始するうえで必要なすべての詳細情報を示します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 4b6f840c-e941-4293-a728-b33407317943
@@ -19,7 +19,6 @@ ms.sourcegitcommit: 7948c99b7b60d77a927743c7869d74147634ddbf
 ms.openlocfilehash: 417fceb0961165d96ece000f95c8a3f973f4f75b
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/20/2017
-
 
 ---
 # <a name="graphical-authoring-in-azure-automation"></a>Azure Automation でのグラフィカル作成

@@ -3,7 +3,7 @@ title: "Runbook の設定 | Microsoft Docs"
 description: "Azure Automation の Runbook の構成設定について説明し、Azure 管理ポータルと Windows PowerShell のそれぞれで設定を変更する方法について取り上げます。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: a726f20c-a952-48b8-88ee-36d76aa3ac61
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: ac8b5372aa06eac8c9a701f0621dbb675fbb565c
 ms.openlocfilehash: 20ecbc270e61d234e026e6ba2634c7aad63b3355
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="runbook-settings"></a>Runbook の設定
@@ -58,10 +59,5 @@ Runbook の設定変更は、Azure Portal で対象 Runbook の **[設定]** ブ
 ## <a name="next-steps"></a>次のステップ
 * [Runbook の出力とメッセージ](automation-runbook-output-and-messages.md)に関するページで、Runbook の出力とエラー メッセージを作成および取得する方法について確認します 
 * [Runbook の作成またはインポート](automation-creating-importing-runbook.md)に関するページで、コミュニティまたはその他のソースによって開発された Runbook を追加する方法、または独自の Runbook を作成する方法を確認します 
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

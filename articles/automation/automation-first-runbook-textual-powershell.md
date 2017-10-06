@@ -3,7 +3,7 @@ title: "Azure Automation での初めての PowerShell Runbook | Microsoft Docs"
 description: "簡単な PowerShell Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "Azure PowerShell, PowerShell スクリプトのチュートリアル, PowerShell Automation"
