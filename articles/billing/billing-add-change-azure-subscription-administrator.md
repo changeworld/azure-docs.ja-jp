@@ -12,19 +12,19 @@ ms.service: billing
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/12/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 29fee079bd8b2775d7b45fa37cadb73635a2eb60
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 38742fd84dafc3fb68829a55ab7be0827ad0b451
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="add-or-change-azure-administrator-roles-that-manage-the-subscription-or-services"></a>サブスクリプションまたはサービスを管理する Azure 管理者ロールを追加または変更する
 
-Azure サブスクリプションまたはサブスクリプションで使われる Azure サービスを管理する Azure 管理者を変更できます。 Azure 課金情報の確認およびサブスクリプションの管理を行うには、[アカウント センター](https://account.windowsazure.com/Home/Index)にアカウント管理者としてサインインする必要があります。 
+Azure サブスクリプションまたはサブスクリプションで使われる Azure サービスを管理する Azure 管理者を変更できます。 Azure 課金情報の確認およびサブスクリプションの管理を行うには、アカウント センターにアカウント管理者としてサインインする必要があります。 
 
 <a name="add-an-admin-for-a-subscription"></a>
 
@@ -101,7 +101,7 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 
 | 管理ロール | 制限 | Description |
 | --- | --- | --- |
-| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.windowsazure.com/Home/Index) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
+| アカウント管理者 (AA) |1 Azure アカウントに 1 人 |Azure サブスクリプションをサインアップまたは購入し、 [アカウント センター](https://account.azure.com/Subscriptions) にアクセスして多様な管理タスクを実行する権限を持っている個人。 管理タスクには、サブスクリプションの作成、サブスクリプションの取り消し、サブスクリプションの料金の変更、サービス管理者の変更などがあります。 |
 | サービス管理者 (SA) |1 Azure サブスクリプションに 1 人 |このロールには、 [Azure ポータル](https://portal.azure.com)でのサービスの管理が許可されます。 既定で、新しいサブスクリプションのアカウント管理者はサービス管理者でもあります。 |
 | [Azure クラシック ポータル](https://manage.windowsazure.com) |サブスクリプションあたり 200 人 |サービス管理者と同じアクセス権を持っているものの、サブスクリプションと Azure ディレクトリとの関連付けを変更することはできないロール。 |
 

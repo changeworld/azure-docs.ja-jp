@@ -17,10 +17,10 @@ ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: af8a7bbc4bf007dfa5bef7ceb9cf940ad752239a
+ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
+ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
+ms.lasthandoff: 09/23/2017
 
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Azure のサインアップに関する問題のトラブルシューティング
@@ -30,8 +30,8 @@ Azure にサインアップできない場合は、この記事の情報を使�
 
 この問題を解決するには、次の手順に従ってください。
 
-1. アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com)にログインします。 
-2. **[プロファイル]** をクリックして、**[詳細の編集]** をクリックします。
+1. アカウント管理者の資格情報を使用して、アカウント管理者として [Azure アカウント センター](https://account.azure.com/Profile)にログインします。 
+2. **[詳細の編集]** をクリックします。
 3. すべてのアドレス フィールドが完成し、有効になっていることを確認します。 
 4. Azure サブスクリプションにサインアップするときに、クレジット カードの登録時に入力した請求先住所が銀行のレコードと一致していることを確認します。
 
