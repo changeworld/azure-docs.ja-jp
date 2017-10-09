@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure エンタープライズ契約を Azure Cost Management に登録する | Microsoft Docs"
 description: "エンタープライズ契約を使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management

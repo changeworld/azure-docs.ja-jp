@@ -1,4 +1,4 @@
----
+﻿---
 title: "CSP パートナー情報を使用して Azure Cost Management に登録する | Microsoft Docs"
 description: "CSP パートナー情報を使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management
@@ -31,7 +31,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 
 ## <a name="create-a-trial-registration"></a>試用版の登録を作成する
 
-1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
+1. Azure ポータルで、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
 2. **[概要]** の **[コスト管理]** をクリックします。  
     ![コスト管理ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. **[コスト管理]** ページで **[Go to Cost Management]\(コスト管理に移動\)** をクリックし、新しいウィンドウで [Cloudyn registration]\(Cloudyn 登録\) ページを開きます。
@@ -52,7 +52,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn の Azure Cost Management については、コスト管理のチュートリアルで続きをご覧ください。
+このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。Cloudyn の Azure Cost Management については、コスト管理のチュートリアルで続きをご覧ください。
 
 > [!div class="nextstepaction"]
 > [コスト データの確認](./tutorial-review-usage.md)
