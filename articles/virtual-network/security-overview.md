@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 341128e4a1ad6902f6052eb954ffae08e5d78121
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 63a313d9035422207a1ce56f0da8b388e2747685
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="network-security"></a>ネットワークのセキュリティ
@@ -80,19 +80,19 @@ ms.lasthandoff: 09/25/2017
 
 #### <a name="allowvnetinbound"></a>AllowVNetInBound
 
-|優先順位|ソース|ソース ポート|ターゲット|ターゲット ポート|プロトコル|Access (アクセス)|
+|優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access (アクセス)|
 |---|---|---|---|---|---|---|
 |65000|VirtualNetwork|0-65535|VirtualNetwork|0-65535|すべて|ALLOW|
 
 #### <a name="allowazureloadbalancerinbound"></a>AllowAzureLoadBalancerInBound
 
-|優先順位|ソース|ソース ポート|ターゲット|ターゲット ポート|プロトコル|Access (アクセス)|
+|優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access (アクセス)|
 |---|---|---|---|---|---|---|
 |65001|AzureLoadBalancer|0-65535|0.0.0.0/0|0-65535|すべて|ALLOW|
 
 #### <a name="denyallinbound"></a>DenyAllInbound
 
-|優先順位|ソース|ソース ポート|ターゲット|ターゲット ポート|プロトコル|Access (アクセス)|
+|優先順位|ソース|ソース ポート|変換先|ターゲット ポート|プロトコル|Access (アクセス)|
 |---|---|---|---|---|---|---|
 |65500|0.0.0.0/0|0-65535|0.0.0.0/0|0-65535|すべて|DENY|
 
@@ -100,19 +100,19 @@ ms.lasthandoff: 09/25/2017
 
 #### <a name="allowvnetoutbound"></a>AllowVnetOutBound
 
-|優先順位|ソース|ソース ポート| ターゲット | ターゲット ポート | プロトコル | Access (アクセス) |
+|優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access (アクセス) |
 |---|---|---|---|---|---|---|
 | 65000 | VirtualNetwork | 0-65535 | VirtualNetwork | 0-65535 | すべて | ALLOW |
 
 #### <a name="allowinternetoutbound"></a>AllowInternetOutBound
 
-|優先順位|ソース|ソース ポート| ターゲット | ターゲット ポート | プロトコル | Access (アクセス) |
+|優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access (アクセス) |
 |---|---|---|---|---|---|---|
 | 65001 | 0.0.0.0/0 | 0-65535 | インターネット | 0-65535 | すべて | ALLOW |
 
 #### <a name="denyalloutbound"></a>DenyAllOutBound
 
-|優先順位|ソース|ソース ポート| ターゲット | ターゲット ポート | プロトコル | Access (アクセス) |
+|優先順位|ソース|ソース ポート| 変換先 | ターゲット ポート | プロトコル | Access (アクセス) |
 |---|---|---|---|---|---|---|
 | 65500 | 0.0.0.0/0 | 0-65535 | 0.0.0.0/0 | 0-65535 | すべて | DENY |
 
@@ -129,7 +129,7 @@ ms.lasthandoff: 09/25/2017
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、Azure のパブリック IP アドレス空間を表します。 このタグに含まれるアドレスの一覧については、[Azure 所有のパブリック IP 空間](https://www.microsoft.com/download/details.aspx?id=41653)に関するドキュメントをご覧ください。このドキュメントは定期的に更新されます。
 * **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager サービスの IP アドレス空間を表します。
 * **Storage** (Resource Manager のみ): このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 その他の使用可能なリージョン サービス タグは、Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS、Storage.WestUS2 です。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。
-* **Sql** (Resource Manager のみ): このタグは、Azure SQL Database サービスおよび Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 このサービス タグでは、特定のリージョンだけを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 すべての Azure リージョンに対してのみ Sql を指定することはできません、リージョンを個別に指定する必要があります。 その他の使用可能なリージョン サービス タグは、Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS、Storage.WestUS2 です。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の Azure SQL データベースは表しません。
+* **Sql** (Resource Manager のみ): このタグは、Azure SQL Database サービスおよび Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 このサービス タグでは、特定のリージョンだけを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 すべての Azure リージョンに対してのみ Sql を指定することはできません、リージョンを個別に指定する必要があります。 その他の使用可能なリージョン サービス タグは、Sql.AustraliaEast、Sql.AustraliaSoutheast、Sql.EastUS、Sql.UKSouth、Sql.WestCentralUS、Sql.WestUS、Sql.WestUS2 です。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の Azure SQL データベースは表しません。
 
 > [!WARNING]
 > AzureTrafficManager、Storage、Sql の各サービス タグは、プレビュー リリースで使うことができます。 プレビュー状態の機能の可用性と信頼性は、一般公開リリースの機能と同じレベルではありません。 サービス タグは、米国東部、米国西部、米国西部 2、米国中西部、オーストラリア東部、オーストラリア南東部、英国南部の各リージョンでのみ利用できます。

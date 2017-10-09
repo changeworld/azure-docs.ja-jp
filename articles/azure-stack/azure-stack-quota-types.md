@@ -15,13 +15,16 @@ ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 9c65abd596b1a67175a4f91558c318f16ddbb11f
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 33906514955b76a3d6587b19899a0c76a09018a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
 [クォータ](azure-stack-plan-offer-quota-overview.md#plans)は、ユーザー サブスクリプションがプロビジョニングまたは使用できるリソースの制限を定義します。 たとえば、1 つのクォータでユーザー 1 人に最大 5 つの仮想マシンの作成を許可できます。 各リソースは、独自のクォータの種類を持つことが可能です。
 
 ## <a name="compute-quota-types"></a>Compute クォータの種類

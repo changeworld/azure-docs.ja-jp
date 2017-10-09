@@ -1,6 +1,6 @@
 ---
 title: "オファーをサブスクラブする | Microsoft Docs"
-description: "テナントとしてオファーをサブスクライブする方法について説明します。"
+description: "ユーザーとしてオファーをサブスクライブする方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,16 +15,19 @@ ms.topic: get-started-article
 ms.date: 7/03/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 3cd87ebe9827249d32f15b5de0ad8521d0282c47
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: f70815b5e89753a4b0083ffbe10d9920062d1ff0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
-# <a name="subscribe-to-an-offer"></a>オファーをサブスクライブする
-[オファーの作成](azure-stack-create-offer.md)が終わったら、テナントがサブスクリプションを作成できるかどうかをテストします。
+# <a name="subscribe-to-an-offer"></a>プランへのサブスクライブ
 
-1. テナントとして Azure Stack のテナント ポータル (https://portal.local.azurestack.external) に[サインイン](azure-stack-connect-azure-stack.md)し、**[サブスクリプションの取得]** をクリックします。
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+[オファーの作成](azure-stack-create-offer.md)が終わったら、ユーザーがサブスクリプションを作成できるかどうかをテストします。
+
+1. ユーザーとして Azure Stack のユーザー ポータル (https://portal.local.azurestack.external) に[サインイン](azure-stack-connect-azure-stack.md)し、**[サブスクリプションの取得]** をクリックします。
 
    ![](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 2. **[表示名]** フィールドにサブスクリプションの名前を入力し、**[オファー]** をクリックします。**[Choose an offer]\(オファーの選択\)** ブレードでいずれかのオファーをクリックし、**[作成]** をクリックします。
@@ -35,9 +38,9 @@ ms.lasthandoff: 09/15/2017
 オファーをサブスクライブしたら、ポータルを更新して、どのサービスが新しいサブスクリプションの一部であるかを確認します。
 
 ## <a name="subscribe-to-an-add-on-plan"></a>アドオン プランをサブスクライブする
-オファーにアドオン プランがある場合、テナントは、それらをいつでも自分のサブスクリプションに追加できます。  
+オファーにアドオン プランがある場合、ユーザーは、それらをいつでも自分のサブスクリプションに追加できます。  
 
-1. テナントポータルで、**[その他のサービス]** > **[サブスクリプション]** を選択します。
+1. ユーザーポータルで、**[その他のサービス]** > **[サブスクリプション]** を選択します。
 
 2. サブスクリプションをクリックし、**[プランの追加]** ボタンをクリックし、アドオン プランを選択します。
 

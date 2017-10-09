@@ -12,13 +12,13 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/21/2017
+ms.date: 09/26/2017
 ms.author: saysa
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 28424d139499b797b09664f73657a7f73361e3bc
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
@@ -49,7 +49,7 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
     ```bash
     git clone https://github.com/azure/service-fabric-linux-vagrant-onebox.git
     ```
-    この手順を実行すると、VM 構成と VM のダウンロード元の場所が含まれた `Vagrantfile` ファイルがダウンロードされます。  ファイルはストック Ubuntu イメージを指します。 
+    この手順を実行すると、VM 構成と VM のダウンロード元の場所が含まれた `Vagrantfile` ファイルがダウンロードされます。  ファイルはストック Ubuntu イメージを指します。
 
 2. リポジトリのローカル クローンに移動します。
 
@@ -76,7 +76,7 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
     ```bash
     vagrant ssh
     ```
-   
+
    「[SDK のインストール](service-fabric-get-started-linux.md)」の説明に従って SDK をインストールします。  Service Fabric ランタイムと共通 SDK を sfctl CLI と共にインストールする場合に備え以下のスクリプトが用意されています。 スクリプトの実行では、インストールされているすべてのソフトウェアのライセンスを読んで同意していることが前提となります。
 
     ```bash
@@ -97,6 +97,23 @@ Service Fabric は、OS X ではネイティブに実行されません。Micros
 
     ![Service Fabric Explorer viewed from the host Mac][sfx-mac]
 
+## <a name="install-the-necessary-java-artifacts-on-vagrant-to-use-service-fabric-java-programming-model"></a>必要な Java アーティファクトを Vagrant にインストールして Service Fabric Java プログラミング モデルを使用する
+
+Service Fabric サービスを Java で構築するには、ビルド タスクを実行するための Gradle と共に、JDK 1.8 がインストールされている必要があります。 次のスニペットで Open JDK 1.8 と Gradle をインストールしてください。 Service Fabric Java ライブラリが Maven から取り込まれます。
+
+  ```bash
+  vagrant ssh
+  sudo apt-get install openjdk-8-jdk-headless
+  sudo apt-get install gradle
+```
+
+## <a name="set-up-the-service-fabric-cli"></a>Service Fabric CLI のセットアップ
+
+[Service Fabric CLI](service-fabric-cli.md) には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 Python がベースになっているため、あらかじめ Python と pip がインストールされていることを確認してから、次のコマンドを実行してください。
+
+```bash
+pip install sfctl
+```
 
 ## <a name="create-application-on-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
@@ -141,6 +158,7 @@ Service Fabric には、Java サービスの作成、構築、デプロイのプ
 * [Azure Portal で Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-portal.md)
 * [Azure Resource Manager を使用して Service Fabric クラスターを作成する](service-fabric-cluster-creation-via-arm.md)
 * [Service Fabric アプリケーション モデルを理解する](service-fabric-application-model.md)
+* [Service Fabric CLI を使用してアプリケーションを管理する](service-fabric-application-lifecycle-sfctl.md)
 
 <!-- Images -->
 [cluster-setup-script]: ./media/service-fabric-get-started-mac/cluster-setup-mac.png
