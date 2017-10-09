@@ -15,13 +15,16 @@ ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ff34bcd6ba485806baf7963e11393633dd893fa7
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: ddd69acaed4d56211092866571350d855b14e8b3
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-a-plan-in-azure-stack"></a>Azure Stack でのプランの作成
+
+*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+
 [プラン](azure-stack-key-features.md)は、1 つ以上のサービスをグループ化したものです。 プロバイダーは、テナントに提供するプランを作成できます。 作成されたオファーテナントがサブスクライブし、オファーに含まれるプランとサービスを使用します。 この例では、コンピューティング、ネットワーク、およびストレージの各リソース プロバイダーを含むプランを作成する方法を示します。 このプランのサブスクライバーは仮想マシンをプロビジョニングすることができます。
 
 1. Azure Stack 管理ポータル (https://adminportal.local.azurestack.external) にサインインします。 [PowerShell スクリプトの実行](azure-stack-run-powershell-script.md)に関するセクションの手順 5 で作成したアカウントの資格情報を入力します。

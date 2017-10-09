@@ -12,18 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
+ms.date: 08/22/2017
 ms.author: sngun
 ms.translationtype: HT
 ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09c626e97832821009ce2da360ceea2b54273ffa
+ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
 ms.contentlocale: ja-jp
 ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
-
-*適用先: Azure Stack Development Kit*
 
 リソースを管理するには、Azure Stack Development Kit に接続する必要があります。 ここでは、Development Kit に接続するために必要な手順について詳しく説明します。 次の接続方法のうちどちらかを使用できます。
 
@@ -33,15 +31,16 @@ ms.lasthandoff: 09/25/2017
 ## <a name="connect-to-azure-stack-with-remote-desktop"></a>リモート デスクトップを使用して Azure Stack に接続する
 リモート デスクトップ接続では、1 人の同時実行ユーザーがポータルを使用してリソースを管理できます。
 
-1. リモート デスクトップ接続を開き、Development Kit に接続します。 「**AzureStack\AzureStackAdmin**」というユーザー名と、Azure Stack セットアップ時に指定したオペレーターのパスワードを入力します。  
+1. リモート デスクトップ接続を開き、Development Kit に接続します。 「**AzureStack\AzureStackAdmin**」というユーザー名と、Azure Stack セットアップ時に指定した管理者パスワードを入力します。  
 
 2. Development Kit コンピューターからサーバー マネージャーを開き、**[ローカル サーバー]** をクリックし、Internet Explorer セキュリティ強化を無効にして、サーバー マネージャーを閉じます。
 
-3. ユーザーの[ポータル](azure-stack-key-features.md#portal)を開くには、(https://portal.local.azurestack.external/) に移動し、ユーザーの資格情報を使用してサインインします。 Azure Stack オペレーターの[ポータル](azure-stack-key-features.md#portal)を開くには、(https://adminportal.local.azurestack.external/) に移動し、インストール時に指定した Azure Active Directory の資格情報を使用してサインインします。
+3. ポータルを開くには、(https://portal.local.azurestack.external/) に移動し、ユーザーの資格情報を使用してサインインします。
+
 
 ## <a name="connect-to-azure-stack-with-vpn"></a>VPN を使用して Azure Stack に接続する
 
-Azure Stack Development Kit に対して、分割トンネルの仮想プライベート ネットワーク (VPN) 接続を確立することができます。 VPN 接続を介して、Azure Stack オペレーターのポータル、ユーザー ポータル、およびローカルにインストールされているツール (Visual Studio、PowerShell など) にアクセスして、Azure Stack リソースを管理できます。 VPN 接続は、Azure Active Directory (AAD) および Active Directory フェデレーション サービス (AD FS) ベースのデプロイの両方でサポートされています。 VPN 接続は、同時に複数のクライアントが Azure Stack に接続できます。 
+Azure Stack Development Kit に対して、分割トンネルの仮想プライベート ネットワーク (VPN) 接続を確立することができます。 VPN 接続を介して、管理者ポータル、ユーザー ポータル、およびローカルにインストールされているツール (Visual Studio、PowerShell など) にアクセスして、Azure Stack リソースを管理できます。 VPN 接続は、Azure Active Directory (AAD) および Active Directory フェデレーション サービス (AD FS) ベースのデプロイの両方でサポートされています。 VPN 接続は、同時に複数のクライアントが Azure Stack に接続できます。 
 
 > [!NOTE] 
 > この VPN 接続では、Azure Stack インフラストラクチャ VM には接続できません。 
@@ -69,7 +68,7 @@ Import-Module .\Connect\AzureStack.Connect.psm1
 $hostIP = "<Azure Stack host IP address>"
 
 $Password = ConvertTo-SecureString `
-  "<operator's password provided when deploying Azure Stack>" `
+  "<Administrator password provided when deploying Azure Stack>" `
   -AsPlainText `
   -Force
 
@@ -105,10 +104,10 @@ Add-AzsVpnConnection `
 
 ### <a name="test-the-vpn-connectivity"></a>VPN 接続のテスト
 
-ポータル接続をテストするには、インターネット ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) またはオペレーター ポータル (https://adminportal.local.azurestack.external/) にアクセスし、サインインしてリソースを作成します。  
+ポータル接続をテストするには、インターネット ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) にアクセスし、サインインしてリソースを作成します。  
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack ユーザーが仮想マシンを使用できるようにする](azure-stack-tutorial-tenant-vm.md)
+
 
 

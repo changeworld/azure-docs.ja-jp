@@ -15,14 +15,17 @@ ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
-ms.openlocfilehash: e4e2293149b64056d1ec9d1900119e9f4f511d06
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4a53065f76cef7b711f4a656b437cbefaf47c5d0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack のデプロイの前提条件
-Azure Stack [開発キット](azure-stack-poc.md)をデプロイする前に、コンピューターが次の要件を満たしていることを確認してください。
+
+*適用先: Azure Stack Development Kit*
+
+[Azure Stack Development Kit](azure-stack-poc.md) をデプロイする前に、コンピューターが次の要件を満たしていることを確認してください。
 
 
 ## <a name="hardware"></a>ハードウェア
@@ -142,7 +145,7 @@ Azure Stack のテレメトリを提供したくない場合は、以下で説�
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry
 ### Set & Get updated AllowTelemetry value for ASDK-Host 
-Set-ItemProperty-Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
+Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name "AllowTelemetry" -Value '0'  
 (Get-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\DataCollection" `
 -Name AllowTelemetry).AllowTelemetry

@@ -15,15 +15,17 @@ ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 9f19d4ea53fb07bff97a5cd06d10af74f605bf1c
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: bfed4c557a420eda14cafe5b1cf8ad11476e2d79
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
-Azure Stack を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 クラウド オペレーターとして、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
+*適用先: Azure Stack Development Kit*
+
+[Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 クラウド オペレーターとして、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
 
 オファーには、1 つ以上のプランが含まれ、各プランには 1 つ以上のサービスが含まれます。 プランを作成し、それらを異なるオファーに結合することで、次のことを制御します。
 - ユーザーがアクセスできるサービスとリソース

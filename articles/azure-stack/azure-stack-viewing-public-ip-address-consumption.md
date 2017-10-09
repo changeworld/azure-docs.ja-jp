@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/18/2017
+ms.date: 9/25/2017
 ms.author: scottnap
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6b7da3c1b4e9bcaa302d4c763eb73d0dd1832124
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 7651565eebf6272f307a4ce4790ca19b41bfa826
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
+
+*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+
 クラウド管理者は、テナントに割り当てられているパブリック IP アドレスの数、割り当てに使用できるパブリック IP アドレスの数、および特定の場所に割り当て済みのパブリック IP アドレスの数を表示できます。
 
 **[パブリック IP プールの使用量]** タイルに、ファブリックのすべてのパブリック IP アドレス プール内の使用済みのパブリック IP アドレスの合計数が表示されます。この数値には、テナントの IaaS VM インスタンスとファブリック インフラストラクチャ サービスによって使用されているものや、テナントによって明示的に作成されたパブリック IP アドレス リソースが含まれます。
@@ -55,11 +58,11 @@ ms.lasthandoff: 09/15/2017
 
 | **プライベート IP アドレスの割り当て状況** | **使用状況の概要に表示** | **テナントのパブリック IP アドレスの一覧に表示** |
 | --- | --- | --- |
-| NIC またはロード バランサーにまだ割り当てられていない動的パブリック IP アドレス (一時的) |なし |あり |
+| NIC またはロード バランサーにまだ割り当てられていない動的パブリック IP アドレス (一時的) |いいえ |あり |
 | NIC またはロード バランサーに割り当て済みの動的パブリック IP アドレス |あり |あり |
 | テナントの NIC またはロード バランサーに割り当て済みの静的パブリック IP アドレス |あり |あり |
-| ファブリック インフラストラクチャ サービス エンドポイントに割り当て済みの静的パブリック IP アドレス |あり |なし |
-| IaaS VM インスタンス用に暗黙的に作成され、仮想ネットワークのアウトバウンド NAT で使用されるパブリック IP アドレス。 これらは、テナントが VM インスタンスを作成するたびにバック グラウンドで作成され、VM が情報をインターネットに送信できるようにします。 |あり |なし |
+| ファブリック インフラストラクチャ サービス エンドポイントに割り当て済みの静的パブリック IP アドレス |あり |いいえ |
+| IaaS VM インスタンス用に暗黙的に作成され、仮想ネットワークのアウトバウンド NAT で使用されるパブリック IP アドレス。 これらは、テナントが VM インスタンスを作成するたびにバック グラウンドで作成され、VM が情報をインターネットに送信できるようにします。 |あり |いいえ |
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack でストレージ アカウントを管理する](azure-stack-manage-storage-accounts.md)

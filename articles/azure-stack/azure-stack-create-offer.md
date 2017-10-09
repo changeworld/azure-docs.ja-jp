@@ -15,13 +15,16 @@ ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 3d7360a1fb1c0cf42d77b3f39bf92c30438c2e01
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 76d038a0eb53cf5f22ed377354f5f09de2dc9c1b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Azure Stack でのオファーの作成
+
+*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+
 [オファー](azure-stack-key-features.md)は、プロバイダーから提示されてテナントが購入またはサブスクライブする 1 つまたは複数のプランをグループ化したものです。 ここでは、最後の手順で[作成したプラン](azure-stack-create-plan.md)を含むオファーを作成する方法について説明します。 このオファーのサブスクライバーは仮想マシンをプロビジョニングすることができます。
 
 1. Azure Stack 管理者ポータルに (https://adminportal.local.azurestack.external) にサインインし、**[新規]** > **[テナントのプラン]** > **[オファー]** をクリックします。
