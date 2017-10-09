@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cost Management での使用状況とコストの確認 | Microsoft Docs"
 description: "使用状況とコストを確認して、傾向を追跡し、非効率性を検出してアラートを作成します。"
 services: cost-management
