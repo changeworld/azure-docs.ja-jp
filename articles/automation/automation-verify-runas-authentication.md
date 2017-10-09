@@ -3,7 +3,7 @@ title: "Azure Automation アカウントの構成を検証する | Microsoft Doc
 description: "この記事では、Automation アカウントの構成が正しく設定されていることを確認する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

@@ -3,7 +3,7 @@ title: "Azure Automation のグラフィカル Runbook におけるエラー処�
 description: "この記事では、Azure Automation のグラフィカル Runbook でエラー処理ロジックを実装する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 
@@ -14,9 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/26/2016
 ms.author: magoedte
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 08cba012cca61eeb03187d2b4165e2a79b15bc3d
 ms.openlocfilehash: 12313f7f245d32c33882f1036f7d4b48bfb3ddc5
+ms.contentlocale: ja-jp
+ms.lasthandoff: 02/03/2017
 
 ---
 
@@ -73,9 +75,4 @@ Runbook の作成者は、エラーが発生する可能性のある各アクテ
 * グラフィカル Runbook でのリンクおよびリンクの種類の詳細については、「[Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md#links-and-workflow)」を参照してください。
 
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、[Runbook ジョブの追跡](automation-runbook-execution.md)に関するページを参照してください。
-
-
-
-<!--HONumber=Feb17_HO1-->
-
 

@@ -12,7 +12,7 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/17/2016
+ms.date: 10/05/2017
 ms.author: juanpere
 ms.translationtype: HT
 ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b

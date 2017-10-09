@@ -3,7 +3,7 @@ title: "Azure Automation の Azure モジュールの更新 | Microsoft Docs"
 description: "この記事では、Azure Automation で既定で提供される一般的な Azure PowerShell モジュールを更新する方法について説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -19,7 +19,6 @@ ms.sourcegitcommit: fc27849f3309f8a780925e3ceec12f318971872c
 ms.openlocfilehash: ed8c97b642d406a05817ec6c67f31a1b4bce93b0
 ms.contentlocale: ja-jp
 ms.lasthandoff: 06/14/2017
-
 
 ---
 

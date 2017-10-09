@@ -3,7 +3,7 @@ title: "Azure Automation の証明書資産 | Microsoft Docs"
 description: "証明書を Azure Automation に安全に保存し、Runbook または DSC 構成でアクセスして Azure およびサードパーティのリソースで認証できます。  この記事では、証明書の詳細およびテキスト作成とグラフィカル作成の両方で証明書を使用する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 ms.assetid: ac9c22ae-501f-42b9-9543-ac841cf2cc36

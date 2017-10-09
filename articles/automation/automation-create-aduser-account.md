@@ -3,7 +3,7 @@ title: "Azure AD ユーザー アカウントを作成する | Microsoft Docs"
 description: "この記事では、Azure Automation の Runbook が Azure およびクラシック Azure で認証を受ける際に使用する Azure AD ユーザー アカウントを作成する方法について説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "Azure Active Directory ユーザー, Azure サービス管理, Azure AD ユーザー アカウント"

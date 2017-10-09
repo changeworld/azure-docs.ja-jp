@@ -3,7 +3,7 @@ title: "Azure Automation の概要 | Microsoft Docs"
 description: "この記事では、Auzre Marketplace のサービスをオンボードする準備として、設計と実装の詳細を確認しながら Azure Automation サービスの概要について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 

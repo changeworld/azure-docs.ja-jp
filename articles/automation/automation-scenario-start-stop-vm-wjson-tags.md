@@ -3,7 +3,7 @@ title: "JSON 形式のタグを使用した Azure VM の状態のスケジュー
 description: "この記事では、タグに関する JSON 文字列を使って VM の起動とシャットダウンのスケジュールを自動化する方法を示します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6afed5d2-e939-4749-8b2c-9312b4c16fb2
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: magoedte;paulomarquesc
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
 ms.openlocfilehash: af0bc6b24a403bd09092ac0a099c500d651d15b7
+ms.contentlocale: ja-jp
 ms.lasthandoff: 04/27/2017
-
 
 ---
 # <a name="azure-automation-scenario-using-json-formatted-tags-to-create-a-schedule-for-azure-vm-startup-and-shutdown"></a>Azure Automation シナリオ: JSON 形式のタグを使用して Azure VM の起動とシャットダウンのスケジュールを作成する

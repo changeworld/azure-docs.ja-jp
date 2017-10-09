@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure サブスクリプションを Azure Cost Management に登録する | Microsoft Docs"
 description: "Azure サブスクリプションを使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management

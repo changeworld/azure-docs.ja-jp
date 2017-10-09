@@ -3,7 +3,7 @@ title: "Azure Automation での最初の PowerShell Workflow Runbook | Microsoft
 description: "PowerShell Workflow を使用して簡単なテキスト形式の Runbook を作成、テスト、および発行する手順を説明するチュートリアルです。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 keywords: "PowerShell ワークフロー, PowerShell ワークフローの例, ワークフロー PowerShell"

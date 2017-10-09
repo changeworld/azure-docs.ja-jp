@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook のテスト | Microsoft Docs"
 description: "Azure Automation で Runbook を発行する前にテストを行い、期待どおりに動作することを確認できます。  この記事では、Runbook のテスト方法と出力の見方について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 7f7db785-52c0-4613-aa12-b02fd32a5182
@@ -14,10 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/12/2016
 ms.author: magoedte;bwren
-translationtype: Human Translation
+ms.translationtype: Human Translation
 ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 5186eb8f1732d533cbceb397b4d8b5224ad773cd
-
+ms.contentlocale: ja-jp
+ms.lasthandoff: 11/17/2016
 
 ---
 # <a name="testing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook のテスト
@@ -43,10 +44,5 @@ Azure ポータルではすべての [種類の Runbook](automation-runbook-type
 * グラフィカル作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
 * PowerShell Workflow Runbook の使用を開始するには、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * ステータス メッセージやエラーを返すように Runbook を構成する方法と、推奨されるベスト プラクティスの詳細については、「 [Azure Automation での Runbook の出力およびメッセージ](automation-runbook-output-and-messages.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
 
 

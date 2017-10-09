@@ -3,7 +3,7 @@ title: "Runbook の入力パラメーター | Microsoft Docs"
 description: "Runbook の入力パラメーターを利用すれば、開始時に Runbook にデータを渡すことができて Runbook の柔軟性が上がります。 この記事では、入力パラメーターを Runbook で使用するさまざまなシナリオについて説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 4d3dff2c-1f55-498d-9a0e-eee497e5bedb

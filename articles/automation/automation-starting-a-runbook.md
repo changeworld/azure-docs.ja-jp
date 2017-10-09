@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の開始 | Microsoft Docs"
 description: "Azure Automation の Runbook を開始するために使用できる各種方法についてまとめ、Azure ポータルと Windows PowerShell の両方の詳細な使用方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 6ee756b4-9200-4eb2-9bda-ec156853803b

@@ -3,7 +3,7 @@ title: "Azure Automation ソース管理と GitHub Enterprise の統合 | Micros
 description: "GitHub Enterprise との統合を構成して Automation Runbook のソース管理を実現する方法の詳細について説明します。"
 services: automation
 documentationCenter: 
-authors: mgoedtel
+authors: eslesar
 manager: jwhit
 editor: 
 ms.assetid: e01d817c-7d38-421c-adf5-647a4b526eb4

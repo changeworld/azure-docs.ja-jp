@@ -1,4 +1,4 @@
----
+﻿---
 title: "CSP パートナー情報を使用して Azure Cost Management に登録する | Microsoft Docs"
 description: "CSP パートナー情報を使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management

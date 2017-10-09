@@ -3,7 +3,7 @@ title: "OMS Log Analytics への Azure Automation ジョブ データの転送 |
 description: "この記事では、ジョブの状態と Runbook ジョブ ストリームを Microsoft Operations Management Suite Log Analytics に送信して、詳細な情報の入手ときめ細かい管理を実現する方法について説明します。"
 services: automation
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: c12724c6-01a9-4b55-80ae-d8b7b99bd436
