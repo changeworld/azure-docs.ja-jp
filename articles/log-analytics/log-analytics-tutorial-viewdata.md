@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/20/2017
+ms.date: 09/26/2017
 ms.author: magoedte
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ac702c356f0adc172674b2a3669de2a8d5dfd6ed
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: c9c57beeb9c62e69f3bae5675717fff0ef43f22c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Log Analytics のログ検索で収集されたデータの表示または分析
@@ -30,6 +30,10 @@ Log Analytics では、収集されたデータを分析するクエリを構築
 > * パフォーマンス データを処理する方法を学ぶ
 
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](log-analytics-quick-collect-azurevm.md)既存の仮想マシンが必要です。  
+
+クエリの作成と編集および返されたデータの対話的操作は、2 つの方法のいずれかで行うことができます。  基本的なクエリの場合は Azure Portal の [ログ検索] ページを使い、高度なクエリの場合は高度な分析ポータルを使うことができます。 2 つのポータルの機能の違いについて詳しくは、「[Azure Log Analytics でログ クエリを作成および編集するためのポータル](log-analytics-log-search-portals.md)」をご覧ください。
+
+このチュートリアルでは、Azure Portal の [ログ検索] を使います。 
 
 ## <a name="log-in-to-azure-portal"></a>Azure Portal へのログイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
@@ -44,7 +48,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログイ
 
 最近、Log Analytics では、新しいクエリ言語が導入されました。クエリの構築が簡単になり、多様なソースのデータを関連付け、分析して傾向や問題をすばやく特定できます。
 
-アップグレードは簡単です。  **[詳細を表示して、アップグレードする]** と表示されている紫のバナーをクリックして、プロセスを開始します。  アップグレード情報ページでアップグレードに関する追加情報を確認し、**[今すぐアップグレード]** をクリックします。
+アップグレードは簡単です。  **[詳細を表示して、アップグレードする]** と表示されているバナーをクリックして、プロセスを開始します。  アップグレード情報ページでアップグレードに関する追加情報を確認し、**[今すぐアップグレード]** をクリックします。
 
 このプロセスは、完了までに数分かかります。その間の進行状況は、メニューの **[通知]** で確認することができます。 詳細については、「[新しい言語を使用する理由](log-analytics-log-search-upgrade.md#why-the-new-language)」を参照してください。
 

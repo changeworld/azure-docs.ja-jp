@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 354eec1b0850edc1b2039e0c736b129936a27381
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 48f5f4db60c104778a6c391d254e0bc0c4c95cee
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Azure の従量課金制サブスクリプションを別のプランに変更する
@@ -106,7 +106,7 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 
 ### <a name="can-i-migrate-from-pay-as-you-go-to-cloud-solution-providerhttpspartnermicrosoftcomsolutionscloud-reseller-overview-csp-or-enterprise-agreementhttpsazuremicrosoftcompricingenterprise-agreement-ea"></a>従量課金制から [Cloud Solution Provider](https://partner.microsoft.com/Solutions/cloud-reseller-overview) (CSP) または [Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) (EA) に移行することはできますか?
 
-* CSP に移行するには、「[Azure Subscription Migration to CSP (CSP への Azure サブスクリプションの移行)](https://blogs.technet.microsoft.com/hybridcloudbp/2016/08/26/azure-subscription-migration-to-csp/)」を参照してください。
+* CSP に移行するには、「[Azure Pas-As-You-Go Subscription Migration to CSP](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/migration/migration-from-payg-to-csp)」 (Azure 従量課金制サブスクリプションを CSP に移行する) を参照してください。
 * EA に移行するには、登録管理者に依頼してアカウントを EA に追加してもらう必要があります。 登録案内メールの指示に従って、サブスクリプションを EA 加入契約に移行します。 詳細については、EA ポータルの「[既存のアカウントの関連付け](https://ea.azure.com/helpdocs/associateExistingAccount)」を参照してください。
 
 ### <a name="can-i-migrate-data-and-services-to-a-new-subscription"></a>データとサービスを新しいサブスクリプションに移行できますか?
@@ -117,3 +117,4 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
+

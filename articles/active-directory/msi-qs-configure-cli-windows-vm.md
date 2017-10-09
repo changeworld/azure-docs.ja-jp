@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 03fb9cc6633f81e284ae299f7b2ba4018d19cc73
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: fe276fe802eceb1f062ed8bda685dd44a1e3d175
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
@@ -45,7 +45,7 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 
 MSI 対応 VM を作成するには
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```azurecli-interactive
    az login
@@ -67,7 +67,7 @@ MSI 対応 VM を作成するには
 
 既存の仮想マシンで MSI を有効にする必要がある場合は、次のようにします。
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
    ```azurecli-interactive
    az login
@@ -83,7 +83,7 @@ MSI 対応 VM を作成するには
 
 MSI が不要になった仮想マシンがある場合は、次のようにします。
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 目的の VM が含まれる Azure サブスクリプションに関連付けられたアカウントを使用します。 また、お使いのアカウントが、「仮想マシンの共同作業者」など、VM 上の書き込みアクセス許可が提供されるロールに属していることを確認します。
 
    ```azurecli-interactive
    az login

@@ -15,10 +15,10 @@ ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: bf62fb21dfac99038e3b3759d9e78c6870f52f9e
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -111,6 +111,17 @@ ProxyPassword="Password"
   >[!WARNING]
   スケールアウト プロセス サーバーがこの構成サーバーに接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーでプロキシ設定を修正する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#modifying-proxy-settings-for-scale-out-process-server)必要があります。
 
+## <a name="modify-user-accounts-and-passwords"></a>ユーザー アカウントとパスワードを変更する
+
+CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**で使用されるユーザー アカウントの管理、および**保護されているマシンへのモビリティ サービスのプッシュ インストール**を行います。 
+
+1. 構成サーバーにログインします。
+2. デスクトップにあるショートカットをクリックして、CSPSConfigtool.exe を起動します。
+3. **[アカウントの管理]** タブをクリックします。
+4. パスワードの変更が必要なアカウントを選択して、**[編集]** ボタンをクリックします。
+5. 新しいパスワードを入力し、**[OK]** をクリックします。
+
+
 ## <a name="re-register-a-configuration-server-with-the-same-recovery-services-vault"></a>同じ Recovery Services コンテナーを使用した構成サーバーの再登録
   1. 構成サーバーにログインします。
   2. デスクトップのショートカットを使用して cspsconfigtool.exe を起動します。
@@ -132,6 +143,10 @@ ProxyPassword="Password"
   この構成サーバーにスケールアウト プロセス サーバーが接続されている場合は、デプロイ内の[すべてのスケールアウト プロセス サーバーを再登録する](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#re-registering-a-scale-out-process-server)必要があります。
 
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>異なる Recovery Services コンテナーを使用した構成サーバーの登録
+
+> [!WARNING]
+> 以下の一連の手順では、現在のコンテナーとの構成の関連付けを解除します。それにより構成サーバーの下で保護されているすべての仮想マシンのレプリケーションが停止します。
+
 1. 構成サーバーにログインします。
 2. 管理者のコマンド プロンプトで、次のコマンドを実行します
 
@@ -157,7 +172,7 @@ ProxyPassword="Password"
 ## <a name="updating-a-configuration-server"></a>構成サーバーの更新
 
 > [!WARNING]
-> 更新プログラムがサポートされているのは、N-4 バージョンまでです。 たとえば、販売中の最新バージョンが 9.11 の場合は、バージョン 9.10、9.9、9.8、9.7 から 9.11 に直接更新できます。 ただし、使用しているバージョンが 9.6 以前の場合、構成サーバーに最新の更新プログラムを適用するには、少なくとも 9.7 に更新する必要があります。 以前のバージョンのダウンロード リンクは、「[Azure Site Recovery service updaes (Azure Site Recovery サービスの更新情報)](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)」にあります。
+> 更新プログラムがサポートされているのは、N-4 バージョンまでです。 たとえば、販売中の最新バージョンが 9.11 の場合は、バージョン 9.10、9.9、9.8、9.7 から 9.11 に直接更新できます。 ただし、使用しているバージョンが 9.6 以前の場合、構成サーバーに最新の更新プログラムを適用するには、少なくとも 9.7 に更新する必要があります。 以前のバージョンのダウンロード リンクは、「[Azure Site Recovery service updates](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)」 (Azure Site Recovery サービスの更新情報) に記載されています。
 
 1. 構成サーバーで更新プログラムのインストーラーをダウンロードします。
 2. インストーラーをダブルクリックして起動します。
@@ -227,6 +242,17 @@ ProxyPassword="Password"
 
   >[!TIP]
   **[今すぐ更新]** の代わりに **[今すぐアップグレード]** が表示される場合があります。 現在の環境にまだ 9.4.xxxx.x 以上のバージョンにアップグレードされていないコンポーネントがあることを示します。
+
+## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>Secure Socket Layer (SSL) 証明書が期限切れになった場合の構成サーバーの回復
+
+1. 構成サーバーを[最新バージョン](http://aka.ms/unifiedinstaller)に更新する
+2. スケールアウト プロセス サーバー、フェールバック マスター ターゲット サーバー、フェールバック プロセス サーバーをお持ちの場合は、最新バージョンに更新してください。
+3. すべての保護された仮想マシン上にあるモビリティ サービスを最新バージョンに更新します。
+4. 構成サーバーにログインし、管理者特権でコマンド プロンプトを開きます。
+5. フォルダー %ProgramData%\ASR\home\svsystems\bin を参照します。
+6. RenewCerts.exe を実行して、構成サーバー上の SSL 証明書を更新します。
+7. プロセスが成功すると、"証明書の更新が成功しました" という内容のメッセージが表示されます。
+
 
 ## <a name="sizing-requirements-for-a-configuration-server"></a>構成サーバーのサイズ要件
 

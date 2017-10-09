@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/26/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 75c361cca556c797fd3ea5480cacbbc14799aca8
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 9d91c59d3e4d73879d95ab193949d54f7b86d6cd
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -70,7 +70,10 @@ Azure AD Connect を既にインストールしている場合は、Azure AD Con
 
 ## <a name="step-3-roll-out-the-feature"></a>手順 3: 機能をロールアウトする
 
-この機能をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使用して、ユーザーのイントラネット ゾーンの設定に 2 つの Azure AD URL を追加する必要があります。
+この機能をユーザーにロールアウトするには、Active Directory のグループ ポリシーを使用して、ユーザーのイントラネット ゾーンの設定に次の Azure AD URL を追加する必要があります。
+
+- https://autologon.microsoftazuread-sso.com
+- https://aadg.windows.net.nsatc.net
 
 >[!NOTE]
 > 以下の手順は、Windows 上の Internet Explorer と Google Chrome (信頼済みサイト URL のセットを Internet Explorer と共有する場合) でのみ機能します。 Mac 上の Mozilla Firefox および Mac 上の Google Chrome をセットアップする方法については、次のセクションをご覧ください。

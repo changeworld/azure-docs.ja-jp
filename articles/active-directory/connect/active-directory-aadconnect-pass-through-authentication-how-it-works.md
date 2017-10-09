@@ -12,17 +12,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 09/27/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3c648054666a1771187b3862b7c4972831b85f2c
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 9507a718ba982eb8b3381a6ef70156f075729161
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
+次の記事では、Azure AD パススルー認証のしくみを概説します。  詳細な技術およびセキュリティの情報については、[**「Azure AD Pass-through Authentication Security Deep Dive」**](active-directory-aadconnect-pta-security-deep-dive.md)(Azure AD パススルー認証のセキュリティの詳細) を参照してください。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory パススルー認証のしくみ
 
@@ -50,5 +51,6 @@ ms.lasthandoff: 09/25/2017
 - [**よく寄せられる質問**](active-directory-aadconnect-pass-through-authentication-faq.md) - よく寄せられる質問と回答です。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - 機能に関する一般的な問題を解決する方法を確認します。
 - [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
+- [**セキュリティの詳細** ](active-directory-aadconnect-pta-security-deep-dive.md) - Azure AD パススルー認証に関する追加の詳細な技術情報です。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
 

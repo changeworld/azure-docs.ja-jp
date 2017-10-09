@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 9/12/2017
 ms.author: dekapur;maburlik;chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
-ms.openlocfilehash: e5d582431b53aafb977e219ecf3bc882232efaaa
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 67d47739c27081c4e10bf11988ed121ff02d8bb0
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/16/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 

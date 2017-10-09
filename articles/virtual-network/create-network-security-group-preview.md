@@ -17,10 +17,10 @@ ms.date: 09/20/2017
 ms.author: jdial
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 21729bc6af282abc47c9b226f343bf2d44153d55
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>ネットワークおよびアプリケーション セキュリティ グループ (プレビュー) によるネットワーク トラフィックのフィルター処理
@@ -39,10 +39,22 @@ ms.lasthandoff: 09/25/2017
 Windows、Linux、または macOS のどこからコマンドを実行しても、Azure CLI コマンドは同じです。 ただし、オペレーティング システム シェル間ではスクリプトに違いがあります。 次の手順のスクリプトは、Bash シェルで実行します。 
 
 1. [Azure CLI のインストールと構成](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json)
-2. `az --version` コマンドを入力することによって、2.0.17 を超える CLI 2.0 のバージョンを使用していることを確認してください。 そうでない場合は、最新バージョンをインストールします。
+2. `az --version` コマンドを入力して、使用している Azure CLI のバージョンが 2.0.18 以降であることを確認してください。 そうでない場合は、最新バージョンをインストールします。
 3. `az login` コマンドを使用して Azure にログインします。
-4. [PowerShell](#powershell) で手順 1. から 5. を完了することによって、このチュートリアルで使用されるプレビュー機能に登録します。 プレビューの利用登録は PowerShell でのみ行うことができます。 登録に成功するか、または手順が失敗するまでは、残りの手順に進まないでください。
-5. 次のスクリプトを実行して、リソース グループを作成します。
+4. 次のコマンドを入力して、プレビューに登録します。
+    
+    ```azurecli-interactive
+    az feature register --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    ``` 
+
+5. 次のコマンドを入力して、プレビューに登録されていることを確認します。
+
+    ```azurecli-interactive
+    az feature show --name AllowApplicationSecurityGroups --namespace Microsoft.Network
+    ```
+
+    前のコマンドから返された出力に**状態**を表す "*登録済み*" が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+6. 次の bash スクリプトを実行して、リソース グループを作成します。
 
     ```azurecli-interactive
     #!/bin/bash
@@ -52,7 +64,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --location westcentralus
     ```
 
-6. 3 つのアプリケーション セキュリティ グループ (サーバーの種類ごとに 1 つ) を作成します。
+7. 3 つのアプリケーション セキュリティ グループ (サーバーの種類ごとに 1 つ) を作成します。
 
     ```azurecli-interactive
     az network asg create \
@@ -71,7 +83,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --location westcentralus
     ```
 
-7. ネットワーク セキュリティ グループを作成します。
+8. ネットワーク セキュリティ グループを作成します。
 
     ```azurecli-interactive
     az network nsg create \
@@ -80,7 +92,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --location westcentralus
     ```
 
-8. NSG 内のセキュリティ規則を作成します。
+9. NSG 内にセキュリティ規則を作成し、アプリケーション セキュリティ グループを宛先として設定します。
     
     ```azurecli-interactive    
     az network nsg rule create \
@@ -120,7 +132,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --protocol "TCP" 
     ``` 
 
-9. 仮想ネットワークを作成します。 
+10. 仮想ネットワークを作成します。 
     
     ```azurecli-interactive
     az network vnet create \
@@ -129,8 +141,9 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --subnet-name mySubnet \
       --address-prefix 10.0.0.0/16 \
       --location westcentralus
+    ```
 
-10. Associate the network security group to the subnet in the virtual network:
+11. 仮想ネットワークのサブネットにネットワーク セキュリティ グループを関連付けます。
 
     ```azurecli-interactive
     az network vnet subnet update \
@@ -138,8 +151,9 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --resource-group myResourceGroup \
       --vnet-name myVnet \
       --network-security-group myNsg
-
-11. Create three network interfaces, one for each server type. 
+    ```
+    
+12. 3 つのネットワーク インターフェイス (サーバーの種類ごとに 1 つ) を作成します。 
 
     ```azurecli-interactive
     az network nic create \
@@ -170,9 +184,9 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --application-security-groups "DatabaseServers"
     ```
 
-    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 8. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myWebNic* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myWebNic* に適用されません。
+    ネットワーク インターフェイスがメンバーになっているアプリケーション セキュリティ グループに基づいて、手順 9. で作成した対応するセキュリティ規則だけがそのネットワーク インターフェイスに適用されます。 たとえば、ネットワーク インターフェイスが *WebServers* アプリケーション セキュリティ グループのメンバーであり、その規則は宛先として *WebServers* アプリケーション セキュリティ グループを指定しているため、*myWebNic* には *WebRule* だけが有効です。 ネットワーク インターフェイスが *AppServers* および *DatabaseServers* アプリケーション セキュリティ グループのメンバーでないため、*AppRule* および *DatabaseRule* 規則は *myWebNic* に適用されません。
 
-12. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、*win2016datacenter* を *UbuntuLTS* に変更できます。
+13. サーバーの種類ごとに 1 つの仮想マシンを作成し、対応するネットワーク インターフェイスを各仮想マシンに接続します。 この例では Windows 仮想マシンを作成しますが、代わりに Linux 仮想マシンを作成するには、*win2016datacenter* を *UbuntuLTS* に変更できます。
 
     ```azurecli-interactive
     # Update for your admin password
@@ -206,7 +220,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
       --admin-password $AdminPassword    
     ```
 
-13. **省略可:** 「[リソースの削除](#delete-cli)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
+14. **省略可:** 「[リソースの削除](#delete-cli)」の手順を実行して、このチュートリアルで作成したリソースを削除します。
 
 ## <a name="powershell"></a>PowerShell
 

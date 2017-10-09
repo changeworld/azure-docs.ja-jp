@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b0fa58c8bf0e50314c61272eb221878eca2c3def
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 0130823b6a6f5a4883ad640c9bcefc89b82b2cd1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要

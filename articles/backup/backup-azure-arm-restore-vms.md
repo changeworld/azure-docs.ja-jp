@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/04/2017
 ms.author: markgal;trinadhk;
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: d234d9c97064e22a0ea882f199da326b0aae0674
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: c4723a7d174991f5bf679bf3e8c97fe2338926a2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="use-azure-portal-to-restore-virtual-machines"></a>Azure ポータルを使用した仮想マシンの復元

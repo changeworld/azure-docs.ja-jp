@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cfc95726c535aa49add98d700740b24bde5ea0f7
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 79d2f5265c05a1e5f83325295d3d750e1796e1cc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -97,11 +97,11 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 はい。 ご使用の AD フォレスト間にフォレストの信頼があり、名前サフィックス ルーティングが正しく構成されていれば、複数フォレスト環境がサポートされます。
 
-## <a name="do-pass-through-authentication-agents-provide-load-balancing-capability"></a>パススルー認証エージェントは、負荷分散機能を提供しますか。
+## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>いくつのパススルー認証エージェントをインストールする必要がありますか。
 
-いいえ、複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されますが、負荷分散は提供されません。 1 つまたは 2 つの認証エージェントにより、大部分のサインイン要求を処理することになります。
+複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されます。 ただし、負荷分散は実現されません。 1 つまたは 2 つの認証エージェントにより、大部分のサインイン要求を処理することになります。
 
-認証エージェントが処理する必要があるパスワード検証要求は軽量です。 したがって、ほとんどのお客様のピーク負荷および平均負荷が、合計で 2 ～ 3 の認証エージェントによって容易に処理されます。
+テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300,000 ～ 400,000 の認証を処理できます。 ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 2 つまたは 3 つの認証エージェントがあれば十分です。
 
 サインインの待機時間を向上させるために、認証エージェントは、ドメイン コントローラーの近くにインストールすることをお勧めします。
 

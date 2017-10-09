@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 57cd81a92817171a23ffd0f607eb127005bc1e0d
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 894e387b4b83ed859139b4aecb3d8bb5df9ab56f
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
@@ -26,7 +26,6 @@ ms.lasthandoff: 09/23/2017
 
 ## <a name="overview"></a>Overview
 Azure AD Connect のインストールを常に最新の状態に保つことは、 **自動アップグレード** 機能によって、これまでよりも簡単になりました。 この機能は、高速インストールと DirSync のアップグレード用に既定で有効になっています。 インストールは新しいバージョンのリリース時に自動的にアップグレードされます。
-
 自動アップグレードは、次の場合に既定で有効です。
 
 * 簡単設定インストールと DirSync のアップグレード。
@@ -45,6 +44,7 @@ Azure AD Connect のインストールを常に最新の状態に保つことは
 `Set-ADSyncAutoUpgrade` を使用して、**有効**と**無効**を切り替えることができます。 システムだけが、状態を **保留**に設定することができます。
 
 自動アップグレードでは、アップグレード インフラストラクチャに Azure AD Connect Health を使用しています。 自動アップグレードを動作させるには、「 **Office 365 URL および IP アドレス範囲** 」に記載されているように、 [Azure AD Connect Health](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)用にプロキシ サーバーで URL を開いておく必要があります。
+
 
 **Synchronization Service Manager** UI がサーバーで実行されている場合は、UI が閉じられるまで、アップグレードが中断されます。
 
@@ -96,7 +96,7 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 | UpgradeNotSupportedMultiForestSetup |現在、複数のフォレストに接続しています。 高速セットアップで接続するフォレストは 1 つのみです。 |
 | UpgradeNotSupportedNonLocalDbInstall |SQL Server Express LocalDB データベースが使用されていません。 |
 | UpgradeNotSupportedNonMsolAccount |[AD Connector アカウント](active-directory-aadconnect-accounts-permissions.md#active-directory-account)は、既定の MSOL_ アカウントではなくなりました。 |
-| UpgradeNotSupportedNotConfiguredSignInMethod | ユーザーがサインイン方法として *[構成しない]* を選択しました。 | 
+| UpgradeNotSupportedNotConfiguredSignInMethod | AAD Connect を設定する場合は、サインオン方法の選択時に *[構成しない]* を選択します。 | 
 | UpgradeNotSupportedPtaSignInMethod | ユーザーがサインイン方法として [パススルー認証] を選択しました。 |
 | UpgradeNotSupportedStagingModeEnabled |サーバーが [ステージング モード](active-directory-aadconnectsync-operations.md#staging-mode)に設定されています。 |
 | UpgradeNotSupportedUserWritebackEnabled |ユーザーが [ユーザーの書き戻し](active-directory-aadconnect-feature-preview.md#user-writeback) 機能を有効にしました。 |

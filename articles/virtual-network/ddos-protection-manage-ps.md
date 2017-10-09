@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8badb3455fa508e4eef56ec7fc1901fbbc8b23d0
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: a1a3688d4ff215d05d2f78cdfa7d402e3fc20be2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="manage-azure-ddos-protection-standard-using-azure-powershell"></a>Azure PowerShell を使用した Azure DDoS Protection Standard の管理
