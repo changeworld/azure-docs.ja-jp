@@ -18,10 +18,10 @@ ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017, mvc
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 77538db308c657392ac8bc6a0b7665f9b8427256
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: 891640526b25c030f7e01d79e981aad517dfafb4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="an-introduction-to-azure-functions"></a>Azure Functions の概要  
@@ -37,7 +37,7 @@ Azure Functions の主要な機能を次に示します。
 * **独自の依存関係を使用** - Azure Functions では NuGet と NPM をサポートしているので、お気に入りのライブラリを使用できます。  
 * **セキュリティの統合** - Azure Active Directory、Facebook、Google、Twitter、Microsoft アカウントなどの OAuth プロバイダーにより、HTTP によってトリガーされる関数を保護できます。  
 * **簡単な手順で統合** - Azure サービスと、サービスとしてのソフトウェア (SaaS) のプランを簡単に活用できます。 例については、「[統合](#integrations)」セクションをご覧ください。  
-* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的な統合を設定し、GitHub や Visual Studio Team Services などの [サポート対象開発ツール](../app-service-web/web-sites-deploy.md#deploy-using-an-ide)を使ってコードをデプロイすることもできます。  
+* **柔軟な開発** - 関数をポータル内で直接作成することも、継続的インテグレーションを設定し、[GitHub](../app-service/scripts/app-service-cli-continuous-deployment-github.md) や [Visual Studio Team Services](../app-service/scripts/app-service-cli-continuous-deployment-vsts.md) などの [サポート対象開発ツール](../app-service/app-service-deploy-local-git.md)を使ってコードをデプロイすることもできます。  
 * **オープン ソース** - Azure Functions ランタイムはオープン ソースであり、 [GitHub](https://github.com/azure/azure-webjobs-sdk-script)で提供されています。  
 
 ## <a name="what-can-i-do-with-functions"></a>Functions でできること
@@ -47,7 +47,7 @@ Functions には、次のような主要なシナリオを開始するための�
 
 * **HTTPTrigger** - HTTP 要求を使用して、コードの実行をトリガーします。 例については、[最初の関数の作成](functions-create-first-azure-function.md)に関するページをご覧ください。
 * **TimerTrigger** - 事前定義されたスケジュールに従ってクリーンアップなどのバッチ タスクを実行します。 例については、[タイマーによってトリガーされる関数の作成](functions-create-scheduled-function.md)に関するページをご覧ください。
-* **GitHub webhook** - GitHub リポジトリで発生するイベントに応答します。 例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-a-web-hook-or-api-function.md)」を参照してください。
+* **GitHub webhook** - GitHub リポジトリで発生するイベントに応答します。 例については、「[GitHub webhook でトリガーされる関数の作成](functions-create-github-webhook-triggered-function.md)」を参照してください。
 * **汎用 webhook** - webhook をサポートする任意のサービスからの webhook HTTP 要求を処理します。 例については、「[ジェネリック webhook でトリガーされる関数の作成](functions-create-generic-webhook-triggered-function.md)」を参照してください。
 * **BlobTrigger** - Azure Storage BLOB がコンテナーに追加されたときに、それを処理します。 この関数は、画像のサイズ変更に利用できます。 詳細については、[Blob Storage のバインディング](functions-bindings-storage-blob.md)に関するページをご覧ください。
 * **QueueTrigger** - Azure Storage キューにメッセージが配信されたときに応答します。 例については、[他の Azure サービスに接続する関数の作成](functions-create-an-azure-connected-function.md)に関するページをご覧ください。
@@ -87,7 +87,7 @@ Azure Functions には、2 種類の価格プランがあります。 ニーズ�
   関数をテストするための各種ツールと手法について説明します。
 * [Azure Functions のスケーリング方法](functions-scale.md)  
   Azure Functions で利用できるサービス プラン (従量課金ホスティング プランを含む) と、適切なプランを選択する方法について説明します。 
-* [Azure App Service とは](../app-service/app-service-value-prop-what-is.md)  
+* [Azure App Service とは](../app-service/app-service-web-overview.md)  
   Azure Functions では、デプロイ、環境変数、診断などの主要な機能に Azure App Service を活用しています。 
 
 

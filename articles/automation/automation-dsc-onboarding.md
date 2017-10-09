@@ -13,12 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 12/13/2016
 ms.author: eslesar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7f8b63c22a3f5a6916264acd22a80649ac7cd12f
-ms.openlocfilehash: 7aaede3e93938553ee6d372478e3516e72885057
+ms.translationtype: HT
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: 581bee11729e6fef5dbe7e752962f7ab9896066b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/01/2017
-
+ms.lasthandoff: 09/19/2017
 
 ---
 # <a name="onboarding-machines-for-management-by-azure-automation-dsc"></a>Azure Automation DSC による管理のためのマシンのオンボード
@@ -36,6 +35,10 @@ ms.lasthandoff: 05/01/2017
 * オンプレミス、Azure、または Azure 以外のクラウド内の物理/仮想 Linux マシン
 
 また、クラウドからコンピューター構成を管理する準備ができていない場合は、Azure Automation DSC をレポートのみのエンドポイントとして使用することもできます。 この場合、オンプレミスの DSC で目的の構成を設定 (プッシュ) し、Azure Automation の目的の状態へのノード コンプライアンスに関する詳細なレポートを表示できます。
+
+> [!NOTE]
+> インストールされている仮想マシン DSC 拡張機能が 2.7 より新しい場合は、追加料金なしでこの DSC で Azure VM を管理できるようになっています。  詳細については、「[**Automation の価格**](https://azure.microsoft.com/en-us/pricing/details/automation/)」を参照してください。
+
 
 次のセクションでは、各種類のマシンを Azure Automation DSC にオンボードできる方法の概要を示します。
 
@@ -123,13 +126,13 @@ Azure Automation DSC では、Azure ポータル、Azure リソース マネー�
 
 [Azure ポータル](https://portal.azure.com/)で、仮想マシンをオンボードする Azure Automation アカウントに移動します。 Automation アカウントのダッシュボードで、**[DSC ノード]**  ->  **[Azure VM の追加]** の順にクリックします。
 
-**[オンボードする仮想マシンの選択]**で、オンボードする 1 つ以上の Azure Virtual Machines を選択します。
+オンボードする Azure 仮想マシンを選択します。
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_2.png)
+マシンに PowerShell Desired State 拡張機能がインストールされておらず、[電源の状態] が [実行中] の場合は、**[接続]** をクリックします。
 
-**[登録データの構成]**で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4) 、および必要に応じて VM に割り当てるノード構成を入力します。
+**[登録]** で、ユース ケースに必要な [PowerShell DSC Local Configuration Manager の値](https://msdn.microsoft.com/powershell/dsc/metaconfig4)、および必要に応じて VM に割り当てるノード構成を入力します。
 
-![](./media/automation-dsc-onboarding/DSC_Onboarding_3.png)
+![](./media/automation-dsc-onboarding/DSC_Onboarding_6.png)
 
 ### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
 

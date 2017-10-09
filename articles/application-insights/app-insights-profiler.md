@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/04/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 252e1fb070bcdc11494f6f37a9a1ee03fa50509e
+ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.openlocfilehash: ddfed2be315ae261e9c3015aa21d0b44405d6109
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
+ms.lasthandoff: 09/20/2017
 
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
@@ -50,6 +50,7 @@ Application Insights で構成されている Web アプリは、[構成] ブレ
 
 ![[構成] ブレード][linked app services]
 
+## <a name="disable-the-profiler"></a>Profiler を無効にする
 個々の App Service インスタンスのプロファイラーを停止または再起動するには、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。
 
 ![Web ジョブのプロファイラーを無効にする][disable-profiler-webjob]
@@ -91,9 +92,13 @@ Profiler は、Profiler のトレース キャプチャが有効なアプリケ�
 * **カウント** - ブレードに表示された時間の範囲における要求の数。
 * **中央値** - アプリが要求に応答するのに要する標準的な時間。 全応答の半数が、これより短い時間で行われました。
 * **95 パーセンタイル** - 応答の 95% が、これより短い時間で行われました。 この数値と中央値との差が非常に大きい場合は、アプリに一時的な問題が発生している可能性があります  (または、キャッシュなどの設計特性が原因である可能性があります)。
-* **例** - プロファイラーがこの操作のスタック トレースをキャプチャしたことを示すアイコン。
+* **[Profiler traces]\(Profiler トレース\)** - アイコンは、Profiler がこの操作のスタック トレースをキャプチャしたことを示します。
 
-[例] アイコンをクリックすると、トレース エクスプローラーが開きます。 このエクスプローラーには、プロファイラーがキャプチャしたいくつかのサンプルが応答時間ごとに分類されて表示されます。
+[表示] をクリックすると、トレース エクスプローラーが開きます。 このエクスプローラーには、プロファイラーがキャプチャしたいくつかのサンプルが応答時間ごとに分類されて表示されます。
+
+[Preview Performance]\(パフォーマンスのプレビュー\) ブレードを使用している場合は、プロファイラー トレースを表示するために右下隅の **[Take Actions]\(アクションの実行\)** セクションに移動します。 [Profiler Traces]\(Profiler トレース\) をクリックします。
+
+![Application Insights の [パフォーマンス] ブレードのプロファイラー トレースのプレビュー][performance-blade-v2-examples]
 
 いずれかのサンプルを選択すると、要求の実行に費やした時間の内訳がコード レベルで表示されます。
 
@@ -158,6 +163,10 @@ SqlCommand.Execute などのメソッドは、コードがデータベース操�
 
 ## <a id="troubleshooting"></a>トラブルシューティング
 
+### <a name="too-many-active-profiling-sessions"></a>アクティブなプロファイリング セッションが多すぎる
+
+現在、同じサービス プランで実行されている最大 4 つの Azure Web Apps とデプロイ スロットでプロファイラーを有効にすることができます。 プロファイラー Web ジョブでアクティブなプロファイリング セッションが多すぎる旨が報告された場合は、いくつかの Web アプリを別のサービス プランに移動する必要があります。
+
 ### <a name="how-can-i-know-whether-application-insights-profiler-is-running"></a>Application Insights プロファイラーが実行されているかどうかを確認するにはどうすればよいですか。
 
 プロファイラーは、Web アプリで継続的な Web ジョブとして実行されます。 https://portal.azure.com で Web アプリ リソースを開き、[WebJobs] ブレードで "ApplicationInsightsProfiler" の状態を確認できます。 実行されていない場合は、**[ログ]** を開いて詳細を確認できます。
@@ -204,10 +213,7 @@ Web アプリを Profiler が有効な App Services のリソースに再デプ�
 この問題を解決するには Web 配置タスクに、次のデプロイ パラメーターを追加します。
 
 ```
--skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*' 
--skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler\\.*'
--skip:skipaction='Delete',objectname='filePath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
--skip:skipaction='Delete',objectname='dirPath',absolutepath='\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler2\\.*'
+-skip:Directory='.*\\App_Data\\jobs\\continuous\\ApplicationInsightsProfiler.*' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs\\continuous$' -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data\\jobs$'  -skip:skipAction=Delete,objectname='dirPath',absolutepath='.*\\App_Data$'
 ```
 
 これにより、App Insights Profiler で使用されたフォルダーが削除され、再配置プロセスがブロック解除されます。 現在実行中の Profiler インスタンスには影響はありません。
@@ -237,6 +243,7 @@ ASP.NET Core アプリケーションでは、Microsoft.ApplicationInsights.AspN
 
 [performance-blade]: ./media/app-insights-profiler/performance-blade.png
 [performance-blade-examples]: ./media/app-insights-profiler/performance-blade-examples.png
+[performance-blade-v2-examples]:./media/app-insights-profiler/performance-blade-v2-examples.png
 [trace-explorer]: ./media/app-insights-profiler/trace-explorer.png
 [trace-explorer-toolbar]: ./media/app-insights-profiler/trace-explorer-toolbar.png
 [trace-explorer-hint-tip]: ./media/app-insights-profiler/trace-explorer-hint-tip.png
