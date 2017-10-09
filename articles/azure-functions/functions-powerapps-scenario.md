@@ -17,10 +17,10 @@ ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
+ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
+ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
@@ -30,6 +30,8 @@ ms.lasthandoff: 09/13/2017
 このトピックでは、風力タービンのメンテナンス シナリオに基づいて、アプリを作成します。 ここで説明するのは、「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」で定義した関数を呼び出す方法です。 この関数によって、風力タービンの応急処理がコスト効率に優れているかどうかを確認します。
 
 ![PowerApps で完成したアプリ](media/functions-powerapps-scenario/finished-app.png)
+
+Microsoft Flow から同じ関数を呼び出す方法の詳細については、「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」をご覧ください。
 
 このトピックでは、次の方法について説明します。
 
@@ -231,7 +233,7 @@ ms.lasthandoff: 09/13/2017
 
 1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)が必要です。
 
-1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
+1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージのような結果が表示されます。
 
     ![PowerApps で完成したアプリ](media/functions-powerapps-scenario/finished-app.png)
 
@@ -251,4 +253,4 @@ ms.lasthandoff: 09/13/2017
 
 PowerApps の詳細については、「[PowerApps の概要](https://powerapps.microsoft.com/tutorials/getting-started/)」を参照してください。
 
-Azure Functions を使用するもう 1 つの興味深いシナリオについては、「[Azure Logic Apps と統合される関数を作成する](functions-twitter-email.md)」を参照してください。
+Azure Functions を使用する他の興味深いシナリオについては、「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」および「[Azure Logic Apps と統合される関数を作成する](functions-twitter-email.md)」をご覧ください。

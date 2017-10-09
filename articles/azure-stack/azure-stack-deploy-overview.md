@@ -11,18 +11,20 @@ ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 81b6282addd1e88e4146367c4dd9a2ee7b8c84bf
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 54d16b57526241544ae50c9b8e10a8add667916b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack 開発キット デプロイ クイックスタート
+
+*適用対象: Azure Stack Development Kit*
 
 [Azure Stack 開発キット](azure-stack-poc.md)は、Azure Stack の機能やサービスを評価したり、実演したりするためにデプロイできるテスト/開発環境です。 この環境を立ち上げるには、環境ハードウェアを用意し、いくつかのスクリプトを実行する (これには数時間かかります) 必要があります。 その後、管理者とテナントのポータルにサインインし、Azure Stack を管理したり、プランをテストしたりできます。 
 

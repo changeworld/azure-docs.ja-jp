@@ -12,22 +12,22 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 05/10/2017
+ms.date: 09/25/2017
 ms.author: juluk
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 191a5d12fa899db48bbb751409ce3a732a56095e
+ms.translationtype: HT
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: eddbc6e977b52e3a068a1b55792512b966a58c18
 ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 
 # <a name="pricing"></a>価格
 
 ## <a name="compute-cost"></a>コンピューティング コスト
-Azure Cloud Shell は、無償提供されるマシン上で動作しますが、Azure ファイル共有を接続して使用する必要があります。 
+Azure Cloud Shell は、Azure によって無償提供されるマシン上で動作しますが、Azure ファイル共有を使う必要があります。 
 
 ## <a name="storage-cost"></a>ストレージのコスト
-Cloud Shell では、$HOME ディレクトリを永続化するために、既定で 5 GB のイメージがファイル共有に作成されます。 Azure ファイル共有には通常のコストがかかります。
+Cloud Shell では、セッション間でファイルを保持するために、新規または既存の Azure ファイル共有をマウントする必要があります。 ストレージには正規のコストが発生します。
 
 [Azure Files のコストについて詳しくはこちら](https://azure.microsoft.com/pricing/details/storage/files/)をご覧ください。 

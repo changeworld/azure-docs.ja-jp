@@ -1,6 +1,6 @@
 ---
-title: "Azure Stack ユーザーに対する CLI の有効化 | Microsoft Docs"
-description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法について説明します"
+title: "Azure Stack ユーザーに対する Azure CLI の有効化 | Microsoft Docs"
+description: "クロスプラットフォーム コマンドライン インターフェイス (CLI) を使用して、Azure Stack でリソースを管理およびデプロイする方法"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -12,22 +12,24 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 09/25/2017
 ms.author: sngun
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 2f7615e0f0928f4ef70f98b7e2b2dce823621314
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: d184bb9edbe2542d7321d8b9ccc5d23f2401f8d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
-# <a name="enable-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する CLI の有効化
+# <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する Azure CLI の有効化
+
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
 
 CLI を使用して実行できる Azure Stack オペレーターの特定のタスクはありません。 ただし、ユーザーが CLI を使用してリソースを管理できるようにするには、Azure Stack オペレーターがユーザーに以下を提供する必要があります。
 
-* **Azure Stack の CA ルート証明書** - ユーザーが Azure Stack Development Kit の外部のワークステーションから CLI を使用する場合は、ルート証明書が必要です。  
+* ユーザーが Azure Stack Development Kit の外部のワークステーションから CLI を使用する場合は、**Azure Stack の CA ルート証明書**が必要です。  
 
-* **仮想マシンのエイリアス エンドポイント** - CLI を使用して仮想マシンを作成するには、このエンドポイントが必要です。
+* **仮想マシンのエイリアス エンドポイント**は、VM をデプロイするときに、1 つのパラメーターとしてイメージ発行者、プラン、SKU、およびバージョンを参照する "UbuntuLTS" または "Win2012Datacenter" などのエイリアスを提供します。  
 
 これらの値の取得方法については、以下のセクションで説明します。
 
@@ -54,9 +56,16 @@ certutil -encode root.cer root.pem
 
 ## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>仮想マシンのエイリアス エンドポイントを設定する
 
-Azure Stack オペレーターは、仮想マシンのイメージ エイリアスを含む、公的にアクセス可能なエンドポイントを設定する必要があります。 Azure Stack オペレーターは、イメージをイメージ エイリアス エンドポイントに追加する前に、[そのイメージを Azure Stack Marketplace にダウンロード](azure-stack-download-azure-marketplace-item.md)する必要があります。
+Azure Stack オペレーターは、仮想マシンのエイリアス ファイルをホストする、公的にアクセス可能なエンドポイントを設定する必要があります。  仮想マシンのエイリアス ファイルは、VM を Azure CLI パラメーターとしてデプロイするときに、後で指定されるイメージの共通名を提供する JSON ファイルです。  
+
+エイリアス ファイルにエントリを追加する前に、[Marketplace からイメージをダウンロードする] (azure-stack-download-azure-marketplace-item.md) または[、独自のカスタム イメージを発行](azure-stack-add-vm-image.md)してください。  カスタム イメージを発行する場合は、発行時に指定した発行者、プラン、SKU、およびバージョン情報をメモしておいてください。  Marketplace のイメージである場合は、```Get-AzureVMImage``` コマンドレットを使用して情報を表示できます。  
    
-たとえば、Azure では、https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json という URI を使用します。 オペレーターはマーケットプレースで使用可能なイメージを使用して、Azure Stack 用に同様のエンドポイントを設定する必要があります。
+多くの一般的なイメージの別名を含む[サンプル エイリアス ファイル](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)が使用できます。それを出発点として使用できます。  このファイルを CLI クライアントがアクセスできる場所にホストする必要があります。  これを行う方法の 1 つは、BLOB ストレージ アカウント内でホストし、ユーザーと URL を共有することです。
+
+1.  GitHub から[サンプル ファイル](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json)をダウンロードします。
+2.  Azure Stack に新しいストレージ アカウントを作成します。  完了したら、新しい BLOB コンテナーを作成します。  アクセス ポリシーを [パブリック] に設定します。  
+3.  その新しいコンテナーに JSON ファイルをアップロードします。  完了したら、FBLOB 名をクリックし、BLOB のプロパティから URL を選択すると、BLOB の URL を表示できます。
+
 
 ## <a name="next-steps"></a>次のステップ
 

@@ -12,16 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c361d5b47a22689e7bf6749067a39e12df25c84a
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 4d5dc523886ea1b03fdb2d1cafce4dcf3fef2576
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
+
+*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
 ## <a name="personas"></a>ペルソナ
@@ -61,7 +64,7 @@ Azure Stack では、サービスは、リージョン、サブスクリプシ�
 
 テナントによるオファーへのサブスクリプションを階層で示した例 (各オファーに異なるプランやサービスが含まれる)。
 
-### <a name="regions"></a>リージョン
+### <a name="regions"></a>地域
 Azure Stack のリージョンは、スケールと管理の基本要素です。 組織は、複数のリージョンを用意することができ、各リージョンでリソースを利用可能にできます。 リージョンごとに異なるサービスを利用可能にすることもできます。 Azure Stack Development Kit では単一のリージョンのみがサポートされ、自動的に *local* という名前が与えられます。
 
 ### <a name="services"></a>サービス
@@ -88,13 +91,13 @@ Microsoft Azure Stack によって、プロバイダーは、仮想マシンや 
 
 管理者に対して、デプロイ中に既定のプロバイダー サブスクリプションが作成されます。 このサブスクリプションを使用して、Azure Stack の管理、他のリソース プロバイダのデプロイ、およびテナント向けのプランとオファーの作成を実行できます。 このサブスクリプションは、顧客ワークロードとアプリケーションを実行するために使用すべきではありません。 
 
-## <a name="azure-resource-manager"></a>Azure Resource Manager
+## <a name="azure-resource-manager"></a>Azure リソース マネージャー
 Azure Resource Manager を使用することで、インフラストラクチャのリソースをテンプレート ベースの宣言型モデルで操作できます。   それは、ソリューション コンポーネントのデプロイと管理に使用できる単一のインターフェイスを備えています。 詳しい説明とガイダンスについては、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 ### <a name="resource-groups"></a>リソース グループ
 リソース グループは、リソース、サービス、およびアプリケーションのコレクションであり、各リソースには、仮想マシン、仮想ネットワーク、パブリック IP、ストレージ アカウント、Web サイトなどの種類があります。 各リソースは、リソース グループに属する必要があります。このため、リソース グループを使用して、ワークロード別や場所別などにリソースを論理的に整理できます。  Microsoft Azure Stack では、プランやオファーなどのリソースもリソース グループで管理される。
  
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
 Azure Resource Manager を使用して、アプリケーションのデプロイと構成を定義する (JSON 形式の) テンプレートを作成できます。 このテンプレートは Azure リソース マネージャー テンプレートと呼ばれ、デプロイメントの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
 
 ## <a name="resource-providers-rps"></a>リソース プロバイダー (RP)
