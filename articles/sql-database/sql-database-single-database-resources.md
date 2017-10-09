@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 08/25/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: 12bf76deebda27cdc7e7611e0585dc0bf92bde2f
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: 3af597d7af13daaf80cd750b230675c8475033e1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースを管理する
@@ -97,12 +97,12 @@ Azure SQL Database のサービス レベル、パフォーマンス レベル�
 | --- | --- |
 |[データベース - 作成または更新](/rest/api/sql/databases/createorupdate)|新しいデータベースを作成するか、既存のデータベースを更新します。|
 |[データベース - 取得](/rest/api/sql/databases/get)|データベースを取得します。|
-|[データベース - エラスティック プールで取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
-|[データベース - 推奨されるエラスティック プールで取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
-|[データベース - エラスティック プールで一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
-|[データベース - 推奨されるエラスティック プールで一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
-|[データベース - サーバーで一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新](/api/sql/databases/update)|既存のデータベースを更新します。|
+|[データベース - エラスティック プールごとに取得](/rest/api/sql/databases/getbyelasticpool)|エラスティック プール内のデータベースを取得します。|
+|[データベース - 推奨されるエラスティック プールごとに取得](/rest/api/sql/databases/getbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースを取得します。|
+|[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
+|[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
+|[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
+|[データベース - 更新]((/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 
 

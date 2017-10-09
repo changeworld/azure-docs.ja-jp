@@ -11,20 +11,20 @@ ms.service: virtual-machines
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: ba8a02e2faaa0affd68feebd2ae5efe64cded93f
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
-Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、ソブリン クラウド、Azure Stack などでホストされている Storage アカウントに接続できます。
+Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、ソブリン クラウド、および Azure Stack でホストされているストレージ アカウントに接続できます。
 
 このガイドでは、Storage Explorer で確認されている一般的な問題の解決方法を紹介しています。
 

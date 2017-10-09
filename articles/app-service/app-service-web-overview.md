@@ -16,10 +16,10 @@ ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ebafcb2463bc92f15c1299963e054fcddd47b0b3
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: c1b3feb79328269f4692d744e7a473397d0328c1
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
@@ -40,7 +40,7 @@ App Service の *Web アプリ* とは、Web サイトまたは Web アプリケ
 
 コンピューティング リソースは、選択した価格レベルに応じて、共有または専用の仮想マシン (VM) 上に配置されます。 アプリケーション コードは、他のお客様から分離された管理 VM で実行されます。
 
-コードは、ASP.NET、Node.js、Java、PHP、Python など、 [Azure App Service](../app-service/app-service-web-overview.md)でサポートされている任意の言語またはフレームワークで作成できます。 また、Web アプリでは、 [PowerShell やその他のスクリプト言語](web-sites-create-web-jobs.md#acceptablefiles) を使用するスクリプトを実行することもできます。
+コードは、ASP.NET、Node.js、Java、PHP、Python など、Azure App Service でサポートされている任意の言語またはフレームワークで作成できます。 また、Web アプリでは、 [PowerShell やその他のスクリプト言語](web-sites-create-web-jobs.md#acceptablefiles) を使用するスクリプトを実行することもできます。
 
 Web Apps を使用できる一般的なアプリケーション シナリオの例については、[Web アプリのシナリオ](https://azure.microsoft.com/documentation/scenarios/web-app/)に関するページおよび「[Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較](choose-web-site-cloud-service-vm.md#scenarios)」の「**シナリオと推奨事項**」セクションを参照してください。
 

@@ -16,16 +16,16 @@ ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 2943e0b119726b31dd6e6507d279f6c8f74df98b
+ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
+ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/26/2017
 
 ---
 
-# <a name="get-started-using-cloud-app-discovery-in-azure-ad"></a>Azure AD の Cloud App Discovery の使用を開始する
+# <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Azure Active Directory の Cloud App Discovery のセットアップ
 
-Azure AD の Cloud App Discovery 拡張機能のパブリック プレビュー バージョンが、Azure Active Directory Premium P1 ライセンスで利用できるようになりました。 これらの拡張機能は、Microsoft Cloud App Security との統合に基づいています。 Cloud App Discovery では、15,000 個以上のクラウド アプリの Cloud App Security カタログとトラフィック ログを比較して、クラウドの使用状況とシャドウ IT に関する継続的な情報を提供します。 
+Azure AD の新しい Cloud App Discovery 拡張機能が、Azure Active Directory Premium P1 ライセンスで利用できるようになりました。 これらの拡張機能は、Microsoft Cloud App Security との統合に基づいています。 Cloud App Discovery では、15,000 個以上のクラウド アプリの Cloud App Security カタログとトラフィック ログを比較して、クラウドの使用状況とシャドウ IT に関する継続的な情報を提供します。 
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -33,14 +33,14 @@ Azure AD の Cloud App Discovery 拡張機能のパブリック プレビュー 
 
 Cloud App Discovery をセットアップするには、Azure Active Directory のグローバル管理者またはセキュリティ閲覧者である必要があります。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド アプリで同じアクセス許可を持ちます。
 
-## <a name="snapshot-and-continuous-reports"></a>スナップショット レポートと継続的レポート
+## <a name="setup-steps"></a>セットアップの手順
 
-次の 2 種類のレポートを生成できます。
+1. ログの形式を調べてログから Cloud App Discovery に提供されている情報が有用であるかどうかを確認できるように、[スナップショット レポートをセットアップ](cloudappdiscovery-set-up-snapshots.md)します。 スナップショット レポートでは、ファイアウォールやプロキシ サーバーから手動でアップロードしたトラフィック ログをアドホックに可視化することもできます。
 
-* **スナップショット レポート**では、ファイアウォールやプロキシ サーバーから手動でアップロードしたトラフィック ログをアドホックに可視化します。 これらのレポートを使用して、Cloud App Discovery に有用な情報を提供できます。
+2. Cloud App Security のログ コレクターを使用してネットワークから転送されるすべてのログを分析するように、[継続的レポートをセットアップ](https://docs.microsoft.com/cloud-app-security/discovery-docker)します。 これらのレポートを使用して、新しいアプリや使用傾向を特定できます。
 
-* **継続的レポート**では、[Cloud App Security のログ コレクター](https://docs.microsoft.com/cloud-app-security/discovery-docker)を使用して、ネットワークから転送されるすべてのログを分析します。 これらのレポートを使用して、新しいアプリや使用傾向を特定できます。
-
+3. ログが現時点でサポートされていない場合は、Cloud App Discovery でログを分析できるように[カスタム ログ パーサーをセットアップ](https://docs.microsoft.com/en-us/cloud-app-security/custom-log-parser)します。
+  
 ## <a name="log-processing-flow"></a>ログ処理フロー
 
 データ量に応じて、レポートの生成には数分から数時間かかることがあります。 フローは次のとおりです。
@@ -134,8 +134,8 @@ Cloud App Discovery レポートを正常に生成するには、トラフィッ
 
 
 ## <a name="next-steps"></a>次のステップ
-次のリンクを使用して、Azure AD の強化された Cloud App Discovery のセットアップを続行します。
+次のリンクを使用して、Azure AD の Cloud App Discovery のセットアップを続行します。
 
-* [Cloud App Discovery のスナップショット レポートを作成する](cloudappdiscovery-set-up-snapshots.md)
-* [継続的なレポートのために自動ログ アップロードを構成する](https://docs.microsoft.com/cloud-app-security/discovery-docker)
+* [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
+* [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 * [カスタム ログ パーサーを使用する](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)

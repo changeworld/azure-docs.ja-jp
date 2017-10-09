@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: cherylmc
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 95f14f2b77565b53c6e270f6afbf9873cdac606a
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 4abfdcc0a50c229555088dff0ac2c00c15f49218
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
@@ -45,26 +45,29 @@ VPN クライアント構成ファイルは、ZIP ファイルに含まれてい
 
 開始する前に、接続するすべてのユーザーでは、有効な証明書がユーザーのデバイスにインストールされていることを確認してください。 クライアント証明書のインストールの詳細については、[クライアント証明書のインストール](point-to-site-how-to-vpn-client-install-azure-cert.md)に関するページを参照してください。
 
+PowerShell または Azure Portal を使用してクライアント構成ファイルを生成することができます。 どちらの方法でも、同じ zip ファイルが返されます。 そのファイルを解凍して、次のフォルダーを表示します。
+
+  * **WindowsAmd64** および **WindowsX86**。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
+  * **Generic**。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 このフォルダーは無視してください。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合です。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
+
+### <a name="zipportal"></a>Azure Portal を使用してルールを生成する
+
+1. Azure Portal で、接続する仮想ネットワークの仮想ネットワーク ゲートウェイに移動します。
+2. 仮想ネットワーク ゲートウェイ ページで、**[ポイント対サイトの構成]** をクリックします。
+3. [ポイント対サイトの構成] ページの上部で **[VPN クライアントのダウンロード]** をクリックします。 クライアント構成パッケージが生成されるまでに数分かかります。
+4. お使いのブラウザーは、クライアント構成の zip ファイルが使用可能なことを示します。 ゲートウェイと同じ名前が付いています。 そのファイルを解凍して、フォルダーを表示します。
+
+### <a name="zipps"></a>PowerShell を使用してファイルを生成する
+
 1. VPN クライアント構成ファイルを生成する際、"-AuthenticationMethod" の値は "EapTls" です。 次のコマンドを使用して、VPN クライアント構成ファイルを生成します。
 
   ```powershell
-  New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapTls"
+  $profile=New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls"
+
+  $profile.VPNProfileSASUrl
   ```
-2. 前のコマンドにより、クライアント構成ファイルのダウンロードに使用するリンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、"VpnClientConfiguration.zip" ファイルをダウンロードします。 そのファイルを解凍して、次のフォルダーを表示します。
+2. ブラウザーに URL をコピーして、zip ファイルをダウンロードし、ファイルを解凍してフォルダーを表示します。
 
-  * **WindowsAmd64** および **WindowsX86**。Windows の 32 ビットと 64 ビットのインストーラー パッケージがそれぞれに含まれています。 **WindowsAmd64** インストーラー パッケージは、Amd だけでなく、サポートされている 64 ビットの Windows クライアントを対象としています。
-  * **Generic**。これには、独自の VPN クライアント構成の作成に使用される全般的な情報が含まれています。 このフォルダーは無視してください。 Generic フォルダーが提供されるのは、IKEv2 または SSTP+IKEv2 がゲートウェイ上で構成された場合のみです。 構成されているのが SSTP のみの場合、Generic フォルダーは存在しません。
-
-### <a name="to-retrieve-client-configuration-files"></a>クライアント構成ファイルを取得するには
-
-クライアント構成ファイルを既に生成していて、取得するだけの場合は、"Get-AzureRmVpnClientConfiguration" コマンドレットを使用できます。 "Get-AzureRmVpnClientConfiguration" コマンドレットを実行すると、VpnClientConfiguration.zip ファイルをダウンロードできる URL (リンク) が返されます。 VPN プロトコルの種類や認証の種類など、P2S VPN 構成に変更を加えた場合、構成は自動的に更新されません。 代わりに、"New-AzureRmVpnClientConfiguration" コマンドレットを実行して構成を作成し直す必要があります。
-
-以前に生成されたクライアント構成ファイルを取得するには、次の例を使用します。
-
-```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
-```
- 
 ## <a name="installwin"></a>Windows VPN クライアント構成パッケージのインストール
 
 バージョンがクライアントのアーキテクチャと一致する限り、各 Windows クライアント コンピューターで同じ VPN クライアント構成パッケージを使用できます。 サポートされているクライアント オペレーティング システムの一覧については、「[VPN Gateway に関する FAQ](vpn-gateway-vpn-faq.md#P2S)」のポイント対サイトに関するセクションを参照してください。
@@ -77,7 +80,7 @@ Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGat
 
 ## <a name="installmac"></a>Mac (OSX) VPN クライアント構成のインストール
 
-Azure VNet に接続する Mac デバイスごとに、個別の VPN クライアント構成を作成する必要があります。 複数の Mac デバイスに同じ構成ファイルを再利用することはできません。 これらのデバイスでは、VPN クライアント構成ファイルでユーザー証明書を指定する必要があるためです。 **Generic** フォルダーには、VPN クライアント構成の作成に必要な情報がすべて揃っています。 Generic フォルダーには、次のファイルが含まれています。
+Azure VNet に接続する Mac デバイスごとに、個別の VPN クライアント構成を作成する必要があります。 複数の Mac デバイスに同じ構成ファイルを再利用することはできません。 これらのデバイスでは、VPN クライアント構成ファイルでユーザー証明書を指定する必要があるためです。 **Generic** フォルダーには、VPN クライアント構成の作成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。 Generic フォルダーには、次のファイルが含まれています。
 
 * **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
 * **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
@@ -113,3 +116,4 @@ Azure VNet に接続する Mac デバイスごとに、個別の VPN クライ�
 ## <a name="next-steps"></a>次のステップ
 
 [P2S 構成を完了する](vpn-gateway-howto-point-to-site-rm-ps.md)ための記事に戻ります。
+

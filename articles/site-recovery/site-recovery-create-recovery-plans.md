@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 07/23/2017
+ms.date: 09/25/2017
 ms.author: raynew
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 1b0d64cd592c4738311797b826e490639340f92a
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 81d8a6e3015ddc4241cce8e888d51d6e2b2cb173
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成
@@ -77,10 +77,13 @@ ms.lasthandoff: 08/12/2017
 * VMM デプロイに 1 つ以上のライブラリ サーバーが存在することを確認します。 既定では、VMM サーバーのライブラリ共有パスは、VMM サーバーにローカルに配置され、MSCVMMLibrary というフォルダー名を持ちます。
     * ライブラリ共有パスがリモートである (または、ローカルであるが MSCVMMLibrary と共有されていない) 場合は、次の手順を実行して共有パスを構成します (ここでは、例として \\libserver2.contoso.com\share\ が使用されています):
       * レジストリ エディターを開き、**HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration** に移動します。
-      * **ScriptLibraryPath** の値を \\libserver2.contoso.com\share\. に設定します。 完全な FQDN を指定します。 共有場所にアクセス許可を設定します。
+      * **ScriptLibraryPath** の値を \\libserver2.contoso.com\share\. に設定します。 完全な FQDN を指定します。 共有場所にアクセス許可を設定します。 これは共有のルート ノードであることに注意してください。 **このことを確認するには、VMM のルート ノードでライブラリを参照します。表示されたパスはパスのルートとなり、変数で使用する必要があります**。
       * VMM サービス アカウントと同じアクセス許可を備えたユーザー アカウントを使用して、スクリプトをテストします。 このテストで、スタンドアロンのテスト済みスクリプトが復旧計画でも同じように実行できることを確認します。 VMM サーバーで、次の手順を実行して、実行ポリシーを bypass に設定します。
-        * 昇格された特権を使用して、64 ビット Windows PowerShell コンソールを開きます。
-        * 「 **Set-executionpolicy bypass**」と入力します。 [詳細情報](https://technet.microsoft.com/library/ee176961.aspx)。
+        * 昇格された特権を使用して、**64 ビット Windows PowerShell** コンソールを開きます。
+        * 「 **Set-executionpolicy bypass**」と入力します。 [詳細情報](https://technet.microsoft.com/library/ee176961.aspx)
+
+> [!IMPORTANT]
+> 64 ビットの PowerShell のみでバイパスする実行ポリシーを設定してく ださい。 32 ビットの PowerShell 用に設定した場合、スクリプトが実行されません。
 
 ## <a name="add-a-script-or-manual-action-to-a-plan"></a>計画へのスクリプトまたは手動アクションの追加
 

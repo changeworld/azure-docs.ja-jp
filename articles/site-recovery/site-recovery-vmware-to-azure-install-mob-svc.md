@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 848284f37ae2470a169d8f8a8c9c0bb5b926abe3
+ms.translationtype: HT
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 5a5fc9bac4f0ee54532f34fe957e3722123df178
 ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
@@ -30,7 +30,7 @@ Azure Site Recovery モビリティ サービスは、コンピューター上�
 * [Azure Automation と Desired State Configuration (Automation DSC) を使用してモビリティ サービスをインストールする](site-recovery-automate-mobility-service-install.md)
 * [グラフィカル ユーザー インターフェイス (GUI) を使用して、モビリティ サービスを手動でインストールする](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-by-using-the-gui)
 * [コマンド プロンプトで、モビリティ サービスを手動でインストールする](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-manually-at-a-command-prompt)
-* [Azure Site Recovery からのプッシュ インストールを使用してモビリティ サービスをインストールする](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
+* [Site Recovery からのプッシュ インストールを使用してモビリティ サービスをインストールする](site-recovery-vmware-to-azure-install-mob-svc.md#install-mobility-service-by-push-installation-from-azure-site-recovery)
 
 
 >[!IMPORTANT]
@@ -64,7 +64,7 @@ Azure Site Recovery モビリティ サービスは、コンピューター上�
 ## <a name="install-mobility-service-manually-by-using-the-gui"></a>GUI を使用して、モビリティ サービスを手動でインストールする
 
 >[!IMPORTANT]
-> ある Azure サブスクリプション/リージョンから別の Azure サブスクリプション/リージョンに **Azure IaaS 仮想マシン**をレプリケートする目的で**構成サーバー**を使用している場合は、**コマンド ライン ベースのインストール**方法を使用してください。
+> ある Azure サブスクリプション/リージョンから別の Azure サブスクリプション/リージョンに **Azure IaaS 仮想マシン**をレプリケートする目的で**構成サーバー**を使用している場合は、**コマンドラインベースのインストール**方法を使用してください。
 
 [!INCLUDE [site-recovery-install-mob-svc-gui](../../includes/site-recovery-install-mob-svc-gui.md)]
 
@@ -86,7 +86,21 @@ Site Recovery を使用して、モビリティ サービスのプッシュ イ�
 
 
 > [!NOTE]
-モビリティ サービスがインストールされたら、Azure Portal で、**[レプリケート]** ボタンを選択し、これらの VM の保護を開始します。
+モビリティ サービスがインストールされたら、Azure Portal で、**[+レプリケート]** ボタンを選択し、これらの VM の保護を開始します。
+
+## <a name="update-mobility-service"></a>モビリティ サービスを更新します。
+
+> [!WARNING]
+> 保護されたサーバー上のモビリティ サービスの更新を開始する前に、デプロイの一部である、構成サーバー、スケールアウト プロセス サーバー、およびマスター ターゲット サーバーを必ず更新します。 詳細については、[構成サーバーを更新する方法](site-recovery-vmware-to-azure-manage-configuration-server.md#updating-a-configuration-server)と[スケールアウト プロセス サーバーを更新する方法](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)を参照してください。
+
+1. Azure Portal で、<Your Vault> から移動して、レプリケートされたアイテムの表示を参照してください。
+2. **構成サーバー**が既に最新バージョンに更新されている場合、"*Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。クリックしてインストールしてください*" という通知が表示されます。
+3. この通知をクリックして、仮想マシンの選択ページを開きます。
+4. モビリティ サービスをアップグレードする仮想マシンを選択し、[OK] ボタンをクリックします。
+5. これによって、選択した各仮想マシンで、モビリティ サービスの更新ジョブが開始されます。
+
+> [!NOTE]
+> モビリティ サービスのインストールに使用するアカウントのパスワードを更新する方法については、[詳細をお読みください](site-recovery-vmware-to-azure-manage-configuration-server.md)。 
 
 ## <a name="uninstall-mobility-service-on-a-windows-server-computer"></a>Windows Server コンピューターのモビリティ サービスをアンインストールする
 Windows Server コンピューターのモビリティ サービスをアンインストールするには、次のメソッドのいずれかを使用します。

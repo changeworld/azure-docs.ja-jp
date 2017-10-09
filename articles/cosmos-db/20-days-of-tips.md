@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: mimig
 ms.custom: cda
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 947920783be3e2a8cd299cdcc667456adf140b57
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: fccf0e3d8cb5d0f0adfb53a06b95aa1090451915
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -140,6 +140,24 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 > [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
 
 [![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912384598486679557)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318150514613850112)
+
+
+## <a name="tip-16-functions-and-twilio-demo"></a>ヒント 16: 機能と Twilio のデモ
+
+ヒント 16: 素晴らしいデモをご用意しました。 Azure #cosmosDB、機能および @twilio を統合し、DB の変更時に SMS を送信します。 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) のドキュメントを参照してください。 
+
+> [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912703755988160512)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318469696291246081)
+
+
+## <a name="tip-17-using-mongoose-discriminators"></a>ヒント 17: Mongoose 識別子の使用
+
+ヒント 17: Mongoose 識別子を使用して単一の #CosmosDB コレクションに複数のエンティティを格納する ([https://aka.ms/M488jm](https://aka.ms/M488jm)) ことで、コストを最適化します。
+
+ブログ:  [Mongoose 識別子を使用して単一の Cosmos DB コレクションに複数のエンティティを格納する (投稿者: Anthony Chu)](https://aka.ms/M488jm)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
 
 ## <a name="next-steps"></a>次のステップ
 

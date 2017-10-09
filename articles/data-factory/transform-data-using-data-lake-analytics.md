@@ -14,15 +14,15 @@ ms.topic: article
 ms.date: 09/08/2017
 ms.author: shengc
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f72ee8b6ef51046a64e794b17d1c389a25246358
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: 5e54464ceabfe1fea2af80d63e538bea6a0a50a5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-usql-activity.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-usql-activity.md)
 > * [バージョン 2 - プレビュー](transform-data-using-data-lake-analytics.md)
 
 Azure Data Factory のパイプラインは、リンクされたコンピューティング サービスを使用して、リンクされたストレージ サービス内のデータを処理します。 パイプラインは、一連のアクティビティで構成されます。各アクティビティは、特定の処理操作を実行します。 この記事では、**Azure Data Lake Analytics** コンピューティング リンク サービスで **U-SQL** スクリプトを実行する **Data Lake Analytics U-SQL アクティビティ**について説明します。 
@@ -33,7 +33,7 @@ Azure Data Factory のパイプラインは、リンクされたコンピュー�
 Data Lake Analytics U-SQL アクティビティでパイプラインを作成する前に、Azure Data Lake Analytics アカウントを作成します。 Azure Data Lake Analytics の詳細については、 [Azure Data Lake Analytics の使用開始](../data-lake-analytics/data-lake-analytics-get-started-portal.md)に関するページをご覧ください。
 
 
-## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics のリンクされたサービス
+## <a name="azure-data-lake-analytics-linked-service"></a>Azure Data Lake Analytics リンク サービス
 **Azure Data Lake Analytics** リンク サービスを作成して、Azure Data Lake Analytics コンピューティング サービスを Azure Data Factory にリンクします。 パイプラインの Data Lake Analytics U-SQL アクティビティは、このリンク サービスを参照します。 
 
 次の表では、JSON 定義で使用される一般的なプロパティを説明しています。 
@@ -123,7 +123,7 @@ Azure Data Lake Analytics のリンクされたサービスには、Azure Data L
 | name                | パイプラインのアクティビティの名前     | あり      |
 | 説明         | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                | Data Lake Analytics U-SQL アクティビティの場合、アクティビティの種類は **DataLakeAnalyticsU-SQL** です。 | あり      |
-| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |          |
+| 既定のコンテナー   | Azure Data Lake Analytics にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  |あり       |
 | scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | あり      |
 | scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | あり      |
 | degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | なし       |
@@ -189,7 +189,7 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。  
 
 ## <a name="next-steps"></a>次のステップ
-他の手段でデータを変換する方法を説明する次の記事をご覧ください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
 * [Pig アクティビティ](transform-data-using-hadoop-pig.md)

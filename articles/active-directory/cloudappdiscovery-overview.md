@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/27/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 46d21ac6fe0992ebe6dca93e8ebd381931e49962
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 59af2a5de5936d15456058aaeacfc334b9b34d4c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="cloud-app-discovery-enhancements-in-azure-active-directory"></a>Azure Active Directory の Cloud App Discovery 拡張機能 
@@ -32,9 +32,14 @@ ms.lasthandoff: 09/25/2017
 * **エージェントは不要**: この新しいバージョンの Cloud App Discovery では、ユーザー デバイスにエージェントをインストールする必要はありません。 代わりに、ファイアウォールとプロキシからインポートされたログ ファイルに基づいて検出が実行されます。 デバイスやオペレーティング システムに関係なく、組織のすべてのネットワーク トラフィックでアプリを検出できます。
 * **継続的な分析とアラート**: Azure AD の Cloud App Discovery は、詳細なリスク分析を継続的に行うだけでなく、新しいアプリが使用されている場合にアラートを表示します。 受信トラフィック、送信トラフィック、検出されたアプリの上位ユーザーに関する情報など、組織でのクラウド アプリの使用状況について知識を深めることができます。
 
-Activity Directory Premium がない場合、詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
-
-## <a name="next-steps"></a>次のステップ
+Active Directory Premium がない場合、詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
 
 このリンクを使用して、[Azure AD の新しい Cloud App Discovery のエクスペリエンス](https://portal.cloudappsecurity.com)を確認します。
 
+## <a name="next-steps"></a>次のステップ
+次のリンクを使用して、Azure AD の Cloud App Discovery をセットアップします。
+
+* [Cloud App Discovery の使用を開始する](cloudappdiscovery-get-started.md)
+* [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
+* [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
+* [カスタム ログ パーサーを使用する](https://docs.microsoft.comcommit/cloud-app-security/custom-log-parser)

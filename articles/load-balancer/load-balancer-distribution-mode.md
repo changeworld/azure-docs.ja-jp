@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5c08b1361dfd2d13e0e7ca2ce6f9a2cf357a8dff
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: a6b3c346358e0aed4c60c4903932236edc237379
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -99,7 +99,7 @@ Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol
 
 ### <a name="cloud-service-configuration-to-change-distribution-mode"></a>分散モードを変更するクラウド サービス構成
 
-Azure SDK for .NET 2.5 (11 月にリリース予定) を使用してクラウド サービスを更新できます。 クラウド サービスのエンドポイントの設定は、.csdef で行われます。 ロード バランサー分散モードをアップデートしてクラウド サービスをデプロイするには、デプロイのアップグレードが必要です。
+Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。 クラウド サービスのエンドポイントの設定は、.csdef で行われます。 ロード バランサー分散モードをアップデートしてクラウド サービスをデプロイするには、デプロイのアップグレードが必要です。
 エンドポイント設定の .csdef の変更例は次の通りです。
 
 ```xml

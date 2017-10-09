@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 09/06/2017
 ms.author: larryfr
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a62aef7b4bb7ebc085adbdbf0b58f2bb34730dcc
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: c57684133ac7e5dfd2cc273db0e1ceca78679178
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="query-hive-through-the-jdbc-driver-in-hdinsight"></a>HDInsight で JDBC ドライバーを使用して Hive のクエリを実行する
@@ -202,7 +202,7 @@ at java.util.concurrent.FutureTask.get(FutureTask.java:206)
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](./hdinsight-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
-* [Hive、LLAP、pySpark に Visual Studio Code を使用する](hdinsight-for-vscode.md)。
+* [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight へのデータのアップロード](hdinsight-upload-data.md)
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)

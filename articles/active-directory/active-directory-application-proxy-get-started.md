@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 67f7f5b8d411d11c97a8666d1bfc3c0c5f1174ce
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 426056d394af0a9ded28202615cb80c7b50e59fc
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 

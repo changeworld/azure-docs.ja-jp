@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/22/2017
 ms.author: chackdan
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 32d8fca81c20e77db4ed3aae05d017ccc2ce1be3
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: f5ffcb5be1c52f27948414304f1fc2e82c76709b
 ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="scale-a-service-fabric-cluster-in-or-out-using-auto-scale-rules"></a>自動スケール ルールを使用した Service Fabric クラスターのスケールインとスケールアウト
@@ -100,7 +100,7 @@ Service Fabric Explorer で示されているノードは、現在/過去にお�
 
 VM が削除されたときに、ノードが削除されるようにするには、2 つのオプションを使用できます。
 
-1) クラスターのノードの種類に Gold または Silver (近日利用開始予定) の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。 これによって、スケールダウンしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。
+1) クラスターのノードの種類に Gold または Silver の耐久性レベルを選択します。これにより、インフラストラクチャの統合が提供されます。 これによって、スケールダウンしたときに、システム サービス (FM) の状態から自動的にノードが削除されます。
 [耐久性レベルの詳細](service-fabric-cluster-capacity.md)に関するページをご覧ください
 
 2) VM インスタンスがスケールダウンされたら、[Remove-ServiceFabricNodeState コマンドレット](https://msdn.microsoft.com/library/mt125993.aspx)を呼び出す必要があります。

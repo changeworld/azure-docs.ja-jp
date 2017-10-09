@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4f46c0ee94cbeb39bc7b28874cd41f1faf5deb5
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: bef3e7bf8b1fd9199d0c8a083d94660b8eed3365
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
@@ -129,6 +129,32 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 - `Passwd [storage account name]`
 - `Su [storage account name]`
 - `Cp -p filename.txt /share`
+
+## <a name="cannot-connect-or-mount-an-azure-file-share"></a>Azure ファイル共有を接続またはマウントできない
+
+### <a name="cause"></a>原因
+
+この問題の一般的な原因は次のとおりです。
+
+
+- 互換性のない Linux ディストリビューション クライアントを使用しています。 次の Linux ディストリビューションを使用して、Azure ファイル共有に接続することをお勧めします。
+
+    - Ubuntu Server 14.04+ 
+    - RHEL 7+ 
+    - CentOS 7+ 
+    - Debian 8 
+    - openSUSE 13.2+ 
+    - SUSE Linux Enterprise Server 12
+
+- CIFS-utils がクライアントにインストールされていません。
+- SMB/CIFS の最小バージョン 2.1 がクライアントにインストールされていません。
+- SMB 3.0 暗号化がクライアントでサポートされていません。 SMB 3.0 暗号化は、Ubuntu 16.4 以降のバージョンと SUSE 12.3 以降のバージョンで使用可能です。 他のディストリビューションの場合は、カーネル 4.11 以降のバージョンが必要です。
+- サポートされていない TCP ポート 445 経由でストレージ アカウントに接続しようとしています。
+- Azure VM から Azure ファイル共有に接続しようとしていますが、VM はストレージ アカウントと同じリージョンにありません。
+
+### <a name="solution"></a>解決策
+
+この問題を解決するには、「[Troubleshooting tool for Azure Files mounting errors on Linux](https://gallery.technet.microsoft.com/Troubleshooting-tool-for-02184089)」 (Lunux での Azure Files のマウント エラー用トラブルシューティング ツール) を使用します。 このツールは、クライアントの実行環境を検証する場合や、Azure Files のアクセス エラーの原因となる互換性のないクライアント構成を検出するのに役立ち、自己修正に関する規範的なガイダンスを提供し、診断トレースを収集します。
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 

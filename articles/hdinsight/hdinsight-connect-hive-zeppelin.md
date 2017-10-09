@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 09/26/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 81f353e61cd696a00f79a6b31f5750d34899bbd1
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: b44321619f2aa94a6d98624ab1ee35a598fb6fc8
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="use-zeppelin-to-run-hive-queries-in-azure-hdinsight"></a>Zeppelin を使用して Azure HDInsight で Hive クエリを実行する 
@@ -81,6 +81,6 @@ HDInsight 対話型クエリ クラスターには、Zeppelin ノートブック
 * [Microsoft Hive ODBC Driver を使用して Excel を HDInsight に接続する](./hdinsight-connect-excel-hive-odbc-driver.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
-* [Hive、LLAP、pySpark に Visual Studio Code を使用する](hdinsight-for-vscode.md)。
+* [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight にデータをアップロードする](./hdinsight-upload-data.md)。
 

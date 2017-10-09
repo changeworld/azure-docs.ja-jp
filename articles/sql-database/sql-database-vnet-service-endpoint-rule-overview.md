@@ -14,18 +14,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 09/15/2017
+ms.date: 09/27/2017
 ms.author: genemi
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: eb409b6e5cb0f6bfbf6bfa8103c01482abf928cf
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: e4ee69abe0b3b5d594ee191cc8210d25c325efaa
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
-Microsoft Azure の*仮想ネットワーク規則*は、Azure SQL Database サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
+*仮想ネットワーク規則*は、Azure SQL Database サーバーが仮想ネットワーク内の特定のサブネットから送信される通信を許可するかどうかを制御する 1 つのファイアウォール セキュリティ機能です。 この記事では、仮想ネットワーク規則機能が、場合によっては Azure SQL Database への通信を安全に許可するための最善の選択になる理由を説明します。
+
+仮想ネットワーク規則を作成するには、まず、参照する規則の[仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]が必要です。
 
 #### <a name="how-to-create-a-virtual-network-rule"></a>仮想ネットワーク規則の作成方法
 
@@ -44,7 +46,7 @@ Microsoft Azure の*仮想ネットワーク規則*は、Azure SQL Database サ�
 
 **サブネット:** 仮想ネットワークには**サブネット**が含まれます。 保持している任意の Azure 仮想マシン (VM) がサブネットに割り当てられます。 1 つのサブネットには、複数の VM や他のコンピューティング ノードが含まれる場合があります。 お使いの仮想ネットワークの外部にあるコンピューティング ノードは、アクセスを許可するようにセキュリティを構成しない限り、お使いの仮想ネットワークにはアクセスできません。
 
-**Virtual Network サービス エンドポイント:** Virtual Network サービス エンドポイントは、プロパティ値に 1 つ以上の Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
+**Virtual Network サービス エンドポイント:** [Virtual Network サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]は、プロパティ値に 1 つ以上の Azure サービスの種類名が含まれるサブネットです。 この記事では、"SQL Database" という名前の Azure サービスを参照する **Microsoft.Sql** という種類名に注目します。
 
 **仮想ネットワーク規則:** お使いの SQL Database サーバーの仮想ネットワーク規則は、SQL データベース サーバーのアクセス制御リスト (ACL) に記載されているサブネットです。 SQL Database の ACL 内に記載するためには、サブネットに **Microsoft.Sql** という種類名が含まれている必要があります。
 
@@ -118,15 +120,21 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 
 #### <a name="limitations"></a>制限事項
 
-仮想ネットワーク規則機能には、以下のような制限事項があります。
+Azure SQL Database の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
 
-- 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの IP-ACL エントリを保持できます。
+- 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
 
 - 仮想ネットワーク規則は[従来のデプロイメント モデル][arm-deployment-model-568f] ネットワークではなく、Azure Resource Manager の仮想ネットワークのみに適用されます。
 
-- 仮想ネットワーク規則が、以下のいずれかのネットワーク項目に拡張されることはありません。
-    - [Expressroute][expressroute-indexmd-744v] 経由のオンプレミス
+- ファイアウォールでは、IP アドレスは以下のネットワーク項目に適用されますが、仮想ネットワーク規則は適用されません。
     - [サイト間 (S2S) 仮想プライベート ネットワーク (VPN)][vpn-gateway-indexmd-608y]
+    - [ExpressRoute][expressroute-indexmd-744v] 経由のオンプレミス
+
+#### <a name="expressroute"></a>ExpressRoute
+
+ネットワークが [ExpressRoute][expressroute-indexmd-744v] を使用して Azure ネットワークに接続されている場合、各回線は、Microsoft Edge で 2 つのパブリック IP アドレスを使用して構成されています。 2 つの IP アドレスは、Azure パブリック ピアリングを使用して、Azure Storage などの Microsoft サービスへの接続に使用されます。
+
+回線から Azure SQL Database への通信を許可するには、回線のパブリック IP アドレスに対する IP ネットワーク規則を作成する必要があります。 ExpressRoute 回線のパブリック IP アドレスを見つけるには、Azure Portal を使用して ExpressRoute のサポート チケットを開きます。
 
 
 <!--
@@ -195,6 +203,7 @@ PowerShell スクリプトでも、仮想ネットワーク規則を作成でき
 ## <a name="related-articles"></a>関連記事
 
 - [PowerShell を使用して Virtual Network サービス エンドポイントと、Azure SQL Database 用の仮想ネットワークを順に作成する][sql-db-vnet-service-endpoint-rule-powershell-md-52d]
+- [Azure 仮想ネットワーク サービス エンドポイント][vm-virtual-network-service-endpoints-overview-649d]
 - [Azure SQL Database サーバー レベルとデータベース レベルのファイアウォール規則][sql-db-firewall-rules-config-715d]
 
 Microsoft Azure Virtual Network サービス エンドポイント機能、および Azure SQL Database の仮想ネットワーク規則機能は、両方とも 2017 年 9 月末に利用可能になります。
@@ -228,6 +237,8 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]: sql-database-vnet-service-endpoint-rule-powershell.md#a-verify-subnet-is-endpoint-ps-100
 
 [vm-configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-portal-321w]: ../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
+
+[vm-virtual-network-service-endpoints-overview-649d]: https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview
 
 [vpn-gateway-indexmd-608y]: ../vpn-gateway/index.md
 

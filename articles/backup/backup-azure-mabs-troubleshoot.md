@@ -15,16 +15,28 @@ ms.topic: article
 ms.date: 06/08/2017
 ms.author: pullabhk;markgal;
 ms.translationtype: HT
-ms.sourcegitcommit: 9633e79929329470c2def2b1d06d95994ab66e38
-ms.openlocfilehash: 5672bb1e17dac4ae0aaa67f936676d6c2fc5ef12
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 71da98bf6d53ab50df4f6e40cf0b548752d10f93
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
 # <a name="troubleshoot-azure-backup-server"></a>Azure Backup Server のトラブルシューティング
 
 次の表に示す情報を使って、Azure Backup Server の使用中に発生したエラーのトラブルシューティングを行うことができます。
+
+## <a name="error-invalid-vault-credentials-provided-the-file-is-either-corrupted-or-does-not-have-the-latest-credentials-associated-with-recovery-service"></a>エラー: 無効なコンテナーの資格情報が指定されました。 ファイルが破損しているか、最新の資格情報が回復サービスと関連付けられていません 
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
+
+## <a name="error-the-agent-operation-failed-because-of-a-communication-error-with-the-dpm-agent-coordinator-service-on-server"></a>エラー: Server の DPM エージェント コーディネーター サービスとの通信エラーのため、エージェント操作に失敗しました 
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#registration-and-agent-related-issues) に従います。
+
+## <a name="error-setup-could-not-update-registry-metadata"></a>エラー: セットアップでレジストリのメタデータを更新できませんでした
+
+この問題を解決するには、次の [トラブルシューティング手順] (https://docs.microsoft.com/en-us/azure/backup/backup-azure-mabs-troubleshoot#installation-issues) に従います。
 
 
 ## <a name="installation-issues"></a>インストールに関する問題

@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/21/2017
+ms.date: 09/26/2017
 ms.author: jejiang
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 17900c88fcfccd9c56ac548d1e9167b16a92b433
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 
-# <a name="use-azure-hdinsight-tool-for-visual-studio-code-hive-llap-or-pyspark"></a>Azure HDInsight Tool for Visual Studio Code (Hive、LLAP、または pySpark) の使用
+# <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code を使用する
 
 Azure HDInsight Tools for Visual Studio Code (VSCode) を使用して、Hive バッチ ジョブ、対話型 Hive クエリ、および pySpark スクリプトを作成および送信する方法について説明します。 Azure HDInsight Tools は、VSCode でサポートされている Windows、Linux、MacOS などのプラットフォームにインストールできます。 プラットフォームごとの前提条件については、以下を参照してください。
 
@@ -44,7 +44,7 @@ Azure HDInsight Tools for Visual Studio Code (VSCode) を使用して、Hive バ
 **Azure HDInsight Tools をインストールするには**
 
 1. **Visual Studio Code** を開きます。
-2. 左側のウィンドウで **[拡張機能]** をクリックします。 検索ボックスに「**Azure HDInsight Tools**」と入力します。
+2. 左側のウィンドウで **[拡張機能]** をクリックします。 検索ボックスに「**HDInsight**」と入力します。
 3. **Azure HDInsight Tools** の横にある **[インストール]** をクリックします。 数秒後、**[インストール]** ボタンが **[再度読み込む]** に変わります。
 4. **[再度読み込む]** をクリックして、**Azure HDInsight Tools** の拡張機能をアクティブにします。
 5. **[ウィンドウの再読み込み]** をクリックして確認します。 拡張機能ウィンドウに **Azure HDInsight Tools** が表示されます。
@@ -86,13 +86,9 @@ VSCode から HDInsight クラスターにスクリプトを送信するには�
 2. スクリプト エディターを右クリックして、コンテキスト メニューから **[HDInsight: Login]** を選択します。 また、**Ctrl + Shift + P キー**を押して、「**HDInsight: Login**」と入力することもできます。
 
     ![HDInsight Tools for Visual Studio Code のログイン](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login.png)
-3. サブスクリプションに基づいて、**[Azure]** または **[AzureChina]** をクリックします。
-
-    ![HDInsight Tools for Visual Studio Code のログイン オプション](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-login-options.png)
-
 3. **[出力]** ウィンドウのログインの指示に従って、ログインします。
 
-    **Azure:** ![HDInsight Tools for Visual Studio Code のログイン情報](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png) **AzureChina:** ![HDInsight Tools for Visual Studio Code 中国のログイン情報](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-AzureChinalogin-info.png)
+    **Azure:** ![HDInsight Tools for Visual Studio Code のログイン情報](./media/hdinsight-for-vscode/hdinsight-for-vscode-extension-Azurelogin-info.png)
 
     接続すると、VSCode ウィンドウの左下にあるステータス バーに Azure アカウント名が表示されます。 
 

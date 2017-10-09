@@ -15,13 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 09/26/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ad47c3b6d7f44815208741e686f11675c81eca8b
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 17fac0327c3c454a8ea5c4d91b2d3e23de71f4ce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
@@ -82,7 +82,7 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
 * [Azure HDInsight の Power BI でビッグ データを視覚化する](./hdinsight-connect-hive-power-bi.md)方法を学ぶ。
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)方法を学ぶ。
 * [Data Lake Tools for Visual Studio を使用して Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md#run-a-hive-query)方法を学ぶ。
-* [Hive、LLAP、pySpark に Visual Studio Code を使用する](hdinsight-for-vscode.md)方法を学ぶ。
+* [HDInsight Tools for Visual Studio Code を使用する](hdinsight-for-vscode.md)方法を学ぶ。
 * [HDInsight で Hive View と Hadoop を使用する](hdinsight-hadoop-use-hive-ambari-view.md)方法を学ぶ。
 * [Beeline を使用して HDInsight で Hive クエリを実行する](hdinsight-hadoop-use-hive-beeline.md)方法を学ぶ。
 * [Microsoft Hive ODBC ドライバーを使用して Excel から Hadoop に接続する](hdinsight-connect-excel-hive-odbc-driver.md)方法を学ぶ。

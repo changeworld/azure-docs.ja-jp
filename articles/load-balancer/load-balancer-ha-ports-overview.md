@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 2e41c70b982b97c6aab7b6c0322c193c61370a26
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 2219aeb725b207fd92ff3e7603d7ee9c78f2844c
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
-# <a name="high-availability-ports-overview"></a>高可用性ポートの概要
+# <a name="high-availability-ports-overview-preview"></a>高可用性ポートの概要 (プレビュー)
 
 Azure Load Balancer の Standard SKU は高可用性 (HA) ポートを導入しています。HA ポートは、すべてのサポートされるプロトコルについて、すべてのポートのトラフィックを分散する機能です。 ユーザーは、内部 Load Balancer を構成するときに、フロントエンドとバックエンドのポートを **0** に設定し、プロトコルを **all** に設定する HA ポート ルールを構成し、すべてのトラフィックが内部 Load Balancer を経由するようにすることができます。
+
+>[!NOTE]
+> 高可用性ポート機能は現在プレビュー中です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 負荷分散アルゴリズムは同じままです。また、分散先は 5 つのタプル <ソース IP アドレス、ソース ポート、分散先 IP アドレス、分散先ポート、プロトコル> に基づいて選択されます。 ただし、この構成では、すべての使用できるトラフィックを処理するために 1 つの LB ルールを使用できるため、構成の複雑さが軽減されるだけでなく、追加できる負荷分散ルールの最大数によって制限が課せられます。
 
@@ -43,6 +46,32 @@ HA ポートを使用すると、Zookeeper のように複雑なソリューシ�
 
 図 1 - HA モードで NVA がデプロイされているハブとスポークの仮想ネットワーク
 
+
+## <a name="region-availability"></a>利用可能なリージョン
+
+HA ポートは現在、次のリージョンでご利用いただけます。
+- 米国東部 2
+- 米国中央部
+- 北ヨーロッパ
+- 米国中西部
+- 西ヨーロッパ
+- 東南アジア 
+
+## <a name="preview-sign-up"></a>プレビューのサインアップ
+
+Load Balancer Standard SKU の HA ポート機能のプレビューに参加するには、PowerShell または Azure CLI 2.0 を使用してサブスクリプションを登録します。
+
+- PowerShell を使用したサインアップ
+
+    ```powershell
+    Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
+    ```
+
+- Azure CLI 2.0 を使用したサインアップ
+
+    ```cli
+    az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network 
+    ```
 ## <a name="caveats"></a>注意事項
 
 HA ポートでサポートされる構成または例外は次のとおりです。

@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 08/22/2017
 ms.author: jgao
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a0563af9a7fc62fe3923562dd352d756f4945287
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 65a93003eb829a2eaf4684d2a6ecacf74b0adc75
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="connect-excel-to-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Microsoft Hive ODBC ドライバーを使用した Excel から Azure HDInsight の Hadoop への接続
@@ -108,7 +108,7 @@ Microsoft Hive ODBC ドライバーは、[ダウンロード センター][hive-
 * [Zeppelin を使用して Azure HDInsight で Hive クエリを実行する](./hdinsight-connect-hive-zeppelin.md)。
 * [Power Query を使用して Excel を Hadoop に接続する](./hdinsight-connect-excel-power-query.md)。
 * [Data Lake Tools for Visual Studio を使用して Azure HDInsight に接続し、Hive クエリを実行する](./hdinsight-hadoop-visual-studio-tools-get-started.md)。
-* [Hive、LLAP、pySpark に Visual Studio Code を使用する](hdinsight-for-vscode.md)。
+* [Azure HDInsight Tool for Visual Studio Code の使用](hdinsight-for-vscode.md)。
 * [HDInsight にデータをアップロードする](./hdinsight-upload-data.md)。
 
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md

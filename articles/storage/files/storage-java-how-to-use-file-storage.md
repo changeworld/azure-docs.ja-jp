@@ -13,7 +13,7 @@ ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: tamram
+ms.author: renash
 ms.translationtype: HT
 ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 192c4b5b89feca2a2e39c5e0670d05cc8868eb03

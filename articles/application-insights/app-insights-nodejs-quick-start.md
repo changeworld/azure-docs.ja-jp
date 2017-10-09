@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f7351f310752803b910eef69e71d081ddc923c5e
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 279838150c94ab04eaea08dc30ee8b0f9f7ee3d5
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -30,7 +30,7 @@ Azure Application Insights を使うと、Web アプリケーションの可用�
 
 - Azure サブスクリプションと既存の Node.js Web アプリケーションが必要です。
 
-Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs)に従って作成できます。
+Node.js Web アプリケーションがない場合は、[Node.js Web アプリを作成するためのクイックスタート](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)に従って作成できます。
  
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
@@ -69,7 +69,7 @@ Application Insights は、オンプレミスとクラウドのどちらで実�
    npm install applicationinsights --save
    ```
 
-3. アプリの最初の .js ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイック スタート アプリ](https://docs.microsoft.com/en-us/azure/app-service-web/app-service-web-get-started-nodejs)を使用している場合は、index.js ファイルを変更します。 
+3. アプリの最初の .js ファイルを編集し、スクリプトの最上部の下に 2 つの行を追加します。 [Node.js のクイック スタート アプリ](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-get-started-nodejs)を使用している場合は、index.js ファイルを変更します。 
 
    ```JavaScript
    const appInsights = require('applicationinsights');

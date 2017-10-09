@@ -17,10 +17,10 @@ ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: b136d3841243ad7aa88786f76b2d31e5dfae9079
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -239,7 +239,8 @@ user.assignedPlans -any (assignedPlan.service -eq "SCO" -and assignedPlan.capabi
 
 user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber  
 
-カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。 現在、オンプレミス Active Directory から同期されている複数値の属性はサポートされていません。 
+カスタム属性名は、Graph Explorer を使用してユーザーの属性をクエリして属性名を検索することにより、ディレクトリで見つけることができます。
+現在、オンプレミス Active Directory から同期されている複数値の属性はサポートされていません。
 
 ## <a name="direct-reports-rule"></a>"直接の部下" のルール
 マネージャーのすべての直接の部下が含まれたグループを作成できます。 将来、マネージャーの直接の部下が変更された場合、グループのメンバシップは自動的に調整されます。
@@ -287,6 +288,19 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 > Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
 >
 >
+
+## <a name="changing-dynamic-membership-to-static-and-vice-versa"></a>動的メンバーシップを静的に変更する、またはその逆の変更を行う
+グループのメンバーシップの管理方法を変更することができます。 これは、システムで同じグループの名前と ID を保持する場合に便利です。グループへの既存の参照は有効のままであるため、新しいグループを作成する場合にそれらの参照を更新する必要がありません。
+
+> [!WARNING]
+> 既存の静的グループを動的グループに変更すると、既存のすべてのメンバーはグループから削除され、新しいメンバーを追加するためにメンバーシップ ルールが処理されます。 アプリまたはリソースへのアクセスを制御するためにグループが使用されている場合、元のメンバーは、メンバーシップ ルールが完全に処理されるまでアクセスできなくなる可能性があります。
+>
+> グループの新しいメンバーシップが予期したとおりのものになるように、事前に新しいメンバーシップ ルールをテストすることをお勧めします。
+
+1. [Azure クラシック ポータル](https://manage.windowsazure.com)で、グループを開きます。
+2. **[構成]** タブを選択して、動的メンバーシップの現在の状態を表示します。
+3. グループを静的にする場合は、**[動的メンバーシップを有効にする]** 設定を **[いいえ]** に切り替えるだけです。 下のツールバーの **[保存]** ボタンをクリックして確認します。 既存のメンバーはグループで保持され、今後はメンバーシップ ルールが処理されることはありません。
+4. グループを動的にするには、設定を **[はい]** に切り替え、必要なメンバーシップ ルールを指定して **[保存]** をクリックします。 既存のメンバーは削除され、新しいルールで新しいメンバーを追加する処理が開始されます。
 
 ## <a name="next-steps"></a>次のステップ
 次の記事は、Azure Active Directory に関する追加情報を示します。

@@ -15,15 +15,15 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4a2ab892df6e18e87ba9a33b8b67a3b433ab8a56
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 13ac0afb9ebfe568f1d8b1db2fedfd28cb05c3e7
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
-*適用対象: Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Active Directory デプロイの場合は、[Azure Stack](azure-stack-poc.md) を Azure に登録して、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データ レポートを設定したりできます。 
 

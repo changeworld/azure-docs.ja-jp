@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 03/22/2017
+ms.date: 09/27/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7db1761a9a3b8a74a39b2d441849fb89d44cd42b
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 7890159574de0db58dd2e7d1b6a19305381d29d6
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 # <a name="transfer-data-with-the-microsoft-azure-storage-data-movement-library"></a>Microsoft Azure Storage Data Movement Library を使用してデータを転送する
@@ -50,45 +50,30 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 ## <a name="setup"></a>[Setup]  
 
 1. 「[.NET Core Installation Guide (.NET Core インストール ガイド)](https://www.microsoft.com/net/core)」にアクセスして、.NET Core をインストールします。 環境を選択するときは、コマンド ライン オプションを選択します。 
-2. コマンド ラインで、プロジェクトのディレクトリを作成します。 このディレクトリに移動し、「`dotnet new`」と入力して、C# コンソール プロジェクトを作成します。
-3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、「`code .`」と入力します。  
+2. コマンド ラインで、プロジェクトのディレクトリを作成します。 このディレクトリに移動し、「`dotnet new console -o <sample-project-name>`」と入力して、C# コンソール プロジェクトを作成します。
+3. Visual Studio Code でこのディレクトリを開きます。 この手順をコマンド ラインですばやく実行するには、Windows で「`code .`」と入力します。  
 4. Visual Studio Code Marketplace から [C# 拡張機能](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp) をインストールします。 Visual Studio Code を再起動します。 
 5. この時点で 2 つのプロンプトが表示されます。 1 つは "ビルドとデバッグに必要なアセット" を追加するよう求めるプロンプトで、 [はい] をクリックします。 もう 1 つは、未解決の依存関係を復元するように求めるプロンプトで、 [復元] をクリックします。
-6. アプリケーションの `.vscode` ディレクトリには `launch.json` ファイルがあります。 このファイルで、`externalConsole` 値を `true` に変更します。
+6. `.vscode` の `launch.json` を変更し、コンソールとして外部ターミナルを使用するようにします。 この設定は ` "console": "externalTerminal"` のようになります。
 7. Visual Studio Code を使用すると、.NET Core アプリケーションをデバッグできます。 `F5` キーを押してアプリケーションを実行し、セットアップが動作していることを確認します。 "Hello World!" が コンソールに表示されます。 
 
 ## <a name="add-data-movement-library-to-your-project"></a>プロジェクトへの Data Movement Library の追加
 
-1. 最新バージョンの Data Movement Library を `project.json` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.5.0"` です 
-2. `"portable-net45+win8"` を `imports` セクションに追加します。 
-3. プロジェクトを復元するように求めるメッセージが表示されます。 [復元] ボタンをクリックします。 プロジェクト ディレクトリのルートで `dotnet restore` コマンドを入力して、コマンド ラインからプロジェクトを復元することもできます。
+1. 最新バージョンの Data Movement Library を `<project-name>.csproj` ファイルの `dependencies` セクションに追加します。 この資料の作成時点では、このバージョンは `"Microsoft.Azure.Storage.DataMovement": "0.6.2"` です 
+2. プロジェクトを復元するように求めるメッセージが表示されます。 [復元] ボタンをクリックします。 プロジェクト ディレクトリのルートで `dotnet restore` コマンドを入力して、コマンド ラインからプロジェクトを復元することもできます。
 
-`project.json` を変更します。
+`<project-name>.csproj` を変更します。
 
-    {
-      "version": "1.0.0-*",
-      "buildOptions": {
-        "debugType": "portable",
-        "emitEntryPoint": true
-      },
-      "dependencies": {
-        "Microsoft.Azure.Storage.DataMovement": "0.5.0"
-      },
-      "frameworks": {
-        "netcoreapp1.1": {
-          "dependencies": {
-            "Microsoft.NETCore.App": {
-              "type": "platform",
-              "version": "1.1.0"
-            }
-          },
-          "imports": [
-            "dnxcore50",
-            "portable-net45+win8"
-          ]
-        }
-      }
-    }
+    <Project Sdk="Microsoft.NET.Sdk">
+
+        <PropertyGroup>
+            <OutputType>Exe</OutputType>
+            <TargetFramework>netcoreapp2.0</TargetFramework>
+        </PropertyGroup>
+        <ItemGroup>
+            <PackageReference Include="Microsoft.Azure.Storage.DataMovement" Version="0.6.2" />
+            </ItemGroup>
+        </Project>
 
 ## <a name="set-up-the-skeleton-of-your-application"></a>アプリケーションのスケルトンの設定
 最初に アプリケーションの "スケルトン" コードに設定します。 このコードにより、ストレージ アカウント名とアカウント キーを入力するように求められ、その資格情報を使用して `CloudStorageAccount` オブジェクトが作成されます。 このオブジェクトは、すべての転送シナリオでストレージ アカウントを操作するときに使用されます。 また、コードでは、実行する転送操作の種類を選択することも求められます。 
@@ -98,6 +83,7 @@ Microsoft Azure Storage Data Movement Library は、Azure Storage BLOB および
 ```csharp
 using System;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Diagnostics;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;

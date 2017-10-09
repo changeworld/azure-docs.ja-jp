@@ -3,7 +3,7 @@ title: "Azure Portal でのストレージ メトリックの有効化 | Microso
 description: "BLOB、Queue、Table、および File サービスに対するストレージ メトリックを有効にする方法"
 services: storage
 documentationcenter: 
-author: robinsh
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 0407adfc-2a41-4126-922d-b76e90b74563
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 02/14/2017
-ms.author: robinsh
+ms.author: tamram
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1525a2258dd6ab8e72e8607826523eca8121483c
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 8abb4f968c1fa84e03c8cc807826d3684713847a
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="enabling-azure-storage-metrics-and-viewing-metrics-data"></a>Azure のストレージ メトリックの有効化とメトリック データの表示
@@ -33,7 +33,7 @@ ms.lasthandoff: 08/22/2017
 [Azure Portal](https://portal.azure.com) でメトリックを有効にするには、次の手順に従います。
 
 1. ストレージ アカウントに移動します。
-1. **[メニュー]** ブレードで、**[診断]** を選択します。
+1. **[メニュー]** ウィンドウから **[診断]** を選択します。
 1. **[状態]** が **[オン]** に設定されていることを確認します。
 1. 監視するサービスのメトリックを選択します。
 1. リテンション ポリシーを指定して、メトリックとログ データを保持する期間を示します。
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/22/2017
 * ServiceType: 指定可能な値は、Blob、Queue、Table です。
 * MetricsLevel: 指定可能な値は None、Service、ServiceAndApi です。
 
-たとえば、次のコマンドは、既定のストレージ アカウントの BLOB サービスの分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。
+たとえば、次のコマンドは、既定のストレージ アカウントの Blob service の分単位メトリックを 5 日間に設定されたリテンション期間でオンにします。
 
 ```powershell
 Set-AzureStorageServiceMetricsProperty -MetricsType Minute -ServiceType Blob -MetricsLevel ServiceAndApi  -RetentionDays 5`
@@ -65,7 +65,7 @@ Get-AzureStorageServiceMetricsProperty -MetricsType Hour -ServiceType Blob
 Azure サブスクリプションを処理するように Azure PowerShell コマンドレットを構成する方法と、使用する既定のストレージ アカウントを選択する方法については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」をご覧ください。
 
 ## <a name="how-to-enable-storage-metrics-programmatically"></a>プログラムを利用してストレージ メトリックを有効にする方法
-次の C# スニペットは、.NET 用ストレージ クライアント ライブラリを使用して、BLOB サービスのメトリックとログ記録を有効にする方法を示しています。
+次の C# スニペットは、.NET 用ストレージ クライアント ライブラリを使用して、Blob service のメトリックとログ記録を有効にする方法を示しています。
 
 ```csharp
 //Parse the connection string for the storage account.
@@ -101,9 +101,9 @@ blobClient.SetServiceProperties(properties);
 ストレージ アカウントを監視するように Storage Analytics メトリックを構成すると、ストレージ アカウントのよく知られたテーブルのセットにメトリックが記録されます。 [Azure Portal](https://portal.azure.com) では、時間単位のメトリックを表示するようにグラフを構成できます。
 
 1. [Azure Portal](https://portal.azure.com) のストレージ アカウントに移動します。
-1. メトリックを表示するサービスの **[メニュー]** ブレードで、**[メトリック]** を選択します。
+1. メトリックを表示するサービスの **[メニュー]** ウィンドウで、**[メトリック]** を選択します。
 1. 構成するグラフで **[編集]** を選択します。
-1. **[グラフの編集]** ブレードで、**[時間の範囲]**、**[グラフの種類]**、およびグラフに表示するメトリックを選択します。
+1. **[グラフの編集]** ウィンドウで、**[時間の範囲]**、**[グラフの種類]**、およびグラフに表示するメトリックを選択します。
 1. **[OK]** を選択します。
 
 長期間ストレージのメトリックをダウンロードしたり、それらをローカルで分析したりする場合は、次のようにしてください。
@@ -112,7 +112,7 @@ blobClient.SetServiceProperties(properties);
 * テーブルの読み取りと格納を行うためのカスタム アプリケーションやスクリプトを記述します。
 
 多くのサード パーティ製ストレージ閲覧ツールは、これらのテーブルを認識し、テーブルを直接表示できます。
-利用できるツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。
+利用できるツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」を参照してください。
 
 > [!NOTE]
 > [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com/)のバージョン 0.8.0 以降では、分析メトリック テーブルの表示とダウンロードができます。
@@ -143,7 +143,7 @@ blobClient.SetServiceProperties(properties);
 | 20140522T1100 |user;QueryEntity |2014-05-22T11:01:16.7650250Z |1 |1 |538 |633 |100 |3 |3 |100 |
 | 20140522T1100 |user;UpdateEntity |2014-05-22T11:01:16.7650250Z |1 |1 |771 |217 |100 |9 |6 |100 |
 
-この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に保存され、アクセス タイプと要求タイプという 2 つの情報から構成されるタイプの情報を識別します。
+この例の分単位メトリック データでは、パーティション キーは分単位解決の時間を使用しています。 行キーは、行に格納されている情報の種類を識別します。 行キーは情報の 2 つの部分 (アクセスの種類と要求の種類) で構成されます。
 
 * アクセス タイプは user と system のいずれかになります。user はストレージ サービスに対するすべてのユーザー要求を意味し、system は Storage Analytics により行われる要求を意味します。
 * 要求タイプは、概要行となる all か、QueryEntity や UpdateEntity など特定の API のいずれかになります。
@@ -151,10 +151,10 @@ blobClient.SetServiceProperties(properties);
 上記のサンプル データは、1 つの分単位 (午前 11 時から始まる) に対するすべてのレコードを示します。つまり、QueryEntities 要求の数に QueryEntity 要求の数と UpdateEntity 要求の数を足すと 7 になり、これが user:All 行に表示される合計です。 同様に、((143.8 * 5) + 3 + 9)/7 を計算し、端末間の平均待機時間 104.4286 を user:All 行で導くことができます。
 
 ## <a name="metrics-alerts"></a>メトリック アラート
-ストレージ サービスの動作の重要な変更がストレージ メトリックによって自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することを検討してください。 ストレージ エクスプローラー ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 利用できるストレージ エクスプローラー ツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。 アラートの構成は、ストレージ アカウント メニュー ブレードの **[監視]** からアクセスできる **[アラート ルール]** で行うことができます。
+ストレージ サービスの動作の重要な変更がストレージ メトリックによって自動的に通知されるように、[Azure Portal](https://portal.azure.com) でアラートを設定することを検討してください。 ストレージ エクスプローラー ツールを使ってこのメトリック データを区切り形式でダウンロードすると、Microsoft Excel を使ってデータを分析できます。 利用できるストレージ エクスプローラー ツールの一覧については、「[Azure Storage クライアント ツール](storage-explorers.md)」をご覧ください。 アラートの構成は、ストレージ アカウント メニュー ウィンドウの **[監視]** からアクセスできる **[アラート ルール]** ウィンドウで行うことができます。
 
 > [!IMPORTANT]
-> ストレージ イベントが発生してから、対応する時間または分単位のメトリック データが記録されるまでに、遅延が生じる場合があります。 分単位のメトリックの場合は、数分間のデータが一度に書き込まれることがあります。 そのため、前の数分のトランザクションが現在の分のトランザクションに集計される可能性があります。 その場合、アラート サービスが構成されているアラート間隔のすべての利用可能なメトリック データを取得できず、アラートが予期せず発生する場合があります。
+> ストレージ イベントが発生してから、対応する時間または分単位のメトリック データが記録されるまでに、遅延が生じる場合があります。 分単位のメトリックを記録する場合は、数分間のデータが一度に書き込まれることがあります。 そのため、前の数分のトランザクションが現在の分のトランザクションに集計される可能性があります。 その場合、アラート サービスが構成されているアラート間隔のすべての利用可能なメトリック データを取得できず、アラートが予期せず発生する場合があります。
 >
 
 ## <a name="accessing-metrics-data-programmatically"></a>メトリック データにプログラミングでアクセスする

@@ -14,13 +14,13 @@ ms.custom: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 03/17/2017
+ms.date: 09/26/2017
 ms.author: mikeray
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 439353b7d22fb7376049ea8e1433a8d5840d3e0f
+ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
+ms.openlocfilehash: 1bbfd7cc63d534d7f9c360ad4afd05bd4e225725
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -95,7 +95,7 @@ S2D では、コンバージド型とハイパー コンバージド型の 2 種
 
    - Azure Portal で **[+]** をクリックし、Azure Marketplace を開きます。 "**可用性セット**" を検索します。
    - **[可用性セット]** をクリックします。
-   - **[作成]**をクリックします。
+   - **Create** をクリックしてください。
    - **[可用性セットの作成]** ブレードで、次の値を設定します。
       - **[名前]**: 可用性セットの名前。
       - **[サブスクリプション]**: Azure のサブスクリプション。
@@ -345,7 +345,7 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 1. **[+ 追加]** をクリックします。 Marketplace で "**ロード バランサー**" を検索します。 **[ロード バランサー]** をクリックします。
 
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 1. 次の項目を入力して、ロード バランサーを構成します。
 
@@ -427,19 +427,37 @@ Azure 仮想マシンでは、クラスターは、一度に 1 つのクラス�
 
 PowerShell でクラスターのプローブ ポート パラメーターを設定します。
 
-クラスターのプローブ ポート パラメーターを設定するには、お使いの環境から次のスクリプトで変数を更新します。
+クラスターのプローブ ポート パラメーターを設定するには、使用環境の値を使用して、次のスクリプトで変数を更新します。 スクリプトから山かっこの `<>` を削除します。 
 
-  ```PowerShell
-   $ClusterNetworkName = "<Cluster Network Name>" # the cluster network name (Use Get-ClusterNetwork on Windows Server 2012 of higher to find the name).
-   $IPResourceName = "IP Address Resource Name" # the IP Address cluster resource name.
-   $ILBIP = "<10.0.0.x>" # the IP Address of the Internal Load Balancer (ILB). This is the static IP address for the load balancer you configured in the Azure portal.
-   [int]$ProbePort = <59999>
+   ```PowerShell
+   $ClusterNetworkName = "<Cluster Network Name>"
+   $IPResourceName = "<SQL Server FCI IP Address Resource Name>" 
+   $ILBIP = "<n.n.n.n>" 
+   [int]$ProbePort = <nnnnn>
 
    Import-Module FailoverClusters
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
 
+前のスクリプトで、環境の値を設定します。 次の一覧では、値について説明します。
+
+   - `<Cluster Network Name>`: ネットワークの Windows Server フェールオーバー クラスターの名前。 **[フェールオーバー クラスター マネージャー]** > **[ネットワーク]** で、ネットワークを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
+
+   - `<SQL Server FCI IP Address Resource Name>`: SQL Server FCI IP アドレス リソースの名前。 **[フェールオーバー クラスター マネージャー]** > **[役割]** で、SQL Server FCI ロールの **[サーバー名]** の下にある IP アドレス リソースを右クリックして **[プロパティ]** をクリックします。 正しい値は **[全般]** タブの **[名前]** にあります。 
+
+   - `<ILBIP>`: ILB の IP アドレス。 このアドレスは、ILB のフロント エンド アドレスとして Azure Portal で構成されます。 これは、SQL Server FCI の IP アドレスでもあります。 **[フェールオーバー クラスター マネージャー]** の `<SQL Server FCI IP Address Resource Name>` がある同じプロパティ ページで見つけることができます。  
+
+   - `<nnnnn>`: ロード バランサーの正常性プローブで構成したプローブ ポートです。 未使用の TCP ポートが有効です。 
+
+>[!IMPORTANT]
+>クラスター パラメーターのサブネット マスクは、TCP IP ブロードキャスト アドレス (`255.255.255.255`) である必要があります。
+
+クラスターのプローブを設定すると、PowerShell にすべてのクラスター パラメーターが表示されます。 次のスクリプトを実行します。
+
+   ```PowerShell
+   Get-ClusterResource $IPResourceName | Get-ClusterParameter 
+  ```
 
 ## <a name="step-7-test-fci-failover"></a>手順 7. FCI フェールオーバーをテストする
 

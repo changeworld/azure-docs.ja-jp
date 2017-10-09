@@ -1,5 +1,5 @@
 ---
-title: "OMS Log Analytics でのログ検索 | Microsoft Docs"
+title: "Azure Log Analytics でのログ検索 | Microsoft Docs"
 description: "Log Analytics からデータを取得するにはログ検索が必要です。  この記事では、Log Analytics で新しいログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します。"
 services: log-analytics
 documentationcenter: 
@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/26/2017
 ms.author: bwren
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 34f4af31773097eafe2613eb7f3400655c387a84
+ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
+ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Log Analytics でのログ検索について
@@ -33,9 +33,9 @@ Log Analytics からデータを取得するにはログ検索が必要です。
 
 Log Analytics のログ検索は、次に示すさまざまな方法で使用します。
 
-- **ポータル。** [ログ検索ポータル](log-analytics-log-search-log-search-portal.md)または[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)を使用して、リポジトリで対話式のデータ分析を実行できます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  作成するクエリのほとんどがポータルのいずれかで開始され、期待どおりに動作することが確認された後に、コピーされます。
+- **ポータル。** Azure Portal または[高度な分析ポータル](https://go.microsoft.com/fwlink/?linkid=856587)を使用して、リポジトリで対話式のデータ分析を実行できます。  これにより、クエリを編集し、さまざまな形式および視覚化で結果を分析することができます。  作成するクエリのほとんどがポータルのいずれかで開始され、期待どおりに動作することが確認された後に、コピーされます。
 - **警告ルール。** [警告ルール](log-analytics-alerts.md)は、ワークスペースのデータの問題を事前に特定します。  各警告ルールは、定期的に自動実行されるログ検索に基づいてます。  結果を検査することで、警告を作成するかどうかが決まります。
-- **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](log-analytics-view-designer.md)を使用します。  ログ検索が提供するのは、各ビューの[タイル](log-analytics-view-designer-tiles.md)および[視覚化パーツ](log-analytics-view-designer-parts.md)で使用するデータです。  視覚化パーツからログ検索ポータルにドリルダウンすると、データをさらに詳しく分析できます。
+- **ビュー。**  ユーザー ダッシュボードに含めるデータの視覚化を作成するには、[ビュー デザイナー](log-analytics-view-designer.md)を使用します。  ログ検索が提供するのは、各ビューの[タイル](log-analytics-view-designer-tiles.md)および[視覚化パーツ](log-analytics-view-designer-parts.md)で使用するデータです。  視覚化パーツからログ検索ページにドリルダウンすると、データをさらに詳しく分析できます。
 - **エクスポート。**  Log Analytics ワークスペースからExcel または [Power BI](log-analytics-powerbi.md) にデータをエクスポートする場合は、ログ検索を作成して、エクスポートするデータを定義します。
 - **PowerShell。** [Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/get-azurermoperationalinsightssearchresults?view=azurermps-4.0.0) を使用する Azure Automation Runbook またはコマンド ラインから PowerShell スクリプトを実行して、Log Analytics からデータを取得できます。  このコマンドレットでは、クエリによって、取得するデータを決定する必要があります。
 - **Log Analytics API。**  [Log Analytics のログ検索 API](log-analytics-log-search-api.md) を使用して、任意の REST API クライアントでワークスペースからデータを取得することができます。  API 要求には Log Analytics に対して実行するクエリが含まれており、これにより取得するデータを決定します。
@@ -43,7 +43,7 @@ Log Analytics のログ検索は、次に示すさまざまな方法で使用し
 ![ログ検索](media/log-analytics-log-search-new/log-search-overview.png)
 
 ## <a name="how-log-analytics-data-is-organized"></a>Log Analytics データの編成方法
-クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 [データ ソース](log-analytics-data-sources.md)および[ソリューション](../operations-management-suite/operations-management-suite-solutions.md)のデータはそれぞれ、Log Analytics ワークスペースの専用テーブルに格納されています。  データ ソースとソリューションのドキュメントにはそれぞれ、作成されたデータ型の名前と、各プロパティの説明が含まれています。     多くの場合、クエリに必要なデータは 1 つのテーブルだけに含まれますが、クエリの中には、さまざまなオプションを使用して、複数のテーブルのデータを含めるものもあります。
+クエリを作成する場合は、最初に、どのテーブルに目的のデータが含まれるかを確認します。 [データ ソース](log-analytics-data-sources.md)および[ソリューション](../operations-management-suite/operations-management-suite-solutions.md)のデータはそれぞれ、Log Analytics ワークスペースの専用テーブルに格納されています。  データ ソースとソリューションのドキュメントにはそれぞれ、作成されたデータ型の名前と、各プロパティの説明が含まれています。  多くの場合、クエリに必要なデータは 1 つのテーブルだけに含まれますが、クエリの中には、さまざまなオプションを使用して、複数のテーブルのデータを含めるものもあります。
 
 ![テーブル](media/log-analytics-log-search-new/queries-tables.png)
 
@@ -90,5 +90,5 @@ Log Analytics のログ検索の中核をなすのは[広範なクエリ言語](
 ## <a name="next-steps"></a>次のステップ
 
 - [ログ検索の作成および編集に使用するポータル](log-analytics-log-search-portals.md)について学習します。
-- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](https://go.microsoft.com/fwlink/?linkid=856078)を確認します。
+- 新しいクエリ言語を使用した[クエリ記述のチュートリアル](log-analytics-tutorial-viewdata.md)を確認します。
 

@@ -13,19 +13,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/17/2017
+ms.date: 09/26/2017
 ms.author: kumud
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 17fee798661b7db4f9933684fceefbfed51409cd
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: 7256548b988812c64ca9a9f8a84fec377646635d
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
 # <a name="how-to-configure-high-availability-ports-for-internal-load-balancer"></a>内部 Load Balancer 用の高可用性ポートを構成する方法
 
 この記事では、内部 Load Balancer に高可用性 (HA) ポートをデプロイする例について説明します。 ネットワーク仮想アプライアンス固有の構成については、対応するプロバイダーの Web サイトを参照してください。
+
+>[!NOTE]
+> 高可用性ポート機能は現在プレビュー中です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。
 
 図 1 は、この記事で説明するデプロイ例の次の構成を示したものです。
 - NVA は、HA ポート構成の背後にある内部 Load Balancer のバックエンド プールにデプロイされます。 
@@ -37,6 +40,22 @@ ms.lasthandoff: 09/25/2017
 ![HA ポートのデプロイ例](./media/load-balancer-configure-ha-ports/haports.png)
 
 図 1 - 高可用性ポートを使用して内部 Load Balancer の背後にデプロイされているネットワーク仮想アプライアンス 
+
+## <a name="preview-sign-up"></a>プレビューのサインアップ
+
+Load Balancer Standard SKU の HA ポート機能のプレビューに参加するには、PowerShell または Azure CLI 2.0 を使用してサブスクリプションを登録します。
+
+- PowerShell を使用したサインアップ
+
+   ```powershell
+   Register-AzureRmProviderFeature -FeatureName AllowILBAllPortsRule -ProviderNamespace Microsoft.Network
+    ```
+
+- Azure CLI 2.0 を使用したサインアップ
+
+    ```cli
+  az feature register --name AllowILBAllPortsRule --namespace Microsoft.Network  
+    ```
 
 ## <a name="configuring-ha-ports"></a>HA ポートを構成する
 

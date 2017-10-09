@@ -1,6 +1,6 @@
 ---
 title: "Azure Stack でのカスタム Marketplace アイテムの発行 (クラウド オペレーター) | Microsoft Docs"
-description: "クラウド オペレーターとして、Azure Stack でカスタム Marketplace アイテムを発行する方法について説明します。"
+description: "Azure Stack オペレーターとして、Azure Stack でカスタム Marketplace アイテムを発行する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -15,16 +15,19 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: be61e746d97fbce166f44262fcc33e2f7118fd82
+ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
+ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/27/2017
 
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
 Marketplace は、ネットワーク、仮想マシン、ストレージなどの Azure Stack 向けにカスタマイズされたサービス、アプリケーション、リソースのコレクションです。 ユーザーはここで、新しいリソースを作成して、新しいアプリケーションをデプロイします。 ユーザーが使用する商品を参照し、選択できるショッピング カタログと考えてください。 ユーザーが Marketplace アイテムを使用するには、アイテムへのアクセスが許可されるサービスにサブスクライブする必要があります。
 
-クラウド オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 これにより、すべてのユーザーに対してそれらが表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
+Azure Stack オペレーターとして、Marketplace に追加 (公開) するアイテムを決定します。 データベース、App Services などを公開できます。 これにより、すべてのユーザーに対してそれらが表示されます。 作成したカスタム アイテムを公開できます。 拡大を続ける [Azure Marketplace アイテムの一覧](azure-stack-marketplace-azure-items.md)からアイテムを公開することもできます。 Marketplace にアイテムを公開すると、5 分以内にユーザーがそれらを表示できます。
 
 Marketplace を開くには、 **[新規]**をクリックします。
 
