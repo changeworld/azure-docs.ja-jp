@@ -46,7 +46,7 @@ ms.lasthandoff: 09/25/2017
 
 ![ワークスペースの作成](./media/customize-hadoop-cluster/customize-cluster-img3.png)
 
-構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。 [Hive/Oozie メタストアの入力] は選択**しないでください**。** 矢印をクリックして、次の構成ページに進みます。 
+構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。 *[Hive/Oozie メタストアの入力]* は選択**しないでください**。 矢印をクリックして、次の構成ページに進みます。 
 
 ![ワークスペースの作成](./media/customize-hadoop-cluster/customize-cluster-img4.png)
 
