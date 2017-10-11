@@ -49,7 +49,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
 サービス マップの統合を構成するには、次の操作を行います。
 
-1. 構成ウィザードを開くには、**[サービス マップの概要]** ウィンドウの** [ワークスペースの追加]** をクリックします。  
+1. 構成ウィザードを開くには、 **[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
 
     ![[サービス マップの概要] ウィンドウ](media/oms-service-map/scom-configuration.png)
 
@@ -75,7 +75,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![Operations Manager 構成グループ](media/oms-service-map/scom-config-group.png)
 
-6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
+6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、 **[ワークスペースの追加]** をクリックします。
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-pool.png)
 

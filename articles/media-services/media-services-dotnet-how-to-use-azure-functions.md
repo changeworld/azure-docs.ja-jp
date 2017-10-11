@@ -330,7 +330,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ##<a name="test-your-function"></a>関数をテストする
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input ** コンテナーに MP4 ファイルをアップロードする必要があります。  
+関数をテストするには、接続文字列で指定したストレージ アカウントの **input** コンテナーに MP4 ファイルをアップロードする必要があります。  
 
 1. **StorageConnection** 環境変数で指定したストレージ アカウントを選択します。
 2. **[BLOB]** をクリックします。
