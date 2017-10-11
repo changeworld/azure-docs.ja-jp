@@ -84,7 +84,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 
 | パラメーター |  | Description |
 | --- | --- | --- |
-| テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
+| tenant |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値はテナント ID です。たとえば、`8eaef023-2b34-4da1-9baa-8bc8c9d6a490`、`contoso.onmicrosoft.com` または `common` (テナント独立のトークンの場合) です |
 | client_id |必須 |Azure AD への登録時にアプリに割り当てられたアプリケーション ID。 これは、Azure Portal で確認できます。 **[Azure Active Directory]**、**[アプリの登録]** の順にクリックし、アプリケーションを選び、アプリケーション ページでアプリケーション ID を特定します。 |
 | response_type |必須 |OpenID Connect サインインでは、 `id_token` を指定する必要があります。  `code` などの他の response_types が含まれていてもかまいません。 |
 | scope |必須 |スコープのスペース区切りリスト。  OpenID Connect では、スコープとして `openid` を指定する必要があります。このスコープは、承認 UI で "サインイン" アクセス許可に変換されます。  同意を求めるこの要求には他のスコープが含まれていてもかまいません。 |
