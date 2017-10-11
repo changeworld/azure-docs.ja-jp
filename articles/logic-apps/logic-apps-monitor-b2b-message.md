@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; padmavc
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: f717dae9a70a96944b623f22b90cf8c5a943f382
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="monitor-and-set-up-diagnostics-logging-for-b2b-communication-in-integration-accounts"></a>統合アカウントでの B2B 通信の監視と診断ログの設定を行う
 
 統合アカウントを通して 2 つの実行中のビジネス プロセスまたはアプリケーション間の B2B 通信を設定すると、これらのエンティティは相互にメッセージを交換できるようになります。 この通信が予想通りに動作していることを確認するために、[Azure Log Analytics](../log-analytics/log-analytics-overview.md) サービスを使用して、AS2、X12、および EDIFACT メッセージの監視と統合アカウントの診断ログを設定できます。 [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md) に含まれるこのサービスは、クラウド環境とオンプレミス環境を監視して、その可用性とパフォーマンスの管理を支援することに加え、深いデバッグを行うためのランタイムの詳細とイベントの収集も実行します。 [診断データを他のサービスで使用する](#extend-diagnostic-data)こともできます (Azure Storage や Azure Event Hubs などで使用できます)。
@@ -137,5 +135,4 @@ Azure では、次の種類の追跡スキーマをサポートしています�
 
 * [OMS で B2B メッセージを追跡する](../logic-apps/logic-apps-track-b2b-messages-omsportal.md "OMS で B2B メッセージを追跡する")
 * [Enterprise Integration Pack についての詳細情報](../logic-apps/logic-apps-enterprise-integration-overview.md "Enterprise Integration Pack についての詳細情報")
-
 

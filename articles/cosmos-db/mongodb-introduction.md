@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: anhoh
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 4dbf91a3c1d6a287d7337647f9e059566c7ddbe5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-api-for-mongodb"></a>Azure Cosmos DB の概要: MongoDB 用 API
 
@@ -70,4 +69,3 @@ Azure Cosmos DB の MongoDB API に関する情報は、Azure Cosmos DB ドキ�
 * [Robomongo](mongodb-robomongo.md) を使用して、MongoDB 用 API アカウントに接続します。
 * [GetLastRequestStatistics コマンドと Azure Portal のメトリック](request-units.md#GetLastRequestStatistics)を使用して、操作で使用している RU の数を確認する方法について学習します。
 * [グローバル分散アプリの読み取り設定を構成する](../cosmos-db/tutorial-global-distribution-mongodb.md)方法について学習します。
-

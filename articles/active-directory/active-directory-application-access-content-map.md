@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 7cd25954c83abe3eb1d3d1b6ad076cd46ff9099e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 32d1c26a31f78bb58e9e1d5c47d9810c2ae881cd
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-managing-application-access-and-permissions"></a>アプリケーション アクセスとアクセス許可の管理に関する問題
 
 
@@ -37,4 +35,3 @@ ms.lasthandoff: 04/18/2017
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
   * [ユーザーがどのようにアプリケーションに割り当てられたかがわからない](https://docs.microsoft.com/azure/active-directory/application-access-unexpected-user-assignment/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [アプリケーション リストに表示される予期しないアプリケーションの詳細情報を確認したい](https://docs.microsoft.com/azure/active-directory/application-access-unexpected-application/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

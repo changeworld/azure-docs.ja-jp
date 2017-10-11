@@ -15,14 +15,12 @@ ms.tgt_pltfrm:
 ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
 ms.openlocfilehash: 51c0b98727e148671cfd7ab2b31ffd1c705d8a4e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="peer-two-virtual-networks"></a>2 つの仮想ネットワークのピアリング
 
 このスクリプトは、Azure ネットワークを使用して同一リージョンに 2 つの仮想ネットワークを作成して接続します。 スクリプトを実行した後で、2 つの仮想ネットワーク間のピアリングを作成します。
@@ -58,4 +56,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](https://docs.microsoft.com/powershell/azure/overview)を参照してください。
 
-その他のネットワーク PowerShell のサンプル スクリプトは、[Azure のネットワーク概要のドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)に関するページで確認できます。
+その他のネットワーク PowerShell のサンプル スクリプトは、[Azure ネットワークの概要ドキュメント](../powershell-samples.md?toc=%2fazure%2fnetworking%2ftoc.json)で確認できます。

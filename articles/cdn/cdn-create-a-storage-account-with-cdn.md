@@ -14,29 +14,29 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure ストレージ アカウントと Azure CDN との統合
 CDN を使用して、Azure ストレージのコンテンツをキャッシュできます。 CDN は、米国、ヨーロッパ、アジア、オーストラリア、および南米にある物理ノードで、コンピューティング インスタンスの BLOB と静的コンテンツをキャッシュすることで、高帯域幅コンテンツを配信するグローバル ソリューションを開発者に提供します。
 
 ## <a name="step-1-create-a-storage-account"></a>ステップ 1: ストレージ アカウントを作成する
-Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使用すると、Azure のストレージ サービスにアクセスできます。 ストレージ アカウントは、BLOB サービス、Queue サービス、および Table サービスという Azure の各ストレージ サービス コンポーネントへのアクセスに使用する最高レベルの名前空間です。 詳しくは、「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
+Azure サブスクリプションの新しいストレージ アカウントを作成するには、次の手順に従います。 ストレージ アカウントを使用すると、Azure のストレージ サービスにアクセスできます。 ストレージ アカウントは、Blob service、Queue サービス、および Table service という Azure の各ストレージ サービス コンポーネントへのアクセスに使用する最高レベルの名前空間です。 詳しくは、「 [Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 
 ストレージ アカウントを作成するには、関連付けられているサブスクリプションのサービス管理者または共同管理者である必要があります。
 
 > [!NOTE]
-> Azure ポータルや Powershell など、ストレージ アカウントの作成に使用できる方法はいくつかあります。  このチュートリアルでは Azure ポータルを使用します。  
+> Azure Portal や Powershell など、ストレージ アカウントの作成に使用できる方法はいくつかあります。  このチュートリアルでは Azure Portal を使用します。  
 > 
 > 
 
 **Azure サブスクリプションのストレージ アカウントを作成するには**
 
-1. [Azure ポータル](https://portal.azure.com)にサインインします。
+1. 
+            [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左上隅にある **[新規]**を選択します。 **[新規]** ダイアログ ボックスで、**[データ + ストレージ]** を選択し、**[ストレージ アカウント]** をクリックします。
     
     **[ストレージ アカウントを作成]** ブレードが表示されます。   
@@ -56,7 +56,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 5. ストレージ アカウントを使用する **サブスクリプション** を選択します。
 6. **リソース グループ**を選択または作成します。  リソース グループの詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md#resource-groups)」を参照してください。
 7. ストレージ アカウントの場所を選択します。
-8. **[作成]**をクリックします。 ストレージ アカウントを作成するプロセスは、完了までに数分かかる場合があります。
+8. **Create** をクリックしてください。 ストレージ アカウントを作成するプロセスは、完了までに数分かかる場合があります。
 
 ## <a name="step-2-enable-cdn-for-the-storage-account"></a>手順 2: ストレージ アカウントの CDN を有効にする
 
@@ -122,4 +122,3 @@ CDN に既にキャッシュされているオブジェクトは、オブジェ�
 [cdn-enable-navigation]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-creation.png
 [cdn-storage-new-endpoint]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-new-endpoint-list.png
 [cdn-storage-cdn-configuration]: ./media/cdn-create-a-storage-account-with-cdn/cdn-storage-endpoint-configuration.png 
-

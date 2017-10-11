@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e72275ffc91559a30720a2b125fbd3d7703484f0
-ms.openlocfilehash: 52b65b24867906d0c574a323904d980e126bcbd2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/05/2017
-
+ms.openlocfilehash: cd53e8be32d1e98aaf9f72177895871dba69df86
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="get-started-with-conditional-access-in-azure-active-directory"></a>Azure Active Directory での条件付きアクセスの基本
 
@@ -160,5 +159,4 @@ ms.lasthandoff: 05/05/2017
 ## <a name="next-steps"></a>次のステップ
 
 条件付きアクセスの詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access-azure-portal.md)に関する記事を参照してください。
-
 

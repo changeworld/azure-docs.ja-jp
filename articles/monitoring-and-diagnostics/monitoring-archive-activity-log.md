@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/09/2016
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0e3a5b84f57eac96249430fa1c2c4cc076c2926a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="archive-the-azure-activity-log"></a>Azure アクティビティ ログのアーカイブ
 この記事では、Azure Portal、PowerShell コマンドレット、またはクロス プラットフォーム CLI を使用して、ストレージ アカウントで [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)をアーカイブする方法について説明します。 このオプションは、監査、静的分析、またはバックアップに対して (保持ポリシーを完全に制御して) 90 日よりも長いアクティビティ ログを保持する場合に便利です。 90 日以下でイベントを保持する必要があるだけの場合は、ストレージ アカウントにアーカイブを設定する必要はありません。アーカイブを有効にしなければ、アクティビティ ログのイベントは Azure プラットフォームに90 日間保持されるためです。
@@ -168,5 +167,4 @@ PT1H.json ファイル内では、各イベントは、この形式に従って 
 * [分析のための BLOB のダウンロード](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)
 * [アクティビティ ログの Event Hubs へのストリーム](monitoring-stream-activity-logs-event-hubs.md)
 * [詳細については、アクティビティ ログに関するセクションをご覧ください](monitoring-overview-activity-logs.md)
-
 

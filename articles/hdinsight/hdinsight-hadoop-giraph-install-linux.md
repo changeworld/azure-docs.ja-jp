@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 658616d1979e617a7d80a989b8e80246a9091fdf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 6e2f6983e00f874420f7f0907dbc68185f0af713
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
@@ -180,4 +179,3 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 * [HDInsight クラスターに Hue をインストールして使用する](hdinsight-hadoop-hue-linux.md)。
 
 * [HDInsight クラスターに Solr をインストールする](hdinsight-hadoop-solr-install-linux.md)。
-

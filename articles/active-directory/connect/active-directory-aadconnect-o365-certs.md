@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9364a1449ba17568c82832bc1e97d40febbb30ab
-ms.openlocfilehash: 51eafa16bd918a065f896ba89dec54d2340b5c69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
+ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>Overview
@@ -165,4 +164,3 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成した場合は、トークン署名証明書に関して何らかの対処が必要かどうかを Azure AD Connect を使用して検出できます。 証明書を更新する必要がある場合は、Azure AD Connect を使用して更新できます。
 
 詳細については、「 [信頼の修復](active-directory-aadconnect-federation-management.md)」を参照してください。
-

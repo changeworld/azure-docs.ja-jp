@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 361e16262e528c7dea1bab4b9d945a28af8be399
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 インポート ジョブ用に 1 つ以上のハード ドライブを準備するには、次の手順を実行します。
 
@@ -44,7 +42,7 @@ ms.lasthandoff: 08/22/2017
 >  現時点で、Microsoft Azure Import/Export ツールには次の制限事項があります: ハード ドライブに収容できるよりも多くのデータがディレクトリに含まれている場合は、ディレクトリをより小さなディレクトリに分割する必要があります。 たとえば、ディレクトリに 2.5 TB のデータが含まれているのに対し、ハード ドライブの容量が 2 TB しかない場合には、2.5 TB のディレクトリをより小さなディレクトリに分割する必要があります。 この制限は、今後のバージョンで解決される予定です。
 
 ## <a name="identify-the-destination-locations-in-the-blob-service"></a>BLOB サービス内の宛先の場所を特定する
- インポートするディレクトリまたはファイルごとに、Azure BLOB service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを Azure Import/Export ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
+ インポートするディレクトリまたはファイルごとに、Azure Blob service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを Azure Import/Export ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
 
  次の表は、BLOB ターゲットの例を示しています。
 
@@ -184,4 +182,3 @@ WAImportExport.exe PrepImport /j:<JournalFile> /id:<SessionId> /AbortSession
 * [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-

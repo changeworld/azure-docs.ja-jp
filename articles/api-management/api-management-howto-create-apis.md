@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 30ec6f45da114b6c7bc081f8a2df46f037de61fd
-ms.openlocfilehash: 496aa7754b35877900da020283c8b7efe0e04cef
-
-
+ms.openlocfilehash: ab08256fbc3caca05bf23a12016ad2acf4fc7412
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-create-apis-in-azure-api-management"></a>Azure API Management で API を作成する方法
 API Management における API は、クライアント アプリケーションから呼び出すことのできる一連の操作を表します。 パブリッシャー ポータルで新しい API を作成した後、目的の操作を追加します。 操作を追加し、API を成果物に追加すると、API を発行できます。 API が発行されると、開発者はそれをサブスクライブして使用できます。
@@ -94,9 +94,3 @@ API を作成し、設定を構成した後は、操作を API に追加しま�
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [How to secure back-end services using client certificate authentication in Azure API Management]: api-management-howto-mutual-certificates.md
 [How to authorize developer accounts using OAuth 2.0 in Azure API Management]: api-management-howto-oauth2.md
-
-
-
-<!--HONumber=Dec16_HO3-->
-
-

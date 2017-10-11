@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 9d77b9329116afcf2fdde48d672c95020738138c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 この記事は、導入した Azure Multi-factor Authentication を管理する際に役立ちます。  ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。  ただし、Azure Multi-factor Authentication のすべてのバージョンですべての機能を使用できるわけではありません。
@@ -176,7 +175,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 <center>![クラウド](./media/multi-factor-authentication-whats-next/cache.png)</center>
 
 ## <a name="trusted-ips"></a>信頼できる IP
-信頼できる IP は、管理されたテナントまたはフェデレーション テナントの管理者が、2 段階認証をバイパスするために使用できる Azure MFA の機能です。 これは、会社のローカル イントラネットからサインインするユーザーに対して使用されます。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用でき、管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
+信頼できる IP は、管理されたテナントまたはフェデレーション テナントの管理者が、2 段階認証をバイパスするために使用できる Azure MFA の機能です。 これは、会社のローカル イントラネットからサインインするユーザーに対して使用されます。 この機能は、Azure Multi-Factor Authentication の完全なバージョンで使用で、管理者を対象とする無料バージョンでは使用できません。 Azure Multi-Factor Authentication の完全なバージョンを入手する方法の詳細については、[Azure Multi-Factor Authentication](multi-factor-authentication.md) に関するページを参照してください。
 
 | Azure AD テナントの種類 | 使用可能な信頼できる IP オプション |
 |:--- |:--- |
@@ -200,7 +199,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 2. この記事の始めにある指示に従って [MFA サービス設定] ページに移動します。
 3. [サービス設定] ページの [信頼できる IP] には、次の 2 つのオプションがあります。
    
-   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンにします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。
+   * **イントラネット内から送信されたフェデレーション ユーザーからのリクエストの場合**: このチェック ボックスをオンします。 企業ネットワークからサインインしているすべてのフェデレーション ユーザーは、AD FS によって発行される要求を使用して、2 段階認証をバイパスします。
    * **特定範囲の IP から送信されたリクエストの場合** - 用意されているボックスに、IP アドレスを CIDR 表記で入力します。 例: 範囲 xxx.xxx.xxx.1 から xxx.xxx.xxx.254 の場合は xxx.xxx.xxx.0/24、単一の IP アドレスの場合は xxx.xxx.xxx.xxx/32。 最大で 50 の IP アドレス範囲を入力できます。 これらの IP アドレスからサインインしているユーザーは、2 段階認証をバイパスします。
 4. **[保存]**をクリックします。
 5. 更新が適用されたら、**[閉じる]** をクリックします。
@@ -213,7 +212,7 @@ Office 2010 以前や Apple Mail などの一部のアプリは、2 段階認証
 > [!NOTE]
 > Office 2013 クライアントのための最新の認証
 > 
-> Office 2013 クライアント (Outlook を含む) 以降は、最新の認証プロトコルをサポートしており、2 段階認証を有効にすることができます。 有効にした場合、これらのクライアントではアプリ パスワードは必要ありません。  詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 先進認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
+> Office 2013 クライアント (Outlook を含む) 以降は、最新の認証プロトコルをサポートしており、2 段階認証を有効にすることができます。 有効にした場合、これらのクライアントではアプリ パスワードは必要ありません。  詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
 ### <a name="important-things-to-know-about-app-passwords"></a>アプリ パスワードについて理解しておくべきこと
 アプリ パスワードについて理解しておくべき重要事項を以下に示します。
@@ -319,4 +318,3 @@ Multi-Factor Authentication の記憶機能は、ブラウザーでユーザー�
    ![検証オプション](./media/multi-factor-authentication-whats-next/authmethods.png)
 4. **[保存]**をクリックします。
 5. **[閉じる]**をクリックします。
-

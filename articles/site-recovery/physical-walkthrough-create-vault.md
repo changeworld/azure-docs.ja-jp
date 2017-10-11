@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
 ms.openlocfilehash: deb5ad0495edc969b374795eeb2698326dd4ff4d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="step-6-set-up-a-vault-for-physical-server-replication-to-azure"></a>手順 6: Azure に物理サーバーをレプリケートするためのコンテナーを設定する
 
@@ -49,4 +47,3 @@ ms.lasthandoff: 06/29/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 7: ソースとターゲットを設定する](physical-walkthrough-source-target.md)」に進みます。
-

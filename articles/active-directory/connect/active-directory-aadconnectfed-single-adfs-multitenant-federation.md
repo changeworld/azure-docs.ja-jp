@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
-ms.openlocfilehash: 22f2bcfdd8c3978a6924c8c8cdea2744001000fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
-
+ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
 複数のフォレスト間に双方向の信頼関係があれば、単一の高可用性 AD FS ファームで、それらのフォレストを認証連携させることができます。 その複数のフォレストに、同じ Azure Active Directory との対応関係があっても、なくてもかまいません。 この記事では、異なる Azure AD に対して同期された複数のフォレストと単一の AD FS デプロイとの間にフェデレーションを構成する方法について説明しています。
@@ -66,4 +64,3 @@ fabrikam.com の管理対象ドメインをフェデレーション ドメイン
 
 ## <a name="next-steps"></a>次のステップ
 [Active Directory を Azure Active Directory と接続する](active-directory-aadconnect.md)
-

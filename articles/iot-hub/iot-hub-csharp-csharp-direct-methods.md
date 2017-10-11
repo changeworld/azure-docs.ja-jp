@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/18/2017
 ms.author: dkshir
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 9ce1fbebb6417c10618aa182e3c1d9ddf8132fb6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="use-direct-methods-netnet"></a>ダイレクト メソッドを使用する (.NET/.NET)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
@@ -198,4 +197,3 @@ IoT ソリューションの拡張と複数のデバイスでのメソッドの�
 [lnk-tutorial-jobs]: iot-hub-node-node-schedule-jobs.md
 
 [IoT Hub の使用]: iot-hub-node-node-getstarted.md
-

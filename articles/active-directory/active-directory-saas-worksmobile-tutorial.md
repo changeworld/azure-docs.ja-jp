@@ -1,4 +1,4 @@
-﻿---
+---
 title: "チュートリアル: Azure Active Directory と LINE WORKS の統合 | Microsoft Docs"
 description: "Azure Active Directory と LINE WORKS の間でシングル サインオンを構成する方法について説明します。"
 services: active-directory
@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 31ecec607c78da2253fcf16b3638cc716ba3ab89
 ms.openlocfilehash: 139a1968a59424eae278de3e7fa227ad340a1eb8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-works-mobile"></a>チュートリアル: Azure Active Directory と LINE WORKS の統合
 
@@ -173,7 +171,7 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-works-mobile-test-user"></a>WORKS MOBILE のテスト ユーザーの作成
 
@@ -236,5 +234,4 @@ WORKS MOBILE で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-worksmobile-tutorial/tutorial_general_203.png
-
 

@@ -17,11 +17,10 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: 1f9a10e3c3da2b3083300df52d132f2d117c8fce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: 3ec2d280188d7cc2eb0b3926cc963b89531b96e5
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

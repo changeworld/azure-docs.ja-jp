@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
 Azure CLI は、コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 この記事では、Azure CLI を使用して Azure Marketplace イメージから Oracle Database 12c データベースをデプロイする方法を説明します。 さらに、手順に従って Azure 仮想マシン (VM) に Data Guard をインストールして構成する方法を説明します。
@@ -692,4 +690,3 @@ az group delete --name myResourceGroup
 [チュートリアル: 可用性が高い仮想マシンを作成する](../../linux/create-cli-complete.md)
 
 [VM デプロイ Azure CLI サンプルを探索する](../../linux/cli-samples.md)
-

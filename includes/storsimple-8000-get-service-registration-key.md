@@ -2,17 +2,17 @@
 
 #### <a name="to-get-the-storsimple-service-registration-key"></a>StorSimple サービス登録キーを取得するには
 
-1. **[StorSimple デバイス マネージャー]** ブレードで、作成したサービスをクリックします。 右側に新しいブレードが表示されます。
+1. **StorSimple デバイス マネージャー**ブレードで、作成したサービス をクリックします。 右側に新しいブレードが開きます。
    
-     ![[StorSimple デバイス マネージャー] ブレード](./media/storsimple-8000-get-service-registration-key/createssdevman5.png)
+     ![StorSimple デバイス マネージャー ブレード](./media/storsimple-8000-get-service-registration-key/createssdevman5.png)
 
-2.  **[管理]、[キー]** の順に移動します。
+2.  移動して**管理 > キー**です。
    
      ![キー ブレード](./media/storsimple-8000-get-service-registration-key/getregkey2.png)
 
-3.  表示されたブレードで、コピー アイコンをクリックして、サービス登録キーをコピーし、後で使用できるように保存します。
+3.  このブレードを開きますでは、サービス登録キーをコピーし、後で使用するために保存するには、コピー アイコンをクリックします。
 
 > [!NOTE]
-> StorSimple デバイス マネージャー サービスに登録する必要があるすべてのデバイスの登録に、サービス登録キーを使用します。
+> サービス登録キーは、StorSimple デバイス マネージャー サービスに登録する必要があるすべてのデバイスを登録するために使用します。
 
 

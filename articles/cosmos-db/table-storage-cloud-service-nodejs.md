@@ -14,22 +14,21 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: b802f880c1131abb7eb9ba00dd8f2e65017bc802
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="nodejs-web-application-using-storage"></a>ストレージを使用する Node.js Web アプリケーション
 ## <a name="overview"></a>概要
-このチュートリアルでは、Node.js 用の Microsoft Azure クライアント ライブラリを使用して、[Express を使用した Node.js Web アプリケーション]のチュートリアルで作成したアプリケーションを拡張し、データ管理サービスと連携します。 Azure にデプロイできる Web ベースのタスク一覧アプリケーションを作成して、アプリケーションを拡張します。 このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
+このチュートリアルでは、アプリケーションで作成した、 [Express を使用した Node.js Web アプリケーション]データ管理サービスを使用する、Microsoft Azure Client Libraries for Node.js を使用してチュートリアルを拡張します。 アプリケーションを拡張するには、Azure に展開できる web ベースのタスク リスト アプリケーションを作成します。 このタスク一覧では、ユーザーがタスクの取得、新しいタスクの追加、タスクの完了済みのマーク付けを実行できます。
 
-タスク項目は Azure ストレージに格納されます。 Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。 Azure Storage には複数のデータ構造が含まれており、そこにデータを保存してアクセスすることができます。 Azure SDK で提供される Node.js 用 API または REST API を介して、ストレージ サービスを利用できます。 詳しくは、「[Azure でのデータの格納とアクセス]」をご覧ください。
+タスク項目は Azure ストレージに格納されます。 Azure ストレージは、フォールト トレランスと可用性に優れた非構造化データ ストレージです。 Azure ストレージには、いくつかのデータ構造で保存し、データにアクセスが含まれています。 Azure SDK に含まれる for Node.js か REST Api を介して Api から記憶域サービスを使用することができます。 詳しくは、「[Azure でのデータの格納とアクセス]」をご覧ください。
 
 このチュートリアルは、[Node.js Web アプリケーション]および [Express を使用した Node.js][Express を使用した Node.js Web アプリケーション] のチュートリアルを完了していることを前提としています。
 
-これには次の情報が含まれています。
+次の情報が含まれています。
 
 * Jade テンプレート エンジンを操作する方法
 * Azure データ管理サービスを操作する方法
@@ -39,11 +38,11 @@ ms.lasthandoff: 08/23/2017
 ![Internet Explorer で表示された完成した Web ページ](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
 ## <a name="setting-storage-credentials-in-webconfig"></a>Web.Config のストレージ資格情報の設定
-Azure Storage にアクセスするには、ストレージ資格情報を渡す必要があります。 これは web.config アプリケーションの設定を使用して行います。
-web.config の設定は、環境変数として Node に渡され、その後 Azure SDK によって読み取られます。
+Azure ストレージにアクセスするストレージの資格情報で渡す必要があります。 これは、web.config のアプリケーション設定を使用することによって行います。
+Web.config の設定に渡される環境変数としてノード、Azure SDK で読み取らです。
 
 > [!NOTE]
-> ストレージの資格情報は、アプリケーションが Azure にデプロイされた場合にのみ使用されます。 エミュレーターで実行している場合、アプリケーションはストレージ エミュレーターを使用します。
+> ストレージの資格情報は、アプリケーションが Azure にデプロイされた場合にのみ使用されます。 エミュレーターで実行されている、ときに、アプリケーションは、ストレージ エミュレーターを使用します。
 >
 >
 
@@ -51,13 +50,13 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 
 1. Azure PowerShell をまだ開いていない場合は起動します。**[スタート]** メニューから **[すべてのプログラム]、[Azure]** の順に展開し、**[Azure PowerShell]** を右クリックして、**[管理者として実行]** を選びます。
 2. アプリケーションが含まれているフォルダーに移動します。 たとえば、C:\\node\\tasklist\\WebRole1 です。
-3. Azure Powershell ウィンドウで次のコマンドレットを入力して、ストレージ アカウント情報を取得します。
+3. Azure Powershell ウィンドウで、ストレージ アカウントの情報を取得する次のコマンドレットを入力します。
 
     ```powershell
     PS C:\node\tasklist\WebRole1> Get-AzureStorageAccounts
     ```
 
-   先述のコマンドレットにより、ホストされるサービスに関連付けられたストレージ アカウントとアカウント キーのリストが取得されます。
+   上記のコマンドレットは、ストレージ アカウントとキーは、ホステッド サービスに関連付けられているアカウントの一覧を取得します。
 
    > [!NOTE]
    > Azure SDK では、サービスを展開するときにストレージ アカウントが作成されるので、以前のガイドでアプリケーションを展開したときから、ストレージ アカウントは既に存在しています。
@@ -106,12 +105,12 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
   └── request@2.27.0 (json-stringify-safe@5.0.0, tunnel-agent@0.3.0, aws-sign@0.3.0, forever-agent@0.5.2, qs@0.6.6, oauth-sign@0.3.0, cookie-jar@0.3.0, hawk@1.0.0, form-data@0.1.3, http-signature@0.10.0)
   ```
 
-## <a name="using-the-table-service-in-a-node-application"></a>ノード アプリケーションでの Table service の使用
-このセクションでは、**express** コマンドで作成された基本的なアプリケーションを、タスクのモデルを格納した **task.js** ファイルを追加することで拡張します。 既存の **app.js** を変更して、このモデルを使用する新しい **tasklist.js** ファイルを作成します。
+## <a name="using-the-table-service-in-a-node-application"></a>ノード アプリケーションでのテーブル サービスの使用
+このセクションでは、基本的なアプリケーションがによって作成された、 **express**コマンドに追加することによって拡張されて、 **task.js**タスク用のモデルを含むファイルです。 既存の変更**app.js**ファイルされ、新しい作成**tasklist.js**モデルを使用するファイル。
 
 ### <a name="create-the-model"></a>モデルの作成
 1. **WebRole1** ディレクトリ内に、**models** という名前の新しいディレクトリを作ります。
-2. **models** ディレクトリ内に、**task.js** という名前の新しいファイルを作ります。 このファイルには、アプリケーションで作成されるタスクのモデルが格納されます。
+2. **models** ディレクトリ内に、**task.js** という名前の新しいファイルを作ります。 このファイルには、アプリケーションによって作成されたタスクのモデルが含まれています。
 3. **task.js** ファイルの先頭に、必要なライブラリを参照する次のコードを追加します。
 
     ```nodejs
@@ -120,7 +119,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
     var entityGen = azure.TableUtilities.entityGenerator;
     ```
 
-4. 次に、Task オブジェクトを定義およびエクスポートするコードを追加します。 この Task オブジェクトは、テーブルへの接続を処理します。
+4. 次に、定義して、タスク オブジェクトをエクスポートするコードを追加します。 タスク オブジェクトは、テーブルへの接続をします。
 
     ```nodejs
     module.exports = Task;
@@ -195,7 +194,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 
 ### <a name="create-the-controller"></a>コントローラーの作成
 1. **WebRole1/routes** ディレクトリに **tasklist.js** という名前の新しいファイルを作り、テキスト エディターで開きます。
-2. 次のコードを **tasklist.js** に追加します。 このコードは Azure と非同期モジュールを読み込みます。これらのモジュールは **tasklist.js** によって使用されて **TaskList** 関数を定義し、先に定義しておいた **Task** オブジェクトのインスタンスに渡されます。
+2. 次のコードを **tasklist.js** に追加します。 このコードで使用され、azure と非同期モジュールが読み込まれます**tasklist.js**を定義し、 **TaskList**関数のインスタンスに渡されましたが、**タスク**前に定義したオブジェクトします。
 
     ```nodejs
     var azure = require('azure-storage');
@@ -273,7 +272,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
     app.use('/users', users);
     ```
 
-    先述の行を、次のコードに置き換えます。 このコードによりストレージ アカウントへの接続が行われ、<strong>Task</strong> のインスタンスが初期化されます。 <strong>Task</strong> は <strong>TaskList</strong> に渡されます。TaskList はこれを使用して Table service とやり取りします。
+    前の行を次のコードに置き換えます。 このコードは、のインスタンスを初期化<strong>タスク</strong>ストレージ アカウントへの接続を使用します。 <strong>タスク</strong>に渡される、 <strong>TaskList</strong>、テーブル サービスとの通信に使用します。
 
     ```nodejs
     var TaskList = require('./routes/tasklist');
@@ -290,7 +289,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 
 ### <a name="modify-the-index-view"></a>index ビューの変更
 1. **views** ディレクトリに移動し、テキスト エディターで **index.jade** ファイルを開きます。
-2. **index.jade** ファイルの内容を次のコードに置き換えます。 このコードにより、既存のタスクを表示するビューと、新しいタスクの追加およびタスクの完了済みのマーク付けを実行するためのフォームを定義します。
+2. 内容を置き換える、 **index.jade**を次のコード ファイル。 このコードは、既存のタスクを表示するビューを定義し、新しいタスクを追加して、完了済みとして既存のテーブルをマークするためのフォームを定義します。
 
     ```
     extends layout
@@ -334,10 +333,10 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 3. **index.jade** ファイルを保存して閉じます。
 
 ### <a name="modify-the-global-layout"></a>グローバル レイアウトの変更
-**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使われます。 この手順では、[Twitter Bootstrap](https://github.com/twbs/bootstrap) を使用するように **layout.jade** を変更します。Twitter Bootstrap は、見栄えのよい Web サイトを簡単にデザインできるツールキットです。
+**views** ディレクトリ内の **layout.jade** ファイルは、他の **.jade** ファイルのグローバル テンプレートとして使われます。 この手順で変更、 **layout.jade**に使用するファイル[Twitter のブートス トラップ](https://github.com/twbs/bootstrap)、nice 探し求めている web サイトを設計しやすくツールキットはします。
 
 1. [Twitter Bootstrap](http://getbootstrap.com/)のファイルをダウンロードして展開します。 **bootstrap\\dist\\css** フォルダーから **bootstrap.min.css** ファイルを tasklist アプリケーションの **public\\stylesheets** ディレクトリにコピーします。
-2. テキスト エディターで **views** フォルダーにある **layout.jade** を開き、内容を次のように置き換えます。
+2. **ビュー**フォルダーを開き、 **layout.jade**テキスト エディターでファイルし、次の内容を置き換えます。
 
     doctype html  html    head      title= title      link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')      link(rel='stylesheet', href='/stylesheets/style.css')    body.app      nav.navbar.navbar-default        div.navbar-header          a.navbar-brand(href='/') My Tasks      block content
 
@@ -350,7 +349,7 @@ web.config の設定は、環境変数として Node に渡され、その後 Az
 PS C:\node\tasklist\WebRole1> start-azureemulator -launch
 ```
 
-ブラウザーが開き、次のようなページが表示されます。
+ブラウザーが開き、次のページが表示されます。
 
 ![My Task List というタイトルの Web ページと新しいタスクを追加するためのタスクとフィールドを含むテーブル](./media/table-storage-cloud-service-nodejs/node44.png)
 
@@ -382,7 +381,7 @@ PS C:\node\tasklist\WebRole1> Publish-AzureServiceProject -name myuniquename -lo
   WARNING: 2:22:50 PM - Created Website URL: http://tasklist.cloudapp.net/.
 ```
 
-前のコマンドレットと同様に **-launch** オプションを指定してあるため、発行が完了するとブラウザーが開かれ、Azure で実行されているアプリケーションが表示されます。
+指定して、 **-起動**コマンドレットでは、以前、ブラウザーのオプションが開き、アプリケーションの発行が完了したときに、Azure で実行されているが表示されます。
 
 ![My Task List ページを表示しているブラウザー ウィンドウ。 URL から、ページが Azure でホストされていることがわかります](./media/table-storage-cloud-service-nodejs/getting-started-1.png)
 
@@ -410,11 +409,10 @@ Azure では、消費されたサーバー時間の 1 時間単位の料金が W
 
    確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、サービスを削除します。
 
-   サービスの削除には、数分間かかる場合があります。 サービスが削除されると、削除されたことを知らせるメッセージが表示されます。
+   サービスの削除には、数分間かかる場合があります。 サービスを削除した後、サービスが削除されたことを示すメッセージが表示されます。
 
 [Express を使用した Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/web-app-with-express/
 [Azure でのデータの格納とアクセス]: http://msdn.microsoft.com/library/azure/gg433040.aspx
 [Node.js Web アプリケーション]: http://azure.microsoft.com/develop/nodejs/tutorials/getting-started/
-
 
 

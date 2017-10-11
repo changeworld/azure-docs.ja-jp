@@ -14,17 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6e6d0539c35d403c24ddd5e0b5d49f4d6116eead
-ms.openlocfilehash: 86f7e0565fe30af613f06764a494cbb996abcabe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/30/2017
-
-
+ms.openlocfilehash: 3053fc622c6343898e2007b8aaafbe1fa8e6934e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-from-azure-to-vmware-with-azure-site-recovery-legacy"></a>Azure Site Recovery を使用して VMware 仮想マシンと物理サーバーを Azure から VMware にフェールバックする (レガシ)
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+> * 
+            [Azure Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
 > * [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 >
@@ -356,4 +355,3 @@ VM は Azure にフェールオーバーするときに、ページ ファイル
 
 ## <a name="next-steps"></a>次のステップ
 * [強化されたデプロイを使用して VMware 仮想マシンと物理サーバーを Azure にレプリケートする](site-recovery-vmware-to-azure-classic.md) 方法についての記事をお読みください。
-

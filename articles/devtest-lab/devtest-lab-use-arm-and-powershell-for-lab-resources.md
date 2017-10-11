@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: tarcher
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: cea4531175df2cc39790497dc049d27e23ffa0c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-or-modify-labs-automatically-using-azure-resource-manager-templates-and-powershell"></a>Azure Resource Manager テンプレートと PowerShell を使ってラボを自動的に作成または変更する
 
 DevTest ラボが提供する数多くの Azure Resource Manager テンプレートと PowerShell スクリプトは、新規ラボの作成や既存ラボの変更とこれらのリソースのデプロイを速く、自動的に行うのに役立ちます。
@@ -52,4 +49,3 @@ PowerShell を使用して自動化できる一般的タスクが他にも多数
 ### <a name="next-steps"></a>次のステップ
 * カスタマイズしたテンプレートまたはスクリプトを保存するための[プライベート Git リポジトリ](devtest-lab-add-artifact-repo.md)を作成する方法を学習します。
 * [Azure クイックスタート テンプレート ギャラリーから Azure Resource Manager テンプレート](https://github.com/Azure/azure-quickstart-templates)を検索します。
-

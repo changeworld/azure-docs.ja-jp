@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/24/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 77e2fcf9c306259286b15767f3a992510d6d79d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hr2day-by-merces"></a>チュートリアル: Azure Active Directory と HR2day by Merces の統合
 
@@ -268,5 +267,4 @@ HR2day by Merces で Azure AD のシングル サインオンを構成してテ�
 [201]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hr2day-tutorial/tutorial_general_203.png
-
 

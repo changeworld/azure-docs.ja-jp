@@ -1,12 +1,12 @@
-[.NET 用 Microsoft Azure Configuration Manager ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/) には、構成ファイルの接続文字列を解析するためのクラスが用意されています。 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx) クラスを使用すると、クライアント アプリケーションがデスクトップ、モバイル デバイス、Azure 仮想マシン、Azure クラウド サービスのいずれで実行されているかにかかわらず、構成設定を解析できます。
+[.NET 用 Microsoft Azure 構成マネージャー ライブラリ](https://www.nuget.org/packages/Microsoft.WindowsAzure.ConfigurationManager/)構成ファイルから接続文字列を解析するためのクラスを提供します。 [CloudConfigurationManager](https://msdn.microsoft.com/library/azure/mt634650.aspx)クラスは、クライアント アプリケーションがデスクトップで、モバイル デバイス、または Azure クラウド サービスで Azure の仮想マシンで実行されているかどうかに関係なく構成設定を解析します。
 
-CloudConfigurationManager パッケージを参照するには、次の `using` ディレクティブをクラスに追加します。
+CloudConfigurationManager パッケージを参照するには、次のコードを追加`using`ディレクティブ。
 
 ```csharp
 using Microsoft.Azure; //Namespace for CloudConfigurationManager
 ```
 
-構成ファイルから接続文字列を取得する方法の例を次に示します。
+構成ファイルから接続文字列を取得する方法を示す例を次に示します。
 
 ```csharp
 // Parse the connection string and return a reference to the storage account.
@@ -14,5 +14,5 @@ CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
     CloudConfigurationManager.GetSetting("StorageConnectionString"));
 ```
 
-Azure Configuration Manager の使用はオプションです。 また、.NET Framework の [ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx) クラスなどの API を使用することもできます。
+Azure 構成マネージャーを使用することはオプションです。 .NET Framework のような API を使用することも[ConfigurationManager](https://msdn.microsoft.com/library/system.configuration.configurationmanager.aspx)クラスです。
 

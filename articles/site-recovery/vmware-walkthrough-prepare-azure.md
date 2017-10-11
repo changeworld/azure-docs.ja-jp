@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 40abff72278c9f8d9f701023fd473fe52c17b421
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="step-5-prepare-azure-resources-for-vmware-replication-to-azure"></a>手順 5: Azure への VMware レプリケーション用の Azure リソースを準備する
 
@@ -62,4 +61,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 6: VMware リソースを準備する](vmware-walkthrough-prepare-vmware.md)方法に関するページに進む
-

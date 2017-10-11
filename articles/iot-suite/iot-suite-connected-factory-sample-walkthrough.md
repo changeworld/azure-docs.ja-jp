@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
 IoT Suite コネクテッド ファクトリの[事前構成済みソリューション][lnk-preconfigured-solutions]は、次の処理を行うエンド ツー エンドの産業ソリューションの実装です。
 
-* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+* シミュレートされた工場生産ラインで OPC UA サーバーを実行しているシミュレートされた産業デバイスと、実際の OPC UA サーバー デバイスの両方に接続します。 OPC UA の詳細については、次を参照してください。、[工場出荷時のよく寄せられる質問を接続している](iot-suite-faq-cf.md)です。
 * このようなデバイスと生産ラインの運用 KPI と OEE を表示します。
 * OPC UA サーバー システムを操作するためにクラウドベースのアプリケーションがどのように使用されているかを示します。
 * 独自の OPC UA サーバー デバイスを接続できるようにします。
@@ -41,7 +40,7 @@ IoT Suite コネクテッド ファクトリの[事前構成済みソリュー�
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
 * Azure サービスを利用する独自の IoT ソリューションを設計する。
 
-詳細については、[コネクテッド ファクトリの FAQ](iot-suite-faq-cf.md) を参照してください。
+詳細については、次を参照してください。、[工場出荷時のよく寄せられる質問を接続している](iot-suite-faq-cf.md)です。
 
 ## <a name="logical-architecture"></a>論理アーキテクチャ
 
@@ -130,7 +129,7 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
-* [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
+* [接続されているファクトリの構成済みソリューションの Windows または Linux でゲートウェイを展開します。](iot-suite-connected-factory-gateway-deployment.md)
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 
@@ -141,4 +140,3 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 [lnk-OPC-UA-NET-Standard]:https://github.com/OPCFoundation/UA-.NETStandardLibrary
 [lnk-Azure-IoT-Gateway]: https://github.com/azure/iot-edge
 [lnk-permissions]: iot-suite-permissions.md
-

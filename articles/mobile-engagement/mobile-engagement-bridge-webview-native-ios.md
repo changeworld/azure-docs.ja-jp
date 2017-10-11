@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 35f7bdbeb480122513ae2a0b04a6d8cfd426802a
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="bridge-ios-webview-with-native-mobile-engagement-ios-sdk"></a>ネイティブ Mobile Engagement iOS SDK での iOS Web ビューのブリッジ
 > [!div class="op_single_selector"]
@@ -264,9 +264,3 @@ iOS のブリッジ サンプルでは、次の手順に従います。
 <!-- Images. -->
 [1]: ./media/mobile-engagement-bridge-webview-native-ios/sending-event.png
 [2]: ./media/mobile-engagement-bridge-webview-native-ios/event-output.png
-
-
-
-<!--HONumber=Dec16_HO2-->
-
-

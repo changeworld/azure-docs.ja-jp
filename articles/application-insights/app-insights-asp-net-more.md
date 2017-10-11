@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/03/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f9d586a140b27f672f8cff463ba0607e2bd844f
-ms.openlocfilehash: 6f2a184242f3f69bdc4a15ac02c095a45c723565
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/08/2017
-
+ms.openlocfilehash: 127fd6e3012bdb0788ed23ae5e8921df651d863b
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="more-telemetry-from-application-insights"></a>Application Insights からのテレメトリの追加
 [Application Insights を ASP.NET コードに追加](app-insights-asp-net.md)した後、さらに多くのテレメトリを取得するためにできることがいくつかあります。 
@@ -31,7 +30,6 @@ ms.lasthandoff: 02/08/2017
 |MSBuild によって [buildinfo.config が生成されることを確認する](https://msdn.microsoft.com/library/dn449058.aspx)|[メトリック チャートで注釈を構築します](https://blogs.msdn.microsoft.com/visualstudioalm/2013/11/14/implementing-deployment-markers-in-application-insights/)
 |[カスタム イベントとメトリックを作成する](app-insights-api-custom-events-metrics.md)|ビジネス イベントとメトリックのカウント、詳細な使用状況の追跡、その他を行います。|
 |[ライブ サイトのプロファイリング](https://aka.ms/AIProfilerPreview)|ライブ Web アプリからの詳細な関数タイミング|
-
 
 
 

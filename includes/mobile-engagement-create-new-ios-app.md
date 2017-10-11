@@ -1,17 +1,17 @@
-1. **Xcode** を起動し、ポップアップで **[Create a new Xcode project (新しい Xcode プロジェクトを作成)]** を選択します。
+1. 開始**Xcode** 、ポップアップ ウィンドウで選択および**新しい Xcode プロジェクトを作成**です。
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-new-project.png)
-2. **[Single View Application (単一枠ビュー アプリケーション)]** を選択し、**[次へ]** をクリックします。
+2. 選択**ビューの 1 つのアプリケーション**、順にクリック**次**です。
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-simple-view.png)
-3. **製品名**、**組織名**、および**組織 ID** を入力します。 アプリに基づいて、**[言語]** セクションで **[Objective-C]** または **[Swift]** を選択します。
+3. 入力、**製品名**、**組織名**、および**組織 Id**です。 選択**OBJECTIVE-C**または**Swift**で、**言語**アプリに基づいて選択します。
    
     ![](./media/mobile-engagement-create-new-ios-app/xcode-project-props.png)
 
 > [!IMPORTANT]
-> Bundle Identifier が Apple Developer コンソールで AppID 用に定義したものと一致すること、および該当する証明書を持っていることを確認します。 
+> 新機能が定義した、Apple 開発者コンソールでの AppId と、バンドル Id と一致することに対応する証明書があるか確認してください。 
 > 
 > 
 
-Xcode により Mobile Engagement の統合先のデモ アプリが作成されます。
+Xcode では、Mobile Engagement を統合し、デモ アプリを作成します。
 

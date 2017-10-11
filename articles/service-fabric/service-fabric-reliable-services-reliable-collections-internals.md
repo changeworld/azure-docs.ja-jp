@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
-ms.translationtype: Human Translation
-ms.sourcegitcommit: de674af369080ad7eb608608685e293f2326c8e6
 ms.openlocfilehash: d607449a16e886337ab1bd96213fbb4231124353
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="azure-service-fabric-reliable-state-manager-and-reliable-collection-internals"></a>Azure Service Fabric Reliable State Manager および Reliable Collection の内部
 このドキュメントでは、Reliable State Manager と Reliable Collection の内部を詳細に調べ、背後でコア コンポーネントがどのように動作しているかを確認します。
 
@@ -56,5 +53,4 @@ Reliable Collection がチェックポイントを完了すると、Reliable Sta
 
 ## <a name="next-steps"></a>次のステップ
 * [トランザクションとロック](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
-
 

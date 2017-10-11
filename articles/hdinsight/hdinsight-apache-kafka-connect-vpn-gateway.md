@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/01/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: b73ab6914bad3d08e1833338634abf62aa3e9c05
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.openlocfilehash: 245bee7c1dbb0236afdc2506e7ab84b5573cbc85
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="connect-to-kafka-on-hdinsight-preview-through-an-azure-virtual-network"></a>Azure Virtual Network 経由で HDInsight 上の Kafka に接続する
 
 Azure Virtual Network を使用して HDInsight 上の Kafka へ直接接続する方法について説明します。 このドキュメントでは、次の構成での Kafka への接続の詳細を示します。
@@ -391,4 +389,3 @@ HDInsight 上の Kafka の操作の詳細については、次のドキュメン
 
 * [HDInsight での Kafka の使用](hdinsight-apache-kafka-get-started.md)
 * [HDInsight 上の Kafka でのミラーリングの使用](hdinsight-apache-kafka-mirroring.md)
-

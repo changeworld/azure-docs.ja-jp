@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: 0f0129710bcf81c0ad8def2f3305e525477c7d3d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -80,7 +79,7 @@ Azure Active Directory デバイス登録サービスを Azure Active Directory 
 
 | タスク | リファレンス |
 | --- | --- |
-| Windows Server 2012 R2 スキーマ拡張を含む Active Directory ドメイン サービスをデプロイします。 ドメイン コント ローラーを Windows Server 2012 R2 にアップグレードする必要はありません。 スキーマのアップグレードのみが必要です。 |[Active Directory ドメイン サービス スキーマをアップグレードする](#upgrade-your-active-directory-domain-services-schema) |
+| Windows Server 2012 R2 スキーマ拡張を含む Active Directory Domain Services をデプロイします。 ドメイン コント ローラーを Windows Server 2012 R2 にアップグレードする必要はありません。 スキーマのアップグレードのみが必要です。 |[Active Directory Domain Services スキーマをアップグレードする](#upgrade-your-active-directory-domain-services-schema) |
 | デバイスは既知の DNS レコードを探すことにより、Azure Active Directory デバイス登録サービスを検出します。 会社の DNS は、デバイスが Azure Active Directory デバイス登録サービスを検出できるように構成する必要があります。 |[Active Directory をサポートするデバイスの準備](#prepare-your-active-directory-to-support-devices) |
 
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>パート 3: Azure AD でのデバイスの書き戻しを有効にする
@@ -116,7 +115,7 @@ Multi-Factor Authentication に関するいくつかのオプションのいず�
    
    さらに、「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」で概説されているように、AD FS とのフェデレーションを構成します。
 
-## <a name="upgrade-your-active-directory-domain-services-schema"></a>Active Directory ドメイン サービス スキーマをアップグレードする
+## <a name="upgrade-your-active-directory-domain-services-schema"></a>Active Directory Domain Services スキーマをアップグレードする
 > [!NOTE]
 > Active Directory スキーマをアップグレードした後に、処理を元に戻すことはできません。 アップグレードは、まずテスト環境で実行することをお勧めします。
 > 
@@ -224,6 +223,5 @@ Windows 8.1 デバイスを使用している場合は、**[PC 設定]**  >  **[
 これで、ユーザーが Azure Active Directory デバイス登録サービスに登録していないデバイスからアプリケーションにアクセスすると、次のスクリーン ショットのようなページが表示されます。
 
 ![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
-
 
 

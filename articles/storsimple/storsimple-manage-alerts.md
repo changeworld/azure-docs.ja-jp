@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 03/08/2017
 ms.author: anbacker
-ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
 ms.openlocfilehash: 5772334aade138101730fa7345f4515664d6d22f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-view-and-manage-storsimple-alerts"></a>StorSimple Manager サービスを使用して StorSimple アラートを表示および管理する
 ## <a name="overview"></a>概要
@@ -203,5 +202,4 @@ StorSimple Manager サービスのダッシュボードでは、アラートが�
 
 ## <a name="next-steps"></a>次のステップ
 [StorSimple エラーと運用デバイスのトラブルシューティング](storsimple-troubleshoot-operational-device.md)の詳細について確認します。
-
 

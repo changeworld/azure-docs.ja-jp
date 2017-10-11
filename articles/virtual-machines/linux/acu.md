@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 250417aa1bbacb038dbff66daab7f31be202e40a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
+ms.openlocfilehash: 82ccb9a3973b5a00ac442aa429634b19d0925dfa
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="azure-compute-unit-acu"></a>Azure コンピューティング ユニット (ACU)
 
 [!INCLUDE [virtual-machines-common-acu](../../../includes/virtual-machines-common-acu.md)]

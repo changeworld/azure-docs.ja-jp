@@ -1,6 +1,6 @@
 ---
-title: "Azure CLI 1.0 で Azure DNS の使用を開始する | Microsoft Docs"
-description: "Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 Azure CLI 1.0 を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。"
+title: "Azure CLI 1.0 を使用して DNS を Azure の概要 |Microsoft ドキュメント"
+description: "Azure DNS 内の DNS ゾーンとレコードを作成する方法を説明します。 これは、最初の DNS ゾーンおよび Azure CLI 1.0 を使用してレコードを作成および管理する方法について説明します。"
 services: dns
 documentationcenter: na
 author: jtuliani
@@ -15,14 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
 ms.openlocfilehash: f7943b71bbd16c36df09436973d92539eb62b210
-ms.lasthandoff: 04/21/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
-# <a name="get-started-with-azure-dns-using-azure-cli-10"></a>Azure CLI 1.0 で Azure DNS の使用を開始する
+# <a name="get-started-with-azure-dns-using-azure-cli-10"></a>Azure CLI 1.0 を使用して DNS を Azure の概要します。
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-getstarted-portal.md)
@@ -30,58 +29,58 @@ ms.lasthandoff: 04/21/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-この記事では、Windows、Mac、Linux で使用できるクロスプラットフォーム Azure CLI 1.0 を使用して、最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、Azure Portal または Azure PowerShell を使用して実行することもできます。
+この記事では、最初の DNS ゾーンと、クロスプラット フォーム Azure CLI 1.0 を使用して、Windows、Mac および Linux で使用されているレコードを作成する手順について説明します。 また、Azure ポータルまたは Azure PowerShell を使用してこれらの手順を実行することができます。
 
-DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
+DNS ゾーンを使用して、特定のドメインの DNS レコードをホストします。 Azure dns、ドメインのホストを開始するには、そのドメイン名の DNS ゾーンを作成する必要があります。 この DNS ゾーンの内部ドメインの場合は、各 DNS レコードが作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 これらの各手順のとおりです。
 
-以降の手順は、Azure CLI 1.0 がインストール済みで、既にサインインしていることを前提としています。 詳細については、[Azure CLI 1.0 を使用して DNS ゾーンを管理する方法](dns-operations-dnszones-cli-nodejs.md)に関するページをご覧ください。
+これらの手順では、既にインストールして Azure CLI 1.0 にサインインするいると仮定します。 詳細については、次を参照してください。 [Azure CLI 1.0 を使用する DNS ゾーンを管理する方法](dns-operations-dnszones-cli-nodejs.md)です。
 
-## <a name="create-the-resource-group"></a>リソース グループの作成
+## <a name="create-the-resource-group"></a>リソース グループを作成します。
 
-DNS ゾーンを作成する前に、DNS ゾーンが含まれるリソース グループを作成します。 コマンドを次に示します。
+DNS ゾーンを作成する前に、DNS ゾーンを格納する、リソース グループが作成されます。 コマンドを次に示します。
 
 ```azurecli
 azure group create --name MyResourceGroup --location "West US"
 ```
 
-## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
+## <a name="create-a-dns-zone"></a>DNS ゾーンを作成します。
 
-DNS ゾーンは、`azure network dns zone create` コマンドを使用して作成します。 このコマンドのヘルプを表示するには、「`azure network dns zone create -h`」と入力します。
+使用して DNS ゾーンを作成、`azure network dns zone create`コマンド。 表示する型は、このコマンドのヘルプ`azure network dns zone create -h`です。
 
-次の例では、*MyResourceGroup* というリソース グループに *contoso.com* という DNS ゾーンを作成します。 この例の値を実際の値に置き換えて、DNS ゾーンを作成できます。
+次の例と呼ばれる DNS ゾーンを作成する*contoso.com*リソース グループと呼ばれる*MyResourceGroup*です。 独自の値に置き換えて、DNS ゾーンを作成するのに例を使用します。
 
 ```azurecli
 azure network dns zone create MyResourceGroup contoso.com
 ```
 
 
-## <a name="create-a-dns-record"></a>DNS レコードの作成
+## <a name="create-a-dns-record"></a>DNS レコードを作成します。
 
-DNS レコードを作成するには、`azure network dns record-set add-record` コマンドを使用します。 `azure network dns record-set add-record -h` を使用すると、ヘルプが表示されます。
+DNS レコードを作成するを使用して、`azure network dns record-set add-record`コマンド。 詳細については、次を参照してください。`azure network dns record-set add-record -h`です。
 
-下の例では、リソース グループ "MyResourceGroup" で DNS ゾーン "contoso.com" に相対名 "www" を持つレコードを作成します。 レコード セットの完全修飾名は、"www.contoso.com" になります。 また、レコードの種類は "A"、IP アドレスは "1.2.3.4"、既定の TTL として 3,600 秒 (1 時間) が使用されています。
+次の例では、相対名で DNS ゾーンのリソース グループ"MyResourceGroup"で"contoso.com"、"www"をレコードを作成します。 レコード セットの完全修飾名は、"www.contoso.com"です。 レコードの種類は、IP アドレス、「1.2.3.4」の"A",、既定値は 3600 秒 (1 時間) の TTL が使用されます。
 
 ```azurecli
 azure network dns record-set add-record MyResourceGroup contoso.com www A -a 1.2.3.4
 ```
 
-その他のレコードの種類、複数のレコードを持つレコード セット、代替 TTL 値、既存のレコードの変更については、[Azure CLI 1.0 を使用した DNS レコードおよびレコード セットの管理](dns-operations-recordsets-cli-nodejs.md)に関するページをご覧ください。
+その他の種類、代替の TTL 値を 1 つ以上のレコードにレコード セットのレコードし、既存のレコードを変更するを参照してください。 [Manage DNS レコードと、Azure CLI 1.0 を使用して、レコード セット](dns-operations-recordsets-cli-nodejs.md)です。
 
 
 ## <a name="view-records"></a>レコードの表示
 
-ゾーンで DNS レコードを表示するには、次を使用します。
+ゾーンでの DNS レコードを表示するには、次のように使用します。
 
 ```azurecli
 azure network dns record-set list MyResourceGroup contoso.com
 ```
 
 
-## <a name="update-name-servers"></a>ネーム サーバーの更新
+## <a name="update-name-servers"></a>ネーム サーバーを更新します。
 
-DNS ゾーンとレコードを正しく設定したら、Azure DNS ネーム サーバーを使用するようにドメイン名を構成する必要があります。 これにより、インターネット上の他のユーザーが DNS レコードを検索できるようになります。
+入力が完了したら、DNS ゾーンとレコードが正しく設定されて、Azure DNS ネーム サーバーを使用するドメイン名を構成する必要があります。 これにより、DNS レコードを検索するインターネット上の他のユーザーです。
 
-ゾーンのネーム サーバーを指定するには、`azure network dns zone show` コマンドを使用します。
+ゾーンのネーム サーバーがで指定された、`azure network dns zone show`コマンド。
 
 ```azurecli
 azure network dns zone show MyResourceGroup contoso.com
@@ -103,11 +102,11 @@ data:    Tags                            :
 info:    network dns zone show command OK
 ```
 
-このネーム サーバーは、ドメイン名レジストラー (ドメイン名を購入した場所) で構成する必要があります。 レジストラーにより、ドメインのネーム サーバーを設定するオプションが提供されます。 詳細については、「[Azure DNS へのドメインの委任](dns-domain-delegation.md)」を参照してください。
+(ドメイン名の購入元) ドメイン名レジストラーでこれらの名前のサーバーを構成する必要があります。 レジストラーはドメインのネーム サーバーを設定するオプションを提供します。 詳細については、次を参照してください。 [Azure DNS ドメインの委任](dns-domain-delegation.md)です。
 
-## <a name="delete-all-resources"></a>すべてのリソースの削除
+## <a name="delete-all-resources"></a>すべてのリソースを削除します。
  
-この記事で作成したすべてのリソースを削除するには、次の手順を実行します。
+この記事で作成されたすべてのリソースを削除するには、次の手順を実行します。
 
 ```azurecli
 azure group delete --name MyResourceGroup
@@ -115,10 +114,9 @@ azure group delete --name MyResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure DNS の詳細については、「[Azure DNS の概要](dns-overview.md)」を参照してください。
+Azure DNS の詳細については、次を参照してください。 [Azure DNS 概要](dns-overview.md)です。
 
-Azure DNS での DNS ゾーンの管理の詳細については、[Azure CLI 1.0 を使用した Azure DNS での DNS ゾーンの管理](dns-operations-dnszones-cli-nodejs.md)に関するページをご覧ください。
+Azure DNS 内の DNS ゾーンの管理に関する詳細についてを参照してください。 [Azure CLI 1.0 を使用して DNS を Azure 内の管理の DNS ゾーン](dns-operations-dnszones-cli-nodejs.md)です。
 
-Azure DNS での DNS レコードの管理の詳細については、[Azure CLI 1.0 を使用した Azure DNS での DNS レコードおよびレコード セットの管理](dns-operations-recordsets-cli-nodejs.md)に関するページをご覧ください。
-
+Azure DNS 内の DNS レコードの管理に関する詳細についてを参照してください。 [Manage DNS レコードとレコードは、Azure CLI 1.0 を使用して DNS を Azure で設定](dns-operations-recordsets-cli-nodejs.md)です。
 

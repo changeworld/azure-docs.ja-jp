@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 23f2640bc71bc4eba0f3fc76014cce4a298bfcfa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="preparing-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備する
 
@@ -61,7 +60,7 @@ WAImportExport ツールは、ドライブの準備および修復用のツー�
 
 データセット CSV ファイルは、ターゲット ドライブにコピーするディレクトリの一覧またはファイルの一覧を含む CSV ファイルの /dataset フラグの値です。 インポート ジョブを作成するには、インポートするディレクトリとファイルを最初に決定します。 その際には、ディレクトリの一覧、一意のファイルの一覧、またはその 2 つの組み合わせを指定できます。 ディレクトリが含まれる場合は、そのディレクトリとサブディレクトリ内のすべてのファイルがインポート ジョブに追加されます。
 
-インポートするディレクトリまたはファイルごとに、Azure BLOB service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを WAImportExport ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
+インポートするディレクトリまたはファイルごとに、Azure Blob service でインポート先の仮想ディレクトリまたは BLOB を指定する必要があります。 これらのターゲットを WAImportExport ツールの入力値として使用します。 ディレクトリをスラッシュ (/) で区切ってください。
 
 次の表は、BLOB ターゲットの例を示しています。
 
@@ -418,4 +417,3 @@ WAImportExport ツールはバッチ単位でファイルの読み取りと書�
 * [インポート ジョブの修復](storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-

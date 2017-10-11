@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 97d3485030b0f9f2a6036cdae14e3c37ca89fd6e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: d78f9c59c069664fa77bdf9a16a48bb3745b1224
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problems-using-the-application-access-panel-website-or-mobile-application"></a>アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題
 
 
@@ -40,4 +38,3 @@ ms.lasthandoff: 04/18/2017
   次のドキュメントは、このカテゴリ内の最も一般的な問題のいくつかを解決するために役立ちます。
   * [セルフ サービス アプリケーション アクセスの使用方法がわからない](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-how-to/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
   * [セルフ サービス アプリケーション アクセスを使用しているときに問題が発生した](https://docs.microsoft.com/azure/active-directory/application-access-panel-self-service-applications-problem/?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)
-

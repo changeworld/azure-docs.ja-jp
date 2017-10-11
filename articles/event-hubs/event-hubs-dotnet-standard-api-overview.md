@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: eea682c40cd415b383a8b2f0004a5f3648e2f01f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="event-hubs-net-standard-api-overview"></a>Event Hubs .NET Standard API の概要
 この記事は主要な Event Hubs .NET Standard クライアント API についてまとめてあります。 現在 2 つの .NET Standard クライアント ライブラリがあります。
 * [Microsoft.Azure.EventHubs](/dotnet/api/microsoft.azure.eventhubs)

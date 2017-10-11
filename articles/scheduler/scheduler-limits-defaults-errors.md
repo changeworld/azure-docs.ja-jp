@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/18/2016
 ms.author: deli
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: db6b1c196cb468f41c7a7ce34758de346b522abb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="scheduler-limits-and-defaults"></a>Scheduler の制限と既定値
 ## <a name="scheduler-quotas-limits-defaults-and-throttles"></a>Scheduler のクォータ、制限、既定値、調整
@@ -45,10 +45,4 @@ Scheduler サービスに対するすべての要求は、**x-ms-request-id**と
  [Azure Scheduler の高可用性と信頼性](scheduler-high-availability-reliability.md)
 
  [Azure Scheduler 送信認証](scheduler-outbound-authentication.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

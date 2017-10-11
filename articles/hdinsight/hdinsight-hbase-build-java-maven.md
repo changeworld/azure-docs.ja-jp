@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 02/05/2017
 ms.author: larryfr
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 83aeb23275a86e5d4706a0ad7ea72d11d71f9604
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 59c9af5a91b107e68a676f02fe5a936f955b22fa
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="use-maven-to-build-java-applications-that-use-hbase-with-windows-based-hdinsight-hadoop"></a>Windows ベースの HDInsight (Hadoop) 環境の HBase を使用する Java アプリケーションを Maven で構築する
 Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) アプリケーションを作成し、ビルドする方法について説明します。 その後、このアプリケーションを Azure HDInsight (Hadoop) で使用します。
@@ -618,4 +617,3 @@ Apache Maven を使用して Java で [Apache HBase](http://hbase.apache.org/) �
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="no-results-or-unexpected-results-when-using-start-hbaseexample"></a>Start-HBaseExample を使用したときに、結果が表示されないか、予期しない結果が表示される
 `-showErr` パラメーターを使用して、ジョブの実行中に生成された標準エラー (STDERR) を表示します。
-

@@ -14,12 +14,11 @@ ms.devlang: ruby
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 357a7277dd42b6973cf35a9f642b8eec36a745e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-use-service-bus-queues-with-ruby"></a>Ruby で Service Bus キューを使用する方法
 
@@ -98,5 +97,4 @@ Service Bus には、アプリケーションにエラーが発生した場合�
 * GitHub の [Azure SDK for Ruby](https://github.com/Azure/azure-sdk-for-ruby) リポジトリ。
 
 この記事で説明されている Azure Service Bus キューと、[「Ruby から Queue ストレージを使用する方法」](../storage/queues/storage-ruby-how-to-use-queue-storage.md)の記事で説明されている Azure キューの比較については、[「Azure キューと Service Bus キューの比較」](service-bus-azure-and-service-bus-queues-compared-contrasted.md)を参照してください。
-
 

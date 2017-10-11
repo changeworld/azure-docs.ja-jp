@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 14915593f7bfce70d7bf692a15d11f02d107706b
 ms.openlocfilehash: a2f0cecb93cc382bcfd710c44eb70f80ae67f9b6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>チュートリアル: Azure Active Directory と Asana の統合
 
@@ -172,7 +171,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-an-asana-test-user"></a>Asana テスト ユーザーの作成
 
@@ -220,7 +219,7 @@ Asana で Azure AD のシングル サインオンを構成してテストする
 
 このセクションの目的は、Azure AD のシングル サインオンをテストすることです。
 
-Asana のログイン ページに移動します。 電子メール アドレスのテキスト ボックスに、電子メール アドレスとして「britta.simon@contoso.com」と入力します。 パスワード ボックスは空白のままにして **[Log In (ログイン)]** をクリックします。 Azure AD ログイン ページにリダイレクトされます。 Azure AD 資格情報をすべて入力します。 これで、Asana へのログインが完了しました。
+Asana のログイン ページに移動します。 電子メール アドレスのテキスト ボックスに、電子メール アドレスとして「britta.simon@contoso.com」と入力します。パスワード ボックスは空白のままにして **[Log In (ログイン)]** をクリックします。 Azure AD ログイン ページにリダイレクトされます。 Azure AD 資格情報をすべて入力します。 これで、Asana へのログインが完了しました。
 
 ## <a name="additional-resources"></a>その他のリソース
 
@@ -243,4 +242,3 @@ Asana のログイン ページに移動します。 電子メール アドレ�
 [203]: ./media/active-directory-saas-asana-tutorial/tutorial_general_203.png
 [10]: ./media/active-directory-saas-asana-tutorial/tutorial_general_060.png
 [11]: ./media/active-directory-saas-asana-tutorial/tutorial_general_070.png
-

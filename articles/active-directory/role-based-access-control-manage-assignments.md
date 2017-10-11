@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/04/2017
 ms.author: andredm
-ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
 ms.openlocfilehash: 72c695d08bdf5de003d51ffb0768184e1e4d00ba
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="view-access-assignments-for-users-and-groups-in-the-azure-portal"></a>Azure Portal のユーザーとグループのアクセス権の割り当てを表示
 > [!div class="op_single_selector"]
@@ -60,5 +59,4 @@ Azure Active Directory (Azure AD) のロールベースのアクセス制御 (RB
 
 * ロールベースのアクセス制御を開始して、 [Azure サブスクリプション リソースへのアクセスをロールの割り当てによって管理する](role-based-access-control-configure.md)
 * [RBAC の組み込みロール](role-based-access-built-in-roles.md)
-
 

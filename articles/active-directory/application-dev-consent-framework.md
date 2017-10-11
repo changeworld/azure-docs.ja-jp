@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: d63d4b6e9e230e814762aadbe57bb3971b129d95
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 5abddf3a8698e3eb39f118f54eeac62ce68fed39
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-application-consent-works"></a>アプリケーションの同意のしくみ
 
 この記事では、アプリケーションをより効果的に開発するための Azure AD の同意フレームワークのしくみについて詳しく説明します。
@@ -33,5 +31,4 @@ ms.lasthandoff: 04/11/2017
 - 詳細については、[認証コードの付与フロー中に、OAuth 2.0 プロトコル層で同意がどのようにサポートされるか、学習してください。](https://docs.microsoft.com/azure/active-directory/develop/active-directory-protocols-oauth-code#request-an-authorization-code)
 
 ## <a name="next-steps"></a>次のステップ
-[AzureAD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)
-
+[Azure AD StackOverflow](http://stackoverflow.com/questions/tagged/azure-active-directory)

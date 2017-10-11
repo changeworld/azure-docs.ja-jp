@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する
 この記事では、Microsoft HPC Pack クラスターを Azure にデプロイし、InfiniBand で相互接続された複数の Linux コンピューティング ノードで [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) ジョブを実行する方法について説明します。
@@ -334,4 +333,3 @@ Azure 上の Intel MPI では、MPI 関連のオプションを次のように�
 <!--Image references-->
 [hndeploy]:media/hpcpack-cluster-starccm/hndeploy.png
 [clustermanager]:media/hpcpack-cluster-starccm/ClusterManager.png
-

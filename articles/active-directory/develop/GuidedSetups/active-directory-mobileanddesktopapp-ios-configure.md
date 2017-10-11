@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: 8a4f412102c0e75654030f5d4f8aab575fdcebba
-ms.contentlocale: ja-jp
-
+ms.openlocfilehash: 0ebca65585fc87bd4a85ba092cd423fce9540f58
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="create-an-application-express"></a>アプリケーションの作成 (簡易)
 次の手順に従って *Microsoft アプリケーション登録ポータル*でアプリケーションを登録する必要があります。
@@ -69,4 +69,3 @@ Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコ
 <i><code>[Your_Application_Id_Here]</code></i> を、さきほど登録したアプリケーション ID に置き換えます
 </li>
 </ol>
-

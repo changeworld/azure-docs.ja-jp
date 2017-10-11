@@ -17,12 +17,11 @@ ms.topic: article
 ms.date: 08/09/2017
 ms.author: jgao
 ms.custom: hdiseo17may2017
-ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
 ms.openlocfilehash: d06bf8ff4a21e4f4b29593bac32bfa2b32601fc4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="serialize-data-in-hadoop-with-the-microsoft-avro-library"></a>Microsoft Avro ライブラリを使用した Hadoop のデータのシリアル化
 
@@ -1396,4 +1395,3 @@ Microsoft Avro ライブラリでリフレクションを使用して、型の J
 
 [deflate-100]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.100).aspx
 [deflate-110]: http://msdn.microsoft.com/library/system.io.compression.deflatestream(v=vs.110).aspx
-

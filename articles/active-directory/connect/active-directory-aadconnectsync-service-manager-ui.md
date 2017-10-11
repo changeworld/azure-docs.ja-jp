@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: d999cc5ce3527539bbdf868912d5b2f6f470c21e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: 05dd28bf850a84ff4644c46a45bd941b7c6e7d01
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="introduction-to-the-azure-ad-connect-synchronization-service-manager-ui"></a>Azure AD Connect の Synchronization Service Manager UI の概要
 
@@ -37,4 +36,3 @@ UI の各種タブの詳細については、このトピックの上部にあ�
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

@@ -1,7 +1,7 @@
 > [!TIP]
 > 
-> **Azure Storage コード サンプル レポジトリを参照してください**
+> **チェック アウト Azure Storage のコード サンプル リポジトリ**
 > 
-> ダウンロードして実行できる、使いやすいエンド ツー エンドの Azure Storage コード サンプルについては、[Azure Storage のサンプル](https://docs.microsoft.com/en-us/azure/storage/storage-samples-dotnet)の一覧を確認してください。
+> 使いやすいエンド ツー エンド Azure Storage コード サンプルについてはダウンロードして実行することを確認してください一連のアウト[Azure ストレージのサンプル](https://docs.microsoft.com/en-us/azure/storage/storage-samples-dotnet)です。
 
 

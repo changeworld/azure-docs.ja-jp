@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: willzhan;juliako
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: dbaf2f99bb1d3ad719e2f680f53babfec707afb7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 841b1164db6fd1a2c029b98392509c15f23158e2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="hybrid-design-of-drm-subsystems"></a>DRM サブシステムのハイブリッド設計
 
@@ -137,5 +136,4 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

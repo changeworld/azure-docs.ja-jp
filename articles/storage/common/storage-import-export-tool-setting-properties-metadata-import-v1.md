@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 77bdaa5559de86cd1de9f30e70656e47fd5719e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>インポート処理中にプロパティとメタデータを設定する
 Microsoft Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定できます。 次の手順に従います。  
   
@@ -72,4 +70,3 @@ WAImportExport.exe PrepImport /j:SecondDrive.jrn /id:BlueRayIso /srcfile:K:\Temp
 ## <a name="next-steps"></a>次のステップ
 
 * [Import/Export サービスのメタデータとプロパティ ファイルの形式](../storage-import-export-file-format-metadata-and-properties.md)
-

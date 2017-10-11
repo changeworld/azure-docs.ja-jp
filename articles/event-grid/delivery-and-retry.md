@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: darosa
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
 ms.openlocfilehash: e0f8afdfd84ea3c0c061459c27da285f6ae8957e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid によるメッセージの配信と再試行 
 
 この記事では、配信が確認されないときに Azure Event Grid がイベントをどのように処理するかについて説明します。

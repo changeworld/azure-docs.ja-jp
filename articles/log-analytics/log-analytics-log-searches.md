@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
 
@@ -176,7 +175,7 @@ EventLog=System TimeGenerated>NOW-24HOURS
 
 時間でフィルター処理するときは、2 つの期間 (OMS ポータルで指定した期間 (S1) とクエリに指定した期間 (S2)) の *共通部分* が結果として取得されることに注意してください。
 
-![共通部分](./media/log-analytics-log-searches/oms-search-intersection.png)
+![intersection](./media/log-analytics-log-searches/oms-search-intersection.png)
 
 つまり、期間に共通部分がない場合 (たとえば OMS ポータルで **[今週]** を選択し、クエリに **[先週]** を定義した場合)、共通部分がないため、何の結果も取得されません。
 
@@ -598,4 +597,3 @@ Type=WireData | measure avg(ReceivedBytes), avg(SentBytes) by Direction interval
 
 * ログの検索を拡張するには、 [Log Analytics でカスタム フィールド](log-analytics-custom-fields.md) を使用します。
 * Log Analytics で使用できるすべての検索フィールドとファセットは、 [Log Analytics のログ検索のリファレンス](log-analytics-search-reference.md) でご覧いただけます。
-

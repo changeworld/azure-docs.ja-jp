@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 325be23cffc9c728a8af6f92a0f3dce6d31da4ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="replicate-vmware-virtual-machines-and-physical-servers-to-azure-with-azure-site-recovery-using-the-classic-portal-legacy"></a>クラシック ポータル (レガシ) を使用して Azure Site Recovery で VMware 仮想マシンと物理サーバーを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-vmware-to-azure.md)
+> * 
+            [Azure Portal](site-recovery-vmware-to-azure.md)
 > * [クラシック ポータル](site-recovery-vmware-to-azure-classic.md)
 > * [クラシック ポータル (レガシ)](site-recovery-vmware-to-azure-classic-legacy.md)
 >
@@ -740,4 +740,3 @@ The information in Section A is regarding Third Party Code components from the p
 The information in Section B is regarding Third Party Code components that are being made available to you by Microsoft under the original licensing terms.
 
 The complete file may be found on the [Microsoft Download Center](http://go.microsoft.com/fwlink/?LinkId=529428). Microsoft reserves all rights not expressly granted herein, whether by implication, estoppel or otherwise.
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6ddb1915c8073a7b64ba03ff6b90e701ad337c3e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 41a26e8b13fdb2531924ba441017c4c01e664995
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure Virtual Networks 用の一般的な PowerShell コマンド
 
@@ -76,5 +75,4 @@ ms.lasthandoff: 07/21/2017
 ## <a name="next-steps"></a>次のステップ
 * [VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ときに、作成したネットワーク インターフェイスを使用します。
 * [複数のネットワーク インターフェイスを持つ VM を作成する](../../virtual-network/virtual-networks-multiple-nics.md)方法について学習します。
-
 

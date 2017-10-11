@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: c72f839d0a1288dccb7deb3e44fc2b20d64818f0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-8-set-up-the-source-and-target-for-hyper-v-with-vmm-replication-to-azure"></a>手順 8: Azure への Hyper-V レプリケーション (VMM あり) のソースとターゲットを設定する
 
 [コンテナーを作成し](vmm-to-azure-walkthrough-create-vault.md)、レプリケートする内容を指定した後で、この記事に従って、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center Virtual Machine Manager (VMM) 内のオンプレミスの Hyper-V 仮想マシンを Azure にレプリケートする場合にソースとターゲットの設定を構成します。
@@ -133,4 +131,3 @@ Hyper-V ホストで実行されている Recovery Services エージェント�
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 9: ネットワーク マッピングを構成する](vmm-to-azure-walkthrough-network-mapping.md)」に進みます。
-

@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 06bfb75a07b7902fcf245271def5d40e9941a89e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 36df5bc0a019f4197d40fd6fa5a2a9957820c8b4
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 
 お使いのサービスが正常に機能しているかを確認するために、利用統計情報に対して同じクエリを繰り返し実行していませんか。 これらのクエリを自動化して傾向や異常を検出し、関連する独自のワークフローを構築する方法を確認しましょう。 これには、Logic Apps 対応の Azure Application Insights コネクタ (プレビュー) が最適です。
@@ -139,7 +137,6 @@ ms.lasthandoff: 07/08/2017
 
 
 <!--Link references-->
-
 
 
 

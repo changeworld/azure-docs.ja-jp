@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d9dad6cff80c1f6ac206e7fa3184ce037900fc6b
-ms.openlocfilehash: 664a1bd9df9ace4993a8389dbeb049e721932082
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/06/2017
-
-
+ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング
 この監視とトラブルシューティング ガイドでは、Azure Site Recovery のレプリケーション正常性を追跡する方法とトラブルシューティング手法について説明します。
@@ -196,4 +194,3 @@ Azure Site Recovery のサポート チケットを発行するには、Azure �
 ポータルの **[接続]** ボタンが淡色表示され、Express Route やサイト間 VPN 接続で Azure に接続されていない場合は、仮想マシンを作成してパブリック IP アドレスを割り当ててからリモート デスクトップ/共有シェルを使用する必要があります。 その後、仮想マシンのネットワーク インターフェイスでパブリック IP を追加できます。  
 
 ![フェールオーバーされた仮想マシンのネットワーク インターフェイスでのパブリック IP の追加](media/site-recovery-monitoring-and-troubleshooting/createpublicip.gif)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: d15931a5d430252bbd9ae342e1f8fde1a539355b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>チュートリアル: Azure Active Directory と TargetProcess の統合
 
@@ -117,7 +116,7 @@ TargetProcess で Azure AD のシングル サインオンを構成してテス�
  
 4. **[SAML 署名証明書]** セクションで、**[Certificate (Base64) (証明書 (Base64)) ]** をクリックし、コンピューターに証明書ファイルを保存します。
 
-    ![SAML 署名証明書セクション](./media/active-directory-saas-target-process-tutorial/tutorial_target-process_certificate.png) 
+    ![[SAML 署名証明書] セクション](./media/active-directory-saas-target-process-tutorial/tutorial_target-process_certificate.png) 
 
 5. **[保存]** ボタンをクリックします。
 
@@ -254,5 +253,4 @@ TargetProcess では、Just-In-Time プロビジョニングがサポートさ�
 [201]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-target-process-tutorial/tutorial_general_203.png
-
 

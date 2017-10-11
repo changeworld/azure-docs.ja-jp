@@ -14,13 +14,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: liamca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: f4e371fc16bc57e6963f1ec51c0ea864fa568f0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-search-performance-and-optimization-considerations"></a>Azure Search のパフォーマンスと最適化に関する考慮事項
 優れた検索機能は、多くのモバイル アプリケーションと Web アプリケーションの成功の鍵となります。 不動産から中古車市場、オンライン カタログまで、高速検索と適切な結果はカスタマー エクスペリエンスに影響を及ぼします。 このドキュメントは、特に、スケーラビリティ、複数の言語のサポート、またはカスタム ランキングの非常に複雑な要件がある高度なシナリオで、Azure Search を最大限に活用する方法のベスト プラクティスを示すことを目的としています。  また、内部の概要を説明し、実際の顧客アプリで効果的に機能する方法についても説明します。
@@ -115,4 +113,3 @@ STA は、その Azure Search の観点から待機時間の割合を把握す�
 [1]: ./media/search-performance-optimization/geo-redundancy.png
 [2]: ./media/search-performance-optimization/scale-indexers.png
 [3]: ./media/search-performance-optimization/geo-search-traffic-mgr.png
-

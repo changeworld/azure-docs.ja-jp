@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2016
 ms.author: douglasl
-translationtype: Human Translation
-ms.sourcegitcommit: bcb0a66425439522e0c9a353798ac70505b91e39
 ms.openlocfilehash: ceb355d2ba872ed5d3886c6dc82ca75b1854db0a
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure"></a>Azure での Stretch Database に対する Transparent Data Encryption (TDE) の有効化
 > [!div class="op_single_selector"]
@@ -58,9 +58,3 @@ Stretch 対応 SQL Server データベースから移行したデータを格納
 
 
 <!--Link references-->
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

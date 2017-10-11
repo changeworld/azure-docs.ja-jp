@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2e229cab7b8a498d3015183d438e2bc2465822aa
-ms.openlocfilehash: f526af67a94ce0cab61591d9250f4742b1ede579
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/29/2016
-
+ms.openlocfilehash: 364873ff54099a6123e40b12e819d1745751f285
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="vulnerabilities-detected-by-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection で検出される脆弱性
 脆弱性は、攻撃者によって悪用される可能性のある環境内の弱点です。 これらの脆弱性に対処して組織のセキュリティ対策を強化し、攻撃者による脆弱性の悪用を防ぐことをお勧めします。
@@ -61,5 +60,4 @@ Azure AD Privileged Identity Management を使用して、特権 ID と、Azure 
 
 ## <a name="see-also"></a>関連項目
 * [Azure Active Directory Identity Protection](active-directory-identityprotection.md)
-
 

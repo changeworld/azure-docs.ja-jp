@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: anandy
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 87807a203d71b3abfe3e93132eb7d0b82b14b4ee
-ms.contentlocale: ja-jp
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
 ms.lasthandoff: 08/03/2017
-
----    
-
+---
 # <a name="update-the-ssl-certificate-for-an-active-directory-federation-services-ad-fs-farm"></a>Active Directory フェデレーション サービス (AD FS) ファームの SSL 証明書の更新
 
 ## <a name="overview"></a>概要
@@ -108,4 +106,3 @@ AD FS ファームのサーバーに関する情報の確認が済むと、Azure
 
 - [Azure AD Connect とフェデレーション](active-directory-aadconnectfed-whatis.md)
 - [Azure AD Connect による Active Directory フェデレーション サービスの管理とカスタマイズ](active-directory-aadconnect-federation-management.md)
-

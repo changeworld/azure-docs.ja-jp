@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2db2ba16c06f49fd851581a1088df21f5a87a911
 ms.openlocfilehash: ff938697add98f3d21b4971175432335ee2e39ba
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="take-action-with-an-automation-runbook-from-a-log-analytics-log-search-result"></a>Log Analytics のログ検索結果から Automation Runbook を使用してアクションを実行する
 
 Azure Log Analytics のログ検索結果から、**[Take action] \(アクションの実行)** を選択して Automation Runbook を実行できるようになりました。  Runbook を使用すると、問題を修正したり、トラブルシューティング情報の収集、電子メールの送信、サービス要求の作成などのその他の何らかのアクションを実行したりできます。 

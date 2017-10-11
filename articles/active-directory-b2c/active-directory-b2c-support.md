@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/06/2016
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: ad02321c99c57d0f83f7eacb354e47d8c6d4d14f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-active-directory-b2c-file-support-requests"></a>Azure Active Directory B2C: ファイル サポート要求
 Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を提出するには、次の手順に従います。
@@ -52,7 +51,7 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
    * **[ファイルのアップロード]**で、問題の解決に役立つと思われるすべてのスクリーンショットやファイルをアップロードします。
      
      ![Support - Problem](./media/active-directory-b2c-support/support-problem.png)
-7. **[連絡先情報]** ブレードで、自分の連絡先情報を追加します。 **[作成]**をクリックします。
+7. **[連絡先情報]** ブレードで、自分の連絡先情報を追加します。 **Create** をクリックしてください。
    
     ![Support - Contact](./media/active-directory-b2c-support/support-contact.png)
 8. サポート要求を送信した後は、スタート画面の **[ヘルプとサポート]** をクリックした後 **[サポート要求の管理]** をクリックして、監視できます。
@@ -66,5 +65,4 @@ Azure Portal で Azure Active Directory (Azure AD) B2C のサポート要求を�
 > 
 
 ![サポート - サブスクリプションなし](./media/active-directory-b2c-support/support-no-sub.png)
-
 

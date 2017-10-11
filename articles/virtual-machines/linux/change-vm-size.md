@@ -16,13 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 23fc9f7f34732079682857d4ee685fe811751698
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="resize-a-linux-virtual-machine-using-cli-20"></a>CLI 2.0 を使用して Linux 仮想マシンのサイズを変更する
 
@@ -63,4 +61,3 @@ VM のサイズを変更するには、[Azure CLI 2.0](/cli/azure/install-az-cli
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]:sizes.md
-

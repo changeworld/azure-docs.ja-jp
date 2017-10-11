@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
-translationtype: Human Translation
-ms.sourcegitcommit: 219dcbfdca145bedb570eb9ef747ee00cc0342eb
-ms.openlocfilehash: daf2017bfbab4250e3f1481f592e0e858c77f121
-
-
+ms.openlocfilehash: 56a8aad7484fed18b74200ffa7acf22363625a15
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="testing-your-data-service-offer-in-staging"></a>ステージング環境でのデータ サービス プランのテスト
 > [!IMPORTANT]
@@ -35,7 +35,7 @@ ms.openlocfilehash: daf2017bfbab4250e3f1481f592e0e858c77f121
 
   ![図](media/marketplace-publishing-data-service-test-in-staging/step-1.1.png)
 
-1.  [発行ポータル](https://publish.windowsazure.com)
+1. [発行ポータル](https://publish.windowsazure.com)
 2. 左側のナビゲーション ウィンドウで [ **Data Services** ] を選択します。
 3. ステージング環境にプッシュするプランを選択します。 上記の画面が表示されます。
 4. [ **ステージングにプッシュ** ] ボタンをクリックします。  
@@ -63,7 +63,7 @@ ms.openlocfilehash: daf2017bfbab4250e3f1481f592e0e858c77f121
 ステージングへのプッシュが完了すると、"In progress" アイコンの動きが止まり、状態が "Staged" に更新されます。  これでプランのテストの準備ができました。  
 
 ## <a name="step-2-test-your-staged-offer-in-datamarket"></a>手順 2. ステージされたプランを DataMarket でテストする
-[ **サービス プランを表示** ] というテキストに続くリンクをクリックして、プランが本番稼働したときにサブスクライバーが参照し、DataMarket に表示される画面を表示してください。
+ **サービス プランを表示**  というテキストに続くリンクをクリックして、プランが本番稼働したときにサブスクライバーが参照し、DataMarket に表示される画面を表示してください。
 
   ![図](media/marketplace-publishing-data-service-test-in-staging/step-2.2.png)
 
@@ -96,10 +96,4 @@ ms.openlocfilehash: daf2017bfbab4250e3f1481f592e0e858c77f121
 
 ## <a name="see-also"></a>関連項目
 * [Getting Started: How to publish an offer to the Azure Marketplace (概要: Azure Marketplace へのプランの発行方法)](marketplace-publishing-getting-started.md)
-
-
-
-
-<!--HONumber=Nov16_HO3-->
-
 

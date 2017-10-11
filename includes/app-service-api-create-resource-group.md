@@ -1,11 +1,11 @@
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。
+持つリソース グループを作成、 [az グループ作成](/cli/azure/group#create)コマンド。
 
 [!INCLUDE [resource group intro text](resource-group.md)]
 
-次の例では、*myResourceGroup* という名前のリソース グループを *westeurope* の場所に作成します。
+次の例は、という名前のリソース グループを作成*myResourceGroup*で、 *westeurope*場所。
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
 ```
 
-利用可能な場所を表示するには、`az appservice list-locations` コマンドを実行します。 一般に、リソースは、近くのリージョンに作成します。
+使用可能な場所を表示するには、実行、`az appservice list-locations`コマンド。 一般に、リソースを作成するには、近くにある地域にします。

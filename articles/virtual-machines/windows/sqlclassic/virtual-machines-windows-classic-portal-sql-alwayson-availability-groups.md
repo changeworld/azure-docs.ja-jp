@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-translationtype: Human Translation
-ms.sourcegitcommit: 0d9afb1554158a4d88b7f161c62fa51c1bf61a7d
 ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.lasthandoff: 04/12/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -114,7 +113,7 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
    > 
    
     ![ロールの追加の図表](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784624.png)
-7. **[確認]** セクションが表示されるまで **[次へ]** をクリックします。 **[必要に応じて対象サーバーを自動的に再起動する]** チェック ボックスをオンにします。
+7. **[確認]** セクションが表示されるまで **[次へ]** をクリックします。 **[必要に応じてターゲット サーバーを自動的に再起動する]** チェック ボックスをオンにします。
 8. **[インストール]**をクリックします。
 9. 機能がインストールされたら、**[サーバー マネージャー]** ダッシュボードに戻ります。
 10. 左側のウィンドウで新しい **[AD DS]** オプションを選択します。
@@ -415,5 +414,4 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
 これで、Azure に可用性グループを作成して、SQL Server AlwaysOn を正常に実装できました。 この可用性グループのリスナーを構成するには、「[Azure での AlwaysOn 可用性グループの ILB リスナーの構成](../classic/ps-sql-int-listener.md)」をご覧ください。
 
 Azure での SQL Server の使用に関するその他の情報については、「 [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)」を参照してください。
-
 

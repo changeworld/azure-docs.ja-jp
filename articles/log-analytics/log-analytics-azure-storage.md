@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 04/12/2017
 ms.author: magoedte
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: b62df3074779559ffab55c52a902e7473753868e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.openlocfilehash: 7a3785e39f0d1cf849dbbf0d83d89eaed58c5b0b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="collect-azure-service-logs-and-metrics-for-use-in-log-analytics"></a>Log Analytics で Azure サービスのログとメトリックを使用できるように収集する
 
@@ -153,4 +152,3 @@ Azure テンプレート ギャラリーには、サービスからデータを�
 * [Blob Storage (IIS の場合) と Table Storage (イベントの場合) を使用](log-analytics-azure-storage-iis-table.md)して、診断情報を Table Storage に出力する Azure サービスのログや、Blob Storage に出力された IIS ログを読み取ります。
 * [ソリューションを有効](log-analytics-add-solutions.md) にして、データに対する洞察を得ます。
 * [検索クエリを使用](log-analytics-log-searches.md) して、データを分析します。
-

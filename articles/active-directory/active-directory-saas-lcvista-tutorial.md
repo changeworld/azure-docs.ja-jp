@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f291186c6a68dea8aa00b846a2e6f3ad0d7996c
 ms.openlocfilehash: c19f81da495eb7116b62797d1755d312a23f3805
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/28/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lcvista"></a>チュートリアル: Azure Active Directory と LCVista の統合
 
@@ -102,7 +100,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
 1. Azure ポータルの **LCVista** アプリケーション統合ページで、**[シングル サインオン]** をクリックします。
 
-    ![Configure Single Sign-On][4]
+    ![[シングル サインオンの構成]][4]
 
 2. **[シングル サインオン]** ダイアログで、**[モード]** として **[SAML ベースのサインオン]** を選択し、シングル サインオンを有効にします。
  
@@ -114,7 +112,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     a. **[サインオン URL]** ボックスに、`https://<subdomain>.lcvista.com/rainier/login` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://<subdomain>.lcvista.com` の形式で URL を入力します。    
+    b. **[識別子]** ボックスに、`https://<subdomain>.lcvista.com` の形式で URL を入力します。 
      
     > [!NOTE] 
     > これらは実際の値ではありません。 実際の識別子とサインオン URL でこれらの値を更新してください。 これらの値を取得するには、[LCVista クライアント サポート チーム](https://lcvista.com/contact)に問い合わせてください。 
@@ -186,7 +184,7 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-lcvista-test-user"></a>LCVista テスト ユーザーの作成
 
@@ -246,5 +244,4 @@ LCVista で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-lcvista-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-lcvista-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-lcvista-tutorial/tutorial_general_203.png
-
 

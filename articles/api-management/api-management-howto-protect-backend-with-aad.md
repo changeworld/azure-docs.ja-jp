@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 0dfb4102904c2e972e6617fd3851fb1c50147357
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="how-to-protect-a-web-api-backend-with-azure-active-directory-and-api-management"></a>Azure Active Directory と API Management で Web API バックエンドを保護する方法
 次のビデオでは、Web API バックエンドをビルドし、Azure Active Directory と API Management で OAuth 2.0 プロトコルを使用して保護する方法を示します。  この記事では、ビデオで説明する手順の概要と追加情報を紹介します。 この 24 分間のビデオでは、次の手順について説明しています。
@@ -564,4 +563,3 @@ OAuth 2.0 認証を API で構成したら、デベロッパー センターか�
 
 [Create an API Management service instance]: api-management-get-started.md#create-service-instance
 [Manage your first API]: api-management-get-started.md
-

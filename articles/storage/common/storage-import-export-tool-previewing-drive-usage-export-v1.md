@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="previewing-drive-usage-for-an-export-job"></a>エクスポート ジョブのドライブ使用率のプレビュー
 エクスポート ジョブを作成する前に、エクスポートする一連の BLOB を選択する必要があります。 Microsoft Azure Import/Export サービスを使用すると、BLOB のパスの一覧や BLOB プレフィックスを使用して、選択した BLOB を表すことができます。  
   
@@ -80,4 +78,3 @@ Number of drives needed:        3
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Import/Export ツールの参照](../storage-import-export-tool-how-to-v1.md)
-

@@ -1,7 +1,7 @@
 > [!IMPORTANT]
-> Azure Service Manager を使用した HDInsight リソースの管理に関する Azure PowerShell のサポートは**廃止**され、2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure Resource Manager で機能する新しい HDInsight コマンドレットを使用します。
+> Azure サービス マネージャーを使用して HDInsight のリソースを管理するための azure の PowerShell サポートが**廃止**2017 年 1 月 1 日に削除されました。 このドキュメントの手順では、Azure リソース マネージャーとの機能の新しい HDInsight コマンドレットを使用します。
 > 
-> [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs) に関するページの手順に従い、Azure PowerShell の最新バージョンをインストールしてください。 Azure Resource Manager で機能する新しいコマンドレットを使用するようにスクリプトを変更する必要がある場合、詳細については、「 [Migrating to Azure Resource Manager-based development tools for HDInsight clusters (HDInsight クラスターの Azure Resource Manager ベースの開発ツールへの移行)](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md) 」をご覧ください。
+> 」の手順に従ってください[インストールして構成する Azure PowerShell](/powershell/azureps-cmdlets-docs) Azure PowerShell の最新版をインストールします。 スクリプトを使用する新しいコマンドレットを使用するように変更する必要があるかどうかがある Azure リソース マネージャーを参照してください[Azure Resource Manager ベースの開発ツールで HDInsight クラスターに移行する](../articles/hdinsight/hdinsight-hadoop-development-using-azure-resource-manager.md)詳細についてはします。
 > 
 > 
 

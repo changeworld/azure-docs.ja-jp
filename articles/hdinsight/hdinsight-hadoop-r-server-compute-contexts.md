@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 06/19/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 47f4441612be4f363ba82cc22b09786a6f3bfdc3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="compute-context-options-for-r-server-on-hdinsight"></a>HDInsight の R Server (プレビュー) の計算コンテキストのオプション
 
@@ -86,5 +85,4 @@ ScaleR コンピューティング コンテキストの詳細と例について
 * [R Server for Hadoop の使用](hdinsight-hadoop-r-server-get-started.md)
 * [HDInsight へ RStudio Server を追加する (クラスター作成時に追加されていない場合)](hdinsight-hadoop-r-server-install-r-studio.md)
 * [HDInsight の R Server 向けの Azure Storage オプション](hdinsight-hadoop-r-server-storage.md)
-
 

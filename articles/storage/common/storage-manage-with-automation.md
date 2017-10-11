@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: eamono
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4649e42a628307e15f8b067503e4e8e13f16f1af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="managing-azure-storage-using-azure-automation"></a>Azure Automation を使用した Azure Storage の管理
 このガイドでは、Azure Automation サービスと、このサービスを使用して Azure Storage BLOB、テーブル、およびキューの管理を簡略化する方法について紹介します。
@@ -44,5 +43,4 @@ Azure Automation でクラウド管理タスクを自動実行すれば、運用
 ここまで、Azure Automation の基本と Azure Automation を使用して Azure Storage BLOB、テーブル、およびキューを管理する方法について説明しました。Azure Automation の詳細については、これらのリンクを参照してください。
 
 Azure Automation チュートリアル「 [Azure Automation での Runbook の作成またはインポート](../../automation/automation-creating-importing-runbook.md)」を参照してください。
-
 

@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: b8c189865c27566e3265f14eb54cb5ea4a005dc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 290ca66048281de5e031b0404919bed84ab19ffa
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する場合の問題
 
 アプリケーションを構成しているときに問題が発生する場合は、 アプリケーションのチュートリアルに記載されているすべての手順を実行したことを確認します。 アプリケーションの構成内に、アプリケーションの構成方法についてのインライン ドキュメントがあります。 また、[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照することもできます。
@@ -111,4 +109,3 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)
-

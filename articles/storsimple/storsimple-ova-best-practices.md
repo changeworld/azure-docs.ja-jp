@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/08/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 264764c5e9c32574d97beb2cc3c1bb1cfb555568
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>StorSimple Virtual Array のベスト プラクティス
 ## <a name="overview"></a>Overview
@@ -108,7 +107,7 @@ StorSimple Virtual Array のサイズを変更するときは、次の要素を�
 想定外の拡大を考慮して、1.25 ～ 1.5 TB のローカル ディスクをプロビジョニングすることになります。
 
 ### <a name="group-policy"></a>グループ ポリシー
-グループ ポリシーは、ユーザーとコンピューターに対して特定の構成を実装できるインフラストラクチャです。 グループ ポリシーの設定は、グループ ポリシー オブジェクト (GPO) に格納されます。グループ ポリシー オブジェクトは、Active Directory ドメイン サービス (AD DS) のコンテナーであるサイトやドメイン、組織単位 (OU) に関連付けられています。 
+グループ ポリシーは、ユーザーとコンピューターに対して特定の構成を実装できるインフラストラクチャです。 グループ ポリシーの設定は、グループ ポリシー オブジェクト (GPO) に格納されます。グループ ポリシー オブジェクトは、Active Directory Domain Services (AD DS) のコンテナーであるサイトやドメイン、組織単位 (OU) に関連付けられています。 
 
 仮想アレイがドメインに参加している場合は、そのドメインに GPO を適用することができます。 これらの GPO によってウイルス対策ソフトウェアなどのアプリケーションがインストールされ、StorSimple Virtual Array の動作に悪影響が生じる場合があります。
 
@@ -285,5 +284,4 @@ Windows のインデックス作成プロセスを使用する場合、次のガ
 
 ## <a name="see-also"></a>関連項目
 StorSimple Manager サービスを介して [StorSimple Virtual Array を管理する方法](storsimple-virtual-array-manager-service-administration.md) を学習します。
-
 

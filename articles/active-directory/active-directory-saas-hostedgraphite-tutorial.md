@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/22/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
 ms.openlocfilehash: f6ed02cc67be4090402a115c30819ff6cff99c99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>チュートリアル: Azure Active Directory と Hosted Graphite の統合
 
@@ -112,9 +110,9 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-hostedgraphite-tutorial/tutorial_hostedgraphite_url.png)
 
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、 `https://www.hostedgraphite.com/metadata/<user id>` の形式で URL を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 **[識別子]** ボックスに、`https://www.hostedgraphite.com/metadata/<user id>` の形式で URL を入力します。
 
-    b. **[応答 URL]** ボックスに、 `https://www.hostedgraphite.com/complete/saml/<user id>` のパターンを使用して URL を入力します。
+    b. **[応答 URL]** ボックスに、`https://www.hostedgraphite.com/complete/saml/<user id>` のパターンを使用して URL を入力します。
 
 4. **[Hosted Graphite のドメインと URL]** セクションで、**SP 開始モード**でアプリケーションを構成する場合は、次の手順を実行します。
    
@@ -265,5 +263,4 @@ Hosted Graphite で Azure AD のシングル サインオンを構成してテ�
 [201]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hostedgraphite-tutorial/tutorial_general_203.png
-
 

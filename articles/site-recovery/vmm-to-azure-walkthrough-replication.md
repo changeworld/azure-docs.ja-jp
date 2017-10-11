@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 592e1c3f647e5b1f1d9aa776657e8f89b60349e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="step-10-set-up-a-replication-policy-for-hyper-v-vm-replication-with-vmm-to-azure"></a>手順 10: Azure への Hyper-V VM (VMM あり) のレプリケーションに関するレプリケーション ポリシーを設定する
 
@@ -56,4 +55,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 11: レプリケーションを有効にする](vmm-to-azure-walkthrough-enable-replication.md)方法に関するページに進む
-

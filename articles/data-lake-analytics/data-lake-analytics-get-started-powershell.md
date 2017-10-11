@@ -1,6 +1,6 @@
 ---
-title: "Azure PowerShell で Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
-description: "Azure PowerShell を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信します。 "
+title: "Azure PowerShell を使用して Azure Data Lake Analytics の概要 |Microsoft ドキュメント"
+description: "Azure PowerShell を使用して、Data Lake Analytics アカウントを作成し、U-SQL を使用して、Data Lake Analytics ジョブを作成して、ジョブを送信します。 "
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
@@ -14,37 +14,35 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/04/2017
 ms.author: edmaca
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
-ms.openlocfilehash: faf17bcac66a70fc78bb171e172886fd2dcadca8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.openlocfilehash: 4f73e27c733edae658d1ea3bdabe48076328279b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell で Azure Data Lake Analytics の使用を開始する
+# <a name="get-started-with-azure-data-lake-analytics-using-azure-powershell"></a>Azure PowerShell を使用して Azure Data Lake Analytics の概要します。
 [!INCLUDE [get-started-selector](../../includes/data-lake-analytics-selector-get-started.md)]
 
-Azure PowerShell を使って Azure Data Lake Analytics アカウントを作成し、U-SQL ジョブを送信して実行する方法について説明します。 Data Lake Analytics の詳細については、「 [Azure Data Lake Analytics の概要](data-lake-analytics-overview.md)」を参照してください。
+Azure PowerShell を使用して、Azure Data Lake Analytics アカウントを作成および送信し、U SQL ジョブを実行する方法を説明します。 Data Lake Analytics の詳細については、次を参照してください。 [Azure Data Lake Analytics 概要](data-lake-analytics-overview.md)です。
 
 ## <a name="prerequisites"></a>前提条件
 
-このチュートリアルを開始する前に、次の条件を満たしておく必要があります。
+このチュートリアルを開始する前に、次の情報が必要です。
 
-* **Azure Data Lake Analytics アカウント**。 「[Data Lake Analytics の使用を開始する](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal)」を参照してください。
-* **Azure PowerShell を実行できるワークステーション**。 「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。
+* **Azure Data Lake Analytics アカウント**です。 参照してください[Data Lake Analytics の概要](https://docs.microsoft.com/en-us/azure/data-lake-analytics/data-lake-analytics-get-started-portal)です。
+* **Azure PowerShell を使用してワークステーション**です。 参照してください[をインストールして、Azure PowerShell を構成する方法](/powershell/azure/overview)です。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="log-in-to-azure"></a>Azure にログイン
 
-このチュートリアルでは、既に Azure PowerShell を使い慣れていることを前提としています。 特に、Azure にログインする方法を理解している必要があります。 ヘルプが必要な場合は、[Azure PowerShell の概要](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps)に関するページを参照してください。
+このチュートリアルでは、Azure PowerShell を使用に慣れて既に前提としています。 具体的には、Azure にログインする方法を理解する必要があります。 参照してください、 [Azure PowerShell の入門](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps)ヘルプが必要な場合です。
 
-サブスクリプション名でログインするには:
+サブスクリプションの名前でログインします。
 
 ```
 Login-AzureRmAccount -SubscriptionName "ContosoSubscription"
 ```
 
-サブスクリプション名の代わりに、サブスクリプション ID を使用してログインすることもできます。
+サブスクリプション名の代わりにログインするサブスクリプション id を使用することもできます。
 
 ```
 Login-AzureRmAccount -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
@@ -63,7 +61,7 @@ CurrentStorageAccount :
 
 ## <a name="preparing-for-the-tutorial"></a>チュートリアルの準備
 
-このチュートリアルの PowerShell スニペットでは、以下の変数を使って各情報を格納します。
+このチュートリアルでは PowerShell スニペットは、この情報を格納するのにこれらの変数を使用します。
 
 ```
 $rg = "<ResourceGroupName>"
@@ -72,13 +70,13 @@ $adla = "<DataLakeAnalyticsAccountName>"
 $location = "East US 2"
 ```
 
-## <a name="get-information-about-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントに関する情報を取得する
+## <a name="get-information-about-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントに関する情報を取得します。
 
 ```
 Get-AdlAnalyticsAccount -ResourceGroupName $rg -Name $adla  
 ```
 
-## <a name="submit-a-u-sql-job"></a>U-SQL ジョブの送信
+## <a name="submit-a-u-sql-job"></a>U SQL ジョブを送信します。
 
 U-SQL スクリプトを保持する PowerShell 変数を作成します。
 
@@ -98,13 +96,13 @@ OUTPUT @a
 "@
 ```
 
-このスクリプトを送信します。
+スクリプトを送信します。
 
 ```
 $job = Submit-AdlJob -AccountName $adla –Script $script
 ```
 
-または、スクリプトをファイルとして保存し、次のコマンドで送信できます。
+または、スクリプト ファイルとして保存し、次のコマンドで送信します。
 
 ```
 $filename = "d:\test.usql"
@@ -113,13 +111,13 @@ $job = Submit-AdlJob -AccountName $adla –ScriptPath $filename
 ```
 
 
-特定のジョブの状態を取得します。 ジョブが完了するまで、このコマンドレットを使い続けます。
+特定のジョブの状態を取得します。 ジョブの完了が表示されるまで、このコマンドレットを使用して保持します。
 
 ```
 $job = Get-AdlJob -AccountName $adla -JobId $job.JobId
 ```
 
-ジョブが完了するまで Get-AdlAnalyticsJob を何度も呼び出す代わりに、Wait-AdlJob コマンドレットを使用することができます。
+ジョブが終了するまでに Get AdlAnalyticsJob を繰り返し呼び出す代わりに、待機 AdlJob コマンドレットを使用することができます。
 
 ```
 Wait-AdlJob -Account $adla -JobId $job.JobId
@@ -132,7 +130,6 @@ Export-AdlStoreItem -AccountName $adls -Path "/data.csv" -Destination "C:\data.c
 ```
 
 ## <a name="see-also"></a>関連項目
-* 他のツールを使用する同じチュートリアルを表示するには、ページの上部にあるタブ セレクターをクリックします。
-* U-SQL の詳細については、「 [Azure Data Lake Analytics U-SQL 言語の使用](data-lake-analytics-u-sql-get-started.md)」を参照してください。
-* 管理タスクについては、「 [Azure Portal を使用する Azure Data Lake Analytics の管理](data-lake-analytics-manage-use-portal.md)」をご覧ください。
-
+* その他のツールを使用して同じチュートリアルを表示するには、ページの上部のタブのセレクターをクリックします。
+* U-SQL については、次を参照してください。 [Azure データ Lake Analytics U-SQL 言語の概要](data-lake-analytics-u-sql-get-started.md)です。
+* 管理タスクを参照してください。[管理 Azure Data Lake Analytics Azure ポータルを使用して](data-lake-analytics-manage-use-portal.md)です。

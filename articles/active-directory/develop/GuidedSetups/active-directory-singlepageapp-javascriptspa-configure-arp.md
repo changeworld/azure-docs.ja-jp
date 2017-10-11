@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 735559464db4c237ff7498b7350f2385090fa4e4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: 708f4ff606d79639de979918a9cacd4ed75db311
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
@@ -52,4 +51,3 @@ var msalconfig = {
     redirectUri: location.origin
 };
 ``` 
-

@@ -15,14 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 80fd9ee9b9de5c7547b9f840ac78a60d52153a5a
 ms.openlocfilehash: 4992d98397da409f7c1cfbdeb40fdb0cdd0d2f19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/14/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="optimize-your-environment-with-the-system-center-operations-manager-assessment-preview-solution"></a>System Center Operations Manager Assessment (プレビュー) ソリューションを使用して環境を最適化する
 
 ![System Center Operations Manager Assessment のシンボル](./media/log-analytics-scom-assessment/scom-assessment-symbol.png)
@@ -292,4 +290,3 @@ OMS の評価ソリューションを使用するには、ソリューション�
 ## <a name="next-steps"></a>次のステップ
 
 - [ログ検索](log-analytics-log-searches.md)を実行して、詳細な System Center Operations Manager Assessment データと推奨事項を表示します。
-

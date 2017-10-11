@@ -13,13 +13,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 04/26/2017
 ms.author: ashmaka
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
 ms.openlocfilehash: a22b82829df4659681940267e64c98d345453958
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="query-your-azure-search-index"></a>Azure Search インデックスの照会
 > [!div class="op_single_selector"]

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/16/2016
 ms.author: alkohli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: bf92ffdb16b86c4033cc96ae2abb060d90f9505e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="failover-and-disaster-recovery-for-your-storsimple-device"></a>StorSimple デバイスのフェールオーバーとディザスター リカバリー
 ## <a name="overview"></a>概要
@@ -181,5 +179,4 @@ A.  削除ジョブが失敗した場合、ボリューム コンテナーの削
 ## <a name="next-steps"></a>次のステップ
 * フェールオーバーの実行後、必要に応じて [StorSimple デバイスを非アクティブ化または削除](storsimple-deactivate-and-delete-device.md)します。
 * StorSimple Manager サービスを使用する方法については、「 [StorSimple Manager サービスを使用した StorSimple デバイスの管理](storsimple-manager-service-administration.md)」を参照してください。
-
 

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/7/2017
 ms.author: dharmeshkakadia
-ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
 ms.openlocfilehash: 53e9685458190efe6a586504721b8e7baadaed60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="troubleshoot-hive-by-using-azure-hdinsight"></a>Azure HDInsight を使用した Hive のトラブルシューティング
 
 Apache Ambari で Apache Hive ペイロードを操作するときに発生する主な質問とその解決策について説明します。
@@ -177,7 +175,6 @@ Tez DAG データは次の 2 つの方法で収集できます。
 ### <a name="additional-reading-end"></a>その他の情報
 
 [SSH を使用して HDInsight クラスターに接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
-
 
 
 

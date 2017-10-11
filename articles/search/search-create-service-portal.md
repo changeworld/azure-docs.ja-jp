@@ -13,13 +13,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
 ms.openlocfilehash: 58f4eab190e40e16ed261c165ffdfc8155eeb434
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-an-azure-search-service-in-the-portal"></a>ポータルでの Azure Search サービスの作成
 
@@ -112,5 +110,4 @@ Azure Search サービスをプロビジョニングしたら、データをア�
 コードまたはスクリプトからサービスにアクセスするには、URL (*サービス名*.search.windows.net) を指定します。 管理者キーはフル アクセスを付与し、クエリ キーは読み取り専用アクセスを付与します。 [.NET で Azure Search を使用する方法](search-howto-dotnet-sdk.md)に関する記事を参照して、作業を開始してください。
 
 ポータル ベースのクイック チュートリアルについては、[最初のインデックスの作成とクエリ](search-get-started-portal.md)に関する記事をご覧ください。
-
 

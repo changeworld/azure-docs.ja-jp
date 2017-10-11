@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure モバイル アプリ (Xamarin Android) に対するオフライン同期の有効化"
 description: "App Service モバイル アプリを使用して、Xamarin Android アプリケーションのオフライン データをキャッシュおよび同期する方法を説明します。"
 documentationcenter: xamarin
@@ -14,17 +14,16 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 29cd1d3583dfcba5c1057ae1e81376930f52f887
-ms.openlocfilehash: 1152fcf551aa02264d626f87e97bc3f69b4f6778
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/08/2017
-
+ms.openlocfilehash: 471433c7ef2f6f128210ed145f685b42b44eea92
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="enable-offline-sync-for-your-xamarinandroid-mobile-app"></a>Xamarin Android モバイル アプリのオフライン同期を有効にする
 [!INCLUDE [app-service-mobile-selector-offline](../../includes/app-service-mobile-selector-offline.md)]
 
-## <a name="overview"></a>概要
+## <a name="overview"></a>Overview
 このチュートリアルでは、Xamarin.Android 向けのAzure Mobile Apps のオフライン同期機能について説明します。 オフライン同期を使用すると、エンド ユーザーはネットワークにアクセスできなくても、データの表示、追加、変更など、モバイル アプリケーションとやり取りできます。 変更は、ローカル データベースに格納されます。
 デバイスが再びオンラインになると、これらの変更がリモート サービスと同期されます。
 
@@ -128,4 +127,3 @@ Azure モバイル アプリのオフライン機能を使用すると、オフ�
 [Xamarin extension]: http://xamarin.com/visual-studio
 [SyncContext]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.mobileservices.mobileserviceclient.synccontext(v=azure.10).aspx
 [8]: app-service-mobile-dotnet-how-to-use-client-library.md
-

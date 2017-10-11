@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 877e0288fdd1f590acf064c204aff0741539b112
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learning-seat-lms"></a>チュートリアル: Azure Active Directory と Learning Seat LMS の統合
 
@@ -229,5 +227,4 @@ Learning Seat LMS で Azure AD のシングル サインオンを構成してテ
 [201]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-learnconnect-tutorial/tutorial_general_203.png
-
 

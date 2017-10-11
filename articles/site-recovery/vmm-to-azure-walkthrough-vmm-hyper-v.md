@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: ec118ed837dbf140083b3ae1e4ecd41c81562018
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
-
 # <a name="step-6-prepare-vmm-servers-and-hyper-v-hosts-for-hyper-v-replication-to-azure"></a>手順 6: Azure に Hyper-V をレプリケートできるように VMM サーバーと Hyper-V ホストを準備する
 
 デプロイの [Azure コンポーネント](vmm-to-azure-walkthrough-prepare-azure.md)を設定したら、この記事の手順に従って、Azure Site Recovery と対話するようオンプレミスの VMM サーバーと Hyper-V ホストを準備します。
@@ -49,5 +47,4 @@ Site Recovery をデプロイする際に、Site Recovery プロバイダーを�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 7: コンテナーを作成する](vmm-to-azure-walkthrough-create-vault.md)方法に関するページに進む
-
 

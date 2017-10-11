@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 11/22/2016
 ms.author: vidarmsft
-translationtype: Human Translation
-ms.sourcegitcommit: 32fcca540c1db317c5f11e94b2ee3359cadcc806
 ms.openlocfilehash: aedb44610fe57055851538b9dbdb810e66e58d73
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="storsimple-data-manager-overview-private-preview"></a>StorSimple データ マネージャーの概要 (プライベート プレビュー)
 
 ## <a name="overview"></a>Overview
@@ -72,8 +72,3 @@ StorSimple データ マネージャーはプライベート プレビュー段�
 ## <a name="next-steps"></a>次のステップ
 
 [StorSimple Data Manger UI を使用してデータを変換します](storsimple-data-manager-ui.md)。
-
-
-<!--HONumber=Nov16_HO4-->
-
-

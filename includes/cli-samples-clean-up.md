@@ -1,6 +1,6 @@
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
+## <a name="clean-up-resources"></a>リソースをクリーンアップします。
 
-リソースをクリーンアップするには、次のコマンドを実行します。
+自分のリソースをクリーンアップするには、次のコマンドを実行します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup

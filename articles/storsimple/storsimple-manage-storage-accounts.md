@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 04/29/2016
 ms.author: v-sharos
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 68b767c9c93f2daff476a21029b9813f347590b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-storage-account"></a>StorSimple Manager サービスを使用してストレージ アカウントを管理する
 ## <a name="overview"></a>概要
@@ -144,5 +143,4 @@ StorSimple Manager サービスにこの変更を認識させるには、StorSim
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-security.md)
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理の詳細](storsimple-manager-service-administration.md)
-
 

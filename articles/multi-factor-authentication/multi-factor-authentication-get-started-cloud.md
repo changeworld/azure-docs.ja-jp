@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 06/24/2017
 ms.author: kgremban
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 1cce449a87571fdabd0dbf76f764f442b2990ffe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.openlocfilehash: 19f3228b874fc4e37bf83388dae4341428226482
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="getting-started-with-azure-multi-factor-authentication-in-the-cloud"></a>クラウドでの Azure Multi-Factor Authentication Server の概要
 この記事では、クラウドで Azure Multi-Factor Authentication の使用を開始する方法について説明します。
@@ -46,5 +45,4 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="next-steps"></a>次のステップ
 クラウド側の Azure Multi-Factor Authentication を設定したら、デプロイ側の構成とセットアップを行います。 詳細については、「[Azure Multi-Factor Authentication の構成](multi-factor-authentication-whats-next.md)」を参照してください。
-
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 356de369ec5409e8e6e51a286a20af70a9420193
 ms.openlocfilehash: d421cee0becabdf81d865036d0c98b12b077152b
-ms.lasthandoff: 03/27/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="about-images-for-windows-virtual-machines"></a>Windows 仮想マシンのイメージについて
 > [!IMPORTANT]
@@ -48,4 +47,3 @@ Azure PowerShell モジュールを使用する例をいくつか示します。
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Portal を使用して Windows マシンを作成する](tutorial.md)こともできます。
-

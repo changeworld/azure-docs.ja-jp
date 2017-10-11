@@ -16,13 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5bbeb9d4516c2b1be4f5e076a7f63c35e4176b36
 ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/13/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成 (プレビュー)
 Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -146,4 +144,3 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
 * Hive JDBC を使用して Hive に接続する方法については、「[Hive の JDBC ドライバーを使用して Azure HDInsight の Hive に接続する](hdinsight-connect-hive-jdbc-driver.md)」をご覧ください。
 * Hive ODBC を使用して Excel を Hadoop に接続する方法については、「[Microsoft Hive ODBC ドライバーを使用した Excel から Hadoop への接続](hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。
 * Power Query を使用して Excel を Hadoop に接続する方法については、「[Power Query を使用した Excel から Hadoop への接続](hdinsight-connect-excel-power-query.md)」をご覧ください。
-

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 681a9d1636d547492f6f827461c6b2494b918778
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="availability-and-consistency-in-event-hubs"></a>Event Hubs における可用性と一貫性
 
 ## <a name="overview"></a>概要
@@ -67,4 +65,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs サービスの概要](event-hubs-what-is-event-hubs.md)
 * [イベント ハブの作成](event-hubs-create.md)
-

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/06/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 7c69630688e4bcd68ab3b4ee6d9fdb0e0c46d04b
 ms.openlocfilehash: 44ff168599e9078506e1afdd0f1dc4657ef0964d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/24/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-ad-b2c-single-page-app-sign-in-by-using-oauth-20-implicit-flow"></a>Azure AD B2C: OAuth 2.0 暗黙的フローを使用したシングルページ アプリへのサインイン
 
@@ -289,5 +287,4 @@ p=b2c_1_sign_in
 
 * [Node.js を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-nodejs-webapi)
 * [.NET を使用してシングルページ アプリを作成する](https://github.com/Azure-Samples/active-directory-b2c-javascript-singlepageapp-dotnet-webapi)
-
 

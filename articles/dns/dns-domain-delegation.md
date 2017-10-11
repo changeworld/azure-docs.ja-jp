@@ -1,6 +1,6 @@
 ---
-title: "Azure DNS の委任の概要 | Microsoft Docs"
-description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
+title: "Azure DNS 委任の概要 |Microsoft ドキュメント"
+description: "ドメインの委任の変更し、ドメイン ホスティングを提供する Azure の DNS ネーム サーバーを使用する方法を理解します。"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -13,63 +13,61 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
-translationtype: Human Translation
-ms.sourcegitcommit: abdbb9a43f6f01303844677d900d11d984150df0
-ms.openlocfilehash: ab6dd0e1e5975770bec741ed4a06b6eb4745e174
-ms.lasthandoff: 04/21/2017
-
+ms.openlocfilehash: 31a500502a4d3e729ecb79929ed6c1de156d6259
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
+# <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS での DNS ゾーンの委任
 
-# <a name="delegation-of-dns-zones-with-azure-dns"></a>Azure DNS による DNS ゾーンの委任
-
-Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 ドメインに対する DNS クエリを Azure DNS に到達させるには、ドメインを親ドメインから Azure DNS に委任する必要があります。 Azure DNS はドメイン レジストラーではないことに注意してください。 この記事では、ドメインの委任のしくみとドメインを Azure DNS に委任する方法について説明します。
+Azure DNS を使用すると、DNS ゾーンをホストし、Azure 内のドメインの DNS レコードを管理できます。 Azure DNS に到達するドメインの DNS クエリの順序は、Azure DNS 親ドメインを委任するドメインにあります。 Azure DNS に注意してくださいは、ドメイン レジストラーではないです。 この記事では、ドメインの委任のしくみと、Azure dns ドメインを委任する方法について説明します。
 
 ## <a name="how-dns-delegation-works"></a>DNS 委任のしくみ
 
 ### <a name="domains-and-zones"></a>ドメインとゾーン
 
-ドメイン ネーム システムはドメインの階層構造です。 階層は、"**.**" という名前の "root" ドメインから始まります。  その下には "com"、"net"、"org"、"uk"、"jp" などのトップ レベル ドメインがあります。  さらに、このようなトップレベル ドメインの下には "org.uk" や "co.jp" などの第 2 レベル ドメインがあります。  同様に続きます。 DNS 階層内のドメインのホストには、個別の DNS ゾーンを使用します。 これらのゾーンはグローバルに分散していて、世界中の DNS ネーム サーバーでホストされています。
+ドメイン ネーム システムは、ドメインの階層です。 階層を 'root'、ドメインの名前を持つは単に起動 '**.**' です。  この下 'com'、'net'、'org'、'uk' または 'jp' などの最上位ドメインを取得します。  これらのトップレベル ドメイン以下に 'org.uk' または 'co.jp' などの第 2 レベル ドメインを示します。  などなど。 DNS 階層内のドメインでは、別の DNS ゾーンを使用してホストされています。 これらのゾーンがグローバル配布、世界中の DNS ネーム サーバーによってホストされています。
 
-**DNS ゾーン** - ドメインとは、"contoso.com" など、ドメイン ネーム システム内で一意の名前です。 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 たとえば、ドメイン "contoso.com" に、"mail.contoso.com" (メール サーバー用) や "www.contoso.com" (Web サイト用) など、複数の DNS レコードを含めることができます。
+**DNS ゾーン**-ドメインとは、システムでは、ドメイン名、たとえば 'contoso.com' 一意の名前。 DNS ゾーンを使用して、特定のドメインの DNS レコードをホストします。 たとえば、ドメイン 'contoso.com' には、(メール サーバー) の場合に、' mail.contoso.com' と web サイト) (www.contoso.com などのいくつかの DNS レコードが含まれる可能性があります。
 
-**ドメイン レジストラー** - ドメイン レジストラーは、インターネット ドメイン名を提供できる企業です。 ドメイン レジストラーは、ユーザーが希望するインターネット ドメインが使用可能かどうかを確認し、購入を許可します。 ドメイン名が登録されると、そのユーザーはドメイン名の法律上の所有者になります。 既にインターネット ドメインを所有している場合は、現在のドメイン レジストラーを使用して、Azure DNS に委任します。
+**ドメイン レジストラー** -ドメイン レジストラーが、会社のインターネット ドメイン名を指定できます。 これらは、かどうかに使用するインターネット ドメインを使用、購入することを確認します。 ドメイン名が登録されると、ドメイン名の有効な所有者であります。 インターネット ドメインがある場合は、Azure DNS に委任する現在のドメイン レジストラーを使用します。
 
-特定のドメイン名の所有者の詳細や、ドメインの購入方法の詳細については、「 [Internet domain management in Azure AD (Azure AD でのインターネット ドメイン管理)](https://msdn.microsoft.com/library/azure/hh969248.aspx)」を参照してください。
+指定したドメイン名を所有しているユーザーまたはドメインを購入する方法についての詳細を調べるには、次を参照してください。 [Azure AD でのインターネット ドメイン管理](https://msdn.microsoft.com/library/azure/hh969248.aspx)です。
 
-### <a name="resolution-and-delegation"></a>解決と委任
+### <a name="resolution-and-delegation"></a>解像度と委任
 
-DNS サーバーには次の 2 種類があります。
+DNS サーバーの 2 つの種類があります。
 
-* *権限のある* DNS サーバーは、DNS ゾーンをホストします。 このサーバーは、これらのゾーン内のレコードに対する DNS クエリのみに応答します。
-* *再帰* DNS サーバーは、DNS ゾーンをホストしません。 このサーバーは、権限のある DNS サーバーを呼び出して必要なデータを収集することで、すべての DNS クエリに応答します。
+* *権限のある*DNS サーバーは DNS ゾーンをホストします。 それらのゾーンのみ内のレコードの DNS クエリを応答します。
+* A*再帰*DNS サーバーが DNS ゾーンをホストしていません。 すべての DNS クエリに必要なデータを収集するための権限のある DNS サーバーを呼び出すことによって応答します。
 
-Azure DNS は、権限のある DNS サービスを提供します。  再帰 DNS サービスは提供しません。 Azure の Cloud Services と VM は、Azure のインフラストラクチャの一部として個別に提供されている再帰 DNS サービスを使用するように自動的に構成されます。 これらの DNS 設定を変更する方法については、[Azure での名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)に関するページを参照してください。
+Azure DNS は、権限を持つの DNS サービスを提供します。  再帰的な DNS サービスは提供されません。 クラウド サービスと Azure の Vm は Azure のインフラストラクチャの一部として個別に用意されている再帰的な DNS サービスを使用する自動的に構成されます。 これらの DNS 設定を変更する方法については、次を参照してください。 [azure 名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)です。
 
-PC やモバイル デバイスの DNS クライアントは、通常、クライアント アプリケーションが必要とする DNS クエリを実行するために、再帰 DNS サーバーを呼び出します。
+Pc またはモバイル デバイスの DNS クライアントは、通常、クライアント アプリケーションが必要なすべての DNS クエリを実行する再帰 DNS サーバーを呼び出します。
 
-再帰 DNS サーバーは、"www.contoso.com" などの DNS レコードに対するクエリを受け取ると、まず、"contoso.com" ドメインのゾーンをホストするネーム サーバーを検索する必要があります。 ネーム サーバーを検索するには、ルート名サーバーから開始し、そこから、"com" ゾーンをホストするネーム サーバーを見つけます。 次に、"com" ネーム サーバーを照会し、"contoso.com" ゾーンをホストするネーム サーバーを見つけます。  最後に、"www.contoso.com" についてこれらのネーム サーバーを照会できます。
+再帰 DNS サーバーは、www.contoso.com などの DNS レコードのクエリを受信したときに 'contoso.com' ドメインのゾーンをホストしている名前のサーバーを見つけることが必要があります。 ネーム サーバーを検索するには、は、ルート ネーム サーバーから開始され、そこからゾーンをホストして 'com' ネーム サーバーを検索します。 次に、'com' ネーム サーバー 'contoso.com' ゾーンをホスト ネーム サーバーを検索するクエリ。  最後に、www.contoso.com のこれらの名前のサーバーを照会することができます。
 
-この手順を、DNS 名の解決といいます。 厳密に言えば、DNS 解決には、次の CNAME などのその他の手順が含まれますが、DNS の委任のしくみを理解するうえでは重要ではありません。
+この手順は、DNS 名の解決と呼ばれます。 厳密には、DNS 解決には、次の Cname などの追加手順が含まれていますが、DNS 委任のしくみを理解するために重要ではありません。
 
-親ゾーンが子ゾーンのネーム サーバーを "指す" には、 NS レコード (NS は "ネーム サーバー" の略) と呼ばれる特殊な種類の DNS レコードを使用します。 たとえば、root ゾーンには "com" の NS レコードが格納され、"com" ゾーンのネーム サーバーが示されます。 同様に、"com" ゾーンには "contoso.com" の NS レコードが格納されます。このレコードは "contoso.com" ゾーンのネーム サーバーを示します。 親ゾーンで子ゾーンの NS レコードを設定することを、ドメインの委任と呼びます。
+方法は、親ゾーン ' ポイント '、子ゾーンのネーム サーバーにしますか。 これは、特殊な種類の NS レコード (「サーバーの名前」NS は) と呼ばれる DNS レコードを使用します。 たとえば、ルート ゾーンは 'com' の NS レコードが含まれていて、'com' ゾーンのネーム サーバーを示しています。 さらに、'com' ゾーンには、'contoso.com' 'contoso.com' ゾーンのネーム サーバーに示すの NS レコードが含まれています。 親ゾーンに、子ゾーンの NS レコードを設定すると、ドメインの委任が呼び出されます。
 
-次の図に DNS クエリの例を示します。 contoso.net と partners.contoso.net は Azure DNS ゾーンです。
+次の図は、DNS クエリの例を示します。 Contoso.net と partners.contoso.net は、Azure DNS ゾーンがします。
 
-![Dns-nameserver](./media/dns-domain-delegation/image1.png)
+![Dns ネーム サーバー](./media/dns-domain-delegation/image1.png)
 
-1. クライアントがローカル DNS サーバーに `www.partners.contoso.net` を要求します。
-1. レコードがないため、ローカル DNS サーバーはルート ネーム サーバーに要求を行います。
-1. ルート ネーム サーバーにはレコードがありません。しかし、`.net` ネーム サーバーのアドレスがあるため、ルート ネーム サーバーはそのアドレスを DNS サーバーに提供します。
-1. DNS サーバーは `.net` ネーム サーバーに要求を送信します。.net ネーム サーバーにはレコードはありませんが、contoso.net ネーム サーバーのアドレスがあります。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
-1. `contoso.net` ゾーンにはレコードはありませんが、`partners.contoso.net` のネーム サーバーがあるので、このネーム サーバーが返されます。 この例では、これは Azure DNS でホストされている DNS ゾーンです。
-1. DNS サーバーは、`partners.contoso.net` ゾーンに対して `partners.contoso.net` の IP アドレスを要求します。 このゾーンには A レコードが格納されており、IP アドレスが返されます。
-1. DNS サーバーからクライアントに IP アドレスが提供されます。
-1. クライアントは Web サイト `www.partners.contoso.net` に接続します。
+1. クライアントからの要求`www.partners.contoso.net`がローカルの DNS サーバーからです。
+1. ローカル DNS サーバーには、レコードはないので、ルート名のサーバーに要求を行います。
+1. ルートのネーム サーバー レコードがありませんのアドレスを知っている、`.net`ネーム サーバー、DNS サーバーにそのアドレスを提供
+1. DNS への要求を送信する、`.net`ネーム サーバーがない contoso.net ネーム サーバーのアドレスを知っているレコードではありません。 ここでは Azure の DNS にホストされている DNS ゾーンを勧めします。
+1. ゾーン`contoso.net`、レコードがありませんのネーム サーバーは認識して`partners.contoso.net`し、その応答します。 ここでは Azure の DNS にホストされている DNS ゾーンを勧めします。
+1. DNS サーバーの IP アドレスを要求する`partners.contoso.net`から、`partners.contoso.net`ゾーンです。 A レコードを含むし、IP アドレスで応答します。
+1. DNS サーバーをクライアントに IP アドレスを提供します。
+1. クライアントが、web サイトに接続`www.partners.contoso.net`です。
 
-実際に、各委任には、NS レコードの 2 つのコピーがあります。1 つは親ゾーン内で子ゾーンを指すレコード、もう 1 つは子ゾーン自体にあるレコードです。 "contoso.net" ゾーンには、("net" 内の NS レコードだけでなく) "contoso.net" の NS レコードも格納されています。 これらのレコードは、優先する NS レコードと呼ばれ、子ゾーンの頂点に配置されます。
+各委任は、NS レコードの 2 つのコピーを実際には子ドメインと、子ゾーン内の別のポイントは親ゾーンに 1 つです。 'Contoso.net' ゾーンには、('net' 内の NS レコード) だけでなく 'contoso.net' の NS レコードが含まれています。 これらのレコードには、権威 NS レコードと呼ばれ、子ゾーンの頂点の前に座っています。
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure DNS にドメインを委任する方法については[こちら](dns-delegate-domain-azure-dns.md)を参照してください。
-
+学習方法[Azure DNS ドメインの委任](dns-delegate-domain-azure-dns.md)
 

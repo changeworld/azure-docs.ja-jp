@@ -15,12 +15,11 @@ ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: asteen
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: bd9066c251188c0f18fe1a9403baa2beaeeb987c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="what-is-the-access-panel"></a>アクセス パネルの概要
 
@@ -193,4 +192,3 @@ Azure Portal でアプリケーションの SSO を構成する場合、第 3 �
 [3]: ./media/active-directory-saas-access-panel-introduction/03.png
 [4]: ./media/active-directory-saas-access-panel-introduction/04.png
 [5]: ./media/active-directory-saas-access-panel-introduction/05.png
-

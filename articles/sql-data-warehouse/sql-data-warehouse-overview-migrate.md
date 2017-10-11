@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/27/2017
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 771b9456e66b8a1e41f72340b695b19e2adaf793
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrate-your-solution-to-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse にソリューションを移行する
 既存のデータベース ソリューションを Azure SQL Data Warehouse に移行するときに行うことについて説明します。 
@@ -79,4 +77,3 @@ CAT (Customer Advisory Team) には、ブログを通じて発行する SQL Data
 
 <!--Other Web references-->
 [Migrating data to Azure SQL Data Warehouse in practice]: https://blogs.msdn.microsoft.com/sqlcat/2016/08/18/migrating-data-to-azure-sql-data-warehouse-in-practice/
-

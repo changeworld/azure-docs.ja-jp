@@ -13,16 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
 ms.openlocfilehash: 30db71c0706de1dcc0d48fb72fa5d62475a14ba7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
-
 # <a name="no-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションにユーザーがプロビジョニングされない
 
 アプリケーションで自動プロビジョニングが構成されると (アプリに接続するために Azure AD に提供されたアプリの資格情報が有効であることの確認など)、 ユーザーやグループがアプリにプロビジョニングされます。これは、次の情報に基づいて決定されます。
@@ -69,5 +65,4 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD Connect 同期: 宣言型のプロビジョニングについて](active-directory-aadconnectsync-understanding-declarative-provisioning.md)
-
 
