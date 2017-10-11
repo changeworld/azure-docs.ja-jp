@@ -14,12 +14,11 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1da3bc5454111bac5e958bf26d33cf61a5d4213c
-ms.openlocfilehash: ecff6e2e5be05499896ad23675682db184c634af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/17/2017
-
+ms.openlocfilehash: d7af3a531bc1bcced1a3c48403a6f60afea0f82f
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -185,4 +184,3 @@ FIM 2010 または MIM 2016 オンプレミスを使用して、2 つの Exchang
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 詳細については、[オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)に関するページを参照してください。
-

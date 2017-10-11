@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 パラメーターには、アプリケーションの名前とバージョンが含まれています。 パラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御するノブです。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。
@@ -74,4 +73,3 @@ MaxPercentUnhealthyServices、MaxPercentUnhealthyPartitionsPerService、MaxPerce
 [高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
 
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/21/2016
 ms.author: zarizvi
-translationtype: Human Translation
-ms.sourcegitcommit: 078833a21cd309087b842e21e3fc730695c254dd
-ms.openlocfilehash: 89fdeca4ffc1a36e8aff829b00483f208fa03e0f
-ms.lasthandoff: 12/21/2016
-
-
+ms.openlocfilehash: 1b5059dc052005b6079f70ecf6771a3771df8d87
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="supported-move-configurations"></a>サポートされている移動の構成
 Azure Web アプリ リソースを [Resource Manager Move Resources API](../azure-resource-manager/resource-group-move-resources.md) を使用して移動できます。
@@ -31,6 +30,5 @@ Azure Web アプリ リソースを [Resource Manager Move Resources API](../azu
    > このシナリオでは、変換先のリソース グループにすべての Microsoft.Web リソースを含めることはできません。
 
 * 個々の Web アプリを異なるリソース グループに移動します。Web アプリは引き続き現在のアプリのサービス プランでホストされます (アプリのサービス プランは元のリソース グループにとどまります)。
-
 
 

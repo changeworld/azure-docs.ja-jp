@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: 62429643a108665544e42001d264046b5db1ec97
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pluralsight"></a>チュートリアル: Azure Active Directory と Pluralsight の統合
 
@@ -189,7 +187,7 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-pluralsight-test-user"></a>Pluralsight テスト ユーザーの作成
 
@@ -251,5 +249,4 @@ Pluralsight で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-pluralsight-tutorial/tutorial_general_203.png
-
 

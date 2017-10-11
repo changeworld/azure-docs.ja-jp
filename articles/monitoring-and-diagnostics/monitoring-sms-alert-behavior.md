@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: ancav
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5cce99eff6ed75636399153a846654f56fb64a68
-ms.openlocfilehash: 10f33898fb86bd2449994a153d99cb59dc6078d6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/31/2017
-
+ms.openlocfilehash: 3e4eca174209eeb9cbce1d45111d1e5cc30af8b0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="sms-alert-behavior-in-action-groups"></a>アクション グループの SMS アラート動作
 ## <a name="overview"></a>概要 ##
@@ -75,4 +74,3 @@ ms.lasthandoff: 03/31/2017
 [アクティビティ ログのアラートの概要](monitoring-overview-alerts.md)を把握し、アラートを生成する方法について学習します  
 [SMS レートの制限](monitoring-alerts-rate-limiting.md)について学習します  
 [アクション グループ](monitoring-action-groups.md)の詳細について学習します
-

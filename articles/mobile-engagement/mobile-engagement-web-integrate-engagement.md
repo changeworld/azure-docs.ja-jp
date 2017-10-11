@@ -14,11 +14,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 02/29/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 7d8eaa180e277741a583522ee62d68f5247b92bb
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="integrate-azure-mobile-engagement-in-a-web-application"></a>Web アプリケーションへの Azure Mobile Engagement の統合
 > [!div class="op_single_selector"]
@@ -160,9 +160,3 @@ URL 関数から返された文字列の先頭が `/`、`//`、`http://`、`http
         scheme: '//'
       }
     };
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

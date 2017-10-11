@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4688fc4bc74a9e0e04487cfbe965006070fd9a7b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-with-vmm-to-azure"></a>手順 11: Azure への Hyper-V のレプリケーション (VMM あり) のテスト フェールオーバーを実行する
 
 [Hyper-V VM のレプリケーションを有効に](vmm-to-azure-walkthrough-enable-replication.md)した後で、この記事に従って、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用し、System Center Virtual Machine Manager (VMM) クラウドで管理されているオンプレミスの Hyper-V 仮想マシンから Azure へのテスト フェールオーバーを実行します。
@@ -100,5 +98,4 @@ ms.lasthandoff: 08/22/2017
 
 - さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
 - [フェールバックの詳細を確認して](site-recovery-failback-from-azure-to-hyper-v.md)、Azure VM をオンプレミスのプライマリ VMM クラウドにフェールバックし、再度レプリケートします。
-
 

@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: migrate
 ms.date: 06/23/2017
 ms.author: joeyong;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: c6e6b890f5e2d0e31b10bbb6803adad02bf60248
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="migrate-your-sql-code-to-sql-data-warehouse"></a>SQL Data Warehouse への SQL コードの移行
 この記事では、他のデータベースから SQL Data Warehouse にコードを移行するときに一般に行う必要があるコードの変更について説明します。 一部の SQL Data Warehouse 機能は分散環境で機能するように設計されているため、大幅にパフォーマンスを向上できます。 ただし、パフォーマンスと拡張性を維持するには、一部の機能が使用できなくなる場合もあります。
@@ -139,4 +137,3 @@ SELECT TOP 1 row_count FROM LastRequestRowCounts ORDER BY step_index DESC
 <!--MSDN references-->
 
 <!--Other Web references-->
-

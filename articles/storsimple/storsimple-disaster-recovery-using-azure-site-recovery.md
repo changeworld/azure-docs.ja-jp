@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Site Recovery を使用して StorSimple ファイル共有 DR を自動化する | Microsoft Docs"
 description: "Microsoft Azure StorSimple ストレージでホストされているファイル共有用ディザスター リカバリー ソリューションを作成するための手順とベスト プラクティスについて説明します。"
 services: storsimple
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/09/2017
 ms.author: vidarmsft
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: b4d575587eec1bcf43c33c7faeb8360ec67b5214
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>StorSimple でホストされたファイル共有向けの Azure Site Recovery を使用した自動ディザスター リカバリー ソリューション
 ## <a name="overview"></a>概要
@@ -314,4 +313,3 @@ ASR で復旧計画を作成し、ファイル共有のフェールオーバー 
 
 ## <a name="summary"></a>概要
 Azure Site Recovery を使用すると、StorSimple ストレージでホストされているファイル共有を含むファイル サーバー VM に対して、自動ディザスター リカバリー復旧計画を作成できます 障害発生時に、任意の場所から数秒以内にフェールオーバーを開始し、数分以内にアプリケーションを稼働させることができます。
-

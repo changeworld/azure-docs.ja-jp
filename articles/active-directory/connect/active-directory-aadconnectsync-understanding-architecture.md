@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3d3ba2d11d66ecc253a34e7c4da422bf9fdbd1bd
-ms.openlocfilehash: da69c6f8d0d831349e50548c8883db249b4ee60f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/06/2017
-
+ms.openlocfilehash: 51082ad453d53f56f30f814b78578801c00f4827
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-the-architecture"></a>Azure AD Connect sync: アーキテクチャの概要
 このトピックでは、Azure AD Connect 同期の基本的なアーキテクチャについて説明します。 多くの点で、前身の MIIS 2003、ILM 2007、FIM 2010 と似ています。 Azure AD Connect sync は、これらのテクノロジが進化したものです。 これらの以前のテクノロジのいずれかに慣れていれば、このトピックの内容も既によくご存知のことと思われます。 同期テクノロジについて初めて学ぶ場合は、このトピックを読むことをお勧めします。 ただし、このトピックの内容を隅々まで理解しなくても、(このトピックでは同期エンジンと呼んでいる) Azure AD Connect 同期を問題なくカスタマイズできます。
@@ -258,5 +257,4 @@ ID 管理プロセスは、異なる接続されたデータ ソース間で ID 
 [Azure AD Connect Sync](active-directory-aadconnectsync-whatis.md) の構成に関するページをご覧ください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
 

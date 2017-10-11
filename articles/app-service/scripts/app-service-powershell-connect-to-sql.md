@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 3396f21a36a1dc4de620416d2d863a291c1f67b9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 5312bf6b81d1cc48490b71c3f77323cca23e1559
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="connect-a-web-app-to-a-sql-database"></a>Web アプリを SQL データベースに接続する
 
 このシナリオでは、Azure SQL データベースと Azure Web アプリの作成方法について説明します。 作成後、アプリの設定で SQL データベースを Web アプリにリンクします。
@@ -61,4 +59,3 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../app-service-powershell-samples.md)のページにあります。
-

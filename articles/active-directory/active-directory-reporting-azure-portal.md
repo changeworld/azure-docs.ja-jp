@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/13/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 

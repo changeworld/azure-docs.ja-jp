@@ -15,41 +15,40 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: kgremban
 ms.custom: end-user
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 1ecc2bdef5ff7ef8ed8dded7dc12428ce9657821
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="what-are-app-passwords-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication のアプリ パスワードとは
-現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。  これは、次の場合にユーザーが多要素認証を使用できないことを意味します。
+現在、特定の非ブラウザー アプリ (Exchange Active Sync を使用する Apple ネイティブ電子メールクライアントなど) は、多要素認証をサポートしていません。 多要素認証はユーザーごとに有効にします。  これは、場合に、ユーザーが multi-factor authentication を使用できないことを意味します。
 
-- ユーザーに対して多要素認証が有効になっている
-- ユーザーが非ブラウザー アプリを使用しようとしている。
+- ユーザーが multi-factor authentication の有効化
+- ユーザーがブラウザーではないアプリを使用しようとしています。
 
-アプリ パスワードによって、ユーザーはアプリを使用できるようになります。
+アプリ パスワードは、アプリを使用できます。
 
-アプリ パスワードが取得できたら、これらの非ブラウザー アプリに対して、元のパスワードの代わりに使用します。 2 段階認証の登録をすると、2 番目の認証を実行できない限りは元のパスワードでサインインできなくなります。 たとえば、Apple のネイティブ電子メール クライアントは 2 段階認証を要求できないので、そのままではサインインできません。 この問題の解決策は、日常的に使用しない、より安全なアプリ パスワードを作成することです。 アプリ パスワードは 2 段階認証をサポートできないアプリ向けです。 このアプリ パスワードを使用することで、アプリが多要素認証をバイパスして動作を続行できるようになります。
+アプリ パスワードを作成したら、これらのブラウザーではないアプリを使用して、元のパスワードの代わりに使用します。 2 段階認証を登録するときに Microsoft により、2 番目の検証も実行できない場合、パスワードでサインインすべてのユーザーにないということですね。 たとえば、Apple のネイティブ電子メール クライアントは 2 段階認証を要求できないので、そのままではサインインできません。 この問題の解決策では、日常的な使用しないより安全なアプリ パスワードを作成します。 アプリ パスワードは、2 段階認証をサポートできないそれらのアプリ専用です。 このアプリ パスワードを使用することで、アプリが多要素認証をバイパスして動作を続行できるようになります。
 
 
 > [!NOTE]
-> Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートしており、2 段階認証を使用できます。 Office 2013 クライアントでは、アプリ パスワードは不要です。  詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
+> Office 2013 クライアント (Outlook を含む) は新しい認証プロトコルをサポートしており、2 段階認証を使用できます。 アプリ パスワードは、Office 2013 クライアントで使用する必要はありません。  詳しくは、「[Office 2013 modern authentication public preview announcement (Office 2013 の最新の認証のパブリック プレビューに関する発表)](https://blogs.office.com/2015/03/23/office-2013-modern-authentication-public-preview-announced/)」を参照してください。
 
 
 ## <a name="how-to-use-app-passwords"></a>アプリ パスワードを使用する方法
-アプリ パスワードについて理解しておくべきこと
+アプリ パスワードは次のトピックをいくつかの点を次に示します。
 
-* アプリ パスワードはユーザーが作成するわけではなく、 自動的に生成されます。
+* アプリ パスワードはユーザーが作成するわけではなく、 これらは自動的に生成します。
 * 現在は、1 ユーザーあたり 40 個というパスワード数の制限があります。 
-* 制限に達した後にアプリ パスワードを作成しようとした場合、新しいものを作成できるよう既存のアプリ パスワードのいずれかを削除する必要があります。
-* アプリ パスワードは、アプリケーションごとではなく、デバイスごとに使用します。 たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。 次に、デスクトップ PC 上のすべてのアプリに使用する 2 番目のアプリ パスワードを作成します。 
+* 制限に達した後に、アプリケーションのパスワードを作成しようとする場合は、新しいものを作成する前に、既存のアプリ パスワードのいずれかを削除する必要があります。
+* アプリケーションごとではなく、デバイスごとに 1 つのアプリ パスワードを使用します。 たとえば、ノート PC 用に 1 つのアプリ パスワードを作成し、そのアプリ パスワードをノート PC 上のすべてのアプリケーションで使用します。 次に、デスクトップ PC 上のすべてのアプリに使用する 2 番目のアプリ パスワードを作成します。 
 * 最初に 2 段階認証の登録をしたときに、アプリ パスワードが 1 つ提供されます。  追加のアプリ パスワードが必要な場合は、作成できます。
 
 
 
 ## <a name="creating-and-deleting-app-passwords"></a>アプリ パスワードの作成と削除
-最初のサインイン時に、使用可能なアプリ パスワードが提供されます。  後でアプリ パスワードを作成したり、削除したりすることもできます。 アプリ パスワードを削除する方法は、多要素認証を使用する方法によって異なります。 次の質問に答えていくと、アプリ パスワードを管理できる場所がわかります。 
+サインイン時に、初期は、使用できるアプリ パスワードを指定できます。  作成し、後でアプリ パスワードを削除することができます。 アプリ パスワードを削除する方法は、multi-factor authentication の使用方法によって異なります。 次の質問に答えていくと、アプリ パスワードを管理できる場所がわかります。 
 
 1. 個人の Microsoft アカウントで 2 段階認証を使用していますか。 使用している場合は、「[アプリ パスワードと 2 段階認証](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-two-step-verification)」を参照してください。 使用していない場合は、次に進んでください。
 
@@ -63,7 +62,7 @@ ms.lasthandoff: 09/20/2017
 ## <a name="manage-app-passwords-in-the-azure-portal"></a>Azure Portal でアプリ パスワードを管理する
 Azure で 2 段階認証を使用している場合は、Azure Portal でアプリ パスワードを作成できます。
 
-### <a name="to-create-app-passwords-in-the-azure-portal"></a>Azure Portal でアプリ パスワードを作成するには
+### <a name="to-create-app-passwords-in-the-azure-portal"></a>Azure ポータルでアプリ パスワードを作成するには
 1. Azure クラシック ポータルにサインインします。
 2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
 3. 確認ページの上部の [アプリ パスワード] を選択します。
@@ -74,7 +73,7 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
    ![クラウド](./media/multi-factor-authentication-end-user-app-passwords/app2.png)
 
 
-### <a name="to-delete-app-passwords-in-the-azure-portal"></a>Azure Portal でアプリ パスワードを削除するには
+### <a name="to-delete-app-passwords-in-the-azure-portal"></a>Azure ポータルでアプリ パスワードを削除するには
 1. Azure クラシック ポータルにサインインします。
 2. 上部のユーザー名を右クリックし、[追加のセキュリティ確認] を選択します。
 3. 上部で、追加のセキュリティ確認の隣にある **[アプリ パスワード]** を選択します。
@@ -123,4 +122,3 @@ Azure で 2 段階認証を使用している場合は、Azure Portal でアプ�
 - [2 段階認証設定の管理](multi-factor-authentication-end-user-manage-settings.md)
 
 - SMS や電話を受ける代わりに、[Microsoft Authenticator アプリ](microsoft-authenticator-app-how-to.md)の通知を使用してサインインを確認する 
-

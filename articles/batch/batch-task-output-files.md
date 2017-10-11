@@ -12,15 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2530b7c20347b9fb58aee4dfe693847cf3911741
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
-
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Batch サービス API を使用してタスクのデータを Azure Storage に保持する
 
 [!INCLUDE [batch-task-output-include](../../includes/batch-task-output-include.md)]
@@ -197,4 +194,3 @@ C# 以外の言語で開発している場合は、自分でファイル規則�
 
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
-

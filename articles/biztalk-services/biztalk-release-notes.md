@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 18ed891a9bba2b4011d3492722a2366d96fb3c01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Azure BizTalk Services のリリース ノート
 
@@ -222,5 +221,4 @@ BizTalk Services プレビュー サブスクリプションに XML ブリッジ
 
 ### <a name="concepts"></a>概念
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   
-
 

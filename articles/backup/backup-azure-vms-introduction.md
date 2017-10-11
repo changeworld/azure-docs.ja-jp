@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/18/2017
 ms.author: markgal;trinadhk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0c930c7413b24a811707c3a1ff3d7d70585bc528
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="plan-your-vm-backup-infrastructure-in-azure"></a>Azure における VM バックアップ インフラストラクチャの計画を立てる
 この記事では、パフォーマンスとリソースに関する提案を行い、VM のバックアップ インフラストラクチャを計画するお手伝いをします。 さらに、Backup サービスの主要な側面を定義します。これらの側面は、アーキテクチャの決定、容量計画、スケジューリングの際の重要な要素になることがあります。 [必要な環境の準備](backup-azure-vms-prepare.md)が済んだら、[VM のバックアップ](backup-azure-vms.md)を開始する前に行う次の手順は計画の作成です。 Azure 仮想マシンについて詳しい情報が必要な場合は、「[Virtual Machines のドキュメント](https://azure.microsoft.com/documentation/services/virtual-machines/)」を参照してください。
@@ -153,4 +152,3 @@ VM をバックアップする価格は、仮想マシンに接続されてい�
 * [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
 * [仮想マシンの復元](backup-azure-restore-vms.md)
 * [VM のバックアップに関する問題のトラブルシューティング](backup-azure-vms-troubleshoot.md)
-

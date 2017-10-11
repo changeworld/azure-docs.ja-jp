@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/17/2017
 ms.author: alkohli
-translationtype: Human Translation
-ms.sourcegitcommit: b0c27ca561567ff002bbb864846b7a3ea95d7fa3
 ms.openlocfilehash: 4a2c86cee40dbd1dc2c37d58e69bdf35b0046c4d
-ms.lasthandoff: 04/25/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>StorSimple Virtual Array のシステム要件
 ## <a name="overview"></a>概要
@@ -130,5 +130,4 @@ iSCSI、SMB、クラウド、または管理トラフィックを許可するた
 
 ## <a name="next-step"></a>次のステップ
 * [StorSimple Virtual Array をデプロイするためにポータルを準備します。](storsimple-virtual-array-deploy1-portal-prep.md)
-
 

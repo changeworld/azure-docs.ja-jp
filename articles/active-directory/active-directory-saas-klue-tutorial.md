@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: c64417c136340b3ffa5d67c618c6fe037d2992b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-klue"></a>チュートリアル: Azure Active Directory と Klue の統合
 
@@ -260,5 +259,4 @@ Klue で Azure AD のシングル サインオンを構成してテストする�
 [201]: ./media/active-directory-saas-klue-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-klue-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-klue-tutorial/tutorial_general_203.png
-
 

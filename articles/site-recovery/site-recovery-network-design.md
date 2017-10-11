@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/20/2017
 ms.author: pratshar
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 90ffd3dd1cf5068359afa1b60892cdee43ec0658
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="designing-your-network-for-disaster-recovery"></a>ディザスター リカバリー に対応したネットワークの設計
 
@@ -167,4 +166,3 @@ VM の保護が有効な状態で、次のサンプル スクリプトを使用�
 
 ## <a name="next-steps"></a>次のステップ
 [こちらの記事](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) を参照してください。
-

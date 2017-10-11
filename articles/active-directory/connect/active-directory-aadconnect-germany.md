@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/12/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 780728950199bac6a317767ef1db4462b3fe6ffd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.openlocfilehash: 4c55b116c0dc080ae316caca873a7b693caa793b
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="azure-ad-connect-in-microsoft-cloud-germany---public-preview"></a>Microsoft Cloud Germany の Azure AD Connect - パブリック プレビュー
 ## <a name="introduction"></a>はじめに
@@ -64,5 +63,4 @@ Azure AD Connect をインストールする場合は、 [こちら](active-dire
 
 ## <a name="advanced-features-and-additional-information"></a>高度な機能と追加情報
 追加情報と、カスタム設定や高度な構成のガイダンスについては、最初に「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」を参照してください。  このページには、情報と追加のガイダンスへのリンクが用意されています。
-
 

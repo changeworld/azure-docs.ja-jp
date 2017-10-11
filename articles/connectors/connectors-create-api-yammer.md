@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/18/2016
 ms.author: mandia; ladocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c785ad8dbfa427d69501f5f142ef40a2d3530f9e
 ms.openlocfilehash: c7a213343b4fb2b5a89a5052a459061b404a431c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/26/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-yammer-connector"></a>Yammer コネクタの使用
 Yammer に接続し、エンタープライズ ネットワークの会話にアクセスします。 Yammer で次のことができます。

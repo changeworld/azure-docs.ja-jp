@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: aeb27a02ed624106afec5dbd98faacf5f400f89e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.openlocfilehash: e2d12f807756b778a64920b12a66fba184a99844
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -184,4 +183,3 @@ POST データは自動的に記録されませんが、[TrackTrace または lo
 * [Application Insights にログとカスタム テレメトリを送信する](app-insights-asp-net-trace-logs.md)
 * [可用性と応答性のテストを設定する](app-insights-monitor-web-app-availability.md)
 * [トラブルシューティング](app-insights-troubleshoot-faq.md)
-

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: e457b722ec403d56ca551bb1fd01c3dd619bf9b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 77790136c9bd3a4e3f7dcabea2fbe0bcffb6eafe
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="analyze-flight-delay-data-by-using-hive-in-hdinsight"></a>HDInsight での Hive を使用したフライト遅延データの分析
 Hive では、*[HiveQL][hadoop-hiveql]* と呼ばれる SQL に似たスクリプト言語を使用して Hadoop MapReduce ジョブを実行します。大規模なデータの集約、照会、分析に Hive を利用できます。
@@ -746,4 +745,3 @@ HiveQL コマンドの完全な一覧については、「[Hive Data Definition 
 [image-hdi-flightdelays-avgdelays-dataset]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.AvgDelays.DataSet.png
 [img-hdi-flightdelays-run-hive-job-output]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.RunHiveJob.Output.png
 [img-hdi-flightdelays-flow]: ./media/hdinsight-analyze-flight-delay-data/HDI.FlightDelays.Flow.png
-

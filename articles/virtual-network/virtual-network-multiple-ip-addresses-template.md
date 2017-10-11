@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/08/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: 2c33e75a7d2cb28f8dc6b314e663a530b7b7fdb4
 ms.openlocfilehash: d4b189fb23dda1167c4f6b17b618c718d32dd98f
-ms.lasthandoff: 04/21/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -101,4 +100,3 @@ Azure CLI 1.0 を使用してテンプレートをデプロイするには、次
 2. VM をデプロイしたら、この記事の「[VM オペレーティング システムに IP アドレスを追加する](#os-config)」セクションに記載された手順を実行して、プライベート IP アドレスをデプロイした VM オペレーティング システムに追加します。 オペレーティング システムにパブリック IP アドレスは追加しないでください。
 
 [!INCLUDE [virtual-network-multiple-ip-addresses-os-config.md](../../includes/virtual-network-multiple-ip-addresses-os-config.md)]
-

@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 03/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: bd1736fdc04498779c7b749bf9cb1c79de075c96
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: a9e46aded0cf3792558a7fba6f00e5662166cc0a
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-a-fully-configured-virtual-machine-with-powershell"></a>PowerShell を使用して、完全に構成された仮想マシンを作成する
 
 このスクリプトは、Windows Server 2016 を実行する Azure 仮想マシンを作成します。 スクリプトを実行すると、RDP 経由で仮想マシンにアクセスできるようになります。
@@ -67,4 +65,3 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の仮想マシン用の PowerShell サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/powershell-samples.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)にあります。
-

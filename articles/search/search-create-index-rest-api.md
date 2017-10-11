@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.date: 12/08/2016
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 9a64d1436471e406b7d9b700257d3dd96b5edcde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-azure-search-index-using-the-rest-api"></a>REST API を使用した Azure Search インデックスの作成
 > [!div class="op_single_selector"]
@@ -109,4 +108,3 @@ Azure Search サービスのプロビジョニングが完了すると、REST AP
 
 ## <a name="next-steps"></a>次のステップ
 Azure Search インデックスを作成すると、データの検索を開始できるように [インデックスにコンテンツをアップロードする](search-what-is-data-import.md) 準備が完了します。
-

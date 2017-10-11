@@ -14,15 +14,14 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b9a3b64d9de48f17a295ca7a9ea58cf26e8f83ed
-ms.openlocfilehash: f5d5f238f8f57c8dcf7a3759274f9d565e73ecce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
+ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
-次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory ドメイン サービスの監視については、「 [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
+次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
 
 ![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/sync-blade.png)
 
@@ -36,7 +35,7 @@ Azure AD Connect Health for Sync アラート セクションには、アクテ�
 ### <a name="limited-evaluation-of-alerts"></a>アラートの評価が限定される状況
 Azure AD Connect で既定の構成が使用されていない場合 (たとえば、属性フィルターが既定の構成からカスタム構成に変更されている場合)、Azure AD Connect Health エージェントは Azure AD Connect に関連するエラー イベントをアップロードしません。
 
-その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが該当するサービスの Azure ポータルに表示されます。
+その結果、サービスによるアラートの評価は限定的なものになります。 このような状況にある場合は、それを示すバナーが該当するサービスの Azure Portal に表示されます。
 
 ![Azure AD Connect Health for Sync](./media/active-directory-aadconnect-health-sync/banner.png)
 

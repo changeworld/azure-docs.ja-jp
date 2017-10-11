@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
 ms.openlocfilehash: 606e2d3d0e31b9d80200105e812f9d7bbbcf939c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="step-7-map-networks-for-hyper-v-vm-replication-to-a-secondary-site"></a>手順 7: セカンダリ サイトへの Hyper-V VM のレプリケーション用のネットワークをマッピングする
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/17/2016
 ms.author: v-sharos
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: f120caf4ea21299e52782db33994b9bd8f63780d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device-in-the-government-portal"></a>Government Portal でのオンプレミスの StorSimple デバイスのデプロイ
 [!INCLUDE [storsimple-version-selector-deploy-gov](../../includes/storsimple-version-selector-deploy-gov.md)]
@@ -261,5 +260,4 @@ Linux ホストに接続されている StorSimple デバイスの MPIO のイ�
 ## <a name="next-steps"></a>次のステップ
 * [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 * [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx) を使用して StorSimple デバイスを管理します。
-
 

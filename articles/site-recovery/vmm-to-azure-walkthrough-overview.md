@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: af68d21184c137b2b0f1bb4c1afb9bf507e8332d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-site-recovery-in-the-azure-portal"></a>Azure Portal の Site Recovery を使用して VMM クラウド内の Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
@@ -113,6 +112,5 @@ Recovery Services コンテナーを設定します。 このコンテナーに�
 テスト フェールオーバーを実行して、すべて想定どおりに動作していることを確認します。
 
 [手順 12: テスト フェールオーバーを実行する](vmm-to-azure-walkthrough-test-failover.md)方法に関するページに進む
-
 
 

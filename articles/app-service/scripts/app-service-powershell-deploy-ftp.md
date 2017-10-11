@@ -15,14 +15,12 @@ ms.topic: sample
 ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 1ce08606aa5ad44dfd80f94f73a37a3b8976e6c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 96b99110b63b037746fcc40eb15db5d718eb71a1
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="upload-files-to-a-web-app-using-ftp"></a>FTP を使用して Web アプリにファイルをアップロードする
 
 このサンプル スクリプトでは、App Service で Web アプリを関連リソースと合わせて作成し、FTP ([WebClient.UploadFile()](https://msdn.microsoft.com/library/ms144229.aspx) 経由) を使用して Web アプリのコードをデプロイします。
@@ -57,4 +55,3 @@ Remove-AzureRmResourceGroup -Name $webappname -Force
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../app-service-powershell-samples.md)のページにあります。
-

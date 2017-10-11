@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/29/2017
 ms.author: mikerou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
 ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
 Azure での Service Fabric クラスターのスケーリングの基礎については、[クラスター スケーリング](./service-fabric-cluster-scale-up-down.md)に関する記事で説明されています。 その記事では、Service Fabric クラスターを仮想マシン スケール セット上に構築する方法のほか、手動か、自動スケール ルールを利用して Service Fabric クラスターをスケーリングする方法が示されています。 このドキュメントでは、より高度なシナリオで Azure のスケーリング操作をプログラムで調整する方法を説明します。 
@@ -154,4 +151,3 @@ Service Fabric のスケーリングの方法は、シナリオによって異�
 - [手動でのスケーリングまたは自動スケール ルールを使用したスケーリング](./service-fabric-cluster-scale-up-down.md)
 - [.NET 用 Fluent Azure Management ライブラリ](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (Service Fabric クラスターの基盤となる仮想マシン スケール セットの操作に便利です)
 - [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (Service Fabric クラスターとそのノードの操作に便利です)
-

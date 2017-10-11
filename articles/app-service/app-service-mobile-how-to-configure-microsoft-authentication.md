@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 429e6f32a3bebe0e0759c675f61b9ee588e550d0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
+ms.openlocfilehash: 67386b03ae4cc683fe00e11e8dad19d1442eff09
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-microsoft-account-login"></a>Microsoft アカウント ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -68,4 +67,3 @@ ms.lasthandoff: 03/09/2017
 
 [マイ アプリケーション]: http://go.microsoft.com/fwlink/p/?LinkId=262039
 [Azure Portal]: https://portal.azure.com/
-

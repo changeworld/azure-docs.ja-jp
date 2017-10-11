@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8a531f70f0d9e173d6ea9fb72b9c997f73c23244
-ms.openlocfilehash: 900f0b4c38f08d1e3017954db01cf32362765578
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/10/2017
-
+ms.openlocfilehash: d58c27234ea05a82aaa3e8d72f70c1449980df09
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-custom-rule-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視の事前構成済みソリューションでカスタム規則を作成する
 

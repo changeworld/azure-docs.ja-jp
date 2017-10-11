@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
 ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル: Azure Active Directory と AppDynamics の統合
 
@@ -189,7 +187,7 @@ AppDynamics で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-an-appdynamics-test-user"></a>AppDynamics のテスト ユーザーの作成
 
@@ -270,5 +268,4 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
 [201]: ./media/active-directory-saas-appdynamics-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-appdynamics-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-appdynamics-tutorial/tutorial_general_203.png
-
 

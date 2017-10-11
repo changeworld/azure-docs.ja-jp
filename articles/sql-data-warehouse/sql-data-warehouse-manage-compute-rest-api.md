@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: manage
 ms.date: 07/25/2017
 ms.author: elbutter
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 07584294e4ae592a026c0d5890686eaf0b99431f
-ms.openlocfilehash: e250fa59204be14614a4c91fb5a0c1af5a8d5281
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/02/2017
-
+ms.openlocfilehash: 24e43205c0c562fca9b1c2c0e5eed4da54e17ed7
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-rest"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (REST)
 > [!div class="op_single_selector"]
@@ -98,4 +97,3 @@ GET https://management.azure.com/subscriptions/{subscription-id}/resourceGroups/
 <!--Other Web references-->
 
 [Azure portal]: http://portal.azure.com/
-

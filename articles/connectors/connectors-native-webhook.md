@@ -15,13 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/21/2016
 ms.author: jehollan; LADocs
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 757d6f778774e4439f2c290ef78cbffd2c5cf35e
 ms.openlocfilehash: fbfef291334109c6dcfcde80741874549fb7929f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/10/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-with-the-webhook-connector"></a>Webhook コネクタの概要
 

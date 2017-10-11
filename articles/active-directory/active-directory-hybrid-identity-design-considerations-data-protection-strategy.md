@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6c9b7423fa56886104bc6060d25904277b75f30c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのデータ保護戦略の定義
 このタスクでは、次のトピックで定義したビジネス要件を満たすために、ハイブリッド ID ソリューションのデータ保護戦略を定義します。
@@ -30,7 +29,7 @@ ms.lasthandoff: 08/22/2017
 * [インシデント対応要件の決定](active-directory-hybrid-identity-design-considerations-incident-response-requirements.md)
 
 ## <a name="define-data-protection-options"></a>データ保護オプションの定義
-[ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)に関するページで説明したとおり、Microsoft Azure AD は、オンプレミスにある Active Directory ドメイン サービス (AD DS) と同期できます。 この統合により、組織は Azure AD を利用して、ユーザーが企業のリソースにアクセスしようとしたときに資格情報を確認できます。 これは、オンプレミスの保存データとクラウドの保存データの両方のシナリオで実行できます。  Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。
+[ディレクトリ同期要件の決定](active-directory-hybrid-identity-design-considerations-directory-sync-requirements.md)に関するページで説明したとおり、Microsoft Azure AD は、オンプレミスにある Active Directory Domain Services (AD DS) と同期できます。 この統合により、組織は Azure AD を利用して、ユーザーが企業のリソースにアクセスしようとしたときに資格情報を確認できます。 これは、オンプレミスの保存データとクラウドの保存データの両方のシナリオで実行できます。  Azure AD 内のデータへのアクセスには、Security Token Service (STS) によるユーザー認証が要求されます。
 
 認証されると、認証トークンからユーザー プリンシパル名 (UPN) が読み取られ、ユーザーのドメインに対応するレプリケート対象のパーティションとコンテナーが判断されます。 承認システムでは、ユーザーの存在、有効状態、ロールに関する情報を使用して、ターゲット テナントへのアクセス要求を当該セッションの当該ユーザーに対して承認するかどうかを決定します。 承認された特定のアクション (具体的には、ユーザーの作成やパスワードのリセットなど) を実行すると、テナント管理者がコンプライアンスへの取り組みや調査の管理に使用できる監査証跡が作成されます。
 
@@ -170,4 +169,3 @@ Azure AD Premium で提供され、インシデント対応調査時に使用で
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-

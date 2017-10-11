@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: e97f22340f869ef31d7b4c7b9857bf0d1d5400c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: bda16be1094276fcecef1e708f9d7db307d94a89
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-telemetry-from-a-sensortag"></a>Azure IoT Edge ゲートウェイをリモート監視構成済みソリューションに接続し、SensorTag からテレメトリを送信します
 

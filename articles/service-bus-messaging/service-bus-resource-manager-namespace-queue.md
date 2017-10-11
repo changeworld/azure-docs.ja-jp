@@ -14,12 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 08/07/2017
 ms.author: sethm;shvija
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db7cb109a0131beee9beae4958232e1ec5a1d730
-ms.openlocfilehash: 358c92ee599433ba5c17512fa187f821aa428d29
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/19/2017
-
+ms.openlocfilehash: 4358130a2c8e897a0fdd1f9560f766d6e22db4d2
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="create-a-service-bus-namespace-and-a-queue-using-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートを使用した、Service Bus の名前空間とキューの作成
 
@@ -144,4 +143,3 @@ Azure Resource Manager を使ってリソースを作成、デプロイしたら
 [Learn more about Service Bus queues]: service-bus-queues-topics-subscriptions.md
 [Using Azure PowerShell with Azure Resource Manager]: ../azure-resource-manager/powershell-azure-resource-manager.md
 [Using the Azure CLI for Mac, Linux, and Windows with Azure Resource Management]: ../azure-resource-manager/xplat-cli-azure-resource-manager.md
-

@@ -37,8 +37,8 @@
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/96-ipresource.png) 
 
-    <!-----------------------Server 2016 ではこのオプションが表示されない
-    1. このアドレスに対して NetBIOS を無効にし、 **[OK]**をクリックします。 ソリューションが複数の Azure VNet にまたがる場合は、IP リソースごとにこの手順を繰り返します。 
+    <!-----------------------I don't see this option on server 2016
+    1. Disable NetBIOS for this address and click **OK**. Repeat this step for each IP resource if your solution spans multiple Azure VNets. 
     ------------------------->
 
 4. <a name = "dependencyGroup"></a>SQL Server 可用性グループ リソースがクライアント アクセス ポイントに依存するように設定します。

@@ -14,16 +14,16 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 82d5eb7fd13b1e9700a3e9bc2d30775e9c129749
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="fail-back-vmware-virtual-machines-and-physical-servers-to-the-on-premises-site-classic-portal"></a>VMware 仮想マシンと物理サーバーをオンプレミス サイトにフェールバックする (クラシック ポータル)
 > [!div class="op_single_selector"]
-> * [Azure ポータル](site-recovery-failback-azure-to-vmware.md)
+> * 
+            [Azure Portal](site-recovery-failback-azure-to-vmware.md)
 > * [Azure クラシック ポータル](site-recovery-failback-azure-to-vmware-classic.md)
 > * [Azure クラシック ポータル (レガシ)](site-recovery-failback-azure-to-vmware-classic-legacy.md)
 >
@@ -189,4 +189,3 @@ VPN 接続または Azure ExpressRoute を使用してフェールバックで�
 
 * ExpressRoute が、ソース マシンがフェールオーバーする、フェールオーバーの発生後に Azure VM が配置される Azure VM 仮想ネットワーク上に設定されている必要があります。
 * データは、パブリック エンドポイントの Azure ストレージ アカウントに複製されます。 ExpressRoute を使用するには、Site Recovery のレプリケーション用のターゲット データ センターを使用して ExpressRoute でパブリック ピアリングを設定する必要があります。
-

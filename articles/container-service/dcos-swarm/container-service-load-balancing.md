@@ -16,12 +16,11 @@ ms.workload: na
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: b0ab5a47e335998a7f1135b5715e9c50b89b6a68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: 78725c9d23e13d307821a188028ef573d1def038
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>Azure Container Service DC/OS クラスターの負荷分散コンテナー
 この記事では、Marathon-LB を使用して、DC/OS によって管理された Azure Container Service で内部ロード バランサーを作成する方法を見ていきます。 この構成により、アプリケーションを水平方向にスケーリングすることができます。 また、ロード バランサーをパブリック クラスターに配置し、アプリケーション コンテナーをプライベート クラスターに配置することによって、パブリックおよびプライベート エージェント クラスターを活用することもできます。 このチュートリアルでは、次のことを行いました。

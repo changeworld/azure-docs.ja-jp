@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/10/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 891cde9b16bbbb51729129b6ad7a0f3794307baa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="redeploy-azure-stack"></a>Azure Stack の再デプロイ
 Azure Stack を再デプロイするには、次に説明するように、最初から開始する必要があります。
@@ -32,5 +31,4 @@ Azure Stack を再デプロイするには、次に説明するように、最�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack への接続](azure-stack-connect-azure-stack.md)
-
 

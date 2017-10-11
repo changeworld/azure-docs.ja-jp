@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/19/2017
 ms.author: rajak
-translationtype: Human Translation
-ms.sourcegitcommit: 407f2631044fb836930093a774f5b718c91f711d
-ms.openlocfilehash: 822941aa3f745e51f653b4274bf0add9c44ff0c8
-ms.lasthandoff: 02/22/2017
-
-
+ms.openlocfilehash: f53f13e4fb83b1cd370ec673e86e5311cd93055f
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="working-with-reliable-collections"></a>Reliable Collection での作業
 Service Fabric は、Reliable Collection を使用して .NET 開発者が利用できるステートフルなプログラミング モデルを提供します。 具体的には、Service Fabric は Reliable Dictionary と Reliable Queue のクラスを提供します。 これらのクラスを使用すると、状態がパーティション分割され (拡張性のため)、レプリケートされ (可用性のため)、パーティション内でトランザクションが行われます (ACID セマンティックのため)。 Reliable Dictionary オブジェクトの一般的な使い方と、実際の動作を見てみましょう。
@@ -217,4 +216,3 @@ Reliable Collection は、内部で .NET の DataContractSerializer を使用し
 バージョン トレラントなデータ コントラクトを実装する方法については、「 [バージョン トレラントなシリアル化コールバック](https://msdn.microsoft.com/library/ms733734.aspx)」を参照してください。
 
 複数のバージョンで相互運用できるデータ構造を提供する方法については、「 [IExtensibleDataObject インターフェイス](https://msdn.microsoft.com/library/system.runtime.serialization.iextensibledataobject.aspx)」を参照してください。
-

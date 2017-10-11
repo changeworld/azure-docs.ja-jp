@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: e15784a662b1691774eb3d9cc8b3fbe66ac67385
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 44e344095352f2bc6b27e389fc8be2cdf3e368d8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションへのユーザー プロビジョニングの構成に関する問題
 
 アプリへの[自動プロビジョニング](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) (サポートされている場合) を構成するには、自動プロビジョニングができるように、特定の手順でアプリケーションを準備する必要があります。 その後、Azure Portal を使用して、ユーザー アカウントがアプリケーションと同期されるようにプロビジョニング サービスを構成できます。
@@ -70,4 +68,3 @@ Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンター�
 
 #<a name="next-steps"></a>次のステップ
 [Azure Active Directory による SaaS アプリへのユーザー プロビジョニングとプロビジョニング解除の自動化](active-directory-saas-app-provisioning.md)
-

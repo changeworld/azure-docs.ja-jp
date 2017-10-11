@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: fcaab18c2c22bcbdbb42708da9840fb6e5c25b2e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/25/2017
-
+ms.openlocfilehash: 81331142aa6110d4e29e6fb30a90ce6e3a853439
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-authentication-to-your-android-app"></a>Android アプリに認証を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
@@ -80,4 +79,3 @@ ms.lasthandoff: 03/25/2017
 
 <!-- URLs. -->
 [Mobile Apps の使用]: app-service-mobile-android-get-started.md
-

@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
 このガイドでは、Oracle 12c データベースを作成するために、Azure CLI を使用して [Oracle Marketplace ギャラリー イメージ](https://azuremarketplace.microsoft.com/marketplace/apps/Oracle.OracleDatabase12102EnterpriseEdition?tab=Overview)から Azure 仮想マシンをデプロイする方法について説明します。 サーバーをデプロイすると、Oracle データベースを構成するために SSH 経由で接続します。 

@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
 ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
---- 
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
+---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence の AppSource 発行ガイド
 
 ## <a name="overview"></a>概要
@@ -116,5 +115,4 @@ AppSource に追加されるコンテンツは、次のことを実現するよ�
 AppSource にアプリを発行することで得られる成果のレベルは、対象ユーザーにどのように影響を与えるかに大きく依存します。 成果を最大化する方法について詳しくは、「[Growth-Hacking your Cortana Intelligence app on AppSource](http://aka.ms/aagrowthhackguide)」 (AppSource で Cortana Intelligence アプリをグロース ハッキングする) をご覧ください。
 
 ご質問、ご提案につきましては、<appsourcecissupport@microsoft.com> までお問い合わせください。
-
 

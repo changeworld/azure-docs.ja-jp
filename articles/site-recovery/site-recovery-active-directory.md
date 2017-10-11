@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 7/20/2017
 ms.author: pratshar
-ms.translationtype: HT
-ms.sourcegitcommit: 22aa82e5cbce5b00f733f72209318c901079b665
 ms.openlocfilehash: 197441fc24c178695d4eada6db59f503b21672ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/24/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="protect-active-directory-and-dns-with-azure-site-recovery"></a>Azure Site Recovery で Active Directory と DNS を保護する
 SharePoint、Dynamics AX、SAP などのエンタープライズ アプリケーションは、Active Directory と DNS インフラストラクチャを基盤として正常な動作が実現されています。 アプリケーションの障害復旧ソリューションを作成するときに重要なことは、Active Directory と DNS を保護しておき、他のアプリケーション コンポーネントよりも先に復旧させる必要があるということです。そうしないと、障害が発生したときにアプリケーションが正しく機能しません。
@@ -209,5 +208,4 @@ DNS がドメイン コントローラーと同じ仮想マシン上にない場
 
 ## <a name="next-steps"></a>次のステップ
 Azure Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。
-
 

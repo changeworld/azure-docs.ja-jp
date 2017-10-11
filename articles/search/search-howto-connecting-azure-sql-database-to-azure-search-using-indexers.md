@@ -14,14 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 07/13/2017
 ms.author: eugenesh
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 49f614fdf3ba84de238139387ea97ee62077b072
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="connecting-azure-sql-database-to-azure-search-using-indexers"></a>インデクサーを使用した Azure Search への Azure SQL Database の接続
 
 [Azure Search インデックス](search-what-is-an-index.md)を照会するには、先に Azure Search インデックスにデータを入力する必要があります。 データが Azure SQL Database に存在する場合は、**Azure SQL Database 用 Azure Search インデクサー** (**Azure SQL インデクサー**) でインデックス作成プロセスを自動化できます。これは、記述するコードと対処するインフラストラクチャが減ることを意味します。
@@ -358,4 +356,3 @@ SQL インデクサーが公開している構成設定をいくつか次に示�
 + インデクサーの実行時に、インデックスが作成されるテーブルに未処理のトランザクションがない (すべてのテーブルの更新がスケジュールに従ってバッチ操作として実行され、Azure Search インデクサーのスケジュールがテーブル更新スケジュールと重ならないように設定されているなど)。  
 
 + 列が実行されないことを防ぐために、インデックスの完全な再作成を定期的に実行している。 
-

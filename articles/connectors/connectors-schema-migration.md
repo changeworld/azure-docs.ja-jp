@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/23/2016
 ms.author: deonhe
-translationtype: Human Translation
-ms.sourcegitcommit: 30abc823a72431dfd12f1051434191ea904533f6
 ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="how-to-migrate-logic-apps-to-schema-version-2015-08-01-preview"></a>ロジック アプリをスキーマ バージョン 2015-08-01-preview に移行する方法
 既存のロジック アプリを新しいスキーマに移行するには、次の手順に従います。  
@@ -50,11 +50,5 @@ ms.openlocfilehash: a5a73a9f124e5339b61dbc49021444a208a471f0
 
 
 
-
-
-
-
-
-<!--HONumber=Jan17_HO3-->
 
 

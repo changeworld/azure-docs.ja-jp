@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: raynew
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67b4861ac564565b2a36932ae15141a1e1f56035
-ms.openlocfilehash: 29084a52aca22b31a2fa42660ec2cdf050aec7ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
-
-
+ms.openlocfilehash: 3df38802fcdc86e4553253d38c49faff455f873e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="replicate-hyper-v-vms-in-vmm-clouds-to-a-secondary-site-with-azure-site-recovery-by-using-san"></a>Azure Site Recovery で SAN を使って VMM クラウド内の Hyper-V VM をセカンダリ サイトにレプリケートする
 
@@ -350,4 +348,3 @@ Site Recovery、VMM、SMI-S プロバイダーは、ターゲット サイトの
 ## <a name="next-steps"></a>次のステップ
 
 テスト フェールオーバーを実行して、環境が予想どおりに動作することを確認したら、[Site Recovery でのフェールオーバー](site-recovery-failover.md)に関するページでさまざまな種類のフェールオーバーについて確認します。
-

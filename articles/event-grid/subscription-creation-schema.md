@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: cce058e75ebf49f53d11e3b5a87ea4625994db0f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: eff2352066a76010d6d882a7b7e1961870cd2d46
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 
 Event Grid サブスクリプションを作成するには、 Create Event サブスクリプション操作に対して要求を送信します。 次の形式を使用します。

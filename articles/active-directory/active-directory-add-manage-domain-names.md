@@ -16,12 +16,11 @@ ms.date: 07/26/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。
@@ -78,5 +77,4 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 ## <a name="next-steps"></a>次のステップ
 * [Azure AD のドメイン名について確認する](active-directory-add-domain-concepts.md)
 * [カスタム ドメイン名を管理する](active-directory-add-manage-domain-names.md)
-
 

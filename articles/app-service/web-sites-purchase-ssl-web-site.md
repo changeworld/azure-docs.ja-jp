@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 67ee6932f417194d6d9ee1e18bb716f02cf7605d
-ms.openlocfilehash: fb38555f1f299352f06deae1ca231895163068e5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/27/2017
-
+ms.openlocfilehash: 191dd7240ad15b4936a72bc27a2d0162350f3afb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 

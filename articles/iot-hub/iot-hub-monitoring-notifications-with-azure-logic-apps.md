@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: xshi
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ca27c55f97d1b1d9694bf79282b7714283927ee7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 7a611912ae55eb22103539dbba9f1a06aaa543b7
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="iot-remote-monitoring-and-notifications-with-azure-logic-apps-connecting-your-iot-hub-and-mailbox"></a>Azure Logic Apps で IoT Hub とメールボックスに接続した状態での IoT リモート監視と通知
 
@@ -61,7 +60,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    **[リソース グループ]**: IoT ハブと同じリソース グループを使用します。
 
    **場所**: IoT Hub で使用するのと同じ場所を使用します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
    ![Azure Portal に Service Bus 名前空間を作成する](media/iot-hub-monitoring-notifications-with-azure-logic-apps/1_create-service-bus-namespace-azure-portal.png)
 
@@ -120,7 +119,7 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
    **[リソース グループ]**: IoT ハブと同じリソース グループを使用します。
 
    **場所**: IoT Hub で使用するのと同じ場所を使用します。
-1. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
 ### <a name="configure-the-logic-app"></a>ロジック アプリを構成する
 
@@ -176,4 +175,3 @@ Azure Logic Apps は、一連の手順として、プロセスを自動化する
 温度の監視と通知のメールボックスと IoT Hub を接続するロジック アプリが正常に作成されました。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

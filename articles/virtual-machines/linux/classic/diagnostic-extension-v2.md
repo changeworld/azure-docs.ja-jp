@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2015
 ms.author: Ning
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b8c6e2e22d8478b6e92e7b7942f15d37a840fed3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-the-linux-diagnostic-extension-to-monitor-the-performance-and-diagnostic-data-of-a-linux-vm"></a>Linux の診断拡張機能を使用した Linux VM のパフォーマンスと診断データの監視
 
@@ -166,4 +165,3 @@ Rsyslog データは既定で常に収集されます。
 ## <a name="known-issues"></a>既知の問題
 
 * Rsyslog 情報およびユーザー指定のログ ファイルには、スクリプトによってのみアクセスできます。
-

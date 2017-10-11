@@ -15,12 +15,11 @@ ms.workload: identity
 ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
-ms.translationtype: HT
-ms.sourcegitcommit: 349fe8129b0f98b3ed43da5114b9d8882989c3b2
 ms.openlocfilehash: b520a5e96417fb766a757fabc384a1fc4eb0f14e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="manage-the-directory-for-your-office-365-subscription-in-azure"></a>Azure での Office 365 サブスクリプションのディレクトリの管理
 この記事では、Office 365 サブスクリプションに対して作成されたディレクトリを Azure クラシック ポータルを使用して管理する方法について説明します。 Azure クラシック ポータルにサインインするには、Azure サブスクリプションのサービス管理者または共同管理者であることが必要です。 Azure サブスクリプションをお持ちでない場合、 [30 日間無料試用版](https://azure.microsoft.com/trial/get-started-active-directory/) に今すぐサインアップすると、このリンクを使用して、初めてのクラウド ソリューションを 5 分以内にデプロイできます。 Office 365 へのサインインに使用している職場または学校アカウントを使用してください。
@@ -70,4 +69,3 @@ Michael Smith が msmith@hotmail.com として Azure にサインインしてい
 
 ## <a name="next-steps"></a>次のステップ
 サブスクリプションとディレクトリの関係の詳細については、 [サブスクリプションをディレクトリに関連付ける方法](active-directory-how-subscriptions-associated-directory.md)に関するページを参照してください。
-

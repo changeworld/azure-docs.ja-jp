@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef43d1df2a64d85f256b28cd7db5a4f4356a7ec0
-ms.openlocfilehash: 055f55966de1e5c1bb41a6e0bf1c0da1758a3ed0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/13/2016
-
+ms.openlocfilehash: b89e9af55342d5d7473d848956996f846250b4b5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-android-app"></a>プッシュ通知を Android アプリに追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -82,4 +81,3 @@ Android フォンを USB ケーブルで直接接続するか、エミュレー�
 [Android クイック スタート]: app-service-mobile-android-get-started.md
 
 [Google Play Services SDK のセットアップ]:https://developers.google.com/android/guides/setup
-

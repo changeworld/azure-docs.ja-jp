@@ -15,13 +15,11 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 00cb963e85111274c36c3a84489894811ad2dabd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/25/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -84,5 +82,4 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 > 特定の組織の一覧に記載されたユーザーのみを許可するには、`ValidateIssuer` を true に設定し、`ValidIssuers` パラメーターを使用して組織の一覧を指定します。
 
 > または、IssuerValidator パラメーターを使用して発行者を検証するカスタム メソッドを実装することもできます。 `TokenValidationParameters` について詳しくは、[こちら](https://msdn.microsoft.com/library/system.identitymodel.tokens.tokenvalidationparameters.aspx "TokenValidationParameters に関する MSDN の記事")の MSDN 記事をご覧ください。
-
 

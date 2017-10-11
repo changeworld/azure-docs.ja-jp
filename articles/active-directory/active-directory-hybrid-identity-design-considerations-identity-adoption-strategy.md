@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 2c57b394beb6382807a4c8c83de975a0ae68d726
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="define-a-hybrid-identity-adoption-strategy"></a>ハイブリッド ID 導入戦略の定義
 このタスクでは、次のトピックで検討したビジネス要件を満たすために、ハイブリッド ID ソリューションのハイブリッド ID 導入戦略を定義します。
@@ -213,5 +212,4 @@ Azure Active Directory テナントを持つグローバル管理者は、既定
 
 ## <a name="see-also"></a>関連項目
 [設計上の考慮事項の概要](active-directory-hybrid-identity-design-considerations-overview.md)
-
 

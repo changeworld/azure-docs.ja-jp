@@ -15,12 +15,11 @@ ms.date: 07/23/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro; oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
 ms.openlocfilehash: 463946256f9e335fa6d98fc904835e5c3dc2725e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="working-with-conditional-access-in-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシでの条件付きアクセスの使用
 
@@ -72,4 +71,3 @@ ms.lasthandoff: 08/01/2017
 * [独自のドメイン名でアプリケーションを発行する](active-directory-application-proxy-custom-domains.md)
 
 最新のニュースと更新情報については、 [アプリケーション プロキシに関するブログ](http://blogs.technet.com/b/applicationproxyblog/)
-

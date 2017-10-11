@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/16/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: a2a6ca04ca8043bc0ed142310ad3e7b55100d228
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 1cd7bd7e32c96398d72c7cd3b51e2b456d60f01d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="using-powershell-to-manage-traffic-manager"></a>PowerShell を使用した Traffic Manager の管理
 
 Azure Resource Manager は、Azure のサービスの優先管理インターフェイスです。 Azure Traffic Manager ベースの API とツールを使用して、Azure Traffic Manager プロファイルを管理できます。
@@ -313,4 +311,3 @@ Get-AzureRmTrafficManagerProfile -Name MyProfile -ResourceGroupName MyRG | Remov
 [Traffic Manager の監視](traffic-manager-monitoring.md)
 
 [Traffic Manager のパフォーマンスに関する考慮事項](traffic-manager-performance-considerations.md)
-

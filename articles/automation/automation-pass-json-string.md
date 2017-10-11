@@ -13,14 +13,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: 141270c353d3fe7341dfad890162ed74495d48ac
 ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 
 Runbook に渡すデータを JSON ファイルに格納すると便利な場合があります。
@@ -118,6 +116,5 @@ Runbook は、JSON ファイルの値を使用して、VM を開始します。
 
 * テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「 [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md) 
 * Runbook の作成およびインポートの詳細については、「[Azure Automation での Runbook の作成またはインポート](automation-creating-importing-runbook.md)」を参照してください。
-
 
 

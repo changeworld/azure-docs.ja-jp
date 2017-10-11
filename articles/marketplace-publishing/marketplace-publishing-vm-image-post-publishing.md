@@ -14,13 +14,11 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 08/03/2016
 ms.author: hascipio;
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
 ms.openlocfilehash: e1f90650e71345957c2d353774cb8bef62c1868b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="post-production-guide-for-virtual-machine-offers-in-the-azure-marketplace"></a>Azure Marketplace の仮想マシン プランの作成後ガイド
 この記事では、Azure Marketplace の発行済みの仮想マシン プランを更新する方法について説明します。 既存のプランに 1 つ以上の新しい SKU を追加するプロセスについて説明します。 Azure Marketplace から発行済みの仮想マシン プランまたは SKU を削除するプロセスについても説明します。
@@ -338,4 +336,3 @@ SKU の詳細を更新してプランを再発行するには、次の手順に�
 * [Get support as a publisher (発行元としてサポートを受ける)](marketplace-publishing-get-publisher-support.md)
 * [オンプレミスで VM イメージを作成する](marketplace-publishing-vm-image-creation-on-premise.md)
 * [Windows を実行する仮想マシンを Azure プレビュー ポータルで作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
-

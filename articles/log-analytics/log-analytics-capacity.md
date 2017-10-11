@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
 ms.openlocfilehash: 5ca005127721092b8efcf0ac83cc967ab15fe72d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>容量とパフォーマンス ソリューション (プレビュー) を使って Hyper-V 仮想マシンの容量を計画する
 
@@ -147,4 +146,3 @@ New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", v
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics のログ検索機能](log-analytics-log-searches.md)を使用して、容量とパフォーマンスに関する詳細なデータを確認します。
-

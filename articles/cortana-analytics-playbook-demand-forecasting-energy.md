@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/24/2016
 ms.author: ilanr9;yijichen;garye
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 275e387878900154660d044b26ff5ac03a17a65a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="cortana-intelligence-solution-template-playbook-for-demand-forecasting-of-energy"></a>エネルギー需要予測のための Cortana Intelligence Solution Template Playbook
 ## <a name="executive-summary"></a>概要
@@ -401,5 +400,4 @@ Azure ML でデプロイできる主な構成要素は、Web サービスです�
 ![End to End Deployment Architecture](media/cortana-analytics-playbook-demand-forecasting-energy/architecture.png)
 
 各コンポーネントとアーキテクチャ全体の詳細については、エネルギー ソリューション テンプレートを参照してください。
-
 

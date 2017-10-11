@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c300ba45cd530e5a606786aa7b2b254c2ed32fcd
-ms.openlocfilehash: 3578684ac8c92ff195b19740b28ef9adebdc7309
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/14/2017
-
+ms.openlocfilehash: 6966cf145375bf3d830d476564c428502ae40fd4
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-select-permissions-for-a-given-api"></a>指定の API のアクセス許可を選択する方法
 
 アプリケーションの認証エンドポイントは [Azure Portal](https://portal.azure.com) で見つけることができます。
@@ -37,4 +35,3 @@ ms.lasthandoff: 04/14/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Active Directory 開発者ガイド](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-developers-guide#authentication-and-authorization-protocols)
-

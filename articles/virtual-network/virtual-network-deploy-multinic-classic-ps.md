@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: 6e2bb0e228aa28c79969cba07352061abbb47951
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: 923d4817d96399fc423b0a89cbf88f8d397f1af0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM (クラシック) を作成する
 
@@ -196,4 +195,3 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
         New-AzureVM             xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx Succeeded
-

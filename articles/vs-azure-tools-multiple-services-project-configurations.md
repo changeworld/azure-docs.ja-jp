@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 24b2530b23211c654072a6edc8a31e53989bf0a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>複数のサービス構成を使用した Azure プロジェクトの構成
 Azure クラウド サービス プロジェクトには、ServiceDefinition.csdef と ServiceConfiguration.cscfg の 2 つの構成ファイルが含まれています。 これらのファイルは、Azure クラウド サービス アプリケーションと共にパッケージ化され、Azure にデプロイされます。
@@ -106,5 +105,4 @@ Azure クラウド サービス プロジェクト全体に適用される設定
 | ビルド イベント |このページでは、ビルド前およびビルド後のイベントを設定できます。 |
 | 開発 |このページでは、ビルド構成の手順や、ビルド後イベントを実行する条件を指定できます。 |
 | Web |このページでは、Web サーバーに関連する設定を構成できます。 |
-
 

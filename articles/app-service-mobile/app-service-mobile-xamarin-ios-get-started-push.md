@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: 185a32376dd1c40fd480e16d3ac7607ac798afae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: bf922e49c4c92d0065817a5dd6c7d10a04737304
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-xamarinios-app"></a>Xamarin iOS アプリへのプッシュ通知の追加
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -136,7 +135,6 @@ ms.lasthandoff: 11/17/2016
 <!-- Images. -->
 
 <!-- URLs. -->
-
 
 
 

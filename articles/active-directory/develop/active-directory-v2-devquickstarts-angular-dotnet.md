@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9cd676554542e4effef54790bf9095c5b7a8f75b
-ms.openlocfilehash: 0ab6506e14997c0c6d58afa22db63f928d7cceb9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/03/2017
-
-
+ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>AngularJS シングル ページ アプリへのサインインの追加 - .NET
 この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。  v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
@@ -236,5 +234,4 @@ v2.0 エンドポイントについての学習を続けるには、 [v2.0 開�
 
 ## <a name="get-security-updates-for-our-products"></a>Microsoft 製品のセキュリティ更新プログラムの取得
 セキュリティの問題が発生したときに通知を受け取ることをお勧めします。そのためには、[このページ](https://technet.microsoft.com/security/dd252948)にアクセスし、セキュリティ アドバイザリ通知を受信登録してください。
-
 

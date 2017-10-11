@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/14/2017
 ms.author: markgal;
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 91451b2cdc42ed05ef7c1ba9c66ad5b4b45dd788
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="manage-azure-backup-vaults-and-servers-using-the-classic-deployment-model"></a>クラシック デプロイメント モデルを使用した Azure Backup コンテナーとサーバーの管理
 > [!div class="op_single_selector"]
@@ -199,4 +198,3 @@ Azure Backup エージェントには、データ転送時のネットワーク�
 * [Azure からの Windows Server または Windows クライアントの復元](backup-azure-restore-windows-server.md)
 * Azure Backup の詳細については、「 [Azure Backup の概要](backup-introduction-to-azure-backup.md)
 * [Azure Backup フォーラム](http://go.microsoft.com/fwlink/p/?LinkId=290933)
-

@@ -9,14 +9,12 @@ ms.technology: search
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: heidist
-ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
 ms.openlocfilehash: 02d5fac8cf9067ec544668f306fe49b805b3d164
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="azure-search---frequently-asked-questions-faq"></a>Azure Search - よく寄せられる質問 (FAQ)
  
  Azure Search に関連する概念、コード、シナリオについてよく寄せられる質問の回答を見つけることができます。

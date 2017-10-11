@@ -16,14 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/16/2016
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: 72f5a3cd6463befd5108040ed166984281bfc5f0
-ms.lasthandoff: 04/03/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="resize-a-linux-vm-with-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM のサイズを変更する
 
 ## <a name="overview"></a>概要
@@ -84,4 +82,3 @@ VM のサイズを変更するには、次の手順を実行します。
 [boot-diagnostics]: https://azure.microsoft.com/en-us/blog/boot-diagnostics-for-virtual-machines-v2/
 [scale-set]: ../../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md 
 [vm-sizes]:sizes.md
-

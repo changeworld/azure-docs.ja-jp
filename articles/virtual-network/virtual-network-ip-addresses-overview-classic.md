@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: aa99d3ebd181a76d582670c5219f29858c462d30
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-classic-in-azure"></a>Azure における IP アドレスの種類と割り当て方法 (クラシック)
 Azure リソースには、他の Azure リソース、オンプレミス ネットワーク、およびインターネットと通信するために IP アドレスを割り当てることができます。 Azure で使用できる IP アドレスには、パブリックとプライベートの 2 種類があります。
@@ -179,5 +178,4 @@ Azure における [ネットワークの制限](../azure-subscription-service-l
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Portal を使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-classic-pportal.md)します。
-
 

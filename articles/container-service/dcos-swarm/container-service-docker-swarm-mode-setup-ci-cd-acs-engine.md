@@ -15,14 +15,12 @@ ms.workload: na
 ms.date: 05/27/2017
 ms.author: diegomrtnzg
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: bfd49ea68c597b109a2c6823b7a8115608fa26c3
-ms.openlocfilehash: e68f06925fd7c72d72610ca68fab58a6fa2f4561
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/25/2017
-
+ms.openlocfilehash: 2c0e5fe4f60738fcc1aa67a78674e6f3c62e5628
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
-
 # <a name="full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-visual-studio-team-services"></a>Visual Studio Team Services で ACS エンジンと Docker Swarm Mode を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン
 
 *この記事は、[Visual Studio Team Services で Docker Swarm を使用して Azure Container Service に複数コンテナー アプリケーションをデプロイする完全な CI/CD パイプライン](container-service-docker-swarm-setup-ci-cd.md)に関するドキュメントに基づいています。*
@@ -257,4 +255,3 @@ Visual Studio Team Services を使用すると、[複数の環境のリリース
 * Visual Studio Team Services を使用した CI/CD の詳細については、[VSTS ビルドの概要](https://www.visualstudio.com/docs/build/overview)に関するページを参照してください。
 * ACS エンジンの詳細については、[ACS エンジンの GitHub リポジトリ](https://github.com/Azure/acs-engine)に関するページを参照してください。
 * Docker Swarm Mode の詳細については、[Docker Swarm Mode の概要](https://docs.docker.com/engine/swarm/)に関するページを参照してください。
-

@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ambapat
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
 ms.openlocfilehash: 5da9f5eceda71ac85259193e0f183c72813e1679
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="manage-key-vault-using-cli-20"></a>CLI 2.0 を使用した Key Vault の管理
 Azure Key Vault は、ほとんどのリージョンで使用できます。 詳細については、 [Key Vault の価格のページ](https://azure.microsoft.com/pricing/details/key-vault/)を参照してください。
@@ -255,4 +253,3 @@ az keyvault secret delete --vault-name 'ContosoKeyVault' --name 'SQLPassword'
 Key Vault コマンドの完全な Azure CLI リファレンスについては、[Key Vault CLI リファレンス](/cli/azure/keyvault)を参照してください。
 
 プログラミング リファレンスについては、「 [Azure Key Vault 開発者ガイド](key-vault-developers-guide.md)」を参照してください。
-

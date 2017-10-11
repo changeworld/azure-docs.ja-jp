@@ -15,13 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
-ms.openlocfilehash: 5aca3011fc67e009bc3d543235049a4d5dd3a69b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/03/2017
-
-
+ms.openlocfilehash: d6ad9db8eae0dc35580194f2ffbf02eeab6b70d2
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="transact-sql-topics"></a>Transact-SQL トピック
 ## <a name="data-definition-language-ddl-statements"></a>データ定義言語 (DDL) ステートメント
@@ -126,4 +124,3 @@ TSQL の例については、「[SQL Data Warehouse の参照トピック][SQL D
 
 
 <!--Other Web references-->
-

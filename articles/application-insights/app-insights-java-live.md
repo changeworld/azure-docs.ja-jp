@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
 ms.author: bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: 878badf2753b4ceb471abc789e388fd784c4c42a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
+ms.openlocfilehash: a2731e3e44f8f3d104d8abc7dbe71fe3a4c3a690
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
 
@@ -137,5 +136,4 @@ HTTP 要求に関するテレメトリが概要ブレードに表示されます
 * [Web テストを設定](app-insights-monitor-web-app-availability.md) して、アプリケーションが動作していて応答できることを確認します。
 * [ログ トレースをキャプチャする](app-insights-java-trace-logs.md)
 * [イベントおよびログを検索](app-insights-diagnostic-search.md) します。
-
 

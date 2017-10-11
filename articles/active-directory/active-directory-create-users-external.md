@@ -16,12 +16,11 @@ ms.date: 07/25/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: 399230584d01986dd0f793a6ff8245ef2b4f8fb1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-users-from-other-directories-or-partner-companies-in-azure-active-directory"></a>Azure Active Directory で他のディレクトリまたはパートナー会社からユーザーを追加する
 
@@ -80,4 +79,3 @@ ms.lasthandoff: 07/26/2017
 * [Administer your Azure AD directory](active-directory-administer.md)
 * [Manage passwords in Azure AD](active-directory-manage-passwords.md)
 * [Manage groups in Azure AD](active-directory-manage-groups.md)
-

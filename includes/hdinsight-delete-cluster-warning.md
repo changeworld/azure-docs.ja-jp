@@ -1,7 +1,7 @@
 
 
 > [!WARNING]
-> HDInsight クラスターの料金は、そのクラスターを使用しているかどうかに関係なく、分単位で課金されます。 使用後は、クラスターを必ず削除してください。 詳細については、[HDInsight クラスターの削除方法](../articles/hdinsight/hdinsight-delete-cluster.md)に関する記事を参照してください。
+> HDInsight クラスターの課金は 1 分間、比例配分か使用しているかどうか。 使用することを完了した後、クラスターを削除してください。 詳細については、次を参照してください。 [HDInsight クラスターを削除する方法](../articles/hdinsight/hdinsight-delete-cluster.md)です。
 > 
 > 
 

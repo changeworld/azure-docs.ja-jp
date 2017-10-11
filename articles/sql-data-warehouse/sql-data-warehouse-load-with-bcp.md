@@ -1,6 +1,6 @@
 ---
-title: "bcp を使用した SQL Data Warehouse へのデータの読み込み | Microsoft Docs"
-description: "データ ウェアハウジングのシナリオに沿って、bcp の概要と、その使用方法を学習します。"
+title: "Bcp を使用して、SQL データ ウェアハウスにデータを読み込む |Microsoft ドキュメント"
+description: "どのような bcp とデータ ウェアハウスのシナリオを使用する方法について説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: ckarst
@@ -15,59 +15,56 @@ ms.workload: data-services
 ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c0e2324a2b2e6294df6e502f2e7a0ae36ff94158
-ms.openlocfilehash: e368ae8b249fe3c33371794160440e472b0f35e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/30/2017
-
-
-
+ms.openlocfilehash: 7596eac10fdf53380d85128265430ce07b551fe3
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="load-data-with-bcp"></a>bcp を使用したデータの読み込み
+# <a name="load-data-with-bcp"></a>Bcp を使用したデータの読み込み
 > [!div class="op_single_selector"]
 > * [Redgate](sql-data-warehouse-load-with-redgate.md)  
-> * [Data Factory](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
+> * [データ ファクトリ](sql-data-warehouse-get-started-load-with-azure-data-factory.md)  
 > * [PolyBase](sql-data-warehouse-get-started-load-with-polybase.md)  
 > * [BCP](sql-data-warehouse-load-with-bcp.md)
 > 
 > 
 
-**[bcp][bcp]** はコマンド ライン形式の一括読み込みユーティリティの一種であり、これを使用して SQL Server、データ ファイル、および SQL Data Warehouse の間でデータをコピーできます。 bcp を使用して SQL Data Warehouse のテーブルに多数の行をインポートしたり、SQL Server のテーブルからデータ ファイルにデータをエクスポートしたりします。 queryout オプションと併用する場合を除き、bcp を使用するときに Transact-SQL の知識は必要ありません。
+**[bcp] [ bcp]** コマンド ライン一括読み込みユーティリティで、SQL サーバー、データ ファイル、および SQL データ ウェアハウスの間でデータをコピーすることができます。 SQL データ ウェアハウスのテーブルに大量の行をインポートするか、SQL Server テーブルからデータ ファイルにデータをエクスポートするのには、bcp を使用します。 Queryout オプションで使用する場合、を除き bcp の TRANSACT-SQL の知識は必要ありません。
 
-bcp を使用すれば、すばやく、簡単に SQL Data Warehouse データベースとの間で小規模なデータ セットを読み込み/抽出できます。 bcp を使用して読み込み/抽出する場合に推奨される正確なデータ量は、Azure データ センターへのネットワーク接続によって異なります。  一般に、ディメンション テーブルは bcp で簡単に読み込んで抽出できますが、bcp は大量のデータの読み込みや抽出にはお勧めできません。  大量のデータの読み込みと抽出に適したツールは、Polybase です。SQL Data Warehouse の大量並列処理アーキテクチャをうまく活用できます。
+bcp は、SQL データ ウェアハウス データベースに出入りするサイズの小さいデータ セットを移動する迅速かつ簡単な方法です。 正確な bcp 経由でのロード/抽出することが推奨されるデータ量が依存している Azure データ センターへの接続のネットワークにします。  一般に、ディメンション テーブルがロードされ、bcp で簡単に抽出することができます、ただし、bcp は推奨されませんの読み込みや、大量のデータを抽出します。  Polybase は、読み込みと同様に的確に SQL データ ウェアハウスの膨大な並列処理のアーキテクチャを活用することに大量のデータを抽出するための推奨ツールです。
 
-bcp では次のことができます。
+Bcp では、次のことができます。
 
-* 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse にデータを読み込みます。
-* 簡単なコマンド ライン ユーティリティを使用して、SQL Data Warehouse からデータを抽出します。
+* SQL データ ウェアハウスにデータを読み込むには、単純なコマンド ライン ユーティリティを使用します。
+* SQL データ ウェアハウスからデータを抽出するのにには、単純なコマンド ライン ユーティリティを使用します。
 
-ここでは、次の操作方法について説明します。
+このチュートリアル方法を説明します。
 
-* bcp in コマンドを使用してテーブルにデータをインポートする
-* bcp out コマンドを使用してテーブルからデータをエクスポートする
+* コマンドで、bcp を使用してテーブルにデータをインポートします。
+* テーブルの使用、bcp コマンドをからデータをエクスポートします。
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Loading-data-into-Azure-SQL-Data-Warehouse-with-BCP/player]
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを進めるには、次が必要です。
+このチュートリアルの手順が必要です。
 
-* SQL Data Warehouse データベース
-* インストールされた bcp コマンド ライン ユーティリティ
-* インストールされた SQLCMD コマンド ライン ユーティリティ
+* SQL データ ウェアハウス データベース
+* インストールされている、bcp コマンド ライン ユーティリティ
+* インストールされている SQLCMD コマンド ライン ユーティリティ
 
 > [!NOTE]
-> bcp ユーティリティと sqlcmd ユーティリティは [Microsoft ダウンロード センター][Microsoft Download Center]からダウンロードできます。
+> Bcp および sqlcmd ユーティリティをダウンロードすることができます、 [Microsoft ダウンロード センター][Microsoft Download Center]です。
 > 
 > 
 
-## <a name="import-data-into-sql-data-warehouse"></a>SQL Data Warehouse へのデータのインポート
-このチュートリアルでは、Azure SQL Data Warehouse でテーブルを作成し、そのデータをテーブルにインポートします。
+## <a name="import-data-into-sql-data-warehouse"></a>SQL データ ウェアハウスにデータをインポートします。
+このチュートリアルでは、Azure SQL Data Warehouse にテーブルを作成し、テーブルにデータをインポートします。
 
-### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>手順 1: Azure SQL Data Warehouse でテーブルを作成する
-コマンド プロンプトで sqlcmd を使用して次のクエリを実行し、インスタンスにテーブルを作成します。
+### <a name="step-1-create-a-table-in-azure-sql-data-warehouse"></a>手順 1: Azure SQL Data Warehouse にテーブルを作成します。
+コマンド プロンプトから sqlcmd を使用して、インスタンスでテーブルを作成する次のクエリを実行します。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -86,12 +83,12 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> SQL Data Warehouse でのテーブルの作成と、WITH 句で使用できるオプションの詳細については、[テーブルの概要][Table Overview]に関する記事または [CREATE TABLE 構文][CREATE TABLE syntax]に関するページを参照してください。
+> 参照してください[テーブルの概要][ Table Overview]または[CREATE TABLE 構文][ CREATE TABLE syntax]詳細については、SQL データ ウェアハウスと、WITH 句で使用可能なオプションでテーブルを作成します。
 > 
 > 
 
-### <a name="step-2-create-a-source-data-file"></a>手順 2: ソース データ ファイルを作成する
-メモ帳を開き、データの以下の行を新しいテキスト ファイルにコピーして、このファイルをローカルの一時ディレクトリに保存します (C:\Temp\DimDate2.txt)。
+### <a name="step-2-create-a-source-data-file"></a>手順 2: ソース データ ファイルを作成します。
+メモ帳を開いて新しいテキスト ファイルに次の行のデータをコピーして、ローカル一時ディレクトリに C:\Temp\DimDate2.txt このファイルを保存します。
 
 ```
 20150301,1,3
@@ -109,24 +106,24 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 ```
 
 > [!NOTE]
-> bcp.exe は、UTF-8 のファイルのエンコーディングをサポートしていないことに注意してください。 bcp.exe を使用する場合は、ASCII ファイルまたは UTF-16 エンコード ファイルを使用してください。
+> ことが重要、bcp.exe が utf-8 のファイル エンコードをサポートしていませんに注意してください。 Bcp.exe を使用する場合に、ASCII ファイルまたは utf-16 でエンコードされたファイルを使用してください。
 > 
 > 
 
-### <a name="step-3-connect-and-import-the-data"></a>手順 3: データに接続し、インポートする
-bcp を使用して、次のコマンドでデータに接続し、インポートできます。値は適宜置き換えて使用してください。
+### <a name="step-3-connect-and-import-the-data"></a>手順 3: 接続し、データのインポート
+Bcp を使用して、接続し、必要に応じて値を置き換える次のコマンドを使用してデータをインポートできます。
 
 ```sql
 bcp DimDate2 in C:\Temp\DimDate2.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t  ','
 ```
 
-sqlcmd を使用して次のクエリを実行すると、データが読み込まれたかどうかを確認することができます。
+Sqlcmd を使用して、次のクエリを実行して、データが読み込まれたことを確認することができます。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "SELECT * FROM DimDate2 ORDER BY 1;"
 ```
 
-これにより、次の結果が得られます。
+これには、次の結果が返されます。
 
 | DateId | CalendarQuarter | FiscalQuarter |
 | --- | --- | --- |
@@ -143,10 +140,10 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 | 20151101 |4 |2 |
 | 20151201 |4 |2 |
 
-### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しくロードしたデータの統計を作成する
-Azure SQL Data Warehouse は、統計の自動作成または自動更新をまだサポートしていません。 クエリから最高のパフォーマンスを取得するには、最初の読み込み後またはそれ以降のデータの変更後に、すべてのテーブルのすべての列で統計を作成することが重要です。 統計の詳細については、開発トピック グループの[統計][Statistics]に関するトピックを参照してください。 この例でロードしたテーブルの統計を作成する方法の簡単な例を次に示します
+### <a name="step-4-create-statistics-on-your-newly-loaded-data"></a>手順 4: 新しく読み込まれたデータに統計を作成します。
+Azure SQL Data Warehouse では、サポートの自動作成] または [統計の更新を自動まだされていません。 クエリから最高のパフォーマンスを取得するためには、最初の読み込み後にすべてのテーブルのすべての列に統計を作成することが重要またはデータに大幅な変更が発生します。 統計情報の詳細については、次を参照してください。、[統計][ Statistics]トピックの開発グループ内のトピックです。 この例では読み込まれて、テーブルの統計を作成する方法の簡単な例を次に示します
 
-sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
+Sqlcmd プロンプトから次の CREATE STATISTICS ステートメントを実行します。
 
 ```sql
 sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q "
@@ -156,16 +153,16 @@ sqlcmd.exe -S <server name> -d <database name> -U <username> -P <password> -I -Q
 "
 ```
 
-## <a name="export-data-from-sql-data-warehouse"></a>SQL Data Warehouse からのデータのエクスポート
-このチュートリアルでは SQL Data Warehouse 内のテーブルからデータ ファイルを作成します。 上記で作成したデータを DimDate2_export.txt という名前の新しいデータ ファイルにエクスポートします。
+## <a name="export-data-from-sql-data-warehouse"></a>SQL データ ウェアハウスからデータをエクスポートします。
+このチュートリアルでは、SQL データ ウェアハウス内のテーブルからデータ ファイルを作成します。 上で作成したデータをエクスポートする DimDate2_export.txt と呼ばれる新しいデータ ファイルにします。
 
-### <a name="step-1-export-the-data"></a>手順 1: データをエクスポートする
-bcp ユーティリティを使用して、次のコマンドでデータに接続し、エクスポートできます。値は適宜置き換えて使用してください。
+### <a name="step-1-export-the-data"></a>手順 1: データをエクスポートします。
+Bcp ユーティリティを使用して、接続し、適切な値を置換する次のコマンドを使用してデータをエクスポートできます。
 
 ```sql
 bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name> -U <Username> -P <password> -q -c -t ','
 ```
-新しいファイルを開き、データが正しくエクスポートされたことを確認できます。 ファイル内のデータは、次のテキストと一致する必要があります。
+新しいファイルを開くことによってデータが正しくエクスポートされたことを確認することができます。 ファイル内のデータは、次のテキストに一致する必要があります。
 
 ```
 20150301,1,3
@@ -183,13 +180,13 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 ```
 
 > [!NOTE]
-> 分散システムの性質上、データの順序は SQL Data Warehouse データベース全体で異なる場合があります。 別のオプションでは、bcp の **queryout** 関数を使用して、テーブル全体をエクスポートするのではなく、抽出するクエリを記述します。
+> 分散システムの性質上、データの順序できない可能性があります、同じ SQL データ ウェアハウスのデータベース間でします。 別のオプションは、使用する、 **queryout**のクエリを記述する bcp 関数を抽出ではなくテーブル全体をエクスポートします。
 > 
 > 
 
 ## <a name="next-steps"></a>次のステップ
-読み込みの概要については、[SQL Data Warehouse へのデータの読み込み][Load data into SQL Data Warehouse]に関するページを参照してください。
-開発に関するその他のヒントについては、[SQL Data Warehouse の開発の概要][SQL Data Warehouse development overview]に関する記事をご覧ください。
+読み込みの詳細については、次を参照してください。 [SQL データ ウェアハウスにデータを読み込む][Load data into SQL Data Warehouse]です。
+開発の詳細については、次を参照してください。 [SQL データ ウェアハウスの開発の概要][SQL Data Warehouse development overview]です。
 
 <!--Image references-->
 
@@ -206,4 +203,3 @@ bcp DimDate2 out C:\Temp\DimDate2_export.txt -S <Server Name> -d <Database Name>
 
 <!--Other Web references-->
 [Microsoft Download Center]: https://www.microsoft.com/download/details.aspx?id=36433
-

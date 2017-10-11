@@ -14,13 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/29/2016
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: d090ce5a912a2079d2e47d13caf60ca701f0e548
-ms.openlocfilehash: 63ac171494e13f4451d585c3b704727eeed94fab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/27/2017
-
-
+ms.openlocfilehash: 413a2ba9107ca259ed577825bf0a17ff5622f1ac
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="logic-apps-loops-scopes-and-debatching"></a>Logic Apps のループ、スコープ、分割処理
   

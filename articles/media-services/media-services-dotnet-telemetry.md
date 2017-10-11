@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: b346b32bd5580d25ac24786fce5aff932b3c15ae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 1d857f3d062d8d1b15c64fa4b8c3e27ad6c2247e
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="configuring-azure-media-services-telemetry-with-net"></a>.NET での Azure Media Services テレメトリの構成
 
 このトピックでは、.NET SDK を使用して Azure Media Services (AMS) テレメトリを構成するときの一般的な手順について説明します。 
@@ -219,4 +217,3 @@ ms.lasthandoff: 07/21/2017
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

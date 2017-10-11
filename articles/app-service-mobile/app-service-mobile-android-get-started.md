@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 7752cd091d7952a905001f14414eba84b90f0d51
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
+ms.openlocfilehash: 418a5229a084d570bc6cab5925dbd8d30945a3c5
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-an-android-app"></a>Android アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -48,4 +47,3 @@ ms.lasthandoff: 03/09/2017
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2013]: https://go.microsoft.com/fwLink/p/?LinkID=534203
-

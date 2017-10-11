@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: f4e42ca177ac6c11111d4ffc0d772cafc13f8657
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.openlocfilehash: 1ad536a53d64b0144f6396393830bc0c5cbe4fb1
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>HDInsight 上の Hadoop サービスで使用されるポート
 

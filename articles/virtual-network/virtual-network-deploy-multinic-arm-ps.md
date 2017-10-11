@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
-ms.openlocfilehash: ae6c92d4f005b389de2d65c30113580190914b42
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: f3a11afd8fbd6a5e6b94cf1ebee7ea20665421bd
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-powershell"></a>PowerShell を使用して複数の NIC を持つ VM を作成する
 
@@ -35,7 +34,7 @@ ms.lasthandoff: 02/28/2017
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-ps.md)ではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
@@ -59,8 +58,8 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 バックエンド VM は、次のリソースの作成に依存します。
 
 * **データ ディスクのストレージ アカウント**。 パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。 デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
-* **NIC**。 各 VM には&2; つの NIC があり、1 つはデータベース アクセス用で、もう&1; つは管理用です。
-* **可用性セット**。 メンテナンス中に少なくとも&1; つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。  
+* **NIC**。 各 VM には 2 つの NIC があり、1 つはデータベース アクセス用で、もう 1 つは管理用です。
+* **可用性セット**。 メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。  
 
 ### <a name="step-1---start-your-script"></a>手順 1 - スクリプトの開始
 使用するすべての PowerShell スクリプトは、 [ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-ps.ps1)からダウンロードできます。 以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
@@ -132,7 +131,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 ### <a name="step-3---create-the-nics-and-back-end-vms"></a>手順 3 - NIC とバックエンド VM の作成
 ループを使用して必要な数の VM を作成し、必要な NIC と VM をループ内に作成します。 NIC と VM を作成するには、次の手順を実行します。
 
-1. `$numberOfVMs` 変数の値に基づいて、`for` ループを開始して、1 つの VM と&2; つの NIC を作成するコマンドを必要な回数だけ繰り返します。
+1. `$numberOfVMs` 変数の値に基づいて、`for` ループを開始して、1 つの VM と 2 つの NIC を作成するコマンドを必要な回数だけ繰り返します。
    
     ```powershell
     for ($suffixNumber = 1; $suffixNumber -le $numberOfVMs; $suffixNumber++){
@@ -164,7 +163,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     $vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize $vmSize -AvailabilitySetId $avSet.Id
     ```
 
-5. VM あたり&2; つのデータ ディスクを作成します。 データ ディスクが、前に作成した、Premium Storage アカウント内にあることに注意してください。
+5. VM あたり 2 つのデータ ディスクを作成します。 データ ディスクが、前に作成した、Premium Storage アカウント内にあることに注意してください。
 
     ```powershell
     $dataDisk1Name = $vmName + "-" + $osDiskPrefix + "-1"
@@ -185,7 +184,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
     $vmConfig = Set-AzureRmVMSourceImage -VM $vmConfig -PublisherName $publisher -Offer $offer -Skus $sku -Version $version
     ```
 
-7. 上記で作成した&2; つの NIC を `vmConfig` オブジェクトに追加します。
+7. 上記で作成した 2 つの NIC を `vmConfig` オブジェクトに追加します。
 
     ```powershell
     $vmConfig = Add-AzureRmVMNetworkInterface -VM $vmConfig -Id $nic1.Id -Primary
@@ -228,8 +227,8 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         Tags                         :
         TagsText                     : null
         AvailabilitySetReference     : Microsoft.Azure.Management.Compute.Models.AvailabilitySetReference
-        AvailabilitySetReferenceText :     {
-                                     "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
+        AvailabilitySetReferenceText :  {
+                                    "ReferenceUri": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/IaaSStory-Backend/providers/Microsoft.Compute/availabilitySets/ASDB"
                                     }
         Extensions                   :
         ExtensionsText               : null
@@ -337,4 +336,3 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         TrackingOperationId : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         RequestId           : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
         StatusCode          : OK
-

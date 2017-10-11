@@ -1,6 +1,6 @@
 ---
-title: "Azure API Management での開発者ポータルのページ コンテンツの変更 | Microsoft Docs"
-description: "Azure API Management での開発者ポータルのページ コンテンツの編集方法について説明します。"
+title: "Azure API Management で開発者ポータルでページの内容の変更 |Microsoft ドキュメント"
+description: "Azure API Management で開発者ポータルでのページの内容を編集する方法を説明します。"
 services: api-management
 documentationcenter: 
 author: antonba
@@ -14,65 +14,64 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 02/09/2017
 ms.author: antonba
-translationtype: Human Translation
-ms.sourcegitcommit: ecae1da20551d8372331124b07c4aca2e15f55bb
 ms.openlocfilehash: 708c803c36c182ed90e04731b12d4ade00ae7ffb
-ms.lasthandoff: 02/23/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-# <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのコンテンツとレイアウトを変更する
-Azure API Management で開発者ポータルをカスタマイズする基本的な方法は&3; つあります。
+# <a name="modify-the-content-and-layout-of-pages-on-the-developer-portal-in-azure-api-management"></a>Azure API Management で開発者ポータルのページのレイアウトと内容を変更します。
+これには Azure API Management で開発者ポータルをカスタマイズする 3 つの基本的な方法があります。
 
-* [静的なページとページ レイアウト要素の内容を編集する][modify-content-layout] (このガイドで説明します)
-* [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
-* [ポータルで生成されたページで使用されるテンプレートを変更する][portal-templates] (例: API ドキュメント、製品、ユーザー認証など)
+* [静的なページとページ レイアウト要素の内容を編集][ modify-content-layout] (このガイドで説明されている)
+* [開発者ポータル全体のページ要素で使用されるスタイルを更新します。][customize-styles]
+* [ポータルで生成されるページを使用するテンプレートを変更][ portal-templates] (例: API ドキュメント、製品、ユーザーの認証など)
 
-## <a name="page-structure"> </a>開発者ポータルのページの構造
+## <a name="page-structure"></a>開発者ポータル ページの構造
 
-開発者ポータルは、コンテンツ管理システムがベースとなっています。 すべてのページのレイアウトは、ウィジェットと呼ばれる小さなページ要素のセットを基にして構築されています。
+開発者ポータルは、コンテンツ管理システムに基づいています。 ウィジェットと呼ばれる小さなページ要素のセットに基づいて、すべてのページのレイアウトがビルドします。
 
-![開発者ポータル ページの構造][api-management-customization-widget-structure]
+![開発者ポータル ページの構造体][api-management-customization-widget-structure]
 
-ウィジェットはすべて編集できます。 
-* 各ページ固有の中心的なコンテンツは、"コンテンツ" ウィジェットに存在します。 ページを編集することは、このウィジェットの内容を編集することを意味します。
-* すべてのページ レイアウト要素は、残りのウィジェットに含まれます。 これらのウィジェットに加えられた変更は、すべてのページに適用されます。 これらを "レイアウト ウィジェット" と呼びます。
+すべてのウィジェットは編集可能です。 
+* ページごとに固有のコア コンテンツは、「コンテンツ」ウィジェット内に存在します。 ページを編集には、このウィジェットの内容を編集することを意味します。
+* 残りのウィジェットでは、すべてのページ レイアウト要素が含まれています。 このウィジェットに加えられた変更は、すべてのページに適用されます。 これらが参照されます「レイアウト ウィジェット」として。
 
-日常的なページの編集では、通常、ページごとに異なる内容が含まれるコンテンツ ウィジェットのみが変更されます。
+日常的なページで通常 1 つを編集のみを変更し、コンテンツ ウィジェット ページごとに異なるコンテンツが表示されます。
 
-## <a name="modify-layout-widget"> </a>レイアウト ウィジェットの内容の変更
+## <a name="modify-layout-widget"></a>レイアウト ウィジェットの内容を変更します。
 
-開発者ポータル内のコンテンツは、Azure Portal からアクセスできるパブリッシャー ポータルを使用して変更します。 パブリッシャー ポータルにアクセスするには、API Management インスタンスのサービス ツール バーの **[パブリッシャー ポータル]** をクリックします。
+これは、Azure ポータルからアクセス可能なパブリッシャー ポータルを使用して、開発者ポータル内のコンテンツが変更されます。 到達できないように、をクリックして**パブリッシャー ポータル**API Management インスタンスのサービスのツールバーからです。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-ウィジェットの内容を編集するには、左側の **[開発者ポータル]** メニューで **[ウィジェット]** をクリックします。 この例では、ヘッダー ウィジェットの内容を変更します。 リストから **[ヘッダー]** ウィジェットを選択します。
+そのウィジェットの内容を編集する をクリックして**ウィジェット**から、**開発者ポータル** をクリックします。 この例では、ヘッダー ウィジェットの内容を変更することができます。 選択、**ヘッダー**一覧からウィジェット。
 
-![Widgets header][api-management-widgets-header]
+![ウィジェットのヘッダー][api-management-widgets-header]
 
-ヘッダーの内容は、 **[本文]** フィールドで編集することができます。 必要に応じてテキストを変更し、ページの下部にある **[保存]** をクリックします。
+ヘッダーの内容は内から編集、**本文**フィールドです。 必要に応じてテキストを変更し、クリックして**保存**ページの下部にあります。
 
-以後、この新しいヘッダーが開発者ポータル内のすべてのページに表示されます。
+これで、開発者ポータル内の各ページで、新しいヘッダーを表示することができます。
 
-> パブリッシャー ポータルで開発者ポータルを開くには、上部のバーにある **[開発者ポータル]** をクリックします。
+> パブリッシャー ポータルで、開発者ポータルを開くにはクリックして**開発者ポータル**上部のバーにします。
 > 
 > 
 
-## <a name="edit-page-contents"> </a>ページの内容を編集する
+## <a name="edit-page-contents"></a>ページの内容を編集
 
-既存のコンテンツ ページをすべて一覧表示するには、パブリッシャー ポータルの **[開発者ポータル]** メニューにある **[コンテンツ]** をクリックします。
+コンテンツのページで、すべての既存の一覧を表示する**コンテンツ**から、**開発者ポータル**パブリッシャー ポータルのメニュー。
 
-![Manage content][api-management-customization-manage-content]
+![コンテンツを管理します。][api-management-customization-manage-content]
 
-開発者ポータルのホーム ページに表示される内容を編集するには、 **ウェルカム** ページをクリックします。 目的の変更を行い、必要に応じてプレビューしてから **[今すぐ発行]** をクリックすると、すべての人がその内容を閲覧できるようになります。
+クリックして、**ようこそ**開発者ポータルのホーム ページに表示される内容を編集するページ。 必要に応じて、それらをプレビューしてクリックし、、変更を加える**今すぐ発行**すべてのユーザーに表示されるようにします。
 
-> ホーム ページには、最上部にバナーを表示できる特殊なレイアウトが使用されています。 このバナーを **[コンテンツ]** セクションから編集することはできません。 このバナーを編集するには、**[開発者ポータル]** メニューの **[ウィジェット]** をクリックし、**[現在のレイヤー]** ボックスの一覧の **[ホーム ページ]** を選択して、**[おすすめ]** セクションにある **[バナー]** 項目を開きます。 このウィジェットの内容は、他のページとまったく同じように編集できます。
+> ホーム ページでは、上部にバナーを表示することを許可する特殊なレイアウトを使用します。 このバナーはから編集できません、**コンテンツ**セクションです。 このバナーを編集する] をクリックして**ウィジェット**から、**開発者ポータル**メニューの [**ホーム ページ**から、**現在レイヤー**ドロップダウン リストを開き、**バナー**項目の下にある、**セクションの機能を備えた**です。 このウィジェットの内容は、他のページと同じように編集できます。
 > 
 > 
 
-## <a name="next-steps"> </a>次のステップ
-* [開発者ポータル全体のページ要素で使用されるスタイルを更新する][customize-styles]
-* [ポータルで生成されたページで使用されるテンプレートを変更する][portal-templates] (例: API ドキュメント、製品、ユーザー認証など)
+## <a name="next-steps"></a>次の手順
+* [開発者ポータル全体のページ要素で使用されるスタイルを更新します。][customize-styles]
+* [ポータルで生成されるページを使用するテンプレートを変更][ portal-templates] (例: API ドキュメント、製品、ユーザーの認証など)
 
 [Structure of developer portal pages]: #page-structure
 [Modifying the contents of a layout widget]: #modify-layout-widget
@@ -87,4 +86,3 @@ Azure API Management で開発者ポータルをカスタマイズする基本�
 [api-management-management-console]: ./media/api-management-modify-content-layout/api-management-management-console.png
 [api-management-widgets-header]: ./media/api-management-modify-content-layout/api-management-widgets-header.png
 [api-management-customization-manage-content]: ./media/api-management-modify-content-layout/api-management-customization-manage-content.png
-

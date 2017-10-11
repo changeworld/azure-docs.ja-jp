@@ -16,14 +16,12 @@ ms.tgt_pltfrm: cosmosdb
 ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f68f90c3aea337d7b61b43e637bcfda3c98f3ea
 ms.openlocfilehash: 96083d66cc1a2ef179f9313c1b3ed04162c1c048
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>高可用性を確保するためのフェールオーバー ポリシーを Azure CLI で作成する
 
 この CLI サンプル スクリプトでは、Azure Cosmos DB アカウントを作成し、高可用性に対応するようにアカウントを構成します。
@@ -60,4 +58,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 Azure Cosmos DB のその他の CLI サンプル スクリプトについては、[Azure Cosmos DB CLI のドキュメント](../cli-samples.md)をご覧ください。
-

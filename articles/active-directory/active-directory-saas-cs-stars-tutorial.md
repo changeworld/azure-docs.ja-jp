@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef1e603ea7759af76db595d95171cdbe1c995598
 ms.openlocfilehash: acc9160f86e58c7af4779a8bab5627dc5c5ad721
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/16/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cs-stars"></a>チュートリアル: Azure Active Directory と CS Stars の統合
 
@@ -227,5 +225,4 @@ CS Stars で作成したユーザーを取得するには、[CS Stars サポー�
 [201]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-cs-stars-tutorial/tutorial_general_203.png
-
 

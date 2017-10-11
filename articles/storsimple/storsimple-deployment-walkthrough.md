@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/17/2016
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2063acbafd6766d00dee9509ee7def73bdc5b982
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-your-on-premises-storsimple-device"></a>オンプレミスの StorSimple デバイスのデプロイ
 > [!div class="op_single_selector"]
@@ -283,5 +282,4 @@ StorSimple デバイスの 1 つのボリュームに対し、オンデマンド
 ## <a name="next-steps"></a>次のステップ
 * [仮想デバイス](storsimple-virtual-device-u2.md)を構成します。
 * [StorSimple Manager サービス](https://msdn.microsoft.com/library/azure/dn772396.aspx) を使用して StorSimple デバイスを管理します。
-
 

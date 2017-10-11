@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 07/19/2017
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
 ms.openlocfilehash: 117212a2e7e3da7c3e249798eec804a652e0ef58
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle ASM をセットアップする  
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、Azure 仮想マシンの基本的デプロイと Oracle Automated Storage Management (ASM) のインストールと構成について扱います。  学習内容は次のとおりです。
@@ -589,4 +587,3 @@ az group delete --name myResourceGroup
 [チュートリアル: Oracle GoldenGate の構成](Configure-oracle-golden-gate.md)
 
 [Oracle DB の構築](oracle-design.md)を確認する
-

@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 05/11/2016
 ms.author: v-sharos
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 31ed9dad8ba56a3746873b7b35e678e97743fbfe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-volumes"></a>StorSimple Manager サービスを使用してボリュームを管理する
 [!INCLUDE [storsimple-version-selector-manage-volumes](../../includes/storsimple-version-selector-manage-volumes.md)]
@@ -179,5 +177,4 @@ StorSimple Manager サービスは、StorSimple ソリューションを単一�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple ボリュームを複製する](storsimple-clone-volume.md)方法について説明します。
 * [StorSimple Manager サービスを使用した StorSimple デバイスの管理方法](storsimple-manager-service-administration.md)
-
 

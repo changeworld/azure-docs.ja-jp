@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/15/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -89,4 +88,3 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 * [ログ検索](log-analytics-log-searches.md) について学習し、データ ソースとソリューションから収集されたデータを分析します。  
 * [カスタム フィールド](log-analytics-custom-fields.md) を使用し、イベント レコードを個別のフィールドに解析します。
 * お使いの Windows エージェントから [パフォーマンス カウンターの収集](log-analytics-data-sources-performance-counters.md) を構成します。
-

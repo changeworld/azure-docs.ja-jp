@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 77f8f10c764013e539480138fb1479d0326b5eef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 5638434270ee82d2b9737ea8eed8b5a8c62f7121
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 ## <a name="problems-signing-in-to-a-microsoft-application"></a>Microsoft アプリケーションへのサインインに関する問題
 
 Microsoft アプリケーション (Office 365 Exchange、SharePoint、Yammer など) の割り当てと管理は、サード パーティの SaaS アプリケーションや、シングル サインオンで Azure AD と統合する他のアプリケーションとは少し異なる方法で行います。
@@ -528,5 +526,4 @@ Microsoft が公開したアプリケーションにユーザーがアクセス�
 
 ## <a name="next-steps"></a>次のステップ
 [管理者の同意エンドポイントを使用する](https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-scopes#using-the-admin-consent-endpoint)
-
 

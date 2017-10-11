@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 10/05/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: ec95b6d66c71b4278dd1e16807fcc75f5e8b1c36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="customize-windows-based-hdinsight-clusters-using-script-action"></a>Script Action を使用して Windows ベースの HDInsight クラスターをカスタマイズする
 **Script Action** を使用して、クラスターに追加のソフトウェアをインストールするクラスター作成プロセス中に [カスタム スクリプト](hdinsight-hadoop-script-actions.md) を起動できます。
@@ -327,4 +326,3 @@ HDInsight サービスでは、カスタム コンポーネントを使用する
 
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster/HDI-Cluster-state.png "クラスター作成時の段階"
-

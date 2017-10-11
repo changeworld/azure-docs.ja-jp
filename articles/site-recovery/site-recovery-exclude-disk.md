@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。 この機能は、VMware から Azure へのレプリケーションと Hyper-V から Azure へのレプリケーションのシナリオでサポートされます。
@@ -270,4 +269,3 @@ Azure 仮想マシンにおけるページング ファイルの設定を次に�
 
 ## <a name="next-steps"></a>次のステップ
 デプロイをセットアップし、実行状態にできたら、各種フェールオーバーの [詳細を確認](site-recovery-failover.md) します。
-

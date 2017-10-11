@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 624eff0a0da8f548877e4a4346b21df89cd37b67
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sd-elements"></a>チュートリアル: Azure Active Directory と SD Elements の統合
 
@@ -207,7 +206,7 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-sd-elements-test-user"></a>SD Elements テスト ユーザーの作成
 
@@ -295,5 +294,4 @@ SD Elements で Azure AD のシングル サインオンを構成してテスト
 [201]: ./media/active-directory-saas-sd-elements-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-sd-elements-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-sd-elements-tutorial/tutorial_general_203.png
-
 

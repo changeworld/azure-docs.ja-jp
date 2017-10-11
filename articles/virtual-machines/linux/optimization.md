@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eb79d574fd4dddfb986660cc338bc8748f2082c2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Azure での Linux VM の最適化
 コマンド ラインやポータルを使用すると、Linux 仮想マシン (VM) を簡単に作成できます。 このチュートリアルでは、Microsoft Azure Platform でのパフォーマンスが最適化されるように Linux 仮想マシンがセットアップされていることを確認する方法を説明します。 このトピックでは Ubuntu Server VM を使用しますが、 [テンプレートとして独自のイメージ](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)を使用して Linux 仮想マシンを作成することもできます。  
@@ -136,5 +135,4 @@ echo 'echo noop >/sys/block/sda/queue/scheduler' >> /etc/rc.local
 * [Azure Linux エージェント ユーザー ガイド](../windows/agent-user-guide.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Azure Linux VM 上での MySQL のパフォーマンスを最適化する](classic/optimize-mysql.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)
 * [Linux でのソフトウェア RAID の構成](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
-
 

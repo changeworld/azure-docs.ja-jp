@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a1ba750d2be1969bfcd4085a24b0469f72a357ad
-ms.openlocfilehash: 76078566c93f2b0359c1157cdcdb5b15a1402996
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/20/2017
-
+ms.openlocfilehash: 1b1d00718981b2c7d11f5b88428d02e16dd0b34d
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-configure-federated-single-sign-on-for-an-azure-ad-gallery-application"></a>Azure AD ギャラリー アプリケーションのフェデレーション シングル サインオンを構成する方法
 
 Enterprise Single Sign-On 機能が有効になっている Azure AD ギャラリー内のすべてのアプリケーションには、ステップ バイ ステップ チュートリアルが用意されています。 「[SaaS アプリと Azure Active Directory を統合する方法に関するチュートリアルの一覧](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/)」にアクセスして、詳しいステップ バイ ステップ ガイダンスを参照できます。
@@ -213,7 +211,6 @@ Azure AD には、メタデータを取得する URL は用意されていませ
 
 ## <a name="next-steps"></a>次のステップ
 [アプリケーション プロキシを使用してアプリにシングル サインオンを提供](active-directory-application-proxy-sso-using-kcd.md)
-
 
 
 

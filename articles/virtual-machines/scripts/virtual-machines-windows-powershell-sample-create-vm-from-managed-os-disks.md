@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 68820183e28cd27fb8493704f1de523747e9f7cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: ec532811e94647c8a04b9faf9474f6749969f83e
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
-
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-powershell"></a>PowerShell で既存の管理 OS ディスクを使用して仮想マシンを作成する
 
 このスクリプトは、既存の管理ディスクを OS ディスクとして接続することで仮想マシンを作成します。 このスクリプトは、次のシナリオで使用します。

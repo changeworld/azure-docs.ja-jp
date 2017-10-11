@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
 ms.openlocfilehash: ce63726d2406d2f1415d29786f0ef92ca95b9b90
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-opsgenie"></a>チュートリアル: Azure Active Directory と OpsGenie の統合
 
@@ -183,7 +181,7 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-opsgenie-test-user"></a>OpsGenie テスト ユーザーの作成
 
@@ -264,5 +262,4 @@ OpsGenie で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-opsgenie-tutorial/tutorial_general_203.png
-
 

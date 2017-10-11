@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
 ms.openlocfilehash: ed6f73d8baea5af0d2aa5f0ae885f305911ccc82
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/29/2017
 ---
 # <a name="step-9-configure-network-mapping-for-hyper-v-replication-with-vmm-to-azure"></a>手順 9: HYPER-V の Azure へのレプリケーション (VMM あり) のネットワーク マッピングを構成する
 
@@ -59,4 +58,3 @@ ms.lasthandoff: 07/26/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 10: レプリケーション ポリシーを作成する](vmm-to-azure-walkthrough-replication.md)」に進みます。
-

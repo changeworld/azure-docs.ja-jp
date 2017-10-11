@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 03/07/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6d749e5182fbab04adc32521303095dab199d129
-ms.openlocfilehash: dea4a174aaf3727d66e9d69d32d433ff24e0d06d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/22/2017
-
+ms.openlocfilehash: eea4e569ac2d0192ed7872d2fcb9bed03614832b
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="azure-sdk-for-net-30-release-notes"></a>Azure SDK for .NET 3.0 リリース ノート
 
@@ -52,7 +51,6 @@ ms.lasthandoff: 03/22/2017
 ### <a name="azure-in-role-cache"></a>Azure In-Role Cache 
 
 - Azure In-Role Cache のサポートは、2016 年 11 月 30 日に終了します。 詳細については、[ここ](https://azure.microsoft.com/blog/azure-managed-cache-and-in-role-cache-services-to-be-retired-on-11-30-2016/)をクリックしてください。
-
 
 
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: banders
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 1b2f9c3fc59a83b384a63db00d2d039cab8679e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 0e8fc0ffb8e0d0bdf00bea46594fe050c00b6c8e
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>DNS 分析プレビュー ソリューションを使用した DNS インフラストラクチャに関する洞察の収集
 
 ![DNS 分析のシンボル](./media/log-analytics-dns/dns-analytics-symbol.png)
@@ -192,4 +190,3 @@ Operations Manager 管理グループが Operations Management Suite ワーク�
 ## <a name="next-steps"></a>次のステップ
 
 [ログを検索](log-analytics-log-searches.md)して、詳細な DNS ログ レコードを確認します。
-

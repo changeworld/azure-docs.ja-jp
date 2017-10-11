@@ -1,20 +1,20 @@
 #### <a name="to-delete-a-cloud-appliance"></a>クラウド アプライアンスを削除するには
 
 1. Azure ポータルにサインインします。
-2. 削除できるのは、データが格納されていない非アクティブなデバイスだけです。 最初にデバイス上のデータを削除するか、別のデバイスにボリューム コンテナー内の[データをフェールオーバー](../articles/storsimple/storsimple-8000-device-failover-cloud-appliance.md)してください。 データを削除したら、いつでもデバイスを非アクティブ化することができます。
-3. StorSimple デバイス マネージャー サービス ページで **[デバイス]** をクリックし、目的のデバイスを選択します。 マウスの右ボタンをクリックして **[非アクティブ化]** を選択します。
-4. デバイスが非アクティブ化されたら、そのデバイスを右クリックして **[削除]** を選択します。
+2. データが含まれていない、非アクティブ化されたデバイスのみ削除できます。 最初にデバイス上のデータを削除することもできます[データ フェールオーバー](../articles/storsimple/storsimple-8000-device-failover-cloud-appliance.md)の別のデバイスにボリューム コンテナーです。 データが削除されると、デバイスを非アクティブ化する準備が整いました。
+3. 分割の StorSimple Manager サービス ページを開き、をクリックして**デバイス**し、デバイスを選択します。 右クリックし  **Deactivate**です。
+4. デバイスが非アクティブ化したら、デバイスを右クリックし、選択**削除**です。
 
-    ![非アクティブ化したデバイスを選択して [削除] をクリック](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance1.png)
+    ![非アクティブ化されたデバイスを選択し、[削除] をクリックしてください](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance1.png)
 
-5. デバイス名を入力して削除を確定します。 デバイスが削除されると、デバイス一覧が更新されます。
+5. 削除の確認、デバイス名を入力します。 デバイスが削除されると、デバイスの一覧を更新します。
 
-    ![削除の確定](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance2.png)
+    ![削除を確認します。](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance2.png)
 
-6. デバイスが削除されると、通知が表示されます。
+6. デバイスが削除された後に通知されます。
 
-    ![デバイスが正常に削除されたことの通知](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance4.png)
+    ![成功したデバイスの削除の通知](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance4.png)
 
-7. デバイスの一覧が更新され、デバイスが削除されたことがわかります。
+7. 削除されたことを示すデバイスの更新プログラムの一覧です。
 
-    ![更新されたデバイス一覧](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance5.png)
+    ![最新のデバイス一覧](./media/storsimple-8000-delete-cloud-appliance/delete-cloud-appliance5.png)

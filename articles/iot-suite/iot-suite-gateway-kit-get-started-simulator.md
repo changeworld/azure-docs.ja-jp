@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 9edcaee4d051c3dc05bfe23eecc9c22818cf967c
-ms.openlocfilehash: 42e82793b73a941df08e438d9e04669a386a8368
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 9ed57d3c23e2adbd42c054f33c8ed46e3d6c9792
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="connect-your-azure-iot-edge-gateway-to-the-remote-monitoring-preconfigured-solution-and-send-simulated-telemetry"></a>Azure IoT Edge ゲートウェイをリモート監視構成済みソリューションに接続し、シミュレートされたテレメトリを送信する
 

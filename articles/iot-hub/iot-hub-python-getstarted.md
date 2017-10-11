@@ -13,12 +13,11 @@ ms.workload: na
 ms.date: 08/25/2017
 ms.author: dkshir
 ms.custom: na
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f0800b70620106f9ae9d19d63b60b726835e338f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.openlocfilehash: 7ebbac4464d793717f68a4cb7905c53d1f5c051a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="connect-your-simulated-device-to-your-iot-hub-using-python"></a>Python を使用してシミュレートされたデバイスを IoT ハブに接続する
 [!INCLUDE [iot-hub-selector-get-started](../../includes/iot-hub-selector-get-started.md)]
@@ -327,4 +326,3 @@ Python SDK for Azure IoT Hub の使用の詳細については、[こちらの G
 [lnk-device-management]: iot-hub-node-node-device-management-get-started.md
 [lnk-iot-edge]: iot-hub-linux-iot-edge-get-started.md
 [lnk-connect-device]: https://azure.microsoft.com/develop/iot/
-

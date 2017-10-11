@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/24/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 650c7e10150b95a6ad7cd455746f7c1d77b9b34c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="how-to-detach-a-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 > [!IMPORTANT]
@@ -32,4 +31,3 @@ ms.lasthandoff: 08/22/2017
 [仮想マシン用のディスクと VHD について](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 [データ ディスクを Windows 仮想マシンに接続する方法](attach-disk.md)
-

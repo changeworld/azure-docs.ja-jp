@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 08/17/2017
 ms.author: maroche
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 629601df7395e6ae9eacc98f8da7db69c272a264
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
+ms.openlocfilehash: 9664a7bc8493b08c8e0797ac6f1b212079829833
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="how-to-secure-access-to-data-catalog-and-data-assets"></a>データ カタログとデータ資産へのアクセスをセキュリティで保護する方法
 > [!IMPORTANT]
@@ -57,5 +56,4 @@ Azure Data Catalog では、データ カタログにアクセスできるユー
 
 ## <a name="next-steps"></a>次のステップ
 - [Azure Data Catalog の概要](data-catalog-get-started.md)
-
 

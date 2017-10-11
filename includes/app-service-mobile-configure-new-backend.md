@@ -1,31 +1,31 @@
 
-1. **[App Services]** ボタンをクリックして Mobile Apps バックエンドを選択し、**[クイック スタート]** を選択して目的のクライアント プラットフォーム (iOS、Android、Xamarin、Cordova) を選択します。
+1. をクリックして、 **App Services**ボタン、モバイル アプリ バックエンドを選択し、選択**クイック スタート**、クライアント プラットフォーム (iOS、Android、Xamarin、Cordova) を選択します。
 
-    ![Mobile Apps のクイックスタートが強調表示された Azure Portal][quickstart]
+    ![強調表示されているモバイル アプリのクイック スタートを使用して azure ポータル][quickstart]
 
-2. データベース接続が構成されていない場合は、次の手順で作成します。
+2. データベース接続が構成されていない場合、次の手順で作成します。
 
-    ![Azure Portal (Mobile Apps をデータベースに接続)][connect]
+    ![データベースにモバイル アプリの接続での azure ポータル][connect]
 
     a. 新しい SQL データベースとサーバーを作成します。
 
-    ![Azure Portal (Mobile Apps の新しいデータベースとサーバーを作成)][server]
+    ![モバイル アプリを使用して azure ポータルの新しいデータベースとサーバーを作成します。][server]
 
     b. データ接続が正常に作成されるまで待ちます。
 
-    ![データ接続が正常に作成されたことを示す Azure Portal の通知][notification]
+    ![データ接続が正常に作成の azure ポータルの通知][notification]
 
     c. データ接続の作成に成功しました。
 
-    ![Azure Portal の通知 ("データ接続が既に存在します")][already-connection]
+    ![Azure ポータルの通知、「接続が既にある、データ」][already-connection]
 
-3. **[2. テーブル API の作成]** で、**[バックエンド言語]** として Node.js を選択します。 
+3.  **2 です。API のテーブルを作成**、選択の Node.js**バックエンド言語**します。 
  
-4. 確認要求をそのまま受け入れ、**[TodoItem テーブルを作成する]** を選択します。  
-    この操作で新しい TodoItem テーブルがデータベースに作成されます。 
+4. クリックして、受信確認を受け入れる**作成 TodoItem テーブル**です。  
+    この操作では、データベースに新しい作業項目テーブルが作成されます。 
 
     >[!IMPORTANT]
-    > 既存のバックエンドを Node.js に切り替えると、すべてのコンテンツが上書きされます。 .NET バックエンドを作成するには、[Mobile Apps 用 .NET バックエンド サーバー SDK の操作][instructions]に関するページを参照してください。
+    > Node.js に既存のバックエンドを切り替えるには、すべてのコンテンツが上書きされます。 代わりに、.NET バックエンドを作成するを参照してください。[モバイル アプリの .NET バックエンド サーバー SDK と連携][instructions]です。
 
 <!-- Images. -->
 [quickstart]: ./media/app-service-mobile-configure-new-backend/quickstart.png

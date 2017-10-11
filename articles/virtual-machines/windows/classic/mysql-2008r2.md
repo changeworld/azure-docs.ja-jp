@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 398efef3efd6b47c76967563251613381ee547e9
 ms.openlocfilehash: 11850e5ce20efae88a7af9c1d2e4761ed2b70cd7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/11/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="install-mysql-on-a-virtual-machine-created-with-the-classic-deployment-model-running-windows-server-2016"></a>Windows Server 2016 を実行するクラシック デプロイ モデルで作成された仮想マシンに MySQL をインストールする
 [MySQL](https://www.mysql.com) は広く普及しているオープン ソースの SQL データベースです。 このチュートリアルでは、**Windows Server 2016** を実行している仮想マシン上の MySQL Server として **MySQL 5.7.18 の Community バージョン**をインストールして実行する方法について説明します。 他のバージョンの MySQL または Windows Server を使用しているユーザーは、同一の結果にならない場合があります。
@@ -122,4 +121,3 @@ MySQL Server サービスを実行する Azure VM へのリモート接続をテ
 
 ## <a name="next-steps"></a>次のステップ
 MySQL の実行の詳細については、 [MySQL のドキュメント](http://dev.mysql.com/doc/)を参照してください。
-

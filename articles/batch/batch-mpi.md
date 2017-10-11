@@ -14,14 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: 5/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 77d12d6d48b22dfb3e7f09f273dffc11401bb15f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Batch でのマルチインスタンス タスクを使用した Message Passing Interface (MPI) アプリケーションの実行
 
 マルチインスタンス タスクでは、Azure Batch タスクを複数のコンピューティング ノードで同時に実行できます。 これらのタスクにより、Batch での Message Passing Interface (MPI) アプリケーションのようなハイ パフォーマンス コンピューティングのシナリオが可能になります。 この記事では、[Batch .NET][api_net] ライブラリを使用してマルチインスタンス タスクを実行する方法について説明します。
@@ -376,4 +374,3 @@ Sample complete, hit ENTER to exit...
 [rest_multiinstance]: https://msdn.microsoft.com/library/azure/mt637905.aspx
 
 [1]: ./media/batch-mpi/batch_mpi_01.png "マルチインスタンスの概要"
-

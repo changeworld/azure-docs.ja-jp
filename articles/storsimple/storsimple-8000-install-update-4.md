@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 08/02/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: 57d6d63c55f8ad4da5d1905a1e209da454b0491c
-ms.contentlocale: ja-jp
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
 ms.lasthandoff: 08/03/2017
-
 ---
 # <a name="install-update-4-on-your-storsimple-device"></a>StorSimple デバイスへの Update 4 のインストール
 
@@ -102,5 +101,4 @@ Update 4 のインストールにお勧めの方法は、Azure Portal を使用�
 
 ## <a name="next-steps"></a>次のステップ
 詳しくは、[Update 4 リリース](storsimple-update4-release-notes.md)に関するページをご覧ください。
-
 

@@ -13,7 +13,7 @@
     | **アプリ名** | グローバルに一意の名前 | 新しい関数アプリを一意に識別する名前。 |
     | **サブスクリプション** | サブスクリプションの選択 | 使用する Azure サブスクリプション。 |
     | **[リソース グループ](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  関数アプリを作成するリソース グループの名前。 |
-    | **[App Service プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | 新しいプランを作成する場合は、必ず **[サイズ]** の下の **[従量課金プラン]** を選択してください。  |
+    | **[App Service プラン](../articles/azure-functions/functions-scale.md)** | 従量課金プラン | 新しいプランを作成する場合は、必ず **[サイズ]** の下の **[重量課金プラン]** を選択してください。  |
     | **[ストレージ アカウント](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account)** | グローバルに一意の名前 | 既存のストレージ アカウントを使用するか、新しいストレージ アカウントを作成します。   |
 
 4. **[作成]** をクリックして、これらの設定で Azure に関数アプリを作成します。 プロビジョニングが完了したら、**サイト URL** の値を書き留めておきます。これが Azure における関数アプリのアドレスになります。 

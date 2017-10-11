@@ -13,14 +13,12 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 07/09/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: e511eee2f9eac3969b15ad3d45558dc7034f330a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="deploy-an-azure-resource-manager-template-in-an-azure-automation-powershell-runbook"></a>Azure Automation PowerShell Runbook に Azure Resource Manager テンプレートをデプロイする
 
 [Azure Resource Management テンプレート](../azure-resource-manager/resource-manager-create-first-template.md)を使用して、Azure リソースをデプロイする [Azure Automation PowerShell Runbook](automation-first-runbook-textual-powershell.md) を記述できます。
@@ -245,5 +243,4 @@ Get-AzureRmStorageAccount
 * Azure Storage の概要については、「[Microsoft Azure Storage の概要](../storage/common/storage-introduction.md)」をご覧ください。
 * 役に立つその他の Azure Automation Runbook を探すには、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」をご覧ください。
 * 役に立つその他の Resource Manager テンプレートを探すには、「[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/)」をご覧ください。
-
 

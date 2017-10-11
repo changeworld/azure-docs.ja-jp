@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/11/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 2e4b1a307fae06c0639d93b9804c6f0f703d5900
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Azure Storage の Shared Access Signature を使用して HDInsight でのデータへのアクセスを制限する
 
@@ -310,4 +309,3 @@ HDInsight クラスターにアクセスが制限されたストレージを追�
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
 
 [powershell]: /powershell/azureps-cmdlets-docs
-

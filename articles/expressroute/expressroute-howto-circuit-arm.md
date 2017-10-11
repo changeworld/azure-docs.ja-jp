@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: ganesr;cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
 ms.openlocfilehash: 8bfae39d84aaac3b9527084df9dcfbd51f591dfe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]
@@ -414,4 +413,3 @@ Remove-AzureRmExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup"
 
 * [ExpressRoute 回線のルーティングの作成と変更を行う](expressroute-howto-routing-arm.md)
 * [仮想ネットワークを ExpressRoute 回線にリンクする](expressroute-howto-linkvnet-arm.md)
-

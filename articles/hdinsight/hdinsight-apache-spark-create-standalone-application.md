@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: 95dba08744357f8800b05e3d4b892e3a363d5985
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Scala Maven アプリケーションを作成し、HDInsight の Apache Spark クラスターで実行する
 
@@ -153,5 +152,4 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
 
 > [!div class="nextstepaction"]
 >[Livy を使用して Spark クラスターでジョブをリモートで実行する](hdinsight-apache-spark-livy-rest-interface.md)
-
 

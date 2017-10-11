@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: bwren
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 27ab2084cdb6506cbb807fc9c35b0e67630ad85f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.openlocfilehash: 9987f04e7e71df5fe10c8bc209a390cb940ec4f2
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
 [プロジェクトに Application Insights を設定](app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
@@ -165,4 +164,3 @@ ms.lasthandoff: 08/25/2017
 | [メトリックス エクスプローラー](app-insights-metrics-explorer.md)<br/>メトリックのフィルター処理と分割 |![検索例](./media/app-insights-dashboards/64.png) |
 | [診断検索](app-insights-diagnostic-search.md)<br/>イベントや関連イベントを検索して確認し、バグを作成 |![検索例](./media/app-insights-dashboards/61.png) |
 | [Analytics](app-insights-analytics.md)<br/>強力なクエリ言語 |![検索例](./media/app-insights-dashboards/63.png) |
-

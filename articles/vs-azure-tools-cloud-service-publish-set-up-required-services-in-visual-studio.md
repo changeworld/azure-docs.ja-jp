@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 967501fa8ac4b2471a62afabc18a12a71776eaac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.openlocfilehash: cc4fb87e559f554634ae062a59bee31f0831da64
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
 ## <a name="overview"></a>概要
@@ -124,4 +123,3 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 
 ## <a name="next-steps"></a>次のステップ
 Visural Studio からの Azure へのアプリ発行の詳細については、「 [Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
-

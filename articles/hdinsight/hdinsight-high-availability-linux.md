@@ -17,12 +17,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 56dd07de81e322aa66587ee160beb734811285dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.openlocfilehash: e66ba67a36fc48d1762ba302d708e060489fdc71
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -238,4 +237,3 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: /powershell/azureps-cmdlets-docs
 [azure-cli]: ../cli-install-nodejs.md
-

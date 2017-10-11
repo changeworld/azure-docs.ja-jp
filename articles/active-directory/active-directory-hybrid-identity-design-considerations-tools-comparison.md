@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: facdbff229eaf5ee20d98214c62c8b2b46acc0fd
-ms.openlocfilehash: 80617b203bf5efa4cd6bed590ea937b2e68db9e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/18/2017
-
+ms.openlocfilehash: f87b5837c7a786c8b309a6a52e69b53c0ad4c9d8
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="hybrid-identity-directory-integration-tools-comparison"></a>ハイブリッド ID ディレクトリ統合ツールの比較
 ディレクトリ統合ツールは、長年にわたって成長および進化してきました。  このドキュメントでは、このようなツールをまとめた表と、各ツールで使用できる機能の比較を示しています。
@@ -92,5 +91,4 @@ PP = パブリック プレビュー
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-
 

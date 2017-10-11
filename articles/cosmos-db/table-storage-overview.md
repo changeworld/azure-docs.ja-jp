@@ -1,5 +1,5 @@
 ---
-title: "Azure Table Storage の概要 | Microsoft Docs"
+title: "Azure テーブル ストレージの概要 |Microsoft ドキュメント"
 description: "NoSQL データ ストアである Azure Table Storage を使用して構造化データをクラウドに格納します。"
 services: cosmos-db
 documentationcenter: .net
@@ -14,14 +14,13 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 08/23/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
 ms.openlocfilehash: 9099e90c402185b371495379db943d64fb82cdb8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-# <a name="azure-table-storage-overview"></a>Azure Table Storage の概要
+# <a name="azure-table-storage-overview"></a>Azure テーブル ストレージの概要
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
@@ -42,4 +41,3 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
     * [.NET 用ストレージ クライアント ライブラリ リファレンス](http://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
 
     * [REST API リファレンス](http://msdn.microsoft.com/library/azure/dd179355)
-

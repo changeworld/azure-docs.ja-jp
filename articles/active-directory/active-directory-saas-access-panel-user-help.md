@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/15/2017
 ms.author: markvi
 ms.reviewer: japere
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 613c68d5c13793a3b696b6afbfc0e1a31595e201
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="do-you-need-help-with-the-my-apps-portal"></a>MyApps ポータルの操作についてお困りの場合
 
@@ -109,5 +108,4 @@ ms.lasthandoff: 07/21/2017
 ## <a name="next-steps"></a>次のステップ
 
 トラブルシューティングに関連した情報については、「[アプリケーション アクセス パネルの Web サイトまたはモバイル アプリケーションの使用に関する問題](active-directory-application-access-panel-content-map.md)」を参照してください。
-
 

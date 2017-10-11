@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 81772fb5801ec620d1c1996509a275e4bb29fb12
-
-
+ms.openlocfilehash: 0b9f55d69c824e86245738a082f95fc529583f58
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-sdk-for-net-28-281-and-282"></a>Azure SDK for .NET 2.8、2.8.1、2.8.2
 ## <a name="overview"></a>概要
@@ -65,7 +65,7 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 
 ## <a name="azure-sdk-for-net-281"></a>Azure SDK for .NET 2.8.1
 ### <a name="known-issues-for-visual-studio-2013-and-visual-studio-2015"></a>Visual Studio 2013 および Visual Studio 2015 の既知の問題
-1. スロットへの WebJob 発行がトリガーされると、エラーが発生し、スケジュールは設定されませんが、WebJob が Azure にプッシュされます。 スケジュールされたジョブを必要としているお客様は、Azure ポータルを使用して WebJob のスケジュールを設定できます。 
+1. スロットへの WebJob 発行がトリガーされると、エラーが発生し、スケジュールは設定されませんが、WebJob が Azure にプッシュされます。 スケジュールされたジョブを必要としているお客様は、Azure Portal を使用して Web ジョブのスケジュールを設定できます。 
 2. Python のお客様には、デバッガーの問題が発生することがあります。 サービス チームがこの修正プログラムのロールアウトを進めていますが、影響を受けたお客様は、フォーラム、またはお知らせブログかリリース ノートのコメント セクションでマイクロソフトにお知らせください。 
 3. 一部のリージョン (インド南部など) のお客様には、App Service のプロビジョニング エラーが発生します。 これはポータルと一致しており、この問題が発生したお客様は、Azure ポータルを使用してこれらの geo リージョンに発行するためのアクセスを要求できます。 これらのリージョンへのアクセスを要求したら、Azure ポータルのプロビジョニングが機能するようになります。 
 
@@ -86,10 +86,4 @@ Azure .NET SDK 2.8 では、.NET 4.5.2 クラウド サービス パッケージ
 [Azure SDK 2.8 の発表に関するブログ記事](https://azure.microsoft.com/blog/announcing-the-azure-sdk-2-8-for-net/)
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

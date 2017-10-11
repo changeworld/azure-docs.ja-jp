@@ -15,12 +15,11 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 02c393f632c355ea5fbde554adbd8b1169ad8bc8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="update-12-release-notes-for-your-storsimple-8000-series-device"></a>StorSimple 8000 シリーズ デバイス Update 1.2 リリース ノート
 
@@ -113,5 +112,4 @@ Update 1 より前のバージョンを実行している物理デバイスに�
 
 ## <a name="next-steps"></a>次のステップ
 * [デバイスに Update 1.2 をインストールします](storsimple-install-update-1.md)。
-
 

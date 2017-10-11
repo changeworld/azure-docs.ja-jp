@@ -1,14 +1,14 @@
-[az appservice plan create](/cli/azure/appservice/plan#create) コマンドで、App Service プランを作成します。
+App Service プランを作成、 [az app service プランの作成](/cli/azure/appservice/plan#create)コマンド。
 
 [!INCLUDE [app-service-plan](app-service-plan.md)]
 
-次の例では、**Free** 価格レベルの `myAppServicePlan` という名前の App Service プランを作成します。
+次の例は、名前付き App Service プランを作成`myAppServicePlan`で、**空き**価格レベル。
 
 ```azurecli-interactive
 az appservice plan create --name myAppServicePlan --resource-group myResourceGroup --sku FREE
 ```
 
-App Service プランが作成されると、Azure CLI によって、次の例のような情報が表示されます。
+App Service プランが作成されたときに、Azure CLI では、次の例と同様の情報が表示。
 
 ```json
 { 

@@ -12,13 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 95b8c100246815f72570d898b4a5555e6196a1a0
 ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -2225,4 +2223,3 @@ ms.lasthandoff: 05/18/2017
 - [組み込みの RBAC ロール](role-based-access-built-in-roles.md)を確認します。
 
 - アクセス権の割り当てを[ユーザーごと](role-based-access-control-manage-assignments.md)または[リソースごと](role-based-access-control-configure.md)に管理する方法を確認します。 
-

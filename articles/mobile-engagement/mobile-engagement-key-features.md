@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
 ms.openlocfilehash: 8270a223ca31c623c1b760a64c0e4d64fb85e080
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-mobile-engagement---key-features"></a>Azure Mobile Engagement - 主要な機能
 この記事では、Mobile Engagement プラットフォームの主要な機能について概要を説明します。 
@@ -148,11 +148,5 @@ ms.openlocfilehash: 8270a223ca31c623c1b760a64c0e4d64fb85e080
 
 
 
-
-
-
-
-
-<!--HONumber=Feb17_HO3-->
 
 

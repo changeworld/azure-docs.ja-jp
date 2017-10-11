@@ -15,13 +15,11 @@ ms.workload: identity
 ms.date: 11/15/2016
 ms.author: jmprieur
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f3f8292eb505c73b5fda86499581fe85ad3f8e47
-ms.openlocfilehash: 980cac016b37e3744441508b93e5cd504045d638
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/30/2017
-
-
+ms.openlocfilehash: 241c744737515ee0c8d5d833a51121808877e559
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Azure Active Directory (AD) での OAuth2 の暗黙的な許可フローについて
 OAuth2 の暗黙的な許可は、OAuth2 仕様のセキュリティ問題を最も多く含むアクセス許可であることで知られています。 それでも、ADAL JS によって実装されるアプローチであり、SPA アプリケーションを作成するときにお勧めするアプローチでもあります。 何のためでしょう。 これはすべてトレードオフの問題です。結局のところ、暗黙的な許可が、ブラウザーで JavaScript を使用して Web API を使用するアプリケーションのために行うことができる最善のアプローチだからです。
@@ -72,4 +70,3 @@ JavaScript ベースのアプローチを全面的に採用したアプリケー
 [ACOM-How-To-Integrate]: active-directory-how-to-integrate.md
 [OAuth2-Spec-Implicit-Misuse]: https://tools.ietf.org/html/rfc6749#section-10.16
 [OAuth2-Threat-Model-And-Security-Implications]: https://tools.ietf.org/html/rfc6819
-

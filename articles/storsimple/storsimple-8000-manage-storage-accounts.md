@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/29/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 36058ad69ea670998b50cf9038741c294a5b79ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="use-the-storsimple-device-manager-service-to-manage-your-storage-account-credentials"></a>StorSimple デバイス マネージャー サービスを使用してストレージ アカウント資格情報を管理する
 
 ## <a name="overview"></a>概要
@@ -180,5 +178,4 @@ StorSimple デバイス マネージャー サービスにこの変更を認識�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple のセキュリティの詳細](storsimple-8000-security.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理](storsimple-8000-manager-service-administration.md)を参照します。
-
 

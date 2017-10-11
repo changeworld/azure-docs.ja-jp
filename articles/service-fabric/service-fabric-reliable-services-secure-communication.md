@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 04/20/2017
 ms.author: suchiagicha
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db034a8151495fbb431f3f6969c08cb3677daa3e
 ms.openlocfilehash: 53119244f8f09c0c6c43f43761af1cc074f8d0af
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/29/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="help-secure-communication-for-services-in-azure-service-fabric"></a>Azure Service Fabric のサービスで使用される通信のセキュリティ
 > [!div class="op_single_selector"]
@@ -313,4 +311,3 @@ Reliable Services の WCF ベースの通信スタックを設定する方法に
 
 ## <a name="next-steps"></a>次のステップ
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
-

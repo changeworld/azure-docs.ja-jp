@@ -15,13 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
 ms.openlocfilehash: d430febee23081b26eee0a68d4beb43228549f52
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="configure-always-on-availability-groups-in-azure-virtual-machines-automatically-resource-manager"></a>Azure Virtual Machines での AlwaysOn 可用性グループの自動構成: Resource Manager
 
@@ -213,4 +211,3 @@ SQL Server に RDP 接続するには、次の手順に従います。
 7. **リモート デスクトップ** により、セキュリティ証明書の問題のためこのリモート コンピューターを認証できなかったという警告が表示される場合があります。 そのセキュリティ証明書の名前が表示されます。 このチュートリアルに従った場合、名前は **sqlserver-0.contoso.com** になります。 **[はい]**をクリックします。
 
 これで SQL Server 仮想マシンに RDP 接続できました。 SQL Server Management Studio を開き、SQL Server の既定のインスタンスに接続して、可用性グループが構成済みであることを確認できます。
-

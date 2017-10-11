@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.custom: reference
 ms.date: 07/12/2017
 ms.author: kevin;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: a9327388f8789e548610a7d4f140c492afd88fef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="system-views"></a>システム ビュー
 ## <a name="sql-data-warehouse-catalog-views"></a>SQL Data Warehouse カタログ ビュー
@@ -246,4 +245,3 @@ SQL Data Warehouse はマイクロソフトの MPP テクノロジに基づい�
 
 
 <!--Other Web references-->
-

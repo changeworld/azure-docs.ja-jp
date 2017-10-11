@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0d6f6fb24f1f01d703104f925dcd03ee1ff46062
-ms.openlocfilehash: 5b133afd82afecbfab250c2760404a4173086fa5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/18/2017
-
+ms.openlocfilehash: 4945958deedc8a1d9989ff901192c03a5363b4dc
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="no-working-connector-group-found-for-an-application-proxy-application"></a>アプリケーション プロキシ アプリケーション用として動作するコネクタ グループが見つからない
 
 この記事では、Azure Active Directory に統合されたアプリケーション プロキシ アプリケーションに対してコネクタが検出されない場合に発生する一般的な問題の解決方法を説明します。
@@ -68,6 +66,5 @@ ms.lasthandoff: 04/18/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
-
 
 

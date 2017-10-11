@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/15/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
 ms.openlocfilehash: 0c7a8d68c0df729441e3f7faa5cd06066db1261d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/18/2017
 ---
 # <a name="azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection
 
@@ -417,4 +416,3 @@ Azure AD Identity Protection を使用すると、多要素認証の登録の展
 * [Azure Active Directory Identity Protection - ユーザーのブロックを解除する方法](active-directory-identityprotection-unblock-howto.md)
 
 * [Azure Active Directory Identity Protection と Microsoft Graph の基本](active-directory-identityprotection-graph-getting-started.md)
-

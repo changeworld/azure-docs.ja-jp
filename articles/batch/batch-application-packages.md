@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -381,4 +380,3 @@ foreach (ApplicationSummary app in applications)
 [10]: ./media/batch-application-packages/app_pkg_10.png "Choose storage account blade in Azure portal"
 [11]: ./media/batch-application-packages/app_pkg_11.png "Update package blade in Azure portal"
 [12]: ./media/batch-application-packages/app_pkg_12.png "Delete package confirmation dialog in Azure portal"
-

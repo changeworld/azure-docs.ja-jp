@@ -14,12 +14,11 @@ ms.topic: article
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
 ms.author: ruturajd@microsoft.com
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 064a6782970b950543f93c24800998c1f104c8df
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="add-azure-automation-runbooks-to-recovery-plans"></a>復旧計画に Azure Automation Runbook を追加する
 この記事では、復旧計画の拡張に役立てるために Azure Site Recovery と Azure Automation をどのように統合するかについて説明します。 復旧計画では、Site Recovery で保護される VM の復旧を調整できます。 復旧計画は、セカンダリ クラウドへのレプリケーションと Azure へのレプリケーションの両方に対して機能します。 復旧計画はまた、復旧を**常に正確で**、**繰り返し可能**、さらに**自動化される**ようにするのにも役立ちます。 VM を Azure にフェールオーバーする場合、Azure Automation との統合によって復旧計画が拡張されます。 それを使用して、強力な自動化タスクを提供する Runbook を実行できます。
@@ -262,4 +261,3 @@ workflow AddPublicIPAndNSG {
 * [Azure Automation サービスの実行アカウント](../automation/automation-sec-configure-azure-runas-account.md)
 * [Azure Automation の概要](http://msdn.microsoft.com/library/azure/dn643629.aspx "Azure Automation の概要")
 * [Azure Automation のサンプル スクリプト](http://gallery.technet.microsoft.com/scriptcenter/site/search?f\[0\].Type=User&f\[0\].Value=SC%20Automation%20Product%20Team&f\[0\].Text=SC%20Automation%20Product%20Team "Azure Automation のサンプル スクリプト")
-

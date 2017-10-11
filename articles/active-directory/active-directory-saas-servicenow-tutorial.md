@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: a91fab90a94b655b93c8ae9064ea4836b80d7678
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-servicenow"></a>チュートリアル: Azure Active Directory と ServiceNow の統合
 このチュートリアルでは、ServiceNow および ServiceNow Express と Azure Active Directory (Azure AD) を統合する方法について説明します。
@@ -433,7 +432,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
     b. [ユーザー名] **ボックス**に「**BrittaSimon**」と入力します。
    
-    c. **[次へ]** をクリックします。
+    c. **[次へ]**をクリックします。
 
 6. **[ユーザー プロファイル]** ダイアログ ページで、次の手順に従います。
    
@@ -447,7 +446,7 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
    
    d. **[ロール]** 一覧で **[ユーザー]** を選択します。
    
-   e. **[次へ]** をクリックします。
+   e. **[次へ]**をクリックします。
 
 7. **[一時パスワードの取得]** ダイアログ ページで、**[作成]** をクリックします。
    
@@ -518,4 +517,3 @@ Azure AD への ServiceNow または ServiceNow Express の統合を構成する
 [203]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_203.png
 [204]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_204.png
 [205]: ./media/active-directory-saas-servicenow-tutorial/tutorial_general_205.png
-

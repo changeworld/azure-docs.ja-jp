@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: 43ed4b0e96c583d8fd9da57eec40ddd2e96fee2f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 916238ba402a2555bac620d7f08e02799d981ae0
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
-
 # <a name="how-to-assign-users-to-applications"></a>ユーザーをアプリケーションに割り当てる方法
 
 この記事では、ユーザーがテナントでアプリケーションに割り当てられる方法について説明します。
@@ -60,5 +58,4 @@ ms.lasthandoff: 04/11/2017
 10. ユーザーはアプリケーションにサインインすることで、[アプリケーションに同意](https://docs.microsoft.com/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)します。
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Active Directory を使用したアプリケーションの管理](active-directory-enable-sso-scenario.md)
-
+[Azure Active Directory でのアプリケーションの管理](active-directory-enable-sso-scenario.md)

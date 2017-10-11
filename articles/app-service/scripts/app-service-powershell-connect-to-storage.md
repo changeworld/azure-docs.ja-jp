@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 03/20/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: f97294d97acff6daaaeb5c4bfe77f295d356997c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/27/2017
-
+ms.openlocfilehash: 481f3efdb1cbbeba328183da7e320c7e5b819b3a
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="connect-a-web-app-to-a-storage-account"></a>Web アプリをストレージ アカウントに接続する
 
 このシナリオでは、Azure ストレージ アカウントと Azure Web アプリの作成方法について説明します。 作成後、アプリの設定でストレージ アカウントを Web アプリにリンクします。
@@ -60,4 +58,3 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 Azure PowerShell モジュールの詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の Azure App Service Web Apps 用 Azure PowerShell サンプル スクリプトは、[Azure PowerShell サンプル](../app-service-powershell-samples.md)のページにあります。
-

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/14/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 269ff9adde706715ad5889170470821a884daf3d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.openlocfilehash: 5ee89d0ae4c3c56d164aff4e321ee99f015ba4fb
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 # <a name="use-azure-queue-storage-to-monitor-media-services-job-notifications-with-net"></a>Azure キュー ストレージを使用して .NET で Media Services ジョブ通知を監視する
 エンコード ジョブを実行する際には、多くの場合、ジョブの進行状況を追跡する手段が必要になります。 [Azure Queue Storage](../storage/storage-dotnet-how-to-use-queues.md) に通知を配信するように Media Services を構成し、 この Queue Storage から通知を取得することで、ジョブの進行状況を監視します。 
@@ -362,4 +361,3 @@ Media Services のラーニング パスを確認します。
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

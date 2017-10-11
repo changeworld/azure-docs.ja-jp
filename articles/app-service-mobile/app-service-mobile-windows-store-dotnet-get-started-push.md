@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/12/2016
 ms.author: yuaxu
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 06e16033435ed0a37d5688055743875827d3aec2
-ms.openlocfilehash: 5e71ecc6539179efdcfa6bfc4567bddaa96a59d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/01/2017
-
+ms.openlocfilehash: a14bb0320c1f6a563f766a6a0fad5cf556fe7b70
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 # <a name="add-push-notifications-to-your-windows-app"></a>Windows アプリにプッシュ通知を追加する
 [!INCLUDE [app-service-mobile-selector-get-started-push](../../includes/app-service-mobile-selector-get-started-push.md)]
@@ -204,4 +203,3 @@ Windows ストアにアプリを送信した後、サーバー プロジェク�
 [Azure Portal]: https://portal.azure.com/
 
 <!-- Images. -->
-

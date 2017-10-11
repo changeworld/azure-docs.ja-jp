@@ -13,13 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/21/2017
 ms.author: jeedes
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 61fd58063063d69e891d294e627ae40cb878d65b
 ms.openlocfilehash: ba55f9b62d274aa3eb91723c62b53f54de0891b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/22/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hightail"></a>チュートリアル: Azure Active Directory と Hightail の統合
 
@@ -152,7 +150,7 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 
     c. **[値]** 一覧から、その行に対して表示される値を入力します。
 
-    d. **[Namespace]\(名前空間\)** は空白のままにします。
+    d. **[名前空間]**は空白のままにします。
     
     e. **[OK]**をクリックします。
 
@@ -295,5 +293,4 @@ Hightail で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-hightail-tutorial/tutorial_general_203.png
-
 

@@ -12,11 +12,10 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: storage
 ms.date: 06/01/2017
 ms.author: jaboes
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 87f544c59945c20e2b0c86e880bb8c362512b655
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 [!INCLUDE [virtual-machines-using-managed-disks-template-deployments](../../../includes/virtual-machines-using-managed-disks-template-deployments.md)]

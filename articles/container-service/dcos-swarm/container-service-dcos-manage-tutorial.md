@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/17/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
 ms.openlocfilehash: e93f782c26c32f97749e817ec59ee3c2ecb7e119
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
-
 # <a name="azure-container-service-tutorial---manage-dcos"></a>Azure Container Service チュートリアル - DC/OS の管理
 
 DC/OS は、最新のコンテナー化されたアプリケーションを実行するための分散プラットフォームを提供します。 Azure Container Service を使用すると、運用開始準備の整った DC/OS クラスターのプロビジョニングを簡単かつ迅速に行うことができます。 このクイック スタートでは、DC/OS クラスターをデプロイして基本的なワークロードを実行するのに必要な基本的な手順を詳しく説明します。

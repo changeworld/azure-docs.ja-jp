@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: msfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
 ms.openlocfilehash: 3c1e80305cb65f41a6981b99f69e8b87f89599ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="partition-service-fabric-reliable-services"></a>Service Fabric Reliable Services のパーティション分割
 この記事では、Azure Service Fabric Reliable Services のパーティション分割の基本概念について説明します。 この記事で使用するソース コードは、 [GitHub](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started/tree/classic/Services/AlphabetPartitions)にも掲載されています。

@@ -14,11 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
 ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
-
-
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="azure-notification-hubs-rich-push"></a>Azure Notification Hubs のリッチなプッシュ
 ## <a name="overview"></a>概要
@@ -355,9 +355,3 @@ ms.openlocfilehash: 394efdc2dfaff0666bc23d8a448b0a00d414da99
 [IOS2]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-2.png
 [IOS3]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-3.png
 [IOS4]: ./media/notification-hubs-aspnet-backend-ios-rich-push/rich-push-ios-4.png
-
-
-
-<!--HONumber=Nov16_HO3-->
-
-

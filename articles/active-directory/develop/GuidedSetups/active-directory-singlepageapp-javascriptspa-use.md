@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
-ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: ceec3760648535aecdb1d9ed6a1d1750dc2d0334
-ms.contentlocale: ja-jp
-
+ms.openlocfilehash: f52157df298ddfc1c1b29a18dc9a54aae59b52a3
+ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/29/2017
 ---
 ## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>ユーザーのサインインに Microsoft Authentication Library (MSAL) を使用する
 
@@ -232,4 +232,3 @@ function signOut() {
     userAgentApplication.logout();
 }
 ```
-

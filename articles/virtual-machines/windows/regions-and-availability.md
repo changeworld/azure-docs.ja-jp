@@ -14,13 +14,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/10/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cc9e81de9bf8a3312da834502fa6ca25e2b5834a
-ms.openlocfilehash: d0c35fa528e8585d33578b0a037dd525896bc4fa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/11/2017
-
+ms.openlocfilehash: 8f1c733f5af85668ba306992c4b3857f6b5cebed
+ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 08/03/2017
 ---
 [!INCLUDE [virtual-machines-common-regions-and-availability](../../../includes/virtual-machines-common-regions-and-availability.md)]
-
 

@@ -15,13 +15,11 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: acd2ee7fb94c43493ffd9ffee157f2c3e795b63e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
-
+ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
+ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
+ms.translationtype: MT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 07/11/2017
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack 2012 R2 クラスターをデプロイする方法を示します。 クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。 クラスターを使用して、オンプレミスのクライアント コンピューターから Excel HPC サービスおよび SOA サービスを実行できます。 Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
@@ -363,4 +361,3 @@ SOA クライアント アプリケーションでは、IaaS クラスターの�
 [endpoint]: ./media/excel-cluster-hpcpack/endpoint.png
 [endpoint-new-portal]: ./media/excel-cluster-hpcpack/endpoint-new-portal.png
 [udf]: ./media/excel-cluster-hpcpack/udf.png
-
