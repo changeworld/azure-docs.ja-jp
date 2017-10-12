@@ -44,7 +44,7 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト] **の順にクリックして、プロジェクトを作成します。 
+Visual Studio で、 **[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
 
 **[新しいプロジェクト]** ダイアログで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
 

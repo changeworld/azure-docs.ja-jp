@@ -193,7 +193,7 @@ ms.lasthandoff: 09/25/2017
 
 イメージを作成する前に、イメージのマニフェストを作成することができます。 
 
-`az ml image create -n [image name] -manifest-id [the manifest ID]`
+`az ml image create -n [image name] --manifest-id [the manifest ID]`
 
 または、マニフェストとイメージを 1 つのコマンドで作成できます。 
 
