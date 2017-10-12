@@ -15,10 +15,10 @@ ms.devlang: na
 ms.date: 04/25/2017
 ms.author: joroja
 ms.openlocfilehash: 68f40aa638a687398512278a0b77d1ba392859cf
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-the-ui-of-a-user-journey-with-custom-policies"></a>カスタム ポリシーでユーザー体験の UI をカスタマイズする
 
@@ -123,7 +123,7 @@ Azure AD B2C Premium でコンテンツの読み込みに使用するエンド�
 コンテンツをホストしているストレージで CORS が有効になっていることを確認するために、次の手順に進みます。
 
 1. ブラウズ セッションを開き、*unified.html* ページに移動します。その際、そのページのストレージ アカウント内での場所を指す完全な URL である `https://<storageAccountName>.blob.core.windows.net/<containerName>/unified.html` を使用します。 たとえば、https://contoso369b2c.blob.core.windows.net/b2c/unified.html などです。
-2. http://test-cors.org に移動します。 このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
+2. http://test-cors.org に移動します。このサイトでは、使用しているページで CORS が有効になっていることを確認できます。  
 <!--
 ![test-cors.org](../../media/active-directory-b2c-customize-ui-of-a-user-journey/test-cors.png)
 -->

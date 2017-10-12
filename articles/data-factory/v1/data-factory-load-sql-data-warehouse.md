@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 092b7651543bd67e6536088952303045cfaf8717
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>1 TB のデータを Data Factory を使用して 15 分以内に Azure SQL Data Warehouse に 読み込む
 [Azure SQL Data Warehouse](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) は、クラウドベースのスケールアウト データベースであり、リレーショナルか非リレーショナルかを問わず、大規模なデータを処理できます。  超並列処理 (MPP) アーキテクチャを基盤とする SQL Data Warehouse は、企業のウェアハウスのワークロード向けに最適化されています。  ストレージとコンピューティングを別々にスケールできる柔軟性によって、クラウドの弾力性を提供します。
@@ -214,4 +213,3 @@ Azure SQL Data Warehouse データベースを実行するためのいくつか�
 ## <a name="next-steps"></a>次のステップ
 * [Data Factory コピー ウィザード](data-factory-copy-wizard.md) - この記事では、コピーウィザードの詳細について説明します。
 * [コピー アクティビティのパフォーマンスとチューニング ガイド](data-factory-copy-activity-performance.md) - この記事には、参考となるパフォーマンスの測定とチューニングのガイドが含まれています。
-

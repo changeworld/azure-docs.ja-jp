@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4acc29dc74a37d16a9e90101aa9b7706c55af58e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,13 +53,13 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Odbc** に設定します。 | はい |
-| connectionString | 資格情報部分を除外した接続文字列。 次のセクションの例を参照してください。 | はい |
-| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | はい |
+| type | type プロパティは **Odbc** に設定します。 | あり |
+| connectionString | 資格情報部分を除外した接続文字列。 次のセクションの例を参照してください。 | あり |
+| authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | あり |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | なし |
-| password | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、SecureString とマークします。 | いいえ |
-| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドは、SecureString とマークします。 | いいえ |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
+| パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | いいえ |
+| 資格情報 | ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"RefreshToken=<secret refresh token>;"`. このフィールドを SecureString とマークします。 | いいえ |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
 
 **例 1: 基本認証の使用**
 
@@ -127,7 +126,7 @@ ODBC 対応データ ストアをコピー元またはコピー先としてデ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | はい |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
 | tableName | ODBC データ ストア内のテーブルの名前。 | ソースの場合はいいえ (アクティビティ ソースの "query" が指定されている場合)、<br/>シンクの場合ははい |
 
 **例**
@@ -160,7 +159,7 @@ ODBC 対応データ ストアからデータをコピーするには、コピ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **RelationalSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
 | クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
@@ -201,7 +200,7 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **OdbcSink** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは **OdbcSink** に設定する必要があります。 | あり |
 | writeBatchTimeout |タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 |いいえ |
 | writeBatchSize |バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 0 - 自動検出) |
 | preCopyScript |コピー アクティビティの毎回の実行で、データをデータ ストアに書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 |いいえ |

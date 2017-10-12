@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: d7af3a531bc1bcced1a3c48403a6f60afea0f82f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect のトポロジ
 この記事では、主な統合ソリューションとして Azure AD Connect 同期を使用する、さまざまなオンプレミス トポロジおよび Azure Active Directory (Azure AD) トポロジについて説明します。 この記事には、サポートされている構成とサポートされていない構成の両方が含まれています。
@@ -141,7 +141,7 @@ Azure AD Connect 同期サーバーと Azure AD テナントには、一対一�
 
 このトポロジでは、1 つの Azure AD Connect 同期サーバーが各 Azure AD テナントに接続されます。 各 Azure AD Connect 同期サーバーについては、操作対象のオブジェクトのセットが相互排他的になるようなフィルター処理を構成する必要があります。 たとえば、各サーバーのスコープを特定のドメインまたは組織単位に設定できます。
 
-DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。 オンプレミス Active Directory インスタンスのユーザーの UPN でも、別の名前空間を使用する必要があります。 たとえば、前の図では、3 つの個別の UPN サフィックスがオンプレミス Active Directory インスタンスの contoso.com、fabrikam.com、および wingtiptoys.com に登録されています。 各オンプレミス Active Directory ドメインのユーザーは、別の名前空間を使用します。
+DNS ドメインは 1 つの Azure AD テナントにのみ登録できます。 オンプレミス Active Directory インスタンスのユーザーの UPN でも、別の名前空間を使用する必要があります。 たとえば、前の図では、3 つの個別の UPN サフィックスがオンプレミス Active Directory インスタンスの contoso.com、fabrikam.com、および wingtiptoys.com に登録されています。各オンプレミス Active Directory ドメインのユーザーは、別の名前空間を使用します。
 
 Azure AD テナント インスタンス間に GALSync はありません。 Exchange Online と Skype for Business のアドレス帳には、同じテナント内のユーザーのみが表示されます。
 

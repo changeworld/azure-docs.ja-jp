@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/24/2017
 ms.author: raynew
 ms.openlocfilehash: df4e227d02901153d3cfcfd4dfd4f11de180763a
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-1-review-the-architecture"></a>手順 1: アーキテクチャを確認する
 
@@ -60,8 +60,7 @@ VMM クラウド内の Hyper-V VM を Azure にレプリケートする場合に
 1. Hyper-V VM の保護を有効にした後、Azure Portal またはオンプレミスで、**保護の有効化**が始まります。
 2. このジョブは、マシンが前提条件を満たしていることを確認してから、構成された設定を使用してレプリケーションをセットアップするために、[CreateReplicationRelationship](https://msdn.microsoft.com/library/hh850036.aspx) を呼び出します。
 3. ジョブが [StartReplication](https://msdn.microsoft.com/library/hh850303.aspx) メソッドを呼び出して初期レプリケーションを開始し、完全 VM レプリケーションを初期化して、VM の仮想ディスクを Azure に送信します。
-4. ジョブは **[ジョブ]** タブで監視できます。
-        ![ジョブ一覧](media/vmm-to-azure-walkthrough-architecture/image1.png) ![[保護を有効にする] の詳細](media/vmm-to-azure-walkthrough-architecture/image2.png)
+4. ジョブは **[ジョブ]** タブで監視できます。    ![ジョブ一覧](media/vmm-to-azure-walkthrough-architecture/image1.png) ![[保護を有効にする] の詳細](media/vmm-to-azure-walkthrough-architecture/image2.png)
 
 ### <a name="replicate-the-initial-data"></a>初期データをレプリケーする
 

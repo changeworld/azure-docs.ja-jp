@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 921c8391fc18eca35d10c3ade158a98ae88df397
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-for-hybrid-identity-lifecycle"></a>ハイブリッド ID ライフサイクルの計画を立てる
 ID はエンタープライズ モビリティとアプリケーション アクセスの戦略基盤の 1 つです。 モバイル デバイスにサインオンする場合でも、SaaS アプリにサインオンする場合でも、ID があらゆるアクセスを得るための鍵となります。 ID 管理ソリューションとは、概して、ID リポジトリ間の統一と同期であり、その中にリソースのプロビジョニングというプロセスの自動化と集中化が含まれます。 ID ソリューションはオンプレミスとクラウドにわたり ID を一元化するものでなければならず、また、何らかの形式の ID フェデレーションを利用し、認証を一元化し、外部のユーザーや企業と安全に共有し、共同作業するものです。 リソースは、オペレーティング システムやアプリケーションから組織内のユーザーや関連組織まで多岐にわたります。 組織構造を変更し、プロビジョニングのポリシーと手続を調整できます。

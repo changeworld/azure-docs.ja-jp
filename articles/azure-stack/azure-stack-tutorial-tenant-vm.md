@@ -15,16 +15,15 @@ ms.topic: tutorial
 ms.date: 9/25/2017
 ms.author: victorh
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: afeec92c40262903e6cfd3c6d75a595fead616e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="make-virtual-machines-available-to-your-azure-stack-users"></a>Azure Stack ユーザーが仮想マシンを使用できるようにする
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack のクラウド管理者は、ユーザー (テナントとも呼ばれます) がサブスクライブできるオファーを作成できます。 ユーザーはサブスクリプションを使用して Azure Stack サービスを利用できます。
 
@@ -117,7 +116,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
 
    a. ユーザーとしてユーザー ポータルにログインし、**[サブスクリプションの取得]** をクリックします。
    - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
+   - Azure Stack 開発キットを使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
 
    ![サブスクリプションの取得](media/azure-stack-subscribe-plan-provision-vm/image01.png)
 
@@ -135,7 +134,7 @@ Marketplace にさまざまな項目を追加する方法については、「[A
 
    a. ユーザーとしてユーザー ポータルにログインし、**[新規]** > **[コンピューティング]** > **[Windows Server 2016 Datacenter Eval]** をクリックします。
       - 統合システムの場合、URL はオペレーターのリージョンと外部ドメイン名によって異なり、https://portal.&lt;*リージョン*&gt;.&lt;*FQDN*&gt; の形式になります。
-   - Azure Stack Development Kit を使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
+   - Azure Stack 開発キットを使用している場合、ポータルのアドレスは https://portal.local.azurestack.external です。
 
    b. **[基本]** セクションで、**[名前]**、**[ユーザー名]**、**[パスワード]** を入力します。 **[VM ディスクの種類]** には、**[HDD]** を選択します。 **[サブスクリプション]**を選択します。 **リソース グループ**を作成するか、既存のリソース グループを選択して、**[OK]** をクリックします。  
 

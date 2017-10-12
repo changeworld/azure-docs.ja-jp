@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f13f8aa0ca8686c0582bed77d047c9e6b39f7aa2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="transform-data-by-using-the-sql-server-stored-procedure-activity-in-azure-data-factory"></a>Azure Data Factory での SQL Server ストアド プロシージャ アクティビティを使用したデータの変換
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - GA](v1/data-factory-stored-proc-activity.md)
@@ -83,7 +80,7 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 | storedProcedureParameters | ストアド プロシージャのパラメーター値を指定します。 `"param1": { "value": "param1Value","type":"param1Type" }` を使用して、パラメーター値と、データ ソースでサポートされるパラメーター値のネイティブ型を渡します。 パラメーターで null を渡す必要がある場合は、*"param1": { "value": null }* (すべて小文字) を使用します。 | いいえ       |
 
 ## <a name="next-steps"></a>次のステップ
-他の方法でデータを変換する方法を説明する次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
@@ -94,4 +91,3 @@ JSON 形式のストアド プロシージャ アクティビティの定義を�
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-

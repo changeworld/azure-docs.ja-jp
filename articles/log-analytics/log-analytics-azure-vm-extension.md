@@ -16,10 +16,10 @@ ms.date: 04/27/2017
 ms.author: richrund
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cdae291b546fef4d7fdb8b067c8e4f4c9708d43f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-virtual-machines-to-log-analytics-with-a-log-analytics-agent"></a>Log Analytics エージェントで Log Analytics に Azure 仮想マシンを接続する
 

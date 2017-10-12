@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 61ecea71874b05c2c5f7572aa6128fc320422b1f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -32,7 +31,7 @@ Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.c
 ## <a name="using-the-cli"></a>CLI の使用
 ワークベンチからコマンド ライン インターフェイス (CLI) を使用するには、**[ファイル]** -> **[Open Command Prompt] (コマンド プロンプトを開く)** をクリックします。 
 
-データ サイエンス仮想マシン上で、接続してコマンド プロンプトを開きます。 `az ml -h` と入力してオプションを表示します。 コマンドの詳細については、--help フラグを使用します。
+データ サイエンス仮想マシン上で、接続してコマンド プロンプトを開きます。 「`az ml -h`」と入力してオプションを表示します。 コマンドの詳細については、--help フラグを使用します。
 
 その他のすべてのシステムでは、CLI をインストールする必要があります。
 
@@ -115,7 +114,7 @@ az ml env set -n [environment name] -g [resource group]
 #### <a name="cluster-deployment"></a>クラスター デプロイ
 高スケールの運用シナリオには、クラスター デプロイを使用します。 これは、Kubernetes を含む ACS クラスターをオーケストレーターとして設定します。 ACS クラスターは、Web サービス呼び出しのためのより高いスループットを処理するようにスケールアウトできます。
 
-Webサービスを実稼働環境にデプロイするには、まず次のコマンドを使用して環境をセットアップします。
+Web サービスを実稼働環境にデプロイするには、まず次のコマンドを使用して環境をセットアップします。
 
 ```azurecli
 az ml env setup --cluster -n [your environment name] -l [Azure region e.g. eastus2] [-g [resource group]]
@@ -172,4 +171,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ## <a name="next-steps"></a>次のステップ
 ギャラリーにある多数のサンプルのうちの 1 つを試してください。
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 1f2dcd9a91bb6e883cbef06373c1acd98bf8d45f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pre-load-assets-on-an-azure-cdn-endpoint"></a>Azure CDN エンドポイント上の資産を事前に読み込む
 [!INCLUDE [cdn-verizon-only](../../includes/cdn-verizon-only.md)]
@@ -35,8 +35,7 @@ ms.lasthandoff: 07/11/2017
 このチュートリアルでは、すべての Azure CDN エッジ ノード上のキャッシュされたコンテンツを事前に読み込む方法について説明します。
 
 ## <a name="walkthrough"></a>チュートリアル
-1. 
-            [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。  プロファイル ブレードが開きます。
+1. [Azure Portal](https://portal.azure.com) で、事前に読み込むエンドポイントを含む CDN プロファイルを参照します。  プロファイル ブレードが開きます。
 2. リスト内のエンドポイントをクリックします。  エンドポイント ブレードが開きます。
 3. CDN エンドポイント ブレードで、[読み込み] ボタンをクリックします。
    

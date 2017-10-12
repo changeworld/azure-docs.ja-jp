@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7d914684a0ee5598cee7972b78c3ec6296184466
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Cosmos DB をコピー先またはコピー元としてデータをコピーする
 
@@ -53,9 +52,9 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **CosmosDb** に設定する必要があります。 | はい |
-| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドは、SecureString とマークします。 |はい |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 Azure 統合ランタイムまたはセルフホステッド統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| type | type プロパティは **CosmosDb** に設定する必要があります。 | あり |
+| connectionString |Azure Cosmos DB データベースに接続するために必要な情報を指定します。 次の例に示すように、接続文字列にデータベース情報を指定する必要があります。 このフィールドを SecureString とマークします。 |あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -80,13 +79,13 @@ Azure Cosmos DB のリンクされたサービスでは、次のプロパティ�
 
 ## <a name="dataset-properties"></a>データセットのプロパティ
 
-データセットの定義に使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、Azure Cosmos DB データセットでサポートされるプロパティの一覧を示します。
+データセットを定義するために使用できるセクションとプロパティの完全な一覧については、データセットに関する記事をご覧ください。 このセクションでは、Azure Cosmos DB データセットでサポートされるプロパティの一覧を示します。
 
 Azure Cosmos DB をコピー元またはコピー先としてデータのコピーを行うには、データセットの type プロパティを **DocumentDbCollection** に設定します。 次のプロパティがサポートされています。
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |はい |
+| type | データセットの type プロパティは、**DocumentDbCollection** を設定する必要があります。 |あり |
 | collectionName |Cosmos DB ドキュメント コレクションの名前です。 |あり |
 
 **例:**
@@ -124,8 +123,8 @@ Azure Cosmos DB からデータをコピーするには、コピー アクティ
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |はい |
-| クエリ |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |いいえ <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
+| type | コピー アクティビティのソースの type プロパティは **DocumentDbCollectionSource** を設定する必要があります。 |あり |
+| クエリ |データを読み取る Cosmos DB クエリを指定します。<br/><br/>例: `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |なし <br/><br/>指定されていない場合に実行される SQL ステートメント: `select <columns defined in structure> from mycollection` |
 | nestingSeparator |ドキュメントが入れ子になっていることと、結果セットの入れ子を解除する方法を示す特殊文字。<br/><br/>たとえば、Cosmos DB クエリで入れ子になった結果 `"Name": {"First": "John"}` が返された場合、nestedSeparator がドットであるとき、コピー アクティビティは、値が "John" である列名 "Name.First" として識別します。 |いいえ (既定値はドット `.`) |
 
 **例:**

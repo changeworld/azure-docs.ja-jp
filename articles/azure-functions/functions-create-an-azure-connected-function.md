@@ -18,10 +18,10 @@ ms.date: 03/01/2017
 ms.author: glenga
 ms.custom: mvc
 ms.openlocfilehash: 65964a322f0adab4f648fb350bedb77b46bf9054
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-functions-to-create-a-function-that-connects-to-other-azure-services"></a>他の Azure サービスに接続する関数を Azure Functions を使用して作成する
 

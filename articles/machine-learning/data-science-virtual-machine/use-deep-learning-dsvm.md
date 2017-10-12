@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9bc56d242abde919f6150b88c81921d409e1d94c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-deep-learning-virtual-machine"></a>ディープ ラーニング仮想マシンの使用
 
@@ -36,7 +35,6 @@ AI 用の DLVM で提供されるツールはいくつかあります。 [ディ
 2. [イメージ内で製品を検出するためのエンド ツー エンドのソリューションのビルドのハウツー ガイド](https://github.com/Azure/cortana-intelligence-product-detection-from-images): イメージの検出は、イメージ内のオブジェクトを特定して分類する手法です。 このテクノロジには、多くの実際のビジネス ドメインに大きなメリットをもたらす可能性があります。 たとえば、小売り業者は、この手法を使用して、顧客が棚から選ぶ製品を判断できます。 この情報は、店舗が製品在庫を管理するのに役立ちます。 
 
 3. [テキスト ドキュメントの分類](https://github.com/anargyri/lstm_han): このチュートリアルは、ディープ ラーニングに Keras API を使用してテキスト ドキュメントを分類するための 2 つの異なるニューラル ネットワーク アーキテクチャ (Hierarchical Attention Network と Long Short Term Memory (LSTM) ネットワーク) をビルドおよびトレーニングする方法を示します。 Keras は、最も普及している 3 つのディープ ラーニング フレームワークである Microsoft Cognitive Toolkit、TensorFlow、Theano のフロントエンドです。
-
 
 
 

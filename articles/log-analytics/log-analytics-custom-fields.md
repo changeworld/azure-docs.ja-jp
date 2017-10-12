@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/18/2016
 ms.author: bwren
 ms.openlocfilehash: 9e02094f155eaade9bc5fb49c4fbb798e546e989
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-fields-in-log-analytics"></a>Log Analytics のカスタム フィールド
 Log Analytics の **カスタム フィールド** 機能を使用すると、独自の検索可能なフィールドを追加して、OMS リポジトリの既存のレコードを拡張できます。  カスタム フィールドは、同じレコードの他のプロパティから抽出したデータから自動的に設定されます。

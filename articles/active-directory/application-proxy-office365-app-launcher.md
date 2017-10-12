@@ -15,14 +15,12 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 811adc81424b8e53a740ec34f77a7610fc2a72a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-a-custom-home-page-for-published-apps-by-using-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用して、発行されたアプリのカスタム ホーム ページを設定する
 
 この記事では、ユーザーをカスタム ホーム ページに移動させるようにアプリを構成する方法について説明します。 アプリケーション プロキシを使用してアプリケーションを発行する場合は内部 URL を設定しますが、それは最初にユーザーに表示されるページではない場合もあります。 ユーザーがアプリにアクセスした場合に適切なページに移動できるように、カスタム ホーム ページを設定します。 ユーザーには、アプリに Azure Active Directory アクセス パネルからアクセスするか Office 365 アプリ起動ツールからアクセスするかにかかわらず、設定したカスタム ホーム ページが表示されます。
@@ -144,4 +142,3 @@ PowerShell を使用してカスタム ホーム ページの URL を定義す�
 
 - [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)
 - [Azure Portal でアプリケーション プロキシを有効にする](active-directory-application-proxy-enable.md)
-

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: yurid
 ms.openlocfilehash: 070e848f753452953b9e5dfe94799e7c0a314530
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pen-testing"></a>侵入テスト
 アプリケーションのテストとデプロイに Microsoft Azure を使用することの優れた点の 1 つは、アプリケーションを開発、テストおよびデプロイするために、オンプレミスのインフラストラクチャをまとめる必要がないことです。 すべてのインフラストラクチャが、Microsoft Azure Platform サービスで処理されます。 オンプレミスのハードウェアの要求、取得、および “ラックとスタック” に関して心配する必要はありません。

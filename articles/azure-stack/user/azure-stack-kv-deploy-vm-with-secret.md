@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/08/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3292a2dfefc17e5034c66122a3eab24d6c03e694
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-machine-by-retrieving-the-password-stored-in-a-key-vault"></a>Key Vault に格納されているパスワードを取得して仮想マシンを作成する
 
@@ -124,5 +123,4 @@ New-AzureRmResourceGroupDeployment `
 [Key Vault を使ってサンプル アプリをデプロイする](azure-stack-kv-sample-app.md)
 
 [Key Vault 証明書を使って VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
-
 

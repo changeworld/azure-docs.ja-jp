@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 06/19/2017
 ms.author: bradsev
 ms.openlocfilehash: 416420d855505508735ebd8526e93efdb230ad53
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="installing-rstudio-with-r-server-on-hdinsight"></a>HDInsight の R Server に RStudio をインストールする
 

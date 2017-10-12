@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 840de1e1fcba74285788d51d8f544375f0affa77
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-content-management-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションのコンテンツ管理要件の決定
 ビジネスのコンテンツ管理要件を理解することは、使用するハイブリッド ID ソリューションの決定に影響があります。 複数デバイスと、ユーザーが自分のデバイスを使用できる機能 ([BYOD](http://aka.ms/byodcg)) を普及する場合、社内データを保護すると共に、ユーザーのプライバシーを損ねないようにする必要があります。 通常、ユーザーが自分のデバイスを持っている場合、使用するアプリケーションによって切り替える複数の資格情報も持っている可能性があります。 個人の資格情報を使用して作成したコンテンツと、会社の資格情報を使用して作成したコンテンツを区別することが重要です。 ID ソリューションは、クラウド サービスと対話してシームレスなエクスペリエンスをエンド ユーザーに提供すると共に、ユーザーのプライバシーを確保し、データ漏えいに対する保護を強化する必要があります。 

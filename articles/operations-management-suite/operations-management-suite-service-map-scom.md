@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/21/2017
 ms.author: bwren;dairwin
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: fb58a01828e13f9605e4788ee7e064162a7a31d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-map-integration-with-system-center-operations-manager"></a>サービス マップと System Center Operations Manager の統合
   > [!NOTE]
   > この機能はパブリック プレビュー段階にあります。
@@ -49,7 +47,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
 サービス マップの統合を構成するには、次の操作を行います。
 
-1. 構成ウィザードを開くには、 **[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
+1. 構成ウィザードを開くには、**[サービス マップの概要]** ウィンドウの **[ワークスペースの追加]** をクリックします。  
 
     ![[サービス マップの概要] ウィンドウ](media/oms-service-map/scom-configuration.png)
 
@@ -75,7 +73,7 @@ Operations Manager とサービス マップの統合を有効にするには、
 
     ![Operations Manager 構成グループ](media/oms-service-map/scom-config-group.png)
 
-6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、 **[ワークスペースの追加]** をクリックします。
+6. 省略可能: Operations Management Suite と通信する管理サーバーのリソース プールを選択し、**[ワークスペースの追加]** をクリックします。
 
     ![Operations Manager 構成リソース プール](media/oms-service-map/scom-config-pool.png)
 
@@ -134,4 +132,3 @@ Service Map フォルダーには 4 つのノードがあります。
 
 ### <a name="feedback"></a>フィードバック
 サービス マップやこのドキュメントについてフィードバックはありますか。 [User Voice ページ](https://feedback.azure.com/forums/267889-log-analytics/category/184492-service-map)を是非ご利用ください。このページでは、機能を提案したり、既存の提案に投票したりすることができます。
-

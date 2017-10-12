@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でのストレージ アカウントの管理
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および再利用するために、Azure Stack でストレージ アカウントを管理する方法について説明します。
@@ -196,7 +196,7 @@ PowerShell を使用して、コンテナーを移行する必要があります
    $jobId
    d1d5277f-6b8d-4923-9db3-8bb00fa61b65
    ```
-7. ジョブ ID で、移行ジョブの状態を確認します。 コンテナーの移行が完了すると、MigrationStatus が “Completed” に設定されます。
+7. ジョブ ID で、移行ジョブの状態を確認します。コンテナーの移行が完了すると、MigrationStatus が “Completed” に設定されます。
 
     `Get-ACSContainerMigrationStatus -ResourceGroupName system.local -FarmName $farm.farmname -JobId $jobId`
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure API Management でパフォーマンスを向上させるためにキャッシュを追加 |Microsoft ドキュメント"
-description: "待機時間、帯域幅の消費量、および API Management サービスの呼び出しのための web サービスの負荷を向上させる方法を説明します。"
+title: "キャッシュを追加して Azure API Management のパフォーマンスを向上させる | Microsoft Docs"
+description: "API Management のサービスの呼び出しで、遅延、帯域幅の消費、Web サービスの負荷を改善させる方法について説明します。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -15,70 +15,70 @@ ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 59c595f0d5ce849f44c46fdb6cab0b44d35fffa0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>Azure API Management でパフォーマンスを向上させるためにキャッシュを追加します。
-API Management での操作は、応答のキャッシュ用に構成できます。 応答のキャッシュできますが大幅に API の待機時間、帯域幅の消費量を減らすし、web サービスの負荷が頻繁に変化しないデータのです。
+# <a name="add-caching-to-improve-performance-in-azure-api-management"></a>キャッシュを追加して Azure API Management のパフォーマンスを向上させる
+API Management では、応答のキャッシュ用に操作を構成できます。 応答のキャッシュを行うと、API の遅延、帯域幅の消費、頻繁に変更されないデータの Web サービスの負荷が大幅に小さくなります。
 
-このガイドでは、API の応答のキャッシュを追加し、サンプルのエコー API 操作のポリシーを構成する方法を示します。 キャッシュの動作を確認する開発者ポータルから、操作を呼び出すことができますし、します。
+このガイドでは、API の応答のキャッシュを追加して、サンプルの Echo API 操作のポリシーを構成する方法を示します。 その後は、開発者ポータルで操作を呼び出してキャッシュの動作を確認することができます。
 
 > [!NOTE]
-> ポリシー式を使用してキーによって項目をキャッシュする方法については、次を参照してください。 [Azure API Management でキャッシュ カスタム](api-management-sample-cache-by-key.md)です。
+> ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 > 
 > 
 
 ## <a name="prerequisites"></a>前提条件
-このガイドの手順の前に、API を使用して、API Management サービス インスタンスが必要し、製品を構成します。 API Management サービス インスタンスを作成がない場合は、次を参照してください。 [API Management サービス インスタンスを作成する][ Create an API Management service instance]で、 [Azure API Management の概要][ Get started with Azure API Management]チュートリアルです。
+このガイドの手順を実行するには、API Management サービスのインスタンスに API と成果物を構成しておく必要があります。 まだ API Management サービス インスタンスを作成していない場合は、[Azure API Management の概要][Get started with Azure API Management]に関するチュートリアルの「[API Management インスタンスの作成][Create an API Management service instance]」を参照してください。
 
-## <a name="configure-caching"></a>キャッシュの操作を構成します。
-この手順では、キャッシュの設定を確認します、 **(キャッシュ済み) を取得リソース**サンプル エコー API の操作です。
+## <a name="configure-caching"> </a>キャッシュ用の操作の構成
+このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
 > [!NOTE]
-> 各 API Management サービス インスタンスは、API 管理の詳細をテストに使用できるエコー API を使用してあらかじめ構成されたものです。 詳細については、次を参照してください。 [Azure API Management の概要][Get started with Azure API Management]です。
+> それぞれの API Management サービス インスタンスには、Echo API があらかじめ構成されています。API Management を体験、学習する目的で使用することができます。 詳細については、[Azure API Management の概要][Get started with Azure API Management]に関する記事を参照してください。
 > 
 > 
 
-クリックして、作業を開始する**パブリッシャー ポータル**API Management サービス用の Azure ポータルでします。 API Management パブリッシャー ポータルに移動します。
+まず、ご利用の API Management サービスの Azure Portal で **[パブリッシャー ポータル]** をクリックします。 API Management パブリッシャー ポータルが表示されます。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-をクリックして**Api**から、 **API Management** 、左側のメニューをクリックし、**エコー API**です。
+左側の **[API Management]** メニューの **[API]** をクリックし、**[Echo API]** をクリックします。
 
-![エコー API][api-management-echo-api]
+![[Echo API]][api-management-echo-api]
 
-をクリックして、**操作** タブをクリックして、 **(キャッシュ済み) を取得リソース**から操作、**操作** ボックスの一覧です。
+**[操作]** タブをクリックし、**[操作]** ボックスの一覧の **[GET Resource (cached)]** 操作をクリックします。
 
-![エコー API 操作][api-management-echo-api-operations]
+![Echo API 操作][api-management-echo-api-operations]
 
-クリックして、**キャッシュ**タブにはこの操作のキャッシュ設定を表示します。
+**[キャッシュ]** タブをクリックして、この操作のキャッシュ設定を表示します。
 
 ![[キャッシュ] タブ][api-management-caching-tab]
 
-操作のキャッシュを有効にするには選択、**を有効にする**チェック ボックスをオンします。 この例ではキャッシュが有効になっています。
+操作に対してキャッシュを有効にするには、 **[有効]** チェック ボックスをオンにします。 この例では、キャッシュは有効になっています。
 
-各操作の応答がキーの値に基づいて、**クエリ文字列パラメーターによって変わる場合があります**と**Vary ヘッダーによって**フィールドです。 クエリ文字列パラメーターまたはヘッダーに基づいて複数の応答をキャッシュする場合は、これら 2 つのフィールドで構成できます。
+それぞれの操作の応答は、**[クエリ文字列パラメーターごとにキャッシュ]** フィールドと **[ヘッダーごとにキャッシュ]** フィールドの値に基づいてキー付けされます。 クエリ文字列パラメーターまたはヘッダーに基づいて複数の応答をキャッシュに格納するには、これらの 2 つのフィールドを使用して構成します。
 
-**期間**キャッシュされた応答の有効期限の間隔を指定します。 間隔は、この例では**3600** (秒単位) は 1 時間に相当します。
+**[期間]** は、キャッシュに入れられた応答の有効期間を指定します。 この例では、期間は 1 時間に相当する **3,600** 秒に設定されています。
 
-この例では、最初の要求では、キャッシュの構成を使用して、 **(キャッシュ済み) を取得リソース**操作がバックエンド サービスから応答を返します。 指定されたヘッダーとクエリ文字列パラメーターをキーと、この応答がキャッシュされます。 一致するパラメーターを使用して、操作を後続の呼び出しは、返される、キャッシュの存続期間の間隔が経過するまでキャッシュされた応答があります。
+この例のキャッシュ構成を使用した場合、 **GET Resource (cached)** 操作への最初の要求に対し、バックエンド サービスから応答が返されます。 この応答は、キャッシュに格納され、指定されたヘッダーとクエリ文字列パラメーターによってキー付けされます。 パラメーターが一致する後続の操作の呼び出しに対しては、キャッシュの有効期間が超過するまで、キャッシュに格納された応答が返されます。
 
-## <a name="caching-policies"></a>キャッシュ ポリシーの確認
-このステップでのキャッシュの設定を確認する、 **(キャッシュ済み) を取得リソース**サンプル エコー API の操作です。
+## <a name="caching-policies"> </a>キャッシュ ポリシーの確認
+このステップでは、サンプル Echo API の **GET Resource (cached)** 操作のキャッシュ設定を確認します。
 
-キャッシュの設定が構成されている場合、操作で、**キャッシュ**] タブの [キャッシュ操作のポリシーが追加されます。 これらのポリシーを表示し、ポリシー エディターで編集できます。
+**[キャッシュ]** タブで操作に対してキャッシュ設定を構成すると、操作に対してキャッシュ ポリシーが追加されます。 これらのポリシーは、ポリシー エディターで表示および編集できます。
 
-をクリックして**ポリシー**から、 **API Management** 、左側のメニューを選択し、**エコー API (キャッシュ済み) のリソースを取得/**から、**操作**ドロップダウン リスト。
+左側の **[API Management]** メニューの **[ポリシー]** をクリックし、**[操作]** ドロップダウン リストの **[Echo API / GET Resource (cached)]** を選択します。
 
-![ポリシーの範囲の操作][api-management-operation-dropdown]
+![ポリシー スコープの操作][api-management-operation-dropdown]
 
-これには、ポリシー エディターでこの操作のポリシーが表示されます。
+ポリシー エディターにこの操作のポリシーが表示されます。
 
 ![API Management ポリシー エディター][api-management-policy-editor]
 
-この操作のポリシー定義には使用して確認されたキャッシュの構成を定義するポリシーが含まれています、**キャッシュ** タブで、前の手順です。
+この操作のポリシー定義には、前のステップで **[キャッシュ]** タブを使用して確認したキャッシュ構成を定義するポリシーが含まれています。
 
 ```xml
 <policies>
@@ -98,50 +98,50 @@ API Management での操作は、応答のキャッシュ用に構成できま�
 ```
 
 > [!NOTE]
-> ポリシー エディターでのキャッシュ ポリシーに加えられた変更に反映する、**キャッシュ**操作、およびその逆のタブです。
+> ポリシー エディターでキャッシュ ポリシーに加えた変更は、操作の **[キャッシュ]** タブに反映されます (また、その逆の操作を行った場合も同様に変更が反映されます)。
 > 
 > 
 
-## <a name="test-operation"></a>操作の呼び出しし、キャッシュをテスト
-アクションでのキャッシュを表示するには、開発者ポータルから、操作を呼び出すおことができます。 をクリックして**開発者ポータル**右上のメニューにします。
+## <a name="test-operation"> </a>操作の呼び出しとキャッシュのテスト
+キャッシュの動作を確認するには、開発者ポータルから操作を呼び出します。 右上のメニューで、 **[開発者ポータル]** をクリックします。
 
-![開発者ポータル][api-management-developer-portal-menu]
+![[開発者ポータル]][api-management-developer-portal-menu]
 
-をクリックして**Api**クリックし、上部のメニューで**エコー API**です。
+上部のメニューで **[API]** をクリックし、**[Echo API]** を選択します。
 
-![エコー API][api-management-apis-echo-api]
+![[Echo API]][api-management-apis-echo-api]
 
-> 自分のアカウントを表示または構成されている 1 つだけの API があれば、Api をクリックしを実行する api を操作します。
+> アカウントに対して構成されている (またはアカウントから見える) API が 1 つしかない場合、[API] をクリックすると、その API の操作に直接誘導されます。
 > 
 > 
 
-選択、 **(キャッシュ済み) を取得リソース**クリックして、操作**コンソールを開く**です。
+**[GET Resource (cached)]** 操作を選択し、**[コンソールを開く]** をクリックします。
 
 ![コンソールを開く][api-management-open-console]
 
-コンソールでは、呼び出し、開発者ポータルから直接操作することができます。
+コンソールを使用すると、開発者ポータルから直接操作を呼び出すことができます。
 
 ![コンソール][api-management-console]
 
-既定値をそのまま**param1**と**param2**です。
+**[param1]** と **[param2]** については既定値のままにしておきます。
 
-任意のキーを選択して、**サブスクリプション キー**ドロップダウン リスト。 自分のアカウントに 1 つのサブスクリプションがある場合は、既に選択されています。
+**[subscription-key (サブスクリプション キー)]** ボックスの一覧で目的のキーを選択します。 アカウントのサブスクリプションが 1 つしかない場合は自動的にそのサブスクリプションが選択されます。
 
-入力**sampleheader:value1**で、**要求ヘッダー**テキスト ボックス。
+**[要求ヘッダー]** ボックスに「**sampleheader:value1**」と入力します。
 
-をクリックして**HTTP Get**応答ヘッダーを書き留めます。
+**[HTTP Get]** をクリックし、応答ヘッダーをメモしておきます。
 
-入力**sampleheader:value2**で、**要求ヘッダー**テキスト ボックス、およびクリック**HTTP Get**です。
+**[要求ヘッダー]** ボックスに「**sampleheader:value2**」と入力します。**[HTTP Get]** をクリックします。
 
-なおの値**sampleheader**が**value1**応答でします。 いくつかの異なる値との最初の呼び出しからキャッシュされた応答が返されることに注意してください。
+応答内の **sampleheader** の値が前と同じ **value1** であることに注目してください。 異なる値をいくつか試して、最初の呼び出しでキャッシュに格納された応答が返されることを確かめます。
 
-入力**25**に、 **param2**フィールドをクリックして**HTTP Get**です。
+**[param2]** フィールドに「**25**」と入力し、**[HTTP Get]** をクリックします。
 
-なおの値**sampleheader**応答では、今すぐ**value2**です。 操作の結果はクエリ文字列によってキー指定され、ため、前のキャッシュされた応答が返されませんでした。
+応答内の **sampleheader** の値が **value2** になっていることに注目してください。 操作の結果はクエリ文字列によってキー付けされているため、以前のキャッシュに格納された応答は返されません。
 
-## <a name="next-steps"></a>次の手順
-* キャッシュ ポリシーの詳細については、次を参照してください。[キャッシュ ポリシー] [ Caching policies]で、 [API Management ポリシー リファレンス][API Management policy reference]です。
-* ポリシー式を使用してキーによって項目をキャッシュする方法については、次を参照してください。 [Azure API Management でキャッシュ カスタム](api-management-sample-cache-by-key.md)です。
+## <a name="next-steps"> </a>次のステップ
+* キャッシュ ポリシーの詳細については、[API Management ポリシー リファレンス][API Management policy reference]の[キャッシュ ポリシー][Caching policies]に関するページを参照してください。
+* ポリシー式を使ってキーごとにアイテムをキャッシュする方法については、「 [Azure API Management のカスタム キャッシュ](api-management-sample-cache-by-key.md)」を参照してください。
 
 [api-management-management-console]: ./media/api-management-howto-cache/api-management-management-console.png
 [api-management-echo-api]: ./media/api-management-howto-cache/api-management-echo-api.png

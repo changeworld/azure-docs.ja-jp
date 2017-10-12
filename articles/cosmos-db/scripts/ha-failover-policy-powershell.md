@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: 16da3cd543ccbb7fe346261f91d2e9a3ceaf3a8b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-cosmos-db-failover-policy-for-high-availability-using-powershell"></a>高可用性を確保するための Azure Cosmos DB フェールオーバー ポリシーを PowerShell で作成する
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/modify-failover-priority/modify-failover-priority.ps1?highlight=36-39,42-47 "Azure Cosmos DB DocumentDB API アカウントの作成")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/modify-failover-priority/modify-failover-priority.ps1?highlight=36-39,42-47 "Create an Azure Cosmos DB DocumentDB API account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

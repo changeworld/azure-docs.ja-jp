@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/27/2017
 ms.author: pullabhk;markgal
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 46cc2737c23b02c6542320e355607f83042bd058
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Azure 仮想マシンのバックアップからファイルを回復する
 
@@ -207,4 +206,3 @@ RAID ディスクに別の LVM が構成されている場合は、前に説明�
 | 実行の出力: スクリプトは正常に実行されるが、スクリプトの出力で "New volumes attached (新しいボリュームがアタッチされました)" が表示されない | これは一時的なエラーです   | ボリュームは既にアタッチされています。 エクスプローラーを開いて参照します。 同じコンピューターでスクリプトを毎回実行している場合は、マシンの再起動を検討してください。次回の実行可能ファイルの実行時に一覧が表示されます。 |
 | Linux 固有: 目的のボリュームを表示できない | スクリプトを実行するマシンの OS が、保護された VM の基になるファイル システムを認識していない可能性があります | 復旧ポイントがクラッシュ整合性とファイル整合性のどちらであるかを確認します。 ファイル整合性の場合、OS が保護された VM のファイル システムを認識する別のマシンでスクリプトを実行します。 |
 | Windows 固有: 目的のボリュームを表示できない | ディスクはアタッチされている可能性がありますが、ボリュームが構成されていません | ディスクの管理画面から、復旧ポイントに関連する追加のディスクを識別します。 それらのディスクのいずれかがオフライン状態の場合は、そのディスクを右クリックし、[オンライン] をクリックしてオンライン状態にします。|
-

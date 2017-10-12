@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e8ff17e069bd9237bf06cd79b4c222c50a999eda
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-stack-development-kit-architecture"></a>Microsoft Azure Stack Development Kit のアーキテクチャ
 
-*適用先: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 Azure Stack Development Kit は、Azure Stack の単一ノード デプロイです。 すべてのコンポーネントは、1 台のホスト マシンで実行されている仮想マシンにインストールされます。 
 
@@ -56,5 +55,4 @@ Azure Stack 開発キットは、ホスト上の次の仮想マシンを使っ�
 [Azure Stack をデプロイする](azure-stack-deploy.md)
 
 [最初のシナリオを試す](azure-stack-first-scenarios.md)
-
 

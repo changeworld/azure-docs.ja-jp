@@ -15,10 +15,10 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4b06338cb62cc458e7b097db36023f0746d4e969
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Azure AD Connect Health を使用した Azure AD Connect の同期の監視
 次のドキュメントは、Azure AD Connect Health を使用した Azure AD Connect (同期) の監視について記述しています。  Azure AD Connect Health を使用して AD FS を監視する方法の詳細については、「 [AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)」を参照してください。 また、Azure AD Connect Health での Active Directory Domain Services の監視については、「[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)」を参照してください。
@@ -67,8 +67,7 @@ Windows Server AD と Azure AD との間で Azure AD Connect を使って ID デ
 * このレポートには、同期クライアント (Azure AD Connect Version 1.1.281.0 以降) によって記録されたエラーが含まれます。
 * 同期エンジンにおける直近の同期操作で発生したエラーが対象となります  (Azure AD Connector の "エクスポート")。
 * レポートに最新のデータを取り込むには、Azure AD Connect Health の同期エージェントに、適切なエンド ポイントへの送信接続が必要です。
-* このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新**されます。
-  その主な機能を示します。
+* このレポートは、Azure AD Connect Health の同期エージェントによってアップロードされたデータを使用して **30 分ごとに更新**されます。その主な機能を示します。
 
   * エラー カテゴリの分類
   * オブジェクトとエラー (カテゴリごと) の一覧表示

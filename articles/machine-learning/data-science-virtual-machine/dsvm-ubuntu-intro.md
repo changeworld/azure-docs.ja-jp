@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 557eab702175b1741cdcde62045947f2c031fbcc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="provision-the-data-science-virtual-machine-for-linux-ubuntu"></a>Linux (Ubuntu) データ サイエンス仮想マシンのプロビジョニング
 
 Linux データ サイエンス仮想マシンは Ubuntu ベースの仮想マシン イメージであり、Azure で簡単にディープ ラーニングを開始できます。 ディープ ラーニング ツールには以下が含まれます。
@@ -100,7 +98,7 @@ Linux データ サイエンス仮想マシンのインスタンスを作成す�
    
    c. **設定**:
    
-   * **ディスクの種類**: ソリッド ステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]**を選択します。 GPU VM では、Standard ディスクが必要です。
+   * **ディスクの種類**: ソリッドステート ドライブ (SSD) を使用する場合は、**[Premium]** を選択します。 それ以外の場合は、 **[Standard]**を選択します。 GPU VM では、Standard ディスクが必要です。
    * **ストレージ アカウント**: サブスクリプションに新しい Azure ストレージ アカウントを作成することも、ウィザードの **[基本]** ステップで選択した場所にある既存のストレージ アカウントを使用することもできます。
    * **他のパラメーター**: 通常は既定値を使用します。 既定値以外の値を検討する場合は、情報リンクにポインターを合わせて、該当するフィールドのヘルプを表示します。
    
@@ -123,7 +121,7 @@ VM を作成したら、SSH を使用してサインインできます。 テキ
 > 
 
 ## <a name="installing-and-configuring-x2go-client"></a>X2Go クライアントのインストールと構成
-Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を完了します。
+Linux VM は、既に X2Go サーバーでプロビジョニングされており、クライアント接続を受け入れる準備ができています。 Linux VM のグラフィカル デスクトップに接続するには、クライアントで次の手順を実行します。
 
 1. [X2Go](http://wiki.x2go.org/doku.php/doc:installation:x2goclient)のページから、お使いのクライアント プラットフォーム向けの X2Go クライアントをダウンロードしてインストールします。    
 2. X2Go クライアントを実行し、 **[New Session (新しいセッション)]**を選択します。 複数のタブがある構成ウィンドウが開きます。 次の構成パラメーターを入力します。
@@ -199,7 +197,7 @@ Python を使用して開発するために、Anaconda Python ディストリビ
 
 Python 2.7 と 3.5 の両方が用意されているため、現在のセッションで利用する目的の Python バージョン (conda 環境) を明示的にアクティブ化する必要があります。 アクティブ化プロセスにより、PATH 変数は Python の目的のバージョンに設定されます。
 
-Python 2.7 conda 環境をアクティブ化するには、シェルで次のコマンドを実行します。
+Python 2.7 conda 環境をアクティブにするには、シェルで次のコマンドを実行します。
 
     source /anaconda/bin/activate root
 
@@ -418,5 +416,4 @@ Rattle と R を終了できます。これで、生成された R スクリプ�
 * この記事で説明しているツールを試して、データ サイエンス VM 上のさまざまなデータ サイエンス ツールを確認します。 VM にインストールされているツールの基本的な概要と詳細情報を入手できる場所は、仮想マシン内のシェルで *dsvm-more-info* を実行して確認することもできます。  
 * [Team Data Science Process](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)を使用して、エンド ツー エンドの分析ソリューションを体系的に構築する方法を確認します。
 * [Cortana Analytics Gallery](http://gallery.cortanaanalytics.com) では、Cortana Analytics Suite を使用して機械学習やデータ分析のサンプルを入手できます。
-
 

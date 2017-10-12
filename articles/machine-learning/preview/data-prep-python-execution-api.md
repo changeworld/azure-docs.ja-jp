@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ceecc718f8198e9a88cae4acbe97e7f26d95f984
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="executing-data-sources-and-data-preparation-packages-from-python"></a>Python からのデータ ソースおよびデータ準備パッケージの実行
 
@@ -51,4 +50,3 @@ Python 内でデータ ソースまたはデータ準備パッケージを使用
 - `dataflow_idx` は、パッケージのどのデータフローを実行するかを示す、0 から始まるインデックスです。 指定したデータフローが他のデータフローまたはデータ ソースを参照する場合、これらも実行されます。
 - `secrets` はシークレットに対する省略可能な dict マッピング キーです。
 - `spark` は Spark データフレームまたは Pandas データフレームを返すかどうかを指定する省略可能なブール値です。 既定では、Azure ML ワークベンチは、コンテキストに基づいてランタイムに返されるデータフレームの種類を決定します。
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 48b75233e1a485e8fb3fbce9776a6ef398c4e99c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delegating-offers-in-azure-stack"></a>Azure Stack でのオファーの委任
 
@@ -144,5 +143,4 @@ Azure Stack は、最大 5 つのレベルの委任をサポートします。
 
 ## <a name="next-steps"></a>次のステップ
 [VM のプロビジョニング](azure-stack-provision-vm.md)
-
 

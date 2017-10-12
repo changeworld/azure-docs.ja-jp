@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b2ba7ec922341464ea7160d08e475999c941c42a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-health-and-alerts-in-azure-stack"></a>Azure Stack での正常性およびアラートの監視
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack には、ユーザーが Azure Stack リージョンの正常性とアラートを表示できるようにするインフラストラクチャ監視機能が含まれています。 この **[Region management]\(リージョン管理\)** タイルは、既定で既定プロバイダー サブスクリプションの管理者ポータルに固定されており、Azure Stack のデプロイされたすべてのリージョンを一覧表示します。 このタイルは、各リージョンのアクティブな重大アラートおよび警告アラートの数を表示し、Azure Stack の正常性とアラートの機能へのエントリ ポイントとなっています。
 
@@ -76,4 +75,3 @@ Azure Stack には、ユーザーが Azure Stack リージョンの正常性と�
 [Azure Stack での更新の管理](azure-stack-updates.md)
 
 [Azure Stack でのリージョン管理](azure-stack-region-management.md)
-

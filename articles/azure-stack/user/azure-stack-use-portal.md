@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 63c270affca31d3db7e03116f5e287d8569b0dae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-stack-portal"></a>Azure Stack ポータルの使用
 
@@ -38,7 +37,7 @@ Azure Stack オペレーター (サービス プロバイダーまたは組織�
 
 ## <a name="customize-the-dashboard"></a>ダッシュボードのカスタマイズ
 
-ダッシュボードには、既定のタイルのセットが含まれています。 **[Edit dashboard] (ダッシュボードの編集)** をクリックして既定のダッシュボードを変更するか、または **[New dashboard] (新しいダッシュボード)** をクリックしてカスタムのダッシュボードを追加することができます。 ダッシュボードにタイルを簡単に追加することができます。 たとえば、**[New] (新規)** をクリックし、**[Compute] (コンピューティング)** を右クリックし、**[Pin to dashboard] (ダッシュボードに固定)** をクリックします。
+ダッシュボードには、既定のタイルのセットが含まれています。 **[ダッシュボードの編集]** をクリックして既定のダッシュボードを変更したり、**[新しいダッシュボード]** をクリックしてカスタムのダッシュボードを追加したりできます。 ダッシュボードにタイルを簡単に追加することができます。 たとえば、**[New] (新規)** をクリックし、**[Compute] (コンピューティング)** を右クリックし、**[Pin to dashboard] (ダッシュボードに固定)** をクリックします。
 
 ## <a name="create-subscription-and-browse-available-resources"></a>サブスクリプションの作成と使用可能リソースの参照
  
@@ -74,4 +73,3 @@ Azure Stack 開発キットを使用している場合、[Azure Stack フォー�
 ## <a name="next-steps"></a>次のステップ
 
 [主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成](azure-stack-considerations.md)
-

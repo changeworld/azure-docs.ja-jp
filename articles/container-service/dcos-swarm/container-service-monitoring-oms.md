@@ -17,10 +17,10 @@ ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
 ms.openlocfilehash: 9b8f96b34b53982c469273a3df9751ceb7930d60
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-dcos-cluster-with-operations-management-suite"></a>Operations Management Suite を使用した Azure Container Service DC/OS クラスターの監視
 
@@ -74,7 +74,7 @@ OMS ポータル (<https://mms.microsoft.com>) にログインし、**[Solution 
 
 ![](media/container-service-monitoring-oms/image8.png)
 
-### <a name="azure-portal"></a>Azure ポータル 
+### <a name="azure-portal"></a>Azure Portal 
 
 Azure Portal (<https://portal.microsoft.com/>) にログインします。 **[Marketplace]** で **[監視 + 管理]** を選択し、**[See All (すべて表示)]** をクリックします。 検索ボックスに「`containers`」と入力します。 検索結果に "コンテナー" が表示されます。 **[コンテナー]** を選択し、**[作成]** をクリックします。
 

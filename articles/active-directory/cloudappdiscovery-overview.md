@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/27/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 59af2a5de5936d15456058aaeacfc334b9b34d4c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-enhancements-in-azure-active-directory"></a>Azure Active Directory の Cloud App Discovery 拡張機能 
 従業員の 80% 以上が、未承認の SaaS アプリを仕事に使用していることを認めています。 多くの管理されていないクラウド アプリをより簡単に特定できるように、Azure AD の Cloud App Discovery が Microsoft Cloud App Security のデータおよび分析機能と統合されました。 この新しい統合では、これまでとは異なるセットアップ手順が必要になります。

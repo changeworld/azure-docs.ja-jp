@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: e44e35cc7d11db48cd82e470ce8226b3c8cc220a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-an-azure-cosmos-db-connection-string-for-mongodb-apps-using-powershell"></a>PowerShell を使用して MongoDB アプリ用の Azure Cosmos DB 接続文字列を取得する
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[メイン](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "Azure Cosmos DB アカウントから MongoDB 接続文字列を取得する")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/get-mongodb-connection-string/get-mongodb-connection-string.ps1?highlight=37-41 "Get the MongoDB connection string from an Azure Cosmos DB account")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

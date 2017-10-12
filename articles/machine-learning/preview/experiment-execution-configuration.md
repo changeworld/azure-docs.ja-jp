@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bb1c7d318939c42edb9a51e28dec31593f2485f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-azure-machine-learning-experiment-execution-service"></a>Azure Machine Learning の実験実行サービスの概要
 Azure ML (Azure Machine Learning) の実験実行サービスでは、データ サイエンティストは Azure ML の実行機能と実行管理機能を使用して実験を行うことができます。 これにより、すばやく反復する俊敏な実験のためのフレームワークが提供されます。 Azure ML Workbench では、ご使用のマシンでのローカルな実行から開始でき、GPU を備えたリモートの Data Science VM や Spark が実行されている HDInsight クラスター など、他の環境にスケール アップおよびスケール アウトするための簡単な手段が提供されます。
 
@@ -254,4 +252,3 @@ GPU 上でスクリプトを実行するには、「[How to use GPU in Azure Mac
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning を作成およびインストールする](quickstart-installation.md)
 * [モデル管理](model-management-overview.md)
-

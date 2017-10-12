@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8777aa486a627cf8b2d8ba443e115638354d10da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-stack-storage"></a>Azure Stack Storage の概要
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ## <a name="overview"></a>概要
 Azure Stack Storage は、Azure Storage サービスと一貫性がある BLOB、テーブル、およびキューを含むクラウド ストレージ サービスのセットです。
@@ -89,5 +88,4 @@ Table Storage を使用すると、Web アプリケーションのユーザー �
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 
 * Azure Storage の詳細については、「[Introduction to Microsoft Azure Storage](../../storage/common/storage-introduction.md)」(Microsoft Azure Storage の概要) を参照してください。
-
 

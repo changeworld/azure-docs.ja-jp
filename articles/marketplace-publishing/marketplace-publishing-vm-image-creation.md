@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
 ms.openlocfilehash: 046ce7af40301014746c6aef07d08d81ab4adcc2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Azure Marketplace 向け仮想マシン イメージ作成ガイド
 この記事 ( **手順 2**) では、Azure Marketplace にデプロイする仮想ハード ディスク (VHD) の準備について説明します。 VHD は SKU の基礎です。 プロセスは、Linux ベースの SKU または Windows ベースの SKU のどちらを提供するかによって異なります。 この記事では、両方のシナリオについて説明します。 このプロセスは、[アカウントの作成および登録][link-acct-creation]と並行して実行できます。
@@ -382,8 +382,7 @@ Microsoft Azure Storage Explorer を使用して SAS URL を生成するため�
 
 5.  ストレージ アカウントに移動し、コンテナーを選択します。
 
-6.  <seg>
-  **[Get Shared Access Signature..]** (Shared Access Signature の取得..) を選択します。</seg> **コンテナー**の右クリックを使用
+6.  **[Get Shared Access Signature..]** (Shared Access Signature の取得..) を選択します。 **コンテナー**の右クリックを使用
 
     ![図](media/marketplace-publishing-vm-image-creation/img5.2_12.png)
 

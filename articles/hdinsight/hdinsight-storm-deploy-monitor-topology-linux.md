@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/07/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 218e818f48adee0b4e7ecb0b184098a9e3273afd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-apache-storm-topologies-on-hdinsight"></a>HDInsight での Apache Storm トポロジのデプロイと管理
 
@@ -245,4 +244,3 @@ REST API から返される情報は、クラスター内からのみ利用可�
 [Maven を使用して Java ベースのトポロジを開発](hdinsight-storm-develop-java-topology.md)する方法について説明します。
 
 その他の Storm トポロジ例は、「 [HDInsight 上の Storm に関するトポロジ例](hdinsight-storm-example-topology.md)」をご覧ください。
-

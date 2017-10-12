@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/09/2017
 ms.author: tamram
+ms.openlocfilehash: e7b32aa2de5d6501e8d7894a936e9ab8b2f4f42f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a854a0033c365336c5ab13fb65524d84da92618c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-microsoft-azure-storage"></a>Microsoft Azure Storage の概要
 
 Microsoft Azure Storage は、高い可用性とセキュリティ、耐久性、スケーラビリティ、冗長性を備えたストレージを提供する、Microsoft が管理するクラウド サービスです。 メンテナンスや重大な問題には、Microsoft がお客様に代わって対処します。 
@@ -273,7 +271,7 @@ To learn more about Azure Storage, explore these resources:
 
 ### <a name="for-net-developers"></a>.NET 開発者向け
 * [.NET を使用して Azure Blob Storage を使用する](../blobs/storage-dotnet-how-to-use-blobs.md)
-* [.NET を使用して Azure Files 用に開発する](../files/storage-dotnet-how-to-use-files.md)
+* [.NET での Azure Files 用の開発](../files/storage-dotnet-how-to-use-files.md)
 * [.NET を使用して Azure Table Storage を使用する](../../cosmos-db/table-storage-how-to-use-dotnet.md)
 * [.NET を使用して Azure Queue Storage を使用する](../storage-dotnet-how-to-use-queues.md)
 

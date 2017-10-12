@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 966100094f98bae41bf90df500d005fa78b31ec3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-data-with-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase によってデータを読み込む
 > [!div class="op_single_selector"]
@@ -112,7 +112,7 @@ Azure Blob Storage にデータをコピーするには:
 ### <a name="e-explore-your-blob-storage-container"></a>E. Blob Storage コンテナーを調べる
 Blob Storage にアップロードしたファイルを表示するには:
 
-1. BLOB サービス ブレードに戻ります。
+1. Blob service ブレードに戻ります。
 2. [コンテナー] の下の **[データコンテナー]**をダブルクリックします。
 3. データへのパスをたどるために **datedimension** フォルダーをクリックすると、アップロードした **DimDate2.txt** ファイルが表示されます。
 4. プロパティを表示するには、 **DimDate2.txt**をクリックします。

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: mimig
 ms.openlocfilehash: cd314049a536ad4a95e243eac26aa044c90c8164
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-query-cheat-sheet-pdf"></a>Azure Cosmos DB: DocumentDB API SQL クエリのチート シート PDF
 **Azure Cosmos DB: DocumentDB API SQL クエリのチート シート**は、簡単に印刷できる PDF 形式のリファレンス シートです。一般的なデータベース クエリ、キーワード、組み込み関数、演算子が記載されており、これを利用すれば DocumentDB API データのクエリをすばやく記述できます。 

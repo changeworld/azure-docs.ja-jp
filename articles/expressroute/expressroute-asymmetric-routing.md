@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: osamam
 ms.openlocfilehash: 8568c13d2834a0643e15ab1814a35c92123837d1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="asymmetric-routing-with-multiple-network-paths"></a>複数のネットワーク パスを使用した非対称ルーティング
 この記事では、ネットワークの送信元と送信先の間で利用できるパスが複数存在する場合に、ネットワーク トラフィックが行きと戻りで異なるルートを取る場合がある理由について説明します。

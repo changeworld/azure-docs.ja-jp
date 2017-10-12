@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8e616bd6f13c4f97886a3eae225e188afadb2305
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-deploy-a-web-service-to-multiple-regions"></a>複数のリージョンに Web サービスをデプロイする方法
 新しい Azure の Web サービスを使用すると、複数のサブスクリプションやワークスペースがなくても、複数のリージョンに Web サービスを簡単にデプロイできます。 
@@ -49,5 +48,4 @@ ms.lasthandoff: 09/25/2017
 9. **[ストレージ アカウント]** ドロップダウンで、Web サービスを格納するためのストレージ アカウントを選択します。
 10. **[Price Plan (価格プラン)]** ドロップダウンで、手順 8 で選択したリージョンのプランを選択します。
 11. **[コピー]**をクリックします。
-
 

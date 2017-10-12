@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/10/2017
 ms.author: juliako
 ms.openlocfilehash: 0463904fd9bf1138587d0d214e572ddd38cc2184
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 #  <a name="manage-speed-and-concurrency-of-your-encoding"></a>エンコードの速度と同時実行の管理
 

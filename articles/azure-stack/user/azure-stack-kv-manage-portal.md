@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 41cbe1526368dd88fe98f92937c6ef2b65f24682
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-key-vault-in-azure-stack-using-the-portal"></a>ポータルを使って Azure Stack の Key Vault を管理する
 
 Azure Stack ポータルを使用して Azure Stack の Key Vault を管理できます。 この記事では、Azure Stack で Key Vault を作成および管理する手順について説明します。 
@@ -101,6 +99,5 @@ Azure Stack ポータルを使用して Azure Stack の Key Vault を管理で�
 ## <a name="next-steps"></a>次のステップ
 * [キー コンテナーに格納されているパスワードを取得して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md)  
 * [証明書がキー コンテナーに格納されている VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)     
-
 
 

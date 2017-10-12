@@ -15,10 +15,10 @@ ms.workload: integration
 ms.date: 05/31/2016
 ms.author: deonhe
 ms.openlocfilehash: 4597ee28e4c3b797c0ab050b21a126a95d9e8191
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-process-edifact-invoices-using-azure-biztalk-services"></a>チュートリアル: Azure BizTalk Services を使用して EDIFACT 請求書を処理する
 
@@ -139,7 +139,7 @@ Contoso と Northwind の間の取引先契約を作成します。 取引先契
 
 ### <a name="create-the-biztalk-services-project"></a>BizTalk Services プロジェクトを作成する
 1. Visual Studio ソリューションで、InvoiceProcessingBridge プロジェクトを展開し、 **MessageFlowItinerary.bcs** ファイルを開きます。
-2. キャンバスの任意の場所をクリックし、[プロパティ] ボックスの **[BizTalk サービスの URL]** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
+2. キャンバスの任意の場所をクリックし、プロパティ ボックスの **BizTalk サービスの URL** に BizTalk Services サブスクリプション名を指定します。 たとえば、「 `https://contosowabs.biztalk.windows.net`」のように入力します。
    
    ![][7]  
 3. ツールボックスから、 **XML 一方向ブリッジ** をキャンバスにドラッグします。 ブリッジの **[エンティティ名]** プロパティと **[相対アドレス]** プロパティを **ProcessInvoiceBridge** に設定します。 **[ProcessInvoiceBridge]** をダブルクリックし、ブリッジ構成画面を開きます。

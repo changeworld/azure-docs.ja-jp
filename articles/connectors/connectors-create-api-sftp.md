@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 07/20/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: 31253d8daee1581167a96a20ba8ad529a04b3e92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-sftp-connector"></a>SFTP コネクタの使用
 SFTP コネクタを使用すると、SFTP アカウントにアクセスしてファイルを送受信できます。 ファイルの作成、更新、取得、削除など、さまざまな操作を実行できます。  

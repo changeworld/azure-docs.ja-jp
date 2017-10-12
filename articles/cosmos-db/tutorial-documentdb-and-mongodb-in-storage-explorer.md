@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: Jiaj-Li
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2cd3656156b77c71be85a1a18567232f4466fc68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-cosmos-db-in-azure-storage-explorer-preview"></a>Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)
 
@@ -153,5 +152,4 @@ Azure Cosmos DB アカウントを右クリックし、**[データベースの�
 ## <a name="next-steps"></a>次のステップ
 
 これで、Azure Storage Explorer が Azure Cosmos DB アカウントに接続されました。Storage Explorer と他のサービスへの接続の詳細については、「[ストレージ エクスプローラー (プレビュー) の概要](https://docs.microsoft.com/en-us/azure/vs-azure-tools-storage-manage-with-storage-explorer)」を参照してください。
-
 

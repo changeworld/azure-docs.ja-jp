@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/06/2017
 ms.author: joflore
 ms.openlocfilehash: 928de285e126a7f62ee075d1c02688bf8f388cb7
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-server-active-directory-on-azure-vms"></a>Azure VM 上の Windows Server Active Directory
 このナビゲーション トピックには、Azure 仮想マシン (VM) に Windows Server Active Directory Domain Services (AD DS) または Active Directory フェデレーション サービス (AD FS) をデプロイする方法に関する他のトピックへのリンクが含まれています。

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/21/2017
 ms.author: jgao
+ms.openlocfilehash: 34550ed33cd81bcbf5b405a5e5c09d25adf5e6ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
-ms.openlocfilehash: 9bda115455ff1e122ac2764cec612546c71365c4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-an-hdinsight-application-in-the-azure-marketplace"></a>Azure Marketplace への HDInsight アプリケーションの発行
 Azure HDInsight アプリケーションは、Linux ベースの HDInsight クラスターにインストールできます。 この記事では、HDInsight アプリケーションを Azure Marketplace に発行する方法について説明します。 Azure Marketplace への発行全般に関する情報については、[Azure Marketplace へのプランの発行方法](../marketplace-publishing/marketplace-publishing-getting-started.md)に関する記事を参照してください。
@@ -113,5 +112,4 @@ HDInsight アプリケーションを発行するには:
 * [Script Action を使って Linux ベースの HDInsight クラスターをカスタマイズ](hdinsight-hadoop-customize-cluster-linux.md)し、アプリケーションをさらに追加する方法について説明します。 
 * [Azure Resource Manager テンプレートを使用して、HDInsight での Linux ベースの Hadoop クラスターを作成](hdinsight-hadoop-create-linux-clusters-arm-templates.md)する方法を確認します。
 * HDInsight クラスター、テスト HDInsight アプリケーション、およびホスティング HDInsight アプリケーションにアクセスするために [HDInsight で空のエッジ ノードを使用](hdinsight-apps-use-edge-node.md)する方法を確認します。
-
 

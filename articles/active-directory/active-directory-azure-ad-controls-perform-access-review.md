@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c9115bb5bc3d22c67ea0ac77b8972ae7f919926b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-review-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでアクセス権をレビューする方法
 
 Azure Active Directory には、Azure AD をはじめとする Microsoft Online Services 内のグループのメンバー管理やアプリケーションへのアクセス管理を省力化する "アクセス レビュー" という機能が備わっています。  アプリケーションへのアクセス権が付与されたユーザーまたはグループのメンバーには、各自のアクセス権をレビューするよう求めるメールが Microsoft から送信される場合があります。 
@@ -43,7 +41,6 @@ Azure Active Directory には、Azure AD をはじめとする Microsoft Online 
 ## <a name="next-steps"></a>次のステップ
 
 ユーザーのアクセス権を拒否してもすぐには削除されないことに注意してください。削除できる状態になるのは、レビューが完了するか、管理者がレビューを停止したときです。 回答に変更が生じて、一度拒否したユーザーを承認する場合や一度承認したユーザーを拒否する場合は、その行をクリックして回答をリセットしてから改めて回答を選択してください。  この作業は、アクセス レビューが完了するまで行うことができます。
-
 
 
 

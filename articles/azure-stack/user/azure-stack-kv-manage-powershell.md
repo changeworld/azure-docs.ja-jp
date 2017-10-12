@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d1ce9f81006809aa3c3c07744298a8194971e0b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
 この記事は、PowerShell を使用した Azure Stack での Key Vault の作成および管理に取りかかるのに役立ちます。 この記事で説明する Key Vault の PowerShell コマンドレットは、Azure PowerShell SDK の一部として使用できます。 以下のセクションでは、コンテナーの作成、格納、暗号キーとシークレットの管理、およびユーザーまたはアプリケーションに対するコンテナーでの操作の呼び出しの承認に必要な PowerShell コマンドレットについて説明します。 
@@ -166,4 +164,3 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 ## <a name="next-steps"></a>次のステップ
 * [キー コンテナーに格納されているパスワードを使用した VM のデプロイ](azure-stack-kv-deploy-vm-with-secret.md)  
 * [キー コンテナーに格納されている証明書を使用した VM のデプロイ](azure-stack-kv-push-secret-into-vm.md) 
-

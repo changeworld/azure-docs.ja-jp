@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: ancav
 ms.openlocfilehash: 92076c7fe1f867919b7e02abf79cf0fb74fb7eb4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-activity-log-alert-with-a-resource-manager-template"></a>Resource Manager テンプレートでのアクティビティ ログ アラートの作成
 この記事では、[Azure Resource Manager テンプレート](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-authoring-templates)を使用してアクティビティ ログ アラートを構成する方法について説明します。 テンプレートを使用すると、自動デプロイ プロセスの一環として、特定のアクティビティ ログ イベント条件に基づいてアクティブ化する多数のアラートを簡単に設定できます。

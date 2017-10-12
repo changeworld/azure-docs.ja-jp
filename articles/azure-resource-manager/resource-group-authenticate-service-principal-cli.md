@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/15/2017
 ms.author: tomfitz
 ms.openlocfilehash: 3c5826d58887ff1af4df8e66999d9c1a1643bcc7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-cli-to-create-a-service-principal-to-access-resources"></a>リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する
 
@@ -50,7 +50,7 @@ ms.lasthandoff: 08/03/2017
    azure ad sp create -n exampleapp -p {your-password}
    ```
      
-   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値は `Client ID` と呼ばれます。 
+   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。サンプル アプリケーションでは、この値は `Client ID` と呼ばれます。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -172,7 +172,7 @@ ms.lasthandoff: 08/03/2017
    azure ad sp create -n exampleapp --cert-value {certificate data}
    ```
      
-   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。 サンプル アプリケーションでは、この値はクライアント ID と呼ばれます。 
+   新しいサービス プリンシパルが返されます。 アクセス許可を付与する場合は、オブジェクト ID が必要です。 ログイン時には、示されている GUID とサービス プリンシパル名が必要となります。 この GUID は、アプリケーション ID と同じ値です。サンプル アプリケーションでは、この値はクライアント ID と呼ばれます。 
      
    ```azurecli
    info:    Executing command ad sp create
@@ -278,7 +278,7 @@ azure ad app set --applicationId 4fd39843-c338-417d-b549-a545f584a745 --cert-val
 
 サービス プリンシパルの作成時に、以下のエラーが発生することがあります。
 
-* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。 管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
+* **"Authentication_Unauthorized"** または **"コンテキストにサブスクリプトが見つかりません"** - アカウントが Azure Active Directory でアプリを登録するために[必要なアクセス許可](#required-permissions)を持っていない場合に、このエラーが表示されます。 通常は、Azure Active Directory の管理者ユーザーのみがアプリを登録できるときに、自分のアカウントが管理者でない場合に、このエラーが発生します。管理者に連絡して、自分を管理者ロールに割り当ててもらうか、ユーザーがアプリケーションを登録できるようにしてもらいます。
 
 * アカウントに**「'/subscriptions/{guid} ' をスコープとした 'Microsoft.Authorization/roleAssignments/write' のアクションを実行するためのアクセス権限がありません」:**このエラーは、自分のアカウントが ID にロールを割り当てるのに十分なアクセス許可を持っていない場合に表示されます。 サブスクリプション管理者に連絡して、自分をユーザー アクセス管理者ロールに追加してもらいます。
 

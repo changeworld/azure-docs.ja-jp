@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/21/2016
 ms.author: magoedte;eslesar
 ms.openlocfilehash: 8a10d961ad7c107c68b57c64ee6c88544ff8832b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-automation-dsc"></a>Azure Automation DSC の使用
 このトピックでは、Azure Automation Desired State Configuration (DSC) を使用して最も一般的なタスク (構成の作成、インポート、コンパイル、管理するマシンのオンボード、レポートの表示など) を実行する方法について説明します。 Azure Automation DSC の概要については、「 [Azure Automation DSC の概要](automation-dsc-overview.md)」を参照してください。 DSC のドキュメントについては、「 [Windows PowerShell Desired State Configuration の概要](https://msdn.microsoft.com/PowerShell/dsc/overview)」を参照してください。

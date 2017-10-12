@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2e66edf63b4bdac1aacfedb64ca1edf207e46a84
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Azure Data Factory を使用して SAP HANA からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -61,12 +60,12 @@ SAP HANA のリンクされたサービスでは、次のプロパティがサ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **SapHana** に設定する必要があります。 | はい |
-| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | はい |
-| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用可能な値: **Basic** および **Windows** | はい |
-| userName | SAP サーバーにアクセスできるユーザーの名前。 | はい |
-| password | ユーザーのパスワード。 このフィールドは、SecureString とマークします。 | はい |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |はい |
+| type | type プロパティを **SapHana** に設定する必要があります。 | あり |
+| server | SAP HANA インスタンスが存在するサーバーの名前。 カスタマイズされたポートをサーバーが使用している場合は、`server:port` を指定します。 | あり |
+| authenticationType | SAP HANA データベースへの接続に使用される認証の種類。<br/>使用可能な値: **Basic** および **Windows** | あり |
+| userName | SAP サーバーにアクセスできるユーザーの名前。 | あり |
+| password | ユーザーのパスワード。 このフィールドを SecureString とマークします。 | あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 「[前提条件](#prerequisites)」に記されているように、セルフホステッド統合ランタイムが必要です。 |あり |
 
 **例:**
 
@@ -125,8 +124,8 @@ SAP HANA からデータをコピーするには、コピー アクティビテ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **RelationalSource** に設定する必要があります。 | はい |
-| クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | はい |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
+| クエリ | SAP HANA インスタンスからデータを読み取る SQL クエリを指定します。 | あり |
 
 **例:**
 

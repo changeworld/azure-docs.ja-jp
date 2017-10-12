@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 7b5f976eb2d51eb86761a2bd0be6adb45ca87681
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="the-azure-stack-marketplace-overview"></a>Azure Stack Marketplace の概要
 
@@ -46,5 +45,4 @@ Marketplace に発行されるすべてのアイテムでは、Azure ギャラ�
 
 ## <a name="next-steps"></a>次のステップ
 [Marketplace アイテムの作成と発行](azure-stack-create-and-publish-marketplace-item.md)
-
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 511076935d06ed0908341044e37069e74530be49
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-an-azure-storage-account-with-azure-cdn"></a>Azure ストレージ アカウントと Azure CDN との統合
 CDN を使用して、Azure ストレージのコンテンツをキャッシュできます。 CDN は、米国、ヨーロッパ、アジア、オーストラリア、および南米にある物理ノードで、コンピューティング インスタンスの BLOB と静的コンテンツをキャッシュすることで、高帯域幅コンテンツを配信するグローバル ソリューションを開発者に提供します。
@@ -35,8 +35,7 @@ Azure サブスクリプションの新しいストレージ アカウントを�
 
 **Azure サブスクリプションのストレージ アカウントを作成するには**
 
-1. 
-            [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. 左上隅にある **[新規]**を選択します。 **[新規]** ダイアログ ボックスで、**[データ + ストレージ]** を選択し、**[ストレージ アカウント]** をクリックします。
     
     **[ストレージ アカウントを作成]** ブレードが表示されます。   

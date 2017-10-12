@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 92cc8d8b0f67dde95ea2e3fc2f0f083bd8ac8aab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Azure App Service の PremiumV2 レベルの構成
 
 新しい **PremiumV2** 価格レベル は、**標準** レベルと比較して高速なプロセッサ、SSD ストレージ、メモリコア比が 2 倍の [Dv2 シリーズ VM](../virtual-machines/windows/sizes-general.md#dv2-series) を提供します。 この記事では、**PremiumV2** レベルでアプリを作成する方法またはアプリを **PremiumV2** レベルにスケール アップする方法について説明します。

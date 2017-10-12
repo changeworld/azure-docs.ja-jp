@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 12/27/2016
 ms.author: dugill;tomfitz
 ms.openlocfilehash: 7830dc4774652f4d108e98660dce3bcea7b32d05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-resource-manager-authentication-api-to-access-subscriptions"></a>サブスクリプションにアクセスするための Resource Manager 認証 API の使用
 ## <a name="introduction"></a>はじめに
@@ -90,7 +90,7 @@ Azure AD では、アプリケーションの証明書資格情報もサポー�
 証明書を使用した AD アプリケーションの作成方法については、「[リソースにアクセスするためのサービス プリンシパルを Azure PowerShell で作成する](resource-group-authenticate-service-principal.md#create-service-principal-with-certificate-from-certificate-authority)」または「[リソースにアクセスするためのサービス プリンシパルを Azure CLI で作成する](resource-group-authenticate-service-principal-cli.md#create-service-principal-with-certificate)」をご覧ください。
 
 ## <a name="get-tenant-id-from-subscription-id"></a>サブスクリプション ID を使用してテナント ID を取得する
-Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーはサブスクリプション ID を知っていますが、Azure Active Directory のテナント ID は知らないことがあります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。 サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
+Resource Manager の呼び出しに使用できるトークンを要求するには、Azure サブスクリプションをホストする Azure AD テナントのテナント ID をアプリケーションが認識している必要があります。 ほとんどの場合、ユーザーはサブスクリプション ID を知っていますが、Azure Active Directory のテナント ID は知らないことがあります。 ユーザーのテナント ID を取得するには、ユーザーにサブスクリプション ID を要求します。サブスクリプションに関する要求を送信するときに、そのサブスクリプション ID を指定します。
 
     https://management.azure.com/subscriptions/{subscription-id}?api-version=2015-01-01
 

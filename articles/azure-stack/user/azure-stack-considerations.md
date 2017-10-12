@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 1e170f320292e3dbe920907a4ed81ab0d1eb388b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>主な考慮事項: Azure Stack でのサービスの使用またはアプリの作成
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack でサービスを使用する場合やアプリを作成する場合、Azure Stack と Azure では違いがあることを理解する必要があります。 この記事では、ハイブリッド クラウド開発環境として Azure Stack をターゲットとする場合の主な考慮事項の概要を示します。
 
@@ -94,4 +93,3 @@ Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}
 * [Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)
 * [Azure Stack のストレージに関する考慮事項](azure-stack-acs-differences.md)
 * [Azure Stack ネットワークに関する考慮事項](azure-stack-network-differences.md)
-

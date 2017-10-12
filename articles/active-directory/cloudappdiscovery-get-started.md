@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Azure Active Directory の Cloud App Discovery のセットアップ
 
 Azure AD の新しい Cloud App Discovery 拡張機能が、Azure Active Directory Premium P1 ライセンスで利用できるようになりました。 これらの拡張機能は、Microsoft Cloud App Security との統合に基づいています。 Cloud App Discovery では、15,000 個以上のクラウド アプリの Cloud App Security カタログとトラフィック ログを比較して、クラウドの使用状況とシャドウ IT に関する継続的な情報を提供します。 

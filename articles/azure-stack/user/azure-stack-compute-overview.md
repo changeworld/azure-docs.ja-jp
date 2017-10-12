@@ -7,16 +7,15 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 68da653052d0e3dfd66d6b65958046e42cefce73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-stack-virtual-machines"></a>Azure Stack 仮想マシンの概要
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ## <a name="overview"></a>概要
 Azure Stack 仮想マシン (VM) は、Azure Stack で提供されるオンデマンドでスケーラブルなコンピューティング リソースの一種です。 通常、コンピューティング環境を他の手段より細かく管理する必要がある場合に、VM を選択します。 この記事では、VM を作成する前に検討する必要のある事項、VM の作成方法、VM の管理方法に関する情報を提供します。
@@ -131,5 +130,4 @@ Azure Stack ポータルの **[接続]** ボタンを使用して、VM に接続
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)
-
 

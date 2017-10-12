@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 6503034b3f5a17a2a42338c73329eef0b01f2f27
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="determine-identity-requirements-for-your-hybrid-identity-solution"></a>ハイブリッド ID ソリューションの ID 要件の決定
 ハイブリッド ID ソリューションを設計する上で最初の手順は、このソリューションを利用するビジネス組織の要件を決定することです。  ハイブリッド ID は脇役から始まり (認証を提供することでその他すべてのクラウド ソリューションをサポートします)、ユーザーに対して新しいワークロードを解除するという、新しく興味深い機能を提供するようになります。  こうしたユーザー向けに採用する予定のワークロードまたはサービスは、ハイブリッド ID の設計の要件に影響があります。  これらのサービスとワークロードは、オンプレミスとクラウドの両方でハイブリッド ID を利用する必要があります。  

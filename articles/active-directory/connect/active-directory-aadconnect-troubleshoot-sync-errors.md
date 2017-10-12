@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: billmath
 ms.openlocfilehash: 5a319de69c4e142414ab8f2be980a6576acbf8bb
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-errors-during-synchronization"></a>同期中のエラーのトラブルシューティング
 エラーが発生する可能性があるのは、Windows Server Active Directory (AD DS) と Azure Active Directory (Azure AD) で ID データが同期されているときです。 この記事では、さまざまな種類の同期エラーの概要、これらのエラーを引き起こすシナリオ、エラーを修正する方法について説明します。 この記事では一般的なエラーの種類を取り上げます。発生する可能性があるすべてのエラーについて説明するものではありません。
@@ -114,7 +114,7 @@ Azure AD が 2 つのオブジェクトのあいまい一致を試行すると�
 * メール対応セキュリティ グループが Office 365 で作成されます。 管理者は、ProxyAddresses 属性の値が Office 365 グループと同じ新しいユーザーまたは連絡先をオンプレミス ADに追加します (まだ Azure AD に同期されません)。
 
 #### <a name="example-case"></a>事例
-1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Office 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。 これにより、このグループの ProxyAddresses 属性に値 **smtp:tax@contoso.com** が割り当てられます。
+1. 管理者が、税部門のために新しいメール対応セキュリティ グループを Office 365 に作成し、電子メール アドレスを tax@contoso.com と設定します。これにより、このグループの ProxyAddresses 属性に値 **smtp:tax@contoso.com** が割り当てられます。
 2. 新しいユーザーが Contoso.com に加わり、そのユーザーのアカウントが proxyAddress を **smtp:tax@contoso.com** としてオンプレミスに作成されます。
 3. Azure AD Connect が新しいユーザー アカウントを同期するとき、"ObjectTypeMismatch" エラーが生成されます。
 
@@ -195,7 +195,7 @@ a.[サインオン URL] ボックスに、次のパターンを使用して、�
 #### <a name="how-to-fix"></a>修正方法
 ユーザーの UserPrincipalName サフィックスが bob@**contoso.com** から bob@**fabrikam.com** に更新され、**contoso.com** と **fabrikam.com** のどちらも**フェデレーション ドメイン**の場合、次の手順に従って同期エラーを修正します。
 
-1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。 次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
+1. Azure AD 内のユーザーの UserPrincipalName を bob@contoso.com から bob@contoso.onmicrosoft.com に更新します。次の PowerShell コマンドを Azure AD PowerShell Module で使用できます。`Set-MsolUserPrincipalName -UserPrincipalName bob@contoso.com -NewUserPrincipalName bob@contoso.onmicrosoft.com`
 2. 次の同期サイクルで同期の試行を許可します。 このとき、同期が成功して、Bob の UserPrincipalName が予期したとおり bob@fabrikam.com に更新されます。
 
 #### <a name="related-articles"></a>関連記事

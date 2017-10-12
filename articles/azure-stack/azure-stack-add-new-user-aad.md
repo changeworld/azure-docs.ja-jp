@@ -14,15 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 91d1c52c0abf14656e08b511e4f6c8041e319020
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-*適用先: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>新しい Azure Stack テナント アカウントをAzure Active Directory に追加する
 [Azure Stack Development Kit をデプロイ](azure-stack-run-powershell-script.md)した後は、テナント ポータルを操作し、オファーとプランをテストするためにテナント ユーザー アカウントが必要になります。 テナント アカウントを作成するには、[Azure Portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) または [PowerShell](#create-an-azure-stack-tenant-account-using-powershell) を使用します。
@@ -74,5 +72,4 @@ Azure サブスクリプションがない場合は、Azure Portal を使用し�
 
 1. 新しいアカウントで Microsoft Azure にサインインします。 パスワードの変更を求められたら、変更します。
 2. `https://portal.local.azurestack.external` に新しいアカウントでサインインして、テナント ポータルを表示します。
-
 

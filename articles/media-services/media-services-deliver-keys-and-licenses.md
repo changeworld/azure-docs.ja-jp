@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: juliako
 ms.openlocfilehash: 263a381dc72105eea60ad9b39434599ff04a4531
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-media-services-to-deliver-drm-licenses-or-aes-keys"></a>Azure Media Services を使用して DRM ライセンスまたはAES キーを配信する
 Azure Media Services (AMS) を使用すると、コンテンツの取り込みおよびエンコードを行い、コンテンツ保護を追加して、コンテンツのストリーミングを行うことができます (詳細については、 [この](media-services-protect-with-drm.md) 記事をご覧ください)。 ただし、AMS を使用してライセンスまたはキーの配信のみを行い、オンプレミスのサーバーを使用してエンコード、暗号化、およびストリーミングを行うユーザーがいます。 この記事では、AMS を使用して PlayReady または Widevine のライセンスを配信するものの、オンプレミスのサーバーで残りを処理する方法について説明します。 

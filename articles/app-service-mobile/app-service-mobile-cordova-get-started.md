@@ -17,10 +17,10 @@ ms.topic: hero-article
 ms.date: 07/07/2017
 ms.author: glenga
 ms.openlocfilehash: b620465cdc3cfa04933dc6e70163fc32aa9a839b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-apache-cordova-app"></a>Apache Cordova アプリの作成
 [!INCLUDE [app-service-mobile-selector-get-started](../../includes/app-service-mobile-selector-get-started.md)]
@@ -74,7 +74,7 @@ SDK の使用方法を確認してください。
 <!-- URLs -->
 [Azure portal]: https://portal.azure.com/
 [Visual Studio Community 2017]: http://www.visualstudio.com/
-[Visual Studio Tools for Apache Cordova]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
+[Apache Cordova の Visual Studio ツール]: https://www.visualstudio.com/en-us/features/cordova-vs.aspx
 [オフライン データ]: app-service-mobile-offline-data-sync.md
 [認証]: app-service-mobile-auth.md
 [プッシュ通知]: ../notification-hubs/notification-hubs-push-notification-overview.md

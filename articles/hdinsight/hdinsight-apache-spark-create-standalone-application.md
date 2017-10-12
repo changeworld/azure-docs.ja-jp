@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: nitinme
 ms.openlocfilehash: 95dba08744357f8800b05e3d4b892e3a363d5985
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-scala-maven-application-to-run-on-apache-spark-cluster-on-hdinsight"></a>Scala Maven アプリケーションを作成し、HDInsight の Apache Spark クラスターで実行する
 
@@ -61,14 +61,14 @@ IntelliJ IDEA のインストールで、Scala プラグインを有効にする
     ![Maven プロジェクトの作成](./media/hdinsight-apache-spark-create-standalone-application/create-maven-project.png)
    
    * プロジェクトの種類として、 **[Maven]** を選択します。
-   * **[Project SDK (プロジェクトのSDK)]** を指定します。 [New (新規)] をクリックし、Java のインストール ディレクトリに移動します。通常は、`C:\Program Files\Java\jdk1.8.0_66` です。
+   * **[Project SDK (プロジェクトのSDK)]** を指定します。 New (新規)をクリックし、Java のインストール ディレクトリに移動します。通常は、`C:\Program Files\Java\jdk1.8.0_66` です。
    * **[Create from archetype (アーキタイプからの作成)]** オプションを選択します。
    * アーキタイプの一覧から、 **org.scala-tools.archetypes:scala-archetype-simple**を選択します。 これによって、正しいディレクトリ構造が作成され、Scala プログラムを作成するのに必要な既定の依存関係がダウンロードされます。
 2. **[GroupId]**、**[ArtifactId]**、および **[Version]** に関連する値を指定します。 **[次へ]** をクリックします。
 3. 次のダイアログ ボックスでは (ここでは、Maven ホーム ディレクトリとその他のユーザー設定を指定)、既定の設定をそのまま使用し、 **[Next (次へ)]**をクリックします。
 4. 最後のダイアログ ボックスで、プロジェクト名と場所を指定し、 **[Finish (完了)]**をクリックします。
 5. **src\test\scala\com\microsoft\spark\example** にある **MySpec.Scala** ファイルを削除します。 これはアプリケーションに必要ありません。
-6. 必要な場合は、既定のソースおよびテスト ファイルの名前を変更します。 IntelliJ IDEA の左側のウィンドウで、**src\main\scala\com.microsoft.spark.example** に移動します。 **App.scala** を右クリックし、**[Refactor (リファクター)]** をクリックし、[Rename file (ファイル名の変更)] をクリックし、ダイアログ ボックスで、アプリケーションの新しい名前を指定して、**[Refactor (リファクター)]** をクリックします。
+6. 必要な場合は、既定のソースおよびテスト ファイルの名前を変更します。 IntelliJ IDEA の左側のウィンドウで、**src\main\scala\com.microsoft.spark.example** に移動します。 **App.scala** を右クリックし、**Refactor (リファクター)** をクリックし、Rename file (ファイル名の変更)をクリックし、ダイアログ ボックスで、アプリケーションの新しい名前を指定して、**Refactor (リファクター)** をクリックします。
    
     ![ファイルの名前変更](./media/hdinsight-apache-spark-create-standalone-application/rename-scala-files.png)  
 7. 以降の手順では、pom.xml を更新して、Spark Scala アプリケーションの依存関係を定義します。 これらの依存関係が自動的にダウンロードされ解決されるように、適宜、Maven を構成する必要があります。

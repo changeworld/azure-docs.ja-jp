@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/03/2017
 ms.author: spelluru
 ms.openlocfilehash: ffe951f60afb57524568fe1ed3b3668d0088e124
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="document-data-sources"></a>データ ソースの文書化
 ## <a name="introduction"></a>はじめに

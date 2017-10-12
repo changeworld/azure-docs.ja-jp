@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 4/6/2017
 ms.author: erikje
+ms.openlocfilehash: 9cadc57831ac7f7e5d32b10a4a87dab3fac02958
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 988e7fe2ae9f837b661b0c11cf30a90644085e16
-ms.openlocfilehash: bab69a9ff7e101f22713ba7f1ac2cbd0add7fdbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-ftp-in-app-service-on-azure-stack"></a>Azure Stack 上の App Service で FTP を有効にする
 
@@ -62,4 +61,3 @@ Azure Stack 上の App Service を正常にデプロイした後、テナント�
 [7]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-app-services.png
 [8]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-app-service-app-detail.png
 [9]: ./media/azure-stack-app-service-enable-ftp/azure-stack-app-service-enable-ftp-validate-ftp-file-listing.png
-

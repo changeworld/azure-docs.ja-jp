@@ -15,12 +15,11 @@ ms.date: 08/23/2017
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro;oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 85e24587f07a4dc65a2f116499f3f7e00c3ac2b8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-azure-ad-directory"></a>Azure AD ディレクトリの管理
 
@@ -123,4 +122,3 @@ Azure AD でディレクトリを削除するには、特定の条件を満た�
 * [Stack Overflow (Azure 関連の質問)](http://stackoverflow.com/questions/tagged/azure)
 * [Azure Active Directory PowerShell](https://docs.microsoft.com/powershell/azure/active-directory)
 * [Azure AD での管理者ロールの割り当て](active-directory-assign-admin-roles.md)
-

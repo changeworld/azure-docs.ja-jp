@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/27/2016
 ms.author: LADocs; mandia
 ms.openlocfilehash: 161adeacd6da2b15225c8a4ddae171e19e539967
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-logic-app-using-a-template"></a>テンプレートを使用したロジック アプリの作成
 テンプレートを使用すると、ロジック アプリ内でさまざまなコネクタを簡単に使用できます。 Logic Apps には、ビジネス ワークフローの定義に使用できるロジック アプリを作成するための Azure Resource Manager テンプレートが含まれています。 デプロイ対象のリソースと、ロジック アプリをデプロイする際のパラメーターを定義する方法を定義できます。 このテンプレートは、独自のビジネス シナリオに使用することも、要件に合わせてカスタマイズすることもできます。

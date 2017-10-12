@@ -1,6 +1,6 @@
 ---
-title: "Azure の DNS ドメインの委任 |Microsoft ドキュメント"
-description: "ドメインの委任の変更し、ドメイン ホスティングを提供する Azure の DNS ネーム サーバーを使用する方法を理解します。"
+title: "Azure DNS へのドメインの委任 | Microsoft Docs"
+description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
 services: dns
 documentationcenter: na
 author: georgewallace
@@ -14,51 +14,51 @@ ms.workload: infrastructure-services
 ms.date: 04/12/2017
 ms.author: gwallace
 ms.openlocfilehash: 33b3ec24432ff1268860b9a2e9d5098600a8dedc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="delegate-a-domain-to-azure-dns"></a>Azure dns ドメインを委任します。
+# <a name="delegate-a-domain-to-azure-dns"></a>Azure DNS へのドメインの委任
 
-Azure DNS を使用すると、DNS ゾーンをホストし、Azure 内のドメインの DNS レコードを管理できます。 Azure DNS に到達するドメインの DNS クエリの順序は、Azure DNS 親ドメインを委任するドメインにあります。 Azure DNS に注意してくださいは、ドメイン レジストラーではないです。 この記事では、Azure の DNS ドメインを委任する方法について説明します。
+Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメインの DNS レコードを管理できます。 ドメインに対する DNS クエリを Azure DNS に到達させるには、ドメインを親ドメインから Azure DNS に委任する必要があります。 Azure DNS はドメイン レジストラーではないことに注意してください。 この記事では、ドメインを Azure DNS に委任する方法について説明します。
 
-ドメインのレジストラーから購入した場合は、レジストラーは、これらの NS レコードを設定するオプションを提供します。 Azure DNS では、そのドメイン名で DNS ゾーンを作成するドメインを所有する必要はありません。 ただしは、レジストラーで Azure dns 委任を設定するドメインを所有する必要があります。
+レジストラーから購入したドメインの場合は、レジストラーから、これらの NS レコードを設定するオプションが提供されます。 ドメインを所有していなくても、Azure DNS 内にそのドメイン名で DNS ゾーンを作成できます。 ただし、レジストラーを使用して Azure DNS への委任を設定するには、ドメインを所有する必要があります。
 
-たとえば、'contoso.net' ドメインを購入し、Azure DNS で名前 'contoso.net' でゾーンを作成するとします。 ドメインの所有者では、レジストラーは、オプションをネーム サーバー アドレス (つまり、NS レコード) を構成するドメインに参加します。 レジストラーでは、ここ '.net' では、親ドメインにこれらの NS レコードを格納します。 'Contoso.net' 内の DNS レコードを解決しようとするとき、世界中のクライアントを Azure DNS ゾーンで、ドメインに送信し、ことができます。
+たとえば、ドメイン "contoso.net" を購入し、Azure DNS に "contoso.net" という名前のゾーンを作成するとします。 レジストラーは、ドメインの所有者として、ドメインのネーム サーバー アドレス (つまり、NS レコード) を構成するオプションを提供します。 レジストラーはこれらの NS レコードを親ドメイン (この場合は ".net") に格納します。 その後は、クライアントが世界のどこにあっても、"contoso.net" 内の DNS レコードを解決しようとした時点で、Azure DNS ゾーン内のドメインに転送することができます。
 
-## <a name="create-a-dns-zone"></a>DNS ゾーンを作成します。
+## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure ポータルにサインインするには
-1. ハブ メニューで、をクリックし、をクリックして**新規 > ネットワーク >**  をクリックし、 **DNS ゾーン**を作成する DNS ゾーンのブレードを開きます。
+1. Azure Portal にサインインします。
+1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
 
-    ![DNS ゾーン](./media/dns-domain-delegation/dns.png)
+    ![[DNS ゾーン]](./media/dns-domain-delegation/dns.png)
 
-1. **作成 DNS ゾーン**ブレードは、次の値を入力し、クリックして**作成**:
+1. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
-   |**名前**|contoso.net|DNS ゾーンの名前|
-   |**サブスクリプション**|[サブスクリプション]|アプリケーション ゲートウェイを作成するサブスクリプションを選択します。|
-   |**リソース グループ**|**[新規作成]:** contosoRG|リソース グループを作成します。 リソース グループ名を選択したサブスクリプション内で一意にする必要があります。 リソース グループの詳細については、読み取り、[リソース マネージャー](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups)概要の資料です。|
+   |**名前**|contoso.net|DNS ゾーンの名前です。|
+   |**サブスクリプション**|<該当するサブスクリプション>|アプリケーション ゲートウェイの作成先となるサブスクリプションを選択します。|
+   |**[リソース グループ]**|**[新規作成]**: contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
    |**場所**|米国西部||
 
 > [!NOTE]
-> リソース グループはリソース グループの場所を参照し、DNS ゾーンに影響を与えません。 DNS ゾーンの場所は常に「グローバル」でありは表示されません。
+> リソース グループの設定はリソース グループの場所を指定するものであり、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。
 
-## <a name="retrieve-name-servers"></a>サーバーの名前を取得します。
+## <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 
-Azure DNS に、DNS ゾーンを委任することができます、前にまず、ゾーンの名前のサーバー名を把握する必要があります。 Azure DNS ゾーンが作成されるたびにプールからサーバーを名前を割り当てます。
+DNS ゾーンを Azure DNS に委任するには、事前にゾーンのネーム サーバー名を把握する必要があります。 Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当てます。
 
-1. Azure ポータルで作成された DNS ゾーンを含む**お気に入り** ウィンドウで、をクリックして**すべてのリソース**です。 クリックして、 **contoso.net**での DNS ゾーン、**すべてのリソース**ブレードです。 既に選択したサブスクリプションでは、それにいくつかのリソースが含まれる場合は、入力**contoso.net**名でフィルター処理にしています. アプリケーション ゲートウェイを簡単にアクセスするボックスです。 
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**contoso.net**」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。 
 
-1. DNS ゾーンのブレードからネーム サーバーを取得します。 この例では、ゾーン 'contoso.net' が割り当てられてネーム サーバー 'ns1-01.azure-dns.com'、'ns2 01.azure dns .net'、' ns3-01.azure-dns.org'、および' ns4-01.azure-dns.info'。
+1. [DNS ゾーン] ブレードでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
 
- ![Dns ネーム サーバー](./media/dns-domain-delegation/viewzonens500.png)
+ ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS は、自動的に割り当てられた名前のサーバーを含むゾーンでの権威 NS レコードを作成します。  Azure PowerShell または Azure CLI を使用して名前のサーバー名を表示するには、単にこれらのレコードを取得する必要があります。
+割り当てられたネーム サーバーが含まれたゾーンに、権限のある NS レコードが自動的に作成されます。  Azure PowerShell または Azure CLI を使用してネーム サーバー名を確認する際は、これらのレコードを取得するだけで済みます。
 
-次の例では、PowerShell および Azure CLI Azure dns ゾーンのネーム サーバーを取得する手順も提供します。
+次の例も、PowerShell と Azure CLI を使用して Azure DNS ゾーンのネーム サーバーを取得する手順を示したものです。
 
 ### <a name="powershell"></a>PowerShell
 
@@ -68,7 +68,7 @@ $zone = Get-AzureRmDnsZone -Name contoso.net -ResourceGroupName contosoRG
 Get-AzureRmDnsRecordSet -Name "@" -RecordType NS -Zone $zone
 ```
 
-次の例では、応答を示します。
+次の例は応答です。
 
 ```
 Name              : @
@@ -88,7 +88,7 @@ Metadata          :
 az network dns record-set show --resource-group contosoRG --zone-name contoso.net --type NS --name @
 ```
 
-次の例では、応答を示します。
+次の例は応答です。
 
 ```json
 {
@@ -116,25 +116,25 @@ az network dns record-set show --resource-group contosoRG --zone-name contoso.ne
 }
 ```
 
-## <a name="delegate-the-domain"></a>ドメインを委任します。
+## <a name="delegate-the-domain"></a>ドメインの委任
 
-これで、DNS ゾーンを作成し、名前のサーバーがある場合、親ドメインを Azure の DNS ネーム サーバーで更新する必要があります。 各レジストラー、ドメインのネーム サーバー レコードを変更する、独自の DNS 管理ツールがあります。 レジストラーの DNS 管理ページで、NS レコードを編集し、NS レコードを Azure の DNS に作成したものに置き換えます。
+DNS ゾーンを作成してネーム サーバーを取得したところで、Azure DNS ネーム サーバーを使用して親ドメインを更新する必要があります。 各レジストラーは独自の DNS 管理ツールを所有していて、ドメインのネーム サーバー レコードを変更します。 レジストラーの DNS 管理ページで、NS レコードを編集し、その NS レコードを、Azure DNS で作成されたレコードに置き換えます。
 
-Azure dns ドメインを委任する場合は、Azure DNS によって提供される名前のサーバー名を使用する必要があります。 すべて次の 4 つの名前、サーバー名、ドメインの名前に関係なくを使用することをお勧めします。 ドメインの委任では、自分のドメインとして同じ最上位ドメインを使用する名前のサーバー名は必要ありません。
+ドメインを Azure DNS に委任する場合は、Azure DNS によって提供されるネーム サーバー名を使用する必要があります。 対象のドメインの名前に関係なく、4 つのネーム サーバー名すべてを使用することをお勧めします。 ドメインの委任では、対象のドメインと同じトップレベル ドメインがネーム サーバー名に使用される必要はありません。
 
-'のレコードを接着' を使用する必要がありますいないを指す、Azure DNS ネーム サーバー IP アドレス、これらの IP アドレスは後で変更するためです。 'バニティ ネーム サーバー' とも呼ばれる独自のゾーンでネーム サーバー名を使用して委任は、Azure DNS で現在はサポートされません。
+Azure DNS ネーム サーバーの IP アドレスは後で変更される可能性があるため、これらの IP アドレスを指すために "グルー レコード" を使用しないでください。 独自のゾーンのネーム サーバー名 ("バニティ ネーム サーバー" と呼ばれることもあります) を使用した委任は、現在、Azure DNS ではサポートされていません。
 
-## <a name="verify-name-resolution-is-working"></a>名前解決が機能を確認してください。
+## <a name="verify-name-resolution-is-working"></a>名前解決の動作確認
 
-委任を完了すると後も自動的に作成される、ゾーンの作成時に)、ゾーンの SOA レコードを照会する 'nslookup' などのツールを使用して、名前解決が動作しているを確認できます。
+委任が完了したら、"nslookup" などのツールを使用してゾーンの SOA レコードを照会することで、名前解決が動作していることを確認できます (SOA レコードは、ゾーンの作成時にも自動的に作成されます)。
 
-委任が設定されている場合、正しく、通常 DNS 解決プロセス検索ネーム サーバーに自動的に Azure DNS ネーム サーバーを指定する必要はできません。
+Azure DNS ネーム サーバーを指定する必要はありません。委任が正しく設定されている場合は、通常の DNS 解決プロセスで自動的にネーム サーバーが検出されます。
 
 ```
 nslookup -type=SOA contoso.com
 ```
 
-前のコマンドからの応答の例を次に示します。
+前のコマンドから返される応答のサンプルを次に示します。
 
 ```
 Server: ns1-04.azure-dns.com
@@ -150,67 +150,67 @@ expire = 604800 (7 days)
 default TTL = 300 (5 mins)
 ```
 
-## <a name="delegate-sub-domains-in-azure-dns"></a>Azure dns サブドメインを委任します。
+## <a name="delegate-sub-domains-in-azure-dns"></a>Azure DNS でのサブドメインの委任
 
-1 つの子ゾーンを設定する場合は、Azure DNS 内の下位ドメインを委任できます。 たとえば、設定が、Azure DNS の委任 'contoso.net' と、1 つの子ゾーンを設定するには 'partners.contoso.net' です。
+別の子ゾーンを設定する必要がある場合は、Azure DNS でサブドメインを委任できます。 たとえば、Azure DNS で "contoso.net" を設定して委任した後、別の子ゾーン "partners.contoso.net" を設定するとします。
 
-1. Azure DNS 内には、子ゾーン 'partners.contoso.net' を作成します。
-2. Azure DNS で、子ゾーンをホストしているネーム サーバーを取得する子ゾーンの権限を持つの NS レコードを検索します。
-3. 子ゾーンを指している親ゾーンの NS レコードを構成するには、子ゾーンを委任します。
+1. Azure DNS で子ゾーン "partners.contoso.net" を作成します。
+2. 子ゾーンで権限のある NS レコードを検索し、Azure DNS で子ゾーンをホストするネーム サーバーを取得します。
+3. 子ゾーンを指す親ゾーンで NS レコードを構成することで、子ゾーンを委任します。
 
-### <a name="create-a-dns-zone"></a>DNS ゾーンを作成します。
+### <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure ポータルにサインインするには
-1. ハブ メニューで、をクリックし、をクリックして**新規 > ネットワーク >**  をクリックし、 **DNS ゾーン**を作成する DNS ゾーンのブレードを開きます。
+1. Azure Portal にサインインします。
+1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
 
-    ![DNS ゾーン](./media/dns-domain-delegation/dns.png)
+    ![[DNS ゾーン]](./media/dns-domain-delegation/dns.png)
 
-1. **作成 DNS ゾーン**ブレードは、次の値を入力し、クリックして**作成**:
+1. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
-   |**名前**|partners.contoso.net|DNS ゾーンの名前|
-   |**サブスクリプション**|[サブスクリプション]|アプリケーション ゲートウェイを作成するサブスクリプションを選択します。|
-   |**リソース グループ**|**使用する既存:** contosoRG|リソース グループを作成します。 リソース グループ名を選択したサブスクリプション内で一意にする必要があります。 リソース グループの詳細については、読み取り、[リソース マネージャー](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups)概要の資料です。|
+   |**名前**|partners.contoso.net|DNS ゾーンの名前です。|
+   |**サブスクリプション**|<該当するサブスクリプション>|アプリケーション ゲートウェイの作成先となるサブスクリプションを選択します。|
+   |**[リソース グループ]**|**[既存のものを使用]**: contosoRG|リソース グループを作成します。 選択したサブスクリプション内で一意となるリソース グループ名を使用してください。 リソース グループについて詳しくは、[Resource Manager](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) の概要に関する記事をご覧ください。|
    |**場所**|米国西部||
 
 > [!NOTE]
-> リソース グループはリソース グループの場所を参照し、DNS ゾーンに影響を与えません。 DNS ゾーンの場所は常に「グローバル」でありは表示されません。
+> リソース グループの設定はリソース グループの場所を指定するものであり、DNS ゾーンには影響しません。 DNS ゾーンの場所は常に "グローバル" であり、それは表示されません。
 
-### <a name="retrieve-name-servers"></a>サーバーの名前を取得します。
+### <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 
-1. Azure ポータルで作成された DNS ゾーンを含む**お気に入り** ウィンドウで、をクリックして**すべてのリソース**です。 クリックして、 **partners.contoso.net**での DNS ゾーン、**すべてのリソース**ブレードです。 既に選択したサブスクリプションでは、それにいくつかのリソースが含まれる場合は、入力**partners.contoso.net**名でフィルター処理にしています. DNS ゾーンを簡単にアクセスするボックスです。
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **partners.contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**partners.contoso.net**」と入力すると、 目的の DNS ゾーンがすぐに見つかります。
 
-1. DNS ゾーンのブレードからネーム サーバーを取得します。 この例では、ゾーン 'contoso.net' が割り当てられてネーム サーバー 'ns1-01.azure-dns.com'、'ns2 01.azure dns .net'、' ns3-01.azure-dns.org'、および' ns4-01.azure-dns.info'。
+1. [DNS ゾーン] ブレードでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
 
- ![Dns ネーム サーバー](./media/dns-domain-delegation/viewzonens500.png)
+ ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
-Azure DNS は、自動的に割り当てられた名前のサーバーを含むゾーンでの権威 NS レコードを作成します。  Azure PowerShell または Azure CLI を使用して名前のサーバー名を表示するには、単にこれらのレコードを取得する必要があります。
+割り当てられたネーム サーバーが含まれたゾーンに、権限のある NS レコードが自動的に作成されます。  Azure PowerShell または Azure CLI を使用してネーム サーバー名を確認する際は、これらのレコードを取得するだけで済みます。
 
-### <a name="create-name-server-record-in-parent-zone"></a>親ゾーンでネーム サーバー レコードを作成します。
+### <a name="create-name-server-record-in-parent-zone"></a>親ゾーンでのネーム サーバー レコードの作成
 
-1. 移動し、 **contoso.net** Azure ポータルで DNS ゾーンです。
-1. をクリックして**セットを記録 +**
-1. **レコード セットを追加**ブレードでは、次の値を入力し、クリックして**OK**:
+1. Azure Portal で **contoso.net** DNS ゾーンに移動します。
+1. **[+ レコード セット]** をクリックします。
+1. **[レコード セットの追加]** ブレードで次の値を入力してから、**[OK]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
-   |**名前**|パートナー|子の DNS ゾーンの名前|
-   |**種類**|NS|ネーム サーバー レコードを NS を使用します。|
-   |**TTL**|1|有効期限の時間です。|
-   |**TTL ユニット**|時間|時間を時間単位をライブに設定します。|
-   |**ネーム サーバー**|{partners.contoso.net ゾーンのネーム サーバー}|Partners.contoso.net ゾーンのネーム サーバーの 4 つすべてを入力します。 |
+   |**名前**|partners|子 DNS ゾーンの名前です。|
+   |**型**|NS|ネーム サーバー レコードを表す NS を使用します。|
+   |**TTL**|1|有効期限です。|
+   |**TTL の単位**|時間|有効期限の単位を時間に設定します。|
+   |**ネーム サーバー**|<partners.contoso.net ゾーンから取得したネーム サーバー>|partners.contoso.net ゾーンから取得した 4 つのネーム サーバーをすべて入力します。 |
 
-   ![Dns ネーム サーバー](./media/dns-domain-delegation/partnerzone.png)
+   ![Dns-nameserver](./media/dns-domain-delegation/partnerzone.png)
 
 
-### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>Azure DNS 内の他のツールとサブドメインの委任
+### <a name="delegating-sub-domains-in-azure-dns-with-other-tools"></a>その他のツールによる Azure DNS でのサブドメインの委任
 
-次の例では、PowerShell または CLI を持つ DNS が Azure でサブドメインを委任するのには、手順を提供します。
+次の例では、Azure DNS で PowerShell と CLI を使用してサブドメインを委任する手順について説明します。
 
 #### <a name="powershell"></a>PowerShell
 
-次の PowerShell の例では、このしくみを示しています。 クロスプラット フォームの Azure cli または Azure ポータルを使用して、同じ手順を実行できます。
+これを PowerShell で行う例を次に示します。 同じ手順を、Azure Portal、またはクロスプラットフォームの Azure CLI を使用して実行できます。
 
 ```powershell
 # Create the parent and child zones. These can be in same resource group or different resource groups as Azure DNS is a global service.
@@ -226,7 +226,7 @@ $parent_ns_recordset.Records = $child_ns_recordset.Records
 Set-AzureRmDnsRecordSet -RecordSet $parent_ns_recordset
 ```
 
-使用して`nslookup`すべてが正しく設定されている子ゾーンの SOA レコードを検索することを確認します。
+`nslookup` を使用して子ゾーンの SOA レコードを検索することで、すべてが正しく設定されていることを確認します。
 
 ```
 nslookup -type=SOA partners.contoso.com
@@ -256,7 +256,7 @@ az network dns zone create -g contosoRG -n contoso.net
 az network dns zone create -g contosoRG -n partners.contoso.net
 ```
 
-名前のサーバーを取得、`partners.contoso.net`ゾーン出力からします。
+`partners.contoso.net` ゾーンのネーム サーバーを出力から取得します。
 
 ```
 {
@@ -278,7 +278,7 @@ az network dns zone create -g contosoRG -n partners.contoso.net
 }
 ```
 
-各ネーム サーバー NS レコードとレコード セットを作成します。
+レコード セットと、各ネーム サーバーの NS レコードを作成します。
 
 ```azurecli
 #!/bin/bash
@@ -293,16 +293,16 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 az network dns record-set ns add-record --resource-group contosorg --zone-name contoso.net --record-set-name partners --nsdname ns4-09.azure-dns.info.
 ```
 
-## <a name="delete-all-resources"></a>すべてのリソースを削除します。
+## <a name="delete-all-resources"></a>すべてのリソースの削除
 
-この記事で作成されたすべてのリソースを削除するには、次の手順を実行します。
+この記事で作成したリソースをすべて削除するには、次の手順を実行します。
 
-1. Azure ポータルで**お気に入り** ウィンドウで、をクリックして**すべてのリソース**です。 クリックして、 **contosorg**リソース グループすべてのリソース ブレードにします。 既に選択したサブスクリプションでは、それにいくつかのリソースが含まれる場合は、入力**contosorg**で、**名でフィルター処理しています.** リソース グループを簡単にアクセスするボックスです。
-1. **Contosorg**ブレードで、をクリックして、**削除**ボタンをクリックします。
-1. ポータルでは、それを削除することを確認するリソース グループの名前を入力する必要があります。 型*contosorg*リソース グループ名の順にクリックして**削除**です。 リソース グループを削除すると、リソース グループ内のすべてのリソースを削除してので、常に削除する前に、リソース グループの内容を確認してください。 ポータルでは、リソース グループに含まれるすべてのリソースを削除し、リソース グループ自体を削除します。 このプロセスには数分をかかります。
+1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードで **contosorg** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contosorg**」と入力すると、 目的のリソース グループがすぐに見つかります。
+1. **contosorg** ブレードで **[削除]** ボタンをクリックします。
+1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 リソース グループの名前として「*contosorg*」と入力し、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
 
 ## <a name="next-steps"></a>次のステップ
 
-[DNS ゾーンを管理します。](dns-operations-dnszones.md)
+[DNS ゾーンの管理](dns-operations-dnszones.md)
 
-[DNS レコードを管理します。](dns-operations-recordsets.md)
+[DNS レコードの管理](dns-operations-recordsets.md)

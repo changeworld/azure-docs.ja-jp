@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/27/2017
 ms.author: bwren
 ms.openlocfilehash: 59f674c9c6404da7f5384539189f41a4ba1a939a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="collect-data-in-log-analytics-with-an-azure-automation-runbook"></a>Azure Automation の Runbook を使用して Log Analytics でデータを収集する
 エージェントの[データ ソース](../log-analytics/log-analytics-data-sources.md)や [Azure から収集されたデータ](../log-analytics/log-analytics-azure-storage.md)など、Log Analytics ではさまざまなソースから大量のデータを収集できます。  しかし、これらの標準的なソースではアクセスできないデータの収集が必要なシナリオがあります。  このような場合は、[HTTP データ コレクター API](../log-analytics/log-analytics-data-collector-api.md) を使って、REST API クライアントから Log Analytics にデータを書き込むことができます。  このデータ収集を実行する一般的な方法は、Azure Automation で Runbook を使うものです。   

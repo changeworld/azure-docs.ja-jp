@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
 ms.openlocfilehash: 98941c49b057380b3ef9164515bcc2a63ccb56ce
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="optimize-azure-content-delivery-for-your-scenario"></a>シナリオ別の Azure コンテンツ配信の最適化
 
@@ -95,7 +95,7 @@ Azure Content Delivery Network from Verizon は、一般的な Web 配信の最�
 メディア ストリーミング配信の最適化の詳細については、「[メディア ストリーミングの最適化](cdn-media-streaming-optimization.md)」をご覧ください。
 
 > [!NOTE]
-> エンドポイントが主にビデオ オンデマンドのコンテンツを処理する場合は、この種類の最適化を使用します。 この最適化と一般的なメディア ストリーミングの最適化の主な違いは、接続の再試行タイムアウトです。 ライブ ストリーミング シナリオの場合、非常に短い時間でタイムアウトします。
+> エンドポイントが主にビデオ オンデマンドのコンテンツを処理する場合は、この種類の最適化を使用します。 この最適化と一般的なメディア ストリーミングの最適化の主な違いは、接続の再試行タイムアウトです。ライブ ストリーミング シナリオの場合、非常に短い時間でタイムアウトします。
 
 ### <a name="large-file-download"></a>大容量ファイルのダウンロード
 

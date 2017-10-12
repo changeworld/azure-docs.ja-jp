@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7e912dcbfd1c745df2a0fc8717a075c0476e8d60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-the-azure-stack-operators-powershell-environment"></a>Azure Stack オペレーターの PowerShell 環境の構成
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack オペレーターの場合は、Azure Stack Development Kit の PowerShell 環境を構成できます。 構成後は、PowerShell を使用して、オファー、プラン、クォータの作成、アラートの管理などの Azure Stack リソースを管理できます。このトピックではクラウド オペレーター環境での使用についてのみ扱っています。ユーザー環境用に PowerShell を設定する場合は、[Azure Stack ユーザーの PowerShell 環境の構成](user/azure-stack-powershell-configure-user.md)のトピックを参照してください。 
 

@@ -12,12 +12,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: bwren
+ms.openlocfilehash: 511070e139c2d0fb2862e8cc61ed8ead242c71e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: a2487aac712542d86cb3a7f34c45e21c8d035496
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-telemetry-data-model"></a>Application Insights Telemetry のデータ モデル
 
@@ -57,4 +56,3 @@ Application Insights データ モデルはシンプルで基本的でありな�
 - [テレメトリの拡張とフィルター処理](app-insights-api-filtering-sampling.md)を行う方法を確認します。
 - [サンプリング](app-insights-sampling.md)を使用して、データ モデルに基づいてテレメトリの量を最小限に抑えます。
 - Application Insights でサポートされている[プラットフォーム](app-insights-platforms.md)を確認します。
-

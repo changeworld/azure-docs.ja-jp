@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 381950321ac3a5ea8a43b76f3fba868da4be4682
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage : 違いと考慮事項
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack Storage は、Microsoft Azure Stack 内のストレージ クラウド サービスのセットです。 Azure Stack Storage では、Azure と整合性のあるセマンティクスによって BLOB、テーブル、キュー、アカウント管理機能が提供されます。
 
@@ -61,5 +60,4 @@ Azure Stack Storage では以下のバージョンがサポートされます。
 
 * [Azure Stack Storage の開発ツールの概要](azure-stack-storage-dev.md)
 * [Azure Stack Storage の概要](azure-stack-storage-overview.md)
-
 

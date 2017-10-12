@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: jeedes
 ms.openlocfilehash: f4efa56d2c0374a977c1e46dad64b596cc9c3ea8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workpath"></a>チュートリアル: Azure Active Directory と Workpath の統合
 

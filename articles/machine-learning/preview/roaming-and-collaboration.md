@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/05/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 156dd1b7f928df22b3feb9e7a13396d3b53a91d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench のローミングとコラボレーション
 このドキュメントでは、Azure Machine Learning Workbench を使用した、複数のコンピューターにわたるプロジェクトのローミングや、他のチーム メンバーとのコラボレーションについて説明します。 
 
@@ -125,5 +123,4 @@ Azure Machine Learning の実験アカウント、ワークスペース、およ
 [All Resources]\(すべてのリソース\) ビューから、ユーザーを追加するリソースを特定します。 ページ内のアクセス制御 (IAM) リンクをクリックします。 Add users 
 
 <img src="./media/roaming-and-collaboration/iam.png" width="320px">
-
 

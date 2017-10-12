@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: b723ad800ccc0f3040eb480bb72960943b1fdb16
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-best-practices-for-changing-the-default-configuration"></a>Azure AD Connect Sync: 既定の構成を変更するためのベスト プラクティス
 このトピックの目的は、Azure AD Connect Sync に対する、サポートされている変更とサポートされていない変更について説明することです。
@@ -26,7 +26,7 @@ ms.lasthandoff: 08/03/2017
 Azure AD Connect で作成された構成は、オンプレミスの Active Directory を Azure AD と同期するほとんどの環境において "そのままで" 動作します。 ただし、場合によっては、特定のニーズや要件を満たすために構成にいくつか変更を適用する必要があります。
 
 ## <a name="changes-to-the-service-account"></a>サービス アカウントに対する変更
-Azure AD Connect Sync は、インストール ウィザードによって作成されたサービス アカウントで実行されます。 このサービス アカウントは、同期で使用されるデータベースの暗号化キーを保持します。 アカウントの作成には 127 文字の長いパスワードが使用され、そのパスワードは無期限に設定されています。
+Azure AD Connect Sync は、インストール ウィザードによって作成されたサービス アカウントで実行されます。 このサービス アカウントは、同期で使用されるデータベースの暗号化キーを保持します。アカウントの作成には 127 文字の長いパスワードが使用され、そのパスワードは無期限に設定されています。
 
 * サービス アカウントのパスワードの変更またはリセットは、 **サポートされていません** 。 サービス アカウントのパスワードを変更またはリセットすると、暗号化キーが破棄され、サービスはデータベースにアクセスすることも、開始することもできません。
 

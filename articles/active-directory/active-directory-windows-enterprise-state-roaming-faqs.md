@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: markvi
 ms.openlocfilehash: 9968d9fa1ebbc92b5647a23c75e75fb819f5d5ab
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="settings-and-data-roaming-faq"></a>設定とデータのローミングに関する FAQ
 このトピックでは、設定とアプリ データの同期に関する質問とその答えを IT 管理者向けに紹介しています。
@@ -38,7 +38,7 @@ ms.lasthandoff: 07/11/2017
 **アプリケーション データ**: ユニバーサル Windows アプリは、設定データを Roaming フォルダーに書き込むことができます。このフォルダーに書き込まれたデータはすべて自動的に同期されます。 この機能を利用するようにアプリを設計するかどうかは、アプリ開発者ごとの判断となります。 ローミングを使用するようにユニバーサル Windows アプリを開発する方法の詳細については、[アプリ データ ストレージ API](https://msdn.microsoft.com/library/windows/apps/mt299098.aspx) と[アプリ データのローミングに関する Windows 8 アプリ開発者ブログ](http://blogs.msdn.com/b/windowsappdev/archive/2012/07/17/roaming-your-app-data.aspx)を参照してください。
 
 ## <a name="what-account-is-used-for-settings-sync"></a>設定の同期に使用されるアカウントは
-Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。 Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
+Windows 8 と Windows 8.1 では常に、コンシューマーの Microsoft アカウントが設定の同期に使用されていました。 企業ユーザーは、その Active Directory ドメイン アカウントに Microsoft アカウントを接続することによって設定の同期を利用することができました。Windows 10 では、この Microsoft アカウントの接続機能が、プライマリ/セカンダリ アカウント フレームワークによって置き換えられています。
 
 プライマリ アカウントは、Windows へのサインインに使用するアカウントとして定義されています。 Microsoft アカウントや Azure Active Directory (Azure AD) アカウント、オンプレミスの Active Directory アカウント、ローカル アカウントが該当します。 Windows 10 のユーザーは、プライマリ アカウントに加え、1 つまたは複数のセカンダリ クラウド アカウントを各自のデバイスに追加することができます。 一般に、セカンダリ アカウントとは、Microsoft アカウントや Azure AD アカウントのほか、Gmail や Facebook といったアカウントのことを指します。 セカンダリ アカウントで、シングル サインオンや Windows ストアなど追加のサービスにアクセスすることはできますが、設定の同期機能にアクセスすることはできません。
 
@@ -47,7 +47,7 @@ Windows 10 における設定の同期機能に使用できるのは、デバイ
 デバイス上の異なるユーザー アカウントのデータがミックスされることはありません。 設定の同期には次の 2 つの規則があります。
 
 * Windows の設定は常にプライマリ アカウントでローミングされます。
-* アプリのデータは、そのアプリを取得する際に使われたアカウントでタグ付けされます。 同期されるのは、プライマリ アカウントでタグ付けされたアプリだけです。 アプリの所有権タグは、Windows ストアやモバイル デバイス管理 (MDM) 経由でアプリをサイド ローディングしたときに決定されます。
+* アプリのデータは、そのアプリを取得する際に使われたアカウントでタグ付けされます。 同期されるのは、プライマリ アカウントでタグ付けされたアプリだけです。アプリの所有権タグは、Windows ストアやモバイル デバイス管理 (MDM) 経由でアプリをサイド ローディングしたときに決定されます。
 
 アプリの所有者を特定できない場合は、プライマリ アカウントでローミングされます。 デバイスが Windows 8 や Windows 8.1 から Windows 10 にアップグレードされると、すべてのアプリが Microsoft アカウントで取得されたようにタグ付けされます。 これは、ほとんどのユーザーがアプリを Windows ストアを通じて取得し、Windows 10 以前の Azure AD アカウントでは Windows ストアのサポートがなかったために起こります。 オフライン ライセンスでインストールされたアプリは、そのデバイス上のプライマリ アカウントでタグ付けされます。
 

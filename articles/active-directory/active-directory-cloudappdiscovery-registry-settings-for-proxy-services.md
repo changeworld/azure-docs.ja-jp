@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: b8584809b76d6be12a6f489f0bb819081d1803d2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-app-discovery-registry-settings-for-proxy-services"></a>Cloud App Discovery のプロキシ サービス用レジストリ設定
 このトピックの目的は、Cloud App Discovery エージェントを実行しているコンピューター上で、必要なポートを設定するために実行する手順について説明することです。 既定では、Cloud App Discovery エージェントはポート 80 または 443 のみを使用するように構成されています。 Cloud App Discovery を、カスタム ポート (80 でも 443 でもない) を使用しているプロキシ サーバーを含む環境にインストールしようと計画している場合は、エージェントもこのポートを使用するように構成する必要があります。 構成は、レジストリ キーに基づきます。
@@ -54,5 +53,4 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 
 * [自分の組織内で使用される承認されていないクラウド アプリを検出する方法](active-directory-cloudappdiscovery-whatis.md) 
-
 

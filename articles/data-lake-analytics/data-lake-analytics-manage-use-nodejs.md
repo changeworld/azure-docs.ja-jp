@@ -1,6 +1,6 @@
 ---
-title: "Node.js 用の Azure SDK を使用して Azure Data Lake Analytics の管理 |Microsoft ドキュメント"
-description: "Data Lake Analytics アカウント、データ ソース、ジョブ、および Node.js の Azure SDK を使用してユーザーを管理する方法をについてください。"
+title: "Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する | Microsoft Docs"
+description: "Azure SDK for Node.js を使用して Data Lake Analytics アカウント、データ ソース、ジョブ、およびユーザーを管理する方法について説明します"
 services: data-lake-analytics
 documentationcenter: 
 author: edmacauley
@@ -15,34 +15,34 @@ ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: edmaca
 ms.openlocfilehash: 769cf9b09eecd204c8b5b944065dad57a6d73231
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Node.js 用の Azure SDK を使用して Azure Data Lake Analytics の管理します。
+# <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Azure SDK for Node.js を使用して Azure Data Lake Analytics を管理する
 [!INCLUDE [manage-selector](../../includes/data-lake-analytics-selector-manage.md)]
 
-Azure Data Lake Analytics アカウント、ジョブのカタログを管理するため、Azure SDK for Node.js を使用できます。 他のツールを使用して、管理のトピックを表示するには、上記 タブの選択 をクリックします。
+Azure SDK for Node.js を使用して、Azure Data Lake Analytics アカウント、ジョブ、およびカタログを管理できます。 他のツールを使用する管理のトピックを表示するには、上のタブ セレクターをクリックします。
 
-現在、これをサポートします。
+現時点では、以下がサポートされています。
 
-* **Node.js バージョン: 0.10.0 またはそれ以降**
-* **アカウントの REST API のバージョン: 2015-10-01-プレビュー**
-* **カタログの REST API のバージョン: 2015-10-01-プレビュー**
-* **ジョブの REST API のバージョン: 2016-03-20-プレビュー**
+* **Node.js のバージョン: 0.10.0 以降**
+* **アカウント用の REST API のバージョン: 2015-10-01-preview**
+* **カタログ用の REST API のバージョン: 2015-10-01-preview**
+* **ジョブ用の REST API のバージョン: 2016-03-20-preview**
 
-## <a name="features"></a>機能
-* アカウント管理: 作成、取得、一覧表示、更新、および削除します。
-* ジョブの管理: を提出し、取得、ボックスの一覧をキャンセルします。
-* カタログの管理: を取得し、一覧表示します。
+## <a name="features"></a>Features (機能)
+* アカウント管理: 作成、取得、一覧表示、更新、および削除。
+* ジョブ管理: 送信、取得、一覧表示、および取り消し。
+* カタログ管理: 取得および一覧表示。
 
-## <a name="how-to-install"></a>インストールする方法
+## <a name="how-to-install"></a>インストール方法
 ```bash
 npm install azure-arm-datalake-analytics
 ```
 
-## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証します。
+## <a name="authenticate-using-azure-active-directory"></a>Azure Active Directory を使用して認証する
  ```javascript
  var msrestAzure = require('ms-rest-azure');
  //user authentication
@@ -51,7 +51,7 @@ npm install azure-arm-datalake-analytics
  var credentials = new msRestAzure.ApplicationTokenCredentials('your-client-id', 'your-domain', 'your-secret');
  ```
 
-## <a name="create-the-data-lake-analytics-client"></a>Data Lake Analytics クライアントを作成します。
+## <a name="create-the-data-lake-analytics-client"></a>Data Lake Analytics クライアントを作成する
 ```javascript
 var adlaManagement = require("azure-arm-datalake-analytics");
 var acccountClient = new adlaManagement.DataLakeAnalyticsAccountClient(credentials, 'your-subscription-id');
@@ -59,7 +59,7 @@ var jobClient = new adlaManagement.DataLakeAnalyticsJobClient(credentials, 'azur
 var catalogClient = new adlaManagement.DataLakeAnalyticsCatalogClient(credentials, 'azuredatalakeanalytics.net');
 ```
 
-## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成します。
+## <a name="create-a-data-lake-analytics-account"></a>Data Lake Analytics アカウントを作成する
 ```javascript
 var util = require('util');
 var resourceGroupName = 'testrg';
@@ -108,7 +108,7 @@ client.account.create(resourceGroupName, accountName, accountToCreate, function 
 });
 ```
 
-## <a name="get-a-list-of-jobs"></a>ジョブの一覧を取得します。
+## <a name="get-a-list-of-jobs"></a>ジョブの一覧を取得する
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';
@@ -121,7 +121,7 @@ jobClient.job.list(accountName, function (err, result, request, response) {
 });
 ```
 
-## <a name="get-a-list-of-databases-in-the-data-lake-analytics-catalog"></a>Data Lake Analytics Catalog でデータベースの一覧を取得します。
+## <a name="get-a-list-of-databases-in-the-data-lake-analytics-catalog"></a>Data Lake Analytics カタログ内のデータベースの一覧を取得する
 ```javascript
 var util = require('util');
 var accountName = 'testadlaacct';

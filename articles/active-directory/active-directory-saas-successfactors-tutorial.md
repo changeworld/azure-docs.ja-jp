@@ -15,10 +15,10 @@ ms.date: 07/21/2017
 ms.author: jeedes
 ms.reviewer: jeedes
 ms.openlocfilehash: e85a38ccbe25263ac42bc76351416b023fb77c87
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-successfactors"></a>チュートリアル: Azure Active Directory と SuccessFactors の統合
 このチュートリアルの目的は、SuccessFactors と Azure Active Directory (Azure AD) を統合する方法を説明することです。

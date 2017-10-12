@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: priyamo
 ms.custom: aaddev
 ms.openlocfilehash: 45e4705f53d80b5fe852c484b5e64d18a8e24f09
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # シングル サインアウトの SAML プロトコル
 Azure Active Directory (Azure AD) は、SAML 2.0 の Web ブラウザー シングル サインアウト プロファイルをサポートします。 シングル サインアウトが正常に動作するためには、アプリケーションの **LogoutURL** が、アプリケーションの登録時に Azure AD に明示的に登録されている必要があります。 Azure AD は LogoutURL を使って、サインアウト後のユーザーをリダイレクトします。
@@ -72,4 +72,4 @@ Azure AD は、この値を `https://login.microsoftonline.com/<TenantIdGUID>/` 
 `Issuer` 要素の値を評価するには、アプリケーション登録時に指定された **App ID URI** の値を使用します。
 
 ### 状態
-Azure AD は、`Status` 要素の `StatusCode` 要素を使用して、サインアウトの成功または失敗を示します。 サインアウトの試行が失敗した場合、 `StatusCode` 要素にはカスタム エラー メッセージを含めることもできます。
+Azure AD は、`Status` 要素の `StatusCode` 要素を使用して、サインアウトの成功または失敗を示します。サインアウトの試行が失敗した場合、 `StatusCode` 要素にはカスタム エラー メッセージを含めることもできます。

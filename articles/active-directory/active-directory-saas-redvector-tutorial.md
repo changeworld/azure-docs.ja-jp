@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/28/2017
 ms.author: jeedes
 ms.openlocfilehash: d7aedd360ba1d4c11da210f8fae7be6035007c22
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-redvector"></a>チュートリアル: Azure Active Directory と RedVector の統合
 

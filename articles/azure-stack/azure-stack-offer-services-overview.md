@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/25/2017
 ms.author: erikje
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7a54771d99f2719fcc345496b152a5d3acc02121
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-offering-services-in-azure-stack"></a>Azure Stack でのサービスの提供の概要
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 [Microsoft Azure Stack](azure-stack-poc.md) は、データセンターからのサービスの提供を可能にするハイブリッド クラウド プラットフォームです。 サービス プロバイダーの場合は、テナントにサービスを提供できます。 企業や政府機関では、従業員にオンプレミスのサービスを提供できます。 提供できるサービスとして次のようなものが挙げられます。
 
@@ -45,5 +44,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="next-steps"></a>次のステップ
 [オファー、プラン、クォータ、およびサブスクリプションの詳細](azure-stack-plan-offer-quota-overview.md)
-
 

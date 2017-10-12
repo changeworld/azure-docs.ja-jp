@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3ca1710c969b9bc5a1f56dc53f52c706e1ed07cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="combine-columns-by-example-transformation"></a>[Combine Columns by Example] (例による列の結合) 変換
 ユーザーはこの変換を使用して、複数の列から値を結合して新しい列を追加することができます。 ユーザーは、区切り記号を指定したり、結合された値の例を提示したりして、この変換を実行できます。 ユーザーが結合の例を提供すると、変換は、**[Derive Column by Example] (例による列の派生)** 変換で使用されているものと同じ **[By Example] (例による)** エンジンで処理されます。
 
@@ -74,5 +72,4 @@ ms.lasthandoff: 09/25/2017
 |16|Jan|2017|22|34|56|16-Jan-2016 15:01:56 PDT|
 |23|Mar|2017|01|55|25|23-Mar-2016 15:01:25 PDT|
 |16|Apr|2017|11|34|36|16-Apr-2016 15:01:36 PDT|
-
 

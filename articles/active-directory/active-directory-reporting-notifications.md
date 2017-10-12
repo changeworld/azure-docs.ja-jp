@@ -17,10 +17,10 @@ ms.author: dhanyahk;markvi
 ms.custom: oldportal
 ms.reviewer: dhanyahk
 ms.openlocfilehash: f4632bd2af802b10c8c64972e8c605d7ad7c0eaf
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-reporting-notifications"></a>Azure Active Directory のレポート通知
 ## <a name="what-reports-generate-email-notifications"></a>電子メール通知を生成するレポート

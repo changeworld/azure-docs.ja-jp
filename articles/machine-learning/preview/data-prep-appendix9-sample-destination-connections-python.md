@@ -12,15 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e85ab5d52c2265536f72fa7301c0a25fa3a112cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="sample-of-destination-connections-python"></a>変換先接続のサンプル (Python) 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事を参照してください
 
@@ -44,4 +41,3 @@ df.to_excel('c:\dev\data\Output\Customer.xlsx', sheet_name='Sheet1')
 ```python
 df.to_excel('c:/dev/data/Output/Customer.xlsx', sheet_name='Sheet1')
 ```
-

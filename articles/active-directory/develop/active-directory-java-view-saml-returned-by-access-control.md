@@ -16,10 +16,10 @@ ms.date: 04/25/2017
 ms.author: robmcm
 ms.custom: aaddev
 ms.openlocfilehash: 1552e624a4703138ab82f7133ceaec3dbd04e1db
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-view-saml-returned-by-the-azure-access-control-service"></a>How to view SAML returned by the Azure Access Control Service (Azure の Access Control Service によって返される SAML を表示する方法)
 このガイドでは、Azure の Access Control Service (ACS) によって基盤として使用され、アプリケーションに返される SAML (Security Assertion Markup Language) を表示する方法について説明します。 このガイドでは、「[Eclipse を使用して Azure Access Control Service で Web ユーザーを認証する方法](active-directory-java-authenticate-users-access-control-eclipse.md)」で作成したコードを基にして、SAML 情報を表示するコードを完成させます。 完成したアプリケーションは次のようになります。

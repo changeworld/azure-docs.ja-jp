@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/04/2016
 ms.author: cfowler
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 75f2dcb80514105ed663ba1fe5f7adccc05af1fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Azure App Service のローカル キャッシュの概要
 Azure Web アプリのコンテンツは Azure Storage に保存され、コンテンツ共有として永続的な方法で表示されます。 これは多様なアプリが機能するための設計であり、次の特徴があります。  
@@ -115,4 +114,3 @@ Web アプリがローカル キャッシュを使用している場合、最新
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>高速なローカル ドライブへのコピー時にローカル キャッシュで除外されるディレクトリはありますか?
 ストレージ コンテンツをコピーする手順の一環として、リポジトリという名前が付けられたフォルダーはすべて除外されます。 これは、サイトのコンテンツに Web アプリの日常業務で必要にならないソース管理リポジトリを含める可能性のあるシナリオで役立ちます。 
-

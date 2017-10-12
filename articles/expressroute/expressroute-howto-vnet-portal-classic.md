@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2016
 ms.author: cherylmc
 ms.openlocfilehash: f62254b2a7df50aa55a2a49009702848a9aecebd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-for-expressroute-in-the-classic-portal"></a>クラシック ポータルでの ExpressRoute 用の仮想ネットワークの作成
 この記事の手順では、クラシック デプロイメント モデルとクラシック ポータルを使用して、ExpressRoute で使用する仮想ネットワークと仮想ネットワーク ゲートウェイを構成する手順について説明します。

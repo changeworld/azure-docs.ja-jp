@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: anandy; billmath
 ms.openlocfilehash: 436bf5905d2b203dc4cceea97f4fb90593df7111
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="federate-multiple-instances-of-azure-ad-with-single-instance-of-ad-fs"></a>複数の Azure AD インスタンスと単一の AD FS インスタンスとのフェデレーション
 
@@ -39,7 +39,7 @@ Azure Active Directory contoso.onmicrosoft.com 内のドメイン contoso.com �
 
 ##<a name="step-1-establish-a-two-way-trust"></a>手順 1: 双方向の信頼を確立する
  
-contoso.com の AD FS が fabrikam.com 内のユーザーを認証するためには、contoso.com と fabrikam.com との間に双方向の信頼が必要です。 [こちらの記事](https://technet.microsoft.com/library/cc816590.aspx)のガイドラインに従って双方向の信頼を作成してください。
+contoso.com の AD FS が fabrikam.com 内のユーザーを認証するためには、contoso.com と fabrikam.com との間に双方向の信頼が必要です。[こちらの記事](https://technet.microsoft.com/library/cc816590.aspx)のガイドラインに従って双方向の信頼を作成してください。
  
 ##<a name="step-2-modify-contosocom-federation-settings"></a>手順 2: contoso.com のフェデレーション設定を編集する 
  

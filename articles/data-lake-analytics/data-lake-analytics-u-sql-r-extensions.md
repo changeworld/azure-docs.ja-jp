@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 06/20/2017
 ms.author: saveenr
 ms.openlocfilehash: d479af515566f497d9611e75426f6acb8f8276d9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-get-started-with-extending-u-sql-with-r"></a>チュートリアル: R を使用して U-SQL の拡張を始める
 

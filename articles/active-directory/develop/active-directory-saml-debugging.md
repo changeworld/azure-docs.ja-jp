@@ -16,10 +16,10 @@ ms.author: asmalser
 ms.custom: aaddev
 ms.reviewer: dastrock
 ms.openlocfilehash: 31447d597296bac57481dc2acb4a95ee3a104161
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Azure Active Directory のアプリケーションに対する SAML に基づいたシングル サインオンをデバッグする方法
 SAML ベースのアプリケーション統合をデバッグするときは、多くの場合、 [Fiddler](http://www.telerik.com/fiddler) などのツールを使用して、SAML 要求、SAML 応答、およびアプリケーションに対して発行された実際の SAML トークンを確認すると便利です。 SAML トークンを確認することで、必要な属性、SAML サブジェクト内のユーザー名、および発行者 URI のすべてが予想どおりに送信されたことを確認できます。

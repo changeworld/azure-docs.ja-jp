@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: kraigb
 ms.openlocfilehash: 0979722b9ec715e91825c7aba74657451df6e83f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-delivery-for-cloud-services-in-azure"></a>Azure での Cloud Services の継続的な配信
 この記事のプロセスでは、Azure クラウド アプリケーションの継続的な配信を設定する方法について説明します。 このプロセスを使用すると、自動的にパッケージを作成し、コードをチェックインするたびにそのパッケージを Azure にデプロイできます。 この記事で説明するパッケージのビルド プロセスは Visual Studio の**パッケージ** コマンドに相当し、発行手順は Visual Studio の**発行**コマンドに相当します。

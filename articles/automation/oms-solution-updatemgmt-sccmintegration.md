@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: eslesar
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c3ae8da65e03fe9e11b5657a6a40d02de0567da6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integrate-system-center-configuration-manager-with-oms-update-management-preview"></a>System Center Configuration Manager と OMS Update Management (プレビュー) の統合
 
 PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。  
@@ -56,5 +54,4 @@ OMS ソリューションによる更新プログラムのデプロイが完了�
 Configuration Manager クライアントである Windows Server VM の更新プログラムを管理するには、このソリューションによって管理されるすべてのクライアントのソフトウェア更新管理機能を無効にするようにクライアント ポリシーを構成する必要があります。  既定のクライアント設定では、階層内のすべてのデバイスが対象となります。  このポリシー設定とその構成方法の詳細については、「[System Center Configuration Manager でクライアント設定を構成する方法](https://docs.microsoft.com/sccm/core/clients/deploy/configure-client-settings)」を確認してください。  
 
 この構成変更を実行した後、「[更新プログラムの展開の作成](../operations-management-suite/oms-solution-update-management.md#creating-an-update-deployment)」で説明されている手順に従って新しいデプロイを作成し、OMS コンピューター グループとして表される適切な Configuration Manager コレクションをドロップダウン リストから選択します。 
-
 

@@ -15,10 +15,10 @@ ms.workload: search
 ms.date: 05/01/2017
 ms.author: brjohnst
 ms.openlocfilehash: e6ad5c964bfa8421be2706cb4015980e01a271b7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-search-service-rest-api-version-2015-02-28-preview"></a>Azure Search サービス REST API: バージョン 2015-02-28-Preview
 この記事は、 `api-version=2015-02-28-Preview`のリファレンス ドキュメントです。 このプレビューは、以下の試験的機能を提供することによって、現在一般公開されているバージョン [api-version=2015-02-28](https://msdn.microsoft.com/library/dn798935.aspx)を拡張するものです。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/08/2016
 ms.author: LADocs; mandia
 ms.openlocfilehash: bc3430624844cdeb92958433fba295f67a8ae0ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-enterprise-integration-with-flat-files"></a>フラット ファイルでのエンタープライズ統合の概要
 

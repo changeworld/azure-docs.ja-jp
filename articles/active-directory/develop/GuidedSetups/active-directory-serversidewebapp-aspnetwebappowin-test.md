@@ -16,10 +16,10 @@ ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
 ms.openlocfilehash: 00cb963e85111274c36c3a84489894811ad2dabd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -77,7 +77,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 > 既定では、個人アカウント (outlook.com、live.com など) だけでなく、Azure Active Directory と統合したすべての会社や組織の職場/学校アカウントを使用して、アプリケーションにサインインできます。 
 
-> アプリケーションが Azure Active Directory と統合した 1 つの組織からのみサインインを受け入れるように設定するには、*web.config* 内の `Tenant` パラメーターを、`Common` から該当する組織のテナント名 (例: *contoso.onmicrosoft.com*) に置き換えます。 その後、*OWIN Startup クラス*内の `ValidateIssuer` 引数を `true` に変更します。
+> アプリケーションが Azure Active Directory と統合した 1 つの組織からのみサインインを受け入れるように設定するには、*web.config* 内の `Tenant` パラメーターを、`Common` から該当する組織のテナント名 (例: *contoso.onmicrosoft.com*) に置き換えます。その後、*OWIN Startup クラス*内の `ValidateIssuer` 引数を `true` に変更します。
 
 > 特定の組織の一覧に記載されたユーザーのみを許可するには、`ValidateIssuer` を true に設定し、`ValidIssuers` パラメーターを使用して組織の一覧を指定します。
 

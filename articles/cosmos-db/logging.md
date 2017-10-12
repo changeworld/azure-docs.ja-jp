@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 34c46fb282ad154225f5ee8ef544bc8da1c50016
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
@@ -57,7 +56,7 @@ ms.lasthandoff: 09/25/2017
     * **[Log Analytics への送信]**。 このオプションを使用するには、既存のワークスペースのいずれかを使用するか、Portal のプロンプトに従って新しい Operations Management Suite ワークスペースを作成します。
     * **DataPlaneRequests をログに記録します**。 ストレージ アカウントにアーカイブしている場合、**[DataPlaneRequests]** を選択し、ログの保持日数を選択して、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。 
 
-3. **[保存]**をクリックします。
+3. [ **Save**] をクリックします。
 
     いつでもこのページに戻って、アカウントの診断ログ設定を変更することができます。
 
@@ -349,4 +348,3 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
    - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
 - [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
-

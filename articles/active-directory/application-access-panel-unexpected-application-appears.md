@@ -15,10 +15,10 @@ ms.date: 07/11/2017
 ms.author: asteen
 ms.reviewr: japere
 ms.openlocfilehash: f8ccf2cf66b49940bc7f2b9f4764020efc04838e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-applications-appear-on-the-access-panel"></a>アクセス パネルにアプリケーションが表示される方法
 

@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 12/06/2016
 ms.author: saeedakhter-msft
 ms.openlocfilehash: 44d5d31d49c375c802a67511d1f962df20656559
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-focus-on-your-app-let-us-worry-about-sign-up-and-sign-in"></a>Azure AD B2C: アプリに集中し、サインアップとサインインについてはお任せください
 

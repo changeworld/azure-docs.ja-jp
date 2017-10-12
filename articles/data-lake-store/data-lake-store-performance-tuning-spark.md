@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 2109744fb7ffdfafb7a86bbea355e119718af099
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-spark-on-hdinsight-and-azure-data-lake-store"></a>HDInsight の Spark と Azure Data Lake Store のパフォーマンス チューニング ガイダンス
 
@@ -65,7 +65,7 @@ I/O 集中型のジョブの同時実行性を向上させる一般的な方法�
     executor-cores = 4
 Executor-cores の数を増やすと多くの並列処理を行うことができます。Executor-cores を変えて試してみてください。  さらに複雑な操作を含むジョブの場合は、Executor あたりのコアの数を減らす必要があります。  Executor-cores を 4 より大きくすると、ガベージ コレクションが非効率的になりパフォーマンスが低下する可能性があります。
 
-**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。  YARN メモリは、このウィンドウに表示されます。  
+**手順 4: クラスターの YARN メモリの量を決定する** – この情報は、Ambari で使用できます。  YARN に移動し、[Configs] (構成) タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 注: ウィンドウには、既定の YARN コンテナーのサイズも表示されます。  YARN コンテナーのサイズは、Executor パラメーターごとのメモリと同じです。
 
     Total YARN memory = nodes * YARN memory per node

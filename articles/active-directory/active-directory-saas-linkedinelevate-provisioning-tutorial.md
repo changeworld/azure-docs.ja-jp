@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2017
 ms.author: asmalser-msft
 ms.openlocfilehash: 526666301aad1e5284c621024649d9cd52c92d18
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configuring-linkedin-elevate-for-automatic-user-provisioning"></a>チュートリアル: LinkedIn Elevate を構成し、自動ユーザー プロビジョニングに対応させる
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/25/2016
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7028cdacf7d597c238bf29bd26bbd44705d66224
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="devtest-labs-concepts"></a>DevTest ラボの概念
 ## <a name="overview"></a>概要
@@ -91,4 +90,3 @@ DevTest Labs にカスタム ロールを作成する方法については、記
 
 ## <a name="next-steps"></a>次のステップ
 [DevTest Labs でラボを作成します。](devtest-lab-create-lab.md)
-

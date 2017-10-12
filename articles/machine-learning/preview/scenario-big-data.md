@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b76253fad43be231591023c4d4466bf6e3f329a0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="server-workload-forecasting-on-terabytes-data"></a>数テラバイトのデータを活用したサーバー ワークロードの予測
 
 この例では、データ サイエンティストが Azure ML Workbench を使用して、ビッグ データの使用が必要なソリューションを開発する方法を示します。 ここでは、Azure ML Workbench を使用するユーザーが、大規模なデータセットのサンプルから始めて、データ準備、特徴エンジニアリング、および機械学習を繰り返し、最終的に大規模なデータセット全体にプロセスを拡張するという適切な手順を実行できるように説明します。 
@@ -91,7 +89,7 @@ DSVM の IP アドレス | xxx|
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに、「Workload Forecasting on Terabytes Data」と入力し、テンプレートを選択します
-5.  **[作成]** をクリックします
+5.  **[作成]**
 
 こちらの[手順](./tutorial-classifying-iris-part-1.md)に従って事前に作成した Git リポジトリを使用して、Azure ML Workbench プロジェクトを作成できます。  
 git status を実行して、バージョン追跡のファイルの状態を検査します。
@@ -340,7 +338,7 @@ Azure ML Workbench の右側のサイドバーにある [実行] に移動する
 
         az ml env setup -c -n [unique] --location eastus2 --cluster -z 5 --yes
 
-   ここでは、`az ml env setup` コマンドで `--cluster` を使用して、環境として Azure Container Service を選択します。 また、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理を自動化するために [Kubernetes](https://kubernetes.io/) を使用するので、[Azure Container Service](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes) 上で機械学習モデルを運用化します。このコマンドの実行には約 20 分かかります。 次のコマンドを使用します。 
+   ここでは、`az ml env setup` コマンドで `--cluster` を使用して、環境として Azure Container Service を選択します。 また、コンテナー化されたアプリケーションのデプロイ、スケーリング、および管理を自動化するために [Kubernetes](https://kubernetes.io/) を使用するので、[Azure Container Service](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-intro-kubernetes) 上で機械学習モデルを運用化します。このコマンドの実行には約 20 分かかります。 用途 
 
         az ml env show -g [unique]rg -n [unique]
 
@@ -433,4 +431,3 @@ Azure ML Workbench の右側のサイドバーにある [実行] に移動する
 
 このコードを拡張して、クロス検証とハイパーパラメーター調整を探索することができます。 クロス検証とハイパーパラメーター調整の詳細については、https://github.com/Azure/MachineLearningSamples-DistributedHyperParameterTuning を参照してください。  
 時系列の予測の詳細については、https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting を参照してください。
-

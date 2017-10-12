@@ -15,14 +15,12 @@ ms.date: 09/05/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: df2ffb8958a7d4b881f0a6904fb9ca13c3614040
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="access-your-on-premises-applications-through-microsoft-teams"></a>Microsoft Teams からのオンプレミス アプリケーションへのアクセス
 
 Azure Active Directory アプリケーション プロキシを使用すると、どこからでもシングル サインオンでオンプレミス アプリケーションにアクセスできます。 また、Microsoft Teams を使用すると共同作業が効率化します。 この 2 つを統合することで、あらゆる状況下でチームの生産性を向上させることができます。 
@@ -58,4 +56,3 @@ Azure Active Directory アプリケーション プロキシを使用すると�
 
 - アプリケーション プロキシで[オンプレミスの SharePoint サイトを公開する](application-proxy-enable-remote-access-sharepoint.md)方法を学びます。
 - 外部 URL に[カスタム ドメイン](active-directory-application-proxy-custom-domains.md)を使用するようアプリを構成します。 
-

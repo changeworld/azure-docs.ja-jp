@@ -15,12 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 9c953e697d5d1c6e53df8eaf72c4e4fbd83ca286
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-virtual-network-service-endpoints"></a>仮想ネットワーク サービス エンドポイントの構成
 
@@ -63,8 +62,8 @@ ms.lasthandoff: 09/25/2017
 
 1. [Azure Portal](https://portal.azure.com/) を開きます。
 Azure アカウントを使用して Azure にログインします。 Azure アカウントを持っていない場合は、無料試用版でサインアップできます。 アカウントには、仮想ネットワークとサービス エンドポイントを作成するための[アクセス許可](#provisioning)が必要です。
-2. [新規] > [ネットワーク] > [仮想ネットワーク] > [+追加] をクリックします。
-3. [仮想ネットワークの作成] で、次の値を入力して [作成] をクリックします。
+2. 新規 > ネットワーク > 仮想ネットワーク > +追加をクリックします。
+3. 仮想ネットワークの作成 で、次の値を入力して 作成をクリックします。
 
 設定 | 値
 ------- | -----
@@ -384,7 +383,7 @@ Azure サービス リソースがサブネットに結び付けられ、サー�
 
 サービス エンドポイントは、仮想ネットワークへの書き込みアクセス権を持つユーザーが仮想ネットワーク上で個別に構成できます。
 
-VNet に Azure サービス リソースを結び付けるには、ユーザーが、追加されるサブネットの "Microsoft.Network/JoinServicetoaSubnet" へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
+Azure サービス リソースへのアクセスを VNet に限定するには、ユーザーが、追加されるサブネットの "Microsoft.Network/JoinServicetoaSubnet" へのアクセス許可を持っている必要があります。 このアクセス許可は、既定では組み込みのサービス管理者のロールに含まれ、カスタム ロールを作成することで変更できます。
 
 [組み込みロール](https://docs.microsoft.com/azure/active-directory/role-based-access-built-in-roles)と、特定のアクセス許可を[カスタム ロール](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-custom-roles)に割り当てる方法の詳細をご覧ください。
 
@@ -397,4 +396,3 @@ VNet にサービス リソースを結び付ける詳細な手順について�
 [Azure Storage アカウントを仮想ネットワークに結び付ける](https://docs.microsoft.com/azure/storage/common/storage-network-security)
 
 [Azure SQL を仮想ネットワークに結び付ける](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview)
-

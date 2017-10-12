@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/22/2017
 ms.author: danlep
 ms.openlocfilehash: f6dc9657e64160be1e68a7356863b53131e9b3c3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-a-hybrid-high-performance-computing-hpc-cluster-with-microsoft-hpc-pack-and-on-demand-azure-compute-nodes"></a>Microsoft HPC Pack とオンデマンド Azure のコンピューティング ノードを使用して、ハイブリッド ハイ パフォーマンス コンピューティング (HPC) クラスターをセットアップする
 Microsoft HPC Pack 2012 R2 と Azure を使用して、小規模なハイブリッド ハイ パフォーマンス コンピューティング (HPC) クラスターをセットアップします。 この資料で示すクラスターは、Azure クラウド サービスにオンデマンドでデプロイするオンプレミスの HPC Pack ヘッド ノードと複数の計算ノードから構成されます。 コンピューティング ジョブを、ハイブリッド クラスター上で実行することができます。
