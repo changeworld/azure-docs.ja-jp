@@ -291,4 +291,3 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 
 [Cloud Services のサイズ](cloud-services/cloud-services-sizes-specs.md)
 
-
