@@ -16,10 +16,10 @@ ms.date: 03/15/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 118521a127b2e4b765efabdbdde71605440d81c7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple Virtual Array をデプロイする - VMware でプロビジョニングする
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -178,7 +178,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 34. [Virtual Machine Properties] ページに戻ります。 新しいハード ディスクが仮想マシンに追加されます。 **[Finish]**をクリックします。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. 仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。 仮想マシンの設定を確認します。
+35. 仮想マシンを選択した状態で、右側のウィンドウで **[Summary]** タブに移動します。仮想マシンの設定を確認します。
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,7 +191,7 @@ VMware ESXi 5.5 以降を実行しているホスト システムで仮想デバ
 1. 仮想デバイスを起動します。 vSphere Configuration Manager の左側のウィンドウでデバイスを選択して右クリックし、コンテキスト メニューを表示します。 **[Power]**、**[Power on]** の順に選択します。 これで、仮想マシンの電源がオンになります。 vSphere client のページ下部の **[Recent Tasks]** ウィンドウで状態を確認できます。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. 設定タスクの完了には数分かかります。 デバイスが起動したら **[Console]** タブに移動します。 Ctrl + Alt + Del キーを押して、デバイスにログインします。 [Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
+2. 設定タスクの完了には数分かかります。 デバイスが起動したら **[Console]** タブに移動します。Ctrl + Alt + Del キーを押して、デバイスにログインします。 [Console] ウィンドウにカーソルをポイントして Ctrl + Alt + Insert キーを押すこともできます。 既定のユーザーは *StorSimpleAdmin* で、既定のパスワードは *Password1* です。
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. セキュリティ上の理由から、デバイス管理者のパスワードは初回ログオン後に有効期限が切れます。 このため、パスワードを変更するよう求められます。

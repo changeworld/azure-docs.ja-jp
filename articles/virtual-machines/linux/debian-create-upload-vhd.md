@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: szark
 ms.openlocfilehash: 63970d162c12984d6476bf0b9fc4ab70160eccdb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-a-debian-vhd-for-azure"></a>Azure 用の Debian VHD の準備
 ## <a name="prerequisites"></a>前提条件

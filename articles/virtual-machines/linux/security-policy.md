@@ -13,16 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.date: 08/14/2017
 ms.author: davidmu
+ms.openlocfilehash: 69d7ed2d538404eb629fe5c31ba83a70d28d9f17
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 6f94c8cdebc52e9a8193508e8fa00a05167445f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Azure で仮想マシンをセキュリティで保護し、ポリシーを使用する
 
 [!INCLUDE [virtual-machines-security-policy](../../../includes/virtual-machines-security-policy.md)]
-
 

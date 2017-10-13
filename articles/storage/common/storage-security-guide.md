@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
+ms.openlocfilehash: 592a8716dd15b25b14fed145c11e5f5714cdd41c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4a0b047ce5c6706b51e96e8cc160c610625869e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-security-guide"></a>Azure Storage セキュリティ ガイド
 ## <a name="overview"></a>概要
@@ -518,7 +517,7 @@ CORS と CORS を有効にする方法については、次のリソースを参
 
    **リソース**
 
-* [Why We’re Not Recommending “FIPS Mode” Anymore ("FIPS モード" を推奨しなくなった理由)](http://blogs.technet.com/b/secguide/archive/2014/04/07/why-we-re-not-recommending-fips-mode-anymore.aspx)
+* [Why We’re Not Recommending “FIPS Mode” Anymore ("FIPS モード" を推奨しなくなった理由)](https://blogs.technet.microsoft.com/secguide/2014/04/07/why-were-not-recommending-fips-mode-anymore/)
 
   このブログの記事では、FIPS の概要と、既定で FIPS モードを有効にしていない理由について説明しています。
 * [FIPS 140 Validation (FIPS 140 の検証)](https://technet.microsoft.com/library/cc750357.aspx)
@@ -527,4 +526,3 @@ CORS と CORS を有効にする方法については、次のリソースを参
 * [“System cryptography: Use FIPS compliant algorithms for encryption, hashing, and signing” security settings effects in Windows XP and in later versions of Windows (Windows XP 以降のバージョンの Windows での [システム暗号化: 暗号化、ハッシュ、署名に FIPS 準拠アルゴリズムを使う] セキュリティ設定の効果)](https://support.microsoft.com/kb/811833)
 
   この記事では、旧バージョンの Windows コンピューターで FIPS モードを使用する場合について説明しています。
-

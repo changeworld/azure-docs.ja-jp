@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3e46b4bdcf7b55c31afe5e7bc84a1fb95ad98701
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="availability-of-service-fabric-services"></a>Service Fabric サービスの可用性
 この記事では、Service Fabric がサービスの可用性を維持する方法の概要を示します。
 
@@ -48,4 +46,3 @@ Service Fabric の概念について詳しくは、次の記事をご覧くだ�
 - [Service Fabric サービスのパーティション分割](service-fabric-concepts-partitioning.md)
 - [状態の定義と管理](service-fabric-concepts-state.md)
 - [Reliable Service](service-fabric-reliable-services-introduction.md)
-

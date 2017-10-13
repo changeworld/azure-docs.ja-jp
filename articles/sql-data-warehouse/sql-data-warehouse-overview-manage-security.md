@@ -16,10 +16,10 @@ ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 ms.openlocfilehash: 6ea45c40bc428282faf24b4a08f8b0d345adb3fd
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="secure-a-database-in-sql-data-warehouse"></a>SQL Data Warehouse でのデータベース保護
 > [!div class="op_single_selector"]

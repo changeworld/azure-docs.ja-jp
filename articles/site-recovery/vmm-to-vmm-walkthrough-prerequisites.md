@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 7897a30bf1774609ca8e6037dabcd5fbf4151271
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-2-review-the-prerequisites-and-limitations-for-hyper-v-vm-replication-to-a-secondary-vmm-site"></a>手順 2: セカンダリ VMM サイトへの Hyper-V VM レプリケーションの前提条件と制限事項を確認する
 
