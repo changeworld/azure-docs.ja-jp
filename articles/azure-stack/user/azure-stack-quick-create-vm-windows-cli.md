@@ -15,26 +15,25 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: 196bf4351ebd2bf977102571de385edae6f9612b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 3a4d6f23bd8824636b3babe208add92db6aab537
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-on-azure-stack-using-azure-cli"></a>Azure CLI を使用して Azure Stack に Windows 仮想マシンを作成する
 
 Azure CLI は、コマンドラインで Azure Stack リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、Azure Stack に Windows Server 2016 仮想マシンを作成する方法について詳しく説明します。 仮想マシンが作成されたら、リモート デスクトップで接続し、IIS をインストールしてから、既定の Web サイトを表示します。 
 
-始める前に、Azure Stack オペレーターが Azure Stack Marketplace に "Windows Server 2016" のイメージを追加していることを確認してください。  
+## <a name="prerequisites"></a>前提条件 
 
-リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に Azure CLI を構成していない場合は、[Azure CLI のインストールと構成](azure-stack-connect-cli.md)の手順に従います。
+* Azure Stack オペレーターが Azure Stack Marketplace に "Windows Server 2016" のイメージを追加していることを確認します。  
 
+* リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に Azure CLI を構成していない場合は、[Azure CLI のインストールと構成](azure-stack-connect-cli.md)の手順に従います。
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 [az group create](/cli/azure/group#create) コマンドを使用して、リソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
+リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#create) コマンドを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
 
 ```cli
 az group create --name myResourceGroup --location local
@@ -65,7 +64,7 @@ Azure Stack にデプロイされている Windows 仮想マシンに対して�
 az vm open-port --port 80 --resource-group myResourceGroup --name myVM
 ```
 
-## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
+## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 
 次のコマンドを使用して、仮想マシンとのリモート デスクトップ セッションを作成します。 IP アドレスを仮想マシンのパブリック IP アドレスに置き換えます。 メッセージが表示されたら、仮想マシンの作成時に使用した資格情報を入力します。
 
@@ -97,7 +96,4 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Key Vault に格納されているパスワードを使用して仮想マシンを作成する](azure-stack-kv-deploy-vm-with-secret.md)
-
-[Azure Stack の Storage について学ぶ](azure-stack-storage-overview.md)
-
+このクイック スタートでは、簡単な Windows 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。

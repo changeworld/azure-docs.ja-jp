@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 09/26/2017
 ms.author: jingwang
+ms.openlocfilehash: 784b9489911be0d9a559b6fe7795a6c2cbdb09fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4ea7220310f63108f8ec2fa1b28ddcaf992a3a51
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Azure Data Factory のコピー アクティビティ
 
@@ -156,7 +155,7 @@ Azure Data Factory のコピー アクティビティを使用するには、次
 | sqlDwPolyBase | SQL Data Warehouse にデータをコピーするときに PolyBase が使用される場合。 | Boolean |
 | redshiftUnload | Redshift からデータをコピーするときに UNLOAD が使用される場合。 | Boolean |
 | hdfsDistcp | HDFS からデータをコピーするときに DistCp が使用される場合。 | Boolean |
-| effectiveIntegrationRuntime | アクティビティの実行を機能強化するためにどの統合ランタイムが使用されるかを "<IR name> (<region for Azure IR>)" の形式で示します。 | Text (文字列) |
+| effectiveIntegrationRuntime | アクティビティの実行を機能強化するために、どの統合ランタイムが使用されるかを "`<IR name> (<region if it's Azure IR>)`" の形式で示します。 | Text (文字列) |
 | usedCloudDataMovementUnits | コピー中の効率的なクラウド データ移動単位。 | Int32 値 |
 | redirectRowPath | "redirectIncompatibleRowSettings" で構成した、BLOB ストレージ内のスキップされた互換性のない行のログのパス。 下の例を参照してください。 | Text (文字列) |
 | billedDuration | データ移動に対して課金された期間。 | Int32 値 (秒数) |
@@ -196,4 +195,3 @@ Azure Data Factory でのデータ移動 (コピー アクティビティ) の�
 - [Copy data from one location to another location in the same Azure Blob Storage (同じ Azure Blob Storage 内のある場所から別の場所にデータをコピーする)](quickstart-create-data-factory-dot-net.md)
 - [Copy data from Azure Blob Storage to Azure SQL Database (Azure Blob Storage から Azure SQL Database にデータをコピーする)](tutorial-copy-data-dot-net.md)
 - [Copy data from on-premises SQL Server to Azure (オンプレミスの SQL Server から Azure にデータをコピーする)](tutorial-hybrid-copy-powershell.md)
-

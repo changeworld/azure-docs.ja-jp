@@ -15,36 +15,35 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: de2ff697c083493b43ab0d1b5bcde532c28684e4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: d868ce59fcb09bae8c111da3892af33317003474
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-by-using-azure-cli-in-azure-stack"></a>Azure Stack で Azure CLI を使用して Linux 仮想マシンを作成する
 
 *適用対象: Azure Stack 統合システム*
 
 Azure CLI は、コマンドラインで Azure Stack リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使用して、Azure Stack に Linux 仮想マシンを作成する方法について説明します。  VM が作成されると、Web サーバーがインストールされ、Web トラフィックを許可するためにポート 80 が開きます。
 
-始める前に、Azure Stack オペレーターが Azure Stack Marketplace に "Ubuntu Server 16.04 LTS" のイメージを追加していることを確認してください。  
+## <a name="prerequisites"></a>前提条件 
 
-リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に Azure CLI を構成していない場合は、[Azure CLI のインストールと構成](azure-stack-connect-cli.md)の手順に従います。
+* Azure Stack オペレーターが Azure Stack Marketplace に "Ubuntu Server 16.04 LTS" のイメージを追加していることを確認します。 
 
-最後に、id_rsa.pub という名前の公開 SSH キーを Windows ユーザー プロファイルの .ssh ディレクトリに作成しておく必要があります。 SSH キーの作成の詳細については、[Windows での SSH キーの作成](../../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。 
+* リソースを作成して管理するため、Azure Stack には Azure CLI の特定のバージョンが必要です。 Azure Stack 用に構成された Azure CLI がない場合は、[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)または Windows ベースの外部クライアント ([VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合) にサインインし、[Azure CLI のインストールと構成](azure-stack-connect-cli.md)の手順に従います。
 
+* Windows ユーザー プロファイルの .ssh ディレクトリに、id_rsa.pub という名前の SSH 公開キーを作成しておく必要があります。 SSH キーの作成の詳細については、[Windows での SSH キーの作成](../../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。 
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 [az group create](/cli/azure/group#create) コマンドを使用して、リソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
+リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、[az group create](/cli/azure/group#create) コマンドを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。 次の例では、myResourceGroup という名前のリソース グループをローカルの場所に作成します。
 
 ```cli
 az group create --name myResourceGroup --location local
 ```
 
-## <a name="create-virtual-machine"></a>仮想マシンの作成
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
 [az vm create](/cli/azure/vm#create) コマンドを使用して VM を作成します。 次の例では、myVM という名前の VM を作成します。 この例では、管理ユーザーの名前に Demouser、パスワードに Demouser@123 を使用します。 これらの値を、環境に適した内容に更新します。 これらの値は、仮想マシンに接続する際に必要です。
 
@@ -107,8 +106,5 @@ az group delete --name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Key Vault に格納されているパスワードを使用して仮想マシンを作成する](azure-stack-kv-deploy-vm-with-secret.md)
-
-[Azure Stack の Storage について学ぶ](azure-stack-storage-overview.md)
-
+このクイック スタートでは、単純な Linux 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
 

@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: hero-article
 ms.date: 09/20/2017
+ms.openlocfilehash: bb3ac21d2e8b8efd7b4f6943fcc3256f18cbdd68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 91d2f47a528050f644973044f96c0354b91dba25
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-azure-machine-learning-preview-accounts-and-install-azure-machine-learning-workbench"></a>Azure Machine Learning プレビュー アカウントの作成と Azure Machine Learning Workbench のインストール
 Azure Machine Learning は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
@@ -27,7 +25,13 @@ Azure Machine Learning は、データ サイエンスと高度な分析をエ�
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-現在 Azure Machine Learning Workbench をインストールできるオペレーティング システムは、Windows 10、Windows Server 2016、macOS Sierra のみです。
+現在、Azure Machine Learning Workbench デスクトップ アプリは、次のオペレーティング システムにのみインストールできます。 
+- Windows 10
+- Windows Server 2016
+- macOS Sierra
+
+>[!NOTE]
+>macOS High Sierra はまだサポートされていません。
 
 ## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 [Azure Portal](https://portal.azure.com/) にログインします。
@@ -118,7 +122,7 @@ Azure Machine Learning Workbench を、macOS Sierra が実行されているコ�
 
 5. Azure Machine Learning Workbench は次のディレクトリにインストールされます。 
 
-   _/Applications/AmlWorkbench.app_
+   `/Applications/AmlWorkbench.app`
 
 ## <a name="run-azure-machine-learning-workbench-to-log-in-the-first-time"></a>Azure Machine Learning Workbench を実行して初めてログインする
 1. インストール プロセスが完了したら、インストーラーの最後の画面にある **[Launch Workbench]\(Workbench の起動\)** ボタンをクリックします。 インストーラーを閉じていた場合には、デスクトップ上の Machine Learning Workbench へのショートカットと **Azure Machine Learning Workbench** という名前のスタート メニューを探して、アプリを起動します。
@@ -184,4 +188,3 @@ Web サービスをデプロイするための環境の作成については、[
 
 > [!div class="nextstepaction"]
 > [あやめの分類のチュートリアル](tutorial-classifying-iris-part-1.md)
-

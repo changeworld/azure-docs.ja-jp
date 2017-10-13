@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/17/2017
+ms.openlocfilehash: e1356439385cc7fe66985bd2b84e4121386ec23d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 68958dd42ef2382caaa740c52fc4f20c1cd3eff0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-machine-learning-workbench-execution-configuration-files"></a>Azure Machine Learning ワークベンチ実行構成ファイル
 
 Azure Machine Learning (Azure ML) ワークベンチのスクリプトを送信するときに、その実行動作は **aml_config** フォルダー内のファイルによって制御されます。 このフォルダーは、プロジェクト フォルダーのルートの下にあります。 最適な方法で目的の実行結果を得るには、これらのファイルの内容を理解しておくことが重要です。
@@ -113,7 +111,7 @@ packages:
 ## <a name="run-configuration"></a>実行構成
 特定の実行構成を指定するには、1 組のファイルが必要です。 これらのファイルは通常、CLI コマンドを使用して生成されます。 ただし、既存のものを複製し、その名前を変更して、編集することもできます。
 
-```shell
+```azurecli
 # create a compute target pointing to a VM via SSH
 $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of VM> -u <username> -w <password> --type remotedocker
 
@@ -126,8 +124,8 @@ $ az ml computetarget attach -n <compute target name> -a <IP address or FQDN of 
 >[!NOTE]
 > 実行構成ファイルの _local_ または _docker_ の名前は任意です。 Azure ML ワークベンチは利便性のため、空のプロジェクトを作成するときに、これらの 2 つの実行構成を追加します。 プロジェクト テンプレートに付属する "<run configuration name>.runconfig" ファイルの名前を変更することも、任意の名前で新しいファイルを作成することもできます。
 
-### <a name="compute-target-namecompute"></a><compute target name>.compute
-_<compute target name>.compute_ ファイルは、コンピューティング ターゲットの接続および構成情報を指定します。 これは名前と値のペアの一覧になります。 サポートされている設定は次のとおりです。
+### <a name="compute-target-namecompute"></a>\<コンピューティング ターゲット名>.compute
+_\<コンピューティング ターゲット名>.compute_ ファイルは、コンピューティング ターゲットの接続および構成情報を指定します。 これは名前と値のペアの一覧になります。 サポートされている設定は次のとおりです。
 
 **type**: コンピューティング環境の種類。 サポートされる値は次のとおりです。
   - local
@@ -135,7 +133,7 @@ _<compute target name>.compute_ ファイルは、コンピューティング �
   - remotedocker
   - cluster
 
-**baseDockerImage**: Python/PySpark スクリプトを実行するために使用される Docker イメージ。 既定値は _microsoft/mmlspark:plus-0.7.dev7_2.gcfbc920_ です。 その他に _microsoft/mmlspark:plus-gpu-0.7.dev7_2.gcfbc920_ のイメージもサポートしています。これは、ホスト マシンへの GPU アクセスを可能にします (GPU が存在する場合)。
+**baseDockerImage**: Python/PySpark スクリプトを実行するために使用される Docker イメージ。 既定値は _microsoft/mmlspark:plus-0.7.91_ です。 その他に _microsoft/mmlspark:plus-gpu-0.7.91_ のイメージもサポートしています。これは、ホスト マシンへの GPU アクセスを可能にします (GPU が存在する場合)。
 
 **address**: 仮想マシンまたは HDInsight クラスター ヘッド ノードの IP アドレスまたは FQDN (完全修飾ドメイン名)。
 
@@ -149,8 +147,8 @@ _<compute target name>.compute_ ファイルは、コンピューティング �
 
 **nativeSharedDirectory**: このプロパティは、同じコンピューティング ターゲットでの複数の実行で共有するためにファイルを保存できるベース ディレクトリ (例: _~/.azureml/share/_) を指定します。 Docker コンテナーでの実行時にこの設定を使用する場合、_sharedVolumes_ を true に設定する必要があります。 それ以外の場合、実行は失敗します。
 
-### <a name="run-configuration-namerunconfig"></a><run configuration name>.runconfig
-_<run configuration name>.runconfig_ は、Azure ML ワークベンチ実行動作を指定します。 これは、実行履歴の追跡や使用するコンピューティング ターゲットなどの実行構成動作をその他の多くとともに指定します。 実行構成ファイルの名前は、Azure ML ワークベンチのデスクトップ アプリケーションでの実行コンテキスト ドロップダウンの作成に使用されます。
+### <a name="run-configuration-namerunconfig"></a>\<実行構成名>.runconfig
+_\<実行構成名>.runconfig_ は、Azure ML ワークベンチの実行動作を指定します。 実行履歴の追跡や使用するコンピューティング ターゲットなど、多くの実行動作を構成できます。 実行構成ファイルの名前は、Azure ML ワークベンチのデスクトップ アプリケーションでの実行コンテキスト ドロップダウンの作成に使用されます。
 
 **ArgumentVector**: このセクションでは、この実行の一部として行われるスクリプトと、スクリプトのパラメーターを指定します。 たとえば、"<run configuration name>.runconfig" ファイルに次のスニペットがある場合 
 
@@ -212,4 +210,5 @@ DataSourceSubstitutions:
 ```
 df = datasource.load_datasource('mylocal.dsource')
 ```
-
+## <a name="next-steps"></a>次のステップ
+[実行環境の構成](experiment-execution-configuration.md)の詳細を確認してください
