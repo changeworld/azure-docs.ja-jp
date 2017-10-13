@@ -1,6 +1,6 @@
 ---
 title: "軽減策 - Microsoft Threat Modeling Tool - Azure | Microsoft Docs"
-description: "Microsoft Threat Modeling Tool の [軽減策] ページでは、生成された脅威のうち、最も危険な脅威の軽減策が強調表示されます。"
+description: "Microsoft Threat Modeling Tool の [Mitigations]\\(軽減策\\) ページでは、生成された脅威のうち、最も危険な脅威の軽減策が強調表示されます。"
 services: security
 documentationcenter: na
 author: RodSan
