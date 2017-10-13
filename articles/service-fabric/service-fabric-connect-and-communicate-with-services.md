@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 5/9/2017
 ms.author: vturecek
 ms.openlocfilehash: 3e61ad19df34c6a57da43e26bd2ab9d7ecdbf98e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-and-communicate-with-services-in-service-fabric"></a>Service Fabric のサービスとの接続と通信
 Service Fabric では、Service Fabric クラスター内のどこかで、通常は複数の VM に分散されてサービスが実行されます。 サービスの場所は、サービスの所有者が移動することも、Service Fabric が自動的に移動することもあります。 サービスは特定のコンピューターまたはアドレスに対して静的に関連付けられてはいません。
@@ -35,7 +35,7 @@ Service Fabric は、サービスのライフサイクル管理に役立ちま�
 ![service endpoints][1]
 
 ## <a name="service-discovery-and-resolution"></a>サービスの検出と解決
-分散システムでは、サービスが時間の経過と共に、あるコンピューターから別のコンピューターに移動することがあります。 移動の理由にはさまざまなものがあり、リソースの分散、アップグレード、フェールオーバー、スケールアウトなどが挙げられます。 このため、別の IP アドレスを持つノードにサービスが移動すると、サービス エンドポイントのアドレスが変化することになります。また、サービスで動的に選択されるポートを使用している場合は、別のポートで開かれることがあります。
+分散システムでは、サービスが時間の経過と共に、あるコンピューターから別のコンピューターに移動することがあります。 移動の理由にはさまざまなものがあり、リソースの分散、アップグレード、フェールオーバー、スケールアウトなどが挙げられます。このため、別の IP アドレスを持つノードにサービスが移動すると、サービス エンドポイントのアドレスが変化することになります。また、サービスで動的に選択されるポートを使用している場合は、別のポートで開かれることがあります。
 
 ![Distribution of services][7]
 

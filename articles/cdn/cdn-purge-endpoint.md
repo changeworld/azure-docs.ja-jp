@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: b035c232bb58d653960190d4974cc3789d55a51d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="purge-an-azure-cdn-endpoint"></a>Azure CDN エンドポイントの消去
 ## <a name="overview"></a>概要
@@ -34,7 +34,7 @@ Azure CDN エッジ ノードは、アセットの Time-to-Live (TTL) が期限�
 このチュートリアルでは、エンドポイントのすべてのエッジ ノードから資産を消去する方法について説明します。
 
 ## <a name="walkthrough"></a>チュートリアル
-1. [Azure ポータル](https://portal.azure.com)で、消去するエンドポイントを含む CDN プロファイルを開きます。
+1. [Azure Portal](https://portal.azure.com) で、消去するエンドポイントを含む CDN プロファイルを開きます。
 2. CDN プロファイル ブレードで、[消去] ボタンをクリックします。
    
     ![CDN プロファイル ブレード](./media/cdn-purge-endpoint/cdn-profile-blade.png)

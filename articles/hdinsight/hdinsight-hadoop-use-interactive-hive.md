@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/11/2017
 ms.author: jgao
+ms.openlocfilehash: 822c5f2302fb32d0d5a05ba69132282c050b7b8b
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 17fac0327c3c454a8ea5c4d91b2d3e23de71f4ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>HDInsight での対話型クエリの使用
 対話型クエリ (別名 Hive LLAP または [Live Long and Process](https://cwiki.apache.org/confluence/display/Hive/LLAP)) は、Azure HDInsight の[クラスターの種類](hdinsight-hadoop-provision-linux-clusters.md#cluster-types)です。 対話型クエリではインメモリ キャッシュがサポートされるため、Hive クエリの速度と対話性が向上します。 
@@ -30,7 +29,6 @@ ms.lasthandoff: 09/27/2017
 対話型クエリ クラスターは、Hadoop クラスターとは異なり、 Hive サービスのみが含まれます。 
 
 > [!NOTE]
-> MapReduce、Pig、Sqoop、Oozie、およびその他のサービスは、間もなくこのクラスター タイプから削除されます。
 > 対話型クエリ クラスターの Hive サービスには、Ambari Hive View、Beeline、および Microsoft Hive Open Database Connectivity ドライバー (Hive ODBC) からのみアクセスできます。 Hive コンソール、Templeton、Azure コマンドライン ツール (Azure CLI)、Azure PowerShell からはアクセスできません。 
 > 
 > 
@@ -86,5 +84,4 @@ Java Database Connectivity (JDBC) 接続文字列は次の方法で調べるこ�
 * [HDInsight で Hive View と Hadoop を使用する](hdinsight-hadoop-use-hive-ambari-view.md)方法を学ぶ。
 * [Beeline を使用して HDInsight で Hive クエリを実行する](hdinsight-hadoop-use-hive-beeline.md)方法を学ぶ。
 * [Microsoft Hive ODBC ドライバーを使用して Excel から Hadoop に接続する](hdinsight-connect-excel-hive-odbc-driver.md)方法を学ぶ。
-
 

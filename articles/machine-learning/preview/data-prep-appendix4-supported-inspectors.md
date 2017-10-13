@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bc14c051fb0f518b1cff2236a61d24cb052700f0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-inspectors-for-this-preview"></a>このプレビューでサポートされているインスペクター
 このドキュメントでは、このプレビューで使用可能なインスペクターのセットについて説明します。
 
@@ -113,4 +111,3 @@ X 軸での時間認識の線グラフ
 ### <a name="actions"></a>アクション
 このインスペクターは、マップ上のポイント選択によるフィルタリングをサポートしています。 コントロール キーを押して、マウスをクリックしたままドラッグして、ポイントの周りに四角形を描きます。 続いて前述のように、フィルターを適用します。
 マップの左側にある **[E]** を押すことで、可能性のあるすべてのポイントだけを表示するようにマップのサイズをすばやく設定できます。
-

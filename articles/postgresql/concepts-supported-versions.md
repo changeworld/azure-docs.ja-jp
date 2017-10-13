@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 07/06/2017
 ms.openlocfilehash: cdc8f570c66630e210efa3163f8ee419337df3a1
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-postgresql-database-versions"></a>サポートされている PostgreSQL Database バージョン
 Azure Database for PostgreSQL では現在、次のバージョンがサポートされています。

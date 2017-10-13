@@ -16,28 +16,26 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
+ms.openlocfilehash: bfeba57036338b4e325d2f122443f2cde0373eed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 701a8febb3f897fd7f1a81a00adb4635df153d3a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-powershell"></a>PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する
 
-Azure 可用性ゾーン (プレビュー) 内にパブリック IP アドレスをデプロイできます。 可用性ゾーンとは、1 つの Azure リージョン内で物理的に分離されたゾーンのことです。 以下の項目について説明します。
+Azure 可用性ゾーン (プレビュー) 内にパブリック IP アドレスをデプロイできます。 可用性ゾーンとは、Azure リージョン内の物理的に分離されたゾーンのことです。 以下の項目について説明します。
 
-> * 可用性ゾーンにパブリック IP アドレスを作成する方法
-> * 可用性ゾーンに作成された関連リソースを特定する方法
+> * 可用性ゾーン内にパブリック IP アドレスを作成する
+> * 可用性ゾーン内に作成された関連リソースを識別する
   
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-この記事では、バージョン 4.4.0 以上の AzureRM モジュールがインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードの必要がある場合は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM)から最新バージョンの AzureRM モジュールをインストールします。
+この記事では、バージョン 4.4.0 以上の AzureRM モジュールがインストールされている必要があります。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[PowerShell ギャラリー](https://www.powershellgallery.com/packages/AzureRM)から最新バージョンの AzureRM モジュールをインストールします。
 
 > [!NOTE]
-> 可用性ゾーンはプレビュー段階であり、開発とテストのシナリオで使用できます。 一部の Azure リソース、リージョン、VM サイズ ファミリについては、サポートを利用できます。 利用を開始する方法のほか、可用性ゾーンを試すことができる Azure リソース、リージョン、VM サイズ ファミリについては、[可用性ゾーンの概要](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)に関するページを参照してください。 サポートが必要な場合は、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) を参照するか、[Azure サポート チケットを発行](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)してください。
+> 可用性ゾーンはプレビュー段階であり、開発とテストのシナリオで使用できます。 選択された Azure リソース、リージョン、および VM サイズ ファミリに対するサポートが使用できます。 使用を開始する方法、および可用性ゾーンを試行する場合にどの Azure リソース、リージョン、および VM サイズ ファミリを使用できるかの詳細については、「[Overview of Availability Zones (可用性ゾーンの概要)](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)」を参照してください。 サポートについては、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-availability-zones) でアクセスするか、または [Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md?toc=%2fazure%2fvirtual-network%2ftoc.json)ことができます。
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 
@@ -68,9 +66,9 @@ New-AzureRmResourceGroup -Name AzTest -Location westeurope
 ```
 
 > [!NOTE]
-> 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)を利用し、特定のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、特定のトラフィックを明示的に許可するまでは、リソースと通信できません。
+> Standard SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てる場合は、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で目的のトラフィックを明示的に許可する必要があります。 ネットワーク セキュリティ グループを作成して関連付け、目的のトラフィックを明示的に許可するまで、そのリソースとの通信は失敗します。
 
-## <a name="get-zone-information-about-a-public-ip-address"></a>パブリック IP アドレスについてのゾーン情報の取得
+## <a name="get-zone-information-about-a-public-ip-address"></a>パブリック IP アドレスに関するゾーン情報を取得する
 
 次のコマンドを使用して、パブリック IP アドレスのゾーン情報を取得します。
 
@@ -82,5 +80,5 @@ Get-AzureRmPublicIpAddress `
 
 ## <a name="next-steps"></a>次のステップ
 
-- [可用性ゾーン](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)について詳しく学ぶ
-- [パブリック IP アドレス](virtual-network-public-ip-address.md?toc=%2fazure%2fvirtual-network%2ftoc.json)について詳しく学ぶ 
+- [可用性ゾーン](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview)の詳細を学習する
+- [パブリック IP アドレス](virtual-network-public-ip-address.md?toc=%2fazure%2fvirtual-network%2ftoc.json)の詳細を学習する 

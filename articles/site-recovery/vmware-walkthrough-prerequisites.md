@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: 7a82e58d9ff9208130c43fcd11d03dcc3238696a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-2-review-the-prerequisites-for-vmware-to-azure-replication"></a>ステップ 2: VMware を Azure にレプリケートするための前提条件を確認する
 

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: sstein
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 53bfbd602c2c395d510529eacd5b8075b20437ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-recommendations"></a>パフォーマンスに関する推奨事項
 
@@ -81,6 +80,5 @@ Azure SQL Database サービスが、Azure SQL Database で発生したスキー
 * パフォーマンスの問題の自動診断および根本原因分析を使用したデータベース パフォーマンスの自動監視については、[Azure SQL Intelligent Insights に関するページ](sql-database-intelligent-insights.md)を参照してください。
 * Azure ポータルでパフォーマンス推奨事項を使用する方法については、[Azure ポータルのパフォーマンス推奨事項](sql-database-advisor-portal.md)に関するページを参照してください。
 * よく使用されるクエリによるパフォーマンスへの影響を確認する方法については、[クエリ パフォーマンスの洞察](sql-database-query-performance.md)に関する記事をご覧ください。
-
 
 

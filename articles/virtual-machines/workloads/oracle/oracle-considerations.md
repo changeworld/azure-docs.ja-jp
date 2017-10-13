@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/15/2017
 ms.author: rclaus
 ms.openlocfilehash: 9174f7c8d16ff311312980fbe4d35996ec7ac832
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oracle-solutions-and-their-deployment-on-microsoft-azure"></a>Microsoft Azure での Oracle ソリューションとそのデプロイ
 この記事では、Microsoft Azure でさまざまな Oracle ソリューションを適切にデプロイするために必要な情報を取り上げます。 これらのソリューションは、Azure Marketplace で Oracle によって発行された仮想マシン イメージに基づいています。 現在利用可能なイメージの一覧を取得するには、次のコマンドを実行します。

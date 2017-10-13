@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: dca0a460224436d3886cf9a9c354ce662f99ae84
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>チュートリアル: Azure Active Directory と BitaBIZ の統合
 
@@ -292,5 +291,4 @@ BitaBIZ の場合、プロビジョニングは手動で行います。
 [201]: ./media/active-directory-saas-bitabiz-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-bitabiz-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-bitabiz-tutorial/tutorial_general_203.png
-
 

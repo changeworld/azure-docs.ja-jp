@@ -10,14 +10,12 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 445901a740920a74f259aaa9c6b862680c1c807e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="archive-azure-monitoring-data"></a>Azure 監視データをアーカイブする
 
 Azure 環境内の複数のレイヤーで生成されるログ データとメトリック データを、Azure ストレージ アカウントにアーカイブすることができます。 このようにすると、Log Analytics または Azure Monitor でのこれらのデータのリテンション期間が過ぎた後も、低コストで検索対象外のストアに過去の監視データの履歴を保持できます。 このチュートリアルでは、データをストレージ アカウントにアーカイブするように Azure 環境を構成する手順について説明します。
@@ -164,4 +162,3 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [Log Analytics の起動と開始](../log-analytics/log-analytics-get-started.md)
-

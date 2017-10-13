@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 06/05/2017
 ms.openlocfilehash: c5d4b85755750f3c06320ac623601ff155b2a704
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-videos"></a>Azure Database for PostgreSQL のビデオ
 [新しい Azure Database for PostgreSQL サービスの紹介](https://channel9.msdn.com/events/Build/2017/B8046)

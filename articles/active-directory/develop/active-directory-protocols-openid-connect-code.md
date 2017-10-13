@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: 1bb944997caa0c43354e82bf9b1a70e3e104a476
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # OpenID Connect と Azure Active Directory を使用する Web アプリケーションへのアクセスの承認
 [OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html) は、OAuth 2.0 プロトコル上に構築された単純な ID 層です。 OAuth 2.0 では保護されたリソースにアクセスするための**アクセス トークン**を取得して使用するためのメカニズムを定義しますが、ID 情報を提供するための標準的な方法は定義しません。 OpenID Connect は、OAuth 2.0 承認プロセスの拡張機能として認証を実装します。 エンド ユーザーに関する情報を `id_token` の形式で提供し、これを使ってユーザーの ID を検証し、ユーザーに関する基本的なプロファイル情報を提供します。
@@ -154,7 +154,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 `id_token` を検証したら、ユーザーとのセッションを開始し、`id_token` の要求を使用してそのユーザーに関する情報をアプリで取得することができます。 取得した情報は、表示、記録、承認などに利用することができます。トークンの種類と要求の詳細については、[サポートされているトークンと要求の種類](active-directory-token-and-claims.md)に関するページをご覧ください。
 
 ## サインアウト要求を送信する
-ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。  サインアウトするには、ユーザーを `end_session_endpoint` にリダイレクトする必要もあります。  そうしないと、ユーザーが資格情報を再入力しなくてもアプリで再認証できます。Azure AD エンドポイントのシングル サインオン セッションが有効であるためです。
+ユーザーをアプリからサインアウトさせるとき、アプリの Cookie を消去する、あるいはユーザーとのセッションを終了するだけでは十分ではありません。  サインアウトするには、ユーザーを `end_session_endpoint` にリダイレクトする必要もあります。そうしないと、ユーザーが資格情報を再入力しなくてもアプリで再認証できます。Azure AD エンドポイントのシングル サインオン セッションが有効であるためです。
 
 OpenID Connect メタデータ ドキュメントの一覧にある `end_session_endpoint` にはユーザーを簡単にリダイレクトできます。
 

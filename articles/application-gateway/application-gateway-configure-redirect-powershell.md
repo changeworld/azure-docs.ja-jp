@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: cbee070c6bfe17135f37a82c545bf8ee7db2db43
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-redirection-on-application-gateway-with-powershell"></a>PowerShell で Application Gateway にリダイレクトを構成する
 
 Application Gateway には、定義されている構成に従ってトラフィックをリダイレクトする機能があります。 リダイレクト全般について詳しくは、「[Application Gateway redirect overview (Application Gateway のリダイレクトの概要)](application-gateway-redirect-overview.md)」を参照してください。 この記事では、HTTP から HTTPS へのリダイレクト、パス ベースのリダイレクト、マルチサイトのリダイレクト、外部サイトへのリダイレクトについて、それぞれの例を取り上げています。

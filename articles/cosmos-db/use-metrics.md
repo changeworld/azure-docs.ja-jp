@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: govindk
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: e6399831fe7c6cc727e92b13719df3b69e9981bf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitoring-and-debugging-with-metrics-in-azure-cosmos-db"></a>Azure Cosmos DB のメトリックを使用した監視とデバッグ
 
 Azure Cosmos DB には、スループット、ストレージ、整合性、可用性、および待機時間のメトリックが用意されています。 [Azure Portal](https://portal.azure.com) には、これらのメトリックが集約されたビューがあります。より細かいメトリックについては、クライアント SDK と[診断ログ](./logging.md)を使用できます。
@@ -101,4 +99,3 @@ IReadOnlyDictionary<string, QueryMetrics> metrics = result.QueryMetrics;
 
 * [Azure Cosmos DB のパフォーマンスとスケールのテスト](performance-testing.md)
 * [Azure Cosmos DB のパフォーマンスに関するヒント](performance-tips.md)
-

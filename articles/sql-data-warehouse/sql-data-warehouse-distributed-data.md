@@ -16,10 +16,10 @@ ms.custom: tables
 ms.date: 07/12/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 3c166acb17193caae32d7bad133ec510ff679353
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="distributed-data-and-distributed-tables-for-massively-parallel-processing-mpp"></a>超並列処理 (MPP) 用の分散データと分散テーブル
 Azure SQL Data Warehouse および Parallel Data Warehouse でのユーザー データの分散方法について説明します。これらは、Microsoft の超並列処理 (MPP) システムです。 分散データを効率的に使用するようにデータ ウェアハウスを設計すると、MPP アーキテクチャのクエリ処理のメリットを実現するのに役立ちます。 いくつかのデータベース設計の選択は、クエリのパフォーマンス向上に大きな影響を与えます。  

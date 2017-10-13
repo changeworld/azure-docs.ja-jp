@@ -1,19 +1,19 @@
-#### <a name="to-configure-and-register-the-cloud-appliance"></a>構成し、クラウド アプライアンスを登録するには
+#### <a name="to-configure-and-register-the-cloud-appliance"></a>クラウド アプライアンスを構成して登録するには
 
-1. 選択し、StorSimple クラウド アプライアンスで作成した、**デバイス**ブレードです。
+1. **[デバイス]** ブレードで、先ほど作成した StorSimple Cloud Appliance を選択してクリックします。
 
-    ![デバイスの一覧で StorSimple クラウド アプライアンス](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
-2. **デバイスの構成**ブレードで、次の手順を実行します。
+    ![デバイス一覧の StorSimple Cloud Appliance](./media/storsimple-8000-create-cloud-appliance-u2/sca-create3.png)
+2. **[デバイスの構成]** ブレードで、次の操作を行います。
     
-    1. 入力、**サービス データ暗号化キー**されたスペースにします。 StorSimple デバイス Manager サービスに最初の物理デバイスを登録したときに、このキーが生成されます。
+    1. 所定の場所に **[サービス データ暗号化キー]** を入力します。 このキーは、StorSimple デバイス マネージャー サービスに最初の物理デバイスを登録したときに生成されています。
 
-    2. 入力、**デバイス管理者パスワード**と**Snapshot Manager**パスワードの指定した長さと設定します。
+    2. **[デバイス管理パスワード]** と **[Snapshot Manager のパスワード]** を指定された長さと設定で入力します。
 
-    3. をクリックして**OK**の初期構成とクラウド アプライアンスの登録を完了します。
+    3. **[OK]** をクリックすると、クラウド アプライアンスの初期構成と登録が完了します。
     
-        ![デバイスの StorSimple クラウド アプライアンスの構成](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
+        ![StorSimple Cloud Appliance のデバイスの構成](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure1.png)
 
-構成と登録が完了したら、デバイスがオンラインになります。 (これが数分かかる、デバイスがオンラインにします。)
+構成と登録が完了したら、デバイスがオンラインになります。 デバイスがオンラインになるまでに数分かかる場合があります。
 
-![StorSimple クラウド アプライアンスのオンラインの段階](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure2.png)
+![StorSimple Cloud Appliance のオンライン ステージ](./media/storsimple-8000-configure-register-cloud-appliance/sca-configure2.png)
 

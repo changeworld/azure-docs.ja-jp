@@ -14,16 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 11c7a10c6448248ffacee2b519f48b6ca7e4e188
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sfctl-is"></a>sfctl is
-クエリを実行し、Infrastructure Service にコマンドを送信します。
+クエリを実行し、インフラストラクチャ サービスにコマンドを送信します。
 
 ## <a name="commands"></a>コマンド
 

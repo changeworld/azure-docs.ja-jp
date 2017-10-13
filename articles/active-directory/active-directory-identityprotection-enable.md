@@ -16,10 +16,10 @@ ms.date: 07/05/2017
 ms.author: markvi
 ms.reviewer: nigu
 ms.openlocfilehash: e0683e837086ca08f4b4b3f49695bdd2b4063ea4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enabling-azure-active-directory-identity-protection"></a>Azure Active Directory Identity Protection の有効化
 Azure Active Directory Identity Protection は、不審なサインイン アクティビティと潜在的な脆弱性に関する統合ビューを提供し、通知、修復に関するアドバイス、リスクベースのポリシーによってビジネスを保護する新しい機能です。 

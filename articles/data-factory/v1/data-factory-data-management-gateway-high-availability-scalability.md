@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 この記事では、Data Management Gateway を使って、高可用性とスケーラビリティに対するソリューションを構成できます。    
@@ -250,4 +249,3 @@ Azure Portal では、パイプライン監視のエクスペリエンスによ�
 以下の記事を確認してください。
 - [Data Management Gateway](data-factory-data-management-gateway.md) に関する記事 - ゲートウェイの概要を丁寧に説明しています。
 - [オンプレミスとクラウドのデータ ストア間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事 - 単一のノードでゲートウェイを使用するための詳細な手順を紹介したチュートリアルを含みます。 
-

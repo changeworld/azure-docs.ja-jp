@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: fdb3c5cbd3acee90386352c6f180a71aa81f54fe
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-3--build-a-dmz-to-protect-networks-with-a-firewall-udr-and-nsg"></a>例 3 - ファイアウォール、UDR、NSG から成る DMZ を構築してネットワークを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
@@ -244,7 +244,7 @@ IP 転送の設定は、VM の作成時に単一のコマンドで実行でき�
 
 ファイアウォールへのログオン後、ファイアウォール ルールを作成する前に、Network と Service という 2 つのオブジェクト クラスがあらかじめ必要となります。これらのオブジェクトを使用した方が簡単にルールを作成できます。
 
-この例では、3 つの名前付きネットワーク オブジェクトを定義する必要があります (フロントエンド サブネット用とバックエンド サブネット用に加え、DNS サーバーの IP アドレス用のネットワーク オブジェクト)。 名前付きネットワークを作成するには、Barracuda NG Admin クライアント ダッシュボードの [configuration] タブに移動し、[Operational Configuration] セクションの [Ruleset] をクリックします。続けて、[Firewall Objects] メニューの [Networks] をクリックし、[Edit Networks] メニューの [New] をクリックしてください。 名前とプレフィックスを追加してネットワーク オブジェクトを作成できます。
+この例では、3 つの名前付きネットワーク オブジェクトを定義する必要があります (フロントエンド サブネット用とバックエンド サブネット用に加え、DNS サーバーの IP アドレス用のネットワーク オブジェクト)。 名前付きネットワークを作成するには、Barracuda NG Admin クライアント ダッシュボードの configuration タブに移動し、Operational Configuration セクションの Rulesetをクリックします。続けて、Firewall Objects メニューの Networksをクリックし、Edit Networks メニューの Newをクリックしてください。 名前とプレフィックスを追加してネットワーク オブジェクトを作成できます。
 
 ![フロントエンド ネットワーク オブジェクトの作成][3]
 

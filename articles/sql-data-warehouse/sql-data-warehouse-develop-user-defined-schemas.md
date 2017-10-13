@@ -16,10 +16,10 @@ ms.custom: t-sql
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: dfb58956ad6637cf0f50b4c052ab98fb7c26139d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="user-defined-schemas-in-sql-data-warehouse"></a>SQL Data Warehouse のユーザー定義のスキーマ
 従来のデータ ウェアハウスでは、多くの場合、個別のデータベースを使用して、ワークロード、ドメイン、またはセキュリティに基づくアプリケーション境界を作成しています。 たとえば、従来の SQL Server データ ウェアハウスは、ステージング データベース、データ ウェアハウス データベース、複数のデータ マート データベースで構成されていることがあります。 このトポロジでは、各データベースがアーキテクチャでワークロードとセキュリティの境界として機能します。

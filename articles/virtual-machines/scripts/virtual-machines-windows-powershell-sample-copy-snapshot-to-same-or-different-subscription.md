@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 064b5355da10fe683563fa078cfafc65080f7ea2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-snapshot-of-a-managed-disk-in-same-subscription-or-different-subscription-with-powershell"></a>管理ディスクのスナップショットを PowerShell で同じサブスクリプションまたは別のサブスクリプションにコピーする
 
 このスクリプトは、スナップショットのコピーを同じサブスクリプションまたは別のサブスクリプションに作成します。 データの保存を目的にスナップショットを別のサブスクリプションに移動するには、このスクリプトを使います。 スナップショットを別のサブスクリプションに格納することで、メイン サブスクリプションでの誤削除を防止します。 

@@ -14,10 +14,10 @@ ms.workload: big-data
 ms.date: 11/30/2016
 ms.author: jejiang
 ms.openlocfilehash: c49f80f8dcd330d7f46726241e7178351b9cc28f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-u-sql-assemblies-for-azure-data-lake-analytics-jobs"></a>Azure Data Lake Analytics ジョブの U-SQL アセンブリの開発
 分離コードをアセンブリに変換して、Data Lake Analytics ジョブで使用および再使用する方法について説明します。 

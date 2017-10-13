@@ -1,6 +1,6 @@
 
-### <a name="update-manifest-file-to-enable-notifications"></a>通知を有効にマニフェスト ファイルを更新します。
-リソースをコピー、アプリ内メッセージングの下、Manifest.xml 間に、`<application>`と`</application>`タグ。
+### <a name="update-manifest-file-to-enable-notifications"></a>マニフェスト ファイルを更新して通知を有効にする
+Manifest.xml の `<application>` タグと `</application>` タグの間に、次のアプリ内メッセージングのリソースをコピーします。
 
         <activity android:name="com.microsoft.azure.engagement.reach.activity.EngagementTextAnnouncementActivity" android:theme="@android:style/Theme.Light" android:exported="false">
               <intent-filter>
@@ -45,32 +45,32 @@
         </receiver>
 
 ### <a name="specify-an-icon-for-notifications"></a>通知のアイコンを指定します。
-間、Manifest.xml で次の XML スニペットを貼り付け、`<application>`と`</application>`タグ。
+次の XML スニペットを Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。
 
         <meta-data android:name="engagement:reach:notification:icon" android:value="engagement_close"/>
 
-これは、システムとアプリ内通知の両方に表示されるアイコンを定義します。 ただし、システム通知の必須アプリ内通知では省略可能であります。 Android は無効なアイコンとシステム通知を拒否します。
+これにより、システムおよびアプリ内通知の両方に表示されるアイコンが定義されます。 これはアプリ内通知では任意ですが、システム通知では必須です。 Android では無効なアイコンが設定されたシステム通知は拒否されます。
 
-いずれかに存在するアイコンを使用しているかどうかを確認、**ドロウアブル**フォルダー (など``engagement_close.png``)。 **mipmap**フォルダーはサポートされていません。
+いずれかの**描画可能な**フォルダーにあるアイコン (``engagement_close.png`` など) を使用してください。 **mipmap** フォルダーはサポートされていません。
 
 > [!NOTE]
-> 使用しないで、**ランチャー**アイコン。 別の解像度があり、ある通常はサポートされていない mipmap のフォルダーにします。
+> **ランチャー** アイコンは使用しないでください。 このアイコンの解像度は異なっており、通常はサポート対象外の mipmap フォルダー内にあります。
 > 
 > 
 
-実際のアプリでは、通知ごとに適切なアイコンを使用する[Android デザイン ガイドライン](http://developer.android.com/design/patterns/notifications.html)です。
+実際のアプリでは、 [Android の設計ガイドライン](http://developer.android.com/design/patterns/notifications.html)に従って、通知に適したアイコンを使用します。
 
 > [!TIP]
-> 使用するには正しいアイコンの解像度を確認できます[これらの例](https://www.google.com/design/icons)です。
-> 下方向にスクロール、**通知**セクションで、アイコンをクリック`PNGS`アイコン ドロウアブル セットをダウンロードします。 アイコンの各バージョンに使用する解像度を持つドロウアブルどのフォルダーを表示できます。
+> 適切な解像度のアイコンを使用するには、 [これらの例](https://www.google.com/design/icons)を参考にしてください。
+> **[Notification]** セクションまでスクロールして 1 つのアイコンをクリックし、`PNGS` をクリックして描画可能なアイコンのセットをダウンロードします。 アイコンのバージョンごとに、使用する描画可能なフォルダーと解像度を確認できます。
 > 
 > 
 
-### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>GCM プッシュ通知を受信するアプリを有効にします。
-1. 間、Manifest.xml に貼り付け、`<application>`と`</application>`に置き換えた後にタグ、**送信者 ID** Firebase プロジェクト コンソールから取得します。 \N が意図的な関連付け番号のプロジェクトを終了するようにします。
+### <a name="enable-your-app-to-receive-gcm-push-notifications"></a>GCM のプッシュ通知を受信するようにアプリを設定する
+1. Firebase プロジェクト コンソールから取得した **Sender ID** を置き換えた後、Manifest.xml の `<application>` タグと `</application>` タグの間に次を貼り付けます。 \n は意図的に付けられています。プロジェクト番号の末尾には必ずこれを付けてください。
    
         <meta-data android:name="engagement:gcm:sender" android:value="************\n" />
-2. 次のコードを貼り付けます、Manifest.xml 間、`<application>`と`</application>`タグ。 パッケージ名を置き換える<Your package name>です。
+2. 次のコードを、Manifest.xml の `<application>` タグと `</application>` タグの間に貼り付けます。 <Your package name>をパッケージ名に置き換えます。
    
         <receiver android:name="com.microsoft.azure.engagement.gcm.EngagementGCMEnabler"
         android:exported="false">
@@ -86,7 +86,7 @@
                 <category android:name="<Your package name>" />
             </intent-filter>
         </receiver>
-3. 最後の前に強調表示されているアクセス許可のセットを追加、`<application>`タグ。 置き換える`<Your package name>`アプリケーションの実際のパッケージの名前。
+3. 強調表示された最新のアクセス権限セットを、 `<application>` タグの前に追加します。 `<Your package name>` をアプリケーションの実際のパッケージ名で置き換えます。
    
         <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
         <uses-permission android:name="<Your package name>.permission.C2D_MESSAGE" />

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/20/2017
 ms.author: cynthn
 ms.openlocfilehash: d421cee0becabdf81d865036d0c98b12b077152b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-images-for-windows-virtual-machines"></a>Windows 仮想マシンのイメージについて
 > [!IMPORTANT]

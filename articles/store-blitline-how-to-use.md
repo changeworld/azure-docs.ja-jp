@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/09/2014
 ms.author: support@blitline.com
 ms.openlocfilehash: 1d90599e028b3407a513b04b878e3aefc39928a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blitline-with-azure-and-azure-storage"></a>Azure と Azure Storage で Blitline を使用する方法
 このガイドでは、Blitline サービスへのアクセス方法と Blitline へのジョブの送信方法について説明します。

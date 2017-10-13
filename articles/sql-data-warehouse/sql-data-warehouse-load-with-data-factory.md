@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: loading
 ms.date: 02/08/2017
 ms.author: cakarst;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6399f1a3390119685c1c9fd7332937e0cdb6f9ea
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="load-data-into-sql-data-warehouse-with-data-factory"></a>Data Factory による SQL Data Warehouse へのデータの読み込み
 
 Azure Data Factory を使用して、[サポートされているソース データ ストア](../data-factory/copy-activity-overview.md)からデータを Azure SQL Data Warehouse に読み込むことができます。 たとえば、Data Factory を使用して、Azure SQL Database や Oracle データベースのデータを SQL Data Warehouse に読み込めます。 この記事のチュートリアルでは、オンプレミスの SQL Server データベースから SQL Data Warehouse にデータを読み込む方法について説明します。
@@ -165,4 +163,3 @@ SQL Data Warehouse のデータを探索するには、次の記事をご覧く�
 
 <!-- Azure references -->
 [Azure ポータル]: https://portal.azure.com
-

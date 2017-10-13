@@ -17,10 +17,10 @@ ms.date: 02/27/2017
 ms.author: rasquill
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c94332314668dc7e58ed84b20945a548c0443f84
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-the-virtual-machine-agent-and-extensions-for-windows-vms"></a>Windows VM の仮想マシン エージェントおよび拡張機能について
 

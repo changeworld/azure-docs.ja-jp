@@ -1,5 +1,5 @@
 # 概要
-## [仮想マシンについて](../../virtual-machines-windows-about.md)
+## [仮想マシンについて](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [ディスクと VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)
 ## [FAQ](faq.md)

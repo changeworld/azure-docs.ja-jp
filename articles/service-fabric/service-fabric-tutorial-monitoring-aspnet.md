@@ -15,14 +15,12 @@ ms.workload: NA
 ms.date: 09/14/2017
 ms.author: dekapur
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 68788efffd27edf2813cf455490b651c2c7106a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-diagnose-an-aspnet-core-application-on-service-fabric"></a>Service Fabric での ASP.NET Core アプリケーションの監視と診断
 このチュートリアルは、シリーズの第 4 部です。 Application Insights を使用して、Service Fabric クラスターで実行されている ASP.NET Core アプリケーションの監視と診断を設定する手順を説明します。 このチュートリアルの第 1 部「[.NET Service Fabric アプリケーションを構築する](service-fabric-tutorial-create-dotnet-app.md)」で開発したアプリケーションから利用統計情報を収集します。 
 
@@ -238,4 +236,3 @@ ASP.NET アプリケーションの監視と診断の設定が完了したとこ
 - [Service Fabric での監視と診断についてさらに詳しく知る](service-fabric-diagnostics-overview.md)
 - [Application Insights を使用した Service Fabric イベントの分析](service-fabric-diagnostics-event-analysis-appinsights.md)
 - Application Insights の詳細については、[Application Insights のドキュメント](https://docs.microsoft.com/en-us/azure/application-insights/)をご覧ください。
-

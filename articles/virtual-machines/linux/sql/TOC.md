@@ -1,6 +1,7 @@
 # 概要
 ## [Linux SQL Server VM](sql-server-linux-virtual-machines-overview.md)
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)
+## [FAQ](sql-server-linux-faq.md)
 
 # 作業の開始
 ## [Azure Portal で VM をプロビジョニングする](provision-sql-server-linux-virtual-machine.md)

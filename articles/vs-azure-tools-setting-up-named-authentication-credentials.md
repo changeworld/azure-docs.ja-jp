@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/22/2017
 ms.author: kraigb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 953b1aa459ddf5b7be00b9d32432e6dda97143e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-named-authentication-credentials"></a>名前付き認証資格情報の設定
 Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視するには、Azure への要求を認証するために使用できる資格情報を指定する必要があります。 Visual Studio には、こうした資格情報を指定するためのサインインのインターフェイスがいくつか設けられています。 たとえば、サーバー エクスプローラーから **[Azure]** ノードのショートカット メニューを開き、**[Microsoft Azure サブスクリプションへの接続]** を選択できます。 サインインすると、Azure アカウントに関連付けられているサブスクリプション情報が Visual Studio で利用できるようになります。 それ以上何もする必要はありません。

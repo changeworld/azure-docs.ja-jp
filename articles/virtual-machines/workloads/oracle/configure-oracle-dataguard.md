@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 05/10/2017
 ms.author: rclaus
 ms.openlocfilehash: 11492b85e95ddb39489e36c572af2a168b4c7af8
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-oracle-data-guard-on-an-azure-linux-virtual-machine"></a>Azure Linux 仮想マシンで Oracle Data Guard を実装する 
 
@@ -279,7 +279,7 @@ SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_r
 SQL> ALTER DATABASE ADD STANDBY LOGFILE ('/u01/app/oracle/oradata/cdb1/standby_redo04.log') SIZE 50M;
 ```
 
-フラッシュバック機能をオン (回復の際に簡単に戻せる) にし、STANDBY\_FILE\_MANAGEMENT を自動に設定します。 完了したら、SQL*Plus を終了します。
+フラッシュバック機能をオン (回復の際に簡単に戻せる) にし、STANDBY\_FILE\_MANAGEMENT を自動に設定します。完了したら、SQL*Plus を終了します。
 
 ```bash
 SQL> ALTER DATABASE FLASHBACK ON;

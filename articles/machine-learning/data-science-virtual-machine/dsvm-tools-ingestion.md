@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 564c06c5017a77431b7d6fed7b43c47141b12252
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-science-virtual-machine-data-ingestion-tools"></a>データ サイエンス仮想マシンのデータ取り込みツール
 
 データ サイエンスまたは AI プロジェクトの最初の技術的ステップの 1 つは、使用するデータセットを識別し、それらを分析環境に取り込むことです。 データ サイエンス仮想マシン (DSVM) は、DSVM 上のローカルの分析データ ストレージに、あるいはクラウドまたは内部設置型のデータ プラットフォームに、さまざまなソースからデータを取り込むためのツールおよびライブラリを提供します。 
@@ -98,4 +96,3 @@ ms.lasthandoff: 09/25/2017
 |  使用/実行方法    |   [スタート] メニューから "Microsoft Data Management Gateway" を起動します。    |
 | サンプルへのリンク      | [Data Management Gateway](https://msdn.microsoft.com/library/dn879362.aspx)      |
 | DSVM 上の関連ツール      | AzCopy、AdlCopy、bcp    |
-

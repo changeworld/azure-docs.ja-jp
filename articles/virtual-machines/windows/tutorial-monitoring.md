@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a37aed8b3321d3518ffd73e09f5bb21266a7e577
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-update-a-windows-virtual-machine-with-azure-powershell"></a>Azure PowerShell を使用した Windows Virtual Machine の監視と更新
 
 Azure Monitoring では、エージェントを使用して Azure VM からブートとパフォーマンス データを収集し、Azure Storage にこのデータを格納し、ポータル、Azure PowerShell モジュールと Azure CLI でアクセスできるようにします。 更新管理では、Azure Windows VM の更新プログラムとパッチを管理できます。
@@ -135,7 +133,7 @@ Log Analytics ワークスペースは、Update Management のような機能お
 
 ### <a name="view-update-assessment"></a>更新の評価を確認する
 
-**Update Management** が有効になると、**[更新の管理]** 画面が表示されます。 **[不足している更新プログラム]** タブに、不足している更新プログラムのリストが表示されます。
+**更新管理**が有効になると、**[更新管理]** 画面が表示されます。 **[不足している更新プログラム]** タブに、不足している更新プログラムのリストが表示されます。
 
  ![更新ステータスを確認する](./media/tutorial-monitoring/manageupdates-view-status-win.png)
 
@@ -157,12 +155,12 @@ Log Analytics ワークスペースは、Update Management のような機能お
   * ツール
   * 更新プログラム
 
-* **スケジュール設定**: 既定の日時 (現在の時刻から 30 分後) を使用するか、別の時刻を指定します。
+* **スケジュール設定**: 既定の日時 (現在の時刻から 30 分後) を使用するか、別の日時を指定します。
   デプロイを 1 回行うか、定期的なスケジュールを設定するかを指定することもできます。 定期的なスケジュールを設定するには、[繰り返し] の下の [繰り返し] オプションをクリックします。
 
   ![更新プログラムのスケジュール設定画面](./media/tutorial-monitoring/manageupdates-schedule-win.png)
 
-* **メンテナンス期間 (分)**: 更新プログラムをデプロイする期間を指定します。  これにより、定義したサービス期間内に変更が実行されます。
+* **メンテナンス期間 (分)**: 更新プログラムをデプロイする期間を指定します。  これにより、定義したサービス期間内に変更が確実に実行されます。
 
 スケジュールの構成が完了したら、**[作成]** ボタンをクリックして、ステータス ダッシュボードに戻ります。
 **スケジュール済み**の表に、作成したデプロイ スケジュールが表示されていることを確認してください。
@@ -172,8 +170,8 @@ Log Analytics ワークスペースは、Update Management のような機能お
 
 ### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
-スケジュールされたデプロイの開始後、**[更新の管理]** 画面の **[更新プログラムの展開]** タブに、デプロイのステータスが表示されます。
-実行中の場合、ステータスは **[処理中]** と表示されます。 正常に完了すると、ステータスは **[成功]** に変わります。
+スケジュールされたデプロイの開始後、**[更新管理]** 画面の **[更新プログラムの展開]** タブに、デプロイの状態が表示されます。
+実行中の場合、状態は **[処理中]** と表示されます。 正常に完了すると、状態は **[成功]** に変わります。
 デプロイ時に 1 つ以上の更新プログラムでエラーが発生した場合、ステータスは **[部分的に失敗]** になります。
 完了した更新プログラムのデプロイをクリックし、その更新プログラムのデプロイのダッシュボードを確認します。
 
@@ -190,7 +188,7 @@ Log Analytics ワークスペースは、Update Management のような機能お
 
 **[出力]** タイルをクリックし、ターゲット VM での更新プログラムのデプロイを管理する runbook のジョブ ストリームを確認します。
 
-**[エラー]** をクリックし、デプロイで発生したエラーに関する詳細情報を確認します。
+デプロイで発生したエラーの詳細情報を確認するには、**[エラー]** をクリックします。
 
 ## <a name="advanced-monitoring"></a>高度な監視 
 

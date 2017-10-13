@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e8053b74e0e4d721523f49bcbb9e33b08bb7a1dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="should-i-choose-cloud-services-or-something-else"></a>Cloud Services と他のサービスのどちらを選択すればよいか
 Azure Cloud Services が最適な選択ですか? Azure にはアプリケーションを実行するための複数のホスティング モデルがあります。 それぞれの実行モデルには異なるサービスが用意されているため、実行する内容に正確に基づいて実行モデルを選択してください。
@@ -63,5 +62,4 @@ PaaS という Cloud Services の本質には、他の含意もあります。 �
 [nodejs でクラウド サービス アプリケーションを作成する](cloud-services-nodejs-develop-deploy-app.md)  
 [php でクラウド サービス アプリケーションを作成する](../cloud-services-php-create-web-role.md)  
 [Python でのクラウド サービス アプリの作成](cloud-services-python-ptvs.md)
-
 

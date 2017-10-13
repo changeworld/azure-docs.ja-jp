@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>Overview
@@ -109,7 +109,7 @@ Get-MsolFederationProperty または Get-AdfsCertificate の出力結果で、"�
 
 https://(your_FS_name)/federationmetadata/2007-06/federationmetadata.xml
 
-この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。  どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
+この `(your_FS_name) `は、fs.contoso.com など、組織で使用しているフェデレーション サービスのホスト名に置き換えます。どちらの設定も適切であることを確認できた場合、他の作業は不要です。  
 
 例: https://fs.contoso.com/federationmetadata/2007-06/federationmetadata.xml
 
@@ -151,7 +151,7 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 
 1. Windows PowerShell 用 Microsoft Azure Active Directory モジュールを開きます。
 2. $cred=Get-Credential を実行します。 このコマンドレットで資格情報の入力を求められたら、クラウド サービス管理者アカウントの資格情報を入力します。
-3. Connect-MsolService –Credential $cred を実行します。 このコマンドレットでクラウド サービスに接続します。 クラウド サービスに接続している状況を作った後で、ツールによってインストールされた追加のコマンドレットを実行する必要があります。
+3. Connect-MsolService –Credential $cred を実行します。このコマンドレットでクラウド サービスに接続します。 クラウド サービスに接続している状況を作った後で、ツールによってインストールされた追加のコマンドレットを実行する必要があります。
 4. AD FS のプライマリ フェデレーション サーバー以外のコンピューターでこれらのコマンドを実行している場合は、Set-MSOLAdfscontext -Computer <AD FS primary server> を実行します。この <AD FS primary server> は、プライマリ AD FS サーバーの内部 FQDN 名です。 このコマンドレットで AD FS に接続している状況を作ります。
 5. Update-MSOLFederatedDomain –DomainName <domain> を実行します。 このコマンドレットは、AD FS の設定でクラウド サービスを更新し、両者の信頼関係を構成します。
 

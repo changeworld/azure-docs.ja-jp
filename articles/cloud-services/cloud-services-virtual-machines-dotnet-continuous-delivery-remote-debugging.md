@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/18/2016
 ms.author: kraigb
 ms.openlocfilehash: 7a8a853a93e3e9915f687a20c871444e6a0de50d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-remote-debugging-when-using-continuous-delivery-to-publish-to-azure"></a>継続的な配信を使用して Azure に発行する場合にリモート デバッグを有効にする
 次の手順に従って、 [継続的な配信](cloud-services-dotnet-continuous-delivery.md) を使用して Azure に発行する場合に、クラウド サービスまたは仮想マシンに対して、Azure でリモート デバッグを有効にすることができます。

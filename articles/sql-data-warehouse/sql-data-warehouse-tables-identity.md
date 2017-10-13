@@ -15,10 +15,10 @@ ms.workload: data-services
 ms.date: 06/13/2017
 ms.author: jrj;barbkess
 ms.openlocfilehash: 3ab5d159e6eaeb830135fe134e108b0e4de4b7d6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-surrogate-keys-by-using-identity"></a>IDENTITY を使用して代理キーを作成する
 > [!div class="op_single_selector"]

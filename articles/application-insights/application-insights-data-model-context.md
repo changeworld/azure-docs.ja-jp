@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: sergkanz
 ms.openlocfilehash: d6a0cad8bda6ca68aa691867e84f540c5ac9f6f3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>テレメトリ コンテキスト: Application Insights データ モデル
 
@@ -81,7 +81,7 @@ ms.lasthandoff: 07/11/2017
 
 ##<a name="anonymous-user-id"></a>匿名ユーザー ID
 
-匿名ユーザー ID。 アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
+匿名ユーザー ID。アプリケーションのエンド ユーザーを表します。 サービスからテレメトリが送信されるときのユーザー コンテキストは、サービスで操作を開始したユーザーに関するものです。
 
 [サンプリング](app-insights-sampling.md)は、収集されたテレメトリの量を最小限に抑える方技術の 1 つです。 サンプリング アルゴリズムは、相関関係を持つテレメトリをすべて対象として、またはすべてを対象外としてサンプリングを試行します。 匿名ユーザー ID は、サンプリング スコアの生成に使用されます。 このため、匿名ユーザー ID は、十分にランダムな値である必要があります。 
 
@@ -92,7 +92,7 @@ ms.lasthandoff: 07/11/2017
 
 ##<a name="authenticated-user-id"></a>認証されたユーザー ID
 
-認証されたユーザー ID。 匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 PII 情報であるため、ほとんど SDK では既定で収集されません。
+認証されたユーザー ID。匿名ユーザー ID とは正反対に当たる、このフィールドはフレンドリ名を持つユーザーを表します。 PII 情報であるため、ほとんど SDK では既定で収集されません。
 
 最大長: 1024
 

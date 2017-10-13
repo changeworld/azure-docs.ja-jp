@@ -15,15 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 02/21/2017
 ms.author: raynew
 ms.openlocfilehash: 438f32ee3605e2dd0c46de7993a359cc269262fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-between-on-premises-hyper-v-virtual-machines-and-azure-without-vmm-with-azure-site-recovery"></a>Azure Site Recovery を利用し、オンプレミス Hyper-V 仮想マシンと Azure (VMM なし) の間で複製する
 > [!div class="op_single_selector"]
-> * 
-            [Azure Portal](site-recovery-hyper-v-site-to-azure.md)
+> * [Azure Portal](site-recovery-hyper-v-site-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
 > * [クラシック ポータル](site-recovery-hyper-v-site-to-azure-classic.md)
 >

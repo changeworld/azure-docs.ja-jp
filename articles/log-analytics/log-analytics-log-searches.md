@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/26/2017
 ms.author: bwren
 ms.openlocfilehash: bf237a837297cb8f1ab3a3340139133adcd2b244
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-data-using-log-searches-in-log-analytics"></a>Log Analytics でログ検索を使用してデータを探す
 
@@ -556,7 +556,7 @@ countdistinct は、各グループに含まれる一意の値の数をカウン
 ## <a name="use-the-measure-interval-command"></a>Measure interval コマンドの使用
 Log Analytics では、パフォーマンス データをほぼリアルタイムで収集し、あらゆるパフォーマンス カウンターからデータを集めて視覚化することができます。 「 **Type:Perf** 」というクエリを入力するだけで、Log Analytics 環境内のカウンター数やサーバー数に基づいて多数のメトリック グラフが返されます。 必要に応じてメトリックの集計を組み合わせれば、環境内の全体的なメトリックをざっと見渡したり、必要に応じて、さらに粒度の細かいデータにまで踏み込んで調べたりすることもできます。
 
-たとえば、すべてのコンピューターを対象に平均 CPU 時間を調べることになったとしましょう。 コンピューターごとの平均 CPU 時間に着目しても、結果の凹凸がならされてしまい、有意義な結果が得られない可能性があります。 さらに踏み込んで調べるためには、もっと小さな時間枠を 1 つのまとまりとして結果を集計し、さまざまな切り口の時系列に注目します。 たとえば、すべてのコンピューターを対象に、1 時間ごとの平均 CPU 使用率を調べるには次のクエリを実行します。
+たとえば、すべてのコンピューターを対象に平均 CPU 時間を調べることになったとしましょう。 コンピューターごとの平均 CPU 時間に着目しても、結果の凹凸がならされてしまい、有意義な結果が得られない可能性があります。さらに踏み込んで調べるためには、もっと小さな時間枠を 1 つのまとまりとして結果を集計し、さまざまな切り口の時系列に注目します。 たとえば、すべてのコンピューターを対象に、1 時間ごとの平均 CPU 使用率を調べるには次のクエリを実行します。
 
 ```
 Type:Perf CounterName="% Processor Time" InstanceName="_Total" | measure avg(CounterValue) by Computer Interval 1HOUR

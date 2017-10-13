@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/16/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 02cd0fe30a2a14f42a16ed12f714d496bbb23b36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-streaming-optimization-via-the-azure-content-delivery-network"></a>Azure Content Delivery Network を介したメディア ストリーミングの最適化 
  
@@ -98,5 +97,4 @@ Azure Content Delivery Network from Verizon は、一般的な Web 配信の最�
 ### <a name="cache-fill-wait-time"></a>キャッシュ フィル待機時間
 
  キャッシュ フィル待機時間機能は、配信元サーバーから HTTP 応答ヘッダーが到着するまで、同じリソースの後続のすべての要求をエッジ サーバーに強制的に保留させます。 タイマーの有効期限が切れる前に配信元から HTTP 応答ヘッダーが到着すると、保留になったすべての要求はキャッシュを増大することなく使用されます。 同時に、配信元からのデータによってキャッシュがフィルされます。 既定では、キャッシュ フィル待機時間は 3000 ミリ秒に設定されます。 
-
 

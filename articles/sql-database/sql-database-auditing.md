@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/07/2017
 ms.author: giladm
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 04c402709560775592e5500362b0d9a4ccbf5a6f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-sql-database-auditing"></a>SQL Database 監査の使用
 Azure SQL Database 監査では、データベース イベントを追跡し、Azure ストレージ アカウントの監査ログにイベントを書き込みます。 また、監査によって以下を行うことができます。
@@ -83,7 +82,7 @@ SQL Database 監査を使用して、以下を行うことができます。
     <a id="storage-screenshot"></a> ![ナビゲーション ウィンドウ][4]
 6. 監査対象イベントをカスタマイズする場合は、PowerShell または REST API を使用して行います。 
 7. 監査設定を構成した後に、新しい脅威の検出機能をオンにし、電子メールを構成してセキュリティの警告を受信します。 脅威の検出を使用すると、セキュリティ上の脅威になる可能性がある異常なデータベース アクティビティに対するプロアクティブ アラートを受信できます。 詳細については、[脅威の検出の概要](sql-database-threat-detection-get-started.md)に関するページを参照してください。
-8. **[保存]** をクリックします。
+8. [ **Save**] をクリックします。
 
 
 
@@ -221,4 +220,3 @@ Geo レプリケーション データベースでは、プライマリ デー�
 [104]: /powershell/module/azurerm.sql/Remove-AzureRMSqlServerAuditing
 [105]: /powershell/module/azurerm.sql/Set-AzureRMSqlDatabaseAuditing
 [106]: /powershell/module/azurerm.sql/Set-AzureRMSqlServerAuditing
-

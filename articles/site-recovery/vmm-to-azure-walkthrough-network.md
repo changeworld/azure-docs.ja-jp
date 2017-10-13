@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
 ms.openlocfilehash: ef87cd82b021e40f0da05142878daff245cd9c62
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-4-plan-networking-for-hyper-v-with-vmm-to-azure-replication"></a>手順 4: Hyper-V から Azure へのレプリケーション (VMM あり) のネットワークを計画する
 

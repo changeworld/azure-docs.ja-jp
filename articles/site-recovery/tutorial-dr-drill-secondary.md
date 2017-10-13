@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8737c2a22bd729cfc15d5448e1ec0becef643fd5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-a-disaster-recovery-drill-for-hyper-v-vms-to-your-secondary-on-premises-site"></a>Hyper-V VM のセカンダリ オンプレミス サイトへのディザスター リカバリー訓練を実行する
 
@@ -56,7 +55,6 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 
 [運用環境のフェールオーバーを実行する](tutorial-vmm-to-vmm-failover-failback.md)
-
 
 
 

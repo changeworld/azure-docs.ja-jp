@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/14/2017
 ms.author: iainfou
 ms.openlocfilehash: 43e5cf1ab3bc3121d7e3915ea0785998e0ee2fc6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-reset-the-remote-desktop-service-or-its-login-password-in-a-windows-vm-created-using-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された Windows VM でリモート デスクトップ サービスまたはそのログイン パスワードをリセットする方法
 > [!IMPORTANT]
@@ -38,7 +38,7 @@ Windows 仮想マシン (VM) に接続できない場合、ローカル管理者
 
 ![Azure VM を参照する](./media/reset-rdp/Portal-Select-Classic-VM.png)
 
-Windows 仮想マシンを選び、**[Reset Remote... (リモートのリセット...)]** を選びます。 リモート デスクトップの構成をリセットするための次のダイアログが表示されます。
+Windows 仮想マシンを選び、**[Reset Remote... (リモートのリセット...)]** を選びます。リモート デスクトップの構成をリセットするための次のダイアログが表示されます。
 
 ![RDP 構成のリセット ページ](./media/reset-rdp/Portal-RDP-Reset-Windows.png)
 
@@ -75,7 +75,7 @@ Set-AzureVMAccessExtension –vm $vm -UserName $cred.GetNetworkCredential().User
     -Password $cred.GetNetworkCredential().Password  | Update-AzureVM
 ```
 
-現在のアカウントと異なる名前を入力すると、VMAccess 拡張機能によってローカル管理者アカウントの名前が変更されて、そのアカウントにパスワードが割り当てられます。さらに、リモート デスクトップのサインアウトが発行されます。 ローカル管理者アカウントが無効になっている場合は、VMAccess 拡張機能によって有効に設定されます。
+現在のアカウントと異なる名前を入力すると、VMAccess 拡張機能によってローカル管理者アカウントの名前が変更されて、そのアカウントにパスワードが割り当てられます。さらに、リモート デスクトップのサインアウトが発行されます。ローカル管理者アカウントが無効になっている場合は、VMAccess 拡張機能によって有効に設定されます。
 
 これらのコマンドはリモート デスクトップ サービスの構成もリセットします。
 

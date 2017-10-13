@@ -15,14 +15,14 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: kgremban
 ms.openlocfilehash: 7288f8fa173f8018570cd17aa7274f56a4eead41
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>テナント制限を使用して SaaS クラウド アプリケーションへのアクセスを管理する
 
-セキュリティを重視する大規模な組織は、Office 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS アプリがパブリック クラウドでホストされ、outlook.office.com や login.microsoftonline.com などの共有ドメイン名で実行されている世界では失敗します。 これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
+セキュリティを重視する大規模な組織は、Office 365 などのクラウド サービスへの移行を望んでいますが、ユーザーが承認済みリソースにしかアクセスできないことを認識しておく必要があります。 従来より、企業ではアクセスを管理するときにドメイン名や IP アドレスを制限しています。 この方法は、SaaS アプリがパブリック クラウドでホストされ、outlook.office.com や login.microsoftonline.com などの共有ドメイン名で実行されている世界では失敗します。これらのアドレスをブロックすると、ユーザーを承認済みの ID やリソースに単に制限するのではなく、ユーザーは Web 上の Outlook にまったくアクセスできなくなります。
 
 この課題を解決する Azure Active Directory のソリューションがテナント制限と呼ばれる機能です。 テナント制限を使用すると、組織はアプリケーションがシングル サインオンに使用する Azure AD テナントに基づいて、SaaS クラウド アプリケーションへのアクセスを制御できます。 たとえば、自分の組織の Office 365 アプリケーションへのアクセスは許可し、これらの同じアプリケーションの他の組織のインスタンスにはアクセスできないようにすることが可能です。  
 
@@ -126,7 +126,7 @@ Fiddler は無料の Web デバッグ プロキシです。Fiddler を使用し�
 2.  [Fiddler のヘルプ ドキュメント](http://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)に従って、HTTPS トラフィックを復号化するように Fiddler を構成します。
 3.  カスタム ルールを使用して、*Restrict-Access-To-Tenants* と *Restrict-Access-Context* の各ヘッダーを挿入するように Fiddler を構成します。
   1. Fiddler Web Debugger ツールで、**[Rules]** メニューを選択し、**[Customize Rules…]** を選択して CustomRules ファイルを開きます。
-  2. *OnBeforeRequest* 関数の先頭に次の行を追加します。 \<tenant domain\> を、テナントに登録されているドメイン (contoso.onmicrosoft.com など) に置き換えます。 \<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
+  2. *OnBeforeRequest* 関数の先頭に次の行を追加します。 \<tenant domain\> を、テナントに登録されているドメイン (contoso.onmicrosoft.com など) に置き換えます。\<directory ID\> を、テナントの Azure AD GUID 識別子に置き換えます。
 
   ```
   if (oSession.HostnameIs("login.microsoftonline.com") || oSession.HostnameIs("login.microsoft.com") || oSession.HostnameIs("login.windows.net")){      oSession.oRequest["Restrict-Access-To-Tenants"] = "<tenant domain>";      oSession.oRequest["Restrict-Access-Context"] = "<directory ID>";}

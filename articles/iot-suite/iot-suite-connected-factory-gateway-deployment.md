@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
 ms.openlocfilehash: b0e6ae705911d7c18643c77b7fe08fdffffa5eb1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする
 
@@ -96,7 +96,7 @@ Windows ベースのゲートウェイ デバイスに [Docker for Windows] を�
 
 1. コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバー間の信頼を確立します。 この手順により、コネクテッド ファクトリ ポータルと OPC UA サーバーから証明書の相互の信頼が確立され、接続が作成されます。
 
-1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。 現在のセットアップが異なる場合は、**D:\\docker** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json ファイルは、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
+1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。現在のセットアップが異なる場合は、**D:\\docker** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json ファイルは、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
 
 1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[Factory Locations (ファクトリの場所)]** ビューにある **[New Factory (新しいファクトリ)]** で確認できます。
 
@@ -146,7 +146,7 @@ Linux ゲートウェイ デバイスに [Docker をインストール]します
 
 1. コネクテッド ファクトリ ソリューション ポータルの **[Connect your own OPC UA Server (独自の OPC UA サーバーの接続)]** ページを参照します。 前のセクションの手順に従って、コネクテッド ファクトリ ポータルと OPC UA サーバー間の信頼を確立します。 この手順により、コネクテッド ファクトリ ポータルと OPC UA サーバーから証明書の相互の信頼が確立され、接続が作成されます。
 
-1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。 現在のセットアップが異なる場合は、**/shared** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json は、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
+1. OPC UA サーバーの OPC UA ノード ツリーを参照し、OPC ノードを右クリックして **[発行]** をクリックします。 発行をこのように実行するには、OPC UA サーバーとパブリッシャーが同じネットワーク上に存在する必要があります。 つまり、パブリッシャーの完全修飾ドメイン名が **publisher.mydomain.com** の場合、OPC UA サーバーの完全修飾ドメイン名は、たとえば **myopcuaserver.mydomain.com** である必要があります。現在のセットアップが異なる場合は、**/shared** フォルダーにある publishesnodes.json ファイルにノードを手動で追加できます。 publishesnodes.json は、OPC ノードが最初に正常に発行されたときに自動的に生成されます。
 
 1. これでテレメトリがゲートウェイ デバイスから送られてくるようになります。 テレメトリは、コネクテッド ファクトリ ポータルの **[Factory Locations (ファクトリの場所)]** ビューにある **[New Factory (新しいファクトリ)]** で確認できます。
 

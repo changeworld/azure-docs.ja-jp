@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/23/2017
 ms.author: garbrad
 ms.openlocfilehash: 440a062e5fff73526b2d77d7d0a7c52ca72a66f1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-dynamic-dns-to-register-hostnames-in-your-own-dns-server"></a>動的 DNS を使用し、独自の DNS サーバーでホスト名を登録する
 [名前を解決](virtual-networks-name-resolution-for-vms-and-role-instances.md) します。 ただし、Azure によって提供される名前解決を超えるニーズがある場合は、独自の DNS サーバーを設置できます。 これにより、独自の特定のニーズに合わせて、DNS ソリューションをカスタマイズすることができます。 たとえば、Active Directory ドメイン コントローラーを介したオンプレミスのリソースへのアクセスが必要になる場合があります。

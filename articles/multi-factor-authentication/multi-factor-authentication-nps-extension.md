@@ -15,12 +15,11 @@ ms.date: 08/14/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: H1Hack27Feb2017; it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 42b0bda033b1721ba5c0f575ea2ce6b0933f0f45
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication と既存の NPS インフラストラクチャの統合
 
@@ -251,4 +250,3 @@ NPS 拡張機能を実行しているサーバーから https://adnotifications.
 - NPS 拡張機能を使用して[リモート デスクトップ ゲートウェイ](nps-extension-remote-desktop-gateway.md)と [VPN サーバー](nps-extension-vpn.md)を統合する方法を学習する
 
 - [Azure Multi-Factor Authentication の NPS 拡張機能からのエラー メッセージを解決する](multi-factor-authentication-nps-errors.md)
-

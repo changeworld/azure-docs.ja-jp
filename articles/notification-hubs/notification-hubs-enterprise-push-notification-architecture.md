@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: d71c706a7db570e88339c4ff7af05a48c05df65b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enterprise-push-architectural-guidance"></a>エンタープライズ環境のプッシュ アーキテクチャに関するガイダンス
 今日の企業における重要事項は、外部のエンド ユーザーや社内の従業員向けのモバイル アプリケーションを作成することへと徐々に変化してきました。 社内にはメインフレームや LoB アプリケーションといった既存のバックエンド システムがありますが、これらをモバイル アプリケーション アーキテクチャへと統合する必要が出てきています。 このガイドでは、一般的なシナリオ向けのソリューションを推奨しながら、この統合を行うために最適な方法について説明します。
@@ -266,4 +265,3 @@ ms.lasthandoff: 09/20/2017
 [Azure WebJobs]: ../app-service/web-sites-create-web-jobs.md
 [Notification Hubs の使用 - Windows Universal チュートリアル]: http://azure.microsoft.com/documentation/articles/notification-hubs-windows-store-dotnet-get-started/
 [Azure クラシック ポータル]: https://manage.windowsazure.com/
-

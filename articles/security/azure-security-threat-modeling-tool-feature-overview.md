@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 5c60e13028c3ccdf3269d74ab4724bb34ca10c19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="threat-modeling-tool-feature-overview"></a>Threat Modeling Tool 機能の概要
 
 Threat Modeling Tool は、脅威モデリングのニーズに応えます。 ツールの基本的な概要については、「[Threat Modeling Tool の概要](./azure-security-threat-modeling-tool-getting-started.md)」を参照してください。
@@ -210,4 +208,3 @@ Threat Modeling Tool は、脅威モデリングのニーズに応えます。 �
 
 * コミュニティにテンプレートを投稿するには、[GitHub](https://github.com/Microsoft/threat-modeling-templates) ページにアクセスしてください。 
 * このツールの使用を開始するには、[ダウンロード](https://aka.ms/tmtpreview) ページにアクセスしてください。
-

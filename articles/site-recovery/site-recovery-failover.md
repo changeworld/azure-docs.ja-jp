@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/25/2017
 ms.author: pratshar
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 9c00cf88fa8b754c92cfd0f01be61a596d04d7c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="failover-in-site-recovery"></a>Site Recovery でのフェールオーバー
 この記事では、Site Recovery によって保護された仮想マシンと物理サーバーをフェールオーバーする方法について説明します。
@@ -131,4 +130,3 @@ Site Recovery を使用して保護されている仮想マシン/物理サー�
 Azure からオンプレミスに Hyper-V 仮想マシンを**フェールバック**するには、[**[計画されたフェールオーバー]**](site-recovery-failback-from-azure-to-hyper-v.md) オプションを使用します。
 
 VMM サーバーによって管理された別のオンプレミス データ センターに Hyper-V 仮想マシンをフェールオーバーした後、プライマリ データ センターが稼働状態になった場合は、**[レプリケーションの反転]** オプションを使用して、プライマリ データ センターへの逆レプリケーションを開始してください。
-

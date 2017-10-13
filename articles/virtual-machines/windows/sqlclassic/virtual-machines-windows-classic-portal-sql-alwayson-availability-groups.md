@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
 ms.openlocfilehash: b360fe9f28eeb9b10c82fce729165b1b572ac3c6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-always-on-availability-group-in-azure-virtual-machines-classic"></a>Azure Virtual Machines (クラシック) での AlwaysOn 可用性グループの構成
 > [!div class="op_single_selector"]
@@ -66,7 +66,7 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
 
 1. 次のスクリーン ショットに示すように、ページの左下隅にある **[新規]** ボタンをクリックします。
    
-    ![ポータルで [新規] をクリックします](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
+    ![ポータルで 新規をクリックします](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665511.gif)
 2. 次のスクリーンショットに示すように、**[ネットワーク サービス]** > **[仮想ネットワーク]** > **[カスタム作成]** の順にクリックします。
    
     ![[仮想ネットワークの作成]](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC665512.gif)
@@ -121,7 +121,7 @@ Azure Resource Manager モデルでこの作業を行う場合は、[Azure 仮�
     
      ![DNS サーバー仮想マシンでの [AD DS] ダイアログ ボックス](./media/virtual-machines-windows-classic-portal-sql-alwayson-availability-groups/IC784625.png)
 12. **[すべてのサーバー タスクの詳細]** ダイアログ ボックスの **[操作]** 列で、**[このサーバーをドメイン コントローラーに昇格する]** をクリックします。
-13. **Active Directory ドメイン サービスの構成ウィザード**で、次の値を使用します。
+13. **Active Directory Domain Services の構成ウィザード**で、次の値を使用します。
     
     | ページ | 設定 |
     | --- | --- |

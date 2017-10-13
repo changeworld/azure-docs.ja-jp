@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: bwren
 ms.openlocfilehash: 40a6101576708936404447576d704a49666143fe
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-view-designer-visualization-part-reference"></a>Log Analytics ビュー デザイナー視覚エフェクト パーツのリファレンス
 Log Analytics のビュー デザイナーを使用すると、OMS コンソールで、OMS リポジトリのデータのさまざまな視覚エフェクトを含むカスタム ビューを作成できます。 この記事は、カスタム ビューで使用できる視覚エフェクト パーツごとの設定のリファレンスです。

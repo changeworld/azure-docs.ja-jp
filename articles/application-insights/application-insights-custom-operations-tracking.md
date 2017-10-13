@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/30/2017
 ms.author: sergkanz
+ms.openlocfilehash: 6412445f4e7a9b639ae9a38a44ff51038c6fcc00
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b31d38fe2f7060597956a1ee9c66f43ce39d7240
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-custom-operations-with-application-insights-net-sdk"></a>Application Insights .NET SDK でカスタム操作を追跡する
 
 Application Insights SDK は、受信 HTTP 要求および依存関係にあるサービスへの呼び出し (HTTP 要求や SQL クエリなど) を自動的に追跡します。 要求と依存関係の追跡と関連付けによってアプリケーションを構成しているすべてのマイクロサービスの応答性と信頼性を確認することで、アプリケーション全体の状態を把握することができます。 
@@ -477,4 +475,3 @@ public async Task RunMyTaskAsync()
 - カスタムの[イベントとメトリック](app-insights-api-custom-events-metrics.md)を Application Insights にレポートします。
 - コンテキスト プロパティ コレクションの標準的な[構成](app-insights-configuration-with-applicationinsights-config.md#telemetry-initializers-aspnet)を確認します。
 - テレメトリを相互に関連付ける方法を [System.Diagnostics.Activity ユーザー ガイド](https://github.com/dotnet/corefx/blob/master/src/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md)で確認します。
-

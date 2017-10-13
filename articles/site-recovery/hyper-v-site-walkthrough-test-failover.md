@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
 ms.openlocfilehash: 0974b9eda2cb7e3ba54a4a0fad0a768db644caf9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-to-azure"></a>手順 11: Azure への Hyper-V のレプリケーションのテスト フェールオーバーを実行する
 

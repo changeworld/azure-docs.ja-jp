@@ -15,15 +15,14 @@ ms.workload: storage-backup-recovery
 ms.date: 05/31/2017
 ms.author: bsiva
 ms.openlocfilehash: dbd562b73b0caecd0feb993bd6fb796dddb0438c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-between-on-premises-hyper-v-virtual-machines-and-azure-by-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して、オンプレミスの Hyper-V 仮想マシンと Azure 間でレプリケートする
 > [!div class="op_single_selector"]
-> * 
-            [Azure Portal](site-recovery-hyper-v-site-to-azure.md)
+> * [Azure Portal](site-recovery-hyper-v-site-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-deploy-with-powershell-resource-manager.md)
 > * [クラシック ポータル](site-recovery-hyper-v-site-to-azure-classic.md)
 >

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: mingzhan
 ms.openlocfilehash: 68031d548bdbeda9a83d1bceaaea7c5bbcab3188
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-remote-desktop-to-connect-to-a-microsoft-azure-linux-vm"></a>リモート デスクトップを使用して Microsoft Azure Linux VM に接続する
 > [!IMPORTANT] 
@@ -38,7 +38,7 @@ xrdp ツールはオープン ソースの RDP サーバーであり、これを
 > 
 
 ## <a name="create-an-endpoint-for-remote-desktop"></a>リモート デスクトップ用のエンドポイントを作成する
-このドキュメントでは、リモート デスクトップに既定のエンドポイント 3389 を使用します。 次のように、Linux VM に対する `Remote Desktop` としてエンドポイント 3389 を設定します。
+このドキュメントでは、リモート デスクトップに既定のエンドポイント 3389 を使用します。次のように、Linux VM に対する `Remote Desktop` としてエンドポイント 3389 を設定します。
 
 ![イメージ](./media/remote-desktop/endpoint-for-linux-server.png)
 

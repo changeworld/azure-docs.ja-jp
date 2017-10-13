@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f9a5092d4dacce8aa1630830499635b3b4eb151
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -38,7 +37,7 @@ ms.lasthandoff: 09/25/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-- [シナリオのアーキテクチャとコンポーネント](concepts-physical-to-azure-architecture.md)を理解していること。
+- [シナリオのアーキテクチャとコンポーネント](concepts-physical-to-azure-architecture.md)を理解している。
 - すべてのコンポーネントの[サポート要件](site-recovery-support-matrix-to-azure.md)を確認すること。
 - レプリケートするサーバーが [Azure VM 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していること。
 - Azure を準備します。 Azure サブスクリプション、Azure 仮想ネットワーク、ストレージ アカウントが必要です。
@@ -82,7 +81,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 
 
-### <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストールのアカウントを準備する
+### <a name="prepare-an-account-for-mobility-service-installation"></a>モビリティ サービスのインストール用のアカウントを準備する
 
 モビリティ サービスは、レプリケートする各サーバーにインストールする必要があります。 サーバーのレプリケーションを有効にすると、Site Recovery がこのサービスを自動的にインストールします。 自動的にインストールするには、Site Recovery でサーバーへのアクセスに使用するアカウントを準備する必要があります。
 
@@ -184,5 +183,4 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 ## <a name="next-steps"></a>次のステップ
 
-[ディザスター リカバリー訓練を実行する](tutorial-dr-drill-azure.md)
-
+[ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)

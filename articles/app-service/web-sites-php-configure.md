@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
 ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 ## <a name="introduction"></a>はじめに
@@ -32,8 +32,7 @@ ms.lasthandoff: 07/11/2017
 PHP 5.6 および PHP 7.0 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
 
 ### <a name="azure-portal"></a>Azure Portal
-1. 
-            [Azure Portal](https://portal.azure.com) で Web アプリに移動し、**[設定]** ボタンをクリックします。
+1. [Azure Portal](https://portal.azure.com) で Web アプリに移動し、**[設定]** ボタンをクリックします。
    
     ![[保存]][settings-button]
 2. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、新しい PHP バージョンを指定します。

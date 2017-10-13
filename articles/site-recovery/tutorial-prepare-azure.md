@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 506b625905abf52963230a787af66f956bc292b5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-azure-resources-for-replication-of-on-premises-machines"></a>オンプレミス マシンのレプリケーションために Azure リソースを準備する
 
@@ -52,7 +51,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 レプリケートされたマシンのイメージは Azure Storage に保存されます。 オンプレミスから Azure にフェールオーバーするとき、ストレージから Azure VM が作成されます。
 
-1. [Azure Portal](https://portal.azure.com) メニューで、**[新規]**、 -> **[ストレージ]**、 -> **[ストレージ アカウント]** の順にクリックします。
+1. [Azure Portal](https://portal.azure.com) メニューで、**[新規]** -> **[ストレージ]** -> **[ストレージ アカウント]** の順にクリックします。
 2. ストレージ アカウントの名前を入力します。 この一連のチュートリアルでは、**contosovmsacct1910171607** という名前を使用します。 名前は Azure 内で一意にする必要があります。長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。
 3. **Resource Manager** デプロイメント モデルを使用する。
 4. **[汎用]**、 > **[標準]** の順に選択します。
@@ -76,7 +75,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
    ![新しいコンテナー](./media/tutorial-prepare-azure/new-vault-settings.png)
 
-   新しいコンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ブレードに表示されます。
+   新しいコンテナーは、**[ダッシュボード]** > **[すべてのリソース]** と、メインの **[Recovery Services コンテナー]** ページに表示されます。
 
 ## <a name="set-up-an-azure-network"></a>Azure ネットワークをセットアップする
 
@@ -101,4 +100,3 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 > [!div class="nextstepaction"]
 > [Azure にディザスター リカバリーするためにオンプレミス VMware インフラストラクチャを準備する](tutorial-prepare-on-premises-vmware.md)
-

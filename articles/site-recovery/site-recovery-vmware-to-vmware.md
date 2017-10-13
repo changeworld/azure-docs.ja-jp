@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
 ms.openlocfilehash: 01a6f35fe61290f8c7275c34273d66956a53d3f9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site-in-the-classic-azure-portal"></a>Azure クラシック ポータルでオンプレミスの VMware 仮想マシンまたは物理サーバーをセカンダリ サイトにレプリケートする
 
@@ -34,7 +34,7 @@ Azure Site Recovery の InMage Scout は、オンプレミスの VMWare サイ�
 3. **[名前]** に、コンテナーを識別するフレンドリ名を入力します。 複数のサブスクリプションがある場合は、いずれかを選択します。
 4. **[リソース グループ]** で、新しいリソース グループを作成するか、既存のリソース グループを選択します。 Azure リージョンを指定して、すべての必須フィールドに必要事項を入力します。
 5. **[場所]** で、コンテナーのリージョンを選択します。 サポートされているリージョンについては、「 [Azure Site Recovery の価格](https://azure.microsoft.com/pricing/details/site-recovery/)」をご覧ください。
-6. ダッシュボードからコンテナーにすばやくアクセスするには、[ダッシュボードにピン留めする] をクリックし、[作成] をクリックします。
+6. ダッシュボードからコンテナーにすばやくアクセスするには、ダッシュボードにピン留めするをクリックし、作成をクリックします。
 7. 新しいコンテナーは、[ダッシュボード] の [すべてのリソース] と、メインの [Recovery Services コンテナー] ブレードに表示されます。
 
 ## <a name="step-2-configure-the-vault-and-download-inmage-scout-components"></a>手順 2: コンテナーの構成および InMage Scout コンポーネントのダウンロード

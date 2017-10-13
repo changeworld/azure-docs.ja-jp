@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bd0ddfcffdb6f946f9a3786f3d0add1740be861b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="energy-demand-time-series-forecasting"></a>エネルギー需要の時系列予測
 
 
@@ -55,7 +53,7 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 
 ## <a name="prerequisites"></a>前提条件
 
-- [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版も使用できます)。
+- [Azure アカウント](https://azure.microsoft.com/free/) (無料試用版もご利用いただけます)。
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
 - このサンプルは、[Docker エンジン](https://www.docker.com/)をローカルにインストールした Windows 10 で Azure Machine Learning Workbench を実行していることを前提とします。 macOS を使用している場合も、手順の多くは変わりません。
 - ローカル デプロイメント環境セットアップでインストールされた Azure Machine Learning Operationalization および、この[ガイド](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md)の説明に従って作成されたモデル管理アカウント。
@@ -70,8 +68,8 @@ Azure Machine Learning Workbench は、各手順で、モデリング プロセ�
 ## <a name="create-a-new-workbench-project"></a>新しい Workbench プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
-1.  Azure Machine Learning Workbench を開きます。
-2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します。
+1.  Azure Machine Learning Workbench を開きます
+2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに、「Energy Demand Time Series Forecasting」と入力し、テンプレートを選択します
 5.  **[作成]**
@@ -195,4 +193,3 @@ python evaluate-all-models.py
 このサンプルは、エネルギー需要を予測する目的で、エンド ツー エンド時系列予測ソリューションを構築する方法を示しています。 このサンプルで説明した原則の多くは、他の予測シナリオや業界に拡張できます。
 
 このシナリオでは、データ サイエンティストが、Jupyter ノートブック環境やメトリックのログ記録機能などの Azure Machine Learning Workbench の 便利な機能を使って、どのように実際のソリューションを開発できるかを示しました。 サンプルでは、Azure Machine Learning Operationalization CLI を使用してモデルをどのように運用化し、デプロイできるかについても説明しました。 Web サービス API をデプロイすると、開発者またはデータ エンジニアは、予測モデルをより幅広いデータ パイプラインに統合できます。
-

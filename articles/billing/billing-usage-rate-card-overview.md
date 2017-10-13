@@ -13,16 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: billing
-ms.date: 04/18/2017
+ms.date: 10/9/2017
 ms.author: mobandyo;bryanla
+ms.openlocfilehash: 26217d6f4e14166a89fbb561cb12d0af78ae6f4d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 85b53620a886625920e8e057a14e1ed5fa3e5333
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Azure Billing API を使用して、Azure の使用状況に関する詳細なデータをプログラムによって取得する
 Azure Billing API を使用すると、使用状況やリソースに関するデータを、お使いのデータ分析ツールで取得できます。 Azure Resource Usage API と Azure Resource RateCard API は、コストを正確に予測して管理するうえで役立ちます。 これらの API は、Azure Resource Manager が公開している API ファミリに含まれ、リソース プロバイダーとして実装されています。  
 
@@ -63,8 +61,6 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
   * 別の Azure プラン タイプの方が Azure リソースの料金が安くなるかどうかについても判断できます。
   
 ## <a name="partner-solutions"></a>パートナー ソリューション
-「[Cloudyn は Microsoft Azure Usage API と RateCard API を使用してユーザー向けに ITFM を提供](billing-usage-rate-card-partner-solution-cloudyn.md)」では、Azure Billing API パートナーの [Cloudyn](https://www.cloudyn.com/microsoft-azure/) が提供した統合エクスペリエンスについて説明しています。 この記事では、エクスペリエンスについて解説すると共に、Cloudyn と Azure Billing API を使用して Azure 消費データを把握する方法についての短いビデオも用意されています。
-
 「[Cloud Cruiser と Microsoft Azure Billing API の統合](billing-usage-rate-card-partner-solution-cloudcruiser.md)」では、[Cloud Cruiser の Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) を Windows Azure Pack (WAP) ポータルから直接利用する方法について説明しています。 この方法では、Microsoft Azure のプライベート クラウドまたはホスト型パブリック クラウドの運用面と料金面の両方を 1 つのユーザー インターフェイスでシームレスに管理できます。   
 
 ## <a name="next-steps"></a>次のステップ
@@ -78,5 +74,4 @@ Usage API と RateCard API を組み合わせて実現できるシナリオ例�
 * Azure Resource Manager の詳細については、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。 
 
 * クラウドの使用量を把握するために必要なツール群の詳細については、Gartner の記事「[Market Guide for IT Financial Management (ITFM) Tools (IT 財務管理 (ITFM) ツールの市場ガイド)](http://www.gartner.com/technology/reprints.do?id=1-212F7AL&ct=140909&st=sb)」をご覧ください。
-
 

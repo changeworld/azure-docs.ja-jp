@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 1d74ead08dfb63276afb08bdcb7f4e3e3db5bfd3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-mongodb-express-angularjs-and-nodejs-mean-stack-on-a-linux-vm-in-azure"></a>Azure の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを作成する
 
 本チュートリアルでは、Azure の Linux VM に MongoDB、Express、AngularJS、Node.js (MEAN) スタックを実装する方法について説明します。 MEAN スタックを作成することで、データベースに書籍を追加したり、データベースの書籍を削除したり、一覧表示したりすることが可能になります。 学習内容は次のとおりです。
@@ -355,4 +353,3 @@ SSL 証明書を使用して Web サーバーをセキュリティ保護する�
 
 > [!div class="nextstepaction"]
 > [SSL による Web サーバーのセキュリティ保護](tutorial-secure-web-server.md)
-

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: anupams;v-bruham;garye
 ms.openlocfilehash: 9f867641b77c8148c1d6cbf2913da9c1f5ce5b71
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cortana-intelligence-appsource-publishing-guide"></a>Cortana Intelligence の AppSource 発行ガイド
 
@@ -78,7 +78,7 @@ AppSource で公開されている [Cortana Intelligence ソリューション](
 ## <a name="provide-info-for-microsoft-sellers"></a>Microsoft 販売者の情報を提供する
 パートナーにとっての AppSource の主なバリュー プロポジションの 1 つは、Microsoft 販売者と協力してパートナーのアプリを潜在顧客に提示することです。
 
-[Partner Solution Info for Microsoft Sellers](https://aka.ms/aapartnerappinfo) (Microsoft 販売者用のパートナー ソリューション情報) に入力して [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs) に送信します。 これは、Cortana Intelligence アプリの発行が承認されるうえで必要な手順です。
+[Partner Solution Info for Microsoft Sellers](https://aka.ms/aapartnerappinfo) (Microsoft 販売者用のパートナー ソリューション情報) に入力して [appsourcecissupport@microsoft.com](mailto:appsourcecissupport@microsoft.com?subject=Request%20publisher%20account%20creation%20for%20%3cPartner%20Name%3e%20and%20whitelist%20owner/contributer%20AAD/MSA%20email%20IDs) に送信します。これは、Cortana Intelligence アプリの発行が承認されるうえで必要な手順です。
 
 ## <a name="build-a-compelling-customer-walkthrough-on-appsource"></a>AppSource で説得力のあるお客様向けのチュートリアルを作成する
 まず、AppSource で [Neal Analytics Inventory Optimization](https://appsource.microsoft.com/en-us/product/web-apps/neal_analytics.8066ad01-1e61-40cd-bd33-9b86c65fa73a?tab=Overview&tag=CISHome) をご覧ください。 AppSource 内のすべてのアプリのエントリには、試用エクスペリエンス用のエントリ ポイント以外に、タイトル、概要 (最大で 100 文字)、説明 (最大で 1300 文字)、画像、ビデオ (オプション)、PDF ドキュメントなどの情報があります。 パートナーはこれらすべてを活用して、説得力のあるカスタマー エクスペリエンスを構築する必要があります。

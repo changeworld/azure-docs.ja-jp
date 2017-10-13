@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/01/2017
 ms.author: sujayt
 ms.openlocfilehash: 7b37e853f6b97ba313111f9201f877846a28fae9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-3-plan-networking-for-azure-vm-replication"></a>手順 3: Azure VM レプリケーションのネットワークを計画する
 

@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 04/29/2016
 ms.author: v-sharos
 ms.openlocfilehash: 68b767c9c93f2daff476a21029b9813f347590b5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-manage-your-storage-account"></a>StorSimple Manager サービスを使用してストレージ アカウントを管理する
 ## <a name="overview"></a>概要

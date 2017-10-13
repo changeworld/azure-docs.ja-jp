@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 2e5cce26bc8bebbe6b9f8ba3c3d03e8c3db8c87c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-cosmos-db"></a>Azure Cosmos DB を監視する
 Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) から監視できます。 Azure Cosmos DB アカウントごとに、メトリックの完全なスイートが提供されており、スループット、ストレージ、可用性、待機時間、一貫性を監視できます。
@@ -40,7 +39,7 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 2. リソース メニューの **[メトリック]**をクリックします。
 3. **[モニター - メトリック]** ウィンドウで、監視する Azure Cosmos DB アカウントに関連付けられたリソース グループを **[リソース グループ]** ドロップダウン メニューで選択します。 
 4. **[リソース]**ドロップ ダウン メニューで、監視するデータベース アカウントを選択します。
-5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Ctrl キーを使用します。 
+5. **[利用可能なメトリック]** の一覧で、表示するメトリックを選択します。 複数選択するには、Cｔｒｌ キーを使用します。 
 
 ## <a name="view-performance-metrics-on-the-account-page"></a>アカウントのページでパフォーマンス メトリックを表示する
 1. [Azure Portal](https://portal.azure.com/) で、**[その他のサービス]** をクリックして **[データベース]** までスクロールし、**[Azure Cosmos DB]** をクリックして、パフォーマンス メトリックを参照する Azure Cosmos DB アカウントの名前をクリックします。
@@ -87,5 +86,4 @@ Azure Cosmos DB アカウントは、[Azure Portal](https://portal.azure.com/) �
 
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の容量計画の詳細については、[Azure Cosmos DB Capacity Planner の計算機能](https://www.documentdb.com/capacityplanner)に関するページを参照してください。
-
 

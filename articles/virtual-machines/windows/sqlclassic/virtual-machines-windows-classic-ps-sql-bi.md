@@ -16,10 +16,10 @@ ms.workload: iaas-sql-server
 ms.date: 05/30/2017
 ms.author: asaxton
 ms.openlocfilehash: 65bada117e7d005362b0ac0ce7cc5336a92e0889
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-server-business-intelligence-in-azure-virtual-machines"></a>Azure Virtual Machines での SQL Server Business Intelligence
 > [!IMPORTANT] 
@@ -195,7 +195,7 @@ Azure 仮想マシンに接続するための 2 つの一般的なワークフ�
 
 1. 左側のウィンドウで、 **[データベース]** をクリックします。
 2. **[データベースの変更]**をクリックします。
-3. **[新しいレポート サーバー データベースを作成する]** が選択されていることを確認し、[次へ] をクリックします。
+3. **新しいレポート サーバー データベースを作成する** が選択されていることを確認し、次へをクリックします。
 4. **[サーバー名]** を確認し、**[接続テスト]** をクリックします。
 5. **"接続テストに成功しました"** というメッセージが表示されたら、**[OK]** をクリックし、**[次へ]** をクリックします。
 6. データベース名が **[ReportServer]**、**[レポート サーバー モード]** が **[ネイティブ]** であることを確認し、**[次へ]** をクリックします。

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.openlocfilehash: e54bedff5f744004288e132efbed8c3e7981f8a6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Hudson 継続的インテグレーション ソリューションでの Azure Storage の使用
 ## <a name="overview"></a>概要
@@ -31,8 +31,8 @@ Hudson では、開発者がコードの変更を簡単に統合し、ビルド�
 
 Hudson の詳細については、「 [Meet Hudson (Hudson について)](http://wiki.eclipse.org/Hudson-ci/Meet_Hudson)」を参照してください。
 
-## <a name="benefits-of-using-the-blob-service"></a>BLOB サービスを使用するメリット
-BLOB サービスを使用してアジャイル開発のビルド アーティファクトをホストするメリットには、次の点が挙げられます。
+## <a name="benefits-of-using-the-blob-service"></a>Blob service を使用するメリット
+Blob service を使用してアジャイル開発のビルド アーティファクトをホストするメリットには、次の点が挙げられます。
 
 * ビルド アーティファクトやダウンロード可能な依存関係に高可用性を実現。
 * Hudson CI ソリューションでビルド アーティファクトをアップロードする際のパフォーマンスを改善。
@@ -40,7 +40,7 @@ BLOB サービスを使用してアジャイル開発のビルド アーティ�
 * 匿名アクセス、有効期限ベースの Shared Access Signature によるアクセス、プライベート アクセスなどから 1 つを選んでユーザー アクセス ポリシーを制御。
 
 ## <a name="prerequisites"></a>前提条件
-Hudson CI ソリューションで BLOB サービスを使用するには、次のものが必要です。
+Hudson CI ソリューションで Blob service を使用するには、次のものが必要です。
 
 * Hudson 継続的インテグレーション ソリューション。
   
@@ -58,10 +58,10 @@ Hudson CI ソリューションで BLOB サービスを使用するには、次�
       通常の Hudson CI ソリューションであればサービスとして実行されるように設定しますが、このチュートリアルではコマンド ラインで Hudson war を実行するだけで十分です。
 * Azure アカウント。 Azure アカウントには、<http://www.azure.com> でサインアップできます。
 * Azure ストレージ アカウント。 まだストレージ アカウントを取得していない場合には、「 [ストレージ アカウントを作成する](../common/storage-create-storage-account.md#create-a-storage-account)」に記載の手順に従って作成できます。
-* 以降では、Hudson CI のビルド アーティファクトで BLOB サービスをリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
+* 以降では、Hudson CI のビルド アーティファクトで Blob service をリポジトリとして使用するうえで必要な手順を、基本的な例を使って説明しています。Hudson CI ソリューションにある程度習熟していることが望ましいものの、必須ではありません。
 
-## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Hudson CI で BLOB サービスを使用する方法
-Hudson で BLOB サービスを使用するには、Azure Storage プラグインをインストールし、そのプラグインを構成してストレージ アカウントを使用するようにしたうえで、ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションを作成する必要があります。 以降のセクションでは、ここに挙げた手順について説明します。
+## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Hudson CI で Blob service を使用する方法
+Hudson で Blob service を使用するには、Azure Storage プラグインをインストールし、そのプラグインを構成してストレージ アカウントを使用するようにしたうえで、ビルド後にビルド アーティファクトをストレージ アカウントにアップロードするアクションを作成する必要があります。 以降のセクションでは、ここに挙げた手順について説明します。
 
 ## <a name="how-to-install-the-azure-storage-plugin"></a>Azure Storage プラグインのインストール方法
 1. Hudson ダッシュボードで、 **[Manage Hudson]**をクリックします。
@@ -77,11 +77,11 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 2. **[Manage Hudson]** ページで **[Configure System]** をクリックします。
 3. **[Microsoft Azure Storage Account Configuration]** セクションで、次の操作を行います。
    
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure ポータル](https://portal.azure.com)で取得したストレージ アカウント名を入力します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) で取得したストレージ アカウント名を入力します。
    
-    b. 同様に、 [Azure ポータル](https://portal.azure.com)で取得したストレージ アカウント キーを入力します。
+    b. 同様に、[Azure Portal](https://portal.azure.com) で取得したストレージ アカウント キーを入力します。
    
-    c. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、 [Azure ポータル](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
+    c. パブリック Azure クラウドを使用している場合、 **[Blob Service Endpoint URL]** には既定値を使用します。 これとは異なる Azure クラウドを使用している場合には、[Azure Portal](https://portal.azure.com) でストレージ アカウント用に指定されたエンドポイントを使用します。
    
     d. **[Validate storage credentials]** をクリックしてストレージ アカウントを検証します。
    
@@ -120,7 +120,7 @@ Hudson で BLOB サービスを使用するには、Azure Storage プラグイ�
 13. Hudson ダッシュボードで、**[Build Now]** をクリックして **MyJob** を実行します。 コンソール出力でステータスを確認します。 ビルド後のアクションによってビルド アーティファクトのアップロードが開始されると、コンソール出力に Azure Storage に関するステータス メッセージが表示されます。
 14. ジョブが正常に完了すると、パブリック BLOB を開いてビルド アーティファクトを確認できます。
     
-    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure ポータル](https://portal.azure.com)にサインインします。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 [Azure Portal](https://portal.azure.com) にサインインします。
     
     b. **[Storage]**をクリックします。
     
@@ -145,8 +145,8 @@ Azure BLOB ストレージからダウンロードする項目が他にもある
 
 目的の BLOB が正常にダウンロードされていることを確かめるには、ビルドを実行した後に、ビルド履歴のコンソール出力またはダウンロード先を確認します。
 
-## <a name="components-used-by-the-blob-service"></a>BLOB サービスが使用するコンポーネント
-以下では、BLOB サービス コンポーネントの概要を説明します。
+## <a name="components-used-by-the-blob-service"></a>Blob service が使用するコンポーネント
+以下では、Blob service コンポーネントの概要を説明します。
 
 * **ストレージ アカウント**: Azure Storage にアクセスするときは必ずストレージ アカウントを使用します。 これは、アクセスする BLOB の名前空間の中でも最高レベルに位置するものです。 アカウントに格納できるコンテナーの数は、コンテナーの合計サイズが 100 TB (テラバイト) 未満である限り無制限です。
 * **コンテナー**: コンテナーは、一連の BLOB をグループ化します。 すべての BLOB はコンテナーに格納されている必要があります。 1 つのアカウントに格納できるコンテナーの数は無制限です。 また、1 つのコンテナーに保存できる BLOB の数も無制限です。

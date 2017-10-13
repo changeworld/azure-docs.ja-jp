@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
 ms.openlocfilehash: 76f69946724b5297b1f9a1f715819c69c4a4a51d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="oms-architecture"></a>OMS アーキテクチャ
 [Operations Management Suite (OMS)](https://azure.microsoft.com/documentation/services/operations-management-suite/) は、オンプレミス環境とクラウド環境を管理するためのクラウドベース サービスの集合体です。  この記事では、OMS のさまざまなオンプレミスおよびクラウドのコンポーネントと、クラウド コンピューティング アーキテクチャの概要について説明します。  詳細については、各サービスのドキュメントをご覧ください。

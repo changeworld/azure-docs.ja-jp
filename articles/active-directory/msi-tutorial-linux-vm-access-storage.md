@@ -13,15 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: elkuzmen
+ms.openlocfilehash: 16d96494c2e97604ed2116c6b1a28e099b4e61bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 8e4b3466143dc8b19df399913baca864b0af9bc0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="use-a-linux-vm-managed-service-identity-to-access-azure-storage"></a>Linux VM 管理対象サービス ID を使用して Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -72,10 +69,10 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成 
 
-まだお持ちでない場合は、この時点でストレージ アカウントを作成します。  この手順をスキップし、既存のストレージ アカウントのキーに対する VM MSI アクセス権を付与することもできます。 
+まだお持ちでない場合は、この時点でストレージ アカウントを作成します。  この手順をスキップし、既存のストレージ アカウントのキーに対するアクセス権を VM MSI に付与することもできます。 
 
 1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
-2. **[ストレージ]** をクリックし、次に **[ストレージ アカウント]** をクリックします。新しい "ストレージ アカウントの作成" パネルが表示されます。
+2. **[ストレージ]**、次に **[ストレージ アカウント]** をクリックすると、新しい [ストレージ アカウントの作成] パネルが表示されます。
 3. 後で使用する、ストレージ アカウントの**名前**を入力します。  
 4. **[デプロイ モデル]** と **[アカウントの種類]** が "Resource manager" と "General purpose" にそれぞれ設定されている必要があります。 
 5. **[サブスクリプション]** と **[リソース グループ]** が、前の手順で VM を作成したときに指定したものと一致していることを確認します。
@@ -85,18 +82,18 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="create-a-blob-container-in-the-storage-account"></a>ストレージ アカウントに BLOB コンテナーを作成する
 
-後で、新しいストレージ アカウントにファイルをアップロードおよびダウンロードします。 ファイルには BLOB ストレージが必要であるため、ファイルを保存する BLOB コンテナーを作成する必要があります。
+後で、新しいストレージ アカウントにファイルをアップロードおよびダウンロードします。 ファイルには Blob Storage が必要であるため、ファイルを格納する BLOB コンテナーを作成する必要があります。
 
-1. 新たに作成されたストレージ アカウントに戻ります。
-2. 左側のナビゲーション バーの "Blob service" の下にある **[コンテナー]** リンクをクリックします。
-3. ページの上部にある **[+ コンテナー]** をクリックすると、"New container" パネルがスライドして現れます。
+1. 新たに作成したストレージ アカウントに戻ります。
+2. 左側のナビゲーション バーの [Blob service] の下にある **[コンテナー]** リンクをクリックします。
+3. ページの上部にある **[+ コンテナー]** をクリックすると、[新しいコンテナー] パネルがスライドして現れます。
 4. コンテナーに名前を付け、アクセス レベルを選択して、**[OK]** をクリックします。 指定した名前は、後ほどチュートリアルで使用されます。 
 
     ![ストレージ コンテナーの作成](media/msi-tutorial-linux-vm-access-storage/create-blob-container.png)
 
 ## <a name="grant-your-vms-identity-access-to-use-storage-keys"></a>ストレージ キーを使用するために VM ID にアクセス権を付与する 
 
-Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、MSI を使用して Resource Manager からストレージ キーを取得し、それらのキーを使用してストレージにアクセスできます。  このステップでは、キーに対する VM MSI アクセス権を自分のストレージ アカウントに付与します。   
+Azure Storage は、ネイティブでは Azure AD 認証をサポートしていません。  ただし、MSI を使用して Resource Manager からストレージ キーを取得し、それらのキーを使用してストレージにアクセスできます。  この手順では、ストレージ アカウントのキーに対するアクセス権を自分の VM MSI に付与します。   
 
 1. **ストレージ**のタブに移動します。  
 2. 以前に作成した**ストレージ アカウント**を選択します。   
@@ -226,5 +223,4 @@ az storage blob download -c <CONTAINER NAME> -n test.txt -f test-download.txt --
 MSI の概要については、[管理対象サービス ID の概要](../active-directory/msi-overview.md)に関する記事をご覧ください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
-
 

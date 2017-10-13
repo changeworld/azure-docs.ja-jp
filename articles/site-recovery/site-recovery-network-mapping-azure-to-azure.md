@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: pratshar
 ms.openlocfilehash: 9d6a806ec533259797080fbfee2c38f918ebd8a2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-mapping-between-two-azure-regions"></a>2 つの Azure リージョン間でのネットワーク マッピング
 
@@ -37,7 +37,7 @@ Azure リージョンの Azure 仮想ネットワークを、別のリージョ�
 
 次の例では、東アジア リージョンで実行されている仮想マシンが、東南アジアにレプリケートされます。
 
-ソースとターゲットのネットワークを選択し、[OK] をクリックして、東アジアから東南アジアへのネットワーク マッピングを作成します。
+ソースとターゲットのネットワークを選択し、OKをクリックして、東アジアから東南アジアへのネットワーク マッピングを作成します。
 
 ![ネットワーク マッピング](./media/site-recovery-network-mapping-azure-to-azure/network-mapping2.png)
 

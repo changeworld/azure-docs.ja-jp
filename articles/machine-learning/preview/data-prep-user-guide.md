@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 22389ba85edb119acdd21b63f2deae2d71f31373
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-preparation-user-guide"></a>データ準備ユーザー ガイド 
 データ準備の操作では豊富な機能が多数用意されています。以下にその操作の最も深遠な部分について説明します。
@@ -110,4 +109,3 @@ ms.lasthandoff: 09/25/2017
 [付録 8 - Python のデータ ソースのサンプル](data-prep-appendix8-sample-source-connections-python.md)  
 [付録 9 - Python の変換先接続のサンプル](data-prep-appendix9-sample-destination-connections-python.md)  
 [付録 10 - Python の列変換のサンプル](data-prep-appendix10-sample-custom-column-transforms-python.md)  
-

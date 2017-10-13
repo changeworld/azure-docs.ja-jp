@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/30/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1f646016158c212747d7f9841449c348b41f9a15
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="disaster-recovery-guidance-for-data-in-data-lake-store"></a>Data Lake Store 内のデータに対するディザスター リカバリーのガイダンス
 
@@ -46,5 +45,4 @@ Azure Data Lake Store は自動レプリカによるデータの回復性を備�
 ## <a name="next-steps"></a>次のステップ
 * [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
-
 

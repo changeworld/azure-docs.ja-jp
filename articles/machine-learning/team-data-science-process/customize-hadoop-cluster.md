@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: hangzh;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 522e33b399f2648427464b439bc4405e9e8097cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="customize-azure-hdinsight-hadoop-clusters-for-the-team-data-science-process"></a>Team Data Science Process 用に Azure HDInsight Hadoop クラスターをカスタマイズ
 この記事では、HDInsight サービスでクラスターをプロビジョニングするときに各ノードで 64 ビット Anaconda (Python 2.7) をインストールして、HDInsight Hadoop クラスターをカスタマイズする方法について説明します。 また、クラスターにカスタム ジョブを送信するためにヘッドノードにアクセスする方法も示します。 このカスタマイズでは、便宜上 Anaconda に含まれる多くの一般的な Python モジュールを、クラスター内の Hive レコードを処理するように設計されたユーザー定義関数 (UDF) で使用できるようにします。 このシナリオで用いている手順については、「 [Hive クエリを送信する方法](move-hive-tables.md#submit)」を参照してください。
@@ -46,7 +45,7 @@ ms.lasthandoff: 09/25/2017
 
 ![ワークスペースの作成](./media/customize-hadoop-cluster/customize-cluster-img3.png)
 
-構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。 *[Hive/Oozie メタストアの入力]* は選択**しないでください**。 矢印をクリックして、次の構成ページに進みます。 
+構成ページ 3 では、HDInsight Hadoop クラスターのユーザー名とパスワードを指定します。 [Hive/Oozie メタストアの入力] は選択**しないでください**。** 矢印をクリックして、次の構成ページに進みます。 
 
 ![ワークスペースの作成](./media/customize-hadoop-cluster/customize-cluster-img4.png)
 
@@ -89,5 +88,4 @@ RDP を介して Hadoop クラスターのヘッド ノードにアクセスす�
 高度な分析プロセスの次のステップは、「[Team Data Science Process (TDSP)](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/)」に示されています。HDInsight にデータを移動し、Azure Machine Learning でデータの情報を取得する準備としてデータを処理してサンプリングする手順などがあります。
 
 Hive レコードを処理するために使用されるクラスターに格納されたユーザー定義関数 (UDF) で、クラスターのヘッド ノードから Anaconda に含まれる Python モジュールにアクセスする方法については、「[Hive クエリを送信する方法](move-hive-tables.md#submit)」をご覧ください。
-
 

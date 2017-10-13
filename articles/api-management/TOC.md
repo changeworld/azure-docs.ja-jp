@@ -71,7 +71,7 @@
 ## [テンプレート](api-management-developer-portal-templates-reference.md)
 ### テンプレート リファレンス
 #### [API](api-management-api-templates.md)
-#### [製品](api-management-product-templates.md)
+#### [成果物](api-management-product-templates.md)
 #### [アプリケーション](api-management-application-templates.md)
 #### [問題](api-management-issue-templates.md)
 #### [ユーザー プロファイル](api-management-user-profile-templates.md)

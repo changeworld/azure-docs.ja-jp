@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/06/2017
 ms.author: ramankum
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a14b25236fc233ef7b98b29e62a1270c5e4d8f53
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-managed-disks-in-the-same-subscription-or-different-subscription-with-powershell"></a>PowerShell で管理ディスクを同じサブスクリプションまたは別のサブスクリプションにコピーする
 
 このスクリプトは、既存の管理ディスクのコピーを同じサブスクリプションまたは別のサブスクリプションに作成します。 新しいディスクは、親の管理ディスクと同じリージョンに作成されます。   

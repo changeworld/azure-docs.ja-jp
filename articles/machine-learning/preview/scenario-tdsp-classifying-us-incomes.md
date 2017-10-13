@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c0fbd9b3e6f9f9f4f7a5d3e6bda18ce1312650e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 
 ## <a name="introduction"></a>はじめに
@@ -74,8 +72,8 @@ ms.lasthandoff: 09/25/2017
 ### <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
-1.  Azure Machine Learning Workbench を開きます。
-2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します。
+1.  Azure Machine Learning Workbench を開きます
+2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Classify US incomes - TDSP project」と入力し、テンプレートを選択します。
 5.  **[作成]**

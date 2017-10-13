@@ -39,7 +39,7 @@ sections:
         style: ordered
         items:
           - html: <a href="/azure/storage/blobs/storage-upload-process-images">クラウドに画像データをアップロードし、クラウドの画像データを取得する</a>
-          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Azure Functions をトリガーして BLOB を処理する</a>
+          - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event?toc=%2fazure%2fstorage%2fblobs%2ftoc.json">Azure Functions をトリガーして BLOB を処理する</a>
           - html: <a href="/azure/storage/blobs/storage-secure-access-application">アプリケーション データをセキュリティで保護する</a>
           - html: <a href="/azure/storage/blobs/storage-monitor-troubleshoot-storage-application">ストレージの監視とトラブルシューティングを行う</a>
   - title: サンプル
