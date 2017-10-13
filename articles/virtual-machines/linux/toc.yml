@@ -247,6 +247,7 @@
             - name: NVIDIA GPU ドライバーのインストール
               href: n-series-driver-setup.md
     - name: ストレージの管理
+      href: about-disks-and-vhds.md
       items:
         - name: Managed Disks について
           href: managed-disks-overview.md
