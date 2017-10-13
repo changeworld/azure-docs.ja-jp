@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
+ms.openlocfilehash: 705212675fc0a869a4374f621d5f2d7e035294dd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1cadb543660b636ce7f0285973e6fb4141841b99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-api-management-with-service-fabric"></a>Service Fabric を使用して API Management をデプロイする
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、Service Fabric を使用して [Azure API Management](../api-management/api-management-key-concepts.md) をセットアップし、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について示します。  完了すると、トラフィックをバックエンド ステートレス サービスに送信するよう API 操作が構成された状態で、API Management が VNET にデプロイされます。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。
 

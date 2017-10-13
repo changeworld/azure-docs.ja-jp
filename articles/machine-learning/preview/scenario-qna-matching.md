@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 09/15/2017
 ms.author: mez
 ms.manager: tihazen
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8edc21fb8f42ee5897c4e938045cc1f42aedb3ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使った Q & A 照合
 自由形式の質問に答えることは難しく、該当領域の専門家 (SME) による対応が必要になることがよくあります。 多くの場合、企業は社内の SME の負荷を減らすために、ユーザーをサポートする手段としてよく寄せられる質問 (FAQ) のリストを作成しています。 この例では、効果の高いさまざまな機械学習手法を使って、自由形式の質問を既存の FAQ の質問と回答のペアと照合する方法を示します。 この例では Azure Machine Learning Workbench を使って、こうしたソリューションを構築するための簡単な開発プロセスを示します。 
 
@@ -51,8 +49,8 @@ ms.lasthandoff: 09/25/2017
 ## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
-1.  Azure Machine Learning Workbench を開きます。
-2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します。
+1.  Azure Machine Learning Workbench を開きます
+2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します。
 4.  **[プロジェクト テンプレートの検索]** ボックスに「Q & A Matching」と入力し、テンプレートを選択します。
 5.  **[作成]**
@@ -99,7 +97,7 @@ Posts データの `PostTypeId` フィールドは、投稿が `Question` と `A
 
 Q&A 照合の例では、3 種類のファイルを使用しています。 1 つ目は、ワークフロー全体の詳細な説明を示す一連の Jupyter Notebook です。 2 つ目は、フレーズ学習と特徴抽出に必要なカスタム Python モジュールを含む一連の Python ファイルです。 これらの Python モジュールは汎用的であるため、この例以外のユース ケースにも利用できます。 3 つ目は、Azure Machine Learning Workbench を使って、ハイパー パラメーターをチューニングしてモデルのパフォーマンスを追跡する一連の Python ファイルです。
 
-この例のファイルは次のように整理されています。
+この例のファイルは、次のように整理されます。
 
 | ファイル名 | 型 | Description
 | ----------|------------|--------
@@ -110,7 +108,7 @@ Q&A 照合の例では、3 種類のファイルを使用しています。 1 �
 | `notebooks/Part_1_Data_Preparation.ipynb` | Jupyter Notebook | サンプル データにアクセスし、テキストを前処理して、トレーニングとテスト データセットを準備する
 | `notebooks/Part_2_Phrase_Learning.ipynb` | Jupyter Notebook | 情報量の多いフレーズを学習し、テキストを Bag-of-Words (BOW) 表記にトークン化する
 | `notebooks/Part_3_Model_Training_and_Evaluation.ipynb` | Jupyter Notebook | 特徴を抽出し、テキスト分類モデルをトレーニングして、モデルのパフォーマンスを評価する
-| `modules/__init__.py` | Python ファイル | Python パッケージ init ファイル
+| `modules/__init__.py` | Python ファイル | Python パッケージの init ファイル
 | `modules/phrase_learning.py` | Python ファイル | 生データの変換と情報量の多いフレーズの学習に使用する Python モジュール
 | `modules/feature_extractor.py` | Python ファイル | モデルのトレーニングのために特徴を抽出する Python モジュール
 | `scripts/naive_bayes.py` | Python ファイル | Naive Bayes モデルのハイパー パラメーターをチューニングする Python
@@ -162,4 +160,3 @@ Q&A 照合の例では、3 種類のファイルを使用しています。 1 �
 Timothy J. Hazen, Fred Richardson, [_Modeling Multiword Phrases with Constrained Phrases Tree for Improved Topic Modeling of Conversational Speech_](http://people.csail.mit.edu/hazen/publications/Hazen-SLT-2012.pdf). Spoken Language Technology Workshop (SLT), 2012 IEEE. IEEE, 2012.
 
 Timothy J. Hazen, [_MCE Training Techniques for Topic Identification of Spoken Audio Documents_](http://ieeexplore.ieee.org/abstract/document/5742980/) in IEEE Transactions on Audio, Speech, and Language Processing, vol. 19, no. 8, pp. 2451-2460, Nov. 2011.
-

@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: barlan
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 50b24466bcbd399de19934f7ec5ed096e308eaf3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="a-multi-tiered-approach-to-azure-ad-password-security"></a>多層を利用した Azure AD パスワード セキュリティ
 
@@ -86,4 +85,3 @@ Azure Active Directory のパスワード リセットに関する詳細につ�
 * [自分のパスワードを更新する方法](active-directory-passwords-update-your-own-password.md)
 * [Azure ID 管理の基礎](fundamentals-identity.md)
 * [パスワード リセット アクティビティに関するレポート](active-directory-passwords-reporting.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
+ms.openlocfilehash: b9f785a8f24c013f01dd429539239a7396a94953
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 9742187d2739b2d2d3b2073646dd6d7002898009
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="submit-a-request-to-pay-azure-subscription-by-invoice"></a>Azure サブスクリプションの請求書による支払いの要求を送信する
 

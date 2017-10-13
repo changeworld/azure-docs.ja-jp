@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 02/08/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 916652f2d6336da625be91431c3771a730204a73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # OAuth 2.0 と Azure Active Directory を使用した Web アプリケーションへのアクセスの承認
 Azure Active Directory (Azure AD) が OAuth 2.0 を使用することにより、ユーザーは Azure AD テナントの Web アプリケーションと Web API へのアクセスを承認することができます。 本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
@@ -379,4 +378,3 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 エラー コードとクライアントに推奨される対処法については、「[トークン エンドポイント エラーのエラー コード](#error-codes-for-token-endpoint-errors)」を参照してください。
-

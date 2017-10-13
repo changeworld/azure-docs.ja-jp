@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 74c34fccffcea6aae370d881791093f9b58a5f3d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-the-azure-stack-users-powershell-environment"></a>Azure Stack ユーザーの PowerShell 環境の構成
 
 Azure Stack ユーザーの場合は、Azure Stack Development Kit の PowerShell 環境を構成できます。 構成後は、PowerShell を使って、オファーのサブスクライブ、仮想マシンの作成、Azure Resource Manager テンプレートのデプロイなどの Azure Stack のリソースを管理できます。このトピックではユーザー環境での使用についてのみ扱っています。クラウド オペレーター環境用に PowerShell を設定する場合は、[Azure Stack オペレーターの PowerShell 環境の構成](../azure-stack-powershell-configure-admin.md)のトピックを参照してください。 
@@ -129,4 +127,3 @@ New-AzureRmResourceGroup -Name "MyResourceGroup" -Location "Local"
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stack のテンプレートの開発](azure-stack-develop-templates.md)
 * [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
-

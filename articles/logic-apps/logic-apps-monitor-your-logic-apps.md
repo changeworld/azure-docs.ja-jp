@@ -15,14 +15,12 @@ ms.topic: article
 ms.custom: H1Hack27Feb2017
 ms.date: 07/21/2017
 ms.author: LADocs; jehollan
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 4795f5728d4ce6ff21b97bc3fefd6a53e0c6a11b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-status-set-up-diagnostics-logging-and-turn-on-alerts-for-azure-logic-apps"></a>Azure Logic Apps の状態の監視、診断ログの設定、アラートの有効化
 
 [ロジック アプリを作成して実行する](../logic-apps/logic-apps-create-a-logic-app.md)と、その実行の履歴、トリガーの履歴、状態、パフォーマンスを確認できます。 リアルタイムでのイベントの監視と高度なデバッグについては、ご利用のロジック アプリの[診断ログ](#azure-diagnostics)を設定します。 このようにして、トリガー イベント、実行イベント、アクション イベントなど、[イベントを検索して表示する](#find-events)ことができます。 また、Azure Storage や Azure Event Hubs などの[他のサービスでこの診断データ](#extend-diagnostic-data)を使用することもできます。 

@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: hero-article
 ms.date: 09/05/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: 6fd88c58c0067deab08d502be4bd624c297b5fde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-mongodb-app-with-angular-and-azure-cosmos-db---part-4-create-an-azure-cosmos-db-account-using-the-azure-cli"></a>Angular と Azure Cosmos DB を使って MongoDB アプリを作成する - パート 4: Azure CLI を使って Azure Cosmos DB アカウントを作成する
 
@@ -86,4 +85,3 @@ Azure Cosmos DB アカウントの作成後、次の手順を実行します。
 
 > [!div class="nextstepaction"]
 > [Mongoose を使って Azure Cosmos DB に接続する](tutorial-develop-mongodb-nodejs-part5.md)
-

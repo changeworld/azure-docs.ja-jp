@@ -9,12 +9,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4b3720019ba396d90be5586fa8fff4fa7e7d6e46
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
@@ -230,4 +229,3 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 **どのようにして Azure Machine Learning のサポートを受けることができますか。**
 
 テクニカル サポートを受けるには、Azure のサポート ページにアクセスし、[Machine Learning] を選択します。 Azure Machine Learning では、[StackOverflow](https://stackoverflow.com/questions/tagged/azure-machine-learning) に "Azure-Machine-Learning" タグが付いた活発なコミュニティも用意されており、チームが巡回しています。  [Azure Machine Learning のフィードバック](https://feedback.azure.com/forums/257792-machine-learning) サイトからご提案や機能に対するご要望をお寄せください。 
-

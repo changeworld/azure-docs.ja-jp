@@ -8,14 +8,12 @@ ms.topic: article
 ms.service: machine-learning
 services: machine-learning
 ms.date: 09/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 43b124fc3eb72adc5d299b218c9e16ec83d1a240
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="aerial-image-classification"></a>航空画像の分類
 
 この例は、Azure Machine Learning Workbench を使用して、画像分類モデルの分散トレーニングと運用化を調整する方法を示しています。 ここでは [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) パッケージを使用し、トレーニング済みの CNTK モデルを使用して画像を特徴付けし、生成された特徴を使用して分類をトレーニングします。 次に、トレーニングしたモデルを並行してクラウド内の大規模な画像セットに適用します。 これらの手順は [Azure HDInsight Spark](https://azure.microsoft.com/en-us/services/hdinsight/apache-spark/) クラスターに対して実行されるので、worker ノードを増減することで、トレーニングと運用化の速度を上下できます。
@@ -73,7 +71,7 @@ ms.lasthandoff: 09/25/2017
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Aerial Image Classification」と入力し、テンプレートを選択します
-5.  **[作成]** をクリックします
+5.  **[作成]**
  
 #### <a name="create-the-resource-group"></a>リソース グループの作成
 
@@ -270,4 +268,3 @@ To dive deeper into this example:
 - Examine the sample scripts for statements calling the `blob_service`. Check that you understand how trained models and predictions are stored and retrieved from the cloud.
 - Explore the contents of the containers created in your blob storage account. Ensure that you understand which script or command is responsible for creating each group of files.
 - Modify the training script to train a different MMLSpark model type or to change the model hyperparameters. Use the run history feature to determine whether your changes increased or decreased the model's accuracy.
-

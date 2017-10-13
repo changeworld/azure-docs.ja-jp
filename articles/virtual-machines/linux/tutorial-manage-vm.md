@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 05/02/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: bef7f6ef13f6d31c16d40deb46f168ae52a9e61b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-manage-linux-vms-with-the-azure-cli"></a>Azure CLI を使用した Linux VM の作成と管理
 
 Azure 仮想マシンは、完全に構成可能で柔軟なコンピューティング環境を提供します。 このチュートリアルでは、VM サイズや VM イメージの選択、VM のデプロイなどの Azure 仮想マシンのデプロイに関する基本事項について説明します。 学習内容は次のとおりです。
@@ -325,4 +323,3 @@ az group delete --name myResourceGroupVM --no-wait --yes
 
 > [!div class="nextstepaction"]
 > [VM ディスクの作成と管理](./tutorial-manage-disks.md)
-

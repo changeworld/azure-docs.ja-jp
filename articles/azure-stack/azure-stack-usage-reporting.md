@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 695b93a818d3c0e615bb79e0a2861e134b2f5c89
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
 使用状況データ (使用量データとも呼ばれる) は、使用されたリソースの量を表します。 使用量ベースの課金モデルを採用する Azure Stack 統合システムは、使用状況データを Azure に報告する必要があります。 この使用状況データは、課金目的で使用されます。 Azure Stack のオペレーターは、使用状況データを報告するように Azure Stack の環境を構成する必要があります。

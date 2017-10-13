@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4890baa4ead3323834a82b3f9340cf751bf0c755
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 
 このページでは、[Intelligent Insights](sql-database-intelligent-insights.md) によって生成される Azure SQL Database パフォーマンス診断ログの使用、その形式、およびカスタム開発ニーズに対応するために含まれるデータについて説明します。 この診断ログを、[Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md)、[Azure Event Hub](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md)、[Azure Storage](sql-database-metrics-diag-logging.md#stream-into-azure-storage)、または DevOps のカスタム アラートおよびレポート機能を提供するサード パーティー製ソリューションに送信できます。
@@ -147,7 +145,6 @@ Intelligent Insights パフォーマンス ログは、[Azure Log Analytics]( ht
 - [Intelligent Insights を使用した Azure SQL Database のパフォーマンスに関する問題のトラブルシューティング](sql-database-intelligent-insights-troubleshoot-performance.md)の習得
 - [Azure SQL Analytics を使用した Azure SQL Database の監視](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-sql)の習得
 - [Azure リソースからのログ データの収集と使用](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)
-
 
 
 

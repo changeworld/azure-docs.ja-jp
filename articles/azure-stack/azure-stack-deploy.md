@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/11/2017
 ms.author: erikje
+ms.openlocfilehash: 73e7efb7d789fe12846d68066c0927bb123831a2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4a53065f76cef7b711f4a656b437cbefaf47c5d0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-deployment-prerequisites"></a>Azure Stack のデプロイの前提条件
 
-*適用先: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 [Azure Stack Development Kit](azure-stack-poc.md) をデプロイする前に、コンピューターが次の要件を満たしていることを確認してください。
 
@@ -183,5 +182,4 @@ SQL Server のテレメトリの構成については、「[フィードバッ�
 [Azure Stack 開発キット デプロイ パッケージをダウンロードする](https://azure.microsoft.com/overview/azure-stack/try/?v=try)
 
 [Azure Stack 開発キットをデプロイする](azure-stack-run-powershell-script.md)
-
 

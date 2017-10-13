@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 537dd6d64fe49093dd73d8040cde5a9153a7bd5c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-monitor-metrics-explorer"></a>Azure Monitor メトリックス エクスプローラー
 
 ここでは、現在パブリック プレビュー段階である次世代の Azure Monitor のメトリック グラフ化エクスペリエンスについて説明します。 新しいエクスペリエンスでは、多次元メトリックと次元のない基本的なメトリックの両方に対するグラフのレンダリングをサポートします。 複数の種類のリソース、複数のリソース グループ、およびサブスクリプションのメトリックを重ね合わせたグラフを描画できます。 グループ化とディメンション フィルターを適用することで、多次元メトリックのグラフをカスタマイズできます。 カスタマイズしたグラフを含む任意のグラフをダッシュボードにピン留めできます。
@@ -45,7 +43,7 @@ Azure の多数の リソースが、多次元メトリックを公開するよ�
 ### <a name="network-throughput"></a>ネットワーク スループット
 (このメトリックにはディメンションがありません)
 
- |タイムスタンプ        | メトリック値 | 
+ |Timestamp        | メトリック値 | 
    | ------------- |:-------------| 
    | 8/9/2017 8:14 | 1,331.8 Kbps | 
    | 8/9/2017 8:15 | 1,141.4 Kbps |
@@ -55,7 +53,7 @@ Azure の多数の リソースが、多次元メトリックを公開するよ�
 
 ### <a name="network-throughput--two-dimensions-ip-and-direction"></a>ネットワーク スループット + 2 つのディメンション ("IP" と "方向")
 
-| タイムスタンプ          | ディメンション "IP" | ディメンション "方向" | メトリック値| 
+| Timestamp          | ディメンション "IP" | ディメンション "方向" | メトリック値| 
    | ------------- |:-----------------|:------------------- |:-----------|  
    | 8/9/2017 8:14 | IP="192.168.5.2" | 方向 = "送信"    | 646.5 Kbps |
    | 8/9/2017 8:14 | IP="192.168.5.2" | 方向 = "受信" | 420.1 Kbps |

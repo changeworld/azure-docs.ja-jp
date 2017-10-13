@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/26/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
 ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
 この記事は、Azure AD パススルー認証に関する一般的な問題のトラブルシューティング情報を見つける助けとなります。
@@ -171,4 +169,3 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 >[!IMPORTANT]
 >パススルー認証では、負荷分散_ではなく_、複数の認証エージェントを使用して高可用性を確保します。 お使いの構成によっては、必ずしもすべての認証エージェントがほぼ_同数_の要求を受け取るとは_限りません_。 特定の認証エージェントがトラフィックを一切受け取らないということもあり得ます。
-

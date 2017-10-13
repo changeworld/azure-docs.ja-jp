@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/05/2016
 ms.author: mlearned
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: b590fb06a3dba8aec66a380217269e1ca39bb5e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-devops-with-the-azure-portal"></a>チュートリアル: Azure Portal を使用した DevOps
 Azure プラットフォームには、柔軟性の高い DevOps ワークフローが豊富に用意されています。 このチュートリアルでは、開発、テスト、デプロイのほか、実行中のアプリケーションのトラブルシューティング、監視、管理を行うために Azure Portal の機能を利用する方法について説明します。 このチュートリアルでは、主に次の内容を取り上げます。
@@ -126,7 +125,7 @@ Azure プラットフォームには、柔軟性の高い DevOps ワークフロ
     
     ![image28][image28]
 13. Team Services アカウントを設定する必要があります。 詳細については、こちらの [Team Services アカウントの作成](https://www.visualstudio.com/docs/setup-admin/team-services/sign-up-for-visual-studio-team-services)
-14. [新規] をクリックしてパフォーマンス テストを作成します。
+14. 新規をクリックしてパフォーマンス テストを作成します。
     
     ![image29][image29]
     
@@ -202,7 +201,7 @@ Azure には、実行中のアプリケーションを監視し、トラブル�
     ![image51][image51]
     
     ![image52][image52]
-14. 左側の [設定] ブレードに戻ります。 [新しいサポート要求] をクリックします。
+14. 左側の [設定] ブレードに戻ります。 新しいサポート要求をクリックします。
     
     ![image53][image53]
 15. 右側のブレードから問題の詳細を記入し、連絡先情報を入力できます。さらに、診断データをアップロードすることもできます。 Azure Portal では、Microsoft サポートとの連携がシームレスに行われます。
@@ -335,4 +334,3 @@ Azure には、実行中のアプリケーションを監視し、トラブル�
 [image67]: ./media/tutorial-azureportal-devops/image67.png
 [image68]: ./media/tutorial-azureportal-devops/image68.png
 [image69]: ./media/tutorial-azureportal-devops/image69.png
-

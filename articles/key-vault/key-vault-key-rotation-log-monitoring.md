@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/07/2017
 ms.author: jodehavi;stgriffi
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: f98ba1e2da6924476392948a4d18c807d68e39e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-key-vault-with-end-to-end-key-rotation-and-auditing"></a>エンド ツー エンドのキー ローテーションと監査で Azure Key Vault を設定する
 ## <a name="introduction"></a>はじめに
@@ -438,4 +437,3 @@ Logic App が作成されたら、そのアプリに移動し、**[編集]** を
 アクションで、**[Office 365 - send email (Office 365 - メール送信)]**を選択します。 フィールドに入力して、定義された条件が **false** を返したときに送信する電子メールを作成します。 Office 365 がない場合は、同じ結果を実現するために他の方法を確認してください。
 
 この時点では、1 分ごとに新しい Key Vault 監査ログを確認するエンド ツー エンドのパイプラインがあります。 これは検出した新しいログを Service Bus キューにプッシュします。 新しいメッセージがキューに届くと、ロジック アプリがトリガーされます。 イベント内の *appid* が呼び出し元アプリケーションのアプリケーション ID と一致しない場合、電子メールが送信されます。
-

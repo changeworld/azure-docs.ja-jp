@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 07/19/2017
 ms.author: marsma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c9b7e7a1fbc6b67821183ce31bdf2527de490c92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="transfer-objects-tofrom-azure-blob-storage-using-the-azure-cli"></a>Azure CLI を使用して Azure Blob Storage との間でオブジェクトを転送する
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このクイックスタートでは、Azure CLI を使って、Azure Blob Storage にデータをアップロードしたり、Azure Blob Storage からデータをダウンロードしたりする方法を詳しく説明します。
@@ -58,7 +56,7 @@ az storage blob upload \
     --file ~/path/to/local/file
 ```
 
-この操作では、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 続行する前に必要な数のファイルをアップロードします。
+この操作では、BLOB がまだ存在しない場合は作成し、既に存在する場合は上書きします。 続行する前に、希望する数のファイルをアップロードします。
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
@@ -83,7 +81,7 @@ az storage blob download \
 
 ## <a name="data-transfer-with-azcopy"></a>AzCopy でのデータ転送
 
-[AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ユーティリティは、Azure Storage 用の高パフォーマンスでスクリプト可能なデータ転送のもう 1 つのオプションです。 AzCopy を使って、Blob Storage、File Storage、および Table Storage との間で双方向にデータを転送できます。
+[AzCopy](../common/storage-use-azcopy-linux.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) ユーティリティは、Azure Storage 用のスクリプト可能な高性能データ転送のためのもう 1 つのオプションです。 AzCopy を使って、Blob Storage、File Storage、および Table Storage との間で双方向にデータを転送できます。
 
 次に示す AzCopy コマンドの簡単な例では、*myfile.txt* ファイルを *mystoragecontainer* コンテナーにアップロードしています。
 
@@ -97,7 +95,7 @@ azcopy \
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このクイックスタートで作成したストレージ アカウントなど、リソース グループのリソースが不要になった場合は、[az group delete](/cli/azure/group#delete) コマンドでリソース グループを削除します。
+このクイック スタートで作成したストレージ アカウントも含め、リソース グループ内のどのリソースも必要なくなった場合は、[az group delete](/cli/azure/group#delete) コマンドでリソース グループを削除します。
 
 ```azurecli-interactive
 az group delete --name myResourceGroup
@@ -109,4 +107,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [方法: Azure CLI での Blob Storage の操作](storage-how-to-use-blobs-cli.md)
-

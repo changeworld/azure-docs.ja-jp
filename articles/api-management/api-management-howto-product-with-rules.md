@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 300b1d762a61c810dbffde5aaacd8a85f12c9fca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-your-api-with-rate-limits-using-azure-api-management"></a>Azure API Management でレート制限を使用して API を保護する
 このガイドでは、Azure API Management でレート制限やクォータ ポリシーを構成することによって、いかに簡単にバックエンド API の保護を追加できるかを示します。
@@ -326,4 +325,3 @@ API を追加し、ポリシーを構成したら、成果物を開発者が使�
 
 [Limit call rate]: https://msdn.microsoft.com/library/azure/dn894078.aspx#LimitCallRate
 [Set usage quota]: https://msdn.microsoft.com/library/azure/dn894078.aspx#SetUsageQuota
-

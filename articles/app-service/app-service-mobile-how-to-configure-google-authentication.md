@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 09db38cfb5fb4277d4ca259eb10e388af33f1773
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
+ms.openlocfilehash: d6c1707f67d986487e5a45e76ffc9a02ddf16eb1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-google-login"></a>Google ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -69,5 +68,4 @@ ms.lasthandoff: 03/09/2017
 [Google apis]: http://go.microsoft.com/fwlink/p/?LinkId=268303
 
 [Azure ポータル]: https://portal.azure.com/
-
 

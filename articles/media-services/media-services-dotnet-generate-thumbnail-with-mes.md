@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 7b8732a06e54f7828418cba0c0d172e34f1f4ef7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-generate-thumbnails-using-media-encoder-standard-with-net"></a>.NET で Media Encoder Standard を使用してサムネイルを生成する方法
 
@@ -545,5 +544,4 @@ FileName で {Resolution} マクロを使用すると、出力画像のファイ
 
 ## <a name="see-also"></a>関連項目
 [Media Services Encoding の概要](media-services-encode-asset.md)
-
 

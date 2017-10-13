@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0974b9eda2cb7e3ba54a4a0fad0a768db644caf9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-11-run-a-test-failover-for-hyper-v-replication-to-azure"></a>手順 11: Azure への Hyper-V のレプリケーションのテスト フェールオーバーを実行する
 
 この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使って (System Center VMM で管理されていない) オンプレミスの Hyper-V 仮想マシンから Azure へのテスト フェールオーバーを実行する方法について説明します。
@@ -100,5 +98,4 @@ ms.lasthandoff: 08/22/2017
 
 - さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
 - [フェールバックの詳細を確認し](site-recovery-failback-from-azure-to-hyper-v.md)、Azure VM をオンプレミスのプライマリ Hyper-V サイトにフェールバックおよびレプリケートして戻します。
-
 

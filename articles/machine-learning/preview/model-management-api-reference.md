@@ -11,12 +11,11 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4c4391cecaf10428b5d4cacf3b39e6a08d417053
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Azure Machine Learning モデル管理アカウント API リファレンス
 
@@ -505,7 +504,7 @@ ID でサービスを取得します。
 | 200 | 成功 | [AuthKeys](#authkeys)
 | default | 操作に失敗した理由を説明するエラー応答 | [ErrorResponse](#errorresponse)
 
-## <a name="query-the-list-of-deployments-in-an-account"></a>アカウントにあるデプロイ一覧の照会
+## <a name="query-the-list-of-deployments-in-an-account"></a>アカウントにあるデプロイ一覧を照会します。
 
 ### <a name="request"></a>要求
 | メソッド | 要求 URI |
@@ -931,5 +930,4 @@ Azure Machine Learning モデルのインスタンス
 |---|---|---|
 |**properties**  <br>*必須*||< string, string > マップ|
 |**runtimeType**  <br>*必須*|ランタイムを指定します。|列挙型 (SparkPython、Python)|
-
 

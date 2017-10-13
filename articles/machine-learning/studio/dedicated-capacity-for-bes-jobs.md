@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 40641910f904aa0c0516f96d84d0ebbbbe8e5501
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-batch-service-for-machine-learning-jobs"></a>Machine Learning ジョブ用の Azure Batch サービス
 
@@ -112,4 +111,3 @@ Batch プール処理は、常時課金対象サービスで、Resource Manager 
 | **Batch プール処理を使用する状況**    | **クラシック バッチ処理を使用する状況**  |
 |---|---|
 |多数のジョブを実行する必要がある<br>または<br/>ジョブがすぐに実行される必要がある<br/>または<br/>保証されたスループットが必要である (たとえば、所定の時間枠でたくさんのジョブを実行し、ニーズに合わせてコンピューティング リソースをスケールアウトする必要がある)    | 少数のジョブを実行する<br/>と<br/> ジョブがすぐに実行される必要がない |
-

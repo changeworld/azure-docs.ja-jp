@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: bwren
+ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: 6baffb1fb14a3b7ede5a754029b9efbaf543ea07
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。
@@ -33,8 +32,8 @@ ms.lasthandoff: 09/21/2017
 * 一部のアプリケーション フレームワークまたは一部の設定では、より多くの例外をキャッチするために余分の手順を実行する必要があります。
   * [Web フォーム](#web-forms)
   * [MVC](#mvc)
-  * [Web API 1.*](#web-api-1)
-  * [Web API 2.*](#web-api-2)
+  * [Web API 1.*](#web-api-1x)
+  * [Web API 2.*](#web-api-2x)
   * [WCF](#wcf)
 
 ## <a name="diagnosing-exceptions-using-visual-studio"></a>Visual Studio を使用して例外を診断する
@@ -445,4 +444,3 @@ Attribute を拡張し、IErrorHandler と IServiceBehavior を実装するク�
 * [REST、SQL、および依存関係へのその他の呼び出しを監視する](app-insights-asp-net-dependencies.md)
 * [ページの読み込み時間、ブラウザー例外、および AJAX 呼び出しを監視する](app-insights-javascript.md)
 * [パフォーマンス カウンターを監視する](app-insights-performance-counters.md)
-

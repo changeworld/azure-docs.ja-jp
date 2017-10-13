@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: e9ff7947e7801a9f352a7a947b09893b8f615d88
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-traffic-manager-profile"></a>Traffic Manager プロファイルの作成
 
 この記事では、ルーティングの種類に**優先順位**を使用するプロファイルを作成して、ユーザーを Azure Web Apps の 2 つのエンドポイントにルーティングする方法について説明します。 ルーティングの種類に**優先順位**を使用することで、すべてのトラフィックが 1 番目のエンドポイントにルーティングされ、2 番目のエンドポイントはバックアップとして保持されます。 その結果、1 番目のエンドポイントに異常が発生した場合は、2 番目のエンドポイントにユーザーをルーティングできます。
@@ -73,7 +71,6 @@ ms.lasthandoff: 09/29/2017
 - [ルーティングの種類](traffic-manager-routing-methods.md)の詳細について学習します。
 - [エンドポイントの種類](traffic-manager-endpoint-types.md)の詳細について学習します。
 - [エンドポイントの監視](traffic-manager-monitoring.md)の詳細について学習します。
-
 
 
 

@@ -1,4 +1,4 @@
----   
+---
 title: "Azure Application Gateway の SSL ポリシーの概要 | Microsoft Docs"
 description: "Azure Application Gateway での SSL ポリシーの構成について説明します"
 services: application gateway
@@ -14,15 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure services
 ms.date: 08/03/2017
 ms.author: amsriva
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: ec36af282bbfdc22ff88082412dd18cd2a85f245
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-   
-
 # <a name="application-gateway-ssl-policy-overview"></a>Application Gateway の SSL ポリシーの概要
 
 Azure Application Gateway を使用すると、SSL 証明書の管理を一元化し、バックエンド サーバー ファームからの暗号化と復号化のオーバーヘッドを低減することができます。 この一元化された SSL の処理によって、お客様の組織のセキュリティ要件に適したサーバーで中心的な役割を担う SSL ポリシーを指定することもできます。 これにより、コンプライアンス要件やセキュリティ ガイドラインに合致した推奨プラクティスを実行できます。
@@ -107,4 +104,3 @@ Application Gateway では、カスタム ポリシーで選択できる次の�
 ## <a name="next-steps"></a>次のステップ
 
 SSL ポリシーを構成する方法については、「[Application Gateway で SSL ポリシーのバージョンと暗号スイートを構成する](application-gateway-configure-ssl-policy-powershell.md)」を参照してください。
-

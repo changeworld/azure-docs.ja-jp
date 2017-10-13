@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 013c99045621e4651a44ab99c9f695fff6004654
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="split-column-by-example-transformation"></a>[Split Column by Example] (例による列の分割) 変換
 この変換は、ユーザーが入力することなく、予測して、意味のある境界上で列のコンテンツを分割します。 分割アルゴリズムが、列のコンテンツを分析した後で境界を選択します。 これらの境界は以下の項目によって定義できます
 * 固定の区切り記号、
@@ -178,4 +176,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="technical-notes"></a>テクニカル ノート
 
 分割変換機能は、**予測プログラム合成**技法に基づいています。 この技法では、データ変換プログラムは、入力データに基づいて自動的に学習します。 プログラムは、ドメイン固有の言語で合成されます。 DSL は、特定の正規表現のコンテキストで現れる区切り記号とフィールドに基づきます。 このテクノロジの詳細については、[このトピックに関する最近の発行物](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/)に記されています。 
-

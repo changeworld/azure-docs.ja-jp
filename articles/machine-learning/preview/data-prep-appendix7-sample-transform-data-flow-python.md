@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/11/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f43f65ca89349fc790684e9bd7acd2f19e15abe5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sample-of-custom-data-flow-transforms-python"></a>カスタム データ フロー変換のサンプル (Python) 
 メニューでのこの変換の名前は "データ フローの変換 (スクリプト)" です。この付録を読む前に「[Python Extensibility Overview (Python 拡張機能の概要)](data-prep-python-extensibility-overview.md)」をお読みください。
 
@@ -84,5 +82,4 @@ risk_category 列によってグループ化された score 列に対して計�
 |テキサス         |テキサス         |ダラス     |
 |              |テキサス         |サンアントニオ|
 |              |テキサス         |ヒューストン    |
-
 

@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 7bfda602dbc0ea47828a7c9243b8b9b09ec78432
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshooting-the-azure-importexport-tool"></a>Azure Import/Export ツールのトラブルシューティング
 Microsoft Azure Import/Export ツールでは、問題が発生するとエラー メッセージが返されます。 この記事では、ユーザーがよく経験する問題について説明します。  
   
@@ -45,4 +43,3 @@ Microsoft Azure Import/Export ツールでは、問題が発生するとエラ�
 * [コピー ログ ファイルによるジョブの状態の確認](../storage-import-export-tool-reviewing-job-status-v1.md)   
 * [インポート ジョブの修復](../storage-import-export-tool-repairing-an-import-job-v1.md)   
 * [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)
-

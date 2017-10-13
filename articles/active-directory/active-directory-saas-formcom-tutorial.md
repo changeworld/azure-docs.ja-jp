@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: fe3fa637e570ebdb01cfdebc6ba3e000c05b6a8c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-formcom"></a>チュートリアル: Azure Active Directory と Form.com の統合
 
@@ -190,7 +189,7 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-formcom-test-user"></a>Form.com テスト ユーザーの作成
 
@@ -253,5 +252,4 @@ Form.com で Azure AD のシングル サインオンを構成してテストす
 [201]: ./media/active-directory-saas-formcom-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-formcom-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-formcom-tutorial/tutorial_general_203.png
-
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 94658dfcf93e821e24cabb1f010f8dce0c014700
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>VPN Gateway を使用してオンプレミスの接続を診断する
 
 Azure VPN Gateway を使うと、オンプレミス ネットワークと Azure Virtual Network との間の接続のセキュリティ保護に取り組むハイブリッド ソリューションを作成できます。 要件が一意であるため、オンプレミスの VPN デバイスの選択も一意です。 Azure では現在、デバイス ベンダーと協力して常に検証している、[複数の VPN デバイス](../vpn-gateway/vpn-gateway-about-vpn-devices.md#devicetable)をサポートしています。 オンプレミスの VPN デバイスを構成する前に、デバイス固有の構成設定を見直します。 同様に、Azure VPN Gateway は接続の確立に使用されている、[サポート対象の IPsec パラメーター](../vpn-gateway/vpn-gateway-about-vpn-devices.md#ipsec)のセットで構成されています。 現在、Azure VPN Gateway から特定の IPsec パラメーターの組み合わせを指定または選択する方法はありません。 オンプレミスと Azure との間の接続を正常に確立するには、オンプレミス VPN デバイスの設定が Azure VPN Gateway で規定されている IPsec パラメーターに従っている必要があります。 設定が正しくない場合は、接続が失われます。これまではこれらの問題をトラブルシューティングするのは簡単ではなく、たいてい何時間もかけて問題を特定して、修正していました。
@@ -115,4 +113,3 @@ Azure Network Watcher のトラブルシューティング機能を使用する�
 PowerShell と Azure Automation を使用した VPN Gateway の接続の確認については、[Azure Network Watcher のトラブルシューティングを使用した VPN ゲートウェイの監視](network-watcher-monitor-with-azure-automation.md)に関する記事をご覧ください。
 
 [1]: ./media/network-watcher-diagnose-on-premises-connectivity/figure1.png
-

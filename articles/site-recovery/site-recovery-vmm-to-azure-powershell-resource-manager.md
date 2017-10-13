@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: rajanaki
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 34086044db752f09f1282517b59856091e85c2fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-azure-using-powershell-and-azure-resource-manager"></a>PowerShell と Azure Resource Manager を使用して VMM クラウドの Hyper-V 仮想マシンを Azure にレプリケートする
 > [!div class="op_single_selector"]
-> * [Azure App Service で Java Web アプリ](site-recovery-vmm-to-azure.md)
+> * [Azure Portal](site-recovery-vmm-to-azure.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-azure-powershell-resource-manager.md)
 > * [クラシック ポータル](site-recovery-vmm-to-azure-classic.md)
 > * [PowerShell - クラシック](site-recovery-deploy-with-powershell.md)
@@ -308,4 +307,3 @@ Azure Resource Manager と PowerShell を使用して仮想ネットワークを
 
 ## <a name="next-steps"></a>次のステップ
 [詳細を確認](/powershell/module/azurerm.recoveryservices.backup/#recovery) します。
-

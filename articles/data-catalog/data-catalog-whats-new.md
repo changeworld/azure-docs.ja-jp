@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-catalog
 ms.date: 09/06/2017
 ms.author: maroche
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: 7259505b68202f3741e64e86555d2e3f968b8951
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-azure-data-catalog"></a>Azure Data Catalog の新機能
 **Azure Data Catalog** の更新プログラムは定期的にリリースされます。 一部のリリースではバックエンド サービス機能に重点を置いているため、すべてのリリースにユーザー向けの新機能が含まれているわけではありません。 ここでは、Azure Data Catalog サービスに追加されたユーザー向けの新機能について説明します。
@@ -264,5 +263,4 @@ Data Catalog のリレーションシップの詳細については、「[Azure 
 * 上部のナビゲーション バーに新しい [ユーザー] ボタンとメニューを追加しました。 このメニューを使用すると、ユーザーは Azure Data Catalog へのログオンに使用したアカウントを確認でき、必要な場合はサインアウトできます。 このメニューでは、Azure Data Catalog REST API を使用する開発者に役に立つカタログ名も表示されます。
 * Standard Edition のみ: データ資産に所有者を追加するとき、Azure Data Catalog は所有者としてユーザー アカウントとセキュリティ グループの両方をサポートするようになりました。 選択したデータ資産の所有者としてセキュリティ グループを追加する場合、グループの表示名またはグループの UPN 電子メール アドレス (ある場合) のいずれかを入力できます。
 * Azure BLOB Storage データ ソースのサポート。 ユーザーは、Azure Storage の BLOB およびディレクトリを登録および検出できるようになりました。
-
 

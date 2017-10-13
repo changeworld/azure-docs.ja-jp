@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6e71a13f99160fdd310be1e9a59717c9fecbf35d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-azure-file-share-over-smb-with-macos"></a>macOS を使用して SMB 経由で Azure ファイル共有をマウントする
 [Azure Files](storage-files-introduction.md) は、業界標準を使用して Azure でネットワーク ファイル共有を作成および使用できるようにする、Microsoft のサービスです。 Azure ファイル共有は、macOS Sierra (10.12) および El Capitan (10.11) でマウントできます。 この記事では、Terminal を使用して macOS と Finder UI で Azure ファイル共有をマウントする、2 つの異なる方法を示します。
 

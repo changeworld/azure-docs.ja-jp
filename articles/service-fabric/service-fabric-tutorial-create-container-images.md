@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
+ms.openlocfilehash: 08b3cc4a52c09ee03818b563794ef9b009d12ef4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e84a0a05cbe1952d8325a9aed1c1df411bfcb877
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-container-images-for-service-fabric"></a>Service Fabric のコンテナー イメージを作成する
 
 このチュートリアルは、Linux Service Fabric クラスター内のコンテナーの使い方を実演するるチュートリアル シリーズの第 1 部です。 このチュートリアルでは、複数コンテナーのアプリケーションを Service Fabric で使うことができるように準備します。 以降のチュートリアルでは、これらのイメージを Service Fabric アプリケーションの一部として使います。 このチュートリアルで学習する内容は次のとおりです。 
@@ -57,12 +55,7 @@ ms.lasthandoff: 09/25/2017
 ```bash
 git clone https://github.com/Azure-Samples/service-fabric-dotnet-containers.git
 
-```
-
-複製したディレクトリから、次のコマンドを使って作業ディレクトリに入ります。 
-
-```bash 
-cd Linux/container-tutorial/
+cd service-fabric-dotnet-containers/Linux/container-tutorial/
 ```
 
 "container-tutorial" ディレクトリの下には、"azure-vote" という名前のフォルダーがあります。 "azure-vote" フォルダーには、フロントエンドのソース コードと、フロントエンドをビルドするための Dockerfile が含まれています。 "container-tutorial" ディレクトリには "redis" ディレクトリも含まれ、このディレクトリには redis イメージをビルドするための Dockerfile があります。 これらのディレクトリには、このチュートリアル セットに必要な資産が含まれています。 
@@ -242,4 +235,3 @@ azure-vote-front
 
 > [!div class="nextstepaction"]
 > [Service Fabric アプリケーションとしてのコンテナーのパッケージ化とデプロイ](service-fabric-tutorial-package-containers.md)
-

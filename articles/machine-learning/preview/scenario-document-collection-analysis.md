@@ -9,14 +9,12 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
 
 このシナリオでは、Azure ML Workbench を使用したフレーズ学習、トピック モデリング、トピック モデル分析など、大量のドキュメント コレクションをまとめ、分析する方法について説明します。 Azure Machine Learning Workbench には、大量のドキュメント コレクションに合わせて簡単にスケール アップできる機能があります。また、ローカルの計算から、データ サイエンス仮想マシン、Spark クラスターまで、多様な計算コンテキスト内でモデルをトレーニングおよびチューニングするメカニズムもあります。 Azure Machine Learning Workbench 内の Jupyter ノートブックを使用すると簡単にデプロイできます。
@@ -70,7 +68,7 @@ ms.lasthandoff: 09/25/2017
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Document Collection Analysis」と入力し、テンプレートを選択します
-5.  **[作成]** をクリックします
+5.  **[作成]**
 
 ## <a name="data-description"></a>データの説明
 
@@ -246,4 +244,3 @@ perplex = topicmodeler.EvaluatePerplexity(lda)
 * **Timothy J. Hazen**、[_Latent Topic Modeling for Audio Corpus Summarization_](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf)。 12th Annual Conference of the International Speech Communication Association。 2011。
 
 * **Michael Roder、Andreas Both、Alexander Hinneburg**、[_Exploring the Space of Topic Coherence Measures_](http://svn.aksw.org/papers/2015/WSDM_Topic_Evaluation/public.pdf)。 Proceedings of the eighth ACM international conference on Web search and data mining。 ACM、2015。
-

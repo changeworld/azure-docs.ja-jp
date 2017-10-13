@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/15/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 02e0ca96bff7781c242b4c5e965b229065e71725
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-matrix-for-this-release"></a>このリリースでサポートされているマトリックス 
 コードで Data Sources を使用して、または Data Preparations でデータを読み込み、Pandas または Spark データフレームのどちらかを取得するとき、実験的コンピューティング環境とデータの場所の組み合わせとして、次のものがサポートされています。
@@ -39,4 +38,3 @@ Azure Data Lake Store は現在、どのコンピューティング ターゲッ
 **Maven JDBC SQL Server ドライバー 6.2.1 を使用します。 このパッケージ (または互換性のあるパッケージ) が、コンピューティング環境用の spark_dependencies.yml ファイルに含まれていることを確認する必要があります。
 
 ***コンピューティング環境からデータベースと通信できるという条件のもと、Azure SQL Database、Azure SQL Data Warehouse、または Microsoft SQL Server をサポートします。 
-

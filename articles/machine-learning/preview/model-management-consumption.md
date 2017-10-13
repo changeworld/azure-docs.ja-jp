@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fc4d793bcf402a3e742fae2b2c0052f2d60d1b47
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
@@ -165,4 +164,3 @@ headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_ke
 resp = requests.post(url, data, headers=headers)
 resp.text
 ```
-

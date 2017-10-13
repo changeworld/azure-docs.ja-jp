@@ -14,12 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
-translationtype: Human Translation
-ms.sourcegitcommit: 6ea03adaabc1cd9e62aa91d4237481d8330704a1
-ms.openlocfilehash: 52db4d82faa0db07224f48b6600e690e34808e91
-ms.lasthandoff: 04/06/2017
-
-
+ms.openlocfilehash: 624dd416f37aacdb3d2f6e59afdc2efe646e610b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Azure App Service Web Apps での PHP の構成方法
 ## <a name="introduction"></a>はじめに
@@ -32,8 +31,8 @@ ms.lasthandoff: 04/06/2017
 
 PHP 5.6 および PHP 7.0 も使用できますが、既定では有効になっていません。 PHP バージョンを更新するには、次のいずれかの方法に従います。
 
-### <a name="azure-portal"></a>Azure ポータル
-1. [Azure ポータル](https://portal.azure.com) で Web アプリに移動し、 **[設定]** ボタンをクリックします。
+### <a name="azure-portal"></a>Azure Portal
+1. [Azure Portal](https://portal.azure.com) で Web アプリに移動し、**[設定]** ボタンをクリックします。
    
     ![[保存]][settings-button]
 2. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、新しい PHP バージョンを指定します。
@@ -124,7 +123,7 @@ Azure コマンド ライン インターフェイスを使用するには、 **
 1. ディレクトリを `bin` ディレクトリに追加します。
 2. `bin` ディレクトリに、`.dll` 拡張ファイル (`php_xdebug.dll` など) を配置します。 拡張機能は、PHP の既定バージョンとの互換性があり、VC9 および非スレッドセーフ (nts) 互換であることを確認してください。
 3. Web アプリをデプロイします。
-4. Azure ポータルで Web アプリに移動し、 **[設定]** ボタンをクリックします。
+4. Azure Portal で Web アプリに移動し、**[設定]** ボタンをクリックします。
    
     ![[保存]][settings-button]
 5. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[アプリの設定]** セクションまでスクロールします。
@@ -145,7 +144,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 3. また、PHP ランタイムに拡張機能を追加して、これらを `php.ini` ファイル内で有効にすることもできます。
 4. `bin` ディレクトリをルート ディレクトリに追加し、その中に、PHP ランタイムが含まれているディレクトリ (`bin\php` など) を配置します。
 5. Web アプリをデプロイします。
-6. Azure ポータルで Web アプリに移動し、 **[設定]** ボタンをクリックします。
+6. Azure Portal で Web アプリに移動し、**[設定]** ボタンをクリックします。
    
     ![[保存]][settings-button]
 7. **[設定]** ブレードで、**[アプリケーションの設定]** を選択し、**[ハンドラー マッピング]** セクションまでスクロールします。 [拡張] フィールドに `*.php`  を追加し、`php-cgi.exe` 実行可能ファイルのパスを追加します。 アプリケーションのルートにある `bin` ディレクトリに PHP ランタイムを配置した場合、パスは `D:\home\site\wwwroot\bin\php\php-cgi.exe` になります。
@@ -167,7 +166,7 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 
 1. [Azure ポータル](https://portal.azure.com)の PHP Web アプリのブレードで、**[ツール]** > **[拡張機能]** をクリックします。
    
-    ![Azure でのComposer 自動化を有効にする Azure ポータルの設定のブレード](./media/web-sites-php-configure/composer-extension-settings.png)
+    ![Azure でのComposer 自動化を有効にする Azure Portal の設定のブレード](./media/web-sites-php-configure/composer-extension-settings.png)
 2. **[追加]**、**[Composer]** の順にクリックします。
    
     ![Azure で Composer 拡張機能を追加して Composer 自動化を有効にする](./media/web-sites-php-configure/composer-extension-add.png)
@@ -204,5 +203,4 @@ App Service Web Apps では、既定の PHP ランタイムを使用する代わ
 [GETPHPVERCLI]: ./media/web-sites-php-configure/ShowPHPVersion-XplatCLI.png
 [SETPHPVERPS]: ./media/web-sites-php-configure/ChangePHPVersion-PS.png
 [GETPHPVERPS]: ./media/web-sites-php-configure/ShowPHPVersion-PS.png
-
 

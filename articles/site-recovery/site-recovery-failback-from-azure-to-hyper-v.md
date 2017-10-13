@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 7f478a61ee448d2d18b3ac7bc0a579b6e341c30d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="failback-in-site-recovery-for-hyper-v-virtual-machines"></a>Site Recovery によって保護された Hyper-V 仮想マシンのフェールバック
 
 この記事では、Site Recovery によって保護された仮想マシンをフェールバックする方法について説明します。
@@ -98,4 +96,3 @@ Azure は高可用性環境であり、皆さんの仮想マシンはいつで�
 フェールバック ジョブが完了したら、仮想マシンを**コミット**します。 コミットすることによって Azure 仮想マシンとそのディスクが削除され、再び VM が保護された状態になります。
 
 **コミット**後、逆レプリケーション ("*レプリケーションの反転*") を開始できます。 この操作を境として、仮想マシンの保護の方向が再びオンプレミスから Azure となります。 このときにレプリケートされるのは、Azure で VM を停止した後に生じた変更のみであることに注意してください。つまり送信されるのは差分変更だけです。
-

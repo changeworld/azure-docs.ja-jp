@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
+ms.openlocfilehash: 57b56f417db63f24f09a497fa780c7edda048e56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 107b0a73c7f544aebd0ee685fd1d726d1420495d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>Azure に ASP.NET Web アプリを作成する
 
@@ -44,7 +43,7 @@ ms.lasthandoff: 09/20/2017
 
 ## <a name="create-an-aspnet-web-app"></a>ASP.NET Web アプリを作成する
 
-Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト] **の順にクリックして、プロジェクトを作成します。 
+Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** の順にクリックして、プロジェクトを作成します。 
 
 **[新しいプロジェクト]** ダイアログで、**[Visual C#]、[Web]、[ASP.NET Web アプリケーション (.NET Framework)]** の順にクリックします。
 
@@ -168,4 +167,3 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 > [!div class="nextstepaction"]
 > [ASP.NET と SQL Database](app-service-web-tutorial-dotnet-sqldatabase.md)
-

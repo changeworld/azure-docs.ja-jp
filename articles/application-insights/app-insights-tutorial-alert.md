@@ -9,14 +9,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: ce297476cfdf80564c6c0cb835955a146f7a1c12
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 40b3cd74fc68158b679db462278edef4827d8603
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-alert-on-application-health-with-azure-application-insights"></a>Azure Application Insights でアプリケーションの正常性を監視してアラートを送信する
 
 Azure Application Insights を使用すると、ご利用のアプリケーションを監視して、アプリケーションを使用できない、障害が発生している、またはパフォーマンスに問題がある場合にアラートを送信できます。  このチュートリアルでは、アプリケーションの可用性を継続的にチェックするテストを作成する方法、および検出した問題に応じてさまざまな種類のアラートを送信する方法を説明します。  学習内容は次のとおりです。
@@ -35,7 +33,7 @@ Azure Application Insights を使用すると、ご利用のアプリケーシ�
 - 次のワークロードを使って、[Visual Studio 2017](https://www.visualstudio.com/downloads/) をインストールします。
     - ASP.NET および Web の開発
     - Azure の開発
-    - .NET アプリケーションを Azure にデプロイして、[Application Insights SDK を有効に](app-insights-asp-net.md)します。 
+    - .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン

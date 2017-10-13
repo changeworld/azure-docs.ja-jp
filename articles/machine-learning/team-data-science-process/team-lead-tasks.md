@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 116eaa59eb60833036ad4d3c975c0b86e525f625
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="team-lead-tasks"></a>チーム リーダーのタスク
 
 このトピックでは、チーム リーダーがデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することを目標とします。 TDSP は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 コラボレーションとチーム学習の向上を支援することを目的としています。 このプロセスは、企業が分析プログラムのメリットを完全に実現できるように、データ サイエンスへの取り組みの実施を成功に導くために必要なベスト プラクティスと構造を Microsoft と業界から抽出したものです。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks (Team Data Science Process での役割とタスク)](roles-tasks.md)」をご覧ください。
@@ -73,8 +71,8 @@ ms.lasthandoff: 09/25/2017
 - グループ マネージャーによって、**グループの VSTS サーバー** (または他のコード ホスティング プラットフォームのグループ アカウント) が設定されている。
 - 使用する予定のコード ホスティング プラットフォームで、グループ マネージャーによって、グループ アカウントに **GroupProjectTemplate リポジトリ** (R1) が設定されている。
 - チーム リーダーが、チームのリポジトリを作成するためのグループ アカウントで**承認**されている。
-- マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているのでインストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
-- **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして **Download and Install** セクションを表示し、*latest installer* をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
+- マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
+- **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして「**Download and Install**」(ダウンロードとインストール) セクションを表示し、「*latest installer*」(最新のインストーラー) をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
 - **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
     
 ## <a name="1-create-a-team-project-and-repositories"></a>1.チーム プロジェクトとリポジトリの作成
@@ -417,4 +415,4 @@ Team Data Science Process で定義されている役割とタスクの詳細な
 - [データ サイエンス チームのグループ マネージャーのタスク](group-manager-tasks.md)
 - [データ サイエンス チームのチーム リーダーのタスク](team-lead-tasks.md)
 - [データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)
-- [データ サイエンス チームの個々のプロジェクト協力者](project-ic-tasks.md)
+- [データ サイエンス チームの個々の共同作成者](project-ic-tasks.md)

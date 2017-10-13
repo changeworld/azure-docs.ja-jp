@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/17/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6dcc5c55fae5e2494526c492a1453747b4d6e179
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="pipelines-and-activities-in-azure-data-factory"></a>Azure Data Factory のパイプラインとアクティビティ 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
 > * [バージョン 1 - 一般公開](v1/data-factory-create-pipelines.md)
@@ -72,7 +70,7 @@ Azure Data Factory は、次の変換アクティビティをサポートして�
 
 制御アクティビティ | Description
 ---------------- | -----------
-[パイプラインの実行アクティビティ](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
+[ExecutePipeline アクティビティ](control-flow-execute-pipeline-activity.md) | パイプラインの実行アクティビティを使用すると、Data Factory の 1 つのパイプラインから別のパイプラインを呼び出すことができます。
 [ForEachActivity](control-flow-for-each-activity.md) | ForEach アクティビティは、パイプライン内の繰り返し制御フローを定義します。 このアクティビティは、コレクションを反復処理するために使用され、指定されたアクティビティをループで実行します。 このアクティビティのループの実装は、プログラミング言語の Foreach ループ構造に似ています。
 [WebActivity](control-flow-web-activity.md) | Web アクティビティを使用すると、Data Factory パイプラインからカスタム REST エンドポイントを呼び出すことができます。 このアクティビティで使用したり、アクセスしたりするデータセットやリンクされたサービスを渡すことができます。 
 [ルックアップ アクティビティ](control-flow-lookup-activity.md) | ルックアップ アクティビティを使用して、任意の外部ソースからレコード/テーブル名/値を読み取ったり検索したりできます。 この出力は、後続のアクティビティによってさらに参照できます。 
@@ -102,7 +100,7 @@ If 条件アクティビティ | If 条件は、true または false として�
 --- | ----------- | ---- | --------
 name | パイプラインの名前。 パイプラインが実行するアクションを表す名前を指定します。 <br/><ul><li>最大文字数：260文字</li><li>文字、数字、アンダー スコア (_) のいずれかで始める必要があります。</li><li>•   次の文字は使用できません："."、"+"、"?"、"/"、"<"、">"、"*"、"%"、"&"、":"、”\”</li></ul> | String | あり
 description | パイプラインの用途を説明するテキストを指定します。 | String | いいえ
-アクティビティ | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | array | あり
+activities | **activities** セクションでは、1 つまたは複数のアクティビティを定義できます。 activities JSON 要素の詳細については、「[アクティビティ JSON](#activity-json)」のセクションを参照してください。 | array | あり
 パラメーター | **parameters** セクションでは、パイプライン内に 1 つ以上のパラメーターを定義できるので、パイプラインの再利用に柔軟性を持たせることができます。 | 一覧表示 | いいえ
 
 ## <a name="activity-json"></a>アクティビティ JSON
@@ -395,4 +393,3 @@ dependsOn | このプロパティを使用して、アクティビティの依�
 
 - [Build a pipeline with a copy activity (コピー アクティビティを含むパイプラインの作成)](quickstart-create-data-factory-powershell.md)
 - [データ変換アクティビティを含むパイプラインの作成](tutorial-transform-data-spark-powershell.md)
-

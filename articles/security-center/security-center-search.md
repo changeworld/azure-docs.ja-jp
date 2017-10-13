@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 513c98237a322dabd6b2bf13443e8998ca843b1d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-search"></a>Azure Security Center の検索機能
 Azure Security Center では、[Log Analytics 検索](../log-analytics/log-analytics-log-searches.md)を使用してセキュリティ データを取得し、分析します。 Log Analytics には、データをすばやく取得して統合するためのクエリ言語が用意されています。 Security Center から Log Analytics 検索を活用してクエリを作成し、収集したデータを分析できます。
@@ -54,17 +53,16 @@ Azure Security Center では、[Log Analytics 検索](../log-analytics/log-analy
 ## <a name="next-steps"></a>次のステップ
 この記事では、Security Center の検索機能にアクセスする方法について説明しました。 Security Center では Log Analytics 検索を使用します。 Log Analytics 検索の詳細については、次の記事をご覧ください。
 
-- [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要。
+- [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要
 - [Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md) - Log Analytics でログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します。
 - [Log Analytics でログ検索を使用してデータを探す](../log-analytics/log-analytics-log-searches.md) - ログ検索の使用方法に関するチュートリアル。
 - [Log Analytics 検索リファレンス](../log-analytics/log-analytics-search-reference.md) - Log Analytics のクエリ言語について説明します。
 
 Security Center の詳細については、次の記事をご覧ください。
 
-- [Security Center の概要](security-center-intro.md) - Security Center の主な機能について説明します。
+- [Security Center の概要](security-center-intro.md) - Security Center の主な機能について説明します
 
 <!--Image references-->
 [1]: ./media/security-center-search/search.png
 [2]: ./media/security-center-search/workspace-selector.png
 [3]: ./media/security-center-search/log-search.png
-

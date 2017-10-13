@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 192680efe07368666c5a9d037549c7686189d0b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 6c80c6814dacf90a0a50dab691899c3a8cc2bf82
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-files-with-linux"></a>Linux で Azure Files を使用する
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 [Samba プロジェクト](https://www.samba.org/) の[cifs-utils パッケージ](https://wiki.samba.org/index.php/LinuxCIFS_utils)を使用して、Linux ディストリビューションに Azure File 共有をマウントできます。 この記事では、Azure File 共有を `mount` コマンドを使用してオンデマンドでマウントするか、`/etc/fstab` にエントリを作成することで起動時にマウントするという 2 つの方法について説明します。
@@ -111,10 +110,9 @@ Linux ユーザーからのご意見をお待ちしています。
 Azure Files for Linux ユーザーのグループによって、File Storage を Linux で評価および導入するときにフィードバックを共有できるフォーラムが提供されています。 [Azure Files Linux Users](mailto:azurefileslinuxusers@microsoft.com) にメールを送信して、ユーザー グループに参加してください。
 
 ## <a name="next-steps"></a>次のステップ
-Azure Files について詳しくは、次のリンクをご覧ください。
+Azure Files の詳細については、次のリンクをご覧ください。
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
 * [Microsoft Azure Storage で AzCopy を使用する方法](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Storage での Azure CLI の使用](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
 * [FAQ](../storage-files-faq.md)
 * [トラブルシューティング](storage-troubleshoot-linux-file-connection-problems.md)
-

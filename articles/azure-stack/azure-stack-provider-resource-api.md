@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c54dca9d734cf909cf20d5235a90b9b46f0af11c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provider-resource-usage-api"></a>プロバイダー リソース使用量 API
 プロバイダーという用語は、サービス管理者と委任されたすべてのプロバイダーに適用します。 Azure Stack オペレーターおよび委任されたプロバイダーは、プロバイダー使用量 API を使用して、直接のテナントの使用状況を表示できます。 たとえば、P0 はプロバイダー API を呼び出して、P1 と P2 の直接の使用状況に関する情報を取得でき、P1 は P3 と P4 の使用状況情報を呼び出すことができます。
@@ -94,5 +93,4 @@ meterID1",
 [テナント リソース使用量 API リファレンス](azure-stack-tenant-resource-usage-api.md)
 
 [使用量に関するよくあるご質問 (FAQ)](azure-stack-usage-related-faq.md)
-
 

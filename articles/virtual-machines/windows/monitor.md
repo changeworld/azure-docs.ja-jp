@@ -13,15 +13,12 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.date: 08/14/2017
 ms.author: davidmu
+ms.openlocfilehash: c066cbb75e2e57c5c91f98c8e11c3d9cda4187e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 491260fa6bf26cb90ca6e813ad6b74234d8acbed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-monitor-virtual-machines-in-azure"></a>Azure で仮想マシンを監視する方法
 
 [!INCLUDE [virtual-machines-monitor](../../../includes/virtual-machines-monitor.md)]
-

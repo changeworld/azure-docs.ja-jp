@@ -16,14 +16,12 @@ ms.date: 09/22/2017
 ms.author: curtand
 ms.reviewer: nigu
 ms.custom: it-pro
+ms.openlocfilehash: dd4cf725689739ce4c8b86a4d8203ffc5aff016b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 38e3f71fb4817de7aa95b99e662856f586e72530
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-cloud-app-discovery-snapshot-reports"></a>Cloud App Discovery のスナップショット レポートの作成
 
 自動ログ コレクターをセットアップする前に、ログを手動でアップロードし、Cloud App Security がログを解析できるようにします。 まだログがなく、ログの内容をサンプルで確認する場合は、次の手順に従ってサンプル ログ ファイルをダウンロードし、ログがどのように表示されるのかを確認してください。
@@ -56,4 +54,3 @@ ms.lasthandoff: 09/25/2017
 * [Azure AD の Cloud App Discovery の使用を開始する](cloudappdiscovery-get-started.md)
 * [継続的なレポートのために自動ログ アップロードを構成する](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 * [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
-

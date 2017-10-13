@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/19/2017
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 689977491e6df37e48536f59234bf4ddba6a1575
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="certificates-overview-for-azure-cloud-services"></a>Azure Cloud Services の証明書の概要
 証明書は、Azure でクラウド サービス ([サービス証明書](#what-are-service-certificates))、および管理 API の認証に使用されます (非往来の Azure ポータルではなく、Azure クラシック ポータルを使用している場合は、[管理証明書](#what-are-management-certificates))。 このトピックでは、両方の種類の証明書の一般的な概要、これらを[作成](#create)する方法、および Azure に[デプロイ](#deploy)する方法について説明します。
@@ -97,5 +96,4 @@ Export-Certificate -Type CERT -Cert $cert -FilePath .\my-cert-file.cer
 [サービス証明書を Azure クラシック ポータルにアップロード](cloud-services-configure-ssl-certificate.md)します (または [Azure Portal](cloud-services-configure-ssl-certificate-portal.md) にアップロードします)。
 
 [管理 API 証明書](../azure-api-management-certs.md) を Azure クラシック ポータルにアップロードします。 Azure Portal では、認証用の管理証明書は使用しません。
-
 

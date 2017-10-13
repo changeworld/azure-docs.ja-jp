@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/21/2017
 ms.author: cynthn
 ROBOTS: NOINDEX
+ms.openlocfilehash: 3be46c8c02ad136edb1936fbb39560d479b27277
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: c303235ead2af7cfaa368a5b5f00567ae44cfb86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-new-azvm-preview-in-cloud-shell"></a>Cloud Shell で New-AzVM (プレビュー) を使用して Windows 仮想マシンを作成する 
 
 New-AzVM (プレビュー) コマンドレットは、PowerShell を使用して新しい VM を簡単に作成する方法です。 このガイドでは、Azure Cloud Shell で PowerShell を使用して、プレインストールされている New-AzVM コマンドレットを用いて、Windows Server 2016 を実行する新しい Azure 仮想マシンを作成する方法について説明します。 デプロイが完了したら、RDP を使用してサーバーに接続します。  
@@ -83,4 +81,3 @@ Remove-AzureRmResourceGroup -Name myVMResourceGroup
 
 > [!div class="nextstepaction"]
 > [Azure Windows 仮想マシンのチュートリアル](./tutorial-manage-vm.md)
-

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4d5dc523886ea1b03fdb2d1cafce4dcf3fef2576
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
@@ -91,7 +90,7 @@ Microsoft Azure Stack によって、プロバイダーは、仮想マシンや 
 
 管理者に対して、デプロイ中に既定のプロバイダー サブスクリプションが作成されます。 このサブスクリプションを使用して、Azure Stack の管理、他のリソース プロバイダのデプロイ、およびテナント向けのプランとオファーの作成を実行できます。 このサブスクリプションは、顧客ワークロードとアプリケーションを実行するために使用すべきではありません。 
 
-## <a name="azure-resource-manager"></a>Azure リソース マネージャー
+## <a name="azure-resource-manager"></a>Azure Resource Manager
 Azure Resource Manager を使用することで、インフラストラクチャのリソースをテンプレート ベースの宣言型モデルで操作できます。   それは、ソリューション コンポーネントのデプロイと管理に使用できる単一のインターフェイスを備えています。 詳しい説明とガイダンスについては、「[Azure Resource Manager の概要](../azure-resource-manager/resource-group-overview.md)」を参照してください。
 
 ### <a name="resource-groups"></a>リソース グループ
@@ -146,5 +145,4 @@ Microsoft Azure Stack は、すべてのリソース プロバイダーの使用
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack Development Kit をデプロイする](azure-stack-deploy.md)
-
 

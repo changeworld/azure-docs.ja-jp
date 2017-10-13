@@ -15,14 +15,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 355cb2cef52b5dfecddae228d0cc24a069d3b695
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 90720774f956149dc159de1d5457e556a52ddc82
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-azure-functions"></a>Azure Functions を監視する
 
 ## <a name="overview"></a>概要 
@@ -456,7 +454,7 @@ module.exports = function (context, req) {
 
 ### <a name="dependencies"></a>依存関係
 
-依存関係は自動的には表示されませんが、依存関係を表示するようにカスタム コードを記述することができます。 [C# カスタム テレメトリ セクション](#create-custom-telemetry-data-in-c-function-code)にあるサンプル コードで方法を示します。 このサンプル コードでは、次のような Application Insights の*アプリケーション マップ*が作成されます。
+依存関係は自動的には表示されませんが、依存関係を表示するようにカスタム コードを記述することができます。 [C# カスタム テレメトリ セクション](#custom-telemetry-in-c-functions)にあるサンプル コードで方法を示します。 このサンプル コードでは、次のような Application Insights の*アプリケーション マップ*が作成されます。
 
 ![アプリケーション マップ](media/functions-monitoring/app-map.png)
 
@@ -521,4 +519,3 @@ PS C:\> Get-AzureWebSiteLog -Name MyFunctionApp -Tail
 
 > [!div class="nextstepaction"]
 > [Functions で使用されるログ記録フレームワークの詳細を知る](https://docs.microsoft.com/aspnet/core/fundamentals/logging?tabs=aspnetcore2x)
-

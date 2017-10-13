@@ -13,12 +13,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/05/2016
 ms.author: dariagrigoriu
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 2f8691b0aadbd97e87996c2683849a6db3b74618
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-deployment-credentials-for-azure-app-service"></a>Azure App Service のデプロイ資格情報の構成
 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714) では、[ローカル Git デプロイ](app-service-deploy-local-git.md)と [FTP/S デプロイ](app-service-deploy-ftp.md)デプロイ用の 2 種類の資格情報をサポートしています。 これらは Azure Active Directory の資格情報とは異なります。
@@ -94,4 +93,3 @@ App Service 内のアプリごとに、アプリ レベルの資格情報が XML
 ## <a name="next-steps"></a>次のステップ
 
 これらの資格情報を使用して、[ローカル Git](app-service-deploy-local-git.md) から、または [FTP/S](app-service-deploy-ftp.md) を使用してアプリをデプロイする方法を確認します。
-

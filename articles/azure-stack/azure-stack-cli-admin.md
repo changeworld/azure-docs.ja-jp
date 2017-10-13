@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d184bb9edbe2542d7321d8b9ccc5d23f2401f8d5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-azure-cli-for-azure-stack-users"></a>Azure Stack ユーザーに対する Azure CLI の有効化
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 CLI を使用して実行できる Azure Stack オペレーターの特定のタスクはありません。 ただし、ユーザーが CLI を使用してリソースを管理できるようにするには、Azure Stack オペレーターがユーザーに以下を提供する必要があります。
 
@@ -74,5 +73,4 @@ Azure Stack オペレーターは、仮想マシンのエイリアス ファイ�
 [PowerShell で接続する](azure-stack-connect-powershell.md)
 
 [ユーザー アクセス許可の管理](azure-stack-manage-permissions.md)
-
 

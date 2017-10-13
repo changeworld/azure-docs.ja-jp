@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: jdial
+ms.openlocfilehash: ba0cd9c8aaa797e850827484c76103d1b829d6b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 49ec20802a252258d8493eb26510270b925e851a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-packet-captures-with-azure-network-watcher-using-azure-rest-api"></a>Azure REST API を使用して Azure Network Watcher でパケット キャプチャを管理する
 
 > [!div class="op_single_selector"]
@@ -305,7 +303,6 @@ armclient delete "https://management.azure.com/subscriptions/${subscriptionId}/R
 Azure ストレージ アカウントからファイルをダウンロードする方法については、「[.NET を使用して Azure Blob ストレージを使用する](../storage/blobs/storage-dotnet-how-to-use-blobs.md)」をご覧ください。 使用できるツールとして他に Storage Explorer があります。 Storage Explorer の詳細は、次のリンクで確認することができます。[Storage Explorer](http://storageexplorer.com/)
 
 [アラートがトリガーするパケット キャプチャの作成](network-watcher-alert-triggered-packet-capture.md)に関するページを参照して、仮想マシンのアラートを使用してパケット キャプチャを自動化する方法を確認する。
-
 
 
 

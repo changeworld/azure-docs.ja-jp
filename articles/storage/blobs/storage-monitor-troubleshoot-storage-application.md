@@ -14,14 +14,12 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: db88c331f79d83e0124519f8b6dbb34514b456dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-troubleshoot-a-cloud-storage-application"></a>クラウド ストレージ アプリケーションの監視およびトラブルシューティング
 
 このチュートリアルはシリーズの第 4 部であり、かつ最後の部分です。 クラウド ストレージ アプリケーションを監視およびトラブルシューティングする方法を学習します。
@@ -46,7 +44,7 @@ ms.lasthandoff: 09/25/2017
 
 左側のメニューから、**[リソース グループ]** を選択し、**[myResourceGroup]** を選択してから、リソース一覧内のストレージ アカウントを選択します。
 
-**[診断]** で、**[状態]** を **[On] (オン)** に設定します。 **[Blob aggregate metrics] (BLOB 集計メトリック)**、**[Blob per API metrics] (BLOB API ごとのメトリック)**、および **[Blob logs] (BLOB ログ)** が有効になっていることを確認してください。
+**[診断]** で、**[状態]** を **[On] \(オン)** に設定します。 **[Blob aggregate metrics] \(BLOB 集計メトリック)**、**[Blob per API metrics] \(BLOB API ごとのメトリック)**、および **[Blob logs] \(BLOB ログ)** が有効になっていることを確認してください。
 
 完了したら、**[保存]** をクリックします。
 
@@ -62,7 +60,7 @@ ms.lasthandoff: 09/25/2017
 
 **[監視]** セクションで、**[アラート ルール]** を選択します。
 
-**[+ Add alert] (+ アラートの追加)** を選択し、**[アラート ルールの追加]** で、必要な情報を入力します。 **[メトリック]** ドロップダウンから `SASClientOtherError` を選択します。
+**[+ Add alert] \(+ アラートの追加)** を選択し、**[アラート ルールの追加]** で、必要な情報を入力します。 **[メトリック]** ドロップダウンから `SASClientOtherError` を選択します。
 
 ![[診断] ウィンドウ](media/storage-monitor-troubleshoot-storage-application/figure2.png)
 
@@ -97,9 +95,9 @@ curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect
 
 [Microsoft Message Analyzer](https://www.microsoft.com/download/details.aspx?id=44226) をダウンロードし、アプリケーションをインストールします。
 
-アプリケーションを起動し、**[ファイル]** > **[開く]** > **[From Other File Sources] (他のファイル ソースから)** を選択します。
+アプリケーションを起動し、**[ファイル]** > **[開く]** > **[From Other File Sources] \(他のファイル ソースから)** を選択します。
 
-**[File Selector] (ファイル セレクター)** ダイアログで、**[+ Add Azure Connection] (+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、**[OK]** をクリックします。
+**[File Selector] \(ファイル セレクター)** ダイアログで、**[+ Add Azure Connection] \(+ Azure 接続の追加)** を選択します。 **ストレージ アカウント名**と**アカウント キー**を入力し、**[OK]** をクリックします。
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure3.png)
 
@@ -107,7 +105,7 @@ curl https://<storage-account-name>.blob.core.windows.net/<container>/<incorrect
 
 ![Microsoft Message Analyzer - Azure Storage 接続ダイアログの追加](media/storage-monitor-troubleshoot-storage-application/figure4.png)
 
-**[New Session] (新しいセッション)** ダイアログで、**[開始]** をクリックしてログを表示します。
+**[New Session] \(新しいセッション)** ダイアログで、**[開始]** をクリックしてログを表示します。
 
 ログが開いたら、ストレージ イベントを表示できます。 次の図からわかるように、ストレージ アカウントでトリガーされた `SASClientOtherError` が存在しました。 ストレージのログ記録の詳細については、「[Storage Analytics](../common/storage-analytics.md)」を参照してください。
 

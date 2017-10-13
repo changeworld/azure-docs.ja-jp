@@ -14,16 +14,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mikeray
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: d3df6b25fe524c500cf1a1333ac136e8a29d1484
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-storage-for-sql-server-backup-and-restore"></a>Azure Storage を使用した SQL Server のバックアップと復元
 ## <a name="overview"></a>概要
-SQL Server 2012 SP1 CU2 以降で、SQL Server のバックアップを Azure BLOB ストレージ サービスに直接書き込めるようになりました。 この機能を使用すると、オンプレミスの SQL Server データベースまたは Azure 仮想マシンの SQL Server データベースを使用する Azure BLOB サービスとの間でバックアップおよび復元できます。 クラウドへのバックアップには、高い可用性、無制限の社外ストレージのgeo レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。 Transact-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
+SQL Server 2012 SP1 CU2 以降で、SQL Server のバックアップを Azure BLOB ストレージ サービスに直接書き込めるようになりました。 この機能を使用すると、オンプレミスの SQL Server データベースまたは Azure 仮想マシンの SQL Server データベースを使用する Azure Blob service との間でバックアップおよび復元できます。 クラウドへのバックアップには、高い可用性、無制限の社外ストレージのgeo レプリケーション、クラウドとの間でのデータ移行の容易さという利点があります。 Transact-SQL または SMO を使用して BACKUP または RESTORE ステートメントを発行できます。
 
 SQL Server 2016 に導入された新しい機能である [ファイル スナップショット バックアップ](http://msdn.microsoft.com/library/mt169363.aspx) を使用して、ほぼ瞬時のバックアップと非常に簡単な復元を実行できます。
 
@@ -50,7 +49,7 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 | コンポーネント | Description |
 | --- | --- |
 | **ストレージ アカウント** |ストレージ アカウントはすべてのストレージ サービスの出発点となります。 Azure Blob Storage サービスにアクセスするには、まず Azure のストレージ アカウントを作成します。 Azure BLOB ストレージ サービスの詳細については、「 [How to use the Azure Blob Storage Service (Azure BLOB ストレージ サービスを使用する方法)](https://azure.microsoft.com/develop/net/how-to-guides/blob-storage/) |
-| **コンテナー** |コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。 SQL Server のバックアップを Azure BLOB サービスに書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
+| **コンテナー** |コンテナーは一連の BLOB のグループ化に使用され、格納できる BLOB の数に制限はありません。 SQL Server のバックアップを Azure Blob service に書き込むには、少なくとも root コンテナーが作成されている必要があります。 |
 | **BLOB** |任意の種類およびサイズのファイルです。 BLOB は、次の URL 形式を使用してアドレスを指定できます。**https://[ストレージ アカウント].blob.core.windows.net/[コンテナー]/[BLOB]** ページ BLOB の詳細については、「[ブロック BLOB およびページ BLOB について](http://msdn.microsoft.com/library/azure/ee691964.aspx)」をご覧ください。 |
 
 ## <a name="sql-server-components"></a>SQL Server のコンポーネント
@@ -77,5 +76,4 @@ Azure BLOB ストレージ サービスにバックアップする際に、次�
 問題がある場合は、「 [SQL Server Backup to URL に関するベスト プラクティスとトラブルシューティング](https://msdn.microsoft.com/library/jj919149.aspx)」をご覧ください。
 
 その他の SQL Server のバックアップと復元のオプションについては、「[Azure Virtual Machines における SQL Server のバックアップと復元](virtual-machines-windows-sql-backup-recovery.md)」をご覧ください。
-
 

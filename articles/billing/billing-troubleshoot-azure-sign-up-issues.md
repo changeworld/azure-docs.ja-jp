@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: cjiang
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: 5f9d4e580b0d4d7c3ea39c53b1bf4067a59d4d52
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-sign-up-issues-for-azure"></a>Azure のサインアップに関する問題のトラブルシューティング
 Azure にサインアップできない場合は、この記事の情報を使用して、一般的な問題のトラブルシューティングを行ってください。 サインアップ時にクレジット カードに関する問題が発生した場合は、「[Azure へのサインアップ時にデビット カードまたはクレジット カードが拒否される](billing-credit-card-fails-during-azure-sign-up.md)」を参照してください。 ご自身の Azure アカウントでサインインできない場合は、「[Azure サブスクリプションにサインインして管理することができない](billing-cannot-login-subscription.md)」を参照してください。
@@ -91,4 +90,3 @@ Azure イン オープン プランのサブスクリプションを作成する
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

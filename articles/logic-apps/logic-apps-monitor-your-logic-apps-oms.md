@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Operations Management Suite (OMS) と Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 
 監視と豊富なデバッグ情報の獲得のために、ロジック アプリの作成と同時に Log Analytics をオンにできます。 Log Analytics では、Operations Management Suite (OMS) ポータルを通じて、ロジック アプリの実行を監視して診断ログを収集できます。 Logic Apps の管理ソリューションを OMS に追加すると、ロジック アプリの実行の状態の集計や、その状態、実行時間、再送信の状態、および相関関係 ID などの詳細情報を取得します。
@@ -140,4 +138,3 @@ ms.lasthandoff: 09/20/2017
 ## <a name="next-steps"></a>次のステップ
 
 * [B2B メッセージを監視する](../logic-apps/logic-apps-monitor-b2b-message.md)
-

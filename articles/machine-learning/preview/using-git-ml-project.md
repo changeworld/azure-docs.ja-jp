@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 59b07c9834904e01256b75344ba2e6892e56438c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-git-repository-with-an-azure-machine-learning-workbench-project"></a>Azure Machine Learning Workbench プロジェクトでの Git リポジトリの使用
 このドキュメントでは、Azure Machine Learning Workbench で Git を使用して、データ サイエンス実験での再現性を確保する方法について説明します。 プロジェクトをクラウド Git リポジトリに関連付ける方法も示します。
@@ -174,4 +173,3 @@ VSTS のリモート Git リポジトリに対してローカル認証を有効�
 
 ## <a name="next-steps"></a>次のステップ
 Team Data Science Process を使用してプロジェクト構造を整理する方法については、[TDSP 使用したプロジェクトの体系化](how-to-use-tdsp-in-azure-ml.md)に関する記事をご覧ください
-

@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7d841dba798c2b706c26dcf51361ce0447710b12
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="considerations-for-virtual-machines-in-azure-stack"></a>Azure Stack の仮想マシンに関する考慮事項
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 仮想マシンは、Azure Stack によって提供される、オンデマンドのスケーラブルなコンピューティング リソースです。 仮想マシンを使用する場合は、Azure で使用できる機能と Azure Stack で使用できる機能には違いがあることを理解する必要があります。 この記事では、Azure Stack の仮想マシンとその機能に固有の考慮事項の概要を示します。 Azure Stack と Azure の違いの概要については、[重要な考慮事項](azure-stack-considerations.md)のトピックを参照してください。
 
@@ -93,4 +91,3 @@ Get-AzureRmResourceProvider | `
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack で PowerShell を使用して Windows 仮想マシンを作成する](azure-stack-quick-create-vm-windows-powershell.md)
-

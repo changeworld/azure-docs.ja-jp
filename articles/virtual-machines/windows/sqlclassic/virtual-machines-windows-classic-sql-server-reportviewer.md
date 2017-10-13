@@ -15,12 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/11/2017
 ms.author: asaxton
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c4f7c829e6fe3890342bd973185e679dd3ea2df5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-reportviewer-in-a-web-site-hosted-in-azure"></a>Azure でホストされる Web サイトで ReportViewer を使用する
 > [!IMPORTANT] 
@@ -93,5 +92,4 @@ ASP.NET Web アプリケーションを Azure に発行する手順について�
 [Azure Virtual Machines での SQL Server Business Intelligence](../classic/ps-sql-bi.md)
 
 [ネイティブ モードのレポート サーバーを実行する Azure VM を PowerShell を使用して作成する](../classic/ps-sql-report.md)
-
 

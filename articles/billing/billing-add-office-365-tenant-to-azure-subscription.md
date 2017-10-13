@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/13/2017
 ms.author: cjiang
+ms.openlocfilehash: e6300932d044ec9a4f88eb5bd5977220ed11d513
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: b7b3e4539110f68e1e6ef4a75110924a27b40c49
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="link-an-office-365-tenant-to-an-azure-subscription"></a>Office 365 テナントを Azure サブスクリプションにリンクする
 個別の Azure サブスクリプションと Office 365 サブスクリプションをリンクして、Azure サブスクリプションから Office 365 テナントにアクセスできるようにします。 サブスクリプションをリンクするには、Azure サービス管理者アカウントで Azure にサインインし、ディレクトリを追加して、Office 365 の職場または学校アカウントを Azure Active Directory テナントに追加します。
@@ -94,5 +93,4 @@ Azure サブスクリプションへの管理者の追加の詳細について�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-
 

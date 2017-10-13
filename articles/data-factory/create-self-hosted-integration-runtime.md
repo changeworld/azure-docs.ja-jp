@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
 統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。 
@@ -240,5 +239,4 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 ## <a name="next-steps"></a>次のステップ
 詳細な手順については、[チュートリアル: オンプレミスのデータをクラウドにコピー](tutorial-hybrid-copy-powershell.md)のチュートリアルを参照してください。
-
 

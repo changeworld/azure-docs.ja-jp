@@ -1,4 +1,4 @@
----
+﻿---
 title: "Microsoft Azure Windows VM 用のディスクと VHD について | Microsoft Docs"
 description: "Azure での Windows 仮想マシン用のディスクと VHD の基本について説明します。"
 services: storage
@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: b1beecf2e4268e358285c1101edcb13f6d592948
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="about-disks-and-vhds-for-azure-windows-vms"></a>Azure Windows VM 用のディスクと VHD について
 Azure の仮想マシンでは、その他のコンピューターとまったく同じように、オペレーティング システム、アプリケーション、およびデータを格納するための場所としてディスクを使用します。 Azure のすべての仮想マシンには、Windows オペレーティング システム ディスクと一時ディスクの少なくとも 2 つのディスクがあります。 オペレーティング システム ディスクはイメージから作成されます。オペレーティング システム ディスクとイメージの両方は仮想ハード ディスク (VHD) であり、Azure のストレージ アカウントに格納されます。 仮想マシンでは 1 つ以上のデータ ディスクも保持することができ、これらも VHD として格納されます。 
@@ -82,5 +81,4 @@ fsutil behavior set DisableDeleteNotify 0
 ## <a name="next-steps"></a>次のステップ
 * [ディスクのアタッチ](attach-disk-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) による VM 用のストレージの追加。
 * [Windows 一時ディスクのドライブ文字を変更する方法](change-drive-letter.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json) します。
-
 

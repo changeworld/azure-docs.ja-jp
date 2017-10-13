@@ -14,12 +14,11 @@ ms.devlang: objective-c
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: michaelhauss
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: f238804e6031fcf3f194695a06bf5b88733a27b9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-blob-storage-from-ios"></a>iOS から BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -171,7 +170,7 @@ Azure Storage のどの BLOB もコンテナーに格納する必要がありま
 ```
 
 ## <a name="upload-a-blob-into-a-container"></a>コンテナーに BLOB をアップロードする
-「 [BLOB サービスの概念](#blob-service-concepts) 」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
+「[Blob service の概念](#blob-service-concepts)」セクションで説明したように、BLOB ストレージには、ブロック BLOB、追加 BLOB、ページ BLOB という 3 種類の BLOB が用意されています。 Azure Storage iOS ライブラリは、3 つのタイプの BLOB すべてをサポートしています。 ほとんどの場合は、ブロック BLOB を使用することをお勧めします。
 
 次の例では、NSString からブロック BLOB をアップロードする方法を示します。 同じ名前の BLOB が既にこのコンテナーに存在する場合は、この BLOB の内容が上書きされます。
 
@@ -223,7 +222,7 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 
 * **continuationToken** - 継続トークンは、一覧表示操作の開始位置を表します。 トークンが指定されていない場合、最初から BLOB を一覧表示します。 0 から設定された最大値まで、BLOB はいくつでも一覧表示できます。 このメソッドによって返される結果が 0 件でも、 `results.continuationToken` が nil でない場合は、一覧表示されていない BLOB がもっとサービス上に存在する可能性があります。
 * **prefix** - BLOB の一覧表示に使用するプレフィックスを指定できます。 このプレフィックスで始まる名前の BLOB のみが一覧表示されます。
-* **useFlatBlobListing** - 「 [コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata) 」セクションで説明したように、BLOB サービスはフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
+* **useFlatBlobListing** - 「[コンテナーおよび BLOB の名前付けと参照](/rest/api/storageservices/Naming-and-Referencing-Containers--Blobs--and-Metadata)」セクションで説明したように、Blob service はフラット ストレージ スキームですが、パス情報を使用して BLOB に名前を付けることで、仮想階層を作成できます。 ただし、フラットでない一覧表示は現在サポートされておらず､ まもなく公開されます｡ 現時点では、この値は **YES** にする必要があります。
 * **blobListingDetails** - BLOB を一覧表示するときに含める項目を指定できます。
   * _AZSBlobListingDetailsNone_: コミット済みの BLOB のみを一覧表示し、BLOB メタデータは返しません。
   * _AZSBlobListingDetailsSnapshots_: コミット済みの BLOB と BLOB スナップショットを一覧表示します。
@@ -393,5 +392,4 @@ NSString からのブロック BLOB のアップロードばかりでなく、NS
 
 このライブラリに関してご質問がある場合は、お気軽に [MSDN Azure フォーラム](http://social.msdn.microsoft.com/Forums/windowsazure/home?forum=windowsazuredata) または [Stack Overflow](http://stackoverflow.com/questions/tagged/windows-azure-storage+or+windows-azure-storage+or+azure-storage-blobs+or+azure-storage-tables+or+azure-table-storage+or+windows-azure-queues+or+azure-storage-queues+or+azure-storage-emulator+or+azure-storage-files) に投稿してください。
 Azure Storage の機能についてご提案がある場合は、 [Azure Storage のフィードバック](https://feedback.azure.com/forums/217298-storage/)に投稿してください。
-
 

@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9799498a11449a9ed496d0fdb40312603eda064e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tools-for-azure-stack-storage"></a>Azure Stack Storage のツール
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Microsoft Azure Stack は、ディスク、BLOB、テーブル、キュー、およびアカウント管理機能のストレージ サービスのセットを提供します。 Azure Stack Storage のデータを管理または移動する場合は、Azure Storage のツールのセットを使用ですることができます。 この記事では、使用可能なツールについて簡単に説明します。
 
@@ -234,5 +233,4 @@ Microsoft Azure Storage Explorer の詳細については、「[Microsoft Azure 
 * [Microsoft Azure Storage Explorer (プレビュー) の概要](../../vs-azure-tools-storage-manage-with-storage-explorer.md)
 * [Azure 互換ストレージ: 違いと考慮事項](azure-stack-acs-differences.md)
 * [Microsoft Azure Storage の概要](../../storage/common/storage-introduction.md)
-
 

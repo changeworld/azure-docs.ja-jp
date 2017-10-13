@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする
 
@@ -43,8 +42,8 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 
 例として、ユーザーが DNN Web コンテンツ管理システムを作成できるようにするオファーを作成できます。 それには、SQL Server リソース プロバイダーをインストールすることによって既に有効にしている SQL Server サービスが必要です。
 
-1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace] \(名前空間)** フィールドの **[Microsoft.Web]** を選択します。
-2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスおよび **[AppService Quota] \(AppService クォータ)** クォータを選択します。
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *AppServiceQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.Web]** を選択します。
+2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestAppServicePlan* という名前を付け、**[Microsoft.SQL]** サービスおよび **[AppService Quota] (AppService クォータ)** クォータを選択します。
 
     > [!NOTE]
     > ユーザーが他のアプリを作成できるようにするには、プランに他のサービスが必要になることがあります。 たとえば、Azure Functions ではプランに **Microsoft.Storage** サービスが含まれている必要があるのに対して、Wordpress には **Microsoft.MySQL** が必要です。
@@ -66,16 +65,16 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 1. **+** > **[データ + ストレージ]** > **[SQL Database]** をクリックします。
 2. 次を除き、各フィールドの既定値のままにします。
     - **[データベース名]**: DNNdb
-    - **[Max Size in MB] \(最大サイズ (MB))**: 100
+    - **[Max Size in MB] (最大サイズ (MB))**: 100
     - **[サブスクリプション]**: TestAppServiceOffer
     - **[リソース グループ]**: DNN-RG
-3. **[Login Settings] \(ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、この手順内の後で使用します。
+3. **[Login Settings] (ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。 これらの資格情報は、この手順内の後で使用します。
 4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
 5. **Create** をクリックしてください。
 
 ### <a name="create-a-dnn-app"></a>DNN アプリの作成    
 
-1. **+** > **[See all] \(すべてを表示)** > **[DNN Platform preview] \(DNN プラットフォームのプレビュー)** > **[作成]** をクリックします。
+1. **+** > **[See all] (すべてを表示)** > **[DNN Platform preview] (DNN プラットフォームのプレビュー)** > **[作成]** をクリックします。
 2. **[App name] \(アプリ名)** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
 3. **[Configure required settings] \(必要な設定の構成)** > **[Create New] \(新規作成)** をクリックし、**App Service プラン**の名前を入力します。
 4. **[Pricing tier] \(価格レベル)** > **[F1 Free] \(F1 無料)** > **[選択]** > **[OK]** をクリックします。
@@ -93,4 +92,3 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 
 > [!div class="nextstepaction"]
 > [Azure と Azure Stack へのアプリのデプロイ](user/azure-stack-solution-pipeline.md)
-

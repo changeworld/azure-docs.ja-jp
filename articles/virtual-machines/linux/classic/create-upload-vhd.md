@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2016
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 23c30c954875598ce3e01db137b0ef8cda9779f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-and-uploading-a-virtual-hard-disk-that-contains-the-linux-operating-system"></a>Linux オペレーティング システムを格納した仮想ハード ディスクの作成とアップロード
 > [!IMPORTANT] 
@@ -115,4 +114,3 @@ azure vm create --userName ops --password P@ssw0rd! --vm-size Small --ssh `
 [Step 1: Prepare the image to be uploaded]:#prepimage
 [Step 2: Prepare the connection to Azure]:#connect
 [Step 3: Upload the image to Azure]:#upload
-

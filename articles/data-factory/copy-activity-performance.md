@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3f2b95e57e34905bf1128e9aee2862110a598f75
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -403,4 +402,3 @@ Data Factory で同じデータ ストアに同時に接続させる必要があ
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのスキーマ マッピング](copy-activity-schema-and-type-mapping.md)
 - [コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)
-

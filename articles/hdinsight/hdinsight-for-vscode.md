@@ -16,14 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/26/2017
 ms.author: jejiang
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code を使用する
 
 Azure HDInsight Tools for Visual Studio Code (VSCode) を使用して、Hive バッチ ジョブ、対話型 Hive クエリ、および pySpark スクリプトを作成および送信する方法について説明します。 Azure HDInsight Tools は、VSCode でサポートされている Windows、Linux、MacOS などのプラットフォームにインストールできます。 プラットフォームごとの前提条件については、以下を参照してください。
@@ -70,7 +68,7 @@ Azure に接続するには、VSCode にワークスペースを作成する必�
 **ワークスペースを開くには**
 
 1. [**ファイル**] メニューから [**フォルダーを開く**] をクリックし、既存のフォルダーを指定するか、作業フォルダーとして新しいフォルダーを作成します。 フォルダーが左側のウィンドウに表示されます。
-2. 左側のウィンドウで、作業フォルダーの横にある [**新しいファイル**] をクリックします。
+2. 左側のウィンドウで、作業フォルダーの横にある **新しいファイル**をクリックします。
 
    ![新しいファイル](./media/hdinsight-for-vscode/new-file.png)
 3. .hql (Hive クエリ) または .py (Spark スクリプト) のファイル拡張子のいずれかを使って、新しいファイルに名前を付けます。 **XXXX_hdi_settings.json** 構成ファイルが、作業フォルダーに自動的に追加されることに注意してください。
@@ -251,7 +249,6 @@ HDInsight for VSCode では、以下の機能がサポートされています�
 ### <a name="managing-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
-
 
 
 

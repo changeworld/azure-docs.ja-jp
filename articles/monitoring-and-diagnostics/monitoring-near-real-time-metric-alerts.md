@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 09/16/2017
 ms.author: snmuvva
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aeeb6c2fb87e6c19991ef243ee7230f4e8f4e251
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="near-real-time-metric-alerts-preview"></a>ほぼリアルタイムのメトリック アラート (プレビュー)
 Azure Monitor は、ほぼリアルタイムのメトリック アラート (プレビュー) という名前の新しい種類のメトリック アラートをサポートするようになりました。 現在、この機能はパブリック プレビュー段階にあります。
 このアラートは、いくつかの点で、通常のメトリック アラートとは違っています。
@@ -95,7 +93,6 @@ Azure Monitor は、ほぼリアルタイムのメトリック アラート (プ
 * メトリックのしきい値と、前日の実際の値を示すグラフを表示する。
 * 編集または削除する。
 * そのアラートの受信を一時的に停止または再開する必要がある場合に、そのアラートを**無効**または**有効**にする。
-
 
 
 

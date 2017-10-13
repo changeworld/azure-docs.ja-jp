@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 06/29/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c9175cce0cb93e73009fb8d751e54f631603d482
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-storage-account-using-powershell"></a>PowerShell を使用したストレージ アカウントの作成
 
 Azure PowerShell モジュールは、PowerShell コマンド ラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、PowerShell を使用して Azure Storage アカウントを作成する方法を詳しく説明します。 
@@ -57,13 +55,13 @@ $resourceGroup = "contoso-storage-accounts"
 New-AzureRmResourceGroup -Name $resourceGroup -Location $location 
 ```
 
-## <a name="create-a-general-purpose-standard-storage-account"></a>汎用的な標準ストレージ アカウントの作成
+## <a name="create-a-general-purpose-standard-storage-account"></a>汎用の標準ストレージ アカウントを作成する
 
 使用方法と対象のサービス (BLOB、ファイル、テーブル、またはキュー) に応じて、ストレージ アカウントにはいくつかの種類があります。 次の表に可能性を示します。
 
 |**ストレージ アカウントの種類**|**汎用 (Standard)**|**汎用 (Premium)**|**Blob Storage (ホット アクセス レベルとクール アクセス レベル)**|
 |-----|-----|-----|-----|
-|**サポートされるサービス**| Blob service、File サービス、Table サービス、Queue サービス | Blob service | Blob service|
+|**サポートされるサービス**| BLOB、ファイル、テーブル、キュー サービス | Blob service | Blob service|
 |**サポートされる BLOB の種類**|ブロック BLOB、ページ BLOB、追加 BLOB | ページ blob | ブロック BLOB と追加 BLOB|
 
 [New-AzureRmStorageAccount](/powershell/module/azurerm.storage/New-AzureRmStorageAccount) を使用して、4 つのサービスすべてに使用できる汎用的な標準ストレージ アカウントを作成します。 ストレージ アカウントに "*contosomvcstandard*" という名前を付け、ローカル冗長ストレージと BLOB 暗号化を有効にするように構成します。

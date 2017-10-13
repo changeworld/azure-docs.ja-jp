@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: delhan
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: e06c73c2c00b27178f8431b83b5c5a42110b6b1e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-explorer-troubleshooting-guide"></a>Azure Storage Explorer トラブルシューティング ガイド
 
 Microsoft Azure Storage Explorer (プレビュー) は、Windows、macOS、Linux で Azure Storage データを容易に操作できるスタンドアロン アプリです。 このアプリは、Azure、ソブリン クラウド、および Azure Stack でホストされているストレージ アカウントに接続できます。
@@ -182,4 +180,3 @@ SAS URL を使用してサービスに接続し、上記のエラーが発生す
 これを行うには、**[ヘルプ]** メニューをクリックし、**[フィードバックを送信する]** をクリックします。
 
 ![フィードバック](./media/storage-explorer-troubleshooting/4022503_en_1.png)
-

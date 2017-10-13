@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f90234bdd5c917a502d24cd16256bc11c7fbed0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Azure Machine Learning ワークスペースの管理
 
@@ -136,5 +135,4 @@ Web サービス エンドポイントの名前をクリックして開きます
 * **説明** Web サービスの説明を入力することができます。 [説明] は必須フィールドです。
 * **ログ記録** エンドポイントに関するエラー ログ記録を有効または無効にすることができます。 ログ記録の詳細については、「[Machine Learning Web サービスのログ記録の有効化](web-services-logging.md)」をご覧ください。
 * **サンプル データの有効化** 要求応答サービスのテストに使用できるサンプル データを提供することができます。 Machine Learning Studio で Web サービスを作成した場合は、サンプル データはモデルのトレーニングに使用したデータから取得されます。 サービスをプログラムで作成した場合は、データは JSON パッケージの一部として提供したサンプル データから取得されます。
-
 

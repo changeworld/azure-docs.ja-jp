@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e83bc42d658c4d6304f98b99d0e0942595bd65d2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="complete-an-access-review-of-members-of-a-group-or-users-access-to-an-application-in-azure-ad"></a>アプリケーションにアクセスするユーザーまたはグループのメンバーに対するアクセス レビューを Azure AD で完了する
 
 管理者は[アクセス レビューを作成](active-directory-azure-ad-controls-create-access-review.md)することによって、アプリケーションに割り当てられているユーザーまたはグループのメンバーに対するレビューを依頼することができます。 レビュー担当者には、アクセス権をレビューするよう促すメールが Azure AD から自動的に送信されます。 メールが届かなかったユーザーには、[アクセス権をレビューする方法](active-directory-azure-ad-controls-perform-access-review.md)に関するページの手順を送信できます。  アクセス レビュー期間が過ぎるか、管理者がアクセス レビューを停止したら、この記事の手順に従って、その結果を確認したうえで適用します。
@@ -59,4 +57,3 @@ ms.lasthandoff: 09/20/2017
 - [Azure AD アクセス レビューに使用するプログラムとコントロールを管理する](active-directory-azure-ad-controls-manage-programs-controls.md)
 - [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](active-directory-azure-ad-controls-create-access-review.md)
 - [Azure AD 管理者ロールに含まれるユーザーのアクセス レビューを作成する](active-directory-privileged-identity-management-how-to-start-security-review.md)
-

@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2016
 ms.author: gwallace
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: d4b0aa817c3fd7f3304b5122ac584166d8079d3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-dns-records-for-a-web-app-in-a-custom-domain"></a>カスタム ドメインにおける Web アプリの DNS レコードの作成
 
 Azure DNS を使用すると、Web アプリ用にカスタム ドメインをホストすることができます。 たとえば、Azure Web アプリを作成し、ユーザーが FQDN として contoso.com または www.contoso.com を使用してそのアプリにアクセスできるようにします。
@@ -203,4 +201,3 @@ Set-AzureRMDnsRecordSet -RecordSet $rs
 ## <a name="next-steps"></a>次のステップ
 
 [App Service のカスタム ドメイン名の構成](../app-service/app-service-web-tutorial-custom-domain.md) に関するページの手順に進み、カスタム ドメインを使用するように Web アプリを構成します。
-

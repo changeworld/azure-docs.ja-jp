@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 2c3ffb8432fae41b376cc71bb600a0b1c490f345
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-network-integration-for-azure-services"></a>Azure サービスの仮想ネットワーク統合
 
 Azure 仮想ネットワークに Azure サービスを統合することで、仮想ネットワークにデプロイされたサービスのインスタンスからのプライベート アクセスが可能になります。
@@ -76,7 +74,6 @@ Azure 仮想ネットワークに Azure サービスを統合することで、�
 ## <a name="virtual-network-integration-across-multiple-azure-services"></a>複数の Azure サービスにわたる仮想ネットワーク統合
 
 仮想ネットワーク内のサブネットに Azure サービスをデプロイし、そのサブネットに重要なサービス リソースを結び付けることができます。 たとえば、仮想ネットワークに HDInsight をデプロイし、HDInsight サブネットにストレージ アカウントを結び付けることができます。
-
 
 
 

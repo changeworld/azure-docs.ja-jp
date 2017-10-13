@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: f82a95ec9543b2d53ef28bf7f15315e23cf4893a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-virtual-network-with-multiple-subnets"></a>複数のサブネットを含んだ仮想ネットワークを作成する
 
@@ -238,4 +237,3 @@ Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 - [Windows 仮想マシン](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-network%2ftoc.json)または [Linux 仮想マシン](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を既存の仮想ネットワークに作成します。
 - 仮想ネットワーク間に[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)を作成して、2 つの仮想ネットワークを接続します。
 - [VPN Gateway](../vpn-gateway/vpn-gateway-howto-multi-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Azure ExpressRoute ](../expressroute/expressroute-howto-linkvnet-portal-resource-manager.md?toc=%2fazure%2fvirtual-network%2ftoc.json)回線を使用して、仮想ネットワークをオンプレミスのネットワークに接続します。
-

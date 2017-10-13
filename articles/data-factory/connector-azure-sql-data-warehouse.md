@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: fb67c70d1e85307c38a185e2b47729880880d55b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-to-or-from-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure SQL Data Warehouse をコピー先またはコピー元としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -51,9 +50,9 @@ Azure SQL Data Warehouse のリンクされたサービスでは、次のプロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティを **AzureSqlDW**に設定する必要があります。 | はい |
-| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 このフィールドは、SecureString とマークします。 |はい |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 Azure 統合ランタイムまたはセルフホステッド統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| type | type プロパティを **AzureSqlDW** | はい |
+| connectionString |connectionString プロパティの Azure SQL Data Warehouse インスタンスに接続するために必要な情報を指定します。 基本認証だけがサポートされています。 このフィールドを SecureString とマークします。 |あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 Azure 統合ランタイムまたは自己ホスト型統合ランタイム (データ ストアがプライベート ネットワークにある場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 
 > [!IMPORTANT]
@@ -88,8 +87,8 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは、**AzureSqlDWTable** を設定する必要があります。 | はい |
-| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | はい |
+| type | データセットの type プロパティは、**AzureSqlDWTable** を設定する必要があります。 | あり |
+| tableName |リンクされたサービスが参照する Azure SQL Data Warehouse インスタンスのテーブルまたはビューの名前。 | あり |
 
 **例:**
 
@@ -120,9 +119,9 @@ Azure SQL Data Warehouse からデータをコピーする場合は、コピー 
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **SqlDWSource** を設定する必要があります。 | はい |
-| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |いいえ |
-| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |いいえ |
+| type | コピー アクティビティのソースの type プロパティは **SqlDWSource** を設定する必要があります。 | あり |
+| SqlReaderQuery |カスタム SQL クエリを使用してデータを読み取ります。 例: `select * from MyTable`. |なし |
+| sqlReaderStoredProcedureName |ソース テーブルからデータを読み取るストアド プロシージャの名前。 最後の SQL ステートメントはストアド プロシージャの SELECT ステートメントにする必要があります。 |なし |
 | storedProcedureParameters |ストアド プロシージャのパラメーター。<br/>使用可能な値: 名前/値ペア。 パラメーターの名前とその大文字と小文字は、ストアド プロシージャのパラメーターの名前とその大文字小文字と一致する必要があります。 |いいえ |
 
 **注意する点:**
@@ -224,7 +223,7 @@ Azure SQL Data Warehouse にデータをコピーする場合は、コピー ア
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **SqlDWSink** を設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは **SqlDWSink** を設定する必要があります。 | あり |
 | allowPolyBase |BULKINSERT メカニズムではなく PolyBase (該当する場合) を使用するかどうかを示します。 <br/><br/> **SQL Data Warehouse へのデータ読み込みには、PolyBase の使用をお勧めします。** 制約と詳細については、「 [PolyBase を使用して Azure SQL Data Warehouse にデータを読み込む](#use-polybase-to-load-data-into-azure-sql-data-warehouse) 」をご覧ください。<br/><br/>使用可能な値: **True** (既定値) および **False**。  |いいえ |
 | polyBaseSettings |**allowPolybase** プロパティが **true** に設定されているときに指定できるプロパティのグループ。 |いいえ |
 | rejectValue |クエリが失敗するまでに拒否できる行の数または割合を指定します。<br/><br/>PolyBase の拒否オプションの詳細については、「 **CREATE EXTERNAL TABLE (Transact-SQL)** 」の「 [Arguments (引数)](https://msdn.microsoft.com/library/dn935021.aspx) 」をご覧ください。 <br/><br/>使用可能な値: 0 (既定値)、1、2 … |いいえ |
@@ -421,8 +420,8 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | Azure SQL Data Warehouse のデータ型 | Data Factory の中間データ型 |
 |:--- |:--- |
 | bigint |Int64 |
-| binary |Byte[] |
-| bit |Boolean |
+| バイナリ |Byte[] |
+| ビット |Boolean |
 | char |String、Char[] |
 | date |DateTime |
 | DateTime |DateTime |
@@ -431,7 +430,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | Decimal |Decimal |
 | FILESTREAM 属性 (varbinary(max)) |Byte[] |
 | Float |Double |
-| image |Byte[] |
+| イメージ |Byte[] |
 | int |Int32 |
 | money |Decimal |
 | nchar |String、Char[] |
@@ -444,7 +443,7 @@ Azure SQL Data Warehouse をコピー元またはコピー先としてデータ�
 | smallint |Int16 |
 | smallmoney |Decimal |
 | sql_variant |Object * |
-| text |String、Char[] |
+| テキスト |String、Char[] |
 | time |timespan |
 | timestamp |Byte[] |
 | tinyint |Byte |

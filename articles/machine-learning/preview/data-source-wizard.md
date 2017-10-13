@@ -7,14 +7,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bed026e8f75618403efa3eed475371d1d2746bc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-source-wizard"></a>データ ソース ウィザード #
 
 Data Source Wizard は、コードなしでデータセットを Azure ML Workbench にすばやく簡単に取り込む方法です。 ここでは、データセットのサンプリング方法を選択することもできます。 
@@ -74,4 +72,3 @@ Data Source Wizard は、コードなしでデータセットを Azure ML Workbe
 ![ステップ 7](media/data-source-wizard/step6.png)
 
 [Finish] (完了) をクリックすると、新しいデータ ソースがプロジェクトに追加されます。 追加したデータ ソースは、データ ビューでは [Data Sources] (データ ソース) グループの下で、また**ファイル ビュー**では .dsource ファイルとして確認できます。
-

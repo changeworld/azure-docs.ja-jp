@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b15ee8980401b22969dbe60642bf3c0064509146
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-considerations-for-azure-data-factory"></a>Azure Data Factory のセキュリティに関する考慮事項
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -34,4 +33,3 @@ ms.lasthandoff: 09/25/2017
 - [コピー アクティビティの概要](copy-activity-overview.md)
 - [コピー アクティビティのフォールト トレランス](copy-activity-fault-tolerance.md)
 - [コピー アクティビティのパフォーマンス](copy-activity-performance.md)
-

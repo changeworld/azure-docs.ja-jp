@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: cc17196603a5bdcd7f880c3650512846fa0facef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Azure の Web Apps の構成と管理に関する FAQ
 
@@ -321,4 +320,3 @@ Azure の自動スケールが期待どおりに Web アプリのインスタン
 ## <a name="how-do-i-migrate-from-an-on-premises-environment-to-app-service"></a>オンプレミス環境から App Serviceアプリ サービスへの移行方法を教えてください?
 
 サイトを Windows および Linux の Web サーバーから App Service に移行するには、Azure App Service Migration Assistant を使用できます。 移行ツールは、必要に応じて、Azure に Web アプリとデータベースを作成し、コンテンツを発行します。 詳細については、「[Azure App Service Migration Assistant](https://www.movemetothecloud.net/)」を参照してください。
-

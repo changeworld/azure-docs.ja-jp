@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 6/7/2017
 ms.author: cephalin;robmcm
 ms.custom: mvc, devcenter
+ms.openlocfilehash: d12e3be2d6658d2a6cc18ed6ad9a149235b8b581
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: d4b84efa3370308d1d99a9361acad1801aa5330b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-java-web-app-in-azure"></a>Azure で初めての Java Web アプリを作成する
 
@@ -164,7 +163,7 @@ Azure Toolkit によって Web アプリが作成され、進行状況を示す�
 
 変更を保存します。
 
-プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]**、 > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
+プロジェクト エクスプローラーで、プロジェクトを右クリックし、**[Azure]** > **[Publish as Azure Web App\(Azure Web アプリとして発行\)]** の順にクリックします。
 
 **[Deploy Web App\(Web アプリのデプロイ\)]** ダイアログ ボックスが表示されます。ボックスには、以前に作成したアプリ サービスが表示されています。 
 
@@ -200,4 +199,3 @@ Web アプリ (上の画像の **webapp-170602193915**) を選択します。
 
 > [!div class="nextstepaction"]
 > [カスタム ドメインをマップする](app-service-web-tutorial-custom-domain.md)
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/25/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: b7411fa6aba04ffd34f3f4bd03e706ca75afc9c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-5-prepare-azure-resources-for-physical-server-replication-to-azure"></a>手順 5: Azure に物理サーバーをレプリケートするための Azure リソースを準備する
 
@@ -62,4 +61,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 「[手順 6: コンテナーを設定する](physical-walkthrough-create-vault.md)」に進みます。
-

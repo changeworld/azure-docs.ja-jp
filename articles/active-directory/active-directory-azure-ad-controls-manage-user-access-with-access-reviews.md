@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0459eb5cc71939202c8491f6b2714e28bd8e202d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-user-access-with-azure-ad-access-reviews"></a>Azure AD のアクセス レビューでユーザー アクセスを管理する
 
 Azure Active Directory では、アクセス レビューに参加してユーザーのアクセスを再確認 (または "証明") するようユーザー自身や意思決定者に求めることで、ユーザーが適切なアクセス権を持っていいることを簡単に確認することができます。  レビュー担当者は、Azure AD からの提案に基づいて、各ユーザーの継続的なアクセスのニーズを評価することができます。 アクセス レビューが完了したら、変更を加え、アクセス権が不要になったユーザーからは削除することができます。
@@ -41,7 +39,7 @@ Azure Active Directory では、アクセス レビューに参加してユー�
 
 1. 1 人以上のメンバーを持つ Azure Active Directory のグループを選択するか、または 1 人以上のメンバーが割り当てられている、Azure Active Directory に接続済みのアプリケーションを選択します。 
 2. 各ユーザーが自分自身のアクセスを確認するか、1 人または複数のユーザーがすべてのユーザーのアクセスを確認するかを決定します。
-3. レビュー担当者のアクセス パネルにアクセス レビューが表示されるようにします。  全体管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。 
+3. レビュー担当者のアクセス パネルにアクセス レビューが表示されるようにします。  グローバル管理者として[アクセス レビュー ページ](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/)に移動します。 
 4. アクセス レビューを開始します。 詳しくは、「[how to create an access review (アクセス レビューを作成する方法)](active-directory-azure-ad-controls-create-access-review.md)」をご覧ください。
 5. レビュー担当者に確認を依頼します。 既定では、レビュー担当者はそれぞれ、Azure AD からアクセス パネルへのリンクが記載されたメールを受信し、そこで[アクセス レビューを実行](active-directory-azure-ad-controls-perform-access-review.md)します。
 6. レビュー担当者がまだ入力していない場合は、Azure AD にそのレビュー担当者へ通知を送信させることができます。  既定では、終了日まであと半分になった時点で Azure AD はまだ応答していないレビュー担当者に自動的に通知を送信します。
@@ -51,7 +49,6 @@ Azure Active Directory では、アクセス レビューに参加してユー�
 ## <a name="next-steps"></a>次のステップ
 
 - [グループのメンバーまたはアプリケーションへのアクセスのアクセス レビューを作成する](active-directory-azure-ad-controls-create-access-review.md)
-
 
 
 

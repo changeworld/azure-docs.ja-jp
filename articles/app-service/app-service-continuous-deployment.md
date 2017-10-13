@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/28/2016
 ms.author: dariagrigoriu
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: ef5924607868bcb3dc35e279539b78d5a0e17c1a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-deployment-to-azure-app-service"></a>Azure App Service への継続的なデプロイ
 このチュートリアルでは、 [Azure Web Apps](app-service-web-overview.md) 向けに継続的なデプロイ ワークフローを構成する方法について説明します。 App Service と BitBucket、GitHub、[Visual Studio Team Services (VSTS)](https://www.visualstudio.com/team-services/) との統合では、Azure で、これらのサービスのいずれかに発行されたプロジェクトから最新の更新プログラムを取り込む場合に、継続的なデプロイのワークフローを有効にすることができます。 複数の頻繁に発生する投稿を統合する場合、継続的なデプロイはプロジェクトに最適なオプションとなります。
@@ -96,4 +95,3 @@ Visual Studio ソリューションを App Service にプッシュする手順�
 [Create a repo (GitHub) (リポジトリの作成 (GitHub))]: https://help.github.com/articles/create-a-repo
 [Create a repo (BitBucket) (リポジトリの作成 (BitBucket))]: https://confluence.atlassian.com/display/BITBUCKET/Create+an+Account+and+a+Git+Repo
 [Get started with VSTS (VSTS で作業を始める) (VSTS で作業を始める)]: https://www.visualstudio.com/docs/vsts-tfs-overview
-

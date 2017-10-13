@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/02/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
 ms.openlocfilehash: aa1c4ea379c10dff246e2f924a345f9fa444aa64
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-to-azure-container-instances-from-the-azure-container-registry"></a>Azure Container Registry から Azure Container Instances へのデプロイ
 
 Azure Container Registry は、Docker コンテナー イメージ用の Azure ベースのプライベート レジストリです。 この記事では、Azure Container Registry に格納されているコンテナー イメージを Azure Container Instances にデプロイする方法について説明します。
@@ -91,4 +89,3 @@ Azure Container Registry にコンテナー イメージを保持している場
 [acr-create-deeplink]: ./media/container-instances-using-azure-container-registry/acr-create-deeplink.png
 
 [aci-detailsview]: ./media/container-instances-using-azure-container-registry/aci-detailsview.png
-

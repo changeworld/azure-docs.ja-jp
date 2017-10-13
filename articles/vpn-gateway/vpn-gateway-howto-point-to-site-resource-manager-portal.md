@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: fbb3bb5f538d1d26b6fe8d653724d80faf96e277
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-native-azure-certificate-authentication-azure-portal"></a>ネイティブ Azure 証明書認証を使用した VNet へのポイント対サイト接続の構成: Azure Portal
 
@@ -210,7 +209,7 @@ VPN クライアント構成ファイルには、P2S 接続を使って VNet に
 
 1. 信頼されたルート証明書を削除するには、仮想ネットワーク ゲートウェイの **[ポイント対サイトの構成]** ページに移動します。
 2. ページの **[ルート証明書]** セクションで、削除する証明書を見つけます。
-3. 証明書の横にある省略記号をクリックし、[削除] をクリックします。
+3. 証明書の横にある省略記号をクリックし、削除をクリックします。
 
 ## <a name="revokeclient"></a>クライアント証明書を失効させるには
 

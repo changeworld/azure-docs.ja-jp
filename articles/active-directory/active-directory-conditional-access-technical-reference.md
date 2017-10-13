@@ -14,12 +14,11 @@ ms.workload: identity
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: spunukol
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 27ace4e9bc4a1626059fba657dce0c629d52f32d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-technical-reference"></a>Azure Active Directory の条件付きアクセスに関するテクニカル リファレンス
 
@@ -218,6 +217,5 @@ Azure AD 条件付きアクセスは、次のデバイス プラットフォー�
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-technical-reference/01.png
-
 
 

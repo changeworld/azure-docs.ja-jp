@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ccf0bd57b7f54b1d8d57b460df9bb381b29ee381
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="respond-to-events-with-log-analytics-alerts"></a>Log Analytics のアラートを使用してイベントに応答する
 Log Analytics のアラートは、Log Analytics リポジトリ内の重要な情報を特定します。  アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](log-analytics-tutorial-dashboards.md)」チュートリアルの続きです。   
@@ -33,7 +32,7 @@ Log Analytics のアラートは、Log Analytics リポジトリ内の重要な�
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](log-analytics-quick-collect-azurevm.md)既存の仮想マシンが必要です。  
 
 ## <a name="log-in-to-azure-portal"></a>Azure Portal へのログイン
-Azure ポータル ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-alerts"></a>アラートを作成する
 

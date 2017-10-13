@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff60ebaddd3a7888cee612f387bd0c50799496ac
-ms.openlocfilehash: 532a953c02ef40eb55705eac885d74c5574deed5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/05/2017
-
+ms.openlocfilehash: 5f099201d9018a6f8577cb3daf127d09560fb94b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-a-web-app-in-azure-app-service-using-traffic-manager"></a>Traffic Manager を使用して Azure App Service Web アプリのカスタム ドメイン名を構成する
 [!INCLUDE [web-selector](../../includes/websites-custom-domain-selector.md)]
@@ -81,4 +80,3 @@ ms.lasthandoff: 01/05/2017
 <!-- URL List -->
 
 [CREATEDNS]: ../dns/dns-web-sites-custom-domain.md
-

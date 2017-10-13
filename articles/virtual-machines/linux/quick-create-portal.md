@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 15d4f81f8a7a835ea61a9056d83d8337d529c7cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-with-the-azure-portal"></a>Azure Portal で Linux 仮想マシンを作成する
 
 Azure 仮想マシンは、Azure Portal で作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで仮想マシンとそれに関連するすべてのリソースを作成して構成できます。 このクイック スタートでは、仮想マシンを作成してそこに Web サーバーをインストールする手順を紹介します。
@@ -46,7 +44,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 ## <a name="create-virtual-machine"></a>仮想マシンの作成
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure ポータルの左上隅にある **[新規]** ボタンをクリックします。
 
 2. **[コンピューティング]**、**[Ubuntu Server 16.04 LTS]** の順に選択します。 
 
@@ -62,7 +60,7 @@ Azure Portal (http://portal.azure.com) にログインします。
 
 6. 概要ページで **[OK]** をクリックして、仮想マシンのデプロイを開始します。
 
-7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM のサマリーが自動的に表示されます。
+7. 対応する VM が、Azure Portal のダッシュボードにピン留めされます。 デプロイが完了すると、VM の概要が自動的に表示されます。
 
 
 ## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
@@ -124,4 +122,3 @@ NGINX がインストールされ、ご利用の VM に対してポート 80 が
 
 > [!div class="nextstepaction"]
 > [Azure Linux 仮想マシンのチュートリアル](./tutorial-manage-vm.md)
-

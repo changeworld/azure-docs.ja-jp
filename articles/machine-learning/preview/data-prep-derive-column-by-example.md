@@ -11,15 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a02f5e827345a1d28f01d691e1b6fbccfc03ae8a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="derive-column-by-example-transformation"></a>Derive column by example (例による列の派生) 変換
 
 **Derive Column by Example (例による列の派生)** 変換により、ユーザーは、ユーザー指定の派生結果例を使用して、1 つ以上の既存列の派生物を作成できます。 派生は、サポートされている文字列変換、日付変換、数値変換のいかなる組み合わせでも構いません。 
@@ -390,4 +387,3 @@ Workbench はデータを分析し、ユーザーによるレビューが必要�
 
 ### <a name="reference"></a>リファレンス
 String Transformation by Example (例による文字列変換) 技術の詳細については、[こちらの出版物](https://www.microsoft.com/en-us/research/publication/automating-string-processing-spreadsheets-using-input-output-examples/)を参照してください。
-

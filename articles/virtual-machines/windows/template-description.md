@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: d45a43d1d4304fd0028d15b4797228a22cc6e76f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
 この記事では、仮想マシンに適用される、Azure Resource Manager テンプレートの側面について説明します。 仮想マシンを作成するための完全なテンプレートについては、この記事では説明しません。完全なテンプレートには、ストレージ アカウント、ネットワーク インターフェイス、パブリック IP アドレス、および仮想ネットワークのリソース定義が必要です。 これらのリソースをまとめて定義できる方法の詳細については、「[Resource Manager テンプレートのチュートリアル](../../azure-resource-manager/resource-manager-template-walkthrough.md)」を参照してください。
@@ -460,4 +458,3 @@ start.ps1 スクリプトは、多くの構成タスクを実行できます。 
 - 「[Azure Resource Manager のテンプレートの作成](../../resource-group-authoring-templates.md)」を使用して、独自のテンプレートを作成します。
 - 「[Resource Manager テンプレートで Windows 仮想マシンを作成する](ps-template.md)」を使用して作成したテンプレートをデプロイします。
 - 作成した VM を管理する方法については、「[Azure PowerShell モジュールを使用して Windows VM を作成および管理する](tutorial-manage-vm.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」をご覧ください。
-

@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-translationtype: Human Translation
-ms.sourcegitcommit: 63f2f6dde56c1b5c4b3ad2591700f43f6542874d
 ms.openlocfilehash: b95bcb38664718bf25ec6981c803415790c6da3d
-ms.lasthandoff: 02/28/2017
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-with-multiple-nics-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して複数の NIC を持つ VM を作成する
 
@@ -30,7 +29,7 @@ ms.lasthandoff: 02/28/2017
 [!INCLUDE [virtual-network-deploy-multinic-intro-include.md](../../includes/virtual-network-deploy-multinic-intro-include.md)]
 
 > [!NOTE]
-> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md)&2; 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-cli.md)ではなくこのモデルをお勧めします。
+> Azure には、リソースの作成と操作に関して、[Resource Manager とクラシックの](../resource-manager-deployment-model.md) 2 種類のデプロイメント モデルがあります。  この記事では、Resource Manager デプロイメント モデルの使用方法について取り上げていますが、最新のデプロイでは、[クラシック デプロイメント モデル](virtual-network-deploy-multinic-classic-cli.md)ではなくこのモデルをお勧めします。
 >
 
 [!INCLUDE [virtual-network-deploy-multinic-scenario-include.md](../../includes/virtual-network-deploy-multinic-scenario-include.md)]
@@ -54,8 +53,8 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
 バックエンド VM は、次のリソースの作成に依存します。
 
 * **データ ディスクのストレージ アカウント**。 パフォーマンスを高めるために、データベース サーバー上のデータ ディスクはソリッド ステート ドライブ (SSD) テクノロジーを使用します。これには、Premium Storage アカウントが必要です。 デプロイする Azure の場所が Premium Storage をサポートすることを確認してください。
-* **NIC**。 各 VM には&2; つの NIC があり、1 つはデータベース アクセス用で、もう&1; つは管理用です。
-* **可用性セット**。 メンテナンス中に少なくとも&1; つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
+* **NIC**。 各 VM には 2 つの NIC があり、1 つはデータベース アクセス用で、もう 1 つは管理用です。
+* **可用性セット**。 メンテナンス中に少なくとも 1 つの VM が稼働し、実行されているようにするためには、すべてのデータベース サーバーを単一の可用性セットに追加します。
 
 ### <a name="step-1---start-your-script"></a>手順 1 - スクリプトの開始
 使用するすべての Bash スクリプトは、 [ここ](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/IaaS-Story/11-MultiNIC/arm/virtual-network-deploy-multinic-arm-cli.sh)からダウンロードできます。 以下の手順に従って、ご使用の環境で機能するようにスクリプトを変更します。
@@ -192,7 +191,7 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         --admin-password $password
     ```
 
-5. 各 VM について、次の&2; つのデータ ディスクを作成し、 `done` コマンドを使用してループを終了します。
+5. 各 VM について、次の 2 つのデータ ディスクを作成し、 `done` コマンドを使用してループを終了します。
 
     ```azurecli
     azure vm disk attach-new --resource-group $backendRGName \
@@ -358,5 +357,4 @@ DB サーバーを作成する前に、このシナリオで必要なすべて�
         info:    New data disk location: https://wtestvnetstorageprm.blob.core.windows.net/vhds/datadisk2-2.vhd
         info:    Updating VM "DB2"
         info:    vm disk attach-new command OK
-
 

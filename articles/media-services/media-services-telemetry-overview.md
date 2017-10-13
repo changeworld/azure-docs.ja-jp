@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: juliako
+ms.openlocfilehash: 1b26d7925fe5bd39905d9f51d22433b1eea43af6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 25520a447a9f2c459fd073779e4922377b6d1d4d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-media-services-telemetry"></a>Azure Media Services テレメトリ
 
 Azure Media Services (AMS) を使用して、サービスのテレメトリ/メトリック データにアクセスできます。 現在のバージョンの AMS では、ライブ **チャネル** エンティティ、**ストリーミング ポイント** エンティ、およびライブ **アーカイブ** エンティティのテレメトリ データを取得できます。 
@@ -220,4 +218,3 @@ Healthy|FragmentDiscardedCount == 0 && ArchiveAcquisitionError == False の場�
 ## <a name="provide-feedback"></a>フィードバックの提供
 
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

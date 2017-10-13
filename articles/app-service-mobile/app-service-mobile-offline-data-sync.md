@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/30/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
 ms.openlocfilehash: 8e2bd755d14319f8c66f7ae7ec64fbd10801b39d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="offline-data-sync-in-azure-mobile-apps"></a>Azure モバイル アプリでのオフライン データ同期
 ## <a name="what-is-offline-data-sync"></a>オフライン データ同期について
@@ -102,4 +101,3 @@ Windows Phone または Windows Store 8.1 で SQLite ベースの実装を使用
 [Xamarin iOS: オフライン同期を有効にする]: app-service-mobile-xamarin-ios-get-started-offline-data.md
 [Xamarin Android: オフライン同期を有効にする]: app-service-mobile-xamarin-android-get-started-offline-data.md
 [ユニバーサル Windows プラットフォームでオフライン同期を有効にする]: app-service-mobile-windows-store-dotnet-get-started-offline-data.md
-

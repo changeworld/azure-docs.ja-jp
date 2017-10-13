@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 03764377b3ea0e17d4a192a7e05bb495ec56f331
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-update-or-remove-a-credit-or-debit-card-for-azure"></a>Azure のクレジット カードまたはデビット カードを追加、更新、または削除する
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 08/31/2017
 
 1. アカウント管理者として[アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. サブスクリプションを選択します。
-1. ページの右側にある **[Manage payment methods (支払方法の管理)]**を選択します。
+1. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 
     ![選択した [支払い方法の管理] オプションのスクリーン ショット。](./media/billing-how-to-change-credit-card/changesub_new.png)
 1. "+" を選択して、カードを追加します。
@@ -60,14 +59,14 @@ ms.lasthandoff: 08/31/2017
 
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. カードにリンクされているサブスクリプションを選択します。
-1. ページの右側にある **[Manage payment methods (支払方法の管理)]**を選択します。
+1. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 1. 使用するカードの横にある **[代替使用]** をクリックします。 これにより、このカードに現在関連付けられている他のサブスクリプションも更新されます。 
 
 ## <a name="remove-a-credit-or-debit-card-from-the-account"></a>クレジット カードまたはデビットカードをアカウントから削除する
 
 1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインします。
 1. カードにリンクされているサブスクリプションを選択します。
-3. ページの右側にある **[Manage payment methods (支払方法の管理)]**を選択します。
+3. ページの右側にある **[Manage payment methods (支払方法の管理)]** を選択します。
 4. 削除するクレジット カードの **[削除]** をクリックします。
 
 クレジット カードが他の有効な Microsoft サブスクリプションに関連付けられている場合は、Azure アカウントから削除できません。 すべての有効な Microsoft のサブスクリプションからクレジット カードを削除して、再試行します。
@@ -101,4 +100,3 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

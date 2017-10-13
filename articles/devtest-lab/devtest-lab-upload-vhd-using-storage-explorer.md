@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/10/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 502e2536fb0fd2e9dfc4c7b85a6fb4e18202f38f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>Microsoft Azure ストレージ エクスプローラーを使用して、ラボのストレージ アカウントに VHD ファイルをアップロードします
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
@@ -138,4 +136,3 @@ Azure DevTest Labs では、VHD ファイルを使用してカスタム イメ�
 [8]: ./media/devtest-lab-upload-vhd-using-storage-explorer/select-file.png
 [9]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-file.png
 [10]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-status.png
-

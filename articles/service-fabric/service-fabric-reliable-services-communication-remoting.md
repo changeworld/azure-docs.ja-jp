@@ -1,4 +1,3 @@
-
 ---
 title: "Service Fabric でのサービスのリモート処理 | Microsoft Docs"
 description: "Service Fabric のリモート処理では、クライアントとサービスがリモート プロシージャ コールを使用してサービスと通信できるようにします。"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 09/20/2017
 ms.author: vturecek
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 655bc3dd3735a35fbe7437e8dda92b2adf15f7bf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-remoting-with-reliable-services"></a>Reliable Services によるサービスのリモート処理
 WebAPI や Windows Communication Foundation (WCF) など、特定の通信プロトコルやスタックに関連付けられていないサービスでは、サービスのリモート プロシージャ コールを迅速かつ簡単に設定するためのリモート処理メカニズムを Reliable Services フレームワークが提供します。
@@ -392,4 +390,3 @@ V1 から V2 にアップグレードするには、2 段階のアップグレ�
 * [Reliable Services の OWIN 対応 Web API](service-fabric-reliable-services-communication-webapi.md)
 * [Reliable Services との WCF 通信](service-fabric-reliable-services-communication-wcf.md)
 * [Reliable Services の通信のセキュリティ保護](service-fabric-reliable-services-secure-communication.md)
-

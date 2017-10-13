@@ -7,12 +7,11 @@ ms.service: azure-stack
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 02406ef396fdaa40cb4d46f32d0b2b00c4ec295e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Azure Stack ネットワークの概要
 
@@ -31,5 +30,4 @@ Azure Stack には、単独でまたは組み合わせて使用できるさま�
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Stack ネットワークに関する考慮事項](azure-stack-network-differences.md)
-
 

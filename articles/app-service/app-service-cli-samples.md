@@ -16,12 +16,11 @@ ms.workload: app-service
 ms.date: 03/08/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 5c995ca118676935f4f9b0c72c266b9d52c181cb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.openlocfilehash: 6718694af487929d193dae54ecb2d85ece64887a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cli-samples"></a>Azure CLI のサンプル
 

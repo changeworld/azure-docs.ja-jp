@@ -15,12 +15,11 @@ ms.workload: NA
 ms.custom: backup-restore
 ms.date: 10/31/2016
 ms.author: lakshmir;barbkess
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 54c0149a769e654139bbdf709802d49127f041ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse-backups"></a>SQL Data Warehouse のバックアップ
 SQL Data Warehouse には、データ ウェアハウスのバックアップ機能の一部として、ローカル バックアップと地理的バックアップの両方が用意されています。 これらのバックアップには、Azure Storage BLOB のスナップショットと地理冗長ストレージが含まれます。 データ ウェアハウスをプライマリ リージョンの復元ポイントに復元する、または別の地理的リージョンに復元するには、データ ウェアハウスのバックアップを使用します。 この記事では、SQL Data Warehouse のバックアップの詳細について説明します。
@@ -119,5 +118,4 @@ SQL データ ウェアハウスのバックアップの主な用途は、リテ
 * データ ウェアハウスを復元するには、「[Azure SQL Data Warehouse の復元](sql-data-warehouse-restore-database-overview.md)」をご覧ください。
 
 <!-- ### Tutorials -->
-
 

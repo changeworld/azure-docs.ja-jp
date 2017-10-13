@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f2af15189a7c8643d51e8567b4366726b4b8051c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="datasets-in-azure-data-factory"></a>Azure Data Factory のデータセット
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -87,8 +86,8 @@ Data Factory のデータセットは JSON 形式では次のように定義さ�
 | type |データセットの型。 Data Factory でサポートされている型のいずれかを指定します (例: AzureBlob、AzureSqlTable)。 <br/><br/>詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |該当なし |
 | structure |データセットのスキーマ。<br/><br/>詳細については、「[データセット構造](#Structure)」セクションを参照してください。 |いいえ |該当なし |
 | typeProperties | typeProperties は型 (Azure Blob、Azure SQL テーブルなど) によって異なります。 サポートされている型とそのプロパティの詳細については、「[データセットの型](#Type)」セクションを参照してください。 |はい |該当なし |
-| external | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ |false |
-| availability | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「[データセットの可用性](#Availability)」セクションを参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |はい |該当なし |
+| 外部 | データセットをデータ ファクトリ パイプラインによって明示的に生成するかどうかを指定するブール型のフラグ。 アクティビティの入力データセットが現在のパイプラインによって生成されない場合は、このフラグを true に設定します。 パイプラインの最初のアクティビティの入力データセットについてはこのフラグを true に設定します。  |いいえ |false |
+| 可用性 | データセット生成の処理時間枠 (例: 時間単位、日単位) またはスライシング モデルを定義します。 アクティビティ実行で使用および生成されるデータの各ユニットは、データ スライスと呼ばれます。 出力データセットの可用性が日単位 (frequency - Day、interval - 1) に設定された場合、スライスは毎日生成されます。 <br/><br/>詳細については、「[データセットの可用性](#Availability)」セクションを参照してください。 <br/><br/>データセットのスライシング モデルの詳細については、[スケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 |はい |該当なし |
 | policy |データセット スライスで満たさなければならない基準または条件を定義します。 <br/><br/>詳細については、「[データセット ポリシー](#Policy)」セクションを参照してください。 |いいえ |該当なし |
 
 ## <a name="dataset-example"></a>データセットの例
@@ -452,4 +451,3 @@ structure の各列には次のプロパティが含まれます。
 ## <a name="next-steps"></a>次のステップ
 - パイプラインの詳細については、[パイプラインの作成](data-factory-create-pipelines.md)に関する記事を参照してください。 
 - パイプラインのスケジュール設定と実行の方法については、[Azure Data Factory でのスケジュール設定と実行](data-factory-scheduling-and-execution.md)に関する記事を参照してください。 
-

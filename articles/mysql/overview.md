@@ -10,15 +10,12 @@ ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 3eff97a9e7568566cd01a4eb3c7ee66806eac4cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="what-is-azure-database-for-mysql-service-introduction"></a>Azure Database for MySQL とは -  サービスの概要
 Azure Database for MySQL は、Microsoft クラウドにおける、[MySQL Community Edition](https://www.mysql.com/products/community/) のデータベース エンジンをベースとしたリレーショナル データベース サービスです。  Azure Database for MySQL には、次の特長があります。
 
@@ -59,4 +56,3 @@ Azure Database for MySQL サービスは、既定で、ネットワーク上で�
 - コストの比較と計算については、価格のページを参照してください。 [料金](https://azure.microsoft.com/pricing/details/mysql/)
 - まず、最初のサーバーを作成します。 [Azure Portal を使用した Azure Database for MySQL サーバーの作成](quickstart-create-mysql-server-database-using-azure-portal.md)
 - 初めてのアプリを Python、PHP、Ruby、C\#、Java、Node.js で作成します。[Azure Database for MySQL への接続に使用する接続ライブラリ](concepts-connection-libraries.md)に関するページを参照してください。
-

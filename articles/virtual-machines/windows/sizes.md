@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: jonbeck
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: 0a02e65620d864a5bfa6926c598400a3223a69df
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sizes-for-windows-virtual-machines-in-azure"></a>Azure の Windows 仮想マシンのサイズ
 
 この記事では、Windows アプリとワークロードの実行に使用できる Azure 仮想マシンに利用可能なサイズとオプションについて説明します。 また、これらのリソースの使用を計画するときに注意する必要のあるデプロイの考慮事項も示します。  この記事は、 [Linux 仮想マシン](../linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)にも利用できます。
@@ -68,7 +66,6 @@ https://docs.microsoft.com/rest/api/compute/virtualmachines/virtualmachines-list
 - [ストレージの最適化](../virtual-machines-windows-sizes-storage.md)
 - [GPU の最適化](sizes-gpu.md)
 - [ハイ パフォーマンス コンピューティング](sizes-hpc.md)
-
 
 
 

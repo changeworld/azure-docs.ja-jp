@@ -13,17 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3a90057b43e3f2074e72f3d0f896b35b4884368b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="enable-multi-tenancy-in-azure-stack"></a>Azure Stack でのマルチテナントの有効化
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 複数の Azure Active Directory (Azure AD) テナントのユーザーが Azure Stack のサービスを使用できるように Azure Stack を構成することができます。 ここでは、次のシナリオを例に説明します。
 
@@ -95,4 +93,3 @@ Register-AzSWithMyDirectoryTenant `
 
 - [委任されたプロバイダーの管理](azure-stack-delegated-provider.md)
 - [Azure Stack の主要概念](azure-stack-key-features.md)
-

@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/06/2017
 ms.author: mahender; mblythe
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: efa5a50564d94dbecd4bc7fcb4082b01d16f680d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure でホストされる API を PowerApps と Microsoft Flow にエクスポートする
 
@@ -178,6 +177,5 @@ Azure AD を使用する場合、API 自体に対して、または、カスタ�
 - **承認 URL** - OAuth 2.0 の承認 URL
 - **トークン URL** - OAuth 2.0 のトークン URL
 - **更新 URL** - OAuth 2.0 の更新 URL
-
 
 

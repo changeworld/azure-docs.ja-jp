@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/04/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f4e53fa46a6b7f8811e4fee67b1466786b81cdc9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-diagram-of-azure-machine-learning-studio-capabilities"></a>Azure Machine Learning Studio 機能の概要図
 **Microsoft Azure Machine Learning Studio 機能の概要** 図には、Machine Learning Studio を使用して予測分析モデルを開発し、Azure クラウドでそれを運用可能にする方法の概要が示されています。
@@ -51,5 +50,4 @@ ms.lasthandoff: 09/25/2017
 * Machine Learning Studio で使用可能な機械学習アルゴリズムの詳細については、「 [Microsoft Azure Machine Learning のアルゴリズムの選択方法](algorithm-choice.md)」を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

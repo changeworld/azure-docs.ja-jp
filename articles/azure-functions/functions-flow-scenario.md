@@ -16,14 +16,12 @@ ms.topic: article
 ms.date: 09/20/2017
 ms.author: mblythe
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 120f5d69441c5e01ffafbdb8dccb179bf00bdb0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-a-function-from-microsoft-flow"></a>Microsoft Flow から関数を呼び出す
 
 [Microsoft Flow](https://flow.microsoft.com/) は、ユーザーが好むアプリとサービスの間でワークフローとビジネス プロセスを簡単に自動化できるようにします。 プロフェッショナルな開発者は Azure Functions を使用して Microsoft Flow の機能を拡張して構いませんが、フロー作成者は技術の詳細を把握する必要はありません。

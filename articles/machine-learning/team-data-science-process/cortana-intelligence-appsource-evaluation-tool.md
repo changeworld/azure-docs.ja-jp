@@ -13,13 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/07/2017
 ms.author: anupams;v-bruham;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8340ae1231b7f40f739d7bbb63cee1bf0f095ab5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
---- 
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
+---
 # <a name="cortana-intelligence-solution-evaluation-tool"></a>Cortana Intelligence ソリューション評価ツール
 ## <a name="overview"></a>概要
 Cortana Intelligence ソリューション評価ツールを使用して、開発した高度な分析ソリューションが Microsoft によって推奨されているベスト プラクティスに準拠しているかどうかを評価できます。 Microsoft は、パートナー各社 (ISV/SI) と協力して、高品質のソリューションを顧客、リセラー、および導入パートナーに提供できることを嬉しく思っています。 このガイドでは、開発したソリューションに対してこのソリューション評価ツールを使用する方法と、チェックの対象となる具体的なベスト プラクティスについて説明します。
@@ -199,5 +198,4 @@ Azure Data Factory を使用したモデルのトレーニング プロセスの
 [Microsoft Azure Certified でクラウド ビジネスを拡大](https://azure.microsoft.com/en-us/marketplace/programs/certified/)
 
 [Microsoft Azure Certified for Cortana Intelligence](https://azure.microsoft.com/en-us/marketplace/programs/certified/cortana/)
-
 

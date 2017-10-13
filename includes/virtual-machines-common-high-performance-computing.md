@@ -132,7 +132,7 @@ Azure のインフラストラクチャで実行できるクラスターおよ�
 
 Azure の仮想マシン、仮想マシン スケール セット、Batch、およびこれらに関連するコンピューティング サービスは、Azure のほとんどの HPC ソリューションの基盤となっています。 もっとも、お使いのソリューションでも Azure の関連サービスの多くを利用できます。 その一部を以下に紹介します。
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>ストレージ
 
 * [Blob、Table、Queue Storage](../articles/storage/storage-introduction.md)
 * [File Storage](../articles/storage/storage-files-introduction.md)

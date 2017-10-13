@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ffad7bfd4ffcd9159dea23b70640f0ee761fbae0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Azure Resource Manager テンプレートに関する考慮事項
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 アプリケーションを開発するときは、Azure および Azure Stack 間のテンプレートの移植性を確保する必要があります。  このトピックでは、Azure Resource Manager [テンプレート](http://download.microsoft.com/download/E/A/4/EA4017B5-F2ED-449A-897E-BD92E42479CE/Getting_Started_With_Azure_Resource_Manager_white_paper_EN_US.pdf)を開発するための考慮事項を説明して、アプリケーションのプロトタイプ作成とデプロイのテストを、Azure Stack 環境にアクセスせずに Azure で実行できるようにします。
 
@@ -41,7 +40,7 @@ Azure のサービス バージョンが Azure と Azure Stack で異なる場�
 | --- | --- |
 | コンピューティング |`'2015-06-15'` |
 | ネットワーク |`'2015-06-15'`、`'2015-05-01-preview'` |
-| Storage |`'2016-01-01'`、`'2015-06-15'`、`'2015-05-01-preview'` |
+| ストレージ |`'2016-01-01'`、`'2015-06-15'`、`'2015-05-01-preview'` |
 | KeyVault | `'2015-06-01'` |
 | App Service |`'2015-08-01'` |
 | MySQL |`'2015-09-01'` |
@@ -80,5 +79,4 @@ Resource Manager テンプレートは、デプロイ時にリソースを配置
 * [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
 * [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 * [Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
-
 

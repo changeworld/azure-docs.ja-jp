@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/10/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: ed1d30be780e0882b8e75c01bc7822c3350f3fee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-web-app-with-net-xamarin-and-facebook-authentication"></a>Azure Cosmos DB: .NET、Xamarin、Facebook 認証を使用した Web アプリの構築
 
@@ -129,4 +128,3 @@ Xamarin フォルダーのコードには以下が含まれています。
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)
-

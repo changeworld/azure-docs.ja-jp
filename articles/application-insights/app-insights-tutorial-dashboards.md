@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 3ad1bfe2c45fd087f094aad5b2028ab488dbb2a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fb00711c762aa67c632d1cc582741970e3df0ef2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-custom-kpi-dashboards-using-azure-application-insights"></a>Azure Application Insights を使ってカスタム KPI ダッシュボードを作成する
 
 Azure Portal で複数のダッシュボードを作成し、各ダッシュボードには、さまざまなリソース グループとサブスクリプションに及ぶ複数の Azure リソースからのデータを視覚化したタイルを含めることができます。  Azure Application Insights からさまざまなグラフやビューをピン留めして、お使いのアプリケーションの正常性やパフォーマンスの全体像が把握できるカスタム ダッシュボードを作成できます。  このチュートリアルでは、Azure Application Insights の複数のデータや視覚エフェクトを含むカスタム ダッシュボードの作成について説明します。  学習内容は次のとおりです。
@@ -35,7 +33,7 @@ Azure Portal で複数のダッシュボードを作成し、各ダッシュボ�
 
 このチュートリアルを完了するには、以下が必要です。
 
-- .NET アプリケーションを Azure にデプロイして、[Application Insights SDK を有効に](app-insights-asp-net.md)します。 
+- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン
 Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。

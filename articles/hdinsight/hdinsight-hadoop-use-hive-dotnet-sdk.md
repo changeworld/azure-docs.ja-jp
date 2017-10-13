@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jgao
-ms.translationtype: HT
-ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
 ms.openlocfilehash: eb83a681df1a1836dbf970c4de14937aaea6b2f5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/16/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-using-hdinsight-net-sdk"></a>HDInsight .NET SDK を使用した Hive クエリの実行
 [!INCLUDE [hive-selector](../../includes/hdinsight-selector-use-hive.md)]
@@ -154,6 +153,5 @@ HDInsight .NET SDK は、.NET から HDInsight クラスターを簡単に操作
 
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [hdinsight-get-started]: hdinsight-hadoop-linux-tutorial-get-started.md
-
 
 

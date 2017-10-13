@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/23/2017
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 3229fe0b5aacbbc716039a4a6abfd235dbc4c4f7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-a-function-app-in-the-azure-portal"></a>Azure Portal で関数アプリを管理する方法 
 
@@ -130,7 +129,6 @@ App Service の設定を使用する方法の詳細については、[Azure App 
 
 + [Azure App Service の設定の構成](../app-service/web-sites-configure.md)
 + [Azure Functions の継続的なデプロイ](functions-continuous-deployment.md)
-
 
 
 

@@ -14,12 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 06/06/2016
 ms.author: ranjithr
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 8f39b5e6faf5f9121ec2abe347f50653c5c3e4f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-web-apps"></a>Azure Web Apps でのノード アプリケーションのベスト プラクティスとトラブルシューティング ガイド
 [!INCLUDE [tabs](../../includes/app-service-web-get-started-nav-tabs.md)]
@@ -128,8 +127,7 @@ var keepaliveAgent = new Agent({
 この例では、VM で 4 つの node.exe を実行していることを想定しています。 VM で実行している node.exe の数が異なる場合は、それに応じて maxSockets の設定を変更することが必要になります。
 
 ### <a name="my-node-application-is-consuming-too-much-cpu"></a>ノード アプリケーションが消費する CPU が多すぎる
-ポータルでは、高い CPU 消費率に関して Azure Web Apps からの推奨事項が表示されます。 特定の [メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 
-            [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
+ポータルでは、高い CPU 消費率に関して Azure Web Apps からの推奨事項が表示されます。 特定の [メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)で CPU 使用率をチェックするときに、CPU の最大値を確認して、ピーク値を見逃さないようにしてください。
 アプリケーションによる CPU の消費量が多すぎると思っても、理由を説明できない場合は、ノード アプリケーションをプロファイリングする必要があります。
 
 ### 
@@ -201,8 +199,7 @@ http.createServer(function (req, res) {
 次に示すように、95% の時間が WriteConsoleLog 関数によって消費されています。 問題の原因となる正確な行番号とソース ファイルも表示されます。
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>ノード アプリケーションで消費されるメモリが多すぎる
-ポータルでは、高いメモリ消費量に関して Azure Web Apps からの推奨事項が表示されます。 特定の [メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 
-            [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
+ポータルでは、高いメモリ消費量に関して Azure Web Apps からの推奨事項が表示されます。 特定の [メトリック](web-sites-monitor.md)を監視するためにモニターをセットアップすることもできます。 [Azure Portal ダッシュボード](../application-insights/app-insights-web-monitor-performance.md)でメモリ使用量をチェックするときに、メモリの最大値を確認して、ピーク値を見逃さないようにしてください。
 
 #### <a name="leak-detection-and-heap-diffing-for-nodejs"></a>node.js のリーク検出とヒープ比較
 [node-memwatch](https://github.com/lloyd/node-memwatch) を使うと、メモリ リークの特定に役立ちます。
@@ -261,5 +258,4 @@ Azure App Service での node.js アプリケーションの詳細について�
 * [Azure App Service Web Apps: Node.js](https://blogs.msdn.microsoft.com/silverlining/2012/06/14/windows-azure-websites-node-js/)
 * [Node.js デベロッパー センター](../nodejs-use-node-modules-azure-apps.md)
 * [優れた Kudu デバッグ コンソールの詳細](https://azure.microsoft.com/documentation/videos/super-secret-kudu-debug-console-for-azure-web-sites/)
-
 

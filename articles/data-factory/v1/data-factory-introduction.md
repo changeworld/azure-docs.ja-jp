@@ -15,12 +15,11 @@ ms.topic: get-started-article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8d4d574dee4b993d8a464482b244e1f63ade8a57
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -130,4 +129,3 @@ Azure Data Factory には、次のいずれかのツールまたは API でデ�
 | [2 つのクラウド データ ストア間でのデータの移動](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md) |このチュートリアルでは、BLOB ストレージから SQL データベースに **データを移動** するパイプラインを備えたデータ ファクトリを作成します。 |
 | [Hadoop クラスターを使用したデータの変換](data-factory-build-your-first-pipeline.md) |このチュートリアルでは、Azure HDInsight (Hadoop) クラスターで Hive スクリプトを実行して **データを処理する** データ パイプラインを備えた最初の Azure データ ファクトリを構築します。 |
 | [Data Management Gateway を使用したオンプレミス データ ストアとクラウド データ ストア間でのデータの移動](data-factory-move-data-between-onprem-and-cloud.md) |このチュートリアルでは、**オンプレミス**の SQL Server データベースから Azure BLOB に**データを移動**するパイプラインを備えたデータ ファクトリを構築します。 チュートリアルの一環として、ご使用のコンピューターに Data Management Gateway をインストールして構成します。 |
-

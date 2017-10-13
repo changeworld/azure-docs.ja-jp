@@ -14,17 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6e5c420ed80127213e38849ac1999bba199e36c2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-up-and-running-with-powershell-in-azure-stack"></a>Azure Stack での PowerShell を使用した準備と実行
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 これは、PowerShell を使用して Azure Stack 環境のインストールと構成を行うクイック スタートの記事です。 この記事で提供するスクリプトは、**Azure Stack オペレーター**のみを対象としています。
 
@@ -199,7 +197,6 @@ New-AzureRMResourceGroup -Name "ContosoVMRG" -Location Local
 * [CLI のインストールと構成](azure-stack-connect-cli.md)
 
 * [テンプレートの開発](user/azure-stack-develop-templates.md)
-
 
 
 

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 21b474e37ef0a6037e05ee1fe8e5088cb3e3601d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-hdinsight-cluster-management-solutions-to-log-analytics-preview"></a>Log Analytics に HDInsight クラスター管理ソリューションを追加する (プレビュー)
 
@@ -64,4 +63,3 @@ HDInsight では、Azure Log Analytics に追加できるクラスター固有�
 
 * [OMS Log Analytics の使用](https://blogs.msdn.microsoft.com/wei_out_there_with_system_center/2016/07/03/oms-log-analytics-create-tiles-drill-ins-and-dashboards-with-the-view-designer/)
 * [Log Analytics でのアラート ルールの作成](../log-analytics/log-analytics-alerts-creating.md)
-

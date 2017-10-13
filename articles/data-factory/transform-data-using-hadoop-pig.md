@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7745f273283ff998b41fe59a10e705e7564a7bd3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-using-hadoop-pig-activity-in-azure-data-factory"></a>Azure Data Factory で Hadoop Pig アクティビティを使用してデータを変換する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -74,7 +73,7 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 | defines             | Pig スクリプト内で参照するキーと値のペアとしてパラメーターを指定します。 | いいえ       |
 
 ## <a name="next-steps"></a>次のステップ
-他の手段でデータを変換する方法を説明する次の記事をご覧ください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
@@ -84,4 +83,3 @@ Azure Data Factory の使用経験がない場合は、この記事を読む前�
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
 * [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-

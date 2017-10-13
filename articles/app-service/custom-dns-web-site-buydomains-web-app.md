@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: cephalin
+ms.openlocfilehash: 3cb22b935624041ab51e64028a1b668fd694f9b5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 44d350d2d098be14ad254066a8528fe117200ec4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="buy-a-custom-domain-name-for-azure-web-apps"></a>Azure Web Apps のカスタム ドメイン名を購入する
 
@@ -240,4 +239,3 @@ Azure Portal の左側のメニューから、**[その他のサービス]** > *
 **[OK]** を選び、操作を確定します。 操作を続けない場合は、確認ダイアログの外側のどこかをクリックします。
 
 操作が完了すると、ドメインはサブスクリプションから解放され、他のユーザーが再び購入できるようになります。 
-

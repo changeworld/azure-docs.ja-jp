@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/18/2017
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0c6e4d9d2a3744f607b72364f3944c700acd070c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-diagnostics"></a>Azure 診断について
 Azure 診断は、デプロイされたアプリケーションで診断データを収集できるようにする Azure 内の機能です。 さまざまなソースで診断拡張機能を使用することができます。 現在時点でのサポート対象は、Azure Cloud Service Web および Worker ロール、Microsoft Windows を実行している Azure Virtual Machines、および Service Fabric となっています。 その他の Azure サービスには、独自の独立した診断があります。
@@ -79,4 +78,3 @@ Web Apps では Azure 診断が使用されないので注意してください�
 * [Azure 診断でのパフォーマンス カウンターの使用](../cloud-services/cloud-services-dotnet-diagnostics-performance-counters.md)について説明します。
 * [Application Insights への Azure 診断情報の送信](azure-diagnostics-configure-application-insights.md)について説明します。
 * Azure Storage テーブルでの診断の開始またはデータの検索に問題がある場合は、[Azure 診断のトラブルシューティング](azure-diagnostics-troubleshooting.md)に関するページを参照してください。
-

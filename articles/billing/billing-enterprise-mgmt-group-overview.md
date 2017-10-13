@@ -12,15 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 18541c68b02ae1b59ae4a6a85122dff614c9978c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="organize-your-resources-with-azure-management-groups"></a>Azure 管理グループのリソースを整理する 
 
 サブスクリプションが複数ある場合は、"管理グループ" と呼ばれるコンテナーにサブスクリプションをまとめて、サブスクリプション間のアクセス、ポリシー、コスト、コンプライアンスを管理しやすくすることができます。 たとえば、作成できるリソースの種類を制限するポリシーを管理グループに適用できます。
@@ -93,6 +90,5 @@ Azure Portal 内の管理グループは現在プレビュー段階にあり、�
 
 > [!Note]
 > ポリシーはディレクトリ間には適用されません。 
-
 
 

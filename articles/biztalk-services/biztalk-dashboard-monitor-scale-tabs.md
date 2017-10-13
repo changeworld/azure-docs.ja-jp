@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 62bef0ee0141f6a7a92146ef230f0766a85aee5e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="review-the-dashboard-monitor-scale-configure-and-hybrid-connection-tabs"></a>[ダッシュボード]、[監視]、[スケール]、[構成]、および [ハイブリッド接続] タブの確認
 
@@ -27,7 +26,7 @@ ms.lasthandoff: 09/07/2017
 
 BizTalk サービスを作成してアプリケーションを配置した後は、BizTalk サービスの設定の一部を変更し、アプリケーションのパフォーマンスを監視できます。 
 
-Azure クラシック ポータルを開くと、自動的に [ **すべてのアイテム** ] タブが表示されます。BizTalk サービスを表示するには、**[すべてのアイテム]** タブで BizTalk サービスを選択するか、**[BizTalk サービス]** タブを選択してから BizTalk サービス名を選択します。
+Azure クラシック ポータルを開くと、自動的に  **すべてのアイテム**  タブが表示されます。BizTalk サービスを表示するには、**すべてのアイテム** タブで BizTalk サービスを選択するか、**BizTalk サービス** タブを選択してから BizTalk サービス名を選択します。
 
 新しいウィンドウが開き、次のタブが表示されます。 このトピックでは、これらのタブについて説明します。
 
@@ -352,5 +351,4 @@ Azure BizTalk サービスでハイブリッド接続を作成または管理す
 [AddMetrics]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_AddMetrics.png
 [GrayedMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_GrayedMetric.png
 [EnabledMetric]: ./media/biztalk-dashboard-monitor-scale-tabs/WABS_EnabledMetric.png
-
 

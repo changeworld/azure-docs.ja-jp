@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1a4f2d69907d220a8bbec5087ba431dc243c46d6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で実行履歴とモデル メトリックを使用する方法
 
@@ -243,4 +242,3 @@ $ az ml history list -o table
 マイクロソフトでは、これらの機能が皆様のお役に立つことを願っております。ご意見がございましたら、ぜひお知らせください。
 これは最初の実装であり、数多くの機能強化を現在計画中です。
 今後も引き続き Azure Machine Learning Workbench の機能を強化していきますので、どうぞご期待ください。 
-

@@ -12,14 +12,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: bwren
+ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 12876bff2de5738068f033ecc4ef14b81a68f0f6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="usage-analysis-for-web-applications-with-application-insights"></a>Application Insights による Web アプリケーションの利用状況の分析
 
 最も人気のある Web アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](app-insights-overview.md) では、ユーザーの Web アプリの使用方法に関する強力な洞察を得ることができます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
@@ -176,4 +174,3 @@ Web アプリ初期化子 (Global.asax.cs など) 内:
    - [ユーザー フロー](app-insights-usage-flows.md)
    - [ブック](app-insights-usage-workbooks.md)
    - [ユーザー コンテキストの追加](app-insights-usage-send-user-context.md)
-

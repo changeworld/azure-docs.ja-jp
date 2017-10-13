@@ -12,27 +12,25 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 088d127521ce89d3a82e30ad8797fe5746ae7e03
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-cloud-resources-for-device-provisioning-with-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service を使用したデバイス プロビジョニングのためのクラウド リソースの構成
 
 このチュートリアルでは、IoT Hub Device Provisioning Service を使用した自動デバイス プロビジョニングのためのクラウドを設定する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
 
 > [!div class="checklist"]
 > * Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
-> * IoT ハブを作成する
+> * IoT Hub の作成
 > * IoT ハブを Device Provisioning Service にリンクする
 > * Device Provisioning Service で割り当てポリシーを設定する
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/) を作成してください。
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
@@ -54,13 +52,13 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
    ![ポータルで DPS の基本情報を入力する](./media/tutorial-set-up-cloud/create-iot-dps-portal.png)
 
-5. **[作成]**をクリックします。
+5. **Create** をクリックしてください。
 6. "*ID スコープ*" は登録 ID の識別に使用されます。ID スコープにより、登録 ID が一意であることが保証されます。 この値を取得するには、**[概要]** をクリックして、Device Provisioning Service の **[要点]** ページを開きます。 後で使用するために、**ID スコープ**値を一時的な場所にコピーします。
 7. また、**サービス エンドポイント**値を書き留めておくか、後で使用するために一時的な場所にコピーします。 
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
 
-IoT ハブの作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
+IoT Hub の作成は以上です。以降の作業に必要なホスト名と IoT Hub 接続文字列が得られました。
 
 ## <a name="link-the-device-provisioning-service-to-an-iot-hub"></a>Device Provisioning Service を IoT ハブにリンクする
 
@@ -99,7 +97,7 @@ IoT ハブの作成は以上です。以降の作業に必要なホスト名と 
 
 > [!div class="checklist"]
 > * Azure Portal を使用して IoT Hub Device Provisioning Service を作成し、ID スコープを取得する
-> * IoT ハブを作成する
+> * IoT Hub の作成
 > * IoT ハブを Device Provisioning Service にリンクする
 > * Device Provisioning Service で割り当てポリシーを設定する
 
@@ -107,4 +105,3 @@ IoT ハブの作成は以上です。以降の作業に必要なホスト名と 
 
 > [!div class="nextstepaction"]
 > [プロビジョニングするデバイスを設定する](tutorial-set-up-device.md)
-

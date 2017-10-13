@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 4/6/2017
 ms.author: anirudha
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 6e14bd6312135b45984a82099e68a934ec2a4a70
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Azure Stack でのストレージ アカウントの管理
 ビジネスのニーズに基づいてストレージ容量を検索、回復、および再利用するために、Azure Stack でストレージ アカウントを管理する方法について説明します。

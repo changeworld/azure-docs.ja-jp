@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8c0fc8d11a872b99fee2efa3a32a9e1ccce67f3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="load-balancing-on-multiple-ip-configurations-using-the-azure-portal"></a>Azure Portal を使用した複数の IP 構成での負荷分散
 
 > [!div class="op_single_selector"]
@@ -108,7 +106,7 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="step-5-configure-a-health-probe-for-your-load-balancer"></a>手順 5: ロード バランサーの正常性プローブを構成する
 次のようにロード バランサーの正常性プローブを構成します。
-    1. ポータルで、[その他のサービス] をクリックし、フィルター ボックスに「ロード バランサー」と入力して、**[ロード バランサー]** をクリックします。  
+    1. ポータルで、その他のサービスをクリックし、フィルター ボックスに「ロード バランサー」と入力して、**ロード バランサー** をクリックします。  
     2. バックエンド プールを追加するロード バランサーを選択します。
     3. **[設定]** で、**[正常性プローブ]** を選択します。 表示されたブレードの上部にある **[追加]** をクリックします。
     4. 正常性プローブの名前 (たとえば、HTTP) を入力し、**[OK]** をクリックします。
@@ -131,4 +129,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 - Azure で負荷分散サービスを組み合わせて使う方法について詳しくは、「[Azure で負荷分散サービスを使用する](../traffic-manager/traffic-manager-load-balancing-azure.md)」をご覧ください。
 - 各種ログを使って、ロード バランサーの管理やトラブルシューティングを行う方法については、「[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md)」を参照してください。
-

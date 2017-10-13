@@ -17,12 +17,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: dd1c18e32f3d0386e522dba82ce494394abbf8ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="kernels-for-jupyter-notebook-on-spark-clusters-in-azure-hdinsight"></a>Azure HDInsight の Spark クラスター上の Jupyter Notebook のカーネル 
 
@@ -178,4 +177,3 @@ Spark HDInsight クラスター上の Jupyter Notebook は、Google Chrome で�
 ### <a name="manage-resources"></a>リソースの管理
 * [Azure HDInsight での Apache Spark クラスターのリソースの管理](hdinsight-apache-spark-resource-manager.md)
 * [HDInsight の Apache Spark クラスターで実行されるジョブの追跡とデバッグ](hdinsight-apache-spark-job-debugging.md)
-

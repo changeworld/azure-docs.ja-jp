@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 45106b499b9a541d5e6120538cfe1715608be118
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-new-relic"></a>チュートリアル: Azure Active Directory と New Relic の統合
 
@@ -184,7 +183,7 @@ New Relic で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-new-relic-test-user"></a>New Relic テスト ユーザーを作成する
 
@@ -273,5 +272,4 @@ Azure Active Directory ユーザーが New Relic にログインできるよう�
 [201]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-new-relic-tutorial/tutorial_general_203.png
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
 ms.author: haining;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 809df66042f6c765ed56836db40f72a5cd8ca7f6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cortana-intelligence-competitions-faq"></a>Microsoft Cortana Intelligence コンペティションの FAQ
 **Microsoft Cortana Intelligence コンペティションとは何ですか。**
@@ -114,5 +113,4 @@ Microsoft は、プライベート スコアボードの結果を確認し、お
 **ユーザーのコンペティション ソリューションおよびエントリは保持されますか。**
 
 ユーザーのエントリは、受賞ソリューションを特定するための評価目的でのみ保持されます。 詳細については、 [契約条件](http://aka.ms/comptermsandconditions) を参照してください。
-
 

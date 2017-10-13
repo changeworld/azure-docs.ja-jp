@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
 ms.openlocfilehash: 1cfe7ec37ad8b24a8bd9ab2bf67e95675a57b675
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-slow-web-app-performance-issues-in-azure-app-service"></a>Azure App Service での Web アプリのパフォーマンス低下に関する問題のトラブルシューティング
 この記事は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)での Web アプリのパフォーマンス低下に関する問題のトラブルシューティングに役立ちます。
@@ -187,4 +186,3 @@ AutoHeal は、選択された設定 (構成の変更、要求、メモリに基
  ![パフォーマンスの問題を解決するために Web アプリを再起動する](./media/app-service-web-troubleshoot-performance-degradation/2-restart.png)
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
-

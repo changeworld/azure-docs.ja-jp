@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
+ms.openlocfilehash: 19f27aa81d7b5e03828f18f5a38cf3362df17694
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 7d6f16f9aad41cc2867ce86361fcea2f93aca7c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="no-subscriptions-found-error-in-azure-portal-or-azure-account-center"></a>Azure Portal または Azure アカウント センターでの「サブスクリプションが見つかりません」エラー
 
 [Azure Portal](https://portal.azure.com/) または [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインしようとすると、「サブスクリプションが見つかりません」というエラー メッセージが表示されることがあります。 この記事では、この問題の解決策について説明します。
@@ -57,4 +55,3 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。 
-

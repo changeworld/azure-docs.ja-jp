@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: d99dbbd834cb8f067b88b765ccddcd7f4eb44a1f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 > [!WARNING]
 > Azure Active Directory B2C の統合では、[Developer および Premium](https://azure.microsoft.com/en-us/pricing/details/api-management/) レベルのみで使用できます。
 
@@ -205,4 +203,3 @@ Azure Active Directory B2C は、コンシューマー向け Web アプリケー
 [Next steps]: #next-steps
 
 [Log in to the Developer portal using an Azure Active Directory account]: #Log-in-to-the-Developer-portal-using-an-Azure-Active-Directory-account
-

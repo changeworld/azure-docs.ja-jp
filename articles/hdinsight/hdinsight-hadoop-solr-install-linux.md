@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: c7a911474d6fb90f45565c90a72bfd407898ceba
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-use-solr-on-hdinsight-hadoop-clusters"></a>HDInsight Hadoop クラスターに Solr をインストールして使用する
 
@@ -329,4 +328,3 @@ Solr のバックアップと復元の操作の詳細については、 [https:/
 * [HDInsight クラスターに Hue をインストールする](hdinsight-hadoop-hue-linux.md)。 クラスターのカスタマイズを使用して、HDInsight Hadoop クラスターに Hue をインストールします。 Hue は Hadoop クラスターとの情報のやりとりに使用される一連の Web アプリケーションです。
 
 [hdinsight-cluster-customize]: hdinsight-hadoop-customize-cluster-linux.md
-

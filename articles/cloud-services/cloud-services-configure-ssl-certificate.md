@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/14/2016
 ms.author: adegeo
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 7df2371f64f0d8a9fabc0df37c17d4dfbc47cd7e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-ssl-for-an-application-in-azure"></a>Azure でアプリケーションの SSL を構成する
 > [!div class="op_single_selector"]
@@ -186,4 +185,3 @@ Azure でデプロイメントを実行できるようになったため、HTTPS
 [2]: ./media/cloud-services-configure-ssl-certificate/CopyURL.png
 [3]: ./media/cloud-services-configure-ssl-certificate/SSLCloudService.png
 [4]: ./media/cloud-services-configure-ssl-certificate/AddCertificateComplete.png  
-

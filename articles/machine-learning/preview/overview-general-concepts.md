@@ -9,14 +9,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3d4ba2ca6f7adc8b51030c02d9e9eeb2b9995bb4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-machine-learning---concepts"></a>Azure Machine Learning - 概念
 
 この記事は、Azure Machine Learning を使用するために知っておく必要のある概念を定義し、説明します。 
@@ -58,4 +56,3 @@ ms.lasthandoff: 09/25/2017
 - **イメージ:** マニフェストを使用して、Docker イメージを生成 (および再生成) することができます。 コンテナー化された Docker イメージは、クラウド、ローカル マシン、または IoT デバイス上で柔軟に実行できます。 イメージは、自己完結型であり、モデルで新しいデータをスコア付けするために必要なすべての依存関係が含まれます。 
 
 - **サービス:** モデル管理により、モデルを Web サービスとしてデプロイすることができます。 Web サービスのロジックと依存関係は、イメージにカプセル化されます。 各 Web サービスは、所定の URL へのサービス要求に対応する準備が整った、イメージに基づくコンテナーのセットです。 Web サービスは、単一のデプロイとしてカウントされます。
-

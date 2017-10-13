@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2017
 ms.author: v-jysur
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bbec5773987b29eb62d10d17b88efcda29889612
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector-preview"></a>ITSM 製品/サービスを IT Service Management Connector に追加する (プレビュー)
 この記事では、お使いの ITSM 製品/サービスを OMS の IT Service Management Connector に接続して、作業項目を一元的に管理する方法について説明します。 IT Service Management Connector の詳細については、[概要](log-analytics-itsmc-overview.md)に関する記事をご覧ください。
@@ -369,4 +368,3 @@ Cherwell のクライアント ID とキーを生成するには、次の手順�
  - [OMS ログから ITSM 作業項目を作成する](log-analytics-itsmc-overview.md#create-itsm-work-items-from-oms-logs)
 
 - [接続に関する Log Analytics を表示する](log-analytics-itsmc-overview.md#using-the-solution)
-

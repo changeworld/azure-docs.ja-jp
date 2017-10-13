@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 062d82d1bb2126a5b135796a2b5fa00ccf02511d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -307,8 +306,7 @@ Azure Storage には次のデータが格納されています。
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
 * [Pig アクティビティ](transform-data-using-hadoop-pig.md)
 * [MapReduce アクティビティ](transform-data-using-hadoop-map-reduce.md)
-* [Hadoop ストリーミング アクティビティ](transform-data-using-hadoop-streaming.md)
+* [Hadoop Streaming アクティビティ](transform-data-using-hadoop-streaming.md)
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [.NET カスタム アクティビティ](transform-data-using-dotnet-custom-activity.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-

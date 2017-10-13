@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 09c626e97832821009ce2da360ceea2b54273ffa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
-*適用先: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 リソースを管理するには、Azure Stack Development Kit に接続する必要があります。 ここでは、Development Kit に接続するために必要な手順について詳しく説明します。 次の接続方法のうちどちらかを使用できます。
 
@@ -110,5 +109,4 @@ Add-AzsVpnConnection `
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack ユーザーが仮想マシンを使用できるようにする](azure-stack-tutorial-tenant-vm.md)
-
 

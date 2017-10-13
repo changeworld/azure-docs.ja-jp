@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a7e8ae605b6234341d9ab8b790f4c54d8627f29f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="traffic-manager-real-user-measurements-overview"></a>Traffic Manager の Real User Measurements の概要
 
 >[!NOTE]
@@ -49,5 +47,4 @@ Real User Measurements を使用する場合は、Traffic Manager に送信さ�
 - [Mobile Center](https://docs.microsoft.com/mobile-center/) について確認する
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 - [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
-
 

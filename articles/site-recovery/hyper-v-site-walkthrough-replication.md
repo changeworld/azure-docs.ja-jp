@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-9-set-up-a-replication-policy-for-hyper-v-vm-replication-to-azure"></a>手順 9: Azure への Hyper-V VM のレプリケーションに関するレプリケーション ポリシーを設定する
 
 この記事では、Azure Portal の [Azure Site Recovery](site-recovery-overview.md) サービスを使用して Azure に Hyper-V VM (System Center VMM なし) をレプリケートする場合にレプリケーション ポリシーを設定する方法について説明します。
@@ -58,4 +56,3 @@ Hyper-V では 2 種類のバックアップを使用します。1 つは標準�
 ## <a name="next-steps"></a>次のステップ
 
 [手順 10: レプリケーションを有効にする](hyper-v-site-walkthrough-enable-replication.md)方法に関するページに進む
-

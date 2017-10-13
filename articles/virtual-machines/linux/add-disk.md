@@ -17,12 +17,11 @@ ms.devlang: azurecli
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 9d16d16f0e57fab9f1827c37f181e579c627b3d9
 ms.openlocfilehash: 9db7d300b745001906bdc38769dcbe6e4d7c7b83
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-disk-to-a-linux-vm"></a>Linux VM へのディスクの追加
 この記事では、メンテナンスやサイズ変更により VM が再プロビジョニングされる場合でもデータを保持できるように、永続ディスクを VM に接続する方法について説明します。 
@@ -269,5 +268,4 @@ Linux VM で TRIM のサポートを有効にする方法は 2 通りありま�
 * 新しいディスクは、 [fstab](http://en.wikipedia.org/wiki/Fstab) ファイルにその情報を書き込まない限り、再起動しても VM で使用できないことに注意してください。
 * [Linux マシンのパフォーマンスの最適化](optimization.md) に関する推奨事項を読んで、Linux VM が正しく構成されていることを確認します。
 * ディスクを追加してストレージ容量を拡張し、 [RAID を構成](configure-raid.md) してパフォーマンスを強化します。
-
 

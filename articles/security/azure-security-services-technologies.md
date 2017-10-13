@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2016
 ms.author: yurid
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0bea62a43cf6cac9132fe64f2d6c54e52def4c55
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-services-and-technologies"></a>Azure セキュリティ サービスおよびテクノロジ
 現在と将来の Azure の顧客との話し合いで、“Azure で提供する必要のあるすべてのセキュリティ関連のサービスとテクノロジを一覧したリストはありますか?” という質問を受けることがよくあります。
@@ -58,7 +57,7 @@ ms.lasthandoff: 08/22/2017
 * [Azure のロール ベースのアクセス制御](../active-directory/role-based-access-control-configure.md)
 * [Azure Active Directory](../active-directory/active-directory-whatis.md)
 * [Azure Active Directory B2C](../active-directory-b2c/active-directory-b2c-get-started.md)
-* [Azure Active Directory ドメイン サービス](../active-directory-domain-services/active-directory-ds-overview.md)
+* [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-overview.md)
 * [Azure Multi-Factor Authentication](../multi-factor-authentication/multi-factor-authentication.md)
 
 ## <a name="backup-and-disaster-recovery"></a>バックアップと障害復旧
@@ -73,4 +72,3 @@ ms.lasthandoff: 08/22/2017
 * [Azure ExpressRoute](../expressroute/expressroute-introduction.md)
 * [Azure の Traffic Manager](../traffic-manager/traffic-manager-overview.md)
 * [Azure アプリケーション プロキシ](../active-directory/active-directory-application-proxy-enable.md)
-

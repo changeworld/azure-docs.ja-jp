@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e505c52a5e1897d5626ee2cacce9fa3eff12fbbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-policy-using-the-azure-stack-policy-module"></a>Azure Stack ポリシー モジュールを使用して Azure ポリシー管理する
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack ポリシー モジュールにより、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションを構成できます。  このモジュールでは、**New-AzureRMPolicyAssignment** コマンドレットを使用して、サブスクリプションで使用できるリソースの種類とサービスを制限する Azure ポリシーを作成します。  完了すると、Azure サブスクリプションを使用して Azure Stack を対象とするアプリを開発できます。  
 
@@ -72,4 +71,3 @@ Azure ポリシーをデプロイしたら、ポリシーで禁止されてい�
 [Azure CLI を使用したテンプレートのデプロイ](azure-stack-deploy-template-command-line.md)
 
 [Visual Studio を使用したテンプレートのデプロイ](azure-stack-deploy-template-visual-studio.md)
-

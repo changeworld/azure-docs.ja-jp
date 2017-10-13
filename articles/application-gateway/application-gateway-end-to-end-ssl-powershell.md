@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/19/2017
 ms.author: davidmu
+ms.openlocfilehash: df14d5c4572a250f9f8951ee3b86e87e6f652782
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: dbc012526b062f21e675576c8269f0076f43cbc6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-end-to-end-ssl-by-using-application-gateway-with-powershell"></a>Application Gateway での PowerShell を使用したエンド ツー エンド SSL の構成
 
@@ -289,4 +288,3 @@ DnsSettings              : {
 Application Gateway を使用して Web アプリケーション ファイアウォールで Web アプリケーションのセキュリティを強化する方法の詳細については、[Web アプリケーション ファイアウォールの概要](application-gateway-webapplicationfirewall-overview.md)に関するページをご覧ください。
 
 [scenario]: ./media/application-gateway-end-to-end-SSL-powershell/scenario.png
-

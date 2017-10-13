@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
+ms.openlocfilehash: b69f6b2190362b970420ba81450978ac9faecd86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 2d74331ec1625a53d1af5ab5058b733651271f37
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Azure App Service でステージング環境を設定する
 <a name="Overview"></a>
@@ -35,7 +34,7 @@ ms.lasthandoff: 09/07/2017
 
 * アプリに複数のスロットがある場合は、モードを変更することはできません。
 * スケーリングは運用サイト スロットでのみ有効になります。
-* リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 [Azure ポータル](http://go.microsoft.com/fwlink/?LinkId=529715) を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。 なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
+* リンク済みリソースの管理は運用サイト スロットでのみサポートされています。 [Azure Portal](http://go.microsoft.com/fwlink/?LinkId=529715) を使用している場合のみ、非運用スロットを異なる App Service プラン モードに変更することで、この運用スロットに対する影響を回避することができます。 なお、2 つのスロットをスワップする前には、非運用スロットと運用スロットを再度同じモードにする必要があります。
 
 <a name="Add"></a>
 
@@ -300,5 +299,4 @@ Azure CLI には、App Service デプロイ スロットの管理のサポート
 [Autoswap1]: ./media/web-sites-staged-publishing/AutoSwap01.png
 [Autoswap2]: ./media/web-sites-staged-publishing/AutoSwap02.png
 [SlotSettings]: ./media/web-sites-staged-publishing/SlotSetting.png
-
 

@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 46662c15374f781a6527bb1435d883ae060c63f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deep-learning-and-ai-frameworks"></a>ディープ ラーニングと AI のフレームワーク
 [データ サイエンス仮想マシン](http://aka.ms/dsvm) (DSVM) と[ディープ ラーニング VM](http://aka.ms/dsvm/deeplearning) は、多数のディープ ラーニング フレームワークをサポートし、予測分析や、画像および言語の理解などの認識機能を駆使した人工知能 (AI) アプリケーションの構築を支援します。 
 
@@ -190,5 +188,4 @@ X2Go で VM にログインします。 ターミナルで、サービスを開�
 | サポートされている DSVM エディション      | Linux     |
 | DSVM での構成/インストール方法  | Torch は `/dsvm/tools/torch` にインストールされます。 PyTorch は Python 2.7 (_root_) および Python 3.5 (_py35_) 環境にインストールされます。   |
 | サンプルへのリンク      | Torch サンプルは `/dsvm/samples/torch` にあります。 PyTorch サンプルは `/dsvm/samples/pytorch` にあります。      |
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: ad2c3999ac8bfc8dfe0fc662ee37b41fff38444f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-adobe-creative-cloud"></a>チュートリアル: Azure Active Directory と Adobe Creative Cloud の統合
 
@@ -293,5 +292,4 @@ Azure AD ユーザーが Adobe Creative Cloud にログインできるように�
 [201]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-adobe-creative-cloud-tutorial/tutorial_general_203.png
-
 

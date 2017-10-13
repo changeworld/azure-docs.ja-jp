@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: barclayn
+ms.openlocfilehash: abaf78428cb12235a659bad5c13d64e8e51f4ba6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: e80fe891be661acef5bb30dbf9af023a79ace191
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="pim-for-azure-resources-preview"></a>Azure リソースの PIM (プレビュー)
 

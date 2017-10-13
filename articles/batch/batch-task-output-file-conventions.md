@@ -15,12 +15,11 @@ ms.workload: big-compute
 ms.date: 06/16/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: a9de327c20463469bc91d9720aa17333a36f919e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net-to-persist"></a>.NET 用の Batch ファイル規則ライブラリを使用した Azure Storage へのジョブおよびタスクのデータの保持 
 
@@ -262,4 +261,3 @@ Azure Portal でタスク出力ファイルとログを表示するには、目�
 
 [1]: ./media/batch-task-output/task-output-01.png "Saved output files and Saved logs selectors in portal"
 [2]: ./media/batch-task-output/task-output-02.png "Task outputs blade in the Azure portal"
-

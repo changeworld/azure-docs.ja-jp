@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: xibingao;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ac39de97174e58964b48601d559abeba5e624c21
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-sql-server-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>高度な分析のために Azure SQL Server 仮想マシンを IPython Notebook サーバーとして設定する
 このトピックでは、クラウド ベースのデータ サイエンス環境の一部として使われる SQL Server 仮想マシンをプロビジョニングおよび構成する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。 たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
@@ -274,5 +273,4 @@ Azure Virtual Machines の料金は **従量課金制**です。 仮想マシン
 [12]: ./media/setup-sql-server-virtual-machine/25sysadmin.png
 [13]: ./media/setup-sql-server-virtual-machine/amlreader.png
 [15]: ./media/setup-sql-server-virtual-machine/vmshutdown.png
-
 

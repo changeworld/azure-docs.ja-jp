@@ -15,12 +15,11 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 3f29547e1da6028b1e4b91d9e29fd3bcdfe08d50
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
@@ -62,5 +61,4 @@ az vm disk detach -g myResourceGroup --vm-name myVm -n myDataDisk
 
 ## <a name="next-steps"></a>次のステップ
 データ ディスクを再利用する場合は、[別の VM にそのデータ ディスクをアタッチ](add-disk.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)します。
-
 

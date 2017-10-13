@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
-translationtype: Human Translation
-ms.sourcegitcommit: 0af5a4e2139a202c7f62f48c7a7e8552457ae76d
-ms.openlocfilehash: 877fb34d2fe5d4b85157a8338e180358d2226ef1
-
-
+ms.openlocfilehash: 9a69253129cdedc4f5d7e736d5bd8d6a68f95a1e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-27-and-net-271-release-notes"></a>Azure SDK for .NET 2.7 および .NET 2.7.1 リリース ノート
 ## <a name="overview"></a>概要
@@ -63,7 +63,7 @@ Azure SDK 2.7 に含まれているサインインの機能強化は、Visual St
 #### <a name="known-issues"></a>既知の問題
 Web アプリ デプロイメント スロットのノードがサーバー エクスプローラーのスロット ノードに表示されません。また、Web アプリ デプロイ スロットの子ノードがクラウド エクスプローラーに読み込まれません。 この問題は解決され、次の SDK リリースに向けて準備されています。 
 
-### <a name="a-namecloudexploreracloud-explorer-for-visual-studio-2015"></a><a name="cloud_explorer"></a>Cloud Explorer for Visual Studio 2015
+### <a name="cloud_explorer"></a>Cloud Explorer for Visual Studio 2015
 Azure SDK 2.7 には、Azure リソースを表示し、そのプロパティを調べ、Visual Studio 内から開発者が重要な操作を実行できる、Visual Studio 2015 のクラウド エクスプローラーが含まれています。 
 
 クラウド エクスプローラーは、次をサポートしています。
@@ -75,7 +75,7 @@ Azure SDK 2.7 には、Azure リソースを表示し、そのプロパティを
 * 開発やテスト時に一般的に必要な開発者向けのプロパティを表示する統合されたプロパティ パネル 
 * リソースの列挙時に使用するアカウントの簡単な切り替え (ツールバーの [設定] コマンドを使用) 
 * リソースの列挙時に使用するサブスクリプションのフィルター処理 (ツールバーの [設定] コマンドを使用) 
-* リソースおよびリソース グループを管理するための Azure ポータルへのディープ リンク 
+* リソースおよびリソース グループを管理するための Azure Portal へのディープ リンク 
 
 ### <a name="azure-resource-manager-tools"></a>Azure リソース マネージャー ツール
 Azure リソース マネージャー ツールは、ロール ベースの Access Control (RBAC) と新しいサブスクリプションの種類を使用するように更新されました。  これらの変更には、従来のストレージに加えて、新しいストレージ アカウントを使用してデプロイメント中にアーティファクトを格納する機能が含まれています。  
@@ -112,7 +112,7 @@ HDInsight ツールの更新の詳細については、 [このブログ](http:/
 * Storm トポロジ グラフ (新機能)
   
     トポロジが期待どおりに動作しているかどうかを確認する場合は、視覚化することが非常に重要です。 このリリースでは、Storm グラフの視覚化を追加しました。 トポロジの重要なメトリックを視覚化できます (たとえば、特定のボルトが “ビジー” かどうかを色で示すことができます)。 また、ボルト/スパウトをダブルクリックすることで詳細を表示できます。
-* Azure ポータルで作成された HDInsight クラスターのサポート (バグ修正プログラム) 
+* Azure Portal で作成された HDInsight クラスターのサポート (バグ修正プログラム)
   
     Visual Studio を使用して、クラスターの作成場所に関係なく、すべての HDInsight クラスターのジョブを表示し、クラスターにジョブを送信できるようになりました。
 * IntelliSense に対するサポートの向上と Hive メタデータの高速読み込み (機能強化)
@@ -136,10 +136,4 @@ LightSwitch プロジェクトはこのリリースと互換性がありませ�
 [Azure SDK 2.7 アナウンスの投稿](https://azure.microsoft.com/blog/2015/07/20/announcing-the-azure-sdk-2-7-for-net/)
 
 [Azure SDK for .NET および API のサポートと提供終了に関する情報](https://msdn.microsoft.com/library/azure/dn479282.aspx/)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

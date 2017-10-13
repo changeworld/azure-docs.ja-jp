@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 503f5151047870aaf87e9bb7ebf2c7e4afa27b83
-ms.openlocfilehash: 5c591e7f1838c86ca74caea9dd3a5e8f874fd8a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 84558cb6e3a5524969f590eb0272a64ad8839ab5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configuring-dhcpv6-for-linux-vms"></a>Linux VM の DHCPv6 の設定
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
@@ -152,4 +150,3 @@ Azure の最近の CoreOS のイメージは、DHCPv6 に対応するように�
     ```bash
     sudo systemctl restart systemd-networkd
     ```
-

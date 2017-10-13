@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 08/28/2017
 ms.author: nitinme
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: de7aff6b31d937576da65498c5fcce2ae9abdbf1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrating-data-lake-store-with-other-azure-services"></a>Data Lake Store と他の Azure サービスを統合する
 Azure Data Lake Store を他の Azure サービスと連携させれば、さまざまなシナリオが可能になります。 次の記事では、Data Lake Store と統合できるサービスについてまとめてあります。
@@ -29,8 +28,7 @@ HDFS 準拠ストレージとして Data Lake Store を使用する [Azure HDIns
 
 Data Lake Store で HDInsight クラスターにプロビジョニングする方法については、次を参照してください。
 
-* 
-            [Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
+* [Azure Portal を使用して、Data Lake Store を使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-portal.md)
 * [Azure PowerShell を使用して、Data Lake Store を既定のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)
 * [Azure PowerShell を使用して、Data Lake Store を追加のストレージとして使用する HDInsight クラスターをプロビジョニングする](data-lake-store-hdinsight-hadoop-use-powershell.md)
 
@@ -72,5 +70,4 @@ Azure Data Lake Store を使用して、Azure Event Hubs で受信したデー�
 * [Azure Data Lake Store の概要](data-lake-store-overview.md)
 * [Azure プレビュー ポータルで Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
 * [Azure PowerShell で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-powershell.md)  
-
 

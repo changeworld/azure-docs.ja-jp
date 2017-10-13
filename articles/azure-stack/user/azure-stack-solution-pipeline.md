@@ -14,16 +14,14 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: helaw
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 83bb401d5d65cd2c34015a1a14673363aeee81d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-apps-to-azure-and-azure-stack"></a>Azure と Azure Stack へのアプリのデプロイ
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ハイブリッド[継続的インテグレーション](https://www.visualstudio.com/learn/what-is-continuous-integration/)/[継続的配信](https://www.visualstudio.com/learn/what-is-continuous-delivery/) (CI/CD) パイプラインによって、アプリのビルド、テスト、および複数のクラウドへのデプロイを行うことができます。  このチュートリアルでは、サンプル環境をビルドし、ハイブリッド CI/CD パイプラインを利用する方法について学習します。
  
@@ -212,6 +210,5 @@ ms.lasthandoff: 09/25/2017
 
 > [!div class="nextstepaction"]
 > [Azure Stack 向けの開発](azure-stack-developer.md)
-
 
 

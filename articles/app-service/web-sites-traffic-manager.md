@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/25/2016
 ms.author: cephalin
-ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
 ms.openlocfilehash: fb7d391e3118a9dccde5501c3f30c6f580932a30
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="controlling-azure-web-app-traffic-with-azure-traffic-manager"></a>Azure トラフィック マネージャーによる Azure の Web アプリのトラフィックの制御
 > [!NOTE]
@@ -55,5 +54,4 @@ Azure トラフィック マネージャーを Azure で使用する場合は、
 Azure トラフィック マネージャーの概念と技術的概要については、「 [Traffic Manager Overview (トラフィック マネージャーの概要)](../traffic-manager/traffic-manager-overview.md)」を参照してください。
 
 Web Apps での Traffic Manager の使用の詳細については、ブログ記事「[Using Azure Traffic Manager with Azure Web Sites (Azure Web サイトでの Azure Traffic Manager の使用)](http://blogs.msdn.com/b/waws/archive/2014/03/18/using-windows-azure-traffic-manager-with-waws.aspx)」および「[Azure Traffic Manager can now integrate with Azure Web Sites (Azure Traffic Manager と Azure Web サイトの統合が可能になりました)](https://azure.microsoft.com/blog/2014/03/27/azure-traffic-manager-can-now-integrate-with-azure-web-sites/)」を参照してください。
-
 

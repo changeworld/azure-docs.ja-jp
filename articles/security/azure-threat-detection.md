@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/27/2017
 ms.author: TomSh
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a7a1179f815395028c4d0324e2bfb6fbed77229c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-advanced-threat-detection"></a>Azure の高度な脅威の検出
 ## <a name="introduction"></a>はじめに
 
@@ -157,7 +155,7 @@ Azure Automation は、PowerShell に基づいた Runbook を使用して管理�
 
 ユーザーは Azure でホストされる DSC リソースを作成または管理することができ、これをクラウドやオンプレミスのシステムに適用して定義したり、その構成を自動的に施行するか、セキュリティ構成がポリシー内に確実に留まるようにするために役立つ、誤差に関するレポートを取得することができます。
 
-## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
+## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションに対してだけでなく、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に対してもポリシーを定義できるため、より詳細な定義が可能になります。
 
@@ -432,4 +430,3 @@ Azure Security Center の高度な検出機能を使用すると、Microsoft Azu
 - [Azure SQL Database の脅威の検出](https://azure.microsoft.com/blog/azure-sql-database-threat-detection-your-built-in-security-expert/)
 
 Azure SQL Database の脅威の検出は、そのデータベースに対する潜在的な脅威の問題に対処するのに役立ちます。
-

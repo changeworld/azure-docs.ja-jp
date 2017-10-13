@@ -16,22 +16,20 @@ ms.workload: na
 ms.date: 09/12/2017
 ms.author: suhuruli
 ms.custom: mvc
+ms.openlocfilehash: 9b1498d76680185b45edf9ac7e1747bfa6794eec
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 8274d48db034c8a2634ab28bd634c024b8ea055c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="package-and-deploy-containers-as-a-service-fabric-application"></a>Service Fabric アプリケーションとしてのコンテナーのパッケージ化とデプロイ
 
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、テンプレート ジェネレーター ツール (Yeoman) を使用して、Service Fabric アプリケーションの定義を作成します。 このアプリケーションを使用して、コンテナーを Service Fabric にデプロイすることもできます。 このチュートリアルで学習する内容は次のとおりです。 
 
 > [!div class="checklist"]
 > * Yeoman のインストール  
-> * Yeoman を使用してアプリケーション パッケージを作成する
-> * コンテナーで使用するアプリケーション パッケージの設定を構成する
+> * Yeoman を使用したアプリケーション パッケージの作成
+> * コンテナーで使用するアプリケーション パッケージの設定
 > * アプリケーションのビルド  
 > * アプリケーションのデプロイと実行 
 > * アプリケーションのクリーンアップ
@@ -115,7 +113,7 @@ yeoman を使用して作成したアプリケーションに別のコンテナ�
 Service Fabric が Azure Container Registry からコンテナー イメージをプルするには、**ApplicationManifest.xml** に資格情報を入力する必要があります。 
 
 
-ACR インスタンスへログインします。 [az acr login](/cli/azure/acr#az_acr_login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意の名前を入力します。
+ACR インスタンスへログインします。 [az acr login](/cli/azure/acr#az_acr_login) コマンドを使用して、操作を完了します。 コンテナー レジストリの作成時に割り当てられた一意名を入力します。
 
 ```bash
 az acr login --name <acrName>
@@ -241,7 +239,7 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
 
 ![Service Fabric Explorer][sfx]
 
-実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80)。 Web UI に Voting アプリケーションが表示されます。
+実行中のアプリケーションに接続するには、Web ブラウザーを開いてクラスターの URL に移動します (例: http://lin0823ryf2he.cloudapp.azure.com:80 )。 Web UI に Voting アプリケーションが表示されます。
 
 ![Voting アプリケーション][votingapp]
 
@@ -375,6 +373,5 @@ sfctl cluster select --endpoint http://lin4hjim3l4.westus.cloudapp.azure.com:190
 
 [votingapp]: ./media/service-fabric-tutorial-deploy-run-containers/votingapp.png
 [sfx]: ./media/service-fabric-tutorial-deploy-run-containers/containerspackagetutorialsfx.png
-
 
 

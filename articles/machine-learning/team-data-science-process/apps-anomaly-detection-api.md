@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 06/05/2017
 ms.author: alok;rotimpe
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cd7dab8514b41d930d01fd134229cc9da48b18fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning 異常検出 API
 ## <a name="overview"></a>概要
 [異常検出 API](https://gallery.cortanaintelligence.com/MachineLearningAPI/Anomaly-Detection-2) は、Azure Machine Learning を使用して作成される例の 1 つで、時系列に従った一定の間隔での数値を含む時系列データの異常を検出します。
@@ -192,5 +190,4 @@ ScoreWithSeasonality API は、季節的なパターンを含んだ時系列デ�
 
 [1]: ./media/apps-anomaly-detection-api/anomaly-detection-score.png
 [2]: ./media/apps-anomaly-detection-api/anomaly-detection-seasonal.png
-
 

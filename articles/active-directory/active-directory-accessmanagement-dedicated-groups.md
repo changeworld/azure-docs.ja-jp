@@ -16,12 +16,11 @@ ms.date: 09/12/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;oldportal
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 992f4563064d7a292cf4fdd90a9a3c84cdec91c0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dedicated-groups-in-azure-active-directory"></a>Azure Active Directory の専用グループ
 Azure Active Directory (Azure AD) では、専用グループ機能によって Azure AD 事前定義済みグループのメンバーシップが自動的に作成および設定されます。 専用グループのメンバーは、Azure クラシック ポータル、Windows PowerShell コマンドレット、プログラムのいずれの方法でも追加したり削除したりすることはできません。
@@ -61,4 +60,3 @@ All Users 専用グループには、ゲストや外部ユーザーを含む、�
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

@@ -1,6 +1,6 @@
 ---
 title: "PHP から Table Storage を使用する方法 | Microsoft Docs"
-description: "PHP から Table サービスを使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
+description: "PHP から Table service を使用して、テーブルを作成および削除する方法、テーブルのエンティティを挿入、削除、照会する方法について説明します。"
 services: cosmos-db
 documentationcenter: php
 author: mimig1
@@ -14,34 +14,33 @@ ms.devlang: php
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 7a48446a11c5c6db0c9f4fdd8872b1e3c12e85c3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-table-storage-from-php"></a>PHP から Table ストレージを使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>Overview
-このガイドでは、Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table サービスの詳細については、「 [次のステップ](#next-steps) 」を参照してください。
+このガイドでは、Azure Table service を使用して一般的なシナリオを実行する方法について説明します。 サンプルは PHP で記述され、[Azure SDK for PHP][download] を利用しています。 紹介するシナリオは、 **テーブルの作成と削除、テーブルのエンティティの挿入、削除、および照会**などです。 Azure Table service の詳細については、「[次のステップ](#next-steps)」を参照してください。
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../includes/storage-create-account-include.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Azure Table サービスにアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
+Azure Table service にアクセスする PHP アプリケーションを作成するための要件は、コード内から Azure SDK for PHP のクラスを参照することのみです。 アプリケーションの作成には、メモ帳などの任意の開発ツールを使用できます。
 
-このガイドで使用する Table サービス機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
+このガイドで使用する Table service 機能は、PHP アプリケーション内からローカルで呼び出すことも、Azure の Web ロール、worker ロール、または Web サイト上で実行されるコード内で呼び出すこともできます。
 
 ## <a name="get-the-azure-client-libraries"></a>Azure クライアント ライブラリの入手
 [!INCLUDE [get-client-libraries](../../includes/get-client-libraries.md)]
 
-## <a name="configure-your-application-to-access-the-table-service"></a>Table サービスにアクセスするようにアプリケーションを構成する
-Azure Table サービス API を使用するには、次の要件があります。
+## <a name="configure-your-application-to-access-the-table-service"></a>Table service にアクセスするようにアプリケーションを構成する
+Azure Table service API を使用するには、次の要件があります。
 
 1. [require_once][require_once] ステートメントを使ってオートローダー ファイルを参照する
 2. 使用する可能性のあるクラスを参照する
@@ -61,7 +60,7 @@ use WindowsAzure\Common\ServicesBuilder;
 下のすべてのサンプルに `require_once` ステートメントが入っていますが、サンプルの実行に必要なクラスのみが参照されます。
 
 ## <a name="set-up-an-azure-storage-connection"></a>Azure のストレージ接続文字列の設定
-Azure Table サービス クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Table サービスの接続文字列の形式は次のとおりです。
+Azure Table service クライアントをインスタンス化するには、まず有効な接続文字列が必要です。 Table service の接続文字列の形式は次のとおりです。
 
 ライブ サービスにアクセスする場合:
 
@@ -93,7 +92,7 @@ $tableRestProxy = ServicesBuilder::getInstance()->createTableService($connection
 ```
 
 ## <a name="create-a-table"></a>テーブルを作成する
-**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。 テーブルの作成時、Table サービスのタイムアウトを設定できます  (Table サービスのタイムアウトの詳細については、「[Table サービス操作のタイムアウトの設定][table-service-timeouts]」を参照)。
+**TableRestProxy** オブジェクトの **createTable** メソッドを使用してテーブルを作成できます。 テーブルの作成時、Table service のタイムアウトを設定できます (Table service のタイムアウトの詳細については、「[Table service 操作のタイムアウトの設定][table-service-timeouts]」を参照)。
 
 ```php
 require_once 'vendor\autoload.php';
@@ -481,7 +480,7 @@ catch(ServiceException $e){
 ```
 
 ## <a name="next-steps"></a>次のステップ
-これで、Azure Table サービスの基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
+これで、Azure Table service の基本を学習できました。さらに複雑なストレージ タスクについては、次のリンク先を参照してください。
 
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 
@@ -494,4 +493,3 @@ catch(ServiceException $e){
 [table-data-model]: http://msdn.microsoft.com/library/azure/dd179338.aspx
 [filters]: http://msdn.microsoft.com/library/azure/dd894031.aspx
 [entity-group-transactions]: http://msdn.microsoft.com/library/azure/dd894038.aspx
-

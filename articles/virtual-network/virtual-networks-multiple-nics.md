@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/02/2016
 ms.author: jdial
-translationtype: Human Translation
-ms.sourcegitcommit: aaf97d26c982c1592230096588e0b0c3ee516a73
-ms.openlocfilehash: 5b26aecc7b9797d7bf604ea5e3d8bdece5bea17b
-ms.lasthandoff: 04/27/2017
-
-
+ms.openlocfilehash: 68ccc1cac22e593b099729fe68c6bee63df44d9b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-vm-classic-with-multiple-nics"></a>複数 NIC を持つ VM (クラシック) を作成する
 Azure に仮想マシン (VM) を作成し、複数のネットワーク インターフェイス (NIC) を各 VM にアタッチできます。 複数 NIC は、アプリケーションの配布や WAN の最適化ソリューションなど、多くのネットワーク仮想アプライアンスに必要です。 複数 NIC では、NIC 間のトラフィックの分離させることもできます。
@@ -228,5 +227,4 @@ Linux VM の場合、既定の動作では弱いホスト ルーティングが�
 ## <a name="next-steps"></a>次のステップ
 * [リソース マネージャー デプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-arm-template.md)をデプロイします。
 * [従来のデプロイの 2 層アプリケーションのシナリオで複数 NIC の VM](virtual-network-deploy-multinic-classic-ps.md)をデプロイします。
-
 

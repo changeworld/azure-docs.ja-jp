@@ -11,14 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
 ms.openlocfilehash: 7c355e2feb5ebe5971d8391b326422a1abec1497
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-multiple-versions-of-your-api-in-a-predictable-way"></a>予測可能な方法で API の複数のバージョンを公開する
 このチュートリアルでは、API の複数のバージョンを設定し、API 開発者がバージョンを呼び出す方法を選択する方法について説明します。
 
@@ -75,4 +73,3 @@ Azure API Management では、呼び出し元が API の必要なバージョン
 3. **[v1]** を選択します。
 4. 一覧で最初の操作の **[要求 URL]** を確認します。 API の URL パスに "**v1**" が含まれています。
 ![開発者ポータルに表示されたバージョン](media/api-management-getstarted-publish-versions/VersionDevPortal.PNG)
-

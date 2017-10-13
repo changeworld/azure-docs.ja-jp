@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: tamram
+ms.openlocfilehash: f16692d1241082dddb9f8687d18f6bf1c1aba2eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09c6f525bb608d95c60ba7907aae4b4e70923544
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常にレプリケートされています。 レプリケーションによりデータは同じデータ センター内か、2 番目のデータ センターにコピーされます。このコピー先は、選んだレプリケーション オプションによって変わります。 レプリケーションにより、データが保護され、一時的なハードウェアの障害が発生した際にアプリケーションのアップタイムが維持されます。 データが 2 番目のデータ センターにレプリケートされた場合、データは 1 次拠点で発生した致命的なエラーから保護されます。
 
@@ -128,5 +126,4 @@ ZRS を使用する予定のお客様は、次の点に注意してください�
 * [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)
 * [Microsoft Azure Storage 冗長オプションと読み取りアクセス geo 冗長ストレージ ](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/12/11/introducing-read-access-geo-replicated-storage-ra-grs-for-windows-azure-storage.aspx)
 * [SOSP ペーパー - Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)
-
 

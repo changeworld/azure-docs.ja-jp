@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: gokuma;weig;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9aafd6300bebbb5505aa4ed707cac9716c8e6aa1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="ten-things-you-can-do-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでできる 10 のこと
 
 Microsoft データ サイエンス仮想マシン (DSVM) は、データの探索とモデリングに関連したさまざま作業に対応する強力なデータ サイエンス開発環境です。 あらかじめ環境が構築され、広く使われているいくつかのデータ分析ツールが同梱されているため、初めて利用する方でも、オンプレミスのクラウド デプロイとハイブリッド デプロイの分析をすばやく行うことができます。 DSVM は、さまざまな Azure サービスと密接に連携します。Azure SQL Data Warehouse、Azure Data Lake、Azure Storage、Azure Cosmos DB として既に Azure に保存されているデータを読み取って処理することが可能です。 Azure Machine Learning や Azure Data Factory などのその他の分析ツールを活用することもできます。
@@ -868,5 +866,4 @@ DSVM から Azure Cosmos DB にアクセスするには、以下の前提条件�
 
 ## <a name="summary"></a>概要
 ここで紹介したのは、Microsoft データ サイエンス仮想マシンでできることの一例にすぎません。 他にもさまざまな手段で分析環境を強化することができます。
-
 

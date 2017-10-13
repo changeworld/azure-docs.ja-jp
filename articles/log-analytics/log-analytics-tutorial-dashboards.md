@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b065269a27ad3764399802b4a2bc3076b7349623
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
@@ -34,7 +33,7 @@ Log Analytics ダッシュボードは、保存されているすべてのログ
 このチュートリアルの例を完了するには、[Log Analytics ワークスペースに接続された](log-analytics-quick-collect-azurevm.md)既存の仮想マシンが必要です。  
  
 ## <a name="log-in-to-azure-portal"></a>Azure Portal へのログイン
-Azure ポータル ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-shared-dashboard"></a>共有ダッシュボードを作成する
 

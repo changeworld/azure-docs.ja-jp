@@ -1,29 +1,27 @@
 ---
 title: "Azure Backup での VM へのファイルの復元 | Microsoft Docs"
 description: "Azure VM でバックアップおよび Recovery Services を使用して、ファイル レベルの復元を実行する方法について説明します。"
-services: virtual-machines, azure-backup
+services: backup, virtual-machines
 documentationcenter: virtual-machines
 author: iainfoulds
 manager: jeconnoc
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
-ms.service: virtual-machines, azure-backup
+ms.service: backup, virtual-machines
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: iainfou
 ms.custom: mvc
+ms.openlocfilehash: abad99f862e3831e70254e76e768e4eb7b2a5053
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 6a009ef06e4e92d234b1954fbb282ff50fc4cae8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、個々のファイルを復元する方法について詳しく説明します。 このチュートリアルで学習する内容は次のとおりです。
 
@@ -88,7 +86,7 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
 ## <a name="generate-file-recovery-script"></a>ファイルの回復スクリプトを生成する
 ファイルを復元するために、Azure Backup は、ローカル ドライブとして復旧ポイントを接続する VM で実行するスクリプトを提供します。 このローカル ドライブを参照し、VM 自体にファイルを復元してから、復旧ポイントを切断できます。 Azure Backup は、スケジュールとリテンション期間に割り当てられたポリシーに基づいて、データを引き続きバックアップします。
 
-1. VM の復旧ポイントをリストする場合は、**az backup recoverypoint list** を使用します。 この例では、*myRecoveryServicesVault* で保護されている *myVM* という名前の VM の最新の復旧ポイントを選択します。
+1. VM の復旧ポイントをリストする場合は、[az backup recoverypoint list](https://docs.microsoft.com/cli/azure/backup/recoverypoint?view=azure-cli-latest#az_backup_recoverypoint_list) を使用します。 この例では、*myRecoveryServicesVault* で保護されている *myVM* という名前の VM の最新の復旧ポイントを選択します。
 
     ```azurecli-interactive
     az backup recoverypoint list \
@@ -100,7 +98,7 @@ Azure でバックアップが開始されると、VM のバックアップ拡�
         --output tsv
     ```
 
-2. VM に復旧ポイントを接続またはマウントするスクリプトを取得する場合は、**az backup restore files mount-rp** を使用します。 次の例では、*myRecoveryServicesVault* で保護されている *myVM* という名前の VM のスクリプトを取得します。
+2. VM に復旧ポイントを接続またはマウントするスクリプトを取得する場合は、[az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) を使用します。 次の例では、*myRecoveryServicesVault* で保護されている *myVM* という名前の VM のスクリプトを取得します。
 
     *myRecoveryPointName* は、前述のコマンドで取得した復旧ポイントの名前に置き換えます。
 
@@ -147,7 +145,7 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
     ./myVM_we_1571974050985163527.sh
     ```
 
-    スクリプトが実行されると、復旧ポイントにアクセスするためのパスワードの入力を求められます。 回復スクリプトを生成した前述の **az backup restore files mount-rp** コマンドからの出力に示されているパスワードを入力します。
+    スクリプトが実行されると、復旧ポイントにアクセスするためのパスワードの入力を求められます。 回復スクリプトを生成した前述の [az backup restore files mount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_mount_rp) コマンドからの出力に示されているパスワードを入力します。
 
     スクリプトからの出力で復旧ポイントのパスを確認できます。 次の出力例では、*/home/azureuser/myVM-20170919213536/Volume1* で復旧ポイントがマウントされていることが示されています。
 
@@ -187,7 +185,7 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
     exit
     ```
 
-8. **az backup restore files unmount-rp** を使用して、VM から復旧ポイントのマウントを解除します。 次の例では、*myRecoveryServicesVault* の *myVM* という名前の VM から復旧ポイントのマウントを解除します。
+8. [az backup restore files unmount-rp](https://docs.microsoft.com/cli/azure/backup/restore/files?view=azure-cli-latest#az_backup_restore_files_unmount_rp) を使用して、VM から復旧ポイントのマウントを解除します。 次の例では、*myRecoveryServicesVault* の *myVM* という名前の VM から復旧ポイントのマウントを解除します。
 
     *myRecoveryPointName* は、前述のコマンドで取得した復旧ポイントの名前に置き換えます。
     
@@ -212,5 +210,4 @@ VM に回復スクリプトをコピーしたら、復旧ポイントを接続�
 
 > [!div class="nextstepaction"]
 > [Windows Server の Azure へのバックアップ](tutorial-backup-windows-server-to-azure.md)
-
 
