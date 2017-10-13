@@ -1,10 +1,10 @@
-Azure サブスクリプションへのログインに、 [az ログイン](/cli/azure/#login)コマンドを次の画面に表示される指示します。 ログ記録の詳細については、次を参照してください。 [Azure CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)です。
+[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。 ログインの詳細については、「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 
 ```azurecli
 az login
 ```
 
-1 つ以上の Azure サブスクリプションがある場合は、アカウントのサブスクリプションを一覧表示されます。
+複数の Azure サブスクリプションを所有している場合は、アカウントのサブスクリプションが一覧表示されます。
 
 ```azurecli
 az account list --all

@@ -48,10 +48,6 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 
 いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 
-### <a name="can-i-access-the-internet-when-i-am-connected-over-p2s-vpn"></a>P2S VPN 経由で接続しているときに、インターネットにアクセスできますか。
-
-はい、P2S VPN 経由でインターネットにアクセスすることができます。
-
 ### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
 
 ユーザーは、IKEv2 をサポートしている組み込みの Windows VPN クライアントを使用して Azure に接続できます。 ただし、次のシナリオでは、Windows デバイスからの IKEv2 接続は機能しません。

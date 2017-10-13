@@ -1,23 +1,23 @@
 
-1. 移動し、 [Google Cloud コンソール](https://console.developers.google.com/project)、Google アカウントの資格情報でサインインします。 
-2. をクリックして**プロジェクトの作成**プロジェクトの名前を入力しをクリックして、**作成**です。 SMS 検証を実行しをクリックして、要求された場合**作成**もう一度です。
+1. [Google Cloud Console](https://console.developers.google.com/project)に移動し、Google アカウントの資格情報でサインインします。 
+2. **[プロジェクトの作成]** をクリックし、プロジェクト名を入力して、**[作成]** をクリックします。 要求された SMS の確認を実行し、 **[Create]** をもう一度クリックします。
    
-    ![新規プロジェクトの作成](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
+    ![新しいプロジェクトの作成](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-new-project.png)   
    
-     新しい型**プロジェクト名** をクリック**プロジェクトの作成**です。
-3. クリックして、**ユーティリティと複数**ボタンをクリックし、をクリックして**プロジェクト情報**です。 メモ、**プロジェクト番号**です。 この値として設定する必要があります、`SenderId`クライアント アプリの変数です。
+     新しい**プロジェクト名**を入力し、**[プロジェクトの作成]** をクリックします。
+3. **[Utilities and More (ユーティリティおよびその他)]** ボタンをクリックし、**[プロジェクト情報]** をクリックします。 **プロジェクト番号**をメモしておきます。 クライアント アプリの `SenderId` 変数として、この値を設定する必要があります。
    
-    ![ユーティリティと詳細](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
-4. プロジェクト ダッシュ ボードで、[ **Mobile Api**、] をクリックして**Google Cloud Messaging**、ページで [次へ] をクリックして**を有効にする API**サービスの使用に同意します。 
+    ![ユーティリティなど](./media/mobile-services-enable-google-cloud-messaging/notification-hubs-utilities-and-more.png)
+4. プロジェクトのダッシュボードで、**[Mobile APIs (Mobile API)]** の **[Google Cloud Messaging]** をクリックし、次のページで **[Enable API (API を有効にする)]** をクリックし、サービス使用条件に同意します。 
    
-    ![GCM を有効にします。](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
+    ![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-GCM.png)
    
-    ![GCM を有効にします。](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
-5. プロジェクト ダッシュ ボードで、をクリックして**資格情報** > **Create Credential** > **API キー**です。 
+    ![Enabling GCM](./media/mobile-services-enable-google-cloud-messaging/enable-gcm-2.png) 
+5. プロジェクト ダッシュボードで、**[資格情報]**  >  **[資格情報の作成]**  >  **[API キー]** の順にクリックします。 
    
     ![](./media/mobile-services-enable-google-cloud-messaging/mobile-services-google-create-server-key.png)
-6. **新しいキーを作成**をクリックして**サーバー キー**、キーの名前を入力しをクリックして、**作成**です。
-7. メモ、 **API キー**値。
+6. **[新しいキーの作成]** で **[サーバー キー]** をクリックし、キーの名前を入力して、**[作成]** をクリックします。
+7. **[API KEY]** の値をメモしておきます。
    
-    この API キーの値を使用して、GCM と認証し、アプリの代わりにプッシュ通知を送信する Azure を有効にするされます。
+    この API キー値を使用して、Azure が GCM で認証し、アプリの代わりにプッシュ通知を送信できるようにします。
 

@@ -1,1 +1,1 @@
-このトピックでは、開始位置として作成したリソース[、Azure ポータルから、最初の関数を作成する](../articles/azure-functions/functions-create-first-azure-function.md)です。 完了していない場合は、関数のアプリの作成に次の手順を今すぐを完了してください。
+このトピックでは、[Azure Portal からの初めての関数の作成](../articles/azure-functions/functions-create-first-azure-function.md)に関するトピックで作成したリソースを使用して作業を開始します。 リソースの作成が済んでいない場合は、作成手順に従って Function App をすぐに作成してください。
