@@ -15,28 +15,27 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: 42e126ffefd75669d90ea3ff1d3939028f71159c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 97ada8795ff0200c487062c6ec3347c7421ba91d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-by-using-powershell-in-azure-stack"></a>Azure Stack で PowerShell を使用して Windows 仮想マシンを作成する
 
 *適用対象: Azure Stack 統合システム*
 
 このガイドでは、PowerShell を使用して、Azure Stack 内に Windows Server 2016 仮想マシンを作成する方法について詳しく説明します。 この記事で説明している手順は、Azure Stack Development Kit で、または VPN 経由で接続している場合は Windows ベースの外部クライアントで実行できます。 
 
-始める前に、Azure Stack オペレーターが Azure Stack Marketplace に "Windows Server 2016" のイメージを追加していることを確認してください。  
+## <a name="prerequisites"></a>前提条件 
 
-リソースを作成して管理するため、Azure Stack には Azure PowerShell の特定のバージョンが必要です。 Azure Stack 用に PowerShell を構成していない場合は、[PowerShell のインストールと構成](azure-stack-powershell-install.md)の手順に従います。    
+* Azure Stack オペレーターが Azure Stack Marketplace に "Windows Server 2016" のイメージを追加していることを確認します。  
 
+* リソースを作成して管理するため、Azure Stack には Azure PowerShell の特定のバージョンが必要です。 Azure Stack 用に構成された PowerShell がない場合は、PowerShell の[インストール](azure-stack-powershell-install.md)と[構成](azure-stack-powershell-configure-user.md)の手順に従います。    
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 次のコード ブロックを使用してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。  
+リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、次のコード ブロックを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。  
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -246,6 +245,5 @@ Remove-AzureRmResourceGroup `
 
 ## <a name="next-steps"></a>次のステップ
 
-Azure Stack 内のストレージについては、[ストレージの概要](azure-stack-storage-overview.md)についてのトピックを参照してください。
-
+このクイック スタートでは、簡単な Windows 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
 

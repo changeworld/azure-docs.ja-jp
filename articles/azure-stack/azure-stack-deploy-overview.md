@@ -15,18 +15,17 @@ ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: 3d3f31775ae9384faeae20f108b71cea5dcc2934
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 54d16b57526241544ae50c9b8e10a8add667916b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-development-kit-deployment-quickstart"></a>Azure Stack 開発キット デプロイ クイックスタート
 
-*適用対象: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
-[Azure Stack 開発キット](azure-stack-poc.md)は、Azure Stack の機能やサービスを評価したり、実演したりするためにデプロイできるテスト/開発環境です。 この環境を立ち上げるには、環境ハードウェアを用意し、いくつかのスクリプトを実行する (これには数時間かかります) 必要があります。 その後、管理者とテナントのポータルにサインインし、Azure Stack を管理したり、プランをテストしたりできます。 
+[Azure Stack 開発キット](azure-stack-poc.md)は、Azure Stack の機能やサービスを評価したり、実演したりするためにデプロイできるテスト/開発環境です。 この環境を立ち上げるには、環境ハードウェアを用意し、いくつかのスクリプトを実行する (これには数時間かかります) 必要があります。 その後、管理者ポータルとユーザー ポータルにサインインし、Azure Stack を管理したり、プランをテストしたりできます。 
 
 1. [**ハードウェア、ソフトウェア、ネットワークを計画します**](azure-stack-deploy.md)。 開発キットをホストするコンピューター (開発キット ホスト) は、ハードウェア、ソフトウェア、ネットワークの要件を満たす必要があります。 Azure Active Directory か Active Directory フェデレーション サービス (AD FS) の使用を選択する必要もあります。 インストール プロセスが滞りなく進行するように、デプロイの開始前に以上の前提条件を必ず満たしてください。 
 
@@ -38,5 +37,4 @@ ms.lasthandoff: 09/25/2017
 
 5. Azure Stack 開発で Azure Active Directory を利用する場合、Azure Stack に [Azure Marketplace アイテムをダウンロード](azure-stack-download-azure-marketplace-item.md)できるように [Azure に Azure Stack を登録する](azure-stack-register.md)必要があります。
 
-以上のテジョンを完了すると、管理者ポータルとテナント ポータルの両方で開発キット環境が与えられます。 これでポータルに[接続し、サインイン](azure-stack-connect-azure-stack.md)できます。 サインインしたら、リソース プロバイダーのデプロイ、[プラン](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions)の作成、Azure Stack [Marketplace](azure-stack-marketplace.md) のデータ入力を開始できます。
-
+これらの手順を完了すると、管理者ポータルとユーザー ポータルの両方で開発キット環境が提供されます。 これでポータルに[接続し、サインイン](azure-stack-connect-azure-stack.md)できます。 サインインしたら、リソース プロバイダーのデプロイ、[プラン](azure-stack-key-features.md#regions-services-plans-offers-and-subscriptions)の作成、Azure Stack [Marketplace](azure-stack-marketplace.md) のデータ入力を開始できます。

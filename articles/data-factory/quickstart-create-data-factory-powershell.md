@@ -11,17 +11,16 @@ ms.workload: data-services
 ms.tgt_pltfrm: 
 ms.devlang: powershell
 ms.topic: hero-article
-ms.date: 09/19/2017
+ms.date: 09/26/2017
 ms.author: jingwang
+ms.openlocfilehash: 1e9109581a1943a77e91e7fa034873dc2a15a5e6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 92f798244db1f69d01f46d0c0bcce9fe139bef05
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-data-factory-and-pipeline-using-powershell"></a>PowerShell を使用してデータ ファクトリとパイプラインを作成する
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、データドリブン型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
+Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
 
 このクイックスタートでは、PowerShell を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。
 
@@ -29,10 +28,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="prerequisites"></a>前提条件
 
-* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントを持っていない場合は、作成について、「ストレージ アカウントの作成」を参照してください。 作成の手順については、記事 (../storage/common/storage-create-storage-account.md#create-a-storage-account) を参照してください。
-* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 
+* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
+* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
 * **Azure PowerShell**。 [Azure PowerShell のインストールと構成の方法](/powershell/azure/install-azurerm-ps)に関するページに記載されている手順に従います。
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)。 このツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。 
 
 ## <a name="create-a-data-factory"></a>Data Factory を作成する。
 
@@ -55,10 +53,20 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     ```
 2. **Set-AzureRmDataFactoryV2** コマンドレットを実行してデータ ファクトリを作成します。 各プレースホルダーを実際の値に置き換えてからコマンドを実行してください。 独自の値に置き換えられた**プレースホルダー**。 
 
+    後で PowerShell コマンドで使用できるように、リソース グループ名の変数を定義します。 
     ```powershell
     $resourceGroupName = "<your resource group to create the factory>";
+    ```
+
+    後で PowerShell コマンドで使用できるように、データ ファクトリ名の変数を定義します。 
+
+    ```powershell
     $dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
-    Set-AzureRmDataFactoryV2 -ResourceGroupName "<your resource group to create the factory>" -Location "East US" -Name "<specify the name of data factory to create. It must be globally unique.>" 
+    ```
+
+    次のコマンドを実行して、データ ファクトリを作成します。 
+    ```powershell       
+    Set-AzureRmDataFactoryV2 -ResourceGroupName $resourceGroupName -Location "East US" -Name $dataFactoryName 
     ```
 
     以下の点に注意してください。
@@ -261,9 +269,9 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
                 $run
                 break
             }
+            Write-Host  "Pipeline is running...status: InProgress" -foregroundcolor "Yellow"
         }
 
-        Write-Host  "Pipeline is running...status: " $run.Status -foregroundcolor "Yellow"
         Start-Sleep -Seconds 30
     }
     ```
@@ -271,29 +279,27 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
     パイプラインの実行の出力例を次に示します。
 
     ```
-    Key                  : 00000000-0000-0000-0000-000000000000
-    Timestamp            : 9/7/2017 8:31:26 AM
-    RunId                : 000000000-0000-0000-0000-000000000000
-    DataFactoryName      : <dataFactoryname>
-    PipelineName         : Adfv2QuickStartPipeline
-    Parameters           : {inputPath: <inputBlobPath>, outputPath: <outputBlobPath>}
-    ParametersCount      : 2
-    ParameterNames       : {inputPath, outputPath}
-    ParameterNamesCount  : 2
-    ParameterValues      : {<inputBlobPath>, <outputBlobPath>}
-    ParameterValuesCount : 2
-    RunStart             : 9/7/2017 8:30:45 AM
-    RunEnd               : 9/7/2017 8:31:26 AM
-    DurationInMs         : 41291
-    Status               : Succeeded
-    Message              :
+    Pipeline is running...status: InProgress
+    Pipeline run finished. The status is:  Succeeded
+    
+    ResourceGroupName : ADFTutorialResourceGroup
+    DataFactoryName   : SPTestFactory0928
+    RunId             : 0000000000-0000-0000-0000-0000000000000
+    PipelineName      : Adfv2QuickStartPipeline
+    LastUpdated       : 9/28/2017 8:28:38 PM
+    Parameters        : {[inputPath, adftutorial/input], [outputPath, adftutorial/output]}
+    RunStart          : 9/28/2017 8:28:14 PM
+    RunEnd            : 9/28/2017 8:28:38 PM
+    DurationInMs      : 24151
+    Status            : Succeeded
+    Message           :
     ```
 
 2. 次のスクリプトを実行し、コピー アクティビティの実行の詳細 (たとえば、読み書きされたデータのサイズ) を取得します。
 
     ```powershell
-    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     Write-Host "Activity run details:" -foregroundcolor "Yellow"
+    $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
     $result
     
     Write-Host "Activity 'Output' section:" -foregroundcolor "Yellow"
@@ -305,29 +311,29 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 3. アクティビティの実行の結果である次のサンプル出力のような出力が表示されることを確認します。
 
     ```json
-    Activity run details:
-    ResourceGroupName : adf
-    DataFactoryName   : <dataFactoryname>
+    ResourceGroupName : ADFTutorialResourceGroup
+    DataFactoryName   : SPTestFactory0928
     ActivityName      : CopyFromBlobToBlob
-    Timestamp         : 9/7/2017 8:24:06 AM
-    PipelineRunId     : 9b362a1d-37b5-449f-918c-53a8d819d83f
+    PipelineRunId     : 00000000000-0000-0000-0000-000000000000
     PipelineName      : Adfv2QuickStartPipeline
     Input             : {source, sink}
     Output            : {dataRead, dataWritten, copyDuration, throughput...}
     LinkedServiceName :
-    ActivityStart     : 9/7/2017 8:23:30 AM
-    ActivityEnd       : 9/7/2017 8:24:06 AM
-    Duration          : 36331
+    ActivityRunStart  : 9/28/2017 8:28:18 PM
+    ActivityRunEnd    : 9/28/2017 8:28:36 PM
+    DurationInMs      : 18095
     Status            : Succeeded
     Error             : {errorCode, message, failureType, target}
     
     Activity 'Output' section:
-    "dataRead": 331452208
-    "dataWritten": 331452208
-    "copyDuration": 23
-    "throughput": 14073.209
+    "dataRead": 38
+    "dataWritten": 38
+    "copyDuration": 7
+    "throughput": 0.01
     "errors": []
     "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (West US)"
+    "usedCloudDataMovementUnits": 2
+    "billedDuration": 14
     ```
 
 ## <a name="verify-the-output"></a>出力を検証する

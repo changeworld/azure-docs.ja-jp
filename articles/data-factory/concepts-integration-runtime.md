@@ -13,18 +13,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/15/2017
 ms.author: shlo
+ms.openlocfilehash: 82b1dc036b53fbc1f0159d77ce102dcd054ea722
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cf05a28c0fe40839e26cef1af51f3f0317e1e154
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="integration-runtime-in-azure-data-factory"></a>Azure Data Factory の統合ランタイム
 統合ランタイム (IR) は、異なるネットワーク環境間で以下のデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。
 
-- **データの移動**: パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアの間でデータを移動します。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
+- **データ移動**: パブリック ネットワーク内のデータ ストアとプライベート ネットワーク (オンプレミスまたは仮想プライベート ネットワーク) 内のデータ ストアの間でデータを移動します。 組み込みコネクタ、形式の変換、列のマッピング、パフォーマンスとスケーラビリティに優れたデータ転送に関するサポートを提供します。
 - **アクティビティのディスパッチ**:  Azure HDInsight、Azure Machine Learning、Azure SQL Database、SQL Server などのさまざまなコンピューティング サービスで実行される変換アクティビティをディスパッチして監視します。
 - **SSIS パッケージの実行**: 管理されている Azure コンピューティング環境で SQL Server Integration Services (SSIS) パッケージをネイティブに実行します。
 
@@ -99,6 +97,14 @@ Azure-SSIS IR は、パブリック ネットワークかプライベート ネ�
 Azure-SSIS IR は、SSIS パッケージ実行専用の、Azure VM の完全に管理されたクラスターです。 それに接続する SSIS プロジェクト/パッケージ (SSISDB) のカタログをホストするため、独自の Azure SQL Database またはマネージ インスタンス (プライベート プレビュー) サーバーを持ち込むことができます。 ノードのサイズを指定してコンピューティング能力をスケールアップしたり、クラスター内のノードの数を指定してスケール アウトしたりできます。 必要に応じて Azure-SSIS 統合ランタイムを停止したり開始したりして、その実行のコストを管理できます。
 
 詳細については、ハウツー ガイドで Azure-SSIS IR の作成と構成の方法に関するトピックをご覧ください。  作成し終えたら、オンプレミスで SSIS を使用する場合と同様に、SQL Server Data Tools (SSDT) や SQL Server Management Studio (SSMS) などの使い慣れたツールを使用して、まったく、またはほとんど変更を加えずに既存の SSIS パッケージをデプロイして管理することができます。
+
+Azure-SSIS ランタイムの詳細については、次の記事をご覧ください。 
+
+- [チュートリアル: SSIS パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure.md):  この記事では、Azure-SSIS IR を作成し、Azure SQL Database を使って SSIS カタログをホストする手順が説明されています。 
+- [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
+- [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
+- [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
+- [Azure-SSIS IR を VNet に参加させる](join-azure-ssis-integration-runtime-virtual-network.md):  この記事では、Azure 仮想ネットワーク (VNet) への Azure-SSIS IR の参加に関する概念情報が説明されています。 Azure-SSIS IR が VNet に参加できるように Azure Portal を使って VNet を構成する手順も説明されています。 
 
 ## <a name="determining-which-ir-to-use"></a>使用する IR の判別
 各変換アクティビティには、ターゲット コンピューティングのリンクされたサービスがあり、これは統合ランタイムに向けられています。 この統合ランタイム インスタンスから、変換アクティビティがディスパッチされます。
@@ -181,4 +187,4 @@ Azure IR の場所を自動解決に設定することもできます。この�
 次の記事を参照してください。
 
 - [Create self-hosted integration runtime (セルフホステッド統合ランタイムの作成)](create-self-hosted-integration-runtime.md)
-
+- [Azure-SSIS 統合ランタイムを作成](create-azure-ssis-integration-runtime.md)します。 この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
