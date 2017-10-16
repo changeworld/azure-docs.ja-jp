@@ -57,6 +57,8 @@
           href: concepts-servers.md
         - name: サポートされているバージョン
           href: concepts-supported-versions.md
+        - name: サーバー ログ
+          href: concepts-server-logs.md
     - name: リソース
       items:
         - name: 価格レベル
@@ -113,6 +115,10 @@
           href: howto-server-parameters.md
         - name: Azure CLI
           href: howto-configure-server-parameters-using-cli.md
+    - name: サーバー ログへのアクセス
+      items:
+        - name: Azure CLI
+          href: howto-configure-server-logs-in-cli.md
 - name: リファレンス
   items:
     - name: Azure CLI
