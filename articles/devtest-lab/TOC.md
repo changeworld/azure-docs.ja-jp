@@ -28,6 +28,7 @@
 ### [ポリシーとスケジュールの設定](devtest-lab-set-lab-policy.md)
 ### [コスト管理の構成](devtest-lab-configure-cost-management.md)
 ### [Marketplace イメージの構成](devtest-lab-configure-marketplace-images.md)
+### [ライセンスされたイメージの有効化](devtest-lab-enable-licensed-images.md)
 ### [ラボへのタグの追加](devtest-lab-add-tag.md)
 
 ## [カスタム イメージまたは式の選択](devtest-lab-comparing-vm-base-image-types.md)
