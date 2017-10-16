@@ -117,8 +117,6 @@
               href: app-insights-snapshot-debugger.md
         - name: J2EE
           items:
-            - name: Eclipse
-              href: app-insights-java-eclipse.md
             - name: ログ トレース
               href: app-insights-java-trace-logs.md
             - name: Unix メトリック
@@ -140,8 +138,6 @@
               href: app-insights-proactive-failure-diagnostics.md
             - name: パフォーマンスの異常
               href: app-insights-proactive-performance-diagnostics.md
-        - name: Dynamics CRM
-          href: app-insights-sample-mscrm.md
         - name: リソースの作成
           href: app-insights-create-new-resource.md
     - name: 分析
@@ -150,7 +146,7 @@
           items:
             - name: ダッシュボード
               href: app-insights-dashboards.md
-            - name: Search
+            - name: 検索
               href: app-insights-diagnostic-search.md
             - name: メトリック
               href: app-insights-metrics-explorer.md
@@ -188,14 +184,8 @@
           items:
             - name: 概要
               href: app-insights-analytics.md
-            - name: ツアー
-              href: app-insights-analytics-tour.md
-            - name: 使用
-              href: app-insights-analytics-using.md
-            - name: インポート
+            - name: カスタム ログのインポート
               href: app-insights-analytics-import.md
-            - name: 診断
-              href: app-insights-analytics-diagnostics.md
     - name: 自動化
       items:
         - name: Azure PowerShell 構成
@@ -259,7 +249,7 @@
           href: app-insights-java-troubleshoot.md
 - name: リファレンス
   items:
-    - name: 分析
+    - name: Analytics クエリ言語
       href: 'https://docs.loganalytics.io/'
     - name: .NET
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights'

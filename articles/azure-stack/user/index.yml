@@ -4,7 +4,7 @@ title: Azure Stack のユーザー ドキュメント
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Azure Stack のドキュメント - チュートリアル、API リファレンス
-  description: Azure Stack プレビューを使用してデータセンターから Azure サービスを提供する方法について説明します。 概念実証環境の機能を学習して試します。
+  description: Azure Stack サービスを使用する方法と Azure Stack でアプリを作成する方法について説明します。
   services: azure-stack
   author: carolz
   manager: carolz
@@ -12,12 +12,12 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は Azure Stack でアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを作成することもできます。  Microsoft が提供するクイック スタートとチュートリアルを使用して、リソースを作成し、アプリをデプロイする方法を確認してください。
+  description: Azure Stack は、会社またはサービス プロバイダーのデータセンターからの Azure サービスの使用を可能にするハイブリッド クラウド プラットフォームです。 開発者は Azure Stack でアプリを作成できます。 その後、そのアプリを Azure Stack と Azure にデプロイできます。また、Azure Stack クラウドと Azure 間の接続を利用するハイブリッド アプリを作成することもできます。 Microsoft が提供するクイック スタートとチュートリアルを使用して、リソースを作成し、アプリをデプロイする方法を確認してください。<br/><br/>インフラストラクチャの管理およびサービスの提供を行う Azure Stack オペレーターは、<a href="/azure/azure-stack/">オペレーター ドキュメント</a>を参照してください。
 sections:
-  - title: クイック スタート
+  - title: 5 分間のクイック スタート
     items:
       - type: paragraph
         text: Windows 仮想マシンを Azure Stack にデプロイする方法を説明します。
@@ -68,4 +68,4 @@ sections:
         className: cardsD
         items:
           - title: コマンド ライン
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>

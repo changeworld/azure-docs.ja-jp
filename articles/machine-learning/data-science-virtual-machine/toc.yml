@@ -1,6 +1,7 @@
 - name: データ サイエンス仮想マシンのドキュメント
   items: null
 - name: 概要
+  expanded: true
   items:
     - name: データ サイエンス VM とは
       href: overview.md
@@ -25,7 +26,10 @@
     - name: ディープ ラーニング VM の使用
       href: use-deep-learning-dsvm.md
 - name: リファレンス
+  expanded: true
   items:
+    - name: DSVM の検出
+      href: dsvm-tools-overview.md
     - name: ディープ ラーニングと AI のフレームワーク
       href: dsvm-deep-learning-ai-frameworks.md
     - name: ML とデータ サイエンスのツール

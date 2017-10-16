@@ -40,6 +40,9 @@
 ### [Weibo](active-directory-b2c-setup-weibo-app.md)
 ### [QQ](active-directory-b2c-setup-qq-app.md)
 ### [WeChat](active-directory-b2c-setup-wechat-app.md)
+## [セルフサービスのパスワード リセットをセットアップする](active-directory-b2c-reference-sspr.md)
+## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
+### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [Azure AD Graph API を使用する](active-directory-b2c-devquickstarts-graph-dotnet.md)
 ## [アクセス トークンを取得する](active-directory-b2c-access-tokens.md)
 ## [電子メールの確認を無効にする](active-directory-b2c-reference-disable-ev.md)
@@ -47,30 +50,34 @@
 ## [MFA を有効にする](active-directory-b2c-reference-mfa.md)
 ## [カスタム属性を使用する](active-directory-b2c-reference-custom-attr.md)
 ## [パスワードのカスタマイズ](active-directory-b2c-reference-password-complexity.md)
-## [UI をカスタマイズする](active-directory-b2c-reference-ui-customization.md)
-### [カスタマイズ用のヘルパー ツール](active-directory-b2c-reference-ui-customization-helper-tool.md)
 ## [言語のカスタマイズ](active-directory-b2c-reference-language-customization.md)
 ## [Reporting API の使用](active-directory-b2c-reference-usage-reporting-api.md)
-## [セルフサービスのパスワード リセットをセットアップする](active-directory-b2c-reference-sspr.md)
+## [ユーザーの移行](active-directory-b2c-user-migration.md)
 
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
 ### [作業開始](active-directory-b2c-get-started-custom.md)
-### OIDC/OAUTH2 プロバイダーの構成
+### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
 #### [Google+](active-directory-b2c-custom-setup-goog-idp.md)
+#### [LinkedIn](active-directory-b2c-custom-setup-li-idp.md)
+#### [Twitter](active-directory-b2c-custom-setup-twitter-idp.md)
 ### SAML プロバイダーの構成
 #### [ADFS](active-directory-b2c-custom-setup-adfs2016-idp.md)
 #### [Salesforce](active-directory-b2c-setup-sf-app-custom.md)
 ### RESTful API の統合
 #### [ユーザー入力の検証](active-directory-b2c-rest-api-validation-custom.md)
 #### [追加の要求の取得](active-directory-b2c-rest-api-step-custom.md)
+#### [独自の RESTful API の追加](active-directory-b2c-custom-rest-api-netfw.md)
+#### [基本認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
+#### [証明書認証を使用した RESTful API のセキュリティ保護](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
 ### ユーザー フロー
 #### [ユーザー入力の構成](active-directory-b2c-configure-signup-self-asserted-custom.md)
 #### [カスタム属性](active-directory-b2c-create-custom-attributes-profile-edit-custom.md)
 #### [UI のカスタマイズ](active-directory-b2c-ui-customization-custom.md)
+#### [UI の動的なカスタマイズ](active-directory-b2c-ui-customization-custom-dynamic.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [パスワードの複雑さ](active-directory-b2c-reference-password-complexity-custom.md)
 

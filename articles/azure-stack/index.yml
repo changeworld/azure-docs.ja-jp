@@ -4,7 +4,7 @@ title: Azure Stack のオペレーター ドキュメント
 metadata:
   document_id: cbf798da-6f1a-7d4d-7707-5d5e02589e22
   title: Azure Stack のオペレーター ドキュメント - チュートリアル、API リファレンス
-  description: Azure Stack プレビューを使用してデータセンターから Azure サービスを提供する方法について説明します。 概念実証環境の機能を学習して試します。
+  description: Azure Stack を使用してデータセンターから Azure サービスを提供する方法について説明します。 開発キットまたは統合システム環境の機能について説明して例示します。
   services: azure-stack
   author: czeumault
   manager: carolz
@@ -12,21 +12,21 @@ metadata:
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 09/23/2017
+  ms.date: 10/02/2017
   ms.author: carolz
 abstract:
-  description: Microsoft Azure Stack は、データセンターからの Azure サービスの提供を可能にするハイブリッド クラウド プラットフォームです。 Microsoft が提供するクイックスタートとチュートリアルを使用して、Azure Stack のデプロイ方法とサービスの提供方法についてご確認ください。
+  description: Microsoft Azure Stack は、データセンターからの Azure サービスの提供を可能にするハイブリッド クラウド プラットフォームです。 Microsoft が提供するクイックスタートとチュートリアルを使用して、Azure Stack Development Kit をデプロイする方法、統合システムと開発キットの両方に関してインフラストラクチャを管理する方法、サービスを提供する方法を確認してください。<br/><br/>Azure Stack でサービスを使用するかアプリを作成する Azure Stack ユーザーは、<a href="/azure/azure-stack/user">ユーザー ドキュメント</a>を参照してください。
 sections:
-  - title: 5 分間のクイック スタート
+  - title: クイック スタート
     items:
       - type: paragraph
-        text: ハードウェアを設定し、Azure Stack をデプロイします。
+        text: ハードウェアを設定し、Azure Stack Development Kit をデプロイします。
       - type: list
         style: icon48
         items:
           - image:
               src: 'https://docs.microsoft.com/media/common/i_deploy.svg'
-            text: Azure Stack のデプロイ
+            text: Azure Stack Development Kit をデプロイする
             href: azure-stack-deploy-overview.md
   - title: ステップバイステップのチュートリアル
     items:
@@ -35,9 +35,9 @@ sections:
       - type: list
         style: ordered
         items:
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Azure Stack で仮想マシンを有効にする</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Azure Stack で SQL データベースを有効にする</a>
-          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Azure Stack で Web アプリを有効にする</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-tenant-vm">Azure Stack で仮想マシンを提供する</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-sql-server">Azure Stack で SQL データベースを提供する</a>
+          - html: <a href="/azure/azure-stack/azure-stack-tutorial-app-service">Azure Stack で Web アプリを提供する</a>
   - title: 無料の Pluralsight ビデオ トレーニング
     items:
       - type: list
@@ -56,4 +56,4 @@ sections:
         className: cardsD
         items:
           - title: コマンド ライン
-            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.9">Azure Stack PowerShell</a></p>
+            html: <p><a href="/powershell/azure/azure-stack/overview?view=azurestackps-1.2.10">Azure Stack PowerShell</a></p>

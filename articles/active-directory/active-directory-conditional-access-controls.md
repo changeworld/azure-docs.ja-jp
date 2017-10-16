@@ -125,7 +125,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 ![コントロール](./media/active-directory-conditional-access-controls/82.png)
 
-**[New custom control] (新しいカスタム コントロール)** をクリックし、コントロールの JSON データ用のテキスト ボックスを含むブレードを開きます。  
+**[New custom control] \(新しいカスタム コントロール)** をクリックし、コントロールの JSON データ用のテキスト ボックスを含むブレードを開きます。  
 
 
 ![コントロール](./media/active-directory-conditional-access-controls/81.png)
@@ -135,7 +135,7 @@ Azure Active Directory の外部にあるさらなる要件を満たすために
 
 カスタム コントロールを削除するには、まずそれがどの条件付きアクセス ポリシーでも使用されていないことを確認する必要があります。 完了したら、次のことを行います。
 
-1. [Custom controls] (カスタム コントロール) 一覧に移動します。
+1. [Custom controls] \(カスタム コントロール) 一覧に移動します。
 
 2. […] をクリックします。  
 
