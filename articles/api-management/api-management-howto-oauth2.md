@@ -3,7 +3,7 @@ title: "Azure API Management の OAuth 2.0 を使用して開発者アカウン�
 description: "API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 78c48247-64f0-4708-b2d0-98b61a821283
@@ -14,11 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: a19c453bb3271374b587f3d0b35adad55863b490
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
+
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する方法
 多くの API では、[OAuth 2.0](http://oauth.net/2/) がサポートされています。OAuth 2.0 を使用すると、API をセキュリティで保護して、有効なユーザーのみにアクセスが許可されること、および有効なユーザーが許可されたリソースのみにアクセスできることを保証できます。 Azure API Management では、対話型の開発者コンソールでそのような API を使用できるようにするために、OAuth 2.0 に対応する API を使用するサービス インスタンスを構成できます。
@@ -173,4 +174,5 @@ OAuth 2.0 と API Management の詳細については、次のビデオとこの
 [Configure an API to use OAuth 2.0 user authorization]: #step2
 [Test the OAuth 2.0 user authorization in the Developer Portal]: #step3
 [Next steps]: #next-steps
+
 

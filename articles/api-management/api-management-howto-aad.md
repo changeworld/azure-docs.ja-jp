@@ -3,7 +3,7 @@ title: "Azure Active Directory を使用して開発者アカウントを認証�
 description: "API Management で Azure Active Directory を使用してユーザーを認証する方法について説明します。"
 services: api-management
 documentationcenter: API Management
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 33a69a83-94f2-4e4e-9cef-f2a5af3c9732
