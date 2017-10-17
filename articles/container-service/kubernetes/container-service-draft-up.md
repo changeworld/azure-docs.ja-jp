@@ -197,7 +197,7 @@ $ helm install stable/traefik --name ingress
 ここで、`ingress` コントローラーにウォッチを設定して、デプロイ時に外部 IP 値をキャプチャするようにします。 この IP アドレスは、次のセクションで[デプロイ ドメインにマップされる](#wire-up-deployment-domain)ものです。
 
 ```bash
-kubectl get svc -w
+$ kubectl get svc -w
 NAME                          CLUSTER-IP     EXTERNAL-IP     PORT(S)                      AGE
 ingress-traefik               10.0.248.104   13.64.108.240   80:31046/TCP,443:32556/TCP   1h
 kubernetes                    10.0.0.1       <none>          443/TCP                      7h

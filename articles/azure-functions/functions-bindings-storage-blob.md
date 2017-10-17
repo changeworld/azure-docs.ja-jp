@@ -3,7 +3,7 @@ title: "Azure Functions における Blob Storage のバインディング | Mic
 description: "Azure Functions で Azure Storage のトリガーとバインドを使用する方法について説明します。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 
