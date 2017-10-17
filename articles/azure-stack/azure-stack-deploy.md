@@ -40,26 +40,26 @@ ms.lasthandoff: 10/11/2017
 
 \* Azure から [Marketplace の項目](azure-stack-download-azure-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
 
-**データ ディスク ドライブの構成:** すべてのデータ ドライブは同じ種類 (すべて SAS またはすべて SATA)、同じ容量である必要があります。 SAS ディスク ドライブを使う場合、ディスク ドライブは 1 つのパス経由で接続する必要があります (MPIO なし、マルチパスのサポートあり)。
+**データ ディスク ドライブの構成:** すべてのデータ ドライブは同じ種類 (すべて SAS またはすべて SATA)、同じ容量である必要があります。 SAS ディスク ドライブを使う場合、ディスク ドライブは 1 つのパス経由で接続する必要があります (MPIO 、マルチパスはサポートされません)。
 
 **HBA 構成オプション**
 
 * (推奨) 単純な HBA
 * RAID HBA – "パススルー" モードでアダプターを構成する必要があります。
-* RAID HBA – ディスクは単一のディスク、RAID-0 として構成する必要があります。
+* RAID HBA – ディスクはそれぞれ、単一のディスクによる RAID-0 として構成する必要があります。
 
 **サポート対象のバスとメディアの組み合わせ**
 
 * SATA HDD
 * SAS HDD
 * RAID HDD
-* RAID SSD (メディアの種類が指定されていない場合、または不明な場合\*)
+* RAID SSD (メディアの種類が特定されていない場合、または不明な場合\*)
 * SATA SSD + SATA HDD
 * SAS SSD + SAS HDD
 
-\* パススルー機能のない RAID コントローラーは、メディアの種類を認識できません。 このようなコントローラーでは、SSD と HDD の両方が "未指定" としてマークされます。 その場合、SSD がキャッシュ デバイスではなく、永続的なストレージとして使用されます。 したがって、それらの SSD には開発キットをデプロイできます。
+\* パススルー機能のない RAID コントローラーは、メディアの種類を特定できません。 このようなコントローラーでは、SSD と HDD の両方が "Unspecified" としてマークされます。 その場合、SSD がキャッシュ デバイスではなく、永続的なストレージとして使用されます。 したがって、それらの SSD には開発キットをデプロイできます。
 
-**サンプル HBA**: パススルー モードの LSI 9207-8i、LSI-9300-8i、または LSI-9265-8i
+**HBA の例**: パススルー モードの LSI 9207-8i、LSI-9300-8i、または LSI-9265-8i
 
 サンプル OEM 構成を使用できます。
 
@@ -77,28 +77,28 @@ ms.lasthandoff: 10/11/2017
 環境がインターネットに接続されていない場合、または Azure AD を使いたくない場合は、Active Directory フェデレーション サービス (AD FS) を使って Azure Stack をデプロイできます。 開発キットには、専用の AD FS および Active Directory Domain Services のインスタンスが含まれています。 このオプションを使ってデプロイする場合は、事前にアカウントを設定する必要はありません。
 
 >[!NOTE]
-AD FS のオプションを使ってデプロイする場合は、Azure Stack を再デプロイして Azure AD に切り替える必要があります。
+AD FS を使用する構成でデプロイした後、Azure AD を使用する構成へ切り替えるには、Azure Stack を再デプロイする必要があります。
 
 ### <a name="azure-active-directory-accounts"></a>Azure Active Directory アカウント
 Azure AD アカウントを使って Azure Stack をデプロイするには、デプロイ用の PowerShell スクリプトを実行する前に、Azure AD アカウントを準備する必要があります。 このアカウントは、Azure AD テナントの全体管理者になります。 このアカウントは、Azure Active Directory および Graph API と対話するすべての Azure Stack サービス用のアプリケーションおよびサービス プリンシパルのプロビジョニングと委任に使われます。 また、既定のプロバイダー サブスクリプションの所有者としても使われます (これは後で変更できます)。 このアカウントを使って、Azure Stack システムの管理ポータルにログインできます。
 
-1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 ない場合は、[http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (中国の場合は <http://go.microsoft.com/fwlink/?LinkID=717821>) において無料で作成できます。 後で [Azure Stack を Azure に登録する](azure-stack-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
+1. 少なくとも 1 つの Azure AD のディレクトリ管理者である Azure AD アカウントを作成します。 既にある場合は、それを使うことができます。 ない場合は、[http://azure.microsoft.com/en-us/pricing/free-trial/](http://azure.microsoft.com/pricing/free-trial/) (中国の場合は <http://go.microsoft.com/fwlink/?LinkID=717821>) から無料で作成できます。 後で [Azure Stack を Azure に登録する](azure-stack-register.md)予定の場合は、この新規作成したアカウントでのサブスクリプションも必要です。
    
     「[Deploy the development kit](azure-stack-run-powershell-script.md#deploy-the-development-kit)」(開発キットをデプロイする) の手順 6 で使うので、資格情報を保存しておきます。 この*サービス管理者*アカウントは、リソース クラウド、ユーザー アカウント、テナント プラン、クォータ、価格を構成、管理することができます。 ポータルで、Web サイト クラウド、仮想マシン プライベート クラウドを作成したり、プランの作成やユーザーのサブスクリプションの管理を行えます。
 2. テナントとして開発キットにサインインできるように、少なくとも 1 つのアカウントを[作成](azure-stack-add-new-user-aad.md)します。
    
    | **Azure Active Directory アカウント** | **サポートの有無** |
    | --- | --- |
-   | 有効なパブリック Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |あり |
-   | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |あり |
+   | 有効なパブリック Azure サブスクリプションを持つ、職場または学校アカウント |あり |
+   | 有効なパブリック Azure サブスクリプションを持つ、 Microsoft アカウント |あり |
+   | 有効な中国の Azure サブスクリプションを持つ、職場または学校アカウント |あり |
+   | 有効な米国政府の Azure サブスクリプションを持つ、職場または学校アカウント |あり |
 
 ## <a name="network"></a>ネットワーク
-### <a name="switch"></a>Switch
-スイッチの 1 つのポートを開発キット マシン用に使用できること。  
+### <a name="switch"></a>スイッチ
+スイッチの 1 つのポートを開発キット マシン用に使用できること。  
 
-開発キット マシンでは、スイッチのアクセス ポートまたはトランク ポートへの接続がサポートされています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。 [デプロイ パラメーターの一覧](azure-stack-run-powershell-script.md)で例を見ることができます。
+開発キット マシンでは、スイッチのアクセス ポートまたはトランク ポートへの接続がサポートされています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。 [デプロイ パラメーターの一覧](azure-stack-run-powershell-script.md)に例が記載されています。
 
 ### <a name="subnet"></a>サブネット
 次のサブネットには、開発キット マシンを接続しないでください。
@@ -110,23 +110,23 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
 * 192.168.103.0/25
 * 192.168.104.0/25
 
-これらのサブネットは、開発キット環境内の内部ネットワーク専用です。
+これらのサブネットは、開発キット環境の内部ネットワーク用に予約されています。
 
 ### <a name="ipv4ipv6"></a>IPv4/IPv6
 IPv4 のみがサポートされています。 IPv6 ネットワークを作成することはできません。
 
 ### <a name="dhcp"></a>DHCP
-NIC を接続するネットワークで使用できる DHCP サーバーがあることを確認します。 DHCP が使用できない場合は、ホストが使用するためのものに加え、追加の静的 IPv4 ネットワークを準備する必要があります。 デプロイ パラメーターとしてその IP アドレスとゲートウェイも指定する必要があります。 [デプロイ パラメーターの一覧](azure-stack-run-powershell-script.md)で例を見ることができます。
+NIC を接続するネットワークで DHCP サーバーが利用できることを確認します。 DHCP が利用できない場合は、ホストが使用するものに加え、追加の静的 IPv4 ネットワークを用意する必要があります。 デプロイ パラメーターとしてその IP アドレスとゲートウェイを指定する必要があります。 [デプロイ パラメーターの一覧](azure-stack-run-powershell-script.md)に例が記載されています。
 
 ### <a name="internet-access"></a>インターネットへのアクセス
-Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスする必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレス) によって MAS-BGPNAT01 に割り当てられた新しい IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
+Azure Stack は、直接または透過プロキシ経由で、インターネットにアクセスできる必要があります。 Azure Stack は、インターネット アクセスを有効にするための Web プロキシの構成をサポートしていません。 ホスト IP と (DHCP または静的 IP アドレスによって) MAS-BGPNAT01 に割り当てられた IP の両方が、インターネットにアクセスできる必要があります。 graph.windows.net および login.microsoftonline.com ドメインのポート 80 と 443 を使用します。
 
 ## <a name="telemetry"></a>テレメトリ
 
 テレメトリは、Azure Stack の将来のバージョンの構想に役立ちます。 フィードバックに迅速に対応し、新しい機能を提供し、品質を向上させることができます。 Microsoft Azure Stack には、Windows Server 2016 と SQL Server 2014 が含まれています。 これらの製品はどちらも既定の設定から変更されておらず、Microsoft Enterprise のプライバシーに関する声明で説明されていません。 また、Azure Stack には、Microsoft にテレメトリを送信するように変更されていないオープン ソース ソフトウェアが含まれます。 Azure Stack のテレメトリ データの例を次に示します。
 
 - デプロイ登録情報
-- アラートが開かれた日時と閉じられた日時
+- アラートいつオープン/クローズしたか
 - ネットワーク リソースの数
 
 テレメトリ データ フローをサポートするには、ネットワークでポート 443 (HTTPS) を開く必要があります。 クライアント エンドポイントは https://vortex-win.data.microsoft.com です。
@@ -173,9 +173,9 @@ SQL Server のテレメトリの構成については、「[フィードバッ�
 
 ### <a name="usage-reporting"></a>使用状況レポート
 
-登録により、Azure Stack は Azure に使用状況情報を転送するようにも構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
+登録の過程で、Azure Stack は Azure に使用状況を転送するように構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
 
-使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように書式設定されます。 Azure Stack 開発キットのユーザーに実際に料金がかかることはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
+使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように整形されます。 Azure Stack 開発キットのユーザーは実際に料金が発生することはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
 
 
 ## <a name="next-steps"></a>次のステップ
