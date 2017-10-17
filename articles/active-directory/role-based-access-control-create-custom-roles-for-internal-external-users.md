@@ -34,7 +34,7 @@ Azure 環境で RBAC を使用するには、以下のことが必要です。
 * Azure サブスクリプションの所有者ロールがある
 * [Azure Portal](https://portal.azure.com) にアクセスできる
 * ユーザーのサブスクリプションに次のリソース プロバイダーが登録されていることを確認する: **Microsoft.Authorization**。 リソース プロバイダーの登録方法の詳細については、[Resource Manager のプロバイダー、リージョン、API のバージョン、およびスキーマ](/azure-resource-manager/resource-manager-supported-services.md)に関するページを参照してください。
-<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found--->
+<!---Loc Comment: Link [Resource Manager providers, regions, API versions and schemas] is broken with an error message "404 - Content Not Found---->
 
 > [!NOTE]
 > O365 ポータルからプロビジョニングされた Office 365 サブスクリプションまたは Azure Active Directory ライセンス (例: Azure Active Directory へのアクセス) に RBAC の使用資格はありません。
@@ -78,7 +78,7 @@ RBAC ロールを付与できるのは、サブスクリプションの**所有�
 ![Azure Portal の [アクセス制御 (IAM)] 機能で新しいユーザーを追加する](./media/role-based-access-control-create-custom-roles-for-internal-external-users/2.png)
 
 次の手順では、割り当てるロールと RBAC ロールの割り当て先のユーザーを選択します。 管理者ユーザーの場合、**[ロール]** ドロップダウン メニューには Azure で利用できる組み込み RBAC ロールのみが表示されます。 各ロールとその割り当て可能なスコープの詳細については、「[Azure のロールベースのアクセス制御のための組み込みロール](/active-directory/role-based-access-built-in-roles.md)」を参照してください。
-<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found--->
+<!---Loc Comment: Link [Built-in roles for Azure Role-Based Access Control] is broken with an error message "404 - Content Not Found---->
 
 次に、管理者ユーザーは外部ユーザーのメール アドレスを追加する必要があります。 想定される動作として、既存のテナントに外部ユーザーが表示されません。 外部ユーザーを招待すると、そのユーザーは、**[サブスクリプション] の [アクセス制御 (IAM)]** 内に、現在サブスクリプション スコープで RBAC ロールが割り当てられているすべてのユーザーと共に表示されます。
 

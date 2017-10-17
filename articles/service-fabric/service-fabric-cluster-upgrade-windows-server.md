@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
 ms.translationtype: HT
 ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811

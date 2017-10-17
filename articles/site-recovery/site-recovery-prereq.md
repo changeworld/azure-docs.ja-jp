@@ -13,7 +13,7 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
-ms.author: rajanaki
+ms.author: raynew
 ms.translationtype: HT
 ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
 ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2

@@ -52,7 +52,7 @@ git clone https://github.com/Azure-Samples/python-docs-hello-world
 サンプル コードが含まれているディレクトリに移動します。
 
 ```bash
-cd Python-docs-hello-world
+cd python-docs-hello-world
 ```
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
