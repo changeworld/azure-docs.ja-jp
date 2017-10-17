@@ -29,7 +29,7 @@ Azure CDN (Content Delivery Network) が､HTTPS でカスタム ドメイン名
 
 > [!NOTE]
 > カスタム ドメイン名に対する SSL サポートに加え､Azure CDN はアプリケーションをスケーリングして世界中に高帯域幅のコンテンツを配信するのにも役立てることができます｡
-> 詳細は､[Overview of the Azure CDN](../../cdn/cdn-overview.md) でご確認ください｡
+> 詳細は､[Azure CDN の概要](../../cdn/cdn-overview.md) でご確認ください｡
 >
 >
 
@@ -44,9 +44,9 @@ Azure CDN (Content Delivery Network) が､HTTPS でカスタム ドメイン名
 
 ## <a name="shared-access-signatures"></a>Shared Access Signature
 
-匿名の読み取りアクセスを許可しないよう BLOB ストレージのエンドポイントを設定している場合は､カスタム ドメインに対する要求の 1 つ 1 つで [Shared Access Signature (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) トークンを提供する必要があります｡ 既定では､BLOB ストレージ エンドポイントは匿名の読み取りアクセスを許可しません｡ Shared Access Signatures (SAS) についての詳細は､｢[Managing anonymous read access to containers and blobs](storage-manage-access-to-resources.md)｣を参照してください｡
+匿名の読み取りアクセスを許可しないよう BLOB ストレージのエンドポイントを設定している場合は､カスタム ドメインに対する要求の 1 つ 1 つで [Shared Access Signature (SAS)](../common/storage-dotnet-shared-access-signature-part-1.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) トークンを提供する必要があります｡ 既定では､BLOB ストレージ エンドポイントは匿名の読み取りアクセスを許可しません｡ Shared Access Signatures (SAS) についての詳細は､｢[コンテナーおよび BLOB への匿名読み取りアクセスの管理](storage-manage-access-to-resources.md)｣を参照してください｡
 
-Azure CDN は､SAS トークンに追加されたいかなる制限事項に対応していません｡ たとえば､すべての SAS トークンには有効期限があります｡ このことは､CDN のエッジノードからコンテンツが削除されるまで､有効期限切れの SAS を使ってコンテンツにアクセスし続けられることを意味します｡ CDN 上でデータがキャッシュされる期間は､キャッシュ応答ヘッダーを設定することで制御できます｡ この方法については､｢[Managing expiration of Azure Storage blobs in Azure CDN](../../cdn/cdn-manage-expiration-of-blob-content.md)｣を参照してください｡
+Azure CDN は､SAS トークンに追加されたいかなる制限事項に対応していません｡ たとえば､すべての SAS トークンには有効期限があります｡ このことは､CDN のエッジノードからコンテンツが削除されるまで､有効期限切れの SAS を使ってコンテンツにアクセスし続けられることを意味します｡ CDN 上でデータがキャッシュされる期間は､キャッシュ応答ヘッダーを設定することで制御できます｡ この方法については､｢[Azure CDNにおける Azure Storage Blob の有効期限の管理](../../cdn/cdn-manage-expiration-of-blob-content.md)｣を参照してください｡
 
 1 つの BLOB エンドポイントに対して複数の SAS URL を作成する場合は､Azure CDN に対してクエリ文字列のキャッシュを有効にすることをお勧めします｡ そうすることで､それら URL が個別の一意のエンティティとして処理されるようになります｡ 詳細は、「[クエリ文字列による Azure CDN キャッシュ動作の制御](../../cdn/cdn-query-string.md)」を参照してください。
 
