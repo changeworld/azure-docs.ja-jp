@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: d8ac076334a7ed9476b4830596d6ea54c29c0e3c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3c003d498600a2cfd12ef2adfb7c16f9dfaddb37
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスまたは Azure の Windows Server に共有をレプリケートできます。 管理者とユーザーは、SMB や NFS 共有などを使って Windows Server 経由でファイル共有にアクセスします。 この方法は、ブランチ オフィスなどの Azure データ センターから離れた場所にあるデータにアクセスして変更する場合に特に便利です。 複数のブランチ オフィス間など、複数の Windows Server エンドポイント間でデータをレプリケートできます。 
+Azure File Sync (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 このガイドでは、Azure ファイル同期をデプロイするときに考慮する事項について説明します。「[Planning for an Azure Files deployment](storage-files-planning.md)」(Azure Files デプロイの計画) ガイドのテストについて読むことをお勧めします。 
 
@@ -57,7 +55,7 @@ Azure ファイル同期エージェントは、Windows Server を Azure ファ�
 クラウドの階層化は、Azure ファイル同期のオプション機能です。頻繁に使用またはアクセスされるファイルを Azure Files に階層化することができます。 ファイルを階層化すると、Azure ファイル同期ファイル システム フィルター (StorageSync.sys) はローカルでファイルをポインターと置き換えるか、ポイントを再解析して Azure Files 内のファイルの URL を示します。 NTFS 内で階層化されたファイルには、"オフライン" 属性が設定されるので、サード パーティ アプリケーションは階層化されたファイルを特定できます。 ユーザーが階層化されたファイルを開くと、Azure ファイル同期は、Azure Files のファイル データをシームレスに回収します。ファイルがシステムにローカルに保存されていないことをユーザーが知っている必要はありません。 この機能は、階層型ストレージ管理 (HSM) とも呼ばれます。
 
 ## <a name="azure-file-sync-interoperability"></a>Azure ファイル同期の相互運用性 
-ここでは、Azure ファイル同期と、Windows Server の機能およびロールとサードパーティ ソリューションとの相互運用性について説明します。
+ここでは、Azure File Sync と、Windows Server の機能およびロールとサード パーティ ソリューションとの相互運用性について説明します。
 
 ### <a name="supported-versions-of-windows-server"></a>サポートされている Windows Server のバージョン
 現在のところ、Azure ファイル同期では次の Windows Server バージョンがサポートされています。
@@ -70,7 +68,7 @@ Azure ファイル同期エージェントは、Windows Server を Azure ファ�
 今後の Windows Server バージョンがリリースされた場合は追加される予定です。また、ユーザーのフィードバックに応じて古いバージョンの Windows が追加される可能性があります。
 
 > [!Important]  
-> Azure ファイル同期に使用するすべての Windows Server は、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
+> Azure File Sync に使用するすべての Windows Server は、Windows Update の最新の更新プログラムを使用して常に最新の状態を保つことをお勧めします。 
 
 ### <a name="file-system-features"></a>ファイル システムの機能
 | 機能 | サポートの状態 | メモ |
@@ -139,14 +137,9 @@ Azure ファイル同期は、次のリージョンでプレビューとして�
 プレビューでは、ストレージ同期サービスと同じリージョンの Azure ファイル共有との同期のみをサポートしています。
 
 ## <a name="azure-file-sync-agent-update-policy"></a>Azure ファイル同期エージェントの更新ポリシー
-Azure ファイル同期エージェントの更新プログラムは、新機能を追加し、見つかった問題を解決するために定期的にリリースされます。 Azure ファイル同期エージェントのすべての更新プログラムがリリースされ次第入手できるように Microsoft Update を有効にすることをお勧めします。 それでも、組織によっては更新プログラムを厳格に制御したい事情があるのではないでしょうか。 古いバージョンの Azure ファイル同期エージェントを使用するデプロイの場合:
-
-- ストレージ同期サービスは、新しいメジャー バージョンの初回のリリースから 3 か月間は、前のメジャー バージョンをサポートする予定です。 たとえば、ストレージ同期サービスは、バージョン 2.\* のリリースから 3 か月間は、バージョン 1.\* をサポートします。
-- 3 か月間が経過すると、ストレージ同期サービスは、同期グループとの同期から、期限切れしたバージョンを使用する登録済みサーバーをブロックする処理を開始します。
-- 前のメジャー バージョンがサポートされる 3 か月間は、最新のメジャー バージョンに対してのみバグ修正が行われます。
+[!INCLUDE [storage-sync-files-agent-update-policy](../../../includes/storage-sync-files-agent-update-policy.md)]
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Files のデプロイの計画](storage-files-planning.md)
 * [Azure Files のデプロイ方法](storage-files-deployment-guide.md)
 * [Azure ファイル同期のデプロイ方法](storage-sync-files-deployment-guide.md)
-
