@@ -155,7 +155,7 @@ Azure Automation は、PowerShell に基づいた Runbook を使用して管理�
 
 ユーザーは Azure でホストされる DSC リソースを作成または管理することができ、これをクラウドやオンプレミスのシステムに適用して定義したり、その構成を自動的に施行するか、セキュリティ構成がポリシー内に確実に留まるようにするために役立つ、誤差に関するレポートを取得することができます。
 
-## <a name="azure-security-center"></a>[Azure Security Center] (Azure Security Center)
+## <a name="azure-security-center"></a>[Azure Security Center] \(Azure Security Center)
 
 Azure Security Center によって、Azure リソースを保護します。 Azure サブスクリプション間のセキュリティ監視とポリシー管理を総合的に提供します。 このサービス内では、Azure サブスクリプションに対してだけでなく、[リソース グループ](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal)に対してもポリシーを定義できるため、より詳細な定義が可能になります。
 
