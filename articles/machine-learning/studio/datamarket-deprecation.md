@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: LuisCa
-translationtype: Human Translation
-ms.sourcegitcommit: eeb56316b337c90cc83455be11917674eba898a3
 ms.openlocfilehash: e40b69f97878a6072a64912f017f8e5621ba6e71
-ms.lasthandoff: 04/03/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="datamarket-is-now-deprecated"></a>DataMarket は現在推奨されていません。
 
 [Microsoft DataMarket](https://datamarket.azure.com/datasets) は現在、推奨されていないため、そこでホストされていた Machine Learning の API も現在推奨されていません。
@@ -39,4 +38,3 @@ DataMarket Recommendations API の以前の顧客は、[Cognitive Services Recom
 Cognitive Services Recommendations API は、バッチ サポートと、オフライン メトリックより適切にモデルの品質を評価するなどの他のシナリオだけでなく、DataMarket の以前のバージョンで実行したすべてのシナリオをサポートします。 
 
 Cognitive Services Recommendations API の使用を開始する方法の詳細については、「[DataMarket Recommendations API から Azure Cognitive Services Recommendations API への移行](http://aka.ms/recomigrate)」を参照してください。
-

@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
+ms.openlocfilehash: bf6696cfdfe9fc18dd2f000162a4e787a7ca6e21
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 25a376b2e54953602b66abc3bae878f09a776a80
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="client-side-encryption-with-python-for-microsoft-azure-storage"></a>Python による Microsoft Azure Storage のクライアント側の暗号化
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -147,7 +146,7 @@ KEK で正常にデータを暗号化するには、次のメソッドを実装�
 ### <a name="requireencryption-mode"></a>RequireEncryption モード
 すべてのアップロードとダウンロードを暗号化する必要がある場合、オプションで操作のモードを有効にすることができます。 このモードでは、暗号化ポリシーを設定せずにデータをアップロードしようとしたり、サービスで暗号化されていないデータをダウンロードしようとしたりすると、クライアントで失敗します。 この動作は、サービス オブジェクトの **require_encryption** フラグによって制御されます。
 
-### <a name="blob-service-encryption"></a>BLOB サービス暗号化
+### <a name="blob-service-encryption"></a>Blob service 暗号化
 blockblobservice オブジェクトで暗号化ポリシー フィールドを設定します。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 ```python
@@ -195,7 +194,7 @@ my_queue_service.put_message(queue_name, content)
 retrieved_message_list = my_queue_service.get_messages(queue_name)
 ```
 
-### <a name="table-service-encryption"></a>Table サービス暗号化
+### <a name="table-service-encryption"></a>Table service 暗号化
 暗号化ポリシーを作成し、要求オプションにそれを設定するだけでなく、**encryption_resolver_function** を **tableservice** に指定するか、EntityProperty に暗号化属性を設定する必要があります。
 
 ### <a name="using-the-resolver"></a>リゾルバーの使用
@@ -212,9 +211,9 @@ key_resolver.put_key(kek)
 
 # Define the encryption resolver_function.
 def my_encryption_resolver(pk, rk, property_name):
-        if property_name == 'foo':
-                return True
-        return False
+    if property_name == 'foo':
+        return True
+    return False
 
 # Set the KEK and key resolver on the service object.
 my_table_service.key_encryption_key = kek

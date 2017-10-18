@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/23/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7cd894b9d9a8093fef42682fff91f2f4708627c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-machine-learning-studio-documentation"></a>Azure Machine Learning Studio のドキュメント
 
@@ -142,6 +141,5 @@ Azure Machine Learning Studio は、データを活用した予測分析ソリ�
         </div>
     </li>
 </ul>
-
 
 

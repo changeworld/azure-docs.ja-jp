@@ -19,6 +19,7 @@
 # 方法
 
 ## セキュリティ ポリシー
+### [概要](security-center-policies-overview.md)
 ### [データ収集](security-center-enable-data-collection.md)
 ### [セキュリティ ポリシー](security-center-policies.md)
 ### [電子メール通知](security-center-provide-security-contact-details.md)
@@ -53,7 +54,6 @@
 #### [Endpoint Protection をインストールします](security-center-install-endpoint-protection.md)
 #### [システムの更新後に再起動する](security-center-apply-system-updates.md#reboot-after-system-updates)
 #### [OS の脆弱性の修復](security-center-remediate-os-vulnerabilities.md)
-#### [Endpoint Protection の正常性アラートの解決](security-center-resolve-endpoint-protection-health-alerts.md)
 #### [OS バージョンの更新](security-center-update-os-version.md)
 #### [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md)
 ### [セキュリティ正常性の監視](security-center-monitoring.md)

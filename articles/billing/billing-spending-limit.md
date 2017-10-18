@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: genli
+ms.openlocfilehash: 9313f3bd09b24db8e33b1f89eb5aebea871605b8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 311a1af35b7fecb5f0d4fac7f38af705c945d714
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Azure の使用制限のしくみと削除方法を理解する
 
 Azure の使用制限は、信用取引金額を超過する支出を防ぐために存在します。 試用版プラン、または複数月にわたるクレジットが含まれるプランにサインアップする新規のすべてのお客様に対して、既定で使用制限が有効化されます。 使用制限は $0 です。 変更することはできません。 使用制限は、従量課金制サブスクリプションやコミットメント プランなどのサブスクリプションの種類では利用できません。 [Azure プランの完全な一覧および使用制限の可用性](https://azure.microsoft.com/support/legal/offer-details/)についてご覧ください。
 
-**課金アラートお探しの場合: ** 「[Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](billing-set-up-alerts.md)」をご覧ください。
+**課金アラートお探しの場合:**  「[Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](billing-set-up-alerts.md)」をご覧ください。
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>使用制限に達するとどうなるか?
 
@@ -86,4 +85,3 @@ Azure の使用制限は、信用取引金額を超過する支出を防ぐた�
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

@@ -1,6 +1,6 @@
 ---
-title: "Azure Web Apps for Containers の概要 | Microsoft Docs"
-description: "Azure Web Apps for Containers について説明します。"
+title: "Azure Web App for Containers の概要 | Microsoft Docs"
+description: "Azure Web App for Containers について説明します。"
 keywords: Azure App Service, Linux, OSS
 services: app-service
 documentationcenter: 
@@ -12,19 +12,19 @@ ms.service: app-service
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: overview
 ms.date: 02/16/2017
-ms.author: naziml;wesmc
+ms.author: wesmc
+ms.custom: mvc
+ms.openlocfilehash: bdfaf0cd7d4bb44b877a9f14891e540fd789b6c4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: f46f59a69d13a4e702eccded810cf3c7a8b30904
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="introduction-to-azure-web-apps-for-containers"></a>Azure Web Apps for Containers の概要
+# <a name="introduction-to-azure-web-app-for-containers"></a>Azure Web App for Containers の概要
 
-[Web App](../../app-service-web/app-service-web-overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 Web Apps for Containers を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。
+[Web App](../app-service-web-overview.md) は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 Web App for Containers を使用して、サポートされているアプリケーション スタック向けに Web アプリを Linux 上でネイティブにホストすることができます。 次のセクションは、現在サポートされているアプリケーション スタックの一覧です。
 
 ## <a name="languages"></a>言語
 
@@ -63,14 +63,14 @@ ms.lasthandoff: 09/07/2017
 
 ## <a name="limitations"></a>制限事項
 
-Azure ポータルでは、Web Apps for Containers で現在使用できる機能のみが表示されます。 他の機能は、有効になったときにポータルに表示されるようになります。
+Azure Portal では、Web App for Containers で現在使用できる機能のみが表示されます。 他の機能は、有効になったときにポータルに表示されるようになります。
 
 仮想ネットワーク統合、Azure Active Directory/サード パーティの認証、Kudu サイト拡張機能などの機能は、まだ利用できません。 これらの機能が利用可能になったら、ドキュメントとブログを更新し、変更についてお知らせします。
 
-Web Apps for Containers は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web Apps for Containers には、次の重要な制限もあります。
+Web App for Containers は [Basic および Standard](https://azure.microsoft.com/pricing/details/app-service/plans/) App Service プランでのみサポートされており、[Free または Shared](https://azure.microsoft.com/pricing/details/app-service/plans/) レベルはありません。 Web App for Containers には、次の重要な制限もあります。
 
-* Web Apps for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
-* Web Apps for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリージョンに App Service プランを作成する必要があります。
+* Web App for Containers は、非 Linux Web Apps で既にホストされている App Service プランでは作成できません。
+* Web App for Containers を非 Linux Web Apps が含まれているリソース グループに作成する場合は、既存の App Service プランとは別のリージョンに App Service プランを作成する必要があります。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -87,15 +87,14 @@ SCM サイトには、**[開発ツール]** メニューの **[Advanced Tools]**
 
 App Service on Linux の使用を開始するには、次のリンクを参照してください。 質問や問題は、[フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazurewebsitespreview)に投稿できます。
 
-* [Azure Web Apps for Containers 向けにカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
-* [Azure App Service Web Apps for Containers での .NET Core の使用](quickstart-dotnetcore.md)
-* [Azure App Service Web Apps for Containers での Ruby の使用](quickstart-ruby.md)
+* [Azure Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
+* [Azure App Service Web App for Containers での .NET Core の使用](quickstart-dotnetcore.md)
+* [Azure App Service Web App for Containers での Ruby の使用](quickstart-ruby.md)
 * [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)
-* [Azure Web Apps for Containers での SSH のサポート](app-service-linux-ssh-support.md)
-* [Azure App Service でステージング環境を設定する](../../app-service-web/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
+* [Azure Web App for Containers での SSH のサポート](app-service-linux-ssh-support.md)
+* [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Azure Web App for Containers による Docker ハブの継続的なデプロイ](./app-service-linux-ci-cd.md)
 
 <!--Image references-->
 [1]: ./media/app-service-linux-intro/kudu-docker-logs.png
 [2]: ./media/app-service-linux-intro/logging.png
-

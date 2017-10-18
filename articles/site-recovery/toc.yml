@@ -82,6 +82,8 @@
   items:
     - name: ディザスター リカバリー
       items:
+        - name: マルチテナントをサポートしている VMware VM を Azure に
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Hyper-V VM を Azure に
           href: tutorial-hyper-v-to-azure.md
         - name: 物理サーバー を Azure に

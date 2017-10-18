@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2016
 ms.author: ccompy
+ms.openlocfilehash: 7b8b9072d0e2fd054ca07873c0a9ce772dc2941e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: b1f22104d530315318685fa4896b710b003ac3cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-manage-hybrid-connections"></a>ハイブリッド接続の作成と管理
 
@@ -56,7 +55,7 @@ ms.lasthandoff: 09/07/2017
 **BizTalk Services でハイブリッド接続を作成する**には、以下の手順に従います。
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
    
     既存の BizTalk サービスがない場合は、 [BizTalk サービスを作成する](biztalk-provision-services.md)ことができます。
 3. **[ハイブリッド接続]** タブを選択します。  
@@ -82,7 +81,7 @@ ms.lasthandoff: 09/07/2017
 ハイブリッド接続の作成後、オンプレミス リソースに Hybrid Connection Manager をインストールします。 Hybrid Connection Manager は Azure Web Apps または BizTalk サービスからダウンロードできます。 BizTalk Services の手順は以下のとおりです。 
 
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。  
    ![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. タスク バーで **[オンプレミス設定]** を選択します。  
@@ -121,7 +120,7 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 
 #### <a name="copyregenerate-the-hybrid-connection-strings"></a>ハイブリッド接続文字列をコピー、再生成する
 1. [Azure クラシック ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで、 **[BizTalk サービス]** をクリックし、BizTalk Services を選択します。 
+2. 左側のナビゲーション ウィンドウで、 **BizTalk サービス** をクリックし、BizTalk Services を選択します。 
 3. **[ハイブリッド接続]** タブを選択します。  
    ![[ハイブリッド接続] タブ][HybridConnectionTab]
 4. [ハイブリッド接続] を選択します。 タスク バーで **[接続の管理]** を選択します。  
@@ -156,4 +155,3 @@ You can also download the Hybrid Connection Manager MSI file and copy the file t
 [HybridConnectionTab]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionTab.png
 [HCOnPremSetup]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionOnPremSetup.png
 [HCManageConnection]: ./media/integration-hybrid-connection-create-manage/WABS_HybridConnectionManageConn.png 
-

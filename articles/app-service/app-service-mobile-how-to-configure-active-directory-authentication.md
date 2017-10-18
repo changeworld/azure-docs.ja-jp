@@ -46,7 +46,7 @@ ms.lasthandoff: 09/20/2017
 
 ### <a name="register"> </a>Azure Active Directory にアプリケーションを登録する
 1. [Azure ポータル]にログオンし、アプリケーションに移動します。 **[URL]**をコピーします。 これを使用して、Azure Active Directory アプリケーションを構成します。
-2. [Azure クラシック ポータル] にサインインして、 **Active Directory**に移動します。
+2. [Active Directory] にサインインして、 **Active Directory**に移動します。
    
     ![][2]
 3. ディレクトリを選択し、上部の **[アプリケーション]** タブを選択します。 下部の **[追加]** をクリックして、新しいアプリの登録を作成します。
@@ -101,6 +101,6 @@ Azure Active Directory では、ネイティブ クライアントを登録し�
 <!-- URLs. -->
 
 [Azure ポータル]: https://portal.azure.com/
-[Azure クラシック ポータル]: https://manage.windowsazure.com/
+[Active Directory]: https://manage.windowsazure.com/
 [alternative method]:#advanced
 

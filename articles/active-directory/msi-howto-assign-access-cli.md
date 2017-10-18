@@ -11,16 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/25/2017
 ms.author: bryanla
+ms.openlocfilehash: e77915c1d982ccf6262ffcbc09dc91dfd986dac5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: e6eede1c093145894f4330a0c4385969cd4dd7da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用してリソースに管理対象サービス ID (MSI) アクセスを割り当てる
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -43,7 +41,7 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 
 [Azure VM などの](msi-qs-configure-cli-windows-vm.md) Azure リソースで MSI を有効にした後、次のようにします。 
 
-1. Azure ポータルから Azure Cloud Shell を使用していない場合、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
+1. ローカルのコンソールで Azure CLI を使用している場合は、最初に [az login](/cli/azure/#login) を使用して Azure にサインインします。 次のように、VM をデプロイする Azure サブスクリプションに関連付けられているアカウントを使用します。
 
    ```azurecli-interactive
    az login
@@ -52,7 +50,7 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 2. この例では、ストレージ アカウントに Azure VM アクセスを許可しています。 まず、[az resource list](/cli/azure/resource/#list) を使用して "myVM" という VM のサービス プリンシパルを取得します。これは、VM で MSI が有効になっているときに作成されたものです。
 
    ```azurecli-interactive
-   $spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
+   spID=$(az resource list -n myVM --query [*].identity.principalId --out tsv)
    ```
 
 3. サービス プリンシパル ID を作成したら、 [az role assignment create](/cli/azure/role/assignment#az_role_assignment_create) を使用して、"myStorageAcct" というストレージ アカウントに VM「閲覧者」アクセスを付与します。
@@ -76,5 +74,4 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 - Azure VM で MSI を有効にするには、「[Azure CLI を使用して Azure VM 管理対象サービスID (MSI) を構成する](msi-qs-configure-cli-windows-vm.md)」を参照してください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
-
 

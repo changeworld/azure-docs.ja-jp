@@ -1,6 +1,6 @@
 ---
-title: "&quot;502 無効なゲートウェイ&quot; エラーと &quot;503 サービス利用不可&quot; エラーの解決 | Microsoft Docs"
-description: "Azure App Service でホストされている Web アプリで発生するエラー &quot;502 無効なゲートウェイ&quot; と &quot;503 サービス利用不可&quot; のトラブルシューティングを行います。"
+title: "\"502 無効なゲートウェイ\" エラーと \"503 サービス利用不可\" エラーの解決 | Microsoft Docs"
+description: "Azure App Service でホストされている Web アプリで発生するエラー \"502 無効なゲートウェイ\" と \"503 サービス利用不可\" のトラブルシューティングを行います。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/06/2016
 ms.author: cephalin
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: f6ef85e0c05911bb3ad13a8ffb029bf9fadd8bfd
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 397a6aaf7dc27adfa0fc0e722b8a2be5cc1d75f0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-http-errors-of-502-bad-gateway-and-503-service-unavailable-in-your-azure-web-apps"></a>Azure Web アプリでの HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" のトラブルシューティング
 "502 無効なゲートウェイ" と "503 サービス利用不可" は、 [Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)でホストされている Web アプリで発生する一般的なエラーです。 この記事は、これらのエラーのトラブルシューティングを行うために役立ちます。
@@ -51,7 +50,7 @@ ms.lasthandoff: 12/08/2016
 
 ### <a name="1-observe-and-monitor-application-behavior"></a>1.アプリケーションの動作を観察、監視する
 #### <a name="track-service-health"></a>サービス正常性を追跡する
-Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、 [Azure ポータル](https://portal.azure.com/)で追跡できます。 詳細については、[サービスの正常性の追跡](../monitoring-and-diagnostics/insights-service-health.md)に関するページを参照してください。
+Microsoft Azure は、サービスの中断やパフォーマンスの低下があるたびに、毎回公表します。 サービスの正常性は、[Azure Portal](https://portal.azure.com/) で追跡できます。 詳細については、[サービスの正常性の追跡](../monitoring-and-diagnostics/insights-service-health.md)に関するページを参照してください。
 
 #### <a name="monitor-your-web-app"></a>Web アプリを監視する
 Web アプリに問題が発生しているかどうかは、アプリを監視することによって確認することができます。 Web アプリのブレードで **[要求とエラー]** タイルをクリックします。 **[メトリック]** ブレードには、追加できるすべてのメトリックが表示されます。
@@ -120,15 +119,14 @@ Azure App Service では、アプリケーションが実行されるスケー�
 スケーリングは、[手動] または [自動] に設定することができます。
 
 #### <a name="use-autoheal"></a>AutoHeal を使用する
-AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。 ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。 Web アプリはいつでも、Azure ポータル内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。 必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。 .Net アプリケーション以外でも、これらの設定は同じように作用します。
+AutoHeal は、選択された設定 (構成の変更、要求、メモリに基づく制限、要求の実行に必要な時間など) に従って、アプリのワーカー プロセスをリサイクルします。 ほとんどの場合、問題を回復するための一番の近道は、プロセスをリサイクルすることです。 Web アプリはいつでも、Azure Portal 内から直接、再起動できますが、AutoHeal はユーザーの介入なしでそれを自動的に実行します。 必要な作業は、Web アプリのルート web.config にいくつかのトリガーを追加することだけです。 .Net アプリケーション以外でも、これらの設定は同じように作用します。
 
 詳細については、 [Azure Web Sites の自動復旧](https://azure.microsoft.com/blog/auto-healing-windows-azure-web-sites/)に関するページを参照してください。
 
 #### <a name="restart-the-web-app"></a>Web アプリを再起動する
-1 回限りの問題であれば、通常これが最も簡単な復旧方法です。 アプリを停止または再起動するためのオプションは、 [Azure ポータル](https://portal.azure.com/)の Web アプリ ブレードにあります。
+1 回限りの問題であれば、通常これが最も簡単な復旧方法です。 アプリを停止または再起動するためのオプションは、[Azure Portal](https://portal.azure.com/) の Web アプリ ブレードにあります。
 
  ![HTTP エラー "502 無効なゲートウェイ" と "503 サービス利用不可" を解決するためにアプリを再起動する](./media/app-service-web-troubleshoot-HTTP-502-503/2-restart.png)
 
 Web アプリの管理には、Azure PowerShell を使用することもできます。 詳細については、 [リソース マネージャーでの Azure PowerShell の使用](../powershell-azure-resource-manager.md)をご覧ください。
-
 

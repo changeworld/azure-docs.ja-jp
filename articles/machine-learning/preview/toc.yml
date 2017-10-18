@@ -45,6 +45,8 @@
       items:
         - name: 実行ターゲットの構成
           href: experiment-execution-configuration.md
+        - name: DSVM および HDI Spark クラスターの作成
+          href: how-to-create-dsvm-hdi.md
         - name: GPU によるトレーニング
           href: how-to-use-gpu.md
     - name: データの取得と理解
@@ -71,6 +73,8 @@
           href: tutorial-iris-azure-cli.md
         - name: 実行履歴とモデル メトリックの追跡
           href: how-to-use-run-history-model-metrics.md
+        - name: 精度が最適で最短時間の実行を見つける方法
+          href: how-to-find-best-accuracy-cli.md
         - name: ファイルの読み取りと書き込み
           href: how-to-read-write-files.md
         - name: MMLSpark ライブラリ
@@ -81,7 +85,7 @@
           href: deployment-setup-configuration.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md
-        - name: Web サービスの使用
+        - name: Web サービスを使用する
           href: model-management-consumption.md
         - name: モデル データ コレクションの使用方法
           href: how-to-use-model-data-collection.md
@@ -141,6 +145,8 @@
       items:
         - name: 実行構成
           href: experiment-execution-configuration-reference.md
+        - name: ロギング API
+          href: reference-logging-api.md
     - name: モデル管理
       items:
         - name: モデル管理 API

@@ -16,12 +16,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: anhoh
 ms.custom: mvc
+ms.openlocfilehash: a0598d32b5bad240c0a5d77a6e19285115a9f6b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: a5f34e487a6b2a99f5fcd5c4639ceb6da36806d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-connect-to-a-mongodb-app-using-net"></a>Azure Cosmos DB: .NET を使用した MongoDB アプリへの接続
 
@@ -62,7 +61,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="set-up-your-mongodb-app"></a>MongoDB アプリをセットアップする
 
-ここでは MongoDB アカウント用 API に接続する MongoDB アプリケーションをすぐにセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service-web/web-sites-dotnet-store-data-mongodb-vm.md)」のチュートリアルに最小限の変更を加えて説明します。  
+ここでは MongoDB アカウント用 API に接続する MongoDB アプリケーションをすぐにセットアップ (ローカルに作成、または Azure Web アプリとして発行) するために、「[仮想マシンで実行される MongoDB に接続する Web アプリを Azure に作成する](../app-service/app-service-web-tutorial-nodejs-mongodb-app.md)」のチュートリアルに最小限の変更を加えて説明します。  
 
 1. チュートリアルのコードに 1 か所変更を加えます。  Dal.cs のコードを次の内容に置き換えてください。
 
@@ -229,5 +228,4 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [MongoDB データの Azure Cosmos DB へのインポート](mongodb-migrate.md)
-
 

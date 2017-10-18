@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 96a817e43a830e836f2faa4603fc88ed9c0b1828
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-enable-replication-to-azure-for-hyper-v-vms-in-vmm-clouds"></a>手順 11: VMM クラウド内の Hyper-V VM の Azure へのレプリケーションを有効にする
 
@@ -82,4 +81,3 @@ Azure アカウントに Azure VM を作成するための正しい[アクセス
 ## <a name="next-steps"></a>次のステップ
 
 [手順 12: テスト フェールオーバーを実行する](vmm-to-azure-walkthrough-test-failover.md)方法に関するページに進む
-

@@ -49,7 +49,7 @@
       href: cli-samples.md
 - name: 概念
   items:
-    - name: Azure リソース マネージャー
+    - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
     - name: リージョンと可用性
       href: regions-and-availability.md
@@ -57,7 +57,7 @@
       href: sizes.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
-    - name: Storage
+    - name: ストレージ
       href: about-disks-and-vhds.md
     - name: ネットワーク
       href: network-overview.md
@@ -145,7 +145,7 @@
           href: prepare-for-upload-vhd-image.md
         - name: 一般化されたイメージを使用する
           href: create-vm-generalized-managed.md
-        - name: 特殊化されたイメージを使用する
+        - name: 特殊化されたディスクを使用する
           href: create-vm-specialized.md
         - name: VM をイメージにキャプチャする
           href: capture-image-resource.md
@@ -344,6 +344,8 @@
               href: troubleshoot-recovery-disks-portal.md
         - name: PerfInsights の使用
           href: how-to-use-perfInsights.md
+        - name: パフォーマンス診断 VM 拡張機能
+          href: performance-diagnostics-vm-extension.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -43,6 +43,7 @@
 ##### [スマート ロックアウト](active-directory-aadconnect-pass-through-authentication-smart-lockout.md)
 ##### [よく寄せられる質問](active-directory-aadconnect-pass-through-authentication-faq.md)
 ##### [トラブルシューティング](active-directory-aadconnect-troubleshoot-pass-through-authentication.md)
+##### [セキュリティの詳細](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)
 ### [フェデレーションに使用する複数ドメインのサポート](active-directory-aadconnect-multiple-domains.md)
 ### [自動アップグレード](active-directory-aadconnect-feature-automatic-upgrade.md)
 ### [シングル サインオンに SAML 2.0 ID プロバイダー (IdP) を使用する](active-directory-aadconnect-federation-saml-idp.md)

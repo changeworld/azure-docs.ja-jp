@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 11/07/2016
 ms.author: mandia
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: eca77b4a82eb67e1755717bb4429f8d450a64dc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/18/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-biztalk-services-using-the-azure-portal"></a>Azure ポータルを使用して BizTalk Services を作成する
 
@@ -37,7 +36,7 @@ ms.lasthandoff: 09/18/2017
 2. 下部のナビゲーション ウィンドウで、**[新規]** をクリックします。  
    ![[新規] をクリック][NEWButton]
 3. **[アプリケーション サービス]**  >  **[BizTalk サービス]**  >  **[カスタム作成]** の順に選択します。  
-   ![[BizTalk サービス]、[カスタム作成] の順にクリックします。][NewBizTalkService]
+   ![BizTalk サービス、カスタム作成 の順にクリックします。][NewBizTalkService]
 4. BizTalk サービスの設定を入力します。
    
     <table border="1">
@@ -110,7 +109,7 @@ BizTalk サービスで使用される SQL データベース名を入力しま�
 チェック マークをオンにして、ウィザードを完了します。 進行状況アイコンが表示されます。  
 ![完了時に表示される進行状況アイコン][ProgressComplete]
 
-完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。 既定の設定で十分です。 既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。 追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](biztalk-dashboard-monitor-scale-tabs.md) に表示されます。
+完了すると、Azure BizTalk サービスが作成され、アプリケーションで使用できる状態になります。 既定の設定で十分です。 既定の設定を変更する場合は、左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービスを選択します。 追加の設定が、一番上の [[ダッシュボード]、[監視]、および [スケール] の各タブ](biztalk-dashboard-monitor-scale-tabs.md) に表示されます。
 
 BizTalk サービスの状態によっては、一部の操作を完了できません。 これに該当する操作の一覧については、 [BizTalk サービスの状態のチャート](biztalk-service-state-chart.md)を参照してください。
 
@@ -123,7 +122,7 @@ BizTalk サービスの状態によっては、一部の操作を完了できま
 BizTalk サービスをプロビジョニングするときに、自己署名証明書が作成されて BizTalk サービス サブスクリプションに関連付けられます。 コンピューターから BizTalk サービス アプリケーションをデプロイする、または BizTalk サービス エンドポイントにメッセージを送信するには、この証明書をダウンロードしてそのコンピューターにインストールする必要があります。
 
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービス サブスクリプションを選択します。
+2. 左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービス サブスクリプションを選択します。
 3. **[ダッシュボード]** タブを選択します。
 4. **[SSL 証明書のダウンロード]** を選択します。  
    ![SSL 証明書の変更][QuickGlance]
@@ -137,7 +136,7 @@ BizTalk サービスの作成時に自動的に作成される自己署名証明
 
 #### <a name="ACS"></a>Access Control 名前空間を取得する
 1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=213885)にサインインします。
-2. 左側のナビゲーション ウィンドウで **[BizTalk Services]** を選択し、BizTalk サービスを選択します。
+2. 左側のナビゲーション ウィンドウで **BizTalk Services** を選択し、BizTalk サービスを選択します。
 3. タスク バーで **[接続情報]** をクリックします。  
    ![[接続情報] の選択][ACSConnectInfo]
 4. Access Control の値をコピーします。
@@ -271,4 +270,3 @@ BizTalk サービスが作成されたので、 [BizTalk サービス: [ダッ�
 [QuickGlance]: ./media/biztalk-provision-services/WABS_QuickGlance.png
 [ACSServiceIdentities]: ./media/biztalk-provision-services/WABS_ACSServiceIdentities.png
 [HybridConnectionTab]: ./media/biztalk-provision-services/WABS_HybridConnectionTab.png
-

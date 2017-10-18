@@ -1,4 +1,4 @@
-- name: Azure コスト管理のドキュメント
+- name: Azure Cost Management のドキュメント
   href: index.yml
 - name: 概要
   items:
@@ -19,8 +19,12 @@
       href: tutorial-review-usage.md
     - name: 2 - データへのアクセスを制御する
       href: tutorial-user-access.md
+    - name: 3 - 支出を予測する
+      href: tutorial-forecast-spending.md
 - name: リソース
   items:
+    - name: コスト管理のビデオ
+      href: ref-videos.md
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格

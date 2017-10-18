@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: barclayn
 ms.custom: 
+ms.openlocfilehash: 461ddfda796bfe6639e27f6c4cd53e82b4e397d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 8c59fa7e9315922af4fab5f8492194b50459ef8b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-encryption-technologies-protect-personal-data-in-transit-with-encryption"></a>Azure 暗号化テクノロジ: 転送中の個人データを暗号化で保護する
 
@@ -195,4 +194,3 @@ Microsoft では、暗号化を使って、顧客と Azure Cloud Services の間
 - [VPN Gateway に関する FAQ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-vpn-faq)
 
 - [Azure App Service の SSL 証明書を購入して構成する](https://docs.microsoft.com/azure/app-service/web-sites-purchase-ssl-web-site)
-

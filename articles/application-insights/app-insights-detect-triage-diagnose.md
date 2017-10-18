@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 06/26/2017
 ms.author: bwren
+ms.openlocfilehash: 05362ab6567d8dbc44f4015c77203eb1abfc2914
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: afcfc6bb27506dbcc44217680e779318107b33d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-application-insights-for-devops"></a>DevOps のための Application Insights の概要
 
@@ -236,4 +235,3 @@ Application Insights を使用して、ユーザーによるアプリの使用�
 * [IIS](app-insights-monitor-web-app-availability.md)、[J2EE](app-insights-java-live.md) または [Azure](app-insights-azure.md) でホストされているデプロイ済みのアプリ。
 * [Web ページ](app-insights-javascript.md) (シングル ページ アプリまたは通常の Web ページ) - 単独で、または任意のサーバー オプションに加えて使用します。
 * [可用性テスト](app-insights-monitor-web-app-availability.md) - パブリック インターネットからアプリをテストします。
-

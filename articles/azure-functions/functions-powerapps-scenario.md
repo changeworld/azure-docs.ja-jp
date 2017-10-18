@@ -16,20 +16,20 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
+ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0fd127293edfaf7eb19a4561ab8d0a19f993bcad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
 
 このトピックでは、風力タービンのメンテナンス シナリオに基づいて、アプリを作成します。 ここで説明するのは、「[関数の OpenAPI 定義の作成](functions-openapi-definition.md)」で定義した関数を呼び出す方法です。 この関数によって、風力タービンの応急処理がコスト効率に優れているかどうかを確認します。
 
 ![PowerApps で完成したアプリ](media/functions-powerapps-scenario/finished-app.png)
+
+Microsoft Flow から同じ関数を呼び出す方法の詳細については、「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」をご覧ください。
 
 このトピックでは、次の方法について説明します。
 
@@ -251,4 +251,4 @@ ms.lasthandoff: 09/13/2017
 
 PowerApps の詳細については、「[PowerApps の概要](https://powerapps.microsoft.com/tutorials/getting-started/)」を参照してください。
 
-Azure Functions を使用するもう 1 つの興味深いシナリオについては、「[Azure Logic Apps と統合される関数を作成する](functions-twitter-email.md)」を参照してください。
+Azure Functions を使用する他の興味深いシナリオについては、「[Microsoft Flow から関数を呼び出す](functions-flow-scenario.md)」および「[Azure Logic Apps と統合される関数を作成する](functions-twitter-email.md)」をご覧ください。

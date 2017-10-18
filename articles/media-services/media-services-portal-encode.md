@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: ae5f4fd391cbf62b41d1a65f1d8107cefe3a5df3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encode-an-asset-by-using-media-encoder-standard-in-the-azure-portal"></a>Azure Portal での Media Encoder Standard を使用した資産のエンコード
 
@@ -58,5 +57,4 @@ Media Encoder Standard を使用してコンテンツをエンコードするに
 
 ## <a name="next-steps"></a>次のステップ
 * Azure Portal で[エンコード ジョブの進行状況を監視](media-services-portal-check-job-progress.md)します。  
-
 

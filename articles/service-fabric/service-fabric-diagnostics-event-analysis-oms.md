@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
+ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: 425c7a733a0a2383f01d2122e7155d3e3a9071be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
 
 Operations Management Suite (OMS) は、クラウドでホストされるアプリケーションとサービスの監視と診断に役立つ管理サービスのコレクションです。 OMS および OMS が提供するサービスの詳細については、[OMS とは](../operations-management-suite/operations-management-suite-overview.md)を参照してください
@@ -53,7 +51,7 @@ OMS ワークスペースをプロビジョニングして構成する方法は 
 
 ### <a name="deploying-oms-using-through-azure-marketplace"></a>Azure Marketplace を使用した OMS の展開
 
-クラスターを展開した後に OMS ワークスペースを追加する場合は、Azure Marketplace に進んで *"Service Fabric Analytics"* を探します。 以下のように「Monitoring + Management \(監視 + 管理)」カテゴリ内に、リソースが 1 つだけ表示されるはずです。
+クラスターを展開した後に OMS ワークスペースを追加する場合は、Azure Marketplace に進んで *"Service Fabric Analytics"* を探します。 以下のように「Monitoring + Management (監視 + 管理)」カテゴリ内に、リソースが 1 つだけ表示されるはずです。
 
 ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
@@ -92,7 +90,7 @@ EventFlow と WAD を集計ソリューションとして使用することを�
 
 ワークスペース内でコンテナー ソリューションを設定するときは、上記の手順に従って、 OMS エージェントをクラスターのノードに展開していることを確認してください。 クラスターが準備できたら、コンテナーを展開します。 コンテナー イメージがクラスターに初めてデプロイされる場合には、イメージのサイズによっては、ダウンロードに数分かかることに注意してください。
 
-Azure Marketplace で*コンテナー*を検索し、 ([Monitoring + Management] \(監視 + 管理) カテゴリの下で) コンテナー リソースを作成します。
+Azure Marketplace で、*コンテナー監視ソリューション*を検索し、表示される**コンテナー監視ソリューション**結果を、[監視 + 管理] カテゴリの下に作成します。
 
 ![コンテナー ソリューションの追加](./media/service-fabric-diagnostics-event-analysis-oms/containers-solution.png)
 

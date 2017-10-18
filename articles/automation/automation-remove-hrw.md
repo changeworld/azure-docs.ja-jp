@@ -3,7 +3,7 @@ title: "Azure Automation の Hybrid Runbook Worker の削除 | Microsoft Docs"
 description: "この記事では、お使いのローカル データ センターまたはクラウド 環境内のコンピューターで Runbook を実行できるようにする Azure Automation Hybrid Runbook Worker のデプロイ管理について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: tysonn
 ms.assetid: 
@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2017
 ms.author: magoedte
+ms.openlocfilehash: 68031ba2ce5c47870c3e60dc469dcda2971b4d87
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: bf4f7befa4a66b739e72d0ea3d632b95f9b31c47
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="remove-azure-automation-hybrid-runbook-workers"></a>Azure Automation の Hybrid Runbook Worker の削除
 
 そのための方法は次のとおりです。 

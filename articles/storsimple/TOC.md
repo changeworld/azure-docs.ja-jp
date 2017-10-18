@@ -118,6 +118,7 @@
 ##### [Web プロキシを構成する](storsimple-8000-configure-web-proxy.md)
 ##### [DATA 0 設定を変更する](storsimple-8000-modify-data-0.md)
 
+#### [Azure PowerShell サンプル スクリプトの使用](storsimple-8000-automation-azurerm-scripts.md)
 
 #### [StorSimple Snapshot Manager の使用](storsimple-snapshot-manager-admin.md)
 ##### [StorSimple Snapshot Manager とは](storsimple-what-is-snapshot-manager.md)

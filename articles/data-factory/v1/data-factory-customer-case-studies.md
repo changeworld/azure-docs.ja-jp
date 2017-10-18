@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Data Factory - お客様導入事例 | Microsoft Docs"
 description: "お客様がどのように Azure Data Factory を使用しているかについて、いくつか紹介します。"
@@ -16,12 +15,11 @@ ms.topic: article
 ms.date: 08/14/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1868e4b96f3d062de1efb7c56c86aae3b0de9097
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---customer-case-studies"></a>Azure Data Factory - お客様導入事例
 Data Factory は、データの移動や変換を自動化するクラウド ベースの情報管理サービスです。 さまざまな業種のお客様が、Data Factory をはじめとする Azure のサービスを利用して分析パイプラインを構築し、ビジネス上の問題を解決しています。  Data Factory を使用する方法と理由について、お客様の生の声をご覧ください。
@@ -49,4 +47,3 @@ Data Factory は、データの移動や変換を自動化するクラウド ベ
 
 ## <a name="microsoft-studio"></a>Microsoft スタジオ
 [毎日数千億件のゲーム イベントを分析して最高の Xbox エクスペリエンスを提供](https://customers.microsoft.com/en-us/story/xboxunlimited)
-

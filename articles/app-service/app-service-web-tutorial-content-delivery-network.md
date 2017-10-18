@@ -10,12 +10,11 @@ ms.service: app-service-web
 manager: erikre
 ms.workload: web
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: a4f5113c4cc0ffb5fdd072e9a59743c83154c38c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
+ms.openlocfilehash: 257b75d01f3904661c1a188a2d53ffcb74f48f06
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-content-delivery-network-cdn-to-an-azure-app-service"></a>Azure App Service にコンテンツ配信ネットワーク (CDN) を追加する
 
@@ -308,4 +307,3 @@ CNAME レコードがインターネット上のネーム サーバーに伝播�
 
 > [!div class="nextstepaction"]
 > [Azure CDN エンドポイント上のアセットを事前に読み込む](../cdn/cdn-preload-endpoint.md)
-

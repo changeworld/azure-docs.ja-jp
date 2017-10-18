@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 8/22/2017
 ms.author: kraigb
+ms.openlocfilehash: 953b1aa459ddf5b7be00b9d32432e6dda97143e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: b75d190724da284324b0337e95a50a64902e19d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-named-authentication-credentials"></a>名前付き認証資格情報の設定
 Visual Studio から Azure にアプリケーションを発行したり、既存のクラウド サービスを監視するには、Azure への要求を認証するために使用できる資格情報を指定する必要があります。 Visual Studio には、こうした資格情報を指定するためのサインインのインターフェイスがいくつか設けられています。 たとえば、サーバー エクスプローラーから **[Azure]** ノードのショートカット メニューを開き、**[Microsoft Azure サブスクリプションへの接続]** を選択できます。 サインインすると、Azure アカウントに関連付けられているサブスクリプション情報が Visual Studio で利用できるようになります。 それ以上何もする必要はありません。
@@ -77,7 +76,7 @@ Visual Studio では、サブスクリプション ID が証明書データと�
    d. Azure サブスクリプションを選択し、作成した .cer ファイルの完全なパスを貼り付けて、**[アップロード]** を選択します。
 
 ## <a name="next-steps"></a>次のステップ
-* [Web Apps の概要](https://docs.microsoft.com/azure/app-service-web/)
-* [Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/en-us/azure/app-service-web/web-sites-deploy?toc=%2fazure%2fapp-service-api%2ftoc.json) 
-* [Visual Studio を使用した Web ジョブの展開](https://docs.microsoft.com/en-us/azure/app-service-web/websites-dotnet-deploy-webjobs)
+* [Web Apps の概要](https://docs.microsoft.com/azure/app-service/)
+* [Azure App Service へのアプリのデプロイ](https://docs.microsoft.com/en-us/azure/app-service/app-service-deploy-local-git) 
+* [Visual Studio を使用した Web ジョブの展開](https://docs.microsoft.com/en-us/azure/app-service/websites-dotnet-deploy-webjobs)
 * [クラウド サービスの作成とデプロイ](https://docs.microsoft.com/azure/cloud-services/cloud-services-how-to-create-deploy-portal)

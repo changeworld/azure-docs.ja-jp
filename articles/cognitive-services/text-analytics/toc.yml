@@ -24,6 +24,8 @@
   items:
     - name: Text Analytics と Power BI
       href: Tutorials/tutorial-power-bi-key-phrases.md
+    - name: Text Analytics と Power Apps
+      href: 'https://powerapps.microsoft.com/tutorials/cognitive-services-api/'
 - name: ハウツー ガイド
   items:
     - name: サインアップ

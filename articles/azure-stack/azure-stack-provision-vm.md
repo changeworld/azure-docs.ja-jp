@@ -12,17 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/21/2017
+ms.date: 9/25/2017
 ms.author: erikje
+ms.openlocfilehash: 233cf4df53af6a49e5fe4c5d51e112d8196a7530
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2812039649f7d2fb0705220854e4d8d0a031d31e
-ms.openlocfilehash: 4e3f90fe35b7fb2509db0eb7a467305f4c4167ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-test-virtual-machine-in-azure-stack"></a>Azure Stack でのテスト仮想マシンの作成
-クラウド オペレーターは、テスト仮想マシンを作成して、Azure Stack のデプロイを検証することができます。
+
+*適用対象: Azure Stack 開発キット*
+
+Azure Stack オペレーターは、テスト仮想マシンを作成して、[Azure Stack](azure-stack-poc.md) Developer Kit のデプロイを検証できます。
 
 > [!NOTE]
 > 仮想マシンをプロビジョニングする前に、[Azure Stack Marketplace に Windows Server 2016 評価版のイメージを追加する必要があります](azure-stack-add-default-image.md)。
@@ -41,4 +43,3 @@ ms.lasthandoff: 09/15/2017
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack での管理者およびユーザー ポータルの使用](azure-stack-manage-portals.md)
-

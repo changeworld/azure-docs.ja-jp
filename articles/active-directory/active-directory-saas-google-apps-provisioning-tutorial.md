@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
 ms.openlocfilehash: e8ca7fdacf8361570d88260b3c359ee6e2fd3e17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-configure-google-apps-for-automatic-user-provisioning"></a>チュートリアル: 自動ユーザー プロビジョニング用に Google Apps を構成する
 
@@ -152,7 +151,7 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 
 19. Google Apps に対して Azure AD プロビジョニング サービスを有効にするには、**[設定]** の **[プロビジョニング状態]** を **[オン]** に変更します。
 
-20. **[保存]** を選択します。
+20. [ **保存**] を選択します。
 
 このプロセスは、[ユーザーとグループ] セクションで Google Apps に割り当てたユーザーとグループの初期同期を開始します。 初期同期は後続の同期よりも実行に時間がかかります。後続の同期は、サービスが実行されている間、約 20 分ごとに実行されます。 
 
@@ -179,4 +178,3 @@ Azure Active Directory では、選択されたアプリへのアクセスが付
 [26]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-admin.png
 [27]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-admin-privileges.png
 [28]: ./media/active-directory-saas-google-apps-provisioning-tutorial/gapps-auth.png
-

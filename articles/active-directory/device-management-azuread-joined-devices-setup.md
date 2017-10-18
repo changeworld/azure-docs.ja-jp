@@ -15,50 +15,37 @@ ms.topic: article
 ms.date: 08/29/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 415086809efe779c6bcae32719d8be1b48764905
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: f548833cca27debb67cb155be0791299470f28dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-active-directory-joined-devices"></a>Azure Active Directory 参加済みデバイスの設定
 
-Azure Active Directory (Azure AD) のデバイス管理は、セキュリティとコンプライアンスの標準を満たすデバイスからユーザーがリソースにアクセスできるようにするのに役立ちます。 詳しくは、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
+Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳しくは、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
-[Azure AD 参加済みデバイス](device-management-introduction.md#azure-ad-joined-devices)を使用すると、組織が所有する Windows 10 デバイスを Azure AD の管理下に置くことができます。 これらのデバイスは、既に[オンプレミスの AD](device-management-introduction.md#hybrid-azure-ad-joined-devices) に参加していてはなりません。
+職場所有の Windows 10 デバイスを Azure AD の管理下に置く場合は、Azure AD 参加済みデバイスを構成します。 このトピックでは、その関連手順を示します。 
 
-このトピックでは、Windows 10 デバイスを Azure AD に登録する手順を紹介します。 
 
 ## <a name="prerequisites"></a>前提条件
 
-始める前に、次のことを確認する必要があります。
-
-- デバイスを Azure AD に参加させるためのアクセス許可がある。
-
-    ![接続中](./media/device-management-azuread-joined-devices-setup/21.png)
-
-- ユーザーあたりのデバイスの最大数をまだ超えていない 
-
-    ![接続中](./media/device-management-azuread-joined-devices-setup/22.png)
-
-
-詳しくは、「[デバイス設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
+Windows 10 デバイスを参加させるには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに参加させるアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳しくは、「[デバイス設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
 
 
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
 
-- Windows では、Azure AD 内の組織のディレクトリにデバイスが登録されます。
+- Windows は、Azure AD 内の組織のディレクトリにデバイスを参加させます。
 
-- 多要素認証チャレンジを渡すよう求められる場合があります。 IT 管理者は、このチャレンジを設定できます。
+- Multi-Factor Authentication で必要な情報の入力を求められる場合があります。 この認証は、IT 管理者が構成できます。
 
-- Azure AD によって、デバイスをモバイル デバイス管理に登録する必要があるかどうかがチェックされます。 該当する場合は、デバイスが登録されます。
+- Azure AD によって、このデバイスをモバイル デバイス管理に登録する必要があるかどうかがチェックされ、必要に応じて登録されます。
 
-- Windows により、自動サインインを介して管理対象ユーザーがデスクトップにリダイレクトされます。
+- 管理対象ユーザーの場合は、自動サインインによりデスクトップに移動します。
 
-- フェデレーション ユーザーは、資格情報を入力するために Windows サインイン ページにリダイレクトされます。
+- フェデレーション ユーザーの場合は、資格情報を使用してサインインする必要があります。
 
 
 ## <a name="joining-a-device"></a>デバイスを参加させる
@@ -135,10 +122,8 @@ Azure AD ポータルでデバイスの設定を確認することもできま�
 詳細については、次を参照してください。 
 
 - [Azure Active Directory のデバイス管理の概要](device-management-introduction.md)
-
 - [Azure Portal によるデバイスの管理](device-management-azure-portal.md)
-
-
+- 
 
 
 

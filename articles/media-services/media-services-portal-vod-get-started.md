@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: fb981f3240799c924464c828b2c835ac5d9879ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-delivering-content-on-demand-by-using-the-azure-portal"></a>Azure Portal を使用したオン デマンド コンテンツ配信の概要
 [!INCLUDE [media-services-selector-get-started](../../includes/media-services-selector-get-started.md)]
@@ -76,14 +75,14 @@ Media Services を使用してビデオをストリーミングするには、�
 アップロードが完了すると、**[資産]** ウィンドウの一覧に新しい資産が表示されます。 
 
 ## <a name="encode-assets"></a>Encode assets
-ダイナミック パッケージを利用するには、ソース ファイルを、一連のマルチビットレート MP4 ファイルにエンコードする必要があります。 このセクションでは、エンコードの手順が示されています。
+ダイナミック パッケージを利用するには、ソース ファイルを一連のマルチビットレート MP4 ファイルにエンコードする必要があります。 このセクションでは、エンコードの手順が示されています。
 
 ### <a name="encode-assets-in-the-portal"></a>ポータルでの資産のエンコード
 Azure Portal で Media Encoder Standard を使用してコンテンツをエンコードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** > **[資産]**を参照してください。 エンコードする資産を選択します。
-3. **[エンコード]** ボタンを選択します。
+3. **[エンコード]** を選択します。
 4. **[資産のエンコード]** ウィンドウで、**Media Encoder Standard** プロセッサとプリセットを選択します。 プリセットについては、[ビットレート ラダーの自動生成](media-services-autogen-bitrate-ladder-with-mes.md)に関するページと [Media Encoder Standard 用のタスク プリセット](media-services-mes-presets-overview.md)に関するページを参照してください。 入力ビデオに最適なプリセットを選択することが重要です。 たとえば、入力ビデオの解像度が 1920 &#215; 1080 ピクセルであるとわかっている場合は、**H264 Multiple Bitrate 1080p** のプリセットを使用します。 低解像度 (640 &#215; 360) のビデオの場合は、**H264 Multiple Bitrate 1080p** プリセットを使用しないでください。
    
    リソースを管理しやすくするために、出力資産の名前とジョブの名前を編集することができます。
@@ -97,7 +96,7 @@ Azure Portal で Media Encoder Standard を使用してコンテンツをエン�
 ![[ジョブ]](./media/media-services-portal-vod-get-started/media-services-jobs.png)
 
 ## <a name="publish-content"></a>コンテンツを発行する
-ストリーミングかダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を発行する必要があります。 資産内のファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
+コンテンツのストリーミングまたはダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を発行する必要があります。 資産内のファイルには、ロケーターを通じてアクセスできます。 Azure Media Services では、次の 2 種類のロケーターがサポートされています。 
 
 * **ストリーミング (OnDemandOrigin) ロケーター**。 ストリーミング ロケーターは、アダプティブ ストリーミングに使用されます。 アダプティブ ストリーミングの例として、HLS、Smooth Streaming、MPEG-DASH などが挙げられます。 ストリーミング ロケーターを作成するには、資産に .ism ファイルが含まれている必要があります。 
 * **プログレッシブ (Shared Access Signature) ロケーター**。 プログレッシブ ロケーターは、プログレッシブ ダウンロードを通じてビデオを配信する場合に使用されます。
@@ -131,7 +130,7 @@ Shared Access Signature URL の形式は、次のとおりです。
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用して資産を発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
 2. **[設定]** > **[資産]**を参照してください。 発行する資産を選択します。
-3. **[発行]** ボタンを選択します。
+3. **[発行]** を選択します。
 4. ロケーターの種類を選択します。
 5. **[追加]**を選択します。
    
@@ -142,7 +141,7 @@ URL が **[発行された URL]**の一覧に追加されます。
 ## <a name="play-content-from-the-portal"></a>ポータルでコンテンツを再生する
 Azure Portal のコンテンツ プレーヤーでビデオをテストできます。
 
-ビデオを選択し、**[再生]** ボタンを選択します。
+ビデオを選択し、**[再生]** を選択します。
 
 ![Azure Portal でビデオを再生する](./media/media-services-portal-vod-get-started/media-services-play.png)
 
@@ -157,4 +156,3 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-

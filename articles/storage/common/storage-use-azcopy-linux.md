@@ -12,13 +12,13 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 28/9/2017
 ms.author: seguler
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 441227d84b9c1ec721ae36fdc423ba797654f128
+ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
+ms.openlocfilehash: 0b6417b616a9e4e74b5fb8a67e1414ad74e8f258
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/29/2017
 
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
@@ -29,16 +29,19 @@ AzCopy on Linux は、最適なパフォーマンスの単純なコマンドを�
 ## <a name="download-and-install-azcopy"></a>AzCopy のダウンロードとインストール
 ### <a name="installation-on-linux"></a>Linux へのインストール
 
-AzCopy on Linux は、.NET Core Framework がプラットフォームに存在している必要があります。 [.NET Core](https://www.microsoft.com/net/core#linuxubuntu) ページのインストール手順を参照してください。
+この記事には、Ubuntu のさまざまなリリース用のコマンドが含まれています。  `lsb_release -a` コマンドを使用して、配布リリースおよびコードネームをご確認ください。 
 
-例として .NET Core を Ubuntu 16.10 にインストールしてみましょう。 最新のインストール ガイドについては、[.NET Core on Linux](https://www.microsoft.com/net/core#linuxubuntu) のインストール ページを参照してください。
+AzCopy on Linux では、.NET Core Framework (バージョン 1.1.x) がプラットフォームに存在している必要があります。 [.NET Core](https://www.microsoft.com/net/download/linux) ページのインストール手順を参照してください。
+
+例として、.NET Core を Ubuntu 16.04 にインストールしてみましょう。 最新のインストール ガイドについては、[.NET Core on Linux](https://www.microsoft.com/net/download/linux) のインストール ページを参照してください。
 
 
 ```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
+curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+sudo sh -c 'echo "deb [arch=amd64] https://packages.microsoft.com/repos/microsoft-ubuntu-xenial-prod xenial main" > /etc/apt/sources.list.d/dotnetdev.list'
 sudo apt-get update
-sudo apt-get install dotnet-dev-1.0.3
+sudo apt-get install dotnet-dev-1.1.4
 ```
 
 .NET Core をインストールしたら、AzCopy をダウンロードしてインストールします。
@@ -51,76 +54,6 @@ sudo ./install.sh
 
 抽出したファイルは、AzCopy on Linux のインストール後、削除してかまいません。 スーパーユーザーの特権がない場合は、抽出したフォルダー内のシェル スクリプト "azcopy" を使用して AzCopy を実行することもできます。 
 
-### <a name="alternative-installation-on-ubuntu"></a>Ubuntu のバージョンごとのインストール方法
-
-**Ubuntu 14.04**
-
-.NET Core の apt ソースを追加します。
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ trusty main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy をインストールします。
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/14.04/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
-
-**Ubuntu 16.04**
-
-.NET Core の apt ソースを追加します。
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ xenial main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy をインストールします。
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/16.04/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
-
-**Ubuntu 16.10**
-
-.NET Core の apt ソースを追加します。
-
-```bash
-sudo sh -c 'echo "deb [arch=amd64] https://apt-mo.trafficmanager.net/repos/dotnet-release/ yakkety main" > /etc/apt/sources.list.d/dotnetdev.list' 
-sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 417A0893
-```
-
-Microsoft Linux 製品リポジトリの apt ソースを追加し、AzCopy をインストールします。
-
-```bash
-curl https://packages.microsoft.com/config/ubuntu/16.10/prod.list > ./microsoft-prod.list
-sudo cp ./microsoft-prod.list /etc/apt/sources.list.d/
-curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
-sudo cp ./microsoft.gpg /etc/apt/trusted.gpg.d/
-```
-
-```bash
-sudo apt-get update
-sudo apt-get install azcopy
-```
 
 ## <a name="writing-your-first-azcopy-command"></a>AzCopy コマンドの基本
 AzCopy コマンドの基本構文は次のとおりです。

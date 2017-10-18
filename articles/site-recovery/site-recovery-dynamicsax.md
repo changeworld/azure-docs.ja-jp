@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/24/2017
 ms.author: asgang
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: c235102a60b6d11c8b77203121352bd1400f4325
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-a-multitier-dynamics-ax-application-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して多層 Dynamics AX デプロイをレプリケートする
 
@@ -55,7 +54,7 @@ Site Recovery を使用して Dynamics AX アプリケーションのディザ�
 --- | --- | ---
 **Hyper-V** | はい | はい
 **VMware** | はい | はい
-**物理サーバー** | はい | はい
+**物理サーバー** | はい | あり
 
 ## <a name="enable-disaster-recovery-of-the-dynamics-ax-application-by-using-site-recovery"></a>Site Recovery を使用して Dynamics AX アプリケーションのディザスター リカバリーを可能にする
 ### <a name="protect-your-dynamics-ax-application"></a>Dynamics AX アプリケーションを保護する
@@ -100,7 +99,7 @@ Dynamics AX クライアントと Application Object Server VM 用に、Site Rec
 
 * 静的 IP を使用している場合は、VM に割り当てる IP を**[ターゲット IP]** テキスト ボックスに指定します。
 
-    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png).
+    ![ネットワーク設定 ](./media/site-recovery-dynamics-ax/vmpropertiesaos1.png)が必要です。
 
 
 ### <a name="5-create-a-recovery-plan"></a>5.復旧計画の作成
@@ -193,4 +192,3 @@ Site Recovery を使用することで、Dynamics AX アプリケーション用
 
 ## <a name="next-steps"></a>次のステップ
 Site Recovery によるエンタープライズ ワークロード保護の詳細については、「[Azure Site Recovery で保護できるワークロード](site-recovery-workload.md)」をご覧ください。
-

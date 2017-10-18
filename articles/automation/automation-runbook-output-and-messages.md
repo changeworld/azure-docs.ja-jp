@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の出力および メッセージ | Mic
 description: "Azure Automation で Runbook から出力とエラー メッセージを作成および取得する方法を説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 13a414f5-0e2c-4be2-9558-a3e3ec84b6b2
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/11/2016
 ms.author: magoedte;bwren
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 505834d7354fb920e7ebd931e3bb31d837a79077
-ms.openlocfilehash: 6f01f97e38aa271034741c8a5e2f8057ab61fcd7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 11/17/2016
-
+ms.openlocfilehash: 212aa4ede83b7c9f3240f8f32073bb7b87bda06d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="runbook-output-and-messages-in-azure-automation"></a>Azure Automation での Runbook の出力および メッセージ
 Azure Automation のほとんどの Runbook では、ユーザーに対するエラー メッセージや別のワークフローで使用するための複合オブジェクトなど、いくつかの出力形式が含まれます。 Windows PowerShell では、スクリプトまたはワークフローから出力を送信するための [複数のストリーム](http://blogs.technet.com/heyscriptingguy/archive/2014/03/30/understanding-streams-redirection-and-write-host-in-powershell.aspx) が提供されます。 Azure Automation はこれらのストリームごとに異なる方法で対応するため、Runbook を作成する場合は、それぞれの使用法のベスト プラクティスに従ってください。
@@ -204,7 +203,7 @@ Windows Powershell では、 [Get-AzureAutomationJobOutput](https://msdn.microso
 
 **アクティビティ レベルのトレースを有効にするには、次の手順に従います。**
 
-1. Azure ポータルで、Automation アカウントを開きます。
+1. Azure Portal で、Automation アカウントを開きます。
 2. **[Runbook]** タイルをクリックして、Runbook の一覧を開きます。
 3. [Runbook] ブレードで、Runbook の一覧からグラフィカル Runbook をクリックして選択します。
 4. 選択した Runbook の [設定] ブレードで、 **[ログとトレース]**をクリックします。
@@ -226,5 +225,4 @@ Log Analytics との統合を構成して、ジョブ データを収集、操�
 ## <a name="next-steps"></a>次のステップ
 * Runbook の実行、Runbook ジョブの監視方法、その他の技術的な詳細については、 [Runbook ジョブの追跡](automation-runbook-execution.md)
 * 子 Runbook を設計および使用する方法については、「 [Azure Automation での子 Runbook](automation-child-runbooks.md)
-
 

@@ -23,7 +23,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: FAQ
+    - name: Log Analytics についてよく寄せられる質問
       href: log-analytics-faq.md
     - name: データの使用
       href: log-analytics-usage.md
@@ -31,6 +31,14 @@
       href: log-analytics-manage-access.md
     - name: サービス プロバイダー向けの機能
       href: log-analytics-service-providers.md
+    - name: ログ検索
+      items:
+        - name: ログ検索についてよく寄せられる質問
+          href: log-analytics-log-search-faq.md
+        - name: ログ検索の概要
+          href: log-analytics-log-search-new.md
+        - name: ログ検索ポータル
+          href: log-analytics-log-search-portals.md
 - name: 方法
   items:
     - name: データを収集する
@@ -45,6 +53,8 @@
               href: log-analytics-azure-vm-extension.md
             - name: Azure リソース
               href: log-analytics-azure-storage.md
+            - name: Azure ストレージからの診断またはログ データ
+              href: log-analytics-azure-storage-iis-table.md
             - name: Operations Manager
               href: log-analytics-om-agents.md
             - name: 構成マネージャー
@@ -84,6 +94,8 @@
           items:
             - name: 正規表現
               href: log-analytics-log-searches-regex.md
+            - name: ワークスペースをまたがる検索
+              href: log-analytics-cross-workspace-search.md
         - name: 検索結果からのアクションの実行
           href: log-analytics-log-search-takeaction.md
         - name: コンピューター グループ
@@ -92,15 +104,6 @@
       items:
         - name: ワークスペースのアップグレード
           href: log-analytics-log-search-upgrade.md
-        - name: FAQ
-          href: log-analytics-log-search-faq.md
-        - name: ログ検索の概要
-          href: log-analytics-log-search-new.md
-        - name: ログ検索ポータル
-          href: log-analytics-log-search-portals.md
-          items:
-            - name: ログ検索ポータルの使用
-              href: log-analytics-log-search-log-search-portal.md
         - name: 従来の言語からの切り替え
           href: log-analytics-log-search-transition.md
         - name: Flow コネクタ
@@ -230,6 +233,10 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST ()
       href: /rest/api/loganalytics
+    - name: ビュー デザイナー タイル リファレンス
+      href: log-analytics-view-designer-tiles.md
+    - name: ビュー デザイナー視覚化パーツ リファレンス
+      href: log-analytics-view-designer-parts.md
 - name: リソース
   items:
     - name: Azure のロードマップ

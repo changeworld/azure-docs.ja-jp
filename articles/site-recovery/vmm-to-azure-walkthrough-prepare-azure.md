@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/23/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 63b005f37ab5e15e8a1b4645446d65f1529f1bbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="step-5-prepare-azure-resources-for-hyper-v-replication-with-vmm-to-azure"></a>手順 5: Azure への Hyper-V レプリケーション (VMM あり) 用の Azure リソースを準備する
 
 [ネットワーク要件](vmm-to-azure-walkthrough-network.md)を確認した後で、この記事の手順に従って Azure リソースを準備して、[Azure Site Recovery](site-recovery-overview.md) サービスを使用して、System Center Virtual Machine Manager (VMM) クラウド内のオンプレミスの Hyper-V VM を Azure にレプリケートできるようにします。
@@ -61,4 +59,3 @@ ms.lasthandoff: 08/22/2017
 ## <a name="next-steps"></a>次のステップ
 
 [手順 6: VMM を準備する](vmm-to-azure-walkthrough-vmm-hyper-v.md)方法に関するページに進む
-

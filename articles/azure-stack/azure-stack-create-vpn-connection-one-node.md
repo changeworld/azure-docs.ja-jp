@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/10/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: fa2a940620e06521fa110fa13dcbc3050635a502
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>異なる Azure Stack 開発キット環境にある 2 つの仮想ネットワークの間にサイト間 VPN 接続を作成する
 ## <a name="overview"></a>概要
@@ -367,4 +366,3 @@ VPN 接続を構成するには、静的 NAT マップ ルートを作成する�
 4. **[接続]** ブレードには、**[受信データ]** と **[送信データ]** の統計情報が表示されます。 次のスクリーンショットでは大きな数値を確認できますが、これは追加のファイル転送によるものです。 ここには 0 以外の値が表示されます。
    
     ![受信データと送信データ](media/azure-stack-create-vpn-connection-one-node-tp2/image20.png)
-

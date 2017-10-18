@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 09/15/2017
 ms.author: cynthn
+ms.openlocfilehash: 97660436d29dd8d9b7547a2bf71e9fc06b09624f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 46efcfc9dfc0f56378c6ae6e9e04e0a4672f6d4a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する計画的なメンテナンス
 
@@ -28,9 +27,7 @@ ms.lasthandoff: 09/15/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Metadata Service](instance-metadata-service.md) を利用すると、Azure でホストされている仮想マシンに関する情報を発見できます。 
-
-
+計画済みのメインテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
 
 
 

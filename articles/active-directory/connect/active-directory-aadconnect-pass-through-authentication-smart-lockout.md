@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/26/2017
 ms.author: billmath
+ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 9a33e83c7453d5b80043599acca3ac4310446562
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory パススルー認証: スマート ロックアウト
 
 ## <a name="overview"></a>概要
@@ -56,7 +54,7 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 
 ![AD アカウント ロックアウト ポリシー](./media/active-directory-aadconnect-pass-through-authentication/pta5.png)
 
-## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values"></a>テナントのスマート ロックアウトの値を管理するには、Graph API を使います。
+## <a name="use-the-graph-api-to-manage-your-tenants-smart-lockout-values-needs-premium-license"></a>Graph API を使用してテナントのスマート ロックアウトの値を管理する (Premium ライセンスが必要)
 
 >[!IMPORTANT]
 >Graph API を使って Azure AD のロックアウトしきい値とロックアウト期間の値を変更するのは、Azure AD Premium P2 の機能です。 また、テナントのグローバル管理者が行う必要があります。
@@ -149,4 +147,3 @@ AD アカウント ロックアウト ポリシーを確認するには、次の
 
 ## <a name="next-steps"></a>次のステップ
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
-

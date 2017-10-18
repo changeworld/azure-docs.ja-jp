@@ -1,14 +1,13 @@
---- 
+---
 layout: HubPage
-hide_bc: true
+hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
+ms.openlocfilehash: 05a288bf8ccbc70bb5ce5c52b0e85e0f784c7f3e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1e8b6749e445b7b8787b5b0246445a2bb810f80f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -106,7 +105,7 @@ ms.lasthandoff: 09/25/2017
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/monitoring-and-diagnostics/">Azure Monitor</a></li>
                                                     <li><a class="barLink" href="/azure/application-insights/">Azure Application Insights</a></li>
-                                                    <li><a class="barLink" href="/azure/cost-management/">Azure コスト管理</a></li>
+                                                    <li><a class="barLink" href="/azure/cost-management/">Azure Cost Management</a></li>
                                                     <li><a class="barLink" href="/azure/backup/">Azure Backup</a></li>
                                                     <li><a class="barLink" href="/azure/site-recovery/">Azure Site Recovery</a></li>
                                                 </ul>
@@ -185,13 +184,13 @@ ms.lasthandoff: 09/25/2017
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/cosmos-db/">Azure Cosmos DB</a></li>
                                                 </ul>
-                                                <h4>Storage</h4>
+                                                <h4>ストレージ</h4>
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/storage/">Blob Storage</a></li>
                                                 </ul>
                                                 <h4>AI と Cognitive Services</h4>
                                                 <ul class="noBullet">
-                                                    <li><a class="barLink" href="/azure/machine-learning/preview">Machine Learning のサービス</a></li>
+                                                    <li><a class="barLink" href="/azure/machine-learning/preview">Machine Learning サービス</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/computer-vision/">Computer Vision API</a></li>
                                                     <li><a class="barLink" href="/azure/cognitive-services/face/">Face API</a></li>
                                                 </ul>
@@ -255,7 +254,7 @@ ms.lasthandoff: 09/25/2017
                 </ul>
             </li>
             <li>
-                <a href="#products">成果物</a>
+                <a href="#products">製品</a>
                 <ul id="products">
                     <li>
                         <a href="#all">すべて</a>
@@ -297,7 +296,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/azure-functions/">
                                                 <img src="media/index/AzureFunctions.svg" alt="" />
-                                                <p>関数</p>
+                                                <p>Functions</p>
                                             </a>
                                         </li>
                                         <li>
@@ -485,13 +484,13 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/azure-stack/">
                                                 <img src="media/index/azure-stack.svg" alt="" />
-                                                <p>Azure Stack Operator</p>
+                                                <p>Azure Stack オペレーター</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/azure/azure-stack/user">
                                                 <img src="media/index/azure-stack.svg" alt="" />
-                                                <p>Azure Stack User</p>
+                                                <p>Azure Stack ユーザー</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -586,13 +585,19 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/machine-learning/preview">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning のサービス</p>
+                                                <p>Machine Learning サービス</p>
                                             </a>
                                         </li>
                                         <li>
                                             <a href="/bot-framework/azure-bot-service-overview">
                                                 <img src="media/index/bot-service.svg" alt="" />
                                                 <p>Azure Bot Service</p>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a href="/azure/batch-ai/">
+                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                <p>Azure Batch AI</p>
                                             </a>
                                         </li>
                                         <li>
@@ -604,7 +609,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/cognitive-services/entitylinking/home">
                                                 <img src="media/index/API_Know_EntityLink.svg" alt="" />
-                                                <p>エンティティのリンク</p>
+                                                <p>Entity Linking</p>
                                             </a>
                                         </li>
                                         <li>
@@ -622,7 +627,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/cognitive-services/recommendations/overview">
                                                 <img src="media/index/API_Know_Recommendations.svg" alt="" />
-                                                <p>推奨事項</p>
+                                                <p>Recommendations</p>
                                             </a>
                                         </li>
                                         <li>
@@ -652,7 +657,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/cognitive-services/text-analytics/overview">
                                                 <img src="media/index/API_Lang_TextAnalytics.svg" alt="" />
-                                                <p>テキスト分析</p>
+                                                <p>Text Analytics</p>
                                             </a>
                                         </li>
                                         <li>
@@ -698,7 +703,7 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-entities-search/overview">
+                                            <a href="/azure/cognitive-services/bing-entities-search/search-the-web">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing Entities Search</p>
                                             </a>
@@ -774,12 +779,12 @@ ms.lasthandoff: 09/25/2017
                             </li>
                             <li>
                                 <div class="group">
-                                    <h3>Storage</h3>
+                                    <h3>ストレージ</h3>
                                     <ul>
                                         <li>
                                             <a href="/azure/storage/">
                                                 <img src="media/index/Storage.svg" alt="" />
-                                                <p>Storage</p>
+                                                <p>ストレージ</p>
                                             </a>
                                         </li>
                                         <li>
@@ -980,7 +985,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/machine-learning/preview">
                                                 <img src="media/index/MachineLearning.svg" alt="" />
-                                                <p>Machine Learning のサービス</p>
+                                                <p>Machine Learning サービス</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1135,7 +1140,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/cost-management/">
                                                 <img src="media/index/billing.svg" alt="" />
-                                                <p>Azure コスト管理</p>
+                                                <p>Azure Cost Management</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1159,7 +1164,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/backup/">
                                                 <img src="media/index/Backup.svg" alt="" />
-                                                <p>バックアップ</p>
+                                                <p>Backup</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1201,7 +1206,7 @@ ms.lasthandoff: 09/25/2017
                                         <li>
                                             <a href="/azure/azure-resource-manager/">
                                                 <img src="media/index/azuredefaultblack.svg" alt="" />
-                                                <p>Azure リソース マネージャー</p>
+                                                <p>Azure Resource Manager</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1224,7 +1229,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Linux 仮想マシン</h3>
-                                                    <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニングします</p>
+                                                    <p>Ubuntu、Red Hat などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1243,7 +1248,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Windows 仮想マシン</h3>
-                                                    <p>SQL Server、SharePoint などでの仮想マシンのプロビジョニング</p>
+                                                    <p>SQL Server、SharePoint などの仮想マシンをプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1262,7 +1267,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Machine Scale Sets</h3>
-                                                    <p>Linux および Windows の仮想マシンの管理と数十から数千への拡張</p>
+                                                    <p>数十から数千の Linux および Windows 仮想マシンの管理とスケーリング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1281,7 +1286,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web Apps</h3>
-                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1300,7 +1305,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>App Service</h3>
-                                                    <p>コンテナーを使用して Linux 上に Web アプリをデプロイします</p>
+                                                    <p>コンテナーを使用して Linux 上に Web アプリをデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1318,8 +1323,8 @@ ms.lasthandoff: 09/25/2017
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>関数</h3>
-                                                    <p>サーバー不要のコードを使用してイベントを処理します</p>
+                                                    <h3>Functions</h3>
+                                                    <p>サーバーレス コードを使用してイベントを処理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1338,7 +1343,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用してコンテナーのスケーリングと調整を行います</p>
+                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1357,7 +1362,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Instances</h3>
-                                                    <p>1 つのコマンドで簡単にコンテナーを実行します</p>
+                                                    <p>1 つのコマンドで簡単にコンテナーを実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1396,7 +1401,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整します</p>
+                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1458,7 +1463,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Virtual Network</h3>
-                                                    <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続します</p>
+                                                    <p>プライベート ネットワークをプロビジョニングし、オプションでオンプレミスのデータセンターに接続</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1477,7 +1482,7 @@ ms.lasthandoff: 09/25/2017
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Load Balancer</h3>
-                                                    <p>優れた可用性とネットワーク パフォーマンスをアプリケーションに提供します</p>
+                                                    <p>優れた可用性とネットワーク パフォーマンスをアプリケーションに提供</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1516,7 +1521,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>VPN Gateway</h3>
-                                                    <p>安全なクロスプレミス接続を確立します</p>
+                                                    <p>安全なクロスプレミス接続を確立</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1535,7 +1540,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DNS</h3>
-                                                    <p>Azure で DNS ドメインをホストします</p>
+                                                    <p>Azure で DNS ドメインをホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1554,7 +1559,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信します</p>
+                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1573,7 +1578,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Traffic Manager</h3>
-                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティングします</p>
+                                                    <p>高パフォーマンスと高可用性のために着信トラフィックをルーティング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1610,8 +1615,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>DDOS 保護</h3>
-                                                    <p>お客様のアプリケーションを分散型サービス拒否 (DDoS) 攻撃から保護します</p>
+                                                    <h3>DDOS Protection</h3>
+                                                    <p>お客様のアプリケーションを分散型サービス拒否 (DDoS) 攻撃から保護</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1630,7 +1635,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Network Watcher</h3>
-                                                    <p>ネットワーク シナリオ レベルで状態を監視して診断します</p>
+                                                    <p>ネットワーク シナリオ レベルで状態を監視して診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1806,7 +1811,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整します</p>
+                                                    <p>Azure VM、オンプレミス VM、物理サーバーのディザスター リカバリーを調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1830,7 +1835,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web Apps</h3>
-                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイします</p>
+                                                    <p>大規模な基幹業務系 Web アプリを短時間で作成してデプロイ</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1849,7 +1854,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web App for Containers</h3>
-                                                    <p>業務に合わせてスケーリング可能なコンテナー化された Web アプリを簡単にデプロイして実行します</p>
+                                                    <p>業務に合わせてスケーリング可能なコンテナー化された Web アプリを簡単にデプロイして実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1868,7 +1873,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Apps</h3>
-                                                    <p>モバイル アプリ用のバックエンドを構築およびホストします</p>
+                                                    <p>モバイル アプリ用のバックエンドを構築およびホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1887,7 +1892,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Apps</h3>
-                                                    <p>クラウド API を簡単に作成して使用します</p>
+                                                    <p>クラウド API を簡単に作成して使用</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1906,7 +1911,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Content Delivery Network</h3>
-                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信します </p>
+                                                    <p>グローバル データ センターの信頼性の高いネットワークを介して、コンテンツをエンド ユーザーに配信 </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1925,7 +1930,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Media Services</h3>
-                                                    <p>大規模にビデオおよびオーディオをエンコード、保存、ストリーミングします</p>
+                                                    <p>大規模にビデオおよびオーディオをエンコード、保存、ストリーミング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1944,7 +1949,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Search</h3>
-                                                    <p>完全に管理された、サービスとしての検索</p>
+                                                    <p>フルマネージドのサービスとしての検索</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -1963,7 +1968,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Mobile Engagement</h3>
-                                                    <p>アプリの使用率とユーザーのリテンション期間を増加させます</p>
+                                                    <p>アプリの使用率とユーザーのリテンション期間を増加</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2006,7 +2011,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Service</h3>
-                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用してコンテナーのスケーリングと調整を行います</p>
+                                                    <p>Kubernetes、DC/OS、または Docker Swarm を使用したコンテナーのスケーリングと調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2025,7 +2030,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Instances</h3>
-                                                    <p>1 つのコマンドで簡単にコンテナーを実行します</p>
+                                                    <p>1 つのコマンドで簡単にコンテナーを実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2044,7 +2049,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Container Registry</h3>
-                                                    <p>あらゆる種類の Azure デプロイ間でコンテナー イメージを格納して管理します</p>
+                                                    <p>あらゆる種類の Azure デプロイ間でコンテナー イメージを格納して管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2063,7 +2068,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Fabric</h3>
-                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整します</p>
+                                                    <p>マイクロサービスを開発し、Windows または Linux のコンテナーを調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2082,7 +2087,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Web App for Containers</h3>
-                                                    <p>業務に合わせてスケーリング可能なコンテナー化された Web アプリを簡単にデプロイして実行します</p>
+                                                    <p>業務に合わせてスケーリング可能なコンテナー化された Web アプリを簡単にデプロイして実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2126,7 +2131,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Database</h3>
-                                                    <p>管理された、サービスとしてのリレーショナル データベース</p>
+                                                    <p>マネージド サービスとしてのリレーショナル データベース</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2145,7 +2150,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Database for MySQL</h3>
-                                                    <p>アプリ開発者のための管理された MySQL データベース サービス</p>
+                                                    <p>アプリ開発者のためのマネージド MySQL データベース サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2164,7 +2169,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Database for PostgreSQL</h3>
-                                                    <p>アプリ開発者のための管理された PostgreSQL データベース サービス</p>
+                                                    <p>アプリ開発者のためのマネージド PostgreSQL データベース サービス</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2202,7 +2207,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2259,7 +2264,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Redis Cache</h3>
-                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速で拡張性の高いアプリケーションを作成します</p>
+                                                    <p>スループット向上とデータ アクセスの待機時間の短縮により、高速でスケーラブルなアプリケーションを作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2283,7 +2288,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HDInsight</h3>
-                                                    <p>クラウド Hadoop、Spark、R Server、HBase、および Storm クラスターをプロビジョニングします</p>
+                                                    <p>クラウド Hadoop、Spark、R Server、HBase、および Storm クラスターをプロビジョニング</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2302,7 +2307,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理します</p>
+                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2359,7 +2364,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Hubs</h3>
-                                                    <p>何百万ものデバイスから製品利用統計情報を受信します</p>
+                                                    <p>何百万ものデバイスから製品利用統計情報を受信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2378,7 +2383,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>データの変換と移動を調整および管理します</p>
+                                                    <p>データの変換と移動を調整、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2435,7 +2440,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能にします</p>
+                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2473,7 +2478,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Power BI Embedded</h3>
-                                                    <p>魅力的で完全対話式のデータの可視化をアプリケーションに組み込みます</p>
+                                                    <p>完全対話式で魅力的なデータの視覚エフェクトをアプリケーションに組み込む</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2499,7 +2504,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning のサービス</h3>
+                                                    <h3>Machine Learning サービス</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2520,6 +2525,25 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 <div class="cardText">
                                                     <h3>Azure Bot Service</h3>
                                                     <p>必要に応じて拡大縮小できるインテリジェントなサーバーレス ボット サービス</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/batch-ai/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Batch AI</h3>
+                                                    <p>同時に実行される大規模なディープ ラーニングおよび AI モデルの実験とトレーニングを容易に</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2652,7 +2676,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                             <div class="cardPadding">
                                                 <div class="card">
                                                     <div class="cardText">
-                                                        <h3>Search</h3>
+                                                        <h3>検索</h3>
                                                         <ul class="noBullet">
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />Bing News</a>
@@ -2667,10 +2691,10 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing Autosuggest</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Custom Search&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Custom Search</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Entities Search&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Entities Search</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-image-search/search-the-web"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing Image Search</a>
@@ -2700,7 +2724,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT デベロッパー センター</h3>
-                                                    <p>デバイスの接続を開始します</p>
+                                                    <p>デバイスの接続を開始</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2719,7 +2743,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT Hub</h3>
-                                                    <p>何十億もの IoT 資産を接続して、監視、制御します</p>
+                                                    <p>何十億もの IoT 資産を接続して、監視、制御</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2776,7 +2800,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Hubs</h3>
-                                                    <p>何百万ものデバイスから製品利用統計情報を受信します</p>
+                                                    <p>何百万ものデバイスから製品利用統計情報を受信</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2795,7 +2819,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Stream Analytics</h3>
-                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理します</p>
+                                                    <p>数百万の IoT デバイスからのデータ ストリームをリアルタイムで処理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2813,7 +2837,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Machine Learning のサービス</h3>
+                                                    <h3>Machine Learning サービス</h3>
                                                     <p>予測メンテナンスを可能にする強力なクラウドベースの予測分析ツール</p>
                                                 </div>
                                             </div>
@@ -2852,7 +2876,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Time Series Insights</h3>
-                                                    <p>時系列のデータを瞬時に調査して分析します</p>
+                                                    <p>時系列のデータを瞬時に調査して分析</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2871,7 +2895,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Grid</h3>
-                                                    <p>信頼性の高い大規模イベント配信を実現します</p>
+                                                    <p>信頼性の高い大規模イベント配信を実現</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2909,7 +2933,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化します</p>
+                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2933,7 +2957,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Logic Apps</h3>
-                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化します</p>
+                                                    <p>コードを記述せずに、クラウド全体でデータのアクセスと使用を自動化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2952,7 +2976,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Service Bus</h3>
-                                                    <p>プライベートとパブリックのクラウド環境間で接続します</p>
+                                                    <p>プライベートとパブリックのクラウド環境間で接続</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -2971,7 +2995,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3009,7 +3033,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>SQL Server Stretch Database</h3>
-                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張します</p>
+                                                    <p>オンプレミス SQL Server データベースを Azure に動的に拡張</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3028,7 +3052,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Catalog</h3>
-                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能にします</p>
+                                                    <p>企業全体でセルフサービスのデータ ソース検出を可能に</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3047,7 +3071,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Data Factory</h3>
-                                                    <p>データの変換と移動を調整および管理します</p>
+                                                    <p>データの変換と移動を調整、管理</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3066,7 +3090,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Event Grid</h3>
-                                                    <p>信頼性の高い大規模イベント配信を実現します</p>
+                                                    <p>信頼性の高い大規模イベント配信を実現</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3085,7 +3109,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>BizTalk Services</h3>
-                                                    <p>エンタープライズとクラウドをシームレスに統合します</p>
+                                                    <p>エンタープライズとクラウドをシームレスに統合</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3109,7 +3133,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Security Center</h3>
-                                                    <p>高度な視覚化により脅威を回避、検出、対応します</p>
+                                                    <p>高度な視覚化により脅威を回避、検出、対応</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3147,7 +3171,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Key Vault</h3>
-                                                    <p>暗号化キーと秘密情報の管理方法について確認します</p>
+                                                    <p>暗号化キーとシークレットの管理方法について確認</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3166,7 +3190,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory</h3>
-                                                    <p>オンプレミスのディレクトリを同期してシングル サインオンを可能にします</p>
+                                                    <p>オンプレミスのディレクトリを同期してシングル サインオンを可能に</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3185,7 +3209,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Active Directory B2C</h3>
-                                                    <p>コンシューマーの ID とアクセスの管理をクラウドで実行します</p>
+                                                    <p>コンシューマーの ID とアクセスの管理をクラウドで実行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3204,7 +3228,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Active Directory for Domain Services</h3>
-                                                    <p>ドメイン コントローラーを使用せずにドメインに Azure 仮想マシンを参加させます</p>
+                                                    <p>ドメイン コントローラーを使用せずにドメインに Azure 仮想マシンを参加させる</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3223,7 +3247,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Multi-Factor Authentication</h3>
-                                                    <p>高度な認証により、データとアプリへのアクセスを保護します</p>
+                                                    <p>高度な認証により、データとアプリへのアクセスを保護</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3242,7 +3266,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>セキュリティ情報</h3>
-                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて理解します</p>
+                                                    <p>クラウド ソリューションを構築するための安全なインフラストラクチャを Azure で実現するしくみについて確認</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3285,7 +3309,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure DevTest Labs</h3>
-                                                    <p>再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築します</p>
+                                                    <p>再利用可能なテンプレートとアーティファクトを使用して環境をすばやく構築</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3304,7 +3328,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Insights</h3>
-                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3323,7 +3347,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>API Management</h3>
-                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行します</p>
+                                                    <p>API を開発者、パートナー、従業員に安全かつ大規模に発行</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3342,7 +3366,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>HockeyApp</h3>
-                                                    <p>モバイル アプリのデプロイ、フィードバックおよびクラッシュ レポートの収集、使用量の監視を実現します</p>
+                                                    <p>モバイル アプリのデプロイ、フィードバックおよびクラッシュ レポートの収集、使用量の監視</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3361,7 +3385,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Xamarin</h3>
-                                                    <p>クラウドの機能を活用した優れたモバイル アプリを迅速に作成します</p>
+                                                    <p>クラウドの機能を活用した優れたモバイル アプリを迅速に作成</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3385,7 +3409,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Policy</h3>
-                                                    <p>ポリシー定義の作成、割り当て、管理を行います </p>
+                                                    <p>ポリシー定義の作成、割り当て、管理 </p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3403,8 +3427,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure コスト管理</h3>
-                                                    <p>クラウドの使用状況と支出を追跡します</p>
+                                                    <h3>Azure Cost Management</h3>
+                                                    <p>クラウドの使用状況と支出を追跡</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3423,7 +3447,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Monitor</h3>
-                                                    <p>Azure リソースのデータを詳細かつリアルタイムに監視します</p>
+                                                    <p>Azure リソースのデータを詳細かつリアルタイムに監視</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3442,7 +3466,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Application Insights</h3>
-                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断します</p>
+                                                    <p>Web アプリおよびサービスにおける問題を検出、トリアージ、診断</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3461,7 +3485,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Log Analytics</h3>
-                                                    <p>マシン データをオペレーション インテリジェンスに変換する方法を確認します</p>
+                                                    <p>マシン データをオペレーション インテリジェンスに変換する方法を確認</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3479,7 +3503,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>バックアップ</h3>
+                                                    <h3>Backup</h3>
                                                     <p>クラウドへのシンプルで信頼性の高いサーバー バックアップ サービス</p>
                                                 </div>
                                             </div>
@@ -3499,7 +3523,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Site Recovery</h3>
-                                                    <p>プライベート クラウドの保護と回復を調整します</p>
+                                                    <p>プライベート クラウドの保護と回復を調整</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3518,7 +3542,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Automation</h3>
-                                                    <p>プロセス自動化でクラウド管理を簡素化します</p>
+                                                    <p>プロセス自動化でクラウド管理を簡素化</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3556,7 +3580,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>課金</h3>
-                                                    <p>Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法を調べます</p>
+                                                    <p>Azure サブスクリプションの使用状況と課金内容を確認し、理解する方法を調べる</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3575,7 +3599,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Advisor</h3>
-                                                    <p>Azure リソースのコスト効率、パフォーマンス、高可用性、セキュリティを向上させます</p>
+                                                    <p>Azure リソースのコスト効率、パフォーマンス、高可用性、セキュリティを向上</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3594,7 +3618,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Azure Service Health</h3>
-                                                    <p>Azure サービスの問題が影響を及ぼす場合、パーソナライズされたガイダンスとサポートを提供します。</p>
+                                                    <p>お客様に影響を及ぼす Azure サービスの問題に関し、パーソナライズされたガイダンスとサポートを提供。</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3612,7 +3636,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure リソース マネージャー</h3>
+                                                    <h3>Azure Resource Manager</h3>
                                                     <p>Azure リソースをデプロイおよび管理します</p>
                                                 </div>
                                             </div>
@@ -3636,8 +3660,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Stack Operator</h3>
-                                                    <p>この新しいハイブリッド クラウド プラットフォームを使用して自社のデータセンターから Azure サービスを提供します</p>
+                                                    <h3>Azure Stack オペレーター</h3>
+                                                    <p>この新しいハイブリッド クラウド プラットフォームを使用してお客様自身のデータセンターから Azure サービスを提供</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3654,8 +3678,8 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                             </div>
                                             <div class="cardText">
-                                                <h3>Azure Stack User</h3>
-                                                <p>Azure Stack でサービスを使用し、アプリケーションを作成します</p>
+                                                <h3>Azure Stack ユーザー</h3>
+                                                <p>Azure Stack でサービスを使用し、アプリケーションを作成</p>
                                             </div>
                                         </div>
                                     </div>
@@ -3678,7 +3702,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure US Government</h3>
-                                                    <p>Azure の専用インスタンスに、米国政府の業務向けのアプリケーションを構築してホストします</p>
+                                                    <p>Azure の専用インスタンスに、米国政府の業務向けのアプリケーションを構築してホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3697,7 +3721,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Microsoft Azure Germany</h3>
-                                                    <p>データ トラスティによる追加規制により、主要な国際基準だけでなくドイツの規制にも準拠してアプリケーションを構築してホストします</p>
+                                                    <p>データ トラスティによる追加規制により、主要な国際基準だけでなくドイツの規制にも準拠してアプリケーションを構築してホスト</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3730,7 +3754,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">Azure Libraries for .NET の取得</a>
+                                                    <a href="/dotnet/azure/dotnet-sdk-azure-install">.NET 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/dotnet/azure">作業開始</a>
@@ -3754,7 +3778,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/python/azure/python-sdk-azure-install">Python 用 Azure ライブラリの取得</a>
+                                                    <a href="/python/azure/python-sdk-azure-install">Python 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/python/azure">作業開始</a>
@@ -3778,7 +3802,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/nodejs/azure/node-sdk-azure-install">Node.js 用 Azure ライブラリの取得</a>
+                                                    <a href="/nodejs/azure/node-sdk-azure-install">Node.js 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/nodejs/azure/?view=azure-node-2.0.0">作業開始</a>
@@ -3802,7 +3826,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                             </div>
                                             <div class="cardText">
                                                 <h3>
-                                                    <a href="/java/azure/java-sdk-azure-install">Azure Libraries for Java の取得</a>
+                                                    <a href="/java/azure/java-sdk-azure-install">Java 用 Azure ライブラリの入手</a>
                                                 </h3>
                                                 <p>
                                                     <a href="/java/azure">作業開始</a>
@@ -4190,4 +4214,3 @@ Azure CLI </h3>
         </ul>
     </div>
 </div>
-

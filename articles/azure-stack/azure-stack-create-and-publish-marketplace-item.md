@@ -14,14 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/21/2017
 ms.author: erikje
+ms.openlocfilehash: 64203ce186665aada98fbe8daed971164a650399
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e0df5b4c4ce23a746e60b491193e5a69df5ffdbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-publish-a-marketplace-item"></a>Marketplace アイテムを作成および発行する
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
 ## <a name="create-a-marketplace-item"></a>Marketplace アイテムの作成
 1. Azure Gallery Packager ツールおよびサンプルの Azure Stack Marketplace アイテムを[ダウンロード](http://www.aka.ms/azurestackmarketplaceitem)します。
 2. サンプルの Marketplace アイテムを開き、**SimpleVMTemplate** フォルダーの名前を変更します。 (自分の Marketplace アイテムと同じ名前を使用します。例: **Contoso.TodoList**)このフォルダーには、以下が格納されています。
@@ -80,7 +82,7 @@ ms.lasthandoff: 09/25/2017
    | サブスクリプション ID |管理者のサブスクリプション ID。 PowerShell を使用して取得できます。 ポータルで取得する場合は、プロバイダーのサブスクリプションに移動し、サブスクリプション ID をコピーします。 |
    | GalleryItemUri |ストレージに既にアップロードされた、ギャラリー パッケージの BLOB URI。 |
    | ApiVersion |**2015-04-01** と設定します。 |
-4. ポータルに移動します。 これで、管理者またはテナントとして、ポータルで Marketplace アイテムを確認できます。
+4. ポータルに移動します。 これで、オペレーターまたはユーザーとして、ポータルで Marketplace アイテムを確認できます。
    
    > [!NOTE]
    > パッケージの表示には数分かかる場合があります。
@@ -157,5 +159,4 @@ Azure Stack ポータルで表示される Marketplace アイテムのアイコ�
 
 ### <a name="marketplace-item-details-blade"></a>[Marketplace item details (Marketplace アイテムの詳細)] ブレード
 ![[Marketplace item details (Marketplace アイテムの詳細)] ブレード](media/azure-stack-marketplace-item-ui-reference/image3.png)
-
 

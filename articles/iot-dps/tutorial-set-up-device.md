@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: c99279413b50e7bf1e6058a4151890e3a8f83892
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-a-device-to-provision-using-the-azure-iot-hub-device-provisioning-service"></a>Azure IoT Hub Device Provisioning Service を使用してプロビジョニングするデバイスの設定
 
 前のチュートリアルでは、デバイスを IoT ハブに自動的にプロビジョニングするために、Azure IoT Hub Device Provisioning Service を設定する方法を説明しました。 このチュートリアルでは、[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security) に基づいてデバイスの Device Provisioning Service を構成し、デバイスが初回起動時に Device Provisioning Service に接続できるように、製造プロセス中にデバイスを設定するためのガイダンスを示します。 このチュートリアルでは、次のプロセスについて説明します。
@@ -40,7 +38,7 @@ ms.lasthandoff: 09/13/2017
 [Device Provisioning Service クライアント SDK](https://github.com/Azure/azure-iot-sdk-c/tree/master/dps_client) は、次の 2 種類のハードウェア セキュリティ モジュール (HSM) をサポートしています。 
 
 - [トラステッド プラットフォーム モジュール (TPM)](https://en.wikipedia.org/wiki/Trusted_Platform_Module)
-    - TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの確立された標準です。 デバイスの製造元は、デバイスでこれらの OS のいずれかを実行している場合や、HSM の確立された標準を探している場合に、この HSM を選択できます。 TPM チップを使用すると、Device Provisioning Service に各デバイスを個別に登録できます。 開発のために、Windows または Linux 開発コンピューターで TPM シミュレーターを使用できます。
+    - TPM は、ほとんどの Windows ベースのデバイス プラットフォームと一部の Linux/Ubuntu ベースのデバイス向けの代表的な標準です。 デバイスの製造元は、製造するデバイスでこれらの OS のいずれかが稼働している場合や、代表的な HSM 標準を求めている場合に、この HSM を選択できます。 TPM チップを使用すると、各デバイスの Device Provisioning Service への個別登録のみが可能です。 開発向けの場合、Windows または Linux の開発マシンで TPM シミュレーターを使用できます。
 
 - [X.509](https://cryptography.io/en/latest/x509/) ベースのハードウェア セキュリティ モジュール 
     - X.509 ベースの HSM は比較的新しいチップであり、X.509 証明書を実装する RIoT チップまたは DICE チップ上での作業が Microsoft 内で現在進められています。 X.509 チップを使用すると、ポータルで一括登録を実行できます。 また、X.509 チップは、embedOS などの Windows 以外の特定の OS もサポートしています。 開発のために、Device Provisioning Service クライアント SDK は、X.509 デバイス シミュレーターをサポートしています。 
@@ -186,5 +184,4 @@ int main()
 
 > [!div class="nextstepaction"]
 > [IoT ハブにデバイスをプロビジョニングする](tutorial-provision-device-to-hub.md)
-
 

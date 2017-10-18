@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/07/2017
 ms.author: muralikk
+ms.openlocfilehash: 60139ff36b66432620591ceaf201e046ad30217f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 83cb82b9807718e7a509312d159eb766a5da1d2c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sample-workflow-to-prepare-hard-drives-for-an-import-job"></a>インポート ジョブ用のハード ドライブを準備するためのサンプル ワークフロー
 
 この記事では、インポート ジョブ用のドライブを準備するプロセスの手順について説明します。
@@ -35,7 +33,7 @@ ms.lasthandoff: 08/22/2017
 |H:\Video\ |一連のビデオ|12 TB|
 |H:\Photo\ |一連の写真|30 GB|
 |K:\Temp\FavoriteMovie.ISO|Blu-Ray™ ディスク イメージ|25 GB|
-|\\\bigshare\john\music\|ネットワーク共有上の一連の音楽ファイル|10 GB|
+|\\\bigshare\john\music\ |ネットワーク共有上の一連の音楽ファイル|10 GB|
 
 ## <a name="storage-account-destinations"></a>ストレージ アカウント内のインポート先
 
@@ -133,4 +131,3 @@ WAImportExport.exe PrepImport /j:JournalTest.jrn /id:session#2  /DataSet:dataset
 
 * [インポート ジョブ用のハード ドライブを準備する](../storage-import-export-tool-preparing-hard-drives-import.md)
 * [頻繁に使用するコマンドのクイック リファレンス](../storage-import-export-tool-quick-reference.md)
-

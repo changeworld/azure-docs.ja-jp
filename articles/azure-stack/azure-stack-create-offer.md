@@ -1,6 +1,6 @@
 ---
 title: "Azure Stack でのオファーの作成 | Microsoft Docs"
-description: "クラウド管理者が Azure Stack でテナントのオファーを作成する方法について説明します。"
+description: "クラウド管理者が Azure Stack でユーザーのオファーを作成する方法について説明します。"
 services: azure-stack
 documentationcenter: 
 author: ErikjeMS
@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: erikje
+ms.openlocfilehash: 269a6106f657536ba74be366f842b2f9cd86c5dc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 3d7360a1fb1c0cf42d77b3f39bf92c30438c2e01
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Azure Stack でのオファーの作成
-[オファー](azure-stack-key-features.md)は、プロバイダーから提示されてテナントが購入またはサブスクライブする 1 つまたは複数のプランをグループ化したものです。 ここでは、最後の手順で[作成したプラン](azure-stack-create-plan.md)を含むオファーを作成する方法について説明します。 このオファーのサブスクライバーは仮想マシンをプロビジョニングすることができます。
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
+[オファー](azure-stack-key-features.md)は、プロバイダーがユーザーに提示する 1 つまたは複数のプランのグループで、ユーザーはそれを購入またはサブスクライブします。 ここでは、最後の手順で[作成したプラン](azure-stack-create-plan.md)を含むオファーを作成する方法について説明します。 このオファーのサブスクライバーは仮想マシンをプロビジョニングすることができます。
 
 1. Azure Stack 管理者ポータルに (https://adminportal.local.azurestack.external) にサインインし、**[新規]** > **[テナントのプラン]** > **[オファー]** をクリックします。
 
@@ -37,19 +39,18 @@ ms.lasthandoff: 09/15/2017
 
    ![](media/azure-stack-create-offer/image03.png)
 
-サブスクライブ時にテナントが完全なビューを取得するために、オファーはパブリックにする必要があります。 オファーの状態:
+サブスクライブ時にユーザーが完全なビューを取得するために、オファーはパブリックにする必要があります。 オファーの状態:
 
-* **パブリック**: テナントに表示されます。
+* **パブリック**: ユーザーに表示されます。
 * **プライベート**: クラウド管理者にのみ表示されます。 プランまたはオファーの下書き作成や、クラウド管理者がすべてのサブスクリプションを承認する必要がある場合に便利です。
 * **使用停止**: 新しいサブスクライバーに公開されません。 クラウド管理者は [使用停止] を使って、既存のサブスクライバーを変更することなく、以降のサブスクリプションを回避することができます。
 
-オファーへの変更は、テナントにすぐに表示されません。 変更を表示するには、新しいリソース/リソース グループを作成するときにログアウト/ログインして、"サブスクリプションの選択" に新しいサブスクリプションを表示する必要があります。
+オファーの変更は、ユーザーにすぐに表示されるわけではありません。 変更を表示するには、新しいリソース/リソース グループを作成するときにログアウト/ログインして、"サブスクリプションの選択" に新しいサブスクリプションを表示する必要があります。
 
 > [!NOTE]
 >また、[Azure Stack Service Administrator の readme](https://github.com/Azure/AzureStack-Tools/tree/master/ServiceAdmin) の説明に従って、PowerShell を使用して既定のオファー、プラン、クォータを作成することもできます。
 >
 
 
-## <a name="next-steps"></a>次のステップ
+### <a name="next-steps"></a>次のステップ
 [プランへのサブスクライブと VM のプロビジョニングに関するページ](azure-stack-subscribe-plan-provision-vm.md)
-

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory 登録済み Windows 10 デバイスの設定 | Microsoft Docs"
-description: "Azure Active Directory 登録済み Windows 10 デバイスを設定する方法について説明します。"
+title: "Azure Active Directory 登録済みデバイスの設定 | Microsoft Docs"
+description: "Azure Active Directory 登録済みデバイスを設定する方法について説明します。"
 services: active-directory
 documentationcenter: 
 author: MarkusVi
@@ -12,122 +12,101 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 427bf9a0487c771e57ac53a9bb0b7d7e2f6bdca2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: e2554450bdb426cff50f302132158f39f5630ee3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Azure Active Directory 登録済み Windows 10 デバイスの設定
 
-Azure Active Directory (Azure AD) のデバイス管理は、セキュリティとコンプライアンスの標準を満たすデバイスからユーザーがリソースにアクセスできるようにするのに役立ちます。 詳しくは、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
+Azure Active Directory (Azure AD) のデバイス管理を使用して、ユーザーがセキュリティとコンプライアンスの基準と一致するデバイスからリソースにアクセスしていることを保証できます。 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
-[Azure AD 登録済みデバイス](device-management-introduction.md#azure-ad-registered-devices)を使用すると、**Bring Your Own Device (BYOD)** シナリオに対応し、ユーザーが個人所有のデバイスを使用して組織のリソースにアクセスできるようにすることが可能です。  
-
-Azure AD では、次の環境の Azure AD 登録済みデバイスを設定できます。
-
-- Windows 10
-- iOS
-- Android
-- macOS  
-
-このトピックでは、Windows 10 デバイスを Azure AD に登録する手順を紹介します。 
+**Bring Your Own Device (BYOD)** シナリオを有効にする場合は、Azure AD 登録済みデバイスを構成します。 Azure AD では、Windows 10、iOS、Android、および macOS で Azure AD 登録済みデバイスを構成できます。 このトピックでは、Windows 10 デバイスの関連手順を示します。 
 
 
-## <a name="prerequisites"></a>前提条件
+## <a name="before-you-begin"></a>開始する前に
 
-始める前に、次のことを確認する必要があります。
-
-- デバイスを登録するためのアクセス許可 
-
-    ![登録](./media/device-management-azuread-registered-devices-windows10-setup/21.png)
-
-- ユーザーあたりのデバイスの最大数をまだ超えていない 
-
-    ![登録](./media/device-management-azuread-registered-devices-windows10-setup/22.png)
-
-詳細については、「[デバイス設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
+Windows 10 デバイスを登録するには、デバイスを登録できるようにデバイス登録サービスを構成する必要があります。 デバイスを Azure AD テナントに登録するアクセス許可を持つだけでなく、構成された最大数よりも少ない数のデバイスを登録する必要があります。 詳細については、「[デバイスの設定の構成](device-management-azure-portal.md#configure-device-settings)」を参照してください。
 
 ## <a name="what-you-should-know"></a>知っておくべきこと
 
-デバイスを登録する場合は、次の点に注意してください。
+デバイスを登録するときは、以下の点に注意してください。
 
 - Windows では、Azure AD 内の組織のディレクトリにデバイスが登録されます。
 
-- 多要素認証チャレンジを渡すよう求められる場合があります。 IT 管理者は、このチャレンジを設定できます。
+- Multi-Factor Authentication で必要な情報の入力を求められる場合があります。 この認証は、IT 管理者が構成できます。
 
-- Azure AD によって、デバイスをモバイル デバイス管理に登録する必要があるかどうかがチェックされます。 該当する場合は、デバイスが登録されます。
+- Azure AD によって、このデバイスをモバイル デバイス管理に登録する必要があるかどうかがチェックされ、必要に応じて登録されます。
 
-- Windows により、自動サインインを介して管理対象ユーザーがデスクトップにリダイレクトされます。
+- 管理対象ユーザーの場合は、自動サインインによりデスクトップに移動します。
 
-- フェデレーション ユーザーは、資格情報を入力するために Windows サインイン ページにリダイレクトされます。
+- フェデレーション ユーザーの場合は、資格情報を入力するための Windows サインイン画面が表示されます。
 
 
-## <a name="register-a-device"></a>デバイスの登録
+## <a name="registering-a-device"></a>デバイスの登録
 
-Windows 10 デバイスを Azure AD に登録するには、次の手順を実行します。 デバイスが Azure AD に正常に登録されると、**[職場または学校にアクセスする]** ページに **[職場または学校アカウント]** のエントリと共にその旨が表示されます。
+このセクションでは、Windows 10 デバイスを Azure AD に登録する手順を示します。 Azure AD にデバイスが正常に登録されると、**[職場または学校にアクセスする]** ダイアログの **[職場または学校アカウント]** エントリで、そのことが示されます。
 
 ![登録](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
 
-Windows 10 デバイスを登録するには:
+**Windows 10 デバイスを登録するには:**
 
 1. **[スタート]** メニューの **[設定]** をクリックします。
 
-    ![[設定] を選択する](./media/device-management-azuread-registered-devices-windows10-setup/01.png)
+    ![設定](./media/device-management-azuread-registered-devices-windows10-setup/01.png)
 
 2. **[アカウント]** をクリックします。
 
-    ![[アカウント] を選択する](./media/device-management-azuread-registered-devices-windows10-setup/02.png)
+    ![アカウント](./media/device-management-azuread-registered-devices-windows10-setup/02.png)
 
 
 3. **[職場または学校にアクセスする]** をクリックします。
 
-    ![[職場または学校にアクセスする] を選択する](./media/device-management-azuread-registered-devices-windows10-setup/03.png)
+    ![職場または学校にアクセスする](./media/device-management-azuread-registered-devices-windows10-setup/03.png)
 
-4. **[職場または学校にアクセスする]** ページで、**[接続]** をクリックします。
+4. **[職場または学校にアクセスする]** ダイアログ ボックスで、**[接続]** をクリックします。
 
-    ![[職場または学校にアクセスする] ページ](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
-
-
-5. **[職場または学校アカウントの設定]** ページで、アカウント名 (例: someone@example.com) を入力し、**[次へ]** をクリックします。
-
-    ![[職場または学校アカウントの設定] ページ](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
+    ![接続](./media/device-management-azuread-registered-devices-windows10-setup/04.png)
 
 
-6. **[パスワードの入力]** ページで、パスワードを入力し、**[次へ]** をクリックします。
+5. **[職場または学校アカウントの設定]** ダイアログ ボックスで、アカウント名 (例: someone@example.com) を入力し、**[次へ]** をクリックします。
 
-    ![パスワードの入力](./media/device-management-azuread-registered-devices-windows10-setup/05.png)
+    ![接続](./media/device-management-azuread-registered-devices-windows10-setup/06.png)
 
 
-7. **[You're all set]\(これで完了です\)** ページで、**[完了]** をクリックします。
+6. **[パスワードの入力]** ダイアログ ボックスで、パスワードを入力し、**[次へ]** をクリックします。
 
-    ![[You're all set]\(これで完了です\) ページ](./media/device-management-azuread-registered-devices-windows10-setup/07.png)
+    ![接続](./media/device-management-azuread-registered-devices-windows10-setup/05.png)
+
+
+7. **[準備が完了しました]** ダイアログ ボックスで、**[完了]** をクリックします。
+
+    ![接続](./media/device-management-azuread-registered-devices-windows10-setup/07.png)
 
 ## <a name="verification"></a>確認
 
-デバイスが Azure AD に参加しているかどうかを確認するには、デバイスで **[職場または学校にアクセスする]** ページを確認します。
+デバイスが Azure AD に参加しているかどうかを確認するには、デバイスで **[職場または学校にアクセスする]** ダイアログを確認します。
 
-![職場または学校アカウントの状態](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
+![登録](./media/device-management-azuread-registered-devices-windows10-setup/08.png)
 
-または、Azure AD ポータルでデバイスの設定を確認することもできます。
+また、Azure AD ポータルでデバイスの設定を確認することもできます。
 
-![Azure AD 登録済みデバイス](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
+![登録](./media/device-management-azuread-registered-devices-windows10-setup/09.png)
+
+
+
 
 
 ## <a name="next-steps"></a>次のステップ
 
-詳細については、次を参照してください。 
+- 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
-- [Azure Active Directory のデバイス管理の概要](device-management-introduction.md)
-
-- [Azure Portal によるデバイスの管理](device-management-azure-portal.md)
-
+- Azure AD ポータルでのデバイス管理の詳細については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください。
 
 
 

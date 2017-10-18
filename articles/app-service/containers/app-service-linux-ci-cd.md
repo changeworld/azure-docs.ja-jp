@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: aelnably;wesmc
+ms.openlocfilehash: 27a2c95c09197b3439d3fac7c74d253df2b32b1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: 69eb021014c2ae04fc71a03cd27c0e113a2b062b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="continuous-deployment-with-azure-web-app-for-containers"></a>Azure Web App for Containers での継続的なデプロイ
 
@@ -86,11 +85,10 @@ Docker Hub ページで、**[Webhooks (Webhook)]**、**[CREATE A WEBHOOK (Webhoo
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Web Apps for Containers とは](./app-service-linux-intro.md)
+* [Azure Web App for Containers とは](./app-service-linux-intro.md)
 * [Azure Container Registry](https://azure.microsoft.com/en-us/services/container-registry/)
-* [Azure Web Apps for Containers で .NET Core を使用する](quickstart-dotnetcore.md)
-* [Azure Web Apps for Containers で Ruby を使用する](quickstart-ruby.md)
-* [Azure Web Apps for Containers 向けにカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
-* [Azure App Service Web Apps for Containers の FAQ](./app-service-linux-faq.md) 
-* [Azure CLI 2.0 を使って Web Apps for Containers を管理する](./app-service-linux-cli.md)
-
+* [Azure Web App for Containers で .NET Core を使用する](quickstart-dotnetcore.md)
+* [Azure Web App for Containers で Ruby を使用する](quickstart-ruby.md)
+* [Azure Web App for Containers のカスタム Docker イメージを使用する方法](quickstart-custom-docker-image.md)
+* [Azure App Service Web App for Containers の FAQ](./app-service-linux-faq.md) 
+* [Azure CLI 2.0 を使って Web App for Containers を管理する](./app-service-linux-cli.md)

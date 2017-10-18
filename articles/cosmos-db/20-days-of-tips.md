@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 09/27/2017
 ms.author: mimig
 ms.custom: cda
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 992249949c6bd80e698a0bc21710039c6aa1f67e
+ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
+ms.openlocfilehash: fccf0e3d8cb5d0f0adfb53a06b95aa1090451915
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/28/2017
 
 ---
 
@@ -71,19 +71,93 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 ## <a name="tip-6-migrate-your-mean-app"></a>ヒント 6: MEAN アプリを移行する
 
-ヒント 6: あなたのアプリは MEAN ですか。 Azure #cosmosDB にアプリを簡単に移行する方法を学習しましょう。 [https://aka.ms/gfh6i5](https://aka.ms/gfh6i5) ビデオ全編: [https://aka.ms/aoojih](https://aka.ms/aoojih)
-
-> [!VIDEO https://www.youtube.com/embed/1DzwI5HmU5w]
-
-[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907634936160559105)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313400758263967744/)
-
-## <a name="tip-7-build-a-nodejs-app-by-using-graph-api"></a>ヒント 7: Graph API を使用して Node.js アプリを構築する
-
-ヒント 7: Graph API と Azure #CosmosDB を使用して、Node.js アプリを構築します。 詳細については、ドキュメントのページ ([https://aka.ms/X79feg](https://aka.ms/X79feg)) を参照してください
+ヒント 6: あなたのアプリは MEAN ですか。 Azure #cosmosDB にアプリを簡単に移行する方法を学習しましょう。 https://aka.ms/gfh6i5 ビデオ全編: https://aka.ms/aoojih  
 
 > [!VIDEO https://www.youtube.com/embed/vlAUxc3d2ak]
 
-[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907982218353451009)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313762492686352384)
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/907634936160559105)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6313400758263967744/)
+
+## <a name="tip-8-build-a-nodejs-app-by-using-sql-api"></a>ヒント 8: SQL API を使用して Node.js アプリをビルドする
+
+ヒント 8: SQL API と Azure #CosmosDB を使用して、@nodejs アプリをビルドします。 詳細については、ドキュメントのページ ([https://aka.ms/Bd77a8](https://aka.ms/Bd77a8)) をご覧ください  
+
+> [!VIDEO https://www.youtube.com/embed/_gd9ZY-rHtM]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908344625101815808)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314096399197757440)
+
+## <a name="tip-9-query-using-mongodb-in-nodejs"></a>ヒント 9: Node.js で MongoDB を使用したクエリの実行
+
+ヒント 9: Node.js で MongoDB API を使用して Azure #CosmosDB をクエリします。 詳細については、ドキュメントのページ ([https://aka.ms/Dert0r](https://aka.ms/Dert0r)) をご覧ください  
+
+![MongoDB を使用したクエリの実行](./media/20-days-of-tips/cosmos-db-tip-9-mongodb-query.png)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/908737218759376896)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6314500690261655552)
+
+## <a name="tip-10-copy-mongodb-data-using-studio-3t"></a>ヒント 10: Studio 3T を使用した MongoDB データのコピー 
+
+ヒント 10: Studio 3T (MongoChef) を使用して Azure Cosmos DB に、MongoDB データをコピーする方法を学習します。 [https://aka.ms/apzhww](https://aka.ms/apzhww) のドキュメント
+
+> [!VIDEO https://www.youtube.com/embed/Qa4YpShYEcI]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/909794178489507840)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315565289329164288)
+
+## <a name="tip-11-use-react-nodejs-and-azure-cosmosdb"></a>ヒント 11: React、Node.js、Azure #CosmosDB の使用
+
+ヒント 11: React、Node.js、Azure Cosmos DB を使用してヒーローの追跡アプリをビルドします。
+
+記事: [React と Azure Cosmos DB を使って MongoDB アプリを作成する](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-react?WT.mc_id=sicotint)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910156604875649025)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6315922463670751233)
+
+## <a name="tip-12-go-serverless"></a>ヒント 12: サーバーレスで作業
+
+ヒント 12: Azure #CosmosDB と @AzureFunctions を使用してサーバーレスで作業します。 完全なドキュメントは [https://aka.ms/Pmic1j](https://aka.ms/Pmic1j) をご覧ください
+
+> [!VIDEO https://www.youtube.com/embed/U--3mfisNCs]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910534418716069889)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316301619252248576)
+
+## <a name="tip-13-mean-app-from-scratch"></a>ヒント 13: MEAN アプリをゼロから作成
+
+ヒント 13: @John_Papa および Azure Cosmos DB を使用して、ゼロからヒーローにします。 最初から MEAN アプリをビルドする方法を学習します
+
+記事: [Angular と Azure Cosmos DB を使って MongoDB アプリを作成する](https://docs.microsoft.com/en-us/azure/cosmos-db/tutorial-develop-mongodb-nodejs?WT.mc_id=sicotint&utm_content=buffer2495b&utm_medium=social&utm_source=twitter.com&utm_campaign=buffer)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/910881618855907329)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6316647045599944704)
+
+## <a name="tip-14-use-cases"></a>ヒント 14: ユース ケース
+
+ヒント 14: 一般的な Azure #CosmosDB ユース ケースをご紹介します IoT、ゲームやソーシャル アプリについては、[https://aka.ms/Ihpf00](https://aka.ms/Ihpf00) をご覧ください
+
+記事: [Azure Cosmos DB の一般的なユース ケース](https://aka.ms/Ihpf00)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/911270472481992704)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6317036550945333248)
+
+## <a name="tip-15-vs-code-integration"></a>ヒント 15: V5 コードの統合
+
+ヒント 15: @code を開いたまま新しい Azure #CosmosDB アカウントを作成します。 [https://aka.ms/Wy547u](https://aka.ms/Wy547u) から拡張機能をインストールします 
+
+> [!VIDEO https://www.youtube.com/embed/w8HyW8AHHZQ]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912384598486679557)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318150514613850112)
+
+
+## <a name="tip-16-functions-and-twilio-demo"></a>ヒント 16: 機能と Twilio のデモ
+
+ヒント 16: 素晴らしいデモをご用意しました。 Azure #cosmosDB、機能および @twilio を統合し、DB の変更時に SMS を送信します。 [https://aka.ms/Kjkc2d](https://aka.ms/Kjkc2d) のドキュメントを参照してください。 
+
+> [!VIDEO https://www.youtube.com/embed/3Q7WffTeaKY]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/912703755988160512)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318469696291246081)
+
+
+## <a name="tip-17-using-mongoose-discriminators"></a>ヒント 17: Mongoose 識別子の使用
+
+ヒント 17: Mongoose 識別子を使用して単一の #CosmosDB コレクションに複数のエンティティを格納する ([https://aka.ms/M488jm](https://aka.ms/M488jm)) ことで、コストを最適化します。
+
+ブログ:  [Mongoose 識別子を使用して単一の Cosmos DB コレクションに複数のエンティティを格納する (投稿者: Anthony Chu)](https://aka.ms/M488jm)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
 
 ## <a name="next-steps"></a>次のステップ
 

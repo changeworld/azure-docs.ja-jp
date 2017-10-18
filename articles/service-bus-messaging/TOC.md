@@ -6,6 +6,7 @@
 
 # 作業の開始
 ## [名前空間を作成する](service-bus-create-namespace-portal.md)
+### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
 ## キューの使用
 ### [.NET](service-bus-dotnet-get-started-with-queues.md)
 ### [Java](service-bus-java-how-to-use-queues.md)
@@ -28,21 +29,22 @@
 ### [Premium メッセージング](service-bus-premium-messaging.md)
 ### [Azure キューと Service Bus キューを比較する](service-bus-azure-and-service-bus-queues-compared-contrasted.md)
 ### [パフォーマンスを最適化する](service-bus-performance-improvements.md)
+### [geo ディザスター リカバリーと geo レプリケーション](service-bus-geo-dr.md)
 ### [非同期メッセージングと高可用性](service-bus-async-messaging.md)
-### [故障と災害の扱い](service-bus-outages-disasters.md)
-### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
+### [故障と障害の扱い](service-bus-outages-disasters.md)
 
 ## 開発
-### [キュー、トピック、サブスクリプション](service-bus-queues-topics-subscriptions.md)
-### [キューを使用するアプリ](service-bus-create-queues.md)
-### [トピック/サブスクリプションを使用するアプリ](service-bus-create-topics-subscriptions.md)
+### メッセージの処理
+#### [メッセージ、ペイロード、シリアル化](service-bus-messages-payloads.md)
+#### [メッセージの転送、ロック、解決](message-transfers-locks-settlement.md)
+#### [メッセージのシーケンス処理とタイムスタンプ](message-sequencing.md)
+#### [メッセージの有効期限](message-expiration.md)
 ### [認証と権限承認](service-bus-authentication-and-authorization.md)
 #### [ACS から SAS への移行](service-bus-migrate-acs-sas.md)
 #### [Shared Access Signature による認証](service-bus-sas.md)
+### [トピック フィルターとアクション](topic-filters.md)
 ### [パーティション分割されたキューとトピック](service-bus-partitioning.md)
-### [配達不能キュー](service-bus-dead-letter-queues.md)
-### [トランザクション処理](service-bus-transactions.md)
-### [診断ログ](service-bus-diagnostic-logs.md)
+### [メッセージ セッション](message-sessions.md)
 ### AMQP
 #### [AMQP の概要](service-bus-amqp-overview.md)
 #### [.NET](service-bus-amqp-dotnet.md)
@@ -50,9 +52,20 @@
 #### [Java Message Service と AMQP](service-bus-java-how-to-use-jms-api-amqp.md)
 #### [AMQP プロトコル ガイド](service-bus-amqp-protocol-guide.md)
 #### [AMQP 要求応答ベースの操作](service-bus-amqp-request-response.md)
-
+### 高度な機能
+#### [配達不能キュー](service-bus-dead-letter-queues.md)
+#### [メッセージのプリフェッチ](service-bus-prefetch.md)
+#### [重複メッセージ検出](duplicate-detection.md)
+#### [メッセージ カウンター](message-counters.md)
+#### [メッセージの遅延](message-deferral.md)
+#### [メッセージの読み取り](message-browsing.md)
+#### [自動転送によるエンティティのチェーン](service-bus-auto-forwarding.md)
+#### [トランザクション処理](service-bus-transactions.md)
+#### [ペアの名前空間の実装](service-bus-paired-namespaces.md)
 ## 管理
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
+### [診断ログ](service-bus-diagnostic-logs.md)
+### [メッセージ エンティティの一時停止と再アクティブ化](entity-suspend.md)
 ### [Azure Resource Manager テンプレートの使用](service-bus-resource-manager-overview.md)
 #### [名前空間を作成する](service-bus-resource-manager-namespace.md)
 #### [名前空間とキューを作成する](service-bus-resource-manager-namespace-queue.md)
@@ -60,14 +73,15 @@
 #### [名前空間とキューの承認規則を作成する](service-bus-resource-manager-namespace-auth-rule.md)
 #### [トピック、サブスクリプション、ルールを含んだ名前空間を作成する](service-bus-resource-manager-namespace-topic-with-rule.md)
 #### 
-### [PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
+### [Azure PowerShell を使用したエンティティのプロビジョニング](service-bus-manage-with-ps.md)
 
 # リファレンス
 ## .NET
 ### [Microsoft.ServiceBus.Messaging (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging)
 ### [Microsoft.Azure.ServiceBus (.NET Standard)](/dotnet/api/microsoft.azure.servicebus)
-## [PowerShell](/powershell/module/azurerm.servicebus)
-## [REST](/rest/api/servicebus)
+## [Java](/java/api/overview/azure/servicebus)
+## [Azure PowerShell](/powershell/module/azurerm.servicebus)
+## [REST ()](/rest/api/servicebus)
 ## [例外](service-bus-messaging-exceptions.md)
 ## [クォータ](service-bus-quotas.md)
 ## [SQLFilter 構文](service-bus-messaging-sql-filter.md)

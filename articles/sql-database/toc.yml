@@ -169,8 +169,6 @@
           href: sql-database-operate-query-store.md
         - name: 拡張イベント
           href: sql-database-xevent-db-diff-from-svr.md
-        - name: 互換性レベル
-          href: sql-database-compatibility-level-query-performance-130.md
         - name: インメモリの監視
           href: sql-database-in-memory-oltp-monitoring.md
     - name: スケールアウト
@@ -266,6 +264,12 @@
         - name: PowerShell による仮想ネットワーク ルール
           href: sql-database-vnet-service-endpoint-rule-powershell.md
     - name: ビジネス継続性
+      items:
+        - name: コンテナーの構成 - バックアップ
+          href: sql-database-long-term-backup-retention-configure.md
+        - name: geo レプリケーション - Portal
+          href: sql-database-geo-replication-portal.md
+    - name: データの読み込みと移動
       items:
         - name: BCP を使用したデータの読み込み
           href: sql-database-load-from-csv-with-bcp.md

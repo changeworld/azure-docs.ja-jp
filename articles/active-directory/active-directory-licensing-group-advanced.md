@@ -16,14 +16,12 @@ ms.workload: identity
 ms.date: 06/02/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 75cafa6868d54f9d8a7e0dbe9f2a9e85ed43f16f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 87cc66752dae1f4bd0903607d8a8ae9bd9125b11
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Azure Active Directory のライセンス管理にグループを使用する際のシナリオ、制限、および既知の問題
 
 次の情報と例を使用して Azure Active Directory (Azure AD) のグループベースのライセンスについて詳しく理解できます。
@@ -200,6 +198,16 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 >[!TIP]
 > *[ユーザー ライセンスの変更]* に関連する項目をクリックすると、個々のユーザーごとに適用されたライセンスの変更の詳細が表示されます。
 
+## <a name="deleting-a-group-with-an-assigned-license"></a>ライセンスが割り当てられているグループを削除する
+
+アクティブなライセンスが割り当てられているグループを削除することはできません。 管理者がグループを削除できてしまうと、気が付かないうちに、ユーザーからライセンスが削除されてしまいます。このため、こうしたグループを削除するには、最初にそのグループからライセンスを削除する必要があります。
+
+Azure Portal でグループを削除しようとすると、次のようなエラー通知が表示されることがあります。![グループの削除失敗のスクリーンショット](media/active-directory-licensing-group-advanced/groupdeletionfailed.png)
+
+グループの **[ライセンス]** タブに移動し、割り当てられているライセンスがないかどうかを確認します。 ライセンスが割り当てられている場合は、そのライセンスを削除してから、再度グループ削除してみてください。
+
+PowerShell または Graph API でグループを削除しようとした場合も、同様のエラーが発生することがあります。 オンプレミスから同期されたグループを使用している場合、Azure AD でのグループ削除に失敗すると、Azure AD Connect によってエラーが通知されます。 このような場合は、そのグループにライセンスが割り当てられていないかどうかを確認し、そのライセンスを最初に削除します。
+
 ## <a name="limitations-and-known-issues"></a>制限事項と既知の問題
 
 グループベースのライセンスを使用する場合、次の制限事項と既知の問題の一覧について理解することをお勧めします。
@@ -230,4 +238,3 @@ New Value : [Users successfully assigned licenses: 6, Users for whom license ass
 * [Assigning licenses to a group in Azure Active Directory](active-directory-licensing-group-assignment-azure-portal.md) (Azure Active Directory でのグループへのライセンス割り当て)
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [How to migrate individual licensed users to group-based licensing in Azure Active Directory](active-directory-licensing-group-migration-azure-portal.md) (Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法)
-

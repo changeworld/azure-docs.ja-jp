@@ -3,7 +3,7 @@ title: "Azure ストレージ エミュレーターを使用した開発とテ�
 description: "Azure ストレージ エミュレーターは、Azure Storage アプリケーションを開発およびテストするのための無料のローカル開発環境を提供します。 要求の認証方法、アプリケーションからエミュレーターへの接続方法、コマンド ライン ツールの使用方法について説明します。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: f480b059-df8a-4a63-b05a-7f2f5d1f5c2a
@@ -13,17 +13,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: 7d86d5e8547d977c07cfbb0597b74382172a8472
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: eef0ff164b2857172fc24d8a0af7beddb29b262c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Azure ストレージ エミュレーターを使用した開発とテスト
 
-Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、キュー、テーブル サービスを開発用にエミュレートするローカル環境が利用できます。 ストレージ エミュレーターを使用すると、ストレージ サービスに対するアプリケーションのローカル テストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure ストレージ アカウントの使用に切り替えることができます。
+Microsoft Azure ストレージ エミュレーターでは、Azure の BLOB、Queue、Table service を開発用にエミュレートするローカル環境が利用できます。 ストレージ エミュレーターを使用すると、ストレージ サービスに対するアプリケーションのローカル テストが、Azure サブスクリプションを作成したりコストをかけたりせずに実施できます。 エミュレーターでのアプリケーションの動作に満足できたら、クラウドでの Azure ストレージ アカウントの使用に切り替えることができます。
 
 ## <a name="get-the-storage-emulator"></a>ストレージ エミュレーターの取得
 ストレージ エミュレーターは、 [Microsoft Azure SDK](https://azure.microsoft.com/downloads/)に付属しています。 また、[スタンドアロンのインストーラー](https://go.microsoft.com/fwlink/?linkid=717179&clcid=0x409) (直接ダウンロード) を使用して、ストレージ エミュレーターをインストールすることも可能です。 ストレージ エミュレーターをインストールするには、お使いのコンピューターに対する管理者特権が必要です。
@@ -209,7 +208,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 
 ## <a name="storage-emulator-release-notes"></a>ストレージ エミュレーター リリース ノート
 ### <a name="version-52"></a>バージョン 5.2
-* ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2017-04-17 がサポートされるようになりました。
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2017-04-17 がサポートされるようになりました。
 * テーブルのプロパティ値が適切にエンコードされないバグを修正しました。
 
 ### <a name="version-51"></a>バージョン 5.1
@@ -237,10 +236,10 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * 最大および最小 DateTime 値が不適切なタイム ゾーンで報告される場合があるバグを修正しました。
 
 ### <a name="version-43"></a>バージョン 4.3
-* ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2015-07-08 がサポートされるようになりました。
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2015-07-08 がサポートされるようになりました。
 
 ### <a name="version-42"></a>バージョン 4.2
-* ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2015-04-05 がサポートされるようになりました。
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2015-04-05 がサポートされるようになりました。
 
 ### <a name="version-41"></a>Version 4.1
 * ストレージ エミュレーターでは、新しい追加 BLOB 機能を除く BLOB、Queue、Table service エンドポイント上のストレージ サービスのバージョン 2015-02-21 がサポートされるようになりました。
@@ -251,7 +250,7 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * ストレージ エミュレーターの実行可能ファイルの名前が *AzureStorageEmulator.exe*に変更されました。
 
 ### <a name="version-32"></a>Version 3.2
-* ストレージ エミュレーターで、BLOB、Queue、および Table サービス エンドポイント上のストレージ サービスのバージョン 2014-02-14 がサポートされるようになりました。 File サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。 バージョン 2014-02-14 の詳細については、 [Azure Storage サービスのバージョン管理](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) に関するページを参照してください。
+* ストレージ エミュレーターで、BLOB、Queue、および Table service エンドポイント上のストレージ サービスのバージョン 2014-02-14 がサポートされるようになりました。 File サービス エンドポイントは、ストレージ エミュレーターでは現在サポートされていません。 バージョン 2014-02-14 の詳細については、 [Azure Storage サービスのバージョン管理](/rest/api/storageservices/Versioning-for-the-Azure-Storage-Services) に関するページを参照してください。
 
 ### <a name="version-31"></a>Version 3.1
 * 読み取りアクセス地理冗長ストレージ (RA-GRS) が、ストレージ エミュレーターでサポートされるようになりました。 Get Blob Service Stats、Get Queue Service Stats、および Get Table Service Stats API は、アカウントのセカンダリ拠点でサポートされており、常に LastSyncTime 応答要素の値を、基になる SQL データベースに準じた現在時刻として返します。 ストレージ エミュレーターを使用した、プログラムによるセカンダリへのアクセスには、.NET 用ストレージ クライアント ライブラリの Version 3.2 以降を使用してください。 詳細については、.NET リファレンス用の Microsoft Azure Storage クライアント ライブラリを参照してください。
@@ -266,4 +265,3 @@ Version 3.0 以降、コンソール ウィンドウは、ストレージ エミ
 * コミュニティで管理されているオープン ソースのクロスプラットフォーム ストレージ エミュレーター [Azurite](https://github.com/arafato/azurite) を評価します。 
 * 「[.NET を使用した Azure Storage サンプル](../storage-samples-dotnet.md)」には、アプリケーションを開発する際に使用できるいくつかのコード サンプルへのリンクが含まれています。
 * [Microsoft Azure ストレージ エクスプローラー](http://storageexplorer.com)を使用して、ストレージ アカウント内やストレージ エミュレーター内のリソースを操作できます。
-

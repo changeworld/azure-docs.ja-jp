@@ -12,13 +12,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 09/15/2017
 ms.author: skwan
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 891a895419a4fe882e01495231f33a1d79eb42a9
+ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.openlocfilehash: c18fd5d5b528dfbafa456b3702996b80c3a60a02
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/19/2017
 
 ---
 
@@ -57,7 +57,6 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 | サービス | 状態 | 日付 |
 | --- | --- | --- |
 | Azure Virtual Machines | Preview | 2017 年 9 月 |
-| Azure 仮想マシン スケール セット | Preview | 2017 年 9 月 |
 | Azure App Service | Preview | 2017 年 9 月 |
 | Azure Functions | Preview | 2017 年 9 月 |
 
@@ -69,7 +68,6 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 | --- | --- | --- | --- |
 | Azure リソース マネージャー | https://management.azure.com/ | 使用可能 | 2017 年 9 月 |
 | Azure Key Vault | https://vault.azure.net/ | 使用可能 | 2017 年 9 月 |
-| Azure SQL | https://database.windows.net/ | 使用可能 | 2017 年 9 月 |
 | Azure Data Lake | https://datalake.azure.net/ | 使用可能 | 2017 年 9 月 |
 
 ## <a name="how-much-does-managed-service-identity-cost"></a>管理対象サービス ID にはどれくらいのコストがかかりますか。
@@ -85,28 +83,35 @@ Azure サービスで管理対象サービス ID を有効にすると、Azure �
 
 ## <a name="try-managed-service-identity"></a>管理対象のサービス ID を試行する
 
-基本的な内容について理解したら、管理対象サービス ID のチュートリアルを試行し、さまざまな Azure リソースにアクセスする方法を参照してください。
+さまざまな Azure リソースにアクセスするためのエンド ツー エンドのシナリオについては、管理対象サービス ID のチュートリアルを試してください。
 
-- [Windows VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-windows-vm-access-arm.md)
-- [Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-linux-vm-access-arm.md)
-- [Windows VM 管理対象サービスID (MSI) を使用して Azure Storage にアクセスする](msi-tutorial-windows-vm-access-storage.md)
-- [Linux VM 管理対象サービスID (MSI) を使用して Azure Storage にアクセスする](msi-tutorial-linux-vm-access-storage.md)
-- [Windows VM 管理対象サービスID (MSI) を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-windows-vm-access-nonaad.md)
-- [Linux VM 管理対象サービスID (MSI) を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-linux-vm-access-nonaad.md)
-- [Azure App Service または Azure Functions でのユーザー管理のサービス ID](/azure/app-service/app-service-managed-service-identity)
+| アクセス元の MSI 対応リソース | 説明内容 |
+| ------- | -------- |
+| Azure VM (Windows) | [Windows VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-windows-vm-access-arm.md) |
+|                    | [Windows VM 管理対象サービスID (MSI) を使用して Azure Storage にアクセスする](msi-tutorial-windows-vm-access-storage.md) |
+|                    | [Windows VM 管理対象サービス ID (MSI) および Azure Key Vault を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-windows-vm-access-nonaad.md) |
+| Azure VM (Linux)   | [Linux VM 管理対象サービスID (MSI) を使用して Azure Resource Manager にアクセスする](msi-tutorial-linux-vm-access-arm.md) |
+|                    | [Linux VM 管理対象サービスID (MSI) を使用して Azure Storage にアクセスする](msi-tutorial-linux-vm-access-storage.md) |
+|                    | [Linux VM 管理対象サービスID (MSI) を使用して Azure AD 以外のリソースにアクセスする](msi-tutorial-linux-vm-access-nonaad.md) |
+| Azure App Service  | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
+| Azure 関数     | [Azure App Service または Azure Functions で管理対象サービス ID を使用する](/azure/app-service/app-service-managed-service-identity) |
 
+Azure リソースでの MSI の有効化の基礎についてのみ知りたい場合は、以下を参照してください。
 
+| Azure リソース | MSI の有効化/無効化に使用するもの |
+| ------------------ | ------------------------------------ |
+| Azure VM (Windows) | [Azure ポータル](msi-qs-configure-portal-windows-vm.md) |
+|                    | [PowerShell](msi-qs-configure-powershell-windows-vm.md) |
+|                    | [Azure CLI](msi-qs-configure-cli-windows-vm.md)|
+|                    | [Azure リソース マネージャーのテンプレート](msi-qs-configure-template-windows-vm.md) |
 
+次に、ロール ベースのアクセス制御 (RBAC) を使用して、他の Azure リソースにアクセスするための MSI 権限を付与する方法については、以下を参照してください。
 
-
-
-
-
-
-
-
-
-
+| アクセス元の MSI 対応リソース | 他の Azure リソースに対するアクセス権の割り当てに使用するもの |
+| ------------------------ | ---------------------------------------------------------- |
+| Azure VM (Windows) | [Azure ポータル](msi-howto-assign-access-portal.md) |
+|                    | [PowerShell](msi-howto-assign-access-powershell.md) |
+|                    | [Azure CLI](msi-howto-assign-access-CLI.md) |
 
 
 

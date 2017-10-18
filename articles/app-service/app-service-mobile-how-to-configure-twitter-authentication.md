@@ -14,12 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: mahender
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cfe4957191ad5716f1086a1a332faf6a52406770
-ms.openlocfilehash: 1cd6ace16488cd6014db4249d4a209ac36485ed7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/09/2017
-
+ms.openlocfilehash: afde020b7817dc58ecea24eb4a09cf93d0986eb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-your-app-service-application-to-use-twitter-login"></a>Twitter ログインを使用するように App Service アプリケーションを構成する方法
 [!INCLUDE [app-service-mobile-selector-authentication](../../includes/app-service-mobile-selector-authentication.md)]
@@ -34,7 +33,7 @@ ms.lasthandoff: 03/09/2017
 3. 新しいアプリの **[Name (名前)]** と **[Description (説明)]** を入力します。 **[Website (Web サイト)]** 値にアプリケーションの **URL** を貼り付けます。 次に、**[Callback URL (コールバック URL)]** に先ほどコピーした**コールバック URL** を貼り付けます。 この URL は、モバイル アプリ ゲートウェイの後にパス */.auth/login/twitter/callback* を追加したフォーマットです。 たとえば、「 `https://contoso.azurewebsites.net/.auth/login/twitter/callback`」のように入力します。 HTTPS スキームを使用していることを確認します。
 4. ページの下部で、条項を読み、同意します。 **[Create your Twitter application]**をクリックします。 これでアプリケーションが登録され、アプリケーションの詳細が表示されます。
 5. **[Settings (設定)]** タブをクリックし、**[Allow this application to be used to sign in with Twitter (このアプリケーションが Twitter でのサインインに使用されることを許可する)]** チェック ボックスをオンにして、**[Update Settings (設定の更新)]** をクリックします。
-6. **[Keys and Access Tokens]** タブをクリックします。 **[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
+6. **[Keys and Access Tokens]** タブをクリックします。**[Consumer Key (API Key) (コンシューマー キー (API キー))]** と **[Consumer secret (API Secret) (コンシューマー シークレット (API シークレット))]** の値を書き留めます。
    
    > [!NOTE]
    > コンシューマー シークレットは、重要なセキュリティ資格情報です。 このシークレットは、他のユーザーと共有したり、アプリケーションと共に配布したりしないでください。
@@ -67,4 +66,3 @@ ms.lasthandoff: 03/09/2017
 [Twitter Developers]: http://go.microsoft.com/fwlink/p/?LinkId=268300
 [Azure ポータル]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md
-

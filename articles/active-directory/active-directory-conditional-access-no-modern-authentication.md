@@ -15,14 +15,12 @@ ms.workload: identity
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: 5d09021627ca60a94cb1984b29b8dc7913d093d6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-sharepoint-online-and-exchange-online-for-azure-active-directory-conditional-access"></a>SharePoint Online と Exchange Online に Azure Active Directory の条件付きアクセスを設定する 
 
 [Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、ユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセスを使って SharePoint Online と Exchange Online に対するアクセスを制御するには、以下が必要になります:
@@ -58,7 +56,7 @@ ms.lasthandoff: 09/14/2017
 
 SharePoint Online は、先進認証のほかにレガシ認証プロトコルもサポートしています。 レガシ認証プロトコルが有効になっていると、先進認証を使用していないクライアントについては SharePoint 向けの条件付きアクセス ポリシーが適用されなくなります。
 
-**Set-SPOTenant[](https://technet.microsoft.com/library/fp161390.aspx)** コマンドレットを使うと、SharePoint へのアクセスに関してレガシ認証プロトコルを無効にできます: 
+**[Set-SPOTenant](https://technet.microsoft.com/library/fp161390.aspx)** コマンドレットを使うと、SharePoint へのアクセスに関してレガシ認証プロトコルを無効にできます: 
 
     Set-SPOTenant -LegacyAuthProtocolsEnabled $false
 
@@ -183,7 +181,6 @@ AD FS レベルでトラフィックを有効にしたり、ブロックした�
 ## <a name="next-steps"></a>次のステップ
 
 詳細については、[Azure Active Directory の条件付きアクセス](active-directory-conditional-access.md)に関するページを参照してください。
-
 
 
 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: fd2f4682a04c557b69bbfce115f41c54a96d462c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-batch-account-with-the-azure-cli"></a>Azure CLI で Batch アカウントを作成する
 
 このスクリプトは、Azure Batch アカウントを作成し、アカウントのさまざまなプロパティを照会および更新する方法を示します。
@@ -34,14 +32,14 @@ Azure CLI をまだインストールしていない場合は、[Azure CLI イ�
 
 Batch アカウントを作成するときに、既定で、Batch サービスによって内部的にコンピューティング ノードが割り当てられます。 割り当てられるコンピューティング ノードは個々のコア クォータによって変わります。また、アカウントは、共有キー資格情報または Azure Active Dirctory トークンによって認証できます。
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/create-account/create-account.sh "アカウントを作成する")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account.sh "Create Account")]
 
 ## <a name="batch-account-using-user-subscription-sample-script"></a>ユーザー サブスクリプションのサンプル スクリプトを使用した Batch アカウント
 
 Batch で Azure サブスクリプション内にコンピューティング ノードを作成することもできます。
 サブスクリプションにコンピューティング ノードを割り当てるアカウントは、Azure Active Directory トークンを使用して認証される必要があります。また、割り当てられるコンピューティング ノードは、サブスクリプション クォータに加算されます。 このモードでアカウントを作成するには、アカウントの作成時に Key Vault 参照を指定する必要があります。
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "ユーザー サブスクリプションを使用してアカウントを作成する")]
+[!code-azurecli[main](../../../cli_scripts/batch/create-account/create-account-user-subscription.sh  "Create Account using User Subscription")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -73,4 +71,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Batch CLI サンプル スクリプトは、[Azure Batch CLI のドキュメント](../batch-cli-samples.md)のページにあります。
-

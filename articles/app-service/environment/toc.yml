@@ -3,25 +3,19 @@
   items:
     - name: App Service 環境について
       href: intro.md
-    - name: ホスティング オプションの比較
-      href: ../choose-web-site-cloud-service-vm.md?toc=%2fazure%2fapp-service%2fenvironment%2ftoc.json
 - name: クイック スタート
   expanded: true
   items:
-    - name: App Service 環境でアプリを作成する
+    - name: 外部 ASE の作成
       href: create-external-ase.md
-    - name: テンプレートを使用して作成する
-      href: create-from-template.md
+    - name: 内部 ASE の作成
+      href: create-ilb-ase.md
 - name: Tutorials (チュートリアル)
   items:
-    - name: 分離されたアプリの作成
-      href: create-ilb-ase.md
-    - name: WAP との統合
+    - name: WAF との統合
       href: app-service-app-service-environment-web-application-firewall.md
-    - name: パブリック アプリへの受信トラフィックの制御
-      href: app-service-app-service-environment-control-inbound-traffic.md
-    - name: ASE におけるアプリのスケールアウト
-      href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+    - name: TLS の構成
+      href: app-service-app-service-environment-custom-settings.md
 - name: サンプル
   items:
     - name: Azure CLI
@@ -32,50 +26,49 @@
   items:
     - name: ネットワーク アーキテクチャ
       href: network-info.md
-    - name: 管理アドレス
-      href: management-addresses.md
     - name: 地理的に分散されたスケール
       href: app-service-app-service-environment-geo-distributed-scale.md
     - name: ASEv1
-      items:
-        - name: ASEv1 の概要
-          href: app-service-app-service-environment-intro.md
-        - name: ネットワーク アーキテクチャ
-          href: app-service-app-service-environment-network-architecture-overview.md
+      href: app-service-app-service-environment-intro.md
 - name: ハウツー ガイド
   items:
-    - name: ASE の構成
+    - name: ASE の使用
+      href: using-an-ase.md
+    - name: テンプレートからの ASE の作成
+      href: create-from-template.md
+- name: リファレンス
+  items:
+    - name: 管理アドレス
+      href: management-addresses.md
+    - name: ASEv1 ドキュメント
       items:
-        - name: ASE の使用
-          href: using-an-ase.md
+        - name: ASEv1 の作成
+          href: app-service-web-how-to-create-an-app-service-environment.md
+        - name: ASEv1 の構成
+          href: app-service-web-configure-an-app-service-environment.md
+        - name: 内部 ASEv1 の作成
+          href: app-service-environment-with-internal-load-balancer.md
+        - name: テンプレートからの内部 ASEv1 の作成
+          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
+        - name: ASEv1 での自動スケールの構成
+          href: app-service-environment-auto-scale.md
+        - name: ASEv1 におけるアプリのスケールアウト
+          href: app-service-web-scale-a-web-app-in-an-app-service-environment.md
+        - name: ネットワーク アーキテクチャ
+          href: app-service-app-service-environment-network-architecture-overview.md
+        - name: ASEv1 での Web アプリの作成
+          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
+        - name: 高密度ホスティング
+          href: app-service-high-density-hosting.md
         - name: バックエンドへの接続
           href: app-service-app-service-environment-securely-connecting-to-backend-resources.md
         - name: ExpressRoute の構成
           href: app-service-app-service-environment-network-configuration-expressroute.md
-    - name: ASE のセキュリティ保護
-      items:
-        - name: TLS の構成
-          href: app-service-app-service-environment-custom-settings.md
+        - name: パブリック アプリへの受信トラフィックの制御
+          href: app-service-app-service-environment-control-inbound-traffic.md
         - name: 複数層セキュリティの使用
           href: app-service-app-service-environment-layered-security.md
-    - name: ASE の監視
-      items:
-        - name: ポータルでの監視
-          href: app-service-web-configure-an-app-service-environment.md
-    - name: ASE1 の使用
-      items:
-        - name: 自動スケールの構成
-          href: app-service-environment-auto-scale.md
-        - name: ASEv1 の作成
-          href: app-service-web-how-to-create-an-app-service-environment.md
-        - name: ASEv1 での Web アプリの作成
-          href: app-service-web-how-to-create-a-web-app-in-an-ase.md
-        - name: ASEv1 での内部アプリの作成
-          href: app-service-environment-with-internal-load-balancer.md
-        - name: テンプレートを使用した内部アプリの作成
-          href: app-service-app-service-environment-create-ilb-ase-resourcemanager.md
-        - name: 高密度ホスティング
-          href: app-service-high-density-hosting.md
+    - name: CLI 2.0
 - name: リファレンス
   items:
     - name: Azure CLI

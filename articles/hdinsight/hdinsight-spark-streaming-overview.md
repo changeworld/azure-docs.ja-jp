@@ -4,7 +4,7 @@ description: "HDInsight Spark クラスターで Spark ストリーミング ア
 services: hdinsight
 documentationcenter: 
 tags: azure-portal
-author: maxluk
+author: raghavmohan
 manager: jhubbard
 editor: cgronlun
 ms.assetid: 
@@ -15,13 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
-ms.author: nitinme
+ms.author: ramoha
+ms.openlocfilehash: e80b69fa3e60618dbaccd612114200a941019854
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7608951ffb79d945ce3271792e7cf1a0d0b254b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-spark-streaming"></a>Spark ストリーミングの概要
 

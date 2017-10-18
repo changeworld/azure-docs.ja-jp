@@ -39,6 +39,8 @@
           href: backup-azure-vm-backup-faq.md
         - name: Azure Backup エージェントを使用したファイル フォルダー バックアップに関する FAQ
           href: backup-azure-file-folder-backup-faq.md
+        - name: バックアップ コンテナーの自動アップグレードに関する FAQ
+          href: backup-upgrade-backup-vault.md
     - name: ロールベースのアクセス制御
       href: backup-rbac-rs-vault.md
     - name: ハイブリッド バックアップのセキュリティ

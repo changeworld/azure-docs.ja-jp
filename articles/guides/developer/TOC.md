@@ -1,11 +1,5 @@
 # 概要
 ## [開発者ガイド](azure-developer-guide.md) 
-### [Azure とは](azure-developer-guide.md#what-is-azure)
-### [どこから始めるか](azure-developer-guide.md#where-do-i-start)
-### [Azure リージョン](azure-developer-guide.md#azure-regions)
-### [アプリケーションとプロジェクトを管理する方法](azure-developer-guide.md#how-do-i-manage-my-applications-and-projects)
-### [アカウント、サブスクリプション、課金の概要](azure-developer-guide.md#understanding-accounts-subscriptions-and-billing)
-
 ## [Azure サービスの概要](https://docs.microsoft.com/azure/fundamentals-introduction-to-azure?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [Portal の概要](https://docs.microsoft.com/azure/azure-portal-overview?toc=%2fazure%2fdeveloper-guide%2ftoc.json)
 ## [SDK とツール](https://docs.microsoft.com/azure/index#pivot=sdkstools)

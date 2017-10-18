@@ -15,13 +15,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/01/2017
-ms.author: nitinme
+ms.author: maxluk
+ms.openlocfilehash: 48c6a24f6c820eaf09da6fa3a0a496ddbef1e7a0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 108b2e25dee63a15ac703d2a9b617bfb155f95da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-spark-from-the-spark-shell"></a>Spark Shell から Spark を実行する
 
@@ -79,5 +78,4 @@ Spark シェル コマンド (`spark-shell`、`pyspark`、または `sparkR`) �
 - 「[Azure HDInsight での Spark の概要](hdinsight-apache-spark-overview.md)」で概要を確認します。
 - Spark クラスターや SparkSQL の操作方法について、「[Azure HDInsight での Apache Spark クラスターの作成](hdinsight-apache-spark-jupyter-spark-sql.md)」を確認します。
 - Spark を使用してストリーミング データを処理するアプリケーションの作成方法について、[Spark 構造化ストリーミング](hdinsight-spark-streaming-overview.md)に関する記事を参照します。
-
 

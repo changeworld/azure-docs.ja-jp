@@ -15,14 +15,17 @@ ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ce2978d345262b68b177a38a978133a71da2806f
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
+ms.lasthandoff: 09/25/2017
 
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
-Development Kit をデプロイするには、次の手順を完了する必要があります。
+
+*適用先: Azure Stack Development Kit*
+
+[Azure Stack Development Kit](azure-stack-poc.md) をデプロイするには、次の手順を完了する必要があります。
 
 1. [デプロイ パッケージをダウンロード](https://azure.microsoft.com/overview/azure-stack/try/?v=try)して、Cloudbuilder.vhdx を取得します。
 2. 開発キットをインストールするコンピューター (開発キットのホスト) を構成するために、asdk-installer.ps1 スクリプトを実行し、[cloudbuilder.vhdx を準備](#prepare-the-development-kit-host)します。 この手順の後に、開発キットのホストは、Cloudbuilder.vhdx から起動します。
@@ -111,7 +114,7 @@ Development Kit をデプロイするには、次の手順を完了する必要�
 9. **[Verifying network interface card properties]\(ネットワーク インターフェイス カードのプロパティを確認しています\)** ページに、進行状況バーが表示されます。 
     - **[An update cannot be downloaded]\(更新プログラムをダウンロードできませんでした\)** と書かれている場合、ページの指示に従います。
     - **[完了]** と書かれている場合、**[次へ]** をクリックします。
-10. **[概要] ページで **[デプロイ]** をクリックします。**
+10. **[概要] ページで** [デプロイ] **をクリックします。**
 11. Azure Active Directory のデプロイを使用している場合、Azure Active Directory のグローバル管理者アカウントの資格情報を入力するよう求められます。
 12. デプロイには場合によって数時間かかります。その間システムは自動的に 1 回再起動されます。
    

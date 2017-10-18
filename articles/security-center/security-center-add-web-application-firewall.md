@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/09/2017
 ms.author: terrylan
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e858db97c3e7a832ad01e16a60d486a758109d7c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-web-application-firewall-in-azure-security-center"></a>Azure Security Center で Web アプリケーション ファイアウォールを追加する
 Azure Security Center では、Web アプリケーションを保護するために、Microsoft パートナーの Web アプリケーション ファイアウォール (WAF) を追加することを勧める場合があります。 このドキュメントでは、この推奨事項を適用する方法の例を紹介します。
@@ -50,11 +49,11 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
 8. **[新しい Web アプリケーション ファイアウォール]** ブレードに戻り、**[WAF 情報]** を選択します。 **[WAF 情報]** ブレードで、WAF 自体を構成します。 手順 7. では、WAF が実行される仮想マシンを構成できます。手順 8. では、WAF 自体をプロビジョニングできます。
 
 ## <a name="finalize-application-protection"></a>アプリケーション保護を完了する
-1. **[推奨事項]** ブレードに戻ります。 WAF を作成した後は、**[Finalize application protection] (アプリケーション保護を完了する)** という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
+1. **[推奨事項]** ブレードに戻ります。 WAF を作成した後は、**[Finalize application protection] \(アプリケーション保護を完了する)** という新しいエントリが生成されています。 このエントリは、WAF によるアプリケーションの保護を有効にするには、Azure Virtual Network 内で実際に WAF を接続するプロセスを完了する必要があることを示しています。
 
    ![アプリケーション保護を完了する][5]
 
-2. **[Finalize application protection] (アプリケーション保護を完了する)** を選択します。 新しいブレードが開きます。 トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
+2. **[Finalize application protection] \(アプリケーション保護を完了する)** を選択します。 新しいブレードが開きます。 トラフィックを再ルーティングする必要がある Web アプリケーションがあることが確認できます。
 3. 対象の Web アプリケーションを選択します。 Web アプリケーション ファイアウォールのセットアップを完了するための手順が表示されたブレードが開きます。 手順を最後まで実行し、 **[トラフィックを制限する]**を選択します。 Security Center によって WAF が接続されます。
 
    ![トラフィックを制限する][6]
@@ -87,4 +86,3 @@ Security Center では、仮想マシン上および App Service 環境 (ASE) �
 [4]: ./media/security-center-add-web-application-firewall/select-vm-config.png
 [5]: ./media/security-center-add-web-application-firewall/finalize-waf.png
 [6]: ./media/security-center-add-web-application-firewall/restrict-traffic.png
-

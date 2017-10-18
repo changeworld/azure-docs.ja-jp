@@ -3,7 +3,7 @@ title: "Azure Storage での BLOB の読み取り専用スナップショット�
 description: "BLOB のスナップショットを作成して、特定の時点での BLOB データをバックアップする方法について説明します。 スナップショットの課金方法と、スナップショットを使用して容量使用料金を最小限に抑える方法を理解します。"
 services: storage
 documentationcenter: 
-author: mmacy
+author: tamram
 manager: timlt
 editor: tysonn
 ms.assetid: 3710705d-e127-4b01-8d0f-29853fb06d0d
@@ -13,13 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: marsma
+ms.author: tamram
+ms.openlocfilehash: 7e891018ab110e7506601cd5b9b0460bf61711b4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: b1d87cd66457b08bba594bfc7de1e9e4e2dff1e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-blob-snapshot"></a>BLOB のスナップショットの作成
 
@@ -86,7 +85,7 @@ BLOB やスナップショットに関連するコピー操作は次のルール
 * ブロック BLOB のスナップショットを作成する場合、BLOB のコミットされたブロック リストもスナップショットにコピーされます。 コミット前のブロックはコピーされません。
 
 ## <a name="specify-an-access-condition"></a>アクセス条件の指定
-[CreateSnapshotAsync][dotnet_CreateSnapshotAsync] を呼び出すとき、アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。 アクセス条件を指定するには、[AccessCondition][dotnet_AccessCondition] パラメーターを使用します。 指定した条件を満たしていない場合、スナップショットは作成されず、BLOB サービスは状態コード [HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed を返します。
+[CreateSnapshotAsync][dotnet_CreateSnapshotAsync] を呼び出すとき、アクセス条件を指定することで、その条件を満たしている場合にのみスナップショットを作成できます。 アクセス条件を指定するには、[AccessCondition][dotnet_AccessCondition] パラメーターを使用します。 指定した条件を満たしていない場合、スナップショットは作成されず、Blob service は状態コード [HTTPStatusCode][dotnet_HTTPStatusCode].PreconditionFailed を返します。
 
 ## <a name="delete-snapshots"></a>スナップショットの削除
 スナップショットを持つ BLOB は、スナップショットも削除しないと削除できません。 スナップショットは個別に削除することも、コピー元 BLOB が削除されたときにすべてのスナップショットを削除するように指定することもできます。 スナップショットがまだ存在する BLOB を削除しようとすると、エラーが発生します。
@@ -136,7 +135,7 @@ Console.WriteLine(blobSnapshot.SnapshotQualifiedStorageUri.PrimaryUri);
 * ストレージ アカウントには、一意のブロックまたはページに対する料金が発生します。そのブロックまたはページが BLOB とスナップショットのどちらに含まれているかは関係ありません。 BLOB に関連付けられているスナップショットについてアカウントに追加料金が発生するのは、そのベースになっている BLOB を更新したときです。 ベース BLOB を更新すると、BLOB はスナップショットから分化します。 この場合、各 BLOB またはスナップショットの一意のブロックまたはページに対して課金されます。
 * ブロック BLOB 内のブロックを置き換えた場合、以後そのブロックは一意のブロックとして課金されます。 そのブロックに割り当てられているブロック ID とデータが、スナップショット側と同じであっても変わりません。 ブロックが再度コミットされると、そのブロックはスナップショット内の対応するブロックから分化し、そのデータに対する料金が発生します。 これは、まったく同じデータでページ BLOB 内のページを更新した場合にも当てはまります。
 * [UploadFromFile][dotnet_UploadFromFile]、[UploadText][dotnet_UploadText]、[UploadFromStream][dotnet_UploadFromStream]、[UploadFromByteArray][dotnet_UploadFromByteArray] のいずれかのメソッドを呼び出してブロック BLOB を置き換えると、その BLOB 内のすべてのブロックが置き換えられます。 その BLOB に関連付けられているスナップショットがある場合、ベース BLOB とスナップショットのすべてのブロックが分化し、両方の BLOB のすべてのブロックが課金対象となります。 これは、ベース BLOB 内のデータとスナップショット内のデータとがまったく同一であっても変わりません。
-* 2 つのブロックに格納されているデータが同一であるかどうかを判断する方法は、Azure BLOB サービスには用意されていません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、スナップショットがある BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
+* 2 つのブロックに格納されているデータが同一であるかどうかを判断する方法は、Azure Blob service には用意されていません。 アップロードされてコミットされたブロックは、同じデータや同じブロック ID がある場合でも、それぞれが一意のものとして扱われます。 料金は一意のブロックに対して発生するため、スナップショットがある BLOB を更新すると、一意のブロックが増え、追加料金が発生することを考慮することが重要です。
 
 ### <a name="minimize-cost-with-snapshot-management"></a>スナップショット管理によりコストを最小限に抑える
 

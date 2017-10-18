@@ -14,24 +14,22 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: mimig
+ms.openlocfilehash: e8b22dad84e89be6051041e60ca9d72ec4aa3c56
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8cc23d5c284123c7c04dda4b71fdb6275d32bf8d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-table-storage-from-nodejs"></a>Node.js から Azure Table Storage を使用する方法
 [!INCLUDE [storage-selector-table-include](../../includes/storage-selector-table-include.md)]
 [!INCLUDE [storage-table-cosmos-db-langsoon-tip-include](../../includes/storage-table-cosmos-db-langsoon-tip-include.md)]
 
 ## <a name="overview"></a>概要
-このトピックでは、Node.js アプリケーションで Azure Table サービスを使用して一般的なシナリオを実行する方法について説明します。
+このトピックでは、Node.js アプリケーションで Azure Table service を使用して一般的なシナリオを実行する方法について説明します。
 
 このトピックのコード例は、既に Node.js アプリケーションがあることを前提としています。 Azure で Node.js アプリケーションを作成する方法については、次のいずれかのトピックを参照してください。
 
-* [Azure App Service での Node.js Web アプリの作成](../app-service-web/app-service-web-get-started-nodejs.md)
-* [WebMatrix を使用した Node.js Web アプリの構築と Azure へのデプロイ](../app-service-web/web-sites-nodejs-use-webmatrix.md)
+* [Azure App Service での Node.js Web アプリの作成](../app-service/app-service-web-get-started-nodejs.md)
 * [Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../cloud-services/cloud-services-nodejs-develop-deploy-app.md) (Windows PowerShell を使用)
 
 [!INCLUDE [storage-table-concepts-include](../../includes/storage-table-concepts-include.md)]
@@ -451,4 +449,4 @@ tableSAS = tableSvc.generateSharedAccessSignature('hometasks', { Id: 'user2' });
 * [Microsoft Azure ストレージ エクスプローラー](../vs-azure-tools-storage-manage-with-storage-explorer.md)は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
 * [Azure Storage SDK for Node](https://github.com/Azure/azure-storage-node) リポジトリ
 * [Node.js デベロッパー センター](/develop/nodejs/)
-* [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ](../app-service-web/app-service-web-get-started-nodejs.md)
+* [Node.js アプリケーションの作成と Azure の Web サイトへのデプロイ](../app-service/app-service-web-get-started-nodejs.md)

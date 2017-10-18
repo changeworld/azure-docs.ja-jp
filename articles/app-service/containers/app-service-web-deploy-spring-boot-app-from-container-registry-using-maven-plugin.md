@@ -14,14 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: robmcm;kevinzha
+ms.openlocfilehash: b087003b3a1e236e4a306678904107b8bf99395e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 760543dc3880cb0dbe14070055b528b94cffd36b
-ms.openlocfilehash: f47ee59d72ea49d62be2cb435ebaf8bc841e4198
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/10/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-the-maven-plugin-for-azure-web-apps-to-deploy-a-spring-boot-app-in-azure-container-registry-to-azure-app-service"></a>Azure Web Apps 用の Maven プラグインを使用して Azure Container Registry の Spring Boot アプリを Azure App Service にデプロイする方法
 
 **[Spring Framework]** は、Java 開発者による Web、モバイル、および API アプリケーションの作成を支援する一般的なオープンソース フレームワークです。 このチュートリアルでは、[Spring Boot] (Spring の使用をすばやく開始するための規約駆動型手法) を使用して作成されたサンプル アプリを使用します。
@@ -49,11 +47,11 @@ ms.lasthandoff: 08/10/2017
 > このチュートリアルには仮想化要件があるため、仮想マシンでこの記事の手順を実行することはできません。仮想化機能を有効にした物理コンピューターを使用する必要があります。
 >
 
-## <a name="clone-the-sample-spring-boot-on-docker-web-app"></a>Docker Web アプリへの Spring Boot サンプルの複製
+## <a name="clone-the-sample-spring-boot-on-docker-web-app"></a>Docker Web アプリの Spring Boot サンプルの複製
 
 このセクションでは、コンテナー化された Spring Boot アプリケーションを複製してローカルでテストします。
 
-1. コマンド プロンプトまたはターミナル ウィンドウを開き、Spring Boot アプリケーションを保持するためのローカル ディレクトリを作成して、次の例のようにそのディレクトリを変更します。
+1. コマンド プロンプトまたはターミナル ウィンドウを開き、Spring Boot アプリケーションを保持するためのローカル ディレクトリを作成して、次の例のようにそのディレクトリに移動します。
    ```shell
    md C:\SpringBoot
    cd C:\SpringBoot
@@ -79,7 +77,7 @@ ms.lasthandoff: 08/10/2017
    mvn clean package
    ```
 
-1. Web アプリを作成したら、次の例のように Maven を使用して Web アプリを起動します。
+1. Web アプリを作成したら、次の例のように Maven を使って Web アプリを起動します。
    ```shell
    mvn spring-boot:run
    ```
@@ -99,7 +97,7 @@ ms.lasthandoff: 08/10/2017
 
 1. コマンド プロンプトを開きます。
 
-1. Azure CLI を使用して、Azure アカウントにサインインします。
+1. Azure CLI を使って、Azure アカウントにサインインします。
    ```azurecli
    az login
    ```
@@ -111,7 +109,7 @@ ms.lasthandoff: 08/10/2017
    ```
    ここでは `uuuuuuuu` がサービス プリンシパルのユーザー名で、`pppppppp` がパスワードです。
 
-1. Azure が次の例のように JSON で応答します。
+1. Azure が次の例に類似する JSON で応答します。
    ```json
    {
       "appId": "aaaaaaaa-aaaa-aaaa-aaaa-aaaaaaaaaaaa",
@@ -124,7 +122,7 @@ ms.lasthandoff: 08/10/2017
 
    > [!NOTE]
    >
-   > Maven プラグインを構成して Azure にコンテナーをデプロイするときに、この JSON の応答にある値を使用します。 `aaaaaaaa``uuuuuuuu``pppppppp``tttttttt` はプレースホルダーの値であり、次のセクションで Maven の `settings.xml` ファイルを構成するときにこれらの値を値の各要素にマップしやすくするために、ここでこのように使用しています。
+   > Maven プラグインを構成して Azure にコンテナーをデプロイするときに、この JSON の応答にある値を使用します。 `aaaaaaaa``uuuuuuuu``pppppppp``tttttttt` はプレースホルダーの値であり、次のセクションで Maven の `settings.xml` ファイルを構成するときに、これらの値と値の各要素を簡単にマップできるよう使用されています。
    >
    >
 
@@ -141,9 +139,9 @@ ms.lasthandoff: 08/10/2017
    ```azurecli
    az group create --name=wingtiptoysresources --location=westus
    ```
-   この例の `wingtiptoysresources` をリソース グループの一意の名前に置き換えます。
+   この例の `wingtiptoysresources` をご利用のリソース グループの一意の名前に置き換えます。
 
-1. リソース グループ内に、Spring Boot アプリ用のプライベートな Azure コンテナー レジストリを作成します。 
+1. リソース グループ内に、ご利用の Spring Boot アプリ用のプライベートな Azure コンテナー レジストリを作成します。 
    ```azurecli
    az acr create --admin-enabled --resource-group wingtiptoysresources --location westus --name wingtiptoysregistry --sku Basic
    ```
@@ -163,7 +161,7 @@ ms.lasthandoff: 08/10/2017
 
 ## <a name="add-your-azure-container-registry-and-azure-service-principal-to-your-maven-settings"></a>Maven の設定に Azure コンテナー レジストリと Azure サービス プリンシパルを追加する
 
-1. Maven の `settings.xml` ファイルをテキスト エディターで開くと、次の例のようにパスが記載されていることがあります。
+1. Maven の `settings.xml` ファイルをテキスト エディターで開きます。このファイルは次の例のようなパスに存在していることがあります。
    * `/etc/maven/settings.xml`
    * `%ProgramFiles%\apache-maven\3.5.0\conf\settings.xml`
    * `$HOME/.m2/settings.xml`
@@ -204,11 +202,11 @@ ms.lasthandoff: 08/10/2017
    各値の説明:
    要素 | Description
    ---|---|---
-   `<id>` | Web アプリを Azure にデプロイする際、セキュリティ設定を検索するために Maven が使用する一意の名前を指定します。
+   `<id>` | Web アプリを Azure にデプロイするとき、セキュリティ設定を検索するために Maven が使う一意の名前を指定します。
    `<client>` | サービス プリンシパルの `appId` 値が含まれています。
    `<tenant>` | サービス プリンシパルの `tenant` 値が含まれています。
    `<key>` | サービス プリンシパルの `password` 値が含まれています。
-   `<environment>` | ターゲットの Azure クラウド環境を定義します。この例では `AZURE` です。 (環境の全リストは、「[Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]」のドキュメントに記載しています)
+   `<environment>` | ターゲットの Azure クラウド環境を定義します。この例では `AZURE` です  (環境の全リストは、「[Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]」のドキュメントに記載しています)
 
 1. *settings.xml* ファイルを保存して閉じます。
 
@@ -306,10 +304,10 @@ Maven プラグイン用に変更できる値は複数あります。これら�
 要素 | Description
 ---|---|---
 `<version>` | [Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]のバージョンを指定します。 最新バージョンを使用していることを確認するために、[Maven Central Respository](http://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-webapp-maven-plugin%22) で一覧表示されているバージョンを確認してください。
-`<authentication>` | Azure の認証情報を指定します。この例では `azure-auth` を含む `<serverId>` 要素が認証情報です。Maven はこの値を、この記事の前のセクションで定義した Maven の*settings.xml* ファイル内にある Azure サービス プリンシパルを見つけるために使用します。
+`<authentication>` | Azure の認証情報を指定します。この例では `azure-auth` を含む `<serverId>` 要素が認証情報です。Maven はこの値を、この記事の前のセクションで定義した Maven の*settings.xml* ファイル内にある Azure サービス プリンシパルを見つけるために使います。
 `<resourceGroup>` | ターゲット リソース グループを指定します。この例では `wingtiptoysresources` です。 リソース グループが存在しない場合は、デプロイ中に新しいリソース グループが作成されます。
-`<appName>` | Web アプリのターゲット名を指定します。 この例では、ターゲット名は `maven-linux-app-${maven.build.timestamp}` です。混乱を避けるため、この例ではサフィックスの `${maven.build.timestamp}` を追加しています。 (タイムスタンプは省略可能です。アプリ名には一意の文字列を指定できます。)
-`<region>` | ターゲット リージョンを指定します。この例では `westus` です。 (全リストは、「[Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]」のドキュメントに記載しています。)
+`<appName>` | Web アプリのターゲット名を指定します。 この例では、ターゲット名は `maven-linux-app-${maven.build.timestamp}` です。混乱を避けるため、この例ではサフィックスの `${maven.build.timestamp}` を追加しています  (タイムスタンプは省略可能です。アプリ名には一意の文字列を指定できます)。
+`<region>` | ターゲット リージョンを指定します。この例では `westus` です  (全リストは、「[Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]」のドキュメントに記載しています。)
 `<containerSettings>` | コンテナーの名前を含むプロパティと URL を含むプロパティを指定します。
 `<appSettings>` | Azure に Web アプリをデプロイするときに使用するために、Maven 用の一意の設定を指定します。 この例では、`<property>` 要素には、アプリのポートを指定する子要素の名前と値のペアが含まれています。
 
@@ -323,7 +321,7 @@ Maven プラグイン用に変更できる値は複数あります。これら�
    mvn clean package
    ```
 
-1. Maven を使用して次の例のように Azure に Web アプリをデプロイします。
+1. Maven を使って次の例のように Azure に Web アプリをデプロイします。
    ```shell
    mvn azure-webapp:deploy
    ```
@@ -382,7 +380,7 @@ Web アプリのデプロイが完了すると、[Azure Portal] を使用して 
 [Azure Portal]: https://portal.azure.com/
 [Maven Plugin for Azure Web Apps (Azure Web Apps 用の Maven プラグイン)]: https://github.com/Microsoft/azure-maven-plugins/tree/master/azure-webapp-maven-plugin
 [Create a private Docker container registry using the Azure portal]: /azure/container-registry/container-registry-get-started-portal
-[Using a custom Docker image for Azure Web App on Linux]: /azure/app-service-web/app-service-linux-using-custom-docker-image
+[Using a custom Docker image for Azure Web App on Linux]: tutorial-custom-docker-image.md
 [Docker]: https://www.docker.com/
 [Maven 用の Docker プラグイン]: https://github.com/spotify/docker-maven-plugin
 [無料の Azure アカウント]: https://azure.microsoft.com/pricing/free-trial/
@@ -401,4 +399,3 @@ Web アプリのデプロイが完了すると、[Azure Portal] を使用して 
 [CR01]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/CR01.png
 [AP01]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/AP01.png
 [AP02]: ./media/app-service-web-deploy-spring-boot-app-from-container-registry-using-maven-plugin/AP02.png
-

@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/01/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 540d8974ee2c02f80bccf28764b4d0d243e98d85
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-conditional-access-for-virtual-private-network-connectivity-preview"></a>仮想プライベート ネットワーク接続用の Azure Active Directory の条件付きアクセス(プレビュー)
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 09/02/2017
 VPN 接続用の Azure AD 条件付きアクセスを構成するには、次の手順を完了する必要があります。 
 
 1.  VPN サーバーを構成する
-2.  VPN クライアントを構成する 
+2.  VPN クライアントを構成します 
 3.  条件付きアクセス ポリシーを構成する
 4.  確認
 
@@ -93,7 +92,7 @@ Azure ポータルで、2 つの証明書を作成して、証明書の有効期
 
     b. **[プライマリ]** として、**[はい]** を選択します。
 
-    c. **[作成]**をクリックします。
+    c. **Create** をクリックしてください。
 
 7. [VPN 接続] ページで、**[証明書のダウンロード]** をクリックします。
 
@@ -180,5 +179,4 @@ Windows の RRAS ベースのデプロイでは、次のコマンドを実行し
 ## <a name="next-steps"></a>次のステップ
 
 Microsoft がこの機能をどのように実装しているかの詳細を知るには、「[Enhancing remote access in Windows 10 with an automatic VPN profile](https://www.microsoft.com/itshowcase/Article/Content/894/Enhancing-remote-access-in-Windows-10-with-an-automatic-VPN-profile)」(Windows 10 での自動 VPN プロファイルを使用したリモート アクセスの強化) を参照します。    
-
 

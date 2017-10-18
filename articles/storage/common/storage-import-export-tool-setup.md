@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
+ms.openlocfilehash: 6b5febd051d0b956c90cb14c260dda1881adac3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5b73fec119a88cd86e68537199e7567afa3fdba8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。
@@ -40,7 +38,7 @@ Microsoft Azure Import/Export ツールは、ドライブの準備と修復用�
 * Windows 7、Windows Server 2008 R2、またはそれ以降の新しい Windows オペレーティング システムがインストールされているコンピューター ("コピー用コンピューター") が必要です。
 * .NET Framework 4 をコピー用コンピューターにインストールする必要があります。
 * コピー用コンピューターで BitLocker を有効にする必要があります。
-* コピー用マシンに接続されている 1 台以上の空の 3.5 インチ SATA ハード ドライブが必要です。
+* コピー用マシンに接続されている 1 台以上の空の 2.5 インチまたは 3.5 インチの SATA II/III ハード ドライブまたは SSD ドライブが必要です。
 * インポートするファイル (ネットワーク共有とローカル ハード ドライブのどちらにある場合でも) にコピー用コンピューターからアクセス可能であることが必要です。
 
 部分的に失敗した**インポートを修復する**場合は、以下が必要です。
@@ -216,4 +214,3 @@ Examples:
 * [インポート ジョブの修復](../storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-

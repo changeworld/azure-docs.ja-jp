@@ -14,19 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
+ms.openlocfilehash: cc4fb87e559f554634ae062a59bee31f0831da64
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 967501fa8ac4b2471a62afabc18a12a71776eaac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-to-publish-or-deploy-an-azure-application-from-visual-studio"></a>Visual Studio からの Azure アプリケーションの発行またはデプロイの準備
 ## <a name="overview"></a>概要
 クラウド サービス プロジェクトを発行可能にするには、次のサービスを設定する必要があります。
 
 * Azure 環境でロールを実行する **クラウド サービス**
-* BLOB サービス、Queue サービス、および Table サービスへのアクセスを提供する **ストレージ アカウント**
+* Blob service、Queue サービス、および Table service へのアクセスを提供する **ストレージ アカウント**
 
 これらのサービスを設定し、アプリケーションを構成するには、次の手順を使用します。
 
@@ -54,7 +53,7 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
 7. ウィンドウの下部にある **[クラウド サービスの作成]** リンクを選択します。
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
-ストレージ アカウントを使用すると、BLOB サービス、Queue サービス、および Table サービスにアクセスできます。 ストレージ アカウントは、Visual Studio または [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103)を使用して作成できます。
+ストレージ アカウントを使用すると、Blob service、Queue サービス、および Table service にアクセスできます。 ストレージ アカウントは、Visual Studio または [Azure クラシック ポータル](http://go.microsoft.com/fwlink/?LinkId=253103)を使用して作成できます。
 
 ### <a name="to-create-a-storage-account-by-using-visual-studio"></a>Visual Studio を使用して、ストレージ アカウントを作成するには
 1. **ソリューション エクスプローラー**で **[ストレージ]** ノードのショートカット メニューを開き、**[ストレージ アカウントの作成]** を選択します。
@@ -117,11 +116,10 @@ Azure にクラウド サービスを発行するには、まず、Azure 環境�
        * **[カスタム エンドポイントを指定する]**。これは、3 つのサービスそれぞれに対してエンドポイントを指定するときに使用します。 このオプションを選択すると、特定のサービスのフィールドにエンドポイントを入力できます。
 
          > [!NOTE]
-         > カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。 この文字列形式を使用する場合は、ストレージ アカウント用に BLOB サービスに登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。 また、Shared Access Signature を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。 カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/common/storage-configure-connection-string.md)」を参照してください。
+         > カスタム エンドポイントを作成する場合は、より複雑な接続文字列を作成できます。 この文字列形式を使用する場合は、ストレージ アカウント用に Blob service に登録したカスタム ドメイン名を含むストレージ サービス　エンドポイントを指定できます。 また、Shared Access Signature を介して単一コンテナーの BLOB リソースにのみアクセスを許可できます。 カスタム エンドポイントの作成方法の詳細については、「[Azure Storage の接続文字列を構成する](storage/common/storage-configure-connection-string.md)」を参照してください。
          >
          >
 11. これらの接続文字列の変更を保存するには、**[OK]** をクリックし、ツール バーの **[保存]** ボタンをクリックします。 これらの変更を保存すると、 [GetConfigurationSettingValue](https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.getconfigurationsettingvalue.aspx)を使用して、コード内のこの接続文字列の値を取得できるようになります。 Azure にアプリケーションを発行するときに、接続文字列用の Azure ストレージ アカウントを含むサービス構成を選択します。 アプリケーションを発行した後、アプリケーションが Azure Storage サービスに対して期待どおりに動作することを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 Visural Studio からの Azure へのアプリ発行の詳細については、「 [Azure Tools を使用したクラウド サービスの発行](vs-azure-tools-publishing-a-cloud-service.md)」を参照してください。
-

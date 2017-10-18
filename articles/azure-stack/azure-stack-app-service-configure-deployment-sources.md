@@ -45,7 +45,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 
 1. GitHub にログインして https://www.github.com/settings/developers に移動し、**[Register a new application]\((新しいアプリケーションの登録)\)** をクリックします。![GitHub - 新しいアプリケーションの登録][3]
 2. **[Application name (アプリケーション名)]** を入力します (例: App Service on Azure Stack)。
-3. **[Homepage URL (ホームページの URL)]**を入力します。  **ホームページの URL は、Azure Stack ポータルのアドレスにする必要があります** (例: https://portal.local.azurestack.external)。
+3. **[Homepage URL (ホームページの URL)]**を入力します。  **ホームページの URL は、Azure Stack ポータルのアドレスにする必要があります** 例: https://portal.local.azurestack.external 。
 4. **[Application Description (アプリケーションの説明)]** を入力します。
 5. **[Authorization callback URL (認証コールバック エンドポイント URL)]** を入力します。  Azure Stack の既定のデプロイでは、URL は https://portal.local.azurestack.external/tokenauthorize の形式になっています。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。![GitHub - 新しいアプリケーションの入力値での登録][4]
 6. **[Register application (アプリケーションを登録する)]**をクリックします。  アプリケーションの **[Client ID (クライアント ID)]** と **[Client Secret (クライアント シークレット)]** を示すページが表示されます。
@@ -68,7 +68,7 @@ Azure Stack 上の App Service は、複数のソース管理プロバイダー�
 3. コンシューマーの **[Name (名前)]** を入力します (例: App Service on Azure Stack)。
 4. アプリケーションの **[Description (説明)]** を入力します。
 5. **[Callback URL (コールバック URL)]** を入力します。  Azure Stack の既定のデプロイでは、コールバック URL は https://portal.local.azurestack.external/TokenAuthorize です。別のドメインで実行している場合は、azurestack.local をそのドメインに置き換えてください。  BitBucket の統合を成功させるには、URL の大文字と小文字をここに記載されているとおりにする必要があります。
-6. **[URL]** を入力します。この URL は、Azure Stack ポータルの URL にする必要があります (例: https://portal.local.azurestack.external)。
+6. **[URL]** を入力します。この URL は、Azure Stack ポータルの URL にする必要があります 例: https://portal.local.azurestack.external 。
 7. 必要な**アクセス許可** (**Repositories**: **Read** **Webhooks**: **Read and write**) を選択します。
 8. [ **Save**] をクリックします。  新しいアプリケーションが **[OAuth consumers (OAuth コンシューマー)]**の下に **[Key (キー)]** と **[Secret (シークレット)]** と共に表示されます。
     ![BitBucket アプリケーション リスト][9]

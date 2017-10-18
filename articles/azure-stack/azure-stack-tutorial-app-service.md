@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 7/03/2017
 ms.author: erikje
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2d011e933cb063eef88a372fccc49d2b9de19717
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="make-web-mobile-and-api-apps-available-to-your-azure-stack-users"></a>Web、モバイル、および API アプリを Azure Stack ユーザーから使用可能にする
 
@@ -59,7 +58,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
 1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
-2. **[Get a subscription] (サブスクリプションの取得)** をクリックし、**[Display Name] (表示名)** > **[Select an offer] (オファーの選択)** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
+2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** > **[Select an offer] \(オファーの選択)** > **[TestAppServiceOffer]** > **[作成]** の下に「**TestAppServiceSubscription**」と入力します。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成
 
@@ -76,10 +75,10 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 ### <a name="create-a-dnn-app"></a>DNN アプリの作成    
 
 1. **+** > **[See all] (すべてを表示)** > **[DNN Platform preview] (DNN プラットフォームのプレビュー)** > **[作成]** をクリックします。
-2. **[App name] (アプリ名)** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
-3. **[Configure required settings] (必要な設定の構成)** > **[Create New] (新規作成)** をクリックし、**App Service プラン**の名前を入力します。
-4. **[Pricing tier] (価格レベル)** > **[F1 Free] (F1 無料)** > **[選択]** > **[OK]** をクリックします。
-5. **[Database] (データベース)** をクリックし、以前に作成した SQL データベースの情報を入力します。
+2. **[App name] \(アプリ名)** の下に「*DNNapp*」と入力し、**[サブスクリプション]** の下にある **[TestAppServiceOffer]** を選択します。
+3. **[Configure required settings] \(必要な設定の構成)** > **[Create New] \(新規作成)** をクリックし、**App Service プラン**の名前を入力します。
+4. **[Pricing tier] \(価格レベル)** > **[F1 Free] \(F1 無料)** > **[選択]** > **[OK]** をクリックします。
+5. **[Database] \(データベース)** をクリックし、以前に作成した SQL データベースの情報を入力します。
 6. **Create** をクリックしてください。
 
 このチュートリアルで学習した内容は次のとおりです。
@@ -93,4 +92,3 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が Azu
 
 > [!div class="nextstepaction"]
 > [Azure と Azure Stack へのアプリのデプロイ](user/azure-stack-solution-pipeline.md)
-

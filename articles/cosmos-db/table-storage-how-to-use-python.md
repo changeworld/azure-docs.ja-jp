@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 05/16/2017
 ms.author: mimig
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 0c46f04786ba4b62bd7ca22c5e25643123e6e136
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-table-storage-in-python"></a>Python で Table Storage を使用する方法
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 08/22/2017
 
 ## <a name="create-a-table"></a>テーブルを作成する
 
-Python で Azure テーブル サービスを使用するには、[TableService][py_TableService] モジュールをインポートする必要があります。 テーブル エンティティを操作するので、[Entity][py_Entity] クラスも必要です。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
+Python で Azure Table service を使用するには、[TableService][py_TableService] モジュールをインポートする必要があります。 テーブル エンティティを操作するので、[Entity][py_Entity] クラスも必要です。 次のコードを Python ファイルの先頭付近に追加して、両方をインポートします。
 
 ```python
 from azure.storage.table import TableService, Entity
@@ -204,4 +203,3 @@ table_service.delete_table('tasktable')
 [py_update_entity]: https://azure-storage.readthedocs.io/en/latest/ref/azure.storage.table.tableservice.html#azure.storage.table.tableservice.TableService.update_entity
 [py_TableService]: https://azure-storage.readthedocs.io/en/latest/ref/azure.storage.table.tableservice.html
 [py_TableBatch]: https://azure-storage.readthedocs.io/en/latest/ref/azure.storage.table.tablebatch.html#azure.storage.table.tablebatch.TableBatch
-

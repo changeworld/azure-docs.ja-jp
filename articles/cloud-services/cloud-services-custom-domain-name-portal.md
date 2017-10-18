@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
+ms.openlocfilehash: f5d244fc747b923989407afd50927cda2b8d4a0f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: cf43d86dddc3a68573e1ba1b09118c54f0b16bc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 > [!div class="op_single_selector"]
@@ -35,7 +34,7 @@ ms.lasthandoff: 08/22/2017
 CNAME レコードと A レコードについてすでに理解している場合は、 [説明を読まずに次に進みます](#add-a-cname-record-for-your-custom-domain)。
 
 > [!NOTE]
-> このタスクの手順は、Azure Cloud Services に適用されます。 App Services については、 [こちら](../app-service-web/web-sites-custom-domain-name.md)をご覧ください。 ストレージ アカウントについては、 [こちら](../storage/blobs/storage-custom-domain-name.md)をご覧ください。
+> このタスクの手順は、Azure Cloud Services に適用されます。 App Services については、 [こちら](../app-service/app-service-web-tutorial-custom-domain.md)をご覧ください。 ストレージ アカウントについては、 [こちら](../storage/blobs/storage-custom-domain-name.md)をご覧ください。
 > 
 > 
 
@@ -154,4 +153,3 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Azure Portal]: https://portal.azure.com
 [vip]: ./media/cloud-services-custom-domain-name-portal/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name-portal/csurl.png
-

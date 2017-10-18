@@ -12,17 +12,15 @@ ms.service: backup
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: troubleshooting
 ms.date: 09/08/2017
 ms.author: genli;markgal;
+ms.openlocfilehash: f3195fa83479986a3e605abce618c78bcdb64dac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: d2dda47bb3ba5a397ad9626ca4705214dd2560f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-backup-failure-issues-with-agent-andor-extension"></a>Azure Backup の失敗のトラブルシューティング: エージェント/拡張機能に関する問題
 
 この記事では、VM エージェントと拡張機能との通信の問題に関連する Backup のエラーを解決するためのトラブルシューティング手順について説明します。
@@ -70,8 +68,11 @@ Azure Backup サービスに VM を登録して、スケジュール設定する
 
 ## <a name="the-specified-disk-configuration-is-not-supported"></a>指定されたディスク構成がサポートされていません
 
-現在 Azure Backup では、1023 GB より大きいサイズのディスクをサポートしていません。 ディスクを分割してディスクのサイズを制限より小さくしてください。 ディスクを分割するには、データ サイズが 1023 GB を超えるディスクを、サイズが 1023 GB 未満の新しく作成されたディスクにコピーする必要があります。
-
+現在 Azure Backup は [1023 GB を超える](https://docs.microsoft.com/azure/backup/backup-azure-arm-vms-prepare#limitations-when-backing-up-and-restoring-a-vm)ディスク サイズをサポートしていません。 
+- 1 TB を超えるディスクがある場合は、1 TB より小さい[新規ディスクを接続](https://docs.microsoft.com/azure/virtual-machines/windows/attach-managed-disk-portal)してください。 <br>
+- 次に、1 TB を超えるディスクから、新規作成した 1 TB より小さいサイズのディスクにデータをコピーします。 <br>
+- すべてのデータがコピーされたことを確認し、1 TB を超えるディスクを取り外します。
+- バックアップを開始します。
 
 ## <a name="causes-and-solutions"></a>原因とソリューション
 
@@ -177,5 +178,4 @@ VM のバックアップは、基礎となるストレージ アカウントへ�
 6. **[アンインストール]** をクリックします。
 
 この手順により、次回のバックアップ時に拡張機能が再インストールされます。
-
 

@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 09/13/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 3b37033e0c96e01c73bef15af1b85116f404c354
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 8b8ab2883234850fe243c4d7473d737c497204b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory デバイス管理の FAQ
 
@@ -34,7 +33,7 @@ ms.lasthandoff: 09/14/2017
 
 **解説:**
 
-- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](active-directory-conditional-access-technical-reference.md#supported-mobile-apps-and-desktop-clients) が必要です。 
+- 条件付きアクセス ポリシーに含まれているユーザーがリソースにアクセスするには、[macOS でサポートされているバージョンの Office](active-directory-conditional-access-technical-reference.md#client-apps-condition) が必要です。 
 
 - 最初のアクセス試行中に、ユーザーは、会社のポータルを使用してデバイスを登録するよう求められます。
 
@@ -153,10 +152,19 @@ ms.lasthandoff: 09/14/2017
 
 ---
 
-**Q: ハイブリッド Azure AD 参加済みデバイスの設定手順はどこで確認できますか?**
+**Q: 自動デバイス登録の設定方法はどこで確認できますか。**
 
-**A:** 詳細な手順については、「[ハイブリッド Azure Active Directory 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md)」を参照してください。
+**A:** 詳しい手順については、「[Azure Active Directory への Windows ドメイン参加済みデバイスの自動登録の構成方法](active-directory-conditional-access-automatic-device-registration-setup.md)」をご覧ください。
 
 ---
 
+**Q: デバイスの自動登録に関するトラブルシューティング情報はどこで入手できますか?**
+
+**A:** トラブルシューティング情報については、次の記事をご覧ください。
+
+- [Windows 10 および Windows Server 2016 の Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-current.md)
+
+- [Windows ダウンレベル クライアントの Azure AD ドメイン参加済みコンピューターの自動登録に関するトラブルシューティング](device-management-troubleshoot-hybrid-join-windows-legacy.md)
+ 
+---
 

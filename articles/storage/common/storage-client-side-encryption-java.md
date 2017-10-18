@@ -14,12 +14,11 @@ ms.devlang: java
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: lakasa
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 9f9ed8043d3671beacb9fabeb9e96604a8f065ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Java による Microsoft Azure Storage のクライアント側の暗号化と Azure Key Vault
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
@@ -150,7 +149,7 @@ EncryptionPolicy オブジェクトの作成では、キーのみ (IKey の実�
 
 たとえば、 **CloudBlobClient.getDefaultRequestOptions().setRequireEncryption(true)** を使用して、そのクライアント オブジェクトを介して実行されるすべての BLOB 操作に対して暗号化を要求します。
 
-### <a name="blob-service-encryption"></a>BLOB サービス暗号化
+### <a name="blob-service-encryption"></a>Blob service 暗号化
 **BlobEncryptionPolicy** オブジェクトを作成し、それを要求オプションに設定します (API ごとに、または **DefaultRequestOptions** を使用してクライアント レベルで設定します)。 その他の操作はすべて、クライアント ライブラリが内部的に処理します。
 
 ```java
@@ -192,7 +191,7 @@ queue.addMessage(message, 0, 0, options, null);
 CloudQueueMessage retrMessage = queue.retrieveMessage(30, options, null);
 ```
 
-### <a name="table-service-encryption"></a>Table サービス暗号化
+### <a name="table-service-encryption"></a>Table service 暗号化
 暗号化ポリシーを作成し、要求オプションにそれを設定するだけでなく、**EncryptionResolver** を **TableRequestOptions** に指定するか、エンティティの getter と setter に [Encrypt] 属性を設定する必要があります。
 
 ### <a name="using-the-resolver"></a>リゾルバーの使用

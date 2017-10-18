@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 08/30/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 22d64ba9c9bdceda108b1160aef32ff3d38e4b03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 10d73f9209d804f3003e6eb9e4e75a5b2198af0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Azure アカウントのプロファイル情報 (連絡先メール アドレス、住所、電話番号など) を変更する
 
@@ -29,7 +28,7 @@ ms.lasthandoff: 08/31/2017
 
 ## <a name="how-to-change-your-profile-information"></a>プロファイル情報の変更方法
 
-1. アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/) にサインインし、 **[プロファイル]**をクリックします。 
+1. [Azure アカウント センター](https://account.azure.com/Profile)にサインインします。
 1. **[詳細の編集]** ボタンを選択し、**[プロファイル]** 情報を更新します。
 
    ![[プロファイル]](./media/billing-how-to-change-azure-account-profile/profile.png)
@@ -63,5 +62,4 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。 
-
 

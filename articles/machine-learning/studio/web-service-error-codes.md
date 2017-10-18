@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 11/16/2016
 ms.author: garye
-translationtype: Human Translation
-ms.sourcegitcommit: e8a6db7963203d747b1f506d0cfae8b3e98d58d3
-ms.openlocfilehash: 4b5c9e4c62fbcf548aad1dbe242e2df0f2f5d41f
-ms.lasthandoff: 11/18/2016
-
-
+ms.openlocfilehash: 5cf7d5bb878f323e4e3559822dc745359e43608e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
- 
 # <a name="machine-learning-rest-api-error-codes"></a>Machine Learning REST API のエラー コード
  
 Azure Machine Learning Web サービスに対する操作では、次のエラー コードが返されることがあります。
@@ -69,7 +67,7 @@ Azure Machine Learning Web サービスに対する操作では、次のエラ�
 | MissingWebServicePackage | Web サービス パッケージが指定されていません。 有効な Web サービス パッケージを指定してから、やり直してください。 |
 | MissingWorkspaceId | ワークスペース ID が指定されていません。 有効なワークスペース ID を指定してから、やり直してください。 |
 | ModelConfigurationInvalid | モデル パッケージ内のモデル構成が無効です。 モデル構成に、出力エンドポイントの定義、std error エンドポイント、std out エンドポイントが含まれていることを確認してから、やり直してください。 |
-| ModelPackageIdInvalid | モデル パッケージ ID が無効です。 モデル パッケージ ID が正しいことを確認してから、やり直してください。 |
+| ModelPackageIdInvalid | モデル パッケージ ID が無効です。モデル パッケージ ID が正しいことを確認してから、やり直してください。 |
 | RequestBodyInvalid | 要求本文が指定されていないか、要求本文を逆シリアル化中にエラーが発生しました。 |
 | RequestIsEmpty | 要求が指定されていません。 有効な要求を指定してから、やり直してください。 |
 | UnexpectedParameter | 予期しないパラメーターが指定されました。 すべてのパラメーター名が正しく入力されており、必要なパラメーターのみが渡されていることを確認してから、やり直してください。 |
@@ -255,4 +253,3 @@ Web サービス パッケージが無効です。 指定された Web パッケ
 | BackendInitializationTimeout | 許可された時間内に Web サービスの初期化を完了できません。 |
 | BackendScoreTimeout | 許可された時間内に Web サービス要求の実行を完了できません。 |
  
-

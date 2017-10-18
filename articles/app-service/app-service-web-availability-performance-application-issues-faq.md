@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 990215d9e82b67256363ff195d2af9a91dc0706a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Azure での Web アプリのアプリケーションパフォーマンスに関するよくあるご質問
 
@@ -190,4 +189,3 @@ Web アプリでの送信接続の詳細については、[Azure Web サイト�
 ## <a name="how-do-i-use-visual-studio-to-remote-debug-my-app-service-web-app"></a>Visual Studio を使用して App Service Web アプリをリモート デバッグするにはどうすればよいですか?
 
 Visual Studio を使用して Web アプリをデバッグする方法を示す詳細なチュートリアルについては、「[Remote debug your App Service web app (App Service Web アプリのリモート デバッグ)](https://blogs.msdn.microsoft.com/benjaminperkins/2016/09/22/remote-debug-your-azure-app-service-web-app/)」を参照してください。
-

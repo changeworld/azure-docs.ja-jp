@@ -16,12 +16,13 @@ ms.workload: data-management
 ms.date: 09/22/2017
 ms.author: carlrab
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 75575fec0047dd653dca86df1daf234676859600
+ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
+ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
 ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
+ms.lasthandoff: 09/25/2017
 
 ---
+
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
 Azure SQL Database は、SQL Server と共通コード ベースを共有します。また、データベース レベルでほとんどの同じ機能をサポートします。 Azure SQL Database と SQL Server の機能の主な違いは、インスタンス レベルにあります。 
@@ -93,7 +94,7 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 | [PolyBase](https://docs.microsoft.com/sql/relational-databases/polybase/polybase-guide) | いいえ |
 | [ポリシーベースの管理](https://docs.microsoft.com/sql/relational-databases/policy-based-management/administer-servers-by-using-policy-based-management) | いいえ |
 | [述語](https://docs.microsoft.com/sql/t-sql/queries/predicates) | ほとんどの場合 - 個々の述語に関する記事を参照してください |
-| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | いいえ |
+| [R Services](https://docs.microsoft.com/sql/advanced-analytics/r-services/sql-server-r-services) | プレビュー リリース: [Machine Learning の新機能](https://docs.microsoft.com/sql/advanced-analytics/what-s-new-in-sql-server-machine-learning-services) に関する記事をご覧ください  |
 | [リソース ガバナー](https://docs.microsoft.com/sql/relational-databases/resource-governor/resource-governor) | いいえ |
 | [RESTORE ステートメント](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-for-restoring-recovering-and-managing-backups-transact-sql) | いいえ | 
 | [バックアップからデータベースを復元する](https://docs.microsoft.com/sql/relational-databases/backup-restore/back-up-and-restore-of-sql-server-databases#restore-data-backups) | 組み込みのバックアップからのみ - [SQL Database の復旧](sql-database-recovery-using-backups.md)に関する記事を参照してください |

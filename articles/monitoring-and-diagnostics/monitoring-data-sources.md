@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/27/2017
 ms.author: johnkem
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: c7075c2e1a2500eca1d0aa9b3a797e8a0e903ede
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="consume-monitoring-data-from-azure"></a>Azure の監視データの使用
 
@@ -55,4 +54,3 @@ Azure プラットフォーム全体にわたって、Azure Monitor パイプラ
 - [Azure Monitor メトリック](monitoring-overview-metrics.md)の詳細を確認する
 - [Azure アクティビティ ログ](monitoring-overview-activity-logs.md)の詳細を確認する
 - [Azure 診断ログ](monitoring-overview-of-diagnostic-logs.md)の詳細を確認する
-

@@ -146,7 +146,7 @@
           items:
             - name: ダッシュボード
               href: app-insights-dashboards.md
-            - name: Search
+            - name: 検索
               href: app-insights-diagnostic-search.md
             - name: メトリック
               href: app-insights-metrics-explorer.md
@@ -184,14 +184,8 @@
           items:
             - name: 概要
               href: app-insights-analytics.md
-            - name: ツアー
-              href: app-insights-analytics-tour.md
-            - name: 使用
-              href: app-insights-analytics-using.md
-            - name: インポート
+            - name: カスタム ログのインポート
               href: app-insights-analytics-import.md
-            - name: 診断
-              href: app-insights-analytics-diagnostics.md
     - name: 自動化
       items:
         - name: Azure PowerShell 構成
@@ -226,6 +220,13 @@
       items:
         - name: 連続エクスポート
           href: app-insights-export-telemetry.md
+          items:
+            - name: コード サンプル
+              items:
+                - name: Stream Analytics を使用して SQL にエクスポートする
+                  href: app-insights-code-sample-export-sql-stream-analytics.md
+                - name: Stream Analytics にエクスポートする
+                  href: app-insights-export-stream-analytics.md
         - name: データのエクスポート モデル
           href: app-insights-export-data-model.md
         - name: Power BI へのエクスポート
@@ -248,7 +249,7 @@
           href: app-insights-java-troubleshoot.md
 - name: リファレンス
   items:
-    - name: 分析
+    - name: Analytics クエリ言語
       href: 'https://docs.loganalytics.io/'
     - name: .NET
       href: 'https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights'

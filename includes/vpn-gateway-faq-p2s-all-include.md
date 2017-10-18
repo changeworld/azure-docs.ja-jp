@@ -20,13 +20,9 @@
 
 Azure では、ポイント対サイト VPN のオプションを 2 種類サポートしています:
 
-* Secure Socket Tunneling Protocol (SSTP)
+* Secure Socket Tunneling Protocol (SSTP)。 SSTP は Microsoft 独自の SSL ベースのソリューションです。このソリューションは、ほとんどのファイアウォールが 443 SSL で使用する TCP ポートを開いていることを利用し、ファイアウォールを通過することができるようになっています。
 
-  SSTP は Microsoft 独自の SSL ベースのソリューションです。このソリューションは、ほとんどのファイアウォールが 443 SSL で使用する TCP ポートを開いていることを利用し、ファイアウォールを通過することができるようになっています。
-
-* IKEv2 VPN
-
-  IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500 のほか、IP プロトコル番号  50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
+* IKEv2 VPN。 IKEv2 VPN は、標準ベースの IPsec VPN ソリューションであり、UDP ポート 500 と 4500 のほか、IP プロトコル番号  50 を使用しています。 ファイアウォールでここに挙げたポートが必ずしも開いているとは限りません。このため、IKEv2 VPN ではプロキシとファイアウォールを通過できないことがあります。
 
 ### <a name="if-i-restart-a-client-computer-configured-for-point-to-site-will-the-vpn-automatically-reconnect"></a>ポイント対サイト接続用に構成されたクライアント コンピューターを再起動した場合、VPN は自動的に再接続されますか。
 
@@ -51,3 +47,17 @@ VPN トンネルのスループットを正確に一定レベルに維持する�
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
 
 いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
+
+### <a name="does-azure-support-ikev2-vpn-with-windows"></a>Azure は、Windows で IKEv2 VPN をサポートしていますか。
+
+ユーザーは、IKEv2 をサポートしている組み込みの Windows VPN クライアントを使用して Azure に接続できます。 ただし、次のシナリオでは、Windows デバイスからの IKEv2 接続は機能しません。
+
+  ユーザーのデバイスに多くの信頼されたルート証明書が含まれていると、インターネット キー交換中のメッセージ ペイロードのサイズが大きくなり、IP レイヤーの断片化が発生します。 フラグメントは Azure エンドで拒否されるため、接続の失敗につながります。 この問題を引き起こす証明書の正確な数は、予測が困難です。 その結果、Windows デバイスからの IKEv2 接続が機能するかは保証されません。 Windows デバイスと Mac デバイスが混在する環境で SSTP と IKEv2 の両方を構成すると、Windows VPN プロファイルは必ず最初に IKEv2 トンネルを試行します。 これがここで説明した問題が原因で失敗すると、SSTP にフォールバックします。
+
+### <a name="other-than-windows-and-mac-which-other-platforms-does-azure-support-for-p2s-vpn"></a>Windows と Mac 以外に、Azure が P2S VPN 向けにサポートしている他のプラットフォームはありますか。
+
+Azure P2S VPN 向けにサポートしているのは、Windows と Mac だけです。
+
+### <a name="i-already-have-an-azure-vpn-gateway-deployed-can-i-enabled-radius-andor-ikev2-vpn-on-it"></a>Azure VPN Gateway を既にデプロイしています。 ここで RADIUS または IKEv2 VPN または両方を有効にできますか。
+
+はい、PowerShell と Azure Portal の両方を通じて、デプロイ済みのゲートウェイでこれらの新機能を有効にできます。

@@ -9,7 +9,7 @@
 
 # 方法
 
-## Data Lake Analytics アカウントの管理
+## Data Lake Analytics の管理
 ### [Azure ポータル](data-lake-analytics-manage-use-portal.md)
 ### [Azure CLI](data-lake-analytics-manage-use-cli.md)
 ### [Azure PowerShell](data-lake-analytics-manage-use-powershell.md)
@@ -33,6 +33,7 @@
 
 ## U-SQL プログラムのデバッグ
 ### [ジョブの監視およびトラブルシューティング](data-lake-analytics-monitor-and-troubleshoot-jobs-tutorial.md)
+### [異常な定期的ジョブのトラブルシューティング](data-lake-analytics-data-lake-tools-debug-recurring-job.md)
 ### [U-SQL で C# コードをデバッグする](data-lake-analytics-debug-u-sql-jobs.md)
 ### [ジョブ ブラウザーとジョブ ビューを使用する](data-lake-analytics-data-lake-tools-view-jobs.md)
 ### [頂点実行ビューを使用する](data-lake-analytics-data-lake-tools-use-vertex-execution-view.md)

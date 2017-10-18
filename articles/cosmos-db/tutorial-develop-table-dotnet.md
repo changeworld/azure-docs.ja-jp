@@ -15,12 +15,11 @@ ms.topic: tutorial
 ms.date: 05/10/2017
 ms.author: arramac
 ms.custom: mvc
+ms.openlocfilehash: 5322fa5cc8e841ecea97a69d15cf130a4426ad95
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 52cb5f2569b6c3a5301752b1e8bfb6cea13ff7f6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -312,7 +311,7 @@ foreach (CustomerEntity entity in table.ExecuteQuery(emailQuery))
 プレビューでは、Azure Cosmos DB は、Table API について Azure Table Storage と同じクエリの機能をサポートします。 また、並べ替え、集計、地理空間クエリ、階層、さまざまな組み込み関数もサポートしています。 将来のサービス更新プログラムで Table API に追加機能が提供される予定です。 このような機能の概要については、[Azure Cosmos DB のクエリ](documentdb-sql-query.md)に関する記事をご覧ください。 
 
 ## <a name="replace-an-entity"></a>エンティティを置換する
-エンティティを更新するには、そのエンティティを Table サービスから取得し、エンティティ オブジェクトを変更して、変更を Table サービスに戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 
+エンティティを更新するには、そのエンティティを Table service から取得し、エンティティ オブジェクトを変更して、変更を Table service に戻して保存します。 次のコードは、既存のユーザーの電話番号を変更します。 
 
 ```csharp
 TableOperation updateOperation = TableOperation.Replace(updateEntity);
@@ -363,4 +362,3 @@ table.DeleteIfExists();
 
 > [!div class="nextstepaction"]
 > [Table API を使用したクエリ](tutorial-query-table.md)
-

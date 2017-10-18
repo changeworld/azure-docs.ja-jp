@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: adegeo
+ms.openlocfilehash: b61f6aad7cf974ce25baf944e342284b02ea0048
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9f872fd5119042945356225a80331da18f3a6d99
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Azure クラウド サービスのカスタム ドメイン名の構成
 > [!div class="op_single_selector"]
@@ -42,7 +41,7 @@ CNAME レコードと A レコードについてすでに理解している場�
 <p/>
 
 > [!NOTE]
-> このタスクの手順は、Azure Cloud Services に適用されます。 App Services については、 [こちら](../app-service-web/web-sites-custom-domain-name.md)をご覧ください。 ストレージ アカウントについては、 [こちら](../storage/blobs/storage-custom-domain-name.md)をご覧ください。
+> このタスクの手順は、Azure Cloud Services に適用されます。 App Services については、 [こちら](../app-service/app-service-web-tutorial-custom-domain.md)をご覧ください。 ストレージ アカウントについては、 [こちら](../storage/blobs/storage-custom-domain-name.md)をご覧ください。
 > 
 > 
 
@@ -157,4 +156,3 @@ A レコードを作成するには、まず、クラウド サービスの仮�
 [Validate Custom Domain dialog box]: http://i.msdn.microsoft.com/dynimg/IC544437.jpg
 [vip]: ./media/cloud-services-custom-domain-name/csvip.png
 [csurl]: ./media/cloud-services-custom-domain-name/csurl.png
-

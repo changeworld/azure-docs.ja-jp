@@ -13,14 +13,12 @@ ms.devlang:
 ms.topic: article
 ms.date: 06/15/2017
 ms.author: cynthn
-ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
 ms.openlocfilehash: 6ffb2d2da1e2439df6f5da543411e3c2c68d3435
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-file-shares-with-windows-vms"></a>Windows VM で Azure のファイル共有を使用する 
 
 VM にファイルを保存し、VM のファイルにアクセスする方法として、Azure のファイル共有を使用できます。 たとえば、すべての VM で共有したいスクリプトやアプリケーション構成ファイルを保存することができます。 このトピックでは、Azure ファイル共有を作成してマウントする方法と、ファイルをアップロードしてダウンロードする方法について説明します。
@@ -76,4 +74,3 @@ VM にファイルを保存し、VM のファイルにアクセスする方法�
 ## <a name="next-steps"></a>次のステップ
 
 PowerShell を使用してファイル共有の作成と管理を行うこともできます。 詳細については、「[Windows で Azure File Storage を使用する](../../storage/files/storage-dotnet-how-to-use-files.md)」を参照してください。
-

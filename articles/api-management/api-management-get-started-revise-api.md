@@ -11,14 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 08/18/2017
 ms.author: apimpm
-ms.translationtype: HT
-ms.sourcegitcommit: 212b163c49fdd133b0ed2d99b33035fcc391aec6
 ms.openlocfilehash: 0d67166a16ae4d640080ad83e7625e594b0dc246
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="make-non-breaking-changes-safely-using-revisions"></a>リビジョンを使用して安全に互換性に影響しない変更を加える
 このチュートリアルでは、API を安全に変更し、変更内容を開発者に伝える方法について説明します。
 

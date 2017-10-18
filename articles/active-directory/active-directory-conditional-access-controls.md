@@ -13,22 +13,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/07/2017
+ms.date: 09/25/2017
 ms.author: markvi
 ms.reviewer: calebb
+ms.openlocfilehash: be3631db20ae744965f9f6677c536ade45e34c49
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 0f7d847c98e790c542f3a3e666b9a887099a6cbc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="controls-in-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスのコントロール 
 
 [Azure Active Directory (Azure AD) の条件付きアクセス](active-directory-conditional-access-azure-portal.md)を使うと、承認されたユーザーがどのようにクラウド アプリにアクセスするかを制御できます。 条件付きアクセス ポリシーでは、特定の条件 ("～が発生した場合") に対する応答 ("～を実行する") を定義します。 条件付きアクセスの文脈では、 
 
 - "**When this happens**" (これが発生した場合は) を**条件文**と呼びます
+
 - "**Then do this**" (これを実行する) を**コントロール**と呼びます
 
 ![コントロール](./media/active-directory-conditional-access-controls/11.png)
@@ -54,7 +53,7 @@ ms.lasthandoff: 09/13/2017
 - 選択したコントロールすべてを満たす (*AND*) 
 - 選択したコントロールのいずれか 1 つを満たす (*OR*)
 
-![コントロール](./media/active-directory-conditional-access-controls/51.png)
+![コントロール](./media/active-directory-conditional-access-controls/17.png)
 
 
 
@@ -76,7 +75,7 @@ ms.lasthandoff: 09/13/2017
 
 ### <a name="domain-joined-device"></a>ドメイン参加済みデバイス
 
-デバイスベースの条件付きアクセス ポリシーを構成するもう 1 つの選択肢としては、ドメイン参加済みデバイスを要求することが挙げられます。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
+デバイス ベースの条件付きアクセス ポリシーを構成するための別のオプションとして、ドメインに参加しているデバイスの要求があります。 この要件では、Windows デスクトップ、ノート PC、エンタープライズ タブレットのうち、オンプレミスの Active Directory に参加しているデバイスが必要になります。 詳細については、[Azure Active Directory のデバイス ベースの条件付きアクセス ポリシーの設定](active-directory-conditional-access-policy-connected-applications.md)を参照してください。
 
 
 
@@ -89,6 +88,63 @@ ms.lasthandoff: 09/13/2017
 
 
 承認されたクライアント アプリを使用する方法では、クラウド アプリにアクセスしようとするクライアント アプリに対して [Intune のアプリ保護ポリシー](https://docs.microsoft.com/intune/app-protection-policy) のサポートを要求できます。 たとえば、Exchange Online に対するアクセスを Outlook アプリのみに制限することができます。 承認されたクライアント アプリを要求する条件付きアクセス ポリシーは、[アプリベースの条件付きアクセス ポリシー](active-directory-conditional-access-mam.md)とも呼ばれます。 サポートされている承認されたクライアント アプリの一覧は、[承認されたクライアント アプリの要件](active-directory-conditional-access-technical-reference.md#approved-client-app-requirement)に関するセクションを参照してください。
+
+
+### <a name="terms-of-use"></a>使用条件
+
+テナント内のユーザーが、リソースへのアクセスを許可される前に使用条件に同意することを要求できます。 管理者として、PDF ドキュメントをアップロードすることによって使用条件を構成およびカスタマイズできます。 ユーザーがこのコントロールのスコープに入った場合、アプリケーションへのアクセスは使用条件が同意された場合にのみ許可されます。 
+
+
+### <a name="custom-controls"></a>カスタム コントロール 
+
+Azure Active Directory の外部にあるさらなる要件を満たすためにユーザーを互換性のあるサービスにリダイレクトする条件付きアクセスのカスタム コントロールを作成できます。 これにより、特定の外部の多要素認証および検証プロバイダーを使用して、条件付きアクセスの規則を適用したり、独自のカスタム サービスを構築したりできます。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証または検証アクティビティを実行してから、元の Azure Active Directory にリダイレクトされます。 ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。 
+
+## <a name="custom-controls"></a>カスタム コントロール
+
+条件付きアクセスのカスタム コントロールは、Azure Active Directory の外部にあるさらなる要件を満たすためにユーザーを互換性のあるサービスにリダイレクトします。 このコントロールを満たすために、ユーザーのブラウザーは外部サービスにリダイレクトされ、すべての必要な認証または検証アクティビティを実行してから、元の Azure Active Directory にリダイレクトされます。 Azure Active Directory は応答を検証し、ユーザーが正常に認証または検証された場合、そのユーザーは条件付きアクセス フロー内にとどまります。
+
+これらのコントロールは、特定の外部サービスまたはカスタム サービスを条件付きアクセス コントロールとして使用できるようにし、一般には条件付きアクセスの機能を拡張します。
+
+現在、互換性のあるサービスを提供しているプロバイダーには次のものがあります。
+
+- Duo Security
+
+- RSA
+
+- Trusona
+
+これらのサービスの詳細については、プロバイダーに直接問い合せてください。
+
+### <a name="creating-custom-controls"></a>カスタム コントロールの作成
+
+カスタム コントロールを作成するには、まず利用するプロバイダーに連絡する必要があります。 Microsoft 以外の各プロバイダーには、サインアップ、サブスクライブ、またはそれ以外のサービス利用方法を実行し、条件付きアクセスと統合したいことを示すための独自のプロセスと要件があります。 その時点で、プロバイダーからは JSON 形式のデータ ブロックが提供されます。 このデータにより、プロバイダーと条件付きアクセスがユーザーのテナント用に連携して動作できるようになり、新しいコントロールが作成され、ユーザーがプロバイダーの検証を正常に実行した場合は条件付きアクセスからどのように伝えられるかが定義されます。
+
+その JSON データをコピーし、それを関連するテキスト ボックスに貼り付けます。 行おうとしている変更を明示的に理解していない限り、JSON を変更しないでください。 少しでも変更すると、プロバイダーと Microsoft の間の接続が中断され、アカウントからロック アウトされる可能性があります。
+
+カスタム コントロールを作成するオプションは、**[条件付きアクセス]** ページの **[管理]** セクションにあります。
+
+![コントロール](./media/active-directory-conditional-access-controls/82.png)
+
+**[New custom control] \(新しいカスタム コントロール)** をクリックし、コントロールの JSON データ用のテキスト ボックスを含むブレードを開きます。  
+
+
+![コントロール](./media/active-directory-conditional-access-controls/81.png)
+
+
+### <a name="deleting-custom-controls"></a>カスタム コントロールの削除
+
+カスタム コントロールを削除するには、まずそれがどの条件付きアクセス ポリシーでも使用されていないことを確認する必要があります。 完了したら、次のことを行います。
+
+1. [Custom controls] \(カスタム コントロール) 一覧に移動します。
+
+2. […] をクリックします。  
+
+3. **[削除]**を選択します。
+
+### <a name="editing-custom-controls"></a>カスタム コントロールの編集
+
+カスタム コントロールを編集するには、現在のコントロールを削除し、更新された情報で新しいコントロールを作成する必要があります。
+
 
 
 
@@ -110,4 +166,3 @@ SharePoint での制限付きアクセスを要求する方法について詳し
 - 条件付きアクセスポリシーの構成方法については、「[Azure Active Directory での条件付きアクセスの基本](active-directory-conditional-access-azure-portal-get-started.md)」を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 6759d3f49e15a3b01022df318a83563ad6bd859f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-content-in-the-azure-portal"></a>Azure Portal でコンテンツを発行する
 > [!div class="op_single_selector"]
@@ -66,7 +65,7 @@ MPEG-DASH ストリーミング URL を作成するには、*(format=mpd-time-cs
 ロケーターの有効期限を更新するには、[REST API](https://docs.microsoft.com/rest/api/media/operations/locator#update_a_locator) または [.NET API](http://go.microsoft.com/fwlink/?LinkID=533259) を使用することができます。 
 
 > [!NOTE]
-> 共有アクセス署名ロケーターの有効期限を更新すると、URL が変更されます。
+> Shared Access Signature ロケーターの有効期限を更新すると、URL が変更されます。
 
 ### <a name="to-use-the-portal-to-publish-an-asset"></a>ポータルを使用して資産を発行するには
 1. [Azure Portal](https://portal.azure.com/) で Azure Media Services アカウントを選択します。
@@ -97,5 +96,4 @@ Azure Portal のコンテンツ プレーヤーでビデオをテストできま
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [media-services-learning-paths-include](../../includes/media-services-learning-paths-include.md)]
-
 

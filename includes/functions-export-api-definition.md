@@ -16,8 +16,8 @@
 
     |設定|Description|
     |--------|------------|
-    |**エクスポート モード**|**[高速]** を選択すると、カスタム API が自動生成されます。 **[手動]** を選択すると、API 定義がエクスポートされますが、その定義は、PowerApps と Microsoft Flow に手動でインポートする必要があります。 詳細については、[PowerApps と Microsoft Flow へのエクスポート](https://docs.microsoft.com/azure/app-service/app-service-export-api-to-powerapps-and-flow?toc=%2fazure%2fazure-functions%2ftoc.json)に関するページを参照してください。|
-    |**Environment**|カスタム API の保存先の環境を選択します。 詳細については、[PowerApps の環境の概要](https://powerapps.microsoft.com/tutorials/environments-overview/)または [Microsoft Flow の環境の概要](https://us.flow.microsoft.com/documentation/environments-overview-admin/)に関するページを参照してください。|
+    |**エクスポート モード**|**[高速]** を選択すると、カスタム API が自動生成されます。 **[手動]** を選択すると、API 定義がエクスポートされますが、その定義は、PowerApps と Microsoft Flow に手動でインポートする必要があります。 詳細については、[PowerApps と Microsoft Flow へのエクスポート](../articles/azure-functions/app-service-export-api-to-powerapps-and-flow.md)に関するページを参照してください。|
+    |**Environment**|カスタム API の保存先の環境を選択します。 詳しくは、「[環境の概要 (PowerApps)](https://powerapps.microsoft.com/tutorials/environments-overview/)」または[環境の概要 (Microsoft Flow)](https://us.flow.microsoft.com/documentation/environments-overview-admin/) に関する記事をご覧ください。|
     |**カスタム API 名**|名前を入力します (`Turbine Repair` など)。|
     |**API キー名**|カスタム API UI に表示されるアプリとフローのビルダーの名前を入力します。 役に立つ情報が例に含まれていることに注意してください。|
  

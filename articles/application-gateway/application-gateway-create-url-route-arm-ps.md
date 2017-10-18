@@ -1,6 +1,6 @@
 ---
-title: "URL ルーティング ルールを使用してApplication Gateway を作成する | Microsoft Docs"
-description: "このページでは、URL ルーティング ルールを使用して Azure Application Gateway を作成し、構成する方法について説明します。"
+title: "URL ルーティング ルールを使用してアプリケーション ゲートウェイを作成する | Microsoft Docs"
+description: "このページでは、URL ルーティング ルールを使用して Azure アプリケーション ゲートウェイを作成し、構成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
 author: davidmu1
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/03/2017
 ms.author: davidmu
+ms.openlocfilehash: f2797864d7f0bda35d4d84ee78b157879451f889
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: b1ed7d5693ff7e6730255462411d462694b730e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-application-gateway-by-using-path-based-routing"></a>パスベースのルーティングを使用して Application Gateway を作成する
+# <a name="create-an-application-gateway-by-using-path-based-routing"></a>パスベースのルーティングを使用してアプリケーション ゲートウェイを作成する
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](application-gateway-create-url-route-portal.md)
 > * [Azure Resource Manager の PowerShell](application-gateway-create-url-route-arm-ps.md)
 > * [Azure CLI 2.0](application-gateway-create-url-route-cli.md)
 
-パスベースのルーティングでは、HTTP 要求の URL パスに基づいてルートの関連付けを行います。 Application Gateway に示された URL に対して構成されたバックエンド プールへのルートがあるかどうかをチェックし、定義済みのバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
+パスベースのルーティングでは、HTTP 要求の URL パスに基づいてルートの関連付けを行います。 アプリケーション ゲートウェイに示された URL に対して構成されたバックエンド プールへのルートがあるかどうかをチェックし、定義済みのバックエンド プールにネットワーク トラフィックを送信します。 URL ベースのルーティングの一般的な用途は、さまざまな種類のコンテンツに対する要求をさまざまなバックエンド サーバー プールに負荷分散することです。
 
 Azure Application Gateway には、基本ルーティングとパスベース ルーティングという 2 種類のルールがあります。 基本ルーティングでは、バックエンド プールのラウンド ロビン サービスを提供します。 パスベース ルーティングでは、ラウンド ロビンによる分散に加え、要求 URL のパス パターンを使用してバックエンド プールを選択します。
 
@@ -43,24 +42,24 @@ http://contoso.com/image* に対する要求はイメージ サーバー プー�
 ## <a name="before-you-begin"></a>開始する前に
 
 1. Web Platform Installer を使用して、Azure PowerShell コマンドレットの最新バージョンをインストールします。 **ダウンロード ページ** の [Windows PowerShell](https://azure.microsoft.com/downloads/)セクションから最新バージョンをダウンロードしてインストールできます。
-2. Application Gateway の仮想ネットワークとサブネットを作成します。 仮想マシンまたはクラウドのデプロイでサブネットを使用していないことを確認します。 Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
-3. Application Gateway のバックエンド プールに追加されたサーバーが存在していること、つまり、仮想ネットワーク内か、割り当てられたパブリック IP/VIP のいずれかにエンドポイントが作成されていることを確認します。
+2. アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。 仮想マシンまたはクラウドのデプロイにおいて、このサブネットが一切使用されていないことを確認します。 Application Gateway そのものが、仮想ネットワーク サブネットに含まれている必要があります。
+3. アプリケーション ゲートウェイのバックエンド プールに追加されたサーバーが存在していること、つまり、仮想ネットワーク内か、割り当てられたパブリック IP/VIP のいずれかにエンドポイントが作成されていることを確認します。
 
-## <a name="requirements-to-create-an-application-gateway"></a>Application Gateway を作成するための要件
+## <a name="requirements-to-create-an-application-gateway"></a>アプリケーション ゲートウェイを作成するための要件
 
-* **バックエンド サーバー プール**: バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、仮想ネットワークのサブネットに属しているか、またはパブリック IP/VIP である必要があります。
+* **バックエンド サーバー プール**: バックエンド サーバーの IP アドレスの一覧。 一覧の IP アドレスは、その仮想ネットワークのサブネットに属しているか、またはパブリック IP/VIP である必要があります。
 * **バックエンド サーバー プールの設定**: ポート、プロトコル、Cookie ベースのアフィニティなどです。 これらはプールに関連付けられ、プール内のすべてのサーバーに適用されます。
-* **フロントエンド ポート:** Application Gateway で開かれたパブリック ポートです。 トラフィックがこのポートにヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
+* **フロントエンド ポート:** アプリケーション ゲートウェイで開かれたパブリック ポートです。 トラフィックがこのポートにヒットすると、バックエンド サーバーのいずれかにリダイレクトされます。
 * **リスナー:** リスナーには、フロントエンド ポート、プロトコル (Http または Https、大文字小文字の区別あり)、SSL 証明書名 (SSL をオフロードで構成する場合) があります。
 * **ルール:** ルールはリスナーとバックエンド サーバー プールを結び付け、トラフィックがリスナーにヒットした際に送られるプールを定義します。
 
 ## <a name="create-an-application-gateway"></a>アプリケーション ゲートウェイの作成
 
-Azure クラシック ポータルと Azure Resource Manager の使用方法の違いは、Application Gateway と構成が必要な項目を作成する順序です。
+Azure クラシック ポータルと Azure Resource Manager の使用方法の違いは、アプリケーション ゲートウェイと構成が必要な項目を作成する順序です。
 
 Resource Manager を使用すると、アプリケーション ゲートウェイを作成するすべての項目は個別に構成され、その後結合されてアプリケーション ゲートウェイのリソースが作成されます。
 
-Application Gateway を作成するには、次の手順を実行します。
+アプリケーション ゲートウェイを作成するには、次の手順を実行します。
 
 1. リソース マネージャーのリソース グループを作成します。
 2. Application Gateway の仮想ネットワーク、サブネット、およびパブリック IP を作成します。
@@ -69,7 +68,7 @@ Application Gateway を作成するには、次の手順を実行します。
 
 ## <a name="create-a-resource-group-for-resource-manager"></a>リソース マネージャーのリソース グループの作成
 
-Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、[Resource Manager での Windows PowerShell の使用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
+Azure PowerShell の最新バージョンを使用していることを確認します。 詳細については、[Windows PowerShell と Resource Manager の併用](../powershell-azure-resource-manager.md)に関するページをご覧ください。
 
 ### <a name="step-1"></a>手順 1
 
@@ -105,7 +104,7 @@ Select-AzureRmSubscription -Subscriptionid "GUID of subscription"
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US"
 ```
 
-または、Application Gateway のリソース グループに対してタグを作成することもできます。
+または、アプリケーション ゲートウェイのリソース グループに対してタグを作成することもできます。
 
 ```powershell
 $resourceGroup = New-AzureRmResourceGroup -Name appgw-RG -Location "West US" -Tags @{Name = "testtag"; Value = "Application Gateway URL routing"} 
@@ -116,17 +115,17 @@ Azure Resource Manager では、リソース グループで既定の場所を�
 前の例では、"appgw-RG" という名前のリソース グループを作成し、"West US" という場所を使用しました。
 
 > [!NOTE]
-> Application Gateway のカスタム プローブを構成する必要がある場合は、[PowerShell を使用して Azure Application Gateway のカスタム プローブを作成する](application-gateway-create-probe-ps.md)に関するページをご覧ください。 詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」をご覧ください。
+> アプリケーション ゲートウェイのカスタム プローブを構成する必要がある場合は、[PowerShell を使用した、カスタム プローブ付きアプリケーション ゲートウェイの作成](application-gateway-create-probe-ps.md)に関するページをご覧ください。 詳細については、「[Application Gateway による正常性監視の概要](application-gateway-probe-overview.md)」をご覧ください。
 > 
 > 
 
 ## <a name="create-a-virtual-network-and-a-subnet-for-the-application-gateway"></a>アプリケーション ゲートウェイの仮想ネットワークとサブネットを作成します。
 
-次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、Application Gateway 用の仮想ネットワークを作成します。 Application Gateway には専用のサブネットが必要です。 そのため、Application Gateway 用に作成するサブネットは、仮想ネットワークのアドレス空間よりも小さくします。 これにより、同じ仮想ネットワーク内に他のリソース (Web サーバーなど。ただしこれに限定されません) を構成できます。
+次の例では、リソース マネージャーを使用して仮想ネットワークを作成する方法を示します。 この例では、アプリケーション ゲートウェイ用の仮想ネットワークを作成します。 Application Gateway には専用のサブネットが必要です。 そのため、アプリケーション ゲートウェイ用に作成するサブネットは、仮想ネットワークのアドレス空間よりも小さくします。 これにより、同じ仮想ネットワーク内に他のリソース (Web サーバーなど。ただしこれに限定されません) を構成できます。
 
 ### <a name="step-1"></a>手順 1
 
-アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。  この手順では、Application Gateway のサブネット構成オブジェクトを作成します。これは次のサンプル コードで使用します。
+アドレス範囲 10.0.0.0/24 を仮想ネットワークの作成に使用するサブネットの変数に割り当てます。  この手順では、アプリケーション ゲートウェイのサブネット構成オブジェクトを作成します。これは次のサンプル コードで使用します。
 
 ```powershell
 $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -134,7 +133,7 @@ $subnet = New-AzureRmVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10
 
 ### <a name="step-2"></a>手順 2.
 
-サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ **appgw-rg** に、**appgwvnet** という名前の仮想ネットワークを作成します。 これにより、単一サブネットの Application Gateway が存在する仮想ネットワークが構成されます。
+サブネット 10.0.0.0/24 とプレフィックス 10.0.0.0/16 を使用して、米国西部リージョンのリソース グループ **appgw-rg** に、**appgwvnet** という名前の仮想ネットワークを作成します。 これにより、単一サブネットのアプリケーション ゲートウェイが存在する仮想ネットワークが構成されます。
 
 ```powershell
 $vnet = New-AzureRmVirtualNetwork -Name appgwvnet -ResourceGroupName appgw-RG -Location "West US" -AddressPrefix 10.0.0.0/16 -Subnet $subnet
@@ -158,9 +157,9 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -name publicI
 
 サービスが開始すると、Application Gateway に IP アドレスが割り当てられます。
 
-## <a name="create-the-application-gateway-configuration"></a>Application Gateway 構成の作成
+## <a name="create-the-application-gateway-configuration"></a>アプリケーション ゲートウェイ構成の作成
 
-Application Gateway を作成するには、すべての構成項目が設定されている必要があります。 次の手順では、Application Gateway のリソースに必要な構成項目を作成します。
+アプリケーション ゲートウェイを作成するには、すべての構成項目が設定されている必要があります。 次の手順では、アプリケーション ゲートウェイのリソースに必要な構成項目を作成します。
 
 ### <a name="step-1"></a>手順 1
 
@@ -172,7 +171,7 @@ $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Sub
 
 ### <a name="step-2"></a>手順 2.
 
-**pool1** および **pool2** という名前のバックエンド IP アドレス プールを構成します。**pool1** と **pool2** には IP アドレスを使用します。 これらの IP アドレスは、Application Gateway によって保護される Web アプリケーションをホストするリソースの IP アドレスです。 これらのバックエンド プール メンバーはすべて、基本のプローブかカスタム プローブで正常性が検証されます。 そして、アプリケーション ゲートウェイに要求が届いたときに、これらのメンバーにトラフィックがルーティングされます。 バックエンド プールは、Application Gateway 内の複数のルールで使用できます。 つまり、1 つのバックエンド プールを、同じホスト上にある複数の Web アプリケーションで使用できます。
+**pool1** および **pool2** という名前のバックエンド IP アドレス プールを構成します。**pool1** と **pool2** には IP アドレスを使用します。 これらの IP アドレスは、アプリケーション ゲートウェイによって保護される Web アプリケーションをホストするリソースの IP アドレスです。 これらのバックエンド プール メンバーはすべて、基本のプローブかカスタム プローブで正常性が検証されます。 そして、アプリケーション ゲートウェイに要求が届いたときに、これらのメンバーにトラフィックがルーティングされます。 バックエンド プールは、アプリケーション ゲートウェイ内の複数のルールで使用できます。 つまり、1 つのバックエンド プールを、同じホスト上にある複数の Web アプリケーションで使用できます。
 
 ```powershell
 $pool1 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool01 -BackendIPAddresses 134.170.185.46, 134.170.188.221, 134.170.185.50
@@ -184,7 +183,7 @@ $pool2 = New-AzureRmApplicationGatewayBackendAddressPool -Name pool02 -BackendIP
 
 ### <a name="step-3"></a>手順 3.
 
-バックエンド プール内でネットワーク トラフィックを負荷分散するための Application Gateway の設定、**poolsetting01** と **poolsetting02** を構成します。 この例では、各バックエンド プールに対してそれぞれ異なるバックエンド プール設定を構成します。 各バックエンド プールは、独自の設定にすることができます。  ルールでは、バックエンド HTTP 設定を使用して、適切なバックエンド プール メンバーにトラフィックをルーティングします。 これにより、バックエンド プール メンバーにトラフィックを送信する際に使用されるプロトコルとポートが決定されます。 また、このバックエンド HTTP 設定によって Cookie ベースのセッションも決定されます。 有効にした場合、Cookie ベースのセッション アフィニティは、各パケットに対する以前の要求と同じバックエンドにトラフィックを送信します。
+バックエンド プール内でネットワーク トラフィックを負荷分散するためのアプリケーション ゲートウェイの設定、**poolsetting01** と **poolsetting02** を構成します。 この例では、各バックエンド プールに対してそれぞれ異なるバックエンド プール設定を構成します。 各バックエンド プールは、独自の設定にすることができます。  ルールでは、バックエンド HTTP 設定を使用して、適切なバックエンド プール メンバーにトラフィックをルーティングします。 これにより、バックエンド プール メンバーにトラフィックを送信する際に使用されるプロトコルとポートが決定されます。 また、このバックエンド HTTP 設定によって Cookie ベースのセッションも決定されます。 有効にした場合、Cookie ベースのセッション アフィニティは、各パケットに対する以前の要求と同じバックエンドにトラフィックを送信します。
 
 ```powershell
 $poolSetting01 = New-AzureRmApplicationGatewayBackendHttpSettings -Name "besetting01" -Port 80 -Protocol Http -CookieBasedAffinity Disabled -RequestTimeout 120
@@ -202,7 +201,7 @@ $fipconfig01 = New-AzureRmApplicationGatewayFrontendIPConfig -Name "frontend1" -
 
 ### <a name="step-5"></a>手順 5.
 
-Application Gateway のフロント エンド ポートを構成します。 リスナーは、フロントエンド ポート構成オブジェクトを使用して、Application Gateway がどのポートのリスナーでトラフィックをリッスンするかを定義します。
+Application Gateway のフロント エンド ポートを構成します。 リスナーは、フロントエンド ポート構成オブジェクトを使用して、アプリケーション ゲートウェイがどのポートのリスナーでトラフィックをリッスンするかを定義します。
 
 ```powershell
 $fp01 = New-AzureRmApplicationGatewayFrontendPort -Name "fep01" -Port 80
@@ -263,9 +262,9 @@ $appgw = New-AzureRmApplicationGateway -Name appgwtest -ResourceGroupName appgw-
 
 ## <a name="get-an-application-gateway-dns-name"></a>アプリケーション ゲートウェイの DNS 名を取得する
 
-ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、Application Gateway には、動的に割り当てられたフレンドリではない DNS 名が必要です。 顧客が Application Gateway をヒットできるようにするために、Application Gateway のパブリック エンドポイントをポイントする CNAME レコードを使用できます。 詳細については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name-portal.md)」をご覧ください。
+ゲートウェイを作成したら、次は通信用にフロントエンドを構成します。 パブリック IP を使用する場合、Application Gateway には、動的に割り当てられたフレンドリではない DNS 名が必要です。 顧客がアプリケーション ゲートウェイをヒットできるようにするために、アプリケーション ゲートウェイのパブリック エンドポイントをポイントする CNAME レコードを使用できます。 詳細については、「[Azure クラウド サービスのカスタム ドメイン名の構成](../cloud-services/cloud-services-custom-domain-name-portal.md)」をご覧ください。
 
-フロントエンド IP CNAME レコードを構成するには、Application Gateway に接続されている PublicIPAddress 要素を使用して、Application Gateway の詳細とそれに関連付けられている IP/DNS 名を取得します。 Application Gateway の DNS 名を使用して CNAME レコードを作成します。 Application Gateway の再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
+フロントエンド IP CNAME レコードを構成するには、アプリケーション ゲートウェイに接続されている PublicIPAddress 要素を使用して、アプリケーション ゲートウェイの詳細とそれに関連付けられている IP/DNS 名を取得します。 アプリケーション ゲートウェイの DNS 名を使用して CNAME レコードを作成します。 Application Gateway の再起動時に VIP が変更される可能性があるため、A レコードの使用はお勧めしません。
 
 ```powershell
 Get-AzureRmPublicIpAddress -ResourceGroupName appgw-RG -Name publicIP01
@@ -295,6 +294,5 @@ DnsSettings              : {
 
 ## <a name="next-steps"></a>次のステップ
 
-Secure Sockets Layer (SSL) オフロードの詳細については、[Azure Resource Manager を使用した SSL オフロード用 Application Gateway の構成](application-gateway-ssl-arm.md)に関するページをご覧ください。
-
+Secure Sockets Layer (SSL) オフロードの詳細については、[Azure Resource Manager を使用した SSL オフロード用アプリケーション ゲートウェイの構成](application-gateway-ssl-arm.md)に関するページをご覧ください。
 

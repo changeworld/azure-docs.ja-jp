@@ -15,6 +15,8 @@
       href: functions-create-first-azure-function-azure-cli.md
     - name: 関数の作成 - Visual Studio
       href: functions-create-your-first-function-visual-studio.md
+    - name: 関数の作成 - Java/Maven
+      href: functions-create-first-java-maven.md
     - name: トリガー
       items:
         - name: BLOB ストレージ
@@ -31,7 +33,7 @@
           href: functions-create-storage-queue-triggered-function.md
     - name: 統合
       items:
-        - name: Storage
+        - name: ストレージ
           href: functions-integrate-storage-queue-output-binding.md
         - name: Azure Cosmos DB
           href: functions-integrate-store-unstructured-data-cosmosdb.md
@@ -67,12 +69,46 @@
           href: functions-reference-fsharp.md
         - name: JavaScript
           href: functions-reference-node.md
+        - name: Java
+          href: functions-reference-java.md
     - name: パフォーマンスに関する考慮事項
       href: functions-best-practices.md
     - name: 関数プロキシ
       href: functions-proxies.md
     - name: Functions ランタイム
       href: functions-runtime-overview.md
+    - name: Durable Functions
+      items:
+        - name: 概要
+          href: durable-functions-overview.md
+        - name: バインド
+          href: durable-functions-bindings.md
+        - name: チェックポイントと再生
+          href: durable-functions-checkpointing-and-replay.md
+        - name: インスタンス管理
+          href: durable-functions-instance-management.md
+        - name: HTTP API
+          href: durable-functions-http-api.md
+        - name: エラー処理
+          href: durable-functions-error-handling.md
+        - name: 診断
+          href: durable-functions-diagnostics.md
+        - name: タイマー
+          href: durable-functions-timers.md
+        - name: 外部イベント
+          href: durable-functions-external-events.md
+        - name: 永続的オーケストレーション
+          href: durable-functions-eternal-orchestrations.md
+        - name: シングルトン オーケストレーション
+          href: durable-functions-singletons.md
+        - name: サブオーケストレーション
+          href: durable-functions-sub-orchestrations.md
+        - name: タスク ハブ
+          href: durable-functions-task-hubs.md
+        - name: バージョン管理
+          href: durable-functions-versioning.md
+        - name: パフォーマンスとスケール
+          href: durable-functions-perf-and-scale.md
 - name: ハウツー ガイド
   items:
     - name: 開発
@@ -94,7 +130,11 @@
         - name: オンプレミスの関数
           href: functions-runtime-install.md
     - name: 構成
-      href: functions-how-to-use-azure-function-app-settings.md
+      items:
+        - name: 関数アプリの管理
+          href: functions-how-to-use-azure-function-app-settings.md
+        - name: ランタイム バージョンの設定
+          href: functions-versions.md
     - name: 監視
       href: functions-monitoring.md
     - name: 統合
@@ -111,6 +151,18 @@
           href: functions-flow-scenario.md
         - name: 管理対象のサービス ID の使用
           href: ../app-service/app-service-managed-service-identity.md?toc=%2fazure%2fazure-functions%2ftoc.json
+    - name: Durable Functions
+      items:
+        - name: インストール
+          href: durable-functions-install.md
+        - name: チェーン
+          href: durable-functions-sequence.md
+        - name: ファンアウト/ファンイン
+          href: durable-functions-cloud-backup.md
+        - name: ステートフル シングルトン
+          href: durable-functions-counter.md
+        - name: 人による操作
+          href: durable-functions-phone-verification.md
 - name: リファレンス
   items:
     - name: バインド
@@ -145,6 +197,10 @@
           href: functions-bindings-timer.md
         - name: Twilio
           href: functions-bindings-twilio.md
+    - name: host.json のリファレンス
+      href: functions-host-json.md
+    - name: アプリ設定のリファレンス
+      href: functions-app-settings.md
     - name: OpenAPI リファレンス
       href: functions-api-definition.md
 - name: リソース

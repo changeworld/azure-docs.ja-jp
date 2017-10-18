@@ -12,17 +12,17 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2017
+ms.date: 09/14/2017
 ms.author: muralikk
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 5696c99b719fb1c5ca9c3da7dbf23d365cc64a2e
+ms.sourcegitcommit: e05028ad46ef6ec2584cd2d3f4843cf38bb54f9e
+ms.openlocfilehash: d96c2f565e6462716ccf702188bdac03dcde9dce
 ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
+ms.lasthandoff: 09/16/2017
 
 ---
-# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-blob-storage"></a>Microsoft Azure Import/Export サービスを使用した Blob Storage へのデータの転送
-Azure Import/Export サービスを使用すると、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Blob Storage に安全に転送できます。 また、このサービスを使用して、Azure BLOB ストレージのデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 このサービスは、Azure との間で数テラバイト (TB) のデータを転送する必要があるときに、帯域幅が制限されていたり、ネットワーク コストがかかったりするために、ネットワーク経由でのアップロードまたはダウンロードが実現不可能である場合に適しています。
+# <a name="use-the-microsoft-azure-importexport-service-to-transfer-data-to-azure-storage"></a>Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送
+Azure Import/Export サービスを使用すると、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure Storage に安全に転送できます。 また、このサービスを使用して、Azure Storage のデータをハード ディスク ドライブに転送し、それらのドライブをオンプレミスのサイトに返送することもできます。 このサービスは、Azure との間で数テラバイト (TB) のデータを転送する必要があるときに、帯域幅が制限されていたり、ネットワーク コストがかかったりするために、ネットワーク経由でのアップロードまたはダウンロードが実現不可能である場合に適しています。
 
 Azure Import/Export サービスを使用するには、ハード ディスク ドライブを BitLocker で暗号化してデータのセキュリティを確保する必要があります。 このサービスでは、パブリック Azure のすべてのリージョンにある、クラシックと Azure Resource Manager の両方のストレージ アカウント (標準およびクール層) がサポートされます。 ハード ディスク ドライブは、この記事で後述するサポートされているいずれかの場所に送付する必要があります。
 
@@ -36,7 +36,7 @@ Azure Import/Export サービスを使用するには、ハード ディスク �
 * クラウドへのデータの移行: Azure に大量のデータを迅速にコスト効率よく移動します。
 * コンテンツ配信: 顧客サイトにデータを迅速に送信します。
 * バックアップ: Azure BLOB ストレージに格納するオンプレミスのデータのバックアップを作成します。
-* データの回復: BLOB ストレージに格納された大量のデータを回復し、オンプレミスの場所に配信します。
+* データの回復: ストレージに格納された大量のデータを回復し、オンプレミスの場所に配信します。
 
 ## <a name="prerequisites"></a>前提条件
 このセクションでは、このサービスを使用するために必要な前提条件を示します。 ドライブを発送する前に、これらの条件を慎重に確認してください。
@@ -44,11 +44,11 @@ Azure Import/Export サービスを使用するには、ハード ディスク �
 ### <a name="storage-account"></a>ストレージ アカウント
 既存の Azure サブスクリプション、または、Import/Export サービスを使用するための 1 つ以上のストレージ アカウントを持っている必要があります。 各ジョブを使用できるのは、1 つのストレージ アカウントとの間でのデータ転送だけです。 言い換えると、1 つのインポート/エクスポート ジョブを、複数のストレージ アカウントに対して使用することはできません。 新しいストレージ アカウントの作成については、「 [ストレージ アカウントの作成方法](storage-create-storage-account.md#create-a-storage-account)」を参照してください。
 
-### <a name="blob-types"></a>BLOB の種類
-Azure Import/Export サービスを使用して、データを**ブロック** BLOB または**ページ** BLOB にコピーできます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。
+### <a name="data-types"></a>データの種類
+Azure Import/Export サービスを使用して、データを**ブロック** BLOB または**ページ** BLOB あるいは **Files** にコピーすることができます。 逆に言うと、このサービスを使用して Azure Storage からエクスポートできるのは、**ブロック** BLOB、**ページ** BLOB、**追加** BLOB に限られます。 このサービスでは Azure Files のエクスポートはサポートされていません。Azure Storage へのファイルのインポートのみが可能です。
 
 ### <a name="job"></a>ジョブ
-BLOB ストレージとの間でインポートまたはエクスポートの処理を開始するには、最初に "ジョブ" を作成します。 ジョブは、"インポート ジョブ" または "エクスポート ジョブ" です。
+ストレージとの間でインポートまたはエクスポートの処理を開始するには、まず、ジョブを作成します。 ジョブは、"インポート ジョブ" または "エクスポート ジョブ" です。
 
 * オンプレミスのデータを、Azure ストレージ アカウントの BLOB に転送する場合は、インポート ジョブを作成します。
 * ストレージ アカウントに現在、BLOB として格納されているデータを、返送されるハード ドライブに移す場合は、エクスポート ジョブを作成します。ジョブを作成するときは、1 台以上のハード ドライブを Azure データ センターに発送することを Import/Export サービスに通知します。
@@ -154,7 +154,7 @@ FedEx、DHL、UPS などの運送業者や、アメリカ郵政公社を利用�
 > 
 
 ## <a name="how-does-the-azure-importexport-service-work"></a>Azure Import/Export サービスのしくみ
-Azure Import/Export サービスを使用して、オンプレミス サイトと Azure BLOB ストレージ間でデータを転送するには、ジョブを作成し、ハード ディスク ドライブを Azure データ センターに送付します。 送付する各ハード ディスク ドライブは、1 つのジョブに関連付けられます。 各ジョブは、1 つのストレージ アカウントに関連付けられます。 [前提条件のセクション](#pre-requisites) を慎重に見直して、サポートされている BLOB の種類、ディスクの種類、場所、発送など、このサービスの詳細を確認してください。
+Azure Import/Export サービスを使用して、オンプレミス サイトと Azure Storage 間でデータを転送するには、ジョブを作成し、ハード ディスク ドライブを Azure データ センターに送付します。 送付する各ハード ディスク ドライブは、1 つのジョブに関連付けられます。 各ジョブは、1 つのストレージ アカウントに関連付けられます。 [前提条件のセクション](#pre-requisites)を慎重に見直して、サポートされているデータの種類、ディスクの種類、場所、発送など、このサービスの詳細を確認してください。
 
 このセクションでは、インポート/エクスポート ジョブに含まれる手順の概要を説明します。 後述の「[クイック スタート](#quick-start)」で、インポート/エクスポート ジョブの作成手順を説明します。
 
@@ -162,7 +162,7 @@ Azure Import/Export サービスを使用して、オンプレミス サイト�
 大まかに言うと、インポート ジョブには次の手順が含まれます。
 
 * インポートするデータと必要なドライブの数を決定します。
-* BLOB ストレージでのデータのインポート先となる BLOB ロケーションを特定します。
+* Azure Storage でのデータのインポート先となる BLOB またはファイルの場所を特定します。
 * WAImportExport ツールを使用して、1 台以上のハード ディスク ドライブにデータをコピーし、そのドライブを BitLocker で暗号化します。
 * Azure Portal または Import/Export REST API を使用して、ターゲット ストレージ アカウントでインポート ジョブを作成します。 Azure Portal を使用している場合は、ドライブのジャーナル ファイルをアップロードします。
 * ドライブ返送に使用する返送先住所と運送業者アカウント番号を指定します。
@@ -174,6 +174,12 @@ Azure Import/Export サービスを使用して、オンプレミス サイト�
     ![図 1: インポート ジョブのフロー](./media/storage-import-export-service/importjob.png)
 
 ### <a name="inside-an-export-job"></a>エクスポート ジョブの内部
+> [!IMPORTANT]
+79 サービスでは Azure BLOB のエクスポートのみがサポートされており、Azure Files のエクスポートはサポートされていません。
+> 80
+> 
+81
+> 
 大まかに言うと、エクスポート ジョブには次の手順が含まれます。
 
 * エクスポートするデータと必要なドライブの数を決定します。
@@ -198,7 +204,7 @@ Azure Portal から、インポート ジョブまたはエクスポート ジ�
 
 | ジョブの状態 | Description |
 |:--- |:--- |
-| 作成 | ジョブが作成されると、その状態は"作成中" に設定されます。 ジョブの状態が "作成中" である間、インポート/エクスポート サービスでは、ドライブがデータ センターにまだ配送されていないと見なされます。 ジョブが "作成中" の状態で維持されるのは最大 2 週間で 、その後はサービスによって自動的に削除されます。 |
+| 作成 | ジョブが作成されると、その状態は"作成中" に設定されます。 ジョブの状態が "作成中" である間、インポート/エクスポート サービスでは、ドライブがデータ センターにまだ配送されていないと見なされます。 ジョブが "作成中" の状態で維持されるのは最大 2 週間で、その後はサービスによって自動的に削除されます。 |
 | 発送 | パッケージを発送したら、Azure Portal で追跡情報を更新する必要があります。  これにより、ジョブの状態が "発送" に変わります。 ジョブが "発送" の状態で維持されるのは最大 2 週間です。 
 | 受取済み | すべてのドライブがデータ センターで受け取られると、ジョブの状態が "受取済み" に設定されます。 |
 | 転送 | 少なくとも 1 つのドライブの処理が開始されると、ジョブの状態が "転送" に設定されます。 詳しくは、後述する「ドライブの状態」セクションをご覧ください。 |
@@ -267,15 +273,22 @@ Azure Import/Export サービスを使用してデータをインポートする
     
     **データセット CSV ファイル**
     
-    次に示すのは、データセット CSV ファイルのサンプルです。
+  Azure BLOB としてデータをインポートする場合の、サンプルのデータセット CSV ファイル例を以下に示します。
     
     ```
-    BasePath,DstBlobPathOrPrefix,BlobType,Disposition,MetadataFile,PropertiesFile
+    BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
     "F:\50M_original\100M_1.csv.txt","containername/100M_1.csv.txt",BlockBlob,rename,"None",None
     "F:\50M_original\","containername/",BlockBlob,rename,"None",None 
     ```
-   
-    上記の例では、"containername" という名前のコンテナーのルートに、100M_1.csv.txt がコピーされます。 コンテナー名 "containername" が存在しない場合は、その名前のコンテナーが作成されます。 50M_original の下にあるすべてのファイルと フォルダーが、containername に再帰的にコピーされます。 フォルダー構造は維持されます。
+  
+  Azure Files としてデータをインポートする場合の、サンプルのデータセット CSV ファイル例を以下に示します。
+  
+    ```
+    BasePath,DstItemPathOrPrefix,ItemType,Disposition,MetadataFile,PropertiesFile
+    "F:\50M_original\100M_1.csv.txt","fileshare/100M_1.csv.txt",file,rename,"None",None
+    "F:\50M_original\","fileshare/",file,rename,"None",None 
+    ```
+   上記の例では、"containername" または "fileshare" という名前のコンテナーのルートに、100M_1.csv.txt がコピーされます。 コンテナー名 "containername" または "Fileshare" が存在しない場合は、その名前のコンテナーが作成されます。 50M_original の下にあるすべてのファイルとフォルダーが、containername または fileshare に再帰的にコピーされます。 フォルダー構造は維持されます。
 
     詳しくは、[データセット CSV ファイルの準備](storage-import-export-tool-preparing-hard-drives-import.md#prepare-the-dataset-csv-file)に関する記事をご覧ください。
     
@@ -431,7 +444,7 @@ WAImportExport ツールの使用方法の詳細については、[インポー�
 
 **Azure Import/Export サービスを使用して Azure File Storage をコピーすることはできますか。**
 
-いいえ。Azure Import/Export サービスがサポートするのは、ブロック BLOB とページ BLOB だけです。 Azure File Storage、Table Storage、Queue Storage など、他の種類のストレージはいずれもサポートされていません。
+はい。Azure Import/Export サービスでは Azure File Storage へのインポートがサポートされます。 現時点では、Azure Files のエクスポートはサポートされていません。
 
 **CSP サブスクリプションで Azure Import/Export サービスを使用できますか。**
 

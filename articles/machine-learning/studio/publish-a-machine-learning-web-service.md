@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/06/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bdf0bd54130521a7178af3a28731f4c0e21e3e0b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスをデプロイする
 Azure Machine Learning では、予測分析ソリューションをビルド、テスト、およびデプロイできます。
@@ -184,11 +183,10 @@ Web サービスを更新するオプションの 1 つに、モデルをプロ�
 
 <!-- internal links -->
 [トレーニング実験を作成する]: #create-a-training-experiment
-[トレーニング実験を予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
+[予測実験に変換する]: #convert-the-training-experiment-to-a-predictive-experiment
 [Web サービスとしてデプロイする]: #deploy-it-as-a-web-service
 [新規]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [従来]: #deploy-the-predictive-experiment-as-a-new-Web-service
 [Access]: #access-the-Web-service
 [Manage]: #manage-the-Web-service-in-the-azure-management-portal
 [Update]: #update-the-Web-service
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/26/2017
 ms.author: TomSh
+ms.openlocfilehash: a32693a274c2615a515838306d72dbe64a5d1763
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 268299d82ce79b10eb8061467f4bad61194457f8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-technical-capabilities"></a>Azure セキュリティの技術的な機能
 
@@ -318,12 +317,10 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 また、Azure にはアプリの受信トラフィックと送信トラフィックの両方をセキュリティ保護するための使いやすい機能が複数用意されています。 他にも、Azure にはお客様のアプリケーション コードをセキュリティ保護するために、Web アプリケーションの脆弱性をスキャンする、外部から提供された機能が用意されています。
 
-- [さまざまな認証および承認方法を使用して、Web アプリのセキュリティを保護する](https://docs.microsoft.com/azure/app-service-web/web-sites-authentication-authorization)
-
-    - [アプリに対して Azure Active Directory 認証をセットアップする](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
+- [アプリに対して Azure Active Directory 認証をセットアップする](https://azure.microsoft.com/blog/azure-websites-authentication-authorization/)
 
 
-- [トランスポート層セキュリティ (TLS/SSL) - HTTPS を有効にして、アプリへのトラフィックをセキュリティで保護する](https://docs.microsoft.com/azure/app-service-web/web-sites-configure-ssl-certificate)
+- [トランスポート層セキュリティ (TLS/SSL) - HTTPS を有効にして、アプリへのトラフィックをセキュリティで保護する](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl)
 
     - [すべての着信トラフィックに対して HTTPS 接続を経由することを強制する](http://microsoftazurewebsitescheatsheet.info/)
 
@@ -336,13 +333,13 @@ Web アプリケーション ファイアウォールで保護される一般的
 
 - [Tinfoil Security Scanning を使って Web アプリ コードをスキャンして脆弱性を検出する](https://azure.microsoft.com/blog/web-vulnerability-scanning-for-azure-app-service-powered-by-tinfoil-security/)
 
-- [TLS 相互認証を構成して、Web アプリに接続する際にクライアント証明書を要求する](https://docs.microsoft.com/azure/app-service-web/app-service-web-configure-tls-mutual-auth)
+- [TLS 相互認証を構成して、Web アプリに接続する際にクライアント証明書を要求する](https://docs.microsoft.com/azure/app-service/app-service-web-configure-tls-mutual-auth)
 
 - [アプリから外部リソースに安全に接続できるようにするために使用するクライアント証明書を構成する](https://azure.microsoft.com/blog/using-certificates-in-azure-websites-applications/)
 
 - [標準的なサーバー ヘッダーを削除することによって、ツールがアプリにフィンガープリントを残すことを回避する](https://azure.microsoft.com/blog/removing-standard-server-headers-on-windows-azure-web-sites/)
 
-- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](https://docs.microsoft.com/azure/app-service-web/web-sites-integrate-with-vnet)
+- [ポイント対サイト VPN を使用して、プライベート ネットワーク内のリソースとアプリケーションを安全に接続します。](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 
 - [ハイブリッド接続を使用して、アプリをプライベート ネットワーク内のリソースに安全に接続する](https://docs.microsoft.com/azure/app-service/app-service-hybrid-connections)
 
@@ -532,4 +529,3 @@ OMS を使用すれば、オンプレミス型、Azure、AWS、Windows Server、
 - [ネットワークのセキュリティ](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 
 - [脅威管理](https://www.microsoft.com/en-us/trustcenter/security/threatmanagement)
-

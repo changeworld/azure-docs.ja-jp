@@ -15,16 +15,15 @@ ms.topic: tutorial
 ms.date: 05/03/2017
 ms.author: beverst
 ms.custom: mvc
+ms.openlocfilehash: 36cf3c0bb4a28a4ccfd5fc94b72fba023516a9ce
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7757ecf442314d294432266750502e384e39bde0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-a-docker-python-and-postgresql-web-app-in-azure"></a>Azure で Docker Python と PostgreSQL アプリを構築する
 
-Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で基本的な Docker Python Web アプリを作成する方法を示します。 さらに、このアプリを PostgreSQL データベースに接続します。 このチュートリアルを完了すると、[Azure App Service Web Apps](../../app-service-web/app-service-web-overview.md) で Docker コンテナー内で実行される Python Flask アプリケーションが完成します。
+Azure Web Apps では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure で基本的な Docker Python Web アプリを作成する方法を示します。 さらに、このアプリを PostgreSQL データベースに接続します。 このチュートリアルを完了すると、[Azure App Service Web Apps](../app-service-web-overview.md) で Docker コンテナー内で実行される Python Flask アプリケーションが完成します。
 
 ![Azure App Service の Docker Python Flask アプリ](./media/tutorial-docker-python-postgresql-app/docker-flask-in-azure.png)
 
@@ -111,7 +110,7 @@ INFO  [alembic.runtime.migration] Running upgrade  -> 791cd7d80402, empty messag
  * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
 ```
 
-ブラウザーで http://127.0.0.1:5000 にアクセスします。 **[Register! (登録する)]** をクリックし、 テスト ユーザーを作成します。
+ブラウザーで `http://127.0.0.1:5000` にアクセスします。 **[Register! (登録する)]** をクリックし、 テスト ユーザーを作成します。
 
 ![ローカルで実行されている Python Flask アプリケーション](./media/tutorial-docker-python-postgresql-app/local-app.png)
 
@@ -554,5 +553,4 @@ http://<app_name>.azurewebsites.net
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 
 > [!div class="nextstepaction"] 
-> [既存のカスタム DNS 名を Azure Web Apps にマップする](../../app-service-web/app-service-web-tutorial-custom-domain.md)
-
+> [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md)

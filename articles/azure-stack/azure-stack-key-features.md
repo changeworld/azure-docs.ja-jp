@@ -12,16 +12,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/25/2017
 ms.author: helaw
+ms.openlocfilehash: 4d5dc523886ea1b03fdb2d1cafce4dcf3fef2576
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: c361d5b47a22689e7bf6749067a39e12df25c84a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="key-features-and-concepts-in-azure-stack"></a>Azure Stack の主要な機能と概念
+
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
+
 Microsoft Azure Stack を初めて使う場合は、次の用語と機能の説明を参考にしてください。
 
 ## <a name="personas"></a>ペルソナ
@@ -61,7 +63,7 @@ Azure Stack では、サービスは、リージョン、サブスクリプシ�
 
 テナントによるオファーへのサブスクリプションを階層で示した例 (各オファーに異なるプランやサービスが含まれる)。
 
-### <a name="regions"></a>リージョン
+### <a name="regions"></a>地域
 Azure Stack のリージョンは、スケールと管理の基本要素です。 組織は、複数のリージョンを用意することができ、各リージョンでリソースを利用可能にできます。 リージョンごとに異なるサービスを利用可能にすることもできます。 Azure Stack Development Kit では単一のリージョンのみがサポートされ、自動的に *local* という名前が与えられます。
 
 ### <a name="services"></a>サービス
@@ -94,7 +96,7 @@ Azure Resource Manager を使用することで、インフラストラクチャ
 ### <a name="resource-groups"></a>リソース グループ
 リソース グループは、リソース、サービス、およびアプリケーションのコレクションであり、各リソースには、仮想マシン、仮想ネットワーク、パブリック IP、ストレージ アカウント、Web サイトなどの種類があります。 各リソースは、リソース グループに属する必要があります。このため、リソース グループを使用して、ワークロード別や場所別などにリソースを論理的に整理できます。  Microsoft Azure Stack では、プランやオファーなどのリソースもリソース グループで管理される。
  
-### <a name="azure-resource-manager-templates"></a>Azure Resource Manager のテンプレート
+### <a name="azure-resource-manager-templates"></a>Azure リソース マネージャーのテンプレート
 Azure Resource Manager を使用して、アプリケーションのデプロイと構成を定義する (JSON 形式の) テンプレートを作成できます。 このテンプレートは Azure リソース マネージャー テンプレートと呼ばれ、デプロイメントの定義を宣言できます。 テンプレートを使用すると、アプリケーションをアプリのライフサイクルを通して繰り返しデプロイできるほか、常にリソースが一貫した状態でデプロイされます。
 
 ## <a name="resource-providers-rps"></a>リソース プロバイダー (RP)
@@ -143,5 +145,4 @@ Microsoft Azure Stack は、すべてのリソース プロバイダーの使用
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack Development Kit をデプロイする](azure-stack-deploy.md)
-
 

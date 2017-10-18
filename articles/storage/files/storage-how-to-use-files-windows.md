@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/27/2017
+ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: a8e4900bee81763300d976f0c966d7d20662ca27
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Windows で Azure ファイル共有をマウントして共有にアクセスする
-[Azure File Storage](../storage-dotnet-how-to-use-files.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Windows と Windows Server で、Azure ファイル共有をマウントできます。 この記事では、Windows 上で Azure ファイル共有をマウントするための 3 つの異なる方法を示します。エクスプローラー UI を使用する方法、PowerShell を使用する方法、コマンド プロンプトを使用する方法です。 
+[Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Windows と Windows Server で、Azure ファイル共有をマウントできます。 この記事では、Windows 上で Azure ファイル共有をマウントするための 3 つの異なる方法を示します。エクスプローラー UI を使用する方法、PowerShell を使用する方法、コマンド プロンプトを使用する方法です。 
 
 Azure ファイル共有がホストされている Azure リージョンの外の Azure ファイル共有 (オンプレミスの共有、他の Azure リージョン内の共有など) をマウントするために、OS は SMB 3.0 をサポートする必要があります。 
 
@@ -39,7 +37,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7              | SMB 2.1     | あり                   | いいえ                   |
 | Windows Server 2008 R2 | SMB 2.1     | あり                   | いいえ                   |
 
-<sup>1</sup>Windows 10 バージョン 1507、1511、1607、1703
+<sup>1</sup>Windows 10 バージョン 1507、1511、1607、1703 および 1709。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。
@@ -47,9 +45,9 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 ## <a name="aprerequisites-for-mounting-azure-file-share-with-windows"></a></a>Windows で Azure ファイル共有をマウントするための前提条件 
 * **ストレージ アカウント名**: Azure ファイル共有をマウントするには、ストレージ アカウントの名前が必要になります。
 
-* **ストレージ アカウント キー**: Azure File 共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 SAS キーは現在、マウントではサポートされていません。
+* **ストレージ アカウント キー**: Azure File 共有をマウントするには、プライマリ (またはセカンダリ) ストレージ キーが必要です。 現時点では、SAS キーは、マウントではサポートされていません。
 
-* **ポート 445 が開いていること**: Azure File Storage は SMB プロトコルを使用します。 SMB は、TCP ポート 445 経由で通信します。ファイアウォールがクライアント マシンの TCP ポート 445 をブロックしていないことを確認してください。
+* **ポート 445 が開いていること**: Azure Files は SMB プロトコルを使用します。 SMB は、TCP ポート 445 経由で通信します。ファイアウォールがクライアント マシンの TCP ポート 445 をブロックしていないことを確認してください。
 
 ## <a name="mount-the-azure-file-share-with-file-explorer"></a>エクスプローラーを使用した Azure ファイル共有のマウント
 > [!Note]  
@@ -63,7 +61,7 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 3. **Azure Portal の [接続] ウィンドウの UNC パスをコピーします**。この情報を見つける方法の詳細な説明については、[ここ](storage-how-to-use-files-portal.md#connect-to-file-share)を参照してください。
 
-    ![Azure File Storage の [接続] ウィンドウの UNC パス](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
+    ![Azure Files の [接続] ウィンドウの UNC パス](./media/storage-how-to-use-files-windows/portal_netuse_connect.png)
 
 4. **ドライブ文字を選択し、UNC パスを入力します。** 
     
@@ -121,28 +119,27 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 >   ```
 
 ## <a name="next-steps"></a>次のステップ
-Azure File Storage の詳細については、次のリンクを参照してください。
+Azure Files の詳細については、次のリンクをご覧ください。
 
 * [FAQ](../storage-files-faq.md)
 * [Windows 上でのトラブルシューティング](storage-troubleshoot-windows-file-connection-problems.md)      
 
 ### <a name="conceptual-articles-and-videos"></a>概念に関する記事とビデオ
-* [Azure File Storage: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
-* [Linux で Azure File Storage を使用する方法](../storage-how-to-use-files-linux.md)
+* [Azure Files: Windows および Linux 用の円滑なクラウド SMB ファイル システム](https://azure.microsoft.com/documentation/videos/azurecon-2015-azure-files-storage-a-frictionless-cloud-smb-file-system-for-windows-and-linux/)
+* [Linux で Azure Files を使用する方法](../storage-how-to-use-files-linux.md)
 
-### <a name="tooling-support-for-azure-file-storage"></a>Azure File Storage 用のツールのサポート
+### <a name="tooling-support-for-azure-files"></a>Azure Files 用のツールのサポート
 * [Microsoft Azure Storage で AzCopy を使用する方法](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)
 * [Azure Storage での Azure CLI の使用](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json#create-and-manage-file-shares)
-* [Azure File Storage に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
-* [Azure File Storage に関する問題のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)
+* [Azure Files に関する問題のトラブルシューティング - Windows](storage-troubleshoot-windows-file-connection-problems.md)
+* [Azure Files に関する問題のトラブルシューティング - Linux](storage-troubleshoot-linux-file-connection-problems.md)
 
 ### <a name="blog-posts"></a>ブログ記事
-* [Azure File Storage の一般提供開始](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
-* [Inside Azure File storage (Azure File Storage の内部)](https://azure.microsoft.com/blog/inside-azure-file-storage/)
+* [Azure Files が一般公開されました](https://azure.microsoft.com/blog/azure-file-storage-now-generally-available/)
+* [Azure Files の内部](https://azure.microsoft.com/blog/inside-azure-file-storage/)
 * [Microsoft Azure File サービスの概要](http://blogs.msdn.com/b/windowsazurestorage/archive/2014/05/12/introducing-microsoft-azure-file-service.aspx)
 * [Azure Files へのデータの移行](https://azure.microsoft.com/blog/migrating-data-to-microsoft-azure-files/)
 
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-

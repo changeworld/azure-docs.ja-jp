@@ -14,12 +14,11 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
 この記事では、Data Management Gateway を使って、高可用性とスケーラビリティに対するソリューションを構成できます。    
@@ -30,7 +29,7 @@ ms.lasthandoff: 09/25/2017
 >**このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
 
 ## <a name="overview"></a>概要
-ポータルから、1 つの論理ゲートウェイを複数のオンプレミス コンピューターにインストールされているデータ管理ゲートウェイと関連付けることができます。 これらのコンピューターは、**ノード**と呼ばれます。 最大で** 4 つのノードを**を 1 つの論理ゲートウェイに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。  
+ポータルから、1 つの論理ゲートウェイを複数のオンプレミス コンピューターにインストールされているデータ管理ゲートウェイと関連付けることができます。 これらのコンピューターは、**ノード**と呼ばれます。 最大で **4 つのノードを**を 1 つの論理ゲートウェイに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。  
 
 - オンプレミスとクラウドのデータ ストア間で、データ移動のパフォーマンスが向上する。  
 - 何らかの理由によってノードの 1 つがダウンした場合、データの移動に他のノードを引き続き使用できる。 
@@ -45,7 +44,7 @@ ms.lasthandoff: 09/25/2017
 
 ![Data Management Gateway - 高可用性とスケーラビリティ](media/data-factory-data-management-gateway-high-availability-scalability/data-factory-gateway-high-availability-and-scalability.png)
 
-**論理ゲートウェイ**は、Azure Portal でデータ ファクトリに追加するゲートウェイです。 以前は、Data Management Gateway がインストールされているオンプレミスの Windows コンピューター を1 つだけ、論理ゲートウェイと関連付けることができました。 このオンプレミスのゲートウェイ コンピューターは、ノードと呼ばれます。 現在は、最大で** 4 つの物理ノード**を論理ゲートウェイと関連付けできます。 複数のノードを備えた論理ゲートウェイは、**マルチノード ゲートウェイ**と呼ばれます。  
+**論理ゲートウェイ**は、Azure Portal でデータ ファクトリに追加するゲートウェイです。 以前は、Data Management Gateway がインストールされているオンプレミスの Windows コンピューター を1 つだけ、論理ゲートウェイと関連付けることができました。 このオンプレミスのゲートウェイ コンピューターは、ノードと呼ばれます。 現在は、最大で **4 つの物理ノード**を論理ゲートウェイと関連付けできます。 複数のノードを備えた論理ゲートウェイは、**マルチノード ゲートウェイ**と呼ばれます。  
 
 これらのノードはすべて、**アクティブ**です。 すべてのノードが、オンプレミスとクラウドのデータ ストア間でデータを移動するためのデータ移動ジョブを処理できます。 ノードの 1 つは、ディスパッチャーとワーカーの両方として機能します。 グループ内のその他のノードは、ワーカー ノードです。 **ディスパッチャー** ノードは、データ移動タスク/ジョブをクラウド サービスからプルして、ワーカー ノード (自身を含む) にディスパッチします。 **ワーカー**ノードは、オンプレミスとクラウドのデータ ストア間でデータを移動するためのデータ移動ジョブを実行できます。 すべてのノードがワーカーです。 1 つのノードだけが、ディスパッチとワーカーの両方を担うことができます。    
 
@@ -250,4 +249,3 @@ Azure Portal では、パイプライン監視のエクスペリエンスによ�
 以下の記事を確認してください。
 - [Data Management Gateway](data-factory-data-management-gateway.md) に関する記事 - ゲートウェイの概要を丁寧に説明しています。
 - [オンプレミスとクラウドのデータ ストア間でのデータ移動](data-factory-move-data-between-onprem-and-cloud.md)に関する記事 - 単一のノードでゲートウェイを使用するための詳細な手順を紹介したチュートリアルを含みます。 
-

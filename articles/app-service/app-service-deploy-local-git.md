@@ -14,15 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2016
 ms.author: dariagrigoriu
+ms.openlocfilehash: ed0239df7bf1e4d37987aaa929d0c67bec595b30
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: a2884faf41a450e136b6b5ebca208f0238d84080
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="local-git-deployment-to-azure-app-service"></a>Azure App Service へのローカル Git デプロイ
-このチュートリアルでは、ローカル コンピューター上の Git リポジトリから [Azure Web Apps](app-service-web-overview.md) にアプリをデプロイする方法を説明します。 この方法は、App Service により、 **Azure ポータル** の [ローカル Git]デプロイ オプションでサポートされています。  
+このチュートリアルでは、ローカル コンピューター上の Git リポジトリから [Azure Web Apps](app-service-web-overview.md) にアプリをデプロイする方法を説明します。 この方法は、App Service により、**Azure Portal** の [ローカル Git]デプロイ オプションでサポートされています。  
 この記事に記載されている Git コマンドの多くは、[ここ](app-service-web-get-started-dotnet.md)に説明されている [Azure コマンド ライン インターフェイス]を使用して App Service アプリを作成する際に自動的に実行されます。
 
 ## <a name="prerequisites"></a>前提条件
@@ -69,7 +68,7 @@ git commit -m "Hello Azure App Service"
 ## <a name="Step3"></a>手順 3: App Service アプリのリポジトリを有効にする
 次に示している手順を実行して、App Service アプリに対して Git リポジトリを有効にします。
 
-1. [ローカル Git]にログインします。
+1. [ローカル Git] にログインします。
 2. App Service アプリのブレードで、**[設定]、[展開元]** の順にクリックします。 **[ソースの選択]** をクリックし、**[ローカル Git リポジトリ]** をクリックして **[OK]** をクリックします。  
    
     ![ローカルの Git リポジトリ](./media/app-service-deploy-local-git/local_git_selection.png)
@@ -99,7 +98,7 @@ git commit -m "Hello Azure App Service"
 git push azure master
 ```
     You will be prompted for the password you created earlier when you reset your deployment credentials in the Azure Portal. Enter the password (note that Gitbash does not echo asterisks to the console as you type your password). 
-5. Azure ポータル内のアプリに戻ります。 最近使用したプッシュのログ エントリが **[デプロイ]** ブレードに表示されます。 
+5. Azure Portal 内のアプリに戻ります。 最近使用したプッシュのログ エントリが **[デプロイ]** ブレードに表示されます。 
    
     ![](./media/app-service-deploy-local-git/deployment_history.png)
 6. アプリのブレード上部の **[参照]** ボタンをクリックして、コンテンツがデプロイされていることを確認します。 
@@ -112,7 +111,7 @@ Git を使用して Azure の App Service に発行する場合に発生する�
 
 **原因**: このエラーはアプリが実行されていない場合に発生する可能性があります。
 
-**解決策**: Azure ポータルでアプリを起動します。 Git デプロイはアプリが実行されていない限り機能しません。 
+**解決策**: Azure Portal でアプリを起動します。 Git デプロイはアプリが実行されていない限り機能しません。 
 
 - - -
 **症状**: ホスト 『hostname』 を解決できませんでした
@@ -181,4 +180,3 @@ git config --global http.postBuffer 524288000
 
 [Using Git with CodePlex]: http://codeplex.codeplex.com/wikipage?title=Using%20Git%20with%20CodePlex&referringTitle=Source%20control%20clients&ProjectName=codeplex
 [Quick Start - Mercurial]: http://mercurial.selenic.com/wiki/QuickStart
-

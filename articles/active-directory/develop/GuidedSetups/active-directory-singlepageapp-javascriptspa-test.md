@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/01/2017
 ms.author: andret
+ms.openlocfilehash: c888760ab311e8ac08b1e625bb837f91047db645
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 847eb792064bd0ee7d50163f35cd2e0368324203
-ms.openlocfilehash: c559c80781da3631a783d96539622c4c89fe7e17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/19/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="test-your-code"></a>コードのテスト
 
@@ -63,4 +62,3 @@ Microsoft Graph API は、ユーザーのプロファイルを読み込むため
 バックエンド API でスコープを必要としない (推奨されません) 場合は、`acquireTokenSilent` や `acquireTokenRedirect` の呼び出し内のスコープとして `clientId` を使用できます。
 
 <!--end-collapse-->
-

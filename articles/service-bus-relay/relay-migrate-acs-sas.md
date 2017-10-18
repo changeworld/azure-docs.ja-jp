@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/07/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: fb331bf6e11ac8378004c6da73b589130f9a8ddf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-from-azure-active-directory-access-control-service-to-shared-access-signature-authorization"></a>Azure Active Directory Access Control Service から Shared Access Signature 承認への移行
 
 Azure Relay アプリケーションではこれまで 2 つの承認モデルが存在していました。リレー サービスにより直接提供される [Shared Access Signature (SAS)](../service-bus-messaging/service-bus-sas.md) トークン モデルと、承認規則の管理が [Azure Active Directory](/azure/active-directory/) Access Control Service (ACS) によって内部で管理されるフェデレーション モデルです。このモデルでは、ACS から取得したトークンが、目的の機能へのアクセスを承認するためにリレーに渡されます。
@@ -67,6 +65,5 @@ Azure Relay 認証の詳細については、次のトピックをご覧くだ�
 
 * [Azure Relay の認証と承認](relay-authentication-and-authorization.md)
 * [Shared Access Signature による Service Bus の認証](../service-bus-messaging/service-bus-sas.md)
-
 
 

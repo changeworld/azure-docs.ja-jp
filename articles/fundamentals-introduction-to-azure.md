@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/30/2015
 ms.author: robb
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 2d2cc04887d90b9f005bfe5310a9ce2fb2f7e217
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-microsoft-azure"></a>Microsoft Azure の概要
 Microsoft Azure は、パブリック クラウド向けの Microsoft のアプリケーション プラットフォームです。  この記事を読めば、クラウド コンピューティングに関する知識がまったくなくても、Azure の基礎を理解することができます。
@@ -538,4 +537,3 @@ SendGrid は、電子メールを送信できる Azure ストア内のアプリ�
 これで全体像を把握できたため、次のステップは最初の Azure アプリケーションを記述することです。 言語を選択して[適切な SDK を入手し](/downloads/)、作成してみましょう。 クラウド コンピューティングはこれからの基本です。今すぐ始めましょう。
 
 [Azure Media Services Poster]: http://azure.microsoft.com/documentation/infographics/media-services/
-
