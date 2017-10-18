@@ -13,15 +13,13 @@
 ## [計画と運用](security-center-planning-and-operations-guide.md)
 ## [アクセス許可](security-center-permissions.md)
 ## [サポートされているプラットフォーム](security-center-os-coverage.md)
-## [パートナー統合](security-center-partner-integration.md)
 ## [FAQ](security-center-faq.md)
 
 # 方法
-
-## セキュリティ ポリシー
-### [概要](security-center-policies-overview.md)
+## [セキュリティ ポリシー](security-center-policies-overview.md)
 ### [データ収集](security-center-enable-data-collection.md)
 ### [セキュリティ ポリシー](security-center-policies.md)
+### [Azure Policy を使用するセキュリティ ポリシー](security-center-azure-policy.md)
 ### [電子メール通知](security-center-provide-security-contact-details.md)
 ### [[価格レベル]](security-center-pricing.md)
 
@@ -30,6 +28,10 @@
 ## [Search](security-center-search.md)
 
 ## 回避
+### [セキュリティ ソリューション](security-center-partner-integration.md)
+#### [接続済みソリューションの監視](security-center-partner-solutions.md)
+#### [Microsoft ATA への接続](security-center-ata-integration.md)
+#### [Azure AD Identity Protection への接続](security-center-aadip-integration.md)
 ### [セキュリティの推奨事項の実装](security-center-recommendations.md)
 ### [アプリケーションの推奨事項](security-center-application-recommendations.md)
 #### [Web アプリケーション ファイアウォールの追加](security-center-add-web-application-firewall.md)
@@ -57,7 +59,6 @@
 #### [OS バージョンの更新](security-center-update-os-version.md)
 #### [脆弱性評価がインストールされていません](security-center-vulnerability-assessment-recommendations.md)
 ### [セキュリティ正常性の監視](security-center-monitoring.md)
-### [パートナー ソリューションの監視](security-center-partner-solutions.md)
 ### [ID とアクセス](security-center-identity-access.md)
 
 ## 検出と応答

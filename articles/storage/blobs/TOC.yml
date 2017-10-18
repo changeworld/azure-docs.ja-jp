@@ -28,6 +28,8 @@
           href: storage-secure-access-application.md
         - name: 4 - ストレージの監視とトラブルシューティングを行う
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: クラウド ストレージで非構造化データを検索する
+      href: storage-unstructured-search.md
 - name: サンプル
   items:
     - name: Azure PowerShell

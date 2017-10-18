@@ -2,11 +2,11 @@
 
 このチュートリアルの手順では、Ubuntu Linux を実行しているものと仮定します。
 
-シェルを開き、次のコマンドを実行して、前提条件のパッケージをインストールします。
+前提条件のパッケージをインストールするには、シェルを開き、次のコマンドを実行します。
 
 ```bash
 sudo apt-get update
-sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
+sudo apt-get install curl build-essential libcurl4-openssl-dev git cmake pkg-config libssl-dev uuid-dev valgrind libglib2.0-dev libtool autoconf
 ```
 
 シェルで、次のコマンドを実行して、Azure IoT Edge GitHub リポジトリをローカル コンピューターに複製します。

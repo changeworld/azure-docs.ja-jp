@@ -9,6 +9,8 @@
   items:
     - name: 収集 - Azure VM
       href: log-analytics-quick-collect-azurevm.md
+    - name: 収集 - Linux コンピューター
+      href: log-analytics-quick-collect-linux-computer.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - データの分析

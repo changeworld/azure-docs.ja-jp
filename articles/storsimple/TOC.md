@@ -101,6 +101,7 @@
 ##### [ボリューム コンテナーを管理する](storsimple-8000-manage-volume-containers.md)
 ##### [ボリュームを管理する - 最新](storsimple-8000-manage-volumes-u2.md)
 ###### [FAQ - ローカル固定ボリューム](storsimple-8000-local-volume-faq.md)
+##### [ロールベースのアクセス制御](storsimple-8000-role-based-access-control.md)
 ##### [ACR を管理する](storsimple-8000-manage-acrs.md)
 ##### [帯域幅テンプレートを管理する](storsimple-8000-manage-bandwidth-templates.md)
 ##### [ジョブの表示および管理](storsimple-8000-manage-jobs-u2.md)
@@ -188,7 +189,7 @@
 #### [リリース - 一般公開](storsimple-july-2014-release-notes.md)
 
 ## リファレンス
-### [Azure PowerShell](/powershell/azure/overview?view=azuresmps-3.7.0)
+### [REST API](https://docs.microsoft.com/rest/api/storsimple)
 ### [StorSimple 用 Windows PowerShell のコマンドレット](https://technet.microsoft.com/library/dn688168.aspx)
 
 # StorSimple 8000 シリーズ (クラシック ポータル)

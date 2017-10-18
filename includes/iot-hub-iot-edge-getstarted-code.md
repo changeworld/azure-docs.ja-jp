@@ -4,28 +4,28 @@ Hello World サンプルによってログ ファイルに書き込まれた出�
 
 ```json
 [{
-    "time": "Mon Apr 11 13:48:07 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "content": "Log started"
 }, {
-    "time": "Mon Apr 11 13:48:48 2016",
+    "time": "Mon Apr 11 13:42:50 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:48:55 2016",
+    "time": "Mon Apr 11 13:42:55 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:01 2016",
+    "time": "Mon Apr 11 13:43:00 2016",
     "properties": {
         "helloWorld": "from Azure IoT Gateway SDK simple sample!"
     },
     "content": "aGVsbG8gd29ybGQ="
 }, {
-    "time": "Mon Apr 11 13:49:04 2016",
+    "time": "Mon Apr 11 13:45:00 2016",
     "content": "Log stopped"
 }]
 ```
@@ -36,11 +36,11 @@ Hello World サンプルによってログ ファイルに書き込まれた出�
 
 ### <a name="iot-edge-gateway-creation"></a>IoT Edge ゲートウェイの作成
 
-*ゲートウェイ プロセス*を実装する必要があります。 このプログラムは、内部インフラストラクチャ (ブローカー) を作成し、IoT Edge のモジュールを読み込んで、ゲートウェイ プロセスを構成します。 IoT Edge には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。 **Gateway\_Create\_From\_JSON** 関数を使うには、読み込む IoT Edge モジュールを指定する JSON ファイルへのパスを渡します。
+ゲートウェイを作成するには、*ゲートウェイ プロセス*を実装します。 このプログラムは、内部インフラストラクチャ (ブローカー) を作成し、IoT Edge のモジュールを読み込んで、ゲートウェイ プロセスを構成します。 IoT Edge には、JSON ファイルからゲートウェイのブートストラップを行うための **Gateway\_Create\_From\_JSON** 関数が含まれています。 **Gateway\_Create\_From\_JSON** 関数を使うには、読み込む IoT Edge モジュールを指定する JSON ファイルへのパスを渡します。
 
 ゲートウェイ プロセスのコードは、[main.c][lnk-main-c] ファイルの *Hello World* サンプル内にあります。 次のスニペットは、ゲートウェイ プロセス コードを読みやすく省略したものです。 このサンプル プログラムは、ゲートウェイを作成し、ユーザーが **Enter** キーを押すまで待機してから、ゲートウェイを破棄します。
 
-```c
+```C
 int main(int argc, char** argv)
 {
     GATEWAY_HANDLE gateway;
@@ -119,7 +119,7 @@ JSON ファイルには、ブローカーに渡されるモジュール間のリ
 
 hello\_world モジュールでメッセージを発行するコードは、[hello_world.c][lnk-helloworld-c] ファイル内にあります。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすくした修正版のコードです。
 
-```c
+```C
 int helloWorldThread(void *param)
 {
     // create data structures used in function.
@@ -165,24 +165,22 @@ int helloWorldThread(void *param)
 }
 ```
 
-### <a name="helloworld-module-message-processing"></a>hello\_world モジュールでのメッセージの処理
-
 hello\_world モジュールでは、他の IoT Edge モジュールからブローカーに発行されたメッセージを処理しません。 このため、hello\_world モジュールでのメッセージ コールバックの実装は no-op 関数になります。
 
-```c
+```C
 static void HelloWorld_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
     /* No action, HelloWorld is not interested in any messages. */
 }
 ```
 
-### <a name="logger-module-message-publishing-and-processing"></a>Logger モジュールでのメッセージの発行と処理
+### <a name="logger-module-message-processing"></a>Logger モジュールでのメッセージの処理
 
 logger モジュールはブローカーからメッセージを受信し、ファイルに書き込みます。 メッセージを発行することはありません。 このため、logger モジュールのコードで **Broker_Publish** 関数を呼び出すことはありません。
 
 [logger.c][lnk-logger-c] ファイル内の **Logger_Receive** 関数は、logger モジュールにメッセージを配信するためにブローカーが呼び出すコールバックです。 次のスニペットは、コメントを追加してエラー処理コードを取り除き、読みやすくした修正版です。
 
-```c
+```C
 static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHandle)
 {
 
@@ -223,7 +221,10 @@ static void Logger_Receive(MODULE_HANDLE moduleHandle, MESSAGE_HANDLE messageHan
 
 ## <a name="next-steps"></a>次のステップ
 
-この記事では、ログ ファイルにメッセージを書き込む簡単な IoT Edge ゲートウェイを実行しました。 IoT Hub にメッセージを送信するサンプルを実行するには、「[IoT Edge – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-linux]」または「[IoT Edge – Windows を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-windows]」をご覧ください。
+この記事では、ログ ファイルにメッセージを書き込む簡単な IoT Edge ゲートウェイを実行しました。 IoT Hub にメッセージを送信するサンプルを実行するには、次の記事を参照してください。
+
+- [IoT Edge – Linux を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-linux] 
+- [IoT Edge – Windows を使用してシミュレートされたデバイスから D2C メッセージを送信する][lnk-gateway-simulated-windows]
 
 
 <!-- Links -->

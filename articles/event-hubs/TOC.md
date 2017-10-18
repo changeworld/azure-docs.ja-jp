@@ -22,6 +22,7 @@
 
 # 方法
 ## 計画と設計
+### [geo ディザスター リカバリーと geo レプリケーション](event-hubs-geo-dr.md)
 ### [Event Hubs Dedicated](event-hubs-dedicated-overview.md)
 ### [認証とセキュリティ モデルの概要](event-hubs-authentication-and-security-model-overview.md)
 ### [可用性と一貫性](event-hubs-availability-and-consistency.md)

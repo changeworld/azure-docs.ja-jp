@@ -21,6 +21,12 @@
       href: ../container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app.md
     - name: Service Fabric
       href: ../service-fabric/service-fabric-tutorial-create-container-images.md
+- name: 概念
+  items:
+    - name: Container Registry の SKU
+      href: container-registry-skus.md
+    - name: geo レプリケーション (プレビュー)
+      href: container-registry-geo-replication.md
 - name: ハウツー ガイド
   items:
     - name: イメージのプッシュとプル
@@ -43,8 +49,8 @@
       href: /powershell/module/azurerm.containerregistry
 - name: リソース
   items:
-    - name: Azure のロードマップ
-      href: 'https://azure.microsoft.com/roadmap/'
+    - name: ロードマップ
+      href: 'https://aka.ms/acr/roadmap'
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/container-registry/'
     - name: 利用可能なリージョン

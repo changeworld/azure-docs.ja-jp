@@ -186,6 +186,8 @@
           href: 'quickstart-create-data-factory-dot-net.md#monitor-pipeline-run'
         - name: Azure Monitor の使用
           href: monitor-using-azure-monitor.md
+        - name: 視覚的な監視
+          href: monitor-visually.md
         - name: Azure SSIS 統合ランタイムの管理
           href: manage-azure-ssis-integration-runtime.md
         - name: 統合ランタイムの監視
