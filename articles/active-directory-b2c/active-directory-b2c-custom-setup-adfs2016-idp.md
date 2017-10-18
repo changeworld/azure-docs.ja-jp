@@ -14,14 +14,12 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: yoelh
+ms.openlocfilehash: 8713fc7dd27023e1244ccb00673dd1652689baf5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 6cd0d19e5fd90cb9fb6d3fc4c17119476d7b4f62
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-b2c-add-adfs-as-a-saml-identity-provider-using-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシーを使って ADFS を SAML ID プロバイダーとして追加する
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
@@ -155,8 +153,10 @@ ADFS アカウントでのフェデレーションには、アプリケーショ
 
 ## <a name="register-the-adfs-account-claims-provider-to-sign-up-or-sign-in-user-journey"></a>サインアップまたはサインイン ユーザー体験に ADFS アカウントクレーム プロバイダーを登録する
 この時点で、ID プロバイダーが設定されました。  ただし、いずれのサインアップ/サインイン画面でも、使用可能ではありません。 ADFS アカウント ID プロバイダーをユーザーの `SignUpOrSignIn` ユーザー体験に追加する必要があります。 使用可能にするには、既存のテンプレート ユーザー体験の複製を作成します。  その後、ADFS ID プロバイダーを含むように、この複製を編集します。
-    >[!NOTE]
-    >If you previously copied the `<UserJourneys>` element from base file of your policy to the extension file (TrustFrameworkExtensions.xml) you can skip this section.
+
+>[!NOTE]
+>すでに `<UserJourneys>` 要素をポリシーの基本ファイルから拡張ファイル (TrustFrameworkExtensions.xml) にコピーしている場合は、このセクションをスキップできます。
+
 1.  ポリシーの基本ファイルを開きます (例: TrustFrameworkBase.xml)。
 2.  `<UserJourneys>` 要素を見つけて、`<UserJourneys>` ノードのコンテンツ全体をコピーします。
 3.  拡張ファイル (例: TrustFrameworkExtensions.xml) を開き、`<UserJourneys>` 要素を見つけます。 要素が存在しない場合は追加します。
@@ -166,7 +166,7 @@ ADFS アカウントでのフェデレーションには、アプリケーショ
 `<ClaimsProviderSelections>` 要素は、クレーム プロバイダーの選択オプションとその順序の一覧を定義します。  `<ClaimsProviderSelection>` 要素は、サインアップ/サインイン ページの ID プロバイダーのボタンに類似しています。 ADFS アカウントのために `<ClaimsProviderSelection>` 要素を追加すると、ユーザーがページにアクセスしたときに新しいボタンが表示されます。 この要素を追加するには、次の手順を実行します。
 
 1.  コピーしたばかりのユーザー体験内で、`Id="SignUpOrSignIn"` を含む `<UserJourney>` ノードを見つけます。
-2.  `Order="1"` を含む `<OrchestrationStep>` ノードを特定する
+2.  `Order="1"` を含む `<OrchestrationStep>` ノードを見つける
 3.  `<ClaimsProviderSelections>` ノード下に次の XML スニペットを追加します。
 
 ```xml
@@ -228,4 +228,3 @@ ADFS アカウント ID プロバイダーをユーザーの `ProfileEdit` ユ�
 
 ## <a name="download-the-complete-policy-files"></a>完全なポリシー ファイルをダウンロードする
 省略可能: カスタム ポリシーの概要チュートリアルの完了後に独自のカスタム ポリシー ファイルを使ってシナリオを構築することをお勧めします。 [参照専用のポリシー サンプル ファイル](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-setup-adfs2016-app)
-

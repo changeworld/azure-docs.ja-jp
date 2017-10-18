@@ -15,23 +15,21 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ef74361c7a15b0eb7dad1f6ee03f8df707a7c05e
 ms.openlocfilehash: 3b7d29e48c91f40e8782a5e32a52998b815fe331
-ms.contentlocale: ja-jp
-
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>サインインとサインアウト要求を処理するコントローラーを追加する
 
 この手順では、サインインとサインアウトの方法を公開する新しいコントローラーを作成する方法について説明します。
 
-1.    `Controllers` フォルダーを右クリックし、[`Add`] > [`Controller`] を選択します。
-2.    [`MVC (.NET version) Controller – Empty`] を選択します。
-3.    *[追加]* をクリックします。
-4.    それに`HomeController` と名前を付けて、*[追加]* をクリックします。
-5.    クラスに *OWIN* 参照を追加します。
+1.  `Controllers` フォルダーを右クリックし、[`Add`] > [`Controller`] を選択します。
+2.  [`MVC (.NET version) Controller – Empty`] を選択します。
+3.  *[追加]* をクリックします。
+4.  それに`HomeController` と名前を付けて、*[追加]* をクリックします。
+5.  クラスに *OWIN* 参照を追加します。
 
 ```csharp
 using Microsoft.Owin.Security;
@@ -75,9 +73,9 @@ public void SignOut()
 
 Visual Studio で新しいビューを作成してサインイン ボタンを追加し、認証後にユーザー情報を表示します。
 
-1.    `Views\Home` フォルダーを右クリックし、[`Add View`] を選択します。
-2.    これに `Index` という名前を付けます。
-3.    サインイン ボタンが含まれいる次の HTML をファイルに追加します。
+1.  `Views\Home` フォルダーを右クリックし、[`Add View`] を選択します。
+2.  これに `Index` という名前を付けます。
+3.  サインイン ボタンが含まれいる次の HTML をファイルに追加します。
 
 ```html
 <html>
@@ -118,17 +116,17 @@ else
 ```
 <!--start-collapse-->
 ### <a name="more-information"></a>詳細情報
-> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[このページ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Branding guidelines")をご覧ください。
+> このページは、SVG 形式で黒の背景の [サインイン] ボタンを追加します。<br/>![Sign-in with Microsoft](media/active-directory-serversidewebapp-aspnetwebappowin-use/aspnetsigninbuttonsample.png)<br/> その他のサインイン ボタンについては、[このページ](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "ブランド化ガイドライン")をご覧ください。
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>ユーザー要求を表示するコントローラーを追加する
 このコントローラーでは、コントローラーを保護する `[Authorize]` 属性の使用例を示します。 この属性は、認証されたユーザーのみを許可して、コントローラーへのアクセスを制限します。 次のコードではこの属性を利用して、サインインの一部として取得されたユーザー要求を表示します。
 
-1.    `Controllers` フォルダーを右クリックし、`Add` > `Controller` と選択します。
-2.    [`MVC {version} Controller – Empty`] を選択します。
-3.    *[追加]* をクリックします。
-4.    これに `ClaimsController` という名前を付けます。
-5.    コントローラー クラスのコードを、以下のコードに置き換えます。これによって、クラスに `[Authorize]` 属性が追加されます。
+1.  `Controllers` フォルダーを右クリックし、`Add` > `Controller` と選択します。
+2.  [`MVC {version} Controller – Empty`] を選択します。
+3.  *[追加]* をクリックします。
+4.  これに `ClaimsController` という名前を付けます。
+5.  コントローラー クラスのコードを、以下のコードに置き換えます。これによって、クラスに `[Authorize]` 属性が追加されます。
 
 ```csharp
 [Authorize]
@@ -167,9 +165,9 @@ public class ClaimsController : Controller
 
 Visual Studio で、Web ページでユーザー要求を表示するための新しいビューを作成します。
 
-1.    `Views\Claims` フォルダーを右クリックし、[`Add View`] を選択します。
-2.    これに `Index` という名前を付けます。
-3.    次の HTML をファイルに追加します。
+1.  `Views\Claims` フォルダーを右クリックし、[`Add View`] を選択します。
+2.  これに `Index` という名前を付けます。
+3.  次の HTML をファイルに追加します。
 
 ```html
 <html>
@@ -200,4 +198,3 @@ Visual Studio で、Web ページでユーザー要求を表示するための�
 </body>
 </html>
 ```
-

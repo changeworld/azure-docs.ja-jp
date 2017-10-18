@@ -1,6 +1,6 @@
 ---
 title: FAQ - Azure Active Directory Domain Services | Microsoft Docs
-description: "Azure Active Directory ドメイン サービスについてよく寄せられる質問"
+description: "Azure Active Directory Domain Services についてよく寄せられる質問"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2017
+ms.date: 09/15/2017
 ms.author: maheshu
+ms.openlocfilehash: ad25663f97b83f11f14eeb8bb07dac46f6c080d4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: e8c2a8a7c3b5d61b2524eecceeaa4638fada78b8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -28,14 +27,17 @@ ms.lasthandoff: 09/06/2017
 Azure AD Domain Services を構成または管理する際に生じる一般的な問題の解決策については、「 [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md) 」を参照してください。
 
 ### <a name="configuration"></a>構成
-#### <a name="can-i-create-multiple-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数のドメインを作成することはできますか。
-いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応されるドメインは 1 つだけ作成できます。  
+#### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数の管理対象ドメインを作成することはできますか。
+いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応される管理対象ドメインは 1 つだけ作成できます。  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
 はい。 Azure AD Domain Services は Azure Resource Manager 仮想ネットワークで有効にすることができます。 現在この機能はプレビュー版です。
 
 #### <a name="can-i-migrate-my-existing-managed-domain-from-a-classic-virtual-network-to-a-resource-manager-virtual-network"></a>既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行することはできますか。
-現時点では連携しません。 将来的には、既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行するメカニズムを提供します。 更新されるまでお待ちください。
+現時点では連携しません。 将来的には、既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行するメカニズムを提供します。
+
+#### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure AD Domain Services を Azure CSP (Cloud Solution Provider) サブスクリプション内で有効にできますか。
+いいえ。 現在、CSP サブスクリプションに対するサポートを追加するように作業しています。
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>フェデレーション Azure AD ディレクトリの Azure AD Domain Services を有効にすることはできますか。 Office 365 にアクセスするユーザーの認証に ADFS を使い、パスワード ハッシュを Azure AD と同期しません。 このディレクトリの Azure AD Domain Services を有効にすることはできますか。
 いいえ。 Azure AD Domain Services では、NTLM または Kerberos を通じたユーザーの認証で、ユーザー アカウントのパスワード ハッシュへのアクセスが必要になります。 フェデレーション ディレクトリでは、パスワード ハッシュは Azure AD ディレクトリに格納されません。 そのため、Azure AD Domain Services では、このような Azure AD ディレクトリは使用されません。
@@ -48,6 +50,9 @@ PowerShell/Azure AD Domain Services の自動デプロイは、現時点では�
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Azure AD Domain Services は新しい Azure Portal で利用できますか。
 はい。 Azure AD Domain Services は、[Azure Portal](https://portal.azure.com) を使って構成できます。 [従来の Azure Portal](https://manage.windowsazure.com) のサポートは将来停止される予定です。
+
+#### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか。
+いいえ。 Azure AD Domain Services を有効にするための一環としていくつかのタスクを実行する必要があります。 これらのタスクは、Resource Manager テンプレートでは実行できません。 ディレクトリに対して Azure AD Domain Services を有効にするには、新しい Azure ポータルを使用してください。
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインにドメイン コント ローラーを追加することはできますか。
 いいえ。 管理対象ドメインは Azure AD Domain Services によって提供されるドメインです。 このドメインに対してドメイン コントローラーをプロビジョニング、構成、または管理する必要はありません。これらの管理作業は Microsoft によるサービスとして提供されます。 そのため、管理対象ドメインに追加のドメイン コント ローラー (読み取り/書き込みも読み取り専用も) を追加することはできません。
@@ -89,4 +94,3 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 
 #### <a name="what-azure-regions-is-the-service-available-in"></a>このサービスは、どの Azure のリージョンで利用できますか。
 Azure AD Domain Services を使用できる Azure リージョンの一覧については、[リージョン別の Azure サービス](https://azure.microsoft.com/regions/#services/)に関するページを参照してください。
-

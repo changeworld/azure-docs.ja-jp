@@ -44,41 +44,49 @@
       href: msi-how-to-get-access-token-using-msi.md
     - name: Azure VM 用の MSI の構成
       items:
-        - name: Azure Portal の場合
+        - name: Azure Portal の使用
           href: msi-qs-configure-portal-windows-vm.md
-        - name: PowerShell の場合
+        - name: PowerShell の使用
           href: msi-qs-configure-powershell-windows-vm.md
-        - name: Azure CLI の場合
+        - name: Azure CLI の使用
           href: msi-qs-configure-cli-windows-vm.md
-        - name: Azure Resource Manager テンプレートの場合
+        - name: Azure Resource Manager テンプレートの使用
           href: msi-qs-configure-template-windows-vm.md
-        - name: Azure SDK の場合
+        - name: Azure SDK の使用
           href: msi-qs-configure-sdk-windows-vm.md
-    - name: Azure リソースへの MSI アクセスの割り当て
+    - name: Resource Manager への VM MSI アクセスの許可
       items:
-        - name: Azure Portal の場合
+        - name: Azure Portal の使用
           href: msi-howto-assign-access-portal.md
-        - name: PowerShell の場合
+        - name: PowerShell の使用
           href: msi-howto-assign-access-powershell.md
-        - name: Azure CLI の場合
+        - name: Azure CLI の使用
           href: msi-howto-assign-access-cli.md
-    - name: MSI を使用した Azure Resource Manager へのアクセス
+    - name: VM MSI を使用した Azure Resource Manager へのアクセス
       items:
-        - name: Windows VM の場合
+        - name: Windows VM から
           href: msi-tutorial-windows-vm-access-arm.md
-        - name: Linux VM の場合
+        - name: Linux VM から
           href: msi-tutorial-linux-vm-access-arm.md
-    - name: MSI を使用した Azure ストレージへのアクセス
+    - name: VM MSI を使用した Azure SQL へのアクセス
       items:
-        - name: Windows VM の場合
+        - name: Windows VM から
+          href: msi-tutorial-windows-vm-access-sql.md
+    - name: VM MSI を使用した Azure ストレージへのアクセス
+      items:
+        - name: Windows VM から (アクセス キーを使用)
           href: msi-tutorial-windows-vm-access-storage.md
-        - name: Linux VM の場合
+        - name: Windows VM から (SAS を使用)
+          href: msi-tutorial-windows-vm-access-storage-sas.md
+        - name: Linux VM から (アクセス キーを使用)
           href: msi-tutorial-linux-vm-access-storage.md
-    - name: MSI を使用した Azure AD 以外のリソースへのアクセス
+        - name: Linux VM から (SAS を使用)
+          href: msi-tutorial-linux-vm-access-storage-sas.md
+    - name: VM MSI を使用した Azure Key Vault へのアクセス
       items:
-        - name: Windows VM の場合
+        - name: Windows VM から
           href: msi-tutorial-windows-vm-access-nonaad.md
-        - name: Linux VM の場合
+        - name: Linux VM から
           href: msi-tutorial-linux-vm-access-nonaad.md
     - name: FAQ と既知の問題
       href: msi-known-issues.md

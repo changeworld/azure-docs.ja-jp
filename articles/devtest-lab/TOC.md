@@ -16,6 +16,7 @@
 ### [VM の作成](devtest-lab-add-vm.md)
 ### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
 ### [Azure CLI を使用した VM の作成と管理](devtest-lab-vmcli.md)
+### [VM の再起動](devtest-lab-restart-vm.md)
 
 ## ラボでの環境の使用
 ### [環境の作成](devtest-lab-create-environment-from-arm.md)
@@ -57,8 +58,8 @@
 ## [ラボのスケーリング](devtest-lab-scale-lab.md)
 
 # リファレンス
-## [Azure CLI](/cli/azure/lab)
-## [Azure PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
+## [CLI 2.0](/cli/azure/lab)
+## [PowerShell](/powershell/module/azurerm.devtestlabs/#devtest_labs)
 ### [ラボを自動的に作成または変更する](devtest-lab-use-arm-and-powershell-for-lab-resources.md)
 ## [REST API](https://docs.microsoft.com/rest/api/dtl/)
 ## [Resource Manager テンプレート](https://github.com/Azure/azure-devtestlab/tree/master/Samples)

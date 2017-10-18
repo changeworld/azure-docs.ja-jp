@@ -6,8 +6,12 @@
       href: overview.md
 - name: クイック スタート
   items:
-    - name: カスタム イベントの作成とルーティング
+    - name: カスタム イベントの作成 - Azure CLI
       href: custom-event-quickstart.md
+    - name: カスタム イベントの作成 - Azure PowerShell
+      href: custom-event-quickstart-powershell.md
+    - name: カスタム イベントの作成 - Azure Portal
+      href: custom-event-quickstart-portal.md
 - name: Tutorials (チュートリアル)
   items:
     - name: ロジック アプリを使用した VM の変更の監視

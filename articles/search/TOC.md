@@ -68,7 +68,7 @@
 ### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
 ### [シノニムのプレビュー](search-synonyms.md)
-
+### [セキュリティ フィルター](search-security-trimming-for-azure-search.md)
 # リファレンス
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
