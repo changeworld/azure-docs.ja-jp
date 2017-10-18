@@ -56,7 +56,7 @@ python --version
 
 Visual Studio Community エディションでインストールされる Python Tools for Visual Studio (PTVS) を使用します。 Python 2.7 では、PTVS で自動的にセットアップされる唯一の環境です。 
 > [!NOTE]
-> Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] (ツール)** -> **[Python Tools]** -> **[Python Environments] (Python 環境)** の順に移動し、**[+ Custom] (+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
+> Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] \(ツール)** -> **[Python Tools]** -> **[Python Environments] \(Python 環境)** の順に移動し、**[+ Custom] \(+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
 
 * Jupyter での使用
 
