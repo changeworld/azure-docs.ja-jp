@@ -12,33 +12,30 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/28/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: c502e4363dbaa37455d1aad90d1e9fa855fd09b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 52e421a62fa24a56a077bc030e03c0fed34305fd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Azure Security Center 計画および運用ガイド
 このガイドは、所属組織が Azure Security Center の使用を計画している情報技術 (IT) プロフェッショナル、IT アーキテクト、情報セキュリティ アナリスト、クラウド管理者を対象としています。
 
->[!NOTE] 
->2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
->
-
+    
 ## <a name="planning-guide"></a>計画ガイド
 このガイドでは、組織のセキュリティ要件とクラウド管理モデルに応じて Security Center の利用を最適化できる、一連の手順とタスクについて説明します。 Security Center を最大限に活用するには、安全な開発と運用、監視、ガバナンス、インシデント対応のニーズを満たすために、組織内のさまざまな個人やチームがこのサービスをどのように使用するのかを把握することが重要です。 Security Center の使用を計画するうえで考慮が必要となる主な領域は次のとおりです。
 
 * セキュリティ ロールとアクセス制御
 * セキュリティ ポリシーと推奨事項
 * データの収集と保存
+* Azure 以外のリソースのオンボード
 * 継続的なセキュリティの監視
 * インシデント対応
 
 次のセクションでは、これらの領域のそれぞれについて計画し、自社の要件に合わせて推奨事項を適用する方法について説明します。
+
 
 > [!NOTE]
 > 「 [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」に、設計と計画のフェーズにも役立つ一般的な質問の一覧が記載されています。
@@ -49,9 +46,9 @@ ms.lasthandoff: 06/17/2017
 
 ![ロール](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig01-new.png)
 
-Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 次に例を示します。
+Security Center を使用すると、上記のようなさまざまな責任を果たすことができます。 For example:
 
-**Jeff (クラウド ワークロード所有者)**
+**Jeff (ワークロード所有者)**
 
 * クラウド ワークロードとその関連リソースを管理する
 * 会社のセキュリティ ポリシーに従って保護を実装、管理する責任を負う
@@ -80,7 +77,7 @@ Security Center を使用すると、上記のようなさまざまな責任を�
 
 Security Center では[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。 ユーザーが Security Center を開くと、アクセス権のあるリソースに関する情報のみが表示されます。 これは、サブスクリプションまたはリソースが属するリソース グループについて、所有者、共同作業者、閲覧者のいずれかのロールがユーザーに割り当てられていることを意味します。 これらのロールに加え、Security Center には、次の 2 つの固有のロールがあります。
 
-- **セキュリティ閲覧者**: このロールに属しているユーザーは、Security Center に対する権限を表示できます。推奨事項、アラート、ポリシー、および正常性を表示できますが、変更を加えることはできません。
+- **セキュリティ閲覧者**: このロールに属しているユーザーは、Security Center の構成 (推奨事項、アラート、ポリシー、正常性を含む) のみを閲覧できますが、変更を加えることはできません。
 - **セキュリティ管理者**: セキュリティ閲覧者と同じですが、セキュリティ ポリシーの更新と、推奨事項とアラートの解除を実行することもできます。
 
 上記で説明した Security Center のロールには、ストレージ、Web とモバイル、モノのインターネットなどの Azure の他のサービス領域へのアクセス権はありません。  
@@ -92,7 +89,7 @@ Security Center では[ロールベースのアクセス制御 (RBAC)](../active
 
 前の図で説明した人物の例では、次の RBAC が必要になります。
 
-**Jeff (クラウド ワークロード所有者)**
+**Jeff (ワークロード所有者)**
 
 * リソース グループの所有者/共同作業者
 
@@ -124,28 +121,28 @@ Security Center の RBAC を使用してアクセス制御を計画する際は�
 > 
 
 ## <a name="security-policies-and-recommendations"></a>セキュリティ ポリシーと推奨事項
-セキュリティ ポリシーは、指定されたサブスクリプション内のリソースに対して推奨されるコントロールのセットを定義します。 Security Center では、セキュリティに関する会社の要件、アプリケーションの種類、データの機密度に合わせてポリシーを定義できます。
+セキュリティ ポリシーは、ワークロードの必要な構成を定義し、会社や規制のセキュリティ要件に確実に準拠できるようにします。 Security Center では、Azure サブスクリプションのポリシーを定義できます。これらのポリシーは、ワークロードの種類やデータの機密性に合わせて調整できます。
 
-次の図に示すように、サブスクリプション レベルで有効になっているポリシーは、サブスクリプション内のすべてのリソース グループに自動的に反映されます。
-
-![Security Policies](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig2-newUI.png)
+Security Center のポリシーには、次のコンポーネントが含まれています。
+- [データ収集](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection): エージェントのプロビジョニングとデータ収集の設定。
+- [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-policies): Security Center で監視および推奨されるコントロールを決定する [Azure Policy](http://docs.microsoft.com/en-us/azure/azure-policy/azure-policy-introduction)。または、Azure Policy を使用して、新しい定義の作成、追加ポリシーの定義、管理グループ間でのポリシーの割り当てを行います。
+- [電子メール通知](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details): セキュリティ連絡先と通知設定。
+- [価格レベル](https://docs.microsoft.com/azure/security-center/security-center-pricing): Free または Standard の価格の選択。これにより、(サブスクリプション、リソース グループ、ワークスペースに指定できる) スコープ内のリソースに使用できる Security Center の機能が決まります。
 
 > [!NOTE]
-> 変更が加えられたポリシーを特定する必要がある場合は、 [Azure 監査ログ](https://blogs.msdn.microsoft.com/cloud_solution_architect/2015/03/10/audit-logs-for-azure-events/)を使用して確認できます。 ポリシーの変更は常に Azure 監査ログに記録されます。
-> 
-> 
+> セキュリティ コントラクトを指定すると、セキュリティ インシデントが発生した場合に Azure から組織内の適切な人物に連絡が届くようになります。 この推奨事項を有効にする方法の詳細については、「 [Azure Security Center でセキュリティ連絡先の詳細情報を指定する](https://docs.microsoft.com/azure/security-center/security-center-provide-security-contact-details) 」を参照してください。
 
-### <a name="security-recommendations"></a>セキュリティに関する推奨事項
-セキュリティ ポリシーを構成する前に、 [セキュリティに関する推奨事項](security-center-recommendations.md)をそれぞれ確認し、対象の各種サブスクリプションとリソース グループに対してこれらのポリシーが適切かどうかを判断します。 [セキュリティに関する推奨事項](https://docs.microsoft.com/en-us/azure/security-center/security-center-recommendations)に対処するためにどのような処置を実行する必要があるか、および組織の誰が新しい推奨事項を監視し、必要な手順に行うかを理解しておくことも重要です。
+### <a name="security-policies-definitions-and-recommendations"></a>セキュリティ ポリシーの定義と推奨事項
+Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 そのポリシーを Security Center で編集するか、Azure Policy を使って新しい定義を作成したり、追加のポリシーを定義したり、管理グループ (組織全体のこともあれば、その中の一部署などのこともあります) にポリシーを割り当てたりすることによって、複数のスコープにわたってポリシーに対するコンプライアンスを監視することができます。
 
-Security Center では、Azure サブスクリプションに対してセキュリティ連絡先の詳細を指定するよう推奨されます。 この情報は、Microsoft セキュリティ レスポンス センター (MSRC) で、不正なユーザーまたは権限のないユーザーによる顧客データへのアクセスが検出された場合に、Microsoft からの連絡先として使用されます。 この推奨事項を有効にする方法の詳細については、「 [Azure Security Center でセキュリティ連絡先の詳細情報を指定する](security-center-provide-security-contact-details.md) 」を参照してください。
+セキュリティ ポリシーを構成する前に、 [セキュリティに関する推奨事項](https://docs.microsoft.com/azure/security-center/security-center-recommendations)をそれぞれ確認し、対象の各種サブスクリプションとリソース グループに対してこれらのポリシーが適切かどうかを判断します。 セキュリティに関する推奨事項に対処するためにどのような処置を実行する必要があるか、および組織のだれが新しい推奨事項を監視し、必要な手順に行うかを理解しておくことも重要です。
 
 ## <a name="data-collection-and-storage"></a>データの収集と保存
-Azure Security Center では、Microsoft Monitoring Agent を使用して、仮想マシンからセキュリティ データを収集します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 このエージェントから収集されたデータは、Log Analytics ワークスペースに格納されます。
+Azure Security Center では、Microsoft Monitoring Agent を使用して、仮想マシンからセキュリティ データを収集します。これは Operations Management Suite と Log Analytics サービスで使用されるものと同じエージェントです。 このエージェントから[収集されたデータ](https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection)は、Log Analytics ワークスペースに格納されます。
 
 ### <a name="agent"></a>エージェント
 
-セキュリティ ポリシーでデータの収集を有効にすると、サポートされているすべての Azure VM と作成される新しい VM にMicrosoft Monitoring Agent ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) または [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) の場合) がインストールされます。  VM に Microsoft Monitoring Agent が既にインストールされている場合、Azure Security Center は、現在インストールされているエージェントを活用します。 エージェントのプロセスは、他への影響が少なく設計されているため、VM のパフォーマンスに対する影響もごくわずかです。
+セキュリティ ポリシーで自動プロビジョニングを有効にすると、サポートされているすべての Azure VM と作成される新しい VM に Microsoft Monitoring Agent ([Windows](https://docs.microsoft.com/azure/log-analytics/log-analytics-windows-agents) または [Linux](https://docs.microsoft.com/azure/log-analytics/log-analytics-linux-agents) の場合) がインストールされます。 VM またはコンピューターに Microsoft Monitoring Agent が既にインストールされている場合、Azure Security Center は、現在インストールされているエージェントを活用します。 エージェントのプロセスは、他への影響が少なく設計されているため、VM のパフォーマンスに対する影響もごくわずかです。
 
 Microsoft Monitoring Agent for Windows では、TCP ポート 443 を使用する必要があります。 詳細については、[トラブルシューティングに関する記事](security-center-troubleshooting-guide.md)を参照してください。
 
@@ -157,6 +154,8 @@ Microsoft Monitoring Agent for Windows では、TCP ポート 443 を使用す�
 
 ### <a name="workspace"></a>ワークスペース
 
+ワークスペースとは、データのコンテナーとして機能する Azure リソースです。 組織のメンバーは、複数のワークスペースを使用して、IT インフラストラクチャの一部またはすべてから収集されるデータのさまざまなセットを管理する場合があります。
+
 (Azure Security Center に代わって) Microsoft Monitoring Agent から収集されたデータは、VM の位置情報を考慮して、Azure サブスクリプションに関連付けられている既存の Log Analytics ワークスペースまたは新規のワークスペースのいずれかに格納されます。 
 
 Azure ポータルで、Log Analytics ワークスペースの一覧を参照して表示できます。一覧には、Azure Security Center によって作成されたワークスペースも含まれます。 新しいワークスペースに対して、関連するリソース グループが作成されます。 それらは、次の名前付け規則に従います。 
@@ -164,18 +163,22 @@ Azure ポータルで、Log Analytics ワークスペースの一覧を参照し
 * ワークスペース: *DefaultWorkspace-[subscription-ID]-[geo]*
 * リソース グループ: *DefaultResouceGroup-[geo]*
 
-Azure Security Center によって作成されたワークスペースでは、データは 30 日間保持されます。 既存のワークスペースでは、リテンション期間は、ワークスペースの価格レベルに基づきます。
+Azure Security Center によって作成されたワークスペースでは、データは 30 日間保持されます。 既存のワークスペースでは、リテンション期間は、ワークスペースの価格レベルに基づきます。 必要に応じて、既存のワークスペースを使用することもできます。
 
 > [!NOTE]
 > このデータのプライバシーとセキュリティは強固に保護されています。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。 データの取い扱いとプライバシーに関する詳細については、「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」を参照してください。
 > 
 
+## <a name="onboarding-non-azure-resources"></a>Azure 以外のリソースのオンボード
+
+Security Center では、Azure 以外のコンピューターのセキュリティの状況を監視できますが、これらのリソースをオンボードしておく必要があります。 Azure 以外のリソースをオンボードする方法の詳細については、「[セキュリティ強化のための Azure Security Center Standard へのオンボード](https://docs.microsoft.com/azure/security-center/security-center-onboarding#onboard-non-azure-computers)」を参照してください。
+
 ## <a name="ongoing-security-monitoring"></a>継続的なセキュリティの監視
 Security Center の初期構成と推奨事項の適用を完了したら、次の手順は Security Center の運用プロセスの検討です。
 
-Azure Portal から Security Center にアクセスするには、**[参照]** をクリックし、**[フィルター]** フィールドに「**Security Center**」と入力します。 ユーザーが取得するビューは、これらの適用されたフィルターに従って決定されます。次の例は、対処する必要がある多くの問題がある環境を示しています。
+Security Center の [概要] では、Azure リソースと接続済みの Azure 以外のリソースすべてのセキュリティが統合された 1 つのビューが表示されます。 以下の例は、対処すべき多くの問題を含む環境を示しています。
 
-![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig6.png)
+![dashboard](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig10.png)
 
 > [!NOTE]
 > Security Center は、通常の運用上の手順には干渉しません。デプロイを受動的に監視し、有効にされたセキュリティ ポリシーに基づいて推奨事項を提供します。
@@ -186,10 +189,7 @@ Azure Portal から Security Center にアクセスするには、**[参照]** �
 
 **[検出]** セクションは事後対応型であり、現在対処中の問題、または過去に発生し、Security Center のコントロールやサード パーティ システムで検出された問題に関するアラートが表示されます。 [セキュリティ アラート] タイルには、各日に発行された脅威検出アラートの数を表す棒グラフと、各重要度カテゴリ (低、中、高) における分布図が表示されます。 セキュリティ アラートの詳細については、「 [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
-> [!NOTE]
-> Microsoft Power BI を活用して、Security Center のデータを視覚化することもできます。 詳細については、「 [Power BI で Azure Security Center のデータから洞察を得る](security-center-powerbi.md)」を参照してください。
-> 
-> 
+毎日のセキュリティ操作の一環として、[脅威インテリジェンス](https://docs.microsoft.com/azure/security-center/security-center-threat-intel) オプションにアクセスすることを計画してください。 そこでは、特定のコンピューターがボットネットの一部であるかどうかを特定するなど、環境に対するセキュリティの脅威を特定することができます。
 
 ### <a name="monitoring-for-new-or-changed-resources"></a>新しいリリースや変更されたリソースの監視
 ほとんどの Azure 環境は動的で、新しいリソースが日常的に増減されたり、構成や変更が実施されたりします。Security Center を使用すると、これらの新しいリソースのセキュリティ状態を可視化できるようになります。
@@ -210,6 +210,13 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 1. **[防止]** セクション パネルでは、主要なリソースにすばやくアクセスできます。 コンピューティング、ネットワーク、ストレージとデータ、およびアプリケーションを監視するには、このオプションを使用します。
 2. **[推奨事項]** パネルでは、Security Center の推奨事項を確認できます。 継続的な監視の実施中、推奨事項は毎日表示されるわけではありません。これは、Security Center の初回の設定時にすべての推奨事項に対処したためです。 この理由から、このセクションには毎日新しい情報が表示されるとは限らず、必要に応じてアクセスするだけで十分です。
 3. **[検出]** セクションは、頻繁に変化するか、ほとんど変化しないかのどちらかになる可能性があります。 セキュリティ アラートを常に確認し、Security Center の推奨事項に従って対処してください。
+
+### <a name="hardening-access-and-applications"></a>アクセスとアプリケーションのセキュリティ強化
+
+セキュリティ操作の一環として、VM へのアクセスを制限する予防措置を採用したり、VM 上で実行されているアプリケーションを制御したりする必要もあります。 Azure VM への受信トラフィックをロックダウンすることで、攻撃にさらされることを減らすと同時に、必要に応じて簡単に VM に接続できるようになります。 VM へのアクセスのセキュリティを強化するには、[Just in Time VM](https://docs.microsoft.com/azure/security-center/security-center-just-in-time) アクセス機能を使用します。 
+
+[アダプティブ アプリケーション制御](https://docs.microsoft.com/azure/security-center/security-center-adaptive-application)を使用すると、Azure 内の VM 上でどのアプリケーションを実行できるかを制御するのに役立ちます。これには、さまざまな利点がありますが、たとえば、マルウェアに対する VM のセキュリティ強化に役立ちます。 Security Center は、機械学習によって VM で実行されているプロセスを分析し、この情報を利用することで、お客様がホワイトリスト登録に関する規則を適用するのを支援します。
+
 
 ## <a name="incident-response"></a>インシデント対応
 脅威が発生すると、Security Center によって検出され、アラートが生成されます。 組織は新しいセキュリティ アラートの有無を監視し、必要に応じて、詳しい調査や攻撃の修復のための対策を講じる必要があります。 Security Center の検出機能に関する詳細については、「 [Azure Security Center の検出機能](security-center-detection-capabilities.md)」を参照してください。
@@ -234,7 +241,11 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 
 ![Suspicious activity](./media/security-center-planning-and-operations-guide/security-center-planning-and-operations-guide-fig5-ga.png)
 
-上の図のように、このブレードには、攻撃が発生した時間、ソース ホスト名、標的となった VM に関する詳細情報と、推奨される手順が表示されます。 状況によっては、攻撃元の情報が空白になっていることもあります。 このような動作の詳細については、「 [Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) 」を参照してください。
+このページには、攻撃が発生した時刻、ソース ホスト名、標的となった VM に関する詳細情報のほか、推奨される手順も表示されます。 状況によっては、攻撃元の情報が空白になっていることもあります。 このような動作の詳細については、「 [Missing Source Information in Azure Security Center Alerts (Azure Security Center アラートに表示されないソース情報)](https://blogs.msdn.microsoft.com/azuresecurity/2016/03/25/missing-source-information-in-azure-security-center-alerts/) 」を参照してください。
+
+このページから[調査](https://docs.microsoft.com/azure/security-center/security-center-investigation)を開始すると、攻撃のタイムライン、攻撃がどのように行われたか、どのシステムが侵害された可能性があるか、どの資格情報が使用されたかについて理解を深めると共に、全体的な攻撃の連鎖をグラフィカルに示すこともできます。
+
+侵害されたシステムを特定したら、以前に作成したセキュリティ [プレイブック](https://docs.microsoft.com/azure/security-center/security-center-playbooks)を実行できます。 セキュリティ プレイブックとは、選択したアラートから特定のプレイブックがトリガーされると Security Center から実行できるプロシージャの集合です。
 
 ビデオ「[How to Leverage the Azure Security Center & Microsoft Operations Management Suite for an Incident Response (Azure Security Center と Microsoft Operations Management Suite をインシデント対応に活用する方法)](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703)」では、上記の各段階における Security Center の使用方法を理解するのに役立つデモを、いくつかご覧いただけます。
 
@@ -243,7 +254,7 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 > 
 > 
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 このドキュメントでは、Security Center の導入を計画する方法について説明しました。 セキュリティ センターの詳細については、次を参照してください。
 
 * [Azure セキュリティ センターでのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)
@@ -251,5 +262,4 @@ Azure 環境に新しいリソース (VM、SQL DB) を追加すると、Security
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
 

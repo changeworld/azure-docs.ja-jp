@@ -13,15 +13,14 @@ ms.devlang: java
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/15/2017
+ms.date: 10/06/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
+ms.openlocfilehash: 56905a457f972d1820e56dca00c42686bcad5453
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 83fc6db1ddb43eb87e7c58684505d7196c1e53d0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 #<a name="get-started-with-apache-storm-on-hdinsight-using-the-storm-starter-examples"></a>storm-starter の例を使って HDInsight で Apache Storm の使用を開始する
 
@@ -44,7 +43,7 @@ Apache Storm は、データ ストリームの処理を目的とし、スケー
 
 HDInsight で Storm クラスターを作成するには、次の手順に従います。
 
-1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[インテリジェンス + 分析]**、**[HDInsight]** の順に選択します。
+1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]**、**[データ + 分析]**、**[HDInsight]** の順に選択します。
 
     ![HDInsight クラスターの作成](./media/hdinsight-apache-storm-tutorial-get-started-linux/create-hdinsight.png)
 
@@ -57,7 +56,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
     * **[リソース グループ]**: クラスターが作成されるリソース グループ。
     * **[場所]**: クラスターが作成される Azure リージョン。
 
-    ![サブスクリプションを選択します。](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
+   ![サブスクリプションを選択します。](./media/hdinsight-apache-storm-tutorial-get-started-linux/hdinsight-basic-configuration.png)
 
 3. **[クラスターの種類]** を選択し、**[クラスターの構成]** ブレードで次の値を設定します。
 
@@ -69,7 +68,7 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
     * **[クラスター レベル]**: Standard
 
-    最後に、**[選択]** ボタンをクリックして設定を保存します。
+   最後に、**[選択]** ボタンをクリックして設定を保存します。
 
     ![クラスターの種類の選択](./media/hdinsight-apache-storm-tutorial-get-started-linux/set-hdinsight-cluster-type.png)
 
@@ -92,7 +91,11 @@ HDInsight で Storm クラスターを作成するには、次の手順に従い
 
         ssh USERNAME@CLUSTERNAME-ssh.azurehdinsight.net
 
-    SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
+    > [!TIP]
+    > SSH クライアントで、ホストの信頼性が確立できないというメッセージが表示されることがあります。 その場合は、「`yes`」と入力して続行します。
+
+    > [!NOTE]
+    > SSH ユーザー アカウントを保護するためにパスワードを使用している場合は、パスワードの入力を求められます。 公開キーを使用している場合、`-i` パラメーターを使用して、対応する秘密キーを指定することが必要な場合があります。 たとえば、「 `ssh -i ~/.ssh/id_rsa USERNAME@CLUSTERNAME-ssh.azurehdinsight.net`」のように入力します。
 
     詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -118,7 +121,7 @@ Storm UI には、トポロジの実行を操作する Web インターフェイ
 
 次の手順により、Storm UI を使用してトポロジを監視します。
 
-1. Storm UI を表示するには、Web ブラウザーを開いて、https://CLUSTERNAME.azurehdinsight.net/stormui を参照します。 **CLUSTERNAME** をクラスターの名前に置き換えます。
+1. Storm UI を表示するには、Web ブラウザーで `https://CLUSTERNAME.azurehdinsight.net/stormui` を開きます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
 
     > [!NOTE]
     > ユーザー名とパスワードの入力が求められたら、クラスターの作成時に使用したクラスター管理者名 (admin) とパスワードを入力します。
@@ -210,4 +213,3 @@ HDInsight 上の Storm で使用できるトポロジの例については、以
 [stormjavadocs]: https://storm.incubator.apache.org/apidocs/
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
 [preview-portal]: https://portal.azure.com/
-

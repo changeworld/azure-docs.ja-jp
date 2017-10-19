@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/27/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: a4b3c7543efc33d07dbd4f6c01b6e1bc354d1ed2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: a3a4a90221821de690f72260b2adca07680d30a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Azure AD Connect のカスタム インストール
 Azure AD Connect **カスタム設定** は、より多くのインストール オプションが必要な場合に使用します。 この設定を使用するのは、複数のフォレストがある場合や、高速インストールの対象でないオプション機能を構成する必要がある場合です。 [**高速インストール**](active-directory-aadconnect-get-started-express.md) オプションで対象のデプロイまたはトポロジに対応できない場合は、常にこの設定を使用します。
@@ -71,7 +70,7 @@ Azure AD Connect のインストールを始める前に、必ず [Azure AD Conn
 
 接続に問題があり、エラーが発生する場合は、[接続の問題に対するトラブルシューティング](active-directory-aadconnect-troubleshoot-connectivity.md)についてのページを参照してください。
 
-## <a name="pages-under-the-section-sync"></a>[同期] セクションのページ
+## <a name="pages-under-the-sync-section"></a>[同期] セクションのページ
 
 ### <a name="connect-your-directories"></a>ディレクトリの接続
 Azure AD Connect では、Active Directory ドメイン サービスに接続するには、十分なアクセス許可を持つアカウントのフォレスト名と資格情報が必要です。
@@ -232,9 +231,12 @@ Azure AD Connect で追加されたフォレストごとに、ドメイン管理
 ## <a name="configuring-federation-with-ad-fs"></a>AD FS とのフェデレーションの構成
 Azure AD Connect との AD FS の構成は、わずか数クリックで簡単です。 構成の前に、以下のものを用意する必要があります。
 
-* フェデレーション サーバー用の Windows Server 2012 R2 サーバー (リモート管理を有効に設定)
-* Web アプリケーション プロキシ サーバー用の Windows Server 2012 R2 サーバー (リモート管理を有効に設定)
+* フェデレーション サーバー用の Windows Server 2012 R2 以降のサーバー (リモート管理を有効に設定)
+* Web アプリケーション プロキシ サーバー用の Windows Server 2012 R2 以降のサーバー (リモート管理を有効に設定)
 * 使用する予定のフェデレーション サービス名の SSL 証明書 (sts.contoso.com など)
+
+>[!NOTE]
+>フェデレーション信頼の管理に Azure AD Connect を使っていない場合でも、AD FS ファームの SSL 証明書は、Azure AD Connect を使って更新することができます。
 
 ### <a name="ad-fs-configuration-pre-requisites"></a>AD FS の構成の前提条件
 Azure AD Connect を使用して AD FS ファームを構成するには、リモート サーバー上で WinRM が有効になっている必要があります。 加えて、「[表 3 - Azure AD Connect とフェデレーション サーバー/WAP](active-directory-aadconnect-ports.md#table-3---azure-ad-connect-and-ad-fs-federation-serverswap)」に記載されているポート要件も確認してください。
@@ -245,6 +247,9 @@ Azure AD Connect を使用して AD FS ファームを構成するには、リ�
 ![AD FS ファーム](./media/active-directory-aadconnect-get-started-custom/adfs1.png)
 
 既存の AD FS ファームを使用する場合は、AD FS と Azure AD の間の信頼関係を構成する画面に直接移動します。
+
+>[!NOTE]
+>Azure AD Connect を使って管理できる AD FS ファームは 1 つだけです。 選択した AD FS ファーム上に構成されている Azure AD との間に既存のフェデレーション信頼がある場合、その信頼が Azure AD Connect によって最初から再作成されます。
 
 ### <a name="specify-the-ad-fs-servers"></a>AD FS サーバーの指定
 AD FS をインストールするサーバーを入力します。 容量計画のニーズに基づいて 1 つまたは複数のサーバーを追加することができます。 この構成を実行する前に、すべてのサーバーを Active Directory に参加させてください。 テスト デプロイとパイロット デプロイ用に単一の AD FS サーバーをインストールすることをお勧めします。 初期構成の後に Azure AD Connect を再度実行し、容量拡大のニーズを満たすようにサーバーをさらに追加してデプロイします。
@@ -350,4 +355,3 @@ Azure AD Connect がインストールされたので、[インストールを�
 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

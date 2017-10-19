@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
+ms.openlocfilehash: c3ffc819fcc442f87fb4985ecb08be8ec02ba957
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 530a9558df2323e1aa49d9f4b974c142ee5ecf37
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
-*適用先: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 [Azure Stack Development Kit](azure-stack-poc.md) をデプロイするには、次の手順を完了する必要があります。
 
@@ -75,7 +74,7 @@ ms.lasthandoff: 09/25/2017
     # Download file
     Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
     ```
-6. 管理者特権で PowerShell コンソールを開き、C:\AzureStack_Installer\asdk-installer.ps1 スクリプトを実行し、**[Prepare vhdx]\(vhdx の準備\)** をクリックします。
+6. 管理者特権で PowerShell コンソールを開き、C:\AzureStack_Installer\asdk-installer.ps1 スクリプトを実行し、**[Prepare Environment]\(環境の準備\)** をクリックします。
 7. インストーラーの **[Select Cloudbuilder vhdx]\(Cloudbuilder vhdx の選択\)** ページで、前の手順でダウンロードした cloudbuilder.vhdx ファイルを探して選択します。
 8. 省略可能: **[ドライバーの追加]** ボックスをオンにすると、ホストで使用する追加のドライバーが含まれるフォルダーを指定できます。
 9. **[オプション設定]** ページで、開発キットのホストのローカル管理者アカウントを指定します。 これらの資格情報を指定しない場合、以下のインストール時に、ホストへの KVM アクセスが必要になります。
@@ -142,15 +141,17 @@ cd c:\CloudDeployment\Setup
 開発キットのホストのパスワードがすぐに期限切れにならないようにするには、デプロイ後に次の手順を実行します。
 
 1. 開発キットのホストで、**[グループ ポリシーの管理]** を開き、**[グループ ポリシーの管理]**、**[フォレスト: azurestack.local]**、**[ドメイン]**、**[azurestack.local]** に移動します。
-2. **[MemberServer]** を右クリックして、**[編集]** をクリックします。
+2. **[既定のドメイン ポリシー]** を右クリックし、**[編集]** をクリックします。
 3. グループ ポリシー管理エディターで、**[コンピューターの構成]**、**[ポリシー]**、**[Windows の設定]**、**[セキュリティの設定]**、**[アカウント ポリシー]**、**[パスワード ポリシー]** の順に移動します。
 4. 右側のウィンドウの **[パスワードの有効期間]** をダブルクリックします。
 5. **[Maximum password age Properties]\(パスワードの有効期間プロパティ\)** ダイアログ ボックスで、**[パスワードの有効期限]** の値を 180 に変更し、**[OK]** をクリックします。
 
 
 ## <a name="next-steps"></a>次のステップ
+
+[PowerShell のインストール](azure-stack-powershell-configure-quickstart.md)
+
 [Azure のサブスクリプションを使用した Azure Stack の登録](azure-stack-register.md)
 
 [Azure Stack への接続](azure-stack-connect-azure-stack.md)
-
 

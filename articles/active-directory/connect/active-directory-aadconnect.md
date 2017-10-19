@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/13/2017
+ms.date: 10/02/2017
 ms.author: billmath
+ms.openlocfilehash: c7aca7b67f4773cf7d19f84253487ed060e0db73
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 97f89cd6cf37d92ac50f149336e1d1143de991ec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-your-on-premises-directories-with-azure-active-directory"></a>オンプレミスのディレクトリと Azure Active Directory の統合
 Azure AD Connect は、オンプレミスのディレクトリと Azure Active Directory を統合する機能です。 Office 365、Azure、SaaS など Azure AD と連動するアプリケーションに関して、ユーザーの ID を共通化することができます。 このトピックでは、計画、デプロイ、運用の各手順を紹介しています。 関連するトピックのリンク集としてご利用ください。
@@ -37,7 +36,7 @@ Azure AD Connect は、オンプレミスのディレクトリと Azure Active D
 
 * ユーザーは、単一の ID を使ってオンプレミスのアプリケーションとクラウド サービス (Office 365 など) にアクセスできます。
 * 単一のツールにより、同期とサインインのための容易なデプロイメントを実現できます。
-* それぞれのシナリオに適した最新の機能が手に入ります。 Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。 詳細については、「 [ハイブリッド ID ディレクトリ統合ツールの比較](../active-directory-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
+* それぞれのシナリオに適した最新の機能が手に入ります。 Azure AD Connect は、DirSync や Azure AD Sync など、旧バージョンの ID 統合ツールの後継ツールです。詳細については、「 [ハイブリッド ID ディレクトリ統合ツールの比較](../active-directory-hybrid-identity-design-considerations-tools-comparison.md)」を参照してください。
 
 ### <a name="how-azure-ad-connect-works"></a>Azure AD Connect の動作
 Azure Active Directory Connect は、同期サービスと Active Directory フェデレーション サービス コンポーネント (オプション)、監視コンポーネント ( [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health.md)) という主に 3 つのコンポーネントで構成されています。
@@ -127,6 +126,15 @@ Azure AD Connect Sync には、ほとんどのお客様とトポロジに対応�
 |既定の構成の変更 | [既定の構成の変更するためのベスト プラクティス](active-directory-aadconnectsync-best-practices-changing-default-configuration.md)|
 
 ## <a name="configure-federation-features"></a>フェデレーション機能を構成する
+
+Azure AD Connect には、Azure AD との認証連携を AD FS の使用とフェデレーション信頼の管理を通じて省力化するさまざまな機能が備わっています。 Azure AD Connect では、Windows Server 2012R2 以降の AD FS がサポートされます。
+
+フェデレーション信頼の管理に Azure AD Connect を使っていない場合でも、[AD FS ファームの SSL 証明書を更新](active-directory-aadconnectfed-ssl-update.md)することができます。
+
+ファームに [AD FS サーバーを追加](active-directory-aadconnect-federation-management.md#addadfsserver)することで必要に応じてファームを拡張できます。
+
+たった数回のクリック操作で Azure AD との[信頼を修復](active-directory-aadconnect-federation-management.md#repairthetrust)できます。
+
 ADFS は [複数のドメイン](active-directory-aadconnect-multiple-domains.md)をサポートするように構成できます。 たとえば、フェデレーションに利用する複数の上位ドメインが必要になることがあります。
 
 Azure AD から証明書を自動更新するように ADFS サーバーを更新していない場合、または非 ADFS ソリューションを使用している場合、 [証明書の更新](active-directory-aadconnect-o365-certs.md)が必要になったときに通知されます。
@@ -157,5 +165,4 @@ Azure AD から証明書を自動更新するように ADFS サーバーを更�
 > [!VIDEO https://channel9.msdn.com/Events/Ignite/2015/BRK3862/player]
 > 
 > 
-
 

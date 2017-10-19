@@ -13,20 +13,19 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d628dc621335acf231342a6d9186079de16e85f4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: dbfaf3b791dd44a43a2cf862819e6292b94d958a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-9-create-hierarchies"></a>レッスン 9: 階層を作成する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
 
-このレッスンでは、階層を作成します。 階層は、レベルに分類された列のグループです。たとえば、Geography (地理的な場所) 階層には、Country (国)、State (州)、County (郡)、City (市) などの下位階層があります。 階層は、レポートするクライアント アプリケーションのフィールド リストにある他の列とは別に表示できます。階層を使用すれば、クライアント ユーザーが列をより簡単に探してレポートに含めることができます。 詳細については、「[階層](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular)」を参照してください。
+このレッスンでは、階層を作成します。 階層は、レベルに分類された列のグループです。 たとえば、Geography (地理的な場所) 階層には、Country (国)、State (州)、County (郡)、City (市) などの下位階層があります。 階層は、レポートするクライアント アプリケーションのフィールド リストにある他の列とは別に表示できます。階層を使用すれば、クライアント ユーザーが列をより簡単に探してレポートに含めることができます。 詳細については、「[階層](https://docs.microsoft.com/sql/analysis-services/tabular-models/hierarchies-ssas-tabular)」を参照してください。
   
 階層を作成するには、*ダイアグラム ビュー*でモデル デザイナーを使用します。 データ ビューでは、階層の作成および管理はサポートされていません。  
   
@@ -85,4 +84,3 @@ ms.lasthandoff: 06/03/2017
 [レッスン 10: パーティションを作成する](../tutorials/aas-lesson-10-create-partitions.md) 
   
   
-

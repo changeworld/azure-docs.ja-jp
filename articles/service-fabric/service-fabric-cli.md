@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: f246ee8aaecf3a398182debdea07832c75c1bd9c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -25,11 +24,28 @@ Azure Service Fabric コマンド ライン インターフェイス (CLI) は�
 
 インストール前に、ご使用の環境に Python と pip の両方がインストールされていることを確認してください。 詳細については、[pip のクイックスタート ドキュメント](https://pip.pypa.io/en/latest/quickstart/)と公式の [Python インストール ドキュメント](https://wiki.python.org/moin/BeginnersGuide/Download)を参照してください。
 
-Python 2.7 と Python 3.6 の両方がサポートされますが、Python 3.6 の使用をお勧めします。 次のセクションでは、すべての前提条件と CLI をインストールする方法について説明します。
+この CLI では、Python のバージョン 2.7、3.5、3.6 をサポートしています。 Python 2.7 は間もなくサポート終了となるため、Python 3.6 の利用をお勧めします。
+
+### <a name="service-fabric-target-runtime"></a>Service Fabric のターゲット ランタイム
+
+Service Fabric CLI は、Service Fabric SDK の最新のランタイム バージョンをサポートすることを意図したものです。 インストールする CLI のバージョンの判断には、以下の表をご利用ください。
+
+| CLI のバージョン   | サポートされているランタイムのバージョン |
+|---------------|---------------------------|
+| 最新 (2 前後)  | 最新 (6.0 前後)            |
+| 1.1.0         | 5.6、5.7                  |
+
+`pip install` コマンドの末尾にオプションとして `==<version>` を付けると、インストールする CLI のターゲット バージョンを指定できます。 たとえば、バージョン 1.1.0 であれば、次のような構文になります。
+
+```
+pip install -I sfctl==1.1.0
+```
+
+必要があれば、以下の `pip install` コマンドを上に挙げたコマンドで置換してください。
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>pip、Python、Service Fabric CLI のインストール
 
- ご利用のプラットフォームには、さまざまな方法で pip と Python をインストールできます。 ここでは主なオペレーティング システムを対象に、Python 3.6 と pip をすばやく設定する手順を説明します。
+ご利用のプラットフォームには、さまざまな方法で pip と Python をインストールできます。 ここでは主なオペレーティング システムを対象に、Python 3 と pip をすばやく設定する手順を説明します。
 
 ### <a name="windows"></a>Windows
 
@@ -52,47 +68,45 @@ pip --version
 
 次のコマンドを実行して、Service Fabric CLI をインストールします。
 
-```
+```bat
 pip install sfctl
 sfctl -h
 ```
 
-`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
+### <a name="ubuntu-and-windows-subsystem-for-linux"></a>Ubuntu と Windows Subsystem for Linux
+
+Service Fabric CLI をインストールするには、以下のコマンドを実行します。
 
 ```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-### <a name="ubuntu"></a>Ubuntu
-
-Ubuntu 16.04 Desktop では、サードパーティのパーソナル パッケージ アーカイブ (PPA) を使用して Python 3.6 をインストールできます。
-
-ターミナルで次のコマンドを実行します。
-
-```bash
-sudo add-apt-repository ppa:jonathonf/python-3.6
-sudo apt-get update
-sudo apt-get install python3.6
+sudo apt-get install python3
 sudo apt-get install python3-pip
+pip3 install sfctl
 ```
 
-次に、Python 3.6 のインストールのみを対象に Service Fabric CLI をインストールするために、次のコマンドを実行します。
+インストールが終わったら、以下を使ってテストできます。
 
 ```bash
-python3.6 -m pip install sfctl
 sfctl -h
 ```
 
-`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
+以下に示したようなコマンドが見つからないという趣旨のエラーが表示された場合には、
+
+`sfctl: command not found`
+
+`$PATH` から `~/.local/bin` にアクセスできることを確認してください。
 
 ```bash
 export PATH=$PATH:~/.local/bin
 echo "export PATH=$PATH:~/.local/bin" >> .bashrc
 ```
 
-以上の手順は、システムにインストールされた Python 3.5 と Python 2.7 には影響しません。 Ubuntu に関する詳しい知識がない限り、これらのインストールに変更を加えることは避けてください。
+フォルダーに対するアクセス許可が正しくないとの理由で Windows Subsystem for Linux へのインストールに失敗した場合には、管理者特権を使ってやり直すことが必要になる場合があります。
 
+```bash
+sudo pip3 install sfctl
+```
+
+<a name = "cli-mac"></a>
 ### <a name="macos"></a>MacOS
 
 MacOS では、[HomeBrew パッケージ マネージャー](https://brew.sh)の使用をお勧めします。 HomeBrew をまだインストールしていない場合は、次のコマンドを実行してインストールします。
@@ -108,17 +122,6 @@ brew install python3
 pip3 install sfctl
 sfctl -h
 ```
-
-
-`sfctl` が見つからないことを示すエラーが発生した場合は、次のコマンドを実行します。
-
-```bash
-export PATH=$PATH:~/.local/bin
-echo "export PATH=$PATH:~/.local/bin" >> .bashrc
-```
-
-
-システムにインストールされた Python 2.7 が、以上の手順によって変更されることはありません。
 
 ## <a name="cli-syntax"></a>CLI 構文
 
@@ -239,13 +242,11 @@ sfctl application create -h
 Service Fabric CLI を更新するには、次のコマンドを実行します (最初のインストール時に選択した内容に応じて `pip` を `pip3` で置き換えます)。
 
 ```bash
-pip uninstall sfctl 
-pip install sfctl 
+pip uninstall sfctl
+pip install sfctl
 ```
-
 
 ## <a name="next-steps"></a>次のステップ
 
 * [Azure Service Fabric CLI でアプリケーションをデプロイする](service-fabric-application-lifecycle-sfctl.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)
-

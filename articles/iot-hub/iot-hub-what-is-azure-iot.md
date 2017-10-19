@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/15/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 64e69df256404e98f6175f77357500b562d74318
-ms.openlocfilehash: e95d02e706b87eaa355951a34bbaa3abf2ac2370
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/24/2017
-
-
+ms.openlocfilehash: 417ca4b6ecc39cbdafd8e12b5360b370d0ce79fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 [!INCLUDE [iot-azure-and-iot](../../includes/iot-azure-and-iot.md)]
 
@@ -33,9 +31,9 @@ Azure IoT Hub は、ソリューション バックエンドと何百万もの�
 * デバイスからアップロードされたファイルを受信する。
 * クラウドからデバイスへのメッセージを特定のデバイスに送信する。
 
-IoT Hub を使用して、独自のソリューション バックエンドを実装できます。 さらに、IoT Hub には、デバイス、デバイスのセキュリティ資格情報、デバイスが IoT Hub に接続するための権限をプロビジョニングするために使用する ID レジストリが含まれています。 IoT Hub の詳細については、「[Azure IoT Hub とは][lnk-iot-hub]」を参照してください。
+IoT Hub を使用して、独自のソリューション バックエンドを実装できます。 さらに、IoT Hub には、デバイス、デバイスのセキュリティ資格情報、デバイスが IoT Hub に接続するための権限をプロビジョニングするために使用する ID レジストリが含まれています。 IoT Hub の詳細については、[IoT Hub の概要][lnk-iot-hub]に関するページを参照してください。
 
-Azure IoT Hub では、標準ベースのデバイス管理が可能となっており、リモートからデバイスを管理、構成、更新することができます。詳細については、「[IoT Hub を使用したデバイス管理の概要][lnk-device-management]」を参照してください。
+Azure IoT Hub では、標準ベースのデバイス管理が可能となっており、リモートからデバイスを管理することができます。詳細については、「[IoT Hub を使用したデバイス管理の概要][lnk-device-management]」を参照してください。
 
 クライアント アプリケーションを各種デバイス ハードウェア プラットフォームやオペレーティング システムに実装するために、Azure IoT device SDK を使用できます。 device SDK には、IoT Hub へのテレメトリの送信とクラウドからデバイスへのメッセージの受信を容易にするライブラリが含まれています。 device SDK を使用すると、さまざまなネットワーク プロトコルのうちのいずれかを選択して IoT Hub と通信することができます。 詳細については、[device SDK に関する情報][lnk-device-sdks]を参照してください。
 
@@ -49,4 +47,3 @@ Azure IoT Hub では、標準ベースのデバイス管理が可能となって
 [lnk-iot-suite]: https://azure.microsoft.com/documentation/suites/iot-suite/
 [lnk-iotdev]: https://azure.microsoft.com/develop/iot/
 [lnk-device-management]: iot-hub-device-management-overview.md
-

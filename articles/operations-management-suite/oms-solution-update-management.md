@@ -3,7 +3,7 @@ title: "OMS の更新管理ソリューション | Microsoft Docs"
 description: "この記事の目的は、このソリューションを使用して Windows コンピューターと Linux コンピューターの更新プログラムを管理する方法の理解を助けることです。"
 services: operations-management-suite
 documentationcenter: 
-author: MGoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: e33ce6f9-d9b0-4a03-b94e-8ddedcc595d2
@@ -13,19 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
-ms.author: magoedte
+ms.author: eslesar
+ms.openlocfilehash: 839689ab991fdc251608cf79d65a5810db5eeeb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 6e76ac40e9da2754de1d1aa50af3cd4e04c067fe
-ms.openlocfilehash: e463102a4b21253e28b01d6d149aba55bab18674
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="update-management-solution-in-oms"></a>OMS の更新管理ソリューション
 
 ![更新管理のシンボル](./media/oms-solution-update-management/update-management-symbol.png)
 
 OMS の Update Management ソリューションを使用すると、Azure、オンプレミスの環境、またはその他のクラウド プロバイダーにデプロイされた Windows コンピューターと Linux コンピューターに関して、オペレーティング システムのセキュリティ更新プログラムを管理できます。  すべてのエージェント コンピューターで利用可能な更新プログラムの状態をすばやく評価し、サーバーに必要な更新プログラムをインストールするプロセスを管理できます。
+
+## <a name="update-management-in-azure-automation"></a>Azure Automation における更新管理
+
+仮想マシンの更新管理は、[Azure Automation](../automation/automation-offering-get-started.md) アカウントから直接有効にすることができます。
+Automation アカウントから仮想マシンの更新管理を有効にする方法については、[多数の仮想マシンの更新管理](../automation/manage-update-multi.md)に関するページを参照してください。
 
 
 ## <a name="solution-overview"></a>ソリューションの概要
@@ -307,11 +311,17 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 | Type=Update  and OSType=Linux and UpdateState!="Not needed" and (Classification="Critical Updates" OR Classification="Security Updates") |List of all packages that have an update available which addresses Critical or Security vulnerability (重大な脆弱性またはセキュリティの脆弱性に対処する更新プログラムが使用可能なすべてのパッケージの一覧) | 
 | Type:UpdateRunProgress &#124; measure Count() by UpdateRunName |コンピューターに変更を加えた更新プログラムの展開の一覧 | 
 | Type:UpdateRunProgress UpdateRunName="DeploymentName" &#124; measure Count() by Computer |この更新実行で更新されたコンピューター (更新プログラムの展開名は実際の名前に置き換えてください) | 
-| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |List of all the “Ubuntu” machines with any update available (任意の更新プログラムが使用可能なすべての "Ubuntu" マシンの一覧) | 
+| Type=Update and OSType=Linux and OSName = Ubuntu &#124; measure count() by Computer |List of all the “Ubuntu” machines with any update available (任意の更新プログラムが使用可能なすべての "Ubuntu" マシンの一覧) |
+
+## <a name="integrate-with-system-center-configuration-manager"></a>System Center Configuration Manager との統合
+
+PC、サーバー、モバイル デバイスを管理するために System Center Configuration Manager に投資してきたお客様は、ソフトウェア更新管理 (SUM) サイクルの一環として、ソフトウェア更新プログラムの管理でもその強さと成熟度を活用できます。
+
+OMS Update Management ソリューションを Sytem Center Configuration Manager と統合する方法については、「[System Center Configuration Manager と OMS Update Management の統合](../automation/oms-solution-updatemgmt-sccmintegration.md)」を参照してください。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。  
+このセクションでは、更新管理ソリューションに関する問題のトラブルシューティングに役立つ情報について説明します。
 
 ### <a name="how-do-i-troubleshoot-onboarding-issues"></a>オンボードに関する問題のトラブルシューティング方法
 ソリューションまたは仮想マシンをオンボードしようとして問題が発生した場合は、**アプリケーションとサービス ログ\Operations Manager** イベント ログで、イベント ID 4502 のイベントと **Microsoft.EnterpriseManagement.HealthService.AzureAutomation.HybridAgent** を含むイベント メッセージを確認してください。  次の表に、具体的なエラー メッセージと、考えられる個別の解決策を示します。  
@@ -333,4 +343,3 @@ Azure Marketplace から利用できるオンデマンドの Red Hat Enterprise 
 * [Log Analytics](../log-analytics/log-analytics-log-searches.md) でログ検索を使用して、詳細な更新プログラムデータを確認します。
 * 管理対象のコンピューターで更新プログラムが準拠しているかどうかを示す[独自のダッシュボードを作成](../log-analytics/log-analytics-dashboards.md)します。
 * 緊急更新プログラムがコンピューターにインストールされていないと検出された場合またはコンピューターで自動更新が無効になっている場合、[アラートを作成](../log-analytics/log-analytics-alerts.md)します。  
-

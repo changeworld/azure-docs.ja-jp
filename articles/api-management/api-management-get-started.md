@@ -1,6 +1,6 @@
 ---
-title: "Azure API Management で最初 API を管理する |Microsoft ドキュメント"
-description: "Api を作成し、操作を追加し、API Management の概要について説明します。"
+title: "Azure API Management での最初の API の管理 | Microsoft Docs"
+description: "API の作成方法、操作の追加方法、API Management の基本操作について説明します。"
 services: api-management
 documentationcenter: 
 author: steved0x
@@ -15,189 +15,189 @@ ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
 ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="manage-your-first-api-in-azure-api-management"></a>Azure API Management で最初 API を管理します。
-## <a name="overview"></a>の概要
-このガイドをすばやく Azure API Management の使用を開始し、最初の API 呼び出しを行う方法を示します。
+# <a name="manage-your-first-api-in-azure-api-management"></a>Azure API Management での最初の API の管理
+## <a name="overview"> </a>概要
+このガイドでは、Azure API Management の基本的な使用方法を簡単に説明し、実際に API を呼び出します。
 
-## <a name="concepts"></a>Azure API Management は何ですか。
-Azure API Management を使用して、任意のバックエンドを行い、それに基づいて、いわゆる本格的な API プログラムを起動することができます。
+## <a name="concepts"> </a>Azure API Management とは
+Azure API Management を任意のバックエンドで実行し、それに基づいて本格的な API プログラムを起動できます。
 
-一般的なシナリオは次のとおりです。
+一般的なシナリオは、次のとおりです。
 
-* **モバイルのインフラストラクチャをセキュリティで保護する**して API キーを持つ、アクセスをゲーティング、調整、または JWT トークンの検証などの高度なセキュリティ ポリシーを使用してを使用して DOS 攻撃を防止します。
-* **ISV パートナー エコシステムを有効にする**開発者ポータルから高速なパートナー オンボーディングを提供することにより、API ファサードされるパートナーの消費量の可能性がない内部実装から切り離すことを構築します。
-* **内部の API プログラムを実行している**では、可用性と Api に対する最新の変更に関する通信するために組織の一元的な場所を提供する組織のアカウントに基づいたアクセスのゲーティングすべてに基づいて API ゲートウェイと、バックエンドの間でセキュリティで保護されたチャネル。
+* **モバイル インフラストラクチャのセキュリティを強化する**。API キーによるアクセス制御、スロットル処理による DOS 攻撃の防止、JWT トークン検証などの高度なセキュリティ ポリシーの使用によって、これを行います。
+* **ISV パートナー エコシステムを可能にする**。開発者ポータルを通したパートナーとの迅速な協力の提供と、パートナーによる使用の準備が整っていない内部実装から切り離された API ファサードの構築によって、これを行います。
+* **内部 API プログラムを実行する**。組織が可用性と API に対する最新の変更を伝達するための一元的な場所の提供と、組織アカウントに基づいたアクセスの制限によって、これを行います。そのすべてが、API ゲートウェイとバックエンドの間のセキュリティ保護されたチャネルに基づいて実行されます。
 
-システムは、次のコンポーネントで構成されています。
+システムは、次のコンポーネントで構成されます。
 
-* **API ゲートウェイ**エンドポイントです。
+* **API ゲートウェイ**。これは次の機能を持つエンドポイントです。
   
-  * API を呼び出すし、バックエンドにルーティングするを受け取ります。
-  * API キー、JWT トークン、証明書、およびその他の資格情報を確認します。
-  * 使用状況クォータを適用し、転送率の制限。
-  * コードを変更せず、実行時に、API を変換します。
-  * 設定されるバックエンド応答をキャッシュします。
-  * ログは、分析のためのメタデータを呼び出します。
-* **パブリッシャー ポータル**API プログラムを設定する管理インターフェイスです。 使用します。
+  * API 呼び出しを受け入れ、バックエンドにルーティングします。
+  * API キー、JWT トークン、証明書、その他の資格情報を検証します。
+  * 使用量クォータとレート制限を適用します
+  * コードを変更せずにその場で API を変換します。
+  * セットアップ時にバックエンドの応答をキャッシュします。
+  * 分析目的で呼び出しメタデータを記録します。
+* **パブリッシャー ポータル** は、API プログラムをセットアップする管理インターフェイスです。 このインターフェイスを使用して、次の操作を行います。
   
-  * 定義または API のスキーマをインポートします。
-  * パッケージ Api の製品です。
-  * クォータまたは Api での変換などのポリシーを設定します。
-  * 分析からインサイトを取得します。
+  * API スキーマを定義またはインポートします。
+  * API を製品にパッケージします。
+  * API のクォータや変換などのポリシーを設定します。
+  * 分析から洞察を得ます。
   * ユーザーを管理します。
-* **開発者ポータル**役割を果たす主要な web サイト開発者は、することができます。
+* **開発者ポータル** は、開発者用のメイン Web として機能し、次の操作を実行できます。
   
-  * Read API のドキュメントです。
-  * 対話型コンソールを使用した API を試します。
-  * アカウントを作成し、サブスクライブする API キーを取得します。
-  * 独自の使用状況の分析をアクセス。
+  * API のドキュメントを読みます。
+  * 対話型コンソールを使用して API を試します。
+  * API キーを取得するために、アカウントを作成してサブスクライブします。
+  * 自分自身の使用に関する分析にアクセスします。
 
-## <a name="create-service-instance"></a>API Management インスタンスを作成します。
+## <a name="create-service-instance"> </a>API Management インスタンスの作成
 > [!NOTE]
-> このチュートリアルを完了するには、Azure アカウントが必要です。 アカウントを持っていない場合は、ほんの数分で無料のアカウントを作成できます。 詳細については、「 [Azure 無料評価版][Azure Free Trial]です。
+> このチュートリアルを完了するには、Azure アカウントが必要です。 アカウントがない場合は、無料アカウントを数分で作成することができます。 詳細については、[Azure の無料試用版サイト][Azure Free Trial]をご覧ください。
 > 
 > 
 
-API Management の操作の最初の手順では、サービス インスタンスを作成します。 サインイン、 [Azure Portal] [ Azure Portal] ] をクリック**新規**、 **Web + モバイル**、 **API Management**です。
+API Management を使用するにあたって最初に行うことは、サービス インスタンスの作成です。 [Azure Portal][Azure Portal] にサインインし、**[新規]**、**[Web + モバイル]**、**[API Management]** の順にクリックします。
 
 ![API Management の新しいインスタンス][api-management-create-instance-menu]
 
-**名前**サービスの URL を使用する一意のサブドメイン名を指定します。
+**[名前]** に、サービス URL に使用する一意のサブドメイン名を指定します。
 
-必要な選択**サブスクリプション**、**リソース グループ**と**場所**サービス インスタンスのです。
+サービス インスタンスの **[サブスクリプション]**、**[リソース グループ]**、**[場所]** を選択します。
 
-入力**Contoso Ltd.** **組織名**の電子メール アドレスを入力し、**管理者の電子メール**フィールドです。
+**[組織名]** フィールドに「**Contoso Ltd.**」と入力し、**[管理者の電子メール]** フィールドに電子メール アドレスを入力します。
 
 > [!NOTE]
-> この電子メール アドレスは、API Management システムからの通知に使用されます。 詳細については、次を参照してください。[通知を構成すると、Azure API Management でテンプレートを電子メールで送信する方法][How to configure notifications and email templates in Azure API Management]です。
+> API Management システムからの通知には、この電子メール アドレスが使用されます。 詳細については、「[Azure API Management で通知と電子メール テンプレートを構成する方法][How to configure notifications and email templates in Azure API Management]」を参照してください。
 > 
 > 
 
 ![新しい API Management サービス][api-management-create-instance-step1]
 
-API Management サービス インスタンスが 3 つの階層で使用できます: Developer、Standard、および Premium です。
+API Management サービス インスタンスは、Developer、Standard、Premium の 3 つのレベルで利用できます。
 
 > [!NOTE]
-> 開発者層では、開発、テスト、およびパイロット API プログラムが高可用性が問題ではないためです。 Standard および Premium 層でより多くのトラフィックを処理する、予約ユニット数を拡張することができます。 Standard および Premium 層は、API Management サービスの処理能力とパフォーマンスを提供します。 このチュートリアルを完了するには、任意の層を使用します。 API Management の層の詳細については、次を参照してください。 [API Management 料金][API Management pricing]です。
+> Developer レベルは、高可用性が重要ではない、開発、テスト、パイロット API プログラムのためのレベルです。 Standard レベルと Premium レベルでは、より多くのトラフィックを処理するために予約ユニット数を拡張できます。 Standard レベルと Premium レベルでは、最も高い処理能力とパフォーマンスを備えた、API Management サービスが提供されます。 このチュートリアルは、どのレベルを使用しても完了できます。 API Management レベルの詳細については、「[API Management の価格][API Management pricing]」を参照してください。
 > 
 > 
 
-をクリックして**作成**サービス インスタンスのプロビジョニングを開始します。
+**[作成]** をクリックして、サービス インスタンスのプロビジョニングを開始します。
 
 ![新しい API Management サービス][api-management-instance-created]
 
-サービス インスタンスが作成されると、次の手順は、作成するか、API をインポートするは。
+サービス インスタンスが作成されたら、次は、API の作成またはインポートを行います。
 
-## <a name="create-api"></a>API をインポート
-API は、クライアント アプリケーションから呼び出すことができる操作のセットで構成されます。 API 操作は、既存の web サービスに中継します。
+## <a name="create-api"> </a>API のインポート
+API は、クライアント アプリケーションから呼び出すことのできる一連の操作で構成されます。 API の操作は、既存の Web サービスに引き渡されます。
 
-Api を作成することができます (および操作を追加することができます)、手動でインポートできますか。 このチュートリアルでは、Microsoft によって提供され、Azure でホストされているサンプル電卓 web サービスの API をインポートします。
+API は、手動で作成して操作を追加することも、インポートすることもできます。 このチュートリアルでは、Microsoft によって提供され、Azure でホストされる、サンプル電卓 Web サービスの API をインポートします。
 
 > [!NOTE]
-> API を作成し、操作を手動で追加のガイダンスについては、次を参照してください。 [Api を作成する方法](api-management-howto-create-apis.md)と[API に操作を追加する方法](api-management-howto-add-operations.md)です。
+> API を作成して手動で操作を追加する方法については、[API を作成する方法](api-management-howto-create-apis.md)に関するページと [API に操作を追加する方法](api-management-howto-add-operations.md)に関するページをご覧ください。
 > 
 > 
 
-Api は、パブリッシャー ポータルから構成されます。 到達できないように、をクリックして**パブリッシャー ポータル**サービスは、ツールバーからです。
+API は、パブリッシャー ポータルから構成します。 パブリッシャー ポータルにアクセスするには、サービス ツール バーの **[パブリッシャー ポータル]** をクリックします。
 
 ![パブリッシャー ポータル][api-management-management-console]
 
-電卓 API をインポートする をクリックして**Api**から、 **API Management** 、左側のメニューをクリックし、**インポート API**です。
+電卓 API をインポートするには、左側の **[API Management]** メニューの **[API]** をクリックし、**[API のインポート]** をクリックします。
 
-![API [インポート] ボタン][api-management-import-api]
+![API ボタンのインポート][api-management-import-api]
 
-計算ツール API を構成する次の手順を実行します。
+電卓 API を構成するには、次の手順を実行します。
 
-1. をクリックして**URL から**、入力**http://calcapi.cloudapp.net/calcapi.json**に、**仕様のドキュメントの URL**テキスト ボックス、およびクリック、 **Swagger**ラジオ ボタンをクリックします。
-2. 型**calc**に、 **Web API URL サフィックス**テキスト ボックス。
-3. をクリックして、 **(省略可) 製品**ボックスし、選択**スターター**です。
-4. をクリックして**保存**API をインポートします。
+1. **[URL から]** をクリックし、**[Specification document URL (仕様ドキュメント URL)]** ボックスに「**http://calcapi.cloudapp.net/calcapi.json**」と入力し、**[Swagger]** ラジオ ボタンをクリックします。
+2. **[Web API URL サフィックス]** テキスト ボックスに「**calc**」と入力します。
+3. **[製品 (オプション)]** ボックスをクリックし、**[スターター]** を選択します。
+4. **[保存]** をクリックして、API をインポートします。
 
-![新しい API を追加します。][api-management-import-new-api]
+![新しい API を追加する][api-management-import-new-api]
 
 > [!NOTE]
-> **API Management**現在インポートの Swagger ドキュメントの 1.2 および 2.0 の両方のバージョンをサポートしています。 確認して、たとえ[Swagger 2.0 仕様](http://swagger.io/specification)を宣言`host`、 `basePath`、および`schemes`プロパティは省略可能、Swagger 2.0 ドキュメント**必要があります**これらのプロパティが含まれます。 それ以外の場合インポート取得されません。 
+> **API Management** は現在、インポート用にバージョン 1.2 と 2.0 両方の Swagger ドキュメントをサポートしています。 [Swagger 2.0 の仕様](http://swagger.io/specification)で `host`、`basePath`、および `schemes` プロパティがオプションである旨が示されていても、Swagger 2.0 ドキュメントに**必ず**これらのプロパティを含めるようにしてください。そうしないとインポートが行われません。 
 > 
 > 
 
-API をインポートすると、パブリッシャー ポータルで、API の概要ページが表示されます。
+API がインポートされると、API の概要ページがパブリッシャー ポータルに表示されます。
 
 ![API の概要][api-management-imported-api-summary]
 
-API のセクションでは、いくつかのタブがあります。 **概要**タブは、基本的なメトリックと API に関する情報が表示されます。 [設定](api-management-howto-create-apis.md#configure-api-settings) タブを表示および編集の構成 API を使用します。 [Operations](api-management-howto-add-operations.md) API の操作の管理 タブを使用します。 **セキュリティ** タブは、基本認証を使用して、バックエンド サーバー用のゲートウェイ認証を構成するために使用できますか[相互証明書の認証](api-management-howto-mutual-certificates.md)、および構成する[OAuth 2.0 を使用してユーザーの承認](api-management-howto-oauth2.md)です。  **問題**を独自の Api を使用している開発者によって報告された問題を表示 タブを使用します。 **製品**をこの API が含まれている製品の構成 タブを使用します。
+API セクションにはいくつかのタブがあります。 **[概要]** タブには、API に関する基本的なメトリックと情報が表示されます。 [[設定]](api-management-howto-create-apis.md#configure-api-settings) タブは、API の構成を表示および編集するために使用します。 [[操作]](api-management-howto-add-operations.md) タブは、API の操作を管理するために使用します。 **[セキュリティ]** タブは、基本認証または[相互証明書認証](api-management-howto-mutual-certificates.md)を使用してバックエンド サーバーのゲートウェイ認証を構成するため、および [OAuth 2.0 を使用したユーザーの承認](api-management-howto-oauth2.md)を構成するために使用できます。  **[問題]** タブは、API を使用している開発者によって報告された問題を表示するために使用します。 **[成果物]** タブは、この API が含まれている成果物を構成するために使用します。
 
-既定では、各 API Management インスタンスはサンプルの 2 つの製品に付属します。
+すべての API Management インスタンスは、2 つのサンプル成果物を既定で備えています。
 
 * **スターター**
 * **無制限**
 
-このチュートリアルでは、基本的な電卓 API は、API がインポートされたときに Starter 製品に追加されました。
+このチュートリアルでは、API がインポートされたときに Basic Calculator API がスターター製品に追加されました。
 
-API への呼び出しを行うために、開発者はそれらにアクセスできるように、製品にサブスクライブ最初にする必要があります。 開発者ポータルでの製品にサブスクライブできます開発者または管理者がサブスクライブできるは、開発者は、パブリッシャー ポータル内の製品をします。 管理者は、作成したため、API Management インスタンス前の手順で、チュートリアルで既に既定ですべての製品にサブスクライブしているためです。
+API を呼び出すためには、その API へのアクセスを提供する成果物を開発者が事前にサブスクライブする必要があります。 開発者は、開発者ポータルで成果物にサブスクライブすることができます。また管理者がパブリッシャー ポータルで、開発者を成果物にサブスクライブすることもできます。 このチュートリアルで先ほど API Management インスタンスを作成したので、管理者になっています。既定で、既にすべての製品にサブスクライブしていることになります。
 
-## <a name="call-operation"></a>開発者ポータルから、操作を呼び出す
-操作は、表示し、API の動作をテストするための便利な方法を提供する開発者ポータルから直接呼び出すことができます。 このチュートリアルの手順では基本的な電卓 API の呼び出しは**2 つの整数を追加**操作します。 をクリックして**開発者ポータル**上部のメニューから、パブリッシャー ポータルの右。
+## <a name="call-operation"></a>開発者ポータルから操作を呼び出す
+開発者ポータルには、API の操作を見てテストするための便利な環境が用意されており、操作を直接呼び出すことができます。 このチュートリアルの手順では、Basic Calculator API の **2 つの整数を追加する** 操作を呼び出します。 パブリッシャー ポータルの右上にあるメニューから **[開発者ポータル]** をクリックします。
 
-![開発者ポータル][api-management-developer-portal-menu]
+![[開発者ポータル]][api-management-developer-portal-menu]
 
-をクリックして**Api**クリックして上部のメニューから**基本的な電卓**に使用可能な操作を参照してください。
+上部のメニューの **[API]** をクリックし、**[Basic Calculator]** をクリックして、利用できる操作を表示します。
 
-![開発者ポータル][api-management-developer-portal-calc-api]
+![[開発者ポータル]][api-management-developer-portal-calc-api]
 
-サンプルの説明と、API と操作、により、この操作を使用する開発者向けのドキュメントと共にインポートされたパラメーターに注意してください。 操作が手動で追加されたときに、これらの説明を追加することもできます。
+API および操作とともにサンプルの説明とパラメーターがインポートされることに注意してください。これは、この操作を使用する開発者のためのドキュメントとして提供されます。 操作を手動で追加するときに、これらの説明の追加もできます。
 
-呼び出す、 **2 つの整数を追加**操作をクリックして**お試しください**です。
+**2 つの整数を追加する操作**を呼び出すには、**[試してみる]** をクリックします。
 
-![お試しください。][api-management-developer-portal-calc-api-console]
+![試してみる][api-management-developer-portal-calc-api-console]
 
-パラメーターのいくつかの値を入力または、既定値を保持し、をクリックできます**送信**です。
+パラメーターに値を入力するか、既定値を変更せずに **[送信]**をクリックします。
 
 ![HTTP Get][api-management-invoke-get]
 
-開発者ポータルを表示、操作を呼び出した後、**応答ステータス**、**応答ヘッダー**と任意**応答コンテンツ**です。
+操作を呼び出すと、**応答のステータス**、**応答ヘッダー**、**応答内容**が開発者ポータルに表示されます。
 
-![[応答]][api-management-invoke-get-response]
+![応答][api-management-invoke-get-response]
 
-## <a name="view-analytics"></a>分析を表示
-を表示する分析基本的な電卓を切り替えてパブリッシャー ポータルに戻る を選択して**管理**上部のメニューから、開発者ポータルの右。
+## <a name="view-analytics"> </a>分析結果の表示
+Basic Calculator の分析結果を表示するには、開発者ポータルの右上にあるメニューから **[管理]** を選択してパブリッシャー ポータルに戻ります。
 
-![コンピューターの][api-management-manage-menu]
+![[管理]][api-management-manage-menu]
 
-パブリッシャー ポータルの既定のビューは、**ダッシュ ボード**、API Management インスタンスの概要を提供します。
+パブリッシャー ポータルの既定のビューは **ダッシュボード**で、API Management インスタンスの概要が表示されます。
 
-![[ダッシュボード]][api-management-dashboard]
+![ダッシュボード][api-management-dashboard]
 
-マウス ポインターのグラフ**基本的な電卓**特定期間中に、API の使用方法の特定のメトリックを表示します。
+**Basic Calculator** のグラフの上にマウス ポインターを合わせると、指定された期間での API の使用量について特定のメトリックが表示されます。
 
 > [!NOTE]
-> 場合は、グラフの線が表示されない、開発者ポータルに戻ると、API にいくつかの呼び出しを行う、しばらく待ってから、およびダッシュ ボードに戻ってです。
+> グラフに線が表示されない場合は、開発者ポータルに戻って API を数回呼び出し、少し経ってから、再度ダッシュボードに切り替えてください。
 > 
 > 
 
-をクリックして**詳細を表示する**大きなバージョンの表示のメトリックを含む、API の概要 ページを表示します。
+**[詳細の表示]** をクリックすると、表示されたメトリックの拡大版を含む、API の概要ページが表示されます。
 
-![分析][api-management-mouse-over]
+![[分析]][api-management-mouse-over]
 
-![[概要]][api-management-api-summary-metrics]
+![概要][api-management-api-summary-metrics]
 
-詳細なメトリックとレポートは、をクリックして**Analytics**から、 **API Management**  をクリックします。
+詳細なメトリックとレポートについては、左側の **[API Management]** メニューの **[分析]** をクリックします。
 
 ![概要][api-management-analytics-overview]
 
-**Analytics**セクションには次の 4 つのタブ。
+**[分析]** セクションには、次の 4 つのタブがあります。
 
-* **一目**全体的な使用状況と正常性メトリック、だけでなく最上位の開発者、上位の製品、最上位の Api、top 操作を提供します。
-* **使用状況**API 呼び出しと帯域幅、地理的な表現を含むで詳しく説明します。
-* **正常性**焦点を当てていますステータス コードのキャッシュの成功率、応答時間、および API とサービスの応答時間。
-* **アクティビティ**開発者、製品、API、および操作で特定のアクティビティにドリル ダウンするレポートを提供します。
+* **[概略]** には、全体的な使用量と正常性のメトリックのほか、開発者、成果物、API、操作それぞれのトップが表示されます。
+* **[使用量]** には、API 呼び出しと帯域幅の詳しい状況 (地理的情報を含む) が表示されます。
+* **[正常性]** には、ステータス コード、キャッシュの成功率、応答時間、API とサービスの応答時間が表示されます。
+* **[アクティビティ]** には、開発者、成果物、API、操作ごとの特定のアクティビティを詳しく分析したレポートが表示されます。
 
-## <a name="next-steps"></a>次の手順
-* 学習方法[転送率の制限と API を保護する](api-management-howto-product-with-rules.md)です。
+## <a name="next-steps"> </a>次のステップ
+* [レート制限で API を保護する](api-management-howto-product-with-rules.md)方法について学習します。
 
 [Azure Free Trial]: http://azure.microsoft.com/pricing/free-trial/?WT.mc_id=api_management_hero_a
 

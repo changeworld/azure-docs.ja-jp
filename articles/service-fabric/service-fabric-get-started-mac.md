@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/26/2017
 ms.author: saysa
+ms.openlocfilehash: 0fae5fe35c25f97a9eb2c0d648cfb0f66b7f0725
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: c447a92e076bacc9b208b837493400b70cd067e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>Mac OS X で開発環境をセットアップする
 > [!div class="op_single_selector"]
@@ -107,15 +106,13 @@ Service Fabric サービスを Java で構築するには、ビルド タスク�
   sudo apt-get install gradle
 ```
 
-## <a name="set-up-the-service-fabric-cli"></a>Service Fabric CLI のセットアップ
+## <a name="set-up-the-service-fabric-cli-sfctl-on-your-mac"></a>Mac に Service Fabric CLI (sfctl) をセットアップする
 
-[Service Fabric CLI](service-fabric-cli.md) には、クラスターやアプリケーションなどの Service Fabric エンティティを操作するコマンドが含まれています。 Python がベースになっているため、あらかじめ Python と pip がインストールされていることを確認してから、次のコマンドを実行してください。
+[Service Fabric CLI](service-fabric-cli.md#cli-mac) に関するページの手順に従って、Mac に Service Fabric CLI (`sfctl`) をインストールしてください。
+この CLI には、クラスター、アプリケーション、サービスなどの Service Fabric エンティティを操作するコマンドが含まれています。
 
-```bash
-pip install sfctl
-```
+## <a name="create-application-on-you-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
 
-## <a name="create-application-on-mac-using-yeoman"></a>Mac 上で Yeoman を使ってアプリケーションを作成する
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
 
 1. ご使用の Mac に Node.js と NPM がインストールされている必要があります。 インストールされていない場合は、次のコマンドで Homebrew を使って Node.js と NPM をインストールしてください。 Mac にインストールされている Node.js と NPM のバージョンは、``-v`` オプションを使ってチェックできます。
@@ -165,4 +162,3 @@ Service Fabric には、Java サービスの作成、構築、デプロイのプ
 [sfx-mac]: ./media/service-fabric-get-started-mac/sfx-mac.png
 [sf-eclipse-plugin-install]: ./media/service-fabric-get-started-mac/sf-eclipse-plugin-install.png
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
-

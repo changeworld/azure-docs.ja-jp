@@ -1,6 +1,6 @@
 ---
-title: "SQL Server 仮想マシンのプロビジョニング | Microsoft Docs"
-description: "ポータルを使用して Azure で SQL Server 仮想マシンを作成し、接続します。 このチュートリアルでは、Resource Manager モードを使用します。"
+title: "Azure で Windows SQL Server 2017 VM を作成する | Microsoft Docs"
+description: "このチュートリアルでは、Azure Portal で Windows SQL Server 2017 仮想マシンを作成する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: na
 author: rothja
@@ -12,55 +12,54 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: infrastructure-services
-ms.date: 08/14/2017
+ms.date: 10/10/2017
 ms.author: jroth
+ms.openlocfilehash: 48f9f97d6e0aee6b2c84444289a427bebcb296e2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: b309108b4edaf5d1b198393aa44f55fc6aca231e
-ms.openlocfilehash: c923f9aae4c7a1b8bd4f5760d0ec4f33923b9321
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="provision-a-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での SQL Server 仮想マシンのプロビジョニング
+# <a name="provision-a-windows-sql-server-virtual-machine-in-the-azure-portal"></a>Azure Portal での Windows SQL Server 仮想マシンのプロビジョニング
+
 > [!div class="op_single_selector"]
 > * [ポータル](virtual-machines-windows-portal-sql-server-provision.md)
 > * [PowerShell](virtual-machines-windows-ps-sql-create.md)
-> 
-> 
+> * [Linux](../../linux/sql/provision-sql-server-linux-virtual-machine.md)
 
-このエンド ツー エンドのチュートリアルでは、Azure Portal を使用して、SQL Server を実行する仮想マシンをプロビジョニングする方法について説明します。
-
-Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含むイメージがいくつか用意されています。 わずか数クリックで、ギャラリーからいずれかの SQL VM イメージを選択し、Azure 環境に VM をプロビジョニングできます。
+このクイック スタート チュートリアルでは、Azure Portal を使用して、SQL Server がインストールされている Windows 仮想マシンを作成します。
 
 このチュートリアルでは、次のことについて説明します。
 
-* [ギャラリーから SQL VM イメージを選択する](#select-a-sql-vm-image-from-the-gallery)
-* [VM を構成して作成する](#configure-the-vm)
-* [リモート デスクトップを使用して VM を開く](#open-the-vm-with-remote-desktop)
-* [SQL Server にリモート接続する](#connect-to-sql-server-remotely)
+* [ギャラリーから SQL VM イメージを選択する](#select)
+* [VM を構成して作成する](#configure)
+* [リモート デスクトップを使用して VM を開く](#remotedesktop)
+* [SQL Server にリモート接続する](#connect)
 
-## <a name="select-a-sql-vm-image-from-the-gallery"></a>ギャラリーから SQL VM イメージを選択する
+## <a id="select"></a>ギャラリーから SQL VM イメージを選択する
 
 1. アカウントを使用して [Azure Portal](https://portal.azure.com) にログインします。
 
    > [!NOTE]
    > Azure アカウントを持っていない場合は、 [Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/)にアクセスしてください。
 
-2. Azure Portal で、**[新規]**をクリックします。 **[新規]** ウィンドウが開きます。
+1. Azure Portal で、**[新規]**をクリックします。 **[新規]** ウィンドウが開きます。
 
-3. **[新規]** ウィンドウで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
+1. **[新規]** ウィンドウで、**[Compute]** をクリックし、**[すべて表示]** をクリックします。
 
    ![新しい [Compute] ウィンドウ](./media/virtual-machines-windows-portal-sql-server-provision/azure-new-compute-blade.png)
 
-4. [検索] フィールドに「**SQL Server**」と入力し、Enter キーを押します。
+1. 検索フィールドに「**SQL Server 2017**」と入力し、Enter キーを押します。
 
-5. 次に、**[フィルター]** アイコンをクリックし、発行元として **Microsoft** を選択します。 フィルター ウィンドウで **[完了]** をクリックし、結果を Microsoft 発行の SQL Server イメージだけにフィルター処理します。
+1. 次に **[フィルター]** アイコンをクリックします。
+
+1. [フィルター] ウィンドウで、**[Windows ベース]** サブカテゴリと発行元の **[Microsoft]** をオンにします。 **[完了]** をクリックして、結果を Microsoft 発行の Windows SQL Server イメージにフィルター処理します。
 
    ![Azure Virtual Machines ウィンドウ](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-blade2.png)
 
-5. 使用可能な SQL Server イメージを確認します。 各イメージは、SQL Server のバージョンとオペレーティング システムを示しています。
+1. 使用可能な SQL Server イメージを確認します。 各イメージは、SQL Server のバージョンとオペレーティング システムを示しています。
 
-6. **[Free License: SQL Server 2016 SP1 Developer on Windows Server 2016]\(無料ライセンス: Windows Server 2016 の SQL Server 2016 SP1 Developer\)** という名前のイメージを選択します。
+1. **Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016** という名前のイメージを選択します。
 
    > [!TIP]
    > このチュートリアルで Developer エディションを使用するのは、このエディションが SQL Server の完全版であり、開発テストを無料で実行できるためです。 ユーザーは VM を実行するコストに対してのみ課金されます。 ただし、このチュートリアルでは、任意のイメージを選択してかまいません。
@@ -70,13 +69,13 @@ Azure 仮想マシン (VM) ギャラリーには、Microsoft SQL Server を含�
    >
    > これらのオプションの詳細については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」を参照してください。
 
-7. **[デプロイ モデルの選択]** で **[Resource Manager]** が選択されていることを確認します。 Resource Manager が、新しい仮想マシンに推奨されるデプロイ モデルです。 
+1. **[デプロイ モデルの選択]** で **[Resource Manager]** が選択されていることを確認します。 Resource Manager が、新しい仮想マシンに推奨されるデプロイ モデルです。 
 
-8. **[作成]**をクリックします。
+1. **Create** をクリックしてください。
 
     ![Create SQL VM with Resource Manager](./media/virtual-machines-windows-portal-sql-server-provision/azure-compute-sql-deployment-model.png)
 
-## <a name="configure-the-vm"></a>VM を構成する
+## <a id="configure"></a> VM を構成する
 SQL Server 仮想マシンを構成するための 5 つのウィンドウがあります。
 
 | 手順 | Description |
@@ -156,7 +155,7 @@ SQL Server 仮想マシンを構成するための 5 つのウィンドウがあ
 | [自動修正](#automated-patching) |
 | [自動化されたバックアップ](#automated-backup) |
 | [Azure Key Vault の統合](#azure-key-vault-integration) |
-| [R Services](#r-services) |
+| [SQL Server Machine Learning サービス](#sql-server-machine-learning-services) |
 
 ### <a name="connectivity"></a>接続
 
@@ -257,14 +256,11 @@ SQL の自動バックアップを有効にするときは、以下の構成を�
 
 詳細については、 [Azure VM 上の SQL Server に関する Azure Key Vault 統合の構成](virtual-machines-windows-ps-sql-keyvault.md)に関するページを参照してください。
 
-### <a name="r-services"></a>R Services
+### <a name="sql-server-machine-learning-services"></a>SQL Server Machine Learning サービス
 
-[SQL Server R Services](https://msdn.microsoft.com/library/mt604845.aspx) を有効にするオプションがあります。 これを使うと、SQL Server 2016 と共に高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[Enable]\(有効にする\)** をクリックします。
+[SQL Server Machine Learning サービス](https://msdn.microsoft.com/library/mt604845.aspx)を有効にするオプションがあります。 これを使うと、SQL Server 2017 で高度な分析を使用できるようになります。 **[SQL Server の設定]** ウィンドウで **[Enable]\(有効にする\)** をクリックします。
 
-> [!NOTE]
-> SQL Server 2016 Developer Edition では、このオプションはポータルによって誤って無効にされています。 Developer Edition の場合は、VM を作成した後、R Services を手動で有効にする必要があります。
-
-![Enable SQL Server R Services](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
+![SQL Server Machine Learning サービスの有効化](./media/virtual-machines-windows-portal-sql-server-provision/azure-vm-sql-server-r-services.png)
 
 SQL Server の設定の構成が完了したら、 **[OK]**をクリックします。
 
@@ -275,9 +271,9 @@ SQL Server の設定の構成が完了したら、 **[OK]**をクリックしま
 Azure Portal でデプロイを監視できます。 画面の上部にある **[通知]** ボタンをクリックすると、デプロイの基本的な状態が表示されます。
 
 > [!NOTE]
-> デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。 このテスト デプロイには完了までに合計 26 分間かかりました。 ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。
+> デプロイの時間について参考になるように、既定の設定で SQL VM を米国東部リージョンにデプロイしました。 このテスト デプロイは完了までに約 12 分間かかりました。 ただし、リージョンや選択した設定によっては、デプロイに必要な時間が変わる可能性があります。
 
-## <a name="open-the-vm-with-remote-desktop"></a>リモート デスクトップを使用して VM を開く
+## <a id="remotedesktop"></a> リモート デスクトップを使用して VM を開く
 
 リモート デスクトップを使用して SQL Server 仮想マシンに接続するには、次の手順に従います。
 
@@ -295,7 +291,7 @@ SQL Server Developer および Express エディションの場合、新しい S
 
 > [!INCLUDE [Connect to SQL Server VM with remote desktop](../../../../includes/virtual-machines-sql-server-connection-tcp-protocol.md)]
 
-## <a name="connect-to-sql-server-remotely"></a>SQL Server にリモート接続する
+## <a id="connect"></a> SQL Server にリモート接続する
 
 このチュートリアルでは、仮想マシンと **SQL Server 認証**に**パブリック** アクセスを選択しています。 これらの設定により、インターネット経由による任意のクライアントから SQL Server への接続を許可するように仮想マシンが自動的に構成されています (適切な SQL ログインを持っている場合)。
 

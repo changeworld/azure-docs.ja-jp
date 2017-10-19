@@ -10,15 +10,13 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
-ms.date: 09/25/2017
+ms.date: 09/27/2017
+ms.openlocfilehash: 2325d0ffd369d85b9a21e2274a98dcb673d240e7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 0dfcc965d96949527b3e80285061bff320872621
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
@@ -36,11 +34,15 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアル シリーズのパート 1 とパート 2 を完了してください。
-- まず、[データの準備に関するチュートリアル](tutorial-classifying-iris-part-1.md)に従って Azure Machine Learning リソースを作成し、Azure Machine Learning Workbench アプリケーションをインストールします。
-- 次に、[モデルの構築に関するチュートリアル](tutorial-classifying-iris-part-2.md)に従って、Azure Machine Learning でロジスティック回帰モデルを作成します。
+
+1. [データの準備に関するチュートリアル](tutorial-classifying-iris-part-1.md)に従って Azure Machine Learning リソースを作成し、Azure Machine Learning Workbench アプリケーションをインストールします。
+
+2. [モデルの構築に関するチュートリアル](tutorial-classifying-iris-part-2.md)に従って、Azure Machine Learning でロジスティック回帰モデルを作成します。
+
+3. Docker エンジンをインストールし、ローカルで実行している必要があります。 または、Azure の Azure Container Service クラスターにデプロイすることもできます。
 
 ## <a name="download-the-model-pickle-file"></a>モデルの pickle ファイルをダウンロードする
-このチュートリアルの前のパートでは、ローカルの Azure Machine Learning Workbench で `iris_sklearn.py` スクリプトを実行しました。 その際、Python オブジェクトのシリアル化パッケージとして広く使われている **[pickle](https://docs.python.org/2/library/pickle.html)** を使ってロジスティック回帰モデルをシリアル化しました。 
+このチュートリアルの前のパートでは、ローカルの Azure Machine Learning Workbench で **iris_sklearn.py** スクリプトを実行しました。 その際、Python オブジェクトのシリアル化パッケージとして広く使われている **[pickle](https://docs.python.org/2/library/pickle.html)** を使ってロジスティック回帰モデルをシリアル化しました。 
 
 1. **Azure Machine Learning Workbench** アプリケーションを起動し、チュートリアル シリーズの前のパートで作成した **myIris** プロジェクトを開きます。
 
@@ -50,7 +52,7 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 4. pickle ファイルが生成されている場所を **iris_sklearn.py** ファイルで確認します。 Ctrl + F キーを押して検索ダイアログを開き、Python コード内で **pickle** という単語を探してください。
 
-   このコード スニペットを見ると、pickle の出力ファイルがどのように生成されているのかがわかります。 pickle の出力ファイルが、`model.pkl` という名前でディスクに保存されていることに注目してください。 
+   このコード スニペットを見ると、pickle の出力ファイルがどのように生成されているのかがわかります。 pickle の出力ファイルは、**model.pkl** という名前でディスクに保存されていることに注意してください。 
 
    ```python
    print("Export the model to model.pkl")
@@ -61,7 +63,7 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 5. 前回実行時の出力ファイルからモデルの pickle ファイルを探します。
    
-   モデル ファイルは、**iris_sklearn.py** スクリプトを実行したときに、`model.pkl` という名前で `outputs` フォルダーに書き込まれています。 このフォルダーは、ローカルのプロジェクト フォルダーにではなく、スクリプトの実行場所として選んだ実行環境に存在します。 
+   **iris_sklearn.py** スクリプトを実行したときに、モデル ファイルは **model.pkl** という名前で **outputs** フォルダーに書き込まれています。 このフォルダーは、ローカルのプロジェクト フォルダーにではなく、スクリプトの実行場所として選んだ実行環境に存在します。 
    
    - このファイルを探すには、Azure Machine Learning Workbench アプリケーションの左側のツール バーにある **[実行]** ボタン (時計アイコン) をクリックして **[すべての実行]** の一覧を表示します。  
    - **[すべての実行]** タブが表示されます。 実行のテーブルで、最近の実行をどれか 1 つ選択します。対象の環境が **[ローカル]** で、スクリプト名が **[iris_sklearn.py]** であるものを選んでください。 
@@ -70,10 +72,10 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
    ![pickle ファイルをダウンロードする](media/tutorial-classifying-iris/download_model.png)
 
-   `outputs` フォルダーについて詳しくは、[大きなデータ ファイルの読み取りと書き込みの方法](how-to-read-write-files.md)に関する記事を参照してください。
+   **outputs** フォルダーの詳細については、[大きなデータ ファイルの読み取りと書き込みの方法](how-to-read-write-files.md)に関する記事をご覧ください。
 
 ## <a name="get-scoring-and-schema-files"></a>スコア付けファイルとスキーマ ファイルを取得する
-Web サービスをモデル ファイルと一緒にデプロイするには、スコア付けスクリプトのほか、Web サービスの入力データに使用するスキーマ (任意) も必要になります。 スコア付けスクリプトを実行すると、現在のフォルダーから `model.pkl` ファイルが読み込まれ、それを使用して、新しく予測されたあやめの分類が生成されます。  
+Web サービスをモデル ファイルと一緒にデプロイするには、スコア付けスクリプトのほか、Web サービスの入力データに使用するスキーマ (任意) も必要になります。 スコア付けスクリプトを実行すると、現在のフォルダーから **model.pkl** ファイルが読み込まれ、このファイルを使用して、新しく予測されたあやめの分類が生成されます。  
 
 1. **Azure Machine Learning Workbench** アプリケーションを起動し、チュートリアル シリーズの前のパートで作成した **myIris** プロジェクトを開きます。
 
@@ -81,19 +83,19 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 3. **iris_score.py** ファイルを選択します。 Python スクリプトが表示されます。 このファイルは、スコア付けファイルとして使用されます。
 
+   ![スコア付けファイル](media/tutorial-classifying-iris/model_data_collection.png)
+
 4. スキーマ ファイルを取得するには、このスクリプトを実行します。 コマンド バーで **[ローカル]** 環境と **[iris_score.py]** スクリプトを選択し、**[実行]** ボタンをクリックします。 
 
 5. このスクリプトを実行すると、**outputs** フォルダーに JSON ファイルが作成されます。このファイルによって、モデルに必要な入力データ スキーマがキャプチャされます。
 
-   ![スコア付けファイル](media/tutorial-classifying-iris/model_data_collection.png)
+6. Machine Learning Workbench ウィンドウの右側の [ジョブ] ウィンドウに注目します。 最新の **iris\_score.py** ジョブが緑色の **[完了]** 状態になるまで待ちます。 次に、最新のジョブ実行の **iris\_score.py [1]** というハイパーリンクをクリックして、**iris_score.py** 実行の詳細を表示します。 
 
-6. Machine Learning Workbench ウィンドウの右側の [ジョブ] ウィンドウで、最新の **iris_score.py** ジョブが緑色の **[完了]** 状態になるまで待ちます。 次に、最新のジョブ実行の **iris_score.py [1]** というハイパーリンクをクリックすると、**iris_score.py** 実行からの実行の詳細が表示されます。 
+7. [Run Properties]\(実行プロパティ\) ページの **[出力]** セクションで、新しく作成された **service_schema.json** ファイルを選択します。 ファイルを**確認**し、**[ダウンロード]** をクリックします。 このファイルをプロジェクトのルート フォルダーに保存してください。
 
-7. [Run Properties]\(実行プロパティ\) ページの **[出力]** セクションで、新しく作成された **service_schema.json** ファイルを選択します。 このファイルをプロジェクトのルート フォルダーに保存してください。
+8. **iris_score.py** スクリプトを開いた、前のタブに戻ります。 
 
-8. 先ほど **iris_score.py** スクリプトを開いたタブに戻ります。 
-
-   Web サービスからモデルの入力と予測をキャプチャするデータ収集の用法に注目してください。 データ収集で特に重要なのは以下の点です。
+   Web サービスからモデルの入力と予測をキャプチャするデータ収集の用法に注目してください。 データ収集で特に重要なのは次の点です。
 
 9. モデル データの収集機能が含まれた ModelDataCollector クラスがファイルの冒頭のコードによってインポートされることを確認します。
 
@@ -101,7 +103,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    from azureml.datacollector import ModelDataCollector
    ```
 
-10. ModelDataCollector が `init()` 関数の次のコード行によってインスタンス化されることを確認します。
+10. **init()** 関数の次のコード行によって、ModelDataCollector がインスタンス化されることを確認します。
 
    ```python
    global inputs_dc, prediction_dc
@@ -109,7 +111,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    prediction_dc = ModelDataCollector('model.pkl', identifier="prediction")`
    ```
 
-11. 入力データと予測データが `run(input_df)` 関数の次のコード行によって収集されることを確認します。
+11. **run(input_df)** 関数の次のコード行によって、入力データと予測データが収集されることを確認します。
 
    ```python
    global clf2, inputs_dc, prediction_dc
@@ -125,13 +127,13 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 "_ローカル モード_" は、開発とテストに使うことができます。 以降の手順でモデルを運用可能な状態にするためには、Docker エンジンがローカルで実行されている必要があります。 コマンドの最後に `-h` フラグを付けると、コマンドのヘルプを参照できます。
 
 >[!NOTE]
->Docker エンジンがローカルで実行されていない場合も、デプロイ用のクラスターを Azure に作成することで手順を続行できます。 それ以上料金が発生しないよう、クラスターはチュートリアル後に必ず削除してください。
+>Docker エンジンがローカルで実行されていない場合、デプロイ用のクラスターを Azure に作成することで手順を続行できます。 それ以上料金が発生しないよう、クラスターはチュートリアル後に必ず削除してください。
 
 1. Azure Machine Learning Workbench のコマンド ライン インターフェイスを開きます。[ファイル] メニューの **[コマンド プロンプトを開く]** をクリックしてください。
 
-   コマンド ライン プロンプトは、現在のプロジェクト フォルダーの場所 (`c:\temp\myIris>`) で開きます。
+   現在のプロジェクト フォルダーの場所 (**c:\temp\myIris>**) でコマンド ライン プロンプトが開きます。
 
-2. Azure リソース プロバイダー `Microsoft.ContainerRegistry` がサブスクリプションに登録されていることを確認します。 手順 3. で環境を作成するためには、あらかじめこのリソース プロバイダーを登録しておく必要があります。 登録済みであるかどうかは、次のコマンドを使って確認できます。
+2. Azure リソースプロバイダー **Microsoft.ContainerRegistry** がサブスクリプションに登録されていることを確認します。 手順 3. で環境を作成するには、このリソースプロバイダーを登録しておく必要があります。 登録済みであるかどうかは、次のコマンドを使って確認できます。
    ``` 
    az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table 
    ``` 
@@ -147,16 +149,18 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ... 
    ```
    
-   `Microsoft.ContainerRegistry` が登録されていない場合、次のコマンドを使って登録できます。
+   **Microsoft.ContainerRegistry** が登録されていない場合は、次のコマンドを使用して登録できます。
    ``` 
    az provider register --namespace Microsoft.ContainerRegistry 
    ```
-   登録には数分かかる場合があります。登録の状態は、上記の `az provider list` コマンドのほか、次のコマンドを使って確認できます。
+   登録には数分かかる場合があります。登録の状態は、上記の **az provider list** コマンドまたは次のコマンドを使用して確認できます。
    ``` 
    az provider show -n Microsoft.ContainerRegistry 
    ``` 
 
-3. 環境を作成します。 この手順は、環境 (開発環境、運用環境など) ごとに 1 回実行する必要があります。この最初の環境には "_ローカル モード_" を使います  (後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください)。
+   出力の 3 行目に **"registrationState": "Registering"** と表示されます。 出力に **"registrationState": "Registered"** と表示されるまで、しばらく待ってから show コマンドを繰り返します。
+
+3. 環境を作成します。 この手順は、環境ごとに 1 回 (たとえば、開発環境で 1 回、運用環境で 1 回) 実行する必要があります。 この最初の環境には "_ローカル モード_" を使います  (後から "_クラスター モード_" で環境を設定してみる場合は、次のコマンドで `-c` スイッチまたは `--cluster` スイッチを指定してください)。
 
    ```azurecli
    az ml env setup -n <new deployment environment name> --location <e.g. eastus2>
@@ -164,7 +168,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    
    画面の指示に従い、Docker イメージを格納するためのストレージ アカウント、Docker イメージをリストするための ACR (Azure Container Registry)、テレメトリを収集するための AppInsight アカウントをプロビジョニングします。 `-c` スイッチを使用した場合、ACS (Azure Container Service) クラスターも作成されます。
    
-   クラスター名は、環境を識別する手段となります。また、location には、Azure Portal で作成したモデル管理アカウントと同じ場所を指定する必要があります。
+   クラスター名によって環境を識別できます。 場所には、Azure Portal で作成したモデル管理アカウントと同じ場所を指定する必要があります。
 
 4. モデル管理アカウントを作成します (これは 1 回限りの作業です)。  
    ```azurecli
@@ -177,12 +181,12 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ```
 
 6. 環境を設定します。
-設定が完了したら、運用化に必要な環境変数を次のコマンドで設定します。 この環境名は、前出の手順 1. で使った名前です。 リソース グループ名は、同じプロセスの出力であり、設定プロセスが完了した時点でコマンド ウィンドウに表示されます。
+設定が完了したら、運用化に必要な環境変数を次のコマンドで設定します。 環境名には、前の手順 4. で使用した名前を使用します。 リソース グループ名には、セットアップ プロセスが完了したときにコマンド ウィンドウに出力された名前を使用します。
    ```azurecli
    az ml env set -n <deployment environment name> -g <existing resource group name>
    ```
 
-   ローカル Web サービスのデプロイに関して、運用環境が適切に構成されていることを確認するために、次のコマンドを入力します。
+7. ローカル Web サービスのデプロイ用に運用可能にした環境が適切に構成されていることを確認するには、次のコマンドを入力します。
 
    ```azurecli
    az ml env show
@@ -190,15 +194,15 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
 これで、リアルタイム Web サービスを作成する準備が整いました。
 
-## <a name="create-a-real-time-web-service"></a>リアルタイム Web サービスを作成する
-リアルタイム Web サービスを作成するには、次のコマンドを使用します。
+## <a name="create-a-real-time-web-service-in-one-command"></a>1 つのコマンドでリアルタイム Web サービスを作成する
+1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。
 
    ```azurecli
    az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
    ```
    これにより、後で使用できる Web サービス ID が生成されます。
 
-   `az ml service create realtime` コマンドには、次のスイッチがあります。
+   **az ml service create realtime** コマンドでは、次のスイッチを使用します。
    * -n: アプリの名前。すべて小文字にする必要があります。
    * -f: スコア付けスクリプト ファイルの名前。
    * --model-file: モデル ファイル。このケースでは、pickle から出力された model.pkl ファイルになります。
@@ -208,32 +212,35 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    >[!IMPORTANT]
    >サービス名 (新しい Docker イメージ名) はすべて小文字であることが必要です。そうしないと、エラーが発生します。 
 
-   このコマンドを実行すると、先ほど環境を設定するときに作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、指定したモデル、スキーマ、スコア付けファイルを含んだ Docker イメージが作成され、ACR レジストリ (`<ACR_name>.azureacr.io/<imagename>:<version>`) にプッシュされます。 さらに、そのイメージがローカルのコンピューターにプルダウンされ、そのイメージに基づいて Docker コンテナーが起動されます  (ご利用の環境がクラスター モードで構成されている場合、ACS Kubernetes クラスターに Docker コンテナーがデプロイされます)。
+2. このコマンドを実行すると、環境のセットアップの一環として作成したストレージ アカウントに、モデル ファイルとスコア付けファイルがアップロードされます。 このデプロイ プロセスによって、モデル、スキーマ、スコア付けファイルが含まれた Docker イメージが作成され、ACR レジストリ (**\<ACR_name\>.azureacr.io/\<imagename\>:\<version\>**) にプッシュされます。 
+
+   さらに、そのイメージがローカルのコンピューターにプルダウンされ、そのイメージに基づいて Docker コンテナーが起動されます  ご利用の環境がクラスター モードで構成されている場合は、ACS Kubernetes クラスターに Docker コンテナーがデプロイされます。
 
    デプロイの一環として、Web サービスの HTTP REST エンドポイントがローカル マシンに作成されます。 数分後、正常終了のメッセージと共にコマンドが完了し、Web サービスの準備が整います。
 
-   実行中の Docker コンテナーは、`docker ps` コマンドで確認できます。
+3. 実行中の Docker コンテナーは、**docker ps** コマンドで確認できます。
    ```azurecli
    docker ps
    ```
-### <a name="alternative-route"></a>代替手段
-前出の `az ml service create realtime` コマンドの代わりに、モデルの登録、マニフェストの生成、Docker イメージの作成、Web サービスの作成の手順を個別に実行することもできます そうすることで個々の手順の柔軟性が高まり、前の手順によって生成されたエンティティを再利用したり、必要なときにエンティティを再構築したりすることができます。 その具体的な方法については、次の手順に従ってください。
+
+## <a name="create-a-real-time-web-service-using-separate-commands"></a>個別のコマンドを使用してリアルタイム Web サービスを作成する
+前述の **az ml service create realtime** コマンドの代わりに、手順を個別に実行することもできます。 まず、モデルを登録し、マニフェストを生成します。次に、Docker イメージを作成し、Web サービスを作成します。 この段階的なアプローチにより、各手順での柔軟性が高まります。 また、前の手順で生成されたエンティティを再利用したり、必要な場合にのみエンティティを再構築したりできます。
 
 1. pickle ファイル名を指定してモデルを登録します。
 
    ```azurecli
    az ml model register --model model.pkl --name model.pkl
    ```
-   これにより、モデル ID が生成されます。
+   このコマンドにより、モデル ID が生成されます。
 
-2. マニフェストを作成します。
+2. マニフェストを作成する
 
    マニフェストを作成するには、前の手順で生成されたモデル ID を指定して次のコマンドを実行します。
 
    ```azurecli
    az ml manifest create --manifest-name <new manifest name> -f iris_score.py -r python -i <model ID> -s service_schema.json
    ```
-   これにより、マニフェスト ID が生成されます。
+   このコマンドにより、マニフェスト ID が生成されます。
 
 3. Docker イメージを作成します。
 
@@ -242,7 +249,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ```azurecli
    az ml image create -n irisimage --manifest-id <manifest ID>
    ```
-   これにより、Docker イメージ ID が生成されます。
+   このコマンドにより、Docker イメージ ID が生成されます。
    
 4. サービスの作成
 
@@ -251,15 +258,15 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ```azurecli
    az ml service create realtime --image-id <image ID> -n irisapp --collect-model-data true
    ```
-   これにより、Web サービス ID が生成されます。
+   このコマンドにより、Web サービス ID が生成されます。
 
 これで、Web サービスを実行する準備が整いました。
 
 ## <a name="run-the-real-time-web-service"></a>リアルタイム Web サービスを実行する
 
-実行中の `irisapp` Web サービスをテストするために、4 つのランダムな数値の配列を含んだ JSON 形式のレコードを Web サービスに渡します。
+実行中の **irisapp** Web サービスをテストするために、4 つの乱数の配列を含む JSON エンコードされたレコードを Web サービスに渡します。
 
-1. Web サービスの作成にはサンプル データが含まれていました。 ローカル モードで実行しているときに `az ml service show realtime` コマンドを呼び出すことで、サービスのテストに使用できるサンプル実行コマンドを取得できます。 また、独自のカスタム アプリにサービスを組み込む際に利用できるスコア付けの URL も得られます。
+1. Web サービスの作成にはサンプル データが含まれていました。 ローカル モードで実行している場合は、**az ml service show realtime** コマンドを呼び出すことができます。 この呼び出しにより、サービスのテストに役立つサンプル実行コマンドが取得されます。 また、独自のカスタム アプリにサービスを組み込む際に使用できるスコアリング URL も取得されます。
 
    ```azurecli
    az ml service show realtime -i <web service ID>
@@ -268,9 +275,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 2. サービスをテストするには、返された service run コマンドを実行します。
 
    ```azurecli
-   az ml service run realtime -i irisapp -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}
+   az ml service run realtime -i irisapp -d "{\"input_df\": [{\"petal width\": 0.25, \"sepal length\": 3.0, \"sepal width\": 3.6, \"petal length\": 1.3}]}"
    ```
-   `"2"` という値が出力されます。これは、予測された品種を表しています  (実際の結果は異なる場合があります)。 
+   出力は **"2"** です。これは予測された品種を表します  (実際の結果は異なる場合があります)。 
 
 3. CLI 以外からサービスを実行する場合は、認証用のキーを取得する必要があります。
 
@@ -295,22 +302,24 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
  
    データがまったく表示されない場合は少しお待ちください。最初の Web サービス要求の後、ストレージ アカウントにデータが反映され始めるまでに、最大 10 分程度かかる場合があります。
 
-   データは、次のコンテナー パスで BLOB に取り込まれます。
+   データが次のコンテナー パスで BLOB に取り込まれます。
 
-   `/modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv`
+   ```
+   /modeldata/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<day>/data.csv
+   ```
 
-6. このデータは、Microsoft のソフトウェアやオープン ソースのツールを含め、さまざまな方法で Azure BLOB から取り出すことができます。 
+6. Azure BLOB のこのデータを使用できます。 データは、次のように Microsoft ソフトウェアやオープン ソースのさまざまなツールで使用できます。
 
-   出力された BLOB を取り出す方法の例:
    - Azure ML Workbench: Azure ML Workbench で csv ファイルをデータ ソースとして追加してそのファイルを開きます。 
    - Excel: 日々の csv ファイルをスプレッドシートとして開きます。
    - [Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): BLOB の csv データから取り込んだデータを使ってグラフを作成します。
+   - [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): csv データを Hive テーブルに読み込み、BLOB に対して直接 SQL クエリを実行します。
    - [Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): csv データの大部分を含んだデータフレームを作成します。
 
       ```python
       var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
       ```
-   - [Hive](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started): csv データを Hive テーブルに読み込み、BLOB に対して直接 SQL クエリを実行します。
+
 
 ## <a name="next-steps"></a>次のステップ
 3 部構成のチュートリアル シリーズのパート 3 では、Azure Machine Learning サービスを使って次の作業を行う方法について説明しました。
@@ -327,5 +336,4 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 高度なデータ準備を行うことができます。
 > [!div class="nextstepaction"]
 > [高度なデータ準備](tutorial-bikeshare-dataprep.md)
-
 

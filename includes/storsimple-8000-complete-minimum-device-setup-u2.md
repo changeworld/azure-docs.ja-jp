@@ -1,4 +1,4 @@
-<!--author=alkohli last changed: 01/12/17-->
+<!--author=alkohli last changed: 09/28/17-->
 
 #### <a name="to-complete-the-minimum-storsimple-device-setup"></a>StorSimple の最小デバイス セットアップを完了するには
 
@@ -21,7 +21,7 @@
 
             ![StorSimple の最小限のデバイス セットアップのネットワーク インターフェイス](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig2.png)
 
-            コントローラー用の固定 IP アドレスは、デバイスに更新を提供するために使用されます。 このため、固定 IP はルーティング可能でありインターネットに接続できる必要があります。 [Test-HcsmConnection][Test] コマンドレットを使用して、コントローラーの固定 IP がルーティング可能であることを確認できます。 次の例に、コントローラーの固定 IP がインターネットにルーティングされ、Microsoft Update サーバーにアクセスできることを示します。
+            コントローラー用の固定 IP アドレスは、デバイスに更新を提供したりガベージ コレクションを実行したりするために使用されます。 このため、固定 IP はルーティング可能でありインターネットに接続できる必要があります。 [Test-HcsmConnection][Test] コマンドレットを使用して、コントローラーの固定 IP がルーティング可能であることを確認できます。 次の例に、コントローラーの固定 IP がインターネットにルーティングされ、Microsoft Update サーバーにアクセスできることを示します。
 
             ![Test-HcsmConnection showing routable IPs](./media/storsimple-8000-complete-minimum-device-setup-u2/step4minconfig3.png)
 

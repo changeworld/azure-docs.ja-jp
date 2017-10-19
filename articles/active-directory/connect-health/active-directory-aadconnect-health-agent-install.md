@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
+ms.openlocfilehash: bfdcc4aadab18091b2f57e8bc751b37d1bac4d26
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 8ef8a1cc2393f0befbf83c3124b67b405ae06898
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Azure AD Connect Health エージェントのインストール
 このドキュメントでは、Azure AD Connect Health エージェントをインストールして構成する手順を紹介します。 エージェントは [こちら](active-directory-aadconnect-health.md#download-and-install-azure-ad-connect-health-agent)からダウンロードできます。
@@ -37,7 +36,19 @@ ms.lasthandoff: 08/01/2017
 | 送信トラフィックの SSL 検査がフィルタリングまたは無効化されていること | ネットワーク層で送信トラフィックの SSL 検査または SSL 終了が設定されている場合、エージェントの登録手順が失敗する可能性があります。 |
 | エージェントを実行するサーバー上のファイアウォール ポート |エージェントが Azure AD Health サービス エンドポイントと通信するには、次のファイアウォール ポートが開いている必要があります。</br></br><li>TCP ポート 443</li><li>TCP ポート 5671</li> |
 | IE セキュリティ強化が有効になっている場合は以下の Web サイトが許可されていること |エージェントのインストール対象となるサーバーで IE セキュリティ強化が有効になっている場合、次の Web サイトを許可する必要があります。</br></br><li>https://login.microsoftonline.com</li><li>https://secure.aadcdn.microsoftonline-p.com</li><li>https://login.windows.net</li><li>Azure Active Directory によって信頼されている組織のフェデレーション サーバー  (例: https://sts.contoso.com)</li> |
+| PowerShell v4.0 以降がインストールされていること | <li>Windows Server 2008 R2 には PowerShell v2.0 が付属しますが、それだけではエージェントの要件が満たされません。  後出の「[Windows Server 2008 R2 サーバーへのエージェントのインストール](#agent-installation-on-windows-server-2008-r2-servers)」の説明に従って PowerShell を更新してください。</li><li>Windows Server 2012 には PowerShell v3.0 が付属しますが、それだけではエージェントの要件が満たされません。  Windows Menagement Framework を[更新](http://www.microsoft.com/en-us/download/details.aspx?id=40855)してください。</li><li>Windows Server 2012 R2 以降には、要件を満たした新しいバージョンの PowerShell が付属します。</li>|
 |FIPS の無効化|FIPS は Azure AD Connect Health エージェントでサポートされていません。|
+
+## <a name="download-and-install-the-azure-ad-connect-health-agent"></a>Azure AD Connect Health エージェントのダウンロードとインストール
+* Azure AD Connect Health の[要件を必ず満たし](active-directory-aadconnect-health-agent-install.md#requirements)てください。
+* Azure AD Connect Health for AD FS の使用を開始します
+    * [Azure AD Connect Health for AD FS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=518973)
+    * [インストール手順を参照します](#installing-the-azure-ad-connect-health-agent-for-ad-fs)。
+* Azure AD Connect Health for sync の使用を開始します
+    * [最新バージョンの Azure AD Connect をダウンロードしてインストールします](http://go.microsoft.com/fwlink/?linkid=615771)。 同期用の Health エージェントは、Azure AD Connect のインストールの一環としてインストールされます (バージョン 1.0.9125.0 以上)。
+* Azure AD Connect Health for AD DS の使用を開始します
+    * [Azure AD Connect Health for AD DS エージェントをダウンロードします](http://go.microsoft.com/fwlink/?LinkID=820540)。
+    * [インストール手順を参照します](#installing-the-azure-ad-connect-health-agent-for-ad-ds)。
 
 ## <a name="installing-the-azure-ad-connect-health-agent-for-ad-fs"></a>Azure AD Connect Health エージェント for AD FS のインストール
 エージェントのインストールを開始するには、ダウンロードした .exe ファイルをダブルクリックします。 最初の画面で [インストール] をクリックします。
@@ -89,11 +100,11 @@ Windows Server 2008 R2 サーバーでの手順:
 
 #### <a name="to-enable-auditing-for-ad-fs-on-windows-server-2008-r2"></a>Windows Server 2008 R2 で AD FS の監査を有効にするには
 1. **[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[ローカル セキュリティ ポリシー]** をクリックします。
-2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の管理"** フォルダーに移動し、[セキュリティ監査の生成] をダブルクリックします。
+2. **"セキュリティの設定\ローカル ポリシー\ユーザー権利の割り当て"** フォルダーに移動し、**[セキュリティ監査の生成]** をダブルクリックします。
 3. **[ローカル セキュリティの設定]** タブで、AD FS 2.0 サービス アカウントが表示されていることを確認します。 表示されない場合は、**[ユーザーまたはグループの追加]** をクリックしてこのアカウントをリストに追加し、**[OK]** をクリックします。
-4. 昇格された特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
-5. ローカル セキュリティ ポリシーを閉じて、管理スナップインを開きます。 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、[AD FS 2.0 管理] をクリックします。
-6. 操作ウィンドウで、[フェデレーション サービス プロパティの編集] をクリックします。
+4. 管理者特権でコマンド プロンプトを開き、次のコマンドを実行して監査を有効にします。<code>auditpol.exe /set /subcategory:"Application Generated" /failure:enable /success:enable</code>
+5. **ローカル セキュリティ ポリシー**を閉じて、**AD FS 管理**スナップインを開きます。 AD FS 管理スナップインを開くには、**[スタート]** ボタンをクリックし、**[プログラム]**、**[管理ツール]** の順にポイントして、**[AD FS 2.0 管理]** をクリックします。
+6. **操作**ウィンドウで、**[フェデレーション サービス プロパティの編集]** をクリックします。
 7. **[フェデレーション サービス プロパティ]** ダイアログ ボックスの **[イベント]** タブをクリックします。
 8. **[成功の監査]** チェック ボックスと **[失敗の監査]** チェック ボックスをオンにします。
 9. **[OK]**をクリックします。
@@ -303,4 +314,3 @@ role パラメーターは、現在、以下の値を受け取ります。
 * [AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)
 * [Azure AD Connect Health の FAQ](active-directory-aadconnect-health-faq.md)
 * [Azure AD Connect Health のバージョンの履歴](active-directory-aadconnect-health-version-history.md)
-

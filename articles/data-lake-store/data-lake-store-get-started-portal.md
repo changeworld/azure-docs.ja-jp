@@ -12,34 +12,23 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 09/28/2017
 ms.author: nitinme
+ms.openlocfilehash: 4d3a5c0c49b881db69a9d5cccc65406322212a8d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: fa13266993017374ba49709f8e22fbe6b03a28c7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-the-azure-portal"></a>Azure Portal で Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-> * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> * [Python](data-lake-store-get-started-python.md)
 >
 > 
 
 Azure Portal を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。詳細については、「[Azure Data Lake Store の概要](data-lake-store-overview.md)」を参照してください。
-
-次の 2 つのビデオには、この記事の説明と同じ情報が含まれています。
-
-* [Data Lake Store アカウントを作成する](https://mix.office.com/watch/1k1cycy4l4gen)
-* [データ エクスプローラーで Data Lake Store のデータを管理する](https://mix.office.com/watch/icletrxrh6pc)
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアルを開始する前に、次の項目を用意する必要があります。
@@ -62,7 +51,7 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
      
      * **暗号化を有効にしない**。
      * **Azure Data Lake で管理されるキーを使用する**。  Azure Data Lake Store に暗号化キーを管理させる場合。
-     * **Azure Key Vault からキーを選択します**。 既存の Azure Key Vault を選択するか、新しい Key Vault を作成することができます。 Key Vault のキーを使用するには、Azure Key Vault にアクセスするために、Azure Data Lake Store アカウントのアクセス許可を割り当てる必要があります。 手順については、「[Azure Key Vault にアクセス許可を割り当てる](#assign-permissions-to-azure-key-vault)」を参照してください。
+     * **独自のキー コンテナーのキーを使用する**。 既存の Azure Key Vault を選択するか、新しい Key Vault を作成することができます。 Key Vault のキーを使用するには、Azure Key Vault にアクセスするために、Azure Data Lake Store アカウントのアクセス許可を割り当てる必要があります。 手順については、「[Azure Key Vault にアクセス許可を割り当てる](#assign-permissions-to-azure-key-vault)」を参照してください。
        
         ![Data Lake Store の暗号化](./media/data-lake-store-get-started-portal/adls-encryption-2.png "Data Lake Store の暗号化")
        
@@ -70,24 +59,30 @@ Azure Portal を使用して、Azure Data Lake Store アカウントを作成し
 
         詳細については、「[Azure Data Lake Store でのデータの暗号化](./data-lake-store-encryption.md)」を参照してください。
 
-4. **[作成]**をクリックします。 アカウントをダッシュボードにピン留めすることを選択した場合、ダッシュボードに戻ると、Data Lake Store アカウントのプロビジョニングの進行状況を確認できます。 Data Lake Store アカウントのプロビジョニングが完了すると、アカウントのブレードが表示されます。
-
-Azure Resource Manager テンプレートを使用して、Data Lake Store アカウントを作成することもできます。 以下のテンプレートは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=data+lake+store)からアクセスすることができます。
-
-- データ暗号化なし: [Deploy Azure Data Lake Store account with no data encryption (Azure Data Lake Store アカウントをデータ暗号化なしでデプロイする)](https://azure.microsoft.com/en-us/resources/templates/101-data-lake-store-no-encryption/)。
-- Data Lake Store を使用したデータ暗号化付きで: [Deploy Data Lake Store account with encryption(Data Lake) (暗号化 (Data Lake) 付きで Data Lake Store アカウントをデプロイする)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)。
-- Azure Key Vault を使用したデータ暗号化付きで: [Deploy Data Lake Store account with encryption(Key Vault) (暗号化 (Key Vault) 付きで Data Lake Store アカウントをデプロイする)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)。
+4. **Create** をクリックしてください。 アカウントをダッシュボードにピン留めすることを選択した場合、ダッシュボードに戻ると、Data Lake Store アカウントのプロビジョニングの進行状況を確認できます。 Data Lake Store アカウントのプロビジョニングが完了すると、アカウントのブレードが表示されます。
 
 ### <a name="assign-permissions-to-azure-key-vault"></a>Azure Key Vault にアクセス許可を割り当てる
 Azure Key Vault のキーを使用して Data Lake Store アカウントの暗号化を構成した場合は、Data Lake Store アカウントと Azure Key Vault アカウントの間でアクセスを構成する必要があります。 そのためには、次の手順を実行します。
 
-1. Azure Key Vault のキーを使用している場合、Data Lake Store アカウントのブレードの上部に警告が表示されます。 この警告をクリックして、**[Key Vault アクセス許可の構成]** ブレードを開きます。
+1. Azure Key Vault のキーを使用している場合、Data Lake Store アカウントのブレードの上部に警告が表示されます。 警告をクリックして **[暗号化]** を開きます。
    
     ![Data Lake Store の暗号化](./media/data-lake-store-get-started-portal/adls-encryption-3.png "Data Lake Store の暗号化")
 2. ブレードには、アクセスを構成する 2 つのオプションが表示されます。
+
+    ![Data Lake Store の暗号化](./media/data-lake-store-get-started-portal/adls-encryption-4.png "Data Lake Store の暗号化")
    
    * 最初のオプションでは、**[アクセス許可の付与]** をクリックしてアクセスを構成します。 最初のオプションは、Data Lake Store アカウントを作成したユーザーが Azure Key Vault の管理者でもある場合にのみ有効になります。
    * もう 1 つのオプションでは、ブレードに表示されている PowerShell コマンドレットを実行します。 この場合、Azure Key Vault の所有者であるか、Azure Key Vault に対するアクセス許可を付与できる必要があります。 コマンドレットを実行したら、ブレードに戻り、**[有効にする]** をクリックしてアクセスを構成します。
+
+> [!NOTE]
+> Azure Resource Manager テンプレートを使用して、Data Lake Store アカウントを作成することもできます。 以下のテンプレートは、[Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/?term=data+lake+store)からアクセスすることができます。
+    - データ暗号化なし: [Deploy Azure Data Lake Store account with no data encryption (Azure Data Lake Store アカウントをデータ暗号化なしでデプロイする)](https://azure.microsoft.com/resources/templates/101-data-lake-store-no-encryption/)。
+    - Data Lake Store を使用したデータ暗号化付きで: [Deploy Data Lake Store account with encryption(Data Lake) (暗号化 (Data Lake) 付きで Data Lake Store アカウントをデプロイする)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-adls/)。
+    - Azure Key Vault を使用したデータ暗号化付きで: [Deploy Data Lake Store account with encryption(Key Vault) (暗号化 (Key Vault) 付きで Data Lake Store アカウントをデプロイする)](https://azure.microsoft.com/resources/templates/101-data-lake-store-encryption-key-vault/)。
+> 
+> 
+
+
 
 ## <a name="createfolder"></a>Azure Data Lake Store アカウントにフォルダーを作成する
 Data Lake Store アカウントにフォルダーを作成し、データの管理と保存を行うことができます。
@@ -96,7 +91,7 @@ Data Lake Store アカウントにフォルダーを作成し、データの管�
 2. Data Lake Store アカウントのブレードで、 **[データ エクスプローラー]**をクリックします。
    
     ![Data Lake Store アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Create.Folder.png "Data Lake Store アカウントでのフォルダーの作成")
-3. Data Lake Store アカウントのブレードで、**[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、**[OK]** をクリックします。
+3. [データ エクスプローラー] ブレードで、**[新しいフォルダー]** をクリックし、新しいフォルダーの名前を入力して、**[OK]** をクリックします。
    
     ![Data Lake Store アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.Folder.Name.png "Data Lake Store アカウントでのフォルダーの作成")
    
@@ -105,23 +100,19 @@ Data Lake Store アカウントにフォルダーを作成し、データの管�
     ![Data Lake アカウントでのフォルダーの作成](./media/data-lake-store-get-started-portal/ADL.New.Directory.png "Data Lake アカウントでのフォルダーの作成")
 
 ## <a name="uploaddata"></a>Azure Data Lake Store アカウントにデータをアップロードする
-データは、Azure Data Lake Store アカウントのルート レベルに直接をアップロードすることも、アカウント内に作成したフォルダーにアップロードすることもできます。 次のスクリーンショットでは、**[データ エクスプローラー]** ブレードからサブフォルダーにファイルをアップロードする手順を示しています。 このスクリーンショットの場合、ファイルは、階層リンクで示されているサブフォルダー (赤色の四角形で示されています) にアップロードされます。
+データは、Azure Data Lake Store アカウントのルート レベルに直接をアップロードすることも、アカウント内に作成したフォルダーにアップロードすることもできます。 
+
+1. **[データ エクスプローラー]** ブレードで、**[アップロード]** をクリックします。 
+2. **[ファイルのアップロード]** ブレードで、アップロードするファイルに移動し、**[選択されたファイルを追加します]** をクリックします。 複数のファイルを選択してアップロードすることもできます。
+
+    ![データのアップロード](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "データのアップロード")
 
 アップロードするいくつかのサンプル データを探している場合は、 **Azure Data Lake Git リポジトリ** から [Ambulance Data](https://github.com/MicrosoftBigData/usql/tree/master/Examples/Samples/Data/AmbulanceData)フォルダーを取得できます。
 
-![データのアップロード](./media/data-lake-store-get-started-portal/ADL.New.Upload.File.png "データのアップロード")
+## <a name="properties"></a>保存データに対して実行できるアクション
+ファイルに対応する省略記号アイコンをクリックします。ポップアップ メニューで、データに対して実行するアクションをクリックします。
 
-## <a name="properties"></a>保存データに対して使用できるプロパティと操作
-新しく追加したファイルをクリックし、 **[プロパティ]** ブレードを開きます。 このブレードでは、そのファイルに関連付けられたプロパティと、そのファイルに対して実行できる操作を利用できます。 また、次のスクリーンショットで赤い四角形で強調表示されている、Azure Data Lake Store アカウント内のファイルへの完全なパスをコピーすることもできます。
-
-![データのプロパティ](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "データのプロパティ")
-
-* **[プレビュー]** をクリックすると、ブラウザーから直接、ファイルのプレビューが表示されます。 プレビューの形式を指定することもできます。 **[プレビュー]** をクリックし、**[ファイルのプレビュー]** ブレードの **[形式]** をクリックします。**[ファイルのプレビュー形式]** ブレードで、表示する行数、使用するエンコード、使用する区切り記号などのオプションを指定します。
-  
-  ![ファイルのプレビュー形式](./media/data-lake-store-get-started-portal/ADL.File.Preview.png "ファイルのプレビュー形式")
-* ファイルをコンピューターにダウンロードするには、 **[ダウンロード]** をクリックします。
-* ファイルの名前を変更するには、 **[ファイル名の変更]** をクリックします。
-* ファイルを削除するには、 **[ファイルの削除]** をクリックします。
+![データのプロパティ](./media/data-lake-store-get-started-portal/ADL.File.Properties.png "データのプロパティ") 
 
 ## <a name="secure-your-data"></a>データのセキュリティ保護
 Azure Data Lake Store アカウントに保存したデータは、Azure Active Directory とアクセス制御 (ACL) を使用してセキュリティで保護することができます。 その方法の詳細については、「 [Azure Data Lake Store でのデータのセキュリティ保護](data-lake-store-secure-data.md)」を参照してください。
@@ -132,9 +123,8 @@ Azure Data Lake Store アカウントを削除するには、Data Lake Store ブ
 ![Data Lake アカウントの削除](./media/data-lake-store-get-started-portal/ADL.Delete.Account.png "Data Lake アカウントの削除")
 
 ## <a name="next-steps"></a>次のステップ
+* [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-* [Data Lake Store の診断ログへのアクセス](data-lake-store-diagnostic-logs.md)
-
 

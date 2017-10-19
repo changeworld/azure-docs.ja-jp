@@ -3,7 +3,7 @@ title: "アマゾン ウェブ サービスで認証を構成する | Microsoft 
 description: "この記事では、AWS リソースを管理する Azure Automation の Runbook 用に AWS 資格情報を作成し検証する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "AWS の認証, AWS の構成"
@@ -13,20 +13,19 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 04/14/2017
+ms.date: 09/29/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 81e5e5d56a7e6149409e11aca2e5fdf28d6a7134
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: 0802bb0f2c4d5b761c5833d7231bd3d2d1002cfc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-runbooks-with-amazon-web-services"></a>アマゾン ウェブ サービスによる Runbook の認証
 アマゾン ウェブ サービス (AWS) のリソースに関する一般的なタスクを自動化する処理は、Azure の Automation Runbook で実現することができます。  Automation Runbook を使用すれば、Azure のリソースの場合と同様に、AWS でも多くのタスクを自動化することができます。  必要となるのは次の 2 点だけです。
 
-* AWS サブスクリプションと一連の資格情報。  具体的には、AWS アクセス キーと秘密キーです。  詳細については、記事「 [Using AWS Credentials (AWS 資格情報の使用)](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)」を参照してください。
-* Azure サブスクリプションと Automation アカウント。  Azure Automation アカウントのセットアップの詳細については、[Azure 実行アカウントの構成](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。  
+* AWS サブスクリプションと一連の資格情報。  具体的には、AWS アクセス キーと秘密キーです。  詳細については、記事「[Using AWS Credentials (AWS 資格情報の使用)](http://docs.aws.amazon.com/powershell/latest/userguide/specifying-your-aws-credentials.html)」を参照してください。
+* Azure サブスクリプションと Automation アカウント。  Azure Automation アカウントの設定について詳しくは、「[認証の計画](automation-offering-get-started.md#authentication-planning)」を参照してください。  
 
 AWS で認証するには、一連の AWS 資格情報を指定して、Azure Automation から実行される Runbook を認証する必要があります。 Automation アカウントが作成済みで、それを AWS による認証に使用する場合は、次のセクションの手順に従ってください。  アカウントを、AWS リソースをターゲットとする Runbook 専用に使用する場合は、最初に新しい [Automation アカウント](automation-offering-get-started.md)を作成してから (サービス プリンシパルを作成するオプションは省略)、次の手順に従います。
 
@@ -40,5 +39,4 @@ AWS セキュリティ キーを作成し、コピーしたら、Azure Automatio
 
 ## <a name="next-steps"></a>次のステップ
 * AWS のタスクを自動化する Runbook を作成する方法については、[Amazon Web Services の VM デプロイの自動化](automation-scenario-aws-deployment.md)に関する記事をご覧ください。
-
 

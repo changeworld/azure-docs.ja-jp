@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 8576f2b6adce044d2060c3ba6d19ac330e3637c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 166cebeb20ecc79b447dac25f243f07163a6d127
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started"> </a>Azure App Service の Mobile Apps について
 Azure App Service は、プロの開発者のための完全に管理された[サービスとしてのプラットフォーム](https://azure.microsoft.com/overview/what-is-paas/) (PaaS) 製品であり、 Web、モバイル、および統合シナリオ向けに豊富な機能を提供します。 
@@ -68,7 +67,7 @@ Mobile Apps の機能を使ってできることを次に示します。
 
 * **継続的なデプロイ**: App Service は一般的なサプライ チェーン管理 (SCM) システムと統合できるため、バックエンドの新しいバージョンを SCM システムのブランチにプッシュすることで自動的にデプロイできます。
 
-  [デプロイ オプション]の詳細を確認してください。
+  [デプロイ オプション](../app-service/app-service-deploy-local-git.md)の詳細を確認してください。
 
 * **仮想ネットワーク**: App Service は、仮想ネットワーク、Azure ExpressRoute、またはハイブリッド接続を使用してオンプレミスのリソースに接続できます。
 
@@ -83,11 +82,10 @@ Mobile Apps の機能を使ってできることを次に示します。
 Azure App Service の Mobile Apps の使用を開始するには、[作業の開始]に関するチュートリアルに従ってください。 このチュートリアルでは、モバイル バックエンドと各種クライアントを作成する方法についての基礎を取り上げています。 また、認証、オフライン同期、プッシュ通知の統合についても取り上げています。 このチュートリアルは、クライアント アプリケーションごとに 1 回ずつ、複数回行うことができます。
 
 Mobile Apps の詳細については、[学習マップ]を確認してください。
-Azure App Service プラットフォームの詳細については、 [Azure App Service]に関するページを参照してください。
+Azure App Service プラットフォームの詳細については、[Azure App Service] に関するページを参照してください。
 
 <!-- URLs. -->
 [Migrate your mobile service to App Service]: app-service-mobile-migrating-from-mobile-services.md
-[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
 [作業の開始]: app-service-mobile-ios-get-started.md
 [Azure Table Storage]:../cosmos-db/table-storage-how-to-use-dotnet.md
 [Azure Cosmos DB]: ../cosmos-db/documentdb-get-started.md
@@ -100,12 +98,10 @@ Azure App Service プラットフォームの詳細については、 [Azure App
 [Xamarin.iOS および Xamarin.Android]: ./app-service-mobile-dotnet-how-to-use-client-library.md
 [Xamarin Forms]: ./app-service-mobile-xamarin-forms-get-started.md
 [Apache Cordova]: ./app-service-mobile-cordova-how-to-use-client-library.md
-[自動スケール]: ../app-service-web/web-sites-scale.md
-[ステージング環境]: ../app-service-web/web-sites-staged-publishing.md
-[デプロイ オプション]: ../app-service-web/web-sites-deploy.md
+[自動スケール]: ../app-service/web-sites-scale.md
+[ステージング環境]: ../app-service/web-sites-staged-publishing.md
 [ハイブリッド接続]: ../biztalk-services/integration-hybrid-connection-overview.md
-[仮想ネットワーク]: ../app-service-web/web-sites-integrate-with-vnet.md
-[ExpressRoute]: ../app-service-web/app-service-app-service-environment-network-configuration-expressroute.md
-[App Service 環境]: ../app-service-web/app-service-app-service-environment-intro.md
+[仮想ネットワーク]: ../app-service/web-sites-integrate-with-vnet.md
+[ExpressRoute]: ../app-service/environment/app-service-app-service-environment-network-configuration-expressroute.md
+[App Service 環境]: ../app-service/environment/intro.md
 [学習マップ]: https://azure.microsoft.com/en-us/documentation/learning-paths/appservice-mobileapps/
-

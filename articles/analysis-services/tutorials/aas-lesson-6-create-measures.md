@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: 90833fa9744eac298b0da82cd3d12f27cc237510
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: ba0030ca25adf13a3a831facec2ded9cff0bd882
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-6-create-measures"></a>レッスン 6: メジャーを作成する
 
@@ -53,7 +52,7 @@ ms.lasthandoff: 06/03/2017
     DaysCurrentQuarterToDate:=COUNTROWS( DATESQTD( 'DimDate'[Date])) 
     ```
   
-    左上のセルにメジャー名､**DaysCurrentQuarterToDate** ､その後に結果 **92** が表示されています｡
+    左上のセルにメジャー名､**DaysCurrentQuarterToDate** ､その後に結果 **92** が表示されています｡ この時点では、ユーザー フィルターがまだ適用されていないので、この結果に意味はありません。
     
       ![aas-lesson6-newmeasure](../tutorials/media/aas-lesson6-newmeasure.png) 
     
@@ -102,7 +101,7 @@ ms.lasthandoff: 06/03/2017
     |TaxAmt|InternetTotalTaxAmt|合計|=SUM([TaxAmt])|  
     |運送料|InternetTotalFreight|合計|=SUM([Freight])|  
   
-2.  メジャー グリッド内の空のセルをクリックし､数式バーを使用することで､次のメジャーを順に作成し､名前を指定します｡  
+2.  メジャー グリッド内の空のセルをクリックし､数式バーを使用することで､次のカスタム メジャーを順に作成します。  
   
       ```
       InternetPreviousQuarterMargin:=CALCULATE([InternetTotalMargin],PREVIOUSQUARTER('DimDate'[Date]))
@@ -134,4 +133,3 @@ FactInternetSales テーブルに作成したメジャーは､ユーザーの�
 [レッスン 7: 主要業績評価指標を作成する](../tutorials/aas-lesson-7-create-key-performance-indicators.md)  
 
   
-

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: jdial
+ms.openlocfilehash: 98559cbb0acab91c4b2c30c6d0129e955eef85f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 63a313d9035422207a1ce56f0da8b388e2747685
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-security"></a>ネットワークのセキュリティ
 
@@ -59,8 +58,8 @@ ms.lasthandoff: 09/27/2017
 
 **考慮事項**
 
-- **ホスト ノードの仮想 IP:** DHCP、DNS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 このパブリック IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。 この IP アドレスは、VM をホストしているサーバー コンピューター (ホスト ノード) の物理 IP アドレスにマッピングされます。 ホスト ノードは、DHCP リレー、DNS の再帰的リゾルバー、および Load Balancer の正常性プローブとマシンの正常性プローブのプローブ元として機能します。 この IP アドレスへの通信は攻撃ではありません。 これらの IP アドレスの受信/送信トラフィックをブロックすると、仮想マシンが正しく機能しない可能性があります。
-- **ライセンス (キー管理サービス):** VM で実行される Windows イメージには、ライセンスを適用する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。
+- **ホスト ノードの仮想 IP:** DHCP、DNS、正常性の監視などの基本的なインフラストラクチャ サービスは、仮想化されたホストの IP アドレス 168.63.129.16 および 169.254.169.254 を通じて提供されます。 このパブリック IP アドレスは Microsoft に属し、この目的のためにすべてのリージョンで使われる唯一の仮想化 IP アドレスです。 このアドレスは、仮想マシンをホストしているサーバー マシン (ホスト ノード) の物理 IP アドレスにマッピングされます。 ホスト ノードは、DHCP リレー、DNS の再帰的リゾルバー、および Load Balancer の正常性プローブとマシンの正常性プローブのプローブ元として機能します。 この IP アドレスへの通信は攻撃ではありません。 これらの IP アドレスの受信/送信トラフィックをブロックすると、仮想マシンが正しく機能しない可能性があります。
+- **ライセンス (キー管理サービス)**: 仮想マシンで実行されている Windows イメージのライセンスを取得する必要があります。 ライセンスを適用するために、そのような問い合わせを処理するキー管理サービスのホスト サーバーには要求が送信されます。 この要求は、ポート 1688 を通じて送信されます。
 - **負荷分散プール内の仮想マシン**: 適用されるソース ポートおよびアドレス範囲は、元のコンピューターからのもので、ロード バランサーではありません。 ターゲット ポートとアドレス範囲は、ロード バランサーのものではなく、ターゲット コンピューターのものになります。
 - **Azure のサービス インスタンス**: HDInsight、Application Service Environments、および仮想マシン スケール セットなどの Azure サービスのインスタンスが仮想ネットワークのサブネットにデプロイされています。 リソースがデプロイされているサブネットにネットワーク セキュリティ グループを適用する前に、各サービスのポート要件を確認してください。 サービスに必要なポートを拒否すると、サービスは正しく機能しません。 
 
@@ -126,7 +125,7 @@ ms.lasthandoff: 09/27/2017
 
 * **VirtualNetwork** (*Resource Manager) (クラシックの場合は* *VIRTUAL_NETWORK**): このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリングされた](virtual-network-peering-overview.md)仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
 * **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**): このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブが開始される [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に変換されます。 Azure Load Balancer を使っていない場合は、この規則を上書きできます。
-* **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、Azure のパブリック IP アドレス空間を表します。 このタグに含まれるアドレスの一覧については、[Azure 所有のパブリック IP 空間](https://www.microsoft.com/download/details.aspx?id=41653)に関するドキュメントをご覧ください。このドキュメントは定期的に更新されます。
+* **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
 * **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager サービスの IP アドレス空間を表します。
 * **Storage** (Resource Manager のみ): このタグは、Azure Storage サービスの IP アドレス空間を表します。 値として *Storage* を指定した場合、ストレージへのトラフィックが許可または拒否されます。 特定の[リージョン](https://azure.microsoft.com/regions)のストレージに対するアクセスのみを許可する場合は、リージョンを指定することができます。 たとえば、米国東部リージョンの Azure Storage へのアクセスのみを許可する場合は、サービス タグとして *Storage.EastUS* と指定できます。 その他の使用可能なリージョン サービス タグは、Storage.AustraliaEast、Storage.AustraliaSoutheast、Storage.EastUS、Storage.UKSouth、Storage.WestCentralUS、Storage.WestUS、Storage.WestUS2 です。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure Storage サービスを表しますが、特定の Azure Storage アカウントは表しません。
 * **Sql** (Resource Manager のみ): このタグは、Azure SQL Database サービスおよび Azure SQL Data Warehouse サービスのアドレス プレフィックスを表します。 このサービス タグでは、特定のリージョンだけを指定することができます。 たとえば、米国東部リージョンの Azure SQL Database へのアクセスのみを許可する場合は、サービス タグとして *Sql.EastUS* と指定できます。 すべての Azure リージョンに対してのみ Sql を指定することはできません、リージョンを個別に指定する必要があります。 その他の使用可能なリージョン サービス タグは、Sql.AustraliaEast、Sql.AustraliaSoutheast、Sql.EastUS、Sql.UKSouth、Sql.WestCentralUS、Sql.WestUS、Sql.WestUS2 です。 タグはサービスだけを表し、サービスの特定のインスタンスは表しません。 たとえば、このタグは Azure SQL Database サービスを表しますが、特定の Azure SQL データベースは表しません。
@@ -152,7 +151,7 @@ ms.lasthandoff: 09/27/2017
  
 アプリケーション セキュリティ グループを作成するとき、およびセキュリティ規則でアプリケーション セキュリティ グループを指定するときの制限については、[Azure の制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関する記事をご覧ください。
 
-アプリケーション セキュリティ グループは、プレビュー リリースで利用できます。 ネットワーク セキュリティ グループを使う前に、[アプリケーション セキュリティ グループでネットワーク セキュリティ グループを作成する方法](create-network-security-group-preview.md#powershell)に関する記事の手順 1 ～ 5 を完了してネットワーク セキュリティ グループの使用を登録し、[プレビュー機能](#preview-features)についての重要な情報を読んでおく必要があります。 プレビューの期間中、アプリケーション セキュリティ グループは仮想ネットワークの範囲に制限されます。 ネットワーク セキュリティ グループ上のアプリケーション セキュリティ グループに対する相互参照とピアリングされた仮想ネットワークには適用されませんです。 
+アプリケーション セキュリティ グループは、プレビュー リリースで利用できます。 アプリケーション セキュリティ グループを使う前に、[アプリケーション セキュリティ グループでネットワーク セキュリティ グループを作成する方法](create-network-security-group-preview.md#powershell)に関する記事の手順 1. ～ 5. を完了してそれらの使用を登録し、[プレビュー機能](#preview-features)についての重要な情報を読んでおく必要があります。 プレビューの期間中、アプリケーション セキュリティ グループは仮想ネットワークの範囲に制限されます。 ネットワーク セキュリティ グループ上のアプリケーション セキュリティ グループに対する相互参照とピアリングされた仮想ネットワークには適用されませんです。 
 
 プレビュー状態の機能の可用性と信頼性は、一般公開リリースの機能と同じレベルではありません。 アプリケーション セキュリティ グループを使う前に、アプリケーション セキュリティ グループの使用を登録する必要があります。 この機能は、米国中西部リージョンでのみ使用可能です。
 
@@ -160,4 +159,3 @@ ms.lasthandoff: 09/27/2017
 
 * [ネットワーク セキュリティ グループの作成](virtual-networks-create-nsg-arm-pportal.md)に関するチュートリアルを行います
 * [アプリケーション セキュリティ グループを使ったネットワーク セキュリティ グループの作成](create-network-security-group-preview.md)に関するチュートリアルを行います
-

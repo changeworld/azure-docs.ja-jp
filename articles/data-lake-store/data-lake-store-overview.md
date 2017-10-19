@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: a1d30c77dd29a134017be7deec6bb50991e6a698
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 956c7a4fb91c1b1a45e24128e92d6a6b1213eeb2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-azure-data-lake-store"></a>Azure Data Lake Store の概要
 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Azure Data Lake を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、および取り込み速度のデータを 1 か所でキャプチャすることができます。
@@ -55,16 +53,16 @@ Data Lake Store では、格納されたデータに対してエンタープラ�
 ### <a name="all-data"></a>すべてのデータ
 Azure Data Lake Store では、任意のデータをネイティブ形式でそのまま格納することができ、事前の変換は必要ありません。 Data Lake Store では、データを読み込む前にスキーマを定義する必要はなく、分析時にデータを解釈しスキーマを定義するかどうかは個々の分析フレームワークに任されます。 任意のサイズおよび形式のファイルを格納できるようにすると、Data Lake Store は構造化データ、半構造化データ、および非構造化データを処理できるようになります。
 
-Azure Data Lake Store のデータ コンテナーは本質的にはフォルダーとファイルです。 格納されたデータを、SDK、Azure ポータル、Azure Powershell を使用して操作します。 これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置する限り、あらゆる種類のデータを格納できます。 Data Lake Store では、格納されているデータの種類に基づくデータの特別な処理は実行されません。
+Azure Data Lake Store のデータ コンテナーは本質的にはフォルダーとファイルです。 格納されたデータを、SDK、Azure Portal、Azure Powershell を使用して操作します。 これらのインターフェイスと適切なコンテナーを使用してストアにデータを配置する限り、あらゆる種類のデータを格納できます。 Data Lake Store では、格納されているデータの種類に基づくデータの特別な処理は実行されません。
 
 ## <a name="DataLakeStoreSecurity"></a>Azure Data Lake Store でのデータのセキュリティ保護
 Azure Data Lake Store では、Azure Active Directory を使用し、認証およびアクセス制御リスト (ACL) によってデータへのアクセスを管理します。
 
 | 機能 | Description |
 | --- | --- |
-| 認証 |Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。 この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 |
+| 認証 |Azure Data Lake Store は、Azure Active Directory (AAD) と統合することで、Azure Data Lake Store に格納されたすべてのデータの ID 管理とアクセス管理を行います。 この統合によって、Azure Data Lake Store は、AAD のあらゆる機能 (たとえば、多要素認証、条件付きアクセス、ロール ベースのアクセス制御、アプリケーション使用状況の監視、セキュリティの監視とアラート通知など) から恩恵を受けます。Azure Data Lake Store では、REST インターフェイスでの認証に対応する OAuth 2.0 プロトコルをサポートしています。 [Data Lake Store の認証](data-lakes-store-authentication-using-azure-active-directory.md)に関するページを参照してください。|
 | Access control |Azure Data Lake Store では、WebHDFS プロトコルで公開された POSIX 形式のアクセス許可をサポートすることにより、アクセス制御を実現しています。 Data Lake Store パブリック プレビュー (現在のリリース) では、ルート フォルダー、サブフォルダー、個々のファイルで ACL を有効にすることができます。 Data Lake Store のコンテキストにおける ACL のしくみの詳細については、[Data Lake Store のアクセス制御](data-lake-store-access-control.md)に関する記事をご覧ください。 |
-| Encryption |Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Store アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 暗号化関連の構成を提供する方法の詳細については、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」をご覧ください。 |
+| Encryption |Data Lake Store では、アカウントに格納されているデータを暗号化することもできます。 暗号化設定は、Data Lake Store アカウントの作成時に指定します。 データを暗号化するかどうかを選択できます。 詳細については、[Data Lake Store での暗号化](data-lake-store-encryption.md)に関するページを参照してください。 暗号化関連の構成を提供する手順については、「[Azure Portal で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 |
 
 Data Lake Store に格納されているデータのセキュリティ保護の詳細については、 以下のページを参照してください。
 
@@ -84,7 +82,7 @@ Hadoop 環境 (HDInsight クラスターで使用可能) では、新しいフ�
 Data Lake Store 内のデータには、 `adl://<data_lake_store_name>.azuredatalakestore.net`を使用してアクセスすることができます。 Data Lake Store 内のデータへのアクセス方法の詳細については、「 [格納されたデータのプロパティを表示する](data-lake-store-get-started-portal.md#properties)
 
 ## <a name="how-do-i-start-using-azure-data-lake-store"></a>Azure Data Lake Store の使用を開始するにはどうすればよいですか?
-Azure ポータルを使用して Data Lake Store をプロビジョニングする方法については、「 [Azure ポータルを使用してData Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 Azure Data Lake をプロビジョニングしたら、ビッグ データ ソリューション (Azure Data Lake Analytics、または Azure HDInsight と Data Lake Store の組み合わせ) を使用する方法を確認できます。 Azure Data Lake Store のアカウントを作成し操作 (データのアップロードやデータのダウンロードなど) を実行するための .NET アプリケーションを作成することもできます。
+Azure Portal を使用して Data Lake Store をプロビジョニングする方法については、「[Azure Portal を使用してData Lake Store の使用を開始する](data-lake-store-get-started-portal.md)」を参照してください。 Azure Data Lake をプロビジョニングしたら、ビッグ データ ソリューション (Azure Data Lake Analytics、または Azure HDInsight と Data Lake Store の組み合わせ) を使用する方法を確認できます。 Azure Data Lake Store のアカウントを作成し操作 (データのアップロードやデータのダウンロードなど) を実行するための .NET アプリケーションを作成することもできます。
 
 * [Azure Data Lake Analytics の使用を開始する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
@@ -103,5 +101,4 @@ Data Lake Store の一連の機能について紹介するビデオをご覧く�
 * [リレーショナル ソースと Azure Data Lake Store との間で Apache Sqoop を使用してデータを移動する](https://mix.office.com/watch/1butcdjxmu114)
 * [Azure Data Lake Store 用 Azure Data Factory を使用したデータのオーケストレーション](https://mix.office.com/watch/1oa7le7t2u4ka)
 * [Azure Data Lake Store でのデータのセキュリティ保護](https://mix.office.com/watch/1q2mgzh9nn5lx)
-
 

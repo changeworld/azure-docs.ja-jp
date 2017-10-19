@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/14/2017
 ms.author: jingwang
+ms.openlocfilehash: 74e2a57aa933c7025db952fa09de236f5dabb8c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 60641ddfef7846f0e8b5d850e716b2652bf62367
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="copy-data-between-on-premises-and-cloud"></a>オンプレミスとクラウドの間でのデータ コピー
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
 
@@ -218,12 +216,12 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
         "name": "SqlServerLinkedService"
     }
    ```
-2. JSON ペイロードからの機密データを暗号化して、オンプレミスのセルフホステッド統合ランタイムに格納するには、**New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** を実行して、上記の JSON ペイロードを渡します。 この暗号化によって、資格情報がデータ保護 API (DPAPI) を使って暗号化され、ローカルのセルフホステッド統合ランタイム ノードに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "encryptedLinkedService.json") にリダイレクトできます。 
+2. JSON ペイロードからの機微なデータを暗号化して、オンプレミスのセルフホステッド統合ランタイムに格納するには、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** を実行して、上記の JSON ペイロードを渡します。 この暗号化によって、資格情報がデータ保護 API (DPAPI) を使って暗号化され、ローカルのセルフホステッド統合ランタイム ノードに格納されます。 暗号化された資格情報が含まれる出力ペイロードは別の JSON ファイル (この場合は "encryptedLinkedService.json") にリダイレクトできます。 
 
     **&lt;integration runtime name&gt;** を実際の統合ランタイムの名前に置き換えてからコマンドを実行してください。
 
    ```powershell
-   New-AzureRmDataFactoryV2LinkedServiceEncryptCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
+   New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential -DataFactoryName $dataFactoryName -ResourceGroupName $ResourceGroupName -IntegrationRuntimeName <integration runtime name> -File ".\SQLServerLinkedService.json" > encryptedSQLServerLinkedService.json
    ```
 
 3. 前の手順で作成した JSON を使って次のコマンドを実行し、**SqlServerLinkedService** を作成します。
