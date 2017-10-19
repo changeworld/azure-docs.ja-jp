@@ -250,7 +250,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * オプション 1: [セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm">オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる</a>
+### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる
 
 #### <a name="requirements"></a>必要条件
 
