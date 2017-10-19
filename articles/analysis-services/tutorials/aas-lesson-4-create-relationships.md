@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 05/26/2017
+ms.date: 09/20/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: d79af3915c718a79f60e5f589527eb4c2ae8b367
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 70812790348bbf525c7ed6299c656f7dd8e83dff
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="lesson-4-create-relationships"></a>レッスン 4: リレーションシップを作成する
 
@@ -34,7 +33,10 @@ ms.lasthandoff: 06/03/2017
 このトピックは、表形式モデルのチュートリアルの一部であり、チュートリアルでの順番に従って実行する必要があります。 このレッスンのタスクを実行する前に、前のレッスン「[レッスン 3: 日付テーブルとしてマークする](../tutorials/aas-lesson-3-mark-as-date-table.md)」を完了する必要があります。 
   
 ## <a name="review-existing-relationships-and-add-new-relationships"></a>既存のリレーションシップの確認と新しいリレーションシップの追加  
-Get Data を使用してデータをインポートすると、AdventureWorksDW2014 データベースから 7 つのテーブルが取得されました。 通常、リレーショナル ソースからデータをインポートする際には、既存のリレーションシップがデータと共に自動的にインポートされます。 ただし、モデルのオーサリングを続行する前に、テーブル間のリレーションシップが正しく作成されたかどうかを確認する必要があります。 このチュートリアルでは、3 つの新しいリレーションシップを追加します。  
+Get Data を使用してデータをインポートすると、AdventureWorksDW2014 データベースから 7 つのテーブルが取得されました。 通常、リレーショナル ソースからデータをインポートする際には、既存のリレーションシップがデータと共に自動的にインポートされます。 データ モデル内のリレーションシップを Get Data で自動的に作成するためには、データ ソースにテーブル間のリレーションシップが存在していることが必要です。
+
+モデルのオーサリングを続行する前に、テーブル間のリレーションシップが正しく作成されたかどうかを確認する必要があります。 また、このチュートリアルでは、3 つの新しいリレーションシップを追加します。  
+
   
 #### <a name="to-review-existing-relationships"></a>既存のリレーションシップを確認するには  
   
@@ -44,7 +46,10 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
     
     ![aas-lesson4-diagram](../tutorials/media/aas-lesson4-diagram.png)
   
-    モデル デザイナーの右下隅にあるミニマップ コントロールを使用して、できるだけ多くのテーブルを含めるようにします。 テーブルをクリック、ドラッグして別の場所に移動したり、テーブル同士を近づけたり、特定の順序に並べたりすることができます。 テーブルの移動は、テーブル間の既存のリレーションシップには影響しません。 特定のテーブル内のすべての列を表示するには、テーブルの端をクリック、ドラッグして縮小または拡張します。  
+    > [!NOTE]
+    > テーブル間のリレーションシップがまったく表示されない場合、おそらくそのデータソースには、それらのテーブル間のリレーションシップが存在しません。
+
+    モデル デザイナーの右下隅にあるミニマップ コントロールを使用して、できるだけ多くのテーブルを含めるようにします。 テーブルをクリック、ドラッグして別の場所に移動したり、テーブル同士を近づけたり、特定の順序に並べたりすることができます。 テーブルの移動は、テーブル間のリレーションシップには影響しません。 特定のテーブル内のすべての列を表示するには、テーブルの端をクリック、ドラッグして縮小または拡張します。  
   
 2.  **DimCustomer** テーブルと **DimGeography** テーブル間の実線をクリックします。 これら 2 つのテーブル間の実線は、このリレーションシップがアクティブであることを示しています。つまり、DAX の数式を計算するときに既定で使用されるということです。  
   
@@ -63,7 +68,7 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
     |あり|**FactInternetSales [CustomerKey]**|**DimCustomer [CustomerKey]**|  
     |あり|**FactInternetSales [ProductKey]**|**DimProduct [ProductKey]**|  
   
-    リレーションシップのいずれかが存在しない場合は、モデルに DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory、FactInternetSales の各表が含まれていることを確認します。 同じデータ ソース接続のテーブルが別々の時期にインポートされた場合、これらのテーブル間のリレーションシップは作成されないので手動で作成する必要があります。  
+    リレーションシップのいずれかが存在しない場合は、モデルに DimCustomer、DimDate、DimGeography、DimProduct、DimProductCategory、DimProductSubcategory、FactInternetSales の各表が含まれていることを確認します。 同じデータソース接続のテーブルが別々の時期にインポートされた場合、これらのテーブル間のリレーションシップは作成されないので手動で作成する必要があります。 リレーションシップがまったく表示されない場合、そのデータソースにはリレーションシップが存在しません。 それらをデータ モデルに手動で作成することができます。
 
 ### <a name="take-a-closer-look"></a>詳細を見る
 ダイアグラム ビューでは、テーブル間のリレーションシップを示す実線部分に矢印、アスタリスク、数字があります。
@@ -102,4 +107,3 @@ Get Data を使用してデータをインポートすると、AdventureWorksDW2
   
   
   
-

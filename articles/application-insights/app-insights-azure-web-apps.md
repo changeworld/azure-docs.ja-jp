@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 05/05/2017
 ms.author: bwren
+ms.openlocfilehash: dd6c2a1acdcd3b933bed536fd2bb1d83e1e593c0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 110a4d26e90f46e823a3e1c9ebece3360fbdf0c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-azure-web-app-performance"></a>Azure Web アプリのパフォーマンスの監視
 [Azure Portal](https://portal.azure.com) では、[Azure Web アプリ](../app-service/app-service-web-overview.md)のアプリケーション パフォーマンス監視を設定できます。 [Azure Application Insights](app-insights-overview.md) は、アクティビティに関するテレメトリを Application Insights サービスに送信するようにアプリをインストルメント化します。これにより、Application Insights サービスでテレメトリを保存および分析できるようになります。 Application Insights では、メトリック グラフや検索ツールを使用して、問題の診断、パフォーマンスの改善、使用状況の評価などを行うことができます。
@@ -50,7 +49,7 @@ Azure で Web アプリを既に実行している場合、要求率とエラー
     
     値: `true`
    * 設定を **[保存]** し、アプリを **[再起動]** します。
-3. **アプリを監視**し、  [データを探索](#explore-the-data)します。
+3. **アプリを監視**し、  [データを検索](#explore-the-data)します。
 
 後で必要に応じて、Application Insights でアプリを構築できます。
 
@@ -120,5 +119,4 @@ Application Insights では、アプリへの SDK のインストールによっ
 * 操作イベントが発生したり、メトリックがしきい値を超えたりするたびに、[アラート通知を受け取り](../monitoring-and-diagnostics/insights-receive-alert-notifications.md)ます。
 * [JavaScript のアプリや Web ページに Application Insights](app-insights-javascript.md) を使用して、Web ページを参照しているブラウザーからクライアント テレメトリを取得します。
 * [可用性 Web テストを設定](app-insights-monitor-web-app-availability.md) して、サイトがダウンした場合にアラートを送信するようにします。
-
 

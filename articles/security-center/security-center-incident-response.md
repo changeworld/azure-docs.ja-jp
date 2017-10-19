@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
 ms.openlocfilehash: 6cd6c822eb255893feac2536d7bae034380094b2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-azure-security-center-for-an-incident-response"></a>Azure Security Center を活用したインシデント対応
 多くの組織は、攻撃を受けた後にのみセキュリティ インシデントに対応する方法を学習します。 コストを削減し、被害を抑えるためには、攻撃を受ける前にインシデント対応計画を整えておくことが重要です。 Azure Security Center は、インシデント対応のさまざまな段階で利用できます。
@@ -83,7 +83,7 @@ Judy は Azure Portal にサインインし、Security Center コンソールで
    > 前の図からわかるように、このシナリオでは、Judy は [Malicious SQL activity (悪意のある SQL アクティビティ)] の警告に関する評価を行います。
    >
    >
-2. クリックして、**悪意のある SQL アクティビティ**アラートを生成し、攻撃されるリソースを確認、**悪意のある SQL アクティビティ**ブレード:![インシデントの詳細](./media/security-center-incident-response/security-center-incident-response-fig5.png)
+2. **[Malicious SQL activity]\(悪意のある SQL アクティビティ\)** アラートをクリックし、**[Malicious SQL activity]\(悪意のある SQL アクティビティ\)** ブレードで攻撃されたリソースを確認します。![インシデントの詳細](./media/security-center-incident-response/security-center-incident-response-fig5.png)
 
     このブレードで Judy は、攻撃されたリソースについて、この攻撃が行われた回数と攻撃が検出された時間を書き留めることができます。
 3. **[攻撃されたリソース]** をクリックし、この攻撃に関する詳しい情報を取得します。

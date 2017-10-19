@@ -15,14 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: anithaa
 ms.custom: 
+ms.openlocfilehash: 0a0fe6f0e353e33cec80a9e06a61e772931cdea6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: e2359bc6002bd5c823467a33a4660ebccd116374
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="virtual-network-service-endpoints-preview"></a>仮想ネットワークのサービス エンドポイント (プレビュー)
 
 仮想ネットワーク (VNet) のサービス エンドポイントは、直接接続によって仮想ネットワークのプライベート アドレス空間を拡張し、VNet の ID を Azure サービスに提供します。 エンドポイントを使用するとこで、重要な Azure サービス リソースへのアクセスを仮想ネットワークのみに限定することができます。 VNet から Azure サービスへのトラフィックは常に、Microsoft Azure のバックボーン ネットワーク上に残ります。
@@ -57,8 +55,11 @@ ms.lasthandoff: 09/26/2017
 
 - 仮想ネットワークのサービス エンドポイントは、仮想ネットワークの ID を Azure サービスに提供します。 仮想ネットワークでサービス エンドポイントが有効になったら、Azure サービス リソースに仮想ネットワーク ルールを追加することで、このリソースへのアクセスを仮想ネットワークに限定することができます。
 - 現在、仮想ネットワークからの Azure サービス トラフィックは、パブリック IP アドレスを発信元 IP アドレスとして使用します。 サービス エンドポイントを使用すると、サービス トラフィックは、仮想ネットワークから Azure サービスにアクセスするときに、仮想ネットワークのプライベート アドレスを接続元 IP アドレスとして使用するよう切り替えます。 この切り替えにより、IP ファイアウォールで使用される予約済みのパブリック IP アドレスを使用することなく、サービスにアクセスすることができます。
-- オンプレミスから Azure サービスへのアクセスの保護: 既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute 回線からの NAT IP アドレスを許可する必要があります。 NAT IP アドレスは、Azure サービス リソースの IP ファイアウォールの構成を通じて追加できます。
-- ExpressRoute: オンプレミスから [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用している場合、各 ExpressRoute 回線は 2 つの NAT IP アドレスを使用します。これは、トラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに Azure サービス トラフィックに適用されます。 サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこの 2 つの IP アドレスを許可する必要があります。 ExpressRoute 回線の IP アドレスを確認するには、Azure Portal から [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。
+- __オンプレミスから Azure サービスへのアクセスの保護__:
+
+  既定では、仮想ネットワークからのアクセスに限定された Azure サービス リソースは、オンプレミスのネットワークからはアクセスできません。 オンプレミスからのトラフィックを許可する場合は、オンプレミスまたは ExpressRoute からのパブリック IP アドレス (通常は NAT) を許可する必要もあります。 これらの IP アドレスは、Azure サービス リソースの IP ファイアウォール構成を通じて追加できます。
+
+  ExpressRoute: オンプレミスから [ExpressRoute](../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用している場合、パブリック ピアリングのために各 ExpressRoute 回線で 2 つの NAT IP アドレスが使用されます。これは、トラフィックが Microsoft Azure のネットワーク バックボーンに入ったときに Azure サービス トラフィックに適用されます。 サービス リソースへのアクセスを許可するには、リソースの IP ファイアウォール設定でこの 2 つのパブリック IP アドレスを許可する必要があります。 ExpressRoute 回線の IP アドレスを確認するには、Azure Portal 経由で [ExpressRoute のサポート チケットを開いて](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)ください。ExpressRoute パブリック ピアリングの NAT の詳細については、[こちら](../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering)を参照してください。
 
 ![Azure サービスへのアクセスを仮想ネットワークに限定する](./media/virtual-network-service-endpoints-overview/VNet_Service_Endpoints_Overview.png)
 
@@ -76,9 +77,9 @@ ms.lasthandoff: 09/26/2017
 
   IP アドレスの切り替えが影響するのは、仮想ネットワークからのサービス トラフィックのみです。 アドレス指定されるその他のトラフィックへの影響や、仮想マシンに割り当てられたパブリック IPv4 アドレスからの影響はありません。 Azure サービスについては、Azure のパブリック IP アドレスを使用する既存のファイアウォール ルールがある場合、これらのルールは仮想ネットワークのプライベート アドレスへの切り替え時に停止します。
 - サービス エンドポイントを使用しても、Azure サービスの DNS エントリは変わらず、引き続き Azure サービスに割り当てられているパブリック IP アドレスに解決されます。
-- ネットワーク セキュリティ グループでのサービス エンドポイントの使用:
-  - インターネットへの送信インターネット トラフィックを許可します。そのため、仮想ネットワークから Azure サービスのパブリック IP アドレスへのトラフィックも許可します。
-  - ネットワーク セキュリティ グループで[サービス タグ](security-overview.md#service-tags)を使用することで、Azure サービスのアドレスを除くパブリック IP アドレスへのトラフィックを拒否することができます。 ネットワーク セキュリティ グループの規則でサポートされている Azure サービスを送信先として指定できます。 各タグの基になる IP アドレスのメンテナンスは、Azure によって提供されます。
+- ネットワーク セキュリティ グループ (NSG) でのサービス エンドポイントの使用:
+  - 既定では、NSG は送信インターネット トラフィックを許可するので、VNet から Azure サービスへのトラフィックも許可します。 これは、サービス エンドポイントを使用しても変わりません。 
+  - すべての送信インターネット トラフィックを拒否して特定の Azure サービスへのトラフィックだけを許可する場合は、NSG の __“Azure サービス タグ”__ を使用します。 NSG のルールで、サポートされている Azure サービスを接続先として指定することができ、各タグの基になる IP アドレスのメンテナンスは Azure によって提供されます。 詳細については、[NSG の Azure サービス タグ](https://aka.ms/servicetags)に関するページをご覧ください。 
 
 ### <a name="scenarios"></a>シナリオ
 
@@ -89,7 +90,7 @@ ms.lasthandoff: 09/26/2017
 ### <a name="logging-and-troubleshooting"></a>ロギングおよびトラブルシューティング
 
 特定のサービスに対してサービス エンドポイントを構成したら、そのサービス エンドポイントのルートが有効であることを次の方法で検証します。 
-
+ 
 - サービスの診断で任意のサービス要求の発信元 IP アドレスを検証します。 サービス エンドポイントを使った新しい要求では、仮想ネットワークから要求を行うクライアントに割り当てられている、その要求の接続元 IP アドレスが仮想ネットワークのプライベート IP アドレスとして表示されます。 エンドポイントを使用しない場合、このアドレスは Azure のパブリック IP アドレスになります。
 - サブネット内の任意のネットワーク インターフェイス上に有効なルートを表示します。 サービスへのルートは次のことを行います。
   - 各サービスのアドレス プレフィックス範囲へのより詳細な既定のルートを示します。
@@ -121,5 +122,4 @@ Azure サービス リソース (Azure Storage アカウントなど) の場合�
 - [Azure Storage アカウントを仮想ネットワークに限定する](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [Azure SQL Database を仮想ネットワークに限定する](../sql-database/sql-database-vnet-service-endpoint-rule-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)方法を学習する
 - [仮想ネットワーク内の Azure サービス統合](virtual-network-for-azure-services.md)について学習する
-
 

@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/13/2017
+ms.date: 10/04/2017
 ms.author: alkohli
+ms.openlocfilehash: 51db9539451afafe7eddaaeef0e02328431611de
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 22bb4a32f006d7e49356743c2a87eb622a61d18e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>StorSimple 8000 シリーズ デバイスの StorSimple デバイス マネージャー サービスをデプロイする
 
@@ -60,17 +59,22 @@ StorSimple デバイス マネージャー サービスを作成するには、�
 * **[サブスクリプション]** – サービスに関連付けられている課金サブスクリプション。
 
 ## <a name="move-a-service-to-azure-portal"></a>サービスを Azure Portal に移動する
-StorSimple 8000 シリーズは、Azure Portal で管理できるようになりました。 既存のサービスで StorSimple デバイスを管理している場合は、ご利用のサービスを Azure Portal に移行することをお勧めします。 StorSimple Manager サービス用の Azure クラシック ポータルは、2017 年 9 月 30 日以降は利用できません。
+StorSimple 8000 シリーズは、Azure Portal で管理できるようになりました。 既存のサービスで StorSimple デバイスを管理している場合は、ご利用のサービスを Azure Portal に移行することをお勧めします。 StorSimple Manager サービスの Azure クラシック ポータルは、2017 年 9 月 30 日以降はサポートされません。 新しい Azure ポータルに移行する場合は、「[移行に関する考慮事項](#considerations-for-transition)」をご覧ください。 
 
-Azure Portal に移行するオプションは、段階的に提供されます。 Azure Portal に移行するオプションが表示されておらず、「[Considerations for transition (移行に関する考慮事項)](#considerations-for-transition)」に記載された移行の影響を確認したうえで移行を希望する場合は、[要求を送信](https://aka.ms/ss8000-cx-signup)できます。
+> [!NOTE]
+> 2017 年 10 月 5 日以降は、従来の StorSimple デバイス マネージャーは自動的に新しい Azure ポータルに移行されます。 これは段階的なロールアウトです。移行に関する更新情報は、電子メールおよびポータル通知を使用してお届けする予定です。 ご質問があれば、「[FAQ - Azure ポータルに移行する](storsimple-8000-move-azure-portal-faq.md)」をご覧ください。
 
 ### <a name="considerations-for-transition"></a>移行に関する考慮事項
 
 サービスを移動する前に、新しい Azure Portal に移行する影響を調査してください。
 
+> [!NOTE]
+> 新しい Azure ポータルに移行した後は、既存の Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 Azure Resource Manager SDK からデバイスを管理するには、スクリプトを更新します。 詳細については、「[Azure Resource Manager SDK ベースのスクリプトを使用して StorSimple デバイスを管理する](storsimple-8000-automation-azurerm-scripts.md)」をご覧ください。
+> 新しい Azure ポータルでは、3.0 以降の更新プログラムを実行しているデバイスがサポートされます。 デバイスが最新でない場合は、できるだけ早く Update 5 を適用することを強くお勧めします。
+
 #### <a name="before-you-transition"></a>移行前
 
-* デバイスが Update 3.0 以降を実行している必要があります。 デバイスでより古いバージョンが実行されている場合は、最新の更新プログラムをインストールします。 詳細については、「[Update 4 をインストールする](storsimple-8000-install-update-4.md)」を参照してください。 StorSimple Cloud Appliance (8010/8020) を使用している場合は、Update 4.0 で新しいクラウド アプライアンスを作成します。 
+* デバイスが Update 3.0 以降を実行している必要があります。 デバイスでより古いバージョンが実行されている場合は、最新の更新プログラムをインストールします。 詳細については、「[Update 5 のインストール](storsimple-8000-install-update-5.md)」をご覧ください。 StorSimple Cloud Appliance (8010/8020) を使用している場合は、クラウド アプライアンスを更新できません。 最新バージョンのソフトウェアを使用して、Update 5.0 で新しいクラウド アプライアンスを作成してから、作成した新しいクラウド アプライアンスにフェールオーバーします。
 
 * いったん新しい Azure Portal に移行したら、Azure クラシック ポータルを使用して StorSimple デバイスを管理することはできません。
 
@@ -88,7 +92,7 @@ Azure Portal に移行するオプションは、段階的に提供されます�
 
 * クラシック ポータルからはデバイスを管理できなくなります。
 
-* 既存の Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 Azure Resource Manager からデバイスを管理するには、スクリプトを更新します。
+* 既存の Azure サービス管理 (ASM) の PowerShell コマンドレットはサポートされません。 Azure Resource Manager からデバイスを管理するには、スクリプトを更新します。 Resource Manager SDK を使用したサンプル スクリプトについては、[storsimpledevicemgmttools github](https://github.com/anoobbacker/storsimpledevicemgmttools) を参照してください。
 
 * サービスとデバイスの設定は保持されます。 ボリュームとバックアップもすべて Azure Portal に移行されます。
 
@@ -96,20 +100,20 @@ Azure Portal に移行するオプションは、段階的に提供されます�
 
 Azure Portal にサービスを移行するには、次の手順を実行します。
 
-1. クラシック ポータルで既存の StorSimple Manager サービスに移動します。
+1. 新しい Azure ポータルで既存の StorSimple Manager サービスに移動します。
+    ![[More services]\(その他のサービス\)](./media/storsimple-8000-manage-service/service-browse01.png) ![[Select device manager]\(デバイス マネージャーの選択\)](./media/storsimple-8000-manage-service/service-browse02.png)
 
 2. Azure Portal で StorSimple デバイス マネージャー サービスを使用できるようになったことを伝える通知が表示されます。 Azure Portal では、このサービスは StorSimple デバイス マネージャー サービスと呼ばれます。
-
     ![移行の通知](./media/storsimple-8000-manage-service/service-transition1.jpg)
-
+    
     1. 移行の影響をすべて調査したことを確認します。
     2. クラシック ポータルから移動される StorSimple デバイス マネージャーの一覧を確認します。
 
 3. **[移行]** をクリックします。 移行が開始されます。この処理は数分かかります。
 
-移行が完了すると、Azure Portal で、StorSimple デバイス マネージャー サービスからデバイスを管理できます。
+移行が完了すると、Azure Portal で、StorSimple デバイス マネージャー サービスからデバイスを管理できます。 Azure ポータルに移行するオプションが表示されていなくても移行したい場合は、[要求を送信](https://aka.ms/ss8000-cx-signup)することができます。
 
-Azure Portal では、Update 3.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 次の表は、クラシック ポータルから Azure Portal に移行した後に、Update 3.0 より前のバージョンを実行しているデバイスでサポートされる操作をまとめたものです。
+Azure Portal では、Update 3.0 以降を実行している StorSimple デバイスのみがサポートされます。 古いバージョンを実行しているデバイスのサポートは限定的です。 Azure Portal に移行した後は、次の表を使用して、Update 3.0 以前のバージョンを実行しているデバイス上でどの操作がサポートされているかを把握してください。
 
 | 操作                                                                                                                       | サポートされています      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
@@ -247,16 +251,18 @@ StorSimple Manager サービスに登録されているデバイスが複数あ�
 
 デバイスのサービス データ暗号化を更新するには、次の手順を実行します。
 
-#### <a name="to-update-the-service-data-encryption-key"></a>サービス データ暗号化キーを更新するには
+#### <a name="to-update-the-service-data-encryption-key-on-physical-devices"></a>物理デバイス上のサービス データ暗号化キーを更新するには
 1. StorSimple 用 Windows PowerShell を使用して、コンソールに接続します。 オプション 1 を選択して、フル アクセスでログオンします。
-2. コマンド プロンプトに、次のコマンドを入力します。
-   
-    `Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`
+2. コマンド プロンプトに「`Invoke-HcsmServiceDataEncryptionKeyChange – ServiceDataEncryptionKey`」と入力します。
 3. 「 [手順 2. StorSimple 用 Windows PowerShell を使用してサービス データ暗号化キーの変更を開始する](#to-initiate-the-service-data-encryption-key-change)」で取得したサービス データ暗号化キーを指定します。
 
+#### <a name="to-update-the-service-data-encryption-key-on-all-the-80108020-cloud-appliances"></a>すべての 8010/8020 クラウド アプライアンス上のサービス データ暗号化キーを更新するには
+1. [Update-CloudApplianceServiceEncryptionKey.ps1](https://github.com/anoobbacker/storsimpledevicemgmttools/blob/master/Update-CloudApplianceServiceEncryptionKey.ps1) PowerShell スクリプトをダウンロードして設定します。 
+2. PowerShell を開き、コマンド プロンプトに次のように入力します。`Update-CloudApplianceServiceEncryptionKey.ps1 -SubscriptionId [subscription] -TenantId [tenantid] -ResourceGroupName [resource group] -ManagerName [device manager]`
+
+このスクリプトは、デバイス マネージャーにあるすべての 8010/8020 クラウド アプライアンスで、サービス データ暗号化キーが設定されていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple デプロイのプロセスの詳細](storsimple-8000-deployment-walkthrough-u2.md)
 * [StorSimple ストレージ アカウントの管理の詳細](storsimple-8000-manage-storage-accounts.md)
 * [StorSimple デバイス マネージャー サービスを使用した StorSimple デバイスの管理方法](storsimple-8000-manager-service-administration.md)
-

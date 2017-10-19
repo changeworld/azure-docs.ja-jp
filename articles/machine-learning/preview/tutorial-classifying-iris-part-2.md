@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
+ms.openlocfilehash: 273b94e9a53e36d7e8c699d3b7fa4305b881a001
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: f1f270b95a60e847ce7d29c2d7d60c57891924cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="classifying-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
@@ -38,6 +36,10 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 ## <a name="prerequisites"></a>前提条件
 このチュートリアル シリーズのパート 1 を完了している必要があります。 このチュートリアルの手順を始める前に、[データの準備に関するチュートリアル](tutorial-classifying-iris-part-1.md)に従って Azure Machine Learning リソースを作成し、Azure Machine Learning Workbench アプリケーションをインストールしてください。
+
+必要に応じて、ローカルの Docker コンテナーに対してスクリプトを実行して実験することができます。 そのためには、ご使用の Windows マシンまたは macOS マシンに Docker エンジン (Community Edition で十分です) がインストールされ、ローカルで起動されている必要があります。 [Docker のインストール手順](https://docs.docker.com/engine/installation/)の詳細を確認してください。
+
+リモート Azure VM または HDInsight Spark クラスターの Docker コンテナーで実行するディスパッチ用のスクリプトで実験する場合は、[Ubuntu ベースの Azure データ サイエンス仮想マシンまたは HDI クラスターの作成手順](how-to-create-dsvm-hdi.md)に関するページに従ってください。
 
 ## <a name="review-irissklearnpy-and-configuration-files"></a>iris_sklearn.py と構成ファイルを確認する
 1. **Azure Machine Learning Workbench** アプリケーションを起動し、チュートリアル シリーズの前のパートで作成した **myIris** プロジェクトを開きます。
@@ -102,7 +104,7 @@ Azure Machine Learning サービス (プレビュー) は、データ サイエ�
 
 8. [ジョブ] パネルで、ジョブの状態テキストの **[完了]** という語をクリックします。 ポップアップ ウィンドウが開いて、実行中のスクリプトの標準出力 (stdout) テキストが表示されます。 stdout テキストを閉じるには、ポップアップの右上の **[X]** ボタンをクリックします。
 
-9. [ジョブ] パネルの同じジョブの状態で、**[完了]** 状態と開始時刻のすぐ上に表示されている青色のテキスト **iris_sklearn.py [1]** をクリックします。 **[Run Properties]\(実行プロパティ\)** ページが開き、特定の実行のプロパティ情報、**出力**ファイル、**視覚化**、**ログ**が表示されます。 
+9. [ジョブ] パネルの同じジョブの状態で、**[完了]** 状態と開始時刻のすぐ上に表示されている青色のテキスト **iris_sklearn.py [n]** (_n_ は実行回数) をクリックします。 **[Run Properties]\(実行プロパティ\)** ページが開き、特定の実行のプロパティ情報、**出力**ファイル、**視覚化**、**ログ**が表示されます。 
 
    実行が完了すると、ポップアップ ウィンドウに次の結果が表示されます。
 
@@ -367,4 +369,3 @@ Azure ML では、Docker などの実行環境を簡単に追加構成し、そ�
 
 > [!div class="nextstepaction"]
 > [モデルのデプロイ](tutorial-classifying-iris-part-3.md)
-

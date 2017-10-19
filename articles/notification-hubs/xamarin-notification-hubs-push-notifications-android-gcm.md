@@ -12,20 +12,19 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin-android
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 06/29/2016
+ms.date: 09/25/2017
 ms.author: yuaxu
-translationtype: Human Translation
-ms.sourcegitcommit: cafe4f2d9ae9a79fd2e27b8734bda43bb774eeb2
-ms.openlocfilehash: e0ef1b006a2b202c08a71caaff4ef4d763d50d0a
-
-
+ms.openlocfilehash: f9fef96b71e0db7b15ff5208e9bd1a0b4ecf7211
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-notification-hubs-with-xamarin-for-android"></a>Xamarin for Android での Notification Hubs の使用
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
 
 ## <a name="overview"></a>概要
-このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。
-Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
+このチュートリアルでは、Azure Notification Hubs を使用して Xamarin.Android アプリケーションにプッシュ通知を送信する方法について説明します。 Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空の Xamarin.Android アプリケーションを作成します。 完了すると、通知ハブを使用して、アプリケーションを実行するすべてのデバイスにプッシュ通知をブロードキャストできるようになります。 完成したコードは、[NotificationHubs アプリケーション][GitHub] サンプルで参照できます。
 
 このチュートリアルでは、Notification Hubs を使用した簡単なブロードキャスト シナリオのデモンストレーションを行います。
 
@@ -55,9 +54,9 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 ## <a name="configure-your-notification-hub"></a>通知ハブを構成する
 [!INCLUDE [notification-hubs-portal-create-new-hub](../../includes/notification-hubs-portal-create-new-hub.md)]
 
-<ol start="7">
+<ol start="5">
 
-<li><p>上部にある <b>[構成]</b> タブをクリックし、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> をクリックします。</p>
+<li><p>上部にある <b>[構成]</b> タブを選択し、前のセクションで取得した <b>API キー</b>値を入力して、<b>[保存]</b> を選択します。</p>
 </li>
 </ol>
 &emsp;&emsp;![](./media/notification-hubs-android-get-started/notification-hub-configure-android.png)
@@ -65,18 +64,18 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
 これで、通知ハブが GCM と連動するように構成されました。接続文字列により、アプリが通知を受信すると共に、プッシュ通知を送信するように登録されます。
 
 ## <a name="connect-your-app-to-the-notification-hub"></a>通知ハブにアプリケーションを接続する
-### <a name="create-a-new-project"></a>新しいプロジェクトを作成する
-1. Xamarin Studio で **[New Solution (新しいソリューション)]** をクリックし、**[Android App (Android アプリ)]** をクリックして、**[Next (次へ)]** をクリックします。
+最初に、新しいプロジェクトを作成します。
+1. Xamarin Studio で **[New Solution]\(新しいソリューション\)** > **[Android App]\(Android アプリ\)** を選択した後、**[Next]\(次へ\)** を選択します。
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project1.png)
 
-2. **アプリケーション名**と**識別子**を入力します。 サポートする**ターゲット プラットフォーム**をクリックし、**[Next (次へ)]**、**[Create (作成)]** の順にクリックします。
+2. **アプリケーション名**と**識別子**を入力します。 サポートする**ターゲット プラットフォーム**を選択し、**[Next]\(次へ\)**、**[Create]\(作成\)** の順に選択します。
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub-create-xamarin-android-project2.png)
 
     これにより、新しい Android プロジェクトが作成されます。
 
-1. [ソリューション] ビューで新しいプロジェクトを右クリックして **[オプション]**を選択し、プロジェクトのプロパティを開きます。 **[Build (ビルド)]** セクションで **[Android Application (Android アプリケーション)]** 項目を選択します。
+3. [ソリューション] ビューで新しいプロジェクトを右クリックして **[オプション]**を選択し、プロジェクトのプロパティを開きます。 **[Build (ビルド)]** セクションで **[Android Application (Android アプリケーション)]** 項目を選択します。
    
     **パッケージ名** の先頭の文字は、小文字にしてください。
    
@@ -86,10 +85,9 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
    > 
    
       ![](./media/partner-xamarin-notification-hubs-android-get-started/notification-hub--xamarin-android-app-options.png)
-2. 必要に応じて、 **[Minimum Android version]** の API レベルを変更します。
-3. 必要に応じて、 **[Target Android version]** の API バージョンを変更します (API レベル 8 以上にする必要があります)。
-
-**[OK]** をクリックして、[Project Options] ダイアログを閉じます。
+4. 必要に応じて、 **[Minimum Android version]** の API レベルを変更します。
+5. 必要に応じて、 **[Target Android version]** の API バージョンを変更します (API レベル 8 以上にする必要があります)。
+6. **[OK]** を選択して、[Project Options]\(プロジェクト オプション\) ダイアログを閉じます。
 
 ### <a name="add-the-required-components-to-your-project"></a>プロジェクトに必要なコンポーネントを追加します。
 Xamarin コンポーネント ストアから入手できる Google Cloud Messaging クライアントにより、Xamarin.Android でプッシュ通知をサポートするプロセスが効率化されます。
@@ -102,25 +100,26 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 1. Android アプリケーションと通知ハブについて次の情報を収集します。
    
    * **GoogleProjectNumber**: このプロジェクト番号の値は、Google 開発者ポータルでアプリの概要から取得します。 この値は、以前ポータルでアプリを作成したときにメモしています。
-   * **Listen connection string**: [DefaultFullSharedAccessSignature]のダッシュボードで **[接続文字列の表示]** をクリックします。 この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
+   * **接続文字列のリッスン**: [DefaultFullSharedAccessSignature]のダッシュボードで **[接続文字列の表示]** をクリックします。 この値として接続文字列 *DefaultListenSharedAccessSignature* をコピーします。
    * **Hub name**: これは [DefaultFullSharedAccessSignature]から取得できるハブの名前です。 たとえば、 *mynotificationhub2*です。
      
-     Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
+2. Xamarin プロジェクトの **Constants.cs** クラスを作成し、このクラスに次の定数値を定義します。 プレースホルダーを実際の値に置き換えます。
      
-       public static class Constants   {
+        public static class Constants
+        {
      
            public const string SenderID = "<GoogleProjectNumber>"; // Google API Project Number
            public const string ListenConnectionString = "<Listen connection string>";
            public const string NotificationHubName = "<hub name>";
-       }
-2. 次の using ステートメントを **MainActivity.cs**に追加します。
+        }
+3. 次の using ステートメントを **MainActivity.cs**に追加します。
    
         using Android.Util;
         using Gcm.Client;
-3. アプリを実行しているときにアラート ダイアログを表示するために使用する `MainActivity` クラスにインスタンス変数を追加します。
+4. アプリを実行しているときにアラート ダイアログを表示するために使用する `MainActivity` クラスにインスタンス変数を追加します。
    
         public static MainActivity instance;
-4. **MainActivity** クラスで次のメソッドを作成します。
+5. **MainActivity** クラスで次のメソッドを作成します。
    
         private void RegisterWithGCM()
         {
@@ -132,7 +131,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
             Log.Info("MainActivity", "Registering...");
             GcmClient.Register(this, Constants.SenderID);
         }
-5. **MainActivity.cs** の `OnCreate` メソッドで `instance` 変数を初期化し、`RegisterWithGCM` の呼び出しを追加します。
+6. **MainActivity.cs** の `OnCreate` メソッドで `instance` 変数を初期化し、`RegisterWithGCM` の呼び出しを追加します。
    
         protected override void OnCreate (Bundle bundle)
         {
@@ -149,13 +148,13 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
    
             RegisterWithGCM();
         }
-6. 新しい **MyBroadcastReceiver**クラスを作成します。
+7. 新しい **MyBroadcastReceiver**クラスを作成します。
    
    > [!NOTE]
    > 次に **BroadcastReceiver** クラスを一から作成する手順を説明します。 ただし、**MyBroadcastReceiver.cs** の作成方法には、手動の他に [NotificationHubs のサンプル][GitHub]に付属の Xamarin.Android サンプル プロジェクトにある **GcmService.cs** ファイルを参照して迅速に作成できる方法があります。 **GcmService.cs** を複製してクラス名を変更する方法も利用できます。
    > 
    > 
-7. 次の using ステートメントを、(前の追加したコンポーネントとアセンブリを参照する) **MyBroadcastReceiver.cs** に追加します。
+8. 次の using ステートメントを、(前の追加したコンポーネントとアセンブリを参照する) **MyBroadcastReceiver.cs** に追加します。
    
         using System.Collections.Generic;
         using System.Text;
@@ -164,7 +163,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
         using Android.Util;
         using Gcm.Client;
         using WindowsAzure.Messaging;
-8. **MyBroadcastReceiver.cs** で、**using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
+9. **MyBroadcastReceiver.cs** で、**using** ステートメントと **namespace** 宣言の間に次のアクセス許可要求を追加します。
    
         [assembly: Permission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
         [assembly: UsesPermission(Name = "@PACKAGE_NAME@.permission.C2D_MESSAGE")]
@@ -174,7 +173,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
         [assembly: UsesPermission(Name = "android.permission.GET_ACCOUNTS")]
         [assembly: UsesPermission(Name = "android.permission.INTERNET")]
         [assembly: UsesPermission(Name = "android.permission.WAKE_LOCK")]
-9. **MyBroadcastReceiver.cs** で、**MyBroadcastReceiver** クラスを変更して次の内容に合わせます。
+10. **MyBroadcastReceiver.cs** で、**MyBroadcastReceiver** クラスを変更して次の内容に合わせます。
    
         [BroadcastReceiver(Permission=Gcm.Client.Constants.PERMISSION_GCM_INTENTS)]
         [IntentFilter(new string[] { Gcm.Client.Constants.INTENT_FROM_GCM_MESSAGE },
@@ -189,7 +188,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
    
             public const string TAG = "MyBroadcastReceiver-GCM";
         }
-10. **MyBroadcastReceiver.cs** に、**GcmServiceBase** から派生した **PushHandlerService** という名前の別のクラスを追加します。 **Service** 属性をクラスに適用するようにしてください。
+11. **MyBroadcastReceiver.cs** に、**GcmServiceBase** から派生した **PushHandlerService** という名前の別のクラスを追加します。 **Service** 属性をクラスに適用するようにしてください。
     
          [Service] // Must use the service tag
          public class PushHandlerService : GcmServiceBase
@@ -202,8 +201,8 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
                  Log.Info(MyBroadcastReceiver.TAG, "PushHandlerService() constructor");
              }
          }
-11. **GcmServiceBase** は、**OnRegistered()** メソッド、**OnUnRegistered()** メソッド、**OnMessage()** メソッド、**OnRecoverableError()** メソッド、および **OnError()** メソッドを実装しています。 **PushHandlerService** クラスの実装で、これらのメソッドを上書きする必要があります。これらのメソッドは、通知ハブとのやり取りに応答して呼び出されます。
-12. **PushHandlerService** の **OnRegistered()** メソッドを次のコードで上書きします。
+12. **GcmServiceBase** は、**OnRegistered()** メソッド、**OnUnRegistered()** メソッド、**OnMessage()** メソッド、**OnRecoverableError()** メソッド、および **OnError()** メソッドを実装しています。 **PushHandlerService** クラスの実装で、これらのメソッドを上書きする必要があります。これらのメソッドは、通知ハブとのやり取りに応答して呼び出されます。
+13. **PushHandlerService** の **OnRegistered()** メソッドを次のコードで上書きします。
     
          protected override void OnRegistered(Context context, string registrationId)
          {
@@ -241,7 +240,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
     > 上の **OnRegistered()** コードでは、特定のメッセージング チャネルを登録するタグを指定できる点に注目してください。
     > 
     > 
-13. **PushHandlerService** の **OnMessage** メソッドを次のコードで上書きします。
+14. **PushHandlerService** の **OnMessage** メソッドを次のコードで上書きします。
     
         protected override void OnMessage(Context context, Intent intent)
         {
@@ -265,7 +264,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
                 createNotification ("Unknown message details", msg.ToString ());
             }
         }
-14. 通知が届いたときにその旨をユーザーに通知するには、次に示す **createNotification** メソッドと **dialogNotify** メソッドを **PushHandlerService** に追加します。
+15. 通知が届いたときにその旨をユーザーに通知するには、次に示す **createNotification** メソッドと **dialogNotify** メソッドを **PushHandlerService** に追加します。
     
     > [!NOTE]
     > Android バージョン 5.0 以降の通知デザインは、以前のバージョンとはかなり異なるものになっています。 Android 5.0 以降でこのテストを行う場合は、通知を受信するためにアプリを実行する必要があります。 詳細については、 [Android の通知](http://go.microsoft.com/fwlink/?LinkId=615880)に関する記事をご覧ください。
@@ -310,7 +309,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
                 alert.Show();
             });
         }
-15. 抽象メンバー **OnUnRegistered()**、**OnRecoverableError()**、および **OnError()** を上書きして、コードがコンパイルされるようにします。
+16. 抽象メンバー **OnUnRegistered()**、**OnRecoverableError()**、および **OnError()** を上書きして、コードがコンパイルされるようにします。
     
         protected override void OnUnRegistered(Context context, string registrationId)
         {
@@ -335,20 +334,20 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 このアプリケーションをエミュレーターで実行する場合は、Google API をサポートしている Android Virtual Device (AVD) を使用してください。
 
 > [!IMPORTANT]
-> プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります  (エミュレーターで、**[Settings (設定)]** に移動して **[Add Account (アカウントの追加)]** をクリックします)。さらに、エミュレーターがインターネットに接続されていることを確認します。
+> プッシュ通知を受信するには、Android Virtual Device で Google アカウントを設定する必要があります (エミュレーターで、**[Settings]\(設定\)** に移動して **[Add Account ]\(アカウントの追加\)** を選択します)。さらに、エミュレーターがインターネットに接続されていることを確認します。
 > 
 > [!NOTE]
 > Android バージョン 5.0 以降の通知デザインは、以前のバージョンとはかなり異なるものになっています。 詳細については、 [Android の通知](http://go.microsoft.com/fwlink/?LinkId=615880)に関する記事をご覧ください。
 > 
 > 
 
-1. **[Tools (ツール)]** で **[Open Android Emulator Manager (Android エミュレーター マネージャーを開く)]** をクリックし、デバイスを選択してから **[Edit (編集)]** をクリックします。
+1. **[Tools]\(ツール\)** で **[Open Android Emulator Manager]\(Android エミュレーター マネージャーを開く\)** を選択し、デバイスを選んで **[Edit]\(編集\)** を選択します。
    
       ![][18]
-2. **[Target (ターゲット)]** で **[Google APIs (Google API)]** を選択し、**[OK]** をクリックします。
+2. **[Target]\(ターゲット\)** で **[Google APIs]\(Google API\)** を選択し、**[OK]** を選択します。
    
       ![][19]
-3. 上部のツール バーで、 **[実行]**をクリックし、アプリを選択します。 これによりエミュレーターが起動し、アプリケーションが実行されます。
+3. 上部のツール バーで、 **[実行]**を選択し、アプリを選択します。 これによりエミュレーターが起動し、アプリケーションが実行されます。
    
    アプリにより、GCM から *registrationId* が取得され、通知ハブに登録されます。
 
@@ -373,7 +372,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 1. Visual C# の新しいコンソール アプリケーションを作成します。
    
       ![][20]
-2. Visual Studio で、**[ツール]**、**[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順にクリックします。
+2. Visual Studio で、**[ツール]** > **[NuGet パッケージ マネージャー]**、**[パッケージ マネージャー コンソール]** の順に選択します。
    
     Visual Studio のパッケージ マネージャー コンソールが表示されます。
 3. パッケージ マネージャー コンソール ウィンドウで **[既定のプロジェクト]** に新しいコンソール アプリケーション プロジェクトを設定した後、そのコンソール ウィンドウから次のコマンドを実行します。
@@ -410,8 +409,8 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 4. スケジュールされた新しいジョブを作成して名前を挿入し、 **[要求時]**をクリックします。
    
       ![][23]
-5. ジョブが作成されたら、ジョブ名をクリックします。 上部のバーにある **[スクリプト]** タブをクリックします。
-6. スケジューラ関数内に次のスクリプトを挿入します。 必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。 **[保存]**をクリックします。
+5. ジョブが作成されたら、ジョブ名を選択します。 上部のバーにある **[スクリプト]** タブを選択します。
+6. スケジューラ関数内に次のスクリプトを挿入します。 必ず、プレースホルダーを、通知ハブの名前と既に取得してある *DefaultFullSharedAccessSignature* の接続文字列に置き換えてください。 **[保存]** を選択します。
    
         var azure = require('azure');
         var notificationHubService = azure.createNotificationHubService('<hub name>', '<connection string>');
@@ -427,7 +426,7 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
             }
           }
         );
-7. 下部のバーにある **[一度だけ実行する]** をクリックします。 トースト通知を受信します。
+7. 下部のバーにある **[一度だけ実行する]** を選択します。 トースト通知を受信します。
 
 ## <a name="next-steps"></a>次のステップ
 この簡単な例では、すべての Android デバイスに通知をブロードキャストします。 特定のユーザーをターゲットとするには、「 [Notification Hubs を使用したユーザーへのプッシュ通知]」のチュートリアルを参照してください。 対象グループごとにユーザーを区分する場合は、「 [Notification Hubs を使用したニュース速報の送信]」を参照してください。 Notification Hubs の使用方法の詳細については、[Notification Hubs のガイダンス]に関するページと[Android 向けの Notification Hubs の手順]に関するページを参照してください。
@@ -477,9 +476,3 @@ Xamarin コンポーネント ストアから入手できる Google Cloud Messag
 [GitHub]: http://go.microsoft.com/fwlink/p/?LinkId=331329
 [Google Cloud Messaging のクライアント コンポーネント]: http://components.xamarin.com/view/GCMClient/
 [Azure Messaging コンポーネント]: http://components.xamarin.com/view/azure-messaging
-
-
-
-<!--HONumber=Jan17_HO1-->
-
-

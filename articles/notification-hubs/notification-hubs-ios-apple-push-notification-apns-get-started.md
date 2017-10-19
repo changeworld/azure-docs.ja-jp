@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 10/03/2016
 ms.author: yuaxu
 ms.openlocfilehash: ab0777f859e80afcd61e371056b44d018c7b7ab9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-ios-with-azure-notification-hubs"></a>Azure Notification Hubs から iOS へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -70,7 +70,7 @@ ms.lasthandoff: 07/11/2017
 <p>これは開発用であるため、<b>[サンドボックス]</b> モードを選択してください。 <b>[実稼働]</b> は、ストアからアプリを購入したユーザーにプッシュ通知を送信する場合にのみ使用します。</p>
 </li>
 </ol>
-&emsp;&emsp;&emsp;&emsp;![Azure ポータルでの APNS を構成します。](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
+&emsp;&emsp;&emsp;&emsp;![Azure Portal で APNS を構成する](./media/notification-hubs-ios-get-started/notification-hubs-apple-config.png)
 
 &emsp;&emsp;&emsp;&emsp;![Configure APNS certification in Azure Portal](./media/notification-hubs-ios-get-started/notification-hubs-apple-config-cert.png)
 
@@ -481,5 +481,4 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-ios-xplat-segmented-apns-push-notification.md
 
 [Local and Push Notification Programming Guide (ローカルおよびプッシュ通知プログラミング ガイド)]: http://developer.apple.com/library/mac/#documentation/NetworkingInternet/Conceptual/RemoteNotificationsPG/Chapters/ApplePushService.html#//apple_ref/doc/uid/TP40008194-CH100-SW1
-
-            [Azure Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

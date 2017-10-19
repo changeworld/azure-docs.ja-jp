@@ -3,7 +3,7 @@ title: "Log Analytics アラートから Azure Automation Runbook を呼び出�
 description: "この記事では、Microsoft OMS Log Analytics アラートから Automation Runbook を呼び出す方法の概要を示します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: 
 ms.assetid: 
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 01/31/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: b4802009a8512cb4dcb49602545c7a31969e0a25
-ms.openlocfilehash: 81cf490eae7f283c0180875cb3a2ed2ffe6333c8
-ms.lasthandoff: 03/29/2017
-
+ms.openlocfilehash: 3370efe7696a6ffe9013886e07392806e008993b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="calling-an-azure-automation-runbook-from-an-oms-log-analytics-alert"></a>OMS Log Analytics アラートから Azure Automation Runbook を呼び出す
 
-結果が特定の条件 (プロセッサ使用率の長期的なスパイクなど) に一致した場合やビジネス アプリケーションの機能にとって重要な特定のアプリケーション プロセスが失敗し、対応するイベントを Windows イベント ログに書き込んだ場合にアラート レコードを作成するように Log Analytics でアラートを構成すると、そのアラートは、問題を自動修復しようとして Automation Runbook を自動的に実行できます。  
+結果が条件 (プロセッサ使用率の長期的なスパイクなど) に一致した場合やビジネス アプリケーションの機能にとって重要なアプリケーション プロセスが失敗し、対応するイベントを Windows イベント ログに書き込んだ場合にアラート レコードを作成するように Log Analytics でアラートを構成すると、そのアラートは、問題を自動修復しようとして Automation Runbook を自動的に実行できます。  
 
-アラートを構成するときに Runbook を呼び出すオプションは 2 つあります。  具体的には次のとおりです。
+アラートの構成で Runbook を呼び出す方法は 2 つあります。
 
 1. webhook を使用する。
-   * これは、OMS ワークスペースが Automation アカウントにリンクされていない場合に使用できる唯一のオプションです。
+   * これは、OMS ワークスペースが Automation アカウントにリンクされていない場合に使用できる唯一の方法です。
    * Automation アカウントを既に OMS ワークスペースにリンクしている場合も引き続きこのオプションを使用できます。  
 
 2. 直接 Runbook を選択する。
-   * このオプションは、OMS ワークスペースが Automation アカウントにリンクされている場合のみ使用できます。  
+   * この方法は、 
+   *  OMS ワークスペースが Automation アカウントにリンクされている場合のみ使用できます。  
 
 ## <a name="calling-a-runbook-using-a-webhook"></a>webhook を使用して Runbook を呼び出す
 
-webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#alert-rules)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を確認して従い、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
+webhook を使用することにより、単一の HTTP 要求を通して Azure Automation で特定の Runbook を開始することができます。  アラート アクションとして webhook を使用して Runbook を呼び出すように [Log Analytics アラート](../log-analytics/log-analytics-alerts.md#alert-rules)を構成する前に、まず、この方法を使用して呼び出される Runbook 用に webhook を作成する必要があります。  [webhook の作成](automation-webhooks.md#creating-a-webhook)に関する記事の手順を実行し、アラート ルールの構成時に参照できるように webhook URL を忘れずに記録しておいてください。   
 
 ## <a name="calling-a-runbook-directly"></a>直接 Runbook を呼び出す
 
-OMS ワークスペースで Automation & Control サービスをインストールして構成してある場合は、アラートの Runbook アクションのオプションを構成するときに、**[Runbook の選択]** ボックスの一覧ですべての Runbook を表示し、そのアラートに対応して実行する特定の Runbook を選択できます。  選択した Runbook は、Azure クラウド内のワークスペース、または Hybrid Runbook Worker で実行できます。  Runbook オプションを使用してアラートを作成すると、その Runbook 用に webhook が作成されます。  その webhook は、Automation アカウントに移動し、選択した Runbook の webhook ブレードに移動すると表示されます。  アラートを削除しても webhook は削除されませんが、ユーザーは手動で webhook を削除できます。  webhook が削除されない場合、これは問題ではありません。単に、構成された Automation アカウントを管理するために最終的に削除する必要がある孤立した項目にすぎません。  
+OMS ワークスペースで Automation & Control サービスをインストールして構成してある場合は、アラートの Runbook アクションのオプションを構成するときに、**[Runbook の選択]** ボックスの一覧ですべての Runbook を表示し、そのアラートに対応して実行する特定の Runbook を選択できます。  選択した Runbook は、Azure クラウド内のワークスペース、または Hybrid Runbook Worker で実行できます。  Runbook オプションを使用してアラートを作成すると、その Runbook 用に webhook が作成されます。  その webhook は、Automation アカウントに移動し、選択した Runbook の webhook ウィンドウに移動すると表示されます。  アラートを削除しても webhook は削除されませんが、ユーザーは手動で webhook を削除できます。  webhook が削除されない場合、これは問題ではありません。単に、構成された Automation アカウントを管理するために最終的に削除する必要がある孤立した項目にすぎません。  
 
 ## <a name="characteristics-of-a-runbook-for-both-options"></a>Runbook の特性 (両方のオプションに該当)
 
@@ -64,7 +64,7 @@ Log Analytics アラートから Runbook を呼び出す 2 つの方法には、
 
 * webhook を呼び出すようにアラートを構成する際は、Runbook 用に作成した webhook URL を入力し、**[Test Webhook (webhook のテスト)]** をクリックします。  結果として Runbook に送信された WebhookData には、*.SearchResult* または *.SearchResults* が含まれていません。
 
-*  そのアラートを保存した場合は、アラートがトリガーされ、webhook を呼び出すと、Runbook に送信された WebhookData には *.SearchResult* が含まれます。
+*  そのアラートを保存した後に、アラートがトリガーされ、webhook を呼び出すと、Runbook に送信された WebhookData には *.SearchResult* が含まれます。
 * アラートを作成し、(webhook も作成する) Runbook を呼び出すようにそのアラートを構成した場合は、アラートがトリガーされると、*.SearchResults* を含む Runbook に WebhookData が送信されます。
 
 その結果、上記のコード例では、アラートが webhook を呼び出した場合は *.SearchResult* を取得し、アラートが直接 Runbook を呼び出した場合は *.SearchResults* を取得する必要があります。
@@ -91,4 +91,3 @@ Runbook コード アクティビティ **Get Service Name from LA** は、JSON 
 * Log Analytics のアラートの詳細とアラートの作成方法については、「[Log Analytics のアラート](../log-analytics/log-analytics-alerts.md)」を参照してください。
 
 * webhook を使用して Runbook をトリガーする方法を理解するには、「[Azure Automation Webhook](automation-webhooks.md)」を参照してください。
-

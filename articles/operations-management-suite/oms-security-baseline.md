@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/30/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: f0a512fb0684b1db25353bf4bbd35bdf2a07e1b2
-ms.openlocfilehash: f29b20ba11b030d98a7a5574f816ea132edc3f6d
-ms.lasthandoff: 12/06/2016
-
-
+ms.openlocfilehash: 6f4cfda6f367cb8a68d038fa0a3390442be034c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="baseline-assessment-in-operations-management-suite-security-and-audit-solution"></a>Operations Management Suite のセキュリティと監査ソリューションでのベースライン評価
 このドキュメントは、[Operations Management Suite (OMS) のセキュリティと監査ソリューション](operations-management-suite-overview.md)のベースライン評価機能を使用して、監視対象のリソースのセキュリティで保護された状態にアクセスする際に役立ちます。
@@ -40,7 +39,7 @@ Microsoft は、世界中の業界団体や政府機関と協力して、安全�
 > 
 
 ## <a name="security-baseline-assessment"></a>セキュリティ ベースラインの評価
-OMS のセキュリティと監査で監視されているすべてのコンピューターの現在のセキュリティ ベースラインの評価は、ダッシュボードを使用して確認できます。  セキュリティ ベースラインの評価ダッシュボードにアクセスするには、次の手順を実行してください。
+OMS のセキュリティと監査で監視されているすべてのコンピューターの現在のセキュリティ ベースラインの評価は、ダッシュボードを使用して確認できます。 セキュリティ ベースラインの評価ダッシュボードにアクセスするには、次の手順を実行してください。
 
 1. **Microsoft Operations Management Suite** のメイン ダッシュボードで、**[セキュリティおよび監査]** タイルをクリックします。
 2. **[セキュリティおよび監査]** ダッシュボードで、**[セキュリティ ドメイン]** の下にある **[ベースライン評価]** をクリックします。 次の図に示すように、**[セキュリティ ベースラインの評価]** ダッシュボードが表示されます。
@@ -85,5 +84,4 @@ OMS は、Windows Server 2008 R2 から Windows Server 2012 R2 までのドメ�
 * [Operations Management Suite (OMS) overview (Operations Management Suite (OMS) の概要)](operations-management-suite-overview.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのセキュリティの警告に対する監視と対応](oms-security-responding-alerts.md)
 * [Operations Management Suite のセキュリティと監査ソリューションでのリソースの監視](oms-security-monitoring-resources.md)
-
 

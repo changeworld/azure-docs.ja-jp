@@ -16,12 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: bdd0fd0d1919f61fe586f495adadaf4eabde2dae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
 Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
@@ -34,7 +33,12 @@ Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよ�
 * [Virtual Machine Scale Sets を Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Scale Sets の作成と管理
-[Azure Portal](https://portal.azure.com) で Scale Sets を作成するには、**[新規]** を選択して、検索バーに「**scale**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。
+[Azure Portal](https://portal.azure.com) で Scale Sets を作成するには、**[新規]** を選択して、検索バーに「**scale**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。 
+
+スケール セットは[可用性ゾーン](../availability-zones/az-overview.md)にデプロイできます。
+
+> [!NOTE]
+> 仮想マシン スケール セットは現在、単一の可用性ゾーンに限りデプロイできます。 複数のゾーンに対するデプロイは、今後サポートを追加する予定です。
 
 スケール セットの定義とデプロイは、個々の Azure Resource Manager VM と同様に JSON テンプレートと [REST API](https://msdn.microsoft.com/library/mt589023.aspx) を使用して行えます。 そのため、Azure Resource Manager の標準的なデプロイ方法を利用することができます。 テンプレートの詳細については、「 [Azure Resource Manager テンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」に関する記事をご覧ください。
 
@@ -167,4 +171,3 @@ Azure リソースの基盤となっている JSON 定義を表示または編�
 **A.** はい。 スケール セットは、5 つの障害ドメインと 5 つの更新ドメインを備えた、暗黙的な可用性セットです。 100 個を超える VM を備えたスケール セットは、複数の可用性セットに相当する複数の "*配置グループ*" にまたがります。 配置グループの詳細については、「[大規模な Virtual Machine Scale Sets の使用](virtual-machine-scale-sets-placement-groups.md)」をご覧ください。 VM の可用性セットは、VM Scale Sets と同じ VNET に存在できます。 一般的な構成では、(多くの場合、可用性セットに固有の構成を必要とする) 制御ノード VM とデータ ノードを Scale Sets に配置します。
 
 スケール セットに関するその他の質問については、「[Azure Virtual Machine Scale Sets FAQ (Azure Virtual Machine Scale Sets に関する FAQ)](virtual-machine-scale-sets-faq.md)」をご覧ください。
-

@@ -1,6 +1,6 @@
 ---
-title: "SQL データベースの概要 |Microsoft ドキュメント"
-description: "ヘルプ コンテンツを Azure ポータル内で SQL データベースの概要"
+title: "SQL Database の概要 | Microsoft Docs"
+description: "Azure Portal 内にある SQL Database の概要に関するヘルプ コンテンツ"
 services: sql-database
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: b41b4b7d302b0f3c528fa424627b4446a5e2c0ca
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-database-documentation"></a>SQL Database のドキュメント
 
@@ -22,14 +22,13 @@ Azure SQL Database とは、Microsoft SQL Server エンジンを使用したサ�
 
 SQL データベースの作成、SQL Management Studio を使用した SQL データベースの管理、C#、Java、Python、Node.js、Ruby での SQL データベースを使用した開発の方法について説明します。
 
-- 
-            [Azure Portal](/azure/sql-database/sql-database-get-started-portal)
+- [Azure Portal](/azure/sql-database/sql-database-get-started-portal)
 - [Azure PowerShell](/azure/sql-database/sql-database-get-started-powershell)
 - [Azure CLI](/azure/sql-database/sql-database-get-started-cli)
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
 
-作成、管理、および SQL DB を使用してデータベースを移行する方法を説明します。
+SQL DB を使用してデータベースを作成、管理、移行する方法について説明します。
 
 - [新しい SQL データベースのスキーマを作成および設計する](/azure/sql-database/sql-database-design-first-database)
 - [既存の SQL Server データベースを移行して Azure SQL Database を使用する](/azure/sql-database/sql-database-migrate-your-sql-server-database)
@@ -50,5 +49,5 @@ SQL データベースの作成、SQL Management Studio を使用した SQL デ�
 
 ## <a name="more"></a>詳細
 
-- [詳細についてはドキュメントを参照してください。](/azure/sql-database/index)
-- [すべての Azure サービスについてください。](https://aka.ms/j3wr7y)
+- [ドキュメントを参照して詳細を確認する](/azure/sql-database/index)
+- [すべての Azure サービスを確認する](https://aka.ms/j3wr7y)

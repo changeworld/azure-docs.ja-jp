@@ -13,14 +13,13 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-windows-phone
 ms.devlang: dotnet
 ms.topic: hero-article
-ms.date: 09/13/2017
+ms.date: 09/15/2017
 ms.author: dendeli
+ms.openlocfilehash: a416edaded8aa04c3229a5788d648de0a6afe2b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 8db82ae9f37a89b6b7049208133949a7f49e9d92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="geo-fenced-push-notifications-with-azure-notification-hubs-and-bing-spatial-data"></a>Azure Notification Hubs と Bing の空間データを使用したジオフェンス型プッシュ通知
 > [!NOTE]
@@ -119,7 +118,7 @@ ms.lasthandoff: 09/15/2017
 
 ![](./media/notification-hubs-geofence/vs-package-location.png)
 
-位置情報の機能を宣言したので、`Core` という名前の新しいフォルダーをソリューションに作成し、そこに新しいファイル (`LocationHelper.cs`) を追加します。
+位置情報の機能を宣言したので、`Core` という名前の新しいフォルダーをソリューションに作成し、そこに `LocationHelper.cs` という名前の新しいファイルを追加します。
 
 ![](./media/notification-hubs-geofence/vs-location-helper.png)
 
@@ -381,7 +380,7 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 
 ![](./media/notification-hubs-geofence/notification-hubs-test-notification.png)
 
-## <a name="whats-next"></a>次の手順
+## <a name="next-steps"></a>次のステップ
 通常、このソリューションを本番環境で使用するためには、以上の手順に加え、2 つの作業が必要となります。
 
 第一に、ジオフェンスを動的に変更するためのしくみが必要です。 既存のデータ ソース内に新しい境界をアップロードできるように、Bing API に関して追加作業が必要となります。 この点について詳しくは、 [Bing 空間データ サービス API のドキュメント](https://msdn.microsoft.com/library/ff701734.aspx) をご覧ください。
@@ -391,5 +390,4 @@ UWP アプリでユーザーの位置情報を取得する方法について詳�
 ここで紹介したソリューションのシナリオは多様なターゲット プラットフォームを想定しており、システム固有の機能にジオフェンスを限定することはしていません。 しかし、ユニバーサル Windows プラットフォームには、 [細かい設定なしにジオフェンスを検出](https://msdn.microsoft.com/windows/uwp/maps-and-location/set-up-a-geofence)する機能が備わっています。
 
 Notification Hubs の機能について詳しくは、 [ドキュメント ポータル](https://azure.microsoft.com/documentation/services/notification-hubs/)をご覧ください。
-
 

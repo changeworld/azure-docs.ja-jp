@@ -3,7 +3,7 @@ title: "Azure Application Gateway を使用した Web アプリの保護 - Power
 description: "この記事では、既存または新しいアプリケーション ゲートウェイで Web アプリをバックエンド ホストとして構成する方法について説明します。"
 documentationcenter: na
 services: application-gateway
-author: georgewallace
+author: davidmu1
 manager: timlt
 editor: 
 ms.service: application-gateway
@@ -12,15 +12,13 @@ ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
-ms.author: gwallace
+ms.author: davidmu
+ms.openlocfilehash: f00ad4c3f2cf08461d0258aa31fcedd7045934d1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 04b6efbfeccc6df006978d06dd8020495708550e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="configure-app-service-web-apps-with-application-gateway"></a>Application Gateway を使用した App Service Web Apps の構成 
 
 Application Gateway では、Azure Web アプリまたはその他のマルチテナント サービスをバックエンド プール メンバーとして使用できます。 この記事では、Application Gateway を使用して Azure Web アプリを構成する方法を説明します。 最初の例では、既存のアプリケーション ゲートウェイを構成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。 2 番目の例では、新しいアプリケーション ゲートウェイを作成して、Web アプリをバックエンド プール メンバーとして使用する方法について示します。
@@ -49,7 +47,7 @@ $probe = Get-AzureRmApplicationGatewayProbeConfig -name webappprobe2 -Applicatio
 Set-AzureRmApplicationGatewayBackendHttpSettings -Name appGatewayBackendHttpSettings -ApplicationGateway $gw -PickHostNameFromBackendAddress -Port 80 -Protocol http -CookieBasedAffinity Disabled -RequestTimeout 30 -Probe $probe
 
 # Add the web app to the backend pool
-Set-AzureRmApplicationGatewayBackendAddressPool -Name appGatewayBackendPool -ApplicationGateway $gw -BackendIPAddresses $webappFQDN
+Set-AzureRmApplicationGatewayBackendAddressPool -Name appGatewayBackendPool -ApplicationGateway $gw -BackendFqdns $webappFQDN
 
 # Update the application gateway
 Set-AzureRmApplicationGateway -ApplicationGateway $gw
@@ -99,7 +97,7 @@ $publicip = New-AzureRmPublicIpAddress -ResourceGroupName $rg.ResourceGroupName 
 $gipconfig = New-AzureRmApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
 
 # Create a backend pool with the hostname of the web app
-$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name appGatewayBackendPool -BackendIPAddresses $webapp.HostNames
+$pool = New-AzureRmApplicationGatewayBackendAddressPool -Name appGatewayBackendPool -BackendFqdns $webapp.HostNames
 
 # Define the status codes to match for the probe
 $match = New-AzureRmApplicationGatewayProbeHealthResponseMatch -StatusCode 200-399
@@ -162,4 +160,3 @@ DnsSettings              : {
 ## <a name="next-steps"></a>次のステップ
 
 リダイレクトを構成する方法について学習するために、「[PowerShell で Application Gateway にリダイレクトを構成する](application-gateway-configure-redirect-powershell.md)」を参照してください。
-

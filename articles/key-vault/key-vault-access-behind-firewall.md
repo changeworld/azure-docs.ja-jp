@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 01/07/2017
 ms.author: ambapat
 ms.openlocfilehash: d00c6e0acf437d2bfc3c27e948f4646a6685b08f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="access-azure-key-vault-behind-a-firewall"></a>ファイアウォールの内側にある Azure Key Vault へのアクセス
 ### <a name="q-my-key-vault-client-application-needs-to-be-behind-a-firewall-what-ports-hosts-or-ip-addresses-should-i-open-to-enable-access-to-a-key-vault"></a>Q: Key Vault クライアント アプリケーションをファイアウォールの内側に配置する必要があります。 キー コンテナーへのアクセスを有効にするために開く必要があるポート、ホスト、IP アドレスを教えてください。
@@ -38,9 +38,9 @@ Key Vault クライアント アプリケーションは、認証用の Azure Ac
 
 | プリンシパルの種類 | エンドポイント:ポート |
 | --- | --- |
-| Microsoft アカウントを使用しているユーザー<br> (たとえば、 user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
-| ユーザーまたはサービス プリンシパルを Azure AD と職場または学校のアカウントを使用して (たとえば、 user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
-| ユーザーまたはサービス プリンシパルが、職場または学校のアカウントと Active Directory フェデレーション サービス (AD FS) フェデレーション他のエンドポイントを使用して (たとえば、 user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
+| Microsoft アカウントを使用しているユーザー<br> (例: user@hotmail.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443<br><br> と <br>login.live.com:443 |
+| Azure AD と共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |**グローバル:**<br> login.microsoftonline.com:443<br><br> **Azure China:**<br> login.chinacloudapi.cn:443<br><br>**Azure US Government:**<br> login-us.microsoftonline.com:443<br><br>**Azure Germany:**<br> login.microsoftonline.de:443 |
+| Active Directory フェデレーション サービス (AD FS) または他のフェデレーション エンドポイントと共に職場または学校アカウントを使用しているユーザーまたはサービス プリンシパル (例: user@contoso.com) |職場または学校のアカウント用のすべてのエンドポイントと AD FS またはその他のフェデレーション エンドポイント |
 
 ほかにも複雑なシナリオが存在する場合があります。 詳細については、[Azure Active Directory の認証フロー](/documentation/articles/active-directory-authentication-scenarios/)に関するページ、「[Azure Active Directory とアプリケーションの統合](/documentation/articles/active-directory-integrating-applications/)」、[Active Directory の認証プロトコル](https://msdn.microsoft.com/library/azure/dn151124.aspx)に関するページを参照してください。  
 
