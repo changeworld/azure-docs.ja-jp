@@ -84,7 +84,7 @@ Azure Portal で Automation アカウントの Runbook ギャラリーから "*E
 
     ![Sync-LocalGitFolderToAutomationAccount Runbook の開始](media/automation-scenario-source-control-integration-with-github-ent/start-runbook-synclocalgitfoldertoautoacct.png)<br>
 
-7. Automation アカウントで **[Runbook]** ブレードからこの Runbook を選択し、**[ジョブ]** タイルを選択して、Runbook についてジョブ概要の詳細情報を表示します。  **[All logs] (すべてのログ)** タイルを選択して詳細なログ ストリームを確認し、正常に完了したことを確認します。  
+7. Automation アカウントで **[Runbook]** ブレードからこの Runbook を選択し、**[ジョブ]** タイルを選択して、Runbook についてジョブ概要の詳細情報を表示します。  **[All logs] \(すべてのログ)** タイルを選択して詳細なログ ストリームを確認し、正常に完了したことを確認します。  
 
 ## <a name="next-steps"></a>次のステップ
 
