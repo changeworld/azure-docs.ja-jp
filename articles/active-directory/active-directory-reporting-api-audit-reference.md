@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 573e940c5390e7b990d889681eb37b73c5b253d9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
+
 ---
 # <a name="azure-active-directory-audit-api-reference"></a>Azure Active Directory 監査 API リファレンス
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
@@ -240,4 +241,5 @@ datetime は UTC 形式にする必要があります。
 ## <a name="next-steps"></a>次のステップ
 * フィルター処理されたシステム アクティビティの例を参照しますか。 [Azure Active Directory 監査 API のサンプル](active-directory-reporting-api-audit-samples.md)に関する記事を確認してください。
 * Azure AD Reporting API の詳細を確認しますか。 「 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)」を参照してください。
+
 

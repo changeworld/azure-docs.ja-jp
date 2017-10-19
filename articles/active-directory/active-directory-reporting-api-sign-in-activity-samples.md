@@ -12,14 +12,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
+ms.translationtype: HT
+ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 7fc2b59fe37ed2ffe85925c457300ef8fd83c3c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
-ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.contentlocale: ja-jp
+ms.lasthandoff: 07/21/2017
+
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-samples"></a>Azure Active Directory サインイン アクティビティ レポート API のサンプル
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  
@@ -87,4 +88,5 @@ Azure AD レポートは、コードまたは関連ツールを使用してサ�
 * このトピックに掲載されているサンプルをカスタマイズしますか。 [Azure Active Directory サインイン アクティビティ レポート API リファレンス](active-directory-reporting-api-sign-in-activity-reference.md)を確認してください。 
 * Azure Active Directory Reporting API の使用に関する網羅的な概要を参照するには、 [Azure Active Directory Reporting API の概要](active-directory-reporting-api-getting-started.md)を参照してください。
 * Azure Active Directory のレポート作成に関する詳細については、「 [Azure Active Directory レポート ガイド](active-directory-reporting-guide.md)」を参照してください。  
+
 
