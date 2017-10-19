@@ -41,7 +41,7 @@ ms.lasthandoff: 10/11/2017
 | 紹介   |  Weka は、データ マイニング タスクのための機械学習アルゴリズムのコレクションです。 アルゴリズムはデータセットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
 | サポートされている DSVM エディション     | Windows、Linux     |
 | 一般的な用途      | 一般的な ML ツール     |
-| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] (アプリケーション) -> [Development] (開発) -> [Weka] にアクセスします。 |
+| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] \(アプリケーション) -> [Development] \(開発) -> [Weka] にアクセスします。 |
 | サンプルへのリンク      | [Weka サンプル](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上の関連ツール      |LightGBM、Rattle、Xgboost   |
 

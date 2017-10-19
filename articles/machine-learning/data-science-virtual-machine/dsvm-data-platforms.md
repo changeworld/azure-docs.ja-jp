@@ -49,7 +49,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
         (Please replace the %COMPUTERNAME% with your VM name)
        
-SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] (Windows 認証) を選択し、[SQL Server Name] (SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
+SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] \(Windows 認証) を選択し、[SQL Server Name] \(SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
 
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
 
