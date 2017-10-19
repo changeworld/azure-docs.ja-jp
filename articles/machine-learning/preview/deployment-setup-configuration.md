@@ -29,7 +29,7 @@ Azure ML モデル管理を使用すると、SparkML、Keras、TensorFlow、Micr
 Azure Machine Learning Workbench および [Azure DSVM](https://docs.microsoft.com/en-us/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) には CLI がプレインストールされています。
 
 ## <a name="using-the-cli"></a>CLI の使用
-ワークベンチからコマンド ライン インターフェイス (CLI) を使用するには、**[ファイル]** -> **[Open Command Prompt] (コマンド プロンプトを開く)** をクリックします。 
+ワークベンチからコマンド ライン インターフェイス (CLI) を使用するには、**[ファイル]** -> **[Open Command Prompt] \(コマンド プロンプトを開く)** をクリックします。 
 
 データ サイエンス仮想マシン上で、接続してコマンド プロンプトを開きます。 「`az ml -h`」と入力してオプションを表示します。 コマンドの詳細については、--help フラグを使用します。
 
