@@ -14,6 +14,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
+ms.custom: devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: f39d732325d171b30de3b86e0c96be0ce77c66a9

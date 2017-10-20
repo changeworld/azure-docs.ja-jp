@@ -15,6 +15,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
+ms.custom: devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 985962c4f2db21526291981ad5180fc0a16e2ab8

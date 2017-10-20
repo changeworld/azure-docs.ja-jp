@@ -14,7 +14,7 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 06/13/2017
 ms.author: rachelap
-ms.custom: mvc
+ms.custom: mvc, devcenter
 ms.translationtype: HT
 ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 760434983978ff2233742ee4cef2de9762717620
