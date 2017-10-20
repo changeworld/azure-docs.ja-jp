@@ -21,9 +21,9 @@ ms.lasthandoff: 10/11/2017
 # <a name="executing-data-sources-and-data-preparation-packages-from-python"></a>Python からのデータ ソースおよびデータ準備パッケージの実行
 
 Python 内でデータ ソースまたはデータ準備パッケージを使用するには:
-- プロジェクトの [Data] (データ) タブに移動します。
+- プロジェクトの [Data] \(データ) タブに移動します。
 - 適切なソースを右クリックします。
-- [Generate Data Access Code File] (データ アクセス コード ファイルの生成) を選択します。
+- [Generate Data Access Code File] \(データ アクセス コード ファイルの生成) を選択します。
 
 このアクションは、パッケージを実行して、データフレームを返す短い Python スクリプトを作成します。
 

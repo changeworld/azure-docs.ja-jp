@@ -107,9 +107,9 @@ Azure Monitor のアラート構成を利用すると、攻撃中にアクティ
 3. ルールを作成するには、最初に重要な情報をいくつか入手する必要があります。 
 
     - アラートを設定するリソースのリソース ID。
-    - そのリソースに使用できるメトリック定義。 リソース ID は、Azure ポータルを使用して取得できます。 そのリソースが既に作成されていると仮定して、Azure Portal でそれを選択します。 その後、次のページで、*[設定]* セクションの下にある *[プロパティ]* を選択します。 **[RESOURCE ID] (リソース ID)** は、次のページにあるフィールドです。 また、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用することもできます。 パブリック IP のリソース ID の例として `/subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Network/publicIPAddresses/mypublicip` があります。
+    - そのリソースに使用できるメトリック定義。 リソース ID は、Azure ポータルを使用して取得できます。 そのリソースが既に作成されていると仮定して、Azure Portal でそれを選択します。 その後、次のページで、*[設定]* セクションの下にある *[プロパティ]* を選択します。 **[RESOURCE ID] \(リソース ID)** は、次のページにあるフィールドです。 また、[Azure リソース エクスプローラー](https://resources.azure.com/)を使用することもできます。 パブリック IP のリソース ID の例として `/subscriptions/dededede-7aa0-407d-a6fb-eb20c8bd1192/resourceGroups/myresourcegroupname/providers/Microsoft.Network/publicIPAddresses/mypublicip` があります。
 
-    次の例では、仮想ネットワークに関連付けられたパブリック IP にアラートを設定します。 アラートを作成するメトリックは、**[Under DDoS attack or not] (DDoS 攻撃を受けているかどうか)** です。 これはブール値 1 または 0 です。 **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。 過去 5 分以内に攻撃を受けている場合は、アラートが作成されます。
+    次の例では、仮想ネットワークに関連付けられたパブリック IP にアラートを設定します。 アラートを作成するメトリックは、**[Under DDoS attack or not] \(DDoS 攻撃を受けているかどうか)** です。 これはブール値 1 または 0 です。 **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。 過去 5 分以内に攻撃を受けている場合は、アラートが作成されます。
 
     アラートが作成されたときに webhook を作成するか、または電子メールを送信するには、まず電子メールまたは webhook、あるいはその両方を作成します。 次に示すように、その後すぐに -Actions タグを使用して、ルールを作成します。 PowerShell を使用して、既に作成されているルールに webhook または電子メールを関連付けることはできません。
 

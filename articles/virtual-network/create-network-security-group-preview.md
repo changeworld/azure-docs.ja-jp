@@ -239,7 +239,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    前のコマンドから返された出力の **[RegistrationState]** 列に *[Registered] (登録済み)* が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+    前のコマンドから返された出力の **[RegistrationState]** 列に *[Registered] \(登録済み)* が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
         
 6. リソース グループを作成します。
 
