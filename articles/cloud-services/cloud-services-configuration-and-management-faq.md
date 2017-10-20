@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 9/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 7d7676be26a8b68ab9fda18388e2b8cd5ed5f60b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 2ce497146abf664b0084cd96963523812f166e3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の構成と管理の問題についてよくあるご質問 (FAQ)
 
@@ -136,3 +135,76 @@ Microsoft では、脅威を検出するためにサーバー、ネットワー�
 
 CSR は、テキスト ファイルであることにご注意ください。 必ずしも、最終的に証明書が使用されるマシンから作成しないでもかまいません。 このドキュメントは App Service 用に書かれるものですが、CSR の作成は汎用的で、Cloud Services にも適用されます。
 
+## <a name="how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way"></a>Cloud Services にマルウェア対策拡張機能を自動的に追加する方法を教えてください。
+
+スタートアップ タスクで PowerShell スクリプトを使用してマルウェア対策拡張機能を有効にすることができます。 次の記事の手順に従って実装してください。 
+ 
+- [PowerShell のスタートアップ タスクを作成する](cloud-services-startup-tasks-common.md#create-a-powershell-startup-task)
+- [Set-AzureServiceAntimalwareExtension](https://docs.microsoft.com/powershell/module/Azure/Set-AzureServiceAntimalwareExtension?view=azuresmps-4.0.0 )
+
+マルウェア対策デプロイ シナリオの詳細とポータルから有効にする方法については、「[マルウェア対策のデプロイ シナリオ](../security/azure-security-antimalware.md#antimalware-deployment-scenarios)」を参照してください。
+
+## <a name="how-to-enable-server-name-indication-sni-for-cloud-services"></a>Cloud Services で Server Name Indication (SNI) を有効にする方法を教えてください。
+
+Cloud Services で SNI を有効にするには、次のいずれかの方法を使用します。
+
+### <a name="method-1-use-powershell"></a>方法 1: PowerShell を使用する
+
+SNI バインドは、以下のようにクラウド サービス ロール インスタンスのスタートアップ タスクで PowerShell コマンドレット **New-WebBinding** を使用して構成できます。
+    
+    New-WebBinding -Name $WebsiteName -Protocol "https" -Port 443 -IPAddress $IPAddress -HostHeader $HostHeader -SslFlags $sslFlags 
+    
+[こちら](https://technet.microsoft.com/library/ee790567.aspx)の説明のように、$sslFlags には次の値のいずれかを使用できます。
+
+|値|意味|
+------|------
+|0|SNI なし|
+|1|SNI が有効 |
+|2 |中央証明書ストアを使用する SNI 以外のバインド|
+|3|中央証明書ストアを使用する SNI バインド |
+ 
+### <a name="method-2-use-code"></a>方法 2: コードを使用する
+
+SNI バインドは、こちらの[ブログ投稿](https://blogs.msdn.microsoft.com/jianwu/2014/12/17/expose-ssl-service-to-multi-domains-from-the-same-cloud-service/)のように、ロール スタートアップでコードを使用して構成することもできます。
+
+    
+    //<code snip> 
+                    var serverManager = new ServerManager(); 
+                    var site = serverManager.Sites[0]; 
+                    var binding = site.Bindings.Add(“:443:www.test1.com”, newCert.GetCertHash(), “My”); 
+                    binding.SetAttributeValue(“sslFlags”, 1); //enables the SNI 
+                    serverManager.CommitChanges(); 
+    //</code snip> 
+    
+SNI バインドを有効にするには、上記のいずれかのアプローチを使用して、まずスタートアップ タスクまたはコードを使用して、各ホスト名に対応する証明書 (*.pfx) をロール インスタンスにインストールする必要があります。
+
+## <a name="how-can-i-add-tags-to-my-azure-cloud-service"></a>Azure Cloud Service にタグを追加する方法を教えてください。 
+
+クラウド サービスはクラシック リソースです。 Azure Resource Manager で作成したリソースだけがタグに対応しています。 クラウド サービスなど、クラシック リソースにタグを適用することはできません。 
+
+## <a name="how-to-enable-http2-on-cloud-services-vm"></a>Cloud Services VM で HTTP/2 を有効にする方法を教えてください。
+
+Windows 10 と Windows Server 2016 は、クライアントとサーバー側の両方で HTTP/2 に対応しています。 クライアント (ブラウザー) が、TLS 拡張機能で HTTP/2 とネゴシエートする TLS 上の IIS サーバーに接続している場合、サーバー側で変更を加える必要はありません。 これは、HTTP/2 の使用を指定した h2-14 ヘッダーが、既定で TLS 上で送信されるためです。 一方、クライアントが HTTP/2 にアップグレードするために Upgrade ヘッダーを送信する場合は、サーバー側で次の変更を加えることで、Upgrade が機能し、最終的に HTTP/2 接続できるようにする必要があります。 
+
+1. regedit.exe を実行します。
+2. レジストリ キー HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters を参照します。
+3. **DuoEnabled** という新しいダブルワード値を作成します。
+4. 値を 1 に設定します。
+5. サーバーを再起動します。
+6. **[既定の Web サイト]** に移動し、**[バインド]** で、作成した自己署名証明書を使用して新しい TLS バインドを作成します。 
+
+詳細については、次を参照してください。
+
+- [HTTP/2 on IIS](https://blogs.iis.net/davidso/http2) (IIS 上の HTTP/2)
+- [ビデオ: HTTP/2 in Windows 10: Browser, Apps and Web Server](https://channel9.msdn.com/Events/Build/2015/3-88) (Windows 10 の HTTP/2: ブラウザー、アプリ、Web サーバー)
+         
+
+上記の手順は、スタートアップ タスクで、新しい PaaS インスタンスを作成するたびに、システム レジストリで上記の変更を実行するように自動化することができます。 詳細については、「[クラウド サービスのスタートアップ タスクを構成して実行する方法](cloud-services-startup-tasks.md)」を参照してください。
+
+ 
+この処理を完了すると、次のいずれかの方法を使用して、HTTP/2 が有効かどうかを確認できるようになります。
+
+- IIS ログでプロトコルのバージョンを有効にして、IIS ログを確認します。 ログには HTTP/2 が表示されます。 
+- Internet Explorer/Edge で F12 Developer Tool を有効にして、[ネットワーク] タブに切り替えてプロトコルを確認します。 
+
+詳細については、「[HTTP/2 on IIS](https://blogs.iis.net/davidso/http2)」(IIS 上の HTTP/2) を参照してください。

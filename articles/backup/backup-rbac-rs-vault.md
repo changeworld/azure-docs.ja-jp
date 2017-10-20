@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 8/22/2017
 ms.author: trinadhk;markgal
+ms.openlocfilehash: b6e4c6761e1bd5c17c9c3428491113042d3b1d31
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: d0b6eb8eea8971eb8f80c6623f9a41a3692241b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-role-based-access-control-to-manage-azure-backup-recovery-points"></a>ロール ベースのアクセス制御を使用した Azure Backup の回復ポイントの管理
 Azure のロールベースのアクセス制御 (RBAC) では、Azure のアクセス権の詳細な管理を実現します。 RBAC を使用して、チーム内で職務を分離し、職務に必要なアクセス許可のみをユーザーに付与します。
 
@@ -47,7 +45,7 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | Azure VM のバックアップの有効化 | コンテナーのバックアップ オペレーター、VM の仮想マシン共同作成者 |
 | VM のオンデマンド バックアップ | バックアップ オペレーター |
 | VM の復元 | VM および Vnet をデプロイするバックアップ オペレーター、リソース グループの共同作成者 |
-| VM バックアップからのディスクや個々のファイルの復元 | バックアップ オペレーター |
+| VM バックアップからのディスクや個々のファイルの復元 | バックアップ オペレーター、VM の仮想マシン共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの作成 | バックアップの共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの変更 | バックアップの共同作成者 |
 | Azure VM バックアップのバックアップ ポリシーの削除 | バックアップの共同作成者 |
@@ -56,10 +54,9 @@ Azure Backup では、バックアップの管理操作を制御する 3 つの�
 | オンプレミスの Windows Server/クライアント/SCDPM または Azure Backup Server での登録解除 | バックアップの共同作成者 |
 
 ## <a name="next-steps"></a>次のステップ
-* [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md): Azure Portal での RBAC の基本について説明します。
+* [ロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md): Azure ポータルでの RBAC の基本について説明します。
 * 次の要素を使用したアクセス管理方法の詳細
   * [PowerShell](../active-directory/role-based-access-control-manage-access-powershell.md)
   * [Azure CLI](../active-directory/role-based-access-control-manage-access-azure-cli.md)
   * [REST API](../active-directory/role-based-access-control-manage-access-rest.md)
 * [ロールベースのアクセス制御のトラブルシューティング](../active-directory/role-based-access-control-troubleshooting.md): 一般的な問題の修正に関する推奨事項を紹介します。
-

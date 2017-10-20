@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/03/2017
 ms.author: rodend;karlku;tomfitz
-translationtype: Human Translation
-ms.sourcegitcommit: c75d95ed554a78a02e5469915c21491e65edd8c2
-ms.openlocfilehash: 14ec59087b0aede76a18034f5aa93cb6ecd67a7e
-
-
+ms.openlocfilehash: 6e8335b9c2f3609bf0c48c563205ffaee8575b20
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="examples-of-implementing-azure-enterprise-scaffold"></a>Azure エンタープライズ スキャフォールディングの実装例
 このトピックでは、企業が [Azure エンタープライズ スキャフォールディング](resource-manager-subscription-governance.md)の推奨事項を実装する方法の例を紹介します。 Contoso という架空の会社を使って一般的なシナリオのベスト プラクティスを示します。
@@ -46,8 +46,8 @@ Dave は、すべての部署に共通する開発者ツールをサポートす
 | 項目 | 名前 | 説明 |
 | --- | --- | --- |
 | [サブスクリプション] |Contoso ETS DeveloperTools Production |共通の開発ツールをサポートします。 |
-| リソース グループ |rgBitBucket |アプリケーションの Web サーバーとデータベース サーバーが含まれます。 |
-| リソース グループ |rgCoreNetworks |仮想ネットワークとサイト間ゲートウェイ接続が含まれます。 |
+| リソース グループ |bitbucket-prod-rg |アプリケーションの Web サーバーとデータベース サーバーが含まれます。 |
+| リソース グループ |corenetworks-prod-rg |仮想ネットワークとサイト間ゲートウェイ接続が含まれます。 |
 
 ### <a name="role-based-access-control"></a>ロールベースのアクセス制御
 サブスクリプションの作成後、Dave は適切なチームとアプリケーションの所有者がリソースにアクセスできるようにしたいと思いました。 Dave は、チームによって要件が異なることを認識しています。 そこで、Contoso 社のオンプレミス Active Directory (AD) から Azure Active Directory に同期されたグループを利用し、適切なレベルのアクセス権をチームに付与することにしました。
@@ -56,9 +56,9 @@ Dave はサブスクリプションの次のロールを割り当てました。
 
 | 役割 | 割り当て先 | 説明 |
 | --- | --- | --- |
-| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso 社の AD のマネージ ID |この ID は、Contoso 社の ID 管理ツールを使用して Just In Time (JIT) アクセスで管理されます。この ID により、サブスクリプションの所有者のアクセスを完全に監査できます。 |
-| [セキュリティ管理者](../active-directory/role-based-access-built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます。 |
-| [ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます。 |
+| [所有者](../active-directory/role-based-access-built-in-roles.md#owner) |Contoso 社の AD のマネージ ID |この ID は、Contoso 社の ID 管理ツールを使用して Just In Time (JIT) アクセスで管理されます。この ID により、サブスクリプションの所有者のアクセスを完全に監査できます |
+| [セキュリティ管理者](../active-directory/role-based-access-built-in-roles.md#security-manager) |セキュリティおよびリスク管理部門 |このロールでは、ユーザーは Azure Security Center とリソースの状態を確認できます |
+| [ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md#network-contributor) |ネットワーク チーム |このロールでは、Contoso 社のネットワーク チームがサイト間 VPN と仮想ネットワークを管理できます |
 | *カスタム ロール* |アプリケーションの所有者 |Dave は、リソース グループ内のリソースを変更できるロールを作成しました。 詳細については、「[Azure RBAC のカスタム ロール](../active-directory/role-based-access-control-custom-roles.md)」をご覧ください。 |
 
 ### <a name="policies"></a>ポリシー
@@ -85,8 +85,8 @@ Dave は、リソース グループとリソースに次の[タグ](resource-gr
 
 | タグ名 | タグ値 |
 | --- | --- |
-| ApplicationOwner |このアプリケーションを管理するユーザーの名前。 |
-| CostCenter |Azure の利用料金を支払うグループのコスト センター。 |
+| ApplicationOwner |このアプリケーションを管理するユーザーの名前 |
+| CostCenter |Azure の利用料金を支払うグループのコスト センター |
 | BusinessUnit |**ETS** (サブスクリプションに関連付けられている部署) |
 
 ### <a name="core-network"></a>コア ネットワーク
@@ -96,9 +96,9 @@ Dave は次のリソースを作成しました。
 
 | リソースの種類 | 名前 | 説明 |
 | --- | --- | --- |
-| 仮想ネットワーク |vnInternal |BitBucket アプリケーションで使用されます。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています。  サブネット (sbBitBucket) は、特定の IP アドレス空間を使用してアプリケーションを提供します。 |
-| 仮想ネットワーク |vnExternal |公開エンドポイントを必要とする将来のアプリケーションで使用できます。 |
-| ネットワーク セキュリティ グループ |nsgBitBucket |アプリケーションが存在するサブネット (sbBitBucket) に対して、ポート 443 での接続だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます。 |
+| Virtual Network |internal-vnet |BitBucket アプリケーションで使用されます。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています。  サブネット (`bitbucket`) は、特定の IP アドレス空間を使用してアプリケーションを提供します |
+| Virtual Network |external-vnet |公開エンドポイントを必要とする将来のアプリケーションで使用できます |
+| ネットワーク セキュリティ グループ |bitbucket-nsg |アプリケーションが存在するサブネット (`bitbucket`) に対して、ポート 443 での接続だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます |
 
 ### <a name="resource-locks"></a>リソース ロック
 Dave は、Contoso 社の企業ネットワークから内部仮想ネットワークへの接続を、予想外のスクリプトや誤削除から保護する必要があることに気付きました。
@@ -107,7 +107,7 @@ Dave は、Contoso 社の企業ネットワークから内部仮想ネットワ�
 
 | ロックの種類 | リソース | 説明 |
 | --- | --- | --- |
-| **CanNotDelete** |vnInternal |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。ただし、新しいサブネットの追加を妨げることはありません。 |
+| **CanNotDelete** |internal-vnet |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。ただし、新しいサブネットの追加を妨げることはありません |
 
 ### <a name="azure-automation"></a>Azure Automation
 このアプリケーションには自動化するものはありません。 Dave は Azure Automation アカウントを作成しましたが、最初のうちはこのアカウントを使用しません。
@@ -118,15 +118,15 @@ Contoso IT サービス管理部門では、脅威をすばやく特定し、処
 これらの要件を満たすために、Dave は [Azure Security Center](../security-center/security-center-intro.md) を有効にし、セキュリティ マネージャー ロールがアクセスできるようにしました。
 
 ## <a name="scenario-2-customer-facing-app"></a>シナリオ 2: 顧客向けアプリケーション
-サプライ チェーン部のビジネス リーダーは、ロイヤルティ カードを使用して Contoso 社の顧客との関わりを強化するさまざまな機会を特定しました。 Alice のチームはこのアプリケーションを作成する必要があり、Azure がビジネス ニーズへの対応力を高めると判断しました。 Alice は ETS の Dave と協力して、このアプリケーションの開発と運用に使用する&2; つのサブスクリプションを構成することにしました。
+サプライ チェーン部のビジネス リーダーは、ロイヤルティ カードを使用して Contoso 社の顧客との関わりを強化するさまざまな機会を特定しました。 Alice のチームはこのアプリケーションを作成する必要があり、Azure がビジネス ニーズへの対応力を高めると判断しました。 Alice は ETS の Dave と協力して、このアプリケーションの開発と運用に使用する 2 つのサブスクリプションを構成することにしました。
 
 ### <a name="azure-subscriptions"></a>Azure サブスクリプション
-Dave は Azure Enterprise Portal にログインし、サプライ チェーン部門が既に存在することを確認しました。  ただし、このプロジェクトは Azure におけるサプライ チェーン チームの最初の開発プロジェクトであるため、Dave は Alice の開発チーム用の新しいアカウントが必要であることに気付きました。  Dave はチーム用の "R & D" アカウントを作成し、Alice にアクセスを割り当てました。 Alice は Azure Portal からログインし、2 つのサブスクリプションを作成しました。1 つは開発サーバーを保持するためのサブスクリプション、もう&1; つは運用サーバーを保持するためのサブスクリプションです。  Alice は次のサブスクリプションを作成するときに、以前に定めた命名規則に従いました。
+Dave は Azure Enterprise Portal にログインし、サプライ チェーン部門が既に存在することを確認しました。  ただし、このプロジェクトは Azure におけるサプライ チェーン チームの最初の開発プロジェクトであるため、Dave は Alice の開発チーム用の新しいアカウントが必要であることに気付きました。  Dave はチーム用の "R & D" アカウントを作成し、Alice にアクセスを割り当てました。 Alice は Azure Portal からログインし、2 つのサブスクリプションを作成しました。1 つは開発サーバーを保持するためのサブスクリプション、もう 1 つは運用サーバーを保持するためのサブスクリプションです。  Alice は次のサブスクリプションを作成するときに、以前に定めた命名規則に従いました。
 
 | サブスクリプションの用途 | 名前 |
 | --- | --- |
-| 開発 |SupplyChain ResearchDevelopment LoyaltyCard Development |
-| Production |SupplyChain Operations LoyaltyCard Production |
+| 開発 |Contoso SupplyChain ResearchDevelopment LoyaltyCard Development |
+| Production |Contoso SupplyChain Operations LoyaltyCard Production |
 
 ### <a name="policies"></a>ポリシー
 Dave と Alice はアプリケーションについて話し合い、このアプリケーションが北米リージョンの顧客にのみサービスを提供することを明確にしました。  Alice とチームは、Azure のアプリケーション サービス環境と Azure SQL を使用してアプリケーションを作成することを計画しました。 開発中に仮想マシンを作成することが必要な場合があります。  Alice は、ETS が関与しなくても、開発者が問題を調査するために必要なリソースを使用できるようにしたいと考えています。
@@ -143,10 +143,10 @@ Dave と Alice はアプリケーションについて話し合い、このア�
 
 | フィールド | 効果 | 説明 |
 | --- | --- | --- |
-| location |deny |米国のデータセンター以外でのリソースの作成を拒否します。 |
+| location |deny |米国のデータセンター以外でのリソースの作成を拒否します |
 | tags |deny |アプリケーションの所有者タグが必要です。 |
-| tags |deny |部門タグが必要です。 |
-| tags |append |各リソース グループに運用環境を示すタグを追加します。 |
+| tags |deny |部門タグが必要です |
+| tags |append |各リソース グループに運用環境を示すタグを追加します |
 
 運用環境でユーザーが作成できる SKU の種類に制限はありません。
 
@@ -155,9 +155,9 @@ Dave は、課金と所有権について適切なビジネス グループを�
 
 | タグ名 | タグ値 |
 | --- | --- |
-| ApplicationOwner |このアプリケーションを管理するユーザーの名前。 |
-| 部署 |Azure の利用料金を支払うグループのコスト センター。 |
-| EnvironmentType |**Production** (サブスクリプションの名前に **Production** が含まれていても、このタグを含めることで、ポータルや請求書でリソースを確認するときに簡単に識別できるようになります)。 |
+| ApplicationOwner |このアプリケーションを管理するユーザーの名前 |
+| 部署 |Azure の利用料金を支払うグループのコスト センター |
+| EnvironmentType |**Production** (サブスクリプションの名前に **Production** が含まれていても、このタグを含めることで、ポータルや請求書でリソースを確認するときに簡単に識別できるようになります) |
 
 ### <a name="core-networks"></a>コア ネットワーク
 Contoso ETS 情報セキュリティおよびリスク管理チームは、Dave が提案した Azure へのアプリケーションの移行計画を確認しました。 チームは、ロイヤルティ カード アプリケーションを適切に分離し、DMZ ネットワーク内で保護できるようにすることを求めています。  この要件を満たすために、Dave と Alice は外部仮想ネットワークと、ロイヤルティ カード アプリケーションを Contoso 社の企業ネットワークから分離するネットワーク セキュリティ グループを作成することにしました。  
@@ -166,14 +166,14 @@ Contoso ETS 情報セキュリティおよびリスク管理チームは、Dave 
 
 | リソースの種類 | 名前 | 説明 |
 | --- | --- | --- |
-| 仮想ネットワーク |vnInternal |Contoso ロイヤルティ カード開発環境を提供します。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています。 |
+| Virtual Network |internal-vnet |Contoso ロイヤルティ カード開発環境を提供します。ExpressRoute 経由で Contoso 社の企業ネットワークに接続されています |
 
 **運用サブスクリプション**では、次のリソースを作成しました。
 
 | リソースの種類 | 名前 | 説明 |
 | --- | --- | --- |
-| 仮想ネットワーク |vnExternal |ロイヤルティ カード アプリケーションをホストします。Contoso 社の ExpressRoute には直接接続されていません。 コードは、ソース コード システムによって PaaS サービスに直接プッシュされます。 |
-| ネットワーク セキュリティ グループ |nsgBitBucket |TCP 443 での受信通信だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます。  Contoso 社では、保護を強化するために、Web アプリケーション ファイアウォールを使用した調査も行っています。 |
+| Virtual Network |external-vnet |ロイヤルティ カード アプリケーションをホストします。Contoso 社の ExpressRoute には直接接続されていません。 コードは、ソース コード システムによって PaaS サービスに直接プッシュされます |
+| ネットワーク セキュリティ グループ |loyaltycard-nsg |TCP 443 での受信通信だけを許可することで、このワークロードの攻撃対象領域を最小限に抑えることができます。  Contoso 社では、保護を強化するために、Web アプリケーション ファイアウォールを使用した調査も行っています |
 
 ### <a name="resource-locks"></a>リソース ロック
 Dave と Alice は話し合い、誤ったコード プッシュ時の誤削除を防ぐために、環境内の一部の重要なリソースにリソース ロックを追加することにしました。
@@ -182,7 +182,7 @@ Dave と Alice は話し合い、誤ったコード プッシュ時の誤削除�
 
 | ロックの種類 | リソース | 説明 |
 | --- | --- | --- |
-| **CanNotDelete** |vnExternal |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。 このロックによって、新しいサブネットの追加が妨げられることはありません。 |
+| **CanNotDelete** |external-vnet |ユーザーが仮想ネットワークまたはサブネットを削除できないようにします。 このロックによって、新しいサブネットの追加が妨げられることはありません |
 
 ### <a name="azure-automation"></a>Azure Automation
 Alice と開発チームは、このアプリケーションの環境を管理するさまざまな Runbook を用意しています。 Runbook により、アプリケーションのノードの追加/削除や他の DevOps タスクを実行できます。
@@ -196,10 +196,3 @@ Contoso IT サービス管理部門では、脅威をすばやく特定し、処
 
 ## <a name="next-steps"></a>次のステップ
 * Resource Manager テンプレートの作成方法については、「[Azure Resource Manager テンプレートを作成するためのベスト プラクティス](resource-manager-template-best-practices.md)」をご覧ください。
-
-
-
-
-<!--HONumber=Jan17_HO4-->
-
-

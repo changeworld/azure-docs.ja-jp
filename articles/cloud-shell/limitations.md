@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: juluk
+ms.openlocfilehash: fe325cf5fa5e3d4b0a188599de7308cf2008b458
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: a1a220e27fc4baafa4184405c88f81fd2338b98a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell の制限
 Azure Cloud Shell には、次の既知の制限があります。
 
@@ -67,8 +65,27 @@ Azure Cloud Shell の PowerShell は、プレビュー期間中は、初期化�
 ### <a name="no-home-directory-persistence"></a>$Home ディレクトリが永続化されない
 アプリケーション (たとえば、git、vim など) によって $Home に書き込まれたデータは、PowerShell のセッション間で保持されません。  回避策については、[こちらをご覧ください](troubleshooting.md#powershell-resolutions)。
 
+### <a name="error-if-azurerm-module-is-updated-from-powershellgallery"></a>PowerShellGallery から AzureRM モジュールを更新する場合のエラー
+AzureRM モジュールを最新バージョン (4.4.0) に更新すると、Cloudshell の起動時に次のエラーが表示されることがあります。
+``` powershell
+VERBOSE: Authenticating to Azure ...
+Import-Module : Method 'RemoveUser' in type 'Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory' from assembly 'Microsoft.Azure.PSCloudConsole.ADAuth, Version=0.0.0.0,
+Culture=neutral, PublicKeyToken=null' does not have an implementation.
+At C:\Program Files\WindowsPowerShell\Modules\PSCloudShellADAuth\PSCloudShellADAuth.psm1:12 char:1
++ Import-Module -Name $AdAuthModulePath -PassThru -Force
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Import-Module], TypeLoadException
+    + FullyQualifiedErrorId : System.TypeLoadException,Microsoft.PowerShell.Commands.ImportModuleCommand
+
+Unable to find type [Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory].
+At C:\Users\ContainerAdministrator\PSCloudShellStartup.ps1:94 char:9
++         [Microsoft.Azure.PSCloudConsole.ADAuth.ADAuthFactory]::Update ...
++         ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (Microsoft.Azure...h.ADAuthFactory:TypeName) [], RuntimeException
+    + FullyQualifiedErrorId : TypeNotFound
+```
+
 ## <a name="next-steps"></a>次のステップ
 [Cloud Shell のトラブルシューティング](troubleshooting.md) <br>
 [Bash のクイックスタート](quickstart.md) <br>
 [PowerShell のクイックスタート](quickstart-powershell.md)
-

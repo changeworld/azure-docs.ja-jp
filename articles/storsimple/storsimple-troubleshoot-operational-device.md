@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/16/2016
 ms.author: v-sharos
 ms.openlocfilehash: 8d1b4905d0a24c8df9eb2c986459286909fd20dc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>StorSimple 運用デバイスのトラブルシューティング
 ## <a name="overview"></a>概要
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 この記事の最後には、Microsoft Azure StorSimple の操作中に発生する可能性のあるエラー コードの一覧と、エラーを解決するための手順が示されています。 
 
 ## <a name="setup-wizard-process-for-operational-devices"></a>運用デバイスのセットアップ ウィザードのプロセス
-セットアップ ウィザードを使用する ([Invoke-hcssetupwizard][1]) デバイスの構成を確認し、必要に応じて修正措置を取ります。
+セットアップ ウィザード ([Invoke-HcsSetupWizard][1]) を使用して、デバイスの構成を確認し、必要に応じて是正措置を実施します。
 
 以前に構成し、運用しているデバイスでセットアップ ウィザードを実行する場合、プロセス フローが異なります。 次のエントリのみを変更することができます。
 
@@ -45,7 +45,7 @@ ms.lasthandoff: 07/11/2017
 |:--- |:--- |:--- |:--- |
 | 1 |エラー 350032: このデバイスは既に非アクティブ化されています。 |非アクティブ化されたデバイスでセットアップ ウィザードを実行すると、このエラーが表示されます。 |[Microsoft サポート](storsimple-contact-microsoft-support.md) に対処法をお問い合わせください。 非アクティブ化されているデバイスを利用することはできません。 デバイスを再アクティブ化する前に、出荷時の設定に戻す必要があります。 |
 | 2 |Invoke-HcsSetupWizard : ERROR_INVALID_FUNCTION (HRESULT からの例外: 0x80070001) |DNS サーバーの更新に失敗しました。 DNS の設定はグローバル設定であるため、有効なすべてのネットワーク インターフェイスに適用されます。 |インターフェイスを有効にし、再度、DNS の設定を適用します。 これらの設定はグローバルであるため、有効になっている他のインターフェイスのネットワークが中断される可能性があります。 |
-| 3 |StorSimple Manager サービスのポータルではデバイスがオンラインであると表示されますが、最小のセットアップを完了して構成を保存しようとすると、操作に失敗します。 |実際のプロキシ サーバーがあるにもかかわらず、初期セットアップ時に、Web プロキシが構成されませんでした。 |使用して、 [Test-hcsmconnection コマンドレット][ 2]エラーを特定します。 [Microsoft サポート](storsimple-contact-microsoft-support.md) ください。 |
+| 3 |StorSimple Manager サービスのポータルではデバイスがオンラインであると表示されますが、最小のセットアップを完了して構成を保存しようとすると、操作に失敗します。 |実際のプロキシ サーバーがあるにもかかわらず、初期セットアップ時に、Web プロキシが構成されませんでした。 |[Test-HcsmConnection コマンドレット][2] を使用して、エラーを特定します。 [Microsoft サポート](storsimple-contact-microsoft-support.md) ください。 |
 | 4 |Invoke-HcsSetupWizard: 値が期待される範囲内にありません。 |不適切なサブネット マスクがこのエラーの原因です。 次の原因が考えられます。 <ul><li> サブネット マスクが存在しないか空である。</li><li>Ipv6 プレフィックスの形式が正しくない。</li><li>インターフェイスはクラウドに対応しているが、ゲートウェイが見つからないか、正しくない。</li></ul>DATA 0 は、セットアップ ウィザードを使用して構成した場合は自動的にクラウド対応になります。 |問題を特定するには、サブネット 0.0.0.0 または 256.256.256.256 を使用して出力を確認します。 必要に応じて、サブネット マスク、ゲートウェイ、および IPv6 プレフィックスの正しい値を入力します。 |
 
 ## <a name="error-codes"></a>エラー コード

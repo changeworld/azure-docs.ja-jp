@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/28/2016
 ms.author: trinadhk;markgal
 ms.openlocfilehash: 35a21cb99ca4bad124a9f764cef9da453e1fe47f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-azure-virtual-machine-backups"></a>Azure 仮想マシンのバックアップの管理
 > [!div class="op_single_selector"]
@@ -170,7 +170,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 
     項目名がわからない場合は、感嘆符にマウス カーソルを合わせると名前が表示されます。 また、 **[バックアップの停止]** ブレードのタイトルの下にも項目の名前が表示されます。
 4. 必要に応じて、**[理由]** または **[コメント]** に入力します。
-5. 現在の項目のバックアップ ジョブを停止する をクリックして![バックアップ [停止] ボタン](./media/backup-azure-manage-vms/stop-backup-button-blue.png)
+5. 現在の項目のバックアップ ジョブを停止するには、![[バックアップの停止] ボタン](./media/backup-azure-manage-vms/stop-backup-button-blue.png) をクリックします。
 
     バックアップ ジョブが停止したことを示す通知メッセージが表示されます。
 
@@ -219,7 +219,7 @@ Azure ポータルから Recovery Services コンテナーのダッシュボー�
 
     項目名がわからない場合は、感嘆符にマウス カーソルを合わせると名前が表示されます。 また、 **[バックアップ データを削除]** ブレードのタイトルの下にも項目の名前が表示されます。
 3. 必要に応じて、**[理由]** または **[コメント]** に入力します。
-4. 現在の項目のバックアップ データを削除しても![バックアップ [停止] ボタン](./media/backup-azure-manage-vms/delete-button.png)
+4. 現在の項目のバックアップ データを削除するには、![[バックアップの停止] ボタン](./media/backup-azure-manage-vms/delete-button.png) をクリックします。
 
     バックアップ データが削除されたことを示す通知メッセージが表示されます。
 
