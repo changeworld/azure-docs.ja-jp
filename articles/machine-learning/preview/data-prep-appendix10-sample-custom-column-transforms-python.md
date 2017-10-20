@@ -19,7 +19,7 @@ ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
 # <a name="sample-of-custom-column-transforms-python"></a>カスタム列変換のサンプル (Python) 
-メニュー内でのこの変換の名前は [Add Column] (列の追加) です (スクリプト)
+メニュー内でのこの変換の名前は [Add Column] \(列の追加) です (スクリプト)
 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事を参照してください
 

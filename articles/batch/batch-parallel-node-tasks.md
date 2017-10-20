@@ -15,13 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6b6c548ca1001587e2b40bbe9ee2fcb298f40d72
-ms.openlocfilehash: c4053ded725ad7ab2acc6d5d54e8343ffb961408
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/28/2017
-
-
+ms.openlocfilehash: 15854aa0f2665f921f3435bc298737671f2e1a6f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
 
@@ -37,7 +35,7 @@ Azure Batch プールでは、各コンピューティング ノードで複数�
 ## <a name="example-scenario"></a>サンプル シナリオ
 並列タスク実行の利点を示す例として、タスク アプリケーションの CPU とメモリの要件を満たすノードのサイズが [Standard\_D1](../cloud-services/cloud-services-sizes-specs.md) である場合について考えてみます。 ただし、必要な時間内にジョブを終えるには、そのようなサイズのノードが 1,000 個必要です。
 
-1 個の CPU コアを持つ Standard\_D1 ノードを使用する代わりに、それぞれが 16 個のコアを持つ [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) ノードを使用して、並列タスクの実行を有効にすることもできます。 この場合、" *ノードの数は 16 分の 1* " で済むため、必要なのは 1,000 ノードではなく 63 ノードのみになります。 加えて、大きなアプリケーション ファイルまたは参照データが各ノードに必要である場合、データのコピー先がわずか 16 ノードで済むため、ジョブの実行時間と効率の面でも改善が期待できます。
+1 個の CPU コアを持つ Standard\_D1 ノードを使用する代わりに、それぞれが 16 個のコアを持つ [Standard\_D14](../cloud-services/cloud-services-sizes-specs.md) ノードを使用して、並列タスクの実行を有効にすることもできます。 この場合、" *ノードの数は 16 分の 1* " で済むため、必要なのは 1,000 ノードではなく 63 ノードのみになります。 加えて、大きなアプリケーション ファイルまたは参照データが各ノードに必要である場合、データのコピー先がわずか 63 ノードで済むため、ジョブの実行時間と効率の面でも改善が期待できます。
 
 ## <a name="enable-parallel-task-execution"></a>並列タスク実行を有効にする
 並列タスク実行のためのコンピューティング ノードの構成は、プール レベルで行います。 Batch .NET ライブラリを使用する場合は、プールを作成するときに [CloudPool.MaxTasksPerComputeNode][maxtasks_net] プロパティを設定します。 Batch REST API を使用する場合は、プール作成時の要求本文に [maxTasksPerNode][rest_addpool] 要素を設定します。
@@ -147,4 +145,3 @@ Azure Batch の[サンプル アプリケーション][github_samples]の 1 つ�
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
 [1]: ./media/batch-parallel-node-tasks\heat_map.png
-
