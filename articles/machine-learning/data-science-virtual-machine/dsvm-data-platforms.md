@@ -43,7 +43,7 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
 ### <a name="setup"></a>[Setup]
 
-データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で実行する唯一の手順は、Microsoft R を使用した In-Database 分析を有効にすることです。これを行うには、コンピューターの管理者としてログインした後、SQL Server Management Studio (SSMS) での一時アクションとして次のコマンドを実行し、SSMS で [New Query] (新しいクエリ) を開き、選択されているデータベースが `master` であることを確認してから、次を実行します。 
+データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で実行する唯一の手順は、Microsoft R を使用した In-Database 分析を有効にすることです。これを行うには、コンピューターの管理者としてログインした後、SQL Server Management Studio (SSMS) での一時アクションとして次のコマンドを実行し、SSMS で [New Query] \(新しいクエリ) を開き、選択されているデータベースが `master` であることを確認してから、次を実行します。 
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
