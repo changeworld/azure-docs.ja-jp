@@ -40,7 +40,7 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 ## <a name="create-an-offer"></a>オファーの作成
 
-1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *SQLServerQuota* という名前を付けます。 **[Namespace] (名前空間)** フィールドの **[Microsoft.SQLAdapter]** を選択します。
+1.  [クォータを設定し](azure-stack-setting-quotas.md)、それに *SQLServerQuota* という名前を付けます。 **[Namespace] \(名前空間)** フィールドの **[Microsoft.SQLAdapter]** を選択します。
 2.  [プランを作成します](azure-stack-create-plan.md)。 それに *TestSQLServerPlan* という名前を付け、**[Microsoft.SQLAdapter]** サービスおよび **[SQLServerQuota]** クォータを選択します。
 
     > [!NOTE]
@@ -56,20 +56,20 @@ Azure Stack クラウド管理者として、ユーザー (テナント) が自�
 
 ### <a name="subscribe-to-the-offer"></a>オファーへのサブスクライブ
 1. テナントとして Azure Stack ポータル (https://portal.local.azurestack.external) にサインインします。
-2. **[Get a subscription] (サブスクリプションの取得)** をクリックし、**[Display Name] (表示名)** の下に「**TestSQLServerSubscription**」と入力します。
-3. **[Select an offer] (オファーの選択)** > **[TestSQLServerOffer]** > **[作成]** をクリックします。
-4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[Resource providers] (リソース プロバイダー)** をクリックします。
-5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[Register] (登録)** をクリックします。
+2. **[Get a subscription] \(サブスクリプションの取得)** をクリックし、**[Display Name] \(表示名)** の下に「**TestSQLServerSubscription**」と入力します。
+3. **[Select an offer] \(オファーの選択)** > **[TestSQLServerOffer]** > **[作成]** をクリックします。
+4. **[その他のサービス]** > **[サブスクリプション]** > **[TestSQLServerSubscription]** > **[Resource providers] \(リソース プロバイダー)** をクリックします。
+5. **[Microsoft.SQLAdapter]** プロバイダーの横にある **[Register] \(登録)** をクリックします。
 
 ### <a name="create-a-sql-database"></a>SQL Database の作成
 
 1. **+** > **[データ + ストレージ]** > **[SQL Database]** をクリックします。
 2. 各フィールドの既定値のままにします。または、次の例を使用できます。
     - **[データベース名]**: SQLdb
-    - **[Max Size in MB] (最大サイズ (MB))**: 100
+    - **[Max Size in MB] \(最大サイズ (MB))**: 100
     - **[サブスクリプション]**: TestSQLOffer
     - **[リソース グループ]**: SQL-RG
-3. **[Login Settings] (ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。
+3. **[Login Settings] \(ログイン設定)** をクリックし、データベースの資格情報を入力して、**[OK]** をクリックします。
 4. **[SKU]** をクリックし、SQL ホスティング サーバーに対して作成した SQL SKU を選択して、**[OK]** をクリックします。
 5. **Create** をクリックしてください。
 
