@@ -663,7 +663,8 @@ Hive の内部テーブルと外部テーブルについて知っておく必要
     # killOozieJob($oozieJobId)
     ```
 
-    追加の機能を実行するには、# 記号を削除します。
+追加の機能を実行するには、# 記号を削除します。
+
 9. HDInsight クラスターが Version 2.1 である場合は、"https://$clusterName.azurehdinsight.net:443/oozie/v2/" を "https://$clusterName.azurehdinsight.net:443/oozie/v1/" に置き換えてください。 HDInsight クラスター Version 2.1 は、Web サービスの Version 2 をサポートしていません。
 10. **[スクリプトの実行]** をクリックするか、**F5** キーを押して、スクリプトを実行します。 次のように出力されます。
 
