@@ -15,12 +15,11 @@ ms.workload: data-services
 ms.date: 9/13/2017
 ms.custom: loading
 ms.author: cakarst;barbkess
+ms.openlocfilehash: e8ae0eb96200c167a8758df4ce20b51452cc59a4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 7594a0730477fe3f3bd34b0b6207478de70c7595
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-for-using-polybase-in-sql-data-warehouse"></a>SQL Data Warehouse で PolyBase を使用するためのガイド
 このガイドでは、SQL Data Warehouse で PolyBase を使用するための実用的な情報を提供します。
@@ -134,7 +133,7 @@ PolyBase による最適な読み込みパフォーマンスを実現するに�
 
 ## <a name="polybase-limitations"></a>PolyBase の制限事項
 SQL DW の PolyBase には、読み込みジョブを設計するときに考慮する必要がある次の制限事項があります。
-- 1 行の幅は 1,000,000 バイトを超えることはできません。 これは、定義済みの (n)varchar(max) 列を含むテーブル スキーマとは無関係に適用されます。 つまり、外部テーブルの (n)varchar(max) 列は、最大 1,000,000 バイトの幅が可能であり、データ型によって定義される 2 GB の制限は適用されません。
+- 1 行の幅は 1,000,000 バイトを超えることはできません。 これは、テーブル スキーマが定義されていても同じです。
 - SQL Server または Azure SQL Data Warehouse から ORC ファイル形式にデータをエクスポートする場合、テキストが多く使用されている列は、java のメモリ不足エラーにより、わずか 50 列に制限される可能性があります。 これを回避するには、列のサブセットのみをエクスポートします。
 
 
@@ -174,4 +173,3 @@ SQL Data Warehouse にデータを移行する方法の詳細については、[
 [DROP CREDENTIAL (Transact-SQL)]: https://msdn.microsoft.com/library/ms189450.aspx
 
 <!-- External Links -->
-

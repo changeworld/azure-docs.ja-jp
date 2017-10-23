@@ -12,38 +12,37 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/28/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
+ms.openlocfilehash: 44911ec2c278f7af7b8ec4bd971bc97b342a8bf6
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: b6227d86bf5d52316334a0b7ecf975aadf2ba635
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-to-which-groups-a-group-belongs-in-your-azure-active-directory-tenant"></a>Azure Active Directory テナントでグループが属するグループを管理する
 Azure Active Directory でグループに他のグループを含めることができます。 ここでは、これらのメンバーシップを管理する方法について説明します。
 
 ## <a name="how-do-i-find-the-groups-of-which-my-group-is-a-member"></a>自分のグループが属するグループを見つける方法
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+2. **[ユーザーとグループ]** を選択します。
 
-   ![ユーザー管理を開く](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[すべてのグループ]** を選択します。
+   ![ユーザーとグループを開く画像](./media/active-directory-groups-membership-azure-portal/search-user-management.png)
+1. **[すべてのグループ]** を選択します。
 
-   ![グループ ブレードを開く](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
-4. **[ユーザーとグループ - すべてのグループ]** ブレードで、グループを選択します。
-5. **[グループ - *グループ名*]** ブレードで、**[グループ メンバーシップ]** を選択します。
+   ![グループの選択の画像](./media/active-directory-groups-membership-azure-portal/view-groups-blade.png)
+1. グループを選びます。
+2. **[グループ メンバーシップ]** を選びます。
 
-   ![グループ メンバーシップ ブレードを開く](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
-6. グループを別のグループのメンバーとして追加するには、**[グループ - グループ メンバーシップ]** ブレードで、**[追加]** をクリックします。
-7. **[グループの選択]** ブレードでグループを選択し、ブレードの下部にある **[選択]** をクリックします。 グループは、一度に 1 つのグループにのみ追加できます。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
+   ![グループ メンバーシップを開く画像](./media/active-directory-groups-membership-azure-portal/group-membership-blade.png)
+1. グループを別のグループのメンバーとして追加するには、**[グループ - グループ メンバーシップ]** ブレードで、**[追加]** をクリックします。
+2. **[グループの選択]** ブレードでグループを選択し、ブレードの下部にある **[選択]** をクリックします。 グループは、一度に 1 つのグループにのみ追加できます。 **[ユーザー]** ボックスでは、入力内容とユーザー名またはデバイス名の一部との一致に基づいて表示がフィルター処理されます。 このボックスではワイルドカード文字は使用できません。
 
    ![グループ メンバーシップを追加する](./media/active-directory-groups-membership-azure-portal/add-group-membership.png)
 8. 別のグループのメンバーであるグループを削除するには、 **[グループ - グループ メンバーシップ]** ブレードでグループを選択します。
-9. ***[グループ名]*** ブレードで **[削除]** をクリックし、表示されたメッセージで削除を確定します。
+9. **[削除]** コマンドを選び、表示されたメッセージで削除を確定します。
 
    ![メンバーシップの [削除] コマンド](./media/active-directory-groups-membership-azure-portal/remove-group-membership.png)
 10. グループのグループ メンバーシップの変更が完了したら、 **[保存]**をクリックします。
@@ -56,4 +55,3 @@ Azure Active Directory でグループに他のグループを含めることが
 * [グループの設定の管理](active-directory-groups-settings-azure-portal.md)
 * [グループのメンバーの管理](active-directory-groups-members-azure-portal.md)
 * [グループ内のユーザーの動的ルールの管理](active-directory-groups-dynamic-membership-azure-portal.md)
-

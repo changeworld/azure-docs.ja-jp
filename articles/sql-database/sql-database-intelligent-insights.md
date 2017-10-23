@@ -1,6 +1,6 @@
 ---
-title: "Intelligent Insights によるデータベースの使用状況の監視 - Azure SQL Database | Microsoft Docs"
-description: "Intelligent Insights では、データベースのパフォーマンスに何が起きているかを把握できます"
+title: "Intelligent Insights でデータベースの使用状況を監視する - Azure SQL Database | Microsoft Docs"
+description: "Azure SQL Database Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。"
 services: sql-database
 documentationcenter: 
 author: danimir
@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: v-daljep
+ms.openlocfilehash: 8e55fa02d5edda21fbf547397d63f9d1cf987a60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c3b11dd50fa8c94d3bf80e02a8a319030c375133
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="intelligent-insights"></a>Intelligent Insights
 
 "***Intelligent Insights では、データベースのパフォーマンスに何が起きているかを把握できます。***"
 
-Azure SQL Database の組み込みインテリジェンスは、人工知能を通じてデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。 検出されると、詳細な分析が実行され、問題のインテリジェントなアセスメントを含む診断ログが生成されます。 このアセスメントは、データベース パフォーマンスの問題の根本原因分析と、可能な場合にはパフォーマンス向上に関する推奨事項 (これが "***インテリジェントな洞察***" です) で構成されます。 
+Azure SQL Database Intelligent Insights は、組み込まれているインテリジェンスを使って、人工知能によりデータベースの使用状況を継続的に監視し、パフォーマンス低下の原因となる破壊的なイベントを検出します。 検出されると、詳細な分析が実行され、問題のインテリジェントなアセスメントを含む診断ログが生成されます。 このアセスメントは、データベース パフォーマンスの問題の根本原因分析と、可能な場合にはパフォーマンス向上に関する推奨事項 (これが "***インテリジェントな洞察***" です) で構成されます。 
 
 ## <a name="what-can-intelligent-insights-do-for-you"></a>Intelligent Insights でできること
 
@@ -161,6 +160,5 @@ Intelligent Insights ログは、エラーが発生した要求の数、パフ�
 * [Intelligent Insights Azure SQL Database パフォーマンス診断ログ](sql-database-intelligent-insights-use-diagnostics-log.md)の使用
 * [Azure SQL Analytics を使用した Azure SQL Database の監視](../log-analytics/log-analytics-azure-sql.md)の習得
 * [Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)の習得
-
 
 

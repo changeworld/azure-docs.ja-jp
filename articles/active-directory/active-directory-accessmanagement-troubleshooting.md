@@ -16,15 +16,14 @@ ms.date: 08/28/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: it-pro
+ms.openlocfilehash: 49a1dad57a6c8cd4b25e0e55e367839c760236e4
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 8b4251c39a8883dfcb97ded8e4b533f073dce685
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-dynamic-memberships-for-groups"></a>グループの動的メンバーシップのトラブルシューティング
-**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>**[構成]** タブで **[委任されたグループ管理の有効化]** 設定が **[はい]** に設定されていることを確認してください。Azure Active Directory Premium ライセンスが割り当てられたユーザーとしてサインインした場合にのみ、この設定が表示されます。 ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。
+**グループに対するルールを構成しましたが、グループのメンバーシップが更新されません**<br/>ルールに使用しているユーザー属性の値を確認し、そのルールを満たすユーザーが存在することを確認してください。 何も問題がなさそうな場合、グループが設定されるまでしばらく待ってください。 グループを初めて設定する場合、またはルールの変更後に設定する場合、テナントのサイズによっては最大 24 時間かかる場合があります。
 
 **ルールの設定を変更したのですが、そのルールの既存のメンバーが削除されてしまいました**<br/>これは正しい動作です。 ルールを有効にしたり変更を加えたりするとグループの既存のメンバーは削除されます。 ルールの評価から返されたユーザーは、グループのメンバーとして追加されます。     
 
@@ -37,4 +36,3 @@ ms.lasthandoff: 08/29/2017
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [Azure Active Directory とは](active-directory-whatis.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

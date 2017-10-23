@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 09/19/2017
 ms.author: dobett
+ms.openlocfilehash: 47f8949139c48ffa79f5530552b0a2e27b0f9ee0
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: a5753df2ff6874d9574e268953792cac9765cc54
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference---iot-hub-endpoints"></a>リファレンス - IoT Hub エンドポイント
 
@@ -38,9 +37,9 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
 次の一覧では、エンドポイントについて説明します。
 
 * **リソースプロバイダー**。 IoT Hub リソースプロバイダーでは、[Azure Resource Manager][lnk-arm] インターフェイスが公開されています。 Azure サブスクリプションの所有者は、IoT Hub の作成と削除や IoT Hub プロパティの更新などを、このインターフェイスで行うことができます。 IoT Hub のプロパティでは、[ハブレベルのセキュリティ ポリシー][lnk-accesscontrol] (デバイスレベルのアクセス制御ではありません) と、Cloud-to-device (クラウドからデバイス) と Device-to-cloud (デバイスからクラウド) のメッセージング機能のオプションを管理します。 また、IoT Hub リソースプロバイダーにより、[デバイス ID をエクスポート][lnk-importexport]することもできます。
-* **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTP REST エンドポイントを公開します。 [デバイス ID][lnk-device-identities]は、デバイスの認証とアクセス制御に使用されます。
-* **デバイス ツインの管理**。 各 IoT Hub は、[デバイス ツイン][lnk-twins]のクエリと更新 (タグとプロパティの更新) を実行するサービス接続 HTTP REST エンドポイントを公開します。
-* **ジョブの管理**。 各 IoT Hub は、[ジョブ][lnk-jobs]のクエリと管理を実行するサービス接続 HTTP REST エンドポイントを公開します。
+* **デバイス ID の管理**。 各 IoT Hub は、デバイス ID の管理 (作成、取得、更新、削除) を行うための、一連の HTTPS REST エンドポイントを公開します。 [デバイス ID][lnk-device-identities]は、デバイスの認証とアクセス制御に使用されます。
+* **デバイス ツインの管理**。 各 IoT Hub は、[デバイス ツイン][lnk-twins]のクエリと更新 (タグとプロパティの更新) を実行するサービス接続 HTTPS REST エンドポイントを公開します。
+* **ジョブの管理**。 各 IoT Hub は、[ジョブ][lnk-jobs]のクエリと管理を実行するサービス接続 HTTPS REST エンドポイントを公開します。
 * **デバイスのエンドポイント**。 IoT Hub では、ID レジストリ内のデバイスごとに、以下の一連のエンドポイントを公開しています。
 
   * *D2C メッセージの送信*。 デバイスは、このエンドポイントを使用して、[デバイスからクラウドへのメッセージを送信します][lnk-d2c]。
@@ -49,9 +48,9 @@ Azure IoT Hub はさまざまなアクターに機能を公開するマルチテ
   * *デバイス ツインのプロパティを取得して更新します*。 デバイスは、このエンドポイントを使用して、その[デバイス ツイン][lnk-twins]のプロパティにアクセスします。
   * *ダイレクト メソッド要求の受信*。 デバイスは、このエンドポイントを使用して、[ダイレクト メソッド][lnk-methods]の要求をリッスンします。
 
-    これらのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]、HTTP 1.1、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets][lnk-websockets] 経由で使用することもできます。
+    これらのエンドポイントは、[MQTT v3.1.1][lnk-mqtt]、HTTPS 1.1、および [AMQP 1.0][lnk-amqp] の各プロトコルを使用して公開されます。 AMQP は、ポート 443 で [WebSockets][lnk-websockets] 経由で使用することもできます。
 
-* **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP][lnk-amqp] プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTP プロトコルを介して公開されます。
+* **サービス エンドポイント**。 各 IoT Hub では、ソリューション バックエンドに対して一連のエンドポイントを公開し、デバイスと通信を行います。 唯一の例外は、これらのエンドポイントが [AMQP][lnk-amqp] プロトコルを使用して公開のみが行われる場合です。 メソッド呼び出しのエンドポイントは、HTTPS プロトコルを介して公開されます。
   
   * *D2C メッセージの受信*。 このエンドポイントには、[Azure Event Hubs][lnk-event-hubs] との互換性があります。 バックエンド サービスはこのエンドポイントを使用して、デバイスによって送信された[デバイスからクラウドへのメッセージ][lnk-d2c]を読み取ることができます。 この組み込みのエンドポイントに加え、IoT Hub のカスタム エンドポイントを作成することもできます。
   * *C2D メッセージの送信と、配信の確認メッセージの受信*。 これらのエンドポイントにより、ソリューション バックエンドは、信頼性の高い [Cloud-to-device メッセージ][lnk-c2d]を送信し、対応する配信または有効期限の確認メッセージを受信できます。
@@ -69,6 +68,7 @@ IoT Hub エンドポイントはすべて [TLS][lnk-tls] プロトコルを使�
 
 現在、IoT Hub は、追加のエンドポイントとして、次の Azure サービスをサポートします。
 
+* Azure Storage コンテナー
 * Event Hubs
 * Service Bus キュー
 * Service Bus トピック
@@ -77,10 +77,23 @@ IoT Hub でメッセージのルーティングを機能させるには、これ
 
 メッセージが、同じエンドポイントを指している複数のルートと一致する場合、IoT Hub はそのエンドポイントにメッセージを 1 回だけ送信します。 そのため、Service Bus キューまたはトピックで重複除去を構成する必要はありません。 パーティション分割されたキューでは、パーティションのアフィニティによってメッセージの順序が保証されます。
 
-> [!NOTE]
-> IoT Hub エンドポイントとして使用される Service Bus のキューおよびトピックでは、**セッション**も**重複データ検出**も有効にしないでください。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
-
 追加できるエンドポイントの数の制限については、「[クォータと調整][lnk-devguide-quotas]」をご覧ください。
+
+### <a name="when-using-azure-storage-containers"></a>Azure Storage コンテナーを使うとき
+
+IoT Hub は、Azure Storage コンテナーに [Apache Avro](http://avro.apache.org/) 形式で BLOB としてデータを書き込む処理のみをサポートしています。 IoT Hub は、メッセージが特定のサイズに達するか、一定の時間が経過した時点で (どちらか先に発生した方)、メッセージを一括して BLOB にデータを書き込みます。 書き込むデータがない場合、IoT Hub は空の BLOB を書き込みません。
+
+IoT Hub の既定のファイル名前付け規則は次のとおりです。
+
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
+```
+
+好みのファイル名前付け規則を使うことができますが、一覧で示されているすべてのトークンを使う必要があります。
+
+### <a name="when-using-service-bus-queues-and-topics"></a>Service Bus のキューとトピックを使うとき
+
+IoT Hub エンドポイントとして使用される Service Bus のキューおよびトピックでは、**セッション**も**重複データ検出**も有効にしないでください。 これらのオプションのいずれかが有効になっている場合、エンドポイントは Azure Portal に**到達不能**として表示されます。
 
 ## <a name="field-gateways"></a>フィールド ゲートウェイ
 
@@ -125,4 +138,3 @@ IoT ソリューションでは、*フィールド ゲートウェイ*はデバ�
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
 [lnk-devguide-messaging]: iot-hub-devguide-messaging.md
 [lnk-operations-mon]: iot-hub-operations-monitoring.md
-

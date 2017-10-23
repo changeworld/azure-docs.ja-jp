@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 28/9/2017
 ms.author: seguler
+ms.openlocfilehash: d77ac39b7fcf6a23ebc58a2bbf9dc7de664edbb3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 0b6417b616a9e4e74b5fb8a67e1414ad74e8f258
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transfer-data-with-azcopy-on-linux"></a>AzCopy on Linux を使用したデータの転送
 AzCopy on Linux は、最適なパフォーマンスの単純なコマンドを使用して、Microsoft Azure の Blob Storage および File Storage との間でデータをコピーするために設計されたコマンドライン ユーティリティです。 ストレージ アカウント内のあるオブジェクトから別のオブジェクトにデータをコピーしたり、ストレージ アカウント間でコピーしたりすることができます。
@@ -497,7 +496,7 @@ azcopy \
     --sync-copy
 ```
 
-File Storage から Blob Storage にコピーするときの既定の BLOB タイプはブロック BLOB ですが、ユーザーはオプション `/BlobType:page` を指定して宛先 BLOB タイプを変更できます。
+File Storage から Blob Storage にコピーするときの既定の BLOB タイプはブロック BLOB ですが、ユーザーはオプション `--blob-type page` を指定して宛先 BLOB タイプを変更できます。 使用可能なタイプは `page | block | append` です。
 
 ただし `--sync-copy` では、非同期コピーと比較すると、追加の送信コストが発生する可能性があります。 この送信コストが発生しないように、このオプションは、ソース ストレージ アカウントと同じリージョンにある Azure VM で使用することをお勧めします。
 
@@ -691,5 +690,4 @@ Azure Storage および AzCopy の詳細については、以下のリソース�
 * [AzCopy - Transfer data with restartable mode and SAS token (AzCopy - 再起動可能モードまたは SAS トークンを使用したデータの転送)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/09/07/azcopy-transfer-data-with-re-startable-mode-and-sas-token.aspx)
 * [AzCopy: Using cross-account Copy Blob (AzCopy: アカウント間での BLOB のコピー)](http://blogs.msdn.com/b/windowsazurestorage/archive/2013/04/01/azcopy-using-cross-account-copy-blob.aspx)
 * [AzCopy - Uploading/downloading files for Azure Blobs (AzCopy - Azure BLOB に対するファイルのアップロードおよびダウンロード)](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/12/03/azcopy-uploading-downloading-files-for-windows-azure-blobs.aspx)
-
 

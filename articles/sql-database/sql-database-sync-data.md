@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: douglasl
+ms.openlocfilehash: ed2266004e60843749233f92c8f4b069e4c17ba5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 926938a8ed20167e1f17a9883007cd993897f14a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>複数のクラウドおよびオンプレミス データベースにわたるデータを SQL データ同期で同期します
 
@@ -41,7 +40,7 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 データ同期は、データを同期するために、ハブとスポークのトポロジを使用します。 グループ内のいずれかのデータベースを、ハブ データベースとして定義します。 他のデータベースは、メンバー データベースです。 同期は、ハブと個々のメンバー間でのみ発生します。
 -   **ハブ データベース**は、Azure SQL データベースにする必要があります。
 -   **メンバー データベース**は、SQL データベース、オンプレミス SQL Server データベース、または Azure 仮想マシン上の SQL Server インスタンスにすることができます。
--   **同期データベース**には、データ同期のメタデータとログが含まれています。 同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
+-   **同期データベース**には、データ同期のメタデータとログが含まれています。同期データベースは、ハブ データベースと同じリージョンにある Azure SQL データベースである必要があります。 同期データベースは、お客様が作成し、所有します。
 
 > [!NOTE]
 > オンプレミスのデータベースを使用している場合は、[ローカル エージェントを構成する](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-get-started-sql-data-sync)必要があります。
@@ -98,11 +97,13 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 
 ### <a name="requirements"></a>必要条件
 
--   各テーブルには主キーが必要です。
+-   各テーブルには主キーが必要です。 どの行の主キーも値を変更しないでください。 値を変更する必要がある場合は、行を削除し、新しい主キー値で作成し直してください。 
 
 -   テーブルに、主キー以外の ID 列を設けることはできません。
 
 -   オブジェクト (データベース、テーブル、および列) の名前には、印刷可能な文字のピリオド (.)、左角かっこ ([)、または右角かっこ (]) を使用できません。
+
+-   スナップショット分離を有効にする必要があります。 詳しくは、「[SQL Server でのスナップショット分離](https://docs.microsoft.com/en-us/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server)」をご覧ください。
 
 ### <a name="limitations-on-service-and-database-dimensions"></a>サービスとデータベースの数量に関する制限
 
@@ -140,6 +141,11 @@ SQL データ同期は、Azure SQL Database 上に構築されているサービ
 ### <a name="how-does-data-sync-handle-circular-references-that-is-when-the-same-data-is-synced-in-multiple-sync-groups-and-keeps-changing-as-a-result"></a>データ同期では循環参照はどのように処理されますか? つまり、同じデータが複数の同期グループで同期されるとき、その変更を結果として保持しますか?
 データ同期は循環参照を処理しません。 必ず回避してください。 
 
+### <a name="how-can-i-export-and-import-a-database-with-data-sync"></a>データ同期でデータベースをエクスポートおよびインポートするにはどうすればよいですか?
+データベースを .bacpac ファイルとしてエクスポートし、それをインポートして新しいデータベースを作成した後、新しいデータベースでデータ同期を使うには、次の 2 つのことを行う必要があります。
+1.  [このスクリプト](https://github.com/Microsoft/sql-server-samples/blob/master/samples/features/sql-data-sync/clean_up_data_sync_objects.sql)を使って、**新しいデータベース**でデータ同期オブジェクトとサイド テーブルをクリーンアップします。 このスクリプトは、データベースからすべての必要なデータ同期オブジェクトを削除します。
+2.  新しいデータベースで同期グループを再作成します。 古い同期グループが必要ない場合は削除します。
+
 ## <a name="next-steps"></a>次のステップ
 
 SQL データ同期の詳細については、以下を参照してください。
@@ -159,4 +165,3 @@ SQL Database の詳細については、以下を参照してください。
 -   [SQL Database の概要](sql-database-technical-overview.md)
 
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)
-

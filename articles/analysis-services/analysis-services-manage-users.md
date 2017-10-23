@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/15/2017
+ms.date: 10/09/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 766b2fc3b68d223d80de1da9ef36aec269fe0de9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: e9667afff1bdc351e0ed5cd94bb5fcf946b46f3b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。
@@ -36,8 +35,11 @@ Azure Analysis Services では、[Azure AD B2B コラボレーション](../acti
 
 Excel や Power BI Desktop などのクライアント アプリケーションと、SSMS や SSDT などのツールは、最新リリースに更新されたときにライブラリの最新バージョンをインストールします。 Power BI Desktop、SSMS、SSDT は毎月更新されます。 Excel は [Office 365 と共に更新](https://support.office.com/en-us/article/When-do-I-get-the-newest-features-in-Office-2016-for-Office-365-da36192c-58b9-4bc9-8d51-bb6eed468516)されます。 Office 365 の更新は頻度が低く、組織によっては遅延チャネルを使用して、更新が最大 3 か月間遅延されるようにしています。
 
- 使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
+使用するクライアント アプリケーションまたはツールに応じて、認証の種類とサインインの方法が異なる場合があります。 各アプリケーションは、Azure Analysis Services のようなクラウド サービスに接続するためのさまざまな機能をサポートしている場合があります。
 
+Power BI Desktop、SSDT、および SSMS は、Azure Multi-Factor Authentication (MFA) もサポートする対話型の認証方式である Active Directory ユニバーサル認証をサポートします。 Azure MFA は、シンプルなサインイン プロセスを提供しながら、データやアプリケーションへのアクセスを効果的に保護することができます。 Azure MFA は、複数の検証オプション (電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知) による強力な認証を提供します。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。 **ユニバーサル認証を使うことをお勧めします**。
+
+ユニバーサル認証が選択されていないか、使用できない (Excel) 場合に、Windows アカウントを使って Azure にサインインするには、[Active Directory フェデレーション サービス (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) が必要です。 フェデレーションでは、Azure AD および Office 365 のユーザーはオンプレミスの資格情報を使って認証されて、Azure リソースにアクセスできます。
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Azure Analysis Services サーバーは、Windows 認証、Active Directory パスワード認証、Active Directory のユニバーサル認証を使って [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) 以降からの接続をサポートします。 一般に、以下の理由で Active Directory のユニバーサル認証の使用をお勧めします。
@@ -49,10 +51,10 @@ Azure Analysis Services サーバーは、Windows 認証、Active Directory パ�
 *  Multi-Factor Authentication (MFA) をサポートします。 Azure MFA は、電話、テキスト メッセージ、スマート カードと暗証番号 (PIN)、モバイル アプリ通知など、各種確認オプションでデータとアプリケーションへのアクセスを保護するのに役立ちます。 Azure AD との対話型 MFA はポップアップ ダイアログ ボックスで検証できます。
 
 ### <a name="sql-server-data-tools-ssdt"></a>SQL Server Data Tools (SSDT)
-SSDT は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初のデプロイ時に自分の組織 ID (電子メール) を使って Azure にサインインするよう求められます。 ユーザーは、デプロイしているサーバーでサーバー管理者のアクセス許可を持つアカウントを使って Azure にサインインする必要があります。 初めて Azure にサインインするときに、トークンが割り当てられます。 SSDT は、将来の再接続のためにトークンをメモリにキャッシュします。
+SSDT は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初のデプロイ時に Azure にサインインするよう求められます。 ユーザーは、デプロイしているサーバーでサーバー管理者のアクセス許可を持つアカウントを使って Azure にサインインする必要があります。 初めて Azure にサインインするときに、トークンが割り当てられます。 SSDT は、将来の再接続のためにトークンをメモリにキャッシュします。
 
 ### <a name="power-bi-desktop"></a>Power BI Desktop
-Power BI Desktop は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初の接続時に自分の組織 ID (電子メール) を使って Azure にサインインするよう求められます。 ユーザーは、サーバー管理者またはデータベース ロールに含まれているアカウントを使用して Azure にサインインする必要があります。
+Power BI Desktop は、MFA サポートがある Active Directory のユニバーサル認証を使って Azure Analysis Services に接続します。 ユーザーは、最初の接続時に Azure にサインインするよう求められます。 ユーザーは、サーバー管理者またはデータベース ロールに含まれているアカウントを使用して Azure にサインインする必要があります。
 
 ### <a name="excel"></a>Excel
 Excel ユーザーは、Windows アカウント、組織 ID (メール アドレス)、または外部のメール アドレスを使ってサーバーに接続できます。 外部の電子メール ID は、ゲスト ユーザーとして Azure AD に存在する必要があります。
@@ -60,7 +62,6 @@ Excel ユーザーは、Windows アカウント、組織 ID (メール アドレ
 ## <a name="user-permissions"></a>ユーザーのアクセス許可
 
 **サーバー管理者**は、Azure Analysis Services サーバー インスタンスに固有です。 Azure Portal、SSMS、SSDT などのツールを使って接続し、データベースの追加やユーザー ロールの管理などのタスクを実行します。 既定では、サーバーを作成したユーザーは、自動的に Analysis Services サーバー管理者として追加されます。 他の管理者は、Azure Portal または SSMS を使って追加できます。 サーバー管理者には、同じサブスクリプションの Azure AD テナントにアカウントが必要です。 詳しくは、「[サーバー管理者の管理](analysis-services-server-admins.md)」をご覧ください。 
-
 
 **データベース ユーザー**は、Excel や Power BI などのクライアント アプリケーションを使ってモデル データベースに接続します。 ユーザーは、データベース ロールに追加する必要があります。 データベース ロールは、データベースに対して管理者、プロセス、または読み取りアクセス許可を定義します。 管理者のアクセス許可を含むロールのデータベース ユーザーは、サーバー管理者とは異なることを理解することが重要です。 ただし、既定では、サーバー管理者はデータベース管理者でもあります。 詳しくは、「[データベース ロールとユーザーの管理](analysis-services-database-users.md)」をご覧ください。
 

@@ -16,12 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/31/2017
 ms.author: douglasl
+ms.openlocfilehash: 78fbb18cb8d8d93e2b02c658c31c884d423dcd1c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 79bebd10784ec74b4800e19576cbec253acf1be7
-ms.openlocfilehash: f44895802103b6c4f347b53fd74af51ab705f7c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/03/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-powershell-to-sync-between-an-azure-sql-database-and-a-sql-server-on-premises-database"></a>PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う
 
@@ -378,7 +377,7 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 | [Update-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncSchema) |  データベース スキーマを最新の情報に更新する |
 | [Get-AzureRmSqlSyncSchema](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncSchem) |  データベース スキーマ情報を取得する |
 | [Update-AzureRmSqlSyncGroup](/powershell/module/azurerm.sql/Update-AzureRmSqlSyncGroup) |  同期グループを更新する |
-| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | 同期をトリガーする |
+| [Start-AzureRmSqlSyncGroupSync](/powershell/module/azurerm.sql/Start-AzureRmSqlSyncGroupSync) | 同期をトリガする |
 | [Get-AzureRmSqlSyncGroupLog](/powershell/module/azurerm.sql/Get-AzureRmSqlSyncGroupLog) |  同期ログを確認する |
 |||
 
@@ -387,4 +386,3 @@ Remove-AzureRmResourceGroup -ResourceGroupName $SyncDatabaseResourceGroupName
 Azure PowerShell の詳細については、[Azure PowerShell のドキュメント](/powershell/azure/overview)を参照してください。
 
 その他の SQL Database 用の PowerShell サンプル スクリプトは、[Azure SQL Database 用の PowerShell スクリプト](../sql-database-powershell-samples.md)のページにあります。
-

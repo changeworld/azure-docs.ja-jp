@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 07/17/2017
+ms.date: 09/27/2017
 ms.author: rickbyh
+ms.openlocfilehash: f244fc5dada77d6601710b374aa6edeb607b11d6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: fd78b34e8bbefdaa79a73d69ff2a0e3c1c342e98
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 
@@ -65,9 +64,10 @@ Azure SQL Database の多要素認証の概要については、「[SQL Database
 
 ## <a name="next-steps"></a>次のステップ
 
-* Azure SQL Database の多要素認証の概要については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。
-* 他のユーザーへのデータベースへのアクセス権の付与: [SQL Database の認証と承認: アクセス権の付与](sql-database-manage-logins.md)  
-他のユーザーがファイアウォール経由で接続する手順は、「[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」をご覧ください。
+- Azure SQL Database の多要素認証の概要については、「[SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)](sql-database-ssms-mfa-authentication.md)」を参照してください。  
+- 他のユーザーへのデータベースへのアクセス権の付与: [SQL Database の認証と承認: アクセス権の付与](sql-database-manage-logins.md)  
+- 他のユーザーがファイアウォール経由で接続する手順は、「[Azure Portal を使用して Azure SQL Database のサーバー レベルのファイアウォール規則を作成する](sql-database-configure-firewall-settings.md)」をご覧ください。  
+- **Active Directory - MFA で汎用**認証を使うとき、ADAL トレースは [SSMS 17.3](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms) 以降で利用できます。 ADAL トレースは既定ではオフであり、オンにするには、**[ツール]** の **[オプション]** メニューで、**[Azure サービス]**、**[Azure クラウド]**、**[ADAL 出力ウィンドウのトレース レベル]** の順に選んで、**[表示]** メニューの **[出力]** を有効にします。 出力ウィンドウで **[Azure Active Directory option]\(Azure Active Directory オプション\)** を選ぶと、トレースが使用可能になります。   
 
 
 [1]: ./media/sql-database-ssms-mfa-auth/1mfa-universal-connect.png
@@ -75,5 +75,4 @@ Azure SQL Database の多要素認証の概要については、「[SQL Database
 [3]: ./media/sql-database-ssms-mfa-auth/3mfa-setup.png
 [4]: ./media/sql-database-ssms-mfa-auth/4mfa-verify-1.png
 [5]: ./media/sql-database-ssms-mfa-auth/5mfa-verify-2.png
-
 

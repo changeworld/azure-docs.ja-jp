@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeedakhter-msft
-ms.openlocfilehash: 122fa997ea11b369aae3c59edf0043ab19d21aea
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 37e9f06555063ceea00b9162c79344130414b82e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-customize-the-azure-ad-b2c-user-interface-ui"></a>Azure Active Directory B2C: Azure AD B2C ユーザー インターフェイス (UI) のカスタマイズ
 
@@ -27,6 +27,7 @@ ms.lasthandoff: 08/29/2017
 > [!NOTE]
 > この記事で説明しているページ UI カスタマイズ機能は、サインインのみポリシー、それに付随するパスワード リセット ページ、および確認メールには適用されません。  これらの機能では、[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使用します。
 >
+> 同様に、ユーザーがサインインの "*前に*" プロファイル ポリシーの編集を開始すると、ユーザーは[会社のブランド化機能](../active-directory/active-directory-add-company-branding.md)を使ってカスタマイズできるページにリダイレクトされます。
 
 この記事では、次のトピックについて説明します。
 

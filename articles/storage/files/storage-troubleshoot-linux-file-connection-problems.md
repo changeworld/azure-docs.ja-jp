@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: genli
+ms.openlocfilehash: 660fe4fb9f962c835de9a2f900ceaabb4371b0db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: bef3e7bf8b1fd9199d0c8a083d94660b8eed3365
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>Linux での Azure Files に関する問題のトラブルシューティング
 
@@ -83,7 +82,7 @@ Linux カーネルの再接続に関するこの問題は、以下の変更の�
 
 ### <a name="cause"></a>原因
 
-一部のディストリビューションでは、SMB 3.0 での暗号化機能がまだサポートされておらず、ユーザーが SMB 3.0 を使用して Azure Files をマウントしようとしたときに、機能が見つからないため、"115" エラー メッセージが表示される場合があります。
+一部のディストリビューションでは、SMB 3.0 での暗号化機能がまだサポートされておらず、ユーザーが SMB 3.0 を使用して Azure Files をマウントしようとしたときに、機能が見つからないため、"115" エラー メッセージが表示される場合があります。 現時点では、完全な暗号化機能を持つ SMB 3.0 は Ubuntu 16.04 以降を使っている場合にのみサポートされます。
 
 ### <a name="solution"></a>解決策
 
@@ -104,11 +103,11 @@ Linux 用 SMB 3.0 の暗号化機能は 4.11 カーネルで導入されまし�
 
 一部のシナリオでは、**serverino** マウント オプションが原因となり、**ls** コマンドによってすべてのディレクトリ エントリに対して stat が実行されることがあります。 この動作のために、大きなディレクトリを一覧表示するときのパフォーマンスが低下します。 **/etc/fstab** エントリで、マウント オプションを確認できます。
 
-`//azureuser.file.core.windows.net/cifs /cifs cifs vers=3.0,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
+`//azureuser.file.core.windows.net/cifs /cifs cifs vers=2.1,serverino,username=xxx,password=xxx,dir_mode=0777,file_mode=0777`
 
 **sudo mount | grep cifs** コマンドを実行し、その出力を調べることによって、正しいオプションが使用されているかどうかを確認することもできます。以下に、出力の例を示します。
 
-`//mabiccacifs.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=3.0,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
+`//azureuser.file.core.windows.net/cifs on /cifs type cifs (rw,relatime,vers=2.1,sec=ntlmssp,cache=strict,username=xxx,domain=X,uid=0,noforceuid,gid=0,noforcegid,addr=192.168.10.1,file_mode=0777, dir_mode=0777,persistenthandles,nounix,serverino,mapposix,rsize=1048576,wsize=1048576,actimeo=1)`
 
 **cache=strict** または **serverino** オプションが存在しない場合は、[ドキュメント](../storage-how-to-use-files-linux.md)のマウント コマンドを実行して、Azure Files をマウント解除してから再マウントします。 その後、**/etc/fstab** エントリに正しいオプションが指定されていることを再確認します。
 
@@ -159,4 +158,3 @@ COPYFILE の強制フラグ **f** を使用すると、Unix 上で **cp -p -f** 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 まだ支援が必要な場合は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

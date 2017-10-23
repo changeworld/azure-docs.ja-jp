@@ -8,14 +8,12 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
+ms.openlocfilehash: c760cf5a9bdd4b64a60470fa48cb9b57ec4ab5fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: b9b117bdeb62f5ebb2e4e3fbfe71572068927082
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reacting-to-blob-storage-events-preview"></a>Blob Storage のイベントへの対応
 
 Azure Blob Storage のイベントをアプリケーションで使うと、最新のサーバーレス アーキテクチャを使って、BLOB の作成と削除に対応できます。複雑なコードや、高価で非効率的なポーリング サービスは必要ありません。  イベントは、[Azure Event Grid](https://azure.microsoft.com/services/event-grid/) を通して、[Azure Functions](https://azure.microsoft.com/services/functions/)、[Azure Logic Apps](https://azure.microsoft.com/services/logic-apps/)、またはユーザー独自のカスタム HTTP リスナーにプッシュされ、料金は使ったものだけで済みます。
@@ -36,7 +34,7 @@ az feature register --name storageEventSubscriptions --namespace Microsoft.Event
 ```azurecli-interactive
 az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid
 ```
-登録の状態が "Registered" に変化すると、プレビュー プログラムへの参加が許可され、"*米国中西部*" の場所でのアカウントに対する Blob Storage イベントにサブスクライブできます。  簡単な例については、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](storage-blob-event-quickstart.md)」をご覧ください。
+登録の状態が "Registered" に変化すると、プレビュー プログラムへの参加が許可され、"***米国中西部***" または "***米国西部 2***" の場所でのアカウントに対する Blob Storage イベントにサブスクライブできます。  簡単な例については、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](storage-blob-event-quickstart.md)」をご覧ください。
 
 ## <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
 Blob Storage イベントは、[Blob Storage アカウント](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) で使用できます (汎用ストレージ アカウントでは使用できません)。  BLOB ストレージ アカウントとは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。
@@ -55,7 +53,7 @@ Event Grid イベントのプロパティの使用法について詳しくは、
 
 > |プロパティ|型|説明|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
-> |topic|string|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
+> |トピック|string|イベントを生成したストレージ アカウントの完全な Azure Resource Manager ID です。|
 > |subject|string|イベントの対象であるオブジェクトへの相対リソース パスです。Azure RBAC のストレージ アカウント、サービス、およびコンテナーの記述に使うのと同じ拡張 Azure Resource Manager 形式を使います。  この形式には、大文字と小文字が区別される BLOB 名が含まれます。|
 > |eventTime|string|イベントが生成された日時です (ISO 8601 形式)。|
 > |eventType|string|"Microsoft.Storage.BlobCreated" または "Microsoft.Storage.BlobDeleted" です。|

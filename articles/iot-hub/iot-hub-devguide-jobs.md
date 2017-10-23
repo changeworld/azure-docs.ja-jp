@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: juanpere
+ms.openlocfilehash: ed93463153e3fba154aae733da27dea3e8d47689
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 6e4ca8ad0c444930f5e45eed0a024412de82dbb1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
 ## <a name="overview"></a>Overview
@@ -33,7 +32,7 @@ ms.lasthandoff: 08/29/2017
 * ダイレクト メソッドを呼び出す
 
 ## <a name="job-lifecycle"></a>ジョブのライフサイクル
-ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) を通して照会できます。  ジョブの開始後、バックエンド アプリは、ジョブを照会することで、実行中のジョブの状態を更新できます。
+ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) を通して照会できます。 ジョブが開始された後で実行中のジョブの状態を更新するには、ジョブ クエリを実行します。
 
 > [!NOTE]
 > ジョブを呼び出すとき、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
@@ -44,7 +43,7 @@ ms.lasthandoff: 08/29/2017
 以下の参照トピックは、ジョブの使用に関する詳細情報を提供しています。
 
 ## <a name="jobs-to-execute-direct-methods"></a>ダイレクト メソッドを実行するジョブ
-ジョブを使用してデバイス上で[ダイレクト メソッド][lnk-dev-methods]を実行するための HTTP 1.1 要求の詳細を次に示します。
+次のスニペットでは、ジョブを使ってデバイス上で[ダイレクト メソッド][lnk-dev-methods]を実行するための HTTPS 1.1 要求の詳細を示します。
 
     ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
@@ -67,7 +66,7 @@ ms.lasthandoff: 08/29/2017
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
     ```
-次に示すように、クエリ条件は 1 つのデバイス ID にもデバイス ID のリストにも設定できます。
+クエリ条件は、1 つのデバイス ID に対するものであっても、次の例で示すようにデバイス ID のリストに対するものであってもかまいません。
 
 **例**
 ```
@@ -78,7 +77,7 @@ queryCondition = "deviceId IN ['MyDevice1']
 IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-query]に関するページをご覧ください。
 
 ## <a name="jobs-to-update-device-twin-properties"></a>デバイス ツインのプロパティを更新するジョブ
-ジョブを使用してデバイス ツインのプロパティを更新するための HTTP 1.1 要求の詳細を次に示します。
+次のスニペットでは、ジョブを使ってデバイス ツインのプロパティを更新するための HTTPS 1.1 要求の詳細を示します。
 
     ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
@@ -98,7 +97,7 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
     ```
 
 ## <a name="querying-for-progress-on-jobs"></a>ジョブの進行状況の照会
-[ジョブを照会する][lnk-query]ための HTTP 1.1 要求の詳細を次に示します。
+次のスニペットでは、[ジョブを照会する][lnk-query]ための HTTPS 1.1 要求の詳細を示します。
 
     ```
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
@@ -112,7 +111,7 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
 ContinuationToken は、応答から提供されます。  
 
 ## <a name="jobs-properties"></a>ジョブのプロパティ
-ジョブまたはジョブの結果を照会するときに使用できるプロパティとその説明の一覧を次に示します。
+次の一覧は、ジョブまたはジョブの結果を照会するときに使うことができるプロパティとその説明です。
 
 | プロパティ | 説明 |
 | --- | --- |
@@ -120,15 +119,15 @@ ContinuationToken は、応答から提供されます。
 | **startTime** |アプリケーションが提供するジョブの開始時刻 (ISO 8601)。 |
 | **endTime** |IoT Hub が提供するジョブの完了時の日付 (ISO 8601)。 ジョブが 'completed' 状態に達した後でのみ有効です。 |
 | **type** |ジョブの種類: |
-| **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 | |
-| **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 | |
+| | **scheduledUpdateTwin**: 必要なプロパティまたはタグを更新するために使用するジョブ。 |
+| | **scheduledDeviceMethod**: デバイス ツインでデバイス メソッドを呼び出すために使用するジョブ。 |
 | **状態** |ジョブの現在の状態。 状態の可能値: |
-| **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 | |
-| **scheduled**: 将来の時刻のスケジュールが設定されています。 | |
-| **running**: 現在アクティブなジョブです。 | |
-| **cancelled**: ジョブは取り消されています。 | |
-| **failed**: ジョブは失敗しました。 | |
-| **completed**: ジョブは完了しています。 | |
+| | **pending**: スケジュールが設定され、ジョブ サービスによって選択されるために待機しています。 |
+| | **scheduled**: 将来の時刻のスケジュールが設定されています。 |
+| | **running**: 現在アクティブなジョブです。 |
+| | **canceled**: ジョブは取り消されました。 |
+| | **failed**: ジョブは失敗しました。 |
+| | **completed**: ジョブは完了しています。 |
 | **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
 
 **deviceJobStatistics** プロパティ。
@@ -167,4 +166,3 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-dev-methods]: iot-hub-devguide-direct-methods.md
 [lnk-get-started-twin]: iot-hub-node-node-twin-getstarted.md
 [lnk-twin-devguide]: iot-hub-devguide-device-twins.md
-

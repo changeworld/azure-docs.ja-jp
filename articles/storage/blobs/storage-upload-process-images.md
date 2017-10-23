@@ -14,14 +14,12 @@ ms.topic: tutorial
 ms.date: 09/19/2017
 ms.author: gwallace
 ms.custom: mvc
+ms.openlocfilehash: a204498016ff837c5247009eaaffbd4f79285d0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: b0b043f0e30eec7a9456ef15b28b9c89fccf33df
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="upload-image-data-in-the-cloud-with-azure-storage"></a>Azure Storage を使用してクラウドに画像データをアップロードする
 
 このチュートリアルは、シリーズの第 1 部です。 このチュートリアルでは、Azure Storage Client Library を使用してストレージ アカウントに画像をアップロードする Web アプリケーションのデプロイ方法を示します。 このチュートリアルでは、Web アプリの保存と Azure Storage からの画像の表示を実習します。
@@ -31,10 +29,10 @@ ms.lasthandoff: 09/25/2017
 シリーズの第 1 部で学習する内容は次のとおりです。
 
 > [!div class="checklist"]
-> * ストレージ アカウントを作成する
+> * ストレージ アカウントの作成
 > * コンテナーを作成し、アクセス許可を設定する
 > * アクセス キーを取得する
-> * アプリケーション設定を構成する
+> * アプリケーション設定の構成
 > * Web アプリを Azure にデプロイする
 > * Web アプリと対話する
 
@@ -42,22 +40,22 @@ ms.lasthandoff: 09/25/2017
 
 CLI をローカルにインストールして使用する場合、このチュートリアルでは、Azure CLI バージョン 2.0.4 以降を実行していることが要件です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-## <a name="create-a-resource-group"></a>リソース グループを作成する 
+## <a name="create-a-resource-group"></a>リソース グループの作成 
 
 [az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
  
-次の例では、`myResourceGroup` という名前のリソース グループを作成します。   
+次の例では、`myResourceGroup` という名前のリソース グループを作成します。
  
 ```azurecli-interactive 
 az group create --name myResourceGroup --location westcentralus 
 ``` 
 
-## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
+## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
  
 サンプルでは、Azure Storage アカウント内の BLOB コンテナーに画像をアップロードします。 ストレージ アカウントは、Azure Storage データ オブジェクトを格納してアクセスするための一意の名前空間を用意します。 [az storage account create](/cli/azure/storage/account#create) コマンドを使用して作成したリソース グループ内にストレージ アカウントを作成します。 
 
 > [!IMPORTANT] 
-> このチュートリアルの第 2 部では、BLOB ストレージのイベント サブスクリプションを使用します。 イベント サブスクリプションは、現時点では米国中西部と米国西部の BLOB ストレージ アカウントのみをサポートしています。 この制約のため、サンプル アプリが画像とサムネイルを格納するために使用する BLOB ストレージ アカウントを作成する必要があります。   
+> このチュートリアルの第 2 部では、BLOB ストレージのイベント サブスクリプションを使用します。 イベント サブスクリプションは、現時点では米国中西部と米国西部 2 の Blob Storage アカウントのみをサポートしています。 この制約のため、サンプル アプリが画像とサムネイルを格納するために使用する BLOB ストレージ アカウントを作成する必要があります。   
 
 次のコマンドの `<blob_storage_account>` プレースホルダーを、BLOB ストレージ アカウントのグローバルな一意の名前に置き換えます。  
 
@@ -67,7 +65,7 @@ az storage account create --name <blob_storage_account> \
 --sku Standard_LRS --kind blobstorage --access-tier hot 
 ``` 
  
-## <a name="create-blob-storage-containers"></a>BLOB ストレージ コンテナーの作成 
+## <a name="create-blob-storage-containers"></a>BLOB ストレージ コンテナーの作成
  
 アプリでは、BLOB ストレージ アカウント内の 2 つのコンテナーを使用します。 コンテナーはフォルダーに似ており、BLOB の格納に使用します。 "_images_" コンテナーは、アプリが高解像度のイメージをアップロードする場所です。 このシリーズの後半で、Azure 関数アプリで、サイズ変更した画像を "_thumbs_" コンテナーにアップロードします。 
 
@@ -107,7 +105,7 @@ az appservice plan create --name myAppServicePlan --resource-group myResourceGro
 
 ## <a name="create-a-web-app"></a>Web アプリを作成する 
 
-Web アプリは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスティング容量を用意します。 [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service-web/app-service-web-overview.md)を作成します。  
+Web アプリは、GitHub サンプル リポジトリからデプロイされるサンプル アプリ コード用のホスティング容量を用意します。 [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../../app-service/app-service-web-overview.md)を作成します。  
  
 次のコマンドの `<web_app>` を一意の名前に置き換えます (有効な文字は、`a-z`、`0-9`、および `-` です)。 `<web_app>` が一意でない場合は、"_指定された名前 `<web_app>` の Web サイトは既に存在します_" というエラー メッセージが表示されます。 Web アプリの既定の URL は、`https://<web_app>.azurewebsites.net` です。  
 
@@ -215,15 +213,14 @@ CDN を有効にして、Azure ストレージ アカウントのコンテンツ
 シリーズの第 1 部では、次の操作を行って、ストレージと対話する Web アプリを構成する方法について説明しました。
 
 > [!div class="checklist"]
-> * ストレージ アカウントを作成する
+> * ストレージ アカウントの作成
 > * コンテナーを作成し、アクセス許可を設定する
 > * アクセス キーを取得する
-> * アプリケーション設定を構成する
+> * アプリケーション設定の構成
 > * Web アプリを Azure にデプロイする
 > * Web アプリと対話する
 
-シリーズの第 2 部に進んで、イベント グリッドを使用して画像のサイズを変更する Azure 関数をトリガーする方法を確認してください。  
+シリーズの第 2 部に進んで、イベント グリッドを使用して画像のサイズを変更する Azure 関数をトリガーする方法を確認してください。
 
 > [!div class="nextstepaction"]
 > [イベント グリッドを使用して画像のサイズを変更する Azure 関数をトリガーする](../../event-grid/resize-images-on-storage-blob-upload-event.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-

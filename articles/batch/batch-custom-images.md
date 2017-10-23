@@ -8,11 +8,11 @@ ms.service: batch
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: tamram
-ms.openlocfilehash: 3d655766b4f2a5efb0c8c29ffa81a89f84b3e17c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 0816c464b6b52747148cc42a55445048901e7595
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-custom-image-to-create-a-pool-of-virtual-machines"></a>カスタム イメージを使用して仮想マシンのプールを作成する
 
@@ -29,7 +29,7 @@ Azure Batch で仮想マシンのプールを作成する際は、プール内�
 
 ## <a name="prerequisites"></a>前提条件
 
-- **ユーザー サブスクリプション プール割り当てモードで作成された Batch アカウント** カスタム イメージを使用して仮想マシン プールをプロビジョニングするには、ユーザー サブスクリプション [プール割り当てモード](batch-api-basics.md#pool-allocation-mode)で Batch アカウントを作成します。 このモードでは、Batch プールはアカウントが存在するサブスクリプションに割り当てられます。 Batch アカウントを作成する際のプール割り当てモードの設定の詳細については、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」の「[アカウント](batch-api-basics.md#account)」セクションを参照してください。
+- **ユーザー サブスクリプション プール割り当てモードで作成された Batch アカウント** このモードでは、Batch プールはアカウントが存在するサブスクリプションに割り当てられます。 詳しくは、「[Batch を使って大規模な並列コンピューティング ソリューションを開発する](batch-api-basics.md)」の「[アカウント](batch-api-basics.md#account)」セクションをご覧ください。
 
 - **Azure ストレージ アカウント。** カスタム イメージを使用して仮想マシンのプールを作成するには、同じサブスクリプションおよびリージョンに標準の汎用 Azure Storage アカウントが必要です。 Azure VM からカスタム イメージを作成した場合は、そのイメージを VM の OS ディスクがあるストレージ アカウントにコピーします。別のストレージ アカウントを作成する必要はありません。 
     

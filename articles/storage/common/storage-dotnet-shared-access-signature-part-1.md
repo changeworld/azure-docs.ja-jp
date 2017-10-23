@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: tamram
+ms.openlocfilehash: 32e92e6ffc376d27297810596691f0371770e86d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1c80229e2e5ec0c4ddf1f66099fa00ef145ec2ce
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-shared-access-signatures-sas"></a>Shared Access Signatures (SAS) の使用
 
@@ -136,7 +135,7 @@ https://myaccount.blob.core.windows.net/?restype=service&comp=properties&sv=2015
 
 | 名前 | SAS の部分 | Description |
 | --- | --- | --- |
-| リソース URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |BLOB サービス エンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーターまたは (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。 |
+| リソース URI |`https://myaccount.blob.core.windows.net/?restype=service&comp=properties` |Blob service エンドポイントと、(GET を使用して呼び出された場合は) サービスのプロパティを取得するパラメーターまたは (SET を使用して呼び出された場合は) サービスのプロパティを設定するパラメーターです。 |
 | サービス |`ss=bf` |SAS は BLOB およびファイル サービスに適用されます。 |
 | リソースの種類 |`srt=s` |SAS は、サービスレベルの操作に適用されます。 |
 | アクセス許可 |`sp=rw` |この許可は、読み書きの操作へのアクセスを付与します。 |
@@ -266,7 +265,7 @@ static string GetAccountSASToken()
 }
 ```
 
-BLOB サービス用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使用して BLOB クライアントを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。
+Blob service 用にサービスレベルの API にアクセスするためにアカウント SAS を使用するには、SAS を使用して BLOB クライアントを構築し、ストレージ アカウント用に BLOB ストレージ エンドポイントを構築します。
 
 ```csharp
 static void UseAccountSAS(string sasToken)
@@ -427,7 +426,7 @@ private static string GetBlobSasUri(CloudBlobContainer container, string blobNam
 Shared Access Signature は、アカウント キーを知らせずに、ストレージ アカウントへの制限付きアクセス許可をクライアントに付与する場合に便利です。 したがって、Azure Storage を使用するあらゆるアプリケーションのセキュリティ モデルの重要な部分となります。 ここに示すベスト プラクティスに従うと、アプリケーションのセキュリティを損なうことなく、SAS を使用して、ストレージ アカウントのリソースへのアクセスの柔軟性を高めることができます。
 
 ## <a name="next-steps"></a>次のステップ
+* [Shared Access Signature、第 2 部: BLOB ストレージでの SAS の作成と使用](../blobs/storage-dotnet-shared-access-signature-part-2.md)
 * [コンテナーと BLOB への匿名読み取りアクセスを管理する](../blobs/storage-manage-access-to-resources.md)
 * [Shared Access Signature を使用したアクセスの委任](http://msdn.microsoft.com/library/azure/ee395415.aspx)
 * [テーブルおよびキュー SAS についての MSDN ブログ](http://blogs.msdn.com/b/windowsazurestorage/archive/2012/06/12/introducing-table-sas-shared-access-signature-queue-sas-and-update-to-blob-sas.aspx)
-

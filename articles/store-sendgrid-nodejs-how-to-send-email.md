@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2016
 ms.author: erikre
 ms.openlocfilehash: 327cea3a24cc47a9cc463b37cc2346ebc475ef7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-send-email-using-sendgrid-from-nodejs"></a>SendGrid を使用して Node.js から電子メールを送信する方法
 このガイドでは、Azure の SendGrid 電子メール サービスを使用して一般的なプログラム タスクを実行する方法を紹介します。 サンプルは Node.js API を使用して記述されています。 紹介するシナリオは、**電子メールの作成**、**電子メールの送信**、**添付ファイルの追加**、**フィルターの使用**、および**プロパティの更新**です。 SendGrid と電子メールの送信の詳細については、「 [次のステップ](#next-steps) 」を参照してください。
@@ -66,7 +66,7 @@ SendGrid モジュールを使って電子メール メッセージを作成す�
 
 text プロパティと html プロパティの両方を設定することで、HTML メッセージをサポートできないクライアントに対しては、テキスト コンテンツへの正常なフォールバックを提供できます。
 
-電子メール関数でサポートされるすべてのプロパティの詳細については、次を参照してください。 [sendgrid nodejs][sendgrid-nodejs]です。
+Email 機能でサポートされるすべてのプロパティについて詳しくは、「[sendgrid-nodejs][sendgrid-nodejs]」をご覧ください。
 
 ## <a name="how-to-send-an-email"></a>方法: 電子メールを送信する
 Email 機能で電子メール メッセージを作成した後で、SendGrid の Web API を使用してメッセージを送信できます。 
@@ -161,7 +161,7 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     sendgrid.send(email);
 
 ## <a name="how-to-update-email-properties"></a>方法: 電子メールのプロパティを更新する
-使用して一部の電子メール プロパティを上書きできる**設定*プロパティ** * またはを使用して追加された**追加*プロパティ** *。 たとえば、次のようにして、新しい受信者を追加できます。
+メールの一部のプロパティは、**set*Property*** を使って上書きすることや、**add*Property*** を使って追加することができます。 たとえば、次のようにして、新しい受信者を追加できます。
 
     email.addTo('jeff@contoso.com');
 
@@ -170,7 +170,7 @@ SendGrid では、*フィルター* を使用することでその他の電子�
     email.addFilter('footer', 'enable', 1);
     email.addFilter('footer', 'text/html', '<strong>boo</strong>');
 
-詳細については、次を参照してください。 [sendgrid nodejs][sendgrid-nodejs]です。
+詳しくは、「[sendgrid-nodejs][sendgrid-nodejs]」をご覧ください。
 
 ## <a name="how-to-use-additional-sendgrid-services"></a>方法: その他の SendGrid サービスを使用する
 SendGrid の Web ベース API を使用して、Azure アプリケーションからその他の SendGrid 機能を利用することができます。 詳細については、[SendGrid API に関するドキュメント][SendGrid API documentation]を参照してください。
@@ -178,7 +178,7 @@ SendGrid の Web ベース API を使用して、Azure アプリケーション�
 ## <a name="next-steps"></a>次のステップ
 これで、SendGrid 電子メール サービスの基本を学習できました。さらに詳細な情報が必要な場合は、次のリンク先を参照してください。
 
-* SendGrid Node.js モジュール リポジトリ: [sendgrid nodejs][sendgrid-nodejs]
+* SendGrid Node.js モジュールのリポジトリ: [sendgrid-nodejs][sendgrid-nodejs]
 * SendGrid API に関するドキュメント: <https://sendgrid.com/docs>
 * Azure ユーザー向けの SendGrid 特別プラン: [http://sendgrid.com/azure.html](https://sendgrid.com/windowsazure.html)
 
