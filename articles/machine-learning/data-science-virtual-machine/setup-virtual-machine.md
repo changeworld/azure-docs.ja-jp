@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: xibingao;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b32aa2325a507f18ffc8b47cddde8637a0a8aabf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-an-azure-virtual-machine-as-an-ipython-notebook-server-for-advanced-analytics"></a>高度な分析のために Azure 仮想マシンを IPython Notebook サーバーとしてセットアップする
 このトピックでは、高度な分析のためにデータ サイエンス環境の一部として使える Azure 仮想マシンをプロビジョニングし、構成する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールと、高度な分析プロジェクトに役立つ他のユーティリティで Windows 仮想マシンを構成します。 たとえば Azure ストレージ エクスプローラーおよび AzCopy には、ローカル マシンから Azure BLOB ストレージにデータをアップロードしたり、BLOB ストレージからローカル マシンにデータをダウンロードしたりするための便利な機能が備わっています。
@@ -135,4 +134,3 @@ Team Data Science Process の次のステップは、[ラーニング パス](ht
 [27]: ./media/setup-virtual-machine/create-virtual-machine-4.png
 [28]: ./media/setup-virtual-machine/create-virtual-machine-5.png
 [29]: ./media/setup-virtual-machine/create-virtual-machine-6.png
-

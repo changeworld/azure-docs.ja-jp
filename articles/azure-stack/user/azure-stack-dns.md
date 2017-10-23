@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ac93b5eb4228cef373428b7b69932d5993d54fa0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="dns-in-azure-stack"></a>Azure Stack の DNS
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack には次の DNS 機能が含まれています。
 * DNS ホスト名解決のサポート
@@ -102,4 +101,3 @@ Azure Stack DNS を使用する際は、次の制限が既定で適用されま�
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack の iDNS の概要](azure-stack-understanding-dns.md)
-

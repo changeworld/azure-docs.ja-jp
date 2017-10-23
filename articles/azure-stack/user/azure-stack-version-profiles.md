@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/21/2017
 ms.author: sngun
 ms.openlocfilehash: b70f8a392fdddade31383fc5cc9496cb39d73fd4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Azure Stack での API バージョンのプロファイルの管理
 
@@ -39,7 +39,7 @@ Update-Module -Name "AzureRm.BootStrapper"
 
 ## <a name="install-a-profile"></a>プロファイルのインストール
 
-Azure Stack に必要な AzureRM モジュールをインストールするには、**Install-AzureRmProfile** コマンドレットを **2017-03-09-profile** という API バージョンのプロファイルと共に使用します。 この API のバージョンのプロファイル、Azure スタック クラウド管理者モジュールがインストールされていないと、個別の手順 3. で指定されたとおりにインストールする必要があります、 [PowerShell Azure のスタックをインストール](azure-stack-powershell-install.md)資料です。
+Azure Stack に必要な AzureRM モジュールをインストールするには、**Install-AzureRmProfile** コマンドレットを **2017-03-09-profile** という API バージョンのプロファイルと共に使用します。 Azure Stack の クラウド管理者モジュールは、この API バージョンのプロファイルではインストールされず、「[Install PowerShell for Azure Stack ](azure-stack-powershell-install.md)」\(Azure Stack 用の PowerShell のインストール\) の記事の手順 3. で指定されているように個別にインストールする必要があります。
 
 ```PowerShell 
 Install-AzureRMProfile -Profile 2017-03-09-profile

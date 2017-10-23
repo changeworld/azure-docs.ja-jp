@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
 ms.openlocfilehash: bc525e7ca8b21e9e5f1e36b3152d71420b041700
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-net-framework-api-overview"></a>Event Hubs .NET Framework API の概要
 この記事は主要な Event Hubs .NET Framework クライアント API についてまとめてあります。 2 つのカテゴリがあります。管理 API とランタイム API です。 ランタイム API はメッセージの送受信に必要なすべての操作で構成されています。 管理操作では、エンティティを作成、更新、削除することで Event Hubs エンティティの状態を管理できます。

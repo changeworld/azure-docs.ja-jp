@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: ddove
 ms.openlocfilehash: e60e2295484873ea15d52108b7d619319a57827f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-recoverymanager-class-to-fix-shard-map-problems"></a>RecoveryManager クラスを使用したシャード マップに関する問題の解決
 [RecoveryManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.recovery.recoverymanager.aspx) クラスを使用すると、ADO.Net アプリケーションで、シャード化されたデータベース環境におけるグローバル シャード マップ (GSM) とローカル シャード マップ (LSM) 間の不整合を簡単に検出して修正できます。 

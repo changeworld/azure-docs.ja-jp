@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 10/11/2017
 ms.author: larryfr
-ms.openlocfilehash: dc0f9ff030f70985dad0f3b74ba0ee3dda1d9f4b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 470ec09d444f93abcd8f0f58fc197474bbb1376e
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-ambari-web-ui"></a>Ambari Web UI を使用した HDInsight クラスターの管理
 
@@ -51,6 +51,9 @@ Ambari Web UI はお使いの HDInsight クラスター (HTTPS://CLUSTERNAME.azu
 クラスター用の Ambari にはインターネットから直接アクセスできますが、Ambari Web UI の一部のリンク (JobTracker など) はインターネット上で公開されていません。 これらのサービスにアクセスするには、SSH トンネルを作成する必要があります。 詳細については、[HDInsight での SSH トンネリングの使用](hdinsight-linux-ambari-ssh-tunnel.md)に関するページを参照してください。
 
 ## <a name="ambari-web-ui"></a>Ambari Web UI
+
+> [!WARNING]
+> HDInsight では、Ambari Web UI の機能の一部がサポートされません。 詳しくは、このドキュメントの「[サポートされていない操作](#unsupported-operations)」セクションをご覧ください。
 
 Ambari Web UI に接続すると、そのページに対する認証が求められます。 クラスターの作成時に利用したクラスター管理者ユーザー (既定では Admin) とパスワードを使用します。
 
@@ -221,7 +224,7 @@ Ambari Web UI に接続すると、そのページに対する認証が求めら
 
 1. **[Dashboard]** または **[Services]** ページでサービスを選択します。
 
-2. **[Configs]** タブをクリックします。 現在の構成が表示されます。 以前の構成の一覧も表示されます。
+2. **[Configs]** タブをクリックします。現在の構成が表示されます。 以前の構成の一覧も表示されます。
 
     ![構成](./media/hdinsight-hadoop-manage-ambari/service-configs.png)
 
@@ -236,3 +239,13 @@ Ambari ビューを使うと、開発者は [Ambari ビュー フレームワー
 * Hive ビュー: Hive ビューを使用すると、Web ブラウザーから直接 Hive クエリを実行できます。 クエリの保存、結果の表示、結果のクラスター ストレージへの保存、または結果のローカル システムへのダウンロードを行えます。 Hive ビューの使用法の詳細については、 [HDInsight での Hive ビューの使用](hdinsight-hadoop-use-hive-ambari-view.md)に関するページを参照してください。
 
 * Tez ビュー: Tez ビューによって、ジョブの理解が深まり、最適化を改善できます。 Tez ジョブがどのように実行されて、どのリソースが使用されているかに関する情報を見ることができます。
+
+## <a name="unsupported-operations"></a>サポートされていない操作
+
+Ambari の次の操作は、HDInsight ではサポートされていません。
+
+* __メトリック コレクター サービスの移動__。 メトリック コレクター サービスで情報を表示するとき、[Service Actions]\(サービス アクション\) メニューで使うことができるアクションの 1 つに __[Move Metrics collector]\(メトリック コレクターの移動\)__ があります。 HDInsight では、このアクションはサポートされていません。
+
+## <a name="next-steps"></a>次のステップ
+
+HDInsight で [Ambari REST API](hdinsight-hadoop-manage-ambari-rest-api.md) を使う方法を学習します。

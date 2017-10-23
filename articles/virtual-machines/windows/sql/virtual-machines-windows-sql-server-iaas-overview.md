@@ -1,6 +1,6 @@
 ---
-title: "Azure Virtual Machines での SQL Server の概要 | Microsoft Docs"
-description: "Azure Virtual Machines で各 SQL Server エディションを実行する方法について説明します。 すべての SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。"
+title: "Azure Windows 仮想マシンでの SQL Server の概要 | Microsoft Docs"
+description: "Azure Windows 仮想マシンで各 SQL Server エディションを実行する方法について説明します。 すべての SQL Server VM イメージと関連コンテンツへのダイレクト リンクが記載されています。"
 services: virtual-machines-windows
 documentationcenter: 
 author: rothja
@@ -12,20 +12,24 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 09/12/2017
+ms.date: 10/02/2017
 ms.author: jroth
+ms.openlocfilehash: b10c995fdd8e241d354c62537a0600b393795c1b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: b9d42e393e696187d2299e033402db8ee565593a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="overview-of-sql-server-on-azure-virtual-machines"></a>Azure Virtual Machines における SQL Server の概要
-このトピックでは、[ポータル イメージへのリンク](#option-1-create-a-sql-vm-with-per-minute-licensing)および[一般的なタスク](#manage-your-sql-vm)の概要と共に、Azure 仮想マシン (VM) で SQL Server を実行するための選択肢について説明します。
+# <a name="overview-of-sql-server-on-azure-virtual-machines-windows"></a>Azure 仮想マシン (Windows) における SQL Server の概要
+
+> [!div class="op_single_selector"]
+> * [Windows](virtual-machines-windows-sql-server-iaas-overview.md)
+> * [Linux](../../linux/sql/sql-server-linux-virtual-machines-overview.md)
+
+このトピックでは、[ポータル イメージへのリンク](#option-1-create-a-sql-vm-with-per-minute-licensing)および[一般的なタスク](#manage-your-sql-vm)の概要と共に、Azure Windows 仮想マシン (VM) で SQL Server を実行するためのオプションについて説明します。
 
 > [!NOTE]
-> 既に SQL Server を使い慣れており、SQL Server VM のデプロイ方法を確認するだけの場合は、「[Azure Portal での SQL Server 仮想マシンのプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)」を参照してください。
+> 既に SQL Server を使い慣れており、Windows SQL Server VM をデプロイする方法を確認するだけの場合は、[Azure での Windows SQL Server VM のプロビジョニング](virtual-machines-windows-portal-sql-server-provision.md)に関するページを参照してください。 また、SQL Server がインストールされた Linux VM を作成する場合は、[Azure での Linux SQL Server VM のプロビジョニング](../../linux/sql/provision-sql-server-linux-virtual-machine.md)に関するページを参照してください。
 
 データベースの管理者または開発者の場合、Azure VM には、オンプレミスの SQL Server ワークロードとアプリケーションをクラウドに移動する方法が用意されています。
 
@@ -50,11 +54,13 @@ Azure VM で実行されている SQL Server は、リレーショナル デー�
 
 | バージョン | オペレーティング システム | エディション |
 | --- | --- | --- |
+| **SQL Server 2017** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2017EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2017StandardonWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2017WebonWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017ExpressonWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.FreeSQLServerLicenseSQLServer2017DeveloperonWindowsServer2016) |
 | **SQL Server 2016 SP1** |Windows Server 2016 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1EnterpriseWindowsServer2016)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1StandardWindowsServer2016)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1WebWindowsServer2016)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1ExpressWindowsServer2016)、[Developer](https://portal.azure.com/#create/Microsoft.SQLServer2016SP1DeveloperWindowsServer2016) |
 | **SQL Server 2014 SP2** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2014SP2ExpressWindowsServer2012R2) |
 | **SQL Server 2012 SP3** |Windows Server 2012 R2 |[Enterprise](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3EnterpriseWindowsServer2012R2)、[Standard](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3StandardWindowsServer2012R2)、[Web](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3WebWindowsServer2012R2)、[Express](https://portal.azure.com/#create/Microsoft.SQLServer2012SP3ExpressWindowsServer2012R2) |
 
-この一覧のほかに、SQL Server のバージョンとオペレーティング システムの別の組み合わせも使用できます。 他のイメージを探すには、Azure Portal で Marketplace 検索を行います。 
+> [!NOTE]
+> 利用できる Linux SQL Server 仮想マシン イメージを確認するには、「[Azure 仮想マシン (Linux) における SQL Server の概要](../../linux/sql/sql-server-linux-virtual-machines-overview.md)」を参照してください。
 
 ## <a id="BYOL"></a>オプション 2: 既存のライセンスを利用した SQL VM の作成
 ライセンス持ち込み (BYOL) を利用することもできます。 このシナリオでは、SQL Server ライセンスに対する追加料金はなく、VM のみに対して料金を支払います。 所有するライセンスを使用するには、以下の SQL Server のバージョン、エディション、およびオペレーティング システムのマトリックスを使用します。 ポータルでは、これらのイメージ名に **{BYOL}**というプレフィックスが付きます。
@@ -106,4 +112,3 @@ Azure VM では、 [自動修正](virtual-machines-windows-sql-automated-patchin
 料金については、「[Pricing guidance for SQL Server Azure VMs (SQL Server Azure VM の料金ガイダンス)](virtual-machines-windows-sql-server-pricing-guidance.md)」および [Azure の料金](https://azure.microsoft.com/pricing/details/virtual-machines/windows/)に関するページを参照してください。 **[OS/ソフトウェア]** ボックスの一覧で、SQL Server の目的のエディションを選択してください。 次に、さまざまなサイズの仮想マシンの価格を確認します。
 
 質問がある場合は、 まず、「[Azure Virtual Machines における SQL Server に関する FAQ](virtual-machines-windows-sql-server-iaas-faq.md)」をご確認ください。 SQL VM に関するトピックのいずれかで、下部のセクションに質問またはコメントを追加して、Microsoft やコミュニティとやり取りすることもできます。
-

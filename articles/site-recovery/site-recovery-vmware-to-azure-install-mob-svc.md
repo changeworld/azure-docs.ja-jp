@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: backup-recovery
 ms.date: 06/29/2017
 ms.author: anoopkv
+ms.openlocfilehash: eb2fbd16980eadfce15227b6ba07f00c47b672ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 5a5fc9bac4f0ee54532f34fe957e3722123df178
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-mobility-service-vmware-or-physical-to-azure"></a>モビリティ サービスのインストール (VMware または物理から Azure へ)
 Azure Site Recovery モビリティ サービスは、コンピューター上のデータの書き込みをキャプチャし、プロセス サーバーに転送します。 モビリティ サービスは、Azure にレプリケートするすべてのコンピューター (VMware VM または物理サーバー) にデプロイします。 次のメソッドを使用して保護するサーバーにモビリティ サービスをデプロイできます。
 
@@ -91,7 +89,7 @@ Site Recovery を使用して、モビリティ サービスのプッシュ イ�
 ## <a name="update-mobility-service"></a>モビリティ サービスを更新します。
 
 > [!WARNING]
-> 保護されたサーバー上のモビリティ サービスの更新を開始する前に、デプロイの一部である、構成サーバー、スケールアウト プロセス サーバー、およびマスター ターゲット サーバーを必ず更新します。 詳細については、[構成サーバーを更新する方法](site-recovery-vmware-to-azure-manage-configuration-server.md#updating-a-configuration-server)と[スケールアウト プロセス サーバーを更新する方法](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)を参照してください。
+> 保護されたサーバー上のモビリティ サービスの更新を開始する前に、デプロイの一部である、構成サーバー、スケールアウト プロセス サーバー、およびマスター ターゲット サーバーを必ず更新します。 詳細については、[構成サーバーを更新する方法](site-recovery-vmware-to-azure-manage-configuration-server.md#upgrading-a-configuration-server)と[スケールアウト プロセス サーバーを更新する方法](site-recovery-vmware-to-azure-manage-scaleout-process-server.md#upgrading-a-scale-out-process-server)を参照してください。
 
 1. Azure Portal で、<Your Vault> から移動して、レプリケートされたアイテムの表示を参照してください。
 2. **構成サーバー**が既に最新バージョンに更新されている場合、"*Site Recovery レプリケーション エージェントの新しい更新プログラムが利用可能です。クリックしてインストールしてください*" という通知が表示されます。
@@ -125,4 +123,3 @@ MsiExec.exe /qn /x {275197FC-14FD-4560-A5EB-38217F80CBD1} /L+*V "C:\ProgramData\
 ```
 uninstall.sh -Y
 ```
-

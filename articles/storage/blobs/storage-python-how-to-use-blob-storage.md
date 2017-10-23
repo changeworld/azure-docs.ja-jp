@@ -3,7 +3,7 @@ title: "Python から Azure Blob Storage (オブジェクト ストレージ) �
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage
 documentationcenter: python
-author: tamram
+author: mmacy
 manager: timlt
 editor: tysonn
 ms.assetid: 0348e360-b24d-41fa-bb12-b8f18990d8bc
@@ -14,12 +14,11 @@ ms.devlang: python
 ms.topic: article
 ms.date: 2/24/2017
 ms.author: tamram
+ms.openlocfilehash: ae5ad68929a6779ed4944de82a609321a5c4b5ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1cab8407be6fc8932b68e50d0c301e8ea37ea3ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-blob-storage-from-python"></a>Python から Azure BLOB ストレージを使用する方法
 [!INCLUDE [storage-selector-blob-include](../../../includes/storage-selector-blob-include.md)]
@@ -34,6 +33,26 @@ Azure Blob Storage は、非構造化データをクラウド内にオブジェ�
 [!INCLUDE [storage-blob-concepts-include](../../../includes/storage-blob-concepts-include.md)]
 
 [!INCLUDE [storage-create-account-include](../../../includes/storage-create-account-include.md)]
+
+## <a name="download-and-install-azure-storage-sdk-for-python"></a>Microsoft Azure Storage SDK for Python をダウンロードしてインストールする
+
+Microsoft Azure Storage SDK for Python には Python 2.7、3.3、3.4、3.5、または 3.6 が必要であり、`azure-storage-blob`、`azure-storage-file`、`azure-storage-table`、`azure-storage-queue` の 4 つの異なるパッケージで提供されます。 このチュートリアルでは、`azure-storage-blob` パッケージを使います。
+ 
+### <a name="install-via-pypi"></a>PyPi でインストールする
+
+Python Package Index (PyPI) でインストールするには、次のように入力します。
+
+```bash
+pip install azure-storage-blob
+```
+
+
+> [!NOTE]
+> Storage SDK for Python は単一パッケージでリリースされなくなったため、Azure Storage SDK for Python バージョン 0.36 以前からアップグレードする場合は、まず `pip uninstall azure-storage` を使ってアンインストールする必要があります。
+> 
+> 
+
+別のインストール方法については、[Github の Azure Storage SDK for Python](https://github.com/Azure/azure-storage-python/) に関するページをご覧ください。
 
 ## <a name="create-a-container"></a>コンテナーを作成する
 使う BLOB の種類に基づいて、**BlockBlobService** オブジェクト、**AppendBlobService** オブジェクト、または **PageBlobService** オブジェクトを作成します。 次のコードでは、 **BlockBlobService** オブジェクトを使用しています。 プログラムを使用して Azure Block Blob Storage にアクセスするすべての Python ファイルの先頭付近に、次のコードを追加します。
@@ -76,7 +95,7 @@ block_blob_service.set_container_acl('mycontainer', public_access=PublicAccess.C
 
 **create\_blob\_from\_path** は、指定したパスからファイルの内容をアップロードし、**create\_blob\_from\_stream** は既に開いているファイルまたはストリームから内容をアップロードします。 **create\_blob\_from\_bytes** はバイト配列をアップロードし、**create\_blob\_from\_text** は指定したエンコーディング (既定値から UTF-8) を使って、指定したテキスト値をアップロードします。
 
-次の例では、**sunset.png** ファイルの内容を **myblob** BLOB にアップロードします。
+次の例では、**sunset.png** ファイルの内容を **myblockblob** BLOB にアップロードします。
 
 ```python
 from azure.storage.blob import ContentSettings
@@ -100,7 +119,7 @@ for blob in generator:
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 BLOB からデータをダウンロードするには、**get\_blob\_to\_path**、**get\_blob\_to\_stream**、**get\_blob\_to\_bytes**、または **get\_blob\_to\_text** を使います。 これらは、データのサイズが 64 MB を超過した場合に必要なチャンクを実行する高レベル メソッドです。
 
-次の例は、**get\_blob\_to\_path** を使って **myblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
+次の例は、**get\_blob\_to\_path** を使って **myblockblob** BLOB の内容をダウンロードし、**out-sunset.png** ファイルに格納する方法を示しています。
 
 ```python
 block_blob_service.get_blob_to_path('mycontainer', 'myblockblob', 'out-sunset.png')
@@ -144,4 +163,3 @@ append_blob = append_blob_service.get_blob_to_text('mycontainer', 'myappendblob'
 
 [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/
 [Microsoft Azure Storage SDK for Python]: https://github.com/Azure/azure-storage-python
-

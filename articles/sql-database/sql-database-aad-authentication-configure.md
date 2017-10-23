@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 07/10/2017
 ms.author: rickbyh
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 484283a98831b3d5fbf079a3bf5eb9ec0d7ab4d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-or-sql-data-warehouse"></a>SQL Database または SQL Data Warehouse で Azure Active Directory 認証を構成して管理する
 
@@ -346,5 +345,4 @@ sqlcmd -S Target_DB_or_DW.testsrv.database.windows.net -U bob@contoso.com -P MyA
 [11]: ./media/sql-database-aad-authentication/active-directory-integrated.png
 [12]: ./media/sql-database-aad-authentication/12connect-using-pw-auth2.png
 [13]: ./media/sql-database-aad-authentication/13connect-to-db2.png
-
 

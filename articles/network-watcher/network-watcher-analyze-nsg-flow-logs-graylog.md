@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: mareat
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1d79b775e97765a48be48a96cf10bc9435b4539b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Network Watcher と Graylog を使用した Azure のネットワーク セキュリティ グループ フロー ログの管理と分析
 
 [ネットワーク セキュリティ グループ フロー ログ](network-watcher-nsg-flow-logging-overview.md)の情報を使用して、Azure ネットワーク インターフェイスのイングレスおよびエグレス IP トラフィックを把握できます。 フロー ログには、ネットワーク セキュリティ グループの規則ごとの送信および受信フロー、フローが適用されているネットワーク インターフェイス、フローに関する 5 組の情報 (送信元/送信先 IP、送信元/送信先ポート、プロトコル)、トラフィックが許可されたか拒否されたかが示されます。
@@ -249,4 +247,3 @@ Network Watcher を Graylog と統合することで、ネットワーク セキ
 ## <a name="next-steps"></a>次のステップ
 
 [Power BI を使用したネットワーク セキュリティ グループ フロー ログの視覚化](network-watcher-visualize-nsg-flow-logs-power-bi.md)に関する記事を参照して、Power BI でネットワーク セキュリティ グループ フロー ログを視覚化する方法を確認します。
-

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 4/13/2017
 ms.author: parakhj
 ms.openlocfilehash: 40d8d57d974a949fbdc0a06eeceb2d06bfbaa09f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="switching-to-your-azure-ad-b2c-tenant"></a>Azure AD B2C テナントへの切り替え
 

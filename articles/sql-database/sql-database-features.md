@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/22/2017
 ms.author: carlrab
+ms.openlocfilehash: 5824347cbfd80ce2d21e256f4ce6e6fe2201792f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 59bb9778c89142212708b660fb200de3f0f1f9d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-sql-database-features"></a>Azure SQL Database の機能
 
 Azure SQL Database は、SQL Server と共通コード ベースを共有します。また、データベース レベルでほとんどの同じ機能をサポートします。 Azure SQL Database と SQL Server の機能の主な違いは、インスタンス レベルにあります。 
@@ -130,4 +128,3 @@ Azure SQL Database には継続的に機能が追加されます。 したがっ
 
 - Azure SQL Database のサービスについては、「[SQL Database とは](sql-database-technical-overview.md)」を参照してください。
 - Transact-SQL のサポートと違いについては、「[SQL Database への移行時に Transact-SQL の相違点を解決する](sql-database-transact-sql-information.md)」を参照してください。
-

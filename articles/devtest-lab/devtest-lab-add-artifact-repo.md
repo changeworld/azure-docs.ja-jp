@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/11/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: e0fb8b3c991d3f95acef77b37929fb5f6dc06242
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-git-repository-to-store-custom-artifacts-and-resource-manager-templates"></a>カスタム アーティファクトと Resource Manager テンプレートを格納するための Git リポジトリの追加
 
@@ -71,7 +70,7 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 10. [ラボのレポジトリへの接続](#connect-your-lab-to-the-repository)のセクションに進みます。
 
 ## <a name="connect-your-lab-to-the-repository"></a>ラボのレポジトリへの接続
-1. [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) にサインインします。
+1. [Azure ポータル](http://go.microsoft.com/fwlink/p/?LinkID=525040)にサインインします。
 2. **[その他のサービス]** を選択し、サービスの一覧で **[DevTest Labs]** を選択します。
 3. ラボの一覧でラボを選択します。 
 4. **[Configuration and policies]\(構成とポリシー\)** > **[リポジトリ]** > **[+ 追加]** を選択します。
@@ -99,4 +98,3 @@ VM を作成したときに、Resource Manager テンプレートを保存し、
 * [Resource Manager テンプレートを使用して、マルチ VM 環境と PaaS リソースを作成](devtest-lab-create-environment-from-arm.md)します。 その後、テンプレートをプライベート リポジトリに格納します。
 
 VM を作成するときに、アーティファクトまたはテンプレートが Git レポジトリに追加されることを確認できます。 これらのアーティファクトやテンプレートは、一覧ですぐに使用可能になります。 ソースを指定する列に、プライベート リポジトリの名前が表示されます。 
-

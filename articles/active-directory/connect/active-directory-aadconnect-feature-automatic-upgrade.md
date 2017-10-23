@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 894e387b4b83ed859139b4aecb3d8bb5df9ab56f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: 自動アップグレード
 この機能は、ビルド 1.1.105.0 (2016 年 2 月リリース) で導入されました。
@@ -103,4 +102,3 @@ Azure AD への接続が確認されたら、イベント ログを調査しま�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

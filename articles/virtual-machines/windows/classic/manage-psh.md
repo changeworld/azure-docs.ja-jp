@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 10/12/2016
 ms.author: kasing
 ms.openlocfilehash: fd2df7e1029ced11974d0b832258bed2cf3bbb27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-your-virtual-machines-by-using-azure-powershell"></a>Azure PowerShell を使用した仮想マシンの管理
 > [!IMPORTANT] 

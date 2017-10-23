@@ -1,4 +1,4 @@
----
+﻿---
 title: "P2S RADIUS 接続用の VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs"
 description: "この記事は、RADIUS 認証を使用するポイント対サイト接続用の VPN クライアント構成ファイルを作成およびインストールする際に役立ちます。"
 services: vpn-gateway
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/16/2017
+ms.date: 09/25/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: c56a9b06a11d25cf046a0faeb29af1d78d9a4a89
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-p2s-radius-authentication-preview"></a>P2S RADIUS 認証用の VPN クライアント構成ファイルを作成およびインストールする (プレビュー)
 
@@ -50,7 +49,7 @@ VPN クライアント構成ファイルは、ZIP ファイルに含まれてい
 次のコマンドを使用して VPN クライアント構成を作成します。
 
 ```powershell 
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapMSChapv2"
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapMSChapv2"
 ```
  
 このコマンドを実行すると、リンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、"VpnClientConfiguration.zip" という ZIP ファイルをダウンロードします。 ファイルを解凍して、次のフォルダーを表示します。 
@@ -64,7 +63,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 以前に生成されたクライアント構成ファイルを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
 ```
  
 ### <a name="adwincli"></a>Windows VPN クライアントの設定
@@ -123,7 +122,7 @@ EAP-TLS プロトコルを使用する RADIUS 証明書認証用の VPN クラ�
 次のコマンドを使用して VPN クライアント構成を作成します。
  
 ```powershell
-New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
+New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW" -AuthenticationMethod "EapTls" -RadiusRootCert <full path name of .cer file containing the RADIUS root> -ClientRootCert <full path name of .cer file containing the client root>
 ```
 
 このコマンドレットの結果でリンクが返されます。 このリンクをコピーして Web ブラウザーに貼り付け、"VpnClientConfiguration.zip" という ZIP ファイルをダウンロードします。 ファイルを解凍して、次のフォルダーを表示します。
@@ -136,7 +135,7 @@ New-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW" -A
 以前に生成されたクライアント構成ファイルを取得するには、次のコマンドを使用します。
 
 ```powershell
-Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -Name "VNet1GW"
+Get-AzureRmVpnClientConfiguration -ResourceGroupName "TestRG" -VirtualNetworkGatewayName "VNet1GW"
 ```
  
 ### <a name="certwincli"></a>Windows VPN クライアントの設定
@@ -204,4 +203,3 @@ Azure VNet に接続する Mac デバイスごとに、個別のプロファイ�
 ## <a name="next-steps"></a>次のステップ
 
 [P2S 構成を完了する](point-to-site-how-to-radius-ps.md)ための記事に戻ります。
-

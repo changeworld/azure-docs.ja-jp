@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c772fa16b94d09e0fc0450ce86503553c26f8a24
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="machine-learning-and-data-science-tools"></a>機械学習ツールとデータ サイエンス ツール
 データ サイエンス仮想マシン (DSVM) には、Python、R、Julia などの一般的な言語で使用可能な、機械学習用のツールおよびライブラリの豊富なセットがあります。 
 
@@ -59,7 +57,7 @@ ms.lasthandoff: 09/25/2017
 | 紹介   |  Weka は、データ マイニング タスクのための機械学習アルゴリズムのコレクションです。 アルゴリズムはデータセットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
 | サポートされている DSVM エディション     | Windows、Linux     |
 | 一般的な用途      | 一般的な ML ツール     |
-| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] (アプリケーション) -> [Development] (開発) -> [Weka] にアクセスします。 |
+| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] \(アプリケーション) -> [Development] \(開発) -> [Weka] にアクセスします。 |
 | サンプルへのリンク      | [Weka サンプル](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上の関連ツール      |LightGBM、Rattle、XGBooost   |
 
@@ -95,4 +93,3 @@ ms.lasthandoff: 09/25/2017
 | DSVM 上の関連ツール      | Apache Spark、MXNet、XGBoost、Sparkling Water、Deep Water    |
 
 DSVM にインストールされる Anaconda Python ディストリビューションの一部として付属する人気の `scikit-learn` パッケージなど、その他多数の ML ライブラリが DSVM には存在します。 必ず、それぞれのパッケージ マネージャーを実行して、Python、R、および Julia で利用可能なパッケージの一覧を確認してください。 
-

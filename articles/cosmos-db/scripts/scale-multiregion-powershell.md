@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: 3a469ba43e6c601f5eb0e13d588cd0bd4a0f8683
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-an-azure-cosmos-db-database-account-in-multiple-regions-and-configure-failover-priorities-using-powershell"></a>PowerShell を使用した複数リージョンへの Azure Cosmos DB データベース アカウントのレプリケートとフェールオーバーの優先順位の構成
 
@@ -30,7 +30,7 @@ PowerShell を使ってさまざまな種類の Azure Cosmos DB データベー�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/cosmosdb/replicate-database-multiple-regions/replicate-database-multiple-regions.ps1?highlight=37-44,47-48,51-55 "複数のリージョンに対する Azure Cosmos DB アカウントのレプリケート")]
+[!code-powershell[main](../../../powershell_scripts/cosmosdb/replicate-database-multiple-regions/replicate-database-multiple-regions.ps1?highlight=37-44,47-48,51-55 "Replicate an Azure Cosmos DB account across multiple regions")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

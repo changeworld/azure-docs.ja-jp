@@ -17,12 +17,11 @@ ms.topic: article
 ms.date: 10/04/2017
 ms.author: jgao
 ROBOTS: NOINDEX
+ms.openlocfilehash: 14cd30f4f9ed77dca369452a680d621eb81d5a4e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 709541a88b2b15924b93c630693ad7a3f276e29c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-time-based-oozie-coordinator-with-hadoop-in-hdinsight-to-define-workflows-and-coordinate-jobs"></a>HDInsight の Hadoop での時間ベースの Oozie コーディネーターを使用したワークフローの定義とジョブの調整
 この記事では、ワークフローとコーディネーターを定義する方法と、時間に基づいてコーディネーター ジョブを起動する方法について説明します。 この記事を読む前に、「[HDInsight での Oozie の使用][hdinsight-use-oozie]」を読むと役に立ちます。 ジョブのスケジューリングには、Oozie に加え、Azure Data Factory を使用することもできます。 Azure Data Factory については、「 [Data Factory で Pig および Hive を使用する](../data-factory/transform-data.md)」を参照してください。
@@ -763,4 +762,3 @@ $conn.close()
 [img-runworkflow-output]: ./media/hdinsight-use-oozie-coordinator-time/HDI.UseOozie.RunCoord.Output.png
 
 [technetwiki-hive-error]: http://social.technet.microsoft.com/wiki/contents/articles/23047.hdinsight-hive-error-unable-to-rename.aspx
-

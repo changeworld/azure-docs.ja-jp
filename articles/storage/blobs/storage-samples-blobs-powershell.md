@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: sample
 ms.date: 06/13/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 74f6e8eb6dd29633fbf518831b446a149fbbddc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-powershell-samples-for-azure-blob-storage"></a>Azure Blob Storage の Azure PowerShell サンプル
 
@@ -33,4 +32,3 @@ ms.lasthandoff: 09/25/2017
 |**Blob Storage**||
 | [Calculate the total size of a Blob storage container](../scripts/storage-blobs-container-calculate-size-powershell.md?toc=%2fcli%2fazure%2ftoc.json) (Blob ストレージ コンテナーの合計サイズを計算する) | コンテナー内のすべての BLOB の合計サイズを計算します。 |
 | [Delete containers with a specific prefix](../scripts/storage-blobs-container-delete-by-prefix-powershell.md?toc=%2fcli%2fazure%2ftoc.json) (特定のプレフィックスを含むコンテナーを削除する) | 指定した文字列を含むコンテナーを削除します。 |
-

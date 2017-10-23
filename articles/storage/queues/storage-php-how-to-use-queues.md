@@ -14,12 +14,11 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 5fa4e35184b39bd672bfc8b19b2d41acb164abdf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-queue-storage-from-php"></a>PHP から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -410,5 +409,4 @@ catch(ServiceException $e){
 [download]: https://github.com/Azure/azure-storage-php
 [require_once]: http://www.php.net/manual/en/function.require-once.php
 [Azure Portal]: https://portal.azure.com
-
 

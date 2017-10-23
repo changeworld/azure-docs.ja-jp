@@ -12,28 +12,21 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 09f24fa2b55d298cfbbf3de71334de579fbf2ecd
-ms.openlocfilehash: c5971a137d9081be8c5978f481ec42a1f91e5a56
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/08/2017
-
-
+ms.openlocfilehash: 431c974401c201a76b6d20de9837e44374716417
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-data-lake-store-using-azure-cli-20"></a>Azure CLI 2.0 を使用して Azure Data Lake Store の使用を開始する
 > [!div class="op_single_selector"]
 > * [ポータル](data-lake-store-get-started-portal.md)
 > * [PowerShell](data-lake-store-get-started-powershell.md)
-> * [.NET SDK](data-lake-store-get-started-net-sdk.md)
-> * [Java SDK](data-lake-store-get-started-java-sdk.md)
-> * [REST API](data-lake-store-get-started-rest-api.md)
 > * [Azure CLI 2.0](data-lake-store-get-started-cli-2.0.md)
-> * [Node.JS](data-lake-store-manage-use-nodejs.md)
-> * [Python](data-lake-store-get-started-python.md)
 >
->
+> 
 
 Azure CLI 2.0 を使用して、Azure Data Lake Store アカウントを作成し、フォルダーの作成、データ ファイルのアップロードとダウンロード、アカウントの削除などの基本操作を行う方法について説明します。Data Lake Store の詳細については、[Data Lake Store の概要](data-lake-store-overview.md)に関する記事をご覧ください。
 
@@ -240,11 +233,7 @@ az dls account delete --account mydatalakestore
 確認を求めるメッセージが表示されたら、「 **Y** 」と入力して、アカウントを削除します。
 
 ## <a name="next-steps"></a>次のステップ
-
-* [Azure Data Lake Store CLI 2.0 リファレンス](https://docs.microsoft.com/cli/azure/dls)
+* [ビッグ データの要件に対する Azure Data Lake Store の使用](data-lake-store-data-scenarios.md) 
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-
-[azure-command-line-tools]: ../xplat-cli-install.md
-

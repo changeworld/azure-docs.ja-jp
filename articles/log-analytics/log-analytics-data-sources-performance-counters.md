@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/12/2017
 ms.author: magoedte
 ms.openlocfilehash: 953bb453b0a9635627fbbb6c3913d0cd757101c7
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-and-linux-performance-data-sources-in-log-analytics"></a>Log Analytics での Windows および Linux のパフォーマンス データ ソース
 Windows および Linux のパフォーマンス カウンターから、ハードウェア コンポーネント、オペレーティング システム、およびアプリケーションのパフォーマンスに関する情報が得られます。  Log Analytics は、長期的な分析とレポートのためにパフォーマンス データを集計することに加えて、ほぼリアルタイム (NRT) 分析のために頻繁な間隔でパフォーマンス カウンターを収集することができます。
@@ -122,9 +122,9 @@ OMS ポータルを使用して Linux のパフォーマンス カウンター�
 | ネットワーク | Total Rx Errors |
 | ネットワーク | Total Tx Errors |
 | ネットワーク | Total Collisions |
-| 物理ディスク | Avg. Disk sec/Read |
-| 物理ディスク | Avg. Disk sec/Transfer |
-| 物理ディスク | Avg. Disk sec/Write |
+| 物理ディスク | Avg.Disk sec/Read |
+| 物理ディスク | Avg.Disk sec/Transfer |
+| 物理ディスク | Avg.Disk sec/Write |
 | 物理ディスク | Physical Disk Bytes/sec |
 | Process | Pct Privileged Time |
 | Process | Pct User Time |

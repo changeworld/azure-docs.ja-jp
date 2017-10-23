@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 03/09/2017
 ms.author: cawa
 ms.openlocfilehash: 964691758254531cb92a5b1cbe055ef61d25dba8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-storage-explorer-preview-with-azure-file-storage"></a>Azure File Storage でのストレージ エクスプローラー (プレビュー) の使用
 

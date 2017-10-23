@@ -1,5 +1,5 @@
 > [!IMPORTANT]
-> 登録されているアプリケーションを使用することはできません、**アプリケーション** タブで、従来の[Azure Management Portal](https://manage.windowsazure.com/)このです。
+> 従来の **Microsoft Azure 管理ポータル** の [[アプリケーション]](https://manage.windowsazure.com/) タブで登録されているアプリケーションをこのために使用することはできません。
 > 
 > 
 

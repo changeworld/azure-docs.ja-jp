@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/01/2016
 ms.author: mmccrory
 ms.openlocfilehash: a7ae8ff202d403dff19b8c9a6a09492235db27ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-scale-a-cloud-service-in-powershell"></a>PowerShell でのクラウド サービスのスケールの設定方法
 

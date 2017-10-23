@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Azure Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
@@ -911,4 +910,3 @@ Azure Data Factory および Azure Batch の機能の詳細については、こ
 
 [batch-explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
 [batch-explorer-walkthrough]: http://blogs.technet.com/b/windowshpc/archive/2015/01/20/azure-batch-explorer-sample-walkthrough.aspx
-

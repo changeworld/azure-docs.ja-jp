@@ -1,6 +1,6 @@
 ---
-title: "Unity iOS 展開用 Azure Mobile Engagement の概要します。"
-description: "Unity アプリを iOS デバイスに展開するため、分析とプッシュ通知で Azure Mobile Engagement を使用する方法を説明します。"
+title: "Unity iOS デプロイでの Azure Mobile Engagement の使用"
+description: "iOS デバイスにデプロイする Unity アプリの分析やプッシュ通知で Azure Mobile Engagement を使用する方法について説明します。"
 services: mobile-engagement
 documentationcenter: unity
 author: piyushjo
@@ -15,91 +15,91 @@ ms.topic: hero-article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: c8f50404771965ec636065346ac04e059d264c3d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Unity iOS 展開用 Azure Mobile Engagement の概要します。
+# <a name="get-started-with-azure-mobile-engagement-for-unity-ios-deployment"></a>Unity iOS デプロイでの Azure Mobile Engagement の使用
 [!INCLUDE [Hero tutorial switcher](../../includes/mobile-engagement-hero-tutorial-switcher.md)]
 
-このトピックでは、Azure Mobile Engagement を使用して、アプリの使用量を把握する方法と、プッシュ通知を送信する方法は、iOS デバイスに展開する場合に Unity アプリケーションのユーザーをセグメント化します。
-このチュートリアルではクラシック Unity ロール ボール チュートリアルの開始点として。 この手順を行う必要があります[チュートリアル](mobile-engagement-unity-roll-a-ball.md)おわかり以下のチュートリアルでは、Mobile Engagement 統合に進む前にします。 
+このトピックでは、Azure Mobile Engagement を使用してアプリの使用状況を把握する方法と、iOS デバイスへのデプロイ時に Unity アプリケーションのセグメント化されたユーザーにプッシュ通知を送信する方法について説明します。
+このチュートリアルでは、出発点として、従来の Unity Roll a Ball チュートリアルを使用します。 以下のチュートリアルで紹介する Mobile Engagement の統合に進む前に、この [チュートリアル](mobile-engagement-unity-roll-a-ball.md) の手順を実行しておく必要があります。 
 
-このチュートリアルでは、次の項目が必要です。
+このチュートリアルには、次のものが必要です。
 
 * [Unity エディター](http://unity3d.com/get-unity)
-* [モバイル エンゲージメント Unity SDK](https://aka.ms/azmeunitysdk)
+* [Mobile Engagement Unity SDK](https://aka.ms/azmeunitysdk)
 * XCode エディター
 
 > [!NOTE]
-> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントを持っていない場合は、ほんの数分で無料の試用アカウントを作成できます。 詳細については、「 [Azure 無料評価版](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started)です。
+> このチュートリアルを完了するには、アクティブな Azure アカウントが必要です。 アカウントがない場合は、無料試用版のアカウントを数分で作成することができます。 詳細については、「[Azure の無料試用版サイト](https://azure.microsoft.com/pricing/free-trial/?WT.mc_id=A0E0E5C02&amp;returnurl=http%3A%2F%2Fazure.microsoft.com%2Fen-us%2Fdocumentation%2Farticles%2Fmobile-engagement-unity-ios-get-started)」をご覧ください。
 > 
 > 
 
-## <a id="setup-azme"></a>IOS アプリ用の Mobile Engagement をセットアップします。
+## <a id="setup-azme"></a>iOS アプリ用に Mobile Engagement を設定する
 [!INCLUDE [Create Mobile Engagement App in Portal](../../includes/mobile-engagement-create-app-in-portal-new.md)]
 
-## <a id="connecting-app"></a>Mobile Engagement バックエンドにアプリを接続します。
-### <a name="import-the-unity-package"></a>Unity パッケージをインポートします。
-1. ダウンロード、 [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk)し、ローカル コンピューターに保存します。 
-2. 移動して**アセット パッケージのインポート]-> [カスタム パッケージ]-> [**上記の手順でダウンロードしたパッケージを選択します。 
+## <a id="connecting-app"></a>アプリを Mobile Engagement のバックエンドに接続します
+### <a name="import-the-unity-package"></a>Unity パッケージのインポート
+1. [Mobile Engagement Unity パッケージ](https://aka.ms/azmeunitysdk) をダウンロードし、ローカル コンピューターに保存します。 
+2. **[Assets (アセット)]、[Import Package (パッケージのインポート)]、[Custom Package (カスタム パッケージ)]** の順に移動し、前の手順でダウンロードしたパッケージを選択します。 
    
     ![][70] 
-3. すべてのファイルが選択されており、クリックを確認してください**インポート**ボタンをクリックします。 
+3. すべてのファイルを選択し、 **[Import]** (インポート) ボタンをクリックします。 
    
     ![][71] 
-4. インポートが正常に実行すると、プロジェクトにインポートする SDK ファイルが表示されます。  
+4. インポートが成功すると、プロジェクトにインポートされた SDK ファイルが表示されます。  
    
     ![][72] 
 
-### <a name="update-the-engagementconfiguration"></a>更新プログラム、EngagementConfiguration
-1. 開き、 **EngagementConfiguration** SDK のフォルダーと更新プログラムからスクリプト ファイル、 **IOS\_接続\_文字列**Azure ポータルから取得した接続文字列を使用します。  
+### <a name="update-the-engagementconfiguration"></a>EngagementConfiguration の更新
+1. SDK フォルダーの **EngagementConfiguration** スクリプト ファイルを開き、先ほど Azure Portal で取得した接続文字列を使って **IOS\_CONNECTION\_STRING** を更新します。  
    
     ![][73]
 2. ファイルを保存します。 
 
-### <a name="configure-the-app-for-basic-tracking"></a>基本的な追跡用のアプリを構成します。
-1. 開き、 **PlayerController**スクリプト オブジェクトにアタッチ、Player を編集するためです。 
+### <a name="configure-the-app-for-basic-tracking"></a>基本的な追跡を行うためのアプリの構成
+1. Player オブジェクトに関連付けられた **PlayerController** スクリプトを編集するために開きます。 
 2. 次の using ステートメントを追加します。
    
         using Microsoft.Azure.Engagement.Unity;
-3. 次の追加、`Start()`メソッド
+3. 次の行を `Start()` メソッドに追加します。
    
         EngagementAgent.Initialize();
         EngagementAgent.StartActivity("Home");
 
-### <a name="deploy-and-run-the-app"></a>展開し、アプリを実行します。
-1. IOS デバイスをコンピューターに接続します。 
-2. 開いている**ファイルにビルドの詳細設定]-> [** 
+### <a name="deploy-and-run-the-app"></a>アプリのデプロイと実行
+1. iOS デバイスをコンピューターに接続します。 
+2. **[File (ファイル)]、[Build Settings (設定をビルド)]** の順に開きます。 
    
     ![][40]
-3. 選択**iOS**し、**スイッチ プラットフォーム**
+3. **[iOS]** を選択し、**[Switch Platform (プラットフォームを切り替える)]** をクリックします。
    
     ![][41]
    
     ![][42]
-4. をクリックして**Player の設定**し、有効なバンドル Id を提供します。 
+4. **[Player settings]** (プレイヤーの設定) をクリックし、有効なバンドル識別子を入力します。 
    
     ![][53]
-5. 最後にをクリックして**ビルドと実行**
+5. 最後に、 **[Build And Run]**
    
     ![][54]
-6. IOS パッケージを格納するフォルダーの名前を指定するように求められます。 
+6. iOS パッケージを格納するフォルダー名の入力を求められる場合があります。 
    
     ![][43]
-7. すべてが正常に出るとする場合は、プロジェクトはコンパイルされ、XCode アプリケーション開く必要があります。 
-8. 確認して、**バンドル id**がプロジェクトに正しい。  
+7. すべての手順が正常に行われると、プロジェクトがコンパイルされ、XCode アプリケーション上で開かれます。 
+8. プロジェクトで **バンドル識別子** が正しいことを確認してください。  
    
     ![][75]
-9. XCode で、パッケージが接続されているデバイスに展開できるようにアプリを今すぐ実行し、電話で Unity ゲームが表示されます。 
+9. XCode でアプリを実行すると、接続されているデバイスにパッケージがデプロイされ、スマートフォンに Unity ゲームが表示されます。 
 
-## <a id="monitor"></a>リアルタイム監視をアプリに接続します。
+## <a id="monitor"></a>リアルタイム監視を使用してアプリを接続する
 [!INCLUDE [Connect app with real-time monitoring](../../includes/mobile-engagement-connect-app-with-monitor.md)]
 
-## <a id="integrate-push"></a>プッシュ通知やアプリ内メッセージングが有効にします。
-Mobile Engagement では、ユーザーと対話することができ、プッシュ通知とアプリ内メッセージング キャンペーンのコンテキストで使用します。 このモジュールには、Mobile Engagement ポータルで REACH は呼び出されます。
-通知を受信するアプリの追加の構成を実行する必要はありませんし、そのセットアップでは既にです。
+## <a id="integrate-push"></a>プッシュ通知とアプリ内メッセージングを有効にする
+Mobile Engagement により、ユーザーと通信を行い、キャンペーンに関するプッシュ通知とアプリ内メッセージングを届けることができます。 このモジュールは、Mobile Engagement ポータルで REACH として呼び出されます。
+通知を受け取るためにさらにアプリの構成を行う必要はありません。設定は既に完了しています。
 
 [!INCLUDE [mobile-engagement-ios-send-push-push](../../includes/mobile-engagement-ios-send-push.md)]
 

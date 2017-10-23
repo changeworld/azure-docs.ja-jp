@@ -3,7 +3,7 @@ title: "Azure Automation アカウントを管理する | Microsoft Docs"
 description: "この記事では、証明書の更新、削除、誤った構成など、Automation アカウントの構成を管理する方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
@@ -14,13 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 04/13/2017
 ms.author: magoedte
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: 41efdbcacede74bac038342688362ff480cadc7e
-ms.lasthandoff: 04/15/2017
-
+ms.openlocfilehash: fa3109f15cf14a95af35e814fb61a505d3130462
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-automation-account"></a>Azure Automation アカウントを管理する
 証明書は、Automation アカウントの有効期限が切れる前のどこかの時点で更新する必要があります。 また、実行アカウントが侵害されたと思われる場合は、実行アカウントを削除して再作成することができます。 このセクションでは、これらの操作を実行する方法について説明します。
 
@@ -34,12 +33,13 @@ ms.lasthandoff: 04/15/2017
 
 1. Azure Portal で Automation アカウントを開きます。
 
-2. **[Automation アカウント]** ブレードで、**[アカウントのプロパティ]** ウィンドウの **[アカウントの設定]** で **[実行アカウント]** を選択します。
+2. **[Automation アカウント]** で、 
+3. **[アカウントのプロパティ]** ウィンドウの **[アカウントの設定]** で **[実行アカウント]** を選択します。
 
     ![Automation アカウントのプロパティ ウィンドウ](media/automation-manage-account/automation-account-properties-pane.png)
-3. **実行アカウント**のプロパティ ブレードで、証明書を書き換える実行アカウントまたはクラシック実行アカウントを選択します。
+3. **実行アカウント**のプロパティ ページで、証明書を書き換える実行アカウントまたはクラシック実行アカウントを選択します。
 
-4. 選択したアカウントの **[プロパティ]** ブレードで、**[証明書の書き換え]** をクリックします。
+4. 選択したアカウントの **[プロパティ]** ウィンドウで、**[証明書の書き換え]** をクリックします。
 
     ![実行アカウントの証明書を書き換える](media/automation-manage-account/automation-account-renew-runas-certificate.png)
 
@@ -50,15 +50,15 @@ ms.lasthandoff: 04/15/2017
 
 1. Azure Portal で Automation アカウントを開きます。
 
-2. **[Automation アカウント]** ブレードの [アカウントのプロパティ] ウィンドウで **[実行アカウント]** を選択します。
+2. **[Automation アカウント]** ページで **[実行アカウント]** を選択します。
 
-3. **実行アカウント**のプロパティ ブレードで、削除する実行アカウントまたはクラシック実行アカウントを選択します。 次に、選択したアカウントの **[プロパティ]** ブレードで **[削除]** をクリックします。
+3. **実行アカウント**のプロパティ ページで、削除する実行アカウントまたはクラシック実行アカウントを選択します。 次に、選択したアカウントの **[プロパティ]** ウィンドウで **[削除]** をクリックします。
 
  ![Azure 実行アカウントを削除する](media/automation-manage-account/automation-account-delete-runas.png)
 
 4. アカウントが削除されている間、メニューの **[通知]** で進行状況を追跡できます。
 
-5. 削除したアカウントは、**実行アカウント**のプロパティ ブレードで再作成できます。このとき、作成オプションとして **[Azure 実行アカウント]** を選択します。
+5. 削除したアカウントは、**実行アカウント**のプロパティ ページで再作成できます。このとき、作成オプションとして **[Azure 実行アカウント]** を選択します。
 
  ![Automation 実行アカウントの再作成](media/automation-manage-account/automation-account-create-runas.png)
 
@@ -70,7 +70,7 @@ ms.lasthandoff: 04/15/2017
 * 共同作業者ロールからの実行アカウントの削除
 * Azure AD のサービス プリンシパルまたはアプリケーション
 
-このような誤った構成については、Automation アカウントによって変更が検出され、対応する**実行アカウント**のプロパティ ブレードに *[不完全]* 状態として表示されます。
+このような誤った構成については、Automation アカウントによって変更が検出され、対応する**実行アカウント**のプロパティ ウィンドウに *[不完全]* 状態として表示されます。
 
 ![実行アカウントの構成が不完全な状態](media/automation-manage-account/automation-account-runas-incomplete-config.png)
 

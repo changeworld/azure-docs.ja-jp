@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/07/2017
 ms.author: jdial
 ms.openlocfilehash: 78091b515c00591a4af8d807945475b6be50188a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="route-traffic-through-a-network-virtual-appliance"></a>ネットワーク仮想アプライアンス経由のトラフィックのルーティング
 
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="sample-script"></a>サンプル スクリプト
 
 
-[!code-azurecli-interactive[メイン](../../../cli_scripts/virtual-network/route-traffic-through-nva/route-traffic-through-nva.sh "ネットワーク仮想アプライアンス経由のトラフィックのルーティング")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-network/route-traffic-through-nva/route-traffic-through-nva.sh "Route traffic through a network virtual appliance")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

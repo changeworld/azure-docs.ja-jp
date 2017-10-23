@@ -16,10 +16,10 @@ ms.custom: queries
 ms.date: 10/31/2016
 ms.author: jrj;barbkess
 ms.openlocfilehash: da71cb834c13da5d0f5690f471efc6c696163f30
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="group-by-options-in-sql-data-warehouse"></a>SQL Data Warehouse の Group By オプション
 [GROUP BY][GROUP BY] 句は、行のサマリー セットにデータを集計するのに使用します。 また、機能を拡張するオプションもありますが、Azure SQL Data Warehouse で直接サポートされていないので、対処する必要があります。

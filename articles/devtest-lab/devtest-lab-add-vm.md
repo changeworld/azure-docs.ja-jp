@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: tarcher
 ms.openlocfilehash: 449bffb040dafc8edd0b8b0afd80dbea35cd28ac
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-vm-to-a-lab-in-azure-devtest-labs"></a>Azure DevTest Labs でラボに VM を追加する
 [最初の VM 作成](devtest-lab-create-first-vm.md)の作業を行った方は、おそらくプレインストールされている[マーケットプレイス イメージ](devtest-lab-configure-marketplace-images.md)から VM を追加したことと思います。 その後さらに VM をラボに追加する必要が生じた場合は、"*ベース*" ([カスタム イメージ](devtest-lab-create-template.md)または[数式](devtest-lab-manage-formulas.md)) を選択することもできます。 このチュートリアルでは、Azure Portal を使用して、DevTest Labs でラボに VM を追加します。

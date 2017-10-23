@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/22/2017
 ms.author: sngun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 914f2e5d10aa341cea5eba8c24c7c37610e6b626
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-stack"></a>Azure Stack への接続
 
@@ -107,7 +106,6 @@ Add-AzsVpnConnection `
 ポータル接続をテストするには、インターネット ブラウザーを開き、ユーザー ポータル (https://portal.local.azurestack.external/) にアクセスし、サインインしてリソースを作成します。  
 
 ## <a name="next-steps"></a>次のステップ
-
 
 
 

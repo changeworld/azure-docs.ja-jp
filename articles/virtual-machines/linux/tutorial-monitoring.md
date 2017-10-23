@@ -16,12 +16,11 @@ ms.workload: infrastructure
 ms.date: 05/08/2017
 ms.author: davidmu
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 70c17d9a8f7bf6d9106efcb56eee7cd996460c18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-monitor-and-update-a-linux-virtual-machine-in-azure"></a>Azure で Linux 仮想マシンを監視および更新する方法
 
@@ -178,7 +177,7 @@ Update Management を使用することで、Azure Linux VM のパッケージ�
 1. 一覧から VM を選択します。
 1. [VM] 画面の **[操作]** セクションで、**[更新の管理]** をクリックします。 **[更新管理の有効化]** 画面が開きます。
 
-この VM で Update Management が有効になっているかを確認する検証が行われます。 この検証では、Log Analytics ワークスペースと、リンクされた Automation アカウントの確認、およびソリューションがワークスペースにあるかどうかの確認が行われます。
+この VM で Update Management が有効になっているかを確認する検証が行われます。 この検証では、Log Analytics ワークスペースの確認、リンクされた Automation アカウントの確認、ソリューションがワークスペースにあるかどうかの確認が行われます。
 
 Log Analytics ワークスペースは、Update Management のような機能およびサービスによって生成されるデータを収集するために使用されます。 ワークスペースには、複数のソースからのデータを確認および分析する場所が 1 つ用意されています。 更新を必要とする VM で追加のアクションを実行する場合、Azure Automation を使用すると、VM に対してスクリプトを実行して、更新プログラムをダウンロードして適用するなどの操作を行うことができます。
 
@@ -188,9 +187,9 @@ Log Analytics ワークスペースは、Update Management のような機能お
 
 ![Update Management のオンボード構成バナー](./media/tutorial-monitoring/manage-updates-onboard-solution-banner.png)
 
-バナーをクリックすると、ソリューションが有効になります。 検証後、次の前提条件のいずれかを満たしていないことが分かった場合は、自動的に追加されます。
+バナーをクリックすると、ソリューションが有効になります。 検証後、次の前提条件のいずれかを満たしていないことがわかった場合は、自動的に追加されます。
 
-* [Log Analytics ](../../log-analytics/log-analytics-overview.md)ワークスペース
+* [Log Analytics](../../log-analytics/log-analytics-overview.md) ワークスペース
 * [Automation](../../automation/automation-offering-get-started.md)
 * [Hybrid Runbook Worker](../../automation/automation-hybrid-runbook-worker.md) が VM で有効になっている
 
@@ -231,8 +230,8 @@ Update Management では、パッケージをインストールするのに、�
 
 ### <a name="view-results-of-an-update-deployment"></a>更新プログラムのデプロイの結果を確認する
 
-スケジュールされたデプロイの開始後、**[更新の管理]** 画面の **[更新プログラムの展開]** タブに、デプロイのステータスが表示されます。
-実行中の場合、ステータスは **[処理中]** と表示されます。 正常に完了すると、ステータスは **[成功]** に変わります。
+スケジュールされたデプロイの開始後、**[更新管理]** 画面の **[更新プログラムの展開]** タブに、デプロイの状態が表示されます。
+実行中の場合、状態は **[処理中]** と表示されます。 正常に完了すると、ステータスは **[成功]** に変わります。
 デプロイ時に 1 つ以上の更新プログラムでエラーが発生した場合、ステータスは **[失敗]** になります。
 完了した更新プログラムのデプロイをクリックし、その更新プログラムのデプロイのダッシュボードを確認します。
 
@@ -249,7 +248,7 @@ Update Management では、パッケージをインストールするのに、�
 
 **[出力]** タイルをクリックし、ターゲット VM での更新プログラムのデプロイを管理する runbook のジョブ ストリームを確認します。
 
-**[エラー]** をクリックし、デプロイで発生したエラーに関する詳細情報を確認します。
+デプロイで発生したエラーの詳細情報を確認するには、**[エラー]** をクリックします。
 
 ## <a name="advanced-monitoring"></a>高度な監視 
 
@@ -290,4 +289,3 @@ OMS ポータルの [ログ検索] ブレードに *myVM* が表示されます 
 
 > [!div class="nextstepaction"]
 > [VM のセキュリティの管理](./tutorial-azure-security.md)
-

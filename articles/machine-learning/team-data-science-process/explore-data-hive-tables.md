@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: dc5cbbf8db46607179e8b0e8657462afac21f7da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>Hive クエリを使用して Hive テーブルのデータを探索する
 このドキュメントでは、HDInsight Hadoop クラスター内の Hive テーブルのデータを探索する Hive スクリプトの例を紹介します。
@@ -74,5 +73,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>タクシー乗車データ シナリオのその他のクエリ スクリプト
 [NYC タクシー乗車データ](http://chriswhong.com/open-data/foil_nyc_taxi/)シナリオに固有のクエリの例も、[GitHub リポジトリ](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)に用意されています。 これらのクエリには、指定されたデータ スキーマが既にあり、すぐに送信して実行できる状態になっています。
-
 

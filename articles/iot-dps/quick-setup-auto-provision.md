@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: a96f64e41b090cb60bbbb007a3913fd23ce8f609
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="set-up-the-iot-hub-device-provisioning-service-preview-with-the-azure-portal"></a>Azure Portal で IoT Hub Device Provisioning Service (プレビュー) を設定する
 
 以下の手順では、デバイスのプロビジョニングに使用する Azure クラウド リソースをポータルから設定する方法について説明しています。 IoT ハブの作成と新しい IoT Hub Device Provisioning Service の作成、さらにその 2 つのサービスのリンクなどが、ここでの作業の対象となります。 
@@ -27,13 +25,13 @@ ms.lasthandoff: 09/09/2017
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
 
-## <a name="log-in-to-the-azure-portal"></a>Azure Portal にログインする
+## <a name="log-in-to-the-azure-portal"></a>Azure ポータルにログインする
 
 [Azure Portal](https://portal.azure.com/) にログインします。
 
 ## <a name="create-an-iot-hub"></a>IoT Hub の作成
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
 2. **[モノのインターネット]** を選択し、**[IoT Hub]** を選択して **[作成]** ボタンをクリックします。 
 
@@ -46,7 +44,7 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 ## <a name="create-a-new-instance-for-the-iot-hub-device-provisioning-service"></a>IoT Hub Device Provisioning Service の新しいインスタンスを作成する
 
-1. Azure Portal の左上隅にある **[新規]** ボタンをクリックします。
+1. Azure Portal の左上にある **[新規]** ボタンをクリックします。
 
 2. *[Marketplace を検索]* で **Device Provisioning Service** を探します。 **[IoT Device Provisioning Service (preview)]\(IoT Device Provisioning Service (プレビュー)\)** を選択し、**[作成]** ボタンをクリックします。 
 
@@ -84,4 +82,3 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [シミュレートされたデバイスを作成するためのクイックスタート](./quick-create-simulated-device.md)
-

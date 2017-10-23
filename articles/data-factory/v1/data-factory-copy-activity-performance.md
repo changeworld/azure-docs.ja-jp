@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 155e29e467b9752d491f62973ffccc986041fcab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>コピー アクティビティのパフォーマンスとチューニングに関するガイド
 Azure Data Factory コピー アクティビティは、優れたセキュリティで保護された、信頼性とパフォーマンスに優れたデータ読み込みソリューションを提供します。 これにより、数十テラバイトのデータを、さまざまなクラウドおよびオンプレミスのデータ ストアの間で毎日コピーすることができます。 データ読み込みのパフォーマンスを劇的に高めることが、高度な分析ソリューションを構築してすべてのデータから深い洞察を得るという、"ビッグ データ" の中心的問題に集中するための鍵となります。
@@ -409,4 +408,3 @@ Data Factory が同じデータ ストアに同時に接続することを必要
 * Azure Cosmos DB: [Azure Cosmos DB のパフォーマンス レベル](../../cosmos-db/performance-levels.md)に関する記事
 * オンプレミスの SQL Server: 「 [Monitor and tune for performance (パフォーマンスの監視とチューニング)](https://msdn.microsoft.com/library/ms189081.aspx)
 * オンプレミスのファイル サーバー: 「 [Performance Tuning for File Servers (ファイル サーバーのパフォーマンス チューニング)](https://msdn.microsoft.com/library/dn567661.aspx)
-

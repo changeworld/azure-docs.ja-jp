@@ -16,14 +16,12 @@ ms.workload: web
 ms.date: 06/19/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: a8e9dc2d7767459fafe80a4986f5ac87e95e6e34
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="scale-a-web-app-manually"></a>Web アプリを手動でスケールする
 
 このシナリオでは、リソース グループ、App Service プラン、Web アプリの作成方法について説明します。 その後、App Service プランのスケールを単一インスタンスから複数インスタンスへと拡張します。
@@ -36,7 +34,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/app-service/scale-manual/scale-manual.sh "手動スケール設定")]
+[!code-azurecli-interactive[main](../../../cli_scripts/app-service/scale-manual/scale-manual.sh "Manual Scale")]
 
 [!INCLUDE [cli-script-clean-up](../../../includes/cli-script-clean-up.md)]
 
@@ -56,4 +54,3 @@ CLI をローカルにインストールして使用する場合、このトピ�
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の App Service の CLI サンプル スクリプトは、[Azure App Service のドキュメント](../app-service-cli-samples.md)のページにあります。
-

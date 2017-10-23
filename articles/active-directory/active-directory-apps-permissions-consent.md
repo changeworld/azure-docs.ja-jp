@@ -18,10 +18,10 @@ ms.author: billmath
 ms.reviewer: jesakowi
 ms.custom: oldportal;it-pro;
 ms.openlocfilehash: 6f6baf5e1538fb280a899065c64ca5688473c04a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="apps-permissions-and-consent-in-azure-active-directory"></a>Azure Active Directory のアプリ、アクセス許可、および同意
 Azure Active Directory では、アプリケーションをディレクトリに追加できます。  そのアプリケーションは、アプリケーションの種類に応じて異なります。  クラシック ポータルでアプリケーションを表示するには、ディレクトリを選んで [アプリケーション] を選択します。

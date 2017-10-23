@@ -15,12 +15,11 @@ ms.topic: overview
 ms.date: 01/04/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: c1b3feb79328269f4692d744e7a473397d0328c1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="web-apps-overview"></a>Web Apps の概要
 *App Service Web Apps* は、Web サイトと Web アプリケーションをホストするために最適化された、完全に管理されたコンピューティング プラットフォームです。 Microsoft Azure のこの [サービスとしてのプラットフォーム](https://en.wikipedia.org/wiki/Platform_as_a_service) (PaaS) サービスを使用すると、アプリの実行とスケーリングのためのインフラストラクチャは Azure で管理されるため、お客様はビジネス ロジックに集中できます。
@@ -76,4 +75,3 @@ App Service の Web Apps に加え、Azure では Web サイトと Web アプリ
 > Azure アカウントがなくても、[App Service を試用](https://azure.microsoft.com/try/app-service/)できます。 スターター アプリを作成し、最大 1 時間使用できます。クレジット カードも契約も不要です。
 > 
 > 
-

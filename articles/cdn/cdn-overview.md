@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 02/08/2017
 ms.author: v-semcev
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 909c4dc3feaeaedf56ecacc78f4b7e0e15d98875
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-azure-content-delivery-network-cdn"></a>Azure Content Delivery Network (CDN) の概要
 > [!NOTE]
@@ -100,5 +99,4 @@ CDN の概要については、「 [Azure CDN の使用](cdn-create-new-endpoint
 [.NET](cdn-app-dev-net.md) または [Node.js](cdn-app-dev-node.md) を使用して Azure CDN を自動化する方法について学習します。
 
 料金情報については、 [CDN の価格](https://azure.microsoft.com/pricing/details/cdn/)に関するページを参照してください。
-
 

@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 10/27/2016
 ms.author: bwren
 ms.openlocfilehash: b4201f105a87b0a41059c061eb37fb35d4514e02
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-monitoring-product-comparison"></a>Microsoft 監視製品の比較
 この記事では、アーキテクチャ、リソースの監視方法のロジック、収集したデータの分析方法の観点から、System Center Operations Manager (SCOM) と Operations Management Suite (OMS) の Log Analytics の比較について説明します。  両者の相違点と相対的なメリットについて基本的な理解を得ることを目的としています。  

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
+ms.openlocfilehash: 42d1de8a27f8979db5662094e8bd74a6f5ccac55
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: de46e5a6833809f8413d6a2de62a8cb9fe178130
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>高度な分析データ処理のためのシナリオとプランを特定する方法
 データセットに対する高度な分析プロセスを実行する環境をセットアップしている場合、どのようなリソースを含めるように計画するべきでしょうか? この記事では、シナリオに関連するタスクおよびリソースの特定に役立つ一連の確認事項について説明しています。 予測分析の大まかな手順は、「 [Team Data Science Process (TDSP) について](overview.md)」に記載されています。 それらの各手順で、特定のシナリオに関連するタスクのための固有のリソースが必要になります。 シナリオを特定するための主要な確認事項は、データ ロジスティック、特性、データセットの品質、分析で使用するツールや言語などに関連しています。
@@ -105,5 +104,4 @@ Azure Machine Learning 環境を例とします。
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>高度な分析シナリオの特定
 前のセクションの質問に答えたら、現在の状況に最適なシナリオを決定する準備が整います。 サンプル シナリオは、「 [Azure Machine Learning の Advanced Analytics Process and Technology 用のシナリオ](plan-sample-scenarios.md)」に記載されています。
-
 

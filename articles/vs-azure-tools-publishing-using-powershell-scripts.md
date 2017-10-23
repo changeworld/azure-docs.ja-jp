@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
+ms.openlocfilehash: 92753860ec820172e46f483831eb0c1cf1acb038
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ba36ad0f46ce681b61acc576448fd36441b43f72
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-windows-powershell-scripts-to-publish-to-dev-and-test-environments"></a>Windows PowerShell スクリプトを使用した開発環境およびテスト環境の発行
 Visual Studio で Web アプリケーションを作成するときに、Azure への Web サイトの発行を自動化するための Windows PowerShell スクリプトを生成できます。後でこのスクリプトを使用して、Web サイトを Azure App Service の Web アプリとして、または仮想マシンとして Azure に発行できます。 Windows PowerShell スクリプトは、要件に合わせて Visual Studio エディターで編集および拡張できます。また、既存のビルド スクリプト、テスト スクリプト、発行スクリプトと統合することもできます。
@@ -344,4 +343,3 @@ Windows PowerShell コマンド プロンプトで使用できる関数のヘル
 
 ## <a name="next-steps"></a>次のステップ
 PowerShell スクリプトの詳細については、「[Windows PowerShell を使用したスクリプト](https://technet.microsoft.com/library/bb978526.aspx)」をお読みください。また、「[スクリプト センター](https://azure.microsoft.com/documentation/scripts/)」で他の Azure PowerShell スクリプトもご覧ください。
-

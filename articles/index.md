@@ -1,14 +1,13 @@
---- 
+---
 layout: HubPage
-hide_bc: true
+hide_bc: True
 title: "Microsoft Azure のドキュメント"
 description: "Microsoft Azure クラウド サービスを使用して、強力なアプリケーションを構築し、管理する方法について説明します ドキュメント、サンプル コード、チュートリアルなどを入手します。"
+ms.openlocfilehash: e87391e9662991a542ad58eafd9b4c2714f30d66
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 1e8b6749e445b7b8787b5b0246445a2bb810f80f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/14/2017
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -160,8 +159,7 @@ ms.lasthandoff: 09/25/2017
                                                 <ul class="noBullet">
                                                     <li><a class="barLink" href="/azure/app-service-web/">Web Apps</a></li>
                                                     <li><a class="barLink" href="/azure/azure-functions/">サーバーレス関数</a></li>
-                                                    <li><a class="barLink" href="/azure/container-instances/">Container Instances</a></li>
-                                                    <li><a class="barLink" href="/azure/container-service/kubernetes/">Kubernetes でのコンテナー</a></li>
+                                                    <li><a class="barLink" href="/azure/containers/">コンテナー</a></li>
                                                     <li><a class="barLink" href="/azure/service-fabric/">Service Fabric でのマイクロサービス</a></li>
                                                 </ul>
                                             </div>
@@ -596,6 +594,12 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/batch-ai/">
+                                                <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                <p>Azure Batch AI</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/cognitive-services/custom-decision-service/custom-decision-service-overview">
                                                 <img src="media/index/cs-decision-maker.svg" alt="" />
                                                 <p>Custom Decision Service</p>
@@ -632,7 +636,7 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-spell-check/proof-text">
+                                            <a href="/azure/cognitive-services/bing-spell-check/">
                                                 <img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />
                                                 <p>Bing Spell Check</p>
                                             </a>
@@ -668,43 +672,43 @@ ms.lasthandoff: 09/25/2017
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-news-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-news-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />
                                                 <p>Bing News</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-video-search/search-the-web">
+                                            <a href="/azure/cognitive-services/Bing-Video-Search/search-the-web">
                                                 <img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />
                                                 <p>Bing Video Search</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-web-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-web-search/">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing Web Search</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms">
+                                            <a href="/azure/cognitive-services/Bing-Autosuggest">
                                                 <img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />
                                                 <p>Bing Autosuggest</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-custom-search/overview">
+                                            <a href="/azure/cognitive-services/bing-custom-search">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
                                                 <p>Bing Custom Search</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-entities-search/overview">
+                                            <a href="/azure/cognitive-services/bing-entities-search/search-the-web">
                                                 <img src="media/index/API_Sear_BingSearch.svg" alt="" />
-                                                <p>Bing Entities Search</p>
+                                                <p>Bing Entity Search</p>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/cognitive-services/bing-image-search/search-the-web">
+                                            <a href="/azure/cognitive-services/bing-image-search">
                                                 <img src="media/index/API_Sear_BingImageSearch.svg" alt="" />
                                                 <p>Bing Image Search</p>
                                             </a>
@@ -2526,6 +2530,25 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="/azure/batch-ai/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/Azure_batch_ai.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Batch AI</h3>
+                                                    <p>同時に実行される大規模なディープ ラーニングおよび AI モデルの実験とトレーニングを容易に</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li class="fullSpan">
                                 <h2 style="margin-top:24px;margin-bottom:18px;">Cognitive Services</h2>
                                 <ul id="cognitive-services" class="cardsL panelContent singlePanelContent" style="display:flex!important;">
@@ -2593,7 +2616,7 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                         <h3>言語</h3>
                                                         <ul class="noBullet">
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/proof-text"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />Bing Spell Check</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-spell-check/"><img src="media/index/API_Lang_BingSpellCheck.svg" alt="" />Bing Spell Check</a>
                                                             </li>
                                                             <li>
                                                                 <a class="barLink" href="/azure/cognitive-services/luis/home"><img src="media/index/API_Lang_LanguageUnderstanding.svg" alt="" /><span>Language Understanding Intelligent Services (LUIS)&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
@@ -2658,22 +2681,21 @@ HTTP 負荷分散と配信管理機能が組み込まれたレイヤー 7 ロー
                                                                 <a class="barLink" href="/azure/cognitive-services/bing-news-search/search-the-web"><img src="media/index/API_Sear_BingNewsSearch.svg" alt="" />Bing News</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-video-search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />Bing Video Search</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/Bing-Video-Search/search-the-web"><img src="media/index/API_Sear_BingVideoSearch.svg" alt="" />Bing Video Search</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" />Bing Web Search</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-web-search/"><img src="media/index/API_Sear_BingSearch.svg" alt="" />Bing Web Search</a>
+                                                            </li>
+                                                            <li>                                                 <a class="barLink" href="/azure/cognitive-services/Bing-Autosuggest"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing Autosuggest</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-autosuggest/get-suggested-search-terms"><img src="media/index/API_Sear_BingAutoSuggest.svg" alt="" />Bing Autosuggest</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Custom Search</a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-custom-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Custom Search&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/search-the-web"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Entity Search&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
                                                             </li>
                                                             <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-entities-search/overview"><img src="media/index/API_Sear_BingSearch.svg" alt="" /><span>Bing Entities Search&nbsp;<sup style="font-size:70%">プレビュー</sup></span></a>
-                                                            </li>
-                                                            <li>
-                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search/search-the-web"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing Image Search</a>
+                                                                <a class="barLink" href="/azure/cognitive-services/bing-image-search"><img src="media/index/API_Sear_BingImageSearch.svg" alt="" />Bing Image Search</a>
                                                             </li>
                                                         </ul>
                                                     </div>
@@ -4190,4 +4212,3 @@ Azure CLI </h3>
         </ul>
     </div>
 </div>
-

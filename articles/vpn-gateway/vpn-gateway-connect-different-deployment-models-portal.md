@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/21/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: ad5700f1a85567a3e7f4ef80b778183929cb0d68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-virtual-networks-from-different-deployment-models-using-the-portal"></a>ポータルを使って異なるデプロイ モデルの仮想ネットワークを接続する
 
@@ -88,7 +87,7 @@ Connection name = RMtoClassic
 
 ポータルを使ってクラシック仮想ネットワークを作成するときは、以下の手順を使って仮想ネットワーク ブレードに移動する必要があります。そうしないと、クラシック仮想ネットワークを作成するオプションが表示されません。
 
-1. [+] をクリックして [新規作成] ブレードを開きます。
+1. +をクリックして 新規作成 ブレードを開きます。
 2. [Marketplace を検索] フィールドに「仮想ネットワーク」と入力します。 代わりに、[ネットワーク] -> [仮想ネットワーク] を選ぶと、クラシック VNet を作成するオプションが表示されません。
 3. 検索結果の一覧から "仮想ネットワーク" を探してクリックし、[仮想ネットワーク] ブレードを開きます。 
 4. [仮想ネットワーク] ブレードで、[クラシック] を選んでクラシック VNet を作成します。 
@@ -271,4 +270,3 @@ Azure Portal または PowerShell を使って、接続を確認できます。 
 ## <a name="faq"></a>VNet 間接続に関してよく寄せられる質問
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
-

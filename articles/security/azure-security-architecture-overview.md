@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/04/2017
 ms.author: yurid
 ms.openlocfilehash: efb0cfa4b7950a2d9418282965a23498a67cbffc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="security-architecture-overview"></a>セキュリティ アーキテクチャの概要
 Azure のソリューション デプロイをセキュリティで保護する場合、強力なアーキテクチャの基盤を持つことが成功の要因の 1 つになります。 この知識があれば、適切な質問をできるようにすることで、自分の要件をより深く理解し、質問に対する適切な回答を見つける能力をさらに備えることができます。 適切な質問に対する正しい回答を得ると、デプロイのセキュリティを最適化するために非常に役立ちます。

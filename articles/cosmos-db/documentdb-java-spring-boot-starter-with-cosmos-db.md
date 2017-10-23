@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/08/2017
 ms.author: robmcm;yungez;kevinzha
 ms.openlocfilehash: 273cc750857c5e466882060a38ac0f3475811e98
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-the-spring-boot-starter-with-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB DocumentDB API で Spring Boot Starter を使用する方法
 

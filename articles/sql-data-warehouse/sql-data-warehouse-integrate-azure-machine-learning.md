@@ -16,10 +16,10 @@ ms.custom: integrate
 ms.date: 10/31/2016
 ms.author: kevin;barbkess
 ms.openlocfilehash: c19860c6b5b1c15d1e29ddc67f9cf9ad4618725b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-machine-learning-with-sql-data-warehouse"></a>SQL Data Warehouse での Azure Machine Learning の使用
 Azure Machine Learning は、完全に管理された予測分析サービスです。このサービスを使用して、SQL Data Warehouse のデータに対して予測モデルを作成し、いつでも利用できる Web サービスとして発行することができます。 予測分析と機械学習の基礎については、[Azure の Machine Learning の概要][Introduction to Machine Learning on Azure]に関する記事をご覧ください。  機械学習モデルの作成、トレーニング、スコア付け、およびテストの方法については、[実験作成チュートリアル][Create experiment tutorial]のページをご覧ください。

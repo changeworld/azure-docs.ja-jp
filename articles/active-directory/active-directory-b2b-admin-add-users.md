@@ -16,10 +16,10 @@ ms.workload: identity
 ms.date: 03/15/2017
 ms.author: sasubram
 ms.openlocfilehash: 7f33165141f31c1b495313f2da0d6e4681bdf8f2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-do-azure-active-directory-admins-add-b2b-collaboration-users"></a>Azure Active Directory 管理者が B2B コラボレーション ユーザーを追加する方法
 

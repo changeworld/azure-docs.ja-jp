@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 4dfd3973593a94adfc15a6e15d69c697e13998af
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-01-release-notes--october-2014"></a>StorSimple 8000 シリーズ Update 0.1 リリース ノート - 2014 年 10 月
 ## <a name="overview"></a>Overview

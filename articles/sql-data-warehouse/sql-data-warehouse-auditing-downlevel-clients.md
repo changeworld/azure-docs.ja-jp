@@ -16,10 +16,10 @@ ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 ms.openlocfilehash: a7ea6141285a0098339f1e071af2592dd4535c12
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-data-warehouse----downlevel-clients-support-for-auditing-and-dynamic-data-masking"></a>SQL Data Warehouse - 監査と動的データ マスキングのためのダウンレベル クライアントのサポート
 [監査](sql-data-warehouse-auditing-overview.md) は TDS リダイレクションに対応する SQL クライアントと連動します。

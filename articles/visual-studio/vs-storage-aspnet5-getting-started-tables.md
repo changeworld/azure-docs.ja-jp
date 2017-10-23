@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
 ms.openlocfilehash: 8d05fe3ed9a5c66f186a930d4107162c1f322c05
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-get-started-with-azure-table-storage-and-visual-studio-connected-services"></a>Azure テーブル ストレージと Visual Studio 接続済みサービスの概要
 [!INCLUDE [storage-try-azure-tools-tables](../../includes/storage-try-azure-tools-tables.md)]
@@ -142,7 +142,7 @@ Azure テーブルは、 **CreateIfNotExistsAsync()**への呼び出しを追加
     } while (token != null);
 
 ## <a name="get-a-single-entity"></a>単一のエンティティを取得する
-単一の特定のエンティティを取得するクエリを記述することができます。 次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。 このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。 クエリでパーティション キーと行キーの両方を指定することが、**Table** サービスから単一のエンティティを取得するための最速の方法です。
+単一の特定のエンティティを取得するクエリを記述することができます。 次のコードは、**TableOperation** オブジェクトを使用して、"Ben Smith" という名前のユーザーを指定します。 このメソッドで返されるのは、エンティティのコレクションではなく、単一のエンティティのみです。したがって、**TableResult.Result** の戻り値は **CustomerEntity** オブジェクトです。 クエリでパーティション キーと行キーの両方を指定することが、**Table** service から単一のエンティティを取得するための最速の方法です。
 
     // Create a retrieve operation that takes a customer entity.
     TableOperation retrieveOperation = TableOperation.Retrieve<CustomerEntity>("Smith", "Ben");

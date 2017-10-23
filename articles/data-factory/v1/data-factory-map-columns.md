@@ -14,14 +14,12 @@ ms.topic: article
 ms.date: 06/20/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f97e41b9ee614da7ca852a15f101da1c91c86efb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="map-source-dataset-columns-to-destination-dataset-columns"></a>ソース データセット列を変換先のデータセット列にマップする
 列マッピングは、ソース テーブル マップの “structure” 列を、シンク テーブルの “structure” 列に対し指定するために使用できます。 **columnMapping** プロパティは、コピー アクティビティの **typeProperties** セクションにあります。
 
@@ -183,4 +181,3 @@ ms.lasthandoff: 09/25/2017
 コピー アクティビティの使用に関するチュートリアルは、次の記事をご覧ください。 
 
 - [Blob Storage から SQL データベースにデータをコピーする](data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
-

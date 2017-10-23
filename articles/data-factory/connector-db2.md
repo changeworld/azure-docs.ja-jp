@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: aef796aa4f2604e6cd06452f3d3c6f648850aa38
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Azure Data Factory を使用して DB2 からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -64,14 +63,14 @@ DB2 のリンクされたサービスでは、次のプロパティがサポー�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Db2** に設定する必要があります。 | はい |
+| type | type プロパティは **Db2** に設定する必要があります。 | あり |
 | server |DB2 サーバーの名前です。 |はい |
 | database |DB2 データベースの名前です。 |はい |
-| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |いいえ |
-| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |はい |
-| username |DB2 データベースに接続するユーザー名を指定します。 |はい |
-| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドは、SecureString とマークします。 |あり |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| schema |データベース内のスキーマの名前です。 スキーマ名は、大文字と小文字が区別されます。 |なし |
+| authenticationType |DB2 データベースへの接続に使用される認証の種類です。<br/>使用可能な値: **Basic**。 |あり |
+| username |DB2 データベースに接続するユーザー名を指定します。 |あり |
+| パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 |あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -106,7 +105,7 @@ DB2 からデータをコピーするには、データセットの type プロ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティを **RelationalTable** に設定する必要があります。 | はい |
+| type | データセットの type プロパティは **RelationalTable** に設定する必要があります。 | あり |
 | tableName | DB2 データベースのテーブルの名前。 | いいえ (アクティビティ ソースの "query" が指定されている場合) |
 
 **例**
@@ -136,8 +135,8 @@ DB2 からデータをコピーするには、コピー アクティビティの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **RelationalSource** に設定する必要があります。 | はい |
-| query | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
+| type | コピー アクティビティのソースの type プロパティを **RelationalSource** に設定する必要があります。 | あり |
+| クエリ | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`)。 | いいえ (データセットの "tableName" が指定されている場合) |
 
 **例:**
 
@@ -182,7 +181,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | BLOB |Byte[] |
 | Char |String |
 | Clob |String |
-| Date |DateTime |
+| 日付 |DateTime |
 | DB2DynArray |String |
 | DbClob |String |
 | Decimal |Decimal |
@@ -190,7 +189,7 @@ DB2 からデータをコピーするとき、次の DB2 のデータ型から A
 | Double |Double |
 | Float |Double |
 | Graphic |String |
-| Integer |Int32 |
+| 整数 |Int32 |
 | LongVarBinary |Byte[] |
 | LongVarChar |String |
 | LongVarGraphic |String |

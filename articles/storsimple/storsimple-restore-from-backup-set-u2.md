@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/22/2017
 ms.author: alkohli
 ms.openlocfilehash: 99b76e3bc2939c65654cbf606fda6f8a45e0c44b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set-update-2"></a>バックアップ セットからの StorSimple ボリュームの復元 (Update 2)
 [!INCLUDE [storsimple-version-selector-restore-from-backup](../../includes/storsimple-version-selector-restore-from-backup.md)]

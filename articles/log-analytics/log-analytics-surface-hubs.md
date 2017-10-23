@@ -16,10 +16,10 @@ ms.date: 06/07/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: b6ecd0d09589fec85c1633f528afc1165c346b7f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-surface-hubs-with-log-analytics-to-track-their-health"></a>Log Analytics を使用して Surface Hub を監視し、その正常性を追跡する
 

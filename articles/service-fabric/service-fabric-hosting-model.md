@@ -13,10 +13,10 @@ ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
 ms.openlocfilehash: ca7092a06a9ffce8383ca8bc9f70ce312cdf9de4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-hosting-model"></a>Service Fabric ホスティング モデル
 この記事では、Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**専有プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、また Servic Fabric サービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。

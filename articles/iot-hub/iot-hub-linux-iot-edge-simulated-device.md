@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/09/2017
 ms.author: andbuc
 ms.openlocfilehash: 5349960373ae6815862c5f79a69dd6d5d9d624ab
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-linux"></a>Azure IoT Edge を使用して、シミュレートされたデバイスに D2C メッセージを送信する (Linux)
 

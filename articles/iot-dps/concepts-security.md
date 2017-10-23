@@ -12,14 +12,12 @@ documentationcenter:
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
 ms.openlocfilehash: 3ccbaaf55d2bdfedffcdb5ca069798328e2d75fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-security-concepts"></a>IoT Hub デバイス プロビジョニング サービスのセキュリティの概念 
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 デバイス プロビジョニング サービスを利用すると、セキュリティで保護されたスケーラブルな方法でいくつものデバイスをプロビジョニングできます。 この記事では、デバイス プロビジョニングに関連付けられた*セキュリティ*の概念の概要を説明します。 この記事は、デプロイのために準備されたデバイスの取得に関わるすべてのユーザーに最も役立ちます。
@@ -67,4 +65,3 @@ TPM は、プラットフォームの認証に使用される安全に保管さ�
 ## <a name="leaf-certificate"></a>リーフ証明書
 
 リーフ証明書 (エンド エンティティ証明書) は証明書フォルダーの識別に使用され、証明書チェーンにあるルート証明書を保持します。 リーフ証明書は、他の証明書の署名には使用されません。
-

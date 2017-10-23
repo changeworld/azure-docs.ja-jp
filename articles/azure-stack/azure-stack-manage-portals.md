@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3a1be7a08fab8ad0253f26e6a0683617bff4b7c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Azure Stack の管理者ポータルの使用
 
@@ -83,4 +82,3 @@ Azure Stack オペレーター向けドキュメントにアクセスするに�
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
-

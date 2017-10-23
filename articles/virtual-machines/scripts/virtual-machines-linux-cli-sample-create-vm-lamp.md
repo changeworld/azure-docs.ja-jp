@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 04/05/2017
 ms.author: allclark
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 23170923d7c05c9b7230cf331725250b2a3c0f09
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-the-lamp-stack-in-a-load-balanced-virtual-machine-scale-set"></a>負荷分散された仮想マシン スケール セットでの LAMP スタックのデプロイ
 
 この例では、仮想マシン スケール セットを作成し、カスタム スクリプトを実行する拡張機能を適用して、各仮想マシンのスケール セットに LAMP スタックをデプロイします。
@@ -32,13 +30,13 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[メイン](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "LAMP スタックで設定する仮想マシン スケール セットの作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/build-stack.sh "Create virtual machine scale set with LAMP stack")]
 
 ## <a name="connect"></a>接続
 
 このコードを使用して、VM とスケール セットに接続する方法を表示します。
 
-[!code-azurecli[メイン](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "仮想マシン スケール セットのアクセス")]
+[!code-azurecli[main](../../../cli_scripts/virtual-machine/create-scaleset-php-ansible/how-to-access.sh "Access the virtual machine scale set")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -68,4 +66,3 @@ az group delete -n myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
-

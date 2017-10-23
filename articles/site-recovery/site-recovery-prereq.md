@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Site Recovery を使用した Azure へのレプリケーションの前提条件 | Microsoft Docs"
 description: "Azure Site Recovery サービスを使用して VM や物理マシンを Azure にレプリケートするための前提条件について学習します。"
 services: site-recovery
@@ -13,15 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/23/2017
-ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: 1868e5fd0427a5e1b1eeed244c80a570a39eb6a9
+ms.author: rajanaki
 ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/19/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 #  <a name="prerequisites-for-replication-from-on-premises-to-azure-by-using-site-recovery"></a>Site Recovery を使用してオンプレミスから Azure へのレプリケーションを行うための前提条件
 
 > [!div class="op_single_selector"]
@@ -130,4 +128,3 @@ VMM クラウドにある Hyper-V の、お客様所有サイトへのディザ�
 |``https://dev.mysql.com/get/archives/mysql-5.5/mysql-5.5.37-win32.msi`` | 必要なし | 必要なし | 必要なし | SQL のダウンロードを許可 |
 |``time.windows.com`` | ALLOW | 許可 | 許可 | 許可|
 |``time.nist.gov`` | 許可 | 許可 | 許可 | ALLOW |
-

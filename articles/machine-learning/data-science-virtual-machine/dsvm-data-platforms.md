@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9b8beb51c555c6125fa3b0abbad892d627a180b9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-platforms"></a>データ プラットフォーム
 
 データ サイエンス仮想マシン (DSVM) では、さまざまなデータ プラットフォームに対して分析を構築することができます。 リモート データ プラットフォームへのインターフェイスに加えて、DSVM は、迅速な開発およびプロトタイプ作成のためのローカル インスタンスを提供します。 
@@ -45,13 +43,13 @@ DSVM でサポートされているデータ プラットフォーム ツール�
 
 ### <a name="setup"></a>[Setup]
 
-データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で実行する唯一の手順は、Microsoft R を使用した In-Database 分析を有効にすることです。これを行うには、コンピューターの管理者としてログインした後、SQL Server Management Studio (SSMS) での一時アクションとして次のコマンドを実行し、SSMS で [New Query] (新しいクエリ) を開き、選択されているデータベースが `master` であることを確認してから、次を実行します。 
+データベース サーバーは既に事前構成されており、SQL Server に関連する Windows サービス (`SQL Server (MSSQLSERVER)` など) は自動的に実行されるように設定されています。 手動で実行する唯一の手順は、Microsoft R を使用した In-Database 分析を有効にすることです。これを行うには、コンピューターの管理者としてログインした後、SQL Server Management Studio (SSMS) での一時アクションとして次のコマンドを実行し、SSMS で [New Query] \(新しいクエリ) を開き、選択されているデータベースが `master` であることを確認してから、次を実行します。 
 
         CREATE LOGIN [%COMPUTERNAME%\SQLRUserGroup] FROM WINDOWS 
 
         (Please replace the %COMPUTERNAME% with your VM name)
        
-SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] (Windows 認証) を選択し、[SQL Server Name] (SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
+SQL Server Management Studio を実行するには、プログラムの一覧から "SQL Server Management Studio" を探すか、または Windows 検索を使用してこのプログラムを探して実行します。 資格情報の入力を求められたら、[Windows Authentication] \(Windows 認証) を選択し、[SQL Server Name] \(SQL Server 名) にはコンピューター名または ```localhost``` を使用します。 
 
 ### <a name="how-to-use--run-it"></a>使用/実行方法  
 
@@ -106,5 +104,4 @@ Hadoop 関連サービスが不要な場合は、````systemctl stop hadoop-namen
 
 
 Azure BLOB または Azure Data Lake Storage (ADLS) から、またマイクロソフトの MMLSpark 機械学習ライブラリを使用してデータにアクセスするためのライブラリは、$SPARK_HOME/jars にプレインストールされています。 これらの JAR は Spark の起動時に自動的に読み込まれます。 既定では、Spark はローカル ディスク上のデータを使用します。 DSVM 上の Spark インスタンスから Azure BLOB または ADLS に格納されたデータにアクセスするためには、$SPARK_HOME/conf/core-site.xml.template (BLOB および ADLS 構成のためのプレースホルダーがある場所) にあるテンプレートをベースに `core-site.xml` ファイルを作成/構成し、Azure Blob および Azure Data Lake Storage への適切な資格情報を使用する必要があります。 ADLS サービス資格情報の作成手順の詳細については、[こちら](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-authenticate-using-active-directory#create-an-active-directory-application)を参照してください。 Azure BLOB または ADLS の資格情報が core-site.xml ファイルに入力されたら、URI プレフィックス wasb:// または adl:// を使用して、それらのソースに格納されたデータを参照することができます。 
-
 

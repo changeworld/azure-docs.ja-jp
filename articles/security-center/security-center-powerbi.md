@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2017
 ms.author: yurid
 ms.openlocfilehash: 10f7b8f20cc41a5ebb1b1376e2bf17be02600ae4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-insights-from-azure-security-center-data-with-power-bi"></a>Power BI で Azure Security Center のデータから洞察を得る
 Azure Security Center の [Power BI ダッシュボード](http://aka.ms/azure-security-center-power-bi) を使用すると、モバイル デバイスなどの任意の場所から推奨事項とセキュリティ アラートの視覚化、分析、およびフィルター処理を行うことができます。 傾向や攻撃パターンを表示し、リソースまたは発信元 IP アドレスごとのセキュリティ アラートや、リソースまたは時間ごとの未対応のセキュリティ リスクを確認できます。

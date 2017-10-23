@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/24/2017
 ms.author: jeedes
 ms.openlocfilehash: 47c0055b89dbcf6a30a7f9ac5a33913e7bf463fa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-onit"></a>チュートリアル: Azure Active Directory と Onit の統合
 

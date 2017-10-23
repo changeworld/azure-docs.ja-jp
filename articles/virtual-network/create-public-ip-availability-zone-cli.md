@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: ef93d43bbd0c58950027810c8c335d9076574326
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-public-ip-address-in-an-availability-zone-with-the-azure-cli"></a>Azure CLI を使用して、可用性ゾーン内にパブリック IP アドレスを作成する
 
 Azure 可用性ゾーン (プレビュー) 内にパブリック IP アドレスをデプロイできます。 可用性ゾーンとは、Azure リージョン内の物理的に分離されたゾーンのことです。 以下の項目について説明します。
@@ -61,4 +59,3 @@ az network public-ip show --resource-group myResourceGroup --name myPublicIp
 
 - [可用性ゾーン](https://docs.microsoft.com/azure/availability-zones/az-overview)の詳細を学習する
 - [パブリック IP アドレス](../virtual-network/virtual-network-public-ip-address.md)の詳細を学習する 
-

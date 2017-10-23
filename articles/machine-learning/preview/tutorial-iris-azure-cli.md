@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: article
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c2a3b9702afd99c29b64133a05515a1b5f395130
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-classifying-iris-using-the-command-line-interface"></a>チュートリアル: コマンド ライン インターフェイスを使用して Iris を分類する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
 
@@ -273,5 +271,4 @@ az group delete --name amlsamplesenvrg
 > * モデル管理用のモデル管理アカウントを作成する
 > * Web サービスをデプロイするための環境を作成する
 > * Web サービスをデプロイして新しいデータでスコア付けする
-
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/13/2017
 ms.author: garye;krishnan
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 79ae5cd78ce07fcc84be49c2693773d58a15771e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="perform-advanced-analytics-with-azure-machine-learning-using-data-from-an-on-premises-sql-server-database"></a>オンプレミスの SQL Server データベースのデータを使用して Azure Machine Learning で高度な分析を実行する
 
@@ -149,4 +148,3 @@ Studio で各ワークスペースに対して複数のゲートウェイを作�
 実験の実行が終了した後、**データのインポート** モジュールの出力ポートをクリックし、**[視覚化]** を選択すると、データベースからインポートしたデータを視覚化できます。
 
 実験の開発が完了したら、モデルをデプロイし、運用可能にすることができます。 **データのインポート** モジュールで構成されているオンプレミス SQL Server データベースのデータは、Batch Execution Service を使用して読み取られ、スコア付けに使用されます。 オンプレミス データのスコア付けには Request Response Service を使用できますが、代わりに [Excel アドイン](excel-add-in-for-web-services.md) を使用することをお勧めします。 現時点では、 **データのエクスポート** によるオンプレミス SQL Server データベースへの書き込みは、実験でも公開済み Web サービスでもサポートされていません。
-

@@ -12,12 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 09/28/2017
 ms.author: carolz
-ms.translationtype: HT
-ms.sourcegitcommit: a7d54aab70027251413c2f8d0145fff8ec816c2d
 ms.openlocfilehash: d8e1fafe9b3fecc9822ef6f25d8c527eebe586cb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 10/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="power-bi-embedded-documentation"></a>Power BI Embedded のドキュメント
 

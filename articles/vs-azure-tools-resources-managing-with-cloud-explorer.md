@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 03/25/2017
 ms.author: kraigb
 ms.openlocfilehash: 6e6d8d559f0251b71bfa6d529ead82a246cb3235
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-the-resources-associated-with-your-azure-accounts-in-visual-studio-cloud-explorer"></a>Visual Studio Cloud Explorer で Azure アカウントに関連付けられているリソースを管理する
 Cloud Explorer を使用すると、Azure リソースやリソース グループを表示し、そのプロパティを調べることができます。また、開発者は Visual Studio 内から重要な診断操作を実行できます。 

@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/22/2017
 ms.author: erikje
+ms.openlocfilehash: 083ca2f0a06625810d2f90a682ba0b3110032e60
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bfed4c557a420eda14cafe5b1cf8ad11476e2d79
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="plan-offer-quota-and-subscription-overview"></a>プラン、オファー、クォータ、サブスクリプションの概要
 
-*適用先: Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-[Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 クラウド オペレーターとして、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
+[Azure Stack](azure-stack-poc.md) を使用すると、仮想マシン、SQL Server データベース、SharePoint、Exchange、さらには [Azure Marketplace アイテム](azure-stack-marketplace-azure-items.md)といった、さまざまなサービスを提供できます。 Azure Stack オペレーターは、プラン、オファー、クォータを使用して、Azure Stack でこのようなサービスを構成して提供します。
 
 オファーには、1 つ以上のプランが含まれ、各プランには 1 つ以上のサービスが含まれます。 プランを作成し、それらを異なるオファーに結合することで、次のことを制御します。
 - ユーザーがアクセスできるサービスとリソース
@@ -44,7 +43,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="plans"></a>プラン
 
-プランは、1 つまたは複数のサービスをグループ化したものです。 クラウド オペレーターとして、ユーザーに提供するための[プランを作成](azure-stack-create-plan.md)します。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 プランを作成するときに、基本プランを定義するクォータを設定していることを確認し、オプションのアドオン プランを含めることを検討してください。
+プランは、1 つまたは複数のサービスをグループ化したものです。 Azure Stack オペレーターは、ユーザーに提供する[プランを作成](azure-stack-create-plan.md)します。 そして、ユーザーがオファーをサブスクライブして、それに含まれるプランとサービスを使用します。 プランを作成するときに、基本プランを定義するクォータを設定していることを確認し、オプションのアドオン プランを含めることを検討してください。
 
 ### <a name="quotas"></a>Quotas (クォータ)
 
@@ -69,7 +68,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="subscriptions"></a>サブスクリプション
 
-サブスクリプションは、ユーザーがオファーにアクセスする方法です。 サービス プロバイダーのクラウド オペレーターの場合、ユーザー (テナント) は、オファーをサブスクライブすることでサービスを購入します。 組織のクラウド オペレーターの場合、提供するサービスをユーザー (従業員) が無償でサブスクライブできます。 ユーザーとオファーの各組み合わせは、一意のサブスクリプションです。 したがって、ユーザーは複数のオファーのサブスクリプションを持つことができますが、各サブスクリプションは 1 つのオファーにのみ適用されます。 プラン、オファー、クォータは、それぞれ一意のサブスクリプションにのみ適用されます。サブスクリプション間で共有することはできません。 ユーザーが作成する各リソースは、1 つのサブスクリプションに関連付けられます。
+サブスクリプションは、ユーザーがオファーにアクセスする方法です。 サービス プロバイダーの Azure Stack オペレーターの場合、ユーザー (テナント) は、オファーをサブスクライブすることでサービスを購入します。 組織の Azure Stack オペレーターの場合、提供するサービスをユーザー (従業員) が無料でサブスクライブできます。 ユーザーとオファーの各組み合わせは、一意のサブスクリプションです。 したがって、ユーザーは複数のオファーのサブスクリプションを持つことができますが、各サブスクリプションは 1 つのオファーにのみ適用されます。 プラン、オファー、クォータは、それぞれ一意のサブスクリプションにのみ適用されます。サブスクリプション間で共有することはできません。 ユーザーが作成する各リソースは、1 つのサブスクリプションに関連付けられます。
 
 
 ### <a name="default-provider-subscription"></a>既定のプロバイダー サブスクリプション
@@ -79,4 +78,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 
 [プランの作成](azure-stack-create-plan.md)
-

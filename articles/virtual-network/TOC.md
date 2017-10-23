@@ -24,22 +24,26 @@
 ## デプロイ
 ### [仮想ネットワーク](virtual-networks-create-vnet-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-vnet-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure CLI 2.0](virtual-networks-create-vnet-arm-cli.md)
+#### [Azure CLI 1.0](virtual-networks-create-vnet-cli-nodejs.md)
 #### [テンプレート](virtual-networks-create-vnet-arm-template-click.md)
 
 ### ネットワーク セキュリティ グループ
 #### [Azure ポータル](virtual-networks-create-nsg-arm-pportal.md)
 #### [Azure PowerShell](virtual-networks-create-nsg-arm-ps.md)
-#### [Azure CLI](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure CLI 2.0](virtual-networks-create-nsg-arm-cli.md)
+#### [Azure CLI 1.0](virtual-networks-create-nsg-cli-nodejs.md)
 #### [テンプレート](virtual-networks-create-nsg-arm-template.md)
 #### [アプリケーション セキュリティ グループ](create-network-security-group-preview.md)
 #### クラシック
 ##### [Azure PowerShell](virtual-networks-create-nsg-classic-ps.md)
-##### [Azure CLI](virtual-networks-create-nsg-classic-cli.md)
+##### [Azure CLI 1.0](virtual-networks-create-nsg-classic-cli.md)
 
 ### ユーザー定義のルート
+#### [Azure ポータル](create-user-defined-route-portal.md)
 #### [Azure PowerShell](virtual-network-create-udr-arm-ps.md)
-#### [Azure CLI](virtual-network-create-udr-arm-cli.md)
+#### [Azure CLI 2.0](virtual-network-create-udr-arm-cli.md)
+#### [Azure CLI 1.0](virtual-network-create-udr-arm-cli-nodejs.md)
 #### [テンプレート](virtual-network-create-udr-arm-template.md)
 #### クラシック
 ##### [Azure PowerShell](virtual-network-create-udr-classic-ps.md)
@@ -62,7 +66,8 @@
 #### 静的パブリック IP アドレスを持つ VM を作成する
 ##### [Azure ポータル](virtual-network-deploy-static-pip-arm-portal.md)
 ##### [Azure PowerShell](virtual-network-deploy-static-pip-arm-ps.md)
-##### [Azure CLI](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure CLI 2.0](virtual-network-deploy-static-pip-arm-cli.md)
+##### [Azure CLI 1.0](virtual-network-deploy-static-pip-cli-nodejs.md)
 ##### [テンプレート](virtual-network-deploy-static-pip-arm-template.md)
 ##### クラシック
 ###### [Azure PowerShell](virtual-networks-reserved-public-ip.md)
@@ -78,7 +83,10 @@
 
 #### 複数のネットワーク インターフェイスを持つ VM を作成する
 ##### [Azure PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [Azure CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI 2.0](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [Azure CLI 1.0](../virtual-machines/linux/multiple-nics-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+##### [テンプレート](virtual-network-deploy-multinic-arm-template.md)
+
 ##### クラシック
 ###### [Azure PowerShell](virtual-network-deploy-multinic-classic-ps.md)
 ###### [Azure CLI](virtual-network-deploy-multinic-classic-cli.md)
@@ -86,7 +94,8 @@
 #### 複数の IP アドレスを持つ VM を作成する
 ##### [Azure ポータル](virtual-network-multiple-ip-addresses-portal.md)
 ##### [Azure PowerShell](virtual-network-multiple-ip-addresses-powershell.md)
-##### [Azure CLI](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure CLI 2.0](virtual-network-multiple-ip-addresses-cli.md)
+##### [Azure CLI 1.0](virtual-network-multiple-ip-addresses-cli-nodejs.md)
 ##### [テンプレート](virtual-network-multiple-ip-addresses-template.md)
 
 #### [高速ネットワークを使用した VM の作成](virtual-network-create-vm-accelerated-networking.md)
@@ -102,9 +111,11 @@
 #### [仮想アプライアンスでネットワークをセキュリティで保護する](virtual-network-scenario-udr-gw-nva.md)
 #### [Azure とインターネットの間の DMZ](../guidance/guidance-iaas-ra-secure-vnet-dmz.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
 #### [クラウド サービスとネットワーク セキュリティ](../best-practices-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-##### [シンプルな DMZ と NSG](virtual-networks-dmz-nsg-asm.md)
-##### [DMZ とファイアウォールおよび NSG](virtual-networks-dmz-nsg-fw-asm.md)
-##### [DMZ とファイアウォール、UDR、および NSG](virtual-networks-dmz-nsg-fw-udr-asm.md)
+##### [NSG を使用した DMZ の作成](virtual-networks-dmz-nsg.md)
+##### [NSG を使用した DMZ の作成 (クラシック)](virtual-networks-dmz-nsg-asm.md)
+##### [ファイアウォールと NSG を使用した DMZ の作成 (クラシック)](virtual-networks-dmz-nsg-fw-asm.md)
+##### [ファイアウォール、UDR、NSG を使用した DMZ (クラシック)](virtual-networks-dmz-nsg-fw-udr-asm.md)
+
 ##### [サンプル アプリケーション](virtual-networks-sample-app.md)
 
 ### クラシック
@@ -112,13 +123,22 @@
 ##### [Azure ポータル](virtual-networks-create-vnet-classic-pportal.md)
 ##### [Azure PowerShell](virtual-networks-create-vnet-classic-netcfg-ps.md)
 ##### [Azure CLI](virtual-networks-create-vnet-classic-cli.md)
+#### [仮想ネットワーク構成ファイルでの DNS 設定の指定](virtual-networks-specifying-a-dns-settings-in-a-virtual-network-configuration-file.md)
+#### [サービス構成ファイルでの DNS 設定の指定](virtual-networks-specifying-dns-settings-in-a-service-configuration-file.md)
 
 ## 構成
 ### 仮想マシン
 #### [ネットワーク インターフェイスの追加または削除](virtual-network-network-interface-vm.md)
 #### [VM とクラウド サービスの名前解決](virtual-networks-name-resolution-for-vms-and-role-instances.md)
+#### [動的 DNS を使用して独自の DNS サーバーでホスト名を登録する](virtual-networks-name-resolution-ddns.md)
 #### [ネットワーク スループットの最適化](virtual-network-optimize-network-bandwidth.md)
 #### [ホスト名の表示および変更](virtual-networks-viewing-and-modifying-hostnames.md)
+#### クラシック
+##### 静的 IP アドレス
+###### [PowerShell](virtual-networks-reserved-private-ip.md)
+###### [CLI](virtual-networks-static-private-ip-cli-nodejs.md)
+##### [インスタンス レベル パブリック IP アドレス](virtual-networks-instance-level-public-ip.md)
+
 ### クラシック
 #### アクセス制御リスト
 ##### [Azure ポータル](../virtual-machines/windows/classic/setup-endpoints.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
@@ -134,7 +154,9 @@
 ### ネットワーク セキュリティ グループ
 #### [Azure ポータル](virtual-network-manage-nsg-arm-portal.md)
 #### [Azure PowerShell](virtual-network-manage-nsg-arm-ps.md)
-#### [Azure CLI](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure CLI 2.0](virtual-network-manage-nsg-arm-cli.md)
+#### [Azure CLI 1.0](virtual-network-manage-nsg-cli-nodejs.md)
+
 #### [ログ](virtual-network-nsg-manage-log.md)
 ### ネットワーク インターフェイス (NIC)
 #### [NIC の作成、変更、削除](virtual-network-network-interface.md)
@@ -183,3 +205,4 @@
 ## [料金](https://azure.microsoft.com/pricing/details/virtual-network)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)
 ## [Stack Overflow](http://stackoverflow.com/questions/tagged/azure-virtual-network)
+## [ネットワーク リソース プロバイダー](resource-groups-networking.md)

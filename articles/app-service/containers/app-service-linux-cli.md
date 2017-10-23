@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 5213bec66095d50ef29cc3bec0a7b6307614dc92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
@@ -109,4 +108,3 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 * [Azure Cloud Shell (プレビュー)](../../cloud-shell/overview.md)
 * [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
 * [Azure Web App for Containers での継続的なデプロイ](app-service-linux-ci-cd.md)
-

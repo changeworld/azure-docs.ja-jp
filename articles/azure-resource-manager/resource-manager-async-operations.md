@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/11/2017
 ms.author: tomfitz
 ms.openlocfilehash: 9fe3d98cd345aae45722295b6c1b7fc3e9036e95
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="track-asynchronous-azure-operations"></a>非同期 Azure 操作の追跡
 Azure の REST 操作の中には、操作を迅速に完了できないため、非同期的に実行されるものがあります。 このトピックでは、応答で返される値を通じて非同期操作の状態を追跡する方法について説明します。  

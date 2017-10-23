@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/22/2017
 ms.author: ponatara
 ms.openlocfilehash: 2aee0fb8d1ba1ff1584bee91b4d1cc34b654d97f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-azure-vms-to-another-region-after-migration-to-azure-by-using-azure-site-recovery"></a>Azure Site Recovery を使用して Azure に移行した後、Azure VM を他のリージョンにレプリケートする
 
@@ -63,7 +63,7 @@ Site Recovery 拡張機能を動作させて、VM を保護するには、Azure 
 | **操作** | **Windows** | **Linux** |
 | --- | --- | --- |
 | VM エージェントのインストール |[エージェント MSI](http://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409)をダウンロードしてインストールします。 インストールを実行するには、管理者特権が必要です。 |最新の [Linux エージェント](../virtual-machines/linux/agent-user-guide.md)をインストールします。 インストールを実行するには、管理者特権が必要です。 ディストリビューション リポジトリからエージェントをインストールすることをお勧めします。 GitHub から直接 Linux VM エージェントをインストールすることは "*お勧めしません*"。  |
-| VM エージェントのインストールの検証 |1.Azure VM で C:\WindowsAzure\Packages フォルダーに移動します。 WaAppAgent.exe ファイルがあるはずです。 <br>2.このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。 **製品バージョン**が 2.6.1198.718 以上であることを確認します。 |該当なし |
+| VM エージェントのインストールの検証 |1.Azure VM で C:\WindowsAzure\Packages フォルダーに移動します。 WaAppAgent.exe ファイルがあるはずです。 <br>2.このファイルを右クリックして **[プロパティ]** をクリックし、**[詳細]** タブを選択します。**製品バージョン**が 2.6.1198.718 以上であることを確認します。 |該当なし |
 
 
 ### <a name="step-3-remove-the-mobility-service-from-the-migrated-virtual-machine"></a>手順 3: 移行済み仮想マシンからモビリティ サービスを削除する

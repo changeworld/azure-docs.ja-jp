@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
 ms.openlocfilehash: 7a6e58a62b4cfbf99641559363dd0c860cdf8af2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Cloud Services プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]

@@ -14,12 +14,11 @@ ms.date: 09/25/2017
 ms.author: jeffgilb
 ms.reviewer: jsnow
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
 ms.openlocfilehash: 48b26bfcce67ce915c404a0ab2ac0f399c3b821d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enabling-linkedin-integration-in-azure-active-directory"></a>Azure Active Directory で LinkedIn の統合を有効にする
 LinkedIn の統合を有効にすると、ユーザーは Microsoft アプリ内から LinkedIn の公開データと個人の LinkedIn ネットワーク (選択した場合) の両方にアクセスできます。 各ユーザーは、個別に職場アカウントを LinkedIn アカウントに接続することもできます。

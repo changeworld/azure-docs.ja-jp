@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/24/2017
 ms.author: pullabhk
 ms.openlocfilehash: 2af9ebaa8f52690ed63406cbd85b77544d2d900d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="back-up-sql-server-to-azure-with-azure-backup-server"></a>Azure Backup Server を使用した Azure への SQL Server のバックアップ
 この記事では、Microsoft Azure Backup Server (MABS) を使用して SQL Server データベースのバックアップを構成する手順について説明します。

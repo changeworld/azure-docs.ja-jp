@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.openlocfilehash: 201ccd523e49d638ace50fbc0ffdceb705b35473
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して完全な Linux 環境を作成する
 この記事では、開発と単純なコンピューティングに役立つ VM のペアを含む単純なネットワークとロード バランサーを構築します。 ここでは、インターネット上のどこからでも接続できる、2 台のセキュリティで保護された実用的な Linux VM を構築するまで、各コマンドの説明を交えながらプロセスについて説明します。 この記事を理解すると、より複雑なネットワークや環境に進むことができます。

@@ -28,6 +28,8 @@
           href: storage-secure-access-application.md
         - name: 4 - ストレージの監視とトラブルシューティングを行う
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: クラウド ストレージで非構造化データを検索する
+      href: storage-unstructured-search.md
 - name: サンプル
   items:
     - name: Azure PowerShell
@@ -265,14 +267,18 @@
       href: /cli/azure/storage
     - name: .NET
       items:
-        - name: リソース マネージャー
-          href: /dotnet/api/microsoft.azure.management.storage
-        - name: データの移動
-          href: /dotnet/api/microsoft.windowsazure.storage.datamovement
         - name: BLOB、キュー、テーブル、ファイル
-          href: 'https://docs.microsoft.com/en-us/dotnet/api/overview/azure/storage?view=azure-dotnet'
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/client?view=azure-dotnet'
+        - name: データの移動
+          href: 'https://docs.microsoft.com/dotnet/api/microsoft.windowsazure.storage.datamovement?view=azure-dotnet'
+        - name: リソース マネージャー
+          href: 'https://docs.microsoft.com/dotnet/api/overview/azure/storage/management?view=azure-dotnet'
     - name: Java
-      href: 'http://azure.github.io/azure-storage-java/'
+      items:
+        - name: BLOB、キュー、テーブル、ファイル
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/clientlibrary'
+        - name: リソース マネージャー
+          href: 'https://docs.microsoft.com/java/api/overview/azure/storage/managementapi'
     - name: Node.js
       href: 'http://azure.github.io/azure-storage-node'
     - name: Ruby

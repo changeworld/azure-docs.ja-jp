@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 08/17/2016
 ms.author: alkohli
 ms.openlocfilehash: d890b59595628ca3eeff1df258847c2bb54d29ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-change-your-storsimple-passwords"></a>StorSimple Manager サービスを使用した StorSimple のパスワードの変更
 ## <a name="overview"></a>概要

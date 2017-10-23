@@ -1,0 +1,107 @@
+- name: Azure for Containers
+  href: index.yml
+  items:
+    - name: Container Service (ACS)
+      href: 'https://docs.microsoft.com/en-us/azure/container-service/'
+      expanded: true
+      items:
+        - name: Kubernetes
+          href: 'https://docs.microsoft.com/azure/container-service/kubernetes/'
+          items:
+            - name: 概要 - Kubernetes 向け Azure Container Service の紹介
+              href: 'https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-intro-kubernetes'
+            - name: クイックスタート - Linux コンテナー用の Kubernetes クラスターをデプロイする
+              href: 'https://docs.microsoft.com/en-us/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
+        - name: Docker Swarm & DC/OS
+          href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/'
+          items:
+            - name: クイックスタート - Docker Swarm クラスターのデプロイ
+              href: 'https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-swarm-walkthrough'
+            - name: クイックスタート - Docker DC/OS クラスターのデプロイ
+              href: 'https://docs.microsoft.com/en-us/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
+    - name: Container Instances (ACI)
+      href: 'https://docs.microsoft.com/en-us/azure/container-instances/'
+      items:
+        - name: クイックスタート - コンテナー インスタンスの作成
+          href: 'https://docs.microsoft.com/en-us/azure/container-instances/container-instances-quickstart'
+        - name: チュートリアル - コンテナーの作成とデプロイ
+          items:
+            - name: 1 - コンテナー イメージを作成する
+              href: 'https://docs.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-app'
+            - name: 2 - コンテナー レジストリを作成する
+              href: 'https://docs.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-prepare-acr'
+            - name: 3 - アプリをデプロイする
+              href: 'https://docs.microsoft.com/en-us/azure/container-instances/container-instances-tutorial-deploy-app'
+    - name: Container Registry (ACR)
+      href: 'https://docs.microsoft.com/en-us/azure/container-registry/'
+      items:
+        - name: レジストリの作成 - CLI
+          href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-azure-cli'
+        - name: 方法
+          items:
+            - name: イメージのプッシュとプル
+              href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-get-started-docker-cli'
+            - name: リポジトリの表示
+              href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-repositories'
+            - name: サービス プリンシパルの作成
+              href: 'https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-create-service-principal-portal?toc=%2fazure%2fcontainer-registry%2ftoc.json'
+            - name: レジストリによる認証
+              href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-authentication'
+            - name: ACR webhook の使用
+              href: 'https://docs.microsoft.com/en-us/azure/container-registry/container-registry-webhook'
+    - name: Web Apps for Containers
+      href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/app-service-linux-intro'
+      items:
+        - name: Azure Web App for Containers のカスタム Docker イメージを使用する
+          href: 'https://docs.microsoft.com/en-us/azure/app-service/containers/tutorial-custom-docker-image'
+    - name: Service Fabric
+      href: 'https://docs.microsoft.com/en-us/azure/service-fabric/'
+      items:
+        - name: 概要 - Service Fabric とコンテナー
+          href: 'https://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-containers-overview'
+        - name: 方法
+          items:
+            - name: Docker ホストの作成
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/dockerextension'
+            - name: Docker マシンの使用
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-machine'
+            - name: Docker Compose の使用
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart'
+    - name: Virtual Machines (Linux)
+      href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/overview'
+      items:
+        - name: Azure でのコンテナー ワークロードの開発と実行
+          href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/containers'
+        - name: 方法
+          items:
+            - name: Docker ホストの作成
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/dockerextension'
+            - name: Docker マシンの使用
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-machine'
+            - name: Docker Compose の使用
+              href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/linux/docker-compose-quickstart'
+    - name: Virtual Machines (Windows)
+      href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/overview'
+      items:
+        - name: クイックスタート - Windows Server 上の Windows コンテナー
+          href: 'https://docs.microsoft.com/virtualization/windowscontainers/quick-start/quick-start-windows-server'
+        - name: Virtual Machines とコンテナーが Azure にもたらすメリット
+          href: 'https://docs.microsoft.com/en-us/azure/virtual-machines/windows/containers'
+        - name: Windows コンテナーについて
+          href: 'https://docs.microsoft.com/en-us/virtualization/windowscontainers/about/index'
+    - name: リファレンス
+      items:
+        - name: Azure Container Instances (az container)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/container'
+        - name: Azure Container Service (az acs)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/acs'
+        - name: Azure Container Registry (az acr)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/acr'
+        - name: Azure Web Apps for Containers (az appservice)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/appservice'
+        - name: Azure App Service Web App (az webapp)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/webapp'
+        - name: Azure Service Fabric (az sf)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/sf'
+        - name: Azure Virtual Machines (az vm)
+          href: 'https://docs.microsoft.com/en-us/cli/azure/vm'

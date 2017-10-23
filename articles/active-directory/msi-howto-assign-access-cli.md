@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/25/2017
 ms.author: bryanla
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: e77915c1d982ccf6262ffcbc09dc91dfd986dac5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-azure-cli"></a>Azure CLI を使用してリソースに管理対象サービス ID (MSI) アクセスを割り当てる
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -76,5 +74,4 @@ CLI スクリプトの例を実行するには、次の 3 つのオプション�
 - Azure VM で MSI を有効にするには、「[Azure CLI を使用して Azure VM 管理対象サービスID (MSI) を構成する](msi-qs-configure-cli-windows-vm.md)」を参照してください。
 
 Microsoft のコンテンツ改善のため、次のコメント セクションよりご意見をお寄せください。
-
 

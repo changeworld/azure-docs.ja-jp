@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/08/2017
 ms.author: jeedes
 ms.openlocfilehash: 1f8c7fd97021f320a23bc78466a7b61f2d7e513e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>チュートリアル: Azure Active Directory と Veritas Enterprise Vault.cloud SSO の統合
 

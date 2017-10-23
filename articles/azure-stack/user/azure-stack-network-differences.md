@@ -8,17 +8,15 @@ ms.author: victorh
 ms.date: 9/25/2017
 ms.topic: article
 ms.service: azure-stack
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7b7bac508a759a1367ac7328840848efe17ea3c5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="considerations-for-azure-stack-networking"></a>Azure Stack ネットワークに関する考慮事項
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack ネットワークは Azure に備えられている機能の多くを備えていますが、デプロイを開始する前に把握しておいていただきたい違いがいくつかあります。
 
@@ -50,4 +48,3 @@ Azure Stack ネットワークは Azure に備えられている機能の多く�
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack の DNS](azure-stack-dns.md)
-

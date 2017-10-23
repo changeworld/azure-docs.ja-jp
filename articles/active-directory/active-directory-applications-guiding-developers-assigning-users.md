@@ -16,10 +16,10 @@ ms.date: 05/12/2017
 ms.author: kgremban
 robots: noindex
 ms.openlocfilehash: 29d63bd5781dc7ef9e84840dd4b1b70222cf6892
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-and-applications-assigning-users-to-an-application"></a>Azure AD とアプリケーション: アプリケーションへのユーザーの割り当て
 ユーザーとグループをアプリケーションに割り当てる前に、ユーザー割り当てを要求する必要があります。  ユーザー割り当てを要求する方法については、「 [ユーザー割り当ての要求](active-directory-applications-guiding-developers-requiring-user-assignment.md) 」を参照してください。

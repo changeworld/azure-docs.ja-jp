@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a8f1764204740a8f5ef757e5e2ad63cfd43af150
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-3-create-a-new-azure-machine-learning-experiment"></a>チュートリアル手順 3: Azure Machine Learning の新しい実験を作成する
 これは、「 [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
@@ -56,7 +55,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="prepare-the-data"></a>データを準備する
 データの最初の 100 行とデータセット全体の統計情報を表示できます。データセットの出力ポート (下部の小さな円) をクリックし、**[視覚化]**を選択します。  
 
-データ ファイルには列見出しがないため、ため、Studio では汎用の見出し (Col1、Col2 *など*) が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しが設定されていることによってサービスのユーザーが列を見つけやすくなります。  
+データ ファイルには列見出しがないため、ため、Studio では汎用の見出し (Col1、Col2 **など) が付けられます。 適切な見出しはモデルを作成するために絶対に必要なものではありませんが、実験のデータを操作する際に便利です。 また、最終的にこのモデルを Web サービスに発行する際に、見出しが設定されていることによってサービスのユーザーが列を見つけやすくなります。  
 
 列見出しを追加するには、[メタデータの編集][edit-metadata]モジュールを使用します。
 [メタデータの編集][edit-metadata]モジュールを使用して、データセットに関連付けられたメタデータを変更します。 ここでは、それを使用して、列見出しに分かりやすい名前を付けます。 
@@ -180,4 +179,3 @@ ms.lasthandoff: 09/25/2017
 [execute-r-script]: https://msdn.microsoft.com/library/azure/30806023-392b-42e0-94d6-6b775a6e0fd5/
 [edit-metadata]: https://msdn.microsoft.com/library/azure/370b6676-c11c-486f-bf73-35349f842a66/
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
-

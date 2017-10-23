@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: e10bf8f7cbae2b81d22823ff74fe652c6bcb2da3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>HDInsight と Azure Data Lake Store の Hive のパフォーマンス チューニング ガイダンス
 
@@ -60,7 +60,7 @@ ADLS のパフォーマンスを向上させるためにチューニングする
 
 I/O 集中型のワークロードでは、Tez コンテナーのサイズの削減による並列処理の増加からメリットを得ることができます。 これにより、コンテナーの数が増え、同時実行性が高まります。  ただし、一部の Hive クエリでは、大量のメモリ が必要です (例: MapJoin)。  タスクに十分なメモリがない場合は、実行時にメモリ不足例外が発生します。  メモリ不足例外が発生した場合は、メモリを増やす必要があります。   
 
-実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs (構成)] タブを表示します。  YARN メモリは、このウィンドウに表示されます。  
+実行される同時実行タスクの数または並列処理は、YARN メモリの総量によって制限されます。  YARN コンテナーの数は、実行できる同時実行タスクの数を決定します。  ノードごとの YARN メモリを確認するには、Ambari を参照することができます。  YARN に移動し、[Configs (構成)] タブを表示します。YARN メモリは、このウィンドウに表示されます。  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
@@ -81,7 +81,7 @@ ADLS によって提供される帯域幅の限界に達すると、タスクの
 
 調整されているかどうかを確認するには、クライアント側でデバッグ ログを有効にする必要があります。 その方法は次のとおりです。
 
-1. 次のプロパティを Hive 構成の log4j プロパティに置きます。 これは、Ambari ビュー: log4j.logger.com.microsoft.azure.datalake.store=DEBUG から実行できます。この構成を有効にするには、すべてのノード/サービスを再起動します。
+1. 次のプロパティを Hive 構成の log4j プロパティに置きます。これは、Ambari ビュー: log4j.logger.com.microsoft.azure.datalake.store=DEBUG から実行できます。この構成を有効にするには、すべてのノード/サービスを再起動します。
 
 2. 調整されている場合は、Hive ログ ファイルに HTTP 429 のエラー コードが表示されます。 Hive ログ ファイルは /tmp/&lt;user&gt;/hive.log にあります。
 

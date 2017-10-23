@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andret
 ms.openlocfilehash: 50cb4a2803b6aebe8b39ec9fb02da2293c1065fa
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>アプリへのアプリケーション登録情報の追加
 
@@ -30,7 +30,7 @@ let kClientID = "[Enter the application Id here]"
 <!-- Workaround for Docs conversion bug -->
 <ol start="2">
 <li>
-Ctrl キーを押しながら [<code>Info.plist</code>] をクリックしてコンテキスト メニューを表示し、<code>Open As</code>> <code>Source Code</code>
+Ctrl キーを押しながら <code>Info.plist</code>をクリックしてコンテキスト メニューを表示し、<code>Open As</code>> <code>Source Code</code>
  をクリックします</li>
 <li>
 ルート ノード <code>dict</code> の下に次の内容を追加します。

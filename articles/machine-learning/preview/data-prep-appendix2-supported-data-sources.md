@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 0a77b31e07f118155094fab4d3393ffdb37c9c6f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-sources-for-this-release"></a>このリリースでサポートされるデータ ソース 
 次のドキュメントは、データ準備において現在サポートされているデータ ソースの一覧を示しています。
 
@@ -90,5 +88,4 @@ ms.lasthandoff: 09/25/2017
 
 ### <a name="azure-blob"></a>Azure BLOB
 Azure Storage (BLOB)、Azure サブスクリプションが必要
-
 

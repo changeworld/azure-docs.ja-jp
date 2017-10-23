@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 07/14/2017
 ms.author: jejiang
 ms.openlocfilehash: 367e4ba792f83d6ee246208306e4c09b69cb49ef
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="u-sql-local-run-and-local-debug-with-visual-studio-code"></a>Visual Studio Code を使用した U-SQL ローカル実行とローカル デバッグ
 

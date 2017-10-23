@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 08/17/2017
 ms.author: jgao
 ms.openlocfilehash: ccd3a0c777510e0694170b2f9acc8da0e7dcde9b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-using-the-net-sdk"></a>.NET SDK を使用した HDInsight の Linux ベースのクラスターの作成
 

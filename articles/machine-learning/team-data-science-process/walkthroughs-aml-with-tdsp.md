@@ -14,15 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 25488640e4a1e129f06dffbe5e7896f5ace8facc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="team-data-science-structured-projects-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench の Team Data Science体系化プロジェクト
 
 これらのチュートリアルとサンプルでは、Azure Machine Learning Workbench で Team Data Science 体系化プロジェクトを作成する方法を示します。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 HDInsight における Spark の概要については、「[HDInsight での Spark の概要](../../hdinsight/hdinsight-apache-spark-overview.md)」を参照してください。

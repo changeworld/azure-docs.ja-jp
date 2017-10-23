@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: d510e7e665adec9607aeee80802c466b363d5d5b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -37,7 +36,7 @@ ms.lasthandoff: 09/08/2017
 ## <a name="prerequisites"></a>前提条件
 このトピックは、「[Notification Hubs の使用][get-started]」で作成したアプリに基づいています。 このチュートリアルを開始する前に、「[Notification Hubs の使用][get-started]」を完了している必要があります。
 
-## <a name="add-category-selection-to-the-app"></a>アプリにカテゴリ選択を追加する
+## <a name="add-category-selection-to-the-app"></a>アプリケーションにカテゴリ選択を追加する
 最初の手順は、既存のメイン ページに UI 要素を追加して、登録するカテゴリをユーザーが選択できるようにすることです。 選択されたカテゴリはデバイスに格納されます。 アプリが起動すると、通知ハブにデバイス登録が作成され、選択されたカテゴリがタグとして追加されます。
 
 1. MainPage.xaml プロジェクト ファイルを開き、**Grid** 要素に次のコードをコピーします。
@@ -163,7 +162,7 @@ ms.lasthandoff: 09/08/2017
 このセクションでは、ローカル記憶域に格納されたカテゴリを使用して、起動時に通知ハブに通知します。
 
 > [!NOTE]
-> Windows Notification Service (WNS) によって割り当てられたチャネル URI はいつでも変更される可能性があるため、通知を頻繁に登録して通知エラーを回避する必要があります。 この例では、アプリが起動するたびに通知を登録します。 頻繁に (1 日に複数回) 実行されるアプリでは、前回の登録から 1 日経過していない場合は、帯域幅を節約するために登録をスキップすることもできます。
+> Windows Notification Service (WNS) によって割り当てられたチャネル URI はいつでも変更される可能性があるため、通知を頻繁に登録して通知エラーを回避する必要があります。 この例では、アプリケーションが起動するたびに通知を登録します。 頻繁に (1 日に複数回) 実行されるアプリでは、前回の登録から 1 日経過していない場合は、帯域幅を節約するために登録をスキップすることもできます。
 > 
 > 
 
@@ -199,7 +198,7 @@ ms.lasthandoff: 09/08/2017
 ## <a name="send-tagged-notifications"></a>タグ付けされた通知を送信する
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
-## <a name="run-the-app-and-generate-notifications"></a>アプリを実行して通知を生成する
+## <a name="run-the-app-and-generate-notifications"></a>アプリケーションを実行して通知を生成する
 1. Visual Studio で、**F5** を選択して、アプリのコンパイルと起動を行います。  
     アプリの UI には、購読するカテゴリを選択できる一連の切り替えボタンが表示されます。 
    
@@ -207,7 +206,7 @@ ms.lasthandoff: 09/08/2017
 
 2. 1 つ以上のカテゴリ切り替えボタンを有効にし、**[購読]** をクリックします。
    
-    アプリにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録されたカテゴリが返され、ダイアログ ボックスに表示されます。
+    アプリケーションにより、選択されたカテゴリがタグに変換され、選択されたタグの新しいデバイス登録が通知ハブから要求されます。 登録されたカテゴリが返され、ダイアログ ボックスに表示されます。
    
     ![カテゴリの切り替えと [購読] ボタン][19]
 
@@ -252,4 +251,3 @@ ms.lasthandoff: 09/08/2017
 [Live SDK for Windows]: http://go.microsoft.com/fwlink/p/?LinkId=262253
 
 [wns object]: http://go.microsoft.com/fwlink/p/?LinkId=260591
-

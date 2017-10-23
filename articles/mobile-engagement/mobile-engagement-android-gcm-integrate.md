@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: piyushjo
 ms.openlocfilehash: 0282abbf44406cac89c13520bc2a4e375817ed1f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-integrate-gcm-with-mobile-engagement"></a>GCM を Mobile Engagement に統合する方法
 > [!IMPORTANT]

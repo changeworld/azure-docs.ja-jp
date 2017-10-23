@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: d73267d7a64221a3138af19e9a2d5dd15809b927
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-9-install-the-mobility-service"></a>手順 9: モビリティ サービスをインストールする
 

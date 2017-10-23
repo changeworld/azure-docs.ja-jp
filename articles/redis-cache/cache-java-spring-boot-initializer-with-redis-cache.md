@@ -15,14 +15,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/31/2017
 ms.author: robmcm;zhijzhao;yidon
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: 7a6ec549654d00975494bac8594a6777af5ec415
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-configure-a-spring-boot-initializer-app-to-use-redis-cache"></a>Redis Cache を使用するように Spring Boot Initializer アプリを構成する方法
 
 ## <a name="overview"></a>概要
@@ -59,7 +57,7 @@ ms.lasthandoff: 09/02/2017
 
    > [!NOTE]
    >
-   > Redis キャッシュで SSL を使用できますが、Jedis のような異なる Redis クライアントを使用する必要があります。 詳細については、「 [Java で Azure Redis Cache を使用する方法][Redis Cache with Java]」をご覧ください。
+   > Redis キャッシュで SSL を使用できますが、Jedis のような異なる Redis クライアントを使用する必要があります。 詳細については、「[Java で Azure Redis Cache を使用する方法][Redis Cache with Java]」をご覧ください。
    >
 
    これらのオプションの指定後、**[作成]** をクリックしてキャッシュを作成します。
@@ -229,4 +227,3 @@ Azure 上の Java での Redis Cache の使用開始の詳細については、�
 
 [RE01]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE01.png
 [RE02]: ./media/cache-java-spring-boot-initializer-with-redis-cache/RE02.png
-

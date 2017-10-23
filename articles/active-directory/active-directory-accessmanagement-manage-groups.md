@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 07/24/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 2cc2b63312b331a19c61cd7b59a4cac78edf32e6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: a29bc68e966a3706af557af0c626d369d04149aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-groups-in-azure-active-directory"></a>Azure Active Directory におけるグループの管理
 > [!div class="op_single_selector"]
 > * [Azure ポータル](active-directory-groups-create-azure-portal.md)
-> * [Azure クラシック ポータル](active-directory-accessmanagement-manage-groups.md)
 > * [PowerShell](active-directory-accessmanagement-groups-settings-v2-cmdlets.md)
 >
 >

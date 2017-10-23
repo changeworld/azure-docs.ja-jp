@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
 ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視
 Azure Active Directory (Azure AD) Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。 これを使用すると、Active Directory フェデレーション サービス (AD FS) サーバー、Azure AD Connect サーバー (同期エンジン)、Active Directory ドメイン コントローラーなど、お使いの主要な ID コンポーネントの監視機能が用意されているため、Office 365 と Microsoft Online Services への信頼性の高い接続を維持できます。また、これらのコンポーネントの主要なデータ ポイントにアクセスしやすくなるため、使用状況やその他の重要な分析を取得して、しかるべき情報に基づく判断ができるようになります。

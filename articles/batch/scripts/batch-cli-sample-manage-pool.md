@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/02/2017
 ms.author: antisch
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: ae7eab97c1da1113b0248b74a9dd67de8ce49e36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="managing-azure-batch-pools-with-azure-cli"></a>Azure CLI を使用した Azure Batch プールの管理
 
 これらのスクリプトでは、Azure Batch サービスでコンピューティング ノードのプールを作成して管理するために、Azure CLI で使用できるツールの一部を示します。
@@ -39,11 +37,11 @@ Batch プールは、クラウド サービスの構成 (Windows のみ)、ま�
 
 ## <a name="pool-with-cloud-service-configuration-sample-script"></a>クラウド サービス構成サンプル スクリプトによるプール
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "クラウド サービスのプールを管理する")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-windows.sh "Manage Cloud Services Pools")]
 
 ## <a name="pool-with-virtual-machine-configuration-sample-script"></a>仮想マシン構成サンプル スクリプトによるプール
 
-[!code-azurecli[メイン](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "仮想マシンのプールを管理する")]
+[!code-azurecli[main](../../../cli_scripts/batch/manage-pool/manage-pool-linux.sh "Manage Virtual Machine Pools")]
 
 ## <a name="clean-up-pools"></a>プールのクリーンアップ
 
@@ -79,5 +77,4 @@ az batch pool delete --pool-id mypool-linux
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の Batch CLI サンプル スクリプトは、[Azure Batch CLI のドキュメント](../batch-cli-samples.md)のページにあります。
-
 

@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/26/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 5ae19bb370064de96cf466ca09b13d02563d65a4
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 06e2dd05bdf21074ed060057cbc61e93f304399a
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。
@@ -52,7 +52,7 @@ Azure Active Directory (Azure AD) のリソースには、リソースを格納�
 1 つの Azure AD ディレクトリに最大 900 個のカスタム ドメイン名を追加できます。 [カスタム ドメイン名を追加](active-directory-add-domain.md) するプロセスは、最初のカスタム ドメイン名を設定する手順と同じです。
 
 ## <a name="add-subdomains-of-a-custom-domain"></a>カスタム ドメインのサブドメインの追加
-ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。 サブドメインは、Azure AD によって自動的に確認されます。 追加したサブドメインが確認済みであることを確かめるには、ディレクトリ内のドメインが一覧表示されるページでブラウザーの表示を更新します。
+ディレクトリに europe.contoso.com などの第 3 レベル ドメイン名を追加する場合は、最初に、contoso.com などの第 2 レベル ドメインを追加して、確認する必要があります。サブドメインは、Azure AD によって自動的に確認されます。 追加したサブドメインが確認済みであることを確かめるには、ディレクトリ内のドメインが一覧表示されるページでブラウザーの表示を更新します。
 
 ## <a name="what-to-do-if-you-change-the-dns-registrar-for-your-custom-domain-name"></a>カスタム ドメイン名の DNS レジストラーを変更する場合にすべきこと
 カスタム ドメイン名の DNS レジストラーを変更しても、中断したり追加の構成タスクを実施したりすることなく、Azure AD でそのカスタム ドメイン名を引き続き使用できます。 Office 365 や Intune など、Azure AD のカスタム ドメイン名を使用するサービスで、自社のカスタム ドメイン名を使用する場合は、各サービスのマニュアルを参照してください。

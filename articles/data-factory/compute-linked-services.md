@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 07d702e34e1574161a64af9a4724a66879a0ba05
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Azure Data Factory でサポートされるコンピューティング環境
 この記事では、データの処理または変換に利用できるさまざまなコンピューティング環境について説明します。 これらのコンピューティング環境を Azure Data Factory にリンクする「リンクされたサービス」の構成時に Data Factory でサポートされるさまざまな構成 (オンデマンドと Bring Your Own の比較) に関する詳細も提供します。
@@ -106,7 +105,7 @@ Azure Data Factory サービスは、データを処理するためのオンデ�
 | clusterSize                  | クラスター内の worker/データ ノードの数です。 このプロパティで指定した worker ノード数と共に 2 つのヘッド ノードを使用して HDInsight クラスターが作成されます。 ノードのサイズは Standard_D3 (4 コア) であるため、4 worker ノード クラスターのコアは 24 個になります (worker ノード用に 4\*4 = 16 個のコアと、ヘッド ノード用に 2\*4 = 8 個のコア)。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください。 | あり      |
 | timetolive                   | オンデマンド HDInsight クラスターに許可されるアイドル時間です。 他のアクティブなジョブがクラスターにない場合、アクティビティ実行の完了後にオンデマンド HDInsight クラスターが起動状態を維持する時間を指定します。 最小許容値は 5 分 (00:05:00) です。<br/><br/>たとえば、アクティビティ実行に 6 分かかるときに timetolive が 5 分に設定されている場合、アクティビティ実行の 6 分間の処理の後、クラスターが起動状態を 5 分間維持します。 別のアクティビティ実行が 6 分の時間枠で実行される場合、それは同じクラスターで処理されます。<br/><br/>オンデマンド HDInsight クラスターの作成は高額な作業であり (時間もかかることがあります)、オンデマンド HDInsight クラスターを再利用し、Data Factory のパフォーマンスを改善する必要がある場合にこの設定を利用します。<br/><br/>timetolive 値を 0 に設定した場合、アクティビティ実行の完了直後にクラスターが削除されます。 ただし、高い値を設定した場合、クラスターは、何らかのトラブルシューティングの目的でログオンできるようにアイドル状態を維持できますが、その結果コストが高くなる可能性があります。 そのため、ニーズに合わせて適切な値を設定することが重要です。<br/><br/>timetolive プロパティ値が適切に設定されている場合、複数のパイプラインでオンデマンド HDInsight クラスターのインスタンスを共有できます。 | あり      |
 | version                      | HDInsight クラスターのバージョン。 指定しない場合、現在の HDInsight 定義の既定バージョンを使用します。 | いいえ       |
-| 既定のコンテナー            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight では、サポートする各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。 </p> | あり      |
+| 既定のコンテナー            | データを保存し、処理するためにオンデマンド クラスターで使用される Azure Storage のリンクされたサービスです。 HDInsight クラスターは、この Azure Storage アカウントと同じリージョンに作成されます。 Azure HDInsight には、サポートされる各 Azure リージョンで使用できるコアの合計数に制限があります。 必要な clusterSize を満たせるだけ十分なコア クォータが、その Azure リージョンに存在することを確認してください。 詳細については、[Hadoop、Spark、Kafka などの HDInsight クラスターのセットアップ](../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)に関する記事を参照してください<p>現時点では、Azure Data Lake Store をストレージとして使用するオンデマンド HDInsight クラスターを作成することはできません。 HDInsight 処理の結果データを Azure Data Lake Store に保存する必要がある場合は、コピー アクティビティを使用して、Azure Blob Storage から Azure Data Lake Store にデータをコピーします。 </p> | あり      |
 | hostSubscriptionId           | HDInsight クラスターを作成するために使用する Azure サブスクリプション ID です。 指定されていない場合は、Azure のログイン コンテキストのサブスクリプション ID を使用します。 | いいえ       |
 | clusterResourceGroup         | HDInsight クラスターは、このリソース グループに作成されます。 | あり      |
 | sparkVersion                 | クラスターの種類が "Spark" の場合の Spark のバージョンです | いいえ       |

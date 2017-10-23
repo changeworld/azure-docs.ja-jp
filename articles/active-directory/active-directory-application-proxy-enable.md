@@ -3,7 +3,7 @@ title: "Azure AD アプリケーション プロキシ - コネクタのイン�
 description: "Azure Portal でアプリケーション プロキシを有効にして、リバース プロキシ用のコネクタをインストールします。"
 services: active-directory
 documentationcenter: 
-author: kgremban
+author: billmath
 manager: femila
 ms.assetid: c7186f98-dd80-4910-92a4-a7b8ff6272b9
 ms.service: active-directory
@@ -11,18 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
-ms.author: kgremban
+ms.date: 10/02/2017
+ms.author: billmath
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 3b0a3e315ecd98565a852b3a8190d78ccdefe42d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 77acb23f33fd656a12c27107cb159613a8b2aec4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-with-application-proxy-and-install-the-connector"></a>アプリケーション プロキシの概要とコネクタのインストール
 この記事では、Microsoft Azure AD アプリケーション プロキシを Azure AD のクラウド ディレクトリに対して有効にする手順について説明します。
 
@@ -63,7 +61,7 @@ Azure AD アプリケーション プロキシの環境を準備するには、�
    * ocsp.msocsp.com:80
    * www.microsoft.com:80
 
-4. コネクタは登録プロセスのために login.windows.net と login.microsoftonline.net にアクセスする必要があります。
+4. コネクタは登録プロセスのために login.windows.net と login.microsoftonline.com にアクセスする必要があります。
 
 5. [Azure AD アプリケーション プロキシ コネクタ ポート テスト ツール](https://aadap-portcheck.connectorporttest.msappproxy.net/)を使った、コネクタがアプリケーション プロキシ サービスにアクセスできることを確認します。 少なくとも、米国中部リージョンと自分に最も近いリージョンにすべて緑色のチェックマークが表示されていることを確認します。 その他の場合は、緑色のチェックマークが多いほど、リカバリ性が高いことを意味します。
 
@@ -108,4 +106,3 @@ Azure Portal で、テナントにサインインし、**[Azure Active Directory
 [アプリケーション プロキシを使用してアプリケーションを発行](application-proxy-publish-azure-portal.md)する準備がこれで整いました。
 
 別のネットワークや異なる場所にアプリケーションがある場合、コネクタ グループを使用し、さまざまなコネクタで論理ユニットを編成します。 アプリケーション プロキシ コネクタの使用方法の詳細については、 [こちら](active-directory-application-proxy-connectors-azure-portal.md)を参照してください。
-

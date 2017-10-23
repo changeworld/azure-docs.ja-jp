@@ -16,10 +16,10 @@ ms.date: 08/02/2017
 ms.author: markvi
 ms.reviewer: calebb
 ms.openlocfilehash: 10a4a23af08c31ea107e196ae441fefd39c7cabc
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="active-directory-conditional-access-device-policies-for-office-365-services"></a>Office 365 サービス用の Active Directory の条件付きアクセスのデバイス ポリシー
 

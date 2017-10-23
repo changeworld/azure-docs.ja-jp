@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 02/27/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 350084edbf1b604e2dc3674fd06288738a87a31a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-fully-configured-virtual-machine"></a>完全に構成された仮想マシンの作成
 
 このスクリプトでは、オペレーティング システムが Ubuntu の Azure 仮想マシンを作成します。 スクリプトを実行すると、SSH 経由で仮想マシンにアクセスできるようになります。
@@ -34,7 +32,7 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-detailed/create-vm-detailed.sh "VM の簡易作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/create-vm-detailed/create-vm-detailed.sh "Quick Create VM")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -64,4 +62,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Linux VM のドキュメント](../linux/cli-samples.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)のページにあります。
-

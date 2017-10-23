@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 773043f2841ec7539b0d49357dec6bcb9f4f78a1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>インスタンス レベル パブリック IP (クラシック) の概要
 インスタンス レベル パブリック IP (ILPIP) は、VM または Cloud Services ロール インスタンスが存在するクラウド サービスではなく、VM またはロール インスタンスに直接割り当てることができるパブリック IP アドレスです。 ILPIP は、クラウド サービスに割り当てられる仮想 IP (VIP) に代わるものではありません。 むしろ、VM またはロール インスタンスに直接接続するときに使用できる追加の IP アドレスです。

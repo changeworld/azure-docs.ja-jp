@@ -16,10 +16,10 @@ ms.date: 03/20/2017
 ms.author: cephalin
 ms.custom: mvc
 ms.openlocfilehash: 6d25fe8098848fc69470c77e3200bee554c1f875
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-a-custom-domain-to-a-web-app"></a>カスタム ドメインを Web アプリに割り当てる
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 08/18/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "カスタム ドメインを Web アプリに割り当てる")]
+[!code-powershell[main](../../../powershell_scripts/app-service/map-custom-domain/map-custom-domain.ps1?highlight=1 "Assign a custom domain to a web app")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

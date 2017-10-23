@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 8c023eda179ace41a082bf4a4fadc281c14db7ba
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introducing-idns-for-azure-stack"></a>Azure Stack 用の iDNS の概要
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 iDNS は、外部 DNS 名 (http://www.bing.com など) を解決できる Azure Stack の機能です。
 内部仮想ネットワーク名を登録することもできます。 これを行うことで、同じ仮想ネットワーク内の VM を IP アドレスではなく名前で解決することができ、カスタム DNS サーバー エントリを用意する必要はありません。
@@ -54,5 +53,4 @@ Azure Stack では、内部名の登録でのみ iDNS をサポートするた�
 * DNS ゾーン (Contoso.com など) を作成する。
 * 独自のカスタム DNS ゾーンにレコードを作成する。
 * ドメイン名の購入をサポートする。
-
 

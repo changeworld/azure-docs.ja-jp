@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 08/31/2017
 ms.author: seanmck
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: ff6da0ce95d0405714602c3872da34a2bff344d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-deployment-issues-with-azure-container-instances"></a>Azure Container Instances でのデプロイに関する問題をトラブルシューティングする
 
 この記事では、Azure Container Instances にコンテナーをデプロイする際の問題をトラブルシューティングする方法を示します。 また、発生する可能性があるいくつかの一般的な問題についても説明します。
@@ -226,4 +224,3 @@ Azure ではリージョンによってリソースの読み込みに変化が�
 * コンテナーに低い CPU およびメモリ設定を指定する。
 * 別の Azure リージョンにデプロイする
 * 後でデプロイする
-

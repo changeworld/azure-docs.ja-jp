@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/21/2017
 ms.author: genli
+ms.openlocfilehash: 873d728971c9ebc5713d23a625ab0c5aeb802dc5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 9bed14975ea54c44876fd604f1fc04ca2c2a264f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="i-cant-sign-in-to-manage-my-azure-subscription"></a>Azure サブスクリプションにサインインして管理することができない
 この記事では、ログインに関する問題の最も一般的な解決方法を紹介します。
@@ -39,7 +38,7 @@ ms.lasthandoff: 08/31/2017
 
 この問題を解決するには、次の方法のいずれかを試してください。
 
-* キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、**[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして [削除] をクリックします。
+* キャッシュをクリアし、インターネット Cookie を削除する。 Internet Explorer で、**[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[削除]** の順にクリックします。 一時ファイル、Cookie、パスワード、閲覧履歴の各チェック ボックスをオンにして 削除をクリックします。
 * Internet Explorer の設定をリセットして、構成済みの個人設定を元に戻す。 **[ツール]** ![ツール ボタン](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[インターネット オプション]** > **[詳細設定]** の順にクリックし、**[個人設定を削除する]** チェック ボックスをオンにして **[リセット]** を選択します。
 * お使いのブラウザーのプライベート ブラウズ モードを使用します。 Internet Explorer の場合:**[ツール]** ツール ボタン![](./media/billing-cannot-login-subscription/Toolsbutton.png) > **[セーフティ]** > **[InPrivate ブラウズ]** の順にクリックします。
   B. [Azure Portal](https://portal.azure.com) にアクセスしてサインインします。
@@ -51,5 +50,4 @@ ms.lasthandoff: 08/31/2017
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](http://go.microsoft.com/fwlink/?linkid=544831&clcid=0x409)ください。 
-
 

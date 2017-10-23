@@ -1,6 +1,6 @@
 Cloud Shell で [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan` App Service プランに [Web アプリ](../articles/app-service/containers/app-service-linux-intro.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
 
-次のコマンドでは、ランタイムが `NODE|8.1` に設定されています。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行してください。 
+次のコマンドのランタイムは、`NODE|8.1` に設定されます。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行してください。 
 
 ```azurecli-interactive
 az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "NODE|8.1" --deployment-local-git

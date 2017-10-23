@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
 ms.openlocfilehash: 468321fa6863d78bc0d179fbe5c2ed6195040d50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-dsc-overview"></a>Azure Automation DSC Overview
 
@@ -65,4 +65,4 @@ Log Analytics ワークスペースに DSC ステータス データを送信す
 * DSC 構成をコンパイルしてターゲット ノードに割り当てることができるようにする方法の詳細については、「[Azure Automation DSC での構成のコンパイル](automation-dsc-compile.md)」を参照してください。
 * Azure Automation DSC の PowerShell コマンドレットのリファレンスについては、「[Azure Automation DSC cmdlets (Azure Automation DSC コマンドレット)](/powershell/module/azurerm.automation/#automation)」を参照してください。
 * 料金情報については、[Azure Automation DSC の価格](https://azure.microsoft.com/pricing/details/automation/)に関するページを参照してください。
-* 継続的なデプロイ パイプラインで Azure Automation DSC の使用例を参照してください[IaaS Vm を使用して Azure Automation dsc の概要と Chocolatey を継続的なデプロイ](automation-dsc-cd-chocolatey.md)
+* 継続的なデプロイ パイプラインで Azure Automation DSC を使う例については、「[Azure Automation DSC と Chocolatey を使用した IaaS VM への継続的なデプロイ](automation-dsc-cd-chocolatey.md)」をご覧ください。

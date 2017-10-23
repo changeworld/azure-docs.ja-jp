@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/24/2017
 ms.author: singhkay
 ms.openlocfilehash: fed612a354d45f34619f2a66bd40d78740c43ac7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-key-vault-for-virtual-machines-in-azure-resource-manager-with-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Azure Resource Manager の仮想マシン用に Key Vault を設定する
 Azure Resource Manager スタックでは、Key Vault のリソースプロバイダーにより提供されるリソースとしてシークレット/証明書がモデル化されます。 Azure Key Vault の詳細については、「 [Azure Key Vault とは](../../key-vault/key-vault-whatis.md) Key Vault を Azure Resource Manager 仮想マシンと共に使用するには、Key Vault の *EnabledForDeployment* プロパティを True に設定する必要があります。 この設定は、さまざまなクライアントで実行できます。 この記事では、Azure Virtual Machines 用に Key Vault を設定する方法につちえ説明します。

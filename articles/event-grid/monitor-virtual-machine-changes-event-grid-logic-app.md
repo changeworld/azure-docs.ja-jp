@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
 ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 

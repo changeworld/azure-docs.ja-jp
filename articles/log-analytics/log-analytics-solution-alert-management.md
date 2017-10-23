@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 07/13/2017
 ms.author: bwren
 ms.openlocfilehash: 4a394ead09794c52e92dbd2db8be8166d1fab83b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="alert-management-solution-in-operations-management-suite-oms"></a>Operations Management Suite (OMS) アラート管理ソリューション
 

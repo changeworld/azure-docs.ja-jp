@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 06/18/2017
 ms.author: heidist
 ms.openlocfilehash: c293de5b43103c8cbec01f61a26b8b28ac7e9116
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-administration-for-azure-search-in-the-azure-portal"></a>Azure Portal での Azure Search のサービス管理
 > [!div class="op_single_selector"]

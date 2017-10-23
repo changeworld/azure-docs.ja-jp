@@ -17,10 +17,10 @@ ms.date: 05/17/2016
 ms.author: nitinme
 ROBOTS: NOINDEX
 ms.openlocfilehash: e1cdb786bb6049980aafc0213abf53013e342618
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-hive-with-windows-based-hdinsight-to-analyze-logs-from-websites"></a>Web サイトのログを分析するための Windows ベースの HDInsight での Hive の使用
 Web サイトのログを分析するために HDInsight で HiveQL を使用する方法を説明します。 Web サイトのログ分析は、類似するアクティビティに基づく対象ユーザーの区分、人口統計によるサイト訪問者の分類、参照されたコンテンツや訪問元の Web サイトの確認などのために使用できます。
@@ -43,8 +43,7 @@ Web サイトのログを分析するために HDInsight で HiveQL を使用す
 * Hive から Excel にデータをインポートするための [Microsoft Hive ODBC ドライバー](http://www.microsoft.com/download/details.aspx?id=40886) があること。
 
 ## <a name="to-run-the-sample"></a>サンプルを実行するには
-1. 
-            [Azure Portal](https://portal.azure.com/) のスタート画面 (ここにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。
+1. [Azure Portal](https://portal.azure.com/) のスタート画面 (ここにクラスターをピン留めした場合) で、サンプルを実行するクラスターのタイルをクリックします。
 2. クラスターのブレードの **[クイック リンク]** で **[クラスター ダッシュボード]** をクリックし、**[クラスター ダッシュボード]** ブレードで **[HDInsight クラスター ダッシュボード]** をクリックします。 または、次に示す URL を使用してダッシュボードを直接開くこともできます。
 
          https://<clustername>.azurehdinsight.net

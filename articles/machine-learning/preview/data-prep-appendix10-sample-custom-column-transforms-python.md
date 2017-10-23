@@ -12,16 +12,14 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9a6e331e622b007232a62b34c2220d60d1d050ca
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="sample-of-custom-column-transforms-python"></a>カスタム列変換のサンプル (Python) 
-メニュー内でのこの変換の名前は [Add Column] (列の追加) です (スクリプト)
+メニュー内でのこの変換の名前は [Add Column] \(列の追加) です (スクリプト)
 
 この付録を読む前に、[Python 機能拡張の概要](data-prep-python-extensibility-overview.md)に関する記事を参照してください
 
@@ -55,7 +53,6 @@ Unix エポック以降の秒数 (Col1 がすでに日付であると想定)
 ```python
     row["Col1"] - datetime.datetime.utcfromtimestamp(0)).total_seconds()
 ```
-
 
 
 

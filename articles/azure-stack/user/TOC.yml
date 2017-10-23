@@ -43,7 +43,7 @@
               href: azure-stack-compute-overview.md
             - name: VM に関する考慮事項
               href: azure-stack-vm-considerations.md
-        - name: Storage
+        - name: ストレージ
           items:
             - name: 概要
               href: azure-stack-storage-overview.md

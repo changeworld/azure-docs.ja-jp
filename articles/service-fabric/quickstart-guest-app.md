@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/13/2017
 ms.author: adegeo
 ms.openlocfilehash: 3601b73872bbea4b4e5324382eb97b7384ca6e13
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="host-a-nodejs-application-on-azure-service-fabric"></a>Azure Service Fabric での Node.js アプリケーションのホスト
 

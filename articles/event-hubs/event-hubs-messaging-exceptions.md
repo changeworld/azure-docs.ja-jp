@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/15/2017
 ms.author: sethm
-ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
 ms.openlocfilehash: 1a5922506a0db4277b205ba3390c9c30034c177d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-hubs-messaging-exceptions"></a>Event Hubs メッセージングの例外
 この記事では、Event Hubs を含む、Azure Service Bus のメッセージング API によって生成されるいくつかの例外を示します。 このリファレンスは変更される可能性があるため、最新情報をご確認ください。
@@ -98,4 +97,3 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hub を作成する](event-hubs-create.md)
 * [Event Hubs の FAQ](event-hubs-faq.md)
-

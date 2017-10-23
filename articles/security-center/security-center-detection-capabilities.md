@@ -12,22 +12,21 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/30/2017
+ms.date: 09/20/2017
 ms.author: yurid
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: b6a0504f2dd5d23fa135b8afc371e3a9210d7caa
-ms.lasthandoff: 04/18/2017
-
-
+ms.openlocfilehash: edef9bc1ba2420a4b7d95f891fd8b0b7e144c2ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-detection-capabilities"></a>Azure Security Center の検出機能
 このドキュメントでは、Azure Security Center の高度な検出機能について取り上げます。この機能を使用すると、Microsoft Azure リソースが今さらされている脅威を特定し、迅速に対応するうえで必要な知見を得ることができます。
 
+高度な検出は、Azure Security Center の Standard レベルで利用できます。 60 日間の無料試用版が提供されています。 アップグレードは、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] の選択から実行できます。 価格の詳細については、 [Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。 
+
 > [!NOTE]
-> 高度な検出は、Azure Security Center の Standard レベルで利用できます。 60 日間の無料試用版が提供されています。 アップグレードは、 [[セキュリティ ポリシー]](security-center-policies.md)の [価格レベル] の選択から実行できます。 価格の詳細については、 [Security Center のページ](https://azure.microsoft.com/pricing/details/security-center/) を参照してください。 
-> 
-> 
+> Security Center は、制限付きプレビューに対して、Linux マシン上の悪意のある行為を検出するために、共通の監査フレームワークである監査レコードを活用した一連の新しい検出機能をリリースしました。 プレビューに参加するには、サブスクリプション ID を記入した電子メールを[こちら](mailto:ASC_linuxdetections@microsoft.com)に送信してください。
 
 ## <a name="responding-to-todays-threats"></a>今日の脅威への対応
 脅威を取り巻く状況は、この 20 年で様変わりしました。 従来、企業が警戒すべきことは一般に Web サイトの改ざんのみで、その攻撃も興味本位の個人によるものが大半でした。 その頃と比べ今日の攻撃は、はるかに進化しており、組織化されています。 明らかに金銭や戦略的な目的をもって攻撃が遂行されるケースも少なくありません。 攻撃に利用されるリソースも増えてきました。国家や犯罪組織によって資金提供されている場合があるためです。
@@ -90,5 +89,4 @@ Azure Security Center に寄与するセキュリティ リサーチ チーム�
 * [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
 * [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-
 

@@ -16,10 +16,10 @@ ms.date: 08/24/2017
 ms.author: barclayn
 ms.custom: 
 ms.openlocfilehash: 3a941389713a4d3dbffbbfe8a717409927d85c6d
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="protect-personal-data-from-breaches-and-attacks-azure-security-center"></a>個人データを侵害や攻撃から保護する: Azure Security Center
 

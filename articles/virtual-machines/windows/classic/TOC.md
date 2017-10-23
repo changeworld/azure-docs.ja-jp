@@ -1,5 +1,5 @@
 # 概要
-## [仮想マシンについて](../../virtual-machines-windows-about.md)
+## [仮想マシンについて](../../virtual-machines-windows-about.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 ## [ディスクと VHD](../about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 ## [仮想ネットワーク](../../../virtual-network/virtual-networks-overview.md)
 ## [FAQ](faq.md)
@@ -91,9 +91,9 @@
 ## [.NET](/dotnet/api/microsoft.azure.management.compute)
 ## [Resource Manager テンプレートの作成](../../../resource-group-authoring-templates.md)
 ## [コミュニティ テンプレート](https://azure.microsoft.com/documentation/templates)
-## [コンピューティング REST](/rest/api/compute)
-## [ネットワーク REST](/rest/api)
-## [Storage REST](/rest/api/storageservices)
+## [コンピューティング REST](https://msdn.microsoft.com/library/jj157206.aspx)
+## [ネットワーク REST](https://msdn.microsoft.com/library/jj157182.aspx)
+## [Storage REST](https://msdn.microsoft.com/library/ee460790.aspx)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)

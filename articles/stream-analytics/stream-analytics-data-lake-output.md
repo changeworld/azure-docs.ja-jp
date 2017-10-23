@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 03/28/2017
 ms.author: samacha
 ms.openlocfilehash: 3d867df3ef875d5cc41de418c3d1d269ff751fda
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-analytics-data-lake-store-output"></a>Stream Analytics の Data Lake Store 出力
 Stream Analytics ジョブは、 [Azure Data Lake Store](https://azure.microsoft.com/services/data-lake-store/)など、いくつかの出力方法をサポートしています。 Azure Data Lake Store は、ビッグ データの分析ワークロードに対応するエンタープライズ規模のハイパースケール リポジトリです。 Data Lake Store を使用すると、運用分析や調査分析を目的として任意のサイズ、種類、取り込み速度のデータを格納できます。

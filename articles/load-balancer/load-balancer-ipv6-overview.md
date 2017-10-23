@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
+ms.openlocfilehash: 1902475c81c4f83f8ba69a05f9564bc65a5de833
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 8cca857314ecf37ef51700fd25aef228515ecd0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-ipv6-for-azure-load-balancer"></a>Azure Load Balancer の IPv6 の概要
 
 
@@ -88,4 +86,3 @@ IPv6 でロード バランサーをデプロイする方法について説明�
 * [テンプレートを使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-template.md)
 * [Azure PowerShell を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-ps.md)
 * [Azure CLI を使用して IPv6 でロード バランサーをデプロイする](load-balancer-ipv6-internet-cli.md)
-

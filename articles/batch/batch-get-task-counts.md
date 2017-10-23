@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: tamram
 ms.openlocfilehash: ceff59d7063b60a1344a47489d3d73e0e8ee07df
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="count-tasks-by-state-to-monitor-a-jobs-progress-preview"></a>タスクを状態別にカウントしてジョブの進行状況を監視する (プレビュー)
 

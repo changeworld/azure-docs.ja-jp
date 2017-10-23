@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: banders
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 9ef26d4b6bfd92925a70b7bbdf8979e287c73445
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="view-analytic-data-for-metrics-across-all-your-azure-web-app-resources"></a>すべての Azure Web App リソースのメトリック分析データの表示
 
 ![Web Apps のシンボル](./media/log-analytics-azure-web-apps-analytics/azure-web-apps-analytics-symbol.png)  
@@ -144,4 +142,3 @@ Azure Web Apps Analytics ソリューションをワークスペースに追加�
 
 - 特定のメトリックの[アラート](log-analytics-alerts-creating.md)を作成します。
 - [ログ検索](log-analytics-log-searches.md)を使用して、アクティビティ ログの詳細情報を表示します。
-

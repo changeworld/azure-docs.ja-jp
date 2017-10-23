@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
 ms.openlocfilehash: b4d71cdfbab535b02542fbb26c7555265e5f9c37
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-create-and-use-groups-to-manage-developer-accounts-in-azure-api-management"></a>Azure API Management でグループを作成および使用して開発者アカウントを管理する方法
 API Management では、開発者に成果物の表示を許可するかどうかが、グループを使用して管理されます。 グループに対して成果物の表示が許可されると、そのグループに属する開発者は、グループに関連付けられた成果物を表示してサブスクライブできるようになります。 
@@ -55,7 +55,7 @@ API Management には、次に示すシステム グループが用意されて�
 
 ![新しいグループを追加する][api-management-add-group-window]
 
-新しいグループが [グループ] タブに表示されます。 グループの **[名前]** または **[説明]** を編集するには、一覧内のグループの名前をクリックします。 グループを削除するには、 **[削除]**をクリックします。
+新しいグループが [グループ] タブに表示されます。グループの **[名前]** または **[説明]** を編集するには、一覧内のグループの名前をクリックします。 グループを削除するには、 **[削除]**をクリックします。
 
 ![グループが追加された][api-management-new-group]
 

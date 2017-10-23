@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
+ms.openlocfilehash: eecb20d4a53478471c238018d8fbd5a5f9cb79d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 18aa9837742082535a115efd47bdc4b8dfda8a6b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-network-monitoring-overview"></a>Azure のネットワーク監視の概要
 
 Azure では、VNet、ExpressRoute、Application Gateway、ロード バランサーなどのさまざまなネットワーク リソースを調整および作成することで、エンドツーエンド ネットワークを作成できます。 各ネットワーク リソースは監視することができます。 こうした監視は、リソース レベルの監視と呼ばれます。
@@ -133,7 +131,6 @@ Azure のその他の重要な[ネットワーク機能](../networking/networkin
 [logs]: ./media/network-watcher-monitoring-overview/logs.png
 [metrics]: ./media/network-watcher-monitoring-overview/metrics.png
 [nsl]: ./media/network-watcher-monitoring-overview/nsl.png
-
 
 
 

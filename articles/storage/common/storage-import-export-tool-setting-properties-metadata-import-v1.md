@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 77bdaa5559de86cd1de9f30e70656e47fd5719e2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="setting-properties-and-metadata-during-the-import-process"></a>インポート処理中にプロパティとメタデータを設定する
 Microsoft Azure Import/Export ツールを実行してドライブを準備する際に、目的の BLOB で設定するプロパティとメタデータを指定できます。 次の手順に従います。  

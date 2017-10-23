@@ -27,7 +27,7 @@
       href: overview-general-concepts.md
 - name: ハウツー ガイド
   items:
-    - name: Machine Learning Workbench の使用
+    - name: Workbench の使用
       items:
         - name: Python IDE での作業
           href: how-to-configure-your-IDE.md
@@ -37,13 +37,13 @@
           href: using-git-ml-project.md
         - name: TDSP 使用したプロジェクトの構造化
           href: how-to-use-tdsp-in-azure-ml.md
-        - name: ローミングとコラボレーションを行う方法
+        - name: ローミングとコラボレーション
           href: roaming-and-collaboration.md
-    - name: Visual Studio ツールの使用
+    - name: Visual Studio Code Tools for AI の使用
       href: quickstart-visual-studio-tools.md
     - name: コンピューティング環境の構成
       items:
-        - name: 実行ターゲットの構成
+        - name: 実験の構成
           href: experiment-execution-configuration.md
         - name: DSVM および HDI Spark クラスターの作成
           href: how-to-create-dsvm-hdi.md
@@ -51,13 +51,14 @@
           href: how-to-use-gpu.md
     - name: データの取得と理解
       items:
-        - name: データ ソース ウィザードを使用したデータへのアクセス
+        - name: データ ソースを追加する
           href: data-source-wizard.md
-        - name: データ準備の開始
-          href: data-prep-getting-started.md
         - name: データ準備ガイド
+          href: data-prep-getting-started.md
+        - name: 高度なデータ準備
           href: data-prep-user-guide.md
         - name: データ準備のための変換
+          href: data-prep-appendix3-supported-transforms.md
           items:
             - name: 列の結合の例
               href: data-prep-combine-columns-by-example.md
@@ -73,22 +74,26 @@
           href: tutorial-iris-azure-cli.md
         - name: 実行履歴とモデル メトリックの追跡
           href: how-to-use-run-history-model-metrics.md
-        - name: 精度が最適で最短時間の実行を見つける方法
+        - name: 精度が最適な実行の検索
           href: how-to-find-best-accuracy-cli.md
         - name: ファイルの読み取りと書き込み
           href: how-to-read-write-files.md
-        - name: MMLSpark ライブラリ
+        - name: MMLSpark ライブラリの使用
           href: how-to-use-mmlspark.md
-    - name: モデルをデプロイする
+    - name: モデルの運用化
       items:
         - name: モデル管理の設定
           href: deployment-setup-configuration.md
+        - name: クラスターとサービスのスケーリング
+          href: how-to-scale-clusters.md
         - name: Web サービスのデプロイ
           href: model-management-service-deploy.md
         - name: Web サービスを使用する
           href: model-management-consumption.md
-        - name: モデル データ コレクションの使用方法
+        - name: モデル データの収集
           href: how-to-use-model-data-collection.md
+        - name: デプロイ トラブルシューティング ガイド
+          href: how-to-deploy-troubleshooting-guide.md
     - name: 実際の例
       items:
         - name: ドキュメント コレクションの分析
@@ -121,8 +126,6 @@
           href: data-prep-python-extensibility-overview.md
         - name: サポートされるデータ ソース
           href: data-prep-appendix2-supported-data-sources.md
-        - name: サポートされる変換
-          href: data-prep-appendix3-supported-transforms.md
         - name: サポートされるインスペクター
           href: data-prep-appendix4-supported-inspectors.md
         - name: サポートされるデータ変換先
@@ -131,7 +134,7 @@
           href: data-prep-supported-runtime-data-environments.md
         - name: Python のフィルター式のサンプル
           href: data-prep-appendix6-sample-filter-expressions-python.md
-        - name: Python のカスタム DataFlow 変換のサンプル
+        - name: Python のカスタム データ フロー変換のサンプル
           href: data-prep-appendix7-sample-transform-data-flow-python.md
         - name: Python の変換元接続のサンプル
           href: data-prep-appendix8-sample-source-connections-python.md
@@ -143,7 +146,7 @@
           href: data-prep-python-execution-api.md
     - name: 実験
       items:
-        - name: 実行構成
+        - name: 実験サービス構成
           href: experiment-execution-configuration-reference.md
         - name: ロギング API
           href: reference-logging-api.md
@@ -155,11 +158,15 @@
           href: model-management-cli-reference.md
         - name: モデル データ収集 API
           href: model-data-collection-api-reference.md
+    - name: リリース ノート
+      items:
+        - name: スプリント 0 - 2017 年 10 月
+          href: release-notes-sprint-0.md
 - name: リソース
   items:
-    - name: FAQ
+    - name: よく寄せられる質問
       href: frequently-asked-questions.md
-    - name: 既知の問題とトラブルシューティング ガイド
+    - name: 既知の問題とトラブルシューティング
       href: known-issues-and-troubleshooting-guide.md
     - name: Team Data Science Process のドキュメント
       href: ../team-data-science-process/overview.md
@@ -170,7 +177,7 @@
     - name: 価格
       href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
     - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/Forums/home?forum=MachineLearning'
+      href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
     - name: スタック オーバーフロー
       href: 'https://stackoverflow.com/questions/tagged/azure-machine-learning'
     - name: ビデオ

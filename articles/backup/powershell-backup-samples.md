@@ -16,12 +16,11 @@ ms.workload: storage-backup-recovery
 ms.date: 09/07/2017
 ms.author: markgal
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2e35b5fea99bf70c9ff9a6aacbe570b616bbb96f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-backup-powershell-samples"></a>Azure Backup PowerShell のサンプル
 
@@ -32,5 +31,4 @@ ms.lasthandoff: 09/25/2017
 |**仮想マシンのバックアップ**||
 | [暗号化された仮想マシンを Azure にバックアップする](./scripts/backup-powershell-sample-backup-encrypted-vm.md) | 暗号化された仮想マシンのすべてのデータをバックアップします。|
 | | |
-
 

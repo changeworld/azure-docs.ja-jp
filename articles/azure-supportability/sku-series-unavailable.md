@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: gangan
 ms.openlocfilehash: 3dc32bfb88e43e82cc4b3f43e31ce20d4302b688
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sku-series-unavailable"></a>利用できない SKU シリーズ
 一部のリージョンでは、特定の SKU は新しいサブスクリプションで自動的に使用することができません。  これは、 [リージョンに、より強力な SKU が導入され](https://azure.microsoft.com/updates/announcing-new-dv2-series-virtual-machine-size/) 、従来の SKU の需要が低下したときに起こることがあります。

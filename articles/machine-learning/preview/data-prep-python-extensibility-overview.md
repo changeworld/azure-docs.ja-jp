@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4e1935a7830b8174796ac12792fbbc0ed110d081
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-prep-python-extensions"></a>Data Prep Python 拡張機能
 組み込み機能間の機能性ギャップを埋める方法として、Data Prep には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
 
@@ -140,7 +138,7 @@ or
 
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントには、[Open Data Source] (データ ソースを開く) ウィザードからアクセスします。 最初のページで [File] (ファイル) を選択し、ファイルの場所を選択します。 [Choose File Parameters] (ファイル パラメーターの選択) ページで、[File Type] (ファイルの種類) ドロップダウンから [Custom File (Script)] (カスタム ファイル (スクリプト)) を選択します。 
+この拡張機能ポイントには、[Open Data Source] \(データ ソースを開く) ウィザードからアクセスします。 最初のページで [File] \(ファイル) を選択し、ファイルの場所を選択します。 [Choose File Parameters] \(ファイル パラメーターの選択) ページで、[File Type] \(ファイルの種類) ドロップダウンから [Custom File (Script)] \(カスタム ファイル (スクリプト)) を選択します。 
 
 読み取る必要のあるファイルに関する情報を含む、‘df’ という名前の Pandas データフレームがコードに与えられます。 複数のファイルを含むディレクトリを開くことを選択した場合、データフレームには複数の行が含まれます。  
 
@@ -178,7 +176,7 @@ def read(df):
 
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントは ‘Write Dataflow (Script)’ (データ フローの書き込み (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] (変換) メニューから使用できます。 
+この拡張機能ポイントは ‘Write Dataflow (Script)’ (データ フローの書き込み (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
 
 ### <a name="syntax"></a>構文 
 式: 
@@ -203,7 +201,7 @@ def write(df):
 この拡張機能ポイントを使用して、新しい列を計算する Python を記述できます。 記述するコードは行全体にアクセスできます。 コードは行ごとに新しい列値を返す必要があります。 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Add Column (Script)’ (列の追加 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] (変換) メニューと、列のコンテキスト メニューから使用できます。 
+この拡張機能ポイントは ‘Add Column (Script)’ (列の追加 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューと、列のコンテキスト メニューから使用できます。 
 
 ### <a name="syntax"></a>構文
 式: 
@@ -225,7 +223,7 @@ def newvalue(row):
 この拡張機能ポイントを使用して、カスタム フィルターを記述できます。 ユーザーは行全体にアクセスでき、ユーザーのコードは True (行を含める) または False (行を除外する) を返す必要があります。 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Advanced Filter (Script)’ (高度なフィルター (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] (変換) メニューから使用できます。 
+この拡張機能ポイントは ‘Advanced Filter (Script)’ (高度なフィルター (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
 
 ### <a name="syntax"></a>構文
 
@@ -253,7 +251,7 @@ def includerow(row):
 Spark では、すべてのデータは 1 つのワーカー ノードに集められます。 この結果、データが非常に大きい場合にワーカーでメモリが不足する可能性があります。 慎重に使用してください。
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントは ‘Transform Dataflow (Script)’ (データ フローの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] (変換) メニューから使用できます。 
+この拡張機能ポイントは ‘Transform Dataflow (Script)’ (データ フローの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
 ### <a name="syntax"></a>構文 
 
 式: 
@@ -283,7 +281,7 @@ def transform(df):
 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Transform Partition (Script)’ (パーティションの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] (変換) メニューから使用できます。 
+この拡張機能ポイントは ‘Transform Partition (Script)’ (パーティションの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
 
 ### <a name="syntax"></a>構文 
 
@@ -361,4 +359,3 @@ def newvalue(row):
     else: 
         return row["Score"] 
 ```  
-

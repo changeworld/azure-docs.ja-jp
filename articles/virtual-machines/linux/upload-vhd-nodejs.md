@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/10/2016
 ms.author: iainfou
 ms.openlocfilehash: ca4c6cb9296028275b2b032af0c94baabeec1223
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-and-create-a-linux-vm-from-custom-disk-image-by-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用してカスタム ディスク イメージをアップロードし、Linux VM を作成する
 この記事では、Resource Manager デプロイメント モデルを使用して仮想ハード ディスク (VHD) を Azure にアップロードし、そのカスタム イメージから Linux VM を作成する方法について説明します。 この機能によって、要件に合った Linux ディストリビューションをインストールして構成し、その VHD を使用して Azure 仮想マシン (VM) をすばやく作成することができます。

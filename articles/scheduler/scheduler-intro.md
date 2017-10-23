@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/18/2016
 ms.author: deli
 ms.openlocfilehash: a3bf1aacd6978499d7ef77cbcb451a06b857ac38
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-scheduler"></a>Azure Scheduler とは
 Azure Scheduler では、クラウドで実行するアクションを宣言的に記述することができます。 その後スケジュールを設定し、アクションを自動的に実行します。  Scheduler では、[Azure Portal](scheduler-get-started-portal.md)、コード、[REST API](https://msdn.microsoft.com/library/mt629143.aspx)、または Azure PowerShell を使用してこれを実行します。

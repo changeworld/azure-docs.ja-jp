@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio; v-divte
 ms.openlocfilehash: b753bfb4bd69bd9aacf4eebd8999397394c28bc4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-create-a-solution-template-for-azure-marketplace"></a>Azure Marketplace 向けソリューション テンプレートの作成ガイド
 手順 1 の[アカウントの作成と登録][link-acct-creation]に関するページの完了後、[ソリューション テンプレートを作成するための技術的な前提条件](marketplace-publishing-solution-template-creation-prerequisites.md)のページで、Azure と互換性のあるソリューション テンプレートの作成について説明しました。 ここでは、Azure Marketplace 向けの[発行ポータル][link-pubportal]で複数の VM を対象としたソリューション テンプレートを作成する手順を紹介します。

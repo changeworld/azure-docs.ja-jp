@@ -15,12 +15,11 @@ ms.workload: infrastructure
 ms.date: 09/14/2016
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: d0c6523b4d90c29781d256b2882b0935b50e2af9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 392ed1b7ac5f543b322024f4b771c73bf865e970
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-and-linux"></a>Azure と Linux
 Microsoft Azure は、分析、仮想マシン、データベース、モバイル、ネットワーク、ストレージ、Web など、多様なパブリック クラウド サービスを一元化した集合体として成長し続け、さまざまなソリューションのホストとして理想的な形態となっています。  Microsoft Azure のスケーラブルなコンピューティング プラットフォームによって、必要なときに使用した分だけを支払う料金体系が実現され、オンプレミスのハードウェアに投資する必要がありません。  貴社の顧客のニーズに応えるうえで必要なレベルにまでソリューションをいつでもスケールアップまたはスケールアウトできる柔軟性が Azure にはあります。
@@ -139,4 +138,3 @@ Azure Web ポータルで Linux VM を作成すると、デプロイのための
 これで、Azure での Linux の概要の説明が終わりました。  次の手順では、VM の作成について詳しく説明します。
 
 * [Azure CLI を使用した一般的なタスクの増え続けるサンプル スクリプトの一覧を確認する](cli-samples.md)
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 05/30/2017
 ms.author: guybo
 ms.openlocfilehash: c7093e221ff8fe69ded1cfbce4f3ddeb1a195666
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-a-virtual-machine-scale-set"></a>仮想マシン スケール セットのアップグレード
 この記事では、ダウンタイムなしで Azure 仮想マシン スケール セットに OS の更新を展開する方法について説明します。 ここでは、OS の更新により、OS のバージョン、OS の SKU、またはカスタム イメージの URI が変更されます。 ダウンタイムのない更新とは、すべての仮想マシンを一度に更新するのではなく、一度に 1 つずつ、またはグループごとに更新する (一度に 1 つの障害ドメインなど) ということです。 そうすることで、アップグレード中ではない仮想マシンを実行し続けることができます。

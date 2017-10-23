@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/15/2016
 ms.author: jehollan
 ms.openlocfilehash: 9cbb258ae9e32549669623e6824dd9b18fa1f68f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-connectors-in-a-logic-app"></a>ロジック アプリでのコネクタの使用
 コネクタは、サービス、プロトコル、およびプラットフォームでの、イベント、データ、およびアクションへのすばやいアクセスを提供します。  Logic Apps がサポートするコネクタの完全な一覧については、 [こちらを参照](apis-list.md)してください。  コネクタは、ロジック アプリでトリガーまたはアクションとして使用できますが、使用には構成された *"接続"* が必要な場合があります (例: Twitter アカウントがユーザーの代わりにアクセスしたり投稿することを承認する場合)。

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
+ms.openlocfilehash: 42a2542b7564f1692146b3e3927792ac339f30be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d07d5d59632791a52bcb3a2f54bebe194cc76a54
-ms.openlocfilehash: 44eaaae123490934bc62b4ea30968656900d48fc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 10/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Azure Service Fabric Linux コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
@@ -55,7 +53,7 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>コンテナーを Azure の Service Fabric クラスターにデプロイする
 Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターかパーティー クラスターを使用します。
 
-パーティ クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによってサポートされており、誰でもアプリケーションをデプロイし、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
+パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによってサポートされており、誰でもアプリケーションをデプロイし、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
 
 独自クラスターの作成については、「[Azure で初めての Service Fabric クラスターを作成する](service-fabric-get-started-azure-cluster.md)」を参照してください。
 
@@ -146,4 +144,3 @@ Web フロントエンド サービスをスケールするには、次の手順
 [sfxquickstartshownodetype]:  ./media/service-fabric-quickstart-containers-linux/containersquickstartrestart.png
 [containersquickstartscale]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscale.png
 [containersquickstartscaledone]: ./media/service-fabric-quickstart-containers-linux/containersquickstartscaledone.png
-

@@ -1,5 +1,5 @@
 # 概要
-## [Azure VM 上の SQL Server とは](virtual-machines-windows-sql-server-iaas-overview.md) 
+## [Windows SQL Server VM](virtual-machines-windows-sql-server-iaas-overview.md) 
 ## [料金](virtual-machines-windows-sql-server-pricing-guidance.md)
 ## [FAQ](virtual-machines-windows-sql-server-iaas-faq.md)
  

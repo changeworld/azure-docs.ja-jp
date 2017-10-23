@@ -15,10 +15,10 @@ ms.workload: big-data
 ms.date: 07/31/2017
 ms.author: larryfr
 ms.openlocfilehash: 6c74db1659742aa41306388273bec46800ba7609
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="accessing-diagnostic-logs-for-azure-data-lake-analytics"></a>Azure Data Lake Analytics の診断ログへのアクセス
 
@@ -79,8 +79,7 @@ ms.lasthandoff: 08/29/2017
 
 ### <a name="use-the-azure-storage-account-that-contains-log-data"></a>ログ データを含む Azure ストレージ アカウントを使用する
 
-1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 
-            **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
+1. ログ記録用の Data Lake Analytics が関連付けられている [Azure ストレージ アカウント] ブレードを開き、__[BLOB]__ をクリックします。 **[Blob service]** ブレードに 2 つのコンテナーが一覧表示されます。
 
     ![診断ログの表示](./media/data-lake-analytics-diagnostic-logs/view-diagnostic-logs-storage-account.png "診断ログの表示")
 

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/28/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: ac2f5dad7c0af29772b4c4064cc9700ebcf2a22d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insignia-saml-sso"></a>チュートリアル: Azure Active Directory と Insignia SAML SSO の統合
 
@@ -170,7 +169,7 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-an-insignia-saml-sso-test-user"></a>Insignia SAML SSO テスト ユーザーの作成
 
@@ -233,5 +232,4 @@ Insignia SAML SSO で Azure AD のシングル サインオンを構成してテ
 [201]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-insigniasamlsso-tutorial/tutorial_general_203.png
-
 

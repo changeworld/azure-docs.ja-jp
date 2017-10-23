@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 02/14/2017
 ms.author: nepeters
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 0ac4aa10db43fb84119ab97cf78b2d5592cfd277
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-azure-cli-on-windows"></a>Windows 上での Azure CLI の使用
 
 Azure コマンド ライン インターフェイス (CLI) は、Azure リソースの作成と管理のためのコマンドラインとスクリプト環境を提供します。 Azure CLI は、macOS、Linux、および Windows オペレーティング システムで使用できます。 これらのオペレーティング システムにわたって CLI コマンドは同じですが、オペレーティング システム固有のスクリプト構文は異なることがあります。
@@ -65,4 +63,3 @@ docker run -it azuresdk/azure-cli-python:latest bash
 [Azure Web Apps 用の CLI サンプル](../../app-service/app-service-cli-samples.md)
 
 [Azure SQL 用の CLI サンプル](../../sql-database/sql-database-cli-samples.md)
-

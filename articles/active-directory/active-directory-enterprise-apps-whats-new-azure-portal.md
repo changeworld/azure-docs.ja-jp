@@ -16,10 +16,10 @@ ms.date: 07/13/2017
 ms.author: asteen
 ms.reviewer: asteen
 ms.openlocfilehash: 0c32a6719292aa903aa32dfdc4a31114e7a28346
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-enterprise-application-management-in-azure-active-directory"></a>Azure Active Directory でのエンタープライズ アプリケーション管理の新機能 
 

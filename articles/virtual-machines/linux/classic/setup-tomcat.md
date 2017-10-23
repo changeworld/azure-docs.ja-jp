@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/15/2015
 ms.author: ningk
 ms.openlocfilehash: fa30c78a5a5d458ba8845c3c10b87538427786c9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-tomcat7-on-a-linux-virtual-machine-with-azure"></a>Azure で Linux 仮想マシンに Tomcat7 をセットアップする
 Apache Tomcat (または単に Tomcat、旧称は Jakarta Tomcat) は、Apache Software Foundation (ASF) によって開発されたオープン ソース Web サーバーであり、サーブレット コンテナーです。 Tomcat には、Sun Microsystems の Java Servlet と JavaServer Pages (JSP) 仕様が実装されています。 Tomcat は、Java コードを実行する純粋な Java HTTP Web サーバー環境を提供します。 最も単純な構成では Tomcat は単一のオペレーティング システムのプロセスで実行されます。 このプロセスは、Java 仮想マシン (JVM) を実行します。 ブラウザーからの Tomcat に対するすべての HTTP 要求は、Tomcat プロセスで個別のスレッドとして処理されます。  

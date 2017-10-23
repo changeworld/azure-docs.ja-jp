@@ -16,10 +16,10 @@ ms.custom: loading
 ms.date: 10/31/2016
 ms.author: cakarst;barbkess
 ms.openlocfilehash: 1e0df958a2f18fe1e988168918e5cfd293f84e64
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-sample-data-into-sql-data-warehouse"></a>SQL Data Warehouse へのサンプル データのロード
 次の簡単な手順で Adventure Works サンプル データベースをロードしてクエリを実行します。 これらのスクリプトでは、まず sqlcmd を使用して、テーブルとビューを作成する SQL を実行します。 テーブルが作成されると、スクリプトは bcp を使用してデータを読み込みます。  まだ sqlcmd と bcp をインストールしていない場合は、リンクに従って [bcp をインストール][install bcp]し、[sqlcmd をインストール][install sqlcmd]します。

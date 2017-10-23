@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 06/21/2017
 ms.author: mandia; ladocs
 ms.openlocfilehash: c14ac7592efabfec8668d7437463e2d8771ee072
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectors-list"></a>コネクタの一覧
 > [!TIP]
@@ -42,13 +42,13 @@ ms.lasthandoff: 08/03/2017
 
 | |  |  |  |
 | --- | --- | --- | --- |
-| [![API Icon][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | ストレージ アカウントを使用してタスクを自動化する場合は、このコネクタを検討してください。 CRUD (作成、読み取り、更新、削除) 操作をサポートしています。 | [![API アイコン][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | C# または node.js のカスタム スニペットを実行する関数を作成し、ロジック アプリで使用できます。  |
+| [![API アイコン][AzureBlobStorageicon]<br/>**Azure Blob<br/>Storage**][AzureBlobStoragedoc] | ストレージ アカウントを使用してタスクを自動化する場合は、このコネクタを検討してください。 CRUD (作成、読み取り、更新、削除) 操作をサポートしています。 | [![API アイコン][Azure-Functionsicon]<br/>**Azure Functions**][azure-functionsdoc] | C# または node.js のカスタム スニペットを実行する関数を作成し、ロジック アプリで使用できます。  |
 | [![API アイコン][Dynamics-365icon]<br/>**Dynamics 365<br/>CRM Online**][Dynamics-365doc] | 人気の高いコネクタの 1 つです。 潜在顧客に関連するワークフローの自動化に役立つトリガーやアクションなどが用意されています。 | [![API アイコン][Event-Hubs-icon]<br/>**Event Hubs**][event-hubs-doc] | Event Hub のイベントを使用および発行します。 たとえば、ロジック アプリから Event Hubs を使用して出力を取得し、リアルタイム分析プロバイダーに送信できます。 |
-| [![API Icon][FTPicon]<br/>**FTP**][FTPdoc] | FTP サーバーにインターネットからアクセスできる場合は、ファイルやフォルダーを使用するワークフローを自動化できます。 <br/><br/>SFTP コネクタを使用すると、SFTP も利用できます。 | [![API Icon][HTTPicon]<br/>**HTTP**][httpdoc] | ロジック アプリを使用して、HTTP 経由で任意のエンドポイントと通信できます。 |
-| [![API Icon][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 数多くのトリガーやアクションにより、ワークフロー内で Office 365 の電子メールやイベントを使用できます。 <br/><br/>このコネクタには、休暇申請や経費明細書などを承認するための*承認電子メール* アクションが用意されています。 <br/><br/>Office 365 ユーザーは、Office 365 ユーザー コネクタも使用できます。| [![API アイコン][HTTP-Requesticon]<br/>**要求 / 応答**][HTTP-Requestdoc] | このコネクタは、HTTPS URL を提供します。 ロジック アプリは、この URL への要求を受け取ると、起動します。 |
-| [![API Icon][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Salesforce アカウントで簡単にサインインして、オブジェクト (例: 潜在顧客) などにアクセスできます。 |  [![API Icon][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | ロジック アプリにおいて最も人気の高いコネクタです。非同期メッセージングの処理、キュー、サブスクリプション、およびトピックを使用した発行/サブスクライブを行うためのトリガーとアクションが用意されています。 |
-|  [![API アイコン][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | SharePoint を利用しており、自動化の恩恵を受けることができる場合は、このコネクタを検討することをお勧めします。 オンプレミスの SharePoint および SharePoint Online で使用できます。 | [![API Icon][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | よく利用されているコネクタの 1 つです。オンプレミスの SQL Server および Azure SQL Database に接続できます。 | 
-| [![API Icon][Twittericon]<br/>**Twitter**][Twitterdoc] | Twitter アカウントで簡単にサインインし、新しいツイートが投稿されたときにワークフローを開始できます。 その後、それらのツイートを SQL データベースまたは SharePoint リストに保存することができます。 | | | 
+| [![API アイコン][FTPicon]<br/>**FTP**][FTPdoc] | FTP サーバーにインターネットからアクセスできる場合は、ファイルやフォルダーを使用するワークフローを自動化できます。 <br/><br/>SFTP コネクタを使用すると、SFTP も利用できます。 | [![API アイコン][HTTPicon]<br/>**HTTP**][httpdoc] | ロジック アプリを使用して、HTTP 経由で任意のエンドポイントと通信できます。 |
+| [![API アイコン][Office-365-Outlookicon]<br/>**Office 365<br/>Outlook**][office365-outlookdoc] | 数多くのトリガーやアクションにより、ワークフロー内で Office 365 の電子メールやイベントを使用できます。 <br/><br/>このコネクタには、休暇申請や経費明細書などを承認するための*承認電子メール* アクションが用意されています。 <br/><br/>Office 365 ユーザーは、Office 365 ユーザー コネクタも使用できます。| [![API アイコン][HTTP-Requesticon]<br/>**要求/応答**][HTTP-Requestdoc] | このコネクタは、HTTPS URL を提供します。 ロジック アプリは、この URL への要求を受け取ると、起動します。 |
+| [![API アイコン][Salesforceicon]<br/>**Salesforce**][salesforcedoc] | Salesforce アカウントで簡単にサインインして、オブジェクト (例: 潜在顧客) などにアクセスできます。 |  [![API アイコン][Service-Busicon]<br/>**Service Bus**][Service-Busdoc] | ロジック アプリにおいて最も人気の高いコネクタです。非同期メッセージングの処理、キュー、サブスクリプション、およびトピックを使用した発行/サブスクライブを行うためのトリガーとアクションが用意されています。 |
+|  [![API アイコン][SharePointicon]<br/>**SharePoint<br/>Online**][SharePointdoc] | SharePoint を利用しており、自動化の恩恵を受けることができる場合は、このコネクタを検討することをお勧めします。 オンプレミスの SharePoint および SharePoint Online で使用できます。 | [![API アイコン][SQL-Servericon]<br/>**SQL Server**][SQL-Serverdoc] | よく利用されているコネクタの 1 つです。オンプレミスの SQL Server および Azure SQL Database に接続できます。 | 
+| [![API アイコン][Twittericon]<br/>**Twitter**][Twitterdoc] | Twitter アカウントで簡単にサインインし、新しいツイートが投稿されたときにワークフローを開始できます。 その後、それらのツイートを SQL データベースまたは SharePoint リストに保存することができます。 | | | 
 
 ## <a name="integration-account-connectors"></a>統合アカウント コネクタ 
 
@@ -56,9 +56,9 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 
 |  |  |  |  |
 | --- | --- | --- | --- |
-| [![API アイコン][as2icon]<br/>**AS2</br>デコード**][as2decode] | [![API アイコン][as2icon]<br/>**AS2</br>エンコード**][as2encode] | [![API アイコン][x12icon]<br/>**EDIFACT</br>デコード**][EDIFACTdecode] | [![API アイコン][x12icon]<br/>**EDIFACT</br>エンコード**][EDIFACTencode] |
-[![API アイコン][flatfileicon]<br/>**フラット ファイル</br>エンコード**][flatfiledoc] | [![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br>デコード**][flatfiledecodedoc] | [![API アイコン][integrationaccounticon]<br/>**統合<br/>アカウント**][integrationaccountdoc] | [![API アイコン][xmltransformicon]<br/>**XML<br/>変換**][xmltransformdoc] |
-| [![API アイコン][x12icon]<br/>**X12</br>デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br>エンコード**][x12encode] | [![API Icon][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | |
+| [![API アイコン][as2icon]<br/>**AS2</br> デコード**][as2decode] | [![API アイコン][as2icon]<br/>**AS2</br> エンコード**][as2encode] | [![API アイコン][x12icon]<br/>**EDIFACT</br> デコード**][EDIFACTdecode] | [![API アイコン][x12icon]<br/>**EDIFACT</br> エンコード**][EDIFACTencode] |
+[![API アイコン][flatfileicon]<br/>**フラット ファイル</br> エンコード**][flatfiledoc] | [![API アイコン][flatfiledecodeicon]<br/>**フラット ファイル</br> デコード**][flatfiledecodedoc] | [![API アイコン][integrationaccounticon]<br/>**統合<br/>アカウント**][integrationaccountdoc] | [![API アイコン][xmltransformicon]<br/>**XML<br/> 変換**][xmltransformdoc] |
+| [![API アイコン][x12icon]<br/>**X12</br> デコード**][x12decode] | [![API アイコン][x12icon]<br/>**X12</br> エンコード**][x12encode] | [![API アイコン][xmlvalidateicon]<br/>**XML <br/>検証**][xmlvalidatedoc] | |
 
 ## <a name="enterprise-connectors"></a>エンタープライズ コネクタ
 
@@ -66,7 +66,7 @@ Enterprise Integration Pack (EIP) には、BizTalk Server コミュニティで�
 
 |  |  |
 | --- | --- |
-|[![API Icon][MQicon]<br/>**MQ**][mqdoc]|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
+|[![API アイコン][MQicon]<br/>**MQ**][mqdoc]|[![API アイコン][SAPicon]<br/>**SAP**][sapconnector]|
 
 
 ## <a name="az"></a>A ～ Z の完全な一覧

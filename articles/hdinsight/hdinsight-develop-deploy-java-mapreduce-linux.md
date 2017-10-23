@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 08/07/2017
 ms.author: larryfr
 ms.openlocfilehash: 11d63f22204eb2acb530378f53ac72f16a35a4f2
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-java-mapreduce-programs-for-hadoop-on-hdinsight"></a>HDInsight での Hadoop 用 Java MapReduce プログラムの開発
 

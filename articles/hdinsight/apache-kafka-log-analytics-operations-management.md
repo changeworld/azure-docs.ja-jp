@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/11/2017
 ms.author: larryfr
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: be549c8fd072663ae9bbb9441a654a2bf1912198
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-logs-for-apache-kafka-preview-on-hdinsight"></a>HDInsight で Apache Kafka (プレビュー) のログを分析する
 

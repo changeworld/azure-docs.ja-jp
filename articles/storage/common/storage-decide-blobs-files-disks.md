@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/13/2017
 ms.author: tamram
+ms.openlocfilehash: 9e8808a50e86e40af4991a6054a55ef57f744aae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 192680cc3faee86c0a45bc9abe4b6579ec56f324
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deciding-when-to-use-azure-blobs-azure-files-or-azure-disks"></a>Azure BLOB、Azure Files、Azure ディスクの使い分け
 
 Microsoft Azure の Azure Storage には、クラウドにデータを格納したりそのデータにアクセスしたりするためのいくつかの機能が用意されています。 この記事では、Azure Files、Azure BLOB、Azure ディスクについて取り上げると共に、これらの機能をうまく使い分けるためのヒントを紹介しています。
@@ -70,7 +68,7 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
 |認証|ビルトイン|net use で設定|  
 |クリーンアップ|自動|マニュアル|  
 |REST を使用したアクセス|VHD 内のファイルにはアクセス不可|共有場所に格納されたファイルにアクセス可|  
-|最大サイズ|1 TB ディスク|5 TB のファイル共有と 1 TB のファイル (共有内)|  
+|最大サイズ|4 TB ディスク|5 TB のファイル共有と 1 TB のファイル (共有内)|  
 |最大 8 KB IOPS|500 IOPS|1,000 IOPS|  
 |スループット|ディスクあたり最大 60 MB/秒|ファイル共有あたり最大 60 MB/秒|  
 
@@ -81,4 +79,3 @@ Azure Files は Azure ディスクを補完するものです。 ディスクは
 一部の SMB 機能はクラウドでは利用できません。 詳細については、「[Features not supported by the Azure File service (Azure File Service でサポートされていない機能)](/rest/api/storageservices/features-not-supported-by-the-azure-file-service)」を参照してください。
   
 ディスクの詳細については、[ディスクとイメージの管理](../../virtual-machines/windows/about-disks-and-vhds.md)に関するページと[データ ディスクを Windows 仮想マシンにアタッチする方法](../../virtual-machines/windows/classic/attach-disk.md)に関するページを参照してください。
-

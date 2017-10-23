@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 3/15/2017
 ms.author: ahgyger
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e3cbcb8118aa05e554b2493506280d0e24706059
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-machine-learning-workspace-using-azure-resource-manager"></a>Azure Resource Manager を使用した Machine Learning ワークスペースのデプロイ
 ## <a name="introduction"></a>はじめに
@@ -150,4 +149,3 @@ Get-AzureRmResource |? { $_.ResourceType -Like "*MachineLearning/workspaces*"} |
 
 
 <!--Link references-->
-

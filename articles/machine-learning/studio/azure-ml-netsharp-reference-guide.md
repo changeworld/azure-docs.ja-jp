@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/31/2017
 ms.author: jeannt
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 54bef3e257363300ee1a13f7f45fc983e465ddbf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-azure-machine-learning"></a>Azure Machine Learning のための Net# ニューラル ネットワーク仕様言語について
 ## <a name="overview"></a>概要
@@ -415,5 +414,4 @@ Net# では、オプションで、共有の重みを持つ複数のバンドル
 ニューラル ネットワークのアーキテクチャをカスタマイズするための Net# 言語は Microsoft の Shon Katzenberger (設計者、Machine Learning) と Alexey Kamenev (ソフトウェア エンジニア、Microsoft Research) により開発されました。 機械学習と、画像検出からテキスト分析までの用途に社内利用されています。 詳細については、「[Azure ML のニューラル ネットワーク - Net# の概要](http://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx)」を参照してください。
 
 [1]:./media/azure-ml-netsharp-reference-guide/formula_large.gif
-
 

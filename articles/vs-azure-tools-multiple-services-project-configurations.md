@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: deb69101e855bcad56b9212736c52ace72631f0a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configuring-your-azure-project-using-multiple-service-configurations"></a>複数のサービス構成を使用した Azure プロジェクトの構成
 Azure クラウド サービス プロジェクトには、ServiceDefinition.csdef と ServiceConfiguration.cscfg の 2 つの構成ファイルが含まれています。 これらのファイルは、Azure クラウド サービス アプリケーションと共にパッケージ化され、Azure にデプロイされます。

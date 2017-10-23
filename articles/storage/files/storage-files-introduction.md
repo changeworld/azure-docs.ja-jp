@@ -12,23 +12,21 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: renash
+ms.openlocfilehash: 81de67334f66a61582bb2c5d5a2303cf3a1a086c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 5a4a26957c115277e7558c210560777af63d2d0f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-files"></a>Azure Files の概要
 Azure Files は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Files は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync (プレビュー) を使用して、Windows サーバーに Azure File 共有をキャッシュできます。
 
 ## <a name="videos"></a>ビデオ
-| Azure Files の概要 (27 分) | Azure Files のチュートリアル (5 分)  |
+| Azure File Sync の概要 (2 分) | Azure Files と Sync (Ignite 2017) (85 分)  |
 |-|-|
-| [![Azure Files の概要に関する動画のスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-files-introduction-video-snapshot1.png)](https://www.youtube.com/watch?v=zlrpomv5RLs) | [![Azure Files のチュートリアルのスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-files-introduction-video-snapshot2.png)](https://channel9.msdn.com/Blogs/Azure/Azure-File-storage-with-Windows/) |
+| [![Azure File Sync の概要に関する動画のスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-file-sync-video-snapshot.png)](https://www.youtube.com/watch?v=Zm2w8-TRn-o) | [![Azure Files と Sync に関するプレゼンテーションのスクリーンキャスト - クリックして再生](./media/storage-files-introduction/azure-files-ignite-2017-video.png)](https://www.youtube.com/watch?v=r26jWDGF_rg) |
 
 ## <a name="why-azure-files-is-useful"></a>Azure Files の適用ケース
 Azure ファイル共有は、以下の作業に使用できます。

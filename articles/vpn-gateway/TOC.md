@@ -18,7 +18,6 @@
 ### [Azure PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 ### [Azure CLI](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 ### [Azure Portal (クラシック)](vpn-gateway-howto-site-to-site-classic-portal.md)
-### [クラシック ポータル (クラシック)](vpn-gateway-site-to-site-create.md)
 
 ## ポイント対サイト接続の構成 - ネイティブの Azure 証明書認証
 ### P2S VPN の構成
@@ -57,6 +56,7 @@
 ### [Azure PowerShell](vpn-gateway-activeactive-rm-powershell.md)
 ## VPN ゲートウェイ用の BGP の構成
 ### [Azure PowerShell](vpn-gateway-bgp-resource-manager-ps.md)
+### [Azure CLI](bgp-how-to-cli.md)
 ## 強制トンネリングについて
 ### [Azure PowerShell](vpn-gateway-forced-tunneling-rm.md)
 ### [Azure PowerShell (クラシック)](vpn-gateway-about-forced-tunneling.md)
@@ -81,6 +81,7 @@
 ### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [サイト対サイト接続で接続できない](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
+### [VNet または VPN 接続の構成および検証](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.network/?view=azurermps-4.0.0#vpn)

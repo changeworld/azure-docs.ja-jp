@@ -7,6 +7,7 @@
 ## [FAQ](active-directory-faq.md)
 
 # 作業開始
+## [Azure AD を使ってみる](get-started-azure-ad.md)
 ## [Azure AD Premium へのサインアップ](active-directory-get-started-premium.md)
 ## [カスタム ドメイン名の追加](add-custom-domain.md)
 ## [会社のブランドの構成](customize-branding.md)
@@ -43,6 +44,7 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの Azure PowerShell の例](active-directory-licensing-ps-examples.md)
+#### [Azure AD の製品およびサービス プランに関するリファレンス](active-directory-licensing-product-and-service-plan-reference.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
 ### [パスワードをリセットする](active-directory-users-reset-password-azure-portal.md)
 ### [ユーザーの作業情報を管理する](active-directory-users-work-info-azure-portal.md)
@@ -64,6 +66,7 @@
 #### [個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する](active-directory-licensing-group-migration-azure-portal.md)
 #### [グループベースのライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
 #### [グループベースのライセンスの Azure PowerShell の例](active-directory-licensing-ps-examples.md)
+#### [Azure AD の製品およびサービス プランに関するリファレンス](active-directory-licensing-product-and-service-plan-reference.md)
 ### [Office 365 グループの有効期限を設定する](active-directory-groups-lifecycle-azure-portal.md)
 ### [グループをすべて表示する](active-directory-groups-view-azure-portal.md)
 ### [専用グループの有効化](active-directory-accessmanagement-dedicated-groups.md)
@@ -94,6 +97,7 @@
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
+#### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -136,7 +140,7 @@
 ### タスク
 #### [Azure AD 登録済み Windows 10 デバイスの設定](device-management-azuread-registered-devices-windows10-setup.md)
 #### [Azure AD 参加済みデバイスの設定](device-management-azuread-joined-devices-setup.md)
-#### [ハイブリッド Azure AD 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md) 
+#### [ハイブリッド Azure AD 参加済みデバイスの設定](device-management-hybrid-azuread-joined-devices-setup.md)
 #### [オンプレミスにデプロイする](active-directory-device-registration-on-premises-setup.md)
 #### [Windows 10 の初回実行時における Azure AD への参加](device-management-azuread-joined-devices-frx.md)
 ### トラブルシューティング
@@ -147,11 +151,10 @@
 ### [概要](active-directory-enable-sso-scenario.md)
 ### [使用の開始](active-directory-integrating-applications-getting-started.md)
 ### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [エージェントレスの検出の設定](cloudappdiscovery-get-started.md)
+### [Cloud App Discovery](cloudappdiscovery-get-started.md)
 #### [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
-#### [カスタム ログ パーサーの使用](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
+#### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
 #### エージェント ベースの検出
 ##### [Cloud App Discovery とは](active-directory-cloudappdiscovery-whatis.md)
 ##### [レジストリ設定の更新](active-directory-cloudappdiscovery-registry-settings-for-proxy-services.md)
@@ -203,6 +206,7 @@
 #### [ユーザー アカウントのプロビジョニング管理](active-directory-enterprise-apps-manage-provisioning.md)
 #### [エンタープライズ アプリのシングル サインオンの管理](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
+####[Azure Active Directory でユーザーのエクスペリエンスを非表示にする](active-directory-coreapps-hide-third-party-app.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)
@@ -294,7 +298,7 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業の開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### タスク

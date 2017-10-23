@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: 7d040fe55cb46665c97668a76ccbc66adc002f89
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: 96840d72b86d0b9487d9a3a6039c7582a2718e7a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの配列とオブジェクトの関数 
 
@@ -1312,11 +1311,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
     "parameters": {
         "firstObject": {
             "type": "object",
-            "defaultValue": {"one": "a", "two": "b", "three": "c"}
+            "defaultValue": {"one": "a", "two": "b", "three": "c1"}
         },
         "secondObject": {
             "type": "object",
-            "defaultValue": {"three": "c", "four": "d", "five": "e"}
+            "defaultValue": {"three": "c2", "four": "d", "five": "e"}
         },
         "firstArray": {
             "type": "array",
@@ -1346,7 +1345,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 | 名前 | 型 | 値 |
 | ---- | ---- | ----- |
-| objectOutput | オブジェクト | {"one": "a", "two": "b", "three": "c", "four": "d", "five": "e"} |
+| objectOutput | オブジェクト | {"one": "a", "two": "b", "three": "c2", "four": "d", "five": "e"} |
 | arrayOutput | array | ["one", "two", "three", "four"] |
 
 Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
@@ -1366,5 +1365,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
 

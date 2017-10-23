@@ -59,17 +59,20 @@
 # 方法
 ## [Azure Automation を使用して VPN Gateway を監視する](network-watcher-monitor-with-azure-automation.md)
 ## [VPN Gateway を使用してオンプレミスの接続を診断する](network-watcher-diagnose-on-premises-connectivity.md)
-## [パケット キャプチャを分析して異常を検出する](network-watcher-deep-packet-inspection.md)
-## [パケット キャプチャを使用して Azure Functions によるプロアクティブなネットワーク監視を実行する](network-watcher-alert-triggered-packet-capture.md)
-## [Power BI を使用してフロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-power-bi.md)
-## [オープン ソース ツールを使用してフロー ログを視覚化する](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
-## [Graylog を使用して Azure でフロー ログを視覚化する](network-watcher-analyze-nsg-flow-logs-graylog.md)
-## [オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する](network-watcher-using-open-source-tools.md)
 ## [PowerShell を使用してネットワークのコンプライアンスと監査を実行する](network-watcher-nsg-auditing-powershell.md)
-## [NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)
-## [オープン ソース ツールを使用して不正侵入検出を実行する](network-watcher-intrusion-detection-open-source-tools.md)
 ## [Azure Log Analytics で Application Gateway のログを分析する](../log-analytics/log-analytics-azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json)
-## [Network Watcher と Grafana を使用してフロー ログを分析する](network-watcher-nsg-grafana.md)
+## パケット キャプチャ
+### [異常の検出](network-watcher-deep-packet-inspection.md)
+### [Azure Functions によるプロアクティブなネットワーク監視](network-watcher-alert-triggered-packet-capture.md)
+### [オープン ソース ツールを使用して不正侵入検出を実行する](network-watcher-intrusion-detection-open-source-tools.md)
+### [オープン ソース ツールを使用してネットワーク トラフィック パターンを視覚化する](network-watcher-using-open-source-tools.md)
+## NSG フロー ログの分析
+### [NSG フロー ログの読み取り](network-watcher-read-nsg-flow-logs.md)
+### [Power BI の使用](network-watcher-visualize-nsg-flow-logs-power-bi.md)
+### [Elastic Stack の使用](network-watcher-visualize-nsg-flow-logs-open-source-tools.md)
+### [Grafana の使用](network-watcher-nsg-grafana.md)
+### [Graylog の使用](network-watcher-analyze-nsg-flow-logs-graylog.md)
+
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [.NET](/dotnet/api)

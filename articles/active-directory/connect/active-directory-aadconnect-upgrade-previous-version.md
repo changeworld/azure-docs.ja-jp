@@ -15,10 +15,10 @@ ms.workload: Identity
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 52fd9375c71c42feaf87f4a0f4220e1cb3889e63
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: 旧バージョンから最新バージョンにアップグレードする
 このトピックでは、Azure Active Directory (Azure AD) Connect のインストールを最新リリースにアップグレードするさまざまな方法について説明します。 Azure AD Connect を常に最新リリースにしておくことをお勧めします。 構成を大幅に変更する際は、「[スウィング移行](#swing-migration)」で説明されている手順を使用することもできます。
@@ -36,7 +36,7 @@ Azure AD Connect のアップグレードで使用できる方法は複数あり
 アクセス許可に関する情報については、[アップグレードに必要なアクセス許可](active-directory-aadconnect-accounts-permissions.md#upgrade)に関するセクションをご覧ください。
 
 > [!NOTE]
-> 新しい Azure AD Connect サーバーが Azure AD に対する変更の同期を開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。 Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
+> 新しい Azure AD Connect サーバーが Azure AD に対する変更の同期を開始できるようにした後は、DirSync または Azure AD Sync を使用してロールバックしないでください。Azure AD Connect から DirSync、Azure AD Sync などの従来のクライアントへのダウングレードはサポートされておらず、Azure AD のデータ損失などの問題につながる場合があります。
 
 ## <a name="in-place-upgrade"></a>インプレース アップグレード
 インプレース アップグレードは、Azure AD Sync または Azure AD Connect からの移動に使用できます。 DirSync からの移動、または Forefront Identity Manager (FIM) + Azure AD コネクタのソリューションには使用できません。

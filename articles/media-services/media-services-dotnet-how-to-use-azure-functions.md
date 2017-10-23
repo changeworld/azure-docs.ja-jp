@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 09/03/2017
 ms.author: juliako
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: e8cad53d95186f4f7679d1f19f339ad4149059a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Media Services を使用する Azure 関数の開発
 
@@ -70,7 +69,7 @@ Media Services の関数を開発するときは、自分が開発するさま�
 
     ![ファイルのアップロード](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
-4. **[作成]**をクリックします。 
+4. **Create** をクリックしてください。 
 
 ## <a name="files"></a>ファイル
 
@@ -330,7 +329,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ##<a name="test-your-function"></a>関数をテストする
 
-関数をテストするには、接続文字列で指定したストレージ アカウントの **input** コンテナーに MP4 ファイルをアップロードする必要があります。  
+関数をテストするには、接続文字列で指定したストレージ アカウントの **input**  コンテナーに MP4 ファイルをアップロードする必要があります。  
 
 1. **StorageConnection** 環境変数で指定したストレージ アカウントを選択します。
 2. **[BLOB]** をクリックします。
@@ -350,5 +349,4 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: fcefb31904cfb77022db0358e9feee6a0479db81
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="find-out-when-a-specific-user-will-be-able-to-access-an-application"></a>特定のユーザーがいつアプリケーションにアクセスできるようになるかを確認する
 アプリケーションで自動ユーザー プロビジョニングを使用するとき、Azure AD は[ユーザーとグループの割り当て](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal)などに基づいて、定期的にスケジュールされた間隔 (通常は 10 分ごと) で自動的にユーザー アカウントをアプリ内でプロビジョニングし、更新します。
@@ -34,7 +34,7 @@ Azure AD とアプリの間での初回の同期には 20 分～数時間かか�
 
 選択したユーザーのプロビジョニングの状態を確認するには、Azure AD の監査ログを確認します。
 
-プロビジョニングの監査ログには、Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [監査ログ]** タブからアクセスできます。 **[アカウント プロビジョニング]** カテゴリでログをフィルター処理すると、そのアプリのプロビジョニング イベントのみを表示できます。 属性マッピングでユーザー向けに構成された "照合 ID" に基づいてユーザーを検索できます。 
+プロビジョニングの監査ログには、Azure Portal の **[Azure Active Directory] &gt; [Enterprise Apps (エンタープライズ アプリ)] &gt; \[アプリケーション名\] &gt; [監査ログ]** タブからアクセスできます。**[アカウント プロビジョニング]** カテゴリでログをフィルター処理すると、そのアプリのプロビジョニング イベントのみを表示できます。 属性マッピングでユーザー向けに構成された "照合 ID" に基づいてユーザーを検索できます。 
 
 たとえば、"ユーザー プリンシパル名" または "電子メール アドレス" を Azure AD 側で照合属性として構成した場合、プロビジョニングされていないユーザーは "audrey@contoso.com" という値を持つため、監査ログで "audrey@contoso.com" を検索し、返されたエントリを確認します。
 

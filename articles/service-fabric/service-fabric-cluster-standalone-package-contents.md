@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 8/10/2017
 ms.author: chackdan;maburlik
 ms.openlocfilehash: 6a6bacedde04419449a061554d5ce9ad37259a2f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="contents-of-service-fabric-standalone-package-for-windows-server"></a>Windows Server 用の Service Fabric スタンドアロン パッケージの内容
 [ダウンロードした](http://go.microsoft.com/fwlink/?LinkId=730690) Service Fabric スタンドアロン パッケージには、次のファイルが含まれています。

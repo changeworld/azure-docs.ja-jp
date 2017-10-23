@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/05/2017
 ms.author: tomfitz
+ms.openlocfilehash: eeb3e46d9b8a5822b1aea3cc62bb214f3c3fec43
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 9d007e2ce7cc4291eeebe26b887874085c6438b3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートの文字列関数
 
@@ -35,6 +34,7 @@ ms.lasthandoff: 09/06/2017
 * [empty](#empty)
 * [endsWith](#endswith)
 * [first](#first)
+* [guid](#guid)
 * [indexOf](#indexof)
 * [last](#last)
 * [lastIndexOf](#lastindexof)
@@ -851,6 +851,89 @@ PowerShell を使用してこのテンプレート例をデプロイするには
 
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/first.json
+```
+
+## <a name="guid"></a>guid
+
+`guid (baseString, ...)`
+
+パラメーターとして指定した値に基づき、グローバル一意識別子の形式で値を作成します。
+
+### <a name="parameters"></a>parameters
+
+| パラメーターが含まれる必要があります。 | 必須 | 型 | Description |
+|:--- |:--- |:--- |:--- |
+| baseString |あり |string |GUID を作成するためにハッシュ関数で使用される値。 |
+| 必要に応じて追加のパラメーター |なし |string |文字列をいくつでも追加して、一意性のレベルを指定する値を作成できます。 |
+
+### <a name="remarks"></a>解説
+
+この関数は、グローバル一意識別子の形式で値を作成する必要がある場合に役立ちます。 結果の一意性のスコープを制限するパラメーターの値を指定します。 サブスクリプション、リソース グループ、またはデプロイのレベルで名前が一意であるかどうかを指定できます。
+
+返される値はランダムな文字列ではなく、ハッシュ関数の結果になります。 返される値は、36 文字です。 グローバルに一意ではありません。
+
+次の例は、guid を使用して、よく使用されるレベルで一意の値を作成する方法を示しています。
+
+サブスクリプションのスコープで一意
+
+```json
+"[guid(subscription().subscriptionId)]"
+```
+
+リソース グループのスコープで一意
+
+```json
+"[guid(resourceGroup().id)]"
+```
+
+リソース グループのデプロイのスコープで一意
+
+```json
+"[guid(resourceGroup().id, deployment().name)]"
+```
+
+### <a name="return-value"></a>戻り値
+
+グローバル一意識別子の形式の 36 文字を含む文字列。
+
+### <a name="examples"></a>例
+
+次の[テンプレート例](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/guid.json)は、guid から結果を返します。
+
+```json
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [],
+    "outputs": {
+        "guidPerSubscription": {
+            "value": "[guid(subscription().subscriptionId)]",
+            "type": "string"
+        },
+        "guidPerResourceGroup": {
+            "value": "[guid(resourceGroup().id)]",
+            "type": "string"
+        },
+        "guidPerDeployment": {
+            "value": "[guid(resourceGroup().id, deployment().name)]",
+            "type": "string"
+        }
+    }
+}
+```
+
+Azure CLI を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```azurecli-interactive
+az group deployment create -g functionexamplegroup --template-uri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
+```
+
+PowerShell を使用してこのテンプレート例をデプロイするには、以下を使用します。
+
+```powershell
+New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/functions/guid.json
 ```
 
 <a id="indexof" />
@@ -2232,5 +2315,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
 

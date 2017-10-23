@@ -10,7 +10,7 @@ az group create \
 
 ## <a name="create-a-storage-account"></a>ストレージ アカウントの作成
 
-汎用の標準ストレージ アカウントは、[az storage account create](/cli/azure/storage/account#create) コマンドで作成します。 汎用の標準ストレージ アカウントは、BLOB、ファイル、テーブル、およびキューという 4 つのサービスすべてに使用できます。 
+[az storage account create](/cli/azure/storage/account#create) コマンドで汎用の標準ストレージ アカウントを作成します。 汎用の標準ストレージ アカウントは、BLOB、ファイル、テーブル、およびキューという 4 つのサービスすべてに使用できます。 
 
 ```azurecli-interactive
 az storage account create \

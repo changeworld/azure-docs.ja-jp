@@ -17,12 +17,11 @@ ms.topic: troubleshooting
 ms.date: 04/25/2017
 ms.author: genli
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 01057dd7832cab6121a22e3bb7d0dc4cd7e9b35d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 4160b9ef6cda1efd6c76ce1b283c78b4d43a5187
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Azure の請求書と毎日の使用状況データをダウンロードまたは表示する
 請求書を [Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) からダウンロードするか、メールで送信することができます。 毎日の使用状況をダウンロードするには、[Azure アカウント センター](https://account.azure.com/Subscriptions)にアクセスします。 請求書と使用状況データを取得するアクセス許可を持つのは、アカウント管理者などの特定のロールのみです。 課金情報へのアクセス権の取得に関する詳細については、[ロールを使用した Azure の課金へのアクセス管理](billing-manage-access.md)に関するページをご覧ください。
@@ -105,5 +104,4 @@ Azure アカウント センターにアクセスできるのは、アカウン�
 
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-
 

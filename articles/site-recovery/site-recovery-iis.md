@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/11/2017
 ms.author: nisoneji
 ms.openlocfilehash: 4ac79df703de00ac009d9845772d8be740e74f29
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-a-multi-tier-iis-based-web-application-using-azure-site-recovery"></a>Azure Site Recovery を使用して IIS ベースの多層 Web アプリケーションをレプリケートする
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure SQL Data Warehouse - VSTS への接続 |Microsoft ドキュメント"
-description: "With Visual Studio には、SQL データ ウェアハウスをクエリします。"
+title: "Azure SQL Data Warehouse への接続 (VSTS) | Microsoft Docs"
+description: "Visual Studio で SQL Data Warehouse に対してクエリを実行します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: antvgski
@@ -16,12 +16,12 @@ ms.custom: connect
 ms.date: 10/31/2016
 ms.author: anvang;barbkess
 ms.openlocfilehash: 1e44c6c3c47034a892753c69c5ef22a5eac18c0d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio と SSDT を使った SQL データ ウェアハウスへの接続します。
+# <a name="connect-to-sql-data-warehouse-with-visual-studio-and-ssdt"></a>Visual Studio および SSDT を使用して SQL Data Warehouse に接続する
 > [!div class="op_single_selector"]
 > * [Power BI](sql-data-warehouse-get-started-visualize-with-power-bi.md)
 > * [Azure Machine Learning](sql-data-warehouse-get-started-analyze-with-azure-machine-learning.md)
@@ -31,58 +31,58 @@ ms.lasthandoff: 07/11/2017
 > 
 > 
 
-ほんの数分で Azure SQL Data Warehouse のクエリに Visual Studio を使用します。 このメソッドは、Visual Studio での SQL Server Data Tools (SSDT) の拡張機能を使用します。 
+Visual Studio を使用して、わずか数分で Azure SQL Data Warehouse に対するクエリを実行します。 この方法では、Visual Studio の SQL Server Data Tools (SSDT) 拡張機能を使います。 
 
 ## <a name="prerequisites"></a>前提条件
-このチュートリアルを使用するのには、次の必要があります。
+このチュートリアルを使用するには、次のものが必要です。
 
-* 既存の SQL データ ウェアハウスです。 1 つを作成するを参照してください。 [SQL データ ウェアハウスを作成][Create a SQL Data Warehouse]です。
-* Visual Studio 用 SSDT します。 Visual Studio の場合は、おそらくが既にあるこのです。 インストール手順とオプションでは、次を参照してください。 [Visual Studio のインストールと SSDT][Installing Visual Studio and SSDT]です。
-* 完全修飾の SQL server 名。 これを参照してください[SQL データ ウェアハウスへの接続][Connect to SQL Data Warehouse]です。
+* 既存の SQL Data Warehouse。 作成方法については、[SQL Data Warehouse の作成][Create a SQL Data Warehouse]に関するページを参照してください。
+* Visual Studio 用の SSDT。 Visual Studio をお持ちの方は既に SSDT を所有していると思われます。 インストールの手順とオプションの詳細については、[Visual Studio と SSDT のインストール][Installing Visual Studio and SSDT]に関するページを参照してください。
+* 完全修飾 SQL サーバー名。 これを特定するには、[SQL Data Warehouse への接続][Connect to SQL Data Warehouse]に関するページを参照してください。
 
-## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL データ ウェアハウスに接続します。
+## <a name="1-connect-to-your-sql-data-warehouse"></a>1.SQL Data Warehouse への接続
 1. Visual Studio 2013 または 2015 を開きます。
-2. SQL Server オブジェクト エクスプ ローラーを開きます。 これを行うには、次のように選択します。**ビュー** > **SQL Server オブジェクト エクスプ ローラー**です。
+2. SQL Server オブジェクト エクスプローラーを開きます。 これを行うには、**[表示]** > **[SQL Server オブジェクト エクスプローラー]** の順に選択します。
    
-    ![SQL Server オブジェクト エクスプ ローラー][1]
-3. クリックして、 **SQL Server の追加**アイコン。
+    ![[SQL Server オブジェクト エクスプローラー]][1]
+3. **[SQL Server の追加]** アイコンをクリックします。
    
-    ![SQL Server を追加します。][2]
-4. [サーバー] ウィンドウへの接続でのフィールドに入力します。
+    ![[SQL Server の追加]][2]
+4. [サーバーへの接続] ウィンドウのフィールドに入力します。
    
-    ![サーバーへの接続します。][3]
+    ![[サーバーへの接続]][3]
    
-   * **サーバー名**です。 入力、**サーバー名**以前に特定します。
-   * **認証**です。 選択**SQL Server 認証**または**Active Directory 統合認証**です。
-   * **ユーザー名**と**パスワード**です。 上で SQL Server 認証が選択した場合は、ユーザー名とパスワードを入力します。
+   * **[サーバー名]**:  前の手順で特定した**サーバー名**を入力します。
+   * **[認証]**:  **[SQL Server 認証]** または **[Active Directory 統合認証]** を選択します。
+   * **[ユーザー名]** と **[パスワード]**:  先ほど [SQL Server 認証] を選択した場合は、ユーザー名とパスワードを入力します。
    * **[接続]**をクリックします。
-5. 調べるために、Azure の SQL server を展開します。 サーバーに関連付けられているデータベースを表示することができます。 AdventureWorksDW サンプル データベース内のテーブルを表示するを展開します。
+5. 確認のために、Azure SQL Server を展開します。 サーバーに関連付けられているデータベースが表示されます。 AdventureWorksDW を展開すると、サンプル データベース内のテーブルが表示されます。
    
-    ![AdventureWorksDW を調査します。][4]
+    ![Explore AdventureWorksDW][4]
 
-## <a name="2-run-a-sample-query"></a>2.サンプル クエリを実行します。
-これで、データベースへの接続が確立されている、クエリを作成してみましょう。
+## <a name="2-run-a-sample-query"></a>2.サンプル クエリの実行
+これで、データベースへの接続が確立されました。次はクエリを記述してみましょう。
 
-1. SQL Server オブジェクト エクスプ ローラーでデータベースを右クリックします。
-2. 選択**新しいクエリ**です。 新しいクエリ ウィンドウが開きます。
+1. SQL Server オブジェクト エクスプローラーでデータベースを右クリックします。
+2. **[新しいクエリ]**を選択します。 新しいクエリ ウィンドウが開きます。
    
-    ![新しいクエリ][5]
-3. この TSQL クエリをクエリ ウィンドウにコピーします。
+    ![[新しいクエリ]][5]
+3. 次の TSQL クエリをクエリ ウィンドウにコピーします。
    
     ```sql
     SELECT COUNT(*) FROM dbo.FactInternetSales;
     ```
-4. クエリを実行します。 これを行うには、緑色の矢印をクリックしてまたは次のショートカットを使用する: `CTRL` + `SHIFT` +`E`です。
+4. クエリを実行します。 そのためには、緑色の矢印をクリックするか、 `CTRL`+`SHIFT`+`E`のショートカット キーを使用します。
    
-    ![クエリを実行します。][6]
-5. クエリの結果を確認します。 この例では、60398 行が、FactInternetSales テーブルにあります。
+    ![Run query][6]
+5. クエリ結果を確認します。 この例では、FactInternetSales テーブルに 60,398 行が含まれています。
    
-    ![クエリの結果][7]
+    ![Query results][7]
 
 ## <a name="next-steps"></a>次のステップ
-これで、接続して、クエリを実行することができます、 [PowerBI でデータを視覚化する][visualizing the data with PowerBI]です。
+これで接続してクエリを実行することができます。[Power BI でデータを視覚化][visualizing the data with PowerBI]してみてください。
 
-Azure Active Directory 認証用に環境を構成するのを参照してください。 [SQL データ ウェアハウスへの認証][Authenticate to SQL Data Warehouse]です。
+Azure Active Directory 認証を使用するために環境を構成する方法については、[SQL Data Warehouse の認証][Authenticate to SQL Data Warehouse]に関するページを参照してください。
 
 <!--Arcticles-->
 [Connect to SQL Data Warehouse]: sql-data-warehouse-connect-overview.md

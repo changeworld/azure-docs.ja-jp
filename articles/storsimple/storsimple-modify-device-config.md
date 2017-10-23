@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/19/2017
 ms.author: v-sharos
 ms.openlocfilehash: 5bfbeb038dbedae2bf77016abbc19458c3dc22c9
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-storsimple-manager-service-to-modify-your-storsimple-device-configuration"></a>StorSimple Manager サービスを使用した StorSimple デバイス構成の変更
 ## <a name="overview"></a>概要

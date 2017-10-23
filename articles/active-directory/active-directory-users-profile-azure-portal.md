@@ -12,28 +12,28 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.openlocfilehash: 81d93563a3cbe47ebe12c7ac5de26c5bbc2bb8ff
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: a8f298228f21ac498b69e59d553b5b885d28a95a
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-or-change-profile-information-for-a-user-in-azure-active-directory"></a>Azure Active Directory でユーザーのプロファイル情報を追加または変更する
 この記事では、Azure Active Directory (Azure AD) でユーザー プロファイル情報 (プロファイル画像、電話および電子メール認証情報など) を追加する方法について説明します。 組織内の新しいユーザーの追加については、[Azure Active Directory への新しいユーザーの追加](active-directory-users-create-azure-portal.md)に関する記事をご覧ください。
 
 ## <a name="to-change-profile-information"></a>プロファイル情報を変更するには
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+2. **[ユーザーとグループ]** を選択します。
 
    ![[ユーザーとグループ] を開く](./media/active-directory-users-profile-azure-portal/create-users-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
+3. **[すべてのユーザー]** を選択します。
 
-   ![[ユーザー] ブレードを開く](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
-4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
-5. 選択したユーザーのブレードで、 **[プロファイル]**を選択します。
+   ![すべてのユーザー グループを開く](./media/active-directory-users-profile-azure-portal/create-users-open-users-blade.png)
+1. 一覧からユーザーを選択します。
+2. 選択したユーザーで、**[プロファイル]** を選びます。
 
     ![勤務先情報を開く](./media/active-directory-users-profile-azure-portal/active-directory-create-users-profile.png)
 6. プロファイル情報を追加、または変更します。 コマンド バーで、**[保存]**を選択します。

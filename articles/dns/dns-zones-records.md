@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 12/05/2016
 ms.author: jonatul
 ms.openlocfilehash: 5818986c939c464a364c52ab31225e15130ab30e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-dns-zones-and-records"></a>DNS ゾーンとレコードの概要
 

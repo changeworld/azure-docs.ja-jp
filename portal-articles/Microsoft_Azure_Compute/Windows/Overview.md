@@ -1,6 +1,6 @@
 ---
-title: "Windows 仮想マシンの概要 |Microsoft ドキュメント"
-description: "ヘルプ コンテンツを Azure ポータル内で Windows 仮想マシンの概要"
+title: "Windows 仮想マシンの概要 | Microsoft Docs"
+description: "Azure Portal 内にある Windows 仮想マシンの概要に関するヘルプ コンテンツ"
 services: virtual-machines-windows
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
 ms.openlocfilehash: 03b204d9970a3831543a03dfa08e2a4d8b274034
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="windows-virtual-machines-documentation"></a>Windows 仮想マシンのドキュメント
 
@@ -22,14 +22,13 @@ Azure Windows 仮想マシンでは、Windows Server を使用して、セキュ
 
 Windows Server 2016 を実行している仮想マシン内で IIS Web サーバーをデプロイする方法について説明します。
 
-- 
-            [Azure Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
+- [Azure Portal](/azure/virtual-machines/virtual-machines-windows-quick-create-portal?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure PowerShell](/azure/virtual-machines/virtual-machines-windows-quick-create-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 - [Azure CLI](/azure/virtual-machines/virtual-machines-windows-quick-create-cli?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
 
-配置、管理、および Azure 上の Windows Vm を監視する方法を説明します。
+Azure で Windows VM のデプロイ、管理、監視を行う方法について説明します。
 
 - [Windows VM の作成と管理](/azure/virtual-machines/windows/tutorial-manage-vm)
 - [VM ディスクの作成と管理](/azure/virtual-machines/windows/tutorial-manage-data-disk)
@@ -59,5 +58,5 @@ Windows Server 2016 を実行している仮想マシン内で IIS Web サーバ
 
 ## <a name="more"></a>詳細
 
-- [詳細についてはドキュメントを参照してください。](/azure/virtual-machines/windows/index)
-- [すべての Azure サービスについてください。](https://aka.ms/j3wr7y)
+- [ドキュメントを参照して詳細を確認する](/azure/virtual-machines/windows/index)
+- [すべての Azure サービスを確認する](https://aka.ms/j3wr7y)

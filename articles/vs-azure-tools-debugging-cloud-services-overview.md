@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/18/2017
 ms.author: kraigb
 ms.openlocfilehash: cdcd4ca1fbc7e0a2f24122b32148cbda3d6951a0
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="learn-the-various-ways-to-debug-an-azure-cloud-service"></a>Azure クラウド サービスをデバッグするさまざまな方法
 この記事では、Azure クラウド サービスをデバッグするさまざまな方法へのリンクを提供します。 

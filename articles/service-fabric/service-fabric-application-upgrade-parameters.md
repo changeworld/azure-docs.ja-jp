@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: f09dad590f32c10f75484bba9afb7ea60f29d81e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-upgrade-parameters"></a>アプリケーション アップグレードのパラメーター
 この記事では、Azure Service Fabric アプリケーションのアップグレード中に適用されるさまざまなパラメーターについて説明します。 パラメーターには、アプリケーションの名前とバージョンが含まれています。 パラメーターは、アップグレード時に適用されるタイムアウトと正常性チェックを制御するノブです。また、パラメーターには、アップグレードの失敗時に適用する必要があるポリシーを指定します。

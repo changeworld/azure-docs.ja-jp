@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 03/16/2017
 ms.author: vidarmsft
 ms.openlocfilehash: 057d4d7370207859617eb63238bf425bfa6d3e16
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-a-blob-path-from-the-default-path-private-preview"></a>BLOB パスを既定のパスから変更する (プライベート プレビュー)
 

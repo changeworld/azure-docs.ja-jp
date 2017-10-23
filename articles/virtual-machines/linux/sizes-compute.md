@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/28/2017
 ms.author: jonbeck
 ms.openlocfilehash: 05b8fd98da0c87e383ba7d67fb8bee2eefb25981
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="compute-optimized-linux-vm-sizes"></a>コンピューティング最適化された Linux VM のサイズ
 

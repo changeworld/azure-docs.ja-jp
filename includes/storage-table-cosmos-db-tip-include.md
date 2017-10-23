@@ -1,3 +1,3 @@
 > [!TIP]
-> この記事の内容は、元の基本的な Azure テーブル ストレージに適用されます。 ただし、スループット最適化テーブル、グローバルな配信、および自動のセカンダリ インデックスを提供するパブリック プレビューの Azure テーブル ストレージを提供する premium はようになりました。 詳細を確認し、新しい premium エクスペリエンスで試してみてから、確認してください[Azure Cosmos DB: テーブル API](https://aka.ms/premiumtables)です。
+> この記事の内容は、従来の Basic 版の Azure Table Storage を対象としています。 ただし、現在、Azure Table Storage の Premium 版がパブリック プレビュー中です。スループットが最適化されたテーブル、グローバル配布、自動のセカンダリ インデックスが提供されています。 詳細を確認し、新しい Premium 版を使ってみるには、[Azure Cosmos DB の Table API](https://aka.ms/premiumtables) に関する記事を参照してください。
 >

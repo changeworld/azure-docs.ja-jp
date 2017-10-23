@@ -14,13 +14,13 @@ ms.devlang: azurecli
 ms.topic: sample
 ms.tgt_pltfrm: sql-database
 ms.workload: database
-ms.date: 06/23/2017
+ms.date: 10/11/2017
 ms.author: janeng
-ms.openlocfilehash: 908898ca691d2b53b9f54afa60c41e091163bd50
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: c7c90d2d7a2d3631ffc63be88f2b8b95e2eb26a8
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="use-cli-to-create-a-single-azure-sql-database-and-configure-a-firewall-rule"></a>CLI を使用して Azure SQL データベースを 1 つ作成し、ファイアウォール規則を構成する
 
@@ -34,7 +34,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "SQL データベースの作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/sql-database/create-and-configure-database/create-and-configure-database.sh?highlight=9-10 "Create SQL Database")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
@@ -50,10 +50,10 @@ az group delete --name myResourceGroup
 
 | コマンド | メモ |
 |---|---|
-| [az group create](/cli/azure/group#create) | すべてのリソースを格納するリソース グループを作成します。 |
-| [az sql server create](/cli/azure/sql/server#create) | SQL Database をホストする論理サーバーを作成します。 |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
-| [az sql db create](/cli/azure/sql/db#create) | 論理サーバー内に SQL Database を作成します。 |
+| [az group create](/cli/azure/group#az_group_create) | すべてのリソースを格納するリソース グループを作成します。 |
+| [az sql server create](/cli/azure/sql/server#az_sql_server_create) | SQL Database をホストする論理サーバーを作成します。 |
+| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。 |
+| [az sql db create](/cli/azure/sql/db#az_sql_db_create) | 論理サーバー内に SQL Database を作成します。 |
 | [az group delete](/cli/azure/resource#delete) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 
 ## <a name="next-steps"></a>次のステップ

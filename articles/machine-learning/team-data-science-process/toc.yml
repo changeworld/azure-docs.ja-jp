@@ -34,7 +34,7 @@
 - name: Tutorials (チュートリアル)
   href: walkthroughs.md
   items:
-    - name: Azure Machine Learning ワークベンチ
+    - name: Azure Machine Learning Workbench
       href: walkthroughs-aml-with-tdsp.md
       items:
         - name: 米国の所得の分類

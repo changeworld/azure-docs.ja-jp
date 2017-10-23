@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: 565bcba848de1c518b25ff4c55a9a47aaa45bfb4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-azure-blob-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用して Azure Blob Storage の操作を実行する
 
 Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化オブジェクト データを格納するためのサービスです。 この記事では、BLOB のアップロード、ダウンロード、および削除など、Azure Blob Storage での基本的な操作について説明します。 学習内容は次のとおりです。
@@ -59,9 +57,9 @@ New-AzureStorageContainer -Name $containerName -Context $ctx -Permission blob
 
 ## <a name="upload-blobs-into-a-container"></a>コンテナーに BLOB をアップロードする
 
-Azure Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。  IaaS VM のバックアップに使用される VHD ファイルはページ BLOB です。 追加 BLOB は、ファイルに書き込んでから情報を追加し続ける場合など、ログの記録で使用されます。 BLOB ストレージに格納されているほとんどのファイルはブロック BLOB です。 
+Azure Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。  IaaS VM のバックアップに使用される VHD ファイルはページ BLOB です。 追加 BLOB は、ファイルに書き込んでから詳細情報を追加し続ける場合などの、ログ記録に使用されます。 BLOB ストレージに格納されているほとんどのファイルはブロック BLOB です。 
 
-ファイルをブロック BLOB にアップロードするには、コンテナーの参照を取得してから、そのコンテナーのブロック BLOB への参照を取得します。 BLOB の参照を取得したら、[Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) を使用して、それにデータをアップロードできます。 この操作により、BLOB が存在しない場合は作成され、既に存在する場合は上書きされます。
+ファイルをブロック BLOB にアップロードするには、コンテナー参照を取得してから、そのコンテナー内のブロック BLOB への参照を取得します。 BLOB の参照を取得したら、[Set-AzureStorageBlobContent](/powershell/module/azure.storage/set-azurestorageblobcontent) を使用して、それにデータをアップロードできます。 この操作により、BLOB が存在しない場合は作成され、既に存在する場合は上書きされます。
 
 BLOB をコンテナーにアップロードする方法を以下に示します。 まず、ファイルが配置されるローカル コンピューター上のディレクトリを指す変数を設定し、アップロードするファイルの名前に対して変数を設定します。 これは、同じ操作を繰り返し実行する場合に便利です。 コンテナー内の BLOB を一覧表示する場合に複数のエントリを表示できるように、いくつかのファイルをアップロードします。
 
@@ -89,7 +87,7 @@ Set-AzureStorageBlobContent -File $localFile `
   -Context $ctx
 ```
 
-作業を続行する前に必要な数のファイルをアップロードします。
+続行する前に、希望する数のファイルをアップロードします。
 
 ## <a name="list-the-blobs-in-a-container"></a>コンテナー内の BLOB を一覧表示する
 
@@ -101,7 +99,7 @@ Get-AzureStorageBlob -Container $ContainerName -Context $ctx | select Name
 
 ## <a name="download-blobs"></a>BLOB をダウンロードする
 
-ローカル ディスクに BLOB をダウンロードします。 まず、BLOB のダウンロード先のローカル フォルダーを指す変数を設定します。 次に、ダウンロードする BLOB ごとに、名前を設定し、[Get-AzureStorageBlobContent](/powershell/module/azure.storage/get-azurestorageblobcontent) を呼び出して BLOB をダウンロードします。
+BLOB をローカル ディスクにダウンロードします。 まず、BLOB のダウンロード先のローカル フォルダーを指す変数を設定します。 次に、ダウンロードする BLOB ごとに、名前を設定し、[Get-AzureStorageBlobContent](/powershell/module/azure.storage/get-azurestorageblobcontent) を呼び出して BLOB をダウンロードします。
 
 この例では、BLOB をローカル ディスクの D:\\_TestImages\Downloads にコピーします。 
 

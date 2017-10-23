@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 02/08/2017
 ms.author: heidist
 ms.openlocfilehash: 26f5e71f3d00161a92de702209e224008ec8a5ae
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scale-resource-levels-for-query-and-indexing-workloads-in-azure-search"></a>Azure Search でクエリとインデックス作成のワークロードに応じてリソース レベルをスケールする
 [価格レベルを選択](search-sku-tier.md)して [Search サービスをプロビジョニング](search-create-service-portal.md)したら、サービスで使用するレプリカまたはパーティションの数を必要に応じて増やします。 各レベルには固定された請求単位数が用意されています。 この記事では、こうした請求単位を、クエリの実行、インデックス作成、およびストレージの要件のバランスを考慮しながら割り当てて、最適な構成を実現する方法について説明します。

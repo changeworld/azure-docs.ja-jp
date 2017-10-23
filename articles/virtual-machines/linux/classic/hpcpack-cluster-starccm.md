@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 09/13/2016
 ms.author: xpillons
 ms.openlocfilehash: b45fcfb981287035da02fda62eaf5f9436ec2379
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-star-ccm-with-microsoft-hpc-pack-on-a-linux-rdma-cluster-in-azure"></a>Azure の Linux RDMA クラスター上で Microsoft HPC Pack を使用して STAR-CCM+ を実行する
 この記事では、Microsoft HPC Pack クラスターを Azure にデプロイし、InfiniBand で相互接続された複数の Linux コンピューティング ノードで [CD-adapco STAR-CCM+](http://www.cd-adapco.com/products/star-ccm%C2%AE) ジョブを実行する方法について説明します。

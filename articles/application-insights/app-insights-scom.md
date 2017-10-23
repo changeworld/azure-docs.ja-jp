@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 08/12/2016
 ms.author: bwren
 ms.openlocfilehash: 9c205465981fabdbb696cdc44f765532bbb992b5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>SCOM での Application Insights を使用したアプリケーション パフォーマンス監視
 サーバーの管理に System Center Operations Manager (SCOM) を使用する場合、[Azure Application Insights](app-insights-asp-net.md)を利用して、パフォーマンスを監視し、パフォーマンスの問題を診断することができます。 Application Insights では、Web アプリケーションに入力される要求、出力される REST と SQL、例外、ログ トレースが監視されます。 また、メトリック グラフとスマート アラートだけでなく、このテレメトリに対する強力な診断検索と分析クエリがダッシュボードに用意されています。 
@@ -54,7 +54,7 @@ Operations Manager が実行されているコンピューターで以下の手�
    
      (Application Insights の [管理パック](https://technet.microsoft.com/library/cc974491.aspx) は、インスタンスを作成するためのテンプレートです。 このインスタンスは後で再利用できます)。
 
-    ![[全般プロパティ] タブで、アプリの名前を入力します。 [新規] をクリックし、管理パックの名前を入力します。 [OK]、[次へ] の順にクリックします。](./media/app-insights-scom/040.png)
+    ![[全般プロパティ] タブで、アプリの名前を入力します。 新規をクリックし、管理パックの名前を入力します。 [OK]、[次へ] の順にクリックします。](./media/app-insights-scom/040.png)
 
 1. 監視対象のアプリを 1 つ選択します。 検索機能では、サーバーにインストールされているアプリが検索されます。
    

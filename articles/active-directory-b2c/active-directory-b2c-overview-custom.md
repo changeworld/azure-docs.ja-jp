@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 04/04/2017
 ms.author: parakhj
+ms.openlocfilehash: 25dada7bc04449c6e527b94d97780d9aef1c33a9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 33f62a33ea7a3fadb6e7b045de10df25f5edbe83
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-custom-policies"></a>Azure Active Directory B2C: カスタム ポリシー
 
@@ -29,15 +28,13 @@ ms.lasthandoff: 07/28/2017
 
 カスタム ポリシーは、Azure AD B2C テナントの動作を定義する構成ファイルです。 **組み込みのポリシー**が、最も一般的な ID タスク用に Azure AD B2C ポータルで事前に定義されているのに対して、カスタム ポリシーは、ほぼ無制限の数のタスクを完了するために ID 開発者が完全に編集できます。 カスタム ポリシーがユーザーおよびユーザーの ID シナリオに適しているかどうかを判定するには、この先をお読みください。
 
-**カスタム ポリシーの編集は、すべてのユーザーのためのものではありません。** 学習曲線は厳しく、立上がり時間も長く、さらに将来カスタム ポリシーが変更された場合は保守するために同様の専門知識が必要になります。 カスタム ポリシーを使用する前に、まずユーザーのシナリオ用に組み込みのポリシーを慎重に検討する必要があります。
-
 ## <a name="comparing-built-in-policies-and-custom-policies"></a>組み込みのポリシーとカスタム ポリシーの比較
 
 | | 組み込みのポリシー | カスタム ポリシー |
 |-|-------------------|-----------------|
 |対象ユーザー | ID の専門知識を持つ、または持たないすべてのアプリ開発者 | ID の利点: システム インテグレータ、コンサルタント、および社内の ID チーム。 OpenIDConnect フローに慣れており、ID プロバイダーや要求ベースの認証を理解しています |
 |構成方法 | わかりやすい UI を備えた Azure ポータル | XML ファイルを直接編集した後、Azure ポータルにアップロード |
-|UI のカスタマイズ | HTML、CSS、および JScript のサポートを含む、完全な UI のカスタマイズ (カスタム ドメインが必要)<br><br>カスタム文字列による多言語サポート | 同じ |
+|UI のカスタマイズ | HTML、CSS、および javascript のサポートを含む、完全な UI のカスタマイズ (カスタム ドメインが必要)<br><br>カスタム文字列による多言語サポート | 同じ |
 | 属性のカスタマイズ | 標準属性とカスタム属性 | 同じ |
 |トークンおよびセッション管理 | カスタム トークンおよび複数のセッション オプション | 同じ |
 |[ID プロバイダー]| **現在**: 定義済みのローカルのソーシャル プロバイダ<br><br>**将来**: 標準ベースの OIDC、SAML、OAuth | **現在**: 標準ベースの OIDC、OAUTH、SAML<br><br>**将来**: WsFed |
@@ -70,11 +67,11 @@ Azure AD B2C は ID プロバイダー、ユーザー、他のシステム、お
 
 ### <a name="identity-experience-framework"></a>Identity Experience Framework
 
-OpenIDConnect、OAuth、SAML、WSFed などの標準のプロトコル形式、およびいくつかの標準以外の形式 (REST API ベースのシステムからシステムへの要求の交換など) のエンティティ (広く要求プロバイダー) 間の信頼を調整する、完全に構成可能で、ポリシー主導かつクラウド ベースの Azure プラットフォーム。 I2E は、HTML、CSS、および JScript をサポートする、わかりやすい、ホワイトラベルが付けられたエクスペリエンスを作成します。  今日、Identity Experience Framework は Azure AD B2C サービスのコンテキストでのみ使用でき、CIAM 関連のタスクに対して優先的に使用されます。
+OpenIDConnect、OAuth、SAML、WSFed などの標準のプロトコル形式、およびいくつかの標準以外の形式 (REST API ベースのシステムからシステムへの要求の交換など) のエンティティ (広くクレーム プロバイダー) 間の信頼を調整する、完全に構成可能で、ポリシー主導かつクラウドベースの Azure プラットフォーム。 I2E は、HTML、CSS、および javascript をサポートする、わかりやすい、ホワイトラベルが付けられたエクスペリエンスを作成します。  今日、Identity Experience Framework は Azure AD B2C サービスのコンテキストでのみ使用でき、CIAM 関連のタスクに対して優先的に使用されます。
 
 ### <a name="built-in-policies"></a>組み込みのポリシー
 
-最も一般的に使用される ID タスク (ユーザーの登録、サインイン、パスワードのリセットなど) を実行するために Azure AD B2C の動作を指示し、 その関係も Azure AD B2C で事前に定義されている信頼できるパーティー (Facebook ID プロバイダー、LinkedIn、Microsoft アカウント、Google アカウントなど) と対話する定義済みの構成ファイル。  将来、組み込みのポリシーは、Azure Active Directory Premium、Active Directory/ADFS、Salesforce ID プロバイダなどの、通常はエンタープライズ領域にある ID プロバイダーのカスタマイズも提供する可能性があります。
+もっとも一般的に使用される ID タスク (つまり、ユーザー登録、サインイン パスワードのリセット) の実行と、その関係も Azure AD B2C に定義済みである信頼できるパーティー (Facebook ID プロバイダー、LinkedIn、Microsoft アカウント、Google アカウントなど) との対話を行うための Azure AD B2C の動作を指示する定義済みの構成ファイル。  将来、組み込みのポリシーは、Azure Active Directory Premium、Active Directory/ADFS、Salesforce ID プロバイダなどの、通常はエンタープライズ領域にある ID プロバイダーのカスタマイズも提供する可能性があります。
 
 
 ### <a name="custom-policies"></a>カスタム ポリシー
@@ -85,7 +82,7 @@ Azure AD B2C テナント内の Identity Experience Framework の動作を定義
 
 ### <a name="policy-files"></a>ポリシー ファイル
 
-カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、要求プロバイダー/技術プロファイル、Userjourney オーケストレーションの手順などの要素を定義します。  次の 3 種類のポリシー ファイルを使用することをお勧めします。
+カスタム ポリシーは、階層型チェーンで互いを参照する 1 つまたは複数の XML 形式ファイルとして表されます。 XML 要素は、要求スキーマ、要求変換、コンテンツ定義、クレーム プロバイダー/技術プロファイル、ユーザー体験のオーケストレーション手順などの要素を定義します。  次の 3 種類のポリシー ファイルを使用することをお勧めします。
 
 - **BASE ファイル**。ほとんどの定義が含まれており、Azure はこの完全なサンプルを提供しています。  ポリシーのトラブルシューティングおよび長期間の保守に役立つように、このファイルへの変更は最小限に抑えることをお勧めします
 - **EXTensions ファイル**。テナントの固有の構成変更を保持しています
@@ -105,3 +102,7 @@ Azure AD B2C テナント内の Identity Experience Framework の動作を定義
 
 Azure AD B2C での**組み込みのポリシー**は上に示した 3 つのファイルのパターンに従いますが、ポータルが EXTenstions ファイルへの変更をバックグラウンドで行なっている間、開発者には証明書利用者 (RP) ファイルしか表示されません。  Azure B2C チームの制御下にあり、頻繁に更新される BASE ポリシー ファイルをすべての Azure AD B2C が共有します。
 
+## <a name="next-steps"></a>次のステップ
+
+> [!div class="nextstepaction"]
+> [カスタム ポリシーの概要](active-directory-b2c-get-started-custom.md)

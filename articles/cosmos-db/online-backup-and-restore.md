@@ -15,12 +15,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raprasa
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 84b26c9ff354adef3f1bc1e61f235c520b63df13
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Azure Cosmos DB での自動オンライン バックアップと復元
 Azure Cosmos DB は、すべてのデータのバックアップを、一定の間隔で自動的に取得します。 自動バックアップは、データベース操作のパフォーマンスにも可用性にも影響を与えずに取得されます。 すべてのバックアップは別のストレージ サービスに保存され、これらのバックアップは、局地的な障害の発生時に回復機能を提供するためにグローバルにレプリケートされます。 自動バックアップは、Cosmos DB コンテナーを誤って削除した後のデータの回復やディザスター リカバリー ソリューションを必要とするシナリオを想定しています。  
@@ -65,5 +64,4 @@ Azure Cosmos DB では、データベース アカウント内のすべてのパ
 複数のデータ センターにデータベースをレプリケートする場合は、[Cosmos DB を使用したデータのグローバル分散](distribute-data-globally.md)に関するページを参照してください。 
 
 Azure サポートに問い合わせる場合は、 [Azure ポータルからチケットを申請します](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)。
-
 

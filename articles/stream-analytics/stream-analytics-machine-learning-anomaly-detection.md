@@ -3,7 +3,7 @@ title: "Azure での異常検出使用ガイド (プレビュー) | Microsoft Do
 description: "Stream Analytics と Machine Learning を使って異常を検出します。"
 services: stream-analytics
 documentationcenter: 
-author: samacha
+author: dubansal
 manager: jhubbard
 ms.service: stream-analytics
 ms.devlang: na
@@ -11,15 +11,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
-ms.author: samacha
+ms.author: dubansal
+ms.openlocfilehash: 43a2a9784668fad2aa5b1441cfd37751c0c240b6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 7ab489f6ae7da2640ba199b20e7727da60497918
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="using-the-anomalydetection-operator"></a>ANOMALYDETECTION 演算子を使用する
 
 > [!IMPORTANT]
@@ -186,5 +184,4 @@ ms.lasthandoff: 09/20/2017
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

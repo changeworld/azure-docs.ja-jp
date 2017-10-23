@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 96e5027adfb443aba18895213e8d83894e3f060a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 09/25/2017
 
 このチュートリアルを完了するには、以下が必要です。
 
-- [シナリオのアーキテクチャとコンポーネント](concepts-hyper-v-to-azure-architecture.md)を理解していること。
+- [シナリオのアーキテクチャとコンポーネント](concepts-hyper-v-to-azure-architecture.md)を理解している。
 - すべてのコンポーネントの[サポート要件](site-recovery-support-matrix-to-azure.md)を確認すること。
 - レプリケートする VM が [Azure VM 要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠していること。
 - 容量計画を調べるには:
@@ -278,5 +277,4 @@ VMM を使用している場合、ネットワーク マッピングを設定し
  **[ジョブ]** > **[Site Recovery ジョブ]** の順にクリックして、**[保護を有効にする]** アクションの進行状況を追跡できます。 **[保護の最終処理]** ジョブが完了すると、初期レプリケーションが完了し、仮想マシンがフェールオーバーを実行できる状態になります。
 
 ## <a name="next-steps"></a>次のステップ
-[ディザスター リカバリー訓練を実行する](tutorial-dr-drill-azure.md)
-
+[ディザスター リカバリーのテストを実行する](tutorial-dr-drill-azure.md)

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Cosmos DB を使用したデータのグローバル分散 | Microsoft Docs"
 description: "グローバル分散型のマルチモデル データベース サービスである Azure Cosmos DB のグローバル データベースを使用した、地球規模の geo レプリケーション、フェールオーバー、データ復旧について説明します。"
 services: cosmos-db
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/13/2017
 ms.author: arramac
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: a293ab42591fad2b913971465bc85743bcf05dad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Azure Cosmos DB を使用してデータをグローバルに分散させる方法
 Azure はユビキタスです。30 か所以上の地理的リージョンでグローバル展開されており、継続的に拡大しています。 その世界的なプレゼンスにより、Azure が開発者に提供する差別化機能の 1 つは、グローバル分散アプリケーションを簡単に構築し、デプロイ、管理できることです。 
@@ -56,7 +55,7 @@ Azure Cosmos DB では、Azure Cosmos DB データベース アカウントに A
 ### <a id="PolicyBasedGeoFencing"></a>ポリシー ベースのジオフェンス
 Azure Cosmos DB は、ポリシー ベースのジオフェンス機能を備えるように設計されています。 ジオフェンスは、データ ガバナンスとコンプライアンスの制限を保証し、アカウントへの特定のリージョンの関連付けを防ぐことができる重要なコンポーネントです。 ジオフェンスの例として、グローバル配布の範囲を主権のあるクラウド内 (中国、ドイツなど) または政府の課税境界内 (オーストラリアなど) のリージョンに設定することが挙げられます。 ポリシーは、Azure サブスクリプションのメタデータを使用して制御されます。
 
-### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加および削除する
+### <a id="DynamicallyAddRegions"></a>リージョンを動的に追加おおよび削除する
 Azure Cosmos DB では、データベース アカウントへのリージョンの追加 (関連付け) とリージョンの削除 (関連付け解除) をいつでも行うことができます ([前の図を参照](#UnlimitedRegionsPerAccount))。 Azure Cosmos DB は、パーティション間でのデータの並列レプリケーションにより、新しいリージョンがオンラインになったときに、最大 100 TB で世界中のどこでも 30 分以内に利用できます。 
 
 ### <a id="FailoverPriorities"></a>フェールオーバーの優先順位
@@ -238,4 +237,3 @@ Azure Cosmos DB では、スループット、待機時間、整合性、可用�
 7. Naor、Wool 共著:  「[The Load, Capacity and Availability of Quorum Systems (クォーラム システムの負荷、容量、および可用性)](http://www.cs.utexas.edu/~lorenzo/corsi/cs395t/04S/notes/naor98load.pdf)」
 8. Herlihy、Wing 共著:  「[Lineralizability: A Correctness Condition for Concurrent Objects (線形化可能性: 同時実行オブジェクトの正確性の条件)](http://cs.brown.edu/~mph/HerlihyW90/p463-herlihy.pdf)」
 9. [Azure Cosmos DB SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/)
-

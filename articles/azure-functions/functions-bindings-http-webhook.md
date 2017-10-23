@@ -16,12 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 08/26/2017
 ms.author: mahender
-ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
 ms.openlocfilehash: 3c3247592cbe2bc382d220264b0c646ee566b8a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Azure Functions における HTTP と Webhook のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -447,5 +446,4 @@ module.exports = function (context, data) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

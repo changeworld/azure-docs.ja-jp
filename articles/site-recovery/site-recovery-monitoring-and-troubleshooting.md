@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: rajanaki
 ms.openlocfilehash: 5bcb5dcb6afc3909e34dde31f845e014e7c539e3
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-troubleshoot-protection-for-virtual-machines-and-physical-servers"></a>仮想マシンおよび物理サーバーの保護の監視とトラブルシューティング
 この監視とトラブルシューティング ガイドでは、Azure Site Recovery のレプリケーション正常性を追跡する方法とトラブルシューティング手法について説明します。
@@ -43,7 +43,7 @@ ms.lasthandoff: 07/11/2017
 このプロセスは、Virtual Machine Manager のデプロイに似ています。 唯一の違いは、Azure Site Recovery プロバイダーと Azure Recovery Services エージェントを Hyper-V ホスト自体にインストールする必要があることです。 [詳細情報](site-recovery-hyper-v-azure-architecture.md)。 で作成できます。
 
 ## <a name="monitor-configuration-protection-and-recovery-operations"></a>構成、保護、復旧操作の監視
-Azure Site Recovery のすべての操作が **[ジョブ]** タブの下で監査され、追跡されます。 構成、保護、復旧でエラーが発生した場合は、**[ジョブ]** タブで障害を探します。
+Azure Site Recovery のすべての操作が **[ジョブ]** タブの下で監査され、追跡されます。構成、保護、復旧でエラーが発生した場合は、**[ジョブ]** タブで障害を探します。
 
 ![[ジョブ] タブの [失敗] フィルター](media/site-recovery-monitoring-and-troubleshooting/image3.png)
 

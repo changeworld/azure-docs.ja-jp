@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: obloch
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e7da3c6d4cfad588e8cc6850143112989ff3e481
-ms.openlocfilehash: 2f1689a2f59b779c83b6be746edda915fd67a3db
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/16/2017
-
+ms.openlocfilehash: 6e015d391067271cf71eb865af1b469135c8fcaa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-iothubclient"></a>C 用 Azure IoT device SDK – IoTHubClient の詳細
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。その記事では、SDK に 2 つのアーキテクチャの層が存在することを説明しました。 その基礎となるのが、IoT Hub との通信を直接管理する **IoTHubClient** ライブラリです。 これを土台にしシリアル化サービスを提供する **serializer** ライブラリもあります。 この記事では、 **IoTHubClient** ライブラリについてさらに詳しく説明します。
@@ -260,10 +259,10 @@ IoTHubClient_LL_SetOption(iotHubClientHandle, "timeout", &timeout);
 
 よく使用されるオプションがいくつかあります。
 
-* **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 **SetBatching** オプションが適用されるのは HTTP プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
-* **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTP 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
+* **SetBatching** (ブール値): **true** の場合、IoT Hub に送信されるデータはバッチで送信されます。 **false** の場合は、メッセージは個別に送信されます。 既定値は **false** です。 **SetBatching** オプションが適用されるのは HTTPS プロトコルだけであることに注意してください。AMQP プロトコルや MQTT プロトコルには適用されません。
+* **Timeout** (符号なし整数): この値はミリ秒単位で表現されます。 HTTPS 要求の送信や応答の受信にこの時間より長くかかる場合は、接続がタイムアウトします。
 
-バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTP 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTP ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
+バッチ処理オプションは重要です。 既定では、このライブラリはイベントを個別に入力します (**IoTHubClient\_LL\_SendEventAsync** に渡したものが 1 つのイベントになります)。 バッチ処理オプションが **true**の場合、ライブラリはバッファーから可能な限りの (IoT Hub が許容する最大メッセージ サイズまでの) イベントを収集します。  イベントのバッチは、(個々のイベントが JSON 配列にまとめられて) 単一の HTTPS 呼び出しで IoT Hub に送信されます。 バッチ処理を有効にすると、通常はネットワーク ラウンドトリップが減少するため、パフォーマンスの大幅な向上につながります。 個別の各イベントの一連のヘッダーではなく、イベント バッチで一連の HTTPS ヘッダーが送信されるため、帯域幅が大幅に削減されます。 それ以外の方法で実行する特別な理由がない限り、一般的にバッチ処理を有効にします。
 
 ## <a name="next-steps"></a>次のステップ
 この記事は、**C 用 Azure IoT device SDK** にある **IoTHubClient** ライブラリの動作の詳細を説明しました。この情報は、**IoTHubClient** ライブラリの機能の理解に役立ててください。 [次の記事](iot-hub-device-sdk-c-serializer.md) では、 **serializer** ライブラリについて同様に詳細を紹介します。
@@ -277,4 +276,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-sdks]: iot-hub-devguide-sdks.md
 
 [lnk-iotedge]: iot-hub-linux-iot-edge-simulated-device.md
-

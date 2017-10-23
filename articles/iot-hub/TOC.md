@@ -109,11 +109,13 @@
 ### デバイス ジョブを使用したデバイスのファームウェアの更新
 #### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-firmware-update.md)
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-schedule-jobs.md)
 #### [Java](iot-hub-java-java-schedule-jobs.md)
+
 ## 管理
 ### IoT Hub の作成 
 #### [Azure Portal の使用](iot-hub-create-through-portal.md)
@@ -127,15 +129,24 @@
 #### [Azure Portal の使用](iot-hub-configure-file-upload.md)
 #### [Azure PowerShell の使用](iot-hub-configure-file-upload-powershell.md)
 #### [Azure CLI の使用](iot-hub-configure-file-upload-cli.md)
-### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
+### [診断を使用した監視](iot-hub-monitor-resource-health.md)
+#### [診断設定への移行](iot-hub-migrate-to-diagnostics-settings.md)
+#### [操作の監視](iot-hub-operations-monitoring.md)
 ### [使用状況のメトリック](iot-hub-metrics.md)
-### [操作の監視](iot-hub-operations-monitoring.md)
+### [IoT デバイスの一括管理](iot-hub-bulk-identity-mgmt.md)
 ### [IP フィルター処理を構成する](iot-hub-ip-filtering.md)
+
 ## セキュリティ保護
 ### [徹底的なセキュリティ](iot-hub-security-ground-up.md)
 ### [セキュリティのベスト プラクティス](iot-hub-security-best-practices.md)
 ### [セキュリティのアーキテクチャ](iot-hub-security-architecture.md)
 ### [IoT デプロイのセキュリティ保護](iot-hub-security-deployment.md)
+### X.509 CA 証明書を使用したセキュリティ保護
+#### [X.509 CA 証明書セキュリティの概要](iot-hub-x509ca-overview.md)
+##### [X.509 CA 証明書セキュリティの概念](iot-hub-x509ca-concept.md)
+#### [X.509 CA 証明書セキュリティの作業開始](iot-hub-security-x509-get-started.md)
+##### [証明書の作成 - PowerShell](iot-hub-security-x509-create-certificates.md)
+
 ## Azure IoT Edge
 ### [概要](iot-hub-iot-edge-overview.md)
 ### 作業開始

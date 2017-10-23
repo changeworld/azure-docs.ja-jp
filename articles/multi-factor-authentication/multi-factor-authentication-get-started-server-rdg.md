@@ -16,10 +16,10 @@ ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
 ms.openlocfilehash: 3b4181701c5df03a3df7e0446b313eac201ad99e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>RADIUS を使用したリモート デスクトップ ゲートウェイと Multi-Factor Authentication Server
 リモート デスクトップ (RD) ゲートウェイでは多くの場合、ローカル ネットワーク ポリシー サービス (NPS) を使ってユーザーを認証します。 この記事では、リモート デスクトップ ゲートウェイからの RADIUS 要求を (ローカルの NPS を通じて) Multi-Factor Authentication Server にルーティングする方法について説明します。 Azure MFA と RD ゲートウェイを組み合わせると、強力な認証を行いつつ、ユーザーが自らの作業環境にどこからでもアクセスできる状態を実現できます。 

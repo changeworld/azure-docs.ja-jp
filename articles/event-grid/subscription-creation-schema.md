@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: babanisa
 ms.openlocfilehash: eff2352066a76010d6d882a7b7e1961870cd2d46
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid サブスクリプション スキーマ
 

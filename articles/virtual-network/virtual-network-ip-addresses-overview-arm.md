@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: jdial
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 8ddd582ed159e10add896252c40feb19780c42fb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="ip-address-types-and-allocation-methods-in-azure"></a>Azure における IP アドレスの種類と割り当て方法
 
@@ -61,7 +60,7 @@ SKU の導入前に作成されたすべてのパブリック IP アドレスは
 - 静的または動的な割り当て方法を使用して割り当てられます。
 - ネットワーク インターフェイス、VPN ゲートウェイ、アプリケーション ゲートウェイ、およびインターネットに接続するロード バランサーなどのパブリック IP アドレスを割り当てることができる Azure のリソースに割り当てられます。
 - 特定のゾーンに割り当てることができます。
-- ゾーン冗長はありません。 可用性ゾーンの詳細については、[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
+- ゾーン冗長はありません。 可用性ゾーンの詳細については、「[可用性ゾーンの概要](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 #### <a name="standard"></a>標準
 
@@ -74,7 +73,7 @@ Standard SKU のパブリック IP アドレスは次のとおりです。
 > [!NOTE]
 > 標準 SKU のパブリック IP アドレスを仮想マシンのネットワーク インターフェイスに割り当てるときは、[ネットワーク セキュリティ グループ](security-overview.md#network-security-groups)で、特定のトラフィックを明示的に許可する必要があります。  ネットワーク セキュリティ グループを作成して関連付け、特定のトラフィックを明示的に許可するまでは、リソースと通信できません。
 
-Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[利用可能なリージョン](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability)を参照してください。また、追加のリージョンのサポートについては、[Azure 仮想ネットワークの最新情報](https://azure.microsoft.com/updates/?product=virtual-network)ページを参照してください。
+Standard SKU はプレビュー リリースです。 Standard SKU のパブリック IP アドレスを作成する前に、プレビューを登録し、サポートされている場所にアドレスを作成する必要があります。 プレビューを登録するには、[Standard SKU プレビューを登録する](virtual-network-public-ip-address.md#register-for-the-standard-sku-preview)を参照してください。 サポートされている場所 (リージョン) の一覧については、[[利用可能なリージョン]](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#region-availability) を参照し、追加のリージョンのサポートについて [[Azure Virtual Network updates] (Azure Virtual Network の更新)](https://azure.microsoft.com/updates/?product=virtual-network) ページを監視してください。
 
 
 ### <a name="allocation-method"></a>割り当て方法
@@ -111,7 +110,7 @@ IP アドレスをパブリック IP リソースに割り当てる方法には�
 
 ### <a name="internet-facing-load-balancers"></a>インターネットに接続するロード バランサー
 
-パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure ロード バランサー SKU の詳細については、[Azure ロード バランサー Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)を参照してください。
+パブリック IP アドレスをロード バランサーの **フロントエンド**構成に割り当てることで、パブリック IP アドレスと [SKU](#SKU) あるいは [Azure Load Balancer](../load-balancer/load-balancer-overview.md) を関連付けることができます。 このパブリック IP アドレスは、負荷分散された仮想 IP アドレス (VIP) として機能します。 ロード バランサーのフロント エンドには、動的または静的のどちらかのパブリック IP アドレスを割り当てることができます。 複数のパブリック IP アドレスをロード バランサーのフロント エンドに割り当てて、SSL ベースの Web サイトを含むマルチテナント環境のような [マルチ VIP](../load-balancer/load-balancer-multivip.md?toc=%2fazure%2fvirtual-network%2ftoc.json) シナリオを有効にすることもできます。 Azure Load Balancer SKU の詳細については、「[Azure Load Balancer の Standard SKU](../load-balancer/load-balancer-standard-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)」を参照してください。
 
 ### <a name="vpn-gateways"></a>VPN ゲートウェイ
 
@@ -193,4 +192,3 @@ IP アドレス指定に対する制限は、Azure の[ネットワークの制�
 * [Azure ポータルを使用して静的パブリック IP を持つ VM をデプロイする](virtual-network-deploy-static-pip-arm-portal.md)
 * [テンプレートを使用した静的パブリック IP を持つ VM のデプロイ](virtual-network-deploy-static-pip-arm-template.md)
 * Azure ポータルを使用して、[静的プライベート IP アドレスを持つ VM をデプロイ](virtual-networks-static-private-ip-arm-pportal.md)します。
-

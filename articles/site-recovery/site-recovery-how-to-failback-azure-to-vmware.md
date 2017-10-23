@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 06/05/2017
 ms.author: ruturajd
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 1ca34b262a51b694cb9541750588bbea139eeae1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="fail-back-from-azure-to-an-on-premises-site"></a>Azure からオンプレミス サイトへのフェールバック
 
@@ -136,4 +135,3 @@ Windows 仮想マシンのフェールバック時に、フェールバックと
 
 ## <a name="common-issues"></a>一般的な問題
 フェールバックを実行する前に、必ず vCenter を接続された状態にしてください。 接続されていない場合、ディスクの切断と仮想マシンへの接続は失敗します。
-

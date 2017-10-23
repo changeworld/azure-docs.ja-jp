@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 1906425c6657fb6232a9dc306b05f9171c9c7bef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="logging-api-reference"></a>ロギング API リファレンス
 
 Azure ML ロギング ライブラリでは、履歴サービスによって追跡されるメトリックとファイルをプログラムで出力し、後で分析することができます。 現時点では、いくつかの基本的な種類のメトリックとファイルがサポートされていますが、Python パッケージの将来のリリースにより、サポートされる種類のセットは増加します。
@@ -88,4 +86,3 @@ $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to cr
 ## <a name="next-steps"></a>次のステップ
 - [あやめの分類のチュートリアルのパート 2](tutorial-classifying-iris-part-2.md) を順を追って参照し、動作中のロギング API を確認します。
 - [Azure Machine Learning Workbench で実行履歴とモデルのメトリックを使用する方法](how-to-use-run-history-model-metrics.md)を確認して、ロギング API を実行履歴で使用する方法について理解を深めます。
-

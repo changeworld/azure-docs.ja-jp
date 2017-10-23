@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: muralikk
 ms.openlocfilehash: 6ec74ae0b0931f3fed99a43f4f7e58f9d425b138
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="previewing-drive-usage-for-an-export-job"></a>エクスポート ジョブのドライブ使用率のプレビュー
 エクスポート ジョブを作成する前に、エクスポートする一連の BLOB を選択する必要があります。 Microsoft Azure Import/Export サービスを使用すると、BLOB のパスの一覧や BLOB プレフィックスを使用して、選択した BLOB を表すことができます。  

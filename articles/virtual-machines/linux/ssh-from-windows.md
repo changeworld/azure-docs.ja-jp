@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/08/2017
 ms.author: danlep
 ms.openlocfilehash: 66837a3a153cda041f5351c52c8ccb1f8ccfea50
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-ssh-keys-with-windows-on-azure"></a>Azure 上の Windows で SSH キーを使用する方法
 > [!div class="op_single_selector"]
@@ -172,7 +172,7 @@ PuTTY は、Windows 用の一般的な SSH クライアントです。 SSH ク�
 2. Azure Portal で取得した VM のホスト名と IP アドレスを入力します。
 
     ![新しい PuTTY 接続の開始](./media/ssh-from-windows/putty-new-connection.png)
-3. **[Open (開く)]** を選択する前に、**[Connection (接続)]** > **[SSH]** > **[Auth]** タブをクリックします。 秘密キーを参照して選択します。
+3. **[Open (開く)]** を選択する前に、**[Connection (接続)]** > **[SSH]** > **[Auth]** タブをクリックします。秘密キーを参照して選択します。
 
     ![認証用の PuTTY 秘密キーの選択](./media/ssh-from-windows/putty-auth-dialog.png)
 4. **[Open]** をクリックして、仮想マシンに接続します。

@@ -11,14 +11,12 @@ ms.topic: tutorial
 ms.date: 05/04/2017
 ms.author: mahender
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: e4fe86b80d8a786da15cdea37619e54e55102e3f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-serverless-api-using-azure-functions"></a>Azure Functions を使用したサーバーレス API の作成
 
 このチュートリアルでは、Azure Functions を使用して高度にスケーラブルな API を作成する方法について説明します。 Azure Functions には、組み込みの HTTP トリガーとバインドのコレクションが含まれており、作成者は Node.JS、C# などのさまざまな言語で簡単にエンドポイントを作成できます。 このチュートリアルでは、HTTP トリガーをカスタマイズして API の設計で特定の操作を処理します。 また、Azure Functions Proxies と統合してモック API をセットアップすることで、お使いの API を拡張する準備を行います。 これらの処理はすべて Functions のサーバーレス コンピューティング環境上で行われるため、リソースのスケーリングを考慮する必要はなく、API のロジックに集中できます。
@@ -195,4 +193,3 @@ backendUri プロパティを変更することなく、"GetUserByName" とい�
 
 [Create your first function]: https://docs.microsoft.com/azure/azure-functions/functions-create-first-azure-function
 [Azure Functions Proxies (プレビュー) の操作]: https://docs.microsoft.com/azure/azure-functions/functions-proxies
-

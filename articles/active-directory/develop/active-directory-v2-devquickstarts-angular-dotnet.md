@@ -16,10 +16,10 @@ ms.date: 01/23/2017
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: c68180c0ecabf5c0732f0db77ef1f3cc93be965b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-angularjs-single-page-app---net"></a>AngularJS シングル ページ アプリへのサインインの追加 - .NET
 この記事では、Microsoft が提供するアカウントでのサインインを、Azure Active Directory v2.0 エンドポイントを使用して AngularJS アプリに追加します。  v2.0 エンドポイントを使用すると、アプリで単一の統合を実行し、個人アカウントと職場/学校アカウントの両方でユーザーを認証できます。
@@ -224,7 +224,7 @@ return $http.get('/api/tasks');
 ...
 ```
 
-お疲れさまでした。  Azure AD に統合されたシングル ページ アプリが完成しました。  アプリは、  ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。  個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。  アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、  個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。  ユーザーの To-Do List にタスクを追加し、サインアウトした後で、  他の種類のアカウントを使用してサインインしてみてください。 職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
+お疲れさまでした。  Azure AD に統合されたシングル ページ アプリが完成しました。  アプリは、  ユーザーの認証を行い、OpenID Connect を使用してバックエンドの REST API を安全に呼び出し、ユーザーについての基本情報を取得できます。  個人の Microsoft アカウントまたは Azure AD の職場/学校アカウントを持つユーザーが既定でサポートされます。  アプリを実行し、ブラウザーで `https://localhost:44326/` に移動して、  個人の Microsoft アカウントまたは職場/学校アカウントを使用してサインインしてください。  ユーザーの To-Do List にタスクを追加し、サインアウトした後で、他の種類のアカウントを使用してサインインしてみてください。 職場/学校ユーザーを作成するために Azure AD テナントが必要な場合は、[こちらで取得方法がわかります](active-directory-howto-tenant.md) (無料です)。
 
 v2.0 エンドポイントについての学習を続けるには、 [v2.0 開発者ガイド](active-directory-appmodel-v2-overview.md)に戻ってください。  その他のリソースについては、以下を参照してください。
 

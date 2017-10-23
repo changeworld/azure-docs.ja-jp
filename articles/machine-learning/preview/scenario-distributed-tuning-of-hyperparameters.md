@@ -8,14 +8,12 @@ ms.topic: article
 ms.author: dmpechyo
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 643cea5cc134a2eb25a0dec4abefd9edca726332
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench を使用したハイパーパラメーターの分散チューニング
 
 このシナリオでは、Azure Machine Learning Workbench を使用して、scikit-learn API を実装する機械学習アルゴリズムのハイパーパラメーターのチューニングをスケール アウトする方法について説明します。 また、リモート Docker コンテナーと Spark クラスターをハイパーパラメーターのチューニングの実行バックエンドとして構成し、使用する方法について説明します。
@@ -133,12 +131,12 @@ spark-sklearn パッケージを使用して、ハイパーパラメーターの
 ### <a name="data-ingestion"></a>データの取り込み
 このシナリオのコードでは、データが Azure BLOB ストレージに保存されることを前提としています。 まず Kaggle サイトのデータをコンピューターにダウンロードし、BLOB ストレージにアップロードする方法について説明します。 次に、BLOB ストレージからデータを読み取る方法について説明します。 
 
-Kaggle からデータをダウンロードするには、[データセット ページ](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data)に移動し、[ダウンロード] ボタンをクリックします。 Kaggle にログインするように求められます。 ログイン後は、元のデータセット ページにリダイレクトされます。 次に、左側の列で最初の 7 個のファイルを選択し、[ダウンロード] ボタンをクリックしてダウンロードします。 ダウンロードしたファイルの合計サイズは、289 MB です。 これらのファイルを BLOB ストレージにアップロードするには、ストレージ アカウントで BLOB ストレージ コンテナーの "データセット" を作成します。 作成するには、ストレージ アカウントの Azure ページに移動し、BLOB をクリックし、[+ コンテナー] をクリックします。 [名前] に「dataset」と入力し、[OK] をクリックします。 次のスクリーン ショットは、これらの手順を示しています。
+Kaggle からデータをダウンロードするには、[データセット ページ](https://www.kaggle.com/c/talkingdata-mobile-user-demographics/data)に移動し、[ダウンロード] ボタンをクリックします。 Kaggle にログインするように求められます。 ログイン後は、元のデータセット ページにリダイレクトされます。 次に、左側の列で最初の 7 個のファイルを選択し、[ダウンロード] ボタンをクリックしてダウンロードします。 ダウンロードしたファイルの合計サイズは、289 MB です。 これらのファイルを BLOB ストレージにアップロードするには、ストレージ アカウントで BLOB ストレージ コンテナーの "データセット" を作成します。 作成するには、ストレージ アカウントの Azure ページに移動し、BLOB をクリックし、+ コンテナーをクリックします。 [名前] に「dataset」と入力し、[OK] をクリックします。 次のスクリーン ショットは、これらの手順を示しています。
 
 ![BLOB を開く](media/scenario-distributed-tuning-of-hyperparameters/open_blob.png)
 ![コンテナーを開く](media/scenario-distributed-tuning-of-hyperparameters/open_container.png)
 
-その後、一覧からデータセット コンテナーを選択し、[アップロード] ボタンをクリックします。 Azure Portal では、同時に複数のファイルをアップロードすることができます。 [BLOB のアップロード] セクションでフォルダー ボタンをクリックし、データセットのすべてのファイルを選択して [開く] をクリックし、[アップロード] をクリックします。 次のスクリーンショットはこれらの手順を示しています。
+その後、一覧からデータセット コンテナーを選択し、[アップロード] ボタンをクリックします。 Azure Portal では、同時に複数のファイルをアップロードすることができます。 BLOB のアップロード セクションでフォルダー ボタンをクリックし、データセットのすべてのファイルを選択して 開くをクリックし、アップロードをクリックします。 次のスクリーンショットはこれらの手順を示しています。
 
 ![BLOB のアップロード](media/scenario-distributed-tuning-of-hyperparameters/upload_blob.png) 
 
@@ -281,7 +279,7 @@ scikit-learn パッケージは、Spark クラスターを使用したハイパ�
 
     from sklearn.model_selection import GridSearchCV
 
-を以下に置き換えます。 
+を以下に置き換えることができます。 
 
     from spark_sklearn import GridSearchCV
 
@@ -312,7 +310,6 @@ Spark クラスターに 28 GB のメモリが搭載された worker ノード�
 ## <a name="references"></a>参照
 
 [1] T. Chen および C. Guestrin。 [XGBoost: A Scalable Tree Boosting System](https://arxiv.org/abs/1603.02754)。 (KDD 2016)。
-
 
 
 

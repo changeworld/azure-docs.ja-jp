@@ -12,14 +12,12 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 415ceba02eb3c8da3de5ab3aa6980fbe5bae2db9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="supported-data-exports-for-this-preview"></a>このプレビューでサポートしているデータ エクスポート 
 いくつかの異なる形式にエクスポートすることができます。 これらの形式を使用して、Machine Learning ワークフローの残りの部分に統合する前にデータ準備の中間結果を保持できます。
 
@@ -58,5 +56,4 @@ AMLWB は、(Spark 上での) スケールアウト実行中、Spark の Parquet
 
 ### <a name="azure-blob"></a>Azure BLOB 
 Azure Storage (BLOB)、Azure サブスクリプションが必要
-
 

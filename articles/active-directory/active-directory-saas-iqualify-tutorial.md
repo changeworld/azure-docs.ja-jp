@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: cab1ce3694372c137667e0179caf8d3523147f7a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>チュートリアル: Azure Active Directory と iQualify LMS の統合
 
@@ -189,9 +188,9 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     ![[SAML] アイコン](./media/active-directory-saas-iqualify-tutorial/setting3.png)
 
-14. **[SAML Authentication Settings]\(SAML 認証設定\)** ダイアログ ボックスで、次の手順を実行します。
+14. **[SAML Authentication Settings (SAML 認証設定)]** ダイアログ ボックスで、次の手順を実行します。
 
-    ![[SAML Authentication Settings]\(SAML 認証設定\)](./media/active-directory-saas-iqualify-tutorial/setting4.png)
+    ![SAML 認証設定](./media/active-directory-saas-iqualify-tutorial/setting4.png)
 
     a. **[SAML SINGLE SIGN-ON SERVICE URL]\(SAML シングル サインオン サービス URL\)** ボックスに、Azure AD アプリケーション構成ウィンドウからコピーした **[SAML Single Sign-on Service URL]\(SAML シングル サインオン サービス URL\)** の値を貼り付けます。
     
@@ -238,7 +237,7 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-an-iqualify-lms-test-user"></a>IQualify LMS テスト ユーザーを作成する
 
@@ -308,5 +307,4 @@ iQualify LMS で Azure AD のシングル サインオンを構成してテス�
 [201]: ./media/active-directory-saas-iqualify-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-iqualify-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-iqualify-tutorial/tutorial_general_203.png
-
 

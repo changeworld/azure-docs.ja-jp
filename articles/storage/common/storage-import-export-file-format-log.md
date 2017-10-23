@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: muralikk
 ms.openlocfilehash: 16234ccaf13ce1d85cfd207ed4734e683070faa6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-importexport-service-log-file-format"></a>Azure Import/Export サービスのログ ファイルの形式
 Microsoft Azure Import/Export サービスが、インポート ジョブまたはエクスポート ジョブの一部としてドライブでアクションを実行する場合、そのジョブに関連付けられているストレージ アカウントのブロック BLOB にログが書き込まれます。  

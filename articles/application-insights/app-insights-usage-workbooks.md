@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/12/2017
 ms.author: bwren
 ms.openlocfilehash: 75028b4fbda43d90f56690a33c7eb624fce049c8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Application Insights のインタラクティブなブックで使用状況データを調査して共有する
 

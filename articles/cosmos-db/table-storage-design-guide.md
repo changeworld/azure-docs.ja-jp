@@ -15,10 +15,10 @@ ms.workload: storage
 ms.date: 02/28/2017
 ms.author: mimig
 ms.openlocfilehash: fd34fb135c76eed4041c29e00e98dde330dfe3f3
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-storage-table-design-guide-designing-scalable-and-performant-tables"></a>Azure ストレージ テーブルの設計ガイド: スケーラブルな設計とハイパフォーマンスなテーブル
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
@@ -196,10 +196,8 @@ Table service ソリューションでは、読み取り、書き込み、また
 
 * [選択した PartitionKey と RowKey がクエリのパフォーマンスに与える影響](#how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance)
 * [適切な PartitionKey の選択](#choosing-an-appropriate-partitionkey)
-* 
-            [クエリを Table service 向けに最適化する](#optimizing-queries-for-the-table-service)
-* 
-            [Table service でデータを並べ替える](#sorting-data-in-the-table-service)
+* [クエリを Table service 向けに最適化する](#optimizing-queries-for-the-table-service)
+* [Table service でデータを並べ替える](#sorting-data-in-the-table-service)
 
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-impacts-query-performance"></a>選択した PartitionKey と RowKey がクエリのパフォーマンスに与える影響
 次の例は、以下の構造を持った複数の従業員エンティティの格納を想定しています (明確にするためほとんどの例で **タイムスタンプ** プロパティを省略)。  
@@ -266,8 +264,7 @@ Table service は、**PartitionKey** 次に **RowKey** に基づいた昇順で�
 * [ログ テール パターン](#log-tail-pattern) - 逆の日付と時間順で並べ替える **RowKey** 値を使用して、パーティションに最も新しく追加された *n* 件のエンティティを取得します。  
 
 ## <a name="design-for-data-modification"></a>データの変更に対応した設計
-このセクションでは、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 
-            [テーブルの設計パターン](#table-design-patterns) のセクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  
+このセクションでは、挿入、更新、削除の操作を最適化するための設計上の考慮事項を示します。 場合によっては、リレーショナル データベースの設計と同様に、クエリ向けの最適化とデータ変更向けの最適化のトレードオフを評価する必要があります (設計のトレードオフを管理する手法はリレーショナル データベースでは異なります)。 [テーブルの設計パターン](#table-design-patterns) のセクションでは、Table service の詳細な設計パターンをいくつか説明し、これらのトレードオフに注目します。 実際のところ、クエリ向けに最適化された設計の多くは、エントリの変更にも適していることがおわかりになると思います。  
 
 ### <a name="optimizing-the-performance-of-insert-update-and-delete-operations"></a>挿入、更新、削除の操作のパフォーマンスを最適化する
 エンティティを更新または削除するには、**PartitionKey** と **RowKey** 値を使用してエンティティを識別する必要があります。 この点で、エンティティの変更のために選択した **PartitionKey** と **RowKey** は、できるだけ効率的にエンティティを識別するため、ポイント クエリをサポートするために選択したものと同様の条件に従う必要があります。 **PartitionKey** と **RowKey** 値の検出のためにエンティティを特定する非効率的なパーティションまたはテーブル スキャンを使用したくない場合は、更新または削除する必要があります。  
@@ -1094,11 +1091,9 @@ foreach (var e in entities)
 既定では、テーブル サービスは個々 のエンティティのレベルで**挿入**、**マージ**、**削除**操作に対しオプティミスティック同時実行チェックを実行しますが、クライアントは、テーブル サービスがこれらのチェックをバイパスするよう強制することもできます。 Table service での同時実行の管理方法については、「[Microsoft Azure Storage での同時実行制御の管理](../storage/common/storage-concurrency.md)」をご覧ください。  
 
 #### <a name="merge-or-replace"></a>マージまたは置換
+**TableOperation** クラスの**置換**のメソッドは、常に、Table service の完全なエンティティを置換します。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  
 
-            **TableOperation** クラスの**置換**のメソッドは、常に、Table service の完全なエンティティを置換します。 格納されたエンティティに存在するプロパティを要求に含めない場合、要求により、格納されたエンティティからそのプロパティが削除されます。 格納されたエンティティからプロパティを明示的に削除しない場合は、すべてのプロパティを要求に含める必要があります。  
-
-
-            **TableOperation** クラスの**マージ** メソッドを使用して エンティティを更新するときの Table service に送信するデータの量を削減します。 **マージ** メソッドはプロパティ値を持った格納エンティティのプロパティをリクエストに含まれるエンティティと置換しますが、リクエストに含まれない格納エンティティ内の無傷のプロパティはそのまま残します。 ラージ エンティティがあり、要求で少数のプロパティのみを更新する必要があるときに便利な処理です。  
+**TableOperation** クラスの**マージ** メソッドを使用して エンティティを更新するときの Table service に送信するデータの量を削減します。 **マージ** メソッドはプロパティ値を持った格納エンティティのプロパティをリクエストに含まれるエンティティと置換しますが、リクエストに含まれない格納エンティティ内の無傷のプロパティはそのまま残します。 ラージ エンティティがあり、要求で少数のプロパティのみを更新する必要があるときに便利な処理です。  
 
 > [!NOTE]
 > エンティティが存在しない場合、**置換**と**マージ** メソッドが失敗します。 存在しない場合は、代わりに、**InsertOrReplace** と **InsertOrMerge** メソッドを使用して新しいエンティティを作成します。  

@@ -240,6 +240,7 @@
 
 ### アプリケーションをデプロイまたは削除する
 #### [ローカル クラスターへのアプリケーションのデプロイ](service-fabric-get-started-with-a-local-cluster.md)
+#### [Azure リソース マネージャー](service-fabric-application-arm-resource.md)
 #### [Azure PowerShell](service-fabric-deploy-remove-applications.md)
 #### [Service Fabric CLI](service-fabric-application-lifecycle-sfctl.md)
 #### [Visual Studio](service-fabric-publish-app-remote-cluster.md)
@@ -341,8 +342,8 @@
 # リファレンス
 ## [Azure PowerShell](/powershell/module/azurerm.servicefabric/)
 ## [PowerShell](/powershell/module/servicefabric/?view=azureservicefabricps)
-## [Azure CLI](/cli/azure/sf)
-## [Service Fabric CLI](service-fabric-sfctl.md)
+## [Azure CLI (az sf)](/cli/azure/sf)
+## [Service Fabric CLI (sfctl)](service-fabric-sfctl.md)
 ### [sfctl application](service-fabric-sfctl-application.md)
 ### [sfctl chaos](service-fabric-sfctl-chaos.md)
 ### [sfctl cluster](service-fabric-sfctl-cluster.md)

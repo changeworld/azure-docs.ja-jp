@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 3/1/2017
 ms.author: victorh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 41c9ee37c43d4ad41c51ea2ed023d3b47d460dd1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storage-accounts-in-azure-stack"></a>Azure Stack のストレージ アカウント
 ストレージ アカウントには、BLOB や Table service、およびストレージ データ オブジェクトの一意の名前空間が含まれます。 既定では、アカウントのデータはストレージ アカウント所有者だけが使用できます。
@@ -40,4 +39,3 @@ ms.lasthandoff: 09/25/2017
 [Azure ストレージ アカウントについて](../storage/common/storage-create-storage-account.md)
 
 [Azure Stack Azure 互換ストレージの検証ガイドのダウンロード](http://aka.ms/azurestacktp1doc)
-

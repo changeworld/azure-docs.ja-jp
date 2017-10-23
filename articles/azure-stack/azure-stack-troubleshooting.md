@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3b40a657ee8eb391d14a38cb95acc0729a8dda21
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-stack-troubleshooting"></a>Microsoft Azure Stack のトラブルシューティング
 
-*適用対象: Azure Stack Development Kit*
+*適用対象: Azure Stack 開発キット*
 
 このドキュメントでは、Azure Stack の一般的なトラブルシューティング情報を提供します。 
 
@@ -73,7 +72,7 @@ Azure Stack に VM をデプロイする前に、まず Windows Server イメー
 
 リテンション期間しきい値と、オンデマンドの再利用の設定について詳しくは、[ストレージ アカウントの管理](azure-stack-manage-storage-accounts.md)に関するページを参照してください。
 
-## <a name="storage"></a>Storage
+## <a name="storage"></a>ストレージ
 ### <a name="storage-reclamation"></a>記憶域の再利用
 ポータルに再利用された容量が表示されるまで、最大で 14 時間かかる場合があります。 領域の再利用は、ブロック BLOB ストア内の内部コンテナー ファイルの使用率をなど、さまざまな要因に依存します。 そのため、削除されるデータの量によって、ガベージ コレクターの実行時に再利用可能になる領域の量に対する保証はありません。
 
@@ -97,7 +96,6 @@ PowerShell を使用してテナント サブスクリプションに接続し�
     * ユーザはポータル設定のリセット後にのみ、ダッシュボードを表示できます (ユーザー ポータルで、ポータル設定アイコン (右上隅にある歯車アイコン) をクリックします。 **[既定の設定に戻す]** の下の **[適用]** をクリックします)。
     * ダッシュボードのタイトルが表示されない場合があります。 この問題が発生した場合は、それらを手動で追加する必要があります。
     * 最初にタイルをダッシュボードに追加したときに、一部のタイルが正しく表示されないことがあります。 この問題を解決するには、ブラウザーを更新します。
-
 
 
 

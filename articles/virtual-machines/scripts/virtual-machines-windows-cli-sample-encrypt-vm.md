@@ -15,14 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 06/02/2017
 ms.author: iainfou
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: bc1d06e24eb39e577e0e8283a15d4451b55be971
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="encrypt-a-windows-virtual-machine-in-azure"></a>Azure における Windows 仮想マシンの暗号化
 
 このスクリプトでは、安全な Azure Key Vault、暗号化キー、Azure Active Directory サービス プリンシパル、Windows 仮想マシン (VM) を作成します。 その後、Key Vault から取得した暗号化キーとサービス プリンシパルの資格情報を使って、作成した VM を暗号化します。
@@ -33,7 +31,7 @@ ms.lasthandoff: 09/09/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[メイン ](../../../cli_scripts/virtual-machine/encrypt-disks/encrypt_windows_vm.sh "VM ディスクの暗号化")]
+[!code-azurecli-interactive[main](../../../cli_scripts/virtual-machine/encrypt-disks/encrypt_windows_vm.sh "Encrypt VM disks")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 
@@ -64,4 +62,3 @@ az group delete --name myResourceGroup
 Azure CLI の詳細については、[Azure CLI のドキュメント](https://docs.microsoft.com/cli/azure/overview)のページをご覧ください。
 
 その他の仮想マシン用の CLI サンプル スクリプトは、[Azure Windows VM のドキュメント](../windows/cli-samples.md?toc=%2fazure%2fvirtual-machines%windows%2ftoc.json)のページにあります。
-

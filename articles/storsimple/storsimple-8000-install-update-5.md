@@ -1,10 +1,10 @@
 ---
 title: "StorSimple 8000 シリーズ デバイスへの Update 5 のインストール | Microsoft Docs"
-description: "StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 4 をインストールする方法について説明します。"
+description: "StorSimple 8000 シリーズのデバイスに StorSimple 8000 シリーズの Update 5 をインストールする方法について説明します。"
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,25 +12,25 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/22/2017
+ms.date: 10/06/2017
 ms.author: alkohli
+ms.openlocfilehash: e9b2f8b225c6b9ed0f0622e6a51a48cdfada28bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: 84056daaada94875af3d969847ead41c003a1606
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5 のインストール
 
 ## <a name="overview"></a>概要
 
-このチュートリアルでは、Update 5 より前のソフトウェア バージョンを実行している StorSimple デバイスに、Azure Portal 経由で Update 5 をインストールする方法と、修正プログラムを使用してインストールする方法について説明します。 修正プログラムによる方法は、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されており、Update 1 より前のソフトウェア バージョンから更新する場合に使用します。
+このチュートリアルでは、Update 5 より前のソフトウェア バージョンを実行している StorSimple デバイスに、Azure Portal 経由で Update 5 をインストールする方法と、修正プログラムを使用してインストールする方法について説明します。 修正プログラムによる方法は、Update 3 より前のバージョンを実行しているデバイスに Update 5 をインストールする場合に使用します。 修正プログラムによる方法は、ゲートウェイが StorSimple デバイスの DATA 0 以外のネットワーク インターフェイスで構成されており、Update 1 より前のソフトウェア バージョンから更新する場合にも使用されます。
 
 Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS セキュリティ更新プログラム、OS 更新プログラム、ディスク ファームウェア更新プログラムが含まれています。  デバイス ソフトウェア、Spaceport、Storport、セキュリティ、その他の OS 更新プログラムは、中断を伴わない更新プログラムです。 Azure Portal または修正プログラムによる方法を使用して、中断なしまたは通常の更新プログラムを適用できます。 ディスク ファームウェアの更新プログラムは中断を伴うため、デバイスの Windows PowerShell インターフェイスを使用して、デバイスが修正プログラムによるメンテナンス モードである場合に適用できます。
 
 > [!IMPORTANT]
 > * インストールの前に、ハードウェアの状態とネットワーク接続の点からデバイスの正常性を判断するための手動と自動の一連の事前チェックが行われます。 これらの事前チェックは、Azure Portal から更新プログラムを適用する場合にのみ実行されます。
+> * Update 3 より前のバージョンを実行しているデバイスを更新する場合は、修正プログラムによる方法を使用して更新プログラムをインストールすることを強くお勧めします。 サポート部門が更新をガイドできるように、[サポート チケットをログに記録](storsimple-8000-contact-microsoft-support.md)してください。
 > * ソフトウェアとその他の通常の更新プログラムのインストールには Azure Portal を使用することをお勧めします。 ポータルで更新前のゲートウェイのチェックに失敗した場合のみ、(更新プログラムをインストールする) デバイスの Windows PowerShell インターフェイスに移動してください。 更新するバージョンによっては、更新プログラムのインストールに 4 時間 (またはそれ以上) かかる場合があります。 メンテナンス モードの更新プログラムは、デバイスの Windows PowerShell インターフェイスからインストールする必要があります。 メンテナンス モードの更新プログラムは中断を伴う更新プログラムであるため、デバイスにダウンタイムが発生します。
 > * オプションの StorSimple Snapshot Manager を実行している場合は、デバイスを更新する前に Snapshot Manager のバージョンを Update 5 にアップグレードしたことを確認します。
 
@@ -47,12 +47,11 @@ Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS 
 
 デバイスで **StorSimple 8000 Series Update 5 (6.3.9600.17845)** が実行されていることを確認します。 **[最終更新日]** が変更されています。
 
-* メンテナンス モードの更新プログラムを利用できることが示されます (このメッセージは、更新プログラムをインストールした後、最大 24 時間表示され続ける可能性があります)。 メンテナンス モードの更新プログラムは、デバイスのダウンタイムを発生させる更新プログラムであり、デバイスの Windows PowerShell インターフェイス経由でのみ適用できます。
+メンテナンス モードの更新プログラムを利用できることが示されます (このメッセージは、更新プログラムをインストールした後、最大 24 時間表示され続ける可能性があります)。 メンテナンス モードの更新プログラムをインストールする手順については、次のセクションで詳しく説明します。
 
-* 「[修正プログラムをダウンロードするには](#to-download-hotfixes)」で示された手順を使用して KB4011837 を検索してメンテナンス モードの更新プログラムをダウンロードします。ディスク ファームウェアの更新プログラムがインストールされます (他の更新プログラムが既にインストールされている必要があります)。 メンテナンス モードの更新プログラムをインストールするには、「 [メンテナンス モードの修正プログラムをインストールして確認するには](#to-install-and-verify-maintenance-mode-hotfixes) 」に記載されている手順に従います。
+[!INCLUDE [storsimple-8000-install-maintenance-mode-updates](../../includes/storsimple-8000-install-maintenance-mode-updates.md)]
 
 ## <a name="install-update-5-as-a-hotfix"></a>Update 5 を修正プログラムとしてインストールする
-
 
 修正プログラムによる方法でアップグレードできるソフトウェアのバージョンは、次のとおりです。
 
@@ -63,7 +62,7 @@ Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS 
 * Update 4
 
 > [!NOTE] 
-> Update 5 のインストールにお勧めの方法は、Azure Portal を使用することです。 この手順は、Azure Portal から更新プログラムをインストールしようとしたときにゲートウェイのチェックに失敗した場合に使用してください。 このチェックは、DATA 0 以外のネットワーク インターフェイスに割り当てられているゲートウェイがある場合に、デバイスが Update 1 より前のソフトウェア バージョンを実行していると、失敗します。
+> Update 3 以降のバージョンから更新する場合は、Azure Portal を使用して Update 5 をインストールする方法をお勧めします。 Update 3 より前のバージョンを実行しているデバイスを更新する場合は、この手順を使用します。 この手順は、Azure Portal から更新プログラムをインストールしようとしたときにゲートウェイのチェックに失敗した場合にも使用できます。 このチェックは、DATA 0 以外のネットワーク インターフェイスに割り当てられているゲートウェイがある場合に、デバイスが Update 1 より前のソフトウェア バージョンを実行していると、失敗します。
 
 修正プログラムを使用する方法には、次の 3 つの手順が含まれます。
 
@@ -114,5 +113,4 @@ Update 3 以前のバージョンを実行するデバイスからインスト�
 
 ## <a name="next-steps"></a>次のステップ
 詳しくは、[Update 5 リリース](storsimple-update5-release-notes.md)に関するページをご覧ください。
-
 

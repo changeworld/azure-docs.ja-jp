@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 10/18/2016
 ms.author: bwren
 ms.openlocfilehash: 6a84d8ff67c420ce712de905ab1172632502a863
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-stream-analytics-to-process-exported-data-from-application-insights"></a>Application Insights からエクスポートされたデータを、Stream Analytics を使って処理する
 [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) は、[Application Insights からエクスポートされた](app-insights-export-telemetry.md)データを処理するのに理想的なツールです。 Stream Analytics は、さまざまなソースからデータを取り込むことができます。 Stream Analytics は、データを変換してフィルター処理し、さまざまなシンクにルーティングできます。
@@ -76,8 +76,7 @@ ms.lasthandoff: 08/18/2017
 イベントが JSON 形式で BLOB ファイルに書き込まれます。 各ファイルに 1 つ以上のイベントが含まれる場合があります。 このため、イベント データを読み取って必要なフィールドをフィルター処理します。 データの処理に関して実行できることは多数ありますが、今日の計画は、Stream Analytics を使用してデータを Power BI に移動することです。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
-
-            [従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
+[従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
 
 ![](./media/app-insights-export-stream-analytics/090.png)
 

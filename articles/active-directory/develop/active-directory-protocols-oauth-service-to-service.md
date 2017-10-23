@@ -16,10 +16,10 @@ ms.date: 02/08/2017
 ms.author: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: cc30a54cd56c0cb03a67f86e4552398baa764e58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # クライアント資格情報を使用したサービス間の呼び出し (共有シークレットまたは証明書)
 OAuth 2.0 クライアント資格情報付与フローでは、Web サービス ("*Confidential クライアント*") が別の Web サービスを呼び出すときに、ユーザーを偽装する代わりに、独自の資格情報を使用して認証することができます。 このシナリオでは、クライアントは通常、中間層の Web サービス、デーモン サービス、または Web サイトです。 高いレベルの保証では、Azure AD により、呼び出し元サービスが、資格情報として (共有シークレットではなく) 証明書を使用することもできます。

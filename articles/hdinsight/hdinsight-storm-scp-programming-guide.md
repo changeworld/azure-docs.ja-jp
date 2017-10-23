@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 05/16/2016
 ms.author: raviperi
 ms.openlocfilehash: 3d76aebd2a1fd729c8e0639e6afcbde4c3fb752b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scp-programming-guide"></a>SCP プログラミング ガイド
 SCP は、リアルタイムで、信頼性が高く、整合性のとれた高パフォーマンスのデータ処理アプリケーションを構築するためのプラットフォームです。 OSS コミュニティが設計したストリーム処理システムである [Apache Storm](http://storm.incubator.apache.org/) を基に構築されています。 Storm は Nathan Marz によって設計され、Twitter によってオープン ソース化されています。 信頼性の高い分散化した調整と状態管理を実現するために、別の Apache プロジェクトである [Apache ZooKeeper](http://zookeeper.apache.org/)を利用しています。 

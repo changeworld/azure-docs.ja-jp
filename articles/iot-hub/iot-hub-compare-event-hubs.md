@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
-ms.openlocfilehash: a37df79a38a35b61cca72918d4d893a4bfc83b7e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 44dc7b18d46d1e75e8b55b6e32a346272a06bda9
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="comparison-of-azure-iot-hub-and-azure-event-hubs"></a>Azure IoT Hub と Azure Event Hubs の比較
 デバイスからのテレメトリ データの収集は、IoT Hub の主なユース ケースの 1 つです。 このため、IoT Hub はしばしば [Azure Event Hubs][Azure Event Hubs] と比較されます。 IoT Hub のように、Event Hubs は、低遅延の動作と高い信頼性を確保しながら、クラウドに対する膨大なイベントとテレメトリ データの入口として利用できるイベント処理サービスです。
@@ -29,11 +29,11 @@ ms.lasthandoff: 08/29/2017
 | --- | --- | --- |
 | 通信パターン | [デバイスからクラウドへの通信][lnk-d2c-guidance] (メッセージング、ファイルのアップロード、および報告されるプロパティ) と [クラウドからデバイスへの通信][lnk-c2d-guidance] (ダイレクト メソッド、必要なプロパティ、メッセージング) を有効にします。 |イベント イングレスのみを有効にします (通常はデバイスからクラウドへのシナリオの対象になります)。 |
 | デバイスの状態情報 | [デバイス ツイン][lnk-twins]は、デバイスの状態情報を格納および照会できます。 | デバイスの状態情報を格納することはできません。 |
-| デバイスのプロトコルのサポート |MQTT、MQTT over WebSockets、AMQP、AMQP over WebSockets、および HTTP をサポートします。 さらに、IoT Hub は [Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway] (カスタム プロトコルをサポートする、カスタマイズ可能なプロトコル ゲートウェイの実装) でも動作します。 |AMQP、AMQP over WebSockets、および HTTP をサポートします。 |
+| デバイスのプロトコルのサポート |MQTT、MQTT over WebSockets、AMQP、AMQP over WebSockets、および HTTPS をサポートします。 さらに、IoT Hub は [Azure IoT プロトコル ゲートウェイ][lnk-azure-protocol-gateway] (カスタム プロトコルをサポートする、カスタマイズ可能なプロトコル ゲートウェイの実装) でも動作します。 |AMQP、AMQP over WebSockets、および HTTPS をサポートします。 |
 | セキュリティ |デバイスごとの ID と取り消し可能なアクセス制御を提供します。 IoT Hub 開発者ガイドの「 [セキュリティ]」セクションを参照してください。 |Event Hubs 全体の[共有アクセス ポリシー][Event Hubs - security]を提供します。[発行元のポリシー][Event Hubs publisher policies]による取り消しが限定的にサポートされます。 IoT ソリューションでは、デバイスごとの資格情報となりすまし対策をサポートするために、カスタム ソリューションの実装が求められることがよくあります。 |
 | 操作の監視 |デバイス ID 管理および接続の豊富なイベント (個々のデバイス認証エラー、スロットル、および不適切な形式の例外など) を、IoT ソリューションでサブスクライブできるようにします。 これらのイベントを使用すれば、個々のデバイス レベルで接続の問題をすばやく識別することができます。 |集計メトリックのみを公開します。 |
 | スケール |同時接続された数百万のデバイスをサポートするように最適化されています。 |[Azure Event Hubs のクォータ][Azure Event Hubs quotas]に従って接続を測定します。 一方、Event Hubs を使用すると、送信される各メッセージのパーティションを指定できます。 |
-| デバイスの SDK |MQTT、AMQP、および HTTP API のほかに、さまざまなプラットフォームおよび言語用の[デバイス SDK][Azure IoT SDKs] が用意されています。 |AMQP と HTTP の送信インターフェイスのほかに、.NET、Java、および C でサポートされます。 |
+| デバイスの SDK |MQTT、AMQP、および HTTPS API のほかに、さまざまなプラットフォームおよび言語用の[デバイス SDK][Azure IoT SDKs] が用意されています。 |AMQP と HTTPS の送信インターフェイスのほかに、.NET、Java、および C でサポートされます。 |
 | ファイルのアップロード |IoT ソリューションでデバイスからクラウドにファイルをアップロードできるようにします。 ワークフロー統合用のファイル通知エンドポイントと、デバッグ サポート用の操作監視カテゴリが含まれます。 | サポートされていません。 |
 | 複数エンドポイントへのメッセージのルーティング | 最大 10 個のカスタム エンドポイントがサポートされます。 カスタム エンドポイントへのメッセージのルーティングの方法はルールにより決定されます。 詳細については、「[IoT Hub でのメッセージの送受信][lnk-devguide-messaging]」を参照してください。 | メッセージ ディスパッチ用のコードを別途作成してホストする必要があります。 |
 

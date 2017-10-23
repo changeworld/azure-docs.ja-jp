@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/10/2017
 ms.author: jonatul
 ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Azure CLI 2.0 で Azure DNS の使用を開始する
 

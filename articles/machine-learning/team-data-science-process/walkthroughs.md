@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 3a536c432f3a095d75beb57f8203f10afc074fdf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthroughs-executing-the-team-data-science-process"></a>Team Data Science Process を実行するチュートリアル
 
@@ -47,5 +46,4 @@ Team Data Science Process を構成する主な要素については、[Team Dat
 データ サイエンス プロジェクトの構築に使用できる Team Data Science Process のライフサイクルについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」を参照してください。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 
 
 Azure でのデータ サイエンス プロセスを構成するタスクについて説明したトピックの概要については、 [データ サイエンス プロセス](http://aka.ms/datascienceprocess)に関するページをご覧ください。 
-
 

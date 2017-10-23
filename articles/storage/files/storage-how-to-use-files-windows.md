@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Windows で Azure ファイル共有をマウントして共有にアクセスする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Windows と Windows Server で、Azure ファイル共有をマウントできます。 この記事では、Windows 上で Azure ファイル共有をマウントするための 3 つの異なる方法を示します。エクスプローラー UI を使用する方法、PowerShell を使用する方法、コマンド プロンプトを使用する方法です。 
 
@@ -145,4 +143,3 @@ Azure Files の詳細については、次のリンクをご覧ください。
 ### <a name="reference"></a>リファレンス
 * [.NET 用ストレージ クライアント ライブラリ リファレンス](https://msdn.microsoft.com/library/azure/dn261237.aspx)
 * [File サービスの REST API リファレンス](http://msdn.microsoft.com/library/azure/dn167006.aspx)
-

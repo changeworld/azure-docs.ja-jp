@@ -16,12 +16,11 @@ ms.workload: infrastructure-services
 ms.date: 09/20/2017
 ms.author: jdial
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 035eb44432081ef52c758a5d311b4d2ba2c6108d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-network-traffic-with-network-and-application-security-groups-preview"></a>ネットワークおよびアプリケーション セキュリティ グループ (プレビュー) によるネットワーク トラフィックのフィルター処理
 
@@ -240,7 +239,7 @@ Windows、Linux、または macOS のどこからコマンドを実行しても�
     Get-AzureRmProviderFeature -FeatureName AllowApplicationSecurityGroups -ProviderNamespace Microsoft.Network
     ```
 
-    前のコマンドから返された出力の **[RegistrationState]** 列に *[Registered] (登録済み)* が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
+    前のコマンドから返された出力の **[RegistrationState]** 列に *[Registered] \(登録済み)* が表示されるまでは、残りの手順に進まないでください。 登録される前に続行すると、残りの手順が失敗します。
         
 6. リソース グループを作成します。
 
@@ -457,5 +456,4 @@ PowerShell セッションで次のコマンドを入力します。
 ```powershell
 Remove-AzureRmResourceGroup -Name myResourceGroup -Force
 ```
-
 

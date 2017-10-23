@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 06/05/2017
 ms.author: nisoneji
 ms.openlocfilehash: fccbe88e3c0c2b2f3e9958f5f2f27adc017e4d03
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="exclude-disks-from-replication"></a>レプリケーションからディスクを除外する
 この記事では、ディスクをレプリケーションから除外する方法について説明します。 除外することにより、レプリケーションによる帯域幅の消費や、このようなディスクによって使用されるターゲット側のリソースを最適化できます。 この機能は、VMware から Azure へのレプリケーションと Hyper-V から Azure へのレプリケーションのシナリオでサポートされます。

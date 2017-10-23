@@ -13,28 +13,26 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/06/2017
 ms.author: jingwang
+ms.openlocfilehash: d78176eca6bdbf32d6b4400ad2812dea98703d67
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ebd2520813cd27280171c0e05637eb5a8bd58a29
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-data-factory-and-pipeline-using-net-sdk"></a>.NET SDK を使用してデータ ファクトリとパイプラインを作成する
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使用すると、データドリブン型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
+Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
 
 このクイックスタートでは、.NET SDK を使用して Azure データ ファクトリを作成する方法について説明します。 このデータ ファクトリのパイプラインは、データを Azure BLOB ストレージ内の 1 つのフォルダーから別のフォルダーにコピーします。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 
 ## <a name="prerequisites"></a>前提条件
-* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントを持っていない場合は、作成について、「ストレージ アカウントの作成」を参照してください。 作成の手順については、記事 (../storage/common/storage-create-storage-account.md#create-a-storage-account) を参照してください。 
-* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 
+* **Azure Storage アカウント**。 BLOB ストレージを、**ソース**と**シンク**の両方のデータ ストアとして使用します。 Azure ストレージ アカウントがない場合、作成方法については、「[ストレージ アカウントの作成](../storage/common/storage-create-storage-account.md#create-a-storage-account)」をご覧ください。 
+* Blob Storage に **BLOB コンテナー**を作成し、コンテナーに入力**フォルダー**を作成して、フォルダーにいくつかのファイルをアップロードします。 [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。
 * **Visual Studio** 2013、2015、または 2017。 この記事のチュートリアルでは、Visual Studio 2017 を使用します。
 * **[Azure .NET SDK](http://azure.microsoft.com/downloads/) をダウンロードしてインストールします**。
 * **[これらの手順](../azure-resource-manager/resource-group-create-service-principal-portal.md#create-an-azure-active-directory-application)に従って、Azure Active Directory にアプリケーションを作成します**。 **アプリケーション ID**、**認証キー**、**テナント ID** の値をメモしておいてください。後で使用します。 同じ記事の手順に従って、アプリケーションを "**共同作成者**" ロールに割り当てます。 
-* [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)。 このツールを使用して、Azure Blob Storage への接続、BLOB コンテナーの作成、入力ファイルのアップロード、出力ファイルの検証を行うことができます。 
+*  
 
 ## <a name="create-a-visual-studio-project"></a>Visual Studio プロジェクトを作成する
 
@@ -55,6 +53,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     Install-Package Microsoft.Azure.Management.DataFactory -Prerelease
     Install-Package Microsoft.Azure.Management.ResourceManager -Prerelease
     Install-Package Microsoft.IdentityModel.Clients.ActiveDirectory
+
     ```
 
 ## <a name="create-a-data-factory-client"></a>データ ファクトリ クライアントを作成する
@@ -83,7 +82,7 @@ Visual Studio 2013/2015/2017 を使用して、C# .NET コンソール アプリ
     string resourceGroup = "<your resource group where the data factory resides>";
     // Currently, Data Factory V2 allows you to create data factories only in the East US and East US2 regions. 
     // Note that the data stores (Azure Storage, Azure SQL Database, etc.) and computes (HDInsight, etc.) used by data factory can be in other regions
-    string region = "East US";
+    string region = "East US 2";
     string dataFactoryName = "<specify the name of data factory to create. It must be globally unique.>";
     string storageAccount = "<your storage account name to copy data>";
     string storageKey = "<your storage account key>";
@@ -249,7 +248,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 ## <a name="monitor-a-pipeline-run"></a>パイプラインの実行を監視する
 
-1. 次のコードを **Main** メソッドに追加し、データのコピーが完了するまで、パイプラインの実行の状態を継続的にチェックします。
+1. データのコピーが完了するまでパイプラインの実行の状態を継続的にチェックする次のコードを **Main** メソッドに追加します。
 
     ```csharp
     // Monitor the pipeline run
@@ -274,13 +273,10 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
    
     List<ActivityRun> activityRuns = client.ActivityRuns.ListByPipelineRun(
     resourceGroup, dataFactoryName, runResponse.RunId, DateTime.UtcNow.AddMinutes(-10), DateTime.UtcNow.AddMinutes(10)).ToList(); 
- 
-
     if (pipelineRun.Status == "Succeeded")
         Console.WriteLine(activityRuns.First().Output);
     else
         Console.WriteLine(activityRuns.First().Error);
-
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -289,7 +285,7 @@ Console.WriteLine("Pipeline run ID: " + runResponse.RunId);
 
 アプリケーションをビルドして起動し、パイプラインの実行を確認します。
 
-コンソールは、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況を表示します。 その後、パイプラインの実行状態が確認されます。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
+コンソールに、データ ファクトリ、リンクされたサービス、データセット、パイプライン、およびパイプラインの実行の作成の進捗状況が表示されます。 その後、パイプラインの実行状態が確認されます。 コピー アクティビティの実行の詳細と、データの読み取り/書き込みのサイズが表示されるまで待ちます。 次に、[Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) などのツールを使用して、変数で指定したように BLOB が "inputBlobPath" から "outputBlobPath" にコピーされていることを確認します。
 
 ### <a name="sample-output"></a>サンプル出力: 
 ```json
@@ -409,4 +405,3 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>次のステップ
 このサンプルのパイプラインは、Azure BLOB ストレージ内のある場所から別の場所にデータをコピーするものです。 より多くのシナリオで Data Factory を使用する方法については、[チュートリアル](tutorial-copy-data-dot-net.md)を参照してください。 
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: sethm
 ms.openlocfilehash: 3514812f7f087582035dad5d9a4d620652aa4da9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-service-bus-queues-with-php"></a>PHP で Service Bus キューを使用する方法
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -28,7 +28,7 @@ ms.lasthandoff: 08/18/2017
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
 
 ## <a name="create-a-php-application"></a>PHP アプリケーションの作成
-Microsoft Azure BLOB Service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP ](../php-download-sdk.md)のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
+Microsoft Azure Blob service にアクセスする PHP アプリケーションを作成するための要件は、コード内から [Microsoft Azure SDK for PHP ](../php-download-sdk.md)のクラスを参照することのみです。 アプリケーションの作成には任意の開発ツールまたはメモ帳を使用できます。
 
 > [!NOTE]
 > PHP のインストールでは、[OpenSSL 拡張機能](http://php.net/openssl)をインストールして有効にしておく必要もあります。

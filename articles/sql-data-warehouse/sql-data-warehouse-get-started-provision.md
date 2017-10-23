@@ -1,6 +1,6 @@
 ---
-title: "Azure ポータルで SQL データ ウェアハウスを作成 |Microsoft ドキュメント"
-description: "Azure ポータルで Azure SQL データ ウェアハウスを作成する方法します。"
+title: "Azure Portal での SQL Data Warehouse の作成 | Microsoft Docs"
+description: "Azure ポータルで Azure SQL Data Warehouse を作成する方法を説明します。"
 services: sql-data-warehouse
 documentationcenter: NA
 author: hirokib
@@ -17,12 +17,12 @@ ms.custom: create
 ms.date: 10/31/2016
 ms.author: elbutter;barbkess
 ms.openlocfilehash: 24ed2d8bad3090e378acf2a42fb909dee0a8517b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-an-azure-sql-data-warehouse"></a>Azure SQL データ ウェアハウスを作成します。
+# <a name="create-an-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse の作成
 > [!div class="op_single_selector"]
 > * [Azure Portal](sql-data-warehouse-get-started-provision.md)
 > * [TSQL](sql-data-warehouse-get-started-create-database-tsql.md)
@@ -30,57 +30,57 @@ ms.lasthandoff: 07/11/2017
 >
 >
 
-このチュートリアルでは、AdventureWorksDW サンプル データベースを含む SQL データ ウェアハウスを作成し、Azure ポータルを使用します。
+このチュートリアルでは、Azure ポータルを使用して、AdventureWorksDW サンプル データベースを含む SQL Data Warehouse を作成します。
 
 ## <a name="prerequisites"></a>前提条件
-開始するには、次の必要があります。
+開始するには、以下が必要です。
 
-* **Azure アカウント**: を参照してください[Azure 無料評価版][ Azure Free Trial]または[MSDN の Azure クレジット][ MSDN Azure Credits]にアカウントを作成します。
-* **Azure の SQL server**: を参照してください[Azure ポータルで Azure SQL データベースを作成][ Create an Azure SQL database in the Azure portal]詳細についてはします。
+* **Azure アカウント**: アカウントを作成するには、[Azure 無料試用版][Azure Free Trial]に関するページか [MSDN Azure クレジット][MSDN Azure Credits]に関するページにアクセスしてください。
+* **Azure SQL サーバー**: 詳細については、[Azure Portal での Azure SQL データベースの作成][Create an Azure SQL database in the Azure portal]に関する記事を参照してください。
 
 > [!NOTE]
-> SQL データ ウェアハウスを作成すると、課金対象の新しいサービス可能性があります。  参照してください[SQL Data Warehouse 料金][ SQL Data Warehouse pricing]詳細についてはします。
+> SQL Data Warehouse を作成すると、新しい課金対象サービスを使用することになる場合があります。  詳細については、「[SQL Data Warehouse の価格][SQL Data Warehouse pricing]」を参照してください。
 >
 >
 
-## <a name="create-a-sql-data-warehouse"></a>SQL データ ウェアハウスを作成します。
+## <a name="create-a-sql-data-warehouse"></a>SQL Data Warehouse の作成
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. をクリックして**+ 新規** > **データベース** > **SQL Data Warehouse**です。
+2. **[+ 新規]** > **[Databases]** > **[SQL Data Warehouse]** の順にクリックします。
 
     ![作成](./media/sql-data-warehouse-get-started-provision/create-sample.gif)
-3. **SQL Data Warehouse**ブレードで、情報の塗りつぶし、必要なキーを押します 'Create' を作成します。
+3. **[SQL Data Warehouse]** ブレードで必要な情報を入力し、[作成] を押して作成します。
 
-    ![データベースを作成します。](./media/sql-data-warehouse-get-started-provision/create-database.png)
+    ![データベースを作成する](./media/sql-data-warehouse-get-started-provision/create-database.png)
 
-   * **サーバー**: まず、サーバーを選択することをお勧めします。  
-   * **データベース名**: SQL データ ウェアハウスを参照するために使用される名前です。  サーバーに一意である必要があります。
-   * **パフォーマンス**: 400 で始まることをお勧め[DWUs][DWU]です。 左または右、データ ウェアハウスのパフォーマンスを調整するか、作成後に拡張または縮小するには、スライダーを移動できます。  DWUs の詳細については、このドキュメントを参照して[スケーリング](sql-data-warehouse-manage-compute-overview.md)または[料金ページ][SQL Data Warehouse pricing]です。
-   * **サブスクリプション**: 選択、[サブスクリプション]をこの SQL データ ウェアハウスに料金を請求します。
-   * **リソース グループ**:[リソース グループ][ Resource group]コンテナーの Azure リソースのコレクションを管理するために設計されています。 詳細については[リソース グループ](../azure-resource-manager/resource-group-overview.md)です。
-   * **ソース**: をクリックして**Select ソース** > **サンプル**です。 Azure が自動的に入力、**選択サンプル**AdventureWorksDW でオプションです。
+   * **[サーバー]**: まず、サーバーを選択することをお勧めします。  
+   * **[データベース名]**: SQL Data Warehouse の参照に使用される名前です。  サーバーに対して一意にする必要があります。
+   * **[パフォーマンス]**: 最初は 400 [DWU][DWU] にすることをお勧めします。 スライダーを左または右に移動して、データ ウェアハウスのパフォーマンスを調整したり、作成後にスケールアップまたはスケールダウンしたりすることができます。  DWU の詳細については、[スケーリング](sql-data-warehouse-manage-compute-overview.md)に関するドキュメントまたは[価格のページ][SQL Data Warehouse pricing]を参照してください。
+   * **subscription**: この SQL Data Warehouse の課金先の [subscription] を選択します。
+   * **[リソース グループ]**: [リソース グループ][Resource group]は、Azure リソースのコレクション管理のサポートを目的としたコンテナーです。 [リソース グループ](../azure-resource-manager/resource-group-overview.md)に関する詳細情報を参照してください。
+   * **[ソースの選択]**: **[ソースの選択]** > **[サンプル]** をクリックします。 **[サンプルの選択]** オプションが自動的に AdventureWorksDW に設定されます。
 
    > [!NOTE]
-   > SQL データ ウェアハウスの既定の照合順序は、SQL_Latin1_General_CP1_CI_AS です。 別の照合順序が必要な場合は[T-SQL] [ T-SQL]別の照合順序とデータベースの作成に使用できます。
+   > SQL Data Warehouse の既定の照合順序は、SQL_Latin1_General_CP1_CI_AS です。 別の照合順序が必要な場合は、[T-SQL][T-SQL] を使って別の照合順序のデータベースを作成できます。
    >
    >
 
-1. をクリックして**作成**SQL データ ウェアハウスを作成します。
-2. 数分を待ちます。 返されるデータ ウェアハウスの準備ができたら、 [Azure ポータル](https://portal.azure.com)です。 SQL データ ウェアハウスは、ダッシュ ボード、または作成時に使用するリソース グループで、SQL データベースでは、下に検索できます。
+1. **[作成]** をクリックして SQL Data Warehouse を作成します。
+2. 数分間待ちます。 データ ウェアハウスの準備が完了すると、再び [Azure Portal](https://portal.azure.com)が表示されます。 SQL Data Warehouse は、ダッシュボード上で、SQL データベースの一覧か、作成に使用したリソース グループ内に表示されます。
 
-    ![ポータルの表示](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
+    ![portal view](./media/sql-data-warehouse-get-started-provision/database-portal-view.png)
 
 [!INCLUDE [SQL Database create server](../../includes/sql-database-create-new-server-firewall-portal.md)]
 
 ## <a name="next-steps"></a>次のステップ
-準備ができたら、SQL データ ウェアハウスを作成したら、これで[接続](sql-data-warehouse-connect-overview.md)し、クエリを開始します。
+SQL Data Warehouse の作成は以上で完了です。いつでも[接続](sql-data-warehouse-connect-overview.md)して、クエリを実行することができます。
 
-SQL データ ウェアハウスにデータを読み込む、次を参照してください。、[の概要を読み込み](sql-data-warehouse-overview-load.md)です。
+SQL Data Warehouse へのデータの読み込みについては、 [読み込みの概要](sql-data-warehouse-overview-load.md)に関するページを参照してください。
 
-既存のデータベースを SQL Data Warehouse に移行する場合を参照してください、[の移行の概要](sql-data-warehouse-overview-migrate.md)使用または[移行ユーティリティ](sql-data-warehouse-migrate-migration-utility.md)です。
+既存のデータベースを SQL Data Warehouse に移行する場合、[移行の概要](sql-data-warehouse-overview-migrate.md)に関するページを参照するか、[移行ユーティリティ](sql-data-warehouse-migrate-migration-utility.md)を使用してください。
 
-TRANSACT-SQL を使用してファイアウォール規則を構成することもできます。 詳細については、次を参照してください。 [sp_set_firewall_rule] [ sp_set_firewall_rule]と[sp_set_database_firewall_rule][sp_set_database_firewall_rule]です。
+TRANSACT-SQL を使用して、ファイアウォール規則を構成することもできます。 詳細については、[sp_set_firewall_rule][sp_set_firewall_rule] と [sp_set_database_firewall_rule][sp_set_database_firewall_rule] に関するページを参照してください。
 
-すばらしいアイデアを見ても、[ベスト プラクティス][Best practices]です。
+[ベスト プラクティス][Best practices]も良い参考になります。
 
 <!--Article references-->
 [Create an Azure SQL database in the Azure portal]: ../sql-database/sql-database-get-started.md
@@ -88,7 +88,7 @@ TRANSACT-SQL を使用してファイアウォール規則を構成すること�
 [resource groups]: ../azure-resource-manager/resource-group-template-deploy-portal.md
 [Best practices]: sql-data-warehouse-best-practices.md
 [DWU]: sql-data-warehouse-overview-what-is.md
-[サブスクリプション]: ../azure-glossary-cloud-terminology.md#subscription
+[subscription]: ../azure-glossary-cloud-terminology.md#subscription
 [resource group]: ../azure-glossary-cloud-terminology.md#resource-group
 [T-SQL]: ./sql-data-warehouse-get-started-create-database-tsql.md
 

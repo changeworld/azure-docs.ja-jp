@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/27/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
 ms.openlocfilehash: 427bf9a0487c771e57ac53a9bb0b7d7e2f6bdca2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-azure-active-directory-registered-windows-10-devices"></a>Azure Active Directory 登録済み Windows 10 デバイスの設定
 
@@ -108,7 +107,6 @@ Windows 10 デバイスを登録するには、デバイスを登録できるよ
 - 詳細については、「[Azure Active Directory のデバイス管理の概要](device-management-introduction.md)」を参照してください。
 
 - Azure AD ポータルでのデバイス管理の詳細については、[Azure Portal によるデバイスの管理](device-management-azure-portal.md)に関するページを参照してください。
-
 
 
 

@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/20/2017
 ms.author: ryanwi
+ms.openlocfilehash: c7625a5670aca5d105601432fedfd0d7a78bb53c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: 68f9492231d367b1ede6ab032ec1c66c75150957
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Linux で初めての Java Service Fabric Reliable Actors アプリケーションを作成する
 > [!div class="op_single_selector"]
@@ -34,7 +33,7 @@ ms.lasthandoff: 09/21/2017
 ## <a name="prerequisites"></a>前提条件
 作業を開始する前に、[Linux 開発環境](service-fabric-get-started-linux.md)に Service Fabric SDK と Service Fabric CLI をインストールし、開発クラスターをセットアップします。 Mac OS X を使用している場合は、[Vagrant を使用して仮想マシンに Linux 開発環境をセットアップする](service-fabric-get-started-mac.md)ことができます。
 
-また、[Service Fabric CLI](service-fabric-cli.md) をインストールしてください。
+さらに、[Service Fabric CLI](service-fabric-cli.md) もインストールします。
 
 ### <a name="install-and-set-up-the-generators-for-java"></a>Java のジェネレーターのインストールとセットアップ
 Service Fabric には、ターミナルから Yeoman テンプレート ジェネレーターを使って Service Fabric Java アプリケーションを作成できるスキャフォールディング ツールが用意されています。 以下の手順に従って、ご利用のマシンに Java 用の Service Fabric Yeoman テンプレート ジェネレーターをセットアップしてください。
@@ -49,11 +48,28 @@ Service Fabric には、ターミナルから Yeoman テンプレート ジェ�
   ```bash
   sudo npm install -g yo
   ```
-3. NPM から Service Fabric Yeo Java アプリケーション ジェネレーターをインストールします。
+3. NPM から Service Fabric Yeoman Java アプリケーション ジェネレーターをインストールします。
 
   ```bash
   sudo npm install -g generator-azuresfjava
   ```
+
+## <a name="basic-concepts"></a>基本的な概念
+いくつかの基本的な概念さえ理解すれば、Reliable Actors の使用を開始できます。
+
+* **アクター サービス**。 Reliable Actors は、Service Fabric インフラストラクチャにデプロイできる Reliable Services にパッケージ化されます。 Actor インスタンスは、名前付きのサービス インスタンス内でアクティブ化されます。
+* **アクター登録**。 Reliable Services と同様に、Reliable Actor サービスは Service Fabric ランタイムに登録する必要があります。 さらに、アクターの型を Actor ランタイムに登録する必要があります。
+* **アクター インターフェイス**。 アクター インターフェイスは、アクターの厳密に型指定されたパブリック インターフェイスを定義するために使用されます。 Reliable Actor モデルの用語では、アクター インターフェイスに、アクターが理解し、処理できるメッセージの種類が定義されています。 アクター インターフェイスは、他のアクターとクライアント アプリケーションがメッセージをアクターに (非同期に) "送信" するために使用されます。 Reliable Actors は複数のインターフェイスを実装できます。
+* **ActorProxy クラス**。 ActorProxy クラスは、アクター インターフェイスを介して公開されるメソッドを呼び出すためにクライアント アプリケーションで使用されます。 ActorProxy クラスは、次の 2 つの重要な機能を提供します。
+  
+  * 名前解決: クラスター内のアクターを特定できます (ホストされているクラスターのノードを検索できます)。
+  * エラー処理: たとえば、アクターをクラスター内の別のノードに再配置する必要があるエラーが発生した後に、メソッドの呼び出しを再試行し、アクターの場所を再解決することができます。
+
+アクター インターフェイスに関する次の規則に注意する必要があります。
+
+* アクター インターフェイス メソッドはオーバー ロードできません。
+* アクター インターフェイス メソッドには、out、ref、optional パラメーターを使用できません。
+* ジェネリック インターフェイスはサポートされません。
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
 Service Fabric アプリケーションには、アプリケーションの機能を提供する際にそれぞれ特定の役割を果たすサービスが 1 つ以上含まれます。 直前のセクションでインストールしたジェネレーターを使用すると、初めてサービスを作成したり、後で追加したりする作業が簡単になります。  Eclipse 用のプラグインを使用して、Service Fabric Java アプリケーションを作成、ビルド、およびデプロイすることもできます。 [Eclipse を使用した初めての Java アプリケーションの作成とデプロイ](service-fabric-get-started-eclipse.md)に関するページを参照してください。 このクイック スタートでは、Yeoman を使用して、カウンター値の格納と取得という単一のサービスを行うアプリケーションを作成します。
@@ -62,6 +78,118 @@ Service Fabric アプリケーションには、アプリケーションの機�
 2. アプリケーションに名前を付けます。
 3. 最初のサービスの種類を選択し、名前を付けます。 このチュートリアルでは、[Reliable Actor サービス] を選択します。 他の種類のサービスの詳細については、「[Service Fabric プログラミング モデルの概要](service-fabric-choose-framework.md)」を参照してください。
    ![Java 用 Service Fabric Yeoman ジェネレーター][sf-yeoman]
+
+アプリケーションに "HelloWorldActorApplication"、アクターに "HelloWorldActor" という名前をそれぞれ付けた場合には、以下のスキャフォールディングが作成されます。
+
+```bash
+HelloWorldActorApplication/
+├── build.gradle
+├── HelloWorldActor
+│   ├── build.gradle
+│   ├── settings.gradle
+│   └── src
+│       └── reliableactor
+│           ├── HelloWorldActorHost.java
+│           └── HelloWorldActorImpl.java
+├── HelloWorldActorApplication
+│   ├── ApplicationManifest.xml
+│   └── HelloWorldActorPkg
+│       ├── Code
+│       │   ├── entryPoint.sh
+│       │   └── _readme.txt
+│       ├── Config
+│       │   ├── _readme.txt
+│       │   └── Settings.xml
+│       ├── Data
+│       │   └── _readme.txt
+│       └── ServiceManifest.xml
+├── HelloWorldActorInterface
+│   ├── build.gradle
+│   └── src
+│       └── reliableactor
+│           └── HelloWorldActor.java
+├── HelloWorldActorTestClient
+│   ├── build.gradle
+│   ├── settings.gradle
+│   ├── src
+│   │   └── reliableactor
+│   │       └── test
+│   │           └── HelloWorldActorTestClient.java
+│   └── testclient.sh
+├── install.sh
+├── settings.gradle
+└── uninstall.sh
+```
+## <a name="reliable-actors-basic-building-blocks"></a>Reliable Actors の基本的な構成要素
+前に説明した基本的な概念は、信頼性の高いアクター サービスの基本的な構築ブロックになります。
+
+### <a name="actor-interface"></a>アクター インターフェイス
+アクターのインターフェイス定義が含まれています。 このインターフェイスは、アクター実装とアクターを呼び出すクライアントが共有するアクター コントラクトを定義するため、通常は、他の複数のプロジェクトで共有できる、アクター実装とは別の場所で定義します。
+
+`HelloWorldActorInterface/src/reliableactor/HelloWorldActor.java`:
+
+```java
+public interface HelloWorldActor extends Actor {
+    @Readonly   
+    CompletableFuture<Integer> getCountAsync();
+
+    CompletableFuture<?> setCountAsync(int count);
+}
+```
+
+### <a name="actor-service"></a>アクター サービス
+これには、アクターの実装とアクター登録コードが含まれます。 アクターのクラスでは、アクター インターフェイスを実装します。 アクターは、ここで処理を実行します。
+
+`HelloWorldActor/src/reliableactor/HelloWorldActorImpl`:
+
+```java
+@ActorServiceAttribute(name = "HelloWorldActor.HelloWorldActorService")
+@StatePersistenceAttribute(statePersistence = StatePersistence.Persisted)
+public class HelloWorldActorImpl extends ReliableActor implements HelloWorldActor {
+    Logger logger = Logger.getLogger(this.getClass().getName());
+
+    protected CompletableFuture<?> onActivateAsync() {
+        logger.log(Level.INFO, "onActivateAsync");
+
+        return this.stateManager().tryAddStateAsync("count", 0);
+    }
+
+    @Override
+    public CompletableFuture<Integer> getCountAsync() {
+        logger.log(Level.INFO, "Getting current count value");
+        return this.stateManager().getStateAsync("count");
+    }
+
+    @Override
+    public CompletableFuture<?> setCountAsync(int count) {
+        logger.log(Level.INFO, "Setting current count value {0}", count);
+        return this.stateManager().addOrUpdateStateAsync("count", count, (key, value) -> count > value ? count : value);
+    }
+}
+```
+
+### <a name="actor-registration"></a>アクター登録
+アクター サービスは、Service Fabric ランタイムのサービスの種類に登録する必要があります。 アクター サービスでアクター インスタンスを実行するには、アクター型もアクター サービスに登録する必要があります。 `ActorRuntime` 登録メソッドは、アクターに対してこの処理を実行します。
+
+`HelloWorldActor/src/reliableactor/HelloWorldActorHost`:
+
+```java
+public class HelloWorldActorHost {
+
+    public static void main(String[] args) throws Exception {
+
+        try {
+            ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new ActorServiceImpl(context, actorType, ()-> new HelloWorldActorImpl()), Duration.ofSeconds(10));
+
+            Thread.sleep(Long.MAX_VALUE);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw e;
+        }
+    }
+}
+```
 
 ## <a name="build-the-application"></a>アプリケーションのビルド
 Service Fabric Yeoman テンプレートには、[Gradle](https://gradle.org/) のビルド スクリプトが含まれています。このスクリプトを使用して、端末からアプリケーションをビルドすることができます。
@@ -229,4 +357,3 @@ Service Fabric のシステム レベルのサポート。ネイティブの Ser
 [sf-yeoman]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-yeoman.png
 [sfx-primary]: ./media/service-fabric-create-your-first-linux-application-with-java/sfx-primary.png
 [sf-eclipse-templates]: ./media/service-fabric-create-your-first-linux-application-with-java/sf-eclipse-templates.png
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
+ms.openlocfilehash: bd252d7df2fc15aaa24d1a1ed7aaf6e00d301410
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 03d43476c1946221538acccd1251c64ed3f02e13
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-streaming-job-in-azure-stream-analytics"></a>Azure Stream Analytics でストリーミング ジョブを実行する方法
 ジョブの入力、クエリ、および出力をすべて指定したら、Stream Analytics ジョブを開始できます。
@@ -35,6 +34,7 @@ ms.lasthandoff: 08/29/2017
    
    ![Azure portal Start job Button](./media/stream-analytics-run-a-job/4-stream-analytics-run-a-job.png)  
 2. このジョブが出力の生成をいつ開始するかを決定する **[出力の開始]** 値を指定します。 過去に開始されたことがないジョブの既定の設定は **[ジョブの開始時刻]** です。ここでは、ジョブはデータの処理を直ちに開始します。 **[カスタム]** を使用して、過去の時刻 (履歴データを使用します) または未来の時刻 (その時刻まで処理を遅らせます) を指定することもできます。 ジョブがこれまでに開始されて停止されている場合は、最後の出力時刻からジョブを再開してデータの損失を回避するための **[最後に停止した時刻]** オプションを使用できます。  
+注: パーティションを使用する場合、[最後に停止した時刻] は、すべてのパーティションの最後の出力時刻の最小値を表します。
    
    ![開始ストリーミング ジョブ時刻](./media/stream-analytics-run-a-job/2-stream-analytics-run-a-job.png)  
    
@@ -54,5 +54,4 @@ ms.lasthandoff: 08/29/2017
 * [Azure Stream Analytics ジョブのスケーリング](stream-analytics-scale-jobs.md)
 * [Stream Analytics Query Language Reference (Stream Analytics クエリ言語リファレンス)](https://msdn.microsoft.com/library/azure/dn834998.aspx)
 * [Azure Stream Analytics management REST API reference (Azure ストリーム分析の管理 REST API リファレンス)](https://msdn.microsoft.com/library/azure/dn835031.aspx)
-
 

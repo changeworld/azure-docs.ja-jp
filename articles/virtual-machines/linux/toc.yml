@@ -57,7 +57,7 @@
       href: powershell-samples.md
 - name: 概念
   items:
-    - name: Azure リソース マネージャー
+    - name: Azure Resource Manager
       href: ../../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json
     - name: リージョンと可用性
       href: regions-and-availability.md
@@ -67,7 +67,7 @@
       href: endorsed-distros.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
-    - name: Storage
+    - name: ストレージ
       href: azure-vm-storage-overview.md
     - name: ネットワーク
       href: network-overview.md

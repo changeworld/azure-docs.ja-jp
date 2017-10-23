@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/16/2017
 ms.author: xshi
 ms.openlocfilehash: 557f0cdf375b345e0dbe0526f5a5bd3c050dec38
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-sparkfun-esp8266-thing-dev-to-azure-iot-hub-in-the-cloud"></a>Sparkfun ESP8266 Thing Dev をクラウドの Azure IoT Hub に接続する
 

@@ -15,15 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 89bb5d255db9ab266d04169a3101e2b694236029
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="samples-on-the-data-science-virtual-machines-dsvm"></a>データ サイエンス仮想マシン (DSVM) に関するサンプル
 
 DSVM には、Jupyter Notebook 形式の完全に動作するサンプルと、Jupyter ベースでないいくつかのサンプルが付属します。 デスクトップまたはアプリケーション メニューの `Jupyter` アイコンをクリックすると Jupyter にアクセスできます。  
@@ -106,5 +103,4 @@ DSVM のログインと同じパスワードでサインインします。
 
 ## <a name="xgboost"></a>XGBoost 
 <br/>![XGBoost サンプル](./media/xgboost-samples.png)<br/>
-
 

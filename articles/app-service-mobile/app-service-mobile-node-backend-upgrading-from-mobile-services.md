@@ -14,12 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 5fc61fed674f0d2fc64bc29c064e7e872b4f2e68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upgrade-your-existing-nodejs-azure-mobile-service-to-app-service"></a>App Service への既存の Node.js Azure Mobile Service のアップグレード
 App Service Mobile は、Microsoft Azure を使用してモバイル アプリケーションを構築する新しい方法です。 詳細については、「 [Mobile Apps とは]」を参照してください。
@@ -68,8 +67,7 @@ Mobile Services クライアント SDK と新しい Mobile Apps サーバー SDK
 ```npm i -g azure-mobile-apps-compatibility```
 
 ## <a name="obtain-ams-scripts"></a> Azure Mobile Services スクリプトの取得
-* 
-            [Azure Portal] にログインします。
+* [Azure Portal] にログインします。
 * **[すべてのリソース]** または **[App Services]** を使用して Mobile Services サイトを見つけます。
 * サイト内で **[ツール]** -> **[Kudu]** -> **[移動]** の順にクリックして Kudu のサイトを開きます。
 * **[デバッグ コンソール]** -> **[PowerShell]** をクリックしてデバッグ コンソールを開きます。
@@ -88,16 +86,14 @@ scripts ディレクトリが格納されているディレクトリから次の
 ## <a name="deploy-ama-app"></a> Azure Mobile Apps バックエンドのデプロイ
 デプロイ時には次の作業が必要となります。
 
-1. 
-            [Azure Portal] で新しいモバイル アプリを作成します。
+1. [Azure Portal] で新しいモバイル アプリを作成します。
 2. 接続先のデータベースに対して `createViews.sql` スクリプトを実行します。
 3. モバイル サービスに関連付けられているデータベースを新しい App Service に関連付けます。
 4. 他のリソース (Notification Hubs など) があれば新しい App Service に関連付けます。
 5. 生成されたコードを新しいサイトにデプロイします。
 
 ### <a name="create-a-new-mobile-app"></a>新しい Mobile App を作成する
-1. 
-            [Azure Portal] にログインします。
+1. [Azure Portal] にログインします。
 2. **[+ 新規]** > **[Web + モバイル]** > **[モバイル アプリ]** の順にクリックし、モバイル アプリ バックエンドの名前を入力します。
 3. **[リソース グループ]**で、既存のリソース グループを選択するか、新しく作成します (アプリと同じ名前を使用)。
 
@@ -114,8 +110,7 @@ scripts ディレクトリが格納されているディレクトリから次の
 ### <a name="link-the-database-to-your-app-service"></a>App Service へのデータベースの関連付け
 App Service に既存のデータベースを関連付けるには、次の作業を行います。
 
-* 
-            [Azure Portal] で、App Service を開きます。
+* [Azure Portal] で、App Service を開きます。
 * **[すべての設定]** -> **[データ接続]** の順に選択します。
 * **[+ 追加]**をクリックします。
 * ボックスの一覧から **[SQL Database]**
@@ -169,8 +164,7 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [認証の概念]: ../app-service/app-service-authentication-overview.md
 [認証のクイック スタート]: app-service-mobile-auth.md
 
-
-            [Azure Portal]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [OData]: http://www.odata.org
 [Promise]: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
 [basicapp sample on GitHub]: https://github.com/azure/azure-mobile-apps-node/tree/master/samples/basic-app
@@ -183,4 +177,3 @@ Azure Mobile Apps は、そのサービス内から Azure Active Directory、Fac
 [Microsoft SQL Server 2014 Express]: http://www.microsoft.com/en-us/server-cloud/Products/sql-server-editions/sql-server-express.aspx
 [ExpressJS Middleware]: http://expressjs.com/guide/using-middleware.html
 [Winston]: https://github.com/winstonjs/winston
-

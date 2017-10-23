@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/21/2017
 ms.author: magoedte
 ms.openlocfilehash: 9a4709f298131722e9c473a19f7eee0aebf7e1e6
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Log Analytics でのデータ使用状況の分析
 Log Analytics には、収集されたデータの量、データを送信したコンピューター、送信されたさまざまな種類のデータに関する情報が含まれます。  **[ログ分析の利用状況]** ダッシュボードを使用すると、Log Analytics サービスに送信されたデータの量を確認できます。 ダッシュボードには、各ソリューションによって収集されたデータの量と、お使いのコンピューターが送信しているデータの量が表示されます。

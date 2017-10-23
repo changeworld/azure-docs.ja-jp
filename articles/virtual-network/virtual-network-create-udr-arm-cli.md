@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/12/2017
 ms.author: jdial
 ms.openlocfilehash: e5d9519998346619093f443b740c8904283f76e8
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-user-defined-routes-udr-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用してユーザー定義ルート (UDR) を作成する
 

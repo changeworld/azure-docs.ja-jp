@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 05/18/2017
 ms.author: jeedes
 ms.openlocfilehash: 9a36d686ba39b5168860a20e8c4db357888df6a7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-confluence-by-resolution-gmbh"></a>チュートリアル: Azure Active Directory と SAML SSO for Confluence by resolution GmbH の統合
 
@@ -237,7 +237,7 @@ SAML SSO for Confluence by resolution GmbH の場合、プロビジョニング�
 
     ![従業員の追加](./media/active-directory-saas-samlssoconfluence-tutorial/user1.png) 
 
-3. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
+3. [Users]\(ユーザー\) セクションで、**[Add users]\(ユーザーの追加\)** タブをクリックします。**[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
     ![従業員の追加](./media/active-directory-saas-samlssoconfluence-tutorial/user2.png) 
 

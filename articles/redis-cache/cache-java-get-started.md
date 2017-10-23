@@ -14,12 +14,11 @@ ms.tgt_pltfrm: cache-redis
 ms.workload: tbd
 ms.date: 08/31/2017
 ms.author: sdanie
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: b433eecb0424db85b616c40c5f0cdfc88692cef1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-azure-redis-cache-with-java"></a>Java で Azure Redis Cache を使用する方法
 > [!div class="op_single_selector"]

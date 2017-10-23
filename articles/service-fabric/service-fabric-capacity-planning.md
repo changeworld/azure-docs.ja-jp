@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
 ms.openlocfilehash: fc98bdd8b3597810b0c07563af507e93c611f769
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="capacity-planning-for-service-fabric-applications"></a>Service Fabric アプリケーションの容量計画
 このドキュメントでは、Azure Service Fabric アプリケーションを実行するために必要なリソース (CPU、RAM、ディスク ストレージ) の量を見積もる方法について説明します。 リソース要件は、通常、時の経過と共に変化します。 一般的に、サービスの開発およびテスト中はリソースをあまり必要とせず、運用を開始したりアプリケーションが多くのユーザーに使用され始めたりすると、より多くのリソースが必要になります。 アプリケーションを設計するときは、長期的な要件を考慮し、高い顧客要求を満たすためにサービスを拡張できるようにしてください。

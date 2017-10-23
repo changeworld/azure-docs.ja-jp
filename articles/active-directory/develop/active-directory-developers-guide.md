@@ -1,6 +1,6 @@
 ---
-title: "開発者向けの azure Active Directory |Microsoft ドキュメント"
-description: "この記事は、Microsoft 作業では署名の概要を説明し、学校アカウントを使用して Azure Active Directory です。"
+title: "開発者のための Azure Active Directory | Microsoft Docs"
+description: "この記事では、Azure Active Directory を使用した Microsoft の職場および学校アカウントのサインインの概要について説明します。"
 services: active-directory
 author: dstrockis
 manager: mbaldwin
@@ -15,60 +15,60 @@ ms.date: 04/07/2017
 ms.author: dastrock
 ms.custom: aaddev
 ms.openlocfilehash: dce813b885d492343428428056a2e8aada27b461
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-active-directory-for-developers"></a>開発者向けの azure Active Directory
-Azure Active Directory は、クラウド id サービスにより、開発者は安全にサインインがあるユーザーが職場または学校のアカウントが Microsoft によってサポートです。  こちらのドキュメントでは、業界標準の認証プロトコル、OAuth および OpenID Connect を使用してアプリケーションを Azure AD のサポートを追加する方法を示します。
+# <a name="azure-active-directory-for-developers"></a>開発者のための Azure Active Directory
+Azure Active Directory は、開発者が、Microsoft によってサポートされる職場または学校アカウントでユーザーが安全にサインインできるようにすることができるクラウド ID サービスです。  このドキュメントでは、業界標準の認証プロトコルである OAuth と OpenID Connect を使用して、アプリケーションに Azure AD のサポートを追加する方法を示します。
 
 | | |
 | --- | --- |
 |[認証の基本](active-directory-authentication-scenarios.md) | Azure AD での認証の概要 |
-|[アプリケーションの種類](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Azure AD によってサポートされる認証のシナリオの概要 |                                
+|[アプリケーションの種類](active-directory-authentication-scenarios.md#application-types-and-scenarios) | Azure AD でサポートされる認証シナリオの概要 |                                
                                                                               
 ## <a name="get-started"></a>作業開始
-これらの画面の指示に従って設定では、Azure Active Directory ユーザーのサインイン、認証ライブラリを使用して説明します。
+これらのガイド付きの手順では、認証ライブラリを使用して、Azure Active Directory ユーザーがサインインできるようにする方法について説明します。
 
 |  |  |  |  |
 | --- | --- | --- | --- |
 | <center>![モバイル アプリとデスクトップ アプリ](./media/active-directory-developers-guide/NativeApp_Icon.png)<br />モバイル アプリとデスクトップ アプリ</center> | [概要](active-directory-authentication-scenarios.md#native-application-to-web-api)<br /><br />[iOS](active-directory-devquickstarts-ios.md)<br /><br />[Android](active-directory-devquickstarts-android.md) | [.NET](active-directory-devquickstarts-dotnet.md)<br /><br />[Windows](active-directory-devquickstarts-windowsstore.md)<br /><br />[Xamarin](active-directory-devquickstarts-xamarin.md) | [Cordova](active-directory-devquickstarts-cordova.md)<br /><br />[OAuth 2.0](active-directory-protocols-oauth-code.md) |
-| <center>![Web アプリ](./media/active-directory-developers-guide/Web_app.png)<br />Web アプリ</center> | [概要](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)<br /><br />[OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) |  |
-| <center>![単一ページ アプリケーション](./media/active-directory-developers-guide/SPA.png)<br />単一ページ アプリケーション</center> | [概要](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |  |
-| <center>![Web Api](./media/active-directory-developers-guide/Web_API.png)<br />Web Api</center> | [概要](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[NodeJS](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
-| <center>![Service to service](./media/active-directory-developers-guide/Service_App.png)<br />Service to Service</center> | [概要](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[OAuth 2.0 クライアント資格情報](active-directory-protocols-oauth-service-to-service.md) |  |
+| <center>![Web Apps](./media/active-directory-developers-guide/Web_app.png)<br />Web Apps</center> | [概要](active-directory-authentication-scenarios.md#web-browser-to-web-application)<br /><br />[ASP.NET](active-directory-devquickstarts-webapp-dotnet.md)<br /><br />[Java](active-directory-devquickstarts-webapp-java.md) | [NodeJS](active-directory-devquickstarts-openidconnect-nodejs.md)<br /><br />[OpenID Connect 1.0](active-directory-protocols-openid-connect-code.md) |  |
+| <center>![シングル ページ アプリ](./media/active-directory-developers-guide/SPA.png)<br />シングル ページ アプリ</center> | [概要](active-directory-authentication-scenarios.md#single-page-application-spa)<br /><br />[AngularJS](active-directory-devquickstarts-angular.md)<br /><br />[JavaScript](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi) |  |  |
+| <center>![Web API](./media/active-directory-developers-guide/Web_API.png)<br />Web API</center> | [概要](active-directory-authentication-scenarios.md#web-application-to-web-api)<br /><br />[ASP.NET](active-directory-devquickstarts-webapi-dotnet.md)<br /><br />[NodeJS](active-directory-devquickstarts-webapi-nodejs.md) | &nbsp; |
+| <center>![サービス間](./media/active-directory-developers-guide/Service_App.png)<br />サービス間</center> | [概要](active-directory-authentication-scenarios.md#daemon-or-server-application-to-web-api)<br /><br />[.NET](active-directory-code-samples.md#server-or-daemon-application-to-web-api)<br /><br />[OAuth 2.0 クライアント資格情報](active-directory-protocols-oauth-service-to-service.md) |  |
 
 ## <a name="guides"></a>ガイド
-これらの記事では、Azure Active Directory での一般的なタスクを実行する方法を通知します。
+次の記事では、Azure Active Directory を使用して一般的なタスクを実行する方法について説明しています。
 
 |                                                                           |  |
 |---------------------------------------------------------------------------| --- |
 |[アプリの登録](active-directory-integrating-applications.md)           | Azure AD にアプリを登録する方法 |
-|[マルチ テナント アプリ](active-directory-devhowto-multi-tenant-overview.md)    | Microsoft 作業アカウントにサインインする方法 |
-|[OAuth および OpenID 接続します。](active-directory-protocols-openid-connect-code.md)| サインインする方法のユーザーと呼び出し web Api の最新の認証プロトコルを使用して |
-|[. その他のガイド](active-directory-developers-guide-index.md#guides)        |     |
+|[マルチテナント アプリ](active-directory-devhowto-multi-tenant-overview.md)    | Microsoft の職場アカウントでサインインできるようにする方法 |
+|[OAuth と OpenID Connect](active-directory-protocols-openid-connect-code.md)| 最新の認証プロトコルを使用して、ユーザーがサインインできるようにし、Web API を呼び出す方法 |
+|[その他のガイド...](active-directory-developers-guide-index.md#guides)        |     |
 
 ## <a name="reference"></a>リファレンス
-これらの記事では、Api、プロトコル メッセージ、および Azure Active Directory で使用される用語の詳細な情報を提供します。
+次の記事には、Azure Active Directory で使用される API、プロトコル メッセージ、および用語に関する詳細な情報が記載されています。
 
 |                                                                                   | |
 | ----------------------------------------------------------------------------------| --- |
-| [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)   | ライブラリと Azure AD によって提供される Sdk の概要 |
-| [コード サンプル](active-directory-code-samples.md)                                  | すべての Azure AD コード サンプルの一覧 |
-| [用語集](active-directory-dev-glossary.md)                                      | 用語と、このドキュメント全体で使用される単語の定義 |
-| [複数の参考資料しています.](active-directory-developers-guide-index.md#reference)|     |
+| [認証ライブラリ (ADAL)](active-directory-authentication-libraries.md)   | Azure AD が提供するライブラリと SDK の概要 |
+| [コード サンプル](active-directory-code-samples.md)                                  | Azure AD のコード サンプルの全一覧 |
+| [用語集](active-directory-dev-glossary.md)                                      | このドキュメント全体で使用されている用語と語句の定義 |
+| [その他の参考資料...](active-directory-developers-guide-index.md#reference)|     |
 
 ## <a name="help--support"></a>ヘルプとサポート
-これらは、Azure Active Directory での開発のヘルプを表示する最適な場所です。
+これらは、Azure Active Directory での開発に関するサポートを求めるのに最適な場所です。
 
 |  |  
 |---|
-|[スタック オーバーフローの`azure-active-directory`と`adal`タグ](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
+|[Stack Overflow の `azure-active-directory` タグと `adal` タグ](http://stackoverflow.com/questions/tagged/azure-active-directory+or+adal)      |
 |[Azure Active Directory に関するフィードバック](https://feedback.azure.com/forums/169401-azure-active-directory/category/164757-developer-experiences)|
-| [Microsoft デベロッパー チャット (無料時間が限られている) を試す](http://aka.ms/devchat) |
+| [Microsoft デベロッパー チャット (無料期間あり) を試す](http://aka.ms/devchat) |
 
 <br />
 
 > [!NOTE]
-> Microsoft をサインインする必要がある場合個人アカウントは、することも検討して、 [Azure AD v2.0 エンドポイント](active-directory-appmodel-v2-overview.md)です。  Azure AD v2.0 エンドポイントは、1 つの認証システムに (Azure AD) から Microsoft 作業アカウント (&)、個人アカウントは、Microsoft の統一がします。
+> Microsoft の個人アカウントでサインインできるようにする必要がある場合は、[Azure AD v2.0 エンドポイント](active-directory-appmodel-v2-overview.md)の使用を検討してください。  Azure AD v2.0 エンドポイントは、(Azure AD から) Microsoft の個人アカウントと Microsoft の職場アカウントを 1 つの認証システムに統合します。

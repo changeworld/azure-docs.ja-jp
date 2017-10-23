@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 899f20b3642612386f2513c9c8649cd845be826e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="parallel-bulk-data-import-using-sql-partition-tables"></a>SQL パーティション テーブルを使用した並列の一括データ インポート
 このドキュメントでは、データを SQL Server データベースに高速に並列一括インポートするためのパーティション分割されたテーブルを作成する方法について説明します。 SQL Database へのビッグ データの読み込み/転送では、"*パーティション テーブルとビュー*" を使用することによって、SQL DB へのデータのインポートと以降のクエリを向上させることができます。 
@@ -180,5 +179,4 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="advanced-analytics-process-and-technology-in-action-example"></a>実行中の Advanced Analytics Process and Technology の例
 パブリック データセットを使用した Cortana Analytics Process のエンドツーエンドのチュートリアル例については、「 [Cortana Analytics Process の活用: SQL Server を使用する](sql-walkthrough.md)」を参照してください。
-
 

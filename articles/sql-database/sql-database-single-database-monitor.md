@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 50d635191ff65f8b892595c954673b2820b22ecb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-database-performance-in-azure-sql-database"></a>Azure SQL Database におけるデータベース パフォーマンスの監視
 Azure での SQL データベースのパフォーマンスの監視は、選択したデータベース パフォーマンスのレベルに対するリソース使用率を監視することから始めます。 監視することで、データベースに余分な容量があるかどうかや、リソースが上限に達したことで問題が発生しているかどうかを判断できます。また、データベースのパフォーマンス レベルと[サービス レベル](sql-database-service-tiers.md)を調整する必要があるかどうかを判断することもできます。 データベースの監視には、[Azure Portal](https://portal.azure.com) のグラフィカル ツールや SQL の[動的管理ビュー](https://msdn.microsoft.com/library/ms188754.aspx)を使用できます。
@@ -217,4 +216,3 @@ SQL Database 分析の場合、[sys.resource_stats](https://msdn.microsoft.com/l
 
 - [Azure SQL Database の自動チューニング](sql-database-automatic-tuning.md)を使用して、データベースのインデックスとクエリ実行プランを自動チューニングします。
 - [Azure SQL Intelligent Insights](sql-database-intelligent-insights.md) を使用して、データベースのパフォーマンスを自動的に監視します。 この機能は、パフォーマンスの問題に関する診断情報と根本原因分析を提供します。
-

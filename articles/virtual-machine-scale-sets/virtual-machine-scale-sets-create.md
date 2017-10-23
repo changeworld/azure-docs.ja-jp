@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: adegeo
 ms.openlocfilehash: 32af01aa545c541688128a7ae6bbb82a0e046f2d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-deploy-a-virtual-machine-scale-set"></a>仮想マシン スケール セットの作成とデプロイ
 仮想マシン スケール セットを使用すると、まったく同じ仮想マシンを簡単にまとめてデプロイし、管理することができます。 スケール セットは、最高水準のスケーラビリティが要求されるアプリケーションのための、拡張性が高くカスタマイズしやすいコンピューティング レイヤーです。Windows プラットフォーム イメージのほか、Linux プラットフォーム イメージ、カスタム イメージ、拡張機能をサポートしています。 スケール セットの詳細については、「[仮想マシン スケール セットの概要](virtual-machine-scale-sets-overview.md)」を参照してください。
@@ -179,8 +179,8 @@ Add-AzureRmVmssNetworkInterfaceConfiguration -VirtualMachineScaleSet $vmssConfig
 New-AzureRmVmss -ResourceGroupName $rg -Name "MyScaleSet1" -VirtualMachineScaleSet $vmssConfig
 ```
 
-### <a name="using-a-custom-virtual-machine-image"></a>カスタムの仮想マシン イメージを使用します。
-スケール、ギャラリーから仮想マシン イメージを参照するのではなく、独自のカスタム イメージからセットを作成する場合は、_セット AzureRmVmssStorageProfile_コマンドは次のようになります。
+### <a name="using-a-custom-virtual-machine-image"></a>カスタム仮想マシン イメージの使用
+ギャラリーにある仮想マシン イメージを参照するのではなく、独自のカスタム イメージからスケール セットを作成する場合の _Set-AzureRmVmssStorageProfile_ コマンドは、次のようになります。
 ```PowerShell
 Set-AzureRmVmssStorageProfile -OsDiskCreateOption FromImage -ManagedDisk PremiumLRS -OsDiskCaching "None" -OsDiskOsType Linux -ImageReferenceId (Get-AzureRmImage -ImageName $VMImage -ResourceGroupName $rg).id
 ```

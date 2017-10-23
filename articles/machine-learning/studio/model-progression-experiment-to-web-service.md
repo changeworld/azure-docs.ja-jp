@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 383f0a466f92a230e49c3d1e96d306a0b7d67da2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-a-machine-learning-model-progresses-from-an-experiment-to-an-operationalized-web-service"></a>Machine Learning モデルが実験から運用可能な Web サービスになるまでの過程
 Azure Machine Learning Studio によって提供される対話形式のキャンバスで、予測分析モデルを表す "***実験***" を開発、実行、テスト、反復処理できます。 以下に対応する、多様なモジュールが用意されています。
@@ -119,5 +118,4 @@ Machine Learning Studio を使用して予測 Web サービスを開発し、デ
 
 * [Machine Learning のチュートリアル: Azure Machine Learning Studio で初めての実験を作成する](create-experiment.md)
 * [チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)
-
 

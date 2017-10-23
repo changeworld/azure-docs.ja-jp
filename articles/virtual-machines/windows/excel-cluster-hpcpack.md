@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 06/01/2017
 ms.author: danlep
 ms.openlocfilehash: 63babd94fdab15217cfb0757e4cd6efe458a628d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-running-excel-and-soa-workloads-on-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Excel と SOA ワークロードを実行する
 この記事では、Azure クイックスタート テンプレートまたは必要に応じて Azure PowerShell デプロイ スクリプトを使用して、Azure Virtual Machines に Microsoft HPC Pack 2012 R2 クラスターをデプロイする方法を示します。 クラスターは、HPC Pack で Microsoft Excel またはサービス指向アーキテクチャ (SOA) のワークロードを実行するように設計されている Azure Marketplace VM イメージを使用します。 クラスターを使用して、オンプレミスのクライアント コンピューターから Excel HPC サービスおよび SOA サービスを実行できます。 Excel の HPC サービスには、Excel ブックのオフロードと Excel ユーザー定義関数、または UDF が含まれます。
@@ -263,7 +263,7 @@ Excel の UDF を実行するには、前記の手順 1 ～ 3 に従ってクラ
 
 クラスターが正常にデプロイされた後、引き続き以下の手順に従って、サンプルの組み込み Excel UDF を実行します。 Excel UDF をカスタマイズした場合は、 [リソース](http://social.technet.microsoft.com/wiki/contents/articles/1198.windows-hpc-and-microsoft-excel-resources-for-building-cluster-ready-workbooks.aspx) を参考にして、XLL を作成し、IaaS クラスターにそれをデプロイしてください。
 
-1. 新しい Excel ブックを開きます。 **[開発]** リボンで **[アドイン]** をクリックします。 次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP_HOME%Bin\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。 ClusterUDF32 がクライアント コンピューターに存在しない場合は、ヘッド ノードの %CCP_HOME%Bin\XLL32 フォルダーからコピーします。
+1. 新しい Excel ブックを開きます。 **[開発]** リボンで **[アドイン]** をクリックします。次に、ダイアログ ボックスで **[参照]** をクリックし、%CCP_HOME%Bin\XLL32 フォルダーに移動して、サンプルの ClusterUDF32.xll を選択します。 ClusterUDF32 がクライアント コンピューターに存在しない場合は、ヘッド ノードの %CCP_HOME%Bin\XLL32 フォルダーからコピーします。
    
    ![UDF を選択する][udf]
 2. **[ファイル]** > 、**[オプション]**、 > **[詳細]** の順にクリックします。 **[数式]** の **[計算クラスターでユーザー定義の XLL 関数を実行できるようにする]** をオンにします。 **[オプション]** をクリックし、**[クラスター ヘッド ノード名]** に完全なクラスター名を入力します  ここでは、長いクラスター名にマシン全体の変数を使用できます。 ここでは、長いクラスター名にマシン全体の変数を使用できます)。

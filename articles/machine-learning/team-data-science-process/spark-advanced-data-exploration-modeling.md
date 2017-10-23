@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 686231a03b962dce9a1980affd308e52b36d2987
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="advanced-data-exploration-and-modeling-with-spark"></a>Spark を使用した高度なデータ探索とモデリング
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -1443,5 +1442,4 @@ BoostedTreeRegressionFileLoc = modelDir + "GradientBoostingTreeRegression_2016-0
 Spark MlLib を使用して回帰モデルと分類モデルを作成しました。これで、これらのモデルにスコアを付け、評価する方法を学習する準備ができました。
 
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付け、評価する方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページをご覧ください。
-
 

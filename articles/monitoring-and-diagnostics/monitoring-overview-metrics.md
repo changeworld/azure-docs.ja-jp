@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: johnkem
+ms.openlocfilehash: eb519aab87c13e8836bf1d41992812762f0cd737
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fbfb3d026540b45a28751d6c3ab0f8dce444e0cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="overview-of-metrics-in-microsoft-azure"></a>Microsoft Azure のメトリックの概要
 この記事では、Microsoft Azure のメトリック概要、利点、および使用方法について説明します。  
 
@@ -127,23 +125,6 @@ Azure リソースの中には、複数のインスタンスをスケールア�
  ![Azure Monitor のメトリックと自動スケール](./media/monitoring-overview-metrics/MetricsOverview5.png)
 
 ## <a name="learn-about-supported-services-and-metrics"></a>サポートされているサービスとメトリックについて
-Azure Monitor は、新しいメトリック インフラストラクチャです。 Azure Portal と、新しいバージョンの Azure Monitor API で、次の Azure サービスをサポートしています。
-
-* VM (Azure Resource Manager ベース)
-* Virtual Machine Scale Sets
-* Batch
-* Event Hubs 名前空間
-* Service Bus 名前空間 (Premium SKU のみ)
-* SQL Database (バージョン 12)
-* Elastic SQL Pool
-* Websites
-* Web サーバー ファーム
-* Logic Apps
-* IoT Hub
-* Redis Cache
-* ネットワーク: Application Gateway
-* Search
-
 サポートされているサービスとそのメトリックの詳細な一覧については、[Azure Monitor のメトリック - リソースの種類ごとのサポートされているメトリック](monitoring-supported-metrics.md)に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
@@ -152,4 +133,3 @@ Azure Monitor は、新しいメトリック インフラストラクチャで�
 * [自動スケールの一般的なメトリック](insights-autoscale-common-metrics.md)
 * [アラート ルールの作成方法](insights-alerts-portal.md)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md)
-

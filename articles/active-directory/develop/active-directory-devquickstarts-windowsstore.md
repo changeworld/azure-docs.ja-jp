@@ -16,10 +16,10 @@ ms.date: 09/16/2016
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 6b5189dc06d7f8b0ed4426944948b904feba847e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-ad-with-windows-store-apps"></a>Azure AD と Windows ストア アプリの統合
 [!INCLUDE [active-directory-devquickstarts-switcher](../../../includes/active-directory-devquickstarts-switcher.md)]

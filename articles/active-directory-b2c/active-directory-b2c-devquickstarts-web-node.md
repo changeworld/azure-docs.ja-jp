@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 03/10/2017
 ms.author: xerners
 ms.openlocfilehash: c85b8f8434d1e837ac96ac63b9b37f990677ed6e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-add-sign-in-to-a-nodejs-web-app"></a>Azure AD B2C: Node.js Web アプリにサインインを追加する
 
@@ -362,7 +362,7 @@ exports.list = function(req, res){
 
 これらは、要求をビューに渡すだけの単純なルートです。 存在する場合はユーザーも渡されます。
 
-ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。 これは、サインイン ポリシーとサインアウト ポリシーを呼び出す単純なページです。 また、アカウント情報を取得するためにも使用できます。 ユーザーがサインインしている証拠を示すために要求でユーザーを渡す際に、条件付きの `if (!user)` を使用できることに注目してください。
+ルート ディレクトリの下に `/views/index.ejs` ビューを作成します。 これは、サインイン ポリシーとサインアウト ポリシーを呼び出す単純なページです。また、アカウント情報を取得するためにも使用できます。 ユーザーがサインインしている証拠を示すために要求でユーザーを渡す際に、条件付きの `if (!user)` を使用できることに注目してください。
 
 ```JavaScript
 <% if (!user) { %>

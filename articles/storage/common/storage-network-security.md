@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/25/2017
 ms.author: cbrooks
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: de52e9cb32e28d2f40a56743ed759b5d5d0a63f0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -62,7 +61,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 > ストレージ アカウントが、パブリック プレビューでサポートされるリージョンのいずれかにあることを確認します。
 >
 
-2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. 既定でアクセスを拒否するには、"選択したネットワーク" からのアクセスを許可するように選択します。  すべてのネットワークからのトラフィックを許可するには、"すべてのネットワーク" からのアクセスを許可するように選択します。
 4. *[保存]* をクリックして変更を保存します。
 
@@ -127,7 +126,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. 新しいネットワーク ルールで仮想ネットワークへのアクセスを許可するには、[仮想ネットワーク] で、[既存を追加] をクリックして既存の仮想ネットワークとサブネットを選択し、*[追加]*をクリックします。  新しい仮想ネットワークを作成してアクセスを許可するには、*[新規追加]* をクリックして、新しい仮想ネットワークを作成するために必要な情報を入力し、*[作成]* をクリックします。
 
@@ -220,7 +219,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. インターネット IP 範囲へのアクセスを許可するには、[ファイアウォール] の [アドレス範囲] に IP アドレスまたはアドレス範囲 (CIDR 形式) を入力します。
 5. IP ネットワーク ルールを削除するには、[...] をクリックしてルールのコンテキスト メニューを開き、[削除] をクリックします。
@@ -316,7 +315,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. [例外] で、許可する例外を選択します。
 5. *[保存]* をクリックして変更を保存します。
@@ -367,4 +366,3 @@ az storage account update --resource-group "myresourcegroup" --name "mystorageac
 [サービス エンドポイント](/azure/virtual-network/virtual-network-service-endpoints-overview)で Azure ネットワークのサービス エンドポイントについて確認してください。
 
 [Azure Storage セキュリティ ガイド](storage-security-guide.md)で Azure Storage のセキュリティを詳しく調べてください。
-

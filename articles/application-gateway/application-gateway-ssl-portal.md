@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/23/2017
 ms.author: davidmu
+ms.openlocfilehash: 2f7f5d4132e28c8c192d90d5f4bfb2a9034f8b8c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1c730c65194e169121e3ad1d1423963ee3ced8da
-ms.openlocfilehash: 23b5a529e7ee7db5615340352fb68b2e64e45972
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-an-application-gateway-for-ssl-offload-by-using-the-azure-portal"></a>Azure ポータルを使用して SSL オフロード用のアプリケーション ゲートウェイを構成する
 
@@ -89,5 +88,4 @@ Azure Application Gateway でカスタムの正常性プローブを構成する
 [2]: ./media/application-gateway-ssl-portal/figure2.png
 [3]: ./media/application-gateway-ssl-portal/figure3.png
 [4]: ./media/application-gateway-ssl-portal/figure4.png
-
 

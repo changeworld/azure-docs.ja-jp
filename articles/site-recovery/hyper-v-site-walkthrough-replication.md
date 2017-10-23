@@ -14,10 +14,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/22/2017
 ms.author: raynew
 ms.openlocfilehash: ca5bec5cf1152e6259b9fe7a869edd2d62b88e1a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-9-set-up-a-replication-policy-for-hyper-v-vm-replication-to-azure"></a>手順 9: Azure への Hyper-V VM のレプリケーションに関するレプリケーション ポリシーを設定する
 

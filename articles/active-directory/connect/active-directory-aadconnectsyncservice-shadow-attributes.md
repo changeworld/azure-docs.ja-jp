@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 0b6a7f22d744480a40a878c979986cdd7667109c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect 同期サービスのシャドウ属性
 Azure AD のほとんどの属性は、オンプレミスの Active Directory の場合と同じように表現されます。 ただし、一部の属性には特別な処理が必要であるため、Azure AD の属性値が Azure AD Connect で同期された値と異なる場合があります。
@@ -55,7 +55,7 @@ userPrincipalName 属性は、PowerShell を使用しているときに表示さ
 | オンプレミスの proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie.spencer@fabrikam.com</br>smtp:abbie@fabrikamonline.com |
 | Exchange Online の proxyAddresses | SMTP:abbie.spencer@fabrikamonline.com</br>smtp:abbie@fabrikamonline.com</br>SIP:abbie.spencer@fabrikamonline.com |
 
-この場合、**smtp:abbie.spencer@fabrikam.com** は、ドメインが確認されなかったため、削除されました。 ただし、Exchange では **SIP:abbie.spencer@fabrikamonline.com** の追加も行われています。 Fabrikam はオンプレミスで Lync/Skype を使用していませんが、Azure AD と Exchange Online ではその準備が行われます。
+この場合、**smtp:abbie.spencer@fabrikam.com** は、ドメインが確認されなかったため、削除されました。 ただし、Exchange では **SIP:abbie.spencer@fabrikamonline.com** の追加も行われています。Fabrikam はオンプレミスで Lync/Skype を使用していませんが、Azure AD と Exchange Online ではその準備が行われます。
 
 proxyAddresses のこのロジックは、**ProxyCalc** と呼ばれます。 ProxyCalc は、ユーザーに対する以下の変更のたびに呼び出されます。
 

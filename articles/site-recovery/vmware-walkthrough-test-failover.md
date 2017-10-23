@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
+ms.openlocfilehash: f1c0052862dd2b97dbea500615f7ac4eabc97217
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: f1a6df56a2bb0094d972d2e659057cc124156b88
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-12-run-a-test-failover-to-azure-for-vmware-vms"></a>手順 12: VMware VM の Azure へのテスト フェールオーバーを実行する
 
@@ -114,4 +113,3 @@ ms.lasthandoff: 08/22/2017
 - さまざまな種類のフェールオーバーとそれらを実行する方法の[詳細を確認](site-recovery-failover.md)します。
 - レプリケートやフェールバックではなく、マシンを移行する場合は、[詳細](site-recovery-migrate-to-azure.md#migrate-on-premises-vms-and-physical-servers)を確認してください。
 - [フェールバックの詳細を確認して](site-recovery-failback-azure-to-vmware.md)、Azure VM をオンプレミスのプライマリ サイトにフェールバックし、再度レプリケートします。
-

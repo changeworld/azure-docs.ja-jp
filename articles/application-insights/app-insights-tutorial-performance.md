@@ -10,14 +10,12 @@ ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 411e10367f02846261f9fcc7717b5abb147b2c09
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 32311136a670261952d9bd0cf372e10a83cfe745
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-performance-issues-with-azure-application-insights"></a>Azure Application Insights を使用してパフォーマンスに関する問題を検出して診断する
 
 Azure Application Insights は、アプリケーションの運用とパフォーマンスを分析するために役立つテレメトリを収集します。  この情報を使用して、発生する可能性がある問題を識別したり、ユーザーに最も影響を与える可能性があるアプリケーションの機能強化を識別したりできます。  このチュートリアルでは、アプリケーションのサーバー コンポーネントのパフォーマンスとクライアントの観点から見たパフォーマンスの両方を分析するプロセスを示します。  学習内容は次のとおりです。
@@ -127,4 +125,3 @@ Application Insights では、サーバーのパフォーマンス データの�
 
 > [!div class="nextstepaction"]
 > [アプリケーションの正常性に基づくアラート](app-insights-tutorial-alert.md)
-

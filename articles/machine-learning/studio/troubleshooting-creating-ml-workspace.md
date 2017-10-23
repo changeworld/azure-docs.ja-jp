@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cdccd4ce7b87f47d21578076653bde901748188b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-create-and-connect-to-an-machine-learning-workspace"></a>トラブルシューティング ガイド: Machine Learning ワークスペースの作成と接続
 このガイドでは、Azure Machine Learning ワークスペースの設定に伴い、よく生じることのある問題の解決策を説明します。
@@ -71,4 +70,3 @@ Cookie が削除されたら、ブラウザーを再起動し、 [Microsoft Azur
 [screen4]:media/troubleshooting-creating-ml-workspace/screen4.png
 [screen5]:media/troubleshooting-creating-ml-workspace/screen5.png
 [screen6]:media/troubleshooting-creating-ml-workspace/screen6.png
-

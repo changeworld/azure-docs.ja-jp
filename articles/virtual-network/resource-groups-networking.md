@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: jdial
 ms.openlocfilehash: 2428c707ddeed281fddd1e57bc5574603f0b9b1c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="network-resource-provider"></a>ネットワーク リソース プロバイダー
 今日のビジネスの成功を支えるニーズとは、大規模なネットワーク対応アプリケーションを俊敏、柔軟、安全、かつ反復可能な方法でビルドおよび管理する能力です。 Azure Resource Manager では、リソース グループ内の 1 つのリソース コレクションとして、このようなアプリケーションを作成することができます。 このようなリソースは、Resource Manager の下でさまざまなリソース プロバイダーを介して管理されています。
@@ -83,7 +83,7 @@ Azure リソース マネージャーは、さまざまなリソース プロバ
 Azure のネットワーク リソースは、さまざまなインターフェイスを使用して管理できます。 このドキュメントでは、これらのインターフェイスのうち REST API およびテンプレートに焦点を当てます。
 
 ### <a name="rest-api"></a>REST API
-前述のように、ネットワーク リソースは、さまざまなインターフェイス (REST API、NET SDK、Node.JS SDK、Java SDK、PowerShell、CLI、Azure ポータルおよびテンプレートなど) を経由して管理できます。
+前述のように、ネットワーク リソースは、さまざまなインターフェイス (REST API、NET SDK、Node.JS SDK、Java SDK、PowerShell、CLI、Azure Portal およびテンプレートなど) を経由して管理できます。
 
 REST API は、HTTP 1.1 プロトコル仕様に準拠しています。 API の一般的な URI の構造は次のとおりです。
 
@@ -253,7 +253,7 @@ ARM テンプレート言語の詳細については、「[Azure Resource Manage
 4. **[パラメーターの編集]** をクリックし、VNET およびサブネットの場所 ( *[米国西部]*など) を選択します。
 5. 必要に応じて、**ADDRESSPREFIX** および **SUBNETPREFIX** パラメーターを変更し、**[OK]** をクリックします。
 6. **[リソース グループの選択]** をクリックし、VNET とサブネットの追加先となるリソース グループをクリックします。 あるいは、 **[新規作成]**をクリックして、新しいリソース グループを作成することもできます。
-7. **[作成]**をクリックします。 **[テンプレートのデプロイをプロビジョニング中]**というタイルが表示されます。 デプロイが完了すると、画面の表示は以下のようになります。
+7. **Create** をクリックしてください。 **[テンプレートのデプロイをプロビジョニング中]**というタイルが表示されます。 デプロイが完了すると、画面の表示は以下のようになります。
 
 ![サンプル テンプレートのデプロイ](./media/resource-groups-networking/Figure6.png)
 

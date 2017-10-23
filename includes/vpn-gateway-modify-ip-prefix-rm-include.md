@@ -1,6 +1,6 @@
-### <a name="noconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレス プレフィックスのないゲートウェイの接続を変更するには
+### <a name="noconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続していない場合)
 
-その他のアドレス プレフィックスを追加するには。
+アドレス プレフィックスを追加するには:
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -8,8 +8,8 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
 ```
 
-アドレス プレフィックスを削除します。<br>
-プレフィックスが不要になったを除外します。 この例では不要になった必要がありますプレフィックス 20.0.0.0/24 (前の例から)、ローカル ネットワーク ゲートウェイを更新してようにを除くそのプレフィックス。
+アドレス プレフィックスを削除するには:<br>
+不要になったプレフィックスは削除します。 この例では、プレフィックス 20.0.0.0/24 (前の例に含まれる) が不要になったため、ローカル ネットワーク ゲートウェイを更新してそのプレフィックスを削除します。
 
 ```powershell
 $local = Get-AzureRmLocalNetworkGateway -Name MyLocalNetworkGWName -ResourceGroupName MyRGName `
@@ -17,9 +17,9 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
 -AddressPrefix @('10.0.0.0/24','30.0.0.0/24')
 ```
 
-### <a name="withconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレス プレフィックスの既存のゲートウェイの接続を変更するには
+### <a name="withconnection"></a>ローカル ネットワーク ゲートウェイ IP アドレスのプレフィックスを変更するには (ゲートウェイに接続している場合)
 
-いる場合、ゲートウェイの接続を追加またはローカル ネットワーク ゲートウェイに含まれている IP アドレスのプレフィックスを削除する、順序で、次の手順を実行する必要があります。 これは、結果、ある程度のダウンタイムを VPN 接続します。 IP アドレス プレフィックスを変更する場合は、VPN ゲートウェイを削除する必要はありません。 のみ、接続を削除する必要があります。
+ゲートウェイ接続がある場合に、ローカル ネットワーク ゲートウェイに含まれている IP アドレスのプレフィックスを追加または削除するには、次の手順を順番に実行する必要があります。 これに伴い、VPN 接続のためにある程度のダウンタイムが発生します。 IP アドレスのプレフィックスを変更するときに、VPN ゲートウェイを削除する必要はありません。 削除が必要になるのは、接続のみです。
 
 
 1. 接続を削除します。
@@ -27,7 +27,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   ```powershell
   Remove-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName -ResourceGroupName MyRGName
   ```
-2. ローカル ネットワーク ゲートウェイのアドレス プレフィックスを変更します。
+2. ローカル ネットワーク ゲートウェイ用のアドレス プレフィックスを変更します。
    
   LocalNetworkGateway の変数を設定します。
 
@@ -41,7 +41,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   -AddressPrefix @('10.0.0.0/24','20.0.0.0/24','30.0.0.0/24')
   ```
-3. 接続を作成します。 この例では、IPsec 接続の種類を構成します。 接続を再作成するときに、構成が指定されている接続の種類を使用します。 追加の接続の種類を参照して、 [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt603611.aspx)ページ。
+3. 接続を作成します。 この例では、IPsec という接続の種類を構成します。 接続を作成し直すときは、実際の構成で指定した接続の種類を使用してください。 その他の種類の接続については、 [PowerShell コマンドレット](https://msdn.microsoft.com/library/mt603611.aspx) のページを参照してください。
    
   VirtualNetworkGateway の変数を設定します。
 
@@ -49,7 +49,7 @@ Set-AzureRmLocalNetworkGateway -LocalNetworkGateway $local `
   $gateway1 = Get-AzureRmVirtualNetworkGateway -Name RMGateway  -ResourceGroupName MyRGName
   ```
    
-  接続を作成します。 この例では、手順 2. で設定した $local 変数を使用します。
+  接続を作成します。 この例では、手順 2. で設定した $local という変数を使用しています。
 
   ```powershell
   New-AzureRmVirtualNetworkGatewayConnection -Name MyGWConnectionName `

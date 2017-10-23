@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 9d6132e1a01be489b8e8e28a0219cf8a0b50b318
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authenticate-with-mobile-engagement-rest-apis---manual-setup"></a>Mobile Engagement REST API を使用した認証 - 手動の設定
 これは、「 [Azure Mobile Engagement - 認証への API の使用](mobile-engagement-api-authentication.md)」の付録のドキュメントです。 このドキュメントを先に読み、内容を把握してください。 このドキュメントでは、Azure Portal を使用して Mobile Engagement REST API の認証を設定するために 1 回限りの設定を行う代替の方法について説明します。 

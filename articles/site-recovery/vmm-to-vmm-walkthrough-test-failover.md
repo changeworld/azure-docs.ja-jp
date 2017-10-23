@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/30/2017
 ms.author: raynew
 ms.openlocfilehash: 23d235d326273e7ec59feee6588a39f685401e52
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-10-run-a-test-failover-for-hyper-v-replication-to-a-secondary-site"></a>手順 10: セカンダリ サイトへの Hyper-V レプリケーションのテスト フェールオーバーを実行する
 

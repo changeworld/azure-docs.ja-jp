@@ -15,30 +15,29 @@ ms.topic: quickstart
 ms.date: 09/25/2017
 ms.author: sngun
 ms.custom: mvc
+ms.openlocfilehash: 579246a2f5aefda0d48cea235d74f196cd814331
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 63dbb9a4aadfce92346c84cf6d0df8c860e68a3b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-linux-virtual-machine-by-using-powershell-in-azure-stack"></a>Azure Stack で PowerShell を使用して Linux 仮想マシンを作成する 
 
 *適用対象: Azure Stack 統合システム*
 
 Azure PowerShell は、コマンドラインやスクリプトで Azure Stack にリソースを作成および管理するために使用します。  このガイドでは、PowerShell を使用して、Azure Stack で Ubuntu サーバーを実行する仮想マシンを作成する方法について詳しく説明します。
 
-始める前に、Azure Stack オペレーターが Azure Stack Marketplace に "Ubuntu Server 16.04 LTS" のイメージを追加していることを確認してください。  
+## <a name="prerequisites"></a>前提条件 
 
-リソースを作成して管理するため、Azure Stack には Azure PowerShell の特定のバージョンが必要です。 Azure Stack 用に PowerShell を構成していない場合は、[PowerShell のインストールと構成](azure-stack-powershell-install.md)の手順に従います。    
+* Azure Stack オペレーターが Azure Stack Marketplace に "Ubuntu Server 16.04 LTS" のイメージを追加していることを確認します。  
 
-最後に、id_rsa.pub という名前の公開 SSH キーを Windows ユーザー プロファイルの .ssh ディレクトリに作成しておく必要があります。 SSH キーの作成の詳細については、[Windows での SSH キーの作成](../../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。  
+* リソースを作成して管理するため、Azure Stack には Azure PowerShell の特定のバージョンが必要です。 Azure Stack 用に構成された PowerShell がない場合は、[開発キット](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-remote-desktop)または Windows ベースの外部クライアント ([VPN 経由で接続](azure-stack-connect-azure-stack.md#connect-to-azure-stack-with-vpn)している場合) にサインインし、PowerShell の[インストール](azure-stack-powershell-install.md)と[構成](azure-stack-powershell-configure-user.md)の手順に従います。    
 
+* Windows ユーザー プロファイルの .ssh ディレクトリに、id_rsa.pub という名前の SSH 公開キーを作成しておく必要があります。 SSH キーの作成の詳細については、[Windows での SSH キーの作成](../../virtual-machines/linux/ssh-from-windows.md)に関するページを参照してください。  
 
-## <a name="create-resource-group"></a>Create resource group
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 次のコード ブロックを使用してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。
+リソース グループとは、Azure Stack リソースのデプロイ先となって管理される論理コンテナーです。 開発キットまたは Azure Stack 統合システムから、次のコード ブロックを実行してリソース グループを作成します。 このドキュメントではすべての変数に値を割り当てていますが、そのまま使用することも、異なる値を割り当てることもできます。
 
 ```powershell
 # Create variables to store the location and resource group names.
@@ -139,7 +138,7 @@ $nic = New-AzureRmNetworkInterface `
   -NetworkSecurityGroupId $nsg.Id 
 ```
 
-## <a name="create-virtual-machine"></a>仮想マシンの作成
+## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 仮想マシンの構成を作成します。 この構成には、仮想マシンのデプロイ時に使用される設定 (仮想マシンのイメージ、サイズ、認証構成など) が含まれています。
 
 ```powershell
@@ -197,7 +196,7 @@ New-AzureRmVM `
   -VM $VirtualMachine 
 ```
 
-## <a name="connect-to-virtual-machine"></a>仮想マシンへの接続
+## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 
 デプロイが完了したら、仮想マシンとの SSH 接続を作成します。 [Get-AzureRmPublicIpAddress](/powershell/module/azurerm.network/get-azurermpublicipaddress?view=azurermps-4.3.1) コマンドを使用して、仮想マシンのパブリック IP アドレスを返します。
 
@@ -222,7 +221,4 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-[Key Vault に格納されているパスワードを使用して仮想マシンを作成する](azure-stack-kv-deploy-vm-with-secret.md)
-
-[Azure Stack の Storage について学ぶ](azure-stack-storage-overview.md)
-
+このクイック スタートでは、単純な Linux 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。

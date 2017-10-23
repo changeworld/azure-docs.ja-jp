@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: dkshir
 ms.openlocfilehash: 9ce1fbebb6417c10618aa182e3c1d9ddf8132fb6
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-direct-methods-netnet"></a>ダイレクト メソッドを使用する (.NET/.NET)
 [!INCLUDE [iot-hub-selector-c2d-methods](../../includes/iot-hub-selector-c2d-methods.md)]
@@ -102,7 +102,7 @@ ms.lasthandoff: 07/29/2017
             Console.WriteLine("Error in sample: {0}", ex.Message);
         }
         
-1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。 **[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[SimulateDeviceMethods]** プロジェクトを選択します。        
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[SimulateDeviceMethods]** プロジェクトを選択します。        
 
 > [!NOTE]
 > わかりやすくするために、このチュートリアルでは再試行ポリシーは実装しません。 運用環境のコードでは、MSDN の記事「[Transient Fault Handling (一時的な障害の処理)][lnk-transient-faults]」で推奨されているように、再試行ポリシー (接続の再試行など) を実装することをお勧めします。
@@ -149,7 +149,7 @@ ms.lasthandoff: 07/29/2017
         Console.WriteLine("Press Enter to exit.");
         Console.ReadLine();
 
-1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。 **[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[CallMethodOnDevice]** プロジェクトを選択します。
+1. Visual Studio のソリューション エクスプローラーでソリューションを右クリックし、**[スタートアップ プロジェクトの設定]** をクリックします。**[シングル スタートアップ プロジェクト]** を選択し、ドロップダウン メニューから **[CallMethodOnDevice]** プロジェクトを選択します。
 
 ## <a name="run-the-applications"></a>アプリケーションの実行
 これで、アプリケーションを実行する準備が整いました。

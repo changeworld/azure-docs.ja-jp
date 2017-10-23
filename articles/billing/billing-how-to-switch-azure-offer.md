@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/30/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
 ms.openlocfilehash: 48f5f4db60c104778a6c391d254e0bc0c4c95cee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-your-azure-pay-as-you-go-subscription-to-a-different-offer"></a>Azure の従量課金制サブスクリプションを別のプランに変更する
 
@@ -117,4 +116,3 @@ Azure プランとは、ご利用の Azure サブスクリプションの*種類
 ## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください。
 
 まだ他に質問がある場合は、問題を迅速に解決できるよう [サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) ください。
-

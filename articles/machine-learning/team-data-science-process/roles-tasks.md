@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b502a586cdb7351d5b22c6b0db966723b8ebb7b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="team-data-science-process-roles-and-tasks"></a>Team Data Science Process の役割とタスク
 
 Team Data Science Process は、Microsoft が開発したフレームワークです。予測分析ソリューションと高度なアプリケーションを効率的に構築することができる構造化された手法を提供します。 この記事では、このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要について説明します。 

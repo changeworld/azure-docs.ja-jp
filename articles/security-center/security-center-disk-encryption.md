@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/15/2017
 ms.author: tomsh
 ms.openlocfilehash: 8d39aafb0ab7b0e87afdf4d2f50f1e224b8d251f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="encrypt-an-azure-virtual-machine"></a>Azure 仮想マシンの暗号化
 暗号化されていない仮想マシンがある場合には、Azure Security Center からアラートを受け取ります。 これらのアラートは重要度が高いとして表示されるため、このような仮想マシンを暗号化することをお勧めします。

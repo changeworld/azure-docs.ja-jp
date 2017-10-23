@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 05/16/2017
 ms.author: gwallace
 ms.openlocfilehash: d73cdc98ff279c3ee1b93443abe4b6c7c97786a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="load-balance-multiple-websites"></a>複数の Web サイトの負荷分散
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 07/11/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-powershell[メイン](../../../powershell_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.ps1  "複数の Web サイトの負荷分散")]
+[!code-powershell[main](../../../powershell_scripts/load-balancer/load-balance-multiple-web-sites-vm/load-balance-multiple-web-sites-vm.ps1  "Load balance multiple web sites")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ 
 

@@ -16,14 +16,12 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f1ab98ab173edc794bfabdf55d950ac689a37c0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
 >[!NOTE]
@@ -51,5 +49,4 @@ Traffic View を使用する場合は、提示される洞察の作成に使用�
 - [Traffic Manager のしくみ](traffic-manager-overview.md)
 - Traffic Manager でサポートされている [トラフィック ルーティング方法](traffic-manager-routing-methods.md) の詳細を確認する。
 - [Traffic Manager プロファイルの作成](traffic-manager-create-profile.md)
-
 

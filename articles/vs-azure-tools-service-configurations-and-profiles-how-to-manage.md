@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 8/11/2017
 ms.author: kraigb
 ms.openlocfilehash: af1205f8c3e477d123d4835c80a68b3afd6ee5ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-service-configurations-and-profiles"></a>サービス構成とプロファイルを管理する方法
 ## <a name="overview"></a>概要

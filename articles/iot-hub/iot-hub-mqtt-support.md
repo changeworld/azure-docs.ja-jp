@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: kdotchko
 ms.custom: H1Hack27Feb2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: 886bf3ce3979b7ef52ca29b7731562c5768596a2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 2dc0dcfd004a453df2c0ce64d0d92c6f533a54f6
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -62,7 +61,7 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
 * **[Usename]** フィールドには、`{iothubhostname}/{device_id}/api-version=2016-11-14` を使用します。{iothubhostname} は IoT Hub の完全な CName です。
 
     たとえば、IoT Hub の名前が **contoso.azure-devices.net** であり、デバイスの名前が **MyDevice01** であるとすると、**Username** フィールドの内容は `contoso.azure-devices.net/MyDevice01/api-version=2016-11-14` になります。
-* **[Password]** フィールドには、SAS トークンを使用します。 SAS トークンの形式は、HTTP プロトコルや AMQP プロトコルの場合と同じです。<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`.
+* **[Password]** フィールドには、SAS トークンを使用します。 SAS トークンの形式は、HTTPS プロトコルや AMQP プロトコルの場合と同じです。<br/>`SharedAccessSignature sig={signature-string}&se={expiry}&sr={URL-encoded-resourceURI}`」を参照してください。
 
     SAS トークンの生成方法の詳細については、[IoT Hub のセキュリティ トークンの使用][lnk-sas-tokens]に関するページのデバイス セクションを参照してください。
 
@@ -81,14 +80,14 @@ MQTT の接続および切断パケットでは、IoT Hub は、**操作の監�
 
 ### <a name="sending-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの送信
 
-接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 次に例を示します。
+接続に成功したら、デバイスから IoT Hub に `devices/{device_id}/messages/events/` または `devices/{device_id}/messages/events/{property_bag}` を**トピック名**として使用してメッセージを送信できます。 `{property_bag}` 要素を使用すると、デバイスは追加のプロパティ付きのメッセージを URL エンコード形式で送信できるようになります。 For example:
 
 ```
 RFC 2396-encoded(<PropertyName1>)=RFC 2396-encoded(<PropertyValue1>)&RFC 2396-encoded(<PropertyName2>)=RFC 2396-encoded(<PropertyValue2>)…
 ```
 
 > [!NOTE]
-> この `{property_bag}` 要素は、HTTP プロトコルでクエリ文字列に使用したのと同じエンコーディングを使用します。
+> この `{property_bag}` 要素は、HTTPS プロトコルでクエリ文字列に使用したのと同じエンコーディングを使用します。
 >
 >
 
@@ -112,7 +111,7 @@ IoT Hub は、**トピック名** `devices/{device_id}/messages/devicebound/` �
 
 ### <a name="retrieving-a-device-twins-properties"></a>デバイス ツインのプロパティの取得
 
-まずデバイスが、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブします。 次に、デバイスは、空のメッセージをトピック `$iothub/twin/GET/?$rid={request id}` に送信します (**request id** に値を指定します)。 その後サービスが、要求と同じ **request id** を使用して、トピック `$iothub/twin/res/{status}/?$rid={request id}` のデバイス ツイン データを含む応答メッセージを送信します。
+まずデバイスが、操作の応答を受信するために、`$iothub/twin/res/#` にサブスクライブします。 次に、デバイスは、空のメッセージをトピック `$iothub/twin/GET/?$rid={request id}` に送信します (**request id** に値を指定します)。その後サービスが、要求と同じ **request id** を使用して、トピック `$iothub/twin/res/{status}/?$rid={request id}` のデバイス ツイン データを含む応答メッセージを送信します。
 
 request id には、[IoT Hub メッセージング開発者ガイド][lnk-messaging]に従って、メッセージ プロパティ値として有効な任意の値を指定できます。ステータスは、整数として検証されます。
 応答本文には、デバイス ツインのプロパティ セクションが含まれます。
@@ -221,7 +220,7 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-mqtt-org]: http://mqtt.org/
 [lnk-mqtt-docs]: http://mqtt.org/documentation
 [lnk-sample-node]: https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js
-[lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/tree/master/device/samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/iothub/SendReceive.java
+[lnk-sample-java]: https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java
 [lnk-sample-c]: https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt
 [lnk-sample-csharp]: https://github.com/Azure/azure-iot-sdk-csharp/tree/master/device/samples
 [lnk-sample-python]: https://github.com/Azure/azure-iot-sdk-python/tree/master/device/samples
@@ -242,4 +241,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
-

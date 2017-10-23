@@ -1,6 +1,6 @@
 ---
 title: "ネットワーク セキュリティ グループのトラブルシューティング - ポータル | Microsoft Docs"
-description: "Azure Resource Manager デプロイメント モデルで、Azure ポータルを使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
+description: "Azure Resource Manager デプロイメント モデルで、Azure Portal を使用してネットワーク セキュリティ グループをトラブルシューティングする方法について説明します。"
 services: virtual-network
 documentationcenter: na
 author: AnithaAdusumilli
@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
 ms.openlocfilehash: f01d3b43a7953697a6b03e176dace33448d95cd9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure ポータルを使用したネットワーク セキュリティ グループのトラブルシューティング
+# <a name="troubleshoot-network-security-groups-using-the-azure-portal"></a>Azure Portal を使用したネットワーク セキュリティ グループのトラブルシューティング
 > [!div class="op_single_selector"]
-> * [Azure ポータル](virtual-network-nsg-troubleshoot-portal.md)
+> * [Azure Portal](virtual-network-nsg-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-nsg-troubleshoot-powershell.md)
 > 
 > 

@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/26/2017
 ms.author: dekapur
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
 
 Operations Management Suite (OMS) は、クラウドでホストされるアプリケーションとサービスの監視と診断に役立つ管理サービスのコレクションです。 OMS および OMS が提供するサービスの詳細については、[OMS とは](../operations-management-suite/operations-management-suite-overview.md)を参照してください
@@ -57,7 +55,7 @@ OMS ワークスペースをプロビジョニングして構成する方法は 
 
 ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-**[Create] (作成する)** をクリックすると OMS ワークスペースを求められます。 **[Select a workspace] (ワークスペースの選択)** をクリックしてから、**[Create a new workspace] (新しいワークスペースを作成する)** をクリックします。 必要なエントリを入力します。ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、 OMS ワークスペースは数分で展開されます。 展開中は、Service Fabric ソリューション ブレードの作成は開いたままです。 *OMS ワークスペース*の下に同じワークスペースが表示されていることを確認し、下部で **[Create] (作成する)** をクリックすると、Service Fabric ソリューションがワークスペースに追加されます。
+**[Create] \(作成する)** をクリックすると OMS ワークスペースを求められます。 **[Select a workspace] \(ワークスペースの選択)** をクリックしてから、**[Create a new workspace] \(新しいワークスペースを作成する)** をクリックします。 必要なエントリを入力します。ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、 OMS ワークスペースは数分で展開されます。 展開中は、Service Fabric ソリューション ブレードの作成は開いたままです。 *OMS ワークスペース*の下に同じワークスペースが表示されていることを確認し、下部で **[Create] \(作成する)** をクリックすると、Service Fabric ソリューションがワークスペースに追加されます。
 
 ## <a name="using-the-oms-agent"></a>OMS エージェントの使用
 
@@ -68,7 +66,7 @@ EventFlow と WAD を集計ソリューションとして使用することを�
 これの利点は次のとおりです。
 
 * パフォーマンス カウンターおよびメトリック面に関するデータが豊富
-* クラスターから収集されるデータを構成したり、データに変更を加えたりするのが簡単です。アプリケーションやクラスターを再展開する必要はありません。エージェントの設定への変更は OMS ワークスペースから実行でき、エージェントは自動的にリセットされます。 特定のパフォーマンス カウンターを選択するように OMS エージェントを構成するには、ワークスペースの **[Home] (ホーム)、[Settings] (設定)、[Data] (データ)、[Windows Performance Counters] (Windows パフォーマンス カウンター)** の順に移動し、収集するデータを選択します
+* クラスターから収集されるデータを構成したり、データに変更を加えたりするのが簡単です。アプリケーションやクラスターを再展開する必要はありません。エージェントの設定への変更は OMS ワークスペースから実行でき、エージェントは自動的にリセットされます。 特定のパフォーマンス カウンターを選択するように OMS エージェントを構成するには、ワークスペースの **[Home] \(ホーム)、[Settings] \(設定)、[Data] \(データ)、[Windows Performance Counters] \(Windows パフォーマンス カウンター)** の順に移動し、収集するデータを選択します
 * データが速く表示される (データは OMS / Log Analytics によって選択される前に保存される必要があるが、それより速く表示される)
 * コンテナーの監視はもっと簡単です。Docker ログ(stdout、stderror) と 統計 (コンテナーおよびノード レベルに関するパフォーマンス メトリック) を選択できます
 

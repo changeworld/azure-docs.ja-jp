@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2017
 ms.author: tomsh
 ms.openlocfilehash: 1877e6ab19d504c8be6130578f17b608f123e20a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-operational-security-checklist"></a>Azure で運用可能なセキュリティのチェックリスト
 Azure でのアプリケーションのデプロイは、すばやく簡単に、高いコスト効率で行うことができます。 運用環境にクラウド アプリケーションをデプロイする前に、検討する必須および推奨の運用上のセキュリティ アクションの一覧に照らしてアプリケーションを評価する際に役立つチェックリストがあると便利です。

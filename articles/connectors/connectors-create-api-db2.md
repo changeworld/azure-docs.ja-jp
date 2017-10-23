@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 09/26/2016
 ms.author: plarsen; ladocs
 ms.openlocfilehash: 4501b3d9a2fdc00582596cb907f7130591e4782e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-db2-connector"></a>DB2 コネクタの概要
 Microsoft Connector for DB2 は、IBM DB2 データベースに格納されているリソースに Logic Apps を接続します。 このコネクタには、TCP/IP ネットワーク経由でリモート DB2 サーバー コンピューターと通信する Microsoft クライアントが含まれています。 これには、Azure 仮想化で実行されている IBM Bluemix dashDB や IBM DB2 for Windows などのクラウド データベースと、オンプレミス データ ゲートウェイを使用するオンプレミス データベースが含まれます。 (このトピックの) IBM DB2 のプラットフォームとバージョンの [サポート対象一覧](connectors-create-api-db2.md#supported-db2-platforms-and-versions) をご覧ください。

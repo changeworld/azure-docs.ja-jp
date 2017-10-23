@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/11/2016
 ms.author: jdial
 ms.openlocfilehash: fac6ee69b5f0377e0515ac9abeb28788cbef9b79
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="filter-network-traffic-with-network-security-groups"></a>ネットワーク セキュリティ グループによるネットワーク トラフィックのフィルタリング
 

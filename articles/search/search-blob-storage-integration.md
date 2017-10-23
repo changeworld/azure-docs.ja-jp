@@ -9,14 +9,12 @@ ms.service: search
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: ashmaka
-ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
 ms.openlocfilehash: 15469e8a2d28bdf00d6e8d8c9f823c51975ee90e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="searching-blob-storage-with-azure-search"></a>Azure Search を使用した Blob Storage の検索
 
 Azure Blob Storage に格納されているさまざまなコンテンツの種類の検索は、解決するのが難しい問題になる場合があります。 ただし、Azure Search を使用すると、数回クリックするだけで BLOB のコンテンツのインデックスを作成して検索できます。 Blob Storage の検索には、Azure Search サービスのプロビジョニングが必要です。 Azure Search のさまざまなサービス制限や価格レベルについては、[価格に関するページ](https://aka.ms/azspricing)を参照してください。
@@ -55,4 +53,3 @@ Azure Search は、Blob Storage ポータル ページから直接 BLOB に追�
 
 ### <a name="next-steps"></a>次のステップ
 完全な[ドキュメント](https://aka.ms/azsblobindexer)にある Azure Search BLOB インデクサの詳細を学習します。
-

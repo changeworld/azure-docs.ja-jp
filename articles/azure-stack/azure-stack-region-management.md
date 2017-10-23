@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: efemmano
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d1310f0cb9a820366ab8712a782785e955a24134
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="region-management-in-azure-stack"></a>Azure Stack でのリージョン管理
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack にはリージョンの概念があります。リージョンは、Azure Stack インフラストラクチャを構成するハードウェア リソースから成る論理エンティティです。 リージョン管理内部では、Azure Stack インフラストラクチャのライフ サイクルを正常に運用するために必要なすべてのリソースを見つけることができます。
 
@@ -34,7 +33,7 @@ Azure Stack には、**[Region management]** (リージョン管理) タイル�
 
  ![[Region Management] (リージョン管理) タイル](media/azure-stack-manage-region/image1.png)
 
- [Region management] (リージョン管理) タイルでリージョンをクリックすると、次の情報にアクセスできます。
+ [Region management] \(リージョン管理) タイルでリージョンをクリックすると、次の情報にアクセスできます。
 
   ![[Region management] (リージョン管理) ブレードのウィンドウの説明](media/azure-stack-manage-region/image2.png)
 
@@ -52,7 +51,6 @@ Azure Stack には、**[Region management]** (リージョン管理) タイル�
 [Azure Stack での正常性およびアラートの監視](azure-stack-monitor-health.md)
 
 [Azure Stack での更新の管理](azure-stack-updates.md)
-
 
 
 

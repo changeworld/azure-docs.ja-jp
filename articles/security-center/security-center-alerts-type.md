@@ -12,25 +12,24 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/20/2017
 ms.author: yurid
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 19f71e0d5a8a4642b86ae60a3ab2a4042fa2990e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 274c50dad9b8a1d79a71a29b04cb8e44ad91893c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-security-alerts-in-azure-security-center"></a>Azure Security Center のセキュリティ アラートの概要
 この記事では、Azure Security Center で利用できるさまざまなセキュリティ アラートと関連する分析情報についてわかりやすく説明します。 アラートとインシデントを管理する方法の詳細については、「[Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md)」を参照してください。
 
+高度な検出をセットアップする場合には、Azure Security Center Standard にアップグレードする必要があります。 60 日間の無料試用版が提供されています。 アップグレードするには、[[セキュリティ ポリシー]](security-center-policies.md) で **[価格レベル]** を選択します。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
+
 > [!NOTE]
-> 高度な検出をセットアップする場合には、Azure Security Center Standard にアップグレードする必要があります。 60 日間の無料試用版が提供されています。 アップグレードするには、[[セキュリティ ポリシー]](security-center-policies.md) で **[価格レベル]** を選択します。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/security-center/)を参照してください。
->
+> Security Center は、制限付きプレビューに対して、Linux マシン上の悪意のある行為を検出するために、共通の監査フレームワークである監査レコードを活用した一連の新しい検出機能をリリースしました。 プレビューに参加するには、サブスクリプション ID を記入した電子メールを[こちら](mailto:ASC_linuxdetections@microsoft.com)に送信してください。
 
 ## <a name="what-type-of-alerts-are-available"></a>使用できる警告の種類
-Azure Security Center では、さまざまな[検出機能](security-center-detection-capabilities.md)を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 通知される警告には、警告を発生させたイベント、攻撃対象となったリソース、および攻撃元に関する重要な情報が含まれています。 こうした情報は、脅威を検出するために使用された分析の種類によって異なります。 インシデントには、脅威を調査する際に活用できる追加のコンテキスト情報も含まれる可能性があります。  この記事では、次の警告の種類について説明します。
+Azure Security Center では、さまざまな[検出機能](security-center-detection-capabilities.md)を使用して、お客様の環境を対象とする攻撃の可能性を通知します。 これらのアラートには、アラートをトリガーした要因、対象となったリソース、攻撃元に関する重要な情報が含まれています。 こうした情報は、脅威を検出するために使用された分析の種類によって異なります。 インシデントには、脅威を調査する際に活用できる追加のコンテキスト情報も含まれる可能性があります。  この記事では、次の警告の種類について説明します。
 
 * 仮想マシンの動作分析 (VMBA)
 * ネットワーク分析
@@ -45,7 +44,7 @@ Azure Security Center は動作分析を使用し、仮想マシンのイベン�
 >
 
 ### <a name="crash-analysis"></a>クラッシュ分析
-クラッシュ ダンプ メモリ分析は、従来のセキュリティ ソリューションを回避することができる高度なマルウェアの検出に使用される方法です。 さまざまな形式のマルウェアは、ディスクへの書き込みを行わないことや、ディスクに書き込まれたソフトウェア コンポーネントを暗号化することで、ウイルス対策製品によって検出される可能性を減らすよう試みます。 このことが、従来のマルウェア対策手法を使ったマルウェア検出を困難にしています。 しかし、マルウェアが機能するためにはメモリに痕跡を残す必要があるので、メモリ分析を使用すればそのようなマルウェアを検出することができます。
+クラッシュ ダンプ メモリ分析は、従来のセキュリティ ソリューションを回避することができる高度なマルウェアの検出に使用される方法です。 さまざまな形式のマルウェアは、ディスクへの書き込みを行わないことや、ディスクに書き込まれたソフトウェア コンポーネントを暗号化することで、ウイルス対策製品によって検出される可能性を減らすよう試みます。 この手法が、従来のマルウェア対策手法を使ったマルウェア検出を困難にしています。 しかし、マルウェアが機能するためにはメモリに痕跡を残す必要があるので、メモリ分析を使用すればそのようなマルウェアを検出することができます。
 
 ソフトウェアがクラッシュすると、クラッシュ時のメモリが部分的にクラッシュ ダンプにキャプチャされます。 クラッシュは、マルウェア、一般的なアプリケーション、またはシステムの問題によって引き起こされる可能性があります。 Security Center では、クラッシュ ダンプでメモリを分析することによって、ソフトウェアの脆弱性の悪用や機密データへのアクセスに使用された手法を検出できます。また、侵入したコンピューターに密かに常駐するタイプの手法であっても検出が可能です。 Security Center バックエンドによって分析が実行されるため、この方法ではホストのパフォーマンスに対する影響が最小限に抑えられます。
 
@@ -62,7 +61,7 @@ Azure Security Center は動作分析を使用し、仮想マシンのイベン�
 
 * ADDRESS (アドレス): メモリ内におけるシェルコードの場所。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Shellcode alert](./media/security-center-alerts-type/security-center-alerts-type-fig2.png)
 
@@ -78,7 +77,7 @@ Windows では、システムに共通の機能をソフトウェアから利用
 * HIJACKEDMODULEPATH (ハイジャックされたモジュールのパス): ハイジャックされた Windows システム モジュールのパス。
 * HIJACKINGMODULEPATH (ハイジャック モジュールのパス): ハイジャック モジュールのパス。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Module hijacking alert](./media/security-center-alerts-type/security-center-alerts-type-fig3.png)
 
@@ -97,7 +96,7 @@ Windows では、システムに共通の機能をソフトウェアから利用
 
 また、このアラートにはモジュールの PE ヘッダーから特定のフィールド ("CHECKSUM"、"TIMESTAMP" など) が抽出されて表示されます。 これらのフィールドは、モジュールに存在する場合にのみ表示されます。 これらのフィールドの詳細については、「 [Microsoft PE and COFF 仕様](https://msdn.microsoft.com/windows/hardware/gg463119.aspx) 」を参照してください。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Masquerading Windows alert](./media/security-center-alerts-type/security-center-alerts-type-fig4.png)
 
@@ -111,21 +110,21 @@ Windows では、システムに共通の機能をソフトウェアから利用
 * MODULENAME (モジュール名): 改変されたシステム バイナリの名前。
 * MODULEVERSION (モジュールのバージョン): 改変されたシステム バイナリのバージョン。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![System binary alert](./media/security-center-alerts-type/security-center-alerts-type-fig5.png)
 
 ### <a name="suspicious-process-executed"></a>疑わしいプロセスの実行
 Security Center は、ターゲット仮想マシンで実行されている疑わしいプロセスを特定し、アラートをトリガーします。 この検出では、具体的な名前ではなく、実行可能ファイルのパラメーターが確認されます。 このため、攻撃者が実行可能ファイルの名前を変更した場合でも、不審なプロセスを検出することができます。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Suspicious process alert](./media/security-center-alerts-type/security-center-alerts-type-fig6-new.png)
 
-### <a name="multiple-domain-accounts-queried"></a>複数のドメイン アカウントのクエリ
-Security Center は、Active Directory ドメイン アカウントに対しクエリが複数回試行されていることを検出できます。このような試行は通常、ネットワーク偵察時に攻撃者が実行することです。 攻撃者は、この手法を使ってドメインに問い合わせ、ユーザー、ドメインの管理者アカウント、ドメイン コントローラーであるコンピューターを特定できるほか、他のドメインとの潜在的なドメイン信頼関係も特定できます。
+### <a name="multiple-domains-accounts-queried"></a>複数のドメイン アカウントのクエリ
+Security Center は、Active Directory ドメイン アカウントに対してクエリが複数回試行されていることを検出できます。このような試行は、通常、ネットワークの偵察時に攻撃者が実行することです。 攻撃者は、この手法を使ってドメインに問い合わせ、ユーザー、ドメインの管理者アカウント、ドメイン コントローラーであるコンピューターを特定できるほか、他のドメインとの潜在的なドメイン信頼関係も特定できます。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Multiple domains account alert](./media/security-center-alerts-type/security-center-alerts-type-fig7-new.png)
 
@@ -133,15 +132,15 @@ Security Center は、Active Directory ドメイン アカウントに対しク�
 
 Windows Server 2016 と Windows 10 でセキュリティ イベント 4798 がトリガーされると、Security Center からアラートがトリガーされます。 このアラートは、ローカル管理者グループが列挙されたときにトリガーされます。この操作は、攻撃者がネットワーク偵察時に実行することが多いためです。 攻撃者は、管理特権を持ったユーザーの ID を照会する目的で、この手法を利用することがあります。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![ローカル管理者](./media/security-center-alerts-type/security-center-alerts-type-fig14-new.png)
 
 ### <a name="anomalous-mix-of-upper-and-lower-case-characters"></a>大文字と小文字の変則的な組み合わせ
 
-Security Center は、コマンド ラインで大文字と小文字の組み合わせが使われたことを検出すると、アラートをトリガーします。 大文字と小文字の区別やハッシュ ベースのマシン ルールから身を隠すために、一部の攻撃者がこの手法を使うことがあります。
+Security Center は、コマンド ラインで大文字と小文字の組み合わせが使われたことを検出すると、アラートをトリガーします。 大文字と小文字の区別やハッシュベースのマシン ルールから身を隠すために、一部の攻撃者がこの手法を使うことがあります。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![変則的な組み合わせ](./media/security-center-alerts-type/security-center-alerts-type-fig15-new.png)
 
@@ -152,7 +151,7 @@ Security Center は、コマンド ラインで大文字と小文字の組み合
 > [!NOTE] 
 > Kerberos ゴールデン チケットの詳細については、「[Windows 10 credential theft mitigation guide (Windows 10 資格情報の盗難防止ガイド)](http://download.microsoft.com/download/C/1/4/C14579CA-E564-4743-8B51-61C0882662AC/Windows%2010%20credential%20theft%20mitigation%20guide.docx)」を参照してください。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![ゴールデン チケット](./media/security-center-alerts-type/security-center-alerts-type-fig16-new.png)
 
@@ -160,7 +159,7 @@ Security Center は、コマンド ラインで大文字と小文字の組み合
 
 既存の組み込み管理特権アカウントと酷似するアカウントが作成されると、Security Center からアラートがトリガーされます。 この手法は、攻撃者が、人の目では気付きにくい不正アカウントを作成する目的で使う場合があります。
  
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![疑わしいアカウント](./media/security-center-alerts-type/security-center-alerts-type-fig17-new.png)
 
@@ -168,7 +167,7 @@ Security Center は、コマンド ラインで大文字と小文字の組み合
 
 攻撃者は、ホストのセキュリティを迂回するために、ファイアウォール規則を独自に作成しようと試みる場合があります。悪質なアプリケーションがコマンド アンド コントロール サーバーと通信を行ったり、侵入済みのホストを介してネットワーク経由で攻撃をしかけたりするのがその目的です。 Security Center は、疑わしい場所にある実行可能ファイルから新しいファイアウォール規則が作成されたことを検出すると、アラートをトリガーします。
  
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![ファイアウォール規則](./media/security-center-alerts-type/security-center-alerts-type-fig18-new.png)
 
@@ -176,7 +175,7 @@ Security Center は、コマンド ラインで大文字と小文字の組み合
 
 Security Center は、Microsoft HTML アプリケーション ホスト (HTA) が PowerShell のコマンドを起動しようとしていることを検出するとアラートをトリガーします。 これは攻撃者が悪質な PowerShell スクリプトを起動するときに使う手法です。
  
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![HTA と PS](./media/security-center-alerts-type/security-center-alerts-type-fig19-new.png)
 
@@ -189,7 +188,7 @@ Security Center のネットワーク脅威検出は、Azure IPFIX (Internet Pro
 
 ![Suspicious outgoing traffic alert](./media/security-center-alerts-type/security-center-alerts-type-fig8.png)
 
-このアラートには、この攻撃を開始するにあたり使用されたリソースを特定する際に役立つ情報が表示されます。 また、セキュリティが侵害されたコンピューター、検出の日時、使用されたプロトコルとポートの特定に役立つ情報も確認できます。 このブレードでは、問題を軽減するために使用できる修復手順の一覧も表示されます。
+このアラートには、この攻撃を開始するにあたり使用されたリソースを特定する際に役立つ情報が表示されます。 また、セキュリティが侵害されたコンピューター、検出の日時、使用されたプロトコルとポートの特定に役立つ情報も確認できます。 このページには、この問題を軽減するために使用できる修復手順の一覧も表示されます。
 
 ### <a name="network-communication-with-a-malicious-machine"></a>悪意のあるコンピューターとのネットワーク通信
 Azure Security Center は、悪意のある IP アドレスと通信している、セキュリティが侵害されたコンピューターを、Microsoft 脅威インテリジェンス フィードを使用して検出できます。 悪意のあるアドレスは多くの場合、コマンド アンド コントロール センターです。 この例では、Security Center によって、Pony Loader マルウェア ([Fareit](https://www.microsoft.com/security/portal/threat/encyclopedia/entry.aspx?Name=PWS:Win32/Fareit.AF) とも呼ばれる) を使用した通信が行われたことが検出されました。
@@ -206,7 +205,7 @@ Azure Security Center は、悪意のある IP アドレスと通信している
 ### <a name="possible-outgoing-denial-of-service-attack-detected"></a>送信サービス拒否攻撃の可能性の検出
 ある仮想マシンによる異常なネットワーク トラフィックが原因となって、Security Center が潜在的なサービス拒否型の攻撃をトリガーする場合があります。
 
-このタイプの警告の例を次に示します。
+この種類のアラートの例を次に示します。
 
 ![Outgoing DOS](./media/security-center-alerts-type/security-center-alerts-type-fig10-new.png)
 
@@ -254,4 +253,3 @@ SQL インジェクションとは、後で SQL Server のインスタンスに�
 * [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md)
 * 「[Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md)」: このサービスの使用に関してよく寄せられる質問が記載されています。
 * [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/): Azure のセキュリティとコンプライアンスについてのブログ記事を確認できます。
-

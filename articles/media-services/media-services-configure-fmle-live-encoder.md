@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 01/05/2017
 ms.author: juliako;cenkdin;anilmur
 ms.openlocfilehash: e831048f34ecf6e89595adc4bfd58b5977e04bdb
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-fmle-encoder-to-send-a-single-bitrate-live-stream"></a>FMLE エンコーダーを使用して、単一ビットレートのライブ ストリームを送信する
 > [!div class="op_single_selector"]

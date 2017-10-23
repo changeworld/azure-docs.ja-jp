@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/07/2017
 ms.author: cherylmc;ganesr
 ms.openlocfilehash: e3721cd3c031622788f553e71a6555b844f3f7dc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit"></a>ExpressRoute 回線の作成と変更
 > [!div class="op_single_selector"]

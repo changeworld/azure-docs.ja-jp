@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 01/13/2017
 ms.author: navale;tomfitz;
 ms.openlocfilehash: 2f7ba23775545637de865f9ef63680ae22c62164
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-manager-rest-apis"></a>Resource Manager REST API
 > [!div class="op_single_selector"]
@@ -38,7 +38,7 @@ Resource Manager の認証は、Azure Active Directory (AD) によって処理�
 詳しい手順については、[Azure AD アプリケーションとサービス プリンシパルの作成](resource-group-create-service-principal-portal.md)に関する記事をご覧ください。
 
 ### <a name="generating-an-access-token"></a>アクセス トークンの生成
-Azure AD に対する認証は、login.microsoftonline.com にある Azure AD を呼び出すことで行われます。 認証のためには次の情報が必要です。
+Azure AD に対する認証は、login.microsoftonline.com にある Azure AD を呼び出すことで行われます。認証のためには次の情報が必要です。
 
 * Azure AD テナント ID (ログインに使用している Azure AD の名前。会社名と同じである場合が多いですが、必ずしもそうとは限りません)
 * アプリケーション ID (Azure AD アプリケーションの作成中に取得したもの)

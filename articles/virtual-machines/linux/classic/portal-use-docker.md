@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/27/2016
 ms.author: rasquill
 ms.openlocfilehash: 932744208d9d53c87e31dcdf9e34539750be4bdb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-docker-vm-extension-with-the-azure-classic-portal"></a>Azure クラシック ポータルで Docker VM 拡張機能を使用する方法
 > [!IMPORTANT] 

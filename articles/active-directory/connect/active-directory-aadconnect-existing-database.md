@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/30/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
 ms.openlocfilehash: d005042fffcf8f4ff99876961a55d254fd4fb2d5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="install-azure-ad-connect-using-an-existing-adsync-database"></a>既存の ADSync データベースを使用して Azure AD Connect をインストールする
 Azure AD Connect には、データを格納する SQL Server データベースが必要です。 Azure AD Connect と共にインストールされる既定の SQL Server 2012 Express LocalDB を使用するか、所有している完全バージョンの SQL を使用することができます。 以前は、Azure AD Connect をインストールしたときに、ADSync という新しいデータベースが常に作成されました。 Azure AD Connect バージョン 1.1.613.0 (以降) では、既存の ADSync データベースを指定して、Azure AD Connect をインストールするオプションがあります。
 
@@ -92,4 +90,3 @@ Azure AD Connect には、データを格納する SQL Server データベース
 - インストールの結果有効になった機能については、[誤った削除操作を防止する機能](active-directory-aadconnectsync-feature-prevent-accidental-deletes.md)と [Azure AD Connect Health](../connect-health/active-directory-aadconnect-health-sync.md) に関する各ページを参照してください。
 - 一般的なトピックについては、[スケジューラの使用と同期のトリガー方法](active-directory-aadconnectsync-feature-scheduler.md)に関するページを参照してください。
 - 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

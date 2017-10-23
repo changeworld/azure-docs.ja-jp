@@ -1,10 +1,10 @@
 ## <a name="additional-resources"></a>その他のリソース
 
-常に最新の製品ニュースとする場合は、 読み取り、[ブログ]のフォローまたは[Twitter] </br>
-SQL データ ウェアハウスの機能の要求があるか。 投稿してください[UserVoice] </br>
-製品の質問があるか。 依頼してみてください[MSDN] </br>
-技術的な質問があるか。 求める[StackOverflow]</br>
-サポートが必要ですか。 送信、[サポート チケット]</br>
+常に最新の製品情報を入手するには、 [ブログ]を読むか、[Twitter]  をフォローしてください。</br>
+SQL DW の機能について要望がある場合は、 [UserVoice]  に投稿してください。</br>
+製品についての質問がある場合は、 [MSDN]  で質問してみてください。</br>
+技術的な質問がある場合は、 [StackOverflow] で質問してください。</br>
+サポートが必要な場合は、 [サポート チケット]を送信してください。</br>
 
 [ブログ]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
 [Twitter]: https://twitter.com/AzureSQLDW

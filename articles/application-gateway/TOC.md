@@ -59,6 +59,7 @@
 ## トラブルシューティング
 ### [Application Gateway のエラーのトラブルシューティング](application-gateway-troubleshooting-502.md)
 ### [診断ログと指標](application-gateway-diagnostics.md)
+### [Application Gateway セッション アフィニティに関する問題](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 # リファレンス
 ## [Azure PowerShell](/powershell/azure/overview)
 ## [Azure CLI](/cli/azure/network/application-gateway)

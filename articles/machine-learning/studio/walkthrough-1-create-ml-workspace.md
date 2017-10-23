@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/23/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ff857e83a37b95bceb751539bb34e9fb7f202931
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-step-1-create-a-machine-learning-workspace"></a>チュートリアル手順 1: Machine Learning ワークスペースの作成
 これは、「[チュートリアル: 信用リスク評価のための予測分析ソリューションを Azure Machine Learning で開発する](walkthrough-develop-predictive-solution.md)」の最初の手順です。
@@ -63,4 +62,3 @@ Machine Learning Studio を使用するには、Microsoft Azure Machine Learning
 
 [1]: ./media/walkthrough-1-create-ml-workspace/create1.png
 [2]: ./media/walkthrough-1-create-ml-workspace/open-workspace.png
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/11/2017
 ms.author: iainfou
 ms.openlocfilehash: db1a550b9273925b304fe4280f2a1b0e115f856d
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>Azure の Windows VM に MongoDB をインストールして構成する
 [MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Azure の Windows Server 2012 R2 仮想マシン (VM) での MongoDB のインストールと構成について説明します。 [Azure の Linux VM に MongoDB をインストールする](../linux/install-mongodb.md)こともできます。

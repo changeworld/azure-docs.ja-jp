@@ -14,21 +14,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
 ms.author: magoedte
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e5787bed43d8e327774d2cbea7e8875b56903cf6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="collect-data-about-azure-virtual-machines"></a>Azure Virtual Machines に関するデータの収集
 [Azure Log Analytics](log-analytics-overview.md) は、詳細な分析と相関のために、Azure Virtual Machines およびその他の環境内のリソースから直接データを 1 つのリポジトリに収集することができます。  このクイック スタートでは、いくつかの簡単な手順で、Azure Linux または Windows VM を構成し、データを収集する方法を示します。  
  
 このクイック スタートでは、既存の Azure Virtual Machines があることを前提とします。 ない場合は、VM のクイック スタートに従って、[Windows VM を作成](../virtual-machines/windows/quick-create-portal.md)するか、[Linux VM を作成](../virtual-machines/linux/quick-create-cli.md)できます。
 
 ## <a name="log-in-to-azure-portal"></a>Azure Portal へのログイン
-[https://portal.azure.com](https://portal.azure.com) で Azure Portal にログインします。 
+Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にログインします。 
 
 ## <a name="create-a-workspace"></a>ワークスペースの作成
 1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。<br> ![Azure ポータル](media/log-analytics-quick-collect-azurevm/azure-portal-01.png)<br>  
@@ -50,7 +48,7 @@ Azure に既にデプロイされている Windows および Linux の仮想マ�
 
 ポータルの Log Analytics リソース ページの上部に、アップグレードを促すバナーが表示されているのがわかります。  このクイック スタートの目的上、アップグレードは必要ありません。<br>
 
-![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)。    
+![Azure Portal に表示されている Log Analytics のアップグレード通知](media/log-analytics-quick-collect-azurevm/log-analytics-portal-upgradebanner.png)が必要です。    
 1. Azure Portal で、左下隅にある **[その他のサービス]** をクリックします。 リソースの一覧で、「**Log Analytics**」と入力します。 入力を始めると、入力内容に基づいて、一覧がフィルター処理されます。 **[Log Analytics]** を選択します。
 2. Log Analytics ワークスペースの一覧で、前の手順で作成した *DefaultLAWorkspace* を選択します。
 3. 左側のメニューの [ワークスペースのデータ ソース] で **[仮想マシン]** をクリックします。  
@@ -97,4 +95,3 @@ Log Analytics は、イベントを Windows イベント ログまたは Linux S
 
 > [!div class="nextstepaction"]
 > [Log Analytics でのデータの表示と分析](log-analytics-tutorial-viewdata.md)
-

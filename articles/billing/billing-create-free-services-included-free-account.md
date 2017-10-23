@@ -12,12 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: amberb
+ms.openlocfilehash: c5331a7f658feacba4b03dd3b5ba8ddb23738051
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: e46609b3f1cc2cae3814e729ea74cfb8b24bea68
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-services-included-with-azure-free-account"></a>Azure の無料アカウントに含まれるサービスを作成する
 
@@ -34,7 +33,6 @@ Azure の無料アカウントでは、無料サービス (数に制限あり) �
 ## <a name="multiple-instances-of-services-can-be-created-within-allowed-limits"></a>サービスの複数インスタンスが許容制限内で作成可能
 ご使用の合計が使用制限内である限り、サービスの複数のインスタンスを無料で作成できます。 たとえば、お使いの Azure の無料アカウントで、B1S Windows 仮想マシンを無料で毎月 750 時間、使用するとします。 その 750 時間は、任意の組み合わせで好きなように使用できます。 たとえば、B1S Windows 仮想マシンを 5 つ作成して、それぞれ 150 時間ずつ使用することができます。 
 
-## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合わせください
+## <a name="need-help-contact-support"></a>お困りの際は、 サポートにお問い合せください
 
 お困りの際は、問題を迅速に解決するために、[サポートにお問い合わせ](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade)ください。
-

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/27/2016
 ms.author: 
 ms.openlocfilehash: 9472cb01eb713e297053727b1a314293574bb657
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-threat-management"></a>Azure Active Directory B2C: 脅威の管理
 

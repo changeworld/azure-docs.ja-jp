@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: parakhj
 ms.openlocfilehash: 48452eb68f826d1c7aa61d5e5531f941ac1422b0
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-call-a-net-web-api-from-a-net-web-app"></a>Azure AD B2C: .NET Web アプリから .NET Web API を呼び出す
 

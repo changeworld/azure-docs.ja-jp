@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.author: heidist
 ms.date: 10/27/2016
 ms.openlocfilehash: a67637d149a84313270c03d21acf8a9c1870be05
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="scoring-profiles-azure-search-rest-api-version-2015-02-28-preview"></a>スコアリング プロファイル (Azure Search REST API バージョン 2015-02-28-Preview)
 > [!NOTE]

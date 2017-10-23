@@ -16,12 +16,11 @@ ms.workload: identity
 ms.date: 09/27/2017
 ms.author: markvi
 ms.reviewer: calebb
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: 4cf30130907151ade9eaf9db28748b8141dac8e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conditional-access-in-azure-active-directory"></a>Azure Active Directory の条件付きアクセス
 
@@ -154,7 +153,7 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 
 ![条件](./media/active-directory-conditional-access-azure-portal/42.png)
 
-さらに、名前付きの場所を信頼できる場所としてマークできます。 条件付きアクセス ポリシーの場合、信頼できる場所は、場所の条件で *[All trusted locations] (すべての信頼できる場所)* を選択できる別のフィルター オプションです。
+さらに、名前付きの場所を信頼できる場所としてマークできます。 条件付きアクセス ポリシーの場合、信頼できる場所は、場所の条件で *[All trusted locations] \(すべての信頼できる場所)* を選択できる別のフィルター オプションです。
 名前付きの場所はまた、[リスク イベント](active-directory-reporting-risk-events.md)の検出のコンテキストで、異常な場所へのあり得ない移動というリスク イベントでの誤検知の数を削減するためにも重要です。 
 
 構成できる名前付きの場所の数は、Azure AD 内の関連するオブジェクトのサイズによって制約されます。 利用できる構成は、次のとおりです。
@@ -221,4 +220,3 @@ Azure Active Directory の現在の実装では、次の領域の条件を定義
 - 条件付きアクセスポリシーの構成方法については、[Azure Active Directory での条件付きアクセスの使用](active-directory-conditional-access-azure-portal-get-started.md)に関する記事を参照してください。
 
 - 環境に適用する条件付きアクセス ポリシーを構成する準備ができたら、「[Azure Active Directory の条件付きアクセスのベスト プラクティス](active-directory-conditional-access-best-practices.md)」を参照してください。 
-

@@ -16,10 +16,10 @@ ms.workload: integration
 ms.date: 09/19/2016
 ms.author: mandia; ladocs
 ms.openlocfilehash: a790ac51b0fea7e3fa379d20e0e094e7ce0d7696
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-the-twilio-connector"></a>Twilio コネクタの使用
 Twilio に接続し、グローバル SMS、MMS、IP メッセージを送受信します。 Twilio では次のことができます。

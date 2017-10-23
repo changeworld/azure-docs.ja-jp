@@ -16,10 +16,10 @@ ms.date: 05/01/2017
 ms.author: lenalepa
 ms.custom: aaddev
 ms.openlocfilehash: e6202aa8665c906382666fe08a561421e50e0a8d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-register-an-app-with-the-v20-endpoint"></a>v2.0 エンドポイントを使用してアプリケーションを登録する方法
 MSA および Azure AD サインインの両方を受け付けるアプリを構築するには、最初に、アプリを Microsoft に登録する必要があります。  現時点では、Azure AD または MSA で利用している既存のアプリは使用できません。新しいアプリを作成してください。

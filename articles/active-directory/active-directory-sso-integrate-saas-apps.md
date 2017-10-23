@@ -17,10 +17,10 @@ ms.date: 08/17/2017
 ms.author: curtand
 ms.reviewer: aaronsm
 ms.openlocfilehash: fc0d297598c334ca8f6f8a2bd3ae948c87956342
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="integrate-azure-active-directory-single-sign-on-with-saas-apps"></a>SaaS アプリと Azure Active Directory シングル サインオンを統合する
 > [!div class="op_single_selector"]

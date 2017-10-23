@@ -12,14 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 42135f0a0101ba82bca0d662ae4b970f799f70d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell スクリプト - Azure Data Factory を使用してクラウド内のデータを変換する
 
 このサンプル PowerShell スクリプトは、Azure HDInsight Spark クラスター上で Spark プログラムを実行して、クラウド内のデータを変換するパイプラインを作成します。 
@@ -28,13 +26,13 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="sample-script"></a>サンプル スクリプト
 > [!IMPORTANT]
-> このスクリプトは、ハード ドライブの c:\ フォルダーにデータ ファクトリ エンティティ (リンクされたサービス、データセット、パイプライン) を定義する JSON ファイルを作成します。
+> このスクリプトは、Data Factory エンティティ (リンクされたサービス、データセット、およびパイプライン) を定義する JSON ファイルをハード ドライブ上の c:\ フォルダー内に作成します。
 
 [!code-powershell[main](../../../powershell_scripts/data-factory/transform-data-using-spark/transform-data-using-spark.ps1?highlight=9,12-15,18,21-23,26-29,32-37 "Transform data using Spark")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 
-サンプル スクリプトの実行後は、次のコマンドを使用してリソース グループとすべての関連リソースを削除することができます。
+このサンプル スクリプトを実行した後、次のコマンドを使用して、リソース グループとそれに関連付けられたすべてのリソースを削除できます。
 
 ```powershell
 Remove-AzureRmResourceGroup -ResourceGroupName "myResourceGroup"
@@ -53,10 +51,10 @@ Remove-AzureRmDataFactoryV2 -Name "<data factory name>" -ResourceGroupName "<res
 |---|---|
 | [New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) | すべてのリソースを格納するリソース グループを作成します。 |
 | [Set-AzureRmDataFactoryV2](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2) | データ ファクトリを作成します。 |
-| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedservice) | リンクされたサービスをデータ ファクトリに作成します。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 |
-| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactorv2ypipeline) | データ ファクトリにパイプラインを作成します。 パイプラインには、特定の操作を実行する 1 つ以上のアクティビティが含まれています。 このパイプラインで、spark アクティビティは、Azure HDInsight Spark クラスターでプログラムを実行してデータを変換します。 |
+| [Set-AzureRmDataFactoryV2LinkedService](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2linkedservice) | データ ファクトリ内にリンクされたサービスを作成します。 リンクされたサービスは、データ ストアまたは計算をデータ ファクトリにリンクします。 |
+| [Set-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactorv2ypipeline) | データ ファクトリ内にパイプラインを作成します。 パイプラインには、特定の操作を実行する 1 つ以上のアクティビティが含まれています。 このパイプラインで、spark アクティビティは、Azure HDInsight Spark クラスターでプログラムを実行してデータを変換します。 |
 | [Invoke-AzureRmDataFactoryV2Pipeline](/powershell/module/azurerm.datafactoryv2/new-azurermdatafactoryv2pipelinerun) | パイプラインの実行を作成します。 つまり、パイプラインを実行します。 |
-| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | パイプラインのアクティビティの実行に関する詳細情報を取得します。 
+| [Get-AzureRmDataFactoryV2ActivityRun](/powershell/module/azurerm.datafactoryv2/get-azurermdatafactoryv2activityrun) | パイプライン内のアクティビティの実行 (アクティビティ実行) に関する詳細情報を取得します。 
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | 入れ子になったリソースすべてを含むリソース グループを削除します。 |
 |||
 

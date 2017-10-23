@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 08/25/2017
+ms.date: 10/11/2017
 ms.author: carlrab
+ms.openlocfilehash: 70f512ef5742346df742e0718e2ccffd076a979e
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 3af597d7af13daaf80cd750b230675c8475033e1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースを管理する
 
@@ -37,7 +36,7 @@ Azure Portal を使用して、新規または既存の Azure SQL データベ�
 ![サービス レベルとパフォーマンス レベルの構成](./media/sql-database-single-database-resources/change-service-tier.png)
 
 > [!IMPORTANT]
-> P11 または P15 サービス レベルを選択する場合は、「[最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)」をご覧ください。
+> P11 または P15 サービス レベルを選択する場合は、「[最大サイズ 4 TB の P11 および P15 データベースの現時点での制限事項](sql-database-resource-limits.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb)」をご覧ください。
 >
 
 ## <a name="manage-single-database-resources-using-powershell"></a>PowerShell を使って単一データベース リソースを管理する
@@ -60,12 +59,12 @@ Azure CLI を使って、Azure SQL データベースのサービス レベル�
 
 | コマンドレット | Description |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#create) |データベースを作成します。|
-|[az sql db list](/cli/azure/sql/db#list)|サーバー内のすべてのデータベースとデータ ウェアハウス、またはエラスティック プール内のすべてのデータベースを一覧表示します。|
-|[az sql db list-editions](/cli/azure/sql/db#list-editions)|利用可能なサービス目標と容量の上限を一覧表示します。|
-|[az sql db list-usages](/cli/azure/sql/db#list-usages)|データベースの使用状況を返します。|
-|[az sql db show](/cli/azure/sql/db#show)|データベースまたはデータ ウェアハウスを取得します。|
-|[az sql db update](/cli/azure/sql/db#update)|データベースを更新します。|
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|サーバーのファイアウォール規則を作成します。|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|サーバーのファイアウォール規則を一覧表示します。|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|ファイアウォール規則の詳細を表示します。|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|ファイアウォール規則を更新します。|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|ファイアウォール規則を削除します。|
+
 
 > [!TIP]
 > 単一の Azure SQL データベースのサイズ情報を照会した後に、そのデータベースを別のパフォーマンス レベルにスケーリングする Azure CLI のサンプル スクリプトについては、「[CLI を使用して 1 つの SQL データベースを監視およびスケーリングする](scripts/sql-database-monitor-and-scale-database-cli.md)」を参照してください。
@@ -111,4 +110,3 @@ Azure SQL Database のサービス レベル、パフォーマンス レベル�
 - サービス レベル、パフォーマンス レベル、およびストレージ量については、「[Azure SQL Database で利用可能なパフォーマンス オプション](sql-database-service-tiers.md)」をご覧ください。
 - エラスティック プールについては、「[エラスティック プールを利用して複数の SQL データベースの管理およびスケーリングを行う](sql-database-elastic-pool.md)」をご覧ください。
 - 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
-

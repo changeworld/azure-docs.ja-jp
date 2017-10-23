@@ -16,10 +16,10 @@ ms.custom: security
 ms.date: 10/31/2016
 ms.author: rortloff;barbkess
 ms.openlocfilehash: f4a2376fe4fb710d031c35ca7fdbf4c7bb0f3caa
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-threat-detection"></a>脅威の検出の概要
 > [!div class="op_single_selector"]
@@ -37,8 +37,7 @@ ms.lasthandoff: 07/11/2017
 たとえば、脅威の検出は、SQL インジェクションの可能性を示す特定の異常なデータベース アクティビティを検出します。 SQL インジェクションはインターネットでの一般的な Web アプリケーションのセキュリティの問題の 1 つであり、データ駆動型アプリケーションの攻撃に使用されます。 攻撃者は、アプリケーションの脆弱性を利用してアプリケーションの入力フィールドに悪意のある SQL ステートメントを挿入し、データベースのデータを侵害または変更します。
 
 ## <a name="set-up-threat-detection-for-your-database"></a>データベースに対する脅威の検出の設定
-1. 
-            [https://portal.azure.com](https://portal.azure.com)で Azure Portal を起動します。
+1. [https://portal.azure.com](https://portal.azure.com)で Azure Portal を起動します。
 2. 監視する SQL Data Warehouse の構成ブレードに移動します。 [設定] ブレードで、**[監査と脅威の検出]** を選択します。
    
     ![ナビゲーション ウィンドウ][1]

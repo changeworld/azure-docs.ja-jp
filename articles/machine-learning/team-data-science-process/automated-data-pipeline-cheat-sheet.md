@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: mithal;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a2b14dd39c0247c35ef006385eceebfa4fbe82d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cheat-sheet-for-an-automated-data-pipeline-for-azure-machine-learning-predictions"></a>Azure Machine Learning 予測のためにデータ パイプラインを自動化するためのチート シート
 **Microsoft Azure Machine Learning 自動化データ パイプライン チート シート** は、予測分析モデルによってデータをスコア付けできる Machine Learning Web サービスに対してデータを送信するために使用できるテクノロジを確認するのに役立ちます。
@@ -43,5 +42,4 @@ ms.lasthandoff: 09/25/2017
 * スコアリング Web サービスを使用する方法については、「[Machine Learning の実験からデプロイされた Azure Machine Learning Web サービスを使用する方法](../studio/consume-web-services.md)」を参照してください。
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
-
 

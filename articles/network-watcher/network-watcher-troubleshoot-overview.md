@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
+ms.openlocfilehash: a37c92e1aa58184ed29185742ec727c120fe593f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 0d5091b682d1b25c47b224394bcc2c46366eeb2a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Azure Network Watcher のリソース トラブルシューティングの概要
 
 仮想ネットワーク ゲートウェイにより、オンプレミスのリソースと Azure 内の別の仮想ネットワークを接続できます。 こうしたゲートウェイおよび接続について監視することは、通信が妨げられないようにする上で重要です。 Network Watcher には、仮想ネットワーク ゲートウェイと接続のトラブルシューティングを行う機能が備わっています。 この機能は、ポータル、PowerShell、CLI、または REST API から呼び出すことができます。 呼び出されると、Network Watcher は仮想ネットワーク ゲートウェイまたは接続の正常性を診断し、該当する結果を返します。 この要求は実行時間の長いトランザクションであり、結果は診断が完了してから返されます。
@@ -219,4 +217,3 @@ Elapsed Time            330 sec
 
 [1]: ./media/network-watcher-troubleshoot-overview/GatewayTenantWorkerLogs.png
 [2]: ./media/network-watcher-troubleshoot-overview/portal.png
-

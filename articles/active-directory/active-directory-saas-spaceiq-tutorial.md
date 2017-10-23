@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 939cc4215ca8822cee376dfb13d5f6d1b8be1d35
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-spaceiq"></a>チュートリアル: Azure Active Directory と SpaceIQ の統合
 
@@ -150,7 +149,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     d. ダウンロードした証明書ファイルをメモ帳で開き、その内容をコピーし、**[X.509 Certificate]\(X.509 証明書\)** ボックスに貼り付けます。
     
-    e. **[Save]** をクリックします。
+    e. [ **Save**] をクリックします。
 
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -185,7 +184,7 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
   
 ### <a name="create-a-spaceiq-test-user"></a>SpaceIQ テスト ユーザーを作成する
 
@@ -248,5 +247,4 @@ SpaceIQ で Azure AD のシングル サインオンを構成してテストす�
 [201]: ./media/active-directory-saas-spaceiq-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-spaceiq-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-spaceiq-tutorial/tutorial_general_203.png
-
 

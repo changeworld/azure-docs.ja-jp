@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: bwren
 ms.openlocfilehash: 452dd602387db6db04ca87f6834c9e8606185484
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-operations-management-suite-oms"></a>Operations Management Suite (OMS) とは
 この記事では、Operations Management Suite (OMS) の概要を説明します。ここには、OMS によってもたらされるビジネス上の価値、OMS 内のサービスと管理ソリューション、多様なサービスとソリューションが 1 つにまとめられたサービス内容の簡単な概要が含まれます。  各サービスとソリューションのデプロイと使用に関する詳細なドキュメントへのリンクが記載されています。

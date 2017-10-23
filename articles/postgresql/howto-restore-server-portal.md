@@ -10,10 +10,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 07/20/2017
 ms.openlocfilehash: 3fbdb7741481bd3620466c3489d3609f9ea6961f
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 

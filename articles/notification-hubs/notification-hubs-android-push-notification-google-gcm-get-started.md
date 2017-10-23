@@ -16,10 +16,10 @@ ms.topic: hero-article
 ms.date: 07/05/2016
 ms.author: yuaxu
 ms.openlocfilehash: 808fc10ef1ebb3288facbdf2e9e817b27d4fc6bc
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-to-android-with-azure-notification-hubs"></a>Azure Notification Hubs から Android へのプッシュ通知の送信
 [!INCLUDE [notification-hubs-selector-get-started](../../includes/notification-hubs-selector-get-started.md)]
@@ -133,8 +133,7 @@ Google Cloud Messaging (GCM) を使用してプッシュ通知を受信する空
    
    * **SenderId**: [Google Cloud Console](http://cloud.google.com/console)で取得しておいたプロジェクト番号。
    * **HubListenConnectionString**: ハブの **DefaultListenAccessSignature** 接続文字列。 接続文字列をコピーするには、[Azure Portal] で、ハブの **[設定]** ブレードにある **[アクセス ポリシー]** をクリックします。
-   * 
-            **HubName**: [Azure Portal] のハブ ブレードに表示される通知ハブの名前を使用します。
+   * **HubName**: [Azure Portal] のハブ ブレードに表示される通知ハブの名前を使用します。
      
      `NotificationSettings` のコードは次のとおりです。
      
@@ -669,5 +668,4 @@ Notification Hubs の全般的な情報については、「 [Notification Hubs 
 [Notification Hubs の概要]: http://msdn.microsoft.com/library/jj927170.aspx
 [Notification Hubs を使用したユーザーへのプッシュ通知]: notification-hubs-aspnet-backend-gcm-android-push-to-user-google-notification.md
 [Notification Hubs を使用したニュース速報の送信]: notification-hubs-aspnet-backend-android-xplat-segmented-gcm-push-notification.md
-
-            [Azure Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

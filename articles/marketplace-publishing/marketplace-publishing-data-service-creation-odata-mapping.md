@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: a853b4dbd1952ba4ea8ee68ea3ca98f588bb71a2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="mapping-an-existing-web-service-to-odata-through-csdl"></a>CSDL を使用した既存の Web サービスの OData へのマッピング
 > [!IMPORTANT]

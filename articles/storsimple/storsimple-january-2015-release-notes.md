@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 05/16/2016
 ms.author: v-sharos
 ms.openlocfilehash: 2fc50f7faddb4b61ea5e7d328469fc3cc0eb6f3e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-update-02-release-notes---january-2015"></a>StorSimple 8000 シリーズ Update 0.2 リリース ノート - 2015 年 1 月
 ## <a name="overview"></a>概要

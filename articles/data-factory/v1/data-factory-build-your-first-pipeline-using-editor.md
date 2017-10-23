@@ -15,14 +15,12 @@ ms.topic: hero-article
 ms.date: 07/10/2017
 ms.author: spelluru
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 19f9686de9face1e53fc84eac23381eadc9fb5cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>チュートリアル: Azure Portal を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
 > * [概要と前提条件](data-factory-build-your-first-pipeline.md)
@@ -158,7 +156,7 @@ ms.lasthandoff: 09/25/2017
 この手順では、Hive 処理の入力データと出力データを表すデータセットを作成します。 これらのデータセットは、このチュートリアルで前に作成した **AzureStorageLinkedService** を参照します。 このリンクされたサービスは Azure ストレージ アカウントを指し、データセットは入力データと出力データを保持するストレージのコンテナー、フォルダー、ファイル名を指定します。   
 
 ### <a name="create-input-dataset"></a>入力データセットの作成
-1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
+1. **Data Factory エディター**のコマンド バーで  **...\(その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。
 
     ![新しいデータセット](./media/data-factory-build-your-first-pipeline-using-editor/new-data-set.png)
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、パイプラインのアクティビティの入力データを表す **AzureBlobInput** というデータセットを作成します。 さらに、**adfgetstarted** という BLOB コンテナーと **inputdata** というフォルダーに入力データが配置されるように指定します。
@@ -205,7 +203,7 @@ ms.lasthandoff: 09/25/2017
 ### <a name="create-output-dataset"></a>出力データセットの作成
 次に、Azure BLOB ストレージに格納される出力データを表す出力データセットを作成します。
 
-1. **Data Factory エディター**のコマンド バーで  **... (その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
+1. **Data Factory エディター**のコマンド バーで  **...\(その他)** をクリックし、**[新しいデータセット]** をクリックして、**[Azure BLOB ストレージ]** を選択します。  
 2. 次のスニペットをコピーして、[Draft-1] ウィンドウに貼り付けます。 この JSON スニペットでは、 **AzureBlobOutput**というデータセットを作成し、Hive スクリプトによって生成されるデータの構造を指定しています。 さらに、**adfgetstarted** という BLOB コンテナーと **partitioneddata** というフォルダーに結果が保存されるように指定します。 **availability** セクションでは、出力データセットが 1 か月ごとに生成されることを指定します。
 
     ```JSON
@@ -400,4 +398,3 @@ ms.lasthandoff: 09/25/2017
 | [データセット](data-factory-create-datasets.md) |この記事では、Azure Data Factory のデータセットについて説明します。 |
 | [スケジュールと実行](data-factory-scheduling-and-execution.md) |この記事では、Azure Data Factory アプリケーション モデルのスケジュール設定と実行の側面について説明します。 |
 | [監視アプリを使用したパイプラインの監視と管理に関する記事](data-factory-monitor-manage-app.md) |この記事では、監視と管理アプリを使用してパイプラインを監視、管理、デバッグする方法について説明します。 |
-

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/28/2017
 ms.author: v-donglo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 1e3dc7e1375488ae9473cdd26f4d00871a091fbd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="whats-new-in-azure-machine-learning"></a>Azure Machine Learning の新機能
 
@@ -53,5 +52,4 @@ ms.lasthandoff: 09/25/2017
 * サンプル データとジョブの送信履歴が表示される新しいバッチ実行サービス テスト ページが提供されます。
 
 さらに、Machine Learning Studio が更新され、新しい Web サービス モデルをデプロイするか、従来の Web サービス モデルのデプロイを継続できるようになりました。 
-
 

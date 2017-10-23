@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Azure での StorSimple 仮想デバイスのデプロイと管理
 ## <a name="overview"></a>Overview
@@ -236,4 +235,3 @@ StorSimple 物理デバイスとは異なり、StorSimple 仮想デバイスに�
 ## <a name="next-steps"></a>次のステップ
 * [StorSimple Manager サービスを使用して仮想デバイスを管理する](storsimple-manager-service-administration.md)方法を確認します。
 * [バックアップ セットから StorSimple ボリュームを復元する](storsimple-restore-from-backup-set.md)方法について理解します。
-

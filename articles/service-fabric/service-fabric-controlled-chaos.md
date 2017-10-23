@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 08/09/2017
 ms.author: motanv
 ms.openlocfilehash: 3b3b93bc9ec5ecdcfc289e5b62e84de6aa4172ed
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="induce-controlled-chaos-in-service-fabric-clusters"></a>Service Fabric クラスターでの制御された混乱の誘発
 クラウド インフラストラクチャのような大規模な分散システムは、本質的に信頼性の低いものです。 Azure Service Fabric を使用すると、開発者が、信頼性の低いインフラストラクチャ上で信頼できる分散サービスのコードを記述できます。 信頼性の低いインフラストラクチャ上に強固な分散サービスを作成するために、開発者は、基になる信頼性の低いインフラストラクチャで障害のために複雑な状態遷移が発生している状態で、サービスの安定性をテストできる必要があります。

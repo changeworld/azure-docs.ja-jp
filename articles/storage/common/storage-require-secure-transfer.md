@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 06/20/2017
 ms.author: fryu
+ms.openlocfilehash: 1bb87cf3e37e486f9a03da43df652442c19fd218
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 5ec50ca23d9f7c92365492dfab42dc14a38699e2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="require-secure-transfer-in-azure-storage"></a>Azure Storage で安全な転送が必要
 
@@ -30,7 +29,7 @@ Azure Files サービスを使用する場合、[安全な転送が必須] を�
 既定では、[安全な転送が必須] オプションは無効になっています。
 
 > [!NOTE]
-> Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。
+> Azure Storage ではカスタム ドメイン名の HTTPS はサポートされないため、カスタム ドメイン名を使用している場合、このオプションは適用されません。 また、クラシック ストレージ アカウントはサポートされていません。
 
 ## <a name="enable-secure-transfer-required-in-the-azure-portal"></a>Azure Portal で [安全な転送が必須] を有効にする
 
@@ -63,59 +62,65 @@ Azure Files サービスを使用する場合、[安全な転送が必須] を�
 * [Python SDK](https://pypi.python.org/pypi/azure-mgmt-storage/1.1.0) (バージョン: 1.1.0)
 * [Ruby SDK](https://rubygems.org/gems/azure_mgmt_storage) (バージョン: 0.11.0)
 
-### <a name="enable-secure-transfer-required-setting-with-rest-api"></a>REST API で [安全な転送が必須] の設定を有効にする
+### <a name="enable-secure-transfer-required-setting-with-powershell"></a>PowerShell で [安全な転送が必須] の設定を有効にする
 
-REST API でのテストを簡略化するには、[ArmClient](https://github.com/projectkudu/ARMClient) を使用してコマンド ラインから呼び出します。
+このサンプルには、Azure PowerShell モジュール バージョン 4.1 以降が必要です。 バージョンを確認するには、` Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
- 以下のコマンド ラインを使用して、REST API の設定を確認します。
+`Login-AzureRmAccount` を実行して、Azure との接続を作成します。
+
+ 以下のコマンド ラインを使って、設定を確認します。
+
+```powershell
+> Get-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}"
+StorageAccountName     : {StorageAccountName}
+Kind                   : Storage
+EnableHttpsTrafficOnly : False
+...
 
 ```
-# Login Azure and proceed with your credentials
-> armclient login
 
-> armclient GET  /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01
+以下のコマンド ラインを使って、設定を有効にします。
+
+```powershell
+> Set-AzureRmStorageAccount -Name "{StorageAccountName}" -ResourceGroupName "{ResourceGroupName}" -EnableHttpsTrafficOnly $True
+StorageAccountName     : {StorageAccountName}
+Kind                   : Storage
+EnableHttpsTrafficOnly : True
+...
+
 ```
 
-応答には、_supportsHttpsTrafficOnly_ 設定があります。 For example:
+### <a name="enable-secure-transfer-required-setting-with-cli"></a>CLI で [安全な転送が必須] の設定を有効にする
 
-```Json
+[!INCLUDE [sample-cli-install](../../../includes/sample-cli-install.md)]
 
+[!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
+
+ 以下のコマンド ラインを使って、設定を確認します。
+
+```azurecli-interactive
+> az storage account show -g {ResourceGroupName} -n {StorageAccountName}
 {
-  "id": "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}",
-  "kind": "Storage",
-  ...
-  "properties": {
-    ...
-    "supportsHttpsTrafficOnly": false
-  },
+  "name": "{StorageAccountName}",
+  "enableHttpsTrafficOnly": false,
   "type": "Microsoft.Storage/storageAccounts"
+  ...
 }
 
 ```
 
-以下のコマンド ラインを使用して、REST API の設定を有効にします。
+以下のコマンド ラインを使って、設定を有効にします。
 
-```
-
-# Login Azure and proceed with your credentials
-> armclient login
-
-> armclient PUT /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{accountName}?api-version=2016-12-01 < Input.json
-
-```
-
-Input.json の例を次に示します。
-```Json
-
+```azurecli-interactive
+> az storage account update -g {ResourceGroupName} -n {StorageAccountName} --https-only true
 {
-  "location": "westus",
-  "properties": {
-    "supportsHttpsTrafficOnly": true
-  }
+  "name": "{StorageAccountName}",
+  "enableHttpsTrafficOnly": true,
+  "type": "Microsoft.Storage/storageAccounts"
+  ...
 }
 
 ```
 
 ## <a name="next-steps"></a>次のステップ
 Azure Storage で提供される包括的なセキュリティ機能のセットを利用して、開発者はセキュリティで保護されたアプリケーションを構築できます。 詳細については、「[Azure Storage セキュリティ ガイド](storage-security-guide.md)」を参照してください。
-

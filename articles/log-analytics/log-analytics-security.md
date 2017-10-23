@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/03/2017
 ms.author: magoedte
+ms.openlocfilehash: 91af774560860b35913e57b49fb7a1dd59f5640f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 9ae1629462d375c1061d9c7b25975c789ee661c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="log-analytics-data-security"></a>Log Analytics データのセキュリティ
 Microsoft は、組織の IT インフラストラクチャの管理に役立つソフトウェアやサービスを提供すると同時に、お客様のプライバシーとデータの保護に努めています。 他者にデータを委託する場合、信頼には厳格なセキュリティが必要であることを把握しております。 Microsoft ではコーディングからサービスの運用まで、厳密なコンプライアンスとセキュリティのガイドラインに準拠しています。
@@ -165,4 +164,3 @@ OMS ポータルを使用してデータを CSV ファイルにエクスポー�
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics の起動と開始](log-analytics-get-started.md) 」では、Log Analytics の詳細と、分単位で起動および実行する方法について説明します。
-

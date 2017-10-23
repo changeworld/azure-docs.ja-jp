@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2017
 ms.author: ccompy
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 121dd1a90e9bde66f1c3b752412a657a67295084
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>App Service Environment のためのネットワークの考慮事項 #
 
@@ -103,7 +102,7 @@ VNet で VPN のもう一方の側に顧客 DNS が構成されている場合�
 ASE の機能的な依存関係に加えて、ポータルのエクスペリエンスに関連したいくつかの追加項目があります。 Azure Portal の一部の機能は、_SCM サイト_への直接アクセスに依存しています。 Azure App Service 内のどのアプリにも 2 つの URL が存在します。 1 つ目の URL はアプリにアクセスするためのものです。 2 つ目の URL は SCM サイト (_Kudu コンソール_とも呼ばれます) にアクセスするためのものです。 SCM サイトを使用する機能には、次のものが含まれます。
 
 -   Web ジョブ
--   関数
+-   Functions
 -   ログ ストリーミング
 -   Kudu
 -   拡張機能
@@ -252,4 +251,3 @@ ASE を ExpressRoute と統合された VNet にデプロイするには、ASE �
 [ASEWAF]: app-service-app-service-environment-web-application-firewall.md
 [AppGW]: ../../application-gateway/application-gateway-web-application-firewall-overview.md
 [ASEManagement]: ./management-addresses.md
-

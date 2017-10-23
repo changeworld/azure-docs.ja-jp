@@ -13,12 +13,11 @@ ms.service: azure
 ms.technology: 
 ms.assetid: 
 ms.custom: it-pro
-ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
 ms.openlocfilehash: e368f14638c480a632afa7c17023aa8ae4c8833f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-azure-identity-solutions"></a>Azure ID ソリューションについて
 Microsoft Azure Active Directory (Azure AD) は、ディレクトリ サービス、ID ガバナンス、アプリケーション アクセス管理を提供する、ID およびアクセス管理クラウド ソリューションです。 Azure AD により、[Azure AD アプリケーション ギャラリー](https://azure.microsoft.com/marketplace/active-directory/all/)にある事前に統合された数千個の商用アプリやカスタム アプリへの[シングル サインオン (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) を簡単に実現できます。 Office 365、Salesforce.com、Box、ServiceNow、Workday など、これらのアプリの多くは既に使用されていると考えられます。
@@ -128,4 +127,3 @@ Azure AD について理解を深めていただけるよう、豊富なオン�
 [Azure の概念実証環境で詳しく学ぶ](https://aka.ms/aad-poc)
 
 [Azure AD を運用環境にデプロイする](https://aka.ms/aad-onboard)
-

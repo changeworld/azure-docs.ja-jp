@@ -1,4 +1,4 @@
----
+﻿---
 title: "ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell | Azure"
 description: "RADIUS 認証を使用するポイント対サイト VPN ゲートウェイ接続を作成することで、コンピューターを Azure 仮想ネットワークに安全に接続します。"
 services: vpn-gateway
@@ -13,14 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/13/2017
+ms.date: 09/25/2017
 ms.author: cherylmc
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 9ca423e8d752271fadbb5b51f38e691a0316576c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell-preview"></a>RADIUS 認証を使用して VNet へのポイント対サイト接続を構成する: PowerShell (プレビュー)
 
@@ -165,7 +164,7 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
 1. RADIUS シークレットのセキュリティで保護された文字列を作成します。
 
   ```powershell
-  $Secure_Secret=Read-Host -AsSecureString -Prompt "RadiusSecret"
+  $Secure_Secret=Read-Host -AsSecureStrinng -Prompt "RadiusSecret"
   ```
 
 2. RADIUS シークレットを入力するように求められます。 入力した文字は表示されず、"*" 文字に置き換えられます。
@@ -178,27 +177,26 @@ New-AzureRmVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG `
   SSTP 構成の場合:
 
     ```powershell
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
-    -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "SSTP" `
+    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName '
+    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway '
+    -VpnClientAddressPool "172.16.201.0/24" VpnClientProtocols "SSTP" '
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
   IKEv2 構成の場合:
 
     ```powershell
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
-    -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol "IKEv2" `
+    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName '
+    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway '
+    -VpnClientAddressPool "172.16.201.0/24" VpnClientProtocols "IKEv2" '
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
   SSTP と IKEv2 の場合
 
     ```powershell
-    $Gateway = Get-AzureRmVirtualNetworkGateway -ResourceGroupName $RG -Name $GWName
-    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway `
-    -VpnClientAddressPool "172.16.201.0/24" -VpnClientProtocol @( "SSTP", "IkeV2" ) `
+    Set-AzureRmVirtualNetworkGateway -VirtualNetworkGateway $Gateway '
+    -VpnClientAddressPool "172.16.201.0/24" VpnClientProtocols @{ "SSTP", "IkeV2" } '
     -RadiusServerAddress "10.51.0.15" -RadiusServerSecret $Secure_Secret
     ```
 
@@ -254,4 +252,3 @@ VPN クライアント構成を使用すると、デバイスは P2S 接続を�
 ## <a name="next-steps"></a>次のステップ
 
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 詳細については、[Virtual Machines](https://docs.microsoft.com/azure/#pivot=services&panel=Compute) に関するページを参照してください。 ネットワークと仮想マシンの詳細については、「[Azure と Linux の VM ネットワークの概要](../virtual-machines/linux/azure-vm-network-overview.md)」を参照してください。
-

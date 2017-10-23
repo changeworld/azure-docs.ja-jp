@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: 574c6877bddac8be7d6d541bfabbdc10f6be3101
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clarizen"></a>チュートリアル: Azure Active Directory と Clarizen の統合
 
@@ -135,7 +135,7 @@ Azure Portal で Azure AD のシングル サインオンを有効にし、Clari
 
     ![ユーザー名の下にある [Settings (設定)] のクリック](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_001.png "設定")
 
-12. **[Global Settings (グローバル設定)]** タブをクリックします。 次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
+12. **[Global Settings (グローバル設定)]** タブをクリックします。次に、**[Federated Authentication (フェデレーション認証)]** の横の **[edit (編集)]** をクリックします。
 
     ![[Global Settings (グローバル設定)] タブ](./media/active-directory-saas-clarizen-tutorial/tutorial_clarizen_002.png "グローバル設定")
 

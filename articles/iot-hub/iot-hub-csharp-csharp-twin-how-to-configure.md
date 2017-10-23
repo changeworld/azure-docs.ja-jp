@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure IoT Hub デバイス ツインのプロパティの使用 (.NET/.NET) | Microsoft Docs"
 description: "Azure IoT Hub デバイス ツインを使用してデバイスを構成する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、デバイス ツインを使用するデバイス構成を変更するサービス アプリを実装します。"
 services: iot-hub
@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2017
 ms.author: dkshir
-ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
 ms.openlocfilehash: 679cda28bf3ce9fb207fe3693a3453b355f1de15
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-desired-properties-to-configure-devices"></a>必要なプロパティを使用してデバイスを構成する
 [!INCLUDE [iot-hub-selector-twin-how-to-configure](../../includes/iot-hub-selector-twin-how-to-configure.md)]
@@ -200,7 +199,7 @@ ms.lasthandoff: 07/21/2017
             InitTelemetry();
 
             Console.WriteLine("Wait for desired telemetry...");
-            Client.SetDesiredPropertyUpdateCallbackAsync(OnDesiredPropertyChanged, null).Wait();
+            Client.SetDesiredPropertyUpdateCallback(OnDesiredPropertyChanged, null).Wait();
             Console.ReadKey();
         }
         catch (AggregateException ex)
@@ -330,4 +329,3 @@ ms.lasthandoff: 07/21/2017
 [lnk-iothub-getstarted]: iot-hub-csharp-csharp-getstarted.md
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-how-to-configure-createapp]: iot-hub-csharp-csharp-twin-how-to-configure.md#create-the-simulated-device-app
-

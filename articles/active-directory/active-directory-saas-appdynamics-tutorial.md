@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/16/2017
 ms.author: jeedes
 ms.openlocfilehash: 634e68bdb937eba68b27b824dc62fe2677e24ffe
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>チュートリアル: Azure Active Directory と AppDynamics の統合
 
@@ -197,7 +197,7 @@ Azure AD ユーザーが AppDynamics にログインできるようにするに�
 
 1. AppDynamics 企業サイトに管理者としてログインします。
 
-2. **[Users]** に移動して、[**+**] をクリックして **[Create User]** ダイアログを開きます。
+2. **Users** に移動して、**+**をクリックして **Create User** ダイアログを開きます。
    
     ![ユーザー](./media/active-directory-saas-appdynamics-tutorial/ic790229.png "Users")
 

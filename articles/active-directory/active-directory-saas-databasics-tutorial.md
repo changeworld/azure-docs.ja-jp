@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: jeedes
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: 3a9776e6d11a54220a3b055d59e89d2eb4161a1a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-databasics"></a>チュートリアル: Azure Active Directory と DATABASICS の統合
 
@@ -163,7 +162,7 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-databasics-test-user"></a>DATABASICS テスト ユーザーの作成
 
@@ -225,5 +224,4 @@ DATABASICS で Azure AD のシングル サインオンを構成してテスト�
 [201]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_201.png
 [202]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_202.png
 [203]: ./media/active-directory-saas-databasics-tutorial/tutorial_general_203.png
-
 

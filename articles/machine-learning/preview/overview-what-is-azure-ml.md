@@ -10,14 +10,12 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: get-started-article
 ms.date: 09/21/2017
+ms.openlocfilehash: 3bf9227a7ee432f036c57dd9d1c3807c7a867f3f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: c4919fb679eeb4d25eb0066b9bf617b057d44354
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-machine-learning"></a>Azure Machine Learning とは
 
 Azure Machine Learning は、統合されたエンドツーエンドのデータ サイエンスおよび高度な分析ソリューションです。 データ サイエンティストは、このソリューションを使用してデータの準備、実験の開発、モデルのデプロイをクラウド規模で行うことができます。
@@ -179,7 +177,7 @@ Microsoft Machine Learning Server は、次の操作を行う必要がある場�
 - R および Python トレーニングを Hadoop または Spark クラスターに大規模に配布する
 
 ### <a name="data-science-virtual-machine"></a>データ サイエンス仮想マシン
-[データ サイエンス仮想マシン (DSVM)](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
+[データ サイエンス仮想マシン (DSVM)](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/overview) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
 
 データ サイエンス仮想マシンは、単一のノードでジョブを実行またはホストする必要がある場合や、 1 台のマシンで処理をリモートでスケールアップする必要がある場合に使用します。 データ サイエンス仮想マシンは、Azure Machine Learning 実験と Azure Machine Learning モデル管理の両方のターゲットとしてサポートされています。 
 
@@ -219,4 +217,3 @@ Microsoft Cognitive Services は、デバイスとプラットフォームを越
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure Machine Learning をインストールおよび作成する](quickstart-installation.md)
-

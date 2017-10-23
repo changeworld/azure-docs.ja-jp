@@ -16,10 +16,10 @@ ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
 ms.openlocfilehash: 2f9410bdaa037f1839cf7c12c3532b51be669ed5
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="authentication-scenarios-for-azure-ad"></a>Azure AD の認証シナリオ
 Azure Active Directory (Azure AD) は、OAuth 2.0 や OpenID Connect などの業界標準プロトコルをサポートする Identity as a Service と、コーディングを手軽に開始するうえで役立つ、さまざまなプラットフォーム向けのオープン ソース ライブラリを提供することで、開発者のために認証を簡素化します。 このドキュメントでは、Azure AD がサポートするさまざまなシナリオについて説明し、開発を開始する方法を示します。 このドキュメントは次のセクションに分かれています。

@@ -16,10 +16,10 @@ ms.date: 04/27/2017
 ms.author: skwan
 ms.custom: aaddev
 ms.openlocfilehash: 4f6806cde52ce965a8f78a5cce8a24c3d1248594
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="branding-guidelines-for-applications"></a>アプリケーションのブランド化ガイドライン
 このトピックでは、Azure Active Directory (Azure AD) でアプリケーションを開発するときに使用するブランド化ガイドラインについて説明します。 Azure AD で管理されている職場または学校のアカウント、あるいは個人のアカウントをサインアップやサインインに使用したいと考えているアプリケーションの利用者向けの案内としてお役立てください。

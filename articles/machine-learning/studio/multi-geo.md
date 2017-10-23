@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 4/6/2017
 ms.author: tedway; neerajkh
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e4941ccf8c6d7a0c77527e9c1d722bc3a770114a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multi-geo-help-documentation"></a>複数の地理的リージョンに関するヘルプ ドキュメント
 この記事では、ワークスペースを作成し、別の Azure リージョンに Web サービスを発行する方法について説明します。  [[リージョン別の Azure 製品] ページ](https://azure.microsoft.com/en-us/regions/services/)には、Azure Machine Learning を利用できるリージョンが一覧表示されます。
@@ -59,4 +58,3 @@ ms.lasthandoff: 09/25/2017
 [2]: ./media/multi-geo/multi-geo_2.png
 [3]: ./media/multi-geo/multi-geo_3.png
 [4a]: ./media/multi-geo/multi-geo_4a.png
-

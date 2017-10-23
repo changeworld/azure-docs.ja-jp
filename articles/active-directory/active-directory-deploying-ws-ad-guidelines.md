@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 07/26/2017
 ms.author: femila
 ms.openlocfilehash: 342d9e2787add3d04f1b744152e135db98848179
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guidelines-for-deploying-windows-server-active-directory-on-azure-virtual-machines"></a>Azure 仮想マシンでの Windows Server Active Directory のデプロイ ガイドライン
 この記事では、Windows Server の Active Directory Domain Services (AD DS) および Active Directory フェデレーション サービス (AD FS) に関して、オンプレミスへのデプロイと Microsoft Azure 仮想マシンへのデプロイとの大きな違いについて説明します。
@@ -52,8 +52,7 @@ AD をデプロイした経験のない方は、「[AD DS Deployment Guide (AD D
 また、以下のトピックについてのチュートリアル、ガイド、ビデオを最初にご覧になるようお勧めします。
 
 * [Azure Portal を使用した仮想ネットワークの作成](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)
-* 
-            [Azure Portal でサイト間 VPN 接続を使用して仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-site-to-site-create.md)
+* [Azure Portal でサイト間 VPN 接続を使用して仮想ネットワークを作成する](../vpn-gateway/vpn-gateway-site-to-site-create.md)
 * [Azure の仮想ネットワークでの Active Directory フォレストのインストール](active-directory-new-forest-virtual-machine.md)
 * [Azure の仮想ネットワークでのレプリカ Active Directory ドメイン コントローラーのインストール](active-directory-install-replica-active-directory-domain-controller.md)
 * [Microsoft Azure IT Pro IaaS: (01) 仮想マシンの基礎](https://channel9.msdn.com/Series/Windows-Azure-IT-Pro-IaaS/01)

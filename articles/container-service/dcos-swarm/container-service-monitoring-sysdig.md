@@ -17,10 +17,10 @@ ms.date: 08/08/2016
 ms.author: saudas
 ms.custom: mvc
 ms.openlocfilehash: e61001161e632a5d2e513107e30f1eaf06103989
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-an-azure-container-service-cluster-with-sysdig"></a>Sysdig による Azure コンテナー サービス クラスターの監視
 この記事では、Azure コンテナー サービス クラスター内のすべてのエージェント ノードに Sysdig エージェントをデプロイします。 この構成を行うためには、Sysdig のアカウントが必要です。 

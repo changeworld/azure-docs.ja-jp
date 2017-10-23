@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 09/20/2017
 ms.author: saurabhsensharma;markgal;
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 28e0bc1414b0fea614f217dc3adf1484c1374018
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="recover-files-from-azure-to-a-windows-server"></a>Azure から Windows Server にファイルを回復する
 
@@ -82,4 +81,3 @@ Microsoft Azure Backup という名前の便利なユーザー インターフ�
 
 > [!div class="nextstepaction"]
 > [暗号化された VM のバックアップ](./scripts/backup-powershell-sample-backup-encrypted-vm.md)
-

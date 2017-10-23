@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
 ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
 大型 Azure 顧客の間の一般的なシナリオは、オンプレミス データセンターからバック層へのアクセスを許可する一方でインターネットへの公開を行う 2 層アプリケーションを用意する必要があることです。 このドキュメントでは、ユーザー定義ルート (UDR)、VPN Gateway、およびネットワーク仮想アプライアンスを使用して、次の要件を満たす 2 層環境をデプロイするシナリオについて説明します。

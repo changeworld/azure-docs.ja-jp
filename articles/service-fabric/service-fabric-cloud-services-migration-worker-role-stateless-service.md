@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/29/2017
 ms.author: vturecek
 ms.openlocfilehash: 4ab1f83e88b262b1752300b2786340d9abca8154
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="guide-to-converting-web-and-worker-roles-to-service-fabric-stateless-services"></a>Web ロールと worker ロールを Service Fabric ステートレス サービスに変換する手順
 この記事では、Cloud Services の Web ロールと worker ロールを Service Fabric ステートレス サービスに移行する方法について説明します。 アーキテクチャ全体をほぼ同じまま維持するアプリケーションの場合、これが Cloud Services から Service Fabric への最も単純な移行パスです。

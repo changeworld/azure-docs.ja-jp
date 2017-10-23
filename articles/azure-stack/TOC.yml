@@ -19,6 +19,8 @@
       href: azure-stack-tutorial-app-service.md
 - name: 概念
   items:
+    - name: 計画に関する考慮事項
+      href: azure-stack-planning-considerations.md
     - name: サービス ポリシー
       href: azure-stack-servicing-policy.md
     - name: リリース ノート
@@ -37,6 +39,8 @@
           href: azure-stack-deploy.md
         - name: デプロイ
           href: azure-stack-run-powershell-script.md
+        - name: PowerShell をインストールする
+          href: azure-stack-powershell-configure-quickstart.md
         - name: 登録
           href: azure-stack-register.md
         - name: Azure Stack への接続
@@ -89,6 +93,8 @@
           href: azure-stack-manage-windows-azure-pack.md
         - name: ハードウェアの交換
           items:
+            - name: ノード アクション
+              href: azure-stack-node-actions.md
             - name: ディスクの交換
               href: azure-stack-replace-disk.md
     - name: セキュリティ、コンプライアンス、ID
@@ -133,10 +139,16 @@
               href: azure-stack-mysql-resource-provider-deploy.md
             - name: SQL リソース プロバイダーのデプロイ
               href: azure-stack-sql-resource-provider-deploy.md
+            - name: SQL データベースの作成
+              href: azure-stack-sql-resource-provider-databases.md
+            - name: ホスティング サーバーの追加
+              href: azure-stack-sql-resource-provider-hosting-servers.md
         - name: App Service を PaaS として提供する
           items:
             - name: Azure Stack 上の App Service の概要
               href: azure-stack-app-service-overview.md
+            - name: 容量計画
+              href: azure-stack-app-service-capacity-planning.md
             - name: 開始する前に
               href: azure-stack-app-service-before-you-get-started.md
             - name: App Service リソース プロバイダーのデプロイ

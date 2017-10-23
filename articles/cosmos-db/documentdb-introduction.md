@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 05/22/2017
 ms.author: mimig
 ms.openlocfilehash: 2cb4bd74ea973c8ff980d208a8c5f63a98ec1edd
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-documentdb-api"></a>Azure Cosmos DB の概要: DocumentDB API
 

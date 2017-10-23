@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.openlocfilehash: 076df176d7cd40c009aea27004fe0f4415999c80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple Virtual Array をデプロイする - Azure Portal を介して iSCSI サーバーとしてセットアップする
 
@@ -108,7 +108,7 @@ StorSimple Virtual Array をセットアップして構成するには、次の�
     **[時刻の設定]** ページで、次の操作を行います。
    
    1. ドロップダウン リストから、デバイスをデプロイする地理的な場所に基づいて **[タイム ゾーン]** を選択します。 デバイスの既定のタイム ゾーンは太平洋標準時です。 デバイスは、スケジュールされたすべての操作でこのタイム ゾーンを使用します。
-   2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。 データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
+   2. デバイスの **[プライマリ NTP サーバー]** を指定するか、time.windows.com の既定値をそのまま使用します。データ センターからインターネットへの NTP トラフィックがネットワークで許可されていることを確認します。
    3. 必要に応じて、デバイスの **[セカンダリ NTP サーバー]** を指定します。
    4. **[Apply]**をクリックします。 これにより、構成済みの時刻設定が検証され、適用されます。
 9. デバイスのクラウドの設定を構成します。 この手順では、ローカル デバイスの構成を完了してから、StorSimple デバイス マネージャー サービスにそのデバイスを登録します。

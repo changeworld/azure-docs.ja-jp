@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: ramankum
 ms.openlocfilehash: 559753d7ff3da7e8b5dc8f976368a1d35dd6258b
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>VM 向けの高パフォーマンスの Premium Storage と管理ディスク
 Azure Premium Storage は、I/O (入力/出力) を集中的に行うワークロードが存在する仮想マシン (VM) 向けに高パフォーマンスで待ち時間の少ないディスク サポートを提供します。 Premium Storage を使用する VM ディスクでは、ソリッドステート ドライブ (SSD) にデータを格納します。 Premium Storage ディスクの速度とパフォーマンスを活用するために、既存の VM ディスクを Premium Storage に移行することができます。

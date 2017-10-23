@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 10/04/2016
 ms.author: piyushjo
 ms.openlocfilehash: a7ae0a83046f2d67b790f672dcd3ae261987357a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-guide-for-api-issues"></a>API の問題のトラブルシューティング ガイド
 次に説明するのは、管理者が、API を使用して Azure モバイル エンゲージメントを操作する方法に関して発生する可能性のある問題です。

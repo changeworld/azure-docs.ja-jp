@@ -16,10 +16,10 @@ ms.workload: infrastructure
 ms.date: 07/17/2017
 ms.author: rclaus
 ms.openlocfilehash: 8683b016c4db2c66fb1dd994405b70c3d137a7fc
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-oracle-database-in-an-azure-vm"></a>Azure VM での Oracle データベースの作成
 
@@ -150,7 +150,7 @@ Oracle ソフトウェアは、既に Marketplace イメージにインストー
 ORACLE_HOME=/u01/app/oracle/product/12.1.0/dbhome_1; export ORACLE_HOME
 ORACLE_SID=cdb1; export ORACLE_SID
 ```
-また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。 任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
+また、.bashrc ファイルに ORACLE_HOME と ORACLE_SID 変数を追加することもできます。 これにより、これらの環境変数が将来のサインインのために保存されます。任意のエディターを使用して、次のステートメントが `~/.bashrc` ファイルに追加されたことを確認してください。
 
 ```bash
 # Add ORACLE_HOME. 

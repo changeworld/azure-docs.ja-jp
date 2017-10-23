@@ -17,10 +17,10 @@ ms.date: 06/16/2017
 ms.author: mimig
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a1ebec2285982c70aa9dc49950769fe18e2e2d0d
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tunable-data-consistency-levels-in-azure-cosmos-db"></a>Azure Cosmos DB の調整可能なデータの一貫性レベル
 Azure Cosmos DB は、すべてのデータ モデルについて、最初からグローバル分散を念頭に置いて設計されています。 その設計により、予測可能な待機時間の短縮の保証、可用性が 99.99% の SLA、明確に定義された複数の緩やかな一貫性モデルが提供されます。 現在、Azure Cosmos DB では、厳密、有界整合性制約、セッション、最終的の 5 つの整合性レベルが用意されています。 

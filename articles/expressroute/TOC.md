@@ -35,6 +35,7 @@
 ## Microsoft ピアリングにルート フィルターを構成する
 ### [Azure ポータル](how-to-routefilter-portal.md)
 ### [Azure PowerShell](how-to-routefilter-powershell.md)
+### [Azure CLI](how-to-routefilter-cli.md)
 ## [回線をクラシックから Resource Manager に移行する](expressroute-howto-move-arm.md)
 ## [仮想ネットワークをクラシックから Resource Manager に移行する](expressroute-migration-classic-resource-manager.md)
 ## ExpressRoute のルーターの構成
@@ -45,7 +46,7 @@
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)
 ### [ルーティングを最適化する](expressroute-optimize-routing.md)
 ### [非対称ルーティング](expressroute-asymmetric-routing.md)
-### [ExpressRoute の NAT](expressroute-routing-nat.md)
+### [ExpressRoute の NAT](expressroute-nat.md)
 
 ## トラブルシューティング
 ### [ExpressRoute 接続の確認](expressroute-troubleshooting-expressroute-overview.md)

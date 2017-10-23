@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: magoedte
+ms.openlocfilehash: 2b3ca90382a1c4fb6446799ad539ab8ee603aefc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 62793dcdbbf4c83161e95d1c165d5c231245f7c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Azure Automation のシナリオ - Automation ソース管理と GitHub Enterprise の統合
 
 現在、Automation ではソース管理の統合がサポートされており、Automation アカウントの Runbook を GitHub のソース管理リポジトリに関連付けることができます。  しかし、DevOps のプラクティスをサポートするために [GitHub Enterprise](https://enterprise.github.com/home) をデプロイしている顧客は、ビジネス プロセスとサービス管理業務を自動化するために開発した Runbook のライフサイクルの管理にも GitHub Enterprise を使用したいと考えています。  
@@ -92,4 +90,3 @@ Azure Portal で Automation アカウントの Runbook ギャラリーから "*E
 
 -  Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 -  PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: nepeters
 ms.openlocfilehash: 24ad2c2d2872f844e32d3fae559683c3d992bd00
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Azure 仮想マシン エージェントの概要
 

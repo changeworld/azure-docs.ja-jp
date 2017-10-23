@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/27/2017
 ms.author: rayne
 ms.openlocfilehash: f5b334e594e3d002e1862b25c4faba7163efa7d4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-3-plan-capacity-and-scaling-for-vmware-to-azure-replication"></a>手順 3: VMware から Azure へのレプリケーションの容量とスケーリングを計画する
 

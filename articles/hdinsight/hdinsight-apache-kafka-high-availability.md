@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/20/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 138f04f8e9f0a9a4f71e43e73593b03386e7e5a9
-ms.openlocfilehash: f8164d1c3483b28e5f2abcc8035da78880daec1e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/29/2017
-
+ms.openlocfilehash: 3edec2e68356604562af2219ccd498732c564ec5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-of-your-data-with-apache-kafka-preview-on-hdinsight"></a>HDInsight 上の Apache Kafka (プレビュー) によるデータの高可用性
 

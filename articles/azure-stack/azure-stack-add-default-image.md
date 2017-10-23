@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/10/2017
 ms.author: sngun
+ms.openlocfilehash: 43781cb025865df1d228376f57412f3d482d3ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 62f467f1dae5a2cb04e5230ed43b77ec3ec8c1a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-the-windows-server-2016-vm-image-to-the-azure-stack-marketplace"></a>Windows Server 2016 VM イメージの Azure Stack Marketplace への追加
 
@@ -141,7 +140,7 @@ Windows Server 2016 VM イメージに最新の累積的更新プログラムを
 |New-AzsServer2016VMImage パラメーター|必須|Description|
 |-----|-----|------|
 |ISOPath|あり|ダウンロードした Windows Server 2016 ISO の完全修飾パス。|
-|Net35|いいえ|このパラメーターを使用すると、Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールできます。 既定では、この値は true に設定されます。 SQL および MYSQL のリソースプロバイダーをインストールする場合は、イメージに .NET 3.5 ランタイムを含める必要があります。 |
+|Net35|いいえ|このパラメーターを使用すると、Windows Server 2016 イメージに .NET 3.5 ランタイムをインストールできます。 既定では、この値は true に設定されます。|
 |バージョン|いいえ|このパラメーターを使用すると、**[Core]** (コア)、**[Full]** (完全)、**[Both]** (両方) の Windows Server 2016 イメージを追加するかどうかを選択できます。 既定では、この値は [Full] (完全) に設定されます。|
 |VHDSizeInMB|いいえ|Azure Stack 環境に追加する VHD イメージのサイズ (MB 単位) を設定します。 既定では、この値は 40960 MB に設定されます。|
 |CreateGalleryItem|いいえ|Windows Server 2016 イメージの Marketplace 項目を作成するかどうかを指定します。 既定では、この値は true に設定されます。|
@@ -153,4 +152,3 @@ Windows Server 2016 VM イメージに最新の累積的更新プログラムを
 ## <a name="next-steps"></a>次のステップ
 
 [仮想マシンのプロビジョニング](azure-stack-provision-vm.md)
-

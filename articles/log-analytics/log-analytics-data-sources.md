@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/23/2017
 ms.author: bwren
 ms.openlocfilehash: 00d030a502cf70ea9a5dea767f560cdf2919573e
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-sources-in-log-analytics"></a>Log Analytics のデータ ソース
 Log Analytics は、OMS ワークスペース内の接続されたソースからデータを収集して OMS リポジトリに格納します。  Log Analytics が収集するデータは、構成するデータ ソースによって定義されます。  OMS リポジトリ内のデータは、一連のレコードとして保存されます。  データ ソースはそれぞれ異なるタイプのレコードを作成し、各レコード タイプは独自のプロパティ セットを持っています。

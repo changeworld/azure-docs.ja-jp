@@ -16,10 +16,10 @@ ms.date: 02/27/2017
 ms.author: alkohli;anbacker
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: cecc2566b432e897b5eff0c12e66598f0518ed80
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="contact-microsoft-support-for-your-storsimple"></a>StorSimple の Microsoft サポートに問い合わせる
 Microsoft Azure StorSimple ソリューションで問題が発生した場合は、テクニカル サポートに対するサービス要求を作成できます。 サポート エンジニアとのオンライン セッションで、StorSimple デバイスのサポート セッションを開始することが必要になる場合もあります。 この記事で説明する内容は次のとおりです。

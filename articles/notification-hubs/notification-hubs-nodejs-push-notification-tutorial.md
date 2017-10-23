@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/25/2016
 ms.author: yuaxu
 ms.openlocfilehash: dc4987b16b2e930641c6c90eff8b65c1bf8d573c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sending-push-notifications-with-azure-notification-hubs-and-nodejs"></a>Azure Notification Hubs と Node.js でのプッシュ通知の送信
 [!INCLUDE [notification-hubs-backend-how-to-selector](../../includes/notification-hubs-backend-how-to-selector.md)]
@@ -211,5 +211,4 @@ Azure Notification Hubs を使用するには、Node.js [azure パッケージ](
 [nodejswebsite]: /develop/nodejs/tutorials/create-a-website-(mac)/
 [Node.js Cloud Service with Storage]: /develop/nodejs/tutorials/web-app-with-storage/
 [Node.js Web Application with Storage]: /develop/nodejs/tutorials/web-site-with-storage/
-
-            [Azure Portal]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

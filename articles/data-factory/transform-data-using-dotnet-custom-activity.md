@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 24f15168fd716cf317087b8a2ad19b66574ce569
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [バージョン 1 - GA](v1/data-factory-use-custom-activities.md)
+> * [バージョン 1 - 一般公開](v1/data-factory-use-custom-activities.md)
 > * [バージョン 2 - プレビュー](transform-data-using-dotnet-custom-activity.md)
 
 Azure Data Factory パイプラインでは、2 種類のアクティビティを使用できます。
@@ -108,11 +107,11 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 
 | プロパティ              | 説明                              | 必須 |
 | :-------------------- | :--------------------------------------- | :------- |
-| name                  | パイプラインのアクティビティの名前。     | あり      |
+| name                  | パイプラインのアクティビティの名前     | あり      |
 | 説明           | アクティビティの動作を説明するテキスト。  | いいえ       |
 | type                  | カスタム アクティビティの場合、アクティビティの種類は **Custom** です。 | あり      |
 | 既定のコンテナー     | Azure Batch にリンクされたサービス。 このリンクされたサービスの詳細については、[計算のリンクされたサービス](compute-linked-services.md)に関する記事をご覧ください。  | あり      |
-| command               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | あり      |
+| コマンド               | 実行されるカスタム アプリケーションのコマンド。 アプリケーションが Azure Batch プール ノードで既に使用可能な場合は、resourceLinkedService と folderPath を省略できます。 たとえば、Windows バッチ プール ノードでネイティブでサポートされている `cmd /c dir` をコマンドとして指定できます。 | あり      |
 | resourceLinkedService | カスタム アプリケーションが格納されているストレージ アカウントへの Azure Storage のリンクされたサービス。 | いいえ       |
 | folderPath            | カスタム アプリケーションとそのすべての依存関係のフォルダーのパス。 | いいえ       |
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ       |
@@ -251,7 +250,7 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 
 
 ## <a name="next-steps"></a>次のステップ
-他の方法でデータを変換する方法を説明する次の記事を参照してください。 
+別の手段でデータを変換する方法を説明している次の記事を参照してください。 
 
 * [U-SQL アクティビティ](transform-data-using-data-lake-analytics.md)
 * [Hive アクティビティ](transform-data-using-hadoop-hive.md)
@@ -261,4 +260,3 @@ $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 * [Spark アクティビティ](transform-data-using-spark.md)
 * [Machine Learning バッチ実行アクティビティ](transform-data-using-machine-learning.md)
 * [ストアド プロシージャ アクティビティ](transform-data-using-stored-procedure.md)
-

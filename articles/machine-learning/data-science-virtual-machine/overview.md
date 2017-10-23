@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: gokuma;bradsev
+ms.openlocfilehash: 8398af10d4826373e16420be3309c6ae8246ca4b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b061e797f5515ab02265547d751d1a918413879a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="introduction-to-azure-data-science-virtual-machine-for-linux-and-windows"></a>Linux および Windows 用の Azure データ サイエンス仮想マシンの概要
 
 データ サイエンス仮想マシン (DSVM) とは、データ サイエンス専用に構築された Microsoft の Azure クラウド上にあるカスタマイズされた VM イメージです。 多くのよく使われるデータ サイエンス ツールや他のツールが事前にインストールおよび構成されており、高度な分析のためのインテリジェントなアプリケーションの構築をすぐに始めることができます。 Windows Server と Linux で使用できます。 Windows エディションの DSVM は、Windows Server 2016 と Windows Server 2012 で提供しています。 Linux エディションの DSVM は、Ubuntu 16.04 LTS と OpenLogic 7.2 CentOS ベースの Linux ディストリビューションで提供しています。 
@@ -64,7 +62,7 @@ ms.lasthandoff: 09/25/2017
 | [Microsoft Office](https://products.office.com/en-us/business/office-365-proplus-business-software) Pro-Plus (共有アクティベーション付き) - Excel、Word および PowerPoint   |Y                      |N              |
 | 人気のパッケージがプレインストールされた [Anaconda Python](https://www.continuum.io/) 2.7、3.5    |Y                      |Y              |
 | Julia 言語用の人気のパッケージがプレインストールされた [JuliaPro](https://juliacomputing.com/products/juliapro.html)                         |Y                      |Y              |
-| リレーショナル データベース                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) |
+| リレーショナル データベース                                                            | [SQL Server 2016 SP1](https://www.microsoft.com/sql-server/sql-server-2016) <br/> Developer エディション| [PostgreSQL](https://www.postgresql.org/) (CentOS のみ) |
 | データベース ツール                                                       | * SQL Server Management Studio <br/>* SQL Server Integration Services<br/>* [bcp、sqlcmd](https://docs.microsoft.com/sql/tools/command-prompt-utility-reference-database-engine)<br /> * ODBC/JDBC ドライバー| * [SQuirreL SQL](http://squirrel-sql.sourceforge.net/) (クエリ ツール)、 <br /> * bcp、sqlcmd <br /> * ODBC/JDBC ドライバー|
 | SQL Server R サービスによるスケーラブルなデータベース内分析 | Y     |N              |
 | 次のカーネルを備えた **[Jupyter Notebook Server](http://jupyter.org/)**                                  | Y     | Y |
@@ -155,5 +153,4 @@ ms.lasthandoff: 09/25/2017
 ### <a name="for-the-linux-data-science-vm"></a>Linux データ サイエンス VM の場合
 * Linux バージョンで利用可能な特定のツールを実行する方法について詳しくは、「[Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」をご覧ください。
 * Linux VM で一般的なデータ サイエンス タスクを実行する方法がわかるチュートリアルについては、「[Linux データ サイエンス仮想マシンでのデータ サイエンス](linux-dsvm-walkthrough.md)」をご覧ください。
-
 

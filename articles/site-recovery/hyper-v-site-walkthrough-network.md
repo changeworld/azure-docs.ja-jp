@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 06/21/2017
 ms.author: raynew
 ms.openlocfilehash: 100b9d8a55c2c163e7a04680f0f7d7963315ee73
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-4-plan-networking-for-hyper-v-to-azure-replication"></a>手順 4: Hyper-V から Azure へのレプリケーションのネットワークを計画する
 

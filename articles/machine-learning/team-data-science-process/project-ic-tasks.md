@@ -13,15 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev;
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: bbe691174409202a8fd9602a69e764f0a8e2816b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="individual-contributor-tasks"></a>個々の共同作成者のタスク
 
 このトピックでは、個々の共同作成者がデータ サイエンス チームのために遂行する必要があるタスクの概要を説明します。 [Team Data Science Process](overview.md) (TDSP) を標準とするチーム コラボレーション環境を確立することを目標とします。 このプロセスを標準とするデータ サイエンス チームの人員の役割とそれに関連したタスクの概要については、「[Team Data Science Process Roles and tasks](roles-tasks.md)」(Team Data Science Process での役割とタスク) を参照してください。
@@ -60,7 +57,7 @@ TDSP でデータ サイエンス プロジェクトを実行する手順につ�
 
 チームがチーム固有のユーティリティ リポジトリを持っているかどうかに応じて、2 つ目の **TeamUtilities** リポジトリに関する前提条件は省略可能です。 他の 3 つの前提条件のいずれかが完了していない場合は、チーム リーダー、プロジェクト リーダー、またはリーダーの代理人に連絡し、「[Team Lead tasks for a data science team](team-lead-tasks.md)」(データ サイエンス チームのチーム リーダーのタスク) または「[Project Lead tasks for a data science team](project-lead-tasks.md)」(データ サイエンス チームのプロジェクト リーダーのタスク) の手順に従って設定します。
 
-- マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)を参照してください。  
+- マシンに Git をインストールする必要があります。 データ サイエンス仮想マシン (DSVM) を使用している場合は、Git がプレインストールされているので、インストールは不要です。 それ以外の場合は、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)をご覧ください。  
 - **Windows DSVM** を使用している場合は、マシンに [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) がインストールされている必要があります。 README.md ファイルで、下へスクロールして「**Download and Install**」(ダウンロードとインストール) セクションを表示し、「*latest installer*」(最新のインストーラー) をクリックします。 これにより、最新のインストーラーのページに移動します。 このページから .exe インストーラーをダウンロードして実行します。 
 - **Linux DSVM** を使用している場合は、DSVM で SSH 公開キーを作成し、グループの VSTS サーバーに追加します。 SSH の詳細については、[プラットフォームとツールに関する記事の付録](platforms-and-tools.md#appendix)の **SSH 公開キーの作成**に関するセクションをご覧ください。 
 - DSVM にマウントする必要がある何らかの Azure ファイル ストレージをチーム リーダーやプロジェクト リーダーが作成した場合は、そこから Azure ファイル ストレージ情報を取得する必要があります。 
@@ -113,5 +110,4 @@ Team Data Science Process で定義されている役割とタスクの詳細な
 - [データ サイエンス チームのチーム リーダーのタスク](team-lead-tasks.md)
 - [データ サイエンス チームのプロジェクト リーダーのタスク](project-lead-tasks.md)
 - [データ サイエンス チームの個々の共同作成者](project-ic-tasks.md)
-
 

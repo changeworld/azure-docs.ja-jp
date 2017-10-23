@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: jeedes
 ms.openlocfilehash: e64a966f24411818abc4cc4ab29a428b5577d012
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lockpath-keylight"></a>チュートリアル: Azure Active Directory と LockPath Keylight の統合
 
@@ -211,7 +211,7 @@ LockPath Keylight で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-lockpath-keylight-test-user"></a>LockPath Keylight テスト ユーザーの作成
 

@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b320581011c27a2efc49fa784f184a37bdb7f6fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>Azure Container Service と Azure Container Registry で Draft を使用して、アプリケーションを構築し Kubernetes にデプロイする
 
 [Draft](https://aka.ms/draft) は、新しいオープンソース ツールです。Docker や Kubernetes について詳しくなくても、またそれらをインストールしなくても、容易にコンテナーベースのアプリケーションの開発と、Kubernetes クラスターへのデプロイを行えるようになります。 Draft のようなツールを使用すると、チームはインフラストラクチャをあまり気にせずに、アプリケーションの構築に集中できます。
@@ -290,7 +288,6 @@ Hello World, I'm Java!
 ## <a name="next-steps"></a>次のステップ
 
 これで、ACS Kubernetes クラスターが用意されました。[Azure Container Registry](../../container-registry/container-registry-intro.md) を使用して調査し、このシナリオのさまざまなデプロイを作成できます。 たとえば、特定の ACS デプロイの深い階層のサブドメインの処理を制御する、draft._basedomain.toplevel_ ドメイン DNS レコードセットを作成できます。
-
 
 
 

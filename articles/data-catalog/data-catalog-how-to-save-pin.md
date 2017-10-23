@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
 ms.openlocfilehash: 8c319d0dcbe8b95af11b8be2368a9348b260446c
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Azure Data Catalog での検索条件の保存とデータ資産のピン留め
 ## <a name="introduction"></a>はじめに
@@ -36,7 +36,7 @@ Data Catalog の保存された検索条件とは、再利用可能な、ユー�
 
     ![[現在の検索] 設定の [保存] リンク](./media/data-catalog-how-to-save-pin/01-save-option.png) 
 
-2. 再利用する検索条件を入力して、[**保存**] をクリックします。
+2. 再利用する検索条件を入力して、**保存**をクリックします。
 
     ![[現在の検索] 設定の保存された検索条件の名前](./media/data-catalog-how-to-save-pin/02-name.png)
 

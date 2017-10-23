@@ -1,5 +1,5 @@
-## <a name="pricing"></a>料金
+## <a name="pricing"></a>価格
 
-Azure Batch は無料のサービスです。バッチ アカウント自体を課金されません。 基になる Azure コンピューティング リソース、バッチのソリューションを使用して、ワークロードが実行されるときに、その他のサービスが消費するリソースの料金が発生します。 たとえば、プール内のコンピューティング ノード (Vm) には料金が、データのストレージに格納する Azure の入力または出力として、タスクの 同様に、使用する場合、[アプリケーション パッケージ](../articles/batch/batch-application-packages.md)機能、バッチの目的でアプリケーション パッケージを格納するために使用する Azure のストレージ リソースに対して課金されます。 参照してください[バッチ料金](https://azure.microsoft.com/pricing/details/batch/)詳細についてはします。
+Azure Batch は無料サービスです。Batch アカウント自体には課金されません。 課金の対象となるのは、基になる Azure コンピューティング リソースのうち Batch ソリューションが使用する部分と、ワークロードの実行時に他のサービスが使用するリソースです。 たとえば、プール内のコンピューティング ノード (VM) や、タスクの入力または出力として Azure Storage に格納するデータに対して課金されます。 同様に、Batch の[アプリケーション パッケージ](../articles/batch/batch-application-packages.md)機能を使用している場合は、アプリケーション パッケージを格納するために使用する Azure Storage リソースが課金の対象となります。 詳細については、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」を参照してください。
 
-[優先度の低い Vm](../articles/batch/batch-low-pri-vms.md)バッチ ワークロードのコストを大幅に削減できます。 優先度の低い仮想マシンの料金については、次を参照してください。[バッチ料金](https://azure.microsoft.com/pricing/details/batch/)です。 
+[優先順位の低い VM](../articles/batch/batch-low-pri-vms.md) では、Batch ワークロードのコストを大幅に引き下げることができます。 優先順位の低い VM の価格については、「[Batch の価格](https://azure.microsoft.com/pricing/details/batch/)」を参照してください。 

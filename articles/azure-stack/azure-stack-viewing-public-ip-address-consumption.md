@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: scottnap
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7651565eebf6272f307a4ce4790ca19b41bfa826
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="view-public-ip-address-consumption-in-azure-stack"></a>Azure Stack でパブリック IP アドレスの使用量を表示する
 
-*適用先: Azure Stack 統合システムおよび Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 クラウド管理者は、テナントに割り当てられているパブリック IP アドレスの数、割り当てに使用できるパブリック IP アドレスの数、および特定の場所に割り当て済みのパブリック IP アドレスの数を表示できます。
 

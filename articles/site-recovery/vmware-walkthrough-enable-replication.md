@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 06/27/2017
 ms.author: raynew
 ms.openlocfilehash: 470b9ddd8df4a4e74ec7174f79020c252323e502
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="step-11-enable-replication-for-vmware-virtual-machines-to-azure"></a>手順 11: Azure への VMware 仮想マシンのレプリケーションを有効にする
 

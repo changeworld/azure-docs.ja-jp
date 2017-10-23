@@ -15,10 +15,10 @@ ms.workload: storage-backup-recovery
 ms.date: 08/11/2017
 ms.author: markgal;trinadhk
 ms.openlocfilehash: ae4a73d12898c62fe2c5cf3683bc7c1c8c845fdf
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="delete-a-recovery-services-vault"></a>Recovery Services コンテナーを削除する
 Azure Backup サービスには、バックアップ コンテナーと Recovery Services コンテナーの 2 種類のコンテナーがあります。 最初にあったのは、バックアップ コンテナーです。 次に、拡張 Resource Manager デプロイメントをサポートするために、Recovery Services コンテナーが加わりました。 拡張された機能とコンテナーに保存する必要がある情報の依存関係のために、バックアップ コンテナーまたは Recovery Services コンテナーの削除は混乱を招く可能性があります。 この記事では、クラシック ポータルと Azure Portal でコンテナーを削除する方法について説明します。  

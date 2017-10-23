@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 08/04/2017
 ms.author: joroja
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: f3e4eb6fedf850dbb827fd2a10593249d2f17ef1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-creating-and-using-custom-attributes-in-a-custom-profile-edit-policy"></a>Azure Active Directory B2C: カスタム プロファイル編集ポリシーのカスタム属性の作成と使用
 
@@ -299,4 +298,3 @@ extension_<app-guid>_ActivationStatus via the Graph API.
 
 >[!NOTE]
 >Graph API の拡張属性には、`extension_ApplicationObjectID_attributename` という規則を使って名前が付けられます。 カスタム ポリシーは extension_attributename として拡張属性を表します。したがって、XML では ApplicationObjectId が省略されます。
-

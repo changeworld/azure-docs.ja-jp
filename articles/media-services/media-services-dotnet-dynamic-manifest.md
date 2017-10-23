@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/21/2017
 ms.author: juliako;cenkdin
 ms.openlocfilehash: 6c43473b86c14679ace558de478bd95f41d476da
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-filters-with-azure-media-services-net-sdk"></a>Azure Media Services .NET SDK を使用したフィルターの作成
 > [!div class="op_single_selector"]

@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 06/05/2017
 ms.author: sutalasi
 ms.openlocfilehash: 5a6e00877b0a2b139d5322f610c1901ad76a710f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
 > [!div class="op_single_selector"]
-> * 
-            [Azure Portal](site-recovery-vmm-to-vmm.md)
+> * [Azure Portal](site-recovery-vmm-to-vmm.md)
 > * [クラシック ポータル](site-recovery-vmm-to-vmm-classic.md)
 > * [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
 >

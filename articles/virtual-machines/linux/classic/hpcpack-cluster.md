@@ -16,10 +16,10 @@ ms.workload: big-compute
 ms.date: 10/12/2016
 ms.author: danlep
 ms.openlocfilehash: 809d3944311badf265117d353b65642e044d900c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-linux-compute-nodes-in-an-hpc-pack-cluster-in-azure"></a>Azure の HPC Pack クラスターで Linux コンピューティング ノードの使用を開始する
 Windows Server を実行するヘッド ノードとサポートされる Linux ディストリビューションを実行する計算ノードを含む [Microsoft HPC Pack](https://technet.microsoft.com/library/cc514029.aspx) クラスターを Azure に設定します。 クラスターの Linux ノードと Windows ヘッド ノードの間でデータを移動するオプションを調べます。 クラスターに Linux HPC ジョブを送信する方法について説明します。

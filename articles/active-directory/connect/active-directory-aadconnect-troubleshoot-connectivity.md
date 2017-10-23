@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: f9631e8a383b88421c55d9c42c8059df9e732800
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-connectivity-issues-with-azure-ad-connect"></a>Azure AD Connect での接続に関する問題のトラブルシューティング
 この記事では、Azure AD Connect と Azure AD の間の接続のしくみと、接続に関する問題のトラブルシューティング方法について説明します。 このような問題は、プロキシ サーバーを備えた環境において発生する可能性が最も高くなります。
@@ -93,13 +93,13 @@ PowerShell は、machine.config 内の構成を使用してプロキシに接続
 | エラー | エラー テキスト | コメント |
 | --- | --- | --- |
 | 403 |許可されていません |要求された URL に対してプロキシが開かれていません。 プロキシ構成を再検討し、 [URL](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2) が開かれていることを確認してください。 |
-| 407 |プロキシの認証が必要です |プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。 お使いのプロキシ サーバーで認証が必要な場合は、その設定が machine.config ファイル内で構成されているようにしてください。 また、ウィザードを実行しているユーザーおよびサービス アカウントにドメイン アカウントを使用していることを確認してください。 |
+| 407 |プロキシの認証が必要です |プロキシ サーバーがサインイン情報を要求しましたが、何も指定されていません。 お使いのプロキシ サーバーで認証が必要な場合は、その設定が machine.config ファイル内で構成されているようにしてください。また、ウィザードを実行しているユーザーおよびサービス アカウントにドメイン アカウントを使用していることを確認してください。 |
 
 ## <a name="the-communication-pattern-between-azure-ad-connect-and-azure-ad"></a>Azure AD Connect と Azure AD の間の通信パターン
 以上の手順をすべて実行しても接続できない場合は、その時点でネットワーク ログを確認することをお勧めします。 このセクションでは、通常の成功を示す接続パターンについて記載しています。 また、ネットワーク ログを確認するときに無視できる情報についても一覧にまとめています。
 
-* https://dc.services.visualstudio.com への呼び出しが行われています。 インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、この呼び出しは無視できます。
-* DNS 解決によって DNS 名前空間の nsatc.net、および microsoftonline.com に属していない他の名前空間に含まれる実際のホストが一覧表示されます。 ただし、実際のサーバー名に対する Web サービス要求は発生しないため、この URL をプロキシに追加する必要はありません。
+* https://dc.services.visualstudio.com への呼び出しが行われています。インストールを正常に実行するうえで、この URL をプロキシで開いておくことは必須ではないため、この呼び出しは無視できます。
+* DNS 解決によって DNS 名前空間の nsatc.net、および microsoftonline.com に属していない他の名前空間に含まれる実際のホストが一覧表示されます。ただし、実際のサーバー名に対する Web サービス要求は発生しないため、この URL をプロキシに追加する必要はありません。
 * エンドポイントの adminwebservice と provisioningapi は検出エンドポイントであり、実際に使用するエンドポイントを見つけるために使用されます。 こうしたエンドポイントは、リージョンによって異なります。
 
 ### <a name="reference-proxy-logs"></a>参照用プロキシ ログ

@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs"
 description: "Azure で動作し、SQL データベースに接続する ASP.NET アプリの入手方法を説明します。"
 services: app-service\web
@@ -14,15 +14,13 @@ ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 06/09/2017
 ms.author: cephalin
-ms.custom: mvc, devcenter
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
+ms.custom: mvc
 ms.openlocfilehash: 810d3281ee1bcf15fb61ecea4e5de0c8fbc0bc8e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="build-an-aspnet-app-in-azure-with-sql-database"></a>SQL Database を使用して Azure に ASP.NET アプリを作成する
 
 [Azure Web Apps](app-service-web-overview.md) では、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供しています。 このチュートリアルでは、Azure でデータ主導の ASP.NET Web アプリを開発し、それを [Azure SQL Database](../sql-database/sql-database-technical-overview.md) に接続する方法について説明します。 これが完了すると、ASP.NET アプリは Azure 内で実行され、SQL Database に接続された状態になります。
@@ -431,4 +429,3 @@ Web アプリのページが表示されます。
 
 > [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure Web Apps にマップする](app-service-web-tutorial-custom-domain.md)
-

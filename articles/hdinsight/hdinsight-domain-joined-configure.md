@@ -16,10 +16,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.openlocfilehash: 9964c3dff24ef8a3a6047fe18c0f36c12c1de33d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview"></a>ドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 
@@ -269,7 +269,7 @@ VNet を作成した後は、Azure AD VNet の場合と同じ DNS サーバー�
          * **ドメイン名**: contoso.onmicrosoft.com
          * **ドメイン ユーザー名**: ドメイン ユーザー名を入力します。 このドメインは、次の特権を持つ必要があります。コンピューターをドメインに参加させ、クラスター作成時に指定した組織単位に配置する特権。クラスター作成時に指定した組織単位内でサービス プリンシパルを作成する特権。および、逆引き DNS エントリを作成する特権です。 このドメイン ユーザーは、このドメイン参加済み HDInsight クラスターの管理者になります。
          * **ドメイン パスワード**: ドメイン ユーザーのパスワードを入力します。
-         * **組織単位**: HDInsight クラスターで使用する OU の識別名を入力します。 例: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。 この OU が存在しない場合は、HDInsight クラスターがこの OU を作成しようとします。 OU が既に存在するか、ドメイン アカウントが新しい OU を作成するアクセス許可を持っていることを確認してください。 AADDC 管理者の一部であるドメイン アカウントを使用する場合は、OU を作成するために必要なアクセス許可を持っています。
+         * **組織単位**: HDInsight クラスターで使用する OU の識別名を入力します。 例: OU=HDInsightOU,DC=contoso,DC=onmicrosoft,DC=com。この OU が存在しない場合は、HDInsight クラスターがこの OU を作成しようとします。 OU が既に存在するか、ドメイン アカウントが新しい OU を作成するアクセス許可を持っていることを確認してください。 AADDC 管理者の一部であるドメイン アカウントを使用する場合は、OU を作成するために必要なアクセス許可を持っています。
          * **LDAPS URL**: ldaps://contoso.onmicrosoft.com:636
          * **アクセス ユーザー グループ**: クラスターに同期させるユーザーが属しているセキュリティ グループを指定します。 たとえば、HiveUsers です。
            

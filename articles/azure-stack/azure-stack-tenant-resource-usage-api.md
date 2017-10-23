@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2016
 ms.author: alfredop
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f2eaf1c766d6c86741cf0fd561c131eacb34d782
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tenant-resource-usage-api"></a>テナント リソース使用量 API
 テナントは、テナント API を使用して、テナントの独自のリソース使用状況データを表示できます。 この API は、Azure 使用状況 API (現在プライベート プレビュー中) と一貫性があります。
@@ -89,5 +88,4 @@ GET /subscriptions/sub1/providers/Microsoft.Commerce/UsageAggregates?reportedSta
 [プロバイダー リソース使用量 API](azure-stack-provider-resource-api.md)
 
 [使用量に関するよくあるご質問 (FAQ)](azure-stack-usage-related-faq.md)
-
 

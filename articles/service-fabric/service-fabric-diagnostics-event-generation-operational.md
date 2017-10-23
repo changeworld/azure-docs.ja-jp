@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/19/2017
 ms.author: dekapur
 ms.openlocfilehash: 934719868ab9968db352db2b440014d35dbc0274
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operational-channel"></a>稼動チャネル 
 

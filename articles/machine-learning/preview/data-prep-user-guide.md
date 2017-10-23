@@ -12,12 +12,11 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 22389ba85edb119acdd21b63f2deae2d71f31373
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-preparation-user-guide"></a>データ準備ユーザー ガイド 
 データ準備の操作では豊富な機能が多数用意されています。以下にその操作の最も深遠な部分について説明します。
@@ -42,7 +41,7 @@ ms.lasthandoff: 09/25/2017
 エラー値が反映されます。 エラー値が発生すると、多くの場合、大部分の操作を通じてエラーとして伝播されます。 ただし、これらを削除または置換する方法として、現在以下の 3 つがあります。
 
 1) *Views\\Home\\AllDates.cshtml*
-    -  列を右クリックして、*[Replace Error Values] (エラー値の置換)* を選択します。 続いて、列で見つかったエラー値ごとに置換値を選択できます。
+    -  列を右クリックして、*[Replace Error Values] \(エラー値の置換)* を選択します。 続いて、列で見つかったエラー値ごとに置換値を選択できます。
 
 2) Remove
     - データ準備には、エラー値を保持または削除するための対話型のフィルターが用意されています。
@@ -82,8 +81,8 @@ ms.lasthandoff: 09/25/2017
 フィルターをデータセットに適用すると、この操作によってデータは 2 つの結果セットに分割されます。一方のセットは、フィルターを通ったレコードを表し、もう一方のセットは通らなかったレコードを表します。 どちらの場合も、ユーザーは表示する結果セットを選択できます。 ユーザーは、他方のデータセットを破棄することも、新しいデータフローに配置することもできます。 後者のオプションを*フォーク*と呼びます。
 
 フォークするには、列を選択し、右クリックして、[フィルター] 列を選択します。
-- [I Want To] (目的の操作) の下で、*[Keep Rows] (行の保持)* を選択して、フィルターを通った結果セットを表示するか、*[Remove Rows] (行の削除)* を選択して、通らなかったセットを表示します。
-- [Conditions] (条件) の後で、*[Create Dataflow Containing the Filtered Out Rows] (フィルターで除去された行を含むデータフローの作成)* を選択して、表示されない結果セットを新しいデータフローにフォークします。
+- [I Want To] \(目的の操作) の下で、*[Keep Rows] \(行の保持)* を選択して、フィルターを通った結果セットを表示するか、*[Remove Rows] \(行の削除)* を選択して、通らなかったセットを表示します。
+- [Conditions] \(条件) の後で、*[Create Dataflow Containing the Filtered Out Rows] \(フィルターで除去された行を含むデータフローの作成)* を選択して、表示されない結果セットを新しいデータフローにフォークします。
 
 
 この手法は多くの場合、追加の準備を必要とするデータのセットを分割します。 フォークしたデータ セットをラングリングした後、そのデータを元のデータフロー内の結果セットとマージすることが一般的です。 "マージ" ("フォーク" 操作の逆) を実行するには、次のいずれかのアクションを使用します。
@@ -110,4 +109,3 @@ ms.lasthandoff: 09/25/2017
 [付録 8 - Python のデータ ソースのサンプル](data-prep-appendix8-sample-source-connections-python.md)  
 [付録 9 - Python の変換先接続のサンプル](data-prep-appendix9-sample-destination-connections-python.md)  
 [付録 10 - Python の列変換のサンプル](data-prep-appendix10-sample-custom-column-transforms-python.md)  
-

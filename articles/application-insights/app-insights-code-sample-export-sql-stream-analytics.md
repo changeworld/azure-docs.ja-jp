@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/06/2015
 ms.author: bwren
 ms.openlocfilehash: d51e80509ffb63cef0d01133a2295d58757d5b1a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 
@@ -140,8 +140,7 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 このサンプルでは、ページ ビューからデータを使用します。 使用可能なその他のデータを確認するには、JSON 出力を検査し、「 [Application Insights エクスポート データ モデル](app-insights-export-data-model.md)」を参照してください。
 
 ## <a name="create-an-azure-stream-analytics-instance"></a>Azure Stream Analytics インスタンスの作成
-
-            [従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
+[従来の Azure Portal](https://manage.windowsazure.com/) で、Azure Stream Analytics サービスを選択し、新しい Stream Analytics ジョブを作成します。
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/37-create-stream-analytics.png)
 

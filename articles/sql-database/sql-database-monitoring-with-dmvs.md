@@ -17,10 +17,10 @@ ms.workload: data-management
 ms.date: 01/10/2017
 ms.author: carlrab
 ms.openlocfilehash: d9b007d29e06e672db71b4a8415673f258c3fd89
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-azure-sql-database-using-dynamic-management-views"></a>動的管理ビューを使用した Azure SQL Database の監視
 Microsoft Azure SQL Database では、クエリのブロック、クエリの長時間実行、リソースのボトルネック、不適切なクエリ プランなどが原因で発生するパフォーマンスの問題を、動的管理ビューの一部を使用して診断できます。 このトピックでは、動的管理ビューを使用して一般的なパフォーマンスの問題を検出する方法について説明します。

@@ -16,10 +16,10 @@ ms.workload: data-catalog
 ms.date: 08/15/2017
 ms.author: maroche
 ms.openlocfilehash: a28a7679831201fcf3a9d1c15497ff706c2752a1
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-azure-data-catalog"></a>Azure Data Catalog とは何ですか
 Azure Data Catalog は、完全に管理されたクラウド サービスであり、そのユーザーは、必要なデータ ソースを検出し、検出したデータ ソースを理解することができます。 同時に、Data Catalog は、組織が既存の投資からより多くの価値を引き出すことを支援します。 

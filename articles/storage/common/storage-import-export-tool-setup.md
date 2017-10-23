@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
 ms.author: muralikk
-ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
 ms.openlocfilehash: 6b5febd051d0b956c90cb14c260dda1881adac3f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="setting-up-the-azure-importexport-tool"></a>Azure Import/Export ツールの設定
 
 Microsoft Azure Import/Export ツールは、ドライブの準備と修復用のツールであり、Microsoft Azure Import/Export サービスで使用できます。 このツールは次の目的に使用できます。
@@ -216,4 +214,3 @@ Examples:
 * [インポート ジョブの修復](../storage-import-export-tool-repairing-an-import-job-v1.md)
 * [エクスポート ジョブの修復](../storage-import-export-tool-repairing-an-export-job-v1.md)
 * [Azure Import/Export ツールのトラブルシューティング](storage-import-export-tool-troubleshooting-v1.md)
-

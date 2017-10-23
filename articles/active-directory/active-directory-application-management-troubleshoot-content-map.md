@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
 ms.openlocfilehash: 40579bbc950fb4ed9ddece4880b03d8ef32149ae
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-azure-active-directory-application-management"></a>Azure Active Directory アプリケーションの管理のトラブルシューティング
 次のリンクをクリックすると、Azure Active Directory で**エンタープライズ アプリケーション**を管理するときに発生する、最も一般的な問題のいくつかを解決するうえで役に立つコンテンツ マップが表示されます。

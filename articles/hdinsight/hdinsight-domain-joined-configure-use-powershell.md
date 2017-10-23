@@ -17,10 +17,10 @@ ms.workload: big-data
 ms.date: 11/02/2016
 ms.author: saurinsh
 ms.openlocfilehash: 9da76bb5f649817cd2f027f3d0eb46d58a996b4f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-domain-joined-hdinsight-clusters-preview-using-azure-powershell"></a>Azure PowerShell を使用したドメイン参加済み HDInsight クラスターの構成 (プレビュー)
 Azure PowerShell を使って、Azure HDInsight クラスター、Azure Active Directory (Azure AD)、および [Apache Ranger](http://hortonworks.com/apache/ranger/) をセットアップする方法について説明します。 迅速な構成とエラーの抑制のために、Azure PowerShell スクリプトが提供されます。 ドメイン参加済み HDInsight は、Linux ベースのクラスターのみで構成できます。 詳細については、[ドメイン参加済み HDInsight クラスターの概要](hdinsight-domain-joined-introduction.md)に関するページを参照してください。

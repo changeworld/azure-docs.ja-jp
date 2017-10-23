@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 12/09/2016
 ms.author: kraigb
 ms.openlocfilehash: ebacbe74607db38be34b6878745e17bb6de8817a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-a-virtual-machine-for-a-web-application-with-visual-studio"></a>Visual Studio での Web アプリケーション用仮想マシンの作成
 > [!IMPORTANT] 

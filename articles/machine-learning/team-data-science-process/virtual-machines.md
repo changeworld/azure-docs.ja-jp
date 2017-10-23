@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/21/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 88fe9673176cdade92faad4bbdcb2e1bd11f4a55
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="provision-azure-data-science-virtual-machines-as-ipython-notebook-servers"></a>Azure データ サイエンス仮想マシンを IPython Notebook サーバーとしてプロビジョニングする
 ここでは、Azure VM と、SQL サービスを使用する Azure VM を IPython Notebook サーバーとして設定する方法について説明します。 IPython Notebook、Azure ストレージ エクスプローラー、AzCopy などのサポート ツールに加えて、データ サイエンス プロジェクトに役立つ他のユーティリティのある Windows 仮想マシンを構成します。 Azure ストレージ エクスプローラーと AzCopy は、たとえば、ローカル コンピューターから Azure Storage にデータをアップロードしたり、Azure Storage からローカル コンピューターにデータをダウンロードしたりする便利な手段を提供します。 
@@ -44,5 +43,4 @@ ms.lasthandoff: 09/25/2017
 > Azure Virtual Machines の料金は **従量課金制**です。 仮想マシンを使用していないときに課金されないようにするには、 **Azure クラシック ポータル** から、その仮想マシンを [[停止 (割り当て解除)]](http://manage.windowsazure.com/)状態にする必要があります。 仮想マシンの割り当てを解除する方法については、「[未使用時に仮想マシンをシャットダウンして割り当てを解除する](../data-science-virtual-machine/setup-virtual-machine.md#shutdown)」を参照してください。
 > 
 > 
-
 

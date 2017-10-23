@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス | Microsoft Docs"
 description: "Azure Site Recovery でサポートされているオペレーティング システムとコンポーネントの概要について説明します"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 05/24/2017
 ms.author: raynew
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 69c5d09b6608484210870e1a69c51b112b497810
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="support-matrix-for-replication-to-a-secondary-site-with-azure-site-recovery"></a>Azure Site Recovery によるセカンダリ サイトへのレプリケーションのサポート マトリックス
 
@@ -139,4 +137,3 @@ RDM | はい | 該当なし
 
 - [VMM クラウドの Hyper-V VM をセカンダリ サイトにレプリケートする](site-recovery-vmm-to-vmm.md)
 - [VMware VM と物理サーバーをセカンダリ サイトにレプリケートする](site-recovery-vmware-to-vmware.md)
-

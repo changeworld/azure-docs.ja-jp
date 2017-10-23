@@ -1,14 +1,14 @@
-キャッシュにアクセスできる、 [Azure ポータル](https://portal.azure.com)を使用して、**参照**ブレードです。
+キャッシュには、 [Azure ポータル](https://portal.azure.com) で **[参照]** ブレードを使用してアクセスできます。
 
-![Azure Redis キャッシュ ブレードの参照](media/redis-cache-browse/redis-cache-browse.png)
+![Azure Redis Cache の参照ブレード](media/redis-cache-browse/redis-cache-browse.png)
 
-クリックして表示するには、キャッシュ**より多くのサービス > Redis キャッシュ**です。 Redis Cache に最近表示した場合は、クリックして**Redis キャッシュ**をクリックしてせず、一覧から直接**より多くのサービス**です。
+キャッシュを表示するには、**[その他のサービス] > [Redis Caches]** をクリックします。 最近 Redis Cache を参照した場合は、**[その他のサービス]** をクリックしなくても一覧から **[Redis Cache]** を直接クリックできます。
 
-表示してそのキャッシュの設定を構成する目的のキャッシュを選択します。
+目的のキャッシュを選択して表示し、そのキャッシュの設定を構成します。
 
-![Azure Redis Cache キャッシュ リストの参照](media/redis-cache-browse/redis-caches.png)
+![Azure Redis Cache の参照キャッシュ リスト](media/redis-cache-browse/redis-caches.png)
 
-表示してからキャッシュを構成することができます、 **Redis Cache**ブレードです。
+キャッシュの表示と構成は、**[Redis Cache]** ブレードで行うことができます。
 
-![Redis キャッシュのすべての設定](media/redis-cache-browse/redis-cache-blade.png)
+![Redis Cache のすべての設定](media/redis-cache-browse/redis-cache-blade.png)
 

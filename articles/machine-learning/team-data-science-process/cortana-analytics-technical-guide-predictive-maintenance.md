@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
 ms.author: fboylu
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a6d9cd05eb370399fc95cc64bae892e8b5a73fe2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="technical-guide-to-the-cortana-intelligence-solution-template-for-predictive-maintenance-in-aerospace-and-other-businesses"></a>航空宇宙などの業務における予測メンテナンスのための Cortana Intelligence Solution Template に関する技術ガイド
 
@@ -151,7 +150,7 @@ Azure Machine Learning の実験の作成方法については、「 [Predictive
    
     ![管理アイコン](./media/cortana-analytics-technical-guide-predictive-maintenance/icon-manage.png)で作成できます。
    
-    ここで、[新しいクエリ] をクリックし、行数をクエリできます (例: select count(*) from PMResult)。 データベースが大きくなれば、テーブル内の行数も増加します。
+    ここで、新しいクエリをクリックし、行数をクエリできます (例: select count(*) from PMResult)。 データベースが大きくなれば、テーブル内の行数も増加します。
 
 ## <a name="power-bi-dashboard"></a>**Power BI ダッシュボード**
 ### <a name="overview"></a>概要
@@ -236,5 +235,4 @@ Power BI は、そのデータ ソースとして、予測結果が格納され�
 
 * [Microsoft Azure 料金計算ツール (オンライン)](https://azure.microsoft.com/pricing/calculator/)
 * [Microsoft Azure 料金計算ツール (デスクトップ)](http://www.microsoft.com/download/details.aspx?id=43376)
-
 

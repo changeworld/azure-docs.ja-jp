@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/23/2017
 ms.author: genli
+ms.openlocfilehash: 76ab1600903705aad7f18f48f41cb7119c3c09bf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: f6e068e60e8c7b3b095e10cb7e109eb68a483de4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>トラブルシューティング: Azure ポイント対サイト接続の問題
 
@@ -264,4 +263,3 @@ VPN クライアントは Azure 仮想ネットワークに接続しています
 ### <a name="solution"></a>解決策
 
 この問題を解決するには、**C:\Users\TheUserName\AppData\Roaming\Microsoft\Network\Connections** から古い VPN クライアント構成ファイルを削除し、VPN クライアント インストーラーを再度実行します。
-

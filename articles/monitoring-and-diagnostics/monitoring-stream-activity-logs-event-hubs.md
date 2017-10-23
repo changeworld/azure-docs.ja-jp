@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 6/06/2017
 ms.author: johnkem
 ms.openlocfilehash: 88c5701279f370914fac68872d67b02a7571748a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-the-azure-activity-log-to-event-hubs"></a>Event Hubs への Azure アクティビティ ログのストリーミング
 [**Azure アクティビティ ログ**](monitoring-overview-activity-logs.md)は、ポータルに組み込まれた [エクスポート] オプションを使用するか、Azure PowerShell コマンドレットまたは Azure CLI を使用してログ プロファイルで Service Bus 規則 ID を有効にすることによって、任意のアプリケーションにほぼリアルタイムでストリーミングできます。

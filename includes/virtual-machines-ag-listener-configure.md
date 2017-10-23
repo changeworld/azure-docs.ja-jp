@@ -31,7 +31,7 @@
 
    ![クライアント アクセス ポイント](./media/virtual-machines-ag-listener-configure/94-newclientaccesspoint.png) 
 
-    b. IP リソースを右クリックし、[プロパティ] をクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
+    b. IP リソースを右クリックし、プロパティをクリックします。 この IP アドレス名はメモしておき、PowerShell スクリプトの `$IPResourceName` 変数に使用します。
 
     c. **[IP アドレス]** で **[静的 IP アドレス]** をクリックします。 静的 IP アドレスを、Azure Portal でロード バランサーのアドレス設定時に使用したものと同じアドレスに設定します。
 
@@ -61,7 +61,7 @@
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-dependencies.png) 
 
-    c. **[依存関係]** タブをクリックします。 IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
+    c. **[依存関係]** タブをクリックします。IP アドレスが依存関係の要素であることを確認します。 そうでない場合は、IP アドレスへの依存関係を設定します。 複数のリソースが一覧表示される場合は、IP アドレスに OR (AND ではなく) 依存関係があることを確認します。 **[OK]**をクリックします。 
 
    ![IP リソース](./media/virtual-machines-ag-listener-configure/98-propertiesdependencies.png) 
 

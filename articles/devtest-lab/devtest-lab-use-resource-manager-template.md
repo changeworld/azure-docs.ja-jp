@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: tarcher
-ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
 ms.openlocfilehash: 0807ab367b91be5acd261f2b58ca2112b2c9e380
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-a-virtual-machines-azure-resource-manager-template"></a>仮想マシンの Azure Resource Manager テンプレートを使用する
 
 [Azure Portal](http://go.microsoft.com/fwlink/p/?LinkID=525040) を介して DevTest Labs で仮想マシン (VM) を作成すると、VM を保存する前に Azure Resource Manager テンプレートを表示できます。 このテンプレートは、同じ設定で追加のラボ VM を作成するベースとして使用できます。
@@ -70,4 +68,3 @@ Resource Manager テンプレートを保存して必要に応じてカスタマ
 ### <a name="next-steps"></a>次のステップ
 * [Resource Manager テンプレートを使用してマルチ VM 環境を作成する](devtest-lab-create-environment-from-arm.md)方法を確認します。
 * [パブリックの DevTest Labs GitHub レポジトリ](https://github.com/Azure/azure-quickstart-templates)から、DevTest Labs 自動化のためのクイックスタートの Resource Manager テンプレートをもっと探します。
-

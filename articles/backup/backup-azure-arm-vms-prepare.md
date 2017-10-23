@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
 ms.openlocfilehash: 3fa6f4f850fc67d41f619d46bd61a19fe890b0fb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 > [!div class="op_single_selector"]
@@ -98,7 +97,7 @@ Recovery Services コンテナーを作成するには、次の手順に従い�
    >
    >
 
-8. **[作成]**をクリックします。 Recovery Services コンテナーの作成に時間がかかることがあります。 ポータルの右上隅で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、**[最新の情報に更新]** をクリックします。
+8. **Create** をクリックしてください。 Recovery Services コンテナーの作成に時間がかかることがあります。 ポータルの右上隅で、状態の通知を監視します。 コンテナーが作成されると、Recovery Services コンテナーの一覧に表示されます。 コンテナーが表示されない場合は、**[最新の情報に更新]** をクリックします。
 
     ![バックアップ資格情報コンテナーの一覧](./media/backup-azure-arm-vms-prepare/rs-list-of-vaults.png)
 
@@ -315,4 +314,3 @@ Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -T
 * [仮想マシンのバックアップ](backup-azure-vms.md)
 * [VM のバックアップ インフラストラクチャの計画](backup-azure-vms-introduction.md)
 * [仮想マシンのバックアップを管理する](backup-azure-manage-vms.md)
-

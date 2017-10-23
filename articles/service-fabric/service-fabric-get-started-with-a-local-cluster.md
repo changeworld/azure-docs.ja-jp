@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/13/2017
 ms.author: ryanwi;mikhegn
 ms.openlocfilehash: 359677972c7e1fa3f7435052021ddfae5b1ed85e
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-deploying-and-upgrading-applications-on-your-local-cluster"></a>ローカル クラスターでアプリケーションのデプロイおよびアップグレードを開始する
 Azure Service Fabric SDK には、完全なローカル開発環境が含まれています。これを使用して、ローカル クラスター上でアプリケーションをデプロイおよび管理する作業をすぐに開始することができます。 この記事では、ローカル クラスターを作成し、既存のアプリケーションをローカル クラスターにデプロイして、そのアプリケーションを新しいバージョンにアップグレードします。これらの作業はすべて Windows PowerShell で行います。

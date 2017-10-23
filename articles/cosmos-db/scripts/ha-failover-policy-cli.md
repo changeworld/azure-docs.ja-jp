@@ -17,10 +17,10 @@ ms.workload: database
 ms.date: 06/02/2017
 ms.author: mimig
 ms.openlocfilehash: 96083d66cc1a2ef179f9313c1b3ed04162c1c048
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-failover-policy-for-high-availability-using-the-azure-cli"></a>高可用性を確保するためのフェールオーバー ポリシーを Azure CLI で作成する
 
@@ -32,7 +32,7 @@ CLI をローカルにインストールして使用する場合、このトピ�
 
 ## <a name="sample-script"></a>サンプル スクリプト
 
-[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "Azure Cosmos DB フェールオーバー ポリシーの作成")]
+[!code-azurecli-interactive[main](../../../cli_scripts/cosmosdb/high-availability-cosmosdb-configure-failover/high-availability-cosmosdb-configure-failover.sh?highlight=23-27 "Create an Azure Cosmos DB failover policy")]
 
 ## <a name="clean-up-deployment"></a>デプロイのクリーンアップ
 

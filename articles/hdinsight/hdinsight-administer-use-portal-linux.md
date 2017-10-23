@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2017
 ms.author: ashishtha
+ms.openlocfilehash: d08a9a7cc82095b0a90abd98bd4f6d13cdadb671
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 54e53c98390b44ee5f298d5f61c13a4d299e5ae1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Azure ポータルを使用した HDInsight での Hadoop クラスターの管理
 
@@ -234,7 +233,7 @@ Ambari Web UI を使用してクラスターのユーザー パスワードを�
 >
 
 1. HDInsight クラスター ユーザーの資格情報を使用して Ambari Web UI にサインインします。 既定のユーザー名は **admin**です。URL は **https://&lt;HDInsight Cluster Name>azurehdinsight.net** です。
-2. 上部のメニューの **[Admin]** をクリックしてから [Ambari の管理] をクリックします。
+2. 上部のメニューの **Admin** をクリックしてから Ambari の管理をクリックします。
 3. 左側のメニューで **[ユーザー]**をクリックします。
 4. **[Admin]**をクリックします。
 5. **[パスワードの変更]**をクリックします。
@@ -362,4 +361,3 @@ HDInsight クラスター ブレードの **[使用状況]** セクションに�
 
 [azure-portal]: https://portal.azure.com
 [image-hadoopcommandline]: ./media/hdinsight-administer-use-portal-linux/hdinsight-hadoop-command-line.png "Hadoop コマンド ライン"
-

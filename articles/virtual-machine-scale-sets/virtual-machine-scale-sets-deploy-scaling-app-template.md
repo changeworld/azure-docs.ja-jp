@@ -16,10 +16,10 @@ ms.topic: get-started-article
 ms.date: 08/24/2017
 ms.author: ryanwi
 ms.openlocfilehash: 07883a33382cc660b043c99872312a9e77228253
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-an-autoscaling-app-using-a-template"></a>テンプレートを使用した自動スケール アプリのデプロイ
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 08/29/2017
 [Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale)のテンプレートをデプロイする最も簡単な方法は、GitHub の readme ファイルにある **[Deploy to Azure]** ボタンを使用することです。  サンプル テンプレートは、PowerShell または Azure CLI を使用してデプロイすることもできます。
 
 ### <a name="powershell"></a>PowerShell
-[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) のファイルを、GitHub リポジトリからローカル コンピューター上のフォルダーにコピーします。  *azuredeploy.parameters.json* ファイルを開き、`vmssName`、`adminUsername`、`adminPassword` の各パラメーターの既定値を更新します。 次の PowerShell スクリプトを保存*deploy.ps1*と同じフォルダーに、 *azuredeploy.json*テンプレート。 サンプル テンプレートをデプロイするには、PowerShell コマンド ウィンドウから *deploy.ps1* スクリプトを実行します。
+[Linux 上の Python HTTP サーバー](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-bottle-autoscale)または [Windows 上の ASP.NET MVC アプリケーション](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-webapp-dsc-autoscale) のファイルを、GitHub リポジトリからローカル コンピューター上のフォルダーにコピーします。  *azuredeploy.parameters.json* ファイルを開き、`vmssName`、`adminUsername`、`adminPassword` の各パラメーターの既定値を更新します。 次の PowerShell スクリプトをサンプル フォルダーの *deploy.ps1* に *azuredeploy.json* テンプレートとして保存します。 サンプル テンプレートをデプロイするには、PowerShell コマンド ウィンドウから *deploy.ps1* スクリプトを実行します。
 
 ```powershell
 param(

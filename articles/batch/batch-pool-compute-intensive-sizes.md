@@ -12,17 +12,17 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 09/25/2017
 ms.author: danlep
-ms.openlocfilehash: c52a054e4fc8f61f871acd9f35b9a3e6247e48ef
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.openlocfilehash: 8a1097353d24ad4c807803511e93c90394816138
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
-特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 たとえば、マルチインスタンスの [MPI ワークロード](batch-mpi.md)を実行する場合は、リモート ダイレクト メモリ アクセス (RDMA) 用のネットワーク インターフェイスを備えた A8、A9、または H シリーズのサイズを選択できます。 これらのサイズでは、InfiniBand ネットワークに接続してノード間通信を行うため、MPI アプリケーションを高速化できます。 CUDA アプリケーションの場合は、NVIDIA Tesla グラフィックス プロセッシング ユニット (GPU) カードを備えた N シリーズのサイズを選択できます。
+特定の Batch ジョブを実行するために、大規模な計算用に設計された Azure VM サイズを利用できます。 たとえば、マルチインスタンスの [MPI ワークロード](batch-mpi.md)を実行する場合は、リモート ダイレクト メモリ アクセス (RDMA) 用のネットワーク インターフェイスを備えた A8、A9、または H シリーズのサイズを選択できます。 これらのサイズでは、InfiniBand ネットワークに接続してノード間通信を行うため、MPI アプリケーションを高速化できます。 CUDA アプリケーションの場合は、NVIDIA Tesla グラフィックス処理装置 (GPU) カードを備えた N シリーズのサイズを選択できます。
 
 この記事では、Batch プールで Azure の特殊なサイズを使用するためのガイダンスと例を示します。 仕様と背景については、以下をご覧ください。
 
@@ -33,15 +33,11 @@ ms.lasthandoff: 07/29/2017
 
 ## <a name="subscription-and-account-limits"></a>サブスクリプションとアカウントの制限
 
-* **クォータ** - 1 つ以上の Azure クォータによって、Batch プールに追加できるノードの数または種類が制限される場合があります。 RDMA 対応、GPU 対応、または他のマルチコアの VM サイズを選択すると、制限される可能性が高くなります。 作成した Batch アカウントの種類によっては、アカウント自体またはサブスクリプションにクォータが適用される可能性があります。
+* **クォータ** - [Batch アカウントごとの専用コア クォータ](batch-quota-limit.md#resource-quotas)により、Batch プールに追加できるノードの数または種類が制限されることがあります。 RDMA 対応、GPU 対応、または他のマルチコアの VM サイズを選択すると、クォータに達する可能性が高くなります。 既定では、このクォータは 20 コアです。 [優先順位の低い VM](batch-low-pri-vms.md) を使用している場合、これらの VM には個別のクォータが適用されます。 
 
-    * **Batch サービス**構成で Batch アカウントを作成した場合、[Batch アカウントあたりの専用コア クォータ](batch-quota-limit.md#resource-quotas)によって制限されます。 既定では、このクォータは 20 コアです。 [優先順位の低い VM](batch-low-pri-vms.md) を使用している場合、これらの VM には個別のクォータが適用されます。 
+クォータの増量を要求する必要がある場合は、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
 
-    * **ユーザー サブスクリプション**構成でアカウントを作成した場合、サブスクリプションによってリージョンあたりの VM コアの数が制限されます。 「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。 サブスクリプションによって、特定の VM サイズ (HPC インスタンスや GPU インスタンスなど) にリージョンのクォータも適用されます。 ユーザー サブスクリプション構成では、Batch アカウントに追加のクォータは適用されません。 
-
-  Batch で特殊な VM サイズを使用するときには、1 つ以上のクォータを増やすことが必要な場合があります。 クォータを増やすためのリクエストは、[オンライン カスタマー サポートに申請](../azure-supportability/how-to-create-azure-support-request.md) (無料) してください。
-
-* **リージョンの可用性** - コンピューティング集中型 VM は、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
+* **利用可能なリージョン** - コンピューティング集中型 VM は、Batch アカウントを作成したリージョンで使用できない場合があります。 特定のサイズが使用可能かどうかを確認するには、「[リージョン別の利用可能な製品](https://azure.microsoft.com/regions/services/)」をご覧ください。
 
 
 ## <a name="dependencies"></a>依存関係
@@ -53,11 +49,11 @@ ms.lasthandoff: 07/29/2017
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | SUSE Linux Enterprise Server 12 HPC または<br/>CentOS ベースの HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | SUSE Linux Enterprise Server 12 HPC または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
 | [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS。<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 8.0 ドライバー | 該当なし | 
 | [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS<br/>Red Hat Enterprise Linux 7.3<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
-*NC24r VM の RDMA 接続は、Intel MPI がインストールされた CentOS ベース 7.3 HPC でサポートされます。
+*NC24r VM の RDMA 接続は、Intel MPI がインストールされた CentOS-based 7.3 HPC でサポートされます。
 
 
 
@@ -97,15 +93,9 @@ Batch プール用の特殊な VM サイズを構成するために、Batch API 
 
 * [アプリケーション パッケージ](batch-application-packages.md) - 圧縮されたインストール パッケージを Batch アカウントに追加し、プールでパッケージ参照を構成します。 この設定では、プールのすべてのノードでパッケージがアップロードされ、解凍されます。 パッケージがインストーラーの場合は、プールのすべてのノードにアプリケーションをサイレント インストールする開始タスク コマンド ラインを作成します。 必要に応じて、ノードでタスクの実行がスケジュールされているときにパッケージをインストールすることもできます。
 
-* [プールのカスタム イメージ](batch-api-basics.md#pool) - ドライバー、ソフトウェア、またはその VM サイズに必要な他の設定を含む、カスタムの Windows または Linux VM イメージを作成します。 ユーザー サブスクリプション構成で Batch アカウントを作成した場合は、Batch プールのカスタム イメージを指定します  (カスタム イメージは、Batch サービス構成のアカウントではサポートされていません)。カスタム イメージは、仮想マシン構成のプールでのみ使用できます。
+* [プールのカスタム イメージ](batch-custom-images.md) - ドライバー、ソフトウェア、またはその VM サイズに必要な他の設定を含む、カスタムの Windows または Linux VM イメージを作成します。 
 
-  > [!IMPORTANT]
-  > Batch プールでは、管理ディスクまたは Premium Storage を使用して作成されたカスタム イメージは現在使用できません。
-  >
-
-
-
-* [Batch Shipyard](https://github.com/Azure/batch-shipyard) - Azure Batch のコンテナー化ワークロードで透過的に機能するように GPU と RDMA を自動的に構成します。 Batch Shipyard は、完全に構成ファイルで駆動されます。 N シリーズ VM で GPU ドライバーを事前に構成し、Microsoft Cognitive Toolkit ソフトウェアを Docker イメージとして読み込む [CNTK GPU レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)など、GPU および RDMA ワークロードに対応する多数のサンプル レシピ構成が提供されています。
+* [Batch Shipyard](https://github.com/Azure/batch-shipyard) は Azure Batch のコンテナー化ワークロードで透過的に機能するように GPU と RDMA を自動的に構成します。 Batch Shipyard は、完全に構成ファイルで駆動されます。 N シリーズ VM で GPU ドライバーを事前に構成し、Microsoft Cognitive Toolkit ソフトウェアを Docker イメージとして読み込む [CNTK GPU レシピ](https://github.com/Azure/batch-shipyard/tree/master/recipes/CNTK-GPU-OpenMPI)など、GPU および RDMA ワークロードに対応する多数のサンプル レシピ構成が提供されています。
 
 
 ## <a name="example-microsoft-mpi-on-an-a8-vm-pool"></a>例: A8 VM プールの Microsoft MPI
@@ -125,7 +115,7 @@ Azure A8 ノードのプールで Windows MPI アプリケーションを実行�
 | **ノード間通信が有効** | True |
 | **ノードごとの最大タスク数** | 1 |
 | **アプリケーション パッケージの参照** | MSMPI |
-| **Start task enabled\(開始タスクが有効\)** | True<br>**[コマンド ライン]** - `"cmd /c %AZ_BATCH_APP_PACKAGE_MSMPI#8.1%\\MSMpiSetup.exe -unattend -force"`<br/>**ユーザー ID** - Pool autouser、admin<br/>**成功を待機** - True
+| **開始タスクが有効** | True<br>**[コマンド ライン]** - `"cmd /c %AZ_BATCH_APP_PACKAGE_MSMPI#8.1%\\MSMpiSetup.exe -unattend -force"`<br/>**ユーザー ID** - Pool autouser、admin<br/>**成功を待機** - True
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>例: NC VM プールの NVIDIA Tesla ドライバー
 
@@ -133,17 +123,14 @@ Linux NC ノードのプールで CUDA アプリケーションを実行する�
 
 1. Ubuntu 16.04 LTS を実行する Azure NC6 VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 VM は、Standard Storage を使用し、管理ディスクを使用*せずに*作成する必要があります。
 2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)する手順に従います。
-3. Linux エージェントをプロビジョニング解除し、Azure CLI 1.0 コマンドを使用して Linux VM イメージをキャプチャします。 手順については、「[Azure で実行されている Linux 仮想マシンをキャプチャする](../virtual-machines/linux/capture-image-nodejs.md)」をご覧ください。 イメージ URI を書き留めておきます。
-  > [!IMPORTANT]
-  > Azure Batch のイメージをキャプチャするときは、Azure CLI 2.0 コマンドを使用しないでください。 現在、CLI 2.0 コマンドは、管理ディスクを使用して作成された VM のみをキャプチャします。
-  >
-4. NC VM をサポートするリージョンに、ユーザー サブスクリプション構成で Batch アカウントを作成します。
-5. Batch API または Azure Portal で、カスタム イメージを使用し、必要な数のノードとスケールを指定してプールを作成します。 次の表に、イメージのプール設定の例を示します。
+3. Linux エージェントをプロビジョニング解除した後、[Linux VM イメージをキャプチャ](../virtual-machines/linux/capture-image.md)します。
+4. NC VM をサポートするリージョンに Batch アカウントを作成します。
+5. Batch API または Azure Portal で、[カスタム イメージを使い](batch-custom-images.md)、必要な数のノードとスケールを指定して、プールを作成します。 次の表に、イメージのプール設定の例を示します。
 
 | 設定 | 値 |
 | ---- | ---- |
 | **イメージの種類** | カスタム イメージ |
-| **カスタム イメージ** | `https://yourstorageaccountdisks.blob.core.windows.net/system/Microsoft.Compute/Images/vhds/MyVHDNamePrefix-osDisk.xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx.vhd` 形式のイメージ URI |
+| **カスタム イメージ** | イメージの名前 |
 | **ノード エージェント SKU** | batch.node.ubuntu 16.04 |
 | **ノード サイズ** | NC6 Standard |
 

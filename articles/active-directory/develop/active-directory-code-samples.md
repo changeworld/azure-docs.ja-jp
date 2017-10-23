@@ -16,10 +16,10 @@ ms.date: 07/19/2017
 ms.author: mbaldwin
 ms.custom: aaddev
 ms.openlocfilehash: 19d71e65dc2c78663d94c74228dcff038566391b
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-code-samples"></a>Azure Active Directory のコード例
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]

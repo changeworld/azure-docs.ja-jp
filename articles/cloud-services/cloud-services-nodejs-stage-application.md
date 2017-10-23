@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: tarcher
 ms.openlocfilehash: b3000ed769e8c60eccb21e26f53ce7ccb7e68d7f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="staging-an-application-in-azure"></a>Azure アプリケーションのステージング
 パッケージ アプリケーションは、インターネット上でアクセスできる運用環境に移行する前に、Azure でステージング環境にデプロイしてテストすることができます。 ステージング環境は運用環境とほぼ同じです。唯一の違いは、ステージングされたアプリケーションには、Azure で生成された難読化済みの URL を使用しなければアクセスできない点です。 アプリケーションが正常に動作することを確認したら、仮想 IP (VIP) スワップを実行して、運用環境にデプロイできます。

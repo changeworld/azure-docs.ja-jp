@@ -15,18 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9fcfca3de6204581936a2bacfd86e84fd373190a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-change-or-delete-a-virtual-network-peering"></a>仮想ネットワーク ピアリングの作成、変更、削除
 
 仮想ネットワーク ピアリングを作成、変更、削除する方法について説明します。 仮想ネットワーク ピアリングによって、仮想ネットワークを Azure のバックボーン ネットワークを介して接続できます。 ピアリング後も、仮想ネットワークは個別のリソースとして管理されます。 仮想ネットワーク ピアリングの知識がない場合は、この記事のタスクを実行する前に、「[仮想ネットワーク ピアリング](virtual-network-peering-overview.md)」を読み、[仮想ネットワーク ピアリングの作成方法のチュートリアル](virtual-network-create-peering.md)を完了することをお勧めします。
 
-通常、同じリージョンの仮想ネットワークをピアリングできます。 リージョンが異なる仮想ネットワークのピアリングは、現在のところ、米国中西部、カナダ中部、米国西部 2 でプレビュー段階にあります。 [サブスクリプション登録](virtual-network-create-peering.md)すればプレビュー版をご利用いただけます。
+同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 [プレビュー版を利用するにはサブスクリプションを登録](virtual-network-create-peering.md)してください。
 
 > [!WARNING]
 > このシナリオで作成された仮想ネットワーク ピアリングでは、一般公開リリースのシナリオと同じレベルの可用性と信頼性が得られないことがあります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
@@ -168,4 +167,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 
 [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#vnet-peering)を作成する方法を学習します 
-

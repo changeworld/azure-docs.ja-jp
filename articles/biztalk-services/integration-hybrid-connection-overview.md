@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/18/2016
 ms.author: ccompy
+ms.openlocfilehash: 992c438ab2dac8dc20ba284bd095afbcd801a62f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 8584c74f86b72679c3d6c287a7dbf3ea8bcf7149
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="hybrid-connections-overview"></a>ハイブリッド接続の概要
 
@@ -100,4 +99,3 @@ ms.lasthandoff: 09/07/2017
 [BizTalk Services: [ダッシュボード]、[監視]、[スケール] タブ](biztalk-dashboard-monitor-scale-tabs.md)<br/>
 
 [HCImage]: ./media/integration-hybrid-connection-overview/WABS_HybridConnectionImage.png
-

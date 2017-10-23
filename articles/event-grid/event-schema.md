@@ -8,14 +8,12 @@ ms.service: event-grid
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: babanisa
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: a61357b6ba75566e0ad4d3300cc602333ece0563
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-event-grid-event-schema"></a>Azure Event Grid イベント スキーマ
 
 この記事では、イベントのプロパティとスキーマについて説明します。 イベントは、5 つの必須文字列プロパティと 1 つの必須データ オブジェクトで構成されます。 プロパティは、すべてのイベントに共通であり、発行元を問いません。 データ オブジェクトには、各発行元に固有のプロパティが含まれます。 システム トピックの場合、これらのプロパティは、リソース プロバイダー (Azure Storage や Azure Event Hubs など) に固有です。
@@ -235,4 +233,3 @@ Event Hubs のイベントは、現時点では、ファイルがキャプチャ
 
 * Azure Event Grid の概要については、[Event Grid の紹介](overview.md)に関する記事を参照してください。
 * Azure Event Grid サブスクリプションの作成の詳細については、[Event Grid サブスクリプション スキーマ](subscription-creation-schema.md)に関する記事を参照してください。
-

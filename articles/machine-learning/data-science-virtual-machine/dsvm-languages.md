@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 2f2125e739b738847e03ce429d65801969611685
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="languages-supported-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンでサポートされている言語 
 
 データ サイエンス仮想マシン (DSVM) には、AI アプリケーションを構築するための構築済み言語および開発ツールがいくつか付属します。 代表的なものは以下のとおりです。 
@@ -58,7 +56,7 @@ python --version
 
 Visual Studio Community エディションでインストールされる Python Tools for Visual Studio (PTVS) を使用します。 Python 2.7 では、PTVS で自動的にセットアップされる唯一の環境です。 
 > [!NOTE]
-> Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] (ツール)** -> **[Python Tools]** -> **[Python Environments] (Python 環境)** の順に移動し、**[+ Custom] (+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
+> Python 3.5 にある PTVS をポイントするには、PTVS でカスタム環境を作成する必要があります。 **[Tools] \(ツール)** -> **[Python Tools]** -> **[Python Environments] \(Python 環境)** の順に移動し、**[+ Custom] \(+ カスタム)** をクリックして、Visual Studio Community エディションにこの環境パスを設定します。 次に、場所を `c:\anaconda\envs\py35` に設定して _[Auto Detect]_ (自動検出) をクリックします。 
 
 * Jupyter での使用
 
@@ -199,6 +197,5 @@ Jupyter を開き、`New` ボタンをクリックして新しいノートブッ
 **node.js**: node.js は DSVM の Linux エディションと Windows エディションの両方で使用可能であり、パスに設定されています。 Windows のコマンド プロンプトまたは Linux の bash シェルで `node` または `npm` コマンドを入力することにより、node.js にアクセスできます。 Windows では、node.js アプリケーション開発用のグラフィカル IDE を提供するために、Node.js Tools for Visual Studio 拡張機能がインストールされます。 
 
 **F#**: Windows で使用可能であり、Visual Studio Community エディションから、または `Developer Command Prompt for Visual Studio` でアクセスできます (`fsc` コマンドの実行のみ可能)。 
-
 
 

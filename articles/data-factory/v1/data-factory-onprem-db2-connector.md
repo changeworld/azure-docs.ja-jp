@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 07/19/2017
 ms.author: jingwang
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: eacecb9f084ead76633cf802751d3a603cb2f0d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -363,4 +362,3 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 ## <a name="performance-and-tuning"></a>パフォーマンスとチューニング
 コピー アクティビティのパフォーマンスに影響を及ぼす主な要因とパフォーマンスを最適化する方法については、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](data-factory-copy-activity-performance.md)」を参照してください。
-

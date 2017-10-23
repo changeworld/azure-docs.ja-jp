@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/21/2017
 ms.author: kgremban
 ms.openlocfilehash: 9d77b9329116afcf2fdde48d672c95020738138c
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-multi-factor-authentication-settings"></a>Azure Multi-Factor Authentication の設定を構成する
 この記事は、導入した Azure Multi-factor Authentication を管理する際に役立ちます。  ここでは、Azure Multi-factor Authentication を最大限に活用するために役立つさまざまなトピックについて説明します。  ただし、Azure Multi-factor Authentication のすべてのバージョンですべての機能を使用できるわけではありません。
@@ -157,7 +157,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 4. このメッセージが特定のアプリケーション用である場合は、それを [アプリケーション] ボックスに指定します。
 5. [メッセージの種類] ドロップダウン リストから、新しいカスタム メッセージで上書きするメッセージの種類を選択します。
 6. [サウンド ファイル] ドロップダウン リストから、最初の部分でアップロードしたサウンド ファイルを選択します。
-7. **[作成]**をクリックします。 音声メッセージが正常に作成されたことを確認するメッセージが表示されます。
+7. **Create** をクリックしてください。 音声メッセージが正常に作成されたことを確認するメッセージが表示されます。
     ![クラウド](./media/multi-factor-authentication-whats-next/custom5.png)</center>
 
 ## <a name="caching-in-azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication でのキャッシュ
@@ -170,7 +170,7 @@ Azure 多要素認証プロバイダーを介して MFA 管理ポータルにア
 2. このページの上部にある指示に従って、MFA 管理ポータルに移動します。
 3. Azure Multi-Factor Authentication 管理ポータルで、[構成] セクションの **[キャッシュ]** をクリックします。
 4. [Configure caching]\(キャッシュの構成\) ページで **[新しいキャッシュ]** をクリックします。
-5. キャッシュの種類と、キャッシュする秒数を選択します。 **[作成]**をクリックします。
+5. キャッシュの種類と、キャッシュする秒数を選択します。 **Create** をクリックしてください。
 
 <center>![クラウド](./media/multi-factor-authentication-whats-next/cache.png)</center>
 

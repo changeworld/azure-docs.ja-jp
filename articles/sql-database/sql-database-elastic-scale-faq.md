@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
 ms.openlocfilehash: f0a7b5ce61feaead608d457465f64813737fa112
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elastic-database-tools-faq"></a>エラスティック データベース ツールに関する FAQ
 #### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>シャードごとにシングルテナントはあるが、シャーディング キーがない場合、スキーマ情報にどのようにしてシャーディング キーを取り込むのですか。
@@ -32,7 +32,7 @@ ms.lasthandoff: 07/11/2017
 エラスティック データベース クライアント ライブラリの使用にコストは発生しません。 コストが発生するのは、シャードとシャード マップ マネージャーに使用した Azure SQL データベースと、Split Merge ツールにプロビジョニングした Web/worker ロールに対してのみです。
 
 #### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>別のサーバーからシャードを追加した場合に、資格情報が機能しないのはどうしてですか。
-形式で資格情報を使用しないでください"ユーザー ID =username@servername"、代わりに使用して単に"ユーザー ID のユーザー名を ="です。  また、「username」ログインがシャードで権限を持っていることを確認します。
+資格情報には、"User ID=username@servername" の形式ではなく、単に "User ID = username" を使ってください。  また、「username」ログインがシャードで権限を持っていることを確認します。
 
 #### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>アプリケーションを起動するたびに、シャード マップ マネージャーを作成してシャードを取り込む必要がありますか。
 必要ありません。シャード マップ マネージャー (たとえば **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) の作成は 1 回だけの操作です。  アプリケーションは、アプリケーションの起動時に **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** 呼び出しを使用する必要があります。  アプリケーション ドメインごとにそのような呼び出しを 1 回行います。

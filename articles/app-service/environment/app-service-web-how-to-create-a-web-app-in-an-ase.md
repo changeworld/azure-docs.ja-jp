@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 7/11/2017
 ms.author: ccompy
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: b031807073313e9e093dbc7576ecfd3d2a970abe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-web-app-in-an-app-service-environment-v1"></a>App Service Environment v1 で Web アプリを作成する
 
@@ -113,4 +112,3 @@ Web アプリと App Service プランを作成した後は、これをスケー
 [HowtoConfigureASE]: app-service-web-configure-an-app-service-environment.md
 [ResourceGroups]: ../../azure-resource-manager/resource-group-overview.md
 [AzurePowershell]: http://azure.microsoft.com/documentation/articles/powershell-install-configure/
-

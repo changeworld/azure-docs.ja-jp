@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/20/2017
 ms.author: jeedes
 ms.openlocfilehash: cc7ad4aa5260276e26406b6b79c039372e5ee69f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>チュートリアル: Azure Active Directory と Predictix Assortment Planning の統合
 
@@ -173,7 +173,7 @@ Predictix Assortment Planning で Azure AD のシングル サインオンを構
 
     c. **[パスワードを表示]** チェック ボックスをオンにし、**[パスワード]** ボックスに表示された値を書き留めます。
 
-    d. **[作成]**をクリックします。
+    d. **Create** をクリックしてください。
  
 ### <a name="create-a-predictix-assortment-planning-test-user"></a>Predictix Assortment Planning テスト ユーザーの作成
 

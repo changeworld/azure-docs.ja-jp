@@ -15,10 +15,10 @@ ms.tgt_pltfrm: na
 ms.date: 07/14/2016
 ms.author: evboyle
 ms.openlocfilehash: f6ca06a0349def97b38a1bf6d0d8f36236077e92
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-search-in-java"></a>Java での Azure Search の使用
 > [!div class="op_single_selector"]
@@ -63,8 +63,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="find-the-service-name-and-api-key-of-your-azure-search-service"></a>Azure Search サービスのサービス名と API キーの取得
 Azure Search へのすべての REST API 呼び出しで、サービスの URL と API キーを指定する必要があります。 
 
-1. 
-            [Azure Portal](https://portal.azure.com) にサインインします。
+1. [Azure Portal](https://portal.azure.com) にサインインします。
 2. ジャンプ バーで、 **[Search サービス]** をクリックして、サブスクリプション用にプロビジョニングされたすべての Azure Search サービスの一覧を表示します。
 3. 使用するサービスを選択します。
 4. サービスのダッシュボードには、基本情報のタイルのほか、管理者キーにアクセスするためのキー アイコンが表示されます。

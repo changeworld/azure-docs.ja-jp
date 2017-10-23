@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 13e9b951c46ae1cd16c7f38d5ade8a4f8a156e63
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Azure Data Factory の式と関数
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +68,7 @@ ms.lasthandoff: 09/25/2017
 |"Answer is: @@{parameters('myNumber')}"|文字列 `Answer is: @{parameters('myNumber')}` が返されます。|  
   
   
-## <a name="functions"></a>関数  
+## <a name="functions"></a>Functions  
  式の中で関数を呼び出すことができます。 以降のセクションでは、式で使用できる関数に関する情報を提供します。  
 
 ## <a name="string-functions"></a>文字列関数  
@@ -97,7 +96,7 @@ ms.lasthandoff: 09/25/2017
 |-------------------|-----------------|  
 |contains|ディクショナリにキーが含まれる場合、リストに値が含まれる場合、または文字列に部分文字列が含まれる場合、true を返します。 たとえば、次の式は `true:``contains('abacaba','aca')` を返します<br /><br /> **パラメーター番号**: 1<br /><br /> **名前**: Within collection<br /><br /> **説明**: 必須。 その中で検索を行うコレクションです。<br /><br /> **パラメーター番号**: 2<br /><br /> **名前**: Find object<br /><br /> **説明**: 必須。 **Within collection** 内で検索するオブジェクトです。|  
 |length|配列または文字列内の要素の数を返します。 たとえば、次の式は `3` を返します: `length('abc')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 次の長さを取得するコレクション。|  
-|empty|オブジェクト、配列、または文字列が空の場合は true を返します。 たとえば、次の式は `true` を返します:<br /><br /> `empty('')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 空かどうかを確認するコレクションです。|  
+|empty|オブジェクト、配列、または文字列が空の場合は true を返します。 たとえば、次の式は `true` を返します: <br /><br /> `empty('')`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 空かどうかを確認するコレクションです。|  
 |intersection|渡された配列またはオブジェクトの間の共通要素を含む 1 つの配列またはオブジェクトを返します。 たとえば、次の関数は `[1, 2]` を返します。<br /><br /> `intersection([1, 2, 3], [101, 2, 1, 10],[6, 8, 1, 2])`<br /><br /> 関数のパラメーターは、オブジェクトのセットまたは配列のセットです (両方を混ぜることはできません)。 同じ名前のオブジェクトが複数ある場合は、その名前を持つ最後のオブジェクトが最終的なオブジェクトに含まれます。<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: Collection *n*<br /><br /> **説明**: 必須。 評価対象のコレクションです。 結果にオブジェクトが含まれるには、渡されるすべてのコレクションにオブジェクトが存在する必要があります。|  
 |union|渡された配列またはオブジェクトにあるすべての要素を含む 1 つの配列またはオブジェクトを返します。 たとえば、この関数は `[1, 2, 3, 10, 101]:` を返します<br /><br /> :  `union([1, 2, 3], [101, 2, 1, 10])`<br /><br /> 関数のパラメーターは、オブジェクトのセットまたは配列のセットです (両方を混ぜることはできません)。 最終的な出力に同じ名前のオブジェクトが複数ある場合は、その名前を持つ最後のオブジェクトが最終的なオブジェクトに含まれます。<br /><br /> **パラメーター番号**: 1 ... *n*<br /><br /> **名前**: Collection *n*<br /><br /> **説明**: 必須。 評価対象のコレクションです。 いずれかのコレクションに現れるオブジェクトは、結果に含まれます。|  
 |first|渡された配列または文字列の最初の要素を返します。 たとえば、次の関数は `0` を返します。<br /><br /> `first([0,2,3])`<br /><br /> **パラメーター番号**: 1<br /><br /> **Name**: Collection<br /><br /> **説明**: 必須。 最初のオブジェクトを取得するコレクションです。|  

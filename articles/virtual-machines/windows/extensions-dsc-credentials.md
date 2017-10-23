@@ -17,10 +17,10 @@ ms.workload: na
 ms.date: 09/15/2016
 ms.author: zachal
 ms.openlocfilehash: acd768c0219ec23c0453a65c575faf5213d9c616
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="passing-credentials-to-the-azure-dsc-extension-handler"></a>資格情報を Azure DSC 拡張機能ハンドラーに渡す
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]

@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/27/2017
 ms.author: tamram
+ms.openlocfilehash: 87594d2688e3cd01f5e7db8f5be8ca513969e774
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 7a432a22c5c2c2fc5e42cfe000dd34262ba4c85e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-azure-blob-storage-using-net"></a>.NET を使用して Azure Blob Storage を使用する
 
@@ -402,4 +401,3 @@ Azure Storage では、クライアント側とサーバー側の両方で、BLO
 * [AzCopy コマンド ライン ユーティリティを使ったデータの転送](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 * [.NET 用の File Storage の概要](../files/storage-dotnet-how-to-use-files.md)
 * [Web ジョブ SDK で Azure Blob Storage を使用する方法](https://github.com/Azure/azure-webjobs-sdk/wiki)
-

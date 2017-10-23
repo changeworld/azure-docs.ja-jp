@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/02/2017
 ms.author: robb
 ms.custom: H1Hack27Feb2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: afa863e2a900d4f823b77453d92f034db7d5a93f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-are-alerts-in-microsoft-azure"></a>Microsoft Azure のアラートの概要
 この記事では、Microsoft Azure のさまざまなソースのアラート、アラートの目的、アラートの利点、アラートとの基本的な使用方法について説明します。 特に Azure Monitor について説明しますが、アラートを使用する他のサービスの参照先も紹介します。 アラートは Azure の監視方法の 1 つです。データに対する条件を構成し、その条件が最新の監視データと一致したときに通知を受信できます。
@@ -36,7 +35,7 @@ Azure では、アラートとその機能を説明するときに次の用語�
 ## <a name="alerts-in-different-azure-services"></a>さまざまな Azure サービスのアラート
 アラートは複数の Azure 監視サービス全体で使用できます。 Azure 監視サービスの使用方法と使用する場合については、[こちらの記事を参照してください](./monitoring-overview.md)。 Azure 全体で使用できるアラートの種類の内訳を次に示します。
 
-| サービス | アラートの種類 | サポートされているサービス | 説明 |
+| サービス | アラートの種類 | サポートされているサービス | Description |
 |---|---|---|---|
 | Azure Monitor | [メトリック アラート](./insights-alerts-portal.md) | [Azure Monitor からサポートされるメトリック](./monitoring-supported-metrics.md) | プラットフォームレベルのメトリックが特定の条件 (たとえば、VM の CPU % が過去 5 分間で 90 を超えた、など) と一致する場合に通知を受け取ります。 |
 |Azure Monitor | [ほぼリアルタイムのメトリック アラート (プレビュー)](./monitoring-near-real-time-metric-alerts.md)| [Azure Monitor からサポートされるリソース](./monitoring-near-real-time-metric-alerts.md#what-resources-can-i-create-near-real-time-metric-alerts-for) | 1 つまたは複数のプラットフォーム レベルのメトリックが指定された条件 (例: 過去 5 分間の VM の CPU % が 90 を超え、Network In が 500 MB を超えている) を満たしている場合に、メトリック アラートよりも早く通知を受け取ります。 |
@@ -92,4 +91,3 @@ Azure Monitor で使用できる診断ログ データの場合、データを L
 * [ほぼリアルタイムのメトリック アラート](monitoring-near-real-time-metric-alerts.md)
 * [サービス通知](monitoring-service-notifications.md) の詳細
 * [アクション グループ](monitoring-action-groups.md)の詳細については、こちらをご覧ください。
-

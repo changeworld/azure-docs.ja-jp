@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 
@@ -172,4 +171,3 @@ SQL Database は、MacOS、Linux、および Windows での Python、Java、Node
 - Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
   - [Azure SQL Database 用の Azure CLI サンプル](sql-database-cli-samples.md)
   - [Azure SQL Database 用の Azure PowerShell サンプル](sql-database-powershell-samples.md)
-

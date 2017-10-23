@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: e56f8bf1057a8bc2cfcde841f69022104bafff27
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fc521fa40428caacebb072cb1aacdebf0ce977ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-azure-files-from-the-azure-portal"></a>Azure Portal から Azure Files を使用する方法
 [Azure ポータル](https://portal.azure.com)では、ユーザー インターフェイスを使用して、Azure Files を管理できます。 Web ブラウザーから、次の操作を実行できます。
 

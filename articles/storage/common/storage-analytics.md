@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 03/03/2017
 ms.author: tamram
+ms.openlocfilehash: 9ae9dd0b078911a695d441cd3891be720dc204ac
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 61e4f599d17417c11d7ff79489300b82df0bc9c8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storage-analytics"></a>Storage Analytics
 
@@ -140,12 +139,9 @@ Storage Analytics を使用するには、監視するサービスごとに Stor
 
 容量データはストレージ アカウントの Blob service に対して毎日記録され、2 つのテーブル エンティティが書き込まれます。 一方のエンティティは、ユーザー データの統計情報です。もう一方のエンティティは、Storage Analytics によって使用される `$logs` BLOB コンテナーに関する統計情報です。 `$MetricsCapacityBlob` テーブルには、次の統計情報が含まれています。
 
-* 
-            **Capacity**: ストレージ アカウントの Blob service によって使用されているストレージの量 (バイト単位)。
-* 
-            **ContainerCount**: ストレージ アカウントの Blob service 内の BLOB コンテナーの数。
-* 
-            **ObjectCount**: ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
+* **Capacity**: ストレージ アカウントの Blob service によって使用されているストレージの量 (バイト単位)。
+* **ContainerCount**: ストレージ アカウントの Blob service 内の BLOB コンテナーの数。
+* **ObjectCount**: ストレージ アカウントの Blob service 内のコミット済みとコミット前のブロック BLOB またはページ BLOB の数。
 
 容量メトリックの詳細については、「 [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)」をご覧ください。
 
@@ -183,8 +179,7 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 
 ## <a name="next-steps"></a>次のステップ
 ### <a name="setting-up-storage-analytics"></a>Storage Analytics の設定
-* 
-            [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
+* [Azure Portal でのストレージ アカウントの監視](storage-monitor-storage-account.md)
 * [Storage Analytics の有効化と構成](https://msdn.microsoft.com/library/hh360996.aspx)
 
 ### <a name="storage-analytics-logging"></a>Storage Analytics Logging
@@ -196,5 +191,4 @@ Storage Analytics のデータで課金対象の要求を調べるときには�
 * [Storage Analytics Metrics について](https://msdn.microsoft.com/library/hh343258.aspx)
 * [Storage Analytics Metrics のテーブル スキーマ](https://msdn.microsoft.com/library/hh343264.aspx)
 * [Storage Analytics によって記録される操作やステータス メッセージ](https://msdn.microsoft.com/library/hh343260.aspx)  
-
 

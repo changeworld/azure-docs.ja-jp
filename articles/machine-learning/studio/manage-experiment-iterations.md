@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 062620f2174ecc93c1deb816069e32152dbef636
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-experiment-iterations-in-azure-machine-learning-studio"></a>Azure Machine Learning Studio での実験イテレーションの管理
 予測可能な分析モデルの開発では、十分にトレーニングされた有効なモデルが作成されるまで、実験におけるさまざまな関数とパラメーターを繰り返し調整します。 このプロセスでは、実験パラメーターと構成のさまざまなイテレーションを追跡することが重要になります。
@@ -84,4 +83,3 @@ Machine Learning Studio の **[EXPERIMENTS]** タブの実験のリストには�
 
 <!-- Module References -->
 [linear-regression]: https://msdn.microsoft.com/library/azure/31960a6f-789b-4cf7-88d6-2e1152c0bd1a/
-

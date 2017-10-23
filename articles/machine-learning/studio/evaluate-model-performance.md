@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2017
 ms.author: bradsev;garye
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 48ce4584f7270d78b1d09b848bfdd305d03012b9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-evaluate-model-performance-in-azure-machine-learning"></a>Azure Machine Learning でモデルのパフォーマンスを評価する方法
 この記事では、Azure Machine Learning Studio でモデルのパフォーマンスを評価する方法を紹介し、このタスクで使用できるメトリックについて簡単に説明します。 以下の 3 種類の学習のシナリオを取り上げます。 
@@ -188,5 +187,4 @@ Azure Machine Learning Studio で以下のモジュールをワークスペー�
 [split]: https://msdn.microsoft.com/library/azure/70530644-c97a-4ab6-85f7-88bf30a8be5f/
 [train-model]: https://msdn.microsoft.com/library/azure/5cc7053e-aa30-450d-96c0-dae4be720977/
 [two-class-logistic-regression]: https://msdn.microsoft.com/library/azure/b0fd7660-eeed-43c5-9487-20d9cc79ed5d/
-
 

@@ -12,18 +12,16 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 9f9ff0674fd4e3f9b0598a982d81681eaa6d1997
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: d9cf205cd3e7a8017efbe9078ff495c04f065374
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-file-sync-preview"></a>Azure ファイル同期をデプロイする方法 (プレビュー)
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスまたは Azure 内で共有をレプリケートできます。また、Windows Server 上で SMB または NFS を介して共有にアクセスすることができます。 Azure ファイル同期は、ブランチ オフィスなどの Azure データ センターから離れた場所にあるデータにアクセスして変更する必要がある場合に便利です。 複数のブランチ オフィス間など、複数の Windows Server エンドポイント間でデータをレプリケートできます。
+Azure File Sync (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 このガイドの手順に従う前に、「[Azure Files のデプロイの計画](storage-files-planning.md)」と「[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)」を読むことを強くお勧めします。
 

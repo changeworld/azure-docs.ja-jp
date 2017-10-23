@@ -16,10 +16,10 @@ ms.date: 08/11/2017
 ms.author: banders
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: bfe52ef5d9d09ffe179faaf6ffbd90ef964fbda9
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-active-directory-replication-status-with-log-analytics"></a>Log Analytics で Active Directory レプリケーションの状態を監視する
 

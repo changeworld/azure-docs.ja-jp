@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/04/2017
 ms.author: garye;haining
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: cc938fdaa6843f7c9e974d9b88a9b682b4678493
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-many-machine-learning-models-and-web-service-endpoints-from-one-experiment-using-powershell"></a>PowerShell を使用して 1 つの実験から複数の Machine Learning モデルと Web サービス エンドポイントを作成する
 機械学習について多くの人が考えることは、トレーニング ワークフローと使用アルゴリズムは同じで、入力となるトレーニング データセットだけが異なる複数のモデルを作成できないものだろうか、ということです。 この記事では、Azure Machine Learning Studio で 1 つの実験だけを使い、規模の制約なくこの課題に対応する方法を紹介しています。
@@ -172,4 +171,3 @@ Web サービスをデプロイするには、予測実験を実行し、キャ�
         Write-Host ('Patching endpoint ' + $endpointName + '...');
         Patch-AmlWebServiceEndpoint -WebServiceId $scoringSvc.Id -EndpointName $endpointName -ResourceName 'Bike Rental [trained model]' -BaseLocation $baseLoc -RelativeLocation $relativeLoc -SasBlobToken $sasToken
     }
-

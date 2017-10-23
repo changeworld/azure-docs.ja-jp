@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 55b857bd5b3d0c32553a60ff0649aeeb721cd6da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-the-azure-cli-10-with-azure-storage"></a>Azure Storage での Azure CLI 1.0 の使用
 
@@ -242,4 +241,3 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 * [Azure サービス管理モードでの Azure CLI コマンド](../../cli-install-nodejs.md)
 
 必要に応じて、[Azure CLI 2.0](../storage-azure-cli.md) を使用することもできます。これは Python で記述された次世代 CLI であり、Resource Manager デプロイメント モデルで使用できます。
-

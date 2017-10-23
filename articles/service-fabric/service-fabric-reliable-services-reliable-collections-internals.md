@@ -15,10 +15,10 @@ ms.workload: required
 ms.date: 5/1/2017
 ms.author: mcoskun
 ms.openlocfilehash: d607449a16e886337ab1bd96213fbb4231124353
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-service-fabric-reliable-state-manager-and-reliable-collection-internals"></a>Azure Service Fabric Reliable State Manager および Reliable Collection の内部
 このドキュメントでは、Reliable State Manager と Reliable Collection の内部を詳細に調べ、背後でコア コンポーネントがどのように動作しているかを確認します。

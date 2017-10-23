@@ -15,14 +15,12 @@ ms.date: 09/06/2017
 ms.author: kgremban
 ms.custom: it-pro
 ms.reviewer: harshja
-ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
 ms.openlocfilehash: fa8f63c8da5019ed42ea8ec067d3d3d174976dd8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したリモート デスクトップの発行
 
 リモート デスクトップ サービスと Azure AD アプリケーション プロキシが連携し、企業ネットワークの外にいるユーザーの生産性を向上させます。 
@@ -133,4 +131,3 @@ Windows 7 または 10 のコンピューターで Internet Explorer を使用�
 
 [Azure AD アプリケーション プロキシによる SharePoint へのリモート アクセスの有効化](application-proxy-enable-remote-access-sharepoint.md)  
 [Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項](application-proxy-security-considerations.md)
-

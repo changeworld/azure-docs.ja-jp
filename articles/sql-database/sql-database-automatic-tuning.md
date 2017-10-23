@@ -15,12 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/19/2017
 ms.author: jovanpop
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 64abcf680199938c54be5005ee96670a8e580270
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 
@@ -48,4 +47,3 @@ Azure SQL Database は、データベースを最適化できる **CREATE INDEX*
 - 手動チューニングを使用するには、[Azure Portal のチューニングに関する推奨事項](sql-database-advisor-portal.md)を確認したうえで、クエリのパフォーマンスを向上させる推奨事項を手動で適用してください。
 - Azure SQL Database を調整する組み込みインテリジェンスの詳細については、[こちら](https://azure.microsoft.com/blog/artificial-intelligence-tunes-azure-sql-databases/)を参照してください。
 - Azure SQL Database および SQL Server 2017 での自動チューニングの詳細については、[こちら](https://docs.microsoft.com/sql/relational-databases/automatic-tuning/automatic-tuning)を参照してください。
-

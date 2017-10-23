@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
 ms.openlocfilehash: 86f1f8f0aaa9a699d2f816781cef65cda868ee55
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Azure CDN でのファイル圧縮によるパフォーマンスの向上
 圧縮は、サーバーからファイルを送信する前にファイル サイズを減らすことができるので、ファイルの転送速度を改善し、ページ読み込みのパフォーマンスを向上するには簡単で効率的な方法です。 帯域幅のコストが軽減され、ユーザーへの応答も改善されます。
@@ -139,5 +138,4 @@ Media Services CDN が有効なストリーミング エンドポイントの場
 
 ## <a name="see-also"></a>関連項目
 * [CDN ファイルの圧縮のトラブルシューティング](cdn-troubleshoot-compression.md)    
-
 

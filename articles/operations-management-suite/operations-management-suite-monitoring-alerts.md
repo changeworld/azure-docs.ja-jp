@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 04/11/2017
 ms.author: bwren
 ms.openlocfilehash: 7df2fd7ef838465a60e3b0ce2f889127b7487684
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-alerts-with-microsoft-monitoring"></a>Microsoft の監視製品を使用したアラートの管理
 アラートには、管理者の注意が必要な問題が示されます。  System Center Operations Manager (SCOM) と、Operations Management Suite (OMS) の Log Analytics は、アラートの生成方法、アラートの管理と分析の方法、重要な問題が検出された場合の通知方法に明確な相違点があります。

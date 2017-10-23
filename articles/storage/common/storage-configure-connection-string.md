@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: tamram
+ms.openlocfilehash: 192799cb44dc9a56c65a6414c1267c506252fe29
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4b21e75fde55f195362809ce486a2615954ff93c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-azure-storage-connection-strings"></a>Azure Storage の接続文字列を構成する
 
@@ -80,7 +79,7 @@ AccountKey=myAccountKey
 
 たとえば Blob Storage のエンドポイントを[カスタム ドメイン](../blobs/storage-custom-domain-name.md)にマップしてある場合、明示的なエンドポイントの指定が必要になります。 その場合は、接続文字列で Blob Storage へのカスタム エンドポイントを指定できます。 お使いのアプリケーションが使用している場合は、その他のサービスへの既定のエンドポイントを指定することもできます。
 
-Blob Service のエンドポイントを明示的に指定する接続文字列の例を次に示します。
+Blob service のエンドポイントを明示的に指定する接続文字列の例を次に示します。
 
 ```
 # Blob endpoint only
@@ -90,7 +89,7 @@ AccountName=storagesample;
 AccountKey=<account-key>
 ```
 
-この例では、Blob Service のカスタム ドメインを含むすべてのサービスへの明示的なエンドポイントを指定します。
+この例では、Blob service のカスタム ドメインを含むすべてのサービスへの明示的なエンドポイントを指定します。
 
 ```
 # All service endpoints
@@ -137,5 +136,4 @@ EndpointSuffix=core.chinacloudapi.cn;
 * [開発とテストのための Azure のストレージ エミュレーター使用](storage-use-emulator.md)
 * [Azure ストレージ エクスプローラー](storage-explorers.md)
 * [Shared Access Signatures (SAS) の使用](storage-dotnet-shared-access-signature-part-1.md)
-
 

@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 05/01/2017
 ms.author: heidist
 ms.openlocfilehash: a3e6dd66197a17bfdc80c04130e198b787692a58
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="import-data-to-azure-search-using-the-portal"></a>ポータルを使用した Azure Search へのデータのインポート
 Azure Portal では、データをインデックスに読み込む**データのインポート** ウィザードが Azure Search ダッシュボードに用意されています。 

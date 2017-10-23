@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: genli
-ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
 ms.openlocfilehash: f1aa4117b389bb127eb7235f69f587dcb715ac25
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-slow-backup-of-files-and-folders-in-azure-backup"></a>Azure Backup でファイルとフォルダーのバックアップが遅い場合のトラブルシューティング
 この記事では、ファイルとフォルダーのバックアップに関して、Azure Backup の使用中にパフォーマンスが低下している原因を診断するためのトラブルシューティングの指針を紹介します。 Azure Backup エージェントを使用してファイルをバックアップするとき、予想以上にバックアップ処理に時間がかかる場合があります。 次のいずれかまたは複数の事柄が、この遅延の原因として考えられます。
@@ -88,4 +87,3 @@ Backup エージェントを VM で実行している場合、パフォーマン
 
 * **データ転送の進行状況が UI に表示されている**。 データは依然として転送中です。 ネットワーク帯域幅またはデータ サイズが原因で、遅延が生じている可能性があります。
 * **データ転送の進行状況が UI に表示されていない**。 C:\Microsoft Azure Recovery Services Agent\Temp にあるログを開き、FileProvider::EndData というログ エントリが記録されているかどうかを確認します。 このエントリは、データ転送が完了し、カタログ化の処理が進行中であることを表します。 バックアップ ジョブを取り消さないようにしてください。 そのまま、カタログ化の処理が完了するまでしばらく待ちます。 問題が解決しない場合は、 [Azure サポート](https://portal.azure.com/#create/Microsoft.Support)にお問い合わせください。
-

@@ -15,12 +15,11 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
+ms.openlocfilehash: 571ae5eabae93cf0a7fa98110f8329eac1a74b12
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 6a7e2a99af7bca9bd0b12f877511f765593acb0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-nodejs-web-app-in-a-linux-container-in-azure"></a>Azure で Linuxコンテナー内に Node.js Web アプリを作成する
 
@@ -180,4 +179,3 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 
 > [!div class="nextstepaction"]
 > [Node.js と MongoDB](tutorial-nodejs-mongodb-app.md)
-

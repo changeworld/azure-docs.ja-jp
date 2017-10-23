@@ -16,14 +16,12 @@ ms.topic: article
 ms.date: 08/25/2017
 ms.author: mblythe
 ms.custom: 
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: 1e262fde37b68bcfcee3c974deb91bd07965de19
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-a-function-from-powerapps"></a>PowerApps から関数を呼び出す
 [PowerApps](https://powerapps.microsoft.com) プラットフォームは、ビジネス エキスパート向けに設計されており、従来のアプリケーション コードを使用せずにアプリを作成することができます。 プロフェッショナルの開発者は Azure Functions を使用して PowerApps の機能を拡張できます。PowerApps アプリ ビルダーが技術詳細を把握している必要はありません。
 
@@ -233,7 +231,7 @@ Microsoft Flow から同じ関数を呼び出す方法の詳細については�
 
 1. PowerApps Studio の右上にある実行ボタンをクリックします:  ![アプリケーションの実行ボタン](media/functions-powerapps-scenario/f5-arrow-sm.png)が必要です。
 
-1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージのような結果が表示されます。
+1. **ServiceRequired** の値が `Yes` のタービンを選択し、**[Calculate costs]\(コストを計算\)** ボタンをクリックします。 次のイメージような結果が表示されます。
 
     ![PowerApps で完成したアプリ](media/functions-powerapps-scenario/finished-app.png)
 

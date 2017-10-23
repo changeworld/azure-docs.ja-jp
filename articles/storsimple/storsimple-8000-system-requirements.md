@@ -12,14 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 07/10/2017
+ms.date: 09/28/2017
 ms.author: alkohli
+ms.openlocfilehash: 485320e500d71bd85b69cfcd9628e133ad1c417c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 4c339c531dae5724a174c2b22cb379bdb3214a4f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000 シリーズのソフトウェア、高可用性、ネットワークの要件
 
@@ -68,15 +67,15 @@ StorSimple デバイスはロックされたデバイスです。 ただし、iS
 | UDP 53 (DNS) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの DNS サーバーを使用する場合にのみ必要です。 |
 | UDP 123 (NTP) |アウト |WAN |場合によっては、メモを参照してください。 |このポートは、インターネット ベースの NTP サーバーを使用する場合にのみ必要です。 |
 | TCP 9354 |アウト |WAN |あり |送信ポートは、StorSimple デバイス マネージャー サービスと通信するために StorSimple デバイスによって使用されます。 |
-| 3260 (iSCSI) |In |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
-| 5985 |In |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
-| 5986 |In |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 3260 (iSCSI) |イン |LAN |いいえ |このポートは、iSCSI を介してデータにアクセスするために使用されます。 |
+| 5985 |イン |LAN |いいえ |受信ポートは、StorSimple デバイスと通信するために StorSimple Snapshot Manager によって使用されます。<br>このポートは、HTTP 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
+| 5986 |イン |LAN |いいえ |このポートは、HTTPS 経由で Windows PowerShell for StorSimple にリモート接続する場合にも使用されます。 |
 
 <sup>1</sup> 受信ポートがパブリック インターネットで開かれている必要はありません。
 
 <sup>2</sup> 複数のポートでゲートウェイ構成が行われる場合、送信トラフィックの順序は、以下の「[ポートのルーティング](#routing-metric)」で説明するポート ルーティング順序で決定されます。
 
-<sup>3</sup> StorSimple デバイスのコントローラーの固定の IP アドレスがルーティング可能でインターネットに直接または構成済みの Web プロキシ経由で接続可能である必要があります。 固定の IP アドレスは、デバイスに更新プログラムを提供するために使用されます。 デバイスのコントローラーが固定の IP アドレスを使用してインターネットに接続できない場合は、StorSimple デバイスを更新できません。
+<sup>3</sup> StorSimple デバイスのコントローラーの固定の IP アドレスがルーティング可能でインターネットに直接または構成済みの Web プロキシ経由で接続可能である必要があります。 固定 IP アドレスは、デバイスに更新プログラムを提供したりガベージ コレクションを実行したりするために使用されます。 デバイスのコントローラーが固定の IP を使用してインターネットに接続できない場合は、StorSimple デバイスを更新できず、ガベージ コレクションは正しく動作しません。
 
 > [!IMPORTANT]
 > StorSimple デバイスと Azure 間でファイアウォールが SSL トラフィックの変更や暗号化解除を行わないことを確認します。
@@ -249,4 +248,3 @@ StorSimple デバイスに接続されているホストの高可用性を確保
 
 <!--Reference links-->
 [1]: https://technet.microsoft.com/library/cc731844(v=WS.10).aspx
-

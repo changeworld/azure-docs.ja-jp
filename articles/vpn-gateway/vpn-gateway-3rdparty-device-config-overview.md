@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/20/2017
 ms.author: yushwang
-ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
 ms.openlocfilehash: b3806d16d3b78347e183ecbd2ab5a463a2142110
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-partner-vpn-device-configurations"></a>パートナー VPN デバイス構成の概要
 この記事では、オンプレミスの VPN デバイスを Azure VPN ゲートウェイに接続するための構成の概要について説明します。 サンプルの Azure 仮想ネットワークと VPN ゲートウェイの設定を使って、同じパラメーターで異なるオンプレミス VPN デバイス構成に接続する方法を紹介します。
@@ -156,5 +155,4 @@ S2S VPN 接続を作成するとき、必要に応じて [VPN ゲートウェイ
 
 ## <a name="next-steps"></a>次のステップ
 アクティブ/アクティブ VPN ゲートウェイを設定する具体的な手順については、[クロスプレミス接続と VNet 間接続にアクティブ/アクティブ VPN ゲートウェイを構成する方法](vpn-gateway-activeactive-rm-powershell.md)に関するページを参照してください。
-
 

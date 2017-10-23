@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
 ms.openlocfilehash: 7497ec2ca658c3790227c56ef1755d9a1cb74e0a
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-sync-understanding-declarative-provisioning"></a>Azure AD Connect 同期: 宣言型のプロビジョニングについて
 このトピックでは、Azure AD Connect の構成モデルについて説明します。 このモデルは宣言型のプロビジョニングと呼ばれ、構成の変更を簡単に実行することができます。 このトピックで説明する多くの内容は高度であるため、ほとんどの顧客シナリオで必要ありません。

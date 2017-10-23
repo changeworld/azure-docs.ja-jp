@@ -32,7 +32,7 @@ Azure には、コンプライアンスまたは法的な目的に合致した�
 リージョンのペアの完全な一覧は [こちら](../articles/best-practices-availability-paired-regions.md#what-are-paired-regions)で確認できます。
 
 ## <a name="feature-availability"></a>使用可能な機能
-特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 
+特定の VM サイズやストレージ タイプなど、一部のサービスや VM 機能は特定のリージョンのみでご利用いただけます。 [Azure Active Directory](../articles/active-directory/active-directory-whatis.md)、[Traffic Manager](../articles/traffic-manager/traffic-manager-overview.md)、[Azure DNS](../articles/dns/dns-overview.md) など、特定のリージョンを選択する必要がないグローバル Azure サービスもあります。 アプリケーション環境の設計をスムーズにするために、 [各リージョンの Azure サービスの可用性のページ](https://azure.microsoft.com/regions/#services)をご確認ください。 [各リージョンでサポートされている VM のサイズと制限をプログラムでクエリする](../articles/azure-resource-manager/resource-manager-sku-not-available-errors.md)こともできます。
 
 ## <a name="storage-availability"></a>ストレージの可用性
 Azure のリージョンと Geo を理解することは、使用可能なストレージのレプリケーション オプションを検討する際に重要になります。 ストレージのタイプに応じて、さまざまなレプリケーションのオプションがあります。

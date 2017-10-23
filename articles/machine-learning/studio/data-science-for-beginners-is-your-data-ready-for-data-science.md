@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 9b5cf776981af0dff57195d5c7f1923b8d9a3862
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="is-your-data-ready-for-data-science"></a>データ サイエンス用のデータの準備はお済みですか?
 ## <a name="video-2-data-science-for-beginners-series"></a>ビデオ 2: 初心者向けデータ サイエンス シリーズ
@@ -112,4 +111,3 @@ Microsoft Azure Machine Learning の "*初心者向けデータ サイエンス*
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)
-

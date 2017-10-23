@@ -18,10 +18,10 @@ ms.workload: big-data
 ms.date: 08/23/2017
 ms.author: jgao
 ms.openlocfilehash: f7eff70ece5e8dc7e0c5983871d40bd1f6eafff2
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-azure-hdinsight-and-run-hive-queries-using-data-lake-tools-for-visual-studio"></a>Data Lake Tools for Visual Studio を使用した Azure HDInsight への接続と Hive クエリの実行
 

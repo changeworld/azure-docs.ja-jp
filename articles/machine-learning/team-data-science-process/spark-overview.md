@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/15/2017
 ms.author: deguhath;bradsev;gokuma
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d9964ace6b59fa65f0f5d4caff28a4291047c8a5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Azure HDInsight 上の Spark を使用したデータ サイエンスの概要
 [!INCLUDE [machine-learning-spark-modeling](../../../includes/machine-learning-spark-modeling.md)]
@@ -187,5 +186,4 @@ HDInsight Spark クラスターが設定され、Jupyter Notebook がアップ�
 **モデルの使用:** このトピックで作成した分類モデルと回帰モデルにスコアを付ける方法については、 [Spark で構築した機械学習モデルのスコア付けと評価](spark-model-consumption.md)に関するページをご覧ください。
 
 **クロス検証とハイパーパラメーター スイープ**: クロス検証とハイパーパラメーター スイープを使用したモデルのトレーニング方法については、「 [Spark を使用した高度なデータ探索とモデリング](spark-advanced-data-exploration-modeling.md) 」をご覧ください。
-
 

@@ -3,7 +3,7 @@ title: "Azure ストレージ アカウント、コンテナー、または VHD 
 description: "Azure ストレージ アカウント、コンテナー、または VHD を削除するときに生じるエラーのトラブルシューティング"
 services: storage
 documentationcenter: 
-author: genlin
+author: passaree
 manager: cshepard
 editor: na
 tags: storage
@@ -15,140 +15,94 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: genli
+ms.openlocfilehash: 174ab97ac14f4c05690306691df5ee4b6d33dd93
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 11944dd38b1cc30106c0b76a108480c018ca39d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="troubleshoot-errors-when-you-delete-azure-storage-accounts-containers-or-vhds"></a>Azure ストレージ アカウント、コンテナー、または VHD を削除するときに生じるエラーのトラブルシューティング
+# <a name="troubleshoot-storage-delete-errors-in-resource-manager-deployment"></a>Resource Manager デプロイメントでのストレージ削除エラーをトラブルシューティングする
+この記事は、Azure Resource Manager デプロイメントで Azure Storage アカウント、コンテナー、または BLOB を削除しようとしたときに次のいずれかのエラーが発生した場合のトラブルシューティングのガイダンスを提供します。
 
-[Azure Portal](https://portal.azure.com) で Azure ストレージ アカウント、コンテナー、または仮想ハード ディスク (VHD) を削除しようとすると、エラーが表示される場合があります。 この記事は、Azure Resource Manager デプロイメントにおける問題を解決するのに役立つトラブルシューティング ガイダンスです。
+>**ストレージ アカウント 'StorageAccountName' を削除できませんでした。エラー: ストレージ アカウントのアーティファクトが使用中であるため、このストレージ アカウントを削除できません。**
 
-この記事で Azure の問題に対処できない場合は、 [MSDN と Stack Overflow ](https://azure.microsoft.com/support/forums/) の Azure フォーラムを参照してください。 問題をこれらのフォーラムまたは Twitter の @AzureSupport に投稿できます。 また、 **Azure サポート** サイトの [[サポートの要求]](https://azure.microsoft.com/support/options/) を選択して、Azure サポート要求を提出することもできます。
+>**# 個のコンテナーのうち # 個を削除できませんでした:<br>vhds: There is currently a lease on the container and no lease ID was specified in the request. \(現在、コンテナーにリースがありますが、要求でリース ID が指定されていませんでした。\)**
 
-## <a name="symptoms"></a>現象
-### <a name="scenario-1"></a>シナリオ 1
-Resource Manager デプロイメントでストレージ アカウントの VHD を削除しようとすると、次のようなエラー メッセージが表示される。
+>**# 個の BLOB のうち # 個を削除できませんでした:<br>BlobName.vhd: There is currently a lease on the blob and no lease ID was specified in the request. \(現在、BLOB にリースがありますが、要求でリース ID が指定されていませんでした。\)**
 
-**BLOB 'vhds/BlobName.vhd' を削除できませんでした。エラー: There is currently a lease on the blob and no lease ID was specified in the request. (現在、BLOB にリースがありますが、リクエストでリース ID が指定されていませんでした。)**
+Azure VM で使われる仮想ハード ディスクは .vhd ファイルであり、Azure の Standard または Premium Storage アカウントでページ BLOB として格納されます。  Azure ディスクについて詳しくは、[こちら](../../virtual-machines/windows/about-disks-and-vhds.md)をご覧ください。 Azure では、破損を防ぐため、VM に接続されているディスクは削除できません。 また、VM に接続されているページ BLOB があるコンテナーおよびストレージ アカウントも削除できません。 
 
-この問題は、削除しようとしている VHD に仮想マシン (VM) がリースを保持していることが原因で発生する場合があります。
+## <a name="solution"></a>解決策
+上記のエラーのいずれかが発生したときに、ストレージ アカウント、コンテナー、または BLOB を削除するプロセスは次のとおりです。 
+1. [VM に接続されている BLOB を特定します](#step-1-identify-blobs-attached-to-a-vm)
+2. [**OS ディスク**が接続されている VM を削除します](#step-2-delete-vm-to-detach-os-disk)
+3. [残りの VM から**データ ディスク**をすべて切断します](#step-3-detach-data-disk-from-the-vm)
 
-### <a name="scenario-2"></a>シナリオ 2
-Resource Manager デプロイメントでストレージ アカウントのコンテナーを削除しようとすると、次のようなエラー メッセージが表示される。
+上記の手順が完了した後、ストレージ アカウント、コンテナー、または BLOB の削除をもう一度試みます。
 
-**ストレージ コンテナー 'vhds' を削除できませんでした。エラー: There is currently a lease on the container and no lease ID was specified in the request. (現在、コンテナーにリースがありますが、リクエストでリース ID が指定されていませんでした。)**
+### <a name="step-1-identify-blob-attached-to-a-vm"></a>ステップ 1:VM に接続されている BLOB を特定する
 
-この問題は、コンテナーにリース状態でロックされている VHD が格納されていることが原因で発生する場合があります。
+#### <a name="scenario-1-deleting-a-blob--identify-attached-vm"></a>シナリオ 1: BLOB の削除 – 接続されている VM を特定する
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[Blob service]** で **[コンテナー]** を選んで、削除する BLOB に移動します。
+3. BLOB の **[リース状態]** が **[リース中]** の場合は、右クリックし、**[メタデータの編集]** を選んで、[BLOB のメタデータ] ウィンドウを開きます。 
 
-### <a name="scenario-3"></a>シナリオ 3
-Resource Manager デプロイメントでストレージ アカウントを削除しようとすると、次のようなエラー メッセージが表示される。
+    ![ストレージ アカウント BLOB および右クリックの [メタデータの編集] が強調表示されている Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-edit-metadata-sm.png)
 
-**ストレージ アカウント 'StorageAccountName' を削除できませんでした。エラー: ストレージ アカウントのアーティファクトが使用中であるため、このストレージ アカウントを削除できません。**
+4. [BLOB のメタデータ] ウィンドウで、**MicrosoftAzureCompute_VMName** の値を確認して記録します。 この値は、VHD が接続されている VM の名前です  (このフィールドが存在しない場合は、後の「**重要**」をご覧ください)。
+5. [BLOB のメタデータ] ウィンドウで、**MicrosoftAzureCompute_DiskType** の値を確認して記録します。 この値は、接続されているディスクが OS ディスクかデータ ディスクかを示します (このフィールドが存在しない場合は、後の「**重要**」をご覧ください)。 
 
-この問題は、ストレージ アカウントにリース中の VHD が格納されていることが原因で発生する場合があります。
+     ![ストレージの [BLOB のメタデータ] ウィンドウが開かれている Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-blob-metadata-sm.png)
 
-## <a name="solution"></a>解決策 
-これらの問題を解決するには、エラーの原因である VHD と、関連付けられている VM を特定する必要があります。 次に、VM から VHD を切断するか (データ ディスクの場合)、VHD を使用している VM を削除します (OS ディスクの場合)。 この操作により、VHD からリースを削除し、VHD を削除できるようになります。 
+6. BLOB ディスクの種類が **OSDisk** の場合は、「[ステップ 2: VM を削除して OS ディスクを切断する](#step-2-delete-vm-to-detach-os-disk)」に従います。 BLOB ディスクの種類が **DataDisk** の場合は、「[ステップ 3: VM からデータ ディスクを切断する](#step-3-detach-data-disk-from-the-vm)」に従います。 
 
-これを行うには、次のいずれかの方法を使用します。
+> [!IMPORTANT]
+> **MicrosoftAzureCompute_VMName** および **MicrosoftAzureCompute_DiskType** が BLOB のメタデータに表示されない場合は、BLOB が明示的にリースされていて、VM に接続されていないことを示します。 リースされた BLOB は、先にリースを解約してからでないと削除できません。 リースを解約するには、BLOB を右クリックして、**[リースの解約]** を選びます。 リースされた BLOB が VM に接続されていない場合、BLOB を削除することはできませんが、コンテナーまたはストレージ アカウントは削除できます。
 
-### <a name="method-1---use-azure-storage-explorer"></a>方法 1: Azure ストレージ エクスプローラーを使用する
+#### <a name="scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms"></a>シナリオ 2: コンテナーの削除 - コンテナー内で VM に接続されている BLOB をすべて特定する
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[Blob service]** で **[コンテナー]** を選んで、削除するコンテナーを探します。
+3. コンテナーをクリックして開くと、その中にある BLOB の一覧が表示されます。 [BLOB の種類] が **[ページ BLOB]** で [リース状態] が **[リース中]** であるすべての BLOB を一覧から探します。 「[シナリオ 1](#step-1-identify-blobs-attached-to-a-vm)」に従って、これらの各 BLOB に関連付けられている VM を特定します。
 
-### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>手順 1. ストレージ アカウントの削除を妨げている VHD を識別する
+    ![ストレージ アカウント BLOB と "リース中" の "リース状態" が強調表示されている、Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-disks-sm.png)
 
-1. ストレージ アカウントを削除するときに、次のようなメッセージ ダイアログが表示されます。 
+4. 「[ステップ 2](#step-2-delete-vm-to-detach-os-disk)」と「[ステップ 3](#step-3-detach-data-disk-from-the-vm)」に従って、**OSDisk** の VM を削除し、**DataDisk** を切断します。 
 
-    ![ストレージ アカウントの削除時のメッセージ](././media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
+#### <a name="scenario-3-deleting-storage-account---identify-all-blobs-within-storage-account-that-are-attached-to-vms"></a>シナリオ 3: ストレージ アカウントの削除 - ストレージ アカウント内で VM に接続されている BLOB をすべて特定する
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[Blob service]** で **[コンテナー]** を選びます。
 
-2. **[ディスク URL]** を調べて、ストレージ アカウントとストレージ アカウントの削除を妨げている VHD を識別します。 次の例では、".blob.core.windows.net" の直前の文字列がストレージ アカウント名であり、"SCCM2012-2015-08-28.vhd" が VHD 名です。  
+    ![ストレージ アカウント コンテナーと "リース中" の "リース状態" が強調表示されている、Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-containers-sm.png)
 
-        https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
+3. **[コンテナー]** ブレードで、**[リース状態]** が **[リース中]** であるすべてのコンテナーを特定し、各**リース中**コンテナーについて「[シナリオ 2](#scenario-2-deleting-a-container---identify-all-blobs-within-container-that-are-attached-to-vms)」に従います。
+4. 「[ステップ 2](#step-2-delete-vm-to-detach-os-disk)」と「[ステップ 3](#step-3-detach-data-disk-from-the-vm)」に従って、**OSDisk** の VM を削除し、**DataDisk** を切断します。 
 
-### <a name="step-2-delete-the-vhd-by-using-azure-storage-explorer"></a>手順 2. Azure ストレージ エクスプ ローラーを使用して VHD を削除する
-
-1. 最新バージョンの [Azure ストレージ エクスプローラー](http://storageexplorer.com/) をダウンロードしてインストールします。 このツールは、Windows、macOS、および Linux で Azure Storage のデータを簡単に操作できる Microsoft のスタンドアロン アプリです。
-2. Azure ストレージ エクスプローラーを開き ![左側のバーで [アカウント] アイコンを選択し、](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/account.png) Azure 環境を選択してサインインします。
-
-3. すべてのサブスクリプションを選択するか、削除するストレージ アカウントを含むサブスクリプションを選択します。
-
-    ![サブスクリプションの追加](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/addsub.png)
-
-4. 先ほどディスク URL で見つけたストレージ アカウントに移動し、**[BLOB コンテナー]** > **[VHD]** を選択し、ストレージ アカウントの削除を妨げている VHD を探します。
-5. VHD が見つかったら、**[VM 名]** を調べて、この VHD を使用している VM を見つけます。
-
-    ![VM を調べる](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/check-vm.png)
-
-6. Azure ポータルを使用して、VHD からリースを削除します。 詳細については、「[VHD からリースを削除する](#remove-the-lease-from-the-vhd)」を参照してください。 
-
-7. Azure ストレージ エクスプローラーに移動し、VHD を右クリックし、[削除] を選択します。
-
-8. ストレージ アカウントを削除します。
-
-### <a name="method-2---use-azure-portal"></a>方法 2: Azure ポータルを使用する 
-
-#### <a name="step-1-identify-the-vhd-that-prevent-deletion-of-the-storage-account"></a>手順 1. ストレージ アカウントの削除を妨げている VHD を識別する
-
-1. ストレージ アカウントを削除するときに、次のようなメッセージ ダイアログが表示されます。 
-
-    ![ストレージ アカウントの削除時のメッセージ](././media/storage-resource-manager-cannot-delete-storage-account-container-vhd/delete-storage-error.png) 
-
-2. **[ディスク URL]** を調べて、ストレージ アカウントとストレージ アカウントの削除を妨げている VHD を識別します。 次の例では、".blob.core.windows.net" の直前の文字列がストレージ アカウント名であり、"SCCM2012-2015-08-28.vhd" が VHD 名です。  
-
-        https://portalvhds73fmhrw5xkp43.blob.core.windows.net/vhds/SCCM2012-2015-08-28.vhd
-
-2. [Azure ポータル](https://portal.azure.com)にサインインします。
-3. ハブ メニューで、**[すべてのリソース]** を選択します。 ストレージ アカウントに移動し、**[BLOB]** > **[VHD]** を選択します。
-
-    ![ストレージ アカウントと "vhds" コンテナーが強調表示されている、Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/opencontainer.png)
-
-4. 先ほどディスク URL で見つけた VHD を探します。 次に、この VHD を使用している VM を特定します。 通常、VHD の名前を確認することで、VHD を保持する VM を特定できます。
-
-Resource Manager デプロイ モデル内の VM
-
-   * 通常、OS ディスクは次の命名規則に従っています。VMName-YYYY-MM-DD-HHMMSS.vhd
-   * 通常、データ ディスクは次の命名規則に従っています。VMName-YYYY-MM-DD-HHMMSS.vhd
-
-クラシック デプロイ モデル内の VM
-
-   * 通常、OS ディスクは次の命名規則に従っています。CloudServiceName-VMName-YYYY-MM-DD-HHMMSS.vhd
-   * 通常、データ ディスクは次の命名規則に従っています。CloudServiceName-VMName-YYYY-MM-DD-HHMMSS.vhd
-
-#### <a name="step-2-remove-the-lease-from-the-vhd"></a>手順 2. VHD からリースを削除する
-
-[VHD からリースを削除](#remove-the-lease-from-the-vhd)した後、ストレージ アカウントを削除します。
-
-## <a name="what-is-a-lease"></a>リースとは
-リースは、BLOB (VHD など) へのアクセスを制御するのに使用できるロックです。 BLOB がリースされている場合、リースの所有者だけがその BLOB にアクセスできます。 リースが重要である理由を次に示します。
-
-* 複数の所有者が BLOB の同じ部分に同時に書き込もうとした場合に、データが破損するのを防ぎます。
-* VM などによって BLOB が実際に使用されている場合に、BLOB が削除されるのを防ぎます。
-* VM などによってストレージ アカウントが実際に使用されている場合に、ストレージ アカウントが削除されるのを防ぎます。
-
-### <a name="remove-the-lease-from-the-vhd"></a>VHD からリースを削除する
-VHD が OS ディスクの場合、リースを削除するには VM を削除する必要があります。
+### <a name="step-2-delete-vm-to-detach-os-disk"></a>ステップ 2: VM を削除して OS ディスクを切断する
+VHD が OS ディスクの場合は、接続された VHD を削除する前に、VM を削除する必要があります。 以下の手順を完了した後、同じ VM に接続されているデータ ディスクについては何も行う必要はありません。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **ハブ** メニューで **[Virtual Machines]** をクリックします。
-3. VHD にリースを保持する VM を選択します。
+2. ハブ メニューで **[仮想マシン]** を選びます。
+3. VHD が接続されている VM を選びます。
 4. 該当する仮想マシンを実際に使用していないこと、今後も必要としないことを確認してください。
-5. **[VM details (VM の詳細)]** ブレードの上部で、**[削除]** を選択し、**[はい]** をクリックして確定します。
-6. VM は削除されますが、VHD は保持できます。 ただし、VHD のリースは解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたかどうかを確認するには、**[すべてのリソース]** > **[ストレージ アカウント名]** > **[BLOB]** > **[VHD]** を選択します。 **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** の値が **[ロック解除]** になっている必要があります。
+5. **[Virtual Machine details]\(仮想マシンの詳細\)** ブレードの上部で **[削除]** を選び、**[はい]** をクリックして確定します。
+6. VM は削除されますが、VHD は保持できます。 ただし、VHD は VM に接続されなくなり、リースを解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたことを確認するには、BLOB の場所の **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** が **[利用可能]** になっていることを確認します。
 
+### <a name="step-3-detach-data-disk-from-the-vm"></a>ステップ 3: データ ディスクを VM から切断する
 VHD がデータ ディスクの場合、リースを削除するには VHD を VM からデタッチします。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
-2. **ハブ** メニューで **[Virtual Machines]** をクリックします。
-3. VHD にリースを保持する VM を選択します。
-4. **[VM details (VM の詳細)]** ブレードで **[ディスク]** を選択します。
-5. VHD にリースを保持するデータ ディスクを選択します。 VHD の URL を確認することで、ディスクに接続している VHD を特定できます。
-6. このデータ ディスクが実際に使用されていないことを確認してください。
-7. **[ディスクの詳細]** ブレードで、**[切断]** をクリックします。
-8. ディスクが VM から切断され、VHD のリースは解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたかどうかを確認するには、**[すべてのリソース]** > **[ストレージ アカウント名]** > **[BLOB]** > **[VHD]** を選択します。 **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** の値が **[ロック解除]** になっている必要があります。
+2. ハブ メニューで **[仮想マシン]** を選びます。
+3. VHD が接続されている VM を選びます。
+4. **[Virtual Machine details]\(仮想マシンの詳細\)** ブレードで、**[ディスク]** を選びます。
+5. VHD が接続されている削除するデータ ディスクを選びます。 VHD の URL を調べることで、ディスクで接続されている BLOB を特定できます。
+6. BLOB の場所は、ディスクをクリックして **[VHD の URI]** フィールドのパスを調べることで確認できます。
+7. **[ディスク]** ブレードの上部の **[編集]** を選びます。
+8. 削除するデータ ディスクの**切断アイコン**をクリックします。
+
+     ![ストレージの [BLOB のメタデータ] ウィンドウが開かれている Portal のスクリーンショット](./media/storage-resource-manager-cannot-delete-storage-account-container-vhd/utd-vm-disks-edit.png)
+
+9. [ **保存**] を選択します。 ディスクが VM から切断され、VHD のリースは解除されます。 リースが解除されるまで数分かかる場合があります。 リースが解除されたことを確認するには、BLOB の場所の **[BLOB のプロパティ]** ウィンドウで、**[リース ステータス]** の値が **[ロック解除]** または **[利用可能]** になっていることを確認します。
 
 ## <a name="next-steps"></a>次のステップ
-* [ストレージ アカウントの削除](storage-create-storage-account.md#delete-a-storage-account)
-* [How to break the locked lease of blob storage in Microsoft Azure (PowerShell) (Microsoft Azure (PowerShell) で BLOB ストレージのロックされているリースを解除する方法)](https://gallery.technet.microsoft.com/scriptcenter/How-to-break-the-locked-c2cd6492)
+前に失敗したストレージ オブジェクトの削除をもう一度試してください。
 

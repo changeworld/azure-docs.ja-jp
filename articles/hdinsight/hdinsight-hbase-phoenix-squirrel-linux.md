@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/22/2017
 ms.author: jgao
+ms.openlocfilehash: 41bfef95059b7c5343d952b4fe372e3baae6f9d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 07646927f7f2e829e4f4cc6ac5f51b2b381e9c5a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-apache-phoenix-with-linux-based-hbase-clusters-in-hdinsight"></a>HDInsight での Linux ベースの HBase クラスターによる Apache Phoenix の使用
 Azure HDInsight での [Apache Phoenix](http://phoenix.apache.org/) の使用方法、およびSQLLine の使用方法について説明します。 Phoenix の詳細については、 [Phoenix についての簡単な説明](http://phoenix.apache.org/Phoenix-in-15-minutes-or-less.html)を参照してください。 Phoenix の文法については、[Phoenix の文法](http://phoenix.apache.org/language/index.html)に関するページを参照してください。
@@ -77,8 +76,7 @@ HBase クラスターに接続するときは、いずれかの ZooKeeper VM に
 * [Azure Virtual Network での HBase クラスターのプロビジョニング][hdinsight-hbase-provision-vnet]。
   アプリケーションが HBase と直接通信できるように、仮想ネットワーク統合を使用して、HBase クラスターをアプリケーションと同じ仮想ネットワークにデプロイできます。
 * [HDInsight での HBase レプリケーションの構成](hdinsight-hbase-replication.md)。 2 つの Azure データ センター間に HBase レプリケーションを設定する方法について説明します。
-* [HDInsight 環境の HBase での Twitter のセンチメントのリアルタイム分析][hbase-twitter-sentiment]。
-  HDInsight の Hadoop クラスターで HBase を使用してリアルタイムでビッグ データの [センチメントを分析](http://en.wikipedia.org/wiki/Sentiment_analysis) する方法について学習します。
+
 
 [azure-portal]: https://portal.azure.com
 [vnet-point-to-site-connectivity]: https://msdn.microsoft.com/library/azure/09926218-92ab-4f43-aa99-83ab4d355555#BKMK_VNETPT
@@ -86,7 +84,6 @@ HBase クラスターに接続するときは、いずれかの ZooKeeper VM に
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md#connect-to-clusters-using-rdp
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
-[hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 
 [hdinsight-hbase-phoenix-sqlline]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-phoenix-sqlline.png
 [img-certificate]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-vpn-certificate.png
@@ -95,4 +92,3 @@ HBase クラスターに接続するときは、いずれかの ZooKeeper VM に
 [img-squirrel-alias]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-alias.png
 [img-squirrel]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel.png
 [img-squirrel-sql]: ./media/hdinsight-hbase-phoenix-squirrel/hdinsight-hbase-squirrel-sql.png
-

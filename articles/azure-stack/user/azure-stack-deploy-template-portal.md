@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: helaw
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 630d86ed7e3558ae2c8a62f4e1a94f10ca11812d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Azure Stack ポータルを使用したテンプレートのデプロイ
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 ポータルを使用して、Azure Resource Manager テンプレートを Azure Stack Development Kit にデプロイします。
 
@@ -38,5 +37,4 @@ Resource Manager テンプレートは、お使いのアプリケーションの
 
 ## <a name="next-steps"></a>次のステップ
 [PowerShell を使用したテンプレートのデプロイ](azure-stack-deploy-template-powershell.md)
-
 

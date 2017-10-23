@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
 ms.openlocfilehash: 99c08a1efbc610959fb4ba824dcb0601efac5877
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="networking-guidance-for-replicating-azure-virtual-machines"></a>Azure 仮想マシンのレプリケートに関するネットワーク ガイダンス
 
@@ -185,4 +184,3 @@ ExpressRoute 構成については、次のベスト プラクティスに従っ
 
 ## <a name="next-steps"></a>次のステップ
 [Azure 仮想マシンをレプリケート](site-recovery-azure-to-azure.md)することで、ワークロードの保護を開始します。
-

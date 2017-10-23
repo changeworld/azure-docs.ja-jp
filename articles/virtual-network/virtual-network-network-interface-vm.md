@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: jdial
 ms.openlocfilehash: 57f95b765b1b116814683a6643db16091c3041f6
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-network-interfaces-to-or-remove-from-virtual-machines"></a>仮想マシンに対するネットワーク インターフェイスの追加と削除
 

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
 ms.openlocfilehash: 20933afab55043ccc5ce908c04c6e4a7a28e3538
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="application-insights-telemetry-in-visual-studio-codelens"></a>Visual Studio の CodeLens における Application Insights テレメトリ
 Web アプリのコード内のメソッドには、実行時の例外と要求の応答時間に関するテレメトリを注釈として付けることができます。 [ Application Insights](app-insights-overview.md) をアプリケーションにインストールすると、Visual Studio [CodeLens](https://msdn.microsoft.com/library/dn269218.aspx) にテレメトリが表示されます。CodeLens は、各関数の上部に表示される注記で、その関数を参照している場所の数や関数を最後に変更したユーザーなどの有用な情報が表示されます。

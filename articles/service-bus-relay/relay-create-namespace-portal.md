@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/23/2017
 ms.author: sethm
 ms.openlocfilehash: 27cc817fd4fc2d88b0b7d87f99d58795a6b8b864
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Azure Portal を使用した Relay 名前空間の作成
 名前空間は、すべての Azure Relay コンポーネントの共通コンテナーです。 複数のリレーを 1 つの名前空間に格納できます。多くの場合、名前空間はアプリケーション コンテナーとして機能します。 現在、リレー名前空間の作成には 2 つの方法があります。

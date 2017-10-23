@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2017
 ms.author: bwren
 ms.openlocfilehash: 03e0f5b6fa26806083cd7852e123495c898bcf0c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="operations-management-suite-oms-sdk"></a>Operations Management Suite (OMS) SDK
 [Operations Management Suite (OMS)](operations-management-suite-overview.md) は、Microsoft のクラウドベースの IT 管理ソリューションです。OMS を使用して、オンプレミスとクラウドのインフラストラクチャを管理し、保護することができます。  この記事には、OMS と Azure Portal 以外で OMS サービスにアクセスできる、ドキュメントとその他のリソースを一覧表示します。  これには、さまざまなプログラミング インターフェイス、および PowerShell などのスクリプト エンジンからアクセスするための REST API が含まれます。 

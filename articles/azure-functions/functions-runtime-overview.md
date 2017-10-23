@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/08/2017
 ms.author: anwestg
 ms.openlocfilehash: cb98d5f2aaa526555820c15ba5a32fb7e78ffc5a
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-runtime-overview"></a>Azure Functions ランタイム プレビューの概要
 

@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 06/08/2016
 ms.author: mlearned
 ms.openlocfilehash: 766d327a87ed13e04166d71c3d9ae0a1e7a66d19
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-docker-hosts-in-azure-with-docker-machine"></a>Docker マシンを利用し、Azure で Docker ホストを作成する
 [Docker](https://www.docker.com/) コンテナーを実行するには、Docker デーモンを実行しているホスト VM が必要です。
@@ -34,7 +34,7 @@ ms.lasthandoff: 07/11/2017
 
 Azure ドライバーにはサブスクリプション ID が必要です。 [Azure CLI](cli-install-nodejs.md) または [Azure Portal](https://portal.azure.com) を使用して、Azure サブスクリプションを取得することができます。 
 
-**Azure ポータルの使用**
+**Azure Portal の使用**
 
 * 左側のナビゲーション ページから**サブスクリプション**を選択し、サブスクリプション ID をコピーします。
 

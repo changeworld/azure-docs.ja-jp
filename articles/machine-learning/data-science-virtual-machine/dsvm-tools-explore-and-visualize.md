@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: d8f0616f17dbaa02082492cc1c68f1d989ea5aae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="data-exploration-and-visualization-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシンの、データの探索と視覚化のツール。
 
 データ サイエンスの重要なステップは、データを理解することです。 視覚化およびデータ探索ツールは、データ理解の加速に役立ちます。 このキー ステップを促進する、DSVM で提供されるツールの一部をここで示します。 
@@ -43,7 +41,7 @@ ms.lasthandoff: 09/25/2017
 | 紹介   |  Weka は、データ マイニング タスクのための機械学習アルゴリズムのコレクションです。 アルゴリズムはデータセットに直接適用するか、または独自の Java コードから呼び出すことができます。 Weka には、データの前処理、分類、回帰、クラスタリング、アソシエーション ルール、および視覚化のためのツールが含まれています。 |
 | サポートされている DSVM エディション     | Windows、Linux     |
 | 一般的な用途      | 一般的な ML ツール     |
-| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] (アプリケーション) -> [Development] (開発) -> [Weka] にアクセスします。 |
+| 使用/実行方法      | Windows では、[スタート] メニューから Weka を探します。 Linux では、X2Go でログインした後、[Applications] \(アプリケーション) -> [Development] \(開発) -> [Weka] にアクセスします。 |
 | サンプルへのリンク      | [Weka サンプル](http://www.cs.waikato.ac.nz/ml/weka/documentation.html) |
 | DSVM 上の関連ツール      |LightGBM、Rattle、Xgboost   |
 
@@ -65,5 +63,4 @@ ms.lasthandoff: 09/25/2017
 | 一般的な用途      |  データ視覚化とダッシュボード構築   |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
-
 

@@ -1,6 +1,6 @@
-## <a name="prerequisite-install-the-azure-powershell-module"></a>Azure PowerShell モジュールをインストールする前提条件。
+## <a name="prerequisite-install-the-azure-powershell-module"></a>前提条件: Azure PowerShell モジュールのインストール
 
-この記事の手順を実行する必要があります[インストールして Azure PowerShell を構成する](/powershell/azureps-cmdlets-docs)を Azure にサインインしてサブスクリプションを選択最後までの指示に従います。
+この記事の手順を実行するには、 [Azure PowerShell をインストールして構成し](/powershell/azureps-cmdlets-docs) 、手順をすべて最後まで実行し、Azure にサインインしてサブスクリプションを選択する必要があります。
 
 > [!NOTE]
-> Azure アカウントを持っていない場合、いずれかが必要があります。 符号を上がる、[無料評価版は、ここ](../articles/active-directory/sign-up-organization.md)です。
+> Azure アカウントをお持ちでない場合は、取得する必要があります。 [ここで無料試用版](../articles/active-directory/sign-up-organization.md)にサインアップしてください。

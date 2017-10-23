@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: mazha
-ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
 ms.openlocfilehash: 44028b2ef268cb2deff273f755d2f5aeab5bdc17
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cdn-pop-locations"></a>Azure CDN の POP の場所
 このトピックでは、**Azure CDN from Verizon** と **Azure CDN from Akamai** に対する現在の POP の場所を示します。
@@ -46,5 +45,4 @@ ms.lasthandoff: 09/08/2017
 
 ## <a name="see-also"></a>関連項目
 * [最新 IP アドレスを取得してホワイトリストに登録するための Azure CDN Edge Nodes API](https://docs.microsoft.com/en-us/rest/api/cdn/edgenodes)
-
 

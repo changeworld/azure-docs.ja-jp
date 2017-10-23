@@ -9,6 +9,8 @@
   items:
     - name: 収集 - Azure VM
       href: log-analytics-quick-collect-azurevm.md
+    - name: 収集 - Linux コンピューター
+      href: log-analytics-quick-collect-linux-computer.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - データの分析
@@ -53,6 +55,8 @@
               href: log-analytics-azure-vm-extension.md
             - name: Azure リソース
               href: log-analytics-azure-storage.md
+            - name: Azure ストレージからの診断またはログ データ
+              href: log-analytics-azure-storage-iis-table.md
             - name: Operations Manager
               href: log-analytics-om-agents.md
             - name: 構成マネージャー
@@ -92,6 +96,8 @@
           items:
             - name: 正規表現
               href: log-analytics-log-searches-regex.md
+            - name: ワークスペースをまたがる検索
+              href: log-analytics-cross-workspace-search.md
         - name: 検索結果からのアクションの実行
           href: log-analytics-log-search-takeaction.md
         - name: コンピューター グループ
@@ -229,6 +235,10 @@
       href: /powershell/module/azurerm.operationalinsights
     - name: REST ()
       href: /rest/api/loganalytics
+    - name: ビュー デザイナー タイル リファレンス
+      href: log-analytics-view-designer-tiles.md
+    - name: ビュー デザイナー視覚化パーツ リファレンス
+      href: log-analytics-view-designer-parts.md
 - name: リソース
   items:
     - name: Azure のロードマップ

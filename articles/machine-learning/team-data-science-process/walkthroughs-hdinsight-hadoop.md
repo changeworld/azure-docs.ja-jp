@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 5dbfd043f1809f407baf6aa4ca5c5272af425012
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="hdinsight-hadoop-data-science-walkthroughs-using-hive-on-azure"></a>Azure 上の Hive を使用した HDInsight Hadoop データ サイエンスのチュートリアル 
 
 ここでは、Hive と HDInsight Hadoop クラスターを使って予測分析を行うチュートリアルを紹介します。 Team Data Science Process で概説された手順を踏襲しています。 Team Data Science Process の概要については、[データ サイエンス プロセス](overview.md)に関するページを参照してください。 Azure HDInsight の概要については、「[Azure HDInsight、Hadoop テクノロジ スタック、Hadoop クラスターの概要](../../hdinsight/hdinsight-hadoop-introduction.md)」を参照してください。
@@ -48,5 +46,4 @@ Team Data Science Process を実行するデータ サイエンスのチュー�
 Team Data Science Process を構成する主な要素については、[Team Data Science Process の概要](overview.md)に関するページを参照してください。
 
 データ サイエンス プロジェクトの構築に使用できる Team Data Science Process のライフサイクルについては、「[Team Data Science Process ライフサイクル](lifecycle.md)」を参照してください。 このライフサイクルは、プロジェクトを実行する際に、その開始から終了までにわたって進められる通常のステップを大まかにまとめたものです。 
-
 

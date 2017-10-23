@@ -17,10 +17,10 @@ ms.date: 06/05/2017
 ms.author: curtand
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 42b18eab9cb419e6ada72ba72dc8be8d7f7b2eed
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-licenses-to-users-by-group-membership-in-azure-active-directory"></a>Azure Active Directory でのグループ メンバーシップによるユーザーへのライセンスの割り当て
 
@@ -60,7 +60,7 @@ ms.lasthandoff: 08/03/2017
 これで、人事部グループのライセンス テンプレートの指定が完了しました。 開始された Azure AD のバックグラウンド プロセスによって、このグループの既存のメンバー全員が処理されます。 グループの現在の規模によっては、この初期操作に時間がかかる場合があります。 次の手順では、プロセスの終了を確認する方法と、問題の解決にさらなる注意が必要かどうかを確認する方法について説明します。
 
 > [!NOTE]
-> Azure AD の **[ユーザーとグループ]** からでも同様に割り当てを開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。 ブレードの上部にある **[割り当て]** ボタンをクリックすると、ライセンス割り当てのブレードが開きます。
+> Azure AD の **[ユーザーとグループ]** からでも同様に割り当てを開始できます。 **[Azure Active Directory]**  >  **[ユーザーとグループ]**  >  **[すべてのグループ]** に移動します。 次にグループを検索して選択し、**[ライセンス]** タブに移動します。ブレードの上部にある **[割り当て]** ボタンをクリックすると、ライセンス割り当てのブレードが開きます。
 
 ## <a name="step-2-verify-that-the-initial-assignment-has-finished"></a>手順 2. 最初の割り当てが終了したことの確認
 

@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 07/17/2017
 ms.author: juliako;anilmur
 ms.openlocfilehash: 22d63ff5e9fd33db8711b0c5125ab0882b9f6a74
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-perform-live-streaming-using-azure-media-services-to-create-multi-bitrate-streams-with-net"></a>Azure Media Services を使用してライブ ストリーミングを実行し、.NET でマルチビットレートのストリームを作成する方法
 > [!div class="op_single_selector"]

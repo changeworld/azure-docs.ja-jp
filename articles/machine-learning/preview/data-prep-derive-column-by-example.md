@@ -11,15 +11,12 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: a02f5e827345a1d28f01d691e1b6fbccfc03ae8a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="derive-column-by-example-transformation"></a>Derive column by example (例による列の派生) 変換
 
 **Derive Column by Example (例による列の派生)** 変換により、ユーザーは、ユーザー指定の派生結果例を使用して、1 つ以上の既存列の派生物を作成できます。 派生は、サポートされている文字列変換、日付変換、数値変換のいかなる組み合わせでも構いません。 
@@ -53,8 +50,8 @@ ms.lasthandoff: 09/25/2017
 
 この変換を使用するには、次の手順を実行します。
 1. 値の派生元にする 1 つ以上の列を選択します。 
-2. **[Transforms] (変換)** メニューから **[Derive Column by Example (例による列の派生)]** を選択します。 または、選択した列のいずれかのヘッダーを右クリックして、コンテキスト メニューから **[Derive Column by Example (例による列の派生)]** を選択します。 変換エディターが開き、新しい列が、右端の選択した列の横に追加されます。 選択した列は、列ヘッダーのチェック ボックスによって識別できます。 選択された列の追加や削除は、列のヘッダーのチェックボックスを使用して実行できます。
-3. 行に対して *[output] (出力)* の例を入力し、Enter キーを押します。 この時点では、Workbench は、提供された出力に加えて入力列を分析し、特定の入力を出力に変換できるプログラムを合成します。 合成されたプログラムは、データ グリッド内のすべての行に対して実行されます。 あいまいなケースや複雑なケースについては、複数の例が必要な場合があります。 基本モードか詳細モードかによって、複数の例を異なる方法で提供できます。
+2. **[Transforms] \(変換)** メニューから **[Derive Column by Example (例による列の派生)]** を選択します。 または、選択した列のいずれかのヘッダーを右クリックして、コンテキスト メニューから **[Derive Column by Example (例による列の派生)]** を選択します。 変換エディターが開き、新しい列が、右端の選択した列の横に追加されます。 選択した列は、列ヘッダーのチェック ボックスによって識別できます。 選択された列の追加や削除は、列のヘッダーのチェックボックスを使用して実行できます。
+3. 行に対して *[output] \(出力)* の例を入力し、Enter キーを押します。 この時点では、Workbench は、提供された出力に加えて入力列を分析し、特定の入力を出力に変換できるプログラムを合成します。 合成されたプログラムは、データ グリッド内のすべての行に対して実行されます。 あいまいなケースや複雑なケースについては、複数の例が必要な場合があります。 基本モードか詳細モードかによって、複数の例を異なる方法で提供できます。
 4. 出力をレビューし、**[OK]** をクリックして変換を承諾します。
 
 ### <a name="transform-editor-basic-mode"></a>変換エディター: 基本モード
@@ -138,7 +135,7 @@ Workbench はデータを分析し、ユーザーによるレビューが必要�
 このケースに必要だった例の数: 1
 
 >[!NOTE] 
->この例では、特殊文字は [Output] (出力) 列に含まれるスペースを表します。
+>この例では、特殊文字は [Output] \(出力) 列に含まれるスペースを表します。
 
 |名|ミドル ネームのイニシャル|姓|出力|
 |:-----|:-----|:-----|:-----|
@@ -390,4 +387,3 @@ Workbench はデータを分析し、ユーザーによるレビューが必要�
 
 ### <a name="reference"></a>リファレンス
 String Transformation by Example (例による文字列変換) 技術の詳細については、[こちらの出版物](https://www.microsoft.com/en-us/research/publication/automating-string-processing-spreadsheets-using-input-output-examples/)を参照してください。
-

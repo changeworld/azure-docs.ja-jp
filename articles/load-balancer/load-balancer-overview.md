@@ -14,14 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ecf1fc38d2b9fd54fe5b00db616224a0848179fe
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-overview"></a>Azure Load Balancer の概要
 
 Azure Load Balancer は、アプリケーションに高可用性と優れたネットワーク パフォーマンスを提供します。 Azure Load Balancer は、負荷分散セットで定義されているサービスの正常なインスタンス間で着信トラフィックを分散する、レイヤー 4 (TCP、UDP) ロード バランサーです。
@@ -103,5 +101,4 @@ Load Balancer のバックエンド プールには、Basic レベルを除く�
 - [インターネットに接続するロード バランサー](load-balancer-get-started-internet-portal.md)を作成する
 
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)にについて確認する。
-
 

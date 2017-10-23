@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 02/02/2017
 ms.author: terrylan
 ms.openlocfilehash: 2a2963affdbff3710ad08f86c6ed4e6304335559
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-transparent-data-encryption-in-azure-security-center"></a>Azure Security Center での Transparent Data Encryption の有効化
 Azure Security Center では、Transparent Data Encryption (TDE) がまだ有効になっていない場合に、SQL Database で TDE を有効にすることを勧めます。 TDE によってデータが保護されます。データベース、関連するバックアップ、保存されているトランザクション ログ ファイルを暗号化することで、コンプライアンス要件を満たすことができます。アプリケーションに変更を加える必要はありません。 詳細については、「[Azure SQL Database での Transparent Data Encryption](https://msdn.microsoft.com/library/dn948096)」をご覧ください。

@@ -17,12 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
+ms.openlocfilehash: ed4afa2b946fe11d5802a95f8a490f3419dc0f39
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 6a97ab8508f889b77d064a5da70e3c726d62900c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
 
@@ -192,5 +191,4 @@ module.exports = function (context, myTimer) {
 
 ## <a name="next-steps"></a>次のステップ
 [!INCLUDE [next steps](../../includes/functions-bindings-next-steps.md)]
-
 

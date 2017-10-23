@@ -11,10 +11,10 @@ ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
 ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。

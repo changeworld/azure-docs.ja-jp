@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/24/2017
 ms.author: bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: af8b3d5bf891c93c30a05c5f02d86639a466dde5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="vehicle-telemetry-analytics-solution-playbook"></a>車両テレメトリ分析ソリューション プレイブック
 この **メニュー** は、このプレイブック内の各章にリンクされています。 
@@ -58,5 +57,4 @@ Microsoft の Cortana Intelligence は、データをインテリジェントな
 
 * **シミュレートされた車両の信号と診断**: 車両テレマティックス シミュレーターは診断情報、車両の状態に対応する信号、特定の時間における運転のパターンを出力します。 
 * **車両カタログ**: モデルのマッピングに対する VIN を含む参照データセット。
-
 

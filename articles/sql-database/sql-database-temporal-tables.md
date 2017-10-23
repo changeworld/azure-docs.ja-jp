@@ -16,10 +16,10 @@ ms.workload: sql-database
 ms.date: 01/10/2017
 ms.author: bonova
 ms.openlocfilehash: d84db682089c65c2716d2d9bd92f7bc0ac47af27
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database"></a>Azure SQL Database のテンポラル テーブルの概要
 テンポラル テーブルは、Azure SQL Database の新しいプログラミング機能です。テンポラル テーブルを使用することで、データに対する詳細な変更履歴を追跡、分析することができ、独自にコーディングする必要がありません。 テンポラル テーブルは、保存されている情報が特定の期間に限り有効と解釈されるように、データを常に時間のコンテキストと密接に関連付けます。 テンポラル テーブルが持つこの特性によって、時間に基づいた効率的な分析が可能となり、データの経時的変化に隠れた本質を見極めることができます。

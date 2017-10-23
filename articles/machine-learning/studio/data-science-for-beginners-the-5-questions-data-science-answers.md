@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/13/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 47257bdb054b069c864ebf545b0c00bdfb05a9ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>初心者向けデータ サイエンス ビデオ 1: データ サイエンスが回答する 5 つの質問
 トップ データ サイエンティストによる "*初心者向けデータ サイエンス*" の 5 本の短いビデオでは、データ サイエンスの概要を簡単に説明します。 基本的な内容を扱っているビデオですが、データ サイエンスの実行に関心を持っている場合や、データ サイエンティストと共に作業する場合に便利です。
@@ -142,4 +141,3 @@ ms.lasthandoff: 09/25/2017
 ## <a name="next-steps"></a>次のステップ
 * [Machine Learning Studio で初めてのデータ サイエンス実験を実行してみる](create-experiment.md)
 * [Microsoft Azure での Machine Learning の概要を学習する](what-is-machine-learning.md)
-

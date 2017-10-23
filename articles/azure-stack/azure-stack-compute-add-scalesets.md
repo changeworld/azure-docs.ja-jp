@@ -8,17 +8,15 @@ ms.topic: article
 ms.date: 9/25/2017
 ms.author: anajod
 keywords: 
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 31aeb963bdf4fd32712bc6f29f64060ec1c77cb8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="make-virtual-machine-scale-sets-available-in-azure-stack"></a>仮想マシン スケール セットを Azure Stack で使用できるようにする
 
-*適用対象: Azure Stack 統合システムおよび Azure Stack 開発キット*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 仮想マシン スケール セットは Azure Stack のコンピューティング リソースです。 これらを使用して同一の仮想マシン セットをデプロイおよび管理できます。 すべての仮想マシンが同一に構成されているため、スケール セットでは仮想マシンを事前にプロビジョニングする必要がありません。 ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
 
@@ -84,5 +82,4 @@ Add-AzsVMSSGalleryItem -Location $Location
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Stack に関してよく寄せられる質問](azure-stack-faq.md)
-
 

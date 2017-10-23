@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/14/2017
 ms.author: jeedes
 ms.openlocfilehash: 1164723a171843541098f6adbda0e65f7e82a0cb
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqnavigator-vms"></a>チュートリアル: Azure Active Directory と IQNavigator VMS の統合
 
@@ -190,7 +190,7 @@ IQNavigator VMS で Azure AD のシングル サインオンを構成してテ�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-iqnavigator-vms-test-user"></a>IQNavigator VMS テスト ユーザーの作成
 

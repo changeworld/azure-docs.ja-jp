@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/17/2017
 ms.author: bwren
 ms.openlocfilehash: 13fca37303296355ce601333b13110d04fa5fa4e
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Visual Studio での傾向の分析
 Application Insights Trends ツールを使用すると、Web アプリケーションの重要なテレメトリ イベントが時間の経過に伴ってどのように変化しているかを視覚化できます。これにより、問題と異常を迅速に特定できるようになります。 より詳細な診断情報が得られるようになるため、Trends は、アプリのパフォーマンスの向上、例外の原因の追跡、カスタム イベントからの知見の獲得に役立ちます。

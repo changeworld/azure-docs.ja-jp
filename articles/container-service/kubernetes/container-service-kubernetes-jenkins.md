@@ -18,10 +18,10 @@ ms.date: 03/23/2017
 ms.author: briar
 ms.custom: mvc
 ms.openlocfilehash: 2078d0694fc4dd6e83ecd2792588b4254980cd78
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="jenkins-integration-with-azure-container-service-and-kubernetes"></a>Azure Container Service および Kubernetes との Jenkins の統合 
 このチュートリアルでは、Jenkins プラットフォームを使用して、Azure Container Service Kubernetes への複数コンテナー アプリケーションの継続的インテグレーションを設定するプロセスについて説明します。 このワークフローでは、Docker Hub のコンテナー イメージを更新し、デプロイ ロールアウトを使用して Kubernetes ポッドをアップグレードします。 

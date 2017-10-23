@@ -14,12 +14,11 @@ ms.topic: article
 ms.devlang: na
 ms.date: 06/07/2017
 ms.author: swkrish
-ms.translationtype: HT
-ms.sourcegitcommit: 3eb68cba15e89c455d7d33be1ec0bf596df5f3b7
 ms.openlocfilehash: 213d532f484056f3833c743d25c5e6faa5b732e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/01/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-active-directory-b2c-tenant-in-the-azure-portal"></a>Azure Portal で Azure Active Directory B2C テナントを作成する
 

@@ -3,7 +3,7 @@ title: "Batch 用の Azure CLI の概要 | Microsoft Docs"
 description: "Azure Batch サービスのリソースを管理するために使用できる Azure CLI の Batch コマンドの概要を簡単に説明します。"
 services: batch
 documentationcenter: 
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,15 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 09/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 68a5493282fa4a0b54ba551c48ae963a42b94dca
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 45c611e1c429e8c17c0fb1537577a4cbd037c23a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -32,7 +31,7 @@ Azure CLI の最新バージョンであるバージョン 2.0 を使用する�
 
 ## <a name="set-up-the-azure-cli"></a>Azure CLI のセットアップ
 
-Azure CLI をインストールするには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli.md)」に記載されている手順に従います。
+Azure CLI をインストールするには、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」に記載されている手順に従います。
 
 > [!TIP]
 > 最新のサービスや機能強化を活かすためにも、Azure CLI のインストールを定期的に更新することをお勧めします。
@@ -97,9 +96,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
     Azure AD の利点は、ロール ベースのアクセス制御 (RBAC) を利用できることです。 RBAC でのユーザーのアクセスは、アカウント キーを所有しているかどうかではなく、割り当てられているロールに依存します。 アカウント キーを管理する代わりに、RBAC ロールを管理して、Azure AD にアクセスと認証を処理させることができます。  
 
-    プール割り当てモードを "User Subscription" に設定して Azure Batch アカウントを作成した場合は、Azure AD での認証が必要です。 
-
-    Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを呼び出します。 
+        To log in to your Batch account using Azure AD, call the [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) command: 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount
@@ -196,4 +193,3 @@ Azure CLI の問題をトラブルシューティングするときに、以下�
 [github_readme]: https://github.com/Azure/azure-xplat-cli/blob/dev/README.md
 [rest_api]: https://msdn.microsoft.com/library/azure/dn820158.aspx
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
-

@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
 robots: noindex
+ms.openlocfilehash: 3a0a097afa0ef5efe11cb5044bf9ea5d399e463f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4465694d02e56c774a5750a1455c2e66ecbda523
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Azure Data Lake Analytics で U-SQL スクリプトを実行してデータを変換 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -208,17 +207,18 @@ if (linkedService.Properties.TypeProperties is AzureDataLakeStoreLinkedService |
 
 次の表は、このアクティビティに固有のプロパティの名前と説明です。 
 
-| プロパティ | 説明 | 必須 |
-|:--- |:--- |:--- |
-| 型 |type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 |はい |
-| scriptPath |U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 |いいえ (スクリプトを使用する場合) |
-| scriptLinkedService |Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス |いいえ (スクリプトを使用する場合) |
-| script (スクリプト) |scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 |いいえ (scriptPath と scriptLinkedService を使用する場合) |
-| degreeOfParallelism |ジョブを実行するために同時に使用される最大ノード数。 |なし |
-| priority |キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 |なし |
-| parameters |U-SQL スクリプトのパラメーター |いいえ |
-| runtimeVersion | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ | 
-| compilationMode | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p>| いいえ | 
+| プロパティ            | 説明                              | 必須                                 |
+| :------------------ | :--------------------------------------- | :--------------------------------------- |
+| 型                | type プロパティは、 **DataLakeAnalyticsU-SQL**に設定する必要があります。 | あり                                      |
+| 既定のコンテナー   | Data Factory のリンクされたサービスとして登録されている Azure Data Lake Analytics への参照 | あり                                      |
+| scriptPath          | U-SQL スクリプトを含むフォルダーのパス。 ファイル名は大文字と小文字が区別されます。 | いいえ (スクリプトを使用する場合)                   |
+| scriptLinkedService | Data Factory に対するスクリプトを含むストレージをリンクするリンク サービス | いいえ (スクリプトを使用する場合)                   |
+| script (スクリプト)              | scriptPath と scriptLinkedService を指定する代わりに、インライン スクリプトを指定します。 たとえば、「 `"script": "CREATE DATABASE test"`」のように入力します。 | いいえ (scriptPath と scriptLinkedService を使用する場合) |
+| degreeOfParallelism | ジョブを実行するために同時に使用される最大ノード数。 | なし                                       |
+| priority            | キューされているすべてのジョブのうち、先に実行するジョブを決定します。 数値が小さいほど、優先度は高くなります。 | なし                                       |
+| parameters          | U-SQL スクリプトのパラメーター          | いいえ                                       |
+| runtimeVersion      | 使用する U-SQL エンジンのランタイム バージョン。 | いいえ                                       |
+| compilationMode     | <p>U-SQL のコンパイル モード。 次のいずれかの値を指定する必要があります。</p> <ul><li>**Semantic:** セマンティック チェックと必要なサニティ チェックのみを実行します。</li><li>**Full:** 構文チェック、最適化、コード生成などを含めた完全コンパイルを実行します。</li><li>**SingleBox:** TargetType を SingleBox に設定して完全コンパイルを実行します。</li></ul><p>このプロパティの値を指定しない場合、サーバーが最適なコンパイル モードを決定します。 </p> | いいえ                                       |
 
 スクリプト定義については、 [SearchLogProcessing.txt のスクリプト定義](#sample-u-sql-script) をご覧ください。 
 
@@ -342,6 +342,5 @@ Azure Data Lake Analytics サービスで実行されるジョブのパイプラ
 ```
 
 この場合、入力ファイルは引き続き /datalake/input フォルダーから取得され、出力ファイルは /datalake/output フォルダーに生成されます。 ファイル名はスライス開始時刻に基づいて動的に指定されます。  
-
 
 

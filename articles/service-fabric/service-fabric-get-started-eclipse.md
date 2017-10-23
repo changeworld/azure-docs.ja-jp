@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/21/2016
 ms.author: saysa
-ms.translationtype: HT
-ms.sourcegitcommit: 890acae2aebf7684e567b9b49377ca7b6da95245
 ms.openlocfilehash: 4fa77da8665908553072792d7f2ede47bf5567dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-fabric-plug-in-for-eclipse-java-application-development"></a>Eclipse Java アプリケーション開発用の Service Fabric プラグイン
 Eclipse は、Java 開発者の間で最も広く使用されている統合開発環境 (IDE) の 1 つです。 この記事では、Eclipse 開発環境をセットアップして Azure Service Fabric を操作する方法について説明します。 Service Fabric プラグインのインストール、Service Fabric アプリケーションの作成、ローカルまたはリモートの Service Fabric クラスターへの Service Fabric アプリケーションのデプロイを Eclipse Neon で行う方法を確認します。
 
@@ -175,4 +173,3 @@ Eclipse Neon を使用してアプリケーションをアップグレードす�
 
 <!-- Links -->
 [buildship-update]: https://projects.eclipse.org/projects/tools.buildship
-

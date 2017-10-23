@@ -16,10 +16,10 @@ ms.date: 08/24/2017
 ms.author: micflan
 ms.custom: accessibility
 ms.openlocfilehash: d5f837d0017ca885144b91d35f489a6fc0e5670e
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="keyboard-shortcuts-in-the-azure-portal"></a>Azure ポータルのキーボード ショートカット
 この記事では、Azure ポータル全体で機能するキーボード ショートカットを示します。 個々のサービスで専用のキーボード ショートカットが用意されている場合もあります。

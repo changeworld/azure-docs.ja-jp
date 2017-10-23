@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 05/11/2017
 ms.author: iainfou
 ms.openlocfilehash: c97ade0a3d95824f723aad55776de861fe49441f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm-using-the-azure-cli-10"></a>Azure CLI 1.0 を使用して Linux VM に MongoDB をインストールして構成する方法
 [MongoDB](http://www.mongodb.org) は、高いパフォーマンスを特徴とし、広く普及しているオープン ソースの NoSQL データベースです。 この記事では、Resource Manager デプロイメント モデルを使って Azure の Linux VM に MongoDB をインストールして構成する方法を説明します。 次の方法が詳しくわかる例を示します。

@@ -11,14 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: e751e2f0ec812de43a03749e04ff165fa62ec649
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-collect-model-data-using-data-collection"></a>データ収集を使用してモデル データを収集する方法
 
 モデル データ収集機能を使用すると、モデルの入力と Machine Learning Web サービスからの予測をアーカイブできます。 このドキュメントでは、モデル データ収集の次の局面について説明します。
@@ -108,5 +106,4 @@ Linux では、最初に libxml++ library をインストールする必要が�
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")
     ```
 - [Hive](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-linux-tutorial-get-started) - csv データを Hive テーブルに読み込み、BLOB に対して直接 SQL クエリを実行する
-
 

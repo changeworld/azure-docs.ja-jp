@@ -16,10 +16,10 @@ ms.date: 07/30/2016
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 7389f55ee6fef9548abb0ca4ac1bbd0399868d47
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-a-windows-desktop-app"></a>サインインを Windows デスクトップ アプリに追加する
 v2.0 エンドポイントを使用すると、Microsoft の個人および職場/学校アカウントの両方に対応したデスクトップ アプリに認証をすばやく追加できます。  また、アプリとバックエンド Web API や [Microsoft Graph](https://graph.microsoft.io) と一部の [Office 365 Unified API](https://www.msdn.com/office/office365/howto/authenticate-Office-365-APIs-using-v2) との安全な通信を可能にします。

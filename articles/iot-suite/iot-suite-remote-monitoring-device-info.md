@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: dobett
 ms.openlocfilehash: f8fd452806a0a0b98cf8e434c9bd55700083a6c5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>リモート監視構成済みソリューションのデバイス情報メタデータ
 

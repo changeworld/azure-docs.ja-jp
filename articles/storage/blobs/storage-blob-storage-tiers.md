@@ -15,10 +15,10 @@ ms.topic: get-started-article
 ms.date: 06/05/2017
 ms.author: mihauss
 ms.openlocfilehash: 544b11d74a926fe62b8ceca51570ce9d2ee7e6e7
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-preview-storage-tiers"></a>Azure Blob Storage: ホット、クール、およびアーカイブ (プレビュー) ストレージ層
 
@@ -71,7 +71,7 @@ BLOB はアーカイブ ストレージ内にありますが、読み取り、�
 * 最終的に使用可能な形式に処理した後も保持する必要がある、元の (未加工の) データ  ("*たとえば*"、他の形式にコード変換した後の未加工のメディア ファイル)。
 * 長期間格納しておく必要があり、ほとんどアクセスされることがない、コンプライアンスおよびアーカイブ データ  ("*たとえば*"、監視カメラ映像、医療機関の古い X 線/MRI 画像、金融サービスの顧客電話の音声録音や会話記録)。
 
-### <a name="recommendations"></a>推奨事項
+### <a name="recommendations"></a>Recommendations
 
 ストレージ アカウントの詳細については、「 [Azure ストレージ アカウントについて](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) 」を参照してください。
 

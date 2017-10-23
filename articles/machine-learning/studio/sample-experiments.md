@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/28/2017
 ms.author: cgronlun
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: f798ac1b46d702dbb96a2384d96f2d14eb3cac0e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-example-experiments-to-create-new-machine-learning-experiments"></a>サンプル実験をコピーして新しい機械学習実験を作成する
 機械学習実験を一から作成する代わりに、[Cortana Intelligence ギャラリー](https://gallery.cortanaintelligence.com/)にあるサンプル実験をベースとして使う方法について説明します。 サンプルを使って独自の機械学習ソリューションを構築することができます。
@@ -69,4 +68,3 @@ ms.lasthandoff: 09/25/2017
 * [さまざまなソースからデータをインポートする](import-data.md)
 * [Machine Learning 向け R 言語のクイックスタート チュートリアル](r-quickstart.md)
 * [Machine Learning Web サービスをデプロイする](publish-a-machine-learning-web-service.md)
-

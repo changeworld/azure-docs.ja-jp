@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 10/31/2016
 ms.author: anandy
 ms.openlocfilehash: c581b1468630a9f28204592c936360b72f42f0d8
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="change-signature-hash-algorithm-for-office-365-relying-party-trust"></a>Office 365 証明書利用者信頼の署名ハッシュ アルゴリズムを変更する
 ## <a name="overview"></a>概要

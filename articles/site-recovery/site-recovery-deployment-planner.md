@@ -15,10 +15,10 @@ ms.topic: hero-article
 ms.date: 08/28/2017
 ms.author: nisoneji
 ms.openlocfilehash: 60b0641076c2fa8ed2feb5c64e7b119519f46cf4
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-deployment-planner"></a>Azure Site Recovery Deployment Planner
 この記事は、VMware から Azure へのレプリケーションを行う運用環境のデプロイに関する Azure Site Recovery Deployment Planner のユーザー ガイドです。
@@ -66,7 +66,7 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
 | サーバーの要件 | Description|
 |---|---|
-|プロファイリングとスループット測定| <ul><li>オペレーティング システム: Microsoft Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 2 以上に設定する必要があります</li><li>443 のポートを許可する: ASR 展開の計画では、このポートを使用して、vCenter サーバー/esxi ホストに接続</ul></ul>|
+|プロファイリングとスループット測定| <ul><li>オペレーティング システム: Microsoft Windows Server 2012 R2<br>(少なくとも[構成サーバーのサイズの推奨事項](https://aka.ms/asr-v2a-on-prem-components)を満たしていることが望ましい)</li><li>マシン構成: 8 vCPU、16 GB RAM、300 GB HDD</li><li>[Microsoft .NET Framework 4.5](https://aka.ms/dotnet-framework-45)</li><li>[VMware vSphere PowerCLI 6.0 R3](https://aka.ms/download_powercli)</li><li>[Visual Studio 2012 の Microsoft Visual C++ 再頒布可能パッケージ](https://aka.ms/vcplusplus-redistributable)</li><li>このサーバーから Azure へのインターネット アクセス</li><li>Azure ストレージ アカウント</li><li>サーバー上の管理者アクセス権</li><li>100 GB 以上の空きディスク領域 (平均 3 台のディスクがある仮想マシン 1,000 台をそれぞれ 30 日間プロファイリングすることを想定)</li><li>VMware vCenter の統計レベルは 2 以上に設定する必要があります</li><li>443 ポートを許可: ASR Deployment Planner は、このポートを使用して vCenter サーバー/ESXi ホストに接続します</ul></ul>|
 | レポートの生成 | Microsoft Excel 2013 以降がインストールされた Windows PC または Windows Server |
 | ユーザーのアクセス許可 | 読み取り専用アクセス許可 (プロファイリング中、VMware vCenter サーバー/VMware vSphere ESXi ホストにアクセスするユーザー アカウントに適用) |
 
@@ -117,7 +117,7 @@ Site Recovery Deployment Planner パブリック プレビューはコマンド 
 
             Set-ExecutionPolicy –ExecutionPolicy AllSigned
 
-4. 接続 VIServer がコマンドレットの名前として認識されない場合は、次のコマンドを実行するオプションが必要する可能性があります。
+4. Connect-VIServer がコマンドレットの名前として認識されない場合は、別途次のコマンドを実行する必要があります。
  
             Add-PSSnapin VMware.VimAutomation.Core 
 

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 06/26/2017
 ms.author: davidmu
 ms.openlocfilehash: d8bf89a4b7c2a158302f9ba09a182a3d8d062adc
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="download-a-windows-vhd-from-azure"></a>Azure から Windows VHD をダウンロードする
 

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 05/04/2016
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: 0899a49cbfda775017dab7fc6d8963bbeb86d74c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-web-role-on-azure"></a>Azure の Web ロールで Twilio を使用して通話する方法
 このガイドでは、Azure でホストされる Web ページから Twilio を使用して通話する方法を説明します。 次のスクリーンショットに示すように、作成されたアプリケーションは指定された番号とメッセージで呼び出しを行うことをユーザーに求めます。

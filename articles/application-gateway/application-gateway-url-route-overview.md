@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/09/2017
 ms.author: davidmu
+ms.openlocfilehash: b94e879de8136eeaddbf2a277d9634025dc99bc1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 75c3279d2d02cb3c6e949d191c88a1eb18b58a27
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="url-path-based-routing-overview"></a>URL パス ベースのルーティングの概要
 
@@ -102,4 +101,3 @@ PathBasedRouting ルールのスニペット:
 ## <a name="next-steps"></a>次のステップ
 
 URL ベースのコンテンツ ルーティングについて理解したら、 [URL ベースのルーティングを使用した Application Gateway の作成](application-gateway-create-url-route-portal.md) に関するセクションに移動して、URL ルーティング ルールを使ってアプリケーション ゲートウェイを作成します。
-

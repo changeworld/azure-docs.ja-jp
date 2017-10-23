@@ -13,14 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: elkuzmen
-ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
 ms.openlocfilehash: 09d4f81b190329421fc9fd2ebf98b941cb033a08
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-a-windows-vm-managed-service-identity-to-access-azure-storage"></a>Windows VM 管理対象サービス ID を使用して Azure Storage にアクセスする
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -58,7 +56,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 仮想マシンの MSI を使用すると、コードに資格情報を挿入しなくても、Azure AD からアクセス トークンを取得できます。 内部的には、MSI を有効にすると、仮想マシンに MSI VM 拡張機能がインストールされ、VM の MSI が有効化されます。  
 
 1. 新しい仮想マシンのリソース グループに移動し、前の手順で作成した仮想マシンを選択します。
-2. 左側の VM 設定の下にある**[構成]** をクリックします。
+2. 左側の VM 設定の下にある **[構成]** をクリックします。
 3. MSI を登録して有効にする場合は **[はい]** を選択し、無効にする場合は [いいえ] を選択します。
 4. **[保存]** をクリックして構成を保存します。
 
@@ -197,7 +195,6 @@ ContinuationToken :
 Context           : Microsoft.WindowsAzure.Commands.Storage.AzureStorageContext
 Name              : testblob
 ```
-
 
 
 

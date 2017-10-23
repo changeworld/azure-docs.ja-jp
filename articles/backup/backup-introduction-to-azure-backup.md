@@ -13,15 +13,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 8/11/2017
+ms.date: 9/29/2017
 ms.author: markgal;trinadhk;anuragm
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 120810b2b112649e21ec4bfe0c0f58b1fe3d80ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: ce0189706a3493908422df948c4fe5329ea61a32
-ms.openlocfilehash: 699ec578832e894b5bfc0cfad35528eac377c4ff
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="overview-of-the-features-in-azure-backup"></a>Azure Backup の各機能の概要
 Azure Backup は、Microsoft Cloud のデータのバックアップ (または保護) と復元に使用できる、Azure ベースのサービスです。 Azure Backup では、既存のオンプレミスまたはオフサイトのバックアップ ソリューションを、信頼性の高い、セキュリティで保護された、コスト競争力のあるクラウド ベースのソリューションに置き換えます。 Azure Backup には複数のコンポーネントが用意されており、これを適切なコンピューター、サーバー、またはクラウドにダウンロードしてデプロイします。 デプロイするコンポーネント (エージェント) は、何を保護するかによって決まります。 Azure の Recovery Services コンテナーにデータをバックアップするときは、すべての Azure Backup コンポーネントを使用できます (保護対象がオンプレミス データかクラウドのデータかに関係なく)。 特定のデータを保護するときに使用するコンポーネントについては、[Azure Backup コンポーネントの表](backup-introduction-to-azure-backup.md#which-azure-backup-components-should-i-use) (この記事で後述) を参照してください。
@@ -68,9 +67,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure IaaS VM のバックアップ |<p>**はい**</p><p>Azure のファブリックの一部</p><p>[Azure のサービスとしてのインフラストラクチャ (IaaS) 仮想マシンのバックアップ](backup-azure-vms-introduction.md)に特化しています。</p> |<p>**いいえ**</p> <p>System Center DPM を使用して、データセンターの仮想マシンをバックアップします。</p> |<p>Recovery Services コンテナー</p> |
 
 ## <a name="which-applications-and-workloads-can-be-backed-up"></a>バックアップできるアプリケーションとワークロード
-次の表は、Azure Backup を使用して保護できるデータとワークロードのマトリックスを示しています。 Azure Backup ソリューション列には、そのソリューションのデプロイに関するドキュメントへのリンクがあります。 Azure Backup の各コンポーネントを、クラシック (Service Manager デプロイ) または Resource Manager デプロイ モデル環境にデプロイできます。
-
-[!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-include.md)]
+次の表は、Azure Backup を使用して保護できるデータとワークロードのマトリックスを示しています。 Azure Backup ソリューション列には、そのソリューションのデプロイに関するドキュメントへのリンクがあります。 
 
 | データまたはワークロード | ソース環境 | Azure Backup ソリューション |
 | --- | --- | --- |
@@ -93,7 +90,7 @@ Azure Backup は、Microsoft Cloud のデータのバックアップ (または�
 | Azure Backup (MARS) エージェント |なし (Windows ベースのエージェントのみ) |
 | System Center DPM |<li> Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> <li> Hyper-V および VMWare Linux Guest VM の VM 復元 </br> </br>  "*ファイル整合性バックアップは Azure VM では利用できません*" <br/> |
 | Azure Backup Server |<li>Hyper-V および VMWare 上の Linux Guest VM のファイル整合性バックアップ<br/> <li> Hyper-V および VMWare Linux Guest VM の VM 復元 </br></br> "*ファイル整合性バックアップは Azure VM では利用できません*"  |
-| Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM の復元](backup-azure-arm-restore-vms.md#create-a-new-vm-from-restore-point) |
+| Azure IaaS VM のバックアップ |[事前スクリプトおよび事後スクリプト フレームワーク](backup-azure-linux-app-consistent.md)を使用するアプリケーション整合性バックアップ<br/> [詳細なファイルの回復](backup-azure-restore-files-from-vm.md)<br/> [すべての VM ディスクの復元](backup-azure-arm-restore-vms.md#restore-backed-up-disks)<br/> [VM の復元](backup-azure-arm-restore-vms.md#create-a-new-vm-from-a-restore-point) |
 
 ## <a name="using-premium-storage-vms-with-azure-backup"></a>Azure Backup での Premium Storage VM の使用
 Azure Backup で、Premium Storage VM が保護されます。 Azure Premium Storage は、入出力集中型ワークロードをサポートすることを目的としたソリッド ステート ドライブ (SSD) ベースのストレージです。 Premium Storage は、仮想マシン (VM) ワークロードに適しています。 Premium Storage の詳細については、[Premium Storage (Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ)](../storage/common/storage-premium-storage.md) に関する記事を参照してください。
@@ -224,13 +221,12 @@ Azure Backup には、*保護されているインスタンス*につき復旧�
 ## <a name="what-is-a-recovery-services-vault"></a>Recovery Services コンテナーとは
 Recovery Services コンテナーは、バックアップ コピー、復旧ポイント、バックアップ ポリシーなどのデータを保持するために使用される、Azure のオンライン ストレージ エンティティです。 Recovery Services コンテナーを使用して、Azure サービスとオンプレミス サーバーおよびワークステーションのバックアップ データを保持することができます。 Recovery Services コンテナーでは、管理オーバーヘッドを最小限に抑えながら、バックアップ データを簡単に整理できます。 サブスクリプション内に任意の数の Recovery Services コンテナーを作成できます。
 
-Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 バックアップ コンテナーをポータルで作成することはできなくなりましたが、バックアップ コンテナーは引き続きサポートされます。
+Azure Service Manager に基づく Backup コンテナーは、コンテナーの最初のバージョンでした。 Azure Resource Manager モデル機能が追加された Recovery Services コンテナーは、コンテナーの 2 番目のバージョンです。 機能の違いの完全な説明については、「[Recovery Services コンテナーの概要](backup-azure-recovery-services-vault-overview.md)」の記事を参照してください。 バックアップ コンテナーをポータルで作成することはできなくなりましたが、バックアップ コンテナーは引き続きサポートされます。 バックアップ コンテナーの管理には、Azure Portal を使用する必要があります。
 
 > [!IMPORTANT]
-> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降は、PowerShell を使ってバックアップ コンテナーを作成することはできません。 <br/> **2017 年 11 月 1 日まで**:
->- 残っている Backup コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
->- クラシック ポータルでバックアップ データにアクセスすることはできなくなります。 代わりに、Azure Portal を使用して、Recovery Services コンテナーのバックアップ データにアクセスしてください。
->
+> Backup コンテナーを Recovery Services コンテナーにアップグレードできるようになりました。 詳細については、「[Backup コンテナーを Recovery Services コンテナーにアップグレードする](backup-azure-upgrade-backup-to-recovery-services.md)」を参照してください。 Backup コンテナーを Recovery Services コンテナーにアップグレードすることをお勧めします。<br/> **2017 年 10 月 15 日**以降、PowerShell を使用してバックアップ コンテナーを作成することはできなくなります。 <br/> **2017 年 11 月 1 日**までに、残っているバックアップ コンテナーは、自動的に Recovery Services コンテナーにアップグレードされます。
+
+
 
 ## <a name="how-does-azure-backup-differ-from-azure-site-recovery"></a>Azure Backup と Azure Site Recovery はどのように違いますか
 Backup と Azure Site Recovery は両方とも、データをバックアップして、そのデータを復元できるとうい点で関連していますが、 これらのサービスは、業務にビジネス継続性とディザスター リカバリーの機能を提供するために、異なる目的で使用されます。 より細かいレベルでデータの保護と復元を行うには、Azure Backup を使用します。 たとえば、ノート PC のプレゼンテーションが破損した場合は、Azure Backup を使用して、プレゼンテーションを復元します。 VM 上の構成とデータを別のデータセンターにレプリケートする場合は、Azure Site Recovery を使用します。
@@ -260,4 +256,3 @@ Windows Server でのデータ保護の詳細な段階的手順、または Azur
 [green]: ./media/backup-introduction-to-azure-backup/green.png
 [yellow]: ./media/backup-introduction-to-azure-backup/yellow.png
 [red]: ./media/backup-introduction-to-azure-backup/red.png
-

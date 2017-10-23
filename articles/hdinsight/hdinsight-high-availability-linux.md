@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hadoop の高可用性 - Azure HDInsight | Microsoft Docs"
 description: "HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
 services: hdinsight
@@ -15,14 +15,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
-ms.date: 10/19/2017
+ms.date: 07/28/2017
 ms.author: larryfr
+ms.openlocfilehash: e66ba67a36fc48d1762ba302d708e060489fdc71
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 56dd07de81e322aa66587ee160beb734811285dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>HDInsight における Hadoop クラスターの可用性と信頼性
 
@@ -238,4 +237,3 @@ Ambari Web UI から、ログ (例: YARN) を表示するサービスを選択�
 [preview-portal]: https://portal.azure.com/
 [azure-powershell]: /powershell/azureps-cmdlets-docs
 [azure-cli]: ../cli-install-nodejs.md
-

@@ -14,14 +14,12 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 8cd3698d4281b933881c45dfa5e7868bd7b0bdaf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 192c4b5b89feca2a2e39c5e0670d05cc8868eb03
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="develop-for-azure-files-with-java"></a>Java での Azure Files 用の開発
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 09/25/2017
 ## <a name="create-a-java-application"></a>Java アプリケーションの作成
 サンプルを作成するには、Java Development Kit (JDK) と [Azure Storage SDK for Java][] が必要です。 また、Azure ストレージ アカウントを作成しておく必要があります。
 
-## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使うようにアプリケーションを設定する
+## <a name="set-up-your-application-to-use-azure-files"></a>Azure Files を使用するようにアプリケーションを設定する
 Azure ストレージ API を使用するには、ストレージ サービスのアクセス元にする Java ファイルの一番上に次の文を追加します。
 
 ```java
@@ -88,7 +86,7 @@ Azure Files のすべてのファイルとディレクトリは **Share** とい
 CloudFileClient fileClient = storageAccount.createCloudFileClient();
 ```
 
-Azure Files クライアントを使って、共有への参照を取得できます。
+Azure Files クライアントを使用すると、共有への参照を取得できます。
 
 ```java
 // Get a reference to the file share

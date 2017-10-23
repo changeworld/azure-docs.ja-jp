@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 06/28/2017
 ms.author: bwren
 ms.openlocfilehash: 56d7c6dc648a01e7b0efc167cb65c94bac5468ec
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="retrieve-data-from-log-analytics-with-a-python-script"></a>Python スクリプトを使用して Log Analytics からデータを取得する
 [Log Analytics のログ検索 API](log-analytics-log-search-api.md) を使用して、任意の REST API クライアントで Log Analytics ワークスペースからデータを取得することができます。  この記事では、Log Analytics のログ検索 API を使用する Python スクリプトの例を示します。  

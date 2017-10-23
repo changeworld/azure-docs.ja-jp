@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/07/2016
 ms.author: mandia
 ms.openlocfilehash: b9fd985c23558596408e78eadae00dd0f95c4214
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="biztalk-services-issuer-name-and-issuer-key"></a>BizTalk サービス: 発行者名および発行者キーに関するページ
 
@@ -50,7 +50,7 @@ ACS で認証して、発行者名と発行者キーの値を取得するため�
 4. サブスクリプション `select-azuresubscription <name of your subscription>` を選択します 
 5. 新しい名前空間 `new-azuresbnamespace <name for the service bus> "Location" -CreateACSNamespace $true -NamespaceType Messaging` を作成します
 
-    例:`new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
+    例:    `new-azuresbnamespace biztalksbnamespace "South Central US" -CreateACSNamespace $true -NamespaceType Messaging`
       
 5. 新しい ACS 名前空間が作成されたら (数分かかる場合があります)、発行者名と発行者キーの一覧が接続文字列に表示されます。 
 

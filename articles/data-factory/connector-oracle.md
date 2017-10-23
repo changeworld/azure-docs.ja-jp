@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: jingwang
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: ad9807fc72e3a6e0a6d3916d2d9e042af1fa83ed
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="copy-data-from-and-to-oracle-using-azure-data-factory"></a>Azure Data Factory を使用して Oracle コピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -57,9 +56,9 @@ Oracle のリンクされたサービスでは、次のプロパティがサポ�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | type プロパティは **Oracle** に設定します。 | はい |
-| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 このフィールドは、SecureString とマークします。 | はい |
-| connectVia | データ ストアに接続するために[統合ランタイム](concepts-integration-runtime.md)が使用されます。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
+| type | type プロパティは **Oracle** に設定します。 | あり |
+| connectionString | Oracle Database インスタンスに接続するために必要な情報を指定します。 このフィールドを SecureString とマークします。 | あり |
+| connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
 **例:**
 
@@ -90,8 +89,8 @@ Oracle をコピー元またはコピー先としてデータをコピーする�
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | データセットの type プロパティは **OracleTable** に設定する必要があります。 | はい |
-| tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | はい |
+| type | データセットの type プロパティは **OracleTable** に設定する必要があります。 | あり |
+| tableName |リンクされたサービスが参照する Oracle データベース インスタンスのテーブルの名前です。 | あり |
 
 **例:**
 
@@ -122,10 +121,10 @@ Oracle からデータをコピーするは、コピー アクティビティの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **OracleSource** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは **OracleSource** に設定する必要があります。 | あり |
 | oracleReaderQuery | カスタム SQL クエリを使用してデータを読み取ります。 (例: `"SELECT * FROM MyTable"`)。 | いいえ |
 
-"oracleReaderQuery" を指定しない場合は、データセットの "structure" セクションに定義された列を使用して、Oracle データベースに対して実行するクエリ (`select column1, column2 from mytable`) が作成されます。 データセット定義に "structure" がない場合は、すべての列がテーブルから選択されます。
+"oracleReaderQuery" を指定しない場合は、データセットの "structure" セクションに定義された列を使用して、Oracle データベースに対して実行するクエリ (`select column1, column2 from mytable`) が作成されます。 データセット定義に "構造" がない場合は、すべての列がテーブルから選択されます。
 
 **例:**
 
@@ -165,7 +164,7 @@ Oracle にデータをコピーするには、コピー アクティビティの
 
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
-| type | コピー アクティビティのソースの type プロパティは **OracleSink** に設定する必要があります。 | はい |
+| type | コピー アクティビティのソースの type プロパティは **OracleSink** に設定する必要があります。 | あり |
 | writeBatchSize | バッファー サイズが writeBatchSize に達したときに SQL テーブルにデータを挿入します。<br/>使用可能な値: 整数 (行数)。 |いいえ (既定値は 10000) |
 | writeBatchTimeout | タイムアウトする前に一括挿入操作の完了を待つ時間です。<br/>使用可能な値: 期間。 例: "00:30:00" (30 分)。 | いいえ |
 | preCopyScript | コピー アクティビティの毎回の実行で、データを Oracle に書き込む前に実行する SQL クエリを指定します。 このプロパティを使用して、事前に読み込まれたデータをクリーンアップできます。 | いいえ |

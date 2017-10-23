@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 06/15/2017
 ms.author: marsma
-ms.translationtype: HT
-ms.sourcegitcommit: 7429de05ba1d583348b0b03b69135c2bbab0be45
 ms.openlocfilehash: c37fc0b701b668ab6bb9213a487ec8baa33fe663
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="perform-blob-storage-operations-with-azure-cli"></a>Azure CLI を使用して Blob Storage の操作を実行する
 
 Azure Blob Storage は、HTTP または HTTPS 経由で世界中のどこからでもアクセスできるテキストやバイナリ データなど、大量の非構造化オブジェクト データを格納するためのサービスです。 このチュートリアルでは、BLOB のアップロード、ダウンロード、および削除など、Azure Blob Storage での基本的な操作について説明します。 学習内容は次のとおりです。
@@ -76,7 +74,7 @@ az storage container set-permission \
 
 ## <a name="upload-a-blob-to-a-container"></a>コンテナーに BLOB をアップロードする
 
-Blob Storage では、ブロック BLOB、追加 BLOB、およびページ BLOB がサポートされています。 ブロック BLOB は、Azure Storage に格納される最も一般的な種類の BLOB です。 追加 BLOB は、ログ記録などのため、既存のコンテンツを変更することなく既存の BLOB にデータを追加する必要がある場合に使います。 ページ BLOB は、IaaS 仮想マシンの VHD ファイルをバックアップします。
+Blob Storage は、ブロック BLOB、追加 BLOB、およびページ BLOB をサポートします。 ブロック BLOB は、Azure Storage に格納される最も一般的な種類の BLOB です。 追加 BLOB は、ログ記録などのため、既存のコンテンツを変更することなく既存の BLOB にデータを追加する必要がある場合に使います。 ページ BLOB は、IaaS 仮想マシンの VHD ファイルをバックアップします。
 
 この例では、最後のステップで [az storage blob upload](/cli/azure/storage/blob#upload) コマンドを使って作成したコンテナーに BLOB をアップロードします。
 
@@ -283,4 +281,3 @@ az group delete --name myResourceGroup
   * [Azure CLI 2.0 コマンド リファレンス](/cli/azure/)
 * Microsoft Azure ストレージ エクスプローラー
   * [Microsoft Azure Storage Explorer](../../vs-azure-tools-storage-manage-with-storage-explorer.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) は、Windows、macOS、Linux で Azure Storage のデータを視覚的に操作できる Microsoft 製の無料のスタンドアロン アプリです。
-

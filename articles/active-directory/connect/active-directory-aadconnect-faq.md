@@ -13,12 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2017
 ms.author: billmath
-ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
 ms.openlocfilehash: f1314b05d7471b6251de2173dc590bdebdafb476
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions-for-azure-active-directory-connect"></a>Azure Active Directory Connect についてよく寄せられる質問
 
@@ -79,7 +78,7 @@ ms.lasthandoff: 09/14/2017
 **Q: Azure AD Connect 用の PowerShell コマンドレットのドキュメントはどこにありますか。**  
 このサイトに記載されているコマンドレットを除き、Azure AD Connect で使用されている PowerShell コマンドレットは、ユーザーによる使用をサポートしていません。
 
-**Q: Synchronization Service Manager の *[サーバーのエクスポート/インポート]* を使用して、サーバー間で構成を移動できますか。**  
+***Q:* Synchronization Service Manager** の [サーバーのエクスポート/インポート] を使用して、サーバー間で構成を移動できますか。  
 いいえ。 このオプションはすべての構成設定を取得しないため、使用すべきではありません。 代わりに、2 台目のサーバーでウィザードを使用して基本構成を作成し、同期ルール エディターを使用して PowerShell スクリプトを生成し、サーバー間でカスタム ルールを移動してください。 「[スウィング移行](active-directory-aadconnect-upgrade-previous-version.md#swing-migration)」を参照してください。
 
 **Q: Azure サインイン ページではパスワードがキャッシュされますか。また、パスワード入力要素のオートコンプリート属性を "false" に設定することで、これを防ぐことはできますか。**</br>
@@ -107,5 +106,4 @@ ms.lasthandoff: 09/14/2017
 [Azure AD のサポートを受ける方法](https://docs.microsoft.com/azure/active-directory/active-directory-troubleshooting-support-howto)
 
 * このリンクを使用して、Azure Portal からサポートを受けることができます。
-
 

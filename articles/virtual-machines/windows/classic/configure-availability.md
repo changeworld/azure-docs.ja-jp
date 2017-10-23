@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 09/27/2016
 ms.author: cynthn
 ms.openlocfilehash: a5cbbdf402ee06a34a339b193b0cdd5c952d6248
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-an-availability-set-for-windows-virtual-machines-in-the-classic-deployment-model"></a>クラシック デプロイメント モデルに Windows 仮想マシンの可用性セットを構成する方法
 > [!IMPORTANT] 

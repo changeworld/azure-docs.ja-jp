@@ -10,14 +10,12 @@ ms.topic: tutorial
 ms.date: 09/25/2017
 ms.author: ancav
 ms.custom: mvc
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 7e8d97657e03b0eaff76365d3988f51c773e3b55
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-autoscale-setting-for--azure-resources-based-on-performance-data-or-a-schedule"></a>パフォーマンス データまたはスケジュールに基づいて自動スケール設定を作成する
 
 自動スケール設定を行うと、事前設定した条件に基づいてサービスのインスタンスを追加または削除することができます。 これらの設定は、ポータルで作成できます。 この方法では、ブラウザーベースのユーザー インターフェイスで、自動スケール設定を作成および構成できます。 このチュートリアルでは、以下の手順について説明します。
@@ -174,4 +172,3 @@ Azure サブスクリプションをお持ちでない場合は、開始する�
 
 > [!div class="nextstepaction"]
 > [監視データをアーカイブする](./monitor-tutorial-archive-monitoring-data.md)
-

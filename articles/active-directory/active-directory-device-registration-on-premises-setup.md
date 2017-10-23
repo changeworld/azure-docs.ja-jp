@@ -16,10 +16,10 @@ ms.date: 07/31/2017
 ms.author: markvi
 ms.reviewer: jairoc
 ms.openlocfilehash: 1a6f1c6566468188daa71939db8345280b7a529f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -111,7 +111,7 @@ Multi-Factor Authentication に関するいくつかのオプションのいず�
    
    1. ドメインを追加します。
    2. 「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」の手順に従って Azure AD Connect をインストールし、実行します。
-   3. ディレクトリの同期を確認および管理します。 この手順では、シングル サインオンの手順を利用できます。
+   3. ディレクトリの同期を確認および管理します。この手順では、シングル サインオンの手順を利用できます。
    
    さらに、「[Azure AD Connect のカスタム インストール](connect/active-directory-aadconnect-get-started-custom.md)」で概説されているように、AD FS とのフェデレーションを構成します。
 

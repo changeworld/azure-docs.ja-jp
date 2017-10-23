@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: negat
+ms.openlocfilehash: 98635ea6695fdb1e55456b5b6a293a3b4ad9d839
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ac0bbb4dbfccca3f3fc31526aeff11afe55d44be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Linux スケール セット テンプレートのゲスト メトリックを使用した自動スケール
 
-VM とスケール セットから収集される Azure のメトリックには、ホスト VM から収集されるメトリックと、ゲスト VM から収集されるメトリックの 2 種類があります。 ホスト メトリックの場合は、ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure 診断の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure 診断の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../monitoring-and-diagnostics/monitoring-supported-metrics.md)を、よく使用されるゲスト メトリックについては[こちら](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な最小のスケール セットのテンプレート](./virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
+VM とスケール セットから収集される Azure のメトリックには、ホスト VM から収集されるメトリックと、ゲスト VM から収集されるメトリックの 2 種類があります。 一般には、標準的な CPU、ディスク、ネットワーク メトリックを使用している場合、ホスト メトリックはおそらく適合します。 ただし、メトリックの選択の幅を大きくする必要がある場合は、おそらくゲスト メトリックの方が適切です。 2 つの違いを見てみましょう。
+
+ホスト メトリックの方が単純で確実です。 ホスト VM によってメトリックが収集されるので、特別な設定は必要ありません。ゲスト メトリックの場合は、ゲスト VM に [Windows 版の Azure 診断の拡張機能](../virtual-machines/windows/extensions-diagnostics-template.md)か、[Linux 版の Azure 診断の拡張機能](../virtual-machines/linux/diagnostic-extension.md)をインストールする必要があります。 一般に、ホスト メトリックではなくゲスト メトリックを使用する理由の 1 つとして、ゲスト メトリックではホスト メトリックよりも多くのメトリックが提供される点が挙げられます。 たとえば、メモリ消費に関するメトリックは、ゲスト メトリックでしか利用できません。 サポートされているホスト メトリックについては[こちら](../monitoring-and-diagnostics/monitoring-supported-metrics.md)を、よく使用されるゲスト メトリックについては[こちら](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)をご覧ください。 この記事では、Linux スケール セットのゲストのメトリックに基づいた自動スケール規則を使用するよう、[実行可能な最小のスケール セットのテンプレート](./virtual-machine-scale-sets-mvss-start.md)を編集する方法を説明します。
 
 ## <a name="change-the-template-definition"></a>テンプレートの定義を変更する
 
@@ -189,4 +189,3 @@ VM とスケール セットから収集される Azure のメトリックには
 ## <a name="next-steps"></a>次のステップ
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]
-

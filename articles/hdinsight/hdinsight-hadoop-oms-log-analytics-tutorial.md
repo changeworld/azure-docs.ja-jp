@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2017
 ms.author: nitinme
+ms.openlocfilehash: c1c74c797449c2fa6d76438f9ec33eaf0fe51af4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fda37c1cb0b66a8adb989473f627405ede36ab76
-ms.openlocfilehash: af5b05a366c1abbe7c91d186358dba2b4a957f92
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-log-analytics-to-monitor-hdinsight-clusters-preview"></a>Log Analytics を使用して Azure HDInsight クラスターを監視する (プレビュー)
 
@@ -43,7 +42,7 @@ Log Analytics は、[Operations Management Suite (OMS)](../operations-management
     HDInsight クラスターの作成手順については、[Azure HDInsight の概要](hdinsight-hadoop-linux-tutorial-get-started.md)に関するページを参照してください。
 
 
-* **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 Azure HDInsight クラスターと関連付けることができる、このようなクラスターを少なくとも 1 つ作成しておく必要があります。 手順については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-get-started.md#2-create-a-workspace)に関するページを参照してください。
+* **Log Analytics ワークスペース**。 ワークスペースは、独自のデータ リポジトリ、データ ソース、およびソリューションを備えた一意の Log Analytics 環境として考えることができます。 Azure HDInsight クラスターと関連付けることができる、このようなクラスターを少なくとも 1 つ作成しておく必要があります。 手順については、[Log Analytics ワークスペースの作成](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)に関するページを参照してください。
 
 ## <a name="configure-hdinsight-cluster-to-use-azure-log-analytics"></a>Azure Log Analytics を使用するように HDInsight クラスターを構成する
 
@@ -67,4 +66,3 @@ Log Analytics は、[Operations Management Suite (OMS)](../operations-management
 
 ## <a name="next-steps"></a>次のステップ
 * [Log Analytics に HDInsight クラスター管理ソリューションを追加する](hdinsight-hadoop-oms-log-analytics-management-solutions.md)
-

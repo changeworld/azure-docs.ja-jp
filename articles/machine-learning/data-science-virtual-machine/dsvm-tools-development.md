@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2017
 ms.author: gokuma;bradsev
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: b6a333d075e0391adca4f37bbff8918391a22fde
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="development-tools-on-the-data-science-virtual-machine"></a>データ サイエンス仮想マシン上の開発ツール
 
 データ サイエンス仮想マシン (DSVM) は、いくつかの一般的なツールと IDE をバンドルすることにより、開発のための生産性の高い環境を提供します。 DSVM で提供されるツールには、次のものがあります。 
@@ -83,5 +81,4 @@ ms.lasthandoff: 09/25/2017
 | 一般的な用途      |  データ視覚化とダッシュボード構築   |
 | 使用/実行方法      | デスクトップ ショートカット (`C:\Program Files\Microsoft Power BI Desktop\bin\PBIDesktop.exe`)      |
 | DSVM 上の関連ツール      |   Visual Studio 2017、Visual Studio Code、Juno      |
-
 

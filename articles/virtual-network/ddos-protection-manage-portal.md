@@ -15,14 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
-ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
 ms.openlocfilehash: 5c599b4cc867dbc9a081af3a081195b998f63954
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-azure-ddos-protection-standard-using-the-azure-portal"></a>Azure Portal を使用した Azure DDoS Protection Standard の管理
 
 >[!IMPORTANT]
@@ -68,8 +66,8 @@ Azure Monitor のアラート構成を利用すると、攻撃中にアクティ
 
 1. **[監視]** をクリックしてから、**[メトリック]** をクリックします。
 2. *[メトリック]* 画面で、リソース グループ、**[パブリック IP アドレス]** のリソースの種類、および Azure のパブリック IP を選択します。
-3. メトリックの電子メール アラートを構成するには、**[Click to add an alert] (クリックしてアラートを追加)** をクリックします。 電子メール アラートは任意のメトリックに作成できますが、最も明らかなメトリックは **[Under DDoS attack or not] (DDoS 攻撃を受けているかどうか)** です。 これはブール値 1 または 0 です。 **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。
-4. 攻撃を受けている場合に電子メールを受信するようにするには、**[Under DDoS attack or not] (DDoS 攻撃を受けているかどうか)** と **[Condition to Greater than zero (0) over the last 5 minutes] (過去 5 分間にゼロ (0) を超えた条件)** のメトリックを設定します。 他のメトリックに対して同様のアラートを設定できます。
+3. メトリックの電子メール アラートを構成するには、**[Click to add an alert] \(クリックしてアラートを追加)** をクリックします。 電子メール アラートは任意のメトリックに作成できますが、最も明らかなメトリックは **[Under DDoS attack or not] \(DDoS 攻撃を受けているかどうか)** です。 これはブール値 1 または 0 です。 **1** は、攻撃を受けていることを示します。 **0** は、攻撃を受けていないことを示します。
+4. 攻撃を受けている場合に電子メールを受信するようにするには、**[Under DDoS attack or not] \(DDoS 攻撃を受けているかどうか)** と **[Condition to Greater than zero (0) over the last 5 minutes] \(過去 5 分間にゼロ (0) を超えた条件)** のメトリックを設定します。 他のメトリックに対して同様のアラートを設定できます。
 
     ![メトリックを構成する](./media/ddos-protection-manage-portal/ddos-metrics.png)
 
@@ -83,12 +81,12 @@ Azure Monitor のアラート構成を利用すると、攻撃中にアクティ
 
 1. **[監視]** をクリックしてから、**[診断設定]** をクリックします。
 2. *[メトリック]* 画面で、リソース グループ、**[パブリック IP アドレス]** のリソースの種類、および Azure のパブリック IP を選択します。
-3. **[Turn on diagnostics to collect the following data] (診断を有効にして次のデータを収集する)** をクリックします。
+3. **[Turn on diagnostics to collect the following data] \(診断を有効にして次のデータを収集する)** をクリックします。
 
 ログ記録に使用できるオプションとして、次の 3 つがあります。
 
 - **[ストレージ アカウントへのアーカイブ]**  – ログをストレージ アカウントに書き込みます。
-- **[Stream to an event hub] (イベント ハブへのストリーミング)** – ログの受信者がイベント ハブを使用してログを取得できるようにします。 これにより、Splunk やその他の SIEM システムとの統合が可能になります。
+- **[Stream to an event hub] \(イベント ハブへのストリーミング)** – ログの受信者がイベント ハブを使用してログを取得できるようにします。 これにより、Splunk やその他の SIEM システムとの統合が可能になります。
 - **[Log Analytics への送信]** – ログを Azure OMS Log Analytics サービスに書き込みます。
 
 ## <a name="use-ddos-protection-telemetry"></a>DDoS Protection テレメトリを使用する

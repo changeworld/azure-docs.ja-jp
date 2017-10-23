@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/06/2017
 ms.author: nini
 ms.openlocfilehash: ca86787e344aa5e9e68934dee6e9e83aeb4cc340
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assess-azure-service-fabric-applications-and-micro-services-with-powershell"></a>PowerShell を使用して Azure Service Fabric アプリケーションとマイクロ サービスを評価する
 > [!div class="op_single_selector"]

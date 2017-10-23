@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/06/2016
 ms.author: obloch
 ms.openlocfilehash: aa03c29c54d75538b1fdf987cac5f09d5d344f73
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>C 用 Azure IoT device SDK – シリアライザー
 本シリーズの[最初の記事](iot-hub-device-sdk-c-intro.md)で、**C 用 Azure IoT device SDK** を紹介しました。それに続く記事では、[**IoTHubClient**](iot-hub-device-sdk-c-iothubclient.md) について詳しく説明しました。 今回の記事では、残りのコンポーネントである **シリアライザー** ライブラリについて詳しく説明し、SDK の対応範囲をすべて説明します。

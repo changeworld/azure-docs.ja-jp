@@ -14,16 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: twooley
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 04dea8f055eb562455b568c43553a6fefe749467
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-stack-administration-basics"></a>Azure Stack の管理の基本
 
-*適用対象: Azure Stack 統合システムと Azure Stack Development Kit*
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack の管理経験がない場合は、知っておく必要があることがいくつかあります。 このガイドでは、Azure Stack オペレーターとしての役割の概要と、ユーザーがすばやく生産的になれるようにユーザーに伝える必要があることを説明します。
 
@@ -48,7 +47,7 @@ Azure のように、Microsoft は迅速にイノベーションを進めてい�
 Azure Stack をデプロイすると、Azure Stack には既定で以下の "基礎となるサービス" が含まれています。
 
 - コンピューティング
-- Storage
+- ストレージ
 - ネットワーク
 - Key Vault
 
@@ -131,11 +130,10 @@ PowerShell を使用する場合、ユーザーはサービスを使用する前
 
 ### <a name="development-kit"></a>Development kit
 
-Development Kit については、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)でサポート関連の質問をすることができます。 管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[新しいサポート要求]** をクリックすると、フォーラムのサイトが直接開かれます。 これらのフォーラムは定期的にチェックされています。 Development Kit は評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
+Development Kit については、[Microsoft フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=azurestack)でサポート関連の質問をすることができます。 管理者ポータルの右上隅にあるヘルプとサポートのアイコン (疑問符) をクリックし、**[新しいサポート要求]** をクリックすると、フォーラムのサイトが直接開かれます。 これらのフォーラムは定期的にチェックされています。 開発キットは評価環境であるため、Microsoft CSS を通した正式なサポートは提供されていません。
 
 ## <a name="next-steps"></a>次のステップ
 
 - [Azure Stack でのリージョンの管理](azure-stack-region-management.md)
-
 
 

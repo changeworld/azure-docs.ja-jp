@@ -16,12 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 07/20/2017
 ms.author: spelluru
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: c1061811d205494969047fa3f91cbf449a25d8ab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-on-demand-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Azure Data Factory を使用して HDInsight でオンデマンドの Hadoop クラスターを作成する
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -596,4 +595,3 @@ azure storage blob copy start "https://hditutorialdata.blob.core.windows.net/adf
 ```
 
 コンテナー名は *adfgetstarted*です。 この名前はそのままにしておいてください。 そうしないと、Resource Manager テンプレートの更新が必要になります。 この CLI スクリプトに関してサポートが必要な場合は、「[Azure Storage での Azure CLI の使用](../storage/common/storage-azure-cli.md)」を参照してください。
-

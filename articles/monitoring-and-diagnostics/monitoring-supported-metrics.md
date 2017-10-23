@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/25/2017
 ms.author: ancav
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 05830547a5b8a24a59571edf6dd44d101b660189
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Azure Monitor のサポートされるメトリック
 Azure Monitor では、複数の方法を使用してメトリックを操作できます。たとえば、ポータルでメトリックをグラフ化したり、REST API でアクセスしたり、PowerShell や CLI を使ってクエリを実行したりできます。 ここで示しているのは、Azure Monitor のメトリック パイプラインで現在利用できるメトリックの一覧です。
@@ -347,8 +346,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|ディメンションなし|
 |Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
-|CPU Credits Remaining|CPU Credits Remaining|カウント|平均|バーストに使用できるクレジットの合計|ディメンションなし|
-|CPU Credits Consumed|CPU Credits Consumed|カウント|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
+|CPU Credits Remaining|未使用の CPU クレジット|カウント|平均|バーストに使用できるクレジットの合計|ディメンションなし|
+|CPU Credits Consumed|使用済みの CPU クレジット|カウント|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft.Compute/virtualMachineScaleSets/virtualMachines
 
@@ -361,8 +360,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |Disk Write Bytes|ディスク書き込みバイト数|Bytes|合計|監視期間中にディスクに書き込まれた合計バイト数|ディメンションなし|
 |Disk Read Operations/Sec|ディスク読み取り操作数/秒|CountPerSecond|平均|ディスク読み取り IOPS|ディメンションなし|
 |Disk Write Operations/Sec|ディスク書き込み操作数/秒|CountPerSecond|平均|ディスク書き込み IOPS|ディメンションなし|
-|CPU Credits Remaining|CPU Credits Remaining|カウント|平均|バーストに使用できるクレジットの合計|ディメンションなし|
-|CPU Credits Consumed|CPU Credits Consumed|カウント|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
+|CPU Credits Remaining|未使用の CPU クレジット|カウント|平均|バーストに使用できるクレジットの合計|ディメンションなし|
+|CPU Credits Consumed|使用済みの CPU クレジット|カウント|平均|仮想マシンによって消費されたクレジットの合計数|ディメンションなし|
 
 ## <a name="microsoftcustomerinsightshubs"></a>Microsoft.CustomerInsights/hubs
 
@@ -541,7 +540,7 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |OUTMSGS|送信メッセージ (非推奨)|カウント|合計|名前空間の送信メッセージの総数。 このメトリックは推奨されません。 代わりに、"送信メッセージ" メトリックを使ってください。|ディメンションなし|
 |EHOUTMSGS|送信メッセージ|カウント|合計|名前空間の送信メッセージの総数|ディメンションなし|
 |EHINMBS|受信バイト数 (非推奨)|Bytes|合計|名前空間の Event Hub 受信メッセージのスループット。 このメトリックは推奨されません。 代わりに、"着信バイト数" メトリックを使ってください。|ディメンションなし|
-|EHINBYTES|着信バイト数|Bytes|合計|名前空間の Event Hub 受信メッセージのスループット|ディメンションなし|
+|EHINBYTES|着信バイト数|Bytes|合計|名前空間のEvent Hub 受信メッセージのスループット|ディメンションなし|
 |EHOUTMBS|送信バイト数 (非推奨)|Bytes|合計|名前空間の Event Hub 送信メッセージのスループット。 このメトリックは推奨されません。 代わりに、"発信バイト数" メトリックを使ってください。|ディメンションなし|
 |EHOUTBYTES|発信バイト数|Bytes|合計|名前空間の Event Hub 送信メッセージのスループット|ディメンションなし|
 |EHABL|アーカイブ バックログ メッセージ|カウント|合計|名前空間のバックログ内の Event Hub アーカイブ メッセージ|ディメンションなし|
@@ -596,8 +595,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|ディメンション|
 |---|---|---|---|---|---|
-|VipAvailability|VIP Availability (VIP 可用性)|カウント|平均|プローブの結果に基づく、VIP エンドポイントの可用性|VipAddress、VipPort|
-|DipAvailability|DIP Availability (DIP 可用性)|カウント|平均|プローブの結果に基づく、DIP エンドポイントの可用性|ProtocolType、DipPort、VipAddress、VipPort、DipAddress|
+|VipAvailability|VIP 可用性|カウント|平均|プローブの結果に基づく、VIP エンドポイントの可用性|VipAddress、VipPort|
+|DipAvailability|DIP 可用性|カウント|平均|プローブの結果に基づく、DIP エンドポイントの可用性|ProtocolType、DipPort、VipAddress、VipPort、DipAddress|
 |ByteCount|Byte Count (バイト数)|カウント|合計|期間内に送信された合計バイト数|VipAddress、VipPort、Direction|
 |PacketCount|Packet Count (パケット数)|カウント|合計|期間内に送信された合計パケット数|VipAddress、VipPort、Direction|
 |SYNCount|SYN Count (SYN 数)|カウント|合計|期間内に送信された合計 SYN パケット数|VipAddress、VipPort、Direction|
@@ -607,27 +606,27 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 
 |メトリック|メトリックの表示名|単位|集計の種類|Description|ディメンション|
 |---|---|---|---|---|---|
-|PacketsInDDoS|Inbound packets DDoS (DDoS 受信パケット数)|CountPerSecond|平均|DDoS 受信パケット数|ディメンションなし|
-|PacketsDroppedDDoS|Inbound packets dropped DDoS (DDoS 受信パケット破棄数)|CountPerSecond|平均|DDoS 受信パケット破棄数|ディメンションなし|
-|PacketsForwardedDDoS|Inbound packets forwarded DDoS (DDoS 受信パケット転送数)|CountPerSecond|平均|DDoS 受信パケット転送数|ディメンションなし|
-|TCPPacketsInDDoS|Inbound TCP packets DDoS (DDoS 受信 TCP パケット数)|CountPerSecond|平均|DDoS 受信 TCP パケット数|ディメンションなし|
-|TCPPacketsDroppedDDoS|Inbound TCP packets dropped DDoS (DDoS 受信 TCP パケット破棄数)|CountPerSecond|平均|DDoS 受信 TCP パケット破棄数|ディメンションなし|
-|TCPPacketsForwardedDDoS|Inbound TCP packets forwarded DDoS (DDoS 受信 TCP パケット転送数)|CountPerSecond|平均|DDoS 受信 TCP パケット転送数|ディメンションなし|
-|UDPPacketsInDDoS|Inbound UDP packets DDoS (DDoS 受信 UDP パケット数)|CountPerSecond|平均|DDoS 受信 UDP パケット数|ディメンションなし|
-|UDPPacketsDroppedDDoS|Inbound UDP packets dropped DDoS (DDoS 受信 UDP パケット破棄数)|CountPerSecond|平均|DDoS 受信 UDP パケット破棄数|ディメンションなし|
+|PacketsInDDoS|DDoS 受信パケット数|CountPerSecond|平均|DDoS 受信パケット数|ディメンションなし|
+|PacketsDroppedDDoS|DDoS 受信パケット破棄数|CountPerSecond|平均|DDoS 受信パケット破棄数|ディメンションなし|
+|PacketsForwardedDDoS|DDoS 受信パケット転送数|CountPerSecond|平均|DDoS 受信パケット転送数|ディメンションなし|
+|TCPPacketsInDDoS|DDoS 受信 TCP パケット数|CountPerSecond|平均|DDoS 受信 TCP パケット数|ディメンションなし|
+|TCPPacketsDroppedDDoS|DDoS 受信 TCP パケット破棄数|CountPerSecond|平均|DDoS 受信 TCP パケット破棄数|ディメンションなし|
+|TCPPacketsForwardedDDoS|DDoS 受信 TCP パケット転送数|CountPerSecond|平均|DDoS 受信 TCP パケット転送数|ディメンションなし|
+|UDPPacketsInDDoS|DDoS 受信 UDP パケット数|CountPerSecond|平均|DDoS 受信 UDP パケット数|ディメンションなし|
+|UDPPacketsDroppedDDoS|DDoS 受信 UDP パケット破棄数|CountPerSecond|平均|DDoS 受信 UDP パケット破棄数|ディメンションなし|
 |UDPPacketsForwardedDDoS|Inbound UDP packets forwarded DDoS (DDoS 受信 UDP パケット転送数)|CountPerSecond|平均|Inbound UDP packets forwarded DDoS (DDoS 受信 UDP パケット転送数)|ディメンションなし|
-|BytesInDDoS|Inbound bytes DDoS (DDoS 受信バイト数)|BytesPerSecond|平均|DDoS 受信バイト数|ディメンションなし|
-|BytesDroppedDDoS|Inbound bytes dropped DDoS (DDoS 受信バイト破棄数)|BytesPerSecond|平均|DDoS 受信バイト破棄数|ディメンションなし|
-|BytesForwardedDDoS|Inbound bytes forwarded DDoS (DDoS 受信バイト転送数)|BytesPerSecond|平均|DDoS 受信バイト転送数|ディメンションなし|
-|TCPBytesInDDoS|Inbound TCP bytes DDoS (DDoS 受信 TCP バイト数)|BytesPerSecond|平均|DDoS 受信 TCP バイト数|ディメンションなし|
-|TCPBytesDroppedDDoS|Inbound TCP bytes dropped DDoS (DDoS 受信 TCP バイト破棄数)|BytesPerSecond|平均|DDoS 受信 TCP バイト破棄数|ディメンションなし|
-|TCPBytesForwardedDDoS|Inbound TCP bytes forwarded DDoS (DDoS 受信 TCP バイト転送数)|BytesPerSecond|平均|DDoS 受信 TCP バイト転送数|ディメンションなし|
-|UDPBytesInDDoS|Inbound UDP bytes DDoS (DDoS 受信 UDP バイト数)|BytesPerSecond|平均|DDoS 受信 UDP バイト数|ディメンションなし|
-|UDPBytesDroppedDDoS|Inbound UDP bytes dropped DDoS (DDoS 受信 UDP バイト破棄数)|BytesPerSecond|平均|DDoS 受信 UDP バイト破棄数|ディメンションなし|
-|UDPBytesForwardedDDoS|Inbound UDP bytes forwarded DDoS (DDoS 受信 UDP バイト転送数)|BytesPerSecond|平均|DDoS 受信 UDP バイト転送数|ディメンションなし|
-|IfUnderDDoSAttack|Under DDoS attack or not (DDoS 攻撃中かどうか)|カウント|平均|DDoS 攻撃中かどうか|ディメンションなし|
-|DDoSTriggerTCPPackets|Inbound TCP packets to trigger DDoS mitigation (DDoS 軽減をトリガーする受信 TCP パケット数)|CountPerSecond|平均|DDoS 軽減をトリガーする受信 TCP パケット数|ディメンションなし|
-|DDoSTriggerUDPPackets|Inbound UDP packets to trigger DDoS mitigation (DDoS 軽減をトリガーする受信 UDP パケット数)|CountPerSecond|平均|DDoS 軽減をトリガーする受信 UDP パケット数|ディメンションなし|
+|BytesInDDoS|DDoS 受信バイト数|BytesPerSecond|平均|DDoS 受信バイト数|ディメンションなし|
+|BytesDroppedDDoS|DDoS 受信バイト破棄数|BytesPerSecond|平均|DDoS 受信バイト破棄数|ディメンションなし|
+|BytesForwardedDDoS|DDoS 受信バイト転送数|BytesPerSecond|平均|DDoS 受信バイト転送数|ディメンションなし|
+|TCPBytesInDDoS|DDoS 受信 TCP バイト数|BytesPerSecond|平均|DDoS 受信 TCP バイト数|ディメンションなし|
+|TCPBytesDroppedDDoS|DDoS 受信 TCP バイト破棄数|BytesPerSecond|平均|DDoS 受信 TCP バイト破棄数|ディメンションなし|
+|TCPBytesForwardedDDoS|DDoS 受信 TCP バイト転送数|BytesPerSecond|平均|DDoS 受信 TCP バイト転送数|ディメンションなし|
+|UDPBytesInDDoS|DDoS 受信 UDP バイト数|BytesPerSecond|平均|DDoS 受信 UDP バイト数|ディメンションなし|
+|UDPBytesDroppedDDoS|DDoS 受信 UDP バイト破棄数|BytesPerSecond|平均|DDoS 受信 UDP バイト破棄数|ディメンションなし|
+|UDPBytesForwardedDDoS|DDoS 受信 UDP バイト転送数|BytesPerSecond|平均|DDoS 受信 UDP バイト転送数|ディメンションなし|
+|IfUnderDDoSAttack|DDoS 攻撃中かどうか|カウント|平均|DDoS 攻撃中かどうか|ディメンションなし|
+|DDoSTriggerTCPPackets|DDoS 軽減をトリガーする受信 TCP パケット数|CountPerSecond|平均|DDoS 軽減をトリガーする受信 TCP パケット数|ディメンションなし|
+|DDoSTriggerUDPPackets|DDoS 軽減をトリガーする受信 UDP パケット数|CountPerSecond|平均|DDoS 軽減をトリガーする受信 UDP パケット数|ディメンションなし|
 |VipAvailability|可用性|カウント|平均|期間内の IP アドレスの平均可用性|Port|
 |ByteCount|Byte Count (バイト数)|カウント|合計|期間内に送信された合計バイト数|Port、Direction|
 |PacketCount|Packet Count (パケット数)|カウント|合計|期間内に送信された合計パケット数|Port、Direction|
@@ -772,8 +771,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |dwu_limit|DWU 上限|カウント|最大値|DWU 上限|ディメンションなし|
 |dwu_consumption_percent|DWU の割合|Percent|最大値|DWU の割合|ディメンションなし|
 |dwu_used|使用済み DWU|カウント|最大値|使用済み DWU|ディメンションなし|
-|dw_cpu_percent|DW node level CPU percentage (DW ノード レベルの CPU の割合)|Percent|平均|DW ノード レベルの CPU の割合|dw_logical_node_id|
-|dw_physical_data_read_percent|DW node level Data IO percentage (DW ノード レベルのデータ IO の割合)|Percent|平均|DW ノード レベルのデータ IO の割合|dw_logical_node_id|
+|dw_cpu_percent|DW ノード レベルの CPU の割合|Percent|平均|DW ノード レベルの CPU の割合|dw_logical_node_id|
+|dw_physical_data_read_percent|DW ノード レベルのデータ IO の割合|Percent|平均|DW ノード レベルのデータ IO の割合|dw_logical_node_id|
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft.Sql/servers/elasticPools
 
@@ -814,8 +813,8 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 |---|---|---|---|---|---|
 |UsedCapacity|Used capacity (使用済み容量)|Bytes|平均|アカウントの使用済み容量|ディメンションなし|
 |トランザクション|トランザクション|カウント|合計|ストレージ サービスまたは指定された API 操作に対して行われた要求の数。 この数には、成功した要求と失敗した要求およびエラーが発生した要求が含まれます。 別の種類の応答の数には ResponseType ディメンションを使います。|ResponseType、GeoType、ApiName|
-|Ingress|イングレス|Bytes|合計|イングレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。|GeoType、ApiName|
-|Egress|エグレス|Bytes|合計|エグレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 そのため、この値は課金対象のエグレスを反映しません。|GeoType、ApiName|
+|Ingress|Ingress|Bytes|合計|イングレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのイングレスおよび Azure 内でのイングレスが含まれます。|GeoType、ApiName|
+|Egress|Egress|Bytes|合計|エグレス データの量 (バイト単位)。 この値には、外部クライアントから Azure Storage へのエグレスおよび Azure 内でのエグレスが含まれます。 そのため、この値は課金対象のエグレスを反映しません。|GeoType、ApiName|
 |SuccessServerLatency|Success Server Latency (成功サーバー待機時間)|ミリ秒|平均|成功した要求の処理に Azure Storage が使った平均待機時間 (ミリ秒単位)。 この値には、AverageE2ELatency で指定されているネットワーク待機時間は含まれません。|GeoType、ApiName|
 |SuccessE2ELatency|Success E2E Latency (成功 E2E 待機時間)|ミリ秒|平均|ストレージ サービスまたは指定された API 操作に対して行われた成功した要求の平均エンド ツー エンド待機時間 (ミリ秒単位)。 この値には、要求の読み取り、応答の送信、および応答の受信確認を受け取るために Azure Storage 内で必要な処理時間が含まれます。|GeoType、ApiName|
 |可用性|可用性|Percent|平均|ストレージ サービスまたは指定された API 操作の可用性の割合。 可用性は、TotalBillableRequests の値を取得し、それを該当する要求の数 (予期しないエラーが発生した要求を含む) で割ることによって、計算されます。 すべての予期しないエラーは、ストレージ サービスまたは指定された API 操作の可用性の低下をもたらします。|GeoType、ApiName|
@@ -1000,4 +999,3 @@ Azure Monitor では、複数の方法を使用してメトリックを操作で
 * [Azure Monitor のメトリックを確認します](monitoring-overview-metrics.md)
 * [メトリックでアラートを作成します](insights-receive-alert-notifications.md)
 * [メトリックをストレージ、Event Hub、または Log Analytics にエクスポートします](monitoring-overview-of-diagnostic-logs.md)
-

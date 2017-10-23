@@ -88,7 +88,6 @@
 ### [ScaleR と SparkR](hdinsight-hadoop-r-scaler-sparkr.md)
 ## HBase の使用
 ### [Phoenix および SQLLine を使用する](hdinsight-hbase-phoenix-squirrel-linux.md)
-### [リアルタイムのツイートの分析](hdinsight-hbase-analyze-twitter-sentiment.md)
 ### [仮想ネットワークでクラスターを作成する](hdinsight-hbase-provision-vnet.md)
 ### [HBase レプリケーションの構成](hdinsight-hbase-replication.md)
 ### [Java でアプリを開発する](hdinsight-hbase-build-java-maven-linux.md)
@@ -100,7 +99,7 @@
 #### [Maven で Java ベースのトポロジを開発する](hdinsight-storm-develop-java-topology.md)
 #### [Hadoop ツールで C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)
 #### [C# トポロジでイベントを処理する](hdinsight-storm-develop-csharp-event-hub-topology.md)
-#### [Java トポロジでイベントを処理する](hdinsight-storm-develop-java-event-hub-topology.md)
+#### [Java トポロジでイベントを処理する](https://azure.microsoft.com/resources/samples/hdinsight-java-storm-eventhub/)
 #### [リアルタイム センサー データを分析する](hdinsight-storm-sensor-data-analysis.md)
 #### [一定期間に発生したイベントを関連付ける](hdinsight-storm-correlation-topology.md)
 #### [Python を使用してトポロジを開発する](hdinsight-storm-develop-python-topology.md)

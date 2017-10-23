@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 12/6/2016
 ms.author: ancav
 ms.openlocfilehash: 240a230d09680672ccd5316470a87d047fab9fd1
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Azure Monitor の自動スケールの一般的なメトリック
 Azure Monitor の自動スケールを使用すると、テレメトリ データ (メトリック) に基づいて、実行インスタンス数を増減してスケールすることができます。 このドキュメントでは、一般的なメトリックについて説明します。必要に応じて利用してください。 Cloud Services とサーバー ファームの Azure Portal で、スケールに使用するリソースのメトリックを選択できます。 ただし、スケールには、さまざまなリソースのメトリックを選択できます。
@@ -77,9 +77,9 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \PhysicalDisk(_Total)\Disk Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Read Bytes/sec |BytesPerSecond |
 | \PhysicalDisk(_Total)\Disk Write Bytes/sec |BytesPerSecond |
-| \PhysicalDisk(_Total)\Avg. ディスク キューの長さ |カウント |
-| \PhysicalDisk(_Total)\Avg. Disk Read Queue Length |カウント |
-| \PhysicalDisk(_Total)\Avg. Disk Write Queue Length |Count |
+| \PhysicalDisk(_Total)\Avg.ディスク キューの長さ |カウント |
+| \PhysicalDisk(_Total)\Avg.Disk Read Queue Length |カウント |
+| \PhysicalDisk(_Total)\Avg.Disk Write Queue Length |Count |
 | \LogicalDisk(_Total)\% Free Space |Percent |
 | \LogicalDisk(_Total)\Free Megabytes |カウント |
 

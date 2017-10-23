@@ -16,10 +16,10 @@ ms.workload: data-management
 ms.date: 07/05/2017
 ms.author: sstein
 ms.openlocfilehash: 1925d4ff8f5b16a0df56de987f8653cfd8441c52
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-query-performance-insight"></a>Azure SQL Database Query Performance Insight
 リレーショナル データベースのパフォーマンスの管理とチューニングは、かなりの専門知識と時間の投入を必要とする困難な作業です。 Query Performance Insight を使用すると、短時間でデータベース パフォーマンスのトラブルシューティングを行うことができます。以下の情報が提供されます。
