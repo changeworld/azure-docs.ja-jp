@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.openlocfilehash: c3ffc819fcc442f87fb4985ecb08be8ec02ba957
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b8497f0331e9b7d19eed2e1c254849a1619f496a
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 7. 任意で次の値を設定します。
     - **[VLAN ID]**: VLAN ID を設定します。 このオプションは、ホストと AzS-BGPNAT01 が物理ネットワーク (およびインターネット) にアクセスするために VLAN ID を構成する必要がある場合にのみ使用されます。 
     - **[DNS Forwarder]\(DNS フォワーダ\)**: DNS サーバーは Azure Stack のデプロイの一部として作成されます。 ソリューション内のコンピューターにスタンプ外の名前解決を許可するには、既存のインフラストラクチャの DNS サーバーを提供します。 スタンプ内の DNS サーバーが、このサーバーに不明な名前解決の要求を送信します。
-    - **[タイム サーバー]**: 特定のタイム サーバーを設定します。 
+    - **[タイム サーバー]**: この必須フィールドはタイム サーバーを設定するもので、IP アドレスを指定する必要があります。 タイム サーバーの IP アドレスを検索するには、[pool.ntp.org](http:\\pool.ntp.org) にアクセスするか、time.windows.com に ping を実行します。 
 8. **[次へ]** をクリックします。 
 9. **[Verifying network interface card properties]\(ネットワーク インターフェイス カードのプロパティを確認しています\)** ページに、進行状況バーが表示されます。 
     - **[An update cannot be downloaded]\(更新プログラムをダウンロードできませんでした\)** と書かれている場合、ページの指示に従います。
