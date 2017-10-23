@@ -33,12 +33,12 @@ ms.lasthandoff: 10/11/2017
 | ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
 | ディスク ドライブ: 開発キット データ全般* |4 つのディスク。 各ディスクに最低 140 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 250 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
 | コンピューティング: CPU |デュアル ソケット: 12 個の物理コア (合計) |デュアル ソケット: 16 個の物理コア (合計) |
-| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です。)|
+| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です)。|
 | コンピューティング: BIOS |Hyper-V 有効 (SLAT サポートあり) |Hyper-V 有効 (SLAT サポートあり) |
 | ネットワーク: NIC |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |
 | ハードウェア ロゴ認定 |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
 
-\* Azure から [Marketplace の項目](azure-stack-download-azure-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
+\* Azure から [Marketplace アイテム](azure-stack-download-azure-marketplace-item.md)の多くを追加する計画の場合は、この推奨容量より多くが必要です。
 
 **データ ディスク ドライブの構成:** すべてのデータ ドライブは同じ種類 (すべて SAS またはすべて SATA)、同じ容量である必要があります。 SAS ディスク ドライブを使う場合、ディスク ドライブは 1 つのパス経由で接続する必要があります (MPIO 、マルチパスはサポートされません)。
 
