@@ -14,19 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: bwren
+ms.openlocfilehash: 271747e25f319c76195ec643025d24c6b7cdc9c5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 98befb16d27387e8f65a27771a2a32c264119d74
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="export-log-analytics-data-to-power-bi"></a>Log Analytics データを Power BI にエクスポートする
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、Log Analytics データを Power BI にエクスポートするこのプロセスは動作しなくなります。  アップグレード前に作成した既存のスケジュールは、すべて無効になります。 
+> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、Log Analytics データを Power BI にエクスポートするこのプロセスは動作しなくなります。  また、アップグレード前に作成した既存のスケジュールすべてが無効になります。 Power BI エクスポート機能を有効にする機能は、アップグレードされたワークスペースで完全にリリースされるため、プレビュー機能の設定には表示されなくなります。 
 >
 > アップグレード後、Azure Log Analytics では Application Insights と同じプラットフォームが使用されるため、[Application Insights クエリを Power BI にエクスポートするプロセス](../application-insights/app-insights-export-power-bi.md#export-analytics-queries)と同じプロセスを使用して、Power BI に Log Analytics クエリをエクスポートします。  クエリは、この記事で説明する Analytics コンソールを使用するか、Log Search ポータルの画面上部にある **Power BI** ボタンを使用してエクスポートできます。
+>
+> アップグレードされたワークスペースで Power BI のエクスポート機能を使用するには、Azure のワークスペース リソースにアクセスする必要があります。 アクセス権がないユーザーの場合、アクセス権がない Power BI デスクトップにクエリをインポートしようとすると、エラー メッセージが表示されます。
 
 
 
@@ -62,7 +63,7 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 3. ページの上部にある **[Power BI]** ボタンをクリックして、**[Power BI]** ダイアログ ボックスを開きます。
 4. 次の表にある情報を入力して、 **[保存]**をクリックします。
 
-| プロパティ | 説明 |
+| プロパティ | Description |
 |:--- |:--- |
 | 名前 |Power BI スケジュールの一覧を表示するときにスケジュールを識別する名前。 |
 | 保存する検索条件 |実行するログ検索。  現在のクエリを選択するか、またはドロップダウン ボックスから既存の保存された検索を選択します。 |
@@ -126,4 +127,3 @@ Log Analytics から Power BI にエクスポートする前に、次の手順�
 ## <a name="next-steps"></a>次のステップ
 * [ログ検索](log-analytics-log-searches.md) について学習し、Power BI にエクスポートできるクエリを作成します。
 * [Power BI](http://powerbi.microsoft.com) について詳しく学習し、Log Analytics のエクスポートに基づく視覚エフェクトを作成します。
-

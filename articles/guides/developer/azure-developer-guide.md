@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/05/2017
 ms.author: glenga
+ms.openlocfilehash: f80f9f0e6d3fde438d27949a3fea001f37d59ee4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 2c90272a9d33795dca7839292bba38fa16fec3da
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="get-started-guide-for-azure-developers"></a>Azure 開発者向けファースト ステップ ガイド
 
 ## <a name="what-is-azure"></a>Azure とは
@@ -55,15 +53,9 @@ Azure は、アプリケーション開発とホスティングのニーズを�
 
 Web ベースのプロジェクトを最も短時間で公開できる方法が必要な場合は、Azure App Service をお勧めします。 App Service では、モバイル クライアントをサポートする Web アプリを拡張し、使用されている REST API を公開する作業も簡単です。 このプラットフォームには、ソーシャル プロバイダーを使用した認証、トラフィックベースの自動スケーリング、実稼働環境でのテスト、継続的かつコンテナーベースのデプロイの機能があります。
 
-App Service でアプリを作成する場合、次のいずれかの種類を選択します。
+Web アプリ、モバイル アプリ バックエンド、および API アプリを作成できます。
 
-- [Web Apps](../../app-service-web/app-service-web-overview.md): .NET、Java、PHP、Node.js、および Python で作成した Web サイトと Web アプリケーションをホストできます。
-
-- [Mobile Apps](../../app-service-mobile/app-service-mobile-value-prop.md): モバイル デバイスからのアクセスをサポートするように Web Apps を拡張します。 ソーシャル プロバイダーと Azure Active Directory (Azure AD) による認証が使用可能で、バックエンド記憶域があり、プッシュ通知のために [Azure Notification Hubs](../../notification-hubs/notification-hubs-push-notification-overview.md) と統合されています。
-
-- [API Apps](../../app-service-api/app-service-api-apps-why-best-platform.md): Swagger メタデータを使用するとより安全に API をクラウドに公開できるので、クライアントから簡単に API を利用できます。
-
-上に示した 3 つのアプリケーションの種類は、いずれも App Service ランタイムを共有しているため、1 つのプロジェクトやソリューションから、Web サイトのホスト、モバイル クライアントのサポート、自作 API を Azure で公開することのすべてを行うことができます。 App Service の詳細については、「[App Service の特長](../../app-service/app-service-how-works-readme.md)」を参照してください。
+上に示した 3 つのアプリケーションの種類は、いずれも App Service ランタイムを共有しているため、1 つのプロジェクトやソリューションから、Web サイトのホスト、モバイル クライアントのサポート、自作 API を Azure で公開することのすべてを行うことができます。 App Service の詳細については、「[Web Apps の概要](../../app-service/app-service-web-overview.md)」を参照してください。
 
 App Service は DevOps を念頭に置いて設計されています。 GitHub webhook、Jenkins、Visual Studio Team Services、TeamCity など、公開と継続的インテグレーション デプロイに対応する多様なツールをサポートしています。
 
@@ -71,7 +63,7 @@ App Service は DevOps を念頭に置いて設計されています。 GitHub w
 
 >**使用する場合**: App Service を使用するのは、既存の Web アプリケーションを Azure に移行する場合、および Web アプリ用に完全に管理されているホスティング プラットフォームが必要な場合です。 また、モバイル クライアントをサポートする必要がある場合、またはアプリと共に REST API を公開する必要がある場合にも App Service を使用できます。
 
->**作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service-web/web-sites-dotnet-get-started.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service-api/app-service-api-dotnet-get-started.md)でも簡単に作成、デプロイできます。
+>**作業開始**: App Service を使用すると、初めての [Web アプリ](../../app-service/app-service-web-get-started-dotnet.md)、[モバイル アプリ](../../app-service-mobile/app-service-mobile-ios-get-started.md)、[API アプリ](../../app-service/app-service-web-tutorial-rest-api.md)でも簡単に作成、デプロイできます。
 
 >**今すぐ試す**: App Service なら、Azure アカウントを新規登録することなく、一時的なアプリをプロビジョニングしてプラットフォームを試すことができます。 プラットフォームと [Azure App Service アプリの作成](https://tryappservice.azure.com/)を試してみましょう。
 
@@ -130,7 +122,7 @@ Azure では、アプリケーション ホスティングに加え、クラウ�
 
     >**作業開始**: [DocumentDB C# コンソール アプリケーションを構築します](../../documentdb/documentdb-get-started.md)。 MongoDB 開発者の場合は、「[Azure Cosmos DB の概要: MongoDB 用 API](../../documentdb/documentdb-protocol-mongodb.md)」を参照してください。
 
-[Azure Data Factory](../../data-factory/data-factory-introduction.md) を使用して既存のオンプレミス データを Azure に移行することができます。 データをクラウドに移行する準備ができていない場合は、BizTalk Services の[ハイブリッド接続](../../biztalk-services/integration-hybrid-connection-overview.md)を使用して、App Service でホストされるアプリをオンプレミス リソースに接続できます。 また、オンプレミス アプリケーションから Azure データと記憶域サービスに接続することもできます。
+[Azure Data Factory](../../data-factory/introduction.md) を使用して既存のオンプレミス データを Azure に移行することができます。 データをクラウドに移行する準備ができていない場合は、BizTalk Services の[ハイブリッド接続](../../biztalk-services/integration-hybrid-connection-overview.md)を使用して、App Service でホストされるアプリをオンプレミス リソースに接続できます。 また、オンプレミス アプリケーションから Azure データと記憶域サービスに接続することもできます。
 
 #### <a name="docker-support"></a>Docker のサポート
 
@@ -196,7 +188,7 @@ VM をプロビジョニングするか、継続的インテグレーション�
 
 >**今すぐ試す:** [DevOps 統合のいくつかを試しましょう](https://azure.microsoft.com/try/devops/)。
 
->**作業開始**: App Service アプリの DevOps オプションの詳細については、「[Azure App Service への継続的なデプロイ](../../app-service-web/app-service-continuous-deployment.md)」を参照してください。
+>**作業開始**: App Service アプリの DevOps オプションの詳細については、「[Azure App Service への継続的なデプロイ](../../app-service/app-service-continuous-deployment.md)」を参照してください。
 
 
 ## <a name="azure-regions"></a>Azure Azure リージョン
@@ -333,4 +325,3 @@ Azure には、Azure サブスクリプションのリソース使用状況と�
 Azure でアプリケーションまたはソリューションをデプロイした後は、アラートを作成して、アラートに定義されている使用制限に近づいたときに電子メールを送信することができます。
 
 >**使用開始**: 詳細については、「[Microsoft Azure サブスクリプションの課金アラートまたはクレジット アラートの設定](../../billing-set-up-alerts.md)」を参照してください。
-

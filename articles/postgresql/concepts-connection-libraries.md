@@ -8,19 +8,18 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/15/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 7099e26fd749820ab6869c0262e1f97d993ab7b2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/26/2017
+ms.openlocfilehash: 35b7f026aa05fb16d57f49b93edff831b43268db
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connection-libraries-for-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の接続ライブラリ
-このトピックには、アプリケーションをプログラミングして PostgreSQL for Azure Database に接続およびクエリを実行するときに開発者が使用できるライブラリやドライバーの一覧を示します。
+このトピックでは、Azure Database for PostgreSQL に接続し、クエリするアプリケーションのプログラミングに使用できるライブラリとドライバーを紹介します。
 
 ## <a name="client-interfaces"></a>クライアント インターフェイス
-PostgreSQL サーバーに接続するほとんどの言語クライアント ライブラリが外部プロジェクトです。このクライアント ライブラリは個別に配布され、 Windows、Linux、および Mac プラットフォームでサポートされます。 一般的なクライアント ドライバーの一部が一覧表示されます。
+PostgreSQL サーバーへの接続に使用されるほとんどの言語クライアント ライブラリは外部プロジェクトであり、個別に配布されています。 これらのライブラリは、Windows、Linux、および Mac プラットフォームでサポートされます。 一般的なクライアント ドライバーをいくつか次の表に示します。
 
 | **言語** | **クライアント インターフェイス** | **追加情報** | **ダウンロード** |
 |--------------|----------------------------------------------------------------|-------------------------------------|--------------------------------------------------------------------|
@@ -39,4 +38,3 @@ PostgreSQL サーバーに接続するほとんどの言語クライアント �
 これらのクイックスタートを読み、次の言語を使用して Azure Database for PostgreSQL に接続およびクエリを実行する方法について確認します。
 
 [Python](./connect-python.md) | [Node.JS](./connect-nodejs.md) | [.NET (C#)](./connect-csharp.md)
-

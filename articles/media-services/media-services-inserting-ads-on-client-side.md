@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 09/26/2016
 ms.author: juliako
 ms.openlocfilehash: 52ba731f88c630830560e3cf8406ba2e9613c8a5
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="inserting-ads-on-the-client-side"></a>クライアント側での広告の挿入
 このトピックでは、クライアント側でさまざまな種類の広告を挿入する方法について説明します。
@@ -154,7 +154,7 @@ VAST ファイルは、表示する広告を指定します。 次の XML に、
     </Creative>
 
 
-<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource**> HTML 以外のリソースを説明し、リソースの表示方法を指定する creativeType 属性を定義します。
+<**NonLinearAds**> 要素には 1 つ以上の <**NonLinear**> 要素が含まれており、それぞれ非線形広告を記述できます。 <**NonLinear**> 要素は、非線形広告のリソースを指定します。 このリソースは、<**StaticResouce**>、<**IFrameResource**>、または <**HTMLResouce**> です。 <**StaticResource** は、HTML 以外のリソースを記述し、リソースの表示方法を指定する creativeType 属性を定義します。
 
 Image/gif、image/jpeg、image/png – リソースが HTML <**img**> タグで表示されます。
 
@@ -605,7 +605,7 @@ Microsoft Media Platform: Player Framework for iOS には、このフレーム�
     }
 
    次のサンプルは、事前バインディング VAST 広告のスケジュールを設定する方法を示しています。
-事前バインディング VAST 広告//Download VAST ファイルの場合の例: 4 スケジュール (! [framework.adResolver downloadManifest: マニフェスト & withURL: [NSURL URLWithString: @"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]) {[自己 logFrameworkError];} else {adLinearTime.startTime = 7 です。adLinearTime.duration = 0 になります。
+//Example:4 Schedule an early binding VAST ad //Download the VAST file if (![framework.adResolver downloadManifest:&manifest withURL:[NSURL URLWithString:@"http://portalvhdsq3m25bf47d15c.blob.core.windows.net/vast/PlayerTestVAST.xml"]]) { [self logFrameworkError]; } else { adLinearTime.startTime = 7; adLinearTime.duration = 0;
 
         // Create AdInfo instance
         AdInfo *vastAdInfo2 = [[[AdInfo alloc] init] autorelease];

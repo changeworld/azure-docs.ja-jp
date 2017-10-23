@@ -14,13 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: robb
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8f987d079b8658d591994ce678f4a09239270181
-ms.openlocfilehash: 90d39f75f547eff9c87997eb83460875c12dcfe4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/18/2017
-
-
+ms.openlocfilehash: 2ee66e0f41868d7d5411605596a22c00b5712896
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Microsoft Azure 診断の 1.3 以降の構成スキーマ
 > [!NOTE]
@@ -526,7 +524,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
  高速クエリ用に最適化されたパフォーマンス カウンター テーブルを生成できます。 **PerformanceCounters** 要素で定義された各パフォーマンス カウンターが、パフォーマンス カウンター テーブルだけでなくメトリック テーブルにも保存されます。  
 
- **resourceId** 属性は必須です。  Azure 診断プログラムのデプロイ先仮想マシンのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
+ **resourceId** 属性は必須です。  Azure 診断プログラムのデプロイ先仮想マシンまたは仮想マシン スケール セットのリソース ID です。 [Azure Portal](https://portal.azure.com) から **resourceID** を取得します。 **[参照]**  ->  **[リソース グループ]**  ->  **<名前\>** の順に選択します。 **[プロパティ]** タイルをクリックし、**[ID]** フィールドの値をコピーします。  
 
 |子要素|Description|  
 |--------------------|-----------------|  
@@ -647,11 +645,10 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |子要素|説明|  
 |--------------------|-----------------|  
-|**StorageAccount**|使用するストレージ アカウント。 次の属性は必須です<br /><br /> - **name** - ストレージ アカウントの名前。<br /><br /> - **key** - ストレージ アカウントへのキー。<br /><br /> - **endpoint** - ストレージ アカウントにアクセスするためのエンドポイント。 <br /><br /> -**sasToken** (1.8.1 で追加) - ストレージ アカウント キーの代わりに SAS トークンをプライベート構成に指定できます。 指定した場合、ストレージ アカウント キーは無視されます。 <br />SAS トークンの要件: <br />- アカウントの SAS トークンのみをサポートします。 <br />- *b**t* のサービスの種類が必要です。 <br /> - *a**c**u**w* のアクセス許可が必要です。 <br /> - *c**o* のリソースの種類が必要です。 <br /> - HTTPS プロトコルのみをサポートします。 <br /> - 開始時刻と有効期限を有効にする必要があります。|  
+|**StorageAccount**|使用するストレージ アカウント。 次の属性は必須です<br /><br /> - **name** - ストレージ アカウントの名前。<br /><br /> - **key** - ストレージ アカウントへのキー。<br /><br /> - **endpoint** - ストレージ アカウントにアクセスするためのエンドポイント。 <br /><br /> -**sasToken** (1.8.1 で追加) - ストレージ アカウント キーの代わりに SAS トークンをプライベート構成に指定できます。指定した場合、ストレージ アカウント キーは無視されます。 <br />SAS トークンの要件: <br />- アカウントの SAS トークンのみをサポートします。 <br />- *b**t* のサービスの種類が必要です。 <br /> - *a**c**u**w* のアクセス許可が必要です。 <br /> - *c**o* のリソースの種類が必要です。 <br /> - HTTPS プロトコルのみをサポートします。 <br /> - 開始時刻と有効期限を有効にする必要があります。|  
 
 
 ## <a name="isenabled-element"></a>IsEnabled 要素  
  *ツリー: ルート - DiagnosticsConfiguration - IsEnabled*
 
  ブール値。 `true` を使用して診断を有効にするか、`false` を使用して診断を無効にします。
-

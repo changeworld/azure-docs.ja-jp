@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/27/2016
 ms.author: hascipio
 ms.openlocfilehash: 093d3ee3ecce89c86a12e7e216072ece57f82f9d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="portals-you-will-need"></a>必要なポータル
 プランを発行するプロセスを開始する前に、必要な各種ポータルを紹介します。 以下に、デベロッパー センター、Azure 発行ポータル、および Azure Portal の概要を、やり取りする順番で示します。                                                                            
@@ -35,7 +35,7 @@ Microsoft デベロッパー センター アカウントの作成は、1 回限
 > 
 
 ### <a name="identityaccount-used"></a>使用する ID とアカウント
-理想的には、これは、配布リストまたはセキュリティ グループ (@ など azurepublishing*partnercompany*.com)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
+配布リストまたはセキュリティ グループが理想です (azurepublishing@*partnercompany*.com など)。 配布リストまたはセキュリティ グループは、Microsoft アカウントとして登録する **必要があります** 。
 
 > [!TIP]
 > 個人に依存することがないように、配布リストまたはセキュリティ グループを使用することをお勧めします。ただし、個人アカウントも同様に使用できます。

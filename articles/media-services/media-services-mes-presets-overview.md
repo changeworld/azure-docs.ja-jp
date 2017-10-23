@@ -1,9 +1,9 @@
 ---
-title: "MES (Media Encoder Standard) 用のタスク プリセット | Microsoft Docs"
-description: "このトピックでは、MES (Media Encoder Standard) 用のタスク プリセットの概要を説明します。"
+title: "Media Encoder Standard (MES) 用のタスク プリセット | Microsoft Docs"
+description: "このトピックでは、Media Encoder Standard (MES) 用のサービスが定義されたサンプル プリセットの概要を説明します。"
 author: Juliako
-manager: cfowler
-editor: 
+manager: cfow
+editor: johndeu
 services: media-services
 documentationcenter: 
 ms.assetid: f243ed1c-ac9c-4300-a5f7-f092cf9853b9
@@ -12,29 +12,29 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/01/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cea53acc33347b9e6178645f225770936788f807
-ms.openlocfilehash: e9018ffa74c2895560adbd4c0d2b83ee67e9eb1c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/03/2017
-
+ms.openlocfilehash: 5753b1dffe5a1a4ee069b83f58e9c2dac433b89d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="sample-presets-for-media-encoder-standard-mes"></a>Media Encoder Standard (MES) 用のタスク プリセット
 
-# <a name="task-presets-for-mes-media-encoder-standard"></a>MES (Media Encoder Standard) 用のタスク プリセット
+**Media Encoder Standard** で事前に定義された一連のシステム エンコードを使って、エンコード ジョブを作成できます。 Media Services でのストリーミング用にビデオをエンコードする場合は、"アダプティブ ストリーミング" プリセットを使うことをお勧めします。 このプリセットを指定すると、Media Encoder Standard は[ビットレート ラダーを自動生成](media-services-autogen-bitrate-ladder-with-mes.md)します。 
 
-**Media Encoder Standard** で定義されている一連のエンコード プリセットを使って、エンコード ジョブを作成できます。 Media Services でのストリーミング用にビデオをエンコードする場合は、"アダプティブ ストリーミング" プリセットを使うことをお勧めします。 このプリセットを指定すると、Media Encoder Standard は[ビットレート ラダーを自動生成](media-services-autogen-bitrate-ladder-with-mes.md)します。 
-
-ただし、エンコード プリセットをカスタマイズする必要がある場合は、このセクションで定義されているエンコード プリセットのいずれかをカスタム構成のテンプレートとして使う必要があります。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
+### <a name="creating-custom-presets-from-samples"></a>サンプルからカスタム プリセットを作成する
+Media Services では、特定のエンコーディング ニーズと要件を満たすようにプリセットのすべての値をカスタマイズできます。 エンコード プリセットをカスタマイズする必要がある場合、カスタム構成のテンプレートとして、このセクションで説明されている以下のシステム プリセットのいずれかから始めることができます。 これらのプリセット内の各要素の意味と各要素に有効な値の説明については、「[Media Encoder Standard スキーマ](media-services-mes-schema.md)」を参照してください。  
   
 > [!NOTE]
->  4k エンコードのプリセットを使用する場合は、`S3` 予約ユニットの種類を取得する必要があります。 詳細については、「[Encoding の規模の設定方法](https://azure.microsoft.com/en-us/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
-  
-Media Encoder Standard では、回転は既定で有効になっています。 ビデオがスマート フォンやその他のモバイル デバイスで縦モードで記録されている場合、これらのプリセットでは、ビデオはエンコードの実行前に既定で横モードに回転されます (この動作は、ビデオの回転を手動で操作する Azure Media Encoder とは異なります。[こちらのブログ](http://azure.microsoft.com/blog/2014/08/21/advanced-encoding-features-in-azure-media-encoder/)の「Video Rotation (ビデオの回転)」を参照してください)。  
-  
-使用可能なプリセット:  
-  
+>  4k エンコードのプリセットを使用する場合は、`S3` 予約ユニットの種類を取得する必要があります。 詳細については、「 [Encoding の規模の設定方法](https://azure.microsoft.com/documentation/articles/media-services-portal-encoding-units)」を参照してください。  
+
+#### <a name="video-rotation-default-setting-in-presets"></a>プリセットのビデオ回転の既定設定:
+Media Encoder Standard では、ビデオの回転は既定で有効になっています。 モバイル デバイスで縦向きモードでビデオを録画した場合、これらのプリセットを使用すると、エンコード前に横向きモードに回転されます。
+ 
+## <a name="available-presets"></a>使用可能なプリセット: 
+
  [H264 Multiple Bitrate 1080p Audio 5.1](media-services-mes-preset-H264-Multiple-Bitrate-1080p-Audio-5.1.md): GOP がアラインメントされた、ビットレートが 6,000 kbps ～ 400 kbps、音声が AAC 5.1 である 8 つの MP4 ファイルを生成します。  
   
  [H264 Multiple Bitrate 1080p](media-services-mes-preset-H264-Multiple-Bitrate-1080p.md): GOP がアラインメントされた、ビットレートが 6,000 kbps ～ 400 kbps、音声が AAC ステレオである 8 つの MP4 ファイルを生成します。  
@@ -86,4 +86,3 @@ Media Encoder Standard では、回転は既定で有効になっています。
  [H264 Single Bitrate Low Quality SD for Android](media-services-mes-preset-H264-Single-Bitrate-Low-Quality-SD-for-Android.md): ビットレートが 56 kbps、音声が AAC ステレオである 1 つの MP4 ファイルを生成します。  
   
  Media Services のエンコーダーに関する情報については、[Encoding On-Demand Azure Media Services を使用したオンデマンド エンコード](https://azure.microsoft.com/en-us/documentation/articles/media-services-encode-asset/)に関するページを参照してください。
-

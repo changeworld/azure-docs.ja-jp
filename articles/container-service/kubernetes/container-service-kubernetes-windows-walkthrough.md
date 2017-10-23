@@ -16,14 +16,12 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017, mvc
+ms.openlocfilehash: 467a08b1ba9f7c0070dfa0cf3df18326cf49ca70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0e862492c9e17d0acb3c57a0d0abd1f77de08b6a
-ms.openlocfilehash: 6a03f668c6b9e18bf80cb04ea9feddeef4b6bd9e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-kubernetes-cluster-for-windows-containers"></a>Windows コンテナー用の Kubernetes クラスターをデプロイする
 
 Azure CLI は、コマンドラインやスクリプトで Azure リソースを作成および管理するために使用します。 このガイドでは、Azure CLI を使用して、[Kubernetes](https://kubernetes.io/docs/home/) クラスターを [Azure Container Service](../container-service-intro.md) にデプロイする方法を詳しく説明します。 クラスターをデプロイしたら、Kubernetes `kubectl` コマンドライン ツールを使用してクラスターに接続し、最初の Windows コンテナーをデプロイします。
@@ -168,7 +166,7 @@ iis      1/1          Running       0           32s
 kubectl expose pods iis --port=80 --type=LoadBalancer
 ```
 
-このコマンドにより、サービスと、サービスのためのパブリック IP アドレスを持つ [Azure Load Balancer ルール](container-service-kubernetes-load-balancing.md)が、Kubernetes によって作成されます。 
+このコマンドにより、サービスと、サービスのためのパブリック IP アドレスを持つ Azure Load Balancer ルールが、Kubernetes によって作成されます。 
 
 次のコマンドを実行して、サービスの状態を確認します。
 
@@ -203,4 +201,3 @@ az group delete --name myResourceGroup
 
 > [!div class="nextstepaction"]
 > [ACS Kubernetes クラスターの管理](container-service-tutorial-kubernetes-prepare-app.md)
-

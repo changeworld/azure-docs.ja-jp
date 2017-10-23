@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: fc4172b27b93a49c613eb915252895e845b96892
-ms.openlocfilehash: e9cb2f03600d49123693fcc88742d6fc75d9de16
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/12/2017
-
+ms.openlocfilehash: b4f8855fe6480bc58acfbbb53819f6eabe362bdb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-build-a-smooth-streaming-windows-store-application"></a>スムーズ ストリーミング用の Windows ストア アプリケーションを作成する方法
 
@@ -33,8 +32,11 @@ Windows 8 用 Smooth Streaming Client SDK を使用すると、オンデマン�
 4. スムーズ ストリーミング トラックの選択
 
 ## <a name="prerequisites"></a>前提条件
-* Windows 8 32 ビットまたは 64 ビット。 MSDN から [Windows 8 Enterprise Evaluation](http://msdn.microsoft.com/evalcenter/jj554510.aspx) を入手することもできます。
-* Visual Studio 2012 または Visual Studio Express 2012 (またはそれ以降のバージョン)。 評価版は [こちら](http://www.microsoft.com/visualstudio/11/downloads)から入手できます。
+> [!NOTE]
+> Visual Studio 2017 では、Windows ストア プロジェクト バージョン 8.1 以前のプロジェクトはサポートされていません。  詳細については、「[Visual Studio 2017 の対象プラットフォームと互換性](https://www.visualstudio.com/en-us/productinfo/vs2017-compatibility-vs)」を参照してください。
+
+* Windows 8 32 ビットまたは 64 ビット。
+* Visual Studio バージョン 2012 から 2015。
 * [Windows 8 用 Microsoft Smooth Streaming Client SDK](http://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Homehttp://visualstudiogallery.msdn.microsoft.com/04423d13-3b3e-4741-a01c-1ae29e84fea6?SRC=Home)。
 
 各レッスンの完成したソリューションは、MSDN デベロッパー サンプル コード集 (コード ギャラリー) からダウンロードできます: 
@@ -59,7 +61,7 @@ Windows ストア アプリケーションの開発の詳細については、�
 
 **Windows ストア プロジェクトを作成するには**
 
-1. Visual Studio 2012 またはそれ以降を実行します。
+1. Visual Studio を実行します。バージョン 2012 から 2015 がサポートされます。
 2. **[ファイル]** メニューの **[新規作成]** をクリックし、**[プロジェクト]** をクリックします。
 3. [新しいプロジェクト] ダイアログ ボックスで、次の値を入力または選択します。
 
@@ -975,5 +977,4 @@ MediaElement コントロールは、そのままではスムーズ ストリー
 
 [PlayerApplication]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-1.png
 [CodeViewPic]: ./media/media-services-build-smooth-streaming-apps/SSClientWin8-2.png
-
 

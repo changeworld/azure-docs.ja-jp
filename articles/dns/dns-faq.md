@@ -11,15 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/21/2017
+ms.date: 09/22/2017
 ms.author: jonatul
-translationtype: Human Translation
-ms.sourcegitcommit: 9eafbc2ffc3319cbca9d8933235f87964a98f588
-ms.openlocfilehash: f365574a12047f6952209dc3883af32a2e9ecd1e
-ms.lasthandoff: 04/22/2017
-
+ms.openlocfilehash: 9d786ce4d06ec95a647a755bed51f824e72ad04c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-dns-faq"></a>Azure DNS に関する FAQ
 
 ## <a name="about-azure-dns"></a>Azure DNS について
@@ -75,12 +74,9 @@ Azure DNS では、"静的な" DNS ドメインしかサポートされません
 これはバックログで追跡中の機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar)できます。
 
 ### <a name="does-azure-dns-support-private-domains"></a>Azure DNS では "プライベート" ドメインはサポートされますか。
+"プライベート" ドメインのサポートは、プライベート DNS ゾーンを使用して実装されます。  この機能は、現在プレビューとして使用できます。  プライベート DNS ゾーンは、インターネットに接続された Azure DNS ゾーンと同じツールを使用して管理されていますが、指定した仮想ネットワーク内からのみ解決できます。  詳細については、こちらの[概要](private-dns-overview.md)を参照してください。
 
-いいえ。 現在、Azure DNS ではインターネットに接続しているドメインしかサポートされません。
-
-これはバックログで追跡中の機能です。 フィードバック サイトを使用して[この機能のサポートを登録](https://feedback.azure.com/forums/217313-networking/suggestions/10737696-enable-split-dns-for-providing-both-public-and-int)できます。
-
-Azure での内部 DNS オプションの詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
+Azure での他の内部 DNS オプションの詳細については、「[VM とロール インスタンスの名前解決](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md)」を参照してください。
 
 ### <a name="does-azure-dns-support-dnssec"></a>Azure DNS では DNSSEC はサポートされますか。
 
@@ -154,8 +150,9 @@ Azure DNS に国際化ドメイン名 (IDN) を構成するには、まずゾー
 
 [Azure DNS について学ぶ](dns-overview.md)
 <br>
+[プライベート ドメインに Azure DNS を使用する方法を学ぶ](private-dns-overview.md)
+<br>
 [DNS ゾーンとレコードについて学ぶ](dns-zones-records.md)
 <br>
 [Azure DNS を使ってみる](dns-getstarted-portal.md)
-
 

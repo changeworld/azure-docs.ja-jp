@@ -15,16 +15,16 @@ ms.topic: article
 ms.date: 04/27/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 62ad8183cc6e9f56255b2729a04ee7710d00a21a
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-handle-edifact-documents-having-unh25-segment"></a>UNH2.5 セグメントを持つ EDIFACT ドキュメントを処理する方法
 EDIFACT ドキュメント内に UNH2.5 がある場合は、スキーマの検索に使用します。 
 
-例: UNH フィールドが**EAN008** EDIFACT メッセージに  
-UNH + SSDD1 + ORDERS: D: 03B: 解除:**EAN008**'  
+例: EDIFACT メッセージの UNH フィールドは **EAN008** です  
+UNH+SSDD1+ORDERS:D:03B:UN:**EAN008**'  
 
 メッセージを処理する手順は次のとおりです。 
 1. スキーマを更新する

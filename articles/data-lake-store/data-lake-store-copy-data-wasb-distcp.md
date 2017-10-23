@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 06/29/2017
+ms.date: 10/03/2017
 ms.author: nitinme
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4f2230ea0cc5b3e258a1a26a39e99433b04ffe18
-ms.openlocfilehash: 12aea210308636677ba2905887ddd24dc5c35238
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/25/2017
-
-
+ms.openlocfilehash: 1c9e100b4a0e7781f0782a49835d50492895ded1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-distcp-to-copy-data-between-azure-storage-blobs-and-data-lake-store"></a>Distcp を使用して Azure Storage BLOB と Data Lake Store の間でデータをコピーする
 > [!div class="op_single_selector"]
@@ -29,10 +27,9 @@ ms.lasthandoff: 03/25/2017
 >
 >
 
-Data Lake Store アカウントにアクセスする HDInsight クラスターを作成した後、Distcp などの Hadoop エコシステム ツールを使用し、HDInsight クラスター ストレージ (WASB) と Data Lake Store アカウントの **間** でデータをコピーできます。 この記事では、これを実現する方法について説明します。
+Data Lake Store にアクセスできる HDInsight クラスターがある場合、Distcp などの Hadoop エコシステム ツールを使用し、HDInsight クラスター記憶域 (WASB) と Data Lake Store アカウントの**間**でデータをコピーできます。 この記事では、Distcp ツールの使用方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事を読み始める前に、次の項目を用意する必要があります。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
 * **Azure Data Lake Store アカウント**。 このアカウントを作成する手順については、「 [Azure Data Lake Store の使用を開始する](data-lake-store-get-started-portal.md)
@@ -51,26 +48,29 @@ HDInsight クラスターには Distcp ユーティリティが付属してい�
 
         hdfs dfs –ls wasb://<container_name>@<storage_account_name>.blob.core.windows.net/
 
-    これにより、ストレージ BLOB の内容の一覧が表示されます。
+    出力には、ストレージ BLOB の内容の一覧が表示されます。
+
 3. 同様に、クラスターから Data Lake Store アカウントにアクセスできるかどうかを確認します。 次のコマンドを実行します。
 
         hdfs dfs -ls adl://<data_lake_store_account>.azuredatalakestore.net:443/
 
-    これにより、Data Lake Store アカウントのファイル/フォルダーの一覧が表示されます。
+    出力には、Data Lake Store アカウントのファイル/フォルダーの一覧が表示されます。
+
 4. Distcp を使用し、WASB から Data Lake Store アカウントにデータをコピーします。
 
         hadoop distcp wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder
 
-    これにより、WASB の **/example/data/gutenberg/** フォルダーの内容が Data Lake Store アカウントの **/myfolder** にコピーされます。
+    このコマンドを実行すると、WASB の **/example/data/gutenberg/** フォルダーの内容が Data Lake Store アカウントの **/myfolder** にコピーされます。
+
 5. 同様に、Distcp を使用し、Data Lake Store アカウントと WASB の間でデータをコピーします。
 
         hadoop distcp adl://<data_lake_store_account>.azuredatalakestore.net:443/myfolder wasb://<container_name>@<storage_account_name>.blob.core.windows.net/example/data/gutenberg
 
-    これにより、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
+    このコマンドを実行すると、Data Lake Store アカウントの **/myfolder** の内容が WASB の **/example/data/gutenberg/** フォルダーにコピーされます。
 
 ## <a name="performance-considerations-while-using-distcp"></a>DistCp を使用するときのパフォーマンスに関する考慮事項
 
-DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake Store に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 これを制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
+DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake Store に対して最適化するうえで最も重要なのが、同時コピーの最大数を設定するパラメーターです。 同時コピー数を制御するには、コマンド ラインでマッパー ("m") パラメーターの数を設定します。 このパラメーターで、データをコピーするときに使用されるマッパーの最大数を指定します。 既定値は 20 です。
 
 **例**
 
@@ -82,7 +82,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 * **手順 1: 合計 YARN メモリを確認する** - 最初に DistCp ジョブを実行するクラスターで利用できる YARN メモリを確認します。 この情報は、クラスターに関連付けられている Ambari ポータルで確認できます。 YARN に移動し、[Configs (構成)] タブで YARN メモリを表示します。 合計 YARN メモリを取得するには、ノードあたりの YARN メモリと、クラスター内にあるのノードの数を掛けます。
 
-* **手順 2: マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs (構成)] タブを表示します。 YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
+* **手順 2: マッパーの数を計算する** - **m** の値は、合計 YARN メモリを YARN コンテナーのサイズで割った値と等しくなります。 YARN コンテナー サイズの情報は、Ambari ポータルでも入手できます。 YARN に移動し、[Configs (構成)] タブを表示します。YARN コンテナーのサイズは、このウィンドウに表示されます。 マッパーの数 (**m**) を求めるための式を次に示します
 
         m = (number of nodes * YARN memory for each node) / YARN container size
 
@@ -102,7 +102,7 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 
 ### <a name="copying-large-datasets"></a>大規模なデータセットのコピー
 
-移動するデータセットのサイズが非常に大きい場合 (例: > 1 TB)、または、さまざまなフォルダーが多数ある場合は、複数の DistCp ジョブを使用することを検討します。 パフォーマンスの向上はないと思われますが、ジョブが分散されるため、あるジョブが失敗したときに、再開する必要があるのは、ジョブ全体ではなく特定のジョブのみになります。
+移動するデータセットのサイズが大きい場合 (たとえば 1 TB を超える場合)、または、さまざまなフォルダーが多数ある場合は、複数の DistCp ジョブを使用することを検討します。 パフォーマンスの向上はないと思われますが、ジョブが分散されるため、あるジョブが失敗したときに、再開する必要があるのは、ジョブ全体ではなく特定のジョブのみになります。
 
 ### <a name="limitations"></a>制限事項
 
@@ -119,4 +119,3 @@ DistCp の最小粒度は 1 ファイルであるため、DistCp を Data Lake S
 * [Data Lake Store のデータをセキュリティで保護する](data-lake-store-secure-data.md)
 * [Data Lake Store で Azure Data Lake Analytics を使用する](../data-lake-analytics/data-lake-analytics-get-started-portal.md)
 * [Data Lake Store で Azure HDInsight を使用する](data-lake-store-hdinsight-hadoop-use-portal.md)
-

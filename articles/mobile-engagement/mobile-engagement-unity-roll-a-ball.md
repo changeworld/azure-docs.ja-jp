@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 6392d1f780b1bc2348fee5947550b05e86ea4de2
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a id="unity-roll-a-ball"></a>Unity Roll a Ball ゲームの作成
 このチュートリアルでは、若干変更された [Unity Roll a Ball のチュートリアル](http://unity3d.com/learn/tutorials/projects/roll-ball-tutorial)の主な手順について説明します。 このサンプル ゲームは、アプリ ユーザーによって操作される球形の "プレーヤー" オブジェクトで構成されます。ゲームの目的は、プレーヤー オブジェクトを収集可能なオブジェクトに衝突させることによって、このような収集可能なオブジェクトを "収集" することです。 このチュートリアルは、Unity エディター環境の基礎知識があることを前提としています。 問題が発生した場合は、完全なチュートリアルを参照してください。 
@@ -262,7 +262,7 @@ ms.lasthandoff: 07/11/2017
 7. Unity エディターの **[Play]** \(再生) をクリックすると、方向入力にキーボードのキーを使用して Player オブジェクトを動かすことで、この **Roll a Ball** ゲームをプレイできるようになります。 
 
 ### <a name="updating-the-game-for-mobile-play"></a>モバイルでプレイできるようにゲームを更新する
-Unity の基本的なチュートリアルは、上のセクションで終了です。 ここでは、モバイル デバイスで使いやすくなるようにゲームを変更します。 ここまでは、ゲームをテストする際にキーボード入力を使用してきたことに注意してください。 今度は、電話の所作を使用して (つまり、加速度計を入力として使用して)、 プレイヤーを操作できるように変更します。 
+Unity の基本的なチュートリアルは、上のセクションで終了です。 ここでは、モバイル デバイスで使いやすくなるようにゲームを変更します。 ここまでは、ゲームをテストする際にキーボード入力を使用してきたことに注意してください。 今度は、電話の所作を使用して (つまり、加速度計を入力として使用して)、プレーヤーを制御できるように変更します。 
 
 **PlayerController** スクリプトを編集するために開き、Player オブジェクトの移動に加速度計からの動きを使用するように **FixedUpdate** メソッドを更新します。 
 

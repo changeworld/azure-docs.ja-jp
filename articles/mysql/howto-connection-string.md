@@ -8,28 +8,26 @@ editor: jasonwhowell
 manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/12/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 2f40da41bcfda7e35f6fc63ead5d055246ab390c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: c9fe0a892bd5e81d2b33987b6ca55ec753550a01
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-connect-applications-to-azure-database-for-mysql"></a>Azure Database for MySQL にアプリケーションを接続する方法
-このドキュメントでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類を、テンプレートおよび例とともに示します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
+このトピックでは、Azure Database for MySQL でサポートされているすべての接続文字列の種類と共に、テンプレートと例を紹介します。 実際に使用する接続文字列のパラメーターと設定は異なる可能性があります。
 
 - 証明書を取得するには、[SSL を構成する方法](./howto-configure-ssl.md)に関するページを参照してください。
 - {your_host} = <servername>.mysql.database.azure.com
-- {your_user}@{servername} = 正しく認証されるためのユーザー ID の形式です。  ユーザー ID だけを使用すると、認証は失敗します。
+- {your_user}@{servername} = 正しく認証されるためのユーザー ID の形式です。  userID のみを使用すると、認証は失敗します。
 
 ## <a name="adonet"></a>ADO.NET
 ```ado.net
 Server={your_host};Port={your_port};Database={your_database};Uid={username@servername};Pwd={your_password};[SslMode=Required;]
 ```
 
-この例では、サーバー名は `myserver4demo`、データベース名は `wpdb`、ユーザー名は `WPAdmin`、パスワードは `mypassword!2` です。 接続文字列は次のようになります。
+この例では、サーバー名は `myserver4demo`、データベース名は `wpdb`、ユーザー名は `WPAdmin`、パスワードは `mypassword!2` です。 その結果、接続文字列は次のようになります。
 
 ```ado.net
 Server= "myserver4demo.mysql.database.azure.com"; Port=3306; Database= "wpdb"; Uid= "WPAdmin@myserver4demo"; Pwd="mypassword!2"; SslMode=Required;
@@ -72,4 +70,3 @@ client = Mysql2::Client.new(username: {username@servername}, password: {your_pas
 
 ## <a name="next-steps"></a>次のステップ
 - 接続ライブラリの詳細については、[接続ライブラリの概念](./concepts-connection-libraries.md)に関するページを参照してください。
-

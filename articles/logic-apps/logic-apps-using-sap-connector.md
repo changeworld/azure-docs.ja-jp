@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 02/01/2017
 ms.author: LADocs; padmavc
 ms.openlocfilehash: 3fea93f558d5a4ef62550fd1f6486903cb812930
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-to-an-on-premises-sap-system-from-logic-apps-with-the-sap-connector"></a>SAP コネクタを使用した、Logic Apps からオンプレミスの SAP システムへの接続 
 
@@ -34,7 +34,7 @@ ms.lasthandoff: 08/03/2017
 
 - データ ゲートウェイをインストールしたのと同じコンピューターに、最新の SAP クライアント ライブラリをダウンロードし、インストールします。 次のいずれかの SAP バージョンを使用してください。 
     - SAP サーバー
-        - .NET コネクタ (NCo) 3.0 をサポートする任意の SAP サーバー
+        - .NET Connector (NCo) 3.0 をサポートする任意の SAP サーバー
  
     - SAP クライアント
         - SAP .NET Connector (NCo) 3.0

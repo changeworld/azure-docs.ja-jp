@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2016
+ms.date: 10/09/2017
 ms.author: johnkem
+ms.openlocfilehash: 31c4fc5b606bf96cec8c508f4a0ff7ecbaeae38a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1dbb1d5aae55a4c926b9d8632b416a740a375684
-ms.openlocfilehash: a28f971ae898ffdd1168550a909f2a48e1b3b652
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Azure Monitor での役割、アクセス許可、およびセキュリティの使用
 チームの多くが、監視データおよび設定へのアクセスを厳密に管理する必要があります。 たとえば、チームの中に監視のみを行うメンバー (サポート エンジニア、開発エンジニアなど) がいる場合、またはマネージ サービス プロバイダーを使用する場合は、監視データへのアクセス権のみを付与し、リソースを作成、変更、削除する機能については制限が必要になることがあります。 この記事では、Azure のユーザーに対して、組み込みの監視 RBAC 役割をすばやく適用する方法、または限定的な監視アクセス許可を必要とするユーザーに対して、独自のカスタム ロールを作成する方法について説明します。 その後、Azure Monitor 関連のリソースのセキュリティに関する考慮事項と、そのリソースに含まれるデータへのアクセスを制限する方法を取り上げます。
@@ -75,15 +74,23 @@ Azure Monitor に組み込まれた役割は、サブスクリプションのリ
 
 | 操作 | Description |
 | --- | --- |
-| Microsoft.Insights/AlertRules/[Read、Write、Delete] |アラート ルールの読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/ActionGroups/[Read, Write, Delete] |アクション グループの読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/ActivityLogAlerts/[Read, Write, Delete] |アクティビティ ログ アラートの読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/AlertRules/[Read、Write、Delete] |アラート ルール (メトリック アラート) の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/AlertRules/Incidents/Read |アラート ルールのインシデント (トリガーされたアラート ルールの履歴) を一覧表示します。 これは、ポータルにのみ適用されます。 |
 | Microsoft.Insights/AutoscaleSettings/[Read、Write、Delete] |自動スケール設定の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/DiagnosticSettings/[Read、Write、Delete] |診断設定の読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/EventCategories/Read |アクティビティ ログの考えられるすべてのカテゴリを列挙します。 Azure Portal に使用されます。 |
 | Microsoft.Insights/eventtypes/digestevents/Read |このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 |
 | Microsoft.Insights/eventtypes/values/Read |サブスクリプションのアクティビティ ログのイベント (管理イベント) を一覧表示します。 このアクセス許可は、アクティビティ ログへのプログラムによるアクセスとポータル アクセスの両方に適用されます。 |
+| Microsoft.Insights/ExtendedDiagnosticSettings/[Read, Write, Delete] | ネットワーク フロー ログの診断設定の読み取り/書き込み/削除を実行します。 |
 | Microsoft.Insights/LogDefinitions/Read |このアクセス許可は、ポータルを使用してアクティビティ ログにアクセスする必要があるユーザーに必要です。 |
+| Microsoft.Insights/LogProfiles/[Read, Write, Delete] |ログ プロファイル (イベント ハブまたはストレージ アカウントへのアクティビティ ログのストリーミング) の読み取り/書き込み/削除を実行します。 |
+| Microsoft.Insights/MetricAlerts/[Read, Write, Delete] |ほぼリアルタイムのメトリック アラートの読み取り/書き込み/削除を実行します (パブリック プレビュー段階)。 |
 | Microsoft.Insights/MetricDefinitions/Read |メトリック定義 (リソースの使用可能なメトリックの種類の一覧) を読み取ります。 |
 | Microsoft.Insights/Metrics/Read |リソースのメトリックを読み取ります。 |
+| Microsoft.Insights/Register/Action |Azure Monitor リソース プロバイダーを登録します。 |
+
 
 > [!NOTE]
 > リソースのアラート、診断設定、およびメトリックにアクセスするユーザーには、そのリソースの種類とスコープへの読み取りアクセスが必要です。 ストレージ アカウントにアーカイブする、またはイベント ハブにストリーミングする診断設定やログ プロファイルを作成する ("書き込む") ユーザーには、ターゲット リソースにおける ListKeys アクセス許可も必要です。
@@ -170,5 +177,4 @@ New-AzureRmRoleDefinition -Role $role
 ## <a name="next-steps"></a>次のステップ
 * [Resource Manager で RBAC とアクセス許可を確認します](../active-directory/role-based-access-control-what-is.md)
 * [Azure で監視の概要を確認します](monitoring-overview.md)
-
 

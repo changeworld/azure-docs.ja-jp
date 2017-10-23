@@ -12,20 +12,24 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 09/29/2017
 ms.author: juliako
+ms.openlocfilehash: e2a580b835496c677f048599ae83287dbb61621d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 1f0c5cf93b44433aab2163548de916626a7fa480
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="frequently-asked-questions"></a>よく寄せられる質問
 
 この記事では、Azure Media Services (AMS) のユーザー コミュニティからよく寄せられる質問に対して回答します。
 
 ## <a name="general-ams-faqs"></a>AMS に関してよく寄せられる一般的な質問
+
+Q: Apple iOS デバイスにストリーミングする方法
+
+A: URL の "/Manifest" 部分に "(format=m3u8-aapl)" パスを追加して、ストリーミング配信元サーバーに Apple iOS ネイティブ デバイスでの使用のために HLS コンテンツを返すよう指示します (詳細については、(コンテンツの配信)[media-services-deliver-content-overview.md] を参照してください)。
+
 Q: インデックス作成の規模はどのように設定できますか?
 
 A: 予約ユニットは、エンコード タスクでもインデックス作成タスクでも同じです。 [エンコード予約ユニットの規模の設定方法](media-services-scale-media-processing-overview.md)に関するページの手順に従ってください。 **注:** Indexer のパフォーマンスは、予約ユニットの種類には左右されません。
@@ -81,4 +85,3 @@ A: [メディア エンコーダー スタンダード](media-services-dotnet-en
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-

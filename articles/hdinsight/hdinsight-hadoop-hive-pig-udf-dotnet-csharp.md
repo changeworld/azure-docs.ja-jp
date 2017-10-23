@@ -14,14 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: b192b19c27045ab6a98baf382e467a0a74d30861
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 7643050c4ba8929abcf77476970a2f99e992579d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>HDInsight の Hadoop の Hive と Pig ストリーミングでの C# ユーザー定義関数 (UDF) の使用
 
@@ -69,7 +68,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
     > [!IMPORTANT]
     > Linux ベースの HDInsight クラスターを使用している場合は、[__.NET Framework 4.5__] を選択します。 .NET Framework のバージョンと Mono の互換性の詳細については、「[Mono compatibility](http://www.mono-project.com/docs/about-mono/compatibility/)」 (Mono の互換性) を参照してください。
 
-2. **Program.cs** の内容を次の内容に置き換えます。
+2. **Program.cs** の内容を次のコードに置き換えます。
 
     ```csharp
     using System;
@@ -157,7 +156,7 @@ HDInsight バージョンに付属する Mono と .NET framework のバージョ
     }
     ```
 
-    このアプリケーションは、Pig から送信された行を解析し、`java.lang.Exception` で始まる行を再フォーマットします。
+    このコードは、Pig から送信された行を解析し、`java.lang.Exception` で始まる行を再フォーマットします。
 
 3. **Program.cs**を保存し、プロジェクトをビルドします。
 
@@ -270,4 +269,3 @@ Pig と Hive を使用する他の方法と、MapReduce の使用方法につい
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce の使用](hdinsight-use-mapreduce.md)
-
