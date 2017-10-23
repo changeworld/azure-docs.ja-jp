@@ -109,6 +109,7 @@
 ### デバイス ジョブを使用したデバイスのファームウェアの更新
 #### [Node バックエンド/Node デバイス](iot-hub-node-node-firmware-update.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-firmware-update.md)
+#### [.NET バックエンド/.NET デバイス](iot-hub-csharp-csharp-firmware-update.md)
 #### [Java バックエンド/Java デバイス](iot-hub-java-java-firmware-update.md)
 ### ジョブのスケジュールとブロードキャスト
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-schedule-jobs.md)
