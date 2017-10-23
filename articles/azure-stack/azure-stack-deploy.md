@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Stack 開発キットのデプロイの前提条件 | Microsoft Docs"
 description: "Azure Stack 開発キットの環境とハードウェアの要件を確認できます (クラウド オペレーター)。"
 services: azure-stack
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 | ディスク ドライブ: オペレーティング システム |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |システム パーティション用に最低 200 GB の空きがある1 OS ディスク (SSD または HDD) |
 | ディスク ドライブ: 開発キット データ全般* |4 つのディスク。 各ディスクに最低 140 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |4 つのディスク。 各ディスクに最低 250 GB の空き容量が必要 (SSD または HDD)。 すべての使用可能なディスクが使われます。 |
 | コンピューティング: CPU |デュアル ソケット: 12 個の物理コア (合計) |デュアル ソケット: 16 個の物理コア (合計) |
-| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です)。|
+| コンピューティング: メモリ |96 GB RAM |128 GB RAM (これは、PaaS リソース プロバイダーをサポートするための最低限の量です。)|
 | コンピューティング: BIOS |Hyper-V 有効 (SLAT サポートあり) |Hyper-V 有効 (SLAT サポートあり) |
 | ネットワーク: NIC |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |NIC には Windows Server 2012 R2 の認定が必要です。特別な機能は必要ありません |
 | ハードウェア ロゴ認定 |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |[Windows Server 2012 R2 認定](http://windowsservercatalog.com/results.aspx?&chtext=&cstext=&csttext=&chbtext=&bCatID=1333&cpID=0&avc=79&ava=0&avq=0&OR=1&PGS=25&ready=0) |
@@ -89,14 +89,14 @@ Azure AD アカウントを使って Azure Stack をデプロイするには、�
    
    | **Azure Active Directory アカウント** | **サポートの有無** |
    | --- | --- |
-   | 有効なパブリック Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |あり |
-   | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |あり |
-   | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |あり |
+   | 有効なパブリック Azure サブスクリプションのある職場または学校アカウント |あり |
+   | 有効なパブリック Azure サブスクリプションの Microsoft アカウント |あり |
+   | 有効な中国の Azure サブスクリプションのある職場または学校アカウント |あり |
+   | 有効な米国政府の Azure サブスクリプションのある職場または学校アカウント |あり |
 
 ## <a name="network"></a>ネットワーク
 ### <a name="switch"></a>スイッチ
-スイッチの 1 つのポートを開発キット マシン用に使用できること。  
+スイッチの 1 つのポートを開発キット マシン用に使用できること。  
 
 開発キット マシンでは、スイッチのアクセス ポートまたはトランク ポートへの接続がサポートされています。 スイッチでは特別な機能は必要ありません。 トランク ポートを使用している場合、または VLAN ID を構成する必要がある場合は、デプロイ パラメーターとして VLAN ID を指定する必要があります。 [デプロイ パラメーターの一覧](azure-stack-run-powershell-script.md)で例を見ることができます。
 
@@ -175,7 +175,7 @@ SQL Server のテレメトリの構成については、「[フィードバッ�
 
 登録の過程で、Azure Stack は Azure に使用状況を転送するように構成されます。 使用状況レポートはテレメトリとは別に制御されます。 [登録](azure-stack-register.md)時に Github のスクリプトを使って使用状況レポートを無効にできます。 **$reportUsage** パラメーターを **$false** に設定するだけです。
 
-使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように整形されます。 Azure Stack 開発キットのユーザーは実際に料金が発生することはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
+使用状況データは、「[Report Azure Stack usage data to Azure](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-usage-reporting)」(Azure に Azure Stack 使用状況データを報告する) で詳しく説明されているように書式設定されます。 Azure Stack 開発キットのユーザーは実際に料金が発生することはありません。 この機能は、使用状況レポートの動作をテストして理解できるように、開発キットに含まれています。 
 
 
 ## <a name="next-steps"></a>次のステップ
