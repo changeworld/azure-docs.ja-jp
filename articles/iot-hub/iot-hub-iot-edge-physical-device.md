@@ -12,17 +12,15 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/12/2017
+ms.date: 09/28/2017
 ms.author: andbuc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 02962a91c739a53dfcf947bcc736e5c293b9384f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/26/2017
-
-
+ms.openlocfilehash: b24828ee1a09ba8e5f657954e11936f124270173
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-azure-iot-edge-on-a-raspberry-pi-to-forward-device-to-cloud-messages-to-iot-hub"></a>Raspberry Pi で Azure IoT Edge を使用し、デバイスとクラウドの間のメッセージを IoT Hub に転送する
+# <a name="forward-device-to-cloud-messages-to-iot-hub-using-azure-iot-edge-on-a-raspberry-pi"></a>Raspberry Pi で Azure IoT Edge を使用し、デバイスとクラウドの間のメッセージを IoT Hub に転送する
 
 この [Bluetooth 低エネルギー サンプル][lnk-ble-samplecode]のチュートリアルでは、[Azure IoT Edge][lnk-sdk] を使用して次の処理を行う方法について説明します。
 
@@ -41,7 +39,7 @@ ms.lasthandoff: 06/26/2017
 IoT Edge ゲートウェイを実行すると、次のような処理が行われます。
 
 * Bluetooth Low Energy (BLE) プロトコルを使用して SensorTag デバイスに接続する。
-* HTTP プロトコルを使用して IoT Hub に接続する。
+* HTTPS プロトコルを使用して IoT Hub に接続する。
 * SensorTag デバイスから IoT Hub にテレメトリを転送する。
 * IoT Hub から SensorTag デバイスにコマンドをルーティングする。
 
@@ -65,7 +63,11 @@ BLE デバイスから IoT Hub に転送されるテレメトリ項目の処理�
 1. BLE デバイスが温度サンプルを生成し、Bluetooth 経由でゲートウェイの BLE モジュールに送信する。
 1. BLE モジュールがサンプルを受信し、デバイスの MAC アドレスと共にブローカーに発行する。
 1. ID マッピング モジュールがこのメッセージを取得し、内部テーブルを使用してデバイスの MAC アドレスを IoT Hub デバイス ID に変換する。 IoT Hub デバイス ID は、デバイス ID とデバイス キーで構成されます。
-1. 温度サンプルのデータ、デバイスの MAC アドレス、デバイス ID、デバイス キーを含む新しいメッセージを ID マッピング モジュールが発行する。
+1. ID マッピング モジュールは、次の情報を含む新しいメッセージを発行します。
+   - 温度サンプル データ
+   - デバイスの MAC アドレス
+   - デバイス ID
+   - デバイス キー  
 1. IoT Hub モジュールがこの (ID マッピング モジュールで生成された) 新しいメッセージを受信し、IoT Hub に発行する。
 1. ロガー モジュールが、ブローカーからのすべてのメッセージをローカル ファイルに記録する。
 
@@ -135,7 +137,7 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
 
     ```sh
     sudo apt-get update
-    sudo apt-get install bluetooth bluez-tools build-essential autoconf glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
+    sudo apt-get install bluetooth bluez-tools build-essential autoconf libtool glib2.0 libglib2.0-dev libdbus-1-dev libudev-dev libical-dev libreadline-dev
     ```
 
 1. bluez.org から BlueZ のソース コードをダウンロードします。
@@ -204,13 +206,13 @@ BLE モジュールは、BlueZ スタックを介して Bluetooth ハードウ�
     bluetoothctl
     ```
 
-1. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。 次のような出力が返されます。
+1. **power on** コマンドを入力して Bluetooth コントローラーの電源を入れます。 次の例のような出力が返されます。
 
     ```sh
     [NEW] Controller 98:4F:EE:04:1F:DF C3 raspberrypi [default]
     ```
 
-1. 対話型の Bluetooth シェルで、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。 次のような出力が返されます。
+1. 対話型の Bluetooth シェルで、**scan on** コマンドを入力して Bluetooth デバイスをスキャンします。 次の例のような出力が返されます。
 
     ```sh
     Discovery started
@@ -285,7 +287,7 @@ IoT Edge の BLE サンプルを実行するには、次の 3 つのタスクを
 Azure IoT Edge の依存関係をインストールします。
 
 ```sh
-sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev
+sudo apt-get install cmake uuid-dev curl libcurl4-openssl-dev libssl-dev libtool
 ```
 
 次のコマンドを使用して、IoT Edge とそのすべてのサブモジュールをホーム ディレクトリに複製します。
@@ -304,9 +306,9 @@ cd ~/iot-edge
 
 ### <a name="configure-and-run-the-ble-sample-on-your-raspberry-pi-3"></a>Raspberry Pi 3 で BLE サンプルを構成して実行する
 
-サンプルを起動して実行するには、Edge ゲートウェイに関与しているモジュールをそれぞれ構成する必要があります。 この構成は JSON ファイル形式で指定し、5つの IoT Edge モジュールをすべて構成する必要があります。 リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。 このファイルは、IoT Edge レポジトリのローカル コピー内の **samples/ble_gateway/src** フォルダーにあります。
+サンプルを起動して実行するには、ゲートウェイに関与している各 IoT Edgeモジュールを構成します。 この構成は JSON ファイル形式で指定し、5つの IoT Edge モジュールをすべて構成する必要があります。 リポジトリ内には **gateway\_sample.json** という名前のサンプル JSON ファイルが用意されており、独自の構成ファイルを構築するための雛形として使用することができます。 このファイルは、IoT Edge レポジトリのローカル コピー内の **samples/ble_gateway/src** フォルダーにあります。
 
-以降のセクションでは、この構成ファイルを BLE サンプル用に編集する方法を説明しており、IoT Edge レポジトリが Raspberry Pi 3 の **/home/pi/iot-edge/** フォルダーにあることを前提としています。 リポジトリが他の場所にある場合は、パスを適宜修正してください。
+次のセクションでは、BLE サンプル用にこの構成ファイルを編集する方法について説明します。 IoT Edge リポジトリは Raspberry Pi 3 の **/home/pi/iot-edge/** フォルダーにあるものとします。 リポジトリが他の場所にある場合は、パスを適宜修正してください。
 
 #### <a name="logger-configuration"></a>ロガーの構成
 
@@ -582,4 +584,3 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-pi-ssh]: https://www.raspberrypi.org/documentation/remote-access/ssh/README.md
 [lnk-ssh-windows]: https://www.raspberrypi.org/documentation/remote-access/ssh/windows.md
 [lnk-ssh-linux]: https://www.raspberrypi.org/documentation/remote-access/ssh/unix.md
-

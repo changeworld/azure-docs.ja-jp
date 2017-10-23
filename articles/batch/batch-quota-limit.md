@@ -3,7 +3,7 @@ title: "Azure Batch 用のサービスのクォータと制限 | Microsoft Docs"
 description: "既定の Azure Batch のクォータ、制限、および制約と、クォータの引き上げを要求する方法について説明します"
 services: batch
 documentationcenter: 
-author: tamram
+author: v-dotren
 manager: timlt
 editor: 
 ms.assetid: 28998df4-8693-431d-b6ad-974c2f8db5fb
@@ -12,20 +12,20 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/28/2017
-ms.author: tamram
+ms.date: 09/28/2017
+ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f3f69ed8d3a985afe07e648e7512a88b25278ced
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.openlocfilehash: 8bb5470918aa3ad15cb9081f5c02b40984d83f51
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="batch-service-quotas-and-limits"></a>Batch サービスのクォータと制限
 
 他の Azure サービスと同様に、Batch サービスに関連付けられている特定のリソースにも制限があります。 これらの制限の多くは、Azure によって、サブスクリプションまたはアカウント レベルで適用される既定のクォータです。 ここでは、これらの既定の設定と、クォータの引き上げを要求する方法について説明します。
 
-Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限、またはサブスクリプションのリージョンの VM コア クォータの制限に達している可能性があります。
+Batch ワークロードの設計やスケールアップを行う際は、これらのクォータに留意してください。 たとえば、プールのコンピューティング ノード数がターゲットとして指定した数に満たない場合は、Batch アカウントのコア クォータ制限に達している可能性があります。
 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
@@ -39,29 +39,9 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 ## <a name="resource-quotas"></a>リソース クォータ
 [!INCLUDE [azure-batch-limits](../../includes/azure-batch-limits.md)]
 
-## <a name="quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのクォータ
+### <a name="quotas-in-user-subscription-mode"></a>ユーザー サブスクリプション モードでのクォータ
 
-**ユーザー サブスクリプション**がプール割り当てモードに設定された Batch アカウントでは、Batch VM とその他のリソース (ストレージ アカウントなど) は、プールの作成時に直接サブスクリプションに作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
-
-ユーザー サブスクリプション モードで作成したアカウントのリソース使用量を計画する場合は、Linux VM 40 台、または Windows VM 20 台ごとに、次の Batch リソースが (コンピューティング コア以外に) 必要な点に注意してください。
-
-| リソース | クォータ | プロバイダー |
-| --- | ---| --- |
-| 1 つのストレージ アカウント | ストレージ アカウント | Microsoft.Storage |
-| 1 つのパブリック IP アドレス | パブリック IP アドレス | Microsoft.Network | 
-| 1 つの仮想ネットワーク | Virtual Networks | Microsoft.Network | 
-| 1 つのネットワーク セキュリティ グループ | ネットワーク セキュリティ グループ | Microsoft.Network | 
-| 1 つの仮想マシン スケール セット | Virtual Machine Scale Sets | Microsoft.Compute | 
-| 1 つのロード バランサー | ロード バランサー | Microsoft.Network | 
-
-リージョン レベルまたは VM ファミリごとのコア クォータは、Batch プールに必要な VM サイズに応じて設定する必要があります。
-
-| クォータ | プロバイダー |
-| --- | ---- |
-| リージョン コアの合計 | Microsoft.Compute |
-| ... ファミリ コア | Microsoft.Compute |
-
-
+古いバージョンの Batch API を使って、プール割り当てモードを**ユーザー サブスクリプション**に設定した Batch アカウントを作成した場合、クォータの適用が異なります。 このモード (現在は非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 このモードで作成されたアカウントには、Azure Batch のコア クォータは適用されません。 代わりに、リージョンのコンピューティング コアとその他のリソースにはサブスクリプションのクォータが適用されます。 これらのクォータの詳細については、「[Azure サブスクリプションとサービスの制限、クォータ、制約](../azure-subscription-service-limits.md)」をご覧ください。
 
 ## <a name="other-limits"></a>その他の制限
 | **リソース** | **上限** |
@@ -75,20 +55,16 @@ Batch で実稼働ワークロードを実行する予定がある場合は、1 
 <sup>1</sup> 最大ブロック BLOB サイズに関する Azure Storage の制限<br />
 <sup>2</sup> リソース ファイルと環境変数を含む
 
+
+
 ## <a name="view-batch-quotas"></a>Batch クォータの確認
 Batch アカウントのクォータは、[Azure Portal][portal] で確認します。
 
 1. ポータルで **[Batch アカウント]** を選択し、目的の Batch アカウントを選択します。
-2. Batch アカウントのメニュー ブレードで **[プロパティ]** を選択します。
-3. **[プロパティ]** ブレードに、Batch アカウントに現在適用されているクォータが表示されます。
+2. Batch アカウントのメニューで **[クォータ]** を選びます。
+3. Batch アカウントに現在適用されているクォータを確認します。
    
     ![Batch アカウントのクォータ][account_quotas]
-
-ユーザー サブスクリプション モードで作成した Batch アカウントについては、Azure Portal で関連するサブスクリプションのクォータを表示します。
-
-1. **[サブスクリプション]** を選択し、Batch アカウントに使用しているサブスクリプションを選択します。
-
-2. **[サブスクリプション]** ブレードで、**[使用量 + クォータ]** を選択します。
 
 
 
@@ -97,11 +73,9 @@ Batch アカウントのクォータは、[Azure Portal][portal] で確認しま
 
 ### <a name="increase-a-batch-cores-quota"></a>Batch のコア クォータを増やす 
 
-Batch アカウントを **Batch サービス** モードで作成した場合は、次の手順を実行して Batch のコア クォータの引き上げを要求します。
-
 1. ポータルのダッシュボードで **[ヘルプとサポート]** タイルを選択します。または、ポータルの右上隅にある疑問符 (**[?]**) を選択します。
 2. **[新しいサポート要求]** > **[基本]** の順にクリックします。
-3. **[基本]** ブレードで、次の操作を行います。
+3. **[基本]** で次のようにします。
    
     a. **[問題の種類]** > **[クォータ]**
    
@@ -112,14 +86,14 @@ Batch アカウントを **Batch サービス** モードで作成した場合�
     d. **[サポート プラン]** > **[Quota Support - Included (クォータのサポート - 含む)]**
    
     **[次へ]** をクリックします。
-4. **[Problem (問題)]** ブレードで、次の操作を行います。
+4. **[問題]** で次のようにします。
    
-    a.この問題では、ターゲット (またはクラス) ラベルは "tip_amount" です。 [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
+    a. [ビジネスへの影響][support_sev]に従って **[重要度]** を選択します。
    
     b. **[詳細]** で、変更する個々のクォータ、Batch アカウント名、および新しい制限値を指定します。
    
     **[次へ]** をクリックします。
-5. **[連絡先情報]** ブレードで、次の操作を行います。
+5. **[連絡先情報]** で次のようにします。
    
     a. **希望連絡方法**を選択します。
    
@@ -128,11 +102,6 @@ Batch アカウントを **Batch サービス** モードで作成した場合�
     **[作成]** をクリックしてサポート要求を送信します。
 
 サポート要求を送信した後は、Azure サポートからの連絡を待ちます。 要求を完了するには最大で 2 営業日かかります。
-
-### <a name="increase-a-subscription-cores-quota"></a>サブスクリプションのコア クォータを増やす
-
-Batch アカウントを**ユーザー サブスクリプション** モードで作成し、リージョンまたは VM ファミリの追加のコアが必要な場合は、サブスクリプションのクォータの引き上げを要求します。 手順については、「[Azure Resource Manager のコア クォータを増やす要求](../azure-supportability/resource-manager-core-quotas-request.md)」をご覧ください。
-
 
 
 ## <a name="related-topics"></a>関連トピック
@@ -144,4 +113,4 @@ Batch アカウントを**ユーザー サブスクリプション** モード�
 [portal_classic_increase]: https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/
 [support_sev]: http://aka.ms/supportseverity
 
-[account_quotas]: ./media/batch-quota-limit/accountquota_portal.PNG
+[account_quotas]: ./media/batch-quota-limit/accountquota_portal.png

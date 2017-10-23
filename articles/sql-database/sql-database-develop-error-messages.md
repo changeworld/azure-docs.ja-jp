@@ -14,14 +14,13 @@ ms.workload: drivers
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 09/28/2017
 ms.author: sstein
+ms.openlocfilehash: 9f9dfd039b76e4bedfb7f59d042123fa54d6b615
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 48dfc0fa4c9ad28c4c64c96ae2fc8a16cd63865c
-ms.openlocfilehash: bcf5f4027764b6be3880d597cdf85e83eb967169
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/30/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 
@@ -180,7 +179,7 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 40607 |16 |Windows ログインは、このバージョンの SQL Server ではサポートされていません。 |
 | 40611 |16 |サーバーで定義できるファイアウォール規則は最大 128 個です。 |
 | 40614 |16 |ファイアウォールの規則の開始 IP アドレスに終了 IP アドレスを超える値を指定することはできません。 |
-| 40615 |16 |ログインにより要求されたサーバー '{0}' を開けません。 IP アドレス '{1}' のクライアントはこのサーバーへのアクセスが許可されていません。  アクセスできるようにするには、SQL Database ポータルを使用するか、master データベースで run sp_set_firewall_rule を実行して、この IP アドレスまたはアドレス範囲のファイアウォールの規則を作成します。  この変更が有効になるまで最大で 5 分かかる場合があります。 |
+| 40615 |16 |ログインにより要求されたサーバー '{0}' を開けません。 IP アドレス '{1}' のクライアントはこのサーバーへのアクセスが許可されていません。<br /><br />アクセスできるようにするには、SQL Database ポータルを使用するか、マスター データベースで run sp\_set\_firewall\_rule を実行して、この IP アドレスまたはアドレス範囲のファイアウォールの規則を作成します。 この変更が有効になるまで最大で 5 分かかる場合があります。 |
 | 40617 |16 |(rule name) で始まるファイアウォール規則の名前は長すぎます。 最大長は 128 です。 |
 | 40618 |16 |ファイアウォール規則の名前を空にすることはできません。 |
 | 40620 |16 |ユーザー "%.&#x2a;ls" はログインできませんでした。 パスワードを変更できませんでした。 このバージョンの SQL Server ではログイン時にパスワードを変更することはできません。 |
@@ -205,12 +204,12 @@ ADO.NET を使用するクライアントの *ブロック期間* について�
 | 40651 |16 |サブスクリプション (subscription-id) が無効であるため、サーバーを作成できませんでした。 |
 | 40652 |16 |サーバーを移動または作成できません。 サブスクリプション (subscription-id) がサーバーのクォータを超えています。 |
 | 40671 |17 |ゲートウェイと管理サービスの間で通信エラーが発生しました。 後で再試行してください。 |
-| 40852 |16 |*ログインで必要とされるサーバー '%.ls' 上のデータベース '%.ls' を開くことができません。*データベースへのアクセスは、セキュリティが有効な接続文字列を使用した場合のみ許可されます。 このデータベースにアクセスするには、接続文字列を変更して、サーバーの FQDN に 'secure' を含めます。 このデータベースにアクセスするには、FQDN のサーバーの文字列が ‘secure’ を含むように変更します。例えば、'server name'.database.windows.net は 'server name'.database.`secure`.windows.net に変更する必要があります。 |
+| 40852 |16 |\*ログインで必要とされるサーバー '%.ls' 上のデータベース '%.ls' を開くことができません。\*データベースへのアクセスは、セキュリティが有効な接続文字列を使用した場合のみ許可されます。 このデータベースにアクセスするには、接続文字列を変更して、サーバーの FQDN に 'secure' を含めます。 このデータベースにアクセスするには、FQDN のサーバーの文字列が ‘secure’ を含むように変更します。例えば、'server name'.database.windows.net は 'server name'.database.`secure`.windows.net に変更する必要があります。 |
+| 40914 | 16 | ログインで要求されたサーバー '*[サーバー名]*' を開くことができません。 クライアントはサーバーへのアクセスが許可されていません。<br /><br />修正するには、[仮想ネットワーク規則](sql-database-vnet-service-endpoint-rule-overview.md)を追加します。 |
 | 45168 |16 |SQL Azure システムに負荷がかかっているため、サーバー 1 台あたりの同時実行 DB CRUD 操作 (データベースの作成など) に上限を設定しています。 エラー メッセージに示されているサーバーは、最大同時接続数を超過しました。 後でもう一度やり直してください。 |
 | 45169 |16 |SQL Azure システムに負荷がかかっているため、サブスクリプション 1 つあたりの同時実行サーバー CRUD 操作 (サーバーの作成など) に上限を設定しています。 エラー メッセージに示されているサブスクリプションは、最大同時接続数を超過したため、要求が拒否されました。 後でもう一度やり直してください。 |
 
 ## <a name="next-steps"></a>次のステップ
 * [Azure SQL Database の機能](sql-database-features.md)を確認する
 * [サービス階層](sql-database-service-tiers.md)を確認する
-
 

@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 08/24/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 454eb7b1f4f48e8a2a78bd3fcb6eb03b6097d44d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 257f661dbc5ff23db53591a1b2db59a8dbeac2dc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-and-use-device-twins-in-iot-hub"></a>IoT Hub のデバイス ツインの理解と使用
 ## <a name="overview"></a>概要
@@ -139,7 +138,7 @@ ms.lasthandoff: 09/08/2017
 ファームウェアの更新など実行時間の長い操作は、デバイス ツインを使って同期することができます。 デバイス間の実行時間の長い操作を同期、追跡するためのプロパティの使用方法については、「[必要なプロパティを使用してデバイスを構成する][lnk-twin-properties]」を参照してください。
 
 ## <a name="back-end-operations"></a>バック エンドの操作
-ソリューション バックエンドは、HTTP を介して公開される次のアトミック操作を使用して、デバイス ツインを操作します。
+ソリューション バックエンドは、HTTPS を介して公開される次のアトミック操作を使用して、デバイス ツインを操作します。
 
 1. **デバイス ツインを ID で取得する**。この操作は、デバイス ツインのドキュメント (タグ、必要なプロパティ、報告されるプロパティ、システム プロパティなど) を返します。
 2. **デバイス ツインを部分的に更新する**。 この操作では、ソリューション バックエンドがデバイス ツインのタグまたは必要なプロパティを部分的に更新できます。 部分的な更新は JSON ドキュメントとして表され、プロパティが追加または更新されます。 `null` に設定されたプロパティが削除されます。 次の例では、`{"newProperty": "newValue"}` の値を持つ新しい必要なプロパティが作成され、`existingProperty` の既存の値が `"otherNewValue"` で上書きされ、`otherOldProperty` が削除されます。 それ以外、既にある必要なプロパティまたはタグは変更されません。
@@ -369,4 +368,3 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 [lnk-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 
 [img-twin]: media/iot-hub-devguide-device-twins/twin.png
-

@@ -12,14 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/10/2017
 ms.author: johnkem
+ms.openlocfilehash: 2e99b7afa4e458e9ef62314e65d9e386657a747b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 23da12e518d88109fd7271fd363b6c1f099c5ab6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-diagnostic-logs"></a>Azure 診断ログでサポートされているサービス、スキーマ、カテゴリ
 
@@ -30,22 +29,22 @@ ms.lasthandoff: 09/25/2017
 
 | サービス | スキーマとドキュメント |
 | --- | --- |
-| API Management | スキーマは使用できません。 |
+| API Management | [API Management の診断ログ](../api-management/api-management-howto-use-azure-monitor.md#diagnostic-logs) |
 | Application Gateway |[Application Gateway の診断ログ](../application-gateway/application-gateway-diagnostics.md) |
 | Azure Automation |[Azure Automation のログ分析](../automation/automation-manage-send-joblogs-log-analytics.md) |
 | Azure Batch |[Azure Batch 診断ログ](../batch/batch-diagnostics.md) |
 | Customer Insights | スキーマは使用できません。 |
 | Content Delivery Network | スキーマは使用できません。 |
-| Cosmos DB | スキーマは使用できません。 |
+| Cosmos DB | [Azure Cosmos DB のログ](../cosmos-db/logging.md) |
 | Data Lake Analytics |[Azure Data Lake Analytics の診断ログへのアクセス](../data-lake-analytics/data-lake-analytics-diagnostic-logs.md) |
 | Data Lake Store |[Azure Data Lake Store の診断ログへのアクセス](../data-lake-store/data-lake-store-diagnostic-logs.md) |
 | Event Hubs |[Azure Event Hubs の診断ログ](../event-hubs/event-hubs-diagnostic-logs.md) |
-| IoT Hub Device Provisioning Service | スキーマは使用できません。 |
+| IoT Hub | [IoT Hub 操作](../iot-hub/iot-hub-monitor-resource-health.md#use-azure-monitor) |
 | Key Vault |[Azure Key Vault のログ記録](../key-vault/key-vault-logging.md) |
 | Load Balancer |[Azure Load Balancer のログ分析](../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Logic Apps B2B カスタム追跡スキーマ](../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | ネットワーク セキュリティ グループ |[ネットワーク セキュリティ グループ (NSG) のためのログ分析](../virtual-network/virtual-network-nsg-manage-log.md) |
-| パブリック IP アドレスの DDoS Protection | スキーマは使用できません。 |
+| DDOS Protection | スキーマは使用できません。 |
 | 復旧サービス | スキーマは使用できません。|
 | Search |[検索トラフィックの分析の有効化と使用](../search/search-traffic-analytics.md) |
 | Server Management | スキーマは使用できません。 |
@@ -99,8 +98,8 @@ ms.lasthandoff: 09/25/2017
 |Microsoft.Sql/servers/databases|QueryStoreWaitStatistics|クエリ ストアの待機統計|
 |Microsoft.Sql/servers/databases|Errors|Errors|
 |Microsoft.Sql/servers/databases|DatabaseWaitStatistics|データベースの待機統計|
-|Microsoft.Sql/servers/databases|Timeouts|タイムアウト|
-|Microsoft.Sql/servers/databases|Blocks|ブロック|
+|Microsoft.Sql/servers/databases|タイムアウト|タイムアウト|
+|Microsoft.Sql/servers/databases|ブロック|ブロック|
 |Microsoft.Sql/servers/databases|SQLInsights|SQL Insights|
 |Microsoft.StreamAnalytics/streamingjobs|実行|実行|
 |Microsoft.StreamAnalytics/streamingjobs|作成|作成|
@@ -111,4 +110,3 @@ ms.lasthandoff: 09/25/2017
 * [リソース診断ログを **Event Hubs** にストリーミングする](monitoring-stream-diagnostic-logs-to-event-hubs.md)
 * [Azure Monitor REST API を使用してリソース診断設定を変更する](https://msdn.microsoft.com/library/azure/dn931931.aspx)
 * [Log Analytics を使用した、Azure ストレージからのログの分析](../log-analytics/log-analytics-azure-storage.md)
-

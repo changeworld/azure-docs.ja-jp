@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/18/2017
 ms.author: dobett
+ms.openlocfilehash: 8ffe25f1950f8535983c2c344b5c4331b7157869
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9569f94d736049f8a0bb61beef0734050ecf2738
-ms.openlocfilehash: 3f4f19eba5ed1a7b3176be4d3505998f97667200
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>参照 - IoT Hub のクォータと調整
 
@@ -41,7 +40,7 @@ ms.lasthandoff: 08/31/2017
 | デバイスの接続 | 100/秒または 12/秒/ユニット以上 <br/> たとえば、2 ユニットの S1 では 2 \* 12 = 24/秒ですが、ユニット全体では少なくとも 100/秒となります。 9 ユニットの S1 の場合、ユニット全体で 108/秒 (9 \* 12) となります。 | 120/秒/ユニット | 6000/秒/ユニット |
 | デバイスからクラウドへの送信 | 100/秒または 12/秒/ユニット以上 <br/> たとえば、2 ユニットの S1 では 2 \* 12 = 24/秒ですが、ユニット全体では少なくとも 100/秒となります。 9 ユニットの S1 の場合、ユニット全体で 108/秒 (9 \* 12) となります。 | 120/秒/ユニット | 6000/秒/ユニット |
 | クラウドからデバイスへの送信 | 1.67/sec/unit (100/分/単位) | 1.67/sec/unit (100/分/単位) | 83.33/sec/unit (5000/分/単位) |
-| クラウドからデバイスへの受信 <br/> (デバイスが HTTP を使用する場合のみ)| 16.67/sec/unit (1000/分/単位) | 16.67/sec/unit (1000/分/単位) | 833.33/sec/unit (50000/分/単位) |
+| クラウドからデバイスへの受信 <br/> (デバイスが HTTPS を使用する場合のみ)| 16.67/sec/unit (1000/分/単位) | 16.67/sec/unit (1000/分/単位) | 833.33/sec/unit (50000/分/単位) |
 | ファイルのアップロード | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 1.67 ファイル アップロード通知/秒/単位 (100/分/単位) | 83.33 ファイル アップロード通知/秒/単位 (5000/分/単位) |
 | ダイレクト メソッド | 20/秒/ユニット | 60/秒/ユニット | 3,000/秒/ユニット | 
 | デバイス ツインの読み取り | 10/秒 | 10/秒または 1/秒/ユニット以上 | 50/秒/ユニット |
@@ -104,4 +103,3 @@ IoT Hub は、すべての操作の待機時間を短くするように努めて
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-query]: iot-hub-devguide-query-language.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-

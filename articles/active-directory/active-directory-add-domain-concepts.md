@@ -12,13 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/25/2017
+ms.date: 10/10/2017
 ms.author: curtand
-ms.openlocfilehash: 3c591680160101a91174868714392674c9aa7178
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.reviewer: elkuzmen
+ms.openlocfilehash: b0ba411dd40bbd063a328d61be899c1e70a96eda
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Azure Active Directory でのカスタム ドメイン名の概念の概要
 ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。
@@ -29,15 +30,15 @@ ms.lasthandoff: 08/03/2017
 
 Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
 
-> [!IMPORTANT]
-> Microsoft では、この記事で言及している Azure クラシック ポータルを使用するのではなく、Azure Portal の [Azure AD 管理センター](https://aad.portal.azure.com)を使用して Azure AD を管理することをお勧めしています。 Azure AD 管理センターでドメイン名を管理する方法については、「[Azure Active Directory のカスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)」を参照してください。
+> [!TIP]
+> [Azure AD 管理センター](https://aad.portal.azure.com)でドメイン名を管理する方法については、「[Azure Active Directory のカスタム ドメイン名の管理](active-directory-domains-manage-azure-portal.md)」をご覧ください。
 
 Azure AD でのドメイン名は、グローバルに一意です。 カスタム ドメイン名は、一度に 1 つの Azure AD テナントでのみ使用できます。 1 つの Azure AD ディレクトリでドメイン名が確認済みの場合、他の Azure AD ディレクトリではその同じドメイン名を確認または使用できません。
 
 ## <a name="initial-and-custom-domain-names"></a>初期ドメイン名およびカスタム ドメイン名
 Azure AD のすべてのドメイン名は、初期ドメイン名またはカスタム ドメイン名です。
 
-すべての Azure AD には、フォーム contoso.onmicrosoft.com の初期ドメイン名が付属します。 この例の "contoso.onmicrosoft.com" では、3 番目のレベルのドメイン名が、ディレクトリの作成時に確立されました。これは通常、ディレクトリを作成した管理者によって確立されます。 ディレクトリの初期ドメイン名は、変更または削除できません。 初期ドメイン名は完全に機能しますが、カスタム ドメイン名が確認されるまでは、主にブートストラップ メカニズムとしての使用を目的としています。
+すべての Azure AD には、フォーム contoso.onmicrosoft.com の初期ドメイン名が付属します。この例の "contoso.onmicrosoft.com" では、3 番目のレベルのドメイン名が、ディレクトリの作成時に確立されました。これは通常、ディレクトリを作成した管理者によって確立されます。 ディレクトリの初期ドメイン名は、変更または削除できません。 初期ドメイン名は完全に機能しますが、カスタム ドメイン名が確認されるまでは、主にブートストラップ メカニズムとしての使用を目的としています。
 
 ほとんどの運用環境のディレクトリには、"contoso.com" など、少なくとも 1 つの確認済みカスタム ドメインがあり、これがエンドユーザーから参照可能なカスタム ドメインになります。 カスタム ドメイン名は、"contoso.com" など、自社の Web サイトのホストなどの目的で、組織が使用し、所有するドメイン名です。 このドメイン名は、企業ネットワークへのサインインや電子メールの送受信に使用するユーザー名の一部であるため、従業員にとってなじみがあります。
 
@@ -51,9 +52,7 @@ Azure AD では、ドメイン名のドメイン ネーム サービス (DNS) �
 ドメイン名のゾーン ファイルに DNS エントリを追加しても、電子メールや Web ホスティングなどの他のドメイン サービスには影響しません。
 
 ## <a name="federated-and-managed-domain-names"></a>フェデレーション ドメイン名および管理対象ドメイン名
-Azure AD のカスタム ドメイン名を構成することによって、オンプレミスの Active Directory と Azure AD 間のフェデレーション サインイン エクスペリエンスをユーザーに提供できます。 フェデレーションのドメインを構成するには、Azure AD の特権リソースおよび Windows Server Active Directory への更新が必要です。 フェデレーション ドメインの構成は、Azure AD Connect から、または PowerShell を使用して実行する必要があります。 Azure クラシック ポータルからカスタム ドメインのフェデレーションを開始することはできません。 [Azure AD Connect を使用して、ユーザー サインイン用の AD FS を構成する方法については、こちらのビデオをご覧ください](http://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Configuring-AD-FS-for-user-sign-in-with-Azure-AD-Connect)。
-
-フェデレーションされていないドメインは、管理対象ドメインとも呼ばれます。 Azure AD ディレクトリの初期ドメインは、暗黙的に管理対象ドメインと評価されます。
+Azure AD のカスタム ドメイン名を構成することによって、オンプレミスの Active Directory と Azure AD 間のフェデレーション サインイン エクスペリエンスをユーザーに提供できます。 フェデレーションのドメインを構成するには、Azure AD の特権リソースおよび Windows Server Active Directory への更新が必要です。 フェデレーション ドメインの構成は、Azure AD Connect から、または PowerShell を使用して実行する必要があります。 Azure クラシック ポータルからカスタム ドメインのフェデレーションを開始することはできません。 フェデレーションされていないドメインは、管理対象ドメインとも呼ばれます。 Azure AD ディレクトリの初期ドメインは、暗黙的に管理対象ドメインと評価されます。
 
 ## <a name="primary-domain-names"></a>プライマリ ドメイン名
 ディレクトリのプライマリ ドメイン名は、管理者が [Azure Portal](https://portal.azure.com/)、または Office 365 管理ポータルや Microsoft Intune ポータルなどの別のポータルで新しいユーザーを作成する場合にユーザー名の "ドメイン" 部分の既定値として事前に選択されているドメイン名です。 ディレクトリで設定できるプライマリ ドメイン名は 1 つだけです。 管理者は、プライマリ ドメイン名をフェデレーションされていない任意の確認済みカスタム ドメイン、または初期ドメインに変更できます。

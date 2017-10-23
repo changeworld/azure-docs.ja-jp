@@ -11,11 +11,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: junyi
-ms.openlocfilehash: 0c430272225d79737baec2be15ed7c93991cdeac
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: eddeb5cc13aac7ab33305adcd266465a5b143462
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-java"></a>Azure IoT Edge モジュールを Java で作成する
 
@@ -127,7 +127,7 @@ Azure IoT Edge モジュールは、そのジョブが入力の受信、処理�
 
 出力も入力と同じように、ハードウェアの動作 (LED の点滅など) のトリガー、他のモジュールへのメッセージ、その他 (コンソールへの出力など) があります。
 
-モジュールは、`com.microsoft.azure.gateway.messaging.Message` クラスを使用して相互に通信します。 `Message` の **Content** は、あらゆる種類のデータを表現することができるバイト配列です。 **Properties** も `Message` で使用することができます。これは単純な文字列と文字列のマッピングです。 **Properties** は、HTTP 要求のヘッダーまたはファイルのメタデータと考えることができます。
+モジュールは、`com.microsoft.azure.gateway.messaging.Message` クラスを使用して相互に通信します。 `Message` の **Content** は、あらゆる種類のデータを表現することができるバイト配列です。 **Properties** も `Message` で使用することができます。これは単純な文字列と文字列のマッピングです。 **Properties** は、HTTPS 要求のヘッダーまたはファイルのメタデータと考えることができます。
 
 Azure IoT Edge を Java で開発するためには、`com.microsoft.azure.gateway.core.GatewayModule` から継承される新しいモジュール クラスを作成し、必要な抽象メソッド (`receive()` と `destroy()`) を実装する必要があります。 この時点で、省略可能なメソッド (`start()` または `create()`) の実装を選択することもできます。 次のコード スニペットは、Azure IoT Edge モジュールの作成を開始する方法を示しています。
 

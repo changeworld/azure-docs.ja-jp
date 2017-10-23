@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: overview
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/07/2017
+ms.date: 10/11/2017
 ms.author: glenga
 ms.custom: mvc
+ms.openlocfilehash: bc801ed3dac213dacac5ee14e1b4e73b87ecc7bd
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: cec9660ee068b33a114748813f0c7ffa3821d973
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
@@ -82,15 +81,17 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 | 価格 |従量課金または App Service プランの一部 |App Service プランの一部 |
 | 実行の種類 |トリガー、(タイマー トリガーによる) スケジュール |トリガー、継続的、スケジュール |
 | トリガー イベント |[タイマー](functions-bindings-timer.md)、[Azure Cosmos DB](functions-bindings-documentdb.md)、[Azure Event Hub](functions-bindings-event-hubs.md)、[HTTP/webhook (GitHub、Slack)](functions-bindings-http-webhook.md)、[Azure App Service Mobile Apps](functions-bindings-mobile-apps.md)、[Azure Notification Hubs](functions-bindings-notification-hubs.md)、[Azure Service Bus](functions-bindings-service-bus.md)、[Azure Storage](functions-bindings-storage-blob.md) |[Azure Storage](functions-bindings-storage-blob.md)、[Azure Service Bus](functions-bindings-service-bus.md) |
-| ブラウザーでの開発 |サポート対象 | サポート対象外 |
-| Windows スクリプト (.cmd、.bat) |試験段階 |サポート対象 |
-| PowerShell |試験段階 |サポート対象 |
-| C# |サポート対象 |サポート対象 |
-| F# |サポート対象 |サポート対象外 |
-| Bash |試験段階 |サポート対象 |
-| PHP |試験段階 |サポート対象 |
-| Python |試験段階 |サポート対象 |
-| JavaScript |サポート対象 |サポート対象 |
+| ブラウザーでの開発 |サポートされています |サポートされていません |
+| C# |サポートされています |サポートされています |
+| F# |サポートされています |サポートされていません |
+| JavaScript |サポートされています |サポートされています |
+| Java |サポートされています | サポートされていません |
+| Bash |試験段階 |サポートされています |
+| Windows スクリプト (.cmd、.bat) |試験段階 |サポートされています |
+| PowerShell |試験段階 |サポートされています |
+| PHP |試験段階 |サポートされています |
+| Python |試験段階 |サポートされています |
+| TypeScript |試験段階 |サポートされていません |
 
 最終的には、現時点で App Service を使って何をしているかに応じて、Functions と WebJobs のどちらを使用するかが変わります。 ある App Service アプリのコード スニペットを実行する必要があり、そのコード スニペットをアプリと同じ DevOps 環境で管理したい場合には、WebJobs を使用します。 次のシナリオでは、Functions を使用します。
 
@@ -123,5 +124,4 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 * [Charles Lamanna によるプレゼンテーション「Integrations Made Simple (統合をもっとシンプルに)」](http://www.biztalk360.com/integrate-2016-resources/integrations-made-simple/)
 * [Logic Apps のライブ Web キャスト](http://aka.ms/logicappslive)
 * [Microsoft Flow のよくある質問](https://flow.microsoft.com/documentation/frequently-asked-questions/)
-
 
