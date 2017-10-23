@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.openlocfilehash: e098e27e32f7b7ae2009580a430f262aa7225206
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understand-your-seller-insights-report"></a>Seller Insights レポートの概要
 **Seller Insights とは**
@@ -84,8 +84,7 @@ ms.lasthandoff: 07/11/2017
 https://publish.windowsazure.com/ にアクセスし、Microsoft アカウントの資格情報でサインインします。
 ![passwordreminder][7]
 
-**[公開元]** タブを選択します。 
-![selectpublisherstab][8]
+**[パブリッシャー]** タブを選択します。![selectpublisherstab][8]
 
 URL で公開元 ID を探します。
 

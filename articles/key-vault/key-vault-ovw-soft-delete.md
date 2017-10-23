@@ -5,13 +5,12 @@ ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 07/10/2017
+ms.date: 09/25/2017
+ms.openlocfilehash: 384b65bc89401780b174c143d84b3b8f552fba3d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: c873b153ef9c7d5f55672a5918c9dc4fb7256701
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault の論理的な削除の概要
 
@@ -22,7 +21,9 @@ Key Vault の論理的な削除機能を使用すると、削除されたコン�
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-論理的な削除機能は、最初は REST、.NET/C#、および PowerShell の各インターフェイスで使用できます。 詳細については、[Key Vault のリファレンス](https://docs.microsoft.com/azure/key-vault/)に関するページをご覧ください。
+論理的な削除機能は、最初は REST、.NET/C#、PowerShell、および CLI の各インターフェイスで使用できます。
+
+各インターフェイスの詳細なリファレンスについては、[Key Vault のリファレンス](https://docs.microsoft.com/azure/key-vault/)に関するページを参照してください。
 
 ## <a name="scenarios"></a>シナリオ
 
@@ -36,7 +37,7 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 この機能を使用すると、キー コンテナーまたはキー コンテナー オブジェクトの DELETE 操作は論理的な削除となり、見かけ上はオブジェクトが削除されていても、実際には指定したリテンション期間だけリソースが保持されます。 さらに、削除されたオブジェクトを回復する、実質的には削除を元に戻すメカニズムも用意されています。 
 
-論理的な削除は Key Vault のオプションの動作であり、このリリースでは**既定では有効になっていません**。 キー コンテナーの論理的な削除を有効にする方法の詳細については、選択したインターフェイスの [Key Vault のリファレンス](https://docs.microsoft.com/azure/key-vault/)で該当するガイダンスを参照してください。
+論理的な削除は Key Vault のオプションの動作であり、このリリースでは**既定では有効になっていません**。 
 
 ### <a name="key-vault-recovery"></a>キー コンテナーの回復
 
@@ -67,6 +68,10 @@ Azure Key Vault は追跡対象のリソースであり、Azure Resource Manager
 
 ただし、Azure サブスクリプションが "*削除不可*" とマークされている場合は例外です。 この場合は、サービスのみが実際の削除を実行できます。これは、スケジュールされたプロセスとして行われます。 
 
+## <a name="next-steps"></a>次のステップ
 
+次の 2 つのガイドでは、論理的な削除を使用する場合の主な使用シナリオを紹介しています。
 
+- [PowerShell で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-powershell.md) 
+- [CLI で Key Vault の論理的な削除を使用する方法](key-vault-soft-delete-cli.md)
 

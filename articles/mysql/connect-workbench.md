@@ -9,15 +9,13 @@ editor: seanli1988
 ms.service: mysql
 ms.custom: mvc
 ms.topic: quickstart
-ms.date: 08/23/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 024db86b8760c8edb8347679eec6c68ceab3cd35
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 646886ad82d47162a62835e343fcaa7dadfaa311
-ms.openlocfilehash: 20a1f31ce42abb924504c4008f85420fc49aec89
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-mysql-workbench-to-connect-and-query-data"></a>Azure Database for MySQL: MySQL Workbench を使用した接続とデータの照会
 このクイックスタートでは、MySQL Workbench アプリケーションを使用して Azure Database for MySQL に接続する方法を紹介します。 
 
@@ -38,13 +36,13 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 
 3. サーバー名をクリックします。
 
-4. サーバーの **[プロパティ]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
+4. サーバーの **[プロパティ]** ページを選択し、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。
 
  ![Azure Database for MySQL サーバー名](./media/connect-workbench/1-server-properties-name-login.png)
  
-5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
+5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動してサーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
-## <a name="connect-to-the-server-using-mysql-workbench"></a>MySQL Workbench を使用したサーバーへの接続 
+## <a name="connect-to-the-server-by-using-mysql-workbench"></a>MySQL Workbench を使用したサーバーへの接続 
 GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続する手順は次のとおりです。
 
 1.  コンピューター上で MySQL Workbench アプリケーションを起動します。 
@@ -68,10 +66,10 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 
 5.   **[MySQL Connections]\(MySQL 接続\)** の一覧で、対象のサーバーに対応するタイルをクリックし、接続が確立するのを待ちます。
 
-6.   新しい SQL タブが開き、クエリを入力できる空白のエディターが表示されます。
-
-    > [!NOTE]
-    > 既定では、SSL 接続のセキュリティは必須であり、Azure Database for MySQL サーバーに適用されます。 通常、MySQL ワークベンチがサーバーに接続するために、SSL 証明書を使用した追加構成は必要ありません。 SSL の詳細については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  SSL を無効にしたい場合は、Azure Portal にアクセスし、[接続のセキュリティ] ページをクリックして、[強制 SSL 接続] トグル ボタンをオフにして無効にします。
+        新しい SQL タブが開き、クエリを入力できる空白のエディターが表示されます。
+    
+        > [!NOTE]
+        > 既定では、SSL 接続のセキュリティは必須であり、Azure Database for MySQL サーバーに適用されます。 通常、MySQL ワークベンチがサーバーに接続するために、SSL 証明書を使用した追加構成は必要ありません。 SSL の詳細については、「[Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する](./howto-configure-ssl.md)」を参照してください。  SSL を無効にしたい場合は、Azure Portal にアクセスし、[接続のセキュリティ] ページをクリックして、[強制 SSL 接続] トグル ボタンをオフにして無効にします。
 
 ## <a name="create-a-table-insert-data-read-data-update-data-delete-data"></a>テーブルの作成、データの挿入/読み取り/更新/削除
 1. いくつかのサンプル データを示すために、サンプル SQL コードをコピーして空の SQL タブに貼り付けます。
@@ -116,4 +114,3 @@ GUI ツール MySQL Workbench を使用して Azure MySQL サーバーに接続�
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
-

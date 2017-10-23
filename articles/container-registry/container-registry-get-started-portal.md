@@ -1,74 +1,135 @@
 ---
-title: "プライベート Docker レジストリの作成 - Azure Portal | Microsoft Docs"
-description: "Azure Portal を使用したプライベート Docker コンテナー レジストリの作成と管理について、概要を説明します。"
+title: "クイックスタート - Azure Portal を使用した Azure のプライベート Docker レジストリの作成"
+description: "Azure Portal を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
 services: container-registry
 documentationcenter: 
-author: stevelas
-manager: balans
-editor: dlepow
+author: mmacy
+manager: timlt
+editor: tysonn
 tags: 
 keywords: 
 ms.assetid: 53a3b3cb-ab4b-4560-bc00-366e2759f1a1
 ms.service: container-registry
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/24/2017
-ms.author: stevelas
-ms.custom: H1Hack27Feb2017
+ms.date: 09/20/2017
+ms.author: marsma
+ms.custom: 
+ms.openlocfilehash: 033ef0cdd607ced5de6c975e071e0ce37e677201
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 7fbbb56d775ee96c9a44363a4e41d4fc3c630582
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
 
-# <a name="create-a-private-docker-container-registry-using-the-azure-portal"></a>Azure Portal を使用したプライベート Docker コンテナー レジストリの作成
-Azure Portal を使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure CLI 2.0 コマンド](container-registry-get-started-azure-cli.md)または [Azure PowerShell](container-registry-get-started-powershell.md) を使用して行うことができるほか、Container Registry の [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+Azure Container Registry は、プライベート Docker コンテナー イメージを保存および管理する Azure のプライベート Docker レジストリです。 このクイックスタートでは、Azure Portal を使用してコンテナー レジストリを作成します。
 
-背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
+このクイック スタートを完了するには、Docker をローカルにインストールする必要があります。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
+
+## <a name="log-in-to-azure"></a>Azure へのログイン
+
+Azure Portal (https://portal.azure.com) にログインします。
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
-1. [Azure Portal](https://portal.azure.com) で、**[+新規]** をクリックします。
-2. Marketplace で **Azure コンテナー レジストリ**を検索します。
-3. 発行元が **Microsoft** の **[Azure コンテナー レジストリ]** を選択します。
-    ![Azure Marketplace の Container Registry サービス](./media/container-registry-get-started-portal/container-registry-marketplace.png)
-4. **[作成]**をクリックします。 **[Azure コンテナー レジストリ]** ブレードが表示されます。
 
-    ![Container Registry の設定](./media/container-registry-get-started-portal/container-registry-settings.png)
-5. **[Azure コンテナー レジストリ]** ブレードで、次の情報を入力します。 完了したら、**[作成]** をクリックします。
+**[新規作成]** > **[コンテナー]** > **[Azure Container Registry]** を選択します。
 
-    a. **[Registry name (レジストリ名)]** - 特定のレジストリのグローバルに一意のトップレベル ドメイン名。 この例のレジストリの名前は *myRegistry01* ですが、独自の一意の名前に置き換えてください。 名前に使用できるのは、アルファベットと数字のみです。
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-01]
 
-    b. **[リソース グループ]** - 既存の[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を選択するか、新しいリソース グループの名前を入力します。
+**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `myResourceGroup` というリソース グループを作成し、**[SKU]** に [クラシック] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
 
-    c. **[場所]** - サービスを[利用可能](https://azure.microsoft.com/regions/services/)な Azure データセンターの場所を選択します (例: **米国中南部**)。
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-03]
 
-    d. **[Admin user (管理者ユーザー)]** - 必要に応じて、レジストリにアクセスする管理者ユーザーを有効にします。 この設定は、レジストリの作成後に変更できます。
+Azure Container Registry は、`Classic`、`Basic`、`Standard`、および `Premium` という複数の SKU でご利用いただけます。 `Basic`、`Standard`、および `Premium` は、管理対象ストレージや webhook のような高度な機能を提供しますが、これらは現在プレビュー中であり、一部の Azure リージョンでは利用できません。 このクイックスタートでは、すべてのリージョンで利用できるため、`Classic` SKU を選択します。
 
-      > [!IMPORTANT]
-      > Container Registr では、管理者ユーザー アカウントによるアクセス権の提供だけでなく、Azure Active Directory サービス プリンシパルによる認証もサポートしています。 詳細と考慮事項については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
-      >
+**"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択し、**[アクセス キー]** を選択します。
 
-    e. **ストレージ アカウント** - 既定の設定を使用して[ストレージ アカウント](../storage/common/storage-introduction.md)を作成するか、同じ場所にある既存のストレージ アカウントを選択します。 現在、Premium Storage はサポートされていません。
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-05]
 
-## <a name="manage-registry-settings"></a>レジストリ設定の管理
-レジストリを作成すると、ポータルの **[Container Registries (コンテナー レジストリ)]** ブレードからレジストリ設定を検索できます。 たとえば、レジストリにログインするための設定が必要な場合や、管理者ユーザーを有効または無効にすることが必要な場合があります。
+**[管理者ユーザー]** の **[有効にする]** を選択します。 次の値をメモします。
 
-1. **[Container Registries (コンテナー レジストリ)]** ブレードで、レジストリの名前をクリックします。
+* ログイン サーバー
+* ユーザー名
+* パスワード
 
-    ![[Container Registries (コンテナー レジストリ)] ブレード](./media/container-registry-get-started-portal/container-registry-blade.png)
-2. アクセス設定を管理するには、**[アクセス キー]** をクリックします。
+Docker CLI を使用してレジストリを使用する場合は、次の手順で以下の値を使用します。
 
-    ![コンテナー レジストリのアクセス](./media/container-registry-get-started-portal/container-registry-access.png)
-3. 以下の設定に注意してください。
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-06]
 
-   * **[Login server (ログイン サーバー)]** - レジストリにログインするために使用する完全修飾名。 この例では `myregistry01.azurecr.io` です。
-   * **[Admin user (管理者ユーザー)]** - レジストリの管理者ユーザー アカウントの有効と無効を切り替えます。
-   * **[ユーザー名]** と **[パスワード]** - レジストリへのログインに使用できる管理者ユーザー アカウントの資格情報 (有効な場合)。 必要に応じてパスワードを再生成することもできます。 パスワードは 2 つ作成します。これにより、パスワードを再生成している間、もう 1 つのパスワードを使用してレジストリに対する接続を維持することができます。 サービス プリンシパルで認証を行うには、「[プライベート Docker コンテナー レジストリによる認証](container-registry-authentication.md)」を参照してください。
+## <a name="log-in-to-acr"></a>ACR にログインする
+
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 ログインするには、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用します。 *username*、*password*、*login server* の値を前述の手順でメモした値で置き換えます。
+
+```
+docker login --username <username> --password <password> <login server>
+```
+
+このコマンドが完了すると "ログインに成功しました" というメッセージを返されます。
+
+## <a name="push-image-to-acr"></a>ACR にイメージをプッシュする
+
+Azure Container Registry にイメージをプッシュするには、まずイメージを用意する必要があります。 必要な場合は、次のコマンドを実行して、既存のイメージを Docker Hub からプルします。
+
+```bash
+docker pull microsoft/aci-helloworld
+```
+
+イメージをレジストリにプッシュする前に、イメージに ACR ログイン サーバー名を使用してタグを付ける必要があります。 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) コマンドを使用してイメージにタグ付けします。 *login server* を前述の手順でメモしたログイン サーバー名で置き換えます。
+
+```
+docker tag microsoft/aci-helloworld <login server>/aci-helloworld:v1
+```
+
+最後に、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用して、ACR インスタンスにイメージをプッシュします。 *login server* を ACR インスタンスのログイン サーバー名で置き換えます。
+
+```
+docker push <login server>/aci-helloworld:v1
+```
+
+`docker push` コマンドが成功すると、次のように出力されます。
+
+```
+The push refers to a repository [uniqueregistryname.azurecr.io/aci-helloworld]
+7c701b1aeecd: Pushed
+c4332f071aa2: Pushed
+0607e25cc175: Pushed
+d8fbd47558a8: Pushed
+44ab46125c35: Pushed
+5bef08742407: Pushed
+v1: digest: sha256:f2867748615cc327d31c68b1172cc03c0544432717c4d2ba2c1c2d34b18c62ba size: 1577
+```
+
+## <a name="list-container-images"></a>コンテナー イメージの一覧表示
+
+ACR インスタンスのイメージ一覧を表示するには、ポータルでレジストリに移動し、**[リポジトリ]** を選択してから、`docker push` で作成したリポジトリを選択します。
+
+この例では、**aci-helloworld** リポジトリを選択したので、**[タグ]** に `v1` タグが付いたイメージが表示されます。
+
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-09]
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+不要になったら、**myResourceGroup** リソース グループを削除します。 リソース グループを削除すると、リソース グループだけでなく、ACR インスタンスとすべてのコンテナー イメージも削除されます。
+
+![Azure Portal でコンテナー レジストリを作成する][qs-portal-08]
 
 ## <a name="next-steps"></a>次のステップ
-* [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
 
+このクイック スタートでは、Azure CLI を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Container Instances のチュートリアル](../container-instances/container-instances-tutorial-prepare-app.md)
+
+<!-- IMAGES -->
+[qs-portal-01]: ./media/container-registry-get-started-portal/qs-portal-01.png
+[qs-portal-02]: ./media/container-registry-get-started-portal/qs-portal-02.png
+[qs-portal-03]: ./media/container-registry-get-started-portal/qs-portal-03.png
+[qs-portal-04]: ./media/container-registry-get-started-portal/qs-portal-04.png
+[qs-portal-05]: ./media/container-registry-get-started-portal/qs-portal-05.png
+[qs-portal-06]: ./media/container-registry-get-started-portal/qs-portal-06.png
+[qs-portal-07]: ./media/container-registry-get-started-portal/qs-portal-07.png
+[qs-portal-08]: ./media/container-registry-get-started-portal/qs-portal-08.png
+[qs-portal-09]: ./media/container-registry-get-started-portal/qs-portal-09.png

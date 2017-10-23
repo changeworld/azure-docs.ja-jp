@@ -16,10 +16,10 @@ ms.workload:
 ms.date: 05/10/2017
 ms.author: mimig
 ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法
 
@@ -152,7 +152,7 @@ Azure Cosmos DB の [MongoDB API](mongodb-introduction.md) では、[MongoDB シ
 **クエリ**
     
     db.families.find( { "isRegistered" : true })
-**結果**ドキュメントは返されません。 
+**結果** ドキュメントは返されません。 
 
 ## <a id="examplequery4"></a>サンプル クエリ 4
 

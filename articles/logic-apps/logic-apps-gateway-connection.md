@@ -13,16 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 07/13/2017
-ms.author: LADocs; dimazaid; estfan
+ms.date: 09/14/2017
+ms.author: LADocs; millopis; estfan
+ms.openlocfilehash: f385d832deed2eaf8ea21eb75d62944cbbf3d13d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 4744405b2c294be564dedee308b4cba95cfcc3c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="access-data-sources-on-premises-from-logic-apps-with-the-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータにアクセスする
+# <a name="connect-to-data-sources-on-premises-from-logic-apps-with-on-premises-data-gateway"></a>オンプレミス データ ゲートウェイを使用して、ロジック アプリからオンプレミスのデータに接続する
 
 ロジック アプリからオンプレミスのデータ ソースにアクセスするには、サポートされているコネクタでロジック アプリが使用できるオンプレミス データ ゲートウェイを設定します。 このゲートウェイは、オンプレミスのデータ ソースとロジック アプリ間でのデータ転送と暗号化を高速で行うブリッジとして機能します。 ゲートウェイは、オンプレミスのソースから、Azure Service Bus 経由の暗号化されたチャネルでデータを転送します。 すべてのトラフィックは、ゲートウェイ エージェントからの安全な送信トラフィックとして生成されます。 詳細については、[データ ゲートウェイのしくみ](logic-apps-gateway-install.md#gateway-cloud-service)に関するセクションを参照してください。 
 
@@ -59,6 +58,11 @@ ms.lasthandoff: 09/15/2017
 
 * Azure ゲートウェイ リソースから既に要求されているゲートウェイのインストールは要求できません。 ゲートウェイのインストールは 1 つの Azure ゲートウェイ リソースにのみ関連付けることができます。 要求は、他のリソースがインストールを使用できないようにゲートウェイのリソースを作成したときに発生します。
 
+* オンプレミス データ ゲートウェイは、Windows サービスとして実行され、Windows サービスのログオン資格情報として `NT SERVICE\PBIEgwService` を使用するように設定されています。 Azure Portal でゲートウェイ リソースを作成し、保守するには、[Windows サービス アカウント](../logic-apps/logic-apps-gateway-install.md)に**共同作成者**以上のアクセス許可が必要です。 
+
+  > [!NOTE]
+  > Windows サービス アカウントは、オンプレミスのデータ ソースへの接続に使用するアカウントとも、クラウド サービスへのサインインに使用する職場または学校アカウントとも異なります。
+
 ## <a name="set-up-the-data-gateway-connection"></a>データ ゲートウェイ接続を設定する
 
 ### <a name="1-install-the-on-premises-data-gateway"></a>1.オンプレミス データ ゲートウェイのインストール
@@ -66,17 +70,18 @@ ms.lasthandoff: 09/15/2017
 インストールが済んでいない場合は、[オンプレミス データ ゲートウェイのインストール](logic-apps-gateway-install.md)手順に従います。 ローカル コンピューターにデータ ゲートウェイがインストールされたことを確認してから、他の手順に進んでください。
 
 <a name="create-gateway-resource"></a>
+
 ### <a name="2-create-an-azure-resource-for-the-on-premises-data-gateway"></a>2.オンプレミス データ ゲートウェイ向けの Azure リソースの作成
 
 ローカル コンピューターにゲートウェイをインストールした後、データ ゲートウェイをリソースとして Azure 内に作成する必要があります。 この手順でも、ゲートウェイ リソースを Azure サブスクリプションに関連付けます。
 
 1. [Azure Portal](https://portal.azure.com "Azure Portal") にサインインします。 ゲートウェイをインストールするために使用したのと同じ Azure の職場または学校の電子メール アドレスを必ず使用してください。
 
-2. 次に示すように、Azure の左側のメニューで、**[新規]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** を選択します。
+2. 次に示すように、Azure のメイン メニューで、**[新規]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** を選択します。
 
    !["オンプレミス データ ゲートウェイ" を見つける](./media/logic-apps-gateway-connection/find-on-premises-data-gateway.png)
 
-3. **[接続ゲートウェイの作成]** ブレードで、次の詳細を指定して、データ ゲートウェイ リソースを作成します。
+3. **[接続ゲートウェイの作成]** ページで、次の詳細を指定して、データ ゲートウェイ リソースを作成します。
 
     * **名前**: ゲートウェイ リソースの名前を入力します。 
 
@@ -104,11 +109,12 @@ ms.lasthandoff: 09/15/2017
 
     ![詳細を指定してオンプレミス データ ゲートウェイを作成する](./media/logic-apps-gateway-connection/createblade.png)
 
-    任意の時点でデータ ゲートウェイを検索または表示するには、メインの Azure の左側のメニューで、**[その他のサービス]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** の順に選択します。
+    任意の時点でデータ ゲートウェイを検索または表示するには、メインの Azure のメニューで、**[その他のサービス]** > **[エンタープライズ統合]** > **[オンプレミス データ ゲートウェイ]** の順に選択します。
 
     ![[その他のサービス]、[エンタープライズ統合]、[オンプレミス データ ゲートウェイ] の順に移動する](./media/logic-apps-gateway-connection/find-on-premises-data-gateway-enterprise-integration.png)
 
 <a name="connect-logic-app-gateway"></a>
+
 ### <a name="3-connect-your-logic-app-to-the-on-premises-data-gateway"></a>3.ロジック アプリのオンプレミス データ ゲートウェイへの接続
 
 データ ゲートウェイ リソースの作成と Azure サブスクリプションへのリソースの関連付けが終わったので、ロジック アプリとデータ ゲートウェイ間の接続を作成します。
@@ -135,15 +141,15 @@ ms.lasthandoff: 09/15/2017
 
 1. ゲートウェイ接続を検索するには:
 
-   * ロジック アプリ ブレードの **[Development Tools]**(開発ツール) で、**[API Connections]**(API 接続) を選択します。 
+   * ロジック アプリ メニューの **[開発ツール]** で、**[API 接続]** を選択します。 
    
      **[API 接続]** ウィンドウに、データ ゲートウェイ接続を含む、ロジック アプリに関連付けられているすべての API 接続が表示されます。
 
      ![ロジック アプリに移動し、[API 接続] を選択する](./media/logic-apps-gateway-connection/logic-app-find-api-connections.png)
 
-   * または、メインの Azure の左側のメニューで、**[その他のサービス]** > **[Web + モバイル]** > **[API 接続]** の順に移動します。Azure サブスクリプションに関連付けられているすべての API 接続 (ゲートウェイ接続を含む) が表示されます。 
+   * または、Azure のメイン メニューで、**[その他のサービス]** > **[Web + モバイル]** > **[API 接続]** の順に移動します。Azure サブスクリプションに関連付けられているすべての API 接続 (ゲートウェイ接続を含む) が表示されます。 
 
-   * または、メインの Azure の左側のメニューで、すべての API 接続の **[すべてのリソース]** を選択します。Azure サブスクリプションに関連付けられている、ゲートウェイ接続を含むすべての API 接続が表示されます。
+   * または、Azure のメイン メニューで、すべての API 接続の **[すべてのリソース]** を選択します。Azure サブスクリプションに関連付けられている、ゲートウェイ接続を含むすべての API 接続が表示されます。
 
 2. 表示または編集するゲートウェイ接続を選択し、**[API 接続の編集]** を選択します。
 
@@ -155,7 +161,7 @@ ms.lasthandoff: 09/15/2017
 
 別のゲートウェイ リソースを作成するには、ゲートウェイを別のリソースに関連付けるか、ゲートウェイ リソースを削除します。ゲートウェイ リソースは、ゲートウェイのインストールに影響を与えずに削除できます。 
 
-1. メインの Azure の左側のメニューから **[すべてのリソース]** を選択します。 
+1. Azure のメイン メニューから **[すべてのリソース]** を選択します。 
 2. データ ゲートウェイ リソースを検索して選択します。
 3. **[オンプレミス データ ゲートウェイ]** を選択し、リソース ツールバーの **[削除]** を選択します。
 
@@ -168,4 +174,3 @@ ms.lasthandoff: 09/15/2017
 
 * [ロジック アプリをセキュリティで保護する](./logic-apps-securing-a-logic-app.md)
 * [ロジック アプリの接続の例とシナリオ](./logic-apps-examples-and-scenarios.md)
-

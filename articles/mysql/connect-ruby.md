@@ -10,17 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 07/13/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 10f774262015cb19e158a687138b4618ce50063b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e54f1dccbae060c52f48bfeb277c045b99a91715
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-use-ruby-to-connect-and-query-data"></a>Azure Database for MySQL: Ruby を使用した接続とデータの照会
-このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Ruby](https://www.ruby-lang.org) アプリケーションと [mysql2](https://rubygems.org/gems/mysql2) gem を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事では、Ruby を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Ruby](https://www.ruby-lang.org) アプリケーションと [mysql2](https://rubygems.org/gems/mysql2) gem を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Ruby を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -28,7 +26,7 @@ ms.lasthandoff: 07/21/2017
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-ruby"></a>Ruby のインストール
-ご使用のマシンに Ruby、Gem、MySQL2 ライブラリをインストールします。 
+ご使用のコンピューターに Ruby、Gem、MySQL2 ライブラリをインストールします。 
 
 ### <a name="windows"></a>Windows
 1. バージョン 2.3 の [Ruby](http://rubyinstaller.org/downloads/) をダウンロードしてインストールします。
@@ -56,18 +54,18 @@ ms.lasthandoff: 07/21/2017
 ## <a name="get-connection-information"></a>接続情報の取得
 Azure Database for MySQL に接続するために必要な接続情報を取得します。 完全修飾サーバー名とログイン資格情報が必要です。
 
-1. [Azure ポータル](https://portal.azure.com/)にログインします。
+1. [Azure Portal](https://portal.azure.com/) にログインします。
 2. Azure Portal の左側のメニューにある **[すべてのリソース]** をクリックし、作成したサーバー (例: **myserver4demo**) を検索します。
 3. サーバー名 **[myserver4demo]** をクリックします。
-4. サーバーの **[プロパティ]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
+4. サーバーの **[プロパティ]** ページを選択し、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。
  ![Azure Database for MySQL - サーバー管理者ログイン](./media/connect-ruby/1_server-properties-name-login.png)
-5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
+5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動してサーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
 ## <a name="run-ruby-code"></a>Ruby コードの実行 
 1. 以下のセクションからテキスト ファイルに Ruby コードを貼り付け、.rb というファイル拡張子でプロジェクト フォルダーに保存します (例: `C:\rubymysql\createtable.rb`、`/home/username/rubymysql/createtable.rb`)。
 2. このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (`cd rubymysql`)。
-3. そのうえで、ruby コマンドに続けてファイル名を入力し、アプリケーションを実行します (例: `ruby createtable.rb`)。
-4. Windows OS で環境変数 PATH に ruby アプリケーションが追加されていない場合、ruby アプリケーションを起動するには完全パスを使用する必要があります (例: `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`)。
+3. そのうえで、Ruby コマンドに続けてファイル名を入力し、アプリケーションを実行します (例: `ruby createtable.rb`)。
+4. Windows OS で環境変数 PATH に Ruby アプリケーションが追加されていない場合、ruby アプリケーションを起動するには完全なパスを使用する必要があります (例: `"c:\Ruby23-x64\bin\ruby.exe" createtable.rb`)。
 
 ## <a name="connect-and-create-a-table"></a>接続とテーブルの作成
 接続し、**CREATE TABLE** SQL ステートメントでテーブルを作成してから、**INSERT INTO** SQL ステートメントでそのテーブルに行を追加するには、次のコードを使用します。
@@ -229,4 +227,3 @@ end
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
-

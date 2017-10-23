@@ -17,10 +17,10 @@ ms.date: 06/12/2017
 ms.author: anhoh
 ms.custom: mvc
 ms.openlocfilehash: 1555f13c3ea88b61be0ea240b51218b83f6f9724
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-import-mongodb-data"></a>Azure Cosmos DB: MongoDB データをインポートする 
 
@@ -29,7 +29,7 @@ MongoDB 用 API で使用するために MongoDB から Azure Cosmos DB アカ�
 * *mongoimport.exe* または *mongorestore.exe* のいずれかを [MongoDB Download Center](https://www.mongodb.com/download-center) からダウンロードします。
 * [MongoDB 用 API 接続文字列](connect-mongodb-account.md)を取得します。
 
-使用する必要があります MongoDB からデータをインポートして、Azure Cosmos DB で使用する予定の場合、[データ移行ツール](import-data.md)データをインポートします。
+MongoDB からデータをインポートしており、Azure Cosmos DB でそれを使用する予定がある場合は、[データ移行ツール](import-data.md)を使用してデータをインポートする必要があります。
 
 このチュートリアルに含まれるタスクは次のとおりです。
 
@@ -128,7 +128,7 @@ MongoDB 用 API アカウントにデータを復元するには、次のテン�
     
     * 計算された *batchSize* 値が 24 を超える場合は、*batchSize* 値を 24 に設定します。
     
-    * *NumInsertionWorkers*、この式を使用: *numInsertionWorkers = (プロビジョニング スループット * 待機時間 (秒))/(バッチ サイズ * RUs を 1 回の書き込み消費)*です。
+    * *numInsertionWorkers* の場合は、*numInsertionWorkers = (プロビジョニングされたスループット * 秒単位の待機時間) / (バッチ サイズ * 1 回の書き込みのために消費された RU 数)* という数式を使用します。
         
     |プロパティ|値|
     |--------|-----|

@@ -4,7 +4,7 @@ description: "U-SQL の Cognitive 機能のインテリジェンスを使用す�
 services: data-lake-analytics
 documentationcenter: 
 author: saveenr
-manager: sukvg
+manager: jhubbard
 editor: cgronlun
 ms.assetid: 019c1d53-4e61-4cad-9b2c-7a60307cbe19
 ms.service: data-lake-analytics
@@ -14,143 +14,75 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 12/05/2016
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: f77329f9838d6e824afa7234de90f62257a004de
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: a651fe045d7eb1265f698ebb89843fd4c2b1c436
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="tutorial-get-started-with-the-cognitive-capabilities-of-u-sql"></a>チュートリアル: U-SQL の Cognitive 機能を使い始める
 
-U-SQL の Cognitive 機能により、開発者はビッグ データ プログラムにインテリジェンスを配置できます。 全体的なプロセスは簡単です。
+## <a name="overview"></a>概要
+U-SQL の Cognitive 機能により、開発者はビッグ データ プログラムにインテリジェンスを配置できます。 
+
+次の認識機能を使用できます。
+* イメージング: 顔を検出する
+* イメージング: 感情を検出する
+* イメージング: オブジェクトを検出する (タグ付け)
+* イメージング: OCR (光学式文字認識)
+* テキスト: キー フレーズ抽出
+* テキスト: 感情分析
+
+## <a name="how-to-use-cognitive-in-your-u-sql-script"></a>U-SQL スクリプトで Cognitive を使用する方法
+
+全体的なプロセスは簡単です。
 
 * REFERENCE ASSEMBLY ステートメントを使用して U-SQL スクリプトの認識機能を有効にします
-* PROCESS 操作を呼び出して Cognitive 機能を使用します 
+* Cognitive UDO で入力行セットに対して PROCESS を使用して出力行セットを生成します。
 
-## <a name="imaging-scenarios"></a>シナリオのイメージング
+### <a name="detecting-objects-in-images"></a>イメージ内のオブジェクトを検出する
 
-### <a name="example-image-tagging"></a>例: イメージのタグ付け
+次の例では、イメージ内のオブジェクトを検出するために認識機能を使用する方法を説明します。
 
-次の例では、イメージ内のオブジェクトの検出を目的とした、エンド ツー エンドでのイメージング機能の使用が示されます。
+```
+REFERENCE ASSEMBLY ImageCommon;
+REFERENCE ASSEMBLY FaceSdk;
+REFERENCE ASSEMBLY ImageEmotion;
+REFERENCE ASSEMBLY ImageTagging;
+REFERENCE ASSEMBLY ImageOcr;
 
-    REFERENCE ASSEMBLY ImageCommon;
-    REFERENCE ASSEMBLY FaceSdk;
-    REFERENCE ASSEMBLY ImageEmotion;
-    REFERENCE ASSEMBLY ImageTagging;
-    REFERENCE ASSEMBLY ImageOcr;
+// Get the image data
 
-    @imgs =
-        EXTRACT FileName string, ImgData byte[]
-        FROM @"/images/{FileName:*}.jpg"
-        USING new Cognition.Vision.ImageExtractor();
+@imgs =
+    EXTRACT 
+        FileName string, 
+        ImgData byte[]
+    FROM @"/usqlext/samples/cognition/{FileName}.jpg"
+    USING new Cognition.Vision.ImageExtractor();
 
-    // Extract the number of objects on each image and tag them 
-    @objects =
-        PROCESS @imgs 
-        PRODUCE FileName,
-                NumObjects int,
-                Tags string
-        READONLY FileName
-        USING new Cognition.Vision.ImageTagger();
+//  Extract the number of objects on each image and tag them 
 
+@tags =
+    PROCESS @imgs 
+    PRODUCE FileName,
+            NumObjects int,
+            Tags SQL.MAP<string, float?>
+    READONLY FileName
+    USING new Cognition.Vision.ImageTagger();
 
-### <a name="extract-emotions-from-human-faces"></a>人の顔から感情を抽出 
+@tags_serialized =
+    SELECT FileName,
+           NumObjects,
+           String.Join(";", Tags.Select(x => String.Format("{0}:{1}", x.Key, x.Value))) AS TagsString
+    FROM @tags;
 
-    @emotions =
-        PROCESS @imgs
-        PRODUCE FileName string,
-                NumFaces int,
-                Emotion string
-        READONLY FileName
-        USING new Cognition.Vision.EmotionAnalyzer();
+OUTPUT @tags_serialized
+    TO "/tags.csv"
+    USING Outputers.Csv();
+```
+その他の例については、「**次のステップ**」セクションの「**U-SQL/Cognitive Samples**」(U-SQL/Cognitive のサンプル) を参照してください。
 
-### <a name="estimate-age-and-gender-for-human-faces"></a>人の顔の年齢や性別を推定
-
-    @faces = 
-            PROCESS @imgs
-            PRODUCE FileName,
-                    NumFaces int,
-                    FaceAge string,
-                    FaceGender string
-            READONLY FileName
-            USING new Cognition.Vision.FaceDetector();
-
-### <a name="detect-text-in-images-ocr"></a>イメージ内のテキストを検出 (OCR)
-
-    @ocrs =
-            PROCESS @imgs
-            PRODUCE FileName,
-                    Text string
-            READONLY FileName
-            USING new Cognition.Vision.OcrExtractor();
-
-## <a name="text-scenarios"></a>テキスト シナリオ
-
-### <a name="input-data"></a>入力データ
-
-Leo Tolstoy の「戦争と平和」で構成される入力があると仮定します。
-
-    REFERENCE ASSEMBLY [TextCommon];
-    REFERENCE ASSEMBLY [TextSentiment];
-    REFERENCE ASSEMBLY [TextKeyPhrase];
-
-    @WarAndPeace =
-        EXTRACT No int,
-                Year string,
-                Book string,
-                Chapter string,
-                Text string
-        FROM @"/usqlext/samples/cognition/war_and_peace.csv"
-        USING Extractors.Csv();
-
-### <a name="extract-key-phrases-for-each-paragraph"></a>各段落のキー フレーズを抽出します。
-
-    @keyphrase =
-        PROCESS @WarAndPeace
-        PRODUCE No,
-                Year,
-                Book,
-                Chapter,
-                Text,
-                KeyPhrase string
-        READONLY No,
-                Year,
-                Book,
-                Chapter,
-                Text
-        USING new Cognition.Text.KeyPhraseExtractor();
-
-    // Tokenize the key phrases.
-    @kpsplits =
-        SELECT No,
-            Year,
-            Book,
-            Chapter,
-            Text,
-            T.KeyPhrase
-        FROM @keyphrase
-            CROSS APPLY
-                new Cognition.Text.Splitter("KeyPhrase") AS T(KeyPhrase);
-    
-### <a name="perform-sentiment-analysis-on-each-paragraph"></a>各段落の感情分析を実行
-
-    @sentiment =
-        PROCESS @WarAndPeace
-        PRODUCE No,
-                Year,
-                Book,
-                Chapter,
-                Text,
-                Sentiment string,
-                Conf double
-        READONLY No,
-                Year,
-                Book,
-                Chapter,
-                Text
-        USING new Cognition.Text.SentimentAnalyzer(true);
-
-
+## <a name="next-steps"></a>次のステップ
+* [U-SQL/Cognitive のサンプル](https://github.com/Azure-Samples?utf8=✓&q=usql%20cognitive)
+* [Data Lake Tools for Visual Studio を使用する U-SQL スクリプトの開発](data-lake-analytics-data-lake-tools-get-started.md)
+* [Azure Data Lake Analytics ジョブに U-SQL ウインドウ関数を使用する](data-lake-analytics-use-window-functions.md)

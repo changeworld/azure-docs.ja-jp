@@ -8,15 +8,14 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 33198e5a6e11df2db3a17fc96a0b3cd4b1a284e8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: 0604b29fcd9849545886a783ae5bbb2cbb72f2ce
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
+# <a name="create-and-manage-azure-database-for-mysql-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理
 サーバーレベルのファイアウォール規則を使用すると、管理者は、指定された IP アドレスまたは IP アドレス範囲から Azure Database for MySQL サーバーにアクセスできます。 
 
 ## <a name="create-a-server-level-firewall-rule-in-the-azure-portal"></a>Azure Portal でサーバーレベルのファイアウォール規則を作成する
@@ -35,7 +34,7 @@ ms.lasthandoff: 06/17/2017
 
    ![Bing での「What is my IP」](./media/howto-manage-firewall-using-portal/3-what-is-my-ip.png)
 
-4. アドレス範囲を追加します。 Azure Database for MySQL のファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] と [終了 IP] のフィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者とユーザーは、有効な資格情報を持っている MySQL サーバー上の任意のデータベースにアクセスできます。
+4. アドレス範囲を追加します。 Azure Database for MySQL のファイアウォール規則では、単一の IP アドレスまたはアドレスの範囲を指定できます。 規則を単一の IP アドレスに限定する場合は、[開始 IP] フィールドと [終了 IP] フィールドに同じアドレスを入力します。 ファイアウォールを開くと、管理者とユーザーは、有効な資格情報を持っている MySQL サーバー上の任意のデータベースにアクセスできます。
 
    ![Azure Portal - ファイアウォール規則 ](./media/howto-manage-firewall-using-portal/5-specify-addresses.png)
 
@@ -44,14 +43,13 @@ ms.lasthandoff: 06/17/2017
 
    ![Azure Portal - [保存] のクリック](./media/howto-manage-firewall-using-portal/4-save-firewall-rule.png)
 
-## <a name="manage-existing-server-level-firewall-rules-through-the-azure-portal"></a>Azure ポータルで既存のサーバー レベルのファイアウォール規則を管理する
+## <a name="manage-existing-server-level-firewall-rules-by-using-the-azure-portal"></a>Azure Portal を使用して既存のサーバーレベルのファイアウォール規則を管理する
 ファイアウォール規則を管理する手順を繰り返します。
 * 現在のコンピューターを追加するには、**[自分の IP を追加]** をクリックします。
 * さらに IP アドレスを追加するには、**規則名**、**開始 IP**、および**終了 IP** を入力します。
-* 既存の規則を変更するには、規則内の任意のフィールドをクリックし、変更します。
-* 既存の規則を削除するには、省略記号 [...] をクリックして、**[削除]** をクリックします。
+* 既存の規則を変更するには、規則内の任意のフィールドをクリックしてから、変更します。
+* 既存の規則を削除するには、省略記号 [...をクリックして、**削除** をクリックします。
 * **[保存]** をクリックして変更を保存します。
 
 ## <a name="next-steps"></a>次のステップ
 - Azure Database for MySQL サーバーに接続する方法のヘルプについては、「[Azure Database for MySQL の接続ライブラリ](./concepts-connection-libraries.md)」をご覧ください。
-

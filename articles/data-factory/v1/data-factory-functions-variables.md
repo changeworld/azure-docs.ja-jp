@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: 6d7e9be25badbd83ee613518ba768d98334a5f4d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory - 関数およびシステム変数
 この記事では、Azure Data Factory でサポートされている関数および変数に関する情報を提供します。
@@ -142,7 +141,7 @@ Data Factory の関数は、システム変数と共に次の用途で使用で�
 
 ### <a name="example-2"></a>例 2
 
-In the following example, the DateTime parameter for the Stored Procedure Activity is determined by using the Text. 次の例では、ストアド プロシージャ アクティビティの DateTime パラメーターが、Text.Format 関数と SliceStart 変数を使用して決定されます。 
+次の例では、ストアド プロシージャ アクティビティの DateTime パラメーターが、Text. Format 関数と SliceStart 変数を使用して決定されます。 
 
 ```json
 {
@@ -229,5 +228,4 @@ SliceStart によって表される日ではなく前の日のデータを読み
 ```
 
 使用できるさまざまな書式設定オプション (例: yy と yyyy) については、「 [カスタム日時書式指定文字列](https://msdn.microsoft.com/library/8kb3ddd4.aspx) 」をご覧ください。 
-
 

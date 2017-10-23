@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2017
 ms.author: arramac
+ms.openlocfilehash: 6213019131eec60263172f468ced516037a33c61
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 07e5e15f4f4c4281a93c8c3267c0225b1d79af45
-ms.openlocfilehash: c407152f54a6e7eb25a580491bd27ad291410d86
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/31/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expire-data-in-azure-cosmos-db-collections-automatically-with-time-to-live"></a>TTL (Time to Live) を使って Azure Cosmos DB コレクションのデータの有効期限が自動的に切れるようにする
 アプリケーションで膨大なデータを生成し、格納することができます。 このデータの一部 (コンピューターによって生成されるイベント データ、ログ、およびユーザー セッション情報など) は、一定期間でのみ有効です。 アプリケーションで必要以上のデータがある場合は、そのデータを消去し、アプリケーションでのストレージの必要性を減らすのが安全です。
@@ -42,7 +41,7 @@ TTL 機能は、コレクション レベルとドキュメント レベルの 2
    * プロパティは、親コレクションの DefaultTTL が存在する場合にのみ適用されます。
    * 親コレクションの DefaultTTL 値をオーバーライドします。
 
-ドキュメントの有効期限が切れるとすぐに (`ttl` + `_ts` が現在のサーバー時間以上になった場合)、ドキュメントは "有効期限切れ" とマークされます。 それ以降はドキュメントを操作することができず、実行されるどのクエリの結果からも除外されます。 システムではドキュメントが物理的に削除され、バックグラウンドでは後で状況に応じて削除されます。 その場合、コレクション予算から [要求ユニット (RU)](request-units.md) は使用されません。
+ドキュメントの有効期限が切れるとすぐに (`ttl` + `_ts` が現在のサーバー時間以下になった場合)、ドキュメントは "有効期限切れ" とマークされます。 それ以降はドキュメントを操作することができず、実行されるどのクエリの結果からも除外されます。 システムではドキュメントが物理的に削除され、バックグラウンドでは後で状況に応じて削除されます。 その場合、コレクション予算から [要求ユニット (RU)](request-units.md) は使用されません。
 
 上記のロジックを以下のマトリックスで表すことができます。
 
@@ -174,5 +173,4 @@ TTL はドキュメント全体に適用されます。 ドキュメントの一
 
 ## <a name="next-steps"></a>次のステップ
 Azure Cosmos DB の詳細については、サービスの "[*ドキュメント*](https://azure.microsoft.com/documentation/services/cosmos-db/)" のページを参照してください。
-
 

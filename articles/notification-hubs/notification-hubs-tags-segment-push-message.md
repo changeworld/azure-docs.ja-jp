@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: 18faa88641623e1248d6a33bc2d87099e1c9f624
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="routing-and-tag-expressions"></a>ルーティングとタグ式
 ## <a name="overview"></a>概要
@@ -33,7 +33,7 @@ ms.lasthandoff: 07/11/2017
 3. **タグ式**:タグのセットが指定した式と一致するすべての登録が、通知を受信します。
 
 ## <a name="tags"></a>タグ
-タグは、任意の文字列では、最大 120 文字、英数字が含まれていると、次の英数字以外の文字を指定できます: '_'、' @'、'#'、'. ',':'、'-' です。 ‘_’, ‘@’, ‘#’, ‘.’, ‘:’, ‘-’.次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオで通知をルーティングする簡単な方法は、次の図のようにさまざまなバンドを表すタグを含む登録にラベルを設定することです。
+タグは、最大 120 文字の任意の文字列です。英数字と一部の英数字以外の文字 ("_"、"@"、"#"、"."、":"、"-") を使用できます。 次の例は、特定の音楽グループに関するトースト通知を受信するアプリケーションを示します。 このシナリオで通知をルーティングする簡単な方法は、次の図のようにさまざまなバンドを表すタグを含む登録にラベルを設定することです。
 
 ![](./media/notification-hubs-routing-tag-expressions/notification-hubs-tags.png)
 

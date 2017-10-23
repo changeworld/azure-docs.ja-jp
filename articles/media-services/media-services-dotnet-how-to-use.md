@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/23/2017
 ms.author: juliako
+ms.openlocfilehash: 024b4cbb13001d67e7c1f0b86a84dfb43478c49d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: 15828bc74937a036871b26493498232ec7cf6f06
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="media-services-development-with-net"></a>.NET を使用した Media Services 開発
 [!INCLUDE [media-services-selector-setup](../../includes/media-services-selector-setup.md)]
@@ -41,25 +40,27 @@ ms.lasthandoff: 08/28/2017
 
 また、GitHub ([github.com/Azure/azure-sdk-for-media-services](https://github.com/Azure/azure-sdk-for-media-services) または [github.com/Azure/azure-sdk-for-media-services-extensions](https://github.com/Azure/azure-sdk-for-media-services-extensions)) から最新の Media Services .NET SDK bits を取得してソリューションをビルドし、クライアント プロジェクトに参照を追加できます。 必要な依存関係はすべて自動的にダウンロードされ抽出されます。
 
-1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **[名前]**、**[場所]**、**[ソリューション名]** を入力し、[OK] をクリックします。
+1. Visual Studio で、新しい C# コンソール アプリケーションを作成します。 **名前**、**場所**、**ソリューション名** を入力し、OKをクリックします。
 2. ソリューションをビルドします。
 3. **NuGet** を使用して、**Azure Media Services .NET SDK Extensions** (**windowsazure.mediaservices.extensions**) をインストールして追加します。 このパッケージをインストールすると、 **Media Services .NET SDK** が一緒にインストールされるほか、必要な依存関係がすべて追加されます。
    
     最新バージョンの NuGet がインストールされていることをご確認ください。 詳しい情報とインストール手順については、 [NuGet](http://nuget.codeplex.com/)をご覧ください。
-4. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、[NuGet パッケージの管理] を選択します。
+
+    1. ソリューション エクスプローラーでプロジェクトの名前を右クリックし、**[NuGet パッケージの管理]** を選択します。
+
+    2. [NuGet パッケージの管理] ダイアログ ボックスが表示されます。
+
+    3. オンライン ギャラリーで、Azure Media Services Extensions を検索し、**[Azure Media Services .NET SDK Extensions]**\(**windowsazure.mediaservices.extensions**\) を選択し、**[インストール]** ボタンをクリックします。
    
-    [NuGet パッケージの管理] ダイアログ ボックスが表示されます。
-5. オンライン ギャラリーで、Azure Media Services Extensions を検索し、[Azure Media Services .NET SDK Extensions] を選択し、[インストール] をクリックします。
+    4. プロジェクトが変更され、Media Services .NET SDK Extensions、Media Services .NET SDK、その他の依存アセンブリへの参照が追加されます。
+4. よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。 詳細については、「 [NuGet Package Restore (NuGet パッケージの復元)](http://docs.nuget.org/consume/package-restore)」をご覧ください。
+5. **System.Configuration** アセンブリへの参照を追加します。 このアセンブリには、構成ファイル (App.config など) にアクセスするための System.Configuration.**ConfigurationManager** クラスが含まれています。
    
-    プロジェクトが変更され、Media Services .NET SDK Extensions、Media Services .NET SDK、その他の依存アセンブリへの参照が追加されます。
-6. よりクリーンな開発環境を実現するために、NuGet パッケージの復元を有効にすることを検討してください。 詳細については、「 [NuGet Package Restore (NuGet パッケージの復元)](http://docs.nuget.org/consume/package-restore)」をご覧ください。
-7. **System.Configuration** アセンブリへの参照を追加します。 このアセンブリには、構成ファイル (App.config など) にアクセスするための System.Configuration.**ConfigurationManager** クラスが含まれています。
+    1. [Manage References (参照の管理)] ダイアログを使用して参照を追加するには、ソリューション エクスプローラーでプロジェクト名を右クリックします。 **[追加]**、**[参照]** の順にクリックします。
    
-    [Manage References (参照の管理)] ダイアログを使用して参照を追加するには、ソリューション エクスプローラーでプロジェクト名を右クリックします。 次に、[追加と参照] を選択します。
-   
-    [参照の管理] ダイアログが表示されます。
-8. .NET framework アセンブリで、System.Configuration アセンブリを探して選択し、[OK] をクリックします。
-9. App.config ファイルを開き、*appSettings* セクションをファイルに追加します。     
+    2. [参照の管理] ダイアログが表示されます。
+    3. .NET Framework アセンブリで、System.Configuration アセンブリを探して選択し、**[OK]** をクリックします。
+6. App.config ファイルを開き、**appSettings** セクションをファイルに追加します。     
    
     Media Services API に接続するために必要な値を設定します。 詳細については、「[Azure AD Authentication を使用した Azure Media Services API へのアクセス](media-services-use-aad-auth-to-access-ams-api.md)」を参照してください。 
 
@@ -77,7 +78,7 @@ ms.lasthandoff: 08/28/2017
 
         </configuration>
 
-10. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
+7. Program.cs ファイルの先頭にある既存の **using** ステートメントを次のコードで上書きします。
            
         using System;
         using System.Configuration;
@@ -127,5 +128,4 @@ ms.lasthandoff: 08/28/2017
 
 ## <a name="provide-feedback"></a>フィードバックの提供
 [!INCLUDE [media-services-user-voice-include](../../includes/media-services-user-voice-include.md)]
-
 

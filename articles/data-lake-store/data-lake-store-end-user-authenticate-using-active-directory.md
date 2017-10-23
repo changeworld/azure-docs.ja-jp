@@ -6,32 +6,30 @@ documentationcenter:
 author: nitinme
 manager: jhubbard
 editor: cgronlun
-ms.assetid: ec586ecd-1b42-459e-b600-fadbb7b80a9b
 ms.service: data-lake-store
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/28/2017
+ms.date: 09/29/2017
 ms.author: nitinme
+ms.openlocfilehash: 98898675b85d62c97a215f9922f1393001013943
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: f10bc67e4ee814d5aa0accff1a3dc1426b818084
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="end-user-authentication-with-data-lake-store-using-azure-active-directory"></a>Data Lake Store での Azure Active Directory を使用したエンドユーザーの認証
 > [!div class="op_single_selector"]
-> * [サービス間認証](data-lake-store-authenticate-using-active-directory.md)
 > * [エンドユーザー認証](data-lake-store-end-user-authenticate-using-active-directory.md)
+> * [サービス間認証](data-lake-store-service-to-service-authenticate-using-active-directory.md)
 > 
 > 
 
 Azure Data Lake Store では、認証するために Azure Active Directory を使用します。 Azure Data Lake Store または Azure Data Lake Analytics と組み合わせて動作するアプリケーションを作成する前に、Azure Active Directory (Azure AD) でアプリケーションを認証する方法を決めておく必要があります。 2 種類のオプションを使用できます。
 
 * エンドユーザー認証 (この記事)
-* サービス間認証
+* サービス間の認証 (上のドロップダウンからこのオプションを選択します)
 
 どちらのオプションでも、OAuth 2.0 トークンがアプリケーションに提供され、このトークンが Azure Data Lake Store または Azure Data Lake Analytics に対するすべての要求にアタッチされます。
 
@@ -48,8 +46,10 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
   
     ![AAD ドメインの取得](./media/data-lake-store-end-user-authenticate-using-active-directory/get-aad-domain.png)
 
+* Azure テナント ID。 テナント ID を取得する方法については、「[テナント ID を取得する](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id)」を参照してください。
+
 ## <a name="end-user-authentication"></a>エンドユーザー認証
-これは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
+この認証メカニズムは、エンド ユーザーに Azure AD 経由でアプリケーションにログインしてもらう場合に推奨する方法です。 アプリケーションは、ログインしたエンド ユーザーと同じアクセス レベルで Azure リソースにアクセスできます。 エンド ユーザーは、アプリケーションのアクセスを維持するために、資格情報を定期的に入力する必要があります。
 
 エンド ユーザーがログインすると、アクセス トークンと更新トークンがアプリケーションに付与されます。 アクセス トークンは Data Lake Store または Data Lake Analytics に対するすべての要求にアタッチされ、既定では 1 時間有効です。 更新トークンは、新しいアクセス トークンを取得するために使用でき、既定では最大 2 週間有効です。 エンド ユーザーのログインには、2 つの異なる方法を使用できます。
 
@@ -64,8 +64,9 @@ Azure Data Lake Store では、認証するために Azure Active Directory を�
 ### <a name="directly-passing-in-user-credentials"></a>ユーザーの資格情報を直接渡す
 アプリケーションで、ユーザーの資格情報を Azure AD に直接提供できます。 この方法は、組織 ID ユーザー アカウントのみで機能します。@outlook.com や @live.com で終わるアカウントを含む個人や "live ID" のユーザー アカウントには対応しません。さらに、この方法は、Azure AD の 2 要素認証 (2FA) を必要とするユーザー アカウントには対応しません。
 
-### <a name="what-do-i-need-to-use-this-approach"></a>この方法を使用するには何が必要か
+### <a name="what-do-i-need-for-this-approach"></a>この方法を使用するための要件
 * Azure AD ドメイン名。 この要件は、この記事の前提条件で既に示されています。
+* Azure AD テナント ID。 この要件は、この記事の前提条件で既に示されています。
 * Azure AD **ネイティブ アプリケーション**
 * Azure AD ネイティブ アプリケーションのアプリケーション ID
 * Azure AD ネイティブ アプリケーションのリダイレクト URI
@@ -84,7 +85,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 
 [アプリケーション ID の取得](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key)に関するページを参照して、Azure AD ネイティブ アプリケーションのアプリケーション ID (Azure クラシック ポータルではクライアント ID) を取得します。
 
-リダイレクト URI を取得するには、次の手順に従います。
+リダイレクト URI を取得するには、次の手順を実行します。
 
 1. Azure Portal で **[Azure Active Directory]** を選択します。**[アプリの登録]** をクリックし、作成した Azure AD ネイティブ アプリケーションを見つけてクリックします。
 
@@ -109,7 +110,7 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
  
 4.  **[API アクセスの追加]** ブレードで、**[アクセス許可の選択]** をクリックします。**[Full access to Data Lake Store (Data Lake Store にフル アクセス許可を与える)]** チェック ボックスをオンにし、**[選択]** をクリックします。
 
-    ![[クライアント ID]](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
+    ![クライアント ID](./media/data-lake-store-end-user-authenticate-using-active-directory/aad-end-user-auth-set-permission-3.png)
 
     **[Done]**をクリックします。
 
@@ -118,8 +119,8 @@ Azure Active Directory を使用して Azure Data Lake Store でのエンドユ�
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure AD ネイティブ アプリケーションを作成し、.NET SDK、Java SDK、REST API などを使用して作成するクライアント アプリケーションに必要な情報を収集しました。これで、以下の記事に進むことができます。これらの記事では、Azure AD Web アプリケーションを使用して、最初に Data Lake Store で認証を行ってからストアで他の操作を実行する方法について説明しています。
 
-* [.NET SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-net-sdk.md)
-* [Java SDK で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-java-sdk.md)
-* [REST API で Azure Data Lake Store の使用を開始する](data-lake-store-get-started-rest-api.md)
-
+* [Data Lake Store での Java SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-java-sdk.md)
+* [Data Lake Store での .NET SDK を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-net-sdk.md)
+* [Data Lake Store での Python を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-python.md)
+* [Data Lake Store での REST API を使用したエンドユーザー認証](data-lake-store-end-user-authenticate-rest-api.md)
 

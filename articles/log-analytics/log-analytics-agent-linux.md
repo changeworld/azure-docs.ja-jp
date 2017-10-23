@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/23/2017
+ms.date: 09/29/2017
 ms.author: magoedte
+ms.openlocfilehash: c9902e1b8644c2b0a894f9cde98f2056564775c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 616505d7884189ddee2edadc4114deb8f08f7475
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-your-linux-computers-to-operations-management-suite-oms"></a>Linux コンピューターを Operations Management Suite (OMS) に接続する 
 
 Microsoft Operations Management Suite (OMS) を使用すると、Linux コンピューターやコンテナー ソリューション (Docker など) から生成されたデータを収集して操作することができます。こうしたデータの生成元は、オンプレミスのデータセンターに物理サーバーや仮想マシンとして存在することもあれば、Amazon Web Services (AWS) や Microsoft Azure などのクラウドでホストされるサービス内の仮想マシンとして存在することもあります。 また、Change Tracking など、OMS で使用できる管理ソリューションを使用して構成変更を識別したり、Update Management を使用してソフトウェア更新を管理し、Linux VM のライフサイクルを積極的に管理することもできます。 
@@ -75,7 +73,7 @@ PAM | Pluggable Authentication Module (プラグ可能な認証モジュール) 
 
 **パッケージ** | **バージョン** | **説明**
 ----------- | ----------- | --------------
-omsagent | 1.4.0 | Operations Management Suite Agent for Linux
+omsagent | 1.4.1 | Operations Management Suite Agent for Linux
 omsconfig | 1.1.1 | OMS Agent 用の構成エージェント
 omi | 1.2.0 | Open Management Infrastructure (OMI) - 軽量の CIM サーバー
 scx | 1.6.3 | オペレーティング システムのパフォーマンス メトリックの OMI CIM プロバイダー
@@ -93,9 +91,9 @@ OMS Agent for Linux は、エージェントのバイナリを System Center Ope
 ### <a name="system-configuration-changes"></a>システム構成の変更
 OMS Agent for Linux のパッケージをインストールした後、システム全体に関連した構成の変更が別途適用されます。 omsagent パッケージをアンインストールすると、これらのアーティファクトは削除されます。
 
-* `omsagent` という名前の非特権ユーザーが作成されます。 omsagent デーモンはこのアカウントで実行されます。
-* sudoers の "include" ファイルは /etc/sudoers.d/omsagent に作成されます。 これにより、syslog および omsagent デーモンを再起動する権限が omsagent に与えられます。 sudo の "include" ディレクティブが、インストールされているバージョンの sudo でサポートされていない場合、そのエントリが /etc/sudoers に書き込まれます。
-* イベントの一部をエージェントに転送するよう syslog の構成が変更されます。 詳細については、以下の「 **データ収集の構成** 」を参照してください。
+* `omsagent` という名前の非特権ユーザーが作成されます。 omsagent デーモンはこのアカウントとして実行されます。
+* sudoers の "include" ファイルは /etc/sudoers.d/omsagent に作成されます。 このファイルで、syslog および omsagent デーモンを再起動する権限が omsagent に与えられます。 sudo の "include" ディレクティブが、インストールされているバージョンの sudo でサポートされていない場合、そのエントリが /etc/sudoers に書き込まれます。
+* イベントの一部をエージェントに転送するよう syslog の構成が変更されます。 詳細については、以下の「**データ収集の構成**」を参照してください。
 
 ### <a name="upgrade-from-a-previous-release"></a>以前のリリースからのアップグレード
 このリリースでは、1.0.0-47 より前のバージョンからのアップグレードがサポートされます。 `--upgrade` コマンドを使用してインストールを実行すると、エージェントのすべてのコンポーネントが最新バージョンにアップグレードされます。
@@ -106,7 +104,7 @@ OMS Agent for Linux のパッケージをインストールした後、システ
 
 まず、OMS のワークスペース ID とキーが必要です。これらは [OMS クラシック ポータル](https://mms.microsoft.com)に切り替えることで見つけることができます。  **[概要]** ページで、上部のメニューから **[設定]** を選択し、**Connected Sources\Linux Servers** に移動します。  **[ワークスペース ID]** と **[主キー]** の右側に値が表示されます。  両方をコピーしてお使いのエディターに貼り付けます。    
 
-1. 最新の [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x64.sh) または [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.0-45/omsagent-1.4.0-45.universal.x86.sh) をGitHub からダウンロードします。  
+1. 最新の [OMS Agent for Linux (x64)](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x64.sh) または [OMS Agent for Linux x86](https://github.com/Microsoft/OMS-Agent-for-Linux/releases/download/OMSAgent_GA_v1.4.1-45/omsagent-1.4.1-45.universal.x86.sh) をGitHub からダウンロードします。  
 2. 該当するバンドル (x86 または x64) を、scp/sftp を使用して Linux コンピューターに転送します。
 3. `--install` または `--upgrade` 引数を使用して、バンドルをインストールします。 
 
@@ -237,7 +235,7 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 * OMS サービス エンドポイントが、データセンターの許可リストに載っていません 
 
 #### <a name="resolutions"></a>解決策
-1. オプション `-v` を有効にして以下のコマンドを使用して、OMS Agent for Linux で OMS サービスに再オンボードします。 そうすると、プロキシ経由で OMS サービスに接続しているエージェントで詳細出力ができるようになります。 
+1. オプション `-v` を有効にして以下のコマンドを使用して、OMS Agent for Linux で OMS サービスに再オンボードします。 この設定で、プロキシ経由で OMS サービスに接続しているエージェントで詳細出力ができるようになります。 
 `/opt/microsoft/omsagent/bin/omsadmin.sh -w <OMS Workspace ID> -s <OMS Workspace Key> -p <Proxy Conf> -v`
 
 2. 「[プロキシ サーバーまたは OMS ゲートウェイで使用するためのエージェントの構成](#configuring the-agent-for-use-with-a-proxy-server-or-oms-gateway)」を参照し、プロキシ サーバー経由で通信するようにエージェントを正しく構成したことを確認します。    
@@ -263,7 +261,7 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 3. このトピックの前述のインストール手順に従って、正しいワークスペース ID とワークスペース キーを使用して再オンボードします。
 
 ### <a name="issue-you-see-a-500-and-404-error-in-the-log-file-right-after-onboarding"></a>問題: オンボードの直後にログ ファイルに 500 および 404 エラーが表示される
-これは、Linux データを OMS ワークスペースに最初にアップロードするときに発生する既知の問題です。 送信されているデータやサービス エクスペリエンスには影響しません。
+このエラーは、Linux データを OMS ワークスペースに最初にアップロードするときに発生する既知の問題です。 このエラーは、送信されているデータやサービス エクスペリエンスには影響しません。
 
 ### <a name="issue-you-are-not-seeing-any-data-in-the-oms-portal"></a>問題: OMS ポータルにデータが表示されない
 
@@ -281,5 +279,4 @@ omsagent のログ ローテーション構成は `/etc/logrotate.d/omsagent-<wo
 
     >[!NOTE]
     >この問題は、エージェント バージョン 1.1.0-28 以降で修正されます。
-
 

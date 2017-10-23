@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/01/2017
+ms.date: 09/26/2017
 ms.author: cherylmc
+ms.openlocfilehash: 2bcd95da36cd577ece8ad87d00c3e276f28ad340
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c30998a77071242d985737e55a7dc2c0bf70b947
-ms.openlocfilehash: 5a6360b56963d219ab576fb3e2636b6c51dd72ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="verifying-expressroute-connectivity"></a>ExpressRoute 接続の検証
 ExpressRoute は、接続プロバイダーが提供するプライベート接続を介してオンプレミスのネットワークを Microsoft クラウドに拡張するもので、次の 3 つの異なるネットワーク ゾーンが含まれています。
@@ -97,7 +96,7 @@ ExpressRoute 回線を運用可能にするには、*[回線の状態]* が *[�
     Get-AzureRmExpressRouteCircuit -ResourceGroupName "Test-ER-RG"
 
 >[!TIP]
->リソース グループ名は、Azure Portal で取得できます。 このドキュメントの前のサブセクションを参照すると、リソース グループ名がサンプルのスクリーンショットに表示されていることがわかります。
+>リソース グループ名は、Azure で取得できます。 このドキュメントの前のサブセクションを参照すると、リソース グループ名がサンプルのスクリーンショットに表示されていることがわかります。
 >
 >
 
@@ -172,14 +171,9 @@ ExpressRoute 回線が運用可能かどうかを確認するには、特に次�
 サービス プロバイダーが ExpressRoute 回線のプロビジョニングを完了すると、MSEE-PR (4) と MSEE (5) の間の ExpressRoute 回線でルーティング構成を作成できます。 各 ExpressRoute 回線では、1 つ、2 つ、または 3 つのルーティング コンテキストを有効にしておくことができます。これらのルーティング コンテキストとは、Azure プライベート ピアリング (Azure 内のプライベート仮想ネットワークへのトラフィック)、Azure パブリック ピアリング (Azure 内のパブリック IP アドレスへのトラフィック)、Microsoft ピアリング (Office 365 と Dynamics 365 へのピアリング) です。 ルーティング構成の作成と変更方法の詳細については、「[ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]」を参照してください。
 
 ###<a name="verification-via-the-azure-portal"></a>Azure Portal を使用した検証
->[!IMPORTANT]
->Azure Portal には既知のバグがあります。その点で、ExpressRoute ピアリングは、サービス プロバイダーによって構成された場合に Azure Portal に表示され "*ません*"。 ポータルまたは PowerShell を使用して ExpressRoute ピアリングを追加すると、"*サービス プロバイダーの設定が上書きされます*"。 この操作により、ExpressRoute 回線でルーティングが中断され、設定の復元や標準のルーティングの再確立のためにサービス プロバイダーのサポートが必要になります。 ExpressRoute ピアリングを変更するのは、サービス プロバイダーがレイヤー 2 サービスのみを提供していることが明白な場合のみです。
->
->
 
-<p/>
 >[!NOTE]
->レイヤー 3 がサービス プロバイダーによって提供されていて、ポータルでピアリングが空白になっている場合は、PowerShell を使用すると、サービス プロバイダーによって構成された設定を確認できます。
+>レイヤー 3 がサービス プロバイダーから提供され、ポータルのピアリングが空の場合、ポータルの更新ボタンを使用して回線の構成を更新します。 この操作で、回線に適切なルーティング構成が適用されます。 
 >
 >
 
@@ -398,7 +392,7 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 - [ExpressRoute 回線のルーティングの作成と変更を行う][CreatePeering]
 
 <!--Image References-->
-[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "論理 Expressroute 接続"
+[1]: ./media/expressroute-troubleshooting-expressroute-overview/expressroute-logical-diagram.png "論理 Express Route 接続"
 [2]: ./media/expressroute-troubleshooting-expressroute-overview/portal-all-resources.png "[すべてのリソース] アイコン"
 [3]: ./media/expressroute-troubleshooting-expressroute-overview/portal-overview.png "[概要] アイコン"
 [4]: ./media/expressroute-troubleshooting-expressroute-overview/portal-circuit-status.png "ExpressRoute Essentials サンプルのスクリーンショット"
@@ -410,7 +404,6 @@ Microsoft ピアリング構成の詳細を取得するには、次のコマン�
 [CreatePeering]: https://docs.microsoft.com/azure/expressroute/expressroute-howto-routing-portal-resource-manager
 [OldPortal]: https://manage.windowsazure.com
 [ARP]: https://docs.microsoft.com/en-us/azure/expressroute/expressroute-troubleshooting-arp-resource-manager
-
 
 
 

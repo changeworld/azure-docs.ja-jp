@@ -11,15 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 09/19/2017
 ms.author: dobett
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: a21f1c61f344f96e2e03422e41fd8c5f7f841a0c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
-
+ms.openlocfilehash: a499783fc02e1371562edd41b827758e19fbd823
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>device-to-cloud メッセージにメッセージ ルートとカスタム エンドポイントを使用する
 
@@ -34,7 +32,10 @@ IoT Hub では、メッセージ プロパティに基づいて、IoT Hub サー
 
 1 つのメッセージが複数のルーティング ルールの条件と一致することがあり、その場合、IoT Hub は一致する各ルールに関連するエンドポイントにメッセージを送信します。 IoT Hub はメッセージ配信の重複を自動的に排除するため、あるメッセージが複数のルールに一致し、それらのルールの配信先がすべて同じであった場合は、配信先には 1 度のみメッセージが配信されます。
 
-IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+IoT hub は、既定の[組み込みのエンドポイント][lnk-built-in]を持ちます。 サブスクリプション内の他のサービスをハブにリンクして、メッセージをルーティングするカスタム エンドポイントを作成できます。 IoT Hub は現在、カスタム エンドポイントとして、Azure Storage コンテナー、Event Hubs、Service Bus キュー、Service Bus トピックをサポートします。
+
+> [!NOTE]
+> IoT Hub は、Azure Storage コンテナーに BLOB としてデータを書き込む処理のみをサポートしています。
 
 > [!WARNING]
 > **セッション**または**重複データ検出**が有効になっている Service Bus のキューおよびトピックは、カスタム エンドポイントとしてはサポートされていません。
@@ -43,6 +44,7 @@ IoT Hub でのカスタム エンドポイントの作成の詳細について�
 
 カスタム エンドポイントからの読み取りの詳細については、以下をご覧ください。
 
+* [Azure Storage コンテナー][lnk-getstarted-storage]から読み取ります。
 * [Event Hubs][lnk-getstarted-eh] から読み取ります。
 * [Service Bus キュー][lnk-getstarted-queue]から読み取ります。
 * [Service Bus トピック][lnk-getstarted-topic]から読み取ります。
@@ -63,4 +65,4 @@ IoT Hub のエンドポイントの詳細については、[IoT Hub エンドポ
 [lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
 [lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
 [lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
-
+[lnk-getstarted-storage]: ../storage/blobs/storage-blobs-introduction.md
