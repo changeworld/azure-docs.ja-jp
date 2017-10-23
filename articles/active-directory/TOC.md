@@ -97,6 +97,7 @@
 #### [待機時間](active-directory-reporting-latencies-azure-portal.md)
 #### [Notifications](active-directory-reporting-notifications.md)
 #### [サインイン アクティビティのエラー コード](active-directory-reporting-activity-sign-ins-errors.md)
+#### [多要素認証](active-directory-reporting-activity-sign-ins-mfa.md)
 ### トラブルシューティング
 #### [見つからない監査データ](active-directory-reporting-troubleshoot-missing-audit-data.md)
 #### [ダウンロードに見つからないデータ](active-directory-reporting-troubleshoot-missing-data-download.md)
@@ -150,8 +151,7 @@
 ### [概要](active-directory-enable-sso-scenario.md)
 ### [使用の開始](active-directory-integrating-applications-getting-started.md)
 ### [SaaS アプリの統合に関するチュートリアル](active-directory-saas-tutorial-list.md)
-### [Cloud App Discovery](cloudappdiscovery-overview.md)
-#### [エージェントレスの検出の設定](cloudappdiscovery-get-started.md)
+### [Cloud App Discovery](cloudappdiscovery-get-started.md)
 #### [スナップショット レポートの作成](cloudappdiscovery-set-up-snapshots.md)
 #### [継続的なレポートの構成](https://docs.microsoft.com/cloud-app-security/discovery-docker)
 #### [カスタム ログ パーサーを使用する](https://docs.microsoft.com/cloud-app-security/custom-log-parser)
