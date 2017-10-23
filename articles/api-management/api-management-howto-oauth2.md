@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure API Management の OAuth 2.0 を使用して開発者アカウントを認証する | Microsoft Docs"
 description: "API Management で OAuth 2.0 を使用してユーザーを承認する方法について説明します。"
 services: api-management

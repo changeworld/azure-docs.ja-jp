@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory サインイン アクティビティ レポート API のサンプル | Microsoft Docs"
 description: "Azure Active Directory Reporting API の概要について説明します。"
 services: active-directory

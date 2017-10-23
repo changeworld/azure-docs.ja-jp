@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Site Recovery を使用した Azure へのレプリケーションの前提条件 | Microsoft Docs"
 description: "Azure Site Recovery サービスを使用して VM や物理マシンを Azure にレプリケートするための前提条件について学習します。"
 services: site-recovery

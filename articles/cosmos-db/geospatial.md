@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cosmos DB で地理空間データを扱う | Microsoft Docs"
 description: "Azure Cosmos DB と DocumentDB API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。"
 services: cosmos-db

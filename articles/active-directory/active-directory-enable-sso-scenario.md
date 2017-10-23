@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs"
 description: "この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
 services: active-directory

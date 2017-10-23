@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs"
 description: "Azure Active Directory サインイン アクティビティ レポート API のリファレンス"
 services: active-directory

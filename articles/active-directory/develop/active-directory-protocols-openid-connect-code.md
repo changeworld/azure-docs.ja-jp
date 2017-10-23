@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure AD での OpenID Connect 認証コード フローについて | Microsoft Docs"
 description: "この記事では、Azure Active Directory と OpenID Connect を利用してテナントの Web アプリケーションと Web API へのアクセスを承認するために HTTP メッセージを使用する方法について説明します。"
 services: active-directory

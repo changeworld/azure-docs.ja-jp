@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure IoT Hub デバイス ツインのプロパティの使用 (.NET/.NET) | Microsoft Docs"
 description: "Azure IoT Hub デバイス ツインを使用してデバイスを構成する方法。 Azure IoT device SDK for .NET を使用して、シミュレートされたデバイス アプリを実装し、Azure IoT service SDK for .NET を使用して、デバイス ツインを使用するデバイス構成を変更するサービス アプリを実装します。"
 services: iot-hub

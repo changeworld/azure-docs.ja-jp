@@ -1,4 +1,4 @@
----
+﻿---
 title: "複数の Azure リージョンへの Azure API Management サービスのデプロイ | Microsoft Docs"
 description: "複数の Azure リージョンに Azure API Management サービス インスタンスをデプロイする方法について説明します。"
 services: api-management

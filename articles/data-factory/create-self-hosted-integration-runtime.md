@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Data Factory での自己ホスト型統合ランタイムの作成 | Microsoft Docs"
 description: "Azure Data Factory で自己ホスト型統合ランタイムを作成する方法について説明します。これにより、データ ファクトリがプライベート ネットワーク内のデータ ストアにアクセスすることができます。"
 services: data-factory

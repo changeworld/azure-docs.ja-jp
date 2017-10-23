@@ -1,4 +1,4 @@
----
+﻿---
 title: "C++ から BLOB ストレージ (オブジェクト ストレージ) を使用する方法 | Microsoft Docs"
 description: "Azure BLOB ストレージ (オブジェクト ストレージ) を使用して、非構造化データをクラウドに格納します。"
 services: storage

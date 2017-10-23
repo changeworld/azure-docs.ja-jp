@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory ポータルのサインイン アクティビティ レポートのエラー コード | Microsoft Docs"
 description: "サインイン アクティビティ レポートのエラー コードのリファレンス。"
 services: active-directory

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure API Management でバックアップと復元を使用してディザスター リカバリーを実装する | Microsoft Docs"
 description: "Azure API Management でバックアップと復元を使用してディザスター リカバリーを行う方法について説明します。"
 services: api-management

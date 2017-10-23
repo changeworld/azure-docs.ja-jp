@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Key Vault の概要 | Microsoft Docs"
 description: "このチュートリアルを使用すると、Azure Key Vault で、強化されたコンテナーを Azure に作成し、暗号化キーやシークレットを Azure に格納して管理できるようになります。"
 services: key-vault

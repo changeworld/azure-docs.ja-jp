@@ -13,7 +13,7 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 05/13/2017
+ms.date: 10/16/2017
 ms.author: mimig
 ms.openlocfilehash: b16807c7b6b7f3e5aa893f02dc5958f10e5e9569
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
@@ -131,11 +131,11 @@ github から DocumentDB API アプリを複製し、接続文字列を設定し
 
 3. ポータルから (コピー ボタンを使用して) URI 値をコピーし、`DocumentDBGetStarted.py` の endpoint キーの値に設定します。 
 
-    `config.ENDPOINT : "https://FILLME.documents.azure.com"`
+    `'ENDPOINT': 'https://FILLME.documents.azure.com',`
 
 4. 次に、ポータルから PRIMARY KEY 値をコピーし、`DocumentDBGetStarted.py` 内の `config.MASTERKEY` の値に設定します。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
-    `config.MASTERKEY : "FILLME"`
+    `'MASTERKEY': 'FILLME',`
     
 ## <a name="run-the-app"></a>アプリの実行
 1. Visual Studio の**ソリューション エクスプローラー**でプロジェクトを右クリックし、現在の Python 環境を選択して、右クリックします。

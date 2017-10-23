@@ -1,4 +1,4 @@
----
+﻿---
 title: "P2S RADIUS 接続用の VPN クライアント構成ファイルを作成およびインストールする: PowerShell: Azure | Microsoft Docs"
 description: "この記事は、RADIUS 認証を使用するポイント対サイト接続用の VPN クライアント構成ファイルを作成およびインストールする際に役立ちます。"
 services: vpn-gateway

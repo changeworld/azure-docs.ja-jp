@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure IoT Hub のデバイスからクラウドへのメッセージの処理 (Java) | Microsoft Docs"
 description: "他のバックエンド サービスにメッセージをディスパッチするルーティング規則とカスタム エンドポイントを使用して、IoT Hub デバイスからクラウドへのメッセージを処理する方法について説明します。"
 services: iot-hub
