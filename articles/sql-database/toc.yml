@@ -135,12 +135,16 @@
           href: sql-database-disaster-recovery.md
         - name: 復旧訓練の実行
           href: sql-database-disaster-recovery-drills.md
-    - name: データの読み込みと移動
+    - name: SQL Database への移行
       items:
         - name: SQL Server DB の移行
           href: sql-database-cloud-migrate.md
         - name: T-SQL の変更
           href: sql-database-transact-sql-information.md
+        - name: 移行後のデータベースの管理
+          href: sql-database-manage-after-migration.md
+    - name: データの読み込みと移動
+      items:
         - name: DB のコピー
           href: sql-database-copy.md
         - name: DB のインポート

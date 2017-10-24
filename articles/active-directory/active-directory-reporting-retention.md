@@ -12,7 +12,7 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.openlocfilehash: 047f18acf192c75ac5904d7cfe10f19ad18e2888

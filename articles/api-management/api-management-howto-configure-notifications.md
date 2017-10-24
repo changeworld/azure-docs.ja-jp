@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure API Management での通知と電子メール テンプレートの構成 | Microsoft Docs"
 description: "Azure API Management で通知と電子メール テンプレートを構成する方法について説明します。"
 services: api-management

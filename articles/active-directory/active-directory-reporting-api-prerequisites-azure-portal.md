@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure AD Reporting API にアクセスするための前提条件 | Microsoft Docs"
 description: "Azure AD Reporting API にアクセスするための前提条件の詳細"
 services: active-directory

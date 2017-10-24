@@ -10,17 +10,15 @@ ms.service: azure-resource-manager
 ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 09/03/2017
+ms.date: 10/02/2017
 ms.topic: get-started-article
 ms.author: tomfitz
+ms.openlocfilehash: 7d20469aaf2dfdd7a5f3650983b59152de837837
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4eb426b14ec72aaa79268840f23a39b15fee8982
-ms.openlocfilehash: d07b2354906994ef7842a64d9f58bcbcc18f96e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-and-deploy-your-first-azure-resource-manager-template"></a>初めての Azure Resource Manager テンプレートを作成およびデプロイする
 このトピックでは、Azure Resource Manager テンプレートを初めて作成する際の手順を説明します。 Resource Manager テンプレートとは、ソリューションに対してデプロイが必要なリソースを定義した JSON ファイルのことをいいます。 Azure ソリューションのデプロイと管理に関する概念について理解を深めるには、「[Azure Resource Manager の概要](resource-group-overview.md)」を参照してください。 既にリソースがあり、そのリソースのテンプレートを取得するには、「[既存のリソースから Azure Resource Manager テンプレートをエクスポートする](resource-manager-export-template.md)」を参照してください。
 
@@ -97,58 +95,21 @@ ms.lasthandoff: 09/06/2017
 
 デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
 
-## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-[Cloud Shell](../cloud-shell/overview.md) を使用して、テンプレートをデプロイするための Azure CLI コマンドを実行できます。 ただし、最初に Cloud Shell のファイル共有にテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../cloud-shell/overview.md)に関するページを参照してください。
+Azure CLI の場合は、次のコマンドを使用します。
 
-1. [Azure Portal](https://portal.azure.com) にログインします。   
+```azurecli-interactive
+az group create --name examplegroup --location "South Central US"
+az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
+```
 
-2. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
+現在、PowerShell は Cloud Shell でプレビューとして提供されています。 PowerShell の場合は、次のコマンドを使用します。
 
-   ![リソース グループの選択](./media/resource-manager-create-first-template/select-cs-resource-group.png)
-
-3. Cloud Shell のストレージ アカウントを選択します。
-
-   ![ストレージ アカウントを選択する](./media/resource-manager-create-first-template/select-storage.png)
-
-4. **[ファイル]** を選択します。
-
-   ![Select files](./media/resource-manager-create-first-template/select-files.png)
-
-5. Cloud Shell のファイル共有を選択します。 名前のパターンは `cs-<user>-<domain>-com-<uniqueGuid>` です。
-
-   ![ファイル共有を選択する](./media/resource-manager-create-first-template/select-file-share.png)
-
-6. **[ディレクトリの追加]** を選択します。
-
-   ![[ディレクトリの追加]](./media/resource-manager-create-first-template/select-add-directory.png)
-
-7. **templates** という名前を付け、**[OK]** を選択します。
-
-   ![ディレクトリに名前を付ける](./media/resource-manager-create-first-template/name-templates.png)
-
-8. 新しいディレクトリを選択します。
-
-   ![新しいディレクトリを選択する](./media/resource-manager-create-first-template/select-templates.png)
-
-9. **[アップロード]**を選択します。
-
-   ![[アップロード] を選択する](./media/resource-manager-create-first-template/select-upload.png)
-
-10. テンプレートを見つけてアップロードします。
-
-   ![ファイルをアップロードする](./media/resource-manager-create-first-template/upload-files.png)
-
-11. プロンプトを開きます。
-
-   ![Cloud Shell を開く](./media/resource-manager-create-first-template/start-cloud-shell.png)
-
-12. Cloud Shell で次のコマンドを入力します。
-
-   ```azurecli
-   az group create --name examplegroup --location "South Central US"
-   az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json
-   ```
+```powershell
+New-AzureRmResourceGroup -Name examplegroup -Location "South Central US"
+New-AzureRmResourceGroupDeployment -ResourceGroupName examplegroup -TemplateFile $home\CloudDrive\templates\azuredeploy.json
+```
 
 デプロイが完了すると、リソース グループにストレージ アカウントが含まれた状態になります。
 
@@ -445,4 +406,3 @@ az group delete --name examplegroup
 * テンプレートの構造の詳細については、「 [Azure Resource Manager のテンプレートの作成](resource-group-authoring-templates.md)」を参照してください。
 * ストレージ アカウントのプロパティについては、[ストレージ アカウント テンプレート リファレンス](/azure/templates/microsoft.storage/storageaccounts)のページを参照してください。
 * さまざまな種類のソリューションのテンプレートについては、「 [Azure クイック スタート テンプレート](https://azure.microsoft.com/documentation/templates/)」をご覧ください。
-

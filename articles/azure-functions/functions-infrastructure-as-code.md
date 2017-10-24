@@ -3,7 +3,7 @@ title: "Azure Functions の関数アプリのリソース デプロイを自動�
 description: "関数アプリをデプロイする Azure Resource Manager テンプレートを作成する方法について説明します。"
 services: Functions
 documtationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 tags: 

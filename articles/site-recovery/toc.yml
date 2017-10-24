@@ -51,6 +51,8 @@
       href: concepts-physical-to-azure-architecture.md
     - name: Hyper-V からセカンダリ サイトへのアーキテクチャ
       href: concepts-hyper-v-to-secondary-architecture.md
+    - name: Azure から Azure へのサポート マトリックス
+      href: site-recovery-support-matrix-azure-to-azure.md
     - name: オンプレミスから Azure へのサポート マトリックス
       href: site-recovery-support-matrix-to-azure.md
     - name: オンプレミスからセカンダリ サイトへのサポート マトリックス

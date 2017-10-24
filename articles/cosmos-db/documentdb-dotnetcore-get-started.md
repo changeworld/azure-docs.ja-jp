@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Cosmos DB: .NET Core で DocumentDB API を使用するチュートリアル | Microsoft Docs"
 description: "Azure Cosmos DB DocumentDB API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。"
 services: cosmos-db

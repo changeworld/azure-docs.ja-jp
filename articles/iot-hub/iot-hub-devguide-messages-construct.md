@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: dobett
-ms.openlocfilehash: e6eafb1a0030b022da2b5d0b787e092f3067c99f
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 793a2cdd55c4e9213e5097f4e318c0790960a64d
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub メッセージを作成し、読み取る
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 08/18/2017
 
 以下の場合は、プロパティ名と値に含めることができるのは、ASCII 英数字と ``{'!', '#', '$', '%, '&', "'", '*', '*', '+', '-', '.', '^', '_', '`', '|', '~'}`` のみです。
 
-* HTTP プロトコルを使用して device-to-cloud メッセージを送信します。
+* HTTPS プロトコルを使用して device-to-cloud メッセージを送信します。
 * クラウドからデバイスへのメッセージを送信します。
 
 各種プロトコルを使用したメッセージのエンコードとデコードの方法の詳細については、[Azure IoT SDK][lnk-sdks] に関するページをご覧ください。

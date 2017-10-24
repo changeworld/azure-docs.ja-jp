@@ -12,36 +12,31 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2017
+ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: jeffsta
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8e7c38c7f0d40a310dd0b6bd0e866d2d55115550
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.custom: H1Hack27Feb2017;it-pro
+ms.openlocfilehash: b59f74546e219d45814a1a2e05e59beb0b080f21
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Azure Active Directory でのユーザー パスワードのリセット
-> [!div class="op_single_selector"]
-> * [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
-> * [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
->
->
 
 ## <a name="how-to-reset-the-password-for-a-user"></a>ユーザーのパスワードをリセットする方法
-1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
+1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
+2. **[ユーザーとグループ]** を選びます。
 
    ![ユーザー管理を開く](./media/active-directory-users-reset-password-azure-portal/create-users-user-management.png)
-3. **[ユーザーとグループ]** ブレードで、**[ユーザー]** を選択します。
+3. **[すべてのユーザー]** を選びます。
 
-   ![[ユーザー] ブレードを開く](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
-4. **[ユーザーとグループ - ユーザー]** ブレードで、一覧からユーザーを選択します。
-5. 選択したユーザーのブレードで、**[概要]** を選択し、コマンド バーの **[パスワードのリセット]** を選択します。
+   ![すべてのユーザー グループを開く](./media/active-directory-users-reset-password-azure-portal/create-users-open-users-blade.png)
+1. 一覧からユーザーを選択します。
+2. 選択したユーザーについて、**[概要]** を選択し、コマンド バーの **[パスワードのリセット]** を選択します。
 
     ![[パスワードのリセット] コマンドの選択](./media/active-directory-users-reset-password-azure-portal/create-users-reset-password-command.png)
-6. **[パスワードのリセット]** ブレードで、**[パスワードのリセット]** を選択します。
+6. **[パスワードのリセット]** で、**[パスワードのリセット]** を選びます。
 
 ## <a name="next-steps"></a>次のステップ
 * [ユーザーの追加](active-directory-users-create-azure-portal.md)

@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/18/2017
 ms.author: yurid
 ms.openlocfilehash: 710a1fe0ce2b7a1841187cf75f4ffb090cc161e5
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connecting-your-security-products-to-the-operations-management-suite-oms-security-and-audit-solution"></a>Operations Management Suite (OMS) のセキュリティと監査ソリューションへのセキュリティ製品の接続 
 このドキュメントでは、お使いのセキュリティ製品を OMS のセキュリティと監査ソリューションに接続する方法について説明します。 次のソースがサポートされています。
@@ -63,7 +63,7 @@ OMS セキュリティでは、Syslog と [Cisco ASA](https://blogs.technet.micr
     log { source(src); filter(f_local4_oms); destination(security_oms); };
     
 3. ファイル *security_events.conf* をダウンロードし、OMS エージェント コンピューターの */etc/opt/microsoft/omsagent/conf/omsagent.d/* に配置します。
-4. Syslog デーモンを再起動するには、次のコマンドを入力: *syslog-ng 実行の。*
+4. 次のコマンドを入力し、Syslog デーモンを再起動します。*Syslog-ng が実行されている場合:*
     
     ```
     sudo service rsyslog restart

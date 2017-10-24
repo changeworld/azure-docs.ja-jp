@@ -12,14 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 09/26/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 76987a6e91ae688b3856567073a7d27472e5ba09
-ms.openlocfilehash: 9245eb870f592ee0a1f1d6956ce3d573f4902485
-ms.lasthandoff: 01/28/2017
-
-
+ms.openlocfilehash: aad9e07e040bebe9572af1dd4a2f74b8b384f651
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="administer-group-policy-on-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services によって管理されるドメインのグループ ポリシーの管理
 Azure Active Directory Domain Services には、"AADDC Users" コンテナーと "AADDC Computers" コンテナー用の組み込みのグループ ポリシー オブジェクト (GPO) が含まれています。 これらの組み込みの GPO を、管理対象ドメインのグループ ポリシーを構成するようにカスタマイズできます。 さらに、"AAD DC Administrators" グループのメンバーは、管理対象ドメイン内に、独自のカスタム OU を作成できます。 カスタム GPO を作成してカスタム OU にリンクすることもできます。 "AAD DC Administrators" グループに属するユーザーには、管理対象ドメインのグループ ポリシー管理者権限が付与されます。
@@ -45,11 +44,11 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 ## <a name="task-2---install-group-policy-tools-on-the-virtual-machine"></a>タスク 2 - 仮想マシンにグループ ポリシー ツールをインストールする
 ドメインに参加している仮想マシンにグループ ポリシー管理ツールをインストールするには、次の手順を実行します。
 
-1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。 タスク 1 で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
+1. Azure Portal に移動します。 左側のパネルの **[すべてのリソース]** をクリックします。 タスク 1 で作成した仮想マシンを見つけてクリックします。
+2. [概要] タブの **[接続]** ボタンをクリックします。リモート デスクトップ プロトコル (.rdp) ファイルが作成されてダウンロードされます。
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. クラシック ポータルでは、仮想マシンへの接続に使用される ".rdp" という拡張子のファイルを開くか保存するように求められます。 ダウンロードが完了したら、ファイルをクリックします。
-3. ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。
+3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
 4. スタート画面で、 **[サーバー マネージャー]**を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -86,7 +85,7 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
     ![グループ ポリシー コンソール](./media/active-directory-domain-services-admin-guide/gp-management-console.png)
 
 ## <a name="task-4---customize-built-in-group-policy-objects"></a>タスク 4 - 組み込みのグループ ポリシー オブジェクトをカスタマイズする
-管理対象ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという&2; つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、管理対象ドメインのグループ ポリシーを構成できます。
+管理対象ドメインには、"AADDC Computers" コンテナーと "AADDC Users" コンテナーという 2 つの組み込みのグループ ポリシー オブジェクト (GPO) があります。 これらの GPO をカスタマイズして、管理対象ドメインのグループ ポリシーを構成できます。
 
 1. **グループ ポリシー管理**コンソールで、**[フォレスト: contoso100.com]** ノードと **[ドメイン]** ノードをクリックして展開し、管理対象ドメインのグループ ポリシーを表示します。
 
@@ -127,4 +126,3 @@ Azure AD ディレクトリの管理者には、管理対象ドメイン上の�
 * [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [Azure AD ドメイン サービスで管理されているドメインの管理](active-directory-ds-admin-guide-administer-domain.md)
 * [グループ ポリシー管理コンソール](https://technet.microsoft.com/library/cc753298.aspx)
-

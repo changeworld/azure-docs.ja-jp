@@ -1,4 +1,4 @@
----
+﻿---
 title: "API Management 開発者ポータルをテンプレートを使用してカスタマイズする - Azure | Microsoft Docs"
 description: "Azure API Management 開発者ポータルをテンプレートを使用してカスタマイズする方法について説明します。"
 services: api-management

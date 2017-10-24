@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2017
 ms.author: dobett
-ms.openlocfilehash: e4fe5400ffcf4446392015aada031dd4dfbf238a
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.openlocfilehash: 91b2e72b9cc5f7b52dde09fb837cbc994d52a26c
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -72,7 +72,7 @@ Azure IoT Hub では、共有アクセス ポリシーと ID レジストリの�
 
 ### <a name="protocol-specifics"></a>プロトコルの詳細
 
-MQTT、AMQP、および HTTP など、サポートされているプロトコルごとに、さまざまな方法でトークンが転送されます。
+MQTT、AMQP、および HTTPS など、サポートされているプロトコルごとに、さまざまな方法でトークンが転送されます。
 
 MQTT を使用する場合、CONNECT パケットでは、ClientId、ユーザー名フィールドの {iothubhostname}/{deviceId}、およびパスワード フィールドの SAS トークンとして、deviceId が使用されます。 {iothubhostname} は IoT Hub の完全な CName とする必要があります (contoso.azure-devices.net など)。
 
@@ -87,7 +87,7 @@ SASL PLAIN では、 **ユーザー名** を以下のように指定できます
 
 どちらの場合も、[IoT Hub セキュリティ トークン][lnk-sas-tokens]に関するセクションで説明されているように、パスワード フィールドにトークンが含まれています。
 
-HTTP では、 **Authorization** 要求ヘッダーに有効なトークンを含めることによって認証を実装します。
+HTTPS では、 **Authorization** 要求ヘッダーに有効なトークンを含めることによって認証を実装します。
 
 #### <a name="example"></a>例
 
@@ -115,7 +115,7 @@ SASL PLAIN を AMQP で使用する場合、IoT Hub に接続するクライア�
 
 IoT Hub では、デバイスとサービスの認証にセキュリティ トークンを使用することにより、ネットワーク経由でのキーの送信を回避します。 さらに、セキュリティ トークンには、有効期間とスコープの制限があります。 [Azure IoT SDK][lnk-sdks] を使用すると、特別な構成を行うことなく自動でトークンを生成できます。 一部のシナリオでは、セキュリティ トークンを自分で生成して直接使用する必要があります。 これらのシナリオは、次のとおりです。
 
-* MQTT、AMQP、または HTTP のサーフェスを直接使用する。
+* MQTT、AMQP、または HTTPS のサーフェスを直接使用する。
 * トークンのサービス パターンを実装する (「[カスタム デバイスの認証][lnk-custom-auth]」で説明)。
 
 IoT Hub では、[X.509][lnk-x509] 証明書を使用して IoT Hub でデバイスの認証を行うこともできます。

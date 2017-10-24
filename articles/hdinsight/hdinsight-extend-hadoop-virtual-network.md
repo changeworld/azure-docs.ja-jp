@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 09/21/2017
 ms.author: larryfr
+ms.openlocfilehash: 17059c5861962a56ed2011a8f8874fc23673ed68
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: e7c64a7f6b85986d48f0da39962c634b572e773b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Azure Virtual Network を使用した Azure HDInsight の拡張
 
@@ -672,7 +671,8 @@ Set-AzureRmVirtualNetworkSubnetConfig `
 ## <a name="next-steps"></a>次のステップ
 
 * HDInsight を オンプレミス ネットワークに接続する構成方法の詳しい例については、 [HDInsight のオンプレミス ネットワークへの接続](./connect-on-premises-network.md)に関するページをご覧ください。
-
+* Azure 仮想ネットワークでの HBase クラスターの構成については、「[Azure Virtual Network での HDInsight HBase クラスターの作成](./hdinsight-hbase-provision-vnet.md)」を参照してください。
+* HBase geo レプリケーションの構成については、「[Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する](./hdinsight-hbase-replication.md)」を参照してください。
 * Azure 仮想ネットワークの詳細については、[Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページをご覧ください。
 
 * ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)に関するページをご覧ください。

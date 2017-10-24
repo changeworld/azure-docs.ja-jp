@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
+ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3ff076f1b5c708423ee40e723875c221847258b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する 
 > [!NOTE]
 > この記事では、.NET コードで Azure Files を管理する方法を説明します。 Azure Files の詳細については、「[Introduction to Azure Files (Azure Files の概要)](storage-files-introduction.md)」を参照してください。
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
 ## <a name="about-this-tutorial"></a>このチュートリアルについて
-このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための.NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files による次のような基本的な操作の実行方法を示します。
+このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための.NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files で基本的な操作を実行する方法を示します。
 
 * ファイルの内容を取得する
 * ファイル共有のクォータ (最大サイズ) を設定する
@@ -138,7 +136,7 @@ if (share.Exists())
 コンソール アプリケーションを実行して、出力結果を確認します。
 
 ## <a name="set-the-maximum-size-for-a-file-share"></a>ファイル共有の最大サイズの設定
-Azure Storage クライアント ライブラリのバージョン 5.x 以降では、ギガバイトでファイル共有のクォータ (つまり、最大サイズ) を設定できます。 また、共有に現在格納されているデータの量も確認できます。
+Azure Storage クライアント ライブラリのバージョン 5.x 以降では、GB 単位でファイル共有のクォータ (最大サイズ) を設定できます。 また、共有に現在格納されているデータの量も確認できます。
 
 共有のクォータを設定することにより、共有に格納するファイルの合計サイズを制限できます。 共有上のファイルの合計サイズが共有に設定されたクォータを超過すると、クライアントは既存ファイルのサイズを増やせなくなったり、新しいファイルを作成できなくなったりします。ただし、これらのファイルが空である場合は除きます。
 
@@ -326,6 +324,80 @@ Console.WriteLine("Destination blob contents: {0}", destBlob.DownloadText());
 ```
 
 同じ方法で、ファイルに BLOB をコピーできます。 ソース オブジェクトが BLOB である場合、SAS を作成して、コピー操作中にその BLOB へのアクセスを認証します。
+
+## <a name="share-snapshots-preview"></a>共有スナップショット (プレビュー)
+Azure Storage クライアント ライブラリのバージョン 8.5 以降では、共有スナップショット (プレビュー) を作成できます。 また、共有スナップショットを一覧表示または参照したり、削除したりすることもできます。 共有スナップショットは読み取り専用であるため、共有スナップショットに対する書き込み操作は許可されていません。
+
+**共有スナップショットを作成する**
+
+次の例では、ファイル共有スナップショットを作成します。
+
+```csharp
+storageAccount = CloudStorageAccount.Parse(ConnectionString); 
+fClient = storageAccount.CreateCloudFileClient(); 
+string baseShareName = "myazurefileshare"; 
+CloudFileShare myShare = fClient.GetShareReference(baseShareName); 
+var snapshotShare = myShare.Snapshot();
+
+```
+**共有スナップショットを一覧表示する**
+
+次の例では、共有上の共有スナップショットを一覧表示します。
+
+```csharp
+var shares = fClient.ListShares(baseShareName, ShareListingDetails.All);
+```
+
+**共有スナップショット内のファイルとディレクトリを参照する**
+
+次の例では、共有スナップショット内のファイルとディレクトリを参照します。
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); 
+var rootDirectory = mySnapshot.GetRootDirectoryReference(); 
+var items = rootDirectory.ListFilesAndDirectories();
+```
+
+**共有と共有スナップショットを一覧表示し、共有スナップショットからファイル共有またはファイルを復元する** 
+
+ファイル共有のスナップショットを取得すると、将来的に個々のファイルまたはファイル共有全体を復旧できます。 
+
+ファイル共有の共有スナップショットを照会することで、ファイル共有スナップショットからファイルを復元できます。 その後、特定の共有スナップショットに属しているファイルを取得し、そのバージョンを使用して、直接読み取りと比較を行うか復元することができます。
+
+```csharp
+CloudFileShare liveShare = fClient.GetShareReference(baseShareName);
+var rootDirOfliveShare = liveShare.GetRootDirectoryReference();
+
+       var dirInliveShare = rootDirOfliveShare.GetDirectoryReference(dirName);
+var fileInliveShare = dirInliveShare.GetFileReference(fileName);
+
+           
+CloudFileShare snapshot = fClient.GetShareReference(baseShareName, snapshotTime);
+var rootDirOfSnapshot = snapshot.GetRootDirectoryReference();
+
+       var dirInSnapshot = rootDirOfSnapshot.GetDirectoryReference(dirName);
+var fileInSnapshot = dir1InSnapshot.GetFileReference(fileName);
+
+string sasContainerToken = string.Empty;
+       SharedAccessFilePolicy sasConstraints = new SharedAccessFilePolicy();
+       sasConstraints.SharedAccessExpiryTime = DateTime.UtcNow.AddHours(24);
+       sasConstraints.Permissions = SharedAccessFilePermissions.Read;
+       //Generate the shared access signature on the container, setting the constraints directly on the signature.
+sasContainerToken = fileInSnapshot.GetSharedAccessSignature(sasConstraints);
+
+string sourceUri = (fileInSnapshot.Uri.ToString() + sasContainerToken + "&" + fileInSnapshot.SnapshotTime.ToString()); ;
+fileInliveShare.StartCopyAsync(new Uri(sourceUri));
+
+```
+
+
+**共有スナップショットを削除する**
+
+次の例では、ファイル共有スナップショットを削除します。
+
+```csharp
+CloudFileShare mySnapshot = fClient.GetShareReference(baseShareName, snapshotTime); mySnapshot.Delete(null, null, null);
+```
 
 ## <a name="troubleshooting-azure-files-using-metrics"></a>メトリックを使用した Azure Files のトラブルシューティング
 Azure ストレージ分析で Azure Files のメトリックがサポートされるようになりました。 メトリック データを使用すると、要求のトレースや問題の診断ができます。

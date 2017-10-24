@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure SQL Database での自動チューニングの有効化 | Microsoft Docs"
 description: "Azure SQL Database で自動チューニングを簡単に有効にすることができます。"
 services: sql-database

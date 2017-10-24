@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 03/01/2017
+ms.date: 09/29/2017
 ms.author: cynthn
-translationtype: Human Translation
-ms.sourcegitcommit: 197ebd6e37066cb4463d540284ec3f3b074d95e1
-ms.openlocfilehash: 88431377a36d5bc36220c630f0c8d4a46ab4a434
-ms.lasthandoff: 03/31/2017
-
-
+ms.openlocfilehash: 91a437345858cf3a9b00b6b4e8e72cd253f8f069
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-connect-and-log-on-to-an-azure-virtual-machine-running-windows"></a>Windows が実行されている Azure 仮想マシンに接続してログオンする方法
 Azure Portal の **[接続]** ボタンを使用して、Windows デスクトップからリモート デスクトップ (RDP) セッションを開始します。 まず、仮想マシンに接続して、ログオンします。
@@ -29,9 +28,9 @@ Mac から Windows 仮想マシンに接続する場合は、[Microsoft リモ�
 
 ## <a name="connect-to-the-virtual-machine"></a>仮想マシンへの接続
 1. まだサインインしていない場合は、 [Azure ポータル](https://portal.azure.com/)にサインインします。
-2. ハブ メニューで **[Virtual Machines]**をクリックします。
+2. 左側のメニューで **[仮想マシン]** をクリックします。
 3. 一覧から仮想マシンを選択します。
-4. 仮想マシンのブレードで、 **[接続]**をクリックします。
+4. 仮想マシンのページで、**[接続]** をクリックします。
    
     ![VM に接続する方法を示す Azure ポータルのスクリーンショット。](./media/connect-logon/connect.png)
    
@@ -45,5 +44,4 @@ Mac から Windows 仮想マシンに接続する場合は、[Microsoft リモ�
 
 ## <a name="next-steps"></a>次のステップ
 接続時に問題が発生した場合は、 [リモート デスクトップ接続のトラブルシューティング](troubleshoot-rdp-connection.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関するページを参照してください。 この記事では、一般的な問題の診断と解決の手順について説明します。
-
 

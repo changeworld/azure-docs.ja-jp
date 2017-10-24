@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/09/2017
 ms.author: elioda
+ms.openlocfilehash: c0f9d0e13cb159188bdaf2b915c1bf6de73be855
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: 688b33710283a82fcd772bf50a171893f3ac124c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="cloud-to-device-communications-guidance"></a>cloud-to-device 通信に関するガイダンス
 IoT Hub では、デバイス アプリがバックエンド アプリに機能を公開するための 3 つのオプションがあります。
@@ -36,9 +35,9 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 | データ フロー | 双方向。 デバイス アプリは、メソッドにすぐに応答できます。 ソリューション バックエンドは、コンテキストから要求の結果を受信します。 | 一方向。 デバイス アプリは、プロパティが変更された通知を受信します。 | 一方向。 デバイス アプリは、メッセージを受信します。
 | 持続性 | 切断されているデバイスとは通信しません。 ソリューション バックエンドには、デバイスが接続されていないことが通知されます。 | プロパティの値は、デバイス ツインに保持されます。 デバイスは、次の再接続時にそれを読み取ります。 プロパティの値は [IoT Hub クエリ言語][lnk-query]を使用して取得できます。 | メッセージは、IoT Hub によって最大 48 時間保持できます。 |
 | ターゲット | **deviceId** を使用する場合は 1 台のデバイス、[jobs][lnk-jobs] を使用する場合は複数台のデバイス。 | **deviceId** を使用する場合は 1 台のデバイス、[jobs][lnk-jobs] を使用する場合は複数台のデバイス。 | **deviceId** による 1 台のデバイス。 |
-| サイズ | 最大 8 KB の要求と 8 KB の応答。 | 必要なプロパティの最大サイズは 8 KB。 | 最大 64 KB のメッセージ。 |
+| サイズ | 最大 8 KB の要求と 8 KB の応答。 | 必要なプロパティの最大サイズは 8 KB です。 | 最大 64 KB のメッセージ。 |
 | 頻度 | 高。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 中。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 | 低。 詳細については、[IoT Hub の制限][lnk-quotas]に関するページを参照してください。 |
-| プロトコル | MQTT または AMQP を使用して利用できます。 | MQTT または AMQP を使用して利用できます。 | すべてのプロトコルで使用できます。 HTTP を使う場合、デバイスはポーリングを行う必要があります。 |
+| プロトコル | MQTT または AMQP を使用して利用できます。 | MQTT または AMQP を使用して利用できます。 | すべてのプロトコルで使用できます。 HTTPS を使う場合、デバイスはポーリングを行う必要があります。 |
 
 ダイレクト メソッド、必要なプロパティ、および cloud-to-device メッセージの使用方法については、次のチュートリアルを参照してください。
 
@@ -55,4 +54,3 @@ IoT Hub では、デバイス アプリがバックエンド アプリに機能�
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-twin-properties]: iot-hub-node-node-twin-how-to-configure.md
 [lnk-c2d-tutorial]: iot-hub-node-node-c2d.md
-

@@ -1,6 +1,1 @@
-|  | **クラシック デプロイ** | **リソース マネージャーのデプロイメント** |
-| --- | --- | --- |
-| **クラシック ポータル** |サポートされていません |サポートされていません |
-| **Azure ポータル** |サポートされていません |サポートされていません |
-| **PowerShell** |[記事](../articles/expressroute/expressroute-howto-coexist-classic.md) |[記事](../articles/expressroute/expressroute-howto-coexist-resource-manager.md) |
-
+|**デプロイメント モデル/方法** | **Azure Portal** | **PowerShell** | |---|---|---| | Resource Manager | **サポートされていません** | [記事](../articles/expressroute/expressroute-howto-coexist-resource-manager.md)| | クラシック | **サポートされていません** | [記事](../articles/expressroute/expressroute-howto-coexist-classic.md) |

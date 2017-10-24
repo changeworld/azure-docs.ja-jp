@@ -10,6 +10,8 @@
 | オペレーティング システムのロケール | 英語 (en-us)|
 | VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server の役割 | 次の役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |
+| グループ ポリシー| サーバーで次のグループ ポリシーを有効にしないでください。 <br> - コマンド プロンプトへのアクセス禁止 <br> - レジストリ編集ツールへのアクセス禁止 <br> - ファイル添付の信頼ロジック <br> - スクリプト実行の有効化 <br> **注:** これらのグループ ポリシーの詳細については[こちら](https://technet.microsoft.com/en-us/library/gg176671(v=ws.10).aspx)を参照してください。|
+| インターネット インフォメーション サービス (IIS) の構成 | - 既存の Web サイトが存在しない <br> - [匿名認証](https://technet.microsoft.com/en-us/library/cc731244(v=ws.10).aspx)を有効にする <br> - [FastCGI](https://technet.microsoft.com/en-us/library/cc753077(v=ws.10).aspx) 設定を有効にする  <br> - ポート 443 でリッスンしている既存の Web サイト/アプリケーションが存在しない<br>|
 | **ネットワーク** | |
 | ネットワーク インターフェイス カードの種類 | VMXNET3 |
 | IP アドレスの種類 | 静的 |

@@ -1,6 +1,6 @@
 ---
-title: "Azure の機能概要 |Microsoft ドキュメント"
-description: "ヘルプ コンテンツを Azure ポータル内で Azure 関数の概要"
+title: "Azure Functions の概要 | Microsoft Docs"
+description: "Azure Portal 内にある Azure Functions の概要に関するヘルプ コンテンツ"
 services: functions
 author: sewatson
 manager: lwelicki
@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/10/2017
 ms.author: sewatson
 ms.openlocfilehash: fa593eef1c01311d20216f3ab3af7ffcb54e12f6
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-documentation"></a>Azure Functions のドキュメント
 
@@ -20,17 +20,16 @@ Azure Functions は、インフラストラクチャを明示的にプロビジ�
 
 ## <a name="5-minute-quickstarts"></a>5 分間のクイック スタート
 
-Hello World 関数を使用して、作成する方法を学習します。
+以下を使用して Hello World 関数を作成する方法について説明します。
 
-- 
-            [Azure Portal](/azure/azure-functions/functions-create-first-azure-function)
+- [Azure Portal](/azure/azure-functions/functions-create-first-azure-function)
 - [Azure CLI](/azure/azure-functions/functions-create-first-azure-function-azure-cli)
 
 ## <a name="step-by-step-tutorials"></a>ステップバイステップのチュートリアル
 
-ビルドし、Azure の機能を管理する方法を説明します。
+Azure Functions を構築して管理する方法について説明します。
 
-- [ビルドのサーバーなしのソーシャル メディア ダッシュ ボード](/azure/azure-functions/functions-twitter-email)
+- [サーバーなしのソーシャル メディアのダッシュボードを構築する](/azure/azure-functions/functions-twitter-email)
 - [Azure Functions を使用してサーバーレス API を作成する](/azure/azure-functions/functions-create-serverless-api)
 
 ## <a name="samples"></a>サンプル
@@ -41,5 +40,5 @@ Hello World 関数を使用して、作成する方法を学習します。
 
 ## <a name="more"></a>詳細
 
-- [詳細についてはドキュメントを参照してください。](/azure/app-functions/index)
-- [すべての Azure サービスについてください。](https://aka.ms/j3wr7y)
+- [ドキュメントを参照して詳細を確認する](/azure/app-functions/index)
+- [すべての Azure サービスを確認する](https://aka.ms/j3wr7y)

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure API Management への API のインポート | Microsoft Docs"
 description: "Azure API Management に API とその操作をインポートする方法について説明します。"
 services: api-management

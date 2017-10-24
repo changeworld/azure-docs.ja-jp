@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/24/2017
 ms.author: ryanwi
+ms.openlocfilehash: de7fa7e6445e6eaf08bdcc8ae812611f20a98c34
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ecf9554554c8b7acbd8b8f5aa9122ce1678c6502
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-service-fabric-cluster-on-azure"></a>Azure で初めての Service Fabric クラスターを作成する
 [Service Fabric クラスター](service-fabric-deploy-anywhere.md)は、ネットワークで接続された一連の仮想マシンまたは物理マシンで、マイクロサービスがデプロイおよび管理されます。 このクイック スタートでは、Windows または Linux 上で実行される 5 ノード クラスターを [Azure PowerShell](https://msdn.microsoft.com/library/dn135248) または [Azure Portal](http://portal.azure.com) を通じてほんの数分で作成できるようにします。  
 
@@ -251,6 +249,17 @@ az sf cluster select --endpoint https://aztestcluster.southcentralus.cloudapp.az
 az sf cluster health
 ```
 
+### <a name="connect-to-the-nodes-directly"></a>ノードへの直接接続 
+
+Linux クラスターのノードに接続するときは、SSH を使用し、3389 以降のポート番号を指定します。 たとえば、先ほど作成した 5 つのノード クラスターであれば、以下のようなコマンドになります。
+```bash
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3389
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3390
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3391
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3392
+ssh sfadminuser@aztestcluster.southcentralus.cloudapp.azure.com -p 3393
+```
+
 ## <a name="next-steps"></a>次のステップ
 開発クラスターをセットアップしたら、次の作業を試してみてください。
 * [Service Fabric Explorer を使用したクラスターの視覚化](service-fabric-visualizing-your-cluster.md)
@@ -266,4 +275,3 @@ az sf cluster health
 [cluster-delete]: ./media/service-fabric-get-started-azure-cluster/delete.png
 [ps-list]: ./media/service-fabric-get-started-azure-cluster/pslist.PNG
 [ps-out]: ./media/service-fabric-get-started-azure-cluster/psout.PNG
-

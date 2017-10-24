@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 03/17/2017
 ms.author: parakhj
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f6006d5e83ad74f386ca23fe52879bfbc9394c0f
-ms.openlocfilehash: 48749bfa2ab54a0e766a4aad4f39073cc4e90818
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/03/2017
-
+ms.openlocfilehash: 78a165d831796bb6bb23e51f415383eb925115ee
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-b2c-build-a-net-web-api"></a>Azure Active Directory B2C: .NET Web API を構築する
 
@@ -40,7 +39,7 @@ Azure AD B2C を使用するには、ディレクトリ (つまり、テナン�
 * アプリケーションに **Web アプリ**または **Web API** を含めます。
 * Web アプリの**リダイレクト URI** として `https://localhost:44332/` を使用します。 これは、このコード サンプルでの Web アプリ クライアントの既定の場所です。
 * アプリに割り当てられた **アプリケーション ID** をコピーしておきます。 この情報は後で必要になります。
-* アプリ ID を **[アプリケーション ID/URI]** に入力します。
+* アプリ ID を **[アプリケーション ID/URI]** に入力します。 完全な**アプリケーション ID/URI** をコピーします。 この情報は後で必要になります。
 * **[Published scopes (公開スコープ)]** メニューからアクセス許可を追加します。
 
   [!INCLUDE [active-directory-b2c-devquickstarts-v2-apps](../../includes/active-directory-b2c-devquickstarts-v2-apps.md)]
@@ -82,7 +81,8 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-an
     * `ida:ClientSecret` を実際の Web アプリのシークレット キーに置き換えます。
     * `ida:SignUpSignInPolicyId` を実際の "サインアップまたはサインイン" ポリシーの名前に置き換えます。
     * `ida:EditProfilePolicyId` を実際の "プロファイルの編集" ポリシーの名前に置き換えます。
-    * `ida:ResetPasswordPolicyId`。実際の "パスワードのリセット" ポリシーの名前を指定します。
+    * `ida:ResetPasswordPolicyId` を実際の "パスワードのリセット" ポリシーの名前に置き換えます。
+    * `api:ApiIdentifier` を実際の "App ID URI" に置き換えます。
 
 
 ## <a name="secure-the-api"></a>API のセキュリティ保護
@@ -212,4 +212,3 @@ public IEnumerable<Models.Task> Get()
 ## <a name="edit-your-policies"></a>ポリシーの編集
 
 Azure AD B2C を使用して API のセキュリティを確保した後は、サインイン/サインアップ ポリシーでさまざまな設定を試し、その効果 (または不足部分) を API で確認することができます。 ポリシー内のアプリケーション要求を操作し、Web API で利用できるユーザー情報を変更することができます。 追加した要求は、既に説明したとおり .NET MVC Web API の `ClaimsPrincipal` オブジェクトで利用できます。
-

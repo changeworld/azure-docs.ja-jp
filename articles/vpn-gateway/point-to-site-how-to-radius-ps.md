@@ -1,4 +1,4 @@
----
+﻿---
 title: "ポイント対サイトと RADIUS 認証を使用してコンピューターを仮想ネットワークに接続する: PowerShell | Azure"
 description: "RADIUS 認証を使用するポイント対サイト VPN ゲートウェイ接続を作成することで、コンピューターを Azure 仮想ネットワークに安全に接続します。"
 services: vpn-gateway

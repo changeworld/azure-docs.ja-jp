@@ -34,7 +34,7 @@
       ![Adapter configuration message](./media/storsimple-sharepoint-adapter-configure-rbs/HCS_SSASP_ConfigRBS3-include.png)
       
       > [!NOTE]
-      > 大量のデータベース (200 以上) がある SharePoint ファームに対して RBS を構成している場合、[SharePoint サーバーの全体管理] Web ページがタイムアウトする可能性があります。 その場合は、ページを更新します。 ページを更新しても構成プロセスに影響はありません。
+      > 大量のデータベース (200 以上) がある SharePoint ファームに対して RBS を構成している場合、[SharePoint サーバーの全体管理] Web ページがタイムアウトする可能性があります。その場合は、ページを更新します。 ページを更新しても構成プロセスに影響はありません。
 
 4. 構成を確認します。
    
@@ -44,7 +44,7 @@
    
    1. ドキュメントを SharePoint にアップロードします。 
    2. 構成した UNC パスを参照します。 RBS のディレクトリ構造が作成されていること、およびアップロードしたオブジェクトがそこに含まれていることを確認します。
-6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳細については、次を参照してください[SharePoint 2013 で RBS の内外にコンテンツを移行][ 6]または[RBS (SharePoint Foundation 2010) の内外にコンテンツを移行][。7].
+6. (省略可能) SharePoint に付属する Microsoft RBS `Migrate()` PowerShell コマンドレットを使用して、既存の BLOB コンテンツを StorSimple デバイスに移行できます。 詳しくは、「[コンテンツを SharePoint 2013 の RBS 外に移行する]」[6]または「[コンテンツをリモート BLOB ストレージ (RBS) 内または RBS 外に移行する (SharePoint Foundation 2010)]」[7]をご覧ください。
 7. (省略可能) テスト インストールで、次のように、BLOB がコンテンツ データベースから移動されたことを確認できます。 
    
    1. SQL Management Studio を起動します。

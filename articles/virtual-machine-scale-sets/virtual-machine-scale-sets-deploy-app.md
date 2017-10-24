@@ -15,14 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: adegeo
+ms.openlocfilehash: 371295efea1eab66361b9aba21a55bbd2826c69b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: fa7d9d3bef4cb326844ede76171e8c566e87116b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>仮想マシン スケール セットへのアプリケーションのデプロイ
 
 この記事では、スケール セットのプロビジョニング時にソフトウェアをインストールするさまざまな方法について説明します。
@@ -49,7 +47,7 @@ Azure 内の仮想マシンを使用して、スケール セットの基本イ�
 
 ディスクについての詳細は、[Managed Disks の概要](../virtual-machines/windows/managed-disks-overview.md)と[接続されたデータ ディスクの使用](virtual-machine-scale-sets-attached-disks.md)に関するページをご覧ください。
 
-## <a name="install-when-the-scale-set-is-provisioned"></a>スケール セットのプロビジョニング時のインストール
+## <a name="already-provisioned"></a>スケール セットのプロビジョニング時のインストール
 
 仮想マシン拡張機能は、仮想マシン スケール セットに適用できます。 仮想マシン拡張機能を使用すると、スケール セット内の仮想マシンを 1 つのグループとしてカスタマイズできます。 拡張機能について詳しくは、[仮想マシン拡張機能](../virtual-machines/windows/extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
@@ -228,5 +226,4 @@ az vmss create \
 [linux-vm-capture]: ../virtual-machines/linux/capture-image.md
 [windows-vm-capture]: ../virtual-machines/windows/capture-image.md 
 [vmss-create]: virtual-machine-scale-sets-create.md
-
 

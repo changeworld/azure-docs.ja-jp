@@ -11,7 +11,7 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/12/2017
 ms.author: jingwang
 ms.openlocfilehash: b27e852b70651cec34b200bde362ff0efae30226
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
@@ -74,7 +74,7 @@ HTTP のリンクされたサービスでは、次のプロパティがサポー
     "name": "HttpLinkedService",
     "properties":
     {
-        "type": "Http",
+        "type": "HttpServer",
         "typeProperties":
         {
             "authenticationType": "Basic",

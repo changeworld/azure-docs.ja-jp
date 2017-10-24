@@ -14,20 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2017
 ms.author: kumud
+ms.openlocfilehash: 0ed8d3432a988c468260589cfe12090529c403d7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: 2728e8b1e190b4ecd0635925b96e97775564a2ee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-load-balancer-standard-overview-preview"></a>Azure Load Balancer Standard の概要 (プレビュー)
 
 Azure Load Balancer Standard SKU とパブリック IP Standard SKU を組み合わせて使用すると、拡張性と信頼性に優れたアーキテクチャを構築できます。  Load Balancer Standard を使用するアプリケーションは、低待機時間、高スループット、すべての TCP および UDP アプリケーションの数百万のフローに対応するスケールに加え、新しい機能も利用できます。
 
 >[!NOTE]
-> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。
+> Load Balancer Standard SKU は現在プレビュー段階です。 プレビュー期間は、一般公開リリースの機能と同じレベルの可用性と信頼性がない場合があります。 詳細については、[Microsoft Azure プレビューのMicrosoft Azure 追加使用条件](https://azure.microsoft.com/support/legal/preview-supplemental-terms/)に関するページをご覧ください。 運用サービスには、一般公開されている [Load Balancer Basic SKU](load-balancer-overview.md) を使用してください。  この時点で、このプレビューに関連する機能である[可用性ゾーン](https://aka.ms/availabilityzones)と [HA ポート](https://aka.ms/haports)には別にサインアップする必要があります。 Load Balancer [Standard プレビュー](#preview-sign-up)以外にサインアップについては、以下の各手順を参照してください。
 
 ## <a name="why-use-load-balancer-standard"></a>Load Balancer Standard を使用する理由
 
@@ -151,6 +149,8 @@ VNet とサブネットにはゾーンの制約がないので、必要な VM �
 #### <a name="zonal-deployments"></a>ゾーン展開
 
 必要に応じて、ゾーン フロントエンドを定義して、フロントエンドを特定のゾーンに配置することもできます。  ゾーン フロントエンドは、指定された 1 つの可用性ゾーンでのみ提供されます。ゾーンの VM インスタンスと組み合わせると、リソースを特定のゾーンに配置できます。
+
+特定のゾーンに作成されたパブリック IP アドレスは、常にそのゾーンにのみ存在します。  パブリック IP アドレスのゾーンを変更することはできません。  複数のゾーンのリソースにアタッチできるパブリック IP アドレスが必要な場合は、代わりにゾーン冗長のパブリック IP を作成する必要があります。
 
 次のコードを使用して、可用性ゾーン 1 にゾーンのパブリック IP アドレスを作成します ("zones" と "sku" を既存の Resource Manager テンプレートに追加します)。
 
@@ -290,11 +290,11 @@ Load Balancer Standard は、可用性ゾーンも提供するリージョンで
 
 複数の割り当て方法を提供するパブリック IP Basic とは異なり、パブリック IP Standard は常に静的割り当てです。
 
-パブリック IP Standard は、可用性ゾーンも提供するリージョンで使用すると、ゾーン ベースとして宣言されている場合を除き、自動的にゾーン回復性を持ちます。
+パブリック IP Standard は、可用性ゾーンも提供するリージョンで使用すると、ゾーン ベースとして宣言されている場合を除き、自動的にゾーン回復性を持ちます。  ゾーンのパブリック IP は、別のゾーンに変更できません。
 
 ## <a name="migration-between-skus"></a>SKU 間での移行
 
-一方の SKU からもう一方の SKU に移行する場合は、以下の手順に従います。
+SKU は変更不可です。  一方の SKU からもう一方の SKU に移行する場合は、以下の手順に従います。
 
 ### <a name="migrating-from-basic-to-standard-sku"></a>Basic SKU から Standard SKU への移行
 
@@ -374,7 +374,7 @@ Load Balancer Standard SKU とそのコンパニオンのパブリック IP Stan
 >Load Balancer Standard の機能の登録には、1 時間ほどかかる場合があります。
 
 >[!NOTE]
->Load Balancer とパブリック IP で可用性ゾーンを使用する場合は、可用性ゾーン プレビューのサブスクリプションも登録する必要があります。
+>[可用性ゾーン](https://aka.ms/availabilityzones)と [HA ポート](https://aka.ms/haports)に Load Balancer Standard を使用する場合、これらのプレビューには別にサインアップする必要があります。  それぞれの手順に従ってください。
 
 ## <a name="pricing"></a>価格
 
@@ -401,5 +401,4 @@ Load Balancer Basic SKU は、引き続き無料でご利用いただけます�
 - [Basic Load Balancer](load-balancer-overview.md) の詳細を確認する
 - [可用性ゾーン](../availability-zones/az-overview.md)の詳細を確認する
 - Azure のその他の重要な[ネットワーク機能](../networking/networking-overview.md)にについて確認する。
-
 

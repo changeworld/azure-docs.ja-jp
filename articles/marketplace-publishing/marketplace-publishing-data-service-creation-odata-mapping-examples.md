@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/26/2016
 ms.author: hascipio; avikova
 ms.openlocfilehash: 2ab624941fc385f14b62bb5d743927f157955845
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="examples-of-mapping-an-existing-web-service-to-odata-through-csdls"></a>CSDL を使用した既存の Web サービスの OData へのマッピングの例
 > [!IMPORTANT]
@@ -27,7 +27,7 @@ ms.lasthandoff: 07/11/2017
 > 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-post"></a>例： "POST" を使用して返される "生" データのための FunctionImport
-POST の生データを使用して、新しい従属要素を作成し、サーバーによって定義された URL (場所) を返したり、サーバーによって定義された URL で従属要素の一部を更新したりします。  ここでは従属要素はストリームです。つまり、 テキスト ファイルなどの 非構造化データです。  場所がないと、POST はべき等ではない状態になることに注意してください。
+POST の生データを使用して、新しい従属要素を作成し、サーバーによって定義された URL (場所) を返したり、サーバーによって定義された URL で従属要素の一部を更新したりします。  ここでは従属要素はストリームです。つまり、テキスト ファイルなどの 非構造化データです。  場所がないと、POST はべき等ではない状態になることに注意してください。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="AddUsageEvent" ReturnType="Raw(text/plain)" d:EncodeParameterValues="true" d:AllowedHttpMethods="POST" d:BaseUri="http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">
@@ -106,7 +106,7 @@ PUT を使用して、新しい従属要素を作成したり、サーバーに�
 
 
 ## <a name="example-functionimport-for-raw-data-returned-using-put"></a>例： "PUT" を使用して返される "生" データのための FunctionImport
-PUT の生データを使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素はストリームです。つまり、 テキスト ファイルなどの 非構造化データです。  PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
+PUT の生データを使用して、新しい従属要素を作成したり、サーバーによって定義された URL で従属要素全体を更新したりします。  ここでは従属要素はストリームです。つまり、テキスト ファイルなどの 非構造化データです。  PUT はべき等であるため、複数回発生しても結果は同じ状態になります (x=5)。  PUT は、指定したリソースの全内容と共に使用する必要があります。
 
         <!--  No EntitySet or EntityType nodes required for Raw output-->
         <FunctionImport Name="CancelBuild” ReturnType="Raw(text/plain)" d:AllowedHttpMethods="PUT" d:EncodeParameterValues="true" d:BaseUri=” http://services.organization.net/MyServicePath?name={name}&amp;AccountKey=22AC643">

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure PowerShell で Azure Data Lake Analytics の使用を開始する | Microsoft Docs"
 description: "Azure PowerShell を使用して Data Lake Analytics アカウントを作成し、U-SQL で Data Lake Analytics ジョブを作成して、ジョブを送信します。 "
 services: data-lake-analytics

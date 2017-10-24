@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 09/27/2017
+ms.date: 10/09/2017
 ms.author: genemi
+ms.openlocfilehash: f62184d97b18d72b91d63db0e449bbab6c20a179
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: e4ee69abe0b3b5d594ee191cc8210d25c325efaa
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -118,9 +117,16 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 
 必要な機能のサブネットのみを保持する単一のカスタム ロールを作成するために、Azure には[ロールベースのアクセス制御 (RBAC)][rbac-what-is-813s] を使用するオプションがあります。 ネットワーク管理またはデータベース管理に関連付ける代わりに、カスタム ロールを使用できます。カスタム ロールにユーザーを追加する場合と、他の 2 つの主要な管理者ロールにユーザーを追加する場合では、前者の方がセキュリティ脅威にさらされる領域が少なくなります。
 
-#### <a name="limitations"></a>制限事項
+
+
+
+
+
+## <a name="limitations"></a>制限事項
 
 Azure SQL Database の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
+
+- SQL Database のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、SQL Database がホストされているのと同じ geographic 型のリージョンでホストされている必要があります。
 
 - 各 Azure SQL Database サーバーは、指定された仮想ネットワークに対して最大 128 個までの ACL エントリを保持できます。
 
@@ -146,9 +152,36 @@ When searching for blogs about ASM, you probably need to use this old and now-fo
 
 
 
+## <a name="errors-40914-and-40615"></a>エラー 40914 および 40615
+
+接続エラー 40914 は、Azure Portal の [ファイアウォール] ウィンドウで指定されている "*仮想ネットワーク規則*" に関係があります。 エラー 40615 も同様ですが、ファイアウォールでの "*IP アドレス規則*" に関係している点が異なります。
+
+#### <a name="error-40914"></a>エラー 40914
+
+*メッセージ テキスト:* ログインで要求されたサーバー '*[サーバー名]*' を開くことができません。 クライアントはサーバーへのアクセスが許可されていません。
+
+*エラーの説明:* クライアントは、仮想ネットワーク サーバーのエンドポイントを持つサブネット内にあります。 しかし、Azure SQL Database サーバーには、SQL Database と通信する権限をサブネットに付与する仮想ネットワーク規則がありません。
+
+*エラーの解決策:* Azure Portal の [ファイアウォール] ウィンドウの仮想ネットワーク ルール コントロールを使って、サブネットの[仮想ネットワーク規則を追加](#anchor-how-to-by-using-firewall-portal-59j)します。
+
+#### <a name="error-40615"></a>エラー 40615
+
+*メッセージ テキスト:* ログインで要求されたサーバー '{0}' を開くことができません。 IP アドレス '{1}' のクライアントはこのサーバーへのアクセスが許可されていません。
+
+*エラーの説明:* クライアントは、Azure SQL Database サーバーへの接続を許可されていない IP アドレスから接続しようとしています。 サーバーのファイアウォールには、指定された IP アドレスから SQL Database への通信をクライアントに許可する IP アドレス規則がありません。
+
+*エラーの解決策:* IP 規則としてクライアントの IP アドレスを入力します。 それには、Azure Portal の [ファイアウォール] ウィンドウを使います。
+
+
+SQL Database のエラー メッセージの一覧については、[こちら][sql-database-develop-error-messages-419g]をご覧ください。
+
+
+
+
+
 <a name="anchor-how-to-by-using-firewall-portal-59j" />
 
-## <a name="how-to-create-a-virtual-network-rule-by-using-the-portal"></a>ポータルを使用した仮想ネットワークの作成方法
+## <a name="portal-can-create-a-virtual-network-rule"></a>Portal で仮想ネットワーク規則を作成する
 
 このセクションでは、[Azure Portal][http-azure-portal-link-ref-477t] を使用して、お使いの Azure SQL Database に*仮想ネットワーク規則*を作成する方法を説明します。 規則では、*Virtual Network サービス エンドポイント*としてタグ付けされた特定のサブネットからの通信を許可するように、お使いの SQL Database に指示します。
 
@@ -232,6 +265,8 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 
 [sql-db-firewall-rules-config-715d]: sql-database-firewall-configure.md
 
+[sql-database-develop-error-messages-419g]: sql-database-develop-error-messages.md
+
 [sql-db-vnet-service-endpoint-rule-powershell-md-52d]: sql-database-vnet-service-endpoint-rule-powershell.md
 
 [sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100]: sql-database-vnet-service-endpoint-rule-powershell.md#a-verify-subnet-is-endpoint-ps-100
@@ -262,5 +297,4 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 
 - ARM templates
 -->
-
 

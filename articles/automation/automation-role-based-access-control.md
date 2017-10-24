@@ -3,7 +3,7 @@ title: "Azure Automation におけるロールベースのアクセス制御 | M
 description: "Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 この記事では、Azure Automation における RBAC の設定方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 keywords: "Automation RBAC, ロールベースのアクセス制御, Azure RBAC"
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2016
+ms.date: 09/30/2016
 ms.author: magoedte;sngun
-translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 17c7e410a9c5b69ab450eb3affd192f1e3cb6e76
-
-
+ms.openlocfilehash: 946d80d40ac0566db72c787f260f2d4faff01e6d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="role-based-access-control-in-azure-automation"></a>Azure Automation におけるロールベースのアクセス制御
 ## <a name="role-based-access-control"></a>ロールベースのアクセス制御
-Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 [RBAC](../active-directory/role-based-access-control-configure.md)を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 ロールベースのアクセス権をユーザーに付与するには、Azure ポータル、Azure コマンドライン ツール、Azure Management API を使用します。
+Azure のリソースに対するアクセスは、ロールベースのアクセス制御 (RBAC) で管理できます。 [RBAC](../active-directory/role-based-access-control-configure.md)を使用して、チーム内の職務を分離し、それぞれの職務に必要なアクセス権のみをユーザー、グループ、アプリケーションに付与することができます。 ロールベースのアクセス権をユーザーに付与するには、Azure Portal、Azure コマンドライン ツール、Azure Management API を使用します。
 
 ## <a name="rbac-in-automation-accounts"></a>Automation アカウントの RBAC
 Azure Automation でアクセス権を付与するには、Automation アカウント スコープのユーザー、グループ、アプリケーションに適切な RBAC ロールを割り当てます。 Automation アカウントでは次の組み込みロールがサポートされています。  
@@ -126,9 +126,9 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 | Automation Runbook のドラフトのテスト ジョブ |![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
 | Automation Webhook |![Green Status](media/automation-role-based-access-control/green-checkmark.png) | | | |
 
-## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Azure ポータルを使用して Automation アカウントの RBAC を構成する
-1. [Azure ポータル](https://portal.azure.com/) にログインし、[Automation アカウント] ブレードから、ご利用の Automation アカウントを開きます。  
-2. 右上隅にある **[アクセス]** コントロールをクリックします。 表示された **[ユーザー]** ブレードで、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。  
+## <a name="configure-rbac-for-your-automation-account-using-azure-portal"></a>Azure Portal を使用して Automation アカウントの RBAC を構成する
+1. [Azure Portal](https://portal.azure.com/) にログインし、[Automation アカウント] ページから、ご利用の Automation アカウントを開きます。  
+2. 右上隅にある **[アクセス]** コントロールをクリックします。 表示された **[ユーザー]** ページで、ご利用の Automation アカウントを管理するための新しいユーザー、グループ、アプリケーションを追加できるほか、その Automation アカウント用に構成できる既存のロールを確認できます。  
    
    ![Access button](media/automation-role-based-access-control/automation-01-access-button.png)  
 
@@ -138,24 +138,24 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 > 
 
 ### <a name="add-a-new-user-and-assign-a-role"></a>新しいユーザーの追加とロールの割り当て
-1. [ユーザー] ブレードの **[追加]** をクリックして **[アクセスを追加]** ブレードを開きます。このブレードでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。  
+1. [ユーザー] ページの **[追加]** をクリックして **[アクセスを追加]** ページを開きます。このページでは、ユーザー、グループ、アプリケーションを追加し、それらにロールを割り当てることができます。  
    
    ![ユーザーの追加](media/automation-role-based-access-control/automation-02-add-user.png)  
 2. 利用可能なロールの一覧からロールを選択します。 ここでは**閲覧者**ロールを選択しますが、Automation アカウントでサポートされている任意の組み込みロールを選択してもかまいません。また、自分で定義したカスタム ロールを選択することもできます。  
    
    ![Select role](media/automation-role-based-access-control/automation-03-select-role.png)  
-3. **[ユーザーの追加]** をクリックして **[ユーザーの追加]** ブレードを開きます。 サブスクリプションを管理するためのユーザー、グループ、またはアプリケーションを既に追加してある場合は、それらのユーザーが一覧に表示されるので、それらを選択してアクセス権を追加することができます。 ユーザーがまったく表示されない場合、または追加しようとするユーザーが表示されない場合は、**[招待する]** をクリックして **[ゲストを招待する]** ブレードを開きます。有効な Microsoft アカウントの電子メール アドレス (Outlook.com、OneDrive、Xbox Live の ID など) を持つユーザーを招待できます。 ユーザーの電子メール アドレスを入力したら、**[選択]** をクリックしてユーザーを追加し、**[OK]** をクリックします。 
+3. **[ユーザーの追加]** をクリックして **[ユーザーの追加]** ページを開きます。 サブスクリプションを管理するためのユーザー、グループ、またはアプリケーションを既に追加してある場合は、それらのユーザーが一覧に表示されるので、それらを選択してアクセス権を追加することができます。 ユーザーがまったく表示されない場合、または追加しようとするユーザーが表示されない場合は、**[招待する]** をクリックして **[ゲストを招待する]** ページを開きます。有効な Microsoft アカウントの電子メール アドレス (Outlook.com、OneDrive、Xbox Live の ID など) を持つユーザーを招待できます。 ユーザーの電子メール アドレスを入力したら、**[選択]** をクリックしてユーザーを追加し、**[OK]** をクリックします。 
    
    ![Add users](media/automation-role-based-access-control/automation-04-add-users.png)  
    
-   **[ユーザー]** ブレードに目的のユーザーが追加され、**閲覧者**ロールが割り当てられていることを確認できます。  
+   **[ユーザー]** ページに目的のユーザーが追加され、**閲覧者**ロールが割り当てられていることを確認できます。  
    
    ![List users](media/automation-role-based-access-control/automation-05-list-users.png)  
    
-   **[ロール]** ブレードから、ユーザーにロールを割り当てることもできます。 
-4. [ユーザー] ブレードから **[ロール]** をクリックして **[ロール]** ブレードを開きます。 このブレードでは、ロールの名前と、そのロールに割り当てられているユーザー数およびグループ数を確認できます。
+   **[ロール]** ページから、ユーザーにロールを割り当てることもできます。 
+4. [ユーザー] ページから **[ロール]** をクリックして **[ロール]** ページを開きます。 ここでは、ロールの名前と、そのロールに割り当てられているユーザー数およびグループ数を確認できます。
    
-    ![Assign role from users blade](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
+    ![[ユーザー] ページからのロールの割り当て](media/automation-role-based-access-control/automation-06-assign-role-from-users-blade.png)  
    
    > [!NOTE]
    > ロールベースのアクセス制御は、Automation アカウント レベルでのみ設定できます。Automation アカウントより下のリソース レベルで設定することはできません。
@@ -169,8 +169,8 @@ Azure Automation でアクセス権を付与するには、Automation アカウ�
 ### <a name="remove-a-user"></a>ユーザーの削除
 Automation アカウントの管理に関与しないユーザーや既に退社したユーザーについては、アクセス権を削除することができます。 ユーザーを削除する手順を次に示します。 
 
-1. **[ユーザー]** ブレードで、削除するロールの割り当てを選択します。
-2. 割り当ての詳細ブレードで、 **[削除]** ボタンをクリックします。
+1. **[ユーザー]** ページで、削除するロールの割り当てを選択します。
+2. 割り当ての詳細ウィンドウで、**[削除]** ボタンをクリックします。
 3. **[はい]** をクリックして削除を確定します。 
    
    ![Remove users](media/automation-role-based-access-control/automation-08-remove-users.png)  
@@ -229,10 +229,4 @@ Automation アカウントに対するロールベースのアクセス制御は
 * Azure Automation の RBAC を構成する各種の方法については、 [Azure PowerShell を使用した RBAC の管理](../active-directory/role-based-access-control-manage-access-powershell.md)に関する記事を参照してください。
 * Runbook を開始するさまざまな方法については、 [Runbook の開始](automation-starting-a-runbook.md)
 * Runbook のさまざまな種類については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
-
-
-
-
-<!--HONumber=Dec16_HO2-->
-
 

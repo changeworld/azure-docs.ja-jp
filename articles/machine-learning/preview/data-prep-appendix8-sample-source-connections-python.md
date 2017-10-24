@@ -30,7 +30,7 @@ API トークンを、data.world Web サイトから取得する必要があり�
 
 #### <a name="install-dataworld-library"></a>data.world ライブラリをインストールする
 
-_[ファイル] -> [Open command-line interface] (コマンド ライン インターフェイスを開く)_ から、Azure Machine Learning ワークベンチのコマンド ライン インターフェイスを開きます
+_[ファイル] -> [Open command-line interface] \(コマンド ライン インターフェイスを開く)_ から、Azure Machine Learning ワークベンチのコマンド ライン インターフェイスを開きます
 
 ```console
 pip install git+git://github.com/datadotworld/data.world-py.git

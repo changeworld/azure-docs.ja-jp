@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Service Fabric のアプリケーション レベルの監視 | Microsoft Docs"
 description: "Azure Service Fabric クラスターの監視と診断に使用するアプリケーションおよびサービス レベルのイベントとログについて説明します。"
 services: service-fabric

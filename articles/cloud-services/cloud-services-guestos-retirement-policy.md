@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 5/26/2017
+ms.date: 9/20/2017
 ms.author: raiye
-ms.translationtype: Human Translation
-ms.sourcegitcommit: a643f139be40b9b11f865d528622bafbe7dec939
-ms.openlocfilehash: 488a6e144b16c57c137e60b918ee68c78db1a54f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/31/2017
-
-
+ms.openlocfilehash: 4bc2d57cf4c7d6e0981aa1a5c7c989860600b897
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-guest-os-supportability-and-retirement-policy"></a>Azure ゲスト OS のサポートと提供終了のポリシー
 このページの情報は、Cloud Services の worker ロールと Web ロール (PaaS) Azure ゲスト オペレーティング システム ([ゲスト OS](cloud-services-guestos-update-matrix.md)) に関連しています。 このページの情報は、Virtual Machines (IaaS) には適用されません。
@@ -38,7 +36,7 @@ Microsoft では、 [ゲスト OS のサポート ポリシー](http://support.m
 ## <a name="when-a-guest-os-family-or-version-is-retired"></a>ゲスト OS ファミリまたはバージョンの提供が終了するタイミング
 Windows Server オペレーティング システムの新しい製品バージョンがリリースされてからしばらくすると、新しいゲスト OS **ファミリ** が導入されます。 新しいゲスト OS ファミリが導入されるたびに、最も古いゲスト OS ファミリが提供終了になります。
 
-新しいゲスト OS **バージョン** は、最新の MSRC 更新プログラムを組み込むようにほぼ毎月導入されます。 月単位の定期的な更新により、ゲスト OS バージョンは通常、リリースから 60 日後に無効になります。 この結果、各ファミリで少なくとも 2 つのバージョンのゲスト OS が使用できる状態が維持されます。
+新しいゲスト OS **バージョン** は、最新の MSRC 更新プログラムを組み込むようにほぼ毎月導入されます。 月単位の定期的な更新により、ゲスト OS バージョンは通常、リリースから約 60 日後に無効になります。 この結果、各ファミリで少なくとも 2 つのバージョンのゲスト OS が使用できる状態が維持されます。
 
 ### <a name="process-during-a-guest-os-family-retirement"></a>ゲスト OS ファミリの提供終了処理中のプロセス
 提供終了が公表されると、古いファミリがサービスから公式に削除される前に、12 か月間の "移行" の期間が設けられます。 この移行期間は、Microsoft の判断で延長される場合があります。 更新は、 [Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に投稿されます。
@@ -63,8 +61,8 @@ Microsoft は、"有効期限" と呼ばれる移行期間の最終日まで、�
 顧客が容易に移行できるように、これらの期間は Microsoft の判断で延長される場合があります。 変更は、 [Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に反映されます。
 
 ### <a name="notifications-during-retirement"></a>提供終了処理中の通知
-* **ファミリの提供終了** <br>ブログ投稿とポータルで通知されます。 提供終了になったゲスト OS ファミリをまだ使用しているお客様に対しては、割り当てられたサービス管理者への直接の連絡 (メール、ポータル メッセージ、電話) による通知が行われます。 すべての変更が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。
-* **バージョンの提供終了** <br>すべての変更とその日付が、このページと、このページの冒頭に示されている RSS フィードに投稿されます。リリース日、無効になる日、有効期限も含まれます。 無効になったゲスト OS バージョンまたはファミリで実行中のデプロイがある場合、サービス管理者はメールを受け取ります。 これらのメールのタイミングは変わる場合があります。 通常は、無効になる日の少なくとも 1 か月前ですが、このタイミングは正式な SLA ではありません。
+* **ファミリの提供終了** <br>ブログ投稿とポータルで通知されます。 提供終了になったゲスト OS ファミリをまだ使用しているお客様に対しては、割り当てられたサービス管理者への直接の連絡 (メール、ポータル メッセージ、電話) による通知が行われます。 すべての変更は、[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)に投稿されます。
+* **バージョンの提供終了** <br>リリース、無効化、期限切れなど、すべての変更とその変更日は、「[Azure ゲスト OS リリースと SDK の互換性対応表](cloud-services-guestos-update-matrix.md)」に投稿される予定です。 無効になったゲスト OS バージョンまたはファミリで実行中のデプロイがある場合、サービス管理者はメールを受け取ります。 これらのメールのタイミングは変わる場合があります。 通常は、無効になる日の少なくとも 1 か月前ですが、このタイミングは正式な SLA ではありません。
 
 ## <a name="frequently-asked-questions"></a>よく寄せられる質問
 **移行の影響を軽減するにはどうすればよいですか。**
@@ -81,4 +79,3 @@ Web アプリケーションのアーキテクチャが、オペレーティン�
 
 ## <a name="next-steps"></a>次のステップ
 最新の [ゲスト OS リリース](cloud-services-guestos-update-matrix.md)を確認します。
-

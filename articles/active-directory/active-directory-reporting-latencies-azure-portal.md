@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory レポートの待機時間 | Microsoft ドキュメント"
 description: "Azure Portal にレポート イベントが表示されるのにかかる時間について学習します"
 services: active-directory

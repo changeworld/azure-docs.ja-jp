@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 08/19/2016
 ms.author: piyushjo
 ms.openlocfilehash: 0ca35a3d634db8eb5c63afacba046a35b8a3e7ed
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="implement-mobile-engagement-with-gaming-app"></a>ゲーム アプリで Mobile Engagement を実装する
 ## <a name="overview"></a>Overview
@@ -61,7 +61,7 @@ IT チームからの推奨事項に基づき、次の質問に答えるため�
 * レベル 20 をクリアしたユーザーは週に $10 以上費やすようになる。
 * ユーザーは、レベル 16、24、および 32 でプレミアム パッケージを購入する傾向がある。
 
-この分析により、モバイル プロジェクト ディレクターは、アプリの売上を強化するための特定のプッシュ通知シーケンスを作成することにしました。 彼は、スタート時プログラム、セールス プログラムおよび非アクティブ プログラムを呼び出す 3 つのプッシュ シーケンスを作成します。 詳細についてを参照してください、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]
+この分析により、モバイル プロジェクト ディレクターは、アプリの売上を強化するための特定のプッシュ通知シーケンスを作成することにしました。 彼は、スタート時プログラム、セールス プログラムおよび非アクティブ プログラムを呼び出す 3 つのプッシュ シーケンスを作成します。 詳細については、[プレイブック](https://github.com/Azure/azure-mobile-engagement-samples/tree/master/Playbooks)![][1]を参照してください。
 
 <!--Image references-->
 

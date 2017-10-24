@@ -14,12 +14,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: parakhj
+ms.openlocfilehash: 79cb886a076a08c9817efda40e9750c69ad00187
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 430063bbc9fab8195e12cd1d3e3966a29bafd404
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-b2c-use-the-graph-api"></a>Azure AD B2C: Graph API を使用する
 Azure Active Directory (Azure AD) B2C テナントは非常に大規模になる傾向があります。 これは、多くの一般的なテナント管理タスクをプログラムで実行する必要があることを意味します。 主な例にはユーザーの管理があります。 たとえば、既存のユーザー ストアを B2C テナントに移行することがあります。 その場合、自分のページでユーザー登録をホストし、バックグラウンドで Azure AD B2C ディレクトリのユーザー アカウントを作成することがあります。 この種のタスクでは、ユーザー アカウントの作成、読み取り、更新、削除を実行する機能が必要です。 Azure AD Graph API を使用してこれらの操作を実行できます。
@@ -68,9 +67,13 @@ B2C テナントを取得後、[Azure Portal](https://portal.azure.com) を通�
 ## <a name="configure-delete-permissions-for-your-application"></a>アプリケーション用に削除アクセス許可を構成する
 現時点では、*ディレクトリ データの読み取りと書き込み*アクセス許可には、ユーザーの削除など、削除を行う機能は含まれて**いません**。 アプリケーションにユーザーを削除する権限を付与する場合は、PowerShell に関連する下記の追加手順を実行する必要がありますそれ以外の場合、次のセクションにスキップできます。
 
-最初に、 [Microsoft Online Services サインイン アシスタント](http://go.microsoft.com/fwlink/?LinkID=286152)をダウンロードしてインストールします。 次に、 [64-bit Azure Active Directory Module for Windows PowerShell](http://go.microsoft.com/fwlink/p/?linkid=236297)をダウンロードしてインストールします。
+まず、[Azure AD PowerShell v1 モジュール (MSOnline)](https://docs.microsoft.com/en-us/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) をまだインストールしていない場合は、それをインストールします。
 
-PowerShell モジュールをインストールした後、PowerShell を開き、B2C テナントに接続します。 `Get-Credential` を実行すると、ユーザー名とパスワードの入力を求められます。B2C テナント管理者アカウントのユーザー名とパスワードを入力します。
+```powershell
+Install-Module MSOnline
+```
+
+PowerShell モジュールをインストールした後、Azure AD B2C テナントに接続します。
 
 > [!IMPORTANT]
 > B2C テナントに**固有**の B2C テナントの管理者アカウントを使用する必要があります。 これらのアカウントは、次のようになりますmyusername@myb2ctenant.onmicrosoft.com。
@@ -358,5 +361,4 @@ B2C テナント内に定義されたカスタム属性は、 `B2CGraphClient`�
 * コンシューマー ユーザーを作成し、更新するとき、上述のようにいくつかのプロパティが必要になります。
 
 B2C テナントで Graph API を利用して実行するアクションに関するご質問やご要望がございましたら、この記事にコメントを投稿するか、GitHub コード サンプル リポジトリで問題を提出してください。
-
 

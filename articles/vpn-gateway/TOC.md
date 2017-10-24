@@ -81,7 +81,6 @@
 ### [ポイント対サイト接続の問題](vpn-gateway-troubleshoot-vpn-point-to-site-connection-problems.md)
 ### [サイト対サイト接続が断続的に切断される](vpn-gateway-troubleshoot-site-to-site-disconnected-intermittently.md)
 ### [サイト対サイト接続で接続できない](vpn-gateway-troubleshoot-site-to-site-cannot-connect.md) 
-### [Application Gateway セッション アフィニティに関する問題](https://support.microsoft.com/help/4033827/troubleshooting-azure-application-gateway-session-affinity-issues)
 ### [VNet または VPN 接続の構成および検証](https://support.microsoft.com/help/4032151/configuring-and-validating-vnet-or-vpn-connections)
 
 # リファレンス

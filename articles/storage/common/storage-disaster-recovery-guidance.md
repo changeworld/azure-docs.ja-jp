@@ -14,14 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 1/19/2017
 ms.author: tamram
+ms.openlocfilehash: c768bdbb8e1ce2aae3eb5b6db0e48977366c83fb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1d9ccc1c81260379b5e645d338cbf1fa265e18d4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Azure Storage の停止が発生した場合の対処方法
 Microsoft では、サービスがいつでも使用できるように取り組んでいますが、 やむを得ない事情により、計画されていないサービス停止が 1 つまたは複数のリージョンで発生することがあります。 こうした状況はほとんど発生しませんが、発生した場合は、次のガイダンスに従って対応してください。
 
@@ -54,7 +52,7 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 ストレージ geo フェールオーバーに関する注意事項をいくつか次に示します。
 
 * ストレージ geo フェールオーバーは、Azure Storage チームによってのみトリガーされます。顧客の操作は不要です。
-* BLOB、テーブル、キュー、およびファイルに対する既存のストレージ サービス エンドポイントは、フェールオーバー後も同じままです。プライマリ リージョンからセカンダリ リージョンに切り替えるには、DNS エントリを更新する必要があります。
+* BLOB、テーブル、キュー、およびファイルに対する既存のストレージ サービス エンドポイントは、フェールオーバー後も同じままです。プライマリ リージョンからセカンダリ リージョンに切り替えるには、Microsoft 提供の DNS エントリを更新する必要があります。  Microsoft は、geo フェールオーバー プロセスの一環として自動的にこの更新を実行します。
 * geo フェールオーバー前と geo フェールオーバー中は、障害の影響によりストレージ アカウントに書き込みアクセスできません。ただし、ストレージ アカウントが RA-GRS として構成されている場合、セカンダリ リージョンからの読み取りは引き続き可能です。
 * geo フェールオーバーが完了し、DNS の変更が反映されたら、ストレージ アカウントに再度読み取り/書き込みアクセスできるようになります。ポイント先は、以前のセカンダリ エンドポイントです。 
 * ストレージ アカウントに GRS または RA-GRS を構成した場合は、書き込みアクセス権があることに注意してください。 
@@ -71,5 +69,4 @@ Azure サービスの状態は、 [Azure サービス正常性ダッシュボー
 * ファイル - [AzCopy](storage-use-azcopy.md) または [Azure PowerShell](storage-powershell-guide-full.md) を使用して、他のリージョンの別のストレージ アカウントにファイルをコピーします。
 
 RA-GRS の機能を最大限に活用したアプリケーションを設計する方法の詳細については、「[RA-GRS ストレージを使用した高可用性アプリケーションの設計](../storage-designing-ha-apps-with-ragrs.md)」を参照してください。
-
 

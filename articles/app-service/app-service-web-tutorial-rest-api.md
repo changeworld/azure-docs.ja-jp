@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure App Service での Node.js API アプリ | Microsoft Docs"
 description: "Azure App Service で Node.js RESTful API を作成して API アプリにデプロイする方法について説明します。"
 services: app-service\api

@@ -14,12 +14,11 @@ ms.devlang: Java
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: robmcm
+ms.openlocfilehash: b6e1a305e19415ab1c4b4c208dac98ad1e2689c6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 4f3ec837588c6e959e82108ca25ab4289e40d3f5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-a-certificate-to-the-java-ca-certificates-store"></a>証明書を Java CA 証明書ストアに追加する方法
 次のステップでは、証明機関 (CA) の証明書を Java CA 証明書 (cacerts) ストアに追加する方法について説明します。 例として使用するのは Twilio サービスに必要な CA 証明書です。 このトピックの後半では、Azure Service Bus 用の CA 証明書をインストールする方法について説明します。 
@@ -27,7 +26,7 @@ ms.lasthandoff: 08/22/2017
 JDK を圧縮して Azure プロジェクトの **approot** フォルダーに追加する前に、keytool を使用して CA 証明書を追加できます。または、keytool を使用して証明書を追加する Azure スタートアップ タスクを実行することもできます。 この例では、JDK を圧縮する前に CA 証明書を追加するとします。 また、特定の CA 証明書をこの例で使用しますが、別の CA 証明書を取得して使用する場合でも、証明書を cacerts ストアにインポートする手順は同様です。
 
 ## <a name="to-add-a-certificate-to-the-cacerts-store"></a>証明書を cacerts ストアに追加するには
-1. JDK の **jdk\jre\lib\security** フォルダーに設定されたコマンド プロンプトで、次のコマンドを実行して、インストールされている証明書を確認します。
+1. JDK の **jdk\jre\lib\security** フォルダーに設定された管理者コマンド プロンプトで、次のコマンドを実行して、インストールされている証明書を確認します。
    
     `keytool -list -keystore cacerts`
    
@@ -56,5 +55,4 @@ Baltimore CyberTrust Root を追加する必要がある場合、そのシリア
 Azure で使用するルート証明書の詳細については、 [Azure ルート証明書の移行](http://blogs.msdn.com/b/windowsazure/archive/2013/03/15/windows-azure-root-certificate-migration.aspx)に関するページを参照してください。
 
 Java の詳細については、「[Azure for Java developers (Java 開発者向けの Azure)](/java/azure)」をご覧ください。
-
 

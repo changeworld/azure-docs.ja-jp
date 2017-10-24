@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
-ms.author: curtand;jeffsta
+ms.date: 10/10/2017
+ms.author: curtand
+ms.reviewer: elkuzmen
+ms.openlocfilehash: 1e58af1f8d26b03c07b27d69f13868bccaaa33aa
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 2f5a41907e9fa304444b369311e182d3f00ef619
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、多くのディレクトリ リソースの識別子の重要な部分です。ユーザーのユーザー名または電子メール アドレスの一部であり、グループのアドレスの一部であり、アプリケーションのアプリ ID URI の一部になることもあります。 Azure Active Directory (Azure AD) のリソースには、リソースを格納するディレクトリによって所有されていることが既に確認済みのドメイン名を含めることができます。 Azure AD でドメイン管理タスクを実行できるのは、グローバル管理者のみです。
@@ -28,12 +28,12 @@ ms.lasthandoff: 09/26/2017
 ディレクトリを作成すると、"contoso.onmicrosoft.com" などの初期ドメイン名がプライマリ ドメイン名に設定されます。 プライマリ ドメインは、新しいユーザーを作成したときにそのユーザーの既定のドメイン名になります。 プライマリ ドメイン名の設定によって、管理者がポータルでユーザーを新規作成するプロセスが効率化されます。 プライマリ ドメイン名を変更するには、次の手順に従います。
 
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
-2. **[その他のサービス]** を選択し、テキスト ボックスに「**Azure Active Directory**」と入力して、**Enter** キーを押します。
+2. **[Azure Active Directory]**を選択します。
    
    ![ユーザー管理を開く](./media/active-directory-domains-add-azure-portal/user-management.png)
-3. ***[<ディレクトリ名>]*** ブレードで、**[ドメイン名]** を選択します。
-4. **[*ディレクトリ名* - ドメイン名]** ブレードで、プライマリ ドメイン名にするドメイン名を選択します。
-5. ***[<ドメイン名>]*** ブレード (タイトルに新しいドメイン名が表示されているブレード) で、**[プライマリにする]** をクリックします。 メッセージが表示されたら、選択を確定します。
+3. **[ドメイン名]** を選びます。
+4. プライマリ ドメインにするドメインの名前を選びます。
+5. **[プライマリにする]** コマンドを選びます。 メッセージが表示されたら、選択を確定します。
    
    ![ドメイン名をプライマリにする](./media/active-directory-domains-manage-azure-portal/make-primary.png)
 
@@ -67,5 +67,4 @@ Azure Active Directory のドメイン名に関する管理作業の多くは、
 
 ## <a name="next-steps"></a>次のステップ
 * [カスタム ドメイン名を追加する](add-custom-domain.md)
-
 

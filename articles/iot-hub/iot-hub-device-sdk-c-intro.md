@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: obloch
-ms.openlocfilehash: 459b630f28fe48064f4ba280974f3fdbdb82f0a6
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.openlocfilehash: 9f0ea741355c6403cde6f02d8263dd8bff7e553b
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>C 用 Azure IoT device SDK
 
@@ -124,7 +124,7 @@ static const char* connectionString = "[device connection string]";
 * Microsoft.Azure.IoTHub.IoTHubClient
 * Microsoft.Azure.umqtt
 
-SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルでは MQTT プロトコルを使用するため、**Microsoft.Azure.umqtt** パッケージと **Microsoft.Azure.IoTHub.MqttTransport** パッケージを含める必要があります (AMQP と HTTP にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
+SDK を使った作業には必ず **Microsoft.Azure.C.SharedUtility** パッケージが必要となります。 このサンプルでは MQTT プロトコルを使用するため、**Microsoft.Azure.umqtt** パッケージと **Microsoft.Azure.IoTHub.MqttTransport** パッケージを含める必要があります (AMQP と HTTPS にも同等のパッケージが存在します)。 サンプルでは **IoTHubClient** ライブラリが使用されているため、ソリューション内に **Microsoft.Azure.IoTHub.IoTHubClient** パッケージも含める必要があります。
 
 サンプル アプリケーションの実装は、**iothub\_client\_sample\_mqtt.c** ソース ファイル内にあります。
 
@@ -147,7 +147,7 @@ else
     ...
 ```
 
-デバイス エクスプローラー ツールから取得したデバイスの接続文字列のコピーをこの関数に渡します。 また、使用する通信プロトコルを指定します。 この例では MQTT を使用しますが、AMQP と HTTP も使用できます。
+デバイス エクスプローラー ツールから取得したデバイスの接続文字列のコピーをこの関数に渡します。 また、使用する通信プロトコルを指定します。 この例では MQTT を使用しますが、AMQP と HTTPS も使用できます。
 
 有効な **IOTHUB\_CLIENT\_HANDLE** がある場合は、その API の呼び出しを開始して、IoT Hub との間でメッセージを送受信できます。
 
@@ -374,7 +374,7 @@ else
 ...
 ```
 
-**serializer\_init** 関数の呼び出しは 1 回だけの呼び出しであり、基になるライブラリを初期化します。 次に、**IoTHubClient\_LL\_CreateFromConnectionString** 関数を呼び出します。これは、**IoTHubClient** サンプルに含まれる API と同じものです。 この呼び出しにより、デバイスの接続文字列が設定されます (この呼び出しは、使用するプロトコルを選択する場所でもあります)。 このサンプルでは、トランスポートとして MQTT を使用していますが、AMQP または HTTP を使用することもできます。
+**serializer\_init** 関数の呼び出しは 1 回だけの呼び出しであり、基になるライブラリを初期化します。 次に、**IoTHubClient\_LL\_CreateFromConnectionString** 関数を呼び出します。これは、**IoTHubClient** サンプルに含まれる API と同じものです。 この呼び出しにより、デバイスの接続文字列が設定されます (この呼び出しは、使用するプロトコルを選択する場所でもあります)。 このサンプルでは、トランスポートとして MQTT を使用していますが、AMQP または HTTPS を使用することもできます。
 
 最後に、**CREATE\_MODEL\_INSTANCE** 関数を呼び出します。 **WeatherStation** はモデルの名前空間で、**ContosoAnemometer** はモデルの名前です。 モデルのインスタンスが作成されたら、そのモデルを使用して、メッセージの送受信を開始することができます。 ただし、モデルがどのようなものかを理解する必要があります。
 

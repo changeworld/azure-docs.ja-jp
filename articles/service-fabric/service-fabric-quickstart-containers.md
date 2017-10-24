@@ -12,16 +12,14 @@ ms.devlang: dotNet
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2017
+ms.date: 10/02/2017
 ms.author: ryanwi
+ms.openlocfilehash: bc7bee3caed2eba0a3f49d79241cd8685333ba13
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: c4f8c94e23a165b22533ffd74e04c9a7310f2d22
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="deploy-a-service-fabric-windows-container-application-on-azure"></a>Service Fabric の Windows コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
@@ -51,7 +49,7 @@ Service Fabric SDK およびツールには、コンテナーを Service Fabric 
 
 **[サービス テンプレート]** の一覧から **[コンテナー]** を選択します。
 
-**[イメージ名]** に、「nanoserver/iis」と入力します。これが [Windows Server 2016 Nano Server と IIS の基本イメージ](https://hub.docker.com/r/nanoserver/iis/)になります。 
+**[イメージ名]** に、「microsoft/iis:nanoserver」と入力します。これが [Windows Server Nano Server と IIS の基本イメージ](https://hub.docker.com/r/microsoft/iis/)になります。 
 
 サービスに "MyContainerService" という名前を付けて **[OK]** をクリックします。
 
@@ -68,6 +66,7 @@ ApplicationManifest.xml ファイルの `ContainerHostPolicies` 内にある `Po
 ```xml
 <ServiceManifestImport>
 ...
+  <ConfigOverrides />
   <Policies>
     <ContainerHostPolicies CodePackageRef="Code">
       <PortBinding ContainerPort="80" EndpointRef="MyContainerServiceTypeEndpoint"/>
@@ -94,7 +93,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 
 ![[発行] ダイアログ](./media/service-fabric-quickstart-dotnet/publish-app.png)
 
-**[接続のエンドポイント]** フィールドにクラスターの接続エンドポイントを入力し、**[発行]** をクリックします。 パーティ クラスターにサインアップすると、ブラウザーに接続エンドポイントが提供されます (例: `winh1x87d1d.westus.cloudapp.azure.com:19000`)。
+**[接続のエンドポイント]** フィールドにクラスターの接続エンドポイントを入力します。 パーティ クラスターにサインアップすると、ブラウザーに接続エンドポイントが提供されます (例: `winh1x87d1d.westus.cloudapp.azure.com:19000`)。  **[発行]** をクリックすると、アプリケーションがデプロイされます。
 
 ブラウザーを開き、http://winh1x87d1d.westus.cloudapp.azure.com:80 に移動します。 IIS の既定の Web ページが表示されます。![IIS の既定の Web ページ][iis-default]
 
@@ -120,7 +119,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
     <EntryPoint>
       <!-- Follow this link for more information about deploying Windows containers to Service Fabric: https://aka.ms/sfguestcontainers -->
       <ContainerHost>
-        <ImageName>nanoserver/iis</ImageName>
+        <ImageName>microsoft/iis:nanoserver</ImageName>
       </ContainerHost>
     </EntryPoint>
     <!-- Pass environment variables to your container: -->
@@ -198,4 +197,3 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 
 [iis-default]: ./media/service-fabric-quickstart-containers/iis-default.png
 [publish-dialog]: ./media/service-fabric-quickstart-containers/publish-dialog.png
-

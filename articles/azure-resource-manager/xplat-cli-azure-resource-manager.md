@@ -11,18 +11,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: vm-multiple
 ms.devlang: na
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: c68f2a8b6e18dc2d51d8bbb5cd05bc037dc2fadb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 2e3fdf06316bbf68abefe06024f63668bdf07b05
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-cli-to-manage-azure-resources-and-resource-groups"></a>Azure CLI を使用して Azure のリソースとリソース グループを管理する
 
-この記事では、Azure CLI と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
+この記事では、Azure CLI と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 この記事では管理タスクに重点を置いて説明します。 このチュートリアルの内容は次のとおりです。
 
 1. リソース グループの作成
 2. リソース グループへのリソースの追加
@@ -79,6 +78,7 @@ az account show
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
+
 サブスクリプションにリソースをデプロイする前に、そのリソースを含めるリソース グループを作成する必要があります。
 
 リソース グループを作成するには、**az group create** コマンドを使用します。 このコマンドは **name** パラメーターを使用してリソース グループの名前を指定し、**location** パラメーターを使用して場所を指定します。
@@ -115,6 +115,7 @@ az group list
 ```
 
 ## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
+
 リソースをリソース グループに追加するには、**az resource create** コマンド、または作成するリソースの種類に固有のコマンド (**az storage account create** など) を使用します。 リソースの種類に固有のコマンドには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、こちらを使用する方が簡単です。 **az resource create** を使用するには、設定するすべてのプロパティを把握しておく必要があります。これらを入力するよう求めるメッセージは表示されません。
 
 ただし、スクリプトを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。
@@ -133,7 +134,7 @@ az storage account show --name myuniquestorage --resource-group TestRG1
 
 ## <a name="add-a-tag"></a>タグを追加します
 
-タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 このトピックでは、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
+タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 この記事では、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
 
 次のコマンドは、2 つのタグをお使いのストレージ アカウントに適用します。
 
@@ -176,6 +177,14 @@ az resource tag --tags $rt Project=Redesign -g TestRG1 -n myuniquestorage --reso
   ```azurecli-interactive
   az resource list --resource-type "Microsoft.Storage/storageAccounts"
   ```
+
+## <a name="get-resource-id"></a>リソース ID を取得する
+
+多くのコマンドは、リソース ID をパラメーターとして受け取ります。 リソースおよび変数内のストアの ID を取得するには、次のコマンドを使用します。
+
+```azurecli-interactive
+webappID=$(az resource show -g exampleGroup -n exampleSite --resource-type "Microsoft.Web/sites" --query id --output tsv)
+```
 
 ## <a name="lock-a-resource"></a>リソースのロック
 

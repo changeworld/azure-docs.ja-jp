@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory 監査 API リファレンス | Microsoft Docs"
 description: "Azure Active Directory 監査 API の概要について説明します。"
 services: active-directory

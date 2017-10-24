@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/06/2017
 ms.author: dobett
+ms.openlocfilehash: a3ebda292d16b2a420fb6d586f18201e34efffa7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 763bc597bdfc40395511cdd9d797e5c7aaad0fdf
-ms.openlocfilehash: 706c9650a8deef941f9b39956021456053369e5e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="send-cloud-to-device-messages-from-iot-hub"></a>cloud-to-device メッセージを IoT Hub から送信する
 
@@ -43,7 +42,7 @@ IoT Hub サービスは、デバイスにメッセージを送信するときに
 デバイスは次の選択をすることもあります。
 
 * メッセージの*拒否*。この場合、IoT Hub によってメッセージの状態が**配信不能**に設定されます。 MQTT プロトコル経由で接続するデバイスは、cloud-to-device メッセージを拒否できません。
-* メッセージの*破棄*。この場合、IoT Hub によってメッセージがキューに戻され、状態が**エンキュー**に設定されます。
+* メッセージの*破棄*。この場合、IoT Hub によってメッセージがキューに戻され、状態が**エンキュー**に設定されます。 MQTT プロトコル経由で接続するデバイスは、cloud-to-device メッセージを破棄できません。
 
 スレッドが IoT Hub に通知することなく、メッセージの処理に失敗することもあります。 その場合、*表示 (またはロック) がタイムアウト*になった後で、メッセージの状態が自動的に**非表示**から**エンキュー**に切り替わります。 このタイムアウトの既定値は 1 分です。
 
@@ -151,4 +150,3 @@ cloud-to-device メッセージへの受信を試すには、[クラウドから
 [lnk-c2d-configuration]: #cloud-to-device-configuration-options
 [lnk-lifecycle]: #message-lifecycle
 [lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
-

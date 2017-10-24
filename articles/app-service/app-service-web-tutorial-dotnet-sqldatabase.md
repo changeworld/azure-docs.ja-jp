@@ -1,4 +1,4 @@
----
+﻿---
 title: "SQL Database を使用して Azure に ASP.NET アプリを作成する | Microsoft Docs"
 description: "Azure で動作し、SQL データベースに接続する ASP.NET アプリの入手方法を説明します。"
 services: app-service\web

@@ -12,7 +12,7 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2017
+ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: kexia
 custom: it-pro
@@ -82,11 +82,11 @@ Azure AD サインインでは、ユーザーはブラウザーを閉じたり�
 1. ディレクトリの全体管理者であるアカウントで [Azure Portal](https://portal.azure.com) にサインインします。
 2. **[その他のサービス]** を選択し、テキスト ボックスに「**ユーザーとグループ**」と入力して、**Enter** キーを押します。
 
-   ![ユーザー管理を開く](./media/active-directory-branding-custom-signon-azure-portal/user-management.png)
+   ![ユーザー管理を開く](./media/customize-branding/user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[会社のブランド]** を選択します。
 4. **[Users and groups - Company branding (ユーザーとグループ - 会社のブランド)]** ブレードで、**[編集]** をクリックします。
 
-    ![カスタム ブランドを編集する](./media/active-directory-branding-custom-signon-azure-portal/edit-branding.png)
+    ![カスタム ブランドを編集する](./media/customize-branding/edit-branding.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
 6. [ **Save**] をクリックします。
 
@@ -97,11 +97,11 @@ Azure AD サインインでは、ユーザーはブラウザーを閉じたり�
 1. ディレクトリのグローバル管理者のアカウントで [Azure AD 管理センター](https://aad.portal.azure.com)にサインインします。
 2. テキスト ボックスで **[ユーザーとグループ]** を選択し、次に **[入力]** を選択します。
 
-   ![ユーザー管理を開く](./media/active-directory-branding-localize-azure-portal/user-management.png)
+   ![ユーザー管理を開く](./media/customize-branding/user-management.png)
 3. **[ユーザーとグループ]** ブレードで、**[会社のブランド]** を選択します。
 4. **[ユーザーとグループ - 会社のブランド]** ブレードで、**[言語の追加]** をクリックします。
 
-    ![言語固有のブランド要素を追加する](./media/active-directory-branding-localize-azure-portal/add-language.png)
+    ![言語固有のブランド要素を追加する](./media/customize-branding/add-language.png)
 5. カスタマイズする要素に変更を加えます。 すべての要素は省略できます。
 6. [ **Save**] をクリックします。
 

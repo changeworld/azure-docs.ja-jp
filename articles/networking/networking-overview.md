@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/19/2017
 ms.author: jdial
 ms.openlocfilehash: 7ed018c8c9759bc497c5fea129257486f6128531
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-networking"></a>Azure のネットワーク
 
@@ -110,7 +110,7 @@ Azure Application Gateway サービスは、アプリケーション配信コン
 
 **ネットワークの負荷分散**
 
-Azure Load Balancer には、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待ち時間のレイヤー 4 負荷分散機能が備わっています。 受信接続と送信接続を管理します。 パブリックおよび内部負荷分散エンドポイントを構成することができます。 TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義することができます。 ロード バランサーの詳細については、[ロード バランサーの概要](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
+Azure Load Balancer には、すべての UDP と TCP プロトコル向けの高パフォーマンス、低待ち時間のレイヤー 4 負荷分散機能が備わっています。 受信接続と送信接続を管理します。 パブリックな負荷分散エンドポイントと内部的な負荷分散エンドポイントを構成することができます。 TCP を使用して受信接続をバックエンド プールの送信先にマッピングする規則や、サービスの可用性を管理するための HTTP の正常性プローブ オプションを定義することができます。 ロード バランサーの詳細については、[ロード バランサーの概要](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fnetworking%2ftoc.json)に関する記事を参照してください。
 
 次の図は、インターネットに接続する多層アプリケーションを示しています。外部ロード バランサーと内部ロード バランサーが利用されています。
 

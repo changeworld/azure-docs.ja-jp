@@ -13,7 +13,7 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/12/2017
+ms.date: 10/19/2017
 ms.author: genli
 ms.openlocfilehash: 0252a084061c89f3d0198fc9a08e8ee65581524b
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
@@ -38,7 +38,7 @@ Azure ポータルでユーザーをサブスクリプションの管理者と�
 
     ![選択された所有者ロールを示すスクリーンショット](./media/billing-add-change-azure-subscription-administrator/add-role.png)
 
-### <a name="add-or-change-co-administrator"></a>共同管理者を追加または変更する
+## <a name="add-or-change-co-administrator"></a>共同管理者を追加または変更する
 
 共同管理者として追加できるのは所有者のみです。 共同作成者や閲覧者などのロールの他のユーザーは、共同管理者として追加できません。
 

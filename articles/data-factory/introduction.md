@@ -11,14 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: shlo
+ms.openlocfilehash: ef7055342a04057acfba9dad350f654aa4de6096
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 09e514aee503b7cb045c81d8ddcb855ced9b072b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,10 +57,10 @@ Data Factory を使用すれば、データ パイプラインの[コピー ア�
 生データが変換されてビジネスに即応して利用できる形態になったので、このデータを、ビジネス ユーザーがビジネス インテリジェンス ツールから参照できる Azure Data Warehouse、Azure SQL DB、Azure CosmosDB、またはその他の分析エンジンに読み込みます。
 
 ### <a name="monitor"></a>監視
-データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、OMS、Azure Portal の正常性パネルを利用してパイプラインを監視する、ビルトイン サポートが用意されています。
+データ統合パイプラインを正常に構築してデプロイし、変換したデータからビジネス価値を生み出せるようになったなら、スケジュール化したアクティビティとパイプラインを監視して、成功率と失敗率を確認することができます。 Azure Data Factory には、Azure Monitor、API、PowerShell、Microsoft Operations Management Suite (OMS)、および Azure Portal の正常性パネルを使用したパイプライン監視の組み込みのサポートが用意されています。
 
 ## <a name="whats-different-in-version-2"></a>バージョン 2 の変更点
-Azure Data Factory バージョン 2 は、元の Azure Data Factory のデータ移動と変換サービスを基に構築されていますが、対応できるクラウドファースト データ統合シナリオの幅が広がりました。 Azure Data Factory V2 では、次の機能が提供されます。
+Azure Data Factory バージョン 2 は、元の Azure Data Factory のデータ移動と変換サービスを基に構築されていますが、クラウド優先データ統合シナリオがさらに拡充されています。 Azure Data Factory バージョン 2 では、次の機能が提供されます。
 
 - フローとスケールの制御
 - Azure での SSIS パッケージのデプロイと実行
@@ -92,23 +91,27 @@ Azure Data Factory バージョン 2 は、元の Azure Data Factory のデー�
 - 差分フロー
     - 差分コピー用にパラメーターを使用したり最大値を定義したりして、オンプレミスやクラウドのリレーショナル ストアからディメンションまたは参照テーブルを移動し、データをレイクに読み込みます。 
 
-詳細については、「[チュートリアル: 制御フロー](tutorial-control-flow.md)」をご覧ください。
+詳細については、[制御フローのチュートリアル](tutorial-control-flow.md)に関するページを参照してください。
 
 ### <a name="deploy-ssis-packages-to-azure"></a>SSIS パッケージを Azure にデプロイする 
 SSIS ワークロードを移動する場合は、データ ファクトリ バージョン 2 を作成し、Azure-SSIS 統合ランタイム (IR) をプロビジョニングできます。 Azure-SSIS IR は、クラウドでの SSIS パッケージ実行専用の、Azure VM (ノード) の完全に管理されたクラスターです。 詳しい手順については、「チュートリアル: [SSIS パッケージを Azure にデプロイする](tutorial-deploy-ssis-packages-azure.md)」を参照してください。 
  
 
-## <a name="rich-cross-platform-sdks"></a>豊富なクロス プラットフォーム SDK
+### <a name="sdks"></a>SDK
 プログラマティック インターフェイスを必要とする詳しい知識のあるユーザー向けに、バージョン 2 では、使い慣れた IDE を使用してパイプラインを作成、管理、監視するために使用できる豊富な SDK のセットが用意されています。
 
-- .NET SDK
-- PowerShell
-- Python SDK
+- .NET SDK - バージョン 2 で .NET SDK は更新されています。 
+- PowerShell - バージョン 2 で PowerShell コマンドレットは更新されています。 バージョン 2 のコマンドレットには、名前に **DataFactoryV2** が含まれています。 たとえば、Get AzureRmDataFactoryV2 となります。 
+- Python SDK - この SDK は、バージョン 2 で新しく導入されました。
+- REST API - REST API はバージョン 2 で更新されています。  
 
-REST API を使用してデータ ファクトリを作成することもできます。 
+バージョン 2 で更新された SDK は、バージョン 1 クライアントと下位互換性がありません。 
+
+### <a name="monitoring"></a>監視
+現在、バージョン 2 は SDK のみを使用したデータ ファクトリの監視をサポートしています。 ポータルは、まだバージョン 2 データ ファクトリの監視をサポートしていません。 
 
 ## <a name="load-the-data-into-a-lake"></a>データをレイクに読み込む
-Data Factory には、30 以上のコネクタが用意されており、ハイブリッドの異種環境から、Azure にデータを読み込むことができます。  内部テストでの最新のパフォーマンス結果とチューニングに関する推奨事項については、「[パフォーマンスとチューニングのガイド](copy-activity-performance.md)」をご覧ください。 最近ではさらに、プライベート ネットワーク環境にインストールされるセルフホステッドの統合ランタイムで高可用性とスケーラビリティが利用できるようになりました。これにより、可用性とスケーラビリティの向上という、階層 1 の大規模エンタープライズのお客様の要件に対応します。
+Data Factory には 30 を上回るコネクタが用意されており、ハイブリッドおよび異種環境から Azure にデータを読み込むことができます。  内部テストでの最新のパフォーマンス結果とチューニングに関する推奨事項については、「[パフォーマンスとチューニングのガイド](copy-activity-performance.md)」をご覧ください。 最近ではさらに、プライベート ネットワーク環境にインストールされるセルフホステッドの統合ランタイムで高可用性とスケーラビリティが利用できるようになりました。これにより、可用性とスケーラビリティの向上という、階層 1 の大規模エンタープライズのお客様の要件に対応します。
 
 ## <a name="top-level-concepts-in-version-2"></a>バージョン 2 のトップレベルの概念
 1 つの Azure サブスクリプションで 1 つ以上の Azure Data Factory インスタンス (データ ファクトリ) を利用できます。 Azure Data Factory は、4 つの主要コンポーネントで構成されたプラットフォームです。このプラットフォームを基盤とし、データ移動とデータ変換のステップを含んだデータ主導型のワークフローを作成することができます。
@@ -151,7 +154,7 @@ Data Factory の概念について詳しくは、次の記事をご覧くださ�
 
 - [データセットとリンクされたサービス](concepts-datasets-linked-services.md)
 - [パイプラインとアクティビティ](concepts-pipelines-activities.md)
-- [統合ランタイム](concepts-integration-runtime.md)
+- [Integration Runtime](concepts-integration-runtime.md)
 
 ## <a name="supported-regions"></a>サポートされているリージョン:
 
@@ -165,4 +168,3 @@ Data Factory を利用できるリージョンが米国東部と米国東部 2 �
 
 ## <a name="next-steps"></a>次のステップ
 次のクイック スタートの手順 ([PowerShell](quickstart-create-data-factory-powershell.md)、[.NET](quickstart-create-data-factory-dot-net.md)、[Python](quickstart-create-data-factory-python.md)、[REST API](quickstart-create-data-factory-rest-api.md)、Azure Portal) に従って、データ ファクトリを作成する方法をご確認ください。 
-

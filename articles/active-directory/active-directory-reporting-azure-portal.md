@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure Active Directory レポート | Microsoft Docs"
 description: "Azure Active Directory レポートの概要を紹介します。"
 services: active-directory

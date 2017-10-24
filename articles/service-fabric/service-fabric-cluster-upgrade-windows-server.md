@@ -12,7 +12,7 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
 ms.openlocfilehash: f141c3d22275ff04d7161415e9c9f879d85dbc08
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7

@@ -13,16 +13,14 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 09/19/2017
 ms.author: owend
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 43aab8d52e854636f7ea2ff3aae50d7827735cc7
-ms.openlocfilehash: e77de4b9a74b528fa8a7ce86424fc14628b2cacc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/03/2017
-
+ms.openlocfilehash: 07151fdf79d3b06f3144fbebff9015645b1ed000
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="lesson-2-get-data"></a>レッスン 2: データを取得する
 
 [!INCLUDE[analysis-services-appliesto-aas-sql2017-later](../../../includes/analysis-services-appliesto-aas-sql2017-later.md)]
@@ -30,6 +28,9 @@ ms.lasthandoff: 06/03/2017
 このレッスンでは､ SSDT の Get Data を使用して､AdventureWorksDW2014 サンプルデータベースへの接続､データの選択とプレビュー､フィルター､モデル ワークスペースへのデータのインポートを行います｡  
   
 Get Data を使うことで､Azure SQL Database や Oracle､Sybase､OData Feed､Teradata､ファイルなどの広範囲のさまざまなソースからデータをインポートできます｡ Power Query M 数式を使ってデータの照会を行うこともできます｡
+
+> [!NOTE]
+> このチュートリアルのタスクと画像は、オンプレミス サーバー上の AdventureWorksDW2014 データベースへの接続を示しています。 Azure 上の AdventureWorksDW2014 データベースとは異なる場合があります。
   
 このレッスンの推定所要時間: **10 分**  
   
@@ -71,13 +72,19 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
 #### <a name="to-filter-the-table-data-before-importing"></a>インポートの前にテーブル データをフィルターする  
   
-1.  Query Editor で**[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDWQ2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます｡ 
+1.  Query Editor で**[DimCustomer]** テーブルを選択します｡ データソース (AdventureWorksDW2014 サンプル データベース) にある DimCustomer テーブルのビューが表示されます。 
   
 2.  Ctrl を押しながら､**SpanishEducation**､ **FrenchEducation**､**SpanishOccupation**､および **FrenchOccupation** をクリックし (複数項目の選択)､右クリックして､**[Remove Columns]** をクリックします｡ 
 
     ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-columns.png)
   
     これらの列の値はインターネット販売分析に関係ありませんから､インポートする必要はありません｡ 不要な列を排除することで､モデルは小さくなり､効率的になります｡  
+
+    > [!TIP]
+    > 間違えた場合は、**[適用したステップ]** でステップを削除することで取り消すことができます。   
+    
+    ![aas-lesson2-remove-columns](../tutorials/media/aas-lesson2-remove-step.png)
+
   
 4.  各テーブルで次の列を削除することによって残りのテーブルをフィルターします｡  
     
@@ -85,7 +92,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
     
       |分割|  
       |--------|  
-      |DateKey|  
+      |**DateKey**|  
       |**SpanishDayNameOfWeek**|  
       |**FrenchDayNameOfWeek**|  
       |**SpanishMonthName**|  
@@ -130,11 +137,7 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
   
     **FactInternetSales**
   
-      |分割|  
-      |------------------|  
-      |**OrderDateKey**|  
-      |**DueDateKey**|  
-      |**ShipDateKey**|   
+      列は削除されません。
   
 ## <a name="Import"></a>選択したテーブルと列のデータをインポートする  
 プレビューして､不要なデータを排除すると､必要となる残りのデータをインポートできます｡ ウィザードによって､テーブルのデータがインポートされます｡テーブル間にリレーションシップがある場合は､それらリレーションシップもインポートされます｡ 新しいテーブルと列がモデルに作成されます｡フィルターで除外したデータはインポートされません｡  
@@ -160,4 +163,3 @@ AdventureWorksDW2014 サンプル データベースのテー部には､モデ�
 
   
   
-

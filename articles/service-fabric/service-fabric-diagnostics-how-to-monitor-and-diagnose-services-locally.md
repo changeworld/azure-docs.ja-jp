@@ -1,4 +1,4 @@
----
+﻿---
 title: "Windows で Azure マイクロサービスをデバッグする | Microsoft Docs"
 description: "ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
 services: service-fabric

@@ -12,25 +12,17 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/30/2017
+ms.date: 10/10/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6efa2cca46c2d8e4c00150ff964f8af02397ef99
-ms.openlocfilehash: 9401ada519f600b0d2817f06a396e16607a24129
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/01/2017
-
-
+ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-<a id="get-started-with-service-bus-topics" class="xliff"></a>
-
-# Service Bus トピックの概要
+# <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
 [!INCLUDE [service-bus-selector-topics](../../includes/service-bus-selector-topics.md)]
-
-<a id="what-will-be-accomplished" class="xliff"></a>
-
-## 作業内容
 
 このチュートリアルに含まれる手順は次のとおりです。
 
@@ -40,26 +32,20 @@ ms.lasthandoff: 07/01/2017
 4. トピックにメッセージを送信するためのコンソール アプリケーションを作成する。
 5. サブスクリプションからメッセージを受信するためのコンソール アプリケーションを作成する。
 
-<a id="prerequisites" class="xliff"></a>
-
-## 前提条件
+## <a name="prerequisites"></a>前提条件
 
 1. [Visual Studio 2015 以降](http://www.visualstudio.com)。 このチュートリアルの例では、Visual Studio 2017 を使用します。
 2. Azure サブスクリプション。
 
 [!INCLUDE [create-account-note](../../includes/create-account-note.md)]
 
-<a id="1-create-a-namespace-using-the-azure-portal" class="xliff"></a>
-
-## 1.Azure ポータルを使用した名前空間の作成
+## <a name="1-create-a-namespace-using-the-azure-portal"></a>1.Azure ポータルを使用した名前空間の作成
 
 Service Bus メッセージング名前空間を既に作成している場合は、「[Azure Portal を使用したトピックの作成](#2-create-a-topic-using-the-azure-portal)」セクションに進んでください。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
-<a id="2-create-a-topic-using-the-azure-portal" class="xliff"></a>
-
-## 2.Azure Portal を使用したトピックの作成
+## <a name="2-create-a-topic-using-the-azure-portal"></a>2.Azure Portal を使用したトピックの作成
 
 1. [Azure Portal][azure-portal] にログオンします。
 2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[More Services (その他のサービス)]** をクリックします)。
@@ -74,9 +60,7 @@ Service Bus メッセージング名前空間を既に作成している場合�
     ![Select New][createtopic3]
 6. ブレードの下部にある **[作成]**をクリックします。
 
-<a id="3-create-a-subscription-to-the-topic" class="xliff"></a>
-
-## 3.トピックに対するサブスクリプションの作成
+## <a name="3-create-a-subscription-to-the-topic"></a>3.トピックに対するサブスクリプションの作成
 
 1. 手順 1. で作成した名前空間をポータル リソース ウィンドウでクリックし、手順 2. で作成したトピックの名前をクリックします。
 2. 概要ウィンドウの上部で、**[サブスクリプション]** の横にあるプラス記号をクリックし、このトピックにサブスクリプションを追加します。
@@ -85,30 +69,22 @@ Service Bus メッセージング名前空間を既に作成している場合�
 
 3. サブスクリプションの名前を入力します。 他のオプションは既定値のままにしてください。
 
-<a id="4-send-messages-to-the-topic" class="xliff"></a>
-
-## 4.トピックにメッセージを送信する
+## <a name="4-send-messages-to-the-topic"></a>4.トピックにメッセージを送信する
 
 トピックにメッセージを送信するために、Visual Studio を使用して C# コンソール アプリケーションを記述します。
 
-<a id="create-a-console-application" class="xliff"></a>
-
-### コンソール アプリケーションの作成
+### <a name="create-a-console-application"></a>コンソール アプリケーションの作成
 
 Visual Studio を起動し、新しい**コンソール アプリ (.NET Framework)** プロジェクトを作成します。
 
-<a id="add-the-service-bus-nuget-package" class="xliff"></a>
-
-### Service Bus NuGet パッケージの追加
+### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックし、**Microsoft Azure Service Bus** を検索して、**[WindowsAzure.ServiceBus]** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+2. **[参照]** タブをクリックし、**WindowsAzure.ServiceBus** を検索して、**[WindowsAzure.ServiceBus]** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
-<a id="write-some-code-to-send-a-message-to-the-topic" class="xliff"></a>
-
-### トピックにメッセージを送信するコードの記述
+### <a name="write-some-code-to-send-a-message-to-the-topic"></a>トピックにメッセージを送信するコードの記述
 
 1. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
    
@@ -170,9 +146,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
    
       ![メッセージ サイズ][topic-message]
 
-<a id="5-receive-messages-from-the-subscription" class="xliff"></a>
-
-## 5.サブスクリプションからメッセージを受信する
+## <a name="5-receive-messages-from-the-subscription"></a>5.サブスクリプションからメッセージを受信する
 
 1. 送信したメッセージを受信するには、前の手順で説明した送信側アプリケーションと同じように、新しいコンソール アプリケーションを作成し、Service Bus NuGet パッケージへの参照を追加します。
 2. Program.cs ファイルの先頭に次の `using` ステートメントを追加します。
@@ -180,7 +154,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
     ```csharp
     using Microsoft.ServiceBus.Messaging;
     ```
-3. `Main` メソッドに次のコードを追加します。 名前空間の作成時に取得した接続文字列を `connectionString` 変数に設定し、トピックの作成時に使用した名前を `topicName` に設定します。
+3. `Main` メソッドに次のコードを追加します。 名前空間の作成時に取得した接続文字列を `connectionString` 変数に設定し、トピックの作成時に使用した名前を `topicName` に設定します。 また、`<your subscription name>` は、手順 3 で作成したサブスクリプションの名前に置き換えてください。 
    
     ```csharp
     var connectionString = "<your connection string>";
@@ -233,9 +207,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
 
 お疲れさまでした。 以上、トピックとサブスクリプションを作成してメッセージを送信し、そのメッセージを受信する方法について説明しました。
 
-<a id="next-steps" class="xliff"></a>
-
-## 次のステップ
+## <a name="next-steps"></a>次のステップ
 
 Service Bus メッセージングのさらに高度な機能を紹介する[サンプルが含まれる GitHub リポジトリ](https://github.com/Azure/azure-service-bus/tree/master/samples)を参照してください。
 
@@ -250,4 +222,3 @@ Service Bus メッセージングのさらに高度な機能を紹介する[サ�
 [createtopic4]: ./media/service-bus-dotnet-how-to-use-topics-subscriptions/create-topic4.png
 [github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
 [azure-portal]: https://portal.azure.com
-

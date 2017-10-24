@@ -7,7 +7,7 @@ editor: spelluru
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/13/2017
 ms.author: jingwang
 ms.openlocfilehash: 394085a69331c5f19284f65b5375b84c6d0c6f46
 ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
@@ -65,6 +65,7 @@ Azure Storage へのグローバル アクセスが可能なデータ ファク�
             "connectionString": {
                 "type": "SecureString",
                 "value": "DefaultEndpointsProtocol=https;AccountName=<accountname>;AccountKey=<accountkey>"
+            }
         },
         "connectVia": {
             "referenceName": "<name of Integration Runtime>",

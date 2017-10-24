@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure DNS へのドメインの委任 | Microsoft Docs"
 description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
 services: dns

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Hadoop の高可用性 - Azure HDInsight | Microsoft Docs"
 description: "HDInsight クラスターで、追加のヘッド ノードを使用することで、信頼性と可用性を改善する方法について説明します。 その結果が Ambari や Hive などの Hadoop サービスに与える影響、SSH を使用して各ヘッド ノードに個別に接続する方法についても説明します。"
 services: hdinsight

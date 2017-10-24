@@ -14,13 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2016
 ms.author: richcar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: dcda8b30adde930ab373a087d6955b900365c4cc
-ms.openlocfilehash: 26c9420c9b8ba1aff6b016c01b8ed51853c91506
-ms.contentlocale: ja-jp
-ms.lasthandoff: 12/08/2016
-
-
+ms.openlocfilehash: 72b724d5cf6787f8d6afc73fb37f4944cbae78a3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="expressroute-for-cloud-solution-providers-csp"></a>クラウド ソリューション プロバイダー (CSP) 向けの ExpressRoute
 Microsoft では、新たな開発投資を行わずに顧客向けの新しいサービスやソリューションを迅速にプロビジョニングできる、従来のリセラーおよび代理店 (CSP) 向けの超大規模サービスを提供しています。 このような新しいサービスをクラウド ソリューション プロバイダー (CSP) が直接管理できるようにするため、Microsoft では、CSP が顧客に代わって Microsoft Azure のリソースを管理するために利用できるプログラムや API を用意しています。 ExpressRoute は、そのようなリソースの 1 つです。 ExpressRoute を利用することで、CSP は既存の顧客リソースを Azure サービスに接続できます。 ExpressRoute とは、Azure のサービスにリンクする高速プライベート通信です。 
@@ -136,8 +134,6 @@ Connect-To モデルと Connect-Through モデルのどちらが使用されて�
 
 詳細については、以下のリンクを参照してください。
 
-[マイクロソフト クラウド ソリューション プロバイダー プログラム](https://partner.microsoft.com/en-US/Solutions/cloud-reseller-overview)。  
+[クラウド ソリューション プロバイダー プログラムにおける Azure](https://docs.microsoft.com/azure/cloud-solution-provider)。  
 [クラウド ソリューション プロバイダーとしての取引の準備](https://partner.microsoft.com/en-us/solutions/cloud-reseller-pre-launch)。  
 [マイクロソフト クラウド ソリューション プロバイダー リソース](https://partner.microsoft.com/en-us/solutions/cloud-reseller-resources)。
-
-

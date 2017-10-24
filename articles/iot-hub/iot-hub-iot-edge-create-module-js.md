@@ -11,11 +11,11 @@ ms.devlang: js
 ms.topic: article
 ms.date: 06/28/2017
 ms.author: sushi
-ms.openlocfilehash: ba466f47e157d805600c41fa3d84ed5a0363969c
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: e23c4aa7bb3eb4fab18d5a13cbad28e07c18d8f2
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-an-azure-iot-edge-module-with-nodejs"></a>Azure IoT Edge モジュールを Node.js で作成する
 
@@ -121,7 +121,7 @@ Azure IoT Edge モジュールは、そのジョブが入力の受信、処理�
 
 出力も入力と同じように、ハードウェアの動作 (LED の点滅など) のトリガー、他のモジュールへのメッセージ、その他 (コンソールへの出力など) があります。
 
-モジュールは、`message` オブジェクトを使用して相互に通信します。 `message` の **Content** は、あらゆる種類のデータを表現することができるバイト配列です。 **Properties** も `message` で使用することができます。これは単純な文字列と文字列のマッピングです。 **Properties** は、HTTP 要求のヘッダーまたはファイルのメタデータと考えることができます。
+モジュールは、`message` オブジェクトを使用して相互に通信します。 `message` の **Content** は、あらゆる種類のデータを表現することができるバイト配列です。 **Properties** も `message` で使用することができます。これは単純な文字列と文字列のマッピングです。 **Properties** は、HTTPS 要求のヘッダーまたはファイルのメタデータと考えることができます。
 
 Azure IoT Edge モジュールを JS で開発するためには、必要なメソッドである `receive()` を実装する新しいモジュール オブジェクトを作成する必要があります。 この時点で、省略可能なメソッド (`create()`、`start()`、または`destroy()`) の実装を選択することもできます。 次のコード スニペットは、JS モジュール オブジェクトのスキャフォールディングを示しています。
 

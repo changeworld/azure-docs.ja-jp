@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 06/05/2017
 ms.author: carlrab
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 524804c972ee3a5e97ebc756628dbf7ef5ab720d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 308bf9dcde3a6c586e316c02cd261da8ed5b4bcb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Azure SQL Database 接続アーキテクチャ 
 
@@ -101,7 +100,7 @@ Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変�
 - 接続ポリシーを**プロキシ**に設定すると、すべてのネットワーク パケットが Azure SQL Database ゲートウェイ経由で送信されます。 この設定の場合、Azure SQL Database ゲートウェイ IP のみに送信を許可する必要があります。 **プロキシ**の設定を利用すると、**リダイレクト**の設定より待ち時間が長くなります。 
 - 接続ポリシーで**リダイレクト**を設定すると、すべてのネットワーク パケットがミドルウェア プロキシに直接送信されます。 この設定の場合、複数の IP への送信を許可する必要があります。 
 
-## <a name="script-to-change-connection-settings"></a>接続設定を変更するスクリプト
+## <a name="script-to-change-connection-settings-via-powershell"></a>接続の設定を変更する PowerShell のスクリプト 
 
 > [!IMPORTANT]
 > このスクリプトは [Azure PowerShell モジュール](/powershell/azure/install-azurerm-ps)を必要とします。
@@ -161,9 +160,34 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
+## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>接続の設定を変更する Azure CLI 2.0 のスクリプト 
+
+> [!IMPORTANT]
+> このスクリプトは [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest) を必要とします。
+>
+
+次の CLI スクリプトは、接続ポリシーの変更方法を示しています。
+
+<pre>
+ # Get SQL Server ID
+ sqlserverid=$(az sql server show -n <b>sql-server-name</b> -g <b>sql-server-group</b> --query 'id' -o tsv)
+
+# Set URI
+uri="https://management.azure.com/$sqlserverid/connectionPolicies/Default?api-version=2014-04-01-preview"
+
+# Get Access Token 
+accessToken=$(az account get-access-token --query 'accessToken' -o tsv)
+
+# Get current connection policy 
+curl -H "authorization: Bearer $accessToken" -X GET $uri
+
+#Update connection policy 
+curl -H "authorization: Bearer $accessToken" -H "Content-Type: application/json" -d '{"properties":{"connectionType":"Proxy"}}' -X PUT $uri
+
+</pre>
+
 ## <a name="next-steps"></a>次のステップ
 
 - Azure SQL Database サーバーの Azure SQL Database 接続ポリシーを変更する方法については、「[Create or Update Server Connection Policy using the REST API](https://msdn.microsoft.com/library/azure/mt604439.aspx)」 (REST API を利用してサーバーの接続ポリシーを作成または更新します) を参照してください。
 - ADO.NET 4.5 以降のバージョンを使用するクライアントの Azure SQL Database 接続動作については、「[ADO.NET 4.5 用の 1433 以外のポート](sql-database-develop-direct-route-ports-adonet-v12.md)」を参照してください。
 - 一般的なアプリケーション開発概要情報については、「[SQL Database アプリケーションの開発の概要](sql-database-develop-overview.md)」を参照してください。
-
