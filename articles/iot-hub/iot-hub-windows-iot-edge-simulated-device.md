@@ -12,45 +12,42 @@ ms.devlang: cpp
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 09/19/2017
 ms.author: andbuc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: e7eb2931993daf3f0aecbd4a43d27ebd5adc10b0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 0aa1836ee1445894022b95fefc2338ef53698240
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="use-azure-iot-edge-to-send-device-to-cloud-messages-with-a-simulated-device-windows"></a>Azure IoT Edge を使用して、シミュレートされたデバイスに D2C メッセージを送信する (Windows)
 
 [!INCLUDE [iot-hub-iot-edge-simulated-selector](../../includes/iot-hub-iot-edge-simulated-selector.md)]
 
 [!INCLUDE [iot-hub-iot-edge-install-build-windows](../../includes/iot-hub-iot-edge-install-build-windows.md)]
 
-## <a name="how-to-run-the-sample"></a>サンプルを実行する方法
+## <a name="run-the-sample"></a>サンプルの実行
 
 **build.cmd** スクリプトは、**iot-edge** リポジトリのローカル コピーの **build** フォルダーに出力を生成します。 この出力には、このサンプルで使用する 4 つの IoT Edge モジュールが含まれています。
 
-ビルド スクリプトにより、次のファイルとフォルダーが配置されます。
+ビルド スクリプトによって以下のファイルが作成されます。
 
 * **logger.dll** が **build\\modules\\logger\\Debug** フォルダーに配置されます。
 * **iothub.dll** が **build\\modules\\iothub\\Debug** フォルダーに配置されます。
 * **identity\_map.dll** が **build\\modules\\identitymap\\Debug** フォルダーに配置されます。
 * **simulated\_device.dll** が **build\\modules\\simulated\_device\\Debug** フォルダーに配置されます。
 
-次の JSON 設定ファイルに示されているように、**モジュール パス**の値には、これらのパスを使用します。
+simulated\_device\_cloud\_upload\_win JSON 設定ファイルに示されているように、**モジュール パス**値にこれらのパスを使用します。
 
-simulated\_device\_cloud\_upload\_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取ります。 次のサンプル JSON ファイルは SDK リポジトリの **samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_sample\_win.json** にあります。 既定以外の場所に IoT Edge モジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、この構成ファイルはそのままで動作します。
+simulated\_device\_cloud\_upload サンプル プロセスは、コマンド ラインの引数として JSON 構成ファイルへのパスを使用します。 次のサンプル JSON ファイルは、SDK リポジトリの **samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_win.json** にあります。 既定以外の場所に IoT Edge モジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、この構成ファイルはそのままで動作します。
 
 > [!NOTE]
 > モジュール パスは、simulated\_device\_cloud\_upload\_sample.exe が配置されているディレクトリに対して相対的です。 サンプルの JSON 構成ファイルは、既定で現在の作業ディレクトリの 'deviceCloudUploadGatewaylog.log' に書き込みます。
 
-テキスト エディターで、**iot-edge** レポジトリのローカル コピーの **samples\\simulated\_device\_cloud\_upload\_sample\\src\\simulated\_device\_cloud\_upload\_win.json** ファイルを開きます。 このファイルは、サンプル ゲートウェイの IoT Edge モジュールを構成します。
+テキスト エディターで、**iot-edge** リポジトリのローカル コピーにあるファイル **samples\\simulated\_device\_cloud\_upload\\src\\simulated\_device\_cloud\_upload\_win.json** を開きます。 このファイルは、サンプル ゲートウェイの IoT Edge モジュールを構成します。
 
 * **IoTHub** モジュールは、IoT Hub に接続します。 データを IoT Hub に送信するようにモジュールを構成します。 具体的には、**IoTHubName** 値を実際の IoT Hub の名前に設定し、**IoTHubSuffix** 値を **azure-devices.net** に設定します。 **Transport** の値を **HTTP**、**AMQP**、または **MQTT** のいずれかに設定します。 現在、すべてのデバイス メッセージで 1 つの TCP 接続を共有するのは **HTTP** のみです。 値を **AMQP** または **MQTT** に設定すると、ゲートウェイは各デバイスで IoT Hub に対する TCP 接続を別個に維持します。
-* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT Hub のデバイス ID にマップします。 **deviceId** 値が IoT Hub に追加した 2 つのデバイスの ID と一致し、**deviceKey** 値に 2 つのデバイスのキーが含まれていることを確認します。
+* **mapping** モジュールは、シミュレートされたデバイスの MAC アドレスを IoT ハブのデバイス ID にマップします。 **deviceId** 値を、IoT ハブに追加した 2 つのデバイスの ID に設定します。 **deviceKey** 値を 2 つのデバイスのキーに設定します。
 * **BLE1** モジュールと **BLE2** モジュールは、シミュレートされたデバイスです。 モジュールの MAC アドレスが **mapping** モジュールの MAC アドレスとどのように一致しているかに注意してください。
 * **Logger** モジュールは、ゲートウェイのアクティビティをファイルに記録します。
 * **モジュール パス**は、simulated\_device\_cloud\_upload\_sample.exe が配置されているディレクトリに対して相対的です。
@@ -104,7 +101,8 @@ simulated\_device\_cloud\_upload\_sample プロセスは、コマンド ライ�
           }
           },
           "args": {
-            "macAddress": "01:01:01:01:01:01"
+            "macAddress": "01:01:01:01:01:01",
+            "messagePeriod" : 2000
           }
         },
       {
@@ -116,7 +114,8 @@ simulated\_device\_cloud\_upload\_sample プロセスは、コマンド ライ�
           }
           },
           "args": {
-            "macAddress": "02:02:02:02:02:02"
+            "macAddress": "02:02:02:02:02:02",
+            "messagePeriod" : 2000
           }
         },
       {

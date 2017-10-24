@@ -11,14 +11,12 @@ ms.workload: na
 ms.date: 08/22/2017
 ms.author: routlaw
 ms.custom: mvc
+ms.openlocfilehash: daa202ddf0dc934c491ead3951ddc4fdc3dd819c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 720d4c592256389f9494cb1b2be56393f4e9f03f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-and-jenkins"></a>Azure と Jenkins
 
 [Jenkins](https://jenkins.io/) は、ソフトウェア プロジェクトの継続的インテグレーションと配信 (CI/CD) を設定する際に使用される、広く普及しているオープンソースのオートメーション サーバーです。 Azure で Jenkins デプロイをホストしたり、Azure リソースを使用して、既存の Jenkins 構成を拡張したりできます。 Azure へのアプリケーションの CI/CD を簡素化する Jenkins プラグインも使用できます。
@@ -46,11 +44,10 @@ Azure Jenkins のデプロイは、[Log Analytics](/azure/log-analytics/log-anal
 
 ## <a name="deploy-your-code-into-azure-services"></a>Azure サービスにコードをデプロイする
 
-Jenkins プラグインを使用して、アプリケーションを Jenkins CI/CD パイプラインの一部として Azure にデプロイします。 [Azure App Service](/azure/app-service-web/) および [Azure Container Service](/azure/container-service/kubernetes/) にデプロイすることで、基盤となるインフラストラクチャを管理することなく、アプリケーションの更新プログラムをステージング、テスト、およびリリースできます。
+Jenkins プラグインを使用して、アプリケーションを Jenkins CI/CD パイプラインの一部として Azure にデプロイします。 [Azure App Service](/azure/app-service/) および [Azure Container Service](/azure/container-service/kubernetes/) にデプロイすることで、基盤となるインフラストラクチャを管理することなく、アプリケーションの更新プログラムをステージング、テスト、およびリリースできます。
 
  次のサービスおよび環境にデプロイするためのプラグインが用意されています。
 
-- [Linux で動作する Azure Web アプリ](/azure/app-service-web/app-service-linux-intro)。 作業を開始するには、こちらの[チュートリアル](java-deploy-webapp-tutorial.md)を参照してください。
+- [Linux で動作する Azure Web アプリ](/azure/app-service/containers/app-service-linux-intro)。 作業を開始するには、こちらの[チュートリアル](java-deploy-webapp-tutorial.md)を参照してください。
 - [Azure Web アプリ](/azure/app-service/app-service-web-overview)。 作業を開始するには、こちらの[操作方法](deploy-Jenkins-app-service-plugin.md)を参照してください。
-
 

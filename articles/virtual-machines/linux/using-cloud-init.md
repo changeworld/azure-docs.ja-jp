@@ -4,7 +4,7 @@ description: "Azure CLI 2.0 による作成時に cloud-init を使用して Lin
 services: virtual-machines-linux
 documentationcenter: 
 author: iainfoulds
-manager: timlt
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: 195c22cd-4629-4582-9ee3-9749493f1d72
@@ -13,216 +13,171 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 05/11/2017
+ms.date: 10/03/2017
 ms.author: iainfou
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 97fa1d1d4dd81b055d5d3a10b6d812eaa9b86214
-ms.openlocfilehash: a7a6daad34525683579e25b9591ed28f2bf29c04
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/11/2017
-
-
+ms.openlocfilehash: 5559f258f5c29b07edb5e61be4755d67173019e0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="use-cloud-init-to-customize-a-linux-vm-during-creation"></a>cloud-init を利用し、作成時に Linux VM をカスタマイズする
-この記事では、Azure CLI 2.0 を使用して、ホスト名の設定、インストールされているパッケージの更新、ユーザー アカウントの管理を行う cloud-init スクリプトを作成する方法について説明します。 cloud-init スクリプトは、Azure CLI から仮想マシン (VM) を作成するときに呼び出します。 アプリケーションのインストール、構成ファイルの記述、および Key Vault からのキーの挿入の詳細な概要については、[このチュートリアル](tutorial-automate-vm-deployment.md)を参照してください。 これらの手順は、[Azure CLI 1.0](using-cloud-init-nodejs.md) を使用して実行することもできます。
+# <a name="use-cloud-init-to-customize-a-linux-vm-in-azure"></a>Azure で cloud-init を使用して Linux VM をカスタマイズする
+この記事では、Azure の仮想マシン (VM) で [cloud-init](https://cloudinit.readthedocs.io) スクリプトを使用して、ホスト名の設定、パッケージの更新、ユーザー アカウントの管理を行う方法について説明します。 これらの cloud-init スクリプトは、Azure CLI 2.0 で VM を作成するときに、起動時に実行されます。 アプリケーションのインストール、構成ファイルの記述、Key Vault からのキーの挿入方法の詳細な概要については、[このチュートリアル](tutorial-automate-vm-deployment.md)をご覧ください。 これらの手順は、[Azure CLI 1.0](using-cloud-init-nodejs.md) を使用して実行することもできます。
 
-## <a name="quick-commands"></a>クイック コマンド
-ホスト名の設定、すべてのパッケージの更新、および Linux への sudo ユーザーの追加を実行する cloud-init.txt スクリプトを作成します。
 
-```yaml
-#cloud-config
-hostname: myVMhostname
-apt_upgrade: true
-users:
-  - name: myNewAdminUser
-    groups: sudo
-    shell: /bin/bash
-    sudo: ['ALL=(ALL) NOPASSWD:ALL']
-    ssh-authorized-keys:
-      - ssh-rsa AAAAB3<snip>==myAdminUser@myVM
-```
+## <a name="cloud-init-overview"></a>cloud-init の概要
+[cloud-Init](https://cloudinit.readthedocs.io) は、Linux VM を初回起動時にカスタマイズするために広く使用されているアプローチです。 cloud-init を使って、パッケージをインストールしてファイルを書き込んだり、ユーザーとセキュリティを構成したりすることができます。 初回起動処理中に cloud-init が実行されるので、構成を適用するために追加の手順や必要なエージェントはありません。
 
-[az group create](/cli/azure/group#create)を使用して VM を起動するリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを作成します。
+cloud-init はディストリビューション全体でも有効です。 たとえば、パッケージをインストールするときに **apt-get install** や **yum install** は使用しません。 代わりに、cloud-init ではインストールするパッケージの一覧をユーザーが定義できます。 cloud-init によって、選択したディストリビューションに対してネイティブのパッケージ管理ツールが自動的に使用されます。
 
-```azurecli
-az group create --name myResourceGroup --location eastus
-```
+Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。 次の表は、Azure プラットフォーム イメージでの最新の cloud-init の可用性の概要を示しています。
 
-cloud-init を使用して起動時に `--custom-data` パラメーターを使用してこの VM を構成するように、[az vm create](/cli/azure/vm#create) を使用して Linux VM を作成します。
-
-```azurecli
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVM \
-    --image UbuntuLTS \
-    --admin-username azureuser \
-    --generate-ssh-keys \
-    --custom-data cloud-init.txt
-```
-
-## <a name="detailed-walkthrough"></a>詳細なチュートリアル
-新しい Linux VM の起動時には、何もカスタマイズされていない (ニーズに合わせてカスタマイズ可能な) 標準 Linux VM が起動されます。 [cloud-init](https://cloudinit.readthedocs.org) は、初回起動時にこの Linux VM にスクリプトまたは構成設定を挿入する一般的な方法です。
-
-Azure では、複数の方法でデプロイ時または起動時に Linux VM を変更できます。
-
-* cloud-init を使用してスクリプトを挿入する。
-* Azure [VMAccess 拡張機能](using-vmaccess-extension.md)を使用してスクリプトを挿入する。
-* cloud-init を使用した Azure テンプレート。
-* [CustomScriptExtention](extensions-customscript.md)を使用した Azure テンプレート。
-
-次の方法で起動後いつでもスクリプトを挿入できます。
-
-* SSH でコマンドを直接実行する
-* Azure [VMAccess 拡張機能](using-vmaccess-extension.md)を使用して、強制的に、または Azure テンプレートにスクリプトを挿入する
-* Ansible、Salt、Chef、Puppet などの構成管理ツール
-
-> [!NOTE]
-> VMAccess 拡張機能は、SSH と同じ方法でスクリプトをルートとして実行します。 ただし、VM 拡張機能を使用すると、シナリオに応じて使用可能な Azure 提供の各種機能を利用できます。
-
-## <a name="cloud-init-availability-on-azure-vm-quick-create-image-aliases"></a>Azure VM の各簡易作成イメージ エイリアスで cloud-init を使用できるかどうかを次に示します。
-| エイリアス | 発行元 | プラン | SKU | バージョン | cloud-init |
+| エイリアス | 発行元 | プラン | SKU | バージョン |
 |:--- |:--- |:--- |:--- |:--- |:--- |
-| CentOS |OpenLogic |Centos |7.2 |最新 |× |
-| CoreOS |CoreOS |CoreOS |安定版 |最新 |○ |
-| Debian |credativ |Debian |8 |最新 |× |
-| openSUSE |SUSE |openSUSE |13.2 |最新 |× |
-| RHEL |Redhat |RHEL |7.2 |最新 |× |
-| UbuntuLTS |Canonical |UbuntuServer |14.04.4-LTS |最新 |○ |
+| UbuntuLTS |Canonical |UbuntuServer |16.04 LTS |最新 |
+| UbuntuLTS |Canonical |UbuntuServer |14.04.5-LTS |最新 |
+| CoreOS |CoreOS |CoreOS |安定版 |最新 |
 
-Microsoft ではパートナーと協力して、パートナーから Azure に提供されたイメージに cloud-init を含めて、使用できるようにしています。
 
-## <a name="add-a-cloud-init-script-to-the-vm-creation-with-the-azure-cli"></a>Azure CLI で cloud-init スクリプトを VM の作成に追加する
-Azure で VM を作成するときに cloud-init スクリプトを起動するには、Azure CLI の `--custom-data` スイッチを使用して cloud-init ファイルを指定します。
+## <a name="set-the-hostname-with-cloud-init"></a>cloud-init でホスト名を設定する
+cloud-init ファイルは [YAML](http://www.yaml.org) で記述されています。 Azure で [az vm create](/cli/azure/vm#create) を使用して VM を作成するときに、cloud-init スクリプトを実行するには、`--custom-data` スイッチで cloud-init ファイルを指定します。 cloud-init ファイルで構成できるものの例をいくつか見てみましょう。 一般的なシナリオでは、VM のホスト名を設定します。 既定では、ホスト名は VM 名と同じです。 
 
-[az group create](/cli/azure/group#create)を使用して VM を起動するリソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを作成します。
+最初に、[az group create](/cli/azure/group#create) を使用して、リソース グループを作成します。 次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
 ```
 
-cloud-init を使用して起動時にこの VM を構成するように、[az vm create](/cli/azure/vm#create) を使用して Linux VM を作成します。
+現在のシェルで、*cloud_init_hostname.txt* というファイルを作成し、次の構成を貼り付けます。 たとえば、ローカル コンピューター上にない Cloud Shell でファイルを作成します。 任意のエディターを使用することができます。 Cloud Shell で `sensible-editor cloud_init_hostname.txt` を入力し、ファイルを作成して使用可能なエディターの一覧を確認します。 cloud-init ファイル全体 (特に最初の行) が正しくコピーされたことを確認してください。
 
-```azurecli
-az vm create \
-    --resource-group myResourceGroup \
-    --name myVM \
-    --image UbuntuLTS \
-    --admin-username azureuser \
-    --generate-ssh-keys \
-    --custom-data cloud-init.txt
-```
-
-## <a name="create-a-cloud-init-script-to-set-the-hostname-of-a-linux-vm"></a>Linux VM のホスト名を設定する cloud-init スクリプトを作成する
-Linux VM の最も単純で最も重要な設定にホスト名があります。 このスクリプトで cloud-init を使用し、ホスト名を簡単に設定できます。  
-
-### <a name="example-cloud-init-script-named-cloudconfighostnametxt"></a>`cloud_config_hostname.txt`という名前の cloud-init スクリプトの例
 ```yaml
 #cloud-config
-hostname: myservername
+hostname: myhostname
 ```
 
-VM の初回起動時に、この cloud-init スクリプトによってホスト名が *myservername* に設定されます。 cloud-init を使用して起動時にこの VM を構成するように、[az vm create](/cli/azure/vm#create) を使用して Linux VM を作成します。
+ここで、[az vm create](/cli/azure/vm#create) で VM を作成し、次のように `--custom-data cloud_init_hostname.txt` で cloud-init ファイルを指定します。
 
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
-    --name myVM \
+    --name myVMHostname \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
-    --custom-data cloud-init.txt
+    --custom-data cloud_init_hostname.txt
 ```
 
-ログインし、新しい VM のホスト名を確認します。
+作成されると、Azure CLI は VM に関する情報を表示します。 `publicIpAddress` を使用して VM に SSH 接続します。 実際のアドレスを次のように入力します。
 
 ```bash
-ssh myVM
+ssh azureuser@publicIpAddress
+```
+
+VM 名を表示するには、`hostname` コマンドを次のように使用します。
+
+```bash
 hostname
-myservername
 ```
 
-## <a name="create-a-cloud-init-script"></a>cloud-init スクリプトを作成する
-セキュリティ上の理由から、最初の起動時に Ubuntu VM を更新する必要があるとします。 Linux ディストリビューションによっては、cloud-init を利用し、次のスクリプトで更新できます。
+VM は、次の出力の例で示すように、cloud-init ファイルで設定された値としてホスト名をレポートします。
 
-### <a name="example-cloud-init-script-cloudconfigaptupgradetxt-for-the-debian-family"></a>Debian 製品用の cloud-init スクリプト `cloud_config_apt_upgrade.txt` の例
+```bash
+myhostname
+```
+
+## <a name="update-a-vm-with-cloud-init"></a>cloud-init で VM を更新する
+セキュリティのために、初回起動時に最新の更新プログラムを適用するように VM を構成することが必要な場合があります。 cloud-init はさまざまな Linux ディストリビューションで動作するため、パッケージ マネージャーに `apt` または `yum` を指定する必要はありません。 代わりに、`package_upgrade` を定義し、cloud-init プロセスで、使用中のディストリビューションに適したメカニズムを判断します。 このワークフローでは、異なるディストリビューションで同じ cloud-init スクリプトを使用することができます。
+
+実行中のアップグレード プロセスを確認するには、*cloud_init_upgrade.txt* という名前の cloud-init ファイルを作成し、次の構成を貼り付けます。
+
 ```yaml
 #cloud-config
-apt_upgrade: true
+package_upgrade: true
 ```
 
-Linux の起動後、**apt-get** によりすべてのインストール済みパッケージが更新されます。 cloud-init を使用して起動時にこの VM を構成するように、[az vm create](/cli/azure/vm#create) を使用して Linux VM を作成します。
+ここで、[az vm create](/cli/azure/vm#create) で VM を作成し、次のように `--custom-data cloud_init_upgrade.txt` で cloud-init ファイルを指定します。
 
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
-    --name myVM \
+    --name myVMUpgrade \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
-    --custom-data cloud_config_apt_upgrade.txt
+    --custom-data cloud_init_upgrade.txt
 ```
 
-ログインし、すべてのパッケージが更新されていることを確認します。
+前述のコマンドからの出力に示すように、VM のパブリック IP アドレスに SSH 接続します。 実際のパブリック IP アドレスを次のように入力します。
 
 ```bash
-ssh myUbuntuVM
+ssh azureuser@publicIpAddress
+```
+
+パッケージ管理ツールを実行し、更新プログラムを確認します。 次の例では、Ubuntu VM で `apt-get` を使用します。
+
+```bash
 sudo apt-get upgrade
+```
+
+cloud-init によって起動時に更新プログラムが確認され、インストールされるため、次の出力例に示すように、適用する更新プログラムはありません。
+
+```bash
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
 Calculating upgrade... Done
-The following packages have been kept back:
-  linux-generic linux-headers-generic linux-image-generic
 0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
 ```
 
-## <a name="create-a-cloud-init-script-to-add-a-user-to-linux"></a>ユーザーを Linux に追加する cloud-init スクリプトを作成する
-新しい Linux VM での最初のタスクの 1 つとして、自分用に、または *root* の使用を避けるためにユーザーを追加することがあります。 セキュリティおよび使いやすさの面では SSH キーを使用するのが最も一般的であるため、次の cloud-init スクリプトを使用してこのキーを *~/.ssh/authorized_keys* ファイルに追加します。
+## <a name="add-a-user-to-a-vm-with-cloud-init"></a>cloud-init で VM にユーザーを追加する
+新しい Linux VM での最初のタスクの 1 つとして、*root* の使用を避けるために自分用のユーザーを追加することがあります。 SSH キーは、セキュリティと使いやすさのためのベスト プラクティスです。 キーは、この cloud-init スクリプトで *~/.ssh/authorized_keys* ファイルに追加されます。
 
-### <a name="example-cloud-init-script-cloudconfigadduserstxt-for-debian-family"></a>Debian 製品用の cloud-init スクリプト `cloud_config_add_users.txt` の例
+Linux VM にユーザーを追加するには、*cloud_init_upgrade.txt* という名前の cloud-init ファイルを作成し、次の構成を貼り付けます。 *ssh-authorized-keys* に自分の公開キー (*~/.ssh/id_rsa.pub* の内容など) を指定します。
+
 ```yaml
 #cloud-config
 users:
-  - name: myCloudInitAddedAdminUser
+  - name: myadminuser
     groups: sudo
     shell: /bin/bash
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
     ssh-authorized-keys:
-      - ssh-rsa AAAAB3<snip>==myAdminUser@myUbuntuVM
+      - ssh-rsa AAAAB3<snip>
 ```
 
-Linux の起動後、リストに含まれるすべてのユーザーが作成され、sudo グループに追加されます。 cloud-init を使用して起動時にこの VM を構成するように、[az vm create](/cli/azure/vm#create) を使用して Linux VM を作成します。
+ここで、[az vm create](/cli/azure/vm#create) で VM を作成し、次のように `--custom-data cloud_init_add_user.txt` で cloud-init ファイルを指定します。
 
 ```azurecli
 az vm create \
     --resource-group myResourceGroup \
-    --name myVM \
+    --name myVMUser \
     --image UbuntuLTS \
     --admin-username azureuser \
     --generate-ssh-keys \
-    --custom-data cloud_config_add_users.txt
+    --custom-data cloud_init_add_user.txt
 ```
 
-ログインし、新しく作成したユーザーを確認します。
+前述のコマンドからの出力に示すように、VM のパブリック IP アドレスに SSH 接続します。 実際のパブリック IP アドレスを次のように入力します。
 
 ```bash
-ssh myVM
+ssh myadminuser@publicIpAddress
+```
+
+ユーザーが VM および指定されたグループに追加されたことを確認するには、*/etc/group* ファイルの内容を次のように表示します。
+
+```bash
 cat /etc/group
 ```
 
-出力
+次の出力例は、*cloud_init_add_user.txt* ファイルからのユーザーが VM と適切なグループに追加されたことを示しています。
 
 ```bash
 root:x:0:
 <snip />
-sudo:x:27:myCloudInitAddedAdminUser
+sudo:x:27:myadminuser
 <snip />
-myCloudInitAddedAdminUser:x:1000:
+myadminuser:x:1000:
 ```
 
 ## <a name="next-steps"></a>次のステップ
-cloud-init は、起動時に Linux VM を変更する標準的な方法の 1 つになっています。 Azure では、Linux VM を起動時または実行中に変更できる VM 拡張機能も使用可能です。 たとえば、Azure VMAccess 拡張機能を使用すると、VM の実行中に SSH またはユーザー情報をリセットすることができます。 cloud-init を使用する場合、パスワードをリセットするには再起動の必要があります。
-
-[仮想マシンの拡張機能とその機能について](extensions-features.md)
-
-[VMAccess 拡張機能を使用して、Azure Linux VM 上のユーザー、SSH を管理し、ディスクをチェックまたは修復する](using-vmaccess-extension.md)
+cloud-init は、起動時に Linux VM を変更する標準的な方法の 1 つです。 Azure では、VM 拡張機能を使用して、起動時または実行中に Linux VM を変更することもできます。 たとえば、Azure VM 拡張機能を使用して、初回起動時だけでなく実行中の VM でスクリプトを実行できます。 VM 拡張機能について詳しくは、[VM 拡張機能と機能](extensions-features.md)に関する記事をご覧ください。また、拡張機能を使用する方法の例については、[VMAccess 拡張機能を使用した、Azure Linux VM 上のユーザーの管理、SSH、ディスクのチェックまたは修復](using-vmaccess-extension.md)に関する記事をご覧ください。

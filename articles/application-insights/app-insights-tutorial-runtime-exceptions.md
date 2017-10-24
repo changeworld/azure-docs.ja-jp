@@ -3,21 +3,19 @@ title: "Azure Application Insights を使ってランタイムの例外を診断
 description: "Azure Application Insights を使用して、お使いのアプリケーションのランタイムの例外を見つけて診断するチュートリアルです。"
 services: application-insights
 keywords: 
-author: bwren
-ms.author: bwren
+author: mrbullwinkle
+ms.author: mbullwin
 ms.date: 09/19/2017
 ms.service: application-insights
 ms.custom: mvc
 ms.topic: tutorial
 manager: carmonm
+ms.openlocfilehash: 11e0f2f19acc843f1c558b5d0cfe84291035a6a5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 58c69e9c75f3a97c04b2c5b2e3b9acfc7065c658
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="find-and-diagnose-run-time-exceptions-with-azure-application-insights"></a>Azure Application Insights でランタイムの例外を見つけて診断する
 
 Azure Application Insights は、お使いのアプリケーションからテレメトリを収集し、ランタイムの例外を特定して診断するのに役立てます。  このチュートリアルでは、アプリケーションを使用してこのプロセスを見ていきます。  学習内容は次のとおりです。
@@ -39,7 +37,8 @@ Azure Application Insights は、お使いのアプリケーションからテ�
     - ASP.NET および Web の開発
     - Azure の開発
 - [Visual Studio Snapshot Debugger](http://aka.ms/snapshotdebugger) をダウンロードしてインストールします。
-- .NET アプリケーションを Azure にデプロイして、[Application Insights SDK を有効に](app-insights-asp-net.md)します。 
+- [Visual Studio Snapshot Debugger](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-snapshot-debugger) を有効にします
+- .NET アプリケーションを Azure にデプロイし、[Application Insights SDK の有効化](app-insights-asp-net.md)を実行します。 
 - このチュートリアルでは、お使いのアプリケーションで例外の ID を追跡し、例外を生成する開発環境またはテスト環境でお使いのコードを変更します。 
 
 ## <a name="log-in-to-azure"></a>Azure へのログイン

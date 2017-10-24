@@ -14,15 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: bwren
+ms.openlocfilehash: 5b4b31b58c7a4bcb93277333502bc082da2062ed
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: b0c45ff8c1d4c9d35fbb3c8839b38a20df277055
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="send-data-to-log-analytics-with-the-http-data-collector-api"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信
+# <a name="send-data-to-log-analytics-with-the-http-data-collector-api-public-preview"></a>HTTP データ コレクター API を使用した Log Analytics へのデータの送信 (パブリック プレビュー)
 この記事では、HTTP データ コレクター API を使用して REST API クライアントから Log Analytics にデータを送信する方法を示します。  ここでは、スクリプトまたはアプリケーションによって収集されたデータの形式を設定して要求に含め、その要求を Log Analytics に承認させる方法を説明します。  PowerShell、C#、および Python の例を示します。
+
+> [!NOTE]
+> Log Analytics HTTP データ コレクター API は、パブリック プレビュー段階にあります。
 
 ## <a name="concepts"></a>概念
 REST API を呼び出すことができる任意のクライアントから、HTTP データ コレクター API を使用して Log Analytics にデータを送信できます。  これは、Azure または別のクラウドから管理データを収集する Azure Automation の Runbookや、Log Analytics を使用してデータを統合して分析するログ分析を使用する他の管理システムが考えられます。
@@ -325,7 +327,8 @@ namespace OIAPIExample
         {
             // Create a hash for the API signature
             var datestring = DateTime.UtcNow.ToString("r");
-            string stringToHash = "POST\n" + json.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
+            var jsonBytes = Encoding.UTF8.GetBytes(message);
+            string stringToHash = "POST\n" + jsonBytes.Length + "\napplication/json\n" + "x-ms-date:" + datestring + "\n/api/logs";
             string hashedString = BuildSignature(stringToHash, sharedKey);
             string signature = "SharedKey " + customerId + ":" + hashedString;
 
@@ -462,4 +465,3 @@ post_data(customer_id, shared_key, body, log_type)
 
 ## <a name="next-steps"></a>次のステップ
 - Log Analytics リポジトリから [Log Search API](log-analytics-log-search-api.md) を使用してデータを取得する
-

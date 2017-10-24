@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
 ms.openlocfilehash: f79e819b1547f81498ea213858faf3c75e374782
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="client-and-server-versioning-in-mobile-apps-and-mobile-services"></a>Mobile Apps と Mobile Services のクライアントとサーバーのバージョン管理
 Azure Mobile Services の最新版は Azure App Service の **Mobile Apps** 機能です。
@@ -79,7 +79,7 @@ POST https://service.azurewebsites.net/tables/TodoItem?ZUMO-API-VERSION=2.0.0
 ### <a name="mobile-services-server-sdks"></a>Mobile *Services* サーバー SDK
 | サーバー プラットフォーム | バージョン | 同意済みのバージョン ヘッダー |
 | --- | --- | --- |
-| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |* * バージョン ヘッダーなし * * |
+| .NET |[WindowsAzure.MobileServices.Backend.* バージョン 1.0.x](https://www.nuget.org/packages/WindowsAzure.MobileServices.Backend/) |**バージョン ヘッダーなし ** |
 | Node.js |(近日対応予定) |**バージョン ヘッダーなし** |
 
 <!-- TODO: add Node npm version -->

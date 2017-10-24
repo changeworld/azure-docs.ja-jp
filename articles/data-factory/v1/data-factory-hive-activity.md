@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
+ms.openlocfilehash: 88529344eee45150503b0d0e57c92f0cb4f07598
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 0b2d6580f30044b703acb3e3f53066a45f4f7b18
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Azure Data Factory での Hive アクティビティを使用したデータ変換 
 > [!div class="op_single_selector" title1="Transformation Activities"]
@@ -247,5 +246,4 @@ Data Factory パイプラインでこの Hive スクリプトを実行するに�
 * [Hadoop ストリーミング アクティビティ](data-factory-hadoop-streaming-activity.md)
 * [Spark プログラムを呼び出す](data-factory-spark.md)
 * [R スクリプトを呼び出す](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample)
-
 

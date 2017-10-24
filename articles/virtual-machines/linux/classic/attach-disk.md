@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/09/2017
 ms.author: iainfou
 ms.openlocfilehash: 017ba7197e11c2b222082833d5acabb9e542b762
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-attach-a-data-disk-to-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンに接続する方法
 > [!IMPORTANT] 
@@ -53,7 +53,7 @@ ms.lasthandoff: 07/11/2017
    
     または
    
-    b) `lsscsi` コマンドを使用してデバイスの ID を検索します。 `lsscsi` は、`yum install lsscsi` (Red Hat ベースのディストリビューション) または `apt-get install lsscsi` (Debian ベースのディストリビューション) のいずれかでインストールできます。 検索対象のディスクは、その *LUN* ( **論理ユニット番号**) で検索できます。 たとえば、ディスクに割り当てた *LUN* は、`azure vm disk list <virtual-machine>` から以下のように簡単に確認することができます。
+    b) `lsscsi` コマンドを使用してデバイス ID を調べます。`lsscsi` は、`yum install lsscsi` (Red Hat ベースのディストリビューション) または `apt-get install lsscsi` (Debian ベースのディストリビューション) のいずれかでインストールできます。 検索対象のディスクは、その *LUN* ( **論理ユニット番号**) で検索できます。 たとえば、ディスクに割り当てた *LUN* は、`azure vm disk list <virtual-machine>` から以下のように簡単に確認することができます。
 
     ```azurecli
     azure vm disk list myVM
@@ -89,7 +89,7 @@ ms.lasthandoff: 07/11/2017
     sudo fdisk /dev/sdc
     ```
 
-4. メッセージが表示されたら、入力 **n** パーティションを作成します。
+4. 表示されるプロンプトで「**n**」と入力すると、パーティションが作成されます。
 
     ![デバイスの作成](./media/attach-disk/fdisknewpartition.png)
 
@@ -174,7 +174,7 @@ ms.lasthandoff: 07/11/2017
     > [!NOTE]
     > `nofail` オプションを使用すると、ファイル システムが壊れているか、ブート時にディスクが存在しない場合でも VM が起動されるようになります。 このオプションを指定しない場合、「[Cannot SSH to Linux VM due to FSTAB errors (FSTAB エラーが原因で Linux VM に SSH 接続できない)](https://blogs.msdn.microsoft.com/linuxonazure/2016/07/21/cannot-ssh-to-linux-vm-after-adding-data-disk-to-etcfstab-and-rebooting/)」で説明されているような動作が発生します。
 
-    これで、ファイル システムが正しくマウントされるかどうかをテストできます。そのためには、ファイル システムをマウント解除してから、再度マウントします。つまり、 前の手順で作成したサンプルのマウント ポイント `/datadrive` を使用します。
+    これで、ファイル システムが正しくマウントされるかどうかをテストできます。そのためには、ファイル システムをマウント解除してから、もう一度マウントします。つまり、前の手順で作成したサンプルのマウント ポイント `/datadrive` を使用します。
 
     ```bash
     sudo umount /datadrive

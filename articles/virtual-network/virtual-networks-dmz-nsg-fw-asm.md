@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 02/01/2016
 ms.author: jonor;sivae
 ms.openlocfilehash: cc0e8a3fa749eb2e6f65ef92c2d3cb404cfc8bc0
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="example-2--build-a-dmz-to-protect-applications-with-a-firewall-and-nsgs"></a>例 2 - ファイアウォールと NSG から成る DMZ を構築してアプリケーションを保護する
 [セキュリティ境界のベスト プラクティス ページに戻る][HOME]
 
 この例では、ファイアウォールと 4 台の Windows Server、ネットワーク セキュリティ グループから成る DMZ を作成します。 また、各手順をより深く理解できるように、関連するコマンドを順に説明します。 さらに、「トラフィックに関するシナリオ」セクションでは、DMZ の防御層におけるトラフィックの進行過程を詳しく説明しています。 最後の「参照」セクションでは、さまざまなシナリオでテストおよび実験ができるように、この環境を構築するための完全なコードと手順を紹介します。 
 
-![NVA と NSG と受信 dmz に配置][1]
+![受信 DMZ + NVA および NSG][1]
 
 ## <a name="environment-description"></a>環境の説明
 この例で使用するサブスクリプションには、以下のものが含まれています。
@@ -94,7 +94,7 @@ ms.lasthandoff: 07/11/2017
 
 新しいルールを作成して名前を付けます ("WebTraffic" など)。 
 
-次のように移行先の NAT 規則アイコンが表示されます:![先 NAT アイコン][2]
+Destination NAT ルールのアイコンは次のように表示されます: ![Destination NAT アイコン][2]
 
 ルール自体は次のように表示されます。
 
@@ -151,7 +151,7 @@ ms.lasthandoff: 07/11/2017
 16. フロント エンド サブネットに送信ルールは存在しないので、この応答は許可され、インターネット ユーザーは要求した Web ページを受信します。
 
 #### <a name="allowed-rdp-to-backend"></a>(許可) バックエンドへの RDP
-1. インターネット上のサーバー管理者が BackEnd001.CloudApp.Net:xxxxx 上の AppVM01 に対する RDP セッションを要求します。ここで、xxxxx は AppVM01 に対する RDP のポート番号で、ランダムに割り当てられます (割り当てられたポートは、Azure ポータル上で、または PowerShell を使用して見つけることができます)。
+1. インターネット上のサーバー管理者が BackEnd001.CloudApp.Net:xxxxx 上の AppVM01 に対する RDP セッションを要求します。ここで、xxxxx は AppVM01 に対する RDP のポート番号で、ランダムに割り当てられます (割り当てられたポートは、Azure Portal 上で、または PowerShell を使用して見つけることができます)。
 2. ファイアウォールが待機するのは FrontEnd001.CloudApp.Net のアドレスのみであるため、このトラフィック フローにファイアウォールは関係しません。
 3. バックエンド サブネットが、以下に示す受信ルールの処理を開始します。
    1. NSG ルール 1 (DNS) は該当しません。次のルールに進みます。

@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
+ms.openlocfilehash: a9740cf527e4a9811b510ad5c96e5ab769efc2d9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 74b75232b4b1c14dbb81151cdab5856a1e4da28c
-ms.openlocfilehash: a0bf8995913511b0e14304a1259f13de4aa9e04b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-api-management-faqs"></a>Azure API Management の FAQ
 Azure API Management についてよく寄せられる質問の回答、パターン、ベスト プラクティスについて説明します。
@@ -138,10 +137,19 @@ API Management では、複数の地理的な場所へのデプロイで[パフ�
 はい。 詳細については、[Azure API Management サービス](http://aka.ms/apimtemplate)のクイックスタート テンプレートを参照してください。
 
 ### <a name="can-i-use-a-self-signed-ssl-certificate-for-a-back-end"></a>バックエンドに自己署名 SSL 証明書を使用できますか。
-はい。 次の手順に従って、バックエンドに自己署名 Secure Sockets Layer (SSL) 証明書を使用できます。
+はい。 これを行うには、PowerShell を使用するか、API に直接送信します。 これにより、証明書チェーン検証を無効になり、API Management からバックエンド サービスへの通信時に、自己署名証明書または個人署名証明書を使用することができます。
 
-1. API Management を使用して[バックエンド](https://msdn.microsoft.com/library/azure/dn935030.aspx) エンティティを作成します。
-2. **skipCertificateChainValidation** プロパティを **true** に設定します。
+#### <a name="powershell-method"></a>Powershell を使用する場合 ####
+[`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (新しいバック エンド) または[`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。 
+
+```
+$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+```
+
+#### <a name="direct-api-update-method"></a>直接 API 更新を使用する場合 ####
+1. API Management を使用して[バックエンド](https://msdn.microsoft.com/library/azure/dn935030.aspx) エンティティを作成します。       
+2. **skipCertificateChainValidation** プロパティを **true** に設定します。     
 3. 自己署名証明書を許可する必要がなくなったときは、バックエンド エンティティを削除するか、**skipCertificateChainValidation** プロパティを **false** に設定します。
 
 ### <a name="why-do-i-get-an-authentication-failure-when-i-try-to-clone-a-git-repository"></a>Git リポジトリを複製しようとすると認証に失敗します。原因は何でしょうか。
@@ -162,4 +170,3 @@ API Management のデプロイに必要な最小サブネット サイズは、A
 
 ### <a name="are-there-restrictions-on-or-known-issues-with-importing-my-api"></a>API のインポートには制限事項や既知の問題はありますか。
 Open API (Swagger)、WSDL、WADL の形式についての[既知の問題と制限事項](api-management-api-import-restrictions.md)をご覧ください。
-

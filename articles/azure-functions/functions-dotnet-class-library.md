@@ -14,14 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 06/09/2017
+ms.date: 10/10/2017
 ms.author: donnam
+ms.openlocfilehash: ad71a32d82e9b5aa4efda6d7ea67a9326ffcc4ff
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: f45b3f705ba3d11dd20221e3a7a465796d7a86a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="using-net-class-libraries-with-azure-functions"></a>Azure Functions での .NET クラス ライブラリの使用
 
@@ -31,8 +30,8 @@ Azure Functions は、スクリプト ファイルに加えて、1 つまたは�
 
 この記事の前提条件は次のとおりです。
 
-- [Visual Studio 2017 15.3 プレビュー](https://www.visualstudio.com/vs/preview/)。 **ASP.NET および Web 開発**と **Azure 開発**ワークロードのインストール
-- [Azure Function Tools for Visual Studio 2017](https://marketplace.visualstudio.com/items?itemName=AndrewBHall-MSFT.AzureFunctionToolsforVisualStudio2017)
+- [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/) 以降のバージョン。
+- **Azure 開発**のワークロードをインストールします。
 
 ## <a name="functions-class-library-project"></a>関数クラス ライブラリ プロジェクト
 
@@ -50,14 +49,15 @@ Azure Functions プロジェクトをビルドすると、関数のディレク�
 
 この変換は、NuGet パッケージ [Microsoft\.NET\.Sdk\.Functions](http://www.nuget.org/packages/Microsoft.NET.Sdk.Functions) によって実行されます。 ソースは、GitHub リポジトリ [azure\-functions\-vs\-build\-sdk](https://github.com/Azure/azure-functions-vs-build-sdk) で利用できます。
 
-## <a name="triggers-and-bindings"></a>トリガーとバインド
+## <a name="triggers-and-bindings"></a>トリガーとバインド 
 
 次の表は、Azure Functions クラス ライブラリ プロジェクトで使用できるトリガーとバインドの一覧を示しています。 すべての属性は、名前空間 `Microsoft.Azure.WebJobs` に含まれています。
 
 | バインド | Attribute | NuGet パッケージ |
 |------   | ------    | ------        |
 | [Blob ストレージのトリガー、入力、出力](#blob-storage) | [BlobAttribute]、[StorageAccountAttribute] | [Microsoft.Azure.WebJobs] | [Blob ストレージ] |
-| [Cosmos DB の入力および出力バインド](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
+| [Cosmos DB トリガー](#cosmos-db) | [CosmosDBTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] | 
+| [Cosmos DB の入力および出力](#cosmos-db) | [DocumentDBAttribute] | [Microsoft.Azure.WebJobs.Extensions.DocumentDB] |
 | [イベント ハブのトリガーと出力](#event-hub) | [EventHubTriggerAttribute]、[EventHubAttribute] | [Microsoft.Azure.WebJobs.ServiceBus] |
 | [外部ファイルの入力と出力](#api-hub) | [ApiHubFileAttribute] | [Microsoft.Azure.WebJobs.Extensions.ApiHub] |
 | [HTTP と webhook のトリガー](#http) | [HttpTriggerAttribute] | [Microsoft.Azure.WebJobs.Extensions.Http] |
@@ -72,11 +72,11 @@ Azure Functions プロジェクトをビルドすると、関数のディレク�
 
 <a name="blob-storage"></a>
 
-### <a name="blob-storage-trigger-input-and-output-bindings"></a>Blob Storage のトリガー、入力、出力のバインド
+### <a name="blob-storage-trigger-input-bindings-and-output-bindings"></a>Blob Storage トリガー、入力バインド、および出力バインド
 
 Azure Functions は、Azure BLOB Storage のトリガー、入力、出力のバインドをサポートしています。 バインドの式とメタデータの詳細については、「[Azure Functions における Blob Storage のバインディング](functions-bindings-storage-blob.md)」を参照してください。
 
-Blob のトリガーは、`[BlobTrigger]` 属性を使用して定義されます。 `[StorageAccount]` 属性を使用して、関数またはクラス全体で使用されるストレージ アカウントを定義することができます。
+Blob のトリガーは、`[BlobTrigger]` 属性を使用して定義されます。 `[StorageAccount]` 属性を使用して、関数またはクラス全体で使用されるストレージ アカウントへの接続文字列を含むアプリ設定名を定義することができます。
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -121,9 +121,22 @@ private static Dictionary<ImageSize, (int, int)> imageDimensionsTable = new Dict
 
 <a name="cosmos-db"></a>
 
-### <a name="cosmos-db-input-and-output-bindings"></a>Cosmos DB の入力および出力バインド
+### <a name="cosmos-db-trigger-input-bindings-and-output-bindings"></a>Cosmos DB トリガー、入力バインド、および出力バインド
 
-Azure Functions は、Cosmos DB の入力および出力バインドをサポートしています。 Cosmos DB バインディングの機能の詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
+Azure Functions は、Cosmos DB トリガーと入力および出力バインドをサポートしています。 Cosmos DB バインディングの機能の詳細については、「[Azure Functions における Cosmos DB のバインド](functions-bindings-documentdb.md)」を参照してください。
+
+Cosmos DB のドキュメントからトリガーするには、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB] で `[CosmosDBTrigger]` 属性を使用します。 次の例は、特定の `database` および `collection`からトリガーします。 `myCosmosDB` 設定には、Cosmos DB インスタンスへの接続が含まれます。 
+
+```csharp
+[FunctionName("DocumentUpdates")]
+public static void Run(
+    [CosmosDBTrigger("database", "collection", ConnectionStringSetting = "myCosmosDB")]
+IReadOnlyList<Document> documents, TraceWriter log)
+{
+        log.Info("Documents modified " + documents.Count);
+        log.Info("First document Id " + documents[0].Id);
+}
+```
 
 Cosmos DB のドキュメントにバインドするには、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.DocumentDB] で `[DocumentDB]` 属性を使用します。 次の例には、キューのトリガーと DocumentDB API 出力インドがあります。
 
@@ -131,7 +144,7 @@ Cosmos DB のドキュメントにバインドするには、NuGet パッケー�
 [FunctionName("QueueToDocDB")]        
 public static void Run(
     [QueueTrigger("myqueue-items", Connection = "AzureWebJobsStorage")] string myQueueItem, 
-    [DocumentDB("ToDoList", "Items", ConnectionStringSetting = "DocDBConnection")] out dynamic document)
+    [DocumentDB("ToDoList", "Items", ConnectionStringSetting = "myCosmosDB")] out dynamic document)
 {
     document = new { Text = myQueueItem, id = Guid.NewGuid() };
 }
@@ -232,7 +245,7 @@ Azure Functions は、Notification Hubs の出力バインドをサポートし�
 
 Azure Functions は、Azure キューのトリガーおよび出力バインドをサポートしています。 詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
 
-次の例は、`[Queue]` 属性を使用し、関数の戻り値の型とキューの出力バインドを使用する方法を示しています。 キュー トリガーを定義するには、`[QueueTrigger]` 属性を使用します。
+次の例は、`[Queue]` 属性を使用し、関数の戻り値の型とキューの出力バインドを使用する方法を示しています。 
 
 ```csharp
 [StorageAccount("AzureWebJobsStorage")]
@@ -246,7 +259,15 @@ public static class QueueFunctions
         log.Info($"C# function processed: {input.Text}");
         return input.Text;
     }
+}
 
+```
+
+キュー トリガーを定義するには、`[QueueTrigger]` 属性を使用します。
+```csharp
+[StorageAccount("AzureWebJobsStorage")]
+public static class QueueFunctions
+{
     // Queue trigger
     [FunctionName("QueueTrigger")]
     [StorageAccount("AzureWebJobsStorage")]
@@ -258,13 +279,16 @@ public static class QueueFunctions
 
 ```
 
+
 <a name="sendgrid"></a>
 
 ### <a name="sendgrid-output"></a>SendGrid の出力
 
 Azure Functions は、プログラムによって電子メールを送信するための SendGrid 出力バインドをサポートしています。 詳細については、「[Azure Functions における SendGrid のバインディング](functions-bindings-sendgrid.md)」を参照してください。
 
-属性 `[SendGrid]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid] で定義されます。
+属性 `[SendGrid]` は、NuGet パッケージ [Microsoft.Azure.WebJobs.Extensions.SendGrid] で定義されます。 SendGrid バインディングには、お使いの SendGrid API キーが含まれる、`AzureWebJobsSendGridApiKey` という名前のアプリケーション設定が必要です。 これは、お使いの SendGrid API キーの既定の設定名です。 2 つ以上の SendGrid キーを保持するか、または別の設定名を選択する必要がある場合、次の例のように `SendGrid`バインディング属性の `ApiKey` プロパティを使用してこの名前を設定できます。
+
+    [SendGrid(ApiKey = "MyCustomSendGridKeyName")]
 
 Service Bus キュー トリガーの使用と、`SendGridMessage` を使用した SendGrid 出力バインドの例を次に示します。
 
@@ -289,6 +313,7 @@ public class OutgoingEmail
     public string Body { get; set; }
 }
 ```
+この例では、`AzureWebJobsSendGridApiKey` という名前のアプリケーション設定のストレージにするために、SendGrid API キーが必要であることに注意してください。
 
 <a name="service-bus"></a>
 
@@ -411,7 +436,7 @@ C# スクリプトでの Azure 関数の使用の詳細については、「[Azu
 
 <!-- NuGet packages --> 
 [Microsoft.Azure.WebJobs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs/2.1.0-beta1
-[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta1
+[Microsoft.Azure.WebJobs.Extensions.DocumentDB]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DocumentDB/1.1.0-beta4
 [Microsoft.Azure.WebJobs.ServiceBus]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.ServiceBus/2.1.0-beta1
 [Microsoft.Azure.WebJobs.Extensions.MobileApps]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps/1.1.0-beta1
 [Microsoft.Azure.WebJobs.Extensions.NotificationHubs]: http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.NotificationHubs/1.1.0-beta1
@@ -426,6 +451,7 @@ C# スクリプトでの Azure 関数の使用の詳細については、「[Azu
 
 <!-- Links to source --> 
 [DocumentDBAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/DocumentDBAttribute.cs
+[CosmosDBTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.DocumentDB/Trigger/CosmosDBTriggerAttribute.cs
 [EventHubAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubAttribute.cs
 [EventHubTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/EventHubs/EventHubTriggerAttribute.cs
 [MobileTableAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs
@@ -441,4 +467,3 @@ C# スクリプトでの Azure 関数の使用の詳細については、「[Azu
 [HttpTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/dev/src/WebJobs.Extensions.Http/HttpTriggerAttribute.cs
 [ApiHubFileAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.ApiHub/ApiHubFileAttribute.cs
 [TimerTriggerAttribute]: https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions/Extensions/Timers/TimerTriggerAttribute.cs
-

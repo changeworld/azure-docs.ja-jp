@@ -16,14 +16,14 @@ ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: ganesr;cherylmc
 ms.openlocfilehash: af68955b78239832e413e1b59e033d7d3da8d599
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit-using-powershell"></a>PowerShell を使用した ExpressRoute 回線のピアリングの作成と変更
 
-この記事では、作成し、PowerShell を使用して、リソース マネージャーの配置モデルでの ExpressRoute 回線のルーティングの構成を管理できます。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
+この記事は、PowerShell を使用して Resource Manager デプロイメント モデルで ExpressRoute 回線のルーティング構成を作成し、管理します。 また、ExpressRoute 回線の状態確認、ピアリングの更新、または削除およびプロビジョニング解除を行うこともできます。 別の方法を使用して回線を操作する場合は、次の一覧から記事を選択してください。
 
 > [!div class="op_single_selector"]
 > * [Azure ポータル](expressroute-howto-routing-portal-resource-manager.md)
@@ -39,7 +39,7 @@ ms.lasthandoff: 08/03/2017
 
 * Azure Resource Manager PowerShell コマンドレットの最新版をインストールする必要があります。 詳細については、「 [Azure PowerShell のインストールと構成の方法](/powershell/azure/overview)」を参照してください。 
 * 構成を開始する前に必ず、[前提条件](expressroute-prerequisites.md)ページ、[ルーティングの要件](expressroute-routing.md)ページおよび[ワークフロー](expressroute-workflows.md) ページを確認してください。
-* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 ExpressRoute 回線は、この記事でコマンドレットを実行するためにプロビジョニングされ有効になっている状態でなければなりません。
+* アクティブな ExpressRoute 回線が必要です。 手順に従って、[ExpressRoute 回線を作成](expressroute-howto-circuit-arm.md)し、接続プロバイダー経由で回線を有効にしてから続行してください。 この記事にあるコマンドレットを実行できるようにするには、ExpressRoute 回線をプロビジョニング済みで有効化された状態にする必要があります。
 
 次の手順は、サービス プロバイダーが提供するレイヤー 2 接続サービスで作成された回線にのみ適用されます。 サービス プロバイダーが提供する管理対象レイヤー 3 サービス (MPLS など、通常は IP VPN) を使用する場合、接続プロバイダーがユーザーに代わってルーティングを構成および管理します。
 
@@ -269,7 +269,7 @@ Set-AzureRmExpressRouteCircuit -ExpressRouteCircuit $ckt
   * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
-  回線用の Azure パブリック ピアリングを構成するのには、次の例を実行します。
+  次の例を実行して、ご使用の回線用に Azure パブリック ピアリングを構成します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "AzurePublicPeering" -ExpressRouteCircuit $ckt -PeeringType AzurePublicPeering -PeerASN 100 -PrimaryPeerAddressPrefix "12.0.0.0/30" -SecondaryPeerAddressPrefix "12.0.0.4/30" -VlanId 100
@@ -410,7 +410,7 @@ Select-AzureRmSubscription -SubscriptionId "<subscription ID>"
   * ルーティング レジストリ名: AS 番号とプレフィックスを登録する RIR/IRR を指定することができます。
   * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
 
-   Microsoft、回路のピアリングを構成するのにには、次の例を使用します。
+   次の例を使用して、ご使用の回線用に Microsoft ピアリングを構成します。
 
   ```powershell
   Add-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "123.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"
@@ -430,7 +430,7 @@ Get-AzureRmExpressRouteCircuitPeeringConfig -Name "MicrosoftPeering" -ExpressRou
 
 ### <a name="to-update-microsoft-peering-configuration"></a>Microsoft ピアリング構成を更新するには
 
-次の例を使用して、構成の一部を更新することができます。
+次の例を使用して構成の任意の部分を更新することができます。
 
 ```powershell
 Set-AzureRmExpressRouteCircuitPeeringConfig  -Name "MicrosoftPeering" -ExpressRouteCircuit $ckt -PeeringType MicrosoftPeering -PeerASN 100 -PrimaryPeerAddressPrefix "123.0.0.0/30" -SecondaryPeerAddressPrefix "123.0.0.4/30" -VlanId 300 -MicrosoftConfigAdvertisedPublicPrefixes "124.1.0.0/24" -MicrosoftConfigCustomerAsn 23 -MicrosoftConfigRoutingRegistryName "ARIN"

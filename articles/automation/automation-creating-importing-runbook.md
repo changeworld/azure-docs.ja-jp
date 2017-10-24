@@ -3,7 +3,7 @@ title: "Azure Automation での Runbook の作成またはインポート"
 description: "この記事では、Azure Automation で新しい Runbook を作成する方法、またはファイルから Runbook をインポートする方法について説明します。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: jwhit
 editor: tysonn
 ms.assetid: 24414362-b690-4474-8ca7-df18e30fc31d
@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/07/2017
+ms.date: 09/29/2017
 ms.author: magoedte;bwren
+ms.openlocfilehash: 78df606568b941cf72b823c3715fefce1540c790
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: caaf10d385c8df8f09a076d0a392ca0d5df64ed2
-ms.openlocfilehash: 0264de12caaf62e976673a423df731ad27ab01e0
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の作成またはインポート
 [新しい Runbook を作成する](#creating-a-new-runbook)ことによって、または既存の Runbook をファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)からインポートすることによって、Azure Automation に Runbook を追加できます。 この記事では、Runbook を作成またはファイルからインポートする方法について説明します。  コミュニティ Runbook およびモジュールへのアクセスに関する詳細については、「 [Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」を参照してください。
@@ -51,16 +50,16 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
     -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>ファイルから Azure Automation への Runbook のインポート
-PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps1) をインポートして、またはエクスポートされたグラフィカル Runbook (.graphrunbook) をインポートして、Azure Automation で新しい Runbook を作成できます。  以下の点を考慮して、インポートから作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps1) をインポートして、またはエクスポートされたグラフィカル Runbook (.graphrunbook) をインポートして、Azure Automation で新しい Runbook を作成できます。  以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
 
 * .graphrunbook ファイルは新しい [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks)にのみインポートでき、グラフィカル Runbook は .graphrunbook ファイルからのみ作成できます。
 * PowerShell ワークフローを含む .ps1 ファイルは、 [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks)にのみインポートできます。  ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。
-* ワークフローが含まれていない .ps1 ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートできます。  PowerShell ワークフロー Runbook にインポートされた場合は、ワークフローに変換されて、行われた変更を示すコメントが Runbook に追加されます。
+* ワークフローが含まれていない .ps1 ファイルは、[PowerShell Runbook](automation-runbook-types.md#powershell-runbooks) または [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks) のどちらにもインポートできます。  PowerShell ワークフロー Runbook にインポートされた場合は、ワークフローに変換され、行われた変更を示すコメントが Runbook に追加されます。
 
 ### <a name="to-import-a-runbook-from-a-file-with-the-azure-classic-portal"></a>Azure クラシック ポータルでファイルから Runbook をインポートするには
 次の手順を使用して、スクリプト ファイルを Azure Automation にインポートできます。  このポータルを使用して PowerShell ワークフロー Runbook にインポートできるのは .ps1 ファイルだけであることに注意してください。  他の種類の場合は、Azure ポータルを使用する必要があります。
 
-1. Microsoft Azure 管理ポータルで、 **[Automation]** を選択し、Automation アカウントを選択します。
+1. Azure クラシック ポータルで、**[Automation]** を選択し、次に Automation アカウントの名前を選択します。
 2. **[インポート]**をクリックします。
 3. **[ファイルの参照]** をクリックし、インポートするスクリプト ファイルを選択します。
 4. ここで Runbook を編集する場合は、 **[Runbook の編集]**をクリックします。 それ以外の場合は、[OK] をクリックします。
@@ -81,16 +80,16 @@ PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps
 4. **[Runbook ファイル]** をクリックし、インポートするファイルを選択します。
 5. **[名前]** フィールドが有効になっている場合は、名前を変更できます。  Runbook 名は、先頭を英字にする必要があり、英字、数字、アンダースコア、およびダッシュを使用できます。
 6. [Runbook の種類](automation-runbook-types.md) は自動的に選択されますが、適切な制限を考慮して変更することもできます。 
-7. 新しい Runbook が、Automation アカウントの Runbook の一覧に表示されます。
+7. Automation アカウントの Runbook の一覧に新しい Runbook が表示されます。
 8. Runbook を実行するには、先に [Runbook を発行する](#publishing-a-runbook) 必要があります。
 
 > [!NOTE]
-> グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook をインポートすると、必要に応じて、その他の種類に変換するためのオプションを利用できます。 テキスト形式に変換することはできません。
-> 
+> グラフィカル Runbook またはグラフィカル PowerShell ワークフロー Runbook をインポートすると、必要に応じて、その他の種類に変換するためのオプションを利用できます。 テキスト形式の Runbook に変換することはできません。
+>  
 > 
 
 ### <a name="to-import-a-runbook-from-a-script-file-with-windows-powershell"></a>Windows PowerShell でスクリプト ファイルから Runbook をインポートするには
-[Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/library/mt603735.aspx) コマンドレットを使用し、PowerShell ワークフロー Runbook のドラフトとしてスクリプト ファイルをインポートできます。 Runbook が既に存在する場合、 *-Force* パラメーターを使用しないと、インポートは失敗します。 
+[Import-AzureRMAutomationRunbook](https://msdn.microsoft.com/library/mt603735.aspx) コマンドレットを使用し、PowerShell ワークフロー Runbook のドラフトとしてスクリプト ファイルをインポートできます。 Runbook が既に存在する場合、*-Force* パラメーターを使用しないと、インポートは失敗します。 
 
 次のサンプル コマンドでは、Runbook にスクリプト ファイルをインポートする方法を示します。
 
@@ -132,5 +131,4 @@ Windows PowerShell の [Publish-AzureRmAutomationRunbook](https://msdn.microsoft
 * Runbook と PowerShell モジュール ギャラリーの利点については、「[Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」を参照してください
 * テキスト エディターを使用した PowerShell および PowerShell ワークフロー Runbook の編集の詳細については、「 [Azure Automation でのテキスト形式の Runbook の編集](automation-edit-textual-runbook.md)
 * グラフィカル Runbook 作成の詳細については、「 [Azure Automation でのグラフィカル作成](automation-graphical-authoring-intro.md)
-
 

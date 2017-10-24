@@ -13,14 +13,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/27/2017
+ms.date: 10/09/2017
 ms.author: cynthn
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 245ce9261332a3d36a36968f7c9dbc4611a019b2
-ms.openlocfilehash: e428b755f6696bd6d4047ad77579a8e9665dfbd8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: d6409ac490f530d49f82c93b07b0fd22adbec4de
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Azure で一般化された VM の管理対象イメージを作成する
 
@@ -51,32 +50,24 @@ ms.lasthandoff: 06/09/2017
 ## <a name="create-a-managed-image-in-the-portal"></a>ポータルで管理対象イメージを作成する 
 
 1. [ポータル](https://portal.azure.com)を開きます。
-2. プラス記号をクリックして、新しいリソースを作成します。
-3. フィルター検索で、「**イメージ**」と入力します。
-4. 結果で "**イメージ**" を選びます。
-5. **[イメージ]** ブレードで、**[作成]** をクリックします。
-6. **[名前]** に、イメージの名前を入力します。
-7. 複数のサブスクリプションがある場合は、**[サブスクリプション]** ドロップダウンから正しいサブスクリプションを選択します。
-7. **[リソース グループ]** で、**[新規作成]** を選んで名前を入力するか、または **[From existing (既存から)]** を選び、ドロップダウン リストから使うリソース グループを選びます。
-8. **[場所]** で、リソース グループの場所を選びます。
-9. **[OS の種類]** で、オペレーティング システムの種類を選びます (Windows または Linux)。
-11. **[ストレージ BLOB]** で、**[参照]** をクリックしてご使用の Azure Storage で VHD を探します。
-12. **[アカウントの種類]** で、Standard_LRS または Premium_LRS を選びます。 Standard はハード ディスク ドライブを使い、Premium はソリッド ステート ドライブを使います。 どちらもローカル冗長ストレージを使います。
-13. **[Disk caching (ディスク キャッシュ)]** で、適切なディスク キャッシュ オプションを選びます。 オプションは、**[なし]**、**[読み取り専用]**、**[Read\write (読み取り\書き込み)]** です。
-14. 省略可能: **[+ Add data disk (+ データ ディスクの追加)]** をクリックして既存のデータ ディスクをイメージに追加してもかまいません。  
-15. 選択が終了したら、**[作成]** をクリックします。
-16. 作成したイメージは、選んだリソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
+2. 左のメニューで、[仮想マシン] をクリックし、一覧から VM を選択します。
+3. VM 用のページで、上部のメニューの **[キャプチャ]** をクリックします。
+3. **[名前]** に、イメージに使用する名前を入力します。
+4. **[リソース グループ]** で、**[新規作成]** を選択して名前を入力するか、または **[Use existing\(既存の値を使用する\)]** を選択してドロップダウン リストから使うリソース グループを選びます。
+5. イメージが作成された後にソース VM を削除する場合、**[イメージの作成後、この仮想マシンを自動的に削除します]** を選択します。
+6. 完了したら、**[作成]** をクリックします。
+16. 作成したイメージは、リソース グループのリソースの一覧に **[イメージ]** リソースとして表示されます。
 
 
 
-## <a name="create-a-managed-image-of-a-vm-using-powershell"></a>Powershell を使って VM の管理対象イメージを作成する
+## <a name="create-an-image-of-a-vm-using-powershell"></a>Powershell を使って VM のイメージを作成する
 
-VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。
+VM からイメージを直接作成すると、OS ディスクやすべてのデータ ディスクなど、VM に関連付けられているすべてのディスクが、イメージに確実に含まれます。 この例では、管理対象ディスクを使用する VM から管理対象イメージを作成する方法を示します。
 
 
 始める前に、AzureRM.Compute PowerShell モジュールの最新バージョンがあることを確認してください。 インストールするには次のコマンドを実行します。
 
-```powershell
+```azurepowershell-interactive
 Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 ```
 詳しくは、[Azure PowerShell のバージョン管理に関するページ](/powershell/azure/overview)をご覧ください。
@@ -84,7 +75,7 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 1. 変数をいくつか作成します。
 
-    ```powershell
+    ```azurepowershell-interactive
     $vmName = "myVM"
     $rgName = "myResourceGroup"
     $location = "EastUS"
@@ -92,77 +83,81 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
     ```
 2. VM の割り当てが解除されていることを確認します。
 
-    ```powershell
+    ```azurepowershell-interactive
     Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
     ```
     
 3. 仮想マシンの状態を **[一般化]**に設定します。 
    
-    ```powershell
+    ```azurepowershell-interactive
     Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized
     ```
     
 4. 仮想マシンを取得します。 
 
-    ```powershell
+    ```azurepowershell-interactive
     $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
     ```
 
 5. イメージの構成を作成します。
 
-    ```powershell
+    ```azurepowershell-interactive
     $image = New-AzureRmImageConfig -Location $location -SourceVirtualMachineId $vm.ID 
     ```
 6. イメージを作成します。
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzureRmImage -Image $image -ImageName $imageName -ResourceGroupName $rgName
     ``` 
+## <a name="create-an-image-from-a-managed-disk-using-powershell"></a>Powershell を使って管理対象ディスクからイメージを作成する
 
-
-
-## <a name="create-a-managed-image-of-a-vhd-in-powershell"></a>Powershell で VHD の管理対象イメージを作成する
-
-アップロードした OS VHD を使って管理対象イメージを作成します。
-
-
-1.  最初に、共通のパラメーターを設定します。
-
-    ```powershell
-    $rgName = "myResourceGroupName"
-    $vmName = "myVM"
-    $location = "West Central US" 
-    $imageName = "yourImageName"
-    $osVhdUri = "https://storageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd"
-    ```
-2. VM を停止し、割り当てを解除します。
-
-    ```powershell
-    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
-    ```
-    
-3. VM を一般化としてマークします。
-
-    ```powershell
-    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
-    ```
-4.  一般化した OS VHD を使ってイメージを作成します。
-
-    ```powershell
-    $imageConfig = New-AzureRmImageConfig -Location $location
-    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
-    $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
-    ```
-
-
-## <a name="create-a-managed-image-from-a-snapshot-using-powershell"></a>Powershell を使ってスナップショットから管理対象イメージを作成する
-
-一般化された VM の VHD のスナップショットから、管理対象イメージを作成することもできます。
+OS ディスクのイメージを作成したいだけの場合は、管理対象ディスクの ID を OS ディスクとして指定することで、イメージを作成することもできます。
 
     
 1. 変数をいくつか作成します。 
 
-    ```powershell
+    ```azurepowershell-interactive
+    $vmName = "myVM"
+    $rgName = "myResourceGroup"
+    $location = "EastUS"
+    $snapshotName = "mySnapshot"
+    $imageName = "myImage"
+    ```
+
+2. VM を取得します。
+
+   ```azurepowershell-interactive
+   $vm = Get-AzureRmVm -Name myVM -ResourceGroupName $rgName
+   ```
+
+3. 管理対象ディスクの ID を取得します。
+
+    ```azurepowershell-interactive
+    $diskID = $vm.StorageProfile.OsDisk.ManagedDisk.Id
+    ```
+   
+3. イメージの構成を作成します。
+
+    ```azurepowershell-interactive
+    $imageConfig = New-AzureRmImageConfig -Location $location
+    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -ManagedDiskId $diskID
+    ```
+    
+4. イメージを作成します。
+
+    ```azurepowershell-interactive
+    New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    ``` 
+
+
+## <a name="create-an-image-from-a-snapshot-using-powershell"></a>Powershell を使ってスナップショットからイメージを作成する
+
+一般化された VM のスナップショットから管理対象イメージを作成できます。
+
+    
+1. 変数をいくつか作成します。 
+
+    ```azurepowershell-interactive
     $rgName = "myResourceGroup"
     $location = "EastUS"
     $snapshotName = "mySnapshot"
@@ -171,24 +166,57 @@ Install-Module AzureRM.Compute -RequiredVersion 2.6.0
 
 2. スナップショットを取得します。
 
-   ```powershell
+   ```azurepowershell-interactive
    $snapshot = Get-AzureRmSnapshot -ResourceGroupName $rgName -SnapshotName $snapshotName
    ```
    
 3. イメージの構成を作成します。
 
-    ```powershell
+    ```azurepowershell-interactive
     $imageConfig = New-AzureRmImageConfig -Location $location
     $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsState Generalized -OsType Windows -SnapshotId $snapshot.Id
     ```
 4. イメージを作成します。
 
-    ```powershell
+    ```azurepowershell-interactive
     New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
     ``` 
-    
 
+
+## <a name="create-image-from-a-vhd-in-a-storage-account"></a>ストレージ アカウント内の VHD からイメージを作成する
+
+ストレージ アカウントで、一般化された OS の VHD から管理対象イメージを作成します。 ストレージ アカウントでは、https://*mystorageaccount*.blob.core.windows.net/*container*/*vhd_filename.vhd* という形式の VHD の URI が必要です。 この例では、使用している VHD は *vhdcontainer* という名前のコンテナーの *mystorageaccount* 内にあり、VHD ファイル名は *osdisk.vhd* です。
+
+
+1.  最初に、共通のパラメーターを設定します。
+
+    ```azurepowershell-interactive
+    $vmName = "myVM"
+    $rgName = "myResourceGroup"
+    $location = "EastUS"
+    $imageName = "myImage"
+    $osVhdUri = "https://mystorageaccount.blob.core.windows.net/vhdcontainer/osdisk.vhd"
+    ```
+2. VM を停止し、割り当てを解除します。
+
+    ```azurepowershell-interactive
+    Stop-AzureRmVM -ResourceGroupName $rgName -Name $vmName -Force
+    ```
+    
+3. VM を一般化としてマークします。
+
+    ```azurepowershell-interactive
+    Set-AzureRmVm -ResourceGroupName $rgName -Name $vmName -Generalized 
+    ```
+4.  一般化した OS VHD を使ってイメージを作成します。
+
+    ```azurepowershell-interactive
+    $imageConfig = New-AzureRmImageConfig -Location $location
+    $imageConfig = Set-AzureRmImageOsDisk -Image $imageConfig -OsType Windows -OsState Generalized -BlobUri $osVhdUri
+    $image = New-AzureRmImage -ImageName $imageName -ResourceGroupName $rgName -Image $imageConfig
+    ```
+
+    
 ## <a name="next-steps"></a>次のステップ
 - これで、[一般化された管理対象イメージから VM を作成する](create-vm-generalized-managed.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ことができるようになりました。  
-
 

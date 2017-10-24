@@ -12,14 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/30/2016
+ms.date: 10/06/2017
 ms.author: juanpere
+ms.openlocfilehash: 4f716d85a60650a77d393eb725493e2e4d11de7a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 20e6cdaa2ab92b6f832b9d23344a10aa2f4e0763
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="schedule-and-broadcast-jobs-node"></a>ジョブのスケジュールとブロードキャスト (Node)
 
@@ -40,14 +39,14 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 このチュートリアルでは、次の操作方法について説明します。
 
-* ソリューション バックエンドから呼び出すことができ、**lockDoor** を可能にするダイレクト メソッドを持つ、シミュレート対象デバイス アプリを作成します。
+* ダイレクト メソッドを持つ Node.js シミュレート対象デバイス アプリを作成します。このアプリは **lockDoor** を有効にし、ソリューション バックエンドから呼び出すことができます。
 * ジョブを使用してシミュレート対象デバイス アプリで **lockDoor** ダイレクト メソッドを呼び出し、デバイス ジョブを使用して必要なプロパティを更新する Node.js コンソール アプリを作成します。
 
-このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
+このチュートリアルを完了すると、次の 2 つの Node.js アプリが完成します。
 
 **simDevice.js**。デバイス ID で IoT ハブに接続し、**lockDoor** ダイレクト メソッドを受信します。
 
-**scheduleJobService.js**。シミュレートされたデバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
+**scheduleJobService.js**。シミュレート対象デバイス アプリでダイレクト メソッドを呼び出し、ジョブを使用してデバイス ツインの必要なプロパティを更新します。
 
 このチュートリアルを完了するには、以下が必要です。
 
@@ -58,8 +57,8 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 
 [!INCLUDE [iot-hub-get-started-create-device-identity](../../includes/iot-hub-get-started-create-device-identity.md)]
 
-## <a name="create-a-simulated-device-app"></a>シミュレーション対象デバイス アプリの作成
-このセクションでは、クラウドで呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリによってシミュレートされたデバイスの再起動が開始され、報告されるプロパティを使用してデバイスと最後の再起動時間をデバイス ツインのクエリで識別できるようになります。
+## <a name="create-a-simulated-device-app"></a>シミュレート対象デバイス アプリの作成
+このセクションでは、クラウドによって呼び出されたダイレクト メソッドに応答する Node.js コンソール アプリを作成します。このアプリはシミュレートされた **lockDoor** メソッドをトリガーします。
 
 1. **simDevice** という名前の新しい空のフォルダーを作成します。  コマンド プロンプトで次のコマンドを使用して、**simDevice** フォルダー内に新しい package.json ファイルを作成します。  次の既定値をすべてそのまま使用します。
    
@@ -153,7 +152,7 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
     var maxExecutionTimeInSeconds =  3600;
     var jobClient = JobClient.fromConnectionString(connectionString);
     ```
-6. ジョブの実行を監視するために使用される次の関数を追加します。
+6. ジョブの実行を監視するために使用する次の関数を追加します。
    
     ```
     function monitorJob (jobId, callback) {
@@ -215,7 +214,6 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
        }
     };
    
-   
     var twinJobId = uuid.v4();
    
     console.log('scheduling Twin Update job with id: ' + twinJobId);
@@ -273,4 +271,3 @@ Azure IoT Hub は、数百万台のデバイスをスケジュールおよび更
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-transient-faults]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
-

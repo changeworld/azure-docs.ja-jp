@@ -10,16 +10,16 @@ ms.assetid: 41d63a97-37db-4e40-b652-77c2fd1c09b7
 ms.service: sql-database
 ms.custom: load & move data
 ms.devlang: NA
-ms.date: 06/15/2017
+ms.date: 10/11/2017
 ms.author: carlrab
 ms.workload: data-management
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: faa567ec615a07da8633629fc98e3454c84a8f5f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: 4427b74f205dcd2eabf825bbfc345279dc303f96
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="export-an-azure-sql-database-to-a-bacpac-file"></a>Azure SQL Database を BACPAC ファイルにエクスポートする
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 08/03/2017
 
 > [!IMPORTANT] 
 > Azure SQL Database の自動エクスポート機能は、2017 年 3 月 1 日に廃止されました。 [長期のバックアップ リテンション期間](sql-database-long-term-retention.md
-)または [Azure Automation](https://github.com/Microsoft/azure-docs-pr/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) を使用して、選択したスケジュールに従って PowerShell を使用して定期的に SQL データベースをアーカイブできます。 サンプルについては、GitHub から [PowerShell のサンプル スクリプト](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)をダウンロードできます。
+)または [Azure Automation](https://github.com/Microsoft/azure-docs/blob/2461f706f8fc1150e69312098640c0676206a531/articles/automation/automation-intro.md) を使用して、選択したスケジュールに従って PowerShell を使用して定期的に SQL データベースをアーカイブできます。 サンプルについては、GitHub から [PowerShell のサンプル スクリプト](https://github.com/Microsoft/sql-server-samples/tree/master/samples/manage/azure-automation-automated-export)をダウンロードできます。
 >
 
 ## <a name="considerations-when-exporting-an-azure-sql-database"></a>Azure SQL Database をエクスポートする際の考慮事項
@@ -73,7 +73,7 @@ SqlPackage.exe /a:Export /tf:testExport.bacpac /scs:"Data Source=apptestserver.d
 
 ## <a name="export-to-a-bacpac-file-using-powershell"></a>PowerShell を使用して BACPAC ファイルにエクスポートする
 
-使用して、[新規 AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport)コマンドレットは、Azure SQL データベース サービスへのエクスポート データベース要求を送信します。 データベースのサイズに応じて、エクスポート操作の完了に時間がかかる場合があります。
+[New-AzureRmSqlDatabaseExport](/powershell/module/azurerm.sql/new-azurermsqldatabaseexport) コマンドレットを使用して、Azure SQL Database サービスにデータベース エクスポート要求を送信します。 データベースのサイズに応じて、エクスポート操作の完了に時間がかかる場合があります。
 
  ```powershell
  $exportRequest = New-AzureRmSqlDatabaseExport -ResourceGroupName $ResourceGroupName -ServerName $ServerName `

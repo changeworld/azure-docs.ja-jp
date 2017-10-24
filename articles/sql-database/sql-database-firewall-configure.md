@@ -4,8 +4,8 @@ description: "アクセスを管理するために、サーバー レベルお�
 keywords: "データベース ファイアウォール"
 services: sql-database
 documentationcenter: 
-author: BYHAM
-manager: craigg
+author: CarlRabeler
+manager: jhubbard
 editor: cgronlun
 tags: 
 ms.assetid: ac57f84c-35c3-4975-9903-241c8059011e
@@ -15,20 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-management
-ms.date: 09/15/2017
-ms.author: rickbyh
+ms.date: 10/11/2017
+ms.author: carlrab
+ms.openlocfilehash: a99ef3117cba8fea6a69e8f5cef15cf8fe711715
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: a683481c9ebcdb8be6f9fefe442541e222482823
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 
 Microsoft Azure SQL Database は、Azure およびその他のインターネット ベースのアプリケーション用のリレーショナル データベース サービスを提供します。 データを保護するため、ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてデータベースへのアクセス権を付与します。
 
-#### <a name="virtual-netowrk-rules-as-alternatives-to-ip-rules"></a>IP 規則に代わる手段としての仮想ネットワーク規則
+#### <a name="virtual-network-rules-as-alternatives-to-ip-rules"></a>IP 規則に代わる手段としての仮想ネットワーク規則
 
 IP 規則に加えて、ファイアウォールは*仮想ネットワーク規則*も管理します。 仮想ネットワーク規則は、Virtual Network サービスのエンドポイントに基づいています。 仮想ネットワーク規則は、場合によっては IP 規則より望ましい場合があります。 詳細については、[Azure SQL Database の Virtual Network サービス エンドポイントと規則](sql-database-vnet-service-endpoint-rule-overview.md)に関する記事をご覧ください。
 
@@ -71,7 +70,7 @@ Azure のアプリケーションから Azure SQL Server に接続を許可す�
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>ファイアウォール規則の作成と管理
-最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#create)、または [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules) を使用して作成できます。 それ以降のサーバーレベルのファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。 
+最初のサーバー レベルのファイアウォール設定は、[Azure ポータル](https://portal.azure.com/)を使用するか、プログラムで [Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql)、[Azure CLI](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)、または [REST API](https://docs.microsoft.com/rest/api/sql/firewallrules) を使用して作成できます。 それ以降のサーバーレベルのファイアウォール規則の作成と管理も、これらの方法や Transact-SQL を使用して実行できます。 
 
 > [!IMPORTANT]
 > データベース レベルのファイアウォール規則は、Transact-SQL でのみ作成と管理が可能です。 
@@ -163,11 +162,11 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Azure CLI を使ってファイアウォール規則を管理する
 | コマンドレット | Level | Description |
 | --- | --- | --- |
-| [az sql server firewall create](/cli/azure/sql/server/firewall-rule#create) | サーバー上のすべての SQL データベースに対する入力した IP アドレス範囲からのアクセスを許可するファイアウォール規則を作成します。|
-| [az sql server firewall delete](/cli/azure/sql/server/firewall-rule#delete)| ファイアウォール規則を作成します。|
-| [az sql server firewall list](/cli/azure/sql/server/firewall-rule#list)| ファイアウォール規則の一覧を表示します。|
-| [az sql server firewall rule show](/cli/azure/sql/server/firewall-rule#show)| ファイアウォール規則の詳細を表示します。|
-| [ax sql server firewall rule update](/cli/azure/sql/server/firewall-rule#update)| ファイアウォール規則を更新します。
+|[az sql server firewall-rule create](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|サーバー|サーバーのファイアウォール規則を作成します。|
+|[az sql server firewall-rule list](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|サーバー|サーバーのファイアウォール規則を一覧表示します。|
+|[az sql server firewall-rule show](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|サーバー|ファイアウォール規則の詳細を表示します。|
+|[az sql server firewall-rule update](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|サーバー|ファイアウォール規則を更新します。|
+|[az sql server firewall-rule delete](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|サーバー|ファイアウォール規則を削除します。|
 
 次の例では、Azure CLI を使用してサーバー レベルのファイアウォール規則を設定します。 
 
@@ -227,4 +226,3 @@ Microsoft Azure SQL Database サービスへ期待どおりにアクセスでき
 
 <!--Image references-->
 [1]: ./media/sql-database-firewall-configure/sqldb-firewall-1.png
-

@@ -12,15 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/11/2017
+ms.date: 10/2/2017
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 7615074ce3f5098d5155dfc28ada567ea6361878
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: a7ce4d771e9c655687f72f4b46c7405cf64aeb74
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-net-core-sdk-release-notes-and-resources"></a>Azure Cosmos DB .NET Core SDK: リリース ノートとリソース
 > [!div class="op_single_selector"]
@@ -57,6 +56,10 @@ Azure Cosmos DB .NET Core SDK には最新バージョンの [Azure Cosmos DB .N
 
 > [!NOTE] 
 > Azure Cosmos DB .NET Core SDK は、現在のところ、ユニバーサル Windows プラットフォーム (UWP) アプリとの互換性はありません。 UWP アプリをサポートする .NET Core SDK については、[askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) に電子メールでお問い合わせください。
+
+### <a name="a-name151151"></a><a name="1.5.1"/>1.5.1 
+
+* [Microsoft.Azure.Graphs](https://docs.microsoft.com/en-us/azure/cosmos-db/graph-sdk-dotnet) のサポートに関連する内部変更
 
 ### <a name="a-name150150"></a><a name="1.5.0"/>1.5.0 
 
@@ -137,6 +140,7 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 | バージョン | リリース日 | 提供終了日 |
 | --- | --- | --- |
+| [1.5.1](#1.5.1) |2017 年 10 月 2 日 |--- |
 | [1.5.0](#1.5.0) |2017 年 8 月 10 日 |--- | 
 | [1.4.1](#1.4.1) |2017 年 8 月 7 日 |--- |
 | [1.4.0](#1.4.0) |2017 年 8 月 2 日 |--- |
@@ -154,5 +158,4 @@ Azure Cosmos DB .NET Core Preview SDK には最新バージョンの [Azure Cosm
 
 ## <a name="see-also"></a>関連項目
 Cosmos DB の詳細については、[Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) サービス ページを参照してください。 
-
 

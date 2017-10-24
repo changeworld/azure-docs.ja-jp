@@ -16,20 +16,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
+ms.openlocfilehash: 1aaeeed2740179555c024792562a950f4fd6b29d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: a20f6db8bbbc9b7936cf102e8cd2ff1b2a995fb2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions の JavaScript 開発者向けガイド
-> [!div class="op_single_selector"]
-> * [C# スクリプト](functions-reference-csharp.md)
-> * [F# スクリプト](functions-reference-fsharp.md)
-> * [JavaScript](functions-reference-node.md)
-> 
-> 
+[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions の JavaScript エクスペリエンスを利用すると、ランタイムと通信したり、バインディングを介してデータの送受信を行ったりする場合に `context` オブジェクトとして渡される関数を簡単にエクスポートできます。
 
@@ -54,14 +48,14 @@ module.exports = function(context, myTrigger, myInput, myOtherInput) {
 
 `direction === "in"` のバインディングが関数の引数と一緒に渡されます。つまり、[`arguments`](https://msdn.microsoft.com/library/87dw3w1k.aspx) を使用して、新しい入力を動的に処理できます (たとえば、`arguments.length` を使用して、すべての入力を繰り返し処理できます)。 この機能は、トリガーのみがあり、追加の入力がない場合に便利です。これは、`context` オブジェクトを参照しなくてもトリガーのデータに予測どおりにアクセスできるためです。
 
-引数は、exports ステートメントで順序を指定していなくても、*function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[3]` を参照することで、関数コードの `b` の値を取得できます。
+引数は、exports ステートメントで順序を指定していなくても、*function.json*に出現する順序で常に関数に渡されます。 たとえば、`function(context, a, b)` があり、それを `function(context, a)` に変更しても、`arguments[2]` を参照することで、関数コードの `b` の値を取得できます。
 
 すべてのバインディングも、方向に関係なく、`context` オブジェクトと一緒に渡されます (以下のスクリプトを参照)。 
 
 ## <a name="context-object"></a>context オブジェクト
 ランタイムでは、`context` オブジェクトを使用して、関数との間でデータをやり取りし、ユーザーがランタイムと通信できるようにします。
 
-context オブジェクトは、常に関数の最初のパラメーターとし、必ず含める必要があります。context オブジェクトには、ランタイムを適切に使用するために必要な `context.done` や `context.log` などのメソッドが用意されているためです。 オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
+`context` オブジェクトは、常に関数の最初のパラメーターとし、必ず含める必要があります。context オブジェクトには、ランタイムを適切に使用するのに必要な `context.done` や `context.log` などのメソッドが用意されているためです。 オブジェクトには、任意の名前 (`ctx` や `c` など) を付けることができます。
 
 ```javascript
 // You must include a context, but other arguments are optional
@@ -335,8 +329,5 @@ App Service プランを使用する関数アプリを作成するときは、�
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure Functions C# developer reference (Azure Functions C# 開発者向けリファレンス)](functions-reference-csharp.md)
-* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
 * [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)
-
 

@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs"
-description: "Azure Active Directory において事前に統合されたアプリの SAML トークンで発行された要求をカスタマイズする方法について説明します"
+title: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ | Microsoft Docs"
+description: "Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求をカスタマイズする方法について説明します"
 services: active-directory
 documentationcenter: 
 author: jeevansd
@@ -15,15 +15,14 @@ ms.topic: article
 ms.date: 07/11/2017
 ms.author: jeedes
 ms.custom: aaddev
+ms.openlocfilehash: 73f63300e65e1f6bc25edf7f28ec2769acbb7c9e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 6d232759630fcc567788a8326b566b659f89d17a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="customizing-claims-issued-in-the-saml-token-for-pre-integrated-apps-in-azure-active-directory"></a>Azure Active Directory での事前に統合されたアプリの SAML トークンで発行された要求のカスタマイズ
-現在 Azure Active Directory は、SAML 2.0 プロトコルを使ったシングル サインオンをサポートする 360 以上のアプリケーションを含め、何千もの事前統合済みのアプリケーションを Azure AD アプリケーション ギャラリーでサポートしています。 ユーザーが Azure AD によって SAML を使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
+# <a name="customizing-claims-issued-in-the-saml-token-for-enterprise-applications-in-azure-active-directory"></a>Azure Active Directory のエンタープライズ アプリケーションの SAML トークンで発行された要求のカスタマイズ
+現在 Azure Active Directory では、Azure AD アプリ ギャラリーの事前統合済みアプリケーション、カスタム アプリケーションを含め、ほとんどのエンタープライズ アプリケーションでシングル サインオンをサポートしています。 ユーザーが Azure AD によって SAML 2.0 プロトコルを使ってアプリケーションに対して認証されると、Azure AD は、アプリケーションにトークンを送信します (HTTP POST 経由)。 その後、アプリケーションがトークンを検証し、ユーザー名とパスワードの入力を求める代わりに、検証済みのトークンを使用してユーザーをログオンします。 これらの SAML トークンには、「要求」と呼ばれる、ユーザーに関する情報が含まれています。
 
 ID 用語で「要求」とは、そのユーザーに発行するトークンの中にあるユーザーに関する ID プロバイダーが提示した情報を指します。 [SAML トークン](http://en.wikipedia.org/wiki/SAML_2.0)では、通常、このデータは SAML 属性ステートメントに含まれています。 ユーザーの一意の ID は通常、名前識別子とも呼ばれる SAML サブジェクトで表されます。
 
@@ -56,7 +55,7 @@ SAML トークンで発行された要求を編集する必要がある理由は
 
 ![ユーザー属性の編集][5]
 
-ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。 次の例を参照してください。
+ユーザー識別子の値で検証済みのドメインに参加するための **join()** 関数も追加されています。 **[ユーザー識別子]** で join() 関数を選ぶときは、最初にメール アドレスやユーザー プリンシパル名などのユーザー識別子を選び、2 番目のドロップダウン リストで検証済みのドメインを選びます。 検証済みドメインでメール アドレスを選ぶと、Azure AD は最初の値からユーザー名を抽出し (joe_smith@contoso.com から joe_smith)、それに contoso.onmicrosoft.com を追加します。次の例を参照してください。
 
 ![ユーザー属性の編集][6]
 

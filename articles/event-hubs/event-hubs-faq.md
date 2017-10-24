@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/28/2017
-ms.author: sethm;shvija
+ms.date: 10/05/2017
+ms.author: sethm
+ms.openlocfilehash: c4faa071c4f2401fe3e852e787e3b7d4da0c7d44
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7456da29aa07372156f2b9c08ab83626dab7cc45
-ms.openlocfilehash: e208e970de58505553802a4ed27d7f9da4070866
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="event-hubs-frequently-asked-questions"></a>Event Hubs のよく寄せられる質問
 
 ## <a name="general"></a>全般
@@ -44,7 +42,7 @@ Event Hubs のスループット ユニットは、Azure Portal または Event 
 * 最大 2 MB/秒のエグレス イベント (イベント ハブから使用されるイベント)。
 * 最大 84 GB のイベント ストレージ (既定の 24 時間の保持期間に対応できる十分なストレージ)。
 
-Event Hubs のスループット ユニットは、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。
+Event Hubs のスループット ユニットは、特定の時間に選択された単位の最大数に基づいて時間単位で課金されます。 使用量が増加するにつれて、自動的に[スループット ユニットの数値を増やす](event-hubs-auto-inflate.md)ことができます。
 
 ### <a name="how-are-event-hubs-throughput-unit-limits-enforced"></a>Event Hubs のスループット ユニット制限はどのように適用されますか。
 名前空間内のすべてのイベント ハブの合計イングレス スループットまたは合計イングレス イベント レートがスループット ユニットの上限の総計を超過した場合は、送信側が調整され、受信クォータを超えたことを示すエラーを受信します。
@@ -53,6 +51,8 @@ Event Hubs のスループット ユニットは、特定の時間に選択さ�
 
 ### <a name="is-there-a-limit-on-the-number-of-throughput-units-that-can-be-selected"></a>選択できるスループット ユニットの数に制限はありますか。
 名前空間ごとに 20 というスループット ユニットの既定のクォータがあります。 サポート チケットを送信することで、スループット ユニットの大きなクォータを要求できます。 20 というスループット ユニットの制限を超える 20 ～ 100 スループット ユニットのバンドルを使用できます。 20 を超えるスループット ユニットを使用すると、サポート チケットの送信なしでスループット ユニットの数を変更する機能は無効になることに注意してください
+
+[自動インフレ](event-hubs-auto-inflate.md)機能を使用すると、使用量が増えるにつれてスループット ユニットの数を自動的に増やすことができます。
 
 ### <a name="can-i-use-a-single-amqp-connection-to-send-and-receive-from-multiple-event-hubs"></a>単一の AMQP 接続を使用して、複数の イベント ハブから送受信を実行できますか。
 はい。すべてのイベント ハブが同じ名前空間にある限り可能です。
@@ -120,4 +120,4 @@ Event Hubs の詳細については、次のリンク先を参照してくださ
 
 * [Event Hubs の概要](event-hubs-what-is-event-hubs.md)
 * [Event Hub を作成する](event-hubs-create.md)
-
+* [Event Hubs の自動インフレ](event-hubs-auto-inflate.md)

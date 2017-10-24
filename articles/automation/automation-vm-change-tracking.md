@@ -1,6 +1,6 @@
 ---
 title: "Azure 仮想マシン内の変更を追跡する | Microsoft Docs"
-description: "変更の追跡を使用して、仮想マシン上のファイルとレジストリの変更を追跡します"
+description: "変更の追跡を使用して、仮想マシン上のファイルとレジストリの変更を追跡します。"
 services: automation
 documentationcenter: automation
 author: eslesar
@@ -16,113 +16,115 @@ ms.workload: infrastructure
 ms.date: 09/25/2017
 ms.author: eslesar
 ms.custom: 
+ms.openlocfilehash: 5c6e8390ec8533fc7ab281c212e47a6982b30f1a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: ba92390b684573818ec9d69fd8c7be6d064316c7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="track-changes-in-your-azure-virtual-machines"></a>Azure 仮想マシン内の変更を追跡する
 
-変更の追跡を有効にすることで、仮想マシン上のファイルと Windows レジストリ キーの変更を追跡できます。 . 構成の変更を識別することで、運用上の問題を特定できるようになります。
+変更の追跡を有効にすることで、仮想マシン上のファイルと Windows レジストリ キーの変更を追跡できます。 構成の変更を識別することで、運用上の問題を特定できるようになります。
 
 変更の追跡は、Azure 仮想マシンから直接有効にすることができます。
 
-Azure 仮想マシンがない場合は、[Windows クイック スタート](../virtual-machines/windows/quick-create-portal.md)または [Linux のクイック スタート](../virtual-machines/linux/quick-create-portal.md)を使用して作成できます。
+Azure 仮想マシンがない場合は、[Windows クイック スタート](../virtual-machines/windows/quick-create-portal.md)または [Linux のクイック スタート](../virtual-machines/linux/quick-create-portal.md)の記事の手順に従って作成できます。
 
-## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインする
-
+## <a name="sign-in-to-the-azure-portal"></a>Azure ポータルにサインインします。
 [Azure ポータル](https://portal.azure.com/)にサインインします。
 
 ## <a name="enable-change-tracking-for-an-azure-virtual-machine"></a>Azure 仮想マシンに対する変更の追跡を有効にする
 
-1. 画面左側の **[仮想マシン]** を選択します。
-1. 一覧から仮想マシンを選択します。
-1. [仮想マシン] 画面で、**[操作]** セクションの **[変更の追跡]** をクリックします。 **[更新管理の有効化]** 画面が開きます。
+1. Azure Portal の左ウィンドウで **[仮想マシン]** を選択します。
+2. 一覧から仮想マシンを選択します。
+3. 仮想マシンのウィンドウで、**[操作]** の **[変更の追跡]** を選択します。 
 
-   ![仮想マシンでの変更の追跡の開始](./media/automation-vm-change-tracking/change-onboard-vm-blade.png)
+   ![仮想マシンでの変更の追跡の開始](./media/automation-vm-change-tracking/change-onboard-vm-blade.png)  
+    **[更新管理の有効化]** ウィンドウが開きます。
 
-この仮想マシンで追跡の変更が有効になっているかどうかを確認する検証が行われます。 追跡の変更が有効になっていない場合は、ソリューションを有効にするためのオプションを示すバナーが表示されます。
+    この仮想マシンで変更の追跡が有効になっているかどうかを確認する検証が行われます。 変更の追跡が有効になっていない場合は、ソリューションを有効にするオプションを示すバナーが表示されます。
 
    ![変更の追跡の開始構成バナー](./media/automation-vm-change-tracking/change-onboard-banner.png)
 
-ソリューションを有効にするには、バナーをクリックします。 以下のものがない場合は、自動的に追加されます。
+4. ソリューションを有効にするには、バナーを選択します。 以下の項目がない場合は、自動的に追加されます。
 
-* [Log Analytics](../log-analytics/log-analytics-overview.md) ワークスペース
-* [Automation アカウント](../automation/automation-offering-get-started.md)
+   * [Log Analytics](../log-analytics/log-analytics-overview.md) ワークスペース
+   * [Automation アカウント](../automation/automation-offering-get-started.md)
 
-変更の追跡からのデータ ログを格納する Log Analytics ワークスペースと、変更を追跡するための Automation アカウントを選択し、**[有効化]** をクリックします。
-
-ステータス バーに、ソリューションが有効になっていることが通知されます。 このプロセスには最大 15 分かかる可能性があります。
+5. 変更の追跡からのデータ ログを格納する Log Analytics ワークスペースと、変更を追跡するための Automation アカウントを選択し、**[有効化]** を選択します。  
+    ステータス バーに、ソリューションが有効になっていることが通知されます。 このプロセスには最大 15 分かかる可能性があります。
 
 ## <a name="configure-change-tracking"></a>変更の追跡を構成する
 
-変更の追跡が有効になると、**[変更の追跡]** 画面が表示されます。 **[設定の編集]** をクリックして、追跡するファイルとレジストリ キーを選択します。
+変更の追跡が有効になると、**[変更の追跡]** ウィンドウが表示されます。 
 
-![変更の追跡の設定の編集](./media/automation-vm-change-tracking/change-edit-settings.png)
+追跡するファイルとレジストリ キーを選択するには、**[設定の編集]** を選択します。
 
-**[ワークスペースの構成]** 画面が開きます。 適切なタブの **[追加]** をクリックし、追跡する Windows レジストリ キー、Windows ファイル、または Linux を追加します。
+   ![変更の追跡の設定の編集](./media/automation-vm-change-tracking/change-edit-settings.png)
 
-## <a name="add-a-windows-registry-key"></a>Windows レジストリ キーを追加する
+   **[ワークスペースの構成]** ウィンドウが開きます。 
 
-1. **[ワークスペースの構成]** 画面の **[Windows レジストリ]** タブで、**[追加]** をクリックします。 **[変更履歴用の Windows レジストリを追加する]** 画面が開きます。
+**[ワークスペースの構成]** ウィンドウでは、次の 3 つのセクションで説明するように、追跡する Windows レジストリ キー、Windows ファイル、または Linux ファイルを追加します。
+
+### <a name="add-a-windows-registry-key"></a>Windows レジストリ キーを追加する
+
+1. **[Windows レジストリ]** タブで **[追加]** を選択します。  
+    **[変更履歴用の Windows レジストリを追加する]** ウィンドウが開きます。
 
    ![変更の追跡へのレジストリの追加](./media/automation-vm-change-tracking/change-add-registry.png)
 
-1. **[有効化]** で **[True]** を選択します。
-1. **[項目名]** フィールドにフレンドリ名を追加します。
-1. **[グループ]** フィールドに、グループ名を入力します (省略可能)。
-1. **[Windows レジストリ キー]** フィールドに、追跡するレジストリ キーの名前を追加します。
-1. **[保存]** をクリックします。
+2. **[有効化]** で **[True]** を選択します。
+3. **[項目名]** ボックスに、フレンドリ名を入力します。
+4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
+5. **[Windows レジストリ キー]** ボックスに、追跡するレジストリ キーの名前を入力します。
+6. [ **保存**] を選択します。
 
-## <a name="add-a-windows-file"></a>Windows ファイルを追加する
+### <a name="add-a-windows-file"></a>Windows ファイルを追加する
 
-1. **[ワークスペースの構成]** 画面の **[Windows ファイル]** タブで、**[追加]** をクリックします。**[変更履歴用の Windows ファイルを追加する]** 画面が開きます。
+1. **[Windows ファイル]** タブで **[追加]** を選択します。  
+    **[変更履歴用の Windows ファイルを追加する]** ウィンドウが開きます。
 
    ![変更の追跡への Windows ファイルの追加](./media/automation-vm-change-tracking/change-add-win-file.png)
 
-1. **[有効化]** で **[True]** を選択します。
-1. **[項目名]** フィールドにフレンドリ名を追加します。
-1. **[グループ]** フィールドに、グループ名を入力します (省略可能)。
-1. **[パスの入力]** フィールドに、追跡するファイルの完全なパスとファイル名を追加します。
-1. **[保存]** をクリックします。
+2. **[有効化]** で **[True]** を選択します。
+3. **[項目名]** ボックスに、フレンドリ名を入力します。
+4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
+5. **[パスの入力]** ボックスに、追跡するファイルの完全なパスとファイル名を入力します。
+6. [ **保存**] を選択します。
 
-## <a name="add-a-linux-file"></a>Linux ファイルを追加する
+### <a name="add-a-linux-file"></a>Linux ファイルを追加する
 
-1. **[ワークスペースの構成]** 画面の **[Linux ファイル]** タブで、**[追加]** をクリックします。**[変更履歴用の Linux ファイルを追加する]** 画面が開きます。
+1. **[Linux ファイル]** タブで **[追加]** を選択します。  
+    **[変更履歴用の Linux ファイルを追加する]** ウィンドウが開きます。
 
    ![変更の追跡への Linux ファイルの追加](./media/automation-vm-change-tracking/change-add-linux-file.png)
 
-1. **[有効化]** で **[True]** を選択します。
-1. **[項目名]** フィールドにフレンドリ名を追加します。
-1. **[グループ]** フィールドに、グループ名を入力します (省略可能)。
-1. **[パスの入力]** フィールドに、追跡するファイルの完全なパスとファイル名を追加します。
-1. **[パスの種類]** フィールドで、**[ファイル]** または **[ディレクトリ]** を選択します。
-1. 指定したパスとその下にあるすべてのファイルとパスの変更を追跡するには、**[再帰]** で、**[オン]** を選択します。 選択したパスまたはファイルのみを追跡するには、**[オフ]** を選択します。
-1. `sudo` コマンドを使用してアクセスする必要があるファイルを追跡するには、**[Sudo]** で、**[オン]** を選択します。 それ以外の場合は、**[オフ]** を選択します。
-1. **[保存]** をクリックします。
+2. **[有効化]** で **[True]** を選択します。
+3. **[項目名]** ボックスに、フレンドリ名を入力します。
+4. (省略可能) **[グループ]** ボックスに、グループ名を入力します。
+5. **[パスの入力]** ボックスに、追跡するファイルの完全なパスとファイル名を入力します。
+6. **[パスの種類]** ボックスで、**[ファイル]** または **[ディレクトリ]** を選択します。
+7. **[再帰]** で、指定したパスとその下にあるすべてのファイルとパスの変更を追跡するには、**[オン]** を選択します。 選択したパスまたはファイルのみを追跡するには、**[オフ]** を選択します。
+8. **[Sudo の使用]** で、`sudo` コマンドを使用してアクセスする必要があるファイルを追跡するには、で、**[オン]** を選択します。 それ以外の場合は、**[オフ]** を選択します。
+9. [ **保存**] を選択します。
 
 ## <a name="view-changes"></a>変更を表示する
 
-**[変更の追跡]** 画面で、仮想マシンで一定期間中に発生したさまざまなカテゴリの変更を確認できます。
+**[変更の追跡]** ウィンドウで、仮想マシンで一定期間中に発生したさまざまなカテゴリの変更を確認できます。
 
    ![変更の追跡での変更の表示](./media/automation-vm-change-tracking/change-view-changes.png)
 
-表示する変更のカテゴリと時間の範囲を選択できます。 画面の上部に、一定期間の変更のグラフィック表示が表示されます。
-画面の下部に、最近の変更の一覧が表示されます。
+表示する変更のカテゴリと時間の範囲を選択できます。 ウィンドウ上部には、一定期間の変更がグラフィカル表示されます。 ウィンドウ下部に、最近の変更の一覧が表示されます。
 
 ## <a name="view-change-tracking-log-data"></a>変更の追跡のログ データを表示する
 
-変更の追跡は、Log Analytics に送信されるログ データを生成します。 クエリを実行してログを検索するには、**[変更の追跡]** 画面の上部にある **[Log Analytics]** をクリックします。
+変更の追跡は、Log Analytics に送信されるログ データを生成します。 クエリを実行してログを検索するには、**[変更の追跡]** ウィンドウの上部にある **[Log Analytics]** ウィンドウを選択します。
 
    ![変更の追跡の Log Analytics](./media/automation-vm-change-tracking/change-log-analytics.png)
 
-Log Analytics でのログ ファイルの検索の実行については、「[Log Analytics とは](../log-analytics/log-analytics-overview.md)」を参照してください。
+Log Analytics でのログ ファイルの実行と検索については、[Log Analytics ](../log-analytics/log-analytics-overview.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 
-* 変更の追跡の詳細については、[変更の追跡](../log-analytics/log-analytics-change-tracking.md)に関する記事を参照してください。
-* 仮想マシンの更新の詳細については、[更新管理](../operations-management-suite/oms-solution-update-management.md)に関する記事を参照してください。
-
+* 変更の追跡の詳細については、「[変更の追跡ソリューションを使用してユーザーの環境内のソフトウェアの変更を追跡する](../log-analytics/log-analytics-change-tracking.md)」を参照してください。
+* 仮想マシンの更新管理の詳細については、「[OMS の更新管理ソリューション](../operations-management-suite/oms-solution-update-management.md)」を参照してください。

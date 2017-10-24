@@ -16,12 +16,11 @@ ms.topic: article
 ms.date: 05/24/2017
 ms.author: anhoh
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 53059c09d454dedbd65ef188a0dd91d497b0e502
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 7326dce288996f0690be3b66882b8b4c21a35348
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-hierarchical-resource-model-and-core-concepts"></a>Azure Cosmos DB 階層型リソース モデルと中心的概念
 Azure Cosmos DB が管理するデータベースのエンティティを**リソース**と呼びます。 各リソースは、論理 URI によって一意に識別されます。 リソースを対話的に扱う際は、標準の HTTP 動詞、要求/応答ヘッダー、状態コードを使用します。 
@@ -462,5 +461,4 @@ HTTP コマンドを使用したリソースの操作の詳細については、
 [1]: media/documentdb-resources/resources1.png
 [2]: media/documentdb-resources/resources2.png
 [3]: media/documentdb-resources/resources3.png
-
 

@@ -1,11 +1,11 @@
 ---
-title: "プライベート Docker コンテナー レジストリの作成 - Azure CLI | Microsoft Docs"
-description: "Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成と管理についての概要"
+title: "クイック スタート - Azure CLI を使用した Azure のプライベート Docker レジストリの作成"
+description: "Azure CLI を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
 services: container-registry
 documentationcenter: 
-author: stevelas
-manager: balans
-editor: cristyg
+author: neilpeterson
+manager: timlt
+editor: tysonn
 tags: 
 keywords: 
 ms.assetid: 29e20d75-bf39-4f7d-815f-a2e47209be7d
@@ -14,137 +14,147 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/06/2017
-ms.author: stevelas
+ms.date: 09/20/2017
+ms.author: nepeters
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 06967315dfa43e791e662a689ceb993c4af1c1e3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2875f4089231ed12a0312b2c2e077938440365c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="create-a-private-docker-container-registry-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用したプライベート Docker コンテナー レジストリの作成
-Linux、Mac、または Windows コンピューターから [Azure CLI 2.0](https://github.com/Azure/azure-cli) のコマンドを使用して、コンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure Portal](container-registry-get-started-portal.md) を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+# <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
 
+Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure Container Registry インスタンスを Azure CLI で作成する方法について詳しく説明します。
 
-* 背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
-* Container Registry CLI コマンド (`az acr` コマンド) に関するヘルプについては、任意のコマンドに `-h` のパラメーターを渡します。
+このクイック スタートでは、Azure CLI バージョン 2.0.12 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
+Docker もローカルにインストールする必要があります。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
 
-## <a name="prerequisites"></a>前提条件
-* **Azure CLI 2.0**: CLI 2.0 をインストールし、利用を開始するには、[インストール手順](/cli/azure/install-azure-cli)を参照してください。 `az login` を実行して Azure サブスクリプションにログインします。 詳細については、[CLI 2.0 の概要](/cli/azure/get-started-with-azure-cli)に関する記事を参照してください。
-* **リソース グループ**: コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 CLI 2.0 を使用してリソース グループを作成するには、[CLI 2.0 のリファレンス](/cli/azure/group)を参照してください。
-* **ストレージ アカウント** (省略可能): 同じ場所にコンテナー レジストリをバックアップするには、Azure Standard [ストレージ アカウント](../storage/common/storage-introduction.md)を作成します。 `az acr create` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 CLI 2.0 を使用してストレージ アカウントを作成するには、[CLI 2.0 のリファレンス](/cli/azure/storage/account)を参照してください。 現在、Premium Storage はサポートされていません。
-* **サービス プリンシパル** (省略可能): CLI を使用してレジストリを作成する場合、既定ではアクセス権が設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てる (または新しく作成して割り当てる) か、レジストリの管理者ユーザー アカウントを有効にします。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
+## <a name="create-a-resource-group"></a>リソース グループの作成
 
-## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
-コンテナー レジストリを作成するには、`az acr create` コマンドを実行します。
+[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
 
-> [!TIP]
-> レジストリを作成する場合は、アルファベットと数字のみを含む、グローバルに一意のトップレベル ドメイン名を指定します。 この例のレジストリの名前は `myRegistry1` ですが、独自の一意の名前に置き換えてください。
->
->
+次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
 
-次のコマンドでは、最小限のパラメーターを使用して、リソース グループ `myResourceGroup`にコンテナー レジストリ `myRegistry1` を作成します。また、*Basic* SKU を使用します。
-
-```azurecli
-az acr create --name myRegistry1 --resource-group myResourceGroup --sku Basic
+```azurecli-interactive
+az group create --name myResourceGroup --location eastus
 ```
 
-* `--storage-account-name` はオプションです。 指定しない場合、レジストリ名とタイムスタンプから成る名前のストレージ アカウントが指定したリソース グループに作成されます。
+## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
+
+Azure Container Registry は、`Basic`、`Managed_Basic`、`Managed_Standard`、および `Managed_Premium` の複数の SKU でご利用いただけます。 `Managed_*` SKU は、管理対象ストレージや webhook のような高度な機能を提供しますが、これらは現在プレビュー中であり、一部の Azure リージョンでは利用できません。 このクイック スタートでは、すべてのリージョンで利用できるため、`Basic` SKU を選択します。
+
+[az acr create](/cli/azure/acr#create) コマンドを使用して ACR インスタンスを作成します。
+
+レジストリの名前は**一意である必要があります**。 次の例では、*myContainerRegistry007* を使用します。 これを一意の値に更新します。
+
+```azurecli
+az acr create --name myContainerRegistry007 --resource-group myResourceGroup --admin-enabled --sku Basic
+```
 
 レジストリが作成されると、出力は次のようになります。
 
 ```azurecli
 {
-  "adminUserEnabled": false,
-  "creationDate": "2017-06-06T18:36:29.124842+00:00",
-  "id": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myResourceGroup/providers/Microsoft.ContainerRegistry
-/registries/myRegistry1",
-  "location": "southcentralus",
-  "loginServer": "myregistry1.azurecr.io",
-  "name": "myRegistry1",
+  "adminUserEnabled": true,
+  "creationDate": "2017-09-08T22:32:13.175925+00:00",
+  "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry007",
+  "location": "eastus",
+  "loginServer": "myContainerRegistry007.azurecr.io",
+  "name": "myContainerRegistry007",
   "provisioningState": "Succeeded",
+  "resourceGroup": "myResourceGroup",
   "sku": {
     "name": "Basic",
     "tier": "Basic"
   },
   "storageAccount": {
-    "name": "myregistry123456789"
+    "name": "mycontainerregistr223140"
   },
   "tags": {},
   "type": "Microsoft.ContainerRegistry/registries"
 }
-
 ```
 
+このクイック スタートの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrname>` を使用します。
 
-次の点に特に注意してください。
+## <a name="log-in-to-acr"></a>ACR へのログイン
 
-* `id` - サブスクリプション内のレジストリの識別子。サービス プリンシパルを割り当てる場合に必要です。
-* `loginServer` - [レジストリにログイン](container-registry-authentication.md)するために指定する完全修飾名。 この例では、`myregistry1.exp.azurecr.io` です (すべて小文字)。
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 そのためには、[az acr login](/cli/azure/acr#login) コマンドを使用します。
 
-## <a name="assign-a-service-principal"></a>サービス プリンシパルの割り当て
-CLI 2.0 コマンドを使用して、Azure Active Directory サービス プリンシパルをレジストリに割り当てます。 これらの例のサービス プリンシパルでは所有者ロールが割り当てられますが、必要に応じて[他のロール](../active-directory/role-based-access-control-configure.md)を割り当てることができます。
-
-### <a name="create-a-service-principal-and-assign-access-to-the-registry"></a>サービス プリンシパルを作成し、レジストリにアクセス権を割り当てる
-次のコマンドでは、`--scopes` パラメーターで渡したレジストリ ID に新しいサービス プリンシパルで所有者ロールのアクセス権を割り当てます。 `--password` パラメーターで強力なパスワードを指定します。
-
-```azurecli
-az ad sp create-for-rbac --scopes /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --password myPassword
+```azurecli-interactive
+az acr login --name <acrname>
 ```
 
+このコマンドは、完了すると "Login Succeeded (ログインに成功しました)" というメッセージを返します。
 
+## <a name="push-image-to-acr"></a>ACR へのイメージのプッシュ
 
-### <a name="assign-an-existing-service-principal"></a>既存のサービス プリンシパルを割り当てる
-既存のサービス プリンシパルでレジストリに所有者ロールのアクセス権を割り当てる場合は、次の例のようなコマンドを実行します。 `--assignee` パラメーターを使用して、サービス プリンシパルのアプリ ID を渡します。
+Azure Container Registry にイメージをプッシュするには、まずイメージを用意する必要があります。 必要な場合は、次のコマンドを実行して、事前に作成したイメージを Docker Hub からプルします。
 
-```azurecli
-az role assignment create --scope /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/myresourcegroup/providers/Microsoft.ContainerRegistry/registries/myregistry1 --role Owner --assignee myAppId
+```bash
+docker pull microsoft/aci-helloworld
 ```
 
+イメージは、ACR ログイン サーバー名でタグ付けする必要があります。 ACR インスタンスのログイン サーバー名を返す次のコマンドを実行します。
 
-
-## <a name="manage-admin-credentials"></a>管理者の資格情報の管理
-管理者アカウントは、コンテナー レジストリごとに自動的に作成され、既定で無効になります。 次の例では、コンテナー レジストリの管理者の資格情報を管理する `az acr` CLI コマンドを示しています。
-
-### <a name="obtain-admin-user-credentials"></a>管理者ユーザーの資格情報を取得する
-```azurecli
-az acr credential show -n myRegistry1
+```bash
+az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
-### <a name="enable-admin-user-for-an-existing-registry"></a>既存のレジストリの管理者ユーザーを有効にする
-```azurecli
-az acr update -n myRegistry1 --admin-enabled true
+[docker tag](https://docs.docker.com/engine/reference/commandline/tag/) コマンドを使用してイメージにタグ付けします。 *<acrLoginServer>* を ACR インスタンスのログイン サーバー名で置き換えます。
+
+```
+docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-### <a name="disable-admin-user-for-an-existing-registry"></a>既存のレジストリの管理者ユーザーを無効にする
-```azurecli
-az acr update -n myRegistry1 --admin-enabled false
+最後に、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用して、ACR インスタンスにイメージをプッシュします。 *<acrLoginServer>* を ACR インスタンスのログイン サーバー名で置き換えます。
+
+```
+docker push <acrLoginServer>/aci-helloworld:v1
 ```
 
-## <a name="list-images-and-tags"></a>イメージとタグの一覧表示
-`az acr` CLI コマンドを使用して、リポジトリ内のイメージとタグを照会します。
+## <a name="list-container-images"></a>コンテナー イメージの一覧表示
 
-> [!NOTE]
-> 現在、Container Registry では、`docker search` コマンドによるイメージとタグの照会をサポートしていません。
-
-
-### <a name="list-repositories"></a>リポジトリの一覧を表示する
-次の例では、JSON (JavaScript Object Notation) 形式でレジストリ内のリポジトリの一覧を表示します。
+次の例は、レジストリ内のリポジトリを一覧表示します。
 
 ```azurecli
-az acr repository list -n myRegistry1 -o json
+az acr repository list -n <acrname> -o table
 ```
 
-### <a name="list-tags"></a>タグの一覧を表示する
-次の例では、JSON 形式で **samples/nginx** リポジトリのタグの一覧を表示します。
+出力:
+
+```json
+Result
+----------------
+aci-helloworld
+```
+
+次の例は、**aci-helloworld** リポジトリのタグを一覧表示します。
 
 ```azurecli
-az acr repository show-tags -n myRegistry1 --repository samples/nginx -o json
+az acr repository show-tags -n <acrname> --repository aci-helloworld -o table
+```
+
+出力:
+
+```Result
+--------
+v1
+```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、ACR インスタンス、およびすべてのコンテナー イメージを削除できます。
+
+```azurecli-interactive
+az group delete --name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
 
+このクイック スタートでは、Azure CLI を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Container Instances のチュートリアル](../container-instances/container-instances-tutorial-prepare-app.md)

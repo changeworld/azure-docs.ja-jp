@@ -13,17 +13,15 @@ ms.devlang: node
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 5/27/2017
+ms.date: 9/14/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 7bf423fd05d6651bf16693e6d6930fada8b5da70
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: f48c4bd27b1df1d02090ed51172f943e50c76c3e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="connect-raspberry-pi-to-azure-iot-hub-nodejs"></a>Raspberry Pi の Azure IoT Hub への接続 (Node.js)
 
 [!INCLUDE [iot-hub-get-started-device-selector](../../includes/iot-hub-get-started-device-selector.md)]
@@ -37,10 +35,8 @@ ms.lasthandoff: 08/23/2017
 
 * IoT Hub を作成します。
 * Pi のデバイスを IoT Hub に登録します。
-* Raspberry Pi をセットアップします。
+* Raspberry Pi を設定します。
 * Pi でサンプル アプリケーションを実行し、センサー データを IoT Hub に送信します。
-
-作成した IoT Hub に Raspberry Pi を接続します。 次に、BME280 センサーから気温と湿度のデータを収集するために、Pi のサンプル アプリケーションを実行します。 最後に、センサー データを IoT Hub に送信します。
 
 ## <a name="what-you-learn"></a>学習内容
 
@@ -53,10 +49,10 @@ ms.lasthandoff: 08/23/2017
 
 ![必要なもの](media/iot-hub-raspberry-pi-kit-node-get-started/0_starter_kit.jpg)
 
-* Raspberry Pi 2 または Raspberry Pi 3 ボード。
+* Raspberry Pi 2 ボードまたは Raspberry Pi 3 ボード。
 * 有効な Azure サブスクリプション Azure アカウントがない場合は、[無料試用版の Azure アカウント](https://azure.microsoft.com/free/)を数分で作成できます。
-* モニター、USB キーボード、Pi に接続するマウス。
-* Mac PC または Windows か Linux をインストールした PC。
+* Pi に接続するモニター、USB キーボード、およびマウス。
+* Mac か、Windows または Linux を実行している PC。
 * インターネット接続。
 * 16 GB 以上の microSD カード。
 * USB-SD アダプターまたは microSD カード (microSD カードに オペレーティング システム イメージを書き込むため)。
@@ -71,30 +67,35 @@ ms.lasthandoff: 08/23/2017
 
 
 > [!NOTE] 
-サンプル コードはセンサー データのシミュレーションをサポートしているため、これらの品目は省略可能です。
+省略可能な項目がない場合は、シミュレートされたセンサー データをご利用いただけます。
 
 [!INCLUDE [iot-hub-get-started-create-hub-and-device](../../includes/iot-hub-get-started-create-hub-and-device.md)]
 
-## <a name="setup-raspberry-pi"></a>Raspberry Pi のセットアップ
+## <a name="set-up-raspberry-pi"></a>Raspberry Pi のセットアップ
 
 ### <a name="install-the-raspbian-operating-system-for-pi"></a>Pi の Raspbian オペレーティング システムのインストール
 
 microSD カードに Raspbian イメージをインストールするための準備をします。
 
 1. Raspbian をダウンロードします。
-   1. [Raspbian Jessie with Desktop](https://www.raspberrypi.org/downloads/raspbian/) (.zip ファイル) をダウンロードします。
+   1. [Raspbian Stretch をダウンロードします](http://downloads.raspberrypi.org/raspbian/images/raspbian-2017-07-05/) (.zip ファイル)。
+
+   > [!WARNING]
+   > `raspbian-2017-07-5` zip イメージをダウンロードするには、上のリンクを使用してください。 最新バージョンの Raspbian イメージには Wiring-Pi ノードに関する既知の問題がいくつかあるため、次の手順でエラーが発生するおそれがあります。
    1. コンピューター上のフォルダーに Raspbian イメージを抽出します。
+
 1. microSD カードに Raspbian をインストールします。
    1. [Etcher SD カード書き込みユーティリティをダウンロードしてインストールします](https://etcher.io/)。
    1. Etcher を実行し、手順 1. で抽出した Raspbian イメージを選択します。
-   1. microSD カード ドライブを選択します。 適切なドライブが既に選択されている場合があります。
+   1. microSD カード ドライブを選択します。 Etcher では適切なドライブが既に選択されている場合があります。
    1. [Flash (フラッシュ)] をクリックして、microSD カードに Raspbian をインストールします。
    1. インストールが完了したら、コンピューターから microSD カードを取り出します。 Etcher では完了時に microSD カードを自動的に取り出すか、マウント解除するため、microSD カードを直接取り出しても問題ありません。
    1. microSD カードを Pi に挿入します。
 
 ### <a name="enable-ssh-and-i2c"></a>SSH および I2C の有効化
 
-1. Pi にモニター、キーボード、マウスを接続し、Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にログインします。
+1. Pi をモニター、キーボード、およびマウスに接続します。 
+1. Pi を起動してから、`pi` をユーザー名として、`raspberry` をパスワードとして使用して Raspbian にログインします。
 1. Raspberry アイコン > **[Preferences]\(設定)** > **[Raspberry Pi Configuration]\(Raspberry Pi 構成)** の順にクリックします。
 
    ![[Raspbian Preferences] (Raspbian 設定)メニュー](media/iot-hub-raspberry-pi-kit-node-get-started/1_raspbian-preferences-menu.png)
@@ -112,7 +113,7 @@ SSH と I2C を有効にする際の参考ドキュメントは [raspberrypi.org
 
 ![Raspberry Pi とセンサーの接続](media/iot-hub-raspberry-pi-kit-node-get-started/3_raspberry-pi-sensor-connection.png)
 
-BME280 センサーでは、温度と湿度のデータを収集できます。 また、デバイスとクラウドとの間で通信が行われると、LED が点滅します。 
+BME280 センサーでは、温度と湿度のデータを収集できます。 デバイスがメッセージをクラウドに送信すると、LED が点滅します。 
 
 センサーの各ピンで、次のように接続します。
 
@@ -125,7 +126,7 @@ BME280 センサーでは、温度と湿度のデータを収集できます。 
 | LED VDD (ピン 18F)        | GPIO 24 (ピン 18)       | 白いケーブル   |
 | LED GND (ピン 17F)        | GND (ピン 20)           | 黒いケーブル   |
 
-クリックすると [Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) が表示されて参照できます。
+[Raspberry Pi 2 & 3 Pin mappings](https://developer.microsoft.com/windows/iot/docs/pinmappingsrpi) をクリックして参照します。
 
 BME280 が正常に Raspberry Pi に接続されると、下の図のようになります。
 
@@ -144,7 +145,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
 ### <a name="clone-sample-application-and-install-the-prerequisite-packages"></a>サンプル アプリケーションの複製と前提条件となるパッケージのインストール
 
-1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
+1. 以下の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
    
    **Windows ユーザー**
    1. Windows 版の [PuTTY](http://www.putty.org/) をダウンロードしてインストールします。 
@@ -156,30 +157,30 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    
    Ubuntu または macOS に組み込まれている SSH クライアントを使用します。 SSH を使用して Pi を接続するには、`ssh pi@<ip address of pi>` を実行する必要がある場合があります。
    > [!NOTE] 
-   既定のユーザー名は `pi` で、パスワードは`raspberry` です。
+   既定のユーザー名は `pi`、パスワードは`raspberry` です。
 
 1. Pi に Node.js と NPM をインストールします。
    
-   まず、次のコマンドで Node.js のバージョンを確認する必要があります。 
+   まず、ご使用の Node.js のバージョンを確認します。 
    
    ```bash
    node -v
    ```
 
-   バージョンが 4.x 未満か、または、Pi に Node.js がない場合は、次のコマンドを実行して、Node.js をインストールするか、更新します。
+   バージョンが 4.x より前であるか、Node.js が Pi にない場合は、最新バージョンをインストールします。
 
    ```bash
    curl -sL http://deb.nodesource.com/setup_4.x | sudo -E bash
    sudo apt-get -y install nodejs
    ```
 
-1. 次のコマンドを実行して、サンプル アプリケーションを複製します。
+1. サンプル アプリケーションを複製します。
 
    ```bash
    git clone https://github.com/Azure-Samples/iot-hub-node-raspberrypi-client-app
    ```
 
-1. 次のコマンドによりすべてのパッケージをインストールします。 Azure IoT デバイス SDK、BME280 センサー ライブラリおよび配線 Pi ライブラリが含まれています。
+1. サンプルのすべてのパッケージをインストールします。 このインストールには、Azure IoT device SDK、BME280 センサー ライブラリ、および Wiring Pi ライブラリが含まれています。
 
    ```bash
    cd iot-hub-node-raspberrypi-client-app
@@ -198,11 +199,11 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
    ![config ファイル](media/iot-hub-raspberry-pi-kit-node-get-started/6_config-file.png)
 
-   このファイルには、構成可能な 2 つの項目があります。 1 つ目は `interval` で、クラウドに送信する 2 つのメッセージの時間間隔 (ミリ秒) を定義します。 2 つ目は `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
+   このファイルには、構成可能な 2 つの項目があります。 1 つは `interval` で、クラウドに送信するメッセージ間の時間間隔 (ミリ秒) を定義します。 もう 1 つは `simulatedData` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
 
    **センサーがない**場合は、`simulatedData` 値を `true` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
 
-1. Control + O > Enter > Control + X キーを押し、保存して終了します。
+1. Ctrl + O キー、Enter キー、Ctrl + X キーの順に押し、保存して終了します。
 
 ### <a name="run-the-sample-application"></a>サンプル アプリケーションの実行
 
@@ -222,7 +223,6 @@ IoT Hub に送信されるセンサー データとメッセージを示す次�
 
 ## <a name="next-steps"></a>次のステップ
 
-サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 コマンド ライン インターフェイスで Raspberry Pi にメッセージを送信したり、Raspberry Pi から IoT Hub に送信されたメッセージを表示したりする方法については、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
+サンプル アプリケーションを実行してセンサー データを収集し、IoT Hub に送信します。 コマンド ライン インターフェイスで Raspberry Pi にメッセージを送信したり、Raspberry Pi から IoT ハブに送信されたメッセージを表示したりする方法については、[iothub-explorer を使用したクラウド デバイス メッセージングの管理に関するチュートリアル](https://docs.microsoft.com/en-gb/azure/iot-hub/iot-hub-explorer-cloud-device-messaging)を参照してください。
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]
-

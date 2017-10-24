@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/25/2017
 ms.author: elioda
+ms.openlocfilehash: df49f054b5eb26c3d68f088bc05f5209cf2ebccf
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 9b7316a5bffbd689bdb26e9524129ceed06606d5
-ms.openlocfilehash: d7c257553d25694005bced745f793951cc9f8951
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-device-twins-node"></a>デバイス ツインの使用 (Node)
 [!INCLUDE [iot-hub-selector-twin-get-started](../../includes/iot-hub-selector-twin-get-started.md)]
@@ -27,16 +26,16 @@ ms.lasthandoff: 09/08/2017
 このチュートリアルの最後には、次の 2 つの Node.js コンソール アプリが完成します。
 
 * **AddTagsAndQuery.js**: Node.js バックエンド アプリで、タグを追加してデバイス ツインのクエリを実行します。
-* **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT Hub に接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
+* **TwinSimulatedDevice.js**: 以前作成したデバイス ID を使用して IoT ハブに接続するデバイスをシミュレートする Node.js アプリで、接続の状態を報告します。
 
 > [!NOTE]
-> デバイス アプリとバックエンド アプリ両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDK][lnk-hub-sdks]」の記事で取り上げています。
+> デバイス アプリケーションとバックエンド アプリの両方の作成に利用できる Azure IoT SDK に関する情報は、「[Azure IoT SDKs (Azure IoT SDK)][lnk-hub-sdks]」の記事で取り上げています。
 > 
 > 
 
 このチュートリアルを完了するには、以下が必要です。
 
-* Node.js バージョン 0.10.x 以降。
+* Node.js バージョン 4.0.x 以降。
 * アクティブな Azure アカウント。 (アカウントがない場合は、[無料アカウント][lnk-free-trial]を数分で作成できます)。
 
 [!INCLUDE [iot-hub-get-started-create-hub](../../includes/iot-hub-get-started-create-hub.md)]
@@ -115,7 +114,7 @@ ms.lasthandoff: 09/08/2017
    
     前のコードは 2 つのクエリを実行します。1 つ目では、**Redmond43** 工場にあるデバイスのデバイス ツインのみを選択し、2 つ目のクエリで携帯ネットワーク経由で接続しているデバイスのみを選択するよう絞り込みます。
    
-    前のコードでは、**query** オブジェクトの作成時に返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインの結果ではない場合に使用できます。
+    前のコードでは、**query** オブジェクトの作成時に、返されるドキュメントの最大数を指定します。 **query** オブジェクトには、**nextAsTwin** メソッドを複数回呼び出してすべての結果を取得する際に使用できる **hasMoreResults** のブール型プロパティが含まれます。 **next** というメソッドは、集計クエリの結果など、デバイス ツインではない結果に使用できます。
 6. 以下を使用してアプリケーションを実行します。
    
         node AddTagsAndQuery.js
@@ -226,4 +225,3 @@ ms.lasthandoff: 09/08/2017
 
 [lnk-methods-tutorial]: iot-hub-node-node-direct-methods.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-

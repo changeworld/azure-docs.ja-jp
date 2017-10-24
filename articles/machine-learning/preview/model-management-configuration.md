@@ -10,12 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
+ms.openlocfilehash: c89596a6d721c4cba899b8a6e2859ee36cba7b80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 06fbf6019aa4a2ceab99a83efe072fc0b71bfbf4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="model-management-setup"></a>モデル管理のセットアップ
 
@@ -122,7 +121,7 @@ az ml env set -n [environment name] -g [resource group]
 Web サービスを実稼働環境にデプロイするには、まず次のコマンドを使用して環境をセットアップします。
 
 ```azurecli
-az ml env setup -c --cluster-name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
+az ml env setup -c --name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
 ```
 
 クラスター環境のセットアップ コマンドは、サブスクリプション内に次のリソースを作成します。
@@ -143,6 +142,9 @@ az ml env set -n [environment name] -g [resource group]
 >[!NOTE] 
 > 環境が作成された後、以降のデプロイでは、上の設定コマンドを使用してそれを再利用するだけで済みます。
 >
+
+>[!NOTE] 
+>HTTPS エンドポイントを作成するには、クラスターの作成時に、az ml env の設定で --cert-name および --cert-pem オプションを使用してSSL 証明書を指定します。 これにより、提供された証明書を使用して保護された https で要求を処理するようにクラスターが設定されます。 設定が完了したら、クラスターの FQDN を参照する CNAME DNS レコードを作成します。
 
 ### <a name="create-an-account"></a>アカウントの作成
 モデルをデプロイするにはアカウントが必要です。 これをアカウントごとに 1 回実行する必要があり、複数のデプロイで同じアカウントを再利用できます。
@@ -167,4 +169,3 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 
 ### <a name="next-steps"></a>次のステップ
 ギャラリーにある多数のサンプルのうちの 1 つを試してください。
-

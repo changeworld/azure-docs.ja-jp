@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
+ms.openlocfilehash: ed42af90a9c467042ff2537a38646f59147fb5ad
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: ea4421f7b22cf60b2c3e42b59057162ad56f412e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
 Azure Active Directory (AD) では、アプリをセキュリティ保護し、サービスを守るための方法が複数提供されています。  これらの独自機能の 1 つとして、条件付きアクセスがあります。  条件付きアクセスを使用することで、開発者や企業のお客様は、次のようなさまざまな方法でサービスを保護できます。
@@ -38,7 +36,7 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 
 ## <a name="how-does-conditional-access-impact-an-app"></a>条件付きアクセスがアプリに与える影響
 
-### <a name="app-topologies-impacted"></a>アプリケーション トポロジが影響を受ける
+### <a name="app-types-impacted"></a>アプリの種類が影響を受ける
 
 最も一般的なケースは、条件付きアクセスによってアプリの動作が変更されない、または開発者からの変更を必要としない場合です。  アプリが間接的、またはサイレントでサービスのトークンを要求する特定の場合のみ、アプリが条件付きアクセス "チャレンジ" を処理するためにコードを変更する必要があります。  これは、対話型のサインインを要求するだけで実行できる場合があります。 
 
@@ -48,6 +46,7 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 * On-Behalf-Of フローを実行するアプリ
 * 複数のサービスとリソースにアクセスするアプリ
 * ADAL.js を使用するシングル ページ アプリケーション
+* リソースを呼び出す Web Apps
 
 条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azuread-connected-apps.md#configure-per-application-access-rules)」を参照してください。
 
@@ -58,8 +57,8 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 シナリオによっては、条件付きアクセスを処理するためにコードの変更が必要なものと、不要なものがあります。  これは、それぞれの違いをわかりやすく説明する、条件付きアクセスを使用した多要素認証のシナリオです。
 
 * シングル テナントの iOS アプリを構築して、条件付きアクセス ポリシーを適用するとします。  アプリがユーザーのサインインを処理し、API へのアクセスは要求されません。  ユーザーがサインインすると、ポリシーが自動的に呼び出され、ユーザーは、多要素認証 (MFA) を実行する必要があります。 
-* Microsoft Graph を使用して Exchange などのサービスにアクセスするマルチテナント Web アプリを作成するとします。  このアプリを採用する企業のお客様は、SharePoint Online のポリシーを設定します。  Web アプリが Microsoft Graph のためのトークンを要求すると、Microsoft Service 上 (具体的には Graph からアクセスできるサービス) のポリシーが適用されます。  このエンドユーザーには、MFA が要求されます。 この場合、有効なトークンでエンドユーザーがサインインすると、Web アプリに "チャレンジ" 要求が返されます。  
-* 中間層サービスを使用して Microsoft Graph にアクセスするネイティブ アプリを作成するとします。  このアプリを使用する会社のお客様は、Exchange Online にポリシーを適用ます。  エンドユーザーがサインインすると、ネイティブ アプリケーションは中間層へのアクセスを要求し、トークンを送信します。  中間層では On-Behalf-Of フローが実行され、MS Graph へのアクセスが要求されます。  この時点では、"チャレンジ" 要求は、中間層に提示されます。 中間層では、条件付きアクセス ポリシーに準拠する必要があるネイティブのアプリケーションにチャレンジを送信します。
+* Microsoft Graph を使用して Exchange などのサービスにアクセスするマルチテナント Web アプリを作成するとします。  このアプリを採用する企業のお客様は、Exchange のポリシーを設定します。  Web アプリが MS Graph のトークンを要求するとき、そのアプリはポリシーへの準拠が求められません。  エンドユーザーは有効なトークンでサインインされます。 アプリが Microsoft Graph に対してこのトークンを使用して、Exchange データにアクセスしようとすると、```WWW-Authenticate``` ヘッダーで Web アプリに要求 "チャレンジ" が返されます。  アプリは新しい要求で ```claims``` を使用でき、エンドユーザーは条件に準拠するよう求められます。 
+* 中間層サービスを使用して、ダウンストリーム API にアクセスするネイティブ アプリを作成するとします。  このアプリを使用する会社のお客様は、ダウンストリーム API にポリシーを適用します。  エンドユーザーがサインインすると、ネイティブ アプリケーションは中間層へのアクセスを要求し、トークンを送信します。  中間層では On-Behalf-Of フローが実行され、ダウンストリーム API へのアクセスが要求されます。  この時点では、"チャレンジ" 要求は、中間層に提示されます。 中間層では、条件付きアクセス ポリシーに準拠する必要があるネイティブのアプリケーションにチャレンジを送信します。
 
 ### <a name="complying-with-a-conditional-access-policy"></a>条件付きアクセス ポリシーへの準拠
 
@@ -90,7 +89,7 @@ Azure AD の条件付きアクセスは、[Azure AD Premium](../active-directory
 
 次のセクションでは、もう少し複雑な一般的なシナリオについて説明します。  基本的な運用原則では、条件付きアクセス ポリシーは、Microsoft Graph を通してアクセスされた場合を除いて、条件付きアクセス ポリシーが適用されるサービスのトークンが要求されたときに評価されます。
 
-### <a name="scenario-app-accessing-microsoft-graph"></a>シナリオ: Microsoft Graph にアクセスするアプリ
+## <a name="scenario-app-accessing-microsoft-graph"></a>シナリオ: Microsoft Graph にアクセスするアプリ
 
 このシナリオでは、Web アプリによって Microsoft Graph へのアクセスを要求する場合について説明します。 この場合、条件付きアクセス ポリシーは、SharePoint、Exchange、または Microsoft Graph を通じてワークロードとしてアクセスされるその他のサービスに割り当てられます。  この例では、Sharepoint Online に条件付きアクセス ポリシーがあると仮定します。
 
@@ -109,9 +108,41 @@ www-authenticate="Bearer realm="", authorization_uri="https://login.windows.net/
 
 要求チャレンジは ```WWW-Authenticate``` ヘッダーに含まれ、次の要求の要求パラメーターを抽出するために解析できます。  要求チャレンジを新しい要求に追加すると、Azure AD でユーザーがサインインしたときに条件付きアクセス ポリシーが評価され、アプリは条件付きアクセス ポリシーに準拠します。  Sharepoint Online のエンドポイントに同じ要求を繰り返しても成功します。
 
-要求チャレンジを処理するコード サンプルについては、ADAL .NET 用 [.NET デスクトップのコード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-native-desktop)または、ADAL .NET 用 [On-Behalf-Of コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。
+```WWW-Authenticate``` ヘッダーは一意の構造体を持つため、解析して、値を抽出するのは簡単ではありません。  次の方法は簡単で役に立ちます。
 
-### <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
+    ```C#
+        /// <summary>
+        /// This method extracts the claims value from the 403 error response from MS Graph. 
+        /// </summary>
+        /// <param name="wwwAuthHeader"></param>
+        /// <returns>Value of the claims entry. This should be considered an opaque string. 
+        /// Returns null if the wwwAuthheader does not contain the claims value. </returns>
+        private String extractClaims(String wwwAuthHeader)
+        {
+            String ClaimsKey = "claims=";
+            String ClaimsSubstring = "";
+            if (wwwAuthHeader.Contains(ClaimsKey))
+            {
+                int Index = wwwAuthHeader.IndexOf(ClaimsKey);
+                ClaimsSubstring = wwwAuthHeader.Substring(Index, wwwAuthHeader.Length - Index);
+                string ClaimsChallenge;
+                if (Regex.Match(ClaimsSubstring, @"}$").Success)
+                {
+                    ClaimsChallenge = ClaimsSubstring.Split('=')[1];
+                }
+                else
+                {
+                    ClaimsChallenge = ClaimsSubstring.Substring(0, ClaimsSubstring.IndexOf("},") + 1);
+                }
+                return ClaimsChallenge;
+            }
+            return null; 
+        }
+    ```
+
+要求チャレンジを処理するコード サンプルについては、ADAL .NET 用 [On-Behalf-Of コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。
+
+## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>シナリオ: On-Behalf-Of フローを実行するアプリ
 
 このシナリオでは、ネイティブ アプリが Web サービス/API を呼び出す場合について説明します。  呼び出されたサービスは、[On-Behalf-Of フロー](active-directory-authentication-scenarios.md#application-types-and-scenarios)でダウンストリーム サービスを呼び出します。  ここでは、ダウンストリーム サービス (Web API 2) に、条件付きアクセス ポリシーを適用し、サーバー/デーモン アプリケーションではなく、ネイティブ アプリケーションを使用しています。 
 
@@ -135,7 +166,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 このシナリオを試すには、[.NET コード サンプル](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof-ca)を参照してください。  これは、Web API 1 から返された要求チャレンジをネイティブ アプリケーションに渡し、クライアント アプリケーション内で新しい要求を作成する方法を示しています。 
 
-### <a name="scenario-app-accessing-multiple-services"></a>シナリオ: 複数のサービスにアクセスするアプリ
+## <a name="scenario-app-accessing-multiple-services"></a>シナリオ: 複数のサービスにアクセスするアプリ
 
 このシナリオでは、Web アプリが、1 つに条件付きアクセス ポリシーが割り当てられている 2 つのサービスにアクセスする場合について説明します。  アプリケーション ロジックによっては、Web アプリが両方の Web サービスにアクセスする必要のないパスが存在する場合があります。  このシナリオでは、トークンを要求する順序が、エンド ユーザー エクスペリエンスに重要な役割を果たします。
 
@@ -156,7 +187,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 アプリが ADAL ライブラリを使用しており、トークンの取得に失敗した場合、常に対話形式で再試行されます。  この対話型の要求が発生すると、エンドユーザーには、条件付きアクセスに準拠する機会が与えられます。  これは、要求が `AcquireTokenSilentAsync` または `PromptBehavior.Never` でない限り該当し、この場合、アプリは対話型の ```AcquireToken``` 要求を実行し、エンドユーザーはポリシーに準拠する機会が与えられます。 
 
-### <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: シングル ページ アプリケーション (SPA) ADAL.js を使用する
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>シナリオ: シングル ページ アプリケーション (SPA) ADAL.js を使用する
 
 このシナリオでは、ADAL.js を使用して条件付きアクセスで保護されている Web API を呼び出すシングル ページ アプリケーション (SPA) について説明します。  これは、単純なアーキテクチャですが、条件付きアクセスを開発するときに考慮すべき点がいくつかあります。
 
@@ -191,4 +222,3 @@ error_description=AADSTS50076: Due to a configuration change made by your admini
 * Azure AD コード サンプルについては、[Github リポジトリのコード サンプル](https://github.com/azure-samples?utf8=%E2%9C%93&q=active-directory)を参照してください。 
 * ADAL SDK の詳細情報およびリファレンス ドキュメントにアクセスするには、[ライブラリ ガイド](active-directory-authentication-libraries.md)を参照してください。
 * マルチテナント シナリオの詳細については、[マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法](active-directory-devhowto-multi-tenant-overview.md)を参照してください。
-

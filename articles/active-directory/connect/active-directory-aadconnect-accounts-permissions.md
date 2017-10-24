@@ -13,14 +13,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/27/2017
+ms.date: 10/03/2017
 ms.author: billmath
+ms.openlocfilehash: b45e4096cb68c4b88d2d782427d66a11d1b86b33
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: fdd90721b6823c20c1ff27383769bfff24e80eae
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: アカウントとアクセス許可
 Azure AD Connect インストール ウィザードには次の 2 つの別の設定からアクセスできます。
@@ -97,6 +96,10 @@ Azure AD Connect バージョン 1.1.524.0 以降には、Azure AD Connect ウ�
 
 ## <a name="upgrade"></a>アップグレード
 Azure AD Connect のいずれかのバージョンから新しいリリースにアップグレードする場合、次のアクセス許可が必要です。
+
+>[!IMPORTANT]
+>ビルド 1.1.484 以降の Azure AD Connect には回帰バグがあり、SQL データベースのアップグレードに sysadmin アクセス許可が必要です。  このバグは、最新のビルド 1.1.614 にもまだ存在します。  このビルドにアップグレードする場合は、sysadmin アクセス許可が必要です。  dbo アクセス許可では不十分です。  sysadmin アクセス許可がないユーザーが Azure AD Connect をアップグレードしようとすると、アップグレードは失敗し、Azure AD Connect が正しく機能しなくなります。  Microsoft はこの問題を認識しており、解決に取り組んでいます。
+
 
 | プリンシパル | 必要なアクセス許可 | 用途 |
 | --- | --- | --- |
@@ -194,4 +197,3 @@ Azure AD での同期サービスのアカウント数の上限は 20 です。 
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](../active-directory-aadconnect.md)」をご覧ください。
-

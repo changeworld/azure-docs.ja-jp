@@ -1,5 +1,5 @@
 ---
-title: "Windows Server 向け Azure Hybrid Use Benefit | Microsoft Docs"
+title: "Windows Server 向け Azure Hybrid Benefit | Microsoft Docs"
 description: "Windows ソフトウェア アシュアランスの特典を最大限利用してオンプレミスのライセンスを Azure で使用する方法について説明します。"
 services: virtual-machines-windows
 documentationcenter: 
@@ -12,59 +12,60 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 9/13/2017
-ms.author: xujing
+ms.date: 10/02/2017
+ms.author: kmouss
+ms.openlocfilehash: d47b8ab2cd6391e937fe7f9ba6eded3b89fe2c40
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: f34f65eb1d5375caae8831aedaed8a4b6a9cd098
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-hybrid-use-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Use Benefit
-ソフトウェア アシュアランスを取得したお客様は、Azure Hybrid Use Benefit により、オンプレミスの Windows Server および Windows Client ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Use Benefit には、Windows Server 2008R2、Windows Server 2012、Windows Server 2012R2、Windows Server 2016 が含まれます。 詳細については、 [Azure Hybrid Use Benefit のライセンスに関するページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)を参照してください。
+# <a name="azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit
+ソフトウェア アシュアランスを取得したお客様は、Windows Server 向け Azure Hybrid Benefit により、オンプレミスの Windows Server ライセンスを使用し、Azure で Windows 仮想マシンを低コストで実行することができます。 Windows Server 向け Azure Hybrid Benefit を使用して、Azure でサポートされるプラットフォームの Windows Server イメージまたはカスタムの Windows イメージから新しい仮想マシンをデプロイできます。 イメージに、SQL Server やサード パーティ製 Marketplace イメージなどの追加のソフトウェアは付属していません。 この記事では、Windows Server 向け Azure Hybrid Benefit で新しい VM をデプロイする手順を説明します。 Windows Server 向け Azure Hybrid Benefit のライセンスとコスト削減について詳しくは、[Windows Server 向け Azure Hybrid Benefit のライセンス ページ](https://azure.microsoft.com/pricing/hybrid-use-benefit/)をご覧ください。
 
 > [!IMPORTANT]
-> Azure Marketplace でのエンタープライズ契約のお客様向けに発行された '[HUB]' Windows Server イメージは 2017 年 9 月 11 日に終了となりました。Azure ハイブリッド使用特典の "コスト削減" オプションを使用して標準の Windows Server をご利用ください。 詳しくは、こちらの[記事](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)を参照してください。
+> Azure Marketplace での Enterprise Agreement のお客様向けに発行された従来の '[HUB]' Windows Server イメージは 2017 年 9 月 11 日にインベントリから削除されました。ポータルで Windows Server 向け Azure Hybrid Benefit の "コスト削減" オプションを使用して標準の Windows Server をご利用ください。 詳しくは、こちらの[記事](https://support.microsoft.com/en-us/help/4036360/retirement-azure-hybrid-use-benefit-images-for-ea-subscriptions)を参照してください。
 >
 
 > [!NOTE]
-> この記事では、Windows Server イメージのライセンス特典を実装する方法について説明します。 [Windows 10 デスクトップ イメージ](#windows-desktop-multitenant-hosting-deployment)用の手順を実行することもできます。
+> Windows Server 向け Azure Hybrid Benefit は、SQL Server やサード パーティ製 Marketplace イメージなどの追加のソフトウェアの料金が発生する VM では使用できません。 追加ソフトウェアのコストが発生する Windows Server VM を変換しようとすると、「プロパティ 'LicenseType' は変更できません」などの 409 エラーが発生します。 
 >
 
-## <a name="ways-to-use-azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit の使用方法
-Windows VM を Azure Hybrid Use Benefit でデプロイする方法はいくつかあります。
 
-1. [特定の Marketplace イメージ] から VM をデプロイできます。
-2. [カスタム VM をアップロード](#upload-a-windows-vhd)し、[Resource Manager テンプレート](#deploy-a-vm-via-resource-manager)または [Azure PowerShell](#detailed-powershell-deployment-walkthrough) を使ってデプロイできます。
+> [!NOTE]
+> クラシック VM では、オンプレミスのカスタム イメージからの新規 VM のデプロイのみがサポートされています。 この記事でサポートされる機能を利用するには、最初にクラシック VM を Resource Manager モデルに移行する必要があります。
+>
 
-## <a name="deploy-a-vm-using-the-azure-marketplace"></a>Azure Marketplace を使って VM をデプロイする
-次のイメージは Azure Hybrid Use Benefit (Windows Server 2016、Windows Server 2012R2、Windows Server 2012、および Windows Server 2008SP1) で事前構成された Marketplace で使用できます。 これらのイメージのデプロイは、Azure Portal、Resource Manager テンプレート、またはAzure PowerShell から直接行うことができます。
+
+## <a name="ways-to-use-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit の使用方法
+Azure Hybrid Benefit で Windows 仮想マシンを使用する方法はいくつかあります。
+
+1. [Azure Marketplace で提供されている Windows Server イメージ](#https://azuremarketplace.microsoft.com/en-us/marketplace/apps/Microsoft.WindowsServer?tab=Overview)の 1 つから VM をデプロイできます
+2. [カスタム VM をアップロード](#upload-a-windows-vhd)し、[Resource Manager テンプレート](#deploy-a-vm-via-resource-manager)または [Azure PowerShell](#detailed-powershell-deployment-walkthrough) を使ってデプロイできます
+4. Windows Server 向け Azure Hybrid Benefit で新しい仮想マシン スケール セットをデプロイすることもできます
+
+> [!NOTE]
+> Windows Server 向け Azure Hybrid Benefit を使用するように既存の仮想マシンまたは仮想マシン スケール セットを変換することは、現在サポートされていません
+>
+
+## <a name="deploy-a-vm-from-a-windows-server-marketplace-image"></a>Windows Server Marketplace イメージからの VM のデプロイ
+Azure Marketplace から利用できるすべての Windows Server イメージは、Windows Server 向け Azure Hybrid Benefit で有効になっています。 たとえば、Windows Server 2016、Windows Server 2012R2、Windows Server 2012、Windows Server 2008SP1 などです。 これらのイメージを使用して、Azure Portal、Resource Manager テンプレート、Azure PowerShell、その他の SDK から VM を直接デプロイできます。
 
 これらのイメージは、Azure Portal から直接デプロイできます。 Resource Manager テンプレートと Azure PowerShell で使う場合は、次のようにイメージの一覧を表示します。
 
-Windows Server:
+### <a name="powershell"></a>Powershell
 ```powershell
 Get-AzureRmVMImagesku -Location westus -PublisherName MicrosoftWindowsServer -Offer WindowsServer
 ```
-- 2016-Datacenter バージョン 2016.127.20170406 以上
+手順に従って [PowerShell で Windows 仮想マシンを作成](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-powershell?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json)し、LicenseType = "Windows_Server" を渡すことができます。 このオプションを使用すると、Azure で既存の Windows Server ライセンスを使用することができます。
 
-- 2012-R2-Datacenter バージョン 4.127.20170406 以上
-
-- 2012-Datacenter バージョン 3.127.20170406 以上
-
-- 2008-R2-SP1 バージョン 2.127.20170406 以上
-
-Windows クライアント：
-```powershell
-Get-AzureRMVMImageSku -Location "West US" -Publisher "MicrosoftWindowsServer" `
-    -Offer "Windows-HUB"
-```
+### <a name="portal"></a>ポータル
+手順に従って [Azure Portal で Windows 仮想マシンを作成](#https://docs.microsoft.com/en-us/azure/virtual-machines/windows/quick-create-portal)し、既存の Windows Server ライセンスを使用するオプションを選択できます。
 
 ## <a name="upload-a-windows-server-vhd"></a>Windows Server VHD をアップロードする
 Windows Server VM を Azure にデプロイするには、先に Windows の基本ビルドを含む VHD を作成する必要があります。 この VHD は、Sysprep を使用して適切に準備した後、Azure にアップロードする必要があります。 [VHD 要件と Sysprep プロセスの詳細](upload-generalized-managed.md)や「[Sysprep Support for Server Role (サーバー ロールに対する Sysprep サポート)](https://msdn.microsoft.com/windows/hardware/commercialize/manufacture/desktop/sysprep-support-for-server-roles)」を参照してください。 Sysprep を実行する前に、VM をバックアップします。 
 
-[最新の Azure PowerShell がインストールおよび構成](/powershell/azure/overview)されていることを確認します。 VHD が準備できたら、次のように `Add-AzureRmVhd` コマンドレットを使用して、その VHD を Azure Storage アカウントにアップロードします。
+VHD が準備できたら、次のように、その VHD を Azure Storage アカウントにアップロードします。
 
 ```powershell
 Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\myvhd.vhd" `
@@ -80,9 +81,8 @@ Add-AzureRmVhd -ResourceGroupName "myResourceGroup" -LocalFilePath "C:\Path\To\m
 
 
 ## <a name="deploy-a-vm-via-resource-manager-template"></a>Resource Manager テンプレートを使用して VM をデプロイする
-Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定できます。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
+Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 VHD を Azure にアップロードした後、コンピューティング プロバイダーの一部としてライセンスの種類を含めるように Resource Manager テンプレートを編集し、テンプレートを通常どおりデプロイします。
 
-Windows Server:
 ```json
 "properties": {  
    "licenseType": "Windows_Server",
@@ -91,33 +91,19 @@ Windows Server:
    }
 ```
 
-Azure Marketplace イメージでのみ使用する Windows クライアント:
-```json
-"properties": {  
-   "licenseType": "Windows_Client",
-   "hardwareProfile": {
-        "vmSize": "[variables('vmSize')]"
-   }
-```
-
 ## <a name="deploy-a-vm-via-powershell-quickstart"></a>PowerShell クイックスタートを使用して VM をデプロイする
-Windows Server VM を PowerShell を使用してデプロイするときに、追加パラメーター `-LicenseType`を指定できます。 VHD を Azure にアップロードした後、`New-AzureRmVM` を使って VM を作成し、ライセンスの種類を次のように指定します。
+PowerShell を使用して Windows Server VM をデプロイするときに、追加パラメーター `-LicenseType` を指定できます。 VHD を Azure にアップロードした後、`New-AzureRmVM` を使って VM を作成し、ライセンスの種類を次のように指定します。
 
 Windows Server:
 ```powershell
 New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Server"
 ```
 
-Azure Marketplace イメージでのみ使用する Windows クライアント:
-```powershell
-New-AzureRmVM -ResourceGroupName "myResourceGroup" -Location "West US" -VM $vm -LicenseType "Windows_Client"
-```
-
-この後の [PowerShell を使用した VM の Azure への詳細なデプロイ手順](hybrid-use-benefit-licensing.md#detailed-powershell-deployment-walkthrough)を参照するか、[Resource Manager と PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)ための別の手順に関する詳細なガイドを参照できます。
+異なる手順に関する詳しいガイドを読んで、[Resource Manager と PowerShell を使用して Windows VM を作成](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)することができます。
 
 
 ## <a name="verify-your-vm-is-utilizing-the-licensing-benefit"></a>VM がライセンスの特典を利用していることを確認する
-VM を PowerShell または Resource Manager のいずれかのデプロイ方法によってデプロイした後、次のように `Get-AzureRmVM` を使用してライセンスの種類を確認します。
+VM を PowerShell、Resource Manager テンプレート、ポータルのいずれかの方法でデプロイした後、次のように `Get-AzureRmVM` を使用してライセンスの種類を確認できます。
 
 ```powershell
 Get-AzureRmVM -ResourceGroup "myResourceGroup" -Name "myVM"
@@ -131,7 +117,7 @@ Location                 : westus
 LicenseType              : Windows_Server
 ```
 
-この出力を、Azure Hybrid Use Benefit ライセンスを使わずにデプロイされた次の VM (Azure Gallery から直接デプロイされた VM など) と比べてください。
+この出力を、Windows Server 向け Azure Hybrid Benefit のライセンスなしでデプロイされた次の VM と比べてください。
 
 ```powershell
 Type                     : Microsoft.Compute/virtualMachines
@@ -139,84 +125,17 @@ Location                 : westus
 LicenseType              :
 ```
 
-## <a name="detailed-powershell-deployment-walkthrough"></a>PowerShell の詳細なデプロイ手順
-次の PowerShell の詳細な手順は、VM の完全なデプロイを示しています。 「 [Resource Manager と PowerShell を使用して Windows VM を作成する](../virtual-machines-windows-ps-create.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」で、実際のコマンドレットと作成される別のコンポーネントを確認できます。 リソース グループ、ストレージ アカウント、および仮想ネットワークを作成した後、VM を定義し、最後に VM を作成します。
+## <a name="list-all-azure-hybrid-benefit-for-windows-server-vms-in-a-subscription"></a>サブスクリプションのすべての Windows Server VM 向け Azure Hybrid Benefit の一覧表示
 
-最初に、資格情報を取得し、場所とリソース グループ名を設定します。
-
-```powershell
-$cred = Get-Credential
-$location = "West US"
-$resourceGroupName = "myResourceGroup"
-```
-
-パブリック IP を作成します。
+Windows Server 向け Azure Hybrid Benefit でデプロイされたすべての仮想マシンを参照し、カウントするには、自分のサブスクリプションから次のコマンドを実行します。
 
 ```powershell
-$publicIPName = "myPublicIP"
-$publicIP = New-AzureRmPublicIpAddress -Name $publicIPName -ResourceGroupName $resourceGroupName `
-    -Location $location -AllocationMethod "Dynamic"
+$vms = Get-AzureRMVM 
+foreach ($vm in $vms) {"VM Name: " + $vm.Name, "   Azure Hybrid Benefit for Windows Server: "+ $vm.LicenseType}
 ```
 
-サブネット、NIC、および VNET を定義します。
-
-```powershell
-$subnetName = "mySubnet"
-$nicName = "myNIC"
-$vnetName = "myVnet"
-$subnetconfig = New-AzureRmVirtualNetworkSubnetConfig -Name $subnetName -AddressPrefix 10.0.0.0/8
-$vnet = New-AzureRmVirtualNetwork -Name $vnetName -ResourceGroupName $resourceGroupName -Location $location `
-    -AddressPrefix 10.0.0.0/8 -Subnet $subnetconfig
-$nic = New-AzureRmNetworkInterface -Name $nicName -ResourceGroupName $resourceGroupName -Location $location `
-    -SubnetId $vnet.Subnets[0].Id -PublicIpAddressId $publicIP.Id
-```
-
-VM に名前を付け、VM 構成を作成します。
-
-```powershell
-$vmName = "myVM"
-$vmConfig = New-AzureRmVMConfig -VMName $vmName -VMSize "Standard_A1"
-```
-
-OS を定義します。
-
-```powershell
-$computerName = "myVM"
-$vm = Set-AzureRmVMOperatingSystem -VM $vmConfig -Windows -ComputerName $computerName -Credential $cred `
-    -ProvisionVMAgent -EnableAutoUpdate
-```
-
-NIC を VM に追加します。
-
-```powershell
-$vm = Add-AzureRmVMNetworkInterface -VM $vm -Id $nic.Id
-```
-
-使用するストレージ アカウントを定義します。
-
-```powershell
-$storageAcc = Get-AzureRmStorageAccount -ResourceGroupName $resourceGroupName -AccountName mystorageaccount
-```
-
-適切に準備され、使用する VM に接続される VHD をアップロードします。
-
-```powershell
-$osDiskName = "licensing.vhd"
-$osDiskUri = '{0}vhds/{1}{2}.vhd' -f $storageAcc.PrimaryEndpoints.Blob.ToString(), $vmName.ToLower(), $osDiskName
-$urlOfUploadedImageVhd = "https://mystorageaccount.blob.core.windows.net/vhd/myvhd.vhd"
-$vm = Set-AzureRmVMOSDisk -VM $vm -Name $osDiskName -VhdUri $osDiskUri -CreateOption FromImage `
-    -SourceImageUri $urlOfUploadedImageVhd -Windows
-```
-
-最後に、VM を作成し、Azure Hybrid Use Benefit を利用するライセンスの種類を定義します。
-
-Windows Server:
-```powershell
-New-AzureRmVM -ResourceGroupName $resourceGroupName -Location $location -VM $vm -LicenseType "Windows_Server"
-```
-
-## <a name="deploy-a-virtual-machine-scale-set-via-resource-manager-template"></a>Resource Manager テンプレートを使用した仮想マシン スケール セットのデプロイ
-VMSS Resource Manager テンプレート内で、`licenseType` の追加パラメーターを指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 Resource Manager テンプレートを編集して、licenseType プロパティをスケール セットの virtualMachineProfile の一部として含め、テンプレートを通常どおりデプロイします。2016 Windows Server イメージを使用した次の例を参照してください。
+## <a name="deploy-a-virtual-machine-scale-set-with-azure-hybrid-benefit-for-windows-server"></a>Windows Server 向け Azure Hybrid Benefit で仮想マシン スケール セットをデプロイする
+仮想マシン スケール セットの Resource Manager テンプレート内に、追加パラメーター `licenseType` を指定する必要があります。 [Azure Resource Manager テンプレートの作成](../../resource-group-authoring-templates.md)で詳細を確認できます。 Resource Manager テンプレートを編集して、licenseType プロパティをスケール セットの virtualMachineProfile の一部として含め、テンプレートを通常どおりデプロイします。2016 Windows Server イメージを使用した次の例をご覧ください。
 
 
 ```json
@@ -239,15 +158,13 @@ VMSS Resource Manager テンプレート内で、`licenseType` の追加パラ�
             "adminPassword": "[parameters('adminPassword')]"
     }
 ```
-
-> [!NOTE]
-> PowerShell やその他の SDK ツールによる AHUB 特典を利用した仮想マシン スケール セットのデプロイは、間もなくサポートが開始されます。
->
+[仮想マシン スケール セットを作成して展開](#https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-create)し、LicenseType プロパティを設定することもできます
 
 ## <a name="next-steps"></a>次のステップ
-[Azure Hybrid Use Benefit](https://azure.microsoft.com/pricing/hybrid-use-benefit/)について確認します。
+[Windows Server 向け Azure Hybrid Benefit ライセンス](https://azure.microsoft.com/pricing/hybrid-use-benefit/)の詳細を参照します。
 
 [Resource Manager テンプレートの使用方法](../../azure-resource-manager/resource-group-overview.md)の詳細を参照します。
 
-[Azure Hybrid Use Benefit と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を参照します。
+[Windows Server 向け Azure Hybrid Benefit と Azure Site Recovery によって、Azure へのアプリケーションの移行のコスト効率を高める方法](https://azure.microsoft.com/blog/hybrid-use-benefit-migration-with-asr/)の詳細を参照します。
 
+[よく寄せられる質問](#https://azure.microsoft.com/en-us/pricing/hybrid-use-benefit/faq/)を参照します

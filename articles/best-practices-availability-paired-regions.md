@@ -12,16 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/23/2017
+ms.date: 09/27/2017
 ms.author: raynew
+ms.openlocfilehash: 27491e34ad9e47aec2f424cfc439fad614f0e435
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 2984daa3b99fa9c858d43c3dcfb930add2040e2e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>ビジネス継続性とディザスター リカバリー (BCDR): Azure のペアになっているリージョン
 
 ## <a name="what-are-paired-regions"></a>ペアになっているリージョンとは
@@ -51,9 +49,8 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 | 日本 |東日本 |西日本 |
 | ブラジル |ブラジル南部 (1) |米国中南部 |
 | 米国政府 |米国政府アイオワ州 |米国政府バージニア州 |
-| 米国政府 |米国政府バージニア州 |米国政府テキサス |
-| 米国政府 |米国政府テキサス |米国政府アリゾナ |
 | 米国政府 |米国政府アリゾナ |米国政府テキサス |
+| 米国国防総省 |US DoD East |US DoD Central |
 | 英国 |英国西部 |英国南部 |
 | ドイツ |ドイツ中部 |ドイツ北東部 |
 
@@ -99,4 +96,3 @@ Azure は、世界中の複数の geo で動作します。 Azure の geo とは
 
 ![データ](./media/best-practices-availability-paired-regions/9Orange.png)
 **データ常駐** – リージョンは、税および法の執行を目的としたデータ常駐要件を満たすために、ペアとして同じ geo に常駐しています (ブラジル南部を除く)。
-

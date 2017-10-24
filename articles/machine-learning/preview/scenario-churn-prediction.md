@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
+ms.openlocfilehash: 2ee7ec91700c66d5bedd917d0203a726b5c5e300
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 55298a7ff96bd9662310fa6b5d1764370f500be5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Azure Machine Learning を使用した顧客離れ予測
 
 平均すると、既存の顧客を維持するコストは、新規顧客を作るコストよりも 5 倍安くなります。 そのため、多くのマーケティング部門の役員は、顧客離れの可能性を見積もり、チャーン レートを最小限に抑えるために必要な対応を見つけることを重視しています。
@@ -73,11 +71,11 @@ ms.lasthandoff: 09/25/2017
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Customer Churn Prediction」と入力し、テンプレートを選択します
-5.  **[作成]** をクリックします
+5.  **[作成]**
 
 ## <a name="data-description"></a>データの説明
 
-ソリューションで使用されているデータ セットは、SIDKDD 2009 競合のデータです。 これは `CATelcoCustomerChurnTrainingSample.csv` と呼ばれ、[`Data`](https://github.com/mezmicrosoft/MachineLearningSamples-ChurnPrediction/tree/master/Data) フォルダーにあります。 データセットは、フランスの通信会社 Orange のノイズの多い異種データ (数値/カテゴリ変数) で構成され、匿名化されます。
+ソリューションで使用されているデータ セットは、SIDKDD 2009 競合のデータです。 これは `CATelcoCustomerChurnTrainingSample.csv` と呼ばれ、[`data`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/tree/master/data) フォルダーにあります。 データセットは、フランスの通信会社 Orange のノイズの多い異種データ (数値/カテゴリ変数) で構成され、匿名化されます。
 
 これらの変数は、顧客の統計情報、呼び出しの統計情報 (平均呼び出し期間、呼び出しエラー率など)、コントラクト情報、苦情の統計情報をキャプチャします。 チャーン変数はバイナリです (0 - 解約なし、1 - 解約あり)。
 
@@ -85,27 +83,24 @@ ms.lasthandoff: 09/25/2017
 
 フォルダー構造は次のようになっています。
 
-__Code__: Azure Machine Learning Workbench を使用したチャーン予測に関連するすべてのコードが含まれています。
+__data__: このソリューションで使用するデータセットが含まれています  
 
-__Data__: このソリューションで使用するデータセットが含まれています。  
-
-__Labs__: すべてのハンズオン ラボが含まれています。
+__docs__: すべてのハンズオン ラボが含まれています
 
 このソリューションのハンズオン ラボの実行順序は次のとおりです。
-1. データの準備: コード フォルダーのデータ準備に関連するファイルは、`CATelcoCustomerChurnTrainingSample.dprep`、`CATelcoCustomerChurnTrainingSample.dconn`、および `CATelcoCustomerChurnTrainingSample.csv` です
-2. モデリングと評価: コード フォルダー内のモデリングと評価に関連する主なファイルは `CATelcoCustomerChurnModeling.py` です
-3. Docker のモデリングと評価: コード フォルダーのこのタスクのメイン ファイルは `CATelcoCustomerChurnModelingDocker.py` です
+1. データの準備: データ フォルダーのデータ準備に関連する主なファイルは `CATelcoCustomerChurnTrainingSample.csv` です
+2. モデリングと評価: ルート フォルダー内のモデリングと評価に関連する主なファイルは `CATelcoCustomerChurnModeling.py` です
+3. Docker のモデリングと評価: ルート フォルダーのこのタスクのメイン ファイルは `CATelcoCustomerChurnModelingDocker.py` です
 4. 運用化: デプロイのメイン ファイルはモデル (`model.pkl`) と `churn_schema_gen.py` です
 
 | 順序| ファイル名 | 関連するファイル |
 |--|-----------|------|
-| 1 | [`DataPreparation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/DataPreparation.md) | 'Data/CATelcoCustomerChurnTrainingSample.csv' |
-| 2 | [`ModelingAndEvaluation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/ModelingAndEvaluation.md) | 'Code/CATelcoCustomerChurnModeling.py' |
-| 3 | [`ModelingAndEvaluationDocker.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/ModelingAndEvaluationDocker.md) | 'Code/CATelcoCustomerChurnModelingDocker.py' |
-| 4 | [`Operationalization.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/Docs/Operationalization.md) | 'Code/model.pkl'<br>'Code/churn_schema_gen.py' |
+| 1 | [`DataPreparation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/DataPreparation.md) | 'data/CATelcoCustomerChurnTrainingSample.csv' |
+| 2 | [`ModelingAndEvaluation.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluation.md) | 'CATelcoCustomerChurnModeling.py' |
+| 3 | [`ModelingAndEvaluationDocker.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/ModelingAndEvaluationDocker.md) | 'CATelcoCustomerChurnModelingDocker.py' |
+| 4 | [`Operationalization.md`](https://github.com/Azure/MachineLearningSamples-ChurnPrediction/blob/master/docs/Operationalization.md) | 'model.pkl'<br>'churn_schema_gen.py' |
 
 上記の順序でラボを実行します。
 
 ## <a name="conclusion"></a>まとめ
 この実践的なシナリオでは、Azure Machine Learning Workbench を使用してチャーン予測を実行する方法について説明しました。 まず、ノイズが多い異種データを処理するためにデータのクリーニングを実行してから、データ準備ツールを使用して特徴エンジニアリングを実行します。 次に、オープン ソースの機械学習ツールを使用して分類モデルを作成して評価してから、ローカル Docker コンテナーを使用して、運用の準備を整えるモデルをデプロイします。
-

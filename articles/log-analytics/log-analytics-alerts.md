@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: bwren
+ms.openlocfilehash: e03911d589aaab0d0e80da5d58f14d6df417f4be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 951e76d3fb18d9e433b148e82d4d6cee9417ce6d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="understanding-alerts-in-log-analytics"></a>Log Analytics のアラートについて
 
@@ -144,6 +143,5 @@ Log Analytics のアラート ルールで作成されるアラート レコー�
 ## <a name="next-steps"></a>次のステップ
 * [Alert Management ソリューション](log-analytics-solution-alert-management.md) をインストールして、Log Analytics で作成された警告および System Center Operations Manager から収集された警告を分析します。
 * アラートを生成する [ログ検索](log-analytics-log-searches.md) の詳細を確認します。
-* アラート ルールに関する [Webhook を構成する](log-analytics-alerts-webhooks.md) チュートリアルを完了します。  
+* アラート ルールを使用して [webhook を構成する](log-analytics-alerts-webhooks.md)チュートリアルを完了します。  
 * アラートで識別された問題を修復するために [Azure Automation の Runbook](https://azure.microsoft.com/documentation/services/automation) を作成する方法について学習します。
-

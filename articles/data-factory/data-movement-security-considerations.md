@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
+ms.openlocfilehash: 0514710606b74db7c13f04e961347d215d2d283d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 00673cac31eb25bb8dd8228d6a36617c3812f5db
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 この記事では、Azure Data Factory のデータ移動サービスがデータを保護するために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Azure Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
 
@@ -97,9 +95,9 @@ Salesforce では、ファイル、添付ファイル、カスタム フィー�
 
 1. **資格情報はローカルに保存**するよう選択できます。 セルフホステッド統合ランタイムでローカルに資格情報を暗号化して格納したい場合、[セルフホステッド統合ランタイムで資格情報を暗号化する方法](encrypt-credentials-self-hosted-integration-runtime.md)の手順に従ってください。 このオプションは、すべてのコネクタでサポートされています。 セルフホステッド統合ランタイムは、Windows [DPAPI](https://msdn.microsoft.com/library/ms995355.aspx) を使用して機密情報/資格情報を暗号化します。 
 
-   リンクされたサービスの資格情報の暗号化またはリンクされたサービスの機密情報の暗号化には、**New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** コマンドレットを使用してください。 それから JSON から返されるものを (**connectionString** の **EncryptedCredential** 要素と共に) 使用して、**Set-AzureRmDataFactoryV2LinkedSevrice** コマンドレットを使用してリンクされたサービスを作成できます。  
+   リンクされたサービスの資格情報の暗号化またはリンクされたサービスの機密情報の暗号化には、**New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用してください。 それから JSON から返されるものを (**connectionString** の **EncryptedCredential** 要素と共に) 使用して、**Set-AzureRmDataFactoryV2LinkedSevrice** コマンドレットを使用してリンクされたサービスを作成できます。  
 
-2. 前述の手順の説明に従って **New-AzureRmDataFactoryV2LinkedServiceEncryptCredential** コマンドレットを使用せず、接続文字列/資格情報をインラインで使用して **Set-AzureRmDataFactoryV2LinkedSevrice** コマンドレットを JSON で直接使用する場合、リンクされたサービスは **Azure Data Factory によって管理されるストレージで暗号化され格納**されます。 それでも機密情報は証明書によって暗号化され、これらの証明書は Microsoft によって管理されます。
+2. 前述の手順の説明に従って **New-AzureRmDataFactoryV2LinkedServiceEncryptedCredential** コマンドレットを使用せず、接続文字列/資格情報をインラインで使用して **Set-AzureRmDataFactoryV2LinkedSevrice** コマンドレットを JSON で直接使用する場合、リンクされたサービスは **Azure Data Factory によって管理されるストレージで暗号化され格納**されます。 それでも機密情報は証明書によって暗号化され、これらの証明書は Microsoft によって管理されます。
 
 
 
@@ -186,4 +184,3 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 コピー アクティビティのパフォーマンスについては、「[コピー アクティビティのパフォーマンスとチューニングに関するガイド](copy-activity-performance.md)」を参照してください。
 
  
-

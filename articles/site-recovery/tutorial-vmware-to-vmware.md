@@ -4,7 +4,7 @@ description: "Azure Site Recovery を使用して、セカンダリ サイトへ
 services: site-recovery
 documentationcenter: 
 author: nsoneji
-manager: jwhit
+manager: gauarvd
 editor: 
 ms.assetid: 68616d15-398c-4f40-8323-17b6ae1e65c0
 ms.service: site-recovery
@@ -12,14 +12,13 @@ ms.workload: backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/13/2017
+ms.date: 10/11/2017
 ms.author: raynew
+ms.openlocfilehash: b182c00ac9a6956d07dece621d03c84788442085
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: da1df5546b7f99549a693c4e2df4eefb7a423c7f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-vmware-virtual-machines-or-physical-servers-to-a-secondary-site"></a>オンプレミスの VMware 仮想マシンまたは物理サーバーのセカンダリ サイトへのディザスター リカバリーをセットアップする
 
@@ -40,7 +39,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="choose-a-protection-goal"></a>保護の目標を選択する
 
-レプリケート対象、レプリケート場所を選択します。
+レプリケート対象とレプリケート場所を選択します。
 
 1. **[Site Recovery]** > **[インフラストラクチャの準備]** > **[保護の目標]** の順にクリックします。
 2. **[復旧サイトへ]** > **[Yes, with VMware vSphere Hypervisor]\(はい、VMware vSphere Hypervisor を使う\)** の順に選択します。 次に、 **[OK]**をクリックします
@@ -59,22 +58,27 @@ ms.lasthandoff: 09/25/2017
 
 次のように、更新プログラムをインストールします。
 
-1. [更新プログラム](https://aka.ms/asr-scout-update5) の .zip ファイルをダウンロードします。 このファイルには、以下が含まれています。
+> [!NOTE]
+>すべての Scout コンポーネントのファイル更新バージョンが、更新プログラムの .zip ファイル内で同じとは限りません。 以前のバージョンは、前回の更新プログラムから今回の更新プログラムまでに、コンポーネントに変更がないことを示しています。
 
-   * RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
-   * CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe
-   * UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
-   * UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-   * vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe
-   * RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
-2. .zip ファイルを抽出します。
-    - **RX サーバー**: **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** を RX サーバーにコピーし、展開します。 抽出先のフォルダーで、 **/Install**を実行します。
-    - **構成サーバーとプロセス サーバー**: **CX_Windows_8.0.4.0_GA_Update_4_8725865_14Sep16.exe** を構成サーバーとプロセス サーバーにコピーします。 ファイルをダブルクリックして実行します。<br>
-    - **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** をサーバーにコピーします。 ファイルをダブルクリックして実行します。 統合エージェントはソース サーバーにも適用できます。 ソースが更新プログラム 4 に更新されていない場合、統合エージェントを更新する必要があります。
-    - **vContinuum サーバー**: **vCon_Windows_8.0.5.0_GA_Update_5_11525767_20Apr17.exe** をサーバーにコピーします。  vContinuum ウィザードを閉じたことを確認してください。 ファイルをダブルクリックして実行します。
-    - **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
-    - **Windows ソース サーバー**: 更新プログラム 4 を既に実行している場合、ソース サーバーで更新プログラム 5 エージェントをインストールする必要はありません。 統一されたエージェントを更新するには、ソース サーバーに **UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe**をコピーします。 ファイルをダブルクリックして実行します。
-    - **Linux ソース サーバー**: 統合エージェントを更新するには、統合エージェント ファイルの対応するバージョンを Linux サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。  例: RHEL 6.7 64 ビット サーバーの場合は、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をサーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
+[更新プログラム](https://aka.ms/asr-scout-update6) の .zip ファイルをダウンロードします。 ファイルには、以下のコンポーネントが含まれています。 
+  - RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz
+  - CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe
+  - UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe
+  - UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+  - vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe
+  - RHEL5、OL5、OL6、SUSE 10、SUSE 11 向け UA 更新プログラム 4: UA_<Linux OS>_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz
+1. .zip ファイルを抽出します。
+2. **RX サーバー**: **RX_8.0.4.0_GA_Update_4_8725872_16Sep16.tar.gz** を RX サーバーにコピーし、展開します。 抽出先のフォルダーで、 **/Install**を実行します。
+3. **構成サーバーとプロセス サーバー**: **CX_Windows_8.0.6.0_GA_Update_6_13746667_18Sep17.exe** を構成サーバーとプロセス サーバーにコピーします。 ファイルをダブルクリックして実行します。<br>
+4. **Windows マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** をサーバーにコピーします。 ファイルをダブルクリックして実行します。 同じ統合エージェントの更新プログラムはソース サーバーにも適用できます。 ソースが更新プログラム 4 に更新されていない場合、統合エージェントを更新する必要があります。
+  これは最新の変更をすべて備えた新しい GA インストーラーなので、**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** で準備されたマスター ターゲット上で更新プログラムを適用する必要はありません。
+5. **vContinuum サーバー**: **vCon_Windows_8.0.6.0_GA_Update_6_11525767_21Sep17.exe** をサーバーにコピーします。  vContinuum ウィザードを閉じたことを確認してください。 ファイルをダブルクリックして実行します。
+    これは最新の変更をすべて備えた新しい GA インストーラーなので、**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** で準備されたマスター ターゲット上で更新プログラムを適用する必要はありません。
+6. **Linux マスター ターゲット サーバー**: 統合エージェントを更新するには、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をマスター ターゲット サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
+7. **Windows ソース サーバー**: 統合エージェントを更新するには、**UA_Windows_8.0.5.0_GA_Update_5_11525802_20Apr17.exe** をソース サーバーにコピーします。 ファイルをダブルクリックして実行します。 
+    既に更新プログラム 4 に更新済みの場合や、最新の基本インストーラー **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** を使ってソース エージェントがインストールされている場合は、更新プログラム 5 のエージェントをソース サーバー上にインストールする必要はありません。
+8. **Linux ソース サーバー**: 統合エージェントを更新するには、統合エージェント ファイルの対応するバージョンを Linux サーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。  例: RHEL 6.7 64 ビット サーバーの場合は、**UA_RHEL6-64_8.0.4.0_GA_Update_4_9035261_26Sep16.tar.gz** をサーバーにコピーし、抽出します。 抽出先のフォルダーで、 **/Install**を実行します。
 
 ## <a name="enable-replication"></a>Enable replication
 
@@ -89,10 +93,34 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="updates"></a>更新プログラム
 
+### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
+更新日: 2017 年 10 月 6 日
+
+Scout 更新プログラム 6 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 5 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。 
+
+#### <a name="new-platform-support"></a>新しいプラットフォームのサポート
+* ソースの Windows Server 2016 のサポートが追加されました。
+* 以下の Linux オペレーティング システムのサポートが追加されました。
+    - Red Hat Enterprise Linux (RHEL) 6.9
+    - CentOS 6.9
+    - Oracle Linux 5.11
+    - Oracle Linux 6.8
+* VMware Center 6.5 のサポートが追加されました。
+
+> [!NOTE]
+> * Windows 用の基本の Unified Agent (UA) インストーラーは、Windows Server 2016 をサポートするように更新されました。 新しいインストーラー **InMage_UA_8.0.1.0_Windows_GA_28Sep2017_release.exe** は、基本の Scout GA パッケージ (**InMage_Scout_Standard_8.0.1 GA Oct17.zip**) に同梱されています。 サポートされているすべての Windows バージョンで同じインストーラーが使用されます。 
+> * 基本の Windows vContinuum およびマスター ターゲット インストーラーは、Windows Server 2016 をサポートするように更新されました。 新しいインストーラー **InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_10Oct2017_release.exe** は、基本の Scout GA パッケージ (**InMage_Scout_Standard_8.0.1 GA-Oct17.zip**) に同梱されています。 Windows 2016 マスター ターゲットおよび Windows 2012R2 マスター ターゲットのデプロイには、同じインストーラーが使用されます。
+> * 「[コンテナーの作成](#create-a-vault)」の説明に従って、ポータルから GA パッケージをダウンロードします。
+>
+
+#### <a name="bug-fixes-and-enhancements"></a>バグ修正と機能強化
+- レプリケートされるディスクの一覧を使用した Linux VM のフェールバック保護に失敗すると、config の末尾が空になります。
+
+
 ### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 更新プログラム 5
 Scout 更新プログラム 5 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 4 までのすべての修正と、下記の新しい修正が含まれています。
 - Site Recovery Scout 更新プログラム 4 から更新プログラム 5 までの修正は、特にマスター ターゲットおよび vContinuum コンポーネント向けです。
-- ソース サーバー、マスター ターゲット、構成、プロセス、および RX サーバーが既に更新プログラム 5 を実行している場合、マスター ターゲット サーバー上にのみ適用します。 
+- ソース サーバー、マスター ターゲット、構成、プロセス、および RX サーバーが既に更新プログラム 4 を実行している場合、マスター ターゲット サーバー上にのみ適用します。 
 
 #### <a name="new-platform-support"></a>新しいプラットフォームのサポート
 * SUSE Linux Enterprise Server 11 Service Pack 4(SP4)
@@ -122,7 +150,7 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
 
 #### <a name="new-platform-support"></a>新しいプラットフォームのサポート
 
-* vCenter/vSphere 6.0、6.1、6.2 のサポートが追加されました
+* VCenter/vSphere 6.0、6.1、6.2 のサポートが追加されました
 * これらの Linux オペレーティング システムのサポートが追加されました。
   * Red Hat Enterprise Linux (RHEL)7.0、7.1、7.2
   * CentOS 7.0、7.1、7.2
@@ -223,5 +251,4 @@ Site Recovery の更新プログラムはすべて累積的です。 更新プ�
   * vContinuum ウィザードで、MSCS VM の保護中にディスク ビューで **[詳細]** をクリックするとディスクの選択が自動的に解除される。
   * 物理 - 仮想 (P2V) シナリオで、VM の復旧中に必須 HP サービス (CIMnotify や CqMgHost など) が手動に移行しない。 この問題により、起動時間が長くなる。
   * マスター ターゲット サーバーに 27 個以上のディスクがある場合、Linux VM の保護が失敗する。
-
 

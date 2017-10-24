@@ -15,12 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: jairoc
+ms.openlocfilehash: 3325aa48db36426a8cf1c9859390c357267ee5fa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 540180e7d6cd02dfa1f3cac8ccd343e965ded91b
-ms.openlocfilehash: 4580075df9fce74664b22aa24065ba1885692384
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -133,8 +132,9 @@ Azure AD Connect のデプロイ方法によっては、SCP オブジェクト�
 
 `Initialize-ADSyncDomainJoinedComputerSync` コマンドレットは、
 
-- Active Directory PowerShell モジュールを使用しますが、そのモジュールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
+- Active Directory PowerShell モジュールと AD DS ツールを使用しますが、そのモジュールとツールは、ドメイン コントローラーで実行されている Active Directory Web サービスに依存しています。 Active Directory Web サービスは、Windows Server 2008 R2 以降が実行されているドメイン コントローラーでサポートされています。
 - **MSOnline PowerShell module version 1.1.166.0** でのみサポートされます。 このモジュールをダウンロードするには、この[リンク](http://connect.microsoft.com/site1164/Downloads/DownloadDetails.aspx?DownloadID=59185)を使用します。   
+- AD DS ツールがインストールされていない場合、`Initialize-ADSyncDomainJoinedComputerSync` は失敗します。  AD DS ツールをインストールするには、[機能] - [リモート サーバー管理ツール] - [役割管理ツール] の下のサーバー マネージャーを使用します。
 
 Windows Server 2008 またはそれ以前のバージョンが実行されているドメイン コントローラーでは、次のスクリプトを使用してサービス接続ポイントを作成します。
 
@@ -583,4 +583,3 @@ System Center Configuration Manager などのソフトウェア ディストリ�
 
 <!--Image references-->
 [1]: ./media/active-directory-conditional-access-automatic-device-registration-setup/12.png
-

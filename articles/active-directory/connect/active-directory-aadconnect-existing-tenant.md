@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f59028a2f909914222236f3b3575afd0949b4277
-ms.openlocfilehash: c89e206462856d25a81729e7028065ac1cd13ef3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 02/23/2017
-
+ms.openlocfilehash: a62a3954d10e718f5d180ddb725c6a9c7cda56c2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-ad-connect-when-you-have-an-existent-tenant"></a>Azure AD Connect: 既存のテナントがある場合
 Azure AD Connect の使い方に関するトピックではほとんどの場合、新しい Azure AD テナントで作業を開始すること、そしてユーザーまたはその他のオブジェクトがないことを想定しています。 しかし、ユーザーとその他のオブジェクトが存在する Azure AD テナントを既に使用していて Connect が必要になった場合は、このトピックを参照してください。
 
@@ -53,7 +51,7 @@ Connect で生成されたオブジェクトと属性値が同じであるオブ
 Connect を新しくインストールする場合、完全一致とあいまい一致にはほとんど違いはありません。 違いが生じるのは、障害復旧の際です。 Azure AD Connect でサーバーを失った場合、データを失うことなく新しいインスタンスをもう一度インストールできます。 初期インストール中に、sourceAnchor があるオブジェクトは Connect に送信されます。 その後、一致はクライアント (Azure AD Connect) によって評価されます。これは Azure AD で実行される場合よりもはるかに高速です。 完全一致は Connect と Azure AD の両方によって評価されます。 あいまい一致は Azure AD によってのみ評価されます。
 
 ### <a name="other-objects-than-users"></a>ユーザー以外のオブジェクト
-ユーザーには通常 userPrincipalName と proxyAddresses の両方があるため、一致が容易です。 しかし、その他のオブジェクト (セキュリティ グループなど) にはこれらの属性がありません。 この場合、一致には必ず sourceAnchor による完全一致を使用します。 sourceAnchor は常に Base64 で変換されたオンプレミスの **objectGUID** であるため、2 つのオブジェクトを一致させる必要がある場合は、Azure AD の値を更新する必要があります。 sourceAnchor/immutableID を更新できるのは PowerShell のみであり、ポータルを使うことはできません。
+メールが有効なグループと連絡先については、proxyAddresses に基づいてあいまい一致を利用できます。 ユーザーについてのみ、(PowerShell を使用して) sourceAnchor/immutableID の更新のみを実行できます。このため、完全一致は適用されません。 メールが有効になっていないグループについては、あいまい一致も完全一致もサポートされていません。
 
 ## <a name="create-a-new-on-premises-active-directory-from-data-in-azure-ad"></a>Azure AD のデータによる新しいオンプレミスの Active Directory の作成
 お客様によっては、最初はクラウドのみのソリューションと Azure AD を使用しており、オンプレミスの AD はないものの、 後になってオンプレミスのリソースが必要になり、Azure AD のデータに基づいてオンプレミスの AD を構築しなければならなくなるケースもあります。 Azure AD Connect ではこのシナリオに対応できません。 オンプレミスでユーザーは作成されませんし、オンプレミスのパスワードを Azure AD と同じものに設定する機能はありません。
@@ -62,4 +60,3 @@ Connect を新しくインストールする場合、完全一致とあいまい
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

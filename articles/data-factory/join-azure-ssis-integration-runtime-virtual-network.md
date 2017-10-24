@@ -13,14 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
+ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: ddbba4b45c5c7cd8ee69390581cd78b820d19259
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 次の条件のいずれかが当てはまる場合、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワーク (VNet) に参加させる必要があります。 
 
@@ -40,8 +38,9 @@ SSIS パッケージがオンプレミスのデータ ストアにアクセス�
 - オンプレミスのネットワークに接続された既存の Azure Resource Manager VNet がある場合は、最初に、Azure-SSIS 統合ランタイムを参加させるための[クラシック VNet](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) を作成します。 次に、[クラシックと Azure Resource Manager の間の VNet](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) 接続を構成します。
 
 ## <a name="domain-name-services-server"></a>ドメイン ネーム サービス サーバー 
-Azure-SSIS 統合ランタイムが参加する VNet で独自のドメイン ネーム サービス (DNS) サーバーを使う必要がある場合は、このガイダンスに従い、VNet 内の Azure-SSIS 統合ランタイムのノードが Azure エンドポイントを解決できるようにします。
+Azure-SSIS 統合ランタイムが参加する VNet で独自のドメイン ネーム サービス (DNS) サーバーを使う必要がある場合は、ガイダンスに従い、[VNet 内の Azure-SSIS 統合ランタイムのノードが Azure エンドポイントを解決できるようにします](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server)。
 
+## <a name="network-security-group"></a>ネットワーク セキュリティ グループ
 Azure-SSIS 統合ランタイムが参加する VNet にネットワーク セキュリティ グループ (NSG) を実装する必要がある場合は、次のポートを受信/送信トラフィックが通過できるようにします。
 
 | ポート | 方向 | トランスポート プロトコル | 目的 | 受信元/送信先 |
@@ -101,4 +100,3 @@ Azure-SSIS 統合ランタイムについて詳しくは、以下のトピック
 - [方法: Azure-SSIS 統合ランタイムを作成する](create-azure-ssis-integration-runtime.md):  この記事では、チュートリアルを基に、Azure SQL マネージ インスタンス (プライベート プレビュー) の使い方と、IR を VNet に参加させる方法が説明されています。 
 - [Azure-SSIS IR を監視する](monitor-integration-runtime.md#azure-ssis-integration-runtime):  この記事では、Azure-SSIS IR に関する情報を取得する方法と、返された情報での状態が説明されています。 
 - [Azure-SSIS IR を管理する](manage-azure-ssis-integration-runtime.md):  この記事では、Azure-SSIS IR を停止、開始、削除する方法が説明されています。 また、IR にノードを追加することで Azure-SSIS IR をスケールアウトする方法も説明されています。 
-

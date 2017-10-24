@@ -12,34 +12,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/14/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 245ad4948cf4b8c2d44a0dafb61923b0b4267856
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 1e6fb68d239ee3a66899f520a91702419461c02b
-ms.openlocfilehash: 3b19f078b0d6dc3e02d951014056406fd1b099a8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/16/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-secure-ldap-ldaps-for-an-azure-ad-domain-services-managed-domain"></a>Azure Active Directory Domain Services の管理対象ドメインに対するセキュリティで保護された LDAP (LDAPS) の構成
 
 ## <a name="before-you-begin"></a>開始する前に
 [タスク 2 - セキュリティで保護された LDAP 証明書を .PFX ファイルにエクスポートする](active-directory-ds-admin-guide-configure-secure-ldap-export-pfx.md)を完了しておきます。
 
-プレビューの Azure Portal エクスペリエンスか Azure クラシック ポータルのいずれかを選択し、このタスクを完了します。
-> [!div class="op_single_selector"]
-> * **Azure Portal (プレビュー)**: [Azure Portal を利用してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps.md)
-> * **Azure クラシック ポータル**: [クラシック Azure Portal を利用してセキュリティで保護された LDAP を有効にする](active-directory-ds-admin-guide-configure-secure-ldap-enable-ldaps-classic.md)
->
->
 
-
-## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview"></a>タスク 3: Azure Portal (プレビュー) を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする
+## <a name="task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal"></a>タスク 3: Azure Portal を使用して、管理対象ドメインに対してセキュリティで保護された LDAP を有効にする
 セキュリティで保護された LDAP を有効にするには、次の構成手順を実行します。
 
 1. **[Azure Portal](https://portal.azure.com)** に移動します。
 
-2. **[リソースの検索]** 検索ボックスで 'domain services' を検索します。 検索結果から **[Azure AD Domain Services]** を選択します。 **[Azure AD Domain Services]** ブレードには、管理対象ドメインが一覧表示されます。
+2. **[リソースの検索]** 検索ボックスで 'domain services' を検索します。 検索結果から **[Azure AD Domain Services]** を選択します。 **[Azure AD Domain Services]** ページには、管理対象ドメインが一覧表示されます。
 
     ![プロビジョニング中の管理対象ドメインを見つける](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
@@ -49,12 +41,16 @@ ms.lasthandoff: 08/16/2017
 
 3. ナビゲーション ウィンドウで **[Secure LDAP]** をクリックします。
 
-    ![ドメイン サービス - [Secure LDAP] ブレード](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
+    ![Domain Services - [Secure LDAP] ページ](./media/active-directory-domain-services-admin-guide/secure-ldap-blade.png)
 
 4. 既定では、セキュリティで保護された LDAP を利用して管理対象ドメインにアクセスする機能は無効になっています。 **[Secure LDAP]** を **[有効にする]** に切り替えます。
 
     ![セキュリティで保護された LDAP を有効にする](./media/active-directory-domain-services-admin-guide/secure-ldap-blade-configure.png)
 5. 既定では、セキュリティで保護された LDAP を利用し、インターネット経由で管理対象ドメインにアクセスする機能は無効になっています。 **[インターネット経由での Secure LDAP アクセスを許可]** を **[有効にする]** に切り替えます。 
+
+    > [!TIP]
+    > インターネット経由でのセキュリティで保護された LDAP アクセスを有効にした場合は、必要なソース IP アドレス範囲へのアクセスを停止するように NSG を設定することをお勧めします。 [LDAPS を利用し、インターネット経由で管理対象ドメインにアクセスする機能を停止する](#task-5---lock-down-ldaps-access-to-your-managed-domain-over-the-internet)手順を参照してください。
+    >
 
 6. **[Secure LDAP 証明書が入った .PFX ファイル]** に続くフォルダー アイコンをクリックします。 セキュリティで保護された LDAP アクセスで管理対象ドメインにアクセスするために、Secure LDAP 証明書が入った .PFX ファイルのパスを指定します。
 
@@ -81,7 +77,7 @@ ms.lasthandoff: 08/16/2017
 
 このタスクを開始する前に、 [タスク 3](#task-3---enable-secure-ldap-for-the-managed-domain-using-the-azure-portal-preview)で説明した手順が完了していることを確認してください。
 
-管理対象ドメインに対してインターネット経由でのセキュリティで保護された LDAP アクセスを有効にしたら、クライアント コンピューターがこの管理対象ドメインを見つけられるようにするために、DNS を更新する必要があります。 タスク 3 の最後で、**[プロパティ]** ブレードの **[LDAPS アクセスのための外部 IP アドレス]** に外部 IP アドレスが表示されます。
+管理対象ドメインに対してインターネット経由でのセキュリティで保護された LDAP アクセスを有効にしたら、クライアント コンピューターがこの管理対象ドメインを見つけられるようにするために、DNS を更新する必要があります。 タスク 3 の最後で、**[プロパティ]** タブの **[LDAPS アクセスのための外部 IP アドレス]** に外部 IP アドレスが表示されます。
 
 管理対象ドメインの DNS 名 (例: ldaps.contoso100.com) がこの外部 IP アドレスをポイントするように、外部 DNS プロバイダーを構成します。 この例では、次の DNS エントリを作成する必要があります。
 
@@ -119,4 +115,3 @@ LDAPS アクセスのために管理対象ドメインをインターネット�
 * [Azure Active Directory Domain Services によって管理されるドメインのグループ ポリシーの管理](active-directory-ds-admin-guide-administer-group-policy.md)
 * [ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-

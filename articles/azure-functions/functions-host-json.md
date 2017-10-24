@@ -14,14 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: tdykstra
+ms.openlocfilehash: 96103e7014212ecaa3e4e9238ae3b9c7a851cca9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: e836ccd204ff06e1eb0494cb392e781f29fdf421
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="hostjson-reference-for-azure-functions"></a>Azure Functions の host.json のリファレンス
 
 *host.json* メタデータ ファイルには、関数アプリのすべての関数に影響するグローバル構成オプションが含まれています。 この記事では、使用できる設定の一覧を紹介します。 JSON スキーマは、http://json.schemastore.org/host にあります。
@@ -32,7 +30,7 @@ ms.lasthandoff: 09/29/2017
 
 次のサンプル *host.json* ファイルには、すべての使用できるオプションが指定されています。
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -101,7 +99,7 @@ ms.lasthandoff: 09/29/2017
 
 [Application Insights のメトリックを計算する](functions-monitoring.md#configure-the-aggregator)ときに集計される関数呼び出しの数を指定します。 
 
-```javascript
+```json
 {
     "aggregator": {
         "batchSize": 1000,
@@ -121,7 +119,7 @@ ms.lasthandoff: 09/29/2017
 
 [Application Insights のサンプリング機能](functions-monitoring.md#configure-sampling)を制御します。
 
-```javascript
+```json
 {
     "applicationInsights": {
         "sampling": {
@@ -141,7 +139,7 @@ ms.lasthandoff: 09/29/2017
 
 [Event Hub トリガーとバインディング](functions-bindings-event-hubs.md)の構成設定。
 
-```javascript
+```json
 {
     "eventHub": {
       "maxBatchSize": 64,
@@ -161,7 +159,7 @@ ms.lasthandoff: 09/29/2017
 
 ジョブのホストが実行される関数の一覧。  空の配列は、すべての関数を実行することを示します。  [ローカルで実行する](functions-run-local.md)場合にのみ使用します。 関数アプリでは、*function.json* の `disabled` プロパティを使用します。*host.json* のこのプロパティは使用しません。
 
-```javascript
+```json
 {
     "functions": [ "QueueProcessor", "GitHubWebHook" ]
 }
@@ -171,7 +169,7 @@ ms.lasthandoff: 09/29/2017
 
 すべての関数のタイムアウト期間を示します。 従量課金プランの有効な範囲は 1 秒から 10 分であり、既定値は 5 分です。 App Service プランに制限はありません。既定値は null です (タイムアウトなしを示します)。
 
-```javascript
+```json
 {
     "functionTimeout": "00:05:00"
 }
@@ -181,7 +179,7 @@ ms.lasthandoff: 09/29/2017
 
 [http トリガーとバインディング](functions-bindings-http-webhook.md)の構成設定。
 
-```javascript
+```json
 {
     "http": {
         "routePrefix": "api",
@@ -203,7 +201,7 @@ ms.lasthandoff: 09/29/2017
 
 ジョブ ホストの一意の ID。 ダッシュを削除した小文字の GUID を指定できます。 ローカルで実行しているときに必要です。 Azure Functions で実行する場合、`id` を省略すると、ID は自動的に生成されます。
 
-```javascript
+```json
 {
     "id": "9f4ea53c5136457d883d685e57164f08"
 }
@@ -213,7 +211,7 @@ ms.lasthandoff: 09/29/2017
 
 [ILogger object](functions-monitoring.md#write-logs-in-c-functions) から出力されたログまたは [context.log](functions-monitoring.md#write-logs-in-javascript-functions) ログのフィルターを制御します。
 
-```javascript
+```json
 {
     "logger": {
         "categoryFilter": {
@@ -238,7 +236,7 @@ ms.lasthandoff: 09/29/2017
 
 [Storage キュー トリガーとバインディング](functions-bindings-storage-queue.md)の構成設定。
 
-```javascript
+```json
 {
     "queues": {
       "maxPollingInterval": 2000,
@@ -262,7 +260,7 @@ ms.lasthandoff: 09/29/2017
 
 [Service Bus トリガーとバインディング](functions-bindings-service-bus.md)の構成設定。
 
-```javascript
+```json
 {
     "serviceBus": {
       "maxConcurrentCalls": 16,
@@ -282,7 +280,7 @@ ms.lasthandoff: 09/29/2017
 
 シングルトン ロック動作の構成設定。 詳細については、「[GitHub issue about singleton support](https://github.com/Azure/azure-webjobs-sdk-script/issues/912)」(シングルトンのサポートに関する GitHub の問題) を参照してください。
 
-```javascript
+```json
     "singleton": {
       "lockPeriod": "00:00:15",
       "listenerLockPeriod": "00:01:00",
@@ -305,7 +303,7 @@ ms.lasthandoff: 09/29/2017
 
 `TraceWriter` オブジェクトを使用して作成するログの構成設定。 [C# のログの記録](functions-reference-csharp.md#logging)と [Node.js のログの記録](functions-reference-node.md#writing-trace-output-to-the-console)に関するページを参照してください。 
 
-```javascript
+```json
 {
     "tracing": {
       "consoleLevel": "verbose",
@@ -323,11 +321,26 @@ ms.lasthandoff: 09/29/2017
 
 変更を監視する[共有コード ディレクトリ](functions-reference-csharp.md#watched-directories)のセット。  これらのディレクトリ内のコードを変更した場合に、関数によって変更を選択するようにします。
 
-```javascript
+```json
 {
     "watchDirectories": [ "Shared" ]
 }
 ```
+
+## <a name="durabletask"></a>durableTask
+
+[Durable Functions](durable-functions-overview.md) の[タスク ハブ](durable-functions-task-hubs.md)。
+
+```json
+{
+  "durableTask": {
+    "HubName": "MyTaskHub"
+  }
+}
+```
+
+タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。 詳細については、[タスク ハブ](durable-functions-task-hubs.md)に関するページをご覧ください。
+
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -336,4 +349,3 @@ ms.lasthandoff: 09/29/2017
 
 > [!div class="nextstepaction"]
 > [環境変数のグローバル設定を参照してください。](functions-app-settings.md)
-

@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 02/02/2017
 ms.author: rclaus
 ms.openlocfilehash: 12f540a700fbf85e579e8aadc9f6def039299ff7
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-software-raid-on-linux"></a>Linux でのソフトウェア RAID の構成
 一般的なシナリオは、Azure 内の Linux 仮想マシンでソフトウェア RAID を使用して、複数のデータ ディスクを 1 つの RAID デバイスとしてアタッチすることです。 このシナリオを使用すると通常、1 つのみのディスクを使用するシナリオよりもパフォーマンスとスループットが向上します。
@@ -61,7 +61,7 @@ zypper install mdadm
                     sectors (command 'u').
     ```
 
-2. キーを押して、プロンプトを作成するには、「n」、  **n**新しいパーティション。
+2. プロンプトが表示されたら **n** キーを押して、新しいパーティションを作成します。
 
     ```bash
     Command (m for help): n

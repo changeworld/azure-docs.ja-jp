@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: f05e769a8c5d26c0149dcba05c0973de4bd30313
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 115aa01ee6e3bd539086d80df1dcd94b3b7e2723
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="monitor-and-manage-performance-of-azure-sql-databases-and-pools-in-a-multi-tenant-saas-app"></a>マルチテナント SaaS アプリの Azure SQL データベースおよびプールのパフォーマンスを監視および管理します
 
@@ -48,7 +47,7 @@ Wingtip SaaS アプリでは、会場 (テナント) ごとに独自のデータ
 
 データベース パフォーマンスを管理するには、まずパフォーマンス データをコンパイルして分析し、その後、このデータに基づいて、アプリケーションの許容応答時間を維持できるようパラメーターを調整します。 複数のテナントをホストしている場合、エラスティック データベース プールを使用すると、ワークロードが予測できないデータベース グループのリソースを、コスト効率に優れた方法で提供し、管理できます。 特定のワークロード パターンでは、S3 データベースが 2 つだけでも、プールで管理するというメリットを利用できます。
 
-![メディア](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
+![アプリケーション ダイアグラム](./media/sql-database-saas-tutorial-performance-monitoring/app-diagram.png)
 
 プール、およびプール内のデータベースは、パフォーマンスが許容範囲内で維持されるよう監視する必要があります。 プール構成は、すべてのデータベースの集計ワークロードのニーズを満たすように調整し、ワークロード全体に適したプールの eDTU を確保します。 データベースあたりの eDTU の最小値と最大値を、特定のアプリケーション要件に応じて適切な値に調整してください。
 
@@ -115,11 +114,11 @@ Wingtip は SaaS アプリです。SaaS アプリに対する実際の負荷は�
 
 プールのリソース使用は、プール内のすべてのデータベースのデータベース使用の集計を示しています。 データベースのグラフは、5 つの最新のデータベースを示しています。
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
+![データベースのグラフ](./media/sql-database-saas-tutorial-performance-monitoring/pool1.png)
 
 使用率の高い 5 つのデータベース以外にもプールにはデータベースは存在するため、プール使用率は、使用率の高い 5 つのデータベース グラフに反映されていないアクティビティを示しています。 詳細を確認するには、**[データベース リソースの使用率]** をクリックします。
 
-![](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
+![データベース リソース使用率](./media/sql-database-saas-tutorial-performance-monitoring/database-utilization.png)
 
 
 ## <a name="set-performance-alerts-on-the-pool"></a>プールでのパフォーマンス アラートの設定
@@ -249,4 +248,3 @@ contosoconcerthall データベースの高い負荷が落ち着いたら、コ�
 * [SQL エラスティック プール](sql-database-elastic-pool.md)
 * [Azure Automation](../automation/automation-intro.md)
 * [Log Analytics](sql-database-saas-tutorial-log-analytics.md) - Log Analytics の設定および使用チュートリアル
-

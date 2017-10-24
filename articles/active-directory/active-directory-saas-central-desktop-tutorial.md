@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: fe32c1d68040ceb9d9de2ad6c4a6dc9ea93f5aef
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-central-desktop"></a>チュートリアル: Azure Active Directory と Central Desktop の統合
 このチュートリアルでは、Azure と Central Desktop の統合について説明します。 このチュートリアルで説明するシナリオでは、次の項目があることを前提としています。
@@ -68,7 +68,7 @@ ms.lasthandoff: 07/11/2017
 
 **シングル サインオンを構成するには、次の手順に従います。**
 
-1. Azure クラシック ポータルでの**Central Desktop**アプリケーション統合ページでは、 をクリックして**でのシングル サインオンを構成する**を開くには、* * シングル サインオンの構成 * * ダイアログ。
+1. Azure クラシック ポータルの **Central Desktop** アプリケーション統合ページで、**[シングル サインオンの構成]** をクリックして、**[シングル サインオンの構成]** ダイアログを開きます。
    
    ![シングル サインオンの構成](./media/active-directory-saas-central-desktop-tutorial/IC749323.png "Configure single sign-on")
 2. **[ユーザーの Central Desktop へのアクセスを設定してください]** ページで、**[Microsoft Azure AD のシングル サインオン]** を選択し、**[次へ]** をクリックします。

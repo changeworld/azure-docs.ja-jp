@@ -15,12 +15,11 @@ ms.workload: na
 ms.date: 09/19/2017
 ms.author: andbuc
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: fb65e3c34d2b2a14370792d8506c13c8c5fb522e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: e2f26c1abe09feff77e1e2633d8bfcf4ca527aee
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explore-azure-iot-edge-architecture-on-linux"></a>Azure IoT Edge アーキテクチャについて (Linux)
 
@@ -32,7 +31,7 @@ ms.lasthandoff: 09/23/2017
 
 **build.sh** スクリプトは、**iot-edge** リポジトリのローカル コピーの**ビルド** フォルダーに出力を生成します。 この出力には、このサンプルで使用する 2 つの IoT Edge モジュールが含まれています。
 
-このビルド スクリプトにより、**liblogger.so** が **build/modules/logger/** フォルダーに配置され、**libhello\_world.so** が **build/modules/hello_world/** フォルダーに配置されます。 次の JSON 設定ファイルの例に示すように、**モジュール パス**の値にはこれらのパスを使用します。
+このビルド スクリプトにより、**liblogger.so** が **build/modules/logger/** フォルダーに配置され、**libhello\_world.so** が **build/modules/hello_world/** フォルダーに配置されます。 JSON 設定ファイルの例に示すように、**モジュール パス**の値にはこれらのパスを使用します。
 
 hello\_world\_sample プロセスは、コマンド ラインの引数として JSON 構成ファイルのパスを取ります。 次のサンプルの JSON ファイルは、**samples/hello\_world/src/hello\_world\_lin.json** の SDK リポジトリに提供されています。 既定以外の場所に IoT Edge モジュールまたはサンプルの実行可能ファイルを配置するようにビルド スクリプトを変更していない限り、この構成ファイルはそのままで動作します。
 
@@ -79,9 +78,8 @@ hello\_world\_sample プロセスは、コマンド ラインの引数として 
 1. 次のコマンドを実行します。
 
     ```sh
-    ./samples/hello_world/hello_world_sample ../samples/hello_world/src/hello_world_lin.json`
+    ./samples/hello_world/hello_world_sample ../samples/hello_world/src/hello_world_lin.json
     ```
 
 [!INCLUDE [iot-hub-iot-edge-getstarted-code](../../includes/iot-hub-iot-edge-getstarted-code.md)]
-
 

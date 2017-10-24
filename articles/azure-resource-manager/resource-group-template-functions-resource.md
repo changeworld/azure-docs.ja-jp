@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 10/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: fdee4280b6642fa7c3e26e792b8b940772572ae7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: adcf9ddc0044da9bce1ab584d54cec66055ee0ad
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートのリソース関数
 
@@ -234,7 +233,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 <a id="reference" />
 
 ## <a name="reference"></a>reference
-`reference(resourceName or resourceIdentifier, [apiVersion])`
+`reference(resourceName or resourceIdentifier, [apiVersion], ['Full'])`
 
 リソースのランタイム状態を表すオブジェクトを返します。
 
@@ -244,10 +243,11 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 |:--- |:--- |:--- |:--- |
 | resourceName または resourceIdentifier |あり |string |名前またはリソースの一意の識別子。 |
 | apiVersion |いいえ |string |指定したリソースの API バージョンです。 同じテンプレート内でリソースがプロビジョニングされない場合に、このパラメーターを追加します。 通常、**yyyy-mm-dd** の形式。 |
+| 'Full' |いいえ |string |完全なリソース オブジェクトを返すかどうかを指定する値。 `'Full'` を指定しない場合、リソースのプロパティ オブジェクトのみが返されます。 完全なオブジェクトには、リソース ID や場所などの値が含まれます。 |
 
 ### <a name="return-value"></a>戻り値
 
-あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
+あらゆるリソースの種類で、reference 関数のさまざまなプロパティが返されます。 この関数は、定義済みの単一の形式を返しません。 また、返される値は、完全なオブジェクトを指定したかどうかによって異なります。 あるリソースの種類のプロパティを確認するには、この例に示すように、outputs セクションでオブジェクトを返します。
 
 ### <a name="remarks"></a>解説
 
@@ -271,6 +271,32 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
     }
 }
 ```
+
+`'Full'` は、プロパティのスキーマに含まれないリソースの値が必要なときに使用します。 たとえば、キー コンテナーのアクセス ポリシーを設定するために、仮想マシンの ID プロパティを取得する場合です。
+
+```json
+{
+  "type": "Microsoft.KeyVault/vaults",
+  "properties": {
+    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "accessPolicies": [
+      {
+        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "permissions": {
+          "keys": [
+            "all"
+          ],
+          "secrets": [
+            "all"
+          ]
+        }
+      }
+    ],
+    ...
+```
+
+前のテンプレートの完全な例については、[Windows での Key Vault](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo08.msiWindowsToKeyvault.json) に関するページを参照してください。 同様の例を [Linux](https://github.com/rjmax/AzureSaturday/blob/master/Demo02.ManagedServiceIdentity/demo07.msiLinuxToArm.json) についても利用できます。
 
 ### <a name="example"></a>例
 
@@ -304,16 +330,20 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
       "referenceOutput": {
           "type": "object",
           "value": "[reference(parameters('storageAccountName'))]"
+      },
+      "fullReferenceOutput": {
+        "type": "object",
+        "value": "[reference(parameters('storageAccountName'), '2016-12-01', 'Full')]"
       }
     }
 }
 ``` 
 
-前の例では、次の形式のオブジェクトが返されます。
+前の例では、2 つのオブジェクトが返されます。 properties オブジェクトの形式は次のとおりです。
 
 ```json
 {
-   "creationTime": "2017-06-13T21:24:46.618364Z",
+   "creationTime": "2017-10-09T18:55:40.5863736Z",
    "primaryEndpoints": {
      "blob": "https://examplestorage.blob.core.windows.net/",
      "file": "https://examplestorage.file.core.windows.net/",
@@ -324,6 +354,43 @@ reference 関数を使用して、参照先のリソースが同じテンプレ�
    "provisioningState": "Succeeded",
    "statusOfPrimary": "available",
    "supportsHttpsTrafficOnly": false
+}
+```
+
+完全なオブジェクトの形式は次のとおりです。
+
+```json
+{
+  "apiVersion":"2016-12-01",
+  "location":"southcentralus",
+  "sku": {
+    "name":"Standard_LRS",
+    "tier":"Standard"
+  },
+  "tags":{},
+  "kind":"Storage",
+  "properties": {
+    "creationTime":"2017-10-09T18:55:40.5863736Z",
+    "primaryEndpoints": {
+      "blob":"https://examplestorage.blob.core.windows.net/",
+      "file":"https://examplestorage.file.core.windows.net/",
+      "queue":"https://examplestorage.queue.core.windows.net/",
+      "table":"https://examplestorage.table.core.windows.net/"
+    },
+    "primaryLocation":"southcentralus",
+    "provisioningState":"Succeeded",
+    "statusOfPrimary":"available",
+    "supportsHttpsTrafficOnly":false
+  },
+  "subscriptionId":"<subscription-id>",
+  "resourceGroupName":"functionexamplegroup",
+  "resourceId":"Microsoft.Storage/storageAccounts/examplestorage",
+  "referenceApiVersion":"2016-12-01",
+  "condition":true,
+  "isConditionTrue":true,
+  "isTemplateResource":false,
+  "isAction":false,
+  "provisioningOperation":"Read"
 }
 ```
 
@@ -659,5 +726,4 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 * 複数のテンプレートをマージするには、[Azure Resource Manager でのリンクされたテンプレートの使用](resource-group-linked-templates.md)に関するページを参照してください。
 * 1 種類のリソースを指定した回数分繰り返し作成するには、「 [Azure Resource Manager でリソースの複数のインスタンスを作成する](resource-group-create-multiple.md)」を参照してください。
 * 作成したテンプレートをデプロイする方法を確認するには、[Azure Resource Manager テンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)に関するページを参照してください。
-
 

@@ -36,11 +36,11 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 >この手順についてさらに詳しくは、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」をご覧ください。 
 
 ### <a name="create-a-namespace-and-event-hub"></a>名前空間とイベント ハブを作成する
-この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使われます。 
+この手順では、まずイベント ハブの名前空間を作成し、その名前空間にイベント ハブを追加します。 イベント ハブの名前空間は、関連するイベント バス インスタンスを論理的にグループ化するために使用されます。 
 
-1. Azure Portal にログインし、**[新規]** > **[モノのインターネット]** > **[イベント ハブ]** の順にクリックします。 
+1. Azure Portal にログインし、**[新規]** > **[モノのインターネット]** > **[イベント ハブ]** をクリックします。 
 
-2. **[名前空間の作成]** ブレードで、名前空間の名前 (例: `<yourname>-eh-ns-demo`) を入力します。 名前空間には任意の名前を使用できますが、この名前は URL で有効である必要があり、Azure 全体で一意である必要があります。 
+2. **[名前空間の作成]** ウィンドウで、名前空間の名前 (例: `<yourname>-eh-ns-demo`) を入力します。 名前空間には任意の名前を使用できますが、この名前は URL で有効である必要があり、Azure 全体で一意である必要があります。 
     
 3. サブスクリプションを選択し、リソース グループを作成または選択して、**[作成]** をクリックします。 
 
@@ -48,7 +48,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
  
 4. イベント ハブの名前空間のデプロイが完了したら、Azure リソースの一覧でその名前空間を見つけます。 
 
-5. 新しい名前空間をクリックし、名前空間ブレードで **[+&nbsp;イベント ハブ]** をクリックします。 
+5. 新しい名前空間をクリックし、名前空間ウィンドウで **[イベント ハブ]** をクリックします。
 
     ![新しいイベント ハブを作成するための [イベント ハブの追加] ボタン ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-button-new-portal.png)    
  
@@ -57,14 +57,14 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
     ![新しいイベント ハブを作成するためのブレード](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-eventhub-new-portal.png)
     
  
-7. ページの下部にある **[Create]**」を参照してください。
+7. **Create** をクリックしてください。
 ### <a name="grant-access-to-the-event-hub-and-get-a-connection-string"></a>イベント ハブへのアクセスを許可し、接続文字列を取得する
 
 プロセスがイベント ハブにデータを送信できるようにするには、イベント ハブに、適切なアクセスを許可するポリシーが必要です。 アクセス ポリシーにより、承認情報を含む接続文字列が生成されます。
 
-1.  イベント名前空間ブレードで、**[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
+1.  イベント名前空間ウィンドウで、**[イベント ハブ]** をクリックし、新しいイベント ハブの名前をクリックします。
 
-2.  イベント ハブ ブレードで、**[共有アクセス ポリシー]** をクリックし、**[+&nbsp;追加]** をクリックします。
+2.  イベント ハブ ウィンドウで、**[共有アクセス ポリシー]** をクリックし、**[+&nbsp;追加]** をクリックします。
 
     >[!NOTE]
     >イベント ハブの名前空間ではなく、イベント ハブを操作していることを確認してください。
@@ -73,7 +73,7 @@ Streaming Analytics ジョブの結果を確認する場合は、Azure Blob Stor
 
     ![イベント ハブの新しいアクセス ポリシーを作成するためのブレード](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-shared-access-policy-manage-new-portal.png)
  
-4.  ページの下部にある **[Create]**」を参照してください。
+4.  **Create** をクリックしてください。
 
 5.  ポリシーがデプロイされたら、共有アクセス ポリシーの一覧でそのポリシーをクリックします。
 
@@ -99,7 +99,7 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
 2.  TelcoGenerator.zip ファイルを解凍したフォルダーにある telcodatagen.exe.config ファイルをエディターで開きます  (複数の .config ファイルがあるので、正しいファイルを開くように注意してください)。
 
-3.  `<appSettings>` 要素を次のようにします。
+3.  `<appSettings>` 要素で次のように設定します。
 
     * `EventHubName` キーの値をイベント ハブ名 (つまり、エンティティ パスの値) に設定します。
     * `Microsoft.ServiceBus.ConnectionString` キーの値を接続文字列に設定します。 
@@ -150,18 +150,18 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
     ![新しい Stream Analytics ジョブの作成](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-job-new-portal.png)
 
-3. ページの下部にある **[Create]**」を参照してください。
+3. **Create** をクリックしてください。
 
     ジョブが作成され、ポータルにジョブの詳細が表示されます。 まだ何も実行されていませんが、開始する前にジョブを構成する必要があります。
 
 ### <a name="configure-job-input"></a>ジョブの入力を構成する
 
-1. ダッシュボードまたは **[すべてのリソース]** ブレードで、`sa_frauddetection_job_demo` Stream Analytics ジョブを探して選びます。 
-2. [Stream Analytics ジョブ] ブレードの **[ジョブ トポロジ]** セクションで、**[入力]** ボックスをクリックします。
+1. ダッシュボードまたは **[すべてのリソース]** ウィンドウで、`sa_frauddetection_job_demo` Stream Analytics ジョブを探して選びます。 
+2. [Stream Analytics ジョブ] ウィンドウの **[ジョブ トポロジ]** セクションで、**[入力]** ボックスをクリックします。
 
-    ![[Streaming Analytics ジョブ] ブレードの [トポロジ] の下にある [入力] ボックス](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
+    ![[Streaming Analytics ジョブ] ウィンドウの [トポロジ] の下にある [入力] ボックス](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-input-box-new-portal.png)
  
-3. **[+&nbsp;追加]** をクリックし、ブレードに次の値を入力します。
+3. **[+&nbsp;追加]** をクリックし、ウィンドウに次の値を入力します。
 
     * **[入力のエイリアス]**: `CallStream` という名前を使います。 この名前は後で必要になるため、別の名前を使用する場合は書き留めておきます。
     * **[ソースの種類]**: **[データ ストリーム]** を選択します  (**[参照データ]** は静的な参照データを参照しますが、このチュートリアルでは使いません)。
@@ -173,13 +173,13 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 
     ![Stream Analytics ジョブの新しい入力の作成](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sa-input-new-portal.png)
 
-4. ページの下部にある **[Create]**」を参照してください。
+4. **Create** をクリックしてください。
 
 ## <a name="create-queries-to-transform-real-time-data"></a>リアルタイム データを変換するクエリを作成する
 
 ここまでで、着信データ ストリームを読み取る Stream Analytics ジョブを設定しました。 次に、リアルタイムでデータを分析する変換を作成します。 そのためにはクエリを作成します。 Stream Analytics では、リアルタイム処理のために変換を記述する単純な宣言型のクエリ モデルがサポートされます。 このクエリは、Stream Analytics に固有のいくつかの拡張を含む SQL に似た言語を使います。 
 
-非常に単純なクエリで、着信したすべてのデータを読み取るだけです。 ただし、多くの場合は、特定のデータやデータ内の関係を検索するクエリを作成します。 チュートリアルのこのセクションでは、複数のクエリを作成してテストし、分析のために入力ストリームを変換するいくつかの方法を学習します。 
+単純なクエリで、着信したすべてのデータを読み取るだけです。 ただし、多くの場合は、特定のデータやデータ内の関係を検索するクエリを作成します。 チュートリアルのこのセクションでは、複数のクエリを作成してテストし、分析のために入力ストリームを変換するいくつかの方法を学習します。 
 
 ここで作成するクエリは、変換されたデータを画面に表示するだけです。 後のセクションでは、出力シンクとそのシンクに変換されたデータを書き込むクエリを構成します。
 
@@ -190,13 +190,13 @@ TelcoGenerator アプリを開始する前に、作成したイベント ハブ�
 TelcoGenerator アプリはイベント ハブに呼び出しレコードを送信しており、Stream Analytics ジョブはイベント ハブから読み取るように構成されています。 クエリを使ってジョブをテストし、正しく読み取っていることを確認できます。 Azure コンソールでクエリをテストするには、サンプル データが必要です。 このチュートリアルでは、イベント ハブに送られてくるストリームからサンプル データを抽出します。
 
 1. TelcoGenerator アプリが稼働していて呼び出しレコードを生成していることを確認します。
-2. ポータルで、[Streaming Analytics ジョブ] ブレードに戻ります  (ブレードを閉じた場合は、**[すべてのリソース]** ブレードで `sa_frauddetection_job_demo` を検索します)。
+2. ポータルで、[Streaming Analytics ジョブ] ウィンドウに戻ります  (ウィンドウを閉じた場合は、**[すべてのリソース]** ウィンドウで `sa_frauddetection_job_demo` を検索します)。
 3. **[クエリ]** ボックスをクリックします。 そのジョブ用に構成されている入力と出力が一覧表示されます。出力に送信される入力ストリームを変換できるクエリを作成できます。
-4. **[クエリ]** ブレードで、`CallStream` 入力の横の点をクリックし、**[入力からのサンプル データ]** を選びます。
+4. **[クエリ]** ウィンドウで、`CallStream` 入力の横の点をクリックし、**[入力からのサンプル データ]** を選びます。
 
     ![Stream Analytics ジョブ エントリにサンプル データを使用するためのメニュー オプション - [入力からのサンプル データ] を選択](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-sample-data-from-input.png)
 
-    取得するサンプル データの量を指定できるブレードが開きます。データの量は、入力ストリームの読み取り期間で定義されています。
+    取得するサンプル データの量を指定できるウィンドウが開きます。データの量は、入力ストリームの読み取り期間で定義されています。
 
 5. **[分]** を 3 に設定し、**[OK]** をクリックします。 
     
@@ -314,9 +314,9 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 ### <a name="create-an-azure-blob-storage-account"></a>Azure Blob Storage アカウントを作成する
 
-1. Azure Portal で、[Streaming Analytics ジョブ] ブレードに戻ります  (ブレードを閉じた場合は、**[すべてのリソース]** ブレードで `sa_frauddetection_job_demo` を検索します)。
+1. Azure Portal で、[Streaming Analytics ジョブ] ウィンドウに戻ります  (ウィンドウを閉じた場合は、**[すべてのリソース]** ウィンドウで `sa_frauddetection_job_demo` を検索します)。
 2. **[ジョブ トポロジ]** セクションで、**[出力]** ボックスをクリックします。 
-3. **[出力]** ブレードで **[+&nbsp;追加]** をクリックし、ブレードに次の値を入力します。
+3. **[出力]** ウィンドウで **[+&nbsp;追加]** をクリックし、ウィンドウに次の値を入力します。
 
     * **[出力エイリアス]**: `CallStream-FraudulentCalls` という名前を使います。 
     * **[シンク]**: **[Blob ストレージ]** を選択します。
@@ -328,13 +328,13 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
     `http://yournamesademo.blob.core.windows.net/sa-fraudulentcalls-demo/...`
     
-    ![Stream Analytics ジョブの [新しい出力] ブレード](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
+    ![Stream Analytics ジョブの [新しい出力] ウィンドウ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-create-output-blob-storage-new-console.png)
     
-4. ページの下部にある **[Create]**」を参照してください。 
+4. **Create** をクリックしてください。 
 
     ストレージ アカウントが作成され、キーが自動的に生成されます。 
 
-5. **[出力]** ブレードを閉じます。 
+5. **[出力]** ウィンドウを閉じます。 
 
 ## <a name="start-the-streaming-analytics-job"></a>Stream Analytics ジョブを開始する
 
@@ -342,17 +342,17 @@ TelcoGenerator アプリはイベント ハブに呼び出しレコードを送�
 
 1. TelcoGenerator アプリが動いていることを確認します。
 
-2. ジョブ ブレードで、**[開始]** をクリックします。
+2. ジョブ ウィンドウで、**[開始]** をクリックします。
 
     ![Stream Analytics ジョブの開始](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-output.png)
 
-3. **[ジョブの開始]** ブレードの [ジョブ出力の開始時刻] で、**[現在]** を選択します。 
+3. **[ジョブの開始]** ウィンドウの [ジョブ出力の開始時刻] で、**[現在]** を選択します。 
 
 4. **[開始]**をクリックします。 
 
-    ![Stream Analytics ジョブの [ジョブの開始] ブレード](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
+    ![Stream Analytics ジョブの [ジョブの開始] ウィンドウ](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-start-job-blade.png)
 
-    ジョブが開始されたことが通知され、ジョブ ブレードに表示される状態が **[実行中]** になります。
+    ジョブが開始されたことが通知され、ジョブ ウィンドウに表示される状態が **[実行中]** になります。
 
     ![[実行中] を示す Stream Analytics ジョブの状態](./media/stream-analytics-real-time-fraud-detection/stream-analytics-sa-job-running-status.png)
     
@@ -374,7 +374,7 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 
 一方、これで終了し、作成したリソースがもう必要ない場合は、不要な Azure の料金が発生しないように削除できます。 その場合は、次のようにすることをお勧めします。
 
-1. Stream Analytics ジョブを停止します。 **[ジョブ]** ブレードの上部にある **[停止]** をクリックします。
+1. Stream Analytics ジョブを停止します。 **[ジョブ]** ウィンドウの上部にある **[停止]** をクリックします。
 2. TelcoGenerator アプリを停止します。 アプリを起動したコマンド ウィンドウで、Ctrl + C キーを押します。
 3. このチュートリアルのためだけに新しい BLOB ストレージ アカウントを作成した場合は、それを削除します。 
 4. Stream Analytics ジョブを削除します。
@@ -390,7 +390,6 @@ BLOB ストレージ内のファイルの内容を調べると、次のような
 このチュートリアルに続けて、次の記事を読むことができます。
 
 * 「[Stream Analytics と Power BI: ストリーミング データのリアルタイム分析ダッシュボード](stream-analytics-power-bi-dashboard.md)」。 この記事では、Stream Analytics ジョブの TelCo 出力を、リアルタイムの視覚化と分析のために Power BI に送信する方法を説明します。
-* 「[Azure Functions を使用して Azure Stream Analytics から Azure Redis Cache にデータを格納する方法](stream-analytics-functions-redis.md)」。 この記事では、Azure Functions を使って Service Bus キュー経由で Azure Redis キャッシュに不正通話を書き込む方法を示します。
 
 Stream Analytics の一般的な情報について詳しくは、以下の記事をご覧ください。
 

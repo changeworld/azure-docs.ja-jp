@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/01/2017
 ms.author: adegeo
+ms.openlocfilehash: 89c08f2d1e0e244503e3fc4355cad0b4391618e1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 99523f27fe43f07081bd43f5d563e554bda4426f
-ms.openlocfilehash: 9dc438e927acd9aef38f06807fabf3dda9b021c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/05/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="upload-an-azure-management-api-management-certificate"></a>Azure Management API Management 証明書のアップロード
 管理証明書を使用することにより、Azure のクラシック デプロイメント モデルを使用して認証できます。 多くのプログラムとツール (Visual Studio や Azure SDK など) でこれらの証明書が使用され、さまざまな Azure サービスの構成とデプロイメントが自動化されます。 
@@ -32,6 +31,8 @@ ms.lasthandoff: 08/05/2017
 Azure の証明書の詳細 (自己署名証明書の作成など) については、[「Azure Cloud Services の証明書の概要」](cloud-services/cloud-services-certs-create.md#what-are-management-certificates)を参照してください。
 
 クライアント コードの認証に [Azure Active Directory](https://azure.microsoft.com/en-us/services/active-directory/) を使用することで自動化を図ることもできます。
+
+**注:** 管理証明書で操作を実行するには、サブスクリプションの共同管理者である必要があります。 新しい Azure Portal で共同管理者を追加または削除する方法の詳細については、[こちら](https://go.microsoft.com/fwlink/?linkid=849300)を参照してください 
 
 ## <a name="upload-a-management-certificate"></a>管理証明書のアップロード
 管理証明書 (公開キーのみを含んだ .cer ファイル) を作成したら、それをポータルにアップロードできます。 ポータルで証明書が使用可能な場合は、対になる証明書 (秘密キー) を持つすべての人が、Management API を経由して接続し、サブスクリプションに関連付けられているリソースにアクセスすることができます。
@@ -55,4 +56,3 @@ Azure の証明書の詳細 (自己署名証明書の作成など) について�
 
 ## <a name="next-steps"></a>次のステップ
 サブスクリプションへの管理証明書の関連付けはこれで完了です。これで、(対になる証明書をローカルにインストールした後) プログラムから[クラシック デプロイメント モデル REST API](https://msdn.microsoft.com/library/azure/mt420159.aspx) に接続して、同じサブスクリプションに関連付けられているさまざまな Azure リソースを自動化できます。
-

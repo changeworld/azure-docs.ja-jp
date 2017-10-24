@@ -17,14 +17,12 @@ ms.workload: na
 ms.date: 07/24/2017
 ms.author: seanmck
 ms.custom: mvc
+ms.openlocfilehash: b960d56188abf102cf4a8894582203205eaa9a03
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a678700884b612cad6281eb8f3b74ce63a0ebb69
-ms.openlocfilehash: 6f0a1e5263a034e825d4c12860fd6f97a4c556c6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-container-instances-and-container-orchestrators"></a>Azure Container Instances とコンテナー オーケストレーター
 
 コンテナーはサイズが小さく、アプリケーション向きであるため、アジャイル配信環境およびマイクロサービス ベースのアーキテクチャに適しています。 多数のコンテナーを自動化して管理するタスクと、こうしたコンテナーの対話は "*オーケストレーション*" と呼ばれます。 Kubernetes、DC/OS、Docker Swarm などが、よく利用されているコンテナー オーケストレーターで、これはすべて [Azure Container Service](https://docs.microsoft.com/azure/container-service/) から入手できます。
@@ -66,9 +64,9 @@ Azure Container Instances 専用の環境は、すばやく起動し、秒単位
 
 ## <a name="sample-implementation-azure-container-instances-connector-for-kubernetes"></a>サンプル実装: Kubernetes 用の Azure Container Instances コネクタ
 
-コンテナー オーケストレーション プラットフォームを Azure Container Instances に統合する方法を示すために、[Kubernetes 用サンプル コネクタ][aci-connector-k8s]の構築を開始しました。 
+コンテナー オーケストレーション プラットフォームを Azure Container Instances に統合する方法を示すために、[Kubernetes 用サンプル コネクタ][aci-connector-k8s]の構築を開始しました。
 
-Kubernetes 用コネクタは、無制限の容量を持つノードとして登録し、Azure Container Instances のコンテナー グループとして[ポッド][pod-doc]の作成をディスパッチすることで、[kubelet][kubelet-doc] に似せています。 
+Kubernetes 用コネクタは、無制限の容量を持つノードとして登録し、Azure Container Instances のコンテナー グループとして[ポッド][pod-doc]の作成をディスパッチすることで、[kubelet][kubelet-doc] に似せています。
 
 <!-- ![ACI Connector for Kubernetes][aci-connector-k8s-gif] -->
 

@@ -17,17 +17,15 @@ ms.workload: na
 ms.date: 09/25/2017
 ms.author: marsma
 ms.custom: mvc
+ms.openlocfilehash: 0179107ece1e150246ab40836783d810425be3ca
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 16ae3d77c084651416cbc3bb1c5d28fee5e9124b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-your-first-container-in-azure-container-instances"></a>Azure Container Instances での最初のコンテナーの作成
 
-Azure Container Instances を使用すると、Azure でコンテナーを簡単に作成して管理できます。 このクイック スタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、Azure ポータルを使用することによって完結します。 わずか数回のクリックで、お使いのブラウザーに次のように表示されます。
+Azure Container Instances を使用すると、Azure でコンテナーを簡単に作成して管理できます。 このクイックスタートでは、Azure でコンテナーを作成し、パブリック IP アドレスを使用してインターネットに公開します。 この操作は、Azure ポータルを使用することによって完結します。 わずか数回のクリックで、お使いのブラウザーに次のように表示されます。
 
 ![Azure Container Instances を使用してデプロイされたアプリのブラウザーでの表示][aci-app-browser]
 
@@ -83,7 +81,7 @@ Azure Container Instances では、Windows コンテナーと Linux コンテナ
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、パブリックの Docker Hub リポジトリ内のイメージから Azure コンテナー インスタンスを作成しました。 Azure Container Registry を使用してコンテナーのビルドと Azure Container Instances へのデプロイを自分で試す場合は、Azure Container Instances のチュートリアルに進んでください。
+このクイック スタートでは、パブリックの Docker Hub リポジトリ内のイメージから Azure コンテナー インスタンスを作成しました。 Azure Container Registry を使用してコンテナーのビルドと Azure Container Instances へのデプロイを自分で試す場合は、Azure Container Instances のチュートリアルに進んでください。
 
 > [!div class="nextstepaction"]
 > [Azure Container Instances のチュートリアル](./container-instances-tutorial-prepare-app.md)
