@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory ドメイン サービス: 管理対象ドメインを管理する | Microsoft Docs"
-description: "Azure Active Directory ドメイン サービスで管理されているドメインを管理する"
+title: "Azure Active Directory Domain Services: 管理対象ドメインを管理する | Microsoft Docs"
+description: "Azure Active Directory Domain Services で管理されているドメインを管理する"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 09/23/2017
 ms.author: maheshu
-translationtype: Human Translation
-ms.sourcegitcommit: 2ea002938d69ad34aff421fa0eb753e449724a8f
-ms.openlocfilehash: d215fd31ca4652437783ad630aee532a17cda611
-ms.lasthandoff: 11/17/2016
-
-
+ms.openlocfilehash: 8edf01d994e54a8f1af98861cb445a5909b6a1df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory ドメイン サービスで管理されているドメインを管理する
+# <a name="administer-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services で管理されているドメインを管理する
 この記事では、Azure Active Directory (AD) ドメイン サービスで管理されているドメインを管理する方法について説明します。
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -65,11 +64,11 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 ## <a name="task-2---install-active-directory-administration-tools-on-the-virtual-machine"></a>タスク 2 - 仮想マシンに Active Directory 管理ツールをインストールする
 ドメインに参加している仮想マシンに Active Directory 管理ツールをインストールするには、次の手順を実行します。 [リモート サーバー管理ツールのインストールおよび使用](https://technet.microsoft.com/library/hh831501.aspx)の詳細については、TechNet を参照してください。
 
-1. Azure クラシック ポータルの **[Virtual Machines]** ノードに移動します。 タスク 1 で作成した仮想マシンを選択し、ウィンドウ下部にあるコマンド バーで **[接続]** をクリックします。
+1. Azure Portal に移動します。 左側のパネルの **[すべてのリソース]** をクリックします。 タスク 1 で作成した仮想マシンを見つけてクリックします。
+2. [概要] タブの **[接続]** ボタンをクリックします。リモート デスクトップ プロトコル (.rdp) ファイルが作成されてダウンロードされます。
 
     ![Windows 仮想マシンに接続する](./media/active-directory-domain-services-admin-guide/connect-windows-vm.png)
-2. クラシック ポータルでは、仮想マシンへの接続に使用される ".rdp" という拡張子のファイルを開くか保存するように求められます。 ダウンロードが完了したら、ファイルをクリックして開きます。
-3. ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。
+3. VM に接続するには、ダウンロードした RDP ファイルを開きます。 メッセージが表示されたら、**[接続]** をクリックします。 ログイン プロンプトで、'AAD DC Administrators' グループに属しているユーザーの資格情報を使用します。 たとえば、ここでは 'bob@domainservicespreview.onmicrosoft.com' を使用します。 サインイン処理中に証明書の警告が表示される場合があります。 [はい] または [続行] をクリックして接続処理を続行します。
 4. スタート画面で、 **[サーバー マネージャー]**を開きます。 [サーバー マネージャー] ウィンドウの中央ウィンドウで **[役割と機能の追加]** をクリックします。
 
     ![仮想マシンでのサーバー マネージャーの起動](./media/active-directory-domain-services-admin-guide/install-rsat-server-manager.png)
@@ -120,4 +119,3 @@ TechNet の 手順に従って、Windows クライアントの仮想マシンで
 * [Azure AD ドメイン サービス - 作業開始ガイド](active-directory-ds-getting-started.md)
 * [Azure AD ドメイン サービスで管理されているドメインに Windows Server 仮想マシンを参加させる](active-directory-ds-admin-guide-join-windows-vm.md)
 * [リモート サーバー管理ツールのデプロイ](https://technet.microsoft.com/library/hh831501.aspx)
-

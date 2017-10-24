@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: mimig
+ms.openlocfilehash: 192bdde86e12472a6fd87ba50fd597ea8b01247d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 084dacc6a07b64500652481fbcabf1b0fc44306c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Azure Functions を使用したサーバーなしのデータベースのコンピューティング
 
 サーバーなしのコンピューティングとは、繰り返し可能でステートレスな個々のロジックに集中できる機能です。 個々のロジックにインフラストラクチャの管理は必要ありません。秒単位またはミリ秒単位の実行時間のみリソースを使用します。 サーバーなしのコンピューティング移動の中心には、関数があります。関数は、Azure エコシステムの [Azure Functions](https://azure.microsoft.com/services/functions) で使用できます。
@@ -136,7 +134,7 @@ Azure Cosmos DB は、サーバーなしのコンピューティング アーキ
 
 * **グローバル レプリケーション** ユーザーのいる場所に最も近いデータの位置を特定することで、[世界中](distribute-data-globally.md)の Azure Cosmos DB データをレプリケートして待機時間を短縮できます。 すべての Azure Cosmos DB クエリと同様に、イベント ドリブン トリガーのデータは、ユーザーに最も近い Azure Cosmos DB から読み取られます。
 
-Azure Functions と統合してデータを格納し、深いインデックス作成が必要ない場合、または添付ファイルとメディア ファイルを格納する必要がある場合、[Azure Blog Storage トリガー](../azure-functions/functions-bindings-storage-blob.md)が適している可能性があります。
+Azure Functions と統合してデータを格納し、深いインデックス作成が必要ない場合、または添付ファイルとメディア ファイルを格納する必要がある場合、[Azure Blob Storage トリガー](../azure-functions/functions-bindings-storage-blob.md)が適している可能性があります。
 
 Azure Functions の利点: 
 
@@ -159,7 +157,6 @@ Flow、Logic Apps、Azure Functions、または WebJobs が実装に適してい
 
 
  
-
 
 
 

@@ -16,7 +16,9 @@
 # 方法
 ## 管理対象ドメインに参加する
 ### [Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-### [PowerShell を使用した Windows Server VM](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
+### [テンプレートによる Windows Server VM](active-directory-ds-join-windows-vm-template.md)
+### [CentOS](active-directory-ds-join-centos-linux-vm.md)
+### [CoreOS](active-directory-ds-join-coreos-linux-vm.md)
 ### [RedHat Enterprise Linux](active-directory-ds-join-rhel-linux-vm.md)
 ### [Ubuntu Server](active-directory-ds-join-ubuntu-linux-vm.md)
 ## 管理対象ドメインを管理する

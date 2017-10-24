@@ -12,15 +12,13 @@ ms.workload: tbd
 ms.tgt_pltfrm: cache-redis
 ms.devlang: na
 ms.topic: article
-ms.date: 07/06/2017
+ms.date: 09/15/2017
 ms.author: sdanie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: 71b0d4add7e642487f6d67cda692c500ee78b0e6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 332326ce4188385aa6e569c812e16c3daa68bd5d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-configure-geo-replication-for-azure-redis-cache"></a>Azure Redis Cache の geo レプリケーションの構成方法
 
@@ -103,6 +101,9 @@ geo レプリケーションを構成した後、次の制限が、リンク キ
 - [サイズが異なる 2 つのキャッシュをリンクすることはできますか](#can-i-link-two-caches-with-different-sizes)
 - [クラスタリングを有効にして geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-clustering-enabled)
 - [VNET 内の自分のキャッシュで geo レプリケーションを使用することはできますか](#can-i-use-geo-replication-with-my-caches-in-a-vnet)
+- [Redis の geo レプリケーションのレプリケーション スケジュールとは何ですか](#what-is-the-replication-schedule-for-redis-geo-replication)
+- [geo レプリケーションのレプリケーションにはどのくらいの時間が必要ですか](#how-long-does-geo-replication-replication-take)
+- [レプリケーションの回復ポイントは保証されますか](#is-the-replication-recovery-point-guaranteed)
 - [PowerShell または Azure CLI を使って geo レプリケーションを管理することはできますか](#can-i-use-powershell-or-azure-cli-to-manage-geo-replication)
 - [Azure リージョン間でデータをレプリケートするコストはどれくらいですか](#how-much-does-it-cost-to-replicate-my-data-across-azure-regions)
 - [リンクされたキャッシュを削除しようとすると、操作が失敗するのはどうしてですか](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
@@ -141,6 +142,18 @@ geo レプリケーションは、Premium レベルのキャッシュにのみ�
 - 同じ VNET 内のキャッシュ間の geo レプリケーションがサポートされています。
 - VNET 内のリソースが TCP 接続を使って互いに到達できるように 2 つの VNET が構成されている限り、異なる VNET 内のキャッシュ間の geo レプリケーションもサポートされます。
 
+### <a name="what-is-the-replication-schedule-for-redis-geo-replication"></a>Redis の geo レプリケーションのレプリケーション スケジュールは何ですか
+
+レプリケーションは継続的かつ非同期であるため、特定のスケジュールでは実行されません。 プライマリへの書き込みはすべて、セカンダリに瞬時に非同期的にレプリケートされます。
+
+### <a name="how-long-does-geo-replication-replication-take"></a>geo レプリケーションのレプリケーションにはどのくらいの時間が必要ですか
+
+レプリケーションは、増分、非同期、継続的なために通常はリージョン間の待機時間とそれほど変わりません。 特定の状況、特定の時点では、セカンダリでプライマリからのデータとの完全同期を行う必要がある場合があります。 この場合、レプリケーションにかかる時間は、プライマリ キャッシュにかかる負荷、キャッシュ マシンで使用できる帯域幅、リージョン間の待機時間などの多数の要因によって異なります。たとえば、実験によると、米国西部と東部のリージョンで行った フル 53 GB を geo レプリケーションしたペアの時間差は、5 ～ 10 分でした。
+
+### <a name="is-the-replication-recovery-point-guaranteed"></a>レプリケーションの回復ポイントは保証されますか
+
+現時点では、geo レプリケーションのモードでのキャッシュの永続化、インポート/エクスポート機能は無効化されています。 このため、顧客がフェールオーバーを開始したり、geo レプリケーションされているペア間でのレプリケーション リンクが壊れた場合、セカンダリは、その時点までプライマリから同期されていたメモリ内のデータを保持します。 このような状況では、回復ポイントの保証はありません。
+
 ### <a name="can-i-use-powershell-or-azure-cli-to-manage-geo-replication"></a>PowerShell または Azure CLI を使って geo レプリケーションを管理することはできますか
 
 現時点では、Azure Portal を使った geo レプリケーションの管理のみ可能です。
@@ -167,5 +180,4 @@ geo レプリケーションの最初のリリースでは、Azure Redis Cache �
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Redis Cache Premium レベル](cache-premium-tier-intro.md)の詳細を確認します。
-
 

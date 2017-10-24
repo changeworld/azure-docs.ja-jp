@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 05/09/2017
 ms.author: andredm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: c308183ffe6a01f4d4bf6f5817945629cbcedc92
-ms.openlocfilehash: 0fa44799a0bd49d3d96a1916f32e6452405abce8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/17/2017
-
+ms.openlocfilehash: 22b62be1773c5042ecf6ee078e68a4ffdf791d53
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="elevate-access-as-a-tenant-admin-with-role-based-access-control"></a>ロール ベースのアクセス制御を使用してテナント管理者としてアクセス権を昇格させる
 
@@ -27,7 +26,18 @@ ms.lasthandoff: 05/17/2017
 
 この機能は、組織内に存在するすべてのサブスクリプションをテナント管理者が確認できるようにするために重要です。 さらに、オートメーション アプリ (請求や監査など) からすべてのサブスクリプションにアクセスし、課金や資産管理に関する組織の状況を正確に提供することもできるようになります。  
 
-## <a name="how-to-use-elevateaccess-to-give-tenant-access"></a>elevateAccess を使用してテナントへのアクセス権を付与する方法
+## <a name="how-to-use-elevateaccess-for-tenant-access-with-azure-ad-admin-center"></a>Azure AD 管理センターでテナントへのアクセスに elevateAccess を使用する方法
+
+[Azure Active Directory 管理センター](https://aad.portal.azure.com)の **[プロパティ]** からこの機能を呼び出すことができます。
+この機能は、**[全体管理者は Azure サブスクリプションを管理できます]** と呼ばれています。 これは、Azure Active Directory のグローバル プロパティと似ているように思われるかもしれませんが、現在ログオンしているユーザーを対象にして、ユーザーごとに機能します。 Azure Active Directory のグローバル管理者権限がある場合は、Azure Active Directory 管理センターに現在ログインしているユーザーに対してこの elevateAccess 機能を呼び出すことができます。
+
+**[はい]**、**[保存]** を選択: **ユーザー アクセス管理者**のロールをルート "/" (ルート スコープ) で、ポータルに現在ログインしているユーザーに**割り当て**ます。
+
+**[いいえ]**、**[保存]**を選択: **ユーザー アクセス管理者**のロールをルート "/" (ルート スコープ) で、ポータルに現在ログインしているユーザーから**削除**します。
+
+![Azure AD 管理センター - プロパティ - 全体管理者は Azure サブスクリプションを管理できます - スクリーンショット](./media/role-based-access-control-tenant-admin-access/aad-azure-portal-global-admin-can-manage-azure-subscriptions.png)
+
+## <a name="how-to-use-elevateaccess-to-give-tenant-access-with-the-rest-api"></a>REST API で elevateAccess を使用してテナントへのアクセス権を付与する方法
 
 基本的なプロセスは、次の手順で動作します。
 
@@ -56,7 +66,7 @@ ms.lasthandoff: 05/17/2017
 4. 再び必要になるまで、ユーザー アクセス管理権限を取り消します。
 
 
-## <a name="how-to-undo-the-elevateaccess-action"></a>elevateAccess アクションを取り消す方法
+## <a name="how-to-undo-the-elevateaccess-action-with-the-rest-api"></a>REST API で elevateAccess アクションを取り消す方法
 
 *elevateAccess* を呼び出すと、自分自身に対するロールの割り当てが作成されます。このため、これらの権限を取り消すには、割り当てを削除する必要があります。
 
@@ -107,4 +117,3 @@ ms.lasthandoff: 05/17/2017
 - 「[REST API を使用したロールベースの Access Control の管理](role-based-access-control-manage-access-rest.md)」を参照する
 
 - Azure Portal で[アクセスの割り当ての管理](role-based-access-control-manage-assignments.md)を行う
-

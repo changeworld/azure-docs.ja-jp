@@ -1,5 +1,4 @@
 ---
-
 title: "Azure Active Directory のグループベースのライセンスとは | Microsoft Docs"
 description: "Azure Active Directory のグループベース ライセンス、使用方法、ベスト プラクティスに関する説明"
 services: active-directory
@@ -18,15 +17,12 @@ ms.date: 06/29/2017
 ms.author: curtand
 ms.reviewer: piotrci
 ms.custom: H1Hack27Feb2017;it-pro
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1500c02fa1e6876b47e3896c40c7f3356f8f1eed
-ms.openlocfilehash: 52dd48ce4e4acaf48f31edc51bbb657f8cd249cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
-
+ms.openlocfilehash: d6c76af713a73b965e87a2f470125f2e65565975
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="group-based-licensing-basics-in-azure-active-directory"></a>Azure Active Directory のグループベースのライセンスの基礎
 
 Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft の有料クラウド サービスやその他の類似製品の使用には、ライセンスが必要です。 これらのライセンスは、各サービスにアクセスする必要があるユーザーにそれぞれ割り当てられます。 ライセンス管理は、管理者が管理ポータル (Office、Azure) と PowerShell コマンドレットのどちらかを使用して行います。 マイクロソフトのすべてのクラウド サービスの ID を管理する基盤インフラストラクチャは、Azure Active Directory (Azure AD) です。 ユーザーのライセンスの割り当て状態に関する情報は Azure AD に格納されます。
@@ -55,6 +51,10 @@ Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft �
 
 - パブリック プレビュー中にグループベース ライセンス管理を使用するには、テナントに Azure AD の Basic または Premium Edition の有料サブスクリプション、または試用版サブスクリプションが必要になります。
 
+## <a name="your-feedback-is-welcome"></a>ご意見をお待ちしております。
+
+ご意見や機能に関するご要望がありましたら、[こちらのフォーラム](https://feedback.azure.com/forums/169401-azure-active-directory/category/317677-group-based-licensing)をご利用ください。
+
 ## <a name="next-steps"></a>次のステップ
 
 グループベースのライセンスを通じたライセンス管理の他のシナリオについては、以下をご覧ください
@@ -64,4 +64,3 @@ Office 365、Enterprise Mobility + Security、Dynamics CRM など、Microsoft �
 * [Azure Active Directory のグループのライセンスに関する問題の特定と解決](active-directory-licensing-group-problem-resolution-azure-portal.md)
 * [Azure Active Directory で個別にライセンスを付与されたユーザーをグループベースのライセンスに移行する方法](active-directory-licensing-group-migration-azure-portal.md)
 * [Azure Active Directory グループベース ライセンスのその他のシナリオ](active-directory-licensing-group-advanced.md)
-

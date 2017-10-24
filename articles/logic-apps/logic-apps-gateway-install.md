@@ -13,14 +13,13 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: integration
-ms.date: 07/13/2017
-ms.author: LADocs; dimazaid; estfan
+ms.date: 09/14/2017
+ms.author: LADocs; millopis; estfan
+ms.openlocfilehash: b3c1e2afadea91f010c3e4b43206b6d30a75ec38
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 34e68ae7d35019848b35c785a2715ec458dc6e73
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-the-on-premises-data-gateway-for-azure-logic-apps"></a>Azure Logic Apps 向けのオンプレミス データ ゲートウェイをインストールする
 
@@ -52,6 +51,7 @@ ms.lasthandoff: 07/21/2017
 *   [Microsoft PowerApps オンプレミス データ ゲートウェイ](https://powerapps.microsoft.com/tutorials/gateway-management/)
 
 <a name="requirements"></a>
+
 ## <a name="requirements"></a>必要条件
 
 **最小**:
@@ -75,7 +75,10 @@ ms.lasthandoff: 07/21/2017
 
 * 電源がオフになる、スリープ状態に移行する、またはインターネットに接続していないコンピューターにはゲートウェイをインストールしないようにしてください。このような状況下では、ゲートウェイが動作しない場合があります。 また、ワイヤレス ネットワークではゲートウェイのパフォーマンスが低下する可能性もあります。
 
-* インストール時は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) が管理する[職場または学校アカウント](https://docs.microsoft.com/azure/active-directory/sign-up-organization)でサインインする必要があります。 
+* インストール時は、Microsoft アカウントではなく、Azure Active Directory (Azure AD) が管理する[職場または学校アカウント](https://docs.microsoft.com/azure/active-directory/sign-up-organization)でサインインする必要があります。
+
+  > [!TIP]
+  > MSDN サブスクリプションを含む Visual Studio のある Microsoft アカウントを使いたい場合は、最初に Microsoft アカウントで [Azure Active Directory にディレクトリ (テナント) を作成する](../active-directory/develop/active-directory-howto-tenant.md)か、または既定のディレクトリを使います。 ディレクトリにパスワードを持つユーザーを追加した後、そのユーザーにサブスクリプションへのアクセス権を与えます。 その後、ゲートウェイのインストール中に、このユーザー名とパスワードでサインインできます。
 
   後でゲートウェイ リソースを作成し、ゲートウェイのインストールと関連付けるときに、Azure ポータルで同じ職場または学校アカウントを使用する必要があります。 ロジック アプリとオンプレミス データベース ソース間に接続を作成するときに、このゲートウェイ リソースを選択します。 [Azure AD の職場または学校アカウントを使用する必要があるのはなぜですか?](#why-azure-work-school-account)
 
@@ -145,10 +148,20 @@ ms.lasthandoff: 07/21/2017
 
 4. 移行、復元、または引き継ぎを行うゲートウェイの名前と回復キーを指定します。
 
+<a name="windows-service-account"></a>
+
+## <a name="windows-service-account"></a>Windows サービス アカウント
+
+オンプレミス データ ゲートウェイは、Windows サービスとして実行され、Windows サービスのログオン資格情報として `NT SERVICE\PBIEgwService` を使用するように設定されています。 既定により、ゲートウェイには、そのゲートウェイがインストールされているコンピューターで "サービスとしてログオン" する権限があります。 Azure Portal でゲートウェイを作成し、保守するには、Windows サービス アカウントに**共同作成者**以上のアクセス許可が必要です。 
+
+> [!NOTE]
+> Windows サービス アカウントは、オンプレミスのデータ ソースへの接続に使用するアカウントとも、クラウド サービスへのサインインに使用する職場または学校アカウントとも異なります。
+
 <a name="restart-gateway"></a>
+
 ## <a name="restart-the-gateway"></a>ゲートウェイの再起動
 
-ゲートウェイは Windows サービスとして実行されます。 他の Windows サービスと同じように、開始と停止を複数の方法で行うことができます。 たとえば、ゲートウェイが実行されているコンピューターで管理者特権を使用してコマンド プロンプトを開き、以下に示すコマンドのいずれかを実行することができます。
+他の Windows サービスと同じように、開始と停止を複数の方法で行うことができます。 たとえば、ゲートウェイが実行されているコンピューターで管理者特権を使用してコマンド プロンプトを開き、以下に示すコマンドのいずれかを実行することができます。
 
 * サービスを停止するには、次のコマンドを実行します。
   
@@ -157,13 +170,6 @@ ms.lasthandoff: 07/21/2017
 * サービスを開始するには、次のコマンドを実行します。
   
     `net start PBIEgwService`
-
-### <a name="windows-service-account"></a>Windows サービス アカウント
-
-オンプレミス データ ゲートウェイは、Windows サービスのログオン資格情報として `NT SERVICE\PBIEgwService` を使用するように設定されます。 既定により、ゲートウェイには、そのゲートウェイがインストールされているコンピューターで "サービスとしてログオン" する権限があります。
-
-> [!NOTE]
-> Windows サービス アカウントは、オンプレミスのデータ ソースへの接続に使用するアカウントとも、クラウド サービスへのサインインに使用する職場または学校アカウントとも異なります。
 
 ## <a name="configure-a-firewall-or-proxy"></a>ファイアウォールまたはプロキシの構成
 
@@ -201,10 +207,10 @@ Azure Service Bus から Azure データ センターへの接続も、ファイ
 
 | ドメイン名 | 送信ポート | Description |
 | --- | --- | --- |
-| *. analysis.windows.net | 使用します | HTTPS | 
+| *. analysis.windows.net | 443 | HTTPS | 
 | *.login.windows.net | 443 | HTTPS | 
-| *.servicebus.windows.net | 5671 - 5672 | Advanced Message Queuing Protocol (AMQP) | 
-| *.servicebus.windows.net | 443、9350 - 9354 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
+| *.servicebus.windows.net | 5671 ～ 5672 | Advanced Message Queuing Protocol (AMQP) | 
+| *.servicebus.windows.net | 443、9350 ～ 9354 | TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) | 
 | *. frontend.clouddatahub.net | 使用します | HTTPS | 
 | *.core.windows.net | 443 | HTTPS | 
 | login.microsoftonline.com | 443 | HTTPS | 
@@ -336,4 +342,3 @@ Data Management Gateway と PowerBIGateway のログは、**[アプリケーシ�
 * [ロジック アプリからオンプレミスのデータに接続する](../logic-apps/logic-apps-gateway-connection.md)
 * [エンタープライズ統合機能](../logic-apps/logic-apps-enterprise-integration-overview.md)
 * [Azure Logic Apps のコネクタ](../connectors/apis-list.md)
-

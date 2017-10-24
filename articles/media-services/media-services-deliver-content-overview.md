@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/29/2017
+ms.date: 09/28/2017
 ms.author: juliako
-ms.translationtype: Human Translation
-ms.sourcegitcommit: e126076717eac275914cb438ffe14667aad6f7c8
-ms.openlocfilehash: 249b87ecc9e43fa26a74e27f91f807d60b275eeb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 01/13/2017
-
+ms.openlocfilehash: 815aae57af93b0e4870bd9f61da248e4be328db4
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deliver-content-to-customers"></a>顧客へのコンテンツ配信
 ストリーミング コンテンツまたはビデオ オン デマンド コンテンツを顧客に配信するときの目標は、さまざまなネットワーク条件にある多様なデバイスに高品質のビデオを配信することにあります。
@@ -27,7 +26,10 @@ ms.lasthandoff: 01/13/2017
 この目標を実現するために、次の手順を実行することができます。
 
 * ストリームをマルチビットレート (アダプティブ ビットレート) ビデオ ストリームにエンコードします。 この手順では、品質とネットワークの条件が考慮されます。
-* Microsoft Azure Media Services の [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 この手順では、さまざまなデバイスでのストリーミングが考慮されます。 Media Services でサポートされるアダプティブ ビットレート ストリーミング配信テクノロジは、HTTP ライブ ストリーミング (HLS)、スムーズ ストリーミング、MPEG DASH です。
+* Microsoft Azure Media Services の [ダイナミック パッケージ](media-services-dynamic-packaging-overview.md) を使用して、ストリームをさまざまなプロトコルに動的に再パッケージ化します。 この手順では、さまざまなデバイスでのストリーミングが考慮されます。 Media Services は、次のアダプティブ ビットレート ストリーミング配信テクノロジをサポートしています。 <br/>
+    * **HTTP ライブ ストリーミング** (HLS) - URL の "/Manifest" 部分に "(format=m3u8-aapl)" パスを追加して、ストリーミング配信元サーバーに **Apple iOS** ネイティブ デバイスでの使用のために HLS コンテンツを返すよう指示します (詳細については、「[ロケーター](#locators)」と [URL](#URLs) に関するセクションを参照してください)。
+    * **MPEG-DASH** - URL の "/Manifest" 部分に "(format=mpd-time-csf)" パスを追加して、ストリーミング配信元サーバーに MPEG-DASH を返すよう指示します (詳細については、「[ロケーター](#locators)」と [URL](#URLs) に関するセクションを参照してください)。
+    * **スムーズ ストリーミング**。
 
 >[!NOTE]
 >AMS アカウントの作成時に、**既定**のストリーミング エンドポイントが自分のアカウントに追加され、**停止**状態になっています。 コンテンツのストリーミングを開始し、ダイナミック パッケージと動的暗号化を活用するには、コンテンツのストリーミング元のストリーミング エンドポイントが**実行中**状態である必要があります。 
@@ -52,7 +54,7 @@ Media Services を使用すると、資産にフィルターを定義できま�
 
 詳細については、「 [フィルターと動的マニフェスト](media-services-dynamic-manifest-overview.md)」を参照してください。
 
-## <a name="locators"></a>ロケーター
+## <a name="a-idlocatorslocators"></a><a id="locators"/>ロケーター
 コンテンツのストリーミングやダウンロードに使用できる URL をユーザーに提供するには、まず、ロケーターを作成して資産を公開する必要があります。 ロケーターは、資産に含まれているファイルにアクセスするためのエントリ ポイントになります。 Media Services では、2 種類のロケーターがサポートされています。
 
 * OnDemandOrigin ロケーターは、 メディアのストリーミング (MPEG-DASH、HLS、Smooth Streaming など) やファイルのプログレッシブ ダウンロードに使用します。
@@ -82,10 +84,10 @@ Media Services を使用すると、資産にフィルターを定義できま�
 > SSL 接続経由でコンテンツのストリーミングもできます。 そのためには、ストリーミング URL の先頭が HTTPS になっていることをご確認ください。 なお、現在のところ、AMS ではカスタム ドメインを使用した SSL はサポートされていません。  
 > 
 
-
 SSL 経由でのストリーミングを実行できるのは、コンテンツの配信元となるストリーミング エンドポイントが 2014 年 9 月 10 日より後に作成されている場合のみです。 ストリーミング URL の基になるストリーミング エンドポイントの作成日が 2014 年 9 月 10 日より後である場合、URL に "streaming.mediaservices.windows.net" が含まれます。 "origin.mediaservices.windows.net" (旧形式) を含んだストリーミング URL では、SSL がサポートされません。 URL が旧形式である場合、SSL ストリーミングに対応するためには、新しいストリーミング エンドポイントを作成してください。 SSL でコンテンツをストリーミングするには、新しいストリーミング エンドポイントに基づいた URL を使用する必要があります。
 
-## <a name="streaming-url-formats"></a>ストリーミング URL の形式:
+## <a name="a-idurlsstreaming-url-formats"></a><a id="URLs"/>ストリーミング URL の形式
+
 ### <a name="mpeg-dash-format"></a>MPEG-DASH 形式
 {ストリーミング エンドポイント名-Media Services アカウント名}.streaming.mediaservices.windows.net/{ロケーター ID}/{ファイル名}.ism/Manifest(format=mpd-time-csf)
 
@@ -185,5 +187,4 @@ http://testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f
 
 ## <a name="related-topics"></a>関連トピック
 [ストレージ キーの展開後に Media Services ロケーターを更新する](media-services-roll-storage-access-keys.md)
-
 

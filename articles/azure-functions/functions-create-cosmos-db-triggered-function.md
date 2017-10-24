@@ -13,15 +13,14 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/19/2017
+ms.date: 10/02/2017
 ms.author: glenga
 ms.custom: 
+ms.openlocfilehash: 1ff4c2e024faba777fc479b3cd5864e097bbfce1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 04da2dda961eb2c6bc53f0aed1c0cd12372a2332
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB によってトリガーされる関数を作成する
 
@@ -66,11 +65,11 @@ Azure Cosmos DB にデータが追加される、または変更されるとき�
     | **[コレクション名]** | 項目 | 監視するコレクションの名前。 |
     | **[Create lease collection if it doesn't exist]\(リース コレクションが存在しない場合は作成する\)** | オン | コレクションはまだ存在していないため、作成します。 |
 
-4. **[Azure Cosmos DB account connection]\(Azure Cosmos DB アカウント接続\)** ラベルの横にある **[新規]** を選択し、**[+ 新規作成]** を選択します。 
+4. **[Azure Cosmos DB アカウント接続]** ラベルの横にある **[新規]** を選び、既存の Cosmos DB アカウントを選ぶか、**[+ 新規作成]** を選びます。 
  
     ![Azure Cosmos DB 接続の構成](./media/functions-create-cosmos-db-triggered-function/functions-create-CosmosDB.png)
 
-6. **[新しいアカウント]** の設定を、次の表で指定されているように設定します。
+6. 新しい Cosmos DB アカウントを作成するときは、表で指定されているように **[新しいアカウント]** の設定を使います。
 
     | 設定      | 推奨値  | Description                                |
     | ------------ | ---------------- | ------------------------------------------ |
@@ -151,4 +150,3 @@ Azure Cosmos DB でドキュメントが追加または変更されたときに�
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-next-steps.md)]
 
 Queue Storage トリガーの詳細については、「[Azure Functions における Storage キュー バインド](functions-bindings-storage-queue.md)」を参照してください。
-

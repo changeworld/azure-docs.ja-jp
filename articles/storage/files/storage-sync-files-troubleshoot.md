@@ -12,22 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: 1ea7956e92dbc85f62383e4b041c4c830599f765
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: cf3f3cf63cafc3b883d26144a53066ee421eb2a6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-azure-file-sync-preview"></a>Azure ファイル同期のトラブルシューティング (プレビュー)
-Azure ファイル同期 (プレビュー) を使用すると、オンプレミスまたは Azure の Windows Server に共有をレプリケートできます。 管理者とユーザーは、SMB や NFS 共有などを使って Windows Server 経由でファイル共有にアクセスします。 この方法は、ブランチ オフィスなどの Azure データ センターから離れた場所にあるデータにアクセスして変更する場合に特に便利です。 複数のブランチ オフィス間など、複数の Windows Server エンドポイント間でデータをレプリケートできます。
+Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 この記事は、Azure ファイル同期のデプロイで発生した問題のトラブルシューティングと解決を支援するように設計されています。 解決しない場合、このガイドでは、問題をさらに調査するのに役立つ重要なログをシステムから収集する方法を示します。 Azure ファイル同期についてサポートを受けるには次のオプションを使用できます。
 
-- Microsoft サポート: 新しいサポート ケースを作成するには、Azure Portal の [ヘルプとサポート] タブに移動し、[新しいサポート要求] をクリックします。
+- Microsoft サポート: 新しいサポート ケースを作成するには、Azure Portal の ヘルプとサポート タブに移動し、新しいサポート要求をクリックします。
 - [Azure Storage フォーラム](https://social.msdn.microsoft.com/Forums/en-US/home?forum=windowsazuredata)
 
 ## <a name="how-to-troubleshoot-agent-installation-failures"></a>エージェントのインストール エラーのトラブルシューティングを行う方法
@@ -37,7 +35,22 @@ Azure ファイル同期エージェントのインストールに失敗する�
 StorageSyncAgent.msi /l*v Installer.log
 ```
 
-インストールに失敗した後で、installer.log をレビューして原因を特定します。
+インストールに失敗した後で、installer.log をレビューして原因を特定します。 
+
+> [!Note]  
+> Microsoft Update を使用することを選択しており、Windows Update サービスが実行されていない場合、エージェントのインストールは失敗します。
+
+## <a name="cloud-endpoint-creation-fails-with-the-following-error-the-specified-azure-fileshare-is-already-in-use-by-a-different-cloudendpoint"></a>"The specified Azure FileShare is already in use by a different CloudEndpoint"\(特定の Azure FileShare が、別の CloudEndpoint で既に使用されています。\) というエラーで、クラウド エンドポイントの作成に失敗する
+このエラーは、Azure ファイル共有が別のクラウド エンドポイントによって既に使用されている場合に発生します。 
+
+このエラーを受信し、Azure ファイル共有が現在クラウド エンドポイントで使用されていない場合は、次の手順を実行して、Azure ファイル共有上の Azure ファイル同期のメタデータをクリアします。
+
+> [!Warning]  
+> 現在クラウド エンドポイントによって使用されている Azure ファイル共有上のメタデータを削除すると、Azure ファイル同期の操作は失敗します。 
+
+1. Azure Portal で、お使いの Azure ファイル共有に移動します。  
+2. Azure ファイル共有を右クリックし、**[メタデータの編集]** を選択します。
+3. SyncService を右クリックし、**[削除]** を選択します。
 
 ## <a name="server-is-not-listed-under-registered-servers-in-the-azure-portal"></a>Azure Portal の [登録済みサーバー] にサーバーが表示されない
 サーバーがストレージ同期サービスの [登録済みサーバー] に表示されない場合は、次の手順を実行します。
@@ -49,6 +62,16 @@ StorageSyncAgent.msi /l*v Installer.log
 !["server is already registered" (このサーバーは既に登録されています) エラー メッセージが表示された [サーバーの登録] ダイアログのスクリーンショット](media/storage-sync-files-troubleshoot/server-registration-1.png)
 
 このメッセージは、以前にサーバーがストレージ同期サービスに登録された場合に表示されます。 現在のストレージ同期サービスでサーバーを登録解除し、新しいストレージ同期サービスに登録するには、「[Unregister a server with Azure File Sync (Azure ファイル同期でのサーバーの登録解除)](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service)」の手順に従います。
+
+ストレージ同期サービスの [登録済みサーバー] にサーバーが一覧表示されていない場合、登録解除するサーバー上で次の PowerShell コマンドを実行します。
+
+```PowerShell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
+Reset-StorageSyncServer
+```
+
+> [!Note]  
+> サーバーがクラスターの一部である場合は、クラスター登録も削除するオプションの `Reset-StorageSyncServer -CleanClusterRegistration`パラメーターがあります。 クラスター内の最後のノードが登録解除されるときに、この切り替えを使用する必要があります。
 
 ## <a name="how-to-troubleshoot-sync-not-working-on-a-server"></a>サーバーで同期が機能しない場合のトラブルシューティングを行う方法
 サーバーで同期が失敗する場合は、次の手順を実行します。

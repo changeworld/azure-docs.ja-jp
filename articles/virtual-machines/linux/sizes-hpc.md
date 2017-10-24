@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/28/2017
+ms.date: 10/10/2017
 ms.author: jonbeck
-ms.openlocfilehash: b7a3844ce86b4efac8a4fc3c2540e7b6460873a2
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.openlocfilehash: fecc0656264f1c1d44aa8ad3aea321aa8cc4a0c8
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-performance-compute-linux-vm-sizes"></a>ハイ パフォーマンス コンピューティング Linux VM のサイズ
 
@@ -32,35 +32,33 @@ ms.lasthandoff: 08/03/2017
 ## <a name="rdma-capable-instances"></a>RDMA 対応のインスタンス
 コンピューティング集中型インスタンス (H16r、H16mr、A8、A9) のサブセットには、リモート ダイレクト メモリ アクセス (RDMA) 接続のためのネットワーク インターフェイスが備わっています。 このインターフェイスは、標準の Azure ネットワーク インターフェイスと同様に、他の VM サイズでも利用可能です。 
   
-このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r と H16mr の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。
+このインターフェイスにより、RDMA 対応インスタンスは InfiniBand ネットワークを介して通信することができ、H16r と H16mr の仮想マシンでは FDR のレートで、A8 と A9 の仮想マシンでは QDR のレートで動作します。 これらの RDMA 機能により、Intel MPI 5.x 以降のバージョンで実行している Message Passing Interface (MPI) アプリケーションのスケーラビリティとパフォーマンスが向上します。
 
-RDMA 対応の Linux VM が Azure RDMA ネットワークにアクセスするための要件は、次のとおりです。
+RDMA 対応の VM を、同じ可用性セット (Azure Resource Manager デプロイメント モデルを使用している場合) または同じクラウド サービス (クラシック デプロイメント モデルを使用している場合) 内にデプロイします。 RDMA 対応の Linux VM が Azure RDMA ネットワークにアクセスするための追加の要件が発生します。
+
+### <a name="distributions"></a>ディストリビューション
  
-* **ディストリビューション** - Azure Marketplace にある RDMA 対応 SUSE Linux Enterprise Server (SLES) イメージまたは Rogue Wave Software (以前の OpenLogic) CentOS ベースの HPC イメージから VM をデプロイする必要があります。 次の Marketplace イメージは、RDMA 接続性をサポートします。
+RDMA 接続をサポートする Azure Marketplace で、イメージの 1 つからコンピューティング集約型の VM をデプロイします。
   
-    * SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium)
+* **Ubuntu** - Ubuntu Server 16.04 LTS。 VM で RDMA ドライバーを構成し、Intel に登録して Intel MPI をダウンロードします。
+
+  [!INCLUDE [virtual-machines-common-ubuntu-rdma](../../../includes/virtual-machines-common-ubuntu-rdma.md)]
+
+* **SUSE Linux Enterprise Server** - SLES 12 SP3 for HPC、SLES 12 SP3 for HPC (Premium)、SLES 12 SP1 for HPC、SLES 12 SP1 for HPC (Premium)。 RDMA ドライバーがインストールされ、Intel MPI パッケージが VM に配布されます。 次のコマンドを実行して MPI をインストールします。
+
+  ```bash
+  sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
+  ```
     
-    * CentOS ベースの 7.3 HPC、CentOS ベースの 7.1 HPC、CentOS ベースの 6.8 HPC、CentOS-based 6.5 HPC  
+* **CentOS ベース HPC** - CentOS ベース 7.3 HPC, CentOS ベース 7.1 HPC、CentOS ベース 6.8 HPC、または CentOS ベース 6.5 HPC (H シリーズの場合、バージョン 7.1 以降が推奨されます)。 RDMA ドライバーおよび Intel MPI 5.1 は、VM にインストールされます。  
  
-        > [!NOTE]
-        > H シリーズ VM の場合、SLES 12 SP1 for HPC イメージまたは CentOS ベースの 7.1 以降の HPC イメージのいずれかをお勧めします。
-        >
-        > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
-        > 
-        > 
-* **MPI** - Intel MPI Library 5.x
-  
-    選択した Marketplace イメージに応じて、次に示すような Intel MPI の個別のライセンス、インストール、または構成が必要になることがあります。 
-  
-  * **SLES 12 SP1 for HPC image** - Intel MPI パッケージは VM に配布されます。 次のコマンドを実行してインストールします。
-
-      ```bash
-      sudo rpm -v -i --nodeps /opt/intelMPI/intel_mpi_packages/*.rpm
-      ```
-
-  * **CentOS ベースの HPC イメージ** - Intel MPI 5.1 は既にインストール済みです。  
+  > [!NOTE]
+  > CentOS ベースの HPC イメージでは、 **yum** 構成ファイルでのカーネルの更新は無効にされています。 これは、Linux RDMA ドライバーが RPM パッケージとして配布されており、カーネルが更新された場合にドライバーの更新プログラムが機能しない可能性があるためです。
+  > 
+ 
+### <a name="cluster-configuration"></a>クラスター構成 
     
-    クラスター化された VM で MPI ジョブを実行するには、追加のシステム構成が必要です。 たとえば、VM のクラスターでは、コンピューティング ノード間で信頼関係を確立する必要があります。 標準的な設定については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
+クラスター化された VM で MPI ジョブを実行するには、追加のシステム構成が必要です。 たとえば、VM のクラスターでは、コンピューティング ノード間で信頼関係を確立する必要があります。 標準的な設定については、「[MPI アプリケーションを実行するように Linux RDMA クラスターを設定する](classic/rdma-cluster.md?toc=%2fazure%2fvirtual-machines%2flinux%2fclassic%2ftoc.json)」をご覧ください。
 
 ### <a name="network-topology-considerations"></a>ネットワーク トポロジに関する考慮事項
 * Azure の RDMA 対応 Linux VM の場合、Eth1 は RDMA のネットワーク トラフィック用に予約されています。 Eth1 設定や、このネットワークを参照する構成ファイル内の情報を変更しないでください。 Eth0 は Azure の通常のネットワーク トラフィック用に予約されています。

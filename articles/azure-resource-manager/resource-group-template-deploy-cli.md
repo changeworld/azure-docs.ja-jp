@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/31/2017
 ms.author: tomfitz
+ms.openlocfilehash: 13154e41ebd4867de9af74340a69446400814f5a
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 7bf5d568e59ead343ff2c976b310de79a998673b
-ms.openlocfilehash: 4f1d5f4cc48470f8906edb28628006dd1996bd3a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-cli"></a>Resource Manager テンプレートと Azure CLI を使用したリソースのデプロイ
 
@@ -79,55 +78,11 @@ az group deployment create \
 
 前の例では、テンプレートにはパブリックにアクセスできる URI が必要になります。テンプレートに機密データを含めてはいけないため、この方法は多くの場合に利用できます。 機密データ (管理者パスワードなど) を指定する必要がある場合は、セキュリティで保護されたパラメーターとしてその値を渡します。 ただし、テンプレートを一般からアクセス可能にしない場合は、プライベートなストレージ コンテナーに格納することで保護できます。 Shared Access Signature (SAS) トークンを必要とするテンプレートをデプロイする方法については、[SAS トークンを使用したプライベート テンプレートのデプロイ](resource-manager-cli-sas-token.md)に関するページをご覧ください。
 
-## <a name="deploy-template-from-cloud-shell"></a>Cloud Shell からのテンプレートのデプロイ
+[!INCLUDE [resource-manager-cloud-shell-deploy.md](../../includes/resource-manager-cloud-shell-deploy.md)]
 
-[Cloud Shell](../cloud-shell/overview.md) を使用して、テンプレートをデプロイするための Azure CLI コマンドを実行できます。 ただし、最初に Cloud Shell のファイル共有にテンプレートを読み込む必要があります。 Cloud Shell の使用経験がない場合は、その設定について [Azure Cloud Shell の概要](../cloud-shell/overview.md)に関するページを参照してください。
+Cloud Shell で次のコマンドを使用します。
 
-1. [Azure ポータル](https://portal.azure.com)にログインします。   
-
-2. Cloud Shell リソース グループを選択します。 名前のパターンは `cloud-shell-storage-<region>` です。
-
-   ![リソース グループの選択](./media/resource-group-template-deploy-cli/select-cs-resource-group.png)
-
-3. Cloud Shell のストレージ アカウントを選択します。
-
-   ![ストレージ アカウントを選択する](./media/resource-group-template-deploy-cli/select-storage.png)
-
-4. **[ファイル]** を選択します。
-
-   ![Select files](./media/resource-group-template-deploy-cli/select-files.png)
-
-5. Cloud Shell のファイル共有を選択します。 名前のパターンは `cs-<user>-<domain>-com-<uniqueGuid>` です。
-
-   ![ファイル共有を選択する](./media/resource-group-template-deploy-cli/select-file-share.png)
-
-6. **[ディレクトリの追加]** を選択します。
-
-   ![[ディレクトリの追加]](./media/resource-group-template-deploy-cli/select-add-directory.png)
-
-7. **templates** という名前を付け、**[OK]** を選択します。
-
-   ![ディレクトリに名前を付ける](./media/resource-group-template-deploy-cli/name-templates.png)
-
-8. 新しいディレクトリを選択します。
-
-   ![新しいディレクトリを選択する](./media/resource-group-template-deploy-cli/select-templates.png)
-
-9. **[アップロード]**を選択します。
-
-   ![[アップロード] を選択する](./media/resource-group-template-deploy-cli/select-upload.png)
-
-10. テンプレートを見つけてアップロードします。
-
-   ![ファイルをアップロードする](./media/resource-group-template-deploy-cli/upload-files.png)
-
-11. プロンプトを開きます。
-
-   ![Cloud Shell を開く](./media/resource-group-template-deploy-cli/start-cloud-shell.png)
-
-12. Cloud Shell で次のコマンドを入力します。
-
-   ```azurecli
+   ```azurecli-interactive
    az group create --name examplegroup --location "South Central US"
    az group deployment create --resource-group examplegroup --template-file clouddrive/templates/azuredeploy.json --parameters storageAccountType=Standard_GRS
    ```
@@ -282,4 +237,3 @@ az group deployment create \
 * 一般的なデプロイ エラーを解決するうえでのヒントについては、「[Azure Resource Manager を使用した Azure へのデプロイで発生する一般的なエラーのトラブルシューティング](resource-manager-common-deployment-errors.md)」を参照してください。
 * SAS トークンを必要とするテンプレートをデプロイする方法については、「[Deploy private template with SAS token (SAS トークンを使用したプライベート テンプレートのデプロイ)](resource-manager-cli-sas-token.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-

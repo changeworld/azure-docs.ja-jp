@@ -16,20 +16,14 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 06/07/2017
 ms.author: donnam
+ms.openlocfilehash: c224955d5d3592fb9afaaf31e6e4e531250b138e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8ad98f7ef226fa94b75a8fc6b2885e7f0870483c
-ms.openlocfilehash: c9dfd3e3b9c155255959f76fd9b58b6935888db2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-functions-c-script-developer-reference"></a>Azure Functions C# スクリプト開発者向けリファレンス
-> [!div class="op_single_selector"]
-> * [C# スクリプト](functions-reference-csharp.md)
-> * [F# スクリプト](functions-reference-fsharp.md)
-> * [Node.JS](functions-reference-node.md)
->
->
+[!INCLUDE [functions-selector-languages](../../includes/functions-selector-languages.md)]
 
 Azure Functions の C# スクリプト エクスペリエンスは、Azure WebJobs SDK に基づいています。 データは、メソッドの引数を使用して C# 関数に渡されます。 引数名は `function.json`で指定され、関数のロガーやキャンセル トークンなどにアクセスするための定義済みの名前があります。
 
@@ -83,7 +77,7 @@ public static string Run(string input, TraceWriter log)
 
 出力バインドに複数の値を書き込むには、[`ICollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/ICollector.cs) 型または [`IAsyncCollector`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/IAsyncCollector.cs) 型を使用します。 これらの型は、メソッド完了時に出力バインドに書き込まれる、書き込み専用接続です。
 
-この例では、`ICollector` を使用して複数のキュー メッセージを書き込みます。
+この例では、`ICollector` を使用して複数のキュー メッセージを同じキューに書き込みます。
 
 ```csharp
 public static void Run(ICollector<string> myQueueItem, TraceWriter log)
@@ -397,7 +391,7 @@ public static async Task Run(string input, Binder binder)
 ```
 
 [BlobAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs) は [Storage Blob](functions-bindings-storage-blob.md) の入力バインドまたは出力バインドを定義します。[TextWriter](https://msdn.microsoft.com/library/system.io.textwriter.aspx) はサポートされている出力バインドの種類です。
-このコードは、ストレージ アカウントの接続文字列 (`AzureWebJobsStorage`) の既定のアプリケーション設定を取得します。 [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡すことで、使用するカスタムなアプリケーション設定を指定できます。 たとえば、次のように入力します。
+前のコード例では、コードは、関数アプリのメイン ストレージ アカウント接続文字列 (`AzureWebJobsStorage`) のアプリケーション設定を取得します。 ストレージ アカウントに使用するカスタム アプリ設定を指定するには、[StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) を追加し、属性の配列を `BindAsync<T>()` に渡します。 たとえば、次のように入力します。
 
 ```cs
 using Microsoft.Azure.WebJobs;
@@ -440,7 +434,4 @@ public static async Task Run(string input, Binder binder)
 
 * [Azure Functions のベスト プラクティス](functions-best-practices.md)
 * [Azure Functions 開発者向けリファレンス](functions-reference.md)
-* [Azure Functions F# 開発者向けリファレンス](functions-reference-fsharp.md)
-* [Azure Functions NodeJS 開発者向けリファレンス](functions-reference-node.md)
-* [Azure Functions のトリガーとバインドに関する記事](functions-triggers-bindings.md)
-
+* [Azure Functions triggers and bindings (Azure Functions のトリガーとバインド)](functions-triggers-bindings.md)

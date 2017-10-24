@@ -1,5 +1,5 @@
 ---
-title: "Azure Service Fabric Docker Compose プレビュー"
+title: "Azure Service Fabric Docker Compose デプロイメント プレビュー"
 description: "Azure Service Fabric では、Service Fabric を使用して既存のコンテナーの調整を容易にするため、Docker Compose 形式を受け入れます。 このサポートは現在プレビューの段階です。"
 services: service-fabric
 documentationcenter: .net
@@ -14,16 +14,15 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2017
 ms.author: subramar
+ms.openlocfilehash: 92d1951de8c8c80f7b47033dc751cd65a63c43f6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 519bab9d226f9d00ae0fa21348823d2d6b6cd2c9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="docker-compose-application-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose アプリケーションのサポート (プレビュー)
+# <a name="docker-compose-deployment-support-in-azure-service-fabric-preview"></a>Azure Service Fabric での Docker Compose のデプロイメントのサポート (プレビュー)
 
-Docker は、複数コンテナー アプリケーションの定義に [docker-compose.yml](https://docs.docker.com/compose) ファイルを使用します。 Docker を使用した Azure Service Fabric での既存のコンテナー アプリケーションの調整を理解しやすくするため、プラットフォームでネイティブに Docker Compose をサポートするプレビューを含めています。 Service Fabric は `docker-compose.yml` ファイルのバージョン 3 以降を受け入れることができます。 
+Docker は、複数コンテナー アプリケーションの定義に [docker-compose.yml](https://docs.docker.com/compose) ファイルを使用します。 Docker を使用した Azure Service Fabric での既存のコンテナー アプリケーションの調整を理解しやすくするため、プラットフォームでネイティブに Docker Compose をデプロイするためのプレビュー版サポートが含められています。 Service Fabric は `docker-compose.yml` ファイルのバージョン 3 以降を受け入れることができます。 
 
 このサポートはプレビュー段階であるため、Compose ディレクティブのサブセットのみがサポートされます。 たとえば、アプリケーションのアップグレードはサポートされません。 ただし、アプリケーションをアップグレードする代わりに、いつでも削除してデプロイすることができます。
 
@@ -31,10 +30,12 @@ Docker は、複数コンテナー アプリケーションの定義に [docker-
 
 > [!NOTE]
 > この機能はプレビュー段階であり、実稼働環境ではサポートされません。
+> 次の例では、ランタイム バージョン 6.0 および SDK version 2.8 が使用されています。
 
 ## <a name="deploy-a-docker-compose-file-on-service-fabric"></a>Service Fabric に Docker Compose ファイルをデプロイする
 
-以下のコマンドでは、他の Service Fabric アプリケーションのように監視および管理できる (`TestContainerApp` という名前の) Service Fabric アプリケーションが作成されます。 正常性クエリに指定したアプリケーション名を使用することができます。
+以下のコマンドでは、他の Service Fabric アプリケーションのように監視および管理できる (`fabric:/TestContainerApp` という名前の) Service Fabric アプリケーションが作成されます。 正常性クエリに指定したアプリケーション名を使用することができます。
+Service Fabric は、"DeploymentName"を Compose デプロイメントの識別子として認識します。
 
 ### <a name="use-powershell"></a>PowerShell の使用
 
@@ -47,7 +48,7 @@ New-ServiceFabricComposeDeployment -DeploymentName TestContainerApp -Compose doc
 `RegistryUserName` および `RegistryPassword` は、コンテナー レジストリのユーザー名とパスワードです。 デプロイが完成したら、次のコマンドを使用して、その状態を確認できます。
 
 ```powershell
-Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp -GetAllPages
+Get-ServiceFabricComposeDeploymentStatus -DeploymentName TestContainerApp
 ```
 
 PowerShell で Compose のデプロイを削除するには、次のコマンドを使用します。
@@ -56,24 +57,48 @@ PowerShell で Compose のデプロイを削除するには、次のコマンド
 Remove-ServiceFabricComposeDeployment  -DeploymentName TestContainerApp
 ```
 
+PowerShell を使用して Compose デプロイメントをアップグレードするには、次のコマンドを使用します。
+
+```powershell
+Start-ServiceFabricComposeDeploymentUpgrade -DeploymentName TestContainerApp -Compose docker-compose-v2.yml -Monitored -FailureAction Rollback
+```
+
+アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
+
+```powershell
+Get-ServiceFabricComposeDeploymentUpgrade -Deployment TestContainerApp
+```
+
 ### <a name="use-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric CLI (sfctl) の使用
 
 次の Service Fabric CLI コマンドを使用することもできます。
 
 ```azurecli
-sfctl compose create --application-id TestContainerApp --compose-file docker-compose.yml [ [ --repo-user --repo-pass --encrypted ] | [ --repo-user ] ] [ --timeout ]
+sfctl compose create --deployment-name TestContainerApp --file-path docker-compose.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [ --timeout ]
 ```
 
-アプリケーションを作成したら、次のコマンドを使用して、その状態を確認できます。
+デプロイメントが作成されたら、次のコマンドを使用して、その状態を確認できます。
 
 ```azurecli
-sfctl compose status --application-id TestContainerApp [ --timeout ]
+sfctl compose status --deployment-name TestContainerApp [ --timeout ]
 ```
 
-Compose アプリケーションを削除するには、次のコマンドを使用します。
+Compose デプロイメントを削除するには、次のコマンドを使用します。
 
 ```azurecli
-sfctl compose remove  --application-id TestContainerApp [ --timeout ]
+sfctl compose remove  --deployment-name TestContainerApp [ --timeout ]
+```
+
+Compose デプロイメントをアップグレードするには、次のコマンドを使用します。
+
+```powershell
+sfctl compose upgrade --deployment-name TestContainerApp --file-path docker-compose-v2.yml [ [ --user --encrypted-pass ] | [ --user --has-pass ] ] [--upgrade-mode Monitored] [--failure-action Rollback] [ --timeout ]
+```
+
+アップグレードを承諾すると、次のコマンドを使用して、アップグレードの進行状況を追跡できます。
+
+```powershell
+sfctl compose upgrade-status --deployment-name TestContainerApp
 ```
 
 ## <a name="supported-compose-directives"></a>サポートされる Compose ディレクティブ
@@ -103,7 +128,7 @@ Compose ファイルで指定したサービス名が完全修飾ドメイン名
 
 たとえば、指定されたアプリケーション名が `fabric:/SampleApp/MyComposeApp` の場合、登録される DNS 名は `<ServiceName>.MyComposeApp.SampleApp` になります。
 
-## <a name="differences-between-compose-instance-definition-and-service-fabric-application-model-type-definition"></a>Compose (インスタンスの定義) と Service Fabric アプリケーション モデル (種類の定義) の相違点
+## <a name="compose-deployment-instance-definition-versus-service-fabric-app-model-type-definition"></a>Service Fabric アプリケーション モデル (型定義) と Compose デプロイメント (インスタンス定義) の違い
 
 docker-compose.yml ファイルでは、プロパティと構成を含む、コンテナーのデプロイ可能なセットが記述されています。
 たとえば、このファイルには環境変数やポートを含めることができます。 位置の制約、リソースの制限、および DNS 名などのデプロイ パラメーターも、docker-compose.yml ファイルで指定できます。
@@ -118,4 +143,3 @@ docker-compose.yml ファイルでは、プロパティと構成を含む、コ�
 
 * [Service Fabric アプリケーション モデル](service-fabric-application-model.md)の学習
 * [Service Fabric CLI の概要](service-fabric-cli.md)
-

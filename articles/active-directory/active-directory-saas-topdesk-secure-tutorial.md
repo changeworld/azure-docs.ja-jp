@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/22/2017
 ms.author: jeedes
 ms.openlocfilehash: 28f0542dbe87bb34c83a7852db7c3a9fef055ce9
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-topdesk---secure"></a>チュートリアル: Azure Active Directory と TOPdesk - Secure の統合
 このチュートリアルでは、Azure と TOPdesk - Secure の統合について説明します。  
@@ -104,7 +104,7 @@ TOPdesk - Secure のシングル サインオンを構成するには、ロゴ�
 
 6. 別の Web ブラウザーのウィンドウで、 **Azure クラシック ポータル** に管理者としてログインします。
 
-7. **TOPdesk - Secure**アプリケーション統合ページで、をクリックして**でのシングル サインオンを構成する**を開くには、* * シングル サインオンの構成 * * ダイアログ。
+7. **TOPdesk - Secure** アプリケーション統合ページで **[シングル サインオンの構成]** をクリックし、**[シングル サインオンの構成]** ダイアログを開きます。
    
     ![シングル サインオンの構成](./media/active-directory-saas-topdesk-secure-tutorial/IC790602.png "Configure Single Sign-On")
 
@@ -205,7 +205,7 @@ TOPdesk - Secure の場合、プロビジョニングは手動で行います。
 
 ### <a name="to-assign-users-to-topdesk---secure-perform-the-following-steps"></a>ユーザーを TOPdesk - Secure に割り当てるには、次の手順に従います。
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. * * TOPdesk - Secure * * アプリケーション統合ページで、をクリックして**ユーザーの割り当て**です。
+2. ** TOPdesk - Secure ** アプリ統合ページで、**[ユーザーの割り当て]** をクリックします。
    
     ![ユーザーの割り当て](./media/active-directory-saas-topdesk-secure-tutorial/IC790612.png "Assign Users")
 

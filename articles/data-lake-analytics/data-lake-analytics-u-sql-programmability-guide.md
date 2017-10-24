@@ -13,15 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/30/2017
 ms.author: saveenr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: e4e298475d7be7d51c8bd55be498371ed6ce77a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
-
+ms.openlocfilehash: db49780e359258898a62f3b95e87f54b78055c86
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="u-sql-programmability-guide"></a>U-SQL プログラミング ガイド
 
 U-SQL は、ビッグ データに該当するワークロードの処理を目的として設計されたクエリ言語です。 U-SQL 独自の特徴の 1 つに、SQL によく似た宣言型言語でありながら、C# の拡張性とプログラミング機能をも兼ね備えていることが挙げられます。 このガイドでは、C# によって実現される U-SQL 言語の拡張性とプログラミング機能について説明します。
@@ -2123,7 +2120,7 @@ public class EmptyUserReducer : IReducer
 **SqlUserDefinedReducer** は、ユーザー定義レジューサーの定義のオプション属性です。 この属性は、IsRecursive プロパティを定義する場合に使います。
 
 * bool     IsRecursive    
-* **true** = レジューサーがべき等性を備えているかどうかを示します。
+* **true**  = このレジューサーが結合的で可換かどうかを示します
 
 主なプログラミング オブジェクトは、**input** と **output** です。 Input オブジェクトは、入力行を列挙するために使うものです。 output はレジューサーのアクティビティの結果としての出力行を設定するために使います。
 
@@ -2220,4 +2217,3 @@ OUTPUT @rs2
     TO @output_file 
     USING Outputters.Text();
 ```
-

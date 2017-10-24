@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: billmath
 ms.openlocfilehash: 8e3f496c2868cc3430e0efd47805aec2205168aa
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="multiple-domain-support-for-federating-with-azure-ad"></a>Azure AD とのフェデレーションに使用する複数ドメインのサポート
 ここでは、Office 365 または Azure AD のドメインとのフェデレーション時に、複数のトップレベル ドメインとサブドメインを使用する方法について説明します。
@@ -37,7 +37,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 
 ![Get-MsolDomainFederationSettings](./media/active-directory-multiple-domains/MsolDomainFederationSettings.png)
 
-複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、bmcontoso.com がその環境です。  この状況で、2 番目のトップレベル ドメインとして bmfabrikam.com を追加しました。
+複数のトップレベル ドメインを追加しようとすると、問題が生じます。  たとえば、Azure AD とオンプレミス環境の間でフェデレーションを設定しているとします。  このドキュメントでは、bmcontoso.com がその環境です。この状況で、2 番目のトップレベル ドメインとして bmfabrikam.com を追加しました。
 
 ![ドメイン](./media/active-directory-multiple-domains/domains.png)
 
@@ -66,7 +66,7 @@ bmfabrikam.com ドメインを変換してフェデレーションしようと�
 
 そのため、Azure AD または Office 365 に対する認証中に、ユーザーのトークンに含まれる IssuerUri 要素を使用して、Azure AD 内のドメインが特定されます。  一致するものが見つからなければ、認証は失敗します。 
 
-たとえば、ユーザーの UPN がbsimon@bmcontoso.comトークンの AD FS に関する問題の IssuerUri 要素は http://bmcontoso.com/adfs/services/trust に設定されます。 これは Azure AD の構成と一致し、認証は成功します。
+たとえば、ユーザーの UPN が bsimon@bmcontoso.com である場合、AD FS が発行するトークンの IssuerUri 要素は http://bmcontoso.com/adfs/services/trust に設定されます。 これは Azure AD の構成と一致し、認証は成功します。
 
 次の規則は、このロジックを満たすカスタマイズ済みの要求規則です。
 
@@ -134,7 +134,7 @@ PowerShell コマンド `Get-MsolDomainFederationSettings -DomainName <your doma
 ## <a name="support-for-sub-domains"></a>サブドメインのサポート
 サブドメインの追加では、Azure AD がドメインを処理する方法のために、親の設定を継承します。  つまり、IssuerUri は親に一致させる必要があります。
 
-たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。  この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
+たとえば、bmcontoso.com を運用している状況で、corp.bmcontoso.com を追加するとします。この場合、corp.bmcontoso.com に属するユーザーの IssuerUri は、**http://bmcontoso.com/adfs/services/trust** とする必要があります。  しかし、上で Azure AD に適用した標準ルールでは、発行者を **http://corp.bmcontoso.com/adfs/services/trust** としてトークンを生成するので、ドメインに必要な値と一致せず、認証に失敗します。
 
 ### <a name="how-to-enable-support-for-sub-domains"></a>サブドメインのサポートを有効にする方法
 この問題を回避するには、Microsoft Online 用 AD FS 証明書利用者の信頼を更新する必要があります。  そのためには、カスタム Issuer 値の構築時にユーザーの UPN サフィックスからサブドメインを削除するよう、カスタム要求規則を構成する必要があります。 

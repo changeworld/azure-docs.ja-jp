@@ -11,16 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/09/2017
 ms.author: bwren
+ms.openlocfilehash: 356a73b406544b91191d5e9a03b2fa52ec501327
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 0ced7a128003402f74b847cc71e1c3ed21982651
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics の新しいログ検索についての FAQ と既知の問題
 
 この記事では、[新しいクエリ言語への Log Analytics](log-analytics-log-search-upgrade.md) のアップグレードに関してよく寄せられる質問と既知の問題について説明します。  ワークスペースのアップグレードを決定する前に、この記事全体を確認してください。
@@ -30,6 +28,10 @@ ms.lasthandoff: 09/26/2017
 
 ### <a name="question-i-have-a-lot-of-alert-rules-do-i-need-to-create-them-again-in-the-new-language-after-i-upgrade"></a>質問: 警告ルールが多数あります。 アップグレード後、そのルールを新しい言語で作成し直す必要がありますか。  
 いいえ。アップグレード中、警告ルールは新しい検索言語に自動変換されます。  
+
+### <a name="question-i-have-alert-rules-with-webhook-and-runbook-actions-will-these-continue-to-work-when-i-upgrade"></a>質問: webhook アクションと Runbook アクションを含んだアラート ルールがあります。 これらはアップグレード後も使用できますか。
+
+いいえ。webhook アクションと Runbook アクションに対するいくつかの変更に伴い、ペイロードの処理方法に変更が必要となる場合があります。 これらの変更は、各種の出力形式を標準化し、ペイロードのサイズを削減する目的で行われたものです。 これらの形式の詳細については、「[Log Analytics のアラート ルールへのアクションの追加](log-analytics-alerts-actions.md)」を参照してください。
 
 
 ## <a name="computer-groups"></a>コンピューター グループ
@@ -48,7 +50,7 @@ ms.lasthandoff: 09/26/2017
 ## <a name="dashboards"></a>ダッシュボード
 
 ### <a name="question-can-i-still-use-dashboards-in-an-upgraded-workspace"></a>質問: アップグレードされたワークスペースでこれまでどおりダッシュボードを使用できますか。
-ワークスペースがアップグレードされる前に **[マイ ダッシュボード]** に追加したタイルは引き続き使用できますが、タイルを編集したり、新しいダッシュボードを追加したりすることはできません。  これまでどおり、[ビュー デザイナー](log-analytics-view-designer.md)を使用したビューの作成および編集と、ダッシュボードの作成を Azure Portal から行えます。
+アップグレードに伴い、**マイ ダッシュボード**の廃止プロセスを開始しているところです。  ワークスペースがアップグレードされる前にダッシュボードに追加したタイルは引き続き使用できますが、タイルを編集したり、新しいダッシュボードを追加したりすることはできません。  これまでどおり、[ビュー デザイナー](log-analytics-view-designer.md)を使用したビューの作成および編集と、ダッシュボードの作成を Azure Portal で行えます。また、ビュー デザイナーの方が機能が豊富です。
 
 
 ## <a name="log-searches"></a>ログ検索
@@ -58,6 +60,9 @@ ms.lasthandoff: 09/26/2017
 
 ### <a name="question-why-are-my-query-results-not-sorted"></a>質問: クエリの結果がソートされていないのはなぜですか。
 既定では、新しいクエリ言語では結果の並べ替えは行われません。  [sort 演算子](https://go.microsoft.com/fwlink/?linkid=856079)を使用して、1 つまたは複数のプロパティで結果を並べ替えます。
+
+### <a name="question-where-did-the-metrics-view-go-after-i-upgraded"></a>質問: アップグレード後、メトリック ビューはどこに移動されましたか。
+メトリック ビューには、ログ検索からのパフォーマンス データがグラフィカルに表示されます。  アップグレード後は、このビューが使用できなくなります。  [レンダリング演算子](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator)を使用することで、クエリからの出力を時間グラフとして書式設定することができます。
 
 ### <a name="question-where-did-minify-go-after-i-upgraded"></a>質問: アップグレードした後、縮小はどこに移動されましたか?
 縮小は、検索結果の概要を把握する機能です。  アップグレードした後、縮小オプションは、ログ検索ポータルに表示されなくなります。  新しい検索言語では、[reduce](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/reduce-operator) または [autocluster_v2](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/evaluate-operator/autocluster) を使用して類似した機能を使用できます。 
@@ -173,4 +178,3 @@ Microsoft Azure Backup ソリューションは、アップグレードされた
 ## <a name="next-steps"></a>次のステップ
 
 - [新しい Log Analytics クエリ言語へのワークスペースのアップグレード](log-analytics-log-search-upgrade.md)について確認します。
-

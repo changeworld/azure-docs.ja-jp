@@ -10,15 +10,12 @@ ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
+ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 32e5c2c7c058267c7a2c43d5264922c8a4cab83a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="assign-access-to-cost-management-data"></a>コスト管理データへのアクセスを割り当てる
 
 コスト管理データへのアクセス権は、ユーザーまたはエンティティの管理によって提供されます。 Cloudyn ユーザー アカウントは、*エンティティ*および管理機能へのアクセス権を決定します。 アクセス権には、管理者とユーザーという 2 つの種類があります。 管理者アクセス権は、ユーザーごとに変更しない限り、ユーザー管理、受信者リストの管理、すべてのエンティティ データへのルート エンティティ アクセスなどの Cloudyn ポータルでのすべての機能について無制限の使用をユーザーに許可します。 ユーザー アクセス権は、エンド ユーザーがエンティティ データへのアクセスを使用して、レポートの表示と作成をするためのものです。
@@ -80,8 +77,7 @@ Cloudyn ポータルで、右上にある **[設定]** をクリックして **[
 > * ユーザー アクセス権を持つユーザーを作成する
 > * エンティティを作成する
 
-Cloudyn の使用開始とその機能に関する詳細については、Cloudyn ドキュメントに進みます。
+次のチュートリアルに進み、履歴データを使用した支出予測の方法について学習してください。
 
 > [!div class="nextstepaction"]
-> [Cloudyn ドキュメント](https://support.cloudyn.com/hc/)
-
+> [将来の支出を予測する](tutorial-forecast-spending.md)

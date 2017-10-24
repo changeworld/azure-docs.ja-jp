@@ -10,16 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 07/17/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 2f18016614b229273aa4d661991149be949ce238
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 0c0bd4b707c114d2991e5f0473a4bfbe9e463e3c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-use-nodejs-to-connect-and-query-data"></a>Azure Database for MySQL: Node.js を使用した接続とデータの照会
-このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Node.js](https://nodejs.org/) を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、Windows、Ubuntu Linux、Mac の各プラットフォームから [Node.js](https://nodejs.org/) を使用して Azure Database for MySQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 このトピックでは、Node.js を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -31,12 +30,12 @@ ms.lasthandoff: 07/21/2017
 - Node.js アプリケーションから MySQL に接続するための [mysql2](https://www.npmjs.com/package/mysql2) パッケージをインストールします。 
 
 ## <a name="install-nodejs-and-the-mysql-connector"></a>Node.js と MySQL コネクタのインストール
-ご使用のプラットフォームに該当する手順に従って Node.js をインストールします。 npm を使用して mysql2 パッケージとその依存関係をプロジェクト フォルダーにインストールしてください。
+プラットフォームに応じて、該当するセクションの手順に従って Node.js をインストールしてください。 npm を使用して mysql2 パッケージとその依存関係をプロジェクト フォルダーにインストールしてください。
 
 ### <a name="windows"></a>**Windows**
 1. [Node.js ダウンロード ページ](https://nodejs.org/en/download/)にアクセスし、必要な Windows インストーラー オプションを選択します。
 2. ローカル プロジェクト フォルダーを作成します (例: `nodejsmysql`)。 
-3. コマンド プロンプトを起動し、cd コマンドでプロジェクト フォルダーに移動します (例: `cd c:\nodejsmysql\`)。
+3. コマンド プロンプトを起動し、ディレクトリをプロジェクト フォルダーに変更します (例: `cd c:\nodejsmysql\`)。
 4. NPM ツールを実行して、mysql2 ライブラリをプロジェクト フォルダーにインストールします。
 
    ```cmd
@@ -88,18 +87,18 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
 1. [Azure ポータル](https://portal.azure.com/)にログインします。
 2. 左側のウィンドウの **[すべてのリソース]** をクリックし、自分が作成したサーバーを探します (例: **myserver4demo**)。
 3. サーバー名 **[myserver4demo]** をクリックします。
-4. サーバーの **[プロパティ]** ページを選択します。 **[サーバー名]** と **[サーバー管理者ログイン名]** の値を書き留めておきます。
+4. サーバーの **[プロパティ]** ページを選択し、**[サーバー名]** と **[サーバー管理者ログイン名]** を書き留めます。
  ![Azure Database for MySQL - サーバー管理者ログイン](./media/connect-nodejs/1_server-properties-name-login.png)
-5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
+5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動してサーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js での JavaScript コードの実行
-1. JavaScript コードをテキスト ファイルに貼り付け、.js というファイル拡張子でプロジェクト フォルダーに保存します (例: C:\nodejsmysql\createtable.js、/home/username/nodejsmysql/createtable.js)。
-2. コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (`cd nodejsmysql`)。
+1. JavaScript コードをテキスト ファイルに貼り付け、そのファイルを .js というファイル拡張子でプロジェクト フォルダーに保存します (例: C:\nodejsmysql\createtable.js や /home/username/nodejsmysql/createtable.js)。
+2. コマンド プロンプトまたは Bash シェルを起動し、ディレクトリをプロジェクト フォルダーに変更します (`cd nodejsmysql`)。
 3. アプリケーションを実行するには、node コマンドに続けてファイル名を入力します (例: `node createtable.js`)。
 4. Windows で環境変数 PATH に node アプリケーションが追加されていない場合、node アプリケーションを起動するには完全パスを使用する必要があります (例: `"C:\Program Files\nodejs\node.exe" createtable.js`)。
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
-接続し、**CREATE TABLE** および **INSERT INTO** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。
+接続し、SQL ステートメント **CREATE TABLE** および **INSERT INTO** を使用してデータを読み込むには、次のコードを使用します。
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーへの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) 関数を使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) 関数を使用します。 
 
@@ -266,7 +265,7 @@ function updateData(){
 ```
 
 ## <a name="delete-data"></a>データの削除
-接続し、**DELETE** SQL ステートメントを使用してデータを削除するには、次のコードを使用します。 
+接続し、**DELETE** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
 MySQL サーバーとやり取りするには、[mysql.createConnection()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 サーバーとの接続を確立するには、[connect()](https://github.com/mysqljs/mysql#establishing-connections) メソッドを使用します。 MySQL データベースに対して SQL クエリを実行するには、[query()](https://github.com/mysqljs/mysql#performing-queries) メソッドを使用します。 
 
@@ -316,4 +315,3 @@ function deleteData(){
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
-

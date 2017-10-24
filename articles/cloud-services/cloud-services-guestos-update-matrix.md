@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/14/2017
+ms.date: 10/6/2017
 ms.author: raiye
+ms.openlocfilehash: 7d3541e6c437212139553d975fa756084da4f757
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: dbbf529dc7a7c30daa78d92f210385d20e139d41
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -30,14 +29,24 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 >
 
 
-> [!NOTE]
-> RSS フィードは最近使用されなくなりました。 近日公開予定の新しいフィードに対する更新にご期待ください。
+> [!TIP]
+>  [ゲスト OS 更新 RSS フィード]をサブスクライブして、ゲスト OS のすべての変更に関する通知をタイムリーに受信してください。
+>
+>
+
+> [!IMPORTANT]
+> 11 月のロールアウトから、Azure Portal ではゲスト OS の最新の 2 バージョンのみがサポートされて、使用できるようになります。
 >
 >
 
 ゲスト OS が不明か、ゲスト OS リリースのしくみが不明な場合は、 [こちら](#how-it-works)のセクションをお読みください。
 
 ## <a name="news-updates"></a>最新情報
+
+
+###### <a name="october-6-2017"></a>**2017 年 10 月 6 日**
+9 月のゲスト OS がリリースされました。 Windows Server 2016 の 9 月のリリースでは、netfx3 が既定で有効になります。 4.x のランタイムで .NET 2.x アプリを実行する必要があるワークフローの場合、または .NET 2.x アプリを実行してエラーを処理してから .NET 4.x アプリを実行した場合は、OnStart に "dism /online /disable-feature /featurename:netfx3" を追加する必要があります。
+
 ###### <a name="september-14-2017"></a>**2017 年 9 月 14 日**
 9 月のゲスト OS ロールアウトは 9 月 14 日に開始され、10 月 9 日にリリースされる予定です。
 
@@ -71,7 +80,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 ## <a name="releases"></a>リリース
 ## <a name="family-5-releases"></a>ファミリ 5 のリリース
-**Windows Server、2016**
+**Windows Server 2016**
 
 インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2、4.6、4.6.1、4.6.2
 
@@ -83,9 +92,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-5.11_201709-01 |2017 年 10 月 6 日 |Post 5.13 |TBD |
 | WA-GUEST-OS-5.10_201708-01 |2017 年 8 月 24 日 |Post 5.12 |TBD |
 | WA-GUEST-OS-5.9_201707-01 |2017 年 8 月 3 日 |Post 5.11 |TBD |
-| WA-GUEST-OS-5.8_201706-01 |2017 年 7 月 7 日 |Post 5.10 |TBD |
+|~~WA-GUEST-OS-5.8_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-5.7_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-5.6_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-5.5_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
@@ -105,9 +115,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-4.46_201709-01 |2017 年 10 月 6 日 |Post 4.48 |TBD |
 | WA-GUEST-OS-4.45_201708-01 |2017 年 8 月 24 日 |Post 4.47 |TBD |
 | WA-GUEST-OS-4.44_201707-01 |2017 年 8 月 3 日 |Post 4.46 |TBD |
-| WA-GUEST-OS-4.43_201706-01 |2017 年 7 月 7 日 |Post 4.45 |TBD |
+|~~WA-GUEST-OS-4.43_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-4.42_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-4.41_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-4.40_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
@@ -131,9 +142,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-3.53_201709-01 |2017 年 10 月 6 日 |Post 3.55 |TBD |
 | WA-GUEST-OS-3.52_201708-01 |2017 年 8 月 24 日 |Post 3.54 |TBD |
 | WA-GUEST-OS-3.51_201707-01 |2017 年 8 月 3 日 |Post 3.53 |TBD |
-| WA-GUEST-OS-3.50_201706-01 |2017 年 7 月 7 日 |Post 3.52 |TBD |
+|~~WA-GUEST-OS-3.50_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-3.49_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-3.48_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-3.47_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
@@ -157,9 +169,10 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 
 | 構成文字列 | リリース日 | 無効になる日 | 有効期限 |
 | --- | --- | --- | --- |
+| WA-GUEST-OS-2.66_201709-01 |2017 年 10 月 6 日 |Post 2.68 |TBD |
 | WA-GUEST-OS-2.65_201708-01 |2017 年 8 月 24 日 |Post 2.67 |TBD |
 | WA-GUEST-OS-2.64_201707-01 |2017 年 8 月 3 日 |Post 2.66 |TBD |
-| WA-GUEST-OS-2.63_201706-01 |2017 年 7 月 7 日 |Post 2.65 |TBD |
+|~~WA-GUEST-OS-2.63_201706-01~~ |2017 年 7 月 7 日 |2017 年 10 月 6 日 |TBD |
 |~~WA-GUEST-OS-2.62_201705-01~~ |2017 年 6 月 5 日 |2017 年 8 月 24 日 |TBD |
 |~~WA-GUEST-OS-2.61_201704-01~~ |2017 年 5 月 9 日 |2017 年 8 月 3 日 |TBD |
 |~~WA-GUEST-OS-2.60_201703-01~~ |2017 年 4 月 10 日 |2017 年 7 月 7 日 |TBD |
@@ -228,6 +241,7 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 ## <a name="guest-os-supportability-and-retirement-policy"></a>ゲスト OS のサポートと提供終了のポリシー
 ゲスト OS のサポートと提供終了のポリシーについては、[こちら][retirepolicy]で説明しています。
 
+[ゲスト OS 更新 RSS フィード]: https://raw.githubusercontent.com/MicrosoftDocs/azure-cloud-services-files/master/GuestOS/GuestOSFeed.xml
 [Install .NET on a Cloud Service Role]: https://azure.microsoft.com/en-us/documentation/articles/cloud-services-dotnet-install-dotnet/?WT.mc_id=azurebg_email_Trans_963_RevisedNET_Update
 [Azure Guest OS Update Settings]: cloud-services-how-to-configure.md
 [ssl3 announcement]: http://azure.microsoft.com/blog/2014/12/09/azure-security-ssl-3-0-update/
@@ -247,4 +261,3 @@ Microsoft Azure では、常に更新プログラムがリリースされてい�
 [retirepolicy]: cloud-services-guestos-retirement-policy.md
 [fam1retire]: cloud-services-guestos-family1-retirement.md
 [解決策]: https://technet.microsoft.com/en-us/library/security/ms17-010.aspx
-

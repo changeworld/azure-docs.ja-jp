@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 04/25/2017
 ms.author: sedusch
 ms.openlocfilehash: 951150e621d21037b0adde7287b9f985290d8d11
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="high-availability-of-sap-hana-on-azure-virtual-machines-vms"></a>Azure Virtual Machines (VM) 上の SAP HANA の高可用性 | Microsoft Docs
 
@@ -369,7 +369,7 @@ Github にあるいずれかのクイック スタート テンプレートを�
     * Enter Location of Data Volumes [/hana/data/HDB] \(データ ボリュームの場所 (/hana/data/HDB) の入力): -> ENTER
     * Enter Location of Log Volumes [/hana/log/HDB] \(ログ ボリュームの場所 (/hana/log/HDB) の入力): -> ENTER
     * Restrict maximum memory allocation? (メモリの最大割り当てを制限しますか?)  [n]: -> ENTER
-    * Enter Certificate Host Name For Host '...' (ホスト '...' の証明書のホスト名を入力)  [...]: -> ENTER
+    * Enter Certificate Host Name For Host '...' [...]\(ホスト '...' の証明書のホスト名 (...) を入力\): -> ENTER
     * Enter SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを入力):
     * Confirm SAP Host Agent User (sapadm) Password (SAP ホスト エージェントのユーザー (sapadm) パスワードを確認):
     * Enter System Administrator (hdbadm) Password (システム管理者 (hdbadm) のパスワードを入力):
@@ -450,7 +450,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 
 1. <https://portal.azure.com> に移動します
 1. [Azure Active Directory] ブレードを開きます  
-   [プロパティ] に移動し、ディレクトリの ID をメモします。 これは、**テナント ID** です。
+   [プロパティ] に移動し、ディレクトリの ID をメモします。これは、**テナント ID** です。
 1. [アプリの登録] を選択します
 1. [追加] をクリックします。
 1. 名前を入力して、アプリケーションの種類に [Web アプリ/API] を選択し、サインオン URL (例: http://localhost) を入力します。その後、[作成] をクリックします
@@ -458,7 +458,7 @@ STONITH デバイスは、サービス プリンシパルを使用して Microso
 1. 新しいアプリを選択し、[設定] タブで [キー] をクリックします
 1. 新しいキーの説明を入力し、[Never expires] \(有効期限なし) を選択して [保存] をクリックします
 1. 値をメモします。 この値は、サービス プリンシパルの**パスワード**として使用します
-1. アプリケーション ID をメモします。 この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
+1. アプリケーション ID をメモします。この値は、サービス プリンシパルのユーザー名 (下記の手順の**ログイン ID**) として使用します
 
 既定では、サービス プリンシパルには、Azure のリソースにアクセスする権限はありません。 クラスターのすべての仮想マシンを開始および停止 (割り当て解除) する権限を、サービス プリンシパルに付与する必要があります。
 

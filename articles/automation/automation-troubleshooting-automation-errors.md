@@ -3,7 +3,7 @@ title: "Azure Automation の一般的な問題のトラブルシューティン�
 description: "この記事には、Azure Automation の一般的なエラーのトラブルシューティングを行って修正する際に役立つ情報が記載されています。"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: stevenka
 editor: tysonn
 tags: top-support-issue
@@ -14,15 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/26/2017
+ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.translationtype: Human Translation
-ms.sourcegitcommit: cb4d075d283059d613e3e9d8f0a6f9448310d96b
-ms.openlocfilehash: 64548d91e98754210cc5185d9d759141cc0621d3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/26/2017
-
-
+ms.openlocfilehash: 19b1d772236c14c8403d1056e5c9dcda7b741501
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -104,7 +102,7 @@ ms.lasthandoff: 06/26/2017
 1. Azure サブスクリプションにサインインします。  
 2. アップグレードする Automation アカウントを選択します。  
 3. **[設定]** > 、**[価格レベルと使用状況]** > 、**[価格レベル]** の順に選択します。  
-4. **[価格レベルの選択]** ブレードで、**[Basic]** を選択します。    
+4. **[価格レベルの選択]** ページで、**[Basic]** を選択します。    
 
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>シナリオ: Runbook の実行時にコマンドレットが認識されない
 **エラー:** Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。
@@ -121,7 +119,7 @@ ms.lasthandoff: 06/26/2017
 ### <a name="scenario-a-long-running-runbook-consistently-fails-with-the-exception-the-job-cannot-continue-running-because-it-was-repeatedly-evicted-from-the-same-checkpoint"></a>シナリオ: Runbook を長時間実行するといつも次の例外で失敗する: ジョブは同じチェックポイントから繰り返し削除されたため、実行を継続できません。
 **エラーの理由:** これは Azure Automation 内のプロセスの "フェア シェア" 監視のための設計による動作です。3 時間以上実行している Runbook は自動的に中断されます。 ただし、返されるエラー メッセージでは "次" のオプションは提供されません。 さまざまな理由から Runbook は中断されることがあります。 ほとんどの場合、中断はエラーのために発生します。 たとえば、Runbook のキャッチされない例外、ネットワーク障害、Runbook を実行している Runbook Worker でのクラッシュなどはすべて、Runbook が中断する原因になり、再開時には最後のチェックポイントから開始します。
 
-**トラブルシューティングのヒント:** この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。  詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#checkpoints)」を参照してください。  "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
+**トラブルシューティングのヒント:** この問題を回避するための解決策では、ワークフローでのチェックポイントを使用します。  詳細については、「[PowerShell ワークフローについての説明](automation-powershell-workflow.md#checkpoints)」をご覧ください。  "フェア シェア" およびチェックポイントの詳細については、ブログ記事「[Using Checkpoints in Runbooks](https://azure.microsoft.com/en-us/blog/azure-automation-reliable-fault-tolerant-runbook-execution-using-checkpoints/)」(Runbook でのチェックポイントの使用) を参照してください。
 
 ## <a name="common-errors-when-importing-modules"></a>モジュールのインポート時に発生する一般的なエラー
 ### <a name="scenario-module-fails-to-import-or-cmdlets-cant-be-executed-after-importing"></a>シナリオ: モジュールがインポートに失敗するか、インポート後、コマンドレットを実行できない
@@ -153,7 +151,7 @@ ms.lasthandoff: 06/26/2017
 * ノードに "構成名" ではなく、"ノード構成名" が割り当てられていることを確認してください。  
 * ノード構成は、Azure ポータルまたは PowerShell コマンドレットを使用してノードに割り当てることができます。
 
-  * Azure ポータルを使用してノードにノード構成を割り当てるには、**[DSC ノード]** ブレードを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
+  * Azure Portal を使用してノードにノード構成を割り当てるには、**[DSC ノード]** ページを開き、ノードを選択し、**[ノード構成の割り当て]** ボタンをクリックします。  
   * PowerShell コマンドレットを使用してノードにノード構成を割り当てるには、 **Set-AzureRmAutomationDscNode** コマンドレットを使用します。
 
 ### <a name="scenario--no-node-configurations-mof-files-were-produced-when-a-configuration-is-compiled"></a>シナリオ: 構成のコンパイルを実行しても、ノード構成 (MOF ファイル) が生成されなかった
@@ -190,4 +188,3 @@ ms.lasthandoff: 06/26/2017
 * Azure サポート インシデントを送信する。 [Azure サポート サイト](https://azure.microsoft.com/support/options/)にアクセスし、**[テクニカル/課金サポート]** の **[サポートの要求]** をクリックしてください。
 * Azure Automation Runbook ソリューションや統合モジュールを探している場合は、 [スクリプト センター](https://azure.microsoft.com/documentation/scripts/) にスクリプトの要求を投稿することができます。
 * Azure Automation に関するフィードバックや機能に関するご要望は、 [User Voice](https://feedback.azure.com/forums/34192--general-feedback)にお寄せください。
-

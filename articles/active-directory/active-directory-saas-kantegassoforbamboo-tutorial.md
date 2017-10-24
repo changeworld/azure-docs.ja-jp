@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: cc259bb6f9bdb2293b6935e45e2df52b9fee6873
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bamboo"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bamboo の統合
 
@@ -197,7 +197,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-kantegassoforbamboo-tutorial/addon10.png)
 
-    a. 選択**必要な場合は、Bamboo の内部ディレクトリでユーザーを作成**ユーザーのグループの適切な名前を入力し、(できます複数なし。 グループのコンマ区切りで)。
+    a. **[Create users in Bamboo's internal Directory if needed]\(必要に応じて Bamboo の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
     b. **[次へ]** をクリックします。
 
@@ -247,7 +247,7 @@ Kantega SSO for Bamboo で Azure AD のシングル サインオンを構成し�
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-kantega-sso-for-bamboo-test-user"></a>Kantega SSO for Bamboo テスト ユーザーの作成
 

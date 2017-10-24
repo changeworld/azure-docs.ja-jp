@@ -11,14 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: mahender
+ms.openlocfilehash: fd63d53697ccd529c144482202e2fd8c6b184991
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: fda9d6c12da382faed5312a677c533f24ffbd824
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-azure-managed-service-identity-public-preview-in-app-service-and-azure-functions"></a>App Service および Azure Functions で管理対象のサービス ID (パブリック プレビュー) を使用する方法
 
 > [!NOTE] 
@@ -29,6 +27,10 @@ ms.lasthandoff: 09/28/2017
 ## <a name="creating-an-app-with-an-identity"></a>ID を持つアプリの作成
 
 ID を持つアプリを作成するには、アプリケーションで追加のプロパティを設定する必要があります。
+
+> [!NOTE] 
+> サイトのプライマリ スロットのみが ID を受信します。 デプロイ スロット用の管理対象サービス ID はまだサポートされていません。
+
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
 
@@ -128,7 +130,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 **MSI_ENDPOINT** は、アプリがトークンを要求できるローカル URL です。 リソースのトークンを取得するには、次のパラメーターを指定して、このエンドポイントに HTTP GET 要求を行います。
 
 > [!div class="mx-tdBreakAll"]
-> |パラメーター名|イン|Description|
+> |パラメーター名|場所|説明|
 > |-----|-----|-----|
 > |resource|クエリ|トークンを取得する必要のあるリソースの AAD リソース URI。|
 > |api-version|クエリ|使うトークン API のバージョン。 現在サポートされているバージョンは "2017-09-01" だけです。|
@@ -138,7 +140,7 @@ Microsoft.Azure.Services.AppAuthentication およびそれによって公開さ�
 正常終了の応答である 200 OK には、JSON 本文と次のプロパティが含まれています。
 
 > [!div class="mx-tdBreakAll"]
-> |プロパティ名|Description|
+> |プロパティ名|説明|
 > |-------------|----------|
 > |access_token|要求されたアクセス トークン。 呼び出し元の Web サービスは、このトークンを使用して受信側の Web サービスに対する認証処理を行うことができます。|
 > |expires_on|アクセス トークンの有効期限が切れる日時。 日時は 1970-01-01T0:0:0Z UTC から期限切れ日時までの秒数として表されます。 この値は、キャッシュされたトークンの有効期間を調べるために使用されます。|
@@ -203,4 +205,3 @@ $tokenAuthURI = $env:MSI_ENDPOINT + "?resource=$resourceURI&api-version=$apiVers
 $tokenResponse = Invoke-RestMethod -Method Get -Headers @{"Secret"="$env:MSI_SECRET"} -Uri $tokenAuthURI
 $accessToken = $tokenResponse.access_token
 ```
-

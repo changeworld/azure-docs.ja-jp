@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 06/29/2016
 ms.author: yuaxu
 ms.openlocfilehash: dc47250db6fb3a2853dae24e02bda236154d93fb
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-notification-hubs-to-send-breaking-news"></a>Notification Hubs を使用したニュース速報の送信
 [!INCLUDE [notification-hubs-selector-breaking-news](../../includes/notification-hubs-selector-breaking-news.md)]
@@ -131,7 +131,7 @@ ms.lasthandoff: 07/11/2017
 3. AppDelegate.m の **didRegisterForRemoteNotificationsWithDeviceToken** メソッドで、コード内のコードを、デバイス トークンを通知クラスに渡すコードで置き換えます。 通知クラスは、通知のカテゴリの登録を実行します。 ユーザーがカテゴリの選択内容を変更した場合は、**[サブスクライブ]** ボタンに応答して `subscribeWithCategories` メソッドを呼び出してカテゴリを更新します。
    
    > [!NOTE]
-   > Apple Push Notification サービス (APNS) によって割り当てられたデバイス トークンはいつでも変更される可能性があるので、通知エラーを回避するために通知を頻繁に登録してください。 この例では、アプリケーションが起動するたびに通知を登録します。 頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
+   > Apple Push Notification Service (APNS) によって割り当てられたデバイス トークンはいつでも変更される可能性があるので、通知エラーを回避するために通知を頻繁に登録してください。 この例では、アプリケーションが起動するたびに通知を登録します。 頻繁に実行されるアプリケーションの場合 (1 日に複数回など)、帯域幅を節約するため、前回の登録から 1 日経過していない場合は登録をスキップできます。
    > 
    > 
    
@@ -149,16 +149,16 @@ ms.lasthandoff: 07/11/2017
 
     この時点では、 **didRegisterForRemoteNotificationsWithDeviceToken** メソッドに他のコードが存在しない点に注目してください。
 
-1. 次のメソッドを妨げます AppDelegate.m 内に存在する必要があります既に、 [Notification Hubs の概要][ get-started]チュートリアルです。  ない場合は、それらを追加します。
+1. [Notification Hubs の使用][get-started]に関するチュートリアルを完了していれば、次のメソッドが既に AppDelegate.m に含まれています。  ない場合は、それらを追加します。
    
-    -(void) メッセージ ボックス:(NSString *) タイトル メッセージ:(NSString *) messageText {
+    -(void)MessageBox:(NSString *)title message:(NSString *)messageText  {
    
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:title message:messageText delegate:self
             cancelButtonTitle:@"OK" otherButtonTitles: nil];
         [alert show];
     }
    
-   * (void) アプリケーション:(UIApplication *) アプリケーション didReceiveRemoteNotification: (NSDictionary *) ユーザー情報 {NSLog (@"% @"、ユーザー情報)。  [自己 MessageBox:@"Notification"メッセージ: [ユーザー情報 objectForKey:@"aps"] valueForKey:@"alert"] です。}
+   * (void)application:(UIApplication *)application didReceiveRemoteNotification:   (NSDictionary *)userInfo {   NSLog(@"%@", userInfo);   [self MessageBox:@"Notification" message:[[userInfo objectForKey:@"aps"] valueForKey:@"alert"]]; }
    
    このメソッドにより、簡単な **UIAlert**を表示することでアプリケーションの実行中に受信した通知が処理されます。
 2. ViewController.m で、 AppDelegate.h をインポートするためのステートメントを追加し、次のコードを XCode で生成された **subscribe** メソッドにコピーします。 このコードは、ユーザーがユーザー インターフェイスで選択した新しいカテゴリ タグを使用するように通知登録を更新します。
@@ -212,7 +212,7 @@ Visual Studio にアクセスできない場合は、次のセクションをス
 [!INCLUDE [notification-hubs-send-categories-template](../../includes/notification-hubs-send-categories-template.md)]
 
 ## <a name="optional-send-notifications-from-the-device"></a>(省略可能) デバイスから通知を送信する
-通常、通知はバックエンド サービスによって送信されますが、アプリからニュース速報通知を直接送信できます。 更新してこれを行う、`SendNotificationRESTAPI`メソッドで定義されていることを[Notification Hubs の概要][ get-started]チュートリアルです。
+通常、通知はバックエンド サービスによって送信されますが、アプリからニュース速報通知を直接送信できます。 これを行うには、[Notification Hubs の使用][get-started]に関するチュートリアルで定義した `SendNotificationRESTAPI` メソッドを更新します。
 
 1. ViewController.m で、 `SendNotificationRESTAPI` メソッドを次のように更新して、カテゴリ タグのパラメーターを受け取って適切な [テンプレート](notification-hubs-templates-cross-platform-push-messages.md) 通知を送信するようにします。
    

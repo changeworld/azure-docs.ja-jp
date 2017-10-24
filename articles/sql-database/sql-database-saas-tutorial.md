@@ -1,5 +1,5 @@
 ---
-title: "Azure SQL Database を使用するマルチテナント SaaS アプリケーションのデプロイと操作 | Microsoft Docs"
+title: "マルチテナント SaaS チュートリアル - Azure SQL Database | Microsoft Docs"
 description: "Azure SQL Database を使用して SaaS パターンを示す、Wingtip SaaS マルチ テナント アプリケーションをデプロイおよび操作します。"
 keywords: "SQL データベース チュートリアル"
 services: sql-database
@@ -16,12 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
+ms.openlocfilehash: 2e6816ce2740b0325c6f59338f0365c6b40539f3
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 14d2fd007e88c9cb20cf2b4a24262e2bebc42d63
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>Azure SQL Database を使用するマルチテナント アプリケーションのデプロイと操作 - Wingtip SaaS
 
@@ -203,4 +202,3 @@ WTP アプリは、コンサート ホール、ジャズ クラブ、スポー�
 * エラスティック プールの詳細については、[*Azure SQL エラスティック プール*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-pool)に関するページをご覧ください。
 * エラスティック ジョブの詳細については、「[*スケールアウトされたクラウド データベースの管理*](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-jobs-overview)」をご覧ください。
 * マルチテナント SaaS アプリケーションの詳細については、[*マルチテナント SaaS アプリケーションの設計パターン*](https://docs.microsoft.com/azure/sql-database/sql-database-design-patterns-multi-tenancy-saas-applications)に関するページをご覧ください。
-

@@ -15,12 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
+ms.openlocfilehash: b55eed31ddb5be23dc28a23b2f0588b8c8ff8833
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: 1607ca31a81c0941895611f626d54f6fbb294a20
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure 用語集: Azure プラットフォームにおけるクラウド用語の辞書
 
@@ -37,7 +36,7 @@ Azure サブスクリプションへのアクセスおよび管理に使用す�
 [App Service アプリ](#app-service-app)の別名。
 
 ## <a name="app-service-app"></a>App Service アプリ
-[Web サイトまたは Web アプリケーション](app-service-web/app-service-web-overview.md)、[Web API](app-service-api/app-service-api-apps-why-best-platform.md)、または[モバイル アプリのバックエンド](app-service-mobile/app-service-mobile-value-prop.md)をホストするために [Azure App Service](app-service/app-service-value-prop-what-is.md) が提供するコンピューティング リソースです。 App Service アプリは、*App Services*、*Web アプリ*、*API アプリ*、*モバイル アプリ*とも呼ばれます。
+Web サイトまたは Web アプリケーション、Web API、または[モバイル アプリのバックエンド](app-service/app-service-web-overview.md)をホストするために [Azure App Service](app-service-mobile/app-service-mobile-value-prop.md) が提供するコンピューティング リソースです。 App Service アプリは、*App Services*、*Web アプリ*、*API アプリ*、*モバイル アプリ*とも呼ばれます。
 
 ## <a name="availability-set"></a>可用性セット
 アプリケーションの冗長性と信頼性を提供するために、ひとまとまりで管理される仮想マシンのコレクション。 可用性セットを利用していれば、計画済みまたは計画外メンテナンスの間にも、少なくとも 1 つの仮想マシンを使用できます。  
@@ -159,5 +158,4 @@ Azure サービスを入手する権利を与える、お客様と Microsoft の
 * [クラウド リソース センター](https://azure.microsoft.com/resources/)  
 * [ビジネス アプリケーションを Azure で](https://azure.microsoft.com/overview/business-apps-on-azure/)
 * [データセンターに Azure を](https://azure.microsoft.com/overview/business-apps-on-azure/)
-
 

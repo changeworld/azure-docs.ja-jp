@@ -8,15 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 06/13/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 8606067a8e82c6314ab931eb4816d45755a8e04f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
+ms.date: 09/15/2017
+ms.openlocfilehash: ce6edbdffe9704383676e990865cd4e2958f30fe
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>ダンプと復元を使用した Azure Database for MySQL への MySQL データベースの移行
 この記事では、Azure Database for MySQL でデータベースをバックアップして復元する一般的な 2 つの方法について説明します
 - コマンド ラインからのダンプと復元 (mysqldump を使用) 
@@ -46,8 +44,8 @@ MySQL Workbench、mysqldump、Toad、Navicat などの一般的なユーティ�
 ## <a name="performance-considerations"></a>パフォーマンスに関する考慮事項
 パフォーマンスを最適化するには、大規模なデータベースをダンプするときに、次の考慮事項に注意してください。
 -   データベースをダンプするときに、mysqldump で `exclude-triggers` オプションを使用します。 データの復元中にトリガー コマンドが実行されないように、ダンプ ファイルからトリガーを除外します。 
--   非常に大規模なデータベースをダンプするときは、mysqldump で `single-transaction` オプションを使用しないようにします。 1 つのトランザクションで多数のテーブルをダンプすると、復元時に余分なストレージ リソースやメモリ リソースが使用され、パフォーマンスの遅延やリソースの制約が発生する可能性があります。
--   SQL での読み込み時に複数値挿入を使用して、データベースをダンプするときのステートメント実行のオーバーヘッドを最小限に抑えます。 mysqldump ユーティリティによって生成されるダンプ ファイルを使用すると、複数値挿入が既定で有効になります。 
+-   データをダンプする前に、トランザクション分離モードを REPEATABLE READ に設定し、START TRANSACTION SQL ステートメントをサーバーに送信するには `single-transaction` を使用します。 1 つのトランザクション内の多数のテーブルをダンプすると、復元中に余分なストレージが使用されます。 LOCK TABLES により、保留中のトランザクションが暗黙的にコミットされるため、`single-transaction` オプションと `lock-tables` オプションは相互に排他的です。大きなテーブルをダンプするには、`single-transaction` オプションと `quick` オプションを組み合わせてください。 
+-   複数の値リストを含む複数行の構文 `extended-insert` を使用します。 その結果、ダンプ ファイルが小さくなり、ファイルの再読み込み時に挿入が高速化されます。
 -  データベースをダンプするときに、mysqldump で `order-by-primary` オプションを使用します。このオプションを使用すると、主キー順にデータがスクリプト化されます。
 -   データをダンプするときに、mysqldump で `disable-keys` オプションを使用して、読み込み前に外部キー制約を無効にします。 外部キーのチェックを無効にすると、パフォーマンスが向上します。 読み込み後に制約を有効にし、データを検証して参照整合性を確認します。
 -   パーティション テーブルを適宜使用します。
@@ -126,4 +124,3 @@ $ mysql -h myserver4demo.mysql.database.azure.com -u myadmin@myserver4demo -p te
 
 ## <a name="next-steps"></a>次のステップ
 [Azure Database for MySQL にアプリケーションを接続する](./howto-connection-string.md)
-

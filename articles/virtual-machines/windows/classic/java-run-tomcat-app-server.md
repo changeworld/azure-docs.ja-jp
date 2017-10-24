@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 03/16/2017
 ms.author: robmcm
 ms.openlocfilehash: 6e02f42613808bcb13c0057e9f8fcc1c02273e77
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-run-a-java-application-server-on-a-virtual-machine-created-with-the-classic-deployment-model"></a>クラシック デプロイ モデルで作成された仮想マシンに Java アプリケーション サーバーをインストールする方法
 > [!IMPORTANT]
@@ -120,7 +120,7 @@ Tomcat が実行されていることを外部コンピューターから確認�
 10. **[名前]** 画面で、**HttpIn** などの規則の名前を指定し (ただし、規則の名前がエンドポイント名と一致する必要はありません)、**[完了]** をクリックします。  
     ![新しい受信の規則の名前][NewRuleName]
 
-これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレスのウィンドウで、フォームの URL を入力 **http://*、\_DNS\_名前*. cloudapp.net**、場所***、\_DNS\_名前***仮想マシンを作成したときに指定した DNS 名です。
+これで、外部ブラウザーから Tomcat の Web サイトを表示できます。 ブラウザーのアドレス ウィンドウに、**http://*your\_DNS\_name*.cloudapp.net** (***your\_DNS\_name*** は、仮想マシンの作成時に指定した DNS 名) という形式の URL を入力します。
 
 ## <a name="application-lifecycle-considerations"></a>アプリケーションのライフサイクルについて
 * 独自の Web アプリケーション アーカイブ (WAR) を作成し、 **webapps** フォルダーに追加することもできます。 たとえば、基本的な Java Service Page (JSP) 動的 Web プロジェクトを作成し、WAR ファイルとしてエクスポートします。 次に、仮想マシン上の Apache Tomcat **webapps** フォルダーに WAR をコピーし、ブラウザーで実行します。

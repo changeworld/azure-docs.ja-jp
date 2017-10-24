@@ -13,14 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/09/2017
 ms.author: owend
+ms.openlocfilehash: 71c4c8929a80a46ba2b9ba204f5666d40607f303
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a29f1e7b39b7f35073aa5aa6c6bd964ffaa6ffd0
-ms.openlocfilehash: d614352a62dc7aca012e9b144473604ae9829af9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>オンプレミスのデータ ゲートウェイをインストールして構成する
 同じリージョン内の 1 つまたは複数の Azure Analysis Services サーバーがオンプレミスのデータ ソースに接続する場合は、オンプレミスのデータ ゲートウェイが必要です。 ゲートウェイの詳細については、[オンプレミスのデータ ゲートウェイ](analysis-services-gateway.md)に関する記事を参照してください。
@@ -44,6 +43,7 @@ ms.lasthandoff: 09/21/2017
 * 1 台のコンピューターにインストールできるゲートウェイは 1 つだけです。
 * 常に稼働していてスリープ状態にならないコンピューターにゲートウェイをインストールします。
 * ネットワークにワイヤレス接続されているコンピューターにはゲートウェイをインストールしないでください。 パフォーマンスが低下することがあります。
+* ゲートウェイを登録するサブスクリプションと同じ[テナント](https://msdn.microsoft.com/library/azure/jj573650.aspx#BKMK_WhatIsAnAzureADTenant)の Azure AD アカウントを使用して Azure にサインインします。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
 
 
 ## <a name="download"></a>ダウンロード
@@ -57,9 +57,9 @@ ms.lasthandoff: 09/21/2017
 
    ![インストール場所とライセンス条項](media/analysis-services-gateway-install/aas-gateway-installer-accept.png)
 
-3. Azure にサインインするアカウントを入力します。 アカウントは、テナントの Azure Active Directory でなければなりません。 このアカウントがゲートウェイ管理者で使用されます。 
+3. Azure にサインインします。 アカウントは、テナントの Azure Active Directory でなければなりません。 このアカウントがゲートウェイ管理者で使用されます。 ゲートウェイのインストールと登録では、Azure B2B (guest) アカウントはサポートされません。
 
-   ![Azure にサインインするアカウントを入力する](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
+   ![Azure へのサインイン](media/analysis-services-gateway-install/aas-gateway-installer-account.png)
 
    > [!NOTE]
    > ドメイン アカウントでサインインした場合は、Azure AD 内の組織アカウントにマップされます。 組織アカウントがゲートウェイ管理者として使用されます。
@@ -88,7 +88,6 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
     * **名前**: ゲートウェイ リソースの名前を入力します。 
 
     * **サブスクリプション**: ゲートウェイ リソースに関連付ける Azure サブスクリプションを選択します。 
-    このサブスクリプションは、サーバーと同じサブスクリプションにする必要があります。
    
       既定のサブスクリプションは、サインインするために使用した Azure アカウントに基づきます。
 
@@ -118,4 +117,3 @@ Azure 内にゲートウェイ リソースを作成するためには、ゲー�
 ## <a name="next-steps"></a>次のステップ
 * [Analysis Services を管理する](analysis-services-manage.md)   
 * [Azure Analysis Services からデータを取得する](analysis-services-connect.md)
-

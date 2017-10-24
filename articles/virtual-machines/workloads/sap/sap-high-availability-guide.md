@@ -18,10 +18,10 @@ ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: d00db895ffcf9ba9a51e3df2dae5d33c0277dd6f
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines 高可用性
 
@@ -171,7 +171,7 @@ Azure Virtual Machines は、最短時間で、時間のかかる調達サイク
 ## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> 前提条件
 始める前に、次のセクションで説明されている前提条件が満たされていることを確認してください。 また、「[リソース][sap-ha-guide-2]」セクションに一覧表示されているすべてのリソースをご確認ください。
 
-この記事では使用の Azure Resource Manager テンプレート[ディスクの管理を使用して 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/)です。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
+この記事では、[Managed Disks を使用した 3 層 SAP NetWeaver](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/) 用の Azure Resource Manager テンプレートを使用します。 SAP Azure Resource Manager テンプレートの概要については、「[Running SAP Applications on the Microsoft Platform](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/)」(Microsoft プラットフォームでの SAP アプリケーションの実行) を参照してください。
 
 ## <a name="42b8f600-7ba3-4606-b8a5-53c4f026da08"></a> リソース
 Azure での SAP のデプロイについては、以下の記事で説明されています。
@@ -211,9 +211,9 @@ Azure Resource Manager では、リソース グループを使用して Azure �
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a> Azure リソース グループに対する Azure 内部ロード バランサーの依存関係
 
-Azure クラシック デプロイ モデルでは、Azure 内部ロード バランサー (Azure ロード バランサー サービス) とクラウド サービス間の依存関係。 すべての内部ロード バランサーには、1 つのクラウド サービスが必要があります。
+Azure クラシック デプロイメント モデルでは、Azure 内部ロード バランサー (Azure Load Balancer サービス) とクラウド サービスの間に依存関係があります。 どの内部ロード バランサーにも 1 つのクラウド サービスが必要です。
 
-Azure リソース マネージャーで、Azure リソース グループに配置される必要があるすべての Azure リソースこれとは Azure ロード バランサーの有効なも。 ただし、Azure ロード バランサーあたり 1 つの Azure リソース グループを用意する必要はありません、例: 1 つの Azure リソース グループが複数の Azure ロード バランサーを含めることができます。 環境は、よりシンプルで柔軟性が高くなります。 
+Azure Resource Manager では、すべての Azure リソースを Azure リソース グループに配置する必要があり、これは Azure Load Balancer についても有効です。 ただし、Azure Load Balancer ごとに 1 つの Azure リソース グループを割り当てる必要はありません (たとえば、1 つの Azure リソース グループに複数の Azure Load Balancer を含めることができます)。 環境は、よりシンプルで柔軟性が高くなります。 
 
 ### <a name="support-for-sap-multi-sid-scenarios"></a>SAP マルチ SID シナリオのサポート
 
@@ -278,9 +278,9 @@ _**図 2:** 共有ディスクを使用しない Azure の Windows Server フェ
 ### <a name="1a464091-922b-48d7-9d08-7cecf757f341"></a> SIOS DataKeeper を使用する Azure の共有ディスク
 高可用性の SAP ASCS/SCS インスタンスには共有記憶域をクラスター化する必要があります。 2016 年 9 月の時点で、Azure は共有記憶域クラスターの作成に使用できる共有記憶域を提供していません。 代わりに、サード パーティ製ソフトウェアの SIOS DataKeeper Cluster Edition を使用して、クラスター共有記憶域をシミュレートするミラー化された記憶域を作成できます。 SIOS ソリューションは、リアルタイムの同期データ レプリケーションを実現します。 クラスターの共有ディスク リソースを作成する方法は次のとおりです。
 
-1. Windows クラスター構成で仮想マシン (Vm) のそれぞれに、追加のディスクをアタッチします。
+1. Windows クラスター構成内の各仮想マシン (VM) に追加ディスクを接続します。
 2. 両方の仮想マシン ノードで、SIOS DataKeeper Cluster Edition を実行します。
-3. ソース バーチャル マシンからターゲット仮想マシンの接続されている追加のディスク ボリュームにアタッチされている追加のディスク ボリュームの内容が反映されるように、SIOS DataKeeper クラスターのエディションを構成します。 SIOS DataKeeper は、ソースとターゲットのローカル ボリュームを抽象化し、1 つの共有ディスクとして Windows フェールオーバー クラスタリングに提示します。
+3. ソース仮想マシンの追加ディスク接続ボリュームの内容をターゲット仮想マシンの追加ディスク接続ボリュームにミラー化するように SIOS DataKeeper Cluster Edition を構成します。 SIOS DataKeeper は、ソースとターゲットのローカル ボリュームを抽象化し、1 つの共有ディスクとして Windows フェールオーバー クラスタリングに提示します。
 
 詳細については、[SIOS DataKeeper](http://us.sios.com/products/datakeeper-cluster/) を参照してください。
 
@@ -322,7 +322,7 @@ SAP アプリケーション サーバー インスタンスをホストする�
 
 [仮想マシンの可用性を管理][virtual-machines-manage-availability]する方法の詳細を参照してください。
 
-管理されていないディスクのみ: Azure のストレージ アカウントは、潜在的な単一障害点であるためすることが重要で少なくとも 2 つの仮想マシンが配信されるには、少なくとも 2 つの Azure ストレージ アカウントを持っています。 理想的な設定としては、SAP ダイアログ インスタンスを実行する各仮想マシンのディスクを、異なるストレージ アカウントにデプロイします。
+非管理対象ディスクのみ: Azure ストレージ アカウントは潜在的な単一障害点であるため、少なくとも 2 つの仮想マシンが分散された Azure ストレージ アカウントを少なくとも 2 つ用意することが重要です。 理想的な設定としては、SAP ダイアログ インスタンスを実行する各仮想マシンのディスクを、異なるストレージ アカウントにデプロイします。
 
 ### <a name="f559c285-ee68-4eec-add1-f60fe7b978db"></a> 高可用性の SAP ASCS/SCS インスタンス
 図 5 は、高可用性の SAP ASCS/SCS インスタンスの例です。
@@ -398,9 +398,9 @@ Azure Resource Manager の 3 層テンプレートは、2 つのクラスター�
 この記事で説明しているサンプル シナリオの Azure Resource Manager テンプレートは、以下で入手できます。
 
 * [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image)  
-* [ディスクの管理を使用して azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
+* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md)  
 * [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image)
-* [ディスクの管理を使用してカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
+* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-md)
 
 Architectural Template 1 のインフラストラクチャを準備するには
 
@@ -423,7 +423,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
     * <*SAPSystemSID*>-nic-ascs-<*Number*>
     * <*SAPSystemSID*>-nic-db-<*Number*>
 
-  * **Azure ストレージ アカウント (管理されていないディスクのみ)**
+  * **Azure ストレージ アカウント (非管理対象ディスクのみ)**
 
   * 次のものの**可用性グループ**:
     * SAP アプリケーション サーバーの仮想マシン: <*SAPSystemSID*>-avset-di
@@ -491,9 +491,9 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 このデプロイ シナリオの Azure Resource Manager テンプレートは以下で入手できます。
 
 * [Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged)  
-* [ディスクの管理を使用して azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
+* [Managed Disks を使用した Azure Marketplace イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-converged-md)  
 * [カスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged)
-* [ディスクの管理を使用してカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
+* [Managed Disks を使用したカスタム イメージ](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-user-image-converged-md)
 
 
 ### <a name="prepare-the-infrastructure-for-architectural-template-3"></a>Architectural Template 3 のインフラストラクチャを準備する
@@ -513,7 +513,7 @@ _**図 11:** SAP 高可用性 Azure Resource Manager パラメーターを設定
 
 ASCS/SCS テンプレートは、複数の ASCS/SCS インスタンスをホストする Windows Server フェールオーバー クラスターの作成に使用できる 2 つの仮想マシンをデプロイします。
 
-ASCS/SCS マルチ SID テンプレートを設定する、 [ASCS/SCS マルチ SID テンプレート][ sap-templates-3-tier-multisid-xscs-marketplace-image]または[ASCS/SCS マルチ SID テンプレートのディスクの管理を使用して][sap-templates-3-tier-multisid-xscs-marketplace-image-md]、次のパラメーターの値を入力してください。
+ASCS/SCS マルチ SID テンプレートを設定するには、[ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image]または [Managed Disks を使用した ASCS/SCS マルチ SID テンプレート][sap-templates-3-tier-multisid-xscs-marketplace-image-md]で、次のパラメーターの値を入力します。
 
   - **Resource Prefix (リソース プレフィックス)**。  リソース プレフィックスを設定します。これは、デプロイ中に作成されるすべてのリソースのプレフィックスとして使われます。 リソースは 1 つの SAP システムのみに属するわけではないため、リソースのプレフィックスは 1 つの SAP システムの SID ではありません。  プレフィックスは、**3 ～ 6 文字**でなければなりません。
   - **Stack Type (スタックの種類)**。 SAP システムのスタックの種類を選びます。 スタックの種類に応じて、Azure Load Balancer には、SAP システムごとに 1 つ (ABAP または Java のみ) または 2 つ (ABAP+ Java) のプライベート IP アドレスがあります。
@@ -522,7 +522,7 @@ ASCS/SCS マルチ SID テンプレートを設定する、 [ASCS/SCS マルチ 
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
   -  **New Or Existing Subnet (新規または既存のサブネット)**。 新しい仮想ネットワークとサブネットを作成するか、既存のサブネットを使用するかを設定します。 オンプレミス ネットワークに接続している仮想ネットワークが既にある場合は、**[existing (既存)]** を選択します。
-  -  **Subnet Id (サブネット ID)**。 仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
+  -  **Subnet Id (サブネット ID)**。仮想マシンを接続するサブネットの ID を設定します。 仮想マシンをオンプレミス ネットワークに接続するには、仮想プライベート ネットワーク (VPN) または ExpressRoute 仮想ネットワークのサブネットを選択します。 ID は、通常、次のようになります。
 
    /subscriptions/<*サブスクリプション ID*>/resourceGroups/<*リソース グループ名*>/providers/Microsoft.Network/virtualNetworks/<*仮想ネットワーク名*>/subnets/<*サブネット名*>
 
@@ -550,9 +550,9 @@ ASCS/SCS マルチ SID テンプレートを設定する、 [ASCS/SCS マルチ 
 
 データベース テンプレートは、1 つの SAP システムのリレーショナル データベース管理システム (RDBMS) のインストールに使用できる 1 つまたは 2 つの仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-データベースのマルチ SID テンプレートを設定する、[データベース マルチ SID テンプレート][ sap-templates-3-tier-multisid-db-marketplace-image]または[ディスクの管理を使用してデータベースのマルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image-md]、次のパラメーターの値を入力してください。
+データベース マルチ SID テンプレートを設定するには、[データベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image]または [Managed Disks を使用したデータベース マルチ SID テンプレート][sap-templates-3-tier-multisid-db-marketplace-image-md]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。 インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
   -  **Dbtype (DB の種類)**。 クラスターにインストールするデータベースの種類を選びます。 Microsoft SQL Server をインストールする場合は、**[SQL]** を選択します。 仮想マシンに SAP HANA をインストールする予定の場合は、**[HANA]** を選択します。 正しいオペレーティング システムの種類 (SQL の場合は **Windows**、HANA の場合は Linux ディストリビューション) を選択してください。 仮想マシンに接続されている Azure Load Balancer は、選んだデータベースの種類をサポートするように構成されます。
     * **SQL**。 ロード バランサーは、ポート 1433 で負荷分散を行います。 SQL Server Always On セットアップにはこのポートを使ってください。
@@ -561,20 +561,20 @@ ASCS/SCS マルチ SID テンプレートを設定する、 [ASCS/SCS マルチ 
   -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数を設定します。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。 ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 #### <a name="application-servers-template"></a> アプリケーション サーバー テンプレート
 
 アプリケーション サーバー テンプレートは、1 つの SAP システムの SAP アプリケーション サーバー インスタンスとして使用できる 2 つ以上の仮想マシンをデプロイします。 たとえば、5 つの SAP システムに ASCS/SCS テンプレートをデプロイする場合は、このテンプレートを 5 回デプロイする必要があります。
 
-アプリケーション サーバー マルチ SID テンプレートを設定する、[アプリケーション サーバー マルチ SID テンプレート][ sap-templates-3-tier-multisid-apps-marketplace-image]または[ディスクの管理を使用するアプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image-md]、次のパラメーターの値を入力してください。
+アプリケーション サーバー マルチ SID テンプレートを設定するには、[アプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image]または [Managed Disks を使用したアプリケーション サーバー マルチ SID テンプレート][sap-templates-3-tier-multisid-apps-marketplace-image-md]で、次のパラメーターの値を入力します。
 
-  -  **Sap System Id (SAP システム ID)**。 インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
+  -  **Sap System Id (SAP システム ID)**。インストールする SAP システムの SAP システム ID を入力します。 ID は、デプロイされるリソースのプレフィックスとして使われます。
   -  **Os Type (OS の種類)**。 仮想マシンのオペレーティング システムを選びます。
   -  **Sap System Size (SAP システムのサイズ)**。 新しいシステムで提供する SAPS の数です。 システムで必要となる SAPS の数が不明な場合は、SAP のテクノロジ パートナーまたはシステム インテグレーターにお問い合わせください。
   -  **System Availability (システムの可用性)**。 **[HA]** を選択します。
   -  **Admin Username and Admin Password (管理ユーザー名と管理パスワード)**。 マシンへのサインインに使用できる新しいユーザーを作成します。
-  -  **Subnet Id (サブネット ID)**。 ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
+  -  **Subnet Id (サブネット ID)**。ASCS/SCS テンプレートのデプロイ時に使ったサブネットの ID または ASCS/SCS テンプレートのデプロイの一部として作成されたサブネットの ID を入力します。
 
 
 ### <a name="47d5300a-a830-41d4-83dd-1a0d1ffdbe6a"></a> Azure 仮想ネットワーク
@@ -1040,7 +1040,7 @@ SIOS DataKeeper をインストールするには
 
 #### <a name="d9c1fc8e-8710-4dff-bec2-1f535db7b006"></a> SIOS DataKeeper のセットアップ
 
-両方のノードに SIOS DataKeeper をインストールした後、構成を開始する必要があります。 構成の目的は、各仮想マシンにアタッチされている追加のディスク間の同期データのレプリケーションを開始します。
+両方のノードに SIOS DataKeeper をインストールした後、構成を開始する必要があります。 この構成の目的は、各仮想マシンに接続された追加ディスク間で同期データ レプリケーションを実現することです。
 
 1.  DataKeeper の管理および構成ツールを起動し、**[Connect to Server (サーバーに接続)]** を選択します  (図 46 の赤い丸で囲んだオプション)。
 
@@ -1117,7 +1117,7 @@ DBMS のセットアップは使用する DBMS システムによって異なる
 ### <a name="31c6bd4f-51df-4057-9fdf-3fcbc619c170"></a> 高可用性 ASCS/SCS インスタンスでの SAP のインストール
 
 > [!IMPORTANT]
-> DataKeeper でミラー化されたボリュームにページ ファイルを配置しないようにします。 DataKeeper はミラー化されたボリュームをサポートしていません。 ページ ファイルは、既定の場所である Azure Virtual Machines の一時ドライブ D のままにしておいてかまいません。 これがまだ存在しない、Azure 仮想マシンの d: ドライブに Windows ページファイルを移動します。
+> DataKeeper でミラー化されたボリュームにページ ファイルを配置しないようにします。 DataKeeper はミラー化されたボリュームをサポートしていません。 ページ ファイルは、既定の場所である Azure Virtual Machines の一時ドライブ D のままにしておいてかまいません。 まだそこにない場合は、Windows ページ ファイルを Azure 仮想マシンのドライブ D: に移動します。
 >
 >
 

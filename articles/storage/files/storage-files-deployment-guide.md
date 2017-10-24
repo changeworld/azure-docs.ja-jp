@@ -12,16 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 10/08/2017
 ms.author: wgries
+ms.openlocfilehash: a594f31c002556f9a5fddaa17fb19273065eed47
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 499d10943f606a67ca04bfdf5f7cad44f9e20d07
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-deploy-azure-files"></a>Azure Files のデプロイ方法
 [Azure Files](storage-files-introduction.md) はクラウドで、業界標準の SMB プロトコルを介してアクセスできる、完全に管理されたファイル共有を提供します。 この記事では、実際に組織内で Azure Files をデプロイする方法を示します。
 
@@ -37,7 +35,9 @@ ms.lasthandoff: 09/25/2017
 新しい Azure ファイル共有に、オンプレミスに保存されているファイル共有などの既存のファイル共有を移行したい場合があります。 このセクションでは、[計画ガイド](storage-files-planning.md#data-transfer-method)に記載されているいくつかの一般的な方法を使用して、Azure ファイル共有にデータを移行する方法を示します。
 
 ### <a name="azure-file-sync-preview"></a>Azure ファイル同期 (プレビュー)
-Azure ファイル同期 (プレビュー) は、この同期メカニズムを長期的に利用する必要がない場合でも、Azure ファイル共有にデータを移行するために使用されることがあります。 Azure ファイル同期を使用して Azure ファイル共有にデータを取り込む方法の詳細については、[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)と[Azure ファイル同期をデプロイする方法](storage-sync-files-deployment-guide.md)を参照してください。
+Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+
+Azure ファイル同期は、この同期メカニズムを長期的に利用する必要がない場合でも、Azure ファイル共有にデータを移行するために使用されることがあります。 Azure ファイル同期を使用して Azure ファイル共有にデータを転送する方法の詳細については、[Azure ファイル同期のデプロイの計画](storage-sync-files-planning.md)と[Azure ファイル同期をデプロイする方法](storage-sync-files-deployment-guide.md)を参照してください。
 
 ### <a name="azure-importexport"></a>Azure Import/Export
 Azure Import/Export サービスを使うと、ハード ディスク ドライブを Azure データ センターに送付することで、大量のデータを Azure ファイル共有に安全に転送できます。 サービスの概要について、詳しくは [Microsoft Azure Import/Export サービスを使用した Azure Storage へのデータの転送](../common/storage-import-export-service.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json)を参照してください。
@@ -58,7 +58,7 @@ Azure Import/Export サービスを使うと、ハード ディスク ドライ�
 
         ![ディスクの管理 MMC の [ディスクの初期化] メニューのスクリーン ショット](media/storage-files-deployment-guide/transferdata-importexport-1.PNG)
 
-    - ディスクにドライブ文字を割り当てるには、オンラインで初期化されているディスクの「未割り当て」の空き領域を右クリックし、[新しいシンプル ボリューム] をクリックします。 これにより、ドライブ文字を割り当てることができます。 ボリュームは後でフォーマットされるため、ここでフォーマットする必要はありません。
+    - ディスクにドライブ文字を割り当てるには、オンラインで初期化されているディスクの「未割り当て」の空き領域を右クリックし、新しいシンプル ボリュームをクリックします。 これにより、ドライブ文字を割り当てることができます。 ボリュームは後でフォーマットされるため、ここでフォーマットする必要はありません。
 
         ![ディスクの管理 MMC の新しいシンプル ボリューム ウィザードのスクリーン ショット](media/storage-files-deployment-guide/transferdata-importexport-2.png)
 

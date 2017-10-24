@@ -1,28 +1,27 @@
-﻿---
+---
 title: "障害と災害に対する Azure Service Bus アプリケーションの保護 | Microsoft Docs"
-description: "発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法について説明します。"
+description: "発生する可能性がある Service Bus の障害からアプリケーションを保護するために使用できる手法。"
 services: service-bus-messaging
 documentationcenter: na
 author: sethmanheim
 manager: timlt
-editor: tysonn
+editor: 
 ms.assetid: fd9fa8ab-f4c4-43f7-974f-c876df1614d4
 ms.service: service-bus-messaging
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/12/2017
+ms.date: 10/06/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 0c4554d6289fb0050998765485d965d1fbc6ab3e
-ms.openlocfilehash: bc84dbe5c26a834b2cff5f71ba5f541e94ba0b38
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/13/2017
-
-
+ms.openlocfilehash: 6dd9045d7aa8d4dc8b3a1acbe6f927e232d9b505
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Service Bus の障害および災害に対するアプリケーションの保護のベスト プラクティス
+
 ミッション クリティカルなアプリケーションは、予期しない障害や災害が発生した場合でも継続して稼働する必要があります。 このトピックでは、発生する可能性がある Service Bus の障害や災害からアプリケーションを保護するために使用できる手法について説明します。
 
 障害とは、Azure Service Bus が一時的に利用できなくなることです。 障害によって、メッセージング ストアなどの Service Bus の一部のコンポーネント、さらにはデータセンター全体に影響が及ぶ場合があります。 問題が解決されると、Service Bus は再び利用可能になります。 通常、障害によってメッセージなどのデータが失われることはありません。 コンポーネントのエラーの例としては、特定のメッセージング ストアが利用できなくなることが挙げられます。 データセンター全体の障害の例としては、データセンターの電源障害や、データセンターのネットワーク スイッチの障害などがあります。 障害は、数分間から数日間続く場合があります。
@@ -51,8 +50,6 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 リレー エンドポイントの geo レプリケーションにより、Service Bus 障害発生時にリレー エンドポイントを公開するサービスにアクセスできるようになります。 geo レプリケーションを実現するには、異なる名前空間内に 2 つのリレー エンドポイントを作成する必要があります。 これらの名前空間が異なるデータセンターに存在し、2 つのエンドポイントに異なる名前が付けられている必要があります。 たとえば、プライマリ エンドポイントは **contosoPrimary.servicebus.windows.net/myPrimaryService** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/mySecondaryService** を使用してアクセスできます。
 
 その後、サービスは、両方のエンドポイント上でリッスンし、クライアントはどちらかのエンドポイントを介してサービスを呼び出すことができます。 クライアント アプリケーションは、いずれかのリレー エンドポイントをプライマリ エンドポイントとしてランダムに選択して、アクティブなエンドポイントに要求を送信します。 操作が失敗してエラー コードが表示された場合、このエラーは、リレー エンドポイントを使用できないことを示します。 アプリケーションは、バックアップ エンドポイントへのチャネルを開き、要求を再び発行します。 この時点で、アクティブなエンドポイントとバックアップ エンドポイントの役割が切り替わります。クライアント アプリケーションは、前のアクティブなエンドポイントを新しいバックアップ エンドポイントと見なし、前のバックアップ エンドポイントを新しいアクティブなエンドポイントと見なします。 両方の送信操作が失敗した場合、2 つのエンティティの役割は変更されず、エラーが返されます。
-
-[Service Bus リレー メッセージを使用した geo レプリケーション][Geo-replication with Service Bus relayed Messages] のサンプルでは、リレーをレプリケートする方法を説明しています。
 
 ## <a name="protecting-queues-and-topics-against-datacenter-outages-or-disasters"></a>データセンターの障害や災害からキューおよびトピックを保護する
 ブローカー メッセージングを使用する際、データセンターの障害から復旧できるように、Service Bus では、*アクティブ レプリケーション*と*パッシブ レプリケーション*の 2 つの方法がサポートされています。 どちらの方法でも、データセンターの障害時に特定のキューまたはトピックにアクセスできる状態を維持する必要がある場合は、両方の名前空間にそのキューまたはトピックを作成します。 両方のエンティティに同じ名前を付けることができます。 たとえば、プライマリ キューは **contosoPrimary.servicebus.windows.net/myQueue** を使用してアクセスでき、セカンダリ側は **contosoSecondary.servicebus.windows.net/myQueue** を使用してアクセスできます。
@@ -94,10 +91,8 @@ ACS の障害から保護するには、Shared Access Signature (SAS) トーク�
 [Service Bus Authentication]: service-bus-authentication-and-authorization.md
 [Partitioned messaging entities]: service-bus-partitioning.md
 [Asynchronous messaging patterns and high availability]: service-bus-async-messaging.md#failure-of-service-bus-within-an-azure-datacenter
-[Geo-replication with Service Bus Relayed Messages]: http://code.msdn.microsoft.com/Geo-replication-with-16dbfecd
 [BrokeredMessage.MessageId]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_MessageId
 [BrokeredMessage.Label]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_Label
-[Geo-replication with Service Bus Brokered Messages]: http://code.msdn.microsoft.com/Geo-replication-with-f5688664
+[Geo-replication with Service Bus Brokered Messages]: https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/GeoReplication
 [Azure SQL Database Business Continuity]: ../sql-database/sql-database-business-continuity.md
 [Azure resiliency technical guidance]: /azure/architecture/resiliency
-

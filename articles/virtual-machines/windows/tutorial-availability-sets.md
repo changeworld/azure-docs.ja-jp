@@ -13,20 +13,18 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 05/08/2017
+ms.date: 10/05/2017
 ms.author: cynthn
 ms.custom: mvc
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 18d4994f303a11e9ce2d07bc1124aaedf570fc82
-ms.openlocfilehash: 022396a8bf0478414be179b9f7341a459ed2bc60
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/09/2017
-
+ms.openlocfilehash: 3657f222e1f52d341cd05532e29ed4924b308e6f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="how-to-use-availability-sets"></a>可用性セットの使用方法
 
-このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブ セットに限定され、ソリューションを使用している顧客から見れば、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。 
+このチュートリアルでは、可用性セットと呼ばれる機能を使用して、Azure で仮想マシン ソリューションの可用性と信頼性を向上させる方法を学習します。 可用性セットは、Azure にデプロイする VM を、複数の分離されたハードウェア クラスターに分散します。 これにより、Azure 内でハードウェアまたはソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、ソリューション全体は引き続き利用可能であり、運用可能であることが保証されます。 
 
 このチュートリアルで学習する内容は次のとおりです。
 
@@ -39,11 +37,11 @@ ms.lasthandoff: 05/09/2017
 
 ## <a name="availability-set-overview"></a>可用性セットの概要
 
-可用性セットは、Azure で使用できる論理グループ作成機能であり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 これにより、ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブ セットに限定され、アプリケーション全体が停止することはなく、顧客は引き続きアプリケーションを利用できることが保証されます。 可用性セットの使用は、信頼性の高いクラウド ソリューションを構築する際に活用する不可欠の機能です。
+可用性セットは、Azure で使用できる論理グループ作成機能であり、グループに配置された VM リソースは、Azure データ センター内にデプロイされるときに互いに分離されます。 Azure では、可用性セット内に配置された VM は、複数の物理サーバー、コンピューティング ラック、ストレージ ユニット、およびネットワーク スイッチ間で実行されます。 ハードウェアまたは Azure ソフトウェアの障害が発生した場合に影響を受けるのは VM のサブセットに限定され、アプリケーション全体が停止することはなく、顧客は引き続きアプリケーションを利用できます。 可用性セットは、信頼性の高いクラウド ソリューションを構築する際に不可欠な機能です。
 
-4 台のフロント エンド Web サーバーとデータベースをホストする 2 台のバック エンド VM を使用する一般的な VM ベースのソリューションについて考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット ("Web" 階層用に 1 つ、"データベース" 層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 これは、いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース サーバー VM の他のインスタンスは別のハードウェアで実行されているため、正常に稼働し続けることを意味します。
+4 台のフロント エンド Web サーバーとデータベースをホストする 2 台のバック エンド VM を使用する一般的な VM ベースのソリューションについて考えてみましょう。 Azure で VM をデプロイする前に、2 つの可用性セット (Web 層用に 1 つ、データベース層用に 1 つ) を定義します。 新しい VM を作成するときに、az vm create コマンドのパラメーターとして可用性セットを指定でき、可用性セット内に作成した VM は、Azure によって複数の物理的なハードウェア リソースに自動的に分離されます。 いずれかの Web サーバーまたはデータベース サーバー VM で問題が発生した場合でも、Web サーバーとデータベース VM の他のインスタンスは別のハードウェアで実行されているため、稼働し続けます。
 
-Azure 内で信頼性の高い VM ベースのソリューションをデプロイする場合は、常に可用性セットを使用する必要があります。
+Azure に信頼性の高い VM ベースのソリューションをデプロイする場合は、可用性セットを使用します。
 
 ## <a name="create-an-availability-set"></a>可用性セットの作成
 
@@ -51,32 +49,33 @@ Azure 内で信頼性の高い VM ベースのソリューションをデプロ�
 
 リソース グループを作成します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmResourceGroup -Name myResourceGroupAvailability -Location EastUS
 ```
 
+[New-AzureRmAvailabilitySet](/powershell/module/azurerm.compute/new-azurermavailabilityset) を使い、**-sku aligned** パラメーターを指定して、管理された可用性セットを作成します。
 
-```powershell
+```azurepowershell-interactive
 New-AzureRmAvailabilitySet `
    -Location EastUS `
    -Name myAvailabilitySet `
    -ResourceGroupName myResourceGroupAvailability `
-   -Managed `
+   -sku aligned `
    -PlatformFaultDomainCount 2 `
    -PlatformUpdateDomainCount 2
 ```
 
 ## <a name="create-vms-inside-an-availability-set"></a>可用性セット内の VM の作成
 
-VM は、ハードウェア全体で適切に分散させるために、可用性セット内で作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。 
+VM は、ハードウェア全体で適切に分散させるために、可用性セット内に作成する必要があります。 可用性セットを作成した後に、既存の VM を追加することはできません。 
 
 1 つの場所にあるハードウェアは、複数の更新ドメインと障害ドメインに分割されます。 **更新ドメイン**は、VM と、同時に再起動できる基になる物理ハードウェアのグループです。 同じ**障害ドメイン**内の VM は、共通の電源とネットワーク スイッチだけでなく、共通のストレージも共有します。 
 
-[New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使用して構成付きの VM を作成する場合には、パラメーター `-AvailabilitySetId` に可用性セットの ID を指定します。
+[New-AzureRMVMConfig](/powershell/module/azurerm.compute/new-azurermvmconfig) を使って VM 構成を作成する場合は、`-AvailabilitySetId` パラメーターで可用性セットの ID を指定します。
 
-今回は [New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使って、可用性セットに VM を 2 台作成します。
+[New-AzureRmVM](/powershell/module/azurerm.compute/new-azurermvm) を使って、可用性セットに 2 つの VM を作成します。
 
-```powershell
+```azurepowershell-interactive
 $availabilitySet = Get-AzureRmAvailabilitySet `
     -ResourceGroupName myResourceGroupAvailability `
     -Name myAvailabilitySet
@@ -134,11 +133,12 @@ for ($i=1; $i -le 2; $i++)
         -AvailabilitySetId $availabilitySet.Id
 
    $vm = Set-AzureRmVMOperatingSystem `
-        -VM $vm `
-        -Windows -ComputerName myVM$i `   
+        -ComputerName myVM$i `
         -Credential $cred `
-        -ProvisionVMAgent `
-        -EnableAutoUpdate
+        -VM $vm `
+        -Windows `
+        -EnableAutoUpdate `
+        -ProvisionVMAgent
    $vm = Set-AzureRmVMSourceImage `
         -VM $vm `
         -PublisherName MicrosoftWindowsServer `
@@ -160,13 +160,17 @@ for ($i=1; $i -le 2; $i++)
 
 ```
 
-VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 台の仮想マシンが分散して配置されます。 
+VM 2 台分の作成と構成が終わるまでには、数分かかります。 完了すると、基になるハードウェア全体に 2 つの仮想マシンが分散して配置されます。 
+
+[リソース グループ] > [myResourceGroupAvailability] > [myAvailabilitySet] に移動してポータルで可用性セットを参照すると、2 つの障害ドメインと更新ドメインの間で VM がどのように分散されているかがわかります。
+
+![ポータルの可用性セット](./media/tutorial-availability-sets/fd-ud.png)
 
 ## <a name="check-for-available-vm-sizes"></a>使用可能な VM のサイズのチェック 
 
 可用性セットには後で VM をさらに追加することができますが、そのハードウェアで使用可能な VM のサイズを把握しておく必要があります。 ハードウェア クラスターで可用性セットに使用可能なすべてのサイズを一覧表示するには、[Get-AzureRMVMSize](/powershell/module/azurerm.compute/get-azurermvmsize) を使用します。
 
-```powershell
+```azurepowershell-interactive
 Get-AzureRmVMSize `
    -AvailabilitySetName myAvailabilitySet `
    -ResourceGroupName myResourceGroupAvailability  
@@ -185,6 +189,5 @@ Get-AzureRmVMSize `
 
 > [!div class="nextstepaction"]
 > [VM スケール セットの作成](tutorial-create-vmss.md)
-
 
 

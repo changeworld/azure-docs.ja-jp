@@ -12,151 +12,65 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/26/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 4c2be7c35f678430d0ad83a3374ef25f68fd2509
-ms.openlocfilehash: 8951167213da6ab5341c1ca420353ec625ef5424
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.openlocfilehash: 21415af0d449d639d000e07afdb4de3680a64774
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="introduction-to-azure-security-center"></a>Azure Security Center 入門
 Azure Security Center の主な機能とそのしくみについて説明します。
 
-> [!NOTE]
-> 2017 年 6 月上旬以降、Security Center では、Microsoft Monitoring Agent を使用してデータの収集と格納を行います。 詳細については、「[Azure Security Center のプラットフォームの移行](security-center-platform-migration.md)」を参照してください。 この記事の情報は、Microsoft Monitoring Agent に移行した後の Security Center の機能を示しています。
->
->
+## <a name="what-is-azure-security-center"></a>Azure Security Center とは
+Azure Security Center は、Azure、オンプレミス、他のクラウドで実行されているワークロードの統合セキュリティ管理と高度な脅威保護を実現します。  ハイブリッド クラウド ワークロードの可視化と制御、脅威にさらされる機会を減らす積極的防御、急速に進化するサイバー攻撃への対応に役立つインテリジェント検出などの機能が提供されます。
 
-## <a name="what-is-azure-security-center"></a>Azure セキュリティ センターとは
- セキュリティ センターは、Azure リソースのセキュリティを高度に視覚化し、制御することで脅威を回避、検出し、それに対応することに役立ちます。 これにより、Azure サブスクリプション全体に統合セキュリティの監視とポリシーの管理を提供し、気付かない可能性がある脅威を検出し、セキュリティ ソリューションの広範なエコシステムと連動します。
+Security Center の [概要] では、Azure と Azure 以外のワークロードのセキュリティ対策を簡単に確認できるので、ワークロードのセキュリティを検出して評価したり、リスクを特定して軽減したりできます。
 
-## <a name="key-capabilities"></a>主な機能
- セキュリティ センターには、脅威の回避、検出、対応を容易かつ効果的に行える Azure 組み込みの機能が用意されています。 主な機能は次のとおりです。
+![概要](./media/security-center-intro/security-center-intro-fig1.png)
 
-| 段階 | 機能 |
-| --- | --- |
-| 回避 |Azure リソースのセキュリティの状態を監視します。 |
-| 回避 | 会社のセキュリティ要件、使用するアプリケーションの種類、データの機密度に基づいて、Azure サブスクリプションのポリシーを定義します。 |
-| 回避 | ポリシーに基づいたセキュリティに関する推奨事項を使用して、サービスの所有者が必要な制御を実装するプロセスをサポートします。 |
-| 回避 | Microsoft やパートナーからのセキュリティ サービスやアプライアンスを迅速にデプロイします。 |
-| 検出 |Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からセキュリティ データを自動的に収集して分析します。 |
-| 検出 | グローバルな脅威インテリジェンスを使用します。情報源としては、Microsoft の製品とサービス、Microsoft Digital Crimes Unit (DCU)、Microsoft Security Response Center (MSRC)、および外部フィードがあります。 |
-| 検出 | 機械学習や動作分析などの高度な分析を適用します。 |
-| 対応 |優先順位付きのセキュリティ インシデントやアラートを提供します。 |
-| 対応 | 攻撃元や影響を受けたリソースを分析します。 |
-| 対応 | 現在の攻撃を阻止し、将来の攻撃を防止する方法を示します。 |
+## <a name="why-use-security-center"></a>Security Center を使う意義
 
-## <a name="introductory-walkthrough"></a>入門チュートリアル
+**統一された可視性と制御**
 
-> [!NOTE]
-> このドキュメントでは、サンプルのデプロイを使用してサービスについて紹介します。 このドキュメントはステップ バイ ステップ ガイドではありません。
->
->
+- **ハイブリッド ワークロード全体のセキュリティ状態を把握**します。 すべてのハイブリッド クラウド ワークロード (オンプレミス、Azure、および他のクラウド プラットフォーム) のセキュリティを 1 つのコンソールで管理できます。 組み込みのダッシュボードにより、注意が必要なセキュリティの問題に関するインサイトが即座に得られます。
+- **クラウド ワークロードの可視性**。 急速に変化するクラウド ワークロードを正確に把握します。 Azure サブスクリプションで作成された新しいリソースを自動的に検出し、追加します。
+- **一元化されたポリシー管理**:  すべてのハイブリッド クラウド ワークロードのセキュリティ ポリシーを一元的に管理することで、会社や規制のセキュリティ要件に確実に準拠できます。
+- **さまざまなソースのセキュリティ データ**:  接続されたパートナー ソリューション (ネットワーク ファイアウォールなど) や他の Microsoft サービスなど、さまざまなソースからセキュリティ データを収集、検索、分析できます。 
+- **既存のセキュリティ ワークフローとの統合**:  REST API を使用して既存のツールやプロセスに接続することで、セキュリティ情報にアクセスし、情報を統合、分析できます。
+- **コンプライアンス レポート**:  セキュリティ データとインサイトを使用して、監査担当者に対してコンプライアンスを実証し、証拠を簡単に生成できます。
 
- Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 [ポータルにサインイン](https://portal.azure.com)します。 メイン ポータル メニューで、**[セキュリティ センター]** オプションまでスクロールするか、以前ポータルのダッシュボードにピン留めした **[セキュリティ センター]** タイルを選択します。
+**アダプティブ脅威に対する防護**
 
-![Security tile in Azure portal][1]
+- **継続的なセキュリティ評価**:  数百もの組み込みのセキュリティ評価を使用するか、独自のセキュリティ評価を作成して、マシン、ネットワーク、Azure サービスのセキュリティを監視できます。 攻撃に対して脆弱なソフトウェアと構成を特定できます。
+- **実行可能な推奨事項**:  優先順位が付けられた実行可能なセキュリティの推奨事項と組み込みの自動プレイブックにより、攻撃者が悪用する前にセキュリティの脆弱性を修復できます。
+- **アダプティブ アプリケーション制御**:  特定の Azure ワークロードに適応し、機械学習を活用したホワイトリスト登録の推奨事項を適用することで、マルウェアや他の望ましくないアプリケーションをブロックします。 
+- **ネットワーク アクセスのセキュリティ**:  Azure VM の管理ポートへの Just-In-Time で制御されたアクセスによってネットワーク攻撃対象領域を縮小することで、ブルート フォース攻撃などのネットワーク攻撃にさらされる機会を大幅に減らします。
 
-セキュリティ センターからセキュリティ ポリシーの設定、セキュリティ構成の監視、セキュリティ アラートの表示を行えます。
+**インテリジェントな脅威検出と対応**
 
-### <a name="security-policies"></a>セキュリティ ポリシー
-会社のセキュリティ要件に応じて、Azure サブスクリプションのポリシーを定義できます。 お使いのアプリケーションの種類や、各サブスクリプションのデータの機密度に合わせて定義することもできます。 たとえば、開発またはテストに使用されるリソースには、実稼働アプリケーションで使われるものと異なるセキュリティ要件が存在することがあります。 同様に、PII のような規制されたデータを持つアプリケーションには、より高いレベルのセキュリティが必要です。
-
-> [!NOTE]
-> セキュリティ ポリシーを変更するには、セキュリティ管理者であるか、サブスクリプションの所有者または共同作成者である必要があります。 Security Center のロールと許可されているアクションの詳細については、「[Azure Security Center におけるアクセス許可](security-center-permissions.md)」を参照してください。
->
->
-
-**[セキュリティ センター]** ブレードの **[ポリシー]** タイルを選ぶと、サブスクリプションとリソース グループの一覧が表示されます。   
-
-![[セキュリティ センター] ブレード][2]
-
-**[セキュリティ ポリシー]** ブレードで、どのサブスクリプションのポリシー詳細を表示するかを選びます。
-
-**[データの収集]** は、セキュリティ ポリシーについてのデータの収集を有効にします。 有効にすると、次のことが行われます。
-
-* サポートされているすべての仮想マシン (VM) を毎日スキャンします。この目的は、セキュリティの監視と推奨事項の提示です。
-* 分析と脅威の検出を目的として、セキュリティ イベントを収集します。
-
-> [!NOTE]
-> データ収集は、サブスクリプション レベルで構成されます。
->
->
-
-**[防止ポリシー]** を選択して、**[防止ポリシー]** ブレードを開きます。 **[推奨事項を表示]** では、サブスクリプション内のリソースのセキュリティ ニーズに基づいて、監視するセキュリティ制御と表示する推奨事項を選択できます。
-
-### <a name="security-recommendations"></a>セキュリティに関する推奨事項
- セキュリティ センターは Azure リソースのセキュリティの状態を分析して、潜在的なセキュリティ脆弱性を特定します。 推奨事項の一覧では、必要な制御を構成する手順を説明します。 たとえば、次のようになります。
-
-* 悪意のあるソフトウェアを識別して削除するためのマルウェア対策をプロビジョニングする
-* VM へのトラフィックを制御するためにネットワーク セキュリティ グループとルールを構成する
-* Web アプリケーションを対象とする攻撃から保護するための Web アプリケーション ファイアウォールをプロビジョニングする
-* 不足しているシステムの更新をデプロイする
-* 推奨基準と一致しない OS 構成に対処する
-
-**推奨事項** タイルをクリックして推奨事項の一覧を表示します。 各推奨事項をクリックすることで、追加の情報を表示したり、問題を解決するアクションを実行したりできます。
-
-![Security recommendations in Azure Security Center][5]
-
-### <a name="security-state-of-azure-resources"></a>Azure リソースのセキュリティの状態
-ダッシュボードの**[防止]** セクションには、リソースの種類 (VM、Web アプリケーション、その他のリソース) ごとに環境の全体的なセキュリティの状態が表示されます。   
-
-**[防止]** セクションでリソースの種類を選択すると、特定済みの潜在的なセキュリティ脆弱性の一覧など、詳しい情報が表示されます。 (次の例では **[コンピューティング]** が選択されています)。
-
-![Resources health tile][6]
-
-### <a name="security-alerts"></a>セキュリティのアラート
- セキュリティ センターは、Azure リソース、ネットワーク、パートナー ソリューション (マルウェア対策プログラム、ファイアウォールなど) からログ データを自動的に収集、分析、統合します。 脅威が検出されると、セキュリティの警告が作成されます。 例には次の検出が含まれます。
-
-* 既知の悪意のある IP アドレスと通信する、セキュリティ侵害された VM
-* Windows エラー報告を使用して検出された高度なマルウェア
-* VM に対するブルート フォース攻撃
-* 統合されたマルウェア対策プログラムとファイアウォールからのセキュリティのアラート
-
-**セキュリティ アラート** タイルをクリックすると、優先順位のついたアラートが一覧表示されます。
-
-![セキュリティのアラート][7]
-
-アラートを選択すると、攻撃や修復方法に関する提案について詳しく表示されます。
-
-![Security alert details][8]
-
-### <a name="partner-solutions"></a>パートナー ソリューション
-**[パートナー ソリューション]** タイルでは、Azure サブスクリプションと統合されたパートナー ソリューションのセキュリティ状態をひとめで監視できます。 セキュリティ センターには、ソリューションに由来する警告が表示されます。
-
-**[パートナー ソリューション]** タイルを選択します。 接続されているパートナー ソリューションの一覧を示すブレードが開きます。
-
-![パートナー ソリューション][9]
+- **業界で最も広範な脅威インテリジェンス**:  Microsoft サービスや世界中のシステムからの膨大な数の信号を使用して新しい脅威や進化する脅威を特定する、Microsoft インテリジェント セキュリティ グラフを活用できます。
+- **高度な脅威検出**:  組み込みの行動分析と機械学習を使用して、各種攻撃やゼロデイ攻撃を特定します。 ネットワーク、マシン、クラウド サービスに対する攻撃や侵害後のアクティビティを監視します。
+- **優先順位が付けられたアラートとインシデント**。 優先順位が付けられたセキュリティ アラートと、各種アラートを 1 つの攻撃キャンペーンにマップするセキュリティ インシデントにより、最も重大な脅威にまず重点を置きます。 独自のカスタム セキュリティ アラートも作成できます。
+- **調査の合理化**:  視覚的な対話型エクスペリエンスにより、攻撃の範囲と影響をすばやく評価できます。 定義済みのクエリやアドホック クエリを使用して、セキュリティ データをさらに詳しく調べことができます。 
+- **状況に応じた脅威インテリジェンス**:  対話型の世界地図上で攻撃元を視覚化します。 組み込みの脅威インテリジェンス レポートを使用することで、既知の悪意のあるアクターの手法と目的に関する貴重なインサイトが得られます。
 
 ## <a name="get-started"></a>作業開始
-セキュリティ センターを使用するには、Microsoft Azure のサブスクリプションが必要です。 セキュリティ センターは、Azure サブスクリプションがある場合に有効です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
+Security Center を使用するには、Microsoft Azure のサブスクリプションが必要です。 Security Center は、Azure サブスクリプションがある場合に有効です。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。 
 
- Security Center には [Azure ポータル](https://azure.microsoft.com/features/azure-portal/)からアクセスします。 詳細については、 [ポータルに関するドキュメント](https://azure.microsoft.com/documentation/services/azure-portal/) をご覧ください。
+[Azure Security Center の概要](https://docs.microsoft.com/azure/security-center/security-center-get-started) に関する記事では、Security Center のセキュリティ監視とポリシー管理のコンポーネントについて簡単に説明しています。 
 
-[Azure Security Center の概要](security-center-get-started.md) に関する記事では、Security Center のセキュリティ監視とポリシー管理のコンポーネントについて簡単に説明しています。
 
 ## <a name="next-steps"></a>次のステップ
-このドキュメントでは、セキュリティ センターの概略のほか、その主な機能と使用を開始する方法を紹介しました。 詳細については、次のリソースを参照してください。
+このドキュメントでは、Security Center の概略のほか、その主な機能と使用を開始する方法を紹介しました。 詳細については、次のリソースを参照してください。
 
-* [Azure Security Center でのセキュリティ ポリシーの設定](security-center-policies.md) -- Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明しています。
-* [Azure Security Center でのセキュリティに関する推奨事項の管理](security-center-recommendations.md) 」-- 推奨事項に従って Azure リソースを保護する方法について説明しています。
-* [Azure Security Center でのセキュリティ ヘルスの監視](security-center-monitoring.md) 」 -- Azure リソースの正常性を監視する方法について説明しています。
-* [Azure Security Center でのセキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) 」 -- セキュリティの警告の管理と対応の方法について説明しています。
-* [Azure Security Center を使用したパートナー ソリューションの監視](security-center-partner-solutions.md) 」 -- パートナー ソリューションの正常性状態を監視する方法について説明しています。
-- 「[Azure Security Center のデータ セキュリティ](security-center-data-security.md)」 - Security Center でデータがどのように管理および保護されているかを説明しています。
-* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
-* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+* [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) — 組織のセキュリティ要件とクラウド管理モデルに基づいて、Security Center の利用を最適化する方法について説明します。
+* [セキュリティ ポリシーの設定](https://docs.microsoft.com/azure/security-center/security-center-policies)  — Azure サブスクリプションとリソース グループのセキュリティ ポリシーの構成方法について説明します。
+* [セキュリティに関する推奨事項の管理](https://docs.microsoft.com/azure/security-center/security-center-recommendations) — 推奨事項に従って Azure および Azure 以外のリソースを保護する方法について説明します。
+* [セキュリティ正常性の監視](https://docs.microsoft.com/azure/security-center/security-center-monitoring) — Azure および Azure 以外のリソースの正常性を監視する方法について説明します。
+* [セキュリティの警告の管理と対応](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts) -- セキュリティの警告の管理と対応の方法について説明します。
+* [パートナー ソリューションの監視](https://docs.microsoft.com/azure/security-center/security-center-partner-solutions) -- パートナー ソリューションの正常性状態を監視する方法について説明します。
+* [Security Center のよくあるご質問 (FAQ)](https://docs.microsoft.com/azure/security-center/security-center-faq) — Security Center の使用に関してよく寄せられる質問が記載されています。
 
-<!--Image references-->
-[1]: ./media/security-center-intro/security-tile.png
-[2]: ./media/security-center-intro/security-center.png
-[3]: ./media/security-center-intro/security-policy.png
-[4]: ./media/security-center-intro/security-policy-blade.png
-[5]: ./media/security-center-intro/recommendations.png
-[6]: ./media/security-center-intro/resources-health.png
-[7]: ./media/security-center-intro/security-alert.png
-[8]: ./media/security-center-intro/security-alert-detail.png
-[9]: ./media/security-center-intro/partner-solutions.png
 

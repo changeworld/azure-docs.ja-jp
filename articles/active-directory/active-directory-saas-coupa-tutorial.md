@@ -14,10 +14,10 @@ ms.workload: identity
 ms.date: 02/10/2017
 ms.author: jeedes
 ms.openlocfilehash: c952975919cfd948f1b9ea93ff2ac2641a53f923
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-coupa"></a>チュートリアル: Azure Active Directory と Coupa の統合
 このチュートリアルでは、Azure と Coupa の統合について説明します。  
@@ -142,7 +142,7 @@ Azure AD ユーザーが Coupa にログインできるようにするには、�
 **ユーザーを Coupa に割り当てるには、次の手順を実行します。**
 
 1. Azure クラシック ポータルで、テスト アカウントを作成します。
-2. * * Coupa * * アプリケーション統合ページで、をクリックして**ユーザーの割り当て**です。
+2. ** Coupa ** アプリケーション統合ページで、**[ユーザーの割り当て]** をクリックします。
    
    ![ユーザーの割り当て](./media/active-directory-saas-coupa-tutorial/IC791911.png "Assign Users")
 3. テスト ユーザーを選択して、**[割り当て]** をクリックし、**[はい]** をクリックして割り当てを確定します。

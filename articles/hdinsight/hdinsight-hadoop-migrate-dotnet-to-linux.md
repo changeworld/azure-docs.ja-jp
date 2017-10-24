@@ -14,14 +14,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: df931d0f76498506cfc946501e4d385d0dfead80
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: b6c65c53d96f4adb8719c27ed270e973b5a7ff23
-ms.openlocfilehash: 6ad188fb752474ff5c7d8a3fb9d609eefe8c7a9a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/17/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-net-solutions-for-windows-based-hdinsight-to-linux-based-hdinsight"></a>Windows ベースの HDInsight から Linux ベースの HDInsight への .NET ソリューションの移行
 
@@ -31,7 +30,7 @@ Linux ベースの HDInsight クラスターは、[Mono (https://mono-project.co
 
 Mono バージョン 4.2.1 は HDInsight バージョン 3.5 に付属しています。 HDInsight に付属する Mono のバージョンの詳細については、「[HDInsight コンポーネントのバージョン管理](hdinsight-component-versioning.md)」を参照してください。 特定のバージョンの Mono をインストールするには、[Mono のインストールと更新](hdinsight-hadoop-install-mono.md)に関するドキュメントを参照してください。
 
-Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) を参照してください。
+Mono と .NET 間の互換性の詳細については、[Mono の互換性に関するドキュメント (http://www.mono-project.com/docs/about-mono/compatibility/)](http://www.mono-project.com/docs/about-mono/compatibility/) をご覧ください。
 
 > [!IMPORTANT]
 > SCP.NET フレームワークは Mono と互換性があります。 詳細については、「[Visual Studio を使用して HDInsight で Apache Storm の C# トポロジを開発する](hdinsight-storm-develop-csharp-visual-studio-topology.md)」をご覧ください。
@@ -55,7 +54,7 @@ Mono と .NET 間の互換性の詳細については、[Mono の互換性に関
     ![移植性アナライザーの結果ダイアログ](./media/hdinsight-hadoop-migrate-dotnet-to-linux/portability-analyzer-results.png)
 
 > [!IMPORTANT]
-> アナライザーはソリューションのすべての問題に対応できません。 たとえば、`c:\temp\file.txt` というファイル パスは有効とみなされますが、これは、Mono が Windows 上で動作し、そのコンテキストでパスが有効であるためです。 ただし、このパスは Linux プラットフォームでは無効です。
+> アナライザーはソリューションのすべての問題に対応できません。 たとえば、Mono が Windows 上で実行されている場合、`c:\temp\file.txt` というファイル パスは有効と見なされます。 このパスは Linux プラットフォームでは無効です。
 
 ## <a name="manual-portability-analysis"></a>手動の移植性分析
 
@@ -77,6 +76,6 @@ Visual Studio を引き続き使用して、HDInsight 用の .NET ソリュー�
 
 * [HDInsight の MapReduce での C# の使用](hdinsight-hadoop-dotnet-csharp-mapreduce-streaming.md)
 
-* [Hive と Pig ストリーミングでの C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
+* [Hive と Pig での C# ユーザー定義関数の使用](hdinsight-hadoop-hive-pig-udf-dotnet-csharp.md)
 
 * [HDInsight での Storm の C# トポロジの開発](hdinsight-storm-develop-csharp-visual-studio-topology.md)

@@ -5,21 +5,19 @@ services: iot-dps
 keywords: 
 author: nberdy
 ms.author: nberdy
-ms.date: 09/05/2017
+ms.date: 10/03/2017
 ms.topic: article
 ms.service: iot-dps
 documentationcenter: 
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
+ms.openlocfilehash: 96c63e5d0379150ea619dbbe912a21e373f808af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 266b9b7eb228744075627e1e80710e63c27880cc
-ms.openlocfilehash: 1a37f0753ab576aba9154e148b026b70877176f2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/06/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="iot-hub-device-provisioning-service-concepts"></a>Azure IoT Hub Device Provisioning サービスの概念
 
 Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サービスです。このサービスは、指定された IoT Hub にプロビジョニングするゼロタッチ デバイスの構成に使用されます。 デバイス プロビジョニング サービスを利用すると、セキュリティで保護されたスケーラブルな方法でいくつものデバイスをプロビジョニングできます。
@@ -53,14 +51,14 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 
 ### <a name="enrollment-group"></a>加入グループ
 
-加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 加入グループ内のすべてのデバイスでは、同じルート CA によって署名された X.509 証明書を提示します。 加入グループでは、X.509 構成証明メカニズムのみを使用できます。
+加入グループは、特定の構成証明メカニズムを共有するデバイスのグループです。 加入グループ内のすべてのデバイスでは、同じルート CA によって署名された X.509 証明書を提示します。 加入グループでは、X.509 構成証明メカニズムのみを使用できます。 加入グループ名と証明書の名前は、英数字の小文字でなければならず、ハイフンを含めることができます。
 
 > [!TIP]
 > 必要な初期構成を共有するデバイスが多数ある場合や、デバイスがすべて同じテナントに属する予定の場合は、加入グループを使用することをお勧めします。
 
 ### <a name="individual-enrollment"></a>個別加入
 
-個別加入は、登録する単一のデバイスのエントリです。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 個別加入では、必要な IoT Hub のデバイス ID が指定されている場合があります。
+個別加入は、登録する単一のデバイスのエントリです。 個別加入では、構成証明メカニズムとして X.509 証明書または (実際の TPM または仮想 TPM の) SAS トークンを使用できます。 個別加入の登録 ID には、英数字、小文字と、必要に応じてハイフンを含めます。 個別登録では、必要な IoT ハブ デバイス ID が指定されている場合があります。
 
 > [!TIP]
 > 固有の初期構成を必要とするデバイスや、TPM または仮想 TPM を介した SAS トークンのみを構成証明メカニズムとして使用できるデバイスには、個別加入を使用することをお勧めします。
@@ -72,4 +70,3 @@ Azure IoT Hub Device Provisioning サービスは IoT Hub のヘルパー サー
 ## <a name="operations"></a>操作
 
 操作は、デバイス プロビジョニング サービスの課金単位です。 1 つの操作は、サービスに対する 1 つの手順の正常な完了です。 操作には、デバイスの登録や再登録などがあります。加入契約リスト エントリの追加や更新といったサービス側の変更も操作に入ります。
-

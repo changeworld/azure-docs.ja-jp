@@ -3,7 +3,7 @@ title: "Amazon Web Services への VM のデプロイの自動化 | Microsoft Do
 description: "この記事は、Azure Automation を使用して、Amazon Web Service VM の作成を自動化する方法を示します"
 services: automation
 documentationcenter: 
-author: mgoedtel
+author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 1d85c01a-d795-4523-8194-84fc15b53838
@@ -12,27 +12,26 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/14/2017
+ms.date: 09/29/2017
 ms.author: tiandert; bwren
-translationtype: Human Translation
-ms.sourcegitcommit: e851a3e1b0598345dc8bfdd4341eb1dfb9f6fb5d
-ms.openlocfilehash: e0b784006b4933fe986890c09afa965934511784
-ms.lasthandoff: 04/15/2017
-
-
+ms.openlocfilehash: 828f9e2cc9a39e54933cd0e0db7273efa460d0c7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-automation-scenario---provision-an-aws-virtual-machine"></a>Azure Automation シナリオ - AWS 仮想マシンのプロビジョニング
 この記事では、Azure Automation を利用して仮想マシンを Amazon Web Service (AWS) サブスクリプションにプロビジョニングし、その VM に特別な名前を付ける方法 (AWS では "タグ付け" と呼びます) について説明します。
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、Azure Automation アカウントと AWS サブスクリプションが必要です。 Azure Automation アカウントの設定と、AWS サブスクリプションの資格情報による構成については、「[アマゾン ウェブ サービスによる Runbook の認証](automation-configure-aws-account.md)」を参照してください。  先に進む前に、このアカウントを作成するか、AWS サブスクリプションの資格情報で更新してください。このアカウントは以降の手順で参照します。
+この記事では、Azure Automation アカウントと AWS サブスクリプションが必要です。 Azure Automation アカウントの設定と、AWS サブスクリプションの資格情報による構成については、「[アマゾン ウェブ サービスによる Runbook の認証](automation-config-aws-account.md)」を参照してください。  先に進む前に、このアカウントを作成するか、AWS サブスクリプションの資格情報で更新してください。このアカウントは以降の手順で参照します。
 
 ## <a name="deploy-amazon-web-services-powershell-module"></a>Amazon Web Services PowerShell モジュールをデプロイする
 VM プロビジョニング Runbook は、AWS PowerShell モジュールを利用して処理を実行します。 次の手順を実行して、AWS サブスクリプションの資格情報で構成した Automation アカウントにモジュールを追加してください。  
 
 1. Web ブラウザーを開き、[PowerShell ギャラリー](http://www.powershellgallery.com/packages/AWSPowerShell/)に移動し、**[Deploy to Azure Automation (Azure Automation にデプロイする)]** ボタンをクリックします。<br><br> ![AWS PS モジュールのインポート](./media/automation-scenario-aws-deployment/powershell-gallery-download-awsmodule.png)
-2. Azure ログイン ページが表示され、認証が終わると Azure Portal に移動し、次のブレードが表示されます。<br><br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
-3. **[リソース グループ]** ボックスの一覧からリソース グループを選択し、[パラメーター] ブレードで次の情報を指定します。
+2. Azure ログイン ページが表示され、認証が終わると Azure Portal に移動し、次のページが表示されます。<br><br> ![[モジュールのインポート] ページ](./media/automation-scenario-aws-deployment/deploy-aws-powershell-module-parameters.png)
+3. **[リソース グループ]** ボックスの一覧からリソース グループを選択し、[パラメーター] ウィンドウで次の情報を指定します。
    
    * **[New or Existing Automation Account (string) (新規または既存の Automation アカウント (文字列))]** ボックスの一覧から **[既存]** を選択します。  
    * **[Automation アカウント名 (文字列)]** ボックスに、AWS サブスクリプションの資格情報を含む Automation アカウントの名前を正確に入力します。  たとえば、 **AWSAutomation**という名前の専用アカウントを作成した場合、このボックスにはその名前を入力します。
@@ -44,9 +43,9 @@ VM プロビジョニング Runbook は、AWS PowerShell モジュールを利�
    > <br>
    > 
    > 
-5. Azure ポータルで、手順 3 で参照した Automation アカウントを開きます。
-6. **[資産]** タイルをクリックし、**[資産]** ブレードで **[モジュール]** タイルを選択します。
-7. **[モジュール]** ブレードで、一覧に **AWSPowerShell** モジュールが表示されます。
+5. Azure Portal で、手順 3. で参照した Automation アカウントを開きます。
+6. **[資産]** タイルをクリックし、**[資産]** ウィンドウで **[モジュール]** タイルを選択します。
+7. **[モジュール]** ページで、一覧に **AWSPowerShell** モジュールが表示されます。
 
 ## <a name="create-aws-deploy-vm-runbook"></a>AWS デプロイ VM Runbook を作成する
 AWS PowerShell モジュールのデプロイが終わったら、PowerShell スクリプトを使用して AWS への仮想マシンのプロビジョニングを自動化する Runbook を作成できます。 次の手順は、Azure Automation でネイティブ PowerShell スクリプトを利用する方法を示しています。  
@@ -60,11 +59,11 @@ AWS PowerShell モジュールのデプロイが終わったら、PowerShell ス
    Save-Script -Name New-AwsVM -Path <path>
    ```
    <br>
-2. Azure Portal で Automation アカウントを開き、**[Runbook]** タイルをクリックします。  
-3. **[Runbook]** ブレードで、**[Runbook の追加]** を選択します。
-4. **[Runbook の追加]** ブレードで、**[簡易作成]** を選択します (新しい Runbook を作成します)。
-5. **Runbook** のプロパティ ブレードで、[名前] ボックスに Runbook の名前を入力し、**[Runbook の種類]** ボックスの一覧から **[PowerShell]** を選択した後、**[作成]** をクリックします。<br><br> ![[モジュールのインポート] ブレード](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
-6. [PowerShell Runbook の編集] ブレードが表示されたら、PowerShell スクリプトをコピーして Runbook 作成キャンバスに貼り付けます。<br><br> ![Runbook PowerShell スクリプト](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
+2. Azure Portal から Automation アカウントを開き、左側にある **[プロセス オートメーション]** セクションの **[Runbook]** を選択します。  
+3. **[Runbook]** ページで、**[Runbook の追加]** を選択します。
+4. **[Runbook の追加]** ウィンドウで、**[簡易作成]** を選択します (新しい Runbook を作成します)。
+5. **Runbook** のプロパティ ウィンドウで、[名前] ボックスに Runbook の名前を入力し、**[Runbook の種類]** ボックスの一覧から **[PowerShell]** を選択した後、**[作成]** をクリックします。<br><br> ![Runbook の作成ウィンドウ](./media/automation-scenario-aws-deployment/runbook-quickcreate-properties.png)
+6. [PowerShell Runbook の編集] ページが表示されたら、PowerShell スクリプトをコピーして Runbook 作成キャンバスに貼り付けます。<br><br> ![Runbook PowerShell スクリプト](./media/automation-scenario-aws-deployment/runbook-powershell-script.png)<br>
    
     > [!NOTE]
     > このサンプル PowerShell スクリプトを使用するときは、次の点に注意してください。
@@ -103,10 +102,10 @@ Runbook のテストに進む前に、確認する必要がある事柄がいく
 * 新しい Runbook を作成し、パラメーターの値を確認して適宜更新したこと。  
 * Runbook 設定の **[ログ記録とトレース]** で **[詳細レコードの記録]** と (必要に応じて) **[進行状況レコードの記録]** を **[オン]** に設定したこと。<br><br> ![Runbook のログ記録とトレース](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png)  
 
-1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ブレードが開いたら **[OK]** をクリックします。
-2. [Runbook の開始] ブレードで、**[VMname]** を指定します。  スクリプトに事前構成してある他のパラメーターの既定値をそのまま使用します。  **[OK]** をクリックして Runbook ジョブを開始します。<br><br> ![New-AwsVM runbook の開始](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+1. Runbook を開始するために **[開始]** をクリックし、[Runbook の開始] ウィンドウが開いたら **[OK]** をクリックします。
+2. [Runbook の開始] ウィンドウで、**[VMname]** を指定します。  スクリプトに事前構成してある他のパラメーターの既定値をそのまま使用します。  **[OK]** をクリックして Runbook ジョブを開始します。<br><br> ![New-AwsVM runbook の開始](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
 3. 作成した Runbook ジョブのジョブ ウィンドウが開かれます。 このウィンドウを閉じます。
-4. Runbook ジョブ ブレードで **[すべてのログ]** タイルを選択することで、ジョブの進行状況と出力**ストリーム**を確認できます。<br><br> ![Stream output](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
+4. Runbook ジョブ ページで **[すべてのログ]** タイルを選択することで、ジョブの進行状況と出力**ストリーム**を確認できます。<br><br> ![Stream output](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
 5. VM がプロビジョニングされたことを確認するために AWS Management Console にログインします (まだログインしていない場合)。<br><br> ![AWS console deployed VM](./media/automation-scenario-aws-deployment/aws-instances-status.png)
 
 ## <a name="next-steps"></a>次のステップ
@@ -114,5 +113,4 @@ Runbook のテストに進む前に、確認する必要がある事柄がいく
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * PowerShell スクリプトのサポート機能の詳細については、「 [Native PowerShell Script Support in Azure Automation](https://azure.microsoft.com/blog/announcing-powershell-script-support-azure-automation-2/)
-
 

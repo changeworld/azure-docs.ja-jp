@@ -5,8 +5,8 @@
 
 # 作業開始
 ## [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)
-## [ロジック アプリのテンプレート](logic-apps-use-logic-app-templates.md)
-## [テンプレートからのロジック アプリの作成](logic-apps-arm-provision.md)
+## [テンプレートからのロジック アプリの作成](logic-apps-create-logic-apps-from-templates.md)
+## [Resource Manager テンプレートからのロジック アプリの作成](logic-apps-create-deploy-azure-resource-manager-templates.md)
 ## [Logic Apps への MABS アプリの移行](logic-apps-move-from-mabs.md)
 
 # 方法

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: cherylmc
 ms.openlocfilehash: 7ec57789ee76f4ec54e4f7b68ea75c19522f3d7c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する
 
@@ -55,24 +55,24 @@ ms.lasthandoff: 07/11/2017
 2. **[すべてのリソース]** をクリックして、リソースの一覧から **[仮想ネットワーク ゲートウェイ]** を見つけます。
 3. **[仮想ネットワーク ゲートウェイ]**のブレードで、**[接続]** をクリックします。
    
-    ![[接続] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "Connections blade")<br>
+    ![接続ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/connectionsblade.png "接続ブレード")<br>
 4. **[接続]** ブレードで、**[追加]** をクリックします。
    
-    ![接続の追加ボタン](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "Add connection button")<br>
+    ![接続の追加ボタン](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addbutton.png "接続の追加ボタン")<br>
 5. **[接続追加]** ブレードで、次のフィールドを入力します。
    
    * **[名前]:** 作成している接続先のサイトに付ける名前です。
    * **[接続の種類]:** **[サイト間 (IPsec)]** を選択します。
      
-     ![[接続の追加] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "Add connection blade")<br>
+     ![[接続追加] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/addconnectionblade.png "[接続追加] ブレード")<br>
 
 ## <a name="part2"></a>パート 2 - ローカル ネットワーク ゲートウェイの追加
 1. **[ローカル ネットワーク ゲートウェイ]**、***[ローカル ネットワーク ゲートウェイを選択する]*** をクリックします。 **[ローカル ネットワーク ゲートウェイの選択]** ブレードが開きます。
    
-    ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "Choose local network gateway")<br>
+    ![ローカル ネットワーク ゲートウェイの選択](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/chooselng.png "ローカル ネットワーク ゲートウェイの選択")<br>
 2. **[新規作成]** をクリックして **[ローカル ネットワーク ゲートウェイの作成]** ブレードを開きます。
    
-    ![[ローカル ネットワーク ゲートウェイの作成] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "Create local network gateway")<br>
+    ![[ローカル ネットワーク ゲートウェイの作成] ブレード](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/createlngblade.png "ローカル ネットワーク ゲートウェイの作成")<br>
 3. **[ローカル ネットワーク ゲートウェイの作成]** ブレードで、次のフィールドを入力します。
    
    * **[名前]:** ローカル ネットワーク ゲートウェイ リソースに付ける名前です。
@@ -83,7 +83,7 @@ ms.lasthandoff: 07/11/2017
 ## <a name="part3"></a>パート 3 - 共有キーを追加して接続を作成する
 1. **[接続の追加]** ブレードで、接続の作成に使用する共有キーを追加します。 VPN デバイスから共有キーを取得するか、新しく作成して同じ共有キーを使用するよう VPN デバイスを構成します。 キーが完全に同一であることが重要です。
    
-    ![共有キー](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "Shared key")<br>
+    ![共有キー](./media/vpn-gateway-howto-multi-site-to-site-resource-manager-portal/sharedkey.png "共有キー")<br>
 2. ブレード下部の **[OK]** をクリックすると、接続が作成されます。
 
 ## <a name="part4"></a>パート 4: VPN 接続の確認

@@ -15,14 +15,12 @@ ms.topic: article
 ms.date: 05/25/2017
 ms.author: jgao
 ROBOTS: NOINDEX
+ms.openlocfilehash: e678d5d332b7fbbfeeebbea86efd7931bda15bb1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 711d364c36c3aba699326f4a76d42891ba3219fb
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyze-twitter-data-using-hive-in-hdinsight"></a>HDInsight での Hive を使用した Twitter データの分析
 ビッグ データの多くはソーシャル Website からもたらされます。 Twitter などのサイトが公開している API を介して収集したデータは、現在の動向を分析して把握するための有益な情報源となります。
 このチュートリアルでは、Twitter streaming API を使用して複数のツイートを取得します。さらに、Azure HDInsight の Apache Hive を使用して、特定の単語を含むツイートを多く送信した Twitter ユーザーの一覧を取得します。
@@ -89,13 +87,13 @@ OAuth を使用するための最初の手順は、Twitter 開発者サイトで
    |  Description |MyHDInsightApp |
    |  Web サイト |http://www.myhdinsightapp.com |
 4. **[Yes, I agree]** をオンにして、**[Create your Twitter application]** をクリックします。
-5. **[Permissions]** タブをクリックします。 既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
+5. **[Permissions]** タブをクリックします。既定のアクセス許可は **読み取り専用**です。 このチュートリアルにはこれで十分です。
 6. **[Keys and Access Tokens]** タブをクリックします。
 7. **[Create my access token]**をクリックします。
 8. ページの右上隅にある **[Test OAuth]** をクリックします。
 9. **コンシューマー キー**、**コンシューマー シークレット**、**アクセス トークン**、**アクセス トークン シークレット**を書き留めます。 これらの値は後で必要になります。
 
-このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。 .NET の c# サンプルについては、「[HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hdinsight-hbase-twitter-sentiment]」を参照してください。 Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。 Curl は[こちら][curl-download]からダウンロードできます。
+このチュートリアルでは、Windows PowerShell を使用して Web サービスを呼び出します。 Web サービスを呼び出すその他の一般的なツールは [*Curl*][curl] です。 Curl は[こちら][curl-download]からダウンロードできます。
 
 > [!NOTE]
 > Windows で curl コマンドを使用する場合、オプション値には一重引用符の代わりに二重引用符を使用します。
@@ -545,7 +543,6 @@ Write-Host "==================================" -ForegroundColor Green
 このチュートリアルでは、Azure 上で HDInsight を使用し、Twitter から収集したデータを照会、探索、分析するため、構造化されていない JSON データセットを構造化された Hive テーブルへ変換する方法を学習しました。 詳細については、次を参照してください。
 
 * [HDInsight の概要][hdinsight-get-started]
-* [HDInsight 環境の HBase で Twitter のセンチメントをリアルタイム分析する][hdinsight-hbase-twitter-sentiment]
 * [HDInsight を使用したフライト遅延データの分析][hdinsight-analyze-flight-delay-data]
 * [Power Query を使用した Excel から HDInsight への接続][hdinsight-power-query]
 * [Microsoft Hive ODBC ドライバーを使用した Excel から HDInsight への接続][hdinsight-hive-odbc]
@@ -571,5 +568,3 @@ Write-Host "==================================" -ForegroundColor Green
 [hdinsight-use-sqoop]: hdinsight-use-sqoop.md
 [hdinsight-power-query]: hdinsight-connect-excel-power-query.md
 [hdinsight-hive-odbc]: hdinsight-connect-excel-hive-odbc-driver.md
-[hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
-

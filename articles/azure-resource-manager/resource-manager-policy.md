@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/02/2017
+ms.date: 10/09/2017
 ms.author: tomfitz
+ms.openlocfilehash: cfdbf35b76b6a7f3cddb2deb35dfc475e0fc600f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8b857b4a629618d84f66da28d46f79c2b74171df
-ms.openlocfilehash: 0ee2624f45a1de0c23cae4538a38ae3e302eedd3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/04/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="resource-policy-overview"></a>リソース ポリシーの概要
 リソース ポリシーを使用すると、組織内のリソースの規則を確立することができます。 規則を定義することによって、コストを制御し、リソースをより簡単に管理することができます。 たとえば、特定の種類の仮想マシンのみを許可するように指定することができます。 また、すべてのリソースに特定のタグが指定されていることを必須にすることができます。 ポリシーは、すべての子リソースが継承します。 したがって、リソース グループに適用されたポリシーは、そのリソース グループのすべてのリソースに適用されます。
@@ -32,11 +31,6 @@ ms.lasthandoff: 08/04/2017
 このトピックでは、ポリシー定義を中心に説明します。 ポリシー割り当ての詳細については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) または「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(リソース ポリシーの割り当てと管理) を参照してください。
 
 リソースの作成と更新 (PUT 操作と PATCH 操作) を行うときに、ポリシーが評価されます。
-
-> [!NOTE]
-> 現時点では、タグ、種類、場所をサポートしていない、Microsoft.Resources/deployments のようなリソースの種類は、ポリシーによる評価の対象となりません。 このサポートは、今後追加される予定です。 下位互換性の問題を回避するためには、ポリシーの作成時に種類を明示的に指定する必要があります。 たとえば、種類が指定されていないタグ ポリシーは、すべての種類に適用されます。 そのような場合、タグをサポートしていない入れ子になったリソースがあり、デプロイ リソースの種類がポリシーの評価に追加されていると、テンプレートのデプロイに失敗する可能性があります。 
-> 
-> 
 
 ## <a name="how-is-it-different-from-rbac"></a>RBAC との違いは何か。
 ポリシーとロールベースのアクセス制御 (RBAC) には、いくつかの主要な違いがあります。 RBAC は、さまざまなスコープでの**ユーザー**の操作に焦点を当てています。 たとえば、目的のスコープでリソース グループの共同作成者ロールに追加されると、そのリソース グループに変更を加えられるようになります。 ポリシーは、デプロイ中の**リソース** プロパティに焦点を当てます。 たとえば、ポリシーを使用して、プロビジョニングできるリソースの種類を制御できます。 また、リソースをプロビジョニングできる場所を制限できます。 RBAC とは異なり、ポリシーは既定で許可し、明示的に否認するシステムです。 
@@ -67,6 +61,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 ## <a name="policy-definition-structure"></a>ポリシー定義の構造
 ポリシー定義を作成するには、JSON を使用します。 ポリシー定義には、以下のものに対する要素が含まれています。
 
+* モード
 * パラメーター
 * 表示名
 * 説明
@@ -79,6 +74,7 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 ```json
 {
   "properties": {
+    "mode": "all",
     "parameters": {
       "allowedLocations": {
         "type": "array",
@@ -106,7 +102,13 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 }
 ```
 
-## <a name="parameters"></a>パラメーター
+## <a name="mode"></a>Mode
+
+`mode` は `all` に設定することをお勧めします。 これを **all** に設定すると、リソース グループとすべてのリソース タイプがそのポリシーの評価対象になります。 ポータルでは、すべてのポリシーについて **all** が使用されます。 PowerShell または Azure CLI を使用する場合、`mode` パラメーターを指定して **all** に設定する必要があります。
+ 
+以前は、tags と location をサポートするリソース タイプについてのみポリシーが評価されていました。 この動作は、`indexed` モードで引き続き利用できます。 **all** モードを使用した場合は、tags と location をサポートしていないリソース タイプについてもポリシーが評価されます。 新しく追加されたタイプの例として、[仮想ネットワーク サブネット](https://github.com/Azure/azure-policy-samples/tree/master/samples/Network/enforce-nsg-on-subnet)があります。 また、mode が **all** に設定されている場合は、リソース グループも評価されます。 たとえば、[リソース グループに対して tags を適用](https://github.com/Azure/azure-policy-samples/tree/master/samples/ResourceGroup/enforce-resourceGroup-tags)することができます。 
+
+## <a name="parameters"></a>parameters
 パラメーターを使用すると、ポリシー定義の数を減らすことで、ポリシーの管理を単純化できます。 リソース プロパティに対してポリシーを定義し (リソースをデプロイできる場所を制限するなど)、定義にパラメーターを含めます。 その後、そのポリシー定義を別のシナリオで再利用する場合は、ポリシーを割り当てるときに別の値を渡します (サブスクリプションに対する 1 組の場所を指定するなど)。
 
 パラメーターは、ポリシーの定義を作成するときに宣言します。
@@ -210,11 +212,13 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 * プロパティのエイリアス: 一覧については、「[エイリアス](#aliases)」を参照してください。
 
 ### <a name="effect"></a>効果
-ポリシーでは、`deny`、`audit`、`append` の 3 種類の効果がサポートされています。 
+ポリシーでは、`deny`、`audit`、`append`、`AuditIfNotExists`、`DeployIfNotExists` の各効果がサポートされています。 
 
 * **deny** は監査ログでイベントを生成し、要求は失敗します
 * **audit** は監査ログで警告イベントを生成しますが、要求は失敗しません
 * **append** は定義済みのフィールド セットを要求に追加します 
+* **AuditIfNotExists** は、リソースが存在しない場合に監査を有効にします。
+* **DeployIfNotExists** は、リソースが存在しない場合にリソースをデプロイします。 現在この効果は、組み込みポリシーを通じてのみサポートされます。
 
 **append** の場合、次のように詳細を指定する必要があります。
 
@@ -229,6 +233,10 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 ```
 
 値には文字列または JSON 形式オブジェクトを指定できます。 
+
+**AuditIfNotExists** と **DeployIfNotExists** を使用すると、子リソースの存在を評価したうえで、そのリソースが存在しない場合に、ルールを適用することができます。 たとえば、すべての仮想ネットワークを対象に Network Watcher のデプロイを要求することができます。
+
+仮想マシン拡張機能がデプロイされていない場合の監査の例については、[VM 拡張機能の監査](https://github.com/Azure/azure-policy-samples/blob/master/samples/Compute/audit-vm-extension/azurepolicy.json)に関するページを参照してください。
 
 ## <a name="aliases"></a>エイリアス
 
@@ -347,20 +355,96 @@ Azure には、いくつかの組み込みのポリシー定義が用意され�
 | Microsoft.Storage/storageAccounts/sku.name | SKU 名を設定します。 |
 | Microsoft.Storage/storageAccounts/supportsHttpsTrafficOnly | ストレージ サービスへの https トラフィックのみを許可するように設定します。 |
 
+## <a name="policy-sets"></a>ポリシー セット
 
-## <a name="policy-examples"></a>ポリシーの例
+ポリシー セットを使用すると、関連する複数のポリシー定義をグループ化することができます。 ポリシー セットを使用すると、グループを 1 つの項目として扱うことができるため、割り当てと管理が単純化されます。 たとえば、関連するすべてのタグ付けポリシーを 1 つのポリシー セットとしてグループ化することができます。 それぞれのポリシーを個別に割り当てるのではなく、ポリシー セットを適用することになります。
+ 
+次の例は、2 つのタグ (costCenter と productName) を扱うためのポリシー セットの作成方法を示したものです。 既定のタグ値を適用し、さらにそのタグ値を強制的に適用するために、2 つの組み込みポリシーを使用しています。 ポリシー セットには、再利用の対象となる costCenterValue と productNameValue の 2 つのパラメーターが宣言されています。 2 つの組み込みポリシー定義が、異なるパラメーターで複数回参照されます。 それぞれのパラメーターには、固定値を指定するか (tagName を参照)、ポリシー セットからのパラメーターを指定する (tagValue を参照) ことができます。
 
-以下のトピックに、ポリシーの例があります。
+```json
+{
+    "properties": {
+        "displayName": "Billing Tags Policy",
+        "policyType": "Custom",
+        "description": "Specify cost Center tag and product name tag",
+        "parameters": {
+            "costCenterValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for Cost Center tag"
+                }
+            },
+            "productNameValue": {
+                "type": "String",
+                "metadata": {
+                    "description": "required value for product Name tag"
+                }
+            }
+        },
+        "policyDefinitions": [
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "costCenter"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('costCenterValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/1e30110a-5ceb-460c-a204-c1c3969c6d62",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            },
+            {
+                "policyDefinitionId": "/providers/Microsoft.Authorization/policyDefinitions/2a0e14a6-b0a6-4fab-991a-187a4f81c498",
+                "parameters": {
+                    "tagName": {
+                        "value": "productName"
+                    },
+                    "tagValue": {
+                        "value": "[parameters('productNameValue')]"
+                    }
+                }
+            }
+        ]
+    },
+    "id": "/subscriptions/<subscription-id>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicy",
+    "type": "Microsoft.Authorization/policySetDefinitions",
+    "name": "billingTagsPolicy"
+}
+```
 
-* タグ ポリシーの例については、「[Apply resource policies for tags (タグに関するリソース ポリシーを適用する)](resource-manager-policy-tags.md)」を参照してください。
-* 名前付けとテキストのパターンの例については、「[名前とテキスト用のリソース ポリシーを適用する](resource-manager-policy-naming-convention.md)」を参照してください。
-* ストレージ ポリシーの例については、「[Apply resource policies to storage accounts (ストレージ アカウントにリソース ポリシーを適用する)](resource-manager-policy-storage.md)」を参照してください。
-* 仮想マシン ポリシーの例については、[Linux VM へのリソース ポリシーの適用](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)と [Windows VM へのリソース ポリシーの適用](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)に関するページを参照してください。
+ポリシー セットを追加するには、PowerShell の **New-AzureRMPolicySetDefinition** コマンドを使用します。
 
+REST 操作の場合は、**2017-06-01-preview** API バージョンを使用してください。次に示したのはその例です。
+
+```
+PUT /subscriptions/<subId>/providers/Microsoft.Authorization/policySetDefinitions/billingTagsPolicySet?api-version=2017-06-01-preview
+```
 
 ## <a name="next-steps"></a>次のステップ
 * ポリシー規則を定義した後で、スコープに割り当てます。 ポータルでポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 REST API、PowerShell、Azure CLI でポリシーを割り当てる方法については、「[Assign and manage policies through script](resource-manager-policy-create-assign.md)」(スクリプトによるポリシーの割り当てと管理) を参照してください。
+* ポリシーの例については、[Azure リソース ポリシーの GitHub リポジトリ](https://github.com/Azure/azure-policy-samples)を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
 * [http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json](http://schema.management.azure.com/schemas/2015-10-01-preview/policyDefinition.json) でポリシー スキーマが公開されています。 
-
 

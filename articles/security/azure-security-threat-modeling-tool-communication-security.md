@@ -14,14 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
+ms.openlocfilehash: 68bf128824a40afb25b3e088965f38a4cb4d1332
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cf381b43b174a104e5709ff7ce27d248a0dfdbea
-ms.openlocfilehash: b85003a94df3b97f5c64eb3b7e62071f07674c5e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-frame-communication-security--mitigations"></a>セキュリティ フレーム: 通信セキュリティの | 対応策 
 | 製品/サービス | 記事 |
 | --------------- | ------- |
@@ -102,7 +100,7 @@ ms.lasthandoff: 08/23/2017
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
-| **参照**              | [アプリに対する HTTPS を Azure App Service で有効にする](https://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/) |
+| **参照**              | [アプリに対する HTTPS を Azure App Service で有効にする](../app-service/app-service-web-tutorial-custom-ssl.md) |
 | **手順** | Azure の既定では、*.azurewebsites.net ドメインのワイルドカード証明書を使用するすべてアプリに対して、HTTPS を利用できます。 ただし、すべてのワイルドカード ドメインと同様に、カスタム ドメインに独自の証明書を使用する場合ほど安全ではありません ([こちら](https://casecurity.org/2014/02/26/pros-and-cons-of-single-domain-multi-domain-and-wildcard-certificates/)を参照)。 デプロイされたアプリへのアクセスに使用するカスタム ドメインに対して、SSL を有効にすることをお勧めします|
 
 ## <a id="appservice-https"></a>Azure App Service へのすべてのトラフィックに HTTPS 接続を強制する
@@ -113,7 +111,7 @@ ms.lasthandoff: 08/23/2017
 | **SDL フェーズ**               | 構築 |  
 | **適用できるテクノロジ** | ジェネリック |
 | **属性**              | EnvironmentType - Azure |
-| **参照**              | [Azure App Service での HTTPS の適用]https://azure.microsoft.com/documentation/articles/web-sites-configure-ssl-certificate/#4-enforce-https-on-your-app) |
+| **参照**              | [Azure App Service に HTTPS を適用する](../app-service/app-service-web-tutorial-custom-ssl.md#enforce-https) |
 | **手順** | <p>Azure では、*.azurewebsites.net ドメインのワイルドカード証明書を使用する Azure App Service に対して、HTTPS が既に有効になっていますが、適用されていません。 訪問者は引き続き HTTP を使用してアプリにアクセスするため、アプリのセキュリティが侵害される可能性があります。したがって HTTPS を明示的に適用する必要があります。 ASP.NET MVC アプリケーションは、セキュリティで保護されていない HTTP 要求が HTTPS 経由で再送信されるように強制する、[RequireHttps フィルター](http://msdn.microsoft.com/library/system.web.mvc.requirehttpsattribute.aspx)を使用する必要があります。</p><p>また、Azure App Service に組み込まれている URL 書き換えモジュールを使用して、HTTPS を適用することもできます。 URL 書き換えモジュールを使用すると、アプリケーションに渡す前に受信要求に適用するルールを開発者が定義できます。 URL 書き換えルールは、アプリケーションのルートに格納されている web.config ファイルで定義されます</p>|
 
 ### <a name="example"></a>例
@@ -193,7 +191,7 @@ ms.lasthandoff: 08/23/2017
 | **参照**              | [Windows Azure BLOB MD5 の概要](https://blogs.msdn.microsoft.com/windowsazurestorage/2011/02/17/windows-azure-blob-md5-overview/) |
 | **手順** | <p>Windows Azure Blob service は、アプリケーション層とトランスポート層の両方のデータ整合性を確保するためのメカニズムを提供します。 何らかの理由で HTTPS ではなく HTTP を使用する必要があり、ブロック BLOB を使用している場合、MD5 チェックを使用して、転送中の BLOB の整合性を検証することができます</p><p>これは、ネットワーク/トランスポート層のエラーからの保護には役立ちますが、中間攻撃には必ずしも役立つとは言えません。 トランスポート レベルのセキュリティを提供する HTTPS を使用できる場合は、MD5 チェックを使用することは冗長となり、不要です。</p>|
 
-## <a id="smb-shares"></a>SMB 3.0 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する
+## <a id="smb-shares">SMB 3.0 対応クライアントを使用して Azure ファイル共有に転送中のデータの暗号化を確認する</a>
 
 | タイトル                   | 詳細      |
 | ----------------------- | ------------ |
@@ -407,4 +405,3 @@ Redis は、信頼された環境の信頼されたクライアントによっ�
 | **属性**              | 該当なし  |
 | **参照**              | [通信プロトコルの選択](https://azure.microsoft.com/documentation/articles/iot-hub-devguide/#messaging) |
 | **手順** | SSL や TLS を使用して HTTP/AMQP または MQTT のプロトコルをセキュリティで保護します。 |
-

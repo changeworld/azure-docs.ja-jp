@@ -12,20 +12,28 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/25/2017
+ms.date: 10/05/2017
 ms.author: skwan
+ms.openlocfilehash: e42bbed0a9e37a6632b2a71d2b3546fcbc38cdc7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 17879d69b95186848a81e4ff4afdf8fc0d1a511e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-access-to-azure-resources-with-azure-active-directory"></a>Azure Active Directory による Azure リソースへのアクセス管理
 
-クラウド リソースのへのアクセスの ID と管理は、クラウドが使用している組織にとって重要な機能です。  Azure Active Directory (Azure AD) は Microsoft Azure の ID およびアクセス システムです。  
+クラウド リソースのへのアクセスの ID と管理は、クラウドが使用している組織にとって重要な機能です。 Azure Active Directory (Azure AD) は Microsoft Azure の ID およびアクセス システムです。  
 
+Azure AD がサポートしている機能領域を調べる前に、次のビデオ「SSO、ロール ベースのアクセス制御、および条件を使用した Azure クラウドへのアクセスのロック」をご覧ください。 その内容は次のとおりです。
+
+- オンプレミスの Active Directory を使用した Azure ポータルへのシングル サインオンを構成するためのベストプラクティス。
+- サブスクリプション内のリソースに対する粒度の細かいアクセス制御を行うための Azure RBAC の使用。
+- Azure AD の条件付きアクセスを使用した強力な認証ルールの適用。
+- 管理対象サービス ID の概念。この概念によって、Azure リソースは Azure サービスで自動的に認証され、開発者は API キーまたはシークレットを処理する必要はありません。
+
+> [!VIDEO https://www.youtube.com/embed/FKBoWWKRnvI]
+
+## <a name="feature-areas"></a>機能領域
 Azure AD では、Azure リソースへのアクセスを管理するため、次の機能を示します。
 
 |||

@@ -1,5 +1,5 @@
 ---
-title: "トラブルシューティング:\"Active Directory\"項目が存在しないか利用できない |Microsoft ドキュメント"
+title: "トラブルシューティング: Active Directory 項目が不足しているか使用できない | Microsoft Docs"
 description: "Microsoft Azure 管理ポータルに Active Directory メニュー項目が表示されないときの対処方法。"
 services: active-directory
 documentationcenter: na
@@ -15,10 +15,10 @@ ms.workload: identity
 ms.date: 04/27/2017
 ms.author: bryanla
 ms.openlocfilehash: be3a797c4a405fd2f6636e67f4c961dd6d143486
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshooting-active-directory-item-is-missing-or-not-available"></a>トラブルシューティング: Active Directory 項目が不足しているか使用できない
 Azure Active Directory の機能とサービスを使用するための手順の多くが、"Microsoft Azure 管理ポータルに移動し、**[Active Directory]** をクリックします。" という指示で始まります。 Active Directory 拡張機能またはメニュー項目が表示されない、または **[使用不可]** とマークされている場合はどうすればよいのでしょうか。 このトピックを役立ててください。 **Active Directory** が表示されない状況と使用できない状況について説明し、どのように対応するかについて説明しています。

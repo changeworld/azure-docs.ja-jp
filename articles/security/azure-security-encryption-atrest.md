@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: yurid
+ms.openlocfilehash: 53b6f03d43b5525e5c5dea42e6a9a36042b65d52
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 6af94c795ec5153013f4a9c5c937beed08f44e7a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-data-encryption-at-rest"></a>Azure Data Encryption-at-Rest
 Microsoft Azure では、会社のセキュリティとコンプライアンスのニーズに合わせてデータを保護するためのツールが複数用意されています。 このホワイト ペーパーは、Microsoft Azure 全体で保存中のデータがどのように保護され、データ保護実装を構成しているさまざまなコンポーネント、およびさまざまなキー管理保護方法の長所と短所について説明します。 
@@ -273,12 +272,11 @@ SQL Azure データのクライアント側の暗号化は、[Always Encrypted](
 | Power BI                         |                | あり                 | -                            | -                            | -      |
 | **IoT サービス**                     |                |                     |                              |                              |        |
 | IoT Hub                          |                | -                   | -                            | -                            | あり    |
-| Service Bus                      |                | -              | -                            | -                            | あり    |
-| Event Hubs                       |                | -             | -                            | -                            | -      |
+| Service Bus                      |                | あり (Premium 階層)              | -                            | -                            | あり    |
+| Event Hubs                       |                | あり             | -                            | -                            | -      |
 
 
 ## <a name="conclusion"></a>まとめ
 
 Azure サービス内で保存される顧客データの保護は、Microsoft にとってきわめて重要です。 すべての Azure ホステッド サービスは、保存時暗号化オプションを提供することを目的としています。 Azure Storage、SQL Azure や主要な分析およびインテリジェンス サービスなどの基本的なサービスでは、すでに保存時暗号化オプションが提供されています。 これらのサービスの一部では、ユーザーが管理するキーおよびクライアント側暗号化、サービス管理型のキーや暗号化のいずれかがサポートされています。 Microsoft Azure サービスは、保存時の暗号化の可用性を大きく広げており、今後はプレビューや一般的な可用性のための新しいオプションを提供することが計画されています。
-
 

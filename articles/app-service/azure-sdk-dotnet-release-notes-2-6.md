@@ -14,10 +14,10 @@ ms.workload: integration
 ms.date: 02/24/2017
 ms.author: juliako
 ms.openlocfilehash: 21817b09440fc98a54dc45c9129d104b01fa387d
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-sdk-for-net-26-release-notes"></a>Azure SDK for .NET 2.6 リリース ノート
 このドキュメントには、Azure SDK for .NET 2.6 リリースのリリース ノートが含まれます。 
@@ -34,7 +34,7 @@ Azure SDK 2.6 では、クラウド サービス ロールにターゲット .NE
 ## <a name="hdinsight-tools-for-visual-studio-updates"></a>HDInsight Tools for Visual Studio の更新
 * **IntelliSense の強化**: リモート メタデータの推奨事項
   
-    HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。 たとえば、入力**選択 * FROM**とすべてのテーブル名が表示されます。 また、テーブルを指定した後、列名も表示されます。
+    HDInsight Tools for Visual Studio で、Hive スクリプトの編集時にリモート メタデータの取得がサポートされるようになりました。 たとえば、「**SELECT * FROM**」と入力すると、すべてのテーブル名が表示されます。 また、テーブルを指定した後、列名も表示されます。
 * **HDInsight Emulator のサポート**
   
     HDInsight Tools for Visual Studio で HDInsight Emulator への接続がサポートされるため、コストを導入することなくローカルで Hive スクリプトを開発し、HDInsight クラスターに対してこれらのスクリプトを実行できるようになりました。 

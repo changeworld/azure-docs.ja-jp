@@ -15,13 +15,11 @@ ms.topic: article
 ms.date: 01/23/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.translationtype: Human Translation
-ms.sourcegitcommit: bb1ca3189e6c39b46eaa5151bf0c74dbf4a35228
-ms.openlocfilehash: 43ba592b6294a9a75a20dacd81953a77c241b89f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 03/18/2017
-
-
+ms.openlocfilehash: 3c1e558c9d41e385f80939203a3457b74e30973b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="aspnet-web-app-sign-in-and-sign-out-with-azure-ad"></a>Azure AD を使用した ASP.NET Web アプリへのサインインおよびサインアウト
 [!INCLUDE [active-directory-devguide](../../../includes/active-directory-devguide.md)]
@@ -111,7 +109,7 @@ Azure Active Directory (Azure AD) では、数行のコードを追加するだ�
 ## <a name="step-3-use-owin-to-issue-sign-in-and-sign-out-requests-to-azure-ad"></a>手順 3: OWIN を使用して Azure AD にサインインおよびサインアウト要求を発行する
 これで、OpenID Connect 認証プロトコルを使用して Azure AD と通信するように、アプリを適切に構成できました。 OWIN により、認証メッセージの構築、Azure AD からのトークンの検証、およびユーザー セッションの維持のすべてが処理されます。 OWIN により処理されないのは、ユーザーにサインインおよびサインアウトの方法を提供する処理のみです。
 
-1. コントローラーで承認タグを使用することにより、特定のページには、サインインしてからでないとアクセスできないようにすることができます。 これを行うには、Controllers\HomeController.cs を開いて、About コントローラーに `[Authorize]` タグを追加します。
+1. コントローラーで承認タグを使用することにより、特定のページには、サインインしてからでないとアクセスできないようにすることができます。 これを行うには、Controllers\HomeController.cs を開いて、About アクションに `[Authorize]` タグを追加します。
 
      ```C#
      [Authorize]
@@ -195,4 +193,3 @@ Azure AD で OpenID Connect を使用してユーザーを認証すると、"要
 これで、さらに高度なトピックに進む準備ができました。 たとえば、[Azure AD を使用して Web API を保護](active-directory-devquickstarts-webapi-dotnet.md)してみましょう。
 
 [!INCLUDE [active-directory-devquickstarts-additional-resources](../../../includes/active-directory-devquickstarts-additional-resources.md)]
-

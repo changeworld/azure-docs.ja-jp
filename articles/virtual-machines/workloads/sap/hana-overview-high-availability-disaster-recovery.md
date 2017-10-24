@@ -11,15 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/27/2016
+ms.date: 10/02/2017
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: 50917572ef8739ddc674d3592696a1ee4a8edc10
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: c7f3da9a92d5e9c60355c93a7205d16dc9ab8390
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sap-hana-large-instances-high-availability-and-disaster-recovery-on-azure"></a>Azure での SAP HANA L インスタンスの高可用性とディザスター リカバリー 
 
@@ -113,7 +112,7 @@ SAP HANA on Azure (L インスタンス) の基になっているストレージ
 
 次の 3 種類のクラスのボリュームをターゲットとするストレージ スナップショットを実行できます。
 
-- /hana/data、/hana/log、および /hana/shared (/usr/sap を含む) を対象とする結合スナップショット。 このスナップショットでは、SAP HANA スナップショットを実行する必要があります。
+- /hana/data および /hana/shared (/usr/sap を含む) を対象とする結合スナップショット。 このスナップショットでは、ストレージ スナップショットの準備として SAP HANA スナップショットを作成する必要があります。 SAP HANA スナップショットは、ストレージの観点からデータベースが整合性のある状態であることを確認します。
 - /hana/logbackups に対する個別スナップショット。
 - OS パーティション (Type I の HANA L インスタンスのみ)。
 
@@ -870,7 +869,6 @@ Latest Snapshot Replicated: snapmirror.c169b434-75c0-11e6-9903-00a098a13ceb_2154
 Size of Latest Snapshot Replicated: 244KB
 Current Lag Time between snapshots: -   ***Less than 90 minutes is acceptable***
 ```
-
 
 
 

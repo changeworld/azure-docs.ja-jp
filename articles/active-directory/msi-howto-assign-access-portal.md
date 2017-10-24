@@ -1,6 +1,6 @@
 ---
 title: "Azure ポータルを使用して、Azure リソースに MSI アクセスを割り当てる方法"
-description: "Azure ポータルを使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。"
+description: "Azure Portal を使用して、1 つのリソースに MSI を割り当て、別のリソースにアクセスを割り当てる方法について、ステップ バイ ステップで説明します。"
 services: active-directory
 documentationcenter: 
 author: bryanla
@@ -13,19 +13,17 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: bryanla
+ms.openlocfilehash: 335f360c833f1c803c8ccc2d74a87efff23b3a7c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 47ba7c7004ecf68f4a112ddf391eb645851ca1fb
-ms.openlocfilehash: 9dd02c8d7580cd9233e192f807686b7857ccf696
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/14/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-# <a name="assign-a-managed-service-identity-msi-access-to-a-resource-using-the-azure-portal"></a>Azure ポータルを使用して、リソースに管理対象サービス ID (MSI) アクセスを割り当てる
+# <a name="assign-a-managed-service-identity-access-to-a-resource-by-using-the-azure-portal"></a>Azure Portal を使用してリソースに管理対象サービス ID アクセスを割り当てる
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-MSI で Azure リソースを構成したら、他のセキュリティ プリンシパルと同じように、別のリソースに MSI アクセスを付与できます。 この例では、Azure ポータルを使用して、Azure 仮想マシンの MSI アクセスを Azure ストレージ アカウントに付与する方法について説明します。
+管理対象サービス ID (MSI) で Azure リソースを構成した後、他のセキュリティ プリンシパルと同じように、別のリソースに MSI アクセスを付与できます。 この記事では、Azure Portal を使用して、Azure 仮想マシンの MSI アクセスを Azure ストレージ アカウントに付与する方法について説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,20 +37,20 @@ MSI で Azure リソースを構成したら、他のセキュリティ プリ�
 
 2. アクセス制御を変更する目的のリソースに移動します。 この例では、ストレージ アカウントに Azure VM アクセスを許可しているため、ストレージ アカウントに移動します。
 
-3. リソースの [アクセス制御 (IAM)] ページをクリックし、[+ 追加] をクリックします。 [ロール] を指定し、、"仮想マシン" にアクセスを割り当てて、対応するサブスクリプションとリソースが存在するリソース グループを指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、[保存] をクリックします。 
+3. リソースの **[アクセス制御 (IAM)]** ページを選択し、**[+ 追加]** を選択します。 **[ロール]** を指定し、**[アクセスの割り当て先] を [仮想マシン]** にして、対応する **[サブスクリプション]** とリソースが存在する **[リソース グループ]** を指定します。 検索条件領域に、リソースが表示されるはずです。 リソースを選択し、**[保存]** を選択します。 
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-before.png)  
 
-4. [アクセス制御 (IAM)] のメイン ページに戻ると、リソースの MSI の新しいエントリが表示されます。 この例では、デモ リソース グループの "SimpleWinVM" VM には、ストレージ アカウントへの「共同作成者」アクセスが許可されています。
+4. **[アクセス制御 (IAM)]** のメイン ページに戻ると、リソースの MSI の新しいエントリが表示されます。 この例では、デモ リソース グループの "SimpleWinVM" VM に、ストレージ アカウントへの**共同作成者**アクセスが許可されています。
 
    ![アクセス制御 (IAM) のスクリーンショット](./media/msi-howto-assign-access-portal/assign-access-control-iam-blade-after.png)
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
-リソースの MSI が使用可能な ID の一覧に表示されない場合は、MSI が正しく有効になっていることを確認します。 この場合、 Azure VM に戻り、次の操作を行うことができます。
+リソースの MSI が使用可能な ID の一覧に表示されない場合は、MSI が正しく有効になっていることを確認します。 この場合は、Azure VM に戻り、次のことを確認します。
 
-- [構成] ページを参照し、MSI の有効が [はい] になっていることを確認します。
-- [拡張] ページを参照して、MSI 拡張機能が正常に展開されていることを確認します。
+- **[構成]** ページを参照し、**MSI の有効**の値が **[はい]** になっていることを確認します。
+- **[拡張]** ページを参照して、MSI 拡張機能が正常に展開されていることを確認します。
 
 いずれかが正しくない場合は、リソース上で MSI を再デプロイするか、デプロイ エラーのトラブルシューティングを行う必要があります。
 
@@ -60,6 +58,5 @@ MSI で Azure リソースを構成したら、他のセキュリティ プリ�
 
 - MSI の概要については、[管理対象サービス ID の概要](msi-overview.md)に関する記事をご覧ください。
 - Azure VM で MSI を有効にするには、「[Azure ポータルを使用して Azure VM 管理対象サービスID (MSI) を構成する](msi-qs-configure-portal-windows-vm.md)」を参照してください。
-
 
 

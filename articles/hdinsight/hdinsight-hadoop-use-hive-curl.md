@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/03/2017
 ms.author: larryfr
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3bbc9e9a22d962a6ee20ead05f728a2b706aee19
-ms.openlocfilehash: afd0bc8c19456fd123f53de7d1704619405bed67
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/10/2017
-
+ms.openlocfilehash: 8c6877b923c6000abe3aece37a24b275462ba378
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>REST を使用した HDInsight における Hadoop での Hive クエリの実行
 
@@ -39,14 +38,14 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 > [!NOTE]
 > cURL、または WebHCat を用いたその他 REST 通信を使用する場合は、HDInsight クラスター管理者のユーザー名とパスワードを指定して要求を認証する必要があります。
 >
-> このセクションのコマンドでは、 **USERNAME** をクラスターに対して認証するユーザーの名前に置き換え、 **PASSWORD** をユーザー アカウントのパスワードに置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。
+> このセクションのコマンドでは、**admin** をクラスターに対して認証するユーザーに置き換えます。 **CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、ユーザー アカウントのパスワードを入力します。
 >
 > REST API のセキュリティは、 [基本認証](http://en.wikipedia.org/wiki/Basic_access_authentication)を通じて保護されています。 資格情報をサーバーに安全に送信するには、必ずセキュア HTTP (HTTPS) を使用して要求を行う必要があります。
 
 1. コマンド ラインで次のコマンドを使用して、HDInsight クラスターに接続できることを確認します。
 
     ```bash
-    curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
+    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/status
     ```
 
     次のような応答を受け取ります。
@@ -55,23 +54,23 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 
     このコマンドで使用されるパラメーターの意味は次のとおりです。
 
-   * **-u** : 要求の認証に使用するユーザー名とパスワード
-   * **-G**: GET 操作であることを示しています。
+    * **-u** : 要求の認証に使用するユーザー名とパスワード
+    * **-G**: GET 操作であることを示しています。
 
-     URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、すべての要求において共通です。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 次のコマンドを使用して、Hive のバージョンを要求することもできます。
+   URL の先頭は **https://CLUSTERNAME.azurehdinsight.net/templeton/v1** で、すべての要求において共通です。 パス **/status** は、要求がサーバー用の WebHCat (別名: Templeton) の状態を返すことを示します。 次のコマンドを使用して、Hive のバージョンを要求することもできます。
 
     ```bash
-    curl -u USERNAME:PASSWORD -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
+    curl -u admin -G https://CLUSTERNAME.azurehdinsight.net/templeton/v1/version/hive
     ```
 
-     この要求では、次のような応答が返されます。
+    この要求では、次のような応答が返されます。
 
-       {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
+        {"module":"hive","version":"0.13.0.2.1.6.0-2103"}
 
 2. 次のコマンドを使用して、 **log4jLogs** という名前のテーブルを作成します。
 
     ```bash
-    curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;DROP+TABLE+log4jLogs;CREATE+EXTERNAL+TABLE+log4jLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+ROW+FORMAT+DELIMITED+FIELDS+TERMINATED+BY+' '+STORED+AS+TEXTFILE+LOCATION+'/example/data/';SELECT+t4+AS+sev,COUNT(*)+AS+count+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log'+GROUP+BY+t4;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
     ```
 
     この要求では次のパラメーターが用いられます。
@@ -82,7 +81,8 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
      * **execute** : 実行する HiveQL ステートメント
      * **statusdir**: ジョブのステータスが書き込まれるディレクトリ。
 
-     これらのステートメントは次のアクションを実行します。
+   これらのステートメントは次のアクションを実行します。
+   
    * **DROP TABLE**: テーブルが既に存在する場合は削除されます。
    * **CREATE EXTERNAL TABLE** : Hive に新しく '外部' テーブルを作成します。 外部テーブルは Hive にテーブル定義のみを格納します。 データは元の場所に残されます。
 
@@ -103,14 +103,14 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
      > [!NOTE]
      > `%25` は % の URL エンコード形式であるため、実際の条件は`like '%.log'` です。 URL で特殊文字と見なされるため、% は URL エンコードである必要があります。
 
-     このコマンドは、ジョブのステータスの確認に使用できる ジョブ ID を返します。
+   このコマンドは、ジョブのステータスの確認に使用できるジョブ ID を返します。
 
        {"id":"job_1415651640909_0026"}
 
 3. ジョブのステータスを確認するには、次のコマンドを使用します。
 
     ```bash
-    curl -G -u USERNAME:PASSWORD -d user.name=USERNAME https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
+    curl -G -u admin -d user.name=admin https://CLUSTERNAME.azurehdinsight.net/templeton/v1/jobs/JOBID | jq .status.state
     ```
 
     **JOBID** を前の手順で返された値に置き換えます。 たとえば、戻り値が `{"id":"job_1415651640909_0026"}` の場合、**JOBID** は `job_1415651640909_0026` になります。
@@ -127,12 +127,12 @@ WebHCat REST API を使用して Azure HDInsight クラスターの Hadoop で H
 5. 次のステートメントを使用して、 **errorLogs**という名前の新しい "内部" テーブルを作成します。
 
     ```bash
-    curl -u USERNAME:PASSWORD -d user.name=USERNAME -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
+    curl -u admin -d user.name=admin -d execute="set+hive.execution.engine=tez;CREATE+TABLE+IF+NOT+EXISTS+errorLogs(t1+string,t2+string,t3+string,t4+string,t5+string,t6+string,t7+string)+STORED+AS+ORC;INSERT+OVERWRITE+TABLE+errorLogs+SELECT+t1,t2,t3,t4,t5,t6,t7+FROM+log4jLogs+WHERE+t4+=+'[ERROR]'+AND+INPUT__FILE__NAME+LIKE+'%25.log';SELECT+*+from+errorLogs;" -d statusdir="/example/curl" https://CLUSTERNAME.azurehdinsight.net/templeton/v1/hive
     ```
 
     これらのステートメントは次のアクションを実行します。
 
-   * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 このステートメントが作成する内部テーブルは、Hive データ ウェアハウスに格納され、Hive により完全管理されます。
+   * **CREATE TABLE IF NOT EXISTS** - 既存のテーブルがない場合、テーブルを作成します。 このステートメントによって作成される内部テーブルは、Hive データ ウェアハウスに格納されます。 このテーブルは Hive によって管理されます。
 
      > [!NOTE]
      > 外部テーブルとは異なり、内部テーブルを削除すると基盤となるデータも削除されます。
@@ -184,6 +184,5 @@ Hive で Tez を使用する場合、デバッグ情報については、次の�
 [hdinsight-upload-data]: hdinsight-upload-data.md
 
 [powershell-here-strings]: http://technet.microsoft.com/library/ee692792.aspx
-
 
 

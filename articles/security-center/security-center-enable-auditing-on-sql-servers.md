@@ -1,6 +1,6 @@
 ---
 title: "Azure Security Center での SQL サーバーの監査と脅威検出の有効化 | Microsoft Docs"
-description: "このドキュメントは、Azure Security Center 勧告を実装する方法を示します * * SQL サーバー * * の監査を有効にすると脅威の検出。"
+description: "このドキュメントでは、**SQL サーバーの監査と脅威検出を有効にする**という Azure Security Center の推奨事項を実装する方法について説明します。"
 services: security-center
 documentationcenter: na
 author: TerryLanfear
@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 03/30/2017
 ms.author: terrylan
 ms.openlocfilehash: 660b537aef8d175a478ff93d60b8391d55fc92ad
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="enable-auditing-and-threat-detection-on-sql-servers-in-azure-security-center"></a>Azure Security Center で SQL サーバーの監査と脅威検出の有効化
 Azure Security Center では、監査をまだ有効にしていない場合、Azure SQL サーバー上のすべてのデータベースで監査と脅威検出を有効にすることをお勧めします。 監査と脅威検出によって、規定遵守の維持、データベース アクティビティの理解、およびビジネス上の懸念やセキュリティ違反の疑いを示す差異や異常に対するインサイトが容易になります。

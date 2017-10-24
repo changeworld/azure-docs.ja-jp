@@ -16,10 +16,10 @@ ms.tgt_pltfrm: na
 ms.date: 06/07/2017
 ms.author: heidist
 ms.openlocfilehash: 60e63401e3915e62e1ec5ac03cd548c291580b24
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-limits-in-azure-search"></a>Azure Search サービスの制限
 インデックス、ドキュメント、およびその他のオブジェクトのストレージ、ワークロード、数量の上限は、[Azure Search](search-create-service-portal.md) を **Free**、**Basic**、または **Standard** の価格レベルのいずれでプロビジョニングするかによって異なります。
@@ -47,7 +47,7 @@ ms.lasthandoff: 08/03/2017
 | インデックス: インデックスあたりの最大スコアリング プロファイル |100 |100 |100 |100 |100 |100 |
 | インデックス: プロファイルあたりの最大関数 |8 |8 |8 |8 |8 |8 |
 | インデクサー: 呼び出しあたりの最大インデックス作成負荷 |10,000 ドキュメント |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |最大ドキュメントによってのみ制限 |該当なし <sup>2</sup> |
-| インデクサー: 最大実行時間 | 1 ~ 3 分<sup>3</sup> |24 時間 |24 時間 |24 時間 |24 時間 |該当なし <sup>2</sup> |
+| インデクサー: 最大実行時間 | 1 ～ 3 分 <sup>3</sup> |24 時間 |24 時間 |24 時間 |24 時間 |該当なし <sup>2</sup> |
 | BLOB インデクサー: BLOB の最大サイズ、MB |16 |16 |128 |256 |256 |該当なし <sup>2</sup> |
 | BLOB インデクサー: BLOB から抽出されたコンテンツの最大文字数 |32,000 |64,000 |400 万 |400 万 |400 万 |該当なし <sup>2</sup> |
 
@@ -55,7 +55,7 @@ ms.lasthandoff: 08/03/2017
 
 <sup>2</sup> S3 HD では現在、インデクサーはサポートされていません。 この機能がすぐに必要な場合は、Azure サポートにご連絡ください。
 
-<sup>3</sup> Free レベルの最大実行時間をインデクサーがソースの blob とその他のすべてのデータ ソースの 1 分の 3 分間です。
+<sup>3</sup> インデクサーの Free レベルでの最大実行時間は、BLOB ソースの場合は 3 分、その他のすべてのデータ ソースの場合は 1 分です。
 
 ## <a name="document-size-limits"></a>ドキュメント サイズの制限
 | リソース | 無料 | 基本 | S1 | S2 | S3 | S3 HD |

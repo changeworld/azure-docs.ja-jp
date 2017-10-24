@@ -8,12 +8,11 @@ ms.service: service-fabric
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: edwardsa
+ms.openlocfilehash: 6eb58b31f20f239d310415d44f61e7455918dae9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: c3a2eb3e6e54f952ef963bb2a0292d9ad7b53bc5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli"></a>Azure Service Fabric CLI を使用した Azure Service Fabric アプリケーションの管理
 
@@ -31,14 +30,14 @@ Azure Service Fabric クラスターで実行されているアプリケーシ�
 
 1. アプリケーション パッケージを Service Fabric イメージ ストアにアップロードします。
 2. アプリケーションの種類をプロビジョニングします。
-3. アプリケーションを指定して作成します。
-4. サービスを指定して作成します。
+3. イメージ ストアのコンテンツを削除します。
+4. アプリケーションを指定して作成します。
+5. サービスを指定して作成します。
 
 既存のアプリケーションを削除するには、次の手順を実行します。
 
 1. アプリケーションを削除します。
 2. 関連付けられているアプリケーションの種類のプロビジョニングを解除します。
-3. イメージ ストアのコンテンツを削除します。
 
 ## <a name="deploy-a-new-application"></a>新しいアプリケーションのデプロイ
 
@@ -65,6 +64,18 @@ sfctl application provision --application-type-build-path app_package_dir
 ```
 
 `application-type-build-path` の値は、アプリケーション パッケージをアップロードしたディレクトリの名前です。
+
+### <a name="delete-the-application-package"></a>アプリケーション パッケージを削除する
+
+アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク記憶域が消費され、アプリケーションのパフォーマンスの問題につながります。 
+
+アプリケーション パッケージをイメージ ストアから削除するには、次のコマンドを使用します。
+
+```azurecli
+sfctl store delete --content-path app_package_dir
+```
+
+`content-path` はアプリケーションを作成したときにアップロードしたディレクトリの名前である必要があります。
 
 ### <a name="create-an-application-from-an-application-type"></a>アプリケーションの種類からアプリケーションを作成する
 
@@ -127,18 +138,6 @@ sfctl application unprovision --application-type-name TestAppTye --application-t
 
 指定するアプリケーションの種類の名前とバージョンは、以前にプロビジョニングしたアプリケーション マニフェストにある名前およびバージョンと一致している必要があります。
 
-### <a name="delete-the-application-package"></a>アプリケーション パッケージを削除する
-
-アプリケーションの種類のプロビジョニングを解除したら、不要になったアプリケーション パッケージをイメージ ストアから削除できます。 アプリケーション パッケージを削除すると、ディスク領域が解放されます。 
-
-アプリケーション パッケージをイメージ ストアから削除するには、次のコマンドを使用します。
-
-```azurecli
-sfctl store delete --content-path app_package_dir
-```
-
-`content-path` はアプリケーションを作成したときにアップロードしたディレクトリの名前である必要があります。
-
 ## <a name="upgrade-application"></a>アプリケーションのアップグレード
 
 アプリケーションを作成した後で、同じ手順を繰り返すと、アプリケーションの 2 番目のバージョンをプロビジョニングできます。 次に、Service Fabric アプリケーションのアップグレードにより、アプリケーションの 2 番目のバージョンの実行に移ることができます。 詳しくは、「[Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)」をご覧ください。
@@ -148,6 +147,7 @@ sfctl store delete --content-path app_package_dir
 ```azurecli
 sfctl application upload --path ~/app_package_dir_2
 sfctl application provision --application-type-build-path app_package_dir_2
+sfctl store delete --content-path app_package_dir_2
 ```
 
 その後、監視付きの自動アップグレードを実行することをお勧めします。次のコマンドを実行してアップグレードを行います。
@@ -169,4 +169,3 @@ sfctl application upgrade --app-id TestApp --app-version 2.0.0 --parameters "{\"
 * [Service Fabric CLI の基本](service-fabric-cli.md)
 * [Linux 上の Service Fabric の概要](service-fabric-get-started-linux.md)
 * [Service Fabric アプリケーションのアップグレードの開始](service-fabric-application-upgrade.md)
-

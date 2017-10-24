@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/22/2017
 ms.author: arramac
+ms.openlocfilehash: 1e23fa988952f2515d82d4d043c390c263959ccc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: a0f6a845a345ebd4ef0a58abf4934ce400103109
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -85,7 +84,7 @@ Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件�
 
 Azure Cosmos DB Emulator は、Docker for Windows 上で実行できます。 Emulator は、Docker for Oracle Linux では機能しません。
 
-[Docker for Windows](https://www.docker.com/docker-windows) をインストールした後、お気に入りのシェル (cmd.exe、PowerShell など) から次のコマンドを実行することによって、Docker Hub から Emulator イメージをプルできます。
+[Docker for Windows](https://www.docker.com/docker-windows) をインストールして Windows コンテナーに切り替えた後、お気に入りのシェル (cmd.exe、PowerShell など) から次のコマンドを実行することによって、Docker Hub から Emulator イメージをプルできます。
 
 ```      
 docker pull microsoft/azure-cosmosdb-emulator 
@@ -94,7 +93,7 @@ docker pull microsoft/azure-cosmosdb-emulator
 
 ``` 
 md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>nul
-docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i microsoft/azure-cosmosdb-emulator 
+docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
 ```
 
 応答は次のようになります。
@@ -352,9 +351,9 @@ Azure Cosmos DB Emulator は環境をエミュレートし、ローカルの開�
 
 Azure Cosmos DB Emulator で利用できるコレクションの数は次のように変更します。
 
-1. システム トレイの **Azure Cosmos DB Emulator** アイコンを右クリックし、**[Reset Data…]\(データのリセット…\)** をクリックし、ローカルの Azure Cosmos DB Emulator データをすべて削除します。
+1. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[Reset Data…]\(データのリセット…\)** をクリックし、ローカルの Azure Cosmos DB Emulator データをすべて削除します。
 2. このフォルダー (C:\Users\user_name\AppData\Local\CosmosDBEmulator) 内のすべてのエミュレーター データを削除します。
-3. システム トレイの **Azure Cosmos DB Emulator** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
 5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`)。
 
@@ -387,7 +386,7 @@ Azure Cosmos DB Emulator で遭遇する問題の解決には次のヒントが�
 
 ### <a id="uninstall"></a>ローカル エミュレーターのアンインストール
 
-1. システム トレイの Azure Cosmos DB Emulator アイコンを右クリックし、[終了] をクリックし、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+1. システム トレイの Azure Cosmos DB Emulator アイコンを右クリックし、終了をクリックし、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。
 3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、**[アンインストール]** をクリックし、確認して再度、**[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、C:\Users\<user>\AppData\Local\CosmosDBEmulator に移動し、フォルダーを削除します。 
@@ -409,4 +408,3 @@ Azure Cosmos DB Emulator で遭遇する問題の解決には次のヒントが�
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB Emulator 証明書をエクスポートする](local-emulator-export-ssl-certificates.md)
-

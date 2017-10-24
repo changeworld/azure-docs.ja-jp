@@ -16,10 +16,10 @@ ms.workload: data-services
 ms.date: 03/28/2017
 ms.author: samacha
 ms.openlocfilehash: a93693ef7d40025fa96846594a8eb525a50b6885
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>Stream Analytics を使って IoT ソリューションを構築する
 ## <a name="introduction"></a>はじめに
@@ -128,7 +128,7 @@ Azure アカウントをお持ちでない場合は、 [無料試用版にサイ
 > 
 > 
 
-この記事の最後に「Azure アカウント クリーンアップ」セクションの手順に従って、Azure クレジットを最大限に活用することができますされるようにすることを確認します。
+Azure クレジットを最適に利用できるよう、この記事の最後にある「Azure アカウントのクリーンアップ」セクションの手順を忘れずに実行してください。
 
 ## <a name="provision-azure-resources-required-for-the-tutorial"></a>チュートリアルに必要な Azure リソースのプロビジョニング
 このチュートリアルでは、"*入口*" と "*出口*" のデータ ストリームを受信するために、2 つのイベント ハブが必要となります。 Stream Analytics ジョブの結果は Azure SQL Database で出力します。 また、車両登録に関する参照データは Azure Storage に格納します。

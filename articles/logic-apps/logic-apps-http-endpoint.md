@@ -16,14 +16,12 @@ ms.workload: integration
 ms.custom: H1Hack27Feb2017
 ms.date: 03/31/2017
 ms.author: LADocs; jehollan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: c92692db23ac59f67890e26cce6b2d3272e8901d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: dab336da4e010d0a78de9a2bdd62536d8fdd9bf1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="call-trigger-or-nest-workflows-with-http-endpoints-in-logic-apps"></a>ロジック アプリで HTTP エンドポイントを通じてワークフローを呼び出し、トリガーし、入れ子にする
 
 ロジック アプリで同期 HTTP エンドポイントをトリガーとしてネイティブに公開することで、URL からロジック アプリをトリガーしたり呼び出したりすることができます。 呼び出し可能なエンドポイントのパターンを使用して、ロジック アプリのワークフローをネストすることもできます。
@@ -86,7 +84,7 @@ HTTP エンドポイントを作成するには、受信要求を受信できる
     これによって次のスキーマが生成されます。
 
     ```json
-    }
+    {
        "type": "object",
        "properties": {
           "address": {
@@ -147,8 +145,7 @@ HTTP エンドポイントの URL でパラメーターを受け取る場合は�
 5. 応答の**本文**に、トリガーの相対パスで指定したパラメーターのトークンを入力します。
 
     たとえば、`Hello {customerID}` を返すには、応答の**本文**を `Hello {customerID token}` で更新します。 
-    動的なコンテンツの一覧が表示され、`customerID` 
-    トークンが選択肢として表示されます。
+    動的なコンテンツの一覧が表示され、`customerID` トークンが選択肢として表示されます。
 
     ![応答本文にパラメーターを追加する](./media/logic-apps-http-endpoint/relativeurlresponse.png)
 
@@ -320,4 +317,3 @@ A: 変更内容を以下にまとめました。
 [1]: ./media/logic-apps-http-endpoint/manualtrigger.png
 [2]: ./media/logic-apps-http-endpoint/manualtriggerurl.png
 [3]: ./media/logic-apps-http-endpoint/response.png
-

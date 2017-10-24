@@ -20,6 +20,7 @@
 ### [同時実行ノード タスク](batch-parallel-node-tasks.md)
 ### [状態別にタスクをカウントする](batch-get-task-counts.md)
 ### [カスタム イメージを使用してプールを作成する](batch-custom-images.md)
+### [仮想ネットワーク内にプールを作成する](batch-virtual-network.md)
 ### [効率的なリスト クエリ](batch-efficient-list-queries.md)
 ### [ジョブの準備と完了タスク](batch-job-prep-release.md)
 ### [Linux コンピューティング ノード](batch-linux-nodes.md)
@@ -62,6 +63,7 @@
 ## [Azure Batch コンピューティング ノードの環境変数](batch-compute-node-environment-variables.md)
 
 # 関連項目
+## [Batch AI](../batch-ai/overview.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Batch Shipyard](https://github.com/Azure/batch-shipyard)
 ## [Batch と Data Factory を使用したデータ処理](../data-factory/v1/data-factory-data-processing-using-batch.md?toc=%2fazure%2fbatch%2ftoc.json)
 ## [Azure クラウドでの Batch ソリューションと HPC ソリューション](batch-hpc-solutions.md)

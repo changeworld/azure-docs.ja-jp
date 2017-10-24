@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
+ms.openlocfilehash: 43e1a66c3aca882f8f572d2bf71976d6b65a9c68
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 23ee3572752030332c5bfdd84edc97df5fb8e58f
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric アプリケーションのアップグレード
 Service Fabric アプリケーションは、サービスのコレクションです。 アップグレードの際、Service Fabric は新しい [アプリケーション マニフェスト](service-fabric-application-model.md#describe-an-application) を以前のバージョンと比較し、アプリケーション内でアップグレードの必要があるサービスを決定します。 Service Fabric は、サービス マニフェスト内のバージョン番号を、以前のバージョンのバージョン番号と比較します。 サービスが変更されていない場合は、そのサービスはアップグレードされません。
@@ -32,6 +31,8 @@ Service Fabric アプリケーションは、サービスのコレクション�
 更新ドメインは、クラスターを構成するときに、クラスター マニフェストで指定されます。 更新ドメインが更新を受け取る順序は特に決まってはいません。 更新ドメインは、アプリケーションのデプロイの論理単位です。 更新ドメインを使用すると、アップグレード中、サービスの可用性は高く維持されます。
 
 アップグレードがクラスター内のすべてのノードに適用される場合 (アプリケーションに含まれている更新ドメインが 1 つのみの場合) は、非ローリング アップグレードを行うことができます。 このアプローチは推奨されません。サービスがダウンして、アップグレード時に利用可能にならないためです。 さらに、Azure では、クラスターが 1 つだけの更新ドメインでセットアップされた場合、一切保証しません。
+
+アップグレードが完了したら、すべてのサービスおよびレプリカ (インスタンス) は同じバージョンに保管されます。つまり、アップグレードに成功すると、サービスおよびレプリカも新しいバージョンに更新されます。また、アップグレードに失敗してロールバックされると、これらも古いバージョンにロールバックされます。
 
 ## <a name="health-checks-during-upgrades"></a>アップグレード時の正常性チェック
 アップグレードには、正常性ポリシーを設定する必要があります (既定値を使用することもできます)。 指定されたタイムアウト内にすべての更新ドメインがアップグレードされた場合や、すべての更新ドメインが正常であると判断された場合は、アップグレードが成功したことになります。  正常な更新ドメインとは、その更新ドメインが、正常性ポリシーで指定されているすべての正常性チェックに合格したことを意味します。 たとえば、正常性ポリシーでは、Service Fabric で正常性が定義されているように、アプリケーション インスタンス内のすべてのサービスが *正常*であることが要求される場合があります。
@@ -76,4 +77,3 @@ Service Fabric アプリケーション内の既定のサービスは、アプ�
 「[アプリケーションのアップグレードのトラブルシューティング](service-fabric-application-upgrade-troubleshooting.md)」の手順を参照して、アプリケーションのアップグレードでの一般的な問題を修正します。
 
 [image]: media/service-fabric-application-upgrade/service-fabric-application-upgrade-flowchart.png
-

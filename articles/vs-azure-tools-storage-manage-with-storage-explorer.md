@@ -3,8 +3,8 @@ title: "ストレージ エクスプローラー (プレビュー) の概要 | M
 description: "ストレージ エクスプローラー (プレビュー) を使用した Azure ストレージ リソースの管理"
 services: storage
 documentationcenter: na
-author: kraigb
-manager: ghogen
+author: cawa
+manager: paulyuk
 editor: 
 ms.assetid: 1ed0f096-494d-49c4-ab71-f4164ee19ec8
 ms.service: storage
@@ -13,13 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/17/2017
-ms.author: kraigb
+ms.author: cawa
+ms.openlocfilehash: 58ab8a9c5864ce0cb505b78fd087df2973a7e0d8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bd8957f1257a5fdd867658be9c708bbdc8717f36
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="get-started-with-storage-explorer-preview"></a>ストレージ エクスプローラー (プレビュー) の概要
 ## <a name="overview"></a>概要
@@ -43,6 +42,7 @@ Azure ストレージ エクスプローラー (プレビュー) は、Windows�
 * [外部ストレージにアタッチする](#attach-or-detach-an-external-storage-account): ストレージ アカウントの名前、キー、およびエンドポイントを使って、別の Azure サブスクリプションに属するストレージ リソースや国内の Azure クラウドにあるストレージ リソースを管理します。
 * [SAS を使ってストレージ アカウントをアタッチする](#attach-storage-account-using-sas): Shared Access Signature (SAS) を使って、別の Azure サブスクリプションに属するストレージ リソースを管理します。
 * [SAS を使ってサービスをアタッチする](#attach-service-using-sas): SAS を使って、別の Azure サブスクリプションに属する特定のストレージ サービス (BLOB コンテナー、キュー、またはテーブル) を管理します。
+* [接続文字列を使って Azure Cosmos DB アカウントに接続する](#connect-to-an-azure-cosmos-db-account-by-using-a-connection-string): 接続文字列を使って Cosmos DB アカウントを管理します。
 
 ## <a name="connect-to-an-azure-subscription"></a>Azure サブスクリプションに接続する
 > [!NOTE]
@@ -223,6 +223,17 @@ Azure Stack サブスクリプションに接続する方法については、�
 
     ![SAS を使って共有サービスをアタッチした結果][20]
 
+## <a name="connect-to-an-azure-cosmos-db-account-by-using-a-connection-string"></a>接続文字列を使って Azure Cosmos DB アカウントに接続する
+Azure サブスクリプションを使って Azure Cosmos DB アカウントを管理する以外に、接続文字列を使って Azure Cosmos DB に接続することもできます。 接続文字列を使用して接続するには、次の手順を使用します。
+
+1. 左側のツリーで **[Local and Attached]\(ローカルで接続済み\)** を見つけ、**[Azure Cosmos DB アカウント]** を右クリックし、**[Azure Cosmos DB に接続...]** を選択します。
+
+    ![接続文字列によって Azure Cosmos DB に接続する][33]
+
+2. Azure Cosmos DB API を選び、**接続文字列**を貼り付けた後、**[OK]** をクリックして Azure Cosmos DB アカウントに接続します。 接続文字列の取得については、「[接続文字列を取得する](https://docs.microsoft.com/en-us/azure/cosmos-db/manage-account#get-the--connection-string)」を参照してください。
+
+    ![connection-string][32]
+
 ## <a name="search-for-storage-accounts"></a>ストレージ アカウントを検索する
 多数のストレージ アカウントがある場合は、左側のウィンドウの上部にある検索ボックスを使用すると、特定のストレージ アカウントをすばやく見つけることができます。
 
@@ -232,6 +243,7 @@ Azure Stack サブスクリプションに接続する方法については、�
 
 ## <a name="next-steps"></a>次のステップ
 * [ストレージ エクスプローラー (プレビュー) を使用した Azure Blob Storage リソースの管理](vs-azure-tools-storage-explorer-blobs.md)
+* [Azure Cosmos DB を Azure Storage Explorer で管理する (プレビュー)](./cosmos-db/tutorial-documentdb-and-mongodb-in-storage-explorer.md)
 
 [0]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/settings-icon.png
 [1]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-account-link.png
@@ -260,4 +272,5 @@ Azure Stack サブスクリプションに接続する方法については、�
 [29]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/add-azure-stack-account.png
 [30]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/select-accounts-azure-stack.png
 [31]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/azure-stack-storage-account-list.png
-
+[32]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connection-string.PNG
+[33]: ./media/vs-azure-tools-storage-manage-with-storage-explorer/connect-to-db-by-connection-string.PNG

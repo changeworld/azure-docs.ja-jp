@@ -73,13 +73,6 @@
       href: site-recovery-role-based-linked-access-control.md
     - name: FAQ
       href: site-recovery-faq.md
-    - name: Azure への VMware レプリケーションのための容量計画
-      href: site-recovery-plan-capacity-vmware.md
-      items:
-        - name: Azure への VMware レプリケーションのための Deployment Planner
-          href: site-recovery-deployment-planner.md
-    - name: Hyper-V レプリケーションのための Capacity Planner
-      href: site-recovery-capacity-planner.md
 - name: ハウツー ガイド
   items:
     - name: ディザスター リカバリー
@@ -88,7 +81,7 @@
           href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Hyper-V VM を Azure に
           href: tutorial-hyper-v-to-azure.md
-        - name: 物理サーバー を Azure に
+        - name: 物理サーバーを Azure に
           href: tutorial-physical-to-azure.md
         - name: Hyper-V VM をセカンダリ サイトに
           href: tutorial-vmm-to-vmm.md
@@ -104,6 +97,20 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: オンプレミス サイト間のフェールオーバーとフェールバックを実行する
           href: tutorial-vmm-to-vmm-failover-failback.md
+    - name: 容量とスケーリング
+      items:
+        - name: Azure への VMware レプリケーションのための容量計画
+          href: site-recovery-plan-capacity-vmware.md
+        - name: VMware から Azure へのレプリケーションのための Deployment Planner ツール
+          href: site-recovery-deployment-planner.md
+        - name: Hyper-V から Azure へのレプリケーションのための容量計画
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
+        - name: Hyper-V から Azure へのレプリケーションのための Capacity Planner ツール
+          href: site-recovery-capacity-planner.md
+        - name: VMware レプリケーション用のプロセス サーバーのスケールアウト
+          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
+        - name: オンプレミス サイト間での Hyper-V レプリケーションのパフォーマンス スケール テスト
+          href: site-recovery-performance-and-scaling-testing-on-premises-to-on-premises.md
     - name: 構成
       items:
         - name: ソース環境をセットアップする
@@ -120,6 +127,8 @@
               href: site-recovery-prepare-target-physical-to-azure.md
         - name: レプリケーションの設定を構成する
           href: site-recovery-setup-replication-settings-vmware.md
+        - name: レプリケーションからディスクを除外する
+          href: site-recovery-exclude-disk.md
         - name: VMware のレプリケーション用にモビリティ サービスをデプロイする
           href: site-recovery-vmware-to-azure-install-mob-svc.md
           items:
@@ -157,9 +166,11 @@
         - name: Azure からのフェールバック
           items:
             - name: Azure から VMware へのフェールバック
-              href: site-recovery-failback-azure-to-vmware.md
+              href: site-recovery-how-to-failback-azure-to-vmware.md
             - name: Azure から Hyper-V へのフェールバック
               href: site-recovery-failback-from-azure-to-hyper-v.md
+        - name: フェールバック用の Linux マスター ターゲット サーバーの設定
+          href: site-recovery-how-to-install-linux-master-target.md
     - name: 自動化
       items:
         - name: PowerShell を使用して Azure への Hyper-V のレプリケーションを設定する (VMM なし)
@@ -202,8 +213,6 @@
           href: site-recovery-vmware-setup-azure-ps-resource-manager.md
         - name: 構成サーバーの管理
           href: site-recovery-vmware-to-azure-manage-configuration-server.md
-        - name: スケールアウト プロセス サーバーの管理
-          href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: vCenter サーバーの管理
           href: site-recovery-vmware-to-azure-manage-vCenter.md
         - name: サーバーの削除と保護の無効化

@@ -12,15 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/07/2017
+ms.date: 10/05/2017
 ms.author: ryanwi
-ms.translationtype: Human Translation
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.openlocfilehash: ebe8b9f0cace419125bde84a9ff2a912af061156
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/08/2017
-
-
+ms.openlocfilehash: 480f574640d4a9ccd4da97a98adc8b284d373855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-fabricclient"></a>FabricClient を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -36,13 +34,13 @@ ms.lasthandoff: 07/08/2017
 
 1. アプリケーション パッケージのイメージ ストアへのアップロード
 2. アプリケーションの種類を登録する
-3. アプリケーション インスタンスを作成する
+3. イメージ ストアからのアプリケーション パッケージの削除
+4. アプリケーション インスタンスを作成する
 
 アプリケーションのデプロイ後、インスタンスがクラスターで実行されているときに、アプリケーションのインスタンスとそのアプリケーションの種類を削除することができます。 クラスターからアプリケーションを完全に削除するには、次の手順が必要です。
 
 1. 実行中のアプリケーションのインスタンスを削除する
 2. アプリケーションの種類が不要になったら、その登録を解除する
-3. イメージ ストアからのアプリケーション パッケージの削除
 
 [Visual Studio を使用してローカルの開発クラスターでアプリケーションのデプロイとデバッグを行う](service-fabric-publish-app-remote-cluster.md)場合、前述のすべての手順は、PowerShell スクリプトによって自動的に処理されます。  このスクリプトは、アプリケーション プロジェクトの *Scripts* フォルダーにあります。 この記事では、これらのスクリプトが実行する内容の背景を説明し、Visual Studio の外部で同じ操作を実行できるようにします。 
  
@@ -72,6 +70,9 @@ FabricClient fabricClient = new FabricClient();
 
 [GetApplicationTypeListAsync](/dotnet/api/system.fabric.fabricclient.queryclient.getapplicationtypelistasync) API は正常に登録されたすべてのアプリケーションの種類に関する情報を提供します。 この API を使用して、登録がいつ完了したかを判断できます。
 
+## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
+アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク記憶域が消費され、アプリケーションのパフォーマンスの問題につながります。 アプリケーション パッケージをイメージ ストアから削除するには、[RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API を使用します。
+
 ## <a name="create-an-application-instance"></a>アプリケーション インスタンスを作成する
 [CreateApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.createapplicationasync) API を使用して、正常に登録されているアプリケーションの種類を指定し、アプリケーションをインスタンス化することができます。 各アプリケーションの名前は、*"fabric:"* スキームで開始され、(クラスター内の) 各アプリケーション インスタンスに対して一意でなければなりません。 ターゲット アプリケーションの種類のアプリケーション マニフェストに定義されている既定のサービスも作成されます。
 
@@ -96,9 +97,6 @@ FabricClient fabricClient = new FabricClient();
 
 ## <a name="unregister-an-application-type"></a>アプリケーションの種類の登録解除
 特定のバージョンのアプリケーションの種類が不要になった場合は、[Unregister-ServiceFabricApplicationType](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.unprovisionapplicationasync) API を使用して、その特定のバージョンのアプリケーションの種類の登録を解除する必要があります。 使用していないバージョンのアプリケーションの種類の登録を解除すると、イメージ ストアで使用されているストレージ領域が解放されます。 あるアプリケーションの種類のバージョンに対してインスタンス化されたアプリケーションがなく、そのアプリケーションの種類のバージョンを参照している保留中のアプリケーションのアップグレードもない場合に、そのアプリケーションの種類のバージョンの登録を解除できます。
-
-## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
-不要になったアプリケーション パッケージは、[RemoveApplicationPackage](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.removeapplicationpackage) API を使用してイメージ ストアから削除し、システム リソースを解放することができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 ### <a name="copy-servicefabricapplicationpackage-asks-for-an-imagestoreconnectionstring"></a>Copy-ServiceFabricApplicationPackage がImageStoreConnectionString を求める
@@ -139,8 +137,7 @@ ImageStoreConnectionString は、クラスター マニフェスト内にあり�
 クライアント コンピューターがクラスターとは別のリージョンにある場合は、クラスターと同じかより近いリージョンにあるクライアント コンピューターの使用を検討してください。
 - 外部で調整されていないかどうかを確認してください。 たとえば、イメージ ストアが Azure Storage を使用するように構成されている場合、アップロードが調整される可能性があります。
 
-問題: パッケージのアップロードが正常に完了したが、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API がタイムアウトする。
-次の操作を試してください。
+問題: パッケージのアップロードが正常に完了したが、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API がタイムアウトする。次の操作を試してください。
 - イメージ ストアにコピーする前に[パッケージを圧縮](service-fabric-package-apps.md#compress-a-package)します。
 圧縮によってファイル サイズが小さくなりファイル数が減るため、トラフィックの量と Service Fabric が実行する必要のある処理が減ります。 (圧縮時間を含めた場合は特に) アップロード操作が遅くなる場合がありますが、アプリケーションの種類の登録と登録解除は高速になります。
 - `timeout` パラメーターを使用して、[ProvisionApplicationAsync](/dotnet/api/system.fabric.fabricclient.applicationmanagementclient.provisionapplicationasync) API のタイムアウト値を大きくします。
@@ -214,6 +211,21 @@ static void Main(string[] args)
     {
         Console.WriteLine("Provision Application Type failed:");
 
+        foreach (Exception ex in ae.InnerExceptions)
+        {
+            Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
+        }
+    }
+
+    // Delete the application package from a location in the image store.
+    try
+    {
+        fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
+        Console.WriteLine("Application package removed from {0}", packagePathInImageStore);
+    }
+    catch (AggregateException ae)
+    {
+        Console.WriteLine("Application package removal from Image Store failed: ");
         foreach (Exception ex in ae.InnerExceptions)
         {
             Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
@@ -309,21 +321,6 @@ static void Main(string[] args)
         }
     }
 
-    // Delete the application package from a location in the image store.
-    try
-    {
-        fabricClient.ApplicationManager.RemoveApplicationPackage(imageStoreConnectionString, packagePathInImageStore);
-        Console.WriteLine("Application package removed from {0}", packagePathInImageStore);
-    }
-    catch (AggregateException ae)
-    {
-        Console.WriteLine("Application package removal from Image Store failed: ");
-        foreach (Exception ex in ae.InnerExceptions)
-        {
-            Console.WriteLine("HResult: {0} Message: {1}", ex.HResult, ex.Message);
-        }
-    }
-
     Console.WriteLine("Hit enter...");
     Console.Read();
 }        
@@ -344,4 +341,3 @@ static void Main(string[] args)
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
-

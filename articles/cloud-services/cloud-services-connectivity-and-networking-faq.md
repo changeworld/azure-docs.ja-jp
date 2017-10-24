@@ -13,14 +13,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 09/20/2017
 ms.author: genli
-ms.translationtype: Human Translation
-ms.sourcegitcommit: db18dd24a1d10a836d07c3ab1925a8e59371051f
-ms.openlocfilehash: 3fc0d34fdb617ebb1af9c9f33e018d5fe6ec9a7d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/15/2017
-
+ms.openlocfilehash: 7b435b6904b05228a63e3ed3a9fed78747b843c9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Azure Cloud Services の接続とネットワークの問題についてよくあるご質問 (FAQ)
 
@@ -60,3 +59,50 @@ RDP の設定で構成されている有効期限の日付を無視すると、�
 
 使用される分散アルゴリズムは、使用可能なサーバーにトラフィックをマップする 5 組 (ソース IP、ソース ポート、接続先 IP、接続先ポート、プロトコルの種類) のハッシュです。 これは、トランスポート セッション内でのみ持続性を提供します。 TCP または UDP の同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータ センターの IP (DIP) インスタンスに送信されます。 クライアントがもう一度接続を開くか、同じソース IP から新しいセッションを開始すると、ソース ポートが変更され、トラフィックは別の DIP エンドポイントに送信されます。
 
+## <a name="how-can-i-redirect-the-incoming-traffic-to-my-default-url-of-cloud-service-to-a-custom-url"></a>クラウド サービスの自分の既定の URL への着信トラフィックは、どのようにしてカスタム URL にリダイレクトすればよいですか。 
+
+URL Rewrite Module of IIS を使って、クラウド サービスの既定の URL (例: \*.cloudapp.net) への着信トラフィックを、カスタムの DNS 名または URL にリダイレクトすることができます。 URL Rewrite Module は Web ロール上で既定で有効になっており、そのルールはアプリケーションの web.config に構成されているので、再起動や再イメージ化に関わりなく、いつでも VM で使用可能です。 詳細については、次を参照してください。
+
+- [URL Rewrite Module の書き換えルールを作成する](https://docs.microsoft.com/iis/extensions/url-rewrite-module/creating-rewrite-rules-for-the-url-rewrite-module)
+- [既定のリンクを削除する方法](https://stackoverflow.com/questions/32286487/azure-website-how-to-remove-default-link?answertab=votes#tab-top)
+
+## <a name="how-can-i-blockdisable-the-incoming-traffic-to-the-default-url-of-my-cloud-service"></a>どうすれば自分のクラウド サービスの既定の URL への着信トラフィックをブロックまたは無効にできますか。 
+
+自分のクラウド サービスの既定の URL または名前 (例: \*.cloudapp.net) への着信トラフィックは、下記のように、クラウド サービス定義 (*.csdef) ファイル内のサイト バインド構成でホスト ヘッダーをカスタムの DNS 名 (例: www.MyCloudService.com) に設定することにより、回避できます。 
+ 
+
+    <?xml version="1.0" encoding="utf-8"?> 
+    <ServiceDefinition name="AzureCloudServicesDemo" xmlns="http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceDefinition" schemaVersion="2015-04.2.6"> 
+      <WebRole name="MyWebRole" vmsize="Small"> 
+        <Sites> 
+          <Site name="Web"> 
+            <Bindings> 
+              <Binding name="Endpoint1" endpointName="Endpoint1" hostHeader="www.MyCloudService.com" /> 
+            </Bindings> 
+          </Site> 
+        </Sites> 
+        <Endpoints> 
+          <InputEndpoint name="Endpoint1" protocol="http" port="80" /> 
+        </Endpoints> 
+        <ConfigurationSettings> 
+          <Setting name="Microsoft.WindowsAzure.Plugins.Diagnostics.ConnectionString" /> 
+        </ConfigurationSettings> 
+      </WebRole> 
+    </ServiceDefinition> 
+ 
+このホスト ヘッダー バインドは csdef ファイルを介して強制されるので、サービスはカスタム名 'www.MyCloudService.com' を介してのみアクセス可能となり、'*.cloudapp.net' ドメインへのすべての着信要求は常に失敗します。 ただし、サービス内でカスタム SLB プローブまたは内部ロード バランサーを使用している場合は、サービスの既定の URL や名前をブロックすると、プローブの動作を妨害する可能性があります。 
+
+## <a name="how-to-make-sure-the-public-facing-ip-address-of-a-cloud-service-aka-vip-never-changes-so-that-it-could-be-customarily-whitelisted-by-few-specific-clients"></a>クラウド サービスのパブリックに公開された IP アドレス (別名、VIP) を変わらないようにして、特定のクライアントによって常にホワイトリストに登録できるようにするにはどうすればよいですか。
+
+お使いのクラウド サービスの IP アドレスのホワイトリスト登録については、それに関連付けた予約済み IP を持つことをお勧めします。そうでないと、デプロイを削除すると、Azure が提供する仮想 IP がご自分のサブスクリプションから割り当て解除されることになります。 VIP スワップ操作を成功させるには、運用スロットとステージング スロットの両方について個々の予約済み IP が必要であり、これがないとスワップ操作が失敗するので、注意してください。 IP アドレスを予約しそれをクラウド サービスに関連付けるには、次の記事に従ってください。  
+ 
+- [既存のクラウド サービスの IP アドレスを予約する](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+- [サービス構成ファイルを使用してクラウド サービスに予約済み IP を関連付ける](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file) 
+
+お使いのロールに複数のインスタンスがある限り、クラウド サービスに RIP を関連付けることでダウンタイムが発生することはありません。 また、お使いの Azure データ センターの IP 範囲をホワイトリスト登録することができます。 Azure の IP 範囲はすべて[ここ](https://www.microsoft.com/en-us/download/details.aspx?id=41653)で検索できます。 
+
+このファイルには、Microsoft Azure データ センターで使用される IP アドレス範囲 (Compute、SQL、および Storage の範囲を含む) が含まれています。 毎週投稿される最新のファイルには、現在デプロイされている範囲と今後変更される IP 範囲が反映されています。 ファイルに含まれている新しい範囲は、少なくとも 1 週間はデータ センターで使用されません。 Azure で実行されているサービスを正しく識別するために、毎週新しい xml ファイルをダウンロードし、サイトで必要な変更を実行してください。 ExpressRoute ユーザーは、このファイルを使用して、毎月第 1 週に Azure 領域の BGP アドバタイズが更新されていることに注目してください。 
+
+## <a name="how-can-i-use-azure-resource-manager-vnets-with-cloud-services"></a>どうやって Azure Resource Manager VNet とクラウド サービスを使用すればよいですか。 
+
+クラウド サービスは、Azure Resource Manager VNet に配置することはできませんが、Azure Resource Manager VNet と Classic VNet はピアリング経由で接続することができます。 詳細については、「[仮想ネットワーク ピアリング](../virtual-network/virtual-network-peering-overview.md)」をご覧ください。

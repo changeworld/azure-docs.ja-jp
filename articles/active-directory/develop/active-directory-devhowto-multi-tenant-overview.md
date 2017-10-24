@@ -15,19 +15,18 @@ ms.workload: identity
 ms.date: 09/26/2017
 ms.author: bryanla
 ms.custom: aaddev
-ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
 ms.openlocfilehash: b409aa762b60c6bed0ee26f4b9fa7c347d9eb997
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-sign-in-any-azure-active-directory-ad-user-using-the-multi-tenant-application-pattern"></a>マルチテナント アプリケーション パターンを使用してすべての Azure Active Directory (AD) ユーザーがサインインできるようにする方法
 ソフトウェアを複数組織向けのサービス アプリケーションとして提供する場合、すべての Azure AD テナントからのサインインを受け入れるようにアプリケーションを構成できます。  Azure AD では、この構成はアプリケーションのマルチテナント化と呼ばれます。  すべての Azure AD テナントのユーザーは、アプリケーションで自分のアカウントを使用することに同意すれば、そのアプリケーションにサインインできるようになります。  
 
 独自のアカウント システムを使用するか、他のクラウド プロバイダーの他の種類のサインインをサポートする既存のアプリケーションがある場合、任意のテナントからの Azure AD サインインの追加は簡単です。 アプリケーションを登録し、OAuth2、OpenID Connect、SAML を使用してサインイン コードを追加し、アプリケーションに [Microsoft でサインイン] ボタンを配置するだけです。 アプリケーションのブランド化の詳細を確認するには、次のボタンをクリックしてください。
 
-[![サインイン ボタン][AAD-Sign-In]][AAD-App-Branding]
+[![[サインイン] ボタン][AAD-Sign-In]][AAD-App-Branding]
 
 この記事では、Azure AD のシングル テナント アプリケーションの構築に慣れていることを前提としています。  まだ慣れていない場合は、[開発者ガイドのホームページ][AAD-Dev-Guide]に戻って、いずれかのクイック スタートをお試しください。
 
@@ -62,7 +61,7 @@ Azure AD は、/common エンドポイントで要求を受信するとユーザ
 
 既に説明したとおり、マルチテナント アプリケーションは、Azure AD アプリケーションのブランド化ガイドラインに従って、一貫したサインイン エクスペリエンスをユーザーに提供する必要があります。 アプリケーションのブランド化の詳細を確認するには、次のボタンをクリックしてください。
 
-[![サインイン ボタン][AAD-Sign-In]][AAD-App-Branding]
+[![[サインイン] ボタン][AAD-Sign-In]][AAD-App-Branding]
 
 それでは、/common エンドポイントの使い方とコードの実装について、さらに詳しく見てみましょう。
 
@@ -240,7 +239,6 @@ Microsoft のコンテンツ改善のため、次のコメント セクション
 [OAuth2-Role-Def]: https://tools.ietf.org/html/rfc6749#page-6
 [OpenIDConnect]: http://openid.net/specs/openid-connect-core-1_0.html
 [OpenIDConnect-ID-Token]: http://openid.net/specs/openid-connect-core-1_0.html#IDToken
-
 
 
 

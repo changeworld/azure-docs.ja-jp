@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 11/17/2016
 ms.author: annahar
 ms.openlocfilehash: 0e9b2ef89ca39a7988a7b2573496a605dfc604b4
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-multiple-ip-addresses-to-virtual-machines-using-the-azure-cli-20"></a>Azure CLI 2.0 を使用して仮想マシンに複数の IP アドレスを割り当てる
 
@@ -216,7 +216,7 @@ VM の作成後、「`az network nic show --name MyNic1 --resource-group myResou
         --public-ip-address myPublicIP3
         ```
 
-    - **既存の IP 構成にリソースを関連付ける**パブリック IP アドレス リソースが既に関連付けられている IP 構成に関連付けるだけことができます。 IP 構成にパブリック IP アドレスが関連付けられているかどうかを確認するには、次のコマンドを入力します。
+    - **リソースを既存の IP 構成に関連付ける** パブリック IP アドレス リソースは、このリソースがまだ関連付けられていない IP 構成にのみ関連付けることができます。 IP 構成にパブリック IP アドレスが関連付けられているかどうかを確認するには、次のコマンドを入力します。
 
         ```bash
         az network nic ip-config list \

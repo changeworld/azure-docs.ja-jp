@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
+ms.openlocfilehash: 336e74d8f69cb04e6bd0e85fc68ba38b218fabae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 7118ec3f5aeae40fa7ecc592309a28b585c651a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-chaos"></a>sfctl chaos
 chaos テスト サービスの開始、停止、レポートを実行します。
@@ -43,11 +42,9 @@ chaos テスト サービスの開始、停止、レポートを実行します�
 |引数|Description|
 | --- | --- |
 | --continuation-token| 継続トークンのパラメーターは、次の結果セットを取得するために使用されます。 システムからの結果が 1 つの応答に収まらないときに、空以外の値を持つ継続トークンが API の応答に含まれます。 この値が次の API 呼び出しに渡されると、API が次の結果セットを返します。 それ以上の結果がない場合は、継続トークンに値が含まれません。 このパラメーターの値を URL にエンコードすることはできません。|
-| --end-time-utc   | 時間範囲の終了時刻を表すティック数
-                          Chaos report is to be generated. Please consult [DateTime.Ticks
-                          Property](https://msdn.microsoft.com/en-
-                          us/library/system.datetime.ticks%28v=vs.110%29) for details about tick.|
-| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表すティック数。 ティックの詳細については、[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en- us/library/system.datetime.ticks%28v=vs.110%29) を参照してください。| | --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
+| --end-time-utc   | Chaos レポートが生成される時間範囲の終了時刻を表すティック数。 ティックの詳細については、「[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)」を参照してください。|
+| --start-time-utc | Chaos レポートが生成される時間範囲の開始時刻を表すティック数。 ティックの詳細については、「[DateTime.Ticks プロパティ](https://msdn.microsoft.com/en-us/library/system.datetime.ticks%28v=vs.110%29)」を参照してください。|
+| --timeout -t     | サーバー タイムアウト (秒)。  既定値は 60 です。|
 
 ### <a name="global-arguments"></a>グローバル引数
 

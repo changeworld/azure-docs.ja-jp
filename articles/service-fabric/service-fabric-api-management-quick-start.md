@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/01/2017
 ms.author: vturecek
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 857267f46f6a2d545fc402ebf3a12f21c62ecd21
-ms.openlocfilehash: 2160e2e65de5c65df8a13248bad4f626def86e49
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/28/2017
-
+ms.openlocfilehash: 2969834713fc7c2f1a2e281a6c988158d803dc45
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="service-fabric-with-azure-api-management-quick-start"></a>Azure Service Fabric と API Management のクイック スタート
 
 このガイドでは、Azure API Management と Service Fabric を設定し、Service Fabric のバックエンド サービスにトラフィックを送信する最初の API 操作を構成する方法を説明します。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。 
@@ -55,14 +53,14 @@ ms.lasthandoff: 06/28/2017
 Azure アカウントにサインインします。
 
 ```powershell
-PS > Login-AzureRmAccount
+Login-AzureRmAccount
 ```
 
 サブスクリプションを選択します。
 
 ```powershell
-PS > Get-AzureRmSubscription
-PS > Set-AzureRmContext -SubscriptionId <guid>
+Get-AzureRmSubscription
+Set-AzureRmContext -SubscriptionId <guid>
 ```
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
@@ -70,7 +68,7 @@ PS > Set-AzureRmContext -SubscriptionId <guid>
 デプロイの新しいリソース グループを作成し、 リソース グループに名前を付けて、場所を指定します。
 
 ```powershell
-PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
+New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
 ```
 
 ### <a name="deploy-the-network-topology"></a>ネットワーク トポロジをデプロイする
@@ -87,7 +85,7 @@ PS > New-AzureRmResourceGroup -Name <my-resource-group> -Location westus
  2. 次の PowerShell コマンドを使用して、ネットワーク設定用の Resource Manager テンプレートとパラメーター ファイルをデプロイします。
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\network.json -TemplateParameterFile .\network.parameters.json -Verbose
     ```
 
 ### <a name="deploy-the-service-fabric-cluster"></a>Service Fabric クラスターをデプロイする
@@ -111,7 +109,7 @@ Service Fabric クラスターの Resource Manager テンプレートは、証�
  3. 次の PowerShell コマンドを使用して、Service Fabric クラスターを作成するための Resource Manager テンプレートとパラメーター ファイルをデプロイします。
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\cluster.json -TemplateParameterFile .\cluster.parameters.json -Verbose
     ```
 
 ### <a name="deploy-api-management"></a>API Management をデプロイする
@@ -130,7 +128,7 @@ Service Fabric クラスターの Resource Manager テンプレートは、証�
  3. 次の PowerShell コマンドを使用して、API Management 用の Resource Manager テンプレートとパラメーター ファイルをデプロイします。
 
     ```powershell
-    PS > New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
+    New-AzureRmResourceGroupDeployment -ResourceGroupName <my-resource-group> -TemplateFile .\apim.json -TemplateParameterFile .\apim.parameters.json -Verbose
     ```
 
 ## <a name="configure-api-management"></a>API Management を構成する
@@ -202,7 +200,7 @@ Content-Type: application/json
 }
 ```
 
-この **url** パラメーターはクラスター内のサービスの完全修飾サービス名であり、バックエンド ポリシーにサービス名が指定されていない場合に、既定ですべての要求がこのサービスにルーティングされます。 フォールバック サービスが不要の場合は、"fabric:/fake/service" などの仮のサービス名を使用できます。
+この **url** パラメーターはクラスター内のサービスの完全修飾サービス名であり、バックエンド ポリシーにサービス名が指定されていない場合に、既定ですべての要求がこのサービスにルーティングされます。 フォールバック サービスが不要の場合は、"fabric:/fake/service" などの仮のサービス名を使用できます。 仮のフォールバック サービスであっても **URL** は "fabric:/app/service" の形式である必要があることに注意してください。
 
 各フィールドの詳細については、API Management の[バックエンド API リファレンス ドキュメント](https://docs.microsoft.com/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-contract-reference#a-namebackenda-backend)を参照してください。
 
@@ -369,4 +367,3 @@ API を呼び出すには、ユーザーにアクセス権を付与する製品�
 
 <!-- pics -->
 [sf-apim-topology-overview]: ./media/service-fabric-api-management-quickstart/sf-apim-topology-overview.png
-

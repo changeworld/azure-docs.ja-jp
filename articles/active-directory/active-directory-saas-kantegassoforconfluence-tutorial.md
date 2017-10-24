@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: ec11decbff4cf2f6c39b40228e349312fd86da00
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-confluence"></a>チュートリアル: Azure Active Directory と Kantega SSO for Confluence の統合
 
@@ -205,7 +205,7 @@ Kantega SSO for Confluence で Azure AD のシングル サインオンを構成
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-kantegassoforconfluence-tutorial/addon10.png)
 
-    a. 選択**必要な場合は、合流の内部ディレクトリでユーザーを作成**ユーザーのグループの適切な名前を入力し、(できます複数なし。 グループのコンマ区切りで)。
+    a. **[Create users in Confluence's internal Directory if needed]\(必要に応じて Confluence の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
     b. **[次へ]** をクリックします。
 
@@ -270,7 +270,7 @@ Azure AD ユーザーが Confluence にログインできるようにするに�
 
     ![従業員の追加](./media/active-directory-saas-kantegassoforconfluence-tutorial/user1.png) 
 
-3. [Users]\(ユーザー\) セクションで、**[Add Users]\(ユーザーの追加\)** タブをクリックします。 **[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
+3. [Users]\(ユーザー\) セクションで、**[Add Users]\(ユーザーの追加\)** タブをクリックします。**[Add a User]\(ユーザーの追加\)** ダイアログ ページで、次の手順に従います。
 
     ![従業員の追加](./media/active-directory-saas-kantegassoforconfluence-tutorial/user2.png) 
 

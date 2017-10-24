@@ -15,10 +15,10 @@ ms.workload: mobile
 ms.date: 12/16/2015
 ms.author: mlearned
 ms.openlocfilehash: d185fdafebad56f8970e390b2a0672c3fb84df8f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="adding-mobile-services-by-using-visual-studio-connected-services"></a>Visual Studio 接続済みサービスを使用した Mobile Services の追加
 Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイアログを利用して Azure Mobile Services に接続できます。 あらゆる C# クライアント アプリ、JavaScript アプリ、プラットフォーム非依存 Cordova アプリから接続できます。 接続すると、データを作成してアクセスしたり、カスタム API や定期ジョブを作成したり、プッシュ通信のサポートを追加したりできます。  接続済みサービスの操作は適切なあらゆる参照と接続コードを追加します。 また、Azure AD、Facebook、Twitter、Microsoft アカウントなど、さまざまな人気 ID スキームによる認証に対応しており、それを最大限に活用できます。
@@ -50,7 +50,7 @@ Visual Studio 2015 では、 **[接続済みサービスの追加]** ダイア�
    
     新しいモバイル サービス アカウントを作成するには:
    
-   1. 選択、* * サービスの作成 * * ダイアログ ボックスの下部にあるリンクします。
+   1. ダイアログ ボックスの一番下にある **[サービスの作成]** リンクを選択します。
        ![新しいモバイル接続サービスを追加する](./media/vs-azure-tools-connected-services-add-mobile-services/IC797637.png)
    2. **[モバイル サービスの作成]** ダイアログ ボックスで、**[ランタイム]** ドロップダウン リストから JavaScript バックエンド モバイル サービスまたは .NET バックエンド モバイル サービスを選択できます。 
       

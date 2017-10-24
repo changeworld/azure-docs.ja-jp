@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
+ms.openlocfilehash: 1728e1d76f075eae8f5500afa34674785f8e3848
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 657fea16e47c15efd262c86d6a150a721476134a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="work-with-the-net-backend-server-sdk-for-azure-mobile-apps"></a>Azure Mobile Apps 用 .NET バックエンド サーバー SDK の操作
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -58,7 +57,7 @@ Visual Studio で Azure Mobile Apps プロジェクトを作成するには、[A
 6. **[OK]**をクリックします。
 
 ## <a name="install-sdk"></a>方法: SDK をダウンロードして初期化する
-SDK は [NuGet.org]で入手できます。 このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。 SDK を初期化するには、 **HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
+SDK は [NuGet.org]で入手できます。このパッケージには、SDK の使用を開始するために必要な基礎機能が含まれています。 SDK を初期化するには、 **HttpConfiguration** オブジェクトに対して操作を実行する必要があります。
 
 ### <a name="install-the-sdk"></a>SDK のインストール
 SDK をインストールするには、Visual Studio でサーバー プロジェクトを右クリックして **[NuGet パッケージの管理]** を選択し、[Microsoft.Azure.Mobile.Server] パッケージを検索してから、**[インストール]** をクリックします。
@@ -126,7 +125,7 @@ Azure ポータルからのサーバーのクイックスタートは **UseDefau
 * [Microsoft.Azure.Mobile.Server.Login] カスタム認証シナリオで使用される静的メソッドである AppServiceLoginHandler.CreateToken() メソッドを提供します。
 
 ## <a name="publish-server-project"></a>方法: サーバー プロジェクトを発行する
-このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Azure App Service のデプロイに関するドキュメント](../app-service-web/web-sites-deploy.md)に記載されている Git などの方法を使用して、バックエンド プロジェクトをデプロイすることもできます。
+このセクションでは、Visual Studio から .NET バックエンド プロジェクトを発行する方法を示します。 [Git](../app-service/app-service-deploy-local-git.md) やその他の利用可能な方法を利用して、バックエンド プロジェクトをデプロイすることもできます。
 
 1. Visual Studio でプロジェクトをリビルドして、NuGet パッケージを復元します。
 2. ソリューション エクスプローラーで目的のプロジェクトを右クリックし、 **[発行]**をクリックします。 初めて発行するときには、発行プロファイルを定義する必要があります。 既に定義したプロファイルがある場合は、それを選択し、**[発行]** をクリックします。
@@ -343,7 +342,7 @@ App Service では、ログイン プロバイダーからの特定の要求を�
 
 `Query()` メソッドは、フィルター処理を行うために LINQ で操作できる `IQueryable` を返します。
 
-## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプッシュ通知を追加する
+## <a name="how-to-add-push-notifications-to-a-server-project"></a>方法: サーバー プロジェクトにプロジェクトを追加する
 **MobileAppConfiguration** オブジェクトを拡張し、Notification Hubs クライアントを作成して、サーバー プロジェクトにプッシュ通知を追加します。
 
 1. Visual Studio でサーバー プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックして `Microsoft.Azure.Mobile.Server.Notifications` を見つけ、**[インストール]** をクリックします。
@@ -413,16 +412,16 @@ Notification Hubs では、タグを使用して、ターゲットを絞った�
 ## <a name="how-to-debug-and-troubleshoot-the-net-server-sdk"></a>方法: .NET サーバー SDK のデバッグとトラブルシューティングを実行する
 Azure App Service には、ASP.NET アプリケーションのデバッグとトラブルシューティングの方法が複数用意されています。
 
-* [Azure App Service の監視](../app-service-web/web-sites-monitor.md)
-* [Azure App Service での診断ログの有効化](../app-service-web/web-sites-enable-diagnostic-log.md)
-* [Visual Studio での Azure App Service のトラブルシューティング](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md)
+* [Azure App Service の監視](../app-service/web-sites-monitor.md)
+* [Azure App Service での診断ログの有効化](../app-service/web-sites-enable-diagnostic-log.md)
+* [Visual Studio での Azure App Service のトラブルシューティング](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md)
 
 ### <a name="logging"></a>ログの記録
 標準の ASP.NET トレース書き込みを使用して、App Service の診断ログを作成できます。 ログに書き込めるようにするには、モバイル アプリ バックエンドで診断を有効にする必要があります。
 
 診断を有効にしてログに書き込むには、次の手順を実行します。
 
-1. 「 [診断を有効にする方法](../app-service-web/web-sites-enable-diagnostic-log.md#enablediag)」の手順に従います。
+1. 「 [診断を有効にする方法](../app-service/web-sites-enable-diagnostic-log.md#enablediag)」の手順に従います。
 2. 次の using ステートメントをコード ファイルに追加します。
 
         using System.Web.Http.Tracing;
@@ -431,7 +430,7 @@ Azure App Service には、ASP.NET アプリケーションのデバッグとト
         ITraceWriter traceWriter = this.Configuration.Services.GetTraceWriter();
         traceWriter.Info("Hello, World");
 4. サーバー プロジェクトを再発行し、モバイル アプリ バックエンドにアクセスして、ログ記録付きでコード パスを実行します。
-5. 「 [ログをダウンロードする方法](../app-service-web/web-sites-enable-diagnostic-log.md#download)」で説明されているように、ログをダウンロードして評価します。
+5. 「 [ログをダウンロードする方法](../app-service/web-sites-enable-diagnostic-log.md#download)」で説明されているように、ログをダウンロードして評価します。
 
 ### <a name="local-debug"></a>認証に関するローカル デバッグ
 クラウドに発行する前に変更をテストするために、ローカルでアプリケーションを実行できます。 ほとんどの Azure Mobile Apps バックエンドでは、Visual Studio で *F5* キーを押します。 ただし、認証を使用している場合は追加の考慮事項がいくつかあります。
@@ -456,7 +455,7 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 3. Kudu 管理サイトで、 **[環境]**をクリックします。
 4. *WEBSITE\_AUTH\_SIGNING\_KEY* の値を見つけます。
 
-ローカル アプリケーション構成で、*authSigningKey* パラメーターの署名キーを使用します。  モバイル バックエンドは、ローカルで実行されているときに、クライアントがクラウドベースのエンドポイントから取得するトークンを検証できるようになりました。
+ローカル アプリケーション構成で、*authSigningKey* パラメーターの署名キーを使用します。モバイル バックエンドは、ローカルで実行されているときに、クライアントがクラウドベースのエンドポイントから取得するトークンを検証できるようになりました。
 
 [1]: https://msdn.microsoft.com/library/azure/dn961176.aspx
 [2]: https://github.com/Azure/azure-mobile-apps-net-server
@@ -472,4 +471,3 @@ App Service Authentication/Authorization を使用してクラウド ベース�
 [Microsoft.Azure.Mobile.Server.Login]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Login/
 [Microsoft.Azure.Mobile.Server.Notifications]: http://www.nuget.org/packages/Microsoft.Azure.Mobile.Server.Notifications/
 [MapHttpAttributeRoutes]: https://msdn.microsoft.com/library/dn479134(v=vs.118).aspx
-

@@ -1,98 +1,110 @@
 ---
-title: "Azure Container Registry リポジトリ |Microsoft Docs"
-description: "Docker イメージ用に Azure Container Registry リポジトリを使用する方法"
+title: "クイック スタート - PowerShell を使用した Azure でのプライベート Docker レジストリの作成"
+description: "PowerShell を使用してプライベート Docker コンテナー レジストリを作成する方法を簡単に説明します。"
 services: container-registry
 documentationcenter: 
-author: cristy
-manager: balans
-editor: dlepow
+author: neilpeterson
+manager: timlt
+editor: tysonn
 ms.service: container-registry
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/30/2017
-ms.author: cristyg
+ms.date: 09/07/2017
+ms.author: nepeters
+ms.openlocfilehash: 15046d1d2aabafd72df590233f416dd266c661de
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: 1e5d5ea5b1ec121fe008abc48178b1d58f540ce1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
+# <a name="create-an-azure-container-registry-using-powershell"></a>PowerShell を使用して Azure Container Registry を作成する
 
-# <a name="create-a-private-docker-container-registry-using-the-azure-powershell"></a>Azure PowerShell を使用してプライベート Docker コンテナー レジストリを作成する
-Windows コンピューターから [Azure PowerShell](https://docs.microsoft.com/en-us/powershell/azure/overview) のコマンドを使用してコンテナー レジストリを作成し、その設定を管理します。 コンテナー レジストリの作成と管理は、[Azure Portal](container-registry-get-started-portal.md) を使用するか、[Azure CLI](container-registry-get-started-azure-cli.md) を使用するか、Container Registry [REST API](https://go.microsoft.com/fwlink/p/?linkid=834376) を使用してプログラムで行うこともできます。
+Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure Container Registry インスタンスを PowerShell で作成する方法について詳しく説明します。
 
+このクイック スタートには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
 
-* 背景と概念については、[概要](container-registry-intro.md)に関するページを参照してください。
-* サポートされているコマンドレットの一覧については、「[Azure Container Registry Management Cmdlets](https://docs.microsoft.com/en-us/powershell/module/azurerm.containerregistry/) (Azure コンテナー レジストリ管理コマンドレット)」を参照してください。
+Docker もローカルにインストールする必要があります。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
 
+## <a name="log-in-to-azure"></a>Azure へのログイン
 
-## <a name="prerequisites"></a>前提条件
-* **Azure PowerShell**: Azure PowerShell をインストールし、使用を開始するには、[インストール手順](https://docs.microsoft.com/en-us/powershell/azure/install-azurerm-ps)を参照してください。 `Login-AzureRMAccount` を実行して Azure サブスクリプションにログインします。 詳細については、[Azure PowerShell の概要](https://docs.microsoft.com/en-us/powershell/azure/get-started-azurep)に関するページを参照してください。
-* **リソース グループ**: コンテナー レジストリを作成する前に[リソース グループ](../azure-resource-manager/resource-group-overview.md#resource-groups)を作成するか、既存のリソース グループを使用します。 Container Registry サービスが[利用可能](https://azure.microsoft.com/regions/services/)な場所にリソース グループがあることを確認します。 Azure PowerShell を使用してリソース グループを作成するには、[PowerShell リファレンス](https://docs.microsoft.com/en-us/powershell/azure/get-started-azureps#create-a-resource-group)を参照してください。
-* **ストレージ アカウント** (省略可能): 同じ場所にコンテナー レジストリをバックアップするには、Azure Standard [ストレージ アカウント](../storage/common/storage-introduction.md)を作成します。 `New-AzureRMContainerRegistry` を使用してレジストリを作成するときにストレージ アカウントを指定しないと、ストレージ アカウントが自動的に作成されます。 PowerShell を使用してストレージ アカウントを作成するには、[PowerShell リファレンス](https://docs.microsoft.com/en-us/powershell/module/azure/new-azurestorageaccount)を参照してください。 現在、Premium Storage はサポートされていません。
-* **サービス プリンシパル** (省略可能): PowerShell を使用してレジストリを作成する場合、既定ではアクセス権が設定されません。 必要に応じて、既存の Azure Active Directory サービス プリンシパルをレジストリに割り当てるか、またはサービス プリンシパルを新しく作成して割り当てます。 代わりに、レジストリの管理者ユーザー アカウントを有効にすることもできます。 この記事の後半のセクションを参照してください。 レジストリ アクセスの詳細については、「[Authenticate with a container registry (コンテナー レジストリによる認証)](container-registry-authentication.md)」を参照してください。
+`Login-AzureRmAccount` コマンドで Azure サブスクリプションにログインし、画面上の指示に従います。
+
+```powershell
+Login-AzureRmAccount
+```
+
+## <a name="create-resource-group"></a>Create resource group
+
+[New-AzureRmResourceGroup](/powershell/module/azurerm.resources/new-azurermresourcegroup) を使用して Azure リソース グループを作成します。 リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。
+
+```powershell
+New-AzureRmResourceGroup -Name myResourceGroup -Location EastUS
+```
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
-コンテナー レジストリを作成するには、`New-AzureRMContainerRegistry` コマンドを実行します。
 
-> [!TIP]
-> レジストリを作成する場合は、アルファベットと数字のみを含む、グローバルに一意のトップレベル ドメイン名を指定します。 この例のレジストリの名前は `MyRegistry` ですが、独自の一意の名前に置き換えてください。
->
->
+[New-AzureRMContainerRegistry](/powershell/module/containerregistry/New-AzureRMContainerRegistry) コマンドを使用して ACR インスタンスを作成します。
 
-次のコマンドでは、最小限のパラメーターを使用して、米国中南部の場所のリソース グループ `MyResourceGroup` にコンテナー レジストリ `MyRegistry` を作成します。
+レジストリの名前は**一意である必要があります**。 次の例では、*myContainerRegistry007* を使用します。 これを一意の値に更新します。
 
 ```PowerShell
-$Registry = New-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+$Registry = New-AzureRMContainerRegistry -ResourceGroupName "myResourceGroup" -Name "myContainerRegistry007" -EnableAdminUser -Sku Basic
 ```
 
-* `-StorageAccountName` はオプションです。 指定しない場合、レジストリ名とタイムスタンプから成る名前のストレージ アカウントが指定したリソース グループに作成されます。
+## <a name="log-in-to-acr"></a>ACR へのログイン
 
-## <a name="assign-a-service-principal"></a>サービス プリンシパルの割り当て
-PowerShell コマンドを使用して、Azure Active Directory [サービス プリンシパル](../azure-resource-manager/resource-group-authenticate-service-principal.md)をレジストリに割り当てます。 これらの例のサービス プリンシパルでは所有者ロールが割り当てられますが、必要に応じて[他のロール](../active-directory/role-based-access-control-configure.md)を割り当てることができます。
+コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 まず、[Get-AzureRmContainerRegistryCredential](/powershell/module/containerregistry/get-azurermcontainerregistrycredential) コマンドを使用して、ACR インスタンスの管理者の資格情報を取得します。
 
-### <a name="create-a-service-principal"></a>サービス プリンシパルの作成
-次のコマンドでは、新しいサービス プリンシパルが作成されます。 `-Password` パラメーターで強力なパスワードを指定します。
-
-```PowerShell
-$ServicePrincipal = New-AzureRMADServicePrincipal -DisplayName ApplicationDisplayName -Password "MyPassword"
+```powershell
+$creds = Get-AzureRmContainerRegistryCredential -Registry $Registry
 ```
 
-### <a name="assign-a-new-or-existing-service-principal"></a>新規または既存のサービス プリンシパルを割り当てる
-レジストリには、新規または既存のサービス プリンシパルを割り当てることができます。 レジストリに所有者ロールのアクセス権を割り当てる場合は、次の例のようなコマンドを実行します。
+次に、[docker login](https://docs.docker.com/engine/reference/commandline/login/) コマンドを使用して ACR インスタンスにログインします。
 
-```PowerShell
-New-AzureRMRoleAssignment -RoleDefinitionName Owner -ServicePrincipalName $ServicePrincipal.ApplicationId -Scope $Registry.Id
+```bash
+docker login $Registry.LoginServer -u $creds.Username -p $creds.Password
 ```
 
-##<a name="sign-in-to-the-registry-with-the-service-principal"></a>サービス プリンシパルを使用してレジストリにサインインする
-レジストリにサービス プリンシパルを割り当てた後は、次のコマンドを使用してサインインすることができます。
+このコマンドは、完了すると "Login Succeeded (ログインに成功しました)" というメッセージを返します。
 
-```PowerShell
-docker login -u $ServicePrincipal.ApplicationId -p myPassword
+## <a name="push-image-to-acr"></a>ACR へのイメージのプッシュ
+
+Azure Container Registry にイメージをプッシュするには、まずイメージを用意する必要があります。 必要な場合は、次のコマンドを実行して、事前に作成したイメージを Docker Hub からプルします。
+
+```bash
+docker pull microsoft/aci-helloworld
 ```
 
-## <a name="manage-admin-credentials"></a>管理者の資格情報の管理
-管理者アカウントは、コンテナー レジストリごとに自動的に作成され、既定で無効になります。 次の例では、コンテナー レジストリの管理者の資格情報を管理する PowerShell コマンドを示しています。
+イメージは、ACR ログイン サーバー名でタグ付けする必要があります。 ACR インスタンスのログイン サーバー名を返す [Get-AzureRmContainerRegistry](/powershell/module/containerregistry/Get-AzureRmContainerRegistry) コマンドを実行します。
 
-### <a name="obtain-admin-user-credentials"></a>管理者ユーザーの資格情報を取得する
-```PowerShell
-Get-AzureRMContainerRegistryCredential -ResourceGroupName "MyResourceGroup" -Name "MyRegistry"
+```powershell` Get-AzureRmContainerRegistry | Select Loginserver
 ```
 
-### <a name="enable-admin-user-for-an-existing-registry"></a>既存のレジストリの管理者ユーザーを有効にする
-```PowerShell
-Update-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -EnableAdminUser
+Tag the image using the [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) command. Replace *acrLoginServer* with the login server name of your ACR instance.
+
+```bash
+docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
-### <a name="disable-admin-user-for-an-existing-registry"></a>既存のレジストリの管理者ユーザーを無効にする
-```PowerShell
-Update-AzureRMContainerRegistry -ResourceGroupName "MyResourceGroup" -Name "MyRegistry" -DisableAdminUser
+最後に、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用して、ACR インスタンスにイメージをプッシュします。 *acrLoginServer* を ACR インスタンスのログイン サーバー名で置き換えます。
+
+```bash
+docker push <acrLoginServer>/aci-helloworld:v1
+```
+
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+必要がなくなったら、[Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) コマンドを使用して、リソース グループ、ACR インスタンス、およびすべてのコンテナー イメージを削除できます。
+
+```powershell
+Remove-AzureRmResourceGroup -Name myResourceGroup
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [Docker CLI を使用した最初のイメージのプッシュ](container-registry-get-started-docker-cli.md)
 
+このクイック スタートでは、Azure CLI を使用して Azure Container Registry を作成しました。 Azure Container Instances と一緒に Azure Container Registry を使用する場合は、Azure Container Instances のチュートリアルに進みます。
+
+> [!div class="nextstepaction"]
+> [Azure Container Instances のチュートリアル](../container-instances/container-instances-tutorial-prepare-app.md)

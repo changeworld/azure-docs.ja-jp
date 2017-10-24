@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2016
 ms.author: jdial
 ms.openlocfilehash: 5e9c83cebec96c6bc8afd53b0c637d7af899746f
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reserved-ip-addresses-classic"></a>予約済み IP アドレス (クラシック)
 
@@ -47,11 +47,11 @@ Azure における IP アドレスの詳細については、[IP アドレス](v
 1. 予約済み IP はすべての Azure サービスに使用できますか。 <br>
     いいえ。 予約済み IP は、VIP を使用して公開される VM およびクラウド サービスのインスタンス ロールに対してのみ使用できます。
 2. 予約済み IP は、いくつ使用できますか。 <br>
-    詳細については、次を参照してください。、 [Azure 制限](../azure-subscription-service-limits.md#networking-limits)資料です。
+    詳細については、[Azure の制限](../azure-subscription-service-limits.md#networking-limits)に関する記事をご覧ください。
 3. 予約済み IP に料金はかかりますか。 <br>
     場合によります。 料金の詳細については、[予約済み IP アドレスの料金の詳細](http://go.microsoft.com/fwlink/?LinkID=398482)に関するページをご覧ください。
 4. どうやって IP アドレスを予約するのですか。 <br>
-    PowerShell を使用することができます、 [Azure 管理 REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または[Azure ポータル](https://portal.azure.com)Azure リージョンで、IP アドレスを予約します。 予約済み IP アドレスは、サブスクリプションに関連付けられます。
+    PowerShell、[Azure Management REST API](https://msdn.microsoft.com/library/azure/dn722420.aspx)、または [Azure Portal](https://portal.azure.com) を使用して、Azure リージョンの IP アドレスを予約できます。 予約済み IP アドレスは、サブスクリプションに関連付けられます。
 5. アフィニティ グループ ベースの VNet で予約済み IP を使用できますか。 <br>
     いいえ。 予約済み IP はリージョン VNet に対してのみサポートされます。 予約済み IP は、アフィニティ グループに関連付けられている VNet ではサポートされていません。 リージョンまたはアフィニティ グループとの VNet の関連付けの詳細については、[リージョン VNet とアフィニティ グループ](virtual-networks-migrate-to-regional-vnet.md)に関する記事をご覧ください。
 

@@ -12,17 +12,15 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/11/2017
 ms.author: heidist
+ms.openlocfilehash: f9e456a57bae4aab25ef85c93132308f2c442c0b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 70a869ac428efa0af93adbb5ee78ebc83a13a785
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="analyzers-in-azure-search"></a>Azure Search のアナライザー
 
-*アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントの内容を処理する[フルテキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 インデックスの作成中に、アナライザーはテキストをトークンに変換し、それがインデックスに用語として書き込まれます。 検索中、アナライザーはクエリ用語に対して同じ変換を実行します。この用語が、インデックス内に一致する用語が含まれたドキュメントを取得するために使用されます。
+*アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 インデックスの作成中に、アナライザーはテキストを*トークン*に変換し、*トークン化された用語*がインデックスに書き込まれます。 検索中、アナライザーは*クエリ用語*に対して同じ変換を実行します。この用語が、インデックス内の一致する用語を取得するために使用されます。
 
 分析中は、次の変換が一般的です。
 
@@ -31,7 +29,7 @@ ms.lasthandoff: 09/15/2017
 + 大文字の単語は小文字に変換されます。
 + 単語は、時制に関係なく一致が見つかるように、原形に戻されます。
 
-Azure Search には既定のアナライザーがあります。 フィールドごとに代替のアナライザーで上書きすることができます。 この記事の目的は、選択肢の範囲を説明し、特定のフィールドの字句解析のプロセスをカスタマイズするためのベスト プラクティスを提供することです。 また、主なシナリオでの構成例も示します。
+Azure Search で既定で使用されるのは、[Lucene の標準アナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)です。 フィールド単位で既定値を上書きすることができます。 この記事では、さまざまな選択肢と、カスタム分析のベスト プラクティスについて説明しています。 また、主なシナリオの構成例も示します。
 
 ## <a name="supported-analyzers"></a>サポートされているアナライザー
 
@@ -40,24 +38,24 @@ Azure Search には既定のアナライザーがあります。 フィールド
 | カテゴリ | Description |
 |----------|-------------|
 | [標準 Lucene のアナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html) | [既定]。 指定や構成は必要ありません。 この汎用アナライザーは、ほとんどの言語とシナリオで適切に実行されます。|
-| 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。カスタマイズは制限されています。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズなしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)。特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)は、個々の言語に合わせて豊富な言語のサポート提供しています。 Azure Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
+| 定義済みアナライザー | そのまま使用するように完成した製品として提供されます。カスタマイズは制限されています。 <br/>特殊と言語という 2 種類があります。 "定義済み" とは、カスタマイズなしで、名前で参照するためです。 <br/><br/>[特殊 (言語を選ばない) アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)は、特殊な処理または最小限の処理が必要なテキスト入力に使用します。 非言語の定義済みアナライザーには、**Asciifolding**、**Keyword**、**Pattern**、**Simple**、**Stop**、**Whitespace** などがあります。<br/><br/>[言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)は、各言語に合わせて高度の言語サポートが必要な場合に使用されます。 Azure Search は、35 個の Lucene 言語アナライザーと 50 個の Microsoft 自然言語処理アナライザーをサポートしています。 |
 |[カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search) | 1 つのトークナイザー (必須) と省略可能なフィルター (文字またはトークン) から構成される既存の要素を組み合わせたユーザー定義の構成。|
 
 **Pattern** や **Stop** などの定義済みアナライザーをカスタマイズして、「[Predefined Analyzer Reference](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search#AnalyzerTable)」(定義済みアナライザー リファレンス) で説明されている代替オプションを使用できます。 設定できるオプションがあるのは、定義済みアナライザーのごく一部です。 他のカスタマイズと同様に、新しい構成に *myPatternAnalyzer* などの名前を付けて、Lucene パターン アナライザーの名前を区別できるようにします。
 
 ## <a name="how-to-specify-analyzers"></a>アナライザーを指定する方法
 
-1. カスタム アナライザーの場合にのみ、インデックス定義に `analyzer` セクションを作成します。 詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) と[「Custom Analyzers」(カスタム アナライザー) の「Create」(作成)](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer) も参照してください。
+1. (カスタム アナライザーの場合のみ) インデックス定義に **アナライザー** セクションを作成します。 詳細については、「[Create Index](https://docs.microsoft.com/rest/api/searchservice/create-index)」(インデックスの作成) と[「Custom Analyzers」(カスタム アナライザー) の「Create」(作成)](https://docs.microsoft.com/rest/api/searchservice/Custom-analyzers-in-Azure-Search#create-a-custom-analyzer) も参照してください。
 
-2. アナライザーを使用する各検索可能フィールドで、[インデックスのフィールド定義](https://docs.microsoft.com/rest/api/searchservice/create-index)の `analyzer` プロパティにターゲット アナライザー名を設定します。 有効な値には、定義済みアナライザー、またはインデックス スキーマで定義した言語アナライザー、カスタム アナライザーが含まれます。
+2. インデックスの[フィールド定義](https://docs.microsoft.com/rest/api/searchservice/create-index)で、ターゲット アナライザー名に**アナライザー** プロパティを設定します。(たとえば、`"analyzer" = "keyword"` 有効な値には、定義済みアナライザー名、言語アナライザーまたは、これもインデックス スキーマで定義されるカスタム アナライザーが含まれます。
 
-  また、1 つの `analyzer` プロパティの代わりに、`indexAnalyzer` および `searchAnalyzer` フィールド パラメーターを使用して、インデックスとクエリに別のアナライザーを設定することができます。 
+3. また、1 つの **アナライザー** プロパティの代わりに、**indexAnalyzer** および **searchAnalyzer** フィールド パラメーターを使用して、インデックスとクエリに異なるアナライザーを設定することができます。 
 
-3. 分析は、インデックスの作成中に行われます。 既存のインデックスに `analyzer` を追加する場合は、次の手順に注意してください。
+3. フィールドの定義に、アナライザーを追加すると、インデックスでの書き込み操作が発生します。 既存のインデックスに **アナライザー**を追加する場合は、次の手順に注意してください。
  
  | シナリオ | 手順 |
  |----------|-------|
- | 新しい (まだインデックス作成されていない) フィールドを追加します。 | 分析は、新しいフィールドに内容を提供するドキュメントを追加または更新するときに行われます。 このタスクには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。|
+ | 新しいフィールドの追加 | フィールドがスキーマにまだ存在しない場合、更新するフィールドはありません。 テキスト分析は、新しいフィールドに内容を提供するドキュメントを追加または更新したときに実行されます。 このタスクには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。|
  | アナライザーを既存のインデックス付きフィールドに追加します。 | そのフィールドの転置インデックスは最初から再作成する必要があり、それらのフィールドの文書の内容は再度インデックス作成する必要があります。 <br/> <br/>現在開発中のインデックスの場合は、新しいフィールド定義を取得するために、インデックスを[削除](https://docs.microsoft.com/rest/api/searchservice/delete-index)して[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)します。 <br/> <br/>運用中のインデックスの場合は、改訂された定義を提供してその使用を開始するために、新しいフィールドを作成する必要があります。 新しいフィールドを組み込むには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。 |
 
 ## <a name="best-practices"></a>ベスト プラクティス
@@ -267,4 +265,3 @@ API には、インデックス作成と検索に別のアナライザーを指�
 
 <!--Image references-->
 [1]: ./media/search-lucene-query-architecture/architecture-diagram2.png
-

@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
+ms.openlocfilehash: f5a605e0b0809c27feedc98390175fd383a371eb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: 8ea05e1c3419f3e9c6b5806c1a2d4035239809d8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
 Stream Analytics ジョブに対するデータ接続は、データ ソースからのイベントのデータ ストリームです。これはジョブの "*入力*" と呼ばれます。 Stream Analytics は、Azure データ ストリーム ソース ([Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) など) と高度に統合されています。 分析ジョブと同じ Azure サブスクリプションまたは異なるサブスクリプションの入力ソースを指定できます。
@@ -35,6 +34,12 @@ Stream Analytics ジョブに対するデータ接続は、データ ソース�
 Stream Analytics は、"*参照データ*" と呼ばれる入力もサポートします。 これは静的データまたは変更頻度の低い補足データであり、 通常は相関関係の関連付けと参照を実行するために使用されます。 たとえば、SQL の結合を実行して静的な値を参照する場合と同様に、データ ストリーム入力のデータを参照データのデータに結合できます。 現在、Azure BLOB ストレージは参照データをサポートする唯一の入力ソースです。 参照データ ソースの BLOB のサイズは、最大で 100 MB に制限されています。
 
 参照データ入力を作成する方法については、「[Stream Analytics の入力ストリームでの参照データまたはルックアップ テーブルの使用](stream-analytics-use-reference-data.md)」を参照してください。  
+
+## <a name="compression"></a>圧縮
+
+Azure Stream Analytics は、すべてのデータ ストリーム入力ソース (イベント ハブ、IoT Hub、Blob Storage) に圧縮機能をもうすぐデプロイするようになります。 この機能は、新しいドロップダウン リスト オプションを Azure Portal の **[新しい入力]** ブレードに追加して、オプションでデータ ストリームを圧縮できるようにします。 現在サポートされている圧縮の種類は、[なし]、[GZip]、[Deflate] です。 
+
+圧縮は、Avro シリアル化と一緒にはサポートされず、参照データには適用できません。 
 
 ## <a name="create-data-stream-input-from-event-hubs"></a>Event Hubs からデータ ストリーム入力を作成する
 
@@ -57,6 +62,7 @@ Stream Analytics イベント ハブの各入力は、独自のコンシュー�
 | **イベント ハブ コンシューマー グループ** (省略可能) |イベント ハブからのデータを取り込むために使用するコンシューマー グループです。 コンシューマー グループが指定されていない場合、Stream Analytics ジョブは既定のコンシューマー グループを使用します。 Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | **イベントのシリアル化の形式** |入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
 | **Encoding** | 現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| **圧縮** (省略可能) | 受信データ ストリームの圧縮の種類 (なし、GZip または Deflate)。 |
 
 データがイベント ハブから送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
@@ -102,6 +108,7 @@ Stream Analytics IoT Hub の各入力は、独自のコンシューマー グル
 | **コンシューマー グループ** (省略可能) |IoT Hub からのデータを取り込むために使用するコンシューマー グループです。 コンシューマー グループが指定されていない場合、Stream Analytics ジョブは既定のコンシューマー グループを使用します。 Stream Analytics ジョブごとに個別のコンシューマー グループを使用することをお勧めします。 |
 | **イベントのシリアル化の形式** |入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
 | **Encoding** |現在のところ、UTF-8 が、唯一サポートされているエンコード形式です。 |
+| **圧縮** (省略可能) | 受信データ ストリームの圧縮の種類 (なし、GZip または Deflate)。 |
 
 データが IoT Hub から送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
@@ -138,12 +145,13 @@ CSV 形式の入力についても、データ セットのフィールドを定
 | **入力のエイリアス** | この入力を参照するジョブのクエリで使用するわかりやすい名前。 |
 | **ストレージ アカウント** | BLOB ファイルが配置されるストレージ アカウントの名前。 |
 | **ストレージ アカウント キー** | ストレージ アカウントに関連付けられている秘密キー。 |
-| **コンテナー** | BLOB 入力のコンテナーです。 コンテナーにより、Microsoft Azure BLOB サービスに格納される BLOB が論理的にグループ化されます。 BLOB を Azure Blob Storage サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
+| **コンテナー** | BLOB 入力のコンテナーです。 コンテナーにより、Microsoft Azure Blob service に格納される BLOB が論理的にグループ化されます。 BLOB を Azure Blob Storage サービスにアップロードするとき、その BLOB のコンテナーを指定する必要があります。 |
 | **パス パターン** (省略可能) | 指定されたコンテナー内に BLOB を配置するために使用されるファイル パス。 このパス内に、3 つの変数 (`{date}`、`{time}`、`{partition}`) の 1 つ以上のインスタンスを指定できます。<br/><br/>例 1: `cluster1/logs/{date}/{time}/{partition}`<br/><br/>例 2: `cluster1/logs/{date}`<br/><br/>`*` 文字はパス プレフィックスの許容値ではありません。 許容値は、有効な <a HREF="https://msdn.microsoft.com/library/azure/dd135715.aspx">Azure BLOB 文字</a>のみです。 |
 | **日付形式** (省略可能) | パスで日付変数を使用する場合は、ファイルを編成する日付形式です。 例: `YYYY/MM/DD` |
 | **時刻形式** (省略可能) |  パスで時刻変数を使用する場合は、ファイルを編成する時刻形式です。 現在唯一サポートされている値は `HH` です。 |
 | **イベントのシリアル化の形式** | 入ってくるデータ ストリームのシリアル化形式 (JSON、CSV、または Avro)。 |
 | **Encoding** | CSV と JSON では、現在のところ、UTF-8 が唯一サポートされているエンコード形式です。 |
+| **圧縮** (省略可能) | 受信データ ストリームの圧縮の種類 (なし、GZip または Deflate)。 |
 
 データが Blob Storage のソースから送信される場合、Stream Analytics クエリでは次のメタデータ フィールドにアクセスできます。
 
@@ -182,4 +190,3 @@ FROM Input
 [stream.analytics.get.started]: stream-analytics-real-time-fraud-detection.md
 [stream.analytics.query.language.reference]: http://go.microsoft.com/fwlink/?LinkID=513299
 [stream.analytics.rest.api.reference]: http://go.microsoft.com/fwlink/?LinkId=517301
-

@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 6656c9abf8483ee98c0cb1a16c06d078e32240f2
-ms.sourcegitcommit: 422efcbac5b6b68295064bd545132fcc98349d01
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-kantega-sso-for-bitbucket"></a>チュートリアル: Azure Active Directory と Kantega SSO for Bitbucket の統合
 
@@ -197,7 +197,7 @@ Kantega SSO for Bitbucket で Azure AD のシングル サインオンを構成�
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-kantegassoforbitbucket-tutorial/addon10.png)
 
-    a. 選択**必要な場合は、Bitbucket の内部ディレクトリでユーザーを作成**ユーザーのグループの適切な名前を入力し、(できます複数なし。 グループのコンマ区切りで)。
+    a. **[Create users in Bitbucket's internal Directory if needed]\(必要に応じて Bitbucket の内部ディレクトリにユーザーを作成する\)** を選択して、ユーザー グループの適切な名前を入力します (グループはコンマで区切られた複数の番号 になる場合があります)。
 
     b. **[次へ]** をクリックします。
 

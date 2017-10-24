@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 11/25/2014
 ms.author: microsofthelp@twilio.com
 ms.openlocfilehash: bd50eac7390e8639f77894689388e6926cdb619c
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>PHP で音声および SMS 機能に Twilio を使用する方法
 このガイドでは、Azure の Twilio API サービスを使用して一般的なプログラミング タスクを実行する方法を紹介します。 電話の発信と Short Message Service (SMS) メッセージの送信の各シナリオについて説明します。 Twilio の詳細、およびアプリケーションで音声と SMS を使用する方法については、「 [次のステップ](#NextSteps) 」を参照してください。
@@ -74,14 +74,14 @@ Twilio アカウントを取得する準備ができたら、[Twilio のサイ�
 Twilio アカウントにサインアップすると、アカウント ID と認証トークンが発行されます。 Twilio API を呼び出すには、この両方が必要になります。 自分のアカウントが不正にアクセスされないように、認証トークンを安全に保管してください。 アカウント ID と認証トークンは、[Twilio アカウント ページ][twilio_account]の **[ACCOUNT SID]** フィールドと **[AUTH TOKEN]** フィールドでそれぞれ確認できます。
 
 ## <a id="create_app"></a>PHP アプリケーションの作成
-Twilio サービスを使用する Azure 上の PHP アプリケーションと、Twilio サービスを使用するその他の PHP アプリケーションに違いはありません。 この記事の内容が Twilio サービスを使用する方法にフォーカスが置か Twilio サービスを使用して、REST ベースが、いくつかの方法で PHP から呼び出すことができます、状態[GitHub からの PHP 用の Twilio ライブラリ][twilio_php]です。 PHP 用 Twilio ライブラリを使用する方法の詳細については、次を参照してください。 [http://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs]です。
+Twilio サービスを使用する Azure 上の PHP アプリケーションと、Twilio サービスを使用するその他の PHP アプリケーションに違いはありません。 Twilio サービスは REST ベースであり、PHP から複数の方法で呼び出すことができますが、この記事では、Twilio サービスの呼び出しに [GitHub の PHP 用 Twilio ライブラリ][twilio_php]を使用する方法について重点的に説明します。 PHP 用 Twilio ライブラリの使用方法の詳細については、[http://readthedocs.org/docs/twilio-php/en/latest/index.html][twilio_lib_docs] を参照してください。
 
-構築と Twilio/PHP アプリケーションを Azure に展開する詳細な手順は[がどのように、Azure で PHP アプリケーションの電話による認証を使用して Twilio か][howto_phonecall_php]です。
+Azure 上で Twilio/PHP アプリケーションをビルドおよびデプロイする手順の詳細については、「[Azure 上の PHP アプリケーションで Twilio を使用して通話する方法][howto_phonecall_php]」を参照してください。
 
 ## <a id="configure_app"></a>Twilio ライブラリを使用するアプリケーションの構成
 PHP 用 Twilio ライブラリを使用するようにアプリケーションを構成するには、次の 2 つの方法があります。
 
-1. Twilio ライブラリを GitHub からの PHP のダウンロード ([https://github.com/twilio/twilio-php][twilio_php]) を追加し、 **Services**をアプリケーションにディレクトリ。
+1. GitHub ([https://github.com/twilio/twilio-php][twilio_php]) から PHP 用 Twilio ライブラリをダウンロードし、**Services** ディレクトリをアプリケーションに追加します。
    
     - または -
 2. PHP 用 Twilio ライブラリを PEAR パッケージとしてインストールします。 インストールには、次のコマンドを使用できます。
@@ -93,7 +93,7 @@ PHP 用 Twilio ライブラリをインストールしたら、ライブラリ�
 
         require_once 'Services/Twilio.php';
 
-詳細については、次を参照してください。 [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme]です。
+詳細については、[https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] を参照してください。
 
 ## <a id="howto_make_call"></a>方法: 発信通話する
 次のコードでは、**Services_Twilio** クラスを使用して発信通話を行う方法を示しています。 このコードは、Twilio から提供されるサイトも使用して、Twilio Markup Language (TwiML) 応答を返します。 コードを実行する前に、**From** および **To** の電話番号の値を置き換えて、Twilio アカウントの **From** の電話番号を確認します。
@@ -139,7 +139,7 @@ PHP 用 Twilio ライブラリをインストールしたら、ライブラリ�
 
 既に説明したように、このコードは Twilio から提供されるサイトを使用して、TwiML 応答を返します。 代わりに独自のサイトを使用して TwiML 応答を返すことができます。詳細については、「[方法: 独自の Web サイトから TwiML 応答を返す](#howto_provide_twiml_responses)」を参照してください。
 
-* **注**: SSL 証明書の検証エラーをトラブルシューティングするには、次を参照してください[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html。][ssl_validation] 
+* **注**: SSL 証明書の検証エラーのトラブルシューティングを行うには、[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] を参照してください。 
 
 ## <a id="howto_send_sms"></a>方法: SMS メッセージを送信する
 次のコードでは、**Services_Twilio** クラスを使用して SMS メッセージを送信する方法を示しています。 試用アカウントで SMS メッセージを送信できるように、 **From** の番号が Twilio から提供されます。 コードを実行する前に、Twilio アカウントの **To** の番号を確認する必要があります。
@@ -225,7 +225,7 @@ TwiML 応答を返すように PHP ページを設定したら、その PHP ペ�
         echo 'Error: ' . $e->getMessage();
     }
 
-PHP を使用した Azure で Twilio を使用する方法の詳細については、次を参照してください。[がどのように、Azure で PHP アプリケーションの電話による認証を使用して Twilio か][howto_phonecall_php]です。
+Azure 上の PHP での Twilio の使用の詳細については、「[Azure 上の PHP アプリケーションで Twilio を使用して通話する方法][howto_phonecall_php]」を参照してください。
 
 ## <a id="AdditionalServices"></a>方法: その他の Twilio サービスを使用する
 ここに示す例以外にも、Twilio が提供する Web ベースの API を使用して、Azure アプリケーションからその他の Twilio 機能を利用することができます。 詳細については、[Twilio API に関するドキュメント][twilio_api_documentation]を参照してください。

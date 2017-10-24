@@ -73,13 +73,12 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 
 | リソース プロバイダー | 機能 | 推奨 |
 | --- | --- | --- |
-| 計算 |関連付けのない仮想マシン ディスク。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
-| 計算 |仮想マシン イメージ。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
-| ネットワーク |エンドポイント ACL。 | エンドポイント ACL を削除して移行をやり直します。 |
-| ネットワーク |ExpressRoute ゲートウェイと VPN Gateway の両方を含んだ仮想ネットワーク  | 移行を開始する前に VPN Gateway を削除し、移行の完了後に VPN Gateway を作成し直します。 詳細については、[ExpressRoute の移行](../articles/expressroute/expressroute-migration-classic-resource-manager.md)に関するページを参照してください。|
-| ネットワーク |承認を使用した ExpressRoute リンク  | 移行を開始する前に仮想ネットワーク接続への ExpressRoute 回線を削除し、移行が完了してから接続を作成し直してください。 詳細については、[ExpressRoute の移行](../articles/expressroute/expressroute-migration-classic-resource-manager.md)に関するページを参照してください。 |
-| ネットワーク |Application Gateway | 移行を開始する前に Application Gateway を削除し、移行の完了後に Application Gateway を作成し直します。 |
-| ネットワーク |VNet ピアリングを使用した仮想ネットワーク (VNet から ARM に移行した後、ピアリング)。 | 仮想ネットワークを Resource Manager に移行してからピアリングします。 詳細については、[VNet ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。 | 
+| 計算 | 関連付けのない仮想マシン ディスク。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
+| 計算 | 仮想マシン イメージ。 | これらのディスクの背後にある VHD BLOB は、ストレージ アカウントの移行時に移行されます。 |
+| ネットワーク | エンドポイント ACL。 | エンドポイント ACL を削除して移行をやり直します。 |
+| ネットワーク | ExpressRoute ゲートウェイと VPN Gateway の両方を含んだ仮想ネットワーク  | 移行を開始する前に VPN Gateway を削除し、移行の完了後に VPN Gateway を作成し直します。 詳細については、[ExpressRoute の移行](../articles/expressroute/expressroute-migration-classic-resource-manager.md)に関するページを参照してください。|
+| ネットワーク | Application Gateway | 移行を開始する前に Application Gateway を削除し、移行の完了後に Application Gateway を作成し直します。 |
+| ネットワーク | VNet ピアリングを使用した仮想ネットワーク (VNet から ARM に移行した後、ピアリング)。 | 仮想ネットワークを Resource Manager に移行してからピアリングします。 詳細については、[VNet ピアリング](../articles/virtual-network/virtual-network-peering-overview.md)に関するページを参照してください。 | 
 
 ### <a name="unsupported-configurations"></a>サポートされていない構成
 次の構成は現在サポートされていません。
@@ -92,13 +91,15 @@ Resource Manager デプロイメント モデルでは、既定でアプリケ�
 | 計算 |アラートの自動スケール ポリシーが適用されている仮想マシン |移行を実行すると、これらの設定は削除されます。 したがって、移行を行う前に環境を評価することを強くお勧めします。 移行の完了後に、アラート設定を再構成することもできます。 |
 | 計算 |XML VM 拡張機能 (BGInfo 1.*、Visual Studio デバッガー、Web デプロイ、リモート デバッグ) |これはサポートされていません。 移行を続行するために、仮想マシンからこれらの拡張機能を削除することをお勧めします。削除していない場合、移行プロセスで自動的に削除されます。 |
 | 計算 |Premium storage を使用したブート診断 |VM のブート診断機能を無効にしてから移行を続行してください。 移行が完了した後に、Resource Manager スタックでブート診断を再び有効にできます。 さらに、スクリーン ショットとシリアル ログに使用されている BLOB を削除する必要があるため、これらの BLOB に対して課金されることはなくなります。 |
-| 計算 |Web/worker ロールを含む Cloud Services |現在これはサポートされていません。 |
-| ネットワーク |仮想マシンと Web/worker ロールを含む仮想ネットワーク |現在これはサポートされていません。 |
+| 計算 | Web/worker ロールを含む Cloud Services | 現在これはサポートされていません。 |
+| コンピューティング | 2 つ以上の可用性セット (つまり、複数の可用性セット) を含むクラウド サービス。 |現在これはサポートされていません。 移行前に同じ可用性セットに Virtual Machines を移動してください。 |
+| コンピューティング | Azure Security Center の拡張機能を備えた VM | Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 Virtual Machines を移行するには、サブスクリプションでセキュリティ センター ポリシーを無効にして、Virtual Machines から Security Center の監視の拡張機能を削除してください。 |
+| コンピューティング | バックアップまたはスナップショットの拡張機能を備えた VM | これらの拡張機能は、Azure Backup サービスで構成された Virtual Machines にインストールされます。 これらの Virtual Machines を移行するには、[こちらの](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault)ガイダンスに従います。  |
+| ネットワーク |仮想マシンと Web/worker ロールを含む仮想ネットワーク |現在これはサポートされていません。 移行する前に、Web/ワーカー ロールを独自の仮想ネットワークに移動してください。 従来の仮想ネットワークが移行されると、それ以降、移行された Azure Resource Manager 仮想ネットワークは従来の仮想ネットワークを使ってピアリングされ、以前と同様の構成を実現できます。|
+| ネットワーク | クラシック Express Route 回線 |現在これはサポートされていません。 これらの回線は、IaaS 移行を開始する前に、Azure Resource Manager に移行する必要があります。 これに関する詳細については、「[クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行](../articles/expressroute/expressroute-move.md)」をご覧ください。|
 | Azure App Service |App Service 環境を含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure HDInsight |HDInsight サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Microsoft Dynamics Lifecycle Services |Dynamics Lifecycle Services によって管理される仮想マシンを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure AD Domain Services |Azure AD ドメイン サービスを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure RemoteApp |Azure RemoteApp デプロイを含む仮想ネットワーク |現在これはサポートされていません。 |
 | Azure API Management |Azure API Management デプロイを含む仮想ネットワーク |現在これはサポートされていません。 IaaS VNET を移行するには、API Management デプロイの VNET を変更します。この操作では停止時間は発生しません。 |
-| 計算 |オンプレミスの DNS サーバーへの VPN ゲートウェイ (トランジット接続を使用) または ExpressRoute ゲートウェイがある VNET を使用する Azure Security Center の拡張機能 |Azure Security Center では、セキュリティを監視し、アラートを生成するために、仮想マシンに拡張機能を自動的にインストールします。 サブスクリプションで Azure Security Center のポリシーが有効になっている場合、通常はこれらの拡張機能が自動的にインストールされます。 ExpressRoute ゲートウェイの移行は現在サポートされておらず、VPN ゲートウェイ (トランジット接続を使用) ではオンプレミスのアクセスが失われます。 ExpressRoute ゲートウェイを削除したり、VPN ゲートウェイ (トランジット接続を使用) を移行したりすると、移行のコミットを進める際に VM のストレージ アカウントへのインターネット アクセスが失われます。 この場合、ゲスト エージェントの状態 BLOB を設定できないので、移行を続行できなくなります。 移行を進める 3 時間前に、サブスクリプションで Azure Security Center のポリシーを無効にしておくことをお勧めします。 |
-

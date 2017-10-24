@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: 概要 | Microsoft Docs"
-description: "Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)"
+description: "Azure Portal を使って Azure Active Directory Domain Services を有効にする"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 26fa86d166c54f48621ccbab13d1d17f465b7568
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: dd4a45c4eae6832026bce82670e914f5a02bbff7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -34,6 +33,11 @@ ms.lasthandoff: 08/29/2017
 1. **[仮想ネットワーク]** をクリックし、仮想ネットワークを選択します。
 2. **[仮想ネットワークの選択]** ブレードに、既存の仮想ネットワークがすべて表示されます。 **[基本]** ウィザード ページで選択したリソース グループと Azure の場所に属している仮想ネットワークのみが表示されます。
 3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 既存の仮想ネットワークを選択することも、新しい仮想ネットワークを作成することもできます。
+
+  > [!TIP]
+  > **管理対象ドメインは、Azure AD Domain Services を有効にした後、別の仮想ネットワークに移動できません。** 管理対象ドメインを有効にするには、適切な仮想ネットワークを選択します。 管理対象ドメインを作成したら、その管理対象ドメインは、一度削除しないと別の仮想ネットワークには移動できません。 詳細については、「[Azure AD Domain Services のネットワークに関する考慮事項](active-directory-ds-networking.md)」を参照してください。  
+  >
+
 4. **仮想ネットワークの作成:** **[新規作成]** をクリックして、新しい仮想ネットワークを作成します。 Azure AD Domain Services の専用サブネットを使用することを強くお勧めします。 たとえば、"DomainServices" という名前のサブネットを作成すると、サブネット内にデプロイされている内容を他の管理者が理解しやすくなります。 完了したら **[OK]**をクリックします。
 
     ![仮想ネットワークを選択する](./media/getting-started/domain-services-blade-network-pick-vnet.png)
@@ -49,9 +53,8 @@ ms.lasthandoff: 08/29/2017
   3. 選択したサブネットが、利用可能なアドレス空間を十分に持ち、使用可能な IP アドレスが少なくとも 3 ～5 個あることを確認します。
   >
 
-6. 完了したら、**[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに移動します。
+6. 完了したら、**[OK]** をクリックして、ウィザードの **[管理者グループ]** ページに進みます。
 
 
 ## <a name="next-step"></a>次のステップ
 [タスク 3: 管理グループを構成して Azure AD Azure AD Domain Services を有効にする](active-directory-ds-getting-started-admingroup.md)
-

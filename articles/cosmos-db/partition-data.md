@@ -12,17 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/29/2017
+ms.date: 10/06/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
+ms.openlocfilehash: f7f5e2939ed09c0fbb4eb81f066075553376ff57
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 6f272136d535dddd9c8213293841ace203c042a1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Azure Cosmos DB でのパーティション分割とスケーリング
 
 [Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) は、世界規模で分散配置されるマルチモデルのデータベース サービスであり、高速で予測可能なパフォーマンスを実現するうえで役立つよう設計されています。 アプリケーションの規模の拡大に合わせてスケーリングがシームレスに行われます。 この記事では、Azure Cosmos DB におけるあらゆるデータ モデルのパーティション分割のしくみについて概説します。 また、Azure Cosmos DB コンテナーを構成してアプリケーションを効率的にスケーリングする方法について説明します。
@@ -63,6 +61,12 @@ Azure Cosmos DB には、ハッシュベースのパーティション分割が�
 >
 
 Azure Cosmos DB コンテナーは、"*固定*" または "*無制限*" として作成することができます。 固定サイズのコンテナーの上限は、容量が 10 GB で、スループットが毎秒 10,000 RU となります。 固定サイズのコンテナーに関して、一部の API ではパーティション キーを省略することができます。 コンテナーを無制限として作成する場合は、スループットに最低でも 2,500 RU/秒を指定する必要があります。
+
+パーティションに対してデータがどのように分散されているかを確認することが大切です。 ポータルで確認するには、Azure Cosmos DB アカウントに移動して、**[監視]** セクションの **[メトリック]** をクリックし、右側のウィンドウの **[ストレージ]** タブで、異なる物理パーティションに対してデータがどのように分散されているかを把握します。
+
+![リソースのパーティション分割](./media/partition-data/partitionkey-example.png)
+
+左側の画像は不適切なパーティション キーの結果を、右側の画像は適切なパーティション キーの結果を示しています。 左側の画像を見ると、一連のパーティションにデータが均等に分散されていないことがわかります。 右側の画像に示したグラフのようにデータが分散されているのが理想です。
 
 ## <a name="partitioning-and-provisioned-throughput"></a>パーティション分割とプロビジョニング済みスループット
 Azure Cosmos DB は、予測可能なパフォーマンスが得られるように設計されています。 コンテナーを作成するときに、*1 秒あたりの[要求ユニット](request-units.md) (RU)* でスループットを予約します。 各要求には、操作で使用されるシステム リソースの量 (CPU、メモリ、IO など) に比例する、RU の負担が割り当てられます。 セッション整合性での 1 KB のドキュメントの読み取りでは、1 RU を使用します。 読み取りは、格納された項目の数や、同時に実行する同時要求の数にかかわらず 1 RU になります。 サイズの大きい項目では、サイズに応じた、さらに多くの RU が必要になります。 アプリケーションにサポートする必要のあるエンティティのサイズと読み取りの数がわかっている場合は、アプリケーションの読み取りに必要な正確な量のスループットをプロビジョニングできます。 
@@ -208,7 +212,6 @@ Azure Cosmos DB を使用したマルチテナント アプリケーションを
 
 * [Azure Cosmos DB におけるスループットのプロビジョニング](request-units.md)について理解します。
 * [Azure Cosmos DB の世界規模での分散](distribute-data-globally.md)について理解します。
-
 
 
 

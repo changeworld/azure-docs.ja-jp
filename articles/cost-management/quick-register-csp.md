@@ -1,24 +1,21 @@
-﻿---
+---
 title: "CSP パートナー情報を使用して Azure Cost Management に登録する | Microsoft Docs"
 description: "CSP パートナー情報を使用して、Cloudyn の Azure Cost Management に登録します。"
 services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/15/2017
+ms.date: 09/25/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
+ms.openlocfilehash: a7bd4aed7dbcde803c2106b8c053e8a2412eea99
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 77de126d3f4f6c01a6ca574b73ee9c73383151dd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="register-with-the-csp-partner-program-and-view-cost-data"></a>CSP パートナー プログラムに登録してコスト データを確認する
 
 CSP パートナーであれば、Cloudyn の Azure Cost Management に登録できます。 登録すると、Cloudyn ポータルにアクセスできます。 このクイック スタートでは、Cloudyn 試用版サブスクリプションの作成に必要な登録プロセスと、Cloudyn ポータルへのサインインについて詳しく説明します。 コスト データの表示を今すぐに開始する方法についても説明します。
@@ -31,7 +28,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 
 ## <a name="create-a-trial-registration"></a>試用版の登録を作成する
 
-1. Azure ポータルで、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
+1. Azure Portal で、サービスの一覧の **[Cost Management + Billing]\(コスト管理 + 課金\)** をクリックします。
 2. **[概要]** の **[コスト管理]** をクリックします。  
     ![コスト管理ページ](./media/quick-register-csp/cost-mgt-billing-service.png)
 3. **[コスト管理]** ページで **[Go to Cost Management]\(コスト管理に移動\)** をクリックし、新しいウィンドウで [Cloudyn registration]\(Cloudyn 登録\) ページを開きます。
@@ -40,9 +37,10 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
   1. **[ダッシュボード]** > **[アカウント設定]** > **[アプリ管理]** の順に移動します。
   2. 以前に Web アプリを作成したことがある場合は、この手順をスキップします。 作成したことがない場合は、**[Web アプリ]** セクションの **[新規 Web アプリの追加]** をクリックします。
   3. ご自分の Web アプリケーションから、**アプリ ID** の GUID をコピーします。
-  4. キーの有効期間は、必要に応じて、1 年または 2 年を選択します。 **[キーの追加]** を選択し、秘密鍵の値をコピーして保存します。  
+  4. ご自分の Web アプリケーションから、**Commerce ID** の GUID をコピーします。
+  5. キーの有効期間は、必要に応じて、1 年または 2 年を選択します。 **[キーの追加]** を選択し、秘密鍵の値をコピーして保存します。  
     ![パートナー センター](./media/quick-register-csp/csp-partner-center.png)
-  5. [登録] ページに戻って、情報を貼り付けます。  
+  6. [登録] ページに戻って、情報を貼り付けます。  
       ![CSP アカウントの資格情報](./media/quick-register-csp/csp-reg.png)
 6. 使用条件に同意し、情報を検証します。 **[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
 7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 請求データをすべて Cloudyn に追加するには、約 2 時間かかります。
@@ -52,8 +50,7 @@ CSP パートナーであれば、Cloudyn の Azure Cost Management に登録で
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。Cloudyn の Azure Cost Management については、コスト管理のチュートリアルで続きをご覧ください。
+このクイックスタートでは、CSP 情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 
 > [!div class="nextstepaction"]
 > [コスト データの確認](./tutorial-review-usage.md)
-

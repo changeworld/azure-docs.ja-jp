@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: xshi
+ms.openlocfilehash: e8abae4d523ad537563f2c2964a3585b68fda7c1
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: eeed445631885093a8e1799a8a5e1bcc69214fe6
-ms.openlocfilehash: 253a2d34ea5b3f4f8253900be27c54fe5ca1dacf
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -102,6 +101,9 @@ DevKit で実行されている既定のアプリによって、ファームウ�
 
 ### <a name="upgrade-to-the-latest-firmware"></a>最新ファームウェアへのアップグレード
 
+> [!NOTE] 
+> バージョン 1.1 以降、DevKit ではブートローダーで ST-SAFE が有効になっています。 バージョン 1.1 よりも前のファームウェアを実行している場合は、確実に機能するようにアップグレードする必要があります。
+
 ファームウェアのアップグレードが必要な場合は、現在のファームウェア バージョンと最新のファームウェア バージョンが画面に表示されます。 アップグレードするには、[ファームウェアのアップグレード](https://microsoft.github.io/azure-iot-developer-kit/docs/upgrading/) ガイドに従ってください。
 
 ![現在および最新のファームウェア バージョンの表示](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/firmware.jpg)
@@ -119,7 +121,6 @@ B ボタンを押してセンサーをテストします。 B ボタンを押し
 
 次は、開発環境、つまり魅力的な IoT アプリケーションを構築するためのツールおよびパッケージを設定します。 ご利用のオペレーティング システムに応じて、Windows バージョンまたは macOS バージョンを選択できます。
 
-
 ### <a name="windows"></a>Windows
 
 インストール パッケージを使用して、開発環境を準備することをお勧めします。 問題が発生した場合は、[手動の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/)に従って準備することができます。
@@ -129,8 +130,7 @@ B ボタンを押してセンサーをテストします。 B ボタンを押し
 ダウンロードする.zip ファイルには、DevKit 開発に必要なツールとパッケージがすべて含まれています。
 
 > [!div class="button"]
-[ダウンロード](https://azureboard.azureedge.net/prod/installpackage/devkit_install_1.0.2.zip)
-
+[ダウンロード](https://aka.ms/devkit/prod/installpackage/latest)
 
 .zip ファイルに含まれるツールとパッケージは次のとおりです。 既にインストール済みのコンポーネントがある場合、スクリプトによってそのコンポーネントが検出され、スキップされます。
 
@@ -144,7 +144,7 @@ B ボタンを押してセンサーをテストします。 B ボタンを押し
 
 #### <a name="run-the-installation-script"></a>インストール スクリプトの実行
 
-エクスプローラーで .zip ファイルを見つけて展開します。 install.cmd を見つけて右クリックし、**[管理者として実行]** を選択します。
+エクスプローラーで .zip ファイルを見つけて展開します。 `install.cmd` を見つけて右クリックし、**[管理者として実行]** を選択します。
 
 ![エクスプローラー](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/run-admin.png)
 
@@ -161,8 +161,7 @@ Arduino の VS Code 拡張機能では、Arduino IDE が使用されます。 Ar
 インターネットの速度にもよりますが、インストールは約 10 分かかります。 インストールが完了したら、デスクトップに Visual Studio Code と Arduino IDE のショートカットが表示されます。
 
 > [!NOTE] 
-> VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないことを示すエラーが表示される場合があります。 VS Code を閉じて、Arduino IDE を再起動します。 VS Code によって、Arduino IDE のパスが正しく検索されます。
-
+> VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないことを示すエラーが表示される場合があります。 これを解決するには、VS Code を閉じて、Arduino IDE を再起動します。 VS Code によって、Arduino IDE のパスが正しく検索されます。
 
 ### <a name="macos-preview"></a>macOS (プレビュー)
 
@@ -249,20 +248,20 @@ DevKit が接続されていないことを確認します。 まず VS Code を
 ![[概要] ページ](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution-vscode.png)
 
 > [!NOTE] 
-> VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないことを示すエラーが表示される場合があります。 VS Code を閉じて、Arduino IDE を再起動します。 VS Code によって、Arduino IDE のパスが正しく検索されます。
+> VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないことを示すエラーが表示される場合があります。 VS Code を閉じてから、Arduino IDE をもう一度起動します。これにより、VS Code が Arduino IDE のパスを正しく見つけることができます。
 
 
 ### <a name="open-the-arduino-examples-folder"></a>[Arduino Examples]\(Arduino の例\) フォルダーを開く
 
-**[Arduino Examples]\(Arduino の例\)** タブで、**[Examples for MXCHIP AZ3166]** > **[AzureIoT]** に移動し、**[GetStarted]** を選択します。
+左側の **[Arduino Examples]\(Arduino の例\)** セクションを展開し、**[Examples for MXCHIP AZ3166] > [AzureIoT]** を参照して、**[GetStarted]** を選択します。 これにより、プロジェクト フォルダーを含む新しい VS Code ウィンドウが開きます。
 
 ![[Arduino Examples]\(Arduino の例\) タブ](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution-examples.png)
 
-ウィンドウを偶然閉じた場合は、再度開くことができます。 Ctrl + Shift + P キー (macOS: Cmd + Shift + P キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
+ウィンドウを偶然閉じた場合は、再度開くことができます。 `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Examples]\(Arduino: 例\)** を見つけて選択します。
 
 ## <a name="provision-azure-services"></a>Azure サービスのプロビジョニング
 
-ソリューション ウィンドウで、「`task cloud-provision`」を入力し、Ctrl キーを押しながら P キーを押して (macOS: Cmd キーを押しながら P キーを押して) タスクを実行します。
+ソリューション ウィンドウで、「`task cloud-provision`」と入力し、`Ctrl+P` キー (macOS: `Cmd+P` キー) を使用してタスクを実行します。
 
 VS Code ターミナルでは、対話型コマンド ラインを使用して、必要な Azure サービスをプロビジョニングできます。
 
@@ -272,13 +271,15 @@ VS Code ターミナルでは、対話型コマンド ラインを使用して�
 
 ### <a name="install-the-required-library"></a>必要なライブラリのインストール
 
-1. F1 キーまたは Ctrl + Shift + P キー (macOS: Cmd + Shift + P キー) を選択してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Library Manager]\(Arduino: ライブラリ マネージャー\)** を見つけて選択します。
+1. `F1` キーまたは `Ctrl+Shift+P` キー (macOS: `Cmd+Shift+P` キー) を押してコマンド パレットを開き、「**Arduino**」と入力して、**[Arduino: Library Manager]\(Arduino: ライブラリ マネージャー\)** を見つけて選択します。
 
-2. **ArduinoJson** ライブラリを検索し、**[インストール]** を選択します。
+2. **ArduinoJson** ライブラリを検索し、**[インストール]** を選択します。![Arduino ライブラリのインストール](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/arduino-json.png)
 
-### <a name="build-and-upload-the-device-code"></a>デバイス コードのビルドとアップロード
+### <a name="build-and-upload-the-device-code-windows"></a>デバイス コードのビルドとアップロード (Windows)
+1. `Ctrl+P` キーを使用して `task device-upload` を実行します。
+2. ターミナルによって、構成モードを開始するよう求められます。 これを行うには、A ボタンを押しながら、リセット ボタンを押して離します。 画面に、DevKit の ID と "構成" が表示されます。
 
-Ctrl キーを押しながら P キーを使用して (macOS: Cmd キーを押しながら P キーを使用して) `task device-upload` を実行します。 ターミナルによって、構成モードを開始するよう求められます。 これを行うには、A ボタンを押しながら、リセット ボタンを押して離します。 画面に**構成**が表示されます。 ここで、`task cloud-provision` ステップから取得した接続文字列を設定します。
+これは、`task cloud-provision` の手順から取得する接続文字列を設定するためです。
 
 その後、ターミナルで、Arduino スケッチの確認とアップロードが開始されます。
 
@@ -286,9 +287,28 @@ Ctrl キーを押しながら P キーを使用して (macOS: Cmd キーを押�
 
 DevKit が再起動され、コードの実行が開始されます。
 
+### <a name="build-and-upload-the-device-code-mac"></a>デバイス コードのビルドとアップロード (Mac)
+
+1. DevKit を構成モードにします。A ボタンを押しながら、リセット ボタンを押して離します。 画面に "構成" が表示されます。
+2. `Cmd+P` キーを使用して `task device-upload` を実行します。
+
+これは、`task cloud-provision` の手順から取得する接続文字列を設定するためです。
+
+その後、VS Code で、Arduino スケッチの確認とアップロードが開始されます。
+
+![device-upload](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/device-upload.png)
+
+DevKit が再起動され、コードの実行が開始されます。
+
 ## <a name="test-the-project"></a>プロジェクトのテスト
 
-VS Code で、ステータス バーの電源プラグ アイコンを選択して、シリアル モニターを開きます。
+VS Code で、次の手順を実行し、シリアル モニターを開いて設定します。
+
+1. ステータス バーの `COM[X]` の単語をクリックして、右側の COM ポートを `STMicroelectronics` で設定します。![com-port](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/com-port.png)
+
+2. ステータス バーの電源プラグ アイコンをクリックして、シリアル モニターを開きます。![serial-monitor](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/serial-monitor.png)
+
+3. ステータス バーで、ボー レートを表す数字をクリックして `115200` に設定します。![baud-rate](media/iot-hub-arduino-devkit-az3166-get-started/mini-solution/connect-iothub/baud-rate.png)
 
 次の結果が表示された場合、サンプル アプリケーションは正常に実行されてます。
 
@@ -314,4 +334,3 @@ MXChip IoT DevKit を IoT ハブに接続し、キャプチャしたセンサー
 - [Azure Machine Learning で IoT ハブからのセンサー データを使用して天気予報を行う](https://docs.microsoft.com/azure/iot-hub/iot-hub-weather-forecast-machine-learning)
 - [iothub-explorer を使用したデバイス管理](https://docs.microsoft.com/azure/iot-hub/iot-hub-device-management-iothub-explorer)
 - [Logic Apps を使用したリモートの監視と通知](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps)
-

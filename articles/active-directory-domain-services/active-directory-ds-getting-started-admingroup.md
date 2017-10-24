@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: 概要 | Microsoft Docs"
-description: "Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)"
+description: "Azure Portal を使用して Azure Active Directory Domain Services を有効にする"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,16 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/15/2017
+ms.date: 09/26/2017
 ms.author: maheshu
+ms.openlocfilehash: 32d51f883ad92b5be6b1f455dfb1a865748f3102
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: f87bcf33d3b1eb21c7d84814e4c4086f664e293d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal-preview"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする (プレビュー)
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
 
 ## <a name="task-3-configure-administrative-group"></a>タスク 3: 管理グループを構成する
@@ -57,11 +56,11 @@ ms.lasthandoff: 07/21/2017
 
     ![プロビジョニング中の管理対象ドメインを見つける](./media/getting-started/domain-services-provisioning-state-find-resource.png)
 
-2. ドメインの詳細を表示するには、管理対象ドメインの名前 (例: "contoso100.com") をクリックします。
+2. 管理対象ドメインの詳細を表示するには、管理対象ドメインの名前 (例: "contoso100.com") をクリックします。
 
     ![Domain Services - プロビジョニング状態](./media/getting-started/domain-services-provisioning-state.png)
 
-3. **[概要]** タブは、ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、管理対象ドメインを構成することはできません。 管理対象ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
+3. **[概要]** タブは、管理対象ドメインが現在プロビジョニング中であることを示しています。 完全にプロビジョニングされるまで、管理対象ドメインを構成することはできません。 管理対象ドメインが完全にプロビジョニングされるまでに最大で 1 時間かかる場合があります。
 
     ![Domain Services - プロビジョニング状態のときの [概要] タブ ](./media/getting-started/domain-services-provisioning-state-details.png)
 
@@ -74,6 +73,9 @@ ms.lasthandoff: 07/21/2017
     ![Domain Services - 完全にプロビジョニングされた後の [プロパティ] タブ](./media/getting-started/domain-services-provisioned-properties.png)
 
 
+## <a name="need-help"></a>お困りの際は、
+管理対象ドメインの両方のドメインコントローラーがプロビジョニングされるまでに 1、2 時間かかる場合があります。 デプロイが失敗した場合、または 2 時間以上 "保留中" のままである場合は、[製品チームにお問い合わせください](active-directory-ds-contact-us.md)。
+
+
 ## <a name="next-step"></a>次のステップ
 [タスク 4: Azure 仮想ネットワークの DNS 設定を更新する](active-directory-ds-getting-started-dns.md)
-

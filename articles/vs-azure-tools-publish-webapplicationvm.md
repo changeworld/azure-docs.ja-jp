@@ -15,10 +15,10 @@ ms.workload: multiple
 ms.date: 11/11/2016
 ms.author: kraigb
 ms.openlocfilehash: 2738fc1dff50a177a227ae2c7719bd9a192d82ad
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="publish-webapplicationvm-windows-powershell-script"></a>Publish-WebApplicationVM (Windows PowerShell スクリプト)
 仮想マシンに Web アプリケーションをデプロイします。 このスクリプトは、必要なリソースが Azure サブスクリプションに存在しない場合にそれらを作成します。
@@ -79,7 +79,7 @@ True の場合は、信頼されたルート証明機関によって署名され
 | ワイルドカード文字を許可する |false |
 
 ### <a name="vmpassword"></a>VMPassword
-仮想マシンアカウントの資格情報。 例: VMPassword @{Name ="admin"です。パスワード ="password"}
+仮想マシンアカウントの資格情報。 例: -VMPassword @{Name = "admin"; Password = "password"}
 
 | エイリアス | なし |
 | --- | --- |
@@ -90,7 +90,7 @@ True の場合は、信頼されたルート証明機関によって署名され
 | ワイルドカード文字を許可する |false |
 
 ### <a name="databaseserverpassword"></a>DatabaseServerPassword
-Azure での SQL Database の資格情報。 例: DatabaseServerPassword @{Name ="admin"です。パスワード ="password"}
+Azure での SQL Database の資格情報。 例: -DatabaseServerPassword @{Name = "admin"; Password = "password"}
 
 | エイリアス | なし |
 | --- | --- |

@@ -1,6 +1,6 @@
 ---
 title: "システム正常性レポートを使用してトラブルシューティングを行う |Microsoft Docs"
-description: "Azure Service Fabric のコンポーネントよって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。"
+description: "Azure Service Fabric のコンポーネントによって送信される正常性レポートと、クラスターやアプリケーションの問題をトラブルシューティングするための使い方について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: oanapl
@@ -14,33 +14,33 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
+ms.openlocfilehash: 21f04c1b01033adcef7b7d73c710dd2b4590f76f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fb3b2ecd73acb0ea65af477bc6a5b887c117574c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
-Azure Service Fabric コンポーネントは、追加の設定なしでクラスター内のすべてのエンティティについてレポートします。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
+Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
 
 > [!NOTE]
 > 正常性に関する概念については、「 [Service Fabric の正常性モニタリングの概要](service-fabric-health-introduction.md)」を参照してください。
 > 
 > 
 
-システム正常性レポートは、クラスターとアプリケーションの動作状況を可視化し、正常性の問題を警告します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric の観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。 ユーザー サービスでロジックに固有の情報を追加して正常性データを強化できます。
+システム正常性レポートは、クラスターとアプリケーションの動作状況を可視化し、問題にフラグを設定します。 システム正常性レポートは、アプリケーションとサービスを対象に、エンティティが実装されて正しく動作していることを Service Fabric の観点から確認します。 レポートは、サービスのビジネス ロジックの正常性モニタリングやハングしたプロセスの検出を提供するものではありません。 ユーザー サービスでロジックに固有の情報を追加して正常性データを強化できます。
 
 > [!NOTE]
-> ウォッチドッグ正常性レポートは、システム コンポーネントでエンティティが作成された *後* にのみ表示できます。 エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。 エンティティのステートフルな永続化インスタンスが新しく作成される (たとえば、新しいサービス レプリカのインスタンスが作成される) 場合も同じことが当てはまります。 古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
+> ユーザー ウォッチドッグによって送信された正常性レポートは、システム コンポーネントでエンティティが作成された *後* にのみ表示できます。 エンティティが削除されると、正常性ストアは関連付けられているすべての正常性レポートを自動的に削除します。 エンティティの新しいインスタンスが作成される (たとえば、サービス レプリカのステートフルな永続化インスタンスが新しく作成される) 場合も同じことが当てはまります。 古いインスタンスに関連付けられているすべてのレポートが削除され、ストアからクリーンアップされます。
 > 
 > 
 
 システム コンポーネント レポートはソース別に識別され、"**System.**" プレフィックスで 始まります。 ウォッチドッグのソースに同じプレフィックスを使用することはできません (無効なパラメーターを持つレポートが拒否されるため)。
-いくつかのシステム レポートを確認し、何がレポートのトリガーになっているか、レポートに表示された問題を修正する方法を理解しましょう。
+
+いくつかのシステム レポートを確認して、何がレポートのトリガーになっているかを理解し、レポートに表示された問題を修正する方法を学習しましょう。
 
 > [!NOTE]
-> Service Fabric では、指定した条件に関するレポートが継続的に追加され、クラスターおよびアプリケーションの状況をより詳細に把握できます。 既存のレポートに詳細情報を追加して改善し、迅速に問題を解決することもできます。
+> Service Fabric では、指定した条件に関するレポートが継続的に追加され、クラスターおよびアプリケーションの状況をより詳細に把握できます。既存のレポートに詳細情報を追加して改善し、問題の迅速なトラブルシューティングに役立てることもできます。
 > 
 > 
 
@@ -48,27 +48,27 @@ Azure Service Fabric コンポーネントは、追加の設定なしでクラ�
 クラスターの正常性エンティティが、正常性ストアに自動的に作成されます。 すべてが正常に動作している場合、システム レポートは作成されません。
 
 ### <a name="neighborhood-loss"></a>ネットワーク コンピューターの消失
-**System.Federation** は、ネットワーク コンピューターの消失を検出するとエラーを報告します。 レポートのデータは個々のノードから収集され、ノード ID がプロパティ名に含まれます。 Service Fabric リング全体でネットワーク コンピューターの消失が 1 件あった場合、通常は 2 つのイベントを想定できます (問題の両側が報告されます)。 さらに多くのネットワーク コンピューターが消失している場合、イベントの数はもっと多くなります。
+**System.Federation** は、ネットワーク コンピューターの消失を検出するとエラーを報告します。 レポートのデータは個々のノードから収集され、ノード ID がプロパティ名に含まれます。 Service Fabric リング全体でネットワーク コンピューターの消失が 1 件あった場合、通常は、ギャップ レポートの両側を表す 2 つのイベントを想定できます。 さらに多くのネットワーク コンピューターが消失している場合、イベントの数はもっと多くなります。
 
-レポートは、グローバル リース タイムアウトを Time to Live として指定します。 レポートは、条件が有効な限り、TTL の半分の期間ごとに再送信されます。 イベントは、期限切れになると自動的に削除されます。 期限切れ時に削除する動作により、レポート ノードが停止した場合でも、レポートが正常性ストアから適切にクリーンアップされます。
+レポートは、グローバル リース タイムアウトを Time to Live (TTL) として指定します。 レポートは、条件が有効な限り、TTL の半分の期間ごとに再送信されます。 イベントは、期限切れになると自動的に削除されます。 期限切れ時に削除する動作により、レポート ノードが停止した場合でも、レポートが正常性ストアから適切にクリーンアップされます。
 
 * **SourceId**: System.Federation
-* **Property**: **Neighborhood** で始まり、ノードの情報が含まれます
+* **プロパティ**: **Neighborhood** で始まり、ノードの情報が含まれます。
 * **次のステップ**: ネットワーク コンピューターが消失した原因を調査します (たとえば、クラスター ノード間の通信をチェックします)。
 
 ## <a name="node-system-health-reports"></a>ノード システム正常性レポート
-**System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます ( [RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync)を参照)。
+**System.FM**は Failover Manager サービスを表し、クラスター ノードに関する情報を管理する権限です。 どのノードにも、ノードの状態を示す System.FM からのレポートが 1 つあるはずです。 ノードの状態が削除されると、ノード エンティティは削除されます。 詳細については、[RemoveNodeStateAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.clustermanagementclient.removenodestateasync) に関する記事をご覧ください。
 
 ### <a name="node-updown"></a>ノードを上/下に移動
-System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動 (新規インスタンス) が報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
+System.FM は、ノードがリングに参加する (稼動している) と、OK と報告します。 ノードがリングから外れる (アップグレードのため、または単に障害が発生しているため停止している) と、エラーを報告します。 正常性ストアによって構築された正常性の階層は、デプロイ済みエンティティに対して、System.FM ノード レポートに関連したアクションを実行します。 その階層では、ノードは、デプロイ済みのすべてのエンティティの仮想的な親ノードと見なされます。 そのノードにデプロイされたエンティティは、ノードが System.FM によって起動されたものとしてレポートされた場合、エンティティに関連付けられているインスタンスと同じインスタントと共に、クエリを通じて公開されます。 System.FM によってノードの停止または再起動が新規インスタンスとして報告されると、正常性ストアは、停止したノードまたはノードの以前のインスタンスのみに存在している可能性のあるデプロイ済みエンティティを自動的にクリーンアップします。
 
 * **SourceId**: System.FM
 * **プロパティ**: State
-* **次のステップ**: ノードがアップグレードのために停止している場合、アップグレード後に復帰する必要があります。 この例では、正常性状態が OK に切り替わる必要があります。 ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
+* **次のステップ**: ノードがアップグレードのために停止している場合は、アップグレード後に復帰する必要があります。 この例では、正常性状態が OK に切り替わる必要があります。 ノードが復帰しない場合、またはエラーが発生した場合は、さらに問題を調査する必要があります。
 
 ノードの稼動を表す正常性状態 OK の System.FM イベントの例を次に示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricNodeHealth  _Node_0
 
 NodeName              : _Node_0
@@ -92,14 +92,14 @@ HealthEvents          :
 **System.FabricNode** は、ノードで使用されている証明書の期限が近づくと警告を報告します。 ノードごとに、**Certificate_cluster**、**Certificate_server**、**Certificate_default_client** という 3 つの証明書があります。 有効期限が 2 週間以上先の場合は、レポートの正常性状態は OK になります。 有効期限が 2 週間以内の場合は、レポートの種類は警告になります。 これらのイベントの TTL は無制限で、イベントはノードがクラスターから切り離されると削除されます。
 
 * **SourceId**: System.FabricNode
-* **Property**: **Certificate** で始まり、証明書の種類に関する詳細が含まれます
+* **プロパティ**: **Certificate** で始まり、証明書の種類に関する詳細が含まれます。
 * **次のステップ**: 有効期限が近い場合は、証明書を更新します。
 
 ### <a name="load-capacity-violation"></a>ロード容量違反
 Service Fabric Load Balancer は、ノード容量違反を検出すると警告を報告します。
 
 * **SourceId**: System.PLB
-* **Property**: **Capacity** で始まります
+* **プロパティ**: **Capacity** で始まります。
 * **次のステップ**: 提供されたメトリックを確認し、ノードの現在の容量を表示します。
 
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
@@ -110,11 +110,11 @@ System.CM は、アプリケーションが作成または更新されたとき�
 
 * **SourceId**: System.CM
 * **プロパティ**: State
-* **次のステップ**: アプリケーションが作成または更新されたら、Cluster Manager 正常性レポートを含める必要があります。 作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します (例: Powershell コマンドレット **Get-ServiceFabricApplication -ApplicationName *applicationName***)。
+* **次のステップ**: アプリケーションが作成または更新されたら、Cluster Manager 正常性レポートを含める必要があります。 作成されなかった場合は、クエリを発行してアプリケーションの状態を確認します (例: PowerShell コマンドレット **Get-ServiceFabricApplication -ApplicationName** *applicationName*)。
 
 **fabric:/WordCount** アプリケーションの State イベントの例を次に示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricApplicationHealth fabric:/WordCount -ServicesFilter None -DeployedApplicationsFilter None -ExcludeHealthStatistics
 
 ApplicationName                 : fabric:/WordCount
@@ -146,7 +146,7 @@ System.FM は、サービスが作成されると OK を報告します。 サ�
 
 **fabric:/WordCount/WordCountWebService** サービスの State イベントの例を次に示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricServiceHealth fabric:/WordCount/WordCountWebService -ExcludeHealthStatistics
 
 
@@ -171,7 +171,7 @@ HealthEvents          :
 ```
 
 ### <a name="service-correlation-error"></a>サービス関連エラー
-**System.PLB** で、別のサービスと関連付けられるサービスの更新によってアフィニティ チェーンが作成されたことが検出されると、エラーが報告されます。 このレポートは、更新が成功した場合にクリアされます。
+**System.PLB** は、アフィニティ チェーンを作成する別のサービスにサービスの更新が関連付けられたことを検出すると、エラーを報告します。 このレポートは、更新が成功した場合にクリアされます。
 
 * **SourceId**: System.PLB
 * **プロパティ**: ServiceDescription
@@ -185,23 +185,23 @@ System.FM は、パーティションが作成されており、正常な場合�
 
 パーティションが最小レプリカ数を下回ると、エラーを報告します。 パーティションが最小レプリカ数を下回っていなくても、ターゲット レプリカ数を下回る場合は、警告を報告します。 パーティションがクォーラム損失の状態にあるとき、System.FM はエラーを報告します。
 
-その他の重要なイベントとして、再構成に予想よりも時間がかかる場合と、ビルドに予想よりも時間がかかる場合の警告があります。 ビルドおよび再構成の予想される時間は、サービスのシナリオに基づいて構成可能です。 たとえば、サービスに SQL Database などのテラバイトの状態がある場合、状態が小量のサービスの場合よりもビルドに長い時間がかかります。
+その他の重要なイベントとして、再構成に予想よりも時間がかかる場合と、ビルドに予想よりも時間がかかる場合の警告があります。 ビルドおよび再構成の予想される時間は、サービスのシナリオに基づいて構成可能です。 たとえば、サービスに Azure SQL Database などのテラバイトの状態がある場合、状態が少量のサービスの場合よりもビルドに長い時間がかかります。
 
 * **SourceId**: System.FM
 * **プロパティ**: State
 * **次のステップ**: 正常性状態が OK でない場合、一部のレプリカが正しく作成されていないか、開かれていないか、プライマリまたはセカンダリに昇格されていない可能性があります。 
 
-説明にクォーラムの損失について記述されている場合、ダウンしたレプリカの詳細な正常性レポートを確認し、それらをバックアップしておくと、対象パーティションを再びオンラインに戻すのに役立ちます。
+説明にクォーラムの損失が記述されている場合、ダウンしたレプリカの詳細な正常性レポートを確認し、それらをバックアップしておくと、対象パーティションを再びオンラインに戻すのに役立ちます。
 
 パーティションが[再構成](service-fabric-concepts-reconfiguration.md)処理でスタックしていることが説明に記述されている場合、プライマリ レプリカに関する正常性レポートに詳しい情報が示されています。
 
 他の System.FM 正常性レポートでは、他のシステム コンポーネントのレプリカ、パーティション、サービスに関するレポートが含まれます。 
 
-次の例では、これらのレポートの一部について取り上げます。 
+以下の例では、これらのレポートの一部について説明します。 
 
 正常なパーティションの例を示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountWebService | Get-ServiceFabricPartitionHealth -ExcludeHealthStatistics -ReplicasFilter None
 
 PartitionId           : 8bbcd03a-3a53-47ec-a5f1-9b77f73c53b2
@@ -221,9 +221,9 @@ HealthEvents          :
                         Transitions           : Error->Ok = 7/13/2017 5:57:18 PM, LastWarning = 1/1/0001 12:00:00 AM
 ```
 
-ターゲット レプリカ数を下回るパーティションの状態の例を次に示します。 次のステップは、パーティションの説明を取得することです。その説明は、パーティションが構成された方法を示し、**MinReplicaSetSize** が 3 で **TargetReplicaSetSize** が 7 です。 次に、クラスター内のノード数 5 を取得します。 この場合、ターゲット レプリカ数は使用可能なノードの数よりも多いため、レプリカを 2 つ配置できません。
+次の例は、ターゲット レプリカ数を下回るパーティションの正常性を示しています。 次のステップは、パーティションの説明を取得することです。その説明は、パーティションが構成された方法を示し、**MinReplicaSetSize** が 3 で **TargetReplicaSetSize** が 7 です。 次に、クラスター内のノード数を取得します。ここでは、ノード数は 5 です。 この場合、ターゲット レプリカ数は使用可能なノードの数よりも多いため、レプリカを 2 つ配置できません。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricPartitionHealth -ReplicasFilter None -ExcludeHealthStatistics
 
 
@@ -299,9 +299,9 @@ PS C:\> @(Get-ServiceFabricNode).Count
 5
 ```
 
-次の例は、ユーザーが RunAsync メソッドでキャンセル トークンを考慮しないために、再構成処理でスタックしているパーティションの正常性を示しています。 プライマリ (P) とマークされているレプリカの正常性レポートを調査すると、問題の詳細を把握するのに役立ちます。
+次の例は、ユーザーが **RunAsync** メソッドでキャンセル トークンを考慮しないために、再構成処理でスタックしているパーティションの正常性を示しています。 プライマリ (P) とマークされているレプリカの正常性レポートを調査すると、問題の詳細を把握するのに役立ちます。
 
-```powershell
+```PowerShell
 PS C:\utilities\ServiceFabricExplorer\ClientPackage\lib> Get-ServiceFabricPartitionHealth 0e40fd81-284d-4be4-a665-13bc5a6607ec -ExcludeHealthStatistics 
 
 
@@ -346,26 +346,26 @@ HealthEvents          :
 - レプリカが実行されているノード
 - レプリカ ID
 
-このような場合、上の例のようにプライマリとしてマークされているレプリカ (131482789658160654 および 131482789688598467) で始まる各レプリカの正常性を調査することによって、詳しく調べる必要があります。
+この例のような場合は、さらに調査が必要です。 前の例では、`Primary` および `Secondary` としてマークされているレプリカ (131482789658160654 および 131482789688598467) 以降の各レプリカの正常性を調査します。
 
 ### <a name="replica-constraint-violation"></a>レプリカ制約違反
 **System.PLB** は、レプリカ制約違反を検出し、すべてのパーティション レプリカを配置できない場合、警告を報告します。 レポートの詳細には、レプリカを配置できなかった原因の制約とプロパティが示されます。
 
 * **SourceId**: System.PLB
-* **プロパティ**: **ReplicaConstraintViolation** で始まります
+* **プロパティ**: **ReplicaConstraintViolation** で始まります。
 
 ## <a name="replica-system-health-reports"></a>レプリカ システム正常性レポート
 **System.RA**は、Reconfiguration Agent コンポーネントを表し、レプリカの状態を管理する権限です。
 
 ### <a name="state"></a>状態
-**System.RA** は、レプリカが作成されていると OK を報告します。
+System.RA は、レプリカが作成されていると OK を報告します。
 
 * **SourceId**: System.RA
 * **プロパティ**: State
 
 正常なレプリカの例を示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricPartition fabric:/WordCount/WordCountService | Get-ServiceFabricReplica | where {$_.ReplicaRole -eq "Primary"} | Get-ServiceFabricReplicaHealth
 
 PartitionId           : af2e3e44-a8f8-45ac-9f31-4093eb897600
@@ -386,17 +386,17 @@ HealthEvents          :
 ```
 
 ### <a name="replicaopenstatus-replicaclosestatus-replicachangerolestatus"></a>ReplicaOpenStatus、ReplicaCloseStatus、ReplicaChangeRoleStatus
-このプロパティは、レプリカを開いたり、閉じたり、レプリカのロールを切り替えたりする場合に生じる警告またはエラーを示すために使用されます ([レプリカ ライフサイクル](service-fabric-concepts-replica-lifecycle.md) を参照)。 API 呼び出しからスローされる例外や、その時点のサービス ホスト プロセスのクラッシュといったエラーが考えられます。 C# コードからの API 呼び出しに起因するエラーの場合、Service Fabric によって正常性レポートに例外とスタックトレースが追加されます。
+このプロパティは、レプリカを開いたり、閉じたり、レプリカのロールを切り替えたりする場合に生じる警告またはエラーを示すために使用されます。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 API 呼び出しからスローされる例外や、その時点のサービス ホスト プロセスのクラッシュといったエラーが考えられます。 C# コードからの API 呼び出しに起因するエラーの場合、Service Fabric によって正常性レポートに例外とスタック トレースが追加されます。
 
-これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを試行し続けます。それでも解決しない場合、対象ノードでこのアクションをあきらめて、警告の原因となっている状況を修正するためのアクションを試行し、警告を解除します。 たとえば、レプリカをノードで開くことができない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカで開くことができない場合、Service Fabric は、他のノードで同じ操作を試行するなど、自己修復アクションを実行します。 これにより、対象レプリカで生じている警告がクリアされます。 
+これらの正常性警告は、対象アクションを何回か (回数はポリシーによって異なります) ローカルに試行した後に生じます。 Service Fabric は、最大しきい値に達するまでアクションを再試行します。 最大しきい値に達した後で、状況を修正するためのアクションを試行する場合があります。 この試行により、Service Fabric はこのノードでのアクションの実行をあきらめるので、これらの警告がクリアされることがあります。 たとえば、レプリカをノードで開けない場合、Service Fabric は正常性警告を発生させます。 その後もレプリカを開けない場合、Service Fabric は自己修復のためのアクションを実行します。 このアクションにおいて、別のノードで同じ操作を試行することがあります。 これにより、このレプリカで生じている警告がクリアされます。 
 
 * **SourceId**: System.RA
 * **プロパティ**: **ReplicaOpenStatus**、**ReplicaCloseStatus**、**ReplicaChangeRoleStatus**
 * **次のステップ**: サービス コードまたはクラッシュ ダンプを調べ、操作が失敗した理由を特定します。
 
-次の例は、Open メソッドから `TargetInvocationException` がスローされているレプリカの正常性を示しています。 この説明には、障害点 (**IStatefulServiceReplica.Open**)、例外の種類 (**TargetInvocationException**)、およびスタックトレースが含まれています。
+次の例は、Open メソッドから `TargetInvocationException` がスローされているレプリカの正常性を示しています。 この説明には、障害点 **IStatefulServiceReplica.Open**、例外の種類 **TargetInvocationException**、およびスタックトレースが含まれています。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 337cf1df-6cab-4825-99a9-7595090c0b1b -ReplicaOrInstanceId 131483509874784794
 
 
@@ -447,7 +447,7 @@ Exception has been thrown by the target of an invocation.
 
 次の例は、終了中に継続的にクラッシュしているレプリカを示しています。
 
-```Powershell
+```PowerShell
 C:>Get-ServiceFabricReplicaHealth -PartitionId dcafb6b7-9446-425c-8b90-b3fdf3859e64 -ReplicaOrInstanceId 131483565548493142
 
 
@@ -478,21 +478,21 @@ HealthEvents          :
 ### <a name="reconfiguration"></a>Reconfiguration
 このプロパティは、[再構成](service-fabric-concepts-reconfiguration.md)を実行しているレプリカが、再構成の停止やスタックを検出する場合に使用されます。 この正常性レポートは、現在のロールがプライマリであるレプリカに関するものです (ただし、プライマリからアクティブなセカンダリに降格されているレプリカに対する、スワップ プライマリ再構成の場合は例外です)。
 
-再構成は、次の理由によって停止することがあります
+再構成は、次のいずれかの理由によって停止することがあります。
 
 - ローカル レプリカ (再構成を実行しているのと同じレプリカ) におけるアクションが完了していない。 この場合、他のコンポーネント (System.RAP または System.RE) からこのレプリカに関する正常性レポートを調査すると、詳細な情報が得られることがあります。
 
 - リモート レプリカでアクションが完了していない。 アクションが保留中のレプリカが、正常性レポートにリストされます。 こうしたリモート レプリカの正常性レポートを詳しく調査する必要があります。 対象ノードとリモート ノード間の通信に問題がある可能性もあります。
 
-まれなケースとして、対象ノードとフェールオーバー マネージャー サービス間の通信などの問題が原因で再構成がスタックすることもあります。
+まれなケースとして、対象ノードと Failover Manager サービス間の通信などの問題が原因で再構成がスタックすることもあります。
 
 * **SourceId**: System.RA
 * **プロパティ**: **Reconfiguration**
 * **次のステップ**: 正常性レポートの内容に応じて、ローカル レプリカまたはリモート レプリカを調査します。
 
-次の例は、(サービスがキャンセル トークンを考慮しないことが原因で) ローカル レプリカで再構成がスタックしている正常性レポートを示しています。
+次の例は、ローカル レプリカで再構成がスタックしている正常性レポートを示しています。 この例では、サービスがキャンセル トークンを考慮しないことが原因です。
 
-```Powershell
+```PowerShell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 9a0cedee-464c-4603-abbc-1cf57c4454f3 -ReplicaOrInstanceId 131483600074836703
 
 
@@ -519,7 +519,7 @@ HealthEvents          :
                         Transitions           : Error->Warning = 8/28/2017 2:13:57 AM, LastOk = 1/1/0001 12:00:00 AM
 ```
 
-次の例は、2 つのリモート レプリカからの応答を待機しているために再構成がスタックしている正常性レポートを示しています (現在のプライマリが含まれるパーティションには 3 つのレプリカがあります)。 
+次の例は、2 つのリモート レプリカからの応答を待機しているために再構成がスタックしている正常性レポートを示しています。 この例では、パーティションに、現在のプライマリを含めて 3 つのレプリカがあります。 
 
 ```Powershell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId  579d50c6-d670-4d25-af70-d706e4bc19a2 -ReplicaOrInstanceId 131483956274977415
@@ -576,9 +576,9 @@ HealthEvents          :
 * **プロパティ**: 低速の API の名前。 説明には、API が保留中であった時間についての詳細が示されます。
 * **次のステップ**: 呼び出しに予想よりも長くかかる原因を調査します。
 
-次の例は、RunAsync のキャンセル トークンを考慮しない Reliable services に関する、System.RAP からの正常性イベントを示しています。
+次の例は、**RunAsync** のキャンセル トークンを考慮しない Reliable services に関する、System.RAP からの正常性イベントを示しています。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricReplicaHealth -PartitionId 5f6060fb-096f-45e4-8c3d-c26444d8dd10 -ReplicaOrInstanceId 131483966141404693
 
 
@@ -603,45 +603,45 @@ HealthEvents          :
                         
 ```
 
-プロパティとテキストには、スタックする可能性がある API が示されます。 スタックした API によって、次のステップも異なります。 通常、*IStatefulServiceReplica* または *IStatelessServiceInstance* はサービス コードのバグです。 次のセクションでは、[Reliable services モデル](service-fabric-reliable-services-lifecycle.md)にどのように変換されるかを取り上げます。
+プロパティとテキストは、スタックした API を示します。 スタックした API によって、実行すべき次のステップも異なります。 通常、*IStatefulServiceReplica* または *IStatelessServiceInstance* 上の API はサービス コードのバグです。 次のセクションでは、これらが [Reliable Services モデル](service-fabric-reliable-services-lifecycle.md)にどのように変換されるかを説明します。
 
-- **IStatefulServiceReplica.Open**: これは、`CreateServiceInstanceListeners` または `ICommunicationListener.OpenAsync` に対する呼び出し、あるいは上書きされた `OnOpenAsync` がスタックしているかどうかを示します。
+- **IStatefulServiceReplica.Open**: この警告は、`CreateServiceInstanceListeners` または `ICommunicationListener.OpenAsync` に対する呼び出し、あるいは上書きされた `OnOpenAsync` がスタックしているかどうかを示します。
 
-- **IStatefulServiceReplica.Close** および **IStatefulServiceReplica.Abort**: 最も一般的なのは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 または、`ICommunicationListener.CloseAsync` あるいは上書きされた `OnCloseAsync` がスタックしている場合にも生じます。
+- **IStatefulServiceReplica.Close** および **IStatefulServiceReplica.Abort**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。 または、`ICommunicationListener.CloseAsync` あるいは上書きされた `OnCloseAsync` がスタックしている場合にも生じます。
 
-- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)**: 最も一般的なのは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。
+- **IStatefulServiceReplica.ChangeRole(S)** および **IStatefulServiceReplica.ChangeRole(N)**: 最も一般的なケースは、`RunAsync` に渡されたキャンセル トークンを考慮しないサービスです。
 
-- **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なのは、`RunAsync` からタスクが戻されないサービスです。
+- **IStatefulServiceReplica.ChangeRole(P)**: 最も一般的なケースは、`RunAsync` からタスクが戻されないサービスです。
 
 **IReplicator** インターフェイス上の他の API 呼び出しもスタックする可能性があります。 For example:
 
-- **IReplicator.CatchupReplicaSet**: 十分な数の実行中のレプリカがないこと (パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認して判別できます)、またはレプリカが操作を認識できないことを示します。 Powershell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
+- **IReplicator.CatchupReplicaSet**: この警告は、次の 2 つのいずれかを示します。 1 つは、十分な数の実行中のレプリカがないことです。これは、パーティションのレプリカのレプリカ状態を確認するか、スタック再構成の System.FM 正常性レポートを確認することで判別できます。 もう 1 つは、レプリカが操作を認識できないことです。 PowerShell コマンドレット `Get-ServiceFabricDeployedReplicaDetail` を使用すると、すべてのレプリカの進行状況を判断できます。 プライマリの `CommittedSequenceNumber` の後ろにある `LastAppliedReplicationSequenceNumber` が含まれるレプリカに問題があります。
 
-- **IReplicator.BuildReplica (<Remote ReplicaId>)**: これは、ビルド プロセスに問題があることを示します ([レプリカ ライフサイクル](service-fabric-concepts-replica-lifecycle.md)を参照)。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります ([こちら](service-fabric-reliable-services-configuration.md)と[こちら](service-fabric-service-manifest-resources.md)を参照)。 リモート ノードに問題があることもあります。
+- **IReplicator.BuildReplica (<Remote ReplicaId>)**: この警告は、ビルド プロセスに問題があることを示します。 詳細については、[レプリカのライフサイクル](service-fabric-concepts-replica-lifecycle.md)に関する記事をご覧ください。 レプリカ アドレスが正しく構成されていないことが原因の可能性があります。 詳細については、「[ステートフル Reliable Services の構成](service-fabric-reliable-services-configuration.md)」および「[サービス マニフェストにリソースを指定する](service-fabric-service-manifest-resources.md)」をご覧ください。 リモート ノードに問題があることもあります。
 
 ### <a name="replication-queue-full"></a>レプリケーション キュー満杯
 **System.Replicator** は、レプリケーション キューが満杯の場合、警告を報告します。 プライマリでレプリケーション キューが満杯になる原因は、通常、1 つまたは複数のセカンダリ レプリカで、処理の確認に時間がかかることです。 セカンダリでこの状態が発生する原因は、通常、サービスでの操作の適用に時間がかかることです。 キューが満杯でなくなると、警告はクリアされます。
 
 * **SourceId**: System.Replicator
-* **Property**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
+* **プロパティ**: レプリカのロールに応じて **PrimaryReplicationQueueStatus** または **SecondaryReplicationQueueStatus**
 
 ### <a name="slow-naming-operations"></a>名前付け操作が遅い
 **System.NamingService** は、名前付け操作にかかる時間が許容範囲を超える場合に、そのプライマリ レプリカの正常性を報告します。 名前付け操作の例として、[CreateServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.createserviceasync) または [DeleteServiceAsync](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient.deleteserviceasync) があります。 FabricClient には、[サービス管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.servicemanagementclient)や[プロパティ管理メソッド](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient.propertymanagementclient)など、その他多くのメソッドが見つかります。
 
 > [!NOTE]
-> ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む Authority Owner を表します。 Service Fabric の名前は、Name Owner パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、 [ネーム サービス](service-fabric-architecture.md)に関するページを参照してください。
+> ネーム サービスは、サービス名を解決してクラスター内の場所に対応付けて、ユーザーによるサービス名とプロパティの管理を可能にします。 これは、Service Fabric のパーティション分割型の永続化されたサービスです。 パーティションの 1 つは、Service Fabric のすべての名前とサービスに関するメタデータを含む *Authority Owner* を表します。 Service Fabric の名前は、*Name Owner* パーティションという各種パーティションにマップされるため、サービスは拡張可能です。 詳細については、[ネーム サービス](service-fabric-architecture.md)に関するページをご覧ください。
 > 
 > 
 
-名前付け操作に予想以上の時間がかかると、" *操作を実行するネーム サービス パーティションのプライマリ レプリカ*" に関する警告のレポートでフラグが設定されます。 操作が正常に完了すると、警告はクリアされます。 操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
+名前付け操作に予想以上の時間がかかると、操作を実行するネーム サービス パーティションのプライマリ レプリカに関する警告のレポートでフラグが設定されます。 操作が正常に完了すると、警告はクリアされます。 操作がエラーで終了した場合は、正常性レポートにエラーの詳細が含まれます。
 
 * **SourceId**: System.NamingService
-* **Property**: プレフィックス **Duration_** で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を識別します。 たとえば、fabric:/MyApp/MyService という名前のサービスの作成に時間がかかる場合、プロパティは Duration_AOCreateService.fabric:/MyApp/MyService になります。 AO は、この名前と操作の名前付けパーティションの役割を指します。
-* **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、サービスの削除がスタックすることがあります。
+* **プロパティ**: プレフィックス **Duration_** で始まり、時間がかかっている操作とその操作が適用されている Service Fabric の名前を示します。 たとえば、**fabric:/MyApp/MyService** という名前のサービスの作成に時間がかかる場合、プロパティは **Duration_AOCreateService.fabric:/MyApp/MyService** になります。 "AO" は、この名前と操作の名前付けパーティションの役割を指します。
+* **次のステップ**: 名前付け操作に失敗した原因を確認します。 各操作の根本原因は異なる場合があります。 たとえば、削除サービスがスタックしている可能性があります。 サービス コード内のユーザー バグによってアプリケーション ホストがノードでクラッシュしたままになっていることが原因で、サービスがスタックすることがあります。
 
-サービスの作成操作の例を次に示します。 この操作には、構成された期間よりも長い時間がかかりました。 AO は再試行し、作業を NO に送信します。 NO は、タイムアウトにより最後の操作を完了しました。 この場合、同じレプリカが AO と NO の両方の役割でプライマリになります。
+サービスの作成操作の例を次に示します。 この操作には、構成された期間よりも長い時間がかかりました。 "AO" は再試行し、作業を "NO" に送信します。 "NO" は、タイムアウトにより最後の操作を完了しました。 この場合、同じレプリカが "AO" と "NO" の両方のロールでプライマリになります。
 
-```powershell
+```PowerShell
 PartitionId           : 00000000-0000-0000-0000-000000001000
 ReplicaId             : 131064359253133577
 AggregatedHealthState : Warning
@@ -698,7 +698,7 @@ System.Hosting は、アプリケーションがノードで正常にアクテ�
 
 アクティブ化の成功例を次に示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricDeployedApplicationHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ExcludeHealthStatistics
 
 ApplicationName                    : fabric:/WordCount
@@ -725,10 +725,10 @@ HealthEvents                       :
 ```
 
 ### <a name="download"></a>ダウンロード
-**System.Hosting** は、アプリケーション パッケージのダウンロードが失敗した場合、エラーを報告します。
+System.Hosting は、アプリケーション パッケージのダウンロードが失敗した場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:*RolloutVersion***
+* **プロパティ**: **Download:***RolloutVersion*
 * **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ## <a name="deployedservicepackage-system-health-reports"></a>DeployedServicePackage システム正常性レポート
@@ -742,20 +742,20 @@ System.Hosting は、ノードでのサービス パッケージのアクティ�
 * **次のステップ**: アクティブ化が失敗した原因を調査します。
 
 ### <a name="code-package-activation"></a>コード パッケージのアクティブ化
-**System.Hosting** は、各コード パッケージのアクティブ化が成功すると、OK を報告します。 アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。 **CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。 サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
+System.Hosting は、各コード パッケージのアクティブ化が成功すると、OK を報告します。 アクティブ化に失敗した場合は、構成されているとおりに警告を報告します。 **CodePackage** がアクティブ化に失敗したか、構成されている **CodePackageHealthErrorThreshold** より大きいエラーで終了した場合、Hosting はエラーを報告します。 サービス パッケージに複数のコード パッケージが含まれている場合、コード パッケージごとにアクティブ化レポートが生成されます。
 
 * **SourceId**: System.Hosting
-* **Property**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:*CodePackageName*:*SetupEntryPoint/EntryPoint* として、コード パッケージの名前とエントリ ポイントを含みます** (**CodePackageActivation:Code:SetupEntryPoint** など)
+* **プロパティ**: プレフィックス **CodePackageActivation** を使用し、**CodePackageActivation:***CodePackageName*:*SetupEntryPoint/EntryPoint* の形でコード パッケージの名前とエントリ ポイントを含みます。 たとえば、**CodePackageActivation:Code:SetupEntryPoint** のようになります。
 
 ### <a name="service-type-registration"></a>サービスの種類の登録
-**System.Hosting** は、サービスの種類が正常に登録されていると、OK を報告します。 (**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。 ランタイムが終了すると、サービスの種類はノードの登録から削除され、Hosting から警告が報告されます。
+System.Hosting は、サービスの種類が正常に登録されていると、OK を報告します。 (**ServiceTypeRegistrationTimeout** を使用して構成されている) 時間内に登録が行われなかった場合は、エラーを報告します。 ランタイムが終了すると、サービスの種類はノードの登録から削除され、Hosting から警告が報告されます。
 
 * **SourceId**: System.Hosting
-* **Property**: プレフィックス **ServiceTypeRegistration** を使用し、サービスの種類の名前を含みます (**ServiceTypeRegistration:FileStoreServiceType** など)
+* **プロパティ**: プレフィックス **ServiceTypeRegistration** を使用し、サービスの種類の名前を含みます。 たとえば、**ServiceTypeRegistration:FileStoreServiceType** のようになります。
 
 正常なデプロイ済みサービス パッケージの例を次に示します。
 
-```powershell
+```PowerShell
 PS C:\> Get-ServiceFabricDeployedServicePackageHealth -NodeName _Node_1 -ApplicationName fabric:/WordCount -ServiceManifestName WordCountServicePkg
 
 
@@ -803,18 +803,18 @@ HealthEvents               :
 ```
 
 ### <a name="download"></a>ダウンロード
-**System.Hosting** は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
+System.Hosting は、サービス パッケージのダウンロードが失敗すると、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **Property**: **Download:*RolloutVersion***
+* **プロパティ**: **Download:***RolloutVersion*
 * **次のステップ**: ノードでダウンロードが失敗した原因を調査します。
 
 ### <a name="upgrade-validation"></a>アップグレードの検証
-**System.Hosting** は、アップグレード中に検証が失敗した場合、またはノードでアップグレードが失敗した場合、エラーを報告します。
+System.Hosting は、アップグレード中に検証が失敗した場合、またはノードでアップグレードが失敗した場合、エラーを報告します。
 
 * **SourceId**: System.Hosting
-* **Property**: プレフィックス **FabricUpgradeValidation** を使用し、アップグレード バージョンを含みます
-* **説明**: 発生したエラーが参照されます。
+* **プロパティ**: プレフィックス **FabricUpgradeValidation** を使用し、アップグレード バージョンを含みます。
+* **説明**: 発生したエラーを指します。
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)
@@ -824,5 +824,4 @@ HealthEvents               :
 [ローカルでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)
 
 [Service Fabric アプリケーションのアップグレード](service-fabric-application-upgrade.md)
-
 

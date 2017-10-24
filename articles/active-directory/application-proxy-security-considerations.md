@@ -15,14 +15,12 @@ ms.date: 09/08/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
+ms.openlocfilehash: 031632aa9e01c66e836d607d588ededb7140589f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 190ca4b228434a7d1b30348011c39a979c22edbd
-ms.openlocfilehash: 4eef4f00bb407f97a68d09a39f3e99d1bc325d0e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Azure AD アプリケーション プロキシを使用したアプリへのリモート アクセス時のセキュリティに関する注意事項
 
 この記事では、Azure Active Directory アプリケーション プロキシを使用する際にユーザーとアプリケーションを安全に保つために動作するコンポーネントについて説明します。
@@ -187,4 +185,3 @@ Azure AD を使用して事前認証を使用するようにアプリを構成�
 [Azure AD アプリケーション プロキシを使用する場合のネットワーク トポロジに関する注意事項](application-proxy-network-topology-considerations.md)
 
 [Azure AD アプリケーション プロキシ コネクタについて](application-proxy-understand-connectors.md)
-

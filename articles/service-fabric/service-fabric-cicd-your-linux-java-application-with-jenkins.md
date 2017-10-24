@@ -14,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/23/2017
 ms.author: saysa
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 3716c7699732ad31970778fdfa116f8aee3da70b
-ms.openlocfilehash: 32d39e2c19348bc4a1ba218cfc411a70f9f212e3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/30/2017
-
+ms.openlocfilehash: 8ba108ed107e2e023867bcc3b3b1b8cc159377ae
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-jenkins-to-build-and-deploy-your-linux-java-application"></a>Jenkins を使用した Linux Java アプリケーションのビルドとデプロイ
 Jenkins は、アプリの継続的な統合とデプロイを行うための一般的なツールです。 この記事では、Jenkins を使用して Azure Service Fabric アプリケーションをビルドし、デプロイする方法について説明します。
@@ -51,6 +50,10 @@ cd service-fabric-java-getting-started/Services/JenkinsDocker/
 sudo mount -t cifs //sfjenkinsstorage1.file.core.windows.net/sfjenkins [mount point] -o vers=3.0,username=sfjenkinsstorage1,password=<storage_key>,dir_mode=0777,file_mode=0777
 ```
 
+> [!NOTE]
+> cifs 共有をマウントするには、クラスター ノードに cifs ユーティリティ パッケージがインストールされている必要があります。 
+>
+
 4. ```setupentrypoint.sh``` スクリプトのプレースホルダーの値を、対応する Azure Storage の内容に更新します。
 ```sh
 vi JenkinsSF/JenkinsOnSF/Code/setupentrypoint.sh
@@ -69,7 +72,7 @@ bash Scripts/install.sh
 1. ブラウザーで ``http://PublicIPorFQDN:8081`` に移動します。 サインインに必要な最初の管理者パスワードのパスが提供されます。 引き続き、管理者ユーザーとして Jenkins を使用できます。 また、最初の管理者アカウントを使用してサインインした後、ユーザーを作成して変更することもできます。
 
    > [!NOTE]
-   > クラスターの作成時にアプリケーションのエンドポイント ポートとしてポート 8081 が指定されていることを確認してください。
+   > アプリケーションの作成時にアプリケーションのエンドポイント ポートとしてポート 8081 が指定されていること (および、クラスターでそのポートが開いていること) を確認してください。
    >
 
 2. ``docker ps -a`` を使用してコンテナーのインスタンス ID を取得します。
@@ -171,4 +174,3 @@ GitHub と Jenkins の構成が完了しました。 リポジトリ (https://gi
   <!-- Images -->
   [build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/build-step.png
   [post-build-step]: ./media/service-fabric-cicd-your-linux-java-application-with-jenkins/post-build-step.png
-

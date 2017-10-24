@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2017
+ms.date: 09/19/2017
 ms.author: tomfitz
+ms.openlocfilehash: 64bdd6ed41e98079c8d4112e895aaeddcd629282
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: f461efbc2a23f85e8b6d3fdec156a0df1636708a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="assign-and-manage-resource-policies"></a>リソース ポリシーの割り当てと管理
 
@@ -31,6 +30,23 @@ ms.lasthandoff: 07/28/2017
 4. どちらの場合も、ポリシーをスコープ (サブスクリプションやリソース グループなど) に割り当てます。 これで、ポリシーの規則が設定されました。
 
 この記事では、REST API、PowerShell、または Azure CLI を使用して、ポリシー定義を作成し、その定義をスコープに割り当てる手順を中心に説明します。 ポータルを使用してポリシーを割り当てる方法については、「[Use Azure portal to assign and manage resource policies](resource-manager-policy-portal.md)」(Azure Portal によるリソース ポリシーの割り当てと管理) を参照してください。 この記事では、ポリシー定義を作成する構文については説明しません。 ポリシーの構文については、「[ポリシーを使用したリソース管理とアクセス制御](resource-manager-policy.md)」を参照してください。
+
+## <a name="exclusion-scopes"></a>スコープの除外
+
+ポリシーを割り当てるときにスコープを除外することができます。 この機能は、ポリシーの割り当てを簡略化します。ポリシーはサブスクリプション レベルで割り当てることができますが、ポリシーが適用されない範囲を指定できるためです。 たとえば、自分のサブスクリプションに、ネットワーク インフラストラクチャのためのリソース グループがあるとします。 各アプリケーション チームは、自分のリソースを他のリソース グループにデプロイします。 セキュリティの問題につながる可能性のあるネットワーク リソースをそれらのチームに作成させたくありません。 ただし、ネットワーク リソース グループにはネットワーク リソースの作成を許可する必要があります。 サブスクリプション レベルでポリシーを割り当てますが、ネットワークのリソース グループを除外します。 複数のサブ スコープを指定できます。
+
+```json
+{
+    "properties":{
+        "policyDefinitionId":"<ID for policy definition>",
+        "notScopes":[
+            "/subscriptions/<subid>/resourceGroups/networkresourceGroup1"
+        ]
+    }
+}
+```
+
+割り当てで除外するスコープを指定する場合、**2017-06-01-プレビュー** API バージョンを使用してください。
 
 ## <a name="rest-api"></a>REST API
 
@@ -168,8 +184,28 @@ PolicyDefinitionId : /providers/Microsoft.Authorization/policyDefinitions/e56962
 ### <a name="create-policy-definition"></a>ポリシー定義の作成
 `New-AzureRmPolicyDefinition` コマンドレットを使用してポリシー定義を作成することができます。
 
+ファイルからポリシー定義を作成するには、ファイルへのパスを渡します。 外部ファイルの場合は、次を使用します。
+
 ```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy '{
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -DisplayName "Deny cool access tiering for storage" `
+    -Policy 'https://raw.githubusercontent.com/Azure/azure-policy-samples/master/samples/Storage/storage-account-access-tier/azurepolicy.rules.json'
+```
+
+ローカル ファイルの場合は、次を使用します。
+
+```powershell
+$definition = New-AzureRmPolicyDefinition `
+    -Name denyCoolTiering `
+    -Description "Deny cool access tiering for storage" `
+    -Policy "c:\policies\coolAccessTier.json"
+```
+
+インライン ルールでポリシー定義を作成するには、次を使用します。
+
+```powershell
+$definition = New-AzureRmPolicyDefinition -Name denyCoolTiering -Description "Deny cool access tiering for storage" -Policy '{
   "if": {
     "allOf": [
       {
@@ -195,12 +231,6 @@ $definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Pol
 ```            
 
 出力は、ポリシー割り当ての際に使用される `$definition` オブジェクトに格納されます。 
-
-JSON をパラメーターとして指定するよりも、ポリシーの規則を含む .json ファイルへのパスを指定するのがよいでしょう。
-
-```powershell
-$definition = New-AzureRmPolicyDefinition -Name coolAccessTier -Description "Policy to specify access tier." -Policy "c:\policies\coolAccessTier.json"
-```
 
 次の例では、パラメーターを含むポリシー定義を作成しています。
 
@@ -319,8 +349,10 @@ az policy definition list
 
 Azure CLI でポリシー定義コマンドを使用して、ポリシー定義を作成できます。
 
+インライン ルールでポリシー定義を作成するには、次を使用します。
+
 ```azurecli
-az policy definition create --name coolAccessTier --description "Policy to specify access tier." --rules '{
+az policy definition create --name denyCoolTiering --description "Deny cool access tiering for storage" --rules '{
   "if": {
     "allOf": [
       {
@@ -371,5 +403,4 @@ az policy assignment delete --name coolAccessTier --scope /subscriptions/{subscr
 
 ## <a name="next-steps"></a>次のステップ
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
 

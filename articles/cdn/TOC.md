@@ -10,7 +10,7 @@
 ### [Cloud Services](cdn-cloud-service-with-cdn.md)
 ### [Storage](cdn-create-a-storage-account-with-cdn.md)
 ### [クロス オリジン リソース共有](cdn-cors.md)
-### [CDN にカスタム ドメインをマップする](cdn-map-content-to-custom-domain.md)
+### [カスタム ドメインを CDN エンドポイントに追加する](cdn-map-content-to-custom-domain.md)
 ### [カスタム ドメインで HTTPS を有効にする](cdn-custom-ssl.md)
 ## コンテンツの最適化
 ### [最適化の概要](cdn-optimization-overview.md)
@@ -39,6 +39,7 @@
 ## 分析
 ### [Azure CDN の使用パターンの分析](cdn-log-analysis.md)
 #### [Verizon からのコア レポート](cdn-analyze-usage-patterns.md)
+#### [Verizon からのカスタム レポート](cdn-verizon-custom-reports.md)
 #### [Azure 診断ログ](cdn-azure-diagnostic-logs.md)
 ### Azure CDN from Verizon の分析ツール
 #### [詳細な HTTP レポートを生成する](cdn-advanced-http-reports.md)

@@ -12,18 +12,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 10/10/2017
 ms.author: nberdy
+ms.openlocfilehash: 3eafa32907c8f68cfc44cb2771d625349ff42003
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: b6de5c5df5f9401a41be152bfa06eb994594e83d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="iot-hub-operations-monitoring"></a>IoT Hub 操作の監視
 
 IoT Hub の操作の監視では、IoT Hub に対する操作の状態をリアルタイムで監視することができます。 IoT Hub は、複数のカテゴリにまたがる操作のイベントを追跡します。 1 つ以上のカテゴリから IoT ハブのエンドポイントにイベントを送信して処理するように選択することができます。 データを監視してエラーがないか確認したり、データ パターンに基づいてより複雑な処理をセットアップしたりできます。
+
+>[!NOTE]
+>IoT Hub の操作の監視は非推奨になっており、今後 IoT Hub から削除される予定です。 IoT Hub の操作と正常性を監視する方法については、「[Azure IoT Hub の正常性を監視し、問題をすばやく診断する][lnk-monitor]」をご覧ください。 廃止のスケジュールについて詳しくは、「[Monitor your Azure IoT solutions with Azure Monitor and Azure Resource Health][lnk-blog-announcement]」(Azure Monitor および Azure Resource Health による Azure IoT ソリューションの監視) をご覧ください。
 
 IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 
@@ -33,6 +35,9 @@ IoT Hub では、次の 6 つのカテゴリのイベントを監視します。
 * 接続
 * ファイルのアップロード
 * メッセージ ルーティング
+
+> [!IMPORTANT]
+> IoT Hub の操作の監視では、イベントの信頼性および配信順序は保証されません。 IoT Hub の基になるインフラストラクチャによっては、一部のイベントが失われたり、順序どおりに配信されない可能性があります。 接続試行の失敗や、特定のデバイスの高頻度での切断など、エラーのシグナルに基づいてアラートを生成するには、操作の監視を使います。 デバイスの状態の一貫性のあるストアを作成するには、操作の監視イベントに依存しないでください (デバイスの接続または切断状態を追跡するストアなど)。 
 
 ## <a name="how-to-enable-operations-monitoring"></a>操作の監視を有効にする方法
 
@@ -294,6 +299,8 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [img-endpoints]: media/iot-hub-operations-monitoring/monitoring-endpoint.png
 [img-service-key]: media/iot-hub-operations-monitoring/service-key.png
 
+[lnk-blog-announcement]: https://azure.microsoft.com/blog/monitor-your-azure-iot-solutions-with-azure-monitor-and-azure-resource-health
+[lnk-monitor]: iot-hub-monitor-resource-health.md
 [lnk-get-started]: iot-hub-csharp-csharp-getstarted.md
 [lnk-diagnostic-metrics]: iot-hub-metrics.md
 [lnk-scaling]: iot-hub-scaling.md

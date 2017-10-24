@@ -9,14 +9,12 @@ ms.topic: azure-stack
 ms.date: 09/15/2017
 ms.author: erikje
 ms.custom: mvc
+ms.openlocfilehash: abca538f28bbc0a8f3f00311ca1a69d196f10272
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: 2c9aba69d8f1999f7086bd2bcd44d1c1472abec7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-windows-virtual-machine-with-the-azure-stack-portal"></a>Azure Stack ポータルで Windows 仮想マシンを作成する
 
 Azure Stack ポータルを使用して Windows 仮想マシンを作成できます。 ポータルは、リソースを作成、構成、および管理できるブラウザーベースのユーザー インターフェイスです。
@@ -30,12 +28,12 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 ## <a name="create-a-virtual-machine"></a>仮想マシンの作成
 
-1. **[新規]** > **[Compute]** > **[Windows Server 2016 Datacenter Eval]** > **[作成]** の順にクリックします。 **Windows Server 2016 Datacenter Eval** エントリが表示されない場合は、Azure Stack オペレータに問い合わせてください。 「[Add the Windows Server 2016 VM image to the Azure Stack marketplace](../azure-stack-add-default-image.md)」(Windows Server 2016 VM イメージの Azure Stack Marketplace への追加) の記事の説明に従って、マーケットプレースに追加するように求めます。 
+1. **[新規]** > **[Compute]** > **[Windows Server 2016 Datacenter Eval]** > **[作成]** の順にクリックします。 **Windows Server 2016 Datacenter Eval** エントリが表示されない場合は、Azure Stack オペレーターに問い合わせてください。 「[Add the Windows Server 2016 VM image to the Azure Stack marketplace](../azure-stack-add-default-image.md)」(Windows Server 2016 VM イメージの Azure Stack Marketplace への追加) の記事の説明に従って、マーケットプレースに追加するように求めます。 
     ![](media/azure-stack-quick-windows-portal/image01.png)
 2. **[基本]** で、**[名前]**、**[ユーザー名]**、**[パスワード]** を入力します。 **[サブスクリプション]**を選択します。 **リソース グループ**を作成するか、既存のリソース グループを選択し、**[場所]** を選択して、**[OK]** をクリックします。
 
     ![](media/azure-stack-quick-windows-portal/image02.png)
-3. **[サイズの選択]** で **[A1 Standard]** > **[選択]** の順にクリックします。
+3. **[サイズの選択]** で、**[D1 Standard]**、 > **[選択]** の順にクリックします。
     ![](media/azure-stack-quick-windows-portal/image03.png)
 4. **[設定]** で、既定値を受け入れて、**[OK]** をクリックします。
     ![](media/azure-stack-quick-windows-portal/image04.png)
@@ -50,4 +48,3 @@ Azure Stack ポータルにサインインします。 Azure Stack ポータル�
 
 ## <a name="next-steps"></a>次のステップ
 このクイック スタートでは、簡単な Windows 仮想マシンをデプロイしました。 Azure Stack 仮想マシンの詳細については、「[Azure Stack の仮想マシンに関する考慮事項](azure-stack-vm-considerations.md)」に進んでください。
-
