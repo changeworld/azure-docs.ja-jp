@@ -12,14 +12,13 @@ ms.workload: media
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 09/03/2017
+ms.date: 09/27/2017
 ms.author: juliako;
+ms.openlocfilehash: b3584c5aa5405e7f5acdd9bc0a6573b4acbab855
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 0d071129944fb9298e8f0a7b8f3bb1dd2fcc4bd4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="redact-faces-with-azure-media-analytics"></a>Azure Media Analytics で顔を編集する
 ## <a name="overview"></a>概要
@@ -134,7 +133,7 @@ foo_IDList.txt の例
 
 ## <a name="blur-types"></a>ぼかしの種類
 
-**Combined** モードまたは **Redact** モードには、**Low**、**Med**、**High**、**Debug**、**Black** の 5 種類のぼかしモードがあり、JSON 入力構成で選択することができます。 既定では **Med** が使用されます。
+**Combined** モードまたは **Redact** モードには、**Low**、**Med**、**High**、**Box**、**Black** の 5 種類のぼかしモードがあり、JSON 入力構成で選択することができます。 既定では **Med** が使用されます。
 
 ぼかしの種類のサンプルを以下に示します。
 
@@ -154,9 +153,9 @@ foo_IDList.txt の例
 
 ![高](./media/media-services-face-redaction/blur3.png)
 
-#### <a name="debug"></a>デバッグ
+#### <a name="box"></a>Box
 
-![デバッグ](./media/media-services-face-redaction/blur4.png)
+![Box](./media/media-services-face-redaction/blur4.png)
 
 #### <a name="black"></a>黒
 
@@ -353,5 +352,4 @@ Redaction MP は、高精度の顔位置検出と追跡を行い、ビデオ フ
 [Azure Media Services Analytics の概要](media-services-analytics-overview.md)
 
 [Azure Media Analytics デモ](http://azuremedialabs.azurewebsites.net/demos/Analytics.html)
-
 

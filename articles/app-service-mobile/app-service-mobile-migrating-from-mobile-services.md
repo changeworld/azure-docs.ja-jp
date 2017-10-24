@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/03/2016
 ms.author: glenga
+ms.openlocfilehash: ee64913629124f886e91478c21304956fbec9f90
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 12c20264b14a477643a4bbc1469a8d1c0941c6e6
-ms.openlocfilehash: 06e85d02d82bcc7d57989c1dce97028b24b9f317
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/07/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="article-top"></a>既存の Azure Mobile Service を Azure App Service に移行する
 [Azure App Service は一般公開されており]、Azure Mobile Service サイトを簡単にインプレース移行し、Azure App Service の全機能を最大限に活用できます。  このドキュメントでは、Azure Mobile Service から Azure App Service にサイトを移行するときに必要な作業について説明します。
@@ -32,7 +31,7 @@ Azure Mobile Service を移行すれば、コードを変更せずにモバイ�
 ## <a name="why-migrate"></a>サイトを移行する理由
 Microsoft では、次のような Azure App Service の機能を最大限に活用できるように Azure Mobile Service の移行を推奨しています。
 
-* [Web ジョブ] や [custom domain names] などの新しいホスト機能。
+* [WebJobs] や [custom domain names] などの新しいホスト機能。
 * New Relic または [Application Insights]による監視とトラブルシューティング。
 * [ステージング スロット]、ロールバック、本稼動テストなど、組み込み DevOps ツール。
 * [自動スケール]、負荷分散、[パフォーマンス監視]。
@@ -145,7 +144,7 @@ PublishSettings ファイルがコンピューターにダウンロードされ�
 4. [公開] メニューの **[デプロイメント資格情報]** をクリックします。
 5. ボックスに新しいデプロイメント資格情報を入力し、[保存] ボタンをクリックします。
 
-これらの資格情報を利用し、git でサイトの複製を作成したり、GitHub、TFS、Mercurial から自動化デプロイを設定したりできます。  詳細については、「 [Azure App Service のデプロイに関するドキュメント]」を参照してください。
+これらの資格情報を利用し、git でサイトの複製を作成したり、GitHub、TFS、Mercurial から自動化デプロイを設定したりできます。  詳細については、[Azure App Service のデプロイに関するドキュメント] を参照してください。
 
 ### <a name="appsettings"></a>アプリケーションの設定
 移行したモバイル サービスのほとんどの設定は [アプリケーション設定] から利用できます。  アプリ設定の一覧は [Azure Portal] から取得できます。
@@ -229,7 +228,7 @@ Mobile Services の *[API]* タブは Azure Portal では *[API の簡単操作]
 3. **[設定]**、**[スケジュール]** の順にクリックします。
 4. 定期的なアイテムとして **[1 回]** を選択し、**[保存]** をクリックします。
 
-オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration`にあります。  すべてのオンデマンド ジョブを [Web ジョブ]または[関数]に変更することが推奨されます。  新しいスケジューラ ジョブは、[Web ジョブ]または[関数]として記述してください。
+オンデマンド ジョブは `App_Data/config/scripts/scheduler post-migration`にあります。  すべてのオンデマンド ジョブを [WebJobs] または[関数]に変更することが推奨されます。  新しいスケジューラ ジョブは、[WebJobs] または[関数]として記述してください。
 
 ### <a name="notification-hubs"></a>Notification Hubs
 Mobile Services では、プッシュ通信に Notification Hubs が使用されます。  次のアプリケーション設定を使用して、移行後、モバイル サービスに通知ハブをリンクします。
@@ -358,7 +357,7 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 アプリケーションが App Service に移行され、活用できる機能がさらに増えました。
 
 * デプロイメント [ステージング スロット] では、変更をサイトに公開し、A/B テストを実行できます。
-* [Web ジョブ] は、オンデマンドでスケジュールしたジョブの代わりを提供します。
+* [WebJobs] は、オンデマンドでスケジュールしたジョブの代わりを提供します。
 * GitHub、TFS、Mercurial にサイトをリンクし、サイトを [連続的にデプロイ] できます。
 * [Application Insights] を利用し、サイトを監視できます。
 * 同じコードから Web サイトと Mobile API にサービスを提供します。
@@ -375,29 +374,26 @@ Traffic Manager プロファイルを作成するとき、移行されたモバ�
 <!-- Links -->
 [App Service 価格]: https://azure.microsoft.com/en-us/pricing/details/app-service/
 [Application Insights]: ../application-insights/app-insights-overview.md
-[自動スケール]: ../app-service-web/web-sites-scale.md
-[Azure App Service]: ../app-service/app-service-value-prop-what-is.md
-[Azure App Service のデプロイに関するドキュメント]: ../app-service-web/web-sites-deploy.md
+[自動スケール]: ../app-service/web-sites-scale.md
+[Azure App Service]: ../app-service/app-service-web-overview.md
 [Azure クラシック ポータル]: https://manage.windowsazure.com
 [Azure Portal]: https://portal.azure.com
 [Azure Region]: https://azure.microsoft.com/en-us/regions/
 [Azure Scheduler プラン]: ../scheduler/scheduler-plans-billing.md
-[連続的にデプロイ]: ../app-service-web/app-service-continuous-deployment.md
+[連続的にデプロイ]: ../app-service/app-service-continuous-deployment.md
 [Mixed 名前空間を変換]: https://azure.microsoft.com/en-us/blog/updates-from-notification-hubs-independent-nuget-installation-model-pmt-and-more/
 [curl]: http://curl.haxx.se/
-[custom domain names]: ../app-service-web/web-sites-custom-domain-name.md
+[custom domain names]: ../app-service/app-service-web-tutorial-custom-domain.md
 [Fiddler]: http://www.telerik.com/fiddler
 [Azure App Service は一般公開されており]: https://azure.microsoft.com/blog/announcing-general-availability-of-app-service-mobile-apps/
 [Hybrid Connections]: ../app-service/app-service-hybrid-connections.md
-[ログ]: ../app-service-web/web-sites-enable-diagnostic-log.md
+[ログ]: ../app-service/web-sites-enable-diagnostic-log.md
 [Mobile Apps Node.js SDK]: https://github.com/azure/azure-mobile-apps-node
 [Mobile Services と App Service の比較]: app-service-mobile-value-prop-migration-from-mobile-services.md
 [Notification Hubs]: ../notification-hubs/notification-hubs-push-notification-overview.md
-[パフォーマンス監視]: ../app-service-web/web-sites-monitor.md
+[パフォーマンス監視]: ../app-service/web-sites-monitor.md
 [Postman]: http://www.getpostman.com/
-[ステージング スロット]: ../app-service-web/web-sites-staged-publishing.md
-[VNet]: ../app-service-web/web-sites-integrate-with-vnet.md
-[Web ジョブ]: ../app-service-web/websites-webjobs-resources.md
+[ステージング スロット]: ../app-service/web-sites-staged-publishing.md
+[VNet]: ../app-service/web-sites-integrate-with-vnet.md
 [XDT Transform Samples (XDT 変換サンプル)]: https://github.com/projectkudu/kudu/wiki/Xdt-transform-samples
 [関数]: ../azure-functions/functions-overview.md
-

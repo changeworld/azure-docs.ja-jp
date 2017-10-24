@@ -12,25 +12,17 @@ ms.workload: multiple
 ms.tgt_pltfrm: powershell
 ms.devlang: na
 ms.topic: article
-ms.date: 04/19/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: ae5ccb83a0088cb7c9668f18620b74f9f3f1e9b0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: c201ac12d06ffc8097615517ae09422b037eba6b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="manage-resources-with-azure-powershell-and-resource-manager"></a>Azure PowerShell と Resource Manager でリソースを管理する
-> [!div class="op_single_selector"]
-> * [ポータル](resource-group-portal.md)
-> * [Azure CLI](xplat-cli-azure-resource-manager.md)
-> * [Azure PowerShell](powershell-azure-resource-manager.md)
-> * [REST API](resource-manager-rest-api.md)
->
->
 
-この記事では、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 このトピックは管理タスクに重点を置いています。 このチュートリアルの内容は次のとおりです。
+この記事では、Azure PowerShell と Azure Resource Manager でソリューションを管理する方法について説明します。 Resource Manager に慣れていない場合は、[Resource Manager の概要](resource-group-overview.md)に関するページをご覧ください。 この記事では管理タスクに重点を置いて説明します。 このチュートリアルの内容は次のとおりです。
 
 1. リソース グループの作成
 2. リソース グループへのリソースの追加
@@ -53,7 +45,7 @@ Azure Resource モジュールのバージョンを確認するには、次の�
 Get-Module -ListAvailable -Name AzureRm.Resources | Select Version
 ```
 
-このトピックは、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、このトピックに示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/powershell/module/azurerm.resources)」を参照してください。
+この記事は、バージョン 3.3.0 向けに更新されています。 以前のバージョンを使っている場合は、この記事に示されている手順と一致しない可能性があります。 このバージョンのコマンドレットに関するドキュメントについては、「[AzureRM.Resources Module (AzureRM.Resources モジュール)](/powershell/module/azurerm.resources)」を参照してください。
 
 ## <a name="log-in-to-your-azure-account"></a>Azure アカウントへのログイン
 ソリューションを操作する前に、ご使用のアカウントにログインする必要があります。
@@ -110,6 +102,7 @@ Set-AzureRmContext -SubscriptionName "Example Subscription Two"
 ```
 
 ## <a name="create-a-resource-group"></a>リソース グループの作成
+
 サブスクリプションにリソースをデプロイする前に、そのリソースを含めるリソース グループを作成する必要があります。
 
 リソース グループを作成するには、 **New-AzureRmResourceGroup** コマンドレットを使用します。 コマンドは **Name** パラメーターを使用してリソース グループの名前を指定し、**Location** パラメーターを使用して場所を指定します。
@@ -141,9 +134,10 @@ Get-AzureRmResourceGroup
 ```
 
 ## <a name="add-resources-to-a-resource-group"></a>リソース グループへのリソースの追加
+
 リソースをリソース グループに追加するには、**New-AzureRmResource** コマンドレット、または作成するリソースの種類に固有のコマンドレット (**New-AzureRmStorageAccount** など) を使用します。 リソースの種類に固有のコマンドレットには、新しいリソースが必要とするプロパティのパラメーターが含まれているため、ほとんどの場合、こちらを使用する方が簡単です。 **New-AzureRmResource** を使用するには、設定するすべてのプロパティを把握しておく必要があります。こうしたプロパティを入力するよう求めるメッセージは表示されません。
 
-ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 このトピックでは、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
+ただし、コマンドレットを使ってリソースを追加した場合、その新しいリソースは Resource Manager テンプレートに存在しないため、将来的に混乱が生じる可能性があります。 Microsoft では、Azure ソリューションのインフラストラクチャは、Resource Manager テンプレートを使って定義することをお勧めします。 テンプレートを使用すると、ソリューションを繰り返し、かつ確実にデプロイすることができます。 この記事では、PowerShell コマンドレットでストレージ アカウントを作成しますが、後でリソース グループからテンプレートを生成します。
 
 次のコマンドレットは、ストレージ アカウントを作成します。 この例で示されている名前ではなく、ストレージ アカウントの一意の名前を指定してください。 名前の長さは 3 ～ 24 文字で、使用できるのは数字と小文字のみです。 この例で示されている名前は既に使用済みのため、その名前を使うと、エラーが発生します。
 
@@ -159,7 +153,7 @@ Get-AzureRmResource -ResourceName mystoragename -ResourceGroupName TestRG1
 
 ## <a name="add-a-tag"></a>タグを追加します
 
-タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 このトピックでは、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
+タグを使用すると、さまざまなプロパティに基づいてリソースを整理できます。 たとえば、同じ部門に属しているさまざまなリソース グループに、複数のリソースが含まれていることがあります。 こうしたリソースに部門タグと値を適用して、同じカテゴリに属するものとしてマークできます。 また、運用環境で使用されているリソースか、テスト環境のリソースかをマークすることもできます。 この記事では、1 つのリソースにのみタグを適用しますが、環境内では、ほとんどの場合、すべてのリソースにタグを適用すると便利です。
 
 次のコマンドレットでは、2 つのタグをストレージ アカウントに適用します。
 
@@ -203,6 +197,14 @@ Set-AzureRmResource -Tag $tags -ResourceName mystoragename -ResourceGroupName Te
   Find-AzureRmResource -ResourceType Microsoft.Storage/storageAccounts
   ```
 
+## <a name="get-resource-id"></a>リソース ID を取得する
+
+多くのコマンドは、リソース ID をパラメーターとして受け取ります。 リソースおよび変数内のストアの ID を取得するには、次のコマンドを使用します。
+
+```powershell
+$webappID = (Get-AzureRmResource -ResourceGroupName exampleGroup -ResourceName exampleSite).ResourceId
+```
+
 ## <a name="lock-a-resource"></a>リソースのロック
 
 重要なリソースが誤って削除または変更されないようにするには、そのリソースにロックを適用します。 **CanNotDelete** または **ReadOnly** のいずれかを指定できます。
@@ -242,7 +244,7 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 
 ## <a name="run-resource-manager-scripts-with-azure-automation"></a>Azure Automation での Resource Manager スクリプトの実行
 
-このトピックでは、Azure PowerShell でリソースに対して基本的な操作を行う方法について説明します。 高度な管理シナリオでは、通常、スクリプトを作成し、そのスクリプトを、必要に応じてまたはスケジュールに従って再利用する必要があります。 [Azure Automation](../automation/automation-intro.md) を使用すると、よく使用される Azure ソリューション管理スクリプトを自動化できます。
+この記事では、Azure PowerShell でリソースに対して基本的な操作を行う方法について説明します。 高度な管理シナリオでは、通常、スクリプトを作成し、そのスクリプトを、必要に応じてまたはスケジュールに従って再利用する必要があります。 [Azure Automation](../automation/automation-intro.md) を使用すると、よく使用される Azure ソリューション管理スクリプトを自動化できます。
 
 次のトピックでは、Azure Automation、Resource Manager、および PowerShell を使用して、管理タスクを効果的に実行する方法について説明します。
 
@@ -256,5 +258,4 @@ Remove-AzureRmResourceLock -LockName LockStorage -ResourceName mystoragename -Re
 * テンプレートをデプロイする方法の詳細については、「[Azure リソース マネージャーのテンプレートを使用したアプリケーションのデプロイ](resource-group-template-deploy.md)」を参照してください。
 * 新しいリソース グループに、既存のリソースを移動できます。 例については、「 [新しいリソース グループまたはサブスクリプションへのリソースの移動](resource-group-move-resources.md)」を参照してください。
 * 企業が Resource Manager を使用してサブスクリプションを効果的に管理する方法については、「[Azure enterprise scaffold - prescriptive subscription governance (Azure エンタープライズ スキャフォールディング - サブスクリプションの規範的な管理)](resource-manager-subscription-governance.md)」を参照してください。
-
 

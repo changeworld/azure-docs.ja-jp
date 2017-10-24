@@ -12,22 +12,21 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 09/18/2017
 ms.author: maheshu
+ms.openlocfilehash: e274e0806e99cce484f6ff03803c03bf0034dcd6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8351217a29af20a10c64feba8ccd015702ff1b4e
-ms.openlocfilehash: 08ea5f557498f64825da8fe03d146cace0c53526
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
 次のガイドラインは、Azure AD Domain Services で使用する仮想ネットワークを選択する際に役立ちます。
 
 ### <a name="type-of-azure-virtual-network"></a>Azure 仮想ネットワークの種類
-* クラシック Azure 仮想ネットワークで Azure AD Domain Services を有効にすることができます。 ただし、クラシック仮想ネットワークのサポートは間もなく廃止される予定です。 新しく作成される管理対象ドメインには、Resource Manager 仮想ネットワークを使うことをお勧めします。
-* Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワークでは有効にできます。
+* **Resource Manager の仮想ネットワーク**: Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワーク上で有効にできます。
+* クラシック Azure 仮想ネットワークで Azure AD Domain Services を有効にすることができます。 ただし、クラシック仮想ネットワークのサポートは間もなく廃止される予定です。 新しく作成される管理対象ドメインには、Resource Manager の仮想ネットワークを使用されることをお勧めします。
 * Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することはできません。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
 * **リージョン仮想ネットワーク**: 既存の仮想ネットワークを使用する予定がある場合は、リージョン仮想ネットワークであることを確認してください。
 
@@ -75,8 +74,13 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 | 5986 |ドメインの管理 |
 | 636 |管理対象ドメインへのセキュリティで保護された LDAP (LDAPS) アクセス |
 
+ポート 5986 は、PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。 管理対象ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作を管理対象ドメインに対して実行する必要がある場合にのみ、管理されたドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐに管理対象ドメイン コントローラー上のこのポートを停止します。
+
+ポート 3389 は、管理対象ドメインへのリモート デスクトップ接続に使用されます。 このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 サービスはトラブルシューティングの目的で管理対象ドメインに接続する必要がある場合にのみこのポートを有効にします。このポートは、通常サービスの開始要求に応答して開始されます。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
+
+
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG
-次の表は、Azure AD Domain Services の管理対象ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則は、上記の指定ポートからの受信トラフィックで、Microsoft による修正プログラムの適用、更新、監視が行われる管理対象ドメインを確認できるようにします。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。
+次の表は、Azure AD Domain Services の管理対象ドメインを使用して仮想ネットワークを構成できるサンプル NSG を示しています。 この規則によって、必須ポートからの受信トラフィックで管理対象ドメインへの修正プログラムや更新プログラムを適用し、Microsoft による監視を可能にしています。 既定の 'DenyAll' ルールは、インターネットから入ってくるその他すべてのトラフィックに適用されます。
 
 また、この NSG では、インターネット経由での、セキュリティで保護された LDAP アクセスをロック ダウンする方法も示しています。 インターネット経由での管理対象ドメインへのセキュリティで保護された LDAP アクセスを行えないようにしている場合は、この規則についてはスキップしてください。 この NSG には、指定した IP アドレスから TCP ポート 636 経由で入ってくる LDAPS アクセスのみを許可するルール セットが含まれています。 指定した IP アドレスからインターネット経由で入ってくる LDAPS アクセスを許可する NSG ルールには、DenyAll NSG ルールより高い優先度が設定されています。
 
@@ -121,4 +125,3 @@ Resource Manager ベースの仮想ネットワークを、Azure AD Domain Servi
 * [クラシック デプロイ モデルで VNet 対 VNet 接続を構成する](../vpn-gateway/virtual-networks-configure-vnet-to-vnet-connection.md)
 * [Azure ネットワーク セキュリティ グループ](../virtual-network/virtual-networks-nsg.md)
 * [ネットワーク セキュリティ グループの作成](../virtual-network/virtual-networks-create-nsg-arm-pportal.md)
-

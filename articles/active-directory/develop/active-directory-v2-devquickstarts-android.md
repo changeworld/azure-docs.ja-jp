@@ -16,10 +16,10 @@ ms.date: 05/07/2017
 ms.author: dadobali
 ms.custom: aaddev
 ms.openlocfilehash: c0a5a818c61f7af7ff04bf890b54e8364f3b21b1
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-sign-in-to-an-android-app-using-a-third-party-library-with-graph-api-using-the-v20-endpoint"></a>v2.0 エンドポイントを使用した Graph API を使って、サード パーティのライブラリを使用している Android アプリへのサインインを追加する
 Microsoft の ID プラットフォームには、OAuth2 や OpenID Connect といったオープンな標準が使用されています。 開発者は、任意のライブラリを使用して Microsoft のサービスと連携させることができます。 Microsoft では、そのプラットフォームを他のライブラリから使用する開発者のために、サード パーティのライブラリから Microsoft の ID プラットフォームに接続するための構成方法を紹介するチュートリアルを作成しています。この記事もそうしたチュートリアルの一つです。 Microsoft の ID プラットフォームには、[RFC6749 OAuth2 仕様](https://tools.ietf.org/html/rfc6749)を実装するほとんどのライブラリから接続できます。
@@ -93,7 +93,7 @@ git@github.com:kalemontes/OIDCAndroidLib.git
     ![既定のアプリ モジュール](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample5.PNG)
 5. クローンしたリポジトリのモジュールを現在のプロジェクトにインポートします。
    
-    ![インポート gradle プロジェクト](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG)![新しいモジュールの作成] ページ](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
+    ![gradle プロジェクトのインポート](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample6.PNG) ![新しいモジュール ページの作成](../media/active-directory-android-native-oidcandroidlib-v2/SetUpSample7.PNG)
 6. 以上の手順を `oidlib-sample` モジュールについても行います。
 7. oidclib の `oidlib-sample` モジュールへの依存関係を確認します。
    

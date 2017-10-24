@@ -1,6 +1,6 @@
 ---
-title: "Graph API を使用した Azure Cosmos DB .NET アプリケーションの構築 | Microsoft Docs"
-description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET コード サンプルについて説明します"
+title: "Graph API を使用して Azure Cosmos DB .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する | Microsoft Docs"
+description: "Azure Cosmos DB への接続とデータの照会に使用できる .NET Framework/Core コード サンプルについて説明します"
 services: cosmos-db
 documentationcenter: 
 author: dennyglee
@@ -13,16 +13,15 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 07/28/2017
+ms.date: 10/06/2017
 ms.author: denlee
+ms.openlocfilehash: 4c90ead99c513a56f8891b889e2c873952a33ec8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: 12c9bf626de8738fac95bd41965b0a2bf8758ed2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="azure-cosmos-db-build-a-net-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用した .NET アプリケーションの構築
+# <a name="azure-cosmos-db-build-a-net-framework-or-core-application-using-the-graph-api"></a>Azure Cosmos DB: Graph API を使用して .NET Framework アプリケーションまたは .NET Core アプリケーションを構築する
 
 Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
 
@@ -31,6 +30,8 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 ## <a name="prerequisites"></a>前提条件
 
 まだ Visual Studio 2017 をインストールしていない場合は、**無料**の [Visual Studio 2017 Community エディション](https://www.visualstudio.com/downloads/)をダウンロードして使用できます。 Visual Studio のセットアップ中に、必ず **[Azure の開発]** を有効にしてください。
+
+Visual Studio 2017 がインストール済みである場合は、[Visual Studio 2017 Update 3](https://www.visualstudio.com/en-us/news/releasenotes/vs2017-relnotes) までインストールされていることを確認してください。
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -45,6 +46,10 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
 github から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+
+このサンプル プロジェクトは、.NET Core プロジェクト形式を使用しています。対象フレームワークは次のとおりです。
+ - netcoreapp2.0
+ - net461
 
 1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。  
 
@@ -103,35 +108,37 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。
 
-1. Visual Studio 2017 で App.config ファイルを開きます。 
+1. Visual Studio 2017 で appsettings.json ファイルを開きます。 
 
 2. Azure Portal で Azure Cosmos DB アカウントにアクセスし、左側のナビゲーションにある **[キー]** をクリックします。 
 
     ![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-dotnet/keys.png)
 
-3. ポータルから **[URI]** の値をコピーし、App.config の Endpoint キーの値に設定します。前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
+3. ポータルから **[URI]** の値をコピーし、appsettings.json の Endpoint キーの値に設定します。 前のスクリーンショットで示されているように、値のコピーにはコピー ボタンを使用できます。
 
-    `<add key="Endpoint" value="https://FILLME.documents.azure.com:443" />`
+    `"endpoint": "https://FILLME.documents.azure.com:443/",`
 
 4. ポータルから **[プライマリ キー]** の値をコピーし、App.config の AuthKey キーの値に設定してから、変更を保存します。 
 
-    `<add key="AuthKey" value="FILLME" />`
+    `"authkey": "FILLME"`
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
+アプリケーションを実行する前に、*Microsoft.Azure.Graphs* パッケージを最新バージョンに更新することをお勧めします。
+
 1. Visual Studio の**ソリューション エクスプローラー**で **[GraphGetStarted]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
-2. NuGet の**[Browse]** (参照) ボックスに、「*Microsoft.Azure.Graphs*」と入力し、**[Includes prerelease]** (プレリリース版を含める) ボックスをオンにします。 
+2. NuGet パッケージ マネージャーの **[更新]** タブに「*Microsoft.Azure.Graphs*」と入力し、**[Includes prerelease]\(プレリリース版を含める\)** ボックスをオンにします。 
 
-3. 結果から、**Microsoft.Azure.Graphs** ライブラリをインストールします。 これにより、Azure Cosmos DB グラフ拡張機能ライブラリ パッケージとすべての依存関係がインストールされます。
+3. その結果から **Microsoft.Azure.Graphs** ライブラリを最新バージョンのパッケージに更新します。 これにより、Azure Cosmos DB グラフ拡張機能ライブラリ パッケージとすべての依存関係がインストールされます。
 
     ソリューションの変更の確認に関するメッセージが表示されたら、**[OK]** をクリックします。 ライセンスの同意に関するメッセージが表示されたら、**[同意する]** をクリックします。
 
 4. Ctrl + F5 キーを押してアプリケーションを実行します。
 
-   コンソール ウィンドウには、グラフに追加されている頂点と辺が表示されます。 スクリプトが完了したら、Enter キーを 2 度押してコンソール ウィンドウを閉じます。 
+   コンソール ウィンドウには、グラフに追加されている頂点と辺が表示されます。 スクリプトが完了したら、Enter キーを 2 度押してコンソール ウィンドウを閉じます。
 
 ## <a name="browse-using-the-data-explorer"></a>データ エクスプローラーを使用した参照
 
@@ -162,5 +169,4 @@ github から Graph API アプリの複製を作成し、接続文字列を設�
 
 > [!div class="nextstepaction"]
 > [Gremlin を使用したクエリ](tutorial-query-graph.md)
-
 

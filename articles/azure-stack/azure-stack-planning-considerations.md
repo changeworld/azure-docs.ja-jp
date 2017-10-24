@@ -12,14 +12,13 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 10/09/2017
 ms.author: twooley
+ms.openlocfilehash: 790b65720a8457b780dc727b0f67fcd12aed31bc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 54d9ba1ac1e46843740b7dcec2c9bef80b2325b4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="planning-considerations-for-azure-stack-integrated-systems"></a>Azure Stack 統合システムの計画に関する考慮事項
 
@@ -110,7 +109,10 @@ Azure Stack の名前空間 (特にリージョン名) と外部のドメイン�
 
 ## <a name="certificate-requirements"></a>証明書の要件
 
-デプロイに使用するために、公開されたエンドポイントの Secure Sockets Layer (SSL) 証明書を提供する必要があります。 証明書には以下の要件があります。
+デプロイに使用するために、公開されたエンドポイントの Secure Sockets Layer (SSL) 証明書を提供する必要があります。 大まかに言うと、証明書には以下の要件があります。
+
+> [!IMPORTANT]
+> この記事の証明書の情報は、一般的なガイダンスとして提供されています。 Azure Stack の証明書を取得する前に、OEM のハードウェア パートナーに問い合わせてください。 証明書のガイダンスと要件の詳細が提供されます。
 
 - 1 つのワイルドカード証明書を使用するか、専用証明書のセットを使用することができます。記憶域や Key Vault などのエンドポイントに対してのみワイルドカードを使用できます。
 - 証明書は信頼された公的証明機関 (CA) またはエンタープライズ CA によって発行されたものである必要があります。
@@ -126,7 +128,7 @@ Azure Stack の名前空間 (特にリージョン名) と外部のドメイン�
 | ポータル (ユーザー) | portal. [region].[external_domain] |
 | Key Vault (ユーザー) | &#42;.vault.[region].[external_domain] |
 | Key Vault (管理者) | &#42;.adminvault.[region].[external_domain] |
-| Storage | &#42;blob.[region].[external_domain]<br>&#42;table.[region].[external_domain]<br>&#42;queue.[region].[external_domain]  |
+| ストレージ | &#42;.blob.[region].[external_domain]<br>&#42;.table.[region].[external_domain]<br>&#42;.queue.[region].[external_domain]  |
 | Graph** | graph.[region].[external_domain] |
 | AD FS** | adfs.[region].[external_domain] |
 | | |
@@ -160,7 +162,7 @@ Azure Stack のネットワーク インフラストラクチャは、スイッ�
 
 ![論理ネットワーク図とスイッチ接続](media/azure-stack-planning-considerations/NetworkDiagram.png)
 
-次の表は、論理ネットワークと、計画する必要がある関連付けらた IPv4 サブネット範囲を示します。
+次の表は、論理ネットワークと、計画する必要がある関連付けられた IPv4 サブネット範囲を示します。
 
 | 論理ネットワーク | Description | サイズ | 
 | -------- | ------------- | ------------ | 
@@ -214,7 +216,7 @@ Azure Stack サービス (ポータル、Azure Resource Manager、DNS など) �
  
 - **イントラネット デプロイ**。 一般的に 1 つ以上のファイアウォールの内側にあるプライベート IP アドレス空間である企業のイントラネット上に配置される Azure Stack のデプロイです。 パブリック IP アドレスは、パブリック インターネット経由で直接ルーティングできないため、実際にはパブリックではありません。
 
-- **インターネット デプロイ**。 パグリック インターネットに接続し、インターネットでルーティング可能なパブリック IP アドレスをパブリック VIP 範囲として使用する Azure Stack のデプロイです。 このデプロイはファイアウォールの内側への配置が可能でありながら、パブリック VIP 範囲はパブリック インターネットおよび Azure から直接到達可能です。
+- **インターネット デプロイ**。 パブリック インターネットに接続し、インターネットでルーティング可能なパブリック IP アドレスをパブリック VIP 範囲として使用する Azure Stack のデプロイです。 このデプロイはファイアウォールの内側への配置が可能でありながら、パブリック VIP 範囲はパブリック インターネットおよび Azure から直接到達可能です。
  
 次の表は、ハイブリッド接続のシナリオの長所と短所、ユース ケースをまとめたものです。
 
@@ -285,4 +287,3 @@ Linux または Windows の IaaS 仮想マシンをバックアップするに�
 
 - ユース ケース、購入、パートナー、OEM ハードウェア ベンダーの詳細については、[Azure Stack](https://azure.microsoft.com/overview/azure-stack/) の製品ページを参照してください。
 - Azure Stack 統合システムのロードマップと地理的な可用性については、ホワイト ペーパー「[Azure Stack: An extension of Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/)」 (Azure Stack: Azure の拡張機能) を参照してください。 
-

@@ -13,20 +13,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: f2695d4f15fe984cd02cba9ff66033b90d0a4dc3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 4ea38d3b47ff4b50446f4ffdc3dc544fdcf938e7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Windows ベースの HDInsight クラスターから Linux ベースのクラスターへの移行
 
-このドキュメントでは、Windows と Linux での HDInsight の違いについて詳しく説明し、Linux ベースのクラスターに既存のワークロードを移行する方法に関するガイダンスを示します。
+このドキュメントでは、Windows および Linux 上の HDInsight の違いについて詳しく説明します。 また、既存のワークロードを Linux ベースのクラスターに移行する方法についてのガイダンスも提供します。
 
-Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単な方法を提供しますが、Linux ベースのクラスターへの移行が必要になる場合もあります。 たとえば、ソリューションに必要な Linux ベースのツールとテクノロジを活用したい場合などです。 Hadoop エコシステムの多くの要素は Linux ベース システムで開発されており、Windows ベースの HDInsight で使用できない場合があります。 さらに、多くの書籍、ビデオ、およびその他のトレーニング資料では、Hadoop の操作時に Linux システムを使用することを前提としています。
+Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単な方法を提供しますが、Linux ベースのクラスターへの移行が必要になる場合もあります。 たとえば、ソリューションに必要な Linux ベースのツールとテクノロジを活用したい場合などです。 Hadoop エコシステムの多くの要素は Linux ベース システムで開発されており、Windows ベースの HDInsight で使用できない場合があります。 多くの書籍、ビデオ、およびその他のトレーニング資料では、Hadoop の操作時に Linux システムを使用することを前提としています。
 
 > [!NOTE]
 > HDInsight クラスターは、クラスター内のノードのオペレーティング システムとして Ubuntu の長期サポート (LTS) を使用します。 HDInsight で使用可能な Ubuntu のバージョンの詳細や他のコンポーネントのバージョン情報については、[HDInsight コンポーネントのバージョンに関する記事](hdinsight-component-versioning.md)を参照してください。
@@ -37,7 +36,7 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 ![移行のワークフロー図](./media/hdinsight-migrate-from-windows-to-linux/workflow.png)
 
-1. このドキュメントの各セクションを読んで、既存のワークフローやジョブなどを Linux ベースのクラスターに移行するときに必要になる場合がある変更について理解します。
+1. このドキュメントの各セクションを読んで、移行時に必要になる場合がある変更について理解します。
 
 2. テスト/品質保証環境として、Linux ベースのクラスターを作成します。 Linux ベースのクラスターの作成の詳細については、「 [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)」を参照してください。
 
@@ -76,9 +75,9 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 
 2. HDInsight ドキュメントに記載された Linux ベース クラスターの作成手順に従ってテスト環境を作成します。 クラスターを作成する前に、 **[オプションの構成]**を選択します。
 
-3. [オプションの構成] ブレードで、 **[リンクされたストレージ アカウント]**を選択します。
+3. [オプションの構成] セクションで、**[リンクされたストレージ アカウント]** を選択します。
 
-4. **[ストレージ キーを追加]** を選択し、メッセージが表示されたら、手順 1. で PowerShell スクリプトによって返されたストレージ アカウントを選択します。 各ブレードで **[選択]** をクリックします。 最後に、クラスターを作成します。
+4. **[ストレージ キーを追加]** を選択し、メッセージが表示されたら、手順 1. で PowerShell スクリプトによって返されたストレージ アカウントを選択します。 各セクションで **[選択]** をクリックします。 最後に、クラスターを作成します。
 
 5. クラスターが作成されたら、**SSH** を使用して接続します。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
@@ -114,10 +113,10 @@ Windows ベースの HDInsight はクラウドで Hadoop を使用する簡単�
 | **PowerShell** (クラスターの作成時に使用されるスクリプトを含む、サーバー側スクリプト) |Bash スクリプトを書き直します。 スクリプト アクションについては、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。 |
 | **Azure CLI** (サーバー側スクリプト) |Azure CLI は Linux で使用可能ですが、HDInsight クラスター ヘッド ノードにはプレインストールされません。 Azure CLI のインストールの詳細については、「[Azure CLI 2.0 の概要](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli)」を参照してください。 |
 | **.NET コンポーネント** |.Net は、[Mono](https://mono-project.com) を使用した Linux ベースの HDInsight でサポートされています。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。 |
-| **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性のあるバージョンを見つけることができる場合や、代替ソリューションを見つけるかこのコンポーネントを書き換える必要がある場合があります。 |
+| **Win32 コンポーネントまたはその他の Windows 専用のテクノロジ** |ガイダンスはコンポーネントやテクノロジによって異なります。 Linux と互換性があるバージョンを確認できます。 ない場合は、代わりの解決策を見つけるか、このコンポーネントを再生成する必要があります。 |
 
 > [!IMPORTANT]
-> HDInsight 管理 SDK は Mono と完全な互換性はありません。 現時点では、HDInsight クラスターにデプロイされるソリューションの一部として使用しないでください。
+> HDInsight 管理 SDK は Mono と完全な互換性はありません。 HDInsight クラスターにデプロイされているソリューションに組み込んで使用しないでください。
 
 ## <a name="cluster-creation"></a>クラスターの作成
 
@@ -135,7 +134,7 @@ Linux ベースの HDInsight クラスターでは **Secure Shell (SSH)** プロ
 
 ### <a name="cluster-customization"></a>クラスターのカスタマイズ
 
-**スクリプト アクション** は、Bash スクリプトに記述する必要があります。 スクリプト アクションはクラスターの作成時に使用できますが、Linux ベースのクラスターの場合、クラスターの稼働後にカスタマイズを実行する場合にも使用できます。 詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
+**スクリプト アクション** は、Bash スクリプトに記述する必要があります。 Linux ベースのクラスターでは、クラスターのインストール中または作成後にスクリプト アクションを使用できます。 詳細については、「[Script Action を使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」および「[HDInsight での Script Action 開発](hdinsight-hadoop-script-actions-linux.md)」をご覧ください。
 
 他のカスタマイズ機能として **ブートストラップ**があります。 Windows クラスターの場合、この機能により、Hive で使用する追加ライブラリの場所を指定できます。 クラスターの作成後にこれらのライブラリは自動的に Hive クエリで使用できるようになるため、 `ADD JAR`を使用する必要はありません。
 
@@ -145,7 +144,7 @@ Linux ベースのクラスターのブートストラップ機能では、こ�
 
 Windows ベースの HDInsight クラスターは従来の仮想ネットワークでのみ動作しますが、Linux ベースの HDInsight クラスターにはリソース マネージャーの仮想ネットワークが必要になります。 Linux ベースの HDInsight クラスターを接続する必要がある従来の Virtual Network にリソースがある場合は、「 [従来の VNet を新しい VNet に接続する](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md)」を参照してください。
 
-HDInsight で Azure Virtual Networks を使用する場合の構成要件の詳細については、「 [Azure Virtual Network を使用した HDInsight 機能の拡張](hdinsight-extend-hadoop-virtual-network.md)」を参照してください。
+構成要件の詳細については、[Virtual Network を使用した HDInsight の機能の拡張](hdinsight-extend-hadoop-virtual-network.md)に関するドキュメントをご覧ください。
 
 ## <a name="management-and-monitoring"></a>管理と監視
 
@@ -164,8 +163,6 @@ Ambari には、クラスターに関する潜在的な問題を通知できる�
 > Ambari アラートは問題が*ある可能性のある*ことを示すものであり、問題が*ある*ことを示すものではありません。 たとえば、HiveServer2 に通常どおりアクセスできる場合でも、アクセスできないことを示すアラートを受け取ることがあります。
 >
 > 多くのアラートがサービスに対する一定間隔のクエリとして実装され、特定の期間内での応答を予期します。 したがって、アラートは必ずしもサービスが停止していることを意味するわけでなく、単に予期した期間内に結果が返されなかったことを意味します。
-
-アラートが長期間発生していたか、アクションを実行する前に報告されていたユーザーの問題を反映しているのかを評価する必要があります。
 
 ## <a name="file-system-locations"></a>ファイル システムの場所
 
@@ -230,7 +227,7 @@ Linux ベースの HDInsight では、リモート デスクトップ機能は�
 
 Oozie ワークフローでは、シェルの操作が可能です。 シェルの操作では、オペレーティング システムの既定のシェルを使用して、コマンド ライン コマンドを実行します。 Windows シェルを使用する Oozie ワークフローがある場合は、Linux シェル環境 (Bash) を使用するワークフローを書き換える必要があります。 Oozie でのシェルの操作の使用の詳細については、「[Oozie shell action extension](http://oozie.apache.org/docs/3.3.0/DG_ShellActionExtension.html)」 (Oozie シェル操作の拡張) を参照してください。
 
-シェルの操作で呼び出される C# アプリケーションを使用する Oozie ワークフローがある場合は、Linux 環境でこれらのアプリケーションを検証する必要があります。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。
+C# アプリケーションを使用するワークフローを使用している場合は、Linux 環境でこれらのアプリケーションを検証します。 詳細については、「[Migrate .NET solutions to Linux-based HDInsight](hdinsight-hadoop-migrate-dotnet-to-linux.md)」 (Linux ベースの HDInsight に .NET ソリューションを移行する) を参照してください。
 
 ## <a name="storm"></a>Storm
 
@@ -238,7 +235,7 @@ Oozie ワークフローでは、シェルの操作が可能です。 シェル�
 | --- | --- |
 | Storm ダッシュボード |Storm ダッシュ ボードは使用できません。 トポロジの送信方法については、「 [Linux ベースの HDInsight での Apache Storm トポロジのデプロイと管理](hdinsight-storm-deploy-monitor-topology-linux.md) 」を参照してください。 |
 | Storm UI |Storm UI は https://CLUSTERNAME.azurehdinsight.net/stormui で利用できます。 |
-| Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |Visual Studio は、2016 年 10 月 28 日以降に作成された HDInsight クラスター上の Linux ベース Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイ、管理に使用できます。 |
+| Visual Studio を使用して、C# またはハイブリッド トポロジを作成、デプロイ、および管理します。 |HDInsight 上の Linux ベースの Storm で、C# (SCP.NET) またはハイブリッド トポロジの作成、デプロイおよび管理に Visual Studio を使用できます。 2016年 10 月 28 日より後に作成されたクラスターでのみ使用できます。 |
 
 ## <a name="hbase"></a>HBase
 
@@ -261,11 +258,11 @@ Linux ベースのクラスターでは、HBase の znode の親は `/hbase-unse
 
 ### <a name="line-endings"></a>行の終わり
 
-通常、Windows ベース システムの行の終わりには CRLF を使用しますが、Linux ベース システムでは LF を使用します。 行の終わりが CRLF のデータを生成する場合、またはそのようなデータが必要な場合には、LF 行の終わりを操作するためにプロデューサーとコンシューマーの変更が必要になることがあります。
+通常、Windows ベース システムの行の終わりには CRLF を使用しますが、Linux ベース システムでは LF を使用します。 LF を使用するには、既存のデータ プロデューサーとデータ コンシューマーの変更が必要になる場合があります。
 
-たとえば、Azure PowerShell を使用して Windows ベース クラスター上の HDInsight に対してクエリを実行すると、CRLF のデータが返されます。 Linux ベースのクラスターで同じクエリを実行すると、LF が返されます。 Linux ベースのクラスターに移行する前に、行の終わりによってソリューションで問題が発生しないかどうかを調べる必要があります。
+たとえば、Azure PowerShell を使用して Windows ベース クラスター上の HDInsight に対してクエリを実行すると、CRLF のデータが返されます。 Linux ベースのクラスターで同じクエリを実行すると、LF が返されます。 Linux ベースのクラスターに移行する前に、行の終わりによってソリューションで問題が発生しないかどうかを調べます。
 
-Linux クラスター ノードで直接実行されるスクリプトの場合は、行の終わりとして常に LF を使用する必要があります。 CRLF を使用すると、Linux ベースのクラスターでスクリプトを実行するときにエラーが発生する可能性があります。
+クラスター ノードで実行するスクリプトの行の終わりに必ず LF を使用します。 CRLF を使用すると、Linux ベースのクラスターでスクリプトを実行するときにエラーが発生する可能性があります。
 
 スクリプトに CR 文字が埋め込まれた文字列が含まれていないことがわかっている場合は、以下のいずれかの方法を使用して行の終わりを一括変更することができます。
 
@@ -290,4 +287,3 @@ Linux クラスター ノードで直接実行されるスクリプトの場合�
 * [Linux ベースの HDInsight クラスターを作成する方法を確認する](hdinsight-hadoop-provision-linux-clusters.md)
 * [SSH を使用して HDInsight に接続する](hdinsight-hadoop-linux-use-ssh-unix.md)
 * [Ambari を使用して Linux ベースのクラスターを管理する](hdinsight-hadoop-manage-ambari.md)
-

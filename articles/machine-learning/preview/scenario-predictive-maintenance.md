@@ -1,26 +1,23 @@
---- 
+---
 title: "予測メンテナンスの実際のシナリオ | Microsoft Docs"
 description: "PySpark を使用した予測メンテナンスの実際のシナリオ"
 services: machine-learning
-author: jaymathe
-ms.author: jaymathe
+author: ehrlinger
+ms.author: jehrling
 manager: jhubbard
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
-ms.date: 09/25/2017
+ms.date: 10/05/2017
+ms.openlocfilehash: dc73c052ad9e0fe12af5042289f304a0e48ae413
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 7bb5672a2b9de0a62af8b6155bfdead6a0105eb5
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
---- 
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
+---
 # <a name="predictive-maintenance-real-world-scenario"></a>予測メンテナンスの実際のシナリオ
-
 
 予期しない設備のダウンタイムは、どのような企業にとっても損害になる可能性があります。 そのため、使用率やパフォーマンスを最大化するには、またコストのかかる予定外のダウンタイムを最小化するには、現場の設備を稼働し続けることが必須です。 問題を早期に特定することで、コスト効率の高い方法で限られた保守リソースをデプロイし、品質管理やサプライ チェーンのプロセスを向上させることができます。 
 
@@ -33,7 +30,7 @@ ms.lasthandoff: 09/25/2017
 
 ## <a name="use-case-overview"></a>ユース ケースの概要
 
-資産の量が多い業種の企業が直面する主な問題は、機械的な問題による遅延に関係する重大なコストです。 ほとんどの企業は、このような問題が生じる前に事前に防ぐために、問題が発生するタイミングの予測に関心があります。 予測によって、ダウンタイムを減らすことでコストを削減し、場合によっては安全性を向上することができます。 予測メンテナンスの一般的なユース ケースとモデリング アプローチの詳細な説明については、[予測メンテナンスのプレイブック](https://docs.microsoft.com/en-us/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)に関するページを参照してください。
+資産の量が多い業種の企業が直面する主な問題は、機械的な問題による遅延に関係する重大なコストです。 ほとんどの企業は、このような問題が生じる前に事前に防ぐために、問題が発生するタイミングの予測に関心があります。 目標は、ダウンタイムを短縮してコストを削減し、できる限り安全性を高めることです。 予測メンテナンスに使用される一般的なユース ケースとモデリング アプローチの詳細な説明については、[予測メンテナンスのプレイブック](https://docs.microsoft.com/en-us/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)に関するページを参照してください。
 
 このシナリオでは、複数の実際の問題の複合に基づくシナリオに予測モデルを実装する手順を提供する目的で、プレイブックのアイデアを利用します。 次の例は、多くの予測メンテナンスのユース ケースで見られる一般的なデータ要素をまとめたものです。
 
@@ -43,24 +40,40 @@ ms.lasthandoff: 09/25/2017
 
 * [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版もご利用いただけます)。
 * [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md) のインストール済みコピー。[クイックスタート インストール ガイド](./quickstart-installation.md)に従ってプログラムをインストールし、ワークスペースを作成します。
-* このシナリオで Jupyter ノートブック全体で使用する結果は、Azure Blob Storage コンテナーにそのまま格納されます。 Azure Storage アカウントを設定する手順は、[こちらのリンク](https://docs.microsoft.com/en-us/azure/storage/blobs/storage-python-how-to-use-blob-storage)を参照してください。 
-* モデルの[運用化](https://github.com/Azure/Machine-Learning-Operationalization)の場合、[Docker エンジン](https://www.docker.com/)をローカルにインストールして実行することをお勧めします。 インストールせずにクラスター オプションを使用することもできますが、多くの場合、[Azure Container Service (ACS)](https://azure.microsoft.com/en-us/services/container-service/) の実行コストは高くなります。
-* このシナリオでは、Docker エンジンをローカルにインストールした Windows 10 マシンで Azure ML Workbench を実行していることを前提とします。 
-* このシナリオは、Windows 10 マシンで構築およびテストされています。このマシンの仕様は、Docker バージョン 17.06.0-ce-win19 (12801) がインストールされている Intel Core i7-4600U CPU @ 2.10 GHz、8-GB RAM、64 ビット OS、x64 ベースのプロセッサです。 
-* モデルの運用化は、azure-cli-ml==0.1.0a22 バージョンの Azure ML CLI を使用して実行されました。
+* Azure Machine Learning Operationalization は、ローカル デプロイ環境と[管理アカウント](https://docs.microsoft.com/en-us/azure/machine-learning/preview/model-management-overview)を必要とします
 
-## <a name="create-a-new-workbench-project"></a>新しいワークベンチ プロジェクトの作成
+この例は、任意の AML Workbench コンピューティング コンテキストで実行できます。 ただし、少なくとも 16 GB のメモリを備えたマシン上で実行することをお勧めします。 このシナリオは、リモート DS4_V2 標準 [Linux 用データ サイエンス仮想マシン (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) を実行している Windows 10 マシンで構築され、テストされました。
+
+モデルの運用化は、Azure ML CLI のバージョン 0.1.0a22 を使用して実行されました。
+
+## <a name="create-a-new-workbench-project"></a>新しい Workbench プロジェクトの作成
 
 この例をテンプレートとして使用して新しいプロジェクトを作成します。
 1.  Azure Machine Learning Workbench を開きます
 2.  **[プロジェクト]** ページで **+** 記号をクリックし、**[新しいプロジェクト]** を選択します
 3.  **[新しいプロジェクトの作成]** ウィンドウで、新しいプロジェクトの情報を入力します
 4.  **[プロジェクト テンプレートの検索]** 検索ボックスに「Predictive Maintenance」と入力し、テンプレートを選択します
-5.  **[作成]** をクリックします
+5.  **[作成]**
+
+## <a name="prepare-the-notebook-server-computation-target"></a>ノートブック サーバーの計算ターゲットの準備
+
+ローカル コンピューター上で実行するには、AML Workbench の `File` メニューの `Open Command Prompt` または `Open PowerShell CLI` を選択します。 CLI ウィンドウ内で、次のコマンドを実行します。
+
+`az ml experiment prepare --target docker --run-configuration docker`
+
+Linux 用データ サイエンス仮想マシン (Ubuntu) 上で実行することをお勧めします。 DSVM が構成されたら、次の 2 つのコマンドを実行します。
+
+`az ml computetarget attach --name [Desired_Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword] --type remotedocker`
+
+`az ml experiment prepare --target [Desired_Connection_Name] --run-configuration [Desired_Connection_Name]`
+
+docker イメージを準備した状態で、Jupyter ノートブック サーバーを AML Workbench のノートブック タブ内で開くか、`az ml notebook start` を実行してブラウザーベースのサーバーを起動します。
+
+ノートブックは、Jupyter 環境内の `Code` ディレクトリに格納されています。 ノートブックは、最初の (`Code\1_data_ingestion.ipynb`) ノートブックから順番に実行されます。 各ノートブックを開くとき、計算カーネルを選択するように求められます。 [プロジェクト名]_Template [目的の接続名] を選択し、[Set Kernel]\(カーネルの設定\) をクリックします。
 
 ## <a name="data-description"></a>データの説明
 
-[シミュレートされたデータ](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)は、5 個のコンマ区切り値 (.csv) ファイルで構成されます。 
+[シミュレートされたデータ](https://github.com/Microsoft/SQL-Server-R-Services-Samples/tree/master/PredictiveMaintanenceModelingGuide/Data)は、5 個のコンマ区切り値 (.csv) ファイルで構成されます。 データ セットの詳細な説明については、リンク先のページを参照してください。
 
 * [マシン](https://pdmmodelingguide.blob.core.windows.net/pdmdata/machines.csv): 各マシンを区別する特徴。 たとえば、製造年、モデルなどです。
 * [エラー](https://pdmmodelingguide.blob.core.windows.net/pdmdata/errors.csv): エラー ログには、マシンが動作したままの状態でスローされる重要ではないエラーが含まれています。 これらのエラーは障害として見なされませんが、将来的な障害イベントの予測になる可能性があります。 テレメトリ データは、1 時間間隔で収集されるため、エラー日時は最も近い時刻に丸められます。
@@ -75,15 +88,21 @@ Jupyter ノートブック シナリオの[データの取り込み](https://git
 
 リポジトリには、データの準備から、いくつかのモデルを構築し、最終的に最適なモデルの 1 つを運用化するまでのプロセスの概要について説明した [Readme](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/README.md) ファイルがあります。 4 つの Jupyter ノートブックをリポジトリ内の [Code](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/tree/master/Code) フォルダーで使用できます。   
 
-次に、手順のシナリオ ワークフローについて説明します。 エンド ツー エンドのシナリオは PySpark で記述され、以下のように 4 つのノートブックに分割されています。
+次に、手順のシナリオ ワークフローについて説明します。 エンド ツー エンドのシナリオは PySpark で記述され、4 つのノートブックに分割されています。
 
-* [データの取り込み](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb): このノートブックは、5 つの入力 .csv ファイルのデータの取り込みを処理し、前段階のクリーンアップをいくつか実行し、いくつかの概略図を作成してデータのダウンロードを検証し、最後に結果のデータセットを Azure BLOB コンテナーに格納して、次のノートブックで使用できるようにします。
+[`Code\1_data_ingestion.ipynb`](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/1_data_ingestion.ipynb): このノートブックは 5 つの入力 .csv ファイルをダウンロードし、いくつかの事前データ クリーンアップと視覚化を実行します。 このノートブックは、データを PySpark 形式に変換し、特徴エンジニアリング タスクで使用できるようにその結果を Azure BLOB コンテナーに保存します。
 
-* [特徴エンジニアリング](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb): 前の手順でクリーニングされたデータセットを使用し、テレメトリ センサーのラグ特徴が作成されます。また、最後の置換後の日数などの変数を作成する特徴エンジニアリングが追加されます。 最後に、障害には関連するレコードのタグが付けられ、最終的なデータセットが作成されます。このデータセットは、次の手順のために Azure BLOB に保存されます。 
+[`Code\2_feature_engineering.ipynb`](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/2_feature_engineering.ipynb): 前の手順でクリーニングされたデータセットを使用し、テレメトリ センサーのラグおよび集約された特徴が作成されます。さらに、エラー数、コンポーネントの置き換え、マシン情報がテレメトリ データに結合されます。 障害に関連するコンポーネントの置き換えは、障害が発生したコンポーネントを記述するラベルを作成するために使用されます。 ラベル付きの特徴データは、モデル構築タスクのために Azure BLOB に保存されます。
 
-* [モデルの構築](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb): 最終的な特徴エンジニアリングされたデータセットは、日時スタンプに基づくトレーニングとテスト データセットという 2 つに分割されます。 この 2 つのモデル、言い換えるとランダム フォレスト分類器とデシジョン ツリー分類器は、トレーニング データセットに対して構築され、テスト データセットでスコア付けされます。 
+[`Code\3_model_building.ipynb`](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/3_model_building.ipynb): モデリング ノートブックは、ラベル付きの特徴データセットを使用して、日付時刻スタンプに沿ってトレーニング用と開発用のデータセットにデータを分割します。 このノートブックは、`pyspark.ml.classification` モデルを使用した設定セット実験です。 トレーニング データはベクトル化されます。ユーザーは、`DecisionTreeClassifier` または `RandomForestClassifier` のいずれかを使用して実験し、ハイパーパラメーターを操作して最高のパフォーマンスを発揮するモデルを見つけることができます。 パフォーマンスは、開発用のデータセットに対する測定統計情報を評価することによって判定されます。 これらの統計は、追跡のために AML Workbench の実行時画面に再び記録されます。 実行のたびに、ノートブックは、Jupyter ノートブック カーネルを実行しているローカル ディスクに結果のモデルを保存します。 
 
-* [モデルの運用化とデプロイ](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb): 前の手順で構築された最適なモデルは、デプロイに関連する .json スキーム ファイルと共に、.model ファイルとして保存されます。 init() 関数と run() 関数は、まずローカルでテストされてから、Azure Machine Learning モデル管理環境を使用してモデルが運用化され、運用環境でリアルタイムの障害予測に使用されます。  
+[`Code\4_operationalization.ipynb`](https://github.com/Azure/MachineLearningSamples-PredictiveMaintenance/blob/master/Code/4_operationalization.ipynb): このノートブックは、ローカル (Jupyter ノートブック カーネル) ディスクに保存された最後のモデルを使用して、モデルを Azure Web サービスに運用化するためのコンポーネントを構築します。 完全な運用資産は、別の Azure BLOB コンテナーに格納されている `o16n.zip` ファイルに圧縮されています。 圧縮ファイルには、次のものが含まれます。
+
+* `service_schema.json`: デプロイ用のスキーマ定義ファイル。 
+* `pdmscore.py`: Azure Web サービスに必要な init() 関数と run() 関数
+* `pdmrfull.model`: モデル定義ディレクトリ。
+    
+ このノートブックは、デプロイのために運用資産をパッケージ化する前に、モデル定義を使用して関数をテストします。 デプロイの手順は、ノートブックの末尾に記載されています。
 
 ## <a name="conclusion"></a>まとめ
 
@@ -91,7 +110,7 @@ Jupyter ノートブック シナリオの[データの取り込み](https://git
 
 ## <a name="references"></a>参照
 
-このユース ケースは、以下のように、以前は複数のプラットフォームで開発されていました。
+このユース ケースは、以前は複数のプラットフォームで開発されていました。
 
 * [予測メンテナンス ソリューション テンプレート](https://docs.microsoft.com/en-us/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [予測メンテナンスのモデリング ガイド](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
@@ -99,5 +118,6 @@ Jupyter ノートブック シナリオの[データの取り込み](https://git
 * [予測メンテナンス モデリング ガイド Python ノートブック](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
 * [PySpark を使用する予測メンテナンス](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
 
+# <a name="next-steps"></a>次のステップ
 
-
+これ以外にも、Azure Machine Learning Workbench 内で利用できる、製品の他の機能を示す多くのサンプル シナリオがあります。 

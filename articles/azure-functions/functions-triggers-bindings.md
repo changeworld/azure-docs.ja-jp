@@ -16,14 +16,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/30/2017
 ms.author: donnam
+ms.openlocfilehash: ab438f804c28d5528901c405311424e0344e00fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 54c75a4c22f094ca50ab2cbf5449c5fa115b32a7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Azure Functions でのトリガーとバインドの概念
 Azure Functions では、*トリガー*と*バインド*を使用して、Azure やその他のサービスで発生したイベントに応答するコードを記述できます。 この記事では、サポートされているすべてのプログラミング言語でのトリガーとバインドの概念的な概要を説明します。 ここでは、すべてのバインドに共通する機能について説明します。
 
@@ -43,21 +41,21 @@ Azure Functions では、*トリガー*と*バインド*を使用して、Azure 
 
 ### <a name="example-queue-trigger-and-table-output-binding"></a>例: キュー トリガーとテーブルの出力バインド
 
-Azure Queue Storage に新しいメッセージが表示されるたびに、Azure Table Storage に新しい行を書き込みたいと仮定します。 このシナリオは、Azure キュー トリガーとテーブルの出力バインドを使用して実装できます。 
+Azure Queue Storage に新しいメッセージが表示されるたびに、Azure Table Storage に新しい行を書き込みたいと仮定します。 このシナリオは、Azure Queue トリガーと Azure Table Storage の出力バインドを使用して実装できます。 
 
-キュー トリガーには、**[統合]** タブ内の以下の情報が必要です。
+Azure Queue Storage トリガーには、**[統合]** タブ内の以下の情報が必要です。
 
-* キューのストレージ アカウント接続文字列を含むアプリ設定の名前
+* Azure Queue Storage の Azure Storage アカウント接続文字列を含む、アプリ設定の名前
 * キュー名
 * `order` など、キュー メッセージの内容を読み取るためのコード内の識別子
 
 Azure Table Storage に書き込むには、以下の詳細を含む出力バインドを使用します。
 
-* テーブルのストレージ アカウント接続文字列を含む、アプリ設定の名前
+* Azure Table Storage の Azure Storage アカウント接続文字列を含む、アプリ設定の名前
 * テーブル名
 * 関数から出力項目または戻り値を作成するための、コード内の識別子
 
-バインドでは、*function.json* がサービス シークレットを含まないというベスト プラクティスを適用する、接続文字列のアプリ設定を使用します。
+バインディングは、アプリの設定に格納された接続文字列値を使用して、*function.json* にサービス シークレットを格納せずに、アプリ設定の名前だけを含めるというベスト プラクティスを確実に実行します。
 
 その後、指定した識別子を使用して、コードで Azure Storage と統合します。
 
@@ -168,7 +166,7 @@ public static Task<string> Run(WorkItem input, TraceWriter log)
 {
     string json = string.Format("{{ \"id\": \"{0}\" }}", input.Id);
     log.Info($"C# script processed queue message. Item={json}");
-    return json;
+    return Task.FromResult(json);
 }
 ```
 
@@ -191,7 +189,7 @@ let Run(input: WorkItem, log: TraceWriter) =
 
 ## <a name="binding-datatype-property"></a>dataType プロパティのバインド
 
-.NET では、型を使用して、入力データのデータ型を定義します。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を使用します。
+.NET では、型を使用して、入力データのデータ型を定義します。 たとえば、キュー トリガーのテキストにバインドするには `string` を、バイナリとして読み取るにはバイト配列を、POCO オブジェクトを逆シリアル化するにはカスタム型を使用します。
 
 JavaScript など、動的に型指定された言語については、バインディングの定義で `dataType` プロパティを使用します。 たとえば、バイナリ形式で HTTP 要求のコンテンツを読み取るには、`binary` 型を使用します。
 
@@ -213,7 +211,7 @@ JavaScript など、動的に型指定された言語については、バイン
 
 アプリ設定は、`%MyAppSetting%` のように値がパーセント記号で囲まれたときには常に解決されます。 トリガーやバインドの `connection` プロパティは特殊ケースであり、値はアプリ設定として自動的に解決されることに注意してください。 
 
-次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義するキュー トリガーです。
+次の例は、アプリ設定 `%input-queue-name%` を使用してトリガーの対象となるキューを定義する Azure Queue Storage トリガーです。
 
 ```json
 {
@@ -233,7 +231,7 @@ JavaScript など、動的に型指定された言語については、バイン
 
 トリガーによって提供されるデータ ペイロード (関数をトリガーしたキュー メッセージなど) に加え、多くのトリガーは追加のメタデータ値を提供します。 これらの値は、C# および F# で入力パラメーターとして使用したり、JavaScript で `context.bindings` オブジェクトのプロパティとして使用したりできます。 
 
-たとえば、キュー トリガーは以下のプロパティをサポートしています。
+たとえば、Azure Storage Queue トリガーは以下のプロパティをサポートしています。
 
 * QueueTrigger - 有効な文字列の場合はメッセージの内容をトリガーします
 * DequeueCount
@@ -245,7 +243,7 @@ JavaScript など、動的に型指定された言語については、バイン
 
 各トリガーのメタデータ プロパティの詳細については、対応するリファレンス トピックを参照してください。 ドキュメントは、ポータルの **[統合]** タブの、バインド構成領域の下の **[ドキュメント]** セクションでも参照できます。  
 
-たとえば、Blob トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([Blob Storage トリガー](functions-bindings-storage-blob.md#storage-blob-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
+たとえば、BLOB トリガーには一定の遅延があるため、キュー トリガーを使用して関数を実行できます ([BLOB ストレージ トリガー](functions-bindings-storage-blob.md#storage-blob-trigger)に関するページを参照)。 キュー メッセージにはトリガーする対象の Blob ファイル名が含まれます。 `queueTrigger` メタデータ プロパティを使用する場合は、この動作をすべて、コードではなく構成に指定できます。
 
 ```json
   "bindings": [
@@ -428,4 +426,3 @@ C# および他の .NET 言語では、*function.json* の宣言型のバイン�
 - [Notification Hubs](functions-bindings-notification-hubs.md)
 - [Mobile Apps](functions-bindings-mobile-apps.md)
 - [外部ファイル](functions-bindings-external-file.md)
-

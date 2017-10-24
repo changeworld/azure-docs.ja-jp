@@ -10,17 +10,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/27/2017
+ms.date: 10/03/2017
 ms.author: mimig
 ms.custom: cda
+ms.openlocfilehash: 7d26974f67b69b2b861ef11ad8d76f34f53d453f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: fccf0e3d8cb5d0f0adfb53a06b95aa1090451915
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="20-days-of-azure-cosmos-db-tips"></a>20 日間の Azure Cosmos DB のヒント
 
 ![毎日、新しい Azure Cosmos DB のヒントを学ぶことができます](./media/20-days-of-tips/20-days-of-azure-cosmos-db-tips-header.png)
@@ -159,9 +157,32 @@ Simona Cotin が [Twitter](https://twitter.com/simona_cotin) と [LinkedIn](http
 
 [![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913076502429933569)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6318842474928443393)
 
+## <a name="tip-18-request-units"></a>ヒント 18: 要求ユニット
+
+ヒント 18: 要求ユニット (RU) の概要と Azure #CosmosDB で要求ユニットを構成する方法について説明します。 詳細については、[https://aka.ms/Kt2nbn](https://aka.ms/Kt2nbn) のドキュメントを参照してください 
+
+記事: [Azure Cosmos DB の要求ユニット](https://aka.ms/Kt2nbn)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913449916026032128)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319223402796326912)
+
+## <a name="tip-19-partition-partition-partition"></a>ヒント 19: パーティション。 パーティション。 パーティション。 
+
+ヒント 19: パーティション。 パーティション。 パーティション。 Azure #CosmosDB で使用する理由と方法を説明します。 [https://aka.ms/Ts5pon](https://aka.ms/Ts5pon) のドキュメント  
+
+> [!VIDEO https://www.youtube.com/embed/I_tVk3hKvSI]
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913773131499794433)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319541726637883392)
+
+## <a name="tip-20-cheatsheet"></a>ヒント 20: チートシート
+
+ヒント 20: 古き良きチートシートは、皆大好きです。 Azure #CosmosDB にも、チートシートがあります。 [https://aka.ms/Nt01nl](https://aka.ms/Nt01nl) でご覧ください
+
+チートシート: [Azure Cosmos DB: DocumentDB API SQL クエリのチート シート PDF](https://aka.ms/Nt01nl)
+
+[![Twitter でリツイート](./media/20-days-of-tips/twitter-icon.png)](https://twitter.com/simona_cotin/status/913793292474732544)   [![LinkedIn で共有](./media/20-days-of-tips/linkedin-icon.png)](https://www.linkedin.com/feed/update/urn:li:activity:6319559027986698241)
+
 ## <a name="next-steps"></a>次のステップ
 
 Azure Cosmos DB の詳細については、「[Azure Cosmos DB の概要](introduction.md)」と「[A technical overview of Azure Cosmos DB](https://azure.microsoft.com/blog/a-technical-overview-of-azure-cosmos-db/)」(Azure Cosmos DB の技術的概要) を参照してください。
-
 
 

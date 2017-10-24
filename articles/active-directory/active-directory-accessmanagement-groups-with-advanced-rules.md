@@ -12,18 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/19/2017
+ms.date: 10/02/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: oldportal
+ms.openlocfilehash: 168829494de33a21df68d3fc5e2a174f435c5ad5
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: f2541b906a2c3a5bbdd384476ce99cad766a6c09
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="populate-groups-dynamically-based-on-object-attributes"></a>オブジェクト属性に基づいてグループのメンバーを動的に設定する
 Azure クラシック ポータルでは、Azure Active Directory (Azure AD) グループに対して、より複雑な属性ベースの動的メンバーシップを有効化できます。  
 
@@ -266,26 +264,26 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 ## <a name="using-attributes-to-create-rules-for-device-objects"></a>属性を使用したデバイス オブジェクトのルールの作成
 グループのメンバーシップのデバイス オブジェクトを選択するルールを作成することもできます。 次のデバイス属性を使用できます。
 
-| プロパティ              | 使用できる値                  | 使用法                                                       |
-|-------------------------|---------------------------------|-------------------------------------------------------------|
-| accountEnabled          | true false                      | (device.accountEnabled -eq true)                            |
-| displayName             | 任意の文字列値                | (device.displayName -eq "Rob Iphone”)                       |
-| deviceOSType            | 任意の文字列値                | (device.deviceOSType -eq "IOS")                             |
-| deviceOSVersion         | 任意の文字列値                | (device.OSVersion -eq "9.1")                                |
-| deviceCategory          | 有効なデバイス カテゴリ名    | (device.deviceCategory -eq "BYOD")                          |
-| deviceManufacturer      | 任意の文字列値                | (device.deviceManufacturer -eq "Microsoft")                 |
-| deviceModel             | 任意の文字列値                | (device.deviceModel -eq "IPhone 7+")                        |
-| deviceOwnership         | 個人、会社               | (device.deviceOwnership -eq "Company")                      |
-| domainName              | 任意の文字列値                | (device.domainName -eq "contoso.com")                       |
-| enrollmentProfileName   | 任意の文字列値                | (device.enrollmentProfileName -eq "")                       |
-| isRooted                | true false                      | (device.deviceOSType -eq true)                              |
-| managementType          | 任意の文字列値                | (device.managementType -eq "")                              |
-| organizationalUnit      | 任意の文字列値                | (device.organizationalUnit -eq "")                          |
-| deviceId                | 有効なデバイス ID                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
-| objectId                | 有効な AAD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
+| プロパティ              | 使用できる値                     | 使用法                                                       |
+|-------------------------|------------------------------------|-------------------------------------------------------------|
+| accountEnabled          | true false                         | (device.accountEnabled -eq true)                            |
+| displayName             | 任意の文字列値                   | (device.displayName -eq "Rob Iphone”)                       |
+| deviceOSType            | 任意の文字列値                   | (device.deviceOSType -eq "Android")                         |
+| deviceOSVersion         | 任意の文字列値                   | (device.OSVersion -eq "9.1")                                |
+| deviceCategory          | 有効なデバイス カテゴリ名       | (device.deviceCategory -eq "BYOD")                          |
+| deviceManufacturer      | 任意の文字列値                   | (device.deviceManufacturer -eq "Samsung")                   |
+| deviceModel             | 任意の文字列値                   | (device.deviceModel -eq "iPad Air”)                         |
+| deviceOwnership         | 個人、会社                  | (device.deviceOwnership -eq "Company")                      |
+| domainName              | 任意の文字列値                   | (device.domainName -eq "contoso.com")                       |
+| enrollmentProfileName   | Apple Device Enrollment Profile 名    | (device.enrollmentProfileName -eq "DEP iPhones")       |
+| isRooted                | true false                         | (device.isRooted -eq true)                              |
+| managementType          | モバイル デバイスの場合は “MDM”、Intune PC エージェントによって管理されるコンピューターの場合は “PC”    | (device.managementType -eq "MDM")                  |
+| organizationalUnit      | オンプレミスの Active Directory で設定される OU の名前と一致する任意の文字列値 | (device.organizationalUnit -eq "US PCs")      |
+| deviceId                | 有効な Intune deviceId                | (device.deviceId -eq "d4fe7726-5966-431c-b3b8-cddc8fdb717d") |
+| objectId                | 有効な Azure AD objectId            | (device.objectId -eq "76ad43c9-32c5-45e8-a272-7b58b58f596d") |
 
 > [!NOTE]
-> Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してこれらのデバイス ルールを作成することはできません。
+> Azure クラシック ポータルの "単純なルール" のドロップダウンを使用してデバイス ルールを作成することはできません。
 >
 >
 
@@ -310,4 +308,3 @@ user.extension_c272a57b722d4eb29bfe327874ae79cb__OfficeNumber
 * [グループの設定を構成するための Azure Active Directory コマンドレット](active-directory-accessmanagement-groups-settings-cmdlets.md)
 * [Article Index for Application Management in Azure Active Directory](active-directory-apps-index.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

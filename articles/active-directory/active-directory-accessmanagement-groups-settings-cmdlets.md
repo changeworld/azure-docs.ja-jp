@@ -1,5 +1,5 @@
 ---
-title: "Azure Active Directory コマンドレットを使用したグループ設定の構成 | Microsoft Docs"
+title: "Azure Active Directory で PowerShell を使用したグループ設定の構成 | Microsoft Docs"
 description: "Azure Active Directory コマンドレットを使用して、グループの設定を管理する方法です"
 services: active-directory
 documentationcenter: 
@@ -12,21 +12,20 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2017
+ms.date: 10/04/2017
 ms.author: curtand
 ms.reviewer: kairaz.contractor
 ms.custom: it-pro;
+ms.openlocfilehash: 06384d1a1fb7fcc36e9ab97e38c6524a7e260140
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: f2ac16c2f514aaa7e3f90fdf0d0b6d2912ef8485
-ms.openlocfilehash: 28054e91e91933b939f4ba700e317d63a614e1d9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/08/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>グループの設定を構成するための Azure Active Directory コマンドレット
 
 > [!IMPORTANT]
-> このコンテンツは、Office 365 グループにのみ適用されます。 ユーザーにセキュリティ グループの作成を許可するには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/en-us/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` を設定します。 
+> このコンテンツは、Office 365 グループにのみ適用されます。 ユーザーにセキュリティ グループの作成を許可するには、「[Set-MSOLCompanySettings](https://docs.microsoft.com/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0)」に記載されているように `Set-MSOLCompanySettings -UsersPermissionToCreateGroupsEnabled $True` を設定します。 
 
 Office365 グループの設定は、Settings オブジェクトおよび SettingsTemplate オブジェクトを使用して構成します。 最初は、ディレクトリには Settings オブジェクトが表示されません。これは、ディレクトリが既定の設定で構成されているためです。 既定の設定を変更するには、Settings テンプレートを使用して新しい Settings オブジェクトを作成する必要があります。 Settings テンプレートは、Microsoft によって定義されます。 複数の Settings テンプレートがサポートされています。 ディレクトリの Office 365 グループ設定を構成するには、"Group.Unified" という名前のテンプレートを使用します。 1 つのグループの Office 365 グループ設定を構成するには、"Group.Unified.Guest" という名前のテンプレートを使用します。 このテンプレートは、Office 365 グループへのゲストのアクセスを管理するために使用します。 
 
@@ -95,7 +94,9 @@ Group.Unified SettingsTemplate で定義される設定は次のとおりです�
 |  <ul><li>UsageGuidelinesUrl<li>型: 文字列<li>既定値: “” |グループ使用ガイドラインへのリンク。 |
 |  <ul><li>ClassificationDescriptions<li>型: 文字列<li>既定値: “” | 分類に関する説明のコンマ区切りリスト。 |
 |  <ul><li>DefaultClassification<li>型: 文字列<li>既定値: “” | 何も指定されていない場合にグループの既定の分類として使用される分類。|
-|  <ul><li>PrefixSuffixNamingRequirement<li>型: 文字列<li>既定値: “” |まだ実装されていません
+|  <ul><li>PrefixSuffixNamingRequirement<li>型: 文字列<li>既定値: “” | 使用しないでください。 実装されていません。 |
+| <ul><li>CustomBlockedWordsList<li>型: 文字列<li>既定値: “” | 使用しないでください。 実装されていません。 |
+| <ul><li>EnableMSStandardBlockedWords<li>型: ブール<li>既定値: “False” | 使用しないでください
 |  <ul><li>AllowGuestsToBeGroupOwner<li>型: ブール<li>既定: False | ゲスト ユーザーがグループの所有者になれるかどうかを示すブール値。 |
 |  <ul><li>AllowGuestsToAccessGroups<li>型: ブール<li>既定: True | ゲスト ユーザーが統合グループのコンテンツにアクセスできるかどうかを示すブール値。 |
 |  <ul><li>GuestUsageGuidelinesUrl<li>型: 文字列<li>既定値: “” | ゲストの使用ガイドラインへのリンクの URL。 |
@@ -217,4 +218,3 @@ Azure Active Directory PowerShell のその他のドキュメントについて�
 
 * [Azure Active Directory グループによるリソースへのアクセス管理](active-directory-manage-groups.md)
 * [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)
-

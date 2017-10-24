@@ -11,14 +11,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/26/2017
 ms.author: jonor
+ms.openlocfilehash: 7dcc6b77bde8b8a7b485525105c1a07c53301f8e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8021f8641ff3f009104082093143ec8eb087279e
-ms.openlocfilehash: 487c2dc22acc5194ef103ebef01c62c887580335
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="microsoft-azure-virtual-data-center"></a>Microsoft Azure 仮想データ センター
 **Microsoft Azure**: 移行の高速化、コストの削減、オンプレミスのアプリとデータの統合
 
@@ -351,7 +349,7 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 [2]: ./media/networking-virtual-datacenter/hub-spokes-cluster.png "ハブとスポークのクラスター"
 [3]: ./media/networking-virtual-datacenter/spoke-to-spoke.png "スポーク間"
 [4]: ./media/networking-virtual-datacenter/vdc-block-level-diagram.png "vDC のブロック レベルの図"
-[5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "ユーザー、グループ、サブスクリプション、およびプロジェクト"
+[5]: ./media/networking-virtual-datacenter/users-groups-subsciptions.png "ユーザー、グループ、サブスクリプション、プロジェクト"
 [6]: ./media/networking-virtual-datacenter/infrastructure-high-level.png "インフラストラクチャの概要図"
 [7]: ./media/networking-virtual-datacenter/highlevel-perimeter-networks.png "インフラストラクチャの概要図"
 [8]: ./media/networking-virtual-datacenter/vnet-peering-perimeter-neworks.png "VNet ピアリングと境界ネットワーク"
@@ -387,4 +385,3 @@ Traffic Manager は、Azure のパブリック エンドポイントで動作し
 [EventHubs]: https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs 
 [ServiceBus]: https://docs.microsoft.com/azure/service-bus-messaging/service-bus-messaging-overview
 [TM]: https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview
-

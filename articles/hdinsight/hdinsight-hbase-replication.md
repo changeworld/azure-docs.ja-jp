@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/06/2017
+ms.date: 10/09/2017
 ms.author: jgao
+ms.openlocfilehash: fbd6ff573a1d4f7fe2754935dd8c199092076725
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 9d1b629ad05f45efc8d01799616c82b4a11ecaab
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Azure 仮想ネットワーク内で HBase クラスターのレプリケーションを設定する
 
@@ -57,7 +56,7 @@ Azure の 1 つの仮想ネットワーク内または 2 つの仮想ネット�
 
 環境を設定しやすくするために、複数の [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-overview.md)が用意されています。 他の方法で環境を設定する場合は、次の記事を参照してください。
 
-- [HDInsight での Linux ベースの Hadoop クラスターの作成](hdinsight-hadoop-provision-linux-clusters.md)
+- [HDInsight で Hadoop クラスターを作成する](hdinsight-hadoop-provision-linux-clusters.md)
 - [Azure Virtual Network での HBase クラスターの作成](hdinsight-hbase-provision-vnet.md)
 
 ### <a name="set-up-one-virtual-network"></a>1 つの仮想ネットワークを設定する
@@ -97,11 +96,54 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 ### <a name="set-up-two-virtual-networks-in-two-different-regions"></a>2 つの異なるリージョンに 2 つの仮想ネットワークを設定する
 
-2 つの異なるリージョンに 2 つの仮想ネットワークを作成するには、次のイメージを選択します。 このテンプレートは、グローバル Azure BLOB コンテナーにあります。
+2 つの異なるリージョンに 2 つの仮想ネットワークを作成し、その VNet 間に VPN 接続を作成するには、次のイメージをクリックします。 テンプレートは [Azure クイック スタート テンプレート](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/)に格納されています。
 
-<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fhditutorialdata.blob.core.windows.net%2Fhbaseha%2Fdeploy-hbase-geo-replication.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
+<a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-hdinsight-hbase-replication-geo%2Fazuredeploy.json" target="_blank"><img src="./media/hdinsight-hbase-replication/deploy-to-azure.png" alt="Deploy to Azure"></a>
 
-2 つの仮想ネットワーク間の VPN ゲートウェイを作成します。 手順については、[サイト間接続を持つ仮想ネットワークの作成](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md)に関する記事を参照してください。
+テンプレートには、一部の値がハードコーディングされています。それらの値を次に示します。
+
+**VNet 1**
+
+| プロパティ | 値 |
+|----------|-------|
+| 場所 | 米国西部 |
+| VNet の名前 | &lt;クラスター名のプレフィックス>-vnet1 |
+| アドレス空間プレフィックス | 10.1.0.0/16 |
+| サブネット名 | subnet 1 |
+| サブネットのプレフィックス | 10.1.0.0/24 |
+| サブネット (ゲートウェイ) 名 | GatewaySubnet (変更不可) |
+| サブネット (ゲートウェイ) プレフィックス | 10.1.255.0/27 |
+| ゲートウェイ名 | vnet1gw |
+| ゲートウェイの種類 | Vpn |
+| ゲートウェイ VPN の種類 | RouteBased |
+| ゲートウェイ SKU | 基本 |
+| ゲートウェイの IP | vnet1gwip |
+| クラスター名 | &lt;クラスター名のプレフィックス>1 |
+| クラスターのバージョン | 3.6 |
+| クラスターの種類 | hbase |
+| クラスターのワーカー ノードの数 | 2 |
+
+
+**VNet 2**
+
+| プロパティ | 値 |
+|----------|-------|
+| 場所 | 米国東部 |
+| VNet の名前 | &lt;クラスター名のプレフィックス>-vnet2 |
+| アドレス空間プレフィックス | 10.2.0.0/16 |
+| サブネット名 | subnet 1 |
+| サブネットのプレフィックス | 10.2.0.0/24 |
+| サブネット (ゲートウェイ) 名 | GatewaySubnet (変更不可) |
+| サブネット (ゲートウェイ) プレフィックス | 10.2.255.0/27 |
+| ゲートウェイ名 | vnet2gw |
+| ゲートウェイの種類 | Vpn |
+| ゲートウェイ VPN の種類 | RouteBased |
+| ゲートウェイ SKU | 基本 |
+| ゲートウェイの IP | vnet1gwip |
+| クラスター名 | &lt;クラスター名のプレフィックス>2 |
+| クラスターのバージョン | 3.6 |
+| クラスターの種類 | hbase |
+| クラスターのワーカー ノードの数 | 2 |
 
 HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用します。 デスティネーション HBase ZooKeeper ノードの静的 IP アドレスを設定する必要があります。 静的 IP を構成するには、この記事の「[同じリージョンに 2 つの仮想ネットワークを設定する](#set-up-two-virtual-networks-in-the-same-region)」を参照してください。
 
@@ -111,11 +153,11 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 
 クラスターをレプリケートする場合は、レプリケートするテーブルを指定する必要があります。 このセクションでは、ソース クラスターにデータを読み込みます。 次のセクションで、2 つのクラスター間のレプリケーションを有効にします。
 
-**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、「[HBase チュートリアル: HDInsight の Linux ベースの Hadoop で Apache HBase を使用する](hdinsight-hbase-tutorial-get-started-linux.md)」の指示に従います。
+**Contacts** テーブルを作成し、そのテーブルにいくつかデータを挿入するには、[HDInsight の Apache HBase を使用する方法に関する HBase チュートリアル](hdinsight-hbase-tutorial-get-started-linux.md)の指示に従います。
 
 ## <a name="enable-replication"></a>Enable replication
 
-次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure コマンドライン ツール (Azure CLI) を使用したスクリプト アクションの実行については、「[スクリプト アクションを使用して Linux ベースの HDInsight クラスターをカスタマイズする](hdinsight-hadoop-customize-cluster-linux.md)」を参照してください。
+次の手順は、Azure Portal からスクリプト アクションのスクリプトを呼び出す方法を示しています。 Azure PowerShell と Azure コマンドライン ツール (Azure CLI) を使用したスクリプト アクションの実行については、[スクリプト アクションを使用して HDInsight クラスターをカスタマイズする方法](hdinsight-hadoop-customize-cluster-linux.md)に関するページを参照してください。
 
 **Azure Portal から HBase レプリケーションを有効にするには**
 
@@ -241,7 +283,6 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 * [HDInsight での Apache HBase の使用][hdinsight-hbase-get-started]
 * [HDInsight HBase の概要][hdinsight-hbase-overview]
 * [Azure Virtual Network での HBase クラスターの作成][hdinsight-hbase-provision-vnet]
-* [HBase で Twitter のセンチメントをリアルタイム分析する][hdinsight-hbase-twitter-sentiment]
 * [Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する][hdinsight-sensor-data]
 
 [hdinsight-hbase-geo-replication-vnet]: hdinsight-hbase-geo-replication-configure-vnets.md
@@ -254,8 +295,6 @@ HBase レプリケーションでは、ZooKeeper VM の IP アドレスを使用
 [hdinsight-hbase-get-started]: hdinsight-hbase-tutorial-get-started-linux.md
 [hdinsight-manage-portal]: hdinsight-administer-use-management-portal.md
 [hdinsight-provision]: hdinsight-hadoop-provision-linux-clusters.md
-[hdinsight-hbase-twitter-sentiment]: hdinsight-hbase-analyze-twitter-sentiment.md
 [hdinsight-sensor-data]: hdinsight-storm-sensor-data-analysis.md
 [hdinsight-hbase-overview]: hdinsight-hbase-overview.md
 [hdinsight-hbase-provision-vnet]: hdinsight-hbase-provision-vnet.md
-

@@ -8,15 +8,13 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 05/10/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 71fea4a41b2e3a60f2f610609a14372e678b7ec4
-ms.openlocfilehash: 511cc50c28b9b114b763f3c46cb1e26f15575349
-ms.contentlocale: ja-jp
-ms.lasthandoff: 05/10/2017
-
+ms.date: 10/03/2017
+ms.openlocfilehash: 0e0f98d873e112aae222fab2657f60ea13611624
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Azure Database for MySQL サーバーのファイアウォール規則
 ファイアウォールは、どのコンピューターに権限を持たせるかを指定するまで、データベース サーバーへのすべてのアクセスを遮断します。 ファイアウォールは、各要求の送信元 IP アドレスに基づいてサーバーへのアクセス権を付与します。
 
@@ -36,7 +34,7 @@ ms.lasthandoff: 05/10/2017
 
 要求の IP アドレスがサーバーレベルのファイアウォール規則で指定されたいずれかの IP アドレス範囲内にある場合は、接続が許可されます。
 
-要求の IP アドレスがデータベース レベルのファイアウォール規則またはサーバー レベルのファイアウォール規則で指定された IP アドレス範囲内にない場合、接続要求は失敗します。
+要求の IP アドレスがデータベース レベルのファイアウォール規則またはサーバー レベルのファイアウォール規則で指定された IP アドレス範囲外にある場合、接続要求は失敗します。
 
 ## <a name="programmatically-managing-firewall-rules"></a>ファイアウォール規則のプログラムによる管理
 ファイアウォール規則は、Azure Portal に加え、Azure CLI を使用してプログラムで管理することができます。 「[Create and manage Azure Database for MySQL firewall rules using Azure CLI (Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理)](./howto-manage-firewall-using-cli.md)」も参照してください
@@ -58,4 +56,3 @@ Microsoft Azure Database for MySQL サーバー サービスに期待どおり�
 
 [Azure Portal を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-portal.md)
 [Azure CLI を使用した Azure Database for MySQL ファイアウォール規則の作成と管理](./howto-manage-firewall-using-cli.md)
-

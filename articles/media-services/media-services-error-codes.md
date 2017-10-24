@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2017
 ms.author: juliako
 ms.openlocfilehash: 39886a955124429302609dd9d5a7c20ae7f498d9
-ms.sourcegitcommit: 18ad9bc049589c8e44ed277f8f43dcaa483f3339
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/29/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-media-services-error-codes"></a>Azure Media Services エラー コード
 Microsoft Azure Media Services を使用する場合は、Media Services でサポートされていないアクションに対する認証トークンの有効期限切れなどの問題によって、サービスから HTTP エラー コードを受け取ることがあります。 Media Services やそれらが原因となって返されることがある **HTTP エラー コード** の一覧を次に示します。  
@@ -27,7 +27,7 @@ Microsoft Azure Media Services を使用する場合は、Media Services でサ�
 要求には、無効な情報が含まれており、次のいずれかの理由で拒否されます。
 
 * サポートされていない API バージョンが指定されています。 最新バージョンについては、「[Media Services REST API 開発用の設定](media-services-rest-how-to-use.md)」をご覧ください。
-* Media Services の API バージョンが指定されていません。 API のバージョンを指定する方法については、次を参照してください。[メディア サービス操作の REST API リファレンス](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)です。
+* Media Services の API バージョンが指定されていません。 API バージョンを指定する方法については、「[Media Services Operations REST API Reference (Media Services Operations REST API リファレンス)](https://docs.microsoft.com/rest/api/media/operations/azure-media-services-rest-api-reference)」を参照してください。
   
   > [!NOTE]
   > .NET または Java Sdk を使用して Media Services に接続する場合は、Media Services に対して何らかのアクションの実行を試行するたびに、API バージョンが指定されます。

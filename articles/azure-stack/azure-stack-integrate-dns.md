@@ -5,17 +5,15 @@ services: azure-stack
 author: troettinger
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 10/10/2017
 ms.author: victorh
 keywords: 
+ms.openlocfilehash: 0a5a783751e4f0fa9f5fb43b22fa221dd9bf3444
+ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: bf41e2458ade0bc770eb0f9cd327f752e08358a9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
 
 *適用先: Azure Stack 統合システム*
@@ -31,7 +29,7 @@ Azure Stack をデプロイするときに、DNS に関するいくつかの重�
 |リージョン|Azure Stack のデプロイの地理的な場所。|`east`|
 |外部ドメイン名|Azure Stack のデプロイに使用したいゾーンの名前。|`cloud.fabrikam.com`|
 |内部ドメイン名|Azure Stack のインフラストラクチャ サービスに使用される内部ゾーンの名前。  これは、ディレクトリ サービスと統合されたプライベートなゾーンです (Azure Stack のデプロイの外部からは到達できません)。|`azurestack.local`|
-|DNS フォワーダ|Azure Stack の外部 (企業イントラネットまたはパブリック インターネット上) でホストされている DNS クエリ、DNS ゾーンおよびレコードを転送するために使用される DNS サーバー。|`10.57.175.34`<br>`8.8.8.8`|
+|DNS フォワーダー|Azure Stack の外部 (企業イントラネットまたはパブリック インターネット上) でホストされている DNS クエリ、DNS ゾーンおよびレコードを転送するために使用される DNS サーバー。|`10.57.175.34`<br>`8.8.8.8`|
 |名前付けのプレフィックス (省略可能)|Azure Stack インフラストラクチャ ロール インスタンス マシン名に使用する名前付けのプレフィックス。  指定されていない場合、既定値は`azs` です。|`azs`|
 
 Azure Stack のデプロイの完全修飾ドメイン名 (FQDN) とエンドポイントは、リージョン パラメーターと外部ドメイン名 パラメーターの組み合わせです。 前の表に示した例の値を使用すると、この Azure Stack のデプロイの FQDN は次の名前のようになります。
@@ -68,9 +66,14 @@ Azure Stack には、権限のある DNS サーバーと再帰 DNS サーバー�
 
 Azure Stack 外部のエンドポイントの DNS 名 (たとえば www.bing.com) を解決するには、Azure Stack が権限のない DNS 要求の転送に使用できる DNS サーバーを提供する必要があります。 デプロイでは、Azure Stack の要求の転送先となる DNS サーバーをデプロイ ワークシート ("DNS フォワーダー" フィールド) に入力する必要があります。 フォールト トレランスのために、このフィールドには 2 つ以上のサーバーを入力します。 これらの値が入力されない場合、Azure Stack のデプロイは失敗します。
 
-### <a name="adding-dns-forwarding-servers-after-deployment"></a>デプロイ後の DNS 転送サーバーの追加
+### <a name="configure-conditional-dns-forwarding"></a>条件付き DNS フォワーダーの構成
 
-社内または ISP で DNS インフラストラクチャが更新された場合に、追加の DNS サーバーの登録が必要になることがあります。 再帰要求を転送する DNS サーバーを追加するには、特権エンドポイントを使用する必要が あります。
+> [!IMPORTANT]
+> この要件が該当するのは AD FS デプロイのみです。
+
+既存の DNS インフラストラクチャ を使用して名前解決を有効にするには、条件付きフォワーダーを構成します。
+
+条件付きフォワーダーを追加するには、特権エンドポイントを使用する必要が あります。
 
 この手順では、データセンター ネットワーク内の、Azure Stack の特権エンドポイントと通信できるコンピューターを使用します。
 
@@ -84,10 +87,8 @@ Azure Stack 外部のエンドポイントの DNS 名 (たとえば www.bing.com
 2. 特権エンドポイントに接続したら、次の PowerShell コマンドを実行します。 サンプルの値を、使用する DNS サーバーのドメイン名とアドレスで置き換えてください。
 
    ```
-   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses “192.168.1.1”,”192.168.1.2”
+   Register-CustomDnsServer -CustomDomainName "contoso.com" -CustomDnsIPAddresses "192.168.1.1","192.168.1.2"
    ```
-
-このコマンドを実行すると、Azure Stack DNS を使用する Azure Stack サービスおよびユーザー仮想マシンが、Azure Stack エンドポイント (ポータル、API エンドポイントなど) の名前と、DNS 名前ラベルを持つパブリック IP アドレスを解決できるようになります。
 
 ## <a name="resolving-azure-stack-dns-names-from-outside-azure-stack"></a>Azure Stack 外部からの DNS 名の解決
 権限のあるサーバーは、外部の DNS ゾーンとユーザーが作成したゾーンの情報を保持しています。 このサーバーと統合することで、ゾーンの委任または条件付き転送を使用して Azure Stack 外部からの Azure Stack DNS 名を解決できるようになります。
@@ -120,7 +121,7 @@ Azure Stack DNS サーバーの FQDN は次のような形式をとります。
 
 Azure Stack と DNS インフラストラクチャを統合する最も簡単で安全な方法は、親ゾーンをホストするサーバーから、ゾーンの条件付き転送を行うことです。 Azure Stack の外部 DNS 名前空間の親ゾーンをホストする DNS サーバーを直接制御できる場合は、この方法をお勧めします。
 
-DNS で条件付き転送を行う方法がわからない場合は、TechNet の記事「[Assign a Conditional Forwarder for a Domain Name (ドメイン名の条件付きフォワーダを割り当てる)](https://technet.microsoft.com/library/cc794735)」またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
+DNS で条件付き転送を行う方法がわからない場合は、TechNet の記事「[Assign a Conditional Forwarder for a Domain Name (ドメイン名の条件付きフォワーダーを割り当てる)](https://technet.microsoft.com/library/cc794735)」またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
 
 会社のドメイン名の子ドメインのように見える Azure Stack 外部の DNS ゾーンを指定しているシナリオでは、条件付き転送は使用できません。 DNS 委任を構成する必要があります。
 
@@ -140,4 +141,3 @@ DNS 名を Azure Stack デプロイの外部から解決できるようにする
 ## <a name="next-steps"></a>次のステップ
 
 [Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md)
-

@@ -10,16 +10,15 @@ ms.service: mysql
 ms.custom: mvc
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 07/12/2017
+ms.date: 09/22/2017
+ms.openlocfilehash: 40108e0c60a60da412ab521d467a07b8f0540140
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: 4c3a2e65b83fab6fe5b8b7778782a747bb5e9cf9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-database-for-mysql-use-python-to-connect-and-query-data"></a>Azure Database for MySQL: Python を使用した接続とデータの照会
-このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for MySQL に接続する方法を紹介します。 Mac OS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除しています。 この記事の手順では、Python を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[Python](https://python.org) を使用して Azure Database for MySQL に接続する方法を紹介します。 Mac OS、Ubuntu Linux、Windows の各プラットフォームから、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除しています。 このトピックでは、Python を使用した開発には慣れているものの、Azure Database for MySQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -27,7 +26,7 @@ ms.lasthandoff: 07/21/2017
 - [Azure CLI を使用した Azure Database for MySQL サーバーの作成](./quickstart-create-mysql-server-database-using-azure-cli.md)
 
 ## <a name="install-python-and-the-mysql-connector"></a>Python と MySQL コネクタのインストール
-ご使用のマシンに [Python](https://www.python.org/downloads/) と [MySQL Connector for Python](https://dev.mysql.com/downloads/connector/python/) をインストールします。 プラットフォームごとの手順を次に示します。
+ご使用のマシンに [Python](https://www.python.org/downloads/) と [MySQL Connector for Python](https://dev.mysql.com/downloads/connector/python/) をインストールします。 プラットフォームに応じて、該当するセクションの手順に従ってください。
 
 ### <a name="windows"></a>Windows
 1. Python 2.7 を [python.org](https://www.python.org/downloads/windows/) からダウンロードしてインストールします。 
@@ -70,11 +69,11 @@ Azure Database for MySQL に接続するために必要な接続情報を取得�
    
 
 ## <a name="run-python-code"></a>Python コードの実行
-- テキスト ファイルにコードを貼り付け、.py というファイル拡張子でプロジェクト フォルダーに保存します (例: C:\pythonmysql\createtable.py、/home/username/pythonmysql/createtable.py)。
-- このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (`cd pythonmysql`)。 そのうえで、python コマンドに続けてファイル名を入力し (`python createtable.py`)、アプリケーションを実行します。 Windows OS で python.exe が見つからない場合は、実行可能ファイルの完全パスを指定するか、または Python のパスを PATH 環境変数に追加してください。 `C:\python27\python.exe createtable.py`
+- コードをテキスト ファイルに貼り付け、そのファイルを .py というファイル拡張子でプロジェクト フォルダーに保存します (例: C:\pythonmysql\createtable.py や /home/username/pythonmysql/createtable.py)。
+- このコードを実行するには、コマンド プロンプトまたは Bash シェルを起動します。 プロジェクト フォルダーに移動します (`cd pythonmysql`)。 そのうえで、python コマンドに続けてファイル名を入力し (`python createtable.py`)、アプリケーションを実行します。 Windows OS で python.exe が見つからない場合は、実行可能ファイルの完全パスを指定するか、Python のパスを PATH 環境変数に追加してください。 `C:\python27\python.exe createtable.py`
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
-次のコードを使用してサーバーに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込みます。 
+サーバーに接続し、テーブルを作成した後、**INSERT** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。 
 
 このコードには mysql.connector ライブラリをインポートしています。 その [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数に config コレクションの[接続引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を渡して、Azure Database for MySQL に接続します。 MySQL データベースに対する SQL クエリは、接続のカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドで実行しています。 
 
@@ -132,7 +131,7 @@ else:
 ## <a name="read-data"></a>データの読み取り
 接続し、**SELECT** SQL ステートメントを使用してデータを読み取るには、次のコードを使用します。 
 
-このコードには mysql.connector ライブラリをインポートしています。 その [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数に config コレクションの[接続引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を渡して、Azure Database for MySQL に接続します。 MySQL データベースに対する SQL ステートメントは、接続のカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドで実行しています。 データ行の読み取りは、[fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) メソッドを使用して実行します。 結果セットを rows コレクションに格納し、for 反復子を使用して一連の行を反復処理しています。
+このコードには mysql.connector ライブラリをインポートしています。 その [connect()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysql-connector-connect.html) 関数に config コレクションの[接続引数](https://dev.mysql.com/doc/connector-python/en/connector-python-connectargs.html)を渡して、Azure Database for MySQL に接続します。 MySQL データベースに対する SQL ステートメントは、接続のカーソルを使用し、[cursor.execute()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-execute.html) メソッドで実行しています。 データ行の読み取りには、[fetchall()](https://dev.mysql.com/doc/connector-python/en/connector-python-api-mysqlcursor-fetchall.html) メソッドを使用します。 結果セットを rows コレクションに格納し、for 反復子を使用して一連の行を反復処理しています。
 
 `host`、`user`、`password`、`database` の各パラメーターの値は、サーバーとデータベースを作成するときに指定した値に置き換えてください。
 
@@ -269,4 +268,3 @@ else:
 ## <a name="next-steps"></a>次のステップ
 > [!div class="nextstepaction"]
 > [エクスポートとインポートを使用したデータベースの移行](./concepts-migrate-import-export.md)
-

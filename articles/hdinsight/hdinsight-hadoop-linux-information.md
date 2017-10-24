@@ -14,14 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
+ms.openlocfilehash: 29f245fdeaadd6f95755f7fd7564dfa7f6b2981f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 8c6ff4a6b8617cda9b12be060c7c7bed62cb3f44
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Linux での HDInsight の使用方法
 
@@ -50,13 +49,13 @@ HDInsight は、[ドメイン参加済み](hdinsight-domain-joined-introduction.
 
 内部的には、クラスターの各ノードに、クラスターの構成時に割り当てられた名前が与えられます。 クラスター名を見つける方法については、Ambari Web UI の**ホスト**に関するページを参照してください。 次を使用して、Ambari REST API からホストの一覧を返すこともできます。
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/hosts" | jq '.items[].Hosts.host_name'
 
-**PASSWORD** は管理者アカウントのパスワードに、**CLUSTERNAME** はクラスターの名前に置き換えます。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
+**CLUSTERNAME** をクラスターの名前に置き換えます。 メッセージが表示されたら、管理者アカウントのパスワードを入力します。 このコマンドで返される JSON ドキュメントにクラスター内のホストの一覧が含まれます。 jq により、クラスター内の各ホストの `host_name` 要素値が取り出されます。
 
 特定のサービスのノード名を見つける必要がある場合、そのコンポーネントについて Ambari に問い合わせることができます。 たとえば、HDFS 名のノードのホストを見つけるには、次のコマンドを利用します。
 
-    curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
+    curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/services/HDFS/components/NAMENODE" | jq '.host_components[].HostRoles.host_name'
 
 このコマンドで、サービスの説明が記載された JSON ドキュメントが返されます。jq により、ホストの `host_name` 値のみが引き出されます。
 
@@ -146,26 +145,26 @@ __Data Lake Store__ を使用する場合は、次のいずれかの URI スキ�
 
 Ambari を使用して、クラスターの既定のストレージ構成を取得することができます。 次のコマンドを使用して、curl を使用する HDFS の構成情報を取得し、 [jq](https://stedolan.github.io/jq/)を使用してフィルター処理します。
 
-```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
+```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["fs.defaultFS"] | select(. != null)'```
 
 > [!NOTE]
-> このコードは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 最新の構成を確認するには、構成バージョンの一覧を表示しなければならない場合があります。
+> このコマンドは、サーバーに適用された最初の構成 (`service_config_version=1`) を返し、その中にこの情報が含まれています。 最新の構成を確認するには、構成バージョンの一覧を表示しなければならない場合があります。
 
 このコマンドにより、次の URI のような値が返されます。
 
 * Azure Storage アカウントを使用している場合: `wasb://<container-name>@<account-name>.blob.core.windows.net`
 
-    アカウント名は Azure Storage アカウントの名前であり、コンテナー名はクラスター ストレージのルートである BLOB コンテナーです。
+    アカウント名は Azure ストレージ アカウントの名前です。 コンテナー名はクラスター ストレージのルートである BLOB コンテナーです。
 
 * Azure Data Lake Store を使用している場合: `adl://home` Data Lake Store の名前を取得するには、次の REST 呼び出しを使用します。
 
-    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
+    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'```
 
     このコマンドからは、ホスト名として `<data-lake-store-account-name>.azuredatalakestore.net` が返されます。
 
     HDInsight のルートであるストア内のディレクトリを取得するには、次の REST 呼び出しを使用します。
 
-    ```curl -u admin:PASSWORD -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
+    ```curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.mountpoint"] | select(. != null)'```
 
     このコマンドにより、`/clusters/<hdinsight-cluster-name>/` のようなパスが返されます。
 
@@ -245,12 +244,11 @@ HDInsight クラスターのスケーリングに関する具体的な情報に�
 
 HDInsight は管理されたサービスです。 Azure によってクラスターに関する問題が検出された場合、障害の発生したノードが削除され、新たに作成されたノードで置き換えられる可能性があります。 クラスターに何かを手動でインストールした場合、この操作の実行後は維持されません。 代わりに、[HDInsight スクリプト アクション](hdinsight-hadoop-customize-cluster.md)を使用してください。 次の変更は、スクリプト アクションで行うことができます。
 
-* サービスや Web サイト (Spark、Hue など) をインストールして構成する。
-* クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。 たとえば、必要な環境変数、ログ ディレクトリの作成、構成ファイルの作成。
+* サービスや Web サイトをインストールして構成する。
+* クラスターの複数のノードで構成変更を必要とするコンポーネントをインストールして構成する。
 
-スクリプト アクションとは、Bash スクリプトです。 このスクリプトは、クラスターのプロビジョニング中に実行され、クラスター上に追加のコンポーネントをインストールし、構成するときに使用できます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
+スクリプト アクションとは、Bash スクリプトです。 このスクリプトは、クラスターの作成中に実行されるほか、追加コンポーネントのインストールと構成に使用されます。 次のコンポーネントをインストールするスクリプトの例が用意されています。
 
-* [Hue](hdinsight-hadoop-hue-linux.md)
 * [Giraph](hdinsight-hadoop-giraph-install-linux.md)
 * [Solr](hdinsight-hadoop-solr-install-linux.md)
 
@@ -258,7 +256,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 
 ### <a name="jar-files"></a>Jar ファイル
 
-一部の Hadoop 技術は自己完結型の jar ファイルで提供されます。このファイルには MapReduce ジョブの一環として、あるいは Pig または Hive 内から使用される関数が含まれています。 ファイルはスクリプト アクションでインストールできますが、多くの場合、セットアップを必要とせず、プロビジョニング後にクラスターにアップロードし、直接使用できます。 クラスターの再イメージ化の後もコンポーネントが残っていることを確認するには、クラスターの既定のストレージ (WASB または ADL) に jar ファイルを保存します。
+一部の Hadoop 技術は自己完結型の jar ファイルで提供されます。このファイルには MapReduce ジョブの一環として、あるいは Pig または Hive 内から使用される関数が含まれています。 これらは多くの場合、セットアップを必要とせず、作成後にクラスターにアップロードして直接使用することができます。 クラスターの再イメージ化の後もコンポーネントが残っていることを確認するには、クラスターの既定のストレージ (WASB または ADL) に jar ファイルを保存します。
 
 たとえば、最新版の [DataFu](http://datafu.incubator.apache.org/)を使用する場合、プロジェクトを含む jar をダウンロードし、それを HDInsight クラスターにアップロードできます。 その後、Pig や Hive からそれを使用する方法については、DataFu のドキュメントに従います。
 
@@ -274,7 +272,7 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 > [!WARNING]
 > HDInsight クラスターに用意されているコンポーネントは全面的にサポートされており、これらのコンポーネントに関連する問題の分離と解決については、Microsoft サポートが支援します。
 >
-> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。 また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
+> カスタム コンポーネントについては、問題のトラブルシューティングを進めるための支援として、商業的に妥当な範囲のサポートを受けることができます。 これにより問題が解決する場合もあれば、オープン ソース テクノロジに関して、深い専門知識が入手できる場所への参加をお願いすることになる場合もあります。 たとえば、[HDInsight についての MSDN フォーラム](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=hdinsight)や [http://stackoverflow.com](http://stackoverflow.com) などの数多くのコミュニティ サイトを利用できます。また、Apache プロジェクトには、[http://apache.org](http://apache.org) に [Hadoop](http://hadoop.apache.org/) や [Spark](http://spark.apache.org/) などのプロジェクト サイトがあります。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -282,4 +280,3 @@ HDInsight は管理されたサービスです。 Azure によってクラスタ
 * [HDInsight での Hive の使用](hdinsight-use-hive.md)
 * [HDInsight の Hadoop での Pig の使用](hdinsight-use-pig.md)
 * [HDInsight での MapReduce ジョブの使用](hdinsight-use-mapreduce.md)
-

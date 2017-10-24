@@ -11,14 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 12/14/2016
+ms.date: 09/22/2016
 ms.author: gwallace
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 5edc47e03ca9319ba2e3285600703d759963e1f3
-ms.openlocfilehash: e2b3efe7f247c4ffee11ab437860ecbc95036cd7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/01/2017
-
+ms.openlocfilehash: 3f28e70bb6ef46f53375d256a520db40fcb71ad0
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>PowerShell を使用して DNS ゾーンを管理する方法
 
@@ -50,6 +49,8 @@ New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup
 ```powershell
 New-AzureRmDnsZone -Name contoso.com -ResourceGroupName MyAzureResourceGroup -Tag @{ project="demo"; env="test" }
 ```
+
+Azure DNS で新たにプライベート DNS ゾーンがサポートされました (現在はプレビュー機能)。  プライベート DNS ゾーンを作成する例については、「[PowerShell で Azure DNS プライベート ゾーンの使用を開始する](./private-dns-getstarted-powershell.md)」を参照してください。
 
 ## <a name="get-a-dns-zone"></a>DNS ゾーンの取得
 
@@ -171,5 +172,4 @@ DNS ゾーンでレコード セットとレコードを管理する方法につ
 Azure DNS にドメインを委任する方法については[こちら](dns-domain-delegation.md)をご覧ください。
 <br>
 [Azure DNS PowerShell のリファレンス ドキュメント](/powershell/module/azurerm.dns)を確認します。
-
 

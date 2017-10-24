@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-translationtype: Human Translation
-ms.sourcegitcommit: 94e13ac6fec09081484a2f7f5d7bc1871822743f
-ms.openlocfilehash: 2ebe71c96fd9076a48f689041634dbd23d3d8414
-ms.lasthandoff: 01/31/2017
-
+ms.openlocfilehash: 464e5e2b2d9678bef002497588eac60db074f9bb
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Azure API Management でクライアント証明書認証を使用してバックエンド サービスを保護する方法
 API Management には、クライアント証明書を使用して API のバックエンド サービスへのアクセスを保護する機能が備わっています。 このガイドでは、API パブリッシャー ポータルで証明書を管理する方法、および証明書を使用してバックエンド サービスにアクセスするように API を構成する方法を示します。
@@ -61,7 +61,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![アップロードされた証明書][api-management-certificate-uploaded]
 
-証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。 複数の証明書がある場合は、以下の「[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の&4; 文字を参照します。
+証明書は、アップロードされた後に、**[クライアント証明書]** タブに表示されます。複数の証明書がある場合は、以下の「[ゲートウェイ認証にクライアント証明書を使用するように API を構成する][Configure an API to use a client certificate for gateway authentication]」セクションで説明されているように、証明書を使用するように API を構成するとき証明書の選択に使用される、件名または拇印の最後の 4 文字を参照します。
 
 > 自己署名証明書などを使用するときに証明書チェーンの検証をオフにするには、この FAQ の[項目](api-management-faq.md#can-i-use-a-self-signed-ssl-certificate-for-a-back-end)に記載されている手順に従ってください。
 > 
@@ -89,7 +89,7 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 
 ![[クライアント証明書]][api-management-mutual-certificates]
 
-**[クライアント証明書]** ドロップダウン リストから必要な証明書を選択します。 複数の証明書がある場合は、以前のセクションに記載されているとおり、件名または拇印の最後の&4; 文字に注目して対象となる証明書を判別できます。
+**[クライアント証明書]** ドロップダウン リストから必要な証明書を選択します。 複数の証明書がある場合は、以前のセクションに記載されているとおり、件名または拇印の最後の 4 文字に注目して対象となる証明書を判別できます。
 
 ![証明書の選択][api-management-select-certificate]
 
@@ -106,6 +106,15 @@ API Management REST API を使用して証明書を管理する方法の詳細�
 > 
 
 ![証明書ポリシー][api-management-certificate-policy]
+
+## <a name="self-signed-certificates"></a>自己署名証明書
+
+自己署名証明書を使用している場合は、API Management がバックエンド システムと通信するために、証明書チェーン検証を無効にする必要があります。そうしない場合は、500 のエラー コードが返されます。 これを構成するには、[`New-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/new-azurermapimanagementbackend) (新しいバック エンド) または[`Set-AzureRmApiManagementBackend`](https://docs.microsoft.com/en-us/powershell/module/azurerm.apimanagement/set-azurermapimanagementbackend) (既存のバック エンド) PowerShell コマンドレットを使用して、`-SkipCertificateChainValidation` パラメーターを `True` に設定します。
+
+```
+$context = New-AzureRmApiManagementContext -resourcegroup 'ContosoResourceGroup' -servicename 'ContosoAPIMService'
+New-AzureRmApiManagementBackend -Context  $context -Url 'https://contoso.com/myapi' -Protocol http -SkipCertificateChainValidation $true
+```
 
 ## <a name="next-steps"></a>次のステップ
 HTTP 基本認証や共有シークレット認証など、バックエンド サービスをセキュリティで保護する他の方法の詳細については、次のビデオを参照してください。
@@ -142,7 +151,7 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 
 [Azure API Management REST API Certificate entity]: http://msdn.microsoft.com/library/azure/dn783483.aspx
 [WebApp-GraphAPI-DotNet]: https://github.com/AzureADSamples/WebApp-GraphAPI-DotNet
-[to configure certificate authentication in Azure WebSites refer to this article]: https://azure.microsoft.com/en-us/documentation/articles/app-service-web-configure-tls-mutual-auth/
+[to configure certificate authentication in Azure WebSites refer to this article]: ../app-service/app-service-web-configure-tls-mutual-auth.md
 
 [Prerequisites]: #prerequisites
 [Upload a client certificate]: #step1
@@ -150,7 +159,6 @@ HTTP 基本認証や共有シークレット認証など、バックエンド �
 [Configure an API to use a client certificate for gateway authentication]: #step2
 [Test the configuration by calling an operation in the Developer Portal]: #step3
 [Next steps]: #next-steps
-
 
 
 

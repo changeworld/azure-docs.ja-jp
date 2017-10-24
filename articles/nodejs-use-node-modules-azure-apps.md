@@ -14,31 +14,30 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: tarcher
+ms.openlocfilehash: 76679ea0ff2c1e88d1923488717a245351437165
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: fff84ee45818e4699df380e1536f71b2a4003c71
-ms.openlocfilehash: 94ddae4473b2d9d212e05d3df089eb6b2b87cbd8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/01/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>Azure アプリケーションでの Node.js モジュールの使用
 このドキュメントは、Azure でホストされているアプリケーションでの Node.js モジュールの使用に関するガイダンスを示します。 また、Azure でアプリケーションによって特定のバージョンのモジュールとネイティブ モジュールが確実に使用されるようにするためのガイダンスも紹介します。
 
-Node.js モジュールである **package.json** および **npm-shrinkwrap.json** ファイルの使い方について既によくわかっている方は、この記事で説明することの概要を簡単にご確認ください。
+Node.js モジュールである **package.json** および **npm-shrinkwrap.json** ファイルの使い方について既によくわかっている方は、この記事の内容の概要を簡単にご確認ください。
 
 * Azure App Service では **package.json** および **npm-shrinkwrap.json** ファイルが認識され、これらのファイルのエントリに基づいてモジュールをインストールできます。
 
-* Azure Cloud Services は、すべてのモジュールが開発環境にインストールされ、**node\_modules** ディレクトリがデプロイ パッケージの一部として含められることを想定します。 Cloud Services では **package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、この構成では、Cloud Services のプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。 この環境を構成する方法の例については、「[npm インストールを実行してノード モジュールのデプロイを回避するための Microsoft Azure スタートアップ タスク](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)」を参照してください。
+* Azure Cloud Services は、すべてのモジュールが開発環境にインストールされ、**node\_modules** ディレクトリがデプロイ パッケージの一部として含められることを想定します。 Cloud Services では **package.json** または **npm-shrinkwrap.json** ファイルを使用したモジュール インストールのサポートを有効にできますが、この構成では、Cloud Services のプロジェクトで使用される既定のスクリプトをカスタマイズする必要があります。 この環境を構成する方法の例については、[npm インストールを実行してノード モジュールのデプロイを回避するための Azure スタートアップ タスク](https://github.com/woloski/nodeonazure-blog/blob/master/articles/startup-task-to-run-npm-in-azure.markdown)に関するページを参照してください。
 
 > [!NOTE]
-> VM でのデプロイは Virtual Machines でホストされているオペレーティング システムに依存するので、この記事では Azure Virtual Machines については説明しません。
+> VM でのデプロイはその仮想マシンでホストされているオペレーティング システムに依存するため、この記事では Azure Virtual Machines については説明しません。
 > 
 > 
 
 ## <a name="nodejs-modules"></a>Node.js モジュール
-モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。 モジュールは通常、**npm** コマンド ライン ツールを使用してインストールされますが、一部のモジュール (http モジュールなど) はコア Node.js パッケージの一部として提供されます。
+モジュールは、アプリケーションに対して特定の機能を提供する読み込み可能な JavaScript パッケージです。 モジュールは通常、**npm** コマンドライン ツールを使用してインストールされますが、一部のモジュール (http モジュールなど) はコア Node.js パッケージの一部として提供されます。
 
-インストールされたモジュールは、アプリケーション ディレクトリ構造のルートにある **node\_modules** ディレクトリに保存されます。 **node\_modules** ディレクトリ内の各モジュールは、それが依存しているモジュールをすべて含む独自の **node\_modules** ディレクトリを保持します。この関係は、依存関係チェーンの最後まですべてのモジュールで繰り返されます。 この環境では、インストールされている各モジュールが、依存するモジュールに関して独自のバージョン要件を持つことができます。ただし、ディレクトリ構造が非常に大きくなる場合があります。
+インストールされたモジュールは、アプリケーション ディレクトリ構造のルートにある **node\_modules** ディレクトリに保存されます。 **node\_modules** ディレクトリ内の各モジュールは、それが依存しているモジュールをすべて含む独自の **node\_modules** ディレクトリを保持します。この動作は、依存関係チェーンの最後まですべてのモジュールで繰り返されます。 この環境では、インストールされている各モジュールが、依存するモジュールに関して独自のバージョン要件を持つことができます。ただし、ディレクトリ構造が非常に大きくなる場合があります。
 
 **node\_modules** ディレクトリをアプリケーションの一部としてデプロイすると、デプロイのサイズは、**package.json** または **npm-shrinkwrap.json** ファイルを使用した場合より大きくなりますが、運用環境で使用されるモジュールのバージョンが、開発環境で使用されるモジュールと同じであることが確かに保証されます。
 
@@ -51,10 +50,11 @@ Azure App Service では、すべてのネイティブ モジュールがサポ�
 
   * コンパイルする前に、ローカルの Node.js インストールで対応するアーキテクチャが使用されていることと、バージョンが Azure で使用されているものにできるだけ近いことを確認してください (現在の値は、ランタイムで **process.arch** プロパティと **process.version** プロパティから確認できます)。
 
-* Azure App Service はデプロイ中に、カスタムの bash やシェル スクリプトを実行するように構成でき、カスタム コマンドを実行し、 **npm install** が実行される方法を正確に構成できる機会を与えます。 その環境を構成する方法を示したビデオについては、「[Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]」をご覧ください。
+* Azure App Service はデプロイ中に、カスタムの bash やシェル スクリプトを実行するように構成でき、カスタム コマンドを実行し、 **npm install** が実行される方法を正確に構成できる機会を与えます。 その環境を構成する方法を示したビデオについては、「[Custom Web Site Deployment Scripts with Kudu (Kudu を使用したカスタム Web サイト デプロイメント スクリプト)]」を参照してください。
 
 ### <a name="using-a-packagejson-file"></a>package.json ファイルの使用
-**package.json** ファイルは、ホスティング プラットフォームが依存関係をインストールできるように、アプリケーションに必要な最上位レベルの依存関係を指定する 1 つの手段です。この場合、**node\_packages** フォルダーをデプロイの一部として含める必要はありません。 アプリケーションのデプロイ後、**npm install** コマンドによって **package.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。
+
+**package.json** ファイルは、ホスティング プラットフォームが依存関係をインストールできるように、アプリケーションに必要な最上位レベルの依存関係を指定する 1 つの手段です。この場合、**node\_modules** フォルダーをデプロイの一部として含める必要はありません。 アプリケーションのデプロイ後、**npm install** コマンドによって **package.json** ファイルが解析され、表示されているすべての依存関係がインストールされます。
 
 開発中、モジュールをインストールするときに **--save**、**--save-dev**、または **--save-optional** パラメーターを使用すると、モジュールのエントリを **package.json** ファイルに自動的に追加することができます。 詳細については、「 [npm-install](https://docs.npmjs.com/cli/install)」を参照してください。
 
@@ -84,11 +84,10 @@ Azure App Service では、すべてのネイティブ モジュールがサポ�
 > 
 
 ## <a name="next-steps"></a>次のステップ
-ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する]方法、[Node.js Web アプリを構築およびデプロイする](app-service-web/app-service-web-get-started-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]について、それぞれのトピックをご覧ください。
+ここでは、Azure で Node.js モジュールを使う方法について説明しました。次は、[Node.js のバージョンを指定する]方法、[Node.js Web アプリを構築およびデプロイする](app-service/app-service-web-get-started-nodejs.md)方法、[Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]について、それぞれのトピックをご覧ください。
 
 詳細については、 [Node.js デベロッパー センター](/nodejs/azure/)を参照してください。
 
 [Node.js のバージョンを指定する]: nodejs-specify-node-version-azure-apps.md
 [Mac および Linux で Azure コマンド ライン インターフェイスを使う方法]:cli-install-nodejs.md
-[Custom Website Deployment Scripts with Kudu (Kudu でのカスタム Web サイト デプロイメント スクリプト)]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo
-
+[Custom Web Site Deployment Scripts with Kudu (Kudu を使用したカスタム Web サイト デプロイメント スクリプト)]: https://channel9.msdn.com/Shows/Azure-Friday/Custom-Web-Site-Deployment-Scripts-with-Kudu-with-David-Ebbo

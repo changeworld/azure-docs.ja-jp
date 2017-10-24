@@ -5,19 +5,17 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/18/2017
+ms.date: 09/29/2017
 ms.topic: overview
 ms.service: Cost Management
 manager: carmonm
 ms.custom: mvc
+ms.openlocfilehash: 9edcfa20b25d7048c2066fba86203a29ba1f84fc
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 44e9d992de3126bf989e69e39c343de50d592792
-ms.openlocfilehash: d68e11757717ed23e2413c683d6e82c44c719010
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="what-is-azure-cost-management"></a>Azure Cost Management とは
 
 Azure Cost Management by Cloudyn では、クラウドの使用状況と、Azure リソースおよび AWS や Google などの他のクラウド プロバイダーに対する支出を追跡することができます。 わかりやすいダッシュボードのレポートは、コストの割り当てとショーバック/チャージバックに役立ちます。 Cost Management を使うと、使用率が低いリソースを識別して管理、調整することにより、クラウドの支出を最適化できます。
@@ -39,11 +37,11 @@ Azure Cost Management by Cloudyn では、クラウドの使用状況と、Azure
 
 アクセス制御は、ユーザーとチームが必要なコスト管理データだけにアクセスできるようにすることで、コストの管理を支援します。 アクセス権の割り当てには、エンティティ構造、ユーザー管理、受信者一覧付きのスケジュールされたレポートを使います。
 
-アラートを使うと、通常とは異なる支出や支出超過が発生したときに自動的に通知を受け取ることで、コストを管理できます。 また、異常な支出や浪費のリスクについて、他の関係者に自動的に通知することもできます。 さまざまなレポートは、予算とコストしきい値に基づくアラートをサポートします。
+アラートを使うと、通常とは異なる支出や支出超過が発生したときに自動的に通知を受け取ることで、コストを管理できます。 また、異常な支出や浪費のリスクについて、他の関係者に自動的に通知することもできます。 さまざまなレポートは、予算とコストしきい値に基づくアラートをサポートします。 ただし、CSP パートナー アカウントまたはサブスクリプションのアラートは、現在サポートされていません。
 
 ## <a name="improve-efficiency"></a>効率性を改善する
 
-Cost Management を利用すると、VM の最適な使用状況を判断し、アイドル状態の VM を識別したり、アイドル状態の VM やアタッチされたていないディスクを削除したりできます。 サイズ最適化レポートや非効率性レポートの情報を使って、ダウンサイジングまたはアイドル状態の VM の削除に関する計画を作成できます。
+Cost Management を利用すると、VM の最適な使用状況を判断し、アイドル状態の VM を識別したり、アイドル状態の VM やアタッチされたていないディスクを削除したりできます。 サイズ最適化レポートや非効率性レポートの情報を使って、ダウンサイジングまたはアイドル状態の VM の削除に関する計画を作成できます。 ただし、CSP パートナー アカウントまたはサブスクリプションの最適化レポートは、現在サポートされていません。
 
 ![サイズ設定に関する推奨事項](.\media\overview\sizing.png)
 
@@ -54,4 +52,3 @@ AWS 予約済みインスタンスをプロビジョニングした場合、最�
 Cost Management について学びました。次は、クラウド環境を登録して、データの探索を始めてください。
 
 - [個々の Azure サブスクリプションとコスト データの表示を登録する](quick-register-azure-sub.md)
-

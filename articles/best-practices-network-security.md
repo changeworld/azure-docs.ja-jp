@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 01/03/2017
 ms.author: jonor
 ms.openlocfilehash: fb5e399d4ab02a7f2805cc280b213bf5b44f6993
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="microsoft-cloud-services-and-network-security"></a>Microsoft クラウド サービスとネットワーク セキュリティ
 Microsoft クラウド サービスでは、ハイパースケール サービスとインフラストラクチャ、エンタープライズ レベルの機能、ハイブリッド接続の多くの選択肢を提供しています。 顧客は、これらのサービスにインターネット経由でアクセスするか、プライベート ネットワーク接続を提供する Azure ExpressRoute を使用してアクセスするかを選択できます。 Microsoft Azure Platform により、顧客は自身のインフラストラクチャをシームレスにクラウドに拡張し、多層アーキテクチャを構築できます。 また、サード パーティは、セキュリティ サービスや仮想アプライアンスを提供することで、機能を強化できます。 このホワイト ペーパーでは、顧客が ExpressRoute 経由でアクセスした Microsoft クラウド サービスを使用するときに考慮する必要がある、セキュリティとアーキテクチャの問題の概要を説明します。 また、Azure 仮想ネットワークでより安全なサービスを作成する方法についても説明します。
@@ -528,7 +528,7 @@ ExpressRoute プライベート ピアリング ネットワーク接続を追�
 [4]: ./media/best-practices-network-security/azuresecurityarchitecture.png "Azure のセキュリティ アーキテクチャ"
 [5]: ./media/best-practices-network-security/dmzazure.png "Azure 仮想ネットワークの DMZ"
 [6]: ./media/best-practices-network-security/dmzhybrid.png "3 つのセキュリティ境界を含むハイブリッド ネットワーク"
-[7]: ./media/best-practices-network-security/example1design.png "NSG での受信 DMZ"
+[7]: ./media/best-practices-network-security/example1design.png "受信 DMZ + NSG"
 [8]: ./media/best-practices-network-security/example2design.png "受信 DMZ + NVA および NSG"
 [9]: ./media/best-practices-network-security/example3design.png "双方向 DMZ + NVA、NSG、および UDR"
 [10]: ./media/best-practices-network-security/example3firewalllogical.png "ファイアウォール ルールの論理ビュー"

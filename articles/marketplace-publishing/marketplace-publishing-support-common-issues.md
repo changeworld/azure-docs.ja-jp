@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/16/2017
 ms.author: v-jeana; hascipio; v-dabosl
 ms.openlocfilehash: dcd87ae977d5b4b4a2353e446ab89ac81b239195
-ms.sourcegitcommit: f537befafb079256fba0529ee554c034d73f36b0
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 07/11/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="how-to-troubleshoot-common-azure-marketplace-publisher-issues"></a>Azure Marketplace Publisher に関する一般的な問題をトラブルシューティングする方法
 この記事では、いくつかの一般的な Marketplace のシナリオのサポートを得たり、これに関する問題を解決したりする方法を説明します。
@@ -75,7 +75,7 @@ ms.lasthandoff: 07/11/2017
 
 ![inprivate][4]
 
-**2.会社の企業または学校アカウントでサインイン**(つまり、 AzureStore@yourcompany.com)。
+**2.職場または学校アカウント** (つまり AzureStore@yourcompany.com) を使用してサインインします。
 
 ![signin][5]
 

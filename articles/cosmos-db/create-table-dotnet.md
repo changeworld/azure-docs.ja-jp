@@ -15,12 +15,11 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 06/22/2017
 ms.author: arramac
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 8be2bcb9179e9af0957fcee69680ac803fd3d918
-ms.openlocfilehash: 29e7eebda5177d6e852ef04ad82d9d38a8d30ed8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/23/2017
-
+ms.openlocfilehash: 9d347f37ed6e0ddcde9d2f9a7a8d1d8ff65ab4f9
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-cosmos-db-build-a-net-application-using-the-table-api"></a>Azure Cosmos DB: Table API を使用した .NET アプリケーションの構築
 
@@ -87,20 +86,26 @@ github で Table アプリの複製を作成し、接続文字列を設定して
     table.CreateIfNotExists();
     ```
 
-* 新しいテーブル コンテナーが作成されます。 このコードは通常の Azure Table Storage SDK によく似ています。 
+* そのテーブルに対し、`TableOperation` クラスを使用して一連の手順が実行されます。
 
-    ```csharp
-    CustomerEntity item = new CustomerEntity()
-                {
-                    PartitionKey = Guid.NewGuid().ToString(),
-                    RowKey = Guid.NewGuid().ToString(),
-                    Email = $"{GetRandomString(6)}@contoso.com",
-                    PhoneNumber = "425-555-0102",
-                    Bio = GetRandomString(1000)
-                };
-    ```
+   ```csharp
+   TableOperation insertOperation = TableOperation.Insert(item);
+   table.Execute(insertOperation);
+   ```
+   
+   ```csharp
+   TableOperation retrieveOperation = TableOperation.Retrieve<T>(items[i].PartitionKey, items[i].RowKey);
+   table.Execute(retrieveOperation);
+   ```
+   
+   
+   ```csharp
+   TableOperation deleteOperation = TableOperation.Delete(items[i]);
+   table.Execute(deleteOperation);
+   ```
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
+
+## <a name="update-your-connection-string"></a>接続文字列の更新
 
 今度は、アプリから Azure Cosmos DB に接続できるように接続文字列情報を更新します。 
 
@@ -119,7 +124,7 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
 
-## <a name="run-the-web-app"></a>Web アプリの実行
+## <a name="run-the-console-app"></a>コンソール アプリの実行
 
 1. Visual Studio の**ソリューション エクスプローラー**で **[PremiumTableGetStarted]** プロジェクトを右クリックし、**[NuGet パッケージの管理]** をクリックします。 
 
@@ -158,5 +163,4 @@ github で Table アプリの複製を作成し、接続文字列を設定して
 
 > [!div class="nextstepaction"]
 > [Table API を使用したクエリ](tutorial-query-table.md)
-
 
