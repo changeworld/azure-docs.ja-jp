@@ -15,12 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/27/2017
 ms.author: yushwang
+ms.openlocfilehash: db4d8837fb5c5d15364422e957e4914966215674
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 137671152878e6e1ee5ba398dd5267feefc435b7
-ms.openlocfilehash: 17211379ec61891982a02efca6730ca0da87c1ef
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>PowerShell を使って複数のオンプレミス ポリシー ベース VPN デバイスに VPN ゲートウェイを接続する
 
@@ -46,7 +45,7 @@ ms.lasthandoff: 07/28/2017
 
 |                          | **PolicyBased VPN ゲートウェイ** | **RouteBased VPN ゲートウェイ**               |
 | ---                      | ---                         | ---                                      |
-| **Azure ゲートウェイ SKU**    | 基本                       | Basic、Standard、HighPerformance         |
+| **Azure ゲートウェイ SKU**    | 基本                       | Basic、Standard、HighPerformance、VpnGw1、VpnGw2、VpnGw3 |
 | **IKE バージョン**          | IKEv1                       | IKEv2                                    |
 | **最大S2S 接続** | **1**                       | Basic/Standard: 10<br> HighPerformance: 30 |
 |                          |                             |                                          |
@@ -216,4 +215,3 @@ Set-AzureRmVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $con
 接続が完成したら、仮想ネットワークに仮想マシンを追加することができます。 手順については、 [仮想マシンの作成](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) に関するページを参照してください。
 
 カスタムの IPsec/IKE ポリシーの詳細については、[S2S VPN または VNet 対 VNet 接続用のIPsec/IKE ポリシーを構成する](vpn-gateway-ipsecikepolicy-rm-powershell.md)に関するページも参照してください。
-

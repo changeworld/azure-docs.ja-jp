@@ -14,12 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
 ms.author: kraigb
+ms.openlocfilehash: efd2f1e471f67396d35f11f2eb1044a8afa469af
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: ad43b5bb4f6f51f25acb9b2160661addab481762
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-webjob-projects"></a>Azure キュー ストレージと Visual Studio 接続済みサービスの概要 (Web ジョブ プロジェクト)
 [!INCLUDE [storage-try-azure-tools-queues](../../includes/storage-try-azure-tools-queues.md)]
@@ -243,7 +242,8 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。 オ
 **Table** と **BLOB** 属性で **IBinder** インターフェイスを使用することもできます。
 
 ## <a name="how-to-read-and-write-blobs-and-tables-while-processing-a-queue-message"></a>キュー メッセージの処理中に BLOB およびテーブルの読み書きを行う方法
-**BLOB** と **Table** 属性を持つと、BLOB および Table を読み書きすることができます。 このセクションのサンプルは、BLOB に適用されます。 BLOB が作成されるか更新されたときにプロセスをトリガーするコード サンプルについては「[WebJobs SDK で Azure BLOB ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。テーブルを読み書きするコード サンプルについては、「[WebJobs SDK を使用して Azure テーブル ストレージを使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md)」をご覧ください。
+**BLOB** と **Table** 属性を持つと、BLOB および Table を読み書きすることができます。 このセクションのサンプルは、BLOB に適用されます。 BLOB が作成または更新されたときにプロセスをトリガーする方法がわかるコード サンプルについては、「[Web ジョブ SDK で Azure Blob Storage を使用する方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。
+<!-- , and for code samples that read and write tables, see [How to use Azure table storage with the WebJobs SDK](../app-service-web/websites-dotnet-webjobs-sdk-storage-tables-how-to.md). -->
 
 ### <a name="string-queue-messages-triggering-blob-operations"></a>BLOB の操作を開始する文字列キュー メッセージ
 文字列を含むキュー メッセージでは、**queueTrigger** は、メッセージの内容を含む **Blob** 属性の **blobPath** パラメーターで使用できるプレースホルダーです。
@@ -258,7 +258,7 @@ SDK はオブジェクトを JSON に自動的にシリアル化します。 オ
             blobInput.CopyTo(blobOutput, 4096);
         }
 
-**Blob** 属性コンストラクターが、コンテナーと BLOB 名を指定する **blobPath** パラメーターを受け取ります。 このプレース ホルダーの詳細については、「 [WebJobs SDK で Azure Blob Storage を使用する方法](../app-service-web/websites-dotnet-webjobs-sdk-storage-blobs-how-to.md)」をご覧ください。
+**Blob** 属性コンストラクターが、コンテナーと BLOB 名を指定する **blobPath** パラメーターを受け取ります。 このプレース ホルダーの詳細については、「 [WebJobs SDK で Azure Blob Storage を使用する方法](https://github.com/Azure/azure-webjobs-sdk/wiki)」をご覧ください。
 
 属性が **Stream** オブジェクトを修飾するともう 1 つのコンストラクターのパラメーターが **FileAccess** モードを読み取り、書き込み、読み取り/書き込みとして指定します。
 
@@ -469,7 +469,7 @@ SDKでは、キュー メッセージを処理する関数を最大 5 回呼び�
 
 コンソールはシングル スレッドで、多くのジョブ関数が同時に実行されるため、コンソールの出力を特定のメソッド呼び出しにリンクすることはできません。 そのため、SDK は各関数の呼び出しに独自のログ書き込みオブジェクトを提供しています。
 
-[アプリケーション トレース ログ](../app-service-web/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)を書き込むには、**Console.Out** (INFO としてマークされたログを作成) および **Console.Error** (ERROR としてマークされたログを作成) を使用します。 代わりの方法としては、INFO と ERROR に加え、詳細、警告、重大レベルを提供する [トレースまたはトレース ソース](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)を使用します。 ログをトレースするアプリケーションは、Azure Web アプリの構成方法によって、Web アプリ ログ ファイル、Azure テーブル、Azure BLOB に表示されます。 すべてのコンソール出力と同様に、最新の 100 のアプリケーションのログは関数呼び出しのページではなく、Web ジョブのダッシュボード ページに表示されます。
+[アプリケーション トレース ログ](../app-service/web-sites-dotnet-troubleshoot-visual-studio.md#logsoverview)を書き込むには、**Console.Out** (INFO としてマークされたログを作成) および **Console.Error** (ERROR としてマークされたログを作成) を使用します。 代わりの方法としては、INFO と ERROR に加え、詳細、警告、重大レベルを提供する [トレースまたはトレース ソース](http://blogs.msdn.com/b/mcsuksoldev/archive/2014/09/04/adding-trace-to-azure-web-sites-and-web-jobs.aspx)を使用します。 ログをトレースするアプリケーションは、Azure Web アプリの構成方法によって、Web アプリ ログ ファイル、Azure テーブル、Azure BLOB に表示されます。 すべてのコンソール出力と同様に、最新の 100 のアプリケーションのログは関数呼び出しのページではなく、Web ジョブのダッシュボード ページに表示されます。
 
 プログラムがローカルまたはその他の環境で実行されているのではなく、Azure Web ジョブで実行されている場合は、コンソール出力はダッシュボードにのみ表示されます。
 
@@ -513,5 +513,4 @@ Azure テーブルでは **Console.Out** および **Console.Error** ログが�
 
 ## <a name="next-steps"></a>次のステップ
 この記事では、Azure キューを操作するための一般的なシナリオの処理方法を示すコードのサンプルを提供しました。 Azure WebJobs および WebJobs SDK の使用方法の詳細については、「 [Azure WebJobs のドキュメント リソース](http://go.microsoft.com/fwlink/?linkid=390226)」をご覧ください。
-
 

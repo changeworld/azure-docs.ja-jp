@@ -8,24 +8,23 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 06/29/2017
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 6dbb88577733d5ec0dc17acf7243b2ba7b829b38
-ms.openlocfilehash: 4f85e27d01341d3d9d61d1984add32e72a53b6ac
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/04/2017
-
+ms.date: 09/26/2017
+ms.openlocfilehash: 3aa9f90d5ca5ccd33273566795da3df2052ff7c8
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の PostgreSQL 拡張機能
-PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「[Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」を参照してください。
+PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「[Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」を参照してください。
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL 拡張機能の使用方法
 PostgreSQL 拡張機能を使用するには、その拡張機能をデータベースに対してインストールしておく必要があります。 特定の拡張機能をインストールするには、psql ツールから [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
-Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 ここに示した以外に、他の拡張機能はサポートされていません。 Azure Database for PostgreSQL サービスでは、独自の拡張機能を作成することはできません。
+Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 ここにない拡張機能はサポートされていません。Azure Database for PostgreSQL サービスでは、独自の拡張機能を作成することはできません。
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされる拡張機能
-Azure Database for PostgreSQL で現在サポートされている標準的な PostgreSQL 拡張機能を次の表に示します。 この情報は、pg\_available\_extensions にクエリを実行して確認することもできます。 
+Azure Database for PostgreSQL で現在サポートされている標準的な PostgreSQL 拡張機能を次の表に示します。 この情報は、pg\_available\_extensions にクエリを実行して確認することもできます。
 
 ### <a name="data-types-extensions"></a>データ型の拡張機能
 
@@ -42,10 +41,10 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 |---|---|
 | [fuzzystrmatch](https://www.postgresql.org/docs/9.6/static/fuzzystrmatch.html) | 文字列間の類似点と相違点を特定する関数を提供します。 |
 | [intarray](https://www.postgresql.org/docs/9.6/static/intarray.html) | 整数の null を含まない配列を操作する関数と演算子を提供します。 |
-| [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | 暗号化関数を提供します |
-| [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 時刻または ID によってパーティション テーブルを管理します |
-| [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します |
-| [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します |
+| [pgcrypto](https://www.postgresql.org/docs/9.6/static/pgcrypto.html) | 暗号化関数を提供します。 |
+| [pg\_partman](https://pgxn.org/dist/pg_partman/doc/pg_partman.html) | 時刻または ID によってパーティション テーブルを管理します。 |
+| [pg\_trgm](https://www.postgresql.org/docs/9.6/static/pgtrgm.html) | trigram 一致に基づいて英数字テキストの類似性を特定する関数と演算子を提供します。 |
+| [uuid-ossp](https://www.postgresql.org/docs/9.6/static/uuid-ossp.html) | 汎用一意識別子 (UUID) を生成します。 |
 
 ### <a name="full-text-search-extensions"></a>フルテキスト検索の拡張機能
 
@@ -77,7 +76,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 | [pg\_buffercache](https://www.postgresql.org/docs/9.6/static/pgbuffercache.html) | リアルタイムで共有バッファー キャッシュの動作を確認する手段を提供します。 |
 | [pg\_prewarm](https://www.postgresql.org/docs/9.6/static/pgprewarm.html) | 関係データをバッファー キャッシュに読み込む方法を提供します。 |
 | [pg\_stat\_statements](https://www.postgresql.org/docs/9.6/static/pgstatstatements.html) | サーバーで実行されるすべての SQL ステートメントの実行統計を追跡する手段を提供します。 |
-| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパー |
+| [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパーです。 |
 
 ### <a name="postgis"></a>PostGIS
 
@@ -86,8 +85,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 |---|---|
 | [PostGIS](http://www.postgis.net/)、postgis\_topology、postgis\_tiger\_geocoder、postgis\_sfcgal | PostgreSQL の空間および地理なオブジェクト。 |
 | address\_standardizer、address\_standardizer\_data\_us | 構成要素へのアドレスの解析に使用されます。 ジオコーディング アドレス正規化の手順をサポートするために使用されます。 |
-| [pgrouting](http://pgrouting.org/) | PostGIS/PostgreSQL 地理空間データベースを拡張して、地理空間ルーティング機能を提供します。 |
+| [grouting](http://pgrouting.org/) | PostGIS/PostgreSQL 地理空間データベースを拡張して、地理空間ルーティング機能を提供します。 |
 
 ## <a name="next-steps"></a>次のステップ
-使用する拡張機能が見つからない場合は お知らせください。 [顧客フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)では既存のリクエストに投票できます。また、新しいフィードバックやリクエストを作成することも可能です。
-
+使用する拡張機能が見つからない場合は、お知らせください。 [顧客フィードバック フォーラム](https://feedback.azure.com/forums/597976-azure-database-for-postgresql)では既存のリクエストに投票できます。また、新しいフィードバックやリクエストを作成することも可能です。
