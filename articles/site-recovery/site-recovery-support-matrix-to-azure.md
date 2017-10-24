@@ -14,17 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 07/04/2017
 ms.author: rajanaki
+ms.openlocfilehash: b4bb049577feb416f498a428bae80ecea418180e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: cb9130243bdc94ce58d6dfec3b96eb963cdaafb0
-ms.openlocfilehash: 103643ace17961cd4e2e37313f75c775e3dcd8cd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/26/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-on-premises-to-azure"></a>オンプレミスから Azure へのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
 
 この記事では、Azure へのレプリケートおよび復旧時にサポートされる Azure Site Recovery の構成とコンポーネントをまとめます。 Azure Site Recovery の要件の詳細については、[前提条件](site-recovery-prereq.md)に関する記事をご覧ください。
+
+> [!NOTE]
+> このサポート マトリックスに記載された更新プログラムとの互換性を実現するために、必ず最新バージョンの Site Recovery プロバイダーおよびエージェントに更新してください。
 
 
 ## <a name="support-for-deployment-options"></a>デプロイ オプションのサポート
@@ -237,4 +239,3 @@ Site Recovery をデプロイすると、Azure でサポートされた任意の
 
 ## <a name="next-steps"></a>次のステップ
 [前提条件を確認する](site-recovery-prereq.md)
-

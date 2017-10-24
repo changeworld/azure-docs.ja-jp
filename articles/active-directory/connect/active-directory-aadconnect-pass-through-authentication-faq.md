@@ -12,16 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2017
+ms.date: 09/29/2017
 ms.author: billmath
+ms.openlocfilehash: e0c93cefb135d3ea1c5f0a3797602124aed85c5c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 79d2f5265c05a1e5f83325295d3d750e1796e1cc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
 この記事では、Azure Active Directory (Azure AD) パススルー認証に関してよく寄せられる質問に回答します。 最新のコンテンツを常にチェックしてください。
@@ -131,8 +129,9 @@ Azure AD Connect ウィザードを再実行し、ユーザーのサインイン
 ## <a name="next-steps"></a>次のステップ
 - [**現在の制限**](active-directory-aadconnect-pass-through-authentication-current-limitations.md) - サポートされているシナリオと、サポートされていないシナリオを確認します。
 - [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。
+- [**スマート ロックアウト**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。
+- [**セキュリティの詳細**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 機能に関する追加の詳細な技術情報です。
 - [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。
-

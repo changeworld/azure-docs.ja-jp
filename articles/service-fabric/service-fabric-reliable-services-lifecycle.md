@@ -14,14 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/18/2017
 ms.author: masnider
+ms.openlocfilehash: d5977a79cfe4016d6bd943cecb22edadc0eaec6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 6cfdeacb788db2e2f940ef1100eb03dc7e496ea6
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="reliable-services-lifecycle-overview"></a>Reliable Services のライフサイクルの概要
 > [!div class="op_single_selector"]
 > * [Windows での C# ](service-fabric-reliable-services-lifecycle.md)

@@ -13,15 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
+ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a0b98d400db31e9bb85611b3029616cc7b2b4b3f
-ms.openlocfilehash: fed9008d41b43b2c118aba4939260e819c211d67
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/29/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -178,7 +177,7 @@ ms.lasthandoff: 08/29/2017
   >
 * **Q: 電子メールと SMS のワンタイム パスコードの有効期間はどのくらいですか。**
 
-  > **A:** パスワード リセットのセッション有効期間は 105 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 105 分の時間が与えられます。 この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
+  > **A:** パスワード リセットのセッション有効期間は 15 分です。 パスワード リセット操作の開始からパスワードをリセットするまで、ユーザーに 15 分の時間が与えられます。 この期間を経過すると、電子メールと SMS のワンタイム パスコードは無効になります。
   >
   >
 
@@ -280,4 +279,3 @@ ms.lasthandoff: 08/29/2017
 * [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
 * [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
 * [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
-

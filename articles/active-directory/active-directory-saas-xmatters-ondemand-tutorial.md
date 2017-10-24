@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/12/2017
 ms.author: jeedes
 ms.openlocfilehash: 9bfcb44ed19f167872b3cd9119e2dbdd35c82604
-ms.sourcegitcommit: 02e69c4a9d17645633357fe3d46677c2ff22c85a
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/03/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xmatters-ondemand"></a>チュートリアル: Azure Active Directory と xMatters OnDemand の統合
 
@@ -200,7 +200,7 @@ xMatters OnDemand で Azure AD のシングル サインオンを構成してテ
 
     c. **[パスワードを表示]** を選択し、**[パスワード]** の値をメモします。
 
-    d. ページの下部にある **[Create]**」を参照してください。
+    d. **Create** をクリックしてください。
  
 ### <a name="creating-a-xmatters-ondemand-test-user"></a>xMatters OnDemand テスト ユーザーの作成
 
@@ -209,7 +209,7 @@ Azure AD ユーザーが XMatters OnDemand にログインできるようにす�
 ### <a name="to-provision-a-user-accounts-perform-the-following-steps"></a>ユーザー アカウントをプロビジョニングするには、次の手順に従います。
 1. **XMatters OnDemand** テナントにログインします。
 
-2.  **[Users]** タブをクリックします。 **[Add User]\(ユーザーの追加\)** をクリックします。
+2.  **[Users]\(ユーザー\)** タブをクリックし、**[Add User]\(ユーザーの追加\)** をクリックします。
   
     ![ユーザー](./media/active-directory-saas-xmatters-ondemand-tutorial/IC781048.png "Users")
 

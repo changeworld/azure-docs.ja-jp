@@ -14,13 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/30/2017
 ms.author: mfussell
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: e673b45a43a06d18040c3437caf8765704d5c36a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
-
+ms.openlocfilehash: aae828489b708a5b538df1d63c12be23d0423da7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-security-policies-for-your-application"></a>アプリケーションのセキュリティ ポリシーの構成
 Azure Service Fabric を使用すると、別のユーザー アカウントを使用してクラスターで実行しているアプリケーションをセキュリティで保護することができます。 また、Service Fabric は、そのユーザー アカウントでデプロイするときにアプリケーションによって使用されるリソース (ファイル、ディレクトリ、証明書など) を保護するためにも役立ちます。 これにより、実行中のアプリケーションは、共有のホスト環境にある場合でも、互いからより保護されます。
@@ -140,6 +138,8 @@ C:\SfDevCluster\Data\_App\Node.2\MyApplicationType_App\work\out.txt
    </Principals>
 </ApplicationManifest>
 ```
+
+Linux クラスターの場合、サービスまたはセットアップ エントリ ポイントを**ルート**として実行するには、**AccountType** を **LocalSystem** として指定します。
 
 ## <a name="start-powershell-commands-from-a-setup-entry-point"></a>エントリ ポイント セットアップから PowerShell コマンドを起動する
 **SetupEntryPoint** ポイントから PowerShell を実行するには、PowerShell ファイルを指し示すバッチ ファイルで **PowerShell.exe** を実行します。 最初に、PowerShell ファイルをサービス プロジェクトに追加します (**MySetup.ps1** など)。 このファイルがサービス パッケージにも含まれるように、 *[新しい場合はコピーする]* プロパティを忘れずに設定します。 次の例では、システム環境変数 **TestVariable** を設定する PowerShell ファイル MySetup.ps1 を開始するバッチ ファイルを示します。
@@ -423,4 +423,3 @@ https でアップグレードが失敗した場合、"Windows HTTP Server API �
 * [アプリケーションをデプロイする](service-fabric-deploy-remove-applications.md)
 
 [image1]: ./media/service-fabric-application-runas-security/copy-to-output.png
-

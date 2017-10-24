@@ -11,14 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: mahender
+ms.openlocfilehash: 8cf2e4e9e9007549dbdc931b4485c4230c536479
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: b0eb0ac63c7dbb9d6cbba093937231e93670529e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-functions-microsoft-graph-bindings"></a>Azure Functions における Microsoft Graph のバインド
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
 
@@ -45,7 +43,11 @@ Microsoft Graph のバインドは、_バインド拡張機能_から入手で�
 
 ### <a name="enabling-functions-20-preview"></a>Functions 2.0 プレビューを有効にする
 
-バインド拡張機能は、Azure Functions 2.0 プレビューでのみ使用できます。 Functions 2.0 を有効にするには、`FUNCTIONS_EXTENSION_VERSION` のアプリケーション設定を "ベータ" に設定します。  アプリケーション設定を構成する方法については、[Azure Functions のアプリケーション設定](https://docs.microsoft.com/en-us/azure/azure-functions/functions-how-to-use-azure-function-app-settings#settings)に関するページをご覧ください。
+バインド拡張機能は、Azure Functions 2.0 プレビューでのみ使用できます。 
+
+[!INCLUDE [functions-set-runtime-version](../../includes/functions-set-runtime-version.md)]
+
+詳細については、「[Azure Functions ランタイム バージョンをターゲットにする方法](functions-versions.md)」を参照してください。
 
 ### <a name="installing-the-extension"></a>拡張機能のインストール
 
@@ -85,7 +87,7 @@ Azure Portal を使用している場合、拡張機能のインストールを�
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - 認証トークンの関数コードで使用される変数名。 「[コードから認証トークンの入力バインドを使用する](#token-input-code)」をご覧ください。|
 |**type**|必須 - `token` に設定する必要があります。|
@@ -194,7 +196,7 @@ module.exports = function (context, req) {
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - Excel テーブルの関数コードで使用される変数名。 「[コードから Excel テーブルの入力バインドを使用する](#excel-input-code)」をご覧ください。|
 |**type**|必須 - `excel` に設定する必要があります。|
@@ -386,7 +388,7 @@ module.exports = function (context, req) {
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの入力バインドを使用する](#onedrive-input-code)」をご覧ください。|
 |**type**|必須 - `onedrive` に設定する必要があります。|
@@ -472,7 +474,7 @@ module.exports = function (context, req) {
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - ファイルの関数コードで使用される変数名。 「[コードから OneDrive ファイルの出力バインドを使用する](#onedrive-output-code)」をご覧ください。|
 |**type**|必須 - `onedrive` に設定する必要があります。|
@@ -561,7 +563,7 @@ Outlook でメール メッセージを送信します。
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**|必須 - `outlook` に設定する必要があります。|
@@ -675,7 +677,7 @@ Webhook について詳しくは、「[Microsoft Graph の Webhooks での作業
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**|必須 - `graphWebhook` に設定する必要があります。|
@@ -704,7 +706,7 @@ Webhook について詳しくは、「[Microsoft Graph の Webhooks での作業
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**|必須 - `graphWebhookSubscription` に設定する必要があります。|
@@ -731,7 +733,7 @@ Webhook について詳しくは、「[Microsoft Graph の Webhooks での作業
 
 バインドでは以下のプロパティがサポートされています。
 
-|プロパティ|Description|
+|プロパティ|説明|
 |--------|--------|
 |**name**|必須 - メール メッセージの関数コードで使用される変数名。 「[コードから Outlook メッセージの出力バインドを使用する](#outlook-output-code)」をご覧ください。|
 |**type**|必須 - `graphWebhookSubscription` に設定する必要があります。|
@@ -1060,4 +1062,3 @@ public class UserSubscription {
 
 [HTTP トリガー]: functions-bindings-http-webhook.md
 [Microsoft Graph の Webhooks での作業]: https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/webhooks
-

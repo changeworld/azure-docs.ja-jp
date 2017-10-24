@@ -14,14 +14,12 @@ ms.workload: data-services
 ms.custom: tables
 ms.date: 07/14/2017
 ms.author: rortloff;barbkess
+ms.openlocfilehash: 9599752c649acb191344fc32d1606adf888b44f7
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 5b6c261c3439e33f4d16750e73618c72db4bcd7d
-ms.openlocfilehash: 437a4f628a343312984d1fa2981df7fa01459e26
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="design-guidance-for-using-replicated-tables-in-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse でレプリケート テーブルを使用するための設計ガイダンス
 この記事では、SQL Data Warehouse スキーマでレプリケート テーブルを設計するための推奨事項を紹介します。 これらの推奨事項を使用すると、データの移動が少なくなり、クエリの複雑さが軽減されることでクエリ パフォーマンスが向上します。
 
@@ -203,10 +201,9 @@ SELECT TOP 1 * FROM [ReplicatedTable]
 レプリケート テーブルを作成するには、次のいずれかのステートメントを使用します。
 
 - [CREATE TABLE (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-azure-sql-data-warehouse)
-- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
+- [CREATE TABLE AS SELECT (Azure SQL Data Warehouse)](https://docs.microsoft.com/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse)
 
 分散テーブルの概要については、[分散テーブル](sql-data-warehouse-tables-distribute.md)に関するページを参照してください。
-
 
 
 

@@ -16,14 +16,12 @@ ms.topic: tutorial
 ms.date: 08/25/2017
 ms.author: mblythe; glenga
 ms.custom: mvc
+ms.openlocfilehash: a196df5b4ab47b234b48594da45cd4d72f604086
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 8f9234fe1f33625685b66e1d0e0024469f54f95c
-ms.openlocfilehash: 5aed57e69924f03221fc0d9909889358d80df9a4
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/20/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-an-openapi-definition-for-a-function"></a>関数の OpenAPI 定義の作成
 REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swagger.io/) ファイル) を使用して記述されます。 この定義には、API で使用できる操作の情報と、API の要求データと応答データを構造化する方法に関する情報が含まれています。
 
@@ -39,7 +37,7 @@ REST API は、多くの場合、OpenAPI 定義 (以前の [Swagger](http://swag
 
 ## <a name="create-a-function-app"></a>Function App を作成する
 
-関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
+関数の実行をホストするための Function App が存在する必要があります。 Function App を使用すると、リソースの管理、デプロイ、スケーリング、および共有を容易にするためのロジック ユニットとして関数をグループ化できます。 
 
 [!INCLUDE [Create function app Azure portal](../../includes/functions-create-function-app-portal.md)]
 
@@ -297,4 +295,3 @@ API の定義を使用する前に、Azure Functions の UI でテストする�
 次のトピックに進み、作成した OpenAPI 定義を使用する PowerApps アプリを作成する方法を確認してください。
 > [!div class="nextstepaction"]
 > [PowerApps から関数を呼び出す](functions-powerapps-scenario.md)
-

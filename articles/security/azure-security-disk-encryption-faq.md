@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: devtiw
+ms.openlocfilehash: 2ccadfdec0e653264671f5a9a38d4541b0fc4e69
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a16daa1f320516a771f32cf30fca6f823076aa96
-ms.openlocfilehash: f66eabcbb386d5e7b31268a7b04063ff2cefbaf2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/02/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-disk-encryption-faq"></a>Azure Disk Encryption に関する FAQ
 
@@ -122,6 +121,12 @@ ms.lasthandoff: 09/02/2017
 
 このワークフローが可能でない場合は、DM-Crypt を使用したディスク全体の暗号化に代わる方法として、プラットフォームのストレージ アカウント レイヤーで [Storage Service Encryption](https://docs.microsoft.com/en-us/azure/storage/common/storage-service-encryption) (SSE) を使用できます。
 
+**Q:** "Bek ボリューム" ディスクまたは "/mnt/azure_bek_disk" とは何ですか?
+
+**A:** Windows の "Bek ボリューム"、または Linux の "/mnt/azure_bek_disk" は、暗号化された Azure IaaS VM の暗号化キーを安全に格納する、ローカルなデータ ボリュームです。
+> [!NOTE]
+> このディスクの内容を削除したり、編集しないでください。 IaaS VM 上のすべての暗号化操作にディスク暗号化キーが必要なため、ディスクのマウントを解除しないでください。
+
 **Q:** 質問やフィードバックはどこに投稿すればよいでしょうか。
 
 **A:** ご質問やフィードバックは、[Azure Disk Encryption フォーラム](https://social.msdn.microsoft.com/Forums/home?forum=AzureDiskEncryption)に投稿してください。
@@ -132,4 +137,3 @@ ms.lasthandoff: 09/02/2017
 - [Azure Security Center でディスクの暗号化を適用する](https://docs.microsoft.com/azure/security-center/security-center-apply-disk-encryption)
 - [Azure Virtual Machine を暗号化する](https://docs.microsoft.com/azure/security-center/security-center-disk-encryption)
 - [保存時の Azure データの暗号化](https://docs.microsoft.com/azure/security/azure-security-encryption-atrest)
-

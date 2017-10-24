@@ -12,14 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
 ms.author: rithorn
-ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
 ms.openlocfilehash: eca1ac9ed51e6c2243be451a074792fbec2840d2
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="troubleshoot-enterprise-cost-views"></a>エンタープライズ コスト表示のトラブルシューティング 
 
 エンタープライズ加入契約では、多くの設定において登録ユーザーがコストを表示できません。  これらの設定を管理するのは、登録管理者、または Microsoft と直接加入契約をしていない場合はパートナーです。  この記事では、設定の概要と、設定が登録に与える影響について説明します。 これらの設定は、[Azure RBAC ロール](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure)には依存しません。 
@@ -27,9 +25,9 @@ ms.lasthandoff: 09/25/2017
 > [!Note]
 > 現在、この機能はプライベート プレビュー段階にあります。 [ここでサインアップして](https://forms.office.com/Pages/DesignPage.aspx#FormId=v4j5cvGGr0GRqy180BHbR0YtfU6ham9OsGsPPYdu2xdUNk1BQUwzTkUyOVc5NUpCTFcwR0pIOVFETS4u)、ご利用の登録でプレビューに参加します。     
 
-## <a name="enabling-access-to-costs"></a>コストへのアクセスの実現
+## <a name="enabling-access-to-costs"></a>コストへのアクセスを有効にする
 
-コストの情報を探しているときに、未承認のメッセージが表示されていますか、または*"ご利用の登録でコストの表示が無効になっていますか。"* ![未承認](media/billing-enterprise-mgmt-groups/unauthorized.png)
+コストの情報を探しているときに、未承認のメッセージまたは "*登録ではコストのビューが無効になっています*" というメッセージが表示されますか。 ![未承認](media/billing-enterprise-mgmt-groups/unauthorized.png)
 
 それには、次のいずれかの理由が考えられます。
 
@@ -50,4 +48,3 @@ ms.lasthandoff: 09/25/2017
 アクセスを付与してもらうには、サブスクリプションまたは管理グループの管理者に問い合わせてください。  
 * サブスクリプションの場合、[Azure ロールベースのアクセス制御 (RBAC)](https://docs.microsoft.com/en-us/azure/active-directory/role-based-access-control-configure) に関するドキュメントをお読みになり、必要なロールの判断に役立ててください。
 * 管理グループの場合、現在は RBAC アクセスを使用できません。まもなく使用可能になります。 アクセスを割り当ててもらうには、エンタープライズ ポータルの管理者に連絡してください。   
-

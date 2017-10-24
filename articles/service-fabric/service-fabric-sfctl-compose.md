@@ -14,24 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
+ms.openlocfilehash: 3010c298cf227c761288365e3663ffe3fb67d863
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 469246d6cb64d6aaf995ef3b7c4070f8d24372b1
-ms.openlocfilehash: 64852471a848cb42fd8a2e67622d309d5e050cfd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/27/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="sfctl-compose"></a>sfctl compose
-Docker Compose アプリケーションを作成、削除、管理します。
+Docker Compose のデプロイを作成、削除、および管理します。
 
 ## <a name="commands"></a>コマンド
 
 |コマンド|Description|
 | --- | --- |
-|    create| Compose ファイルから Service Fabric アプリケーションを作成します。|
-|    list  | Service Fabric クラスターで作成された Compose アプリケーションの一覧を取得します。|
-|   remove| クラスターから既存の Service Fabric Compose アプリケーションを削除します。|
-|   status| Service Fabric Compose アプリケーションの情報を取得します。|
+|    create| Compose ファイルから Service Fabric アプリケーションをデプロイします。|
+|    list  | Service Fabric クラスターで作成された Compose デプロイの一覧を取得します。|
+|   remove| クラスターから既存の Service Fabric Compose デプロイを削除します。|
+|   status| Service Fabric Compose デプロイの情報を取得します。|
 |upgrade       | Service Fabric クラスターで、Compose デプロイのアップグレードを開始します。|
 |    upgrade-status| この Service Fabric Compose のデプロイで実行された最新のアップグレードの詳細を取得します。|
 
@@ -44,11 +43,11 @@ Service Fabric Compose のデプロイを作成します。
 |引数|Description|
 | --- | --- |
 | --file-path [必須]| ターゲット Docker Compose ファイルへのパス。|
- |   --name      [必須]| デプロイの ID。|
-|    --encrypted-pass      | コンテナー レジストリ パスワードの入力を求めるのではなく、既に暗号化されているパスフレーズを使用します。|
-|    --has-pass            | コンテナー レジストリへのパスワードを要求します。|
-|    --timeout -t          | サーバー タイムアウト (秒)。  既定値は 60 です。|
- |   --user                | コンテナー レジストリに接続するユーザー名。|
+ |   --deployment-name [必須]| デプロイの名前。|
+|    --encrypted-pass             | コンテナー レジストリ パスワードの入力を求めるのではなく、既に暗号化されているパスフレーズを使用します。|
+|    --has-pass                   | コンテナー レジストリへのパスワードを要求します。|
+|    --timeout -t                 | サーバー タイムアウト (秒)。  既定値は 60 です。|
+ |   --user                       | コンテナー レジストリに接続するユーザー名。|
 
 ### <a name="global-arguments"></a>グローバル引数
 
@@ -136,7 +135,7 @@ Service Fabric クラスターで、Compose デプロイのアップグレード
 |引数|Description|
 | --- | --- |
 |    --file-path        [必須]| ターゲット Docker Compose ファイルへのパス。|
-|    --name             [必須]| デプロイの ID。|
+|    --deployment-name [必須]| デプロイの名前。|
 |    --default-svc-type-health-map| サービスの正常性を評価するために使用する正常性ポリシーについて説明している JSON でエンコードされたディクショナリ。|
 |    --encrypted-pass             | コンテナー レジストリ パスワードの入力を求めるのではなく、既に暗号化されているパスフレーズを使用します。|
  |   --failure-action             | 使用可能な値には、'Invalid'、'Rollback'、'Manual' が含まれます。|

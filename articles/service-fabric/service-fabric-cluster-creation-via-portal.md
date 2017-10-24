@@ -1,4 +1,3 @@
-
 ---
 title: "Azure Portal での Service Fabric クラスターの作成 | Microsoft Docs"
 description: "この記事では、Azure ポータルと Azure Key Vault を使用して Azure でセキュリティ保護された Service Fabric クラスターを設定する方法について説明します。"
@@ -15,12 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
+ms.openlocfilehash: 3dd4f3494bb9ed70549f41e22c58666cada8da07
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: 3b471fb21cf046417c094552c23c548c9da14fe8
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -274,7 +272,6 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 * **[詳細設定の構成]** ボックスをオンにして、**管理用クライアント**と**読み取り専用クライアント**のクライアント証明書を入植します。 該当する場合は、これらのフィールドに管理用クライアント証明書の拇印と、読み取り専用ユーザー クライアント証明書の拇印を入力します。 管理者がクラスターに接続しようとした場合、ここに入力した拇印値に一致する拇印を持つ証明書がある場合にのみアクセスが許可されます。  
 
 #### <a name="4-summary"></a>4.概要
-!["Service Fabric クラスターのデプロイ中" が表示されているスタート画面のスクリーン ショット。 ][Notifications]
 
 クラスターの作成を完了するには、**[概要]** をクリックして設定した構成を確認するか、クラスターのデプロイに使用する Azure Resource Manager テンプレートをダウンロードします。 必須の設定を指定すると、**[OK]** ボタンが緑色になります。このボタンをクリックして、クラスター作成プロセスを開始できます。
 
@@ -326,4 +323,3 @@ Value : https://myvault.vault.azure.net:443/secrets/mycert/4d087088df974e869f1c0
 [Notifications]: ./media/service-fabric-cluster-creation-via-portal/notifications.png
 [ClusterDashboard]: ./media/service-fabric-cluster-creation-via-portal/ClusterDashboard.png
 [cluster-security-cert-installation]: ./media/service-fabric-cluster-creation-via-arm/cluster-security-cert-installation.png
-

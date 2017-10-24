@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: backup-recovery
-ms.date: 06/29/2017
+ms.date: 10/06/2017
 ms.author: anoopkv
+ms.openlocfilehash: e4740c96383468713976e5a98881bec13b0c1921
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: ba236ad1327a7f3419d7c8cf7effc889a90dde61
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="manage-a-configuration-server"></a>構成サーバーの管理
 
 構成サーバーは、Site Recovery サービスとオンプレミス インフラストラクチャの調整役として機能します。 この記事では、構成サーバーを設定、構成、管理する方法について説明します。
@@ -113,7 +111,7 @@ ProxyPassword="Password"
 
 ## <a name="modify-user-accounts-and-passwords"></a>ユーザー アカウントとパスワードを変更する
 
-CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**で使用されるユーザー アカウントの管理、および**保護されているマシンへのモビリティ サービスのプッシュ インストール**を行います。 
+CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**で使用されるユーザー アカウントの管理、および**保護されているマシンへのモビリティ サービスのプッシュ インストールを行います。 
 
 1. 構成サーバーにログインします。
 2. デスクトップにあるショートカットをクリックして、CSPSConfigtool.exe を起動します。
@@ -145,7 +143,7 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
 ## <a name="registering-a-configuration-server-with-a-different-recovery-services-vault"></a>異なる Recovery Services コンテナーを使用した構成サーバーの登録
 
 > [!WARNING]
-> 以下の一連の手順では、現在のコンテナーとの構成の関連付けを解除します。それにより構成サーバーの下で保護されているすべての仮想マシンのレプリケーションが停止します。
+> 以下の手順では、現在のコンテナーとの構成の関連付けを解除します。それにより構成サーバーの下で保護されているすべての仮想マシンのレプリケーションが停止されます。
 
 1. 構成サーバーにログインします。
 2. 管理者のコマンド プロンプトで、次のコマンドを実行します
@@ -169,22 +167,25 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
     net start obengine
     ```
 
-## <a name="updating-a-configuration-server"></a>構成サーバーの更新
+## <a name="upgrading-a-configuration-server"></a>構成サーバーのアップグレード
 
 > [!WARNING]
 > 更新プログラムがサポートされているのは、N-4 バージョンまでです。 たとえば、販売中の最新バージョンが 9.11 の場合は、バージョン 9.10、9.9、9.8、9.7 から 9.11 に直接更新できます。 ただし、使用しているバージョンが 9.6 以前の場合、構成サーバーに最新の更新プログラムを適用するには、少なくとも 9.7 に更新する必要があります。 以前のバージョンのダウンロード リンクは、「[Azure Site Recovery service updates](https://social.technet.microsoft.com/wiki/contents/articles/38544.azure-site-recovery-service-updates.aspx)」 (Azure Site Recovery サービスの更新情報) に記載されています。
 
-1. 構成サーバーで更新プログラムのインストーラーをダウンロードします。
+1. 構成サーバーに更新プログラムのインストーラーをダウンロードします。
 2. インストーラーをダブルクリックして起動します。
 3. インストーラーによって、マシンに存在する Site Recovery のコンポーネントのバージョンが検出され、確認メッセージが表示されます。 
 4. [OK] をクリックして確認を行い、アップグレードを続行します。
 
 
-## <a name="decommissioning-a-configuration-server"></a>構成サーバーの使用停止
-構成サーバーの使用停止操作を始める前に、次のことを確認します。
-1. この構成サーバーのすべての仮想マシンの保護を無効にします。
-2. 構成サーバーからすべてのレプリケーション ポリシーの関連付けを解除します。
-3. 構成サーバーに関連付けられているすべての vCenter サーバー/vSphere ホストを削除します。
+## <a name="delete-or-unregister-a-configuration-server"></a>構成サーバーの削除または登録解除
+
+> [!WARNING]
+> 構成サーバーの使用停止操作を始める前に、次のことを確認します。
+> 1. この構成サーバーのすべての仮想マシンの[保護を無効化](site-recovery-manage-registration-and-protection.md#disable-protection-for-a-vmware-vm-or-physical-server-vmware-to-azure)します。
+> 2. 構成サーバーからすべてのレプリケーション ポリシーの[関連付けを解除](site-recovery-setup-replication-settings-vmware.md#dissociate-a-configuration-server-from-a-replication-policy)し、レプリケーション ポリシーを[削除](site-recovery-setup-replication-settings-vmware.md#delete-a-replication-policy)します。
+> 3. 構成サーバーに関連付けられているすべての vCenter サーバー/vSphere ホストを[削除](site-recovery-vmware-to-azure-manage-vCenter.md#delete-a-vcenter-in-azure-site-recovery)します。
+
 
 ### <a name="delete-the-configuration-server-from-azure-portal"></a>Azure Portal から構成サーバーを削除する
 1. Azure Portal で、[コンテナー] メニューから **[Site Recovery インフラストラクチャ]** > **[構成サーバー]** に移動します。
@@ -193,9 +194,6 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
 
   ![delete-configuration-server](./media/site-recovery-vmware-to-azure-manage-configuration-server/delete-configuration-server.PNG)
 4. **[はい]** をクリックして、サーバーの削除を確認します。
-
-  >[!WARNING]
-  この構成サーバーに仮想マシン、複製ポリシー、または vCenter サーバー/vSphere ホストが関連付けられている場合は、サーバーを削除できません。 コンテナーを削除する前に、これらのエンティティを削除してください。
 
 ### <a name="uninstall-the-configuration-server-software-and-its-dependencies"></a>構成サーバー ソフトウェアとその依存関係をアンインストールする
   > [!TIP]
@@ -214,6 +212,31 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
   ```
   reg delete HKLM\Software\Microsoft\Azure Site Recovery\Registration
   ```
+
+## <a name="delete-or-unregister-a-configuration-server-powershell"></a>構成サーバーの削除または登録解除 (PowerShell)
+
+1. Azure PowerShell モジュールを[インストール](https://docs.microsoft.com/powershell/azure/install-azurerm-ps?view=azurermps-4.4.0)します。
+2. 次のコマンドを使用して、Azure アカウントにログインします。
+    
+    `Login-AzureRmAccount`
+3. コンテナーが存在するサブスクリプションを選択します。
+
+     `Get-AzureRmSubscription –SubscriptionName <your subscription name> | Select-AzureRmSubscription`
+3.  コンテナーのコンテキストを設定します。
+    
+    ```
+    $vault = Get-AzureRmRecoveryServicesVault -Name <name of your vault>
+    Set-AzureRmSiteRecoveryVaultSettings -ARSVault $vault
+    ```
+4. 構成サーバーを取得して選択します。
+
+    `$fabric = Get-AzureRmSiteRecoveryFabric -FriendlyName <name of your configuration server>`
+6. 構成サーバーを削除します。
+
+    `Remove-AzureRmSiteRecoveryFabric -Fabric $fabric [-Force] `
+
+> [!NOTE]
+> Remove-AzureRmSiteRecoveryFabric の **-Force** オプションを使用すると、構成サーバーを強制的に削除できます。
 
 ## <a name="renew-configuration-server-secure-socket-layerssl-certificates"></a>構成サーバーの Secure Socket Layer (SSL) 証明書の更新
 構成サーバーには Web サーバーが組み込まれていて、この Web サーバーにより、構成サーバーに接続されたモビリティ サービス、プロセス サーバー、マスター ターゲット サーバーのアクティビティが調整されます。 構成サーバーの Web サーバーは、SSL 証明書を使用してそのクライアントを認証します。 この証明書の有効期限は 3 年間で、次の方法でいつでも更新できます。
@@ -241,7 +264,7 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
   ![certificate-details](./media/site-recovery-vmware-to-azure-manage-configuration-server/ssl-cert-expiry-details.png)
 
   >[!TIP]
-  **[今すぐ更新]** の代わりに **[今すぐアップグレード]** が表示される場合があります。 現在の環境にまだ 9.4.xxxx.x 以上のバージョンにアップグレードされていないコンポーネントがあることを示します。
+  **[今すぐ更新]** の代わりに **[今すぐアップグレード]** が表示される場合があります。 [今すぐアップグレード] ボタンは、現在の環境にまだ 9.4.xxxx.x 以上のバージョンにアップグレードされていないコンポーネントがあることを示します。
 
 ## <a name="revive-a-configuration-server-if-the-secure-socket-layer-ssl-certificate-expired"></a>Secure Socket Layer (SSL) 証明書が期限切れになった場合の構成サーバーの回復
 
@@ -268,4 +291,3 @@ CSPSConfigTool.exe を使用して、**VMware 仮想マシンの自動検出**�
 
 ## <a name="common-issues"></a>一般的な問題
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-

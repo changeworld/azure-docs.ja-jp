@@ -16,14 +16,12 @@ ms.workload: service-fabric
 ms.date: 08/22/2017
 ms.author: adegeo
 ms.custom: mvc
+ms.openlocfilehash: 5c8eb783459928104b91529cd56be369c3b332ba
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: c3a2462b4ce4e1410a670624bcbcec26fd51b811
-ms.openlocfilehash: fee02a5fd8aa27ac2c75a362c66d1dbcc395fa34
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/25/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="azure-service-fabric-cli-samples"></a>Azure Service Fabric CLI のサンプル
 
 次の表に、Service Fabric クラスター、アプリケーション、およびサービスを管理する [Service Fabric CLI](service-fabric-cli.md) のサンプル スクリプトへのリンクを示します。
@@ -33,10 +31,9 @@ ms.lasthandoff: 09/25/2017
 | | |
 |-|-|
 | **クラスターの作成** ||
-| [セキュリティで保護された Linux クラスターの作成](./scripts/cli-create-cluster.md)| Azure Service Fabric クラスターを作成します。 |
+| [セキュリティで保護された Linux クラスターの作成 (Azure)](./scripts/cli-create-cluster.md)| Azure Service Fabric クラスターを作成します。 |
 | **アプリケーションの管理** ||
 | [List applications](./scripts/sfctl-list-applications.md)| クラスターにプロビジョニングされたアプリケーションの一覧を表示します。|
 | [アプリケーションをデプロイする](./scripts/cli-deploy-application.md)| クラスターにアプリケーションをデプロイします。|
 | [アプリケーションの削除](./scripts/cli-remove-application.md)| クラスターからアプリケーションを削除します。|
 | [アプリケーションのアップグレード](./scripts/sfctl-upgrade-application.md)| 既にデプロイされているアプリケーションをアップグレードします。|
-

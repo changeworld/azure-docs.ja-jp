@@ -12,15 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/16/2017
+ms.date: 09/26/2017
 ms.author: terrylan
-ms.translationtype: Human Translation
-ms.sourcegitcommit: ff2fb126905d2a68c5888514262212010e108a3d
-ms.openlocfilehash: 506c23179d09e2e22065c8ba2bc85a341bb0ea09
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/17/2017
-
-
+ms.openlocfilehash: 35aa45ce09b756dd7413a1df3d3c7b0c428b7a97
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-security-center-frequently-asked-questions-faq"></a>Azure セキュリティ センターのよく寄せられる質問 (FAQ)
 この FAQ は、Azure Security Center について寄せられる質問とその回答です。Azure Security Center は、Microsoft Azure リソースのセキュリティの視覚化と制御の向上により、脅威を回避、検出、対応するのに役立つサービスです。
@@ -43,7 +41,7 @@ Azure Security Center は 2 つのレベルで提供されます。
 
 **Free レベル**では、Azure リソースのセキュリティ状態の表示、基本的なセキュリティ ポリシー、セキュリティに関する推奨事項、パートナーのセキュリティ製品やサービスとの統合が提供されます。
 
-**Standard レベル**には、脅威インテリジェンス、行動分析、異常検出、セキュリティ インシデント、脅威評価レポートなどの高度な脅威検出機能が追加されます。 Standard レベルは、最初の 60 日間は無料です。 60 日目以降もこのサービスを引き続き使用することを選択した場合は、サービスへの課金が自動的に開始されます。  アップグレードを行うには、 [セキュリティ ポリシー](security-center-policies.md#set-security-policies)で価格レベルを選択してください。 詳細については、[Security Center の価格](security-center-pricing.md)に関する記事を参照してください。
+**Standard レベル**には、脅威インテリジェンス、行動分析、異常検出、セキュリティ インシデント、脅威評価レポートなどの高度な脅威検出機能が追加されます。 Standard レベルは、最初の 60 日間は無料です。 60 日目以降もこのサービスを引き続き使用することを選択した場合は、サービスへの課金が自動的に開始されます。  アップグレードを行うには、 [セキュリティ ポリシー](https://docs.microsoft.com/azure/security-center/security-center-pricing)で価格レベルを選択してください。
 
 ## <a name="permissions"></a>アクセス許可
 Azure Security Center では、[ロールベースのアクセス制御 (RBAC)](../active-directory/role-based-access-control-configure.md) が使用されています。RBAC が提供する[組み込みのロール](../active-directory/role-based-access-built-in-roles.md)は、Azure でユーザー、グループ、サービスに割り当てることができます。
@@ -115,10 +113,10 @@ Azure Security Center は、次の Azure リソースを監視します。
 * Azure 仮想ネットワーク
 * Azure SQL サービス
 * Azure ストレージ アカウント
-* ([App Service 環境](../app-service/app-service-app-service-environments-readme.md)にある) Azure Web アプリ
-* Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および [App Service](../app-service/app-service-app-service-environments-readme.md)
+* ([App Service 環境](../app-service/environment/intro.md)にある) Azure Web アプリ
+* Azure サブスクリプションに統合済みのパートナー ソリューション (VM 上および App Service Environment 上の Web アプリケーション ファイアウォールなど)
 
-## <a name="virtual-machines"></a>[Virtual Machines]
+## <a name="virtual-machines"></a>Virtual Machines
 ### <a name="what-types-of-virtual-machines-are-supported"></a>サポートされる仮想マシンのタイプは何ですか。
 監視と推奨事項は、[クラシック デプロイメント モデルと Resource Manager デプロイメント モデル](../azure-classic-rm.md)のどちらで作成された仮想マシン (VM) でも利用できます。
 
@@ -132,4 +130,3 @@ Azure Security Center では、Azure 拡張機能によりインストールさ�
 
 ### <a name="why-do-i-get-the-message-vm-agent-is-missing"></a>"VM Agent is Missing? (VM エージェントが見つかりません)" というメッセージが表示されるのはなぜですか。
 データ収集を有効にするには、VM エージェントが VM にインストールされている必要があります。 既定では、Azure Marketplace からデプロイされた VM に VM エージェントがインストールされます。 他の VM への VM エージェントのインストール方法については、 [VM エージェントと拡張機能](https://azure.microsoft.com/blog/vm-agent-and-extensions-part-2/)に関するブログ投稿を参照してください。
-

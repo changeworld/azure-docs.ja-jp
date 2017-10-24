@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/05/2017
 ms.author: sethm
-ms.translationtype: Human Translation
-ms.sourcegitcommit: b1d56fcfb472e5eae9d2f01a820f72f8eab9ef08
-ms.openlocfilehash: 6b76403ba5fc4d00a625057549c85db59a473898
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/06/2017
-
+ms.openlocfilehash: 9d015678dbd99b8d978c2c8200b36bf51cac8893
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # Azure Relay ハイブリッド接続プロトコル
 Azure Relay は、Azure Service Bus プラットフォームの柱となる重要な機能の 1 つです。 Relay の新しい*ハイブリッド接続*は、HTTP と WebSocket をベースにして進化を遂げた、安全でオープンなプロトコルです。 従来の *BizTalk Services* には、独自技術のプロトコル基盤をベースに構築された同じ名前の機能がありますが、その機能の後継となります。 Azure App Services に統合されたハイブリッド接続は、引き続き現状のままご利用いただけます。
@@ -268,5 +267,4 @@ WebSocket 接続が最初にセットアップされた後、サービスによ�
 * [名前空間を作成する](relay-create-namespace-portal.md)
 * [.NET を使って作業を開始する](relay-hybrid-connections-dotnet-get-started.md)
 * [Node を使って作業を開始する](relay-hybrid-connections-node-get-started.md)
-
 

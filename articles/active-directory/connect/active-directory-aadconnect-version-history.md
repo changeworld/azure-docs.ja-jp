@@ -12,19 +12,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/30/2017
+ms.date: 10/03/2017
 ms.author: billmath
+ms.openlocfilehash: 6e526e10ac5e3307aeefcdd22840a3e6a6ec843d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 895b538680230170cd29817997a7739b1ba89cfc
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-ad-connect-version-release-history"></a>Azure AD Connect: バージョンのリリース履歴
 Azure Active Directory (Azure AD) チームは、Azure AD Connect を定期的に更新し、新機能を追加しています。 すべての追加機能がすべてのユーザーに適用されるわけではありません。
 
 この記事は、リリースされたバージョンを追跡し、最新バージョンに更新する必要があるかどうかを判断できるようにするためのものです。
+
+>[!IMPORTANT]
+>ビルド 1.1.484 以降の Azure AD Connect には回帰バグがあり、SQL データベースのアップグレードに sysadmin アクセス許可が必要です。  このバグは、最新のビルド 1.1.614 にもまだ存在します。  このビルドにアップグレードする場合は、sysadmin アクセス許可が必要です。  dbo アクセス許可では不十分です。  sysadmin アクセス許可がないユーザーが Azure AD Connect をアップグレードしようとすると、アップグレードは失敗し、Azure AD Connect が正しく機能しなくなります。  Microsoft はこの問題を認識しており、解決に取り組んでいます。
 
 以下は、関連トピックの一覧です。
 
@@ -779,4 +781,3 @@ Active Directory アカウントには、Active Directory からのパスワー�
 
 ## <a name="next-steps"></a>次のステップ
 「 [オンプレミス ID と Azure Active Directory の統合](active-directory-aadconnect.md)」をご覧ください。
-

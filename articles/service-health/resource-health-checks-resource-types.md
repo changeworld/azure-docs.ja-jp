@@ -12,16 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: Supportability
-ms.date: 03/19/2017
+ms.date: 10/09/2017
 ms.author: BernardoAMunoz
+ms.openlocfilehash: e8ce1f9b7129e272a7714b82ec1a91a928917d6c
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: ed9c955096a5427e8184bb6c542ad85ff4c302be
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Azure Resource Health で利用できるリソースの種類と正常性チェック
 Resource Health で実行されるすべてのチェックをリソースの種類別にまとめた完全な一覧を次に示します。
 
@@ -60,6 +58,12 @@ Resource Health で実行されるすべてのチェックをリソースの種�
 |実行されるチェック|
 |---|
 |<ul><li>ユーザーがリージョンの Data Lake Store にデータをアップロードできるか</li><li>ユーザーがリージョンの Data Lake Store にデータをダウンロードできるか</li></ul>|
+
+## <a name="microsoftdevicesiothubs"></a>Microsoft.devices/iothubs
+
+|実行されるチェック|
+|---|
+|<ul><li>IoT ハブが稼働しているか</li></ul>|
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft.documentdb/databaseAccounts
 |実行されるチェック|

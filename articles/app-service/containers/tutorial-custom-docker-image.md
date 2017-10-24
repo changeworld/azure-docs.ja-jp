@@ -16,12 +16,11 @@ ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
+ms.openlocfilehash: 760772d1d1c79dd4a1114c36971de0b3693ab74f
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 57278d02a40aa92f07d61684e3c4d74aa0ac1b5b
-ms.openlocfilehash: 10795d59b019d7c683abfeea611d5909b88891ec
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>Azure Web App for Containers のカスタム Docker イメージを使用する
 
@@ -529,16 +528,16 @@ az acr credential show --name {azure-container-registry-name}
 }
 ```
 
-これで必要な資格情報が設定されたので、`docker login` コマンドを使用して Azure Container Registry にログインします。 ログインするには、レジストリの URL が必要です。 `http://{azure-container-registry-name>.azurecr.io` の形式を使用します。
+これで必要な資格情報が設定されたので、`docker login` コマンドを使用して Azure Container Registry にログインします。 ログインするには、サーバー名が必要です。 `{azure-container-registry-name>.azurecr.io` の形式を使用します。
 
 ```bash
 docker login <azure-container-registry-name>.azurecr.io --username <azure-container-registry-name> --password <password> 
 ```
 
-ログインが成功したことを確認します。 `docker push` コマンドを使用し、レジストリの完全な URL に続いてイメージの名前とタグでイメージにタグを付けることにより、イメージをプッシュします。
+ログインが成功したことを確認します。 `docker push` コマンドを使用し、レジストリの名前、イメージの名前、およびタグでイメージをタグ付けすることによって、イメージをプッシュします。
 
 ```bash
-docker push http://<azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
+docker push <azure-container-registry-name>.azurecr.io/mydockerimage:v1.0.0
 ```
 
 ACR リポジトリを一覧表示して、プッシュによってコンテナーがレジストリに正常に追加されたことを確認します。 
@@ -623,4 +622,3 @@ az webapp config container set --name <web-app-name> --resource-group myResource
 ## <a name="next-steps"></a>次のステップ
 
 [Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)
-

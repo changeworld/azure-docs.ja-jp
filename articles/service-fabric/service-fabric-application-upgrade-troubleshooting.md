@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 8/9/2017
+ms.date: 10/03/2017
 ms.author: subramar
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 1cc1ee946d8eb2214fd05701b495bbce6d471a49
-ms.openlocfilehash: 7fc832ff23f5ad652df3cb9c689180c92952ba8e
-ms.contentlocale: ja-jp
-ms.lasthandoff: 04/26/2017
-
+ms.openlocfilehash: acfd26674aafab4ed1925d6b33967f917058b1be
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-application-upgrades"></a>アプリケーションのアップグレードのトラブルシューティング
 この記事では、Azure Service Fabric アプリケーションのアップグレードに関する一般的な問題とその解決方法のいくつかについて説明します。
@@ -86,6 +85,8 @@ UpgradeReplicaSetCheckTimeout  : 00:00:00
 *PreUpgradeSafetyCheck* の *UpgradePhase* は、アップグレードを実行する前のアップグレード ドメインの準備で問題があることを意味します。 この場合の最も一般的な問題は、プライマリ コード パスのクローズまたは降格でのサービス エラーです。
 
 現在の **UpgradeState** は *RollingBackCompleted* であるため、元のアップグレードは、ロールバック **FailureAction** (障害発生時にアップグレードを自動的にロールバックする) を使用して実行済みのはずです。 元のアップグレードが手動の **FailureAction**を使用して実行された場合は、アプリケーションのライブ デバッグを実行できるように、アップグレードが代わりに中断状態になります。
+
+まれに、システムが現在のアップグレード ドメインのすべての作業を完了するのと同時に全体のアップグレードがタイムアウトになった場合に、**UpgradeDomainProgressAtFailure** フィールドが空になることがあります。 そのような場合は、アップグレード パラメーター **UpgradeTimeout** および **UpgradeDomainTimeout** の値を大きくしてアップグレードを再試行してください。
 
 ### <a name="investigate-health-check-failures"></a>正常性チェックの障害を調査する
 正常性チェックの障害は、アップグレード ドメインのすべてのノードがアップグレードを終了し、すべての安全性チェックを渡した後で、さまざまな問題によりトリガーされる可能性があります。 以下に示す出力は、正常性チェックの失敗によるアップグレード エラーの一般的な例です。 **UnhealthyEvaluations** フィールドは、アップグレード中に失敗した正常性チェックのスナップショットを、指定した [正常性ポリシー](service-fabric-health-introduction.md)に従って取得します。
@@ -222,4 +223,3 @@ Service Fabric は、すべてのパーセンテージを、正常性評価の�
 [データのシリアル化](service-fabric-application-upgrade-data-serialization.md)の方法を学ぶことで、アプリケーションのアップグレードに互換性を持たせます。
 
 [高度なトピック](service-fabric-application-upgrade-advanced.md)を参照して、アプリケーションをアップグレードするときの高度な機能の使用方法を学習します。
-

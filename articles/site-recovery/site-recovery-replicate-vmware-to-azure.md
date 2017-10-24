@@ -12,17 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/05/2017
+ms.date: 09/29/2017
 ms.author: asgang
+ms.openlocfilehash: a0d146081b552ee181fdf93fb60790c27f108888
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 83f19cfdff37ce4bb03eae4d8d69ba3cbcdc42f3
-ms.openlocfilehash: e0047a996c9bfd7d950b32f0871ddd7608924b42
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/22/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
-
 # <a name="replicate-applications-running-on-vmware-vms-to-azure"></a>VMware VM から Azure にアプリケーションをレプリケートする
 
 
@@ -32,18 +29,18 @@ ms.lasthandoff: 08/22/2017
 
 この記事は、既に以下の操作を行っていることを前提としています。
 
-1.  [オンプレミスのソース環境のセットアップ](site-recovery-set-up-vmware-to-azure.md)
-2.  [Azure でのターゲット環境のセットアップ](site-recovery-prepare-target-vmware-to-azure.md)
+1.  [オンプレミスのソース環境の設定](site-recovery-set-up-vmware-to-azure.md)
+2.  [Azure でのターゲット環境の設定](site-recovery-prepare-target-vmware-to-azure.md)
 
 
-## <a name="enable-replication"></a>レプリケーションを有効にする
+## <a name="enable-replication"></a>Enable replication
 #### <a name="before-you-start"></a>開始する前に
 VMware 仮想マシンをレプリケートする場合、次の点に注意してください。
 
 * Azure ユーザー アカウントには、新しい仮想マシンを Azure にレプリケートできるようにするための特定の[アクセス許可](site-recovery-role-based-linked-access-control.md#permissions-required-to-enable-replication-for-new-virtual-machines)が必要です。
 * VMware VM の検出は 15 分ごとに行われます。 VM の検出後、ポータルに表示されるまで 15 分以上かかることがあります。 同様に、新しい vCenter サーバーまたは vSphere ホストを追加したときも、検出に 15 分以上かかることがあります。
 * 仮想マシンの環境の変更 (VMware ツールのインストールなど) 内容がポータルで更新されるまでには 15 分以上かかることがあります。
-* **[構成サーバー]** ブレードにある vCenter サーバー/vSphere ホストの **[最後の使用]** フィールドで、VMware VM の最終検出時刻を確認できます。
+* **[構成サーバー]** ページにある vCenter サーバー/vSphere ホストの **[最後の使用]** フィールドで、VMware VM の最終検出時刻を確認できます。
 * 定期検出を待たずにレプリケートするマシンを追加するには、構成サーバーを強調表示し (クリックしないでください)、**[更新]** ボタンをクリックします。
 * レプリケーションを有効にした場合、マシンの準備が完了すると、プロセス サーバーではモビリティ サービスが自動的にインストールされます。
 
@@ -51,7 +48,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 **レプリケーションを有効にするには、次の手順に従います**。
 
 1. **[手順 2: アプリケーションをレプリケートする]** > **[ソース]** の順にクリックします。 レプリケーションを初めて有効にした後は、コンテナーで **[+ レプリケート]** をクリックして、追加のマシンのレプリケーションを有効にします。
-2. **[ソース]** ブレードで **[ソース]** をクリックし、構成サーバーを選択します。
+2. **[ソース]** ページで **[ソース]** をクリックし、構成サーバーを選択します。
 3. **[マシンの種類]** で、**[仮想マシン]** または **[物理マシン]** を選択します。
 4. **[vCenter/vSphere Hypervisor] \(vCenter/vSphere ハイパーバイザー)** で、vSphere ホストを管理する vCenter サーバーを選択するか、ホストを選択します。 物理マシンをレプリケートする場合、この設定は関係ありません。
 5. プロセス サーバーを選択します。 追加のプロセス サーバーを作成していない場合、これは構成サーバーの名前になります。 次に、 **[OK]**をクリックします
@@ -93,13 +90,13 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
 ソース マシンのプロパティを確認することをお勧めします。 Azure VM の名前は、 [Azure 仮想マシンの要件](site-recovery-support-matrix-to-azure.md#failed-over-azure-vm-requirements)に準拠している必要があります。
 
-1. **[設定]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択します。 **[要点]** ブレードにマシンの設定と状態に関する情報が表示されます。
+1. **[設定]** > **[レプリケートされたアイテム]** の順にクリックし、マシンを選択します。 **[要点]** ページにマシンの設定と状態に関する情報が表示されます。
 2. **[プロパティ]** で、VM のレプリケーションとフェールオーバーの情報を確認できます。
 3. **[コンピューティングとネットワーク]** > **[コンピューティングのプロパティ]** で、Azure VM の名前とターゲットのサイズを指定できます。 必要に応じて、Azure の要件に準拠するように名前を変更します。
-    ![Enable replication](./media/site-recovery-vmware-to-azure/VMProperties_AVSET.png)
- 
-4.  フェール オーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェール オーバー前にいつでも変更できます。 フェール オーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
-5. マシンが 1 つのポスト フェールオーバーに属する必要がある場合、[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)を選択できます。 可用性セットを選択するときは、以下のことに注意してください。
+    ![Enable replication](./media/site-recovery-vmware-to-azure/vmproperties.png)
+
+4.  フェールオーバー後にマシンが属する[リソース グループ](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-resource-groups-guidelines)を選択できます。 この設定は、フェールオーバー前であればいつでも変更できます。 フェールオーバー後に、マシンを別のリソース グループに移行すると、マシンの保護設定が解除されます。
+5. マシンがフェールオーバー後に[可用性セット](https://docs.microsoft.com/azure/virtual-machines/windows/infrastructure-availability-sets-guidelines)に属する必要がある場合は、可用性セットを選択できます。 可用性セットを選択するときは、以下のことに注意してください。
 
     * 指定されたリソース グループに属している可用性セットだけが一覧表示されます。  
     * 異なる仮想ネットワークに属するマシンが同じ可用性セットに属することはできません。
@@ -107,7 +104,7 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 5. Azure VM に割り当てられるターゲット ネットワーク、サブネット、および IP アドレスに関する情報を表示および追加することもできます。
 6. **[ディスク]** で、レプリケートされる VM のオペレーティング システム ディスクとデータ ディスクを確認できます。
 
-### <a name="network-adapters-and-ip-addressing"></a>ネットワーク アダプターと IP アドレス指定 
+### <a name="network-adapters-and-ip-addressing"></a>ネットワーク アダプターと IP アドレス指定
 
 - ターゲット IP アドレスを設定できます。 アドレスを指定しなかった場合、フェールオーバーされたマシンで DHCP が使用されます。 フェールオーバーで使用できないアドレスを設定した場合、フェールオーバーは機能しません。 テスト フェールオーバー ネットワークのアドレスを利用できる場合、テスト フェールオーバーに同じターゲット IP アドレスを使用できます。
 - ネットワーク アダプターの数は、次に示すように、ターゲット仮想マシンに指定したサイズによって異なります。
@@ -116,9 +113,16 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
     - たとえば、ソース マシンに 2 つのネットワーク アダプターがあり、ターゲット マシンのサイズが 4 つをサポートしている場合は、ターゲット マシンのアダプターの数は、2 つになります。 ソース マシンに 2 つのアダプターがあるが、サポートされているターゲット サイズで 1 つしかサポートしていない場合、ターゲット マシンのアダプターの数は 1 つだけになります。
     - 仮想マシンにネットワーク アダプターが複数ある場合、これらのアダプターはすべて同じネットワークに接続されます。
     - 仮想マシンにネットワーク アダプターが複数ある場合は、一覧で最初に表示されるアダプターが、Azure 仮想マシンの*既定*のネットワーク アダプターとなります。
-   
 
+### <a name="azure-hybrid-use-benefit"></a>Azure Hybrid Use Benefit
 
+マイクロソフト ソフトウェア アシュランスのお客様は、Azure Hybrid Use Benefit を活用して、Azure に移行する Windows Server マシンのライセンス コストを節約したり Azure をディザスター リカバリーに使用したりできます。 Azure ハイブリッド使用特典の利用資格がある場合は、この特典をフェールオーバー発生時に Azure Site Recovery によって Azure に作成される仮想マシンに割り当てるように指定できます。 これを行うには、次の手順を実行します。
+- レプリケートされた仮想マシンの [コンピューティングとネットワーク] のプロパティ セクションに移動します。
+- Azure ハイブリッド使用特典の利用資格がある Windows Server ライセンスを持っているかどうかの質問に答えます。
+- チェック ボックスをオンにして、フェールオーバー発生時に作成されるマシンで Hybrid Use Benefit を適用するために使用できる、対象のソフトウェア アシュランス付き Windows Server ライセンスを持っていることを確認します。
+- レプリケートされたマシンの設定を保存します。
+
+詳細については、[Azure ハイブリッド使用特典](https://aka.ms/azure-hybrid-use-benefit-pricing)に関するページをご覧ください。
 
 ## <a name="common-issues"></a>一般的な問題
 
@@ -128,7 +132,6 @@ VMware 仮想マシンをレプリケートする場合、次の点に注意し�
 
 ## <a name="next-steps"></a>次のステップ
 
-保護を完了したら、[フェールオーバー](site-recovery-failover.md)を実行して、アプリケーションが Azure で動作するかどうかを確認できます。
+保護を完了し、コンピューターが保護された状態になったら、[フェールオーバー](site-recovery-failover.md)を実行して、アプリケーションが Azure で動作するかどうかを確認できます。
 
 保護を無効にする場合は、[登録と保護の設定をクリーンアップ](site-recovery-manage-registration-and-protection.md)する方法を確認します。
-

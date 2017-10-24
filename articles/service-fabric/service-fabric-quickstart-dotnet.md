@@ -12,17 +12,15 @@ ms.devlang: dotNet
 ms.topic: quickstart
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/09/2017
+ms.date: 10/02/2017
 ms.author: mikhegn
-ms.custom: mvc
+ms.custom: mvc, devcenter
+ms.openlocfilehash: 3be8836ae6b877bc4caa98f0467147b008c42aa2
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 25e4506cc2331ee016b8b365c2e1677424cf4992
-ms.openlocfilehash: d11b9af982112db8ba94b62110c18be843f1abb1
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/24/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="create-a-net-service-fabric-application-in-azure"></a>Azure に .NET Service Fabric アプリケーションを作成する
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
 
@@ -135,7 +133,7 @@ Azure 内のクラスターにアプリケーションをデプロイする場�
 
 2. **[接続のエンドポイント]** フィールドにクラスターの接続エンドポイントを入力し、**[発行]** をクリックします。 パーティ クラスターにサインアップすると、ブラウザーに接続エンドポイントが提供されます  (例: `winh1x87d1d.westus.cloudapp.azure.com:19000`)。
 
-3. ブラウザーを開き、クラスターのアドレスを入力します (例: `http://winh1x87d1d.westus.cloudapp.azure.com`)。 Azure のクラスターでアプリケーションが実行されていることがわかります。
+3. ブラウザーを開き、クラスターの アドレスに続いて「:8080」を入力して、クラスター内のアプリケーションを取得します (例: `http://winh1x87d1d.westus.cloudapp.azure.com:8080`)。 Azure のクラスターでアプリケーションが実行されていることがわかります。
 
 ![アプリケーション フロントエンド](./media/service-fabric-quickstart-dotnet/application-screenshot-new-azure.png)
 

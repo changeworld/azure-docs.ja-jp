@@ -12,23 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/12/2017
+ms.date: 10/04/2017
 ms.author: larryfr
 ms.custom: H1Hack27Feb2017,hdinsightactive
+ms.openlocfilehash: 90a1ea99cbba82b49a0ff6712bcaaa5dc814810e
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 54774252780bd4c7627681d805f498909f171857
-ms.openlocfilehash: 3412864384961e8820d6700c1bf22a4cae64ba4b
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="add-custom-hive-libraries-when-creating-your-hdinsight-cluster"></a>HDInsight クラスター作成時のカスタム Hive ライブラリの追加
 
-HDInsight の Hive で頻繁に使用するライブラリがある場合、このドキュメントに含まれている情報を参考にし、スクリプト アクションを使用して、クラスターの作成時にライブラリを事前に読み込むことができます。 このドキュメントの手順を使用して追加されたライブラリは Hive でグローバルに使用できます ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
+HDInsight で Hive ライブラリを事前に読み込む方法を説明します。 このドキュメントには、クラスターの作成時にスクリプト操作を使ってライブラリを事前に読み込む方法についての情報が含まれます。 このドキュメントの手順を使用して追加されたライブラリは Hive でグローバルに使用できます ([ADD JAR](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+Cli) を使用して読み込む必要がありません)。
 
 ## <a name="how-it-works"></a>動作のしくみ
 
-クラスターの作成時に、必要に応じて、作成中のクラスター ノードに対してスクリプトを実行するスクリプト アクションを指定できます。 このドキュメントのスクリプトが受け取るパラメーターは 1 つで、事前に読み込むライブラリ (jar ファイルとして格納) が含まれている WASB の場所を指定します。
+クラスターを作成するときに、スクリプト操作を使って、作成されるクラスター ノードを変更できます。 このドキュメントのスクリプトは、唯一のパラメーターでライブラリの場所を受け取ります。 この場所は Azure Storage アカウントである必要があり、ライブラリは jar ファイルとして格納されている必要があります。
 
 クラスターの作成時に、そのスクリプトによってファイルが列挙され、ヘッド ノードとワーカー ノードの `/usr/lib/customhivelibs/` ディレクトリにコピーされて、`core-site.xml` ファイルの `hive.aux.jars.path` プロパティに追加されます。 Linux ベースのクラスターでは、それらのファイルの場所に合わせて `hive-env.sh` ファイルも更新されます。
 
@@ -73,7 +72,7 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
 1. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」に記載されている手順を使用してクラスターのプロビジョニングを開始します。ただし、プロビジョニングを完了しないでください。
 
-2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
+2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
 
@@ -89,9 +88,9 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 
 3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。
 
-4. **[オプションの構成]** ブレードで、**[リンクされたストレージ アカウント]** を選択し、**[ストレージ キーの追加]** リンクをクリックします。 jar を含むストレージ アカウントを選択し、**[選択]** ボタンを使用して、設定を保存し、**[オプションの構成]** ブレードに戻ります。
+4. **[オプションの構成]** セクションで、**[リンクされたストレージ アカウント]** を選択し、**[ストレージ キーの追加]** リンクをクリックします。 jar が格納されているストレージ アカウントを選択します。 **選択** ボタンを使って設定を保存し、**オプションの構成**を戻します。
 
-5. **[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
+5. オプションの構成を保存するには、**[オプションの構成]** セクションの下部にある **[選択]** ボタンを使います。
 
 6. 「[Linux の HDInsight クラスターのプロビジョニング](hdinsight-hadoop-provision-linux-clusters.md)」の説明に従って、クラスターのプロビジョニングを続行します。
 
@@ -100,4 +99,3 @@ HDInsight の Hive で頻繁に使用するライブラリがある場合、こ�
 ## <a name="next-steps"></a>次のステップ
 
 Hive の使用法の詳細については、「 [HDInsight での Hive の使用](hdinsight-use-hive.md)
-

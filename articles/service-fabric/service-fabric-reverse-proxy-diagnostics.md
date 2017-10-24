@@ -13,12 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: kavyako
+ms.openlocfilehash: 1c62d2390709577bfde6225b783642fb55396a6b
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 0aae2acfbf30a77f57ddfbaabdb17f51b6938fd6
-ms.openlocfilehash: 3bc631606afbc93d5bca94f4955fd2ef816fa9fd
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/09/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitor-and-diagnose-request-processing-at-the-reverse-proxy"></a>リバース プロキシの要求処理の監視と診断
 
@@ -158,11 +157,11 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
     
     重要/エラー イベントについてのみ収集を有効にすると、タイムアウトと解決試行数の詳細情報を含む 1 つのイベントが表示されます。 
     
-    サービスからユーザーに対して 404 状態コードを返す場合、"X-ServiceFabric" ヘッダーも指定することをお勧めします。 この問題の修正後は、リバース プロキシからクライアントに状態コードが転送されることがわかります。  
+    ユーザーに 404 状態コードを返すサービスは、応答のヘッダーに "X-ServiceFabric" を追加する必要があります。 応答にこのヘッダーが追加されると、リバース プロキシはクライアントに状態コードを転送します。  
 
 4. クライアントが要求を切断した場合。
 
-    以下のイベントは、リバース プロキシがクライアントに応答を転送したときに、クライアントが切断した場合に記録されます。
+    以下のイベントは、リバース プロキシがクライアントに応答を転送したが、クライアントが切断した場合に記録されます。
 
     ```
     {
@@ -180,6 +179,18 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
       }
     }
     ```
+5. リバース プロキシから 404 FABRIC_E_SERVICE_DOES_NOT_EXIST が返される場合。
+
+    FABRIC_E_SERVICE_DOES_NOT_EXIST エラーは、サービス マニフェストでサービス エンドポイントの URI スキームが指定されていない場合に返されます。
+
+    ```
+    <Endpoint Name="ServiceEndpointHttp" Port="80" Protocol="http" Type="Input"/>
+    ```
+
+    この問題を解決するには、マニフェストで URI スキームを指定します。
+    ```
+    <Endpoint Name="ServiceEndpointHttp" UriScheme="http" Port="80" Protocol="http" Type="Input"/>
+    ```
 
 > [!NOTE]
 > 現在、Web ソケット要求処理に関連するイベントはログに記録されていません。 この機能は次のリリースで追加予定です。
@@ -189,4 +200,3 @@ Service Fabric リリース 5.7 以降、リバース プロキシ イベント�
 * Visual Studio で Service Fabric イベントを表示するには、「[ローカル コンピューターの開発のセットアップでのサービスの監視と診断](service-fabric-diagnostics-how-to-monitor-and-diagnose-services-locally.md)」を参照してください。
 * 「[Configure reverse proxy to connect to secure services (セキュリティで保護されたサービスに接続するためのリバース プロキシの構成)](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/ReverseProxySecureSample#configure-reverse-proxy-to-connect-to-secure-services)」を参照して Azure Resource Manager テンプレートのサンプルを取得し、サービス証明書のさまざまな検証オプションでセキュリティ保護されたリバース プロキシを構成します。
 * 詳細については、「[Azure Service Fabric のリバース プロキシ](service-fabric-reverseproxy.md)」を参照してください。
-

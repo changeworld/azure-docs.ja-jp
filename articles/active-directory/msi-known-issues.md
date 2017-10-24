@@ -12,16 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: 
 ms.workload: identity
-ms.date: 09/22/2017
+ms.date: 10/07/2017
 ms.author: skwan
+ms.openlocfilehash: c091ea7cec35099d8ad2ab47361cd4c1278fdab6
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 4f77c7a615aaf5f87c0b260321f45a4e7129f339
-ms.openlocfilehash: 3cfd1eb55a031696635270a56ed5028e3b249543
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/23/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-
 # <a name="faqs-and-known-issues-with-managed-service-identity-msi-for-azure-active-directory"></a>Azure Active Directory の管理対象サービス ID (MSI) の FAQ と既知の問題
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
@@ -58,6 +56,16 @@ Set-AzureRmVMExtension -Name <extension name>  -Type <extension Type>  -Location
 
 ## <a name="known-issues"></a>既知の問題
 
+### <a name="automation-script-fails-when-attempting-schema-export-for-msi-extension"></a>MSI 拡張機能のスキーマをエクスポートしようとすると、"Automation スクリプト" が失敗する
+
+VM で管理対象サービス ID が有効になっている場合、その VM またはリソース グループに対して "Automation スクリプト" 機能を使用すると、次のエラーが表示されます。
+
+![MSI Automation スクリプト エクスポート エラー](media/msi-known-issues/automation-script-export-error.png)
+
+現時点では、管理対象サービス ID の VM 拡張機能では、そのスキーマをリソース グループ テンプレートにエクスポートする機能はサポートされていません。 その結果、生成されたテンプレートには、リソース上で管理対象サービス ID を有効にする構成パラメーターは示されません。 これらのセクションは、「[テンプレートを使用して、VM 管理対象サービス ID (MSI) を構成する](msi-qs-configure-template-windows-vm.md)」の例に従うことで、手動で追加できます。
+
+MSI VM 拡張機能でスキーマのエクスポート機能が利用可能になると、「[VM 拡張機能を含むリソース グループのエクスポート](../virtual-machines/windows/extensions-export-templates.md#supported-virtual-machine-extensions)」の一覧に表示されます。
+
 ### <a name="configuration-blade-does-not-appear-in-the-azure-portal"></a>構成ブレードが Azure ポータルに表示されない
 
 VM 構成ブレードが VM に表示されない場合、MSI はご利用のリージョンのポータルでまだ有効になっていません。  後でもう一度確認してください。  [PowerShell](msi-qs-configure-powershell-windows-vm.md) または [Azure CLI](msi-qs-configure-cli-windows-vm.md) を使用して、VM の MSI を有効にすることもできます。
@@ -87,4 +95,3 @@ VM が開始されると、次のコマンドを使用してタグを削除で�
 ```azurecli-interactive
 az vm update -n <VM Name> -g <Resource Group> --remove tags.fixVM
 ```
-

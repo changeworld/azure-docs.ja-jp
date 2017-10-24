@@ -14,30 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/08/2017
 ms.author: bharatn
+ms.openlocfilehash: 3168a8129e2e73d7ab1de547679aabd10d8f7112
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a9cfd6052b58fe7a800f1b58113aec47a74095e3
-ms.openlocfilehash: 7897458e9e4a0bbe185bd3f7b4c133c1b26769f9
-ms.contentlocale: ja-jp
-ms.lasthandoff: 08/12/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="reverse-proxy-in-azure-service-fabric"></a>Azure Service Fabric のリバース プロキシ
-Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスター内の HTTP エンドポイントを公開するマイクロサービスをアドレス指定します。
+Azure Service Fabric に組み込まれたリバース プロキシは、Service Fabric クラスターで実行されているマイクロサービスが HTTP エンドポイントを持つ他のサービスを検出してそのサービスと通信するのに役立ちます。
 
 ## <a name="microservices-communication-model"></a>マイクロサービス通信モデル
-通常、Service Fabric のマイクロサービスは、クラスター内の仮想マシンのサブセットで実行され、さまざまな理由から仮想マシン間で移動できます。 そのため、マイクロサービスのエンドポイントが動的に変更される可能性があります。 マイクロサービスと通信するための標準的なパターンは、次の解決ループです。
+Service Fabric のマイクロサービスは、クラスター内のノード のサブセットで実行され、さまざまな理由からノード間で移動することができます。 その結果、マイクロサービスのエンドポイントが動的に変更される可能性があります。 マイクロサービスがクラスター内の他のサービスを検出してそのサービスと通信するには、次の手順を実行する必要があります。
 
-1. ネーム サービスによって最初にサービスの場所を解決します。
+1. ネーム サービスによってサービスの場所を解決します。
 2. サービスに接続します。
-3. 接続エラーの原因を特定し、必要に応じてサービスの場所を再度解決します。
+3. 上記の手順を、接続エラーに適用するサービスの解決および再試行のポリシーを実装するループにラップします。
 
-一般に、このプロセスでは、サービス解決および再試行ポリシーを実装する再試行ループにクライアント側の通信ライブラリをラップする必要があります。
 詳細については、[サービスとの接続と通信](service-fabric-connect-and-communicate-with-services.md)に関する記事をご覧ください。
 
 ### <a name="communicating-by-using-the-reverse-proxy"></a>リバース プロキシを使用した通信
-Service Fabric のリバース プロキシは、クラスターのすべてのノードで実行されます。 リバース プロキシはクライアントに代わってサービス解決プロセス全体を実行し、クライアント要求を転送します。 そのため、クラスターで実行されているクライアントは、クライアント側の HTTP 通信ライブラリを使用して、同じノードでローカルで実行されているリバース プロキシ経由でターゲット サービスと通信できます。
+リバース プロキシは、すべてのノードで実行され、エンドポイントの解決、自動再試行、その他の接続エラーをクライアント サービスに代わって処理するサービスです。 リバース プロキシを、クライアント サービスからの要求の処理時にさまざまなポリシーを適用するように構成できます。 リバース プロキシを使用すると、クライアント サービスがクライアント側の HTTP 通信ライブラリを使用でき、サービスに特別な解決および再試行のロジックを実装する必要がなくなります。 
+
+リバース プロキシは、クライアント サービスが他のサービスに要求を送信するために使用する、ローカル ノード上の 1 つ以上のエンドポイントを公開します。
 
 ![内部通信][1]
+
+> **サポートされているプラットフォーム**
+>
+> Service Fabric のリバース プロキシでは現在、次のプラットフォームがサポートされています。
+> * *Windows クラスター*: Windows 8 以降または Windows Server 2012 以降
+> * *Linux クラスター*: 現在、リバース プロキシは Linux クラスターでは使用できません
 
 ## <a name="reaching-microservices-from-outside-the-cluster"></a>クラスターの外部からのマイクロサービスへの到達
 マイクロサービスの既定の外部通信モデルは、外部クライアントから各サービスに直接アクセスできないオプトイン モデルです。 [Azure Load Balancer](../load-balancer/load-balancer-overview.md) は、マイクロサービスと外部クライアントの間のネットワーク境界であり、ネットワーク アドレス変換を実行して、外部要求を内部の IP:port エンドポイントに転送します。 マイクロサービスのエンドポイントが外部クライアントに直接アクセスできるようにするには、クラスター内のサービスで使用される各ポートにトラフィックを転送するように Load Balancer を構成しておく必要があります。 さらに、ほとんどのマイクロサービス (特にステートフル マイクロサービス) は、クラスターのすべてのノードに存在するわけではありません。 マイクロサービスは、フェールオーバー時にノード間を移動する可能性があります。 このような場合、Load Balancer はトラフィックの転送先となるレプリカのターゲット ノードの場所を実際には特定できません。
@@ -61,7 +67,7 @@ http(s)://<Cluster FQDN | internal IP>:Port/<ServiceInstanceName>/<Suffix path>?
 ```
 
 * **http (s):** HTTP または HTTPS トラフィックを受け入れるようにリバース プロキシを構成できます。 HTTPS 転送の場合、HTTPS でリッスンするようにリバース プロキシをセットアップした後に、「[Connect to a secure service with the reverse proxy (リバース プロキシを使用したセキュリティで保護されたサービスへの接続)](service-fabric-reverseproxy-configure-secure-communication.md)」をご覧ください。
-* **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。 既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
+* **Cluster FQDN (完全修飾ドメイン名) | internal IP:** 外部クライアントの場合、クラスターのドメイン (例: mycluster.eastus.cloudapp.azure.com) を介して到達できるようにリバース プロキシを構成できます。既定では、リバース プロキシはすべてのノードで実行されます。 内部トラフィックの場合、リバース プロキシには localhost または任意の内部ノード IP (例: 10.0.0.1) で到達できます。
 * **Port:** リバース プロキシに指定されているポートです (例: 19081)。
 * **ServiceInstanceName:** "fabric:/" スキームなしで到達しようとしているデプロイ済みのサービス インスタンスの完全修飾名です。 たとえば、*fabric:/myapp/myservice/* サービスに到達するには、*myapp/myservice* を使用します。
 
@@ -315,4 +321,3 @@ Azure Portal には、新しい Service Fabric クラスターを作成すると
 
 [0]: ./media/service-fabric-reverseproxy/external-communication.png
 [1]: ./media/service-fabric-reverseproxy/internal-communication.png
-

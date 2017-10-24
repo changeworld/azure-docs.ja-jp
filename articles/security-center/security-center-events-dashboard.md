@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/11/2017
+ms.date: 10/05/2017
 ms.author: terrylan
+ms.openlocfilehash: 367067874b167268bd690a9e0b55412e92e08122
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: 01ac75244839c0e3c1ac350d4271677feb21a9d7
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="monitoring-and-processing-security-events-in-azure-security-center"></a>Azure Security Center でのセキュリティ イベントの監視と処理
 イベント ダッシュ ボードは、時間の経過とともに収集されたセキュリティ イベントの数と、注意を払う必要がある重要なイベントの一覧の概要を示します。  
@@ -48,13 +47,16 @@ Security Center は、Microsoft Monitoring Agent を使用して、さまざま�
  - **注目すべきイベント**には、Security Center によって提供されるイベント クエリとユーザーが作成して追加したイベント クエリが含まれます。 ダッシュボードには、注目すべき各イベントのカウントを示す簡易ビューも備わっています。
  - **すべてのイベント (種類ごと)** は、受信されるイベントの種類と種類ごとのカウントを示します。 イベントの種類には、SecurityEvent、CommonSecurityLog、WindowsFirewall、および W3CIISLog があります。
 
+> [!NOTE]
+> 注目すべきイベントには、[Web ベースライン評価](https://docs.microsoft.com/azure/operations-management-suite/oms-security-web-baseline-assessment)が含まれます。 Web ベースライン評価の目的は、Web サーバーの潜在的に脆弱な設定を見つけることです。
+
 ## <a name="view-processed-event-details"></a>処理されたイベントの詳細を表示
-1. **Security Center** のメイン メニューの **[処理されたイベント]** を選択します。
-2. **[処理されたイベント]** ワークスペース セレクターが開くことがあります。 ワークスペースが 1 つしかない場合、このワークスペース セレクターは表示されません。 複数のワークスペースが存在する場合は、処理されたイベントの詳細を表示するワークスペースを 1 つ選択する必要があります。 複数のワークスペースが存在する場合は、一覧から 1 つのワークスペースを選択してください。
+1. **[Security Center]** メイン メニューの **[イベント]** を選択します。
+2. **[イベント ダッシュボード]** ワークスペース セレクターが開きます。 ワークスペースが 1 つしかない場合、このワークスペース セレクターは表示されません。 複数のワークスペースが存在する場合は、処理されたイベントの詳細を表示するワークスペースを 1 つ選択する必要があります。 複数のワークスペースが存在する場合は、一覧から 1 つのワークスペースを選択してください。
 
   ![ワークスペースの一覧][3]
 
-3. **[処理されたイベント]** ダッシュボードが開き、選択したワークスペースのイベントの詳細が表示されます。 注目すべきイベントおよびすべてのイベントを種類ごとに表示できます。  この例では、**注目すべきイベント**が選択されています。
+3. **[イベント ダッシュボード]** が開き、選択したワークスペースのイベントの詳細が表示されます。 注目すべきイベントおよびすべてのイベントを種類ごとに表示できます。  この例では、**注目すべきイベント**が選択されています。
 
   ![注目すべきイベント][4]
 
@@ -67,7 +69,7 @@ Security Center は、Microsoft Monitoring Agent を使用して、さまざま�
   ![ログ検索][6]
 
 ## <a name="add-a-notable-event"></a>注目すべきイベントの追加
-Security Center は、すぐに使用できる注目すべきイベントを提供します。 [Log Analytics クエリ言語](../log-analytics/log-analytics-search-reference.md)を使用して、独自のクエリに基づいて注目すべきイベントを追加することができます。 注目すべきイベントを追加するには、**[処理されたイベント]** ダッシュボードに戻ります。
+Security Center は、すぐに使用できる注目すべきイベントを提供します。 [Log Analytics クエリ言語](../log-analytics/log-analytics-search-reference.md)を使用して、独自のクエリに基づいて注目すべきイベントを追加することができます。 **[イベント ダッシュボード]** は、注目すべきイベントを追加するために後でまた使用します。
 
 1. **[注目すべきイベントの追加]** を選択します。
 
@@ -80,7 +82,7 @@ Security Center は、すぐに使用できる注目すべきイベントを提�
 4. **[OK]**を選択します。
 
 ## <a name="update-your-workspace-for-events-processing"></a>イベント処理用にワークスペースを更新する
-Security Center でイベント処理を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 **[イベント]** ワークスペース セレクターは、これらの要件を満たしていないワークスペースを識別します。
+Security Center でイベント処理を使用するには、ワークスペースが Log Analytics バージョン 2 を実行していて、Security Center の Standard レベルに存在する必要があります。 **[イベント ダッシュボード]** ワークスペース セレクターで、これらの要件を満たしていないワークスペースを識別できます。
 
 ![ワークスペースが要件を満たしていない][9]
 
@@ -91,7 +93,7 @@ Security Center でイベント処理を使用するには、ワークスペー�
 - 空白になっている - ワークスペースは要件を満たしており、ワークスペースを選択すると、ダッシュボードに移動します
 
 > [!NOTE]
-> **[イベント]** で、**[EVENTS]** 列は、各ワークスペース内のイベントの量を示します。  一部のワークスペースでは、Security Center の Free レベルがそのワークスペースに適用されるため、この列は空白になります。 Free レベルでは、Security Center はイベントを収集しますが、イベントは Log Analytics には保存されず、ダッシュボードでは使用できません。
+> **[イベント ダッシュボード]** の **[EVENTS]** 列は、各ワークスペース内のイベントの量を示します。  一部のワークスペースでは、Security Center の Free レベルがそのワークスペースに適用されるため、この列は空白になります。 Free レベルでは、Security Center はイベントを収集しますが、イベントは Log Analytics には保存されず、ダッシュボードでは使用できません。
 >
 >
 
@@ -103,7 +105,7 @@ Security Center でイベント処理を使用するには、ワークスペー�
 
 ## <a name="upgrade-to-security-centers-standard-tier"></a>Security Center の Standard レベルへのアップグレード
 1. **[UPGRADE PLAN (プランのアップグレード)]** が含まれているワークスペースを選びます。
-2. **イベント ダッシュボード**が開きます。 **[処理されたイベントのダッシュボードを試行する]** を選択します。
+2. **イベント ダッシュボード**が開きます。 **[イベント ダッシュボードの試行]** を選択します。
 
   ![ダッシュボードの試行][11]
 
@@ -114,7 +116,7 @@ Security Center でイベント処理を使用するには、ワークスペー�
   ![Standard レベルにアップグレードする][12]
 
 ## <a name="next-steps"></a>次のステップ
-この記事では、Security Center の処理されたイベントのダッシュボードを使用する方法について説明しました。 ダッシュボードのしくみと、イベント クエリを作成する方法についての詳細は、以下を参照してください。
+この記事では、Security Center のイベント ダッシュボードの使用方法について説明しました。 ダッシュボードのしくみと、イベント クエリを作成する方法についての詳細は、以下を参照してください。
 
 - [Log Analytics とは](../log-analytics/log-analytics-overview.md) - Log Analytics の概要
 - [Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md) - Log Analytics でログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します
@@ -137,4 +139,3 @@ Security Center の詳細については、次の記事をご覧ください。
 [10]: ./media/security-center-events-dashboard/search-upgrade.png
 [11]: ./media/security-center-events-dashboard/try-dashboard.png
 [12]: ./media/security-center-events-dashboard/onboard-workspace.png
-

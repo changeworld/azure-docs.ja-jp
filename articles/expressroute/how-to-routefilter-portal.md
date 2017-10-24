@@ -3,8 +3,8 @@ title: "Azure ExpressRoute の Microsoft ピアリングにルート フィル�
 description: "この記事では、Azure Portal を使って Microsoft ピアリングにルート フィルターを構成する方法について説明します"
 documentationcenter: na
 services: expressroute
-author: cherylmc
-manager: timlt
+author: ganesr
+manager: rossort
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -13,20 +13,24 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2017
-ms.author: ganesr;cherylmc
+ms.date: 09/26/2017
+ms.author: ganesr
+ms.openlocfilehash: 0129a48e43e90001785a5977d4b0d1fd9fa9fd7d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: 2c6cf0eff812b12ad852e1434e7adf42c5eb7422
-ms.openlocfilehash: c813dbc0e703c20c869a8f6fc2bb70c2b0e7a807
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/13/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
-# <a name="configure-route-filters-for-microsoft-peering"></a>Microsoft ピアリングにルート フィルターを構成する
+# <a name="configure-route-filters-for-microsoft-peering-azure-portal"></a>Microsoft ピアリングにルート フィルターを構成する: Azure Portal
+> [!div class="op_single_selector"]
+> * [Azure Portal](how-to-routefilter-portal.md)
+> * [Azure PowerShell](how-to-routefilter-powershell.md)
+> * [Azure CLI](how-to-routefilter-cli.md)
+> 
 
 ルート フィルターとは、Microsoft ピアリングでサポートされるサービスの一部だけを利用する手段です。 この記事の手順を通じて、ExpressRoute 回線にルート フィルターを構成し、管理することができます。
 
-Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) には、Microsoft ピアリングを介してアクセスすることができます。 ExpressRoute 回線に Microsoft ピアリングを構成すると、これらのサービスに関連したすべてのプレフィックスが、確立された BGP セッションを通じてアドバタイズされます。 提供されているサービスをプレフィックスで識別するために、すべてのプレフィックスには BGP コミュニティ値がアタッチされます。 BGP コミュニティ値とサービスのマッピング一覧については、[BGP コミュニティ](expressroute-routing.md#bgp)に関するページを参照してください。
+Dynamics 365 サービスと Office 365 サービス (Exchange Online、SharePoint Online、Skype for Business など) および Azure サービス (ストレージ、SQL DB など) には、Microsoft ピアリングを介してアクセスすることができます。 ExpressRoute 回線に Microsoft ピアリングを構成すると、これらのサービスに関連したすべてのプレフィックスが、確立された BGP セッションを通じてアドバタイズされます。 提供されているサービスをプレフィックスで識別するために、すべてのプレフィックスには BGP コミュニティ値がアタッチされます。 BGP コミュニティ値とサービスのマッピング一覧については、[BGP コミュニティ](expressroute-routing.md#bgp)に関するページを参照してください。
 
 すべてのサービスに接続する必要がある場合、多数のプレフィックスが BGP を通じてアドバタイズされます。 このことによって、ネットワーク内のルーターによって管理されるルート テーブルのサイズは著しく増加します。 Microsoft ピアリング経由で提供されるサービスの一部しか利用する予定がない場合は、ルート テーブルのサイズを 2 とおりの方法で減らすことができます。 次のようにすることができます。
 
@@ -73,7 +77,7 @@ Microsoft ピアリング経由でサービスに正しく接続するために�
  - アクティブな Microsoft ピアリングが必要です。 [ピアリング構成の作成と変更](expressroute-howto-routing-portal-resource-manager.md)に関するページの手順に従ってください。
 
 
-## <a name="prefixes"></a>手順 1.  一連のプレフィックスと BGP コミュニティ値を取得する
+## <a name="prefixes"></a>手順 1 :一連のプレフィックスと BGP コミュニティ値を取得する
 
 ### <a name="1-get-a-list-of-bgp-community-values"></a>1.一連の BGP コミュニティ値を取得する
 
@@ -83,7 +87,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ルート フィルターで使用する BGP コミュニティ値をリストアップします。 たとえば Dynamics 365 サービスの BGP コミュニティ値は 12076:5040 です。
 
-## <a name="filter"></a>手順 2.  ルート フィルターとフィルター ルールを作成する
+## <a name="filter"></a>手順 2 :ルート フィルターとフィルター ルールを作成する
 
 ルート フィルターに割り当てることができるルールは 1 つだけで、また "許可" タイプであることが必要です。 このルールに、一連の BGP コミュニティ値を関連付けることができます。
 
@@ -108,7 +112,7 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddRouteFilterRule.png)
 
 
-## <a name="attach"></a>手順 3. ルート フィルターを ExpressRoute 回線にアタッチする
+## <a name="attach"></a>手順 3: ルート フィルターを ExpressRoute 回線にアタッチする
 
 [回線の追加] ボタンを選択し、ドロップダウン リストから、ExpressRoute 回線を選択することで、ルート フィルターを回線にアタッチできます。
 
@@ -118,14 +122,16 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\RefreshExpressRouteCircuit.png)
 
-## <a name="getproperties"></a>ルート フィルターのプロパティを取得するには
+## <a name="tasks"></a>一般的なタスク
+
+### <a name="getproperties"></a>ルート フィルターのプロパティを取得するには
 
 ポータルでリソースを開くときに、ルート フィルターのプロパティを表示できます。
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\ViewRouteFilter.png)
 
 
-## <a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
+### <a name="updateproperties"></a>ルート フィルターのプロパティを更新するには
 
 [管理ルール] ボタンを選択することで、回線にアタッチした BGP コミュニティ値の一覧を更新できます。
 
@@ -135,14 +141,14 @@ Microsoft ピアリング経由でアクセスできるサービスに関連付�
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\AddRouteFilterRule.png) 
 
 
-## <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
+### <a name="detach"></a>ExpressRoute 回線からルート フィルターをデタッチするには
 
 ルート フィルターから回線をデタッチするには、その回線を右クリックし、[関連付け解除] をクリックします。
 
 ![ルート フィルターを作成する](.\media\how-to-routefilter-portal\DetachRouteFilter.png) 
 
 
-## <a name="delete"></a>ルート フィルターを削除するには
+### <a name="delete"></a>ルート フィルターを削除するには
 
 ルート フィルターを削除するには、[削除] ボタンを選択します。 
 

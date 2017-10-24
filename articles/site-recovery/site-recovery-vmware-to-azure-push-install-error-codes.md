@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/28/2017
 ms.author: asgang
+ms.openlocfilehash: b7b03442ba815c86e5defa1018b66f56c0b379df
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: 468b99002b867768d1ef03ca3ef67946caa4919d
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>モビリティ サービスのプッシュ インストールに関する問題のトラブルシューティング
 
@@ -103,4 +102,3 @@ ms.lasthandoff: 09/28/2017
 
 ## <a name="next-steps"></a>次のステップ
 - [VMware 仮想マシンのレプリケーションを有効にする](vmware-walkthrough-enable-replication.md)
-

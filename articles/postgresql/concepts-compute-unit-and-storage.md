@@ -8,16 +8,15 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 05/23/2017
+ms.date: 09/26/2017
+ms.openlocfilehash: 3c8f6a66b3dd1564bc5eafbecafee6e2f1542caa
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: e480671e6550b305c49442becaed3c0b42ce5cb3
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="explaining-compute-units-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のコンピューティング ユニットについて
-この記事では、コンピューティング ユニットの概念と、ワークロードが最大コンピューティング ユニットに達した場合に何が起こるかについて説明します。
+このトピックでは、コンピューティング ユニットの概念と、ワークロードが最大コンピューティング ユニット レベルに達した場合に何が起こるかについて説明します。
 
 ## <a name="what-are-compute-units"></a>コンピューティング ユニットとは
 コンピューティング ユニットは、単一の Azure Database for PostgreSQL サーバーで使用できることが保証される CPU 処理スループットの測定値で、 CPU とメモリ リソースを組み合わせた測定値です。 一般に、50 個のコンピューティング ユニットは、コアの半分と同等です。 100 個のコンピューティング ユニットは、1 つのコアと同等です。 2000 個のコンピューティング ユニットは、サーバーで使用可能な保証された処理スループットの 20 個のコアと同等です。
@@ -45,4 +44,3 @@ Azure Portal でメトリック グラフを監視するか、コンピューテ
 
 ## <a name="next-steps"></a>次のステップ
 価格レベルの詳細については、[Azure Database for PostgreSQL の価格レベル](./concepts-service-tiers.md)に関するページをご覧ください。
-

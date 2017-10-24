@@ -12,14 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/08/2017
+ms.date: 09/18/2017
 ms.author: terrylan
+ms.openlocfilehash: 0616f5e501324bfd821c1455ce234602f1fcf1bd
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: bde1bc7e140f9eb7bb864c1c0a1387b9da5d4d22
-ms.openlocfilehash: cb4a7db5666242576bf83abbf10682cc6f53ba69
-ms.contentlocale: ja-jp
-ms.lasthandoff: 07/21/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="use-azure-security-center-recommendations-to-enhance-security"></a>Azure Security Center の推奨事項を使用してセキュリティを強化する
 セキュリティ ポリシーを構成し、Azure Security Center によって提供される推奨事項を実装することで、セキュリティに関する重大なイベントの可能性を低減できます。 この記事では、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明します。
@@ -74,15 +73,15 @@ Jeff の手順に従い、コントロールを構成する手順をガイドす
 ## <a name="how-to-implement-this-solution"></a>この解決策を実行する方法
 Jeff は [Azure Portal](https://azure.microsoft.com/features/azure-portal/) にサインインし、Security Center コンソールを開きます。 日常の監視活動の一環として、次の手順を実行することによってセキュリティに関する推奨事項があるかどうかチェックします。
 
-1. Jeff は **[推奨事項]** タイルを選択して、**[推奨事項]** ブレードを開きます。
+1. Jeff は **[推奨事項]** タイルを選択して、**[推奨事項]** を開きます。
    ![[推奨事項] タイルを選択する][3]
-2. Jeff は、推奨事項の一覧を確認します。 Security Center によって優先度順 (優先度最高から最低の順) に推奨事項の一覧が提供されていることを確認します。 一覧にある優先度の高い推奨事項から取り組むことを判断します。 **[推奨事項]** ブレードで、**[Endpoint Protection のインストール ]** を選択します。
-3. **[Endpoint Protection をインストールします]** ブレードが開き、マルウェア対策が有効になっていない VM の一覧が表示されます。 Jeff は VM の一覧を確認し、すべての VM を選択して、**[Install on 3 VMs]** (3 台の VM にインストール) を選択します。
+2. Jeff は、推奨事項の一覧を確認します。 Security Center によって優先度順 (優先度最高から最低の順) に推奨事項の一覧が提供されていることを確認します。 一覧にある優先度の高い推奨事項から取り組むことを判断します。 **[推奨事項]** で、**[Endpoint Protection のインストール ]** を選択します。
+3. **[Endpoint Protection をインストールします]** が開き、マルウェア対策が有効になっていない VM の一覧が表示されます。 Jeff は VM の一覧を確認し、すべての VM を選択して、**[Install on 3 VMs]** (3 台の VM にインストール) を選択します。
    ![[Endpoint Protection のインストール]][4]
-4. **[Select Endpoint Protection]** (Endpoint Protection の選択) ブレードに 2 つのマルウェア対策ソリューションが表示されます。 Jeff は **[Microsoft マルウェア対策]** ソリューションを選択します。
+4. **[Endpoint Protection の選択]** に 2 つのマルウェア対策ソリューションが表示されます。 Jeff は **[Microsoft マルウェア対策]** ソリューションを選択します。
 5. マルウェア対策ソリューションに関する追加情報が表示されます。 Jeff は **[作成]** を選択します。
    ![[Microsoft マルウェア対策]][5]
-6. Jeff は **[インストール]** ブレードで必要な構成設定を入力して、**[OK]** を選択します。
+6. Jeff は **[インストール]** で必要な構成設定を入力して、**[OK]** を選択します。
 
 [[Microsoft マルウェア対策]](../security/azure-security-antimalware.md) が、選択した VM でアクティブになりました。
 
@@ -90,10 +89,10 @@ Jeff は、高優先度と中優先度の推奨事項を確認し、実装につ
 
 Jeff は、[Microsoft Security Response Center (MSRC)](../security/azure-security-response-center.md) では、Azure のネットワークとインフラストラクチャの選択的なセキュリティ監視を行い、第三者から脅威インテリジェンスと不正使用の報告を受け取っていることを学びます。 Jeff が Contoso の Azure サブスクリプションのセキュリティ連絡先の詳細を指定している場合に、MSRC が Contoso の顧客データが違法または承認されていないパーティによってアクセスされたことを検出すると、Microsoft は Contoso に連絡します。 Jeff が **[セキュリティ連絡先の詳細情報の指定]** という推奨事項 (前述の推奨事項一覧の中で重大度が中程度の推奨事項) を適用するところを追いかけてみましょう。
 
-1. Jeff は、**[推奨事項]** ブレードで **[セキュリティ連絡先の詳細情報の指定]** を選択します。すると、**[セキュリティ連絡先の詳細情報の指定]** ブレードが表示されます。
+1. Jeff は、**[推奨事項]** で **[セキュリティ連絡先の詳細情報の指定]** を選択します。すると、**[セキュリティ連絡先の詳細情報の指定]** が表示されます。
 2. Jeff は連絡先情報を指定する Azure サブスクリプションを選択します。 2 つ目の **[セキュリティ連絡先の詳細情報の指定]** ブレードが開きます。
    ![セキュリティ連絡先の詳細][6]
-3. 2 つ目の **[セキュリティ連絡先の詳細情報の指定]** ブレードで、Jeff は次の項目を入力します。
+3. Jeff は、**[セキュリティの連絡先詳細の提供]** に次の情報を入力します。
 
   - コンマで区切ったセキュリティ連絡先の電子メール アドレス (入力できる電子メール アドレスの数に制限はありません)
   - セキュリティ連絡先の電話番号
@@ -107,6 +106,18 @@ Jeff は最後に、優先度の低い推奨事項 **[Remediate OS vulnerabiliti
 ## <a name="conclusion"></a>まとめ
 Security Center の推奨事項を監視することにより、攻撃が行われる前にセキュリティの脆弱性を排除できます。 Security Center のセキュリティ ポリシーで保護を実装および維持することによって、セキュリティ インシデントを回避できます。
 
+## <a name="next-steps"></a>次のステップ
+このシナリオでは、セキュリティ ポリシーと Security Center の推奨事項を使用してセキュリティ攻撃を軽減する方法を説明しました。 攻撃を受ける前にインシデント対応計画を策定する方法については、[インシデント対応シナリオ](security-center-incident-response.md)を参照してください。
+
+Security Center の詳細については、次の記事をご覧ください。
+
+* [セキュリティ正常性の監視](security-center-monitoring.md) -- Azure リソースの正常性を監視する方法について説明します。
+* [セキュリティの警告の管理と対応](security-center-managing-and-responding-alerts.md) -- セキュリティの警告の管理と対応の方法について説明します。
+* [セキュリティ イベントの監視と処理](security-center-events-dashboard.md) - 長期間にわたって収集されるセキュリティ イベントを監視し、処理する方法について説明します。
+* [パートナー ソリューションの監視](security-center-partner-solutions.md) -- パートナー ソリューションの正常性状態を監視する方法について説明します。
+* [Azure Security Center のよく寄せられる質問 (FAQ)](security-center-faq.md) 」 -- このサービスの使用に関してよく寄せられる質問が記載されています。
+* [Azure セキュリティ ブログ](http://blogs.msdn.com/b/azuresecurity/) -- Azure のセキュリティに関する最新のニュースと情報を入手できます。
+
 <!--Image references-->
 [1]: ./media/security-center-using-recommendations/security-center-policy-inheritance.png
 [2]: ./media/security-center-using-recommendations/scenario-roles.png
@@ -115,4 +126,3 @@ Security Center の推奨事項を監視することにより、攻撃が行わ�
 [5]:./media/security-center-using-recommendations/microsoft-antimalware.png
 [6]: ./media/security-center-using-recommendations/provide-security-contact-details.png
 [7]: ./media/security-center-using-recommendations/dismiss-recommendation.png
-

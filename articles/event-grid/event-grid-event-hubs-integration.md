@@ -6,14 +6,13 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: tomfitz
+ms.openlocfilehash: f7d2b1970cb7b1330b3d9bdff7987a90fa381392
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: d24c6777cc6922d5d0d9519e720962e1026b1096
-ms.openlocfilehash: 5f35a3bdd97b72acfe06b6bec54d41814e560b1c
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/15/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="stream-big-data-into-a-data-warehouse"></a>ビッグ データをデータ ウェアハウスにストリーミングする
 
@@ -75,7 +74,7 @@ Event Grid により、イベント データがサブスクライバーに配�
 
 ## <a name="deploy-the-infrastructure"></a>インフラストラクチャをデプロイする
 
-この記事の内容を簡略化するために、Resource Manager テンプレートを使用して必要なインフラストラクチャをデプロイします。 デプロイされるリソースを確認するには、[テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)をご覧ください。
+この記事の内容を簡略化するために、Resource Manager テンプレートを使用して必要なインフラストラクチャをデプロイします。 デプロイされるリソースを確認するには、[テンプレート](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/EventHubsDataMigration.json)をご覧ください。 プレビュー リリースの Event Grid では、**westus2** および **westcentralus** リージョンがサポートされます。 リソース グループの場所にはどちらかのリージョンを使います。
 
 Azure CLI では、次を使用します。
 
@@ -93,7 +92,7 @@ PowerShell では、次を使用します。
 ```powershell
 New-AzureRmResourceGroup -Name rgDataMigration -Location westcentralus
 
-New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName tf08202storage -functionAppName <app-name>
+New-AzureRmResourceGroupDeployment -ResourceGroupName rgDataMigration -TemplateUri https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json -eventHubNamespaceName <event-hub-namespace> -eventHubName hubdatamigration -sqlServerName <sql-server-name> -sqlServerUserName <user-name> -sqlServerDatabaseName <database-name> -storageName <unique-storage-name> -functionAppName <app-name>
 ```
 
 入力を求められたら、パスワードを入力します。

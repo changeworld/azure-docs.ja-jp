@@ -14,12 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.translationtype: Human Translation
-ms.sourcegitcommit: 74f34bdbf5707510c682814716aa0b95c19a5503
-ms.openlocfilehash: 9af6c0fc3df2863c8e7b9a6a62acf5ba6b7d2d0a
-ms.contentlocale: ja-jp
-ms.lasthandoff: 06/09/2017
-
+ms.openlocfilehash: 4c5c8aacd2d104b8d6074b90eeffc32b29fc50f3
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Operations Management Suite の Service Map の構成
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -138,6 +137,55 @@ Invoke-WebRequest "https://aka.ms/dependencyagentwindows" -OutFile InstallDepend
 wget --content-disposition https://aka.ms/dependencyagentlinux -O InstallDependencyAgent-Linux64.bin
 sh InstallDependencyAgent-Linux64.bin -s
 ```
+
+## <a name="azure-vm-extension"></a>Azure VM 拡張機能
+[Azure VM 拡張機能](https://docs.microsoft.com/azure/virtual-machines/windows/classic/agents-and-extensions)を使用すると、Azure VM に Dependency Agent を簡単に展開できます。  Azure VM 拡張機能を使用することにより、PowerShell スクリプトを使用して、または、VM の Azure Resource Manager テンプレートから直接、VM に Dependency Agent を展開することができます。  Windows 用 (DependencyAgentWindows) と Linux 用 (DependencyAgentLinux) の拡張機能が用意されています。  Azure VM 拡張機能を使用して展開した場合、エージェントは最新バージョンに自動的に更新されます。
+
+PowerShell を使用して Azure VM 拡張機能を展開するには、次の例を使用してください。
+```PowerShell
+#
+# Deploy the Dependency Agent to every VM in a Resource Group
+#
+
+$version = "9.1"
+$ExtPublisher = "Microsoft.Azure.Monitoring.DependencyAgent"
+$OsExtensionMap = @{ "Windows" = "DependencyAgentWindows"; "Linux" = "DependencyAgentLinux" }
+$rmgroup = "<Your Resource Group Here>"
+
+Get-AzureRmVM -ResourceGroupName $rmgroup |
+ForEach-Object {
+    ""
+    $name = $_.Name
+    $os = $_.StorageProfile.OsDisk.OsType
+    $location = $_.Location
+    $vmRmGroup = $_.ResourceGroupName
+    "${name}: ${os} (${location})"
+    Date -Format o
+    $ext = $OsExtensionMap.($os.ToString())
+    $result = Set-AzureRmVMExtension -ResourceGroupName $vmRmGroup -VMName $name -Location $location `
+    -Publisher $ExtPublisher -ExtensionType $ext -Name "DependencyAgent" -TypeHandlerVersion $version
+    $result.IsSuccessStatusCode
+}
+```
+
+Dependency Agent を各 VM で確実に展開する、さらに簡単な方法は、Azure Resource Manager テンプレートにエージェントを追加することです。  Dependency Agent は OMS Agent に依存し続けるため、[OMSAgent VM 拡張機能](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-vm-extension)を最初に展開する必要があることに注意してください。  テンプレートの *resources* セクションに次の JSON スニペットを追加できます。
+```JSON
+"type": "Microsoft.Compute/virtualMachines/extensions",
+"name": "[concat(parameters('vmName'), '/DependencyAgent')]",
+"apiVersion": "2017-03-30",
+"location": "[resourceGroup().location]",
+"dependsOn": [
+"[concat('Microsoft.Compute/virtualMachines/', parameters('vmName'))]"
+],
+"properties": {
+    "publisher": "Microsoft.Azure.Monitoring.DependencyAgent",
+    "type": "DependencyAgentWindows",
+    "typeHandlerVersion": "9.1",
+    "autoUpgradeMinorVersion": true
+}
+
+```
+
 
 ## <a name="desired-state-configuration"></a>Desired State Configuration
 Desired State Configuration 経由で Dependency Agent をデプロイするには、次のように xPSDesiredStateConfiguration モジュールと簡単なコードを使用できます。
@@ -334,4 +382,3 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 
 ## <a name="next-steps"></a>次のステップ
 - Service Map をデプロイして構成したら、[Service Map を使用する](operations-management-suite-service-map.md)方法を確認します。
-

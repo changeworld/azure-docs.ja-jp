@@ -12,14 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/29/2017
+ms.date: 10/05/2017
 ms.author: ryanwi
+ms.openlocfilehash: 6d0f85a839171c43d226741f54e0dc954b85601d
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
 ms.translationtype: HT
-ms.sourcegitcommit: a6bba6b3b924564fe7ae16fa1265dd4d93bd6b94
-ms.openlocfilehash: e0e7bcee2697555b49455a414eabd02e3f573c40
-ms.contentlocale: ja-jp
-ms.lasthandoff: 09/28/2017
-
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>PowerShell を使用してアプリケーションのデプロイと削除を実行する
 > [!div class="op_single_selector"]
@@ -58,11 +57,6 @@ Azure Active Directory、X509 証明書、Windows Active Directory で保護さ�
 アプリケーション パッケージをローカルで検証する場合は、[Test-ServiceFabricApplicationPackage](/powershell/module/servicefabric/test-servicefabricapplicationpackage?view=azureservicefabricps) コマンドレットを使用します。
 
 アプリケーション パッケージは、[Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) コマンドでクラスター イメージ ストアにアップロードします。
-Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
-
-```powershell
-Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
-```
 
 *MyApplication* という名前のアプリケーションを Visual Studio 2015 でビルドしてパッケージするとします。 ApplicationManifest.xml に既定で表示されるアプリケーション タイプ名は、"MyApplicationType" です。  アプリケーション パッケージ (必要なアプリケーション マニフェスト、サービス マニフェスト、コード/構成/データ パッケージを含む) は、*C:\Users\<username\>\Documents\Visual Studio 2015\Projects\MyApplication\MyApplication\pkg\Debug* にあります。 
 
@@ -135,21 +129,33 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 以下の例では、先ほどのパッケージをイメージ ストアの "MyApplicationV1" という名前のフォルダーにアップロードしています。
 
 ```powershell
-PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
-```
-
-Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
-
-```powershell
-Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -TimeoutSec 1800
 ```
 
 *-ApplicationPackagePathInImageStore* パラメーターを指定しなかった場合は、イメージ ストアの "Debug" フォルダーにアプリケーション パッケージがコピーされます。
 
+>[!NOTE]
+>**Copy-ServiceFabricApplicationPackage** は、PowerShell セッションが Service Fabric クラスターに接続されている場合に、適切なイメージ ストア接続文字列を自動的に検出します。 5.6 より古いバージョンの Service Fabric では、**-ImageStoreConnectionString** 引数を明示的に指定する必要があります。
+>
+>```powershell
+>PS C:\> Copy-ServiceFabricApplicationPackage -ApplicationPackagePath $path -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest)) -TimeoutSec 1800
+>```
+>
+>Service Fabric SDK PowerShell モジュールの一部である **Get-ImageStoreConnectionStringFromClusterManifest** コマンドレットは、イメージ ストアの接続文字列の取得に使用します。  SDK モジュールをインポートするには、次のコマンドを実行します。
+>
+>```powershell
+>Import-Module "$ENV:ProgramFiles\Microsoft SDKs\Service Fabric\Tools\PSModule\ServiceFabricSDK\ServiceFabricSDK.psm1"
+>```
+>
+>イメージ ストアとイメージ ストア接続文字列に関する補足情報は、[イメージ ストア接続文字列の理解](service-fabric-image-store-connection-string.md)に関するページを参照してください。
+>
+>
+>
+
 パッケージのアップロードにかかる時間は、さまざまな要素に応じて変わってきます。 これらの要素として、パッケージに含まれるファイルの数、パッケージ サイズ、ファイル サイズなどがあります。 ソース コンピューターと Service Fabric クラスターの間のネットワーク速度もアップロード時間に影響を与えます。 [Copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) の既定のタイムアウトは 30 分です。
 説明した要素に応じて、タイムアウトを長くすることが必要になる場合があります。 コピーの呼び出しでパッケージを圧縮する場合は、圧縮時間も考慮する必要があります。
 
-イメージ ストアとイメージ ストア接続文字列に関する補足情報は、[イメージ ストア接続文字列の理解](service-fabric-image-store-connection-string.md)に関するページを参照してください。
+
 
 ## <a name="register-the-application-package"></a>アプリケーション パッケージを登録する
 アプリケーション マニフェストで宣言されたアプリケーションの種類とバージョンは、アプリケーション パッケージを登録すると、利用できるようになります。 システムは、前の手順でアップロードされたパッケージを読み取り、パッケージを検証し、パッケージのコンテンツを処理し、処理済みのパッケージを内部システムの場所にコピーします。  
@@ -175,6 +181,13 @@ ApplicationTypeName    : MyApplicationType
 ApplicationTypeVersion : 1.0.0
 Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
+```
+
+## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
+アプリケーションが正常に登録されたら、アプリケーション パッケージを削除することをお勧めします。  イメージ ストアからアプリケーション パッケージを削除すると、システム リソースが解放されます。  使用されていないアプリケーション パッケージを保持すると、ディスク記憶域が消費され、アプリケーションのパフォーマンスの問題につながります。
+
+```powershell
+PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1
 ```
 
 ## <a name="create-the-application"></a>アプリケーションを作成する
@@ -248,13 +261,6 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 
 ```powershell
 PS C:\> Unregister-ServiceFabricApplicationType MyApplicationType 1.0.0
-```
-
-## <a name="remove-an-application-package-from-the-image-store"></a>イメージ ストアからのアプリケーション パッケージの削除
-不要になったアプリケーション パッケージは、イメージ ストアから削除して、システム リソースを解放することができます。
-
-```powershell
-PS C:\>Remove-ServiceFabricApplicationPackage -ApplicationPackagePathInImageStore MyApplicationV1 -ImageStoreConnectionString (Get-ImageStoreConnectionStringFromClusterManifest(Get-ServiceFabricClusterManifest))
 ```
 
 ## <a name="troubleshooting"></a>トラブルシューティング
@@ -339,4 +345,3 @@ DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 <!--Link references--In actual articles, you only need a single period before the slash-->
 [10]: service-fabric-application-model.md
 [11]: service-fabric-application-upgrade.md
-

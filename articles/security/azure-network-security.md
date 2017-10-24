@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/24/2017
 ms.author: TomSh
 ms.openlocfilehash: 6ab59dd02391287a1effc0b51502bb7eb90db319
-ms.sourcegitcommit: 50e23e8d3b1148ae2d36dad3167936b4e52c8a23
-ms.translationtype: MT
+ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 08/18/2017
+ms.lasthandoff: 10/11/2017
 ---
 # <a name="azure-network-security"></a>Azure のネットワーク セキュリティ
 
@@ -75,7 +75,7 @@ Azure には、ネットワーク セキュリティについて議論する上�
 
 ### <a name="basic-network-connectivity"></a>基本的なネットワーク接続
 
-[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 Vnet とサイト対サイト Vpn を使用する、内部設置型ネットワークに相互に接続でき、専用[WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)です。
+[Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) サービスでは、仮想ネットワーク (VNet) を使用して Azure リソースを安全に相互接続することができます。 VNet とは、クラウド内のユーザー独自のネットワークを表したものです。 VNet はサブスクリプション専用に Azure ネットワーク インフラストラクチャが論理的に分離されています。 サイト間 VPN や専用の [WAN リンク](https://docs.microsoft.com/azure/expressroute/expressroute-introduction)を使用して、VNet 同士を接続したり、オンプレミスのネットワークと接続したりできます。
 
 ![基本的なネットワーク接続](media/azure-network-security/azure-network-security-fig-2.png)
 
