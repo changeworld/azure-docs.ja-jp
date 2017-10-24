@@ -59,6 +59,8 @@
           href: concepts-supported-versions.md
         - name: サーバー ログ
           href: concepts-server-logs.md
+        - name: 高可用性
+          href: concepts-high-availability.md
     - name: リソース
       items:
         - name: 価格レベル
@@ -73,6 +75,8 @@
           href: concepts-firewall-rules.md
         - name: SSL の構成
           href: concepts-ssl-connection-security.md
+    - name: 監視
+      href: concepts-monitoring.md
     - name: 開発
       items:
         - name: 接続ライブラリ
@@ -117,8 +121,14 @@
           href: howto-configure-server-parameters-using-cli.md
     - name: サーバー ログへのアクセス
       items:
+        - name: Azure ポータル
+          href: howto-configure-server-logs-in-portal.md
         - name: Azure CLI
           href: howto-configure-server-logs-in-cli.md
+    - name: 監視
+      items:
+        - name: メトリックに基づいたアラートの作成
+          href: howto-alert-on-metric.md
 - name: リファレンス
   items:
     - name: Azure CLI

@@ -33,7 +33,8 @@
 #### [.NET Framework](event-hubs-dotnet-framework-api-overview.md)
 #### [診断ログ](event-hubs-diagnostic-logs.md)
 ### [AMQP 1.0 プロトコル ガイド](../service-bus-messaging/service-bus-amqp-protocol-guide.md)
-## Manage
+## 管理
+### [Azure 監視による Event Hubs の監視](event-hubs-metrics-azure-monitor.md)
 ### [Event Hubs 管理ライブラリ](event-hubs-management-libraries.md)
 ### キャプチャ
 #### [Event Hubs Capture](event-hubs-capture-overview.md)

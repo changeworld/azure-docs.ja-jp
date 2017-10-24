@@ -37,7 +37,7 @@
 ## [リモート監視ソリューションでのデバイス情報](iot-suite-remote-monitoring-device-info.md)
 ## [コネクティッド ファクトリ用のゲートウェイをデプロイする](iot-suite-connected-factory-gateway-deployment.md)
 ## [コネクテッド ファクトリをカスタマイズする](iot-suite-connected-factory-customize.md)
-
+## [コネクテッド ファクトリに OPC Publisher を使用する](iot-suite-connected-factory-publisher.md)
 # リファレンス
 ## [セキュリティのアーキテクチャ](iot-security-architecture.md)
 ## [セキュリティのベスト プラクティス](iot-security-best-practices.md)

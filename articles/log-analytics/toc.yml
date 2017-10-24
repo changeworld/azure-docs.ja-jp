@@ -11,6 +11,8 @@
       href: log-analytics-quick-collect-azurevm.md
     - name: 収集 - Linux コンピューター
       href: log-analytics-quick-collect-linux-computer.md
+    - name: 収集 - Windows コンピューター
+      href: log-analytics-quick-collect-windows-computer.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 1 - データの分析
@@ -25,20 +27,22 @@
       href: powershell-samples.md
 - name: 概念
   items:
+    - name: ワークスペースのアップグレード
+      href: log-analytics-log-search-upgrade.md
     - name: Log Analytics についてよく寄せられる質問
       href: log-analytics-faq.md
     - name: データの使用
       href: log-analytics-usage.md
     - name: アクセスを管理する
       href: log-analytics-manage-access.md
-    - name: サービス プロバイダー向けの機能
+    - name: サービス プロバイダー向け機能
       href: log-analytics-service-providers.md
     - name: ログ検索
       items:
-        - name: ログ検索についてよく寄せられる質問
-          href: log-analytics-log-search-faq.md
         - name: ログ検索の概要
           href: log-analytics-log-search-new.md
+        - name: ログ検索についてよく寄せられる質問
+          href: log-analytics-log-search-faq.md
         - name: ログ検索ポータル
           href: log-analytics-log-search-portals.md
 - name: 方法
@@ -89,6 +93,20 @@
               href: log-analytics-custom-fields.md
     - name: データのクエリを実行する
       items:
+        - name: 言語のドキュメント
+          href: 'https://docs.loganalytics.io'
+        - name: 従来の言語からの切り替え
+          href: log-analytics-log-search-transition.md
+        - name: ワークスペースをまたがる検索
+          href: log-analytics-cross-workspace-search.md
+        - name: 検索結果からのアクションの実行
+          href: log-analytics-log-search-takeaction.md
+        - name: コンピューター グループの使用
+          href: log-analytics-computer-groups.md
+        - name: Flow コネクタ
+          href: log-analytics-flow-tutorial.md
+    - name: 従来のログ検索
+      items:
         - name: ログ検索の概要
           href: log-analytics-log-searches.md
         - name: 検索リファレンス
@@ -96,26 +114,18 @@
           items:
             - name: 正規表現
               href: log-analytics-log-searches-regex.md
-            - name: ワークスペースをまたがる検索
-              href: log-analytics-cross-workspace-search.md
-        - name: 検索結果からのアクションの実行
-          href: log-analytics-log-search-takeaction.md
-        - name: コンピューター グループ
-          href: log-analytics-computer-groups.md
-    - name: 新しいログ検索
-      items:
-        - name: ワークスペースのアップグレード
-          href: log-analytics-log-search-upgrade.md
-        - name: 従来の言語からの切り替え
-          href: log-analytics-log-search-transition.md
-        - name: Flow コネクタ
-          href: log-analytics-flow-tutorial.md
     - name: データを分析する
       items:
         - name: ダッシュボード
           href: log-analytics-dashboards.md
         - name: ビュー デザイナー
-          href: log-analytics-view-designer.md
+          items:
+            - name: 概要
+              href: log-analytics-view-designer.md
+            - name: タイルのリファレンス
+              href: log-analytics-view-designer-tiles.md
+            - name: 視覚化パーツのリファレンス
+              href: log-analytics-view-designer-parts.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: アラートを作成する
@@ -231,14 +241,12 @@
           href: log-analytics-api-alerts.md
 - name: リファレンス
   items:
+    - name: 言語のリファレンス
+      href: 'https://docs.loganalytics.io/docs/Language-Reference'
     - name: Azure PowerShell
       href: /powershell/module/azurerm.operationalinsights
     - name: REST ()
       href: /rest/api/loganalytics
-    - name: ビュー デザイナー タイル リファレンス
-      href: log-analytics-view-designer-tiles.md
-    - name: ビュー デザイナー視覚化パーツ リファレンス
-      href: log-analytics-view-designer-parts.md
 - name: リソース
   items:
     - name: Azure のロードマップ

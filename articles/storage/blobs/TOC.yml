@@ -1,3 +1,5 @@
+- name: Azure Storage のドキュメント
+  href: /azure/storage/
 - name: 概要
   items:
     - name: はじめに
@@ -16,6 +18,8 @@
       href: storage-quickstart-blobs-cli.md
     - name: BLOB の使用 - .NET
       href: storage-quickstart-blobs-dotnet.md
+    - name: BLOB の使用 - Python
+      href: storage-quickstart-blobs-python.md
 - name: Tutorials (チュートリアル)
   items:
     - name: 画像をアップロードして処理する
@@ -28,6 +32,12 @@
           href: storage-secure-access-application.md
         - name: 4 - ストレージの監視とトラブルシューティングを行う
           href: storage-monitor-troubleshoot-storage-application.md
+    - name: クラウド ストレージにおける高可用性向けの設計
+      items:
+        - name: アプリケーションの可用性を高める
+          href: storage-create-geo-redundant-storage.md
+        - name: RA-GRS ストレージで障害をシミュレートする
+          href: storage-simulate-failure-ragrs-account-app.md
     - name: クラウド ストレージで非構造化データを検索する
       href: storage-unstructured-search.md
 - name: サンプル

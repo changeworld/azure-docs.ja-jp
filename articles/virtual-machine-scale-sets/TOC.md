@@ -21,19 +21,20 @@
 ### [Visual Studio での作成](virtual-machine-scale-sets-vs-create.md)
 ### [Azure PowerShell または Azure CLI での作成](virtual-machine-scale-sets-create.md)
 ### [スケール セットと管理ディスク](virtual-machine-scale-sets-managed-disks.md)
-### [自動スケールを使用した Linux スケール セット](virtual-machine-scale-sets-linux-autoscale.md)
-### [自動スケールを使用した Windows スケール セット](virtual-machine-scale-sets-windows-autoscale.md)
+### [スケール セットの自動スケール](virtual-machine-scale-sets-autoscale-overview.md)
+#### [Azure Portal の使用](virtual-machine-scale-sets-autoscale-portal.md)
+#### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-autoscale-cli.md)
+#### [Azure PowerShell の使用](virtual-machine-scale-sets-autoscale-powershell.md)
+#### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
 ### [スケール セット上のアプリケーション](virtual-machine-scale-sets-deploy-app.md)
 ### [スケール セットでデータ ディスクを使用する](virtual-machine-scale-sets-attached-disks.md)
 ### [大規模なスケール セットを処理する](virtual-machine-scale-sets-placement-groups.md)
 ### [スケール セット テンプレートを変換して管理ディスクを使用する](virtual-machine-scale-sets-convert-template-to-md.md)
 
-
-
 ## 管理
-### [Azure PowerShell を使用した Windows スケール セット](virtual-machine-scale-sets-windows-manage.md)
-### [自動スケールとスケール セット](virtual-machine-scale-sets-autoscale-overview.md)
-### [高度な自動スケール](../monitoring-and-diagnostics/insights-advanced-autoscale-virtual-machine-scale-sets.md)
+### 一般的な管理タスク
+#### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-manage-cli.md)
+#### [Azure PowerShell の使用](virtual-machine-scale-sets-manage-powershell.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
 ### [スケール セットのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [DSC とスケール セットの使用](virtual-machine-scale-sets-dsc.md)

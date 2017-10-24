@@ -47,10 +47,10 @@ sections:
         className: cardsM
         columns: 2
         items:
-          - href: 'https://docs.microsoft.com/azure/container-instances/container-instances-quickstart'
-            title: Azure Container Instances でコンテナーに格納したアプリを作成する
+          - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
+            title: Service Fabric の Windows コンテナー アプリケーションをデプロイする
             image:
-              src: /azure/media/index/ContainerService.svg
+              src: /azure/media/index/Fabric.svg
           - href: 'https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
             title: Linux コンテナー用 Kubernetes クラスターを作成する
             image:
@@ -59,12 +59,16 @@ sections:
             title: Docker Swarm クラスターのデプロイ
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
-          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
-            title: DC/OS クラスターのデプロイ
+          - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
+            title: Azure Container Registry にプライベート Docker レジストリを作成する
             image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+              src: /azure/media/index/container-registry.svg
           - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
             title: Azure Web App for Containers でコンテナーに格納したアプリを作成する
+            image:
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
+          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
+            title: DC/OS クラスターのデプロイ
             image:
               src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
   - title: Azure とコンテナーに関する無料の Pluralsight ビデオ トレーニング

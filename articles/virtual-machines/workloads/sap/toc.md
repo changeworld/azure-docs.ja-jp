@@ -20,9 +20,25 @@
 ## [Windows/SQL Server SAP CAL への SAP IDES デプロイ ガイド](cal-ides-erp6-erp7-sp3-sql.md)
 ## [Azure Linux VM 上の SAP NetWeaver](suse-quickstart.md)
 ## [Azure での SAP NetWeaver の計画と実装](planning-guide.md)
-## [Windows での高可用性](high-availability-guide.md)
-## [SUSE Linux での高可用性](high-availability-guide-suse.md)
-## [マルチ SID 構成](high-availability-multi-sid.md)
+## Windows と Linux での高可用性 (HA)
+### [概要](sap-high-availability-guide-start.md)
+### 高可用性アーキテクチャ
+#### [HA アーキテクチャとシナリオ](sap-high-availability-architecture-scenarios.md)
+#### [さらに高い可用性アーキテクチャとシナリオ](sap-higher-availability-architecture-scenarios.md)
+#### [(A)SCS インスタンス用の共有ディスクを使用した Windows の HA](sap-high-availability-guide-wsfc-shared-disk.md)
+#### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows の HA](sap-high-availability-guide-wsfc-file-share.md)
+#### [(A)SCS インスタンス用の SUSE Linux の HA](high-availability-guide-suse.md)
+### Azure インフラストラクチャの準備
+#### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-high-availability-infrastructure-wsfc-shared-disk.md)
+#### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-high-availability-infrastructure-wsfc-file-share.md)
+#### [(A)SCS インスタンス用の NFS を使用した SUSE Linux](high-availability-guide-suse.md)
+### SAP のインストール
+#### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-high-availability-installation-wsfc-shared-disk.md)
+#### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-high-availability-installation-wsfc-file-share.md)
+#### [(A)SCS インスタンス用の NFS を使用した SUSE Linux](high-availability-guide-suse.md)
+### SAP マルチ SID
+#### [(A)SCS インスタンス用の共有ディスクを使用した Windows](sap-ascs-ha-multi-sid-wsfc-shared-disk.md)
+#### [(A)SCS インスタンス用の SOFS ファイル共有を使用した Windows](sap-ascs-ha-multi-sid-wsfc-file-share.md)
 ## [デプロイ ガイド](deployment-guide.md)
 ## [DBMS デプロイ ガイド](dbms-guide.md)
 ## [SAP のディザスター リカバリーのための Azure Site Recovery](../../../site-recovery/site-recovery-workload.md#protect-sap)
