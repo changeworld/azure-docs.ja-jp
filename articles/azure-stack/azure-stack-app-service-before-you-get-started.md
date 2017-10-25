@@ -14,17 +14,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: 430101c398eff85b330d15242ed1e396a277a93a
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 8ebac8ca3bed6825ff9170a305a44ad58ec0da31
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="before-you-get-started-with-app-service-on-azure-stack"></a>App Service on Azure Stack を開始する前に
 
 Azure App Service on Azure Stack には、デプロイ前に完了しておく必要のある、次のような前提条件手順があります。
 
 - Azure App Service on Azure Stack ヘルパー スクリプトをダウンロードする
+- 高可用性
 - Azure App Service on Azure Stack に必要な証明書
 - ファイル サーバーを準備する
 - SQL Server を準備する
@@ -42,6 +43,13 @@ Azure App Service on Azure Stack には、デプロイ前に完了しておく�
     - AzureStack.Identity.psm1
     - GraphAPI.psm1
     
+## <a name="high-availability"></a>高可用性
+
+Azure Stack でワークロードをデプロイできるのは 1 つの障害ドメインに限られるため、Azure App Service on Azure Stack では現在、高可用性を提供できません。
+
+高可用性用に Azure App Service on Azure Stack を準備するには必ず、必要なファイル サーバーと SQL Server を高可用性構成でデプロイしてください。 Azure Stack で複数の障害ドメインをサポートできるようになった時点で、高可用性構成で Azure App Service on Azure Stack を有効にする方法についてのガイダンスを提供します。
+
+
 ## <a name="certificates-required-for-azure-app-service-on-azure-stack"></a>Azure App Service on Azure Stack に必要な証明書
 
 ### <a name="certificates-required-for-the-azure-stack-development-kit"></a>Azure Stack Development Kit に必要な証明書
@@ -193,7 +201,9 @@ net localgroup Administrators %DOMAIN%\FileShareOwners /add
 
 ファイル サーバーで、管理者特権のコマンド プロンプトで次のコマンドを実行します。
 
+```powershell
 net localgroup Administrators FileShareOwners /add
+```
 
 ### <a name="configure-access-control-to-the-shares"></a>共有へのアクセス制御を構成する
 
@@ -224,12 +234,14 @@ icacls %WEBSITES_FOLDER% /grant *S-1-1-0:(OI)(CI)(IO)(RA,REA,RD)
 
 ## <a name="prepare-the-sql-server"></a>SQL Server を準備する
 
-Azure App Service on Azure Stack のホスティング データベースと計測データベースの場合、Microsoft Azure Pack Web Sites Runtime Database を保持するように SQL Server を準備する必要があります。
+Azure App Service on Azure Stack のホスティング データベースと測定データベースについては、Azure App Service データベースを保持するように SQL Server を準備する必要があります。
 
-Azure Stack Development Kit で使用する場合は、SQL Express 2012 SP1 以降を使用できます。 ダウンロードについては、「[Download SQL Server 2012 Express with SP1 (SQL Server 2012 Express と SP1 のダウンロード)](https://msdn.microsoft.com/evalcenter/hh230763.aspx)」をご覧ください。
-生産性と高可用性のために、SQL 2012 SP1 以降のフルバージョンを使用する必要があります。 SQL Server のインストール方法について詳しくは、[SQL Server 2012 のインストール](http://go.microsoft.com/fwlink/?LinkId=322141)に関するページをご覧ください。
-混合モード認証を有効にします。
-Azure App Service on Azure Stack SQL Server は、すべての App Service ロールからアクセスできる必要があります。
+Azure Stack Development Kit で使用する場合は、SQL Express 2014 SP2 以降を使用できます。
+
+運用と高可用性のためには、SQL 2014 SP2 以降の完全バージョンを使用し、混合モード認証を有効にして、[高可用性構成](https://docs.microsoft.com/en-us/sql/sql-server/failover-clusters/high-availability-solutions-sql-server)でデプロイを行う必要があります。
+
+Azure App Service on Azure Stack SQL Server は、すべての App Service ロールからアクセスできる必要があります。 SQL Server は、Azure Stack の既定のプロバイダー サブスクリプション内でデプロイできます。 あるいは、組織内の既存のインフラストラクチャーを利用できます (Azure Stack に接続されている場合)。
+
 どの SQL Server ロールの場合も、既定のインスタンスまたは名前付きインスタンスを使用できます。 ただし、名前付きインスタンスを使用する場合は、手動で SQL Browser サービスを開始してポート 1434 を開いてください。
 
 ## <a name="create-an-azure-active-directory-application"></a>Azure Active Directory アプリケーションを作成する
@@ -249,7 +261,7 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 1. azurestack\azurestackadmin として PowerShell インスタンスを開きます。
 2. [前提条件の手順](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-deploy#download-required-components)でダウンロードして展開したスクリプトの場所に移動します。
 3. [Azure Stack PowerShell 環境をインストール](azure-stack-powershell-install.md)して[構成](azure-stack-powershell-configure-admin.md)します。
-4. 同じ PowerShell セッションで、**CreateIdentityApp.ps1** スクリプトを実行します。 Azure AD テナント ID の指定を求められたら、Azure Stack のデプロイに使っている Azure AD テナント ID (例: myazurestack.onmicrosoft.com) を入力します。
+4. 同じ PowerShell セッションで、**Create-AADIdentityApp.ps1** スクリプトを実行します。 Azure AD テナント ID の指定を求められたら、Azure Stack のデプロイに使っている Azure AD テナント ID (例: myazurestack.onmicrosoft.com) を入力します。
 5. **[資格情報]** ウィンドウで、Azure AD サービスの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
 6. [先ほど作った証明書](azure-stack-app-service-deploy.md)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、sso.appservice.local.azurestack.external.pfx です。
 7. このスクリプトでは、テナント Azure AD で新しいアプリケーションが作られ、新しい PowerShell スクリプト **UpdateConfigOnController.ps1** が生成されます。 PowerShell の出力で返されるアプリケーション ID を書き留めておきます。 手順 11 で、アプリケーション ID を検索するのにこの情報が必要になります。
@@ -267,8 +279,6 @@ Azure AD サービス プリンシパルで以下をサポートするように�
 | AzureStackCredential | 必須 | Null | Azure AD 管理者 |
 | CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへのパス。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するためのパスワード。 |
-| DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス。 |
-| AdfsMachineName | 省略可能 | AD FS マシン名。たとえば、AzS-ADFS01.azurestack.local など | AD FS のデプロイで必要です。 Azure AD のデプロイでは無視します。 |
 
 ## <a name="create-an-active-directory-federation-services-application"></a>Active Directory フェデレーション サービス アプリケーションを作成する
 
@@ -286,19 +296,17 @@ AD FS によって保護されている Azure Stack 環境の場合、 AD FS サ
 1. azurestack\azurestackadmin として PowerShell インスタンスを開きます。
 2. [前提条件の手順](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-app-service-deploy#download-required-components)でダウンロードして展開したスクリプトの場所に移動します。
 3. [Azure Stack PowerShell 環境をインストール](azure-stack-powershell-install.md)して[構成](azure-stack-powershell-configure-admin.md)します。
-4.  同じ PowerShell セッションで、**CreateIdentityApp.ps1** スクリプトを実行します。 Azure AD テナント ID の指定を求められたら、「ADFS」と入力します。
-5.  **[資格情報]** ウィンドウで、AD FS サービスの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
+4.  同じ PowerShell セッションで、**Create-ADFSIdentityApp.ps1** スクリプトを実行します。
+5.  **[資格情報]** ウィンドウで、AD FS クラウドの管理者アカウントとパスワードを入力します。 **[OK]**をクリックします。
 6.  [先ほど作った証明書](azure-stack-app-service-deploy.md)について、証明書ファイル パスと証明書パスワードを入力します。 既定でこの手順のために作られる証明書は、sso.appservice.local.azurestack.external.pfx です。
 
 | CreateIdentityApp.ps1 パラメーター | 必須/省略可能 | 既定値 | Description |
 | --- | --- | --- | --- |
-| DirectoryTenantName | 必須 | Null | AD FS 環境の場合は ADFS を使用します。 |
-| TenantAzure Resource ManagerEndpoint | 必須 | management.local.azurestack.external | テナントの Azure Resource Manager エンドポイント。 |
-| AzureStackCredential | 必須 | Null | Azure AD 管理者 |
-| CertificateFilePath | 必須 | Null | 先ほど生成された ID アプリケーション証明書ファイルへのパス。 |
+| AdminARMEndpoint | 必須 | Null | 管理者の Azure Resource Manager エンドポイント。 例: adminmanagement.local.azurestack.external。 |
+| PrivilegedEndpoint | 必須 | Null | 緊急用のコンソール特権エンドポイント。 例: AzD-ERCS01。 |
+| CloudAdminCredential | 必須 | Null | Azure Stack cloudadmin ドメイン アカウントの資格情報。 例: Azurestack\CloudAdmin。 |
+| CertificateFilePath | 必須 | Null | ID アプリケーションの証明書 PFX ファイルへのパス。 |
 | CertificatePassword | 必須 | Null | 証明書の秘密キーを保護するためのパスワード。 |
-| DomainName | 必須 | local.azurestack.external | Azure Stack のリージョンとドメイン サフィックス。 |
-| AdfsMachineName | 省略可能 | AD FS マシン名。たとえば、AzS-ADFS01.azurestack.local など | AD FS のデプロイで必要です。 Azure AD のデプロイでは無視します。 |
 
 
 ## <a name="next-steps"></a>次のステップ

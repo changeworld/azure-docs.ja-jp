@@ -14,21 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: anwestg
-ms.openlocfilehash: db1b5c00f946b5945e15303683630d95339228e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5d8de03b92fd4cc41d7a2d077053da3b8769da50
+ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
 Azure Stack クラウド オペレーターとして、Web および API アプリケーションを作成する機能をユーザーに提供できます。 そのためには、まずこの記事の説明に従って、Azure Stack デプロイに [App Service リソースプロバイダー](azure-stack-app-service-overview.md)を追加する必要があります。 App Service リソースプロバイダーをインストールすると、これをオファーやプランに含めることができます。 ユーザーはサブスクライブしてサービスを取得し、アプリケーションの作成を開始できます。
 
-App Service リソースプロバイダーを Azure Stack デプロイに追加するには、次の 3 つの最上位のタスクをすべて実行する必要があります。
+> [!IMPORTANT]
+> インストーラーを実行する前に、[開始する前](azure-stack-app-service-before-you-get-started.md)に関するページのガイダンスに従っていることを確認してください。
+> 
+>
 
-1.  [インストール ファイルとヘルパー ファイルをダウンロードして抽出します](azure-stack-app-service-before-you-get-started.md)。
-2.  [必要な証明書を作成します](azure-stack-app-service-before-you-get-started.md#certificates-required-for-the-azure-stack-development-kit)。
-3.  App Service リソースプロバイダーのインストーラーを実行します。
+
 
 ## <a name="run-the-app-service-resource-provider-installer"></a>App Service リソースプロバイダーのインストーラーを実行する
 
@@ -98,6 +99,11 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
 11. ロール インスタンスと SKU のオプションを確認します。 ロールごとに、お勧めの最小インスタンス SKU が既定値として設定されます。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
 
+    > [!NOTE]
+    > 運用環境デプロイの場合は、「[Azure Stack での Azure App Service サーバー ロールの容量計画](azure-stack-app-service-capacity-planning.md)」のガイダンスに従ってください。
+    > 
+    >
+
     | 役割 | お勧めの最小インスタンス数 | お勧めの最小 SKU | メモ |
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A1 - (1 コア、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
@@ -107,9 +113,6 @@ App Service リソースプロバイダーをデプロイするには、次の�
     | 共有 Worker | 1 | Standard_A1 - (1 コア、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つのコアが必要です。 |
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image08.png)    
-
-    > [!NOTE]
-    > テクニカル プレビューでは、App Service リソース プロバイダー インストーラーにより、Azure Resource Manager をサポートする単純なファイル サーバーとして機能するように 1 つの Standard A1 インスタンスもデプロイされます。 このインスタンスは、単一ノード開発キット用に残されています。 実稼働ワークロードについては、一般提供開始時に、App Service インストーラーにより、高可用性ファイル サーバーを使うことができるようになります。
 
 12. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。 **[次へ]** をクリックします。
 
@@ -136,20 +139,11 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>App Service on Azure Stack インストールを検証する
 
-1. Azure Stack 管理ポータルで、インストーラーによって作られたリソース グループを参照します。 既定では、このグループは **APPSERVICE-LOCAL** です。
+1. Azure Stack 管理ポータルで、**[Administration - App Service]\(管理 - App Service\)** に移動します。
 
-2. **CN0-VM** を見つけます。 仮想マシンに接続するには、**[仮想マシン]** ブレードで **[接続]** をクリックします。
+2. 概要の状態で、**[状態]** に **[ロールはいずれも準備ができています]** と表示されていることを確認します。
 
-3. この VM のデスクトップで、**[Web Cloud Management Console]\(Web クラウド管理コンソール\)** をダブルクリックします。
-
-4. **[管理されたサーバー]** に移動します。
-
-5. すべてのマシンで、1 つ以上の Worker について **[準備完了]** と表示されたら、手順 6 に進みます。
-
-6. リモートのデスクトップ マシンを終了して、App Service インストーラーを実行したマシンに戻ります。
-
-    ![App Service インストーラー](media/azure-stack-app-service-deploy/managed-servers.png)    
-
+    ![App Service インストーラー](media/azure-stack-app-service-deploy/image12.png)    
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる
 
