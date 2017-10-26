@@ -57,7 +57,7 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [概要](active-directory-b2c-get-started-custom.md)
+### [作業開始](active-directory-b2c-get-started-custom.md)
 ### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
