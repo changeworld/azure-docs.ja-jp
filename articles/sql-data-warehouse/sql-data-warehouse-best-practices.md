@@ -15,11 +15,11 @@ ms.workload: data-services
 ms.custom: performance
 ms.date: 10/31/2016
 ms.author: shigu;barbkess
-ms.openlocfilehash: 4608d0e3a98c2e9de322e630c26ae28f09706416
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3a7755281ceb2818f80e0e6b31cf51a46c8f650
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="best-practices-for-azure-sql-data-warehouse"></a>Azure SQL Data Warehouse のベスト プラクティス
 この記事には、Azure SQL Data Warehouse で最適なパフォーマンスを実現するのに役立つさまざまなベスト プラクティスがまとめられています。  この記事で取り上げている概念には、基本的なため、簡単に説明できるものから、高度なため、この記事では軽く紹介するだけのものまであります。  この記事の目的は、基本的なガイダンスを提供し、データ ウェアハウスを構築するときに重視する必要がある重要な領域に対する認識を高めることです。  各セクションでは、概念と、その概念について詳しく説明している詳細な記事を紹介します。
@@ -166,4 +166,4 @@ SQL Data Warehouse には、クエリの実行を監視するために使用で�
 [Azure SQL Data Warehouse Feedback]: https://feedback.azure.com/forums/307516-sql-data-warehouse
 [Azure SQL Data Warehouse MSDN Forum]: https://social.msdn.microsoft.com/Forums/sqlserver/home?forum=AzureSQLDataWarehouse
 [Azure SQL Data Warehouse Stack Overflow Forum]:  http://stackoverflow.com/questions/tagged/azure-sqldw
-[Azure SQL Data Warehouse loading patterns and strategies]: https://blogs.msdn.microsoft.com/sqlcat/2016/02/06/azure-sql-data-warehouse-loading-patterns-and-strategies
+[Azure SQL Data Warehouse loading patterns and strategies]: http://blogs.msdn.microsoft.com/sqlcat/2017/05/17/azure-sql-data-warehouse-loading-patterns-and-strategies/

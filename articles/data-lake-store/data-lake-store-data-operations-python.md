@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 0c3bda65bd40a5d24e4c4ab3dcbbbf27fbbb87c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3540e58a58f20842979212ba41f11ce2908941f5
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="filesystem-operations-on-azure-data-lake-store-using-rest-api"></a>REST API を使用した Azure Data Lake Store に対するファイルシステム操作
 > [!div class="op_single_selector"]
@@ -103,7 +103,7 @@ pip install azure-datalake-store
     adlsAccountName = 'FILL-IN-HERE'
 
     ## Create a filesystem client object
-    adlsFileSystemClient = core.AzureDLFileSystem(token, store_name=adlsAccountName)
+    adlsFileSystemClient = core.AzureDLFileSystem(adlCreds, store_name=adlsAccountName)
 
 ## <a name="create-a-directory"></a>ディレクトリを作成する
 
