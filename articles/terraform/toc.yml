@@ -1,0 +1,35 @@
+- name: 概要
+  items:
+    - name: Terraform on Azure について
+      href: terraform-overview.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: Terraform のインストールと構成
+      href: /azure/virtual-machines/linux/terraform-install-configure
+      maintainContext: true
+    - name: Linux VM の作成
+      href: /azure/virtual-machines/linux/terraform-create-complete-vm
+      maintainContext: true
+- name: Tutorials (チュートリアル)
+  items:
+    - name: Terraform モジュールを使用した VM クラスターの作成
+      href: terraform-create-vm-cluster-module.md
+    - name: Cloud Shell を使用した VM クラスターの作成
+      href: terraform-create-vm-cluster-with-infrastructure.md
+    - name: インフラストラクチャを使用した VM スケール セットのプロビジョニング
+      href: terraform-create-vm-scaleset-network-disks-hcl.md
+- name: 概念
+  items:
+    - name: Cloud Shell の統合
+      href: terraform-cloud-shell.md
+- name: サンプル
+  items:
+    - name: 構成テンプレート
+      href: 'https://github.com/terraform-providers/terraform-provider-azurerm/tree/master/examples'
+- name: リファレンス
+  items:
+    - name: Azure モジュールのレジストリ
+      href: 'https://registry.terraform.io/modules/Azure'
+    - name: Terraform のリファレンス
+      href: 'http://aka.ms/terraform'

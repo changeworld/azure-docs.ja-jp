@@ -63,6 +63,7 @@
 #### [トランザクション処理](service-bus-transactions.md)
 #### [ペアの名前空間の実装](service-bus-paired-namespaces.md)
 ## 管理
+### [Azure 監視による Service Bus の監視](service-bus-metrics-azure-monitor.md)
 ### [Service Bus 管理ライブラリ](service-bus-management-libraries.md)
 ### [診断ログ](service-bus-diagnostic-logs.md)
 ### [メッセージ エンティティの一時停止と再アクティブ化](entity-suspend.md)

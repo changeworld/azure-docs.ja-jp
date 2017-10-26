@@ -119,7 +119,7 @@
 ##### [Web プロキシを構成する](storsimple-8000-configure-web-proxy.md)
 ##### [DATA 0 設定を変更する](storsimple-8000-modify-data-0.md)
 
-#### [Azure PowerShell サンプル スクリプトの使用](storsimple-8000-automation-azurerm-scripts.md)
+
 
 #### [StorSimple Snapshot Manager の使用](storsimple-snapshot-manager-admin.md)
 ##### [StorSimple Snapshot Manager とは](storsimple-what-is-snapshot-manager.md)
@@ -131,6 +131,11 @@
 ##### [StorSimple Snapshot Manager でバックアップ ジョブを管理する](storsimple-snapshot-manager-manage-backup-jobs.md)
 ##### [StorSimple Snapshot Manager でボリュームを管理する](storsimple-snapshot-manager-manage-volumes.md)
 ##### [StorSimple Snapshot Manager で MMC アクションを使用する](storsimple-snapshot-manager-mmc-menu.md)
+
+### 自動化
+
+#### [Azure PowerShell サンプル スクリプトの使用](storsimple-8000-automation-azurerm-scripts.md)
+#### [Azure Automation Runbook の使用](storsimple-8000-automation-azurerm-runbook.md)
 
 ### ソリューションを構築する
 #### [StorSimple と Veeam](storsimple-configure-backup-target-veeam.md)

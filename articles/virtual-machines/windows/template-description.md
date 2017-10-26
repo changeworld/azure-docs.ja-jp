@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: davidmu
-ms.openlocfilehash: d45a43d1d4304fd0028d15b4797228a22cc6e76f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9c0039987ec28601c9338d2b94633c38c31e01f8
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Azure Resource Manager テンプレートの仮想マシン
 
@@ -281,7 +281,7 @@ Resource Manager は、デプロイ中の他のリソースに依存していな
 - [サイズ](sizes.md)
 - [名前](/architecture/best-practices/naming-conventions)と資格情報
 - ディスクと[オペレーティング システムの設定](cli-ps-findimage.md)
-- [ネットワーク インターフェイス](../../virtual-network/virtual-networks-multiple-nics.md) 
+- [ネットワーク インターフェイス](../../virtual-network/virtual-network-deploy-multinic-classic-ps.md) 
 - ブート診断
 
 ## <a name="disks-and-images"></a>ディスクとイメージ

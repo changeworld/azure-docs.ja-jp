@@ -11,20 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: db271f5157fee29a5cc0c4534768bdb3c769ba74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f040d1480433ccf4c0b2b22c0cf1e25a7151d74
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="understanding-log-searches-in-log-analytics"></a>Log Analytics でのログ検索について
-
-> [!NOTE]
-> この記事では、新しいクエリ言語を使用した Azure Log Analytics のログ検索について説明します。  新しい言語の詳細、およびワークスペースのアップグレード手順については、「[Upgrade your Azure Log Analytics workspace to new log search (新しいログ検索への Azure Log Analytics ワークスペースのアップグレード)](log-analytics-log-search-upgrade.md)」を参照してください。  
->
-> ワークスペースが新しいクエリ言語にアップグレードされていない場合は、「[ログ検索を使用してデータを探す](log-analytics-log-searches.md)」を参照してください。
 
 Log Analytics からデータを取得するにはログ検索が必要です。  ポータルでデータを分析する、特定の条件の通知を受け取る警告ルールを構成する、Log Analytics API を使用してデータを取得する、などの操作を行うときに、ログ検索を使用して必要なデータを指定します。  この記事では、Log Analytics でログ検索を使用する方法と、ログ検索を作成する前に理解しておく必要がある概念について説明します。 ログ検索の作成と編集の詳細、およびクエリ言語については、「[次のステップ](#next-steps)」セクションを参照してください。
 

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Site Recovery を使用した Azure へのレプリケーションの前提条件 | Microsoft Docs"
 description: "Azure Site Recovery サービスを使用して VM や物理マシンを Azure にレプリケートするための前提条件について学習します。"
 services: site-recovery
@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/23/2017
-ms.author: rajanaki
-ms.openlocfilehash: 490833c14b6856cdaf6f6bfd2f67ce54fb0414a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/19/2017
+ms.author: raynew
+ms.openlocfilehash: d070fffd398a9a0ed6549b134ecbd1415baf2273
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 #  <a name="prerequisites-for-replication-from-on-premises-to-azure-by-using-site-recovery"></a>Site Recovery を使用してオンプレミスから Azure へのレプリケーションを行うための前提条件
 
@@ -110,7 +110,7 @@ VMM クラウドにある Hyper-V の、お客様所有サイトへのディザ�
 
 | **コンポーネント** | **詳細** |
 | --- | --- |
-| **Virtual Machine Manager** |  プライマリ サイトとセカンダリ サイトの両方に VMM サーバーをデプロイすることをお勧めします。<br/><br/> [単一の VMM サーバー上のクラウド間でレプリケート](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)できます。 1 つの VMM サーバー上のクラウド間でレプリケートを行うには、VMM サーバーで少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーでは、最新の更新プログラムが適用された System Center 2012 SP1 以降が実行されている必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが必要です。 すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには 1 つ以上の VMM ホスト グループが必要です。 VMM クラウドのセットアップについて詳しくは、[Azure Site Recovery のデプロイの準備](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページを参照してください。 |
+| **Virtual Machine Manager** |  プライマリ サイトとセカンダリ サイトの両方に VMM サーバーをデプロイすることをお勧めします。<br/><br/> 1 つの VMM サーバー上のクラウド間でレプリケートを行うには、VMM サーバーで少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーでは、最新の更新プログラムが適用された System Center 2012 SP1 以降が実行されている必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが必要です。 すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには 1 つ以上の VMM ホスト グループが必要です。 VMM クラウドのセットアップについて詳しくは、[Azure Site Recovery のデプロイの準備](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページを参照してください。 |
 | **Hyper-V** | Hyper-V サーバーでは、Hyper-V ロールが有効になっている Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーには 1 つ以上の VM が必要です。<br/><br/>  Hyper-V ホスト サーバーは、プライマリおよびセカンダリの VMM クラウド内のホスト グループに存在する必要があります。<br/><br/> Hyper-V を Windows Server 2012 R2 上のクラスターで実行する場合は、サポート技術情報の記事 [2961977](https://support.microsoft.com/kb/2961977) に記載されている更新プログラムをインストールすることをお勧めします。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行し、静的 IP アドレス ベースのクラスターが存在する場合、クラスター ブローカーは自動的に作成されません。 クラスター ブローカーを手動で構成する必要があります。 クラスター ブローカーについて詳しくは、[クラスター間レプリケーションのためのレプリカ ブローカー ロールの構成](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)に関するページを参照してください。 |
 | **プロバイダー** | Site Recovery のデプロイ時に、Azure Site Recovery Provider を VMM サーバーにインストールします。 プロバイダーは、HTTPS (ポート 443) 経由で Azure Site Recovery と通信し、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> VMM サーバーで実行されているプロバイダーには、以下の URL へのアクセス権が必要です。<br/><br/>[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)] <br/><br/>Site Recovery Provider は、VMM サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信、および HTTPS (ポート 443) プロトコルを許可する必要があります。 |
 

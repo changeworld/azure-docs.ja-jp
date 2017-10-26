@@ -1,5 +1,5 @@
 ---
-title: "Azure Team Data Science Process の概要 | Microsoft Docs"
+title: "Team Data Science Process とは | Microsoft Docs"
 description: "予測分析ソリューションとインテリジェント アプリケーションを実現するデータ サイエンス手法について説明します。"
 services: machine-learning
 documentationcenter: 
@@ -12,15 +12,15 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/02/2017
+ms.date: 10/20/2017
 ms.author: bradsev;
-ms.openlocfilehash: d92c8df7ad8cf522079bdea86e7b33d8441452ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75e170f29f9a6abeeb3393e43e6a4c355749044d
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
-# <a name="team-data-science-process-overview"></a>Team Data Science Process の概要
+# <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 
 Team Data Science Process (TDSP) は、予測分析ソリューションとインテリジェント アプリケーションを効率的に実現するアジャイルで反復的なデータ サイエンス手法です。 TDSP を通じて、チームのコラボレーションと学習の効果を高めることができます。 これには、データ サイエンスへの取り組みを円滑に導入できるよう支援する Microsoft をはじめとする業界の各企業から、ベスト プラクティスと構造を抽出することが含まれます。 分析プログラムの利点を完全に実現できるよう企業を支援するのがその目標です。
 

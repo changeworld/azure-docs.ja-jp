@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
-ms.openlocfilehash: b99037fc28eca1a3ebffefb9e99991e74f52c9a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a59e9805bd4b694a44a6c83382cce2872530cde3
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="account-provisioning-notifications"></a>アカウント プロビジョニング通知
 ユーザー プロビジョニングを使用すると、サード パーティの SaaS アプリケーションでユーザーを管理するプロセスを自動化できます。 <br>

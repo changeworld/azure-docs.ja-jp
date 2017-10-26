@@ -1,32 +1,43 @@
 
-# 可用性ゾーンのドキュメント
-## [可用性ゾーンとは](az-overview.md)
+# Azure の回復性
+## [Azure の回復性の機能に関するページ](http://azure.microsoft.com/features/resiliency)
+## [回復性に優れた Azure 用アプリケーションの設計](https://docs.microsoft.com/azure/architecture/resiliency/)
 
-# ハウツー ガイド
+# 高可用性
 
-## 仮想マシン
-### [CLI を使用して可用性ゾーン内に Linux VM を作成する](../virtual-machines/linux/create-cli-availability-zone.md)
-### [PowerShell を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-powershell-availability-zone.md)
-### [Azure Portal を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-portal-availability-zone.md)
+## [Azure アプリケーションの高可用性](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications)
 
+## 可用性ゾーンのドキュメント
+### [可用性ゾーンとは](az-overview.md)
 
-## 管理ディスク
-### [CLI を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
-### [PowerShell を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
+### 仮想マシン
+#### [CLI を使用して可用性ゾーン内に Linux VM を作成する](../virtual-machines/linux/create-cli-availability-zone.md)
+#### [PowerShell を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-powershell-availability-zone.md)
+#### [Azure Portal を使用して可用性ゾーン内に Windows VM を作成する](../virtual-machines/windows/create-portal-availability-zone.md)
 
-## 仮想マシン スケール セット
-### [Azure Portal を使用して仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
+### 管理ディスク
+#### [CLI を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/linux/add-disk.md#use-managed-disks)
+#### [PowerShell を使用して可用性ゾーン内に管理ディスクを追加する](../virtual-machines/windows/attach-disk-ps.md#add-an-empty-data-disk-to-a-virtual-machine)
 
-## Load Balancer
-### [Load Balancer とは](../load-balancer/load-balancer-standard-overview.md)
-### [Azure Portal を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-portal.md)
-### [PowerShell を使用してゾーン冗長 Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
-### [CLI を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+### 仮想マシン スケール セット
+#### [Azure Portal を使用して仮想マシン スケール セットを作成する](../virtual-machine-scale-sets/virtual-machine-scale-sets-portal-create.md)
 
-## パブリック IP アドレス
-### [Azure Portal を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-portal.md)
-### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
-### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
+### Load Balancer
+#### [Load Balancer とは](../load-balancer/load-balancer-standard-overview.md)
+#### [Azure Portal を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-portal.md)
+#### [PowerShell を使用してゾーン冗長 Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-powershell.md)
+#### [CLI を使用してゾーン冗長パブリック Load Balancer Standard を作成する](../load-balancer/load-balancer-get-started-internet-az-cli.md)
+
+### パブリック IP アドレス
+#### [Azure Portal を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-portal.md)
+#### [PowerShell を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-powershell.md)
+#### [CLI を使用して可用性ゾーン内にパブリック IP アドレスを作成する](../virtual-network/create-public-ip-availability-zone-cli.md)
+
+# 障害復旧
+## [Azure Site Recovery の使用](https://docs.microsoft.com/azure/site-recovery/)
+
+# Azure Backup
+## [Azure Backup の使用](https://docs.microsoft.com/azure/backup/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

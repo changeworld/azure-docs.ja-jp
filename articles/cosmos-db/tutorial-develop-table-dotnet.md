@@ -12,14 +12,14 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: tutorial
-ms.date: 05/10/2017
+ms.date: 10/12/2017
 ms.author: arramac
 ms.custom: mvc
-ms.openlocfilehash: 5322fa5cc8e841ecea97a69d15cf130a4426ad95
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2189dc7900f03a45c360fceffbcd7c1ff36f7e48
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-cosmos-db-develop-with-the-table-api-in-net"></a>Azure Cosmos DB: .NET での Table API を使用した開発
 
@@ -43,7 +43,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 Azure Cosmos DB では、スキーマレス設計のキー/値ストアを必要とするアプリケーションのために [Table API](table-introduction.md) (プレビュー) が提供されます。 Azure Cosmos DB で [Azure Table Storage](../storage/common/storage-introduction.md) SDK および REST API を使用できます。 Azure Cosmos DB を使用して、高スループット要件のテーブルを作成できます。 Azure Cosmos DB ではスループットが最適化されたテーブル (通称 "Premium テーブル") がサポートされ、現在パブリック プレビューが行われています。 
 
-Azure Table Storage は、ストレージ要件が高くスループット要件が低いテーブルに対して、引き続き使用できます。 Azure Cosmos DB では、将来の更新時にストレージ最適化テーブルのサポートが導入される予定であり、既存および新規の Azure Table Storage アカウントは Azure Cosmos DB にシームレスにアップグレードされます。
+Azure Table Storage は、ストレージ要件が高くスループット要件が低いテーブルに対して、引き続き使用できます。
 
 現在 Azure Table Storage を使用している場合、"Premium テーブル" のプレビューには次のメリットがあります。
 
@@ -52,7 +52,7 @@ Azure Table Storage は、ストレージ要件が高くスループット要件
 - 任意の数のリージョンにわたる[ストレージとスループットの独立した拡張](partition-data.md)のサポート
 - [テーブルごとの専用スループット](request-units.md)のサポート (1 秒あたりの要求数を数百件から数百万件まで拡張できる)
 - [調整可能な 5 つの一貫性レベル](consistency-levels.md)のサポート。アプリケーションのニーズに基づいて、可用性、待機時間、一貫性のトレードオフを行います。
-- 1 リージョンで 99.99% の可用性 (可用性を上げるためにリージョンを追加することもでき、一般的な可用性に関して[業界をリードする包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/) が提供される)
+- 1 リージョンで 99.99% の可用性 (可用性を上げるためにリージョンを追加することもでき、一般的な可用性に関して[業界をリードする包括的な SLA](https://azure.microsoft.com/support/legal/sla/cosmos-db/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) が提供される)
 - 既存の Azure Storage .NET SDK の利用、アプリケーションのコード変更不要
 
 プレビュー中、Azure Cosmos DB は Table API をサポートするために .NET SDK を使用します。 [Azure Storage Preview SDK](https://aka.ms/premiumtablenuget) は NuGet からダウンロードできます。これには、[Azure Storage SDK](https://www.nuget.org/packages/WindowsAzure.Storage) と同じクラスおよびメソッド シグネチャが含まれます。ただし、Table API を使用して Azure Cosmos DB アカウントに接続することもできます。

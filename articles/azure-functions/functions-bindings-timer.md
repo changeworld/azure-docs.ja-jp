@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 02/27/2017
 ms.author: glenga
 ms.custom: 
-ms.openlocfilehash: ed4afa2b946fe11d5802a95f8a490f3419dc0f39
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12beb090a95a31c7e83ae03a920016bdfbf474e3
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-functions-timer-trigger"></a>Azure Functions におけるタイマー トリガー
 
@@ -54,7 +54,7 @@ ms.lasthandoff: 10/11/2017
 >[!NOTE]   
 >オンラインで見つかる CRON 式の多くでは、`{second}` フィールドが省略されています。 それらをコピーした場合は、追加の `{second}` フィールドを調整する必要があります。 具体的な例については、以下の「[スケジュールの例](#examples)」を参照してください。
 
-CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使用するには、Function App 用に `WEBSITE_TIME_ZONE` という名前の新しいアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://msdn.microsoft.com/library/ms912391.aspx)に関するページに示されている目的のタイム ゾーンの名前に設定します。 
+CRON 式で使用する既定のタイム ゾーンは、協定世界時 (UTC) です。 別のタイム ゾーンに基づく CRON 式を使用するには、Function App 用に `WEBSITE_TIME_ZONE` という名前の新しいアプリ設定を作成します。 この値を、[Microsoft のタイム ゾーン インデックス](https://technet.microsoft.com/library/cc749073(v=ws.10).aspx)に関するページに示されている目的のタイム ゾーンの名前に設定します。 
 
 たとえば、"*東部標準時*" は UTC-05:00 です。 タイマー トリガーが毎日東部標準時の 10:00 AM に発生するように設定するには、UTC タイム ゾーンを考慮した次の CRON 式を使用できます。
 

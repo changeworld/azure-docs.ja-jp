@@ -1,6 +1,6 @@
 Cloud Shell で [az appservice plan create](/cli/azure/appservice/plan#create) コマンドを使用して App Service プランを作成します。
 
-[!INCLUDE [app-service-plan](app-service-plan.md)]
+[!INCLUDE [app-service-plan](app-service-plan-linux.md)]
 
 次の例では、**Standard** 価格レベルを使用して、Linux コンテナーに `myAppServicePlan` という名前の App Service プランを作成します。
 

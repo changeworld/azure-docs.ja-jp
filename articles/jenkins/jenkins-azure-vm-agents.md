@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 8/25/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: c6cfca299dabba253757d959411c0cac8f90fa2e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb30809ab68079666ecfa81a896c1d5101fb6fb
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="scale-your-jenkins-deployments-to-meet-demand-with-azure-vm-agents"></a>要求を満たすために、Azure VM エージェントを使用して Jenkins デプロイをスケーリングします。
 
@@ -108,7 +108,7 @@ Azure VM エージェントの定義に使用するテンプレートを構成�
 1. **[Add Azure Virtual Machine Template]\(Azure 仮想マシン テンプレートの追加\)** の横にある **[追加]** を選択します。
 2. **Name** に `defaulttemplate` を入力します。
 3. **Label** に `ubuntu` を入力します。
-4. コンボ ボックスから目的の [[Azure リージョン]](https://azure.microsoft.com/regions/) を選びます。
+4. コンボ ボックスから目的の [[Azure リージョン]](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) を選びます。
 5. **[Virtual Machine Size]\(仮想マシンのサイズ\)** の下にあるドロップダウン リストから [VM サイズ](/azure/virtual-machines/linux/sizes)を選択します。 汎用的な `Standard_DS1_v2` サイズであれば、このチュートリアルでは十分です。   
 6. **[保持時間]** は `60` のままにしておきます。 この設定は、Jenkins がアイドル状態のエージェントの割り当てを解除するまで待機する分単位の時間を定義します。 アイドル状態のエージェントが自動的に削除されないようにする場合は、0 を指定します。
 

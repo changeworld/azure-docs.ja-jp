@@ -1,9 +1,9 @@
-﻿---
+---
 title: "Azure SQL Database での自動チューニングの有効化 | Microsoft Docs"
 description: "Azure SQL Database で自動チューニングを簡単に有効にすることができます。"
 services: sql-database
 documentationcenter: 
-author: vvasic
+author: veljko-msft
 manager: drasumic
 editor: vvasic
 ms.assetid: 
@@ -14,12 +14,12 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 09/19/2016
-ms.author: vvasic
-ms.openlocfilehash: 378e5a6a8cea80a551666c3692f8aa650620f66d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: veljko-msft
+ms.openlocfilehash: 95690e10730e64aa7181bc2e2e3b53ba9184f89e
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 

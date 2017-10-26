@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 08/28/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: cbb33988f5db47e35db406c037caa9133616d191
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b363616792b35420644154cc0f8b878f2c83f1c7
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="self-service-password-reset-in-azure-ad-deep-dive"></a>Azure AD のセルフ サービスによるパスワードのリセットの詳細
 
@@ -77,7 +77,7 @@ SSPR のしくみは、どのようなものでしょうか? そのオプショ�
 
 ユーザーが自分のパスワードをリセットできるのは、管理者が有効にしていて必要としている認証方法にデータがある場合のみです。
 
-ユーザーが自分の携帯電話番号を、ディレクトリには表示したくないがパスワードのリセットには使用したい場合は、管理者がディレクトリに設定するのではなく、ユーザーが[パスワード リセット登録ポータル](http://aka.ms/ssprsetup)で **[認証用電話]**  属性を設定してください。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。 Azure 管理者アカウントで認証用電話番号を登録すると、携帯電話フィールドに入力されて表示されます。
+ユーザーが自分の携帯電話番号を、ディレクトリには表示したくないがパスワードのリセットには使用したい場合は、管理者がディレクトリに設定するのではなく、ユーザーが[パスワード リセット登録ポータル](http://aka.ms/ssprsetup)で **[認証用電話]**  属性を設定してください。 管理者はこの情報をユーザーのプロファイルで確認できますが、他の場所には公開されません。
 
 ### <a name="number-of-authentication-methods-required"></a>必要な認証方法の数
 

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 2ecd07faed785fa6aa179ac1cca35a70d965e1dc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5479981ed4c017e6953ef616588ca0e4060ce3b2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-identity-protection-playbook"></a>Azure Active Directory Identity Protection プレイブック
 このプレイブックは次の操作で役立ちます。
@@ -62,7 +62,7 @@ Azure Active Directory Identity Protection:
 1. 少なくとも 14 日間のサインイン履歴のあるアカウントを選択します。 
 2. 次のどちらかの操作を行います。
    
-   a. VPN を使用している状態で、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、リスク イベントをシミュレートするアカウントの資格情報を入力します。
+   a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 VPN を使用している状態で、[https://myapps.microsoft.com](https://myapps.microsoft.com) に移動し、リスク イベントをシミュレートするアカウントの資格情報を入力します。
    
    b. 別の場所にいる知り合いに、アカウントの資格情報を使用してサインインするよう頼みます (推奨されません)。
 
@@ -103,7 +103,7 @@ Azure Active Directory Identity Protection:
 9. **[ユーザーの侵害リスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
 10. 次のいずれかのオプションを選択します。
     
-    a. ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
+    a.[サインオン URL] ボックスに、次のパターンを使用して、ユーザーが Yardi eLearning アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します。
     
     b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
 11. **[保存]**をクリックします。
@@ -122,7 +122,7 @@ Azure Active Directory Identity Protection:
 5. **[サインインのリスク]** ブレードで、**[ルールの有効化]** の **[オン]** を選択します。 
 6. 次のいずれかのオプションを選択します。
    
-   a. ブロックするには、**[サインインのブロック]** で **[中]** を選択します
+   a.[サインオン URL] ボックスに、ユーザーが Tidemark アプリケーションへのサインオンに使用する URL を入力します。 ブロックするには、**[サインインのブロック]** で **[中]** を選択します
    
    b. セキュリティで保護されたパスワードの変更を強制するには、**[多要素認証を要求する]** で **[中]** を選択します。
 7. ブロックするには、[リスクが指定された設定値以上の場合、サインインをブロックする] で [中] を選択します。

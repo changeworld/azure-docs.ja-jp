@@ -15,11 +15,11 @@ ms.date: 06/16/2017
 ms.author: kgremban
 ms.reviewer: yossib
 ms.custom: it-pro
-ms.openlocfilehash: 6e4e09f8539aad56f92ad9137f4a6b9eb0d82370
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a2fb7413fa1391969d00ad281fd1ade3e0f40a8
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="upgrade-to-the-latest-azure-multi-factor-authentication-server"></a>最新の Azure Multi-Factor Authentication Server にアップグレードする
 
@@ -29,7 +29,7 @@ v6.x 以前から v7.x 以降にアップグレードする場合、すべての
 
 ## <a name="install-the-latest-version-of-azure-mfa-server"></a>最新バージョンの Azure MFA Server をインストールする
 
-1. 「[Azure Multi-Factor Authentication Server のダウンロード](multi-factor-authentication-get-started-server.md#download-the-azure-multi-factor-authentication-server)」の説明に従って、Azure MFA Server の最新バージョンを入手します。
+1. 「[Azure Multi-Factor Authentication Server のダウンロード](multi-factor-authentication-get-started-server.md#download-the-mfa-server)」の説明に従って、Azure MFA Server の最新バージョンを入手します。
 2. マスター MFA Server の C:\Program Files\Multi-Factor Authentication Server\Data\PhoneFactor.pfdata (既定のインストール場所の場合) にある MFA Server データ ファイルのバックアップを作成します。
 3. 高可用性のために複数のサーバーを実行している場合は、アップグレード中のサーバーへのトラフィック送信を停止するように、MFA Server への認証を行うクライアント システムを変更します。 ロード バランサーを使用する場合は、MFA Server をロード バランサーから削除し、アップグレードを行ってから、ファームにサーバーを追加して戻します。
 4. 各 MFA Server で新しいインストーラーを実行します。 下位サーバーはマスターによってレプリケートされる古いデータ ファイルを読み取ることができるため、最初に下位サーバーをアップグレードします。 

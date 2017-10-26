@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 03/17/2017
 ms.author: cfowler
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 8276afd9593b46a08279e9c1d6fe1d07f04273dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b3908aa6534d08c5f3bd41d439556f48067dc466
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="create-a-python-web-app-in-azure"></a>Azure に Python Web アプリを作成する
 

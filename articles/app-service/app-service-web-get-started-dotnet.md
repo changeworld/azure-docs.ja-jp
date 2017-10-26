@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 57b56f417db63f24f09a497fa780c7edda048e56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79ca3692fd779a26320100921d482df0d1f85855
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>Azure に ASP.NET Web アプリを作成する
 
@@ -106,7 +106,7 @@ Visual Studio で、**[ファイル]、[新規作成]、[プロジェクト]** �
 |-|-|-|
 |App Service プラン| myAppServicePlan | App Service プランの名前です。 |
 | 場所 | 西ヨーロッパ | Web アプリがホストされているデータ センターです。 |
-| サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/)によって、ホスティング機能が決まります。 |
+| サイズ | 無料 | [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)によって、ホスティング機能が決まります。 |
 
 **[OK]**を選択します。
 

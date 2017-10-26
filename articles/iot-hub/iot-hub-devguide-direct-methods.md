@@ -12,24 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/25/2017
+ms.date: 10/19/2017
 ms.author: nberdy
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1fd0353bf805340a9c4d3151a9b85c329f7d2e96
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: d23bf20e4483b102fe5d946cb017dce1769b39a1
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>IoT Hub からのダイレクト メソッドの呼び出しについて
-## <a name="overview"></a>概要
 IoT Hub には、クラウドからデバイス上のダイレクト メソッドを呼び出す機能が備わっています。 ダイレクト メソッドは、デバイスとの要求/応答型通信を表し、すぐに要求の成功または失敗が確定する (ユーザーが指定したタイムアウト後) という点で HTTP 呼び出しに似ています。 このアプローチは、デバイスがオフラインの場合に SMS ウェイクアップを送信するような、デバイスが応答できるかによって、一連の即時のアクションが異なってくるシナリオで便利です (SMS はメソッドの呼び出しよりもコストがかかります)。
 
 各デバイス メソッドは、1 つのデバイスをターゲットとします。 [Jobs][lnk-devguide-jobs] を使用すると、複数のデバイス上のダイレクト メソッドを呼び出すことができ、接続されていないデバイスに対するメソッドの呼び出しをスケジュール設定できます。
 
 IoT Hub で**サービス接続**のアクセス許可を持っていれば、誰でもデバイスでメソッドを呼び出すことができます。
 
-### <a name="when-to-use"></a>使用時の注意
 ダイレクト メソッドは要求/応答型パターンに従うメソッドであり、すぐに確認する必要がある通信向けであり、通常はデバイスを対話式で制御する (例: ファンをオンにする) ときに使用されます。
 
 必要なプロパティ、ダイレクト メソッド、または cloud-to-device メッセージの使用方法の詳細については、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」を参照してください。
@@ -48,9 +46,6 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 
 メソッドの要求および応答のペイロードは、最大 8 KB の JSON ドキュメントになります。
 
-## <a name="reference-topics"></a>参照トピック:
-以下の参照トピックは、ダイレクト メソッドの使用に関する詳細情報を提供しています。
-
 ## <a name="invoke-a-direct-method-from-a-back-end-app"></a>バックエンド アプリからダイレクト メソッドを呼び出す
 ### <a name="method-invocation"></a>メソッドの呼び出し
 デバイスでのダイレクト メソッドの呼び出しは HTTPS 呼び出しであり、次の項目で構成されます。
@@ -60,16 +55,16 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 * *ヘッダー*。承認、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む
 * 透過的な JSON *本文*。次の形式になります。
 
-```
-{
-    "methodName": "reboot",
-    "responseTimeoutInSeconds": 200,
-    "payload": {
-        "input1": "someInput",
-        "input2": "anotherInput"
-    }
-}
-```
+   ```
+   {
+       "methodName": "reboot",
+       "responseTimeoutInSeconds": 200,
+       "payload": {
+           "input1": "someInput",
+           "input2": "anotherInput"
+       }
+   }
+   ```
 
 タイムアウトは秒単位です。 タイムアウトが設定されていない場合の既定値は 30 秒です。
 
@@ -80,12 +75,12 @@ IoT Hub で**サービス接続**のアクセス許可を持っていれば、�
 * *ヘッダー*。ETag、要求 ID、コンテンツの種類、コンテンツのエンコーディングを含む
 * JSON *本文*。次の形式になります。
 
-```
-{
-    "status" : 201,
-    "payload" : {...}
-}
-```
+   ```
+   {
+       "status" : 201,
+       "payload" : {...}
+   }
+   ```
 
    `status` と `body` の両方ともデバイスによって提供され、デバイス自身の状態コードまたは説明とともに応答する場合に使用されます。
 

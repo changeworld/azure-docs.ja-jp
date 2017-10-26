@@ -13,11 +13,11 @@ ms.tgt_pltfrm: powershell
 ms.workload: TBD
 ms.date: 06/15/2017
 ms.author: eslesar
-ms.openlocfilehash: eac0e95a46731b9d396ea0590e629d61ca6a7d70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e9352ac1a346537d6214590be6dbc9db7ca0f461
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="pass-a-json-object-to-an-azure-automation-runbook"></a>Azure Automation Runbook に JSON オブジェクトを渡す
 
@@ -95,7 +95,7 @@ Azure PowerShell を使用して、ローカル コンピューターから Runb
    ```powershell
    $JsonParams = @{"json"=$json}
    ```
-1. `Start-AzureRmAutomstionRunbook` のパラメーターのハッシュ テーブルの作成:
+1. `Start-AzureRmAutomationRunbook` のパラメーターのハッシュ テーブルの作成:
    ```powershell
    $RBParams = @{
         AutomationAccountName = 'AATest'

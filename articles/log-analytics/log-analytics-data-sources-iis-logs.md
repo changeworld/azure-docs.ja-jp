@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/12/2017
+ms.date: 09/28/2017
 ms.author: bwren
-ms.openlocfilehash: 2114bdafb3b9fe2eb0632271840b8b70a76d10f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20155e7f0ad817993b5926a1a83b8683ab124075
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="iis-logs-in-log-analytics"></a>Log Analytics の IIS ログ
 インターネット インフォメーション サービス (IIS) は、Log Analytics によって収集されるログ ファイルにユーザーの利用状況を格納します。  
@@ -69,17 +69,6 @@ IIS ログ レコードの型は **W3CIISLog** になり、次の表に示すプ
 次の表は、IIS ログ レコードを取得するログ クエリのさまざまな例をまとめたものです。
 
 | クエリ | Description |
-|:--- |:--- |
-| Type=W3CIISLog |IIS ログのすべてのレコード。 |
-| Type=W3CIISLog scStatus=500 |戻り状態が 500 であるすべての IIS ログ レコード。 |
-| Type=W3CIISLog &#124; Measure count() by cIP |クライアントの IP アドレス別の IIS ログ エントリの数。 |
-| Type=W3CIISLog csHost="www.contoso.com" &#124; Measure count() by csUriStem |ホスト www.contoso.com の URL 別の IIS ログ エントリの数。 |
-| Type=W3CIISLog &#124; Measure Sum(csBytes) by Computer &#124; top 500000 |各 IIS コンピューターによって受信された合計バイト数。 |
-
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
-
-> | クエリ | Description |
 |:--- |:--- |
 | W3CIISLog |IIS ログのすべてのレコード。 |
 | W3CIISLog &#124; where scStatus==500 |戻り状態が 500 であるすべての IIS ログ レコード。 |

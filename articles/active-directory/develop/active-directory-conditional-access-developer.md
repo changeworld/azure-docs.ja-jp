@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ed42af90a9c467042ff2537a38646f59147fb5ad
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 321c87f242f2c24eb2b28be2dc69cde278117b97
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Azure Active Directory の条件付きアクセスについての開発者ガイド
 
@@ -48,7 +48,7 @@ Azure Active Directory (AD) では、アプリをセキュリティ保護し、�
 * ADAL.js を使用するシングル ページ アプリケーション
 * リソースを呼び出す Web Apps
 
-条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azuread-connected-apps.md#configure-per-application-access-rules)」を参照してください。
+条件付きアクセス ポリシーは、アプリに適用できますが、アプリがアクセスする Web API にも適用できます。 条件付きアクセス ポリシーの構成方法については、「[Azure Active Directory の条件付きアクセス](../active-directory-conditional-access-azuread-connected-apps.md)」を参照してください。
 
 シナリオによっては、企業のお客様は、条件付きアクセス ポリシーをいつでも適用/削除できます。  新しいポリシーが適用されたときにアプリの機能を継続するためには、"チャレンジ" 処理を実装する必要があります。 チャレンジ処理の例は次のとおりです。 
 

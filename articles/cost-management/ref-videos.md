@@ -5,15 +5,15 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 10/29/2017
+ms.date: 10/11/2017
 ms.topic: reference
-ms.service: Cost Management
+ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 1e0c668983a9506c26c592b63e8c32e70b55d0dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e5bf6b11a2345b8f7353460548ab80b276d16f8
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="cost-management-training-videos"></a>Cost Management のトレーニング ビデオ
 

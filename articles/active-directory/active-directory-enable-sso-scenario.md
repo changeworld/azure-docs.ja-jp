@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Active Directory を使ったアプリケーションの管理 | Microsoft Docs"
 description: "この記事では、Azure Active Directory をオンプレミス、クラウド、および SaaS のアプリケーションと統合する利点について説明します。"
 services: active-directory
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/05/2017
+ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: asteen
-ms.openlocfilehash: b8f0cfdb468094bc761d6b939ca318fcfbea3ea4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff3e3284f34f8373a2cfd80438d94a7052bb7f5e
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="managing-applications-with-azure-active-directory"></a>Azure Active Directory でのアプリケーションの管理
 企業には、実際のワークフローやコンテンツへの対応以外に、すべてのアプリケーションに関して 2 つの基本的な要件があります。

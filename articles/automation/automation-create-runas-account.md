@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/27/2017
 ms.author: magoedte
-ms.openlocfilehash: 8a42f73fbe33b422b7881f8a17a1f421e2b5dfc8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be619668effceffe4661cb2f284ed77a9bb77d81
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="update-your-automation-account-authentication-with-run-as-accounts"></a>Automation アカウントの認証を実行アカウントで更新する 
 次の条件に該当する場合は、ポータルまたは PowerShell を使用して既存の Automation アカウントを更新できます。
@@ -152,16 +152,12 @@ Automation アカウントに次の項目が作成されます。
         $keyValue = [System.Convert]::ToBase64String($PfxCert.GetRawCertData())
         $KeyId = (New-Guid).Guid
 
-        $KeyCredential = New-Object  Microsoft.Azure.Commands.Resources.Models.ActiveDirectory.PSADKeyCredential
-        $KeyCredential.StartDate = $CurrentDate
-        $KeyCredential.EndDate = Get-Date $PfxCert.GetExpirationDateString()
-        $KeyCredential.EndDate = $KeyCredential.EndDate.AddDays(-1)
-        $KeyCredential.KeyId = $KeyId
-        $KeyCredential.CertValue  = $keyValue
+        $keyCredEndDate = Get-Date $PfxCert.GetExpirationDateString()
+                $keyCredEndDate = $keyCredEndDate.AddDays(-1)
 
         # Use key credentials and create an Azure AD application
-        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $KeyId) -KeyCredentials $KeyCredential
-        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId
+        $Application = New-AzureRmADApplication -DisplayName $ApplicationDisplayName -HomePage ("http://" + $applicationDisplayName) -IdentifierUris ("http://" + $KeyId)
+        $ServicePrincipal = New-AzureRMADServicePrincipal -ApplicationId $Application.ApplicationId -CertValue $keyValue -StartDate $CurrentDate -EndDate $keyCredEndDate
         $GetServicePrincipal = Get-AzureRmADServicePrincipal -ObjectId $ServicePrincipal.Id
 
         # Sleep here for a few seconds to allow the service principal application to become active (ordinarily takes a few seconds)

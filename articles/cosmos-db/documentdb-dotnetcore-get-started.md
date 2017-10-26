@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Cosmos DB: .NET Core で DocumentDB API を使用するチュートリアル | Microsoft Docs"
 description: "Azure Cosmos DB DocumentDB API .NET Core SDK を使用してオンライン データベースと C# コンソール アプリケーションを作成するチュートリアル。"
 services: cosmos-db
@@ -14,11 +14,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: arramac
-ms.openlocfilehash: f39d732325d171b30de3b86e0c96be0ce77c66a9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: devcenter
+ms.openlocfilehash: 2bf77f1df1dfaea8978f0f1b046baf58f4c9f8d5
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="azure-cosmos-db-getting-started-with-the-documentdb-api-and-net-core"></a>Azure Cosmos DB: DocumentDB API と .NET Core を使ってみる | Microsoft Docs
 > [!div class="op_single_selector"]

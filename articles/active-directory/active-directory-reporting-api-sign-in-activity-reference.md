@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Active Directory サインイン アクティビティ レポート API リファレンス | Microsoft Docs"
 description: "Azure Active Directory サインイン アクティビティ レポート API のリファレンス"
 services: active-directory
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/15/2017
+ms.date: 10/18/2017
 ms.author: dhanyahk;markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: d83f1a899ba38dab2c1c1661adede87db6f88c20
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c407727fbc3adf7a089a13bfe09af959be9d2b9
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-sign-in-activity-report-api-reference"></a>Azure Active Directory サインイン アクティビティ レポート API リファレンス
 このトピックは Azure Active Directory Reporting API に関するトピックのコレクションの一部です。  

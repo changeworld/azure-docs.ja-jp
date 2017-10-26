@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/09/2017
 ms.author: glenga
-ms.openlocfilehash: 5517581f929ffce9e9184848049ce9832013277e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1594a27d50df9abdac27b342ad18363b974c8972
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="run-background-tasks-with-webjobs-in-azure-app-service"></a>Azure App Service で Web ジョブを使用してバックグラウンド タスクを実行する
 
@@ -43,7 +43,7 @@ Azure Functions は、プログラムとスクリプトを実行する別の方�
 | リモート デバッグをサポートします。 | リモート デバッグをサポートしません。|
 
 > [!NOTE]
-> Web アプリは、20 分間アクティビティがないとタイムアウトする可能性があります。 scm (デプロイ) サイトまたはポータル内の Web アプリのページへの要求だけがタイマーをリセットします。 実際のサイトに要求しても、タイマーはリセットされません。 アプリが継続的またはスケジュールに従って Web ジョブを実行する場合は、**Always On** を有効にして、Web ジョブが確実に実行されるようにします。 この機能は、Basic、Standard、および Premium の[価格レベル](https://azure.microsoft.com/pricing/details/app-service/)でのみ利用できます。
+> Web アプリは、20 分間アクティビティがないとタイムアウトする可能性があります。 scm (デプロイ) サイトまたはポータル内の Web アプリのページへの要求だけがタイマーをリセットします。 実際のサイトに要求しても、タイマーはリセットされません。 アプリが継続的またはスケジュールに従って Web ジョブを実行する場合は、**Always On** を有効にして、Web ジョブが確実に実行されるようにします。 この機能は、Basic、Standard、および Premium の[価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)でのみ利用できます。
 
 ## <a name="acceptablefiles"></a>スクリプトまたはプログラムでサポートされるファイルの種類
 
@@ -83,7 +83,7 @@ when making changes in one don't forget the other two.
    | **名前** | myContinuousWebJob | App Service アプリ内で一意の名前。 名前は文字または数字で始まる必要があり、"-" と "_" 以外の特殊文字を使用することはできません。 |
    | **ファイルのアップロード** | ConsoleApp.zip | 実行可能ファイルまたはスクリプト ファイルと、プログラムまたはスクリプトを実行するために必要な関連ファイルを含む *.zip* ファイル。 サポートされている実行可能ファイルまたはスクリプト ファイルの種類については、「[サポートされるファイルの種類](#acceptablefiles)」セクションを参照してください。 |
    | **型** | 継続的 | [Web ジョブの種類](#webjob-types)については、この記事の中で既に説明しています。 |
-   | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/)には適用されません。 |
+   | **スケール** | 複数のインスタンス | 継続的 Web ジョブでのみ使用できます。 プログラムまたはスクリプトがすべてのインスタンスで実行されるか、1 つのインスタンスだけで実行されるかどうかを決定します。 複数のインスタンスで実行するオプションは、Free または Shared [価格レベル](https://azure.microsoft.com/pricing/details/app-service/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)には適用されません。 | 
 
 4. **[OK]**をクリックします。
 

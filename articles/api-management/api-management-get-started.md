@@ -3,7 +3,7 @@ title: "Azure API Management での最初の API の管理 | Microsoft Docs"
 description: "API の作成方法、操作の追加方法、API Management の基本操作について説明します。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: juliako
 manager: erikre
 editor: 
 ms.assetid: 51b7df8b-1c43-43c6-90c9-0aa24f48206b
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: hero-article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: 6e76d1ee08f804637999ef2ebf5d25becf6a0408
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0866b94003111267951a0d7917d616a370961880
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="manage-your-first-api-in-azure-api-management"></a>Azure API Management での最初の API の管理
 ## <a name="overview"> </a>概要

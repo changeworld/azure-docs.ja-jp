@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/06/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: a457ba3109625ab43ae3a88b95a3e7e1e9641921
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fda60c9dfde64c526ad4cbf7fc4ccc5b56becafb
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="password-management-frequently-asked-questions"></a>パスワード管理に関するよく寄せられる質問 (FAQ)
 
@@ -56,10 +56,6 @@ ms.lasthandoff: 10/11/2017
 * **Q: ユーザーは、他のユーザーに見られないようにデータを登録することはできますか。**
 
   > **A:** はい。ユーザーがパスワード リセット登録ポータルを使用してデータを登録すると、そのデータは、全体管理者とそのユーザーが参照できるプライベート認証フィールドに保存されます。
-    >
-    > [!NOTE]
-    > **Azure 管理者アカウント**で認証用電話番号を登録すると、携帯電話フィールドに入力されて表示されます。
-    >
   >
   >
 * **Q: ユーザーがパスワード リセットを使用するには、そのユーザーが事前に登録されている必要がありますか。**
