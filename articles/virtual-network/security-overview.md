@@ -123,7 +123,7 @@ ms.lasthandoff: 10/11/2017
 
  サービス タグは IP アドレス プレフィックスのグループを表し、セキュリティ規則の作成の複雑さを最小限に抑えるのに役立ちます。 独自のサービス タグを作成したり、タグに含まれる IP アドレスを指定したりすることはできません。 サービス タグに含まれるアドレス プレフィックスの管理は Microsoft が行い、アドレスが変化するとサービス タグは自動的に更新されます。 セキュリティ規則を作成するときは、特定の IP アドレスの代わりにサービス タグを使うことができます。 セキュリティ規則の定義で使うことができるサービス タグは次のとおりです。 サービス タグの名前は、[Azure のデプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)により若干異なります。
 
-* **VirtualNetwork** (*Resource Manager) (クラシックの場合は* *VIRTUAL_NETWORK**): このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリングされた](virtual-network-peering-overview.md)仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
+* **VirtualNetwork** (*Resource Manager) (クラシックの場合は **VIRTUAL_NETWORK**): このタグには、仮想ネットワーク アドレス空間 (仮想ネットワークに対して定義されているすべての CIDR 範囲)、すべての接続されたオンプレミスのアドレス空間、および[ピアリングされた](virtual-network-peering-overview.md)仮想ネットワークまたは[仮想ネットワーク ゲートウェイ](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に接続された仮想ネットワークが含まれます。
 * **AzureLoadBalancer** (Resource Manager) (クラシックの場合は **AZURE_LOADBALANCER**): このタグは、Azure のインフラストラクチャのロード バランサーを表します。 このタグは、Azure の正常性プローブが開始される [Azure データセンター IP アドレス](https://www.microsoft.com/download/details.aspx?id=41653)に変換されます。 Azure Load Balancer を使っていない場合は、この規則を上書きできます。
 * **Internet** (Resource Manager) (クラシックの場合は **INTERNET**): このタグは、パブリック インターネットによってアクセスできる仮想ネットワークの外部の IP アドレス空間を表します。 [Azure に所有されているパブリック IP アドレス空間](https://www.microsoft.com/download/details.aspx?id=41653)がこのアドレス範囲に含まれます。
 * **AzureTrafficManager** (Resource Manager のみ): このタグは、Azure Traffic Manager サービスの IP アドレス空間を表します。
