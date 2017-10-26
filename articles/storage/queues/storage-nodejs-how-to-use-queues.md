@@ -14,11 +14,11 @@ ms.devlang: nodejs
 ms.topic: article
 ms.date: 12/08/2016
 ms.author: tamram
-ms.openlocfilehash: 649c656b08c03ca9c902b0d80e77d9b3b662635b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ce61687e0f64b5971daca85265ef0e7d2b6f43b8
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="how-to-use-queue-storage-from-nodejs"></a>Node.js から Queue ストレージを使用する方法
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -333,14 +333,21 @@ queueSAS = queueSvc.generateSharedAccessSignature('myqueue', { Id: 'user2' });
 ## <a name="next-steps"></a>次のステップ
 これで、Queue ストレージの基本を学習できました。さらに複雑なストレージ タスクを実行するには、次のリンク先を参照してください。
 
-* [Azure Storage チーム ブログ][Azure Storage チーム ブログ] をご覧ください。
+* [Azure Storage チームのブログ][Azure Storage Team Blog]。
 * GitHub の [Azure Storage SDK for Node][Azure Storage SDK for Node] リポジトリ。
 
+
+
 [Azure Storage SDK for Node]: https://github.com/Azure/azure-storage-node
+
 [using the REST API]: http://msdn.microsoft.com/library/azure/hh264518.aspx
+
 [Azure Portal]: https://portal.azure.com
+
 [Azure App Service での Node.js Web アプリの作成](../../app-service/app-service-web-get-started-nodejs.md)
 
+[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md)
 
+[Azure Storage Team Blog]: http://blogs.msdn.com/b/windowsazurestorage/
 
-[Node.js アプリケーションの構築と Azure クラウド サービスへのデプロイ](../../cloud-services/cloud-services-nodejs-develop-deploy-app.md) [Azure Storage チーム ブログ]: http://blogs.msdn.com/b/windowsazurestorage/ [Node.js Web アプリの構築と Web Matrix を使用した Azure へのデプロイ]: https://www.microsoft.com/web/webmatrix/
+[Build and deploy a Node.js web app to Azure using Web Matrix]: https://www.microsoft.com/web/webmatrix/

@@ -2,7 +2,7 @@
 title: "Log Analytics のアラートを使用してイベントに応答する | Microsoft Docs"
 description: "このチュートリアルでは、OMS リポジトリ内の重要な情報の識別、問題に関する事前の通知、または問題を修正するためのアクションの呼び出しを行うために使用できる Log Analytics のアラートについて理解します。"
 services: log-analytics
-documentationcenter: 
+documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
 editor: 
@@ -11,14 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/20/2017
 ms.author: magoedte
-ms.openlocfilehash: ccf0bd57b7f54b1d8d57b460df9bb381b29ee381
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 3ab8d32eb4b3f2748249f40139de76c8e7f4d971
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="respond-to-events-with-log-analytics-alerts"></a>Log Analytics のアラートを使用してイベントに応答する
 Log Analytics のアラートは、Log Analytics リポジトリ内の重要な情報を特定します。  アラートは定期的にログ検索を自動的に実行するアラート ルールによって作成され、ログ検索の結果が特定の条件と一致している場合はアラート レコードが作成され、自動化された応答を実行するように構成できます。  このチュートリアルは、「[Log Analytics データのダッシュボードを作成して共有する](log-analytics-tutorial-dashboards.md)」チュートリアルの続きです。   

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: multiple
 ms.date: 09/22/2017
 ms.author: ryanwi
-ms.openlocfilehash: a5d0ff59803212403281063f47e706433cee64b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99756378f2106707b4f6d634a1183d5c32243ee2
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="sfctl-partition"></a>sfctl partition
 任意のサービスで、クエリを実行し、パーティションを管理します。
@@ -118,7 +118,7 @@ Service Fabric サービスのパーティションの一覧を取得します�
 ## <a name="sfctl-partition-load"></a>sfctl partition load
 指定した Service Fabric パーティションの負荷を取得します。
 
-指定したパーティションに関する情報を返します。 応答には、負荷情報の一覧が含まれます。 それぞれの情報には、負荷メトリック名、値、および最終報告時刻 (UTC) が含まれます。 が必要です。
+指定したパーティションに関する情報を返します。 応答には、負荷情報の一覧が含まれます。 それぞれの情報には、負荷メトリック名、値、および最終報告時刻 (UTC) が含まれます。
 
 ### <a name="arguments"></a>引数
 

@@ -15,11 +15,11 @@ ms.topic: get-started-article
 ms.date: 10/17/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: d86e47507f7a578e8a0affb690b6d96673b6b69a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ba8a79df39c135ef1831b46d38babeedfb722ba
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="you-cant-get-there-from-here-on-a-windows-device"></a>Windows デバイスで目的の場所にアクセスできない
 

@@ -3,7 +3,7 @@ title: "Azure API Management で API を作成する方法"
 description: "Azure API Management で API を作成して構成する方法について説明します。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 14c20da4-f29f-4b28-bec7-3d4c50b734da
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/15/2016
 ms.author: apimpm
-ms.openlocfilehash: ab08256fbc3caca05bf23a12016ad2acf4fc7412
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 79630fb8998d47aab8eed38daf7d5fcef3d870d7
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-create-apis-in-azure-api-management"></a>Azure API Management で API を作成する方法
 API Management における API は、クライアント アプリケーションから呼び出すことのできる一連の操作を表します。 パブリッシャー ポータルで新しい API を作成した後、目的の操作を追加します。 操作を追加し、API を成果物に追加すると、API を発行できます。 API が発行されると、開発者はそれをサブスクライブして使用できます。

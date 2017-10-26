@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Cosmos DB の ASP.NET MVC チュートリアル: Web アプリケーションの開発 | Microsoft Docs"
 description: "Azure Cosmos DB を使用して MVC Web アプリケーションを作成するための ASP.NET MVC チュートリアル。 JSON を格納し、Azure Websites でホストされている ToDo アプリからデータにアクセスします - ASP.NET MVC チュートリアル ステップ バイ ステップ"
 keywords: "ASP.NET MVC チュートリアル, Web アプリケーションの開発, MVC Web アプリケーション, ASP.NET MVC チュートリアル ステップ バイ ステップ"
@@ -15,11 +15,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: mimig
-ms.openlocfilehash: 985962c4f2db21526291981ad5180fc0a16e2ab8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: devcenter
+ms.openlocfilehash: b7c967550f9f89eec29288b24525b5f043615437
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="_Toc395809351"></a>ASP.NET MVC チュートリアル: Azure Cosmos DB を使用した Web アプリケーションの開発
 > [!div class="op_single_selector"]

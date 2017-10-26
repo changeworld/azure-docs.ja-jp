@@ -14,11 +14,11 @@ ms.devlang: dotnet
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 98e5964f4a2dffd728dae1c452facfa6ea488167
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 51180530790fc0077cea4d8aea7088f1f871681b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="develop-for-azure-files-with-net"></a>.NET を使用して Azure Files 用に開発する 
 > [!NOTE]
@@ -29,7 +29,6 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [storage-check-out-samples-dotnet](../../../includes/storage-check-out-samples-dotnet.md)]
 
-## <a name="about-this-tutorial"></a>このチュートリアルについて
 このチュートリアルでは、ファイル データの格納に Azure Files を使うアプリケーションまたはサービスを開発するための.NET の基本的な使い方を示します。 このチュートリアルでは、単純なコンソール アプリケーションを作成し、.NET と Azure Files で基本的な操作を実行する方法を示します。
 
 * ファイルの内容を取得する

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 06/27/2017
-ms.author: babanisa;sethm
-ms.openlocfilehash: 72e18444c83b84c5191a0aab3dc6983517167dd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/16/2017
+ms.author: sethm
+ms.openlocfilehash: 2bf65b7c5b0518da59e767db18fe6f4193e0ab6e
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="service-bus-diagnostic-logs"></a>Service Bus の診断ログ
 

@@ -16,11 +16,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/25/2017
 ms.author: glenga
-ms.openlocfilehash: b123578dbac48018f674f85ec923e4c6e65fb9f8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a8cf6bed7dd6f0c17b12fe7171e47d126607630
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions における Blob Storage のバインディング
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]

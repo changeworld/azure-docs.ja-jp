@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 6/22/2017
 ms.author: rclaus
-ms.openlocfilehash: 1af7e1d40a0eb129875dd6a30ac899f2025bee13
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c8f858bf249c4b56ad4fe60654ab489676eceb1f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Azure での Oracle データベースの設計と実装
 
@@ -115,7 +115,7 @@ AWR レポートから取得できるメトリックを次に示します。
 
 #### <a name="2-choose-a-vm"></a>2.VM の選択
 
-AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](https://docs.microsoft.com/azure/virtual-machinFine tune es/virtual-machines-windows-sizes-memory)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
+AWR レポートから収集した情報に基づき、次のステップでは要件を満たすサイズの VM を選択します。 [メモリの最適化](../../linux/sizes-memory.md)に関する記事で、使用可能な仮想マシンの一覧を見つけることができます。
 
 #### <a name="3-fine-tune-the-vm-sizing-with-a-similar-vm-series-based-on-the-acu"></a>3.ACU に基づき、同様の VM シリーズで VM のサイズを細かく調整する
 

@@ -10,11 +10,11 @@ ms.topic: hero-article
 ms.date: 08/21/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 7bb74f297d52fb25171817175cce64187b397c38
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea281e9c83bb37f78c248c6c4011a7da60b45c01
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-jenkins-server-on-an-azure-linux-vm-from-the-azure-portal"></a>Azure Portal から Azure Linux VM に Jenkins サーバーを作成する
 
@@ -41,7 +41,7 @@ Web ブラウザーから [Jenkins の Marketplace イメージ](https://azurema
 * **[ユーザー名]** を入力します。 ユーザー名は、[特定の要件](/azure/virtual-machines/linux/faq#what-are-the-username-requirements-when-creating-a-vm)を満たしている必要があります。
 * **[認証の種類]** として **[パスワード]** を選択し、パスワードを入力します。 パスワードには、大文字と数字に加え、1 つの特殊文字を含んでいる必要があります。
 * **[リソース グループ]** には「**myJenkinsResourceGroup**」を使用します。
-* **[場所]** ドロップダウンから **[米国東部]** の [Azure リージョン](https://azure.microsoft.com/regions/)を選択します。
+* **[場所]** ドロップダウンから **[米国東部]** の [Azure リージョン](https://azure.microsoft.com/regions/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio)を選択します。
 
 **[OK]** を選択して、**[Configure additional options]\(追加オプションの構成\)** タブに移動します。Jenkins サーバーを識別する一意のドメイン名を入力して、**[OK]** を選択します。
 

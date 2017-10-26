@@ -2,7 +2,7 @@
 2. VNet のページの **[設定]** セクションで、**[サブネット]** をクリックして [サブネット] ページを展開します。
 3. **[サブネット]** ページで **[+ゲートウェイ サブネット]** をクリックして、**[サブネットの追加]** ページを開きます。
 
-  ![ゲートウェイ サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsubnet.png "ゲートウェイ サブネットの追加")
+  ![ゲートウェイ サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addgwsub.png "ゲートウェイ サブネットの追加")
 4. サブネットの **[名前]** には、"GatewaySubnet" という値が自動的に入力されます。 この値は、Azure がゲートウェイ サブネットとしてこのサブネットを認識するために必要になります。 自動入力される **[アドレス範囲]** の値を実際の構成要件に合わせて調整し、ページの下部にある **[OK]** をクリックしてサブネットを作成します。
 
   ![サブネットの追加](./media/vpn-gateway-add-gwsubnet-rm-portal-include/addsubnetgw.png "サブネットの追加")

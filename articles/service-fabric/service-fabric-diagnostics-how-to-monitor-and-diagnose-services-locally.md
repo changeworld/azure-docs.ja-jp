@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Windows で Azure マイクロサービスをデバッグする | Microsoft Docs"
 description: "ローカルの開発用コンピューターで Microsoft Azure Service Fabric を使用して作成されたサービスを監視および診断する方法について説明します。"
 services: service-fabric
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 04/24/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 08998340afb2f242b9a268331607b0d1ddb9b0c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 034bfe6fbab3da083d6c63f99f960467fd0a84e9
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>ローカル コンピューターの開発のセットアップでのサービスの監視と診断
 > [!div class="op_single_selector"]

@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Cosmos DB で地理空間データを扱う | Microsoft Docs"
 description: "Azure Cosmos DB と DocumentDB API を使用した空間オブジェクトの作成、インデックス作成、クエリの方法について説明します。"
 services: cosmos-db
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
-ms.date: 05/22/2017
+ms.date: 10/20/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d5785c81fb597e7d30eb7d3a880e7194d8358ed5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2c2213f663f539e123f70028fd70bedb1cb6511d
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="working-with-geospatial-and-geojson-location-data-in-azure-cosmos-db"></a>Azure Cosmos DB で地理空間データと GeoJSON 位置データを扱う
 この記事では、[Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) の地理空間機能を紹介します。 この記事では次の方法を取り上げています。
@@ -79,13 +79,13 @@ GeoJSON は、Point に加え、LineString と Polygon をサポートしてい�
 ```json
 {
     "type":"Polygon",
-    "coordinates":[
+    "coordinates":[ [
         [ 31.8, -5 ],
         [ 31.8, -4.7 ],
         [ 32, -4.7 ],
         [ 32, -5 ],
         [ 31.8, -5 ]
-    ]
+    ] ]
 }
 ```
 

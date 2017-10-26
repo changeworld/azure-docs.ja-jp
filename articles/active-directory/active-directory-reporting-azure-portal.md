@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Active Directory レポート | Microsoft Docs"
 description: "Azure Active Directory レポートの概要を紹介します。"
 services: active-directory
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 07/13/2017
+ms.date: 10/18/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 738c8f4a56586b87f03973ec258b0a3023affa60
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e81e2ca473477204c0b9e8d8803bcc356746e232
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-active-directory-reporting"></a>Azure Active Directory レポート
 

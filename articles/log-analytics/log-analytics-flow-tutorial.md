@@ -10,22 +10,18 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 09/29/2017
 ms.author: bwren
-ms.openlocfilehash: 329f3c66bc131a9555f1778acfcae5dd9c761f56
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9884b97aad8f022e6bc20b2a630ccdd07ebc64db
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="automate-log-analytics-processes-with-the-connector-for-microsoft-flow"></a>Microsoft Flow 対応のコネクタを使用して Log Analytics のプロセスを自動化する
 [Microsoft Flow](https://ms.flow.microsoft.com) を使用すると、各種サービス用の何百ものアクションを使用して自動化されたワークフローを作成できます。 あるアクションの出力は別のアクションへの入力として使用できます。これにより、さまざまなサービス間の統合を作成できます。  Microsoft Flow 対応の Azure Log Analytics コネクタを使用すると、Log Analytics のログ検索機能によって取得されたデータが含まれるワークフローを構築できます。
 
 たとえば、Microsoft Flow で Office 365 からの電子メール通知の Log Analytics データを使用して、Visual Studio Team Services でバグを作成したり、Slack のメッセージを投稿したりできます。  簡単なスケジュールまたは接続されたサービスのアクション (メールやツイートを受信したときなど) からワークフローをトリガーできます。  
-
-
-> [!NOTE]
-> Microsoft Flow 対応の Azure Log Analytics コネクタでは、ワークスペースを新しい Log Analytics のクエリ言語にアップグレードする必要があります。 新しい言語の詳細、およびワークスペースのアップグレード手順については、「[Upgrade your Azure Log Analytics workspace to new log search (新しいログ検索への Azure Log Analytics ワークスペースのアップグレード)](log-analytics-log-search-upgrade.md)」を参照してください。  
 
 この記事のチュートリアルには、Log Analytics のログ検索の結果を自動的に送信するフローを作成する方法について説明します。これは、Microsoft Flow における Log Analytics の使用方法の一例です。 
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 09/29/2017
 ms.author: genli
-ms.openlocfilehash: b521b4cae29578798247921331d98fc5077ad266
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85d4764534c77ea0e4d999e249abe456d0234d75
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Windows 用 Azure パフォーマンス診断 VM 拡張機能
 
@@ -75,7 +75,7 @@ Azure パフォーマンス診断 VM 拡張機能を使うと、Windows VM か�
 |DiagnosticsTrace|d|診断のトレースを有効にするオプション。 有効な値: **d**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |perfCounterTrace|p|パフォーマンス カウンターのトレースを有効にするオプション。 有効な値: **p**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |networkTrace|n|Netmon のトレースを有効にするオプション。 有効な値: **n**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
-|xperfTrace|x|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
+|xperfTrace|○|XPerf のトレースを有効にするオプション。 有効な値: **x**、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |storPortTrace|s|StorPort のトレースを有効にするオプション。 有効な値: s、または空の値。 このトレースをキャプチャしない場合は、値を空のままにします。
 |srNumber|123452016365929|サポート チケット番号 (ある場合)。 ない場合は空のままにします。
 |requestTimeUtc|9/2/2017 11:06:00 PM|現在の日時 (UTC)。 ポータルを使ってこの拡張機能をインストールしている場合は、この値を指定する必要はありません。
@@ -216,8 +216,8 @@ Azure VM 拡張機能は、Azure Resource Manager テンプレートでデプロ
 PowerShell
 
 ````
-$PublicSettings = @{ "performanceScenario":"basic","traceDurationInSeconds":300,"diagnosticsTrace":"d","perfCounterTrace":"p","networkTrace":"","xperfTrace":"","storPortTrace":"","srNumber":"","requestTimeUtc":"2017-09-28T22:08:53.736Z" }
-$ProtectedSettings = @{"storageAccountName":"mystorageaccount","storageAccountKey":"mystoragekey"}
+$PublicSettings = @{ "performanceScenario" = "basic"; "traceDurationInSeconds" = 300; "diagnosticsTrace" = "d"; "perfCounterTrace" = "p"; "networkTrace" = ""; "xperfTrace" = ""; "storPortTrace" = ""; "srNumber" = ""; "requestTimeUtc" = "2017-09-28T22:08:53.736Z" }
+$ProtectedSettings = @{"storageAccountName" = "mystorageaccount" ; "storageAccountKey" = "mystoragekey"}
 
 Set-AzureRmVMExtension -ExtensionName "AzurePerformanceDiagnostics" `
     -ResourceGroupName "myResourceGroup" `

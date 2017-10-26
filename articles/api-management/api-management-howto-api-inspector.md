@@ -3,7 +3,7 @@ title: "API Inspector を使用した呼び出しのトレース - Azure API Man
 description: "Azure API Management で API Inspector を使用して呼び出しをトレースする方法について説明します。"
 services: api-management
 documentationcenter: 
-author: steved0x
+author: vladvino
 manager: erikre
 editor: 
 ms.assetid: 4b222327-c8a4-4f33-9a06-adff2a9834d9
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: apimpm
-ms.openlocfilehash: a9d4d3be7f046af975f6dc25670070204848588c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8090b22b63dda6f67e321867977d5dece3d72132
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="how-to-use-the-api-inspector-to-trace-calls-in-azure-api-management"></a>Azure API Management で API Inspector を使用して呼び出しをトレースする方法
 API Management には、API のデバッグとトラブルシューティングに役立つ API Inspector ツールが用意されています。 API Inspector は、プログラムで使用することも、開発者ポータルから直接使用することもできます。 

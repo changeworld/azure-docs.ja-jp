@@ -3,29 +3,29 @@ title: "Azure MFA クラウドかサーバーかの選択 | Microsoft Docs"
 description: "保護しようとしている対象とユーザーが位置する場所をたずねることで、ユーザーに最適な多要素認証セキュリティ ソリューションを選択します。  次に、クラウド、MFA Server、または AD FS を選択します。"
 services: multi-factor-authentication
 documentationcenter: 
-author: kgremban
+author: MicrosoftGuyJFlo
 manager: femila
-editor: yossib
 ms.assetid: ec2270ea-13d7-4ebc-8a00-fa75ce6c746d
 ms.service: multi-factor-authentication
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/25/2017
-ms.author: kgremban
-ms.openlocfilehash: cc5a0a8ff789b878cd5afb62176ae8bcf3f80902
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/02/2017
+ms.author: joflore
+ms.reviewer: alexwe
+ms.openlocfilehash: 266985c5602b835c710a74f1736fb51eade5c707
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="choose-the-azure-multi-factor-authentication-solution-for-you"></a>ニーズに応じた Azure Multi-Factor Authentication ソリューションを選択する
 Azure Multi-Factor Authentication (MFA) にはさまざまな種類があるため、使用に適したバージョンを特定するには、いくつかの項目を検討する必要があります。  その項目とは、以下の 3 つです。
 
 * [セキュリティで保護しようとしている対象](#what-am-i-trying-to-secure)
 * [ユーザーが位置する場所](#where-are-the-users-located)
-* [必要な機能](#what-featured-do-i-need)
+* [必要な機能](#what-features-do-i-need)
 
 以下のセクションでは、ここに挙げた項目の判断に役立つガイダンスを提供します。
 

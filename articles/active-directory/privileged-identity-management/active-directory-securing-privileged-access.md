@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/17/2017
 ms.author: kgremban
 ms.custom: pim
-ms.openlocfilehash: 849637fb391576954307bc84bb02e1d8579bf1cf
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 278aa67013eb2cabcf5efa7e0de21e9cff0519ba
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="securing-privileged-access-in-azure-ad"></a>Azure AD での特権アクセスのセキュリティ保護
 現代の組織にとって特権アクセスのセキュリティ保護は、ビジネス資産を保護するうえで重要な最初のステップです。 特権アカウントとは、IT システムを管理するアカウントです。 サイバー攻撃では、組織のデータやシステムへのアクセス手段を得るために、このようなアカウントが標的にされます。 特権アクセスを保護するには、悪意のあるユーザーにさらされる危険からアカウントとシステムを分離する必要があります。
@@ -62,9 +62,7 @@ Azure Multi-Factor Authentication の概要については、次のビデオを�
 ## <a name="conditional-access"></a>条件付きアクセス
 Azure Active Directory は、条件付きアクセス制御によって、ユーザー認証時にアプリケーションへのアクセスを許可する前に、選択されている特定の条件を確認します。 条件が満たされていれば、ユーザーは承認され、アプリケーションにアクセスできます。
 
-![MFA による条件付きアクセス規則の設定][4]
-
-## <a name="related-articles"></a>関連記事:
+## <a name="related-articles"></a>関連記事
 * [Azure Multi-Factor Authentication](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md) の有効化
 * [Azure AD Privileged Identity Management](../active-directory-privileged-identity-management-configure.md) の有効化
 * [Azure AD Identity Protection](../active-directory-identityprotection.md) の有効化
@@ -76,4 +74,3 @@ Azure Active Directory は、条件付きアクセス制御によって、ユー
 [1]: ../media/active-directory-privileged-identity-management-configure/Search_PIM.png
 [2]: ../media/active-directory-privileged-identity-management-configure/PIM_Dash.png
 [3]: ../media/active-directory-identityprotection/29.png
-[4]: ../media/active-directory-conditional-access/conditionalaccess-saas-apps.png

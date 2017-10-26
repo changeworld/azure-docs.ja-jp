@@ -12,11 +12,11 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 04/06/2017
 ms.author: jlembicz
-ms.openlocfilehash: a016438070d13c22f309c5f32b940256069f2ee0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b2e66cd40c1b49832b865e5bf59edcf78996eb8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-full-text-search-works-in-azure-search"></a>Azure Search のフルテキスト検索のしくみ
 
@@ -183,11 +183,14 @@ Spacious,||air-condition*+"Ocean view"
 }
 ~~~~
 
+<a name="exceptions"></a>
+
 ### <a name="exceptions-to-lexical-analysis"></a>字句解析の例外 
 
 字句解析が適用されるのは、語句全体を必要とする種類の検索 (単語検索とフレーズ検索) だけです。 語句全体を必要としない種類の検索 (プレフィックス検索、ワイルドカード検索、正規表現検索など) やあいまい検索には適用されません。 前出の例の *air-condition\** という語を使ったプレフィックス検索も含め、こうした種類の検索は、解析段階を経ずに直接クエリ ツリーに追加されます。 こうした種類の検索語に対して適用される変換は、大文字から小文字への変換だけです。
 
 <a name="stage3"></a>
+
 ## <a name="stage-3-document-retrieval"></a>第 3 段階: 文書検索 
 
 ここでいう文書検索とは、一致する語句がインデックスに存在する文書を見つけることです。 この段階は、例を使用するとよくわかります。 まず、次のような単純なスキーマを使用した hotels というインデックスを考えてみましょう。 

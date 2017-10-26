@@ -1,6 +1,6 @@
 ---
 title: 'Always Encrypted: SQL Database - Azure Key Vault | Microsoft Docs'
-description: "この記事では、SQL Server Management Studio の Always Encrypted ウィザードでデータ暗号化を使って SQL Database の機密データを保護する方法について説明します。 さらに、Azure Key Vault に各暗号化キーを格納する方法を示す手順についても説明します。"
+description: "この記事では、SQL Server Management Studio の Always Encrypted ウィザードでデータ暗号化を使って SQL Database の機密データを保護する方法について説明します。"
 keywords: "データの暗号化, 暗号化キー, クラウドの暗号化"
 services: sql-database
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: sstein
-ms.openlocfilehash: 61bfd420425b4740f6d4ebc01a403a88ff351382
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f22438c8a9d31f2b10d9ba9e1dd645842cf71712
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Always Encrypted: データ暗号化を使用して SQL Database で機密データを保護し、Azure Key Vault で暗号化キーを格納する
 

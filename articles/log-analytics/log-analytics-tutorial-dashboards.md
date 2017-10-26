@@ -2,7 +2,7 @@
 title: "Azure Log Analytics データのダッシュボードを作成して共有する | Microsoft Docs"
 description: "このチュートリアルでは、保存されているすべてのログ検索を Log Analytics ダッシュボードに可視化して、環境をわかりやすく表示できるようにする方法について説明します。"
 services: log-analytics
-documentationcenter: 
+documentationcenter: log-analytics
 author: MGoedtel
 manager: carmonm
 editor: 
@@ -11,14 +11,15 @@ ms.service: log-analytics
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: magoedte
-ms.openlocfilehash: b065269a27ad3764399802b4a2bc3076b7349623
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: mvc
+ms.openlocfilehash: 272945134b534a5ded794379ce5e96b0902a4227
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="create-and-share-dashboards-of-log-analytics-data"></a>Log Analytics データのダッシュボードを作成して共有する
 
