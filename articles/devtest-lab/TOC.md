@@ -14,7 +14,7 @@
 # ハウツー ガイド
 ## ラボでの VM の使用
 ### [VM の作成](devtest-lab-add-vm.md)
-### [要求可能 VM の作成](devtest-lab-add-claimable-vm.md)
+### [クレーム可能 VM の作成と管理](devtest-lab-add-claimable-vm.md)
 ### [Azure CLI を使用した VM の作成と管理](devtest-lab-vmcli.md)
 ### [VM の再起動](devtest-lab-restart-vm.md)
 

@@ -2,8 +2,6 @@
 
 ## [SQL Data Warehouse の概要](sql-data-warehouse-overview-what-is.md)
 ## [データ ウェアハウスのワークロード](sql-data-warehouse-overview-workload.md)
-## [分散データ](sql-data-warehouse-distributed-data.md)
-## [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 # 作業の開始
 
@@ -12,9 +10,13 @@
 ## [ベスト プラクティス](sql-data-warehouse-best-practices.md)
 ## [管理](sql-data-warehouse-overview-manage.md)
 
-
-
 # 方法
+
+## サービスの機能
+### [MPP アーキテクチャ](massively-parallel-processing-mpp-architecture.md)
+### [パフォーマンス レベル](performance-tiers.md)
+### [Data Warehouse ユニット](what-is-a-data-warehouse-unit-dwu-cdwu.md)
+### [よく寄せられる質問](sql-data-warehouse-overview-faq.md)
 
 ## バックアップと復元
 
@@ -118,13 +120,15 @@
 ### [PowerShell](sql-data-warehouse-manage-compute-powershell.md)
 ### [REST API](sql-data-warehouse-manage-compute-rest-api.md)
 ### [T-SQL](sql-data-warehouse-manage-compute-tsql.md)
+### リソース クラス
+#### [ガイドライン](resource-classes-for-workload-management.md)
+#### [ワークロードの分析](analyze-your-workload.md)
 
 ## パフォーマンス
 
 ### [概要](sql-data-warehouse-overview-manage-user-queries.md)
 ### [列ストア圧縮](sql-data-warehouse-memory-optimizations-for-columnstore-compression.md)
 ### [監視](sql-data-warehouse-manage-monitor.md)
-### [ワークロード](sql-data-warehouse-develop-concurrency.md)
 
 ## セキュリティ
 

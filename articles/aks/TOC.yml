@@ -1,0 +1,61 @@
+- name: Azure Container Service (AKS)
+  href: ./index.yml
+- name: 概要
+  items:
+    - name: AKS について
+      href: intro-kubernetes.md
+- name: クイック スタート
+  expanded: true
+  items:
+    - name: AKS クラスターの作成
+      href: kubernetes-walkthrough.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: 1 - AKS 用にアプリケーションを準備する
+      href: tutorial-kubernetes-prepare-app.md
+    - name: 2 - コンテナー レジストリを作成する
+      href: tutorial-kubernetes-prepare-acr.md
+    - name: 3 - Kubernetes クラスターを作成する
+      href: tutorial-kubernetes-deploy-cluster.md
+    - name: 4 - アプリケーションを実行する
+      href: tutorial-kubernetes-deploy-application.md
+    - name: 5 - アプリケーションのスケールを変更する
+      href: tutorial-kubernetes-scale.md
+    - name: 6 - アプリケーションを更新する
+      href: tutorial-kubernetes-app-update.md
+    - name: 7 - Log Analytics を使用して監視する
+      href: tutorial-kubernetes-monitor.md
+    - name: 8 - クラスターをアップグレードする
+      href: tutorial-kubernetes-upgrade-cluster.md
+- name: ハウツー ガイド
+  items:
+    - name: AKS クラスターのスケーリング
+      href: scale-cluster.md
+    - name: AKS クラスターのアップグレード
+      href: upgrade-cluster.md
+    - name: Helm を使用したアプリケーションの実行
+      href: kubernetes-helm.md
+    - name: Draft を使用したアプリケーションの開発
+      href: kubernetes-draft.md
+    - name: Kubernetes ダッシュボードの使用
+      href: kubernetes-dashboard.md
+    - name: サービス プリンシパルの作成
+      href: kubernetes-service-principal.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/aks
+    - name: REST ()
+      href: /rest/api/container-service
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/container-service/'
+    - name: 利用可能なリージョン
+      href: 'https://azure.microsoft.com/regions/services/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-container-service'
+    - name: ビデオ
+      href: 'https://azure.microsoft.com/resources/videos/index/?services=container-service&sort=newest'

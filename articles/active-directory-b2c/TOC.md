@@ -57,7 +57,7 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業開始](active-directory-b2c-get-started-custom.md)
+### [概要](active-directory-b2c-get-started-custom.md)
 ### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
@@ -80,16 +80,15 @@
 #### [UI の動的なカスタマイズ](active-directory-b2c-ui-customization-custom-dynamic.md)
 #### [トークンのカスタマイズ](active-directory-b2c-reference-manage-sso-and-token-configuration.md)
 #### [パスワードの複雑さ](active-directory-b2c-reference-password-complexity-custom.md)
-
 #### [パスワードの変更](active-directory-b2c-reference-password-change-custom.md)
-
 #### [[サインインしたままにする] を有効にする](active-directory-b2c-reference-kmsi-custom.md)
-
 ### トラブルシューティング
 #### [Application Insights を使用したログの収集](active-directory-b2c-troubleshoot-custom.md)
 ## リファレンス
 ### [リリース ノート](active-directory-b2c-developer-notes-custom.md)
+### [SSO セッション プロバイダー](active-directory-b2c-reference-sso-custom.md)
 ### [信頼フレームワークの定義](active-directory-b2c-reference-trustframeworks-defined-ief-custom.md) 
+
 # リファレンス
 ## [コード サンプル](https://azure.microsoft.com/en-us/resources/samples/?service=active-directory-b2c)
 ## 用語集

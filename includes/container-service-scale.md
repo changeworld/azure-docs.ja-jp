@@ -1,4 +1,3 @@
-# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Container Service クラスター内のエージェント ノードのスケーリング
 [Azure Container Service クラスターのデプロイ](../articles/container-service/dcos-swarm/container-service-deployment.md)を行った後、エージェントノード数の変更が必要になることがあります。 たとえば、もっと多くのコンテナー アプリケーションまたはインスタンスを実行できるように、より多くのエージェントが必要になることがあります。 
 
 DC/OS、Docker Swarm、または Kubernetes クラスター内のエージェントノードの数は、Azure Portal または Azure CLI 2.0 を使って変更できます。 

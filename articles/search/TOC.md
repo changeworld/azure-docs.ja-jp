@@ -1,6 +1,8 @@
-# 概要
+# [概要](search-what-is-azure-search.md)
 ## [Azure Search とは](search-what-is-azure-search.md)
+
 # 作業の開始
+
 ## [SKU を選択する](search-sku-tier.md)
 ## [サービスを作成する](search-create-service-portal.md)
 ## [インデックスを作成する](search-what-is-an-index.md)
@@ -15,18 +17,22 @@
 ### [Azure Portal](search-explorer.md)
 ### [.NET](search-query-dotnet.md)
 ### [REST ()](search-query-rest-api.md)
+
 # Tutorials (チュートリアル)
+
 ## [.NET](search-howto-dotnet-sdk.md)
 ## [.NET のシノニムのプレビュー](search-synonyms-tutorial-sdk.md)
 ## [ポータル](search-get-started-portal.md)
+## [半構造化データの検索](search-semi-structured-data.md)
 ## [Node.JS](search-get-started-nodejs.md)
 ## [Java](search-get-started-java.md)
+
 # 方法
+
 ## 計画と設計
 ### [サービスの制限](search-limits-quotas-capacity.md)
 ### [サービスの拡張性](search-capacity-planning.md)
 ### [マルチテナント方式の設計パターン](search-modeling-multitenant-saas-applications.md)
-
 ## 開発
 ### [API のバージョン](search-api-versions.md)
 ### [SDK をアップグレードする](search-dotnet-sdk-migration.md)
@@ -34,7 +40,6 @@
 ### [複合データ型をモデル化する](search-howto-complex-data-types.md)
 ### [同時更新を処理する](search-howto-concurrency.md)
 ### [コード サンプル](https://azure.microsoft.com/resources/samples/?service=search)
-
 ## 管理
 ### Azure Search を管理する
 #### [Azure ポータル](search-manage.md)
@@ -57,18 +62,23 @@
 ### クエリの構築
 #### [単純なクエリ構文](https://docs.microsoft.com/rest/api/searchservice/simple-query-syntax-in-azure-search)
 #### [Lucene クエリ構文](https://docs.microsoft.com/rest/api/searchservice/lucene-query-syntax-in-azure-search)
-#### [Lucene 構文クエリの例](search-query-lucene-examples.md)
-#### [フィルター式構文](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
+#### [Lucene クエリ例](search-query-lucene-examples.md)
 ### Azure Search のアナライザー
 #### [概要](search-analyzers.md)
 #### [言語アナライザー](https://docs.microsoft.com/rest/api/searchservice/language-support)
 #### [カスタム アナライザー](https://docs.microsoft.com/rest/api/searchservice/custom-analyzers-in-azure-search)
+### Azure Search のフィルター
+#### [概要](search-filters.md)
+#### [ファセット フィルター](search-filters-facets.md)
+#### [言語フィルター](search-filters-language.md)
+#### [セキュリティによるトリミング](search-security-trimming-for-azure-search.md)
+#### [式の構文リファレンス](https://docs.microsoft.com/rest/api/searchservice/odata-expression-syntax-for-azure-search)
 ### [ページングの結果](search-pagination-page-layout.md)
 ### [スコア付け](https://docs.microsoft.com/rest/api/searchservice/add-scoring-profiles-to-a-search-index)
 ### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
 ### [シノニムのプレビュー](search-synonyms.md)
-### [セキュリティ フィルター](search-security-trimming-for-azure-search.md)
+
 # リファレンス
 
 ## [.NET](/dotnet/api/?term=microsoft.azure.search)
@@ -80,7 +90,6 @@
 
 # リソース
 
-## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=web-mobile)
 ## [FAQ - よく寄せられる質問](search-faq-frequently-asked-questions.md)
 ## [料金](https://azure.microsoft.com/pricing/details/search/)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

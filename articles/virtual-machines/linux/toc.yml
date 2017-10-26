@@ -222,11 +222,25 @@
             - name: 初めてのアプリのデプロイ
               href: cloudfoundry-deploy-your-first-app.md
         - name: OpenShift
-          href: openshift-get-started.md
+          items:
+            - name: OpenShift の概要
+              href: openshift-get-started.md
+            - name: OpenShift の前提条件
+              href: openshift-prerequisites.md
+            - name: OpenShift Origin
+              href: openshift-origin.md
+            - name: OpenShift Container Platform
+              href: openshift-container-platform.md
+            - name: OpenShift のデプロイ後のタスク
+              href: openshift-post-deployment.md
+            - name: デプロイのトラブルシューティング
+              href: openshift-troubleshooting.md
         - name: SAP on Azure
           href: ../workloads/sap/get-started.md
         - name: Oracle
           href: ../workloads/oracle/oracle-database-quick-create.md
+        - name: Elasticsearch
+          href: tutorial-elasticsearch.md
         - name: FreeBSD のパケット フィルター
           href: freebsd-pf-nat.md
         - name: データベース
@@ -247,7 +261,6 @@
             - name: NVIDIA GPU ドライバーのインストール
               href: n-series-driver-setup.md
     - name: ストレージの管理
-      href: about-disks-and-vhds.md
       items:
         - name: Managed Disks について
           href: managed-disks-overview.md

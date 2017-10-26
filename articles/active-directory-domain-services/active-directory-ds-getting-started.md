@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: d86b9e99619dea408e784f32d76ba6296948bdc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f00cbfb5348919c38dc2dd905f1c141a39736f4
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 この記事では、Azure Portal を使用して、Azure Active Directory Domain Services (Azure AD DS) を有効にする方法について説明します。
@@ -62,19 +62,13 @@ ms.lasthandoff: 10/11/2017
 
    * 仮想ネットワーク上に、その名前の付いたクラウド サービスが既にあるかどうか。
 
-3. **仮想ネットワークの種類**を選びます。 既定では、**Resource Manager** 仮想ネットワークの種類が選択されています。 新しく作成されるすべての管理対象ドメインには、この種類の仮想ネットワークを使うことをお勧めします。
+3. 管理対象ドメインを作成する Azure **サブスクリプション**を選択します。
 
-    > [!TIP]
-    > **クラシック仮想ネットワークのサポートは廃止される予定です。** 新たにデプロイする場合は、Resource Manager 仮想ネットワークの種類を選択します。 新たなデプロイへのクラシック仮想ネットワークのサポートは、間もなく廃止されます。 クラシック仮想ネットワークに展開されている既存の管理対象ドメインは、引き続きサポートされます。
-    >
+4. 管理対象ドメインが属する**リソース グループ**を選択します。 **[新規作成]** または **[既存のものを使用]** オプションを選択して、リソース グループを選択できます。
 
-4. 管理対象ドメインを作成する Azure **サブスクリプション**を選択します。
+5. 管理対象ドメインを作成する Azure の**場所**を選択します。 ウィザードの **[ネットワーク]** ページに、選択した場所に属する仮想ネットワークのみが表示されます。
 
-5. 管理対象ドメインが属する**リソース グループ**を選択します。 **[新規作成]** または **[既存のものを使用]** オプションを選択して、リソース グループを選択できます。
-
-6. 管理対象ドメインを作成する Azure の**場所**を選択します。 ウィザードの **[ネットワーク]** ページに、選択した場所に属する仮想ネットワークのみが表示されます。
-
-7. 完了したら、**[OK]** をクリックして、ウィザードの **[ネットワーク]** ページに移動します。
+6. 完了したら、**[OK]** をクリックして、ウィザードの **[ネットワーク]** ページに移動します。
 
 
 ## <a name="next-step"></a>次のステップ

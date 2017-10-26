@@ -3,7 +3,7 @@ title: "Azure App Service での Web アプリの構成"
 description: "Azure App Service での Web アプリの構成方法"
 services: app-service\web
 documentationcenter: 
-author: rmcmurray
+author: cephalin
 manager: erikre
 editor: 
 ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
-ms.author: robmcm
-ms.openlocfilehash: bb1144519db84e5685fbae1a2f55854e1102120a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: cephalin
+ms.openlocfilehash: fd1a8cf442ea0688e027f8f8028ee8b4e149d8d2
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configure-web-apps-in-azure-app-service"></a>Azure App Service での Web アプリの構成
 このトピックでは、 [Azure Portal]を使用して Web アプリを構成する方法について説明します。
@@ -27,8 +27,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="application-settings"></a>アプリケーションの設定
 1. [Azure Portal]で、Web アプリのブレードを開きます。
-2. **[すべての設定]**をクリックします。
-3. **[アプリケーションの設定]**をクリックします。
+3. [ **アプリケーションの設定**] をクリックします。
 
 ![アプリケーションの設定][configure01]
 

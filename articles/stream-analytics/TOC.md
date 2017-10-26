@@ -20,6 +20,7 @@
 ### [サンプル入力データ](stream-analytics-sample-data-input.md)
 ### [一般的なクエリのパターン](stream-analytics-stream-analytics-query-patterns.md)
 ### [ウィンドウ関数](stream-analytics-window-functions.md)
+
 ### [参照データを使用する](stream-analytics-use-reference-data.md)
 ### [クエリをテストする](stream-analytics-test-query.md)
 ### [JavaScript UDF を統合する](stream-analytics-javascript-user-defined-functions.md)
@@ -53,6 +54,7 @@
 ### [ジョブのダイアグラムとメトリック](stream-analytics-job-diagram-with-metrics.md)
 ### [SELECT INTO によるデバッグ](stream-analytics-select-into.md)
 ### [イベントの順序の処理](stream-analytics-out-of-order-and-late-events.md)
+### [イベントの順序に関する考慮事項](stream-analytics-out-of-order-and-late-events.md)
 ### [イベント ハブ リーダーの制限](stream-analytics-event-hub-consumer-groups.md)
 ### [診断ログ](stream-analytics-job-diagnostic-logs.md)
 

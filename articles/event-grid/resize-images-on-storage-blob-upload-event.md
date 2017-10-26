@@ -9,14 +9,14 @@ ms.service: event-grid
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/20/2017
+ms.date: 10/20/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 358015d6cfd9961508b209f628b2d648a75e3c2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 709d23ab590c06d5da9b03e2767bc0be5905355b
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="automate-resizing-uploaded-images-using-event-grid"></a>Event Grid を使用して、アップロードされたイメージのサイズ変更を自動化する
 
@@ -25,8 +25,6 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルは、ストレージ チュートリアル シリーズの第 2 部です。 [前のストレージ チュートリアル][previous-tutorial]に、Azure Event Grid と Azure Functions を使うサーバーレスの自動サムネイル生成機能を追加します。 Event Grid により、[Azure Functions](..\azure-functions\functions-overview.md) は [Azure Blob Storage](..\storage\blobs\storage-blobs-introduction.md) のイベントに応答して、アップロードされたイメージのサムネイルを生成できます。 Blob Storage の作成イベントに対して、イベント サブスクリプションが作成されます。 特定の Blob Storage コンテナーに BLOB が追加されると、関数エンドポイントが呼び出されます。 Event Grid から関数バインドに渡されたデータが、BLOB へのアクセスとサムネイル イメージの生成に使われます。 
 
 既存のイメージ アップロード アプリにサイズ変更機能を追加するには、Azure CLI と Azure Portal を使います。
-
-[!INCLUDE [storage-events-note.md](../../includes/storage-events-note.md)]
 
 ![Edge ブラウザーでの発行された Web アプリ](./media/resize-images-on-storage-blob-upload-event/tutorial-completed.png)
 
@@ -42,7 +40,6 @@ ms.lasthandoff: 10/11/2017
 このチュートリアルを完了するには、以下が必要です。
 
 + 前の Blob Storage チュートリアル「[Upload image data in the cloud with Azure Storage][previous-tutorial]」(Azure Storage でクラウドにイメージ データをアップロードする) を完了している必要があります。 
-+ Blob Storage イベント機能へのアクセスを申請して許可されている必要があります。 トピックの他の手順に進む前に、[Blob Storage イベントへのアクセスを要求](#request-storage-access)します。  
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -51,32 +48,6 @@ ms.lasthandoff: 10/11/2017
 CLI をローカルにインストールして使う場合、このトピックでは、Azure CLI バージョン 2.0.14 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
 Cloud Shell を使用していない場合は、先に `az login` でサインインする必要があります。
-
-## <a name="enable-blob-storage-events"></a>Blob Storage イベントを有効にする
-
-この時点で、Blob Storage イベント機能へのアクセスを要求する必要があります。  
-
-### <a name="request-storage-access"></a>Blob Storage イベントへのアクセスを要求する
-
-`az feature register` コマンドでアクセスを要求します。
-
-> [!IMPORTANT]  
-> Blob Storage イベント プレビューの参加者は、参加を要求した順序で受け付けられます。 この機能へのアクセスを許可されるまでに、1 - 2 営業日かかる可能性があります。 
-
-```azurecli-interactive
-az feature register --name storageEventSubscriptions --namespace Microsoft.EventGrid
-```
-
-### <a name="check-access-status"></a>承認状態を確認する
-
-Blob Storage イベントへのアクセスが許可されたことを通知するメールを Microsoft から受け取ります。 アクセス要求の状態は、`az feature show` コマンドでいつでも確認できます。
-
-```azurecli-interactive
-az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid --query properties.state
-```
-Blob Storage イベント機能へのアクセスが許可されると、このコマンドは `"Registered"` という値を返すようになります。 
- 
-登録が済むと、このチュートリアルを続行できます。
 
 ## <a name="create-an-azure-storage-account"></a>Azure Storage アカウントの作成
 

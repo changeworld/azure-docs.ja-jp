@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 8/23/2017
 ms.author: erikje
-ms.openlocfilehash: 33906514955b76a3d6587b19899a0c76a09018a2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d9bb048ece32bf5b34e05d7459488aa0f24d0d44
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="quota-types-in-azure-stack"></a>Azure Stack のクォータの種類
 
@@ -29,10 +29,10 @@ ms.lasthandoff: 10/11/2017
 ## <a name="compute-quota-types"></a>Compute クォータの種類
 | **型** | **既定値** | **説明** |
 | --- | --- | --- |
-| [Max number of virtual machines]\(仮想マシンの最大数\) |50 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
-| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) |100 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
-| [Max number of availability sets]\(可用性セットの最大数\) |10 | この場所に作成できる可用性セットの最大数です。 |
-| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) |100 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
+| [Max number of virtual machines]\(仮想マシンの最大数\) | 20 | 1 つのサブスクリプションでこの場所に作成できる仮想マシンの最大数です。 |
+| [Max number of virtual machine cores]\(仮想マシン コアの最大数\) | 50 | 1 つのサブスクリプションでこの場所に作成できるコアの最大数です (たとえば、A3 VM のコア数は 4 です)。 |
+| [Max number of availability sets]\(可用性セットの最大数\) | 10 | この場所に作成できる可用性セットの最大数です。 |
+| [Max number of virtual machine scale sets]\(仮想マシン スケール セットの最大数\) | 20 | この場所に作成できる仮想マシン スケールセットの最大数です。 |
 
 > [!NOTE]
 > このテクニカル プレビューでは、Compute クォータは強制されていません。

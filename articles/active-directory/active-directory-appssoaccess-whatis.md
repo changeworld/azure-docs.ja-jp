@@ -16,11 +16,11 @@ ms.date: 09/11/2017
 ms.author: curtand
 ms.reviewer: asmalser
 ms.custom: it-pro
-ms.openlocfilehash: 97df68d446755414cbd427d59f399d6430580f42
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 89bffc9726a2c54e59281045d16472335b2a7fed
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="what-is-application-access-and-single-sign-on-with-azure-active-directory"></a>Azure Active Directory のアプリケーション アクセスとシングル サインオンとは
 シングル サインオンとは、1 つのユーザー アカウントを使って 1 回サインインするだけで作業に必要なすべてのアプリケーションとリソースにアクセスできる機能です。 いったんサインインすると、もう一度認証 (パスワードの入力など) を求められることなく、必要なすべてのアプリケーションにアクセスできます。
@@ -75,12 +75,10 @@ Azure AD は、HTML ベースのサインイン ページを持つあらゆる�
 パスワードベースの SSO は、ブラウザーの拡張機能に依存して、アプリケーションおよびユーザーに固有の情報を Azure AD から安全に取得してサービスに適用します。 Azure AD でサポートされているほとんどのサードパーティ SaaS アプリケーションは、この機能をサポートします。
 
 パスワードベースの SSO の場合、エンド ユーザーのブラウザーには次のいずれかを使用できます。
-
-* Internet Explorer 8、9、10、11 -- Windows 7 以降 (「 [グループ ポリシーを使用して Internet Explorer 用アクセス パネル拡張機能をデプロイする方法](active-directory-saas-ie-group-policy.md)」も参照)
+* Internet Explorer 8、9、10、11 - Windows 7 以降
+* Edge - Windows 10 Anniversary Edition 以降 
 * Chrome - Windows 7 以降、MacOS X 以降
 * Firefox 26.0 以降 - Windows XP SP2 以降、Mac os X 10.6 以降
-
-**注:** パスワードベースの SSO の拡張機能は、ブラウザーの拡張機能が Windows 10 の Edge でサポートされるようになると、Edge で使用できるようになります。
 
 ### <a name="existing-single-sign-on"></a>既存のシングル サインオン
 Azure 管理ポータルでアプリケーションのシングル サインオンを構成する場合、第 3 のオプションとして "既存のシングル サインオン" が用意されています。 このオプションを選択した場合、管理者は、アプリケーションへのリンクを作成し、これを選択したユーザーのアクセス パネルに配置できます。
@@ -112,7 +110,7 @@ Azure AD 内でユーザーを削除するかまたはユーザー情報を変�
 ### <a name="application-not-in-the-gallery"></a>アプリケーションがギャラリーに見つからない
 アプリケーションが Azure AD アプリケーション ギャラリーに見つからない場合は、次の操作を試してください。
 
-* **使用している、一覧にないアプリを追加する** - Azure 管理ポータル内のアプリケーション ギャラリーでカスタム カテゴリを使用して、組織が使用している、一覧にないアプリケーションを接続します。 SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。 詳細については、 [独自のアプリケーションの追加](active-directory-saas-custom-apps.md)に関する記事を参照してください。
+* **使用している、一覧にないアプリを追加する** - Azure 管理ポータル内のアプリケーション ギャラリーでカスタム カテゴリを使用して、組織が使用している、一覧にないアプリケーションを接続します。 SAML 2.0 をサポートする任意のアプリケーション、または HTML ベースのサインイン ページをパスワード SSO アプリとして持つ任意のアプリケーションをフェデレーション アプリケーションとして追加できます。 詳細については、 [独自のアプリケーションの追加](application-config-sso-how-to-configure-federated-sso-non-gallery.md)に関する記事を参照してください。
 * **開発した独自のアプリケーションを追加する** - 自分でアプリケーションを開発した場合は、Azure AD 開発者向けドキュメントのガイドラインに従って、Azure AD Graph API を使用してフェデレーション シングル サインオンまたはプロビジョニングを実装します。 詳細については、次のリソースを参照してください。
   
   * [Azure AD の認証シナリオ](active-directory-authentication-scenarios.md)

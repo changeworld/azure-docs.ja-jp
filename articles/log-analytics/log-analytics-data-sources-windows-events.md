@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/15/2017
+ms.date: 09/28/2017
 ms.author: bwren
-ms.openlocfilehash: 1be8500ec2cb78ef0edf57f4d8561336cf00ebcb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ddead0903c7c5f29bc996e305699ced596d0a4f5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="windows-event-log-data-sources-in-log-analytics"></a>Log Analytics での Windows イベント ログのデータ ソース
 Windows イベント ログは、多くのアプリケーションが書き込みを行うため、Windows エージェントを使用してデータを収集する際の最も一般的な[データ ソース](log-analytics-data-sources.md) の 1 つです。  システムやアプリケーションなどの標準ログに加えて、アプリケーションによって作成される監視が必要なカスタム ログを指定して、イベントを収集できます。
@@ -64,18 +64,7 @@ Windows イベント レコードの型は **Event** になり、次の表に示
 ## <a name="log-searches-with-windows-events"></a>Windows イベントのログ検索
 次の表は、Windows イベント レコードを取得するログ検索のさまざまな例をまとめたものです。
 
-| クエリ | 説明 |
-|:--- |:--- |
-| Type=Event |すべての Windows イベント。 |
-| Type=Event EventLevelName=error |重大度が「エラー」のすべての Windows イベント。 |
-| Type=Event &#124; Measure count() by Source |ソース別の Windows イベントの数。 |
-| Type=Event EventLevelName=error &#124; Measure count() by Source |ソース別の Windows エラー イベントの数。 |
-
-
->[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、上記のクエリによって次が変更されます。
->
->| クエリ | Description |
+| クエリ | Description |
 |:---|:---|
 | イベント |すべての Windows イベント。 |
 | Event &#124; where EventLevelName == "error" |重大度が「エラー」のすべての Windows イベント。 |

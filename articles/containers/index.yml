@@ -47,30 +47,22 @@ sections:
         className: cardsM
         columns: 2
         items:
+          - href: ../aks/kubernetes-walkthrough.md
+            title: Azure Container Service (AKS) を使用して Kubernetes クラスターを作成する
+            image:
+              src: /azure/media/index/ContainerService.svg
           - href: 'https://docs.microsoft.com/azure/service-fabric/service-fabric-quickstart-containers'
             title: Service Fabric の Windows コンテナー アプリケーションをデプロイする
             image:
               src: /azure/media/index/Fabric.svg
-          - href: 'https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough'
-            title: Linux コンテナー用 Kubernetes クラスターを作成する
+          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
+            title: Azure Web App for Containers でコンテナー化されたアプリを作成する
             image:
-              src: /azure/media/index/ContainerService.svg
-          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-swarm-walkthrough'
-            title: Docker Swarm クラスターのデプロイ
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_docker.svg'
+              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
           - href: 'https://docs.microsoft.com/azure/container-registry/container-registry-get-started-azure-cli'
             title: Azure Container Registry にプライベート Docker レジストリを作成する
             image:
               src: /azure/media/index/container-registry.svg
-          - href: 'https://docs.microsoft.com/azure/app-service/containers/quickstart-custom-docker-image'
-            title: Azure Web App for Containers でコンテナーに格納したアプリを作成する
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
-          - href: 'https://docs.microsoft.com/azure/container-service/dcos-swarm/container-service-dcos-quickstart'
-            title: DC/OS クラスターのデプロイ
-            image:
-              src: 'https://docs.microsoft.com/media/logos/logo_linux.svg'
   - title: Azure とコンテナーに関する無料の Pluralsight ビデオ トレーニング
     items:
       - type: list
@@ -93,14 +85,14 @@ sections:
   - title: ステップバイステップのチュートリアル
     items:
       - type: paragraph
-        text: Azure コンテナーの使用方法
+        text: Azure Container Service (AKS) の使用方法を確認してください。
       - type: list
         style: unordered
         items:
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-cluster">Azure Container Service で Kubernetes クラスターをデプロイする</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>'
-          - html: '<a href="https://docs.microsoft.com/azure/container-service/kubernetes/container-service-tutorial-kubernetes-monitor">OMS で Kubernetes を監視する</a>'
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">アプリケーションからコンテナー イメージを作成する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-prepare-acr">Azure Container Registry にコンテナー イメージをアップロードする</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-cluster">AKS クラスターをデプロイする</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-deploy-application">Kubernetes でコンテナー イメージを実行する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-scale">アプリケーションと Kubernetes インフラストラクチャのスケールを変更する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-app-update">Kubernetes で実行されているアプリケーションを更新する</a>
+          - html: <a href="/azure/aks/tutorial-kubernetes-monitor">Log Analytics で Kubernetes を監視する</a>

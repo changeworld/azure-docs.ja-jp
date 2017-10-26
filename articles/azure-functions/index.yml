@@ -15,7 +15,7 @@ metadata:
   ms.date: 01-23-2017
   ms.author: carolz
 abstract:
-  description: Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できるサーバーレス コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。
+  description: 'Azure Functions は、インフラストラクチャを明示的にプロビジョニングまたは管理することなく、オンデマンドでコードを実行できる<a href="https://azure.microsoft.com/overview/serverless-computing/">サーバーレス</a> コンピューティング サービスです。 Azure Functions を使用すると、各種のイベントに応じてスクリプトまたはコードの一部を実行できます。 Microsoft が提供するクイック スタート、チュートリアル、サンプルを使用して、Azure Functions の使用方法を確認してください。'
   aside:
     image:
       alt: null

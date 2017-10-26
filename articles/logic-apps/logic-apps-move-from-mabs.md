@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: ladocs; jonfan; mandia
-ms.openlocfilehash: e58c6950d1d9420f32fc98ca917216dc5fae4fc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df26e4669158e5aa9e3b9a7af888d0dbbba273dd
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="move-from-biztalk-services-to-logic-apps"></a>BizTalk Services から Logic Apps に移動する
 
@@ -127,5 +127,5 @@ BizTalk Services で高可用性 (HA) を実現するには、処理の負荷を
 
 ## <a name="next"></a>次へ
 * [Logic Apps とは](logic-apps-what-are-logic-apps.md)
-* [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)または[既製のテンプレート](logic-apps-use-logic-app-templates.md)の使い方に関するページ  
+* [初めてのロジック アプリの作成](logic-apps-create-a-logic-app.md)または[既製のテンプレート](logic-apps-create-logic-apps-from-templates.md)の使い方に関するページ  
 * ロジック アプリで[利用できるすべてのコネクタの一覧](../connectors/apis-list.md)

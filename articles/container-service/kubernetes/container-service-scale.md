@@ -17,10 +17,14 @@ ms.workload: na
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 3ec2d280188d7cc2eb0b3926cc963b89531b96e5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ea798c225c87c28601ef8ad7cec49fee9815ac96
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
+# <a name="scale-agent-nodes-in-a-container-service-cluster"></a>Container Service クラスター内のエージェント ノードのスケーリング
+
+[!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
+
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]
