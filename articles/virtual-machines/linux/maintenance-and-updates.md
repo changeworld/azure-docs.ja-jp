@@ -21,12 +21,12 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画的メンテナンス 
+# <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画メンテナンス 
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-計画済みのメインテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
+計画メンテナンスの管理については、「[計画メンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
 
 
