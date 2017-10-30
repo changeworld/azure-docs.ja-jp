@@ -139,6 +139,7 @@
     - name: 開発
       items:
         - name: DocumentDB API
+          href: documentdb-index.md
           items:
             - name: リソース
               href: documentdb-resources.md
@@ -213,6 +214,7 @@
                 - name: S1、S2、S3 の廃止
                   href: performance-levels.md
         - name: MongoDB API
+          href: mongodb-index.md
           items:
             - name: MongoDB アカウントへの接続
               href: connect-mongodb-account.md

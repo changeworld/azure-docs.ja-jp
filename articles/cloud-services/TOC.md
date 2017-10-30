@@ -116,7 +116,7 @@
 ## [.cscfg XML スキーマ](schema-cscfg-file.md)
 ### [Role スキーマ](schema-cscfg-role.md)
 ### [NetworkConfiguration スキーマ](schema-cscfg-networkconfiguration.md)
-## [REST ()](https://msdn.microsoft.com/library/azure/ee460812)
+## [REST ()](/rest/api/compute/cloudservices/)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=compute)

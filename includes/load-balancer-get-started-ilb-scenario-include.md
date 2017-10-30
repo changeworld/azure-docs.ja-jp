@@ -1,11 +1,11 @@
-## <a name="scenario"></a>シナリオ
+## <a name="configuration-scenario"></a>構成のシナリオ
 
-次のシナリオに従って、内部ロード バランサーを作成します
+このシナリオでは、次の図のように、仮想ネットワークに内部ロード バランサーを作成します。
 
-![イメージの説明](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
+![内部ロード バランサーのシナリオ](./media/load-balancer-get-started-ilb-scenario-include/figure1.png)
 
-内部ロード バランサーが仮想ネットワーク内で構成されます
+このシナリオの構成は次のとおりです。
 
-* 2 つの仮想マシン (DB1 と DB2)
-* エンドポイント
+* **DB1** と **DB2** という 2 つの仮想マシン
+* 内部ロード バランサーのエンドポイント
 * 内部ロード バランサー
