@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.openlocfilehash: 381950321ac3a5ea8a43b76f3fba868da4be4682
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4d6fb44fd6fd2261059ca45093d8b49345adfa74
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-stack-storage-differences-and-considerations"></a>Azure Stack Storage : 違いと考慮事項
 
@@ -40,6 +40,7 @@ Azure Stack Storage は、Microsoft Azure Stack 内のストレージ クラウ�
 |管理ディスク|Premium および標準がサポートされます|まだサポートされていません
 |BLOB 名|1,024 文字 (2,048 バイト)|880 文字 (1,760 バイト)
 |ブロック BLOB の最大サイズ|4.75 TB (100 MB X 50,000 ブロック)|50,000 x 4 MB (約 195 GB)
+|ページ BLOB のスナップショット コピー|実行中の VM にアタッチされている Azure の管理対象外 VM ディスクのバックアップはサポートされています|まだサポートされていません
 |ページ BLOB の増分スナップショットのコピー|Premium および標準の Azure ページ BLOB がサポートされます|まだサポートされていません
 |ページ BLOB の最大サイズ|8 TB|1 TB (テラバイト)
 |ページ BLOB のページ サイズ|512 バイト|4 KB

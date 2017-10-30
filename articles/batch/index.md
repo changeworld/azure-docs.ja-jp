@@ -12,11 +12,11 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 01/23/2017
 ms.author: carolz
-ms.openlocfilehash: 31e15ecb995f0a5b1164296132db15e8de7e4363
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2c5d43338ca5a672e33dc9474a7874eb9d113377
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 #<a name="batch-documentation"></a>Batch のドキュメント
 
@@ -158,7 +158,7 @@ Batch を使用して、大規模な並列コンピューティングやハイ�
                         <h3>言語</h3>
                         <p><a href="/dotnet/api/microsoft.azure.batch">.NET</a></p>
                         <p><a href="/java/api/com.microsoft.azure.batch">Java</a></p>
-                        <p><a href="http://azure.github.io/azure-sdk-for-node/">Node.JS</a></p>
+                        <p><a href="/nodejs/api/overview/azure/batch">Node.JS</a></p>
                         <p><a href="http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.batch.html">Python</a></p>
                     </div>
                 </div>

@@ -1,64 +1,94 @@
 ---
-title: "Fiddler を使用して Azure Search REST API を評価およびテストする方法 | Microsoft Docs"
-description: "コードを作成せずに、Fiddler を使用して、Azure Search の可用性を検証し、REST API を試してみます。"
+title: "Fiddler または Postman での REST API の探索 (Azure Search REST) | Microsoft Docs"
+description: "Fiddler または Postman を使用して HTTP 要求と REST API 呼び出しを Azure Search に発行する方法について説明します。"
 services: search
 documentationcenter: 
 author: HeidiSteen
-manager: mblythe
+manager: jhubbard
 editor: 
-ms.assetid: 790e5779-c6a3-4a07-9d1e-d6739e6b87d2
+ms.assetid: 
 ms.service: search
 ms.devlang: rest-api
 ms.workload: search
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
-ms.date: 10/27/2016
+ms.date: 10/17/2017
 ms.author: heidist
-ms.openlocfilehash: c38b73fa69bee34ce2434c6274cb017c99ef3c35
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8da3f02fab90e0c690e320736409a4d113d634c
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-fiddler-to-evaluate-and-test-azure-search-rest-apis"></a>Fiddler を使用して Azure Search REST API を評価およびテストする
-> [!div class="op_single_selector"]
->
-> * [概要](search-query-overview.md)
-> * [Search エクスプローラー](search-explorer.md)
-> * [Fiddler](search-fiddler.md)
-> * [.NET](search-query-dotnet.md)
-> * [REST ()](search-query-rest-api.md)
->
->
+# <a name="explore-azure-search-rest-apis-using-fiddler-or-postman"></a>Fiddler または Postman を使用して Azure Search REST API を探索する
 
-この記事では、コードを記述することなく、 [Telerik から無料でダウンロードできる](http://www.telerik.com/fiddler)Fiddler を利用し、Azure Search REST API を使用して HTTP 要求を発行し、応答を表示する方法について説明します。 Azure Search は、Microsoft Azure の完全に管理されたホステッド クラウド検索サービスで、.NET API および REST API を使用して簡単にプログラミングできます。 Azure Search サービス REST API については、 [MSDN](https://msdn.microsoft.com/library/azure/dn798935.aspx)を参照してください。
+[Azure Search REST API](https://docs.microsoft.com/rest/api/searchservice) を探索する最も簡単な方法の 1 つは、Fiddler または Postman を使用して HTTP 要求を作成し、応答を検査することです。 この記事では、コードを記述することなく、要求と応答のペイロードを実験します。
 
-以下の手順では、インデックスを作成し、ドキュメントをアップロードし、インデックスのクエリを実行してから、システムでサービス情報のクエリを実行します。
+> [!div class="checklist"]
+> * Web API テスト プール ツールをダウンロードする
+> * 検索サービスの API キーとエンドポイントを取得する
+> * 要求ヘッダーを構成する
+> * インデックスを作成する
+> * インデックスを読み込む
+> * インデックスを検索する
 
-これらの手順を完了するには、Azure Search サービスおよび `api-key`が必要です。 作業を始める方法については、「 [Create an Azure Search service in the portal (ポータルで Azure Search サービスを作成する)](search-create-service-portal.md) 」を参照してください。
+Azure サブスクリプションをお持ちでない場合は、開始する前に[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成し、[Azure Search にサインアップ](search-create-service-portal.md)してください。
 
-## <a name="create-an-index"></a>インデックスを作成する
-1. Fiddler を起動します。 **[File (ファイル)]** メニューの **[Capture Traffic (トラフィックのキャプチャ)]** をオフにして、現在のタスクには関係ない外部の HTTP アクティビティを非表示にします。
-2. **[Composer]** タブで、次のスクリーン ショットのような要求を生成します。
+## <a name="download-and-install-tools"></a>ツールのダウンロードとインストール
 
-      ![][1]
-3. **[PUT]**を選択します。
-4. サービス URL、要求属性、および API バージョンを指定する URL を入力します。 次の点に留意してください。
+Web 開発では次のツールが幅広く使用されていますが、別の使い慣れたツールでも、多くの場合はこの記事の手順が適用されます。
 
-   * HTTPS をプレフィックスとして使用します。
-   * 要求属性は "/indexes/hotels" です。 この属性は Search に "hotels" という名前のインデックスを作成することを指定します。
-   * API バージョンは、小文字で「?api-version=2016-09-01」と指定します。 Azure Search は定期的に更新をデプロイするため、API バージョンは重要です。 まれに、サービスの更新により API に対する重要な変更が発生する可能性があります。 このため、Azure Search では、使用するバージョンを完全に制御するために、各要求に API バージョンが必要です。
++ [Postman (Google Chrome アドイン)](https://www.getpostman.com/)
++ [Telerik Fiddler](http://www.telerik.com/fiddler)
 
-     URL 全体は、次の例のようになります。
+## <a name="get-the-api-key-and-endpoint"></a>API キーとエンドポイントを取得する
 
-             https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01
-5. ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
+REST 呼び出しには、要求ごとにサービス URL とアクセス キーが必要です。 両方を使用して検索サービスが作成されるので、Azure Search をサブスクリプションに追加した場合は、次の手順に従って必要な情報を入手してください。
 
-         User-Agent: Fiddler
-         host: my-app.search.windows.net
+1. Azure Portal でダッシュボードから検索サービス ページを開くか、サービス一覧から[ご利用のサービスを探します](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)。
+2. **[概要]** > **[要点]** > **[URL]** でエンドポイントを取得します。 たとえば、エンドポイントは `https://my-service-name.search.windows.net` のようになります。
+3. **[設定]** > **[キー]** で API キーを取得します。 キーをロール オーバーする場合に備えて冗長性のために 2 つの管理者キーがあります。 管理者キーは、サービスに対する書き込みアクセス許可を付与します。これはインデックスの作成と読み込みに必要です。 書き込み操作には、プライマリ キーまたはセカンダリ キーのどちらでも使用できます。
+
+## <a name="configure-request-headers"></a>要求ヘッダーを構成する
+
+各ツールには、セッションの要求ヘッダー情報が保持されます。つまり、URL エンドポイント、API バージョン、API キー、およびコンテンツタイプの入力は 1 度だけで済みます。
+
+完全な URL は次の例のようになります。**`my-app`** プレースホルダー名は、実際の有効な値で置き換える必要があります。`https://my-app.search.windows.net/indexes/hotels?api-version=2016-09-01`
+
+サービス URL の構成には、次の要素が含まれます。
+
++ HTTPS プレフィックス。
++ サービス URL。ポータルから取得します。
++ リソース。サービスでオブジェクトを作成する操作です。 この手順では、hotels というインデックスです。
++ API バージョン。現在のバージョンでは、"?api-version=2016-09-01" のように指定された必須の小文字の文字列。 [API バージョン](search-api-versions.md)は定期的に更新されます。 各要求に API バージョンを含めるので、使用するバージョンが完全に制御されます。  
+
+要求ヘッダーの構成には、前のセクションで説明したコンテンツ タイプと API キーという 2 つの要素が含まれます。
+
          content-type: application/json
-         api-key: 1111222233334444
-6. 要求の本文には、インデックス定義を構成するフィールドを貼り付けます。
+         api-key: <placeholder>
+
+### <a name="fiddler"></a>Fiddler
+
+次のスクリーン ショットのように要求を作成します。 動詞として **PUT** を選択します。 `User-Agent=Fiddler` が自動的に追加されます。 その下の新しい行に 2 つの追加の要求ヘッダーを貼り付けることができます。 サービスの管理者アクセス キーを使用して、サービスのコンテンツ タイプと API キーを含めます。
+
+![Fiddler の要求ヘッダー][1]
+
+> [!Tip]
+> Web トラフィックを無効にして、実行しているタスクに関係がない余計な HTTP アクティビティを非表示にすることができます。 Fiddler で **[File]\(ファイル\)** メニューに移動し、**[Capture Traffic]\(トラフィックのキャプチャ\)** をオフにします。 
+
+### <a name="postman"></a>postman
+
+次のスクリーン ショットのように要求を作成します。 動詞として **PUT** を選択します。 
+
+![Postman の要求ヘッダー][6]
+
+## <a name="create-the-index"></a>インデックスの作成
+
+要求の本文には、インデックス定義が含まれています。 要求本文を追加すると、インデックスを生成する要求が完成します。
+
+要求で最も重要なコンポーネントは、インデックス名を除くと、フィールド コレクションです。 フィールド コレクションは、インデックス スキーマを定義します。 各フィールドでその型を指定します。 文字列フィールドは全文検索に使用されるので、コンテンツを検索可能にする必要がある場合は、数値データを文字列としてキャストすることができます。
+
+フィールドの属性によって、使用できるアクションが決まります。 REST API は、既定で多くのアクションを使用できます。 たとえば、すべての文字列は既定で検索可能、取得可能、フィルター可能、およびファセット可能です。 動作を無効にする必要がある場合は、属性を設定するだけで済むことがよくあります。 属性の詳細詳細については、[インデックスの作成 (REST)](https://docs.microsoft.com/rest/api/searchservice/create-index) に関するページを参照してください。
 
           {
          "name": "hotels",  
@@ -76,28 +106,33 @@ ms.lasthandoff: 10/11/2017
            {"name": "location", "type": "Edm.GeographyPoint"}
           ]
          }
-7. **[実行]**をクリックします。
 
-数秒で、インデックスが正常に作成されたことを示す HTTP 201 応答がセッション一覧に表示されます。
+
+この要求を送信すると、インデックスが正常に作成されたことを示す HTTP 201 応答が返されます。 ポータルでこのアクションを確認することもできますが、ポータル ページには更新間隔があるので、最新情報が表示されるまでに 1 ～ 2 分かかる可能性があります。
 
 HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してください。 HTTP 400 または 404 を確認するには、要求の本文をチェックして、コピーまたは貼り付けのエラーがないことを確認します。 HTTP 403 は、API キーに問題があることを示しています (キーが無効か、または API キーの指定方法に構文エラーがあります)。
 
+### <a name="fiddler"></a>Fiddler
+
+次のスクリーン ショットのようにインデックス定義を要求本文にコピーし、右上の **[Execute]\(実行\)** をクリックして完成した要求を送信します。
+
+![Fiddler の要求本文][7]
+
+### <a name="postman"></a>postman
+
+次のスクリーン ショットのようにインデックス定義を要求本文にコピーし、右上の **[Send]\(送信\)** をクリックして完成した要求を送信します。
+
+![Postman の要求本文][8]
+
 ## <a name="load-documents"></a>ドキュメントを読み込む
-**[Composer]** タブでは、ドキュメントを送信する要求を次のように記述します。 要求の本文には、4 つの hotel の検索データが含まれています。
 
-   ![][2]
+インデックスの作成とインデックスの設定は別の手順です。 Azure Search では、インデックスにはすべての検索可能なデータが含まれており、それを JSON ドキュメントとして提供できます。 この操作の API の詳細については、[ドキュメントの追加、更新、または削除 (REST)](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) に関するページを参照してください。
 
-1. **[POST]**を選択します。
-2. HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs/index?api-version=2016-09-01」と入力します。 URL 全体は、次の例のようになります。
++ この手順では動詞を **POST** に変更します。
++ `/docs/index` を含めるようにエンドポイントを変更します。 完全な URL は `https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01` のようになります。
++ 要求ヘッダーは変更しないでください。 
 
-         https://my-app.search.windows.net/indexes/hotels/docs/index?api-version=2016-09-01
-3. 要求ヘッダーは前と同じにします。 ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
-
-         User-Agent: Fiddler
-         host: my-app.search.windows.net
-         content-type: application/json
-         api-key: 1111222233334444
-4. 要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
+要求の本文には、hotels インデックスに追加する 4 つのドキュメントが含まれています。
 
          {
          "value": [
@@ -159,67 +194,83 @@ HTTP 504 が表示された場合は、URL で HTTPS の指定を確認してく
            }
           ]
          }
-5. **[実行]**をクリックします。
 
-数秒で、セッション一覧に HTTP 200 応答が表示されます。 この応答は、ドキュメントが正常に作成されたことを示します。 207 が表示された場合は、少なくとも 1 つのドキュメントのアップロードが失敗しています。 404 が表示された場合は、要求のヘッダーまたは本文に構文エラーがあります。
+数秒で、セッション一覧に HTTP 200 応答が表示されます。 この応答は、ドキュメントが正常に作成されたことを示します。 
+
+207 が表示された場合は、少なくとも 1 つのドキュメントのアップロードが失敗しています。 404 が表示された場合は、要求のヘッダーまたは本文に構文エラーがあります。`/docs/index` を含めるようにエンドポイントを変更したことを確認してください。
+
+> [!Tip]
+> 選択したデータ ソースについて、インデックス作成に必要なコードを簡易化してコード量を減らすことができる別の*インデクサー* アプローチを選択することができます。 詳細については、[インデクサーの操作](https://docs.microsoft.com/rest/api/searchservice/indexer-operations)に関するページを参照してください。
+
+### <a name="fiddler"></a>Fiddler
+
+動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーン ショットのようにドキュメントを要求本文にコピーし、要求を実行します。
+
+![Fiddler の要求ペイロード][9]
+
+### <a name="postman"></a>postman
+
+動詞を **POST** に変更します。 `/docs/index` を含めるように URL を変更します。 次のスクリーン ショットのようにドキュメントを要求本文にコピーし、要求を実行します。
+
+![Postman の要求ペイロード][10]
 
 ## <a name="query-the-index"></a>インデックスのクエリを実行する
-インデックスとドキュメントが読み込まれたら、クエリを発行することができます。  **[Composer (コンポーザー)]** タブで、サービスのクエリを実行する **GET** コマンドは次のスクリーン ショットのようになります。
+インデックスとドキュメントが読み込まれたら、クエリを発行することができます。 この API の詳細については、[ドキュメントの検索 (REST)](https://docs.microsoft.com/rest/api/searchservice/search-documents) に関するページを参照してください。  
 
-   ![][3]
++ この手順では動詞を **GET** に変更します。
++ 検索文字列など、クエリ パラメーターを含めるようにエンドポイントを変更します。 クエリの URL は `https://my-app.search.windows.net/indexes/hotels/docs?search=motel&$count=true&api-version=2016-09-01` のようになります
++ 要求ヘッダーは変更しないでください
 
-1. **[GET]**を選択します。
-2. HTTPS で始まる URL の後に自分のサービス URL、次に「/indexes/<'indexname'>/docs?」、クエリ パラメーターの順に入力します。 例として、サンプル ホスト名をサービスで有効な値に置き換えた、次の URL を使用します。
+このクエリでは、"motel" という用語を検索し、検索結果でドキュメント数を返します。 Postman で **[Send]\(送信\)** をクリックすると、要求と応答は次のスクリーン ショットのようになります。 状態コードは 200 になります。
 
-         https://my-app.search.windows.net/indexes/hotels/docs?search=motel&facet=category&facet=rating,values:1|2|3|4|5&api-version=2016-09-01
+ ![Postman のクエリ応答][11]
 
-   このクエリは、用語 "motel" を検索し、評価のファセット カテゴリを取得します。
-3. 要求ヘッダーは前と同じにします。 ホストと API キーはサービスで有効な値に置き換えたことを思い出してください。
+### <a name="tips-for-running-our-sample-queries-in-fiddler"></a>Fiddler で Microsoft のサンプル クエリを実行するためのヒント
 
-         User-Agent: Fiddler
-         host: my-app.search.windows.net
-         content-type: application/json
-         api-key: 1111222233334444
+次のクエリは、[検索インデックス操作 (Azure Search API)](http://msdn.microsoft.com/library/dn798927.aspx) に関する記事に掲載されている例です。 この記事のクエリ例の多くには、Fiddler では許可されないスペースが含まれています。 Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
 
-応答コードは 200 で、応答出力は次のスクリーン ショットのようになります。
-
-   ![][4]
-
-次のクエリ例は、MSDN の「 [Search Index operation (Azure Search API) (検索インデックス操作 (Azure Search API))](http://msdn.microsoft.com/library/dn798927.aspx) 」に記載されているものです。 このトピックのクエリ例の多くに、Fiddler では許可されないスペースが含まれています。 Fiddler でクエリを実行する場合は、次のように、スペースを + 文字に置き換えてからクエリ文字列に貼り付けてください。
-
-**スペースを置き換える前:**
+**(lastRenovationDate desc の) スペースを置き換える前:**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2016-09-01
 
-**スペースを + で置き換えた後:**
+**(lastRenovationDate+desc の) + でスペースを置き換えた後:**
 
         GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate+desc&api-version=2016-09-01
 
-## <a name="query-the-system"></a>システムのクエリを実行する
-システムのクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。 **[Composer]** タブでは、要求は次のように表示され、応答ではドキュメント数と使用されているストレージ領域が返されます。
+## <a name="query-index-properties"></a>クエリ インデックスのプロパティ
+システム情報のクエリを実行して、ドキュメント数とストレージ消費を取得することもできます。`https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01`
 
- ![][5]
+Postman の場合、要求は次のようになります。また、応答にはドキュメント数とバイト単位の使用領域が含まれます。
 
-1. **[GET]**を選択します。
-2. 次のように、サービスの URL の後に「/indexes/hotels/stats?api-version=2016-09-01」を続けて URL を入力します。
+ ![Postman のシステム クエリ][12]
 
-         https://my-app.search.windows.net/indexes/hotels/stats?api-version=2016-09-01
-3. ホストと API キーをサービスに有効な値で置き換え、要求ヘッダーを指定します。
+API バージョンの構文が異なる点に注目してください。 この要求では、`?` を使用して API バージョンを付加しています。 ? は URL パスとクエリ文字列を区切っています。& はクエリ文字列内の各 "名前=値" ペアを区切っています。 このクエリのクエリ文字列では、API バージョンは最初で唯一の項目です。
 
-         User-Agent: Fiddler
-         host: my-app.search.windows.net
-         content-type: application/json
-         api-key: 1111222233334444
-4. 要求の本文は空のままにします。
-5. **[実行]**をクリックします。 セッション一覧に、状態コード HTTP 200 が表示されます。 コマンドに対して送信されたエントリを選択します。
-6. **[Inspectors (インスペクター)]** タブをクリックし、**[Headers (ヘッダー)]** タブをクリックして、JSON 形式を選択します。 ドキュメント数とストレージ サイズ (KB) が表示されます。
+この API の詳細については、[インデックスの統計情報の取得 (REST)](https://docs.microsoft.com/rest/api/searchservice/get-index-statistics) に関するページを参照してください。
+
+
+### <a name="tips-for-viewing-index-statistic-in-fiddler"></a>Fiddler でインデックスの統計情報を表示するためのヒント
+
+Fiddler で、**[Inspectors]\(インスペクター\)** タブをクリックし、**[Headers]\(ヘッダー\)** タブをクリックして、JSON 形式を選択します。 ドキュメント数とストレージ サイズ (KB) が表示されます。
 
 ## <a name="next-steps"></a>次のステップ
-コードを作成せずに Azure Search を管理および使用する方法については、 [Azure での検索サービスの管理](search-manage.md) に関するページを参照してください。
+
+REST クライアントは即時の探索にとても有効です。この記事で REST API のしくみを理解したら、次はコードに進みましょう。 次のステップについては、以下のリンクを参照してください。
+
++ [インデックスの作成 (REST)](search-create-index-rest-api.md)
++ [データのインポート (REST)](search-import-data-rest-api.md)
++ [インデックスの検索 (REST)](search-query-rest-api.md)
 
 <!--Image References-->
-[1]: ./media/search-fiddler/AzureSearch_Fiddler1_PutIndex.png
+[1]: ./media/search-fiddler/fiddler-url.png
 [2]: ./media/search-fiddler/AzureSearch_Fiddler2_PostDocs.png
 [3]: ./media/search-fiddler/AzureSearch_Fiddler3_Query.png
 [4]: ./media/search-fiddler/AzureSearch_Fiddler4_QueryResults.png
 [5]: ./media/search-fiddler/AzureSearch_Fiddler5_QueryStats.png
+[6]: ./media/search-fiddler/postman-url.png
+[7]: ./media/search-fiddler/fiddler-request.png
+[8]: ./media/search-fiddler/postman-request.png
+[9]: ./media/search-fiddler/fiddler-docs.png
+[10]: ./media/search-fiddler/postman-docs.png
+[11]: ./media/search-fiddler/postman-query.png
+[12]: ./media/search-fiddler/postman-system-query.png

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 7/17/2017
 ms.author: erikje
-ms.openlocfilehash: b8497f0331e9b7d19eed2e1c254849a1619f496a
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: b67cabf0ecdb48f137bfcfbce95eee568a1c298d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="deploy-the-azure-stack-development-kit"></a>Azure Stack Development Kit のデプロイ
 
@@ -31,7 +31,7 @@ ms.lasthandoff: 10/12/2017
 3. 開発キットのホストに[開発キットをデプロイ](#deploy-the-development-kit)します。
 
 > [!NOTE]
-> インターネット接続されていない Azure Stack 環境を使用する場合でも、最適な結果を得るには、接続中にデプロイすることが最良です。 そうすることにより、Windows Server 2016 の評価バージョンがデプロイ時にアクティブ化されます。 Windows Server 2016 の評価版は、10 日以内にアクティブ化されない場合、シャットダウンされます。
+> インターネット接続されていない Azure Stack 環境を使用する場合でも、最適な結果を得るには、接続中にデプロイすることが最良です。 そうすることにより、Windows Server 2016 の評価バージョンがデプロイ時にアクティブ化されます。
 > 
 > 
 
@@ -98,7 +98,7 @@ ms.lasthandoff: 10/12/2017
     
 2. 管理者特権で PowerShell コンソールを開き、(Cloudbuilder.vhdx の別のドライブにある場合がある) \AzureStack_Installer\asdk-installer.ps1 スクリプトを実行し、**[インストール]** をクリックします。
 3. **[タイプ]** ボックスで、**[Azure クラウド]** または **[ADFS]** を選択します。
-    - **[Azure クラウド]**: Azure Active Directory は ID プロバイダーです。 このパラメーターは、AAD アカウントにグローバル管理者アクセス許可がある特定のディレクトリを指定するために使用します。 .onmicrosoft.com の形式の AAD ディレクトリ テナントの完全名です。 
+    - **[Azure クラウド]**: Azure Active Directory は ID プロバイダーです。 このパラメーターは、AAD アカウントにグローバル管理者アクセス許可がある特定のディレクトリを指定するために使用します。 AAD ディレクトリ テナントの完全名。 たとえば、.onmicrosoft.com です。 
     - **[ADFS]**: 既定のスタンプ ディレクトリ サービスは、ID プロバイダーであり、サインインに使用する既定のアカウントは azurestackadmin@azurestack.local であり、使用するパスワードは、セットアップの一部として提供したものです。
 4. **[Local administrator password]\(ローカル管理者のパスワード\)** の **[パスワード]** ボックスに、(現在の構成済みのローカル管理者パスワードと同じ) ローカル管理者パスワードを入力し、**[次へ]** をクリックします。
 5. 開発キットに使用するネットワーク アダプターを選択して、**[次へ]** をクリックします。
@@ -140,6 +140,10 @@ cd c:\CloudDeployment\Setup
 
 開発キットのホストのパスワードがすぐに期限切れにならないようにするには、デプロイ後に次の手順を実行します。
 
+Powershell からパスワードの有効期限ポリシーを変更するには:
+1. PowerShell ウィンドウから Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurestack.local コマンドを実行します
+
+パスワードの有効期限ポリシーを手動で変更するには:
 1. 開発キットのホストで、**[グループ ポリシーの管理]** を開き、**[グループ ポリシーの管理]**、**[フォレスト: azurestack.local]**、**[ドメイン]**、**[azurestack.local]** に移動します。
 2. **[既定のドメイン ポリシー]** を右クリックし、**[編集]** をクリックします。
 3. グループ ポリシー管理エディターで、**[コンピューターの構成]**、**[ポリシー]**、**[Windows の設定]**、**[セキュリティの設定]**、**[アカウント ポリシー]**、**[パスワード ポリシー]** の順に移動します。

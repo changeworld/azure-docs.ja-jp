@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 08/31/2017
 ms.author: magoedte
-ms.openlocfilehash: fad13053895c5d6e3c41835fea3cf0bdd3380cd4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 486e2b2da7a78cdc39743e60f4140fc58275a8fc
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="getting-started-with-azure-automation"></a>Azure Automation の概要
 
@@ -59,6 +59,7 @@ Hybrid Runbook のジョブを実行するコンピューターを指定する�
 
 * Windows Server 2012 またはそれ以降
 * Windows PowerShell 4.0 またはそれ以降。  信頼性向上のため、コンピューターに Windows PowerShell 5.0 をインストールすることをお勧めします。 新しいバージョンは、[Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=50395) からダウンロードできます。
+* .NET Framework 4.6.2 以降。
 * 少なくとも 2 つのコア
 * 少なくとも 4 GB の RAM
 

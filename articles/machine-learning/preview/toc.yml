@@ -44,7 +44,7 @@
     - name: コンピューティング環境の構成
       items:
         - name: 実験の構成
-          href: experiment-execution-configuration.md
+          href: experimentation-service-configuration.md
         - name: DSVM および HDI Spark クラスターの作成
           href: how-to-create-dsvm-hdi.md
         - name: GPU によるトレーニング
@@ -147,7 +147,7 @@
     - name: 実験
       items:
         - name: 実験サービス構成
-          href: experiment-execution-configuration-reference.md
+          href: experimentation-service-configuration-reference.md
         - name: ロギング API
           href: reference-logging-api.md
     - name: モデル管理
@@ -175,7 +175,7 @@
     - name: Azure のロードマップ
       href: 'https://azure.microsoft.com/roadmap/'
     - name: 価格
-      href: 'https://azure.microsoft.com/pricing/details/machine-learning/'
+      href: 'https://azure.microsoft.com/pricing/details/machine-learning-services/'
     - name: MSDN フォーラム
       href: 'https://social.msdn.microsoft.com/Forums/windowsdesktop/home?forum=MachineLearning'
     - name: スタック オーバーフロー

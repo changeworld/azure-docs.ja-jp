@@ -14,16 +14,10 @@
 ## [サービスの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fapplication-gateway%2ftoc.json#application-gateway-limits)
 # 作業開始
 ## Application Gateway を作成する
-### パブリック
-#### [Azure ポータル](application-gateway-create-gateway-portal.md)
-#### [Azure PowerShell](application-gateway-create-gateway-arm.md)
-#### [Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
-#### [Azure CLI 1.0](application-gateway-create-gateway-cli-nodejs.md)
-#### [Azure CLI](application-gateway-create-gateway-cli.md)
-#### [Azure PowerShell (クラシック)](application-gateway-create-gateway.md)
-### 内部
-#### [Azure PowerShell](application-gateway-ilb-arm.md)
-#### [Azure PowerShell (クラシック)](application-gateway-ilb.md)
+### [Azure ポータル](application-gateway-create-gateway-portal.md)
+### [Azure PowerShell](application-gateway-create-gateway-arm.md)
+### [Resource Manager テンプレート](application-gateway-create-gateway-arm-template.md)
+### [Azure CLI](application-gateway-create-gateway-cli.md)
 # 方法
 ## Web アプリケーション ファイアウォールを構成する
 ### [Azure ポータル](application-gateway-web-application-firewall-portal.md)
@@ -35,9 +29,7 @@
 ## SSL の構成
 ### [Azure ポータル](application-gateway-ssl-portal.md)
 ### [Azure PowerShell](application-gateway-ssl-arm.md)
-### [Azure PowerShell (クラシック)](application-gateway-ssl.md)
-### [Azure CLI](application-gateway-ssl.md)
-### [エンド ツー エンド](application-gateway-end-to-end-ssl-powershell.md)
+### [Azure CLI](application-gateway-ssl-cli.md)
 ### [SSL ポリシー](application-gateway-configure-ssl-policy-powershell.md)
 ## URL パス ベースのルーティングを構成する
 ### [Azure ポータル](application-gateway-create-url-route-portal.md)
@@ -53,7 +45,6 @@
 ## 正常性プローブを構成する
 ### [Azure ポータル](application-gateway-create-probe-portal.md)
 ### [Azure PowerShell](application-gateway-create-probe-ps.md)
-### [Azure PowerShell (クラシック)](application-gateway-create-probe-classic-ps.md)
 ## [Azure Security Center の統合](application-gateway-integration-security-center.md)
 ## [負荷分散サービスの結合](../traffic-manager/traffic-manager-load-balancing-azure.md?toc=%2fazure%2fapplication-gateway%2ftoc.json)
 ## トラブルシューティング
@@ -69,7 +60,6 @@
 ## [Ruby](http://www.rubydoc.info/gems/azure_mgmt_network/0.8.0/Azure/ARM/Network/ApplicationGateways)
 ## [Python](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.network.operations.html#azure.mgmt.network.operations.ApplicationGatewaysOperations)
 ## [REST ()](https://docs.microsoft.com/rest/api/applicationgateway)
-## [REST (クラシック)](https://msdn.microsoft.com/library/azure/mt299393)
 # 関連項目
 ## [ExpressRoute](/azure/expressroute/)
 ## [Virtual Network](/azure/virtual-network/)
