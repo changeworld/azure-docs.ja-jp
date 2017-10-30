@@ -3,7 +3,7 @@
 
 計画メンテナンス ウェーブをスケジュールし、通知が送信されたら、今後のメンテナンス ウェーブの影響を受ける仮想マシンの一覧を確認できます。 
 
-Azure ポータルを使用して、VM のメンテナンス スケジュールを検索できます。
+Azure Portal を使用して、VM のメンテナンス スケジュールを検索できます。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 
@@ -32,7 +32,7 @@ Azure ポータルを使用して、VM のメンテナンス スケジュール�
 
 ## <a name="notification-and-alerts-in-the-portal"></a>ポータルの通知とアラート
 
-Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、[Azure アクティビティ ログでサブスクリプション アクティビティを監視する] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) を参照してください。
+Azure は、サブスクリプション所有者と共同所有者グループに電子メールを送信することで、計画メンテナンスのスケジュールを伝えます。 Azure アクティビティ ログ アラートを作成して、この通信にその他の受信者とチャネルを追加することができます。 詳細については、「[Azure アクティビティ ログでサブスクリプション アクティビティを監視する] (../articles/monitoring-and-diagnostics/monitoring-overview-activity-logs.md) 」を参照してください。
 
 1. [Azure ポータル](https://portal.azure.com)にサインインします。
 2. 左側のメニューで **[監視]** を選択します。 
