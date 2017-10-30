@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画済みメンテナンスの通知の処理
+# <a name="handling-planned-maintenance-notifications-for-windows-virtual-machines"></a>Windows 仮想マシンに対する計画メンテナンスの通知の処理
 
 Azure は、定期的に更新を行い、仮想マシンのホスト インフラストラクチャの信頼性、パフォーマンス、セキュリティの向上に努めています。 更新とは、ホスティング環境の修正、ハードウェアのアップグレードや使用停止などの変更のことです。 これらの更新のほとんどは、ホストされている仮想マシンに影響を及ぼすことなく実行されます。 ただし、更新による影響が生じる場合もあります。
 
@@ -30,7 +30,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 - 再起動を伴うメンテナンスの場合は、メンテナンスの予定日時が知らされます。 このような場合は、都合に応じて自分自身でメンテナンスを開始できる時間枠が与えられます。
 
 
-再起動が必要な計画済みメンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
+再起動が必要な計画メンテナンスは、段階的にスケジュールされます。 各段階のスコープ (リージョン) はそれぞれ異なります。
 
 - 段階はお客様への通知で始まります。 既定では、サブスクリプションの所有者と共同所有者に通知が送信されます。 通知の受信者は追加できます。また、電子メール、SMS、Webhook などのメッセージング オプションを通知に追加できます。  
 - 通知後すぐに、セルフサービス期間が設定されます。 この期間中には、この段階に含まれている仮想マシンを確認し、プロアクティブな再デプロイを使用してメンテナンスを開始できます。 
@@ -49,7 +49,7 @@ Azure ポータル、PowerShell、REST API、CLI を使用して、VM のメン�
 
 ## <a name="check-maintenance-status-using-powershell"></a>PowerShell を使用してメンテナンスの状態を確認する
 
-Azure Powershell を使用して、VM のメンテナンスの予定を確認することもできます。 計画済みメンテナンスに関する情報は、[Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
+Azure Powershell を使用して、VM のメンテナンスの予定を確認することもできます。 計画メンテナンスに関する情報は、[Get AzureRmVM](/powershell/module/azurerm.compute/get-azurermvm) コマンドレットに `-status` パラメーターを指定することで取得できます。
  
 計画済みメンテナンスがある場合にのみ、メンテナンス情報が返されます。 VM に影響を及ぼすメンテナンスがスケジュールされていない場合、コマンドレットはメンテナンス情報を返しません。 
 
