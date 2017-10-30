@@ -21,13 +21,13 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する計画的なメンテナンス
+# <a name="planned-maintenance-for-virtual-machines-in-azure"></a>Azure での仮想マシンに対する計画メンテナンス
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-計画済みのメインテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
+計画メンテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
 
 
 

@@ -8,7 +8,7 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 仮想マシンで実行されるアプリケーションは、Azure Metadata Service for [Windows](../articles/virtual-machines/windows/instance-metadata-service.md) または Azure Metadata Service for [Linux](../articles/virtual-machines/linux/instance-metadata-service.md) を使って、今後の更新についての情報を収集できます。
 
-計画済みメンテナンスを管理する場合の「方法」については、[Linux](../articles/virtual-machines/linux/maintenance-notifications.md) または [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) の計画済みメンテナンスの通知の処理に関するページを参照してください。
+計画メンテナンスを管理する場合の「方法」については、[Linux](../articles/virtual-machines/linux/maintenance-notifications.md) または [Windows](../articles/virtual-machines/windows/maintenance-notifications.md) の計画メンテナンスの通知の処理に関するページを参照してください。
 
 ## <a name="in-place-vm-migration"></a>インプレース VM 移行
 
@@ -21,23 +21,23 @@ Azure は、定期的に更新を行い、仮想マシンのホスト インフ�
 
 ## <a name="maintenance-requiring-a-reboot"></a>再起動を伴うメンテナンス
 
-計画済みメンテナンスで VM の再起動が必要になる場合は、事前に通知が届きます。 計画済みメンテナンスには、"セルフサービス期間" と "予定メンテナンス期間" の 2 つのフェーズがあります。
+計画メンテナンスで VM の再起動が必要になる場合は、事前に通知が届きます。 計画済みメンテナンスには、"セルフサービス期間" と "予定メンテナンス期間" の 2 つのフェーズがあります。
 
 ご利用の VM に対するメンテナンスは、**セルフサービス期間**に行うことができます。 この期間に、個々の VM にその状態を照会し、自分が最後に行ったメンテナンス要求の結果を確認します。
 
 セルフサービス メンテナンスを開始するときは、既に更新されているノードにご利用の VM を移し、再度電源を投入します。 VM が再起動されるため、一時ディスクは失われ、仮想ネットワーク インターフェイスに関連付けられた動的 IP アドレスは更新されます。
 
-セルフサービス メンテナンスを開始して、そのプロセス中にエラーが発生し、操作が停止された場合、VM は更新されません。また、計画済みメンテナンスのループからも外されます。 後ほど、Microsoft から新しいスケジュールをご連絡いたします。また別途、セルフサービス メンテナンスの機会が設けられます。 
+セルフサービス メンテナンスを開始して、そのプロセス中にエラーが発生し、操作が停止された場合、VM は更新されません。また、計画メンテナンスのループからも外されます。 後ほど、Microsoft から新しいスケジュールをご連絡いたします。また別途、セルフサービス メンテナンスの機会が設けられます。  
 
 セルフサービス期間が過ぎると、**予定メンテナンス期間**が始まります。 この期間でも、メンテナンス期間について照会することはできますが、この時点でセルフ メンテナンスを開始することはできません。
 
-## <a name="availability-considerations-during-planned-maintenance"></a>計画済みメンテナンス実施時の可用性に関する考慮事項 
+## <a name="availability-considerations-during-planned-maintenance"></a>計画メンテナンス実施時の可用性に関する考慮事項  
 
-計画済みメンテナンス期間まで待つ場合、ご利用の VM の可用性を最大限に保つために考慮すべき事柄がいくつかあります。 
+計画メンテナンス期間まで待つ場合、ご利用の VM の可用性を最大限に保つために考慮すべき事柄がいくつかあります。  
 
 ### <a name="paired-regions"></a>ペアになっているリージョン
 
-各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 計画済みメンテナンス中は、リージョン ペアの一方のリージョンの VM だけが更新されます。 たとえば、米国中北部の仮想マシンが更新されるとき、同時に米国中南部の仮想マシンが更新されることはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に関するページを参照してください。
+各 Azure リージョンは、同じ geo 内の別のリージョンと組み合わせて、リージョン ペアにして使用します。 計画メンテナンス中は、リージョン ペアの一方のリージョンの VM だけが更新されます。 たとえば、米国中北部の仮想マシンが更新されるとき、同時に米国中南部の仮想マシンが更新されることはありません。 ただし、北ヨーロッパなどのその他のリージョンは、米国東部と同時にメンテナンスされる可能性があります。 各リージョンに対して適切に VM を分散させるためには、リージョン ペアの動作を理解することが大切です。 詳細については、[Azure リージョン ペア](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)に関するページを参照してください。
 
 ### <a name="availability-sets-and-scale-sets"></a>可用性セットとスケール セット
 

@@ -27,6 +27,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-計画済みのメインテナンスの管理については、「[計画済みのメンテナンスの通知の処理](maintenance-notifications.md)」を参照してください。
+計画メンテナンスの管理については、[計画メンテナンスの通知の処理に関する記事](maintenance-notifications.md) を参照してください。
 
 
