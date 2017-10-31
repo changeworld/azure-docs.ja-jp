@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/27/2017
 ms.author: dobett
-ms.openlocfilehash: 517e908a744734139ed0aeee314a4f3b9eda86cc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f43196b88cf22aab66c913d0bd659b3d654cef0
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="connected-factory-preconfigured-solution-walkthrough"></a>コネクテッド ファクトリ事前構成済みソリューションのチュートリアル
 
@@ -34,7 +34,7 @@ IoT Suite コネクテッド ファクトリの[事前構成済みソリュー�
 
 このソリューションを独自の実装の出発点として使用し、独自のビジネス要件を満たすように[カスタマイズ][lnk-customize]することができます。
 
-この記事では、コネクテッド ファクトリ ソリューションのしくみを理解できるように、その主な構成要素のいくつかについて説明します。 この知識は以下の作業に役立ちます。
+この記事では、コネクテッド ファクトリ ソリューションのしくみを理解できるように、その主な構成要素のいくつかについて説明します。 この記事では、ソリューションにおけるデータのフローについても説明します。 この知識は以下の作業に役立ちます。
 
 * ソリューションの問題のトラブルシューティングを行う。
 * 独自の要件を満たすためにソリューションをカスタマイズする方法を計画する。
@@ -124,12 +124,116 @@ OEE および KPI ゲージのデータと時系列のグラフを取得する�
 ## <a name="web-app"></a>Web アプリ
 事前構成済みソリューションの一部としてデプロイされた Web アプリは、統合された OPC UA クライアント、アラートの処理、テレメトリの視覚化で構成されています。
 
+## <a name="telemetry-data-flow"></a>テレメトリ データ フロー
+
+![テレメトリ データ フロー](media/iot-suite-connected-factory-walkthrough/telemetry_dataflow.png)
+
+### <a name="flow-steps"></a>フローのステップ
+
+1. OPC Publisher が、必要な OPC UA X509 証明書と IoT Hub セキュリティ資格情報をローカル証明書ストアから読み取ります。
+    - OPC Publisher は、必要に応じて、不足している証明書や資格情報を作成し、証明書ストアに保存します。
+
+2. OPC Publisher が、IoT Hub に自身を登録します。
+    - 構成されているプロトコルを使用します。 IoT Hub クライアント SDK でサポートされる任意のプロトコルを使用できます。 既定値は MQTT です。
+    - プロトコルの通信は TLS によって保護されます。
+
+3. OPC Publisher が、構成ファイルを読み取ります。
+
+4. OPC Publisher が、構成されたそれぞれの OPC UA サーバーで OPC セッションを作成します。
+    - TCP 接続を使用します。
+    - OPC Publisher と OPC UA サーバーが、X509 証明書を使用して相互に認証します。
+    - それ以降のすべての OPC UA トラフィックは、構成された OPC UA 暗号化メカニズムによって暗号化されます。
+    - OPC Publisher が、構成されているそれぞれの発行間隔の OPC セッションで OPC サブスクリプションを作成します。
+    - OPC サブスクリプションで発行するために、OPC ノードの OPC 監視対象項目を作成します。
+
+5. 監視対象の OPC ノード値が変更されると、OPC UA サーバーが OPC Publisher に更新を送信します。
+
+6. OPC Publisher が、新しい値をトランスコードします。
+    - バッチ処理が有効な場合、複数の変更をバッチ処理します。
+    - IoT Hub メッセージを作成します。
+
+7. OPC Publisher が、IoT Hub にメッセージを送信します。
+    - 構成されているプロトコルを使用します。
+    - 通信は TLS によって保護されます。
+
+8. Time Series Insights (TSI) が、IoT Hub からメッセージを読み取ります。
+    - TCP/TLS で AMQP を使用します。
+    - このステップは、データセンターの内部処理です。
+
+9. TSI の保存データ。
+
+10. Azure AppService のコネクテッド ファクトリ WebApp が、TSI に対して必要なデータを照会します。
+    - TCP/TLS のセキュリティで保護された通信を使用します。
+    - このステップは、データセンターの内部処理です。
+
+11. Web ブラウザーが、コネクテッド ファクトリ WebApp に接続します。
+    - コネクテッド ファクトリ ダッシュボードをレンダリングします。
+    - HTTPS で接続します。
+    - コネクテッド ファクトリ アプリにアクセスするには、Azure Active Directory を介したユーザーの認証が必要です。
+    - コネクテッド ファクトリ アプリへのすべての Web API 呼び出しは、偽造防止トークンによって保護されます。
+
+12. データが更新されると、コネクテッド ファクトリ WebApp が、更新されたデータを Web ブラウザーに送信します。
+    - SignalR プロトコルを使用します。
+    - TCP/TLS によって保護されます。
+
+## <a name="browsing-data-flow"></a>ブラウズ操作のデータ フロー
+
+![ブラウズ操作のデータ フロー](media/iot-suite-connected-factory-walkthrough/browsing_dataflow.png)
+
+### <a name="flow-steps"></a>フローのステップ
+
+1. OPC プロキシ (サーバー コンポーネント) が起動されます。
+    - ローカル ストアから共有アクセス キーを読み取ります。
+    - 必要に応じて、不足しているアクセス キーをストアに格納します。
+
+2. OPC Proxy (サーバー コンポーネント) が、IoT Hub に自身を登録します。
+    - IoT Hub から既知のすべてのデバイスを読み取ります。
+    - Socket または Secure Websocket 上で MQTT over TLS を使用します。
+
+3. Web ブラウザーが、コネクテッド ファクトリ WebApp に接続し、コネクテッド ファクトリ ダッシュボードをレンダリングします。
+    - HTTPS を使用します。
+    - ユーザーが、接続先の OPC UA サーバーを選択します。
+
+4. コネクテッド ファクトリ WebApp が、選択された OPC UA サーバーへの OPC UA セッションを確立します。
+    - OPC UA スタックを使用します。
+
+5. OPC プロキシ転送によって OPC UA スタックからの要求が受信され、OPC UA サーバーへの TCP ソケット接続が確立されます。
+    - このとき、単に TCP ペイロードが取得され、そのまま使用されます。
+    - このステップは、コネクテッド ファクトリ WebApp の内部処理です。
+
+6. OPC プロキシ (クライアント コンポーネント) が、IoT Hub デバイス レジストリ内で OPC プロキシ (サーバー コンポーネント) デバイスを検索します。 次に、IoT Hub で OPC プロキシ (サーバー コンポーネント) デバイスのデバイス メソッドを呼び出します。
+    - TCP/TLS で HTTPS を使用して、OPC プロキシを検索します。
+    - TCP/TLS で HTTPS を使用して、OPC UA サーバーへの TCP ソケット接続を確立します。
+    - このステップは、データセンターの内部処理です。
+
+7. IoT Hub が、OPC プロキシ (サーバー コンポーネント) デバイスのデバイス メソッドを呼び出します。
+    - Socket または Secure Websocket 接続上で確立された MQTT over TLS を使用して、OPC UA サーバーへの TCP ソケット接続を確立します。
+
+8. OPC Proxy (サーバー コンポーネント) が、TCP ペイロードをショップフロア ネットワークに送信します。
+
+9. OPC UA サーバーが、ペイロードを処理し、応答を返します。
+
+10. 応答が OPC プロキシ (サーバー コンポーネント) のソケットによって受信されます。
+    - OPC プロキシが、データをデバイス メソッドの戻り値として IoT Hub および OPC プロキシ (クライアント コンポーネント) に送信します。
+    - このデータは、コネクテッド ファクトリ アプリの OPC UA スタックに配信されます。
+
+11. コネクテッド ファクトリ WebApp が、OPC UA サーバーから受信した OPC UA に固有の情報が付加された OPC ブラウザー UX を、レンダリングのために Web ブラウザーに返します。
+    - OPC ブラウザー UX のクライアント部分が、OPC アドレス空間を介してブラウズし、OPC アドレス空間内のノードに機能を適用する一方で、偽造防止トークンで保護された HTTPS で AJAX 呼び出しを使用して、コネクテッド ファクトリ WebApp からデータを取得します。
+    - クライアントは、必要に応じて、ステップ 4 ～ 10 で説明した通信を使用して、OPC UA サーバーと情報を交換します。
+
+> [!NOTE]
+> OPC プロキシ (サーバー コンポーネント) および OPC プロキシ (クライアント) コンポーネントは、OPC UA 通信に関連するすべての TCP トラフィックについてステップ 4 ～ 10 を実行します。
+
+> [!NOTE]
+> OPC UA サーバーおよびコネクテッド ファクトリ WebApp 内の OPC UA スタックに対して OPC プロキシ通信は透過的であり、認証および暗号化のためのすべての OPC UA セキュリティ機能が適用されます。
+
 ## <a name="next-steps"></a>次のステップ
 
 引き続き IoT Suite の概要について学習するには、次の記事を参照してください。
 
 * [azureiotsuite.com サイトでのアクセス許可][lnk-permissions]
 * [構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする](iot-suite-connected-factory-gateway-deployment.md)
+* [OPC Publisher のリファレンス実装](iot-suite-connected-factory-publisher.md)。
 
 [connected-factory-logical]:media/iot-suite-connected-factory-walkthrough/cf-logical-architecture.png
 

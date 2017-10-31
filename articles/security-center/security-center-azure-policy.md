@@ -1,12 +1,12 @@
 ---
-title: "Azure Security Center でのセキュリティ ポリシーの設定 | Microsoft Docs"
-description: "このドキュメントは、Azure セキュリティ センターでのセキュリティ ポリシーを構成する場合に役立ちます。"
+title: "Azure Security Center のセキュリティ ポリシーを Azure Policy に統合する | Microsoft Docs"
+description: "このドキュメントでは、Azure Security Center のセキュリティ ポリシーを Azure Policy に統合するための構成方法について説明します。"
 services: security-center
 documentationcenter: na
 author: YuriDio
 manager: mbaldwin
 editor: 
-ms.assetid: 3b9e1c15-3cdb-4820-b678-157e455ceeba
+ms.assetid: cd906856-f4f9-4ddc-9249-c998386f4085
 ms.service: security-center
 ms.devlang: na
 ms.topic: hero-article
@@ -14,36 +14,48 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/13/2017
 ms.author: yurid
-ms.openlocfilehash: 1cebb6edecd13c6ab32c6854bfd6fe908c1f71f4
+ms.openlocfilehash: 5e07cd6891a5ab04012f819b5f6b9379312e530d
 ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/13/2017
 ---
-# <a name="set-security-policies-in-security-center"></a>Security Center でセキュリティ ポリシーを設定する
-このドキュメントでは、Security Center でセキュリティ ポリシーを構成するうえで必要な手順について詳しく説明します。 
+# <a name="set-security-policies-in-security-center-powered-by-azure-policy"></a>Azure Policy によって提供される Security Center のセキュリティ ポリシーの設定
+このドキュメントでは、Azure Policy によって提供される Security Center のセキュリティ ポリシーを構成するうえで必要な手順について詳しく説明します。 
 
 
 ## <a name="how-security-policies-work"></a>セキュリティ ポリシーのしくみ
-Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 Security Center でポリシーを編集したり、ポリシーのコンプライアンスを監視したりすることができます。 
+Security Center では、Azure サブスクリプションごとに自動で既定のセキュリティ ポリシーが作成されます。 そのポリシーを Security Center で編集するか、[Azure Policy](http://docs.microsoft.com/azure/azure-policy/azure-policy-introduction) を使って新しいポリシー定義を作成したり、管理グループ (組織全体のこともあれば、その中の一部署などのこともあります) にポリシーを割り当てたりすることによって、ポリシーのコンプライアンスを監視することができます。
 
 > [!NOTE]
-> Azure Policy (限定プレビュー) を使って Security Center のポリシーを拡張できるようになりました。 プレビューに参加するには、[こちら](http://aka.ms/getpolicy)をクリックしてください。または、[こちら](security-center-azure-policy.md)のドキュメントを参照してください。
-
-たとえば、開発やテストに使用されるリソースは、運用アプリケーションで使用されるリソースとは異なるセキュリティ要件を持つ場合があります。 同様に、個人情報のような規制されたデータが使用されるアプリケーションには、より高いレベルのセキュリティが必要です。 Azure Security Center で有効化されているセキュリティ ポリシーは、セキュリティに関する推奨事項と監視を促進して、潜在的な脆弱性を識別し、脅威を軽減します。 使用に適しているオプションを判断する方法の詳細については、「 [Azure Security Center 計画および運用ガイド](security-center-planning-and-operations-guide.md) 」を参照してください。
+> Azure Policy は現在、制限付きのプレビュー段階です。 参加するには、[こちら](https://aka.ms/getpolicy)をクリックしてください。 Azure ポリシーの詳細については、「[Create and manage policies to enforce compliance](http://docs.microsoft.com/en-us/azure/azure-policy/create-manage-policy) (コンプライアンス強化のためのポリシーの作成と管理)」を参照してください。
 
 ## <a name="edit-security-policies"></a>セキュリティ ポリシーの編集
-Security Center では、各 Azure サブスクリプションの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、そのサブスクリプションの所有者、共同作業者、またはセキュリティ管理者である必要があります。 Azure Portal にサインインし、次の手順に従って Security Center でセキュリティ ポリシーを構成します。 
+Security Center では、各 Azure サブスクリプションの既定のセキュリティ ポリシーを編集できます。 セキュリティ ポリシーを変更するには、そのサブスクリプションまたはそれが含まれる管理グループの所有者、共同作成者、セキュリティ管理者のいずれかである必要があります。 Azure Portal にサインインし、次の手順に従って Security Center でセキュリティ ポリシーを表示します。
 
-1.  **Security Center** ダッシュボードの **[全般]** で、**[セキュリティ ポリシー]** をクリックします。
-2.  セキュリティ ポリシーを有効にするサブスクリプションを選択します。
-3.  **[ポリシー コンポーネント]** セクションで、**[セキュリティ ポリシー]** をクリックします。
-4.  これが、Security Center によって割り当てられる既定のポリシーとなります。 利用可能なセキュリティ推奨事項について、そのオンとオフを切り替えることができます。
-5.  編集が終了したら、**[保存]** をクリックします。
+1. **Security Center** ダッシュボードの **[全般]** で、**[セキュリティ ポリシー]** をクリックします。
+2. セキュリティ ポリシーを有効にするサブスクリプションを選択します。
 
-## <a name="available-security-policy-options"></a>利用可能なセキュリティ ポリシー オプション
+    ![ポリシー管理](./media/security-center-policies/security-center-policies-fig10.png)
 
-次の表を参照して、各オプションについて確認してください。
+3. **[ポリシー コンポーネント]** セクションで、**[セキュリティ ポリシー]** をクリックします。
+
+    ![ポリシー コンポーネント](./media/security-center-policies/security-center-policies-fig12.png)
+
+4. これが、Azure Policy によって Security Center に割り当てられる既定のポリシーです。 **[POLICIES AND PARAMETERS]\(ポリシーとパラメーター\)** にある項目を削除したり、**[利用可能なオプション]** にある他のポリシー定義を追加したりできます。 そのためには、定義の名前の横にあるプラス記号をクリックします。
+
+    ![ポリシーの定義](./media/security-center-policies/security-center-policies-fig11.png)
+
+5. ポリシーに関して詳しい説明が必要な場合には、ポリシーをクリックすると別のページが開き、その詳細と[ポリシー定義](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-policy/#policy-definition-structure)の構造を備えた JSON コードが表示されます。
+
+    ![json](./media/security-center-policies/security-center-policies-fig14.png)
+
+6. 編集が終了したら、**[保存]** をクリックします。
+
+
+## <a name="available-security-policy-definitions"></a>利用可能なセキュリティ ポリシーの定義
+
+既定のセキュリティ ポリシーで利用可能なポリシーの定義については、次の表を参照してください。 
 
 | [ポリシー] | 状態がオンの場合 |
 | --- | --- |

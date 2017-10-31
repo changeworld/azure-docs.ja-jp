@@ -1,20 +1,20 @@
 ---
-title: "Azure Event Grid のカスタム イベント | Microsoft Docs"
-description: "トピックを発行したり、そのイベントをサブスクライブしたりするには、Azure Event Grid を使用します。"
+title: "CLI を使用した Azure Event Grid のカスタム イベント | Microsoft Docs"
+description: "Azure Event Grid と Azure CLI を使用して、トピックを発行したり、そのイベントをサブスクライブしたりします。"
 services: event-grid
 keywords: 
 author: djrosanova
 ms.author: darosa
-ms.date: 08/15/2017
+ms.date: 10/11/2017
 ms.topic: hero-article
 ms.service: event-grid
-ms.openlocfilehash: cd285471196f75f6a8c8ead0e2895fd71414f223
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d969b44bdfa610b18f3f934b48d987cb1735155f
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
-# <a name="create-and-route-custom-events-with-azure-event-grid"></a>Azure Event Grid を使ったカスタム イベントの作成とルーティング
+# <a name="create-and-route-custom-events-with-azure-cli-and-event-grid"></a>Azure CLI と Event Grid を使用したカスタム イベントの作成とルーティング
 
 Azure Event Grid は、クラウドのイベント処理サービスです。 この記事では、Azure CLI からカスタム トピックを作成してトピックをサブスクライブし、イベントをトリガーして結果を表示します。 通常、webhook や Azure Functions など、イベントに応答するエンドポイントが、イベントの送信先になります。 ただし、この記事では、単純化するために、メッセージをただ収集するだけの URL に対してイベントを送信します。 この URL は、[RequestBin](https://requestb.in/) というオープン ソースのサードパーティ ツールを使用して作成します。
 
@@ -117,6 +117,6 @@ az group delete --name gridResourceGroup
 トピックを作成し、イベントをサブスクライブする方法がわかったら、Event Grid でできることについて、さらに情報を収集しましょう。
 
 - [Event Grid について](overview.md)
-- [Blob Storage のイベントをカスタム Web エンドポイントにルーティングする (プレビュー)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
+- [Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 - [Azure Event Grid と Logic Apps で仮想マシンの変更を監視する](monitor-virtual-machine-changes-event-grid-logic-app.md)
 - [ビッグ データをデータ ウェアハウスにストリーミングする](event-grid-event-hubs-integration.md)

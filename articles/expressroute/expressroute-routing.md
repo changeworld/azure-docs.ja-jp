@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: osamam
-ms.openlocfilehash: ecb71e8cfc1d723521024ecb79665f4a3117bd4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a7d1e177e08d37913afa3cb203f0e4085c171f70
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="expressroute-routing-requirements"></a>ExpressRoute のルーティングの要件
 ExpressRoute を使用して Microsoft クラウド サービスに接続するには、ルーティングをセットアップして管理する必要があります。 一部の接続プロバイダーでは、ルーティングのセットアップと管理が管理されたサービスとして提供されています。 このサービスが提供されているかどうか、接続プロバイダーに問い合わせてください。 提供されていない場合は、次の要件に従う必要があります。
@@ -54,7 +54,7 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
 * 192.168.100.128/30 は link1 に割り当てられます。プロバイダーは 192.168.100.129 を使用し、Microsoft は 192.168.100.130 を使用します。
 * 192.168.100.132/30 は link2 に割り当てられます。プロバイダーは 192.168.100.133 を使用し、Microsoft は 192.168.100.134 を使用します。
 
-### <a name="ip-addresses-used-for-azure-public-and-microsoft-peering"></a>Azure パブリック ピアリングと Microsoft ピアリングに使用する IP アドレス
+### <a name="ip-addresses-used-for-azure-public-peering"></a>Azure パブリック ピアリングに使用する IP アドレス
 ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。 
 
 * ユーザーは、一意の /29 サブネットまたは 2 つの /30 サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。 
@@ -62,6 +62,18 @@ a.b.c.d/29 は、a.b.c.d/30 と a.b.c.d+4/30 に分割され、プロビジョ�
   * 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
   * それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
   * [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
+
+### <a name="ip-addresses-used-for-microsoft-peering"></a>Microsoft ピアリングに使用する IP アドレス
+ユーザーは、所有しているパブリック IP アドレスを使用して BGP セッションをセットアップする必要があります。 Microsoft は、ルーティング インターネット レジストリおよびインターネット ルーティング レジストリを介して IP アドレスの所有権を確認できる必要があります。
+
+* ユーザーは、一意のサブネット (IPv4 の場合は /29、IPv6 の場合は /125) または 2 つのサブネット (IPv4 の場合は /30、IPv6 の場合は /126) サブネットを使用して、ExpressRoute 回線ごとに (複数存在する場合) それぞれのピアリングの BGP ピアリングをセットアップする必要があります。
+* /29 サブネットを使用すると、2 つの /30 サブネットに分割されます。
+* 最初の /30 サブネットはプライマリ リンク用に使用され、2 つ目の /30 サブネットはセカンダリ リンク用に使用されます。
+* それぞれの /30 サブネットに対し、ルーター上で /30 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/30 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
+* /125 サブネットを使用すると、2 つの /126 サブネットに分割されます。
+* 最初の /126 サブネットはプライマリ リンク用に使用され、2 つ目の /126 サブネットはセカンダリ リンク用に使用されます。
+* それぞれの /126 サブネットに対し、ルーター上で /126 サブネットの最初の IP アドレスを使用する必要があります。 Microsoft は、/126 サブネットの 2 番目の IP アドレスを使用して BGP セッションをセットアップします。
+* [可用性 SLA](https://azure.microsoft.com/support/legal/sla/) を有効にするには、両方の BGP セッションをセットアップする必要があります。
 
 ## <a name="public-ip-address-requirement"></a>パブリック IP アドレス要件
 
@@ -80,7 +92,7 @@ Azure パブリック ピアリング パスを利用すれば、パブリック
 パブリック ピアリングでは、プライベート AS 番号を使用できます。
 
 ### <a name="microsoft-peering"></a>Microsoft ピアリング
-Microsoft ピアリング パスを使用すると、パブリック IP アドレスでホストされているすべての Microsoft クラウド サービスに接続できます。 これらのサービスには、Office 365、Dynamics 365、および Microsoft Azure PaaS サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4/IPv6 アドレスを使用している必要があります。
+Microsoft ピアリング パスにより、Azure パブリック ピアリング パスでサポートされていない Microsoft クラウド サービスに接続できます。 対象となるサービスには、Exchange Online、SharePoint Online、Skype for Business、Dynamics 365 などの Office 365 サービスが含まれます。 Microsoft では、Microsoft ピアリングで双方向接続をサポートしています。 Microsoft クラウド サービスに送信されるトラフィックが Microsoft ネットワークに入るには、有効なパブリック IPv4 アドレスを使用している必要があります。
 
 以下のレジストリのいずれかで IP アドレスと AS 番号が自分に登録されていることを確認します。
 
@@ -227,7 +239,6 @@ Microsoft からアドバタイズされるすべてのルートには、適切�
 ## <a name="next-steps"></a>次のステップ
 * ExpressRoute 接続を構成します。
   
-  * [クラシック デプロイ モデルで ExpressRoute 回線を作成](expressroute-howto-circuit-classic.md)するか、[Azure Resource Manager を使用して ExpressRoute 回線を作成、変更](expressroute-howto-circuit-arm.md)します。
-  * [クラシック デプロイ モデルでルーティングを構成](expressroute-howto-routing-classic.md)するか、[Resource Manager デプロイ モデルでルーティングを構成](expressroute-howto-routing-arm.md)します。
-  * [クラシック VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-classic.md)させるか、[Resource Manager VNET を ExpressRoute 回線にリンク](expressroute-howto-linkvnet-arm.md)させます。
-
+  * [回線の作成と変更](expressroute-howto-circuit-arm.md)
+  * [ピアリング構成の作成と変更](expressroute-howto-routing-arm.md)
+  * [ExpressRoute 回線への VNet のリンク](expressroute-howto-linkvnet-arm.md)

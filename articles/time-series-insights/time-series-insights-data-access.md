@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 05/01/2017
 ms.author: omravi
-ms.openlocfilehash: 5258bf5de6f7aa1ea246f1235e7d362b1b7d0181
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a0f04d79ac5487a347e28445c1a6677d5b8b16a
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="grant-data-access-to-a-time-series-insights-environment-using-azure-portal"></a>Azure Portal を使用して Time Series Insights 環境にデータ アクセスを許可する
 
@@ -41,13 +41,14 @@ Time Series Insights 環境には、2 種類の独立したアクセス ポリ�
 ## <a name="grant-data-access"></a>データ アクセスの許可
 次の手順では、ユーザー プリンシパルにデータ アクセスを許可する方法を示します。
 
-1.  [Azure Portal](https://portal.azure.com) にサインインします。
-2.  Azure Portal の左側のメニューで [すべてのリソース] をクリックします。
-3.  Time Series Insights 環境を選択します。
+1.  [Azure ポータル](https://portal.azure.com)にサインインします。
+2.  検索ウィンドウに「Time Series」と入力します。
+3.  [Time Series Environment]\(Time Series 環境\) をクリックします。
+4.  リストから Time Series Insights 環境を選択します。
 
   ![Time Series Insights ソースの管理 - 環境](media/data-access/getstarted-grant-data-access1.png)
 
-4.  [データ プレーン アクセス] を選択し、[追加] をクリックします。
+4.  [データ アクセス ポリシー] を選択し、[追加] をクリックします。
 
   ![Time Series Insights ソースの管理 - 追加](media/data-access/getstarted-grant-data-access2.png)
 

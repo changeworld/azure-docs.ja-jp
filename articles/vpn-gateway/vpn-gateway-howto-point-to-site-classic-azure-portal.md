@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: hero-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/03/2017
+ms.date: 10/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 7805e7c91c49fe1ef2d92b64c62bbfd15ab492b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 12d414b9653aa6f07648fff991b6291e5f91be4c
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-certificate-authentication-classic-azure-portal"></a>証明書認証 (クラシック) を使用した VNet へのポイント対サイト接続の構成 (クラシック): Azure Portal
 
@@ -33,9 +33,9 @@ ms.lasthandoff: 10/11/2017
 > * [Azure Portal (クラシック)](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
 
-ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。 
+ポイント対サイト (P2S) VPN ゲートウェイでは、個々のクライアント コンピューターから仮想ネットワークへの、セキュリティで保護された接続を作成することができます。 ポイント対サイト VPN 接続は、自宅や会議室でのテレワークなど、リモートの場所から VNet に接続する場合に便利です。 P2S VPN は、VNet への接続が必要なクライアントがごく少ない場合に、サイト対サイト VPN の代わりに使用するソリューションとしても便利です。 P2S VPN 接続は、クライアント コンピューターから接続を開始することによって確立されます。
 
-P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用します。これは、SSL ベースの VPN プロトコルです。 P2S VPN 接続は、クライアント コンピューターから接続を開始することによって確立されます。
+クラシック デプロイメント モデルでは、Windows VPN クライアントのみをサポートし、SSL ベースの VPN プロトコルである Secure Socket トンネリング プロトコル (SSTP) を使用します。 Windows 以外の VPN クライアントをサポートするには、Resource Manager デプロイメント モデルを使用して VNet を作成する必要があります。 Resource Manager デプロイメント モデルでは、SSTP に加えて IKEv2 VPN をサポートしています。 詳細については、[P2S 接続](point-to-site-about.md)に関するページを参照してください。
 
 
 ![ポイント対サイトのダイアログ](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/point-to-site-connection-diagram.png)
@@ -96,7 +96,7 @@ P2S は、Secure Socket トンネリング プロトコル (SSTP) を使用し�
 9. [作成] をクリックした後で、VNet の進捗状況を反映するタイルがダッシュボードに表示されます。 タイルは、VNet の作成が進むに従って変化します。
 
   ![仮想ネットワーク タイルの作成](./media/vpn-gateway-howto-point-to-site-classic-azure-portal/deploying150.png)
-10. 仮想ネットワークが作成されると、Azure クラシック ポータルの [ネットワーク] ページの **[状態]** に **[作成済み]** と表示されます。
+10. 仮想ネットワークが作成されると、**[作成済み]** と表示されます。
 11. DNS サーバーを追加します (省略可)。 仮想ネットワークを作成した後は、名前解決に使用する DNS サーバーの IP アドレスを追加できます。 指定する DNS サーバーの IP アドレスは、VNet 内のリソースの名前を解決できる DNS サーバーのアドレスである必要があります。<br>DNS サーバーを追加するには、仮想ネットワークの設定を開き、[DNS サーバー] をクリックして、実際に使用する DNS サーバーの IP アドレスを追加します。
 
 ### <a name="gateway"></a>パート 2: ゲートウェイ サブネットと動的ルーティング ゲートウェイの作成

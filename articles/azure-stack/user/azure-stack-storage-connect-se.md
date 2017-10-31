@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 9/25/2017
 ms.author: xiaofmao
-ms.openlocfilehash: 8cd52e9561f2ad92664c01959df8919aa56e8738
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7e6d70148d39fd74f6409a0a239833f8e9f7614
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="connect-storage-explorer-to-an-azure-stack-subscription"></a>Azure Stack サブスクリプションに Microsoft Azure Storage Explorer を接続する
 
@@ -42,7 +42,7 @@ Azure Stack Development Kit 用に、Azure Stack の証明機関のルート証�
 
 1. Azure Stack に VPN 接続された、Azure Stack のホスト コンピューターまたはローカル コンピューターで `mmc.exe` を開きます。 
 
-2. **[ファイル]** で **[スナップインの追加と削除]** を選択し、**[証明書]** を追加して、**ローカル コンピューター**の**コンピューター アカウント**を管理します。
+2. **[ファイル]** の **[スナップインの追加と削除]** を選択し、**[ユーザー アカウント]** を管理するための **[証明書]** を追加します。
 
 
 

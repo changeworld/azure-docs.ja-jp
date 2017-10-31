@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/30/2017
+ms.date: 10/02/2017
 ms.author: joflore
 ms.reviewer: alexwe
 ms.custom: it-pro
-ms.openlocfilehash: df847c370817c0702163b5e22c35c7e4f1d3cfee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a0eec19eea1a75b67f314f204fb769e6eff162
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server の概要
 
@@ -89,26 +89,42 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 | 134.170.165.72/29 |255.255.255.248 |134.170.165.72 – 134.170.165.79 |
 | 70.37.154.200/29 |255.255.255.248 |70.37.154.201 – 70.37.154.206 |
 
-## <a name="download-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のダウンロード
+## <a name="download-the-mfa-server---public-preview"></a>MFA Server のダウンロード - パブリック プレビュー
+
+Azure Portal から Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
+
+1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
+2. **[Active Directory]** > **[Multi-Factor Authentication]** を選択します。
+3. **[サーバーの設定]** を選択します。
+4. **[ダウンロード]** をクリックし、ダウンロード ページの手順に従ってインストーラーを保存します。 
+
+   ![MFA Server のダウンロード](./media/multi-factor-authentication-get-started-server/downloadportal.png)
+
+5. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
+
+
+## <a name="download-the-mfa-server"></a>MFA Server のダウンロード
+
+pfweb ポータルから Azure Multi-Factor Authentication Server をダウンロードするには、次の手順に従います。
 
 1. [Azure Portal](https://portal.azure.com) に管理者としてサインインします。
 2. 左側で、**[Active Directory]** を選択します。
-3. **[ユーザーとグループ]** をクリックします。
-4. **[すべてのユーザー]** をクリックします。
-5. **[Multi-Factor Authentication]** をクリックします。
+3. **[ユーザーとグループ]** を選択します。
+4. **[すべてのユーザー]** を選択します。
+5. **[Multi-Factor Authentication]** を選択します。
 6. **[Multi-Factor Authentication]** セクションの **[サービス設定]** を選択します。
 
    ![[サービス設定] ページ](./media/multi-factor-authentication-get-started-server/servicesettings.png)
 
 6. サービス設定ページで、画面の下部にある **[ポータルに移動する]**をクリックします。 新しいページが開きます。
-7. **[ダウンロード]** をクリックします。
+7. **[ダウンロード]** を選択します。
 8. **[ダウンロード]** リンクをクリックし、インストーラーを保存します。
 
    ![MFA Server のダウンロード](./media/multi-factor-authentication-get-started-server/download4.png)
 
 9. このページは、インストーラーの実行後に参照するので開いたままにしておいてください。
 
-## <a name="install-and-configure-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication Server のインストールと構成
+## <a name="install-and-configure-the-mfa-server"></a>MFA Server のインストールと構成
 
 サーバーをダウンロードできたので、インストールと構成を行うことができます。 インストール先のサーバーが、計画セクションに記載されている要件を満たすようにしてください。
 
@@ -119,7 +135,7 @@ Azure MFA Server は、次の 3 つの Web コンポーネントで構成され�
 
    ![クラウド](./media/multi-factor-authentication-get-started-server/skip2.png)
 
-5. サーバーをダウンロードしたページに戻り、 **[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]**をクリックします。
+5. サーバーをダウンロードしたページに戻り、**[アクティブ化資格情報の生成]** ボタンをクリックします。 この情報を提供されたボックスの Azure MFA Server にコピーし、 **[アクティブ化]**をクリックします。
 
 ## <a name="send-users-an-email"></a>ユーザーへの電子メールの送信
 

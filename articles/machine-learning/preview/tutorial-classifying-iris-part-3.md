@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 2325d0ffd369d85b9a21e2274a98dcb673d240e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -193,6 +193,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ```
 
 これで、リアルタイム Web サービスを作成する準備が整いました。
+
+>[!NOTE]
+>モデル管理アカウントと環境は、その後の Web サービスのデプロイに再利用することができます。 これらを Web サービスごとに作成する必要はありません。 1 つのアカウントまたは環境に複数の Web サービスを関連付けることができます。
 
 ## <a name="create-a-real-time-web-service-in-one-command"></a>1 つのコマンドでリアルタイム Web サービスを作成する
 1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。

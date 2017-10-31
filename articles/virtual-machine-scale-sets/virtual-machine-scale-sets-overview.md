@@ -16,11 +16,11 @@ ms.topic: get-started-article
 ms.date: 09/01/2017
 ms.author: guybo
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5fa08049fd0b13945de307e9d28224ea0d5a1307
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 303ead6e1d98d464aeba2687c2a72a38bc1ce209
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="what-are-virtual-machine-scale-sets-in-azure"></a>Azure Virtual Machine Scale Sets とは
 Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよび管理するための Azure コンピューティング リソースです。 すべての VM が同じ構成になっており、VM を事前にプロビジョニングする必要がない、真の自動スケールをサポートするように設計されています。 そのため、ビッグ コンピューティング、ビッグ データ、コンテナー化されたワークロードを対象にした大規模サービスを簡単に構築できます。
@@ -33,7 +33,7 @@ Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよ�
 * [Virtual Machine Scale Sets を Guy Bowerman が解説](https://channel9.msdn.com/Shows/Cloud+Cover/Episode-191-Virtual-Machine-Scale-Sets-with-Guy-Bowerman)
 
 ## <a name="creating-and-managing-scale-sets"></a>Scale Sets の作成と管理
-[Azure Portal](https://portal.azure.com) で Scale Sets を作成するには、**[新規]** を選択して、検索バーに「**scale**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。 
+[Azure Portal](https://portal.azure.com) で Scale Sets を作成するには、**[新規]** を選択して、検索バーに「**scale**」と入力します。 検索結果に、**仮想マシン スケール セット**が表示されます。 そこから、必要なフィールドを入力し、Scale Sets をカスタマイズしてデプロイします。 また、ポータルには、CPU 使用率に基づいて基本的な自動スケール規則を設定するオプションも用意されています。 スケール セットを管理するには、Azure Portal、[Azure PowerShell コマンドレット](virtual-machine-scale-sets-windows-manage.md)、または Azure CLI 2.0 を使用できます。
 
 スケール セットは[可用性ゾーン](../availability-zones/az-overview.md)にデプロイできます。
 
@@ -46,8 +46,23 @@ Virtual Machine Scale Sets は、同一の VM のセットをデプロイおよ�
 
 クイックスタートのサンプル テンプレートについては、各テンプレートの Readme にある "Azure へのデプロイ" ボタンが、ポータルのデプロイ機能にリンクされています。 Scale Sets をデプロイするには、ボタンをクリックし、ポータルで必要なすべてのパラメーターを指定します。 
 
-## <a name="scaling-a-scale-set-out-and-in"></a>Scale Sets のスケール アウトとスケール イン
-Azure Portal で Scale Sets の容量を変更するには、**[設定]** で **[スケーリング]** セクションをクリックします。 
+
+## <a name="autoscale"></a>自動スケール
+一貫したアプリケーション パフォーマンスを維持するために、スケール セット内の VM インスタンスの数を自動的に増減できます。 この自動スケール機能により、スケール セットを監視し、時間の経過と共に変化する顧客の需要に合わせてスケール セットを調整する際の管理オーバーヘッドが削減されます。 パフォーマンス メトリック、アプリケーションの応答、または固定スケジュールに基づいてルールを定義すると、必要に応じてスケール セットが自動的にスケーリングされます。
+
+基本的な自動スケール ルールでは、CPU 使用率やディスク I/O などのホスト ベースのパフォーマンス メトリックを使用できます。 これらのホスト ベースのメトリックは、追加のエージェントや拡張機能をインストールして構成しなくても、すぐに使用できます。 ホスト ベースのメトリックを使用する自動スケール ルールは、次のツールのいずれかを使用して作成できます。
+
+- [Azure ポータル](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
+
+より詳細なパフォーマンス メトリックを使用するために、スケール セットの VM インスタンスに Azure 診断拡張機能をインストールして構成することができます。 Azure 診断拡張機能を使用すると、メモリ使用量などの追加のパフォーマンス メトリックを各 VM インスタンスの内部から収集できます。 これらのパフォーマンス メトリックは Azure Storage アカウントにストリーム配信されます。そこで、このデータを使用する自動スケール ルールを作成します。 詳細については、[Linux VM](../virtual-machines/linux/diagnostic-extension.md) または [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) で Azure 診断拡張機能を有効にする方法に関する記事を参照してください。
+
+アプリケーションのパフォーマンス自体を監視するには、アプリケーションに App Insights 用の小さなインストルメンテーション パッケージをインストールして構成できます。 これにより、アプリケーションの応答時間またはセッション数に関する詳細なパフォーマンス メトリックをアプリからストリーム配信できるようになります。 その後、アプリケーション レベルのパフォーマンス自体のしきい値が定義された自動スケール ルールを作成できます。 Application Insights の詳細については、「[Application Insights とは何か?](../application-insights/app-insights-overview.md)」を参照してください。
+
+
+## <a name="manually-scaling-a-scale-set-out-and-in"></a>手動によるスケール セットのスケール アウトとスケール イン
+Azure Portal でスケール セットの容量を手動で変更するには、**[設定]** の **[スケーリング]** セクションをクリックします。 
 
 コマンド ラインでスケール セットの容量を変更するには、[Azure CLI](https://github.com/Azure/azure-cli) で **scale** コマンドを使用します。 たとえば、Scale Sets の容量を VM 10 個に設定するには、次のコマンドを実行します。
 
@@ -67,26 +82,6 @@ Azure Resource Manager テンプレートを使用してスケール セット�
 
 容量を変更するために Azure Resource Manager テンプレートを再デプロイする場合は、**SKU** プロパティ パケットと更新された容量のみが含まれた、非常に小さいテンプレートを定義できます。 [こちら](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-scale-existing)でサンプルをご覧ください。
 
-## <a name="autoscale"></a>自動スケール
-
-Azure Portal で Scale Sets を作成する場合、オプションで自動スケール設定を構成できます。 これを構成すると、平均 CPU 使用率に基づいて VM の数を増減できます。 
-
-[Azure のクイックスタート テンプレート](https://github.com/Azure/azure-quickstart-templates)にある Scale Sets テンプレートの多くでは、自動スケール設定が定義されています。 既存の Scale Sets に自動スケール設定を追加することもできます。 たとえば、次の Azure PowerShell スクリプトを使用すると、CPU ベースの自動スケールがスケール セットに追加されます。
-
-```PowerShell
-
-$subid = "yoursubscriptionid"
-$rgname = "yourresourcegroup"
-$vmssname = "yourscalesetname"
-$location = "yourlocation" # e.g. southcentralus
-
-$rule1 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator GreaterThan -MetricStatistic Average -Threshold 60 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Increase -ScaleActionValue 1
-$rule2 = New-AzureRmAutoscaleRule -MetricName "Percentage CPU" -MetricResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -Operator LessThan -MetricStatistic Average -Threshold 30 -TimeGrain 00:01:00 -TimeWindow 00:05:00 -ScaleActionCooldown 00:05:00 -ScaleActionDirection Decrease -ScaleActionValue 1
-$profile1 = New-AzureRmAutoscaleProfile -DefaultCapacity 2 -MaximumCapacity 10 -MinimumCapacity 2 -Rules $rule1,$rule2 -Name "autoprofile1"
-Add-AzureRmAutoscaleSetting -Location $location -Name "autosetting1" -ResourceGroup $rgname -TargetResourceId /subscriptions/$subid/resourceGroups/$rgname/providers/Microsoft.Compute/virtualMachineScaleSets/$vmssname -AutoscaleProfiles $profile1
-```
-
-「[Azure Monitor のサポートされるメトリック](../monitoring-and-diagnostics/monitoring-supported-metrics.md)」の「Microsoft.Compute/virtualMachineScaleSets」には、スケールのための有効なメトリックの一覧があります。 スケジュールに基づく自動スケールや、webhook を使用したアラート システムとの統合など、高度な自動スケールのオプションも用意されています。
 
 ## <a name="monitoring-your-scale-set"></a>Scale Sets の監視
 [Azure Portal](https://portal.azure.com) には、スケール セットがそのプロパティと共に一覧表示されます。 Azure Portal では管理操作もサポートされており、 スケール セットとスケール セット内の個々の VM の両方に対して、管理操作を実行できます。 また、カスタマイズ可能なリソース使用量グラフも表示されます。 

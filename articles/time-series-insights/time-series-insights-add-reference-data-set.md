@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 06/29/2017
 ms.author: venkatja
-ms.openlocfilehash: 574f3c5b3a889733f47d729c795ec39009f2ef4a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b94ca172dba71b407ee5e9a40c283a97602efd17
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-ibiza-portal"></a>Ibiza ポータルを使用して Time Series Insights 環境の参照データ セットを作成する
 
@@ -27,8 +27,8 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="steps-to-add-a-reference-data-set-to-your-environment"></a>参照データ セットを環境に追加する手順
 
-1. [Ibiza ポータル](https://portal.azure.com)にサインインします。
-2. Ibiza ポータルの左側のメニューで [すべてのリソース] をクリックします。
+1. [Azure ポータル](https://portal.azure.com)にサインインします。
+2. Azure Portal の左側のメニューで [すべてのリソース] をクリックします。
 3. Time Series Insights 環境を選択します。
 
     ![Time Series Insights の参照データ セットの作成](media/add-reference-data-set/getstarted-create-reference-data-set-1.png)
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
     ![Time Series Insights の参照データ セットの作成 - 詳細](media/add-reference-data-set/getstarted-create-reference-data-set-2.png)
 
 5. 参照データ セットの名前を指定します。
-6. キーの名前とその型を指定します。 この名前と型は、指定されたイベント ソースのイベントから適切なプロパティを選ぶ目的で使用されます。 たとえばキー名に "DeviceId" を、型に "String" を指定した場合、Time Series Insights のイングレス エンジンは、受信したイベントの中から "String" 型の "DeviceId" という名前のプロパティを探します。 複数のキーを指定して、イベントと結合させることができます。 プロパティ名を突き合わせる際は、大文字と小文字が区別されます。
+6. キーの名前とその型を指定します。 この名前と型は、指定されたイベント ソースのイベントから適切なプロパティを選ぶ目的で使用されます。 たとえばキー名に "DeviceId" を、型に "String" を指定した場合、Time Series Insights のイングレス エンジンは、受信したイベントの中から "String" 型の "DeviceId" という名前のプロパティを探します。 複数のキーを指定して、イベントと結合させることができます。 キー名を突き合わせる際は、大文字と小文字が区別されます。
 
      ![Time Series Insights の参照データ セットの作成 - 詳細](media/add-reference-data-set/getstarted-create-reference-data-set-3.png)
 

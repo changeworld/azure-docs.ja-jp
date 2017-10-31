@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/30/2017
+ms.date: 10/19/2017
 ms.author: cherylmc,yushwang
-ms.openlocfilehash: b12eab7a430e620d0b6e872551c0252ccb5d4c14
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8af984a7321d99faecb9d79903a442c938460919
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="vpn-gateway-faq"></a>VPN Gateway に関する FAQ
 
@@ -70,6 +70,16 @@ VPN ゲートウェイは仮想ネットワーク ゲートウェイの一種で
 
 ルート ベースのゲートウェイは、ルート ベースの VPN を実装したものです。 ルート ベースの VPN は、「ルート」を使用して、IP 転送やルーティング テーブルを使用してパケットを対応するトンネル インターフェイスに直接送信します。 その後、トンネル インターフェイスではトンネルの内部または外部でパケットを暗号化または復号します。 ルート ベースの VPN に向けたポリシーまたはトラフィック セレクターは任意の環境間 (またはワイルドカード) として構成されます。
 
+### <a name="can-i-update-my-policy-based-vpn-gateway-to-route-based"></a>ポリシー ベースの VPN ゲートウェイをルート ベースに更新できますか。
+
+いいえ。 Azure Vnet ゲートウェイのタイプをポリシー ベースからルート ベース (またはその逆) に変更することはできません。 ゲートウェイを削除して再作成する必要があります。この処理には約 60 分かかります。 ゲートウェイの IP アドレスは保存されず、事前共有キー (PSK) も保持されません。
+1. 削除するゲートウェイに関連付けられているすべての接続を削除します。
+2. ゲートウェイを削除します。
+* [Azure ポータル](vpn-gateway-delete-vnet-gateway-portal.md)
+* [Azure PowerShell](vpn-gateway-delete-vnet-gateway-powershell.md)
+* [Azure PowerShell - クラシック](vpn-gateway-delete-vnet-gateway-classic-powershell.md)
+3. [目的のタイプの新しいゲートウェイを作成し、VPN 設定を完了します](vpn-gateway-howto-site-to-site-resource-manager-portal.md#VNetGateway)
+
 ### <a name="do-i-need-a-gatewaysubnet"></a>'GatewaySubnet' は必要ですか。
 
 はい。 ゲートウェイ サブネットには、仮想ネットワーク ゲートウェイ サービスが使用する IP アドレスが含まれます。 仮想ネットワーク ゲートウェイを構成するには、VNet のゲートウェイ サブネットを作成する必要があります。 すべてのゲートウェイ サブネットを正常に動作させるには、'GatewaySubnet' という名前を付ける必要があります。 ゲートウェイ サブネットに他の名前を付けないでください。 また、ゲートウェイ サブネットには VM などをデプロイしないでください。
@@ -110,7 +120,6 @@ Azure の VPN では PSK (事前共有キー) の認証を使用します。 事
 #### <a name="classic-deployment-model"></a>クラシック デプロイ モデル
 
 * Azure Portal: クラシック仮想ネットワーク、[VPN 接続]、[サイト対サイト VPN 接続]、ローカル サイト名、[ローカル サイト]、[クライアント アドレス空間] の順に移動します。 
-* クラシック ポータル: [ローカル ネットワーク] の [ネットワーク] ページで、仮想ネットワークのゲートウェイを経由して送信する範囲をそれぞれ追加します。 
 
 ### <a name="can-i-configure-force-tunneling"></a>強制トンネリングを構成できますか。
 
@@ -160,9 +169,13 @@ Windows Server 2012 ルーティングとリモート アクセス (RRAS) サー
 
 ## <a name="P2S"></a>ポイント対サイト - ネイティブ Azure 証明書認証
 
+このセクションは、Resource Manager デプロイメント モデルに適用されます。
+
 [!INCLUDE [P2S Azure cert](../../includes/vpn-gateway-faq-p2s-azurecert-include.md)]
 
 ## <a name="P2SRADIUS"></a>ポイント対サイト - RADIUS 認証
+
+このセクションは、Resource Manager デプロイメント モデルに適用されます。
 
 [!INCLUDE [vpn-gateway-point-to-site-faq-include](../../includes/vpn-gateway-faq-p2s-radius-include.md)]
 

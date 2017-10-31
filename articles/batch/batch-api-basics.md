@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-compute
-ms.date: 010/04/2017
+ms.date: 10/12/2017
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f182dff164b8baa7e2144231667adbd12fcc717d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f277f59982251eb66ca02e72b4ced7f765935b9d
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="develop-large-scale-parallel-compute-solutions-with-batch"></a>Batch を使って大規模な並列コンピューティング ソリューションを開発する
 
@@ -75,7 +75,7 @@ Azure Batch アカウントは、[Azure Portal](batch-account-create-portal.md) 
 1 つの Batch アカウントで複数の Batch ワークロードを実行することも、同じサブスクリプションで異なる Azure リージョンの複数の Batch アカウントにワークロードを分散することもできます。
 
 > [!NOTE]
-> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。
+> Batch アカウントを作成する際には、通常、既定の **Batch サービス** モードを選択することをお勧めします。このモードでは、Azure で管理されたサブスクリプションにバックグラウンドでプールが割り当てられます。 別の**ユーザー サブスクリプション** モード (現在は非推奨) では、プールの作成時に、Batch VM とその他のリソースがサブスクリプションに直接作成されます。 ユーザー サブスクリプション モードで Batch アカウントを作成するには、アカウントを Azure Key Vault に関連付ける必要があります。
 >
 
 
@@ -129,7 +129,7 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 - **仮想マシン構成**: プールが Azure 仮想マシンで構成されるように指定します。 これらの VM は、Linux イメージまたは Windows イメージのいずれかから作成できます。 
 
-    仮想マシン構成に基づいてプールを作成する場合は、ノードのサイズと使用するイメージのソースだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。
+    仮想マシン構成に基づいてプールを作成する場合は、ノードのサイズと使用するイメージのソースだけでなく、ノードにインストールする**仮想マシン イメージの参照**と Batch **ノード エージェント SKU** も指定する必要があります。 プールに関するこれらのプロパティの指定の詳細については、「 [Azure Batch プールの Linux コンピューティング ノードのプロビジョニング](batch-linux-nodes.md)」を参照してください。 必要に応じて、Marketplace イメージから作成される VM をプールするために 1 つまたは複数の空のデータ ディスクをアタッチするか、VM の作成に使用するカスタム イメージにデータ ディスクを含めることができます。
 
 - **Cloud Services 構成**: プールが Microsoft Azure Cloud Services ノードで構成されるように指定します。 Cloud Services では Windows コンピューティング ノード "*のみ*" が提供されます。
 
@@ -148,9 +148,11 @@ Batch プールを作成するときは、Azure 仮想マシン構成と、プ�
 
 詳しい要件と手順については、[カスタム イメージを使用した仮想マシンのプールの作成](batch-custom-images.md)に関するページを参照してください。
 
+#### <a name="container-support-in-virtual-machine-pools"></a>仮想マシンのプールでのコンテナーのサポート
 
+Batch API を使用して仮想マシン構成プールを作成するときに、Docker コンテナーでタスクを実行するためのプールを設定できます。 現時点では、Azure Marketplace の Windows Server 2016 Datacenter with Containers イメージを使用してプールを作成するか、Docker Community Edition と必要なすべてのドライバーを含むカスタム VM イメージを指定する必要があります。 プール設定には、プールの作成時にコンテナー イメージを VM にコピーする[コンテナー構成](/rest/api/batchservice/pool/add#definitions_containerconfiguration)が含まれている必要があります。 これにより、プール上で実行されるタスクが、コンテナー イメージとコンテナー実行オプションを参照できます。
 
-### <a name="compute-node-type-and-target-number-of-nodes"></a>コンピューティング ノードの種類とターゲット ノード数
+## <a name="compute-node-type-and-target-number-of-nodes"></a>コンピューティング ノードの種類とターゲット ノード数
 
 プールを作成する場合は、必要なコンピューティング ノードの種類と各ノードのターゲット数を指定できます。 コンピューティング ノードには、次の 2 種類があります。
 
@@ -258,6 +260,7 @@ Batch で作成するジョブには、優先順位を割り当てることが�
 * アプリケーションで必要な **環境変数** 。 詳細については、「 [タスクの環境設定](#environment-settings-for-tasks) 」セクションを参照してください。
 * タスクを実行する際の **制約** 。 この制約には、タスクの実行が許可される最大時間、タスクが失敗した場合に再試行する最大回数、タスクの作業ディレクトリにファイルを保持する最大時間などがあります。
 * タスクの実行がスケジュールされているコンピューティング ノードにデプロイする**アプリケーション パッケージ**。 [アプリケーション パッケージ](#application-packages)により、タスクによって実行されるアプリケーションのデプロイとバージョン管理がシンプルになります。 タスクレベルのアプリケーション パッケージは共有プール環境では特に便利です。この環境では、さまざまなジョブが 1 つのプールで実行され、ジョブが完了してもプールは削除されません。 ジョブ内のタスクがプール内のノードよりも少ない場合は、タスクのアプリケーション パッケージによりデータ転送を最小限に抑えることができます。アプリケーションはタスクが実行されるノードにのみデプロイされるためです。
+* Docker Hub またはプライベート レジストリ内の**コンテナー イメージ**参照、およびタスクがノード上で実行される Docker コンテナーを作成するための追加設定。 この情報は、プールがコンテナー構成で設定されている場合にのみ指定します。
 
 Batch サービスには、ノードで計算を実行するために定義するタスクに加えて、次のような特殊なタスクも用意されています。
 
@@ -386,39 +389,12 @@ Azure Batch ソリューションを設計するときは、いつ、どのよ�
 
 ## <a name="virtual-network-vnet-and-firewall-configuration"></a>仮想ネットワーク (VNet) とファイアウォールの構成 
 
-コンピューティング ノードのプールを Batch でプロビジョニングする際に、プールを Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットに関連付けることができます。 サブネットを使用した VNet の作成について詳しくは、「[サブネットを含んだ Azure 仮想ネットワークを作成する](../virtual-network/virtual-networks-create-vnet-arm-pportal.md)」を参照してください。 
+コンピューティング ノードのプールを Batch でプロビジョニングする際に、プールを Azure [仮想ネットワーク (VNet)](../virtual-network/virtual-networks-overview.md) のサブネットに関連付けることができます。 Azure VNet を使用するには、Batch クライアント API で Azure Active Directory (AD) 認証を使用する必要があります。 Azure AD の Azure Batch のサポートについては、「[Batch サービスの認証に Active Directory を使用する](batch-aad-auth.md)」に記載されています。  
 
-VNet に関する要件:
+### <a name="vnet-requirements"></a>VNet に関する要件
+[!INCLUDE [batch-virtual-network-ports](../../includes/batch-virtual-network-ports.md)]
 
-* 仮想ネットワークは、Azure Batch アカウントと同じ Azure **リージョン**と**サブスクリプション**に存在する必要があります。
-
-* 仮想マシン構成で作成されたプールでは、Azure Resource Manager (ARM) ベースの仮想ネットワークのみサポートされます。 クラウド サービス構成で作成されたプールでは、ARM とクラシックの両方の仮想ネットワークがサポートされます。 
-
-* ARM ベースのネットワークを使用するには、Batch クライアント API で [Azure Active Directory 認証](batch-aad-auth.md)を使用する必要があります。 クラシック仮想ネットワークを使用するには、指定の仮想ネットワークに関して、ロールベースのアクセス制御 (RBAC) の "従来の仮想マシン共同作業者" ロールが "MicrosoftAzureBatch" サービス プリンシパルに付与されている必要があります。 
-
-* 指定したサブネットには、全ターゲット ノード数 (つまりプールの `targetDedicatedNodes` プロパティと `targetLowPriorityNodes` プロパティの合計) を収容できるだけの十分な空き **IP アドレス**が必要です。 サブネットの空き IP アドレスが十分でない場合、Batch サービスによってプールのコンピューティング ノードが部分的に割り当てられ、サイズ変更のエラーが返されます。
-
-* コンピューティング ノードのタスクのスケジュールを設定できるように、Batch サービスからの通信を指定したサブネットで許可する必要があります。 VNet に関連付けられた**ネットワーク セキュリティ グループ (NSG)** によってコンピューティング ノードとの通信が拒否された場合、コンピューティング ノードの状態は Batch サービスによって**使用不可**に設定されます。
-
-* 指定した VNet に**ネットワーク セキュリティ グループ (NSG)** または**ファイアウォール**が関連付けられている場合、予約されているいくつかのシステム ポートの受信通信を有効にする必要があります。
-
-- 仮想マシン構成で作成されたプールの場合、ポート 29876 と 29877 を有効にしたうえで、Linux の場合はポート 22 を、Windows の場合はポート 3389 を有効にします。 
-- クラウド サービス構成で作成されたプールの場合、10100、20100、30100 の各ポートを有効にします。 
-- ポート 443 では、Azure Storage への送信接続を有効にしてください。 また、VNET を提供するカスタムの DNS サーバーが Azure Storage エンドポイントを解決できることを確認します。 具体的には、フォーム `<account>.table.core.windows.net` の URL を解決できる必要があります。
-
-    仮想マシン構成で作成したプールに関して有効にする必要がある受信ポートについて次の表で説明します。
-
-    |    宛先ポート    |    送信元 IP アドレス      |    Batch によって NSG が追加されるか    |    VM を使用するうえで必須か    |    ユーザーの操作   |
-    |---------------------------|---------------------------|----------------------------|-------------------------------------|-----------------------|
-    |    <ul><li>仮想マシン構成で作成されたプールの場合: 29876、29877</li><li>クラウド サービス構成で作成されたプールの場合: 10100、20100、30100</li></ul>         |    Batch サービス ロールの IP アドレスのみ |    はい。 VM にアタッチされたネットワーク インターフェイス (NIC) レベルで NSG が追加されます。 Batch サービス ロールの IP アドレスを送信元とするトラフィックだけが、これらの NSG によって許可されます。 Web 全体でこれらのポートを開放しても、NIC でトラフィックがブロックされます。 |    あり  |  Batch で許可されるのは、Batch の IP アドレスだけであるため、NSG を自分で指定する必要はありません。 <br /><br /> ただし、あえて NSG を指定する場合は必ず、受信トラフィックに対してこれらのポートを開放してください。 <br /><br /> 独自の NSG で送信元 IP として「*」を指定した場合でも Batch によって、VM にアタッチされた NIC レベルで NSG が追加されます。 |
-    |    3389、22               |    デバッグ目的で使用されるユーザーのマシン (VM にリモートでアクセスするために使用)。    |    いいえ                                    |    いいえ                     |    VM へのリモート アクセス (RDP/SSH) を許可する場合は、NSG を追加します。   |                 
-
-    Azure Storage へのアクセスを許可するために有効にする必要のある送信ポートについて次の表で説明します。
-
-    |    送信ポート    |    変換先    |    Batch によって NSG が追加されるか    |    VM を使用するうえで必須か    |    ユーザーの操作    |
-    |------------------------|-------------------|----------------------------|-------------------------------------|------------------------|
-    |    443    |    Azure Storage    |    いいえ    |    あり    |    NSG を追加する場合は、送信トラフィックに対してこのポートが開放されていることを確認してください。    |
-
+VNet で Batch プールを設定する方法の詳細については、[仮想ネットワークでの仮想マシンのプールの作成](batch-virtual-network.md)に関するページを参照してください。
 
 ## <a name="scaling-compute-resources"></a>コンピューティング リソースのスケーリング
 [自動スケール](batch-automatic-scaling.md)を使用すると、現在のコンピューティング環境のワークロードとリソース使用量に応じて、Batch サービスでプール内のコンピューティング ノードの数を動的に調整できます。 これにより、必要なリソースのみを使用し、不要なリソースを解放することで、アプリケーションの全体的な実行コストを削減することができます。
@@ -525,11 +501,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 ## <a name="next-steps"></a>次のステップ
 * Batch ソリューションの構築に使用できる [Batch API とツール](batch-apis-tools.md)について学習します。
 * 「 [.NET 向け Azure Batch ライブラリの概要](batch-dotnet-get-started.md)」で紹介されているサンプル Batch アプリケーションの作成手順を参照します。 Linux コンピューティング ノードでワークロードを実行する [Python バージョン](batch-python-tutorial.md) のチュートリアルも用意されています。
-* Batch ソリューションを開発するときに使用する [Batch Explorer][github_batchexplorer] サンプル プロジェクトをダウンロードしてビルドする。 Batch Explorer を使用すると、次のようなことを実行できます。
-
-  * Batch アカウント内のプール、ジョブ、およびタスクの監視と操作
-  * ノードからの `stdout.txt`、`stderr.txt` などのファイルのダウンロード
-  * ノードでのユーザーの作成と、リモート ログインのための RDP ファイルのダウンロード
+* Batch ソリューションを開発するときに使用する [BatchLabs][batch_labs] をダウンロードしてインストールします。 BatchLabs は、Azure Batch アプリケーションの作成、デバッグ、および監視に役立ちます。 
 * [Linux コンピューティング ノードのプールを作成する方法](batch-linux-nodes.md)を確認します。
 * MSDN の [Azure Batch フォーラム][batch_forum]にアクセスします。 初心者の方でも上級者の方でも、Batch についてわからないことがあれば、ぜひフォーラムをご利用ください。
 
@@ -541,7 +513,7 @@ Batch ソリューション内でタスク エラーとアプリケーション 
 [msmpi]: https://msdn.microsoft.com/library/bb524831.aspx
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [github_sample_taskdeps]:  https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/TaskDependencies
-[github_batchexplorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch_labs]: https://azure.github.io/BatchLabs/
 [batch_net_api]: https://msdn.microsoft.com/library/azure/mt348682.aspx
 [msdn_env_vars]: https://msdn.microsoft.com/library/azure/mt743623.aspx
 [net_cloudjob_jobmanagertask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.jobmanagertask.aspx

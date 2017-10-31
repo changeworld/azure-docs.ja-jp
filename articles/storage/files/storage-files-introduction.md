@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 10/08/2017
 ms.author: renash
-ms.openlocfilehash: 81de67334f66a61582bb2c5d5a2303cf3a1a086c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 712f66ade5709311721e5a4a8416f305f2e16e6b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="introduction-to-azure-files"></a>Azure Files の概要
 Azure Files は、クラウド上で、業界標準の[サーバー メッセージ ブロック (SMB) プロトコル](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (別称 Common Internet File System または CIFS) を介してアクセスできる、完全に管理されたファイル共有を提供します。 Azure Files は、クラウドまたはオンプレミスにある Windows、macOS、および Linux に同時にマウントできます。 さらに、データが使用されている場所の近くから高速アクセスするため、Azure File Sync (プレビュー) を使用して、Windows サーバーに Azure File 共有をキャッシュできます。

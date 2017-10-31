@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 861f6b54130f9954c5e565346afd9a8f8e034b3d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fb9be26d3affe898bbbb66ead242dbdb59436bb6
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-net-sdk"></a>.NET SDK を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -63,13 +63,17 @@ ms.lasthandoff: 10/11/2017
 
         using System;
         using System.IO;
-        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+        using System.Linq;
+        using System.Text;
         using System.Threading;
-
+        using System.Collections.Generic;
+        using System.Security.Cryptography.X509Certificates; // Required only if you are using an Azure AD application created with certificates
+                
+        using Microsoft.Rest;
+        using Microsoft.Rest.Azure.Authentication;
         using Microsoft.Azure.Management.DataLake.Store;
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
-        using Microsoft.Rest.Azure.Authentication;
 
 7. 変数を宣言し、プレースホルダーの値を指定します。 さらに、指定したローカル パスとファイル名がコンピューターに存在していることを確認します。
 
@@ -105,7 +109,7 @@ ms.lasthandoff: 10/11/2017
 次のスニペットを使用して、アカウントの作成やアカウントの削除など、アカウント管理要求をサービスに発行するために使用される Data Lake Store アカウント クライアント オブジェクトを作成します。
 
     // Create client objects and set the subscription ID
-    _adlsClient = new DataLakeStoreAccountManagementClient(creds) { SubscriptionId = _subId };
+    _adlsClient = new DataLakeStoreAccountManagementClient(armCreds) { SubscriptionId = _subId };
     
 ## <a name="create-a-data-lake-store-account"></a>Data Lake Store アカウントを作成する
 次のスニペットを使用して、Data Lake Store アカウント クライアント オブジェクトの作成中に指定した Azure サブスクリプションに Data Lake Store アカウントを作成します。

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/19/2017
 ms.author: renash
-ms.openlocfilehash: 111b925de9ca2155e2d3631979272170ed614816
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5134fab447f1d1842369aeda4ebc1948a5d78262
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="mount-an-azure-file-share-and-access-the-share-in-windows"></a>Windows で Azure ファイル共有をマウントして共有にアクセスする
 [Azure Files](storage-files-introduction.md) は、Microsoft の使いやすいクラウド ファイル システムです。 Windows と Windows Server で、Azure ファイル共有をマウントできます。 この記事では、Windows 上で Azure ファイル共有をマウントするための 3 つの異なる方法を示します。エクスプローラー UI を使用する方法、PowerShell を使用する方法、コマンド プロンプトを使用する方法です。 
@@ -29,7 +29,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 
 | Windows のバージョン        | SMB のバージョン | Azure VM でマウント可能 | オンプレミスでマウント可能 |
 |------------------------|-------------|-----------------------|----------------------|
-| Windows 10<sup>1</sup>  | SMB 3.0 | あり | あり |
+| Windows Server 半期チャネル<sup>1</sup> | SMB 3.0 | あり | あり |
+| Windows 10<sup>2</sup>  | SMB 3.0 | あり | あり |
 | Windows Server 2016    | SMB 3.0     | あり                   | あり                  |
 | Windows 8.1            | SMB 3.0     | あり                   | あり                  |
 | Windows Server 2012 R2 | SMB 3.0     | あり                   | あり                  |
@@ -37,7 +38,8 @@ Azure ファイル共有は、Azure VM とオンプレミスのどちらかで�
 | Windows 7              | SMB 2.1     | あり                   | いいえ                   |
 | Windows Server 2008 R2 | SMB 2.1     | あり                   | いいえ                   |
 
-<sup>1</sup>Windows 10 バージョン 1507、1511、1607、1703 および 1709。
+<sup>1</sup>Windows Server バージョン 1709。  
+<sup>2</sup>Windows 10 バージョン 1507、1607、1703、および 1709。
 
 > [!Note]  
 > 常に、各 Windows バージョンの最新のサポート技術情報を参照することをお勧めします。

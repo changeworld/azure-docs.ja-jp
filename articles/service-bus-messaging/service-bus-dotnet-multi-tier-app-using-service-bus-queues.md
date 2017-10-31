@@ -12,16 +12,16 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: get-started-article
-ms.date: 04/11/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 8b502f5ac5d89801d390a872e7a8b06e094ecbba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 754548a0beb4251d0fa4eef1fba73aabf02151ec
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="net-multi-tier-application-using-azure-service-bus-queues"></a>Azure Service Bus キューを使用する .NET 多層アプリケーション
-## <a name="introduction"></a>はじめに
+
 Microsoft Azure 向けアプリケーションは、Visual Studio および無料の Azure SDK for .NET を使用して簡単に開発できます。 このチュートリアルでは、ローカル環境で実行されている複数の Azure リソースを使用するアプリケーションを作成する手順について説明します。
 
 学習内容は次のとおりです。
@@ -68,7 +68,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 5. インストールが完了すると、アプリケーションの開発に必要なツールがすべて揃います。 SDK には、Visual Studio で Azure アプリケーションを簡単に開発するためのツールが用意されています。
 
 ## <a name="create-a-namespace"></a>名前空間の作成
-次の手順では、サービス名前空間を作成し、Shared Access Signature (SAS) キーを取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
+次の手順では、"*名前空間*" を作成して、その [Shared Access Signature (SAS) キー](service-bus-sas.md)を取得します。 名前空間は、Service Bus によって公開される各アプリケーションのアプリケーション境界を提供します。 名前空間が作成された時点で、システムによって SAS キーが自動的に生成されます。 名前空間名と SAS キーの組み合わせが、アプリケーションへのアクセスを Service Bus が認証する資格情報になります。
 
 [!INCLUDE [service-bus-create-namespace-portal](../../includes/service-bus-create-namespace-portal.md)]
 
@@ -83,7 +83,7 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 2. **[インストールされたテンプレート]** の **[Visual C#]** で **[クラウド]** をクリックし、**[Azure クラウド サービス]** をクリックします。 プロジェクトの名前を "**MultiTierApp**" にします。 次に、 **[OK]**をクリックします
    
    ![][9]
-3. **.NET Framework 4.5** ロールの **[ASP.NET Web ロール]** をダブルクリックします。
+3. **[ロール]** ウィンドウで **[ASP.NET Web ロール]** をダブルクリックします。
    
    ![][10]
 4. **[Azure のクラウド サービス ソリューション]** の **[WebRole1]** をポイントし、鉛筆のアイコンをクリックして、Web ロールの名前を "**FrontendWebRole**" に変更します。 次に、 **[OK]**をクリックします (「FrontEnd」ではなく「Frontend」と入力してください。小文字の "e" です)。
@@ -92,12 +92,12 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 5. **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスで、**[テンプレートの選択]** ボックスの一覧の **[MVC]** をクリックします。
    
    ![][12]
-6. 引き続き **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスで、**[認証の変更]** をクリックします。 **[認証の変更]** ダイアログ ボックスで、**[認証なし]** をクリックし、**[OK]** をクリックします。 このチュートリアルでは、ユーザー ログインの必要がないアプリケーションをデプロイします。
+6. 引き続き **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスで、**[認証の変更]** をクリックします。 **[認証の変更]** ダイアログ ボックスで、**[認証なし]** が選択されていることを確認した後、**[OK]** をクリックします。 このチュートリアルでは、ユーザー ログインの必要がないアプリケーションをデプロイします。
    
     ![][16]
 7. **[New ASP.NET Project (新しい ASP.NET プロジェクト)]** ダイアログ ボックスに戻り、**[OK]** をクリックして、プロジェクトを作成します。
 8. **ソリューション エクスプローラー**で **FrontendWebRole** プロジェクトの **[参照]** を右クリックし、**[NuGet パッケージの管理]** をクリックします。
-9. **[参照]** タブをクリックして、`Microsoft Azure Service Bus` を検索します。 **WindowsAzure.ServiceBus** パッケージを選択し、**[インストール]** をクリックして使用条件に同意します。
+9. **[参照]** タブをクリックして、**WindowsAzure.ServiceBus** を検索します。 **WindowsAzure.ServiceBus** パッケージを選択し、**[インストール]** をクリックして使用条件に同意します。
    
    ![][13]
    
@@ -182,12 +182,12 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 5. 次に、前の手順で作成した `Submit()` メソッドのビューを作成します。 `Submit()` メソッド (パラメーターを受け取らない `Submit()` のオーバーロード) 内で右クリックし、**[ビューの追加]** を選択します。
    
    ![][14]
-6. ビューを作成するためのダイアログ ボックスが表示されます。 **[テンプレート]** ボックスの一覧から **[作成]** を選択します。 **[モデル クラス]** ボックスの一覧で **OnlineOrder** クラスをクリックします。
+6. ビューを作成するためのダイアログ ボックスが表示されます。 **[テンプレート]** ボックスの一覧から **[作成]** を選択します。 **[モデル クラス]** ボックスの一覧で **OnlineOrder** クラスを選択します。
    
    ![][15]
 7. **[追加]**をクリックします。
 8. 次に、アプリケーションの表示名を変更します。 **ソリューション エクスプローラー**で、**Views\Shared\\_Layout.cshtml** ファイルをダブルクリックして Visual Studio エディターで開きます。
-9. "**My ASP.NET Application**" となっている箇所をすべて "**LITWARE'S Products**" に置き換えます。
+9. **My ASP.NET Application** となっている箇所をすべて **Northwind Traders Products** に置き換えます。
 10. **Home**、**About**、および **Contact** の各リンクを削除します。 以下の強調表示されたコードを削除してください。
     
     ![][28]
@@ -361,9 +361,9 @@ Azure アプリケーションの開発を開始する前に、ツールを入�
 ## <a name="next-steps"></a>次のステップ
 Service Bus の詳細については、次のリソースを参照してください。  
 
-* [Azure Service Bus のドキュメント][sbdocs]  
+* [Service Bus の基礎](service-bus-fundamentals-hybrid-solutions.md)
+* [Service Bus キューの使用][sbacomqhowto]
 * [Service Bus サービス ページ][sbacom]  
-* [Service Bus キューの使用方法][sbacomqhowto]  
 
 多層のシナリオの詳細については、次のページを参照してください。  
 
@@ -390,7 +390,6 @@ Service Bus の詳細については、次のリソースを参照してくだ�
 [26]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/SBNewWorkerRole.png
 [28]: ./media/service-bus-dotnet-multi-tier-app-using-service-bus-queues/getting-started-multi-tier-40.png
 
-[sbdocs]: /azure/service-bus-messaging/  
 [sbacom]: https://azure.microsoft.com/services/service-bus/  
 [sbacomqhowto]: service-bus-dotnet-get-started-with-queues.md  
 [mutitierstorage]: https://code.msdn.microsoft.com/Windows-Azure-Multi-Tier-eadceb36

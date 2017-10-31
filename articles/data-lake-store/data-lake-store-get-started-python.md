@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/28/2017
+ms.date: 10/11/2017
 ms.author: nitinme
-ms.openlocfilehash: 601d756e0d6554d8a4db9cc83f6919fc36d1e844
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76e84687815ca6f4b031e5f7143ba0079fb053db
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Python を使用した Azure Data Lake Store に対するアカウント管理操作
 > [!div class="op_single_selector"]
@@ -35,6 +35,8 @@ Azure Data Lake Store 用 Python SDK を使用して、Data Lake Store アカウ
 * **Python**。 Python は、[ここ](https://www.python.org/downloads/)からダウンロードできます。 この記事では、Python 3.6.2 を使用します。
 
 * **Azure サブスクリプション**。 [Azure 無料試用版の取得](https://azure.microsoft.com/pricing/free-trial/)に関するページを参照してください。
+
+* **Azure リソース グループ**。 手順については、[Azure リソース グループの作成](../azure-resource-manager/resource-group-portal.md)に関するページを参照してください。
 
 ## <a name="install-the-modules"></a>モジュールをインストールする
 
@@ -92,29 +94,6 @@ pip install azure-datalake-store
 * アプリケーションのエンドユーザー認証については、「[End-user authentication with Data Lake Store using Python (Python を使用した Data Lake Store に対するエンドユーザー認証)](data-lake-store-end-user-authenticate-python.md)」を参照してください。
 * アプリケーションのサービス間認証については、「[Service-to-service authentication with Data Lake Store using Python (Python を使用した Data Lake Store に対するサービス間認証)](data-lake-store-service-to-service-authenticate-python.md)」を参照してください。
 
-## <a name="create-an-azure-resource-group"></a>Azure リソース グループを作成する
-
-Azure リソース グループを作成するには、次のコード スニペットを使用します。
-
-    ## Declare variables
-    subscriptionId= 'FILL-IN-HERE'
-    resourceGroup = 'FILL-IN-HERE'
-    location = 'eastus2'
-    
-    ## Create resource management client object
-    resourceClient = ResourceManagementClient(
-        credentials,
-        subscriptionId
-    )
-    
-    ## Create an Azure Resource Group
-    resourceClient.resource_groups.create_or_update(
-        resourceGroup,
-        ResourceGroup(
-            location=location
-        )
-    )
-
 ## <a name="create-client-and-data-lake-store-account"></a>クライアントと Data Lake Store アカウントを作成する
 
 次のスニペットは、まず Data Lake Store アカウントのクライアントを作成します。 これは、クライアント オブジェクトを使用して、Data Lake Store アカウントを作成します。 最後に、スニペットは、ファイル システム クライアント オブジェクトを作成します。
@@ -122,9 +101,11 @@ Azure リソース グループを作成するには、次のコード スニペ
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
     adlsAccountName = 'FILL-IN-HERE'
+    resourceGroup = 'FILL-IN-HERE'
+    location = 'eastus2'
 
     ## Create data lake store account management client object
-    adlsAcctClient = DataLakeStoreAccountManagementClient(credentials, subscriptionId)
+    adlsAcctClient = DataLakeStoreAccountManagementClient(armCreds, subscriptionId)
 
     ## Create a Data Lake Store account
     adlsAcctResult = adlsAcctClient.account.create(
