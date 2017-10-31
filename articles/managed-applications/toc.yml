@@ -1,0 +1,88 @@
+- name: Azure Managed Applications
+  href: index.yml
+- name: 概要
+  items:
+    - name: マネージ アプリケーションについて
+      href: overview.md
+- name: クイック スタート
+  items:
+    - name: Azure CLI を使用してマネージ アプリケーションを作成する
+      href: managed-apps-quickstart-cli.md
+- name: Tutorials (チュートリアル)
+  items:
+    - name: サービス カタログ アプリケーションの作成
+      href: publish-service-catalog-app.md
+    - name: マーケットプレース アプリケーションの作成
+      href: publish-marketplace-app.md
+- name: サンプル
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+    - name: マネージ アプリケーション ソリューション
+      href: sample-projects.md
+- name: ハウツー ガイド
+  items:
+    - name: ユーザー インターフェイスの定義
+      href: create-uidefinition-overview.md
+    - name: マネージ リソースの更新
+      href: update-managed-resources.md
+    - name: サービス カタログ アプリの発行 - ポータル
+      href: publish-portal.md
+- name: リファレンス
+  items:
+    - name: Azure CLI
+      href: /cli/azure/managedapp
+    - name: PowerShell
+      href: /powershell/module/azurerm.resources
+    - name: REST ()
+      href: /rest/api/resources/
+    - name: ユーザー インターフェイスの関数
+      href: create-uidefinition-functions.md
+    - name: ユーザー インターフェイスの要素
+      href: create-uidefinition-elements.md
+      items:
+        - name: 一般
+          items:
+            - name: DropDown
+              href: microsoft-common-dropdown.md
+            - name: FileUpload
+              href: microsoft-common-fileupload.md
+            - name: OptionsGroup
+              href: microsoft-common-optionsgroup.md
+            - name: PasswordBox
+              href: microsoft-common-passwordbox.md
+            - name: セクション
+              href: microsoft-common-section.md
+            - name: TextBox
+              href: microsoft-common-textbox.md
+        - name: コンピューティング
+          items:
+            - name: CredentialsCombo
+              href: microsoft-compute-credentialscombo.md
+            - name: SizeSelector
+              href: microsoft-compute-sizeselector.md
+            - name: UserNameTextBox
+              href: microsoft-compute-usernametextbox.md
+        - name: ネットワーク
+          items:
+            - name: PublicIPAddressCombo
+              href: microsoft-network-publicipaddresscombo.md
+            - name: VirtualNetworkCombo
+              href: microsoft-network-virtualnetworkcombo.md
+        - name: ストレージ
+          items:
+            - name: MultiStorageAccountCombo
+              href: microsoft-storage-multistorageaccountcombo.md
+            - name: StorageAccountSelector
+              href: microsoft-storage-storageaccountselector.md
+- name: リソース
+  items:
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/'
+    - name: 価格
+      href: 'https://azure.microsoft.com/pricing/details/managed-applications/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: スタック オーバーフロー
+      href: 'http://stackoverflow.com/questions/tagged/azure-managedapps'
