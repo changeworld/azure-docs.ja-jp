@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 86c6459ae26a45cb3118cf53ce17ac3234551f4d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42a6d7156a28aaeadea96f9134b0becc004816ba
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-current-limitations"></a>Azure Active Directory パススルー認証: 現在の制限事項
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 次のシナリオは完全にサポートされています。
 
 - すべての Web ブラウザー ベースのアプリケーションへのユーザー サインイン。
-- [最新の認証](https://aka.ms/modernauthga)をサポートする Office 365 クライアント アプリケーションへのユーザー サインイン。
+- [最新の認証](https://aka.ms/modernauthga)をサポートする Office 365 クライアント アプリケーションへのユーザー サインイン - Office 2016、および Office 2013 (最新の認証_あり_)。
 - Windows 10 デバイスの Azure AD Join。
 - Exchange ActiveSync のサポート。
 
@@ -38,14 +38,15 @@ ms.lasthandoff: 10/11/2017
 
 次のシナリオはサポートされて_いません_。
 
-- 従来の Office クライアント アプリケーション (Office 2013 以前) へのユーザー サインイン。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access.md)機能を使用してユーザー アカウントをセキュリティで保護することもできます。
+- 従来の Office クライアント アプリケーションへのユーザー サインイン - Office 2010、および Office 2013 (最新の認証_なし_)。 組織は、可能であれば最新の認証に切り替えることが推奨されます。 最新の認証により、パススルー認証のサポートが可能になるだけでなく、Multi-Factor Authentication (MFA) などの[条件付きアクセス](../active-directory-conditional-access.md)機能を使用してユーザー アカウントをセキュリティで保護することもできます。
 - Skype for Business クライアント アプリケーション (Skype for Business 2016 を含む) へのユーザー サインイン。
 - PowerShell v1.0 へのユーザー サインイン。 代わりに、PowerShell v2.0 を使用することをお勧めします。
+- Azure AD Domain Services。
 - MFA のためのアプリ パスワード。
 - [資格情報が漏洩した](../active-directory-reporting-risk-events.md#leaked-credentials)ユーザーの検出。
 
 >[!IMPORTANT]
->サポートされていないシナリオに対処するために、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。 パスワード ハッシュ同期は、前に示したシナリオのフォールバックとして "_のみ_" 機能します (パススルー認証への汎用フォールバックとしては機能 "_しません_")。 パスワード ハッシュの同期を有効にすると、オンプレミスのインフラストラクチャが中断された場合に (Microsoft サポート経由で) 認証をフェールオーバーするオプションも提供されます。
+>サポートされていないシナリオに対処する場合に_のみ_、Azure AD Connect ウィザードの [[オプション機能]](active-directory-aadconnect-get-started-custom.md#optional-features) ページでパスワード ハッシュ同期を有効にします。 パスワード ハッシュ同期を有効にすると、オンプレミスのインフラストラクチャが完全に中断された場合に認証をフェールオーバーするオプションも提供されます。 このパススルー認証からパスワード ハッシュ同期へのフェールオーバーは自動ではありません。Microsoft サポートを通じて行う必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 - [**クイック スタート**](active-directory-aadconnect-pass-through-authentication-quick-start.md) - Azure AD パススルー認証を起動および実行します。

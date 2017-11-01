@@ -13,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: data-services
 ms.custom: manage
-ms.date: 03/22/2017
+ms.date: 3/23/2017
 ms.author: elbutter
-ms.openlocfilehash: abe22f542a79714f6e894870872ee6b76ffe7633
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d0d3b94fb50155ce0579d32e8ff78a47b9e3589
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-compute-power-in-azure-sql-data-warehouse-overview"></a>Azure SQL Data Warehouse のコンピューティング能力の管理 (概要)
 > [!div class="op_single_selector"]
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 
 SQL Data Warehouse のアーキテクチャではストレージとコンピューティングを分離して、それぞれを個別にスケーリングできます。 結果として、データの量とは無関係に、パフォーマンスの需要を満たすようにコンピューティングをスケーリングできます。 このアーキテクチャでは、当然、コンピューティングとストレージに対する[課金][billed]は別々に行われます。 
 
-この概要では、SQL Data Warehouse でのスケールアウトのしくみについて説明するほか、SQL Data Warehouse の機能を一時停止、再開、およびスケーリングする方法について説明します。 [Data Warehouse ユニット (DWU)][data warehouse units (DWUs)] に関するページを参照して、DWU とパフォーマンスの関係を確認してください。 
+この概要では、SQL Data Warehouse でのスケールアウトのしくみについて説明するほか、SQL Data Warehouse の機能を一時停止、再開、およびスケーリングする方法について説明します。 
 
 ## <a name="how-compute-management-operations-work-in-sql-data-warehouse"></a>SQL Data Warehouse でのコンピューティング管理操作のしくみ
 SQL Data Warehouse のアーキテクチャは、制御ノード、コンピューティング ノード、および 60 のディストリビューションに分散されたストレージ層で構成されます。 
@@ -89,7 +89,7 @@ SQL Data Warehouse の通常のアクティブ セッション中、システム
 SQL Data Warehouse のパフォーマンスは、CPU、メモリ、I/O 帯域幅などのコンピューティング リソースの抽象的な尺度である [Data Warehouse ユニット (DWU)][data warehouse units (DWUs)] で測定されます。 システムのパフォーマンスをスケーリングする必要のあるユーザーは、ポータル、T-SQL、REST API などのさまざまな手段を使用してパフォーマンスを向上させることができます。 
 
 ### <a name="how-do-i-scale-compute"></a>コンピューティングをスケーリングする方法
-SQL Data Warehouse のコンピューティング能力を管理するには、DWU 設定を変更します。 パフォーマンスは、特定の操作のために DWU を追加するのに応じて[線形][linearly]に向上します。  Microsoft では、システムをスケールアップまたはスケールダウンしたときにパフォーマンスが顕著に変化するような DWU プランを提供しています。 
+SQL Data Warehouse のコンピューティング能力を管理するには、DWU 設定を変更します。 パフォーマンスは、特定の操作のために DWU を追加するのに応じて線形に向上します。  Microsoft では、システムをスケールアップまたはスケールダウンしたときにパフォーマンスが顕著に変化するような DWU プランを提供しています。 
 
 DWU を調整するのには、これらの各方法をどれでも使用できます。
 
@@ -181,9 +181,7 @@ DWU をスケーリングするタイミングを特定するための推奨事�
 <!--Image reference-->
 
 <!--Article references-->
-[data warehouse units (DWUs)]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
-[billed]: https://azure.microsoft.com/en-us/pricing/details/sql-data-warehouse/
-[linearly]: ./sql-data-warehouse-overview-what-is.md#predictable-and-scalable-performance-with-data-warehouse-units
+[billed]: https://azure.microsoft.com/pricing/details/sql-data-warehouse/
 [Scale compute power with Azure portal]: ./sql-data-warehouse-manage-compute-portal.md#scale-compute-power
 [Scale compute power with PowerShell]: ./sql-data-warehouse-manage-compute-powershell.md#scale-compute-bk
 [Scale compute power with REST APIs]: ./sql-data-warehouse-manage-compute-rest-api.md#scale-compute-bk

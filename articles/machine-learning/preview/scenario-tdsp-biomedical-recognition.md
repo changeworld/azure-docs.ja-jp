@@ -14,15 +14,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev
-ms.openlocfilehash: a13bbd5d32eaab96dfb97e60652dbe9bcbdfb1b1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 21f8f66d8b78c2b536792bc96e9233d5739fde81
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Team Data Science Process (TDSP) テンプレートを使った生体エンティティ認識
 
-この現実に即したシナリオの目的は、Azure Machine Learning Workbench を使って、非構造化テキストからエンティティを抽出するような複雑な自然言語処理 (NLP) タスクを解決する方法に焦点を当てることです。
+エンティティ抽出は、情報抽出のサブタスクです ([名前付きエンティティ認識 (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition)、エンティティ チャンク、およびエンティティ識別とも呼ばれます)。 この現実に即したシナリオの目的は、Azure Machine Learning Workbench を使って、非構造化テキストからエンティティを抽出するような複雑な自然言語処理 (NLP) タスクを解決する方法に焦点を当てることです。
 
 1. [Spark Word2Vec の実装](https://spark.apache.org/docs/latest/mllib-feature-extraction.html#word2vec)を使って、PubMed の約 1,800 万件の要旨のテキスト コーパスに対して、ニューラル単語埋め込みモデルをトレーニングする方法を示します。
 2. Azure 上の GPU 対応 Azure Data Science Virtual Machine (GPU DS VM) で、エンティティ抽出のためのディープ Long Short-Term Memory (LSTM) 再帰型ニューラル ネットワーク モデルを構築する方法を示します。
@@ -32,15 +32,16 @@ ms.lasthandoff: 10/11/2017
 4. Azure Machine Learning Workbench 内の次の機能を示します。
 
     * [Team Data Science Process (TDSP) 構造とテンプレート](how-to-use-tdsp-in-azure-ml.md)のインスタンス化。
-    * Jupyter Notebook と Python スクリプトのコードの実行。
-    * Python ファイルの実行履歴の追跡。
+    * ダウンロードとインストールを含む、プロジェクトの依存関係の自動管理。
+    * さまざまなコンピューティング環境での Python スクリプトの実行。
+    * Python スクリプトの実行履歴の追跡。
     * HDInsight Spark 2.1 クラスターを使った、リモート Spark コンピューティング コンテキストでのジョブの実行。
     * Azure 上のリモート GPU VM でのジョブの実行。
-    * Azure Container Services での、Web サービスとしてのディープ ラーニング モデルの簡単な運用化。
+    * Azure Container Services (ACS) での、Web サービスとしてのディープ ラーニング モデルの簡単な運用化。
 
 ## <a name="use-case-overview"></a>ユース ケースの概要
 生体名前付きエンティティ認識 (固有表現抽出) は、生物医学に関する次のような複雑な NLP タスクを行うための重要なステップです。 
-* 電子医療記録から病名や症状を抽出する。
+* 電子医療記録から、病名、薬、化学薬品、症状などの名前付きエンティティの言及を抽出する。
 * 創薬
 * 薬の相互作用や薬と病気の関係、遺伝子とタンパク質の関係など、異なるエンティティ タイプ間の作用を理解する。
 
@@ -75,7 +76,7 @@ ms.lasthandoff: 10/11/2017
         pubdate: Publication date
         title
 
-### <a name="2-lstm-model-training-data"></a>2.LSTM モデルのトレーニング データ
+### <a name="2-lstm-model-training-data"></a>手順 2.LSTM モデルのトレーニング データ
 
 ニューラル エンティティ抽出モデルは、一般公開されているデータセットでトレーニングおよび評価されています。 これらのデータセットに関する詳しい説明については、次のソースを参照してください。
  * [Bio-Entity Recognition Task at BioNLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html)
@@ -130,14 +131,14 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="1-data-acquisition-and-understanding"></a>1.データの取得と理解
 
-「[データの取得と理解](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/Code/01_Data_Acquisition_and_Understanding/ReadMe.md)」を参照してください。
+「[データの取得と理解](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)」を参照してください。
 
 未加工の MEDLINE コーパスには合計で 2,700 万件の要旨があり、約 1,000 万件の論文の要旨フィールドは空白になっています。 Azure HDInsight Spark を使って、単一マシンのメモリにロードできないビッグ データを [Pandas DataFrame](https://pandas.pydata.org/pandas-docs/stable/generated/pandas.DataFrame.html) として処理します。 まず、データを Spark クラスターにダウンロードします。 次に、[Spark DataFrame](https://spark.apache.org/docs/latest/sql-programming-guide.html) で次の手順を実行します。 
 * Medline XML Parser を使って XML ファイルを解析する。
 * センテンス分割、トークン化、ケース (大文字小文字) の正規化など、要旨のテキストを前処理する。
 * 要旨フィールドのテキストが空または短い論文を除外する。 
 * トレーニングする要旨からワード ボキャブラリを作成する。
-* 単語埋め込みニューラル モデルをトレーニングする。 詳しくは、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/Code/01_DataPreparation/ReadMe.md)を参照してください。
+* 単語埋め込みニューラル モデルをトレーニングする。 詳しくは、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/blob/master/code/01_data_acquisition_and_understanding/ReadMe.md)を参照してください。
 
 
 XML ファイルの解析後、データの形式は次のようになります。 
@@ -151,7 +152,7 @@ XML ファイルの解析後、データの形式は次のようになります�
 
 ### <a name="2-modeling"></a>2.モデリング
 
-「[モデリング](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling)」を参照してください。
+「[モデリング](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling)」を参照してください。
 
 モデリングの段階では、前のセクションで単語埋め込みモデルのトレーニング用にダウンロードしたデータの使用方法を示し、これを他のダウンストリーム タスクに使用します。 ここでは PubMed のデータを使用していますが、埋め込みを生成するパイプラインは汎用的であるため、他のドメインの単語埋め込みのトレーニングにも利用することができます。 データを正確に表す埋め込みを作成するには、word2vec が大量のデータでトレーニングされている必要があります。
 単語埋め込みの準備が整ったら、学習済みの埋め込みを使用するディープ ニューラル ネットワーク モデルをトレーニングして、埋め込み層を初期化することができます。 ここでは埋め込み層をトレーニング不可としてマークしていますが、必須ではありません。 単語埋め込みモデルのトレーニングは教師ありの学習ではないので、ラベル付けされていないテキストを利用することができます。 ただし、エンティティ認識モデルのトレーニングは教師ありの学習タスクであり、その精度は手動で注釈が付けられたデータの量と質に依存します。 
@@ -159,9 +160,9 @@ XML ファイルの解析後、データの形式は次のようになります�
 
 #### <a name="21-feature-generation"></a>2.1. 特徴の生成
 
-「[特徴の生成](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/01_FeatureEngineering)」を参照してください。
+「[特徴の生成](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/01_feature_engineering)」を参照してください。
 
-Word2Vec は、ラベル付けされていないトレーニング コーパスでニューラル ネットワーク モデルをトレーニングする、単語埋め込み学習アルゴリズムです。 コーパス内の各単語について、そのセマンティック情報を表す連続ベクトルを生成します。 これらのモデルは、1 つの隠れ層を持つ単純なニューラル ネットワークです。 単語ベクトル/埋め込みの学習は、誤差逆伝播法と確率的勾配降下法によって行われます。 word2vec モデルには、Skip-Gram と Continuous-Bag-of-Words という 2 つの種類があります (詳細は[こちら](https://arxiv.org/pdf/1301.3781.pdf))。 ここでは Skip-Gram をサポートする word2vec の MLlib の実装を使用しているので、Skip-Gram モデルについて下の図で簡単に説明します (図の出典への[リンク](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/))。 
+Word2Vec は、ラベル付けされていないトレーニング コーパスでニューラル ネットワーク モデルをトレーニングする、単語埋め込みの教師なし学習アルゴリズムです。 コーパス内の各単語について、そのセマンティック情報を表す連続ベクトルを生成します。 これらのモデルは、1 つの隠れ層を持つ単純なニューラル ネットワークです。 単語ベクトル/埋め込みの学習は、誤差逆伝播法と確率的勾配降下法によって行われます。 word2vec モデルには、Skip-Gram と Continuous-Bag-of-Words という 2 つの種類があります (詳細は[こちら](https://arxiv.org/pdf/1301.3781.pdf))。 ここでは Skip-Gram をサポートする word2vec の MLlib の実装を使用しているので、Skip-Gram モデルについて下の図で簡単に説明します (図の出典への[リンク](https://ahmedhanibrahim.wordpress.com/2017/04/25/thesis-tutorials-i-understanding-word2vec-for-word-embedding-i/))。 
 
 ![Skip Gram モデル](./media/scenario-tdsp-biomedical-recognition/skip-gram.png)
 
@@ -170,11 +171,11 @@ Word2Vec は、ラベル付けされていないトレーニング コーパス�
 
 ##### <a name="visualization"></a>グラフ
 
-埋め込みを作成したので、それを視覚化し、意味的に類似した単語間の関係を確認します。 
+単語埋め込みを作成したので、それを視覚化し、意味的に類似した単語間の関係を確認します。 
 
 ![W2V 類似性](./media/scenario-tdsp-biomedical-recognition/w2v-sim.png)
 
-埋め込みを視覚化する 2 つの方法を示しました。 上にあるのが、PCA を使って高次元ベクトルを 2 次元ベクトル空間に投影する方法です。 この方法では情報が大幅に欠落するため、正確な視覚化はできません。 下にあるのが、PCA を [t-SNE](https://distill.pub/2016/misread-tsne/) と使用する方法です。 t-SNE は非線形の次元削減手法で、高次元データを 2 次元または 3 次元の空間に埋め込み、散布図で視覚化するのに最も適した方法です。  高次元のオブジェクトをそれぞれ 2 次元または 3 次元のポイントでモデル化するのですが、その際に類似オブジェクトは近くのポイントに、異なるオブジェクトは離れたポイントに、といった方法でモデル化します。 このプロセスは 2 段階に分かれており、 まず、高次元空間のペアに対して確率分布を作成します。類似オブジェクトは選択さる確率が高く、異なるポイントは選択される確率が低いというやり方です。 次に、低次元マップ上のポイントに対して同様の確率分布を定義して、マップ上のポイントの場所に関する 2 つの分布間の KL ダイバージェンスを最小化します。 低次元マップ上のポイントの場所は、勾配降下法を使って KL ダイバージェンスを最小化することで取得します。 ただし、t-SNE は常に信頼できるとは限りません。 実装の詳細は[こちら](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/01_FeatureEngineering)を参照してください。 
+埋め込みを視覚化する 2 つの方法を示しました。 上にあるのが、PCA を使って高次元ベクトルを 2 次元ベクトル空間に投影する方法です。 この方法では情報が大幅に欠落するため、正確な視覚化はできません。 下にあるのが、PCA を [t-SNE](https://distill.pub/2016/misread-tsne/) と使用する方法です。 t-SNE は非線形の次元削減手法で、高次元データを 2 次元または 3 次元の空間に埋め込み、散布図で視覚化するのに最も適した方法です。  高次元のオブジェクトをそれぞれ 2 次元または 3 次元のポイントでモデル化するのですが、その際に類似オブジェクトは近くのポイントに、異なるオブジェクトは離れたポイントに、といった方法でモデル化します。 このプロセスは 2 段階に分かれており、 まず、高次元空間のペアに対して確率分布を作成します。類似オブジェクトは選択さる確率が高く、異なるポイントは選択される確率が低いというやり方です。 次に、低次元マップ上のポイントに対して同様の確率分布を定義して、マップ上のポイントの場所に関する 2 つの分布間の KL ダイバージェンスを最小化します。 低次元マップ上のポイントの場所は、勾配降下法を使って KL ダイバージェンスを最小化することで取得します。 ただし、t-SNE は常に信頼できるとは限りません。 実装の詳細は[こちら](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/01_feature_engineering)を参照してください。 
 
 
 次の図に示すように、t-SNE による 視覚化では、単語ベクトルと潜在的なクラスタリング パターンの分離がより大きくなります。 
@@ -194,7 +195,7 @@ Word2Vec は、ラベル付けされていないトレーニング コーパス�
 
 #### <a name="22-train-the-neural-entity-extractor"></a>2.2. ニューラル エンティティ抽出のトレーニング
 
-「[ニューラル エンティティ抽出のトレーニング](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/02_ModelCreation/ReadMe.md)」を参照してください。
+「[ニューラル エンティティ抽出のトレーニング](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation/ReadMe.md)」を参照してください。
 
 フィード フォワード ニューラル ネットワーク アーキテクチャには、各入出力を他の入出力とは独立したものとして扱うという問題があります。 このアーキテクチャでは、機械翻訳やエンティティ抽出のような、シーケンスからシーケンスにラベリングするタスクをモデル化することができません。 再帰型ニューラル ネットワーク モデルは現在までに計算された情報を次のノードに渡すことができるので、この問題を解決できます。 これは、次の図に示すように、以前に計算された情報を利用できることから、ネットワークにメモリを持っているという言い方もされます。
 
@@ -204,13 +205,15 @@ Vanilla RNN では、以前に見たすべての情報を利用することが�
 
 ![LSTM セル](./media/scenario-tdsp-biomedical-recognition/lstm-cell.png)
 
-私たちが作った LSTM ベースの再帰型ニューラル ネットワークを使って、PubMed データから薬、病名、症状の言及などのエンティティ タイプを抽出してみましょう。 まずは大量のラベル付きデータを取得するのですが、この手順はご想像通り簡単ではありません。 ほとんどの医療データは慎重な取り扱いを要する個人情報を含んでいるため、一般公開されていません。 ここでは、一般公開されている 2 つのデータセットを組み合わせて使用します。 1 つは Semeval 2013 - Task 9.1 (Drug Recognition) のデータセットで、もう 1 つは BioCreative V CDR task のデータセットです。 この 2 つのデータセットを組み合わせて自動的にラベル付けを行い、メディカル テキストから薬と病名の両方を検出して、単語埋め込みを評価します。 実装の詳細については、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/02_Modeling/02_ModelCreation)を参照してください。
+私たちが作った LSTM ベースの再帰型ニューラル ネットワークを使って、PubMed データから薬、病名、症状の言及などのエンティティ タイプを抽出してみましょう。 まずは大量のラベル付きデータを取得するのですが、この手順はご想像通り簡単ではありません。 ほとんどの医療データは慎重な取り扱いを要する個人情報を含んでいるため、一般公開されていません。 ここでは、一般公開されている 2 つのデータセットを組み合わせて使用します。 1 つは Semeval 2013 - Task 9.1 (Drug Recognition) のデータセットで、もう 1 つは BioCreative V CDR task のデータセットです。 この 2 つのデータセットを組み合わせて自動的にラベル付けを行い、メディカル テキストから薬と病名の両方を検出して、単語埋め込みを評価します。 実装の詳細については、[GitHub のコード](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/02_model_creation)を参照してください。
 
 以下に、すべてのコードにまたがって比較のために使用したモデルのアーキテクチャを示します。 さまざまなデータセットに対して変化するパラメーターは、シーケンス長の最大値 (ここでは 613) です。
 
 ![LSTM モデル](./media/scenario-tdsp-biomedical-recognition/d-a-d-model.png)
 
 #### <a name="23-model-evaluation"></a>2.3. モデルの評価
+[モデルの評価](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/02_modeling/03_model_evaluation/ReadMe.md)に関するページを参照してください。
+
 共有タスク [Bio-Entity Recognition Task at Bio NLP/NLPBA 2004](http://www.nactem.ac.uk/tsujii/GENIA/ERtask/report.html) の評価スクリプトを使って、モデルの精度、再現率、および F1 スコアを評価します。 
 
 #### <a name="in-domain-versus-generic-word-embedding-models"></a>ドメイン内の単語埋め込みモデルと汎用的な単語埋め込みモデルの比較
@@ -249,7 +252,7 @@ CNTK は、エポックあたりのトレーニング時間 (CNTK は 60 秒、T
 
 ### <a name="3-deployment"></a>3.デプロイ
 
-「[デプロイ](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/Code/03_Deployment)」を参照してください。
+「[デプロイ](https://github.com/Azure/MachineLearningSamples-BiomedicalEntityExtraction/tree/master/code/03_deployment)」を参照してください。
 
 ここでは、[Azure Container Service (ACS)](https://azure.microsoft.com/services/container-service/) のクラスター上に Web サービスをデプロイしました。 運用環境では、クラスターで Docker と Kubernetes をプロビジョニングして、Web サービスのデプロイを管理します。 運用化のプロセスについて詳しくは、[こちら](model-management-service-deploy.md )を参照してください。
 

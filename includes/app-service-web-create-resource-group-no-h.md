@@ -8,4 +8,4 @@ Cloud Shell で [az group create](/cli/azure/group#create) コマンドを使用
 az group create --name myResourceGroup --location "West Europe"
 ```
 
-通常は、現在地付近の地域にリソース グループおよびリソースを作成します。 Azure Web Apps がサポートされているすべての場所を表示するには、`az appservice list-locations` コマンドを実行します。 
+通常は、現在地付近の地域にリソース グループおよびリソースを作成します。 App Service プランがサポートされているすべての場所を表示するには、`az appservice list-locations` コマンドを実行します。

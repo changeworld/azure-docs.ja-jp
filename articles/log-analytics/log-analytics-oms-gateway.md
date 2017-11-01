@@ -3,7 +3,7 @@ title: "OMS ゲートウェイを使って OMS にコンピューターを接続
 description: "OMS で管理されたデバイスと Operations Manager で監視されたコンピューターがインターネットにアクセスできないときに、OMS ゲートウェイを使ってそれらを OMS サービスに接続してデータを送信します。"
 services: log-analytics
 documentationcenter: 
-author: MGoedtel
+author: bandersmsft
 manager: carmonm
 editor: 
 ms.assetid: ae9a1623-d2ba-41d3-bd97-36e65d3ca119
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/20/2017
-ms.author: magoedte
-ms.openlocfilehash: a4d3a45d4bf83754fba363cdb3f3688d7218baa4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/17/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: c09a01af8053feb4d5450b350503484507014765
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="connect-computers-without-internet-access-to-oms-using-the-oms-gateway"></a>インターネットにアクセスできないコンピューターを OMS ゲートウェイを使って OMS に接続する
 
@@ -47,7 +47,7 @@ OMS ゲートウェイを監視し、パフォーマンスやイベントに関�
 
 次の図は、Operations Manager 管理グループから OMS へのデータの流れを示したものです。   
 
-![Operations Manager と OMS の通信の図](./media/log-analytics-oms-gateway/oms-omsgateway-opsmgrconnect.png)
+![Operations Manager と OMS の通信の図](./media/log-analytics-oms-gateway/log-analytics-agent-opsmgrconnect.png)
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -56,7 +56,7 @@ OMS ゲートウェイを実行するコンピューターを設計する際に�
 * Windows 10、Windows 8.1、Windows 7
 * Windows Server 2016、Windows Server 2012 R2、Windows Server 2012、Windows Server 2008 R2、Windows Server 2008
 * .Net Framework 4.5
-* 最低 4 コアのプロセッサと 8 GB のメモリ
+* 最低 4 コアのプロセッサと 8 GB のメモリ 
 
 ### <a name="language-availability"></a>利用可能な言語
 
@@ -78,6 +78,9 @@ OMS ゲートウェイは、次の言語で利用できます。
 - ポルトガル語 (ポルトガル)
 - ロシア語
 - スペイン語 (インターナショナル)
+
+### <a name="supported-encryption-protocols"></a>サポート対象の暗号化プロトコル
+OMS ゲートウェイは、トランスポート層セキュリティ (TLS) 1.0、1.1、1.2 のみをサポートします。  Secure Sockets Layer (SSL) はサポートされません。
 
 ## <a name="download-the-oms-gateway"></a>OMS ゲートウェイをダウンロードする
 
@@ -101,7 +104,7 @@ OMS ゲートウェイは、次の言語で利用できます。
 ゲートウェイをインストールするには、以下の手順を実行します。  以前のバージョン (旧称 "*Log Analytics フォワーダー*") をインストールしている場合には、今回のリリースにアップグレードされます。  
 
 1. インストール先のフォルダーから、**OMS Gateway.msi** をダブルクリックします。
-2. **[ようこそ]** ページで **[次へ]** をクリックします。<br><br> ![ゲートウェイ セットアップ ウィザード](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br>
+2. **[ようこそ]** ページで **[次へ]** をクリックします。<br><br> ![ゲートウェイ セットアップ ウィザード](./media/log-analytics-oms-gateway/gateway-wizard01.png)<br> 
 3. **[使用許諾契約書]** ページで、**[使用許諾契約書に同意します]** を選んで使用許諾契約書に同意し、**[次へ]** をクリックします。
 4. **[Port and proxy address (ポートとプロキシ アドレス)]** ページで、以下を実行します。
    1. ゲートウェイに使う TCP ポートの番号を入力します。 セットアップにより、Windows ファイアウォールに対してこのポート番号を使った受信ルールが構成されます。  既定値は 8080 です。
@@ -113,20 +116,20 @@ OMS ゲートウェイは、次の言語で利用できます。
 7. **[インストールの準備完了]** ページで **[インストール]** をクリックします。 [ユーザー アカウント制御] が表示され、インストールのためのアクセス許可が要求されることがあります。 その場合は、**[はい]** をクリックします。
 8. セットアップが完了した後、**[完了]** をクリックします。 サービスが実行中であることを確認するには、services.msc スナップインを開きます。そこでサービスの一覧に **[OMS ゲートウェイ]** が表示されており、状態が **[実行中]** であれば、サービスは正常に実行されています。<br><br> ![サービス – OMS ゲートウェイ](./media/log-analytics-oms-gateway/gateway-service.png)  
 
-## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する
+## <a name="configure-network-load-balancing"></a>ネットワーク負荷分散を構成する 
 ネットワーク負荷分散 (NLB) を使えば、ゲートウェイに高可用性を構成できます。これには、Microsoft ネットワーク負荷分散 (NLB) とハードウェアベースのロード バランサーのどちらかを使用します。  ロード バランサーは、OMS エージェントまたは Operations manager 管理サーバーからの接続要求を自らのノードにリダイレクトする形で、トラフィックを管理します。 1 台のゲートウェイ サーバーで障害が発生した場合、トラフィックは他のノードにリダイレクトされます。
 
 Windows Server 2016 のネットワーク負荷分散クラスターの設計およびデプロイの方法については、「[ネットワーク負荷分散](https://technet.microsoft.com/windows-server-docs/networking/technologies/network-load-balancing)」を参照してください。  以下の手順では、Microsoft ネットワーク負荷分散クラスターの構成方法を説明します。  
 
 1.  管理者アカウントを使用して、NLB クラスターのメンバーとなっている Windows サーバーにサインオンします。  
 2.  サーバー マネージャーでネットワーク負荷分散マネージャーを開いて、**[ツール]**、**[ネットワーク負荷分散マネージャー]** の順にクリックします。
-3. Microsoft Monitoring Agent がインストールされている OMS ゲートウェイ サーバーを接続するには、**[ホストをクラスターに追加]** をクリックします。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加](./media/log-analytics-oms-gateway/nlb02.png)<br>
-4. 接続するゲートウェイ サーバーの IP アドレスを入力します。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加: 接続](./media/log-analytics-oms-gateway/nlb03.png)
-
+3. Microsoft Monitoring Agent がインストールされている OMS ゲートウェイ サーバーを接続するには、**[ホストをクラスターに追加]** をクリックします。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加](./media/log-analytics-oms-gateway/nlb02.png)<br> 
+4. 接続するゲートウェイ サーバーの IP アドレスを入力します。<br><br> ![ネットワーク負荷分散マネージャー – ホストをクラスターに追加: 接続](./media/log-analytics-oms-gateway/nlb03.png) 
+    
 ## <a name="configure-oms-agent-and-operations-manager-management-group"></a>OMS エージェントと Operations Manager 管理グループを構成する
 以下のセクションでは、直接接続されている OMS エージェント、Operations Manager 管理グループ、または Azure Automation Hybrid Runbook Worker に対して OMS との通信のために OMS ゲートウェイを構成する手順を説明します。  
 
-OMS に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)方法に関するページを参照してください。Linux コンピューターの場合には、[Linux コンピューターを OMS に接続する](log-analytics-linux-agents.md)方法に関するページを参照してください。
+OMS に直接接続している Windows コンピューターに OMS エージェントをインストールするための要件と手順については、[Windows コンピューターを OMS に接続する](log-analytics-windows-agents.md)方法に関するページを参照してください。Linux コンピューターの場合には、[Linux コンピューターを OMS に接続する](log-analytics-linux-agents.md)方法に関するページを参照してください。 
 
 ### <a name="configuring-the-oms-agent-and-operations-manager-to-use-the-oms-gateway-as-a-proxy-server"></a>OMS エージェントと Operations Manager に対してプロキシ サーバーとして OMS ゲートウェイを構成する
 
@@ -145,26 +148,26 @@ OMS に直接接続している Windows コンピューターに OMS エージ�
 > ゲートウェイの値を指定しなかった場合には、全部のエージェントに対して空の値がプッシュされます。
 
 
-1. Operations Manager コンソールを開き、**[Operations Management Suite]** で **[接続]** をクリックして、**[プロキシ サーバーの構成]** をクリックします。<br><br> ![Operations Manager – プロキシ サーバーの構成](./media/log-analytics-oms-gateway/scom01.png)<br>
-2. **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選び、OMS ゲートウェイ サーバーの IP アドレスまたは NLB の仮想 IP アドレスを入力します。 `http://` プレフィックスを省略しないで入力します。<br><br> ![Operations Manager – プロキシ サーバーのアドレス](./media/log-analytics-oms-gateway/scom02.png)<br>
+1. Operations Manager コンソールを開き、**[Operations Management Suite]** で **[接続]** をクリックして、**[プロキシ サーバーの構成]** をクリックします。<br><br> ![Operations Manager – プロキシ サーバーの構成](./media/log-analytics-oms-gateway/scom01.png)<br> 
+2. **[Operations Management Suite へのアクセスにプロキシ サーバーを使用する]** を選び、OMS ゲートウェイ サーバーの IP アドレスまたは NLB の仮想 IP アドレスを入力します。 `http://` プレフィックスを省略しないで入力します。<br><br> ![Operations Manager – プロキシ サーバーのアドレス](./media/log-analytics-oms-gateway/scom02.png)<br> 
 3. **[完了]**をクリックします。 Operations Manager サーバーが OMS ワークスペースに接続されます。
 
 ### <a name="configure-operations-manager---specific-agents-use-proxy-server"></a>Operations Manager を構成する (特定のエージェントがプロキシ サーバーを使用する)
 環境が大規模であるか、複雑な場合には、特定のサーバー (またはグループ) のみ OMS ゲートウェイ サーバーを使用する構成が必要になることも考えられます。  そのようなサーバーでは、Operations Manager エージェントを直接更新する方法は使えません。値が、管理グループ全体に適用されるグローバルな値で上書きされてしまうからです。  そこで、グローバルな値をプッシュするルールを上書きする必要があります。
 
-> [!NOTE]
+> [!NOTE] 
 > 環境で複数の OMS ゲートウェイ サーバーを使用する場合にも、これと同じ構成のテクニックを流用できます。  たとえば、リージョンごとに固有の OMS ゲートウェイ サーバーの指定を必要とする場合が考えられます。
 
 1. Operations Manager コンソールを開き、**[作成]** ワークスペースを選択します。  
-2. [作成] ワークスペースで、**[ルール]** を選択し、Operations Manager ツールバーの **[スコープ]** ボタンをクリックします。 このボタンが利用できない場合には、[監視] ウィンドウでフォルダーではなくオブジェクトを選択していることを確認してください。 **[管理パック オブジェクトのスコープ設定]** ダイアログ ボックスには、ターゲットになることが多いクラス、グループ、またはオブジェクトが一覧表示されます。
+2. [作成] ワークスペースで、**[ルール]** を選択し、Operations Manager ツールバーの **[スコープ]** ボタンをクリックします。 このボタンが利用できない場合には、[監視] ウィンドウでフォルダーではなくオブジェクトを選択していることを確認してください。 **[管理パック オブジェクトのスコープ設定]** ダイアログ ボックスには、ターゲットになることが多いクラス、グループ、またはオブジェクトが一覧表示されます。 
 3. **[検索]** フィールドに「**ヘルス サービス**」と入力し、一覧から選択します。  **[OK]**をクリックします。  
 4. ルール **[Advisor Proxy Setting Rule (アドバイザーのプロキシ設定のルール)]** を検索し、オペレーション コンソール ツールバーで **[上書き]** をクリックしたら、**[Override the Rule\For a specific object of class: Health Service (ルールの上書き\クラスの特定のオブジェクト: ヘルス サービス)]** にカーソルを合わせ、一覧から特定のオブジェクトを選択します。  必要があれば、この上書きを適用するサーバーのヘルス サービス オブジェクトが含まれるカスタム グループを作成し、そのグループに対して上書きを適用することもできます。
 5. **[上書きのプロパティ]** ダイアログ ボックスで **WebProxyAddress** パラメーターの隣の **[上書き]** 列にチェック マークを付けます。  **[上書き値]** フィールドに、OMS ゲートウェイ サーバーの URL を入力します (URL にはプレフィックスとして `http://` を忘れずに付けてください)。
    >[!NOTE]
    > 新しいルールを有効にする必要はありません。このルールは、Microsoft System Center Advisor 監視サーバー グループを対象とした Microsoft System Center Advisor Secure Reference Override 管理パックに含まれる上書きで既に自動で管理されています。
-   >
-6. **[目的の管理パックの選択]** の一覧から管理パックを選択するか、**[新規]** をクリックして封印されていない管理パックを新規作成します。
-7. 変更が済んだら **[OK]** をクリックします。
+   > 
+6. **[目的の管理パックの選択]** の一覧から管理パックを選択するか、**[新規]** をクリックして封印されていない管理パックを新規作成します。 
+7. 変更が済んだら **[OK]** をクリックします。 
 
 ### <a name="configure-for-automation-hybrid-workers"></a>Automation ハイブリッド worker 用に構成する
 環境に Automation Hybrid Runbook Worker がある場合は、次の手順で、それらをサポートするようにゲートウェイを構成するための手動で一時的な回避策を設定します。
@@ -237,7 +240,7 @@ OMS ゲートウェイの構成設定の更新に必要なタスクを実行す�
 | `Set-OMSGatewayConfig` |キー (必須) <br> 値 |サービスの構成を変更します |`Set-OMSGatewayConfig -Name ListenPort -Value 8080` |  
 | `Get-OMSGatewayRelayProxy` | |リレー (アップストリーム) プロキシのアドレスを取得します |`Get-OMSGatewayRelayProxy` |  
 | `Set-OMSGatewayRelayProxy` |Address<br> ユーザー名<br> パスワード |リレー (アップストリーム) プロキシのアドレス (および資格情報) を設定します |1.リレー プロキシと資格情報を設定します。<br> `Set-OMSGatewayRelayProxy`<br>`-Address http://www.myproxy.com:8080`<br>`-Username user1 -Password 123` <br><br> 2.認証を必要としないリレー プロキシを設定します。`Set-OMSGatewayRelayProxy`<br> `-Address http://www.myproxy.com:8080` <br><br> 3.リレー プロキシ設定をクリアします。<br> `Set-OMSGatewayRelayProxy` <br> `-Address ""` |  
-| `Get-OMSGatewayAllowedHost` | |現在許可されているホストを取得します (ローカルに構成されている許可ホストだけであり、自動的にダウンロードされた許可ホストは含みません) |`Get-OMSGatewayAllowedHost` |
+| `Get-OMSGatewayAllowedHost` | |現在許可されているホストを取得します (ローカルに構成されている許可ホストだけであり、自動的にダウンロードされた許可ホストは含みません) |`Get-OMSGatewayAllowedHost` | 
 | `Add-OMSGatewayAllowedHost` |ホスト (必須) |許可リストにホストを追加します |`Add-OMSGatewayAllowedHost -Host www.test.com` |  
 | `Remove-OMSGatewayAllowedHost` |ホスト (必須) |許可リストからホストを削除します |`Remove-OMSGatewayAllowedHost`<br> `-Host www.test.com` |  
 | `Add-OMSGatewayAllowedClientCertificate` |サブジェクト (必須) |クライアント証明書のサブジェクトを許可リストに追加します |`Add-OMSGatewayAllowed`<br>`ClientCertificate` <br> `-Subject mycert` |  
@@ -264,7 +267,7 @@ OMS ゲートウェイの構成設定の更新に必要なタスクを実行す�
 | 104 |HTTP CONNECT コマンドではありません |
 | 105 |接続先サーバーが許可リストにないか、または接続先ポートがセキュリティで保護されたポート (443) ではありません <br> <br> ゲートウェイ サーバー上の MMA エージェントと、ゲートウェイと接続しているエージェントが、同じ Log Analytics ワークスペースに接続されていることを確認します。 |
 | 105 |エラー TcpConnection – 無効なクライアント証明書: CN=Gateway <br><br> 次のことを確認します。 <br>    <br> &#149; バージョン番号 1.0.395.0 以降のゲートウェイを使っていること。 <br> &#149; ゲートウェイ サーバー上の MMA エージェントと、ゲートウェイと接続しているエージェントが、同じ Log Analytics ワークスペースに接続されていること。 |
-| 106 |TLS セッションが疑わしくて拒否されたすべての理由 |
+| 106 |OMS ゲートウェイは、TLS 1.0、1.1、1.2 のみをサポートします。  SSL はサポートされません。 サポートされていない TLS または SSL プロトコルのバージョンについては、OMS ゲートウェイによってイベント ID 106 が生成されます。|
 | 107 |TLS セッションが確認されました |
 
 **収集されるパフォーマンス カウンター**
@@ -289,4 +292,4 @@ Azure Portal にサインインすると、OMS ゲートウェイまたは他の
 また、[Microsoft Azure フィードバック フォーラム](https://feedback.azure.com/forums/267889)では、OMS や Log Analytics についてフィードバックすることもできます。
 
 ## <a name="next-steps"></a>次のステップ
-* [データ ソースを追加](log-analytics-data-sources.md)し、OMS ワークスペース内の接続されたソースからデータを収集して OMS リポジトリに格納します。
+* [データ ソースを追加](log-analytics-data-sources.md)し、Log Analytics ワークスペース内の接続されたソースからデータを収集して Log Analytics リポジトリに格納します。

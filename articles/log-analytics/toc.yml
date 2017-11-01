@@ -128,6 +128,8 @@
               href: log-analytics-view-designer-tiles.md
             - name: 視覚化パーツのリファレンス
               href: log-analytics-view-designer-parts.md
+            - name: フィルター
+              href: log-analytics-view-designer-filters.md
         - name: Power BI
           href: log-analytics-powerbi.md
     - name: アラートを作成する

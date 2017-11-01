@@ -9,20 +9,23 @@ editor: jasonwhowell
 ms.custom: mvc
 ms.service: postgresql
 ms.topic: overview
-ms.date: 08/01/2017
-ms.openlocfilehash: 0dba4db0ae62a4f7e8440e80e830e5f64f5b49e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/20/2017
+ms.openlocfilehash: 5b5da758e966cc5ca536d7b291be74409f02ca73
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Azure Database for PostgreSQL とは
 
 Azure Database for PostgreSQL は、オープン ソースの [PostgreSQL](https://www.postgresql.org/) データベース エンジンのコミュニティ バージョンに基づいて開発者向けに構築された、Microsoft Cloud のリレーショナル データベース サービスです。 このサービスは、パブリック プレビューの段階です。 Azure Database for PostgreSQL には、次の特長があります。
-- さまざまなサービス レベルで予測可能なパフォーマンス
-- アプリケーションのダウンタイムを伴わない動的スケーラビリティ
-- 組み込みの高可用性
-- データ保護
+
+- 追加コストなしの組み込みの高可用性。
+- 包括的な従量課金料金を使用した、予測可能なパフォーマンス。
+- 数秒以内のすばやいスケール。
+- 保存中や移動中の機密データのキュリティ保護。
+- 自動バックアップと最大 35 日間のポイントインタイム リストア。
+- エンタープライズグレードのセキュリティとコンプライアンス。
 
 これらすべての機能は、ほとんど管理を必要とせず、いずれも追加費用なしで利用することができます。 これらの機能を使用すると、貴重な時間とリソースを仮想マシンとインフラストラクチャの管理に奪われることなく、迅速なアプリケーション開発や、製品化に要する時間の短縮化に専念することができます。 加えて、オープン ソースのツールとプラットフォームを自由に選んでアプリケーションを開発し続けることができるので、新たにスキルを身に付けなくても、ビジネスの現場で必要となるスピードと効率を高めることができます。 
 
@@ -31,16 +34,15 @@ Azure Database for PostgreSQL は、オープン ソースの [PostgreSQL](https
 - [Azure Portal を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-portal.md)
 - [Azure CLI を使用した Azure Database for PostgreSQL の作成](quickstart-create-server-database-azure-cli.md)
 
-Azure CLI と PowerShell の各種サンプルについては、以下のページをご覧ください。
+Azure CLI の各種サンプルについては、次のページを参照してください。
 
 - [Azure Database for PostgreSQL 用 Azure CLI サンプル](./sample-scripts-azure-cli.md)
 
-## <a name="adjust-performance-and-scale-without-downtime"></a>ダウンタイムなしでのパフォーマンスの調整とスケール
-
-Azure Database for PostgreSQL サービスには現在、Basic と Standard の 2 つのサービス レベルがあります。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、サービス レベルごとに[異なるレベルのパフォーマンス、IOPS 保証、機能](concepts-service-tiers.md)を提供しています。 最初は月数ドルの小規模サーバーでアプリを構築し、後でソリューションのニーズに合わせていつでも、手動またはプログラムでサービス レベルの[パフォーマンス レベルを変更](scripts/sample-scale-server-up-or-down.md)することができます。 その際に、アプリケーションにも顧客にもダウンタイムは発生しません。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができ、必要なときに必要な分のリソースにのみ課金されます。
+## <a name="adjust-performance-and-scale-within-seconds"></a>数秒以内でのパフォーマンスの調整とスケール
+プレビューでは、Azure Database for MySQL サービスには、Basic と Standard の 2 つのサービス レベルがあります。 軽量のデータベース ワークロードから重量のデータベース ワークロードに至るまでサポートできるように、レベルごとに異なるパフォーマンスと機能 を提供しています。 最初は月数ドルの小規模データベースでアプリを構築し、後から実際のソリューションのニーズに応じて、スケールを調整することができます。 動的なスケーラビリティにより、データベースは変化の激しいリソース要件に透過的に対処することができます。 必要なときに必要な分のリソースにのみ課金されます。 詳細については、[価格レベル](concepts-service-tiers.md)に関するページを参照してください。
 
 ## <a name="monitoring-and-alerting"></a>監視とアラート
-スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みのパフォーマンス監視機能およびアラート機能と、コンピューティング ユニットに基づくパフォーマンス評価とを組み合わせて使用してください。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、コンピューティング ユニットのスケールアップまたはスケールダウンの影響をすばやく評価することができます。 詳細については、「[Azure Database for PostgreSQL options and performance: Understand what's available in each service tier (Azure Database for PostgreSQL のオプションとパフォーマンス: 各サービス レベルで使用できる内容について理解する)](./concepts-service-tiers.md)」を参照してください。
+スケールを調整するときに、適切なパフォーマンス レベルはどのようにして見極めればよいのでしょうか。 組み込みのパフォーマンス監視機能およびアラート機能と、コンピューティング ユニットに基づくパフォーマンス評価とを組み合わせて使用してください。 これらのツールを使用すると、現在または今後のパフォーマンスのニーズに基づいて、コンピューティング ユニットのスケールアップまたはスケールダウンの影響をすばやく評価することができます。 詳細については、[アラート](howto-alert-on-metric.md)に関するページを参照してください。
 
 ## <a name="keep-your-app-and-business-running"></a>アプリケーションとビジネスの継続的な稼働
 Microsoft が管理するデータセンターのグローバル ネットワークによって強化された、Azure の業界をリードする可用性 99.99% (プレビューでは利用できません) のサービス レベル アグリーメント (SLA) により、アプリケーションの 24 時間 365 日の継続的な稼働が可能になります。 すべての Azure Database for PostgreSQL サーバーで、組み込みのセキュリティ、フォールト トレランス、データ保護を利用できます。これらは、本来なら自身で購入または設計し、構築、管理する必要があります。 Azure Database for PostgreSQL では、サービス レベルごとに、包括的な一連のビジネス継続性に関する機能とオプションが用意されており、これらを使用すると、稼働させてその状態を維持することができます。 [ポイントインタイム リストア](howto-restore-server-portal.md)を使用すると、データベースを 35 日間分さかのぼって以前の状態に戻すことができます。 さらに、データベースをホストしているデータセンターで障害が発生した場合は、最新のバックアップの geo 冗長コピーからデータベースを復元することができます。

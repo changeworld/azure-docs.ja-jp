@@ -12,62 +12,71 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 10/11/2017
 ms.author: bwren
-ms.openlocfilehash: 3cc8b5c5394a031575ad0a840f57ee5e97012c17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f27f038e0507270c0bfe200cb8c86622ebac5372
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="computer-groups-in-log-analytics-log-searches"></a>Log Analytics のログ検索におけるコンピューター グループ
 
->[!NOTE]
-> この記事では、現行の Log Analytics クエリ言語によるコンピューター グループの使用について説明しています。    ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、コンピューター グループの動作が異なります。  新しいクエリ言語における構文や動作の違いについては、この記事の注意書きに記載しています。  
-
-
-Log Analytics では、コンピューター グループを使用して、[ログ検索](log-analytics-log-searches.md)の範囲を特定のコンピューターの集合に限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログの検索に含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
+Log Analytics では、コンピューター グループを使用して、[ログ検索](log-analytics-log-search-new.md)の範囲を特定のコンピューターの集合に限定することができます。  それぞれのグループには、自分で定義したクエリを使用するか、さまざまなソースからグループをインポートすることでコンピューターを追加します。  そのグループをログの検索に含めると、対応するグループ内のコンピューターと一致するレコードに検索結果が限定されます。
 
 ## <a name="creating-a-computer-group"></a>コンピューター グループの作成
 Log Analytics のコンピューター グループは、以下の表に示した方法のいずれかで作成できます。  それぞれの方法について、以降のセクションで詳しく説明します。 
 
 | メソッド | Description |
 |:--- |:--- |
-| ログ検索 |一連のコンピューターを返すログ検索を作成し、その結果をコンピューター グループとして保存します。 |
+| ログ検索 |コンピューターの一覧を返すログ検索を作成します。 |
 | Log Search API |ログ検索の結果に基づいてプログラムからコンピューター グループを作成するには、Log Search API を使用します。 |
 | Active Directory |Active Directory ドメインに属しているエージェント コンピューターのグループ メンバーシップを自動的にスキャンし、セキュリティ グループごとのグループを Log Analytics に作成します。 |
-| WSUS |WSUS のサーバーまたはクライアントを自動的にスキャンして WSUS の対象グループを取得し、それぞれのグループを Log Analytics に作成します。 |
+| 構成マネージャー | System Center Configuration Manager からコレクションをインポートし、各々の Log Analytics でグループを作成します。 |
+| Windows Server Update Services |WSUS のサーバーまたはクライアントを自動的にスキャンして WSUS の対象グループを取得し、それぞれのグループを Log Analytics に作成します。 |
 
 ### <a name="log-search"></a>ログ検索
-ログ検索から作成されたコンピューター グループには、定義した検索クエリによって返されたすべてのコンピューターが含まれています。  このクエリは、コンピューター グループを使用するたびに実行されます。そうすることで、グループの作成以降に行われた変更が反映されます。
+ログ検索で作成されたコンピューター グループには、定義したクエリによって返されたすべてのコンピューターが含まれます。  このクエリは、コンピューター グループを使用するたびに実行されます。そうすることで、グループの作成以降に行われた変更が反映されます。  
 
-ログ検索からコンピューター グループを作成するには、次の手順に従います。
+コンピューター グループにはどのクエリでも使用できますが、クエリは `distinct Computer` を使用して明確な一連のコンピューターを返す必要があります。  コンピューター グループに使用できる一般的な検索の例を次に示します。
 
-1. 一連のコンピューターを返す[ログ検索を作成](log-analytics-log-searches.md)します。  この検索は、クエリの中で **Distinct Computer** や **measure count() by Computer** を使用することによって重複を除外した一連のコンピューターを返す必要があります。  
+    Heartbeat | where Computer contains "srv" | distinct Computer
+
+次の表では、コンピューター グループを定義するプロパティについて説明しています。
+
+| プロパティ | Description |
+|:---|:---|
+| 表示名   | ポータルに表示する検索の名前。 |
+| カテゴリ       | ポータル内で検索を整理するためのカテゴリ。 |
+| クエリ          | コンピューター グループのクエリ。 |
+| 関数のエイリアス | クエリ内でコンピューター グループを識別するのに使用される一意のエイリアス。 |
+
+Azure Portal でログ検索からコンピューター グループを作成するには、次の手順に従います。
+
+2. **[ログ検索]** を開いて、画面の上部の **[保存された検索]** をクリックします。
+3. **[追加]** をクリックして、コンピューター グループの各プロパティの値を指定します。
+4. **[このクエリを次のコンピューター グループとして保存します]** を選択して **[OK]** をクリックします。
+
+
+OMS Portal でログ検索からコンピューター グループを作成するには、次の手順に従います。
+
+1. **[ログ検索]** を開いて、コンピューター グループのログ検索を作成します。  
 2. 画面上部にある **[保存]** ボタンをクリックします。
 3. **[このクエリを次のコンピューター グループとして保存します]** で **[はい]** を選択します。
-4. グループの**名前**と**カテゴリ**を入力します。  同じ名前とカテゴリの検索が既に存在する場合、既存の検索を上書きするように求められます。  カテゴリが違えば同じ名前の検索が複数あってもかまいません。 
+5. コンピューター グループの各プロパティの値を指定します。 
 
-コンピューター グループとして保存できる検索の例を次に示します。
-
-    Computer="Computer1" OR Computer="Computer2" | distinct Computer 
-    Computer=*srv* | measure count() by Computer
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、新しいコンピューター グループを作成する手順を次のように変更します。
->  
-> - コンピューター グループを作成するためのクエリに `distinct Computer` を含める必要があります。  コンピューター グループを作成するクエリの例を次に示します。<br>`Heartbeat | where Computer contains "srv" | distinct Computer `
-> - 新しいコンピューター グループを作成するときは、名前だけでなくエイリアスを指定する必要があります。  以下に説明するクエリの中でコンピューター グループを使用するときに、そのエイリアスを使用します。  
+> ワークスペースで[従来の Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)をまだ使用している場合は、コンピューター グループを作成するのと同じ手順を使用しますが、従来のクエリ言語の構文を使用する必要があります。
+
 
 ### <a name="log-search-api"></a>Log Search API
-Log Search API を使って作成されたコンピューター グループは、[ログ検索] を使って作成された検索と同じです。
-
-Log Search API を使ったコンピューター グループ作成の詳細については、[「Log Analytics のログ検索 REST API」の「コンピューター グループ」](log-analytics-log-search-api.md#computer-groups)を参照してください。
+Log Search API を使って作成されたコンピューター グループは、[ログ検索] を使って作成された検索と同じです。  Log Search API を使ったコンピューター グループ作成の詳細については、[「Log Analytics のログ検索 REST API」の「コンピューター グループ」](log-analytics-log-search-api.md#computer-groups)を参照してください。
 
 ### <a name="active-directory"></a>Active Directory
 Active Directory グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされている、ドメインに参加しているすべてのコンピューターのグループ メンバーシップが分析されます。  Log Analytics には、Active Directory 内のセキュリティ グループごとにコンピューター グループが作成され、それぞれのコンピューターは、属しているセキュリティ グループに対応したコンピューター グループに追加されます。  このメンバーシップは絶えず 4 時間おきに更新されます。  
 
-Active Directory のセキュリティ グループをインポートするために必要な Log Analytics の構成は、Log Analytics の **[設定]** の **[コンピューター グループ]** メニューから行います。  **[Automation]** を選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
+Azure Portal の Log Analytics の **[詳細設定]** から Active Directory のセキュリティ グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[Active Directory]** の順に選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
 ![Active Directory からのコンピューター グループ](media/log-analytics-computer-groups/configure-activedirectory.png)
 
@@ -76,34 +85,48 @@ Active Directory のセキュリティ グループをインポートするた�
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
 WSUS グループのメンバーシップをインポートするように Log Analytics を構成した場合、OMS エージェントがインストールされているすべてのコンピューターについて、WSUS の対象グループのメンバーシップが分析されます。  クライアント側のターゲット指定方式を使用している場合、OMS に接続されていて、かつ WSUS の対象グループに属しているすべてのコンピューターのグループ メンバーシップが Log Analytics にインポートされます。 サーバー側のターゲット指定方式を使用している場合、グループ メンバーシップ情報を OMS にインポートするためには、WSUS サーバーに OMS エージェントがインストールされている必要があります。  このメンバーシップは絶えず 4 時間おきに更新されます。 
 
-Active Directory のセキュリティ グループをインポートするために必要な Log Analytics の構成は、Log Analytics の **[設定]** の **[コンピューター グループ]** メニューから行います。  **[Active Directory]** を選択し、**[コンピューターから Active Directory のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
+Azure Portal の Log Analytics の **[詳細設定]** から WSUS グループをインポートするように Log Analytics を構成します。  **[コンピューター グループ]**、**[WSUS]** の順に選択し、**[WSUS のグループ メンバーシップをインポートします]** を選択します。  さらに手動で構成する必要はありません。
 
-![Active Directory からのコンピューター グループ](media/log-analytics-computer-groups/configure-wsus.png)
+![WSUS のコンピューター グループ](media/log-analytics-computer-groups/configure-wsus.png)
 
 グループがインポートされると、検出されたグループ メンバーシップを持つコンピューターの数とインポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
 
+### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+Configuration Manager のコレクション メンバーシップをインポートするように Log Analytics を構成すると、各コレクションのコンピューター グループが作成されます。  コンピューター グループを最新に保つために、コレクション メンバーシップ情報は 3 時間ごとに取得されます。 
+
+Configuration Manager のコレクションをインポートするには、[Log Analytics に Configuration Manager を接続しておく](log-analytics-sccm.md)必要があります。  これで、Azure Portal の Log Analytics の **[詳細設定]** からインポートを構成できます。  **[コンピューター グループ]**、**[SCCM]** の順に選択して、**[Configuration Manager コレクション メンバーシップをインポートする]** を選択します。  さらに手動で構成する必要はありません。
+
+![SCCM のコンピューター グループ](media/log-analytics-computer-groups/configure-sccm.png)
+
+コレクションがインポートされると、検出されたコンピューターおよびグループ メンバーシップの数と、インポートされたグループの数がメニューに表示されます。  そのいずれかのリンクをクリックすると、**ComputerGroup** のレコードがこの情報と共に返されます。
+
 ## <a name="managing-computer-groups"></a>コンピューター グループの管理
-ログ検索または Log Search API から作成されたコンピューター グループは、Log Analytics の **[設定]** の **[コンピューター グループ]** メニューから表示できます。  **[削除]** 列の **[x]** をクリックすると、コンピューター グループが削除されます。  グループの **[メンバーの表示]** アイコンをクリックすると、グループのログ検索が実行されて、そのメンバーが返されます。 
+ログ検索または Log Search API から作成されたコンピューター グループは、Azure Portal の Log Analytics の **[詳細設定]** から表示できます。  **[コンピューター グループ]** を選択してから、**[保存済みグループ]** を選択します。  
+
+**[削除]** 列の **[x]** をクリックすると、コンピューター グループが削除されます。  グループの **[メンバーの表示]** アイコンをクリックすると、グループのログ検索が実行されて、そのメンバーが返されます。  コンピューター グループは変更できませんが、コンピューター グループを削除し、変更された設定で再度作成する必要があります。
 
 ![保存されているコンピューター グループ](media/log-analytics-computer-groups/configure-saved.png)
 
-グループを編集するには、同じ**カテゴリ**と**名前**で新しいグループを作成し、元のグループを上書きします。
 
 ## <a name="using-a-computer-group-in-a-log-search"></a>ログ検索におけるコンピューター グループの使用
-ログ検索の中で特定のコンピューター グループを参照するには、次の構文を使用します。  **Category** の指定は、同じ名前でカテゴリが異なるコンピューター グループが複数存在する場合にのみ必須となります。それ以外の場合は省略できます。 
+クエリでコンピューター グループを使用するには、エイリアスを関数として使用します。通常、次の構文となります。
 
-    $ComputerGroups[Category: Name]
+  `Table | where Computer in (ComputerGroup)`
 
-検索を実行するとまず、その対象となるコンピューター グループのメンバーが解決されます。  そのグループがログ検索から得られたものである場合は、その検索を実行してグループのメンバーを取得したうえで、最上位のログ検索が実行されます。
-
-一般にログ検索では、コンピューター グループが **IN** 句と組み合わせて使用されます。その例を次に示します。
-
-    Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]
+たとえば、以下を使用して、mycomputergroup という名前のコンピューター グループ内のコンピューターのみを対象とした UpdateSummary レコードを返すことができます。
+ 
+  `UpdateSummary | where Computer in (mycomputergroup)`
 
 >[!NOTE]
-> ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合、クエリの中でコンピューター グループを使用する際は、そのエイリアスを関数として扱います。その例を次に示します。
-> 
->  `UpdateSummary | where Computer in (mycomputergroup)`
+> ワークスペースで[従来の Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)をまだ使用している場合は、次の構文を使用して、ログ検索内のコンピューター グループを参照します。  **Category** の指定は省略可能で、同じ名前でカテゴリが異なるコンピューター グループが存在する場合にのみ必要となります。 
+>
+>    `$ComputerGroups[Category: Name]`
+>
+>一般にログ検索では、コンピューター グループが **IN** 句と組み合わせて使用されます。その例を次に示します。
+>
+>    `Type=UpdateSummary Computer IN $ComputerGroups[My Computer Group]`
+
+
 
 ## <a name="computer-group-records"></a>コンピューター グループのレコード
 Active Directory または WSUS から作成されたコンピューター グループでは、そのメンバーシップごとのレコードが OMS リポジトリに作成されます。  これらは **ComputerGroup** タイプのレコードとして、次の表に示すプロパティを持ちます。  ログ検索に基づくコンピューター グループにはレコードが作成されません。

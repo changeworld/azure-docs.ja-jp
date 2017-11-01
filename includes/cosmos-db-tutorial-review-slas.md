@@ -1,7 +1,11 @@
-アプリが起動し稼働すると、ビジネス継続性を確実にし、ユーザーのアクセスを監視して高可用性を確保することが必要になります。 Azure Portal を使用すれば、可用性、待機時間、スループット、およびコレクションの整合性を確認できます。 
+Azure ポータルでは、アカウント内のスループット、ストレージ、可用性、待機時間、およびリソースの整合性が監視されます。 これらのメトリックを簡単に見てみましょう。 
 
-[Azure Cosmos DB サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) に関連付けられているそれぞれのグラフは、SLA を満たすために必要なクォータと実際の使用量を示す情報を提供します。 この情報からデータベースのパフォーマンスを明確に把握できます。 ストレージ使用量や 1 分あたりの要求数などのその他のメトリックもポータルに含められます。
+1. ナビゲーション メニューで **[メトリック]** をクリックします。
 
-* Azure Portal の左側のウィンドウの **[監視]** で **[メトリック]** を選択します。
+   ![Azure Portal のメトリック](./media/cosmos-db-tutorial-review-slas/metrics.png)
 
-   ![todo アプリとサンプル データ](./media/cosmos-db-tutorial-review-slas/azure-cosmosdb-portal-metrics-slas.png)
+2. 各タブをクリックして、Azure Cosmos DB が提供するメトリックを確認します。 
+
+    [Azure Cosmos DB サービス レベル アグリーメント (SLA)](https://azure.microsoft.com/support/legal/sla/cosmos-db/) に関連付けられているそれぞれのグラフは、SLA のいずれかに違反していることを示す情報を提供します。 Azure Cosmos DB は、この一連のメトリックを使用して SLA の監視を透明化します。 
+
+   ![Azure Cosmos DB の一連のメトリック](./media/cosmos-db-tutorial-review-slas/metrics-suite.png)

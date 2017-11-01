@@ -15,7 +15,7 @@
       href: container-registry-get-started-powershell.md
 - name: Tutorials (チュートリアル)
   items:
-    - name: geo レプリケーション
+    - name: geo レプリケーション (プレビュー)
       items:
         - name: 1 - コンテナー レジストリを準備する
           href: container-registry-tutorial-prepare-registry.md

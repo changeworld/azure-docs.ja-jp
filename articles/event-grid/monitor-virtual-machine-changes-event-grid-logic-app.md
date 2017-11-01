@@ -11,11 +11,11 @@ ms.service: logic-apps
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 4d4c16860dbec10162797a13c8f9f57106abd17f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b9c7c9502be1a9d8681a304a6663c23c02c0298
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="monitor-virtual-machine-changes-with-azure-event-grid-and-logic-apps"></a>Azure Event Grid と Logic Apps で仮想マシンの変更を監視する
 
@@ -225,29 +225,26 @@ ms.lasthandoff: 10/11/2017
 
 これで、イベント グリッドでリソース イベントを監視し、そのイベントが発生したときに電子メールを送信するロジック アプリが作成および実行されました。 また、プロセスを自動化するワークフローを簡単に作成し、システムとクラウド サービスを統合できる方法を学習しました。
 
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-
-このチュートリアルではリソースを使用して、Azure サブスクリプションで料金を発生させるアクションを実行します。 このチュートリアルとテストが完了したら、料金を発生させたくないリソースは必ず無効にするか、削除してください。
-
-アプリを削除せずに、ロジック アプリの電子メールの実行と送信を停止できます。 ロジック アプリのメニューで、**[概要]** を選択します。 ツール バーで、**[無効にする]** を選択します。
-
-![ロジック アプリをオフにする](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
-
-## <a name="faq"></a>FAQ
-
-**Q**: イベント グリッドおよびロジック アプリでは、他にどのような仮想マシンの監視タスクを実行できますか。 </br>
-**A**: 他の構成変更を監視できます。次に例を示します。
+イベント グリッドとロジック アプリを使用して、次のような他の構成の変更を監視できます。
 
 * 仮想マシンによるロールベースのアクセス制御 (RBAC) 権限の取得。
 * ネットワーク インターフェイス (NIC) のネットワーク セキュリティ グループ (NSG) への変更。
 * 仮想マシンのディスクの追加または削除。
 * 仮想マシン NIC へのパブリック IP アドレスの割り当て。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+このチュートリアルではリソースを使用して、Azure サブスクリプションで料金を発生させるアクションを実行します。 このチュートリアルとテストが完了したら、料金を発生させたくないリソースは必ず無効にするか、削除してください。
+
+* 作業内容を削除することなくロジック アプリの実行を停止するには、アプリを無効にします。 ロジック アプリのメニューで、**[概要]** を選択します。 ツール バーで、**[無効にする]** を選択します。
+
+  ![ロジック アプリをオフにする](./media/monitor-virtual-machine-changes-event-grid-logic-app/turn-off-disable-logic-app.png)
+
+  > [!TIP]
+  > ロジック アプリのメニューが表示されない場合は、Azure ダッシュボードに戻り、ロジック アプリをもう一度開き直してください。
+
+* ロジック アプリを完全に削除するには、ロジック アプリのメニューから **[概要]** を選択します。 ツール バーで、**[削除]** を選択します。 ロジック アプリを削除することを確認し、**[削除]** を選択します。
+
 ## <a name="next-steps"></a>次のステップ
 
-* [Event Grid の概要](../event-grid/overview.md)
-* [Event Grid の概念](../event-grid/concepts.md)
-* [クイックスタート: Event Grid を使ったカスタム イベントの作成とルーティング](../event-grid/custom-event-quickstart.md)
-* [Event Grid イベント スキーマ](../event-grid/event-schema.md)
-* [Azure Logic Apps](../logic-apps/logic-apps-what-are-logic-apps.md)
-* [定義済みテンプレートを使用したロジック アプリ ワークフローの作成](../logic-apps/logic-apps-use-logic-app-templates.md)
+* [Event Grid を使ったカスタム イベントの作成とルーティング](../event-grid/custom-event-quickstart.md)

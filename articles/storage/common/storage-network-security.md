@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 09/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: de52e9cb32e28d2f40a56743ed759b5d5d0a63f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
@@ -44,7 +44,7 @@ Azure Storage に対して、REST や SMB などのすべてのネットワー�
 
 ネットワーク ルールが適用されると、そのルールはすべての要求に対して適用されます。  特定の IP アドレス サービスへのアクセスを許可する SAS トークンは、トークン所有者のアクセスを**制限**する働きをしますが、構成されているネットワーク ルール以上の新しいアクセスを許可しないでください。 
 
-仮想マシン ディスクのトラフィック (マウントとマウント解除、およびディスク IO を含む) はネットワーク ルールによって影響を**受けません**。  管理対象外のディスクのバックアップは、プレビュー中は保護されているストレージ アカウントに対してはサポートされていません。  ページ BLOB への REST アクセス (仮想マシン ディスクの使用) はネットワーク ルールによって保護されています。
+仮想マシン ディスクのトラフィック (マウントとマウント解除、およびディスク IO を含む) はネットワーク ルールによって影響を**受けません**。  ページ BLOB への REST アクセスはネットワーク ルールによって保護されています。
 
 従来のストレージ アカウントは、ファイアウォールおよび仮想ネットワークをサポート**していません**。
 
@@ -126,7 +126,7 @@ az storage account update --name "mystorageaccount" --resource-group "myresource
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. 新しいネットワーク ルールで仮想ネットワークへのアクセスを許可するには、[仮想ネットワーク] で、[既存を追加] をクリックして既存の仮想ネットワークとサブネットを選択し、*[追加]*をクリックします。  新しい仮想ネットワークを作成してアクセスを許可するには、*[新規追加]* をクリックして、新しい仮想ネットワークを作成するために必要な情報を入力し、*[作成]* をクリックします。
 
@@ -219,7 +219,7 @@ IP ネットワーク ルールでオンプレミスのネットワークから�
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. インターネット IP 範囲へのアクセスを許可するには、[ファイアウォール] の [アドレス範囲] に IP アドレスまたはアドレス範囲 (CIDR 形式) を入力します。
 5. IP ネットワーク ルールを削除するには、[...] をクリックしてルールのコンテキスト メニューを開き、[削除] をクリックします。
@@ -305,6 +305,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 |Azure HDInsight|Microsoft.HDInsight|クラスターのプロビジョニングおよびインストール  [詳細情報](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-hadoop-use-blob-storage)|
 |Azure のネットワーク|Microsoft.Networking|ネットワーク トラフィック ログの保存および分析  [詳細情報](https://docs.microsoft.com/en-us/azure/network-watcher/network-watcher-packet-capture-overview)|
 |Azure SQL Data Warehouse|Microsoft.Sql|データのインポートとエクスポート  [詳細情報](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-overview-load#load-from-azure-blob-storage)|
+|Azure Backup|Microsoft.RecoveryServices|非管理対象ディスクのバックアップと復元  [詳細情報](https://docs.microsoft.com/en-us/azure/backup/backup-introduction-to-azure-backup)|
 ||||
 
 ### <a name="storage-analytics-data-access"></a>ストレージ分析データ アクセス
@@ -315,7 +316,7 @@ az storage account network-rule remove --resource-group "myresourcegroup" --acco
 
 #### <a name="azure-portal"></a>Azure ポータル
 1. セキュリティで保護するストレージ アカウントを表示します。  
-2. **[Firewalls and virtual networks] \(ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
+2. **[Firewalls and virtual networks] (ファイアウォールおよび仮想ネットワーク)** という設定メニューをクリックします。
 3. "選択したネットワーク" からのアクセスを許可するように選択していることを確認します。
 4. [例外] で、許可する例外を選択します。
 5. *[保存]* をクリックして変更を保存します。

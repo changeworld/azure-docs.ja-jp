@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/31/2017
+ms.date: 10/11/2017
 ms.author: cherylmc
-ms.openlocfilehash: 55ccadfea55b8098ee58dcaef942f6ba54093665
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: be25e9ffab4fee79b8d9cc6c88c6ffb3e852af0d
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute 回線のピアリングの作成と変更を行う
 
@@ -39,97 +39,9 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。
+ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリング (Azure プライベート、Azure パブリックおよび Microsoft) を構成することができます。 ピアリングは任意の順序で構成することができます。 ただし、各ピアリングの構成は必ず一度に 1 つずつ完了するようにしてください。 ルーティング ドメインとピアリングの詳細については、[ExpressRoute のルーティング ドメイン](expressroute-circuit-peerings.md)に関する記事をご覧ください。
 
-## <a name="azure-private-peering"></a>Azure プライベート ピアリング
-
-このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
-
-### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
-
-1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。
-
-  ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
-
-  * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
-  * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
-  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
-  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用しないようにしてください。
-  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
-3. 次の例で示すように、Azure プライベート ピアリング行を選択します。
-
-  ![プライベート](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
-4. プライベート ピアリングを構成します。 次の図は構成例です。
-
-  ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
-
-  ![プライベート ピアリングを保存する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
-
-### <a name="to-view-azure-private-peering-details"></a>Azure プライベート ピアリングの詳細を表示するには
-
-ピアリングを選択して、Azure プライベート ピアリングのプロパティを表示することができます。
-
-![プライベート ピアリングを表示する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
-
-### <a name="to-update-azure-private-peering-configuration"></a>Azure プライベート ピアリングの構成を更新するには
-
-ピアリングの行を選択し、ピアリングのプロパティを変更できます。
-
-![プライベート ピアリングを更新する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
-
-### <a name="to-delete-azure-private-peering"></a>Azure プライベート ピアリングを削除するには
-
-ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
-
-![プライベート ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
-
-## <a name="azure-public-peering"></a>Azure パブリック ピアリング
-
-このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
-
-### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
-
-1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。
-
-  ![パブリック ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
-2. 回線用に Azure パブリック ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
-
-  * プライマリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
-  * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
-  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
-  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
-  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
-3. 次の図ように、Azure パブリック ピアリング行を選びます。
-
-  ![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
-4. パブリック ピアリングを構成します。 次の図は構成例です。
-
-  ![パブリック ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
-
-  ![パブリック ピアリングの構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
-
-### <a name="to-view-azure-public-peering-details"></a>Azure パブリック ピアリングの詳細を表示するには
-
-ピアリングを選択して、Azure パブリック ピアリングのプロパティを表示することができます。
-
-![パブリック ピアリングのプロパティを表示する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
-
-### <a name="to-update-azure-public-peering-configuration"></a>Azure パブリック ピアリング構成を更新するには
-
-ピアリングの行を選択し、ピアリングのプロパティを変更できます。
-
-![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
-
-### <a name="to-delete-azure-public-peering"></a>Azure パブリック ピアリングを削除するには
-
-ピアリングの構成を削除するには、次の例ように削除アイコンを選びます。
-
-![パブリック ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
-
-## <a name="microsoft-peering"></a>Microsoft ピアリング
+## <a name="msft"></a>Microsoft ピアリング
 
 このセクションでは、ExpressRoute 回線用の Microsoft ピアリング構成を作成、取得、更新、および削除します。
 
@@ -140,7 +52,9 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
 ### <a name="to-create-microsoft-peering"></a>Microsoft ピアリングを作成するには
 
-1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。
+[!INCLUDE [Premium](../../includes/expressroute-mspeering-premium-include.md)]
+
+1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Microsoft ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
 
   ![Microsoft ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
 2. 回路の Microsoft ピアリングを構成する 続行する前に、次の情報を確認してください。
@@ -174,23 +88,111 @@ ExpressRoute 回線用に 1 つ、2 つ、または 3 つすべてのピアリ�
 
   ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### <a name="to-view-microsoft-peering-details"></a>Microsoft ピアリングの詳細を表示するには
+### <a name="getmsft"></a>Microsoft ピアリングの詳細を表示するには
 
 ピアリングを選択して、Azure パブリック ピアリングのプロパティを表示することができます。
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft3.png)
 
-### <a name="to-update-microsoft-peering-configuration"></a>Microsoft ピアリング構成を更新するには
+### <a name="updatemsft"></a>Microsoft ピアリング構成を更新するには
 
 ピアリングの行を選択し、ピアリングのプロパティを変更できます。
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft7.png)
 
-### <a name="to-delete-microsoft-peering"></a>Microsoft ピアリングを削除するには
+### <a name="deletemsft"></a>Microsoft ピアリングを削除するには
 
 ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
 
 ![](./media/expressroute-howto-routing-portal-resource-manager/rmicrosoft4.png)
+
+## <a name="private"></a>Azure プライベート ピアリング
+
+このセクションでは、ExpressRoute 回線用の Azure プライベート ピアリング構成を作成、取得、更新、および削除します。
+
+### <a name="to-create-azure-private-peering"></a>Azure プライベート ピアリングを作成するには
+
+1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure プライベート ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
+
+  ![list](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+2. 回線用に Azure プライベート ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
+
+  * プライマリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
+  * セカンダリ リンク用の /30 サブネット。 サブネットを、仮想ネットワーク用に予約されたアドレス空間の一部にすることはできません。
+  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
+  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。 このピアリングではプライベート AS 番号を使用できます。 65515 を使用しないようにしてください。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+3. 次の例で示すように、Azure プライベート ピアリング行を選択します。
+
+  ![プライベート](./media/expressroute-howto-routing-portal-resource-manager/rprivate1.png)
+4. プライベート ピアリングを構成します。 次の図は構成例です。
+
+  ![プライベート ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
+
+  ![プライベート ピアリングを保存する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+
+### <a name="getprivate"></a>Azure プライベート ピアリングの詳細を表示するには
+
+ピアリングを選択して、Azure プライベート ピアリングのプロパティを表示することができます。
+
+![プライベート ピアリングを表示する](./media/expressroute-howto-routing-portal-resource-manager/rprivate3.png)
+
+### <a name="updateprivate"></a>Azure プライベート ピアリングの構成を更新するには
+
+ピアリングの行を選択し、ピアリングのプロパティを変更できます。
+
+![プライベート ピアリングを更新する](./media/expressroute-howto-routing-portal-resource-manager/rprivate2.png)
+
+### <a name="deleteprivate"></a>Azure プライベート ピアリングを削除するには
+
+ピアリングの構成を削除するには、次の図ように削除アイコンを選びます。
+
+![プライベート ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/rprivate4.png)
+
+## <a name="public"></a>Azure パブリック ピアリング
+
+このセクションでは、ExpressRoute 回線用の Azure パブリック ピアリング構成を作成、取得、更新、および削除します。
+
+### <a name="to-create-azure-public-peering"></a>Azure パブリック ピアリングを作成するには
+
+1. ExpressRoute 回線を構成します。 続行する前に、接続プロバイダーが回線を完全にプロビジョニングしていることを確認します。 接続プロバイダーが管理対象レイヤー 3 サービスを提供する場合は、Azure パブリック ピアリングを有効にするように接続プロバイダーに依頼できます。 その場合は、次のセクションにリストされている手順に従う必要はありません。 ただし、接続プロバイダーがルーティングを管理しない場合は、回線を作成した後、次の手順を使用して、構成を続行します。
+
+  ![パブリック ピアリングを一覧表示する](./media/expressroute-howto-routing-portal-resource-manager/listprovisioned.png)
+2. 回線用に Azure パブリック ピアリングを構成します。 次の手順に進む前に、以下のものがそろっていることを確認します。
+
+  * プライマリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
+  * セカンダリ リンク用の /30 サブネット。 これは有効なパブリック IPv4 プレフィックスである必要があります。
+  * このピアリングを確立するための有効な VLAN ID。 回線の他のピアリングが同じ VLAN ID を使用しないようにしてください。
+  * ピアリングの AS 番号。 2 バイトと 4 バイトの AS 番号の両方を使用することができます。
+  * **省略可能 -** 使うものを 1 つ選ぶ場合は、MD5 ハッシュ。
+3. 次の図ように、Azure パブリック ピアリング行を選びます。
+
+  ![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic1.png)
+4. パブリック ピアリングを構成します。 次の図は構成例です。
+
+  ![パブリック ピアリングを構成する](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+5. すべてのパラメーターを指定したら、構成を保存します。 構成が正常に受け付けられると、次のような画面が表示されます。
+
+  ![パブリック ピアリングの構成を保存する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+
+### <a name="getpublic"></a>Azure パブリック ピアリングの詳細を表示するには
+
+ピアリングを選択して、Azure パブリック ピアリングのプロパティを表示することができます。
+
+![パブリック ピアリングのプロパティを表示する](./media/expressroute-howto-routing-portal-resource-manager/rpublic3.png)
+
+### <a name="updatepublic"></a>Azure パブリック ピアリング構成を更新するには
+
+ピアリングの行を選択し、ピアリングのプロパティを変更できます。
+
+![パブリック ピアリング行を選ぶ](./media/expressroute-howto-routing-portal-resource-manager/rpublic2.png)
+
+### <a name="deletepublic"></a>Azure パブリック ピアリングを削除するには
+
+ピアリングの構成を削除するには、次の例ように削除アイコンを選びます。
+
+![パブリック ピアリングを削除する](./media/expressroute-howto-routing-portal-resource-manager/rpublic4.png)
 
 ## <a name="next-steps"></a>次のステップ
 

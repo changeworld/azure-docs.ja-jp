@@ -6,13 +6,13 @@ author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: article
-ms.date: 09/11/2017
+ms.date: 10/20/2017
 ms.author: babanisa
-ms.openlocfilehash: 358c1f4bca2ced207caf599db2fb1453ca8bc41e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e798a1e751cb9e789bc479a6f842fb7f8f703bbf
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="an-introduction-to-azure-event-grid"></a>Azure Event Grid の概要
 
@@ -25,8 +25,6 @@ Azure Event Grid では、イベント ベースのアーキテクチャを備�
 この記事では、Azure Event Grid の概要を示します。 Event Grid の使用をすぐに開始するには、「[Azure Event Grid を使ったカスタム イベントの作成とルーティング](custom-event-quickstart.md)」を参照してください。
 
 ![Event Grid 機能モデル](./media/overview/event-grid-functional-model.png)
-
-現在、Blob Storage は、発行元として公開されていません。 ストレージ BLOB のイベントに対応するために、プレビュー リリースの登録をする必要があります。 詳しくは、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする (プレビュー)](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)」をご覧ください。
 
 ## <a name="concepts"></a>概念
 
@@ -64,6 +62,7 @@ Azure では、発行元およびハンドラーの両方を含む、多数の�
 * リソース グループ (管理操作)
 * Azure サブスクリプション (管理操作)
 * Event Hubs
+* ストレージ BLOB
 * カスタム トピック
 
 今年は、他の Azure サービスが追加される予定です。
@@ -118,6 +117,8 @@ Event Grid のコストは 100万回の処理ごとに 0.60 ドル (プレビュ
 
 ## <a name="next-steps"></a>次のステップ
 
+* [Storage Blob のイベントをルーティングする](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
+  Event Grid を使用して Storage Blob のイベントに応答します。
 * [カスタム イベントを作成してサブスクライブする](custom-event-quickstart.md)  
   Azure Event Grid のクイックスタートを使用して、任意のエンドポイントへの独自のカスタム イベントの送信をすぐに始めることができます。
 * [Logic Apps をイベント ハンドラーとして使用する](monitor-virtual-machine-changes-event-grid-logic-app.md)  
