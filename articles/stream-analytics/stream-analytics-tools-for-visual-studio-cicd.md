@@ -1,5 +1,5 @@
 ---
-title: "Stream Analytics Visual Studio Tools を使用して継続的インテグレーションおよびデプロイ プロセスを設定する方法 | Microsoft Docs"
+title: "Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定 | Microsoft Docs"
 description: "Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定のチュートリアル"
 keywords: visual studio, NuGet, DevOps, CI/CD
 documentationcenter: 
@@ -15,55 +15,59 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 9/27/2017
 ms.author: sujie
-ms.openlocfilehash: 947266dc94babab21556da26d8cc8c917cf81c12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13fe5e37424704bd5b948d3a6629c28b320025c4
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="use-stream-analytics-visual-studio-tools-to-set-up-the-continuous-integration-and-deployment-process"></a>Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定
-このチュートリアルでは、Stream Analytics Visual Studio Tools を使用して継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
+# <a name="use-stream-analytics-visual-studio-tools-to-set-up-a-continuous-integration-and-deployment-process"></a>Stream Analytics Visual Studio Tools を使用した継続的インテグレーションおよびデプロイ プロセスの設定
+このチュートリアルでは、Azure Stream Analytics Visual Studio Tools を使用して継続的インテグレーションおよびデプロイ プロセスを設定する方法を説明します。
 
-最新バージョン (2.3.0000.0 以降) の [Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio)では、**MSBuild** のサポートが追加されています。 
+最新バージョン (2.3.0000.0 以降) の [Visual Studio の Stream Analytics ツール](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio)では、MSBuild のサポートが追加されています。
 
 新しくリリースされた NuGet パッケージ [Microsoft.Azure.Stream Analytics.CICD](https://www.nuget.org/packages/Microsoft.Azure.StreamAnalytics.CICD/) もあります。 これは、Stream Analytics Visual Studio プロジェクトの継続的インテグレーションおよびデプロイ プロセスをサポートする MSBuild、ローカル実行、デプロイ ツールを提供します。 
 > [!NOTE] 
-NuGet パッケージは、Visual Studio の Stream Analytics ツールのバージョン 2.3.0000.0 以降でのみ使用できます。 以前のバージョンの Visual Studio Tools で作成されたプロジェクトがある場合は、バージョン 2.3.0000.0 以降で開き、保存します。 そうすると、新機能が有効になります。 
+NuGet パッケージは、Visual Studio の Stream Analytics ツールのバージョン 2.3.0000.0 以降でのみ使用できます。 以前のバージョンの Visual Studio Tools で作成されたプロジェクトがある場合は、バージョン 2.3.0000.0 以降で開き、保存します。 その後、新しい機能が有効になります。 
 
-[Visual Studio の Stream Analytics ツールの使用方法](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio)
+[Visual Studio の Stream Analytics ツールの使用方法](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-tools-for-visual-studio)を確認してください。
 
 ## <a name="msbuild"></a>MSBuild
-標準の Visual Studio MSBuild エクスペリエンスのように、プロジェクトを作成するには、プロジェクトを右クリックして **[ビルド]** を選択するか、コマンド ラインから NuGet パッケージの **MSBuild** を使用します。
+標準の Visual Studio MSBuild エクスペリエンスと同様に、プロジェクトをビルドするオプションは 2 つあります。 プロジェクトを右クリックし、次に **[ビルド]** を選択できます。 コマンド ラインから NuGet パッケージの **MSBuild** を使用することもできます。
 ```
 ./build/msbuild /t:build [Your Project Full Path] /p:CompilerTaskAssemblyFile=Microsoft.WindowsAzure.StreamAnalytics.Common.CompileService.dll  /p:ASATargetsFilePath="[NuGet Package Local Path]\build\StreamAnalytics.targets"
 
 ```
 
-Stream Analytics Visual Studio プロジェクトが正常にビルドされると、**bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つのAzure Resource Manager テンプレート ファイルが生成されます。 
+Stream Analytics Visual Studio プロジェクトが正常にビルドされると、**bin/[Debug/Retail]/Deploy** フォルダーに次の 2 つの Azure Resource Manager テンプレート ファイルが生成されます。 
 
-Azure Resource Manager テンプレート ファイル。
-*       [ProjectName].JobTemplate.json 
+*  Resource Manager テンプレート ファイル
 
-Azure Resource Manager パラメーター ファイル。
-*       [ProjectName].JobTemplate.parameters.json   
+       [ProjectName].JobTemplate.json 
 
-parameters.json ファイルの既定のパラメーターは、Visual Studio プロジェクトの設定から取得されます。 他の環境にデプロイする場合は、パラメーターを適宜置換するだけです。 
+*  Resource Manager パラメーター ファイル
+
+       [ProjectName].JobTemplate.parameters.json   
+
+parameters.json ファイルの既定のパラメーターは、Visual Studio プロジェクトの設定から取得されます。 別の環境にデプロイする場合は、パラメーターを適宜置換します。
+
 > [!NOTE] 
-すべての資格情報の既定値は、すべて null 値に設定されます。 これらはクラウドにデプロイする前に設定する**必要があります**。
+すべての資格情報の既定値は、null 値に設定されます。 クラウドにデプロイする前に、値を設定する "*必要があります*"。
+
 ```json
 "Input_EntryStream_sharedAccessPolicyKey": {
       "value": null
     },
 ```
-詳しくは、[Azure Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする方法](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)に関する記事と[オブジェクトを Azure Resource Manager テンプレートのパラメーターとして使用する方法](https://docs.microsoft.com/en-us/azure/architecture/building-blocks/extending-templates/objects-as-parameters)に関する記事をご覧ください。
+[Resource Manager テンプレート ファイルと Azure PowerShell を使用してデプロイする](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-template-deploy)方法を確認してください。 [Resource Manager テンプレートのパラメーターとしてオブジェクトを使用する](https://docs.microsoft.com/en-us/azure/architecture/building-blocks/extending-templates/objects-as-parameters)方法を確認してください。
 
 
 ## <a name="command-line-tool"></a>コマンドライン ツール
 
 ### <a name="build-the-project"></a>プロジェクトのビルド
-NuGet パッケージには、**SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的配信のプロセスで使用できる任意のマシンでのプロジェクトのビルド、ローカル テストをサポートします。 
+NuGet パッケージには、**SA.exe** というコマンドライン ツールがあります。 継続的インテグレーションと継続的配信のプロセスで使用できる任意のマシンでのプロジェクトのビルドとローカル テストをサポートします。 
 
-デプロイ ファイルは、既定では現在のディレクトリに配置されます。 -OutputPath パラメーターで出力パスを指定できます。
+デプロイ ファイルは、既定では現在のディレクトリに配置されます。 次の -OutputPath パラメーターを使用して出力パスを指定できます。
 
 ```
 ./tools/SA.exe build -Project [Your Project Full Path] [-OutputPath <outputPath>] 
@@ -77,16 +81,15 @@ NuGet パッケージには、**SA.exe** というコマンドライン ツー�
 localrun -Project [ProjectFullPath]
 ```
 
-### <a name="generate-job-definition-file-to-use-with-stream-analytics-power-shell"></a>Stream Analytics Power Shell で使用するジョブ定義ファイルを生成します。
+### <a name="generate-a-job-definition-file-to-use-with-the-stream-analytics-powershell-api"></a>Stream Analytics PowerShell API で使用するジョブ定義ファイルを生成する
 
-*arm* コマンドは、ビルドで生成されたジョブ テンプレートとジョブ テンプレート パラメーター ファイルを引数に取ります。 次に、Stream Analytics PowerShell API で使用できるジョブ定義 JSON ファイルに結合します。
+*arm* コマンドは、ビルドで生成されたジョブ テンプレートとジョブ テンプレート パラメーター ファイルを引数に取ります。 次に、Stream Analytics PowerShell API で使用できるジョブ定義 JSON ファイルにこれらを結合します。
 
 ```
 arm -JobTemplate <templateFilePath> -JobParameterFile <jobParameterFilePath> [-OutputFile <asaArmFilePath>]
 ```
-
+例:
 ```
-Example
 ./tools/SA.exe arm -JobTemplate "ProjectA.JobTemplate.json" -JobParameterFile "ProjectA.JobTemplate.parameters.json" -OutputFile "JobDefinition.json" 
 ```
 

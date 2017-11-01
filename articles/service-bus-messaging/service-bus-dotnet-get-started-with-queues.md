@@ -12,13 +12,13 @@ ms.devlang: tbd
 ms.topic: hero-article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 06/26/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 99a377db6341d90d263b98e14227db61dd9beabd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c381489c3cb5b42505d0cdf01618edb370793304
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="get-started-with-service-bus-queues"></a>Service Bus キューの使用
 [!INCLUDE [service-bus-selector-queues](../../includes/service-bus-selector-queues.md)]
@@ -56,7 +56,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
 
 ### <a name="add-the-service-bus-nuget-package"></a>Service Bus NuGet パッケージの追加
 1. 新しく作成したプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。
-2. **[参照]** タブをクリックし、**Microsoft Azure Service Bus** を検索して、**[WindowsAzure.ServiceBus]** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
+2. **[参照]** タブをクリックし、**WindowsAzure.ServiceBus** を検索して、**[WindowsAzure.ServiceBus]** の項目を選択します。 **[インストール]** をクリックし、インストールが完了したら、このダイアログ ボックスを閉じます。
    
     ![Select a NuGet package][nuget-pkg]
 
@@ -115,7 +115,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
         }
     }
     ```
-3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ブレードでキューの名前をクリックしてください。 **[要点]** ブレードが表示されます。 **[アクティブなメッセージ数]** の値が 1 になっていることに注目してください。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 1 ずつ増えます。 アプリからキューにメッセージを追加するたびにキューの最新のサイズも増えている点に注目してください。
+3. プログラムを実行し、Azure Portal を確認します。名前空間の **[概要]** ウィンドウでキューの名前をクリックしてください。 **[要点]** ウィンドウが表示されます。 **[アクティブなメッセージ数]** の値が 1 になっていることに注目してください。 この値は、メッセージを取得しないまま送信側アプリケーションを実行するたびに 1 ずつ増えます。 アプリからキューにメッセージを追加するたびにキューの最新のサイズも増えている点に注目してください。
    
       ![メッセージ サイズ][queue-message]
 
@@ -178,7 +178,7 @@ Visual Studio を起動し、新しい**コンソール アプリ (.NET Framewor
    
     ![Queue length][queue-message-receive]
 
-お疲れさまでした。 これで、キューを作成し、メッセージを送信して、メッセージを受信しました。
+ご利用ありがとうございます。 ここではキューを作成して、そこにメッセージを送信したり、同じキューからメッセージを受信したりしました。
 
 ## <a name="next-steps"></a>次のステップ
 
@@ -189,4 +189,4 @@ Service Bus メッセージングのさらに高度な機能を紹介する[サ�
 [nuget-pkg]: ./media/service-bus-dotnet-get-started-with-queues/nuget-package.png
 [queue-message]: ./media/service-bus-dotnet-get-started-with-queues/queue-message.png
 [queue-message-receive]: ./media/service-bus-dotnet-get-started-with-queues/queue-message-receive.png
-[github-samples]: https://github.com/Azure-Samples/azure-servicebus-messaging-samples
+

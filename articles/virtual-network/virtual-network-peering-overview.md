@@ -14,42 +14,36 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: narayan;anavin
-ms.openlocfilehash: 082cd8a6cf50f76c89fe5995047396c734f83034
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f055f1e87e73733b3f2ecfa87e4d372ade8a7868
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="virtual-network-peering"></a>仮想ネットワーク ピアリング
 
-[Azure の仮想ネットワーク (VNet)](virtual-networks-overview.md) は Azure 内の独自のプライベート ネットワーク空間であり、VNet を使って Azure リソース同士を安全に接続することができます。
-
-仮想ネットワーク ピアリングにより、仮想ネットワーク間をシームレスに接続できます。 ピアリングされた仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワーク内の仮想マシンは、互いに直接通信することができます。
-ピアリングされた仮想ネットワークに存在する仮想マシン間のトラフィックは Microsoft のバックボーン インフラストラクチャを介して、*プライベート* IP アドレスのみを使った同一仮想ネットワーク内の仮想マシン間のトラフィックと同じようにルーティングされます。
-
->[!IMPORTANT]
-> 異なる Azure リージョン間での仮想ネットワーク ピアリングも可能です。 現在、この機能はプレビュー段階にあります。 [プレビュー版を利用するにはサブスクリプションを登録](virtual-network-create-peering.md)してください。 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。
->
+仮想ネットワーク ピアリングを使用すると、2 つの Azure [仮想ネットワーク](virtual-networks-overview.md)間をシームレスに接続できます。 ピアリングされた仮想ネットワークは、接続において、見かけ上 1 つのネットワークとして機能します。 ピアリングされた仮想ネットワークに存在する仮想マシン間のトラフィックは Microsoft のバックボーン インフラストラクチャを介して、"*プライベート*" IP アドレスのみを使った同一仮想ネットワーク内の仮想マシン間のトラフィックと同じようにルーティングされます。 
 
 仮想ネットワーク ピアリングを使う利点をいくつか挙げます。
 
-* 仮想ネットワーク ピアリングを介したトラフィックは完全にプライベートである。 Microsoft のバックボーン ネットワークを通るので、パブリックのインターネットやゲートウェイを経由することはありません。
+* ピアリングされた仮想ネットワーク間のネットワーク トラフィックはプライベートである。 仮想ネットワーク間のトラフィックは、Microsoft のバックボーン ネットワーク上で保持されます。 仮想ネットワーク間の通信では、パブリック インターネット、ゲートウェイ、暗号化が必要ありません。
 * 異なる仮想ネットワーク内のリソース間で、待機時間の短い広帯域幅の接続が可能である。
-* ピアリングされた仮想ネットワーク間で互いのリソースを利用できる。
-* 仮想ネットワーク ピアリングは、Azure サブスクリプション間、デプロイメント モデル間、および Azure リージョン間 (プレビュー) でデータを転送するのに役立つ。
-* Azure Resource Manager を使って作成された仮想ネットワークをピアリングできることに加え、Resource Manager を使って作成された仮想ネットワークとクラシック デプロイメント モデルを使って作成された仮想ネットワークをピアリングできる。 Azure の 2 つのデプロイメント モデルの違いの詳細については、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。
+* 仮想ネットワークがピアリングされると、ある仮想ネットワーク内のリソースは別の仮想ネットワーク内のリソースとの通信できる。
+* Azure サブスクリプション間、デプロイメント モデル間、および Azure リージョン間 (プレビュー) でデータを転送できる。
+* Azure Resource Manager を使って作成された仮想ネットワークをピアリングできることに加え、Resource Manager を使って作成された仮想ネットワークとクラシック デプロイメント モデルを使って作成された仮想ネットワークをピアリングできる。 Azure のデプロイメント モデルについて詳しくは、[Azure のデプロイメント モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事をご覧ください。
+* ピアリングの作成時またはピアリングの作成後に、いずれの仮想ネットワークのリソースにもダウンタイムは発生しない。
 
 ## <a name="requirements-constraints"></a>要件と制約
 
-* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 [プレビュー版を利用するにはサブスクリプションを登録](virtual-network-create-peering.md)してください。
+* 同一リージョン内の仮想ネットワーク ピアリングの機能は一般公開されています。 異なるリージョン間での仮想ネットワーク ピアリングは現在プレビュー段階にあり、米国中西部、カナダ中部、および米国西部 2 で提供されています。 プレビュー版を利用するには[サブスクリプションを登録](virtual-network-create-peering.md)してください。
     > [!WARNING]
-    > このシナリオで作成された仮想ネットワーク ピアリングでは、一般公開リリースのシナリオと同じレベルの可用性と信頼性が得られないことがあります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
+    > リージョン間で作成された仮想ネットワーク ピアリングでは、一般公開リリースにおけるピアリングと同じレベルの可用性と信頼性が得られない可能性があります。 また、一部の機能が制限されている場合があります。一部の Azure リージョンではご利用いただけない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
 
 * ピアリングする仮想ネットワークの IP アドレス空間は、重複していてはなりません。
-* 仮想ネットワークが別の仮想ネットワークとピアリングされた後で、仮想ネットワークに対してアドレス空間の追加または削除を実行することはできません。
+* 仮想ネットワークが別の仮想ネットワークとピアリングされた後に、仮想ネットワークのアドレス空間に対してアドレス範囲の追加または削除を実行することはできません。 ピアリングされた仮想ネットワークのアドレス空間にアドレス範囲を追加する必要がある場合は、ピアリングを削除し、アドレス空間を追加してから、もう一度ピアリングを追加する必要があります。
 * 仮想ネットワーク ピアリングは、2 つの仮想ネットワーク間の関係です。 ピアリング間で派生する推移的な関係は存在しません。 たとえば、virtualNetworkA が virtualNetworkB とピアリングし、virtualNetworkB が virtualNetworkC とピアリングしている場合、virtualNetworkA とvirtualNetworkC にはピアリング関係は "*ありません*"。
 * 2 つの異なるサブスクリプションに存在する仮想ネットワークをピアリングできます。そのためには、両方のサブスクリプションの特権ユーザー (具体的なアクセス許可については、[こちら](create-peering-different-deployment-models-subscriptions.md#permissions)を参照) がピアリングを承認しており、サブスクリプションが同じ Azure Active Directory テナントに関連付けられていることが必要となります。 別々の Active Directory テナントに関連付けられているサブスクリプション内の仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使って接続することができます。
-* ピアリングは、Resource Manager デプロイメント モデルを使って作成された仮想ネットワーク同士か、Resource Manager デプロイメント モデルを使って作成された仮想ネットワークとクラシック デプロイメント モデルを使って作成された仮想ネットワークの間で行うことができます。 ただし、クラシック デプロイメント モデルを使って作成された仮想ネットワークを互いにピアリングすることはできません。 クラシック デプロイメント モデルを使って作成された仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。
+* ピアリングは、Resource Manager デプロイメント モデルを使って作成された仮想ネットワーク同士か、Resource Manager デプロイメント モデルを使って作成された仮想ネットワークとクラシック デプロイメント モデルを使って作成された仮想ネットワークの間で行うことができます。 ただし、クラシック デプロイメント モデルを使って作成された仮想ネットワークどうしをピアリングすることはできません。 クラシック デプロイメント モデルを使って作成された仮想ネットワークは、[VPN Gateway](../vpn-gateway/vpn-gateway-about-vpngateways.md?toc=%2fazure%2fvirtual-network%2ftoc.json#V2V) を使用して接続できます。
 * ピアリングされた仮想ネットワークに存在する仮想マシン間の通信には帯域幅上の特別な制限はありませんが、仮想マシンのサイズに基づく帯域幅の上限は依然として適用されます。 さまざまなサイズの仮想マシンの最大ネットワーク帯域幅の詳細については、[Windows](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) または [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) の VM サイズに関する記事を参照してください。
 
      ![基本的な仮想ネットワーク ピアリング](./media/virtual-networks-peering-overview/figure03.png)
@@ -58,20 +52,20 @@ ms.lasthandoff: 10/11/2017
 
 仮想ネットワークをピアリングすると、一方の仮想ネットワーク内のリソースが、ピアリングされているもう一方の仮想ネットワーク内のリソースに直接接続できるようになります。
 
-同一リージョンでピアリングされた仮想ネットワーク内の仮想マシン間のネットワーク待機時間は、単一の仮想ネットワーク内での待機時間と同じです。 ネットワーク スループットは、仮想マシンに許可された帯域幅を基準としています。許可されている帯域幅は、仮想マシンのサイズに比例するものです。 ピアリング内の帯域幅に関してそれ以外の制限は一切ありません。
+同一リージョンでピアリングされた仮想ネットワーク内の仮想マシン間のネットワーク待ち時間は、単一の仮想ネットワーク内での待ち時間と同じです。 ネットワーク スループットは、仮想マシンに許可された帯域幅を基準としています。許可されている帯域幅は、仮想マシンのサイズに比例するものです。 ピアリング内の帯域幅に関してそれ以外の制限は一切ありません。
 
 ピアリングされた仮想ネットワーク内の仮想マシン間のトラフィックは、ゲートウェイやパブリック インターネット経由ではなく、Microsoft のバックボーン インフラストラクチャを通じて直接ルーティングされます。
 
-仮想ネットワーク内の仮想マシンは、同一リージョンでピアリングされた仮想ネットワーク内の内部ロードバランサーにアクセスすることができます。 プレビュー段階のグローバルにピアリングされた仮想ネットワークでは、内部ロード バランサーのサポートはありません。 グローバルな仮想ネットワーク ピアリングの一般公開リリースでは、内部ロード バランサーがサポートされる予定です。
+仮想ネットワーク内の仮想マシンは、同一リージョンでピアリングされた仮想ネットワーク内の内部ロードバランサーにアクセスすることができます。 グローバルにピアリングされた仮想ネットワーク (プレビュー) では、内部ロード バランサーのサポートはありません。 グローバルな仮想ネットワーク ピアリングの一般公開リリースでは、内部ロード バランサーがサポートされる予定です。
 
 どちらかの仮想ネットワークにネットワーク セキュリティ グループを適用すれば、もう一方の仮想ネットワークやサブネットへのアクセスを適宜ブロックすることができます。
-仮想ネットワーク ピアリングを構成するときに、仮想ネットワーク間のネットワーク セキュリティ グループの規則を開くことも閉じることもできます。 ピアリングされた仮想ネットワーク間で完全な接続を開く場合 (既定のオプション)、特定のサブネットまたは仮想マシンにネットワーク セキュリティ グループを適用して、特定のアクセスをブロック (拒否) することができます。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)に関する記事をご覧ください。
+仮想ネットワーク ピアリングを構成するときに、仮想ネットワーク間のネットワーク セキュリティ グループの規則を開くことも閉じることもできます。 ピアリングされた仮想ネットワーク間で完全な接続を開く場合 (既定のオプション)、特定のサブネットまたは仮想マシンにネットワーク セキュリティ グループを適用して、特定のアクセスをブロック (拒否) することができます。 ネットワーク セキュリティ グループの詳細については、[ネットワーク セキュリティ グループの概要](virtual-networks-nsg.md)に関する記事を参照してください。
 
 ## <a name="service-chaining"></a>サービス チェイニング
 
 ユーザーは、ピアリングされた仮想ネットワーク内の仮想マシンを指し示すユーザー定義ルートを "次ホップ" の IP アドレスとして構成して、サービス チェイニングを可能にすることができます。 サービス チェイニングを利用すると、一方の仮想ネットワークのトラフィックを、ユーザー定義ルートを介して、ピアリングされた仮想ネットワーク内の仮想アプライアンスに向けることができます。
 
-また、ハブ アンド スポーク型の環境を効果的に構築することもできます。この場合、ハブでインフラストラクチャ コンポーネント (ネットワーク仮想アプライアンスなど) をホストできます。 すべてのスポーク仮想ネットワークが、ハブ仮想ネットワークとピアリングできるようになります。 トラフィックは、ハブ仮想ネットワークで実行されているネットワーク仮想アプライアンスを経由することができます。 つまり、仮想ネットワーク ピアリングによって、ユーザー定義ルート上の次ホップ IP アドレスを、ピアリングされた仮想ネットワーク内の仮想マシンの IP アドレスにすることができます。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md)に関する記事をご覧ください。 [ハブおよびスポーク ネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)を作成する方法の詳細もご覧ください。
+また、ハブ アンド スポーク型の環境を効果的に構築することもできます。この場合、ハブでインフラストラクチャ コンポーネント (ネットワーク仮想アプライアンスなど) をホストできます。 すべてのスポーク仮想ネットワークが、ハブ仮想ネットワークとピアリングできるようになります。 トラフィックは、ハブ仮想ネットワークで実行されているネットワーク仮想アプライアンスを経由することができます。 つまり、仮想ネットワーク ピアリングによって、ユーザー定義ルート上の次ホップ IP アドレスを、ピアリングされた仮想ネットワーク内の仮想マシンの IP アドレスにすることができます。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの作成](virtual-networks-udr-overview.md)に関する記事を参照してください。 ハブとスポークのネットワーク トポロジを作成する方法については、[ハブとスポークのネットワーク トポロジ](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke?toc=%2fazure%2fvirtual-network%2ftoc.json#virtual network-peering)に関する記事を参照してください。
 
 ## <a name="gateways-and-on-premises-connectivity"></a>ゲートウェイとオンプレミスの接続
 
@@ -93,19 +87,19 @@ ms.lasthandoff: 10/11/2017
 
 仮想ネットワークに対するピアリング操作は、管理者権限を持つユーザーまたはピアリング機能の特権を与えられたユーザーが開始できます。 必要な最小レベルのアクセス許可は、ネットワーク共同作成者です。 対応するピアリング要求がもう一方の側に存在し、その他各種の要件が満たされた場合にピアリングは確立されます。
 
-たとえば、myvirtual networkA と myvirtual networkB という名前の仮想ネットワークをピアリングする場合、各仮想ネットワークに対する次の最小限のロールまたはアクセス許可をアカウントに割り当てる必要があります。
+たとえば、myVirtualNetworkA と myVirtualNetworkB という名前の仮想ネットワークをピアリングする場合、各仮想ネットワークに対する次の最小限のロールまたはアクセス許可をアカウントに割り当てる必要があります。
 
 |Virtual Network|デプロイメント モデル|役割|アクセス許可|
 |---|---|---|---|
-|myvirtual networkA|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
+|myVirtualNetworkA|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/virtualNetworkPeerings/write|
 | |クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|該当なし|
-|myvirtual networkB|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
+|myVirtualNetworkB|リソース マネージャー|[ネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor)|Microsoft.Network/virtualNetworks/peer|
 ||クラシック|[従来のネットワークの共同作業者](../active-directory/role-based-access-built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#classic-network-contributor)|Microsoft.ClassicNetwork/virtualNetworks/peer|
 
 ## <a name="monitor"></a>監視
 
 Resource Manager を使用して作成された 2 つの仮想ネットワークをピアリングするときは、ピアリングする仮想ネットワークごとにピアリングを構成する必要があります。
-ピアリング接続の状態を監視することができます。 ピアリングの状態は次のいずれかになります。
+ピアリング接続の状態を監視することができます。 ピアリングの状態は次のいずれかの状態になります。
 
 * **開始済み:** 1 つ目の仮想ネットワークから 2 つ目の仮想ネットワークへのピアリングを作成すると、ピアリングの状態が "開始済み" になります。
 
@@ -121,7 +115,7 @@ Network Watcher の[接続チェック](../network-watcher/network-watcher-conne
 
 ## <a name="limits"></a>制限
 
-1 つの仮想ネットワークで許容されるピアリングの数には制限があります。 既定のピアリングの数は 50 です。 ピアリングの数は増やすことができます。 詳しくは、[Azure ネットワークの制限](../azure-subscription-service-limits.md#networking-limits)に関するセクションをご覧ください。
+1 つの仮想ネットワークで許容されるピアリングの数には制限があります。 詳細については、[Azure ネットワークの制限](../azure-subscription-service-limits.md?toc=%2fazure%2fvirtual-network%2ftoc.json#azure-resource-manager-virtual-networking-limits)に関するページを参照してください。
 
 ## <a name="pricing"></a>価格
 

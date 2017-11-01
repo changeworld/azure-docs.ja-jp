@@ -38,57 +38,57 @@ Azure のロールベースのアクセス制御 (RBAC) には、ユーザー、
 > Azure のロール定義は常に進化しています。 この記事は、最新の状態であることを心掛けておりますが、Azure PowerShell で常に最新のロール定義を見つけることができます。 現在のロールの一覧を表示するには、[Get-AzureRmRoleDefinition](/powershell/module/azurerm.resources/get-azurermroledefinition) コマンドレットを使用します。 特定のロールの詳細を確認するには、適宜 `(get-azurermroledefinition "<role name>").actions` または `(get-azurermroledefinition "<role name>").notactions` を使用します。 [Get-AzureRmProviderOperation](/powershell/module/azurerm.resources/get-azurermprovideroperation) を使用すると、特定の Azure リソース プロバイダーの操作が一覧表示されます。
 
 
-| ロール名 | Description |
+| ロール名 | 説明 |
 | --- | --- |
-| [API 管理サービスの共同作業者](#api-management-service-contributor) |API Management サービスと API を管理できます |
-| [API Management サービスのオペレーター ロール](#api-management-service-operator-role) | API Management サービスを管理できます。ただし、API 自体を管理することはできません |
-| [API Management サービスのリーダー ロール](#api-management-service-reader-role) | API Management のサービスと API への読み取り専用アクセス |
-| [Application Insights コンポーネントの共同作業者](#application-insights-component-contributor) |Application Insights コンポーネントを管理できます |
-| [オートメーション オペレーター](#automation-operator) |ジョブを開始、停止、中断、および再開できます |
-| [バックアップの共同作業者](#backup-contributor) | Recovery Services コンテナーのバックアップを管理できます |
-| [バックアップ オペレーター](#backup-operator) | バックアップの削除を除き、Recovery Services コンテナーのバックアップを管理できます |
-| [バックアップ リーダー](#backup-reader) | すべてのバックアップ管理サービスを表示できます  |
-| [課金リーダー](#billing-reader) | すべての課金情報を見ることができます  |
-| [BizTalk の共同作業者](#biztalk-contributor) |BizTalk Services を管理できます |
-| [ClearDB MySQL DB の共同作業者](#cleardb-mysql-db-contributor) |ClearDB MySQL データベースを管理できます |
-| [共同作成者](#contributor) |アクセス権以外のすべてを管理できます。 |
-| [Data Factory の共同作業者](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
-| [DevTest Labs ユーザー](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
-| [DNS ゾーン共同作成者](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
-| [Azure Cosmos DB アカウントの共同作業者](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
-| [Intelligent Systems アカウントの共同作業者](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
-| ロジック アプリの共同作成者 | ロジック アプリのあらゆる側面を管理できますが、新規作成はできません。 |
-| ロジック アプリのオペレーター |ロジック アプリ内で定義されたワークフローを開始および停止できます。 |
-| [監視リーダー](#monitoring-reader) |すべての監視データを読み取ることができます |
-| [監視共同作業者](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
-| [ネットワークの共同作業者](#network-contributor) |すべてのネットワーク リソースを管理できます |
-| [New Relic APM アカウントの共同作業者](#new-relic-apm-account-contributor) |New Relic Application Performance Management アカウントおよびアプリケーションを管理できます |
-| [所有者](#owner) |アクセス権を含めすべてを管理できます |
-| [閲覧者](#reader) |すべてを閲覧できますが、変更を加えることはできません |
-| [Redis Cache の共同作業者](#redis-cache-contributor) |Redis キャッシュを管理できます |
-| [Scheduler Job Collection の共同作業者](#scheduler-job-collections-contributor) |Scheduler Job Collection を管理できます |
-| [Search サービスの共同作業者](#search-service-contributor) |Search サービスを管理できます |
-| [セキュリティ管理者](#security-manager) |セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
-| [Site Recovery 共同作成者](#site-recovery-contributor) | Recovery Services コンテナーの Site Recovery を管理できます |
-| [Site Recovery オペレーター](#site-recovery-operator) | Recovery Services コンテナーでの Site Recovery のフェールオーバーとフェールバック操作を管理できます |
-| [Site Recovery 閲覧者](#site-recovery-reader) | すべての Site Recovery 管理操作を表示できます  |
-| [SQL DB の共同作業者](#sql-db-contributor) |SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
-| [SQL セキュリティ管理者](#sql-security-manager) |SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます |
-| [SQL Server の共同作業者](#sql-server-contributor) |SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
-| [従来のストレージ アカウントの共同作業者](#classic-storage-account-contributor) |従来のストレージ アカウントを管理できます |
-| [ストレージ アカウントの共同作業者](#storage-account-contributor) |ストレージ アカウントを管理できます |
-| [Support request の共同作成者](#support-request-contributor) | Support request を作成し管理できます |
-| [ユーザーアクセスの管理者](#user-access-administrator) |Azure リソースに対するユーザー アクセスを管理できます |
-| [従来の仮想マシンの共同作業者](#classic-virtual-machine-contributor) |クラシック仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
-| [仮想マシンの共同作業者](#virtual-machine-contributor) |仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
-| [従来のネットワークの共同作業者](#classic-network-contributor) |従来の仮想ネットワークと予約済み IP を管理できます |
-| [Web プランの共同作業者](#web-plan-contributor) |Web プランを管理できます |
-| [Web サイトの共同作業者](#website-contributor) |Web サイトを管理できますが、その接続先の Web プランは管理できません |
+| [API Management Service Contributor](#api-management-service-contributor) |API Management サービスと API を管理できます |
+| [API Management Service Operator Role](#api-management-service-operator-role) | API Management サービスを管理できます。ただし、API 自体を管理することはできません |
+| [API Management Service Reader Role](#api-management-service-reader-role) | API Management のサービスと API への読み取り専用アクセス |
+| [Application Insights Component Contributor](#application-insights-component-contributor) |Application Insights コンポーネントを管理できます |
+| [Automation Operator](#automation-operator) |ジョブを開始、停止、中断、および再開できます |
+| [Backup Contributor](#backup-contributor) | Recovery Services コンテナーのバックアップを管理できます |
+| [Backup Operator](#backup-operator) | バックアップの削除を除き、Recovery Services コンテナーのバックアップを管理できます |
+| [Backup Reader](#backup-reader) | すべてのバックアップ管理サービスを表示できます  |
+| [Billing Reader](#billing-reader) | すべての課金情報を見ることができます  |
+| [BizTalk Contributor](#biztalk-contributor) |BizTalk Services を管理できます |
+| [ClearDB MySQL DB Contributor](#cleardb-mysql-db-contributor) |ClearDB MySQL データベースを管理できます |
+| [Contributor](#contributor) |アクセス権以外のすべてを管理できます。 |
+| [Data Factory Contributor](#data-factory-contributor) |Data Factory と Data Factory に含まれる子リソースを作成および管理できます。 |
+| [DevTest Labs User](#devtest-labs-user) |すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます |
+| [DNS Zone Contributor](#dns-zone-contributor) |DNS ゾーンとレコードを保護できます |
+| [Azure Cosmos DB Account Contributor](#documentdb-account-contributor) |Azure Cosmos DB アカウントを管理できます |
+| [Intelligent Systems Account Contributor](#intelligent-systems-account-contributor) |Intelligent Systems アカウントを管理できます |
+| Logic App Contributor | ロジック アプリのあらゆる側面を管理できますが、新規作成はできません。 |
+| Logic App Operator |ロジック アプリ内で定義されたワークフローを開始および停止できます。 |
+| [Monitoring Reader](#monitoring-reader) |すべての監視データを読み取ることができます |
+| [Monitoring Contributor](#monitoring-contributor) |監視データを読み取り、監視設定を編集できます |
+| [Network Contributor](#network-contributor) |すべてのネットワーク リソースを管理できます |
+| [New Relic APM Account Contributor](#new-relic-apm-account-contributor) |New Relic Application Performance Management アカウントおよびアプリケーションを管理できます |
+| [Owner](#owner) |アクセス権を含めすべてを管理できます |
+| [Reader](#reader) |すべてを閲覧できますが、変更を加えることはできません |
+| [Redis Cache Contributor](#redis-cache-contributor) |Redis キャッシュを管理できます |
+| [Scheduler Job Collections Contributor](#scheduler-job-collections-contributor) |Scheduler Job Collection を管理できます |
+| [Search Service Contributor](#search-service-contributor) |Search サービスを管理できます |
+| [Security Manager](#security-manager) |セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます |
+| [Site Recovery Contributor](#site-recovery-contributor) | Recovery Services コンテナーの Site Recovery を管理できます |
+| [Site Recovery Operator](#site-recovery-operator) | Recovery Services コンテナーでの Site Recovery のフェールオーバーとフェールバック操作を管理できます |
+| [Site Recovery Reader](#site-recovery-reader) | すべての Site Recovery 管理操作を表示できます  |
+| [SQL DB Contributor](#sql-db-contributor) |SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
+| [SQL Security Manager](#sql-security-manager) |SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます |
+| [SQL Server Contributor](#sql-server-contributor) |SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません |
+| [Classic Storage Account Contributor](#classic-storage-account-contributor) |従来のストレージ アカウントを管理できます |
+| [Storage Account Contributor](#storage-account-contributor) |ストレージ アカウントを管理できます |
+| [Support Request Contributor](#support-request-contributor) | Support request を作成し管理できます |
+| [User Access Administrator](#user-access-administrator) |Azure リソースに対するユーザー アクセスを管理できます |
+| [Classic Virtual Machine Contributor](#classic-virtual-machine-contributor) |クラシック仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
+| [Virtual Machine Contributor](#virtual-machine-contributor) |仮想マシンを管理できますが、その接続先の仮想ネットワークやストレージ アカウントは管理できません |
+| [Classic Network Contributor](#classic-network-contributor) |従来の仮想ネットワークと予約済み IP を管理できます |
+| [Web Plan Contributor](#web-plan-contributor) |Web プランを管理できます |
+| [Website Contributor](#website-contributor) |Web サイトを管理できますが、その接続先の Web プランは管理できません |
 
 ## <a name="role-permissions"></a>ロールのアクセス許可
 以降の表は、各ロールに割り当てられている具体的なアクセス許可の説明です。 アクセス許可を与える **Actions** のほか、それらを制限する **NotActions** が含まれている場合があります。
 
-### <a name="api-management-service-contributor"></a>API 管理サービスの共同作業者
+### <a name="api-management-service-contributor"></a>API Management Service Contributor
 API Management サービスを管理できます
 
 | **アクション** |  |
@@ -101,7 +101,7 @@ API Management サービスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="api-management-service-operator-role"></a>API Management サービスのオペレーター ロール
+### <a name="api-management-service-operator-role"></a>API Management Service Operator Role
 API Management サービスを管理できます
 
 | **アクション** |  |
@@ -121,7 +121,7 @@ API Management サービスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="api-management-service-reader-role"></a>API Management サービスのリーダー ロール
+### <a name="api-management-service-reader-role"></a>API Management Service Reader Role
 API Management サービスを管理できます
 
 | **アクション** |  |
@@ -135,7 +135,7 @@ API Management サービスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |ロールとロール割り当ての読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="application-insights-component-contributor"></a>Application Insights コンポーネントの共同作業者
+### <a name="application-insights-component-contributor"></a>Application Insights Component Contributor
 Application Insights コンポーネントを管理できます
 
 | **アクション** |  |
@@ -149,7 +149,7 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="automation-operator"></a>オートメーション オペレーター
+### <a name="automation-operator"></a>Automation Operator
 ジョブを開始、停止、中断、および再開できます
 
 | **アクション** |  |
@@ -173,7 +173,7 @@ Application Insights コンポーネントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="backup-contributor"></a>バックアップの共同作業者
+### <a name="backup-contributor"></a>Backup Contributor
 Recovery Services コンテナーの作成と他のユーザーへのアクセス権の付与を除き、すべてのバックアップ管理アクションを管理できます
 
 | **アクション** | |
@@ -200,7 +200,7 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="backup-operator"></a>バックアップ オペレーター
+### <a name="backup-operator"></a>Backup Operator
 コンテナーの作成、バックアップの削除、および他のユーザーへのアクセス権の付与を除き、すべてのバックアップ管理アクションを管理できます
 
 | **アクション** | |
@@ -238,7 +238,7 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-### <a name="backup-reader"></a>バックアップ リーダー
+### <a name="backup-reader"></a>Backup Reader
 Recovery Services コンテナーでのバックアップ管理を監視できます
 
 | **アクション** | |
@@ -265,7 +265,7 @@ Recovery Services コンテナーでのバックアップ管理を監視でき�
 | Microsoft.RecoveryServices/Vaults/registeredIdentities/read  | コンテナーの登録済みアイテムの読み取り |
 | Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の読み取り |
 
-### <a name="billing-reader"></a>課金リーダー
+### <a name="billing-reader"></a>Billing Reader
 すべての課金情報を見ることができます
 
 | **アクション** |  |
@@ -274,7 +274,7 @@ Recovery Services コンテナーでのバックアップ管理を監視でき�
 | Microsoft.Billing/*/read |課金情報の読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="biztalk-contributor"></a>BizTalk の共同作業者
+### <a name="biztalk-contributor"></a>BizTalk Contributor
 BizTalk Services を管理できます
 
 | **アクション** |  |
@@ -287,7 +287,7 @@ BizTalk Services を管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB の共同作業者
+### <a name="cleardb-mysql-db-contributor"></a>ClearDB MySQL DB Contributor
 ClearDB MySQL データベースを管理できます
 
 | **アクション** |  |
@@ -300,7 +300,7 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | successbricks.cleardb/databases/* |ClearDB MySQL データベースの作成と管理 |
 
-### <a name="contributor"></a>共同作成者
+### <a name="contributor"></a>Contributor
 アクセス権以外のすべてを管理できます。
 
 | **アクション** |  |
@@ -312,7 +312,7 @@ ClearDB MySQL データベースを管理できます
 | Microsoft.Authorization/*/Delete |ロールとロール割り当ては削除できません |
 | Microsoft.Authorization/*/Write |ロールとロール割り当ては作成できません |
 
-### <a name="data-factory-contributor"></a>Data Factory の共同作業者
+### <a name="data-factory-contributor"></a>Data Factory Contributor
 Data Factory と Data Factory に含まれる子リソースを作成および管理します。
 
 | **アクション** |  |
@@ -325,7 +325,7 @@ Data Factory と Data Factory に含まれる子リソースを作成および�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="devtest-labs-user"></a>DevTest Labs ユーザー
+### <a name="devtest-labs-user"></a>DevTest Labs User
 すべてを表示し、仮想マシンを接続、開始、再起動、シャットダウンできます
 
 | **アクション** |  |
@@ -358,7 +358,7 @@ Data Factory と Data Factory に含まれる子リソースを作成および�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Storage/storageAccounts/listKeys/action |ストレージ アカウント キーの一覧表示 |
 
-### <a name="dns-zone-contributor"></a>DNS ゾーン共同作成者
+### <a name="dns-zone-contributor"></a>DNS Zone Contributor
 DNS ゾーンとレコードを保護できます。
 
 | **アクション** |  |
@@ -371,7 +371,7 @@ DNS ゾーンとレコードを保護できます。
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/\* |サポート チケットの作成と管理 |
 
-### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB アカウントの共同作業者
+### <a name="azure-cosmos-db-account-contributor"></a>Azure Cosmos DB Account Contributor
 Azure Cosmos DB アカウントを管理できます
 
 | **アクション** |  |
@@ -384,7 +384,7 @@ Azure Cosmos DB アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems アカウントの共同作業者
+### <a name="intelligent-systems-account-contributor"></a>Intelligent Systems Account Contributor
 Intelligent Systems アカウントを管理できます
 
 | **アクション** |  |
@@ -397,7 +397,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="monitoring-reader"></a>監視閲覧者
+### <a name="monitoring-reader"></a>Monitoring Reader
 すべての監視データ (メトリック、ログなど) を読み取ることができます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。
 
 | **アクション** |  |
@@ -406,7 +406,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.OperationalInsights/workspaces/search/action |Log Analytics データの検索 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="monitoring-contributor"></a>監視共同作業者
+### <a name="monitoring-contributor"></a>Monitoring Contributor
 すべての監視データを読み取り、監視設定を編集できます。 [「Azure Monitor での役割、アクセス許可、およびセキュリティの概要」](/monitoring-and-diagnostics/monitoring-roles-permissions-security.md#built-in-monitoring-roles)も参照してください。
 
 | **アクション** |  |
@@ -427,7 +427,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.OperationalInsights/workspaces/sharedKeys/action |Log Analytics ワークスペースのキーを一覧表示します。 |
 | Microsoft.OperationalInsights/workspaces/storageinsightconfigs/* |Log Analytics ストレージ インサイト構成の読み取り/書き込み/削除を行います。 |
 
-### <a name="network-contributor"></a>ネットワークの共同作業者
+### <a name="network-contributor"></a>Network Contributor
 すべてのネットワーク リソースを管理できます
 
 | **アクション** |  |
@@ -440,7 +440,7 @@ Intelligent Systems アカウントを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="new-relic-apm-account-contributor"></a>New Relic APM アカウントの共同作業者
+### <a name="new-relic-apm-account-contributor"></a>New Relic APM Account Contributor
 New Relic Application Performance Management アカウントおよびアプリケーションを管理できます
 
 | **アクション** |  |
@@ -453,21 +453,21 @@ New Relic Application Performance Management アカウントおよびアプリ�
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | NewRelic.APM/accounts/* |New Relic Application Performance Management アカウントの作成と管理 |
 
-### <a name="owner"></a>所有者
+### <a name="owner"></a>Owner
 アクセス権を含めすべてを管理できます
 
 | **アクション** |  |
 | --- | --- |
 | * |あらゆる種類のリソースの作成と管理 |
 
-### <a name="reader"></a>閲覧者
+### <a name="reader"></a>Reader
 すべてを閲覧できますが、変更を加えることはできません
 
 | **アクション** |  |
 | --- | --- |
 | */read |機密データを除くあらゆる種類のリソースの読み取り |
 
-### <a name="redis-cache-contributor"></a>Redis Cache の共同作業者
+### <a name="redis-cache-contributor"></a>Redis Cache Contributor
 Redis キャッシュを管理できます
 
 | **アクション** |  |
@@ -480,7 +480,7 @@ Redis キャッシュを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="scheduler-job-collections-contributor"></a>Scheduler Job Collection の共同作業者
+### <a name="scheduler-job-collections-contributor"></a>Scheduler Job Collections Contributor
 Scheduler Job Collection を管理できます
 
 | **アクション** |  |
@@ -493,7 +493,7 @@ Scheduler Job Collection を管理できます
 | Microsoft.Scheduler/jobcollections/* |ジョブ コレクションの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="search-service-contributor"></a>Search サービスの共同作業者
+### <a name="search-service-contributor"></a>Search Service Contributor
 Search サービスを管理できます
 
 | **アクション** |  |
@@ -506,7 +506,7 @@ Search サービスを管理できます
 | Microsoft.Search/searchServices/* |検索サービスの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="security-manager"></a>セキュリティ管理者
+### <a name="security-manager"></a>Security Manager
 セキュリティ コンポーネント、セキュリティ ポリシー、および仮想マシンを管理できます
 
 | **アクション** |  |
@@ -522,7 +522,7 @@ Search サービスを管理できます
 | Microsoft.Security/* |セキュリティ コンポーネントおよびポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="site-recovery-contributor"></a>Site Recovery 共同作成者
+### <a name="site-recovery-contributor"></a>Site Recovery Contributor
 Recovery Services コンテナーの作成と他のユーザーへのアクセス権の付与を除き、すべての Site Recovery 管理アクションを管理できます
 
 | **アクション** | |
@@ -552,7 +552,7 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="site-recovery-operator"></a>Site Recovery オペレーター
+### <a name="site-recovery-operator"></a>Site Recovery Operator
 フェールオーバーとフェールバックを実行できますが、その他の Site Recovery 管理操作の実行や、他のユーザーへのアクセス権の割り当てはできません
 
 | **アクション** | |
@@ -612,7 +612,7 @@ Recovery Services コンテナーの作成と他のユーザーへのアクセ�
 | Microsoft.Storage/storageAccounts/read | ストレージ アカウントの読み取り |
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 
-### <a name="site-recovery-reader"></a>Site Recovery 閲覧者
+### <a name="site-recovery-reader"></a>Site Recovery Reader
 Recovery Services コンテナーで Site Recovery の状態を監視し、サポート チケットを発生させることができます
 
 | **アクション** | |
@@ -647,7 +647,7 @@ Recovery Services コンテナーで Site Recovery の状態を監視し、サ�
 | Microsoft.RecoveryServices/Vaults/usages/read  |  Recovery Services コンテナーの使用状況の詳細の読み取り |
 | Microsoft.Support/*  |  サポート チケットの作成と管理 |
 
-### <a name="sql-db-contributor"></a>SQL DB の共同作業者
+### <a name="sql-db-contributor"></a>SQL DB Contributor
 SQL データベースを管理できますが、そのセキュリティ関連ポリシーは管理できません
 
 | **アクション** |  |
@@ -671,7 +671,7 @@ SQL データベースを管理できますが、そのセキュリティ関連�
 | Microsoft.Sql/servers/databases/securityAlertPolicies/* |セキュリティの警告のポリシーを編集することはできません |
 | Microsoft.Sql/servers/databases/securityMetrics/* |セキュリティ基準を編集することはできません |
 
-### <a name="sql-security-manager"></a>SQL セキュリティ管理者
+### <a name="sql-security-manager"></a>SQL Security Manager
 SQL サーバーおよびデータベースのセキュリティ関連ポリシーを管理できます
 
 | **アクション** |  |
@@ -698,7 +698,7 @@ SQL サーバーおよびデータベースのセキュリティ関連ポリシ�
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL サーバー セキュリティの警告のポリシーの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="sql-server-contributor"></a>SQL Server の共同作業者
+### <a name="sql-server-contributor"></a>SQL Server Contributor
 SQL サーバーおよびデータベースを管理できますが、そのセキュリティ関連ポリシーは管理できません
 
 | **アクション** |  |
@@ -724,7 +724,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Sql/servers/databases/securityMetrics/* |SQL サーバー データベース セキュリティ基準は編集できません |
 | Microsoft.Sql/servers/securityAlertPolicies/* |SQL サーバー セキュリティの警告のポリシーは編集できません |
 
-### <a name="classic-storage-account-contributor"></a>従来のストレージ アカウントの共同作業者
+### <a name="classic-storage-account-contributor"></a>Classic Storage Account Contributor
 従来のストレージ アカウントを管理できます
 
 | **アクション** |  |
@@ -737,7 +737,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="storage-account-contributor"></a>ストレージ アカウントの共同作業者
+### <a name="storage-account-contributor"></a>Storage Account Contributor
 ストレージ アカウントを管理できますが、ストレージ アカウントにアクセスすることはできません。
 
 | **アクション** |  |
@@ -751,7 +751,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Storage/storageAccounts/* |ストレージ アカウントの作成と管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="support-request-contributor"></a>Support request の共同作成者
+### <a name="support-request-contributor"></a>Support Request Contributor
 サブスクリプションのスコープでのサポート チケットの作成と管理
 
 | **アクション** |  |
@@ -760,7 +760,7 @@ SQL サーバーおよびデータベースを管理できますが、そのセ�
 | Microsoft.Support/* | サポート チケットの作成と管理 |
 | Microsoft.Resources/subscriptions/resourceGroups/read | ロールとロール割り当ての読み取り |
 
-### <a name="user-access-administrator"></a>ユーザーアクセスの管理者
+### <a name="user-access-administrator"></a>User Access Administrator
 Azure リソースに対するユーザー アクセスを管理できます
 
 | **アクション** |  |
@@ -769,7 +769,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Authorization/* |承認の管理 |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="classic-virtual-machine-contributor"></a>従来の仮想マシンの共同作業者
+### <a name="classic-virtual-machine-contributor"></a>Classic Virtual Machine Contributor
 接続している仮想ネットワークやストレージ アカウント以外の従来の仮想マシンを管理できます
 
 | **アクション** |  |
@@ -792,7 +792,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="virtual-machine-contributor"></a>仮想マシンの共同作業者
+### <a name="virtual-machine-contributor"></a>Virtual Machine Contributor
 接続している仮想ネットワークやストレージ アカウント以外の仮想マシンを管理できます
 
 | **アクション** |  |
@@ -823,7 +823,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Storage/storageAccounts/read |ストレージ アカウントの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="classic-network-contributor"></a>従来のネットワークの共同作業者
+### <a name="classic-network-contributor"></a>Classic Network Contributor
 従来の仮想ネットワークと予約済み IP を管理できます
 
 | **アクション** |  |
@@ -836,7 +836,7 @@ Azure リソースに対するユーザー アクセスを管理できます
 | Microsoft.Resources/subscriptions/resourceGroups/read |リソース グループの読み取り |
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 
-### <a name="web-plan-contributor"></a>Web プランの共同作業者
+### <a name="web-plan-contributor"></a>Web Plan Contributor
 Web プランを管理できます
 
 | **アクション** |  |
@@ -849,7 +849,7 @@ Web プランを管理できます
 | Microsoft.Support/* |サポート チケットの作成と管理 |
 | Microsoft.Web/serverFarms/* |サーバー ファームの作成と管理 |
 
-### <a name="website-contributor"></a>Web サイトの共同作業者
+### <a name="website-contributor"></a>Website Contributor
 Web サイトを管理できますが、接続されている Web プランは管理できません
 
 | **アクション** |  |

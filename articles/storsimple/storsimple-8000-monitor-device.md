@@ -4,7 +4,7 @@ description: "StorSimple デバイス マネージャー サービスを使用�
 services: storsimple
 documentationcenter: NA
 author: alkohli
-manager: timlt
+manager: jeconnoc
 editor: 
 ms.assetid: 
 ms.service: storsimple
@@ -12,15 +12,16 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/02/2017
+ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: c8f731502d6589bfa908aa26cf418a65b18be635
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 679c1fc8775ad4481bc99c9aea79fe16e9bcac8f
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>StorSimple デバイス マネージャー サービスを使用して StorSimple デバイスを監視する
+
 ## <a name="overview"></a>概要
 StorSimple デバイス マネージャー サービスを使用して、StorSimple ソリューション内にある特定のデバイスを監視できます。 I/O パフォーマンス、容量使用率、ネットワーク スループット、およびデバイスのパフォーマンス メトリックに基づいてカスタム グラフを作成し、それらのグラフをダッシュボードにピン留めすることができます。 詳細については、[ポータル ダッシュボードをカスタマイズする](../azure-portal/azure-portal-dashboards.md)ことに関するページを参照してください。
 
@@ -44,6 +45,19 @@ StorSimple デバイス マネージャー サービスを使用して、StorSim
 * 過去 90 日間
 * 過去 1 年間
 
+2 つのキー メトリックである増加量と範囲は、使用状況グラフで報告されます。 範囲は、選択した期間 (過去 7 日間など) にわたって報告された使用状況の最大値および最小値を示します。
+
+増加量は、選択した期間の最初の日から最後の日までの使用量の増加を示します。 
+
+増加量と範囲は、次の数式で表すこともできます。
+
+```
+Range = {Usage(minimum), Usage(maximum)}
+
+Growth = Usage(Last day) - Usage(first day)
+
+Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
+```
 
 使用済みのプライマリ、クラウド、およびローカルのストレージは次のように説明できます。
 

@@ -1,0 +1,135 @@
+---
+title: "Azure Search のファセット フィルター | Microsoft Docs"
+description: "Microsoft Azure のホスト型クラウド検索サービスである Azure Search で、ユーザーのセキュリティ ID、言語、地理的な場所、または数値で条件をフィルター処理してクエリの検索結果を減らします。"
+services: search
+documentationcenter: 
+author: HeidiSteen
+manager: jhubbard
+editor: 
+ms.assetid: 
+ms.service: search
+ms.devlang: 
+ms.workload: search
+ms.topic: article
+ms.tgt_pltfrm: na
+ms.date: 10/13/2017
+ms.author: heidist
+ms.openlocfilehash: 5b4d88cb9c9662fe45de8c11534232a2905cf5a4
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
+ms.translationtype: HT
+ms.contentlocale: ja-JP
+ms.lasthandoff: 10/25/2017
+---
+# <a name="how-to-build-a-facet-filter-in-azure-search"></a>Azure Search でファセット フィルターを作成する方法 
+
+ファセット ナビゲーションは、検索アプリでクエリ結果の自律フィルター処理に使用されます。アプリケーションでドキュメントのグループ (カテゴリやブランドなど) を検索範囲として指定する UI コントロールを提供する場合、Azure Search はこのエクスペリエンスを支えるデータ構造を提供します。 この記事では、提供する検索エクスペリエンスを支えるファセット ナビゲーション構造の基本的な作成手順を簡単に説明します。 
+
+> [!div class="checklist"]
+> * フィルターとファセットに適したフィールドを選択する
+> * フィールドに属性を設定する
+> * インデックスを作成し、データを読み込む
+> * クエリにファセット フィルターを追加する
+> * 結果を処理する
+
+ファセットは動的であり、クエリで返されます。 検索の応答で、結果のナビゲートに使用されるファセット カテゴリが提供されます。 ファセットの知識がない場合、次の例はファセット ナビゲーション構造を示しています。
+
+  ![](./media/search-filters/facet-nav.png)
+
+ファセット ナビゲーションを初めて使用する場合、詳細については、 「[Azure Search でファセット ナビゲーションを実装する方法](search-faceted-navigation.md)」をご覧ください。
+
+## <a name="choose-fields"></a>フィールドの選択
+
+ファセットは、単一値フィールドとコレクションで計算できます。 ファセット ナビゲーションに最適なのは、カーディナリティが低い (検索コーパス内のドキュメント (色、国、またはブランド名のリストなど) 全体にわたって繰り返される異なる値が少ない) フィールドです。 
+
+ファセットは、インデックスの作成時に `filterable`、`facetable` の各属性を TRUE に設定することでフィールドごとに有効になります。 ファセットできるのは、フィルター可能なフィールドのみです。
+
+ファセット ナビゲーションで使用できると考えられる[フィールド タイプ](https://docs.microsoft.com/rest/api/searchservice/supported-data-types)は、"facetable" とマークされます。
+
++ Edm.String
++ Edm.DateTimeOffset
++ Edm.Boolean
++ Edm.Collections (この記事で後述する[複雑なデータ型をファセットする方法](#facet-complex-fields)に関するセクションをご覧ください)。
++ 数値フィールド タイプ: Edm.Int32、Edm.Int64、Edm.Double
+
+ファセット ナビゲーションで Edm.GeographyPoint を使用することはできません。 ファセットは、人間が判読できるテキストまたは数字で構成されます。 そのため、ファセットは地理座標ではサポートされていません。 場所でファセットするには、都市フィールドまたは地域フィールドが必要です。
+
+## <a name="set-attributes"></a>属性の設定
+
+フィールドの使用方法を制御するインデックスの属性は、インデックス内の個々 のフィールド定義に追加されます。 次の例では、ファセットに役立つカーディナリティが低いフィールドは、カテゴリ (hotel、motel、hostel)、アメニティ、評価で構成されています。 
+
+.NET API では、フィルター属性を明示的に設定する必要があります。 REST API では、ファセットとフィルターは既定で有効になっています。そのため、これらの属性を明示的に設定する必要があるのは、属性を無効にするときだけです。 技術的には必須ではありませんが、説明のために、次の REST の例ではこれらの属性を示しています。 
+
+> [!Tip]
+> パフォーマンスとストレージの最適化のためのベスト プラクティスとして、ファセットとして使用されることのないフィールドではファセットを無効にします。 具体的には、シングルトン値の文字列フィールド (ID や製品名など) は、"Facetable": false に設定して、ファセット ナビゲーションで誤って (無駄に) 使用されないようにします。
+
+
+```http
+{
+    "name": "hotels",  
+    "fields": [
+        {"name": "hotelId", "type": "Edm.String", "key": true, "searchable": false, "sortable": false, "facetable": false},
+        {"name": "baseRate", "type": "Edm.Double"},
+        {"name": "description", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false},
+        {"name": "description_fr", "type": "Edm.String", "filterable": false, "sortable": false, "facetable": false, "analyzer": "fr.lucene"},
+        {"name": "hotelName", "type": "Edm.String", "facetable": false},
+        {"name": "category", "type": "Edm.String", "filterable": true, "facetable": true},
+        {"name": "tags", "type": "Collection(Edm.String)", "filterable": true, "facetable": true},
+        {"name": "parkingIncluded", "type": "Edm.Boolean",  "filterable": true, "facetable": true, "sortable": false},
+        {"name": "smokingAllowed", "type": "Edm.Boolean", "filterable": true, "facetable": true, "sortable": false},
+        {"name": "lastRenovationDate", "type": "Edm.DateTimeOffset"},
+        {"name": "rating", "type": "Edm.Int32", "filterable": true, "facetable": true},
+        {"name": "location", "type": "Edm.GeographyPoint"}
+    ]
+}
+```
+
+> [!Note]
+> このインデックス定義は、「[REST API を使用した Azure Search インデックスの作成](https://docs.microsoft.com/azure/search/search-create-index-rest-api)」からコピーされたものです。 フィールド定義の表面的な違い以外は全く同じです。 filterable 属性と facetable 属性は、category、tags、parkingIncluded、smokingAllowed、rating の各フィールドに明示的に追加されます。 実際には、Edm.String、Edm.Boolean、Edm.Int32 の各フィールド タイプに filterable と facetable が適用されます。 
+
+## <a name="build-and-load-an-index"></a>インデックスの作成と読み込み
+
+(言うまでもありませんが) 中間の手順として、クエリを作成する前に[インデックスを作成して設定する](https://docs.microsoft.com/azure/search/search-create-index-dotnet#create-the-index)必要があります。 ここでは、完全を期すためにこの手順に触れました。 インデックスを使用できるかどうかを判断する 1 つの方法として、[ポータル](https://portal.azure.com)でインデックスの一覧を確認します。
+
+## <a name="add-facet-filters-to-a-query"></a>クエリへのファセット フィルターの追加
+
+アプリケーション コードでは、有効なクエリのすべての部分 (検索式、ファセット、フィルター、スコアリング プロファイルなど、要求の作成に使用されるすべてのもの) を指定するクエリを作成します。 次の例では、宿泊施設の種類、評価、他のアメニティに基づいてファセット ナビゲーションを作成する要求を作成します。
+
+```csharp
+SearchParameters sp = new SearchParameters()
+{
+  ...
+  // Add facets
+  Facets = new List<String>() { "category", "rating", "parkingIncluded", "smokingAllowed" },
+};
+```
+
+### <a name="return-filtered-results-on-click-events"></a>クリック イベントでフィルター処理された結果を返す
+
+フィルター式では、ファセット値のクリック イベントを処理します。 カテゴリ ファセットの場合、"motel" というカテゴリのクリックは、この種類の宿泊施設を選択する `$filter` 式によって実装されます。 ユーザーが "motels" をクリックしてモーテルだけを表示するように指示すると、アプリケーションが送信する次のクエリに $filter=category eq ‘motels’ が含まれます。
+
+次のコード スニペットでは、ユーザーがカテゴリ ファセットから値を選択した場合に、カテゴリをフィルターに追加します。
+
+```csharp
+if (categoryFacet != "")
+  filter = "category eq '" + categoryFacet + "'";
+```
+REST API を使用すると、要求は `$filter=category eq 'c1'` と示されます。 カテゴリを複数値フィールドにするには、構文として `$filter=category/any(c: c eq 'c1')` を使用します。
+
+## <a name="tips-and-workarounds"></a>ヒントと対処方法
+
+### <a name="initialize-a-page-with-facets-in-place"></a>ファセットが設定されたページを初期化する
+
+ファセットが設定されたページを初期化する場合は、ページの初期化の一環としてクエリを送信して、初期ファセット構造でページをシードできます。
+
+### <a name="preserve-a-facet-navigation-structure-asynchronously-of-filtered-results"></a>フィルター処理された結果のファセット ナビゲーション構造を非同期に保持する
+
+Azure Search のファセット ナビゲーションの課題の 1 つは、現在の結果に対してのみファセットが存在することです。 実際には、手順を遡って検索コンテンツで代替パスを探索することで、ユーザーが逆方向にナビゲートできるようにファセットの静的なセットを保持するのが一般的です。 
+
+これは一般的なユース ケースですが、現時点ではファセット ナビゲーション構造ですぐに利用できるものではありません。 静的なファセットを必要とする開発者は、通常、結果に適用されるクエリと、ナビゲーションのためにファセットの静的リストの作成に使用されるクエリの 2 つのフィルター処理されたクエリを発行してこの制限に対処しています。
+
+## <a name="see-also"></a>関連項目
+
++ [Azure Search のフィルター](search-filters.md)
++ [Index REST API の作成](https://docs.microsoft.com/rest/api/searchservice/create-index)
++ [Search Documents REST API](https://docs.microsoft.com/rest/api/searchservice/search-documents)
+

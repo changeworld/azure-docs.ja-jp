@@ -358,6 +358,7 @@
 ## [Java API](/java/api/overview/azure/servicefabric)
 ## [.NET](/dotnet/api/overview/azure/service-fabric?view=azure-dotnet)
 ## [REST ()](/rest/api/servicefabric)
+## [サービス モデルの XML スキーマ](service-fabric-service-model-schema.md)
 
 # リソース
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/)

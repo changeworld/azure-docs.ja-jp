@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/05/2017
 ms.author: ryanwi
-ms.openlocfilehash: 42a2542b7564f1692146b3e3927792ac339f30be
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c1ac13d50180909bbe55b01f47721387d1195d7
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="deploy-an-azure-service-fabric-linux-container-application-on-azure"></a>Azure Service Fabric Linux コンテナー アプリケーションを Azure にデプロイする
 Azure Service Fabric は、スケーラブルで信頼性に優れたマイクロサービスとコンテナーのデプロイと管理を行うための分散システム プラットフォームです。 
@@ -29,7 +29,7 @@ Azure Service Fabric は、スケーラブルで信頼性に優れたマイク�
 
 このクイックスタートでは、次の方法について説明します。
 > [!div class="checklist"]
-> * Service Fabric への Linux コンテナーのデプロイ
+> * Azure Linux Service Fabric クラスターへのコンテナーのデプロイ
 > * Service Fabric でのコンテナーのスケールとフェールオーバー
 
 ## <a name="prerequisite"></a>前提条件
@@ -52,6 +52,10 @@ cd service-fabric-dotnet-containers/Linux/container-tutorial/Voting
 
 ## <a name="deploy-the-containers-to-a-service-fabric-cluster-in-azure"></a>コンテナーを Azure の Service Fabric クラスターにデプロイする
 Azure 内のクラスターにアプリケーションをデプロイする場合、独自のクラスターかパーティー クラスターを使用します。
+
+> [!Note]
+> アプリケーションは、ローカル開発マシン上の Service Fabric クラスターではなく、Azure 上のクラスターにデプロイする必要があります。 
+>
 
 パーティー クラスターは、Azure でホストされている期間限定の無料 Service Fabric クラスターです。 Service Fabric チームによってサポートされており、誰でもアプリケーションをデプロイし、プラットフォームについて学ぶことができます。 パーティ クラスターにアクセスするには、[こちらの手順を実行します](http://aka.ms/tryservicefabric)。 
 

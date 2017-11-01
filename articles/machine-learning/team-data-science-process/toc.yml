@@ -34,7 +34,7 @@
 - name: Tutorials (チュートリアル)
   href: walkthroughs.md
   items:
-    - name: Azure Machine Learning Workbench
+    - name: Azure Machine Learning
       href: walkthroughs-aml-with-tdsp.md
       items:
         - name: 米国の所得の分類
@@ -219,16 +219,37 @@
                   href: cortana-analytics-playbook-vehicle-telemetry-powerbi.md
 - name: リソース
   items:
-    - name: TDSP のツールとユーティリティ - GitHub
-      href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+    - name: TDSP のツールとユーティリティ
       items:
-        - name: Team Data Science Process の最新のユーティリティ
+        - name: GitHub からのダウンロード
+          href: 'https://github.com/Azure/Azure-TDSP-Utilities'
+        - name: TDSP のデータ サイエンス ユーティリティ v.0.11
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/01/11/announcing-data-science-utilities-version-0-11-for-the-team-data-science-process/'
+        - name: TDSP の最新のユーティリティ
           href: 'https://blogs.technet.microsoft.com/machinelearning/2017/04/05/latest-rev-of-utilities-for-microsoft-team-data-science-process-tdsp-now-available/'
-    - name: Cortana Intelligence と Machine Learning のブログ
-      href: 'https://blogs.technet.microsoft.com/machinelearning/'
-    - name: MSDN フォーラム
-      href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
-    - name: スタック オーバーフロー
-      href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
-    - name: ビデオ
-      href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'
+    - name: ブログ
+      items:
+        - name: TDSP の最近の更新
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/10/09/the-microsoft-team-data-science-process-tdsp-recent-updates/'
+        - name: Azure Machine Learning での TDSP の使用
+          href: 'https://blogs.technet.microsoft.com/machinelearning/2017/09/25/using-the-team-data-science-process-tdsp-in-azure-machine-learning/'
+        - name: データ サイエンス プロジェクト計画のテンプレート
+          href: 'https://blogs.msdn.microsoft.com/buckwoody/2017/10/24/a-data-science-microsoft-project-template-you-can-use-in-your-solutions/'
+        - name: Cortana Intelligence と Machine Learning のブログ
+          href: 'https://blogs.technet.microsoft.com/machinelearning/'
+    - name: TDSP を使用している組織
+      items:
+        - name: New Signature
+          href: 'https://newsignature.com/services/professional-services/advanced-analytics/'
+        - name: BlueGranite
+          href: 'https://www.blue-granite.com/blog/getting-more-from-your-data-science-teams-organization-and-process-considerations'
+        - name: Microsoft Consulting Services
+          href: 'https://www.microsoft.com/en-us/microsoftservices/business-analytics.aspx'
+    - name: Microsoft の関連リソース
+      items:
+        - name: MSDN フォーラム
+          href: 'https://social.msdn.microsoft.com/forums/azure/home?forum=MachineLearning'
+        - name: スタック オーバーフロー
+          href: 'http://stackoverflow.com/questions/tagged/azure-machine-learning'
+        - name: ビデオ
+          href: 'https://azure.microsoft.com/resources/videos/index/?services=machine-learning'

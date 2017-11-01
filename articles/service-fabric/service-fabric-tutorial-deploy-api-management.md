@@ -9,16 +9,16 @@ editor:
 ms.assetid: 
 ms.service: service-fabric
 ms.devlang: dotNet
-ms.topic: article
+ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/13/2017
 ms.author: ryanwi
-ms.openlocfilehash: 705212675fc0a869a4374f621d5f2d7e035294dd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d98d2823c19f24a2d9040f7959bd5189bd6bcc16
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="deploy-api-management-with-service-fabric"></a>Service Fabric を使用して API Management をデプロイする
 このチュートリアルは、シリーズの第 2 部です。 このチュートリアルでは、Service Fabric を使用して [Azure API Management](../api-management/api-management-key-concepts.md) をセットアップし、Service Fabric のバックエンド サービスにトラフィックをルーティングする方法について示します。  完了すると、トラフィックをバックエンド ステートレス サービスに送信するよう API 操作が構成された状態で、API Management が VNET にデプロイされます。 Service Fabric を使用する Azure API Management のその他のシナリオについては、[概要](service-fabric-api-management-overview.md)を参照してください。
@@ -42,11 +42,11 @@ ms.lasthandoff: 10/11/2017
 - Azure サブスクリプションをお持ちでない場合は、[無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)を作成します。
 - [Azure PowerShell モジュールのバージョン 4.1 以上](https://docs.microsoft.com/powershell/azure/install-azurerm-ps)または [Azure CLI 2.0](/cli/azure/install-azure-cli) をインストールします。
 - セキュリティで保護された [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)または [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を Azure に作成します。
+- Windows クラスターをデプロイする場合は、Windows 開発環境を設定します。 [Visual Studio 2017](http://www.visualstudio.com)、**Azure 開発**ワークロード、**ASP.NET および Web 開発**ワークロード、**.NET Core クロス プラットフォーム開発**ワークロードをインストールします。  その後、[.NET 開発環境](service-fabric-get-started.md)をセットアップします。
+- Linux クラスターをデプロイする場合は、Java 開発環境を [Linux](service-fabric-get-started-linux.md) または [MacOS](service-fabric-get-started-mac.md) にセットアップします。  [Service Fabric CLI](service-fabric-cli.md) をインストールします。 
 
-## <a name="sign-in-to-azure-and-select-your-subscription"></a>Azure にサインインしてサブスクリプションを選択します。
-このチュートリアルでは、[Azure PowerShell][azure-powershell] を使用します。 新しい PowerShell セッションを開始するときに、Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
- 
-Azure アカウントにサインインしてサブスクリプションを選択します。
+## <a name="sign-in-to-azure-and-select-your-subscription"></a>Azure にサインインしてサブスクリプションを選択する
+Azure アカウントにサインインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
 
 ```powershell
 Login-AzureRmAccount
@@ -193,9 +193,9 @@ print(response.text)
 
 ## <a name="deploy-a-service-fabric-back-end-service"></a>Service Fabric のバックエンド サービスのデプロイ
 
-Service Fabric を API Management へのバックエンドとして構成したので、次は Service Fabric サービスにトラフィックを送信する API のバックエンド ポリシーを作成できます。 ただしその前に、要求を受け入れるためには、Service Fabric でサービスが実行している必要があります。
+Service Fabric を API Management へのバックエンドとして構成したので、次は Service Fabric サービスにトラフィックを送信する API のバックエンド ポリシーを作成できます。 ただしその前に、要求を受け入れるためには、Service Fabric でサービスが実行している必要があります。  [Windows クラスター](service-fabric-tutorial-create-vnet-and-windows-cluster.md)を以前に作成している場合、.NET Service Fabric サービスをデプロイします。  [Linux クラスター](service-fabric-tutorial-create-vnet-and-linux-cluster.md)を以前に作成している場合、Java Service Fabric サービスをデプロイします。
 
-### <a name="create-a-service-fabric-service-with-an-http-endpoint"></a>HTTP エンドポイントを持つ Service Fabric サービスの作成
+### <a name="deploy-a-net-service-fabric-service"></a>.NET Service Fabric サービスをデプロイする
 
 このチュートリアルでは、既定の Web API プロジェクト テンプレートを使用して、基本的なステートレス ASP.NET Core リライアブル サービスを作成します。 これにより、サービスの HTTP エンドポイントが作成され、Azure API Management を通じて公開することができます。
 
@@ -203,9 +203,7 @@ Service Fabric を API Management へのバックエンドとして構成した�
 /api/values
 ```
 
-まず、[ASP.NET Core 開発のための開発環境を設定](service-fabric-add-a-web-frontend.md#set-up-your-environment-for-aspnet-core)します。
-
-開発環境を設定したら、Visual Studio を管理者として起動し、ASP.NET Core サービスを作成します。
+Visual Studio を管理者として起動し、ASP.NET Core サービスを作成します。
 
  1. Visual Studio で、[ファイル] の [新しいプロジェクト] を選択します。
  2. [クラウド] の下にある Service Fabric アプリケーション テンプレートを選択し、**"ApiApplication"** という名前を付けます。
@@ -233,9 +231,45 @@ Service Fabric を API Management へのバックエンドとして構成した�
 
     これが、Azure の API Management を通じて公開するエンドポイントになります。
 
- 7. 最後に、アプリケーションを Azure のクラスターにデプロイします。 [Visual Studio を使用](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box)し、Application プロジェクトを右クリックして **[公開]** を選択します。 クラスター エンドポイント (`mycluster.westus.cloudapp.azure.com:19000` など) を指定して、アプリケーションを Azure の Service Fabric クラスターにデプロイします。
+ 7. 最後に、アプリケーションを Azure のクラスターにデプロイします。 [Visual Studio を使用](service-fabric-publish-app-remote-cluster.md#to-publish-an-application-using-the-publish-service-fabric-application-dialog-box)し、Application プロジェクトを右クリックして **[公開]** を選択します。 クラスター エンドポイント (`mycluster.southcentralus.cloudapp.azure.com:19000` など) を指定して、アプリケーションを Azure の Service Fabric クラスターにデプロイします。
 
 `fabric:/ApiApplication/WebApiService` という名前の ASP.NET Core ステートレス サービスが、Azure の Service Fabric クラスターで実行されているはずです。
+
+### <a name="create-a-java-service-fabric-service"></a>Java Service Fabric サービスを作成する
+このチュートリアルでは、ユーザーにメッセージをエコー バックする基本的な Web サーバーをデプロイします。 このエコー サーバー サンプル アプリケーションは、Azure API Management を通じて公開することができる、サービスの HTTP エンドポイントを含みます。
+
+1. Java の入門サンプルを複製します。
+
+   ```bash
+   git clone https://github.com/Azure-Samples/service-fabric-java-getting-started.git
+   cd service-fabric-java-getting-started
+   ```
+
+2. *Services/EchoServer/EchoServer1.0/EchoServerApplication/EchoServerPkg/ServiceManifest.xml* を編集します。 サービスがポート 8081 でリッスンするようエンドポイントを変更します。
+
+   ```xml
+   <Endpoint Name="WebEndpoint" Protocol="http" Port="8081" />
+   ```
+
+3. *ServiceManifest.xml* を保存し、EchoServer1.0 アプリケーションをビルドします。
+
+   ```bash
+   cd Services/EchoServer/EchoServer1.0/
+   gradle
+   ```
+
+4. アプリケーションをクラスターにデプロイします。
+
+   ```bash
+   cd Scripts
+   sfctl cluster select --endpoint http://mycluster.southcentralus.cloudapp.azure.com:19080
+   ./install.sh
+   ```
+
+   `fabric:/EchoServerApplication/EchoServerService` という名前の Java ステートレス サービスが、Azure の Service Fabric クラスターで実行されているはずです。
+
+5. ブラウザーを開き、「http://mycluster.southcentralus.cloudapp.azure.com:8081/getMessage」と入力すると、"[version 1.0]Hello World !!!" と 表示されます。
+
 
 ## <a name="create-an-api-operation"></a>API 操作の作成
 

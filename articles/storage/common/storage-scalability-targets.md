@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 07/12/2017
 ms.author: tamram
-ms.openlocfilehash: 1ed933493da1842201bb9293f514ea4d0e7a75ce
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abaad01bbf7a11ad078c79d7c192ef3f84812178
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
 ## <a name="overview"></a>概要
@@ -36,8 +36,27 @@ ms.lasthandoff: 10/11/2017
 
 アプリケーションで必要とされるスケーラビリティが、単一ストレージ アカウントあたりのスケーラビリティ ターゲットを超えている場合、複数のストレージ アカウントを使用し、それらのストレージ アカウント間でデータが分割されるようにアプリケーションを構築できます。 ボリューム価格については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
-## <a name="scalability-targets-for-blobs-queues-tables-and-files"></a>Blob、キュー、テーブル、およびファイルのスケーラビリティ ターゲット
+## <a name="scalability-targets-for-a-storage-account"></a>ストレージ アカウントのスケーラビリティ ターゲット
 [!INCLUDE [azure-storage-limits](../../../includes/azure-storage-limits.md)]
+
+[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
+
+## <a name="azure-blob-storage-scale-targets"></a>Azure Blob Storage のスケール ターゲット
+[!INCLUDE [storage-blob-scale-targets](../../../includes/storage-blob-scale-targets.md)]
+
+## <a name="azure-files-scale-targets"></a>Azure Files のスケール ターゲット
+Azure Files と Azure File Sync のスケールおよびパフォーマンス ターゲットの詳細については、「[Azure Files scalability and performance targets (Azure Files のスケーラビリティおよびパフォーマンス ターゲット)](../files/storage-files-scale-targets.md)」を参照してください。
+
+[!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]
+
+### <a name="azure-file-sync-scale-targets"></a>Azure File Sync のスケール ターゲット
+[!INCLUDE [storage-sync-files-scale-targets](../../../includes/storage-sync-files-scale-targets.md)]
+
+## <a name="azure-queue-storage-scale-targets"></a>Azure Queue Storage のスケール ターゲット
+[!INCLUDE [storage-queues-scale-targets](../../../includes/storage-queues-scale-targets.md)]
+
+## <a name="azure-table-storage-scale-targets"></a>Azure Table Storage のスケール ターゲット
+[!INCLUDE [storage-table-scale-targets](../../../includes/storage-tables-scale-targets.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
 ## <a name="scalability-targets-for-virtual-machine-disks"></a>仮想マシンのディスクのスケーラビリティ ターゲット
@@ -53,27 +72,6 @@ ms.lasthandoff: 10/11/2017
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../../../includes/azure-storage-limits-vm-disks-standard.md)]
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../../../includes/azure-storage-limits-vm-disks-premium.md)]
-
-## <a name="scalability-targets-for-azure-resource-manager"></a>Azure リソース マネージャーのスケーラビリティ ターゲット
-[!INCLUDE [azure-storage-limits-azure-resource-manager](../../../includes/azure-storage-limits-azure-resource-manager.md)]
-
-## <a name="partitions-in-azure-storage"></a>Azure Storage 内のパーティション
-Azure Storage に格納されているデータを含むすべてのオブジェクト (BLOB、メッセージ、エンティティ、およびファイル) はパーティションに属し、パーティション キーによって識別されます。 Azure Storage では、BLOB、メッセージ、エンティティ、およびファイルのトラフィック ニーズに合わせて、どのようにこれらのオブジェクトの負荷をサーバー間で分散するかがパーティションによって決まります。 パーティション キーは一意であり、BLOB、メッセージ、またはエンティティを見つけるために使用されます。
-
-上の「 [標準的なストレージ アカウントのスケーラビリティ ターゲット](#standard-storage-accounts) 」の表は、サービスごとの 1 つのパーティションにおけるパフォーマンス ターゲットの一覧です。
-
-パーティションは、各ストレージ サービスの負荷分散およびスケーラビリティに以下のような影響を与えます。
-
-* **BLOB**: BLOB のパーティション キーは、アカウント名とコンテナー名と BLOB 名を組み合わせたものです。 つまり、BLOB への負荷からの要求に応じて、各 BLOB は独自のパーティションを持つことができます。 BLOB は、アクセスをスケールアウトするために多数のサーバーに分散させることができますが、1 つの BLOB を処理できるのは 1 台のサーバーのみです。 BLOB は BLOB コンテナーに論理的にグループ化できますが、このグループ化によってパーティション分割は影響を受けません。
-* **ファイル**: ファイルのパーティション キーは、アカウント名とファイル共有を組み合わせた名前です。 これは、ファイル共有内のすべてのファイルも、1 つのパーティションに存在することを意味します。
-* **メッセージ**: メッセージのパーティション キーはアカウント名とキュー名の組み合わせであるため、キュー内のすべてのメッセージは 1 つのパーティションにグループ化され、1 台のサーバーで処理されます。 ストレージ アカウント内のキューがどんなに多くとも、負荷が分散されるように、異なるキューが別のサーバーによって処理されることがあります。
-* **エンティティ**: エンティティのパーティション キーは、アカウント名とテーブル名とパーティション キーを組み合わせたものです。ここでパーティション キーは、エンティティに必要なユーザー定義された **PartitionKey** プロパティの値です。 同じパーティション キー値を持つすべてのエンティティは、同じパーティションにグループ化され、同じパーティション サーバーで処理されます。 これは、アプリケーションを設計する際に理解しておくべき重要なポイントです。 アプリケーションでは、エンティティを複数のパーティションに分散することで得られるスケーラビリティ上のメリットと、エンティティを 1 つのパーティションにグループ化することで得られるデータ アクセスのメリットのバランスをとってください。  
-
-テーブル内のエンティティのセットを単一のパーティションにグループ化する主な利点は、パーティションが 1 台のサーバー上にあるため、同じパーティション内のエンティティすべてにアトミック バッチ操作を実行できるということです。 そのため、エンティティのグループに対してバッチ操作を実行する場合は、同じパーティション キーでエンティティをグループ化することを検討します。 
-
-一方、同じテーブル内にあっても、パーティション キーが異なるエンティティは、異なるサーバー間で負荷分散できるため、スケーラビリティもさらに大きくなります。
-
-テーブルのパーティション分割方法の設計に関する詳しい推奨事項については、 [こちら](https://msdn.microsoft.com/library/azure/hh508997.aspx)をご覧ください。
 
 ## <a name="see-also"></a>関連項目
 * [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)

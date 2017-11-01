@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: f79910ba4fea81e88fce90dd67ba7cb4db2e8220
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f39faea6b7e0886d63085b752f9532a7010ea941
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-machine-learning-workbench---known-issues-and-troubleshooting-guide"></a>Azure Machine Learning Workbench - 既知の問題とトラブルシューティング ガイド 
 この記事は、Azure Machine Learning Workbench アプリケーションの使用の一環として発生したエラーや障害を見つけて修正するのに役立ちます。 
@@ -83,6 +83,9 @@ Azure ML Workbench での作業中に、アプリケーション シェルの左
 - Mac では、テキストのクラスタリング変換はサポートされていません。
 
 - RevoScalePy ライブラリは、Windows または Linux (Docker コンテナー) でのみサポートされています。 macOS ではサポートされていません。
+
+## <a name="file-name-too-long-on-windows"></a>Windows では長すぎるファイル名
+Windows で Workbench を使用している場合、既定で最大 260 文字のファイル名の長さ制限に遭遇することがあります。これにより、"指定されたパスが見つかりません" という誤解を招くエラーが表示される可能性があります。 さらに長いファイル パス名が許可されるようにレジストリ キーの設定を変更できます。 _MAX_PATH_ レジストリ キーを設定する方法の詳細については、[この記事](https://msdn.microsoft.com/en-us/library/windows/desktop/aa365247%28v=vs.85%29.aspx?#maxpath)を参照してください。
 
 ## <a name="docker-error-read-connection-refused"></a>Docker エラー "read: connection refused"
 ローカル Docker コンテナーに対して実行しているときに、次のエラーが表示される場合があります。 

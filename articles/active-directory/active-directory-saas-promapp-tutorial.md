@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/03/2017
+ms.date: 10/17/2017
 ms.author: jeedes
-ms.openlocfilehash: 27013ca9724cf2f57fc85f5f4ccb71921ca57a3b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a9cd70b048d454009d8741f394fed0b6b93fcab7
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="tutorial-azure-active-directory-integration-with-promapp"></a>チュートリアル: Azure Active Directory と Promapp の統合
 
@@ -106,40 +106,57 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
  
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_samlbase.png)
 
-3. **[Promapp のドメインと URL]** セクションで、次の手順に従います。
+3. **[Promapp のドメインと URL]** セクションで、**IDP** 開始モードでアプリケーションを構成する場合は、次の手順に従います。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url.png)
 
-    a. **[サインオン URL]** ボックスに、`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate` のパターンを使用して URL を入力します。
+    a. **[識別子]** ボックスに、次のパターンで URL を入力します。
+    | |
+    |--|
+    | `https://demo.promapp.com/TENANTNAME`|
+    | `https://go.promapp.com/TENANTNAME`|
+    | `https://demoau.promapp.com/TENANTNAME`|
+    | `https://au.promapp.com/TENANTNAME`|
+    | `https://demous.promapp.com/TENANTNAME`|
+    | `https://us.promapp.com/TENANTNAME`|
+    | `https://dev.promapp.com/TENANTNAME`|
+    | `https://test.promapp.com/TENANTNAME`|
+    | `https://staging.promapp.com/TENANTNAME`|
+    
+    b. **[応答 URL]** ボックスに、`https://DOMAINNAME.promapp.com/azuread/saml/authenticate.aspx` のパターンを使用して URL を入力します。
 
-    b. **[識別子]** ボックスに、`https://DOMAINNAME.promapp.com/TENANTNAME` の形式で URL を入力します。
+4. アプリケーションを **SP** 開始モードで構成する場合は、**[詳細な URL 設定の表示]** チェックボックスをオンにして次の手順を実行します。
+
+    ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_url1.png)
+
+    **[サインオン URL]** ボックスに、`https://DOMAINNAME.promapp.com/TENANTNAME/saml/authenticate` のパターンを使用して URL を入力します。
 
     > [!NOTE] 
-    > これらは実際の値ではありません。 実際のサインオン URL と識別子でこれらの値を更新してください。 これらの値を取得するには、[Promapp クライアント サポート チーム](https://www.promapp.com/about-us/contact-us/)に連絡してください。
+    > これらは実際の値ではありません。 実際のサインオン URL、識別子、および応答 URL で値を更新します。 これらの値を取得するには、[Promapp クライアント サポート チーム](https://www.promapp.com/about-us/contact-us/)に連絡してください。
 
-4. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
+5. **[SAML 署名証明書]** セクションで、**[証明書 (Base64)]** をクリックし、コンピューターに証明書ファイルを保存します。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_certificate.png) 
 
-5. **[保存]** ボタンをクリックします。
+6. **[保存]** ボタンをクリックします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_general_400.png)
 
-6. **[Promapp Configuration] (Promapp 構成)** セクションで、**[Configure Promapp] (Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
+7. **[Promapp Configuration] (Promapp 構成)** セクションで、**[Configure Promapp] (Promapp を構成する)** をクリックして、**[サインオンの構成]** ウィンドウを開きます。 **[クイック リファレンス]** セクションから **SAML シングル サインオン サービスの URL** をコピーします。
 
     ![[シングル サインオンの構成]](./media/active-directory-saas-promapp-tutorial/tutorial_promapp_configure.png) 
 
-7. Promapp 企業サイトに管理者としてサインオンします。 
+8. Promapp 企業サイトに管理者としてサインオンします。 
 
-8. 上部のメニューで **[管理者]**をクリックします。 
+9. 上部のメニューで **[管理者]**をクリックします。 
    
     ![Azure AD Single Sign-On][12]
 
-9. **[構成]**をクリックします。 
+10. **[構成]**をクリックします。 
    
     ![Azure AD Single Sign-On][13]
 
-10. **[Security]** ダイアログで、次の手順を実行します。
+11. **[Security]** ダイアログで、次の手順を実行します。
    
     ![Azure AD のシングル サインオン][14]
     
@@ -147,7 +164,10 @@ Promapp で Azure AD のシングル サインオンを構成してテストす�
     
     b. **[SSO - Single Sign-on Mode]** として **[Optional]** を選択し、**[Save]** をクリックします。
 
-    c. ダウンロードした証明書をメモ帳で開き、最初の行 (-----BEGIN CERTIFICATE-----) と最後の行 (-----END CERTIFICATE-----) を除く証明書の内容をコピーして、**[SSO-x.509 Certificate]** に貼り付け、**[Save]** をクリックします。
+    > [!NOTE]
+    > **Optional** モードはテスト目的専用です。 構成に問題がなければ、**Required** モードを選択し、Azure AD を使用してすべてのユーザーに認証を強制します。
+
+    c. ダウンロードした証明書をメモ帳で開き、最初の行 (----**BEGIN CERTIFICATE**-----) と最後の行 (-----**END CERTIFICATE**-----) を除く証明書の内容をコピーして、**[SSO-x.509 Certificate]** に貼り付け、**[Save]** をクリックします。
         
 > [!TIP]
 > アプリのセットアップ中、[Azure Portal](https://portal.azure.com) 内で上記の手順の簡易版を確認できるようになりました。  **[Active Directory] の [エンタープライズ アプリケーション]** セクションからこのアプリを追加した後、**[シングル サインオン]** タブをクリックし、一番下の **[構成]** セクションから組み込みドキュメントにアクセスするだけです。 組み込みドキュメント機能の詳細については、[Azure AD の組み込みドキュメント]( https://go.microsoft.com/fwlink/?linkid=845985)に関する記事をご覧ください。
@@ -222,7 +242,9 @@ Promapp アプリケーションでは、ジャストインタイム プロビ�
 
 このセクションの目的は、アクセス パネルを使用して Azure AD の SSO 構成をテストすることです。
 
-アクセス パネルで [Promapp] タイルをクリックすると、自動的に Promapp アプリケーションにサインオンします。
+**IDP** 開始モードでアプリケーションをテストするには、アクセス パネルで [Promapp] タイルをクリックしたときに、自動的に Promapp アプリケーションにサインオンする必要があります。
+
+**SP** 開始モードでアプリケーションをテストするには、Promapp サイトから認証を開始する必要があります。 これは、**Optional** モードが有効になっているときに、ログイン時にパスワード フィールドを空白のままにすることで行えます。
 
 ## <a name="additional-resources"></a>その他のリソース
 

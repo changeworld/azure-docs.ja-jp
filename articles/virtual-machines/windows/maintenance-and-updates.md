@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure での Windows VM のメンテナンスと更新 | Microsoft Docs"
 description: "Azure で実行されている Windows 仮想マシンのメンテナンスと更新の概要。"
 services: virtual-machines-windows

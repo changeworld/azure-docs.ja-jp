@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 881ce13b6e4b10064294e590431434b29da3fb33
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 24552ef153f5aa601b2998129a7bbacc8f9da6bf
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="monitor-your-on-premises-identity-infrastructure-and-synchronization-services-in-the-cloud"></a>クラウド内のオンプレミスの ID インフラストラクチャと同期サービスの監視
 Azure Active Directory (Azure AD) Connect Health では、オンプレミスの ID インフラストラクチャと同期サービスを監視、分析できます。 これを使用すると、Active Directory フェデレーション サービス (AD FS) サーバー、Azure AD Connect サーバー (同期エンジン)、Active Directory ドメイン コントローラーなど、お使いの主要な ID コンポーネントの監視機能が用意されているため、Office 365 と Microsoft Online Services への信頼性の高い接続を維持できます。また、これらのコンポーネントの主要なデータ ポイントにアクセスしやすくなるため、使用状況やその他の重要な分析を取得して、しかるべき情報に基づく判断ができるようになります。
@@ -27,8 +27,8 @@ Azure Active Directory (Azure AD) Connect Health では、オンプレミスの 
 
 ![What is Azure AD Connect Health](./media/active-directory-aadconnect-health/aadconnecthealth2.png)
 
-Azure AD Connect Health の機能の増加に伴い、ID というレンズを使用した単一のダッシュボードがポータルに用意されました。 より強固で正常な統合環境が提供され、お客様のユーザーの生産性が向上します。
 
+Azure AD Connect Health の機能の増加に伴い、ID というレンズを使用した単一のダッシュボードがポータルに用意されました。 より強固で正常な統合環境が提供され、お客様のユーザーの生産性が向上します。
 ## <a name="why-use-azure-ad-connect-health"></a>Azure AD Connect Health を使用する理由
 オンプレミスのディレクトリと Azure AD を統合すると、クラウドとオンプレミスの両方のリソースに共通の ID でアクセスできるため、ユーザーの生産性が向上します。 ただし、この統合には課題があります。ユーザーが任意のデバイスからオンプレミスとクラウド両方のリソースに安全にアクセスできるように、この環境の正常性を確保する必要があります。 Azure AD Connect Health では、Office 365 または他の Azure AD アプリケーションにアクセスするときに使用するオンプレミスの ID インフラストラクチャを監視して分析することができます。 オンプレミスの各 ID サーバーにエージェントをインストールするぐらいにシンプルです。
 
@@ -40,11 +40,14 @@ Azure AD Connect Health for AD FS では、Windows Server 2008 R2、Windows Serv
 * AD FS の容量計画に役立つ、パフォーマンス データの傾向を表示する
 * AD FS の利用方法を把握するのに役立つように、(アプリ、ユーザー、ネットワークの場所などの) ピボットで AD FS サインインの使用状況を分析する
 * 無効なユーザー名とパスワードによる試行を行った上位 50 人のユーザーと直近の IP アドレスなど、AD FS に関するレポートを作成する
+  
+[AD FS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adfs.md)の詳細を確認してください
 
 次のビデオでは、Azure AD Connect Health for AD FS の概要について説明します。
 
 > [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD-Connect-Health--Monitor-you-identity-bridge/player]
 >
+
 >
 
 ## <a name="azure-ad-connect-health-for-syncactive-directory-aadconnect-health-syncmd"></a>[Azure AD Connect Health for Sync](active-directory-aadconnect-health-sync.md)
@@ -55,6 +58,8 @@ Azure AD Connect Health for Sync は、オンプレミスの Active Directory �
 * 同期操作の待ち時間を示すグラフと各種操作 (追加、更新、削除など) の傾向を含む、同期操作の分析を行う
 * 同期プロパティ、最後に正常に行われた Azure AD へのエクスポートについての概要情報を表示する
 * オブジェクトレベルの同期エラーについてレポートするのに \(Azure AD Premium は不要\)
+
+[Azure AD Connect Health for Sync の使用](active-directory-aadconnect-health-sync.md)の詳細を確認してください
 
 次のビデオでは、Azure AD Connect Health for Sync の概要について説明します。
 
@@ -69,6 +74,8 @@ Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2、Windows 
 * [ドメイン コントローラー] ダッシュボード。ドメイン コントローラーの正常性と運用状態を把握できるクイック ビューアーが用意されています
 * [レプリケーションの状態] ダッシュボード。レプリケーションに関する直近の情報のほか、エラーが検出された場合はトラブルシューティング ガイドへのリンクが表示されます
 * 使用頻度の高いパフォーマンス カウンターのパフォーマンス データ グラフへの迅速なアクセス。トラブルシューティングと監視を行ううえで必要不可欠です
+
+[AD DS での Azure AD Connect Health の使用](active-directory-aadconnect-health-adds.md)の詳細を確認してください
 
 次のビデオでは、Azure AD Connect Health for AD DS の概要について説明します。
 

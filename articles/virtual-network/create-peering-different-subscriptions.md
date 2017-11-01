@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 13e9e83dc277d8e88ab46d8d51b3f4a70ccd3b46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43dffa5a095545499b8cc4989af746a6290e4cf7
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions"></a>仮想ネットワーク ピアリングを作成する - Resource Manager、異なるサブスクリプション 
 
@@ -38,7 +38,7 @@ ms.lasthandoff: 10/11/2017
   > [!WARNING]
   > 異なるリージョン内の仮想ネットワーク間での仮想ネットワーク ピアリングの作成は、現在プレビュー段階にあります。 下でサブスクリプションをプレビューに登録できます。 このシナリオで作成された仮想ネットワーク ピアリングは、一般公開リリースのシナリオで作成する仮想ネットワーク ピアリングと同じレベルの可用性と信頼性が確保されない場合があります。 また、このシナリオで作成された仮想ネットワーク ピアリングはサポート対象ではなく、機能が制限されることがあり、Azure リージョンによっては、利用できない場合もあります。 この機能の可用性とステータスに関する最新の通知については、[Azure Virtual Network の更新情報](https://azure.microsoft.com/updates/?product=virtual-network)に関するページをご覧ください。
 
-クラシック デプロイ モデルを使用してデプロイされた 2 つの仮想ネットワーク間に仮想ネットワーク ピアリングを作成することはできません。どちらもクラシック デプロイ モデルを使用して作成されたか、または異なる Azure リージョン内に存在する仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使用してそれらの仮想ネットワークを接続できます。 
+クラシック デプロイメント モデルでデプロイされた 2 つの仮想ネットワークの間に、仮想ネットワーク ピアリングを作成することはできません。 どちらもクラシック デプロイメント モデルで作成された仮想ネットワーク、または異なる Azure リージョンに存在する仮想ネットワークを接続する必要がある場合は、Azure [VPN Gateway](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) を使ってそれらの仮想ネットワークを接続できます。 
 
 仮想ネットワーク ピアリングは、[Azure Portal](#portal)、Azure [コマンド ライン インターフェイス](#cli) (CLI)、Azure [PowerShell](#powershell)、[Azure Resource Manager テンプレート](#template)のいずれかを使って作成できます。 いずれかのリンクをクリックすると、そのツールを使って仮想ネットワーク ピアリングを作成するための手順に直接移動します。
 
@@ -158,7 +158,6 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       --scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
     
-     UserB に対するアクセス許可の割り当ては、必須ではありません。 ユーザーが個々の仮想ネットワークに対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。 ローカル仮想ネットワークのネットワーク共同作成者として myVNetB の特権ユーザーを追加すると、設定が簡単になります。
 3. `az logout` コマンドを使って UserA として Azure からログアウトした後、UserB として Azure にログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
 4. myVnetB を作成します。 PC で、手順 2 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を SubscriptionB の ID に置き換えます。 10.0.0.0/16 を 10.1.0.0/16 に、すべての A を B に、すべての B を A に変更します。変更後のスクリプトをコピーし、CLI セッションに貼り付けて、`Enter` キーを押します。 
 5. UserB として Azure をログアウトし、UserA として Azure にログインします。
@@ -232,7 +231,6 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
       -Scope /subscriptions/<SubscriptionA-Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/VirtualNetworks/myVnetA
     ```
 
-    UserB に対するアクセス許可の割り当ては、必須ではありません。 ユーザーが個々の仮想ネットワークに対して個別にピアリング要求を行った場合でも、双方の要求が合致すればピアリングは確立されます。 ローカル仮想ネットワークのユーザーとして他の仮想ネットワークの特権ユーザーを追加すると、設定が簡単になります。
 5. Azure から UserA をログアウトし、UserB でログインします。 ログインに使用するアカウントには、仮想ネットワーク ピアリングを作成するためのアクセス許可が必要です。 詳細については、この記事の「[アクセス許可](#permissions)」セクションを参照してください。
 6. PC で、手順 4 のスクリプトの内容をテキスト エディターにコピーします。 `<SubscriptionA-Id>` を、サブスクリプション B の ID に置き換えます。10.0.0.0/16 を 10.1.0.0/16 に変更します。 すべての A を B に、すべての B を A に変更します。スクリプトを実行するには、変更後のスクリプトをコピーし、PowerShell に貼り付けて、`Enter` キーを押します。
 7. Azure から UserB をログアウトし、UserA でログインします。
@@ -272,7 +270,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 
 ## <a name="template"></a>ピアリングの作成 - Resource Manager テンプレート
 
-1. この記事の[ポータル](#portal)[Azure CLI](#cli) または [PowerShell](#powershell) の項の手順を完了して、仮想ネットワークを作成し、適切な[アクセス許可](#permissions)を各サブスクリプションのアカウントに割り当てます。
+1. 仮想ネットワークを作成し、適切な[アクセス許可](#permissions)を各サブスクリプションのアカウントに割り当てるには、この記事の[ポータル](#portal)、[Azure CLI](#cli)、または [PowerShell](#powershell) のセクションの手順を完了します。
 2. 次のテキストをローカル コンピューター上のファイルに保存します。 `<subscription ID>` は、UserA のサブスクリプション ID で置き換えてください。 たとえば、このファイルを vnetpeeringA.json として保存します。
 
     ```json
@@ -307,7 +305,7 @@ CLI とその依存関係をインストールする代わりに、Azure Cloud S
 4. 手順 2 のサンプル json をコンピューター上のファイルにコピーして、次から始まる行を変更します。
     - **name**: *myVnetA/myVnetAToMyVnetB* を *myVnetB/myVnetBToMyVnetA* に変更します。
     - **id**: `<subscription ID>` を UserB のサブスクリプション ID で置き換え、*myVnetB* を *myVnetA* に変更します。
-5. 再び手順 3 を行います。ここでは Azure に UserB としてログインします。
+5. 再び手順 3. を行います。ここでは Azure に UserB としてログインします。
 6. **(省略可)** このチュートリアルでは仮想マシンの作成について説明していませんが、それぞれの仮想ネットワークに仮想マシンを作成し、一方の仮想マシンからもう一方の仮想マシンに接続することで接続を検証することができます。
 7. **(省略可)** このチュートリアルで作成したリソースを削除するには、Azure Portal、PowerShell、Azure CLI のいずれかを使って、この記事の「[リソースの削除](#delete)」セクションの手順を実行してください。
 

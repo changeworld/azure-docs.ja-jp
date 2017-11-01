@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: Identity
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: f23443d438c95a784f655fb9a5f20dfcf37be189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4041cacd72b1db74012497287030faf5d05ee6bf
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-ad-connect-design-concepts"></a>Azure AD Connect: 設計概念
 このトピックの目的は、Azure AD Connect の実装設計時に検討する必要がある領域について説明することです。 ここでは特定の領域について詳しく説明しますが、これらの概念については、他のトピックでも簡単に説明しています。
@@ -150,9 +150,15 @@ Azure AD Connect を高速モードでインストールする場合、sourceAnc
 
    ![既存のデプロイで ConsistencyGuid を有効にする - 手順 6](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeployment04.png)
 
-解析中 (手順 4) で、ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されているとウィザードにより判断され、以下の図のようなエラーが返されます。 この属性が、既存のアプリケーションで使用されていないことが確実である場合は、サポートに連絡してエラーの抑制方法を入手する必要があります。
+解析中 (手順 4) で、ディレクトリ内の少なくとも 1 つのオブジェクトに対してこの属性が構成済みであった場合は、この属性が他のアプリケーションによって使用されているとウィザードにより判断され、以下の図のようなエラーが返されます。 このエラーは、プライマリの Azure AD Connect サーバーで以前に ConsistencyGuid 機能を有効にしていて、同じ操作をステージング サーバーで実行しようした場合にも発生することがあります。
 
 ![既存のデプロイで ConsistencyGuid を有効にする - エラー](./media/active-directory-aadconnect-design-concepts/consistencyguidexistingdeploymenterror.png)
+
+ 属性が他の既存のアプリケーションで使用されていないことがわかっている場合は、**/SkipLdapSearchcontact** を指定して Azure AD Connect ウィザードを再起動することで、エラーを抑制することができます。 これを行うには、コマンド プロンプトで次のコマンドを実行します。
+
+```
+"c:\Program Files\Microsoft Azure Active Directory Connect\AzureADConnect.exe" /SkipLdapSearch
+```
 
 ### <a name="impact-on-ad-fs-or-third-party-federation-configuration"></a>AD FS の構成またはサードパーティのフェデレーションの構成に対する影響
 Azure AD Connect を使用してオンプレミス AD FS デプロイを管理している場合、同じ AD 属性を sourceAnchor として使用するように、要求規則が自動的に更新されます。 これによって、ADFS によって生成される ImmutableID 要求と Azure AD にエクスポートされる sourceAnchor 値との整合性が確実に保たれます。

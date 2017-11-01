@@ -208,7 +208,7 @@
 #### [ユーザー アカウントのプロビジョニング管理](active-directory-enterprise-apps-manage-provisioning.md)
 #### [エンタープライズ アプリのシングル サインオンの管理](active-directory-enterprise-apps-manage-sso.md)
 #### [SAML アプリの詳細な証明書署名](active-directory-enterprise-apps-advance-certificate-options.md)
-####[Azure Active Directory でユーザーのエクスペリエンスを非表示にする](active-directory-coreapps-hide-third-party-app.md)
+#### [ユーザーのエクスペリエンスでサードパーティ アプリを非表示にする](active-directory-coreapps-hide-third-party-app.md)
 
 ### [アプリへのアクセスを管理する](active-directory-managing-access-to-apps.md)
 #### [セルフ サービス アクセス](active-directory-self-service-application-access.md)

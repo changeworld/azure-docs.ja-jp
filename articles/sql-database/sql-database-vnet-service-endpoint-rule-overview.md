@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: 
-ms.date: 10/09/2017
+ms.date: 10/13/2017
 ms.author: genemi
-ms.openlocfilehash: f62184d97b18d72b91d63db0e449bbab6c20a179
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b15727ae6c7b4d0f1595d506cb8d0f66ec3abfe4
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database"></a>Azure SQL Database の Virtual Network サービス エンドポイントと規則の使用
 
@@ -125,6 +125,9 @@ Virtual Network サービス エンドポイントの管理では、セキュリ
 ## <a name="limitations"></a>制限事項
 
 Azure SQL Database の場合、仮想ネットワーク規則機能には以下のような制限事項があります。
+
+- 現時点では、**サービス エンドポイント**がオンになっているサブネット内の Azure Web アプリは、まだ期待どおりに機能しません。 この機能を提供できるように取り組んでいます。
+    - この機能が完全に実装されるまで、SQL に対してオンになっているサービス エンドポイントがない別のサブネットに Web アプリを移動することをお勧めします。
 
 - SQL Database のファイアウォールでは、各仮想ネットワーク規則はサブネットを参照します。 これらの参照されるサブネットはすべて、SQL Database がホストされているのと同じ geographic 型のリージョンでホストされている必要があります。
 
@@ -288,9 +291,6 @@ Microsoft Azure Virtual Network サービス エンドポイント機能、お�
 
 <!-- ??2
 #### Syntax related articles
-
-- PowerShell cmdlets
-
 - REST API Reference, including JSON
 
 - Azure CLI

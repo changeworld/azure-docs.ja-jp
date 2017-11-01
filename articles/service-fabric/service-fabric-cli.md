@@ -6,13 +6,13 @@ author: samedder
 manager: timlt
 ms.service: service-fabric
 ms.topic: get-started-article
-ms.date: 08/22/2017
+ms.date: 10/20/2017
 ms.author: edwardsa
-ms.openlocfilehash: a938e300b1510a4f5f4eac3bd3d9a8bb728241ea
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d24c7618c5d53cfe2871d596bfc0fe2cadd5940a
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="azure-service-fabric-cli"></a>Azure Service Fabric CLI
 
@@ -32,7 +32,7 @@ Service Fabric CLI は、Service Fabric SDK の最新のランタイム バー�
 
 | CLI のバージョン   | サポートされているランタイムのバージョン |
 |---------------|---------------------------|
-| 最新 (2 前後)  | 最新 (6.0 前後)            |
+| 最新 (3 前後)  | 最新 (6.0 前後)            |
 | 1.1.0         | 5.6、5.7                  |
 
 `pip install` コマンドの末尾にオプションとして `==<version>` を付けると、インストールする CLI のターゲット バージョンを指定できます。 たとえば、バージョン 1.1.0 であれば、次のような構文になります。
@@ -42,6 +42,8 @@ pip install -I sfctl==1.1.0
 ```
 
 必要があれば、以下の `pip install` コマンドを上に挙げたコマンドで置換してください。
+
+Service Fabric CLI リリースの詳細については、[GitHub のドキュメント](https://github.com/Azure/service-fabric-cli/releases)を参照してください。
 
 ## <a name="install-pip-python-and-the-service-fabric-cli"></a>pip、Python、Service Fabric CLI のインストール
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: sethm
-ms.openlocfilehash: 3646d14be662af0fdf80790cb53ddc581b33a146
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43064ddbdfec3e2ddae8de8c69f6c03dc7f8f45e
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="get-started-with-service-bus-topics"></a>Service Bus トピックの概要
 
@@ -48,7 +48,7 @@ Service Bus メッセージング名前空間を既に作成している場合�
 ## <a name="2-create-a-topic-using-the-azure-portal"></a>2.Azure Portal を使用したトピックの作成
 
 1. [Azure Portal][azure-portal] にログオンします。
-2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は **[More Services (その他のサービス)]** をクリックします)。
+2. ポータルの左側のナビゲーション ウィンドウで、**[Service Bus]** をクリックします (**[Service Bus]** が表示されていない場合は、**[その他のサービス]** をクリックするか、**[すべてのリソース]** をクリックします)。
 3. トピックを作成する名前空間をクリックします。 名前空間の [概要] ブレードが表示されます。
    
     ![トピックを作成する][createtopic1]

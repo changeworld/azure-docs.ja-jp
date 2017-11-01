@@ -86,6 +86,7 @@
 ### デバイスからファイルをアップロードする
 #### [.NET](iot-hub-csharp-csharp-file-upload.md)
 #### [Java](iot-hub-java-java-file-upload.md)
+#### [Node.JS](iot-hub-node-node-file-upload.md)
 ### デバイス ツインを使ってみる
 #### [Node.js バックエンド/Node.js デバイス](iot-hub-node-node-twin-getstarted.md)
 #### [.NET バックエンド/Node.js デバイス](iot-hub-csharp-node-twin-getstarted.md)
@@ -178,7 +179,8 @@
 ## [.NET (デバイス)](/dotnet/api/microsoft.azure.devices.client)
 ## [Java (サービス)](/java/api/com.microsoft.azure.sdk.iot.service)
 ## [Java (デバイス)](/java/api/com.microsoft.azure.sdk.iot.device)
-## [Node.js SDK](http://azure.github.io/azure-iot-sdk-node/)
+## [Node.js (デバイス)](https://docs.microsoft.com/en-us/javascript/api/azure-iot-device/)
+## [Node.js (サービス)](https://docs.microsoft.com/en-us/javascript/api/azure-iothub)
 ## [C デバイス SDK](https://azure.github.io/azure-iot-sdk-c/index.html)
 ## [Azure IoT Edge](http://azure.github.io/iot-edge/)
 ## [REST (リソース プロバイダー)](https://docs.microsoft.com/rest/api/iothub/iothubresource)
