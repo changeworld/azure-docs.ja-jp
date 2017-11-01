@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure での Windows VM のメンテナンス通知の処理 | Microsoft Docs"
 description: "Azure で実行されている Windows 仮想マシンのメンテナンス通知を表示し、セルフサービス メンテナンスを開始します。"
 services: virtual-machines-windows

@@ -1,4 +1,4 @@
----
+﻿---
 title: "Azure での Linux VM のメンテナンスと更新 | Microsoft Docs"
 description: "Azure で実行されている Linux 仮想マシンのメンテナンスと更新の概要。"
 services: virtual-machines-linux
@@ -21,7 +21,7 @@ ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/11/2017
 ---
-# <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画的メンテナンス 
+# <a name="planned-maintenance-for-linux-virtual-machines"></a>Linux 仮想マシンの計画メンテナンス 
 
 [!INCLUDE [virtual-machines-common-planned-maintenance](../../../includes/virtual-machines-common-planned-maintenance.md)]
 
