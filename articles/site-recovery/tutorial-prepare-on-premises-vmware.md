@@ -12,13 +12,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: 2e59a78f2c348b581155484d77e272a050da1f1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 33ec5775a371a04074f07d589d35d1c05bd64d30
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="prepare-on-premises-vmware-servers-for-disaster-recovery-to-azure"></a>Azure へのディザスター リカバリーのためにオンプレミス VMware サーバーを準備する
 
@@ -45,7 +46,7 @@ Site Recovery では、次のことを実行するために、VMware サーバ�
 
 1. 専用のアカウントを使用するには、vCenter レベルでロールを作成します。 ロールに **Azure_Site_Recovery** のような名前を付けます。
 2. 次の表にまとめられているアクセス許可をそのロールに割り当てます。
-3. vCenter サーバー または vSphere ホストにユーザーを作成します。 ユーザーにロールを割り当てます。
+3. vCenter サーバーまたは vSphere ホストにユーザーを作成します。 ユーザーにロールを割り当てます。
 
 ### <a name="vmware-account-permissions"></a>VMware アカウントのアクセス許可
 

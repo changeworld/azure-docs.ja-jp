@@ -4,7 +4,7 @@ description: "この Azure Analysis Services チュートリアル プロジェ�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 70812790348bbf525c7ed6299c656f7dd8e83dff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8cff85337ac7f5d1c0e00f09128cbbd4fa79741e
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-4-create-relationships"></a>レッスン 4: リレーションシップを作成する
 

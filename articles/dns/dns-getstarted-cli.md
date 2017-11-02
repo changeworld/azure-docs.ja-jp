@@ -3,7 +3,7 @@ title: "Azure CLI 2.0 で Azure DNS の使用を開始する | Microsoft Docs"
 description: "Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 Azure CLI 2.0 を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumuD
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
-ms.author: jonatul
-ms.openlocfilehash: 6958d61b29961f59cb22f62bec55f2d467e7e7cb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: adcbe69abca72aa0372b78eb357efdc56acf1c26
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-azure-dns-using-azure-cli-20"></a>Azure CLI 2.0 で Azure DNS の使用を開始する
 

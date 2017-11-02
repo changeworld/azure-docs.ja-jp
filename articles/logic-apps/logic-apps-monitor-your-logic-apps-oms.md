@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/9/2017
 ms.author: LADocs; divswa
-ms.openlocfilehash: 5afe01e713516277abc3c2dfcccfc6d36cfc70d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8da2bc9645e432ddf0e9f627c7b5e30c44fd74b6
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="monitor-and-get-insights-about-logic-app-runs-with-operations-management-suite-oms-and-log-analytics"></a>Operations Management Suite (OMS) と Log Analytics を使用してロジック アプリの実行を監視して洞察を得る
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
 
 2. ロジック アプリの実行に関する詳細が含まれる概要を確認するには、**[Logic Apps Management]\(Logic Apps 管理\)** タイルを選択します。
 
-   ここでは、ロジック アプリの実行は名前または実行状態でグループ化されます。
+   ここでは、ロジック アプリの実行は名前または実行状態でグループ化されます。 ロジック アプリの実行のアクションまたはトリガーで発生したエラーに関する詳細を表示することもできます。
 
    ![ロジック アプリの実行状態の概要](media/logic-apps-monitor-your-logic-apps-oms/logic-apps-runs-summary.png)
    
@@ -107,8 +107,16 @@ ms.lasthandoff: 10/11/2017
 
    ![あるロジック アプリまたは状態の実行を表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-run-details.png)
 
-   > [!NOTE]
-   > 再送信された実行から生じる実行については、**[再送信]** 列に [はい] と表示されます。
+   このページには 2 つの詳細オプションがあります。
+   * **[Tracked properties]\(追跡対象プロパティ\)**: この列には、ロジック アプリの追跡プロパティがアクション別にグループ化されて表示されます。 追跡対象プロパティを表示するには、**[表示]** を選択します。 列フィルターを使用して、追跡対象プロパティを検索できます。
+   
+     ![ロジック アプリの追跡対象プロパティを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-tracked-properties.png)
+
+     追跡対象プロパティを新たに追加した場合、最初に表示されるまでに 10 - 15 分かかる場合があります。 [ロジック アプリに追跡対象プロパティを追加する方法](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details)をご覧ください。
+
+   * **[再送信]** : 失敗、成功、または実行中の状態の、1 つ以上のロジック アプリの実行を再送信できます。 再送信する実行のチェックボックスをオンにして、**[再送信]** を選択します。 
+
+     ![ロジック アプリの実行を再送信する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-resubmit.png)
 
 4. これらの結果をフィルター処理するには、クライアント側およびサーバー側の両方でフィルター処理を実行します。
 
@@ -122,14 +130,23 @@ ms.lasthandoff: 10/11/2017
    
      ![時間枠を変更する](media/logic-apps-monitor-your-logic-apps-oms/change-interval.png)
  
-5. すべてのアクションと特定の実行の詳細を表示するには、行を選択します。これにより [ログ検索] ページが表示されます。 
+5. 特定の実行のすべてのアクションとその詳細を表示するには、ロジック アプリの実行の行を選択します。
 
-   * この情報を表で確認するには、**[表]** を選択します。
+   特定のロジック アプリの実行のすべてアクションを表示する例は次の通りです。
+
+   ![ロジック アプリの実行のアクションを表示する](media/logic-apps-monitor-your-logic-apps-oms/logic-app-action-details.png)
+   
+6. 結果ページで、結果の背後にあるクエリを表示したり、すべての結果を表示したりするには、**[See All]\(すべて表示\)** を選択します。すると、[ログ検索] ページが開きます。
+   
+   ![結果ページの [See All]\(すべて表示\)](media/logic-apps-monitor-your-logic-apps-oms/logic-app-seeall.png)
+   
+   [ログ検索] ページで、
+   * クエリの結果を表で確認するには、**[表]** を選択します。
    * クエリを変更するには、検索バーでクエリ文字列を編集します。 
    より高いエクスペリエンスを得るには、**[高度な分析]** を選択します。
 
      ![ロジック アプリの実行のアクションと詳細を表示する](media/logic-apps-monitor-your-logic-apps-oms/log-search-page.png)
-
+     
      [Azure Log Analytics] ページで、クエリを更新して表から結果を確認できます。 
      このクエリは [Kusto クエリ言語](https://docs.loganalytics.io/docs/Language-Reference)を使用します。他の結果を表示するには編集します。 
 
@@ -138,3 +155,4 @@ ms.lasthandoff: 10/11/2017
 ## <a name="next-steps"></a>次のステップ
 
 * [B2B メッセージを監視する](../logic-apps/logic-apps-monitor-b2b-message.md)
+

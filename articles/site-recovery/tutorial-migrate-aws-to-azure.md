@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/22/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: aa378c167c81617bc13baa65335335a749d13516
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 6a10cbf1d3c8043ddcac9a725373fc30a3ecee20
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="migrate-amazon-web-services-aws-vms-to-azure"></a>アマゾン ウェブ サービス (AWS) VM を Azure に移行する
 
@@ -126,7 +127,7 @@ Site Recovery 構成サーバーとして使用できる別の EC2 インスタ�
 
     1. **[開始する前に]** で、**[Install the configuration server and process server]\(構成サーバーとプロセス サーバーをインストールする\)** を選択して **[次へ]** をクリックします。
     2. **[Third-Party Software License]\(サードパーティ製ソフトウェア ライセンス\)** で、**[I Accept the third party license agreement]\(サード パーティの使用許諾契約書に同意する\)** を選択します。 次に、**[次へ]** をクリックします。
-    3. **登録** で 参照をクリックし、コンテナーの登録キー ファイルが配置されている場所に移動し、**次へ** をクリックします。
+    3. **[登録]** で [参照] をクリックし、コンテナーの登録キー ファイルが配置されている場所に移動し、**[次へ]** をクリックします。
     4. **[インターネット設定]** で、**[Connect to Azure Site Recovery without a proxy server]\(プロキシ サーバーを使用せずに Azure Site Recovery に接続する\)** を選択します。 次に、**[次へ]** をクリックします。
     5. **[前提条件の確認]** ページで複数の項目について確認が実行されます。 完了したら、**[次へ]** をクリックします。 
     6. **[MySQL の構成]** に、必要なパスワードを入力し、**[次へ]** をクリックします。

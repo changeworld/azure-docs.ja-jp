@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/18/2016
 ms.author: daseidma;bwren;dairwin
-ms.openlocfilehash: 4c5c8aacd2d104b8d6074b90eeffc32b29fc50f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: daef11a0cea11b0f6633ab32f7d84fac4591180a
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="configure-service-map-in-operations-management-suite"></a>Operations Management Suite の Service Map の構成
 サービス マップは、Windows および Linux システムのアプリケーション コンポーネントを自動的に検出し、サービス間の通信をマップします。 これを使用すれば、サーバーを重要なサービスを提供する相互接続されたシステムとして表示することができます。 Service Map は、TCP 接続アーキテクチャ全体におけるサーバー、プロセス、ポートの間の接続を表示します。エージェントのインストール以外の構成は必要ありません。
@@ -283,6 +283,7 @@ Service Map は現在、次の Azure リージョンでご利用いただけま�
 - 米国東部
 - 西ヨーロッパ
 - 米国中西部
+- 東南アジア
 
 
 ## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム

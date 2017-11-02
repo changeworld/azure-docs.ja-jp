@@ -2,21 +2,21 @@
 title: "Azure Site Recovery でレプリケート済み Azure VM をセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする (プレビュー)"
 description: "Azure Site Recovery で Azure VM レプリケーションをセカンダリ Azure リージョンにフェールオーバーおよびフェールバックする方法について説明します"
 services: site-recovery
-author: rajani-janaki-ram
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/18/2017
-ms.author: rajanaki
+ms.date: 11/01/2017
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 6a66528bfeb7249add9f589830293760c238e7db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 02b709bb8dbab5d10ce9f4cf6155ff26ce229298
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="fail-over-and-fail-back-azure-vms-between-azure-regions-preview"></a>Azure リージョン間で Azure VM をフェールオーバーおよびフェールバックする (プレビュー)
 

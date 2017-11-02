@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/22/2017
 ms.author: LADocs; estfan
-ms.openlocfilehash: 2c384e27798bc4920ef73af1084600fdc4047f86
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e3d88abe751b37700590cc68c458f208d5868d2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="register-custom-connectors-in-azure-logic-apps"></a>Azure Logic Apps でカスタム コネクタを登録する
 
@@ -151,6 +151,8 @@ REST API を作成し、認証を設定し、OpenAPI 定義ファイルまたは
    ![コネクタの定義](./media/logic-apps-custom-connector-register/definition.png)
 
 2. 既存のアクションとトリガーを編集するか、新しいアクションとトリガーを追加する必要がある場合は、以下の手順に進みます。
+
+<a name="add-action-or-trigger"></a> 
 
 #### <a name="edit-or-add-actions-for-your-connector"></a>コネクタのアクションを編集または追加する
 

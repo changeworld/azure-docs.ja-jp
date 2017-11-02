@@ -12,26 +12,26 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: banders
-ms.openlocfilehash: ce8065d777bb315d4f9589d1b24a5152296facfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/19/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 3bb4c82268fe7805227c213000dc803307876fe7
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Log Analytics の Wire Data 2.0 (プレビュー) ソリューション
 
 ![ワイヤ データのシンボル](./media/log-analytics-wire-data/wire-data2-symbol.png)
 
-ワイヤ データとは、Operations Manager エージェント、Windows に接続されたエージェント、Linux エージェントなどの OMS エージェントがインストールされたコンピューターからのネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
+ワイヤ データとは、OMS エージェントがインストールされた Windows に接続されたコンピューターおよび Linux に接続されたコンピューター (環境内の Operations Manager によって監視されているコンピューターを含む) から収集したネットワーク データとパフォーマンス データを統合したものです。 ネットワーク データを他のログ データと結び付けると、データを相関させるのに役立ちます。
 
-OMS エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Log Analytics に送信されます。
+OMS エージェントに加えて、ワイヤ データ ソリューションは、IT インフラストラクチャ内のコンピューターにインストールされている Microsoft Dependency Agent を使用します。 Dependency Agent では、使用されるさまざまなプロトコルやポートなど、[OSI モデル](https://en.wikipedia.org/wiki/OSI_model)のネットワーク レベル 2 ～ 3 について、コンピューターとの間で送受信されたネットワーク データを監視します。 データはその後、エージェントを使用して Log Analytics に送信されます。  
 
 > [!NOTE]
 > 以前のバージョンのワイヤ データ ソリューションは、新しいワークスペースに追加できません。 元のワイヤ データ ソリューションが有効になっている場合は、引き続き使用できます。 ただし、Wire Data 2.0 を使用するには、まず元のバージョンを削除する必要があります。
 
-既定では、Log Analytics は、Windows に組み込まれているカウンターから CPU、メモリ、ディスク、ネットワークのパフォーマンス データについてログに記録されたデータを収集します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。 [ログ] タブの [設定] ページでは、その他のパフォーマンス カウンターを追加できます。
+既定では、Log Analytics は、Windows および Linux に組み込まれているカウンターと、指定したその他のパフォーマンス カウンターからの CPU、メモリ、ディスク、ネットワーク パフォーマンスのデータをログに記録します。 コンピューターで使用されているサブネットやアプリケーション レベルのプロトコルを始めとするネットワークなどのデータは、エージェントごとにリアルタイムで収集されます。  ワイヤ データは、TCP トランスポート層ではなく、アプリケーション レベルでネットワーク データを調べます。  このソリューションは個別の ACK および SYN を調べません。  ハンドシェイクが完了すると、ライブ接続と見なされ、接続済みとしてマークされます。 その接続は両側が合意している限りはライブ接続のままになり、ソケットが開いて、データを前後に渡すことができます。  いずれかの側が接続を閉じると、切断済みとしてマークされます。  したがって、正常に完了したパケットの帯域幅のみがカウントされ、再送信および失敗したパケットに関するレポートは行われません。
 
 [sFlow](http://www.sflow.org/) などのソフトウェアと [Cisco の NetFlow プロトコル](http://www.cisco.com/c/en/us/products/collateral/ios-nx-os-software/ios-netflow/prod_white_paper0900aecd80406232.html)を使用したことがある場合は、ワイヤ データから表示される統計情報とデータについてよく知っているはずです。
 
@@ -50,7 +50,7 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 
 ワイヤ データを使って検索する場合は、データのフィルター処理とグループ化によって、上位のエージェントと上位のプロトコルに関する情報を表示できます。 また、特定のコンピューター (IP アドレスまたは MAC アドレス) が相互に通信した時点、通信の長さ、送信されたデータ量を確認することもできます。基本的には、ネットワーク トラフィックに関するメタデータが検索ベースで表示されます。
 
-ただし、表示されるのはメタデータであるため、必ずしも詳細なトラブルシューティングに役立つとは限りません。 Log Analytics のワイヤ データは、ネットワーク データを完全にキャプチャしたものではありません。 したがって、パケット レベルの詳細なトラブルシューティングを目的としたものではありません。 その他の収集方法と比較した場合、エージェントを使う利点は、アプライアンスのインストール、ネットワーク スイッチの再構成、複雑な構成作業の実行が必要ないことです。 ワイヤ データは単純にエージェント ベースであるため、コンピューターにエージェントをインストールすると、そのエージェント自体のネットワーク トラフィックが監視されます。 もう 1 つの利点は、クラウド プロバイダー、ホスティング サービス プロバイダー、Microsoft Azure など、ユーザーがファブリック レイヤーを所有しない場所で実行されるワークロードを監視できることです。
+ただし、表示されるのはメタデータであるため、必ずしも詳細なトラブルシューティングに役立つとは限りません。 Log Analytics のワイヤ データは、ネットワーク データを完全にキャプチャしたものではありません。  これはパケット レベルの詳細なトラブルシューティングを目的としたものではありません。 その他の収集方法と比較した場合、エージェントを使う利点は、アプライアンスのインストール、ネットワーク スイッチの再構成、複雑な構成作業の実行が必要ないことです。 ワイヤ データは単純にエージェント ベースであるため、コンピューターにエージェントをインストールすると、そのエージェント自体のネットワーク トラフィックが監視されます。 もう 1 つの利点は、クラウド プロバイダー、ホスティング サービス プロバイダー、Microsoft Azure など、ユーザーがファブリック レイヤーを所有しない場所で実行されるワークロードを監視できることです。
 
 ## <a name="connected-sources"></a>接続先ソース
 
@@ -59,7 +59,7 @@ OMS エージェントに加えて、ワイヤ データ ソリューション�
 | **接続先ソース** | **サポートされています** | **説明** |
 | --- | --- | --- |
 | Windows エージェント | あり | ワイヤ データは、Windows エージェント コンピューターからのデータを分析して収集します。 <br><br> [OMS エージェント](log-analytics-windows-agents.md)に加えて、Windows エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
-| Linux エージェント | あり | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-linux-agents.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
+| Linux エージェント | あり | ワイヤ データは、Linux エージェント コンピューターからのデータを分析して収集します。<br><br> [OMS エージェント](log-analytics-quick-collect-linux-computer.md)に加えて、Linux エージェントには Microsoft Dependency Agent が必要です。 オペレーティング システムのバージョンの一覧については、「[サポートされているオペレーティング システム](../operations-management-suite/operations-management-suite-service-map-configure.md#supported-operating-systems)」を参照してください。 |
 | System Center Operations Manager 管理グループ | あり | ワイヤ データは、接続された [System Center Operations Manager 管理グループ](log-analytics-om-agents.md)内の Windows エージェントと Linux エージェントからのデータを分析して収集します。 <br><br> System Center Operations Manager エージェント コンピューターから Log Analytics への直接接続が必要です。 データは管理グループから Log Analytics に転送されます。 |
 | Azure ストレージ アカウント | いいえ | ワイヤ データはエージェント コンピューターからデータを収集するため、Azure Storage から収集するデータはありません。 |
 
@@ -208,10 +208,10 @@ Dependency Agent は、InstallDependencyAgent-Windows.exe によって Windows �
 
 Windows を実行している各コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. 「[Windows コンピューターを Azure の Log Analytics サービスに接続する](log-analytics-windows-agents.md)」の手順に従って、OMS エージェントをインストールします。
-2. 前のセクションのリンクを使用して Windows エージェントをダウンロードしてから、次のコマンドを使用して実行します。InstallDependencyAgent-Windows.exe
+1. [環境でホストされている Windows コンピューターからのデータの収集](log-analytics-windows-agents.md)に関する記事の手順に従って、OMS エージェントをインストールします。
+2. 前のセクションのリンクを使用して Windows Dependency Agent をダウンロードしてから、次のコマンドを使用して実行します。`InstallDependencyAgent-Windows.exe`
 3. ウィザードに従ってエージェントをインストールします。
-4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントのログ ディレクトリは、%Programfiles%\Microsoft Dependency Agent\logs にあります。
+4. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Windows エージェントの場合、ログ ディレクトリは %Programfiles%\Microsoft Dependency Agent\logs です。
 
 #### <a name="windows-command-line"></a>Windows コマンド ライン
 
@@ -234,7 +234,7 @@ Dependency Agent は、InstallDependencyAgent-Linux64.bin (自己解凍バイナ
 
 各 Linux コンピューターに Dependency Agent をインストールするには、次の手順を使用します。
 
-1. [Linux コンピューターからのデータの収集と管理](log-analytics-agent-linux.md)に関するページで説明されている手順に従って、OMS エージェントをインストールします。
+1. [環境でホストされている Linux コンピューターからのデータの収集](log-analytics-quick-collect-linux-computer.md#obtain-workspace-id-and-key)に関する記事の手順に従って、OMS エージェントをインストールします。
 2. 前のセクションのリンクを使用して Linux Dependency Agent をダウンロードしてから、次のコマンドを使用して root としてインストールします。sh InstallDependencyAgent-Linux64.bin
 3. Dependency Agent が起動しない場合は、詳細なエラー情報のログを確認します。 Linux エージェントのログ ディレクトリは、/var/opt/microsoft/dependency-agent/log です。
 

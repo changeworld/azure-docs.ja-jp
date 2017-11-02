@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure Data Factory での自己ホスト型統合ランタイムの作成 | Microsoft Docs"
 description: "Azure Data Factory で自己ホスト型統合ランタイムを作成する方法について説明します。これにより、データ ファクトリがプライベート ネットワーク内のデータ ストアにアクセスすることができます。"
 services: data-factory
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: spelluru
-ms.openlocfilehash: 18f5aea960bca34699d2d265d4801797291a3e3a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 63e4bb600d053a43c500b601a3942eb96ac16b07
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>自己ホスト型統合ランタイムを作成し構成する方法
-統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。 
+統合ランタイム (IR) は、異なるネットワーク環境間でデータ統合機能を提供するために Azure Data Factory によって使用されるコンピューティング インフラストラクチャです。 IR に関する詳細については、[ランタイム統合の概要](concepts-integration-runtime.md)を参照してください。
 
 > [!NOTE]
 > この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
@@ -30,20 +30,20 @@ ms.lasthandoff: 10/11/2017
 このドキュメントでは、自己ホスト型 IR を作成し構成する方法について説明します。
 
 ## <a name="high-level-steps-to-install-self-hosted-ir"></a>自己ホスト型 IR をインストールする手順の概要
-1.  自己ホスト型統合ランタイムを作成します。 PowerShell の例を次に示します。 
+1.  自己ホスト型統合ランタイムを作成します。 PowerShell の例を次に示します。
 
     ```powershell
-    New-AzureRmDataFactoryV2IntegrationRuntime  -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
+    Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntimeName -Type SelfHosted -Description "selfhosted IR description"
     ```
 2.  自己ホスト型統合ランタイムをダウンロードし (ローカル コンピューターに) インストールします。
-3.  認証キーを取得し、そのキーを使用して自己ホスト型統合ランタイムを登録します。 PowerShell の例を次に示します。 
+3.  認証キーを取得し、そのキーを使用して自己ホスト型統合ランタイムを登録します。 PowerShell の例を次に示します。
 
     ```powershell
     Get-AzureRmDataFactoryV2IntegrationRuntimeKey -ResourceGroupName $resouceGroupName -DataFactoryName $dataFactoryName -Name $selfHostedIntegrationRuntime.  
     ```
-    
+
 ## <a name="command-flow-and-data-flow"></a>コマンド フローとデータ フロー
-オンプレミスとクラウドの間でデータを移動するとき、アクティビティは自己ホスト型統合ランタイムを使用して、オンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。 
+オンプレミスとクラウドの間でデータを移動するとき、アクティビティは自己ホスト型統合ランタイムを使用して、オンプレミスのデータ ソースからクラウドに、またはその逆に、データを転送します。
 
 自己ホスト型の IR でコピーする手順の概要についてのデータ フローを次に示します。
 
@@ -66,18 +66,18 @@ ms.lasthandoff: 10/11/2017
 - **ExpressRoute**を使用する場合であっても (ファイアウォールの背後にある) オンプレミスのデータ ソースとしてデータ ソースを扱います。 自己ホスト型統合ランタイムを使用してサービスとデータ ソースの間の接続を確立します。
 - データ ストアが**Azure IaaS 仮想マシン**上のクラウド内にある場合でも、自己ホスト型統合ランタイムを使用する必要があります。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
-- サポートされている **オペレーティング システム** のバージョンは、Windows 7、Windows 8/8.1、Windows 10、Windows Server 2008 R2、Windows Server 2012、Windows Server 2012 R2 です。 自己ホスト型統合ランタイムの**ドメイン コントローラーへのインストールはサポートされていません**。
+- サポートされている**オペレーティング システム**のバージョンは、Windows 7 Service Pack 1、Windows 8.1、Windows 10、Windows Server 2008 R2 SP1、Windows Server 2012、Windows Server 2012 R2、Windows Server 2016 です。 自己ホスト型統合ランタイムの**ドメイン コントローラーへのインストールはサポートされていません**。
 - **.NET Framework 4.6.1 以降**が必要です。 Windows 7 コンピューターに自己ホスト型統合ランタイムをインストールする場合は、.NET Framework 4.6.1 以降をインストールします。 詳細については、「 [.NET Framework システム要件](/dotnet/framework/get-started/system-requirements) 」をご覧ください。
-- 自己ホスト型統合ランタイム コンピューターの推奨される最小限の **構成** は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
+- 自己ホスト型統合ランタイム コンピューターの推奨される最小限の**構成**は、2 GHz、4 コア、8 GB の RAM、80 GB のディスクです。
 - ホスト コンピューターが休止状態の場合、自己ホスト型統合ランタイムはデータ要求に応答しません。 そのため、自己ホスト型統合ランタイムをインストールする前に、コンピューターの適切な源プランを構成します。 コンピューターが休止状態に入るよう構成されている場合、自己ホスト型統合ランタイムのインストール時にメッセージが出力されます。
 - 自己ホスト型統合ランタイムを正常にインストールして構成するには、コンピューターの管理者である必要があります。
 - コピー アクティビティは特定の頻度で実行されるので、コンピューターのリソース (CPU、メモリ) 使用率も、ピーク時間とアイドル時間の同じパターンに従います。 リソース使用率はまた、移動されるデータの量に大きく依存します。 複数のコピー ジョブが進行中のときには、ピーク時にリソース使用率が上昇します。
 
 ## <a name="installation-best-practices"></a>インストールのベスト プラクティス
 自己ホスト型統合ランタイムは、MSI セットアップ パッケージを [Microsoft ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードしてインストールできます。 詳細な手順については、[オンプレミスとクラウドの間でのデータ移動](tutorial-hybrid-copy-powershell.md)に関する記事を参照してください。
-  
+
 - コンピューターが休止状態にならないように、自己ホスト型統合ランタイム用のホスト コンピューターの電源プランを構成します。 ホスト コンピューターが休止状態になると、自己ホスト型統合ランタイムはオフラインになります。
 - 定期的に、自己ホスト型統合ランタイムに関連付けられている資格情報をバックアップします。
 
@@ -103,14 +103,14 @@ ms.lasthandoff: 10/11/2017
 
 
 ## <a name="high-availability-and-scalability"></a>高可用性とスケーラビリティ
-自己ホスト型統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードをを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。 
+自己ホスト型統合ランタイムは、複数のオンプレミス コンピューターに関連付けできます。 これらのコンピューターは、ノードと呼ばれます。 最大で 4 つのノードをを 1 つの自己ホスト型統合ランタイムに関連付けできます。 1 つの論理ゲートウェイと複数のノード (ゲートウェイがインストールされているオンプレミス コンピューター) を関連付ける利点は次のとおりです。
 1. 自己ホスト型統合ランタイムの可用性が向上したことによって、ビッグ データ ソリューションや Azure Data Factory を使用したクラウド データ統合において、単一の障害発生点となることはなくなりました。最大 4 つのノードによって、継続性を確保しています。
 2. オンプレミスとクラウド データ ストアとの間のデータ移動は、パフォーマンスとスループットが向上しました。 詳しくは[パフォーマンス比較](copy-activity-performance.md)を参照してください。
 
-[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から自己ホスト型統合ランタイム ソフトウェアをインストールして、新しい AzureRmDataFactoryV2IntegrationRuntimeKey コマンドレットのいずれかによって登録するだけで、複数のノードを関連付けることができます。[チュートリアル](tutorial-hybrid-copy-powershell.md)に説明があります。 
+[ダウンロード センター](https://www.microsoft.com/download/details.aspx?id=39717)から自己ホスト型統合ランタイム ソフトウェアをインストールして、新しい AzureRmDataFactoryV2IntegrationRuntimeKey コマンドレットのいずれかによって登録するだけで、複数のノードを関連付けることができます。[チュートリアル](tutorial-hybrid-copy-powershell.md)に説明があります。
 
 > [!NOTE]
-> 各ノードを関連付けるために新しい自己ホスト型統合ランタイムを作成する必要はありません。 
+> 各ノードを関連付けるために新しい自己ホスト型統合ランタイムを作成する必要はありません。
 
 ## <a name="system-tray-icons-notifications"></a>システム トレイ アイコン/通知
 システム トレイ アイコン/通知メッセージの上にカーソルを移動すると、自己ホスト型統合ランタイムの状態の詳細が表示されます。
@@ -137,7 +137,7 @@ ms.lasthandoff: 10/11/2017
 >
 > 一部のクラウド データベース (Azure SQL Database、Azure Data Lake など) では、そのファイアウォールの構成で自己ホスト型統合ランタイム コンピューターの IP アドレスをホワイトリストに追加する必要があります。
 
-### <a name="copy-data-from-a-source-to-a-sink"></a>ソースからシンクへのデータのコピー 
+### <a name="copy-data-from-a-source-to-a-sink"></a>ソースからシンクへのデータのコピー
 ファイアウォール ルールが企業ファイアウォール上で、Windows ファイアウォールが自己ホスト型統合ランタイム コンピューター上で適切に有効化されていること、およびデータ ストア自体が適切に有効化されていることを確認します。 このルールを有効にすると、自己ホスト型統合ランタイムは、ソースとシンクの両方に正常に接続されます。 コピー操作に関連するデータ ストアごとにルールを有効にしてください。
 
 たとえば、**オンプレミスのデータ ストアから Azure SQL Database シンク、または Azure SQL Data Warehouse シンクへ**コピーするには、次の手順を実行します。
@@ -200,8 +200,8 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
               <proxy bypassonlocal="true" proxyaddress="http://proxy.domain.org:8888/" />
         </defaultProxy>
     </system.net>
-    ``` 
-    
+    ```
+
     追加のプロパティは、プロキシ タグ内で scriptLocation のように必要な設定を指定することが許可されます。 構文については、[proxy 要素 (ネットワーク設定)](https://msdn.microsoft.com/library/sa91de1e.aspx) を参照してください。
 
     ```xml
@@ -221,7 +221,7 @@ HTTP プロキシに対して **[システム プロキシを使用する]** 設
 2.  Integration Runtime Configuration Manager を開くと、ステータスとして “**切断**” または “**接続中**” と表示されます。 [イベント ビューアー]、[アプリケーションとサービス ログ]、[Microsoft Integration Runtime] の順に選択して Windows イベント ログを表示すると、次のようなエラーが表示されます。
 
     ```
-    Unable to connect to the remote server 
+    Unable to connect to the remote server
     A component of Integration Runtime has become unresponsive and restarts automatically. Component name: Integration Runtime (Self-hosted).
     ```
 
@@ -239,4 +239,3 @@ msiexec /q /i IntegrationRuntime.msi NOFIREWALL=1
 
 ## <a name="next-steps"></a>次のステップ
 詳細な手順については、[チュートリアル: オンプレミスのデータをクラウドにコピー](tutorial-hybrid-copy-powershell.md)のチュートリアルを参照してください。
-

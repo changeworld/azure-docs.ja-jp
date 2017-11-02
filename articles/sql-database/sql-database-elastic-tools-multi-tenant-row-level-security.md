@@ -9,17 +9,17 @@ author: tmullaney
 ms.assetid: e72d3cfe-e9be-4326-b776-9c6d96c0a18e
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.openlocfilehash: 621cae68927bffcfe7f3f49d11826ca3bb2f2c4c
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 4b4ec29bb53bdce413dadf7cb0751433b9ca686c
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 [弾力性データベース ツール](sql-database-elastic-scale-get-started.md)と [Row-Level Security (RLS)](https://msdn.microsoft.com/library/dn765131) は、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層を柔軟かつ効率的にスケーリングできる強力な機能セットを提供します。 詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md) 」をご覧ください。 

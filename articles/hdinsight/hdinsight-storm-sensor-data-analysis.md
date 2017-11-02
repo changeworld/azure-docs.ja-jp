@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 08/09/2017
+ms.date: 10/19/2017
 ms.author: larryfr
-ms.openlocfilehash: 3c66f9ea025a2d245cdf907be9f3c586f1ed45ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f08835d73cba6b8047381846c341e4517414d4a0
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="analyze-sensor-data-with-apache-storm-event-hub-and-hbase-in-hdinsight-hadoop"></a>Apache Storm、Event Hub、HBase を HDInsight (Hadoop) で使用してセンサー データを分析する
 
@@ -31,24 +31,6 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 > このドキュメントの情報とこのドキュメントで示されている例には、HDInsight バージョン 3.6 が必要です。
 >
 > Linux は、バージョン 3.4 以上の HDInsight で使用できる唯一のオペレーティング システムです。 詳細については、[Windows での HDInsight の提供終了](hdinsight-component-versioning.md#hdinsight-windows-retirement)に関する記事を参照してください。
-
-## <a name="prerequisites"></a>前提条件
-
-* Azure サブスクリプション。
-* [Node.js](http://nodejs.org/): 開発環境のローカルで Web ダッシュボードをプレビューするために使用されます。
-* [Java と JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): Storm トポロジの開発に使用されます。
-* [Maven](http://maven.apache.org/what-is-maven.html): プロジェクトのビルドとコンパイルに使用されます。
-* [Git](http://git-scm.com/): GitHub からプロジェクトをダウンロードするために使用されます。
-* **SSH** クライアント: Linux ベースの HDInsight クラスターに接続するために使用されます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
-
-
-> [!IMPORTANT]
-> 既存の HDInsight クラスターは必要ありません。 このドキュメントの手順では、以下のリソースを作成します。
-> 
-> * Azure 仮想ネットワーク
-> * HDInsight クラスターの Storm (Linux ベース、2 ワーカー ノード)
-> * HDInsight クラスターの HBase (Linux ベース、2 ワーカー ノード)
-> * Web ダッシュボードをホストする Azure Web アプリ
 
 ## <a name="architecture"></a>アーキテクチャ
 
@@ -77,7 +59,7 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 > [!IMPORTANT]
 > Storm と HBase の両方に対して 1 つの HDInsight クラスターを作成するメソッドはサポートされていないため、2 つのクラスターが必要です。
 
-トポロジは、[org.apache.storm.eventhubs.spout.EventHubSpout](http://storm.apache.org/releases/0.10.1/javadocs/org/apache/storm/eventhubs/spout/class-use/EventHubSpout.html) クラスを使ってイベント ハブからデータを読み取り、[org.apache.storm.hbase.bolt.HBaseBolt](https://storm.apache.org/releases/1.0.1/javadocs/org/apache/storm/hbase/bolt/HBaseBolt.html) クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
+トポロジは、`org.apache.storm.eventhubs.spout.EventHubSpout` クラスを使ってイベント ハブからデータを読み取り、`org.apache.storm.hbase.bolt.HBaseBolt` クラスを使って HBase にデータを書き込みます。 Web サイトとの通信は、 [socket.io client.java](https://github.com/nkzawa/socket.io-client.java)を使用して行います。
 
 次の図は、トポロジのレイアウトを説明しています。
 
@@ -104,32 +86,27 @@ HDInsight で Apache Storm を使用して、Azure Event Hub からのセンサ�
 
 ## <a name="prepare-your-environment"></a>環境を準備する
 
-この例を使用する前に、Storm トポロジが読み取る Azure イベント ハブを作成する必要があります。
+この例を使用する前に、開発環境を準備する必要があります。 また、この例で使用する Azure イベント ハブも作成する必要があります。
 
-### <a name="configure-event-hub"></a>Event Hub の構成
+開発環境には次の項目がインストールされている必要があります。
 
-Event Hub は、この例のデータ ソースです。 Event Hub を作成するには、次の手順に従います。
+* [Node.js](http://nodejs.org/): 開発環境のローカルで Web ダッシュボードをプレビューするために使用されます。
+* [Java と JDK 1.7](http://www.oracle.com/technetwork/java/javase/downloads/index.html): Storm トポロジの開発に使用されます。
+* [Maven](http://maven.apache.org/what-is-maven.html): プロジェクトのビルドとコンパイルに使用されます。
+* [Git](http://git-scm.com/): GitHub からプロジェクトをダウンロードするために使用されます。
+* **SSH** クライアント: Linux ベースの HDInsight クラスターに接続するために使用されます。 詳細については、[HDInsight での SSH の使用](hdinsight-hadoop-linux-use-ssh-unix.md)に関するページを参照してください。
 
-1. [Azure Portal](https://portal.azure.com) で、**[+ 新規]** -> **[モノのインターネット]** -> **[Event Hubs]** の順に選びます。
-2. **[名前空間の作成]** セクションで、次のタスクを実行します。
-   
-   1. 名前空間の **名前** を入力します。
-   2. 価格レベルを選択します。 **[[Basic]]** で十分です。
-   3. 使用する Azure **サブスクリプション** を選択します。
-   4. 既存のリソース グループを選択するか、新しいリソース グループを作成します。
-   5. Event Hub の **場所** を選択します。
-   6. **[ダッシュボードにピン留めする]** チェック ボックスをオンにし、**[作成]** をクリックします。
+イベント ハブを作成するには、[イベント ハブの作成](../event-hubs/event-hubs-create.md)に関するドキュメントの手順に従ってください。
 
-3. 作成プロセスが完了すると、名前空間のイベント ハブの情報が表示されます。 ここで、 **[+ イベント ハブの追加]**を選択します。 **[イベント ハブの作成]** セクションで「**sensordata**」という名前を入力し、**[作成]** を選択します。 他のフィールドは既定値のままにします。
-4. 名前空間の [Event Hubs] ビューで、**[Event Hubs]**を選択します。 [ **sensordata** ] エントリを選択します。
-5. sensordata イベント ハブで、**[共有アクセス ポリシー]**を選択します。 **[+ 追加]** リンクを使用して、次のポリシーを追加します。
+> [!IMPORTANT]
+> イベント ハブの名前、名前空間、および RootManageSharedAccessKey のキーを保存しておいてください。 この情報は、Storm トポロジの構成に使用されます。
 
-    | ポリシー名 | Claims |
-    | ----- | ----- |
-    | デバイス | Send |
-    | Storm | リッスン |
-
-1. 両方のポリシーを選択し、 **主キー** の値を書き留めます。 後の手順で両方のポリシーの値が必要になります。
+HDInsight クラスターは必要ありません。 このドキュメントの手順では、この例で必要なリソースを作成する Azure Resource Manager テンプレートを示します。 このテンプレートは、次のリソースを作成します。
+ 
+* Azure 仮想ネットワーク
+* HDInsight クラスターの Storm (Linux ベース、2 ワーカー ノード)
+* HDInsight クラスターの HBase (Linux ベース、2 ワーカー ノード)
+* Web ダッシュボードをホストする Azure Web アプリ
 
 ## <a name="download-and-configure-the-project"></a>プロジェクトをダウンロードして構成する
 
@@ -157,8 +134,7 @@ Event Hub は、この例のデータ ソースです。 Event Hub を作成す�
 イベント ハブから読み取るプロジェクトを構成するには、`hdinsight-eventhub-example/TemperatureMonitor/dev.properties` ファイルを開き、次の行にイベント ハブ情報を追加します。
 
 ```bash
-eventhub.read.policy.name: your_read_policy_name
-eventhub.read.policy.key: your_key_here
+eventhub.policy.key: the_key_for_RootManageSharedAccessKey
 eventhub.namespace: your_namespace_here
 eventhub.name: your_event_hub_name
 eventhub.partitions: 2
@@ -168,9 +144,6 @@ eventhub.partitions: 2
 
 > [!IMPORTANT]
 > トポロジをローカルで使用するには、動作している Storm 開発環境が必要です。 詳細については、Apache.org の「[Setting up a Storm development environment](http://storm.apache.org/releases/1.1.0/Setting-up-development-environment.html)」(Storm 開発環境のセットアップ) を参照してください。
-
-> [!WARNING]
-> Windows 開発環境を使用している場合は、ローカルでトポロジを実行するときに `java.io.IOException` を受け取る可能性があります。 その場合は、HDInsight 上でのトポロジ実行に進んでください。
 
 テストする前に、ダッシュボードを開始し、トポロジの出力を表示し、Event Hub に格納するデータを生成する必要があります。
 
@@ -216,16 +189,16 @@ eventhub.partitions: 2
    
     ```javascript
     // ServiceBus Namespace
-    var namespace = 'YourNamespace';
+    var namespace = 'Your-eventhub-namespace';
     // Event Hub Name
-    var hubname ='sensordata';
+    var hubname ='Your-eventhub-name';
     // Shared access Policy name and key (from Event Hub configuration)
-    var my_key_name = 'devices';
-    var my_key = 'YourKey';
+    var my_key_name = 'RootManageSharedAccessKey';
+    var my_key = 'Your-Key';
     ```
    
    > [!NOTE]
-   > この例では、イベント ハブ名に `sensordata`、 `Send` 要求を含むポリシーの名前に `devices` を使用していることを前提としています。
+   > この例では、`RootManageSharedAccessKey` を使用してイベント ハブにアクセスしていることを前提としています。
 
 3. 次のコマンドを使用して、Event Hub に新しいエントリを挿入します。
    

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 05/22/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 15854aa0f2665f921f3435bc298737671f2e1a6f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eae6359b5fb36bd0317391ce2330afb7dd7bfe3b
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="run-tasks-concurrently-to-maximize-usage-of-batch-compute-nodes"></a>タスクの同時実行による Batch コンピューティング ノードの使用率の最大化 
 
@@ -124,16 +124,13 @@ Duration: 00:08:48.2423500
 >
 
 ## <a name="next-steps"></a>次のステップ
-### <a name="batch-explorer-heat-map"></a>Batch Explorer のヒート マップ
-Azure Batch の[サンプル アプリケーション][github_samples]の 1 つである [Azure Batch Explorer][batch_explorer] には、タスクの実行を視覚化する "*ヒート マップ*" 機能が含まれます。 [ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
+### <a name="batchlabs-heat-map"></a>BatchLabs のヒート マップ
+[BatchLabs][batch_labs] は、Azure Batch アプリケーションの作成、デバッグ、および監視を支援する、豊富な機能を備えた無料のスタンドアロン クライアント ツールです。 BatchLabs には、タスクの実行を視覚化する "*ヒート マップ*" 機能が含まれます。 [ParallelTasks][parallel_tasks_sample] サンプル アプリケーションを実行すると、ヒート マップ機能を使用し、各ノードでの並列タスクの実行を簡単に視覚化できます。
 
-![Batch Explorer のヒート マップ][1]
-
-*Batch Explorer のヒート マップに 4 つのノードから成るプールが表示され、各ノードでは現在それぞれ 4 つのタスクが実行されている*
 
 [api_net]: http://msdn.microsoft.com/library/azure/mt348682.aspx
 [api_rest]: http://msdn.microsoft.com/library/azure/dn820158.aspx
-[batch_explorer]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/BatchExplorer
+[batch_labs]: https://azure.github.io/BatchLabs/
 [cloudpool]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudpool.aspx
 [enable_autoscaling]: https://msdn.microsoft.com/library/azure/dn820173.aspx
 [fill_type]: https://msdn.microsoft.com/library/microsoft.azure.batch.common.computenodefilltype.aspx
@@ -144,4 +141,3 @@ Azure Batch の[サンプル アプリケーション][github_samples]の 1 つ�
 [poolcreate_net]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.pooloperations.createpool.aspx
 [task_schedule]: https://msdn.microsoft.com/library/microsoft.azure.batch.cloudpool.taskschedulingpolicy.aspx
 
-[1]: ./media/batch-parallel-node-tasks\heat_map.png

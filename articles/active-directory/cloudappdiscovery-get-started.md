@@ -1,35 +1,35 @@
 ---
-title: "Azure Active Directory の Cloud App Discovery のセットアップ | Microsoft Docs"
-description: "Cloud App Discovery でアプリケーションを検索および管理する利点と機能について説明します。"
+title: "Azure Active Directory の Cloud App Discovery サービスのセットアップ | Microsoft Docs"
+description: "検索アプリケーションおよび管理 Cloud App Discovery のクラウドの使用とシャドウ IT に関する実用的な情報を提供します。"
 services: active-directory
 keywords: "Cloud App Discovery, アプリケーションの管理"
 documentationcenter: 
 author: curtand
 manager: femila
+tags: ignite
 ms.assetid: db968bf5-22ae-489f-9c3e-14df6e1fef0a
 ms.service: active-directory
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/18/2017
 ms.author: curtand
 ms.reviewer: nigu
-ms.openlocfilehash: af54b77dc985f2ca6abeab29165278dfa598f5e2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c09410bc6ed8b4eac4316e206c75db84ef0b07fb
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="set-up-cloud-app-discovery-in-azure-ad"></a>Azure Active Directory の Cloud App Discovery のセットアップ
 
-Azure AD の新しい Cloud App Discovery 拡張機能が、Azure Active Directory Premium P1 ライセンスで利用できるようになりました。 これらの拡張機能は、Microsoft Cloud App Security との統合に基づいています。 Cloud App Discovery では、15,000 個以上のクラウド アプリの Cloud App Security カタログとトラフィック ログを比較して、クラウドの使用状況とシャドウ IT に関する継続的な情報を提供します。 
+Azure AD の Cloud App Discovery は、Microsoft Cloud App Security から使用できるデータとの統合に基づいています。 Cloud App Discovery は、クラウドの使用状況とシャドウ IT に関する継続的な情報を提供するために、15,000 を超えるクラウド アプリの Cloud App Security カタログとトラフィックログを比較します。 この記事では、セットアップ プロセスについて説明し、各手順の詳細な情報へのリンクを示します。 また、ファイアウォールとプロキシの情報、およびログ ファイルのサポートについても説明します。
 
 ## <a name="prerequisites"></a>前提条件
 
-組織でこの製品を使用するには、Azure AD Premium P1 ライセンスが必要です。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
-
-Cloud App Discovery をセットアップするには、Azure Active Directory のグローバル管理者またはセキュリティ閲覧者である必要があります。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド アプリで同じアクセス許可を持ちます。
+* 組織でこの製品を使用するには、Azure AD Premium P1 ライセンスが必要です。 詳細については、「[Azure Active Directory の価格](https://azure.microsoft.com/pricing/details/active-directory/)」をご覧ください。
+* Cloud App Discovery をセットアップするには、Azure Active Directory のグローバル管理者またはセキュリティ閲覧者である必要があります。
 
 ## <a name="setup-steps"></a>セットアップの手順
 
