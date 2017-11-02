@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 10/06/2017
+ms.date: 10/11/2017
 ms.author: owend
-ms.openlocfilehash: 31e4913aceb1c4b51ddc7cde6381bc21b50187c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 47f05a22811307617f475e79145f70a0233f5895
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Azure のオンプレミスのデータゲートウェイを使用してオンプレミスのデータ ソースに接続する
 オンプレミスのデータ ゲートウェイはブリッジとして機能し、オンプレミスのデータ ソースとクラウドの Azure Analysis Services サーバーの間のセキュリティで保護されたデータ転送を提供します。 同じリージョン内の複数の Azure Analysis Services サーバーで機能するだけでなく、最新バージョンのゲートウェイは、Azure Logic Apps、Power BI、Power Apps、および Microsoft Flow でも機能します。 同じリージョン内の複数のサービスを1 つのゲートウェイに関連付けることができます。 
@@ -75,10 +75,10 @@ ms.lasthandoff: 10/11/2017
 | *.login.windows.net |443 |HTTPS |
 | *.servicebus.windows.net |5671 ～ 5672 |Advanced Message Queuing Protocol (AMQP) |
 | *.servicebus.windows.net |443、9350 ～ 9354 |TCP 経由での Service Bus Relay のリスナー (Access Control トークンの取得には 443 が必要) |
-| *. frontend.clouddatahub.net |使用します |HTTPS |
+| *. frontend.clouddatahub.net |443 |HTTPS |
 | *.core.windows.net |443 |HTTPS |
 | login.microsoftonline.com |443 |HTTPS |
-| *. msftncsi.com |使用します |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
+| *. msftncsi.com |443 |Power BI サービスによってゲートウェイにアクセスできない場合、インターネット接続のテストに使用されます。 |
 | *.microsoftonline-p.com |443 |構成によっては認証に使用されます。 |
 
 ### <a name="force-https"></a>Azure Service Bus との HTTPS 通信の強制
@@ -139,6 +139,9 @@ ms.lasthandoff: 10/11/2017
 **A**: 回復キーを利用すると、災害発生後にゲートウェイの設定を移行または回復することができます。
 
 ## <a name="troubleshooting"></a>トラブルシューティング
+
+**Q**: Azure でゲートウェイ リソースを作成しましたが、ゲートウェイ インスタンスの一覧に私のゲートウェイが表示されません。なぜですか。 <br/>
+**A**: 2 つの可能性が考えられます。 1 つ目の可能性は、リソースが現在または他のサブスクリプションのゲートウェイに対して既に作成されていることです。 この可能性を排除するには、ポータルで**オンプレミスのデータ データウェイ**の種類のリソースを列挙します。 すべてのリソースを列挙するときに、すべてのサブスクリプションを選択していることを確認してください。 リソースが作成されると、ゲートウェイは ［ゲートウェイ リソースの作成］ ポータル エクスペリエンスのゲートウェイ インスタンスの一覧には表示されなくなります。 2 つ目の可能性は、ゲートウェイをインストールしたユーザーの Azure AD の ID が Azure Portal にサインインしているユーザーの ID と異なっていることです。 これを解決するには、ゲートウェイをインストールしたユーザーと同じアカウントを使用してポータルにサインインします。
 
 **Q**: オンプレミスのデータ ソースに送信されるクエリはどのようにして確認できますか? <br/>
 **A**: 送信されるクエリを含むクエリ トレースを有効にすることができます。 クエリ トレースは、トラブルシューティングが完了したら忘れずに元の値に戻してください。 クエリ トレースをオンのままにしておくと、ログのサイズが増大します。

@@ -9,17 +9,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: drivers
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 07/10/2017
 ms.author: andrela
-ms.openlocfilehash: 943e355ffcc6c0670585936ec2e559b7fb592ff5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb1c387628a79ddfada0786c8c6422b6671a2c19
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-java-to-query-an-azure-sql-database"></a>Java を使用して Azure SQL Database に照会する
 

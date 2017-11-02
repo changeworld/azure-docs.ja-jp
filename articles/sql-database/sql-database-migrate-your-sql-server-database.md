@@ -13,14 +13,14 @@ ms.custom: mvc,migrate
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Active
 ms.date: 09/01/2017
 ms.author: carlrab
-ms.openlocfilehash: b62003fb2758393d5ed8fddad8bd4d028424a2bb
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 526222944974c08f92aec2a8418e9b42401bc4d3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database"></a>SQL Server データベースを Azure SQL Database に移行する
 

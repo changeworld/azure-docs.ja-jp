@@ -10,17 +10,17 @@ editor:
 ms.assetid: 2a23e4ca-ea93-4990-855a-1f9f05548202
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: drivers
+ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: sstein
-ms.openlocfilehash: 9f9dfd039b76e4bedfb7f59d042123fa54d6b615
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34e7142b5ca13ad8de5a4dbd380377abdf055c04
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>SQL Database クライアント アプリケーションの SQL エラー コード: データベース接続エラーとその他の問題
 

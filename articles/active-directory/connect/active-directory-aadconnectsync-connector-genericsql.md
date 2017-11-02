@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/31/2017
 ms.author: billmath
-ms.openlocfilehash: a84096ba53a308855beedd76d9dec827c025cd57
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 81bacc39d974dfbd1b2aa8dce9e629c508203811
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="generic-sql-connector-technical-reference"></a>Generic SQL コネクタに関するテクニカル リファレンス
 この記事では Generic SQL コネクタについて説明します。 この記事は次の製品に適用されます。
@@ -291,7 +291,7 @@ Generic SQL コネクタでは、次に示す 4 つのサポートされた方�
 * **[Add SP Name (SP 名の追加)]**: この SP は、それぞれのテーブルで挿入を行うために任意のオブジェクトがコネクタに渡された場合に実行されます。
 * **[Update SP Name (SP 名の更新)]**: この SP は、それぞれのテーブルで更新を行うために任意のオブジェクトがコネクタに渡された場合に実行されます。
 * **[Delete SP Name (SP 名の削除)]**: この SP は、それぞれのテーブルで削除を行うために任意のオブジェクトがコネクタに渡された場合に実行されます。
-* ストアド プロシージャへのパラメーター値として使用されるスキーマから選択した属性です。 たとえば、 `EmployeeName: INPUT: @EmployeeName` (コネクタのスキーマで EmployeeName が選択されると、コネクタはエクスポートの実行中にそれぞれの値を置換します) です。
+* ストアド プロシージャへのパラメーター値として使用されるスキーマから選択した属性です。 たとえば、 `@EmployeeName: INPUT: EmployeeName` (コネクタのスキーマで EmployeeName が選択されると、コネクタはエクスポートの実行中にそれぞれの値を置換します) です。
 * パラメーター化されたストアド プロシージャを実行するには、 `[Name]:[Direction]:[Value]` 形式でパラメーターを指定します。 各パラメーターを個別の行に入力します (新しい行を取得するには、Ctrl + Enter キーを使用します)。
 
 **SQL query**  

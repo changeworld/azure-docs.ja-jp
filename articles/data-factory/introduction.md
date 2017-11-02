@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/29/2017
 ms.author: shlo
-ms.openlocfilehash: 9ed89261b7050bb41d49b827e02d24535983160f
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 58e141498ed5cbaa110622d949a9627c98827ac3
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="introduction-to-azure-data-factory"></a>Azure Data Factory の概要 
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -142,7 +142,7 @@ Data Factory には 30 を上回るコネクタが用意されており、ハイ
 
 Data Factory ではリンクされたサービスは 2 つの目的に使用されます。
 
-- オンプレミスの SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の**データ ストア**を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
+- オンプレミスの SQL Server データベース、Oracle データベース、ファイル共有、Azure Blob Storage アカウント、その他の "**データ ストア**" を表すため。 サポートされるデータ ストアの一覧については、「[コピー アクティビティ](copy-activity-overview.md)」を参照してください。
 
 - アクティビティの実行をホストできる **コンピューティング リソース** を表すため。 たとえば、HDInsightHive アクティビティは HDInsight Hadoop クラスターで実行されます。 変換アクティビティとサポートされているコンピューティング環境の一覧については、「[データの変換](transform-data.md)」を参照してください。
 

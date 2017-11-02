@@ -9,17 +9,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: drivers
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 12837cf3b080c63d494993b53efdc209ea93f389
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6eb026b5f478769f680e3899a7c743546c2c9d88
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-net-core-c-to-query-an-azure-sql-database"></a>.NET Core (C#) を使用して Azure SQL データベースに照会する
 

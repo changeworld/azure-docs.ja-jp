@@ -3,7 +3,7 @@ title: "Azure Application Insights における Web アプリのパフォーマ�
 description: "Web アプリのパフォーマンス テレメトリにおける急上昇や段階的変化の自動診断。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/16/2017
-ms.author: cfreeman
-ms.openlocfilehash: 5e53bc714d89bf6204681349e7890e0b8fbc7046
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e0c8d712f03da0c5e47ea422b051c0b8734c6b21
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="diagnose-sudden-changes-in-your-app-telemetry"></a>アプリのテレメトリにおける急激な変化を診断する
 

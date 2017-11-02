@@ -3,7 +3,7 @@ title: "Logic Apps を使って Azure Application Insights のプロセスを自
 description: "Application Insights コネクタをお使いのロジック アプリに追加することで、反復可能なプロセスを迅速に自動化する方法を説明します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 06/29/2017
-ms.author: bwren
-ms.openlocfilehash: 36df5bc0a019f4197d40fd6fa5a2a9957820c8b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 92521bab2082f63fa01e816151e3da9400effe6d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="automate-application-insights-processes-by-using-logic-apps"></a>Logic Apps を使って Application Insights のプロセスを自動化する
 

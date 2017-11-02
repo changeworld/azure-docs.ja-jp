@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: spelluru
-ms.openlocfilehash: 02d9102bfc9b0d8084988609282f2c78b5789e7e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8a58f55bd627594145661e1c8d5c1da360cd1e30
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS 統合ランタイムを仮想ネットワークに参加させる
 次の条件のいずれかが当てはまる場合、Azure-SSIS 統合ランタイム (IR) を Azure 仮想ネットワーク (VNet) に参加させる必要があります。 
@@ -26,6 +26,9 @@ ms.lasthandoff: 10/11/2017
 - Azure-SSIS 統合ランタイム上で実行される SSIS パッケージからオンプレミス データ ストアに接続する必要がある。
 
  Azure Data Factory バージョン 2 (プレビュー) では、Azure-SSIS 統合ランタイムをクラシック VNet に参加させることができます。 現時点で、Azure Resource Manager の VNet はまだサポートされていません。 ただし、次のセクションで示す方法を使って回避できます。 
+
+ > [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 SSIS パッケージがパブリック クラウドのデータ ストアだけにアクセスする場合は、VNet に Azure-SSIS IR を参加させる必要はありません。 SSIS パッケージがオンプレミスのデータ ストアにアクセスする場合は、オンプレミスのネットワークに接続されている VNet に Azure-SSIS IR を参加させる必要があります。 SSIS カタログが VNet 内にない Azure SQL Database でホストされている場合は、適切なポートを開く必要があります。 SSIS カタログがクラシック VNet の Azure SQL マネージ インスタンスでホストされている場合は、同じクラシック VNet に、または Azure SQL マネージ インスタンスが存在する VNet との間にクラシック間接続のある別のクラシック VNet に、Azure-SSIS IR を参加させることができます。 以降のセクションではさらに詳しく説明します。  
 

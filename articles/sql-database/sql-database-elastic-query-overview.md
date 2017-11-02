@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database のエラスティック クエリの概要 | Microsoft Docs"
-description: "エラスティック クエリ機能の概要"
+description: "エラスティック クエリを使用すると、複数のデータベースにまたがる Transact-SQL クエリを実行できます。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 0130b1d4f3ee7b27786764a275ce4e3c0ee93b2d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7e245cf1fb28eef26739b55967de3f05128f38c6
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Azure SQL Database のエラスティック クエリの概要 (プレビュー)
 エラスティック クエリ機能 (プレビュー) を使うと、Azure SQL Database の複数のデータベースにまたがる Transact-SQL クエリを実行することができます。 データベース間クエリを実行してリモート テーブルにアクセスしたり、Microsoft 製およびサード パーティ製ツール (Excel、PowerBI、Tableau など) を接続して複数のデータベースが含まれるデータ層間でクエリを実行したりできます。 この機能により、クエリを SQL Database 内の大規模なデータ層にスケールアウトし、結果をビジネス インテリジェンス (BI) レポートで視覚化することができます。

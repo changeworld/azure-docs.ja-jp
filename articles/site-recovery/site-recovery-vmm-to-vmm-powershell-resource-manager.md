@@ -12,54 +12,31 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
+ms.date: 10/19/2017
 ms.author: sutalasi
-ms.openlocfilehash: 5a6e00877b0a2b139d5322f610c1901ad76a710f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c978c2e31e775f56824d765491f6d7b73648b8ae
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="replicate-hyper-v-virtual-machines-in-vmm-clouds-to-a-secondary-vmm-site-using-powershell-resource-manager"></a>PowerShell (Resource Manager) を使用して VMM クラウド内の Hyper-V 仮想マシンをセカンダリ VMM サイトにレプリケートする
-> [!div class="op_single_selector"]
-> * [Azure Portal](site-recovery-vmm-to-vmm.md)
-> * [クラシック ポータル](site-recovery-vmm-to-vmm-classic.md)
-> * [PowerShell - Resource Manager](site-recovery-vmm-to-vmm-powershell-resource-manager.md)
->
->
 
-Azure Site Recovery へようこそ。 この記事では、System Center Virtual Machine Manager (VMM) クラウドで管理されているオンプレミスの Hyper-V 仮想マシンをセカンダリ サイトにレプリケートする方法について説明します。
+この記事では、System Center VMM クラウドの Hyper-V 仮想マシンからセカンダリ サイトの System Center VMM クラウドにレプリケートするように Azure Site Recovery を設定するときの一般的なタスクを、PowerShell を使用して自動化する方法を示します。
 
-この記事では、System Center VMM クラウドの Hyper-V 仮想マシンを、セカンダリ サイトの System Center VMM クラウドにレプリケートするように Azure Site Recovery を設定するときに実行する必要がある一般的なタスクを、PowerShell を使用して自動化する方法を示します。
 
-この記事にはシナリオの前提条件が含まれています。また、次の方法について説明しています。
-
-* Recovery Services コンテナーを設定する
-* ソース VMM サーバーとターゲット VMM サーバーに Azure Site Recovery プロバイダーをインストールする
-* VMM サーバーをコンテナーに登録する
-* VMM クラウドのレプリケーション ポリシーを構成する。 ポリシーのレプリケーション設定は、保護された仮想マシンすべてに適用されます
-* 仮想マシンの保護を有効にする。
-* VM のフェールオーバーを個別に、または復旧計画の一環としてテストし、すべてが想定どおりに動作していることを確認する。
-* VM の計画されたフェールオーバーまたは計画されていないフェールオーバーを、個別に、または復旧計画の一環として実行し、すべてが想定どおりに動作していることを確認する。
-
-このシナリオの設定時に問題が発生した場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)に質問を投稿してください。
-
-> [!NOTE]
-> Azure には、リソースの作成と操作に関して、Azure Resource Manager とクラシックの 2 種類の[デプロイメント モデル](../azure-resource-manager/resource-manager-deployment-model.md)があります。 また、Azure にも 2 つのポータルがあります。クラシック デプロイメント モデルをサポートする Azure クラシック ポータルと、両方のデプロイメント モデルをサポートする Azure ポータルです。 この記事では、リソース マネージャーのデプロイ モデルについて説明します。
->
->
 
 ## <a name="on-premises-prerequisites"></a>オンプレミスの前提条件
 このシナリオをデプロイするためにプライマリとセカンダリのオンプレミス サイトで必要となるものを次に示します。
 
 | **前提条件** | **詳細** |
 | --- | --- |
-| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを 1 台ずつデプロイすることをお勧めします。<br/><br/> また、[単一の VMM サーバー上のクラウド間でレプリケートする](site-recovery-vmm-to-vmm.md#prepare-for-single-server-deployment)こともできます。 これを行うには、VMM サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。<br/><br/>VMM クラウドの設定の詳細については、[VMM クラウド ファブリックの構成](https://msdn.microsoft.com/library/azure/dn469075.aspx#BKMK_Fabric)に関するページ、および [System Center 2012 SP1 VMM を使用したプライベート クラウド作成のチュートリアル](http://blogs.technet.com/b/keithmayer/archive/2013/04/18/walkthrough-creating-private-clouds-with-system-center-2012-sp1-virtual-machine-manager-build-your-private-cloud-in-a-month.aspx)をご覧ください。<br/><br/> VMM サーバーにはインターネット アクセスが必要です。 |
+| **VMM** |プライマリ サイトとセカンダリ サイトに VMM サーバーを 1 台ずつデプロイすることをお勧めします。<br/><br/> また、単一の VMM サーバー上のクラウド間でレプリケートすることもできます。 これを行うには、VMM サーバーに少なくとも 2 つのクラウドが構成されている必要があります。<br/><br/> VMM サーバーは、最新の更新プログラムがインストールされている System Center 2012 SP1 以降を実行している必要があります。<br/><br/> 各 VMM サーバーには 1 つ以上のクラウドが構成され、すべてのクラウドには Hyper-V キャパシティ プロファイルが設定されている必要があります。 <br/><br/>クラウドには、1 つ以上の VMM ホスト グループが含まれている必要があります。 VMM サーバーにはインターネット アクセスが必要です。 |
 | **Hyper-V** |Hyper-V サーバーは、Hyper-V ロールがインストールされた Windows Server 2012 以降が実行され、最新の更新プログラムがインストールされている必要があります。<br/><br/> Hyper-V サーバーに 1 つ以上の VM が含まれている必要があります。<br/><br/>  Hyper-V ホスト サーバーが、プライマリおよびセカンダリの VMM クラウドに配置されている必要があります。<br/><br/> Windows Server 2012 R2 のクラスターで Hyper-V を実行している場合は、[更新プログラム 2961977](https://support.microsoft.com/kb/2961977) をインストールする必要があります。<br/><br/> Windows Server 2012 上のクラスターで Hyper-V を実行している場合に、静的 IP アドレス ベースのクラスターが存在すると、クラスター ブローカーが自動的に作成されません。 クラスター ブローカーを手動で構成する必要があります。 詳細については、[こちら](http://social.technet.microsoft.com/wiki/contents/articles/18792.configure-replica-broker-role-cluster-to-cluster-replication.aspx)を参照してください。 |
 | **プロバイダー** |Site Recovery をデプロイする際に Azure Site Recovery プロバイダーを VMM サーバーにインストールします。 プロバイダーは、HTTPS 443 経由で Azure Site Recovery と通信して、レプリケーションを調整します。 データのレプリケーションは、LAN または VPN 接続を経由してプライマリとセカンダリの Hyper-V サーバー間で実行されます。<br/><br/> VMM サーバー上で実行されるプロバイダーでは、*.hypervrecoverymanager.windowsazure.com、*.accesscontrol.windows.net、*.backup.windowsazure.com、*.blob.core.windows.net、*.store.core.windows.net の各 URL へのアクセスを許可する必要があります。<br/><br/> また、VMM サーバーから [Azure データセンターの IP 範囲](https://www.microsoft.com/download/confirmation.aspx?id=41653)へのファイアウォール通信と、HTTPS (443) プロトコルの使用を許可する必要があります。 |
 
 ### <a name="network-mapping-prerequisites"></a>ネットワーク マッピングの前提条件
-ネットワーク マッピングは、プライマリ VMM サーバーとセカンダリ VMM サーバーの VMM VM ネットワークをマップすることで、次の項目を実現します。
+ネットワーク マッピングは、プライマリ VMM サーバーとセカンダリ VMM サーバーの VMM VM ネットワークをマップすることで、次の事柄を実現します。
 
 * フェールオーバー後にセカンダリ Hyper-V ホストにレプリカ VM を最適に配置します。
 * レプリカ VM を適切な VM ネットワークに接続します。
@@ -74,7 +51,6 @@ VMM ネットワークの構成の詳細については、次の記事を参照�
 * [VMM での論理ネットワークの構成の概要](http://go.microsoft.com/fwlink/p/?LinkId=386307)
 * [VMM での VM ネットワークとゲートウェイの構成](http://go.microsoft.com/fwlink/p/?LinkId=386308)
 
-[こちら](site-recovery-vmm-to-vmm.md#prepare-for-network-mapping) をご覧ください。
 
 ### <a name="powershell-prerequisites"></a>PowerShell の前提条件
 Azure PowerShell を使用する準備が整っていることを確認してください。 PowerShell を使用している場合は、0.8.10 以降のバージョンにアップグレードする必要があります。 PowerShell の設定については、 [Azure PowerShell のインストールと構成](/powershell/azureps-cmdlets-docs)に関するページをご覧ください。 PowerShell を設定して構成したら、サービスで使用可能なすべてのコマンドレットを [ここ](/powershell/azure/overview)に表示できます。
@@ -100,11 +76,11 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
 1. Azure Resource Manager リソース グループを作成します (まだ存在しない場合)
 
         New-AzureRmResourceGroup -Name #ResourceGroupName -Location #location
-2. 新しい Recovery Services コンテナーを作成し、作成した ASR コンテナー オブジェクトを変数に格納します (後で使用します)。 Get-AzureRMRecoveryServicesVault コマンドレットを使用して、ASR コンテナー オブジェクトの post 作成を取得することもできます。
+2. 新しい Recovery Services コンテナーを作成し、Recovery Services コンテナー オブジェクトを変数に格納します (後で使用します)。 Get-AzureRMRecoveryServicesVault コマンドレットを使用して、コンテナー オブジェクトの post 作成を取得することもできます。
 
         $vault = New-AzureRmRecoveryServicesVault -Name #vaultname -ResouceGroupName #ResourceGroupName -Location #location
 
-## <a name="step-3-set-the-recovery-services-vault-context"></a>ステップ 3: Recovery Services コンテナーのコンテキストを設定する
+## <a name="step-3-set-the-recovery-services-vault-context"></a>手順 3. Recovery Services 資格情報コンテナーのコンテキストを設定する
 1. 既にコンテナーが作成されている場合は、次のコマンドを実行してコンテナーを取得します。
 
        $vault = Get-AzureRmRecoveryServicesVault -Name #vaultname
@@ -140,7 +116,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
        pushd $BinPath
        $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
 
-## <a name="step-5-create-and-associate-a-replication-policy"></a>ステップ 5: レプリケーション ポシリーを作成して関連付ける
+## <a name="step-5-create-and-associate-a-replication-policy"></a>ステップ 5: レプリケーション ポリシーを作成して関連付ける
 1. 次のコマンドを実行して、Hyper-V 2012 R2 レプリケーション ポリシーを作成します。
 
         $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
@@ -155,7 +131,7 @@ Azure PowerShell でのパラメーター値、入力、出力の一般的な処
         $policyresult = New-AzureRmSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
 
     > [!NOTE]
-    > VMM クラウドには、(Hyper-V の前提条件で説明したように) さまざまなバージョンの Windows Server が実行されている Hyper-V ホストを含めることができますが、レプリケーション ポリシーは OS バージョンによって異なります。 さまざまなホストがあり、さまざまなバージョンのオペレーティング システムが実行されている場合は、OS バージョンごとにレプリケーション ポリシーを作成してください。 たとえば、Windows Server 2012 で実行されているホストが 5 台、Windows Server 2012 R2 のホストが 3 台ある場合は、それぞれのオペレーティング システム バージョンに対して、つまり 2 つのレプリケーション ポリシーを作成します。
+    > VMM クラウドには、(Hyper-V の前提条件で説明したように) さまざまなバージョンの Windows Server が実行されている Hyper-V ホストを含めることができますが、レプリケーション ポリシーは OS バージョンによって異なります。 さまざまなホストがあり、さまざまなバージョンのオペレーティング システムが実行されている場合は、OS バージョンごとにレプリケーション ポリシーを作成してください。 たとえば、Windows Server 2012 で実行されているホストが 5 台、Windows Server 2012 R2 のホストが 3 台ある場合は、それぞれのオペレーティング システム バージョンに対して 1 つずつ、つまり 2 つのレプリケーション ポリシーを作成します。
 
 1. 次のコマンドを実行して、プライマリ保護コンテナー (プライマリ VMM クラウド) と復旧保護コンテナー (復旧 VMM クラウド) を取得します。
 

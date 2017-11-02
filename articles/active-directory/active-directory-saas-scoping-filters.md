@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: markvi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9639235e12de15d4eec2cf887156ac922e63e0ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b38ccba1abb20ec88df8234ae9859caba19d43f
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>スコープ フィルターを使用した属性ベースのアプリケーション プロビジョニング
 この記事では、スコープ フィルターを使用して属性ベースのルールを定義する方法について説明します。このルールで、アプリケーションに対してプロビジョニングするユーザーを指定します。
@@ -87,7 +87,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
    e. **IS NULL**。 評価される属性が空の場合、句は "true" を返します。
 
-   f. **IS NOT NULL**。 評価される属性が空でない場合、句は "true" を返します。
+   f.SAML 属性の属性名またはスキーマ リファレンスを入力します。 **IS NOT NULL**。 評価される属性が空でない場合、句は "true" を返します。
 
    g. **REGEX MATCH**。 評価される属性が正規表現パターンと一致する場合、句は "true" を返します。 例: ([1-9][0-9]) は 10 から 99 までのあらゆる数字と一致します。
 
@@ -97,7 +97,7 @@ Azure AD プロビジョニング サービスによって処理されるユー�
 
 9. 必要に応じて、手順 7 ～ 8 を繰り返してスコープ句を追加します。
 
-10. **[スコープ フィルターのタイトル]** で、スコープ フィルターの名前を追加します。add a name for your scoping filter.
+10. **[スコープ フィルターのタイトル]** で、スコープ フィルターの名前を追加します。
 
 11. **[OK]**を選択します。
 

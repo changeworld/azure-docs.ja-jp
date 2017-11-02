@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 01/07/2017
 ms.author: dastrock
 ms.custom: aaddev
-ms.openlocfilehash: b64413e9cc916837dc779b92117f90293c4f1d87
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1cffe40c14b931485cc5cec48a95e02ae770764e
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # v2.0 プロトコル: OAuth 2.0 承認コード フロー
 デバイスにインストールされているアプリに、Web API など、保護されているリソースにアクセスする権利を与えるために OAuth 2.0 認証コード付与を利用できます。  アプリ モデル v2.0 による OAuth 2.0 の実装を使用すると、サインインおよび API アクセスをモバイル アプリやデスクトップ アプリに追加できます。  本ガイドでは、オープンソース ライブラリを利用せず、HTTP メッセージを送受信する方法について説明します。本ガイドは言語非依存です。
@@ -57,7 +57,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 
 > 
 
-| パラメーター |  | Description |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。  詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) によってアプリに割り当てられたアプリケーション ID。 |
@@ -83,7 +83,7 @@ code=AwABAAAAvPM1KaPlrEqdFSBzjqfTGBCmLdgfSTLEMPGYuNHSUYBrq...
 &state=12345
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | code |アプリが要求した authorization_code。 アプリは承認コードを使用して、対象リソースのアクセス トークンを要求します。  承認コードは有効期間が非常に短く、通常 10 分後には期限切れとなります。 |
 | state |要求に state パラメーターが含まれている場合、同じ値が応答にも含まれることになります。 要求と応答に含まれる状態値が同一であることをアプリ側で確認する必要があります。 |
@@ -97,7 +97,7 @@ error=access_denied
 &error_description=the+user+canceled+the+authentication
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -105,7 +105,7 @@ error=access_denied
 #### 承認エンドポイント エラーのエラー コード
 次の表で、エラー応答の `error` パラメーターで返される可能性のあるさまざまなエラー コードを説明します。
 
-| エラー コード | Description | クライアント側の処理 |
+| エラー コード | 説明 | クライアント側の処理 |
 | --- | --- | --- |
 | invalid_request |必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 これは、開発エラーであり、通常は初期テスト中に発生します。 |
 | unauthorized_client |クライアント アプリケーションは、認証コードの要求を許可されていません。 |これは通常、クライアント アプリケーションが Azure AD に登録されていない、またはユーザーの Azure AD テナントに追加されていないときに発生します。 アプリケーションでは、アプリケーションのインストールと Azure AD への追加を求める指示をユーザーに表示できます。 |
@@ -138,7 +138,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 
 > 
 
-| パラメーター |  | Description |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。  詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) によってアプリに割り当てられたアプリケーション ID。 |
@@ -161,15 +161,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | scope |access_token が有効である範囲。 |
-| refresh_token |OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。  Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。  詳細については、 [v2.0 トークン リファレンス](active-directory-v2-tokens.md)を参照してください。 |
-| id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 |
-
+| refresh_token |OAuth 2.0 更新トークン。 現在のアクセス トークンの有効期限が切れた後、アプリはこのトークンを使用して、追加のアクセス トークンを取得します。  Refresh_token は有効期間が長く、リソースへのアクセスを長時間保持するときに利用できます。  詳細については、 [v2.0 トークン リファレンス](active-directory-v2-tokens.md)を参照してください。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。 |
+| id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 #### エラー応答
 エラー応答は次のようになります。
 
@@ -186,7 +185,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |
@@ -196,7 +195,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | correlation_id |コンポーネント間での診断に役立つ、要求の一意の識別子。 |
 
 #### トークン エンドポイント エラーのエラー コード
-| エラー コード | Description | クライアント側の処理 |
+| エラー コード | 説明 | クライアント側の処理 |
 | --- | --- | --- |
 | invalid_request |必要なパラメーターが不足しているなどのプロトコル エラーです。 |要求を修正し再送信します。 |
 | invalid_grant |承認コードが無効であるか、または有効期限切れです。 |`/authorize` エンドポイントに対して改めて要求を試行します。 |
@@ -244,7 +243,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 > 
 > 
 
-| パラメーター |  | Description |
+| パラメーター |  | 説明 |
 | --- | --- | --- |
 | テナント |必須 |要求パスの `{tenant}` の値を使用して、アプリケーションにサインインできるユーザーを制御します。  使用できる値は、`common`、`organizations`、`consumers` およびテナント識別子です。  詳細については、 [プロトコルの基礎](active-directory-v2-protocols.md#endpoints)に関するページを参照してください。 |
 | client_id |必須 |登録ポータル ([apps.dev.microsoft.com](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList)) によってアプリに割り当てられたアプリケーション ID。 |
@@ -267,14 +266,14 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
     "id_token": "eyJ0eXAiOiJKV1QiLCJhbGciOiJub25lIn0.eyJhdWQiOiIyZDRkMTFhMi1mODE0LTQ2YTctOD...",
 }
 ```
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | access_token |要求されたアクセス トークン。 アプリはこのトークンを使用して、保護されたリソース (Web API など) に対し、本人性を証明することができます。 |
 | token_type |トークン タイプ値を指定します。 Azure AD でサポートされるのは Bearer タイプのみです。 |
 | expires_in |アクセス トークンの有効期間 (秒)。 |
 | scope |access_token が有効である範囲。 |
-| refresh_token |新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 |
-| id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 |
+| refresh_token |新しい OAuth 2.0 更新トークン。 できるだけ長い時間、更新トークンを有効な状態に維持するためには、この新しく取得した更新トークンで古い更新トークンを置き換える必要があります。 <br> **注:** `offline_access` スコープが要求された場合のみ提供されます。 |
+| id_token |無署名の JSON Web トークン (JWT)。 このトークンのセグメントを base64Url でデコードすることによって、サインインしたユーザーに関する情報を要求することができます。 この値をキャッシュして表示することはできますが、承認やセキュリティ境界の用途でこの値に依存することは避けてください。  id_token の詳細については、[v2.0 エンドポイント トークンのリファレンス](active-directory-v2-tokens.md)を参照してください。 <br> **注:** `openid` スコープが要求された場合のみ提供されます。 |
 
 #### エラー応答
 ```
@@ -290,7 +289,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 }
 ```
 
-| パラメーター | Description |
+| パラメーター | 説明 |
 | --- | --- |
 | error |発生したエラーの種類を分類したりエラーに対処したりする際に使用するエラー コード文字列。 |
 | error_description |認証エラーの根本的な原因を開発者が特定しやすいように記述した具体的なエラー メッセージ。 |

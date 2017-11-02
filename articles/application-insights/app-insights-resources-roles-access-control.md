@@ -3,7 +3,7 @@ title: "Azure Application Insights のリソース、ロール、アクセス制
 description: "組織の insights の所有者、共同作成者、閲覧者。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 49f736a5-67fe-4cc6-b1ef-51b993fb39bd
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/17/2017
-ms.author: bwren
-ms.openlocfilehash: c979a8bfbeecacc7c0bbc112e02a4b68e874c219
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e3aa1d432cf2c510c09b13d4f07833edcb1e9b53
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="resources-roles-and-access-control-in-application-insights"></a>Application Insights のリソース、ロール、アクセス制御
 Azure [Application Insights][start] では、[Microsoft Azure のロールベースのアクセス制御](../active-directory/role-based-access-control-configure.md)を利用し、データを読み取りできる人と更新できる人を制御できます。

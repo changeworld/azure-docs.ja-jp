@@ -9,17 +9,17 @@ editor:
 ms.assetid: b617308e-692c-4938-8fa2-070034a3ecef
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2017
 ms.author: jodebrui
-ms.openlocfilehash: e953b60493c5a7c7a7ad74533471bd321d42abef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 613a9ced91d71cc9a65ea67e6ede1a78a03b4bd5
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="monitor-in-memory-oltp-storage"></a>インメモリ OLTP ストレージの監視
 [インメモリ OLTP](sql-database-in-memory.md) を使用している場合、メモリ最適化テーブルおよびテーブル変数内のデータは、インメモリ OLTP ストレージに格納されています。 Premium サービス レベルには、それぞれインメモリ OLTP ストレージの最大サイズがあります。詳しくは、[単一データベースのリソース制限に関する記事](sql-database-resource-limits.md#single-database-storage-sizes-and-performance-levels)および[エラスティック プールのリソース制限に関する記事](sql-database-resource-limits.md#elastic-pool-change-storage-size)をご覧ください。 この上限を超過すると、挿入操作や更新操作が (エラー 41823 で) 失敗することがあります。 その場合は、データを削除してメモリを解放するか、データベースのパフォーマンス階層をアップグレードする必要があります。

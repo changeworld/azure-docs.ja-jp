@@ -9,17 +9,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: devcenter
-ms.workload: drivers
+ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: d74c889b60e4d2ad24d70db70f4a0bc8284013ba
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5fc50c78af7c88cc2d0c537456cb8323002f8696
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-net-c-with-visual-studio-to-connect-and-query-an-azure-sql-database"></a>.NET (C#) と Visual Studio で Azure SQL Database に接続してデータベースに照会する
 

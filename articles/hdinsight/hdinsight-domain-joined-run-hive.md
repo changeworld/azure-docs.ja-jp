@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: big-data
 ms.date: 10/25/2016
 ms.author: saurinsh
-ms.openlocfilehash: de537d5e39dd0d3f75ff802948c7372e4d65d127
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93f79302dde34d0012cca6a3dc189f60f0bd88ec
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="configure-hive-policies-in-domain-joined-hdinsight-preview"></a>ドメイン参加済み HDInsight での Hive ポリシーの構成 (プレビュー)
 Hive 用 Apache Ranger ポリシーを構成する方法について説明します。 この記事では、hivesampletable へのアクセスを制限する 2 つの Ranger ポリシーを作成します。 hivesampletable は HDInsight クラスターに付属しています。 ポリシーを構成したら、Excel と ODBC ドライバーを使用して HDInsight の Hive テーブルに接続します。
@@ -82,18 +82,17 @@ Hive 用 Apache Ranger ポリシーを構成する方法について説明しま
 ## <a name="create-hive-odbc-data-source"></a>Hive ODBC データ ソースの作成
 手順については、「[Hive ODBC データ ソースの作成](hdinsight-connect-excel-hive-odbc-driver.md)」をご覧ください。  
 
-    プロパティ|Description
-    ---|---
-    データ ソース名|データ ソースに名前を付けます。
-    Host|「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。
-    ポート|<strong>443</strong> を使用します。 (このポートは 563 から 443 に変更されました)。
-    データベース|<strong>既定値</strong>を使用します。
-    Hive サーバーの種類|<strong>Hive Server 2</strong> を選択します。
-    メカニズム|<strong>Azure HDInsight サービス</strong>を選択します。
-    HTTP パス|空白のままにします。
-    ユーザー名|「hiveuser1@contoso158.onmicrosoft.com」を入力します。ドメイン名が異なる場合は、ドメイン名を更新します。
-    パスワード|hiveuser1 のパスワードを入力します。
-    </table>
+ | プロパティ  |Description |
+ | --- | --- |
+ | データ ソース名 | データ ソースに名前を付けます。 |
+ | Host | 「&lt;HDInsightClusterName>.azurehdinsight.net」と入力します。 たとえば、「myHDICluster.azurehdinsight.net」と入力します。 |
+ | ポート | **443** を使用します。 (このポートは 563 から 443 に変更されました)。 |
+ | データベース | **既定値**を使用します。 |
+ | Hive サーバーの種類 | **Hive Server 2** を選択します。 |
+ | メカニズム | **Azure HDInsight サービス**を選択します。 |
+ | HTTP パス | 空白のままにします。 |
+ | ユーザー名 | 「hiveuser1@contoso158.onmicrosoft.com」を入力します。ドメイン名が異なる場合は、ドメイン名を更新します。 |
+ | パスワード | hiveuser1 のパスワードを入力します。 |
 
 データ ソースを保存する前に、必ず **[Test]** をクリックしてください。
 

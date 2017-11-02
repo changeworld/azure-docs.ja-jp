@@ -12,14 +12,14 @@ ms.custom: develop apps
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 07/12/2016
 ms.author: sstein
-ms.openlocfilehash: 22cff47444306e599325ba3035d83a0266d69c72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8622bddc809c9d95f7acf359ff708d5ab31cf620
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>バッチ処理を使用して SQL Database アプリケーションのパフォーマンスを強化する方法
 Azure SQL Database に対する操作は、バッチ処理で行うことによりアプリケーションのパフォーマンスとスケーラビリティを大幅に高めることができます。 その利点をわかりやすく解説するために、SQL Database に対する要求を逐次処理で行った場合とバッチ処理で行った場合とを比較するサンプル テストの結果をこの記事の冒頭でいくつか取り上げます。 その後、Azure アプリケーションでバッチ処理を正しく使用するための手法、シナリオ、考慮事項について説明します。

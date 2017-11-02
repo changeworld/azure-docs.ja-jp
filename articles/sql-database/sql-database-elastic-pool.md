@@ -13,14 +13,14 @@ ms.custom: DBs & servers
 ms.devlang: NA
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.workload: data-management
+ms.workload: Active
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.openlocfilehash: 38c8c83909fe6a68e8850c9ac9d796784c38c70a
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 2f1ff7a7c2ecf04069ffa6afcc66e2f0f9915b35
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>エラスティック プールを利用した複数の Azure SQL Database の管理およびスケーリング
 

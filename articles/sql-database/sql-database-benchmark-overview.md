@@ -12,14 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 06/21/2016
 ms.author: janeng
-ms.openlocfilehash: 57178352e0a402f3559c94ce25f125dcbefd1374
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 43ab7ed75313863d2912063169ccc089af6052c2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-benchmark-overview"></a>Azure SQL Database ベンチマークの概要
 ## <a name="overview"></a>概要

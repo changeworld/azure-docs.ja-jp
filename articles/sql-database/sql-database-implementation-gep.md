@@ -12,14 +12,14 @@ ms.custom: reference
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 64dec0bb789fe6e07975b1d403b6a37b5c2c2ed8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bced4e04f541dde58410e25fe0c3aa5493a5e5fd
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-gives-gep-global-reach-and-greater-efficiency"></a>GEP 社のグローバルな事業展開と効率性向上を Azure が支援
 ![GEP ロゴ](./media/sql-database-implementation-gep/geplogo.png)

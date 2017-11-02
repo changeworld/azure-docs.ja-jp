@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/18/2017
 ms.author: oanapl
-ms.openlocfilehash: 21f04c1b01033adcef7b7d73c710dd2b4590f76f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b02b1260cedcade9bf69a99453ab0f5aa2c3c7b1
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="use-system-health-reports-to-troubleshoot"></a>システム正常性レポートを使用したトラブルシューティング
 Azure Service Fabric コンポーネントは、追加の設定なしで、クラスター内のすべてのエンティティについてのシステム正常性レポートを提供します。 [正常性ストア](service-fabric-health-introduction.md#health-store) は、システム レポートに基づいてエンティティを作成および削除します。 さらに、エンティティの相互作用をキャプチャする階層で、それらを編成します。
@@ -101,6 +101,13 @@ Service Fabric Load Balancer は、ノード容量違反を検出すると警告
 * **SourceId**: System.PLB
 * **プロパティ**: **Capacity** で始まります。
 * **次のステップ**: 提供されたメトリックを確認し、ノードの現在の容量を表示します。
+
+### <a name="node-capacity-mismatch-for-resource-governance-metrics"></a>リソース ガバナンス メトリックのノード容量の不一致
+クラスター マニフェストで定義されているノード容量が、リソース ガバナンス メトリック (メモリと CPU コア数) の実際のノード容量よりも大きい場合、System.Hosting が警告を報告します。 [リソース ガバナンス](service-fabric-resource-governance.md)を使用する最初のサービス パッケージが指定されたノードに登録された時点で、正常性レポートが表示されます。
+
+* **SourceId**: System.Hosting
+* **プロパティ**: ResourceGovernance
+* **次のステップ**: このことは、サービス パッケージの管理が想定どおりに適用されず、[リソース ガバナンス](service-fabric-resource-governance.md)が正しく機能しなくなるため、問題になります。 これらのメトリックについて適切なノード容量を設定してクラスター マニフェストを更新するか、またはノード容量をまったく指定せずに、利用可能なリソースを Service Fabric に自動検出させてください。
 
 ## <a name="application-system-health-reports"></a>アプリケーション システム正常性レポート
 **System.CM**は Cluster Manager サービスを表し、アプリケーションに関する情報を管理する権限です。
@@ -815,6 +822,13 @@ System.Hosting は、アップグレード中に検証が失敗した場合、�
 * **SourceId**: System.Hosting
 * **プロパティ**: プレフィックス **FabricUpgradeValidation** を使用し、アップグレード バージョンを含みます。
 * **説明**: 発生したエラーを指します。
+
+### <a name="undefined-node-capacity-for-resource-governance-metrics"></a>リソース ガバナンスのメトリックに対してノード容量が未定義
+ノード容量がクラスター マニフェストで定義されておらず、自動検出の構成がオフになっている場合に、System.Hosting は警告を報告します。 [リソース ガバナンス](service-fabric-resource-governance.md)を使用する最初のサービス パッケージが指定されたノードに登録された時点で、Service Fabric が正常性の警告を出します。
+
+* **SourceId**: System.Hosting
+* **プロパティ**: ResourceGovernance
+* **次のステップ**: この問題を解決するには、クラスター マニフェストを変更して使用可能なリソースの自動検出を有効にすることをお勧めします。 もう 1 つの方法として、これらのメトリックに対して適切なノード容量を指定してクラスター マニフェストを更新することもできます。
 
 ## <a name="next-steps"></a>次のステップ
 [Service Fabric の正常性レポートの確認](service-fabric-view-entities-aggregated-health.md)

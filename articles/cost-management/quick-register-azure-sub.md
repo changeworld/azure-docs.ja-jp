@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 64699db16eaa55d6206f7631ced3072e21cd2074
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4fed181a004ba6a5ea35dcbe1366e7d48342c96d
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="register-an-individual-azure-subscription-and-view-cost-data"></a>個別の Azure サブスクリプションを登録し、コスト データを確認する
 
@@ -36,9 +36,11 @@ Azure サブスクリプションを使用して、Azure Cost Management by Clou
 6. 使用条件に同意し、情報を検証して **[次へ]** をクリックします。
 7. **[Gather additional data]\(追加データを収集する\)** ページで、**[次へ]** をクリックし、Cloudyn を承認して Azure リソース データを収集します。 収集されたデータには、お客様のサブスクリプションの使用状況、パフォーマンス、請求、サブスクリプションからのタグ データなどが含まれています。  
     ![追加データを収集する](./media/quick-register-azure-sub/gather-additional.png)
-9. お使いのブラウザーで、Cloudyn のサインイン ページに移動します。 Azure サブスクリプションの資格情報でサインインします。
+8. お使いのブラウザーで、Cloudyn のサインイン ページに移動します。 Azure サブスクリプションの資格情報でサインインします。
 9. **[Go to Cloudyn]\(Cloudyn に移動\)** をクリックして、Cloudyn ポータルを開くと、**[Accounts Management]\(アカウント管理\)** ページに、Azure サブスクリプション アカウント情報が表示されます。  
     ![アカウントの管理](./media/quick-register-azure-sub/accounts-mgt.png)
+
+Azure サブスクリプションの登録に関するチュートリアル ビデオを見るには、「[Azure Cost Management by Cloudyn で使用するディレクトリ GUID とレート ID を検索する](https://youtu.be/PaRjnyaNGMI)」を参照してください。
 
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
@@ -47,4 +49,4 @@ Azure サブスクリプションを使用して、Azure Cost Management by Clou
 このクイックスタートでは、Azure のサブスクリプション情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの確認を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 
 > [!div class="nextstepaction"]
-> [コスト データの確認](./tutorial-review-usage.md)
+> [使用状況とコストを確認する](./tutorial-review-usage.md)

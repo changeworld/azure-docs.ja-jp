@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database の単一データベース | Microsoft Docs"
-description: "1 つの Azure SQL Database を管理します。"
+description: "単一の Azure SQL Database のサービス レベル、パフォーマンス レベル、ストレージ量を管理します。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 70f512ef5742346df742e0718e2ccffd076a979e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 8393d175f58b031dff2ab4c00b73c09b2e4908d5
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-resources-for-a-single-database-in-azure-sql-database"></a>Azure SQL Database で単一データベースのリソースを管理する
 
@@ -101,7 +101,7 @@ Azure SQL Database のサービス レベル、パフォーマンス レベル�
 |[データベース - エラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyelasticpool)|エラスティック プール内のデータベースの一覧を返します。|
 |[データベース - 推奨されるエラスティック プールごとの一覧取得](/rest/api/sql/databases/listbyrecommendedelasticpool)|推奨されるエラスティック プール内のデータベースの一覧を返します。|
 |[データベース - サーバーごとの一覧取得](/rest/api/sql/databases/listbyserver)|サーバー内のデータベースの一覧を返します。|
-|[データベース - 更新]((/rest/api/sql/databases/update)|既存のデータベースを更新します。|
+|[データベース - 更新](/rest/api/sql/databases/update)|既存のデータベースを更新します。|
 
 
 

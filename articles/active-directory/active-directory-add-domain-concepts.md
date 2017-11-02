@@ -3,7 +3,7 @@ title: "Azure Active Directory でのカスタム ドメイン名の概念の概
 description: "シングル サインオン用のフェデレーションを含む、Azure Active Directory でカスタム ドメイン名を使用するための概念的なフレームワークについて説明します"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: LizCasey
 manager: femila
 editor: 
 ms.assetid: fd0c5def-0da2-43af-81bc-76f4cfe86afd
@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: curtand
 ms.reviewer: elkuzmen
-ms.openlocfilehash: b0ba411dd40bbd063a328d61be899c1e70a96eda
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: baaf1829705c46322158c229a8ecccd0164cd4a6
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="conceptual-overview-of-custom-domain-names-in-azure-active-directory"></a>Azure Active Directory でのカスタム ドメイン名の概念の概要
 ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。

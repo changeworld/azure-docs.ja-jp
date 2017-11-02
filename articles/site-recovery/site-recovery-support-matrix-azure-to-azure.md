@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 08/31/2017
 ms.author: sujayt
-ms.openlocfilehash: f52520f88d36914d4cad7c8aea4fb21e44b3cc9d
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 34255e8ada8dfb00b3c02ca2ab22f94bd3e0954d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-site-recovery-support-matrix-for-replicating-from-azure-to-azure"></a>Azure 間でのレプリケートに関する Azure Site Recovery のサポート マトリックス
 
@@ -145,8 +145,8 @@ Site Recovery を使用して移行された VM | サポートされています
 
 **構成** | **サポートされるかどうか** | **解説**
 --- | --- | ---
-OS ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
-データ ディスクの最大サイズ | 1023 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
+OS ディスクの最大サイズ | 2048 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
+データ ディスクの最大サイズ | 4095 GB | ｢[VM で使用されるディスク](../virtual-machines/windows/about-disks-and-vhds.md#disks-used-by-vms)」を参照してください。
 データ ディスクの数 | 特定の Azure VM サイズでサポートされている最大数 64 | [Azure 仮想マシンのサイズ](../virtual-machines/windows/sizes.md)に関するページをご覧ください
 一時ディスク | 常にレプリケーションから除外 | 一時ディスクは常にレプリケーションから除外されます。 Azure ガイダンスに従って、一時ディスクには永続データを配置しないでください。 詳細については、[Azure VM の一時ディスク](../virtual-machines/windows/about-disks-and-vhds.md#temporary-disk)に関する記事をご覧ください。
 ディスク上のデータの変更率 | ディスクあたり最大 6 MBps | ディスク上の平均データ変更率が継続的に 6 MBps を超えると、レプリケーションが追いつきません。 ただし、データの急激な増加が時折しか発生せず、データ変更率が一時的に 6 MBps を超えてから低下する場合は、レプリケーションは追いつきます。 この場合、復旧ポイントは、少し後ろにずれることがあります。

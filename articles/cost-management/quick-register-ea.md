@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/14/2017
+ms.date: 10/11/2017
 ms.topic: quickstart
 ms.custom: mvc
 ms.service: cost-management
 manager: carmonm
-ms.openlocfilehash: 5b2fa44eaf801715d50282b4c1460c58d3631637
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41a9df712b07253d9f5f9db8542fb9917592320f
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="register-an-azure-enterprise-agreement-and-view-cost-data"></a>Azure エンタープライズ契約を登録してコスト データを表示する
 
@@ -41,6 +41,8 @@ Azure エンタープライズ契約を使用して、Cloudyn の Azure Cost Man
 7. **[Invite other stakeholders]\(その他の関係者を招待\)** の下に、電子メール アドレスを入力することで、ユーザーを追加できます。 完了したら、**[次へ]** をクリックします。 すべての課金データが Cloudyn に追加されるまで、約 2 時間かかります。
 8. **[Cloudyn に移動]** をクリックして、Cloudyn ポータルを開くと、**[Cloud Accounts Management]\(クラウド アカウント管理\)** ページに、登録した EA アカウント情報が表示されます。
 
+Enterprise Agreement の登録に関するチュートリアル ビデオを見るには、「[Azure Cost Management by Cloudyn で使用する EA 登録 ID と API キーを検索する方法](https://youtu.be/u_phLs_udig)」を参照してください。
+
 [!INCLUDE [cost-management-create-account-view-data](../../includes/cost-management-create-account-view-data.md)]
 
 ## <a name="next-steps"></a>次のステップ
@@ -48,4 +50,4 @@ Azure エンタープライズ契約を使用して、Cloudyn の Azure Cost Man
 このクイック スタートでは、Azure エンタープライズ契約情報を使用して、Cost Management に登録しました。 また、Cloudyn ポータルにサインインし、コスト データの表示を開始しました。 Cloudyn の Azure Cost Management については、Cost Management のチュートリアルで続きを説明します。
 
 > [!div class="nextstepaction"]
-> [コスト データの確認](./tutorial-review-usage.md)
+> [使用状況とコストを確認する](./tutorial-review-usage.md)

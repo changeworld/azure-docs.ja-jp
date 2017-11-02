@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/13/2017
+ms.date: 10/06/2017
 ms.author: amanbha
-ms.openlocfilehash: d936670c548ff709fc2e935d3f28d94e4bde8a04
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 779d39e2910d0de25ee07b8fae3ca7a0e9772776
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="actor-events"></a>アクター イベント
 アクター イベントは、アクターからクライアントにベスト エフォート通知を送信する方法を提供します。 アクター イベントは、アクターとクライアントの通信用に設計されており、アクター間の通信には使用できません。
@@ -95,7 +95,7 @@ return ActorProxyEventUtility.subscribeAsync(actorProxy, new GameEventsHandler()
 
 フェールオーバーが発生した場合、アクターは別のプロセスまたはノードにフェールオーバーする可能性があります。 アクター プロキシは、アクティブなサブスクリプションを管理し、自動的に再サブスクライブします。 `ActorProxyEventExtensions.SubscribeAsync<TEvent>` API を介して、再サブスクリプションの間隔を制御できます。 サブスクリプションを解除するには、 `ActorProxyEventExtensions.UnsubscribeAsync<TEvent>` API を使用します。
 
-アクターで、イベントが発生したときに単純に発行します。 イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
+アクターで、イベントが発生したときに発行します。 イベントをサブスクライブしているユーザーがいる場合、アクター ランタイムはこれらのユーザーに通知を送信します。
 
 ```csharp
 var ev = GetEvent<IGameEvents>();

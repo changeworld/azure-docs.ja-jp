@@ -7,17 +7,17 @@ author: stevestein
 manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/09/2017
 ms.author: sstein
-ms.openlocfilehash: 68a9d97a881f3a7628a08b66091c3feb4c4dbbfe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46c9a3eadc2c23959b4d08649c6c0215d44b493e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="introduction-to-a-sql-database-multi-tenant-saas-app-example"></a>SQL Database のマルチ テナント SaaS アプリの例の概要
 

@@ -8,17 +8,17 @@ author: MladjoA
 ms.assetid: f86eccb8-6323-4ba7-8559-8a7c039049f3
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: mlandzic
-ms.openlocfilehash: 62b5bcd26aa1ed219fb38970916e0e8847ceb577
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41accea2e94fc763d0dcbba709829ec07453da78
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="reporting-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体をレポートする (プレビュー)
 ![シャード間のクエリ][1]

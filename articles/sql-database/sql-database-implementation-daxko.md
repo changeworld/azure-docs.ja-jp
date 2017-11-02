@@ -12,14 +12,14 @@ ms.custom: reference
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 01/10/2017
 ms.author: carlrab
-ms.openlocfilehash: 3e43494721f03ce8e56cb069638ad24df7222386
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d44e43dd8ae01c93050de199f7d72c8ac92bcad9
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI 社、Azure 導入で開発サイクルを迅速化し、顧客サービスとパフォーマンスを強化
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: 207526b7a675f92134d045ebefb9a372749bce92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e1eb2177d6032142781e6e31af6c7f6313d38f4d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-map-in-application-insights"></a>Application Insights のアプリケーション マップ
 [Azure Application Insights](app-insights-overview.md) のアプリケーション マップは、アプリケーション コンポーネントにおける依存関係のレイアウトを視覚的に表したものです。 負荷やパフォーマンス、エラー、アラートといった KPI がコンポーネントごとに表示されるので、パフォーマンスの問題やエラーの原因となっているコンポーネントを容易に検出することができます。 任意のコンポーネントをクリックして、さらに詳しい診断結果 (Application Insights イベントなど) にアクセスすることができます。 アプリで Azure サービスを使用している場合は、Azure 診断 (SQL Database アドバイザーのアドバイス情報など) をクリックすることもできます。

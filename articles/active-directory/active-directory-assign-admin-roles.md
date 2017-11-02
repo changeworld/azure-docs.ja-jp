@@ -3,7 +3,7 @@ title: "Azure Active Directory の管理者ロールの割り当て | Microsoft 
 description: "管理者ロールを使って、ユーザーの作成または編集、管理者ロールの割り当て、ユーザー パスワードのリセット、ユーザー ライセンスの管理、ドメインの管理などを行うことができます。 管理者ロールが割り当てられているユーザーは、組織がサブスクライブしているすべてのクラウド サービスで同じ権限を持ちます。"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: LizCasey
 manager: femila
 editor: 
 ms.assetid: 7fc27e8e-b55f-4194-9b8f-2e95705fb731
@@ -17,11 +17,11 @@ ms.author: curtand
 ms.reviewer: Vince.Smith
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 8e50ea660df0a3ca1fbd23f7b610a7e57eb737d1
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 7c866842c2d090c27c77b2ef5c236bda893022c4
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Azure Active Directory での管理者ロールの割り当て
 > [!div class="op_single_selector"]
@@ -56,7 +56,7 @@ ms.lasthandoff: 10/11/2017
 
 * **Exchange サービス管理者**: このロールが割り当てられたユーザーは、Microsoft Exchange Online 内でグローバル アクセス許可を持ちます (このサービスが存在する場合)。 詳細については、「 [Office 365 の管理者ロールについて](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d)」をご覧ください。
 
-* **グローバル管理者/会社の管理者**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory とフェデレーションするサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。 会社に複数のグローバル管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
+* **グローバル管理者/会社の管理者**: このロールが割り当てられたユーザーは、Azure Active Directory のすべての管理機能と、Azure Active Directory とフェデレーションするサービス (Exchange Online、SharePoint Online、Skype for Business Online など) にアクセスできます。 Azure Active Directory テナントにサインアップしたユーザーがグローバル管理者になります。 他の管理者ロールを割り当てることができるのは全体管理者だけです。 会社に複数の全体管理者が存在してかまいません。 グローバル管理者は、すべてのユーザーと他のすべての管理者のパスワードをリセットできます。
 
   > [!NOTE]
   > Microsoft Graph API、Azure AD Graph API、Azure AD PowerShell では、このロールは "会社の管理者" として識別されます。 [Azure Portal](https://portal.azure.com) では、"全体管理者" になります。
@@ -149,7 +149,7 @@ ms.lasthandoff: 10/11/2017
 | <p>Office 365 サービス正常性の監視</p><p>Office 365 セキュリティ/コンプライアンス センター |<ul><li>セキュリティ リーダー ロールのすべての権限を持ちます。<li>Advanced Threat Protection 機能 (マルウェアおよびウイルス防止、悪意のある URL の構成、URL 追跡など) のすべての設定を構成することができます。 |
 
 ## <a name="details-about-the-global-administrator-role"></a>グローバル管理者ロールの詳細
-グローバル管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリのグローバル管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。
+全体管理者は、すべての管理機能にアクセスできます。 既定では、Azure サブスクリプションにサインアップしたユーザーには、ディレクトリの全体管理者ロールが割り当てられます。 他の管理者ロールを割り当てることができるのはグローバル管理者だけです。
 
 ### <a name="to-add-a-colleague-as-a-global-administrator"></a>全体管理者として同僚を追加するには
 

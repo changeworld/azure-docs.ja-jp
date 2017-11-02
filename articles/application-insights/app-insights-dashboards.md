@@ -3,7 +3,7 @@ title: "Azure Application Insights のダッシュボードおよびナビゲー
 description: "重要な APM グラフとクエリのビューを作成します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 39b0701b-2fec-4683-842a-8a19424f67bd
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: 9987f04e7e71df5fe10c8bc209a390cb940ec4f2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 9a4a839e7b5cc772fb9d4c57ed70484d90a87fdd
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="navigation-and-dashboards-in-the-application-insights-portal"></a>Application Insights ポータルのナビゲーションおよびダッシュボード
 [プロジェクトに Application Insights を設定](app-insights-overview.md)すると、[Azure Portal](https://portal.azure.com) のプロジェクトの Application Insights リソースに、アプリのパフォーマンスと使用状況に関するテレメトリ データが表示されます。
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="add-to-a-dashboard"></a>ダッシュボードへの追加
 特に重要なブレードやグラフのセットがあれば、そのコピーをダッシュボードにピン留めしておきましょう。 ダッシュボードを開いたときにすぐに見ることができます。
 
-![グラフをピン留めするには、マウスでポイントし、ヘッダーの ...をクリックします。](./media/app-insights-dashboards/33.png)
+![グラフをピン留めするには、マウスでポイントし、ヘッダーの [...] をクリックします。](./media/app-insights-dashboards/33.png)
 
 1. ダッシュボードにグラフをピン留めします。 グラフのコピーがダッシュボードに表示されます。
 2. ブレード全体をダッシュボードにピン留めします。クリックして進むことのできるタイルとしてブレード全体がダッシュボードに表示されます。
@@ -83,7 +83,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="switch-between-dashboards"></a>ダッシュボード間の切り替え
 複数のダッシュボードを保存して、切り替えることができます。 ピン留めしたグラフやブレードは、そのとき開いていたダッシュボードに追加されます。
 
-![ダッシュボード間を切り替えるには、[ダッシュボード] をクリックし、保存されているダッシュボードを選択します。 新しいダッシュボードを作成して保存するには、新規をクリックします。 並べ替えるには、[編集] をクリックします。](./media/app-insights-dashboards/32.png)
+![ダッシュボード間を切り替えるには、[ダッシュボード] をクリックし、保存されているダッシュボードを選択します。 新しいダッシュボードを作成して保存するには、[新規] をクリックします。 並べ替えるには、[編集] をクリックします。](./media/app-insights-dashboards/32.png)
 
 たとえば、チーム ルームを全画面で表示するダッシュボードを作成し、全般的な開発用に別のダッシュボードを作成することができます。
 

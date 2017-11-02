@@ -3,7 +3,7 @@ title: "Azure Application Insights の Analytics のツアー | Microsoft Docs"
 description: "Analytics のすべてのメイン クエリの短いサンプル、Application Insights の強力な検索ツール。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: bddf4a6d-ea8d-4607-8531-1fe197cc57ad
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/06/2017
-ms.author: bwren
-ms.openlocfilehash: ccea92dda99c3b76cbb7d37b20ce810b210a8217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 26a5854735bd197fb114fce409a093251dc5c2f0
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="a-tour-of-analytics-in-application-insights"></a>Application Insights の Analytics について
 [Analytics](app-insights-analytics.md) は、[Application Insights](app-insights-overview.md) の強力な検索機能です。 ここでは、Log Analytics のクエリ言語について説明します。

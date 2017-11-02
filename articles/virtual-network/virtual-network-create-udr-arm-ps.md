@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/16/2017
 ms.author: jdial
-ms.openlocfilehash: 4ca7f791b4c5c8bb9020144785b1c1aeb20db195
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 9696a74ac02688f9004156f6f16b39b37756751d
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-a-user-defined-route---powershell"></a>PowerShell を使用してユーザー定義ルートを作成する
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/20/2017
 
 ![ユーザー定義のルート](./media/create-user-defined-route/user-defined-routes.png)
 
-この記事では、Resource Manager デプロイメント モデルを使用して、ユーザー定義ルートを作成する手順について説明します。ユーザー定義ルートを作成するときは、このデプロイメント モデルを使用することをお勧めします。 ユーザー定義ルート (クラシック) を作成する必要がある場合は、[ユーザー定義ルート (クラシック) の作成](virtual-network-create-udr-classic-ps.md)に関するページをご覧ください。 Azure 展開モデルの知識がない場合は、[Azure 展開モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined-routes)に関する記事をご覧ください。
+この記事では、Resource Manager デプロイメント モデルを使用して、ユーザー定義ルートを作成する手順について説明します。ユーザー定義ルートを作成するときは、このデプロイメント モデルを使用することをお勧めします。 ユーザー定義ルート (クラシック) を作成する必要がある場合は、[ユーザー定義ルート (クラシック) の作成](virtual-network-create-udr-classic-ps.md)に関するページをご覧ください。 Azure 展開モデルの知識がない場合は、[Azure 展開モデルの概要](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json)に関する記事を参照してください。 ユーザー定義ルートの詳細については、[ユーザー定義ルートの概要](virtual-networks-udr-overview.md#user-defined)に関する記事をご覧ください。
 
 ## <a name="create-routes-and-network-virtual-appliance"></a>ルートとネットワーク仮想アプライアンスの作成
 

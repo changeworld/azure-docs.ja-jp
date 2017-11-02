@@ -9,17 +9,17 @@ editor:
 ms.assetid: 452ad236-7a15-4f19-8ea7-df528052a3ad
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: drivers
+ms.workload: On Demand
 ms.tgt_pltfrm: n
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 08/08/2017
 ms.author: carlrab
-ms.openlocfilehash: fd5bd63dd614d666cc7b21bdd3b7483df5508e96
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc1697520080cbdc8e53686f800ad122e69c2478
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-python-to-query-an-azure-sql-database"></a>Python を使用して Azure SQL Database に照会する
 

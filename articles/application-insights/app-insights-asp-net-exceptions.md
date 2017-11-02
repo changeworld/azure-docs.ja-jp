@@ -3,7 +3,7 @@ title: "Azure Application Insights を利用して Web アプリの障害と例�
 description: "要求テレメトリと共に ASP.NET アプリから例外を取り込みます。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: d1e98390-3ce4-4d04-9351-144314a42aa2
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
-ms.author: bwren
-ms.openlocfilehash: d7603f47d985e1abbab96e931e46e37a8ecb4bc5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: cb87b166a32c47395f99c9cd59442a7ccd65b7ed
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Application Insights を利用し、Web アプリの例外を診断する
 ライブ Web アプリの例外は、[Application Insights](app-insights-overview.md) によって報告されます。 要求の失敗をクライアントとサーバーの両方の例外やその他のイベントに相互に関連付け、原因をすばやく診断できます。

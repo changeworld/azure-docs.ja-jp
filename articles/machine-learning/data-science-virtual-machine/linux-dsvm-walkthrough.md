@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: bradsev;paulsh
-ms.openlocfilehash: 0decb8918a544114316569720aa5deede692d5f1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 650b11d66f3ca32266b9842af77c909e125b4e4d
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Azure での Linux データ サイエンス仮想マシンを使用したデータ サイエンス
 このチュートリアルでは、Linux データ サイエンス VM を使用して、いくつかの一般的なデータ サイエンス タスクを実行する方法を示します。 Linux データ サイエンス仮想マシン (DSVM) は Azure で使用できる仮想マシン イメージであり、データ分析と機械学習で一般的に使用されているいくつかのツールがプレインストールされています。 主なソフトウェア コンポーネントは、トピック「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md) 」にまとめられています。 この VM イメージを使うと、各ツールを個別にインストールして構成する必要がないため、データ サイエンスを数分で簡単に開始できます。 VM は、必要に応じて簡単にスケールアップし、使用しないときには停止できます。 したがって、このリソースは弾力性があるうえに、コスト効率が優れています。
@@ -32,7 +32,8 @@ Linux データ サイエンス仮想マシンを使用する前に、次を用�
 
 * **Azure サブスクリプション**。 Azure サブスクリプションがない場合は、「 [無料の Azure アカウントを今すぐ作成しましょう](https://azure.microsoft.com/free/)」をご覧ください。
 * [**Linux データ サイエンス VM**](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm)。 この VM のプロビジョニング方法については、「 [Linux データ サイエンス仮想マシンのプロビジョニング](linux-dsvm-intro.md)」をご覧ください。
-* [X2Go](http://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。 
+* [X2Go](http://wiki.x2go.org/doku.php) がコンピューターにインストールされており、XFCE セッションが開かれている。 **X2Go クライアント**のインストールと構成については、「[X2Go クライアントのインストールと構成](linux-dsvm-intro.md#installing-and-configuring-x2go-client)」をご覧ください。
+* スクロールをスムーズにするために、VM の FireFox ブラウザーで about:config の gfx.xrender.enabled フラグを切り替えます。 詳細については、[こちら](https://www.reddit.com/r/firefox/comments/4nfmvp/ff_47_unbearable_slow_over_remote_x11/)を参照してください。 *mousewheel.enable_pixel_scrolling* を False に切り替えることも検討してください。 手順については、[こちら](https://support.mozilla.org/en-US/questions/981140)を参照してください。
 * **AzureML アカウント**。 AzureML アカウントがない場合は、 [AzureML ホームページ](https://studio.azureml.net/)で新しいアカウントにサインアップしてください。 開始する際に役立つ Free レベルがあります。
 
 ## <a name="download-the-spambase-dataset"></a>spambase データセットをダウンロードする

@@ -10,14 +10,14 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 2f3ca2e694fd9952319a70477e9887c332b08044
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: f5c75b95d9019c15bb402313ce7407fa9abb81d4
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>変更の保持と大きなファイルの操作
-Azure Machine Learning 実験サービスでは、さまざまな実行ターゲットを構成できます。 ターゲットは、ローカル (ローカル コンピューターやローカル コンピューター上の Docker コンテナーなど) の場合もあれば、 リモート (リモート コンピューター上の Docker コンテナーや HDInsight クラスターなど) の場合もあります。 詳細については、[Azure Machine Learning 実験実行サービスの概要](experiment-execution-configuration.md)に関する記事をご覧ください。 
+Azure Machine Learning 実験サービスでは、さまざまな実行ターゲットを構成できます。 ターゲットは、ローカル (ローカル コンピューターやローカル コンピューター上の Docker コンテナーなど) の場合もあれば、 リモート (リモート コンピューター上の Docker コンテナーや HDInsight クラスターなど) の場合もあります。 詳細については、[Azure Machine Learning 実験実行サービスの概要](experimentation-service-configuration.md)に関する記事をご覧ください。 
 
 ターゲットで実行するには、プロジェクト フォルダーをそのコンピューティング ターゲットにコピーする必要があります。 ローカルの一時フォルダーをこのために使用するローカル実行でもこれを行う必要があります。 
 
@@ -143,7 +143,7 @@ C:\users\<username>\.azureml\share\<exp_acct_name>\<workspace_name>\<proj_name>\
 
 これらのフォルダーに入力データを直接配置し、そのマシン上でのローカル実行または Docker 実行で取得させることができます。 また、ローカル実行または Docker 実行からこのフォルダーにファイルを書き込んで、ファイルがそのフォルダー内で実行ライフサイクルを超えて保持されるようにすることもできます。
 
-詳細については、[Azure Machine Learning Workbench 実行構成ファイル](experiment-execution-configuration-reference.md)に関する記事をご覧ください。
+詳細については、[Azure Machine Learning Workbench 実行構成ファイル](experimentation-service-configuration-reference.md)に関する記事をご覧ください。
 
 >[!NOTE]
 >`AZUREML_NATIVE_SHARE_DIRECTORY` 環境変数は、HDInsight 計算コンテキストではサポートされていません。 ただし、Azure Blob Storage の絶対パスを明示的に使用して、接続された Blob Storage に対する読み書きを実行することで、同じ結果を簡単に得ることができます。
@@ -195,5 +195,5 @@ attach_storage_container(spark, "<storage account name>", "<storage key>”)
 Azure Machine Learning ではプロジェクト フォルダー全体をターゲット計算コンテキストにコピーしてスクリプトを実行するため、大きな入力ファイル、出力ファイル、中間ファイルには特に注意が必要です。 大きなファイルのトランザクションには、特殊な outputs フォルダー、`AZUREML_NATIVE_SHARE_DIRECTORY` 環境変数を使用してアクセスできる共有フォルダー、または外部の永続ストレージを使用できます。 
 
 ## <a name="next-steps"></a>次のステップ
-- [Azure Machine Learning Workbench 実行構成ファイル](experiment-execution-configuration-reference.md)に関する記事を確認する。
+- [Azure Machine Learning Workbench 実行構成ファイル](experimentation-service-configuration-reference.md)に関する記事を確認する。
 - [あやめの分類](tutorial-classifying-iris-part-1.md)チュートリアル プロジェクトで、outputs フォルダーを使用してトレーニング済みのモデルを保持する方法を確認する。

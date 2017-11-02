@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2017
 ms.author: billgib;sstein
-ms.openlocfilehash: 792476849e796695dde3f2ec80b56431a17e8fc0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6ad292b9e63c6aaabed09e7569a86a41192ae97
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="restore-a-single-tenants-azure-sql-database-in-a-multi-tenant-saas-app"></a>マルチ テナント SaaS アプリでは、1 つのテナントの Azure SQL データベースを復元します。
 

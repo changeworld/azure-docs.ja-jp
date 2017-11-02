@@ -9,17 +9,17 @@ editor:
 ms.assetid: cad09e15-5561-4448-aa18-b38f54cda004
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/27/2017
 ms.author: ddove
-ms.openlocfilehash: 6b68bbb0133afd1493acdb58f79f3eeaf6a8d7cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2246dd12b922fcbc2e2b58890b3d56253810849c
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="data-dependent-routing"></a>データ依存ルーティング
 **データ依存ルーティング** は、クエリ内のデータを使用して、要求を適切なデータベースにルーティングできる機能です。 これは、シャード化されたデータベースを操作するときの基本的なパターンです。 特にシャーディング キーがクエリの一部でない場合は、要求コンテキストを使用して要求をルーティングすることもできます。 データ依存ルーティングを使用したアプリケーションで、特定のクエリまたはトランザクションがそれぞれアクセスするデータベースは、要求ごとに 1 つに制限されています。 Azure SQL Database Elastic ツールでは、このルーティングは ADO.NET アプリケーションの **[ShardMapManager クラス](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx)**で実行します。

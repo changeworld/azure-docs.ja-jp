@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 756cd3f32a12c026083c7a0e17c6c13218d153c5
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 5076a9fcbfb0c46a0aebf858d5ec1dcbee839946
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-a-single-azure-sql-database-using-the-azure-cli"></a>Azure CLI を使用して単一の Azure SQL データベースを作成する
 

@@ -3,7 +3,7 @@ title: "新しい Azure Application Insights リソースの作成 | Microsoft D
 description: "新しいライブ アプリケーションを対象にした Application Insights 監視を手動でセットアップします。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 878b007e-161c-4e36-8ab2-3d7047d8a92d
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/02/2016
-ms.author: bwren
-ms.openlocfilehash: 5f8814ee943424c1c278ab3732129d4459f83819
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 9023f3d9ae3ddd4d75b5853a08177cba7718cec1
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="create-an-application-insights-resource"></a>Application Insights リソースの作成
 Azure Application Insights には、Microsoft Azure *リソース*のアプリケーションに関するデータが表示されます。 したがって、新しいリソースの作成は、[新しいアプリケーションを監視するための Application Insights の設定][start]の一部です。 多くの場合、リソースの作成は IDE によって自動的に行われます。 ただし、たとえば、アプリケーションの開発ビルドと運用ビルドそれぞれに個別にリソースを設定するために、リソースを手動で作成することがあります。

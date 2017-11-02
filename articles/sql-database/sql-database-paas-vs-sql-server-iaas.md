@@ -10,17 +10,17 @@ editor: cjgronlund
 ms.assetid: 7467f422-b77d-4b60-9cb5-0f1ec17ec565
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.workload: data-management
+ms.workload: Active
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.devlang: na
 ms.topic: article
 ms.date: 02/01/2017
 ms.author: carlrab
-ms.openlocfilehash: 44546b423cd7f3a49d3699aa39f2437a42de86a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 436166fcb0fa9103c6b702b63d93a0b222d536d0
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>クラウド SQL Server オプションの選択: Azure SQL (PaaS) Database または Azure VM (IaaS) の SQL Server
 Azure には、Microsoft Azure で SQL Server ワークロードをホストするためのオプションが 2 つあります。

@@ -1,6 +1,6 @@
 ---
 title: "弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション"
-description: "弾力性データベース ツールと行レベルのセキュリティを使用して、Azure SQL Database にマルチテナントのシャードをサポートする拡張性の高いデータ層を持つアプリケーションを作成する方法について説明します。"
+description: "行レベルのセキュリティを備えた弾力性データベース ツールを使用して、拡張性の高いデータ層を持つアプリケーションを構築します。"
 metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
 documentationcenter: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: thmullan;torsteng
-ms.openlocfilehash: 73f1210b8d1f5ceca8fac9534d498bdc23d96d48
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 621cae68927bffcfe7f3f49d11826ca3bb2f2c4c
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>弾力性データベース ツールと行レベルのセキュリティを使用したマルチテナント アプリケーション
 [弾力性データベース ツール](sql-database-elastic-scale-get-started.md)と [Row-Level Security (RLS)](https://msdn.microsoft.com/library/dn765131) は、Azure SQL Database を使用するマルチテナント アプリケーションのデータ層を柔軟かつ効率的にスケーリングできる強力な機能セットを提供します。 詳細については、「 [Azure SQL Database を使用するマルチテナント SaaS アプリケーションの設計パターン](sql-database-design-patterns-multi-tenancy-saas-applications.md) 」をご覧ください。 
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 * サンプル プロジェクトをダウンロードします: [Elastic DB Tools for Azure SQL - Multi-Tenant Shards](http://go.microsoft.com/?linkid=9888163)
   * **Program.cs** 
 
-このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 上の図に示すように、4 つのテナントと 2 つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
+このプロジェクトでは、 [Azure SQL の弾力性 DB ツールの Entity Framework 統合](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) に関するページで説明したプロジェクトを、マルチテナント シャード データベースのサポートを追加して拡張します。 前の図に示すように、4 つのテナントと 2 つのマルチテナント シャード データベースを含む、ブログや投稿を作成するための簡単なコンソール アプリケーションを構築します。 
 
 アプリケーションをビルドし、実行します。 弾力性データベース ツールのシャード マップ マネージャーが起動され、次のテストが実行されます。 
 
@@ -64,8 +64,8 @@ Entity Framework を使用するアプリケーションの場合、最も簡単
 ```
 // ElasticScaleContext.cs 
 // ... 
-// C'tor for data dependent routing. This call will open a validated connection routed to the proper 
-// shard by the shard map manager. Note that the base class c'tor call will fail for an open connection 
+// C'tor for data-dependent routing. This call opens a validated connection routed to the proper 
+// shard by the shard map manager. Note that the base class c'tor call fails for an open connection 
 // if migrations need to be done and SQL credentials are used. This is the reason for the  
 // separation of c'tors into the DDR case (this c'tor) and the internal c'tor for new shards. 
 public ElasticScaleContext(ShardMap shardMap, T shardingKey, string connectionStr)
@@ -166,7 +166,7 @@ public static SqlConnection OpenConnectionForTenant(ShardMap shardMap, int tenan
 // ...
 
 // Example query via ADO.NET SqlClient
-// If row-level security is enabled, only Tenant 4's blogs will be listed
+// If row-level security is enabled, only Tenant 4's blogs are listed
 SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 {
     using (SqlConnection conn = OpenConnectionForTenant(sharding.ShardMap, tenantId4, connStrBldr.ConnectionString))
@@ -189,7 +189,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 ### <a name="create-a-security-policy-to-filter-the-rows-each-tenant-can-access"></a>各テナントがアクセスできる行をフィルター選択するセキュリティ ポリシーを作成する
 アプリケーションでクエリを実行する前に SESSION_CONTEXT が現在の TenantId に設定されるようになったため、RLS セキュリティ ポリシーを使ってクエリをフィルター選択して、別の TenantId を持つ行を除外できます。  
 
-RLS は T-SQL で実装されています。ユーザー定義の関数を使用してアクセス ロジックを定義し、セキュリティ ポリシーを使ってこの関数を任意の数のテーブルにバインドします。 このプロジェクトでは、関数を使用して、(他の SQL ユーザーではなく) アプリケーションがデータベースに接続されていること、および SESSION_CONTEXT に格納されている "TenantId" が特定の行の TenantId と一致することを確認しているのみです。 フィルター述語は、SELECT、UPDATE、および DELETE クエリに対するフィルターを通過するこれらの条件を満たす行を許可します。また、ブロック述語は、これらの条件に違反する行を INSERT または UPDATE から除外します。 SESSION_CONTEXT を設定していない場合は、NULL が返され、行を表示または挿入することはできません。 
+RLS は T-SQL で実装されています。ユーザー定義の関数を使用してアクセス ロジックを定義し、セキュリティ ポリシーを使ってこの関数を任意の数のテーブルにバインドします。 このプロジェクトでは、関数を使用して、(他の SQL ユーザーではなく) アプリケーションがデータベースに接続されていること、および SESSION_CONTEXT に格納されている "TenantId" が特定の行の TenantId と一致することを確認します。 フィルター述語は、SELECT、UPDATE、および DELETE クエリに対するフィルターを通過するこれらの条件を満たす行を許可します。また、ブロック述語は、これらの条件に違反する行を INSERT または UPDATE から除外します。 SESSION_CONTEXT を設定していない場合は、NULL が返され、行を表示または挿入することはできません。 
 
 RLS を有効にするには、Visual Studio (SSDT)、SSMS、またはプロジェクトに含まれる PowerShell スクリプトを使用して、すべてのシャードで次の T-SQL を実行します (また、 [弾力性データベース ジョブ](sql-database-elastic-jobs-overview.md)を使用している場合は、これを使用してすべてのシャードでこの T-SQL の実行を自動化できます)。 
 
@@ -215,7 +215,7 @@ GO
 ```
 
 > [!TIP]
-> 数百個のテーブルに述語を追加する必要があるより複雑なプロジェクトの場合は、セキュリティ ポリシーを自動的に生成するヘルパー ストアド プロシージャを使用して、スキーマ内のすべてのテーブルに述語を追加できます。 [ヘルパー スクリプトを使用してすべてのテーブルに行レベルのセキュリティを適用する](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)方法に関するブログ記事を参照してください。  
+> 数百個のテーブルに述語を追加する必要があるより複雑なプロジェクトの場合は、セキュリティ ポリシーを自動的に生成するヘルパー ストアド プロシージャを使用して、スキーマ内のすべてのテーブルに述語を追加できます。 詳細については、[ヘルパー スクリプトを使用してすべてのテーブルに行レベルのセキュリティを適用する](http://blogs.msdn.com/b/sqlsecurity/archive/2015/03/31/apply-row-level-security-to-all-tables-helper-script)方法に関するブログ記事を参照してください。  
 > 
 > 
 
@@ -296,9 +296,9 @@ GO
 ```
 
 
-### <a name="maintenance"></a>メンテナンス
-* **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行する必要があります。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
-* **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーにフィルター述語とブロック述語を追加する必要があります。この操作を行わないと、新しいテーブルに対するクエリはフィルター処理されません。 この操作は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
+### <a name="maintenance"></a>メンテナンス 
+* **新しいシャードの追加**: すべての新しいシャードで RLS を有効にするための T-SQL スクリプトを実行します。この操作を行わないと、これらのシャードに対するクエリはフィルター処理されません。
+* **新しいテーブルの追加**: 新しいテーブルを作成するたびに、すべてのシャードのセキュリティ ポリシーにフィルター述語とブロック述語を追加します。この操作を行わないと、新しいテーブルに対するクエリはフィルター処理されません。 この操作は、DDL トリガーを使用して自動化できます。詳細については、[新しく作成したテーブルに自動的に行レベルのセキュリティを適用する方法に関するブログ記事](http://blogs.msdn.com/b/sqlsecurity/archive/2015/05/22/apply-row-level-security-automatically-to-newly-created-tables.aspx)を参照してください。
 
 ## <a name="summary"></a>概要
 弾力性データベース ツールと行レベルのセキュリティを組み合わせると、アプリケーションのデータ層をスケール アウトして、マルチテナントのシャードと単一テナントのシャードの両方をサポートできます。 マルチテナントのシャードは、データをより効率的に格納するために使用できます (特に、少数のデータ行を保持するテナントが多数ある場合)。一方、単一テナントのシャードは、より厳密なパフォーマンス要件と分離要件を持つ "プレミアム" テナントをサポートするために使用できます。  詳細については、「[行レベルのセキュリティ](https://msdn.microsoft.com/library/dn765131)」をご覧ください。 

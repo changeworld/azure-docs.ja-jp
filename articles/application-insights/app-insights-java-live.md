@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/10/2016
-ms.author: bwren
-ms.openlocfilehash: a2731e3e44f8f3d104d8abc7dbe71fe3a4c3a690
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 152e21bd9fc6db424c3caff4ce425e54ecab11e2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-for-java-web-apps-that-are-already-live"></a>既にライブの Java Web アプリ向けの Application Insights
 
@@ -117,7 +117,7 @@ SDK を追加したフォルダーに ApplicationInsights.xml を作成します
 ## <a name="7-view-your-telemetry-in-application-insights"></a>7.Application Insights でのテレメトリを表示する
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
-HTTP 要求に関するテレメトリが概要ブレードに表示されます。 (表示されない場合は、数秒待ってから 最新の情報に更新をクリックします)。
+HTTP 要求に関するテレメトリが概要ブレードに表示されます。 (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-live/5-results.png)
 

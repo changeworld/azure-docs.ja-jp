@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/28/2017
+ms.date: 10/27/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 87c92265d4f377e76d3697e6957c5f739413f2b4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b884f8bc3a20052fa0cb40772deef591b69d7b10
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="register-for-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを登録する
 

@@ -4,7 +4,7 @@ description: "静的データをインポートしてアプリのテレメトリ
 services: application-insights
 keywords: "スキーマを開く、データのインポート"
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
-ms.author: bwren
-ms.openlocfilehash: 5786ac45b3459e813b1716a3c408db47b393b6ab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: f124748434be1b8f0c4704fe6ffba70414c47916
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="import-data-into-analytics"></a>Analytics へのデータのインポート
 
