@@ -12,23 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ce50c678247226b629490a2bd8ba2935ed229f06
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f661dba2e647ac905e7d84927fdbf6dbc76094f
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="join-a-windows-server-virtual-machine-to-a-managed-domain"></a>Windows Server 仮想マシンの管理対象ドメインへの参加
-> [!div class="op_single_selector"]
-> * [Azure Portal - Windows](active-directory-ds-admin-guide-join-windows-vm-portal.md)
-> * [PowerShell - Windows](active-directory-ds-admin-guide-join-windows-vm-classic-powershell.md)
->
->
-
-<br>
-
 この記事では、Azure ポータルを使用して Windows Server 仮想マシンをデプロイする方法を示します。 その後、仮想マシンを Azure AD Domain Services の管理対象ドメインに参加させる方法を示します。
 
 ## <a name="step-1-create-the-windows-server-virtual-machine"></a>ステップ 1: Windows Server 仮想マシンを作成する
@@ -57,7 +49,7 @@ Azure AD Domain Services を有効にした仮想ネットワークに参加す�
 
     > [!TIP]
     > **適切な仮想ネットワークとサブネットを選択してください。**
-    > 管理対象ドメインがデプロイされている仮想ネットワークまたは仮想ネットワーク ピアリングを使用して接続されている仮想ネットワークを選択します。 別の仮想ネットワークを選択した場合、仮想ネットワークを管理対象ドメインに参加させることができなくなります。
+    > 管理対象ドメインがデプロイされている仮想ネットワークまたは仮想ネットワーク ピアリングを使用して接続されている仮想ネットワークを選択します。 接続されていない仮想ネットワークを選択した場合、仮想マシンを管理対象ドメインに参加させることができなくなります。
     > 管理対象ドメインは専用サブネットにデプロイすることをお勧めします。 そのため、管理対象ドメインを有効にしたサブネットは選択しないでください。
 
 7. **[購入]** ページで設定を確認し、**[OK]** をクリックして仮想マシンをデプロイします。
@@ -128,7 +120,7 @@ Windows Server 仮想マシンを AAD DS の管理対象ドメインに参加さ
 資格情報で問題があり、ドメインに参加することができない場合は、次の手順を参照してください。
 
 * UPN 形式を使用して資格情報を指定します。 複数のユーザーがテナントで同じ UPN プレフィックスを使用していたり、UPN プレフィックスが最大文字数を超えている場合、アカウントの SAMAccountName は自動生成される可能性があります。 そのため、アカウントの SAMAccountName 形式が想定した形式やオンプレミス ドメインで使用する形式と異なる可能性があります。
-* "AAD DC 管理者" グループに属するユーザー アカウントの資格情報を使用して、コンピューターを管理対象ドメインに参加させるようにします。
+* "AAD DC 管理者" グループに属しているユーザー アカウントの資格情報を使用してください。
 * ファースト ステップ ガイドで説明されている手順に従って [パスワード同期が有効になっている](active-directory-ds-getting-started-password-sync.md) ことを確認します。
 * サインインするためには、Azure AD で構成されているユーザーの UPN (例: 'bob@domainservicespreview.onmicrosoft.com') を使用します。
 * ファースト ステップ ガイドで指定されているとおり、パスワード同期が完了するまで十分な時間待機します。

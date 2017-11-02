@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: fc4d793bcf402a3e742fae2b2c0052f2d60d1b47
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b2f806b81bbc6d9328ab179644b79b97d68e7b9
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="consuming-web-services"></a>Web サービスの使用
 モデルをリアルタイム Web サービスとしてデプロイしたら、さまざまなプラットフォームやアプリケーションから予測を取得できるようになります。 リアルタイム Web サービスでは、予測を取得するために REST API を公開します。 単一行または複数行の形式でデータを Web サービスに送信して、1 つまたは複数の予測を一度に取得できます。
@@ -102,6 +102,7 @@ namespace MyFirstService
         {
             HttpClient client = new HttpClient();
             client.BaseAddress = new Uri(SERVICE_URL);
+            //For local web service, comment out this line.
             client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue("Bearer", API_KEY);
 
             var inputJson = new List<RequestPayload>();
@@ -147,7 +148,7 @@ namespace MyFirstService
 Python を使用して、要求をリアルタイムの Web サービスに送信します。 
 
 1. 次のコード サンプルを新しい Python ファイルにコピーします。
-2. データ、url、および api_key パラメーターの更新
+2. データ、url、および api_key パラメーターを更新します。 ローカル Web サービスの場合は、"Authorization" ヘッダーを削除します。
 3. コードを実行します。 
 
 ```python

@@ -13,14 +13,14 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: On Demand
 ms.date: 12/22/2016
 ms.author: sashan
-ms.openlocfilehash: 25e651203f804fbf32d632b5f83145a3f3f72a7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e44c92c3f37b3f1e3397d1c8cdb8c8f6d0f9942e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>最大で 10 年間 Azure SQL Database のバックアップを格納する
 多くのアプリケーションで、規制、コンプライアンス、またはその他のビジネス上の目的で、Azure SQL Database の[自動バックアップ](sql-database-automated-backups.md)によって提供される 7 ～ 35 日間を超えて、データベースのバックアップを保持する必要があります。 長期のバックアップ リテンション期間機能を使用して、最大で 10 年間 SQL Database のバックアップを Azure Recovery Services コンテナーに保存できます。 コンテナーあたり最大 1000 個のデータベースを格納できます。 新しいデータベースとして復元する任意のバックアップを資格情報コンテナーで選択できます。

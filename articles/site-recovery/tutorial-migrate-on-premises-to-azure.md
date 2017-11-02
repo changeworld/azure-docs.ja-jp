@@ -12,13 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/16/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: bbee77e669f49bdebb57121df8672a9253945b3c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: cfd44f7f06faa7d1d00efa9427dbf5d1d0a89ef1
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="migrate-on-premises-machines-to-azure"></a>オンプレミスのマシンを Azure に移行する
 

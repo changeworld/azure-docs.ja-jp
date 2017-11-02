@@ -3,7 +3,7 @@ title: "PowerShell での Azure Application Insights の自動化 | Microsoft Do
 description: "Azure Resource Manager テンプレートを使用して、PowerShell でのリソース、アラート、および可用性テストの作成を自動化します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 9f73b87f-be63-4847-88c8-368543acad8b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 04/02/2017
-ms.author: bwren
-ms.openlocfilehash: 88dbb9515300f847789bc889911cdeff5f5bdb53
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: f4f9d1558d2ef9dc5e1b7b248ad5bc8753f59cf9
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 #  <a name="create-application-insights-resources-using-powershell"></a>PowerShell を使用した Application Insights リソースの作成
 この記事では、Azure Resource 管理を使用して [Application Insights](app-insights-overview.md) リソースの作成と更新を自動化する方法を説明します。 たとえば、ビルド プロセスの一部として実行します。 基本的な Application Insights リソースと共に、[可用性 Web テスト](app-insights-monitor-web-app-availability.md)の作成、[アラート](app-insights-alerts.md)の設定、[価格の詳細](app-insights-pricing.md)の設定、その他の Azure リソースの作成を行うことができます。

@@ -9,14 +9,14 @@ ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 11/01/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 614193fd61f976c61ef0de8be14c7bc55d7c28da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 369ffed823bc76ee4273d7866935c0ddc7ffa515
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="replicate-an-azure-vm-to-another-azure-region-preview"></a>Azure VM を別の Azure リージョンにレプリケートする (プレビュー)
 

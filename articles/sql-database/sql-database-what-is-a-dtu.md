@@ -13,14 +13,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Active
 ms.date: 04/14/2017
 ms.author: carlrab
-ms.openlocfilehash: da3399b9c6642435dc7b40ed1c843217c984d15e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4ab447cd2ad71a787e4d6bb6052299cec52d73d0
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="database-transaction-units-dtus-and-elastic-database-transaction-units-edtus"></a>データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU)
 この記事では、データベース トランザクション ユニット (DTU) とエラスティック データベース トランザクション ユニット (eDTU) について説明します。また、DTU または eDTU が最大数に達した場合に何が起こるかについても解説します。  

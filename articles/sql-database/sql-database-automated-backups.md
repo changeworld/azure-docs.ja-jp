@@ -12,14 +12,14 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: Active
 ms.date: 07/05/2017
 ms.author: carlrab
-ms.openlocfilehash: 5fbad8beebfaef370ea766e07932f1927f1d42e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e779aab97a1b96d4a0e327865e957ecd0d97a278
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>SQL Database 自動バックアップについての詳細情報
 

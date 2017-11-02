@@ -9,17 +9,17 @@ editor: genemi
 ms.assetid: 13d899d3-cf46-4e4d-8919-cf4b41ca836d
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/05/2017
 ms.author: genemi
-ms.openlocfilehash: 6232877abc1e98b565abee8bf87505fe8edc7791
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: bdf83fac9bd0ac6790062f802748a18045c7a171
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="connectivity-libraries-and-frameworks-for-microsoft-sql-server"></a>Microsoft SQL Server の接続ライブラリとフレームワーク
 

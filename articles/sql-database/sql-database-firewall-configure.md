@@ -14,14 +14,14 @@ ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: a99ef3117cba8fea6a69e8f5cef15cf8fe711715
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: e18645667cfb126ae2f2f9c8074fdcff5a6ade1b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-server-level-and-database-level-firewall-rules"></a>Azure SQL Database のサーバー レベルおよびデータベース レベルのファイアウォール規則 
 

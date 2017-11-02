@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: jingwang
-ms.openlocfilehash: 4acc29dc74a37d16a9e90101aa9b7706c55af58e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e65735ed6d19c8b94496fc3d3445e3a9dca2b9d
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアをコピー元またはコピー先としてデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -54,7 +54,7 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
 | プロパティ | 説明 | 必須 |
 |:--- |:--- |:--- |
 | type | type プロパティは **Odbc** に設定します。 | あり |
-| connectionString | 資格情報部分を除外した接続文字列。 次のセクションの例を参照してください。 | あり |
+| connectionString | 資格情報部分を除外した接続文字列。 `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、Integration Runtime マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN on IR machine>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。| あり |
 | authenticationType | ODBC データ ストアへの接続に使用される認証の種類です。<br/>使用可能な値は **Basic** および **Anonymous**。 | あり |
 | userName | 基本認証を使用している場合は、ユーザー名を指定します。 | なし |
 | パスワード | userName に指定したユーザー アカウントのパスワードを指定します。 このフィールドを SecureString とマークします。 | いいえ |
@@ -71,11 +71,11 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
         "type": "Odbc",
         "typeProperties":
         {
-            "authenticationType": "Basic",
             "connectionString": {
                 "type": "SecureString",
                 "value": "<connection string>"
             },
+            "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
                 "type": "SecureString",
@@ -100,11 +100,11 @@ ODBC のリンクされたサービスでは、次のプロパティがサポー
         "type": "Odbc",
         "typeProperties":
         {
-            "authenticationType": "Anonymous",
             "connectionString": {
                 "type": "SecureString",
                 "value": "<connection string>"
             },
+            "authenticationType": "Anonymous",
             "credential": {
                 "type": "SecureString",
                 "value": "RefreshToken=<secret refresh token>;"
@@ -240,23 +240,29 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 ]
 ```
 
-## <a name="ge-historian-source"></a>GE Historian ソース
+## <a name="ibm-informix-source"></a>IBM Informix ソース
 
-次の例に示すように、 [GE Proficy Historian (現在は GE Historian)](http://www.geautomation.com/products/proficy-historian) データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
+汎用 ODBC コネクタを使用して、IBM Informix データベースからデータをコピーできます。
+
+セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 Integration Runtime は、Informix 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 たとえば、ドライバー "IBM INFORMIX ODBC DRIVER (64 ビット)" を使用できます。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
+
+Data Factory ソリューションで Informix ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
+
+次の例に示すように、IBM Informix データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
 
 ```json
 {
-    "name": "HistorianLinkedService",
+    "name": "InformixLinkedService",
     "properties":
     {
         "type": "Odbc",
         "typeProperties":
         {
-            "authenticationType": "Basic",
             "connectionString": {
                 "type": "SecureString",
-                "value": "<GE Historian store connection string or DSN>"
+                "value": "<Informix connection string or DSN>"
             },
+            "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
                 "type": "SecureString",
@@ -271,9 +277,83 @@ ODBC 対応データ ストアにデータをコピーするには、コピー �
 }
 ```
 
+コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
+
+## <a name="microsoft-access-source"></a>Microsoft Access ソース
+
+汎用 ODBC コネクタを使用して、Microsoft Access データベースからデータをコピーできます。
+
+セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 Integration Runtime は、Microsoft Access 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
+
+Data Factory ソリューションで Microsoft Access ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
+
+次の例に示すように、Microsoft Access データベースを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
+
+```json
+{
+    "name": "MicrosoftAccessLinkedService",
+    "properties":
+    {
+        "type": "Odbc",
+        "typeProperties":
+        {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "Driver={Microsoft Access Driver (*.mdb, *.accdb)};Dbq=<path to your DB file e.g. C:\\mydatabase.accdb>;"
+            },
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
+
+コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
+
+## <a name="ge-historian-source"></a>GE Historian ソース
+
+汎用 ODBC コネクタを使用して、GE Historian からデータをコピーできます。
+
 セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 統合ランタイムは、GE Historian 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
 
-Data Factory ソリューションで GE Historian ストアを使用する前に、統合ランタイムが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
+Data Factory ソリューションで GE Historian ソースを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
+
+次の例に示すように、Microsoft Access データベースを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
+
+```json
+{
+    "name": "HistorianLinkedService",
+    "properties":
+    {
+        "type": "Odbc",
+        "typeProperties":
+        {
+            "connectionString": {
+                "type": "SecureString",
+                "value": "<GE Historian store connection string or DSN>"
+            },
+            "authenticationType": "Basic",
+            "userName": "<username>",
+            "password": {
+                "type": "SecureString",
+                "value": "<password>"
+            }
+        },
+        "connectVia": {
+            "referenceName": "<name of Integration Runtime>",
+            "type": "IntegrationRuntimeReference"
+        }
+    }
+}
+```
 
 コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
 
@@ -282,6 +362,12 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
 >[!NOTE]
 >SAP HANA データ ストアからデータをコピーするには、ネイティブ [SAP HANA コネクタ](connector-sap-hana.md)を参照してください。 SAP HANA にデータをコピーするには、ODBC コネクタを使用するためのこの手順に従ってください。 SAP HANA コネクタと ODBC コネクタ用のリンクされたサービスは種類が異なるため、再利用することはできないことに注意してください。
 >
+
+汎用 ODBC コネクタを使用して、SAP HANA データベースにデータをコピーできます。
+
+セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 統合ランタイムは、SAP HANA 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
+
+Data Factory ソリューションで SAP HANA シンクを使用する前に、「[接続の問題のトラブルシューティング](#troubleshoot-connectivity-issues)」セクションの手順を使用して、Integration Runtime がデータ ストアに接続できるかどうかを確認します。
 
 次の例に示すように、SAP HANA データ ストアを Azure Data Factory にリンクする、ODBC のリンクされたサービスを作成します。
 
@@ -293,11 +379,11 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
         "type": "Odbc",
         "typeProperties":
         {
-            "authenticationType": "Basic",
             "connectionString": {
                 "type": "SecureString",
                 "value": "Driver={HDBODBC};servernode=<HANA server>.clouddatahub-int.net:30015"
             },
+            "authenticationType": "Basic",
             "userName": "<username>",
             "password": {
                 "type": "SecureString",
@@ -311,10 +397,6 @@ Data Factory ソリューションで GE Historian ストアを使用する前�
     }
 }
 ```
-
-セルフホステッド統合ラインタイムを、データ ストアへのアクセス権付きでコンピューターに設定します。 統合ランタイムは、SAP HANA 用の ODBC ドライバーを使用してデータ ストアに接続します。 そのため、ドライバーが同じコンピューターにまだインストールされていない場合は、インストールしてください。 詳細については、「[前提条件](#prerequisites)」セクションを参照してください。
-
-Data Factory ソリューションで SAP HANA シンクを使用する前に、統合ランタイムが次のセクションの手順を使用してデータ ストアに接続できるかどうかを確認します。
 
 コピー操作で ODBC データ ストアをソース/シンク データ ストアとして使用する方法の詳細については、記事を最初からお読みください。
 

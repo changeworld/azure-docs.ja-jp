@@ -12,14 +12,14 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 04/07/2017
 ms.author: sashan;carlrab
-ms.openlocfilehash: 4f5131fdd2ca83e7a0a2f986a2fa1e3551814c6e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 03bc991d5c1f644b439e9ebfa0d750cbf0c56764
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="disaster-recovery-strategies-for-applications-using-sql-database-elastic-pools"></a>SQL Database エラスティック プールを使用したアプリケーションの障害復旧戦略
 長年にわたって、私たちはクラウド サービスが絶対確実なものではなく、壊滅的な状況になる可能性があることを学んできました。 SQL Database には、そのような状況が発生した場合にアプリケーションのビジネス継続性を提供するための機能がいくつかあります。 [エラスティック プール](sql-database-elastic-pool.md)と Single Database は、同様の障害復旧機能をサポートしています。 この記事では、SQL Database のこれらのビジネス継続性機能を活用する、エラスティック プールのいくつかの DR 戦略について説明します。
