@@ -3,7 +3,7 @@ title: "Azure Cloud Services のデバッグのオプション | Microsoft Docs"
 description: "Azure Cloud Services のデバッグ"
 services: visual-studio-online
 documentationcenter: n/a
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: 80755da7-8350-4f5c-97ce-2962beabb36d
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 03/18/2017
-ms.author: kraigb
-ms.openlocfilehash: cdcd4ca1fbc7e0a2f24122b32148cbda3d6951a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mikejo
+ms.openlocfilehash: 196a39a75f8a3151c277f0b2a7944e6886192171
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="learn-the-various-ways-to-debug-an-azure-cloud-service"></a>Azure クラウド サービスをデバッグするさまざまな方法
 この記事では、Azure クラウド サービスをデバッグするさまざまな方法へのリンクを提供します。 

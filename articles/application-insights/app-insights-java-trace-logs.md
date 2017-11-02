@@ -3,7 +3,7 @@ title: "Azure Application Insights を使用した Java トレース ログの�
 description: "Application Insights を使用して Log4J または Logback のトレースを検索します"
 services: application-insights
 documentationcenter: java
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: fc0a9e2f-3beb-4f47-a9fe-3f86cd29d97a
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 12/12/2016
-ms.author: bwren
-ms.openlocfilehash: 5baba3deaf58a1a24995c60381592a9c2ffefd81
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 6e441c9cbd15bb1528ea8e8a781f90900af90cf2
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="explore-java-trace-logs-in-application-insights"></a>Application Insights を使用した Java トレース ログの探索
 トレース用に Logback または Log4J (v1.2 または v2.0) を使用している場合は、トレース ログを自動的に Application Insights に送信して、Application Insights でトレース ログを探索および検索できます。

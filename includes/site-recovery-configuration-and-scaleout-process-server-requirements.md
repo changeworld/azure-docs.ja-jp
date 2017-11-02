@@ -6,7 +6,7 @@
 | ディスクの空き領域 (プロセス サーバー キャッシュ) | 600 GB
 | ディスクの空き領域 (リテンション ディスク) | 600 GB|
 | **ソフトウェア** | |
-| オペレーティング システムのバージョン | Windows Server 2012 R2 |
+| オペレーティング システムのバージョン | Windows Server 2012 R2 <br> Windows Server 2016 |
 | オペレーティング システムのロケール | 英語 (en-us)|
 | VMware vSphere PowerCLI のバージョン | [PowerCLI 6.0](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1 "PowerCLI 6.0")|
 | Windows Server の役割 | 次の役割を有効にしないでください。 <br> - Active Directory Domain Services <br>- インターネット インフォメーション サービス <br> - Hyper-V |

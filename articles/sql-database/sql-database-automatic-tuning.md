@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.workload: On Demand
 ms.date: 09/19/2017
 ms.author: jovanpop
-ms.openlocfilehash: 64abcf680199938c54be5005ee96670a8e580270
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 10f8cca8e519b28f0fe29605419b860f73e04a87
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Azure SQL Database での自動チューニング
 

@@ -1,10 +1,10 @@
 ---
-title: "Azure に OpenShift Origin をデプロイする| Microsoft Docs"
-description: "Azure Virtual Machines に OpenShift Origin をデプロイする方法について説明します。"
+title: "OpenShift on Azure の概要 | Microsoft Docs"
+description: "OpenShift on Azure の概要。"
 services: virtual-machines-linux
 documentationcenter: virtual-machines
-author: jbinder
-manager: timlt
+author: haroldw
+manager: najoshi
 editor: 
 tags: azure-resource-manager
 ms.assetid: 
@@ -14,151 +14,56 @@ ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 
-ms.author: jbinder
-ms.openlocfilehash: e03da05625e440eab29ccc28a2343d3433fc7607
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: haroldw
+ms.openlocfilehash: f9641b52db91a4356f6d5789a8cd78a6bb3da02b
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="deploy-openshift-origin-to-azure-virtual-machines"></a>Azure Virtual Machines に OpenShift Origin をデプロイする 
+# <a name="openshift-overview"></a>OpenShift の概要
 
-[OpenShift Origin](https://www.openshift.org/) は、[Kubernetes](https://kubernetes.io/) 上に構築されたオープン ソース コンテナー プラットフォームです。 これは、マルチ テナント アプリケーションのデプロイ、スケーリング、および操作のプロセスを簡略化します。 
+OpenShift は、エンタープライズに docker と Kubernetes を導入する、オープンで拡張可能なコンテナー アプリケーション プラットフォームです。  
 
-このガイドでは、Azure CLI と Azure Resource Manager テンプレートを使用して、OpenShift Origin を Azure Virtual Machines にデプロイする方法について説明します。 このチュートリアルで学習する内容は次のとおりです。
+OpenShift には、コンテナーのオーケストレーションと管理のための Kubernetes が含まれています。 これにより、開発者と操作を中心に据えたツールが追加され、次のことが可能になります。
 
-> [!div class="checklist"]
-> * OpenShift クラスターの SSH キーを管理する KeyVault を作成する。
-> * OpenShift クラスターを Azure VM に展開する。 
-> * クラスターを管理するため、[OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) をインストールして構成する。
-> * OpenShift のデプロイをカスタマイズする。
+- 迅速なアプリケーション開発
+- 容易なデプロイとスケール変更
+- チームおよびアプリケーション向けの長期的なライフサイクル メンテナンス
 
-Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
+OpenShift には複数のオファリングがあり、そのうちの 2 つが Azure で実行可能です。
 
-このクイック スタートには、Azure CLI バージョン 2.0.8 以降が必要です。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
+- OpenShift Origin
+- OpenShift Container Platform
+- OpenShift Online
+- OpenShift Dedicated
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+提供されている 4 つのオファリングのうち 2 つ (OpenShift Origin と OpenShift Container Platform) を、顧客が自力で Azure にデプロイできます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン 
-[az login](/cli/azure/#login) コマンドで Azure サブスクリプションにログインし、画面上の指示に従うか、**[使ってみる]** をクリックして Cloud Shell を使用します。
+## <a name="openshift-origin"></a>OpenShift Origin
 
-```azurecli 
-az login
-```
-## <a name="create-a-resource-group"></a>リソース グループの作成
+OpenShift の[オープン ソース](https://www.openshift.org/)上流プロジェクトであり、コミュニティによりサポートされています。 Origin は、CentOS または RHEL にインストールすることができます。
 
-[az group create](/cli/azure/group#create) コマンドでリソース グループを作成します。 Azure リソース グループとは、Azure リソースのデプロイと管理に使用する論理コンテナーです。 
+## <a name="openshift-container-platform"></a>OpenShift Container Platform
 
-次の例では、*myResourceGroup* という名前のリソース グループを *eastus* に作成します。
+Red Hat から提供されているエンタープライズ対応 ([商用オファリング](https://www.openshift.com)) のバージョンで、Red Hat によりサポートされています。 顧客は OpenShift Container Platform の必要な権利を購入し、インフラストラクチャ全体のインストールと管理は顧客が自ら行います。
 
-```azurecli 
-az group create --name myResourceGroup --location eastus
-```
+プラットフォーム全体を顧客が "所有" しているため、プラットフォームを自社のオンプレミスのデータセンターや、パブリック クラウド (Azure、AWS、Google など) などにインストールすることができます。
 
-## <a name="create-a-key-vault"></a>Key Vault の作成
-[az keyvault create](/cli/azure/keyvault#create) コマンドを使用して、クラスターの SSH キーを格納する KeyVault を作成します。  
+## <a name="openshift-online"></a>OpenShift Online
 
-```azurecli 
-az keyvault create --resource-group myResourceGroup --name myKeyVault \
-       --enabled-for-template-deployment true \
-       --location eastus
-```
+Red Hat によって管理されている**マルチテナント**の OpenShift です (Container Platform を使用)。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 
 
-## <a name="create-an-ssh-key"></a>SSH キーの作成 
-SSH キーは、OpenShift Origin クラスターへのアクセスをセキュリティで保護するために必要です。 `ssh-keygen` コマンドを使用して、SSH キーペアを作成します。 
- 
- ```bash
-ssh-keygen -f ~/.ssh/openshift_rsa -t rsa -N ''
-```
+顧客は、コンテナーをデプロイしますが、コンテナーをどのホストで実行するかは制御できません。 マルチテナントであるため、他の顧客のコンテナーと同じ VM ホストにコンテナーが併置される場合があります。 コストは、コンテナーごとに課金されます。
 
-> [!NOTE]
-> 作成する SSH キー ペアには、パスフレーズは使用しないでください。
+## <a name="openshift-dedicated"></a>OpenShift Dedicated
 
-Windows の SSH キーの詳細については、「[Azure 上の Windows で SSH キーを使用する方法](/azure/virtual-machines/linux/ssh-from-windows)」を参照してください。
-
-## <a name="store-ssh-private-key-in-key-vault"></a>Key Vault に SSH 秘密キーを格納する
-OpenShift のデプロイでは、OpenShift マスターに安全にアクセスするために作成した SSH キーが使用されます。 SSH キーを安全に取得するようにデプロイを有効にするには、次のコマンドを使用してキーを Key Vault に格納します。
-
-# <a name="enabled-for-template-deployment"></a>テンプレートのデプロイのための有効化
-```azurecli
-az keyvault secret set --vault-name KeyVaultName --name OpenShiftKey --file ~/.ssh/openshift.rsa
-```
-
-## <a name="create-a-service-principal"></a>サービス プリンシパルの作成 
-OpenShift は、ユーザー名とパスワード、またはサービス プリンシパルを使用して Azure と通信します。 Azure のサービス プリンシパルは、アプリケーション、サービス、OpenShift などのオートメーション ツールで使用できるセキュリティ ID です。 Azure で実行できる操作やサービス プリンシパルを設定するアクセス許可をコントロールおよび定義します。 この例では、ユーザー名とパスワードを提供するだけでなく、セキュリティを強化するために、基本的なサービス プリンシパルを作成します。
-
-[az ad sp create-for-rbac](/cli/azure/ad/sp#create-for-rbac) を使用してサービス プリンシパルを作成し、OpenShift が必要とする資格情報を出力します。
-
-```azurecli
-az ad sp create-for-rbac --name openshiftsp \
-          --role Contributor --password {strong password} \
-          --scopes $(az group show --name myResourceGroup --query id)
-```
-コマンドから返された appId プロパティを書き留めます。
-```json
-{
-  "appId": "a487e0c1-82af-47d9-9a0b-af184eb87646d",
-  "displayName": "openshiftsp",
-  "name": "http://openshiftsp",
-  "password": {strong password},
-  "tenant": "XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX"
-}
-```
- > [!WARNING] 
- > 安全でないパスワードを作成しないでください。  [Azure AD のパスワードの規則と制限](/azure/active-directory/active-directory-passwords-policy)に関するガイダンスに従ってください。
-
-サービス プリンシパルの詳細については、「[Azure CLI 2.0 で Azure サービス プリンシパルを作成する](/cli/azure/create-an-azure-service-principal-azure-cli)」を参照してください。
-
-## <a name="deploy-the-openshift-origin-template"></a>OpenShift Origin テンプレートのデプロイ
-次に、Azure Resource Manager テンプレートを使用して、OpenShift Origin をデプロイします。 
-
-> [!NOTE] 
-> 次のコマンドには、az CLI 2.0.8 以降が必要です。 az CLI のバージョンは、`az --version` コマンドを使用して確認できます。 CLI のバージョンを更新するには、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。
-
-以前に作成したサービス プリンシパルの値 `appId` を `aadClientId` パラメーターに使用します。
-
-```azurecli 
-az group deployment create --name myOpenShiftCluster \
-      --template-uri https://raw.githubusercontent.com/Microsoft/openshift-origin/master/azuredeploy.json \
-      --params \ 
-        openshiftMasterPublicIpDnsLabel=myopenshiftmaster \
-        infraLbPublicIpDnsLabel=myopenshiftlb \
-        openshiftPassword=Pass@word!
-        sshPublicKey=~/.ssh/openshift_rsa.pub \
-        keyVaultResourceGroup=myResourceGroup \
-        keyVaultName=myKeyVault \
-        keyVaultSecret=OpenShiftKey \
-        aadClientId={appId} \
-        aadClientSecret={strong password} 
-```
-デプロイが完了するまで最大で 20 分かかる場合があります。 デプロイが完了すると、OpenShift コンソールの URL と OpenShift マスターの DNS 名がターミナルに出力されます。
-
-```json
-{
-  "OpenShift Console Uri": "http://openshiftlb.cloudapp.azure.com:8443/console",
-  "OpenShift Master SSH": "ocpadmin@myopenshiftmaster.cloudapp.azure.com"
-}
-```
-## <a name="connect-to-the-openshift-cluster"></a>OpenShift クラスターへの接続
-デプロイが完了したら、ブラウザーで `OpenShift Console Uri` を使用して、OpenShift コンソールに接続します。 代わりに、次のコマンドを使用して、OpenShift マスターに接続することができます。
-
-```bash
-$ ssh ocpadmin@myopenshiftmaster.cloudapp.azure.com
-```
-
-## <a name="clean-up-resources"></a>リソースのクリーンアップ
-必要がなくなったら、[az group delete](/cli/azure/group#delete) コマンドを使用して、リソース グループ、OpenShift クラスター、およびすべての関連リソースを削除できます。
-
-```azurecli 
-az group delete --name myResourceGroup
-```
+Red Hat によって管理されている**シングルテナント**の OpenShift です (Container Platform を使用)。 すべての基になるインフラストラクチャ (VM、OpenShift クラスター、ネットワーク、ストレージなど) は、Red Hat によって管理されています。 クラスターは顧客ごとに専用で、パブリック クラウド (AWS、Google、Azure (2018 年初頭に公開予定)) で実行されます。 開始時のクラスターには 4 つのアプリケーション ノードが含まれており、$48K/年です (1 年分を前払い)。
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルで学習した内容は次のとおりです。
-> [!div class="checklist"]
-> * OpenShift クラスターの SSH キーを管理する KeyVault を作成する。
-> * OpenShift クラスターを Azure VM に展開する。 
-> * クラスターを管理するため、[OpenShift CLI](https://docs.openshift.org/latest/cli_reference/index.html#cli-reference-index) をインストールして構成する。
-
-これで OpenShift Origin クラスターがデプロイされました。 OpenShift チュートリアルに従って、初めてアプリケーションをデプロイして OpenShift ツールを使用する方法について学習することができます。 開始するには、「[OpenShift Origin の概要](https://docs.openshift.org/latest/getting_started/index.html)」を参照してください。 
+- [Azure で OpenShift の共通の前提条件を構成する](./openshift-prerequisites.md)
+- [OpenShift Origin のデプロイ](./openshift-origin.md)
+- [OpenShift Container Platform のデプロイ](./openshift-container-platform.md)
+- [デプロイ後のタスク](./openshift-post-deployment.md)
+- [OpenShift デプロイのトラブルシューティング](./openshift-troubleshooting.md)

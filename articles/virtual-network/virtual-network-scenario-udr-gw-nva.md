@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: jdial
-ms.openlocfilehash: 8e464348660114f5e99b4739bb7761b7e53ebf99
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 544ba6484b23da425d53594622122b1e18b92359
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="virtual-appliance-scenario"></a>仮想アプライアンスを使用するシナリオ
 大型 Azure 顧客の間の一般的なシナリオは、オンプレミス データセンターからバック層へのアクセスを許可する一方でインターネットへの公開を行う 2 層アプリケーションを用意する必要があることです。 このドキュメントでは、ユーザー定義ルート (UDR)、VPN Gateway、およびネットワーク仮想アプライアンスを使用して、次の要件を満たす 2 層環境をデプロイするシナリオについて説明します。
@@ -70,7 +70,7 @@ ms.lasthandoff: 10/11/2017
   * **AZF3**。 管理者がオンプレミス データセンターからアクセスでき、すべてのファイアウォール アプライアンスを管理するために使用される管理サブネットに接続されている管理ファイアウォール。 2-NIC 仮想アプライアンスのテンプレートを Marketplace で探すか、アプライアンス ベンダーに直接要求できます。
 
 ## <a name="user-defined-routing-udr"></a>ユーザー定義ルーティング (UDR)
-Azure の各サブネットは、そのサブネットで開始されたトラフィックをどのようにルーティングするかを定義するために使用される UDR テーブルにリンクすることができます。 UDR が定義されていない場合、Azure では、既定のルートを使用してあるサブネットから別のサブネットにトラフィックが送信されることを許可します。 UDR の理解を深めるには、「 [ユーザー定義ルートと IP 転送](virtual-networks-udr-overview.md#ip-forwarding)」をご覧ください。
+Azure の各サブネットは、そのサブネットで開始されたトラフィックをどのようにルーティングするかを定義するために使用される UDR テーブルにリンクすることができます。 UDR が定義されていない場合、Azure では、既定のルートを使用してあるサブネットから別のサブネットにトラフィックが送信されることを許可します。 UDR の理解を深めるには、「 [ユーザー定義ルートと IP 転送](virtual-networks-udr-overview.md)」をご覧ください。
 
 上記の要件に基づいて、適切なファイアウォール アプライアンスを経由して通信が行われることを保証するには、UDR を含む次のルート テーブルを **azurevnet**内に作成する必要があります。
 
@@ -110,7 +110,7 @@ UDR と IP 転送は、組み合わせて使用することで、Azure VNet 内�
 
 仮想アプライアンスとして機能するこの VM は、自分宛てではない着信トラフィックを受信できることが必要です。 VM が自分以外の宛先に向かうトラフィックを受信するためには、VM の IP 転送を有効にする必要があります。 これは Azure の設定であり、ゲスト オペレーティング システムでの設定ではありません。 仮想アプライアンスは、受信トラフィックを処理し、適切にルーティングするアプリケーションを実行する必要があります。
 
-IP 転送の詳細については、「 [ユーザー定義のルートおよび IP 転送とは](virtual-networks-udr-overview.md#ip-forwarding)」を参照してください。
+IP 転送の詳細については、「 [ユーザー定義のルートおよび IP 転送とは](virtual-networks-udr-overview.md)」を参照してください。
 
 たとえば、Azure VNet が次のように設定されているとします。
 

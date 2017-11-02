@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 10/24/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d6d65480c53f905b393409dfdd9952618ab6cb64
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d936cf467ee7043b171cfc845f247f891f52f599
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="add-actions-to-alert-rules-in-log-analytics"></a>Log Analytics のアラート ルールへのアクションの追加
 [Log Analytics でアラートを作成する](log-analytics-alerts.md)際に、1 つまたは複数の操作を実行[アラート ルールを構成する](log-analytics-alerts.md)ことができます。  この記事では、使用できるさまざまなアクションと、それぞれの構成に関する詳細を示します。
@@ -112,10 +112,10 @@ Runbook アクションには、次の表に示すプロパティが必要です
 
 Runbook アクションは、 [Webhook](../automation/automation-webhooks.md)を使用して Runbook を開始します。  アラート ルールを作成すると、Runbook に対して、" **OMS Alert Remediation** " の後に GUID が付いた名前を持つ新しい Webhook が自動的に作成されます。  
 
-Runbook のパラメーターを直接設定することはできませんが、[$WebhookData パラメーター](../automation/automation-webhooks.md)にアラートの詳細 (それを作成したログ検索の結果を含む) が格納されます。  この Runbook で、アラートのプロパティにアクセスするためのパラメーターとして **$WebhookData** を定義する必要があります。  アラート データは、**$WebhookData** の **RequestBody** プロパティにある **SearchResults** という単一のプロパティから JSON 形式で取得できます。  このデータには、次の表に示したプロパティが存在します。
+Runbook のパラメーターを直接設定することはできませんが、[$WebhookData パラメーター](../automation/automation-webhooks.md)にアラートの詳細 (それを作成したログ検索の結果を含む) が格納されます。  この Runbook で、アラートのプロパティにアクセスするためのパラメーターとして **$WebhookData** を定義する必要があります。  アラート データは、**$WebhookData** の **RequestBody** プロパティにある **SearchResult** (Runbook アクションと標準ペイロードを使用する webhook アクションの場合) または **SearchResults** (**IncludeSearchResults":true** を含むカスタム ペイロードを使用する webhook アクション) という単一のプロパティから JSON 形式で利用できます。  このデータには、次の表に示したプロパティが存在します。
 
 >[!NOTE]
-> ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、runbook ペイロードが変わります。  フォーマットの詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」をご覧ください。  以下の[サンプル](#sample-payload)のセクションで例をご覧いただけます。
+> ご使用のワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、runbook ペイロードが変わります。  フォーマットの詳細については、「[Azure Log Analytics REST API](https://aka.ms/loganalyticsapiresponse)」をご覧ください。  以下の[サンプル](#sample-payload)のセクションで例をご覧いただけます。  
 
 | ノード | 説明 |
 |:--- |:--- |
@@ -123,14 +123,19 @@ Runbook のパラメーターを直接設定することはできませんが、
 | __metadata |アラートに関する情報 (レコードの件数、検索結果の状態を含む)。 |
 | 値 |検索結果のレコードごとのエントリ。  エントリの詳細は、レコードのプロパティおよび値と対応します。 |
 
-たとえば、以下の Runbook では、ログの検索から返されたレコードを抽出し、レコードの種類ごとに異なるプロパティを割り当てています。  Runbook ではまず、JSON 形式の **RequestBody** を PowerShell からオブジェクトとして扱うことができるように変換していることに注目してください。
+たとえば、以下の Runbook では、ログ検索から返されたレコードを抽出し、レコードの種類ごとに異なるプロパティを割り当てています。  Runbook ではまず、JSON 形式の **RequestBody** を PowerShell からオブジェクトとして扱うことができるように変換していることに注目してください。
+
+>[!NOTE]
+> これらの Runbook はどちらも、Runbook アクションと標準ペイロードを使用する webhook アクションの結果を含むプロパティである **SearchResult** を使用します。  カスタム ペイロードを使用する webhook 応答から Runbook が呼び出される場合は、このプロパティを **SearchResults** に変更する必要があります。
+
+次の Runbook は [レガシ Log Analytics ワークスペース](log-analytics-log-search-upgrade.md)からのペイロードを処理します。
 
     param ( 
         [object]$WebhookData
     )
 
     $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
-    $Records     = $RequestBody.SearchResults.value
+    $Records     = $RequestBody.SearchResult.value
 
     foreach ($Record in $Records)
     {
@@ -152,11 +157,61 @@ Runbook のパラメーターを直接設定することはできませんが、
         }
     }
 
+次の Runbook は [アップグレードされた Log Analytics ワークスペース](log-analytics-log-search-upgrade.md)からのペイロードを処理します。
+
+    param ( 
+        [object]$WebhookData
+    )
+
+    $RequestBody = ConvertFrom-JSON -InputObject $WebhookData.RequestBody
+
+    # Get all metadata properties    
+    $AlertRuleName = $RequestBody.AlertRuleName
+    $AlertThresholdOperator = $RequestBody.AlertThresholdOperator
+    $AlertThresholdValue = $RequestBody.AlertThresholdValue
+    $AlertDescription = $RequestBody.Description
+    $LinktoSearchResults =$RequestBody.LinkToSearchResults
+    $ResultCount =$RequestBody.ResultCount
+    $Severity = $RequestBody.Severity
+    $SearchQuery = $RequestBody.SearchQuery
+    $WorkspaceID = $RequestBody.WorkspaceId
+    $SearchWindowStartTime = $RequestBody.SearchIntervalStartTimeUtc
+    $SearchWindowEndTime = $RequestBody.SearchIntervalEndtimeUtc
+    $SearchWindowInterval = $RequestBody.SearchIntervalInSeconds
+
+    # Get detailed search results
+    if($RequestBody.SearchResult -ne $null)
+    {
+        $SearchResultRows    = $RequestBody.SearchResult.tables[0].rows 
+        $SearchResultColumns = $RequestBody.SearchResult.tables[0].columns;
+
+        foreach ($SearchResultRow in $SearchResultRows)
+        {   
+            $Column = 0
+            $Record = New-Object –TypeName PSObject 
+        
+            foreach ($SearchResultColumn in $SearchResultColumns)
+            {
+                $Name = $SearchResultColumn.name
+                $ColumnValue = $SearchResultRow[$Column]
+                $Record | Add-Member –MemberType NoteProperty –Name $name –Value $ColumnValue -Force
+                        
+                $Column++
+            }
+
+            # Include code to work with the record. 
+            # For example $Record.Computer to get the computer property from the record.
+            
+        }
+    }
+
+
 
 ## <a name="sample-payload"></a>サンプル ペイロード
 このセクションでは、レガシ ワークスペースと[アップグレードされた Log Analytics ワークスペース](log-analytics-log-search-upgrade.md)の両方での webhook と runbook アクションのサンプル ペイロードを示します。
 
 ### <a name="webhook-actions"></a>Webhook アクション
+これらの例はどちらも、標準ペイロードを使用する webhook アクションの結果を含むプロパティである **SearchResult** を使用します。  検索結果を含むカスタム ペイロードを webhook が使用する場合、このプロパティは **SearchResults** になります。
 
 #### <a name="legacy-workspace"></a>レガシ ワークスペース
 レガシ ワークスペースでの、webhook アクション用サンプル ペイロードを次に示します。
@@ -376,7 +431,7 @@ Runbook のパラメーターを直接設定することはできませんが、
 レガシ ワークスペースでの、runbook アクション用サンプル ペイロードを次に示します。
 
     {
-        "SearchResults": {
+        "SearchResult": {
             "id": "subscriptions/subscriptionID/resourceGroups/ResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/workspace-workspaceID/search/searchGUID|10.1.0.7|TimeStamp",
             "__metadata": {
                 "resultType": "raw",

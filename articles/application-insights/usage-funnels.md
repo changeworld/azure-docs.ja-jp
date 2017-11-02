@@ -3,7 +3,7 @@ title: "Azure Application Insights のファネル"
 description: "ファネルを使って、顧客によるアプリケーションの操作状況を把握する方法を説明します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 07/17/2017
-ms.author: bwren
-ms.openlocfilehash: 59c4dfafc102b26e3b9873f433065715f4aec9ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: d7af89409cb908f98f86288a0d673ab287e3aaaa
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="discover-how-customers-are-using-your-application-with-the-application-insights-funnels"></a>Application Insights のファネルを使って、顧客がどのようにアプリケーションを利用しているかを把握します。
 

@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 09/28/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 68a5493282fa4a0b54ba551c48ae963a42b94dca
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 763a8884b65f64b4807cd42c937f43b2f5517ed5
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Azure CLI で Batch リソースを管理する
 
@@ -96,7 +96,7 @@ Batch アカウントでの認証には、次の 2 つの選択肢がありま�
 
     Azure AD の利点は、ロール ベースのアクセス制御 (RBAC) を利用できることです。 RBAC でのユーザーのアクセスは、アカウント キーを所有しているかどうかではなく、割り当てられているロールに依存します。 アカウント キーを管理する代わりに、RBAC ロールを管理して、Azure AD にアクセスと認証を処理させることができます。  
 
-        To log in to your Batch account using Azure AD, call the [az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) command: 
+     Azure AD を使用して Batch アカウントにログインするには、[az batch account login](https://docs.microsoft.com/cli/azure/batch/account#az_batch_account_login) コマンドを呼び出します。 
 
     ```azurecli
     az batch account login -g myresource group -n mybatchaccount

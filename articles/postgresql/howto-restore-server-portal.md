@@ -9,16 +9,16 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 07/20/2017
-ms.openlocfilehash: 3fbdb7741481bd3620466c3489d3609f9ea6961f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3f1ffa20b58c52558e880ed6a0ef4ca674173973
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-postgresql-using-the-azure-portal"></a>Azure Portal を使用した Azure Database for PostgreSQL サーバーのバックアップと復元方法
 
 ## <a name="backup-happens-automatically"></a>自動バックアップ
-Azure Database for PostgreSQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサービスのバックアップを行います。 
+Azure Database for PostgreSQL を使用するとき、このデータベース サービスは 5 分ごとに自動でサーバーのバックアップを行います。 
 
 このバックアップは、Basic レベルでは 7 日間、Standard レベルでは 35 日間使用できます。 詳細については、[Azure Database for PostgreSQL サービス レベル](concepts-service-tiers.md)に関するページをご覧ください。
 
@@ -31,20 +31,20 @@ Azure Database for PostgreSQL では、過去の特定の時点までサーバ�
 
 次の手順では、サンプルのサーバーを特定の時点まで復元します。
 1. [Azure Portal](https://portal.azure.com/) にサインインします。
-2. Azure Database for PostgreSQL サーバーを見つけます。 Azure Portal で、左側のメニューの **[すべてのリソース]** をクリックし、サーバー名 (**mypgserver 20170401** など) を入力して、既存のサーバーを検索します。 検索結果に一覧表示されるサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
+2. Azure Database for PostgreSQL サーバーを見つけます。 Azure Portal で、左側のメニューの **[すべてのリソース]** をクリックし、サーバーの名前 (**mypgserver-20170401** など) を入力して、既存のサーバーを検索します。 検索結果に示されたサーバー名をクリックします。 サーバーの **[概要]** ページが開き、さらに多くの構成オプションが表示されます。
 
    ![Azure Portal - サーバーを検索して見つける](media/postgresql-howto-restore-server-portal/1-locate.png)
 
-3. サーバーの概要ブレードの上部で、ツールバーの **[復元]** をクリックします。 [復元] ブレードが開きます。
+3. サーバーの概要ブレードのツール バーの **[復元]** をクリックします。 [復元] ブレードが開きます。
 
    ![Azure Database for PostgreSQL - 概要 - 復元ボタン](./media/postgresql-howto-restore-server-portal/2_server.png)
 
 4. [復元] フォームに必要な情報を入力します。
 
    ![Azure Database for PostgreSQL - 情報の復元 ](./media/postgresql-howto-restore-server-portal/3_restore.png)
-  - **復元ポイント**: サーバーが変更される前の日時を選択します
-  - **対象サーバー:** 復元先の新しいサーバー名を指定します
-  - **場所:** リージョンを選択することはできません。既定では、ソース サーバーと同じ場所になります
+  - **復元ポイント**: サーバーが変更される前の日時を選択します。
+  - **対象サーバー**: 復元先の新しいサーバー名を指定します。
+  - **場所**: リージョンを選択することはできません。 既定では、ソース サーバーと同じになります。
   - **価格レベル:** サーバーを復元するときは、この値を変更することはできません。 ソース サーバーと同じレベルになります。 
 
 5. **[OK]** をクリックして、特定の時点までサーバーを復元します。 

@@ -13,15 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: spelluru
-ms.openlocfilehash: 780e5673b5ed159a7f170373d54fea7c1713a910
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cc0ed958a9e1018ed9f06fdcc94873ae5420ba95
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="manage-an-azure-ssis-integration-runtime"></a>Azure-SSIS 統合ランタイムを管理する
 [Azure-SSIS 統合ランタイムの作成](create-azure-ssis-integration-runtime.md)に関する記事では、Azure Data Factory を使って Azure-SSIS 統合ランタイムを作成する方法が説明されています。 この記事では、Azure-SSIS 統合ランタイムを停止、開始、再構成、または削除する方法について説明します。  
 
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-introduction.md)を参照してください。
 
 ## <a name="stop"></a>停止 
 Azure-SSIS 統合ランタイムを停止します。 このコマンドは、そのすべてのノードを解放し、課金を停止します。

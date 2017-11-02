@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: get-started-article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: f017b8ca42ff3560e17d8aac303a4f834d298540
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 99c9740e3f19e2a09332317b08e06352ffa8eee7
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Java Web プロジェクトで Application Insights を使う
 
@@ -228,7 +228,7 @@ Application Insights パッケージを含めるように、*-servlet.xml で次
 ## <a name="6-view-your-telemetry-in-application-insights"></a>6.Application Insights でのテレメトリを表示する
 [Microsoft Azure ポータル](https://portal.azure.com)の Application Insights リソースに戻ります。
 
-HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから 最新の情報に更新をクリックします)。
+HTTP 要求データが概要ブレードに表示されます  (表示されない場合は、数秒待ってから [最新の情報に更新] をクリックします)。
 
 ![サンプル データ](./media/app-insights-java-get-started/5-results.png)
 

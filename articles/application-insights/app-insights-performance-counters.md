@@ -3,7 +3,7 @@ title: "Application Insights のパフォーマンス カウンター | Microsof
 description: "Application Insights でシステムとカスタムの .NET パフォーマンス カウンターを監視します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b816f4c-a77a-4674-ae36-802ee3a2f56d
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2016
-ms.author: bwren
-ms.openlocfilehash: 038d6e051be8112b9264e7efa6485965d11e32c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 26837a72dd4539cd5b32e5b49a127a714f3a1426
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="system-performance-counters-in-application-insights"></a>Application Insights のシステム パフォーマンス カウンター
 Windows には、CPU 占有率や、メモリ、ディスク、ネットワークの使用率など、広範な[パフォーマンス カウンター](http://www.codeproject.com/Articles/8590/An-Introduction-To-Performance-Counters)が用意されています。 ユーザーが独自のパフォーマンス カウンターを定義することもできます。 アプリケーションを実行している IIS が存在するオンプレミスのホストまたは仮想マシンに対し、ユーザーが管理アクセス権を持っている場合、[Application Insights](app-insights-overview.md) を使ってこれらのパフォーマンス カウンターを表示することができます。 グラフにはライブ アプリケーションで使用できるリソースが示され、サーバー インスタンス間での負荷の不均衡を識別するのに役立ちます。

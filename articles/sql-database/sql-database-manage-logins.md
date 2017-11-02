@@ -14,14 +14,14 @@ ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 01/23/2017
 ms.author: rickbyh
-ms.openlocfilehash: 51edd390c065dd7312ecc54694b5a95ecc11eab8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e66eec6c1843df49d3dc323cd109fb9eeb708c3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="controlling-and-granting-database-access"></a>データベース アクセスの制御と許可
 

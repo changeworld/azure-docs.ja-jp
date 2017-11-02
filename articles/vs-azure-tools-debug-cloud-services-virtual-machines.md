@@ -3,7 +3,7 @@ title: "Visual Studio での Azure クラウド サービスまたは仮想マ�
 description: "Visual Studio でのクラウド サービスまたは仮想マシンのデバッグ"
 services: visual-studio-online
 documentationcenter: na
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 ms.assetid: 945e06e0-2100-41af-b218-72347367ddab
@@ -13,12 +13,12 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 11/11/2016
-ms.author: kraigb
-ms.openlocfilehash: 66f0a9b591b812a52dc6037dcfcb64a2c250f05c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mikejo
+ms.openlocfilehash: a303e080bc847daf023eed2e9ba1ffc31e340160
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="debugging-an-azure-cloud-service-or-virtual-machine-in-visual-studio"></a>Visual Studio での Azure クラウド サービスまたは仮想マシンのデバッグ
 Visual Studio には、Azure クラウド サービスと仮想マシンのデバッグに役立つさまざまなオプションがあります。

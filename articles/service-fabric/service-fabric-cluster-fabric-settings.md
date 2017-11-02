@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/15/2017
 ms.author: chackdan
-ms.openlocfilehash: 8143cf739f475ebfa6e65dc43945174304ffbb3b
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: bfbfc5b46985d3413510ba69cbdfc688f46f0f1b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="customize-service-fabric-cluster-settings-and-fabric-upgrade-policy"></a>Service Fabric クラスターの設定と Fabric アップグレード ポリシーのカスタマイズ
 このドキュメントでは、Service Fabric クラスターのさまざまな Fabric 設定と Fabric アップグレード ポリシーをカスタマイズする方法について説明します。 この設定やポリシーは、[Azure Portal](https://portal.azure.com) または Azure Resource Manager テンプレートを使用してカスタマイズできます。
@@ -228,7 +228,7 @@ ms.lasthandoff: 10/19/2017
 |ServiceDescriptionCacheLimit | int、既定値は 0 |静的| ネーム ストア サービスの LRU サービス記述キャッシュに保持するエントリの最大数 (無制限の場合は 0 に設定します)。 |
 |RepairInterval | 時間 (秒単位)、既定値は 5 |静的| timespan を秒単位で指定します。 機関所有者と名前所有者間での名前付けの不一致の修復が開始される間隔。 |
 |MaxNamingServiceHealthReports | int、既定値は 10 |動的|ネーム ストア サービスが異常として一度に報告する低速操作の最大数。 0 の場合、低速の操作がすべて送信されます。 |
-| MaxMessageSize |int、既定値は 4*1024*1024 |静的|名前付け使用時のクライアント ノード通信の最大メッセージ サイズ。 DOS 攻撃を軽減します。既定値は 4 MB です。 |
+| MaxMessageSize |int、既定値は 4\*1024\*1024 |静的|名前付け使用時のクライアント ノード通信の最大メッセージ サイズ。 DOS 攻撃を軽減します。既定値は 4 MB です。 |
 | MaxFileOperationTimeout |秒単位。既定値は 30 |動的|timespan を秒単位で指定します。 ファイル ストア サービス操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 |
 | MaxOperationTimeout |時間 (秒単位)、既定値は 600 |動的|timespan を秒単位で指定します。 クライアント操作で許容される最大タイムアウト。 これよりも長いタイムアウトを指定した要求は拒否されます。 |
 | MaxClientConnections |int、既定値は 1000 |動的|ゲートウェイごとのクライアント接続の最大許容数。 |

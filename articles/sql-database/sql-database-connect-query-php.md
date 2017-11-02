@@ -9,17 +9,17 @@ editor:
 ms.assetid: 4e71db4a-a 22f-4f1c-83e5-4a34a036ecf3
 ms.service: sql-database
 ms.custom: mvc,develop apps
-ms.workload: drivers
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: php
 ms.topic: quickstart
 ms.date: 08/08/2017
 ms.author: carlrab
-ms.openlocfilehash: 1cf95cf2c9413f99a4013ff961c8a18c31cc51f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae8cf7b847442883f03078a8c34d0921f8992b02
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-php-to-query-an-azure-sql-database"></a>PHP を使用して Azure SQL Database に照会する
 

@@ -13,14 +13,14 @@ ms.custom: business continuity
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 09/08/2017
 ms.author: sashan
-ms.openlocfilehash: 5a8b7711d6576edcc470886f27aa61ac04944002
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0fb11ee553685618cc7466d3ad8b07ba01611027
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="designing-highly-available-services-using-azure-sql-database"></a>Azure SQL Database を使用した高可用性サービスの設計
 

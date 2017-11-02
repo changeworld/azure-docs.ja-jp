@@ -9,17 +9,17 @@ editor: genemi
 ms.assetid: 67c02204-d1bd-4622-acce-92115a7cde03
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: data-management
+ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: 47d119e4e4fd1420186e8600c8c085ab939fa6a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5948db9a52dc24d75f3fecc4ed166dd327061b37
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sql-database-application-development-overview"></a>SQL Database アプリケーションの開発の概要
 この記事では、Azure SQL Database に接続するコードを記述するときの基本的な考慮事項について説明します。

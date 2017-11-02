@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: d0c047c17608635b0d5fb0fb1353c6f8515d7a71
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 718ccfd809b42dfec4c175dbf9c90964fc75aa30
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>テンプレートを使用して Azure Data Factory のエンティティを作成する
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 
+
 ## <a name="overview"></a>概要
 データ統合のために Azure Data Factory を使用した場合、異なる環境間で同じパターンを何度も使用したり、同じソリューション内で同じタスクを繰り返し実装したりしていることに気づく場合があります。 テンプレートを使用すると、これらのシナリオを簡単に実装、管理することができます。 Azure Data Factory のテンプレートは、再利用や繰り返しを伴うシナリオに最適です。
 

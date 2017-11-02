@@ -8,17 +8,17 @@ author: torsteng
 ms.assetid: 84c261f2-9edc-42f4-988c-cf2f251f5eff
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/27/2016
 ms.author: torsteng
-ms.openlocfilehash: e9036f92f6c76e8c4738ee981efa8a7b9791dcc7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d57f45066387f451463a38d76d3fe6adab77e41f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="query-across-cloud-databases-with-different-schemas-preview"></a>スキーマが異なるクラウド データベース間のクエリ (プレビュー)
 ![異なるデータベースのテーブルにまたがるクエリ][1]

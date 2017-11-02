@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/08/2017
 ms.author: wgries
-ms.openlocfilehash: d8ac076334a7ed9476b4830596d6ea54c29c0e3c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: d626f71aa21cea562ef6c9554c05e6de027e7f4d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="planning-for-an-azure-file-sync-preview-deployment"></a>Azure ファイル同期 (プレビュー) のデプロイの計画
-Azure File Sync (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
+Azure ファイル同期 (プレビュー) を使用すると、オンプレミスのファイル サーバーの柔軟性、パフォーマンス、互換性を損なわずに Azure Files で組織のファイル共有を一元化できます。 これは、Windows Server を Azure ファイル共有のクイック キャッシュに変換することで行います。 Windows Server で使用可能な任意のプロトコル (SMB、NFS、FTPS など) を使用してデータにローカル アクセスすることができ、世界中に必要な数だけキャッシュを持つことができます。
 
 このガイドでは、Azure ファイル同期をデプロイするときに考慮する事項について説明します。「[Planning for an Azure Files deployment](storage-files-planning.md)」(Azure Files デプロイの計画) ガイドのテストについて読むことをお勧めします。 
 
@@ -45,11 +45,14 @@ Azure ファイル同期エージェントは、Windows Server を Azure ファ�
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll
     - C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll
 
+### <a name="server-endpoint"></a>サーバー エンドポイント
+サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーや、ボリュームのルートなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在する可能性があります (たとえば、F:\sync1 と F:\sync2 など)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
+
 ### <a name="cloud-endpoint"></a>クラウド エンドポイント
 クラウド エンドポイントは、同期グループに含まれる Azure ファイル共有です。 Azure ファイル共有同期と Azure ファイル共有の全体が、1 つのクラウド エンドポイントの単なるメンバーであり、ひいては 1 つの同期グループのメンバーである可能性があります。 既存の一連のファイルを含む Azure ファイル共有をクラウド エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
 
-### <a name="server-endpoint"></a>サーバー エンドポイント
-サーバー エンドポイントは、登録済みサーバー上の特定の場所を表します。たとえば、サーバー ボリュームのフォルダーや、ボリュームのルートなどです。 名前空間が重複していなければ、同じボリューム上に複数のサーバー エンドポイントが存在する可能性があります (たとえば、F:\sync1 と F:\sync2 など)。 各サーバー エンドポイントについて、クラウドの階層化ポリシーを個別に構成することができます。 既存の一連のファイルを含むサーバーの場所をサーバー エンドポイントとして同期グループに追加すると、それらのファイルは、同期グループの他のエンドポイント上に既にある他のファイルと統合されます。
+> [!Important]  
+> Azure File Sync では、Azure ファイル共有を直接変更する処理がサポートされています。ただし、Azure ファイル共有に対するすべての変更内容をまず Azure File Sync の変更検出ジョブによって検出しておく必要があります。このジョブは、24 時間に 1 回のみクラウド エンドポイントで開始されます。 詳細については、[Azure Files の FAQ](storage-files-faq.md#afs-change-detection) を参照してください。
 
 ### <a name="cloud-tiering"></a>クラウドの階層化 
 クラウドの階層化は、Azure ファイル同期のオプション機能です。頻繁に使用またはアクセスされるファイルを Azure Files に階層化することができます。 ファイルを階層化すると、Azure ファイル同期ファイル システム フィルター (StorageSync.sys) はローカルでファイルをポインターと置き換えるか、ポイントを再解析して Azure Files 内のファイルの URL を示します。 NTFS 内で階層化されたファイルには、"オフライン" 属性が設定されるので、サード パーティ アプリケーションは階層化されたファイルを特定できます。 ユーザーが階層化されたファイルを開くと、Azure ファイル同期は、Azure Files のファイル データをシームレスに回収します。ファイルがシステムにローカルに保存されていないことをユーザーが知っている必要はありません。 この機能は、階層型ストレージ管理 (HSM) とも呼ばれます。

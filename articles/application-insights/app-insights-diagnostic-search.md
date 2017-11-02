@@ -3,7 +3,7 @@ title: "Azure Application Insights の検索の使用 | Microsoft Docs"
 description: "Web アプリによって送信された未加工のテレメトリを検索およびフィルター処理します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 2a437555-8043-45ec-937a-225c9bf0066b
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: e2d12f807756b778a64920b12a66fba184a99844
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: ce2fd9ed1ce796762cc15622cb1c59a316c1909d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="using-search-in-application-insights"></a>Application Insights の検索の使用
 検索は、ページ ビュー、例外、Web 要求などの個々のテレメトリ項目を検索または探索するために使用する [Application Insights](app-insights-overview.md) の機能です。 診断検索を使用すると、作成したログ トレースやイベントを表示できます。
@@ -57,7 +57,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="inspect-individual-items"></a>個々の項目の確認
 任意のテレメトリ項目を選択すると、キー フィールドと関連項目が表示されます。 フィールドの完全なセットを表示するには、[...] をクリックします。 
 
-![新しい作業項目をクリックし、フィールドを編集して OKをクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
+![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/10-detail.png)
 
 ## <a name="filter-event-types"></a>イベントの種類のフィルター選択
 [フィルター] ブレードを開き、表示するイベントの種類を選択します  (後でブレードを開いたときに表示されるフィルターを復元するには、[リセット] をクリックします)。
@@ -139,7 +139,7 @@ Visual Studio で [検索] ウィンドウを開きます。
 ## <a name="create-work-item"></a>作業項目を作成する
 任意のテレメトリ項目の詳細を使用して、GitHub または Visual Studio Team Services でバグを作成できます。 
 
-![新しい作業項目をクリックし、フィールドを編集して OKをクリックします。](./media/app-insights-diagnostic-search/42.png)
+![新しい作業項目をクリックし、フィールドを編集して [OK] をクリックします。](./media/app-insights-diagnostic-search/42.png)
 
 これを初めて行う場合は、Team Services のアカウントおよびプロジェクトへのリンクを構成するように求められます。
 

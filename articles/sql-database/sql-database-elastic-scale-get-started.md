@@ -9,17 +9,17 @@ editor: CarlRabeler
 ms.assetid: b6911f8d-2bae-4d04-9fa8-f79a3db7129d
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
-ms.openlocfilehash: 637463399593f4bc9ff5bfcbf67bf93b816efc7f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 600334c58ce62a1e53e8a57dd1566bd211249164
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="get-started-with-elastic-database-tools"></a>Elastic Database ツールの概要
 このドキュメントでは、サンプル アプリを実行して開発作業について説明します。 サンプルでは単純なシャーディング アプリケーションを作成し、Elastic Database ツールの主な機能について詳しく見て行きます。 サンプルでは、[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の機能を示します。

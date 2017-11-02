@@ -15,15 +15,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/23/2016
 ms.author: anithaa
-ms.openlocfilehash: 141e3c571d744470fd07e99538b6e38d4144e8d7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29823708b2d26a383b76e371499859e57f470c6f
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="troubleshoot-routes-using-azure-powershell"></a>Azure PowerShell を使用してルートのトラブルシューティングを行う
 > [!div class="op_single_selector"]
-> * [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
+> * 
+            [Azure Portal](virtual-network-routes-troubleshoot-portal.md)
 > * [PowerShell](virtual-network-routes-troubleshoot-powershell.md)
 > 
 > 
@@ -34,7 +35,7 @@ Azure 仮想マシン (VM) とのネットワーク接続に問題が発生し�
 
 * **システム ルート:** 既定では、Azure Virtual Network (VNet) で作成されたすべてのサブネットが、ローカル VNet トラフィック、VPN ゲートウェイ経由のオンプレミスのトラフィック、インターネット トラフィックを利用できるシステム ルート テーブルを持ちます。 ピアリングされる VNet にもシステム ルートが存在します。
 * **BGP ルート:** ExpressRoute またはサイト間 VPN 接続経由のネットワーク インターフェイスに反映されます。 BGP ルーティングの詳細については、「[Azure VPN ゲートウェイを使用した BGP の概要](../vpn-gateway/vpn-gateway-bgp-overview.md)」と「[ExpressRoute の技術概要](../expressroute/expressroute-introduction.md)」の記事を参照してください。
-* **ユーザー定義のルート (UDR):** ネットワーク仮想アプライアンスまたは強制トンネリングを使用して、オンプレミス ネットワークにサイト間 VPN 経由でトラフィックをルートしている場合は、サブネット ルート テーブルにユーザー定義のルート (UDR) が関連付けられていることがあります。 UDR に慣れていない場合は、「 [ユーザー定義のルート](virtual-networks-udr-overview.md#user-defined-routes) 」の記事をご覧ください。
+* **ユーザー定義のルート (UDR):** ネットワーク仮想アプライアンスまたは強制トンネリングを使用して、オンプレミス ネットワークにサイト間 VPN 経由でトラフィックをルートしている場合は、サブネット ルート テーブルにユーザー定義のルート (UDR) が関連付けられていることがあります。 UDR に慣れていない場合は、「 [ユーザー定義のルート](virtual-networks-udr-overview.md#user-defined) 」の記事をご覧ください。
 
 ネットワーク インターフェイスに適用できるさまざまなルートを使用する場合、有効な集約ルートの特定が難しくなることがあります。 VM ネットワーク接続をトラブルシューティングするため、Azure Resource Manager デプロイメント モデルのネットワーク インターフェイスのすべての有効なルートを表示できます。
 

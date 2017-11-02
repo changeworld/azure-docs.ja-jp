@@ -3,7 +3,7 @@ title: "Azure Active Directory でのカスタム ドメイン名の管理 | Mic
 description: "Azure Active Directory でのカスタム ドメインの管理の概念と方法"
 services: active-directory
 documentationcenter: 
-author: curtand
+author: LizCasey
 manager: femila
 editor: 
 ms.assetid: cf3523bd-9ee0-439e-963d-ccea038867b9
@@ -16,11 +16,11 @@ ms.date: 10/10/2017
 ms.author: curtand
 ms.custom: oldportal;it-pro;
 robots: NOINDEX
-ms.openlocfilehash: 06e2dd05bdf21074ed060057cbc61e93f304399a
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 8f5a4f8afcd5db42cd0f066602f9e2e8ee5ea940
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="managing-custom-domain-names-in-your-azure-active-directory"></a>Azure Active Directory のカスタム ドメイン名の管理
 ドメイン名は、以下の一部として、多くのディレクトリ リソースを表す重要な識別子にすることができます。
