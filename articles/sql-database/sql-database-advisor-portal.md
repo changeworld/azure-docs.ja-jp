@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: sstein
-ms.openlocfilehash: 5e17c8f992aecda0ba6eb777ea90c411824c3c15
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 3c621fc557ed466ddf2b514136a32d98be454325
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="find-and-apply-performance-recommendations"></a>パフォーマンスに関する推奨事項の検索と適用
 
@@ -118,7 +118,7 @@ Azure SQL Database では、次の 3 つのオプションのいずれかを使�
 
 | 状態 | 説明 |
 |:--- |:--- |
-| 保留中 |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
+| Pending |推奨インデックスの適用コマンドは受信済みで、実行が予定されています。 |
 | 実行中 |推奨インデックスは適用中です。 |
 | 確認中 |推奨事項が正常に適用され、サービスは効果を測定しています。 |
 | 成功 |推奨事項が正常に適用され、効果が測定されました。 |

@@ -13,14 +13,14 @@ ms.custom: scale out apps
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: sqldb-design
+ms.workload: Active
 ms.date: 02/01/2017
 ms.author: srinia
-ms.openlocfilehash: 3d8e3a05ae067fc9b2d52e47c4c49759c940477e
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: eef48cfcbc7d6c241b5ece863df0be6ecad78ca7
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-patterns-for-multi-tenant-saas-applications-and-azure-sql-database"></a>マルチテナント SaaS アプリケーションと Azure SQL Database の設計パターン
 この記事では、クラウド環境で実行されるマルチテナント SaaS (サービスとしてのソフトウェア) データベース アプリケーションの要件と一般的なデータ アーキテクチャ パターンについて説明します。 また、考慮する必要がある要素と、さまざまな設計パターンのトレードオフについても説明します。 Azure SQL Database のエラスティック プールとエラスティック ツールを使用すると、他の目的を損なうことなく、特定の要件を満たすことができます。
