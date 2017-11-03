@@ -9,6 +9,7 @@
 ## [トラブルシューティングと監視](troubleshooting-monitoring.md)
 ## 方法
 ### [STONITH を使用した HA セットアップ](ha-setup-with-stonith.md)
+### [Type II SKU 向けの OS バックアップ](os-backup-type-ii-skus.md)
 # Azure Virtual Machines 上の SAP HANA
 ## [単一インスタンスの SAP HANA](hana-get-started.md)
 ## [S/4 HANA または BW/4 HANA SAP CAL のデプロイ ガイド](cal-s4h.md)

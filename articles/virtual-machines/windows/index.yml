@@ -73,6 +73,7 @@ sections:
           - html: <a href="/azure/virtual-machines/windows/tutorial-monitoring">VM の監視</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-azure-security">VM のセキュリティの管理</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-vsts-iis-cicd">Visual Studio を使用した継続的インテグレーション パイプラインの作成</a>
+          - html: <a href="/azure/virtual-machines/windows/tutorial-iis-sql">SQL\IIS\.NET スタックのインストール</a>
           - html: <a href="/azure/virtual-machines/windows/tutorial-secure-web-server">SSL による Web サーバーのセキュリティ保護</a>
   - title: 無料の Pluralsight ビデオ トレーニング
     items:

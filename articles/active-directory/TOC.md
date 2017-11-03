@@ -112,24 +112,23 @@
 #### [サインインのサンプル](active-directory-reporting-api-sign-in-activity-samples.md)
 #### [証明書の使用](active-directory-reporting-api-with-certificates.md)
 
-## [パスワードの管理](active-directory-passwords-overview.md)
+## パスワードの管理
+### [パスワードの概要](active-directory-passwords-overview.md)
 ### ユーザー ドキュメント
 #### [パスワードのリセットまたは変更](active-directory-passwords-update-your-own-password.md)
 #### [パスワードのベスト プラクティス](active-directory-secure-passwords.md)
 #### [セルフサービスのパスワード リセットのための登録](active-directory-passwords-reset-register.md)
-### [SSPR のライセンス](active-directory-passwords-licensing.md)
-### [SSPR のデプロイ](active-directory-passwords-best-practices.md)
+### [SSPR のしくみ](active-directory-passwords-how-it-works.md)
+### [SSPR デプロイ ガイド](active-directory-passwords-best-practices.md)
+### [SSPR のポリシー](active-directory-passwords-policy.md)
+### [SSPR のカスタマイズ](active-directory-passwords-customize.md)
+### [SSPR データ要件](active-directory-passwords-data.md)
+### [SSPR のレポート](active-directory-passwords-reporting.md)
 ### IT 管理者: パスワードのリセット
 #### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
 #### [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
-### [SSPR ポリシーについて](active-directory-passwords-policy.md)
-### [パスワード リセットについて](active-directory-passwords-how-it-works.md)
-### [SSPR のカスタマイズ](active-directory-passwords-customize.md)
-### [SSPR によって使用されるデータ](active-directory-passwords-data.md)
-### [SSPR のレポート](active-directory-passwords-reporting.md)
-### [Azure AD Connect](./connect/active-directory-aadconnect.md)
+### [SSPR のライセンス](active-directory-passwords-licensing.md)
 ### [パスワード ライトバック](active-directory-passwords-writeback.md)
-### [パスワード ハッシュの同期](./connect/active-directory-aadconnectsync-implement-password-synchronization.md#how-password-synchronization-works)
 ### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
 ### [FAQ](active-directory-passwords-faq.md)
 
@@ -313,8 +312,6 @@
 ##### [修復](active-directory-conditional-access-device-remediation.md)
 #### [テクニカル リファレンス](active-directory-conditional-access-technical-reference.md)
 #### [FAQ](active-directory-conditional-faqs.md)
-#### [クラシック ポータル](active-directory-conditional-access.md)
-##### [作業開始](active-directory-conditional-access-azuread-connected-apps.md)
 
 ### Windows Hello
 #### [パスワードを使用せずに認証する](active-directory-azureadjoin-passport.md)

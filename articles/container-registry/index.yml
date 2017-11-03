@@ -43,7 +43,7 @@ sections:
         style: unordered
         className: spaced noBullet
         items:
-          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Container Registry の geo レプリケーション</a>
+          - html: <a href="/azure/container-registry/container-registry-tutorial-prepare-registry">Container Registry の geo レプリケーション (プレビュー)</a>
           - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Azure Container Instances と Container Registry</a>
           - html: <a href="/azure/container-service/kubernetes/container-service-tutorial-kubernetes-prepare-app">Azure Container Service と Container Registry</a>
           - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Container Registry と Service Fabric</a>

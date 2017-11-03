@@ -1,6 +1,9 @@
 # [概要](active-directory-b2c-overview.md)
 
 # 作業開始
+## [Azure AD B2C Web アプリの試用](active-directory-b2c-quickstarts-web-app.md)
+## [Azure AD B2C デスクトップ アプリの試用](active-directory-b2c-quickstarts-desktop-app.md)
+## [Azure AD B2C シングルページ アプリの試用](active-directory-b2c-quickstarts-spa.md)
 ## [Azure AD B2C ディレクトリの作成](active-directory-b2c-get-started.md)
 ## [アプリケーションの登録](active-directory-b2c-app-registration.md)
 ## [組み込みのポリシー](active-directory-b2c-reference-policies.md)
@@ -57,7 +60,7 @@
 # Identity Experience Framework
 ## [カスタム ポリシー](active-directory-b2c-overview-custom.md)
 ## ガイド
-### [作業開始](active-directory-b2c-get-started-custom.md)
+### [概要](active-directory-b2c-get-started-custom.md)
 ### OIDC/OAUTH プロバイダーの構成
 #### [Azure AD](active-directory-b2c-setup-aad-custom.md)
 #### [Microsoft アカウント](active-directory-b2c-custom-setup-msa-idp.md)
