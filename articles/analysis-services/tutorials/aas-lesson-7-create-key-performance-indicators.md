@@ -4,7 +4,7 @@ description: "Azure Analysis Services チュートリアル プロジェクト�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 9671136eea4e390a7763404e402cf94f1d351cac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca386cfd23b010af25fa9afb00fdad322e3e2946
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-7-create-key-performance-indicators"></a>レッスン 7: 主要業績評価指標を作成する
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/18/2017
 ms.author: raynew
-ms.openlocfilehash: 96e5027adfb443aba18895213e8d83894e3f060a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4d43fb03ce1c54a47315b8c3a5c83ec2082bcab9
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Azure にオンプレミス Hyper-V VM のディザスター リカバリーを設定する
 
@@ -82,7 +82,7 @@ VM のレプリケートに必要なアクセス許可が Azure アカウント�
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
 - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-- このストレージ アカウントには、Standard または [Premium](../storage/common/storage-premium-storage.md) を使用できます。
+- このストレージ アカウントには、Standard または [Premium](../virtual-machines/windows/premium-storage.md) を使用できます。
 - Premium アカウントを設定する場合、ログ データ用の Standard アカウントが別途必要になります。
 
 ### <a name="prepare-hyper-v-hosts"></a>Hyper-V ホストを準備する
@@ -251,7 +251,7 @@ VMM を使用している場合、ネットワーク マッピングを設定し
 3. **[コピーの頻度]**で、初期レプリケーションの後、差分データをレプリケートする頻度 (30 秒ごと、5 分ごと、または 15 分ごと) を指定します。
 
     > [!NOTE]
-    >  Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる BLOB ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../storage/common/storage-premium-storage.md#snapshots-and-copy-blob)
+    >  Premium Storage にレプリケートするときには、30 秒の頻度はサポートされません。 上限は、Premium Storage によってサポートされる BLOB ごとのスナップショットの数 (100) によって決まります。 [詳細情報](../virtual-machines/windows/premium-storage.md#snapshots-and-copy-blob)
 
 4. **[復旧ポイントの保持期間]**で、各復旧ポイントのリテンション期間の長さを時間単位で指定します。 保護されたマシンはこの期間内のどのポイントにも復旧できます。
 5. **[アプリ整合性スナップショットの頻度]** で、アプリケーション整合性スナップショットを含む復旧ポイントの作成頻度 (1 ～ 12 時間) を指定します。 Hyper-V では、2 種類のスナップショットが使用されます。

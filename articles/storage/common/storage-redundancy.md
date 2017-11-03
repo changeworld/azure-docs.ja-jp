@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/15/2017
 ms.author: tamram
-ms.openlocfilehash: f16692d1241082dddb9f8687d18f6bf1c1aba2eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbc81edd24ee714fbb173ed395a2f2fc91773fff
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-storage-replication"></a>Azure Storage のレプリケーション
 Microsoft Azure ストレージ アカウント内のデータは、持続性と高可用性を保証するため、常にレプリケートされています。 レプリケーションによりデータは同じデータ センター内か、2 番目のデータ センターにコピーされます。このコピー先は、選んだレプリケーション オプションによって変わります。 レプリケーションにより、データが保護され、一時的なハードウェアの障害が発生した際にアプリケーションのアップタイムが維持されます。 データが 2 番目のデータ センターにレプリケートされた場合、データは 1 次拠点で発生した致命的なエラーから保護されます。
@@ -45,7 +45,7 @@ Microsoft Azure ストレージ アカウント内のデータは、持続性と
 さまざまな冗長オプションの料金情報については、「 [Azure Storage 料金](https://azure.microsoft.com/pricing/details/storage/) 」をご覧ください。
 
 > [!NOTE]
-> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage.md)」をご覧ください。
+> Premium Storage でサポートされるのは、ローカル冗長ストレージ (LRS) だけです。 Premium Storage については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。
 >
 
 ## <a name="locally-redundant-storage"></a>ローカル冗長ストレージ

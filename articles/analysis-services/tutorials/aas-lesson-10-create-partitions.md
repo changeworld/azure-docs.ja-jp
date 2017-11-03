@@ -4,7 +4,7 @@ description: "この Azure Analysis Services チュートリアル プロジェ�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: b6b5bcd1d766376bd0af71e1fa91f8f2f96b9605
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99f7fcbd3a2d3b6f6fe48c7fb2703d35d3b3a8fd
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-10-create-partitions"></a>レッスン 10: パーティションを作成する
 

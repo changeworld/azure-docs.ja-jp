@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/07/2017
 ms.author: alkohli
-ms.openlocfilehash: 4ed93f9783efcd700db18aa21b5867c951bd2b97
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 29f33d01cc6b640a566dc371f4b9c704978da091
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="deploy-and-manage-a-storsimple-virtual-device-in-azure"></a>Azure での StorSimple 仮想デバイスのデプロイと管理
 ## <a name="overview"></a>Overview
@@ -33,7 +33,7 @@ StorSimple 仮想デバイスは、Standard 8010 (以前の 1100) と Premium 80
 | **Azure VM** |Standard_A3 (4 コア、7 GB メモリ) |Standard_DS3 (4 コア、14 GB メモリ) |
 | **バージョン互換性** |Update 2 より前または Update 2 以降を実行しているバージョン |Update 2 以降を実行しているバージョン |
 | **利用可能なリージョン** |すべての Azure リージョン |Premium Storage と DS3 Azure VM をサポートするすべての Azure リージョン<br></br> [こちらの表](https://azure.microsoft.com/en-us/regions/services)を参照し、該当するリージョンで*「Virtual Machines」の「DS シリーズ」*と*「Storage」の「Disk Storage」*の両方が利用できるかどうかを確認してください。 |
-| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../storage/common/storage-premium-storage.md)方法を参照 |
+| **ストレージの種類** |Azure Standard Storage をローカル ディスクとして使用<br></br> [Standard Storage アカウントの作成](../storage/common/storage-create-storage-account.md)方法を参照 |Azure Premium Storage をローカル ディスクとして使用<sup>2</sup> <br></br>[Premium Storage アカウントの作成](../virtual-machines/windows/premium-storage.md)方法を参照 |
 | **ワークロードのガイダンス** |バックアップからファイルを項目レベルで取得 |クラウドの開発とテストのシナリオ、低待機時間、高パフォーマンス ワークロード  <br></br>障害復旧のためのセカンダリ デバイス |
 
 <sup>1</sup> *以前は 1100 と呼ばれていました*。
@@ -82,7 +82,7 @@ StorSimple 仮想デバイスと StorSimple 物理デバイスの主な相違点
 仮想デバイスを作成する前に、Azure StorSimple サービスに対して次の更新作業を行います。
 
 * 仮想デバイスのホスト サーバーとなる VM の [アクセス制御レコード](storsimple-manage-acrs.md) を追加します。
-* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../storage/common/storage-premium-storage.md)を参照してください。
+* 仮想デバイスと同じリージョンにある [ストレージ アカウント](storsimple-manage-storage-accounts.md#add-a-storage-account) を使用します。 ストレージ アカウントが異なるリージョンに存在すると、十分なパフォーマンスが得られない可能性があります。 仮想デバイスでは、Standard Storage アカウントまたは Premium Storage アカウントを使用できます。 アカウントの作成方法の詳細については、Standard Storage アカウントの場合は[こちら](../storage/common/storage-create-storage-account.md)、Premium Storage アカウントの場合は[こちら](../virtual-machines/windows/premium-storage.md)を参照してください。
 * 仮想デバイスの作成には、データに使用するストレージ アカウントとは異なるストレージ アカウントを使用します。 同じストレージ アカウントを使用すると、十分なパフォーマンスが得られない可能性があります。
 
 作業を開始する前に、次の情報を確認してください。

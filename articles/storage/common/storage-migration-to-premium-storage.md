@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/27/2017
 ms.author: yuemlu
-ms.openlocfilehash: ca893f87b155a92c457e3bf6d9d39aaf86bf5fb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb46c3f2809fa86fea7a8370d4c417f04040b74c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="migrating-to-azure-premium-storage-unmanaged-disks"></a>Azure Premium Storage への移行 (非管理対象ディスク)
 
@@ -37,7 +37,7 @@ Azure Premium Storage は、高負荷の I/O ワークロードを実行する�
 他のプラットフォームから Azure Premium Storage への VM の移行、または Standard Storage から Premium Storage への既存の Azure VM の移行が可能です。 このガイドでは、これら 2 つのシナリオの手順について説明します。 状況に応じて、関連するセクションに示されている手順に従ってください。
 
 > [!NOTE]
-> Premium Storage の機能と価格の概要については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」をご覧ください。 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
+> Premium Storage の機能と価格の概要については、「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」をご覧ください。 高い IOPS を必要とする仮想マシンのディスクは Azure Premium Storage に移行して、アプリケーションが最高のパフォーマンスを発揮できるようにすることをお勧めします。 ディスクが高い IOPS を必要としない場合は、ディスクを Standard Storage 内に保持することでコストを抑えることができます。Standard Storage の場合、仮想マシンのディスク データは SSD ではなくハード ディスク ドライブ (HDD) に格納されます。
 >
 
 移行プロセス全体を完了するには、このガイドで説明する手順の前後で追加の操作が必要になる場合があります。 たとえば、アプリケーションをしばらく停止することが必要になる場合がある、仮想ネットワークやエンドポイントの構成や、アプリケーション内部のコード変更などがあります。 これらの操作は、アプリケーションごとに異なります。Premium Storage への完全な移行をできる限りシームレスに行うには、このガイドで説明する手順と共に、これらの必要な操作を完了してください。
@@ -65,7 +65,7 @@ VM で使用できるディスクには 5 種類あり、それぞれに特定�
 | ディスクあたりの IOPS       | 500   | 2300  | 5000           | 7500           | 7500           | 
 | ディスクあたりのスループット | 100 MB/秒 | 150 MB/秒 | 200 MB/秒 | 250 MB/秒 | 250 MB/秒 |
 
-ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](storage-premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
+ワークロードに応じて、VM にデータ ディスクを追加する必要があるかどうかを判断します。 複数の永続データ ディスクを VM に接続できます。 必要に応じて、ディスク全体をストライピングして容量を増やし、ボリュームのパフォーマンスを高めることができます。 (ディスク ストライピングについては、[こちら](../../virtual-machines/windows/premium-storage-performance.md#disk-striping)をご覧ください)[記憶域スペース][4]を使用して Premium Storage データ ディスクをストライピングする場合は、使用するディスクごとに 1 つの列で構成する必要があります。 そうしない場合は、ディスク全体のトラフィックの配分が不均等になるため、ストライプ ボリュームの全体的なパフォーマンスが低下する可能性があります。 Linux VM の場合は、 *mdadm* ユーティリティを使用すると同じ結果を得ることができます。 詳細については、 [Linux でのソフトウェア RAID の構成](../../virtual-machines/linux/configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) に関する記事を参照してください。
 
 #### <a name="storage-account-scalability-targets"></a>ストレージ アカウントのスケーラビリティ ターゲット
 Premium Storage アカウントには、[Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage-scalability-targets.md)に加えて、次のスケーラビリティ ターゲットがあります。 アプリケーションの要件が単一のストレージ アカウントのスケーラビリティ ターゲットを上回った場合は、複数のストレージ アカウントを使用するようにアプリケーションを構築し、それらのストレージ アカウント間でデータを分割します。
@@ -74,7 +74,7 @@ Premium Storage アカウントには、[Azure Storage のスケーラビリテ�
 |:--- |:--- |
 | ディスク容量: 35 TB<br />スナップショット容量: 10 TB |受信と送信を合わせて最大 50 GB/秒 |
 
-Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](storage-premium-storage.md#scalability-and-performance-targets)」を参照してください。
+Premium Storage の仕様の詳細については、「[Premium Storage を使用するときの拡張性とパフォーマンスのターゲット](../../virtual-machines/windows/premium-storage.md#scalability-and-performance-targets)」を参照してください。
 
 #### <a name="disk-caching-policy"></a>ディスク キャッシュ ポリシー
 既定では、ディスクのキャッシュ ポリシーは、すべてのPremium データ ディスクに対して「*読み取り専用*」、VM にアタッチされた Premium オペレーティング システム ディスクに対して「*読み取り/書き込み*」です。 アプリケーションの IO パフォーマンスを最適化するには、この構成をお勧めします。 書き込み量の多いディスクや書き込み専用のディスク (SQL Server ログ ファイルなど) の場合は、ディスク キャッシュを無効にすることで、アプリケーションのパフォーマンスを向上できる場合があります。 既存のデータ ディスクのキャッシュ設定は、[Azure Portal](https://portal.azure.com)、または *Set-AzureDataDisk* コマンドレットの *-HostCaching* パラメーターを使用して更新できます。
@@ -86,7 +86,7 @@ Azure Premium Storage を使用できる場所を選択します。 使用でき
 Azure VM を作成するときに、特定の VM の設定を構成するよう求められます。 VM の有効期間中は固定されている設定がいくつかありまりますが、後で変更または追加できる設定もあることを忘れないでください。 このような Azure VM の構成設定を確認し、ワークロードの要件に合わせて適切に構成されていることを確認します。
 
 ### <a name="optimization"></a>最適化
-「[Azure Premium Storage: 高パフォーマンスのための設計](storage-premium-storage-performance.md)」では、Azure Premium Storage を使う高パフォーマンスのアプリケーションを構築するためのガイドラインが示されています。 ガイドラインは、アプリケーションで使われているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使えます。
+「[Azure Premium Storage: 高パフォーマンスのための設計](../../virtual-machines/windows/premium-storage-performance.md)」では、Azure Premium Storage を使う高パフォーマンスのアプリケーションを構築するためのガイドラインが示されています。 ガイドラインは、アプリケーションで使われているテクノロジに適用できるパフォーマンスのベスト プラクティスと組み合わせて使えます。
 
 ## <a name="prepare-and-copy-virtual-hard-disks-VHDs-to-premium-storage"></a>仮想ハード ディスク (VHD) を準備して Premium Storage にコピーする
 このセクションでは、VM からの VHD の準備と、Azure Storageへの VHD のコピーに関するガイドラインを提供します。
@@ -750,7 +750,7 @@ Update-AzureVM  -VM $vm
 2. VM にログインし、現在のボリュームのデータを、そのボリュームにマッピングされる新しいディスクにコピーします。 この操作を、新しいディスクにマッピングする必要のある現在のボリュームすべてに対して実行します。
 3. 次に、新しいディスクに切り替えるようにアプリケーションの設定を変更し、以前のボリュームをデタッチします。
 
-ディスク パフォーマンス向上のためにアプリケーションをチューニングする場合は、「[アプリケーションのパフォーマンスの最適化](storage-premium-storage-performance.md#optimizing-application-performance)」をご覧ください。
+ディスク パフォーマンス向上のためにアプリケーションをチューニングする場合は、「[アプリケーションのパフォーマンスの最適化](../../virtual-machines/windows/premium-storage-performance.md#optimizing-application-performance)」をご覧ください。
 
 ### <a name="application-migrations"></a>アプリケーションの移行
 データベースやその他の複雑なアプリケーションを移行する場合は、アプリケーションの提供元が指定する特別な手順が必要になることがあります。 各アプリケーションのドキュメントを参照してください。 例: 通常、データベースは、バックアップと復元を使用して移行できます。
@@ -767,7 +767,7 @@ Update-AzureVM  -VM $vm
 
 * [Azure Storage](https://azure.microsoft.com/documentation/services/storage/)
 * [Azure Virtual Machines](https://azure.microsoft.com/documentation/services/virtual-machines/)
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)
+* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)
 
 [1]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
 [2]:./media/storage-migration-to-premium-storage/migration-to-premium-storage-1.png
