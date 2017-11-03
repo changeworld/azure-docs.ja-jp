@@ -31,7 +31,7 @@
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: プロジェクトの実行
   href: project-execution.md
-- name: Tutorials (チュートリアル)
+- name: 例
   href: walkthroughs.md
   items:
     - name: Azure Machine Learning
@@ -60,6 +60,12 @@
       href: walkthroughs-sql-server.md
     - name: SQL DW での T-SQL と Python の使用
       href: walkthroughs-sql-data-warehouse.md
+- name: トレーニング
+  items:
+    - name: データ サイエンティスト向け TDSP
+      href: team-data-science-process-for-data-scientists.md
+    - name: DevOps 向け TDSP
+      href: team-data-science-process-for-devops.md
 - name: 方法
   items:
     - name: Azure ML での TDSP の使用

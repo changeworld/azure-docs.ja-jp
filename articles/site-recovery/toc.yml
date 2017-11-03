@@ -59,6 +59,8 @@
       href: site-recovery-support-matrix-to-sec-site.md
     - name: ワークロードのディザスター リカバリー
       href: site-recovery-workload.md
+    - name: Azure Site Recovery による移行
+      href: site-recovery-migrate-to-azure.md
     - name: Azure から Azure へのネットワーク (プレビュー)
       href: site-recovery-azure-to-azure-networking-guidance.md
     - name: Azure へのフェールオーバー後の VM 接続
@@ -104,9 +106,9 @@
         - name: VMware から Azure へのレプリケーションのための Deployment Planner ツール
           href: site-recovery-deployment-planner.md
         - name: Hyper-V から Azure へのレプリケーションのための容量計画
-          href: site-recovery-capacity-planning-for-hyper-v-replication.md
-        - name: Hyper-V から Azure へのレプリケーションのための Capacity Planner ツール
           href: site-recovery-capacity-planner.md
+        - name: Hyper-V から Azure へのレプリケーションのための Capacity Planner ツール
+          href: site-recovery-capacity-planning-for-hyper-v-replication.md
         - name: VMware レプリケーション用のプロセス サーバーのスケールアウト
           href: site-recovery-vmware-to-azure-manage-scaleout-process-server.md
         - name: オンプレミス サイト間での Hyper-V レプリケーションのパフォーマンス スケール テスト
@@ -181,7 +183,9 @@
           href: site-recovery-vmm-to-vmm-powershell-resource-manager.md
     - name: 移行
       items:
-        - name: 別の Azure リージョンへの移行マシンのレプリケート
+        - name: Azure VM を別の Azure リージョンに移行する
+          href: site-recovery-migrate-azure-to-azure.md
+        - name: 移行後にマシンを別の Azure リージョンにレプリケートする
           href: site-recovery-azure-to-azure-after-migration.md
     - name: ワークロード
       items:

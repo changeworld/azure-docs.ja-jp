@@ -62,6 +62,12 @@
           href: msi-howto-assign-access-powershell.md
         - name: Azure CLI の使用
           href: msi-howto-assign-access-cli.md
+    - name: VM MSI を使用した Azure Data Lake Store へのアクセス
+      items:
+        - name: Windows VM から
+          href: msi-tutorial-windows-vm-access-datalake.md
+        - name: Linux VM から
+          href: msi-tutorial-linux-vm-access-datalake.md
     - name: VM MSI を使用した Azure Resource Manager へのアクセス
       items:
         - name: Windows VM から
