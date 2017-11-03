@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2017
 ms.author: apimpm
-ms.openlocfilehash: 4ff634e039080fc15e7f4f44bc3ab42f280f3ad5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9970452b62b31f28f8277580dd1075c306767d8b
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Azure API Management で仮想ネットワークを使用する方法
 Azure Virtual Network (VNET) を使用すると、任意の Azure リソースをインターネット以外のルーティング可能なネットワークに配置し、アクセスを制御できます。 これらのネットワークは、さまざまな VPN テクノロジを使用して、オンプレミスのネットワークに接続できます。 Azure Virtual Network の詳細については、まず [Azure Virtual Network の概要](../virtual-network/virtual-networks-overview.md)に関するページに記載されている情報をご覧ください。
@@ -33,17 +33,14 @@ Azure API Management は、仮想ネットワーク (VNET) の内部でデプロ
 
 この記事で説明されている手順を実行するには、以下が必要です。
 
-+ 有効な Azure サブスクリプション。
++ 有効な Azure サブスクリプション
 
     [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 + APIM インスタンス。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
-+ VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。[アップグレードとスケーリング](upgrade-and-scale.md#upgrade-and-scale)に関するトピックで説明されているように、いずれかのレベルに切り替えてください。
++ VNET 接続は、Premium レベルと Developer レベルでのみ利用できます。 「[アップグレードとスケーリング](upgrade-and-scale.md#upgrade-and-scale)」の指示に従って、これらのレベルのどちらかに切り替えてください。
 
 ## <a name="enable-vpn"> </a>VNET 接続の有効化
-
-> [!NOTE]
->  VNET 接続は、**Premium** レベルと **Developer** レベルで利用できます。[アップグレードとスケーリング](upgrade-and-scale.md#upgrade-and-scale)に関するトピックで説明されているように、いずれかのレベルに切り替えてください。
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>Azure ポータルを使用して VNET 接続を有効にする
 
@@ -103,24 +100,27 @@ API Management サービスを Virtual Network にデプロイするときに発
 * **カスタム DNS サーバーのセットアップ**: API Management サービスは、複数の Azure サービスに依存します。 カスタム DNS サーバーを使用して VNET で API Management をホストする場合、その DNS サーバーはこれらの Azure サービスのホスト名を解決する必要があります。 カスタム DNS のセットアップについては、 [こちらの](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-using-your-own-dns-server) ガイダンスに従ってください。 下にあるポートの表とその他のネットワーク要件を参照してください。
 
 > [!IMPORTANT]
-> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/en-us/rest/api/apimanagement/apimanagementservice#ApiManagementService_ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
+> VNET でカスタム DNS サーバーを使用する場合は、API Management サービスをデプロイする**前**にサーバーをセットアップすることをお勧めします。 それ以外の場合、[ネットワーク構成の処理の適用](https://docs.microsoft.com/en-us/rest/api/apimanagement/ApiManagementService/ApplyNetworkConfigurationUpdates)を実行して DNS サーバー (s) を変更するたびに API Management サービスを更新する必要があります。
 
 * **API Management に必要なポート**: API Management がデプロイされるサブネットへの受信トラフィックと送信トラフィックは[ネットワーク セキュリティ グループ][Network Security Group]を使用して制御できます。 これらのポートのいずれかが利用できない場合、API Management は正しく動作しない可能性があり、アクセス不能になる場合があります。 VNET で API Management を使用した場合の不正な構成に関するその他の一般的な問題として、これらの 1 つまたは複数のポートがブロックされていることが挙げられます。
 
 API Management サービス インスタンスが VNET でホストされている場合は、次の表のポートが使用されます。
 
-| ソース / ターゲット ポート | 方向 | トランスポート プロトコル | 目的 | ソース / ターゲット | アクセスの種類 |
+| ソース / ターゲット ポート | 方向 | トランスポート プロトコル | ソース / ターゲット | 目的 (*) | 仮想ネットワークの種類 |
 | --- | --- | --- | --- | --- | --- |
-| * / 80, 443 |受信 |TCP |API Management へのクライアント通信 |INTERNET / VIRTUAL_NETWORK |外部 |
-| * / 3443 |受信 |TCP |Azure Portal と Powershell 用の管理エンドポイント |INTERNET / VIRTUAL_NETWORK |外部 / 内部 |
-| * / 80, 443 |送信 |TCP |Azure Storage および Azure Service Bus への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / 1433 |送信 |TCP |Azure SQL への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / 11000 - 11999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / 14000 - 14999 |送信 |TCP |Azure SQL V12 との依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / 5671 |送信 |AMQP |Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / 6381 - 6383 |受信および送信 |TCP |Redis Cache への依存関係 |VIRTUAL_NETWORK / VIRTUAL_NETWORK |外部 / 内部 |
-| * / 445 |送信 |TCP |GIT のための Azure ファイル共有への依存関係 |VIRTUAL_NETWORK / INTERNET |外部 / 内部 |
-| * / * | 受信 |TCP |Azure インフラストラクチャの Load Balancer | AZURE_LOAD_BALANCER / VIRTUAL_NETWORK |外部 / 内部 |
+| * / 80, 443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|API Management へのクライアント通信|外部 |
+| * / 3443 |受信 |TCP |INTERNET / VIRTUAL_NETWORK|Azure Portal と Powershell 用の管理エンドポイント |内部 |
+| * / 80, 443 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure Storage エンドポイントへのアクセス** |外部 / 内部 |
+| * / 1433 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL エンドポイントへのアクセス** |外部 / 内部 |
+| * / 11000 - 11999 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL V12 へのアクセス** |外部 / 内部 |
+| * / 14000 - 14999 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|**Azure SQL V12 へのアクセス** |外部 / 内部 |
+| * / 5671 |送信 |AMQP |VIRTUAL_NETWORK / INTERNET|Event Hub へのログ ポリシーおよび監視エージェントの依存関係 |外部 / 内部 |
+| * / 445 |送信 |TCP |VIRTUAL_NETWORK / INTERNET|GIT のための Azure ファイル共有への依存関係 |外部 / 内部 |
+| * / 6381 - 6383 |受信および送信 |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Role インスタンス間での Redis Cache インスタンスへのアクセス |外部 / 内部 |
+| * / * | 受信 |TCP |AZURE_LOAD_BALANCER / VIRTUAL_NETWORK| Azure インフラストラクチャの Load Balancer |外部 / 内部 |
+
+>[!IMPORTANT]
+> * "*目的*" が**太字**になっているポートは、API Management サービスの正常なデプロイを必要とします。 ただし、その他のポートをブロックすると、実行中のサービスの使用と監視を行う能力が低下します。
 
 * **SSL 機能**: SSL 証明書チェーンの構築と検証を有効にするには、API Management サービスに ocsp.msocsp.com、mscrl.microsoft.com、および crl.microsoft.com に対する送信ネットワーク接続が必要です。API Management にアップロードする任意の証明書に CA ルートへの完全なチェーンが含まれている場合、この依存関係は必要ありません。
 
@@ -139,14 +139,27 @@ API Management サービス インスタンスが VNET でホストされてい�
 
 
 ## <a name="troubleshooting"></a>トラブルシューティング
-ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
+* **初回のセットアップ**: API Management サービスのサブネットへの初回のデプロイが成功しなかった場合は、同じサブネットに仮想マシンを先にデプロイすることをお勧めします。 次に、リモート デスクトップを仮想マシンにデプロイし、Azure サブスクリプション内の次のリソースのいずれかに接続できることを確認します。 
+    * Azure Storage BLOB
+    * Azure SQL Database
+
+ > [!IMPORTANT]
+ > 接続を確認したら、サブネットにデプロイされているすべてのリソースを必ず削除してから、サブネットに API Management をデプロイしてください。
+
+* **増分更新**: ネットワークを変更するときは、[NetworkStatus API](https://docs.microsoft.com/en-us/rest/api/apimanagement/networkstatus) を参照して、API Management サービスが依存している重要なリソースへのアクセスが失われていないことを確認してください。 接続状態は、15 分間隔で更新されます。
+
+* **リソース ナビゲーション リンク**: Resource Manager スタイルの VNET サブネットにデプロイすると、API Management は、リソース ナビゲーション リンクを作成することでサブネットを予約します。 サブネットに別のプロバイダーのリソースが既に含まれている場合、デプロイは**失敗**します。 同様に、API Management サービスを別のサブネットに 移動するか削除すると、そのリソース ナビゲーション リンクが削除されます。 
+
+## <a name="routing"> </a> ルーティング
++ 負荷分散されたパブリック IP アドレス (VIP) は、すべてのサービス エンドポイントへのアクセスを提供するために予約されます。
++ サブネット IP 範囲 (DIP) の IP アドレスは VNET 内のリソースにアクセスするために使用され、パブリック IP アドレス (VIP) は VNET の外部のリソースにアクセスするために使用されます。
++ 負荷分散されたパブリック IP アドレスは、Azure Portal の [概要]/[要点] ブレードで確認できます。
 
 ## <a name="limitations"> </a>制限事項
 * API Management インスタンスが含まれるサブネットには、その他の Azure リソースの種類を含めることはできません。
 * サブネットと API Management サービスは、同じサブスクリプション内になければなりません。
 * API Management インスタンスが含まれるサブネットは、サブスクリプション間で移動できません。
-* 内部仮想ネットワークを使用する場合、[RFC 1918](https://tools.ietf.org/html/rfc1918) に記載されている範囲の IP アドレスのみが使用可能であり、パブリック IP アドレスを提供することはできません。
-* 内部仮想ネットワークが構成された複数リージョンの API Management デプロイでは、DNS を所有するユーザーが分散負荷の管理を担当します。
+* 内部仮想ネットワーク モードで構成された複数リージョンの API Management デプロイでは、ルーティングを設定するユーザーが分散負荷の管理を担当します。デプロイでは、ユーザーが、ルーティングを担当するように、複数のリージョンの負荷分散の管理を担当します。
 
 
 ## <a name="related-content"> </a>関連コンテンツ

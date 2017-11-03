@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 9d63148c182c705b6b49733c59ed8fdd13872d72
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b19a2db85b2e1cc4c5f79f6b0dee97965f40ef88
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="performance-metrics"></a>パフォーマンス メトリック
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 | PhysicalDisk(per Disk) | Disk Write Bytes/sec |
 | メモリ | Available MBytes |
 | PagingFile | % Usage |
-| Process(Total) | % Processor Time |
+| Processor(Total) | % Processor Time |
 | Process (per service) | % Processor Time |
 | Process (per service) | ID Process |
 | Process (per service) | Private Bytes |
@@ -48,6 +48,11 @@ ms.lasthandoff: 10/11/2017
 | Process (per service) | Virtual Bytes |
 | Process (per service) | Working Set |
 | Process (per service) | Working Set - Private |
+| Network Interface(all-instances) | Output Queue Length |
+| Network Interface(all-instances) | Packets Outbound Discarded |
+| Network Interface(all-instances) | Packets Received Discarded |
+| Network Interface(all-instances) | Packets Outbound Errors |
+| Network Interface(all-instances) | Packets Received Errors |
 
 ## <a name="net-applications-and-services"></a>.NET アプリケーションとサービス
 

@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial, azure
 ms.topic: article
 ms.date: 09/21/2017
-ms.openlocfilehash: 722657c9bbae23a051a63972a8800d3cc40e7e40
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d1845e27c6b0fff66b80a683f59d14238e2ad71
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="bike-share-tutorial-advanced-data-preparation-with-azure-machine-learning-workbench"></a>自転車シェアのチュートリアル: Azure Machine Learning Workbench による詳細データの準備
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -210,7 +210,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    ![列の削除オプションの画像](media/tutorial-bikeshare-dataprep/weatherremovereporttype.png)
 
 ## <a name="change-datatypes-and-remove-errors"></a>データ型の変更とエラーの除去
-1. 列見出しを選択したまま __Ctrl__ キーを押すと、一度に複数の列を選択できます。 これを使用して、以下の列見出しを選択します。
+1. 列見出しを選択したまま __Ctrl キー (Mac ではコマンド ⌘ キー)__ を押すと、一度に複数の列を選択できます。 これを使用して、以下の列見出しを選択します。
    * **HOURLYDRYBULBTEMPF** (1 時間ごとの乾球温度)
    * **HOURLYRelativeHumidity** (1 時間ごとの相対湿度)
    * **HOURLYWindSpeed** (1 時間ごとの風速)
@@ -262,6 +262,9 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    > [!NOTE]
    > Azure ML Workbench は、ユーザーから指定された例に基づくプログラムを合成して、残りの行に同じプログラムを適用します。 他のすべての行には、ユーザーが指定した例に基づいて自動的に値が入力されます。 また、ワークベンチでは、データを分析してエッジ ケースを特定しようとします。 
 
+   > [!IMPORTANT]
+   > 現在のワークベンチでは、Mac でエッジ ケースの特定が機能しない可能性があります。 Mac では、以下の__手順 3__ と__手順 4__ をスキップしてください。 代わりに、派生した値がすべての行に設定されたら、__[OK]__ を押します。
+   
 3. グリッドの上にあるテキスト "**データを分析しています**" は、ワークベンチがエッジ ケースの検出を試行していることを示します。 完了すると、"**Review next suggested row**\(提示された次の行を確認する\)" または "**No suggestions\(提示なし\)**" に状態が切り替わります。 この例では、"**Review next suggested row\(提示された次の行を確認する\)**" が返されます。
 
 4. 提示された変更内容を確認するには、**[Review next suggested row]\(提示された次の行を確認する\)** を選択します。 確認および (必要な場合は) 修正する対象のセルが、画面に強調表示されます。
@@ -290,6 +293,12 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
    ワークベンチは、指定した例に基づいて変換を決定します。 この例では、結果として、日付の形式が変更され、2 時間の枠と連結されました。
 
    ![`Jan 01, 2015 12AM-2AM (2015 年 1 月 1 日 午前 0 時～午前 2 時) の例の画像](media/tutorial-bikeshare-dataprep/wetherdatehourrangeexample.png)
+
+   > [!IMPORTANT]
+   > Mac では、以下の__手順 8__ ではなく次の手順を実行します。
+   >
+   > * `Feb 01, 2015 12AM-2AM` を含む最初のセルに移動します。 この例では__行 15__ です。 値を `Jan 02, 2015 12AM-2AM` に修正し、__Enter__ キーを押します。 
+   
 
 8. **[データを分析しています]** から **[Review next suggested row]\(提示された次の行を確認する\)** に状態が変更するまで待機します。 これには数秒かかる場合があります。 状態のリンクを選択して、提示された行に移動します。 
 
@@ -392,7 +401,7 @@ __REPORTTYPE__ 列は必要なくなりました。 列見出しを右クリッ�
 1. **start station latitude** および **start station longitude** 列を複数選択します。 どちらかの列を右クリックして、**[マップ]** を選択します。
 
     > [!TIP]
-    > 複数選択を行うには、__Ctrl__ キーを押しながら各列の見出しを選択します。
+    > 複数選択を行うには、__Ctrl キー (Mac ではコマンド ⌘ キー)__ を押しながら各列の見出しを選択します。
 
     ![マップの視覚化の画像](media/tutorial-bikeshare-dataprep/launchMapInspector.png)
 
@@ -506,6 +515,11 @@ __[OK]__ を選択してフィルターを適用します。
 
     ![例のデータの画像](media/tutorial-bikeshare-dataprep/tripdataderivebyexamplefirstexample.png)
 
+   > [!IMPORTANT]
+   > Mac では、以下の__手順 3__ ではなく次の手順を実行します。
+   >
+   > * `Jan 01, 2017 1AM-2AM` を含む最初のセルに移動します。 この例では__行 14__ です。 値を `Jan 01, 2017 12AM-2AM` に修正し、__Enter__ キーを押します。 
+
 3. アプリケーションがすべての行に対する値を計算するまで待機します。 これには数秒かかる場合があります。 分析が完了したら、__[Review next suggested row]\(提示された次の行を確認する\)__  リンクを使用してデータを確認します。
 
    ![確認リンクがある完了した分析の画像](media/tutorial-bikeshare-dataprep/tripdatabyexanalysiscomplete.png)
@@ -557,7 +571,7 @@ __[OK]__ を選択してフィルターを適用します。
 
     ![期間の列の画像](media/tutorial-bikeshare-dataprep/featurehourrange.png)
 
-3. **Date Hour Range** 列と **rDate Hour Range** 列を削除するには、**Ctrl** キーを押しながら各列の見出しを選択します。 右クリックして、**[列の削除]** を選択します。
+3. **Date Hour Range** 列と **rDate Hour Range** 列を削除するには、**Ctrl キー (Mac ではコマンド ⌘ キー)** を押しながら各列の見出しを選択します。 右クリックして、**[列の削除]** を選択します。
 
 ## <a name="read-data-from-python"></a>Python のデータの読み取り
 

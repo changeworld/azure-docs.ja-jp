@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
+ms.date: 10/20/2017
 ms.author: billmath
-ms.openlocfilehash: 7f1a3303eff9c413602e745b702baa659343eba6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 675f5b31eb60a75e060a397f01777e427c068c64
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="renew-federation-certificates-for-office-365-and-azure-active-directory"></a>Office 365 および Azure Active Directory 用のフェデレーション証明書の更新
 ## <a name="overview"></a>Overview
@@ -158,9 +158,18 @@ AD FS の既定の構成が変更されている (**AutoCertificateRollover** �
 > [!NOTE]
 > contoso.com や fabrikam.com などの複数のトップ レベル ドメインをサポートする必要がある場合は、すべてのコマンドレットで **SupportMultipleDomain** スイッチを使用する必要があります。 詳細については、 [複数のトップ レベル ドメインのサポート](active-directory-aadconnect-multiple-domains.md)に関するページを参照してください。
 >
->
+
 
 ## Azure AD Connect を使用して Azure AD 信頼を修復する <a name="connectrenew"></a>
 Azure AD Connect を使用して AD FS ファームと Azure AD 信頼を構成した場合は、トークン署名証明書に関して何らかの対処が必要かどうかを Azure AD Connect を使用して検出できます。 証明書を更新する必要がある場合は、Azure AD Connect を使用して更新できます。
 
 詳細については、「 [信頼の修復](active-directory-aadconnect-federation-management.md)」を参照してください。
+
+## <a name="ad-fs-and-azure-ad-certificate-update-steps"></a>AD FS と Azure AD の証明書の更新手順
+トークン署名証明書は標準の X509 証明書であり、フェデレーション サーバーが発行するすべてのトークンに安全に署名するために使用されます。 トークン暗号化解除証明書は、標準の X509 証明書であり、受信トークンの暗号化解除に使用されます。 
+
+既定では、AD FS は、初期構成時にも、証明書の有効期限が近づいたときにも、トークン署名証明書とトークン暗号化解除証明書を自動的に生成するように構成されます。
+
+Azure AD は、現在の証明書の有効期限が切れる 30 日前に、フェデレーション サービスのメタデータから新しい証明書を取得しようとします。 その時点で新しい証明書が利用できない場合、Azure AD は 1 日間隔でメタデータの監視を続けます。 新しい証明書がメタデータで利用可能になるとすぐに、ドメインのフェデレーション設定が新しい証明書情報で更新されます。 `Get-MsolDomainFederationSettings` を使用すると、NextSigningCertificate / SigningCertificate に新しい証明書があるかどうかを確認できます。
+
+AD FS のトークン署名証明書の詳細については「[Obtain and Configure Token Signing and Token Decryption Certificates for AD FS (AD FS でのトークン署名証明書およびトークン暗号化解除証明書の取得と構成)](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-ts-td-certs-ad-fs)」 をご覧ください。

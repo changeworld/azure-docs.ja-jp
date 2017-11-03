@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/04/2017
 ms.author: renash
-ms.openlocfilehash: 6643dad5ea3ba703e26f5708cdd2e925f702847f
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 33b64e1ad3fd5a2a6954a02da0fb303acca54c40
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="work-with-azure-file-share-snapshots-preview"></a>Azure ファイル共有スナップショットの操作 (プレビュー)
 Azure ファイル共有スナップショット (プレビュー) は、ある時点で作成された読み取り専用の Azure ファイル共有です。 作成された共有スナップショットは、読み取り、コピー、削除はできますが、変更はできません。 共有スナップショットを使用すると、共有をある時点での表示内容のままバックアップできます。 この記事では、Azure ファイル共有スナップショットを作成、管理、削除する方法について説明します。 共有スナップショットの詳細については、[共有スナップショットの概要](storage-snapshots-files.md)または[スナップショットに関してよく寄せられる質問](storage-files-faq.md)の記事をご覧ください。
@@ -57,7 +57,7 @@ az storage share snapshot -n <share name>
 ```
 
 ### <a name="create-share-snapshot-using-powershell"></a>Powershell を使用した共有スナップショットの作成
-`$share.Snapshot()` コマンドを使用して、共有スナップショットを作成できます。
+次のように、`$share.Snapshot()` コマンドを使用して、共有スナップショットを削除できます。
 
 ```powershell
 $connectionstring="DefaultEndpointsProtocol=http;FileEndpoint=http:<Storage Account Name>.file.core.windows.net /;AccountName=:<Storage Account Name>;AccountKey=:<Storage Account Key>"
@@ -72,9 +72,10 @@ $share.IsSnapshot
 $snapshot=$share.Snapshot()
 
 ```
-## <a name="list-share-snapshots-browse-share-snapshot-contents-and-restore-from-snapshots"></a>共有スナップショットの一覧表示、共有スナップショット コンテンツの参照、およびスナップショットからの復元
 
-REST、クライアント ライブラリ、PowerShell、およびポータル経由で Windows の "以前のバージョン" の統合を使用して、ファイル共有に関連付けられた共有スナップショットを列挙できます。 Azure ファイル共有をマウントすると、SMB の"以前のバージョン" の統合を使用して、以前のバージョンの全ファイルを表示できるようになります。 Azure ファイル共有をマウントすると、SMB の"以前のバージョン" の統合を使用して、以前のバージョンの全ディレクトリを表示できるようになります。 次のいくつかのセクションでは、Azure ポータル、Windows、および Azure CLI 2.0 を使用して共有スナップショットを一覧表示、参照、および復元する方法について説明します。
+## <a name="common-share-snapshot-operations"></a>一般的な共有スナップショット操作
+
+REST、クライアント ライブラリ、PowerShell、およびポータル経由で Windows の [以前のバージョン] タブを使用して、ファイル共有に関連付けられた共有スナップショットを列挙できます。 Azure ファイル共有をマウントすると、Windows の [以前のバージョン] タブを使用して、以前のバージョンの全ファイルを表示できるようになります。 次のセクションでは、Azure Portal、Windows、および Azure CLI 2.0 を使用して共有スナップショットを一覧表示、参照、および復元する方法について説明します。
 
 ### <a name="share-snapshot-operations-in-portal"></a>ポータルでの共有スナップショットの操作
 

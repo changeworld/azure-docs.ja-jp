@@ -11,13 +11,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 10/16/2017
 ms.author: jingwang
-ms.openlocfilehash: 8db368017ef25603598ec92e8bbbb1fc69230145
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6d28b82f892ac88c32ab3e04df19143d69a5a05b
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="copy-data-from-and-to-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用して HDFS からデータをコピーする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -58,7 +58,7 @@ HDFS のリンクされたサービスでは、次のプロパティがサポー
 | type | type プロパティは **Hdfs** に設定する必要があります。 | あり |
 | url |HDFS への URL |はい |
 | authenticationType | 使用可能な値: **Anonymous** または**Windows**。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
-| userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
+| userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 このフィールドを SecureString とマークします。 |あり (Windows 認証用) |
 | connectVia | データ ストアに接続するために使用される[統合ランタイム](concepts-integration-runtime.md)。 セルフホステッド統合ランタイムまたは Azure 統合ランタイム (データ ストアがパブリックにアクセスできる場合) を使用できます。 指定されていない場合は、既定の Azure 統合ランタイムが使用されます。 |いいえ |
 
@@ -250,7 +250,7 @@ HDFS コネクタで Kerberos 認証を使用するようにオンプレミス�
 * オプション 1: [セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる](#kerberos-join-realm)
 * オプション 2: [Windows ドメインと Kerberos 領域間の相互の信頼関係を有効にする](#kerberos-mutual-trust)
 
-### <a name="kerberos-join-realm"></a>オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる
+### <a name="kerberos-join-realm">オプション 1: セルフホステッド統合ラインタイム コンピューターを Kerberos 領域に参加させる</a>
 
 #### <a name="requirements"></a>必要条件
 

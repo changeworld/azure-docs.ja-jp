@@ -14,11 +14,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 06/21/2017
 ms.author: chackdan
-ms.openlocfilehash: 3dd4f3494bb9ed70549f41e22c58666cada8da07
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 874cf647d4b708bbbc64246ac0dff133639ad86c
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Azure ポータルを使用して Azure で Service Fabric クラスターを作成する
 > [!div class="op_single_selector"]
@@ -42,7 +42,8 @@ ms.lasthandoff: 10/11/2017
 
 セキュリティで保護されたクラスターの作成については、Linux クラスターであれ Windows クラスターであれ、考え方は同じです。 セキュリティで保護された Linux クラスターの作成に関する詳しい情報とヘルパー スクリプトについては、[「セキュリティで保護されたクラスターを Linux 上に作成する」](service-fabric-cluster-creation-via-arm.md#secure-linux-clusters)をご覧ください。 提供されるヘルパー スクリプトから得られるパラメーターは、「 [Azure ポータルでのクラスターの作成](#create-cluster-portal)」セクションの説明に従ってポータルに直接入力できます。
 
-## <a name="log-in-to-azure"></a>Azure へのログイン
+## <a name="configure-key-vault"></a>Key Vault を構成する 
+### <a name="log-in-to-azure"></a>Azure へのログイン
 このガイドでは [Azure PowerShell][azure-powershell] を使用します。 新しい PowerShell セッションを開始した場合、Azure アカウントにログインし、Azure のコマンドを実行する前にサブスクリプションを選択します。
 
 Azure アカウントにログインします。
@@ -58,7 +59,7 @@ Get-AzureRmSubscription
 Set-AzureRmContext -SubscriptionId <guid>
 ```
 
-## <a name="set-up-key-vault"></a>Key Vault の設定
+### <a name="set-up-key-vault"></a>Key Vault の設定
 ガイドのこのセクションでは、Azure Service Fabric クラスターおよび Service Fabric アプリケーション用の Key Vault を作成する手順を説明します。 Key Vault の完全なガイドについては、[Azure Key Vault の概要][key-vault-get-started]に関する記事を参照してください。
 
 Service Fabric では X.509 証明書を使用して、クラスターをセキュリティ保護します。 Azure Key Vault を使用して、Azure で Service Fabric クラスター用の証明書を管理します。 Azure にクラスターがデプロイされると、Service Fabric クラスターの作成担当 Azure リソース プロバイダーにより Key Vault から証明書が取得されてクラスター VM にインストールされます。
@@ -67,7 +68,7 @@ Service Fabric では X.509 証明書を使用して、クラスターをセキ�
 
 ![証明書のインストール][cluster-security-cert-installation]
 
-### <a name="create-a-resource-group"></a>リソース グループの作成
+#### <a name="create-a-resource-group"></a>リソース グループの作成
 最初の手順として、Key Vault 専用の新しいリソース グループを作成します。 Key Vault を独自のリソース グループに配置することをお勧めします。これにより、コンピューティングおよびストレージ リソース グループ (Service Fabric クラスターを持つリソース グループなど) をキーとシークレットを紛失することなく削除できます。 Key Vault を持つリソース グループは、それを使用するクラスターと同じリージョンにある必要があります。
 
 ```powershell
@@ -83,7 +84,7 @@ Service Fabric では X.509 証明書を使用して、クラスターをセキ�
 
 ```
 
-### <a name="create-key-vault"></a>Key Vault の作成
+#### <a name="create-key-vault"></a>Key Vault の作成
 新しいリソース グループに、Key Vault を作成します。 Key Vault を **デプロイ用に有効にして** 、Service Fabric リソース プロバイダーがそこから証明書を取得し、クラスター ノードにインストールできるようにする必要があります。
 
 ```powershell
@@ -124,10 +125,10 @@ Key Vault が既にある場合は、Azure CLI を使用してそれをデプロ
 ```
 
 
-## <a name="add-certificates-to-key-vault"></a>証明書の Key Vault への追加
+### <a name="add-certificates-to-key-vault"></a>証明書の Key Vault への追加
 Service Fabric では証明書を使用して、クラスターとそのアプリケーションのさまざまな側面をセキュリティで保護するための認証および暗号化を指定します。 Service Fabric での証明書の使用方法の詳細については、「[Service Fabric クラスターのセキュリティに関するシナリオ][service-fabric-cluster-security]」をご覧ください。
 
-### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
+#### <a name="cluster-and-server-certificate-required"></a>クラスターとサーバーの証明書 (必須)
 この証明書はクラスターをセキュリティで保護し、クラスターに対する未承認のアクセスを防ぐために必要です。 証明書により、クラスター セキュリティが次のような方法で提供されます。
 
 * **クラスター認証:** クラスター フェデレーション用のノード間通信を認証します。 この証明書で自分の ID を証明できたノードだけがクラスターに参加できます。
@@ -139,7 +140,7 @@ Service Fabric では証明書を使用して、クラスターとそのアプ�
 * 証明書はキー交換のために作成され、Personal Information Exchange (.pfx) ファイルにエクスポートできる必要があります。
 * 証明書の件名は Service Fabric クラスターへのアクセスに使用されるドメインと一致する必要があります。 これは、HTTPS 管理エンドポイントと Service Fabric Explorer 用の SSL を提供するために必要です。 証明機関 (CA) から `.cloudapp.azure.com` ドメインの SSL 証明書を取得することはできません。 クラスターのカスタム ドメイン名を取得します。 CA に証明書を要求するときは、証明書の件名がクラスターに使用するカスタム ドメイン名と一致している必要があります。
 
-### <a name="client-authentication-certificates"></a>クライアント認証証明書
+#### <a name="client-authentication-certificates"></a>クライアント認証証明書
 その他のクライアント証明書は、クラスター管理タスクに対して管理者を認証します。 Service Fabric には、**admin** および **read-only user** という 2 つのアクセス レベルがあります。 管理アクセスについて、少なくとも 1 つの証明書を使用する必要があります。 追加のユーザー レベル アクセスとして、別の証明書を指定する必要があります。 アクセス ロールの詳細については、「[ロールベースのアクセス制御 (Service Fabric クライアント用)][service-fabric-cluster-security-roles]」を参照してください。
 
 Service Fabric を操作するために、クライアント認証証明書を Key Vault にアップロードする必要はありません。 この証明書は、クラスター管理を許可されているユーザーにのみ指定する必要があります。 
@@ -149,7 +150,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 > 
 > 
 
-### <a name="application-certificates-optional"></a>アプリケーション証明書 (省略可能)
+#### <a name="application-certificates-optional"></a>アプリケーション証明書 (省略可能)
 アプリケーション セキュリティの目的で、任意の数の追加の証明書をクラスターにインストールできます。 クラスターを作成する前に、ノードにインストールする証明書を必要とするアプリケーション セキュリティ シナリオについて考慮します。これには次のようなものがあります。
 
 * アプリケーション構成値の暗号化と復号化
@@ -157,7 +158,7 @@ Service Fabric を操作するために、クライアント認証証明書を K
 
 Azure ポータルを使用してクラスターを作成した場合、アプリケーション証明書を構成することはできません。 クラスターのセットアップ時にアプリケーション証明書を構成するには、[Azure Resource Manager を使用してクラスターを作成する][create-cluster-arm]必要があります。 作成後に、アプリケーション証明書をクラスターに追加することもできます。
 
-### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Azure リソース プロバイダー用の証明書の書式設定
+#### <a name="formatting-certificates-for-azure-resource-provider-use"></a>Azure リソース プロバイダー用の証明書の書式設定
 秘密キー ファイル (.pfx) を追加し、Key Vault を使用して直接使用できます。 ただし、Azure リソース プロバイダーは、base-64 でエンコードされた文字列としての .pfx と、秘密キーのパスワードを含む特別な JSON 形式にキーを格納する必要があります。 これらの要件に対応するには、キーを JSON 文字列に配置して、 *シークレット* として Key Vault に格納する必要があります。
 
 このプロセスをわかりやすくするために、PowerShell モジュールを [GitHub から入手][service-fabric-rp-helpers]できます。 モジュールを使用するには、次の手順を実行します。

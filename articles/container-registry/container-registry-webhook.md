@@ -1,6 +1,6 @@
 ---
-title: "Azure コンテナー レジストリ Webhook | Microsoft Docs"
-description: "Azure コンテナー レジストリ Webhook"
+title: Azure Container Registry webhook
+description: "レジストリ リポジトリで特定のアクションが発生したときに、webhook を使用してイベントをトリガーする方法について説明します。"
 services: container-registry
 documentationcenter: 
 author: neilpeterson
@@ -14,47 +14,47 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/06/2017
+ms.date: 10/08/2017
 ms.author: nepeters
-ms.openlocfilehash: 35f2b940a36ca3176cf850afd97e62af0dd797ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5a9dab91aafb92f944b473f05144242143e36477
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
-# <a name="using-azure-container-registry-webhooks---azure-portal"></a>Azure コンテナー レジストリ Webhook - Azure Portal
+# <a name="using-azure-container-registry-webhooks"></a>Azure Container Registry webhook の使用
 
-Docker Hub で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート Docker コンテナー イメージを格納および管理します。 いずれかのレジストリ リポジトリで特定のアクションが発生した場合に、Webhooks を使用してイベントをトリガーします。 Webhooks では、レジストリ レベルでイベントに応答したり、特定のリポジトリ タグに範囲を絞ったりできます。 
+Docker Hub で公開 Docker イメージを格納するように、Azure コンテナー レジストリではプライベート Docker コンテナー イメージを格納および管理します。 いずれかのレジストリ リポジトリで特定のアクションが発生した場合に、Webhooks を使用してイベントをトリガーします。 webhook では、レジストリ レベルでイベントに応答したり、特定のリポジトリ タグに範囲を絞ったりできます。
 
-背景と概念の詳細については、[概要](./container-registry-intro.md)に関するページをご覧ください。
+背景情報と概念については、[Azure Container Registry の概要](./container-registry-intro.md)に関するページを参照してください。
 
-## <a name="prerequisites"></a>前提条件 
+## <a name="prerequisites"></a>前提条件
 
-- Azure コンテナーで管理されるレジストリ - Azure サブスクリプションで管理対象のコンテナー レジストリを作成します。 たとえば、Azure Portal または Azure CLI 2.0 を使用します。 
-- Docker CLI - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、Docker エンジンをインストールします。 
+- Azure コンテナーで管理されるレジストリ - Azure サブスクリプションで管理対象のコンテナー レジストリを作成します。 たとえば、[Azure Portal](container-registry-get-started-portal.md) または [Azure CLI](container-registry-get-started-azure-cli.md) を使用します。
+- Docker CLI - ローカル コンピューターを Docker ホストとして設定し、Docker CLI コマンドにアクセスするには、[Docker エンジン](https://docs.docker.com/engine/installation/)をインストールします。
 
 ## <a name="create-webhook-azure-portal"></a>Azure Portal での Webhook の作成
 
-1. Azure Portal にログインし、Webhook を作成するレジストリに移動します。 
+1. [Azure Portal](https://portal.azure.com) にログインし、Webhook を作成するレジストリに移動します。
 
-2. コンテナー ブレードで、[Webhook] タブを選択します。 
+2. コンテナー ブレードで、**[サービス]** の **[Webhook]** を選択します。
 
-3. Webhook ブレード ツールバーから [追加] を選択します。 
+3. webhook ブレード ツールバーで **[追加]** を選択します。
 
-4. 次の情報を利用して、*[Create Webhook]\(Webhook の作成\)* フォームを完成させます。
+4. 次の情報を利用して、*[webhook の作成]* フォームを完成させます。
 
 | 値 | Description |
 |---|---|
-| 名前 | Webhook に付与する名前。 小文字と数字のみを 5 ～ 50 文字まで含めることができます。 |
+| 名前 | Webhook に付与する名前。 使用できる文字は英小文字と数字のみです。文字数は 5 ～ 50 文字にする必要があります。 |
 | サービス URI | Webhook が POST 通知を送信する URI。 |
 | カスタム ヘッダー | POST 要求と共に渡すヘッダー。 "キー: 値" の形式にする必要があります。 |
-| トリガー アクション | Webhook をトリガーするアクション。 現在の Webhook は、イメージに対するプッシュまたは削除アクションによってトリガーできます。 |
+| トリガー アクション | Webhook をトリガーするアクション。 現在、webhook はイメージのプッシュまたは削除アクションによってトリガーできます。 |
 | 状態 | Webhook の作成後の状態。 既定で有効です。 |
-| Scope | Webhook が動作するスコープです。 既定では、スコープはレジストリ内のすべてのイベントです。 "リポジトリ: タグ" の形式を使用して、スコープを 1 つのリポジトリまたはタグに指定することができます。 |
+| Scope | Webhook が動作するスコープです。 既定では、スコープはレジストリ内のすべてのイベントです。 "リポジトリ:タグ" の形式を使用して、スコープを 1 つのリポジトリまたはタグに指定することができます。 |
 
 Webhook フォームの例 :
 
-![DCOS UI](./media/container-registry-webhook/webhook.png)
+![Azure Portal の ACR webhook の作成の UI](./media/container-registry-webhook/webhook.png)
 
 ## <a name="create-webhook-azure-cli"></a>Azure CLI での Webhook の作成
 
@@ -68,11 +68,13 @@ az acr webhook create --registry mycontainerregistry --name myacrwebhook01 --act
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-コンテナー イメージのプッシュおよび削除アクションで Webhook を使用する前に、**[Ping]** ボタンを使って Webhook をテストできます。 このボタンを使用すると、Ping が指定されたエンドポイントに対して一般的な POST 要求を送信し、応答を記録します。 これは、Webhook が適切に設定されていることを確認するうえで役立ちます。
+コンテナー イメージのプッシュおよび削除アクションで webhook を使用する前に、**[Ping]** ボタンを使って webhook をテストできます。 Ping を実行すると、指定されたエンドポイントに一般的な POST 要求が送信され、応答がログに記録されます。 このログで、webhook が正しく構成されていることを確認できます。
 
-1. テストする Webhook を選択します。 
-2. 上部のツールバーで、"Ping" アクションを選択します。 
-3. 要求と応答を確認します。
+1. テストする Webhook を選択します。
+2. 上部のツールバーで、**[Ping]** を選択します。
+3. **[HTTP の状態]** 列でエンドポイントの応答を確認します。
+
+![Azure Portal の ACR webhook の作成の UI](./media/container-registry-webhook/webhook-02.png)
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -82,7 +84,7 @@ Azure CLI を使用して ACR Webhook をテストするには、[az acr webhook
 az acr webhook ping --registry mycontainerregistry --name myacrwebhook01
 ```
 
-結果を表示するには、[az acr webhook list-events](/cli/azure/acr/webhook#list-events) コマンドを使用します。 
+結果を表示するには、[az acr webhook list-events](/cli/azure/acr/webhook#list-events) コマンドを使用します。
 
 ```azurecli-interactive
 az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook01
@@ -92,7 +94,7 @@ az acr webhook list-events --registry mycontainerregistry08 --name myacrwebhook0
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal で Webhook を選択してから [削除] ボタンをクリックすると、各 Webhook を削除できます。
+Azure Portal で webhook を選択してから **[削除]** ボタンをクリックすると、各 webhook を削除できます。
 
 ### <a name="azure-cli"></a>Azure CLI
 

@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7bb8868ab813d0de992e92a921b2d204b0ac60c6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d57235671389e02c7d397b1244cdddb7a20067cc
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Azure Active Directory パススルー認証のトラブルシューティング
 
@@ -117,7 +117,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="exchange-powershell-issue"></a>Exchange PowerShell の問題
 
-"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
+"**パラメーター名 'PerTenantSwitchToESTSEnabled' に一致するパラメーターが見つかりません。\.**" というエラーが `Set-OrganizationConfig` Exchange PowerShell コマンドの実行時に表示される場合は、Microsoft サポートに問い合わせてください。
 
 ### <a name="exchange-activesync-not-working"></a>Exchange ActiveSync が機能していない
 
@@ -127,6 +127,10 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 発生する問題の種類に応じて、異なる場所にあるパススルー認証エージェントのログを確認する必要があります。
 
+### <a name="azure-ad-connect-logs"></a>Azure AD Connect のログ
+
+インストールに関するエラーが発生する場合は、**%ProgramData%\AADConnect\trace-\*.log** の Azure AD Connect ログを確認してください。
+
 ### <a name="authentication-agent-event-logs"></a>認証エージェントのイベント ログ
 
 認証エージェントに関するエラーの場合、サーバーでイベント ビューアー アプリケーションを開き、**アプリケーションとサービス ログ\Microsoft\AzureAdConnect\AuthenticationAgent\Admin** の下を調べます。
@@ -135,7 +139,7 @@ Azure AD Connect がインストールされているサーバーが、[こち�
 
 ### <a name="detailed-trace-logs"></a>詳細なトレース ログ
 
-ユーザー サインイン エラーのトラブルシューティングを行うときは、**%programdata%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の[表](#sign-in-failure-reasons-on-the-Azure-portal)に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
+ユーザー サインイン エラーのトラブルシューティングを行うときは、**%ProgramData%\Microsoft\Azure AD Connect Authentication Agent\Trace\\** でトレース ログを探します。 これらのログには、パススルー認証機能を使用した特定のユーザー サインインが失敗した原因が記録されています。 これらのエラーは、前の[表](#sign-in-failure-reasons-on-the-Azure-portal)に示したサインインの失敗の理由にもマップされます。 次にログ エントリの例を示します。
 
 ```
     AzureADConnectAuthenticationAgentService.exe Error: 0 : Passthrough Authentication request failed. RequestId: 'df63f4a4-68b9-44ae-8d81-6ad2d844d84e'. Reason: '1328'.

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: tbd
 ms.date: 06/02/2017
 ms.author: garye
-ms.openlocfilehash: fc1152f1431474b6625f389a1290a121e86fbdac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 13de6daabf2b6d83cc703ae6b3f0a30a1dfa34d6
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="how-to-consume-an-azure-machine-learning-web-service"></a>Azure Machine Learning Web サービスを使用する方法
 
@@ -90,12 +90,12 @@ Machine Learning API ヘルプには、予測 Web サービスの詳細が含ま
 
 **新しい Web サービスの Machine Learning API ヘルプを表示するには**
 
-Azure Machine Learning Web Services ポータルで:
+[Azure Machine Learning Web Services ポータル](https://services.azureml.net/)で、次の手順を実行します。
 
 1. 上部のメニューで **[Web サービス]** をクリックします。
 2. キーを取得する Web サービスをクリックします。
 
-**[Consume (使用)]** をクリックして、[要求/応答] および [バッチの実行] サービスの URI と、C#、R、および Python のサンプル コードを取得します。
+**[Use Web Service]\(Web サービスの使用\)** をクリックして、[要求/応答] および [バッチの実行] サービスの URI と、C#、R、および Python のサンプル コードを取得します。
 
 **Swagger API** をクリックして、指定した URI から呼び出される API の Swagger ベースのドキュメントを取得します。
 
@@ -116,8 +116,95 @@ Machine Learning Web サービスに接続するには、**Microsoft.AspNet.WebA
 2. Web サービスからのキーを持つ apiKey を割り当てます。 前述の「 **Azure Machine Learning の承認キーを取得する** 」をご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
+**完成した要求は次のようになります。**
+```csharp
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Net.Http;
+using System.Net.Http.Formatting;
+using System.Net.Http.Headers;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace CallRequestResponseService
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            InvokeRequestResponseService().Wait();
+        }
+
+        static async Task InvokeRequestResponseService()
+        {
+            using (var client = new HttpClient())
+            {
+                var scoreRequest = new
+                {
+                    Inputs = new Dictionary<string, List<Dictionary<string, string>>> () {
+                        {
+                            "input1",
+                            // Replace columns labels with those used in your dataset
+                            new List<Dictionary<string, string>>(){new Dictionary<string, string>(){
+                                    {
+                                        "column1", "value1"
+                                    },
+                                    {
+                                        "column2", "value2"
+                                    },
+                                    {
+                                        "column3", "value3"
+                                    }
+                                }
+                            }
+                        },
+                    },
+                    GlobalParameters = new Dictionary<string, string>() {}
+                };
+
+                // Replace these values with your API key and URI found on https://services.azureml.net/
+                const string apiKey = "<your-api-key>"; 
+                const string apiUri = "<your-api-uri>";
+                
+                client.DefaultRequestHeaders.Authorization = new AuthenticationHeaderValue( "Bearer", apiKey);
+                client.BaseAddress = new Uri(apiUri);
+
+                // WARNING: The 'await' statement below can result in a deadlock
+                // if you are calling this code from the UI thread of an ASP.Net application.
+                // One way to address this would be to call ConfigureAwait(false)
+                // so that the execution does not attempt to resume on the original context.
+                // For instance, replace code such as:
+                //      result = await DoSomeTask()
+                // with the following:
+                //      result = await DoSomeTask().ConfigureAwait(false)
+
+                HttpResponseMessage response = await client.PostAsJsonAsync("", scoreRequest);
+
+                if (response.IsSuccessStatusCode)
+                {
+                    string result = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine("Result: {0}", result);
+                }
+                else
+                {
+                    Console.WriteLine(string.Format("The request failed with status code: {0}", response.StatusCode));
+
+                    // Print the headers - they include the requert ID and the timestamp,
+                    // which are useful for debugging the failure
+                    Console.WriteLine(response.Headers.ToString());
+
+                    string responseContent = await response.Content.ReadAsStringAsync();
+                    Console.WriteLine(responseContent);
+                }
+            }
+        }
+    }
+}
+```
+
 ### <a name="python-sample"></a>Python サンプル
-Machine Learning Web サービスに接続するには、ScoreData を渡す **urllib2** ライブラリを使用します。 ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
+Machine Learning Web サービスに接続するには、Python 2.X の場合は **urllib2** ライブラリ、Python 3.X の場合は **urllib.request** ライブラリを使用します。 ScoreData を渡します。この ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
 
 **サンプル コードを実行するには**
 
@@ -125,3 +212,146 @@ Machine Learning Web サービスに接続するには、ScoreData を渡す **u
 2. Web サービスからのキーを持つ apiKey を割り当てます。 この記事の冒頭の「**Azure Machine Learning の承認キーを取得する**」セクションをご覧ください。
 3. 要求の URI を含む serviceUri を割り当てます。
 
+**完成した要求は次のようになります。**
+```python
+import urllib2 # urllib.request for Python 3.X
+import json
+
+data = {
+    "Inputs": {
+        "input1":
+        [
+            {
+                'column1': "value1",   
+                'column2': "value2",   
+                'column3': "value3"
+            }
+        ],
+    },
+    "GlobalParameters":  {}
+}
+
+body = str.encode(json.dumps(data))
+
+# Replace this with the URI and API Key for your web service
+url = '<your-api-uri>'
+api_key = '<your-api-key>'
+headers = {'Content-Type':'application/json', 'Authorization':('Bearer '+ api_key)}
+
+# "urllib.request.Request(uri, body, headers)" for Python 3.X
+req = urllib2.Request(url, body, headers)
+
+try:
+    # "urllib.request.urlopen(req)" for Python 3.X
+    response = urllib2.urlopen(req)
+
+    result = response.read()
+    print(result)
+# "urllib.error.HTTPError as error" for Python 3.X
+except urllib2.HTTPError, error: 
+    print("The request failed with status code: " + str(error.code))
+
+    # Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+    print(error.info())
+    print(json.loads(error.read())) 
+```
+
+### <a name="r-sample"></a>R サンプル
+
+Machine Learning Web サービスに接続するには、**RCurl** および **rjson** ライブラリを使用して要求を作成し、返された JSON 応答を処理します。 ScoreData を渡します。この ScoreData には、ScoreData を表す数値機能の n 次元ベクトルである FeatureVector が含まれています。 Machine Learning サービスの認証には、API キーを使用します。
+
+**完成した要求は次のようになります。**
+```r
+library("RCurl")
+library("rjson")
+
+# Accept SSL certificates issued by public Certificate Authorities
+options(RCurlOptions = list(cainfo = system.file("CurlSSL", "cacert.pem", package = "RCurl")))
+
+h = basicTextGatherer()
+hdr = basicHeaderGatherer()
+
+req = list(
+    Inputs = list(
+            "input1" = list(
+                list(
+                        'column1' = "value1",
+                        'column2' = "value2",
+                        'column3' = "value3"
+                    )
+            )
+        ),
+        GlobalParameters = setNames(fromJSON('{}'), character(0))
+)
+
+body = enc2utf8(toJSON(req))
+api_key = "<your-api-key>" # Replace this with the API key for the web service
+authz_hdr = paste('Bearer', api_key, sep=' ')
+
+h$reset()
+curlPerform(url = "<your-api-uri>",
+httpheader=c('Content-Type' = "application/json", 'Authorization' = authz_hdr),
+postfields=body,
+writefunction = h$update,
+headerfunction = hdr$update,
+verbose = TRUE
+)
+
+headers = hdr$value()
+httpStatus = headers["status"]
+if (httpStatus >= 400)
+{
+print(paste("The request failed with status code:", httpStatus, sep=" "))
+
+# Print the headers - they include the requert ID and the timestamp, which are useful for debugging the failure
+print(headers)
+}
+
+print("Result:")
+result = h$value()
+print(fromJSON(result))
+```
+
+### <a name="javascript-sample"></a>JavaScript のサンプル
+
+Machine Learning Web サービスに接続するには、プロジェクトで **request** npm パッケージを使用します。 また、`JSON` オブジェクトを使用して入力の書式を設定し、結果を解析します。 `npm install request --save` を使用してインストールするか、`"request": "*"` を `dependencies` 以下の package.json に追加し、`npm install` を実行します。
+
+**完成した要求は次のようになります。**
+```js
+let req = require("request");
+
+const uri = "<your-api-uri>";
+const apiKey = "<your-api-key>";
+
+let data = {
+    "Inputs": {
+        "input1":
+        [
+            {
+                'column1': "value1",
+                'column2': "value2",
+                'column3': "value3"
+            }
+        ],
+    },
+    "GlobalParameters": {}
+}
+
+const options = {
+    uri: uri,
+    method: "POST",
+    headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + apiKey,
+    },
+    body: JSON.stringify(data)
+}
+
+req(options, (err, res, body) => {
+    if (!err && res.statusCode == 200) {
+        console.log(body);
+    } else {
+        console.log("The request failed with status code: " + res.statusCode);
+    }
+});
+```

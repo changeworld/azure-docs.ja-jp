@@ -13,11 +13,11 @@ ms.devlang: terminal
 ms.topic: quickstart
 ms.date: 07/27/2017
 ms.author: denlee
-ms.openlocfilehash: ef1a54b6b9245ad091171d5c9b2966f8596edbab
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9755446d2c01313db9fd80b4f2a7f46f8bec500c
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-cosmos-db-create-query-and-traverse-a-graph-in-the-gremlin-console"></a>Azure Cosmos DB: Gremlin コンソールでのグラフの作成、クエリ、および走査
 
@@ -46,7 +46,7 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 [!INCLUDE [cosmos-db-create-graph](../../includes/cosmos-db-create-graph.md)]
 
 ## <a id="ConnectAppService"></a>App Service への接続
-1. Gremlin コンソールを開始する前に、apache-tinkerpop-gremlin-console-3.2.5/conf ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
+1. Gremlin コンソールを開始する前に、`apache-tinkerpop-gremlin-console-3.2.5/conf` ディレクトリで remote-secure.yaml 構成ファイルを作成または変更します。
 2. *host*、*port*、*username*、*password*、*connectionPool*、および *serializer* の構成を入力します。
 
     設定|推奨値|Description
@@ -62,6 +62,18 @@ Gremlin コンソールは Groovy/Java ベースであり、Linux、Mac、およ
 
     password の値については、**[キー]** ページにある **[プライマリ キー]** から値をコピーしてください。![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-gremlin-console/keys.png)
 
+remote secure.yaml ファイルは、次のようになります。
+
+```
+hosts: [your_database_server.graphs.azure.com]
+port: 443
+username: /dbs/your_database_account/colls/your_collection
+password: your_primary_key
+connectionPool: {
+  enableSsl: true
+}
+serializer: { className: org.apache.tinkerpop.gremlin.driver.ser.GraphSONMessageSerializerV1d0, config: { serializeResultToString: true }}
+```
 
 3. ご使用のターミナルで、`bin/gremlin.bat` または `bin/gremlin.sh` を実行して [Gremlin コンソール](http://tinkerpop.apache.org/docs/3.2.5/tutorials/getting-started/)を起動します。
 4. ご使用のターミナルで、`:remote connect tinkerpop.server conf/remote-secure.yaml` を実行して目的の App Service に接続します。

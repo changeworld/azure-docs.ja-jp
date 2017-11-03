@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/19/2017
 ms.author: kumud
 ms.custom: 
-ms.openlocfilehash: f1ab98ab173edc794bfabdf55d950ac689a37c0a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0a07ff578c6afeedc6f3806d52bfe5aef6945c04
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="traffic-manager-traffic-view"></a>Traffic Manager の Traffic View
 
@@ -31,8 +31,8 @@ Traffic Manager では、プロファイルの作成時に設定したルーテ�
 
 Traffic View を使用すると、次の情報を把握できます。
 - ユーザー ベースの場所 (ローカル DNS リゾルバー レベルの細分性まで)。
-- これらのリージョンから発生するトラフィックの量。
-- これらのユーザーが経験した代表的な待機時間。
+- これらのリージョンから送信されるトラフィックの量 (Azure Traffic Manager によって処理される DNS クエリとして監視される) を表示します。
+-  これらのユーザーが経験した代表的な待ち時間を洞察します。
 - これらの各ユーザー ベースからエンドポイントがある Azure リージョンへの特定のトラフィック パターンの詳細。 
 
 たとえば、Traffic View を使用して、大量のトラフィックがあり長い待機時間が発生しているリージョンを把握することができます。 次に、この情報を使用して、これらのユーザーの待機時間が短くなるように新しい Azure リージョンへのフットプリントの拡大を計画できます。

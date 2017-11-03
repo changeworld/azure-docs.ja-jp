@@ -1,6 +1,6 @@
 ---
 title: "Split-Merge サービスのデプロイ | Microsoft Docs"
-description: "エラスティック データベース ツールによる分割とマージ"
+description: "split-merge ツールを使用して、シャード化されたデータベース間でデータを移動します。"
 services: sql-database
 documentationcenter: 
 author: ddove
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 6e2fea882c248fa095a9d450ed54a7b4e64b45e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: db26b7a99a7fd8bb7cb5c3d4937c44686fc68222
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="deploy-a-split-merge-service"></a>split-merge サービスのデプロイ
 split-merge ツールを使用すると、シャード化されたデータベース間でデータを移動できます。 「 [スケールアウトされたクラウド データベース間のデータ移動](sql-database-elastic-scale-overview-split-and-merge.md)
@@ -32,7 +32,7 @@ split-merge ツールを使用すると、シャード化されたデータベ�
    nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge
    ```  
 
-ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント .dll) が格納されています。
+ファイルは、**Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge.x.x.xxx.x** という名前のディレクトリに配置されます。*x.x.xxx.x* はバージョン番号です。 **content\splitmerge\service** サブディレクトリに Split-Merge サービス ファイル、**content\splitmerge\powershell** サブディレクトリに Split-Merge PowerShell スクリプト (および必要なクライアント DLL) が格納されています。
 
 ## <a name="prerequisites"></a>前提条件
 1. Split-Merge ステータス データベースとして使用する Azure SQL DB を作成します。 [Azure ポータル](https://portal.azure.com)にアクセスします。 新しい **SQL Database**を作成します。 データベースに名前を付けて、新しい管理者とパスワードを作成します。 今後の使用のために、パスワードと名前を必ず記録しておいてください。
@@ -93,7 +93,7 @@ makecert を実行した同じウィンドウから次のコマンドを実行�
 6. **[完了]**、**[OK]** の順にクリックします。
 
 ### <a name="upload-the-pfx-file-to-the-cloud-service"></a>クラウド サービスへの PFX ファイルのアップロード
-1. [Azure Portal](https://portal.azure.com) にアクセスします。
+1. [Azure ポータル](https://portal.azure.com)にアクセスします。
 2. **[クラウド サービス]**を選択します。
 3. 分割/結合サービス用に上で作成したクラウド サービスを選択します。
 4. 上部メニューで **[証明書]** をクリックします。
@@ -129,7 +129,7 @@ Web ロール:
 4. ステージング環境を選択し、 **[新しいステージング環境のデプロイをアップロードします]**をクリックします。
    
    ![ステージング][3]
-5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、 **SplitMergeService.cspkg** ファイルと、先ほど構成した .cscfg ファイルを選択します。
+5. ダイアログ ボックスにデプロイ ラベルを入力します。 [パッケージ] と [構成] の両方で [ローカルから] をクリックし、**SplitMergeService.cspkg** ファイルと、先ほど構成した cscfg ファイルを選択します。
 6. **[1 つ以上のロールに単一のインスタンスが含まれている場合でもデプロイします。]** チェック ボックスがオンになっていることを確認します。
 7. 右下のチェック マークをクリックしてデプロイを開始します。 完了には数分かかります。
 
@@ -140,7 +140,7 @@ Web ロールのオンライン化に失敗した場合は、セキュリティ�
 
 worker ロールのオンライン化に失敗した場合に最も考えられるのは、先に作成した状態データベースへの接続に問題があることです。
 
-* 使用する .cscfg の接続文字列が正確であることをご確認ください。
+* 使用する .cscfg の接続文字列が正確であることを確認してください。
 * サーバーとデータベースが存在し、ユーザー ID とパスワードが正しいことを確認します。
 * Azure SQL DB の場合、接続文字列の形式は次のようにする必要があります。
 
@@ -153,7 +153,7 @@ worker ロールのオンライン化に失敗した場合に最も考えられ�
 
 ## <a name="test-the-service-deployment"></a>サービス デプロイのテスト
 ### <a name="connect-with-a-web-browser"></a>Web ブラウザーへの接続
-Split-Merge サービスの Web エンドポイントを決定します。 エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュ ボード]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
+Split-Merge サービスの Web エンドポイントを決定します。 エンドポイントを見つけるには、Azure クラシック ポータルでクラウド サービスの **[ダッシュボード]** に移動し、右側の **[サイトの URL]** を検索します。 既定のセキュリティ設定では HTTP エンドポイントは無効であるため、**http://** を **https://** に置き換えます。 この URL のページをブラウザーに読み込みます。
 
 ### <a name="test-with-powershell-scripts"></a>PowerShell スクリプトでのテスト
 付属の PowerShell スクリプト サンプルを実行して、デプロイメントと環境をテストできます。

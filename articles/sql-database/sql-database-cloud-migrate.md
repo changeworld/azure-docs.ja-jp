@@ -1,6 +1,6 @@
 ---
 title: "SQL Server データベースの Azure SQL Database への移行 | Microsoft Docs"
-description: "SQL Server データベースをクラウド内の Azure SQL Database に移行する方法について説明します。 データベース移行ツールを使用すると、データベースの移行前に互換性をテストできます。"
+description: "SQL Server データベースをクラウド内の Azure SQL Database に移行する方法について説明します。"
 keywords: "データベースの移行, SQL Server データベースの移行, データベース移行ツール, データベースを移行する, SQL データベースを移行する"
 services: sql-database
 documentationcenter: 
@@ -9,18 +9,18 @@ manager: jhubbard
 editor: 
 ms.assetid: 9cf09000-87fc-4589-8543-a89175151bc2
 ms.service: sql-database
-ms.custom: load & move data
+ms.custom: migrate
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: sqldb-migrate
 ms.date: 02/08/2017
 ms.author: carlrab
-ms.openlocfilehash: 90c78007368c2679e1c5afdb9369869adde77f0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6147c5d24214933566e0a909ac99c817350578c7
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="sql-server-database-migration-to-sql-database-in-the-cloud"></a>SQL Server データベースのクラウド内の SQL Database への移行
 この記事では、SQL Server 2005 以降のデータベースを Azure SQL Database に移行するための 2 つの主な方法について説明します。 1 つ目の方法の方が簡単ですが、移行中にダウンタイムが必要です。これは長時間にわたる可能性があります。 2 つ目の方法はより複雑ですが、移行中のダウンタイムは大幅に解消されます。
@@ -43,15 +43,15 @@ ms.lasthandoff: 10/11/2017
 2. 必要な修正を Transact-SQL スクリプトとして準備します。
 3. トランザクション上の一貫性が維持された、移行されるソース データベースのコピーを作成し、ソース データベースにそれ以上変更が行われないようにします (または、移行が完了した後に、このような変更を手動で適用することもできます)。 クライアント接続を無効にしたり、 [データベース スナップショット](https://msdn.microsoft.com/library/ms175876.aspx)を作成したりするなど、データベースはさまざまな方法で停止できます。
 4. Transact-SQL スクリプトをデプロイして、データベースのコピーに修正を適用します。
-5. データベースのコピーをローカル ドライブの .BACPAC ファイルに[エクスポート](sql-database-export.md)します。
-6. 任意の BACPAC インポート ツールを使用して、.BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
+5. データベースのコピーをローカル ドライブの BACPAC ファイルに[エクスポート](sql-database-export.md)します。
+6. 任意の BACPAC インポート ツールを使用して、BACPAC ファイルを新しい Azure SQL データベースとして[インポート](sql-database-import.md)します。最適なパフォーマンスを得るには、SQLPackage.exe の使用をお勧めします。
 
 ### <a name="optimizing-data-transfer-performance-during-migration"></a>移行中のデータ転送パフォーマンスの最適化 
 
 次の一覧は、インポート処理中に最適なパフォーマンスを得るための推奨事項です。
 
 * 転送のパフォーマンスが最大限に高めるために、予算が許す限り最も高いサービス レベルとパフォーマンス レベルを選択する。 移行の完了後にスケールダウンすることでコストを削減できます。 
-* .BACPAC ファイルと移行先のデータ センターの間の距離を最短にする。
+* BACPAC ファイルと移行先のデータ センターの間の距離を最短にする。
 * 移行中の自動統計を無効にする。
 * テーブルとインデックスをパーティション分割する。
 * インデックス付きビューを削除し、完了したら作成し直す。

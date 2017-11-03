@@ -8,11 +8,11 @@ ms.author: cbrooks
 ms.date: 08/25/2017
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: c760cf5a9bdd4b64a60470fa48cb9b57ec4ab5fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f7a43d0a7255b326cd550fbcbb92bba93905d293
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="reacting-to-blob-storage-events-preview"></a>Blob Storage のイベントへの対応
 
@@ -20,21 +20,9 @@ Azure Blob Storage のイベントをアプリケーションで使うと、最�
 
 Blob Storage イベントの一般的なシナリオとしては、画像やビデオの処理、検索インデックスの作成、ファイル指向のワークフローなどがあります。  非同期のファイル アップロードは、イベントに最適です。  変更の頻度が低くても、即時の応答性が必要なシナリオでは、イベント ベースのアーキテクチャは特に効果的です。
 
+Event Grid は現在プレビュー段階であり、***米国中西部***または***米国西部 2*** の場所にあるアカウントで使用可能です。  簡単な例については、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](storage-blob-event-quickstart.md)」をご覧ください。
+
 ![Event Grid モデル](./media/storage-blob-event-overview/event-grid-functional-model.png)
-
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
-
-## <a name="join-the-preview"></a>プレビューに参加する
-Blob Storage イベントはプレビューできます。  ユーザーは、サブスクリプションに対して次のコマンドを発行することで、プレビューへの参加を要求できます。
-```azurecli-interactive
-az provider register --namespace  Microsoft.EventGrid
-az feature register --name storageEventSubscriptions --namespace Microsoft.EventGrid
-```
-使用可能な容量がある場合は、サブスクリプションがプレビュー プログラムに追加されます。  要求の状態は、次のコマンドを発行することで監視できます。
-```azurecli-interactive
-az feature show --name storageEventSubscriptions --namespace Microsoft.EventGrid
-```
-登録の状態が "Registered" に変化すると、プレビュー プログラムへの参加が許可され、"***米国中西部***" または "***米国西部 2***" の場所でのアカウントに対する Blob Storage イベントにサブスクライブできます。  簡単な例については、「[Blob Storage のイベントをカスタム Web エンドポイントにルーティングする](storage-blob-event-quickstart.md)」をご覧ください。
 
 ## <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
 Blob Storage イベントは、[Blob Storage アカウント](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-storage-accounts) で使用できます (汎用ストレージ アカウントでは使用できません)。  BLOB ストレージ アカウントとは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 Blob Storage アカウントは、汎用ストレージ アカウントと同様に、現在使われているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。

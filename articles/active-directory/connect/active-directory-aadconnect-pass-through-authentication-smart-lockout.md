@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7e05c469260a445578c80cdf77fab2d5ffb48022
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 771741fd7da8c9b6932851851aaca148f9596643
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-smart-lockout"></a>Azure Active Directory パススルー認証: スマート ロックアウト
 
@@ -42,6 +42,9 @@ Azure AD は、ブルート フォース パスワード攻撃から保護し、
 
 1.  Azure AD のロックアウトしきい値が、AD のアカウント ロックアウトしきい値より "_小さく_" なるようにします。 AD のアカウント ロックアウトしきい値が Azure AD のロックアウトしきい値の少なくとも 2 ～ 3 倍になるように、値を設定することをお勧めします。
 2.  Azure AD のロックアウト期間 (秒単位) が、AD のロックアウト カウンターのリセット (分単位) より "_長く_" なるようにします。
+
+>[!IMPORTANT]
+>現時点では、ユーザーのクラウド アカウントがスマート ロックアウト機能によってロックされている場合、管理者はロックを解除できません。 ロックアウト期間が期限切れになるまで待つ必要があります。
 
 ## <a name="verify-your-ad-account-lockout-policies"></a>AD アカウント ロックアウト ポリシーを確認する
 

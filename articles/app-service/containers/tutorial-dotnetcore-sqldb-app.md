@@ -1,6 +1,6 @@
 ---
-title: "Azure Web App for Containers での .NET Core および SQL Database Web アプリの作成 | Microsoft Docs"
-description: "Azure Web App for Containers で動作し、SQL Database に接続する .NET Core アプリを取得する方法を説明します。"
+title: "Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成 | Microsoft Docs"
+description: "SQL Database に接続された .NET Core アプリを Azure App Service on Linux で動作させる方法について説明します。"
 services: app-service\web
 documentationcenter: nodejs
 author: cephalin
@@ -12,20 +12,20 @@ ms.workload: web
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: tutorial
-ms.date: 08/31/2017
+ms.date: 10/10/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 365747f9f9c765e8db1ab86946ba578c321ec732
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef68f64437935f08f76c29ecf15d574279cca7f1
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="build-a-net-core-and-sql-database-web-app-in-azure-web-app-for-containers"></a>Azure Web App for Containers での .NET Core および SQL Database Web アプリの作成
+# <a name="build-a-net-core-and-sql-database-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成
 
-[Web App for Containers](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core Web アプリを作成し、SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが Web App for Containers で実行されます。 
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、.NET Core Web アプリを作成し、SQL Database に接続する方法について説明します。 完了すると、.NET Core MVC アプリが App Service on Linux で実行されます。
 
-![Web App for Containers で実行されているアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
+![App Service on Linux で実行されるアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
 学習内容は次のとおりです。
 
@@ -52,7 +52,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。  
+ターミナル ウィンドウから、`cd` コマンドで作業ディレクトリに移動します。
 
 次のコマンドを実行してサンプル リポジトリを複製し、ルートに移動します。
 
@@ -61,7 +61,7 @@ git clone https://github.com/azure-samples/dotnetcore-sqldb-tutorial
 cd dotnetcore-sqldb-tutorial
 ```
 
-サンプル プロジェクトには、[Entity Framework Core](https://docs.microsoft.com/en-us/ef/core/) を使用した基本的な CRUD (作成、読み取り、更新、削除) アプリが含まれています。
+サンプル プロジェクトには、[Entity Framework Core](https://docs.microsoft.com/ef/core/) を使用した基本的な CRUD (作成、読み取り、更新、削除) アプリが含まれています。
 
 ### <a name="run-the-application"></a>アプリケーションの実行
 
@@ -77,7 +77,7 @@ dotnet run
 
 ![SQL Database に正常に接続](./media/tutorial-dotnetcore-sqldb-app/local-app-in-browser.png)
 
-任意のタイミングで .NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。 
+任意のタイミングで .NET Core を停止するには、ターミナルで `Ctrl+C` キーを押します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
@@ -85,11 +85,11 @@ dotnet run
 
 この手順では、Azure に SQL Database を作成します。 アプリを Azure にデプロイすると、このクラウド データベースがアプリで使用されます。
 
-SQL Database については、このチュートリアルでは [Azure SQL Database](/azure/sql-database/) を使用します。 
+SQL Database については、このチュートリアルでは [Azure SQL Database](/azure/sql-database/) を使用します。
 
 ### <a name="create-a-resource-group"></a>リソース グループの作成
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group-no-h.md)]
 
 ### <a name="create-a-sql-database-logical-server"></a>SQL Database 論理サーバーを作成する
 
@@ -132,7 +132,7 @@ az sql server firewall-rule create --resource-group myResourceGroup --server <se
 
 ### <a name="create-a-database"></a>データベースの作成
 
-[az sql db create](/cli/azure/sql/db#create) コマンドで [S0 パフォーマンス レベル](../../sql-database/sql-database-service-tiers.md)のデータベースをサーバーに作成します。 
+[az sql db create](/cli/azure/sql/db#create) コマンドで [S0 パフォーマンス レベル](../../sql-database/sql-database-service-tiers.md)のデータベースをサーバーに作成します。
 
 ```azurecli-interactive
 az sql db create --resource-group myResourceGroup --server <server_name> --name coreDB --service-objective S0
@@ -150,19 +150,19 @@ Server=tcp:<server_name>.database.windows.net,1433;Initial Catalog=coreDB;Persis
 
 ## <a name="deploy-app-to-azure"></a>アプリを Azure にデプロイする
 
-この手順では、SQL Database に接続された .NET Core アプリケーションを Web App for Containers にデプロイします。
+この手順では、SQL Database に接続された .NET Core アプリケーションを App Service on Linux にデプロイします。
 
-### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成 
+### <a name="configure-local-git-deployment"></a>ローカル Git デプロイの構成
 
 [!INCLUDE [Configure a deployment user](../../../includes/configure-deployment-user-no-h.md)]
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)] 
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-dotnetcore-no-h.md)] 
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)] 
 
 ### <a name="configure-an-environment-variable"></a>環境変数の構成
 
@@ -172,7 +172,7 @@ Azure アプリの接続文字列を設定するには、Cloud Shell で [az web
 az webapp config connection-string set --resource-group myResourceGroup --name <app name> --settings MyDbConnection='<connection_string>' --connection-string-type SQLServer
 ```
 
-次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。 
+次に、`ASPNETCORE_ENVIRONMENT` アプリ設定を "_Production_" に設定します。 ローカル開発環境では SQLLite を使用し、Azure 環境では SQL Database を使用するため、Azure で実行しているかどうかをこの設定で把握できます。
 
 次の例では、Azure Web アプリの `ASPNETCORE_ENVIRONMENT` アプリ設定を構成します。 "*\<appname>*" プレースホルダーを置換します。
 
@@ -204,9 +204,9 @@ else
 services.BuildServiceProvider().GetService<DotNetCoreSqlDbContext>().Database.Migrate();
 ```
 
-このコードは、運用環境 (Azure 環境を示します) で実行されていることを検出すると、SQL Database に接続するように構成した接続文字列を使用します。 
+このコードは、運用環境 (Azure 環境を示します) で実行されていることを検出すると、SQL Database に接続するように構成した接続文字列を使用します。
 
-`Database.Migration()` 呼び出しは、移行の構成に基づいて .NET Core アプリが必要とするデータベースを自動的に作成するため、Azure で実行するときに役立ちます。 
+`Database.Migrate()` 呼び出しは、移行の構成に基づいて .NET Core アプリが必要とするデータベースを自動的に作成するため、Azure で実行するときに役立ちます。 
 
 変更を保存します。
 
@@ -238,21 +238,21 @@ remote: Deployment successful.
 remote: App container will begin restart within 10 seconds.
 To https://<app_name>.scm.azurewebsites.net/<app_name>.git
  * [new branch]      master -> master
-``` 
+```
 
-### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する 
+### <a name="browse-to-the-azure-web-app"></a>Azure Web アプリを参照する
 
-Web ブラウザーを使用して、デプロイされた Web アプリを参照します。 
+Web ブラウザーを使用して、デプロイされた Web アプリを参照します。
 
-```bash 
-http://<app_name>.azurewebsites.net 
-``` 
+```bash
+http://<app_name>.azurewebsites.net
+```
 
 いくつかの To Do アイテムを追加します。
 
-![Web App for Containers で実行されているアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
+![App Service on Linux で実行されるアプリ](./media/tutorial-dotnetcore-sqldb-app/azure-app-in-browser.png)
 
-**お疲れさまでした。** Web App for Containers でデータ主導型の .NET Core アプリが実行されています。
+**お疲れさまでした。** App Service on Linux でデータ主導型の .NET Core アプリが実行されています。
 
 ## <a name="update-locally-and-redeploy"></a>ローカルで更新して再デプロイする
 
@@ -268,7 +268,7 @@ public bool Done { get; set; }
 
 ### <a name="run-code-first-migrations-locally"></a>Code First Migrations をローカルで実行する
 
-いくつかのコマンドを実行して、ローカル データベースを更新します。 
+いくつかのコマンドを実行して、ローカル データベースを更新します。
 
 ```bash
 dotnet ef migrations add AddProperty
@@ -324,13 +324,13 @@ _Views\Todos\Index.cshtml_ を開きます。
 </td>
 ```
 
-これだけで、`Index` ビューと `Create` ビューの変更を確認できます。 
+これだけで、`Index` ビューと `Create` ビューの変更を確認できます。
 
 ### <a name="test-your-changes-locally"></a>変更をローカルでテストする
 
 アプリをローカルで実行します。
 
-```
+```bash
 dotnet run
 ```
 
@@ -379,5 +379,5 @@ git push azure master
 
 次のチュートリアルに進み、カスタム DNS 名を Web アプリにマップする方法を学習してください。
 
-> [!div class="nextstepaction"] 
+> [!div class="nextstepaction"]
 > [既存のカスタム DNS 名を Azure Web Apps にマップする](../app-service-web-tutorial-custom-domain.md)

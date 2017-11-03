@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 756565b3da6e0a818d1ee3d5e17f942d96be14f0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 31f5a11cda1827a0a50fd2be0b7260daedf26e24
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>Microsoft Azure Service Bus における AMQP 1.0: 要求/応答ベースの操作
 
 このトピックでは、Microsoft Azure Service Bus の要求/応答ベースの操作の一覧を示します。 この情報は、AMQP Management Version 1.0 ワーキング ドラフトに基づいています。  
   
-OASIS AMQP 技術仕様に基づいて Service Bus が実装および構築される方法について説明している、詳細な回線レベルの AMQP 1.0 プロトコル ガイドについては、「[Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド](service-bus-amqp-protocol-guide.md)」を参照してください。  
+OASIS AMQP 技術仕様に基づいて Service Bus が実装および構築される方法について説明している、詳細な回線レベルの AMQP 1.0 プロトコル ガイドについては、「[Azure Service Bus と Event Hubs における AMQP 1.0 プロトコル ガイド][AMQP 1.0 プロトコル ガイド]」を参照してください。  
   
 ## <a name="concepts"></a>概念  
   
@@ -618,9 +618,9 @@ sql-filter マップには、次のエントリが含まれている必要があ
 AMQP と Service Bus の詳細については、次のリンクを参照してください。
 
 * [Service Bus AMQP の概要]
-* [パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]
+* [AMQP 1.0 プロトコル ガイド]
 * [Windows Server 用 Service Bus の AMQP]
 
 [Service Bus AMQP の概要]: service-bus-amqp-overview.md
-[パーティション分割された Service Bus のキューとトピックにおける AMQP 1.0 のサポート]: service-bus-partitioned-queues-and-topics-amqp-overview.md
+[AMQP 1.0 プロトコル ガイド]: service-bus-amqp-protocol-guide.md
 [Windows Server 用 Service Bus の AMQP]: https://msdn.microsoft.com/library/dn574799.asp

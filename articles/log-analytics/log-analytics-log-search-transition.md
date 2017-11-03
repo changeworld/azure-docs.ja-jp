@@ -11,20 +11,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/23/2017
+ms.date: 10/06/2017
 ms.author: bwren
-ms.openlocfilehash: 50713d69f6dce6b7b154b6b4a6df3f679eb7b7c7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38cb11befe844178572981abb29fe5439286dbc1
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="transitioning-to-azure-log-analytics-new-query-language"></a>Azure Log Analytics の新しいクエリ言語への移行
-
-> [!NOTE]
-> Log Analytics の新しいクエリ言語の詳細、およびワークスペースのアップグレード手順については、「[Upgrade your Azure Log Analytics workspace to new log search (新しいログ検索への Azure Log Analytics ワークスペースのアップグレード)](log-analytics-log-search-upgrade.md)」を参照してください。
-
-この記事は、従来 Log Analytics に使用されてきたクエリ言語の使用経験がある方を対象に、新しいクエリ言語への移行を支援する内容となっています。
+最近、Log Analytics は新しいクエリ言語を実装しました。  この記事は、従来のクエリ言語を使い慣れていて、ある程度のサポートが必要な方を対象に、Log Analytics のこの言語への移行を支援する内容となっています。
 
 ## <a name="language-converter"></a>言語コンバーター
 

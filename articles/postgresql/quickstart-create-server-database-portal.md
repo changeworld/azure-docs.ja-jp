@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: mvc
 ms.topic: quickstart
 ms.date: 08/10/2017
-ms.openlocfilehash: f806a8c1f06a58d0c8440d54c91ecfa41988d8ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3a76e816f9b1fa484789f548899d7e8e7043febb
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="create-an-azure-database-for-postgresql-server-in-the-azure-portal"></a>Azure Portal で Azure Database for PostgreSQL サーバーを作成する
 
@@ -195,7 +195,7 @@ GUI ツール pgAdmin を使用して Azure PostgreSQL サーバーに接続す�
     役割 | 空白 | この時点でロール名を指定する必要はありません。 このフィールドは空白にしてください。
     SSL モード | 必須 | 既定では、すべての Azure PostgreSQL サーバーは SSL 適用がオンの状態で作成されます。 SSL 適用をオフにする方法については、[SSL の適用](./concepts-ssl-connection-security.md)に関する記事をご覧ください。
     
-5. [ **保存**] を選択します。
+5. **[ 保存]** を選択します。
 
 6. 左側の **[ブラウザー]** ウィンドウで **[サーバー]** ノードを展開します。 **Azure PostgreSQL Server** など、ご利用のサーバーを選択します。 クリックして接続します。
 

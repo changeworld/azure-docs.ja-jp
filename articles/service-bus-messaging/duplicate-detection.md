@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: sethm
-ms.openlocfilehash: 470246469297d5fa95eba2b147d5304e74c0003f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91a6e62a03ffe39e456129ea78821250b65091e4
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="duplicate-detection"></a>重複検出
 
@@ -43,7 +43,7 @@ ID のアプリケーションによる制御は、傷害が発生した場合�
 
 プログラム上では、フル フレームワーク .NET API の [QueueDescription.requiresDuplicateDetection](/dotnet/api/microsoft.servicebus.messaging.queuedescription.requiresduplicatedetection#Microsoft_ServiceBus_Messaging_QueueDescription_RequiresDuplicateDetection) プロパティにフラグを設定します。 Azure Resource Manager API では、値は [queueProperties.requiresDuplicateDetection](/azure/templates/microsoft.servicebus/namespaces/queues#property-values) プロパティで設定されます。
 
-重複検出時間の履歴は、既定では、キューおよびトピックで 30 秒に設定され、最大値は 40 分に設定されています。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
+重複検出時間の履歴は、既定では、キューおよびトピックで 30 秒に設定され、最大値は 7 日間に設定されています。 この設定は、Azure ポータルの [キューおよびトピックのプロパティ] ウィンドウで変更することができます。
 
 ![][2]
 

@@ -11,15 +11,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/23/2017
+ms.date: 10/11/2017
 ms.author: kgremban
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 58034ab8830cf655199875b448948ea14dc04a70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f6e6bb39164f9b3dea206ebcf850ee98e2506dcf
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>アプリケーション プロキシと PingAccess を使用したシングル サインオン用のヘッダーベースの認証
 
@@ -108,6 +108,9 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 
   ![アクセス許可を選択](./media/application-proxy-ping-access/select-permissions.png)
 
+17. アクセス許可を付与してから、アクセス許可画面を閉じてください。 
+![アクセス許可を付与する](media/application-proxy-ping-access/grantperms.png)
+
 ### <a name="collect-information-for-the-pingaccess-steps"></a>PingAccess の手順で使う情報の収集
 
 1. アプリの設定ブレードで **[プロパティ]** を選択します。 
@@ -132,7 +135,7 @@ Azure ポータルで実行する必要がある操作は 2 つあります。 �
 
 ### <a name="optional---update-graphapi-to-send-custom-fields"></a>省略可能 - GraphAPI を更新してカスタム フィールドを送信する
 
-Azure AD が認証のために送信するセキュリティ トークンの一覧については、「[Azure AD のトークン リファレンス](./develop/active-directory-token-and-claims.md)」を参照してください。 他のトークンを送信するカスタム要求が必要な場合は、GraphAPI を使用して、アプリのフィールド *acceptMappedClaims* を**True**に設定します。 この構成を行うには、Azure AD Graph Explorer または MS Graph のいずれかを使用できます。 
+Azure AD が認証のために送信するセキュリティ トークンの一覧については、「[Azure AD のトークン リファレンス](./develop/active-directory-token-and-claims.md)」を参照してください。 他のトークンを送信するカスタム要求が必要な場合は、GraphAPI を使用して、アプリのフィールド *acceptMappedClaims* を**True**に設定します。 この構成には、Azure AD Graph Explorer のみを使用できます。 
 
 次の例では、Graph Explorer を使用しています。
 
@@ -143,6 +146,14 @@ PATCH https://graph.windows.net/myorganization/applications/<object_id_GUID_of_y
   "acceptMappedClaims":true
 }
 ```
+
+>[!NOTE]
+>カスタム要求を使用するには、カスタム ポリシーも定義し、アプリケーションに割り当てる必要があります。  このポリシーには、すべての必要なカスタム属性を含めます。
+>
+>ポリシーの定義と割り当てには、PowerShell、Azure AD Graph Explorer、または MS Graph を使用できます。  PowerShell でこの処理を実行するには、必要に応じてまず `New-AzureADPolicy ` を使用してから、`Set-AzureADServicePrincipalPolicy` でアプリケーションに割り当てます。  詳細については、[Azure AD ポリシーのドキュメント](active-directory-claims-mapping.md#claims-mapping-policy-assignment)を参照してください。
+
+### <a name="optional---use-a-custom-claim"></a>省略可能 - カスタム要求を使用する
+アプリケーションからカスタム要求を使用し、追加のフィールドを含めるには、[カスタム要求のマップ ポリシーも作成し、そのポリシーをアプリケーションに割り当てる](active-directory-claims-mapping.md#claims-mapping-policy-assignment)必要があります。
 
 ## <a name="download-pingaccess-and-configure-your-app"></a>PingAccess をダウンロードしてアプリを構成する
 

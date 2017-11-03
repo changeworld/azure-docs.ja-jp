@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
+ms.date: 09/23/2017
 ms.author: maheshu
-ms.openlocfilehash: e274e0806e99cce484f6ff03803c03bf0034dcd6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5f9236c5cf660be00db6e09d61df617b64d978e9
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="networking-considerations-for-azure-ad-domain-services"></a>Azure AD Domain Services のネットワークに関する考慮事項
 ## <a name="how-to-select-an-azure-virtual-network"></a>Azure 仮想ネットワークを選択する方法
@@ -26,7 +26,7 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="type-of-azure-virtual-network"></a>Azure 仮想ネットワークの種類
 * **Resource Manager の仮想ネットワーク**: Azure AD Domain Services は、Azure Resource Manager を使って作成された仮想ネットワーク上で有効にできます。
-* クラシック Azure 仮想ネットワークで Azure AD Domain Services を有効にすることができます。 ただし、クラシック仮想ネットワークのサポートは間もなく廃止される予定です。 新しく作成される管理対象ドメインには、Resource Manager の仮想ネットワークを使用されることをお勧めします。
+* 従来の Azure 仮想ネットワークで Azure AD Domain Services を有効にすることはできません。
 * Azure AD Domain Services が有効になっている仮想ネットワークに他の仮想ネットワークを接続することはできません。 詳細については、「[ネットワーク接続](active-directory-ds-networking.md#network-connectivity)」を参照してください。
 * **リージョン仮想ネットワーク**: 既存の仮想ネットワークを使用する予定がある場合は、リージョン仮想ネットワークであることを確認してください。
 
@@ -53,7 +53,7 @@ ms.lasthandoff: 10/11/2017
 
 ![Recommended subnet design](./media/active-directory-domain-services-design-guide/vnet-subnet-design.png)
 
-### <a name="best-practices-for-choosing-a-subnet"></a>サブネットの選択に関するベスト プラクティス
+### <a name="guidelines-for-choosing-a-subnet"></a>サブネットの選択に関するガイドライン
 * Azure AD Domain Services は、Azure 仮想ネットワーク内の**別の専用サブネット**にデプロイします。
 * 管理対象ドメインの専用サブネットに NSG を適用しないでください。 この専用サブネットに NSG を適用する必要がある場合は、**ドメインのサービス提供および管理に必要なポートがブロックされていない**ことを確認してください。
 * 管理対象ドメインの専用サブネット内で使用できる IP アドレスの数を過度に制限しないでください。 このような制限により、サービスが管理対象ドメインに対して 2 つのドメイン コントローラーを利用できなくなります。
@@ -76,7 +76,7 @@ Azure AD Domain Services による管理対象ドメインのサービス提供�
 
 ポート 5986 は、PowerShell のリモート処理を使用して管理対象ドメインの管理タスクを実行するために使用されます。 管理対象ドメインのドメイン コントローラーは、通常はこのポートをリッスンしません。 サービスは、管理操作またはメンテナンス操作を管理対象ドメインに対して実行する必要がある場合にのみ、管理されたドメイン コントローラー上のこのポートを開きます。 操作が完了すると、サービスはすぐに管理対象ドメイン コントローラー上のこのポートを停止します。
 
-ポート 3389 は、管理対象ドメインへのリモート デスクトップ接続に使用されます。 このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 サービスはトラブルシューティングの目的で管理対象ドメインに接続する必要がある場合にのみこのポートを有効にします。このポートは、通常サービスの開始要求に応答して開始されます。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
+ポート 3389 は、管理対象ドメインへのリモート デスクトップ接続に使用されます。 このポートも、管理対象ドメイン上でほとんど無効な状態を保持します。 サービスはトラブルシューティングの目的で管理対象ドメインに接続する必要がある場合にのみ、このポートを有効にします。このポートは、通常サービスの開始要求に応答して開始されます。 管理タスクと監視タスクは PowerShell のリモート処理を使用して実行されるため、この仕組みは継続的には使用されません。 このポートは、高度なトラブルシューティングのために管理対象ドメインへのリモート接続が必要になるような頻度の低いイベントでのみ使用されます。 トラブルシューティングの操作が完了すると、ポートはただちに閉じられます。
 
 
 ### <a name="sample-nsg-for-virtual-networks-with-azure-ad-domain-services"></a>Azure AD Domain Services を使用する仮想ネットワークのサンプル NSG

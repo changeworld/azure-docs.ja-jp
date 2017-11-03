@@ -1,6 +1,6 @@
 ---
 title: "Elastic Database ジョブの概要 | Microsoft Docs"
-description: "エラスティック データベース ジョブの使用方法"
+description: "Elastic Database ジョブを使用して、複数のデータベースにまたがる T-SQL スクリプトを実行します。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -14,16 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: ddove
-ms.openlocfilehash: 05c20e880d4eb1eacdecc0c4c7e7491dfe1e6a89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1b5a77782b64873a753f19863459f9cdfcd70cc
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="getting-started-with-elastic-database-jobs"></a>Elastic Database ジョブの概要
-Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用すると、複数のデータベースに対して T-SQL スクリプトを確実に実行できます。また、スクリプトは自動的に再試行されるので、最終的な完了が保証されます。 Elastic Database ジョブ機能の詳細については、[機能の概要に関するページ](sql-database-elastic-jobs-overview.md)をご覧ください。
+Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用すると、複数のデータベースに対して T-SQL スクリプトを確実に実行できます。また、スクリプトは自動的に再試行されるので、最終的な完了が保証されます。 Elastic Database ジョブ機能の詳細については、[Elastic ジョブ](sql-database-elastic-jobs-overview.md)に関するページをご覧ください。
 
-このトピックは、「 [Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」に示したサンプルを拡張したものです。 このトピックを読むと、関連するデータベースのグループを管理するジョブを作成し、管理する方法を理解できます。 エラスティック ジョブの利点は、Elastic Scale ツールを使用しなくても利用できます。
+この記事は、「[Elastic Database ツールの概要](sql-database-elastic-scale-get-started.md)」に示したサンプルを拡張したものです。 この記事を完了すると、関連するデータベースのグループを管理するジョブを作成し、管理する方法を理解できます。 エラスティック ジョブの利点は、Elastic Scale ツールを使用しなくても利用できます。
 
 ## <a name="prerequisites"></a>前提条件
 [「エラスティック データベース ツールの概要」に示されているサンプル](sql-database-elastic-scale-get-started.md)をダウンロードして実行します。
@@ -36,7 +36,7 @@ Azure SQL Database の Elastic Database ジョブ (プレビュー) を使用す
    ![コマンド プロンプト](./media/sql-database-elastic-query-getting-started/cmd-prompt.png)
 
 2. コマンド ウィンドウで、「1」を入力し、**Enter** キーを押します。 シャード マップ マネージャーが作成され、2 つのシャードがサーバーに追加されます。 「3」を入力し、**Enter** キーを押します。この操作を 4 回を繰り返します。 これにより、サンプルのデータ行がシャードに挿入されます。
-3. [Azure Portal](https://portal.azure.com) に、次の 3 つの新しいデータベースが表示されます。
+3. [Azure ポータル](https://portal.azure.com)に、次の 3 つの新しいデータベースが表示されます。
 
    ![Visual Studio の確認](./media/sql-database-elastic-query-getting-started/portal.png)
 
@@ -299,7 +299,7 @@ Elastic Database ジョブは、ジョブの開始時に適用できるカスタ
 ## <a name="cancel-a-job"></a>ジョブを取り消す
 Elastic Database ジョブは、ジョブ取り消し要求をサポートしています。  Elastic Database ジョブで、現在実行されているジョブの取り消し要求が検出されると、ジョブの停止が試行されます。
 
-Elastic Database ジョブには、2 種類の取り消し方法があります。
+エラスティック データベース ジョブには、2 種類の取り消し方法があります。
 
 1. 現在実行中のタスクを取り消す: タスクの実行中に取り消しが検出されると、現在実行中のタスクの範囲内で取り消しが試行されます。  たとえば、取り消しを試行したときに、実行時間が長いクエリが実行中の場合、クエリの取り消しが試行されます。
 2. タスクの再試行を取り消す: タスクの実行が開始される前に、コントロール スレッドによって取り消しが検出されると、タスクの開始が回避され、要求は取り消し済みと宣言されます。
@@ -314,7 +314,7 @@ Elastic Database ジョブには、2 種類の取り消し方法があります�
    ```
 
 ## <a name="delete-a-job-by-name-and-the-jobs-history"></a>ジョブの名前と履歴を使用してジョブを削除する
-Elastic Database ジョブは、ジョブの非同期削除をサポートしています。 ジョブを削除対象としてマークすることができます。マークされたジョブのすべてのジョブ実行が完了すると、ジョブとそのジョブ履歴は削除されます。 アクティブなジョブ実行は自動的に取り消されません。  
+エラスティック データベース ジョブは、ジョブの非同期削除をサポートしています。 ジョブを削除対象としてマークすることができます。マークされたジョブのすべてのジョブ実行が完了すると、ジョブとそのジョブ履歴は削除されます。 アクティブなジョブ実行は自動的に取り消されません。  
 
 アクティブなジョブ実行を取り消すには、Stop-AzureSqlJobExecution を呼び出す必要があります。
 

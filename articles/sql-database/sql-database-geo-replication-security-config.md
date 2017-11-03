@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database セキュリティを障害復旧用に構成する | Microsoft Docs"
-description: "このトピックでは、データ センターの停電やその他の障害が発生した際に、データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します"
+description: "データベースの復元やセカンダリ サーバーへのフェールオーバーを行った後の、セキュリティ構成やセキュリティ管理に関する考慮事項について説明します。"
 services: sql-database
 documentationcenter: na
 author: anosov1960
@@ -15,20 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: data-management
 ms.date: 10/13/2016
 ms.author: sashan
-ms.openlocfilehash: 48b35f761273c68b03af1fc5e977bb99455a01e0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5522bb8770212cc226cb794dacaccee07cb4e91b
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="configure-and-manage-azure-sql-database-security-for-geo-restore-or-failover"></a>Azure SQL Database のセキュリティを geo リストアやフェールオーバー用に構成し、管理する 
+
+このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。 また、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)の使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。 復旧オプションの詳細については、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 
 > [!NOTE]
 > すべてのサービス レベルのすべてのデータベースで[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を使用できるようになりました。
 >  
-
-## <a name="overview-of-authentication-requirements-for-disaster-recovery"></a>障害復旧の認証要件の概要
-このトピックでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)を構成し、制御するための認証要件と、セカンダリ データベースへのユーザー アクセスを設定するために必要な手順について説明します。 また、[geo リストア](sql-database-recovery-using-backups.md#geo-restore)の使用後に復旧されたデータベースへのアクセスを有効にする方法についても説明します。 復旧オプションの詳細については、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
 
 ## <a name="disaster-recovery-with-contained-users"></a>包含ユーザーによる障害復旧
 従来のユーザーは master データベース内のログインにマップする必要がありましたが、包含ユーザーは、データベース自体で完全に管理されます。 これには 2 つ利点があります。 障害復旧のシナリオでは、データベースがユーザーを管理するため、ユーザーは追加の構成なしで、新しいプライマリ データベースまたは geo リストアを使用して復旧されたデータベースに引き続き接続できます。 また、ログインの観点からは、この構成を使用することで、スケーラビリティとパフォーマンスを向上できる可能性があります。 詳細については、「 [包含データベース ユーザー - データベースの可搬性を確保する](https://msdn.microsoft.com/library/ff929188.aspx)」を参照してください。 

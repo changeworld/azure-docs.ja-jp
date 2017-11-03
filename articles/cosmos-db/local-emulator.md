@@ -13,13 +13,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/22/2017
+ms.date: 10/18/2017
 ms.author: arramac
-ms.openlocfilehash: 1e23fa988952f2515d82d4d043c390c263959ccc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6124a8fa630424558c0812edbf12d5ad25d6bf6
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="use-the-azure-cosmos-db-emulator-for-local-development-and-testing"></a>ローカルの開発とテストでの Azure Cosmos DB Emulator の使用
 
@@ -44,12 +44,13 @@ Azure Cosmos DB Emulator では、Azure Cosmos DB サービスを開発目的で
 
 > [!div class="checklist"]
 > * エミュレーターのインストール
-> * Docker for Windows でのエミュレーターの実行
 > * 要求の認証
 > * エミュレーターでのデータ エクスプローラーの使用
 > * SSL 証明書のエクスポート
 > * コマンド ラインからのエミュレーターの呼び出し
+> * Docker for Windows でのエミュレーターの実行
 > * トレース ファイルの収集
+> * トラブルシューティング
 
 最初に、Kirill Gavrylyuk が Azure Cosmos DB Emulator の使用のいろはを解説している次のビデオを視聴することをお勧めします。 このビデオでは、エミュレーターを DocumentDB Emulator と呼んでいますが、ビデオの撮影後にツール自体の名前が Azure Cosmos DB Emulator に変更されました。 ビデオのすべての情報は、Azure Cosmos DB Emulator にそのまま適用されます。 
 
@@ -65,6 +66,16 @@ Microsoft は実際の Azure Cosmos DB サービスを忠実に再現したロ�
 > [!NOTE]
 > 現時点では、エミュレーターのデータ エクスプローラーは、DocumentDB API コレクションと MongoDB コレクションの作成のみをサポートしています。 テーブルとグラフの作成は現在サポートされていません。 
 
+## <a name="differences-between-the-emulator-and-the-service"></a>エミュレーターとサービスの違い 
+Azure Cosmos DB Emulator は環境をエミュレートし、ローカルの開発者ワークステーションで実行するものであり、このエミュレーターとクラウドの Azure Cosmos DB アカウントには機能にいくつかの違いがあります。
+
+* Azure Cosmos DB Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。  Azure Cosmos DB Emulator では、キーを再生成できません。
+* Azure Cosmos DB Emulator は拡張可能なサービスではなく、大量のコレクションをサポートはありません。
+* Azure Cosmos DB Emulator は異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)をシミュレートしません。
+* Azure Cosmos DB Emulator は[複数リージョンのレプリケーション](distribute-data-globally.md)をシミュレートしません。
+* Azure Cosmos DB Emulator は Azure Cosmos DB サービスで利用できたサービス割り当てオーバーライド (ドキュメントのサイズ上限やパーティション分割コレクション ストレージ増加など) をサポートしません。
+* ご利用の Azure Cosmos DB Emulator に Azure Cosmos DB サービスの最近の変更が反映されていない場合があるため、[Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) を利用し、アプリケーションの実稼働スループット (RU) ニーズを正確に見積もってください。
+
 ## <a name="system-requirements"></a>システム要件
 Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件は、次のとおりです。
 
@@ -75,52 +86,12 @@ Azure Cosmos DB Emulator のハードウェア要件とソフトウェア要件�
   * 10 GB のハードディスク空き容量
 
 ## <a name="installation"></a>インストール
-[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)で Azure Cosmos DB Emulator をダウンロードしてインストールできます。 
+[Microsoft ダウンロード センター](https://aka.ms/cosmosdb-emulator)で Azure Cosmos DB Emulator をダウンロードしてインストールできます。または、Docker for Windows でこのエミュレーターを実行できます。 Docker for Windows でエミュレーターを使用する方法については、「[Docker で実行する](#running-on-docer)」を参照してください。 
 
 > [!NOTE]
 > Azure Cosmos DB Emulator をインストール、構成、実行するには、コンピューターの管理特権が必要です。
 
-## <a name="running-on-docker-for-windows"></a>Docker for Windows での実行
-
-Azure Cosmos DB Emulator は、Docker for Windows 上で実行できます。 Emulator は、Docker for Oracle Linux では機能しません。
-
-[Docker for Windows](https://www.docker.com/docker-windows) をインストールして Windows コンテナーに切り替えた後、お気に入りのシェル (cmd.exe、PowerShell など) から次のコマンドを実行することによって、Docker Hub から Emulator イメージをプルできます。
-
-```      
-docker pull microsoft/azure-cosmosdb-emulator 
-```
-イメージを起動するには、次のコマンドを実行します。
-
-``` 
-md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>nul
-docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
-```
-
-応答は次のようになります。
-
-```
-Starting Emulator
-Emulator Endpoint: https://172.20.229.193:8081/
-Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
-Exporting SSL Certificate
-You can import the SSL certificate from an administrator command prompt on the host by running:
-cd /d %LOCALAPPDATA%\CosmosDBEmulatorCert
-powershell .\importcert.ps1
---------------------------------------------------------------------------------------------------
-Starting interactive shell
-``` 
-
-Emulator の起動後に対話型シェルを閉じると、Emulator のコンテナーがシャットダウンします。
-
-クライアントで応答からのエンドポイントとマスター_キーを使用して、SSL 証明書をホストにインポートします。 SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
-
-```
-cd %LOCALAPPDATA%\CosmosDBEmulatorCert
-powershell .\importcert.ps1
-```
-
-
-## <a name="start-the-emulator"></a>エミュレーターの起動
+## <a name="running-on-windows"></a>Windows で実行する
 
 Azure Cosmos DB Emulator を起動するには、[スタート] ボタンをクリックするか、Windows キーを押します。 「**Azure Cosmos DB Emulator**」と入力して、アプリケーションの一覧からエミュレーターを選択します。 
 
@@ -158,7 +129,7 @@ Azure Cosmos DB Emulator が起動すると、ブラウザーで Azure Cosmos DB
 
 さらに、Azure Cosmos DB サービスと同様に、Azure Cosmos DB Emulator では SSL 経由のセキュリティ保護された通信のみサポートされています。
 
-## <a name="running-the-emulator-on-a-local-network"></a>ローカル ネットワークでのエミュレーターの実行
+## <a name="running-on-a-local-network"></a>ローカル ネットワークで実行する
 
 ローカル ネットワークでのエミュレーターを実行できます。 ネットワーク アクセスを有効にするには、[コマンド ライン](#command-line-syntax)で /AllowNetworkAccess オプションを指定します。また、/Key=key_string または /KeyFile=file_name を指定する必要もあります。 /GenKeyFile=file_name を使用すると、ランダム キーでファイルを事前に生成できます。  その後、/KeyFile=file_name または /Key=contents_of_file に渡すことができます。
 
@@ -327,16 +298,6 @@ Python SDK および Node.js SDK からエミュレーターに接続すると�
 </tr>
 </table>
 
-## <a name="differences-between-the-azure-cosmos-db-emulator-and-azure-cosmos-db"></a>Azure Cosmos DB Emulator と Azure Cosmos DB の違い 
-Azure Cosmos DB Emulator は環境をエミュレートし、ローカルの開発者ワークステーションで実行するものであり、このエミュレーターとクラウドの Azure Cosmos DB アカウントには機能にいくつかの違いがあります。
-
-* Azure Cosmos DB Emulator は、1 つの固定アカウントと既知のマスター キーのみに対応しています。  Azure Cosmos DB Emulator では、キーを再生成できません。
-* Azure Cosmos DB Emulator は拡張可能なサービスではなく、大量のコレクションをサポートはありません。
-* Azure Cosmos DB Emulator は異なる [Azure Cosmos DB 整合性レベル](consistency-levels.md)をシミュレートしません。
-* Azure Cosmos DB Emulator は[複数リージョンのレプリケーション](distribute-data-globally.md)をシミュレートしません。
-* Azure Cosmos DB Emulator は Azure Cosmos DB サービスで利用できたサービス割り当てオーバーライド (ドキュメントのサイズ上限やパーティション分割コレクション ストレージ増加など) をサポートしません。
-* ご利用の Azure Cosmos DB Emulator に Azure Cosmos DB サービスの最近の変更が反映されていない場合があるため、[Azure Cosmos DB Capacity Planner](https://www.documentdb.com/capacityplanner) を利用し、アプリケーションの実稼働スループット (RU) ニーズを正確に見積もってください。
-
 ## <a id="set-partitioncount"></a>コレクションの数を変更する
 
 既定では、Azure Cosmos DB Emulator を利用し、最大 25 個の単一パーティション コレクションまたは 1 つのパーティション分割コレクションを作成できます。 **PartitionCount** の値を変更することにより、最大 250 個の単一パーティション コレクション、10 個のパーティション分割コレクション、または単一パーティションの数が 250 個を超えない範囲でこの 2 つの任意の組み合わせを作成できます (1 個のパーティション分割コレクション = 25 個の単一パーティション コレクション)。
@@ -356,6 +317,59 @@ Azure Cosmos DB Emulator で利用できるコレクションの数は次のよ�
 3. システム トレイの **[Azure Cosmos DB Emulator]** アイコンを右クリックし、**[終了]** をクリックし、開いているインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 4. 最新版の [Azure Cosmos DB Emulator](https://aka.ms/cosmosdb-emulator) をインストールします。
 5. PartitionCount フラグの値を 250 以下に設定して、エミュレーターを起動します。 (例: `C:\Program Files\Azure CosmosDB Emulator>CosmosDB.Emulator.exe /PartitionCount=100`)。
+
+## <a name="running-on-docker"></a>Docker で実行する
+
+Azure Cosmos DB Emulator は、Docker for Windows 上で実行できます。 Emulator は、Docker for Oracle Linux では機能しません。
+
+[Docker for Windows](https://www.docker.com/docker-windows) をインストールしたら、ツール バーの Docker アイコンを右クリックし、**[Switch to Windows containers]\(Windows コンテナーに切り替える\)** を選択して Windows コンテナーに切り替えます。
+
+次に、普段利用しているシェルから次のコマンドを実行し、Docker Hub からエミュレーター イメージをプルします。
+
+```     
+docker pull microsoft/azure-cosmosdb-emulator 
+```
+イメージを起動するには、次のコマンドを実行します。
+
+コマンドラインから:
+```cmd 
+md %LOCALAPPDATA%\CosmosDBEmulatorCert 2>null
+docker run -v %LOCALAPPDATA%\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+```
+
+PowerShell から:
+```powershell
+md $env:LOCALAPPDATA\CosmosDBEmulatorCert 2>null
+docker run -v $env:LOCALAPPDATA\CosmosDBEmulatorCert:c:\CosmosDBEmulator\CosmosDBEmulatorCert -P -t -i -m 2GB microsoft/azure-cosmosdb-emulator 
+```
+
+応答は次のようになります。
+
+```
+Starting Emulator
+Emulator Endpoint: https://172.20.229.193:8081/
+Master Key: C2y6yDjf5/R+ob0N8A7Cgv30VRDJIWEHLM+4QDU5DE2nQ9nDuVTqobD4b8mGGyPMbIZnqyMsEcaGQy67XIw/Jw==
+Exporting SSL Certificate
+You can import the SSL certificate from an administrator command prompt on the host by running:
+cd /d %LOCALAPPDATA%\CosmosDBEmulatorCert
+powershell .\importcert.ps1
+--------------------------------------------------------------------------------------------------
+Starting interactive shell
+``` 
+
+クライアントで応答からのエンドポイントとマスター キーを使用し、SSL 証明書をホストにインポートします。 SSL 証明書をインポートするには、admin コマンド プロンプトから以下を実行します。
+
+```
+cd %LOCALAPPDATA%\CosmosDBEmulatorCert
+powershell .\importcert.ps1
+```
+
+Emulator の起動後に対話型シェルを閉じると、Emulator のコンテナーがシャットダウンします。
+
+データ エクスプローラーを開くには、ブラウザーで次の URL に移動します。 上記の応答メッセージにエミュレーター エンドポイントが表示されます。
+
+    https://<emulator endpoint provided in response>/_explorer/index.html
+
 
 ## <a name="troubleshooting"></a>トラブルシューティング
 
@@ -386,7 +400,7 @@ Azure Cosmos DB Emulator で遭遇する問題の解決には次のヒントが�
 
 ### <a id="uninstall"></a>ローカル エミュレーターのアンインストール
 
-1. システム トレイの Azure Cosmos DB Emulator アイコンを右クリックし、終了をクリックし、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
+1. システム トレイの Azure Cosmos DB Emulator アイコンを右クリックし、[終了] をクリックし、開いているローカル エミュレーターのインスタンスをすべて終了します。 すべてのインスタンスが終了するまでしばらく時間がかかる場合があります。
 2. Windows 検索ボックスに「**アプリと機能**」と入力し、**アプリと機能 (システム設定)** の検索結果をクリックします。
 3. アプリの一覧で、**Azure Cosmos DB Emulator** までスクロールして選択し、**[アンインストール]** をクリックし、確認して再度、**[アンインストール]** をクリックします。
 4. アプリがアンインストールされたら、C:\Users\<user>\AppData\Local\CosmosDBEmulator に移動し、フォルダーを削除します。 

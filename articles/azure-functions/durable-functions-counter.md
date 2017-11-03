@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: d62bc24a0439aa8c11ced9d5f42917f9b6de1f24
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ec7d51d3f30eb3417a48fbf8d31a9b8359e39ab9
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="stateful-singletons-in-durable-functions---counter-sample"></a>Durable Functions のステートフル シングルトン - カウンター サンプル
 
@@ -67,12 +67,12 @@ Durable Functions は、この種のシナリオの実装をありふれたも�
 > [!NOTE]
 > `ContinueAsNew` メソッドには、永続的オーケストレーション以外のユースケースがあります。 詳細については、[外部オーケストレーション](durable-functions-eternal-orchestrations.md)に関する記事を参照してください。
 
-## <a name="running-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルの実行
 
-サンプルに含まれる HTTP によってトリガーされる関数によって、次の HTTP POST 要求を使用するオーケストレーションを開始できます。 `counterState` をゼロ (`int` の既定値) で開始できるように、この要求には内容がありません。
+次の HTTP POST 要求を送信してオーケストレーションを開始できます。 `counterState` をゼロ (`int` の既定値) で開始できるように、この要求には内容がありません。
 
 ```
-POST http://{host}/orchestrators/E3_Counter HTTP/1.1
+POST http://{host}/orchestrators/E3_Counter
 Content-Length: 0
 ```
 
@@ -82,13 +82,17 @@ Content-Length: 719
 Content-Type: application/json; charset=utf-8
 Location: http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 
-{"id":"bcf6fb5067b046fbb021b52ba7deae5a","statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}","terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
+{
+  "id":"bcf6fb5067b046fbb021b52ba7deae5a",
+  "statusQueryGetUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}",
+  "sendEventPostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/{eventName}?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}",
+  "terminatePostUri":"http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/terminate?reason={text}&taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}"}
 ```
 
 **E3_Counter** インスタンスが起動し、その直後に、`RaiseEventAsync` または 202 応答で参照される **sendEventUrl** HTTP POST webhook を使用して送信されるイベントのために待機します。 有効な `eventName` 値には、*incr*、*decr* および *end* が含まれます。
 
 ```
-POST http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey} HTTP/1.1
+POST http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb5067b046fbb021b52ba7deae5a/raiseEvent/operation?taskHub=DurableFunctionsHub&connection=Storage&code={systemKey}
 Content-Type: application/json
 Content-Length: 6
 
@@ -128,14 +132,9 @@ Location: http://{host}/admin/extensions/DurableTaskExtension/instances/bcf6fb50
 > [!WARNING]
 > この記事の執筆時点では、`ContinueAsNew` の呼び出しと、外部イベントや終了要求などのメッセージの処理が並行して発生した場合に競合状態が発生することがわかっています。 これらの競合状態に関する最新の情報については、[GitHub の問題](https://github.com/Azure/azure-functions-durable-extension/issues/67)を参照してください。
 
-## <a name="wrapping-up"></a>まとめ
-
-ここでは、Durable Functions の高度な機能、特に `WaitForExternalEvent` と `ContinueAsNew` について詳しく説明しました。 これらのツールを使用して、カウンターやアグリゲーターなどの多様な形の "ステートフル シングルトン" を記述できます。
-
 ## <a name="next-steps"></a>次のステップ
+
+このサンプルでは、[ステートフル シングルトン](durable-functions-singletons.md)で[外部イベント](durable-functions-external-events.md)を処理し、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)を実装する方法について説明しました。 次のサンプルでは、外部イベントと[持続的タイマー](durable-functions-timers.md)を使用してユーザーの操作を処理する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [人との対話が含まれるサンプルを実行する](durable-functions-phone-verification.md)
-
-
-

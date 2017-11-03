@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 0eb031893d53f09097b696e18f6c129be061136a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 913805901bf8131e4908be03e9213539a26205ed
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="function-chaining-in-durable-functions---hello-sequence-sample"></a>Durable Functions での関数チェーン - Hello シーケンス サンプル
 
@@ -71,13 +71,16 @@ Azure Portal を開発に使用する場合は、こちらの orchestrator 機�
 
 この関数は [DurableActivityContext](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableActivityContext.html) パラメーターを持ち、orchestrator 関数の [CallActivityAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CallActivityAsync_)> への呼び出しによって渡された入力を取得するのに使用されます。
 
-## <a name="running-the-orchestration"></a>オーケストレーションの実行
+## <a name="run-the-sample"></a>サンプルの実行
 
-`E1_HelloSequence` オーケストレーションを実行するには、次の HTTP 呼び出しを作成します。
+`E1_HelloSequence` オーケストレーションを実行するには、次の HTTP POST 要求を送信します。
 
 ```
-POST http://{app-name}.azurewebsites.net/orchestrators/E1_HelloSequence
+POST http://{host}/orchestrators/E1_HelloSequence
 ```
+
+たとえば、"myfunctionapp" という関数アプリのサンプルを実行する場合、"{host}" を "myfunctionapp.azurewebsites.net" に置き換えます。
+
 結果は次のような HTTP 202 応答です (簡潔にするため省略しています)。
 
 ```
@@ -120,7 +123,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここまでで、Durable Functions の主要なメカニズムについて基本的な知識を得ました。 このサンプルは非常に簡単で、使用可能な機能のいくつかだけを示しました。 後続のサンプルはより "実際の運用" に近いもので、より幅広い機能を示しています。
+このサンプルでは、単純な関数チェーンのオーケストレーションについて説明しました。 次のサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明します。 
 
 > [!div class="nextstepaction"]
 > [ファンアウト/ファンイン サンプルの実行](durable-functions-cloud-backup.md)

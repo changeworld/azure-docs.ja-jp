@@ -14,21 +14,34 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 313daf1c105caa8569ed43e59d9e18f184599214
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b241bad7b0060551eba5e78efbb1b729bf5d0098
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions におけるタスク ハブ (Azure Functions)
 
-[Durable Functions](durable-functions-overview.md) の "*タスク ハブ*" は、1 つの Azure ストレージ アカウントのコンテキスト内でオーケストレーションとアクティビティに使用される論理上のコンテナーです。 同じタスク ハブに複数の関数が存在できるほか、複数の関数アプリが存在することもできます。また、タスク ハブにはアプリケーション コンテナーとしての働きがあります。
+[Durable Functions](durable-functions-overview.md) の*タスク ハブ*は、オーケストレーションに使用される Azure Storage リソースの論理コンテナーです。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
 
-タスク ハブを明示的に作成する必要はありません。 これらは *host.json* ファイルに宣言されている名前で、ランタイムによって自動的に初期化されます。 それぞれのタスク ハブは、1 つのストレージ アカウントに一連のストレージ キュー、テーブル、BLOB を独自に保有します。 特定のタスク ハブで実行されるすべての関数アプリは、同じストレージ リソースを共有します。 オーケストレーター関数とアクティビティ関数は、同じタスク ハブに属しているときに限り、情報をやり取りすることができます。
+各関数アプリには、個別のタスク ハブがあります。 複数の関数アプリでストレージ アカウントを共有している場合、ストレージ アカウントには複数のタスク ハブが含まれます。 次の図は、共有ストレージ アカウントと専用ストレージ アカウントの各関数アプリにタスク ハブが 1 つあることを示しています。
 
-## <a name="configuring-a-task-hub-in-hostjson"></a>host.json でのタスク ハブの構成
+![共有ストレージ アカウントと専用ストレージ アカウントの図](media/durable-functions-task-hubs/task-hubs-storage.png)
 
-タスク ハブの名前は、関数アプリの *host.json* ファイルで構成することができます。
+## <a name="azure-storage-resources"></a>Azure Storage のリソース
+
+タスク ハブは次のストレージ リソースから構成されます。 
+
+* 1 つまたは複数のコントロールキュー。
+* 1 つの作業項目キュー。
+* 1 つの履歴テーブル。
+* Lease Blob を少なくとも 1 つ含んだ 1 つのストレージ コンテナー。
+
+これらすべてのリソースは、オーケストレーター関数またはアクティビティ関数の実行時 (またはスケジュール時) に、既定の Azure ストレージ アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケーリング](durable-functions-perf-and-scale.md)に関する記事で説明しています。
+
+## <a name="task-hub-names"></a>タスク ハブ名
+
+次の例に示すように、タスク ハブは *host.json* ファイルに宣言されている名前で識別されます。
 
 ```json
 {
@@ -38,24 +51,12 @@ ms.lasthandoff: 10/11/2017
 }
 ```
 
-タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また使用できるのはアルファベットと数値だけです。 指定しない場合、関数アプリの既定のタスク ハブ名は **DurableFunctionsHub** です。
+タスク ハブの名前は、先頭文字をアルファベットとする必要があります。また、使用できるのはアルファベットと数値だけです。 指定されていない場合、既定の名前は **DurableFunctionsHub** です。
 
 > [!NOTE]
-> 1 つのストレージ アカウントを共有する複数の関数アプリがある場合は、関数アプリごとに異なるタスク ハブ名を構成するようお勧めします。 そのようにすることで関数アプリが互いに適切に分離されます。
-
-## <a name="azure-storage-resources"></a>Azure Storage のリソース
-
-タスク ハブは、いくつかの Azure Storage リソースから成ります。
-
-* 1 つまたは複数のコントロールキュー。
-* 1 つの作業項目キュー。
-* 1 つの履歴テーブル。
-* Lease Blob を少なくとも 1 つ含んだ 1 つのストレージ コンテナー。
-
-これらすべてのリソースは、オーケストレーター関数またはアクティビティ関数の実行時 (またはスケジュール時) に、既定の Azure ストレージ アカウントに自動的に作成されます。 これらのリソースがどのように使用されるかについては、[パフォーマンスとスケール](durable-functions-perf-and-scale.md)に関する記事で説明しています。
+> この名前は共有ストレージ アカウント内に複数のタスク ハブがある場合に、それぞれのタスク ハブを区別するものです。 共有ストレージ アカウントを共有する関数アプリが複数ある場合、*host.json* ファイルでタスク ハブごとに異なる名前を構成する必要があります。
 
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
 > [バージョン管理の方法](durable-functions-versioning.md)
-

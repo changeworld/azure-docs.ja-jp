@@ -12,14 +12,14 @@ ms.devlang:
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/31/2017
+ms.date: 10/23/2017
 ms.author: larryfr
 ms.custom: hdinsightactive
-ms.openlocfilehash: fd284542e1de65f323f1e3a092689f847e025be6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6e5712026dc2da3627c07e9b411c81fb9a7e1fb
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="install-or-update-mono-on-hdinsight"></a>HDInsight での Mono のインストールまたは更新
 
@@ -55,9 +55,10 @@ __要件__:
 
     https://hdiconfigactions.blob.core.windows.net/install-mono/install-mono.bash
 
+インストールされる Mono のバージョンを指定するには、__Parameters__ フィールドのバージョン番号を使用します。 たとえば、`5.4` と入力して Mono 5.4 をインストールします。
+
 > [!NOTE]
 > このスクリプトを使用して HDInsight を構成する場合は、スクリプトを __Persisted__ としてマークします。 この設定によって、HDInsight では、スケーリング操作を使用して追加されたワーカー ノードにスクリプトを適用できるようになります。
-
 
 ## <a name="next-steps"></a>次のステップ
 
