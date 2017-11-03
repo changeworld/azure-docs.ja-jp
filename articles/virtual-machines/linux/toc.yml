@@ -63,6 +63,27 @@
       href: regions-and-availability.md
     - name: VM の種類とサイズ
       href: sizes.md
+      items:
+        - name: 汎用
+          href: sizes-general.md
+          items:
+            - name: 負荷の急増に対応できる B シリーズ
+              href: b-series-burstable.md
+        - name: コンピューティング最適化
+          href: sizes-compute.md
+        - name: メモリ最適化
+          href: sizes-memory.md
+        - name: ストレージ最適化
+          href: sizes-storage.md
+        - name: GPU 最適化
+          href: sizes-gpu.md
+          items:
+            - name: GPU ドライバーの設定
+              href: n-series-driver-setup.md
+        - name: ハイ パフォーマンス コンピューティング
+          href: sizes-hpc.md
+        - name: Azure コンピューティング ユニット (ACU)
+          href: sizes-general.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
     - name: メンテナンスと更新

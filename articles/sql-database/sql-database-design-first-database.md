@@ -13,14 +13,14 @@ ms.custom: mvc,develop databases
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: bb8bf2569f17bf6eef9f45255bbdda440e6afef5
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 
@@ -61,7 +61,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | 説明 | 
+   | 設定       | 推奨値 | Description | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -70,7 +70,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. **[サーバー]** をクリックして、新しいデータベース用の新しいサーバーを作成して構成します。 **[新しいサーバー]** フォームには次の情報を入力してください。 
 
-   | 設定       | 推奨値 | 説明 | 
+   | Setting       | 推奨値 | Description | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/sql/relational-databases/databases/database-identifiers)」を参照してください。|
@@ -125,7 +125,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[ Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 
@@ -152,7 +152,7 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 
 2. **[サーバーへの接続]** ダイアログ ボックスで、次の情報を入力します。
 
-   | 設定       | 推奨値 | 説明 | 
+   | 設定       | 推奨値 | Description | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | サーバーの種類 | データベース エンジン | この値は必須です |
    | サーバー名 | 完全修飾サーバー名 | 名前は **mynewserver20170824.database.windows.net** のような形式で指定する必要があります。 |
@@ -177,9 +177,9 @@ Azure Portal で、Azure SQL Database サーバーの完全修飾サーバー名
 [Transact-SQL](https://docs.microsoft.com/sql/t-sql/language-reference) を用いた大学の生徒管理システムを構成する、4 つのテーブルのデータベース スキーマを作成します。
 
 - Person
-- Course
-- Student
-- 大学の生徒管理システムを構成する Credit
+- コース
+- 生徒
+- 大学の生徒管理システムを構成するクレジット
 
 次の図は、これらのテーブルの相互関係を示しています。 テーブルの一部は、他のテーブル内の列を参照します。 たとえば Student テーブルは、**Person** テーブルの **PersonId** 列を参照します。 このチュートリアルのテーブルの相互関係を把握するため、図を詳しく確認します。 効果的なデータベース テーブル作成方法の詳細は、[効果的なデータベース テーブルの作成](https://msdn.microsoft.com/library/cc505842.aspx)を参照してください。 データ型の選択については、[データ型](https://docs.microsoft.com/sql/t-sql/data-types/data-types-transact-sql)を参照してください。
 
