@@ -1,6 +1,6 @@
 ---
 title: "PowerShell の例 - アクティブ geo レプリケーション - プールされた Azure SQL データベース | Microsoft Docs"
-description: "プールされた Azure SQL データベースのアクティブ geo レプリケーションをセットアップする Azure PowerShell のスクリプトの例"
+description: "プールされた Azure SQL Database のアクティブ geo レプリケーションの設定とフェールオーバーを実行する Azure PowerShell のサンプル スクリプト。"
 services: sql-database
 documentationcenter: sql-database
 author: CarlRabeler
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 07/25/2017
 ms.author: carlrab
-ms.openlocfilehash: bdd03372b01f734cb7b560855351f222936e45a0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 18c1960df07905dc60542d95a5ff9e85e58aa2f4
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>プールされた Azure SQL データベースのアクティブ geo レプリケーションを PowerShell を使用して構成する
 

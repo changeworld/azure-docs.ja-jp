@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/17/2017
-ms.author: clemensv;sethm
-ms.openlocfilehash: c16bcf30ab96f79e59404a41852e4cd227e28b08
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/12/2017
+ms.author: sethm
+ms.openlocfilehash: e5070e225387f5d4ae9d49234b4e260a57436291
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="overview-of-service-bus-dead-letter-queues"></a>Service Bus の配信不能キューの概要
 
@@ -32,13 +32,13 @@ Service Bus キューおよびトピック サブスクリプションでは、*
 
 API とプロトコルの観点では、DLQ は他のキューとほとんど同じですが、メッセージを再送信できるのは親エンティティの配信不能ジェスチャでのみである点が異なります。 また、有効期間は監視されず、DLQ のメッセージを配信不能にすることはできません。 配信不能キューでは、ピーク ロック配信やトランザクション操作が完全にサポートされます。
 
-DLQ は自動的にクリーンアップされないことに注意してください。 DLQ から明示的に取得し、配信不能メッセージに対して [Complete()](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_CompleteAsync) を呼び出すまで、メッセージは DLQ に残ります。
+DLQ は自動的にクリーンアップされないことに注意してください。 DLQ から明示的に取得し、配信不能メッセージに対して [Complete()](/dotnet/api/microsoft.azure.servicebus.queueclient.completeasync) を呼び出すまで、メッセージは DLQ に残ります。
 
 ## <a name="moving-messages-to-the-dlq"></a>DLQ にメッセージを移動する
 
 Service Bus には、メッセージがメッセージング エンジン自体から DLQ にプッシュされる原因となるアクティビティがいくつかあります。 アプリケーションは明示的にメッセージを DLQ に移動することもできます。 
 
-ブローカーによってメッセージが移動され、ブローカーがメッセージに対して内部バージョンの [DeadLetter](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeadLetter_System_String_System_String_) メソッドを呼び出すと、`DeadLetterReason` および `DeadLetterErrorDescription` という 2 つのプロパティが追加されます。
+ブローカーによってメッセージが移動され、ブローカーがメッセージに対して内部バージョンの [DeadLetter](/dotnet/api/microsoft.azure.servicebus.queueclient.deadletterasync) メソッドを呼び出すと、`DeadLetterReason` および `DeadLetterErrorDescription` という 2 つのプロパティが追加されます。
 
 アプリケーションは `DeadLetterReason` プロパティに対して独自のコードを定義できますが、システムでは以下の値が設定されます。
 
@@ -52,9 +52,9 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 | Application での明示的な配信不能処理 |アプリケーションで指定 |アプリケーションで指定 |
 
 ## <a name="exceeding-maxdeliverycount"></a>MaxDeliveryCount の超過
-キューおよびサブスクリプションにはそれぞれ [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) および [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_MaxDeliveryCount) プロパティがあり、既定値は 10 です。 メッセージがロック状態で配信されたが ([ReceiveMode.PeekLock](/dotnet/api/microsoft.servicebus.messaging.receivemode))、明示的に破棄されたか、ロックが期限切れになった場合は常に、メッセージの [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) が増えます。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage#Microsoft_ServiceBus_Messaging_BrokeredMessage_DeliveryCount) が [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) を超えると、メッセージは DLQ に移動にされ、`MaxDeliveryCountExceeded` 理由コードが示されます。
+キューおよびサブスクリプションにはそれぞれ [QueueDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) および [SubscriptionDescription.MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription.maxdeliverycount) プロパティがあり、既定値は 10 です。 メッセージがロック状態で配信されたが ([ReceiveMode.PeekLock](/dotnet/api/microsoft.azure.servicebus.receivemode))、明示的に破棄されたか、ロックが期限切れになった場合は常に、メッセージの [BrokeredMessage.DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) が増えます。 [DeliveryCount](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) が [MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) を超えると、メッセージは DLQ に移動にされ、`MaxDeliveryCountExceeded` 理由コードが示されます。
 
-この動作を無効にすることはできませんが、[MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount) を非常に大きい数に設定することはできます。
+この動作を無効にすることはできませんが、[MaxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount) を非常に大きい数に設定することはできます。
 
 ## <a name="exceeding-timetolive"></a>TimeToLive の超過
 [QueueDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.queuedescription#Microsoft_ServiceBus_Messaging_QueueDescription_EnableDeadLetteringOnMessageExpiration) または [SubscriptionDescription.EnableDeadLetteringOnMessageExpiration](/dotnet/api/microsoft.servicebus.messaging.subscriptiondescription#Microsoft_ServiceBus_Messaging_SubscriptionDescription_EnableDeadLetteringOnMessageExpiration) プロパティが **true** に設定されている場合 (既定値は **false**)、期限が切れるメッセージはすべて DLQ に移動され、`TTLExpiredException` 理由コードが示されます。
@@ -75,7 +75,7 @@ Service Bus には、メッセージがメッセージング エンジン自体�
 - 送信先キューまたはトピックが無効または削除されている。
 - 送信先キューまたはトピックがエンティティの最大サイズを超えている。
 
-これらの配信不能メッセージを取得するために、[FormatTransferDeadletterPath](/dotnet/api/microsoft.servicebus.messaging.queueclient#Microsoft_ServiceBus_Messaging_QueueClient_FormatTransferDeadLetterPath_System_String_) ユーティリティ メソッドを使用して受信者を作成することができます。
+これらの配信不能メッセージを取得するために、[FormatTransferDeadletterPath](/dotnet/api/microsoft.azure.servicebus.entitynamehelper.formattransferdeadletterpath) ユーティリティ メソッドを使用して受信者を作成することができます。
 
 ## <a name="example"></a>例
 次のコード スニペットではメッセージの受信者を作成します。 メイン キューの受信ループで、コードは [Receive(TimeSpan.Zero)](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_Receive_System_TimeSpan_) のメッセージを取得します。この場合、ブローカーはすぐに使用できるメッセージをすぐに返すか、結果なしで返すように求められます。 コードはメッセージを受信すると、すぐに破棄し、`DeliveryCount` が増えます。 システムが DLQ にメッセージを移動すると、メイン キューは空になり、ループが終了し、[ReceiveAsync](/dotnet/api/microsoft.servicebus.messaging.messagereceiver#Microsoft_ServiceBus_Messaging_MessageReceiver_ReceiveAsync_System_TimeSpan_) は **null** を返します。

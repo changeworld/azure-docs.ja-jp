@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/26/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 7eea3621a52bf13dc44e89c342c503905ff24a0d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b383a21500c753d8d2fe6747756541a3ff94ef02
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory シームレス シングル サインオンのトラブルシューティングを行う
 
@@ -28,8 +28,9 @@ ms.lasthandoff: 10/11/2017
 
 - 場合によっては、シームレス SSO の有効化に最大 30 分かかることがあります。
 - Edge ブラウザーのサポートは使用できません。
-- Office クライアントでのライセンスのアクティブ化により (特に、共有されたコンピューターのシナリオの場合)、ユーザーに余分なサインイン プロンプトが表示されます。
-- シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。 と 
+- Office クライアントを起動していると (特に、共有コンピューターのシナリオの場合)、追加のサインイン プロンプトがユーザーに表示されます。 ユーザーはユーザー名を頻繁に入力しなければならなくなりますが、パスワードを頻繁に入力する必要はありません。
+- シームレスな SSO が成功すると、ユーザーは "サインインしたままにする" を選択できません。 この動作により、SharePoint および OneDrive のマッピングのシナリオは機能しません。
+- シームレス SSO は、Firefox のプライベート ブラウズ モードでは動作しません。
 - シームレス SSO は、拡張保護モードがオンの場合は Internet Explorer で動作しません。
 - シームレス SSO は、iOS および Android 上のモバイル ブラウザーでは動作しません。
 - 30 以上の AD フォレストを同期している場合は、Azure AD Connect を使用するシームレスな SSO を有効にすることはできません。 この問題を回避するには、テナントでこの機能を[手動で有効](#manual-reset-of-azure-ad-seamless-sso)にします。

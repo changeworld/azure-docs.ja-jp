@@ -14,13 +14,13 @@ ms.workload: big-data
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/31/2017
+ms.date: 10/24/2017
 ms.author: larryfr
-ms.openlocfilehash: 6e2f6983e00f874420f7f0907dbc68185f0af713
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0f26c35512bb92323b5a9c1688f96a958e0749c6
+ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="install-giraph-on-hdinsight-hadoop-clusters-and-use-giraph-to-process-large-scale-graphs"></a>HDInsight Hadoop クラスターに Giraph をインストールし、Giraph を使用して大規模なグラフを処理する
 
@@ -72,7 +72,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
 1. [Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)に関するページに記載されている手順を使用して、クラスターの作成を開始します。ただし、作成を完了しないでください。
 
-2. **[オプションの構成]** ブレードで **[スクリプト アクション]** を選択し、以下の情報を指定します。
+2. **[オプションの構成]** セクションで **[スクリプト アクション]** を選択し、以下の情報を指定します。
 
    * **[名前]**: スクリプト アクションの表示名を入力します。
 
@@ -86,7 +86,7 @@ HDInsight クラスターに Giraph をインストールするサンプル ス�
 
    * **[パラメーター]**: このフィールドは空のままにします。
 
-3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** ブレードの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
+3. **[スクリプト アクション]** の下部で、**[選択]** を使用して構成を保存します。 最後に、**[オプションの構成]** セクションの下部にある **[選択]** を使用して、オプションの構成情報を保存します。
 
 4. 「[Linux ベースの HDInsight クラスターの作成](hdinsight-hadoop-create-linux-clusters-portal.md)」の説明に従って、クラスターの作成を続行します。
 

@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/10/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 874c1a5c4b399ff2254072b7282f05d83a005cc3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 319ee2c0f7492389bc1767aa2669dd273f8cfa1b
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="monitoring-windows-server-containers-with-oms"></a>OMS を使用した Windows Server コンテナーの監視
 
 ## <a name="oms-containers-solution"></a>OMS コンテナー ソリューション
 
-Operations Management Suite (OMS) チームは、コンテナーの診断と監視のためのコンテナー ソリューションを公開しています。 Service Fabric ソリューションとともに、このソリューションは、Service Fabric で調整されたコンテナーのデプロイを監視するための優れたツールです。 ソリューションのダッシュボードの外観の単純な例を次に示します。
+Operations Management Suite (OMS) Log Analytics には、コンテナーの監視に使用できるコンテナー ソリューションがあります。 Service Fabric ソリューションとともに、このソリューションは、Service Fabric で調整されたコンテナーのデプロイを監視するための優れたツールです。 ソリューションのダッシュボードの外観の単純な例を次に示します。
 
 ![基本的な OMS のダッシュボード](./media/service-fabric-diagnostics-containers-windowsserver/oms-containers-dashboard.png)
 
@@ -40,7 +40,7 @@ OMS Log Analytics ツールでクエリを実行したり、生成される任�
 
 ## <a name="1-set-up-a-service-fabric-cluster"></a>1.Service Fabric クラスターの設定
 
-[ここ](https://github.com/dkkapur/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Sample)にある Azure Resource Manager テンプレートを使用して、クラスターを作成します。 必ず一意の OMS ワークスペース名を追加してください。 このテンプレートは、Service Fabric (v255.255) のプレビュー ビルドでクラスターをデプロイするための既定でもあります。つまり、これは運用環境で使用できず、別の Service Fabric バージョンにアップグレードできないことを意味します。 このテンプレートを長期間使用したり運用環境で使用する場合は、バージョンを安定したバージョン番号に変更してください。
+[ここ](https://github.com/ChackDan/Service-Fabric/tree/master/ARM%20Templates/SF%20OMS%20Samples/Windows)にある Azure Resource Manager テンプレートを使用して、クラスターを作成します。 必ず一意の OMS ワークスペース名を追加してください。 このテンプレートは、Service Fabric (v255.255) のプレビュー ビルドでクラスターをデプロイするための既定でもあります。つまり、これは運用環境で使用できず、別の Service Fabric バージョンにアップグレードできないことを意味します。 このテンプレートを長期間使用したり運用環境で使用する場合は、バージョンを安定したバージョン番号に変更してください。
 
 クラスターを設定したら、適切な証明書がインストールされていることを確認し、クラスターに接続できることを確認します。
 

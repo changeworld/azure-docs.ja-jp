@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/25/2017
+ms.date: 10/13/2017
 ms.author: carlrab
-ms.openlocfilehash: 3b9be28143060537b1a35004c3b3486b8738e956
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 64cc1db78dd6f50c07ca79f8ab0bf29fdbbead22
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>データベースの自動バックアップを使用した Azure SQL Database の復旧
 SQL Database は、[自動データベース バックアップ](sql-database-automated-backups.md)および[長期保存でのバックアップ](sql-database-long-term-retention.md)を使用して、データベース復旧のためのこれらのオプションを提供します。 データベース バックアップは、次のものに復元できます。
@@ -95,7 +95,7 @@ Azure Portal、[PowerShell](https://docs.microsoft.com/en-us/powershell/module/a
 
 ### <a name="azure-portal"></a>Azure ポータル
 
-Azure Portal を使用して、削除されたみデータベースをその[保有期間](sql-database-service-tiers.md)中に復旧するには、サーバーのページを開き、[操作] 領域で **[削除済みデータベース]** をクリックします。
+Azure Portal を使用して、削除されたデータベースをその[保有期間](sql-database-service-tiers.md)中に復旧するには、サーバーのページを開き、[操作] 領域で **[削除済みデータベース]** をクリックします。
 
 ![削除されたデータベースの復元 1](./media/sql-database-recovery-using-backups/deleted-database-restore-1.png)
 
@@ -116,10 +116,10 @@ geo リストアは、データベースがホストされているリージョ�
 geo セカンダリでのポイントインタイム リストアは、現在はサポートされていません。 ポイントインタイム リストアは、プライマリ データベースでのみ実行できます。 geo リストアを使用して障害から復旧する方法の詳細については、[障害からの復旧](sql-database-disaster-recovery.md)に関するページを参照してください。
 
 > [!IMPORTANT]
-> バックアップからの復旧は、RPO と推定復旧時間 (ERT) が最も長い、SQL Database で使用できる障害復旧ソリューションで最も基本的なことです。 Basic データベースを使用しているソリューションでは、多くの場合、ERT が 12 時間である geo リストアが妥当なソリューションです。 短時間で復旧する必要がある大型の Standard または Premium データベースでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)の使用を検討する必要があります。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
+> バックアップからの復旧は、目標復旧時点 (RPO) と推定復旧時間 (ERT) が最も長い、SQL Database で使用できるディザスター リカバリー ソリューションで最も基本的な方法です。 Basic データベースを使用しているソリューションでは、多くの場合、ERT が 12 時間である geo リストアが妥当なソリューションです。 短時間で復旧する必要がある大型の Standard または Premium データベースでは、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)の使用を検討する必要があります。 アクティブ geo レプリケーションでは、継続的にレプリケートされるセカンダリへのフェールオーバーを開始することだけが必要なので、RPO と ERT が大きく短縮されます。 ビジネスを継続するための選択の詳細については、[ビジネス継続性の概要](sql-database-business-continuity.md)に関するページを参照してください。
 > 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure ポータル
 
 Azure Portal を使用して、データベースをその[保有期間](sql-database-service-tiers.md)中に geo リストアするには、[SQL データベース] ページを開き、**[追加]** をクリックします。 **[ソースの選択]** テキスト ボックスで、**[バックアップ]** を選択します。 任意のリージョン内のサーバー上で復旧を実行するバックアップを指定します。 
 
@@ -146,8 +146,8 @@ Azure Portal を使用して、データベースをその[保有期間](sql-dat
 自動バックアップは、ユーザー エラーやアプリケーション エラー、偶発的なデータベースの削除、および長期間にわたる障害からデータベースを保護します。 この組み込みの機能は、すべてのサービス レベルとパフォーマンス レベルで使用できます。 
 
 ## <a name="next-steps"></a>次のステップ
-* ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)
-* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database automated backups (SQL Database 自動バックアップ)](sql-database-automated-backups.md)
+* ビジネス継続性の概要およびシナリオについては、 [ビジネス継続性の概要](sql-database-business-continuity.md)に関する記事を参照してください。
+* Azure SQL Database 自動バックアップの詳細については、「 [SQL Database 自動バックアップ](sql-database-automated-backups.md)」を参照してください。
 * バックアップの長期保存については、[バックアップの長期保存](sql-database-long-term-retention.md)に関する記事を参照してください。
 * Azure Portal を使用して、Azure Recovery Services コンテナー内の自動バックアップの長期保存を構成したり、管理したり、それから復元したりするには、[バックアップの長期保有期間の構成および使用](sql-database-long-term-backup-retention-configure.md)を参照してください。 
-* より迅速な復旧オプションについては、[アクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。  
+* より迅速な復旧オプションについては、[フェールオーバー グループとアクティブ geo レプリケーション](sql-database-geo-replication-overview.md)に関する記事を参照してください。  

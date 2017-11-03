@@ -1,6 +1,6 @@
 ---
 title: "SQL Database における 1433 以外のポート | Microsoft Docs"
-description: "ADO.NET から Azure SQL Database へのクライアント接続では、プロキシを使用せずに、データベースと直接やり取りする場合があります。 1433 以外のポートが重要になります。"
+description: "ADO.NET から Azure SQL Database へのクライアント接続では、1433 以外のポートを使用してプロキシをバイパスし、データベースと直接やり取りできます。"
 services: sql-database
 documentationcenter: 
 author: MightyPen
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2016
 ms.author: sstein
-ms.openlocfilehash: d47ee8c794d1e231507dae6bb4aa88bf19ce6418
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7900a81c61ceeb9009f5671cef717a6d95cbe20
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="ports-beyond-1433-for-adonet-45"></a>ADO.NET 4.5 用の 1433 以外のポート
 このトピックでは、クライアントで ADO.NET 4.5 以降のバージョンが使用される場合の Azure SQL Database の接続動作について説明します。 

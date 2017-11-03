@@ -14,67 +14,67 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2017
 ms.author: sngun
-ms.openlocfilehash: 20cac6eace89d86f8fa6d7640357e19c8d7359b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c0a4f337c055f4b62d986e2a3c3ce7b962aceae9
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="download-azure-stack-tools-from-github"></a>GitHub からの Azure Stack ツールのダウンロード
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-AzureStack-Tools は、リソースの管理と Azure Stack へのデプロイに使用できる PowerShell モジュールをホストする GitHub レポジトリです。 これらの PowerShell モジュールは、Azure Stack Development Kit にダウンロードするか、または VPN 接続を確立する予定の場合は Windows ベースの外部クライアントにダウンロードして使用できます。 これらのツールを取得するには、GitHub レポジトリを複製するか、AzureStack-Tools フォルダーをダウンロードします。 
+**AzureStack-Tools** は PowerShell モジュールをホストする GitHub リポジトリで、リソースの管理と Azure Stack へのデプロイに使用できます。 VPN 接続を確立しようとしている場合は、これらの PowerShell モジュールを Azure Stack Development Kit にダウンロードするか、Windows ベースの外部クライアントにダウンロードできます。 これらのツールを入手するには、GitHub リポジトリを複製するか、**AzureStack-Tools** フォルダーをダウンロードします。 
 
-レポジトリを複製するには、Windows 用の [Git](https://git-scm.com/download/win) をダウンロードし、コマンド プロンプト ウィンドウを開いて、次のスクリプトを実行します。
+リポジトリを複製するには、[Git for Windows](https://git-scm.com/download/win) をダウンロードし、コマンド プロンプト ウィンドウを開いて次のスクリプトを実行します。
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory to the root directory. 
 cd \
 
-# clone the repository
+# Clone the repository.
 git clone https://github.com/Azure/AzureStack-Tools.git --recursive
 
-# Change to the tools directory
+# Change to the tools directory.
 cd AzureStack-Tools
 ```
 
 ツールのフォルダーをダウンロードするには、次のスクリプトを実行します。
 
 ```PowerShell
-# Change directory to the root directory 
+# Change directory to the root directory. 
 cd \
 
-# Download the tools archive
+# Download the tools archive.
 invoke-webrequest `
   https://github.com/Azure/AzureStack-Tools/archive/master.zip `
   -OutFile master.zip
 
-# Expand the downloaded files
+# Expand the downloaded files.
 expand-archive master.zip `
   -DestinationPath . `
   -Force
 
-# Change to the tools directory
+# Change to the tools directory.
 cd AzureStack-Tools-master
 
 ```
 
-## <a name="functionalities-provided-by-the-modules"></a>モジュールで提供される機能
+## <a name="functionality-provided-by-the-modules"></a>モジュールで提供される機能
 
-AzureStack-Tools レポジトリには、Azure Stack の次の機能をサポートする PowerShell モジュールが含まれています。  
+**AzureStack-Tools** リポジトリには、Azure Stack の次の機能をサポートする PowerShell モジュールが含まれています。  
 
 | 機能 | Description | このモジュールを使用できるユーザー |
 | --- | --- | --- |
-| [クラウド機能](user/azure-stack-validate-templates.md) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、Azure Stack および Azure クラウドで、API バージョン、Azure Resource Manager リソース、VM 拡張機能などのクラウド機能を取得できます。 | クラウド オペレーターとユーザー。 |
-| [Azure Stack コンピューティングの管理](azure-stack-add-vm-image.md) | このモジュールを使用すると、Azure Stack マーケットプレースに VM イメージを追加したり削除したりできます。 | クラウド オペレーター。 |
-| [Azure Stack インフラストラクチャの管理](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | このモジュールを使用すると、Azure Stack インフラストラクチャの VM、アラート、更新などを管理できます。 |  クラウド オペレーター。|
+| [クラウド機能](user/azure-stack-validate-templates.md) | このモジュールを使用すると、クラウドのクラウド機能を取得できます。 たとえば、このモジュールを使用して、API バージョンや Azure Resource Manager リソースなどのクラウド機能を取得できます。 このモジュールを使用して Azure Stack と Azure クラウドの VM 拡張機能を入手することもできます。 | クラウド オペレーターとユーザー |
+| [Azure Stack コンピューティングの管理](azure-stack-add-vm-image.md) | このモジュールを使用すると、Azure Stack マーケットプレースに VM イメージを追加したり削除したりできます。 | クラウド オペレーター |
+| [Azure Stack インフラストラクチャの管理](https://github.com/Azure/AzureStack-Tools/blob/master/Infrastructure/README.md) | このモジュールを使用すると、Azure Stack インフラストラクチャの VM、アラート、更新などを管理できます。 |  クラウド オペレーター|
 | [Azure Stack の Resource Manager ポリシー](user/azure-stack-policy-module.md) | このモジュールを使用すると、Azure Stack と同じバージョン管理とサービス可用性で、Azure サブスクリプションまたは Azure リソース グループを構成できます。 | クラウド オペレーターとユーザー |
 | [Azure への登録](azure-stack-register.md) | このモジュールを使用すると、開発キットのインスタンスを Azure に登録できます。 登録後、Azure からマーケットプレースの項目をダウンロードして Azure Stack で使用できます。 | クラウド オペレーター |
-| [Azure Stack のデプロイ](azure-stack-run-powershell-script.md) | このモジュールを使用すると、Azure Stack Virtual Hard Disk(VHD) イメージを使用して、Azure Stack のホスト コンピューターでデプロイおよび再デプロイを行う準備ができます。 | クラウド オペレーター。 |
+| [Azure Stack のデプロイ](azure-stack-run-powershell-script.md) | このモジュールを使用すると、Azure Stack の仮想ハード ディスク (VHD) イメージを使用して、Azure Stack のホスト コンピューターでデプロイおよび再デプロイを行う準備ができます。 | クラウド オペレーター|
 | [Azure Stack への接続](azure-stack-connect-powershell.md) | このモジュールを使用すると、PowerShell で Azure Stack インスタンスに接続し、Azure Stack への VPN 接続を構成できます。 | クラウド オペレーターとユーザー |
-| [Azure Stack サービスの管理](azure-stack-create-offer.md) | Azure Stack 管理者は、このモジュールを使用して、コンピューティング、ストレージ、ネットワーク、Key Vault の各サービスにわたって無制限のクォータを含む既定のテナント オファーを作成できます。   | クラウド オペレーター。|
-| [テンプレートの検証](user/azure-stack-validate-templates.md) | このモジュールを使用すると、既存のまたは新しいテンプレートを Azure Stack にデプロイできるかどうか確認できます。 | クラウド オペレーターとユーザー |
+| [Azure Stack サービスの管理](azure-stack-create-offer.md) | このモジュールを使用すると、コンピューティング、Azure Storage、ネットワーク、および Key Vault のサービス全体でのクォータ無制限の既定のテナント プランを作成できます。   | クラウド オペレーター|
+| [テンプレートの検証](user/azure-stack-validate-templates.md) | このモジュールを使用すると、既存のまたは新しいテンプレートを Azure Stack にデプロイできるかどうか確認できます。 | クラウド オペレーターとユーザー|
 
 
 ## <a name="next-steps"></a>次のステップ

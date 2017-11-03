@@ -1,6 +1,6 @@
 ---
-title: "Azure で Linuxコンテナー内に Node.js Web アプリを作成する | Microsoft Docs"
-description: "Azure App Service の Web Apps で、初めての Node.js の Hello World を数分でデプロイします。"
+title: "Azure App Service on Linux での Node.js の作成 | Microsoft Docs"
+description: "Azure App Service on Linux で、初めての Node.js の Hello World を数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
 author: cephalin
@@ -15,15 +15,15 @@ ms.topic: quickstart
 ms.date: 05/05/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 571ae5eabae93cf0a7fa98110f8329eac1a74b12
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5346e9d872f852502890d4bd2868b5343e0045c8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="create-a-nodejs-web-app-in-a-linux-container-in-azure"></a>Azure で Linuxコンテナー内に Node.js Web アプリを作成する
+# <a name="create-a-nodejs-web-app-in-azure-app-service-on-linux"></a>Azure App Service on Linux での Node.js Web アプリの作成
 
-[Web App for Containers](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイック スタートでは、Azure Web App for Containers に Node.js アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Web アプリを作成し、Git を使用して Web アプリに Node.js のコードをデプロイします。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、組み込みイメージを使用して App Service on Linux に Node.js アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して、組み込みイメージを使用する Web アプリを作成し、Git を使用してその Web アプリに Node.js のコードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-nodejs/hello-world-in-browser.png)
 
@@ -78,11 +78,11 @@ Web ブラウザーを開き、`http://localhost:1337` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-nodejs-no-h.md)]
 
-サイトを参照して、新たに作成された Web アプリを表示します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -134,11 +134,11 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js のサンプル コードは、Azure App Service の Web アプリで実行されています。
+Node.js のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-nodejs/hello-world-in-browser.png)
 
-**お疲れさまでした。** App Service に初めての Node.js アプリをデプロイしました。
+**お疲れさまでした。** App Service on Linux に初めての Node.js アプリをデプロイしました。
 
 ## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 

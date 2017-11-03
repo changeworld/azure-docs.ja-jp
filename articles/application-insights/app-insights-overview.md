@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/14/2017
 ms.author: bwren
-ms.openlocfilehash: d822f25d9061809a27976314bfbd55dd46b1ee67
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3cb85316fac2ee637eb5defcc9b0840bada267b3
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
-Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 devOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。
+Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio Mobile Center および HockeyApp を統合することで、モバイル アプリからテレメトリを監視および分析できます。
 
 ![ユーザー アクティビティの統計をグラフ化したり、特定のイベントをドリルダウンしたりすることができます。](./media/app-insights-overview/00-sample.png)
 
@@ -116,6 +116,7 @@ Application Insights は、Microsoft Azure でホストされる多数のサー�
   * [Node.JS](app-insights-nodejs.md)
   * [その他のプラットフォーム](app-insights-platforms.md)
 * ページ ビュー、AJAX、その他のクライアント側テレメトリ用に **[Web ページをインストルメント化](app-insights-javascript.md)**します。
+* Visual Studio Mobile Center と統合することで、**[モバイル アプリの使用状況を分析](app-insights-mobile-center-quickstart.md)**します。
 * **[可用性テスト](app-insights-monitor-web-app-availability.md)** - Microsoft のサーバーから定期的に Web サイトに ping を実行します。
 
 

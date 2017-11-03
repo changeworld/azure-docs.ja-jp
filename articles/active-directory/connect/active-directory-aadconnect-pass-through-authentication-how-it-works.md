@@ -12,16 +12,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: 9ded5e0199f5ca48e2a00d2afee0e4c13b3a3460
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c7863e38671349b6424ee08330da8aaa49cb2a70
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-technical-deep-dive"></a>Azure Active Directory パススルー認証: 技術的な詳細
-次の記事では、Azure AD パススルー認証のしくみを概説します。  詳細な技術およびセキュリティの情報については、[**「Security Deep Dive」**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)(セキュリティの詳細) に関する記事を参照してください。
+次の記事では、Azure AD パススルー認証のしくみを概説します。  技術とセキュリティの詳細情報については、[**セキュリティの詳細**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md)に関する記事をご覧ください。
 
 ## <a name="how-does-azure-active-directory-pass-through-authentication-work"></a>Azure Active Directory パススルー認証のしくみ
 
@@ -30,12 +30,12 @@ ms.lasthandoff: 10/11/2017
 1. ユーザーが、(https://outlook.office365.com/owa/ の Outlook Web App などの) アプリケーションへのアクセスを試行します。
 2. まだサインインしていない場合、ユーザーは、Azure AD のサインイン ページにリダイレクトされます。
 3. ユーザーが Azure AD のサインイン ページにユーザー名とパスワードを入力し、[サインイン] ボタンをクリックします。
-4. サインイン要求を受け取った Azure AD は、(公開キーを使用して暗号化された) ユーザー名とパスワードをキューに配置します。
-5. オンプレミスのパススルー認証エージェントが送信呼び出しをキューに実行し、ユーザー名と暗号化されたパスワードが取得されます。
+4. サインイン要求を受け取った Azure AD が、(公開キーを使用して暗号化された) ユーザー名とパスワードをキューに入れます。
+5. オンプレミス認証エージェントが、ユーザー名と暗号化されたパスワードをキューから取得します。
 6. エージェントがその秘密キーを使用してパスワードを復号化します。
 7. エージェントは、標準の Windows API を使用して Active Directory に対してユーザー名とパスワードを検証します (Active Directory フェデレーション サービスで使用されているものと同様のメカニズム)。 ユーザー名には、オンプレミスの既定のユーザー名 (通常は `userPrincipalName`) または Azure AD Connect で構成された別の属性 (`Alternate ID` として知られています) を指定できます。
 8. その後、オンプレミスの Active Directory ドメイン コントローラー (DC) が要求を評価し、適切な応答をエージェントに返します (成功、失敗、パスワードの期限切れ、またはユーザーがロックアウト)。
-9. エージェントは代わりにこの応答を Azure AD に返します。
+9. 次に、認証エージェントがこの応答を Azure AD に返します。
 10. Azure AD は、応答を評価し、必要に応じてユーザーに応答します。たとえば、ユーザーを直ちにサインインさせるか、Multi-factor Authentication (MFA) を要求します。
 11. ユーザーのサインインが成功すると、アプリケーションにアクセスできるようになります。
 

@@ -11,13 +11,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/12/2017
 ms.author: billmath
-ms.openlocfilehash: 7a886cdb0c36008bdb66592a8d3428889739627e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a5feadd851b166d0a9a77bd1d124cdd599d5d701
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-security-deep-dive"></a>Azure Active Directory パススルー認証のセキュリティの詳細
 
@@ -91,6 +91,8 @@ Azure AD の運用、サービスおよびデータのセキュリティに関�
 4. Azure AD は登録要求のアクセス トークンを検証し、要求が全体管理者からのものであることを確認します。
 5. 次に、Azure AD はデジタル ID 証明書に署名して、認証エージェントに戻します。
     - 証明書への署名は、**Azure AD のルート証明機関 (CA)** を使用して行われます。 この CA は Windows の**信頼されたルート証明機関**ストアには_ない_ことに注意してください。
+    - この CA はパススルー認証機能でのみ使用されます。 認証エージェントの登録の際の CSR の署名のためだけに使用されます。
+    - この CA は、Azure AD の他のサービスでは使用されません。
     - 証明書の件名 (**識別名または DN**) は**テナント ID** に設定されます。 これは、テナントを一意に識別する GUID です。 これにより、証明書の範囲がテナントのみでの使用に限定されます。
 6. Azure AD は、Azure AD のみがアクセス可能な、Azure SQL Database に認証エージェントの公開キーを格納します。
 7. 証明書 (手順 5. で発行されたもの) はオンプレミス サーバーの **Windows 証明書ストア** (**[CERT_SYSTEM_STORE_LOCAL_MACHINE](https://msdn.microsoft.com/library/windows/desktop/aa388136.aspx#CERT_SYSTEM_STORE_LOCAL_MACHINE)** の場所など) に格納され、認証エージェントとアップデーター アプリケーションの両方で使用されます。
@@ -133,6 +135,7 @@ Azure AD の運用、サービスおよびデータのセキュリティに関�
 9. 認証エージェントは、(ID を使用して) 公開キーに固有の暗号化されたパスワード値を見つけ、その秘密キーを使用して暗号化します。
 10. 認証エージェントは、**[Win32 LogonUser API](https://msdn.microsoft.com/library/windows/desktop/aa378184.aspx)** (**dwLogonType** パラメーターは **LOGON32_LOGON_NETWORK** に設定) を使用して、オンプレミスの Active Directory に対するユーザー名とパスワードの検証を試みます。 
     - これは、フェデレーション サインイン シナリオでユーザーのサインインで Active Directory フェデレーション サービス (AD FS) によって使用されるものと同じ API です。
+    - Windows Server の標準的な解決プロセスに従ってドメイン コントローラーを検索します。
 11. 認証エージェントは Active Directory から結果 (成功、ユーザー名またはパスワードが正しくない、パスワードの期限が切れている、ユーザーがロックアウトされているなど) を受け取ります。
 12. 認証エージェントは、ポート 443 を介して相互認証された送信 HTTPS チャネル経由で Azure AD STS に結果を戻します。 相互認証では、登録時に認証エージェントに以前に発行されたものと同じ証明書を使用します。
 13. Azure AD STS は、この結果がテナントの特定のサインイン要求と関連していることを確認します。

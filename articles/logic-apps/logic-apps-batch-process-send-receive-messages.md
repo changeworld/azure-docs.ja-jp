@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/7/2017
 ms.author: LADocs; estfan; jonfan
-ms.openlocfilehash: c58cf6485a8a7248e5b8ffce0d279485a80f36ef
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e0b7292f25a145c699dbafaf4e31e3f9d072b957
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="send-receive-and-batch-process-messages-in-logic-apps"></a>ロジック アプリでメッセージの送信、受信、バッチ処理を行う
 
@@ -115,6 +115,10 @@ ms.lasthandoff: 10/11/2017
 7.  これでバッチ受信ロジック アプリが作成されました。次はロジック アプリを保存します。
 
     ![ロジック アプリを保存する](./media/logic-apps-batch-process-send-receive-messages/save-batch-receiver-logic-app.png)
+
+    > [!IMPORTANT]
+    > パーティションには 5,000 メッセージまたは 80 MB という制限があります。 いずれかの条件を満たすと、ユーザー定義の条件を満たしていない場合でも、バッチがリリースされる可能性があります。
+
 
 <a name="batch-sender"></a>
 

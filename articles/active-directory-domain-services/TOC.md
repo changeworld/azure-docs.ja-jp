@@ -1,6 +1,8 @@
 # 概要
 ## [Azure AD Domain Services とは](active-directory-ds-overview.md)
-## [適しているかの判断](active-directory-ds-comparison.md)
+## 適しているかの判断
+### [Windows Server AD との比較](active-directory-ds-comparison.md)
+### [Azure AD Join との比較](active-directory-ds-compare-with-azure-ad-join.md)
 ## [機能](active-directory-ds-features.md)
 ## [シナリオ](active-directory-ds-scenarios.md)
 ## [同期のしくみ](active-directory-ds-synchronization.md)
@@ -36,6 +38,7 @@
 ### [SharePoint Server のプロファイルの同期のサポートを構成する](active-directory-ds-enable-sharepoint-profile-sync.md)
 ### [Kerberos の制約付き委任を構成する](active-directory-ds-enable-kcd.md)
 ### [Azure AD アプリケーション プロキシをデプロイする](active-directory-ds-deploy-azure-app-proxy.md)
+## [管理対象ドメインを削除する](active-directory-ds-disable-aadds.md)
 ## トラブルシューティング
 ### [FAQ](active-directory-ds-faqs.md)
 ### [トラブルシューティング ガイド](active-directory-ds-troubleshooting.md)

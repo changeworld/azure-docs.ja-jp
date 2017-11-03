@@ -1,11 +1,11 @@
 ---
-title: "Azure App Service Web App for Containers の FAQ | Microsoft Docs"
-description: "Azure App Service Web App for Containers の FAQ"
+title: "Azure App Service on Linux の FAQ | Microsoft Docs"
+description: "Azure App Service on Linux の FAQ"
 keywords: "Azure App Service, Web アプリ, FAQ, Linux, OSS"
 services: app-service
 documentationCenter: 
 author: ahmedelnably
-manager: erikre
+manager: cfowler
 editor: 
 ms.assetid: 
 ms.service: app-service
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
 ms.author: aelnably;wesmc
-ms.openlocfilehash: b783f7e8cfef991e7028ba4b4c7b1d0935397580
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 38e771b8d7211e8f4f408a43b1ab2e293370ab9c
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="azure-app-service-web-app-for-containers-faq"></a>Azure App Service Web App for Containers の FAQ
+# <a name="azure-app-service-on-linux-faq"></a>Azure App Service on Linux の FAQ
 
-Web App for Containers のリリースでは、機能の追加とプラットフォームの向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
+App Service on Linux のリリースでは、機能の追加とプラットフォームの品質向上に取り組んでいます。 この記事では、最近お客様からお問い合わせのあったご質問に回答しています。
 
 ご質問がある場合は、この記事の最後にあるコメント欄をご利用ください。できるだけ早く回答いたします。
 
@@ -55,7 +55,7 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 **自分の Web アプリでは、Docker Hub 上のイメージを更新した後も、古い Docker コンテナー イメージを引き続き使用しています。カスタム コンテナーの継続的な統合およびデプロイをサポートしていますか。**
 
-**A:** Azure Container Registry または DockerHub イメージの継続的インテグレーション/デプロイをセットアップするには、「[Azure Web App for Containers での継続的なデプロイ](./app-service-linux-ci-cd.md)」を参照してください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
+Azure Container Registry または DockerHub イメージの継続的インテグレーションと継続的デプロイをセットアップするには、「[Azure Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)」をご覧ください。 プライベート レジストリでは、Web アプリを停止してから起動することでコンテナーを更新できます。 または、ダミー アプリケーション設定を変更または追加して、コンテナーを強制的に更新できます。
 
 **ステージング環境はサポートしていますか。**
 
@@ -94,7 +94,7 @@ Node.js の場合は、PM2 構成ファイルまたはスクリプト ファイ�
 
 **プライベート レジストリ オプションのイメージ名の形式は何ですか。**
 
-プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](https://docs.microsoft.com/en-us/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)を使用します。
+プライベート レジストリ の URL を含む完全なイメージ名を追加します (例: myacr.azurecr.io/dotnet:latest)。 カスタム ポートを使用するイメージ名は、[ポータル経由で入力することはできません](https://feedback.azure.com/forums/169385-web-apps/suggestions/31304650)。 `docker-custom-image-name` を設定するには、[`az` コマンドライン ツール](https://docs.microsoft.com/cli/azure/webapp/config/container?view=azure-cli-latest#az_webapp_config_container_set)を使用します。
 
 **カスタム コンテナー イメージで複数のポートを公開できますか。**
 
@@ -134,6 +134,6 @@ SCM サイトは別のコンテナーで実行されています。 アプリ �
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Web App for Containers とは](app-service-linux-intro.md)
+* [Azure App Service on Linux とは](app-service-linux-intro.md)
 * [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Azure Web App for Containers での継続的なデプロイ](./app-service-linux-ci-cd.md)
+* [Web App for Containers での継続的デプロイ](./app-service-linux-ci-cd.md)

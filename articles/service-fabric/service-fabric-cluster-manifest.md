@@ -1,6 +1,6 @@
 ---
 title: "Azure Service Fabric スタンドアロン クラスターを構成する | Microsoft Docs"
-description: "スタンドアロンまたはプライベート Service Fabric クラスターを構成する方法について説明します。"
+description: "スタンドアロンまたはオンプレミス Azure Service Fabric クラスターを構成する方法について説明します。"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/02/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 660e7b59ae0e92692121620341562e412a6e8eae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: aeb4be94ea12c01f4ecd5652fa3b3243351e4853
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="configuration-settings-for-standalone-windows-cluster"></a>スタンドアロン Windows クラスターの構成設定
 この記事では、***ClusterConfig.JSON*** ファイルを使用して、スタンドアロン Service Fabric クラスターを構成する方法について説明します。 このファイルを使って、Service Fabric ノードとその IP アドレス、クラスターの各種ノード、セキュリティ構成などの情報と、障害/アップグレード ドメインの観点でのスタンドアロン クラスターのネットワーク トポロジを指定できます。
@@ -26,9 +26,9 @@ ms.lasthandoff: 10/11/2017
 [スタンドアロン Service Fabric パッケージをダウンロード](service-fabric-cluster-creation-for-windows-server.md#downloadpackage)すると、ClusterConfig.JSON ファイルのサンプルが作業コンピューターにダウンロードされます。 名前に *DevCluster* が含まれているサンプルを使用すると、論理ノードのように、同じコンピューター上に 3 つのノードすべてが配置されたクラスターを作成できます。 これらのうち、少なくとも 1 つのノードをプライマリ ノードとしてマークする必要があります。 このクラスターは、開発またはテスト環境で役立ちますが、運用環境のクラスターとしてはサポートされていません。 名前に *MultiMachine* が含まれているサンプルでは、それぞれのノードが別々のマシン上に配置された運用環境品質クラスターを作成できます。 これらのクラスターのプライマリ ノードの数は、[信頼性レベル](#reliability)に基づきます。 リリース 5.7 の API バージョン 05-2017 では、信頼性レベルのプロパティが削除されました。 代わりに、クラスターに最適な信頼性レベルがコードで計算されます。 5.7 バージョン以降のコードでは、このプロパティを使用しないでください。
 
 
-1. *ClusterConfig.Unsecure.DevCluster.JSON* と *ClusterConfig.Unsecure.MultiMachine.JSON* は、それぞれ、セキュリティ保護されていないテストと運用クラスターを作成する方法を示しています。 
+1. *ClusterConfig.Unsecure.DevCluster.JSON* と *ClusterConfig.Unsecure.MultiMachine.JSON* は、それぞれ、セキュリティ保護されていないテストと運用クラスターを作成する方法を示しています。
 2. *ClusterConfig.Windows.DevCluster.JSON* と *ClusterConfig.Windows.MultiMachine.JSON* は、[Windows セキュリティ](service-fabric-windows-cluster-windows-security.md)を使用してセキュリティで保護されたテストまたは運用環境のクラスターを作成する方法を示しています。
-3. *ClusterConfig.X509.DevCluster.JSON* と *ClusterConfig.X509.MultiMachine.JSON* は、[X509 証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)を使用してセキュリティで保護されたテストまたは運用環境のクラスターを作成する方法を示しています。 
+3. *ClusterConfig.X509.DevCluster.JSON* と *ClusterConfig.X509.MultiMachine.JSON* は、[X509 証明書ベースのセキュリティ](service-fabric-windows-cluster-x509-security.md)を使用してセキュリティで保護されたテストまたは運用環境のクラスターを作成する方法を示しています。
 
 次に、***ClusterConfig.JSON*** ファイルの各セクションについて説明します。
 

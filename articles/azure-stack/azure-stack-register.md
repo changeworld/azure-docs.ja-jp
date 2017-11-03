@@ -14,17 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: erikje
-ms.openlocfilehash: b5f112f2d5b96843e7863aa664eec4847c58e950
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3282b9d4cdf67035d966cf934a7d8574eae6ae34
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="register-azure-stack-with-your-azure-subscription"></a>Azure サブスクリプションを使用した Azure Stack の登録
 
 *適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
-Azure Active Directory デプロイの場合は、[Azure Stack](azure-stack-poc.md) を Azure に登録して、Azure からマーケットプレース項目をダウンロードしたり、Microsoft に返送するコマース データ レポートを設定したりできます。 
+[Azure Stack](azure-stack-poc.md) を Azure に登録して Azure からマーケットプレース項目をダウンロードし、Microsoft への商取引データの事後レポートを設定できます。 
 
 > [!NOTE]
 >登録によって、マーケットプレース シンジケーションや使用状況レポートなどの Azure Stack の重要な機能をテストできるようになるので、登録することをお勧めします。 Azure Stack を登録すると、使用状況が Azure コマースにレポートされます。 使用状況は、登録に使用したサブスクリプションの下に表示されます。 Azure Stack Development Kit のユーザーは、レポートする使用状況に対して課金されることはありません。
@@ -56,7 +56,7 @@ Azure を使用して Azure Stack を登録する前に、以下のものが必�
 例: 
 ```Powershell
 Login-AzureRmAccount -EnvironmentName "AzureCloud"
-Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack
 ```
 
 
@@ -73,22 +73,21 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.AzureStack -Force
     - *YourCloudAdminCredential*は domain\cloudadmin (Development Kitでは azurestack\cloudadmin) のローカル ドメインの資格情報を含む PowerShell オブジェクトです。
     - *YourAzureSubscriptionID* は、Azure Stack の登録に使用する Azure サブスクリプション ID です。
     - *YourAzureDirectoryTenantName* は、登録リソースを作成する Azure テナントのディレクトリの名前です。
-    - *YourPrivilegedEndpoint* は、Just-Enough-Access Computer の名前です。これは Emergency コンソール VM とも呼ばれます。
+    - *YourPrivilegedEndpoint* は[特権エンドポイント](azure-stack-privileged-endpoint.md)の名前です。
 
     ```powershell
     Add-AzsRegistration -CloudAdminCredential $YourCloudAdminCredential -AzureDirectoryTenantName $YourAzureDirectoryTenantName  -AzureSubscriptionId $YourAzureSubscriptionId -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel Development 
     ```
- 
-5. 2 つのプロンプトで、Enter キーを押します。
-6. ログインのポップアップ ウィンドウで、Azure サブスクリプションの資格情報を入力します。
-
-
+5. ログインのポップアップ ウィンドウで、Azure サブスクリプションの資格情報を入力します。
 
 ## <a name="verify-the-registration"></a>登録の確認
 
 1. 管理者ポータル (https://adminportal.local.azurestack.external) にサインインします。
 2. **[More Services]** (その他のサービス) > **[Marketplace Management]** (Marketplace の管理) > **[Add from Azure]** (Azure から追加) をクリックします。
 3. Azure (WordPress など) から利用可能な項目のリストが表示される場合は、アクティブ化に成功しました。
+
+> [!NOTE]
+> 登録が完了すると、登録されていないことを示すアクティブな警告は表示されなくなります。
 
 ## <a name="next-steps"></a>次のステップ
 

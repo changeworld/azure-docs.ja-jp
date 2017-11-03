@@ -13,13 +13,13 @@ ms.devlang: java
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 07/21/2017
+ms.date: 10/12/2017
 ms.author: larryfr
-ms.openlocfilehash: e8895ef3c11aea48513e4060a20f5f49b11fc961
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b41afdbb019f8533a49db3ebd37ff144186f956
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="use-apache-kafka-preview-with-storm-on-hdinsight"></a>HDInsight での Strom に Apache Kafka (プレビュー) を使用する
 
@@ -79,7 +79,7 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
   > [!WARNING]
   > HDInsight で Kafka の可用性を保証するには、クラスターに少なくとも 3 つのワーカー ノードが必要です。 このテンプレートは、3 つのワーカー ノードが含まれる Kafka クラスターを作成します。
 
-2. 次のガイダンスに従って、**[カスタム デプロイ]** ブレードの各エントリに入力します。
+2. 次のガイダンスに従って、**[カスタム デプロイ]** セクションの各エントリに入力します。
    
     ![HDInsight のカスタム デプロイ](./media/hdinsight-apache-storm-with-kafka/parameters.png)
 
@@ -101,9 +101,9 @@ Azure 仮想ネットワーク、Kafka、および Storm クラスターは手�
 
 4. 最後に、**[ダッシュボードにピン留めする]** をオンにし、**[購入]** をクリックします。 クラスターの作成には約 20 分かかります。
 
-リソースが作成されると、リソース グループのブレードが表示されます。
+リソースが作成されると、リソース グループ用のセクションが表示されます。
 
-![Resource group blade for the vnet and clusters](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
+![vnet とクラスターのリソース グループ セクション](./media/hdinsight-apache-storm-with-kafka/groupblade.png)
 
 > [!IMPORTANT]
 > 各 HDInsight クラスターの名前が **storm-BASENAME** および **kafka-BASENAME** であることに注目してください。BASENAME はテンプレートで指定した名前です。 これらの名前は、後の手順でクラスターに接続するときに使用します。
@@ -294,7 +294,7 @@ Flux トポロジについて詳しくは、[https://storm.apache.org/releases/1
   storm jar KafkaTopology-1.0-SNAPSHOT.jar org.apache.storm.flux.Flux --remote -R /reader.yaml --filter dev.properties
   ```
 
-2. トポロジが起動したら、Storm UI を開きます。 この Web UI は、https://storm-BASENAME.azurehdinsight.net/stormui にあります。 __BASENAME__ は、クラスターの作成時に使用したベース名に置き換えます。 
+2. トポロジが起動したら、Storm UI を開きます。 この Web UI は、`https://storm-BASENAME.azurehdinsight.net/stormui` にあります。 __BASENAME__ は、クラスターの作成時に使用したベース名に置き換えます。 
 
     メッセージが表示されたら、クラスターの作成時に使用した管理者のログイン名 (既定では `admin`) およびパスワードを入力します。 次の画像のような Web ページが表示されます。
 

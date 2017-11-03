@@ -1,6 +1,6 @@
 ---
-title: "Azure Web App for Containers でカスタム Docker Hub イメージを実行する | Microsoft Docs"
-description: "Azure Web App for Containers のカスタム Docker イメージを使用する方法。"
+title: "Web App for Containers でカスタム Docker Hub イメージを実行する | Microsoft Docs"
+description: "Web App for Containers でカスタム Docker イメージを使用する方法"
 keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
 services: app-service
 documentationcenter: 
@@ -16,25 +16,25 @@ ms.topic: quickstart
 ms.date: 09/05/2017
 ms.author: wesmc
 ms.custom: mvc
-ms.openlocfilehash: 28b0b50c68fa7c16a354fd16b7dfd930436c6b4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eadc0f7eb20b9e8d1cacc79b2907559e2b2535a2
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="run-a-custom-docker-hub-image-in-azure-web-app-for-containers"></a>Azure Web App for Containers でカスタム Docker Hub イメージを実行する #
+# <a name="run-a-custom-docker-hub-image-in-web-app-for-containers"></a>Web App for Containers でカスタム Docker Hub イメージを実行する
 
-App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 まだ Azure で定義されていないアプリケーション スタックに Web アプリをデプロイする場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、Web アプリを作成し、そのアプリに Python イメージをデプロイする方法を示します。 Web アプリは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して作成します。
+App Service は、事前定義済みのアプリケーション スタックを Linux 上で提供し、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートします。 まだ Azure で定義されていないアプリケーション スタックに Web アプリをデプロイする場合にも、カスタム Docker イメージを使用できます。 このクイックスタートでは、Web アプリを作成し、そのアプリに Python ベースの Docker イメージをデプロイする方法を示します。 Web アプリは、[Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して作成します。
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)] 
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+## <a name="create-a-web-app-for-container"></a>Web App for Containers の作成
 
 [az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
 

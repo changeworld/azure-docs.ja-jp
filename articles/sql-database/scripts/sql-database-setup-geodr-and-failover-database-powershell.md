@@ -1,6 +1,6 @@
 ---
 title: "PowerShell サンプル - アクティブ geo レプリケーション - 単一 Azure SQL Database | Microsoft Docs"
-description: "単一の Azure SQL データベースのアクティブ geo レプリケーションをセットアップする Azure PowerShell のサンプル スクリプト"
+description: "単一の Azure SQL Database のアクティブ geo レプリケーションをセットアップし、フェールオーバーする Azure PowerShell のサンプル スクリプト"
 services: sql-database
 documentationcenter: sql-database
 author: janeng
@@ -16,11 +16,11 @@ ms.tgt_pltfrm: sql-database
 ms.workload: database
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: e6c82973032b88e7ed16baf6ce71086d9d86d902
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 22688c1b3c1a993612898da2c3e2b6cca3d03b30
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-single-azure-sql-database"></a>PowerShell を使用し、単一 Azure SQL データベースのアクティブ geo レプリケーションを構成する
 

@@ -14,8 +14,8 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: raynew
-ms.openlocfilehash: b182c00ac9a6956d07dece621d03c84788442085
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 17bd7f424117842fd0687ba8a5fcf4d83c96a0bb
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
 ms.lasthandoff: 10/12/2017
@@ -94,7 +94,7 @@ ms.lasthandoff: 10/12/2017
 ## <a name="updates"></a>更新プログラム
 
 ### <a name="site-recovery-scout-801-update-6"></a>Site Recovery Scout 8.0.1 更新プログラム 6 
-更新日: 2017 年 10 月 6 日
+更新日: 2017 年 10 月 12 日
 
 Scout 更新プログラム 6 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 5 までのすべての修正と、下記の新しい修正および拡張機能が含まれています。 
 
@@ -115,7 +115,6 @@ Scout 更新プログラム 6 は累積的な更新プログラムです。 更�
 
 #### <a name="bug-fixes-and-enhancements"></a>バグ修正と機能強化
 - レプリケートされるディスクの一覧を使用した Linux VM のフェールバック保護に失敗すると、config の末尾が空になります。
-
 
 ### <a name="site-recovery-scout-801-update-5"></a>Site Recovery Scout 8.0.1 更新プログラム 5
 Scout 更新プログラム 5 は累積的な更新プログラムです。 更新プログラム 1 から更新プログラム 4 までのすべての修正と、下記の新しい修正が含まれています。
@@ -139,10 +138,10 @@ Scout 更新プログラム 5 は累積的な更新プログラムです。 更�
     
 * フェールバック保護中に、選択されたマスター ターゲット サーバーが保護されたソース マシンと同じ ESXi サーバーにない場合 (フォワード保護中)、フェールバック回復中に vContinuum が間違ったマスター ターゲット サーバーを取得し、回復操作が失敗する、という問題を修正。
 
-#### <a name="issues"></a>発行
-* P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムを持つ保護された P2V MSCS クラスターに、クラスターの修正をインストールするには、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に記載されているアップグレードの手順に従います。
-* 再保護の際に、各クラスター ノードで、同じ一連のディスクが最初に保護されたときのようにアクティブである場合は、物理 MSCS クラスターの再保護では既存のターゲット ディスクのみ再利用できます。 そうでない場合、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 にある手動の手順に従って、ターゲット側のディスクを適切なデータストア パスに移動し、再保護中に再利用するようにします。 アップグレードの手順に従わずに P2V モードで MSCS クラスターを再保護すると、ターゲット ESXi サーバーに新しいディスクが作成されます。 データストアから古いディスクを手動で削除する必要が生じます。
-* ソース SLES11 またはいずれかの Service Pack の付いた SLES11 サーバーが正常に再起動されたら、再同期する**ルート** ディスクのレプリケーション ペアを手動でマークします。 CX のインターフェイスでは、通知されません。 再同期するルート ディスクをマークしないと、データ整合性の問題が起きる可能性があります。
+> [!NOTE]
+> * P2V クラスター修正は、Site Recovery Scout 更新プログラム 5 で新しく保護された物理 MSCS クラスターのみに適用されます。 以前の更新プログラムを持つ保護された P2V MSCS クラスターに、クラスターの修正をインストールするには、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 に記載されているアップグレードの手順に従います。
+> * 再保護の際に、各クラスター ノードで、同じ一連のディスクが最初に保護されたときのようにアクティブである場合は、物理 MSCS クラスターの再保護では既存のターゲット ディスクのみ再利用できます。 そうでない場合、[Site Recovery Scout リリース ノート](https://aka.ms/asr-scout-release-notes)のセクション 12 にある手動の手順に従って、ターゲット側のディスクを適切なデータストア パスに移動し、再保護中に再利用するようにします。 アップグレードの手順に従わずに P2V モードで MSCS クラスターを再保護すると、ターゲット ESXi サーバーに新しいディスクが作成されます。 データストアから古いディスクを手動で削除する必要が生じます。
+> * ソース SLES11 またはいずれかの Service Pack の付いた SLES11 サーバーが正常に再起動されたら、再同期する**ルート** ディスクのレプリケーション ペアを手動でマークします。 CX のインターフェイスでは、通知されません。 再同期するルート ディスクをマークしないと、データ整合性の問題が起きる可能性があります。
 
 
 ### <a name="azure-site-recovery-scout-801-update-4"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 4
@@ -180,14 +179,13 @@ Scout 更新プログラム 4 は累積的な更新プログラムです。 更�
   * 保護されているデバイスのすべてについて、容量と空き領域の詳細が表示されます。
   * ソース サーバー上の Scout ドライバーの状態がわかります。
 
-#### <a name="issues"></a>発行
-
-* **InMage_Scout_Standard_8.0.1_GA.zip** 基本パッケージには、以下が含まれます。
+> [!NOTE]
+> * **InMage_Scout_Standard_8.0.1_GA.zip** 基本パッケージには、以下が含まれます。
     * 更新された構成サーバーの基本インストーラー (**InMage_CX_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
     * Windows マスター ターゲット基本インストーラー (**InMage_Scout_vContinuum_MT_8.0.1.0_Windows_GA_26Feb2015_release.exe**)
     * 新規インストールの場合はすべて、新しい構成サーバーと Windows マスター ターゲット GA ビットを使用します。
-* 更新プログラム 4 は、8.0.1 GA に直接適用できます。
-* 構成サーバーと RX の更新プログラムは、適用後にロールバックすることはできません。
+> * 更新プログラム 4 は、8.0.1 GA に直接適用できます。
+> * 構成サーバーと RX の更新プログラムは、適用後にロールバックすることはできません。
 
 
 ### <a name="azure-site-recovery-scout-801-update-3"></a>Azure Site Recovery Scout 8.0.1 更新プログラム 3

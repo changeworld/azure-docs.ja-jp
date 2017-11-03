@@ -108,5 +108,6 @@
 #### [証明書の資格情報](active-directory-certificate-credentials.md)
 ### [スコープ](active-directory-v2-scopes.md)
 # リソース
+## [サポートの利用](active-directory-develop-help-support.md)
 ## [Azure のロードマップ](https://azure.microsoft.com/roadmap/?category=security-identity)
 ## [料金計算ツール](https://azure.microsoft.com/pricing/calculator/)

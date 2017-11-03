@@ -9,11 +9,11 @@ manager: jhubbard
 ms.service: mysql-database
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 38e68712699b3e89a10c3d44d8ec313f531fcbdc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 079bb22aa76b8354f79400ced4e04dc971ea249a
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Azure Database for MySQL に安全に接続するためにアプリケーションで SSL 接続を構成する
 Azure Database for MySQL は、Secure Sockets Layer (SSL) を使用した、クライアント アプリケーションへの Azure Database for MySQL サーバーへの接続をサポートします。 データベース サーバーとクライアント アプリケーション間に SSL 接続を適用すると、サーバーとアプリケーション間のデータ ストリームが暗号化されて、"man in the middle" 攻撃から保護されます。
@@ -24,11 +24,11 @@ Azure Database for MySQL サーバーで SSL 経由で通信するために必�
 
 ## <a name="step-2-bind-ssl"></a>手順 2: SSL をバインドする
 ### <a name="connecting-to-server-using-the-mysql-workbench-over-ssl"></a>MySQL Workbench による SSL 経由でのサーバーへの接続
-SSL 経由で安全に接続するように MySQL Workbench を構成します。 MySQL Workbench で、[Setup New Connection]\(新しい接続のセットアップ\) ダイアログの **[SSL]** タブに移動します。**[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。
-![カスタマイズしたタイルの保存](./media/howto-configure-ssl/mysql-workbench-ssl.png)
+SSL 経由で安全に接続するように MySQL Workbench を構成します。 [Setup New Connection]\(新しい接続のセットアップ\) ダイアログから、**[SSL]** タブに移動します。**[SSL CA File:]\(SSL CA ファイル:\)** フィールドに **BaltimoreCyberTrustRoot.crt.pem** ファイルの場所を入力します。 
+![カスタマイズされたタイル保存](./media/howto-configure-ssl/mysql-workbench-ssl.png) 既存の接続に SSL をバインドするには、接続アイコンを右クリックして編集を選択します。 次に **[SSL]** タブに移動して証明書ファイルをバインドします。
 
 ### <a name="connecting-to-server-using-the-mysql-cli-over-ssl"></a>MySQL CLI による SSL 経由でのサーバーへの接続
-MySQL コマンド ライン インターフェイスを使用して、次のコマンドを実行します。
+SSL 証明書をバインドする別の方法として、次のコマンドを実行して MySQL コマンド ライン インターフェイスを使用します。
 ```dos
 mysql.exe -h mysqlserver4demo.mysql.database.azure.com -u Username@mysqlserver4demo -p --ssl-ca=c:\ssl\BaltimoreCyberTrustRoot.crt.pem
 ```
@@ -52,6 +52,7 @@ mysql> status
 接続が暗号化されていることを確認します。そのためには、出力に "**SSL: Cipher in use is AES256-SHA**" (SSL: 使用中の暗号は AES256-SHA) と表示されていることを確認します。 
 
 ## <a name="sample-code"></a>サンプル コード
+アプリケーションから Azure Database for MySQL へのセキュリティで保護された接続を SSL 経由で確立するためには、次のコード サンプルを参照してください。
 ### <a name="php"></a>PHP
 ```
 $conn = mysqli_init();

@@ -14,14 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/07/2017
 ms.author: magoedte
-ms.openlocfilehash: 88c052c3a22611b796559d4dd62c763445aa6210
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5e6687e4e868ae998c77bba231437d52fdbe719c
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker のデプロイ方法
-Azure Automation の Runbook は Azure クラウドで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできません。  Azure Automation の Hybrid Runbook Worker 機能を使用すると、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。  
+
+Azure Automation の Runbook は Azure クラウドで実行されるため、他のクラウドやオンプレミス環境のリソースにはアクセスできません。 Azure Automation の Hybrid Runbook Worker 機能を使用すると、ロールをホスティングしているコンピューター上で環境内のリソースに対して Runbook を直接実行して、これらのローカル リソースを管理できます。 Runbook は Azure Automation で格納および管理された後、1 つ以上の指定されたコンピューターに配信されます。
 
 次の図にこの機能を示します。<br>  
 
@@ -48,13 +49,21 @@ Linux コンピューターに Hybrid Runbook Worker をインストールして
          $null = Set-AzureRmOperationalInsightsIntelligencePack -ResourceGroupName  <ResourceGroupName> -WorkspaceName <WorkspaceName> -IntelligencePackName  "AzureAutomation" -Enabled $true
         ```
 
-2.  Linux コンピューターで、パラメーター *-w* と *-k* の値を変更する次のコマンドを実行します。
+2.  次のコマンドを、*-w*、*-k*、*-g*、および *-e* パラメーターの値を変更して実行します。 *-g* パラメーターを、新しい Linux Hybrid Runbook Worker を参加させる Hybrid Runbook Worker グループの名前の値に置き換えます。 名前が Automation アカウントに既に存在しない場合、新しい Hybrid Runbook Worker グループがその名前で作成されます。
     
     ```
-    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> --groupname <hybridgroupname> -e <automationendpoint>
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/onboarding.py --register -w <OMSworkspaceId> -k <AutomationSharedKey> -g <hybridgroupname> -e <automationendpoint>
     ```
 3. コマンドが完了すると、Azure Portal の [ハイブリッド worker グループ] ブレードに新しいグループとメンバー数が表示されますが、既存のグループの場合はメンバー数が追加されます。  **[ハイブリッド worker グループ]** ブレード上にあるリストからグループを選択し、**[ハイブリッド worker]** タイルを選択できます。  **[ハイブリッド worker]** ブレードで、グループの各メンバーが一覧表示されます。  
 
+
+## <a name="turning-off-signature-validation"></a>署名の検証をオフにする 
+既定では、Linux Hybrid Runbook Worker は、署名の検証を必要とします。 ワーカーに対して署名なしの Runbook を実行した場合は、「署名の検証が失敗しました」を含むエラーが表示されます。 署名の検証をオフにするには、2 番目のパラメーターを OMS ワークスペース ID に置き換えて、次のコマンドを 実行します。
+
+    ```
+    sudo python /opt/microsoft/omsconfig/modules/nxOMSAutomationWorker/DSCResources/MSFT_nxOMSAutomationWorkerResource/automationworker/scripts/require_runbook_signature.py --false <OMSworkspaceId>
+    ```
+   
 ## <a name="next-steps"></a>次のステップ
 
 * 「[Hybrid Runbook Worker での Runbook の実行](automation-hrw-run-runbooks.md)」を参照して、オンプレミスのデータセンターや他のクラウド環境のプロセスを自動化するように Runbook を構成する方法を確認します。

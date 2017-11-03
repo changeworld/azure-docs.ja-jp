@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/11/2017
+ms.date: 10/12/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0f35030b90cbd854512fb6b9a8ef564584fc101b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 46a72a15ba35119ecb5640cb0b22cd2a0fc56a27
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="move-data-from-postgresql-using-azure-data-factory"></a>Azure Data Factory を使用して PostgreSQL からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -44,7 +44,7 @@ PostgreSQL データベースが Azure IaaS VM でホストされている場合
 > 接続/ゲートウェイに関する問題のトラブルシューティングのヒントについては、 [ゲートウェイの問題のトラブルシューティング](data-factory-data-management-gateway.md#troubleshooting-gateway-issues) に関するセクションをご覧ください。
 
 ## <a name="supported-versions-and-installation"></a>サポートされているバージョンとインストール
-Data Management Gateway で PostgreSQL Databases に接続するには、[PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)の 2.0.12 以降を Data Management Gateway と同じシステムにインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
+Data Management Gateway で PostgreSQL Databases に接続するには、Data Management Gateway と同じシステムに 2.0.12 ～ 3.1.9 バージョンの [PostgreSQL の Ngpsql データ プロバイダー](http://go.microsoft.com/fwlink/?linkid=282716)をインストールしてください。 PostgreSQL バージョン 7.4 以降がサポートされています。
 
 ## <a name="getting-started"></a>使用の開始
 さまざまなツールまたは API を使用して、オンプレミスの PostgreSQL データ ストアからデータを移動するコピー アクティビティを含むパイプラインを作成できます。 
@@ -102,7 +102,7 @@ source の種類が **RelationalSource** (PostgreSQL を含む) である場合�
 
 | プロパティ | 説明 | 使用できる値 | 必須 |
 | --- | --- | --- | --- |
-| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 例: "query": "select * from \"MySchema\".\"MyTable\"" |いいえ (**データセット**の **tableName** が指定されている場合) |
+| query |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 (例: `"query": "select * from \"MySchema\".\"MyTable\""`)。 |いいえ (**データセット**の **tableName** が指定されている場合) |
 
 > [!NOTE]
 > スキーマ名とテーブル名は、大文字と小文字が区別されます。 クエリ内では、これらを `""` (二重引用符) で囲んでください。  
@@ -310,13 +310,13 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | abstime | |Datetime | &nbsp;
 | bigint |int8 |Int64 |
 | bigserial |serial8 |Int64 |
-| bit [ (n) ] | |Byte[]、String | &nbsp;
+| bit [(n)] | |Byte[]、String | &nbsp;
 | bit varying [ (n) ] |varbit |Byte[]、String |
 | boolean |bool |boolean |
 | box | |Byte[]、String |&nbsp;
 | bytea | |Byte[]、String |&nbsp;
-| character [ (n) ] |char [ (n) ] |String |
-| character varying [ (n) ] |varchar [ (n) ] |String |
+| character [(n)] |char [(n)] |String |
+| character varying [(n)] |varchar [(n)] |String |
 | cid | |String |&nbsp;
 | cidr | |String |&nbsp;
 | circle | |Byte[]、String |&nbsp;
@@ -328,14 +328,14 @@ PostgreSQL にデータを移動する場合、PostgreSQL 型から .NET 型に�
 | int4range | |String |&nbsp;
 | int8range | |String |&nbsp;
 | integer |int, int4 |Int32 |
-| interval [ fields ] [ (p) ] | |Timespan |&nbsp;
+| interval [fields] [(p)] | |Timespan |&nbsp;
 | json | |String |&nbsp;
 | jsonb | |Byte[] |&nbsp;
 | line | |Byte[]、String |&nbsp;
 | lseg | |Byte[]、String |&nbsp;
 | macaddr | |Byte[]、String |&nbsp;
 | money | |Decimal |&nbsp;
-| numeric [ (p, s) ] |decimal [ (p, s) ] |Decimal |
+| numeric [(p, s)] |decimal [(p, s)] |Decimal |
 | numrange | |String |&nbsp;
 | oid | |Int32 |&nbsp;
 | path | |Byte[]、String |&nbsp;

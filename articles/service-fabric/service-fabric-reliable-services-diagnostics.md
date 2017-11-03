@@ -1,6 +1,6 @@
 ---
-title: "ステートフル Reliable Services の診断 | Microsoft Docs"
-description: "ステートフル Reliable Services の診断機能"
+title: "Azure Service Fabric ステートフル Reliable Services の診断 | Microsoft Docs"
+description: "Azure Service Fabric のステートフル Reliable Services の診断機能"
 services: service-fabric
 documentationcenter: .net
 author: dkkapur
@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 63a7707f16bbf037c0c91da1d02093e2314dc06e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d7dfb16407aa6e89a6bbf4db303bd5332cf31432
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>ステートフル Reliable Services の診断機能
 ステートフル Reliable Services の StatefulServiceBase クラスは、サービスのデバッグに使用することができる [EventSource](https://msdn.microsoft.com/library/system.diagnostics.tracing.eventsource.aspx) イベントを出力するため、ランタイムの動作状況を理解し、トラブルシューティングに役立ちます。

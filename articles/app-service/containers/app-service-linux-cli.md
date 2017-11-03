@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2017
 ms.author: aelnably
-ms.openlocfilehash: 5213bec66095d50ef29cc3bec0a7b6307614dc92
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28dfa62c3408c43d3919a9657339bb8d25f6dcdf
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="manage-web-app-for-containers-using-azure-cli"></a>Azure CLI を使って Web App for Containers を管理する
 
@@ -103,8 +103,8 @@ az webapp deployment source config -n sname -g rgname --repo-url <gitrepo url> -
 
 ## <a name="next-steps"></a>次のステップ
 
-* [Azure Web App for Containers とは](app-service-linux-intro.md)
+* [Azure App Service on Linux とは](app-service-linux-intro.md)
 * [Azure CLI 2.0 のインストール](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli)
 * [Azure Cloud Shell (プレビュー)](../../cloud-shell/overview.md)
 * [Azure App Service でステージング環境を設定する](../../app-service/web-sites-staged-publishing.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)
-* [Azure Web App for Containers での継続的なデプロイ](app-service-linux-ci-cd.md)
+* [Web App for Containers での継続的デプロイ](app-service-linux-ci-cd.md)

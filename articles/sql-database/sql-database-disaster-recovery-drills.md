@@ -1,6 +1,6 @@
 ---
 title: "SQL Database の障害復旧訓練 | Microsoft Docs"
-description: "Azure SQL Database を使用して、ミッション クリティカルなビジネス アプリケーションがエラーと障害に対して回復力を保持するためのディザスター リカバリー訓練を実行するためのガイダンスとベスト プラクティスについて説明します。"
+description: "Azure SQL Database を使用してディザスター リカバリーの演習を実行するためのガイダンスとベスト プラクティスについて説明します。"
 services: sql-database
 documentationcenter: 
 author: anosov1960
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: data-management
 ms.date: 07/31/2016
 ms.author: sashan
-ms.openlocfilehash: 1b1d65a41a794a566287dcffe3581ac58e2a965f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbe2b0096424cc120968aad8d60dc0395adc9cb4
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="performing-disaster-recovery-drill"></a>障害復旧訓練の実行
 復旧ワークフローのためのアプリケーションの対応状況の検証は、定期的に実行することをお勧めします。 アプリケーションの動作、データの損失の影響やフェールオーバーによる中断を検証することをお勧めします。 これは、ビジネス継続性の証明として、ほとんどの業界標準で必要条件ともなっています。

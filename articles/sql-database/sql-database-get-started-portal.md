@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: SQL データベースの作成 | Microsoft Docs"
-description: "Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、データベースを作成する方法について説明します。 また、Azure Portal を使用して Azure SQL データベースへのクエリを実行する方法についても説明します。"
+description: "Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成し、クエリを実行します。"
 keywords: "SQL データベース チュートリアル, SQL データベースの作成"
 services: sql-database
 documentationcenter: 
@@ -16,11 +16,11 @@ ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: e1e9dcd5b2b58e02b0c320c808f9042f7e032d50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a97ff8cbd05eb3cd94b557b4dbeb63634a94ccf8
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -46,7 +46,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 3. 前の画像で示されているように、[SQL Database] のフォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[データベース名]** | mySampleDatabase | 有効なデータベース名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-identifiers)」を参照してください。 | 
    | **サブスクリプション** | 該当するサブスクリプション  | サブスクリプションの詳細については、[サブスクリプション](https://account.windowsazure.com/Subscriptions)に関するページを参照してください。 |
@@ -59,7 +59,7 @@ Azure SQL データベースは、定義済みの一連の[コンピューティ
 
 4. 次の画像に示されているように、**[サーバー]** の **[Configure required settings]\(必要な設定の構成\)** をクリックし、SQL Server (論理サーバー) フォームに次の情報を入力します。   
 
-   | 設定       | 推奨値 | Description | 
+   | 設定       | 推奨値 | 説明 | 
    | ------------ | ------------------ | ------------------------------------------------- | 
    | **[サーバー名]** | グローバルに一意の名前 | 有効なサーバー名については、[名前付け規則と制限](https://docs.microsoft.com/azure/architecture/best-practices/naming-conventions)に関するページを参照してください。 | 
    | **[サーバー管理者ログイン]** | 有効な名前 | 有効なログイン名については、「[Database Identifiers (データベース識別子)](https://docs.microsoft.com/en-us/sql/relational-databases/databases/database-identifiers)」を参照してください。 |

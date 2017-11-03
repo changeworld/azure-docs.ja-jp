@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: f52988f2a67f2cafe93a7e0a358c599658d068b2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0cefab15a115719ea9c378546a7e6004bd06187
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="event-analysis-and-visualization-with-oms"></a>OMS を使用したイベントの分析と視覚化
 
@@ -30,11 +30,10 @@ Log Analytics は、Azure ストレージ テーブルまたはエージェン�
 
 OMS が構成されているときは特定の *OMS ワークスペース*にアクセスして、ダッシュボード内でデータを照会したり視覚化したりできます。
 
-Log Analytics がデータを受け取った後、OMS にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 調査してみる価値のあるソリューションが他にもいくつかあり、OMS ではカスタム ソリューションを作成することもできます。詳細については[こちら](../operations-management-suite/operations-management-suite-solutions.md)をご覧ください。 クラスターに使用するために選択する各ソリューションは、同じ OMS ワークスペース内に Log Analytics と一緒に構成されます。 ワークスペースでは、カスタム ダッシュボードを作成でき、データを視覚化したり、収集、処理、および分析するデータに変更を加えたりできます。
+Log Analytics がデータを受け取った後、OMS にはいくつかの*管理ソリューション*が用意されています。これらは受け取るデータを監視するために事前にパッケージ化されたソリューションで、いくつかのシナリオに合わせてカスタマイズされています。 *Service Fabric Analytics* ソリューションと*コンテナー* ソリューションが含まれており、これらは Service Fabric クラスターを使用する際の診断と監視に最も関連性の高いソリューションです。 調査してみる価値のあるソリューションが他にもいくつかあり、OMS ではカスタム ソリューションを作成することもできます。詳細については[こちら](../operations-management-suite/operations-management-suite-solutions.md)をご覧ください。 クラスターに使用するために選択する各ソリューションは、同じ OMS ワークスペース内に Log Analytics と一緒に構成できます。 ワークスペースでは、カスタム ダッシュボードを作成でき、データを視覚化したり、収集、処理、および分析するデータに変更を加えたりできます。
 
-## <a name="setting-up-an-oms-workspace-with-the-service-fabric-solution"></a>Service Fabric ソリューションによる OMS ワークスペースの設定
-
-OMS ワークスペースに Service Fabric ソリューションを含めることをお勧めします。プラットフォームおよびアプリケーション レベルからのさまざまなログ チャネルを表示する便利なダッシュボードが用意されており、Service Fabric 固有のログを照会することもできます。 ここで、比較的単純な Service Fabric ソリューションを示します。クラスター上に単一アプリケーションが展開されます。
+## <a name="setting-up-an-oms-workspace-with-the-service-fabric-analytics-solution"></a>Service Fabric Analytics ソリューションによる OMS ワークスペースの設定
+OMS ワークスペースに Service Fabric ソリューションを含めることをお勧めします。プラットフォーム/アプリケーション レベルから入ってくるさまざまなログのチャネルを表示するダッシュボードが用意されており、Service Fabric 固有のログを照会することもできます。 ここで、比較的単純な Service Fabric ソリューションを示します。クラスター上に単一アプリケーションが展開されます。
 
 ![OMS SF ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-solution.png)
 
@@ -42,7 +41,7 @@ OMS ワークスペースをプロビジョニングして構成する方法は 
 
 ### <a name="deploying-oms-using-a-resource-management-template"></a>Resource Management テンプレートを使用した OMS の展開
 
-これはクラスター作成ステージで使用します。Resource Manager テンプレートを使用してクラスターを展開すると、テンプレートが新しい OMS ワークスペースも作成し、Service Fabric ソリューションをそこに追加し、適切なストレージ テーブルからデータを読み取るように構成できます。
+Resource Manager テンプレートを使用してクラスターを展開するとき、テンプレートは新しい OMS ワークスペースを作成し、Service Fabric ソリューションをそれに追加し、適切なストレージ テーブルからデータを読み取るように構成することもできます。
 
 >[!NOTE]
 >この方法が機能するには、Azure ストレージ テーブルが存在し、OMS / Log Analytics がそこから情報を読み取るために、診断が有効になっている必要があります。
@@ -51,11 +50,33 @@ OMS ワークスペースをプロビジョニングして構成する方法は 
 
 ### <a name="deploying-oms-using-through-azure-marketplace"></a>Azure Marketplace を使用した OMS の展開
 
-クラスターを展開した後に OMS ワークスペースを追加する場合は、Azure Marketplace に進んで *"Service Fabric Analytics"* を探します。 以下のように「Monitoring + Management (監視 + 管理)」カテゴリ内に、リソースが 1 つだけ表示されるはずです。
+クラスターを展開した後に OMS ワークスペースを追加する場合は、Azure Marketplace に進んで *"Service Fabric Analytics"* を探します。
 
 ![Marketplace 内の OMS SF Analytics](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics.png)
 
-**[Create] \(作成する)** をクリックすると OMS ワークスペースを求められます。 **[Select a workspace] \(ワークスペースの選択)** をクリックしてから、**[Create a new workspace] \(新しいワークスペースを作成する)** をクリックします。 必要なエントリを入力します。ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、 OMS ワークスペースは数分で展開されます。 展開中は、Service Fabric ソリューション ブレードの作成は開いたままです。 *OMS ワークスペース*の下に同じワークスペースが表示されていることを確認し、下部で **[Create] \(作成する)** をクリックすると、Service Fabric ソリューションがワークスペースに追加されます。
+* **[作成]** をクリックします。
+* Service Fabric Analytics 作成ウィンドウで *[OMS ワークスペース]* フィールドの **[ワークスペースを選択します]** をクリックし、**[新しいワークスペースの作成]** をクリックします。 必要なエントリを入力します。ここでの要件は、Service Fabric クラスターと OMS ワークスペースのサブスクリプションが同じであることだけです。 入力が検証されると、OMS ワークスペースは展開を開始します。 わずか数分で完了します。
+* 完了したら、Service Fabric Analytics 作成ウィンドウの下部にある **[作成]** をもう一度クリックします。 新しいワークスペースが *[OMS ワークスペース]* に表示されていることを確認します。 作成したワークスペースにソリューションが追加されます。
+
+
+これでソリューションがワークスペースに追加されますが、クラスターから入ってくる診断データに引き続きワークスペースを接続する必要があります。 Service Fabric Analytics ソリューションを作成したリソース グループに移動します。 *ServiceFabric(\<nameOfOMSWorkspace\>)* が表示されます。
+
+* ソリューションをクリックし、その概要ページに移動します。概要ページでソリューション設定やワークスペース設定を変更し、OMS ポータルに移動できます。
+* 左側のナビゲーション メニューの *[ワークスペースのデータ ソース]* の下にある **[ストレージ アカウント ログ]** をクリックします。
+
+    ![ポータルの Service Fabric Analytics ソリューション](media/service-fabric-diagnostics-event-analysis-oms/service-fabric-analytics-portal.png)
+
+* *[ストレージ アカウント ログ]* ページの上部にある **[追加]** をクリックし、クラスターのログをワークスペースに追加します。
+* **[ストレージ アカウント]** をクリックし、クラスターで作成された適切なアカウントを追加します。 既定の名前を使用した場合、ストレージ アカウントの名前は *sfdg\<resourceGroupName\>* になります。 これはクラスターの展開に使用した Azure Resource Manager テンプレートを確認する方法でも確認できます。`applicationDiagnosticsStorageAccountName` に使用された値を確認します。 アカウント名が表示されない場合、下にスクロールし、**[さらに読み込む]** をクリックしてください。 正しいストレージ アカウント名が表示されたらクリックして選択します。
+* 次に、*[データ型]* を指定する必要があります。これは **[Service Fabric イベント]** になります。
+* *[ソース]* は自動的に *[WADServiceFabric\*EventTable]* に設定されます。
+* **[OK]** をクリックし、ワークスペースをクラスターのログに接続します。
+
+    ![OMS にストレージ アカウント ログを追加する](media/service-fabric-diagnostics-event-analysis-oms/add-storage-account.png)
+
+* 現在、アカウントがワークスペースのデータ ソースの *[ストレージ アカウント ログ]* に表示されているはずです。
+
+この表示で、クラスターのプラットフォームとアプリケーション ログ テーブルに正しく接続されている OMS Log Analytics ワークスペースに Service Fabric Analytics ソリューションが追加されていることになります。 同じ方法でソースをワークスペースに追加できます。
 
 ## <a name="using-the-oms-agent"></a>OMS エージェントの使用
 
@@ -66,11 +87,11 @@ EventFlow と WAD を集計ソリューションとして使用することを�
 これの利点は次のとおりです。
 
 * パフォーマンス カウンターおよびメトリック面に関するデータが豊富
-* クラスターから収集されるデータを構成したり、データに変更を加えたりするのが簡単です。アプリケーションやクラスターを再展開する必要はありません。エージェントの設定への変更は OMS ワークスペースから実行でき、エージェントは自動的にリセットされます。 特定のパフォーマンス カウンターを選択するように OMS エージェントを構成するには、ワークスペースの **[Home] \(ホーム)、[Settings] \(設定)、[Data] \(データ)、[Windows Performance Counters] \(Windows パフォーマンス カウンター)** の順に移動し、収集するデータを選択します
+* クラスターから収集されるメトリックを簡単に構成できます。クラスターの構成を更新する必要がありません。 エージェントの設定は OMS ポータルから変更できます。また、必要な構成に合わせるためにエージェントが自動的に再起動します。 特定のパフォーマンス カウンターを選択するように OMS エージェントを構成するには、ワークスペースの **[Home] \(ホーム)、[Settings] \(設定)、[Data] \(データ)、[Windows Performance Counters] \(Windows パフォーマンス カウンター)** の順に移動し、収集するデータを選択します
 * データが速く表示される (データは OMS / Log Analytics によって選択される前に保存される必要があるが、それより速く表示される)
-* コンテナーの監視はもっと簡単です。Docker ログ(stdout、stderror) と 統計 (コンテナーおよびノード レベルに関するパフォーマンス メトリック) を選択できます
+* コンテナーの監視はもっと簡単です。Docker ログ(stdout、stderr) と統計 (コンテナーおよびノード レベルに関するパフォーマンス メトリック) を選択できます。
 
-ここでの主な考慮事項は、エージェントであるため、すべてのアプリケーションと共にクラスターに展開され、クラスター上のアプリケーションのパフォーマンスに最小限の影響があることです。
+ここでの主な考慮事項は、エージェントはすべてのアプリケーションと共にクラスターに展開されるため、クラスター上のアプリケーションのパフォーマンスにいくらかの影響が出るということです。
 
 ## <a name="monitoring-containers"></a>コンテナーの監視
 

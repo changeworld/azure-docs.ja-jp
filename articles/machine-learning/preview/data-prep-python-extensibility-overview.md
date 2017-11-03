@@ -1,6 +1,6 @@
 ---
-title: "Azure Machine Learning Data Preparation での Python 拡張機能の使用 | Microsoft Docs"
-description: "このドキュメントでは、Python コードを使用して Data Prep の機能を拡張する方法の概要と、いくつかの詳細な例を示します"
+title: "Azure Machine Learning データ準備での Python 拡張機能の使用 | Microsoft Docs"
+description: "このドキュメントでは、Python コードを使用してデータ準備の機能を拡張する方法の概要と、いくつかの詳細な例を示します"
 services: machine-learning
 author: euangMS
 ms.author: euang
@@ -12,36 +12,39 @@ ms.custom:
 ms.devlang: 
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 4e1935a7830b8174796ac12792fbbc0ed110d081
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 53771c407fedc53f27a38ec3fe9b381d6b8c0dad
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="data-prep-python-extensions"></a>Data Prep Python 拡張機能
-組み込み機能間の機能性ギャップを埋める方法として、Data Prep には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
+# <a name="data-preparations-python-extensions"></a>データ準備の Python 拡張機能
+組み込み機能間の機能性ギャップを埋める方法として、Azure Machine Learning データ準備には複数のレベルの拡張機能が含まれています。 このドキュメントでは、Python スクリプトを介して拡張機能を説明します。 
 
 ## <a name="custom-code-steps"></a>カスタム コード ステップ 
-Data Prep には、ユーザーがコードを記述できる次のカスタム ステップがあります。 
-1. ファイル リーダー*
-2. ライター*
-3. 列の追加
-4. 高度なフィルター
-5. データ フローの変換
-6. パーティションの変換
+データ準備には、ユーザーがコードを記述できる次のカスタム ステップがあります。
 
-*これらのステップは現在、Spark 実行でサポートされていません。 
+* ファイル リーダー*
+* ライター*
+* 列の追加
+* 高度なフィルター
+* データ フローの変換
+* パーティションの変換
+
+*これらのステップは現在、Spark 実行でサポートされていません。
 
 ## <a name="code-block-types"></a>コード ブロック タイプ 
-これらのステップごとに、2 つのコード ブロック タイプをサポートします。 まず、そのまま実行される基本の Python 拡張機能をサポートします。 次に、Python モジュールをサポートします。このモジュールでは、ユーザーが記述するコードにおいて、既知のシグネチャを使用して特定の関数を呼び出します。
+これらのステップごとに、2 つのコード ブロック タイプをサポートします。 まず、そのまま実行される基本の Python 式をサポートします。 次に、Python モジュールをサポートします。このモジュールでは、ユーザーが記述するコードにおいて、既知のシグネチャを使用して特定の関数を呼び出します。
 
-たとえば、次の 2 つの方法で、別の列の対数を計算する 2 つの列を追加できます。式: 
+たとえば、次の 2 つの方法で、別の列の対数を計算する新しい列を追加できます。
+
+式 
 
 ```python    
     math.log(row["Score"])
 ```
 
-モジュール: 
+モジュール 
     
 ```python
 def newvalue(row): 
@@ -49,12 +52,14 @@ def newvalue(row):
 ```
 
 
-モジュール モードの Add Column (列の追加) 変換では、行変数を受け取って列の値を返す `newvalue` という関数が見つかることを期待します。 このモジュールには、他の関数、import などを含む任意の分量の Python コードを含めることができます。 
+モジュール モードの列の追加変換では、行変数を受け取って列の値を返す `newvalue` という関数が見つかります。 このモジュールには、他の関数、import などを含む任意の分量の Python コードを含めることができます。
 
 それぞれの拡張機能の詳細については、以下のセクションで説明します。 
 
 ## <a name="imports"></a>インポートする 
-Expression (式) ブロック タイプを使用している場合でも、import ステートメントをコードに追加することはできますが、それらはコードの先頭のほうの行にグループ化する必要があります。 正しい: 
+式ブロック タイプを使用する場合でも、コードに **import** ステートメントを追加できます。 すべてコードの最初の数行にグループ化する必要があります。
+
+正しい 
 
 ```python
 import math 
@@ -63,7 +68,7 @@ math.log(row["Score"])
 ```
  
 
-エラー:  
+エラー  
 
 ```python
 import math  
@@ -72,10 +77,10 @@ import numpy
 ```
  
  
-Module (モジュール) ブロック タイプを使用している場合、‘import’ ステートメントの使用に関して、通常の Python ルールのすべてに従うことができます。 
+モジュール ブロック タイプを使用する場合、通常の Python のルールに従って **import** ステートメントを使用できます。 
 
 ## <a name="default-imports"></a>既定の import
-次の import は常に含まれており、コードで使用できます。 それらを再インポートする必要はありません。 
+次の import は常に含まれており、コードで使用できます。 再インポートは不要です。 
 
 ```python
 import math  
@@ -88,13 +93,13 @@ import scipy as sp
 ```
   
 
-## <a name="installing-new-packages"></a>新しいパッケージのインストール
-既定でインストールされていないパッケージを使用するには、まず Data Prep が使用する環境にそのパッケージをインストールする必要があります。 このインストールは、ローカル コンピューターと、実行場所になるすべてのコンピューティング ターゲットの両方で行う必要があります。
+## <a name="install-new-packages"></a>新しいパッケージのインストール
+既定でインストールされていないパッケージを使用するには、まずデータ準備が使用する環境にそのパッケージをインストールする必要があります。 このインストールは、ローカル コンピューターと、実行場所になるすべてのコンピューティング ターゲットの両方で行う必要があります。
 
 コンピューティング ターゲットにパッケージをインストールするには、プロジェクトのルート下の aml_config フォルダーにある conda_dependencies.yml ファイルを変更する必要があります。
 
 ### <a name="windows"></a>Windows 
-Windows で場所を探すには、python のアプリ固有インストールとその scripts ディレクトリを探します。既定では次のとおりです。  
+Windows で場所を探すには、Python のアプリ固有インストールとそのスクリプトがあるディレクトリを探します。 既定の場所は次のとおりです。  
 
 `C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts.` 
 
@@ -107,7 +112,7 @@ or
 `pip install <libraryname> `
 
 ### <a name="mac"></a>Mac 
-Windows で場所を探すには、python のアプリ固有インストールとその scripts ディレクトリを探します。既定の場所は次のとおりです。 
+Mac で場所を探すには、Python のアプリ固有インストールとそのスクリプトがあるディレクトリを探します。 既定の場所は次のとおりです。 
 
 `/Users/<user>/Library/Caches/AmlWorkbench>/Python/bin` 
 
@@ -120,9 +125,9 @@ or
 `./pip install <libraryname>`
 
 ## <a name="column-data"></a>列のデータ 
-ドット表記またはキー/値表記を使用して、行から列のデータにアクセスできます。 スペースや特殊文字が含まれている列名は、ドット表記を使用してアクセスできません。 python 実行の両方のモード (モジュールおよび式) で、`row` 変数が常に定義されている必要があります。 
+ドット表記またはキー/値表記を使用して、行から列のデータにアクセスできます。 スペースや特殊文字が含まれている列名は、ドット表記を使用してアクセスできません。 Python 拡張機能の両方のモード (モジュールおよび式) で、`row` 変数が常に定義されている必要があります。 
 
-次に例を示します。 
+例 
 
 ```python
     row.ColumnA + row.ColumnB  
@@ -131,25 +136,26 @@ or
 
 ## <a name="file-reader"></a>ファイル リーダー 
 ### <a name="purpose"></a>目的 
-この拡張機能ポイントにより、データ フローへのファイル読み取りのプロセスを完全に制御できます。 システムは、処理すべきファイルのリストを渡してユーザーのコードを呼び出します。ユーザーのコードは、Pandas データフレームを作成して返す必要があります。 
+ファイル リーダー拡張点を使用すると、データ フローへのファイル読み取りのプロセスを完全に制御できます。 システムがコードを呼び出し、プロセス対象のファイルの一覧を渡します。 コードは Pandas データフレームを作成して返す必要があります。 
 
 >[!NOTE]
->この拡張機能ポイントは、Spark では機能しません。 
+>この拡張点は Spark では機能しません。 
 
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントには、[Open Data Source] \(データ ソースを開く) ウィザードからアクセスします。 最初のページで [File] \(ファイル) を選択し、ファイルの場所を選択します。 [Choose File Parameters] \(ファイル パラメーターの選択) ページで、[File Type] \(ファイルの種類) ドロップダウンから [Custom File (Script)] \(カスタム ファイル (スクリプト)) を選択します。 
+この拡張点には、**[Open Data Source]\(データ ソースを開く\)** ウィザードからアクセスします。 最初のページで **[File]\(ファイル\)** を選択し、ファイルの場所を選択します。 **[Choose File Parameters]\(ファイル パラメーターの選択\)** ページで、**[File Type]\(ファイルの種類\)** ドロップダウンリストから **[Custom File (Script)]\(カスタム ファイル (スクリプト)\)** を選択します。 
 
-読み取る必要のあるファイルに関する情報を含む、‘df’ という名前の Pandas データフレームがコードに与えられます。 複数のファイルを含むディレクトリを開くことを選択した場合、データフレームには複数の行が含まれます。  
+読み取る必要のあるファイルに関する情報を含む、"df" という名前の Pandas データフレームがコードに与えられます。 複数のファイルを含むディレクトリを開くことを選択した場合、データフレームには複数の行が含まれます。  
 
-このデータフレームには、次の列があります。 
-- Path – 読み取るファイル。
-- PathHint – ファイルの場所を示します。 値: ‘Local’、‘AzureBlobStorage’、‘AzureDataLakeStorage’
-- AuthenticationType – ファイルにアクセスするために使用する認証の種類。 値: ‘None’、‘SasToken’、‘OAuthToken’
-- AuthenticationValue - None または使用するトークン。
+このデータフレームには、次の列があります。
+
+- Path: 読み取るファイル。
+- PathHint: ファイルの場所を示します。 値: Local、AzureBlobStorage、および AzureDataLakeStorage。
+- AuthenticationType: ファイルにアクセスするために使用する認証の種類。 値: None、SasToken、および OAuthToken。
+- AuthenticationValue: None または使用するトークン。
 
 ### <a name="syntax"></a>構文 
-式: 
+式 
 
 ```python
     paths = df['Path'].tolist()  
@@ -157,7 +163,7 @@ or
 ```
 
 
-モジュール:  
+モジュール  
 ```python
 PathHint = Local  
 def read(df):  
@@ -169,23 +175,23 @@ def read(df):
 
 ## <a name="writer"></a>ライター 
 ### <a name="purpose"></a>目的 
-ライター拡張機能ポイントにより、データ フローからのデータ書き込みのプロセスを完全に制御できます。 システムはデータフレームを渡してユーザーのコードを呼び出し、ユーザーのコードはデータフレームを使用して自由にデータを書き込むことができます。 
+ライター拡張点を使用すると、データ フローからのデータ書き込みのプロセスを完全に制御できます。 システムがコードを呼び出し、データフレームを渡します。 コードはそのデータフレームを使用して、指定したとおりにデータを書き込みます。 
 
 >[!NOTE]
->ライター拡張機能ポイントは Spark では機能しません。 
+>ライター拡張点は Spark では機能しません。
 
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントは ‘Write Dataflow (Script)’ (データ フローの書き込み (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
+この拡張点は、データ フローの書き込み (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューから使用できます。
 
 ### <a name="syntax"></a>構文 
-式: 
+式
 
 ```python
     df.to_csv('c:\\temp\\output.csv')
 ```
 
-モジュール:
+モジュール
 
 ```python
 def write(df):  
@@ -194,23 +200,23 @@ def write(df):
 ```
  
  
-このカスタムの書き込みブロックはステップのリストの半ばに置くことができるため、モジュールを使用する場合、ユーザーの書き込み関数は、後続のステップへの入力であるデータフレームを返す必要があります。 
+このカスタム書き込みブロックは、一連のステップ実行の途中に入れることができます。 モジュールを使用する場合、書き込み関数はデータフレームを返す必要があり、それが続くステップ実行の入力となります。 
 
 ## <a name="add-column"></a>列の追加 
 ### <a name="purpose"></a>目的
-この拡張機能ポイントを使用して、新しい列を計算する Python を記述できます。 記述するコードは行全体にアクセスできます。 コードは行ごとに新しい列値を返す必要があります。 
+列の追加拡張点を使用すると、新しい列を計算する Python コードを記述できます。 記述するコードは行全体にアクセスできます。 コードは行ごとに新しい列値を返す必要があります。 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Add Column (Script)’ (列の追加 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューと、列のコンテキスト メニューから使用できます。 
+この拡張点は、列の追加 (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューと、**列**のコンテキスト メニューから使用できます。 
 
 ### <a name="syntax"></a>構文
-式: 
+式
 
 ```python
     math.log(row["Score"])
 ```
 
-モジュール: 
+モジュール 
 
 ```python
 def newvalue(row):  
@@ -220,20 +226,20 @@ def newvalue(row):
 
 ## <a name="advanced-filter"></a>高度なフィルター
 ### <a name="purpose"></a>目的 
-この拡張機能ポイントを使用して、カスタム フィルターを記述できます。 ユーザーは行全体にアクセスでき、ユーザーのコードは True (行を含める) または False (行を除外する) を返す必要があります。 
+高度なフィルター拡張点を使用すると、カスタム フィルターを記述できます。 ユーザーは行全体にアクセスでき、ユーザーのコードは True (行を含める) または False (行を除外する) を返す必要があります。 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Advanced Filter (Script)’ (高度なフィルター (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
+この拡張点は、高度なフィルター (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューから使用できます。 
 
 ### <a name="syntax"></a>構文
 
-式: 
+式
 
 ```python
     row["Score"] > 95
 ```
 
-モジュール:  
+モジュール  
 
 ```python
 def includerow(row):  
@@ -241,20 +247,20 @@ def includerow(row):
 ```
  
 
-## <a name="transform-dataflow"></a>変換データ フロー
+## <a name="transform-dataflow"></a>データ フローの変換
 ### <a name="purpose"></a>目的 
-この拡張機能ポイントを使用して、データ フローを完全に変換できます。 ユーザーは、処理中のすべての列と行を含む Pandas データフレームにアクセスできます。ユーザーのコードは、新しいデータが入った Pandas データフレームを返す必要があります。 
+データ フローの変換拡張点を使用すると、データ フローを完全に変換できます。 プロセス対象のすべての列と行が含まれる Pandas データフレームにアクセスできます。 コードは Pandas データフレームを新しいデータとともに返す必要があります。 
 
 >[!NOTE]
->Python では、この拡張機能を使用する場合に、Pandas データフレームでメモリに読み込まれるすべてのデータです。 
-
-Spark では、すべてのデータは 1 つのワーカー ノードに集められます。 この結果、データが非常に大きい場合にワーカーでメモリが不足する可能性があります。 慎重に使用してください。
+>Python では、この拡張機能が使用される場合、メモリに読み込まれるすべてのデータは Pandas データフレームにあります。 
+>
+>Spark では、すべてのデータは 1 つのワーカー ノードに集められます。 データが多すぎると、ワーカーのメモリが不足する場合があります。 慎重に使用してください。
 
 ### <a name="how-to-use"></a>使用方法 
-この拡張機能ポイントは ‘Transform Dataflow (Script)’ (データ フローの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
+この拡張点は、データ フローの変換 (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューから使用できます。 
 ### <a name="syntax"></a>構文 
 
-式: 
+式
 
 ```python
     df['index-column'] = range(1, len(df) + 1)  
@@ -262,7 +268,7 @@ Spark では、すべてのデータは 1 つのワーカー ノードに集め�
 ```
  
 
-モジュール: 
+モジュール 
 
 ```python
 def transform(df):  
@@ -274,18 +280,18 @@ def transform(df):
 
 ## <a name="transform-partition"></a>パーティションの変換  
 ### <a name="purpose"></a>目的 
-この拡張機能ポイントを使用して、データ フローのパーティションを変換できます。 ユーザーは、そのパーティションのすべての列と行を含む Pandas データフレームにアクセスできます。ユーザーのコードは、新しいデータが入った Pandas データフレームを返す必要があります。 
+パーティションの変換拡張点を使用すると、データ フローのパーティションを変換できます。 そのパーティションのすべての列と行が含まれる Pandas データフレームにアクセスできます。 コードは Pandas データフレームを新しいデータとともに返す必要があります。 
 
 >[!NOTE]
 >Python では、データのサイズによって、最終的にパーティションは 1 つまたは複数になる可能性があります。 Spark では、ある特定のワーカー ノード上のパーティションのデータを保持するデータフレームを扱うことになります。 どちらの場合も、データ セット全体にアクセスできると想定することはできません。 
 
 
 ### <a name="how-to-use"></a>使用方法
-この拡張機能ポイントは ‘Transform Partition (Script)’ (パーティションの変換 (スクリプト)) ブロックを使用して追加できます。 トップレベルの [Transformations] \(変換) メニューから使用できます。 
+この拡張点は、パーティションの変換 (スクリプト) ブロックを使用して追加できます。 トップレベルの **[Transformations]\(変換\)** メニューから使用できます。 
 
 ### <a name="syntax"></a>構文 
 
-式: 
+式 
 
 ```python
     df['partition-id'] = index  
@@ -294,7 +300,7 @@ def transform(df):
 ```
  
 
-モジュール: 
+モジュール 
 
 ```python
 def transform(df, index):
@@ -307,9 +313,9 @@ def transform(df, index):
 
 ## <a name="datapreperror"></a>DataPrepError  
 ### <a name="error-values"></a>エラー値  
-Data Prep には、エラー値の概念が存在します。 これは作成物であり、存在理由についてはここ<link to error values doc>で説明します。 
+データ準備には、エラー値の概念が存在します。 
 
-カスタムの python コードでエラー値に遭遇する可能性があります。 エラー値は、`DataPrepError` という Python クラスのインスタンスです。 このクラスは Python 例外をラップし、2 つのプロパティを持ちます。プロパティには、元の値の処理時に発生したエラーに関する情報と、元の値が含まれています。 
+カスタムの Python コードでエラー値に遭遇する可能性があります。 エラー値は、`DataPrepError` という Python クラスのインスタンスです。 このクラスは Python の例外をラップし、複数のプロパティで構成されます。 プロパティには元の値のほか、その値が処理されたときに発生したエラーに関する詳細が含まれます。 
 
 
 ### <a name="datapreperror-class-definition"></a>DataPrepError クラス定義
@@ -318,7 +324,7 @@ class DataPrepError(Exception):
     def __bool__(self): 
         return False 
 ``` 
-Data Prep の python フレームワークにおける DataPrepError の作成は、一般的には次のようになります。 
+データ準備の Python フレームワークにおける DataPrepError の作成は、一般的には次のようになります。 
 ```python 
 DataPrepError({ 
    'message':'Cannot convert to numeric value', 
@@ -328,10 +334,10 @@ DataPrepError({
 }) 
 ``` 
 #### <a name="how-to-use"></a>使用方法 
-以前からの作成方法を使用して、戻り値として DataPrepErrors を生成するために、拡張機能ポイントで Python が実行される可能性があります。 拡張機能ポイントでのデータ処理時に DataPrepErrors に遭遇する可能性はずっと高くなります。 現時点で、カスタムの Python コードは、DataPrepError を有効なデータ型として処理する必要があります。 
+Python が拡張点で実行されるときに、前の作成方法により、戻り値として DataPrepError が生成されることがあります。 DataPrepError が発生する傾向が強いのは、拡張点でデータが処理されるタイミングです。 現時点で、カスタムの Python コードは、DataPrepError を有効なデータ型として処理する必要があります。
 
 #### <a name="syntax"></a>構文 
-式:  
+式 
 ```python 
     if (isinstance(row["Score"], DataPrepError)): 
         row["Score"].originalValue 
@@ -344,7 +350,7 @@ DataPrepError({
     else: 
         row["Score"] 
 ``` 
-モジュール:  
+モジュール 
 ```python 
 def newvalue(row): 
     if (isinstance(row["Score"], DataPrepError)): 

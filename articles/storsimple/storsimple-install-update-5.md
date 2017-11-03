@@ -12,13 +12,13 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 10/02/2017
+ms.date: 10/10/2017
 ms.author: alkohli
-ms.openlocfilehash: 916884e3ee95284497cded73b28b22e83751f624
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9d8dc7aebbeea7ad428be4af66e4e991f60c8301
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="install-update-5-on-your-storsimple-device"></a>StorSimple デバイスへの Update 5 のインストール
 
@@ -49,7 +49,7 @@ Update 5 には、デバイス ソフトウェア、Storport と Spaceport、OS 
 
 * メンテナンス モードの更新プログラムを利用できることが示されます (このメッセージは、更新プログラムをインストールした後、最大 24 時間表示され続ける可能性があります)。 メンテナンス モードの更新プログラムは、デバイスのダウンタイムを発生させる更新プログラムであり、デバイスの Windows PowerShell インターフェイス経由でのみ適用できます。
 
-* 「[修正プログラムをダウンロードするには](#to-download-hotfixes)」で示された手順を使用して KB4011837 を検索してメンテナンス モードの更新プログラムをダウンロードします。ディスク ファームウェアの更新プログラムがインストールされます (他の更新プログラムが既にインストールされている必要があります)。 メンテナンス モードの更新プログラムをインストールするには、「 [メンテナンス モードの修正プログラムをインストールして確認するには](#to-install-and-verify-maintenance-mode-hotfixes) 」に記載されている手順に従います。
+* 「[修正プログラムをダウンロードするには](#to-download-hotfixes)」で示された手順を使用して KB4037263 を検索してメンテナンス モードの更新プログラムをダウンロードします。ディスク ファームウェアの更新プログラムがインストールされます (他の更新プログラムが既にインストールされている必要があります)。 メンテナンス モードの更新プログラムをインストールするには、「 [メンテナンス モードの修正プログラムをインストールして確認するには](#to-install-and-verify-maintenance-mode-hotfixes) 」に記載されている手順に従います。
 
 ## <a name="install-update-5-as-a-hotfix"></a>Update 5 を修正プログラムとしてインストールする
 
@@ -98,7 +98,7 @@ Update 3 以前のバージョンを実行するデバイスからインスト�
 
 | 順序 | KB | 説明 | 更新の種類 | インストール時間 | インストールするフォルダー|
 | --- | --- | --- | --- | --- | --- |
-| 3. |KB4037263 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
+| 手順 3. |KB4037263 |ディスク ファームウェア |メンテナンス  <br></br>中断あり |～ 30 分 | ThirdOrderUpdate |
 
 <br></br>
 

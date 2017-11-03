@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 05/26/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: 4085a607b800f4f4f155cdc266bc203b0858fd7c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34f14f42150e46edae2d1352827f96a411117a62
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Application Insights を使用したイベント分析と視覚化
 
@@ -28,15 +28,18 @@ Azure Application Insights は、アプリケーションの監視と診断の�
 
 ### <a name="creating-an-ai-resource"></a>AI リソースの作成
 
-AI リソースを作成するには、Azure Marketplace に行き、"Application Insights" を検索します。 Application Insights は最初のソリューションとして表示されます ("Web + モバイル" カテゴリの下にあります)。 正しいリソース (パスが下の画像と一致することを確認してください) が表示されたら、[**作成**] をクリックします。
+AI リソースを作成するには、Azure Marketplace に行き、"Application Insights" を検索します。 Application Insights は最初のソリューションとして表示されます ("Web + モバイル" カテゴリの下にあります)。 正しいリソース (パスが下の画像と一致することを確認してください) が表示されたら、**[作成]** をクリックします。
 
 ![New Application Insights resource](media/service-fabric-diagnostics-event-analysis-appinsights/create-new-ai-resource.png)
 
 リソースを正しくプロビジョニングするには、情報をいくつか記入する必要があります。 "*アプリケーションの種類*" フィールドでは、Service Fabric のプログラミング モデルを使用する場合や、クラスターに .NET アプリケーションを発行する場合は、"ASP.NET Web アプリケーション" を使用します。 ゲスト実行可能ファイルとコンテナーを展開する場合は、"一般" を使用します。 一般的には、既定で "ASP.NET Web アプリケーション" を使用し、将来に備えて選択肢を残しておきます。 名前は好みに応じて付けることができ、リソース グループとサブスクリプションは両方とも、リソースの展開後に変更できます。 AI リソースはクラスターと同じリソース グループに展開することをお勧めします。 詳しくは、「[Application Insights リソースの作成](../application-insights/app-insights-create-new-resource.md)」をご覧ください
 
-イベント集計ツールを使用して AI を構成するには、AI インストルメンテーション キーが必要です。 AI リソースが設定されたら (展開の検証後、数分かかります)、そのリソースに移動し、左側のナビゲーション バーの [**プロパティ**] セクションを見つけます。 新しいブレードが開き、*インストルメンテーション キー*が表示されます。 リソースのサブスクリプションまたはリソース グループを変更する必要がある場合は、ここでも変更できます。
+イベント集計ツールを使用して AI を構成するには、AI インストルメンテーション キーが必要です。 AI リソースが設定されたら (展開の検証後、数分かかります)、そのリソースに移動し、左側のナビゲーション バーの **[プロパティ]** セクションを見つけます。 新しいブレードが開き、*インストルメンテーション キー*が表示されます。 リソースのサブスクリプションまたはリソース グループを変更する必要がある場合は、ここでも変更できます。
 
 ### <a name="configuring-ai-with-wad"></a>WAD を使用した AI の設定
+
+>[!NOTE]
+>これは現在、Windows クラスターにのみ当てはまります。
 
 WAD から Azure AI にデータを送信する主な方法は 2 つあります。この方法は、[この記事](../monitoring-and-diagnostics/azure-diagnostics-configure-application-insights.md)で説明しているように、AI シンクを WAD 構成に追加することで実行できます。
 
@@ -50,7 +53,7 @@ WAD から Azure AI にデータを送信する主な方法は 2 つあります
 
 Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を含めることによって "シンク" を追加します。
 
-1. シンク構成を追加します。
+1. `DiagnosticMonitorConfiguration` の宣言の完了直後にシンク構成を追加します。
 
     ```json
     "SinksConfig": {
@@ -64,7 +67,7 @@ Resource Manager テンプレートの "WadCfg" に、次の 2 つの変更を�
 
     ```
 
-2. "WadCfg" の "DiagnosticMonitorConfiguration" に次の行を追加して、DiagnosticMonitorConfiguration にシンクを含めます。
+2. `DiagnosticMonitorConfiguration` にシンクを含めます。`WadCfg` の `DiagnosticMonitorConfiguration` に次の行を追加します (`EtwProviders` の宣言の直前に)。
 
     ```json
     "sinks": "applicationInsights"
@@ -103,11 +106,11 @@ EventFlow を使用してイベントを集計する場合は、必ず `Microsof
 
 ## <a name="navigating-the-ai-resource-in-azure-portal"></a>Azure ポータルで AI リソースをナビゲートする
 
-イベントとログの出力として AI を構成すると、数分後に AI リソースに情報が表示されます。 AI リソースに移動すると、AI リソース ダッシュボードに移動します。 AI タスク バーの [**検索**] をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
+イベントとログの出力として AI を構成すると、数分後に AI リソースに情報が表示されます。 AI リソースに移動すると、AI リソース ダッシュボードに移動します。 AI タスク バーの **[検索]** をクリックすると、受信した最新のトレースが表示され、それらのトレースをフィルター処理できます。
 
 *メトリックス エクスプローラー*は、アプリケーションやサービス、クラスターが報告するメトリックに基づいたカスタム ダッシュボードを作成する便利なツールです。 収集するデータに基づいたグラフを自分でいくつか設定するには、「[Application Insights を使用したメトリックの探索](../application-insights/app-insights-metrics-explorer.md)」を参照してください。
 
-[**Analytics**] をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../application-insights/app-insights-analytics.md)」をご覧ください。
+**[Analytics]** をクリックすると、Application Insights Analytics ポータルに移動します。このポータルでは、より多くのオプションを使用し、より広い範囲でイベントとトレースを照会できます。 この詳細については、「[Application Insights の Analytics](../application-insights/app-insights-analytics.md)」をご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

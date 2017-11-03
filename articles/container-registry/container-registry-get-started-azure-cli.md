@@ -14,14 +14,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/16/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06967315dfa43e791e662a689ceb993c4af1c1e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91f0aa093e0a1f7ed4d54a0cdf5ef53bc41cb6be
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
 
@@ -43,21 +43,26 @@ az group create --name myResourceGroup --location eastus
 
 ## <a name="create-a-container-registry"></a>コンテナー レジストリの作成
 
-Azure Container Registry は、`Basic`、`Managed_Basic`、`Managed_Standard`、および `Managed_Premium` の複数の SKU でご利用いただけます。 `Managed_*` SKU は、管理対象ストレージや webhook のような高度な機能を提供しますが、これらは現在プレビュー中であり、一部の Azure リージョンでは利用できません。 このクイック スタートでは、すべてのリージョンで利用できるため、`Basic` SKU を選択します。
+このクイックスタートでは、*基本*のレジストリを作成します。 次の表で簡単に説明されているように、Azure Container Registry はいくつかの SKU で使用できます。 それぞれの詳細については、「[Azure Container Registry SKUs](container-registry-skus.md)」(Azure Container Registry の SKU) を参照してください。
+
+Azure Container Registry は、`Basic`、`Managed_Basic`、`Managed_Standard`、および `Managed_Premium` という複数の SKU でご利用いただけます。 `Managed_*` SKU は、管理対象ストレージや webhook のような高度な機能を提供しますが、現在、Azure CLI の使用時に一部の Azure リージョンでは利用できません。 このクイックスタートでは、すべてのリージョンで利用できるため、`Basic` SKU を選択します。
+
+>[!NOTE]
+> 管理対象のレジストリは、すべてのリージョンで現在使用できます。 ただし、現在のバージョンの Azure CLI では、すべてのリージョンで管理対象のレジストリの作成をまだサポートしていません。 次のバージョンの Azure CLI でサポートされる予定です。 このリリースまでは、[Azure Portal](container-registry-get-started-portal.md) を使用して管理対象のレジストリを作成してください。
 
 [az acr create](/cli/azure/acr#create) コマンドを使用して ACR インスタンスを作成します。
 
 レジストリの名前は**一意である必要があります**。 次の例では、*myContainerRegistry007* を使用します。 これを一意の値に更新します。
 
 ```azurecli
-az acr create --name myContainerRegistry007 --resource-group myResourceGroup --admin-enabled --sku Basic
+az acr create --name myContainerRegistry007 --resource-group myResourceGroup --sku Basic
 ```
 
 レジストリが作成されると、出力は次のようになります。
 
-```azurecli
+```json
 {
-  "adminUserEnabled": true,
+  "adminUserEnabled": false,
   "creationDate": "2017-09-08T22:32:13.175925+00:00",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/myContainerRegistry007",
   "location": "eastus",
@@ -79,17 +84,17 @@ az acr create --name myContainerRegistry007 --resource-group myResourceGroup --a
 
 このクイック スタートの残りの部分では、コンテナー レジストリ名のプレースホルダーとして `<acrname>` を使用します。
 
-## <a name="log-in-to-acr"></a>ACR へのログイン
+## <a name="log-in-to-acr"></a>ACR にログインする
 
 コンテナー イメージをプッシュしたりプルしたりするには、あらかじめ ACR インスタンスにログインしておく必要があります。 そのためには、[az acr login](/cli/azure/acr#login) コマンドを使用します。
 
-```azurecli-interactive
+```azurecli
 az acr login --name <acrname>
 ```
 
 このコマンドは、完了すると "Login Succeeded (ログインに成功しました)" というメッセージを返します。
 
-## <a name="push-image-to-acr"></a>ACR へのイメージのプッシュ
+## <a name="push-image-to-acr"></a>ACR にイメージをプッシュする
 
 Azure Container Registry にイメージをプッシュするには、まずイメージを用意する必要があります。 必要な場合は、次のコマンドを実行して、事前に作成したイメージを Docker Hub からプルします。
 
@@ -99,19 +104,19 @@ docker pull microsoft/aci-helloworld
 
 イメージは、ACR ログイン サーバー名でタグ付けする必要があります。 ACR インスタンスのログイン サーバー名を返す次のコマンドを実行します。
 
-```bash
+```azurecli
 az acr list --resource-group myResourceGroup --query "[].{acrLoginServer:loginServer}" --output table
 ```
 
 [docker tag](https://docs.docker.com/engine/reference/commandline/tag/) コマンドを使用してイメージにタグ付けします。 *<acrLoginServer>* を ACR インスタンスのログイン サーバー名で置き換えます。
 
-```
+```bash
 docker tag microsoft/aci-helloworld <acrLoginServer>/aci-helloworld:v1
 ```
 
 最後に、[docker push](https://docs.docker.com/engine/reference/commandline/push/) を使用して、ACR インスタンスにイメージをプッシュします。 *<acrLoginServer>* を ACR インスタンスのログイン サーバー名で置き換えます。
 
-```
+```bash
 docker push <acrLoginServer>/aci-helloworld:v1
 ```
 
@@ -125,7 +130,7 @@ az acr repository list -n <acrname> -o table
 
 出力:
 
-```json
+```bash
 Result
 ----------------
 aci-helloworld
@@ -139,7 +144,8 @@ az acr repository show-tags -n <acrname> --repository aci-helloworld -o table
 
 出力:
 
-```Result
+```bash
+Result
 --------
 v1
 ```

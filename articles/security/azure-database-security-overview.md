@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/19/2017
 ms.author: TomSh
-ms.openlocfilehash: 036ce3dce28e7951bb39754c4351661fae85f06c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b8038b716266326967e2cf178efe4d36f4badc5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-database-security-overview"></a>Azure のデータベース セキュリティの概要
 
@@ -92,7 +92,7 @@ TDE は、データベース暗号化キーと呼ばれる対称キーを使用�
 
 [Always Encrypted](https://msdn.microsoft.com/library/mt163865.aspx) は、Azure SQL Database や SQL Server データベースに格納された、クレジット カード番号や国民識別番号 (米国の社会保障番号など) のような機微なデータを保護することを目的とした機能です。 Always Encrypted を使用すると、クライアントはクライアント アプリケーション内の機密データを暗号化することができます。暗号化キーがデータベース エンジン (SQL Database や SQL Server) に公開されることはありません。
 
-Always Encrypted では、データの所有者 (データを表示できるユーザー) とデータの管理者 (アクセス権は付与しないユーザー) を分離できます。 承認されていないユーザーを除く、オンプレミスのデータベース管理者、クラウド データベース オペレーター、またはその他の高い特権を持つユーザーに対して暗号化されたデータへのアクセスを禁止することにより、
+Always Encrypted では、データの所有者 (データを表示できるユーザー) とデータの管理者 (アクセス権は付与しないユーザー) を分離できます。 承認されていないユーザーを除く、オンプレミスのデータベース管理者、クラウド データベース オペレーター、またはその他の高い特権を持つユーザーに対して暗号化されたデータへのアクセスを禁止します。
 
 また、Always Encrypted では、暗号化がアプリケーションに対して透過的になります。 Always Encrypted 対応のドライバーをクライアント コンピューターにインストールすることにより、クライアント アプリケーション内の機微なデータを自動的に暗号化および暗号化解除できます。 ドライバーは、機密列のデータを暗号化してからデータベース エンジンに渡すと、アプリケーションに対するセマンティクスが保持されるように自動的にクエリを書き換えます。 また、暗号化されたデータベース列に格納され、クエリ結果に含まれているデータを、同じように透過的に暗号化解除します。
 

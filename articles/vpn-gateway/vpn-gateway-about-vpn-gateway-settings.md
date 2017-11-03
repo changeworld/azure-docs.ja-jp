@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 06/26/2017
+ms.date: 10/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 07aa6946b9c3994c5afc5c88837f23567b95d8a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d265c72cfc02710afb630f3b8258602c936d1ebc
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="about-vpn-gateway-configuration-settings"></a>VPN ゲートウェイの構成設定について
 
@@ -143,7 +143,7 @@ New-AzureRmLocalNetworkGateway -Name LocalSite -ResourceGroupName testrg `
 -Location 'West US' -GatewayIpAddress '23.99.221.164' -AddressPrefix '10.5.51.0/24'
 ```
 
-場合によっては、ローカル ネットワーク ゲートウェイ設定を変更する必要があります。 たとえば、アドレス範囲を追加または変更する場合や、VPN デバイスの IP アドレスが変更された場合などです。 クラシック VNet の場合、[ローカル ネットワーク] ページのクラシック ポータルでこれらの設定を変更できます。 Resource Manager の場合、「 [PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)」を参照してください。
+場合によっては、ローカル ネットワーク ゲートウェイ設定を変更する必要があります。 たとえば、アドレス範囲を追加または変更する場合や、VPN デバイスの IP アドレスが変更された場合などです。 「[PowerShell を使用したローカル ネットワーク ゲートウェイの設定の変更](vpn-gateway-modify-local-network-gateway.md)」を参照してください。
 
 ## <a name="resources"></a>REST API および PowerShell コマンドレット
 

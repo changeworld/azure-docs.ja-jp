@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/17/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 1aac856d154724e3dcd282e2d34c27571cd1cb02
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1e8c2248c064a7ec934dd8ef3e926f3325a05395
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="data-management-gateway---high-availability-and-scalability-preview"></a>Data Management Gateway - 高可用性とスケーラビリティ (プレビュー)
-この記事では、Data Management Gateway を使って、高可用性とスケーラビリティに対するソリューションを構成できます。    
+この記事を参照し、Data Management Gateway/Integration を使用して可用性と拡張性の高いソリューションを構成できます。    
 
 > [!NOTE]
-> この記事では、Data Management Gateway の基本を理解していることを前提とします。 まだ理解が不十分な場合は、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
+> この記事では、Integration Runtime (初期の Data Management Gateway) の基本を理解していることを前提とします。 まだ理解が不十分な場合は、「[Data Management Gateway](data-factory-data-management-gateway.md)」をご覧ください。
 
 >**このプレビュー機能は、Data Management Gateway バージョン 2.12.xxxx.x 以降で正式にサポートされています**。 バージョン 2.12.xxxx.x またはそれ以降を使用していることを確認してください。 Data Management Gateway の最新バージョンは、[こちら](https://www.microsoft.com/download/details.aspx?id=39717)からダウンロードできます。
 
@@ -155,14 +155,21 @@ ms.lasthandoff: 10/11/2017
 - 高可用性を確保するために、少なくとも 2 つのノードを追加します。  
 
 ### <a name="tlsssl-certificate-requirements"></a>TLS/SSL 証明書の要件
-ゲートウェイ ノード間の通信を保護するために使用される TLS/SSL 証明書の要件を次に示します。
+統合ランタイム ノード間の通信を保護するために使用される TLS/SSL 証明書の要件を次に示します。
 
-- 証明書は必ず、公的に信頼されている X509 v3 証明書とします。
-- 必ずすべてのゲートウェイ ノードで、この証明書を信頼します。 
-- 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
+- 証明書は必ず、公的に信頼されている X509 v3 証明書とします。 公的 (第三者) 証明機関 (CA) によって発行された証明書を使用することを推奨します。
+- 統合ランタイムの各ノードは、資格情報マネージャー アプリケーションを実行するクライアント マシンだけでなく、この証明書を信頼する必要があります。 
+> [!NOTE]
+> Copy Wizard/ Azure Portal から資格情報を安全に設定するとき、資格情報マネージャー アプリケーションが使用されます。 また、オンプレミス/プライベート データ ストアと同じネットワークにあるあらゆるマシンから起動できます。
+- ワイルドカード証明書がサポートされます。 FQDN 名が **node1.domain.contoso.com** の場合、証明書のサブジェクト名として ***.domain.contoso.com** を使用できます。
+- サブジェクトの別名の最後の項目のみが使用され、現行の制限に起因してその他はすべて無視されるため、SAN 証明書は推奨されません。 例: SAN が **node1.domain.contoso.com** と **node2.domain.contoso.com** の SAN 証明書がある場合、FQDN が **node2.domain.contoso.com** のマシンでのみこの証明書を使用できます。
 - SSL 証明書のために、Windows Server 2012 R2 でサポートされている任意のキー サイズをサポートします。
-- CNG キーを使用する証明書はサポートされません。
-- ワイルドカード証明書がサポートされます。 
+- CNG キーを使用する証明書はサポートされていません。 Doesrted DoesDoes では、CNG キーを使用する証明書はサポートされません。
+
+#### <a name="faq-when-would-i-not-enable-this-encryption"></a>FAQ: どのようなときにこの暗号化を有効にしないほうがよいでしょうか。
+暗号化を有効にすると、(公開証明書を持つ) インフラストラクチャの特定のコストを増やします。そのため、以下の場合、暗号化を有効にしないことがあります。
+- 信頼されているネットワークまたは IP/SEC のような透過的暗号化のあるネットワークで統合ランタイムが実行されているとき。 このチャネル通信は信頼されているネットワーク内に制限されるため、追加の暗号化は必要ではないことがあります。
+- 統合ランタイムが運用環境で実行されていないとき。 TLS/SSL 証明書コストの削減に役立ちます。
 
 
 ## <a name="monitor-a-multi-node-gateway"></a>マルチノード ゲートウェイの監視

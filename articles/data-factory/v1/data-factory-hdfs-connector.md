@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/20/2017
+ms.date: 10/16/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: cc92f046267f2c4abc2ce46960a54487aa205ea8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0e9670b39cf99cfa893270a0786a093914beee91
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="move-data-from-on-premises-hdfs-using-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの HDFS からデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -69,7 +69,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
 | type |type プロパティを **Hdfs** |はい |
 | Url |HDFS への URL |はい |
 | authenticationType |Anonymous または Basic。 <br><br> HDFS コネクタに **Kerberos 認証**を使用するには、[こちらのセクション](#use-kerberos-authentication-for-hdfs-connector)を参照して、オンプレミス環境を設定します。 |はい |
-| userName |Windows 認証のユーザー名。 |あり (Windows 認証用) |
+| userName |Windows 認証のユーザー名。 Kerberos 認証の場合は `<username>@<domain>.com` を指定します。 |あり (Windows 認証用) |
 | password |Windows 認証のパスワード。 |あり (Windows 認証用) |
 | gatewayName |Data Factory サービスが、HDFS への接続に使用するゲートウェイの名前。 |はい |
 | encryptedCredential |[New-AzureRMDataFactoryEncryptValue](https://msdn.microsoft.com/library/mt603802.aspx) 出力。 |いいえ |
@@ -104,7 +104,7 @@ Data Factory サービスでは、Data Management Gateway を使用したオン�
         "typeProperties":
         {
             "authenticationType": "Windows",
-            "userName": "Administrator",
+            "userName": "<username>@<domain>.com (for Kerberos auth)",
             "password": "password",
             "url" : "http://<machine>:50070/webhdfs/v1/",
             "gatewayName": "mygateway"

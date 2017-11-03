@@ -7,13 +7,13 @@ manager: mbaldwin
 ms.service: key-vault
 ms.topic: article
 ms.workload: identity
-ms.date: 08/04/2017
+ms.date: 10/12/2017
 ms.author: bruceper
-ms.openlocfilehash: fec4769c0bd571edea84dd2f766bb907d8819be5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8d617726a4ee9335728ab82104efbd845e3b0d05
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-key-vault-developers-guide"></a>Azure Key Vault 開発者ガイド
 
@@ -52,40 +52,61 @@ Key Vault の新機能のパブリック プレビューは定期的にリリー
 
 ## <a name="creating-and-managing-key-vaults"></a>Key Vaults の作成と管理
 
-コード内で Azure Key Vault を使用する前に、次の記事の説明に従って、REST、リソース マネージャー テンプレート、PowerShell、または CLI を使用してコンテナーを作成し、管理します。
+Azure Key Vault は、資格情報およびその他のキーやシークレットを安全に保管する方法を提供しますが、コードは Key Vault に認証してそれらを取得する必要があります。 管理対象サービス ID (MSI) は、Azure Active Directory (Azure AD) で自動的に管理されている ID を Azure サービスに付与することで、この問題を簡単に解決します。 この ID を使用して、コードに資格情報が含まれていなくても、Key Vault を含む Azure AD の認証をサポートする任意のサービスに認証することができます。 
 
-- [REST を使用した Key Vault の作成と管理](https://docs.microsoft.com/rest/api/keyvault/)
-- [PowerShell を使用した Key Vault の作成と管理](key-vault-get-started.md)
+MSI の詳細については、[Azure リソースの管理対象サービス ID (MSI)](https://docs.microsoft.com/azure/active-directory/msi-overview) を参照してください。
+
+AAD の操作の詳細については、[Azure Active Directory とアプリケーションの統合](/active-directory/develop/active-directory-integrating-applications)に関するページを参照してください。
+
+キー コンテナーでキー、シークレット、または証明書を使用する前に、次の記事に従って、CLI、PowerShell、Resource Manager テンプレートまたは REST でキーを作成し、管理します。
+
 - [CLI を使用した Key Vault の管理](key-vault-manage-with-cli2.md)
+- [PowerShell を使用した Key Vault の作成と管理](key-vault-get-started.md)
 - [Azure Resource Manager テンプレートを使用した Key Vault の作成とシークレットの追加](../azure-resource-manager/resource-manager-template-keyvault.md)
+- [REST を使用した Key Vault の作成と管理](https://docs.microsoft.com/rest/api/keyvault/)
 
-> [!NOTE]
-> Key Vault に対する操作は、AAD によって認証され、コンテナーごとに定義された Key Vault 独自のアクセス ポリーによって許可されます。
 
 ## <a name="coding-with-key-vault"></a>Key Vault を使用したコーディング
 
-プログラマー向けの Key Vault 管理システムは、REST を基盤とするさまざまなインターフェイスで構成されています。 REST インターフェイスを使用すると、すべてのキー コンテナー リソース (キー、シークレット、証明書) にアクセスできます。 [Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
+プログラマー向けの Key Vault 管理システムは、さまざまなインターフェイスで構成されています。 このセクションでは、すべての言語のリンクと、いくつかのコード例を紹介します。 
 
-### <a name="supported-programming-languages"></a>サポートされるプログラミング言語
+### <a name="supported-programming-and-scripting-languages"></a>サポートされるプログラミング言語とスクリプト言語
+
+#### <a name="rest"></a>REST ()
+
+すべてのキー コンテナー リソースは、インターフェイス、コンテナー、キー、シークレットなどの REST インターフェイスからアクセスできます。 
+
+[Key Vault REST API リファレンス](https://docs.microsoft.com/rest/api/keyvault/)。 
 
 #### <a name="net"></a>.NET
 
-- [Key Vault の .NET API リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
+[Key Vault の .NET API リファレンス](https://docs.microsoft.com/dotnet/api/microsoft.azure.keyvault) 
 
 .NET SDK の 2.x バージョンの詳細については、[リリース ノート](key-vault-dotnet2api-release-notes.md)をご覧ください。
 
 #### <a name="java"></a>Java
 
-- [Key Vault の Java SDK](https://docs.microsoft.com/java/api/com.microsoft.azure.keyvault)
+[Key Vault の Java SDK](https://docs.microsoft.com/java/api/overview/azure/keyvault)
 
 #### <a name="nodejs"></a>Node.js
 
-Node.js では、コンテナー管理 API とコンテナー オブジェクト API は別々になっています。 Key Vault Management では、キー コンテナーの作成と更新が行えます。 Key Vault Operations API は、キーやシークレット、証明書といったコンテナー オブジェクトを使用するためのものです。 
+Node.js では、キー コンテナー管理 API とキー コンテナー オブジェクト API は別々になっています。 次の概要の記事から、両方にアクセスすることができます。 
 
-- [Key Vault Management の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-arm-keyvault/latest/)
-- [Key Vault Operations の Node.js API リファレンス](http://azure.github.io/azure-sdk-for-node/azure-keyvault/latest/) 
+[Node.js 用 Azure Key Vault モジュール](https://docs.microsoft.com/nodejs/api/overview/azure/key-vault)
 
-### <a name="quick-start"></a>クイック スタート
+#### <a name="python"></a>Python
+
+[Python 用 Azure Key Vault ライブラリ](https://docs.microsoft.com/python/api/overview/azure/key-vault)
+
+#### <a name="azure-cli-2"></a>Azure CLI 2
+
+[Azure CLI for Key Vault](https://docs.microsoft.com/cli/azure/keyvault)
+
+#### <a name="azure-powershell"></a>Azure PowerShell 
+
+[Azure PowerShell for Key Vault](https://docs.microsoft.com/en-us/powershell/module/azurerm.keyvault)
+
+### <a name="quick-start-guides"></a>クイック スタート ガイド
 
 - [Key Vault の作成](https://github.com/Azure/azure-quickstart-templates/tree/master/101-key-vault-create)
 - [Node.js を使用した Key Vault の概要](https://azure.microsoft.com/en-us/resources/samples/key-vault-node-getting-started/)
