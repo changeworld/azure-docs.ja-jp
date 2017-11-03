@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/04/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 3d3ffa343a91aaad632705f24bcb357b7b20386d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2415850491018f4e27c5ec930b688026cc12b41a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="push-data-to-an-azure-search-index-by-using-azure-data-factory"></a>Azure Data Factory を使用して Azure Search インデックスにデータをプッシュする
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

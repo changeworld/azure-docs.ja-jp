@@ -15,15 +15,15 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: jroth
-ms.openlocfilehash: 6790db207fc7ec8a4b1546ef07c97ef30abe9513
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad4b5aeed645512774f1a3ecf94de37beff26b22
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>仮想マシン上での Azure Premium Storage と SQL Server の使用
 ## <a name="overview"></a>概要
-[Azure Premium Storage](../../../storage/common/storage-premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
+[Azure Premium Storage](../premium-storage.md) は、低遅延と高いスループット IO を提供する次世代のストレージです。 IaaS [仮想マシン](https://azure.microsoft.com/services/virtual-machines/)上の SQL Server など、主要な IO 集中型ワークロードに最適です。
 
 > [!IMPORTANT]
 > Azure には、リソースの作成と操作に関して、 [Resource Manager とクラシック](../../../azure-resource-manager/resource-manager-deployment-model.md)の 2 種類のデプロイメント モデルがあります。 この記事では、クラシック デプロイ モデルの使用方法について説明します。 最新のデプロイでは、リソース マネージャー モデルを使用することをお勧めします。
@@ -143,7 +143,7 @@ VHD を記憶域プールの物理ディスクにマップした後は、デタ�
 ### <a name="vm-storage-bandwidth-and-vhd-storage-throughput"></a>VM ストレージの帯域幅と VHD ストレージのスループット
 ストレージのパフォーマンスは、指定されている DS* VM のサイズと VHD のサイズによって決まります。 VM により、アタッチできる VHD の数と、サポートする最大帯域幅 (MB/秒) は異なります。 具体的な帯域幅については、[Azure の仮想マシンおよびクラウド サービスのサイズ](../sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)に関する記事をご覧ください。
 
-ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../../../storage/common/storage-premium-storage.md#scalability-and-performance-targets)をご覧ください。
+ディスク サイズを大きくすると IOPS が向上します。 移行パスについて考えるときはこれを検討する必要があります。 詳しくは、[IOPS とディスク タイプの表](../premium-storage.md#scalability-and-performance-targets)をご覧ください。
 
 最後に、VM はアタッチされるすべてのディスクについてサポートされる最大ディスク帯域幅が異なることを考慮します。 高負荷では、その VM ロール サイズに対して使用可能な最大ディスク帯域幅が飽和状態になる可能性があります。 たとえば、Standard_DS14 は最大 512MB/秒をサポートします。したがって、3 台の P30 ディスクで、VM のディスク帯域幅が飽和する可能性があります。 ただし、この例では、読み取りと書き込みの IO 組み合わせによってはスループット制限を超える場合があります。
 
@@ -1096,7 +1096,7 @@ IP アドレスの追加については、 [付録](#appendix-migrating-a-multis
     ![Appendix15][25]
 
 ## <a name="additional-resources"></a>その他のリソース
-* [Azure Premium Storage](../../../storage/common/storage-premium-storage.md)
+* [Azure Premium Storage](../premium-storage.md)
 * [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)
 * [Azure Virtual Machines における SQL Server](../sql/virtual-machines-windows-sql-server-iaas-overview.md)
 

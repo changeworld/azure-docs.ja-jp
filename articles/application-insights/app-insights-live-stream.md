@@ -40,7 +40,7 @@ Live Metrics Stream は現在、オンプレミスまたはクラウドで実行
 ## <a name="get-started"></a>作業開始
 
 1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](app-insights-windows-services.md) に [Application Insights をインストール](app-insights-asp-net.md)していない場合は、今すぐインストールします。 
-2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。 [**更新プログラム**] タブを開き、[**リリース前のパッケージを含める**] をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
+2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、**[リリース前のパッケージを含める]** をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
     アプリケーションを再デプロイします。
 

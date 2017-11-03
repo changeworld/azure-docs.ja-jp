@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/07/2017
 ms.author: ramankum
-ms.openlocfilehash: 0380b4aaa23b4aaba4c67d05e2d62f3ef41d6a32
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c22c2c194cb839c3ec9e3e851768ca19bc6fc443
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="convert-azure-managed-disks-storage-from-standard-to-premium-and-vice-versa"></a>Azure 管理ディスクのストレージを Standard から Premium に (または Premium から Standard に) 変換する
 
-管理ディスクには、[Premium](../../storage/storage-premium-storage.md) (SSD ベース) と [Standard](../../storage/storage-standard-storage.md) (HDD ベース) という 2 つのストレージ オプションがあります。 パフォーマンス上のニーズに基づいて、この 2 つのオプションを最小限のダウンタイムで簡単に切り替えることができます。 この機能は、管理されていないディスクに対して使用することはできません。 ただし、2 つのオプションを簡単に切り替えるために、簡単に[管理ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
+管理ディスクには、[Premium](../windows/premium-storage.md) (SSD ベース) と [Standard](../windows/standard-storage.md) (HDD ベース) という 2 つのストレージ オプションがあります。 パフォーマンス上のニーズに基づいて、この 2 つのオプションを最小限のダウンタイムで簡単に切り替えることができます。 この機能は、管理されていないディスクに対して使用することはできません。 ただし、2 つのオプションを簡単に切り替えるために、簡単に[管理ディスクに変換](convert-unmanaged-to-managed-disks.md)できます。
 
 この記事では、管理ディスクを Azure CLI を使用して Standard から Premium に (または Premium から Standard に) 変換する方法を示します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli.md)」を参照してください。 
 

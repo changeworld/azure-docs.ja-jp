@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/16/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 650a7c5c6472e36a15988e1875634f31f0edfee0
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: cbacf8b73f1eea520000f9406044b072fe36235f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ba5606a8dbe311dae587ac3664cb77e0835e7f45
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 87c4573ce3b688cdc63b3a342bbc0bebb416ad36
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SAP NetWeaver のための Azure Virtual Machines DBMS のデプロイ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -248,7 +248,7 @@ ms.lasthandoff: 10/13/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -389,7 +389,7 @@ Microsoft Azure のアーキテクチャと Microsoft Azure Virtual Machines の
 
 2015 年 3 月まで、オペレーティング システムを含むディスクのサイズは 127 GB に制限されていました。 この制限は 2015 年 3 月に解除されました (詳しくは、<https://azure.microsoft.com/blog/2015/03/25/azure-vm-os-drive-limit-octupled/> をご覧ください)。 その時点から、オペレーティング システムを含むディスクをその他のディスクと同じサイズにできるようになりました。 ただし現在でも、オペレーティング システム、DBMS、および最終的に導入する SAP バイナリとデータベース ファイルとを分けたデプロイ構造にすることをお勧めしています。 そのため、Microsoft は、Azure Virtual Machines で実行する SAP システムに、オペレーティング システムとともにインストールされるベース VM (またはディスク)、データベース管理システムの実行可能ファイル、および SAP の実行可能ファイルが含まれていると想定しています。 DBMS のデータとログ ファイルは別のディスク ファイルの Azure Storage (Standard または Premium Storage) に格納され、元の Azure オペレーティング システム イメージ VM に論理ディスクとして接続されます。 
 
-Azure Standard Storage または Premium Storage の使用状況 (DS シリーズまたは GS シリーズの VM を使用するなど) によっては、Azure にはその他のクォータがあります。詳しくは、[こちら (Linux)][virtual-machines-sizes-linux] および[こちら (Windows)][virtual-machines-sizes-windows] の記事をご覧ください。 ディスクのレイアウトを計画するときは、次の項目のクォータの最適なバランスを見つける必要があります。
+Azure Standard Storage または Premium Storage の使用状況 (DS シリーズまたは GS シリーズの VM を使用するなど) によっては、Azure にはその他のクォータがあります。詳しくは、[こちら (Linux)][virtual-machines-sizes-linux] および[こちら (Windows)][virtual-machines-sizes-windows] の記事をご覧ｋづあさい。 ディスクのレイアウトを計画するときは、次の項目のクォータの最適なバランスを見つける必要があります。
 
 * データ ファイルの数。
 * ファイルが含まれているディスクの数。
@@ -443,7 +443,7 @@ Azure Premium Storage については、次のキャッシュ オプションが
 * キャッシュなし
 * 読み取りキャッシュ
 
-Azure Premium Storage の推奨事項は、SAP データベースの**データ ファイルには [読み取りキャッシュ]** を利用し、**ログ ファイルのディスクには [キャッシュなし]** を選択することです。
+Azure Premium Storage の推奨事項は、SAP データベースの**データ ファイルには [読み取りキャッシュ]** を利用し、**ログ ファイルのディスには [キャッシュなし]** を選択することです。
 
 ### <a name="c8e566f9-21b7-4457-9f7f-126036971a91"></a>ソフトウェア RAID
 すでに説明したように、構成可能なディスクの数にわたってデータベース ファイルに必要な IOPS 数と、Azure VM が提供するディスクまたは Premium Storage ディスク タイプあたりの最大 IOPS のバランスを取る必要があります。 ディスクにかかる IOPS 負荷に対処する最も簡単な方法は、異なるディスク間でソフトウェア RAID を作成することです。 ソフトウェア RAID から分割した LUN に SAP DBMS のデータ ファイルの数を設定します。 3 つの Premium Storage ディスクのうちの 2 つは、Standard Storage に基づくディスクよりも高い IOPS クォータを提供するため、要件によっては Premium Storage の使用を検討したほうがよい場合があります。 それだけでなく、Azure Premium Storage では I/O 待機時間が大幅に短縮されます。 
@@ -511,7 +511,7 @@ Azure Storage のローカル レプリケーション (ローカル冗長) は�
 
 Azure ストレージ アカウントは、管理の構成要素であるだけでなく、制限事項の対象です。 ただし、制限事項は、対象となるのが Azure Standard Storage アカウントであるか Azure Premium Storage アカウントであるかどうかによって異なります。 正確な機能と制限事項は[こちら][storage-scalability-targets]に記載されています。
 
-Azure Standard Storage は、ストレージ アカウントあたりの IOPS の制限がありますのでご注意ください ([この記事][storage-scalability-targets]の「**合計要求レート**」と記載された行)。 また、最初は Azure サブスクリプションあたりのストレージ アカウントが 100 に制限されています (2015 年 7 月現在)。 そのため、Azure Standard Storage を使用する場合は複数のストレージ アカウント間で VM の IOPS のバランスを取ることをお勧めします。 可能であれば、1 つの VM で 1 つのストレージ アカウントを使用するのが理想的です。 したがって、Azure Standard Storage でホストされている各 VHD がそのクォータ制限に達する可能性がある DBMS デプロイメントについては、Azure Standard Storage を使用する Azure ストレージ アカウントあたり 30 ～ 40 の VHD のみデプロイする必要があります。 一方、Azure Premium Storage を利用し、大容量のデータベース ボリュームを格納すると、IOPS の観点から見て好ましいでしょう。 ただし、Azure Premium Storage アカウントは、Azure Standard Storage アカウントよりもデータ ボリュームの制限を厳しくすることが可能な方法です。 その結果、データ ボリュームの制限に達しない範囲で、Azure Premium Storage アカウント内の VHD の上限数までしかデプロイできません。 最後に、IOPS および容量の機能が制限されている "仮想 SAN" としての Azure Storage アカウントを考えてみましょう。 その結果、オンプレミス デプロイと同様に、異なる "仮想 SAN デバイス" または Azure Storage アカウントにまたがるさまざまな SAP システムの VHD のレイアウトを定義するというタスクは残ります。
+Azure Standard Storage は、ストレージ アカウントあたりの IOPS の制限がありますのでご注意ください ([この記事][storage-scalability-targets]の「**合計要求レート**」と記載された行)。 また、最初は Azure サブスクリプションあたりのストレージ アカウントが 100 に制限されています (2015 年 7 月現在)。 そのため、Azure Standard Storage を使用する場合は複数のストレージ アカウント間で VM の IOPS のバランスを取ることをお勧めします。 可能であれば、1 つの VM で 1 つのストレージ アカウントを使用するのが理想的です。 したがって、Azure Standard Storage でホストされている各 VHD がそのクォータ制限に達する可能性がある DBMS デプロイメントについては、Azure Standard Storage を使用する Azure ストレージ アカウントあたり 30 ～ 40 の VHD のみデプロイする必要があります。 一方、Azure Premium Storage を利用し、大容量のデータベース ボリュームを格納すると、IOPS の観点から見て好ましいでしょう。 ただし、Azure Premium Storage アカウントは、Azure Standard Storage アカウントよりもデータ ボリュームを制限を厳しくすることが可能な方法です。 その結果、データ ボリュームの制限に達しない範囲で、Azure Premium Storage アカウント内の VHD の上限数までしかデプロイできません。 最後に、IOPS および容量の機能が制限されている "仮想 SAN" としての Azure Storage アカウントを考えてみましょう。 その結果、オンプレミス デプロイと同様に、異なる "仮想 SAN デバイス" または Azure Storage アカウントにまたがるさまざまな SAP システムの VHD のレイアウトを定義するというタスクは残ります。
 
 Azure Standard Storage の場合、可能であれば、異なるストレージ アカウントからストレージを 1 つの VM に提示しないでください。
 

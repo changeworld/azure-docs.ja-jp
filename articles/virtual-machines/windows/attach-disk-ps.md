@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/11/2017
 ms.author: cynthn
-ms.openlocfilehash: 022f35a537076b72785d95bc812c10c0e43fe2dd
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 6bc52262105fd9b162ad8ada9ae5cc3dbf623df2
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
@@ -27,7 +27,7 @@ ms.lasthandoff: 10/13/2017
 
 接続する前に、次のヒントを確認してください。
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 

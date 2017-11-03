@@ -15,18 +15,18 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
-ms.openlocfilehash: 3f29547e1da6028b1e4b91d9e29fd3bcdfe08d50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: de0222d897ed2cf94be98501c39385ac88f866fc
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>データ ディスクを Linux 仮想マシンから切断する方法
 
 仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。 そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。 
 
 > [!WARNING]
-> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については [Premium Storage 利用時の料金と課金](../../storage/common/storage-premium-storage.md#pricing-and-billing)に関する記事を参照してください。 
+> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については [Premium Storage 利用時の料金と課金](../windows/premium-storage.md#pricing-and-billing)に関する記事を参照してください。 
 > 
 > 
 

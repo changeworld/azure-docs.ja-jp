@@ -4,7 +4,7 @@ description: "Azure での Analysis Services の概要を説明します。"
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 83d7a29c-57ae-4aa0-8327-72dd8f00247d
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 8b3a538fc0fe34d0b7af8a99510cfb19abd32d55
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c6be396f22ee364e7746038b2243162e775c8c54
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="what-is-azure-analysis-services"></a>Azure Analysis Services とは
 ![Azure Analysis Services](./media/analysis-services-overview/aas-overview-aas-icon.png)

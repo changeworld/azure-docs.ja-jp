@@ -4,7 +4,7 @@
 汎用ストレージ アカウントを使用すると、1 つのアカウントにあるテーブル、キュー、ファイル、BLOB、Azure 仮想マシン ディスクなどの Azure Storage サービスにアクセスできます。 この種類のストレージ アカウントには、次の 2 つのパフォーマンス レベルがあります。
 
 * テーブル、キュー、ファイル、BLOB、および Azure 仮想マシン ディスクを格納できる、Standard Storage パフォーマンス レベル。
-* 現在、Azure 仮想マシン ディスクのみをサポートしている、Premium Storage パフォーマンス レベル。 Premium Storage の詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/storage/common/storage-premium-storage.md) 」をご覧ください。
+* 現在、Azure 仮想マシン ディスクのみをサポートしている、Premium Storage パフォーマンス レベル。 Premium Storage の詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../articles/virtual-machines/windows/premium-storage.md) 」をご覧ください。
 
 ### <a name="blob-storage-accounts"></a>BLOB ストレージ アカウント
 BLOB ストレージ アカウントとは、Azure Storage に BLOB (オブジェクト) として非構造化データを格納するための特殊なストレージ アカウントです。 BLOB ストレージ アカウントは、既存の汎用ストレージ アカウントと同様で、現在使用されているすべての優れた耐久性、可用性、スケーラビリティ、およびパフォーマンス機能を共有します。たとえば、ブロック BLOB と追加 BLOB の 100% の API 整合性などです。 ブロックまたは追加 Blob Storage のみを必要とするアプリケーションでは、BLOB ストレージ アカウントを使用することをお勧めします。

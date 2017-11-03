@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/22/2017
+ms.date: 11/01/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 6ddcde7e0c0f665eac9d749107db107e652c0be1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1379cbb0ea9b01a20d1974ed08e93b4872ffd92b
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Azure Data Factory を使用した Azure テーブルとの間でのデータの移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]

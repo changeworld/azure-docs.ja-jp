@@ -3,7 +3,7 @@ title: "Azure Application Insights とは何か  | Microsoft Docs"
 description: "ライブ Web アプリケーションのアプリケーション パフォーマンス管理と使用状況を追跡します。  問題の検出、トリアージ、診断を行い、ユーザーがアプリをどのように使用しているかを理解します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 379721d1-0f82-445a-b416-45b94cb969ec
 ms.service: application-insights
@@ -11,13 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: overview
+ms.custom: mvc
 ms.date: 05/14/2017
-ms.author: bwren
-ms.openlocfilehash: 3cb85316fac2ee637eb5defcc9b0840bada267b3
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mbullwin
+ms.openlocfilehash: 7910540add4092e1b5822a7525bec912befd80e7
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-is-application-insights"></a>Application Insights とは何か?
 Application Insights は、複数のプラットフォームで使用できる Web 開発者向けの拡張可能なアプリケーション パフォーマンス管理 (APM) サービスです。 このサービスを使用して、実行中の Web アプリケーションを監視することができます。 パフォーマンスに異常があると、自動的に検出されます。 組み込まれている強力な分析ツールを使えば、問題を診断し、ユーザーがアプリを使用して実行している操作を把握できます。  Application Insights は、パフォーマンスやユーザビリティを継続的に向上させるうえで役立つように設計されています。 オンプレミスまたはクラウドでホストされている .NET、Node.js、J2EE などのさまざまなプラットフォーム上のアプリで機能します。 DevOps プロセスと統合され、さまざまなツールへの接続ポイントを備えています。 Visual Studio Mobile Center および HockeyApp を統合することで、モバイル アプリからテレメトリを監視および分析できます。

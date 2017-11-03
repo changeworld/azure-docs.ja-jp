@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: cynthn
-ms.openlocfilehash: 66ff0ac6c7b23bde04e9934b591dd62067d669c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bbbd31313db44d32a829e9e4c6c9b5fd9c0e533e
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="how-to-detach-a-data-disk-from-a-windows-virtual-machine"></a>Windows 仮想マシンからディスクを切断する方法
 仮想マシンに接続されたデータ ディスクが不要になった場合、そのディスクは簡単に切断できます。 そうすれば、ディスクは仮想マシンから削除されますが、ストレージからは削除されません。
 
 > [!WARNING]
-> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については [Premium Storage 利用時の料金と課金](../../storage/common/storage-premium-storage.md#pricing-and-billing)に関する記事を参照してください。
+> ディスクを切断した場合、自動的には削除されません。 Premium Storage のサブスクリプションにお申込みいただいている場合は、ディスクのストレージ料金が引き続き発生します。 詳細については [Premium Storage 利用時の料金と課金](premium-storage.md#pricing-and-billing)に関する記事を参照してください。
 >
 >
 

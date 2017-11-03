@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: ninarn
-ms.openlocfilehash: f10bac1189c94a581487d19fc0cc129acec6a636
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 20fbc21224410456919e82f3a63c506eb6e573e4
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server VM のストレージの構成
 Azure で SQL Server 仮想マシン イメージを構成するとき、ポータルを使用して、ストレージ構成を自動化すると便利です。 これには、ストレージを VM に接続する、そのストレージが SQL Server にアクセスできるようにする、特定のパフォーマンス要件を最適化するためにストレージを構成する、などの作業が含まれます。
@@ -32,7 +32,7 @@ Azure で SQL Server 仮想マシン イメージを構成するとき、ポー�
 
 * [SQL Server ギャラリー イメージ](virtual-machines-windows-sql-server-iaas-overview.md#option-1-create-a-sql-vm-with-per-minute-licensing)でプロビジョニングされている。
 * [Resource Manager デプロイメント モデル](../../../azure-resource-manager/resource-manager-deployment-model.md)を使用している。
-* [Premium Storage](../../../storage/common/storage-premium-storage.md)を使用している。
+* [Premium Storage](../premium-storage.md)を使用している。
 
 ## <a name="new-vms"></a>新しい VM
 次のセクションでは、新しい SQL Server 仮想マシンのストレージを構成する方法について説明します。
@@ -104,7 +104,7 @@ SQL Server VM に既にストレージを構成してある場合は、そのス
 
 * VM に対して 2 TB 未満のストレージを選択した場合、記憶域プールは作成されません。
 * VM に対して 2 TB 以上のストレージを選択した場合、記憶域プールが構成されます。 このトピックの次のセクションでは、記憶域プールの構成について詳しく説明します。
-* 自動ストレージ構成では、必ず [Premium Storage](../../../storage/common/storage-premium-storage.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
+* 自動ストレージ構成では、必ず [Premium Storage](../premium-storage.md) P30 データ ディスクが使用されます。 結果として、選択したテラバイト数と、VM に接続されているデータ ディスク数は 1 対 1 で対応しています。
 
 料金情報については、 [Storage 料金](https://azure.microsoft.com/pricing/details/storage) ページの「 **Disk Storage** 」タブを参照してください。
 

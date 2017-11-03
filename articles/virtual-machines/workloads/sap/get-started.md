@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 10/12/2017
+ms.date: 10/31/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 567a86f61c2d3c2a0164ed80e9951b4c7d9a0b25
-ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
+ms.openlocfilehash: 17b157b723b4a4973d9bf95b4acbf7e76e797b8c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Azure を使用して SAP ワークロードをホストして実行するシナリオ
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -237,7 +237,7 @@ ms.lasthandoff: 10/24/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -321,7 +321,7 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 
 概要: お客様とマイクロソフト エンタープライズ アカウント チームとの間で Azure (L インスタンス) の SAP HANA の購入処理が終了した後は、適切に接続するためのさまざまな構成が必要です。  このドキュメントでは、理解しておいていただきたい情報を、必須となる情報とともにおおまかに説明します。 このドキュメントでは、収集する必要がある情報と、スクリプトの実行が必要になる構成の概要を説明します。
 
-更新日: 2017 年 7 月
+更新日: 2017 年 10 月
 
 [ガイドはこちら](hana-overview-infrastructure-connectivity.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
@@ -348,7 +348,7 @@ Azure で SAP ワークロードをホストするシナリオでは、さまざ
 
 概要: このガイドは、Azure 環境の SAP HANA の監視機能を構築する際に役立つ情報のほか、トラブルシューティングに関する追加情報を取り扱います。
 
-更新日: 2017 年 8 月
+更新日: 2017 年 10 月
 
 [このドキュメントはこちらからご利用いただけます](troubleshooting-monitoring.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

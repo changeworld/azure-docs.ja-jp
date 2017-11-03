@@ -57,7 +57,7 @@ ms.lasthandoff: 11/01/2017
    
     ![新しい [Web リソース] ダイアログ](./media/app-insights-sample-mscrm/07.png)
    
-    名前を付け、[ **スクリプト (JScript)** ] を選択してテキスト エディターを開きます。
+    名前を付け、**[ スクリプト (JScript) ]** を選択してテキスト エディターを開きます。
    
     ![テキスト エディターを開く](./media/app-insights-sample-mscrm/08.png)
 2. Application Insights からコードをコピーします。 コピーの際はスクリプト タグを無視します。 次のスクリーン ショットを参照してください。

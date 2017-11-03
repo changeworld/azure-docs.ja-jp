@@ -4,7 +4,7 @@ description: "新しい Azure Analysis Services チュートリアル プロジ�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 06/01/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: d523e3e103b4c351d01af6f1eb3c396f9a63016a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a2bfb714e92986465befd79aaa7b12f90b6490e7
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-1-create-a-tabular-model-project"></a>レッスン 1: 表形式モデル プロジェクトを作成する
 
@@ -36,11 +36,11 @@ ms.lasthandoff: 10/11/2017
   
 #### <a name="to-create-a-new-tabular-model-project"></a>新しい表形式モデル プロジェクトを作成する  
   
-1.  SSDT の **ファイル** メニューで､**New** > **Project**をクリックします｡  
+1.  SSDT の **[ファイル]** メニューで､[**New** > **Project**] をクリックします｡  
   
-2.  **New Project** ダイアログ ボックスで**Installed** > **Business Intelligence** > **Analysis Services** を展開し､**Analysis Services Tabular Project**をクリックします｡  
+2.  **[New Project]** ダイアログ ボックスで[**Installed** > **Business Intelligence** > **Analysis Services**] を展開し､**[Analysis Services Tabular Project]** をクリックします｡  
   
-3.  [**名前**] フィールドで **AW Internet Sales** と入力し､プロジェクトファイルの場所を指定します｡  
+3.  **[名前]** フィールドで **AW Internet Sales** と入力し､プロジェクトファイルの場所を指定します｡  
   
     既定では､**Solution Name** はプロジェクト名と同じですが､別のソリューション名を指定することができます｡  
   

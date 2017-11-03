@@ -12,11 +12,11 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/28/2017
 ms.author: jaboes
-ms.openlocfilehash: 95c6a1e9cfadeb19a0ec5a53fffb15ef220bfec0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9fe7a5f254d8b384cae10ecd34e0bdafa433ff13
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Azure Resource Manager のリソース プロバイダー操作
 
@@ -167,31 +167,6 @@ ms.lasthandoff: 10/11/2017
 |/service/reports/byTime/read|期間ごとに集計されたレポートを取得します。|
 |/service/reports/byApi/read|API ごとに集計されたレポートを取得します。|
 |/service/reports/byProduct/read|製品ごとに集計されたレポートを取得します。|
-
-## <a name="microsoftappservice"></a>Microsoft.AppService
-
-| 操作 | Description |
-|---|---|
-|/appidentities/Read|ゲートウェイに登録されているリソース (Web サイト) を返します。|
-|/appidentities/Write|新しいアプリ ID を作成します。|
-|/appidentities/Delete|既存のアプリ ID を削除します。|
-|/deploymenttemplates/listMetadata/Action|API アプリ パッケージに関連付けられている UI メタデータを一覧表示します。|
-|/deploymenttemplates/generate/Action|API アプリ インスタンスをプロビジョニングするデプロイ テンプレートを返します。|
-|/gateways/Read|ゲートウェイ インスタンスを返します。|
-|/gateways/Write|新しいゲートウェイを作成するか、既存のゲートウェイを更新します。|
-|/gateways/Delete|既存のゲートウェイ インスタンスを削除します。|
-|/gateways/listLoginUris/Action|トークン ストアを設定し、OAuth ログイン URI を返します。|
-|/gateways/listKeys/Action|ゲートウェイのシークレットを返します。|
-|/gateways/tokens/Write|指定された名前で新しい ZUMO トークンを作成します。|
-|/gateways/registrations/Read|ゲートウェイに登録されているリソース (Web サイト) を返します。|
-|/gateways/registrations/Write|リソース (Web サイト) をゲートウェイに登録します。|
-|/gateways/registrations/Delete|ゲートウェイからリソース (Web サイト) の登録を解除します。|
-|/apiapps/Read|API アプリ インスタンスを返します。|
-|/apiapps/Write|新しい API アプリを作成するか、既存の API アプリを更新します。|
-|/apiapps/Delete|既存の API アプリ インスタンスを削除します。|
-|/apiapps/listStatus/Action|API アプリの状態を返します。|
-|/apiapps/listKeys/Action|API アプリのシークレットを返します。|
-|/apiapps/apidefinitions/Read|API アプリの API 定義を返します。|
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 

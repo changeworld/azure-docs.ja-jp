@@ -3,7 +3,7 @@ title: "Application Insights を使用して Azure で実行中の Web アプリ
 description: "フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: bwren
-ms.openlocfilehash: eca593890b6b030caa0acb9ede90ca24fe136ca0
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.author: mbullwin
+ms.openlocfilehash: f6669d90878398dcd4592df97180dcd59b146350
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
 
