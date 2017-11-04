@@ -9,19 +9,19 @@ ms.service: batch
 ms.devlang: na
 ms.topic: article
 ms.workload: big-compute
-ms.date: 07/20/2017
+ms.date: 10/17/2017
 ms.author: markscu
-ms.openlocfilehash: 6b91466da46d1f4ca9f25bf1718be783603efc58
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87ec0e1b6d01fc5d13e9b9f46987e416d8e1958f
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer-preview"></a>Azure Batch CLI のテンプレートとファイル転送の使用 (プレビュー)
 
 Azure CLI を使用して、コードを記述せずに Batch ジョブを実行できます。
 
-Batch のプール、ジョブ、タスクを作成できるようにするためのテンプレート ファイルを作成し、Azure CLI で使用できます。 Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードできます。
+Azure CLI でテンプレート ファイルを作成および使用して、Batch のプール、ジョブ、タスクを作成します。 Batch アカウントに関連付けられたストレージ アカウントにジョブ入力ファイルを簡単にアップロードし、ジョブ出力ファイルを簡単にダウンロードできます。
 
 ## <a name="overview"></a>概要
 
@@ -50,10 +50,10 @@ Azure CLI の拡張機能を使用すると、開発者以外のユーザーが 
 
 Azure CLI をインストールする方法については、「[Azure CLI 2.0 のインストール](https://docs.microsoft.com/cli/azure/install-azure-cli)」をご覧ください。
 
-Azure CLI をインストールしたら、次の CLI コマンドを使って Batch 拡張機能をインストールできます。
+Azure CLI をインストールしたら、次の CLI コマンドを使って、最新バージョンの Batch 拡張機能をインストールできます。
 
 ```azurecli
-az component update --add batch-extensions --allow-third-party
+az extension add --source https://github.com/Azure/azure-batch-cli-extensions/releases/download/azure-batch-cli-extensions-2.0.0/azure_batch_cli_extensions-2.0.0-py2.py3-none-any.whl
 ```
 
 Batch 拡張機能の詳細については、[Windows、Mac、Linux 向けの Microsoft Azure Batch CLI 拡張機能](https://github.com/Azure/azure-batch-cli-extensions#microsoft-azure-batch-cli-extensions-for-windows-mac-and-linux)に関するページをご覧ください。
@@ -106,7 +106,7 @@ ffmpeg がインストールされた Linux VM のプールを作成し、プー
         "poolId": {
             "type": "string",
             "metadata": {
-                "description": "The pool id "
+                "description": "The pool ID "
             }
         }
     },

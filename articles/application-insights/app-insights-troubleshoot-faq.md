@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2017
 ms.author: bwren
-ms.openlocfilehash: 0b6f9e8192a4c6808beb61acb0f93ef5ec73e956
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ff3a0b5f64adff535123cf0ea8ca766ed2b8d5be
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="application-insights-frequently-asked-questions"></a>Application Insights: よく寄せられる質問
 
@@ -89,7 +89,7 @@ Enterprise プランでは、テレメトリを送信した Web サーバー ノ
 お使いのアプリケーションに適切な SDK については、「 [リリース ノート](app-insights-release-notes.md) 」をご覧ください。
 
 ## <a name="update"></a>自分のプロジェクトがデータを送信する Azure のリソースを変更するにはどうすればいいですか?
-ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、[ **Application Insights の更新**] を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
+ソリューション エクスプローラーで、 `ApplicationInsights.config` を右クリックし、**[ Application Insights の更新]** を選択します。 Azure の既存または新規のリソースにデータを送信できます。 更新ウィザードでは、サーバー SDK のデータの送信先を決定する、ApplicationInsights.config のインストルメンテーション キーを変更します。 [すべて更新] を選択解除している場合を除き、Web ページ内のキーが表示される場所でもキーが変更されます。
 
 ## <a name="what-is-status-monitor"></a>Status Monitor とは何ですか?
 
@@ -104,7 +104,7 @@ IIS Web サーバーで Web アプリ内の Application Insights を構成する
 * HTTP 要求
 * [依存関係](app-insights-asp-net-dependencies.md)。 SQL Database の呼び出し、外部サービスの HTTP 呼び出し、Azure Cosmos DB、テーブル、Blob Storage、およびキューの呼び出し。 
 * [例外](app-insights-asp-net-exceptions.md)とスタック トレース。
-* [パフォーマンス カウンター](app-insights-performance-counters.md) - [Status Monitor](app-insights-monitor-performance-live-website-now.md)、Azure 監視 (app-insights-azure-web-apps.md)、または [Application Insights collectd ライター](app-insights-java-collectd.md)を使用している場合。
+* [パフォーマンス カウンター](app-insights-performance-counters.md) - [Status Monitor](app-insights-monitor-performance-live-website-now.md)、[Azure 監視](app-insights-azure-web-apps.md)、または [Application Insights collectd ライター](app-insights-java-collectd.md)を使用している場合。
 * コード化する[カスタム イベントとカスタム メトリック](app-insights-api-custom-events-metrics.md)。
 * [トレース ログ](app-insights-asp-net-trace-logs.md) (適切なコレクターを構成する場合)。
 
@@ -186,7 +186,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 * JavaScript SDK では、Web クライアントにユーザー Cookie を設定することで戻ってきたユーザーを識別し、セッション Cookie を設定することでグループ アクティビティを識別します。
 * クライアント側のスクリプトがない場合は、[サーバーで Cookie を設定](http://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/)できます。
 * 1 人の実在するユーザーが、複数の異なるブラウザーや、プライベート/シークレット ブラウズ、または複数のコンピューターでサイトを利用した場合、それらは複数のユーザーとしてカウントされます。
-* 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContect()](app-insights-api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
+* 複数のコンピューターやブラウザー間でログイン済みのユーザーを識別するには、[setAuthenticatedUserContext()](app-insights-api-custom-events-metrics.md#authenticated-users) の呼び出しを追加します。
 
 ## <a name="q17"></a> Application Insights の機能をすべて有効にしているでしょうか?
 | 表示内容 | 表示方法 | 用途 |
@@ -204,7 +204,7 @@ POST データは自動ではログに記録されませんが、TrackTrace 呼�
 
 [サンプリング](app-insights-sampling.md)により、アプリからポータルに実際に送信されたテレメトリ項目 (要求、カスタム イベントなど) の数が減少します。 検索グラフには、実際に受信した項目の数が表示されます。 イベント数を表示するメトリック グラフには、発生した元のイベントの数が表示されます。 
 
-送信される各項目には、その項目を表す元のイベントの数を示した `itemCount` プロパティが含まれています。 Analytics で次のクエリを実行すると、サンプリング操作を確認できます。
+送信される各項目には、その項目が表す元のイベントの数を示す `itemCount` プロパティが含まれています。 Analytics で次のクエリを実行すると、サンプリング操作を確認できます。
 
 ```
     requests | summarize original_events = sum(itemCount), transmitted_events = count()

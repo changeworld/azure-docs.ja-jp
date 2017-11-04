@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/25/2017
 ms.author: eslesar
-ms.openlocfilehash: 26a1681e662814fbe513bec1b8d2bc040885d632
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4e7b3049fff76c86956e08d71b22a0f8dbf55b0e
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="my-first-python-runbook"></a>初めての Python Runbook
 
@@ -214,3 +214,4 @@ Python Runbook を開始 (**[テスト]** ブレード上で、または発行�
 * PowerShell Workflow Runbook を初めて利用するときは、「 [最初の PowerShell Workflow Runbook](automation-first-runbook-textual.md)
 * Runbook の種類とそれらの利点や制限事項の詳細については、「 [Azure Automation の Runbook の種類](automation-runbook-types.md)
 * Python を使用した Azure の開発については、「[Python 開発者向けの Azure](https://docs.microsoft.com/en-us/python/azure/?view=azure-python)」をご覧ください。
+* サンプル Python 2 Runbook を表示するには、[Azure Automation GitHub](https://docs.microsoft.com/en-us/python/azure/?view=azure-python) を参照してください。

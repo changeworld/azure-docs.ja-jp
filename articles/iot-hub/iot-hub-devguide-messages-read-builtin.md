@@ -11,13 +11,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: f17f3084138d667b2584142ed90ecc8fc1586189
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f864ca586e8e607168ae7b46a1eaa297eca1cfb8
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>デバイスからクラウドへのメッセージを組み込みのエンドポイントから読み取る
 
@@ -40,16 +40,18 @@ IoT Hub は、**messages/events** 組み込みエンドポイントをバック�
 
 [Azure Service Bus SDK for .NET][lnk-servicebus-sdk] または [Event Hubs - イベント プロセッサ ホスト][lnk-eventprocessorhost]を使用する場合、適切なアクセス許可があれば任意の IoT Hub の接続文字列を使用することができます。 これにより、 **メッセージやイベント** を Event Hub の名前として使用できます。
 
-IoT Hub を認識しない SDK (または製品の統合) を使用する場合は、[Azure Portal][lnk-management-portal] の IoT Hub 設定から、Event Hub と互換性があるエンドポイントと Event Hub と互換性がある名前を取得する必要があります。
+IoT Hub を認識しない SDK (または製品統合) を使用する場合は、IoT ハブの設定から、イベント ハブ互換性エンドポイントとイベント ハブ互換名を取得する必要があります。
 
-1. IoT Hub ブレードで、**[エンドポイント]** をクリックします。
-1. **[Built-in endpoints]** (組み込みエンドポイント) セクションで、**[イベント]** をクリックします。 ブレードには、**[Event Hub-compatible endpoint]** (Event Hub と互換性のあるエンドポイント)、**[Event Hub-compatible name]** (Event Hub と互換性のある名前)、**[パーティション]**、**[保持期間]**、**[コンシューマー グループ]** が表示されます。
+1. [Azure Portal][lnk-management-portal] にサインインし、IoT ハブに移動します。
+1. **[エンドポイント]**をクリックします。
+1. **[Built-in endpoints]** (組み込みエンドポイント) セクションで、**[イベント]** をクリックします。 
+1. プロパティ ページが開き、**[イベント ハブ互換エンドポイント]**、**[イベント ハブ互換名]**、**[パーティション]**、**[保持期間]**、**[コンシューマー グループ]** の各値が表示されます。
 
     ![Device-to-cloud settings][img-eventhubcompatible]
 
-IoT Hub SDK には IoT Hub エンドポイント名が必要であり、**エンドポイント** ブレードに表示されているように、**messages/events** となります。
+IoT Hub SDK には、IoT Hub エンドポイント名 (**[エンドポイント]** に表示されている **messages/events**) が必要です。
 
-SDK で **[Hostname]** (ホスト名) または **[Namespace]** (名前空間) の値が必要な場合は、**[Event Hub-compatible endpoint]** (イベント ハブと互換性のあるエンドポイント) からスキームを削除します。 たとえば、Event Hub 互換のエンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**Hostname** は **iothub-ns-myiothub-1234.servicebus.windows.net**、**Namespace** は **iothub-ns-myiothub-1234** です。
+SDK で **[Hostname]** (ホスト名) または **[Namespace]** (名前空間) の値が必要な場合は、**[Event Hub-compatible endpoint]** (イベント ハブと互換性のあるエンドポイント) からスキームを削除します。 たとえば、イベント ハブ互換エンドポイントが **sb://iothub-ns-myiothub-1234.servicebus.windows.net/** の場合、**ホスト名** は **iothub-ns-myiothub-1234.servicebus.windows.net** になります。 **名前空間**は **iothub-ns-myiothub-1234** になります。
 
 この場合、指定したイベント ハブに接続するための **ServiceConnect** のアクセス許可を持つ、共有アクセス ポリシーを使用できます。
 

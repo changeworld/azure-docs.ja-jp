@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2017
+ms.date: 10/17/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: eacecb9f084ead76633cf802751d3a603cb2f0d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 727041edf457ef55a39eb91ba2369c163f5b4712
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Azure Data Factory のコピー アクティビティを使用した DB2 からのデータ移動
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -82,7 +82,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
-| **type** |このプロパティは **OnPremisesDB2** に設定されている必要があります。 |あり |
+| **type** |このプロパティは **OnPremisesDb2** に設定されている必要があります。 |あり |
 | **server** |DB2 サーバーの名前です。 |あり |
 | **database** |DB2 データベースの名前です。 |あり |
 | **schema** |DB2 データベース内のスキーマの名前です。 このプロパティは、大文字と小文字が区別されます。 |いいえ |
@@ -110,11 +110,7 @@ Data Factory DB2 コネクタでは、分散型リレーショナル データ�
 | **query** |カスタム クエリを使用してデータを読み取ります。 |SQL クエリ文字列。 次に例を示します。`"query": "select * from "MySchema"."MyTable""` |いいえ (データセットの **tableName** プロパティが指定されている場合) |
 
 > [!NOTE]
-> スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。 For example:
->
-> ```sql
-> "query": "select * from "DB2ADMIN"."Customers""
-> ```
+> スキーマ名とテーブル名は、大文字と小文字が区別されます。 query ステートメントでは、プロパティ名を "" (二重引用符) で囲んでください。
 
 ## <a name="json-example-copy-data-from-db2-to-azure-blob-storage"></a>JSON の使用例: DB2 から Azure Blob Storage へのデータのコピー
 次の例は、[Azure Portal](data-factory-copy-activity-tutorial-using-azure-portal.md)、[Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md)、または [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md) を使用してパイプラインを作成する際に使用できるサンプルの JSON 定義です。 この例で紹介しているのは、DB2 データベースから Blob Storage にデータをコピーする方法ですが、 Azure Data Factory コピー アクティビティを使用すると、[サポートされている各種データ ストア シンク](data-factory-data-movement-activities.md#supported-data-stores-and-formats)にデータをコピーすることができます。

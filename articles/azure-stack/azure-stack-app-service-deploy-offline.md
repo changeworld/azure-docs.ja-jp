@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: d2214b914899b24dfb36873e0083632a7deaba52
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8ee171708364c3e29476302bef04a715df650b9b
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>App Service リソースプロバイダーを AD FS によって保護されている切断された Azure Stack 環境に追加する
 
@@ -51,7 +51,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 ## <a name="complete-the-offline-installation-of-app-service-on-azure-stack"></a>App Service on Azure Stack のオフライン インストールを実行する
 
-1. オフラインの Azure Stack ホスト マシンで、azurestack\administrator として appservice.exe を実行します。
+1. オフラインの Azure Stack ホスト コンピューターで、azurestack\clouadmin として appservice.exe を実行します。
 
 2. **[詳細設定]** > **[オフライン インストールが完了しました]** の順にクリックします。
 
@@ -72,7 +72,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 7. 次のページで、次の操作を行います。
     1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         - Azure Active Directory (Azure AD) を使用している場合は、Azure Stack の展開時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]**をクリックします。
-        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 azurestackadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
+        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
     2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、自分のサブスクリプションを選びます。
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
     4. ご利用の App Service デプロイの **[リソース グループ名]** を入力します。 既定では、**[APPSERVICE\<MOBILE\>]** に設定されています。
@@ -81,7 +81,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image03.png)
 
-8. ファイル共有の情報を入力してから、**[次へ]** をクリックします。
+8. ファイル共有の情報を入力してから、**[次へ]** をクリックします。 ファイル共有のアドレスは、\\\appservicefileserver.local.cloudapp.azurestack.external\websites のように、お使いのファイル サーバーの完全修飾ドメイン名を使用するか、\\\10.0.0.1\websites のように、IP アドレスを使用する必要があります。
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image04.png)
 
@@ -110,9 +110,14 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image07.png)    
 
-12. ロール インスタンスと SKU のオプションを確認します。 ロールごとに、お勧めの最小インスタンス SKU が既定値として設定されます。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
+12. ロール インスタンスと SKU のオプションを確認します。 既定値には、ASDK デプロイの各ロールに対するインスタンスの最小数および SKU の最小値が入力されています。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
 
-    | 役割 | お勧めの最小インスタンス数 | お勧めの最小 SKU | メモ |
+     > [!NOTE]
+     > 運用環境デプロイの場合は、「[Azure Stack での Azure App Service サーバー ロールの容量計画](azure-stack-app-service-capacity-planning.md)」のガイダンスに従ってください。
+     > 
+     >
+
+    | 役割 | インスタンスの最小値 | SKU の最小値 | メモ |
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A1 - (1 コア、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 コア、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
@@ -123,7 +128,7 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image08.png)    
 
     > [!NOTE]
-    > テクニカル プレビューでは、App Service リソース プロバイダー インストーラーにより、Azure Resource Manager をサポートする単純なファイル サーバーとして機能するように 1 つの Standard A1 インスタンスもデプロイされます。 このインスタンスは、単一ノード開発キット用に残されています。 実稼働ワークロードについては、一般提供開始時に、App Service インストーラーにより、高可用性ファイル サーバーを使うことができるようになります。
+    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません**。
 
 13. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。 **[次へ]** をクリックします。
 
@@ -150,19 +155,11 @@ App Service リソースプロバイダーをオフライン Azure Stack の展�
 
 ## <a name="validate-the-app-service-on-azure-stack-installation"></a>App Service on Azure Stack インストールを検証する
 
-1. Azure Stack 管理ポータルで、インストーラーによって作られたリソース グループを参照します。 既定では、このグループは **APPSERVICE-LOCAL** です。
+1. Azure Stack 管理ポータルで、**[Administration - App Service]\(管理 - App Service\)** に移動します。
 
-2. **CN0-VM** を見つけます。 仮想マシンに接続するには、**[仮想マシン]** ブレードで **[接続]** をクリックします。
+2. 概要の状態で、**[状態]** に **[ロールはいずれも準備ができています]** と表示されていることを確認します。
 
-3. この VM のデスクトップで、**[Web Cloud Management Console]\(Web クラウド管理コンソール\)** をダブルクリックします。
-
-4. **[管理されたサーバー]** に移動します。
-
-5. すべてのマシンで、1 つ以上の Worker について **[準備完了]** と表示されたら、手順 6 に進みます。
-
-6. リモートのデスクトップ マシンを終了して、App Service インストーラーを実行したマシンに戻ります。
-
-    ![App Service インストーラー](media/azure-stack-app-service-deploy/managed-servers.png)    
+    ![App Service の管理](media/azure-stack-app-service-deploy/image12.png)    
 
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる

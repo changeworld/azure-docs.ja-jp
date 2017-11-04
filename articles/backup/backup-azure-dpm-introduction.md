@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2017
 ms.author: adigan;giridham;jimpark;markgal;trinadhk
-ms.openlocfilehash: 3422c8d57bdd786ce5d1a41fbb4c12cc4efffddd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 41eed9c44a226817da9ee5f324e62902bc23754c
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="preparing-to-back-up-workloads-to-azure-with-dpm"></a>DPM を使用して Azure へのワークロードをバックアップするための準備
 > [!div class="op_single_selector"]
@@ -42,7 +42,7 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
-System Center DPM は、ファイルとアプリケーション データをバックアップします。 DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使って Azure にバックアップすることもできます。 DPM は、Azure Backup と次のように対話します。
+[System Center DPM](https://docs.microsoft.com/en-us/system-center/dpm/dpm-overview) は、ファイルとアプリケーション データをバックアップします。 サポートされているワークロードの詳細については、[こちら](https://docs.microsoft.com/en-us/system-center/dpm/dpm-protection-matrix)をご覧ください。DPM にバックアップされるデータは、テープやディスクに保存することも、Microsoft Azure Backup を使用して Azure にバックアップすることもできます。 DPM は、Azure Backup と次のように対話します。
 
 * **物理サーバーまたはオンプレミス仮想マシンとしてデプロイされている DPM** — DPM が物理サーバーまたはオンプレミス Hyper-V 仮想マシンとしてデプロイされている場合、データはディスクやテープだけでなく、Recovery Services コンテナーにバックアップすることができます。
 * **Azure の仮想マシンとしてデプロイされている DPM** — System Center 2012 R2 Update 3 以降、DPM は Azure 仮想マシンとしてデプロイすることができます。 DPM が Azure 仮想マシンとしてデプロイされている場合、DPM Azure 仮想マシンにアタッチされている Azure ディスクにデータをバックアップすることができます。またはデータを Recovery Services コンテナーにバックアップして、データ ストレージをオフロードすることができます。
@@ -60,6 +60,15 @@ DPM データをバックアップするために Azure Backup を準備する�
 2. **コンテナーのダウンロード** — Recovery Services コンテナーに DPM サーバーを登録するために使用する資格情報をダウンロードします。
 3. **Azure Backup エージェントのインストール** — Azure Backup から、各 DPM サーバーにエージェントをインストールします。
 4. **サーバーの登録** — Recovery Services コンテナーに DPM サーバーを登録します。
+
+## <a name="key-definitions"></a>重要な定義
+DPM 用の Azure へのバックアップに関する重要な定義を次に示します。
+
+1. **コンテナー資格情報** - コンテナー資格情報は、Azure Backup サービスで識別された資格情報コンテナーにバックアップ データを送信するコンピューターを認証するために必要になります。 資格情報コンテナーからダウンロードすることができ、有効期間は 48 時間です。
+2. **パスフレーズ** - パスフレーズは、クラウドへのバックアップを暗号化する際に使用されます。 回復操作中に必要になる場合もあるため、ファイルは安全な場所に保存してください。
+3. **セキュリティ PIN** - 資格情報コンテナーの[セキュリティ設定](https://docs.microsoft.com/en-us/azure/backup/backup-azure-security-feature)を有効にしている場合、重要なバックアップ操作を実行する際にセキュリティ PIN が必要になります。 この多要素認証により、セキュリティの別のレイヤーが追加されます。 
+4. **回復先フォルダー** - クラウドの回復中に、クラウドからのバックアップがこのフォルダーに一時的にダウンロードされます。 サイズは、同時に回復するバックアップ アイテムのサイズとほぼ同じである必要があります。
+
 
 ### <a name="1-create-a-recovery-services-vault"></a>1.Recovery Services コンテナーの作成
 Recovery Services コンテナーを作成するには、次の手順に従います。

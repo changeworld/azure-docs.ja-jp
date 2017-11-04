@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 09/12/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: e74f2cbeca5385b2e766d02a5f3f8ba3a815c91f
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a345cacfe53f37f851eebb76b5b8997cb9c0b54b
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="set-up-your-account"></a>アカウントの設定
 
-IT 部門が 2 段階認証の使用を開始するように要求する場合、**管理者がこのアカウントに追加のセキュリティ認証を設定するよう要求している**ことを伝える画面が表示されます。
+社内のサポートが 2 段階認証の使用を開始するように要求する場合、**管理者がこのアカウントに追加のセキュリティ認証を設定するよう要求している**ことを伝える画面が表示されます。
 
 ![[Setup]](./media/multi-factor-authentication-end-user-first-time/first.png)
 
@@ -44,7 +44,7 @@ IT 部門が 2 段階認証の使用を開始するように要求する場合�
 | 連絡方法 | Description |
 | --- | --- |
 | [モバイル アプリ](#use-a-mobile-app-as-the-contact-method) |- **確認のための通知を受け取る**。 このオプションは、ユーザーのスマート フォンまたはタブレット上の認証アプリに通知をプッシュします。 通知を確認し、適切である場合は、アプリで **[認証]** を選択するだけです。 会社または学校の場合は、認証する前に PIN を入力する必要があります。<br>- **Use verification code (確認コードを使用)**。 このモードでは、認証アプリは 30 秒ごとに更新される確認コードを生成します。 サインイン インターフェイスに最新の確認コードを入力します。<br>Microsoft Authenticator アプリは、[Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071)、[Android](http://go.microsoft.com/fwlink/?Linkid=825072)、[IOS](http://go.microsoft.com/fwlink/?Linkid=825073) で利用できます。 |
-| [携帯電話呼び出しまたはテキスト](#use-your-mobile-phone-as-the-contact-method) |- **音声通話**はユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。<br>- **テキスト メッセージ**は、確認コードを含むテキスト メッセージを送信します。 テキスト内の指示に従って、テキスト メッセージに返信するか、指定された確認コードをサインイン インターフェイスに入力します。 |
+| [携帯電話呼び出しまたはテキスト](#use-your-mobile-phone-as-the-contact-method) |- **音声通話**はユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。<br>- **テキスト メッセージ**は確認コードを含むテキスト メッセージを送信します。 テキスト内の指示に従って、テキスト メッセージに返信するか、指定された確認コードをサインイン インターフェイスに入力します。 |
 | [会社電話呼び出し](#use-your-office-phone-as-the-contact-method) |ユーザーが設定した電話番号に自動音声通話を行います。 呼び出しに応答し、電話のキーパッドの # を押して認証を行います。 |
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>連絡方法としてのモバイル アプリの使用

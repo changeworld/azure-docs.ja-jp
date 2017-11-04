@@ -14,13 +14,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 10/12/2017
 ms.author: ankshah
-ms.openlocfilehash: 8836cb516bf7669a2d17da7f87222960fc343042
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9e4419b57edf86e03044ad1047b18397ff4d8d19
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-cosmos-db-firewall-support"></a>Azure Cosmos DB のファイアウォール サポート
 Azure Cosmos DB データベース アカウントに格納されているデータを保護するために、Azure Cosmos DB は、強力なハッシュベースのメッセージ認証コード (HMAC) を利用したシークレット ベースの[承認モデル](https://msdn.microsoft.com/library/azure/dn783368.aspx)を備えています。 シークレット ベースの承認モデルに加え、Azure Cosmos DB は現在、ポリシーに基づく IP ベースのアクセス制御を使った受信ファイアウォールにも対応しています。 このモデルは、従来型データベース システムのファイアウォール規則によく似ていますが、Azure Cosmos DB データベース アカウントのセキュリティ水準をさらに引き上げることができます。 このモデルによって今後は、承認されているコンピューターのグループやクラウド サービスからのみアクセスできるように Azure Cosmos DB データベース アカウントを構成することができます。 ただし承認されているコンピューターのグループやサービスから Azure Cosmos DB リソースにアクセスするためには、呼び出し側が有効な承認トークンを提示する必要がある点は変わりません。
@@ -65,7 +65,7 @@ Azure Portal で IP アクセス制御ポリシーを設定するには、Azure 
 > IP アクセス制御ポリシーを有効にする場合は、アクセスを維持するために Azure Portal の IP アドレスを追加する必要があります。 ポータルの IP アドレスは次のとおりです。
 > |リージョン|IP アドレス|
 > |------|----------|
-> |以下を除くすべてのリージョン| 104.42.195.92, 40.76.54.131, 52.176.6.30, 52.169.50.45, 52.187.184.26|
+> |以下を除くすべてのリージョン|104.42.195.92、40.76.54.131、52.176.6.30、52.169.50.45、52.187.184.26|
 > |ドイツ|51.4.229.218|
 > |中国|139.217.8.252|
 > |米国政府|52.244.48.71|

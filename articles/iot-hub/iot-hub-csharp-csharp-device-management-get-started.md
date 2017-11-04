@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/15/2017
 ms.author: v-jamebr
-ms.openlocfilehash: 8cb61028d60c238927e46aa75d4d6ca4b4eb64e3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 08ff972349c7763d71acdd11ce5a1359403e1fa0
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="get-started-with-device-management-netnet"></a>デバイス管理の開始 (.NET/.NET)
 
@@ -61,12 +61,12 @@ ms.lasthandoff: 10/11/2017
         using Microsoft.Azure.Devices;
         using Microsoft.Azure.Devices.Shared;
         
-5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、前のセクションとターゲット デバイスで作成したハブの IoT Hub 接続文字列に置き換えてください。
+5. **Program** クラスに次のフィールドを追加します。 プレースホルダーの値は、「IoT Hub の作成」セクションで作成した IoT Hub の接続文字列に置き換えてください。 
    
         static RegistryManager registryManager;
         static string connString = "{iot hub connection string}";
         static ServiceClient client;
-        static string targetDevice = "{deviceIdForTargetDevice}";
+        static string targetDevice = "myDeviceId";
         
 6. **Program** クラスに次のメソッドを追加します。  このコードは、再起動中のデバイスのデバイス ツインを取得し、報告されるプロパティを出力します。
    

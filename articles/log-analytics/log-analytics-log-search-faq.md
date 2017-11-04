@@ -11,13 +11,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/09/2017
+ms.date: 10/17/2017
 ms.author: bwren
-ms.openlocfilehash: 356a73b406544b91191d5e9a03b2fa52ec501327
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bf48cbc52a1ed96ed1bb49b1879d5cd7aece945c
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="log-analytics-new-log-search-faq-and-known-issues"></a>Log Analytics の新しいログ検索についての FAQ と既知の問題
 
@@ -94,6 +94,18 @@ ms.lasthandoff: 10/11/2017
 「[Azure Log Analytics でログ クエリを作成および編集するためのポータル](log-analytics-log-search-portals.md)」で、2 つのポータルを比較できます。  利点はそれぞれに異なるため、要件に最適なものを選択できます。  Advanced Analytics ポータルでクエリを記述し、ビュー デザイナーなどの他の場所に貼り付ける点は共通です。  実行にあたっては、[考慮すべき問題](log-analytics-log-search-portals.md#advanced-analytics-portal)をお読みください。
 
 
+### <a name="question--after-upgrade-i-get-an-error-trying-to-run-queries-and-am-also-seeing-errors-in-my-views"></a>質問: アップグレード後、クエリを実行しようとするとエラーが発生します。また、ビューにもエラーが表示されます。
+
+アップグレード後、Log Analytics クエリを実行するには、ブラウザーが次のアドレスにアクセスできる必要があります。  ブラウザーがファイアウォールを介して Azure Portal にアクセスしている場合は、これらのアドレスへのアクセスを有効にする必要があります。
+
+| Uri | IP | ポート |
+|:---|:---|:---|
+| portal.loganalytics.io | 動的 | 80,443 |
+| api.loganalytics.io    | 動的 | 80,443 |
+| docs.loganalytics.io   | 動的 | 80,443 |
+
+
+
 ## <a name="power-bi"></a>Power BI
 
 ### <a name="question-does-anything-change-with-powerbi-integration"></a>質問: PowerBI 統合に変更はありますか。
@@ -103,10 +115,12 @@ ms.lasthandoff: 10/11/2017
 現在、Power BI にエクスポートできる Log Analytics クエリには、8 MB のサイズ制限が設けられています。  この制限は、まもなく緩和される予定です。
 
 
-##<a name="powershell-cmdlets"></a>PowerShell コマンドレット
+## <a name="powershell-cmdlets"></a>PowerShell コマンドレット
 
 ### <a name="question-does-the-log-search-powershell-cmdlet-get-updated-after-i-upgrade"></a>質問: アップグレード後にログ検索の PowerShell コマンドレットは更新されますか。
-[Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) は、まだ新しい検索言語にアップグレードされていません。  ワークスペースをアップグレードした後でも、引き続き従来のクエリ言語をこのコマンドレットとあわせて使用します。  更新版のドキュメントは、コマンドレットが更新されたときに利用できるようになります。
+[Get-AzureRmOperationalInsightsSearchResults](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/Get-AzureRmOperationalInsightsSearchResults) は、すべてのワークスペースのアップグレードが完了した時点で、使用されなくなる予定です。  アップグレードされたワークスペースでログ検索を実行するには、[Invoke-LogAnalyticsQuery cmdlet](https://dev.loganalytics.io/documentation/Tools/PowerShell-Cmdlets) を使用してください。
+
+
 
 
 ## <a name="resource-manager-templates"></a>Resource Manager テンプレート
@@ -151,19 +165,19 @@ Microsoft Azure Backup ソリューションは、アップグレードされた
 ## <a name="upgrade-process"></a>アップグレード プロセス
 
 ### <a name="question-i-have-several-workspaces-can-i-upgrade-all-workspaces-at-the-same-time"></a>質問: ワークスペースが複数あります。 すべてのワークスペースを同時にアップグレードできますか。  
+
 いいえ。  アップグレードはワークスペースごとに 1 つずつ適用されます。 現時点では、多数のワークスペースを一度にアップグレードすることはできません。 ワークスペースをアップグレードすると、そのワークスペースの他のユーザーも影響を受けることに注意してください。  
 
 ### <a name="question-will-existing-log-data-collected-in-my-workspace-be-modified-if-i-upgrade"></a>質問: アップグレードすると、ワークスペースで収集された既存のログ データは変更されますか。  
+
 いいえ。 ワークスペース検索で使用できるログ データは、アップグレードの影響を受けません。 保存した検索、警告、およびビューは、新しい検索言語に自動的に変換されます。  
 
 ### <a name="question-what-happens-if-i-dont-upgrade-my-workspace"></a>質問: ワークスペースをアップグレードしないとどうなりますか。  
 従来のログ検索は、数か月後に廃止される予定です。 その時点でアップグレードされていないワークスペースは、自動的にアップグレードされます。
 
-### <a name="question-i-didnt-choose-to-upgrade-but-my-workspace-has-been-upgraded-anyway-what-happened"></a>質問: アップグレードするように選択しなかったにもかかわらず、ワークスペースがアップグレードされました。 なぜでしょうか?  
-このワークスペースの他の管理者が、ワークスペースをアップグレードした可能性があります。 新しい言語が一般公開された時点で、すべてのワークスペースが自動的にアップグレードされることに注意してください。  
+### <a name="question-can-i-revert-back-after-i-upgrade"></a>質問: アップグレード後、元に戻すことはできますか。
+一般公開の前は、ワークスペースをアップグレード後に、元に戻すことができました。  現在では新しい言語が一般公開となり、レガシ プラットフォームの廃止が開始されているため、この機能は削除されています。
 
-### <a name="question-i-have-upgraded-by-mistake-and-now-need-to-cancel-it-and-restore-everything-back-what-should-i-do"></a>質問: 誤ってアップグレードしてしまいました。アップグレードをキャンセルして、すべてを復元する必要があります。 どうすればよいですか。  
-ご安心ください。  アップグレード前のワークスペースのスナップショットが作成されているため、復元できます。 ただし、アップグレード後に保存した検索、警告、またはビューは失われることに注意してください。  ワークスペース環境を復元するには、「[アップグレード後の復元](log-analytics-log-search-upgrade.md#can-i-go-back-after-i-upgrade)」の手順に従ってください。
 
 
 ## <a name="views"></a>ビュー

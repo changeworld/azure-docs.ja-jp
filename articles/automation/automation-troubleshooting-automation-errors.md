@@ -16,11 +16,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: sngun; v-reagie
-ms.openlocfilehash: 19b1d772236c14c8403d1056e5c9dcda7b741501
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9ad68abef47cde7472e413ee82510f7df9121cd
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="troubleshooting-common-issues-in-azure-automation"></a>Azure Automation の一般的な問題のトラブルシューティング 
 この記事では、Azure Automation で発生することがある一般的なエラーのトラブルシューティングのヘルプを提供し、それらのエラーの考えられる解決策を提案します。
@@ -101,8 +101,8 @@ ms.lasthandoff: 10/11/2017
 
 1. Azure サブスクリプションにサインインします。  
 2. アップグレードする Automation アカウントを選択します。  
-3. **[設定]** > 、**[価格レベルと使用状況]** > 、**[価格レベル]** の順に選択します。  
-4. **[価格レベルの選択]** ページで、**[Basic]** を選択します。    
+3. **[設定]** > **[価格]** の順にクリックします。
+4. ページ下部にある **[有効]** をクリックして、アカウントを **Basic** レベルにアップグレードします。
 
 ### <a name="scenario-cmdlet-not-recognized-when-executing-a-runbook"></a>シナリオ: Runbook の実行時にコマンドレットが認識されない
 **エラー:** Runbook ジョブが失敗し、「``<cmdlet name>``: The term ``<cmdlet name>`` is not recognized as the name of a cmdlet, function, script file, or operable program (<コマンドレット名> という用語はコマンドレット、関数、スクリプト ファイル、操作可能プログラムとして認識されません)」というエラーが発生します。

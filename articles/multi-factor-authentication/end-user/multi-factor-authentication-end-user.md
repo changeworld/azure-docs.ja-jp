@@ -15,11 +15,11 @@ ms.date: 06/15/2017
 ms.author: barlan
 ms.reviewer: yossib
 ms.custom: end-user
-ms.openlocfilehash: 5b6694afc0bafaf2be5f98c625dd6724b91234fc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cb6e652794de6cda8b5fc7c7e466f880833a1a14
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="what-does-azure-multi-factor-authentication-mean-for-me"></a>Azure Multi-Factor Authentication とは何ですか
 お客様のアカウントに対して追加のセキュリティ確認が加えられたという電子メールを IT 部門のだれかまたは上司から受け取りました。  これはどういう意味でしょうか。
@@ -33,7 +33,7 @@ ms.lasthandoff: 10/11/2017
 * **モバイル アプリでの通知または確認コードの使用** - モバイル アプリを使用する場合、応答を行う通知を受信するのか、確認コードを受信するのかを選びます。
 
 > [!NOTE]
-> IT 部門がこれらのオプションを 1 つ以上無効にしている場合があります。  その場合、登録プロセスでは無効なオプションは使用できません。  
+> 社内のサポートがこれらのオプションを 1 つ以上無効にしている場合があります。  その場合、登録プロセスでは無効なオプションは使用できません。  
 
 これで、確認方法が決まり、登録を行えます。 [セットアップ エクスペリエンス](multi-factor-authentication-end-user-first-time.md) リンクを使用して、登録プロセスのチュートリアルを開始してください。
 

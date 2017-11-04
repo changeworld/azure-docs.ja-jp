@@ -1,6 +1,6 @@
 ---
 title: "OMS ソリューションでの保存された検索条件とアラート | Microsoft Docs"
-description: "通常、OMS のソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。  この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを ARM テンプレートで定義する方法について説明します。"
+description: "通常、OMS のソリューションには、ソリューションによって収集されたデータを分析するため、Log Analytics の保存された検索条件が含まれます。  また、重大な問題が発生したときにユーザーに通知するか、自動的に対処するための、アラートも定義できます。  この記事では、管理ソリューションに含めることができるように、Log Analytics の保存された検索条件とアラートを Resource Manager テンプレートで定義する方法について説明します。"
 services: operations-management-suite
 documentationcenter: 
 author: bwren
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/24/2017
+ms.date: 10/16/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 21c42a747a08c5386c65d10190baf0054a7adef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8b2388626dd68ea1911cdfb3d6a84e70f6bf3cc6
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-oms-management-solution-preview"></a>Log Analytics の保存された検索条件とアラートを OMS 管理ソリューションに追加する (プレビュー)
 
@@ -32,7 +32,7 @@ ms.lasthandoff: 10/11/2017
 > この記事のサンプルでは、管理ソリューションに必須であるかまたは一般的に用いられるパラメーターと変数を使用します。これらについては、「[Operations Management Suite (OMS) での管理ソリューションの作成](operations-management-suite-solutions-creating.md)」で説明しています。  
 
 ## <a name="prerequisites"></a>前提条件
-この記事では、[管理ソリューションの作成方法](operations-management-suite-solutions-creating.md)および [ARM テンプレート](../resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
+この記事では、[管理ソリューションの作成方法](operations-management-suite-solutions-creating.md)および [Resource Manager テンプレート](../resource-group-authoring-templates.md)とソリューション ファイルの構造を理解していることを前提としています。
 
 
 ## <a name="log-analytics-workspace"></a>Log Analytics ワークスペース
@@ -41,6 +41,21 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 ワークスペースの名前は、各 Log Analytics リソースの名前に含まれます。  これは、次の savedsearch リソースの例で示すように **workspace** パラメーターをソリューションで指定することにより行います。
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
+
+## <a name="log-analytics-api-version"></a>Log Analytics API バージョン
+Resource Manager テンプレートで定義された Log Analytics リソースはすべて、そのリソースで使用する API のバージョンを定義するプロパティ **apiVersion** を保持しています。  このバージョンは、[レガシおよびアップグレードされたクエリ言語](../log-analytics/log-analytics-log-search-upgrade.md)を使用するリソースで異なります。  
+
+ 次の表は、レガシおよびアップグレードされたワークスペースの Log Analytics API バージョンと、それぞれに異なる構文を指定したサンプル クエリを示しています。 
+
+| ワークスペースのバージョン | API バージョン | サンプル クエリ |
+|:---|:---|:---|
+| v1 (レガシ)   | 2015-11-01-preview | Type=Event EventLevelName=error             |
+| v2 (アップグレード) | 2017-03-15-preview | Event &#124; where EventLevelName == "Error"  |
+
+異なるバージョンでどのワークスペースがサポートされるかに関しては、次の点に注意してください。
+
+- レガシ クエリ言語を使用するテンプレートは、レガシまたはアップグレードされたワークスペースにインストールできます。  アップグレードされたワークスペースにインストールした場合、ユーザーによって実行されるときに、クエリはまとめて新しい言語に変換されます。
+- アップグレードされたクエリ言語を使用するテンプレートは、アップグレードされたワークスペースにしかインストールできません。
 
 
 ## <a name="saved-searches"></a>保存された検索条件
@@ -65,7 +80,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 
 
-次の表では、保存された検索条件の各プロパティについて説明します。 
+次の表は、保存された検索条件の各プロパティについて説明しています。 
 
 | プロパティ | Description |
 |:--- |:--- |
@@ -82,9 +97,9 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 管理ソリューションのアラート ルールは、次の 3 つの異なるリソースで構成されます。
 
 - **保存された検索条件**。  実行されるログ検索を定義します。  複数のアラート ルールで、1 つの保存された検索条件を共有できます。
-- **スケジュール**。  ログ検索の実行頻度を定義します。  各アラート ルールには、スケジュールがただ 1 つだけあります。
+- **スケジュール**。  ログ検索の実行頻度を定義します。  各アラート ルールには、スケジュールが 1 つだけあります。
 - **アラート アクション**。  各アラート ルールには **Alert** 型のアクション リソースが 1 つあり、アラート レコードが作成される条件やアラートの重大度などのアラートの詳細が定義されています。  アクション リソースでは、必要に応じて、メールと Runbook の応答が定義されます。
-- **webhook アクション (省略可能)**。  アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加アクション リソースが必要です。    
+- **webhook アクション (省略可能)**。  アラート ルールが webhook を呼び出すときは、**Webhook** 型の追加のアクション リソースが必要です。    
 
 保存された検索条件リソースについては、上で説明してあります。  他のリソースについては以下で説明します。
 
@@ -129,7 +144,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 #### <a name="alert-actions"></a>アラート アクション
 
-すべてのスケジュールが 1 つの**アラート** アクションを持ちます。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
+どのスケジュールも 1 つの**アラート** アクションを保持しています。  アラート アクションでは、アラートの詳細と、必要に応じて通知と修復のアクションが定義されています。  通知は、1 つ以上のアドレスにメールを送信します。  修復は、Azure Automation で Runbook を開始し、検出された問題の修復を試みます。
 
 アラート アクションの構造は次のとおりです。  ソリューション ファイルにコード スニペットをコピーして貼り付け、パラメータ名を変更できるように、一般的な変数やパラメータが使用されています。 
 
@@ -213,7 +228,7 @@ Log Analytics のすべてのリソースは、[ワークスペース](../log-an
 
 | 要素名 | 必須 | Description |
 |:--|:--|:--|
-| Recipients | はい | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Recipients | あり | アラートが作成されたときに通知を送信するメール アドレスのコンマ区切りのリストです。次に例を示します。<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | [件名] | はい | メールの件名です。 |
 | 添付ファイル | なし | 添付ファイルは現在はサポートされていません。  この要素を指定する場合は、**None** にする必要があります。 |
 

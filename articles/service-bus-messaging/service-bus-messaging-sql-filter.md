@@ -12,17 +12,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2017
+ms.date: 10/16/2017
 ms.author: sethm
-ms.openlocfilehash: 3aaec8f9b6a3bbcf814f771405c3b589de6f7ae0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 159bb0500dd98a428d60d6aeb78767a3460b40dc
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter 構文
 
-*SqlFilter* は [SqlFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)のインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して評価される SQL 言語ベースのフィルター式を表します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。  
+*SqlFilter* オブジェクトは [SqlFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)のインスタンスであり、[BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) に対して評価される SQL 言語ベースのフィルター式を表します。 SqlFilter では、SQL-92 標準のサブセットをサポートします。  
   
  このトピックでは、SqlFilter の文法について詳しく説明します。  
   
@@ -280,5 +280,6 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-- [SQLFilter クラス](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter クラス (.NET Framework)](/dotnet/api/microsoft.servicebus.messaging.sqlfilter)
+- [SQLFilter クラス (.NET Standard)](/dotnet/api/microsoft.azure.servicebus.filters.sqlfilter)
 - [SQLRuleAction クラス](/dotnet/api/microsoft.servicebus.messaging.sqlruleaction)

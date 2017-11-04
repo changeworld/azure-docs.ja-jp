@@ -9,22 +9,22 @@ editor:
 ms.assetid: 449ae53e-b951-401a-b2c9-17fee2f491f1
 ms.service: azure-stack
 ms.workload: na
-pms.tgt_pltfrm: na
+ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/20/2017
 ms.author: twooley
-ms.openlocfilehash: 8fbed3c15b385e385e64093331df37363a558185
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b00bd606faaffaad30ff6cea3bcf47dc85282f69
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="apply-updates-in-azure-stack"></a>Azure Stack で更新を適用する
 
 *適用対象: Azure Stack 統合システム*
 
-Azure Stack オペレーターは、管理者ポータルの [更新] タイルを使用して、Azure Stack 用の更新プログラム パッケージを適用できます。 Microsoft 更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。 
+Azure Stack オペレーターは、管理者ポータルの [更新] タイルを使用して、Azure Stack 用の Microsoft 更新プログラム パッケージを適用できます。 Microsoft 更新プログラム パッケージをダウンロードし、パッケージ ファイルを Azure Stack にインポートした後、更新プログラム パッケージをインストールする必要があります。 
 
 ## <a name="download-the-update-package"></a>更新プログラム パッケージをダウンロードする
 
@@ -37,6 +37,9 @@ Azure Stack 用の Microsoft 更新プログラム パッケージを利用で�
 ## <a name="import-and-install-updates"></a>更新プログラムをインポートしてインストールする
 
 次の手順は、管理者ポータルで更新プログラム パッケージをインポートしてインストールする方法を示しています。
+
+> [!IMPORTANT]
+> メンテナンス操作についてユーザーに通知することと、通常のメンテナンス期間はできるだけ勤務時間外にスケジュールすることを強くお勧めします。 メンテナンス操作は、ユーザーのワークロードとポータル操作の両方に影響を及ぼす可能性があります。
 
 1. 管理ポータルで、**[その他のサービス]** を選択します。 次に、**[データ + ストレージ]** カテゴリで、**[ストレージ アカウント]** を選択します  (または、フィルター ボックスで「**ストレージ アカウント**」の入力を開始して選択します)。
 
@@ -73,4 +76,5 @@ Azure Stack 用の Microsoft 更新プログラム パッケージを利用で�
 
 ## <a name="next-steps"></a>次のステップ
 
+- [Azure Stack での更新プログラムの管理概要](azure-stack-updates.md)
 - [Azure Stack サービス ポリシー](azure-stack-servicing-policy.md)
