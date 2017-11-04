@@ -1,4 +1,4 @@
-次の制限は、Azure Resource Manager と Azure リソース グループの使用時にのみ適用されます。
+次の制限は、Azure Resource Manager を使用して管理操作を実行しているときにのみ適用されます。
 
 | リソース | 既定の制限 |
 | --- | --- |

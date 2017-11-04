@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/15/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 492d5dc4e20f67bcb9f72a022fec19f5ba86caac
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7b5233b7b667998f6fd3ff8a5db1946b120211c1
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>アカウントへの 2 段階認証の設定
 2 段階認証とは、他のユーザーの侵入を困難にすることでアカウントの保護に役立つ追加のセキュリティ手順です。 あなたがこの記事を読んでいるということは、おそらく会社や学校の管理者から Multi-Factor Authentication に関するメールを受け取ったと考えられます。 または、サインインしようとして、追加のセキュリティ確認を設定するように求めるメッセージが表示されたのかもしれません。 その場合は、**自動登録プロセスが完了するまでサインインできません**。
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="set-up-your-account"></a>アカウントの設定
 
-IT 部門から 2 段階認証の使用を開始するように要求される場合、"**お客様の管理者が、このアカウントに追加のセキュリティ検査を設定することを必須としています**" という画面が表示されます。
+社内のサポートから 2 段階認証の使用を開始するように要求される場合、"**お客様の管理者が、このアカウントに追加のセキュリティ検査を設定することを必須としています**" という画面が表示されます。
 
 ![[Setup]](./media/multi-factor-authentication-end-user-first-time/first.png)
 

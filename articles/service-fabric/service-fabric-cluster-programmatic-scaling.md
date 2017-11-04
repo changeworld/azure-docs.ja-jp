@@ -12,13 +12,13 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/29/2017
+ms.date: 10/17/2017
 ms.author: mikerou
-ms.openlocfilehash: 46b0b62f92abbac57bc27bbcdd5821eafedf5519
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3d123a3d06420194d2918b71c98152cd2ea03457
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="scale-a-service-fabric-cluster-programmatically"></a>プログラムによる Service Fabric クラスターのスケール 
 
@@ -29,7 +29,7 @@ Azure での Service Fabric クラスターのスケーリングの基礎につ�
 
 - 手動でスケーリングを行うには、ログインし、スケーリング操作を明示的に要求する必要があります。 スケーリング操作が頻繁に必要になる場合または予期せず発生する場合は、このアプローチは適さない可能性があります。
 - 自動スケール ルールによって仮想マシン スケール セットからインスタンスが削除されても、そのノードのナレッジは、そのノードが Silver または Gold の耐久性レベルを持つ種類でない限り、関連付けられた Service Fabric クラスターからは自動的に削除されません。 自動スケール ルールは (Service Fabric レベルではなく) スケール セット レベルで適用されるため、自動スケール ルールを使用すると、Service Fabric ノードを整然とシャットダウンせずに、削除してしまうことがあります。 このような方法でノードの削除を行うと、スケールイン操作の後で、Service Fabric ノードが "ゴースト" 状態で背後に残ります。 ユーザー (またはサービス) は、Service Fabric クラスターから削除したノードの状態を定期的にクリーンアップする必要があります。
-  - Gold または Silver の耐久性レベルを持つノード型では、削除したノードが自動的にクリーンアップされることに注意してください。  
+  - Gold または Silver の耐久性レベルを持つノード型では、削除したノードが自動的にクリーンアップされるため、追加のクリーンアップは必要ありません。
 - 自動スケール ルールでは[多くのメトリック](../monitoring-and-diagnostics/insights-autoscale-common-metrics.md)がサポートされていますが、これらは限定されたセットに過ぎません。 このセットでカバーされていないメトリックに基づくスケーリングが必要なシナリオでは、自動スケール ルールは適さない可能性があります。
 
 これらの制限に基づいて、さらにカスタマイズされた自動スケール モデルの実装が必要になる可能性があります。 
@@ -46,7 +46,7 @@ Service Fabric クラスター自体を操作するには、[System.Fabric.Fabri
 もちろん、スケーリングのコードは、スケーリング対象クラスターのサービスとして実行する必要はありません。 `IAzure` と `FabricClient` は両方とも、関連する Azure リソースにリモートで接続できるので、スケーリング サービスは Service Fabric アプリケーション外で動作するコンソール アプリケーションまたは Windows サービスとして簡単に使用することができます。 
 
 ## <a name="credential-management"></a>資格情報の管理
-スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI 2.0](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://github.com/Azure/azure-sdk-for-net/blob/Fluent/AUTH.md#creating-a-service-principal-in-azure)を使用できます。
+スケーリングを処理するサービスを作成する際に難しいのは、そのサービスが、対話型ログインを行わずに仮想マシン スケール セットのリソースにアクセスできるようにする必要があるということです。 スケーリング サービスが独自の Service Fabric アプリケーションを変更するようであれば、Service Fabric クラスターへのアクセスは簡単です。しかし、スケール セットへのアクセスには資格情報が必要です。 ログインには、[Azure CLI 2.0](https://github.com/azure/azure-cli) で作成した[サービス プリンシパル](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)を使用できます。
 
 サービス プリンシパルは、次の手順で作成できます。
 
@@ -85,7 +85,7 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-または、PowerShell コマンドレットを使用して、仮想マシン スケール セットのサイズを管理することもできます。 [`Get-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmss) では、仮想マシン スケール セットのオブジェクトを取得できます。 現在の容量は、`.sku.capacity` プロパティに格納されます。 容量を目的の値に変更したら、Azure の仮想マシン スケール セットを [`Update-AzureRmVmss`](https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/update-azurermvmss) コマンドで更新できます。
+または、PowerShell コマンドレットを使用して、仮想マシン スケール セットのサイズを管理することもできます。 [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) では、仮想マシン スケール セットのオブジェクトを取得できます。 現在の容量は `.sku.capacity` プロパティを通じて使用できます。 容量を目的の値に変更したら、Azure の仮想マシン スケール セットを [`Update-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) コマンドで更新できます。
 
 手動でノードを追加する場合と同様に、スケール セット インスタンスを追加するだけで新しい Service Fabric ノードを開始できます。スケール セット テンプレートには、新しいインスタンスを Service Fabric クラスターに自動的に参加させる拡張機能が含まれているためです。 
 
@@ -105,7 +105,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-"*シード*" ノードは、より大きなインスタンス ID から削除するという規則に常に従うわけではないので、注意してください。
+シード ノードは異なり、また、より大きなインスタンス ID から削除するという規則に必ずしも従うわけではありません。
 
 削除するノードが見つかったら、非アクティブ化し、削除します。これには前に使ったのと同じ `FabricClient` インスタンスと `IAzure` インスタンスを使用します。
 

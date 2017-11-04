@@ -1,6 +1,6 @@
 ---
-title: "Azure Web App for Containers のカスタム Docker イメージを使用する | Microsoft Docs"
-description: "Azure Web App for Containers のカスタム Docker イメージを使用する方法。"
+title: "Web App for Containers のカスタム Docker イメージを使用する - Azure | Microsoft Docs"
+description: "Web App for Containers のカスタム Docker イメージを使用する方法。"
 keywords: "Azure App Service, Web アプリ, Linux, Docker, コンテナー"
 services: app-service
 documentationcenter: 
@@ -16,13 +16,13 @@ ms.topic: tutorial
 ms.date: 09/03/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 760772d1d1c79dd4a1114c36971de0b3693ab74f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc268bce48a42607d4404758e744a006dfbd6c19
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-a-custom-docker-image-for-azure-web-app-for-containers"></a>Azure Web App for Containers のカスタム Docker イメージを使用する
+# <a name="use-a-custom-docker-image-for-web-app-for-containers"></a>Web App for Containers のカスタム Docker イメージを使用する
 
 [Web App for Containers](app-service-linux-intro.md) は、PHP 7.0 や Node.js 4.5 などの特定のバージョンをサポートする組み込みの Docker イメージを Linux 上で提供します。 Web App for Containers では、Docker コンテナー テクノロジを活用して、組み込みイメージとカスタム イメージの両方をサービスとしてのプラットフォームとしてホストします。 このチュートリアルでは、Web App for Containers で使用するカスタム Docker イメージの作成方法について説明します。これは、お使いの言語に対して組み込みイメージがない場合、または組み込みイメージで提供されていない特定の構成をアプリケーションで必要としている場合の一般的なパターンです。
 
@@ -210,7 +210,7 @@ v1: digest: sha256:a910d5b77e6960c01745a87c35f3d1a13ba73231ac9a4664c5011b1422d59
 
 ## <a name="create-web-app-for-containers"></a>Web App for Containers を作成する
 
-Azure Web Apps を使用して、クラウドにネイティブの Linux アプリケーションをホストすることができます。 Web App for Containers を作成するには、グループ、続いてサービス プラン、最後に Web アプリ自体を作成する Azure CLI コマンドを実行する必要があります。 まず、[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドを実行し、場所と一意の名前を渡します。
+Azure App Service on Linux を使用すると、クラウドでネイティブの Linux アプリケーションをホストできます。 Web App for Containers を作成するには、グループ、続いてサービス プラン、最後に Web アプリ自体を作成する Azure CLI コマンドを実行する必要があります。 まず、[az group create](https://docs.microsoft.com/cli/azure/group#az_group_create) コマンドを実行し、場所と一意の名前を渡します。
 
 ```azurecli-interactive
 az group create --location "West Europe" --name myResourceGroup
@@ -220,7 +220,7 @@ az group create --location "West Europe" --name myResourceGroup
 
 ```json
 {
-  "id": "/subscriptions/432849d3e4-4f90-a782-87c11e-5e59d6dd/resourceGroups/myResourceGroup",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup",
   "location": "westeurope",
   "managedBy": null,
   "name": "myResourceGroup",
@@ -245,8 +245,7 @@ az appservice plan create --name myServicePlan --resource-group myResourceGroup 
   "appServicePlanName": "myServicePlan",
   "geoRegion": "West Europe",
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/resourceGroups/myResourceGroup/provide
-rs/Microsoft.Web/serverfarms/myServicePlan",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.Web/serverfarms/myServicePlan",
   "kind": "linux",
   "location": "West Europe", 
   "resourceGroup": "myResourceGroup",
@@ -292,7 +291,7 @@ Web アプリを作成するコマンドでは、次に示す出力が生成さ�
   ],
   "hostNamesDisabled": false,
   "hostingEnvironmentProfile": null,
-  "id": "/subscriptions/5e59d6dd-d3e4-4f90-a782-43284987c11e/resourceGroups/myResourceGroup/providers/Microsoft.
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.
 Web/sites/<web-app-name>",
   "lastModifiedTimeUtc": "2017-08-08T21:09:33.693333",
   "location": "West Europe",
@@ -462,7 +461,7 @@ PID USER      PR  NI    VIRT    RES    SHR S %CPU %MEM     TIME+ COMMAND
 77 root      20   0   21920   2304   1972 R  0.0  0.1   0:00.00 top
 ```
 
-ご利用ありがとうございます。 Azure Web App for Containers のカスタム Docker イメージが構成されました。
+ご利用ありがとうございます。 Web App for Containers のカスタム Docker イメージの構成が完了しました。
 
 ## <a name="push-a-docker-image-to-private-registry-optional"></a>Docker イメージをプライベート レジストリにプッシュする (省略可能)
 
@@ -486,7 +485,7 @@ Use an existing service principal and assign access:
 {
   "adminUserEnabled": false,
   "creationDate": "2017-08-09T04:21:09.654153+00:00",
-  "id": "/subscriptions/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/{azure-container-registry-name>",
+  "id": "/subscriptions/<subscriptionId>/resourceGroups/myResourceGroup/providers/Microsoft.ContainerRegistry/registries/<azure-container-registry-name>",
   "location": "westeurope",
   "loginServer": "<azure-container-registry-name>.azurecr.io",
   "name": "<azure-container-registry-name>",
@@ -621,4 +620,4 @@ az webapp config container set --name <web-app-name> --resource-group myResource
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure App Service Web App for Containers の FAQ](app-service-linux-faq.md)
+[Azure App Service on Linux の FAQ](app-service-linux-faq.md)

@@ -1,6 +1,6 @@
 ---
-title: "Azure Application Insights による Web アプリケーションの利用状況分析 | Microsoft Docs"
-description: "ユーザーを理解し、提供している Web アプリでユーザーが何を実行するかを理解します。"
+title: "Azure Application Insights による利用状況分析 | Microsoft docs"
+description: "ユーザーを理解し、提供しているアプリでユーザーが何を実行するかを理解します。"
 services: application-insights
 documentationcenter: 
 author: botatoes
@@ -10,17 +10,17 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: article
-ms.date: 05/03/2017
+ms.date: 10/10/2017
 ms.author: bwren
-ms.openlocfilehash: edf15e72c822ea5e045895c6f03477c613c0a6c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6985467658ae8a52d3c963dd1965c0711cac4ca7
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
-# <a name="usage-analysis-for-web-applications-with-application-insights"></a>Application Insights による Web アプリケーションの利用状況の分析
+# <a name="usage-analysis-with-application-insights"></a>Application Insights による利用状況分析
 
-最も人気のある Web アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](app-insights-overview.md) では、ユーザーの Web アプリの使用方法に関する強力な洞察を得ることができます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
+最も人気のある Web アプリまたはモバイル アプリの機能は何か。 そのアプリによりユーザーは目標を達成したか。 特定の時点でアプリを離れたか。その後、利用を再開したか。  [Azure Application Insights](app-insights-overview.md) は、ユーザーのアプリの使用方法に関する強力な洞察を得るのに役立ちます。 アプリを更新するたびに、アプリがユーザーにどの程度役立っているかを確認できます。 この知識により、次の開発サイクルに関してデータ駆動型の意思決定を行うことができます。
 
 ## <a name="send-telemetry-from-your-app"></a>アプリからテレメトリを送信する
 
@@ -34,8 +34,9 @@ Application Insights をアプリのサーバー コードと Web ページの�
 
     ![マスター Web ページの先頭にスクリプトをコピーします。](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
+3. **モバイル アプリ コード:** [このガイド](app-insights-mobile-center-quickstart.md)に従って、Mobile Center SDK を使用してアプリからイベントを収集し、これらのイベントのコピーを分析のために Application Insights に送信します。
 
-3. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
+4. **テレメトリの取得:** プロジェクトをデバッグ モードで数分間実行し、Application Insights の [概要] ブレードで結果を確認します。
 
     アプリを発行し、アプリのパフォーマンスを監視してユーザーがアプリを使って何をしているか確認します。
 
@@ -53,7 +54,7 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 右側の洞察では、データのセットで興味深いパターンが示されています。  
 
-* **[ユーザー]** レポートは、選択した期間内にページにアクセスした一意のユーザー数をカウントします。 (ユーザーは Cookie を使用してカウントされます。 ユーザーが複数のブラウザーまたはクライアント コンピューターでサイトにアクセスした場合、または Cookie を消去した場合、カウントは複数回行われます。)
+* **[ユーザー]** レポートは、選択した期間内にページにアクセスした一意のユーザー数をカウントします。 Web アプリの場合、ユーザーは Cookie を使用してカウントされます。 ユーザーが異なるブラウザーまたはクライアント マシンを使用してサイトにアクセスした場合、または Cookie を消去した場合は、複数回カウントされます。
 * **[セッション]** レポートは、サイトにアクセスしたユーザー セッションの数をカウントします。 セッションとは、ユーザーによるアクティビティの期間で、30 分以上の非アクティブ状態で終了します。
 
 [ユーザー、セッション、およびイベント ツールに関する詳細](app-insights-usage-segmentation.md)  
@@ -94,20 +95,20 @@ Application Insights で一定期間にわたってユーザーを追跡する�
 
 ## <a name="custom-business-events"></a>カスタム ビジネス イベント
 
-Web アプリでユーザーが何を行っているか明確に把握するには、コード行を挿入して、カスタム イベントをログに記録することが役立ちます。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。 
+アプリでユーザーが何を行っているかを明確に把握するには、カスタム イベントをログに記録するコード行を挿入すると便利です。 これらのイベントにより、特定のボタンのクリックなどの詳細なユーザー アクションから、購入、ゲームに勝つなどのより重要なビジネス イベントまで追跡できます。 
 
 ページ ビューでは、役立つイベントを表すことができる場合もありますが、通常そうではないことがほとんどです。 ユーザーは、製品を購入しなくても製品ページを開くことができます。 
 
 特定のビジネス イベントを使用して、サイトからユーザーの進行状況をグラフ化できます。 さまざまなオプションについて、ユーザーの嗜好や、どの段階で使用を止め、どのような問題が発生しているかを確認できます。 この知識があれば、開発バックログでの優先順位について情報に基づいた意思決定を行うことができます。
 
-イベントは、Web ページに記録することができます。
+イベントは、アプリのクライアント側からログに記録することができます。
 
 ```JavaScript
 
     appInsights.trackEvent("ExpandDetailTab", {DetailTab: tabName});
 ```
 
-または、Web アプリのサーバー側で記録することもできます。
+または、サーバー側から記録することもできます。
 
 ```C#
     var tc = new Microsoft.ApplicationInsights.TelemetryClient();

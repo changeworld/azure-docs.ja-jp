@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2017
+ms.date: 10/17/2017
 ms.author: helaw
-ms.openlocfilehash: 5787b25fb1dd7331e561798152678ed187e24d54
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 96d5cdfc28759fd516eab5fd97c6cf444af08cf6
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="provide-applications-access-to-azure-stack"></a>Azure Stack へのアクセスをアプリケーションに提供する
 
@@ -72,32 +72,55 @@ Azure AD を ID ストアとして使用して Azure Stack をデプロイした
 ## <a name="create-service-principal-for-ad-fs"></a>AD FS のサービス プリンシパルを作成する
 AD FS を使用して Azure Stack をデプロイした場合は、PowerShell を使ってサービス プリンシパルを作成し、アクセスのロールを割り当てて、その ID を使用して PowerShell からサインインできます。
 
-### <a name="before-you-begin"></a>開始する前に
+ERCS 仮想マシン上で、特権エンドポイントからスクリプトが実行されます。
 
-[Azure Stack を操作するために必要なツールをローカル コンピューターにダウンロードします。](azure-stack-powershell-download.md)
 
-### <a name="import-the-identity-powershell-module"></a>Identity PowerShell モジュールのインポート
-ツールをダウンロードしたら、ダウンロードしたフォルダーに移動し、次のコマンドを使用して Identity PowerShell モジュールをインポートします。
+要件:
+- 認定が必要です。
 
-```PowerShell
-Import-Module .\Identity\AzureStack.Identity.psm1
-```
+**パラメーター**
 
-モジュールのインポート時に、"AzureStack.Connect.psm1 はデジタル署名されていません。 このスクリプトはシステムで実行されません" という内容のエラーが表示されることがあります。 この問題を解決するには、管理者特権の PowerShell セッションで次のコマンドを使用して、スクリプトの実行を許可する実行ポリシーを設定します。
+自動化パラメーターの入力として、次の情報が必要です。
 
-```PowerShell
-Set-ExecutionPolicy Unrestricted
-```
 
-### <a name="create-the-service-principal"></a>サービス プリンシパルを作成する
-*DisplayName* パラメーターが更新されていることを確認し、次のコマンドを実行してサービス プリンシパルを作成できます。
-```powershell
-$servicePrincipal = New-AzSADGraphServicePrincipal `
- -DisplayName "<YourServicePrincipalName>" `
- -AdminCredential $(Get-Credential) `
- -AdfsMachineName "AZS-ADFS01" `
- -Verbose
-```
+|パラメーター|Description|例|
+|---------|---------|---------|
+|名前|SPN アカウントの名前|MyAPP|
+|ClientCertificates|証明書オブジェクトの配列|X509 証明書|
+|ClientRedirectUris<br>(省略可能)|アプリケーションのリダイレクト URI|         |
+
+**例**
+
+1. 管理者特権の Windows PowerShell セッションを開き、次のコマンドを実行します。
+
+   > [!NOTE]
+   > この例では、自己署名証明書を作成します。 運用環境でこれらのコマンドを実行する場合、Get-Certificate を利用して、使用する証明書の証明書オブジェクトを取得します。
+
+   ```
+   $creds = Get-Credential
+
+   $session = New-PSSession -ComputerName <IP Address of ECRS> -ConfigurationName PrivilegedEndpoint -Credential $creds
+
+   $cert = New-SelfSignedCertificate -CertStoreLocation "cert:\CurrentUser\My" -Subject "CN=testspn2" -KeySpec KeyExchange
+
+   Invoke-Command -Session $session -ScriptBlock { New-GraphApplication -Name 'MyApp' -ClientCertificates $using:cert}
+
+   $session|remove-pssession
+
+   ```
+
+2. 自動化が完了すると、SPN を使用するために必要な詳細が表示されます。 
+
+   For example:
+
+   ```
+   ApplicationIdentifier : S-1-5-21-1512385356-3796245103-1243299919-1356
+   ClientId              : 3c87e710-9f91-420b-b009-31fa9e430145
+   Thumbprint            : 30202C11BE6864437B64CE36C8D988442082A0F1
+   ApplicationName       : Azurestack-MyApp-c30febe7-1311-4fd8-9077-3d869db28342
+   PSComputerName        : azs-ercs01
+   RunspaceId            : a78c76bb-8cae-4db4-a45a-c1420613e01b
+   ```
 ### <a name="assign-a-role"></a>ロールの割り当て
 サービス プリンシパルを作成したら、[ロールを割り当てる](azure-stack-create-service-principals.md#assign-role-to-service-principal)必要があります。
 

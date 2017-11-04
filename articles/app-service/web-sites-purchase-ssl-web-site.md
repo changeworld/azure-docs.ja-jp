@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/19/2016
 ms.author: apurvajo
-ms.openlocfilehash: 191dd7240ad15b4936a72bc27a2d0162350f3afb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 214f05f45f59b0403e6902988f9184d6b62618bd
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="buy-and-configure-an-ssl-certificate-for-your-azure-app-service"></a>Azure App Service の SSL 証明書を購入して構成する
 
-このチュートリアルでは、**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** の SSL 証明書を購入し、[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) に安全に格納して、カスタム ドメインに関連付けることで、Web アプリをセキュリティで保護します。
+このチュートリアルでは、**[Azure App Service](http://go.microsoft.com/fwlink/?LinkId=529714)** の SSL 証明書を購入し、[Azure Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) に安全に格納して、カスタム ドメインに関連付けることで、Web アプリをセキュリティで保護する方法について説明します。
 
 ## <a name="step-1---log-in-to-azure"></a>手順 1 - Azure にログインする
 
@@ -38,7 +38,7 @@ SSL 証明書を注文するには、**Azure Portal** で新しい [App Service 
 SSL 証明書のフレンドリ**名**と**ドメイン名**を入力します
 
 > [!NOTE]
-> これは、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 
+> この手順は、購入プロセスの最も重要な部分の 1 つです。 この証明書で保護する正しいホスト名 (カスタム ドメイン) を入力してください。 ホスト名には WWW を**付けないでください**。 
 >
 
 **サブスクリプション**、**リソース グループ**、および**証明書の SKU** を選択します
@@ -53,15 +53,15 @@ SSL 証明書のフレンドリ**名**と**ドメイン名**を入力します
 > [Key Vault](https://docs.microsoft.com/en-us/azure/key-vault/key-vault-whatis) は、クラウド アプリケーションやサービスで使用される暗号化キーとシークレットを保護するための Azure サービスです。
 >
 
-SSL 証明書の購入が完了した後は、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) リソース ブレードを開く必要があります。
+SSL 証明書の購入が完了したら、[[App Service 証明書]](https://portal.azure.com/#blade/HubsExtension/Resources/resourceType/Microsoft.CertificateRegistration%2FcertificateOrders) ページを開く必要があります。
 
 ![KV に格納する準備完了のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/ReadyKV.png)
 
 この証明書の使用を開始する前に完了する必要のある手順がまだいくつかあるため、証明書の状態は **[発行保留中]** になっています。
 
-[証明書のプロパティ] ブレードの **[証明書の構成]** をクリックし、**[手順 1: 格納]** をクリックして Azure Key Vault にこの証明書を格納します。
+[証明書のプロパティ] ページの **[証明書の構成]** をクリックし、**[手順 1: 格納]** をクリックして Azure Key Vault にこの証明書を格納します。
 
-**[Key Vault の状態]** ブレードの **[Key Vault リポジトリ]** をクリックして、この証明書を格納する Key Vault を選択するか、**[Key Vault の新規作成]** をクリックして同じサブスクリプションとリソース グループに新しい Key Vault を作成します。
+**[Key Vault の状態]** ページの **[Key Vault リポジトリ]** をクリックして、この証明書を格納する既存の Key Vault を選択するか、**[Key Vault の新規作成]** をクリックして同じサブスクリプションとリソース グループに新しい Key Vault を作成します。
 
 > [!NOTE]
 > 最小限の料金でこの証明書を Azure Key Vault に格納できます。
@@ -75,9 +75,9 @@ SSL 証明書の購入が完了した後は、[[App Service 証明書]](https://
 ## <a name="step-4---verify-the-domain-ownership"></a>手順 4 - ドメインの所有権を確認する
 
 > [!NOTE]
-> App Service 証明書では、ドメイン、メール、手動の 3 種類のドメイン確認がサポートされています。 詳細については、「[詳細](#advanced)」セクションを参照してください。
+> App Service 証明書では、ドメイン、メール、手動の 3 種類のドメイン確認がサポートされています。 これらの確認の種類の詳細については、「[詳細](#advanced)」をご覧ください。
 
-手順 3 で使用したものと同じ **[証明書の構成]** ブレードで **[手順 2: 確認]** をクリックします。
+手順 3 で使用した **[証明書の構成]** ページで、**[手順 2: 確認]** をクリックします。
 
 **ドメイン確認**: **[Azure App Service からカスタム ドメインを購入した](custom-dns-web-site-buydomains-web-app.md)****場合にのみ**、最も便利な方法です。
 **[確認]** ボタンをクリックして、この手順を実行します。
@@ -150,7 +150,7 @@ App Service 証明書では、メールと手動のさらに 2 種類のドメ�
 
 1. **"starfield.html"** という名前の HTML ファイルを作成します。
 
-1. このファイルの内容は、ドメイン確認トークンの名前と正確に同じにする必要があります  (ドメインの確認の状態のブレードからトークンをコピーできます)。
+1. このファイルの内容は、ドメイン確認トークンの名前と正確に同じにする必要があります  (トークンは、[ドメインの確認の状態] ページからコピーできます)。
 
 1. ドメイン `/.well-known/pki-validation/starfield.html` をホストする Web サーバーのルートに、このファイルをアップロードします
 
@@ -181,13 +181,21 @@ IP ベースの SSL バインドを構成すると、専用の IP アドレス�
 
 ## <a name="rekey-and-sync-the-certificate"></a>キーを更新して証明書を同期する
 
-証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ブレードの **[キーの更新と同期]** オプションを選択します。
+証明書のキーを更新する必要がある場合は、**[証明書のプロパティ]** ページの **[キーの更新と同期]** オプションを選択します。
 
 **[キー更新]** ボタンをクリックして処理を開始します。 処理が完了するまでに 1 ～ 10 分かかることがあります。
 
 ![SSL キー更新のイメージを挿入](./media/app-service-web-purchase-ssl-web-site/Rekey.png)
 
 証明書のキーを更新すると、証明機関から発行された新しい証明書が展開されます。
+
+<a name="notrenewed"></a>
+## <a name="why-is-my-ssl-certificate-not-auto-renewed"></a>SSL 証明書が自動更新されない理由
+
+自動更新するように SSL 証明書が構成されているにもかかわらず、自動的に更新されない場合は、ドメインの確認が保留中になっている可能性があります。 以下の点に注意してください。 
+
+- App Service 証明書を生成する GoDaddy では、3 年に 1 回、ドメインの確認を要求します。 ドメインを確認するために、3 年に 1 回、ドメイン管理者に電子メールが送られます。 この電子メールの確認やドメインの確認を怠ると、App Service 証明書は自動的に更新されなくなります。 
+- 2017 年 3 月 31 日より前に発行された App Service 証明書は、いずれも次回更新時にドメインの再確認が必要となります (証明書の自動更新が有効になっている場合も同様です)。 これは、GoDaddy ポリシーの変更によるものです。 電子メールを確認し、この 1 回限りのドメインの確認を完了すると、App Service 証明書の自動更新が続行されます。 
 
 ## <a name="next-steps"></a>次のステップ
 

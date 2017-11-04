@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 10/16/2017
 ms.author: bradsev
-ms.openlocfilehash: d47c219dfd1e62351d7113d930b17ac45f64c369
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: efb681b85d3d7434e3114b8576abc64d00891f03
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Team Data Science Process テンプレートでのプロジェクトの体系化
 
@@ -28,31 +28,32 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-is-the-team-data-science-process"></a>Team Data Science Process とは
 TDSP は、高度な分析ソリューションを実行および配信するアジャイルで反復的なデータ サイエンス プロセスです。 エンタープライズ組織のデータ サイエンス チームのコラボレーションと効率を向上させるように設計されています。 次の 4 つの主要コンポーネントでこれらの目標をサポートします。
 
-   * 標準の[データ サイエンス ライフサイクル](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)の定義。
+   * 標準の[データ サイエンス ライフサイクル](../team-data-science-process/lifecycle.md)の定義。
    * 標準化されたプロジェクト構造の[プロジェクト ドキュメントおよびレポート テンプレート](https://github.com/Azure/Azure-TDSP-ProjectTemplate)
-   * 計算とストレージのインフラストラクチャやコード リポジトリなど、プロジェクトを実行するためのインフラストラクチャとリソース。
+   * 計算とストレージのインフラストラクチャやコード リポジトリなど、プロジェクトを実行するためのそれぞれのインフラストラクチャとリソース。
    * 次のようなデータ サイエンス プロジェクト タスク用の[ツールとユーティリティ](https://github.com/Azure/Azure-TDSP-Utilities)。
-      - 協調的なバージョン コントロールとコード レビュー
+      - 協調的なバージョン コントロール
+      - コード レビュー
       - データ探索とモデリング
       - 作業の計画
 
-TDSP の詳細については、[Team Data Science Process の概要](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/README.md)に関する記事をご覧ください。
+TDSP の詳細については、[Team Data Science Process の概要](../team-data-science-process/overview.md)に関する記事をご覧ください。
 
 ## <a name="why-should-you-use-the-tdsp-structure-and-templates"></a>TDSP の構造とテンプレートを使用する理由
-データ サイエンス プロジェクトの構造、ライフサイクル、ドキュメントの標準化は、データ サイエンス チームの効果的なコラボレーションを促進する鍵です。 TDSP テンプレートを使用して Machine Learning プロジェクトを作成する機能には、調和のとれたチームワークのフレームワークが用意されています。
+データ サイエンス プロジェクトの構造、ライフサイクル、ドキュメントの標準化は、データ サイエンス チームの効果的なコラボレーションを促進する鍵です。 TDSP テンプレートを使用して Machine Learning プロジェクトを作成すると、調和のとれたチームワークのフレームワークなどが提供されます。
 
 以前に、こうした目標の実現に役立つ [TDSP プロジェクトの構造とテンプレート用の GitHub リポジトリ](https://github.com/Azure/Azure-TDSP-ProjectTemplate)をリリースしました しかしこれまでは、データ サイエンス ツール内で TDSP の構造とテンプレートをインスタンス化することはできませんでした。 現在は、TDSP の構造とドキュメント テンプレートをインスタンス化する Machine Learning プロジェクトを作成できるようになりました。 
 
 ## <a name="things-to-note-before-creating-a-new-project"></a>新規プロジェクトを作成する前の注意事項
-新しいプロジェクトを作成する*前*に、以下の点に注意または確認します。
+新しいプロジェクトを作成する*前*に、以下の項目を確認します。
 * TDSP Machine Learning [テンプレート](https://aka.ms/tdspamlgithubrepo)を確認します。
 * コンテンツ ("docs" フォルダー内に既に存在するもの以外) のサイズは 25 MB 未満である必要があります。 この一覧の後の注意事項を確認してください。
 * sample\_data フォルダーは、コードをテストする場合や開発を早期に開始する場合に使用できる小さなデータ ファイル (5 MB 未満) 専用です。
 * Word や PowerPoint などのファイルを格納すると、"docs" フォルダーのサイズが大幅に増加する可能性があります。 このようなファイルを格納するには、コラボレーション Wiki、[SharePoint](https://products.office.com/en-us/sharepoint/collaboration)、またはその他のコラボレーション リソースを探すことをお勧めします。
-* Machine Learning で大きなファイルと出力を処理する方法については、「[変更の保持と大規模なファイルの処理](http://aka.ms/aml-largefiles)」を参照してください。
+* Machine Learning で大きなファイルと出力を処理する方法については、「[変更の保持と大規模なファイルの処理](http://aka.ms/aml-largefiles)」をご覧ください。
 
 > [!NOTE]
-> readme.md ファイルを除き、プロジェクトの実行中には*使用されない*すべてのドキュメント関連コンテンツ (テキスト、マークダウン、イメージ、その他のドキュメント ファイル) が "docs" (すべて小文字) という名前のフォルダーに存在することをご確認ください。 "docs" フォルダーは Machine Learning の実行で無視される特殊なフォルダーであるため、このフォルダー内のコンテンツは計算のターゲットに不必要にコピーされません。 このフォルダーのオブジェクトは、プロジェクト サイズの 25 MB の上限にカウントされません。 たとえば、"docs" フォルダーは、ドキュメントに必要な大きいイメージ ファイルを保存する場所です。 これらのファイルは、実行履歴を通じて Git によって追跡されます。 
+> readme.md ファイルを除き、プロジェクトの実行中には*使用されない*すべてのドキュメント関連コンテンツ (テキスト、マークダウン、イメージ、その他のドキュメント ファイル) が "docs" (すべて小文字) という名前のフォルダーに存在している必要があります。 "docs" フォルダーは Machine Learning の実行で無視される特殊なフォルダーであるため、このフォルダー内のコンテンツは計算のターゲットに不必要にコピーされません。 このフォルダーのオブジェクトは、プロジェクト サイズの 25 MB の上限にカウントされません。 たとえば、"docs" フォルダーは、ドキュメントに必要な大きいイメージ ファイルを保存する場所です。 これらのファイルは、実行履歴を通じて Git によって追跡されます。 
 
 ## <a name="instantiate-the-tdsp-structure-and-templates-from-the-machine-learning-template-gallery"></a>Machine Learning テンプレート ギャラリーから TDSP の構造とテンプレートをインスタンス化する
 TDSP の構造とドキュメント テンプレートで新しいプロジェクトを作成するには、次の手順を実行します。
@@ -80,7 +81,7 @@ TDSP の構造とドキュメント テンプレートで新しいプロジェ�
 
 
 ## <a name="examine-the-tdsp-project-structure"></a>TDSP プロジェクト構造の確認
-新しいプロジェクトを作成したら、その構造 (次の図の左側のパネル) を確認できます。 ビジネスの把握のために標準化されたドキュメントのすべての側面が含まれています。 これらのアイテムには、TDSP ライフサイクルの段階、データの場所、定義、およびこのドキュメント テンプレートのアーキテクチャが含まれています。 
+新しいプロジェクトを作成したら、その構造 (次の図の左側のパネル) を確認できま。 ビジネスの把握のために標準化されたドキュメントのすべての側面が含まれています。 これらのアイテムには、TDSP ライフサイクルの段階、データの場所、定義、およびこのドキュメント テンプレートのアーキテクチャが含まれています。 
 
 表示される構造は、[TDSP プロジェクト構造、ドキュメント、成果物のテンプレート](https://github.com/Azure/Azure-TDSP-ProjectTemplate)で公開されている TDSP 構造から派生し、いくつかの変更があります。 たとえば、いくつかのドキュメント テンプレートは、[ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) という 1 つのマークダウンにマージされています。 
 
@@ -94,7 +95,7 @@ TDSP プロジェクト テンプレートには、次の最上位フォルダ�
 
 
 ## <a name="use-the-tdsp-structure-and-templates"></a>TDSP の構造とテンプレートの使用
-構造とテンプレートにプロジェクト固有の情報を追加する必要があります。 これらには、プロジェクトの実行と配布に必要なコードと情報を設定することが求められます。 [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) ファイルは、プロジェクトに関連する情報で変更する必要のあるテンプレートです。 これには、[TDSP ライフサイクル](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/lifecycle-detail.md)の 4 つの各ステージに関する情報を入力するのに役立つ質問のセットが付属しています。
+構造とテンプレートにプロジェクト固有の情報を追加する必要があります。 これらには、プロジェクトの実行と配布に必要なコードと情報を設定することが求められます。 [ProjectReport](https://aka.ms/tdspamlgithubrepoprojectreport) ファイルは、プロジェクトに関連する情報で変更する必要のあるテンプレートです。 これには、[TDSP ライフサイクル](../team-data-science-process/lifecycle.md)の 4 つの各ステージに関する情報を入力するのに役立つ質問のセットが付属しています。
 
 プロジェクト構造が実行中または完了後にどのように表示されるかの例を次に示します (次の図の左側のパネル)。 このプロジェクトは、[Team Data Science Process sample project: Classify incomes from US census data in Azure Machine Learning](https://github.com/Azure/MachineLearningSamples-TDSPUCIAdultIncome) (Team Data Science Process サンプル プロジェクト: Azure Machine Learning での米国国勢調査データからの所得の分類) のページから取得したものです。
 

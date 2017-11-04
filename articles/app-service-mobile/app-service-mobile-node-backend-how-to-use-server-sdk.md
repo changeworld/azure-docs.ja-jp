@@ -3,8 +3,8 @@ title: "Mobile Apps 用 Node.js バックエンド サーバー SDK を操作す
 description: "Azure App Service Mobile Apps 用の Node.js バックエンド サーバー SDK を操作する方法について説明します。"
 services: app-service\mobile
 documentationcenter: 
-author: ggailey777
-manager: syntaxc4
+author: elamalani
+manager: elamalani
 editor: 
 ms.assetid: e7d97d3b-356e-4fb3-ba88-38ecbda5ea50
 ms.service: app-service-mobile
@@ -14,11 +14,11 @@ ms.devlang: node
 ms.topic: article
 ms.date: 10/01/2016
 ms.author: glenga
-ms.openlocfilehash: 8265aaa275b3f6e528ec729ff1325200e9ead524
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ab1a9dfa71c4b633392ef839bb848347fdd26431
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="how-to-use-the-azure-mobile-apps-nodejs-sdk"></a>Azure Mobile Apps Node.js SDK の使用方法
 [!INCLUDE [app-service-mobile-selector-server-sdk](../../includes/app-service-mobile-selector-server-sdk.md)]
@@ -793,9 +793,13 @@ Node.js モバイル バックエンドのトラブルシューティングを�
 Node.js アプリケーションは、広範囲の診断ログ ツールにアクセスできます。  Azure Mobile Apps Node.js SDK は、内部で診断ログに [Winston] を使用します。  ログを自動的に有効にするには、デバッグ モードを有効にするか、[Azure Portal]で **MS_DebugMode** アプリ設定を true に設定します。 生成されたログは、 [Azure Portal]の [診断ログ] に表示されます。
 
 ### <a name="in-portal-editing"></a><a name="work-easy-tables"></a>方法: Azure ポータルで Easy Tables を使用する
-ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。 App Service Editor を使用してテーブルの操作を編集することもできます。
+ポータルの [テーブルの簡単操作] を使用すると、ポータル内でテーブルをすぐに作成して操作できます。 CSV 形式で、Easy Tables にデータセットをアップロードできます。 Azure Mobile Apps バックエンドのシステム プロパティ名と競合するプロパティ名 (お使いの CSV データセット内) は使用できないことに注意してください。 システム プロパティ名は次のとおりです。
+* createdAt
+* updatedAt
+* deleted
+* version
 
-バックエンド サイトの設定で **[Easy Tables]** をクリックすると、テーブルを追加、変更、または削除できます。 さらに、テーブル内のデータを表示することもできます。
+App Service Editor を使用してテーブルの操作を編集することもできます。 バックエンド サイトの設定で **[Easy Tables]** をクリックすると、テーブルを追加、変更、または削除できます。 さらに、テーブル内のデータを表示することもできます。
 
 ![Work with Easy Tables](./media/app-service-mobile-node-backend-how-to-use-server-sdk/mobile-apps-easy-tables.png)
 

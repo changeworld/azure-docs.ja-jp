@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1dacbc59704d16451a5268c0aa4df2ab4e5b3112
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cfb6758703ebf3ce0458a4e1ad74324a4ccc2ece
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="human-interaction-in-durable-functions---phone-verification-sample"></a>Durable Functions での人による操作 - 電話確認サンプル
 
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-* 「[Durable Functions をインストールする](durable-functions-install.md)」の指示に従って、サンプルを設定します。
+* [Durable Functions のインストール](durable-functions-install.md)に関するページの指示に従って、サンプルを設定します。
 * この記事では、[Hello シーケンス](durable-functions-sequence.md) サンプルのチュートリアルを既に終了していることを前提としています。
 
 ## <a name="scenario-overview"></a>シナリオの概要
@@ -85,7 +85,7 @@ ms.lasthandoff: 10/11/2017
 > [!WARNING]
 > タイマーが期限切れになる必要がなくなった場合は (上の例でチャレンジ応答を受け取った場合)、[CancellationTokenSource を使ってタイマーをキャンセルする](durable-functions-timers.md)ことが重要です。
 
-## <a name="sending-the-sms-message"></a>SMS メッセージの送信
+## <a name="send-the-sms-message"></a>SMS メッセージの送信
 
 **E4_SendSmsChallenge** 関数は、Twilio バインディングを使って、4 桁のコードを含む SMS メッセージをエンド ユーザーに送信します。 *function.json* の定義は次のようになります。
 
@@ -97,7 +97,7 @@ ms.lasthandoff: 10/11/2017
 
 この **E4_SendSmsChallenge** 関数は、プロセスがクラッシュしたりリプレイされたりする場合であっても、1 回だけしか呼び出されません。 エンド ユーザーが複数の SMS メッセージを受け取るのは望ましくないので、これはよいことです。 戻り値の `challengeCode` は自動的に永続化されるので、オーケストレーター関数はいつでも正しいコードがわかります。
 
-## <a name="running-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルの実行
 
 サンプルに含まれる HTTP によってトリガーされる関数を使って、次の HTTP POST 要求を送信することによりオーケストレーションを開始できます。
 
@@ -152,10 +152,6 @@ Content-Length: 145
 {"runtimeStatus":"Completed","input":"+1425XXXXXXX","output":false,"createdTime":"2017-06-29T19:20:49Z","lastUpdatedTime":"2017-06-29T19:22:23Z"}
 ```
 
-## <a name="wrapping-up"></a>まとめ
-
-ここでは、Durable Functions の高度な機能、特に `WaitForExternalEvent` と `CreateTimer` について詳しく説明しました。 これらを `Task.WaitAny` と組み合わせて、信頼性の高いタイムアウト システムを実装する方法を示しました。これは、実際の人と対話する場合に役に立つことがよくあります。
-
 ## <a name="visual-studio-sample-code"></a>Visual Studio のサンプル コード
 
 Visual Studio プロジェクトの単一の C# ファイルとしてのオーケストレーションを次に示します。
@@ -164,6 +160,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 ## <a name="next-steps"></a>次のステップ
 
-> [!div class="nextstepaction"]
-> [Durable Functions のバインディングについてさらに学習してください](durable-functions-bindings.md)
+このサンプルでは、Durable Functions の高度な機能のいくつか、特に `WaitForExternalEvent` と `CreateTimer` について説明しました。 これらを `Task.WaitAny` と組み合わせて、信頼性の高いタイムアウト システムを実装する方法を示しました。これは、実際の人と対話する場合に役に立つことがよくあります。 Durable Functions の使用方法の詳細については、特定のトピックについて詳しく解説している一連の記事をご覧ください。
 
+> [!div class="nextstepaction"]
+> [シリーズの最初の記事に移動する](durable-functions-bindings.md)

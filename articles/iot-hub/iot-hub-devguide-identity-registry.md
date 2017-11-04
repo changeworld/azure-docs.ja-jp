@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b6e9c7b71fa6fc78f97c0144c735fc44778181d8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 32e63b250467f5733b2e691614fe52f96f2f9d91
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="understand-the-identity-registry-in-your-iot-hub"></a>IoT Hub の ID レジストリを理解する
 
@@ -28,8 +28,6 @@ ms.lasthandoff: 10/11/2017
 ID レジストリに保存されているデバイス ID は、大文字と小文字が区別されます。
 
 大まかに言うと、ID レジストリは、デバイス ID リソースの REST 対応コレクションです。 この ID レジストリにエントリを追加すると、転送中の Cloud-to-device メッセージが含まれるキューなどの、デバイス単位のリソースが IoT Hub によって作成されます。
-
-### <a name="when-to-use"></a>使用時の注意
 
 ID レジストリは、以下が必要な場合に使用します。
 
@@ -72,16 +70,15 @@ IoT Hub の ID レジストリの特徴は次のとおりです。
 ID レジストリで ID の **status** プロパティを更新することにより、デバイスを無効にすることができます。 通常、このプロパティは次の 2 つのシナリオで使用します。
 
 * オーケストレーション プロセスのプロビジョニング中。 詳細については、[デバイスのプロビジョニング][lnk-guidance-provisioning]に関するページを参照してください。
-* 何らかの理由でデバイスが侵害された、または許可されていないと考えられる場合。
+* 何らかの理由で、デバイスが侵害されているか、未承認の状態になっていると考えられる場合。
 
 ## <a name="import-and-export-device-identities"></a>デバイス ID のインポートとエクスポート
 
-[IoT Hub のリソースプロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をエクスポートすることができます。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
+[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリからデバイス ID を一括エクスポートできます。 エクスポートは、顧客が指定した BLOB コンテナーを使用して、デバイス ID レジストリから読み取ったデバイス ID データを保存する、長時間実行されるジョブです。
 
-[IoT Hub のリソースプロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT Hub の ID レジストリから一括でデバイス ID をインポートすることができます。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
+[IoT Hub リソース プロバイダー エンドポイント][lnk-endpoints]に対する非同期操作を使用して、IoT ハブの ID レジストリにデバイス ID を一括インポートできます。 インポートは、顧客が指定した BLOB コンテナー内のデータを使用してデバイス ID データを ID レジストリに書き込む、長時間実行ジョブです。
 
-* インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API][lnk-resource-provider-apis] に関する記事を参照してください。
-* インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]に関するページを参照してください。
+インポート API とエクスポート API の詳細については、[IoT Hub のリソースプロバイダー REST API][lnk-resource-provider-apis] に関する記事を参照してください。 インポートおよびエクスポート ジョブの実行方法の詳細については、[IoT Hub デバイス ID の一括管理][lnk-bulk-identity]に関するページを参照してください。
 
 ## <a name="device-provisioning"></a>デバイス プロビジョニング
 
@@ -143,17 +140,13 @@ iothub-message-schema | deviceLifecycleNotification |
 }
 ```
 
-## <a name="reference-topics"></a>参照トピック:
-
-以下の参照トピックに、ID レジストリに関する詳細情報を示します。
-
 ## <a name="device-identity-properties"></a>デバイス ID のプロパティ
 
 デバイス ID は、次のプロパティを持つ JSON ドキュメントとして表されます。
 
 | プロパティ | オプション | 説明 |
 | --- | --- | --- |
-| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) + `{'-', ':', '.', '+', '%', '_', '#', '*', '?', '!', '(', ')', ',', '=', '@', ';', '$', '''}`。 |
+| deviceId |必須、読み取り専用 (更新時) |ASCII 7 ビット英数字の大文字と小文字が区別される文字列 (最大 128 文字) と、特定の特殊文字 (`- : . + % _ # * ? ! ( ) , = @ ; $ '`)。 |
 | generationId |必須、読み取り専用 |IoT Hub によって生成された、大文字と小文字が区別される文字列 (最大 128 文字)。 この値は、デバイスが削除されて再作成された場合に、同じ **deviceId** を持つデバイスを区別するために使用します。 |
 | etag |必須、読み取り専用 |[RFC7232][lnk-rfc7232] に準拠した、デバイス ID の弱い ETag を表す文字列。 |
 | auth |省略可能 |認証情報とセキュリティのマテリアルを含む複合オブジェクト。 |
@@ -180,7 +173,7 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Hub の ID レジストリの使用方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
+IoT ハブの ID レジストリの使用方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
 
 * [IoT Hub へのアクセスの制御][lnk-devguide-security]
 * [デバイス ツインを使って状態と構成を同期する][lnk-devguide-device-twins]

@@ -12,14 +12,14 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/24/2017
+ms.date: 10/17/2017
 ms.author: arramac
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d8ba08bc9f99cb77c9f03949fc5db299eb222c8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93a9bf568b1047e1af4e7825c3ca99bf11945560
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="automatic-regional-failover-for-business-continuity-in-azure-cosmos-db"></a>Azure Cosmos DB でのビジネス継続性のためのリージョン内自動フェールオーバー
 Azure Cosmos DB はデータのグローバル分散を容易にします。そのために、対応する保証と共に一貫性、可用性、パフォーマンスの間の明確なトレードオフを提供する、完全に管理された[複数リージョンのデータベース アカウント](distribute-data-globally.md)が用意されています。 Cosmos DB アカウントには、高可用性、10 ミリ秒未満の遅延、[明確に定義された整合性レベル](consistency-levels.md)、マルチホーム API による透過的なリージョン内フェールオーバー、世界規模でスループットとストレージを柔軟にスケーリングする機能が備わっています。 
@@ -85,19 +85,40 @@ Azure のリージョン内障害やデータセンターの停止はめった�
 
 **書き込みリージョンで障害が起きた場合**
 
-もし影響を受けるリージョンが、指定の Cosmos DB アカウントの現在の書き込みリージョンである場合は、そのリージョンは自動的にオフラインとしてマークされます。 そして、影響を受ける Cosmos DB アカウントの各々について、代替リージョンが書き込みリージョンとして昇格されます。 Azure Portal を使用して、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange)、Cosmos DB アカウントのリージョンの選択順序を完全に制御することができます。 
+影響を受けたリージョンが現在の書き込みリージョンであり、Azure Cosmos DB アカウントの自動フェールオーバーが有効になっている場合、リージョンは自動的にオフラインとしてマークされます。 そして、影響を受けた Azure Cosmos DB アカウントでは、代替リージョンが書き込みリージョンとして昇格されます。 Azure Portal を使用して、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_FailoverPriorityChange)、自動フェールオーバーを有効にし、Azure Cosmos DB アカウントのリージョンの選択順序を完全に制御することができます。 
 
 ![Azure Cosmos DB のフェールオーバーの優先順位](./media/regional-failover/failover-priorities.png)
 
-自動フェールオーバー中、Cosmos DB は指定された優先順位に基づいて、指定の Cosmos DB アカウント用の次の書き込みリージョンを自動的に選択します。 
+自動フェールオーバー中、Azure Cosmos DB は、指定された優先順位に基づいて、指定の Azure Cosmos DB アカウント用の次の書き込みリージョンを自動的に選択します。 アプリケーションは、DocumentClient クラスの WriteEndpoint プロパティを使用して、書き込みリージョン内の変更を検出できます。
 
 ![Azure Cosmos DB での書き込みリージョン障害](./media/regional-failover/write-region-failures.png)
 
 影響を受けたリージョンが障害から回復したら、そのリージョン内で影響を受けたすべての Cosmos DB アカウントは、サービスにより自動的に復旧されます。 
 
-* 影響を受けるリージョンに直前の書き込みリージョンがある Cosmos DB アカウントは、リージョンの復旧後も読み取りは可能ですがオフライン モードのままとなります。 
-* このリージョンをクエリし、現在の書き込みリージョン内にあるデータと比較することによって、障害中にレプリケートされなかった書き込みを計算することができます。 アプリケーションの必要性に応じて、マージや競合の解決を実行し、変更内容の最終版を現在の書き込みリージョンに書き戻すことができます。 
-* 変更のマージを完了したら、影響を受けたリージョンを削除してから Cosmos DB アカウントに再び追加して、そのリージョンをオンラインに戻すことができます。 リージョンが再び追加されたら、 Azure Portal で手動フェールオーバーを実行するか、または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)、そのリージョンを書き込みリージョンとして構成しなおすことができます。
+* 障害発生中に読み取りリージョンにレプリケートされなかった以前の書き込みリージョン内のデータは、競合フィードとして発行されます。 アプリケーションは競合フィードを読み取って、アプリケーションに基づくロジック固有の競合を解決し、必要に応じて Azure Cosmos DB アカウントに更新したデータを書き戻すことができます。 
+* 以前の書き込みリージョンは読み取りリージョンとして再作成され、自動的にオンラインに戻されます。 
+* 自動的にオンラインに戻った読み取りリージョンは、Azure Portal 経由または[プログラムを使用して](https://docs.microsoft.com/rest/api/documentdbresourceprovider/databaseaccounts#DatabaseAccounts_CreateOrUpdate)手動フェールオーバーを実行することで、書き込みリージョンとして再構成できます。
+
+次のコード スニペットは、影響を受けたリージョンが障害から復旧した後の競合の処理方法を示しています。
+
+```cs
+string conflictsFeedContinuationToken = null;
+do
+{
+    FeedResponse<Conflict> conflictsFeed = client.ReadConflictFeedAsync(collectionLink,
+        new FeedOptions { RequestContinuation = conflictsFeedContinuationToken }).Result;
+
+    foreach (Conflict conflict in conflictsFeed)
+    {
+        Document doc = conflict.GetResource<Document>();
+        Console.WriteLine("Conflict record ResourceId = {0} ResourceType= {1}", conflict.ResourceId, conflict.ResourceType);
+
+        // Perform application specific logic to process the conflict record / resource
+    }
+
+    conflictsFeedContinuationToken = conflictsFeed.ResponseContinuation;
+} while (conflictsFeedContinuationToken != null);
+```
 
 ## <a id="ManualFailovers"></a>手動フェールオーバー
 

@@ -5,14 +5,14 @@ services: azure-stack
 author: troettinger
 ms.service: azure-stack
 ms.topic: article
-ms.date: 9/25/2017
+ms.date: 10/18/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: 02d73a3d843ee7cd3cdfbf6b137908e03d7306a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d15252079b62f6a74a1279309fb9b1b3ed5711e
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack とデータセンターの統合 - エンドポイントの公開
 
@@ -38,15 +38,15 @@ Azure Stack は、さまざまなエンドポイント (VIP - 仮想 IP アド�
 |エンドポイント (VIP)|DNS ホスト A レコード|プロトコル|ポート|
 |---------|---------|---------|---------|
 |AD FS|`Adfs.[Region].[External FQDN]`|HTTPS|443|
-|ポータル (管理者)|`Adminportal.[Region].[External FQDN]`|HTTPS|443|
+|ポータル (管理者)|`Adminportal.[Region].[External FQDN]`|HTTPS|443<br>12495<br>12499<br>12646<br>12647<br>12648<br>12649<br>12650<br>13001<br>13003<br>13010<br>13011<br>13020<br>13021<br>13026<br>30015|
 |Azure Resource Manager (管理者)|`Adminmanagement.[Region].[External FQDN]`|HTTPS|443<br>30024|
 |ポータル (ユーザー)|`Portal. [Region].[External FQDN]`|HTTPS|443<br>12495<br>12649<br>13001<br>13010<br>13011<br>13020<br>13021<br>30015<br>13003|
 |Azure Resource Manager (ユーザー)|`Management.[Region].[External FQDN]`|HTTPS|443<br>30024|
 |Graph|`Graph.[Region].[External FQDN]`|HTTPS|443|
 |証明書の失効リスト|`Crl.[Region].[External FQDN]`|HTTP|80|
 |DNS|`*.[Region].[External FQDN]`|TCP と UDP|53|
-|Key Vault (ユーザー)|`*.vault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12490|
-|Key Vault (管理者)|`*.adminvault.[Region].[External FQDN]`|TCP<br>TCP|443<br>12492|
+|Key Vault (ユーザー)|`*.vault.[Region].[External FQDN]`|TCP|443|
+|Key Vault (管理者)|`*.adminvault.[Region].[External FQDN]`|TCP|443|
 |ストレージ キュー|`*.queue.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
 |ストレージ テーブル|`*.table.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
 |ストレージ BLOB|`*.blob.[Region].[External FQDN]`|HTTP<br>HTTPS|80<br>443|
@@ -109,4 +109,4 @@ Azure Resource Manager (管理者)、管理者ポータル、Key Vault (管理�
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack とデータセンターの統合 - DNS](azure-stack-integrate-dns.md)
+[Azure Stack データセンターの統合 - セキュリティ](azure-stack-integrate-security.md)

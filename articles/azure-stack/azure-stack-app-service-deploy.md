@@ -12,13 +12,13 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/17/2017
 ms.author: anwestg
-ms.openlocfilehash: 5d8de03b92fd4cc41d7a2d077053da3b8769da50
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 2dd5fe36105f4013c36dd4dc952424d5672ba91f
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>App Service リソース プロバイダーを Azure Stack に追加する
 
@@ -42,7 +42,7 @@ Azure Stack 環境への App Service リソースプロバイダーのインス�
 
 App Service リソースプロバイダーをデプロイするには、次の手順を実行します。
 
-1. 管理者 (azurestack\AzureStackAdmin) として appservice.exe を実行します。
+1. 管理者 (azurestack\CloudAdmin) として appservice.exe を実行します。
 
 2. **[Azure Stack クラウドに App Service をデプロイします]** をクリックします。
 
@@ -59,7 +59,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 6. 次のページで、次の操作を行います。
     1. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスの横にある **[接続]** をクリックします。
         - Azure Active Directory (Azure AD) を使っている場合は、Azure Stack のデプロイ時に指定した、Azure AD の管理者アカウントとパスワードを入力します。 **[サインイン]**をクリックします。
-        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 azurestackadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
+        - Active Directory フェデレーション サービス (AD FS) を使用している場合は、ご自分の管理者アカウントを指定します。 たとえば、「 cloudadmin@azurestack.local」のように入力します。 パスワードを入力し、**[サインイン]** をクリックします。
     2. **[Azure Stack Subscriptions]\(Azure Stack サブスクリプション\)** ボックスで、自分のサブスクリプションを選びます。
     3. **[Azure Stack Locations]\(Azure Stack の場所\)** ボックスで、デプロイしているリージョンに対応する場所を選びます。 たとえば、Azure Stack Development Kit にデプロイしている場合は、**[ローカル]** を選びます。
     4. ご利用の App Service デプロイの **[リソース グループ名]** を入力します。 既定では、**[APPSERVICE\<REGION\>]**\(APPSERVICEREGION\) に設定されています。
@@ -68,7 +68,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image03.png)
 
-7. ファイル共有の情報を入力してから、**[次へ]** をクリックします。
+7. ファイル共有の情報を入力してから、**[次へ]** をクリックします。 ファイル共有のアドレスは、\\\appservicefileserver.local.cloudapp.azurestack.external\websites のように、お使いのファイル サーバーの完全修飾ドメイン名を使用するか、\\\10.0.0.1\websites のように、IP アドレスを使用する必要があります。
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image04.png)
 
@@ -81,7 +81,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image05.png)
 
-9. 3 つの証明書ファイルの各ボックスで、**[参照]** をクリックし、適切な証明書ファイルに移動します。 また、各証明書のパスワードを入力する必要があります。 これらの証明書は、[必要な証明書の作成の手順](azure-stack-app-service-deploy.md#create-the-required-certificates)で作成したものです。 すべての情報を入力したら、**[次へ]** をクリックします。
+9. 3 つの証明書ファイルの各ボックスで、**[参照]** をクリックし、適切な証明書ファイルに移動します。 各証明書のパスワードを入力する必要があります。 これらの証明書は、[必要な証明書の作成の手順](azure-stack-app-service-deploy.md#create-the-required-certificates)で作成したものです。 すべての情報を入力したら、**[次へ]** をクリックします。
 
     | Box | 証明書ファイル名の例 |
     | --- | --- |
@@ -97,14 +97,14 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image07.png)    
 
-11. ロール インスタンスと SKU のオプションを確認します。 ロールごとに、お勧めの最小インスタンス SKU が既定値として設定されます。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
+11. ロール インスタンスと SKU のオプションを確認します。 既定値には、ASDK デプロイの各ロールに対するインスタンスの最小数および SKU の最小値が入力されています。 お客様のデプロイの計画に役立つように、コア要件とメモリ要件の概要を説明します。 必要な項目を選んだら、**[次へ]** をクリックします。
 
     > [!NOTE]
     > 運用環境デプロイの場合は、「[Azure Stack での Azure App Service サーバー ロールの容量計画](azure-stack-app-service-capacity-planning.md)」のガイダンスに従ってください。
     > 
     >
 
-    | 役割 | お勧めの最小インスタンス数 | お勧めの最小 SKU | メモ |
+    | 役割 | インスタンスの最小値 | SKU の最小値 | メモ |
     | --- | --- | --- | --- |
     | コントローラー | 1 | Standard_A1 - (1 コア、1792 MB) | App Service クラウドの正常性を管理および維持します。 |
     | 管理 | 1 | Standard_A2 - (2 コア、3584 MB) | App Service Azure Resource Manager および API のエンドポイント、ポータル拡張機能 (管理、テナント、Functions ポータル)、データ サービスを管理します。 フェールオーバーをサポートする場合は、お勧めのインスタンス数は 2 つに増えます。 |
@@ -113,6 +113,9 @@ App Service リソースプロバイダーをデプロイするには、次の�
     | 共有 Worker | 1 | Standard_A1 - (1 コア、1792 MB) | Web または API アプリケーション、および Azure Functions アプリをホストします。 より多くのインスタンスの追加が必要になる場合があります。 オペレーターは、サービスを定義することや任意の SKU レベルを選ぶことができます。 レベルには、少なくとも 1 つのコアが必要です。 |
 
     ![App Service インストーラー](media/azure-stack-app-service-deploy/image08.png)    
+
+    > [!NOTE]
+    > **Windows Server 2016 Core は、Azure Stack 上で Azure App Service と共に使用するためにサポートされているプラットフォーム イメージではありません。**
 
 12. **[プラットフォーム イメージの選択]** ボックスで、App Service クラウド用のコンピューティング リソースプロバイダーで選択可能な項目の中から、ご自分のデプロイの Windows Server 2016 仮想マシン イメージを選びます。 **[次へ]** をクリックします。
 
@@ -143,7 +146,7 @@ App Service リソースプロバイダーをデプロイするには、次の�
 
 2. 概要の状態で、**[状態]** に **[ロールはいずれも準備ができています]** と表示されていることを確認します。
 
-    ![App Service インストーラー](media/azure-stack-app-service-deploy/image12.png)    
+    ![App Service の管理](media/azure-stack-app-service-deploy/image12.png)    
 
 ## <a name="test-drive-app-service-on-azure-stack"></a>App Service on Azure Stack を試してみる
 

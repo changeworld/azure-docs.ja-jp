@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 08/29/2016
 ms.author: mahender
-ms.openlocfilehash: 4ba4155515e587038ffe2dbca064ad27aca97445
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f0d2644903181cd2e20166feae4f90ddd4037fa8
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Azure App Service での認証および承認
 ## <a name="what-is-app-service-authentication--authorization"></a>App Service の認証および承認とは
@@ -26,10 +26,7 @@ App Service の認証および承認は、アプリケーションで、アプ�
 
 App Service では、サード パーティの ID プロバイダーがアカウントを格納しユーザーを認証する、フェデレーション ID を使用しています。 アプリケーションは、プロバイダーの ID 情報を、自身には格納する必要がないように使用します。 App Service では、標準で Azure Active Directory、Facebook、Google、Microsoft アカウント、および Twitter の 5 つの ID プロバイダーをサポートしています。 アプリで使用可能な ID プロバイダーには制限がないため、ユーザーのサインイン方法に合わせたオプションを提供できます。 組み込みのサポートを拡張するために、他の ID プロバイダーや[独自のカスタム ID ソリューション][custom-auth]を統合できます。
 
-すぐに開始する場合は、以下のチュートリアルのいずれかを参照してください。
-
-* [iOS アプリに認証を追加する][iOS] (または [Android]、[Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova])
-* [Azure App Service での API Apps のユーザー認証][apia-user]
+すぐに開始する場合は、「[iOS アプリに認証を追加する][iOS]」(または [Android][Windows]、[Xamarin.iOS]、[Xamarin.Android]、[Xamarin.Forms]、[Cordova]) のチュートリアルのいずれかを参照してください。
 
 ## <a name="how-authentication-works-in-app-service"></a>App Service の承認のしくみ
 いずれかの ID プロバイダーで認証を行うには、最初にその ID プロバイダーを構成してアプリケーションを把握させる必要があります。 すると、ID プロバイダーから ID とシークレットが提供されるので、それらを App Service に提供します。 これにより信頼関係が完成し、App Service は、ID プロバイダーから、認証トークンなどのユーザー アサーションを検証できるようになります。
@@ -79,7 +76,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
 
 * 認証済みの要求のみアプリケーションへの到達を許可する。
   
-    ブラウザーで匿名要求を受信した場合、App Service は、ユーザーがサインインできるように選択した ID プロバイダーのページにリダイレクトされます。 要求がモバイル デバイスから送信された場合は、HTTP *401 Unauthorized* 応答が返されます。
+    ブラウザーで匿名要求を送信した場合、App Service は、ユーザーがサインインできるように選択した ID プロバイダーのページにリダイレクトされます。 要求がモバイル デバイスから送信された場合は、HTTP *401 Unauthorized* 応答が返されます。
   
     このオプションを使用すると、アプリで認証コードを記述する必要はまったくありません。 細かい承認を行う必要がある場合は、ユーザーに関する情報をコードで使用できます。
 * すべての要求にアプリケーションへの到達を許可したうえで、認証済みの要求を検証し、HTTP ヘッダー内の認証情報を受け渡しする。
@@ -89,7 +86,7 @@ App Service ロジック アプリから API アプリへのサービス アカ�
   
     この場合、認証/承認の機能は無効になります。 認証と承認に伴う一切の処理をアプリケーション コードに委ねることになります。
 
-前述の動作は、Azure ポータルの [ **要求が認証されない場合に実行するアクション** ] オプションによって制御します。 [***<プロバイダー名>* でのログイン**] を選択した場合、すべての要求が認証される必要があります。 **[要求の許可 (操作不要)]** では、承認に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
+前述の動作は、Azure ポータルの **[ 要求が認証されない場合に実行するアクション ]** オプションによって制御します。 [***<プロバイダー名>* でのログイン**] を選択した場合、すべての要求が認証される必要があります。 **[要求の許可 (操作不要)]** では、承認に関する決定がコードに委ねられますが、認証情報も提供されます。 コードですべてを処理する場合は、認証/承認の機能を無効にすることができます。
 
 ## <a name="working-with-user-identities-in-your-application"></a>アプリケーションでのユーザー ID の使用
 App Service では、特殊なヘッダーを使用して、アプリケーションにユーザー情報の一部を渡します。 外部要求ではこれらのヘッダーが禁じられており、App Service の認証/承認によって設定された場合にのみ、使用できます。 いくつかのヘッダーの例は次のとおりです。
@@ -114,11 +111,6 @@ App Service では、特殊なヘッダーを使用して、アプリケーシ�
 * [Twitter ログインを使用するようにアプリを構成する方法][Twitter]
 
 ここで示す以外の ID システムを使用する場合は、[Mobile Apps .NET サーバー SDK でのカスタム認証のサポートのプレビュー][custom-auth]も利用できます。このプレビューは、Web アプリ、モバイル アプリ、API アプリで使用できます。
-
-### <a name="web-applications"></a>Web アプリケーション
-以下のチュートリアルは、Web アプリケーションに認証を追加する方法について説明しています。
-
-* [Azure App Service の使用 - 第 2 部][web-getstarted]
 
 ### <a name="mobile-applications"></a>モバイル アプリケーション
 以下のチュートリアルで、サーバー主導のフローを使用し、モバイル クライアントに認証を追加する方法について説明しています。
