@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 07/11/2017
 ms.author: elioda
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 11c35e895d061e6876ac18814025c814449351af
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: f1a3ce746601dc42f04f021f3ba142688abdb7e7
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>MQTT プロトコルを使用した IoT Hub との通信
 
@@ -77,6 +77,42 @@ MQTT プロトコルをサポートする[デバイス SDK][lnk-device-sdks] は
      MQTT を使用して接続するために、このトークンの一部を **[Password]** フィールドとして使用できます: `SharedAccessSignature sr={your hub name}.azure-devices.net%2Fdevices%2FMyDevice01%2Fapi-version%3D2016-11-14&sig=vSgHBMUG.....Ntg%3d&se=1456481802`
 
 MQTT の接続および切断パケットでは、IoT Hub は、**操作の監視**チャネルに関するイベントを、接続の問題をトラブルシューティングするために役立つ情報を追加して発行します。
+
+### <a name="tlsssl-configuration"></a>TLS または SSL の構成
+
+MQTT プロトコルを直接使用するには、クライアントは TLS または SSL 経由で接続する "*必要があります*"。 この手順をスキップすると、接続エラーで失敗します。
+
+TLS 接続を確立するには、DigiCert Baltimore Root 証明書 をダウンロードして参照する必要がある場合があります。 Azure ではこの証明書を使用して接続をセキュリティ保護します。この証明書は [Azure iot-sdk c リポジトリ][lnk-sdk-c-certs]にあります。 これらの証明書の詳細については、[DigiCert のサイト][lnk-digicert-root-certs]を参照してください。
+
+Eclipse Foundation による Python バージョンの [Paho MQTT ライブラリ][lnk-paho]を使用してこれを実装する例は、次のようになります。
+
+最初に、コマンドライン環境から Paho ライブラリをインストールします。
+
+```
+>pip install paho-mqtt
+```
+
+次に、Python スクリプトでクライアントを実装します。
+
+```
+from paho.mqtt import client as mqtt
+import ssl
+  
+path_to_root_cer = "...local\\path\\to\\digicert.cer"
+device_id = "<device id from device registry>"
+sas_token = "<generated SAS token>"
+subdomain = "<iothub subdomain>"
+
+client = mqtt.Client(client_id=device_id, protocol=mqtt.MQTTv311)
+
+client.username_pw_set(username=subdomain+".azure-devices.net/" + device_id, password=sas_token)
+
+client.tls_set(ca_certs=path_to_root_cert, certfile=None, keyfile=None, cert_reqs=ssl.CERT_REQUIRED, tls_version=ssl.PROTOCOL_TLSv1, ciphers=None)
+client.tls_insecure_set(False)
+
+client.connect(subdomain+".azure-devices.net", port=8883)
+```
+
 
 ### <a name="sending-device-to-cloud-messages"></a>デバイスからクラウドへのメッセージの送信
 
@@ -241,3 +277,6 @@ IoT Hub の機能を詳しく調べるには、次のリンクを使用してく
 [lnk-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-twin-reconnection]: iot-hub-devguide-device-twins.md#device-reconnection-flow
 [lnk-devguide-twin]: iot-hub-devguide-device-twins.md
+[lnk-sdk-c-certs]: https://github.com/Azure/azure-iot-sdk-c/blob/master/certs/certs.c
+[lnk-digicert-root-certs]: https://www.digicert.com/digicert-root-certificates.htm
+[lnk-paho]: https://pypi.python.org/pypi/paho-mqtt
