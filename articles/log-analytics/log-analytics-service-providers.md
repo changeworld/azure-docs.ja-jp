@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/22/2016
 ms.author: richrund
-ms.openlocfilehash: 8a67d9a9d345682e9e6c8f5c7779204a038f5f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1a8bc500c837d60b4106f37f1803415a12b62a88
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="log-analytics-features-for-service-providers"></a>Log Analytics のサービス プロバイダー向け機能
 Log Analytics はマネージド サービス プロバイダー (MSP)、大企業、独立系ソフトウェア ベンダー (ISV) に貢献し、ホスティング サービス プロバイダーが、顧客のオンプレミス型またはクラウド型インフラストラクチャのサーバーを管理および監視する上で役立ちます。 
@@ -26,7 +26,7 @@ Log Analytics はマネージド サービス プロバイダー (MSP)、大企�
 特に多くの異なる部署の IT 管理を担当する一元的な IT チームがある大企業では、サービス プロバイダーと多くの類似点を共有します。 このドキュメントでは簡単にするために*サービス プロバイダー* という言葉を使用していますが、企業およびその他のお客様にも同じ機能をご利用いただけます。
 
 ## <a name="cloud-solution-provider"></a>クラウド ソリューション プロバイダー
-[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Log Analytics は CSP サブスクリプションで使用できる Azure サービスの 1 つです。 
+[クラウド ソリューション プロバイダー (CSP)](https://partner.microsoft.com/Solutions/cloud-reseller-overview) プログラムに参加しているパートナーやサービス プロバイダーにとって、Log Analytics は [Azure CSP サブスクリプション](https://docs.microsoft.com/en-us/azure/cloud-solution-provider/overview/azure-csp-overview)で使用できる Azure サービスの 1 つです。 
 
 Log Analytics では、*クラウド ソリューション プロバイダー* サブスクリプションで次の機能が有効になっています。
 

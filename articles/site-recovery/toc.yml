@@ -79,8 +79,6 @@
   items:
     - name: ディザスター リカバリー
       items:
-        - name: マルチテナントをサポートしている VMware VM を Azure に
-          href: site-recovery-multi-tenant-support-vmware-using-csp.md
         - name: Hyper-V VM を Azure に
           href: tutorial-hyper-v-to-azure.md
         - name: 物理サーバーを Azure に
@@ -99,6 +97,8 @@
           href: tutorial-hyper-v-to-azure-failover-failback.md
         - name: オンプレミス サイト間のフェールオーバーとフェールバックを実行する
           href: tutorial-vmm-to-vmm-failover-failback.md
+        - name: マルチテナントをサポートしている VMware VM を Azure に
+          href: site-recovery-multi-tenant-support-vmware-using-csp.md
     - name: 容量とスケーリング
       items:
         - name: Azure への VMware レプリケーションのための容量計画
@@ -203,6 +203,8 @@
           href: 'site-recovery-workload.md#protect-exchange'
         - name: SAP
           href: site-recovery-sap.md
+        - name: ファイル サーバー
+          href: file-server-disaster-recovery.md
         - name: IIS ベースの Web アプリケーション
           href: site-recovery-iis.md
         - name: Citrix XenApp と XenDesktop

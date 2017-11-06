@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: b695a6e07007d4a4cad2d58795e279c5d30fcd4d
-ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
+ms.openlocfilehash: 6d53d08156d0e5d1d070361db5b74d201f18a224
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/23/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Azure Active Directory デバイス登録を使用したオンプレミスの条件付きアクセスの設定
 Azure Active Directory デバイス登録サービスに対して個人用デバイスの workplace-join を行うようユーザーに要求すれば、組織にとってそれらのデバイスが既知のものであるとマーク付けできます。 以下に、Windows Server 2012 R2 で Active Directory フェデレーション サービス (AD FS) を使用して、オンプレミス アプリケーションへの条件付きアクセスを有効にするための手順を示します。
@@ -220,8 +220,5 @@ Windows 8.1 デバイスを使用している場合は、**[PC 設定]**  >  **[
 そして **yourdomain.com** は、Azure Active Directory で構成したドメイン名です (例: contoso.com)。
 **Set-AdfsRelyingPartyWebContent** コマンドレットに渡す HTML コンテンツからは、もしあればすべての改行を必ず削除します。
 
-これで、ユーザーが Azure Active Directory デバイス登録サービスに登録していないデバイスからアプリケーションにアクセスすると、次のスクリーン ショットのようなページが表示されます。
-
-![ユーザーがデバイスを Azure AD に登録していなかった場合に表示されるエラーのスクリーン ショット](./media/active-directory-conditional-access/error-azureDRS-device-not-registered.gif)
-
+これで、ユーザーが Azure Active Directory デバイス登録サービスに登録していないデバイスからアプリケーションにアクセスすると、エラーが表示されます。
 

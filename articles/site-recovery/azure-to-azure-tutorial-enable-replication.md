@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/18/2017
+ms.date: 10/19/2017
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 9a92bf402863fd1ee688fba7c20d3a2cd3e299da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c9cb2bfe459421ee6e28b9d83dffc569b7592c1f
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
 
@@ -129,7 +129,11 @@ Site Recovery は、サブスクリプションとリソース グループ/ク�
 
 Site Recovery では、ターゲット リージョンの既定の設定とレプリケーション ポリシーが作成されます。 設定は、要件に基づいて変更できます。
 
+1. **[設定]** をクリックしてターゲット設定を表示します。
+2. 既定のターゲット設定を上書きするには、**[カスタマイズ]** をクリックします。 
+
 ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+
 
 - **ターゲットの場所**: ディザスター リカバリーに使用するターゲット リージョン。 ターゲットの場所が Site Recovery コンテナーの場所と一致していることをお勧めします。
 
@@ -142,7 +146,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 - **ターゲット ストレージ アカウント**: 既定では、Site Recovery はターゲット リージョンに新しいストレージ アカウントを作成して、ソース VM のストレージ アカウントをミラーします。
 
-- **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。
+- **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。 VM がソース リージョンにあるセットの一部である場合、可用性セットのみを追加できます。
 
 - **レプリケーション ポリシー名** : ポリシーの名前。
 

@@ -10,11 +10,11 @@ ms.service: postgresql
 ms.custom: 
 ms.topic: article
 ms.date: 05/15/2017
-ms.openlocfilehash: 685aa4c2f75b7c3260ca737f7c786157480b2d90
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fa14d4d0115ecc5cf416918f6bdb0d29345e4f83
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL での SSL 接続の構成
 Azure Database for PostgreSQL では、クライアント アプリケーションを PostgreSQL サービスに接続する際、Secure Sockets Layer (SSL) の使用が優先されます。 データベース サーバーとクライアント アプリケーションの間に SSL 接続を適用すると、サーバーとアプリケーションの間のデータ ストリームが暗号化され、"man in the middle" 攻撃から保護されます。
@@ -30,7 +30,7 @@ Azure Portal や CLI を使用してプロビジョニングされたすべて�
 必要に応じて、SSL 接続の適用を無効にできます。 Microsoft Azure では、セキュリティ強化のため **[Enforce SSL connection (SSL 接続の適用)]** 設定は常に有効にしておくことをお勧めします。
 
 ### <a name="using-the-azure-portal"></a>Azure ポータルの使用
-Azure Database for PostgreSQL サーバーにアクセスし、**[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、**[Enforce SSL connection (SSL 接続の適用)]** 設定を有効または無効にします。 その後、 **[保存]**をクリックします。 
+Azure Database for PostgreSQL サーバーにアクセスし、**[接続のセキュリティ]** をクリックします。 トグル ボタンを使用して、**[Enforce SSL connection] \(SSL 接続の適用)** 設定を有効または無効にします。 その後、**[保存]** をクリックします。 
 
 ![接続のセキュリティ ‐ SSL 適用の無効化](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 
@@ -59,11 +59,11 @@ Azure Database for PostgreSQL サーバーとの SSL 経由の通信に必要な
 #### <a name="for-linux-os-x-or-unix"></a>Linux、Mac OS X、または Unix の場合
 OpenSSL ライブラリは、[OpenSSL Software Foundation](http://www.openssl.org) から直接入手できるソース コードで提供されます。 次の手順では、Linux コンピューターに OpenSSL をインストールします。 この記事では、Ubuntu 12.04 以降で動作することがわかっているコマンドを使用します。
 
-ターミナル セッションを開いて、OpenSSL をインストールします
+ターミナル セッションを開いて、OpenSSL をダウンロードします。
 ```bash
 wget http://www.openssl.org/source/openssl-1.1.0e.tar.gz
 ``` 
-ダウンロード パッケージからファイルを展開します
+ダウンロードしたパッケージからファイルを抽出します。
 ```bash
 tar -xvzf openssl-1.1.0e.tar.gz
 ```
@@ -86,7 +86,7 @@ make
 ```bash
 make install
 ```
-OpenSSL がシステムに適切にインストールされたことを確認するには、次のコマンドを実行し、同じ出力を取得できることを確認します。
+OpenSSL がシステムに適切にインストールされたことを確認するには、次のコマンドを実行し、同じ結果が出力されることを確認します。
 
 ```bash
 /usr/local/openssl/bin/openssl version
@@ -99,7 +99,7 @@ OpenSSL 1.1.0e 7 Apr 2014
 #### <a name="for-windows"></a>Windows の場合
 Windows PC で OpenSSL をインストールするには、次の手順を実行します。
 1. **(推奨)** Windows 10 以降でビルトインの Bash for Windows 機能を使用する場合、OpenSSL が既定でインストールされます。 Windows 10 の Bash for Windows 機能を有効にする方法については、[こちら](https://msdn.microsoft.com/en-us/commandline/wsl/install_guide)をご覧ください。
-2. コミュニティが提供する Win32/64 アプリケーションをダウンロードする場合。 Windows インストーラーによっては、OpenSSL Software Foundation で提供または保証されないものがあります。使用できるインストーラーの一覧については、[こちら](https://wiki.openssl.org/index.php/Binaries)を参照してください。
+2. コミュニティが提供する Win32/64 アプリケーションをダウンロードする場合。 OpenSSL Software Foundation では、特定の Windows インストーラーの提供および保証はしていません。使用できるインストーラーの一覧については、[こちら](https://wiki.openssl.org/index.php/Binaries)をご覧ください。
 
 ### <a name="decode-your-certificate-file"></a>証明書ファイルのデコード
 ダウンロードしたルート CA ファイルは、暗号化されています。 OpenSSL を使用すると、証明書ファイルをデコードできます。 これを行うには、次の OpenSSL コマンドを実行します。
@@ -113,7 +113,7 @@ OpenSSL>x509 -inform DER -in BaltimoreCyberTrustRoot.cer -text -out root.crt
 
 > [!NOTE]
 > 現時点で、既知の問題が 1 つあります。サービスへの接続で "sslmode=verify-full" を使用すると、次のエラーで接続が失敗します。_"&lt;リージョン&gt;.control.database.windows.net" (およびその他 7 つの名前) のサーバー証明書がホスト名 "&lt;サーバー名&gt;.postgres.database.azure.com" と一致しません_。
-> "sslmode=verify-full" を使用する必要がある場合は、接続文字列のホスト名として、サーバーの命名規則 (**&lt;サーバー名&gt;.database.windows.net**) を使用してください。 この制限は、今後削除する予定です。 その他の [SSL モード](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)を使用する接続では、推奨されるホストの命名規則 (**&lt;サーバー名&gt;.postgres.database.azure.com**) を引き続き使用してください。
+> "sslmode=verify-full" を使用する必要がある場合は、接続文字列のホスト名として、サーバーの名前付け規則 (**&lt;サーバー名&gt;.database.windows.net**) を使用してください。 この制限は、今後削除する予定です。 その他の [SSL モード](https://www.postgresql.org/docs/9.6/static/libpq-ssl.html#LIBPQ-SSL-SSLMODE-STATEMENTS)を使用する接続では、推奨されるホストの命名規則 (**&lt;サーバー名&gt;.postgres.database.azure.com**) を引き続き使用してください。
 
 #### <a name="using-psql-command-line-utility"></a>psql コマンド ライン ユーティリティの使用
 次の例は、psql コマンド ライン ユーティリティを使用して PostgreSQL サーバーに正常に接続する方法を示しています。 作成した `root.crt` ファイルと、`sslmode=verify-ca` または `sslmode=verify-full`オプションを使用してください。
@@ -141,4 +141,4 @@ SSL 経由で安全に接続するように pgAdmin 4 を構成するには、�
 ![pgAdmin のスクリーンショット - 接続 - SSL モードに必要](./media/concepts-ssl-connection-security/2-pgadmin-ssl.png)
 
 ## <a name="next-steps"></a>次のステップ
-「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」に従って、さまざまなアプリケーション接続オプションを確認します
+「[Azure Database for PostgreSQL の接続ライブラリ](concepts-connection-libraries.md)」に従って、さまざまなアプリケーション接続オプションをレビューします。

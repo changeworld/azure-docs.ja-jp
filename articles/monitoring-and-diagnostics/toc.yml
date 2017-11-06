@@ -134,6 +134,8 @@
       items:
         - name: Archive
           href: monitoring-archive-diagnostic-logs.md
+        - name: Log Analytics への送信
+          href: monitor-stream-diagnostic-logs-log-analytics.md
         - name: Event Hubs へのストリーム
           href: monitoring-stream-diagnostic-logs-to-event-hubs.md
         - name: Resource Manager テンプレートを使用して診断設定を有効にする

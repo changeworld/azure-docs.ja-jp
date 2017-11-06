@@ -12,20 +12,19 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2017
+ms.date: 10/24/2017
 ms.author: juanpere
-ms.openlocfilehash: ed93463153e3fba154aae733da27dea3e8d47689
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: f90ecb70ad12ed05d5d40f8b26a0a4e461c9f835
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>複数デバイスでのジョブをスケジュール設定する
-## <a name="overview"></a>Overview
-前の記事の説明のとおり、Azure IoT Hub では、多数の構成要素 ([デバイス ツインのプロパティとタグ][lnk-twin-devguide]および[ダイレクト メソッド][lnk-dev-methods]) を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻にデバイスに対して実行されるデバイス ツインの更新とダイレクト メソッドの実行をカプセル化します。  たとえば、オペレーターは、ビル 43 の 3 階にあるデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用できます。
 
-### <a name="when-to-use"></a>使用時の注意
-ジョブは、ソリューションのバックエンドで、一連のデバイスで実行される次のアクティビティのスケジュールを設定し、その進行状況を追跡する必要があるときに使用を検討します。
+Azure IoT Hub では、[デバイス ツインのプロパティとタグ][lnk-twin-devguide]や[ダイレクト メソッド][lnk-dev-methods]のような多数の構成要素を使用できます。  通常、デバイス管理者とオペレーターは、バックエンド アプリを使用して、IoT デバイスの更新と対話を、指定した時刻に一括で実行できます。  ジョブは、指定した時刻に一連のデバイスに対してデバイス ツインの更新とダイレクト メソッドを実行します。  たとえば、オペレーターは、ビル 43 の 3 階にある一連のデバイスを、ビルの運用に悪影響を与えることがない時刻に再起動するジョブを開始して追跡するバックエンド アプリを使用します。
+
+一連のデバイスで次のアクティビティのスケジュールを設定し、その進行状況を追跡する必要があるときは、ジョブの使用を検討します。
 
 * 必要なプロパティを更新する
 * タグを更新する
@@ -35,17 +34,11 @@ ms.lasthandoff: 10/11/2017
 ジョブは、ソリューションのバック エンドによって開始され、IoT Hub によって管理されます。  ジョブは、サービス向け URI (`{iot hub}/jobs/v2/{device id}/methods/<jobID>?api-version=2016-11-14`) を通して開始でき、実行中のジョブの進行状況は、サービス向け URI (`{iot hub}/jobs/v2/<jobId>?api-version=2016-11-14`) を通して照会できます。 ジョブが開始された後で実行中のジョブの状態を更新するには、ジョブ クエリを実行します。
 
 > [!NOTE]
-> ジョブを呼び出すとき、プロパティ名と値には ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}`` を除く US-ASCII 印刷可能英数字のみを使用できます。
-> 
-> 
-
-## <a name="reference-topics"></a>参照トピック:
-以下の参照トピックは、ジョブの使用に関する詳細情報を提供しています。
+> ジョブを呼び出すとき、プロパティ名と値には `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT` を除く US-ASCII 印刷可能英数字のみを使用できます。
 
 ## <a name="jobs-to-execute-direct-methods"></a>ダイレクト メソッドを実行するジョブ
 次のスニペットでは、ジョブを使ってデバイス上で[ダイレクト メソッド][lnk-dev-methods]を実行するための HTTPS 1.1 要求の詳細を示します。
 
-    ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
 
     Authorization: <config.sharedAccessSignature>
@@ -65,10 +58,9 @@ ms.lasthandoff: 10/11/2017
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        
     }
-    ```
+
 クエリ条件は、1 つのデバイス ID に対するものであっても、次の例で示すようにデバイス ID のリストに対するものであってもかまいません。
 
-**例**
 ```
 queryCondition = "deviceId = 'MyDevice1'"
 queryCondition = "deviceId IN ['MyDevice1','MyDevice2']"
@@ -79,7 +71,6 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
 ## <a name="jobs-to-update-device-twin-properties"></a>デバイス ツインのプロパティを更新するジョブ
 次のスニペットでは、ジョブを使ってデバイス ツインのプロパティを更新するための HTTPS 1.1 要求の詳細を示します。
 
-    ```
     PUT /jobs/v2/<jobId>?api-version=2016-11-14
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
@@ -94,19 +85,16 @@ IoT Hub クエリ言語の詳細については、[IoT Hub クエリ言語][lnk-
         startTime: <jobStartTime>,          // as an ISO-8601 date string
         maxExecutionTimeInSeconds: <maxExecutionTimeInSeconds>        // format TBD
     }
-    ```
 
 ## <a name="querying-for-progress-on-jobs"></a>ジョブの進行状況の照会
 次のスニペットでは、[ジョブを照会する][lnk-query]ための HTTPS 1.1 要求の詳細を示します。
 
-    ```
     GET /jobs/v2/query?api-version=2016-11-14[&jobType=<jobType>][&jobStatus=<jobStatus>][&pageSize=<pageSize>][&continuationToken=<continuationToken>]
 
     Authorization: <config.sharedAccessSignature>
     Content-Type: application/json; charset=utf-8
     Request-Id: <guid>
     User-Agent: <sdk-name>/<sdk-version>
-    ```
 
 ContinuationToken は、応答から提供されます。  
 
@@ -129,16 +117,12 @@ ContinuationToken は、応答から提供されます。
 | | **failed**: ジョブは失敗しました。 |
 | | **completed**: ジョブは完了しています。 |
 | **deviceJobStatistics** |ジョブの実行に関する統計情報。 |
-
-**deviceJobStatistics** プロパティ。
-
-| プロパティ | 説明 |
-| --- | --- |
-| **deviceJobStatistics.deviceCount** |ジョブ内のデバイスの数。 |
-| **deviceJobStatistics.failedCount** |ジョブが失敗したデバイスの数。 |
-| **deviceJobStatistics.succeededCount** |ジョブが成功したデバイスの数。 |
-| **deviceJobStatistics.runningCount** |現在ジョブが実行中であるデバイスの数。 |
-| **deviceJobStatistics.pendingCount** |現在ジョブの実行が保留されているデバイスの数。 |
+| | **deviceJobStatistics** プロパティ: |
+| | **deviceJobStatistics.deviceCount**: ジョブ内のデバイスの数。 |
+| | **deviceJobStatistics.failedCount**: ジョブが失敗したデバイスの数。 |
+| | **deviceJobStatistics.succeededCount**: ジョブが成功したデバイスの数。 |
+| | **deviceJobStatistics.runningCount**: 現在ジョブが実行中であるデバイスの数。 |
+| | **deviceJobStatistics.pendingCount**: ジョブの実行が保留中であるデバイスの数。 |
 
 ### <a name="additional-reference-material"></a>参考資料
 IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです。

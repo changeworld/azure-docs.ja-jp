@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/22/2017
+ms.date: 10/19/2017
 ms.author: raynew
-ms.openlocfilehash: 95e31d0ca5983e0946ad6fb993e7a89a6a63d2c3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b2a36c293e899ebed9d1220dff043a85321cacf
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-site-recovery-frequently-asked-questions-faq"></a>Azure Site Recovery: よく寄せられる質問 (FAQ)
 この記事には、Azure Site Recovery に関してよく寄せられる質問が含まれます。 この記事の内容について質問がある場合は、 [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/Forums/azure/home?forum=hypervrecovmgr)に投稿してください。
@@ -33,8 +33,7 @@ Site Recovery は、リージョン間の Azure VM のレプリケーション�
 * **物理サーバー**: Site Recovery は、Windows または Linux を実行する物理サーバーを保護できます。
 * **VMware 仮想マシン**: Site Recovery は、VMware VM で実行されているすべてのワークロードを保護できます。
 
-### <a name="does-site-recovery-support-the-azure-resource-manager-model"></a>Site Recovery では Azure Resource Manager モデルがサポートされますか。
-Site Recovery は、Resource Manager をサポートする Azure Portal で使用できます。 Site Recovery は、Azure クラシック ポータルで、古い製品のデプロイをサポートします。 クラシック ポータルでは新しい資格情報コンテナーは作成できません。また、新機能もサポートされていません。
+
 
 ### <a name="can-i-replicate-azure-vms"></a>Azure VM をレプリケートできますか。
 はい、サポートされている Azure VM は Azure リージョン間でレプリケートできます。 [詳細情報](site-recovery-azure-to-azure.md)
@@ -55,7 +54,7 @@ Hyper-V ホスト サーバーに必要なものは、デプロイ シナリオ�
 Site Recovery を使用すると、サポートされている VM または物理サーバーで実行されているほとんどのワークロードを保護できます。 また、アプリケーションに対応したレプリケーションもサポートしているため、アプリをインテリジェントな状態に復元できます。 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合し、Oracle、SAP、IBM、Red Hat などの主要なベンダーと緊密に連携します。 [詳細情報](site-recovery-workload.md) を参照してください。
 
 ### <a name="do-hyper-v-hosts-need-to-be-in-vmm-clouds"></a>Hyper-V ホストを VMM クラウドに配置する必要がありますか。
-セカンダリ データセンターにレプリケートする場合は、VMM クラウドの Hyper-V ホスト サーバーに Hyper-V VM を配置する必要があります。 Azure にレプリケートする場合は、VMM クラウド内にあるかどうかに関係なく、Hyper-V ホスト サーバー上の VM をレプリケートできます。 詳細については、[こちら](site-recovery-hyper-v-site-to-azure.md)を参照してください。
+セカンダリ データセンターにレプリケートする場合は、VMM クラウドの Hyper-V ホスト サーバーに Hyper-V VM を配置する必要があります。 Azure にレプリケートする場合は、VMM クラウド内にあるかどうかに関係なく、VM をレプリケートできます。 Azure への Hyper-V のレプリケーションについて詳しくは、[こちら](tutorial-hyper-v-to-azure.md)をご覧ください。
 
 ### <a name="can-i-deploy-site-recovery-with-vmm-if-i-only-have-one-vmm-server"></a>VMM サーバーが 1 つしかない場合、VMM で Site Recovery をデプロイできますか。
 
@@ -132,8 +131,7 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 * [VMM なしの Hyper-V VM を Azure PowerShell Resource Manager にレプリケートする](site-recovery-deploy-with-powershell-resource-manager.md)
 
 ### <a name="if-i-replicate-to-azure-what-kind-of-storage-account-do-i-need"></a>Azure にレプリケートする場合、どの種類のストレージ アカウントが必要ですか。
-* **Azure クラシック ポータル**: Azure クラシック ポータルで Site Recovery をデプロイする場合は、[Standard geo 冗長ストレージ アカウント](../storage/common/storage-redundancy.md#geo-redundant-storage)が必要です。 Premium Storage は現在サポートされていません。 アカウントは、Site Recovery コンテナーと同じリージョンにある必要があります。
-* **Azure Portal**: Azure Portal で Site Recovery をデプロイする場合は、LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされるようになりました。
+LRS または GRS ストレージ アカウントが必要です。 地域的障害が発生した場合やプライマリ リージョンが復旧できない場合にデータの復元性を確保できるように、GRS をお勧めします。 アカウントは、Recovery Services コンテナーと同じリージョンにある必要があります。 Azure Portal に Site Recovery をデプロイする場合、VMware VM、Hyper-V VM、および物理サーバーのレプリケーションで Premium Storage がサポートされます。
 
 ### <a name="how-often-can-i-replicate-data"></a>どのくらいの頻度でデータをレプリケートできますか。
 * **Hyper-V:** Hyper-V VM は 30 秒 (Premium Storage を除く)、5 分、または 15 分ごとにレプリケートできます。 SAN レプリケーションを設定した場合、レプリケーションは同期されます。
@@ -160,8 +158,7 @@ Azure ユーザー アカウントには、新しい仮想マシンを Azure に
 はい。 帯域幅調整の詳細については、デプロイに関する記事をご覧ください。
 
 * [VMware VM と物理サーバーをレプリケートするためのキャパシティ プランニング](site-recovery-plan-capacity-vmware.md)
-* [VMM クラウドで Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-vmm-to-azure.md#capacity-planning)
-* [VMM なしの Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-hyper-v-site-to-azure.md)
+* [Azure に Hyper-V VM をレプリケートするためのキャパシティ プランニング](site-recovery-capacity-planning-for-hyper-v-replication.md)
 
 ## <a name="failover"></a>フェールオーバー
 ### <a name="if-im-failing-over-to-azure-how-do-i-access-the-azure-virtual-machines-after-failover"></a>Azure にフェールオーバーする場合、フェールオーバー後に Azure の仮想マシンにどうしたらアクセスできますか。

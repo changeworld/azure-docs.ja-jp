@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2017
 ms.author: cherylmc
-ms.openlocfilehash: 4abfdcc0a50c229555088dff0ac2c00c15f49218
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a8129678b5ee2b0b1f2a59049fc6632b6cbf3383
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>ネイティブ Azure 証明書認証の P2S 構成のための VPN クライアント構成ファイルを作成およびインストールする
 
@@ -77,14 +77,14 @@ PowerShell または Azure Portal を使用してクライアント構成ファ�
 2. パッケージをダブルクリックしてインストールします。 SmartScreen ポップアップが表示された場合は、**[詳細]**、**[実行]** の順にクリックしてください。
 3. クライアント コンピューターで **[ネットワークの設定]** に移動し、**[VPN]** をクリックします。 VPN 接続により、その接続先の仮想ネットワークの名前が表示されます。 
 
-## <a name="installmac"></a>Mac (OSX) VPN クライアント構成のインストール
+## <a name="installmac"></a>Mac (OSX) 上のVPN クライアント構成
 
-Azure VNet に接続する Mac デバイスごとに、個別の VPN クライアント構成を作成する必要があります。 複数の Mac デバイスに同じ構成ファイルを再利用することはできません。 これらのデバイスでは、VPN クライアント構成ファイルでユーザー証明書を指定する必要があるためです。 **Generic** フォルダーには、VPN クライアント構成の作成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。 Generic フォルダーには、次のファイルが含まれています。
+Azure では、ネイティブの Azure 証明書の認証用の mobileconfig ファイルは提供されません。 Azure に接続するすべての Mac で、ネイティブの IKEv2 VPN クライアントを手動で構成する必要があります。 **Generic** フォルダーには、構成に必要な情報がすべて揃っています。 ダウンロードに、Generic フォルダーが表示されない場合は、IKEv2 がトンネルの種類として選択されていない可能性があります。 IKEv2 を選択したら、もう一度 zip ファイルを生成して、Generic フォルダーを取得します。 Generic フォルダーには、次のファイルが含まれています。
 
 * **VpnSettings.xml**。サーバー アドレスやトンネルの種類など、重要な設定が含まれています。 
 * **VpnServerRoot.cer**。P2S 接続の設定中に Azure VPN ゲートウェイを検証するために必要なルート証明書が含まれています。
 
-証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。
+証明書認証用に Mac 上でネイティブ VPN クライアントを構成するには、次の手順を実行してください。 Azure に接続するすべての Mac でこれらの手順を完了する必要があります。
 
 1. **VpnServerRoot** ルート証明書を Mac にインポートします。 これを行うには、ファイルを Mac にコピーしてダブルクリックします。  
 **[追加]** をクリックしてインポートします。
@@ -101,7 +101,7 @@ Azure VNet に接続する Mac デバイスごとに、個別の VPN クライ�
 4. **[認証設定]** をクリックし、**[証明書]** を選択します。 
 
   ![認証設定](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
-5. **[選択]** をクリックして、 認証に使用する証明書を選択します。
+5. **[選択]** をクリックして、 認証に使用するクライアント証明書を選択します。 クライアント証明書はマシンに既にインストールされている必要があります (前述の「**P2S ワークフロー**」セクションの手順 2. をご覧ください)。
 
   ![証明書](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)
 6. **[Choose An Identity]\(ID の選択\)** では、選択できる証明書の一覧が表示されます。 適切な証明書を選択し、**[続ける]** をクリックします。
