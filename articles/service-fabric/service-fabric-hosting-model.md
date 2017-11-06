@@ -12,11 +12,11 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/15/2017
 ms.author: harahma
-ms.openlocfilehash: ca7092a06a9ffce8383ca8bc9f70ce312cdf9de4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ecc9038cf895ddaeb06dd0e4e9852d5ef4a4513a
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="service-fabric-hosting-model"></a>Service Fabric ホスティング モデル
 この記事では、Service Fabric によって提供されるアプリケーション ホスティング モデルの概要、および**共有プロセス** モデルと**専有プロセス** モデルとの相違点について説明します。 デプロイされたアプリケーションが Service Fabric ノード上でどのように表示されるかについて、また Servic Fabric サービスのレプリカ (またはインスタンス) とサービス ホスト プロセスとの間の関係について説明します。
@@ -53,7 +53,7 @@ Service Fabric は、**P1** & **P2** などの両方のパーティションの�
 今回、Service Fabric は 'MyCodePackage' の新しいコピーを起動する 'MyServicePackage' の新しいコピーをアクティブ化しました。**fabric:/App2/ServiceA** サービス (つまり **P4** & **P5**) の両方のパーティションのレプリカが、この 'MyCodePackage' という新しいコピーに配置されています。
 
 ## <a name="shared-process-model"></a>共有プロセス モデル
-上記のモデルは Service Fabric が提供する既定のホスティング モデルであり、**共有プロセス** モデルと呼ばれます。 このモデルでは、特定の*アプリケーション*について、特定の *ServicePackage* のコピーを 1 つだけ*ノード* (これは内部のすべての *CodePackage* を起動します) 上でアクティブ化します。特定の *ServiceType* のすべてのサービスのすべてのレプリカが、*ServiceType* を登録する *CodePackage* に追加されます。 つまり、特定の *ServiceType* のすべてのサービスのすべてのレプリカが同じプロセスを共有します。
+上記のモデルは Service Fabric が提供する既定のホスティング モデルであり、**共有プロセス** モデルと呼ばれます。 このモデルでは、特定の*アプリケーション*について、特定の *ServicePackage* のコピーを 1 つだけ*ノード* (これは内部のすべての *CodePackage* を起動します) 上でアクティブ化します。特定の *ServiceType* のすべてのサービスのすべてのレプリカが、*ServiceType* を登録する *CodePackage* に追加されます。 つまり、特定の *ServiceType* のノード上ですべてのサービスのすべてのレプリカが同じプロセスを共有します。
 
 ## <a name="exclusive-process-model"></a>専有プロセス モデル
 Service Fabric が提供するもう 1 つのホスティング モデルが、**専有プロセス** モデルです。 このモデルでは、各レプリカの追加について、特定の*ノード*上で Service Fabric が *ServicePackage* (これは内部のすべての *CodePackage* を開始します) の新しいコピーをアクティブ化します。レプリカが所属するサービスの *ServiceType* を登録した *CodePackage* にレプリカが追加されます。 つまり、各レプリカは自身の専用のプロセスで稼働します。 
@@ -96,16 +96,16 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 ![デプロイされたアプリケーションのノードのビュー][node-view-four]
 </center>
 
-ご覧のとおり Service Fabric は、'MyServicePackage' (**P6** & **P7** のパーティションのレプリカごとに 1 つ) の新しい 2 つのコピーをアクティブ化しました。*CodePackage* の専用のコピーに各レプリカが追加されました。 また、ここでは、**専有プロセス** モデルを使用する場合、特定の*アプリケーション*について、1 つの*ノード*上で特定の *ServicePackage* の複数のコピーをアクティブ化できることに注意してください。 上の例では、**fabric:/App1** の 'MyServicePackage' の 3 つのコピーがアクティブ化されています。 この 'MyServicePackage' のアクティブなコピーは、それぞれ関連する **ServicePackageAtivationId** を持っています。この ID で **fabric:/App1** *アプリケーション*内のコピーを特定します。
+ご覧のとおり Service Fabric は、'MyServicePackage' (**P6** & **P7** のパーティションのレプリカごとに 1 つ) の新しい 2 つのコピーをアクティブ化しました。*CodePackage* の専用のコピーに各レプリカが追加されました。 また、ここでは、**専有プロセス** モデルを使用する場合、特定の*アプリケーション*について、1 つの*ノード*上で特定の *ServicePackage* の複数のコピーをアクティブ化できることに注意してください。 上の例では、**fabric:/App1** の 'MyServicePackage' の 3 つのコピーがアクティブ化されています。 この 'MyServicePackage' のアクティブなコピーは、それぞれ関連する **ServicePackageActivationId** を持っています。この ID で **fabric:/App1** *アプリケーション*内のコピーを特定します。
 
-上の例の **fabric:/App2** のような*アプリケーション*に**共有プロセス** モデルのみを使用する場合、1 つの*ノード*に *ServicePackage* のアクティブなコピーは 1 つだけ存在し、*ServicePackage* のこのアクティブ化の **ServicePackageAtivationId** は '空の文字列' になります。
+上の例の **fabric:/App2** のような*アプリケーション*に**共有プロセス** モデルのみを使用する場合、1 つの*ノード*に *ServicePackage* のアクティブなコピーは 1 つだけ存在し、*ServicePackage* のこのアクティブ化の **ServicePackageActivationId** は '空の文字列' になります。
 
 > [!NOTE]
->- **共有プロセス** ホスティング モデルは、**SharedProcess** と等しい **ServicePackageAtivationMode** に対応しています。 これは既定のホスティング モデルであり、サービス作成時に **ServicePackageAtivationMode** を指定する必要はありません。
+>- **共有プロセス** ホスティング モデルは、**SharedProcess** と等しい **ServicePackageActivationMode** に対応しています。 これは既定のホスティング モデルであり、サービス作成時に **ServicePackageActivationMode** を指定する必要はありません。
 >
->- **専有プロセス** ホスティング モデルは、**ExclusiveProcess** と等しい **ServicePackageAtivationMode** に対応しています。サービス作成時にはこの ServicePackageAtivationMode を専有として指定する必要があります。 
+>- **専有プロセス** ホスティング モデルは、**ExclusiveProcess** と等しい **ServicePackageActivationMode** に対応しています。サービス作成時にはこの ServicePackageAtivationMode を専有として指定する必要があります。 
 >
->- クエリを実行して[サービスの説明][p2]の **ServicePackageAtivationMode** の値を確認することで、サービスのホスティング モデルを知ることができます。
+>- クエリを実行して[サービスの説明][p2]の **ServicePackageActivationMode** の値を確認することで、サービスのホスティング モデルを知ることができます。
 >
 >
 
@@ -121,7 +121,7 @@ await fabricClient.ServiceManager.CreateServiceAsync(serviceDescription);
 >
 > - **ServicePackageActivationId** が指定されない場合は、既定で '空の文字列' になります。 **共有プロセス** モデルでアクティブ化されたデプロイされたサービス パッケージが存在する場合は、そのパッケージに対して操作が行われ、それ以外の場合は操作が失敗します。
 >
-> - **ServicePackageActivationId** を一度だけクエリ実行してキャッシュすることは、その ID が動的に生成され、さまざまな理由で変更できてしまうため、お勧めしません。 **ServicePackageActivationId** を必要とする操作を行う前に、ノード上の[デプロイされたサービス パッケージ][p3]のリストを最初にクエリ実行し、以降はクエリ結果に含まれている *ServicePackageActivationId** を使用して元の操作を行うことをお勧めします。
+> - **ServicePackageActivationId** を一度だけクエリ実行してキャッシュすることは、その ID が動的に生成され、さまざまな理由で変更できてしまうため、お勧めしません。 **ServicePackageActivationId** を必要とする操作を行う前に、ノード上の[デプロイされたサービス パッケージ][p3]のリストを最初にクエリ実行し、以降はクエリ結果に含まれている **ServicePackageActivationId** を使用して元の操作を行うことをお勧めします。
 >
 >
 
@@ -141,7 +141,7 @@ Service Fabric は、[ゲスト実行可能ファイル][a2]と[コンテナー 
 ## <a name="exclusive-process-model-and-application-model-considerations"></a>専有プロセス モデルとアプリケーション モデルに関する考慮事項
 Service Fabric のアプリケーションのモデルを設定するお勧めの方法は、*ServicePackage* ごとに 1 つの *ServiceType* を設定してそれを維持することです。このモデルならほとんどのアプリケーションが正常に動作します。 
 
-ただし、*ServicePackage* ごとに 1 つの *ServiceType* を設定することが望ましくないと思われる特殊な状況にも対処できるように、Service Fabric では機能として *ServicePackage* ごとに 1 つ以上の *ServiceType* を設定できるようになっています (また、1 つの *CodePackage* に 1 つ以上の *ServiceType* を登録できます)。 これらの構成が役に立つ状況を次に示します。
+Service Fabric では、特定のユース ケースを想定し、1 つの *ServicePackage* につき複数の *ServiceType* も許容しています (また、1 つの *CodePackage* が複数の *ServiceType* を登録できます)。 これらの構成が役に立つ状況を次に示します。
 
 - 発生するプロセスが少なく、プロセスごとのレプリカの密度を高めて OS リソースの使用率を最適化したい場合。
 - 初期化またはメモリの消費が多い共通のデータを、ServiceTypes が異なるレプリカで共有する必要がある場合。

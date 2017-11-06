@@ -13,11 +13,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2017
 ms.author: dkshir
-ms.openlocfilehash: 6557046f43c33c0184f8345d9a63d8f7970ba650
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 99fb80d5cafc8fd20f5048de305fef99bf49c286
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="set-up-x509-security-in-your-azure-iot-hub"></a>Azure IoT Hub での X.509 セキュリティの設定
 
@@ -37,7 +37,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 証明書を取得するために、次のいずれかの方法を選択できます。
 - "*ルート証明機関 (CA)*" から X.509 証明書を購入する。 これは運用環境に推奨されます。
 または
-- [OpenSSL](https://www.openssl.org/) などのサード パーティ製ツールを使用して、独自の X.509 証明書を作成する。 これは、テストや開発の目的に適しています。 [X.509 証明書の作成](iot-hub-security-x509-create-certificates.md#createcerts)に関するセクションと「[X.509 証明書チェーンを作成する](iot-hub-security-x509-create-certificates.md#createcertchain)」セクションでは、OpenSSL を使用して証明書を作成する PowerShell のサンプル スクリプトを説明しています。 このチュートリアルの残りの部分では、この "*ハウツー*" ガイドで設定した OpenSSL 環境を使用して、Azure IoT Hub のエンドツーエンド X.509 セキュリティを詳しく見ていきます。
+- [OpenSSL](https://www.openssl.org/) などのサード パーティ製ツールを使用して、独自の X.509 証明書を作成する。 これは、テストや開発の目的に適しています。 [PowerShell を使用して X.509 証明書を作成する方法](iot-hub-security-x509-create-certificates.md)に関するページ内の「*X.509 証明書を作成する*」と「*X.509 証明書チェーンを作成する*」というセクションでは、OpenSSL および PowerShell を使用して証明書を作成する PowerShell のサンプル スクリプトを説明しています。 PowerShell の代わりに **Bash** シェルを使用する場合は、「[Managing CA Certificates Sample](https://github.com/Azure/azure-iot-sdk-c/blob/master/tools/CACertificates/CACertificateOverview.md)」(CA 証明書の管理のサンプル) の関連するセクションを参照してください。 このチュートリアルの残りの部分では、この "*ハウツー*" ガイドで設定した OpenSSL 環境を使用して、Azure IoT Hub のエンドツーエンド X.509 セキュリティを詳しく見ていきます。
 
 
 <a id="registercerts"></a>
@@ -80,7 +80,7 @@ IoT Hub の X.509 証明書ベースのセキュリティでは、[X.509 証明�
 
 2. **[追加]** をクリックして新しいデバイスを追加します。 
 
-3. **[デバイス ID]** にわかりやすい表示名を指定し、**[認証の種類]** として **_[X.509 CA Signed]\(X.509 CA 署名済み\)_** を選択します。 [ **Save**] をクリックします。
+3. **[デバイス ID]** にわかりやすい表示名を指定し、**[認証の種類]** として **_[X.509 CA Signed]\(X.509 CA 署名済み\)_** を選択します。 **[ Save]** をクリックします。
 
    ![ポータルでの X.509 デバイスの作成](./media/iot-hub-security-x509-get-started/create-x509-device.png)
 
