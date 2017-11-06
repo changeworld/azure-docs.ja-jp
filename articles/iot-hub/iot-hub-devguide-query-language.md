@@ -12,22 +12,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/25/17
+ms.date: 10/24/2017
 ms.author: elioda
-ms.openlocfilehash: a7650104eda58923558892f6f0f6666d16dbce28
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fd047b8618f6e6814e0656ac2ab19e30016016fa
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
-# <a name="reference---iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>リファレンス - デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
+# <a name="iot-hub-query-language-for-device-twins-jobs-and-message-routing"></a>デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語
 
 IoT Hub には SQL に似た強力な言語が備わっており、[デバイス ツイン][lnk-twins]や[ジョブ][lnk-jobs]、および[メッセージ ルーティング][lnk-devguide-messaging-routes]に関する情報を取得できます。 この記事で取り扱う内容は次のとおりです。
 
 * IoT Hub のクエリ言語の主な機能の説明
 * 言語の詳しい説明
 
-## <a name="get-started-with-device-twin-queries"></a>デバイス ツインのクエリの概要
+## <a name="device-twin-queries"></a>デバイス ツイン クエリ
 [デバイス ツイン][lnk-twins]には、任意の JSON オブジェクトをタグおよびプロパティとして含めることができます。 IoT Hub では、デバイス ツインに関するすべての情報を含む 1 つの JSON ドキュメントとしてデバイス ツインにクエリを実行できます。
 たとえば、IoT Hub デバイス ツインが次の構造を持っていると仮定します。
 
@@ -80,15 +80,14 @@ SELECT * FROM devices
 > [!NOTE]
 > [Azure IoT Hub SDK][lnk-hub-sdks] では、大量の結果をページングできます。
 
-IoT Hub は、任意の条件でフィルター処理してデバイス ツインを取得できます。 たとえば、
+IoT Hub は、任意の条件でフィルター処理してデバイス ツインを取得できます。 たとえば、**location.region** タグが **US** に設定されているデバイス ツインを受け取るには、次のクエリを使います。
 
 ```sql
 SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-の場合、**US** に設定された **location.region** タグの付いたデバイス ツインを取得します。
-ブール演算子と算術比較も同様にサポートされています。たとえば、
+ブール演算子と算術比較もサポートされています。 たとえば、US に存在し、1 分以上の間隔でテレメトリを送信するように構成されているデバイス ツインを取得するには、次のクエリを使います。
 
 ```sql
 SELECT * FROM devices
@@ -96,23 +95,23 @@ WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
-の場合、米国にあり、テレメトリの送信頻度が 1 分未満に設定されているすべてのデバイス ツインが取得されます。 必要に応じて、**IN** や **NIN** (含まれない) 演算子とともに配列定数も使用できます。 たとえば、
+必要に応じて、**IN** や **NIN** (含まれない) 演算子とともに配列定数も使用できます。 たとえば、WiFi または有線接続を報告するデバイス ツインを取得するには、次のクエリを使います。
 
 ```sql
 SELECT * FROM devices
 WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
-の場合、Wi-Fi 接続か有線接続を報告したデバイス ツインをすべて取得します。 特定のプロパティを含むすべてのデバイス ツインを識別する必要がある場合があります。 IoT Hub では、この目的で関数 `is_defined()` がサポートされています。 たとえば、
+特定のプロパティを含むすべてのデバイス ツインを識別する必要がある場合があります。 IoT Hub では、この目的で関数 `is_defined()` がサポートされています。 たとえば、`connectivity` プロパティが定義されているデバイス ツインを取得するには、次のクエリを使います。
 
 ```SQL
 SELECT * FROM devices
 WHERE is_defined(properties.reported.connectivity)
 ```
 
-の場合、`connectivity` 報告プロパティを定義するデバイス ツインをすべて取得します。 フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
+フィルター処理機能の詳細なリファレンスは、「[WHERE 句][lnk-query-where]」セクションをご覧ください。
 
-グループ化と集計もサポートされています。 たとえば、
+グループ化と集計もサポートされています。 たとえば、各テレメトリ構成状態のデバイスの数を調べるには、次のクエリを使います。
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
@@ -121,7 +120,7 @@ FROM devices
 GROUP BY properties.reported.telemetryConfig.status
 ```
 
-の場合、各テレメトリ構成状態のデバイスの数を返します。
+このグループ化クエリは、次の例のような結果を返します。 次の例では、3 つのデバイスが正常な構成を報告し、2 つは構成を適用中であり、1 つがエラーを報告しています。 
 
 ```json
 [
@@ -140,8 +139,6 @@ GROUP BY properties.reported.telemetryConfig.status
 ]
 ```
 
-上述の例では、3 つのデバイスが正常な構成を報告し、2 つは構成を適用中であり、1 つがエラーを報告しています。
-
 ### <a name="c-example"></a>C# の例
 クエリ機能は **RegistryManager** クラスの [C# service SDK][lnk-hub-sdks] で公開されます。
 簡単なクエリの使用例を次に示します。
@@ -158,8 +155,8 @@ while (query.HasMoreResults)
 }
 ```
 
-**query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**GetNextAsTwinAsync** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
-クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
+**query** オブジェクトがページ サイズ (最大 100) でインスタンス化され、**GetNextAsTwinAsync** メソッドを複数回呼び出すことによって複数のページを取得できることに注意してください。
+クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next*** を公開します。
 
 ### <a name="nodejs-example"></a>Node.js の使用例
 クエリ機能は **Registry** オブジェクトの [Azure IoT service SDK for Node.js][lnk-hub-sdks] で公開されます。
@@ -184,8 +181,8 @@ var onResults = function(err, results) {
 query.nextAsTwin(onResults);
 ```
 
-**query** オブジェクトがページ サイズ (最大 1000) でインスタンス化され、**nextAsTwin** メソッドを複数回呼び出すことによって複数のページを取得できる様子をご確認ください。
-クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next\*** を公開します。
+**query** オブジェクトがページ サイズ (最大 100) でインスタンス化され、**nextAsTwin** メソッドを複数回呼び出すことによって複数のページを取得できることに注意してください。
+クエリ オブジェクトは、クエリが必要とする非シリアル化オプション (デバイス ツインやジョブ オブジェクトなど) や、プロジェクションを使用する際に使うプレーン JSON に応じて、複数の **Next*** を公開します。
 
 ### <a name="limitations"></a>制限事項
 > [!IMPORTANT]
@@ -242,7 +239,7 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
 
 このクエリによって、返されたそれぞれのジョブのデバイス固有の状態 (および、ダイレクト メソッドの応答) がどのように適用されるのかをご確認ください。
 さらに、**devices.jobs** コレクションのオブジェクトのすべてのプロパティに対して任意のブール条件でフィルター処理をすることもできます。
-たとえば、次のクエリについて考えてみましょう。
+たとえば、特定のデバイスに対して 2016 年 9 月以降に作成されて完了したデバイス ツイン更新ジョブをすべて取得するには、次のクエリを使います。
 
 ```sql
 SELECT * FROM devices.jobs
@@ -251,8 +248,6 @@ WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
 ```
-
-この場合、デバイス **myDeviceId** に対して 2016 年 9 月以降に作成された、すべての完了したデバイス ツインの更新ジョブが取得されます。
 
 また、1 つのジョブによるデバイスごとの結果を取得することもできます。
 
@@ -268,11 +263,11 @@ WHERE devices.jobs.jobId = 'myJobId'
 * 条件。ジョブのプロパティ以外にデバイス ツインを参照するもの (上述のセクションを参照)
 * 集計の実行。カウント、平均、グループ化など
 
-## <a name="get-started-with-device-to-cloud-message-routes-query-expressions"></a>デバイスからクラウドへのメッセージ ルートのクエリ式の概要
+## <a name="device-to-cloud-message-routes-query-expressions"></a>デバイスからクラウドへのメッセージ ルートのクエリ式
 
 [デバイスからクラウドへのルート][lnk-devguide-messaging-routes]を使用して、個々のメッセージに対して評価される式に基づき、デバイスからクラウドへのメッセージをさまざまなエンドポイントに送るよう、IoT Hub を構成することができます。
 
-ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはメッセージ ヘッダーとメッセージ本文の両方が含まれることがあります。 IoT Hub は、メッセージをルーティングするためにヘッダーとメッセージ本文の特定のスキーマを想定します。次のセクションで、IoT Hub が正しくルーティングするために必要なものについて説明します。
+ルートの[条件][lnk-query-expressions]では、ツインおよびジョブ クエリの条件と同じ IoT Hub クエリ言語を使用します。 ルート条件は、メッセージ ヘッダーと本文で評価されます。 ルーティング クエリ式には、メッセージ ヘッダーのみ、メッセージ本文のみ、またはメッセージ ヘッダーとメッセージ本文の両方が含まれることがあります。 IoT Hub では、メッセージをルーティングするために、ヘッダーとメッセージ本文に対して特定のスキーマが想定されています。 次のセクションでは、IoT Hub が適切にルーティングするために必要なことについて説明します。
 
 ### <a name="routing-on-message-headers"></a>メッセージ ヘッダーでのルーティング
 
@@ -330,7 +325,7 @@ messageType = 'alerts' AND as_number(severity) <= 2
 
 ### <a name="routing-on-message-bodies"></a>メッセージ本文でのルーティング
 
-IoT Hub は、メッセージ本文が、UTF-8、UTF-16、または UTF-32 でエンコードされた適切な形式の JSON である場合のみ、メッセージ本文のコンテンツに基づいてルーティングできます。 IoT Hub が本文のコンテンツに基づいてメッセージをルーティングできるようにするには、メッセージのコンテンツの種類を `application/json` に設定し、コンテンツのエンコーディングを、メッセージ ヘッダーでサポートされているいずれかの UTF エンコーディングに設定する必要があります。 いずれかのヘッダーが指定されていない場合、IoT Hub は、メッセージに対して、本文を含むクエリ式を評価しようとしません。 メッセージが JSON メッセージでない場合、またはメッセージでコンテンツの種類とコンテンツのエンコーディングを指定しない場合でも、メッセージ ルーティングを使用して、メッセージ ヘッダーに基づいてメッセージをルーティングできます。
+IoT Hub は、メッセージ本文が、UTF-8、UTF-16、または UTF-32 でエンコードされた適切な形式の JSON である場合のみ、メッセージ本文のコンテンツに基づいてルーティングできます。 メッセージのコンテンツの種類を `application/json` に設定し、コンテンツのエンコーディングを、メッセージ ヘッダーでサポートされているいずれかの UTF エンコーディングに設定します。 いずれかのヘッダーが指定されていない場合、IoT Hub は、メッセージに対して、本文を含むクエリ式を評価しようとしません。 メッセージが JSON メッセージでない場合、またはメッセージでコンテンツの種類とコンテンツのエンコーディングを指定しない場合でも、メッセージ ルーティングを使用して、メッセージ ヘッダーに基づいてメッセージをルーティングできます。
 
 クエリ式で `$body` を使用して、メッセージをルーティングできます。 クエリ式で、簡単な本文参照、本文配列参照、または複数の本文参照を使用できます。 クエリ式で、本文参照とメッセージ ヘッダー参照を組み合わせることもできます。 たとえば、以下はすべて有効なクエリ式です。
 
@@ -343,7 +338,7 @@ $body.Weather.Temperature = 50 AND Status = 'Active'
 ```
 
 ## <a name="basics-of-an-iot-hub-query"></a>IoT Hub クエリの基礎
-IoT Hub のすべてのクエリは、SELECT 句と FROM 句、オプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計の場合、この手順の結果は GROUP BY 句で指定した方法でグループ化され、グループごとに、SELECT 句で指定した方法で列が生成されます。
+IoT Hub のすべてのクエリは、SELECT 句と FROM 句、およびオプションの WHERE 句と GROUP BY で構成されます。 各クエリは JSON ドキュメントのコレクション (デバイス ツインなど) で実行されます。 FROM 句は (**devices** や **devices.jobs**) で繰り返されるドキュメント コレクションを示します。 次に、WHERE 句でフィルター処理が適用されます。 集計の場合、この手順の結果は GROUP BY 句で指定した方法でグループ化され、グループごとに、SELECT 句で指定した方法で列が生成されます。
 
 ```sql
 SELECT <select_list>
@@ -361,7 +356,7 @@ FROM <from_specification>
 使用できる条件は、「[式と条件][lnk-query-expressions]」セクションに記載されています。
 
 ## <a name="select-clause"></a>SELECT 句
-SELECT 句 (**SELECT <select_list>**) は必須であり、クエリで取得する値の種類を指定します。 これは、新しい JSON オブジェクトを生成するために使用する JSON 値を指定します。
+**SELECT <select_list>** は必須であり、クエリで取得する値の種類を指定します。 これは、新しい JSON オブジェクトを生成するために使用する JSON 値を指定します。
 FROM コレクションのフィルター処理されたサブセット (さらにオプションでグループ化されたもの) の各要素に対して、プロジェクション フェーズでは、SELECT 句で指定した値で構成される新しい JSON オブジェクトを生成します。
 
 SELECT 句の文法を次に示します。
@@ -386,9 +381,9 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、「[ツインのクエリの概要][lnk-query-getstarted]」セクションに記載されています。
+**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。 SELECT 句の例は、「[ツインのクエリの概要][lnk-query-getstarted]」セクションに記載されています。
 
-現在のところ、**SELECT \*** 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
+現在のところ、**SELECT** * 以外の選択句は、デバイス ツインの集計クエリでのみサポートされています。
 
 ## <a name="group-by-clause"></a>GROUP BY 句
 **GROUP BY <group_specification>** 句はオプションの手順であり、WHERE 句で指定したフィルターの後か、SELECT で指定したプロジェクションの前で実行できます。 属性の値に基づいてドキュメントをグループ化します。 これらのグループを使用すると、SELECT 句で指定した方法で、集計された値が生成されます。
@@ -411,7 +406,7 @@ GROUP BY <group_by_element>
     | < group_by_element > '.' attribute_name
 ```
 
-この場合、**attribute_name** は FROM コレクションの JSON ドキュメントのプロパティを参照します。
+**attribute_name** は、FROM コレクションの JSON ドキュメントのプロパティを参照します。
 
 現在のところ、GROUP BY 句はデバイス ツインに対するクエリの場合にのみサポートされています。
 
@@ -451,7 +446,7 @@ GROUP BY <group_by_element>
 <array_constant> ::= '[' <constant> [, <constant>]+ ']'
 ```
 
-各値の説明:
+式の構文で使われている各シンボルの意味については、次の表をご覧ください。
 
 | シンボル | 定義 |
 | --- | --- |
@@ -460,14 +455,14 @@ GROUP BY <group_by_element>
 | function_name| 「[関数](#functions)」セクションに記載されている関数。 |
 | decimal_literal |10 進表記で表される浮動小数点数。 |
 | hexadecimal_literal |文字列 ‘0x’ の後に 16 進数の文字列を続けて表された数値。 |
-| string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符 (アポストロフィ: ') または二重引用符 (引用符:") で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
+| string_literal |文字列リテラルは、0 個以上の Unicode 文字のシーケンスまたはエスケープ シーケンスによって表される Unicode 文字列です。 文字列リテラルは、単一引用符または二重引用符で囲みます。 使用できるエスケープ: 4 つの 16 進数字によって定義された Unicode 文字の `\'`、`\"`、`\\`、`\uXXXX`。 |
 
 ### <a name="operators"></a>演算子
 次の演算子がサポートされています。
 
 | ファミリ | 演算子 |
 | --- | --- |
-| 算術 |+、-、*、/、% |
+| 算術 |+, -, *, /, % |
 | 論理 |AND、OR、NOT |
 | 比較 |=、!=、<、>、<=、>=、<> |
 
@@ -489,7 +484,7 @@ GROUP BY <group_by_element>
 | CEILING(x) | 指定された数値式以上の最小の整数値を返します。 |
 | FLOOR(x) | 指定された数値式未満の最大の整数を返します。 |
 | SIGN(x) | 指定された数値式の正 (+1)、ゼロ (0)、または負 (-1) の符号を返します。|
-| SQRT(x) | 指定された数値の 2 乗を返します。 |
+| SQRT(x) | 指定された数値の平方根を返します。 |
 
 ルートの条件では、次の型の確認とキャスト関数がサポートされています。
 
@@ -507,9 +502,9 @@ GROUP BY <group_by_element>
 
 ルートの条件では、次の文字列関数がサポートされています。
 
-| 関数 | 説明 |
+| 関数 | Description |
 | -------- | ----------- |
-| CONCAT(x, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
+| CONCAT(x, y, …) | 2 つ以上の文字列値を連結した結果である文字列を返します。 |
 | LENGTH(x) | 指定された文字列式の文字数を返します。|
 | LOWER(x) | 文字列式の大文字データを小文字に変換して返します。 |
 | UPPER(x) | 文字列式の小文字データを大文字に変換して返します。 |
