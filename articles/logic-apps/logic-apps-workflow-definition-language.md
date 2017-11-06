@@ -14,11 +14,11 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 03/21/2017
 ms.author: LADocs; jehollan
-ms.openlocfilehash: 6befc5b26f2b01113f1aa813125b33eb66ad6f6a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bdf078a0cebf3c36d5916035fb5fd7e47d231abe
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="workflow-definition-language-schema-for-azure-logic-apps"></a>Azure Logic Apps のワークフロー定義言語スキーマ
 
@@ -168,7 +168,7 @@ outputs では、ワークフローの実行から返すことができる情報
 |式|評価|  
 |----------------|----------------|  
 |"@function('Hello')"|リテラル文字列 "Hello" を最初のパラメーターとして使って、定義の関数メンバーを呼び出します。|  
-|"@function('It's Cool!')"|リテラル文字列 "It's Cool!" を 最初のパラメーターとして使って、定義の関数メンバーを呼び出します。|  
+|"@function('It"s Cool!')"|リテラル文字列 "It's Cool!" を 最初のパラメーターとして使って、定義の関数メンバーを呼び出します。|  
 |"@function().prop1"|定義の `myfunction` メンバーの prop1 プロパティの値を返します。|  
 |"@function('Hello').prop1"|リテラル文字列 "Hello" を最初のパラメーターとして使って定義の関数メンバーを呼び出し、オブジェクトの prop1 プロパティを返します。|  
 |"@function(parameters('Hello'))"|"Hello" パラメーターを評価し、値を関数に渡します。|  

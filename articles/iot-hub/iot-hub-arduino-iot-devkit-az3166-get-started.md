@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/11/2017
 ms.author: xshi
-ms.openlocfilehash: e8abae4d523ad537563f2c2964a3585b68fda7c1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0b8ae318fab2eaa186dca050ce2710b1ff232783
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub-in-the-cloud"></a>IoT DevKit AZ3166 をクラウドの Azure IoT Hub に接続する
 
@@ -152,6 +152,9 @@ B ボタンを押してセンサーをテストします。 B ボタンを押し
 
 ![Installation progress](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install.png)
 
+> [!NOTE] 
+> 環境によっては、Arduino IDE のインストール時にエラーが表示されることがあります。 このような場合は、[個別に Arduino IDE をインストール](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/#windows)してから、install.cmd をもう一度実行してください。 それ以外の場合は、[手動の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/#windows)に従って、すべての必要なツールとパッケージをインストールしてください。
+
 #### <a name="install-drivers"></a>ドライバーのインストール
 
 Arduino の VS Code 拡張機能では、Arduino IDE が使用されます。 Arduino IDE を初めてインストールする場合は、関連するドライバーをインストールするように求められます。
@@ -163,83 +166,51 @@ Arduino の VS Code 拡張機能では、Arduino IDE が使用されます。 Ar
 > [!NOTE] 
 > VS Code を起動するときに、Arduino IDE または関連するボード パッケージが見つからないことを示すエラーが表示される場合があります。 これを解決するには、VS Code を閉じて、Arduino IDE を再起動します。 VS Code によって、Arduino IDE のパスが正しく検索されます。
 
-### <a name="macos-preview"></a>macOS (プレビュー)
+### <a name="macos"></a>macOS
 
-次の手順に従って、macOS で開発環境を準備します。
+ワンクリック インストール機能を使用して、開発環境を準備することをお勧めします。 問題が発生した場合は、[手動の手順](https://microsoft.github.io/azure-iot-developer-kit/docs/installation/)に従って準備することができます。
 
-#### <a name="install-azure-cli-20"></a>Azure CLI 2.0 のインストール
+#### <a name="install-homebrew"></a>Homebrew をインストールする
 
-1. 1 つの `curl` コマンドを使用して Azure CLI 2.0 をインストールします。
+> [!NOTE] 
+> Homebrew をインストール済みの場合は、この手順をスキップできます。
 
-   ```bash
-   curl -L https://aka.ms/InstallAzureCli | bash
-   ```
+[Homebrew のインストール手順](https://docs.brew.sh/Installation.html)に従ってインストールします。
 
-2. コマンド シェルを再起動して、変更を有効にします。
+#### <a name="download-the-latest-package"></a>最新パッケージのダウンロード
+ダウンロードする.zip ファイルには、DevKit 開発に必要なツールとパッケージがすべて含まれています。
 
-   ```bash
-   exec -l $SHELL
-   ```
+> [!div class="button"]
+[ダウンロード](https://aka.ms/devkit/prod/installpackage/mac/latest)
 
-Azure CLI 2.0 のインストールに関する詳細については、[公式ガイド](https://docs.microsoft.com//cli/azure/install-azure-cli)を参照してください。
+.zip ファイルに含まれるツールとパッケージは次のとおりです。 既にインストール済みのコンポーネントがある場合、スクリプトによってそのコンポーネントが検出され、スキップされます。
 
-#### <a name="install-the-arduino-ide"></a>Arduino IDE のインストール
+* Node.js と Yarn: セットアップ スクリプトおよび自動化されたタスクのランタイム。
+* [Azure CLI 2.0](https://docs.microsoft.com/en-us/cli/azure/install-azure-cli?view=azure-cli-latest#a-namemacosinstall-on-macos): Azure リソースを管理するためのクロスプラットフォーム コマンドライン エクスペリエンス。
+* [Visual Studio Code](https://code.visualstudio.com/) (VS Code): DevKit 開発のための軽量なコード エディター。
+* [Arduino の Visual Studio Code 拡張機能](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.vscode-arduino): Visual Studio Code での Arduino 開発を可能にする拡張機能。
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software): Arduino の拡張機能が依存するツール。
+* DevKit ボード パッケージ: DevKit 用のツール チェーン、ライブラリ、およびプロジェクト。
+* ST-Link ユーティリティ: 必須のツールとドライバー。
 
-Visual Studio Code Arduino 拡張機能では、Arduino IDE が使用されます。 [Arduino IDE for macOS](https://www.arduino.cc/en/Main/Software) をダウンロードして、インストールします。
+#### <a name="run-the-installation-script"></a>インストール スクリプトの実行
 
-#### <a name="install-visual-studio-code"></a>Visual Studio Code のインストール
+Finder で .zip を見つけて展開します。
 
-[Visual Studio Code for macOS](https://code.visualstudio.com/) をダウンロードして、インストールします。 これは、DevKit IoT アプリケーションを構築するための主要な開発ツールです。
+ターミナル アプリを起動し、.zip ファイルを展開したフォルダーに移動して以下を実行します。
 
-####  <a name="download-the-latest-package"></a>最新パッケージのダウンロード
+```bash
+./install.sh
+```
 
-1. Node.js をインストールします。 インストールには、一般的な macOS パッケージ マネージャー [Homebrew](https://brew.sh/) または[事前構築済みインストーラー](https://nodejs.org/en/download/)を使用できます。
-
-2. VS Code での DevKit 開発に必要なタスク スクリプトを含む .zip ファイルをダウンロードします。
-
-   > [!div class="button"]
-   [ダウンロード](https://azureboard.azureedge.net/installpackage/devkit_tasks_1.0.2.zip)
-
-3. .zip ファイルを見つけて、展開します。 次に、**ターミナル** アプリを起動し、次のコマンドを実行します。
-
-   a. 展開されたフォルダーを、macOS ユーザー フォルダーに移動します。
-      ```bash
-      mv [.zip extracted folder]/azure-board-cli ~/. ; cd ~/azure-board-cli
-      ```
-  
-   b. npm パッケージをインストールします。
-      ```
-      npm install
-      ```
-
-#### <a name="install-the-vs-code-extension-for-arduino"></a>Arduino の VS Code 拡張機能のインストール
-
-Visual Studio Code で直接 Azure Marketplace の拡張機能をインストールすることができます。 左側のウィンドウで拡張機能アイコンを選択し、**Arduino** を検索して、**[インストール]** を選択します。
-
-![Arduino の拡張機能の検索](media/iot-hub-arduino-devkit-az3166-get-started/installation-extensions-mac.png)
-
-#### <a name="install-the-devkit-board-package"></a>DevKit ボード パッケージのインストール
-
-Visual Studio Code でボード マネージャーを使用して、DevKit ボードを追加します。
-
-1. Cmd + Shift + P キーを使用してコマンド パレットを開き、「**Arduino**」と入力します。次に、**[Arduino: Board Manager]\(Arduino: ボード マネージャー\)** を見つけて選択します。
-
-2. 右下の **[Additional URLs]\(追加 URL\)** を選択します。
-   ![追加 URL のリンク](media/iot-hub-arduino-devkit-az3166-get-started/installation-additional-urls-mac.png)
-
-3. settings.json ファイルで、**[USER SETTINGS]\(ユーザー設定\)** ウィンドウの末尾に次の 1 行を追加して保存します。
-   ```json
-   "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
-   ```
-   ![[USER SETTINGS]\(ユーザー設定\) ウィンドウに追加されるコード](media/iot-hub-arduino-devkit-az3166-get-started/installation-settings-json-mac.png)
-
-4. ボード マネージャーで、**az3166** を検索し、最新バージョンをインストールします。
-   ![az3166 のインストール](media/iot-hub-arduino-devkit-az3166-get-started/installation-az3166-mac.png)
+> [!NOTE] 
+> Homebrew のアクセス許可エラーが表示された場合は、`brew doctor` を実行して修正します。 詳細については、[FAQ](https://microsoft.github.io/azure-iot-developer-kit/docs/faq/#homebrew-permission-error-on-macos) を参照してください。
 
 これで、macOS に必要なツールとパッケージがすべてインストールされました。
 
-
 ## <a name="open-the-project-folder"></a>プロジェクト フォルダーを開く
+
+Azure IoT Hub を作成し、そのハブに DevKit を接続し、センサーから温度と湿度のデータを収集して、そのデータを IoT ハブに送信します。
 
 ### <a name="start-vs-code"></a>VS Code の起動
 

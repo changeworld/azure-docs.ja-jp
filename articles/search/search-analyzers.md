@@ -12,22 +12,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.date: 09/11/2017
 ms.author: heidist
-ms.openlocfilehash: f9e456a57bae4aab25ef85c93132308f2c442c0b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1b9dea2978c11955da3ea4df8b90dc10a866d3f1
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="analyzers-in-azure-search"></a>Azure Search のアナライザー
 
-*アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 インデックスの作成中に、アナライザーはテキストを*トークン*に変換し、*トークン化された用語*がインデックスに書き込まれます。 検索中、アナライザーは*クエリ用語*に対して同じ変換を実行します。この用語が、インデックス内の一致する用語を取得するために使用されます。
-
-分析中は、次の変換が一般的です。
+*アナライザー*は、クエリ文字列内のテキストとインデックス付きドキュメントを処理する[フル テキスト検索](search-lucene-query-architecture.md)のコンポーネントです。 分析中は、次の変換が一般的です。
 
 + 重要ではない単語 (ストップワード) と感嘆符は削除されます。
 + フレーズとハイフンでつながれた単語は、構成要素に分割されます。
 + 大文字の単語は小文字に変換されます。
 + 単語は、時制に関係なく一致が見つかるように、原形に戻されます。
+
+言語アナライザーは、テキスト入力を情報の保存と取得に効率的な原型または原形に変換します。 変換は、インデックスが構築されるときにインデックスの作成中に実行され、インデックスの読み取り時の検索中にも実行されます。 両方の操作に同じテキスト アナライザーを使用すると、期待する検索結果が得られる可能性が高くなります。
 
 Azure Search で既定で使用されるのは、[Lucene の標準アナライザー](https://lucene.apache.org/core/4_0_0/analyzers-common/org/apache/lucene/analysis/standard/StandardAnalyzer.html)です。 フィールド単位で既定値を上書きすることができます。 この記事では、さまざまな選択肢と、カスタム分析のベスト プラクティスについて説明しています。 また、主なシナリオの構成例も示します。
 
@@ -53,12 +53,12 @@ Azure Search で既定で使用されるのは、[Lucene の標準アナライ�
 
 3. フィールドの定義に、アナライザーを追加すると、インデックスでの書き込み操作が発生します。 既存のインデックスに **アナライザー**を追加する場合は、次の手順に注意してください。
  
- | シナリオ | 手順 |
- |----------|-------|
- | 新しいフィールドの追加 | フィールドがスキーマにまだ存在しない場合、更新するフィールドはありません。 テキスト分析は、新しいフィールドに内容を提供するドキュメントを追加または更新したときに実行されます。 このタスクには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。|
- | アナライザーを既存のインデックス付きフィールドに追加します。 | そのフィールドの転置インデックスは最初から再作成する必要があり、それらのフィールドの文書の内容は再度インデックス作成する必要があります。 <br/> <br/>現在開発中のインデックスの場合は、新しいフィールド定義を取得するために、インデックスを[削除](https://docs.microsoft.com/rest/api/searchservice/delete-index)して[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)します。 <br/> <br/>運用中のインデックスの場合は、改訂された定義を提供してその使用を開始するために、新しいフィールドを作成する必要があります。 新しいフィールドを組み込むには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。 |
+ | シナリオ | 影響 | 手順 |
+ |----------|--------|-------|
+ | 新しいフィールドの追加 | 最小限 | フィールドがまだスキーマに存在しない場合、インデックスにもフィールドはまだ物理的に存在していないため、フィールドのリビジョンは実行されていません。 このタスクには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。|
+ | アナライザーを既存のインデックス付きフィールドに追加します。 | 再構築 | そのフィールドの転置インデックスは最初から再作成する必要があり、それらのフィールドの内容は再度インデックス作成する必要があります。 <br/> <br/>現在開発中のインデックスの場合は、新しいフィールド定義を取得するために、インデックスを[削除](https://docs.microsoft.com/rest/api/searchservice/delete-index)して[作成](https://docs.microsoft.com/rest/api/searchservice/create-index)します。 <br/> <br/>運用中のインデックスの場合は、改訂された定義を提供してその使用を開始するために、新しいフィールドを作成する必要があります。 新しいフィールドを組み込むには、[Update Index](https://docs.microsoft.com/rest/api/searchservice/update-index) と [mergeOrUpload](https://docs.microsoft.com/rest/api/searchservice/addupdate-or-delete-documents) を使用してください。 後で、計画的なインデックス サービスの一環として、インデックスをクリーンアップし、不要になったフィールドを削除することができます。 |
 
-## <a name="best-practices"></a>ベスト プラクティス
+## <a name="tips-and-best-practices"></a>ヒントとベスト プラクティス
 
 このセクションでは、アナライザーの使用方法についてのアドバイスを提供します。
 
@@ -72,12 +72,13 @@ Azure Search では、追加の `indexAnalyzer` および `searchAnalyzer` フ�
 
 標準アナライザーを上書きするには、インデックスの再構築が必要です。 可能であれば、アクティブな開発中に使用するアナライザーを決めてから、インデックスを運用環境に展開します。
 
-### <a name="compare-analyzers-side-by-side"></a>アナライザーの並列比較
+### <a name="inspect-tokenized-terms"></a>トークン化された用語の検査
 
-[Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 応答は、提供したテキスト用の特定のアナライザーによって生成されるトークンで構成されます。 
+検索結果が期待した内容ではない場合、よくあるシナリオとして、クエリの用語入力とインデックス内のトークン化された用語間にトークンの違いがあることが考えられます。 トークンが同じではない場合、一致処理は具体化に失敗します。 トークナイザーの出力を検査する場合、調査ツールとして [Analyze API](https://docs.microsoft.com/rest/api/searchservice/test-analyzer) を使用することをお勧めします。 応答は、特定のアナライザーによって生成されるトークンで構成されます。
 
-> [!Tip]
-> [Search Analyzer Demo](http://alice.unearth.ai/) では、標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 指定した検索の入力ごとに、各アナライザーの結果が隣接する列に表示されます。
+### <a name="compare-english-analyzers"></a>英語のアナライザーの比較
+
+[Search Analyzer Demo](http://alice.unearth.ai/) はサードパーティ製のデモ アプリです。標準 Lucene アナライザー、Lucene の英語アナライザー、Microsoft の英語自然言語プロセッサの比較が横並びに表示されます。 インデックスは固定です。よくあるストーリーのテキストが含まれています。 検索用語を入力するごとに、隣接するウィンドウに各アナライザーの結果が表示され、同じ文字列を各アナライザーがどのように処理するかを把握できます。 
 
 ## <a name="examples"></a>例
 

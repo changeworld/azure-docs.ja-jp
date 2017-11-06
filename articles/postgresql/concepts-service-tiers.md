@@ -10,11 +10,11 @@ ms.custom: mvc
 ms.service: postgresql
 ms.topic: article
 ms.date: 05/31/2017
-ms.openlocfilehash: 59ac187e50527517c402a5cc2aa871717dde5650
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ebdced6ac748245faed90949fd0e76c0eacb2d3
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-database-for-postgresql-options-and-performance-understand-whats-available-in-each-pricing-tier"></a>Azure Database for PostgreSQL のオプションとパフォーマンス: 各価格レベルで使用できる内容
 Azure Database for PostgreSQL を作成するときは、そのサーバーに割り当てられたリソースを構成する 3 つの主な選択肢を決定します。 これらの選択肢は、サーバーのパフォーマンスとスケールに影響します。
@@ -27,7 +27,7 @@ Azure Database for PostgreSQL を作成するときは、そのサーバーに�
 > [!IMPORTANT]
 > サービスがパブリック プレビューの間は、保証されるサービス レベル アグリーメント (SLA) はありません。
 
-Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してすべてのリソースを利用するか、複数のデータベースを作成してリソースを共有することができます。 
+Azure Database for PostgreSQL サーバー内では、1 つ以上のデータベースを作成できます。 サーバーごとに 1 つのデータベースを作成してデータベースがすべてのサーバー リソースを利用できるようにするか、複数のデータベースを作成してサーバー リソースを共有させるようにするかを選択できます。 
 
 ## <a name="choose-a-pricing-tier"></a>Choose a pricing tier
 プレビュー段階の Azure Database for PostgreSQL で利用できる価格レベルは、Basic と Standard の 2 つです。 Premium レベルはまだ利用できませんが、近日対応予定です。 
