@@ -36,6 +36,7 @@
 #### [Azure CLI 2.0 の使用](virtual-machine-scale-sets-manage-cli.md)
 #### [Azure PowerShell の使用](virtual-machine-scale-sets-manage-powershell.md)
 ### [スケール セットの垂直スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)
+### [OS の自動アップグレード](virtual-machine-scale-sets-automatic-upgrade.md)
 ### [スケール セットのアップグレード](virtual-machine-scale-sets-upgrade-scale-set.md)
 ### [DSC とスケール セットの使用](virtual-machine-scale-sets-dsc.md)
 ### [スケール セットのネットワーク](virtual-machine-scale-sets-networking.md)

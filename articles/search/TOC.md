@@ -78,6 +78,7 @@
 ### [検索候補](https://docs.microsoft.com/rest/api/searchservice/suggesters)
 ### [ファセット ナビゲーション](search-faceted-navigation.md)
 ### [シノニムのプレビュー](search-synonyms.md)
+### [moreLikeThis のプレビュー](search-more-like-this.md)
 
 # リファレンス
 
@@ -86,7 +87,7 @@
 ## [Python (管理)](http://azure-sdk-for-python.readthedocs.io/en/latest/ref/azure.mgmt.search.html)
 ## [REST ()](/rest/api/searchservice)
 ## [REST (管理)](/rest/api/searchmanagement)
-## [サービス REST (プレビュー)](search-api-2015-02-28-preview.md)
+## [サービス REST (プレビュー)](search-api-2016-09-01-preview.md)
 
 # リソース
 

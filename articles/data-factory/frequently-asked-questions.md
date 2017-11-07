@@ -14,14 +14,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/23/2017
 ms.author: shlo
-ms.openlocfilehash: b394b78b1d1a45a725c438d2cb978bb367c24894
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 2cc128e8f7792a6a363aacf50f8724d689892c83
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory FAQ
 この記事は、Azure Data Factory サービスのバージョン 2 に適用されます。 Data Factory についてよく寄せられる質問とその回答を紹介します。  
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 に関してよく寄せられる質問](v1/data-factory-faq.md)を参照してください。
 
 ## <a name="what-is-azure-data-factory"></a>Azure Data Factory とは何ですか。 
 Data Factory は、データの移動や変換を自動化する完全管理型のクラウドベースのデータ統合サービスです。 原材料を機械で加工して最終製品を作成する工場と同じように、Azure Data Factory は生データを収集してすぐに使用できる情報に変換する既存のサービスを調整します。 

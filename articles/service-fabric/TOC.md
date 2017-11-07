@@ -6,6 +6,7 @@
 ## [.NET アプリケーションの作成](service-fabric-quickstart-dotnet.md)
 ## [Linux コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers-linux.md)
 ## [Windows コンテナー アプリケーションのデプロイ](service-fabric-quickstart-containers.md)
+## [Java アプリケーションのデプロイ](service-fabric-quickstart-java.md)
 
 # Tutorials (チュートリアル)
 ## .NET アプリのデプロイ
@@ -28,7 +29,9 @@
 ### 1 - Azure でのクラスターの作成
 #### [1a - Windows クラスターの作成](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 #### [1b - Linux クラスターの作成](service-fabric-tutorial-create-vnet-and-linux-cluster.md)
-### [2 - Service Fabric での API Management のデプロイ](service-fabric-tutorial-deploy-api-management.md)
+### [2- クラスターのスケーリング](service-fabric-tutorial-scale-cluster.md)
+### [3- Service Fabric を使用して API Management をデプロイする](service-fabric-tutorial-deploy-api-management.md)
+
 
 # サンプル
 ## [コード サンプル](https://azure.microsoft.com/resources/samples/?service=service-fabric)

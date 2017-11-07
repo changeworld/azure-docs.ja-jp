@@ -82,6 +82,13 @@
       href: maintenance-and-updates.md
     - name: ストレージ
       href: about-disks-and-vhds.md
+      items:
+        - name: Premium Storage
+          href: premium-storage.md
+        - name: Premium Storage のパフォーマンス
+          href: premium-storage-performance.md
+        - name: Standard Storage
+          href: standard-storage.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -235,12 +242,16 @@
           href: detach-disk.md
         - name: ディスクのサイズの変更
           href: expand-os-disk.md
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: Standard と Premium 間でディスクを変換する
           href: convert-disk-storage.md
+        - name: Azure Site Recovery を使用した Premium Storage への移行
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: File Storage を使用する
           href: mount-azure-file-storage.md
         - name: テンプレートによるディスクのデプロイ
