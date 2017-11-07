@@ -1,6 +1,6 @@
 ---
-title: "Azure Site Recovery で保護できるワークロード"
-description: "Azure Site Recovery は、オンプレミスの仮想マシンと物理サーバーの Azure またはセカンダリ オンプレミス サイトへのレプリケーション、フェールオーバー、および復旧を調整することで、ワークロードやアプリケーションを保護します。"
+title: "Azure Site Recovery で保護できるワークロード | Microsoft Docs"
+description: "Azure Site Recovery サービスによるディザスター リカバリーを使用して保護できるワークロードについて説明します。"
 services: site-recovery
 documentationcenter: 
 author: rayne-wiselman
@@ -12,20 +12,22 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 05/08/2017
+ms.date: 10/30/2017
 ms.author: raynew
-ms.openlocfilehash: d7cb95d0e099d5e0357ce8871f02c894acfdc9b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3987b50a7a1798d2094e8271ad2cc317c7f472ef
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="what-workloads-can-you-protect-with-azure-site-recovery"></a>Azure Site Recovery で保護できるワークロード
-この記事では、Azure Site Recovery サービスを使用してレプリケートできるワークロードとアプリケーションについて説明します。
 
-コメントや質問はこの記事の末尾、または [Azure Recovery Services フォーラム](https://social.msdn.microsoft.com/forums/azure/home?forum=hypervrecovmgr)で投稿してください。
+この記事では、[Azure Site Recovery](site-recovery-overview.md) サービスを使用してレプリケートできるワークロードとアプリケーションについて説明します。
 
-## <a name="overview"></a>Overview
+
+
+## <a name="overview"></a>概要
+
 組織には、計画ダウンタイムと計画外ダウンタイムの間にワークロードとデータの安全性と可用性を維持し、できるだけ早く通常の動作状態に復旧させる、ビジネス継続性とディザスター リカバリー (BCDR) の戦略が必要です。
 
 Site Recovery は、BCDR 戦略に貢献する Azure サービスです。 Site Recovery を使用することで、アプリケーションに対応したレプリケーションをクラウドまたはセカンダリ サイトにデプロイできます。 アプリが Windows ベースと Linux ベースのどちらであっても、また、物理サーバー、VMware、Hyper-V のいずれで実行されていても、Site Recovery を使用して、レプリケートの調整、ディザスター リカバリー テスト、フェールオーバーとフェールバックを実行できます。
@@ -33,6 +35,7 @@ Site Recovery は、BCDR 戦略に貢献する Azure サービスです。 Site 
 Site Recovery は、SharePoint、Exchange、Dynamics、SQL Server、Active Directory などの Microsoft アプリケーションと統合されています。 Microsoft はまた、Oracle、SAP、Red Hat などの主要なベンダーと密接に連携しています。 レプリケーション ソリューションをアプリケーションごとにカスタマイズすることができます。
 
 ## <a name="why-use-site-recovery-for-application-replication"></a>アプリケーションのレプリケーションに Site Recovery を使用する理由
+
 Site Recovery は、アプリケーション レベルの保護と復旧に次のように役立ちます。
 
 * アプリに依存しないため、サポートされているマシンで実行されるすべてのワークロードに対してレプリケーションを行えます。
@@ -158,4 +161,5 @@ Azure におけるクライアント/サーバー デスクトップのライセ
 Citrix XenApp と XenDesktop のデプロイの保護については、[こちら](site-recovery-citrix-xenapp-and-xendesktop.md)を参照してください。 同じ情報は、[Citrix のホワイトペーパー](https://aka.ms/citrix-xenapp-xendesktop-with-asr)でもご覧いただけます。
 
 ## <a name="next-steps"></a>次のステップ
-[前提条件を確認する](site-recovery-prereq.md)
+
+Azure VM レプリケーションの[使用を開始します](azure-to-azure-quickstart.md)。

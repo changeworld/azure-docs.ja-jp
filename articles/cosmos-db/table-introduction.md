@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/29/2017
+ms.date: 11/01/2017
 ms.author: arramac
-ms.openlocfilehash: c184b02f46ac2ad66c6ce607967a687c82d31477
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6a399a3a7979f6165d26eb48505242976d51e64f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="introduction-to-azure-cosmos-db-table-api"></a>Azure Cosmos DB の概要: Table API
 
@@ -38,10 +38,10 @@ ms.lasthandoff: 10/11/2017
 > 
 > 
 
-## <a name="premium-and-standard-table-apis"></a>Premium および標準の Table API
-現在テーブル ストレージを使用している場合、Azure Cosmos DB の "Premium テーブル" プレビューに移行することにより次のメリットが得られます。
+## <a name="table-offerings"></a>Table のサービス
+現在 Azure Table Storage を使用している場合、Azure Cosmos DB Table API (プレビュー) に移行することにより次のメリットが得られます。
 
-| | Azure テーブル ストレージ | Azure Cosmos DB: Table Storage (プレビュー) |
+| | Azure Table Storage | Azure Cosmos DB Table API (プレビュー) |
 | --- | --- | --- |
 | 待機時間 | 高速だが、待ち時間の上限はなし。 | 読み取りと書き込みの待ち時間は数ミリ秒であり、世界中のどこでもあらゆるスケールで 99 パーセンタイルの 10 ミリ秒未満の読み取り待ち時間と 15 ミリ秒未満の書き込み待ち時間でサポート。 |
 | スループット | 可変スループット モデル。 テーブルには、20,000 操作/秒のスケーラビリティの制限あり。 | SLA によって保証された、[テーブルごとの専用の予約済みスループット](request-units.md)を備えた高いスケーラビリティ。 アカウントにはスループットの上限がなく、テーブルあたり 10,000, 000 操作/秒以上に対応。 |

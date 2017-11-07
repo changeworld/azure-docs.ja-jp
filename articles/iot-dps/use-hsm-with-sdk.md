@@ -12,11 +12,11 @@ documentationcenter:
 manager: 
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: 620d86b62cf43c3e1a5f7f5c724fcf00174f30e8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 184bbdc0a6bef74d0e5ac79afe3858354c6b1695
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="how-to-use-different-hardware-security-modules-with-device-provisioning-service-client-sdk"></a>Device Provisioning Service クライアント SDK で各種ハードウェア セキュリティ モジュールを使用する方法
 以下の手順では、C 言語で Device Provisioning Service クライアント SDK を利用し、物理デバイスおよびシミュレーターと共に各種の[ハードウェア セキュリティ モジュール (HSM)](https://azure.microsoft.com/blog/azure-iot-supports-new-security-hardware-to-strengthen-iot-security/) を使用する方法について説明しています。  このプロビジョニング サービスでは、X**.**509 とトラステッド プラットフォーム モジュール (TPM) という 2 つの認証モードがサポートされています。

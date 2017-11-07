@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/25/2017
-ms.openlocfilehash: 5d86f3bdf19603d2f92fc1a704376beefd7323c0
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: 976407daee45e2f3a8360c1316227cc3399ad43e
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-2-build-a-model"></a>あやめの分類 (パート 2): モデルを構築する
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -198,11 +198,11 @@ Azure ML では、Docker などの実行環境を簡単に追加構成し、そ�
 
 5. 今度は Spark を試してみましょう。 Docker の基本イメージには、プレインストールされて構成済みの Spark インスタンスが含まれています。 したがってそこで PySpark スクリプトを実行することができます。 Spark のインストールと構成に時間を費やすことなく、Spark プログラムの開発とテストを簡単に行うことができます。 
 
-   `iris_pyspark.py` ファイルを開きます。 このスクリプトは、`iris.csv` データ ファイルを読み込み、Spark ML ライブラリのロジスティック回帰アルゴリズムを使って、あやめデータセットを分類します。 実行環境を **[docker-spark]** に変更し、スクリプトを **[iris_pyspark.py]** に変更して、再度実行します。 今回は、先ほどよりも少し時間がかかります。これは、Docker コンテナー内で Spark セッションを作成して起動する必要があるためです。 また、stdout も `iris_pyspark.py` の場合とは異なります。
+   `iris_spark.py` ファイルを開きます。 このスクリプトは、`iris.csv` データ ファイルを読み込み、Spark ML ライブラリのロジスティック回帰アルゴリズムを使って、あやめデータセットを分類します。 実行環境を **[docker-spark]** に変更し、スクリプトを **[iris_spark.py]** に変更して、再度実行します。 今回は、先ほどよりも少し時間がかかります。これは、Docker コンテナー内で Spark セッションを作成して起動する必要があるためです。 また、stdout も `iris_spark.py` の場合とは異なります。
 
 6. 引数を変えながら、さらに数回実行します。 
 
-7. `iris_pyspark.py` ファイルを開いて、Spark ML ライブラリを使って構築された単純なロジスティック回帰モデルを確認します。 
+7. `iris_spark.py` ファイルを開いて、Spark ML ライブラリを使って構築された単純なロジスティック回帰モデルを確認します。 
 
 8. **[ジョブ]** パネル、実行履歴リスト ビュー、実行詳細ビューを操作して、異なる実行環境で行われた実行を確認します。
 
@@ -249,8 +249,8 @@ Azure ML では、Docker などの実行環境を簡単に追加構成し、そ�
    REM Execute iris_sklearn.py in local Docker container Python environment.
    az ml experiment submit -c docker-python .\iris_sklearn.py 0.01
    
-   REM Execute iris_pyspark.py in local Docker container Spark environment.
-   az ml experiment submit -c docker-spark .\iris_pyspark.py 0.1
+   REM Execute iris_spark.py in local Docker container Spark environment.
+   az ml experiment submit -c docker-spark .\iris_spark.py 0.1
    ```
 6. Azure Machine Learning Workbench で、左側のツール バーにあるフォルダー アイコンをクリックしてプロジェクト ファイルを一覧表示し、**run.py** という名前の Python スクリプトを開きます。 
 
@@ -320,8 +320,8 @@ Azure ML では、Docker などの実行環境を簡単に追加構成し、そ�
 
 5. 次のコマンドを入力し、リモート Docker コンテナーの Spark インスタンスで実行します。
    ```azureli
-   REM execute iris_pyspark.py in Spark instance on remote Docker container
-   az ml experiment submit -c myvm-spark .\iris_pyspark.py
+   REM execute iris_spark.py in Spark instance on remote Docker container
+   az ml experiment submit -c myvm-spark .\iris_spark.py
    ```
 
 ## <a name="execute-script-in-an-hdinsight-cluster"></a>HDInsight クラスターでスクリプトを実行する
@@ -345,8 +345,8 @@ Azure ML では、Docker などの実行環境を簡単に追加構成し、そ�
 2. 次のコマンドを実行すると、スクリプトが HDInsight クラスターで実行されます。
 
    ```azurecli
-   REM execute iris_pyspark on the HDI cluster
-   az ml experiment submit -c myhdi .\iris_pyspark.py
+   REM execute iris_spark on the HDI cluster
+   az ml experiment submit -c myhdi .\iris_spark.py
    ```
 
    >[!NOTE]

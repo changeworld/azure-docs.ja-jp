@@ -13,31 +13,33 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/28/2017
+ms.date: 10/24/2017
 ms.author: joflore
 ms.custom: it-pro
-ms.openlocfilehash: 4cfc1652377f0cfd059e336aec6994b40d32c559
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e28324fe0d7e52f1721af6cd835369f024d4c58f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="roll-out-password-reset-for-users"></a>ユーザーのパスワード リセットの展開
+# <a name="how-to-successfully-rollout-self-service-password-reset"></a>セルフサービスによるパスワードのリセットを適切にロールアウトする方法
 
-ほとんどのお客様は、次の手順に従って、SSPR 機能をスムーズに展開しています。
+ほとんどのお客様は、次の手順に従って、SSPR 機能をスムーズにロールアウトしています。
 
 1. [ディレクトリでパスワードのリセットを有効にします](active-directory-passwords-getting-started.md)。
-2. [パスワード ライトバック用にオンプレミスの AD のアクセス許可を構成します](active-directory-passwords-how-it-works.md#active-directory-permissions)。
+2. [パスワード ライトバック用にオンプレミスの AD のアクセス許可を構成します](active-directory-passwords-writeback.md#active-directory-permissions)。
 3. [パスワード ライトバックを構成](active-directory-passwords-writeback.md#configuring-password-writeback)し、パスワードを Azure AD からオンプレミス ディレクトリに書き戻します。
-4. [必要なライセンスを割り当て、確認します](active-directory-passwords-licensing.md)。
-5. 段階的に展開する場合は、パスワードのリセットをユーザー グループに制限して、この機能を時間をかけて展開できます。 そのためには、**[セルフ サービスによるパスワードのリセットが有効]** を **[全員]** から **[グループ]** に切り替え、パスワードのリセットを有効にするセキュリティ グループを選択します。 そのグループのメンバー全員にライセンスが割り当てられている必要があります。これが[グループ ベースのライセンス](active-directory-passwords-licensing.md#enable-group-or-user-based-licensing)を有効にする優れた方法です。
-6. ポリシーに基づいて、[認証データ](active-directory-passwords-data.md)の最小セットを設定します。
-7. 登録方法とリセット方法が記載されている手順書をユーザーに送信して、SSPR の使用方法を伝えます。
-    > [!NOTE]
-    > Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[詳細な記事](active-directory-passwords-how-it-works.md)を参照してください。
+4. [必要なライセンスを割り当てて、確認します](active-directory-passwords-licensing.md)。
+5. SSPR を段階的にロールアウトする場合は、特定のグループでパイロット デプロイできるように、アクセスをユーザー グループに制限します。 これを設定するには、**[セルフ サービスによるパスワードのリセットが有効]** トグルを **[選択済み]** に設定し、パスワードのリセットに対して有効にするセキュリティ グループを選択します。 
+6. 会社電話、携帯電話、連絡用メール アドレスなど、ユーザーの[認証データ](active-directory-passwords-data.md)を設定します。
+7. [Azure AD サインイン エクスペリエンスをカスタマイズして、会社のブランドを含めます](active-directory-passwords-customize.md)。
+8. 登録方法とリセット方法が記載されている手順書をユーザーに送信して、SSPR の使用方法を伝えます。
+9. 任意の時点で登録を強制し、一定期間が経ったら認証情報の再確認をユーザーに求めることができます。
+10. 一定の期間、[Azure AD によって提供されるレポート](active-directory-passwords-reporting.md)を確認して、ユーザーの登録と使用状況をチェックします。
+11. 準備ができたら、すべてのユーザーのパスワード リセットを有効にして、**[セルフ サービスによるパスワードのリセットが有効]** トグルを **[すべて]** に設定します。 
 
-8. 任意の時点で登録を強制し、一定期間が経ったら認証情報の再確認をユーザーに求めることができます。 ユーザーに登録を強制しない場合は、[エンド ユーザーの登録を必須にしないでパスワードのリセットをデプロイ](active-directory-passwords-data.md)できます。
-9. 一定の期間、[Azure AD によって提供されるレポート](active-directory-passwords-reporting.md)を確認して、ユーザーの登録と使用状況をチェックします。
+    > [!IMPORTANT]
+    > Microsoft では Azure 管理者タイプのアカウントに対して強力な認証要件を適用しているため、管理者ではなく、ユーザーで SSPR をテストします。 管理者のパスワード ポリシーの詳細については、[詳細な記事](active-directory-passwords-how-it-works.md)を参照してください。
 
 ## <a name="email-based-rollout"></a>電子メール ベースの展開
 
@@ -47,13 +49,17 @@ ms.lasthandoff: 10/11/2017
 * **利用開始**電子メール テンプレート。ユーザーが必要なときに SSPR を使用できるように、登録し、認証データを確認してもらうために展開当日に使用します。
 * **サインアップ リマインダー**電子メール テンプレート。ユーザーに登録と認証データの確認を行うよう念を押すためにデプロイから数週間に数日後に使用します。
 
+![電子メール][Email]
+
 ## <a name="creating-your-own-password-portal"></a>独自のパスワードのポータルを作成する
 
 大手企業のお客様の多くは、Web ページをホストし、ルート DNS エントリ (https://passwords.contoso.com など) を作成することを選択しています。そのページに Azure AD のパスワード リセット、パスワード リセットの登録、パスワード変更ポータル、およびその他の組織に固有の情報へのリンクを設けています。 ユーザーがサービスを使用する必要がある場合にアクセス可能な覚えやすいブランド化された URL を、送信する任意の電子メールまたは広告に含めることができます。
 
-* パスワード リセット ポータル - https://passwordreset.microsoftonline.com/
+* パスワードのリセット ポータル - https://aka.ms/sspr
 * パスワード リセット登録ポータル - http://aka.ms/ssprsetup
 * パスワード変更ポータル - https://account.activedirectory.windowsazure.com/ChangePassword.aspx
+
+組織のニーズに応じて使用およびカスタマイズできるサンプル ページをご用意しました。このサンプル ページは [GitHub](https://github.com/ajamess/password-reset-page) からダウンロードできます。
 
 ## <a name="using-enforced-registration"></a>強制登録の使用
 
@@ -73,15 +79,15 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="next-steps"></a>次のステップ
 
-次のリンク先では、Azure AD を使用したパスワードのリセットに関する追加情報が得られます。
+* [パスワードのリセットと変更。](active-directory-passwords-update-your-own-password.md)
+* [セルフサービスによるパスワード リセットの登録。](active-directory-passwords-reset-register.md)
+* [ライセンスに関する質問。](active-directory-passwords-licensing.md)
+* [SSPR が使用するデータと、ユーザー用に設定するデータ。](active-directory-passwords-data.md)
+* [SSPR のポリシー オプション。](active-directory-passwords-policy.md)
+* [パスワード ライトバックと、それが必要な理由。](active-directory-passwords-writeback.md)
+* [SSPR でアクティビティをレポートする方法。](active-directory-passwords-reporting.md)
+* [SSPR のすべてのオプションとその意味。](active-directory-passwords-how-it-works.md)
+* [エラーが発生していると思われる場合のSSPR のトラブルシューティング方法。](active-directory-passwords-troubleshoot.md)
+* [質問したい内容に関する説明がどこにもない。](active-directory-passwords-faq.md)
 
-* [**クイック スタート**](active-directory-passwords-getting-started.md) - Azure AD のセルフサービスによるパスワードのリセットの管理を始めることができます。 
-* [**ライセンス**](active-directory-passwords-licensing.md) - Azure AD のライセンスを構成します。
-* [**データ**](active-directory-passwords-data.md) - パスワード管理に必要なデータとその使用方法がわかります
-* [**カスタマイズ**](active-directory-passwords-customize.md) - 会社の SSPR エクスペリエンスの外観をカスタマイズします
-* [**ポリシー**](active-directory-passwords-policy.md) - Azure AD のパスワード ポリシーを把握し、設定します。
-* [**パスワード ライトバック**](active-directory-passwords-writeback.md) - オンプレミスのディレクトリでのパスワード ライトバックのしくみ
-* [**レポート**](active-directory-passwords-reporting.md) - ユーザーが SSPR 機能にアクセスしたかどうかや、アクセスしたタイミングと場所を検出します。
-* [**技術的詳細**](active-directory-passwords-how-it-works.md) - しくみを詳しく説明しています
-* [**よく寄せられる質問**](active-directory-passwords-faq.md) - どのようにですか? なぜですか? 何ですか? どこですか? 誰がですか? いつですか? - ずっと確認したかった質問に対する回答
-* [**トラブルシューティング**](active-directory-passwords-troubleshoot.md) - SSPR の一般的な問題を解決する方法について説明しています
+[Email]: ./media/active-directory-passwords-best-practices/sspr-emailtemplates.png "こうしたメール テンプレートを組織の要件に合わせてカスタマイズする"
