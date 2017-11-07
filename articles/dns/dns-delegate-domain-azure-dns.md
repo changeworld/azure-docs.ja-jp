@@ -3,8 +3,8 @@ title: "Azure DNS へのドメインの委任 | Microsoft Docs"
 description: "ドメインの委任を変更し、ドメインのホストに Azure DNS ネーム サーバーを使用する方法を説明します。"
 services: dns
 documentationcenter: na
-author: georgewallace
-manager: timlt
+author: KumudD
+manager: jeconnoc
 ms.assetid: 257da6ec-d6e2-4b6f-ad76-ee2dde4efbcc
 ms.service: dns
 ms.devlang: na
@@ -12,12 +12,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/12/2017
-ms.author: gwallace
-ms.openlocfilehash: 7aa26fd54bab476e798e2327d1c46afb04aa3838
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.author: kumud
+ms.openlocfilehash: d73a42fd0f41c20b516c0348c86b40202fd06f53
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="delegate-a-domain-to-azure-dns"></a>Azure DNS へのドメインの委任
 
@@ -29,12 +29,12 @@ Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメイ
 
 ## <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure Portal にサインインします。
-1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
+1. Azure ポータルにサインインします。
+1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ページを開きます。
 
     ![[DNS ゾーン]](./media/dns-domain-delegation/dns.png)
 
-1. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
+1. **[DNS ゾーンの作成]** ページで次の値を入力してから、**[作成]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
@@ -50,9 +50,9 @@ Azure DNS を使用すると、DNS ゾーンをホストし、Azure のドメイ
 
 DNS ゾーンを Azure DNS に委任するには、事前にゾーンのネーム サーバー名を把握する必要があります。 Azure DNS は、ゾーンが作成されるたびに、プールからネーム サーバーを割り当てます。
 
-1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**contoso.net**」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。 
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ページで **contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**contoso.net**」と入力すると、 目的のアプリケーション ゲートウェイがすぐに見つかります。 
 
-1. [DNS ゾーン] ブレードでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
+1. [DNS ゾーン] ページでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
 
  ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -160,12 +160,12 @@ default TTL = 300 (5 mins)
 
 ### <a name="create-a-dns-zone"></a>DNS ゾーンの作成
 
-1. Azure Portal にサインインします。
-1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ブレードを開きます。
+1. Azure ポータルにサインインします。
+1. ハブ メニューの **[新規]、[ネットワーク]** を順にクリックし、**[DNS ゾーン]** をクリックして [DNS ゾーンの作成] ページを開きます。
 
     ![[DNS ゾーン]](./media/dns-domain-delegation/dns.png)
 
-1. **[DNS ゾーンの作成]** ブレードで次の値を入力してから、**[作成]** をクリックします。
+1. **[DNS ゾーンの作成]** ページで次の値を入力してから、**[作成]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
@@ -179,9 +179,9 @@ default TTL = 300 (5 mins)
 
 ### <a name="retrieve-name-servers"></a>ネーム サーバーの取得
 
-1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ブレードで **partners.contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**partners.contoso.net**」と入力すると、 目的の DNS ゾーンがすぐに見つかります。
+1. DNS ゾーンが作成されたら、Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 **[すべてのリソース]** ページで **partners.contoso.net** DNS ゾーンをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、[名前でフィルター] ボックスに「**partners.contoso.net**」と入力すると、 目的の DNS ゾーンがすぐに見つかります。
 
-1. [DNS ゾーン] ブレードでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
+1. [DNS ゾーン] ページでネーム サーバーを取得します。 この例では、ゾーン "contoso.net" に、ネーム サーバー "ns1-01.azure-dns.com"、"ns2-01.azure-dns.net"、"ns3-01.azure-dns.org"、"ns4-01.azure-dns.info" が割り当てられています。
 
  ![Dns-nameserver](./media/dns-domain-delegation/viewzonens500.png)
 
@@ -191,7 +191,7 @@ default TTL = 300 (5 mins)
 
 1. Azure Portal で **contoso.net** DNS ゾーンに移動します。
 1. **[+ レコード セット]** をクリックします。
-1. **[レコード セットの追加]** ブレードで次の値を入力してから、**[OK]** をクリックします。
+1. **[レコード セットの追加]** ページで次の値を入力してから、**[OK]** をクリックします。
 
    | **設定** | **値** | **詳細** |
    |---|---|---|
@@ -297,8 +297,8 @@ az network dns record-set ns add-record --resource-group contosorg --zone-name c
 
 この記事で作成したリソースをすべて削除するには、次の手順を実行します。
 
-1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ブレードで **contosorg** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contosorg**」と入力すると、 目的のリソース グループがすぐに見つかります。
-1. **contosorg** ブレードで **[削除]** ボタンをクリックします。
+1. Azure Portal の **[お気に入り]** ウィンドウで **[すべてのリソース]** をクリックします。 [すべてのリソース] ページで **contosorg** リソース グループをクリックします。 選択したサブスクリプションに既存のリソースがいくつもある場合は、**[名前でフィルター]** ボックスに「**contosorg**」と入力すると、 目的のリソース グループがすぐに見つかります。
+1. **contosorg** ページで **[削除]** ボタンをクリックします。
 1. 削除の意図を確認するために、リソース グループの名前を入力するよう求められます。 リソース グループの名前として「*contosorg*」と入力し、**[削除]** をクリックします。 リソース グループを削除すると、そこに含まれているリソースもすべて削除されます。削除する前に、リソース グループの内容を必ず確認してください。 まずリソース グループに含まれているすべてのリソースが削除された後、リソース グループそのものが削除されます。 このプロセスには数分かかります。
 
 ## <a name="next-steps"></a>次のステップ

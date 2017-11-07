@@ -1,24 +1,24 @@
 ---
 title: "複数の Azure 仮想マシンの更新を管理する | Microsoft Docs"
-description: "Azure 仮想マシンを更新の対象にします。"
-services: operations-management-suite
+description: "このトピックでは、Azure 仮想マシンの更新プログラムを管理する方法について説明します。"
+services: automation
 documentationcenter: 
 author: eslesar
 manager: carmonm
 editor: 
 ms.assetid: 
-ms.service: operations-management-suite
+ms.service: automation
 ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/25/2017
-ms.author: eslesar
-ms.openlocfilehash: 89bf87f27fdf276068cba261fc6ae1660307e0b7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/31/2017
+ms.author: magoedte;eslesar
+ms.openlocfilehash: 80a6caff51631637825d560d270198be0336e806
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="manage-updates-for-multiple-azure-virtual-machines"></a>複数の Azure 仮想マシンの更新を管理する
 
@@ -27,10 +27,46 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="prerequisites"></a>前提条件
 
-このガイドの手順を完了するには、次のものが必要です。
+更新管理を使用するには、以下が必要です。
 
-* Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、 [Azure 実行アカウント](automation-sec-configure-azure-runas-account.md)に関するページをご覧ください。
-* Azure Resource Manager 仮想マシン (クラシックではありません)。 VM の作成手順については、「 [Azure ポータルで初めての Windows 仮想マシンを作成する](../virtual-machines/virtual-machines-windows-hero-tutorial.md)
+* Azure Automation アカウント。 Azure Automation 実行アカウントの作成手順については、「[Azure Automation の概要](automation-offering-get-started.md)」を参照してください。
+
+* サポートされているオペレーティング システムのいずれかがインストールされている仮想マシンまたはコンピューター。
+
+## <a name="supported-operating-systems"></a>サポートされているオペレーティング システム
+
+更新管理は、次のオペレーティング システムでサポートされています。
+
+### <a name="windows"></a>Windows
+
+* Windows Server 2008 以降、および Windows Server 2008 R2 SP1 以降に対する更新プログラムのデプロイ。  Server Core と Nano Server のインストール オプションはサポートされていません。
+
+    > [!NOTE]
+    > Windows Server 2008 R2 SP1 に更新プログラムをデプロイするためには、.NET Framework 4.5 および WMF 5.0 以降が必要です。
+    > 
+* Windows クライアント オペレーティング システムはサポートされていません。
+
+Windows エージェントは、Windows Server Update Services (WSUS) サーバーと通信するか Microsoft Update にアクセスできるように構成する必要があります。
+
+> [!NOTE]
+> Windows エージェントは、System Center Configuration Manager で同時に管理することはできません。
+>
+
+### <a name="linux"></a>Linux
+
+* CentOS 6 (x86/x64) および 7 (x64)  
+* Red Hat Enterprise 6 (x86/x64) および 7 (x64)  
+* SUSE Linux Enterprise Server 11 (x86/x64) および 12 (x64)  
+* Ubuntu 12.04 LTS 以降 (x86/x64)   
+
+> [!NOTE]  
+> Ubuntu でメンテナンス期間外に更新プログラムが適用されないようにするには、無人アップグレード パッケージを再構成して自動更新を無効にします。 構成方法については、[Ubuntu サーバー ガイドの自動更新に関するトピック](https://help.ubuntu.com/lts/serverguide/automatic-updates.html)をご覧ください。
+
+Linux エージェントは、更新リポジトリへのアクセスが必要です。
+
+> [!NOTE]
+> このソリューションでは、OMS Agent for Linux が複数の OMS ワークスペースにレポートする構成はサポートされていません。  
+>
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Azure 仮想マシンの更新管理を有効にする
 
@@ -38,16 +74,43 @@ ms.lasthandoff: 10/11/2017
 2. 画面左側の **[更新管理]** を選択します。
 3. 画面上部の **[Azure VM の追加]** をクリックします。
     ![VM の追加](./media/manage-update-multi/update-onboard-vm.png)
-4. 追加する仮想マシンを選択します。 **[更新管理の有効化]** 画面が開きます。
+4. 利用を開始する仮想マシンを選択します。 **[更新管理の有効化]** 画面が開きます。
 5. **[有効]**をクリックします。
 
    ![更新管理を有効にする](./media/manage-update-multi/update-enable.png)
 
 仮想マシンに対する更新管理が有効になります。
 
+## <a name="enable-update-management-for-non-azure-virtual-machines-and-computers"></a>Azure 以外の仮想マシンおよびコンピューターの更新管理を有効にする
+
+Azure 以外の Windows 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Windows コンピューターを Azure の Log Analytics サービスに接続する](../log-analytics/log-analytics-windows-agents.md)」を参照してください。
+
+Azure 以外の Linux 仮想マシンとコンピューターの更新管理を有効にする方法については、「[Linux コンピューターを Operations Management Suite (OMS) に接続する](../log-analytics/log-analytics-agent-linux.md)」を参照してください。
+
 ## <a name="view-update-assessment"></a>更新の評価を表示する
 
 **更新管理**が有効になると、**[更新管理]** 画面が表示されます。 **[不足している更新プログラム]** タブに、デプロイされていない更新プログラムの一覧が表示されます。
+
+## <a name="data-collection"></a>データ収集
+
+仮想マシンおよびコンピューターにインストールされたエージェントは、更新プログラムに関するデータを収集し、Azure の更新管理に送信します。
+
+### <a name="supported-agents"></a>サポートされているエージェント
+
+次の表は、このソリューションの接続先としてサポートされているソースとその説明です。
+
+| 接続されているソース | サポートの有無 | 説明 |
+| --- | --- | --- |
+| Windows エージェント |あり |更新管理は、Windows エージェントからシステムの更新プログラムに関する情報を収集し、必要な更新プログラムのインストールを開始します。 |
+| Linux エージェント |あり |更新管理は、Linux エージェントからシステムの更新プログラムに関する情報を収集し、サポート対象のディストリビューションに対して必要な更新プログラムのインストールを開始します。 |
+| Operations Manager 管理グループ |あり |更新管理は、接続された管理グループ内のエージェントからシステムの更新プログラムに関する情報を収集します。 |
+| Azure ストレージ アカウント |なし |Azure Storage には、システムの更新プログラムに関する情報が含まれていません。 |
+
+### <a name="collection-frequency"></a>収集の頻度
+
+管理対象の各 Windows コンピューターでは、1 日 2 回スキャンが実行されます。 Windows API が 15 分ごとに呼び出され、最後の更新時間のクエリによって状態が変更されたかどうかが確認されます。更新されている場合は対応スキャンが開始されます。  管理対象の各 Linux コンピューターでは、3 時間ごとにスキャンが実行されます。
+
+ダッシュボードが管理対象コンピューターの更新されたデータを表示するのに、30 分～ 6 時間かかります。
 
 ## <a name="schedule-an-update-deployment"></a>更新プログラムのデプロイをスケジュールする
 
@@ -106,6 +169,8 @@ ms.lasthandoff: 10/11/2017
 ターゲットの仮想マシンでの更新プログラムのデプロイを管理する Runbook のジョブ ストリームを確認するには、**[出力]** タイルをクリックします。
 
 デプロイで発生したエラーの詳細情報を確認するには、**[エラー]** をクリックします。
+
+ログ、出力、およびエラー情報の詳細については、[Update Management](../operations-management-suite/oms-solution-update-management.md) に関するページをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

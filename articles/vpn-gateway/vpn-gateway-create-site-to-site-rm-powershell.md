@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2017
 ms.author: cherylmc
-ms.openlocfilehash: 489c922ae83af7146164500a1494532e95877aa4
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 177c7474a69ba550c5e7984354d7f309b3bedb20
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-vnet-with-a-site-to-site-vpn-connection-using-powershell"></a>PowerShell を使用してサイト間 VPN 接続を備えた VNet を作成する
 
@@ -80,7 +80,14 @@ ConnectionName          = VNet1toSite2
 
 ## <a name="VNet"></a>2.仮想ネットワークとゲートウェイ サブネットを作成する
 
-まだ仮想ネットワークがない場合は作成します。 仮想ネットワークを作成する際は、指定したアドレス空間がオンプレミス ネットワーク内に存在するあらゆるアドレス空間と重複していないことを確認します。
+まだ仮想ネットワークがない場合は作成します。 仮想ネットワークを作成する際は、指定したアドレス空間がオンプレミス ネットワーク内に存在するあらゆるアドレス空間と重複していないことを確認します。 
+
+>[!NOTE]
+>この VNet をオンプレミスの場所に接続するには、オンプレミスのネットワーク管理者と調整を行って、この仮想ネットワーク専用に使用できる IP アドレスの範囲を見つけ出す必要があります。 VPN 接続の両側に重複するアドレス範囲が存在する場合、トラフィックが期待どおりにルーティングされない可能性があります。 また、この VNet を別の VNet に接続する場合、アドレス空間を他の VNet と重複させることはできません。 したがって、慎重にネットワーク構成を計画してください。
+>
+>
+
+### <a name="about-the-gateway-subnet"></a>ゲートウェイ サブネットについて
 
 [!INCLUDE [About gateway subnets](../../includes/vpn-gateway-about-gwsubnet-include.md)]
 

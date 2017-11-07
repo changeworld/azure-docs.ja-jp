@@ -11,11 +11,11 @@ ms.workload: data-services
 ms.custom: mvc, tutorial
 ms.topic: hero-article
 ms.date: 09/27/2017
-ms.openlocfilehash: 56a79906a0f43f06d35db703d641f547e7bdf868
-ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
+ms.openlocfilehash: 048d734277f855086a48ad00a52b873adbf419b4
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="classifying-iris-part-3-deploy-a-model"></a>あやめの分類 (パート 3): モデルをデプロイする
 Azure Machine Learning サービス (プレビュー) は、データ サイエンスと高度な分析をエンド ツー エンドで支援する統合ソリューションです。データの準備、実験の開発、モデルのデプロイをクラウド スケールで行うプロフェッショナルなデータ サイエンティストを対象としています。
@@ -85,15 +85,15 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 
    ![スコア付けファイル](media/tutorial-classifying-iris/model_data_collection.png)
 
-4. スキーマ ファイルを取得するには、このスクリプトを実行します。 コマンド バーで **[ローカル]** 環境と **[iris_score.py]** スクリプトを選択し、**[実行]** ボタンをクリックします。 
+4. スキーマ ファイルを取得するには、このスクリプトを実行します。 コマンド バーで **[ローカル]** 環境と **[iris-score.py]** スクリプトを選択し、**[実行]** ボタンをクリックします。 
 
 5. このスクリプトを実行すると、**outputs** フォルダーに JSON ファイルが作成されます。このファイルによって、モデルに必要な入力データ スキーマがキャプチャされます。
 
-6. Machine Learning Workbench ウィンドウの右側の [ジョブ] ウィンドウに注目します。 最新の **iris\_score.py** ジョブが緑色の **[完了]** 状態になるまで待ちます。 次に、最新のジョブ実行の **iris\_score.py [1]** というハイパーリンクをクリックして、**iris_score.py** 実行の詳細を表示します。 
+6. Machine Learning Workbench ウィンドウの右側の [ジョブ] ウィンドウに注目します。 最新の **iris-score.py** ジョブが緑色の **[完了]** 状態になるまで待ちます。 次に、最新のジョブ実行の **iris-score.py [1]** というハイパーリンクをクリックすると、**iris-score.py** 実行からの実行の詳細が表示されます。 
 
 7. [Run Properties]\(実行プロパティ\) ページの **[出力]** セクションで、新しく作成された **service_schema.json** ファイルを選択します。 ファイルを**確認**し、**[ダウンロード]** をクリックします。 このファイルをプロジェクトのルート フォルダーに保存してください。
 
-8. **iris_score.py** スクリプトを開いた、前のタブに戻ります。 
+8. **iris-score.py** スクリプトを開いた、前のタブに戻ります。 
 
    Web サービスからモデルの入力と予測をキャプチャするデータ収集の用法に注目してください。 データ収集で特に重要なのは次の点です。
 
@@ -120,6 +120,9 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    ```
 
 これで、モデルを運用するための環境を準備する用意が整いました。
+
+>[!NOTE]
+>モデルをデプロイするには、Azure サブスクリプションに対する所有者アクセス権が必要です。
 
 ## <a name="prepare-to-operationalize-locally"></a>ローカルで運用できるように準備する
 ローカル コンピューター上の Docker コンテナーで実行するには、"_ローカル モード_" デプロイを使います。
@@ -201,7 +204,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
 1. リアルタイム Web サービスを作成するには、次のコマンドを使用します。
 
    ```azurecli
-   az ml service create realtime -f iris_score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
+   az ml service create realtime -f iris-score.py --model-file model.pkl -s service_schema.json -n irisapp -r python --collect-model-data true 
    ```
    これにより、後で使用できる Web サービス ID が生成されます。
 
@@ -241,7 +244,7 @@ Web サービスをモデル ファイルと一緒にデプロイするには、
    マニフェストを作成するには、前の手順で生成されたモデル ID を指定して次のコマンドを実行します。
 
    ```azurecli
-   az ml manifest create --manifest-name <new manifest name> -f iris_score.py -r python -i <model ID> -s service_schema.json
+   az ml manifest create --manifest-name <new manifest name> -f iris-score.py -r python -i <model ID> -s service_schema.json
    ```
    このコマンドにより、マニフェスト ID が生成されます。
 

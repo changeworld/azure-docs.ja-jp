@@ -1,5 +1,5 @@
 ---
-title: "Azure Site Recovery とは | Microsoft Docs"
+title: "Azure Site Recovery について | Microsoft Docs"
 description: "Azure Site Recovery サービスの概要について説明し、デプロイ シナリオについてまとめます。"
 services: site-recovery
 documentationcenter: 
@@ -12,15 +12,16 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 06/25/2017
+ms.date: 11/01/2017
 ms.author: raynew
-ms.openlocfilehash: aa657c92f347f7529affee78ad1842e5e066b74d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.custom: MVC
+ms.openlocfilehash: 90f9fe5775f493298dad3b12f2be9d6da6cb480e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
-# <a name="what-is-site-recovery"></a>Site Recovery とは
+# <a name="about-site-recovery"></a>Site Recovery について
 
 Azure Site Recovery サービスへようこそ。 この記事では、サービスの概要を簡単に説明します。
 
@@ -62,19 +63,15 @@ Site Recovery で対応できるレプリケーションは次のとおりです
 
 **サポートされています** | **詳細**
 --- | ---
-**レプリケート対象** | Azure VM を Azure リージョン間でレプリケートできます (プレビュー)。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux) を Azure にレプリケートできます。<br/<br/> オンプレミスの VMware VM、Hyper-V VM、物理サーバーをセカンダリ サイトにレプリケートできます。 Hyper-V VM に関して、セカンダリ サイトへのレプリケーションがサポートされるのは、Hyper-V ホストが System Center VMM で管理されている場合に限られます。
+**レプリケート対象** | Azure リージョン間で Azure VM をレプリケートできます。<br/><br/>  オンプレミスの VMware VM、Hyper-V VM、物理サーバー (Windows および Linux) を Azure にレプリケートできます。<br/><br/> オンプレミスの VMware VM、Hyper-V VM、物理サーバーを Virtual Machine Manager (VMM) にレプリケートできます。
 **Site Recovery のサポート対象のリージョン** | [サポートされているリージョン](https://azure.microsoft.com/regions/services/) |
-**レプリケート対象のマシンで必要なオペレーティング システム** | [Azure VM の要件](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)<br></br>[VMware VM の要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> [物理サーバーの要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
-**必要な VMware サーバー/ホスト** | VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)に配置してください。
-**レプリケートできるワークロード** | サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
+**レプリケート対象のマシンで必要なオペレーティング システム** | [Azure VM の要件](site-recovery-support-matrix-azure-to-azure.md#support-for-replicated-machine-os-versions)</br></br>[VMware VM の要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)<br/><br/> Hyper-V VM の場合、Azure でサポートされている[ゲスト OS](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/supported-windows-guest-operating-systems-for-hyper-v-on-windows) と Hyper-V がサポートされています。<br/><br/> [物理サーバーの要件](site-recovery-support-matrix-to-azure.md#support-for-replicated-machine-os-versions)
+**必要な VMware サーバー/ホスト** | VMware VM は、[サポートされている vSphere ホスト/vCenter サーバー](site-recovery-support-matrix-to-azure.md#support-for-datacenter-management-servers)に配置できます。
+
+**レプリケートできるワークロード** サポートされているレプリケーション マシンで実行されている任意のワークロードをレプリケートできます。 さらに、Site Recovery チームは、[いくつかのアプリ](site-recovery-workload.md#workload-summary)に対してアプリに固有のテストを行っています。
 
 
-## <a name="azure-portal-considerations"></a>Azure Portal に関する考慮事項
-
-* Site Recovery は、[Azure Portal](https://portal.azure.com) でデプロイすることができます。
-* Azure クラシック ポータルでは、クラシック サービス管理モデルで Site Recovery を管理できます。
-- クラシック ポータルは、既存の Site Recovery デプロイを維持する目的でのみ使用します。 クラシック ポータルで新しいコンテナーを作成することはできません。
 
 ## <a name="next-steps"></a>次のステップ
-* [ワークロードのサポート](site-recovery-workload.md)の詳細を確認する。
-* [リージョン間の Azure VM のレプリケーション](site-recovery-azure-to-azure.md)、[Azure への VMware のレプリケーション](vmware-walkthrough-overview.md)、[Azure への Hyper-V のレプリケーション](hyper-v-site-walkthrough-overview.md)の概要を確認する。
+* [ワークロードのサポート](site-recovery-workload.md)の詳細を確認します。
+* [リージョン間での Azure VM レプリケーション](azure-to-azure-quickstart.md)の使用を開始します。 

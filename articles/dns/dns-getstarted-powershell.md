@@ -3,7 +3,7 @@ title: "PowerShell で Azure DNS の使用を開始する | Microsoft Docs"
 description: "Azure DNS で、DNS ゾーンとレコードを作成する方法について説明します。 PowerShell を使用して最初の DNS ゾーンとレコードを作成して管理するためのステップ バイ ステップ ガイドです。"
 services: dns
 documentationcenter: na
-author: jtuliani
+author: KumudD
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -14,12 +14,12 @@ ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/10/2017
-ms.author: jonatul
-ms.openlocfilehash: 48f7ba325f61b4a91c0208b4c99058da801bee19
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 0b0d474752615e60747ffe7681c2d04cd2685bba
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="get-started-with-azure-dns-using-powershell"></a>PowerShell で Azure DNS の使用を開始する
 
@@ -29,7 +29,7 @@ ms.lasthandoff: 10/11/2017
 > * [Azure CLI 1.0](dns-getstarted-cli-nodejs.md)
 > * [Azure CLI 2.0](dns-getstarted-cli.md)
 
-この記事では、Azure PowerShell を使用して最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、Azure Portal またはクロスプラットフォームの Azure CLI を使用して実行することもできます。
+この記事では、Azure PowerShell を使用して最初の DNS ゾーンとレコードを作成する手順について説明します。 これらの手順は、Azure Portal またはクロスプラットフォームの Azure CLI を使用して実行することもできます。 Azure DNS は、プライベート ドメインの作成もサポートします。 プライベート DNS ゾーンとレコードを初めて作成する方法に関する順を追った説明については、「[PowerShell で Azure DNS プライベート ゾーンの使用を開始する](private-dns-getstarted-powershell.md)」を参照してください。
 
 DNS ゾーンは、特定のドメインの DNS レコードをホストするために使用されます。 Azure DNS でドメインのホストを開始するには、そのドメイン名用に DNS ゾーンを作成する必要があります。 ドメインの DNS レコードはすべて、この DNS ゾーン内に作成されます。 最後に、DNS ゾーンをインターネットに公開するには、ドメインのネーム サーバーを構成する必要があります。 ここでは、その手順について説明します。
 

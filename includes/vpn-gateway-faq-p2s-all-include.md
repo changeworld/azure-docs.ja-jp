@@ -8,6 +8,7 @@
 * Windows 8.1 (32 ビットと 64 ビット)
 * Windows Server 2012 (64 ビットのみ)
 * Windows Server 2012 R2 (64 ビットのみ)
+* Windows Server 2016 (64 ビットのみ)
 * Windows 10
 * Mac 用 OSX バージョン 10.11 (El Capitan)
 * Mac 用 macOS バージョン 10.12 (Sierra)
@@ -38,6 +39,7 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 
 ### <a name="can-i-configure-a-point-to-site-client-to-connect-to-multiple-virtual-networks-at-the-same-time"></a>ポイント対サイト接続のクライアントを同時に複数の仮想ネットワークに接続するように構成することはできますか。
 
+
 いいえ。 ポイント対サイト接続のクライアントは、仮想ネットワーク ゲートウェイが存在する VNet にあるリソースに接続できるにとどまります。
 
 ### <a name="how-much-throughput-can-i-expect-through-site-to-site-or-point-to-site-connections"></a>サイト間接続またはポイント対サイト接続ではどの程度のスループットが得られますか。
@@ -45,6 +47,7 @@ Azure では、ポイント対サイト VPN のオプションを 2 種類サポ
 VPN トンネルのスループットを正確に一定レベルに維持することは困難です。 IPsec と SSTP は、VPN プロトコルの中でも暗号化処理の負荷が高いものです。 また、スループットはオンプレミスとインターネットの間の待機時間や帯域幅によっても制限されます。 IKEv2 ポイント対サイト VPN 接続のみを使用する VPN ゲートウェイでは、期待できるスループットの総量がゲートウェイの SKU に応じて変わります。 スループットの詳細については、「[ゲートウェイの SKU](../articles/vpn-gateway/vpn-gateway-about-vpngateways.md#gwsku)」を参照してください。
 
 ### <a name="can-i-use-any-software-vpn-client-for-point-to-site-that-supports-sstp-andor-ikev2"></a>SSTP や IKEv2 をサポートしているポイント対サイト接続では、ソフトウェア VPN クライアントを使用できますか。
+
 
 いいえ。 SSTP については Windows のネイティブ VPN クライアント、IKEv2 については Mac のネイティブ VPN クライアントのみ使用できます。 サポートされているクライアント オペレーティング システムの一覧を参照してください。
 

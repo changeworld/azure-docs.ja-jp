@@ -11,16 +11,22 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/14/2017
+ms.date: 10/06/2017
 ms.author: jingwang
-ms.openlocfilehash: 9aac9c9bcc609a91415438279419d4cc8e237fcb
-ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
+ms.openlocfilehash: 95d1dce536f8f8f0fc8d93f201520fd84f0f7629
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="copy-data-between-on-premises-and-cloud"></a>オンプレミスとクラウドの間でのデータ コピー
-Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。
+
+[!INCLUDE [data-factory-what-is-include-md](../../includes/data-factory-what-is-include.md)]
+
+#### <a name="this-tutorial"></a>このチュートリアルの内容
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 のドキュメント](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)を参照してください。
 
 このチュートリアルでは、オンプレミスの SQL Server データベースから Azure BLOB ストレージにデータをコピーする Data Factory パイプラインを Azure PowerShell を使って作成します。 Azure Data Factory のセルフホステッド統合ランタイム (IR) を作成し、使用することで、オンプレミス データ ストアとクラウド データ ストアの統合が可能となります。  その他のツールまたは SDK を使ってデータ ファクトリを作成する方法については、[クイックスタート](quickstart-create-data-factory-dot-net.md)を参照してください。
 
