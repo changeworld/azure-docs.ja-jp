@@ -41,6 +41,7 @@
 ## ExpressRoute のルーターの構成
 ### [ルーターの構成](expressroute-config-samples-routing.md)
 ### [NAT のルーター構成サンプル](expressroute-config-samples-nat.md)
+## [ExpressRoute に使用する Network Performance Monitor の構成](how-to-npm.md)
 
 ## ベスト プラクティス
 ### [ネットワーク セキュリティとクラウド サービスのベスト プラクティス](../best-practices-network-security.md)

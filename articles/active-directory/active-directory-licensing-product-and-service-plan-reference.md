@@ -1,6 +1,6 @@
 ---
-title: "Azure Active Directory の製品およびサービス プランに関するリファレンス | Microsoft Docs"
-description: "製品およびサービス プランに関するリファレンス"
+title: "Azure Active Directory でライセンスを付与するための製品名とサービス プラン 識別子 | Microsoft Docs"
+description: "Azure Portal、Office 365 ポータル、PowerShell、または Microsoft Graph でAzure AD のライセンスを管理する識別子のマップ"
 services: active-directory
 keywords: "Azure Active Directory のライセンスのサービス プラン"
 documentationcenter: 
@@ -13,33 +13,27 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/11/2017
+ms.date: 10/26/2017
 ms.author: piotrci
-ms.openlocfilehash: e796c03f4477b431907d8b5fbd6065239bb1d40e
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: b2c540c69a95f0912a71c25ddc70061fa8043aa4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="reference-for-products-and-service-plans-in-azure-active-directory"></a>Azure Active Directory の製品およびサービス プランに関するリファレンス
+# <a name="product-names-and-service-plan-identifiers-for-licensing"></a>ライセンスのための製品名とサービス プラン 識別子
 
-この記事では、Microsoft Online Services のライセンス管理に役立つ参照情報を提供します。
+[Azure Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または Office 365 ポータルでライセンスを管理する場合、*Office 365 Enterprise E3* のような製品名が表示されます。 PowerShell v1.0 コマンドレットを使用すると、同じ製品が、具体的ですがわかりにくい名前 (*ENTERPRISEPACK*) で識別されます。 PowerShell v2.0 コマンドレットまたは Microsoft Graph を使用すると、同じ製品が GUID 値 (*6fd2c87f-b296-42f0-b197-1e91e994b900*) で識別されます。 次の表は、特に一般的に使用される Microsoft オンライン サービス製品と、それぞれの ID 値を示しています。
 
-## <a name="product-names-and-identifiers-used-in-azure-ad"></a>Azure AD で使用される製品名と識別子
-
-[Azure](https://portal.azure.com/#blade/Microsoft_AAD_IAM/LicensesMenuBlade/Products) または Office ポータルでのライセンス管理では、*Office 365 Enterprise E3* などのユーザーにわかりやすい製品名が表示されます。 ただし PowerShell v1.0 コマンドレットを使用すると、同じ製品がユーザーにわかりにくい名前 (*ENTERPRISEPACK*) で識別されます。 PowerShell v2.0 または Microsoft Graph を使用すると、同じ製品が GUID 値 (*6fd2c87f-b296-42f0-b197-1e91e994b900*) で識別されます。 製品に含まれるサービス プランでも、同様です。
-
-次の表は、特に一般的に使用される Microsoft Online Services 製品と、それぞれの ID 値を示しています。
-
-- **製品名**: これらの値は管理ポータルに表示されます。
+- **製品名**: 管理ポータルで使用されます。
 - **文字列 ID**: ライセンスでの操作を実行するときに PowerShell v1.0 コマンドレットによって使用されます。
-- **GUID ID**: Azure AD Graph および Microsoft Graph で使用されます。
-- **含まれるサービス プラン**: 製品のサービス プランの一覧です。 文字列 ID と GUID ID の一覧が表示されます。
+- **GUID ID**: Azure AD Graph および Microsoft Graph で使用される GUID です。
+- **含まれるサービス プラン**: 文字列 ID および GUID に対応する製品のサービス プランの一覧です。
 
 >[!NOTE]
->この情報は、2017 年 10 月 11 日の時点で正確です。 この表では、最もよく使用される製品が選ばれています。
+>この情報は、2017 年 10 月 11 日の時点で正確です。
 
-| 製品名 | 文字列 ID | GUID ID| 含まれるサービス プラン |
+| 製品名 | 文字列 ID | GUID | 含まれるサービス プラン |
 | --- | --- | --- |--- |
 | AZURE ACTIVE DIRECTORY BASIC  | AAD_BASIC | 2b9c8e7c-319c-43a2-a2a0-48c5c6161de7  | AAD_BASIC (c4da7f8a-5ee2-4c99-a7e1-87d2df57f6fe)
 | AZURE ACTIVE DIRECTORY PREMIUM P1 | AAD_PREMIUM   | 078d2b04-f1bd-4111-bbd4-b4b1b354cef4  | AAD_PREMIUM (41781fb2-bc02-4b7c-bd55-b576c07bb09d)<br/>MFA_PREMIUM (8a256a2b-b617-496d-b51b-e76466e88db0)
@@ -103,7 +97,7 @@ ms.lasthandoff: 10/19/2017
 
 ## <a name="service-plans-that-cannot-be-assigned-at-the-same-time"></a>同時に割り当てることができないサービス プラン
 
-一部の製品には相互に排他的なサービス プランが含まれています。このようなサービス プランは同時に同じユーザーに割り当てることができません。 たとえば、テナントに *Office 365 Enterprise E1* と *Office 365 Enterprise E3* が含まれており、両方のライセンスを同じユーザーに割り当てようとすると、操作が失敗します。 これは、E3 の製品に含まれる以下のサービス プランが E1 に含まれるものと競合するためです。
+一部の製品には、同一のユーザーに同時に割り当てることができないサービス プランが含まれています。 たとえば、テナントに *Office 365 Enterprise E1* と *Office 365 Enterprise E3* が含まれており、両方のライセンスを同じユーザーに割り当てようとすると、操作が失敗します。 これは、E3 の製品に含まれる以下のサービス プランが E1 に含まれるものと競合するためです。
 
 -   SharePoint Online (プラン 2) と SharePoint Online (プラン 1) の競合
 -   Exchange Online (プラン 2) と Exchange Online (プラン 1) の競合
@@ -121,7 +115,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | CRMIUR    | c42a56bd-9e70-4ace-be17-dc8eeae369d7 |
 | CRMPLAN1  | 119cf168-b6cf-41fb-b82e-7fee7bae5814 |
@@ -137,7 +131,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | EXCHANGE_B_STANDARD   | 90927877-dcff-4af6-b346-2332c0b15bb7 |
 | EXCHANGE_L_STANDARD   | d42bdbd6-c335-4231-ab3d-c8f348d5aff5 |
@@ -152,7 +146,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | INTUNE_A  | c1ec4a95-1f05-45b3-a911-aa3fa01094f5 |
 | INTUNE_A_VL   | 3e170737-c728-4eae-bbb9-3f3360f7184c |
@@ -162,7 +156,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | ONEDRIVEENTERPRISE    | afcafa6a-d966-4462-918c-ec0b4e0fe642 |
 | SHAREPOINT_S_DEVELOPER    | a361d6e2-509e-4e25-a8ad-950060064ef4 |
@@ -178,7 +172,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | MCOIMP    | afc06cb0-b4f4-4473-8286-d644f70d8faf |
 | MCOSTANDARD_MIDMARKET | b2669e95-76ef-4e7e-a367-002f60a39f3e |
@@ -187,7 +181,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | MCOPSTN1  | 4ed3ff63-69d7-4fb7-b984-5aec7f605ca8 |
 | MCOPSTN2  | 5a10155d-f5c1-411a-a8ec-e99aae125390 |
@@ -196,7 +190,7 @@ ms.lasthandoff: 10/19/2017
 
 以下のサービス プランは、同時に割り当てることができません。
 
-| サービス プラン名 | GUID ID |
+| サービス プラン名 | GUID |
 | --- | --- |
 | YAMMER_ENTERPRISE | 7547a3fe-08ee-4ccb-b430-5077c5041653 |
 | YAMMER_EDU    | 2078e8df-cff6-4290-98cb-5408261a760a |

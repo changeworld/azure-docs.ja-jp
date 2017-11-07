@@ -1,0 +1,120 @@
+- name: Azure HDInsight のドキュメント
+  href: /azure/hdinsight
+- name: HDInsight での HBase
+  items:
+    - name: 概要
+      href: apache-hbase-overview.md
+    - name: コンポーネントのバージョン管理
+      href: ../hdinsight-component-versioning.md
+      maintainContext: true
+- name: 作業開始
+  items:
+    - name: HBase & NoSQL を開始する
+      href: apache-hbase-tutorial-get-started-linux.md
+    - name: 容量計画
+      href: ../hdinsight-capacity-planning.md
+      maintainContext: true
+- name: 方法
+  items:
+    - name: 仮想ネットワークにクラスターを作成する
+      href: apache-hbase-provision-vnet.md
+    - name: HBase レプリケーションの構成
+      href: apache-hbase-replication.md
+    - name: Phoenix および SQLLine を使用する
+      href: apache-hbase-phoenix-squirrel-linux.md
+    - name: Java アプリケーションの開発
+      href: apache-hbase-build-java-maven-linux.md
+    - name: HBase のトラブルシューティング
+      href: apache-troubleshoot-hbase.md
+- name: リファレンス
+  items:
+    - name: コード サンプル
+      href: 'https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight'
+    - name: Azure PowerShell
+      href: /powershell/module/azurerm.hdinsight
+    - name: .NET (Hadoop)
+      href: 'https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet'
+    - name: .NET (HBase)
+      href: 'https://www.nuget.org/packages/Microsoft.HBase.Client/'
+    - name: .NET (Avro)
+      href: 'https://hadoopsdk.codeplex.com/wikipage?title=Avro%20Library'
+    - name: REST ()
+      href: /rest/api/hdinsight/
+    - name: REST (Spark)
+      href: /rest/api/hdinsightspark/
+- name: 関連項目
+  items:
+    - name: Windows クラスター
+      items:
+        - name: Windows クラスターを Linux クラスターに移行する
+          href: ../hdinsight-migrate-from-windows-to-linux.md
+          maintainContext: true
+        - name: .NET ソリューションを Linux クラスターに移行する
+          href: ../hdinsight-hadoop-migrate-dotnet-to-linux.md
+          maintainContext: true
+        - name: Hadoop MapReduce サンプルを実行する
+          href: ../hdinsight-run-samples.md
+          maintainContext: true
+        - name: クラスターで Solr を使用する
+          href: ../hdinsight-hadoop-solr-install-linux.md
+          maintainContext: true
+        - name: Giraph を使用して大規模なグラフを処理する
+          href: ../hdinsight-hadoop-giraph-install.md
+          maintainContext: true
+        - name: ワークフローの Oozie を使用する
+          href: ../hdinsight-use-oozie.md
+          maintainContext: true
+        - name: Storm トポロジをデプロイおよび管理する
+          href: ../storm/apache-storm-deploy-monitor-topology.md
+          maintainContext: true
+        - name: Maven を使用して Java アプリケーションを構築する
+          href: ../hdinsight-hbase-build-java-maven.md
+          maintainContext: true
+        - name: Tez UI を使用して Tex ジョブをデバッグする
+          href: ../hdinsight-debug-tez-ui.md
+          maintainContext: true
+        - name: スクリプト アクションを使用してカスタマイズする
+          href: ../hdinsight-hadoop-customize-cluster.md
+          maintainContext: true
+        - name: YARN アプリケーション ログにアクセスする
+          href: ../hdinsight-hadoop-access-yarn-app-logs.md
+          maintainContext: true
+        - name: Apache Phoenix と SQuirreL を使用する
+          href: ../hdinsight-hbase-phoenix-squirrel.md
+          maintainContext: true
+        - name: Mahout を使用した映画のリコメンデーションの生成
+          href: ../hdinsight-mahout.md
+          maintainContext: true
+        - name: フライト遅延データを分析する
+          href: ../hdinsight-analyze-flight-delay-data.md
+          maintainContext: true
+        - name: スクリプト アクションを開発する
+          href: ../hdinsight-hadoop-script-actions.md
+          maintainContext: true
+        - name: Twitter データを分析する
+          href: ../hdinsight-analyze-twitter-data.md
+          maintainContext: true
+        - name: Azure Portal でクラスターを管理する
+          href: ../hdinsight-administer-use-management-portal.md
+          maintainContext: true
+        - name: Ambari API を使用してクラスターを監視する
+          href: ../hdinsight-monitor-use-ambari-api.md
+          maintainContext: true
+- name: リソース
+  items:
+    - name: リリース ノート
+      href: ../hdinsight-release-notes.md
+      maintainContext: true
+    - name: Azure のロードマップ
+      href: 'https://azure.microsoft.com/roadmap/?category=intelligence-analytics'
+    - name: フォーラムで質問する
+      href: 'https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=hdinsight'
+    - name: ラーニング パス
+      href: 'https://azure.microsoft.com/documentation/learning-paths/hdinsight-self-guided-hadoop-training/'
+    - name: ビッグ データに関する Microsoft プロフェッショナル プログラム
+      href: 'https://academy.microsoft.com/en-us/professional-program/big-data/'
+    - name: 料金計算ツール
+      href: 'https://azure.microsoft.com/pricing/calculator/'
+    - name: HDInsight 用の Windows ツール
+      href: ../hdinsight-hadoop-windows-tools.md
+      maintainContext: true

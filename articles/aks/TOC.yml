@@ -37,6 +37,8 @@
       href: kubernetes-helm.md
     - name: Draft を使用したアプリケーションの開発
       href: kubernetes-draft.md
+    - name: Azure Files によるデータ保持
+      href: azure-files.md
     - name: Kubernetes ダッシュボードの使用
       href: kubernetes-dashboard.md
     - name: サービス プリンシパルの作成

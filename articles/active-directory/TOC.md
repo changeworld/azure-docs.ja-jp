@@ -48,7 +48,6 @@
 #### [グループベースのライセンスの Azure PowerShell の例](active-directory-licensing-ps-examples.md)
 #### [Azure AD の製品およびサービス プランに関するリファレンス](active-directory-licensing-product-and-service-plan-reference.md)
 ### [ユーザー プロファイルの管理](active-directory-users-profile-azure-portal.md)
-### [パスワードをリセットする](active-directory-users-reset-password-azure-portal.md)
 ### [ユーザーの作業情報を管理する](active-directory-users-work-info-azure-portal.md)
 ### [アカウントの共有](active-directory-sharing-accounts.md)
 
@@ -125,8 +124,7 @@
 ### [SSPR データ要件](active-directory-passwords-data.md)
 ### [SSPR のレポート](active-directory-passwords-reporting.md)
 ### IT 管理者: パスワードのリセット
-#### [Azure Portal](active-directory-users-reset-password-azure-portal.md)
-#### [Azure クラシック ポータル](active-directory-create-users-reset-password.md)
+#### [Azure ポータル](active-directory-users-reset-password-azure-portal.md)
 ### [SSPR のライセンス](active-directory-passwords-licensing.md)
 ### [パスワード ライトバック](active-directory-passwords-writeback.md)
 ### [トラブルシューティング](active-directory-passwords-troubleshoot.md)
@@ -242,6 +240,7 @@
 ### [複数のディレクトリ](active-directory-licensing-directory-independence.md)
 ### [O365 ディレクトリ](active-directory-manage-o365-subscription.md)
 ### [セルフサービス サインアップ](active-directory-self-service-signup.md)
+#### [管理されていないディレクトリの引き継ぎ](domains-admin-takeover.md)
 ### [Enterprise State Roaming](active-directory-windows-enterprise-state-roaming-overview.md)
 #### [有効にする](active-directory-windows-enterprise-state-roaming-enable.md)
 #### [グループ ポリシーの設定](active-directory-windows-enterprise-state-roaming-group-policy-settings.md)
@@ -299,7 +298,7 @@
 ## ID をセキュリティで保護する
 ### [条件付きアクセス](active-directory-conditional-access-azure-portal.md)
 #### [コントロール](active-directory-conditional-access-controls.md)
-#### [作業開始](active-directory-conditional-access-azure-portal-get-started.md)
+#### [概要](active-directory-conditional-access-azure-portal-get-started.md)
 #### [ベスト プラクティス](active-directory-conditional-access-best-practices.md)
 #### [Office 365 サービスのデバイス ポリシーについて](active-directory-conditional-access-device-policies.md)
 #### タスク

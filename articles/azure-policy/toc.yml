@@ -15,6 +15,14 @@
   items:
     - name: Azure Policy の作成と管理
       href: create-manage-policy.md
+- name: サンプル
+  items:
+    - name: ポリシー テンプレート
+      href: json-samples.md
+- name: 概念
+  items:
+    - name: Azure Policy の定義の構造
+      href: policy-definition.md
 - name: リファレンス
   items:
     - name: Azure CLI

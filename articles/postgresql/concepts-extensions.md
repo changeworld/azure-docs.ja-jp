@@ -9,22 +9,22 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: faa6d72645fafeb2551795effd87232f0e3e0fe0
-ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
+ms.openlocfilehash: a80b27dc8f1a15bf2e62c9992be8bfa02cacb2f6
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="postgresql-extensions-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL の PostgreSQL 拡張機能
 PostgreSQL では拡張機能を使用してデータベースの機能を拡張することができます。 拡張機能により、関連する複数の SQL オブジェクトを 1 つのパッケージにまとめて、1 つのコマンドでデータベースに読み込んだり、データベースから削除したりできます。 データベースに読み込まれた拡張機能は、組み込み機能と同じように動作します。 PostgreSQL 拡張機能の詳細については、「[Packaging Related Objects into an Extension (拡張機能への関連オブジェクトのパッケージ化)](https://www.postgresql.org/docs/9.6/static/extend-extensions.html)」を参照してください。
 
 ## <a name="how-to-use-postgresql-extensions"></a>PostgreSQL 拡張機能の使用方法
-PostgreSQL 拡張機能を使用するには、その拡張機能をデータベースに対してインストールしておく必要があります。 特定の拡張機能をインストールするには、psql ツールから [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
+PostgreSQL 拡張機能を使用するには、その拡張機能がデータベースにインストールされている必要があります。 特定の拡張機能をインストールするには、psql ツールから [CREATE EXTENSION](https://www.postgresql.org/docs/9.6/static/sql-createextension.html) コマンドを実行して、パッケージ化されたオブジェクトをデータベースに読み込みます。
 
-Azure Database for PostgreSQL でサポートされる主要な拡張機能のサブセットを次に示します。 ここにない拡張機能はサポートされていません。Azure Database for PostgreSQL サービスでは、独自の拡張機能を作成することはできません。
+Azure Database for PostgreSQL で現在サポートされている主要な拡張機能のサブセットを次に示します。 ここにない拡張機能はサポートされていません。Azure Database for PostgreSQL サービスでは、独自の拡張機能を作成することはできません。
 
 ## <a name="extensions-supported-by-azure-database-for-postgresql"></a>Azure Database for PostgreSQL でサポートされる拡張機能
-Azure Database for PostgreSQL で現在サポートされている標準的な PostgreSQL 拡張機能を次の表に示します。 この情報は、pg\_available\_extensions にクエリを実行して確認することもできます。
+Azure Database for PostgreSQL で現在サポートされている標準的な PostgreSQL 拡張機能を次の表に示します。 この情報は、`pg\_available\_extensions` にクエリを実行して確認することもできます。
 
 ### <a name="data-types-extensions"></a>データ型の拡張機能
 
@@ -32,9 +32,9 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 | **拡張機能** | **説明** |
 |---|---|
 | [chkpass](https://www.postgresql.org/docs/9.6/static/chkpass.html) | 自動暗号化パスワードのデータ型を提供します。 |
-| [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | 大文字と小文字が区別されない文字列型を提供します |
+| [citext](https://www.postgresql.org/docs/9.6/static/citext.html) | 大文字と小文字が区別されない文字列型を提供します。 |
 | [cube](https://www.postgresql.org/docs/9.6/static/cube.html) | 多次元キューブのデータ型を提供します。 |
-| [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | キー/値ペアのセットを格納するデータ型を提供します |
+| [hstore](https://www.postgresql.org/docs/9.6/static/hstore.html) | キー/値のペアのセットを格納するデータ型を提供します。 |
 | [isn](https://www.postgresql.org/docs/9.6/static/isn.html) | 国際対応の製品番号規格のデータ型を提供します。 |
 | [ltree](https://www.postgresql.org/docs/9.6/static/ltree.html) | 階層ツリー状の構造体のデータ型を提供します。 |
 
@@ -73,7 +73,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 > [!div class="mx-tableFixed"]
 | **拡張機能** | **説明** |
 |---|---|
-| [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 読み込み可能な手続き型言語 |
+| [plpgsql](https://www.postgresql.org/docs/9.6/static/plpgsql.html) | PL/pgSQL 読み込み可能な手続き型言語。 |
 
 ### <a name="miscellaneous-extensions"></a>その他の拡張機能
 
@@ -87,7 +87,7 @@ Azure Database for PostgreSQL で現在サポートされている標準的な P
 | [pgstattuple](https://www.postgresql.org/docs/9.6/static/pgstattuple.html) | タプル レベルの統計を表示するための手段を提供します。 |
 | [postgres\_fdw](https://www.postgresql.org/docs/9.6/static/postgres-fdw.html) | 外部 PostgreSQL サーバーに格納されているデータへのアクセスに使用される外部データ ラッパーです。 |
 
-### <a name="postgis"></a>PostGIS
+### <a name="postgis-extensions"></a>PostGIS 拡張機能
 
 > [!div class="mx-tableFixed"]
 | **拡張機能** | **説明** |

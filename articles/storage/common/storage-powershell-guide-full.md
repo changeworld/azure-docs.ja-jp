@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/30/2017
 ms.author: robinsh
-ms.openlocfilehash: a116b4c15046e704e374ca67c5695ff3f01ba7fb
-ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
+ms.openlocfilehash: 1046e407bb4e9d07e91014384e9eba7b0c7020a8
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/18/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="using-azure-powershell-with-azure-storage"></a>Azure Storage での Azure PowerShell の使用
 
@@ -34,12 +34,11 @@ Azure PowerShell は、PowerShell コマンド ラインやスクリプトで Az
 > * ストレージ アカウントへのアクセスの保護 
 > * Storage Analytics の有効化
 
-また、Storage Analyics を有効にしてアクセスする方法やデータ プレーンのコマンドレットを使用する方法など、ストレージに関するその他の PowerShell 記事のリンクも紹介します。
-<!-- also how to access the china and government clouds  -->
+この記事では、Storage Analytics の有効化とアクセスの方法、データ プレーン コマンドレットの使用方法、China Cloud、German Cloud、Government クラウドといった Azure の独立したクラウドにアクセスする方法など、Storage に関する他のいくつかの PowerShell 記事へのリンクを提供しています。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に [無料アカウント](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) を作成してください。
 
-この演習には、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
+この演習には、Azure PowerShell モジュール バージョン 4.4 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 インストールまたはアップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。 
 
 この演習では、通常の PowerShell ウィンドウにコマンドを入力するか、または [Windows PowerShell Integrated Scripting Environment (ISE)](/powershell/scripting/getting-started/fundamental/windows-powershell-integrated-scripting-environment--ise-) を使用してエディターにコマンドを入力してから、それぞれの例で 1 つ以上のコマンドを同時にテストできます。 実行する行を強調表示して [選択項目の実行] をクリックし、それらのコマンドだけを実行できます。
 
@@ -94,7 +93,7 @@ New-AzureRmResourceGroup -Name $resourceGroup -Location $location
 
 # Set the name of the storage account and the SKU name. 
 $storageAccountName = "testpshstorage"
-$skuName = "Standard\_LRS"
+$skuName = "Standard_LRS"
     
 # Create the storage account.
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
@@ -122,7 +121,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 これで、新しいストレージ アカウントとそのアカウントへの参照が作成されました。 
 
-## <a name="managing-the-storage-account"></a>ストレージ アカウントの管理
+## <a name="manage-the-storage-account"></a>ストレージ アカウントの管理
 
 新しいストレージ アカウントまたは既存のストレージ アカウントへの参照を取得したので、次のセクションではストレージ アカウントを管理するためのコマンドを示します。
 
@@ -142,7 +141,7 @@ SKU 名は、LRS (ローカル冗長ストレージ) など、ストレージ �
 
 * HTTPS トラフィックのみを許可。 
 
-### <a name="managing-the-access-keys"></a>アクセス キーの管理
+### <a name="manage-the-access-keys"></a>アクセス キーの管理
 
 Azure Storage アカウントには 2 つのアカウント キーがあります。 キーを取得するには、[Get-AzureRmStorageAccountKey](/powershell/module/AzureRM.Storage/Get-AzureRmStorageAccountKey) を使用します。 この例では、最初のキーを取得します。 もう 1 つのキーを取得するには、`Value[0]` の代わりに `Value[1]` を使用します。
 
@@ -166,22 +165,22 @@ New-AzureRmStorageAccountKey -ResourceGroupName $resourceGroup `
 いずれかのキーを再生成してもう一度取得し、新しい値を確認します。
 
 > [!NOTE] 
-> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳細については、「[ストレージ アクセス キーの再生成](storage-create-storage-account.md#regenerate-storage-access-keys)」を参照してください。
+> 運用環境のストレージ アカウントのキーを再生成する前には、入念な計画が必要です。 一方または両方のキーを再生成すると、再生成されたキーを使用するアプリケーションのアクセスが無効になります。 詳しくは、「[ストレージ アクセス キーの再生成](storage-create-storage-account.md#regenerate-storage-access-keys)」をご覧ください。
 
 
 ### <a name="delete-a-storage-account"></a>ストレージ アカウントの削除 
 
-ストレージ アカウントを削除するには、[Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount) を使用します。 
-
-> [!IMPORTANT]
-> ストレージ アカウントを削除すると、そのアカウントに格納されている資産もすべて削除されます。 アカウントを誤って削除した場合は、すぐにサポートに問い合わせてストレージ アカウントを復元するチケットをオープンしてください。 データの復旧は保証されませんが、この対処が有効な場合もあります。 サポート チケットが解決されるまでは、古いストレージ アカウントと同じ名前の新しいストレージ アカウントを作成しないでください。 
->
+ストレージ アカウントを削除するには、[Remove-AzureRmStorageAccount](/powershell/module/azurerm.storage/Remove-AzureRmStorageAccount) を使用します。
 
 ```powershell
 Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storageAccountName
 ```
 
-### <a name="protecting-your-storage-account-using-vnets-and-firewalls"></a>VNet とファイアウォールを使用したストレージ アカウントの保護
+> [!IMPORTANT]
+> ストレージ アカウントを削除すると、そのアカウントに格納されている資産もすべて削除されます。 アカウントを誤って削除した場合は、すぐにサポートに問い合わせてストレージ アカウントを復元するチケットをオープンしてください。 データの復旧は保証されませんが、この対処が有効な場合もあります。 サポート チケットが解決されるまでは、古いストレージ アカウントと同じ名前の新しいストレージ アカウントを作成しないでください。 
+>
+
+### <a name="protect-your-storage-account-using-vnets-and-firewalls"></a>VNet とファイアウォールを使用したストレージ アカウントの保護
 
 既定では、インターネットにアクセス可能なネットワークからすべてのストレージ アカウントにアクセスできます。 ただし、ストレージ アカウントへのアクセスを特定の仮想ネットワークのアプリケーションにのみ許可するようにネットワーク ルールを構成できます。 詳細については、「[Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)](storage-network-security.md)」を参照してください。 
 
@@ -190,7 +189,7 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 * [Update-AzureRmStorageAccountNetworkRuleSet](/powershell/module/azurerm.storage/update-azurermstorageaccountnetworkruleset)
 * [Remove-AzureRmStorageAccountNetworkRule](/powershell/module/azurerm.storage/remove-azurermstorage-account-networkrule)
 
-## <a name="using-storage-analytics"></a>Storage Analytics の使用  
+## <a name="use-storage-analytics"></a>Storage Analytics の使用  
 
 [Azure Storage Analytics](storage-analytics.md) は、[Storage Analytics Metrics](/rest/api/storageservices/about-storage-analytics-metrics) と [Storage Analytics Logging](/rest/api/storageservices/about-storage-analytics-logging) で構成されます。 
 
@@ -210,26 +209,34 @@ Remove-AzureRmStorageAccount -ResourceGroup $resourceGroup -AccountName $storage
 
 * ストレージ メトリックとストレージ ログを使用してストレージの問題のトラブルシューティングを行う方法の詳細については、 [Microsoft Azure Storage の監視、診断、トラブルシューティング](storage-monitoring-diagnosing-troubleshooting.md)に関するページを参照してください。
 
-## <a name="managing-the-data-in-the-storage-account"></a>ストレージ アカウントのデータの管理
+## <a name="manage-the-data-in-the-storage-account"></a>ストレージ アカウントのデータの管理
 
-PowerShell によるストレージ アカウントの管理方法について確認したので、以下の記事では、PowerShell を使用してストレージ アカウントのデータ オブジェクトにアクセスする方法を示します。
+PowerShell によるストレージ アカウントの管理方法について確認したので、以下の記事を使用して、ストレージ アカウントのデータ オブジェクトにアクセスする方法を確認できます。
 
 * [Azure PowerShell を使用して Azure Blob Storage の操作を実行する](../blobs/storage-how-to-use-blobs-powershell.md)
 * [PowerShell を使用して Azure Files を管理する方法](../files/storage-how-to-use-files-powershell.md)
 * [Azure PowerShell を使用し、Azure Queue Storage を操作する](../queues/storage-powershell-how-to-use-queues.md)
 
-<!--## Government Cloud and China Cloud
+## <a name="azures-independently-deployed-clouds"></a>Azure の独立してデプロイされるクラウド
 
-ROBINROBINROBIN 
+ほとんどの人は、グローバルな Azure のデプロイに Azure Public Cloud を使用します。 主権などの理由から、Microsoft Azure の独立したデプロイもいくつかあります。 これらの独立したデプロイを「環境」と呼びます。 利用可能な環境を次に示します。
 
-To access the Government cloud of the China datacenters, you have to use some special steps. The following article shows how to access these special cloud accounts using PowerShell.
+* [Azure Government クラウド](https://azure.microsoft.com/features/gov/)
+* [中国の 21Vianet が運営する Azure China Cloud](http://www.windowsazure.cn/)
+* [Azure German Cloud](../../germany/germany-welcome.md)
 
-* [How to manage storage accounts in Government Cloud and China](storage-powershell-govt-china.md)
--->
+PowerShell でこれらのクラウドとそのストレージにアクセスする方法については、「[Managing Storage in the Azure independent clouds using PowerShell](storage-powershell-independent-clouds.md) (PowerShell を使用して Azure の独立したクラウドのストレージを管理する)」をご覧ください。
 
+## <a name="clean-up-resources"></a>リソースのクリーンアップ
+
+この演習用に新しいリソース グループとストレージ アカウントを作成した場合は、リソース グループを削除すると作成されたアセットをすべて削除できます。 これにより、そのグループ内に含まれているすべてのリソースも削除されます。 この場合、作成されたストレージ アカウントとリソース グループ自体が削除されます。
+
+```powershell
+Remove-AzureRmResourceGroup -Name $resourceGroup
+```
 ## <a name="next-steps"></a>次のステップ
 
-このハウツー記事では、管理プレーンのコマンドレットを使用してストレージ アカウントを管理する際の一般的な操作について説明します。 学習内容は次のとおりです。 
+このハウツー記事では、管理プレーンのコマンドレットを使用してストレージ アカウントを管理する際の一般的な操作について説明します。 以下の方法について学習しました。 
 
 > [!div class="checklist"]
 > * ストレージ アカウントの列挙
@@ -240,9 +247,7 @@ To access the Government cloud of the China datacenters, you have to use some sp
 > * ストレージ アカウントへのアクセスの保護 
 > * Storage Analytics の有効化
 
-データ オブジェクトを管理する方法や Storage Analytics を有効にする方法など、その他の記事のリンクも紹介します。 参照用のその他の関連記事とリソースがあります。 
-<!--, and how to access storage with PowerShell using the Government Cloud and the China Cloud.
--->
+この記事では、データ オブジェクトの管理方法、Storage Analytics の有効化の方法、China Cloud、German Cloud、Government クラウドといった Azure の独立したクラウドにアクセスする方法など、他のいくつかの記事へのリンクも提供しました。 参照用のその他の関連記事とリソースを次に示します。
 
 * [Azure Storage のコントロール プレーンの PowerShell コマンドレット](/powershell/module/AzureRM.Storage/)
 * [Azure Storage のデータ プレーンの PowerShell コマンドレット](/powershell/module/azure.storage/)
