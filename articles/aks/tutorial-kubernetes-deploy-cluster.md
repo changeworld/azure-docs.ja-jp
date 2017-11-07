@@ -17,11 +17,11 @@ ms.workload: na
 ms.date: 10/24/2017
 ms.author: nepeters
 ms.custom: mvc
-ms.openlocfilehash: 9e48d490b998fb57c604f2f5b2717e65d28dce1a
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: 7f9991d2254011080185a555f5351dce85f73704
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="deploy-an-azure-container-service-aks-cluster"></a>Azure Container Service (AKS) クラスターのデプロイ
 
@@ -38,6 +38,15 @@ Kubernetes には、コンテナー化されたアプリケーション用の分
 
 これまでのチュートリアルでは、コンテナー イメージを作成して、Azure Container Registry インスタンスにアップロードしました。 これらの手順を実行していない場合で、行いたい場合は、「[チュートリアル 1 – コンテナー イメージを作成する](./tutorial-kubernetes-prepare-app.md)」に戻ってください。
 
+## <a name="enabling-aks-preview-for-your-azure-subscription"></a>Azure サブスクリプションでの AKS プレビューの有効化
+AKS がプレビューである間、新しいクラスターを作成するには、サブスクリプションに機能フラグが必要です。 使用する任意の数のサブスクリプションに対して、この機能を要求することができます。 AKS プロバイダーを登録するには、次のように `az provider register` コマンドを使用します。
+
+```azurecli-interactive
+az provider register -n Microsoft.ContainerService
+```
+
+登録すると、AKS で Kubernetes クラスターを作成できるようになります。
+
 ## <a name="create-kubernetes-cluster"></a>Kubernetes クラスターを作成する
 
 次の例では、`myK8sCluster` という名前のクラスターを `myResourceGroup` という名前のリソース グループに作成します。 このリソース グループは、[前のチュートリアル](./tutorial-kubernetes-prepare-acr.md)で作成しました。
@@ -50,12 +59,12 @@ az aks create --resource-group myResourceGroup --name myK8sCluster --agent-count
 
 ## <a name="install-the-kubectl-cli"></a>kubectl CLI をインストールする
 
-クライアント コンピューターから Kubernetes クラスターに接続するには、[kubectl](https://kubernetes.io/docs/user-guide/kubectl/) (Kubernetes コマンドライン クライアント) を使います。 
+クライアント コンピューターから Kubernetes クラスターに接続するには、[kubectl](https://kubernetes.io/docs/user-guide/kubectl/) (Kubernetes コマンドライン クライアント) を使います。
 
 Azure CloudShell を使用している場合、kubectl は既にインストールされています。 ローカルにインストールする場合は、次のコマンドを実行します。
 
 ```azurecli
-az aks install-cli 
+az aks install-cli
 ```
 
 ## <a name="connect-with-kubectl"></a>kubectl を使用して接続する

@@ -17,17 +17,17 @@ ms.workload: na
 ms.date: 10/16/2017
 ms.author: nepeters
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 91f0aa093e0a1f7ed4d54a0cdf5ef53bc41cb6be
-ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
+ms.openlocfilehash: 6b3fb9a3ea090f0083e8f113ddf13312fe42b59a
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/14/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-cli"></a>Azure CLI を使用したコンテナー レジストリの作成
 
 Azure Container Registry は、プライベート Docker コンテナー イメージを保管するための管理された Docker コンテナー レジストリ サービスです。 このガイドでは、Azure Container Registry インスタンスを Azure CLI で作成する方法について詳しく説明します。
 
-このクイック スタートでは、Azure CLI バージョン 2.0.12 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
+このクイック スタートでは、Azure CLI バージョン 2.0.20 以降を実行している必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール](/cli/azure/install-azure-cli)」を参照してください。
 
 Docker もローカルにインストールする必要があります。 Docker では、[Mac](https://docs.docker.com/docker-for-mac/)、[Windows](https://docs.docker.com/docker-for-windows/)、または [Linux](https://docs.docker.com/engine/installation/#supported-platforms) システムで Docker を簡単に構成できるパッケージが提供されています。
 
@@ -45,10 +45,7 @@ az group create --name myResourceGroup --location eastus
 
 このクイックスタートでは、*基本*のレジストリを作成します。 次の表で簡単に説明されているように、Azure Container Registry はいくつかの SKU で使用できます。 それぞれの詳細については、「[Azure Container Registry SKUs](container-registry-skus.md)」(Azure Container Registry の SKU) を参照してください。
 
-Azure Container Registry は、`Basic`、`Managed_Basic`、`Managed_Standard`、および `Managed_Premium` という複数の SKU でご利用いただけます。 `Managed_*` SKU は、管理対象ストレージや webhook のような高度な機能を提供しますが、現在、Azure CLI の使用時に一部の Azure リージョンでは利用できません。 このクイックスタートでは、すべてのリージョンで利用できるため、`Basic` SKU を選択します。
-
->[!NOTE]
-> 管理対象のレジストリは、すべてのリージョンで現在使用できます。 ただし、現在のバージョンの Azure CLI では、すべてのリージョンで管理対象のレジストリの作成をまだサポートしていません。 次のバージョンの Azure CLI でサポートされる予定です。 このリリースまでは、[Azure Portal](container-registry-get-started-portal.md) を使用して管理対象のレジストリを作成してください。
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
 [az acr create](/cli/azure/acr#create) コマンドを使用して ACR インスタンスを作成します。
 
