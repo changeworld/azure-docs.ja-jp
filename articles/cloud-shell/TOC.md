@@ -8,7 +8,6 @@
 ## [Bash の機能とツール](features.md)
 ## [PowerShell の機能とツール](features-powershell.md)
 ## [制限事項](limitations.md)
-## [トラブルシューティング](troubleshooting.md)
 
 # 操作方法
 ## [Bash でのストレージの永続化](persisting-shell-storage.md)
@@ -16,6 +15,8 @@
 ## [ウィンドウの使用](using-the-shell-window.md)
 
 # [料金](pricing.md)
+
+# [トラブルシューティング](troubleshooting.md)
 
 # リファレンス
 ## [Azure CLI](/cli/azure)

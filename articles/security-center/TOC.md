@@ -1,6 +1,5 @@
 # 概要
 ## [Azure Security Center とは](security-center-intro.md)
-## [Power BI から洞察を得る](security-center-powerbi.md)
 ## [データのセキュリティ](security-center-data-security.md)
 ## シナリオ
 ### [インシデント対応](security-center-incident-response.md)

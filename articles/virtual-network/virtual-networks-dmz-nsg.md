@@ -328,12 +328,12 @@ ms.lasthandoff: 10/11/2017
 ### <a name="azure-resource-manager-template"></a>Azure Resource Manager テンプレート
 この例では、Microsoft によって管理され、コミュニティに公開されている Github リポジトリ上の定義済み Azure Resource Manager テンプレートを使用しています。 このテンプレートは、Github から直接デプロイすることもできるほか、ダウンロードしてニーズに合わせて変更することもできます。 
 
-メイン テンプレートは "azuredeploy.json" という名前のファイル内にあります。 PowerShell または CLI を使用して (関連付けられた "azuredeploy.parameters.json" ファイルとともに) このテンプレートを送信して、デプロイすることができます。 最も簡単な方法は、GitHub の README.md ページにある [Deploy to Azure] (Azure にデプロイ) ボタンを使用することです。
+メイン テンプレートは "azuredeploy.json" という名前のファイル内にあります。 PowerShell または CLI を使用して (関連付けられた "azuredeploy.parameters.json" ファイルとともに) このテンプレートを送信して、デプロイすることができます。 最も簡単な方法は、GitHub の README.md ページにある [Deploy to Azure] \(Azure にデプロイ) ボタンを使用することです。
 
 この例を構築するテンプレートを GitHub と Azure Portal からデプロイするには、次の手順を実行します。
 
 1. ブラウザーから、[テンプレート][Template]のページに移動します。
-2. [Deploy to Azure] (Azure に配置する) ボタンをクリックします (または [Visualize] (視覚化) ボタンをクリックして、このテンプレートをグラフィカルに表示します)。
+2. [Deploy to Azure] \(Azure に配置する) ボタンをクリックします (または [Visualize] \(視覚化) ボタンをクリックして、このテンプレートをグラフィカルに表示します)。
 3. [パラメーター] ブレードにストレージ アカウント、ユーザー名、パスワードを入力して、**[OK]** をクリックします。
 5. このデプロイ用にリソース グループを作成します (既存のリソース グループを使用することもできますが、最良の結果のために新しく作成することをお勧めします)。
 6. 必要に応じて、VNet の [サブスクリプション] と [場所] の設定を変更します。
