@@ -226,7 +226,7 @@ HTTP、webhook トリガー、および HTTP 出力バインディングでは�
 | _body_    | 応答の本文を格納するオブジェクト。         |
 | _headers_ | 応答ヘッダーを格納するオブジェクト。             |
 | _isRaw_   | 応答の書式設定をスキップすることを示します。    |
-| _状態_  | 応答の HTTP 状態コード。                     |
+| _status_  | 応答の HTTP 状態コード。                     |
 
 ### <a name="accessing-the-request-and-response"></a>要求と応答へのアクセス 
 
