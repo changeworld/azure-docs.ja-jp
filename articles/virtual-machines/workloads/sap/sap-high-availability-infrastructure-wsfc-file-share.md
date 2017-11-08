@@ -212,7 +212,7 @@ ms.lasthandoff: 10/25/2017
 
 インストールを開始する前に、必ず次のドキュメントをご確認ください。
 
-* [Architecture Guide - Clustering SAP (A)SCS Instance on Windows Failover Cluster Using File Share (アーキテクチャ ガイド - **ファイル共有**を使用した **Windows フェールオーバー クラスター**での SAP ASCS/SCS インスタンスのクラスター化][)sap-high-availability-guide-wsfc-shared-disk]
+* [Architecture Guide - Clustering SAP (A)SCS Instance on Windows Failover Cluster Using File Share (アーキテクチャ ガイド - **ファイル共有**を使用した **Windows フェールオーバー クラスター**での SAP ASCS/SCS インスタンスのクラスター化)][sap-high-availability-guide-wsfc-shared-disk]
 
 
 ## <a name="host-names-and-ip-addresses"></a>ホスト名と IP アドレス

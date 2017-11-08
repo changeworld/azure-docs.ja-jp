@@ -166,6 +166,8 @@
           href: compute-linked-services.md
     - name: 制御フロー
       items:
+        - name: If 条件アクティビティ
+          href: control-flow-if-condition-activity.md
         - name: Web アクティビティ
           href: control-flow-web-activity.md
         - name: ルックアップ アクティビティ

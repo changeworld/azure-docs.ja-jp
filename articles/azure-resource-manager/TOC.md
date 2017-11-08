@@ -71,7 +71,6 @@
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
 ### 例
 #### [タグ](resource-manager-policy-tags.md)
 #### [名前付け規則](resource-manager-policy-naming-convention.md)
