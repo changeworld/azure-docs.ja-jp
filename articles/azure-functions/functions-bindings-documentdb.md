@@ -118,7 +118,7 @@ DocumentDB API 入力バインドには、*function.json* に次のプロパテ�
 |**collectionName**  | ドキュメントを含むコレクションの名前。 |
 |**id**     | 取得するドキュメントの ID。 このプロパティは、バインド パラメーターをサポートしています。 詳細については、「[バインド式でのカスタム入力プロパティへのバインド](functions-triggers-bindings.md#bind-to-custom-input-properties-in-a-binding-expression)」を参照してください。 |
 |**sqlQuery**     | 複数のドキュメントを取得するときに使用する Azure Cosmos DB SQL クエリ。 クエリでは、ランタイム バインドがサポートされます。例: `SELECT * FROM c where c.departmentId = {departmentId}`        |
-|**接続**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**connection**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**direction**     | `in` に設定する必要があります。         |
 
 設定できるのは **id** と **sqlQuery** のいずれかです。 どちらも設定しないと、コレクション全体が取得されます。
@@ -260,7 +260,7 @@ DocumentDB API 出力バインドを使用すると、Azure Cosmos DB データ�
 |**databaseName** | ドキュメントが作成されたコレクションを含むデータベース。     |
 |**collectionName**  | ドキュメントが作成されたコレクションの名前。 |
 |**createIfNotExists**     | コレクションが存在しないときに作成するかどうかを示すブール値。 既定値は *false* です。 新しいコレクションは予約済みのスループットで作成され、これが価格に影響を及ぼすためです。 詳細については、[価格のページ](https://azure.microsoft.com/pricing/details/documentdb/)を参照してください。  |
-|**接続**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
+|**connection**     |Azure Cosmos DB 接続文字列を含むアプリ設定の名前。        |
 |**direction**     | `out` に設定する必要があります。         |
 
 ## <a name="using-a-documentdb-api-output-binding"></a>DocumentDB API 出力バインドの使用
