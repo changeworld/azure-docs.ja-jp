@@ -13,22 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: big-compute
-ms.date: 08/25/2017
+ms.date: 10/26/2017
 ms.author: danlep
-ms.openlocfilehash: 99aee6b73242d21842b02ded8c9e4e25bc5cedb4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae36e64c0261b1fe8d02d6dcb80df7cdee333db9
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="options-with-hpc-pack-to-create-and-manage-a-cluster-for-linux-hpc-workloads-in-azure"></a>Azure で Linux HPC ワークロード用のクラスターを作成して管理するための HPC Pack のオプション
 [!INCLUDE [virtual-machines-common-hpcpack-cluster-options](../../../includes/virtual-machines-common-hpcpack-cluster-options.md)]
 
 この記事では、HPC Pack を使用して Linux ワークロードを実行するオプションについて説明します。 [HPC Pack を使用して Windows HPC ワークロードを実行する](../windows/hpcpack-cluster-options.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)オプションもあります。
 
-## <a name="hpc-pack-cluster-in-azure-vms"></a>Azure VM の HPC Pack クラスター
+## <a name="hpc-pack-cluster-in-azure-vms-and-vm-scale-sets"></a>Azure VM と VM スケール セットの HPC Pack クラスター
 ### <a name="azure-templates"></a>Azure テンプレート
 * (GitHub) [HPC Pack 2016 クラスター テンプレート](https://github.com/MsHpcPack/HPCPack2016)
+* (GitHub) [HPC Pack 2012 R2 クラスター テンプレート](https://github.com/MsHpcPack/HPCPack2012R2)
 * (Marketplace) [HPC Pack cluster for Linux workloads (Linux ワークロード用の HPC Pack クラスター)](https://azure.microsoft.com/marketplace/partners/microsofthpc/newclusterlinuxcn/)
 * (クイックスタート) [Create an HPC cluster with Linux compute nodes (Linux コンピューティング ノードがある HPC クラスターを作成する)](https://github.com/Azure/azure-quickstart-templates/tree/master/create-hpc-cluster-linux-cn)
 

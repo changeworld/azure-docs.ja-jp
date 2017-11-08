@@ -10,15 +10,15 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 7325d15cc4bec5f0df50be222e1f0988775ded2c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ce1d32a2785bec1164d2a89dea9946fe113cb33
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-dsvm-and-hdi-spark-cluster-as-compute-targets"></a>コンピューティング ターゲットとしての DSVM および HDI Spark クラスターの作成
 
-Ubuntu ベースの DSVM (データ サイエンス仮想マシン)、Azure HDInsight クラスターの Apache Spark などのコンピューティング ターゲットを追加することで、Machine Learning 実験を簡単にスケール アップまたはスケール アウトすることができます。 この記事は、Azure 内でこれらのコンピューティング ターゲットを作成する手順を説明します。 Azure ML コンピューティング ターゲットの詳細については、「[Azure Machine Learning 実験実行サービスの概要](experiment-execution-configuration.md)」を参照してください。
+Ubuntu ベースの DSVM (データ サイエンス仮想マシン)、Azure HDInsight クラスターの Apache Spark などのコンピューティング ターゲットを追加することで、Machine Learning 実験を簡単にスケール アップまたはスケール アウトすることができます。 この記事は、Azure 内でこれらのコンピューティング ターゲットを作成する手順を説明します。 Azure ML コンピューティング ターゲットの詳細については、[Azure Machine Learning 実験サービスの概要](experimentation-service-configuration.md)に関する記事を参照してください。
 
 >[!NOTE]
 >続行する前に、Azure で VM と HDI クラスターなどのリソースを作成するための適切なアクセス許可があることを確認する必要があります。 また、この両方のリソースは、構成に応じて、多くのコンピューティング コアを使用できます。 ご使用のサブスクリプションに仮想 CPU コア用の十分な容量があることを確認してください。 ご使用のサブスクリプションで許可されているコアの最大数を増やす場合は、いつでも Azure サポートにご連絡いただけます。
@@ -181,7 +181,7 @@ $ az ml experiment prepare -c <compute target name>
 ## <a name="next-steps"></a>次のステップ
 
 各項目の詳細情報
-- [Azure Machine Learning の実験実行サービスの概要](experiment-execution-configuration.md)
-- [Azure Machine Learning Workbench 実行構成ファイル](experiment-execution-configuration-reference.md)
+- [Azure Machine Learning 実験サービスの概要](experimentation-service-configuration.md)
+- [Azure Machine Learning Workbench 実験サービス構成ファイル](experimentation-service-configuration-reference.md)
 - [Apache Spark for Azure HDInsight クラスター](https://azure.microsoft.com/services/hdinsight/apache-spark/)
 - [データ サイエンス仮想マシン](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/)

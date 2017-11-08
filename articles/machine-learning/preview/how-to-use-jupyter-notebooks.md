@@ -10,11 +10,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 07759a590e3a4e061a1c5727428d2c7c2a655f51
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 93850a7c9e3d9d69b0da22ebd0656ae40cee2e63
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="how-to-use-jupyter-notebook-in-azure-machine-learning-workbench"></a>Azure Machine Learning Workbench で Jupyter Notebook を使用する方法
 
@@ -39,7 +39,7 @@ Azure Machine Learning Workbench は、Jupyter Notebook との統合を通じて
 Azure ML Workbench では、プロジェクトの `aml_config` フォルダーに実行構成および計算ターゲットを構成するだけで、さまざまなカーネルにアクセスできます。 `az ml computetarget attach` コマンドを発行して新しい計算ターゲットを追加することは、新しいカーネルを追加することと同じです。
 
 >[!NOTE]
->実行構成および計算ターゲットの詳細については、[実行構成](experiment-execution-configuration.md)に関する記事をご覧ください。
+>実行構成および計算ターゲットの詳細については、[実行構成](experimentation-service-configuration.md)に関する記事をご覧ください。
 
 ### <a name="kernel-naming-convention"></a>カーネルの名前付け規則
 通常、カーネルには "\<プロジェクト名> \<実行構成名>" という形式の名前が付けられます。 たとえば、_myIris_ という名前のプロジェクトに _docker-python_ という名前の実行構成がある場合、Jupyter ノートブックを開くとカーネルの一覧に "myIris docker-python" という名前のカーネルが表示されます。
@@ -107,5 +107,5 @@ $ az ml notebook start
 
 ## <a name="next-steps"></a>次のステップ
 - Jupyter Notebook の使用方法について学習するには、[Jupyter の公式ドキュメント](http://jupyter-notebook.readthedocs.io/en/latest/)を参照します。    
-- Azure ML 実験実行環境をより深く理解するには、[Azure Machine Learning 実験実行サービスの概要](experiment-execution-configuration.md)を参照します。
+- Azure ML 実験実行環境をより深く理解するには、[Azure Machine Learning 実験サービスの概要](experimentation-service-configuration.md)に関する記事を参照します。
 

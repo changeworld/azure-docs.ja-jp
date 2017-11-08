@@ -11,25 +11,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage
-ms.date: 09/25/2017
+ms.date: 10/25/2017
 ms.author: cbrooks
-ms.openlocfilehash: 8117a5ef9bc4f785256a7a7d70f459529c771a56
-ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
+ms.openlocfilehash: b178be71824e427d88a811d87f1aeb6e5f80dbcc
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks-preview"></a>Azure Storage ファイアウォールおよび仮想ネットワークの構成 (プレビュー)
 Azure Storage は多層型セキュリティ モデルを提供しているため、許可されたネットワークの特定のセットに対するストレージ アカウントをセキュリティで保護することができます。  ネットワーク ルールが構成されている場合、ストレージ アカウントにアクセスできるのは、許可されているネットワークからのアプリケーションのみです。  許可されているネットワークからの呼び出し時に、アプリケーションはストレージ アカウントにアクセスするための適切な承認 (有効なアクセス キーまたは SAS トークン) を要求します。
 
 ## <a name="preview-availability-and-support"></a>プレビューの可用性とサポート
-Azure Storage ファイアウォールおよび仮想ネットワークはプレビュー段階です。  この機能は、現在のところ、次のリージョンの新規または既存のストレージ アカウントに対して提供されています。
-- 米国東部
-- 米国西部
-- 米国西部 2
-- 米国中西部
-- オーストラリア東部
-- オーストラリア南東部
+Azure Storage ファイアウォールおよび仮想ネットワークはプレビュー段階です。  この機能は、現在のところ、すべての Azure パブリック クラウド リージョンの新規または既存のストレージ アカウントで利用できます。
 
 > [!NOTE]
 > プレビュー期間中は、運用環境のワークロードはサポートされていません。
