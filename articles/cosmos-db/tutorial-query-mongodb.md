@@ -1,6 +1,6 @@
 ---
-title: "Azure Cosmos DB: DocumentDB API を使用してクエリを実行する方法 | Microsoft Docs"
-description: "Azure Cosmos DB: DocumentDB API を使用してクエリを実行する方法を学習する"
+title: "Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法 | Microsoft Docs"
+description: "Azure Cosmos DB の MongoDB API を使用してクエリを実行する方法を学習します"
 services: cosmos-db
 documentationcenter: 
 author: mimig1
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: 
 ms.date: 05/10/2017
 ms.author: mimig
-ms.openlocfilehash: feffc553a9aa931d96cec71c101674fce08a466b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c783af682a78f2001930773ffcfd086efe9b5daa
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-cosmos-db-how-to-query-with-api-for-mongodb"></a>Azure Cosmos DB: MongoDB API を使用してクエリを実行する方法
 

@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: big-data
-ms.date: 09/26/2017
+ms.date: 10/27/2017
 ms.author: jejiang
-ms.openlocfilehash: fdf1911f4f5b515592b6197ea738d808104cb43e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 36ce117076ed5c15ddff850485d8f8912ec53caf
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-azure-hdinsight-tool-for-visual-studio-code"></a>Azure HDInsight Tool for Visual Studio Code を使用する
 
@@ -49,26 +49,14 @@ Azure HDInsight Tools for Visual Studio Code (VSCode) を使用して、Hive バ
 
    ![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/install-hdInsight-plugin.png)
 
-Spark ユーザーの場合は、言語サービス エクスペリエンスを向上させるために、Python 拡張機能が推奨されます。 Python 拡張機能は、Hive ユーザーには必要ありません。 
-
-**Python をインストールするには**
-
-1. **Visual Studio Code** を開きます。
-2. 左側のウィンドウで **[拡張機能]** をクリックします。 検索ボックスに「**python**」と入力します。 Python 拡張機能の一覧が表示されます。 その中に **Python** があります。
-3. **Python** の横にある **[インストール]** をクリックします。 数秒後、**[インストール]** ボタンが **[再度読み込む]** に変わります。
-4. **[再度読み込む]** をクリックして、**Python** 拡張機能をアクティブにします。
-5. **[ウィンドウの再読み込み]** をクリックして確認します。 拡張機能ウィンドウに **Python** が表示されます。
-
-     ![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
-
 ## <a name="open-hdinsight-workspace"></a>HDInsight ワークスペースを開く
 
 Azure に接続するには、VSCode にワークスペースを作成する必要があります。
 
 **ワークスペースを開くには**
 
-1. [**ファイル**] メニューから [**フォルダーを開く**] をクリックし、既存のフォルダーを指定するか、作業フォルダーとして新しいフォルダーを作成します。 フォルダーが左側のウィンドウに表示されます。
-2. 左側のウィンドウで、作業フォルダーの横にある **新しいファイル**をクリックします。
+1. **[ファイル]** メニューから **[フォルダーを開く]** をクリックし、既存のフォルダーを指定するか、作業フォルダーとして新しいフォルダーを作成します。 フォルダーが左側のウィンドウに表示されます。
+2. 左側のウィンドウで、作業フォルダーの横にある **[新しいファイル]** をクリックします。
 
    ![新しいファイル](./media/hdinsight-for-vscode/new-file.png)
 3. .hql (Hive クエリ) または .py (Spark スクリプト) のファイル拡張子のいずれかを使って、新しいファイルに名前を付けます。 **XXXX_hdi_settings.json** 構成ファイルが、作業フォルダーに自動的に追加されることに注意してください。
@@ -90,21 +78,19 @@ VSCode から HDInsight クラスターにスクリプトを送信するには�
 
     接続すると、VSCode ウィンドウの左下にあるステータス バーに Azure アカウント名が表示されます。 
 
-    > [!NOTE] 
-    > Azure アカウントで 2 要素認証が有効になっている場合は、PIN ではなく、電話認証を使用することをお勧めします。
-    > Google Chrome を使用した Azure のログインには、既知の問題があります。
+    > [!NOTE]
+    > Azure 認証の既知の問題があるため、プライベート モードまたはシークレット モードでブラウザーを開きます。 Azure アカウントで 2 要素認証が有効になっている場合は、PIN ではなく、電話認証を使用することをお勧めします。
+  
 
-4. スクリプト エディターを右クリックして、コンテキスト メニューを開きます。
-
-    ![HDInsight Tools for Visual Studio Code スクリプト エディターのコンテキスト メニュー](./media/hdinsight-for-vscode/hdinsight-for-vscode-context-menu.png)
-
-    コンテキスト メニューから次のタスクを実行できます。
+4. スクリプト エディターを右クリックして、コンテキスト メニューを開きます。 コンテキスト メニューから次のタスクを実行できます。
 
     - logout
     - list clusters
     - Set default cluster
     - Submit interactive Hive queries
     - Submit Hive batch script
+    - Submit interactive PySpark queries
+    - Submit PySpark batch script
     - Set configuration
 
 ## <a name="list-hdinsight-clusters"></a>List HDInsight clusters
@@ -144,7 +130,7 @@ HDInsight Tools for VSCode を使用すると、対話型 Hive クエリを HDIn
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. スクリプト エディターを右クリックし、**[HDInsight: Interactive Hive]** をクリックしてクエリを送信します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 その後すぐに、クエリの結果が新しいタブに示されます。
+3. スクリプト エディターを右クリックし、**[HDInsight: Hive Interactive]** をクリックしてクエリを送信します。 また、このツールでは、コンテキスト メニューを使用して、スクリプト ファイル全体ではなく、コードのブロックを送信することもできます。 その後すぐに、クエリの結果が新しいタブに示されます。
 
    ![対話型 Hive の結果](./media/hdinsight-for-vscode/interactive-hive-result.png)
 
@@ -162,7 +148,7 @@ HDInsight Tools for VSCode を使用すると、対話型 Hive クエリを HDIn
     ```hiveql
     SELECT * FROM hivesampletable;
     ```
-3. スクリプト エディターを右クリックし、**[HDInsight: Submit Hive Batch Script]** をクリックして Hive ジョブを送信します。 
+3. スクリプト エディターを右クリックし、**[HDInsight: Hive Batch]** をクリックして Hive ジョブを送信します。 
 4. 送信するクラスターを選択します。  
 
     Hive ジョブを送信したら、送信成功に関する情報とジョブ ID が、**[出力]** パネルに表示されます。 **Web ブラウザー**が開き、ジョブのリアルタイムのログと状態が表示されます。
@@ -171,11 +157,44 @@ HDInsight Tools for VSCode を使用すると、対話型 Hive クエリを HDIn
 
 [対話型 Hive クエリの送信](#submit-interactive-hive-queries)と比較すると、バッチ ジョブの時間はかなり長くなります。
 
+## <a name="submit-interactive-pyspark-queries"></a>対話型 PySpark クエリの送信
+HDInsight Tools for VSCode を使用すると、対話型 PySpark クエリを Spark クラスターに送信することもできます。
+1. 新しい作業フォルダーと .py 拡張子の新しいスクリプト ファイルが存在しない場合は作成します。
+2. 接続していない場合は、Azure アカウントに接続します。
+3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
+   ```python
+   from operator import add
+   lines = spark.read.text("/HdiSamples/HdiSamples/FoodInspectionData/README").rdd.map(lambda r: r[0])
+   counters = lines.flatMap(lambda x: x.split(' ')) \
+                .map(lambda x: (x, 1)) \
+                .reduceByKey(add)
 
-## <a name="submit-pyspark-job"></a>PySpark ジョブの送信
+   coll = counters.collect()
+   sortedCollection = sorted(coll, key = lambda r: r[1], reverse = True)
+
+   for i in range(0, 5):
+        print(sortedCollection[i])
+   ```
+4. これらのスクリプトを強調表示し、スクリプト エディターを右クリックして、**[HDInsight: PySpark Interactive]** をクリックします。
+5. VSCode に **Python** 拡張機能をインストールしていない場合は、次に示す **[インストール]** ボタンをクリックします。
+    ![HDInsight for Visual Studio Code の Python のインストール](./media/hdinsight-for-vscode/hdinsight-vscode-install-python.png)
+
+6. インストールしない場合は、システムで Python 環境を設定します。 
+   - Windows の場合、[Python](https://www.python.org/downloads/) をダウンロードしてインストールします。 次に、システムの PATH で `Python` と `pip` を確認します。
+   - MacOS および Linux での手順については、「[Visual Studio Code 用の PySpark 対話型環境を設定する](set-up-pyspark-interactive-environment.md)」をご覧ください。
+7. PySpark クエリを送信するクラスターを選択します。 その後すぐに、クエリの結果が右側の新しいタブに示されます。
+
+   ![python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-interactive-result.png) 
+8. このツールでは **SQL 句**のクエリもサポートしています。
+
+   ![python ジョブの送信の結果](./media/hdinsight-for-vscode/pyspark-ineteractive-select-result.png) 送信の状態は、クエリの実行時に下部のステータス バーの左側に表示されます。 **[PySpark Kernel (busy)]\(PySpark カーネル (ビジー)\)** 状態のときに他のクエリを送信することはできません。送信すると、実行が停止します。
+9. クラスターではセッションを維持できます。 たとえば、**a=100** の場合は、既にこのセッションをクラスターに保持しているため、クラスターに対する **a の出力**だけを実行します。
+ 
+
+## <a name="submit-pyspark-batch-job"></a>PySpark バッチ ジョブの送信
 
 1. 新しい作業フォルダーと .py 拡張子の新しいスクリプト ファイルが存在しない場合は作成します。
-2. Azure アカウントに接続して、既定のクラスターを構成していない場合は、構成します。
+2. 接続していない場合は、Azure アカウントに接続します。
 3. 以下のコードをコピーして、スクリプト ファイルに貼り付けます。
 
     ```python
@@ -198,7 +217,7 @@ HDInsight Tools for VSCode を使用すると、対話型 Hive クエリを HDIn
             print("%s: %i" % (word, count))
         spark.stop()
     ```
-4. スクリプト エディターを右クリックし、**[HDInsight: Submit PySpark Job]** をクリックします。 
+4. スクリプト エディターを右クリックし、**[HDInsight: PySpark Batch]** をクリックします。 
 5. クラスターを選択して、PySpark ジョブを送信します。 
 
    ![python ジョブの送信の結果](./media/hdinsight-for-vscode/submit-pythonjob-result.png) 
@@ -224,10 +243,12 @@ HDInsight for VSCode では、以下の機能がサポートされています�
 * HDInsight for VScode: [ビデオ](https://go.microsoft.com/fwlink/?linkid=858706)
 
 ### <a name="tools-and-extensions"></a>ツールと拡張機能
-* [Azure Toolkit for IntelliJ を使用して VPN を介して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
+* [Visual Studio Code 用の PySpark 対話型環境を設定する](set-up-pyspark-interactive-environment.md)
+* [Azure Toolkit for IntelliJ を使用して Spark Scala アプリケーションを作成して送信する](hdinsight-apache-spark-intellij-tool-plugin.md)
 * [Azure Toolkit for IntelliJ を使用して SSH を介して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-debug-remotely-through-ssh.md)
-* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
+* [Azure Toolkit for IntelliJ を使用して VPN を介して Spark アプリケーションをリモートでデバッグする](hdinsight-apache-spark-intellij-tool-plugin-debug-jobs-remotely.md)
 * [Azure Toolkit for Eclipse の HDInsight ツールを使用して Spark アプリケーションを作成する](hdinsight-apache-spark-eclipse-tool-plugin.md)
+* [Hortonworks Sandbox と IntelliJ 用 HDInsight ツールを使用する](hdinsight-tools-for-intellij-with-hortonworks-sandbox.md)
 * [HDInsight の Spark クラスターで Zeppelin Notebook を使用する](hdinsight-apache-spark-zeppelin-notebook.md)
 * [HDInsight 用の Spark クラスターの Jupyter Notebook で使用可能なカーネル](hdinsight-apache-spark-jupyter-notebook-kernels.md)
 * [Jupyter Notebook で外部のパッケージを使用する](hdinsight-apache-spark-jupyter-notebook-use-external-packages.md)

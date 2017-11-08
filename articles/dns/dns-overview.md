@@ -3,7 +3,7 @@ title: "Azure DNS の概要 | Microsoft Docs"
 description: "Microsoft Azure の DNS ホスティング サービスの概要です。 Microsoft Azure でドメインをホストします。"
 services: dns
 documentationcenter: na
-author: georgewallace
+author: KumudD
 manager: timlt
 editor: 
 ms.assetid: 68747a0d-b358-4b8e-b5e2-e2570745ec3f
@@ -13,22 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/19/2017
-ms.author: gwallace
-ms.openlocfilehash: 3705457e4c90f8869496f7f5177531bd128d1057
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: kumud
+ms.openlocfilehash: 890c00f3349abd52294e92d27f1b42ab38fe287a
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-dns-overview"></a>Azure DNS の概要
 
-ドメイン ネーム システム (DNS) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。
+ドメイン ネーム システム (DNS) は、Web サイトまたはサービスの名前をその IP アドレスに変換する (または解決する) 役割を担います。 Azure DNS は、DNS ドメインのホスティング サービスであり、Microsoft Azure インフラストラクチャを使用した名前解決を提供します。 Azure でドメインをホストすることで、その他の Azure サービスと同じ資格情報、API、ツール、課金情報を使用して DNS レコードを管理できます。 Azure DNS では、プライベート DNS ドメインもサポートされるようになりました。 詳しくは、「[プライベート ドメインに Azure DNS を使用する](private-dns-overview.md)」をご覧ください。
 
 ![DNS の概要](./media/dns-overview/scenario.png)
 
 ## <a name="features"></a>Features (機能)
 
-* **信頼性とパフォーマンス** - Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 エニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
+* **信頼性とパフォーマンス** - Azure DNS 内の DNS ドメインは、DNS ネーム サーバーから成る Azure のグローバル ネットワーク上でホストされます。 Azure DNS ではエニーキャスト ネットワークが使用されるため、各 DNS クエリには、使用できる最も近い DNS サーバーが応答します。 これによって、ドメインには高速なパフォーマンスと高可用性の両方が提供されます。
 
 * **シームレスな統合** - Azure DNS サービスを使用して、Azure サービスの DNS レコードを管理でき、同時に外部リソースに DNS を提供することもできます。 Azure DNS は Azure Portal に統合されており、他の Azure サービスと同じ資格情報、課金、サポート契約を使用します。
 
