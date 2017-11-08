@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shlo
-ms.openlocfilehash: 062d82d1bb2126a5b135796a2b5fa00ccf02511d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: df139383eb2fa20fe75ecc6b3f5e2aa0773f186c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="update-azure-machine-learning-models-by-using-update-resource-activity"></a>更新リソース アクティビティを使って Azure Machine Learning モデルを更新する
 この記事では、Azure Data Factory と Azure Machine Learning の統合に関するメインの記事「[Azure Machine Learning と Azure Data Factory を使って予測パイプラインを作成する](transform-data-using-machine-learning.md)」を補足します。 メインの記事をまだ呼んでいない場合は、この記事を読む前にお読みください。 
@@ -88,7 +88,7 @@ Machine Learning を使って作成するモデルは、通常、静的ではあ
 2 番目の Azure Machine Learning のリンクされたサービスの場合、構成は、Azure Machine Learning Web サービスが従来の Web サービスであるか、新しい Web サービスであるかによって異なります。 相違点については、以降のセクションで個別に説明します。 
 
 ## <a name="web-service-is-a-classic-web-service"></a>Web サービスが従来の Web サービスである
-予測 Web サービスが**従来の Web サービス**である場合は、[Azure Portal](https://manage.windowsazure.com) を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
+予測 Web サービスが**従来の Web サービス**である場合は、Azure Portal を使用して、2 つ目の**更新可能な既定以外のエンドポイント**を作成します。 手順については、「[エンドポイントを作成する](../machine-learning/machine-learning-create-endpoint.md)」を参照してください。 更新可能な既定以外のエンドポイントを作成したら、次の手順を行います。
 
 * **[バッチ実行]** をクリックして、**mlEndpoint** JSON プロパティの URI の値を取得します。
 * **[リソースの更新]** リンクをクリックして、**updateResourceEndpoint** JSON プロパティの URI の値を取得します。 API キーは、エンドポイントのページにあります (右下隅)。

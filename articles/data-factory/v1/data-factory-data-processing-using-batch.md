@@ -15,13 +15,16 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 75213a4d0297c96ec32200158d8b60db4b8b2da4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e2987b37d0146a68635c9190cf42ac7aeac48ed5
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="process-large-scale-datasets-using-data-factory-and-batch"></a>Data Factory と Batch を使用して大規模なデータセットを処理する
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのカスタム アクティビティ](../transform-data-using-dotnet-custom-activity.md)に関する記事を参照してください。
+
 この記事では、大規模なデータセットの移動と処理をスケジュールに沿って自動的に行う、サンプル ソリューションのアーキテクチャについて説明します。 また、Azure Data Factory と Azure Batch を使用してソリューションを実装する、エンドツーエンドのチュートリアルも提供します。
 
 この記事には、サンプル ソリューション全体のチュートリアルが含まれるため、通常の記事よりも長くなっています。 Batch と Data Factory のご使用が初めての方は、Batch と Data Factory のサービスについて知り、これらがどのように連携するかを学ぶことができます。 これらのサービスについてはすでにご存じで、ソリューションを設計している方は、この記事の[アーキテクチャ セクション](#architecture-of-sample-solution)をご覧ください。プロトタイプやソリューションの開発を行っている方は、[チュートリアル](#implementation-of-sample-solution)の手順を追った説明も参考にしてください。 内容に関するご意見や、ご利用法についてお聞かせください。
@@ -85,7 +88,7 @@ Azure サブスクリプションがない場合は、無料試用版のアカ�
 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account)」を参照してください。 サンプル ソリューションでは、Blob Storage を使用します。
 
 #### <a name="azure-batch-account"></a>Azure Batch アカウント
-[Azure Portal](http://manage.windowsazure.com/) を使用して、Azure Batch アカウントを作成します。 「 [Azure Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)」を参照してください。 Azure Batch のアカウント名とアカウント キーをメモしておきます。 また、 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して、Azure Batch アカウントを作成することもできます。 このコマンドレットの使用に関する詳細な手順については、「 [Azure Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md) 」を参照してください。
+[Azure Portal](http://portal.azure.com/) を使用して、Azure Batch アカウントを作成します。 「 [Azure Batch アカウントの作成と管理](../../batch/batch-account-create-portal.md)」を参照してください。 Azure Batch のアカウント名とアカウント キーをメモしておきます。 また、 [New-AzureRmBatchAccount](https://msdn.microsoft.com/library/mt603749.aspx) コマンドレットを使用して、Azure Batch アカウントを作成することもできます。 このコマンドレットの使用に関する詳細な手順については、「 [Azure Batch PowerShell コマンドレットの概要](../../batch/batch-powershell-cmdlets-get-started.md) 」を参照してください。
 
 サンプル ソリューションでは、(Azure Data Factory パイプラインを通じて間接的に) Azure Batch を使用して、仮想マシンの管理コレクションであるコンピューティング ノードのプールで、同じ方法でデータを処理します。
 

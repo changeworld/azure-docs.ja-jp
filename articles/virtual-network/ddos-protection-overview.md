@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/22/2017
 ms.author: kumud
-ms.openlocfilehash: 0130823b6a6f5a4883ad640c9bcefc89b82b2cd1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 76da0d4e805c732d40a7bd02e5c70973c792e26c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="azure-ddos-protection-standard-overview"></a>Azure DDoS Protection Standard の概要
 
@@ -35,12 +35,12 @@ Azure DDoS Protection をアプリケーション設計のベスト プラクテ
 
 ![Azure DDoS Protection Standard](./media/ddos-protection-overview/ddos-protection-overview-fig2.png)
 
-開発とテストのシナリオでは、自由に DDoS Protection Standard を試し、次のリソースを使用してエクスペリエンスに関するフィードバックを提供できます。
+開発環境、テスト環境、または運用環境で DDoS Protection Standard を試すことをお勧めします。 次のリソースを使用して、エクスペリエンスに関するフィードバックをご提供ください。
 - [Microsoft Azure フォーラム上の Azure DDoS Protection](https://feedback.azure.com/forums/905032-azure-ddos-protection)。 
 - [MSDN フォーラム上の Azure DDoS Protection](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=azureddosprotection)
 - [Stack Overflow 上の Azure DDoS Protection](https://stackoverflow.com/tags/azure-ddos/info)
 
-サポートの問題については、[Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md)ことができます。
+サポートの問題については、[Azure サポート チケットを開く](../azure-supportability/how-to-create-azure-support-request.md)ことができます。 DDoS Protection Standard がプレビュー版の場合は、ベストエフェート型のサポートが提供されます。
 
 ## <a name="types-of-ddos-attacks-that-ddos-protection-standard-mitigates"></a>DDoS Protection Standard によって軽減される DDoS 攻撃の種類
 

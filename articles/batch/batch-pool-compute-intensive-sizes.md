@@ -12,13 +12,13 @@ ms.workload: big-compute
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/31/2017
 ms.author: danlep
-ms.openlocfilehash: 8a1097353d24ad4c807803511e93c90394816138
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 7624a905f81024fa87f15164efc56a300843972d
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-rdma-capable-or-gpu-enabled-instances-in-batch-pools"></a>Batch プールでの RDMA 対応または GPU 対応インスタンスの使用
 
@@ -49,11 +49,11 @@ ms.lasthandoff: 10/11/2017
 
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | -------- | ----- |  -------- | ----- |
-| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | SUSE Linux Enterprise Server 12 HPC または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS。<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 8.0 ドライバー | 該当なし | 
-| [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS<br/>Red Hat Enterprise Linux 7.3<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
+| [H16r、H16mr、A8、A9](../virtual-machines/linux/sizes-hpc.md#rdma-capable-instances) | RDMA | Ubuntu 16.04 LTS、<br/>SUSE Linux Enterprise Server 12 HPC、または<br/>CentOS-based HPC<br/>(Azure Marketplace) | Intel MPI 5 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
+| [NC シリーズ*](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms) | NVIDIA Tesla K80 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA CUDA Toolkit 9.0 ドライバー | 該当なし | 
+| [NV シリーズ](../virtual-machines/linux/n-series-driver-setup.md#install-grid-drivers-for-nv-vms) | NVIDIA Tesla M60 GPU | Ubuntu 16.04 LTS、<br/>Red Hat Enterprise Linux 7.3 または<br/>CentOS-based 7.3<br/>(Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
-*NC24r VM の RDMA 接続は、Intel MPI がインストールされた CentOS-based 7.3 HPC でサポートされます。
+*NC24r VM の RDMA 接続は、Intel MPI がインストールされた Ubuntu 16.04 LTS または CentOS-based 7.3 HPC (Azure Marketplace から入手) でサポートされます。
 
 
 
@@ -62,10 +62,10 @@ ms.lasthandoff: 10/11/2017
 | サイズ | 機能 | オペレーティング システム | 必要なソフトウェア | プールの設定 |
 | -------- | ------ | -------- | -------- | ----- |
 | [H16r、H16mr、A8、A9](../virtual-machines/windows/sizes-hpc.md#rdma-capable-instances) | RDMA | Windows Server 2012 R2 または<br/>Windows Server 2012 (Azure Marketplace) | Microsoft MPI 2012 R2 以降または<br/> Intel MPI 5<br/><br/>HpcVMDrivers Azure VM 拡張機能 | ノード間通信を有効にし、同時実行タスクの実行を無効にする |
-| [NC シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 または <br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit 8.0 ドライバー| 該当なし | 
+| [NC シリーズ*](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla K80 GPU | Windows Server 2016 または <br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA Tesla ドライバーまたは CUDA Toolkit 9.0 ドライバー| 該当なし | 
 | [NV シリーズ](../virtual-machines/windows/n-series-driver-setup.md) | NVIDIA Tesla M60 GPU | Windows Server 2016 または<br/>Windows Server 2012 R2 (Azure Marketplace) | NVIDIA GRID 4.3 ドライバー | 該当なし |
 
-*NC24r VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2012 R2 でサポートされます。
+*NC24r VM の RDMA 接続は、HpcVMDrivers 拡張機能と Microsoft MPI または Intel MPI がインストールされた Windows Server 2012 R2 (Azure Marketplace から入手) でサポートされます。
 
 ### <a name="windows-pools---cloud-services-configuration"></a>Windows プール - クラウド サービス構成
 
@@ -119,9 +119,9 @@ Azure A8 ノードのプールで Windows MPI アプリケーションを実行�
 
 ## <a name="example-nvidia-tesla-drivers-on-nc-vm-pool"></a>例: NC VM プールの NVIDIA Tesla ドライバー
 
-Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit 8.0 をノードにインストールする必要があります。 この Toolkit により、必要な NVIDIA Tesla GPU ドライバーがインストールされます。 GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージをデプロイする手順の例を次に示します。
+Linux NC ノードのプールで CUDA アプリケーションを実行するには、CUDA Toolkit 9.0 をノードにインストールする必要があります。 この Toolkit により、必要な NVIDIA Tesla GPU ドライバーがインストールされます。 GPU ドライバーがインストールされたカスタム Ubuntu 16.04 LTS イメージをデプロイする手順の例を次に示します。
 
-1. Ubuntu 16.04 LTS を実行する Azure NC6 VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 VM は、Standard Storage を使用し、管理ディスクを使用*せずに*作成する必要があります。
+1. Ubuntu 16.04 LTS を実行する Azure NC6 VM をデプロイします。 たとえば、米国中南部リージョンに VM を作成します。 管理ディスクを使用して VM を作成してください。
 2. VM に接続し、[CUDA ドライバーをインストール](../virtual-machines/linux/n-series-driver-setup.md#install-cuda-drivers-for-nc-vms)する手順に従います。
 3. Linux エージェントをプロビジョニング解除した後、[Linux VM イメージをキャプチャ](../virtual-machines/linux/capture-image.md)します。
 4. NC VM をサポートするリージョンに Batch アカウントを作成します。
