@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
-ms.author: banders
-ms.openlocfilehash: 0b0d91b130172eb3506fdebb9547ab6ba5cc3780
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/26/2017
+ms.author: magoedte;banders
+ms.openlocfilehash: 1b0d0fa1afc94d5261443f6b08cb6f0c3518f3eb
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview-in-log-analytics"></a>Log Analytics の Azure SQL Analytics (プレビュー) を使用した Azure SQL Database の監視
 
@@ -38,17 +38,17 @@ Azure SQL Analytics ソリューションでは、Log Analytics サービスに�
 
 | 接続されているソース | サポート | 説明 |
 | --- | --- | --- |
-| [Windows エージェント](log-analytics-windows-agents.md) | いいえ | このソリューションでは、直接の Windows エージェントは使用されません。 |
-| [Linux エージェント](log-analytics-linux-agents.md) | いいえ | このソリューションでは、直接の Linux エージェントは使用されません。 |
-| [SCOM 管理グループ](log-analytics-om-agents.md) | いいえ | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
-| [Azure Storage アカウント](log-analytics-azure-storage.md) | いいえ | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
+| [Windows エージェント](log-analytics-windows-agents.md) | なし | このソリューションでは、直接の Windows エージェントは使用されません。 |
+| [Linux エージェント](log-analytics-linux-agents.md) | なし | このソリューションでは、直接の Linux エージェントは使用されません。 |
+| [SCOM 管理グループ](log-analytics-om-agents.md) | なし | このソリューションでは、SCOM エージェントから Log Analytics への直接接続は使用しません。 |
+| [Azure Storage アカウント](log-analytics-azure-storage.md) | なし | Log Analytics は、ストレージ アカウントからデータを読み取ることはしません。 |
 | [Azure 診断](log-analytics-azure-storage.md) | あり | Azure のメトリックおよびログ データは、Azure によって直接 Log Analytics に送信されます。 |
 
 ## <a name="prerequisites"></a>前提条件
 
 - Azure サブスクリプション。 持っていない場合は、[無料](https://azure.microsoft.com/free/)で作成できます。
-- Log Analytics ワークスペース。 既存のものを使用します。ソリューションの使用を開始する前に[新しく作成](log-analytics-get-started.md)することもできます。
-- Azure SQL データベースとエラスティック プールの Azure 診断を有効にして、[Log Analytics にデータを送信するように構成](https://blogs.technet.microsoft.com/msoms/2017/01/17/enable-azure-resource-metrics-logging-using-powershell/)します。
+- Log Analytics ワークスペース。 既存のものを使用します。ソリューションの使用を開始する前に[新しく作成](log-analytics-quick-create-workspace.md)することもできます。
+- Azure SQL データベースとエラスティック プールの Azure 診断を有効にして、[Log Analytics にデータを送信するように構成](../sql-database/sql-database-metrics-diag-logging.md)します。
 
 ## <a name="configuration"></a>構成
 
@@ -60,9 +60,9 @@ Azure SQL Analytics ソリューションをワークスペースに追加する
 3. **[監視 + 管理]** の一覧で、**[すべて表示]** をクリックします。
 4. **[Recommended (推奨)]** の一覧で **[詳細]** をクリックし、新しい一覧で **[Azure SQL Analytics (Preview) (Azure SQL Analytics (プレビュー))]** を探して選択します。  
     ![Azure SQL Analytics のソリューション](./media/log-analytics-azure-sql/azure-sql-solution-portal.png)
-5. **[Azure SQL Analytics (プレビュー)]** ウィンドウで、**[作成]** をクリックします。  
+5. **[Azure SQL Analytics (Preview) (Azure SQL Analytics (プレビュー))]** ブレードで、**[作成]** をクリックします。  
     ![作成](./media/log-analytics-azure-sql/portal-create.png)
-6. **[新しいソリューションの作成]** ウィンドウで、ソリューションを追加するワークスペースを選択し、**[作成]** をクリックします。  
+6. **[新しいソリューションの作成]** ブレードで、ソリューションを追加するワークスペースを選択し、**[作成]** をクリックします。  
     ![ワークスペースに追加](./media/log-analytics-azure-sql/add-to-workspace.png)
 
 
@@ -83,7 +83,7 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ## <a name="using-the-solution"></a>ソリューションの使用
 
 >[!NOTE]
-> Azure SQL Analytics の最新バージョンを取得するために、Log Analytics ワークスペースをアップグレードします。
+> Log Analytics をアップグレードして、Azure SQL Analytics の最新バージョンを取得してください。
 >
 
 ソリューションをワークスペースに追加すると、Azure SQL Analytics のタイルがワークスペースに追加され、[概要] に表示されます。 このタイルには、Azure SQL データベースと、ソリューションが接続されている Azure SQL エラスティック プールの数が表示されます。
@@ -96,26 +96,17 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 
 ![Azure SQL Analytics の概要](./media/log-analytics-azure-sql/azure-sql-sol-overview.png)
 
-タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。
+タイルのいずれかを選択すると、特定のパースペクティブでドリルダウン レポートが開きます。 パースペクティブを選択すると、ドリル ダウン レポートが開きます。
 
 ![Azure SQL Analytics のタイムアウト](./media/log-analytics-azure-sql/azure-sql-sol-timeouts.png)
 
 各パースペクティブは、サブスクリプション、サーバー、エラスティック プール、およびデータベース レベルの概要を提供します。 さらに、各パースペクティブは、右側にパースペクティブ特定のレポートを示します。 一覧からサブスクリプション、サーバー、プール、またはデータベースを選択するとドリル ダウンが続行されます。
 
-| パースペクティブ | Description |
-| --- | --- |
-| 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブです。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 |
-| 洞察 | インテリジェントな洞察の階層型のドリルダウンを提供します。 インテリジェントな洞察の詳細を参照してください。 |
-| Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します |
-| タイムアウト | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します |
-| ブロッキング | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します |
-| データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 |
-| クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 |
-| クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します |
+| パースペクティブ | 説明 | | 種類別のリソース | 監視対象のすべてのリソースをカウントするパースペクティブ。 ドリルダウンは、DTU および GB のメトリックの概要を示します。 | | Insights | Intelligent Insights に階層型のドリルダウンを提供します。 Intelligent Insights の詳細を参照してください。 | | Errors | データベースで発生した SQL エラーの階層型のドリルダウンを提供します。 | | タイムアウト | データベースで発生した SQL タイムアウトの階層型のドリルダウンを提供します。 | | Blockings | データベースで発生した SQL ブロッキングの階層型のドリルダウンを提供します。 | | データベース待機 | データベース レベルで発生した SQL 待機統計の階層型のドリルダウンを提供します。 合計待機時間と待機の種類ごとの待機時間の概要が含まれます。 | | クエリ実行時間 | クエリの実行時間、CPU 使用率、データ IO 使用率、ログ IO 使用率などのクエリ実行の統計の階層型のドリルダウンを提供します。 | | クエリ待機 | 待機カテゴリ別に、クエリ待機統計の階層型のドリルダウンを提供します、 |
 
 ### <a name="intelligent-insights-report"></a>Intelligent Insights レポート
 
-収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。 [Intelligent Insights の詳細については、こちらをクリックしてください](../sql-database/sql-database-intelligent-insights.md)
+収集されたすべてのインテリジェントな洞察を Insights パースペクティブを使用して視覚化およびアクセスできます。 
 
 ![Azure SQL Analytics Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
@@ -136,6 +127,9 @@ PS C:\> .\Enable-AzureRMDiagnostics.ps1 -WSID $WSID
 ### <a name="analyze-data-and-create-alerts"></a>データの分析とアラートの作成
 
 アラートは、Azure SQL Database リソースから送られるデータを使用して簡単に作成できます。 アラートに使用できる実用的な[ログ検索](log-analytics-log-searches.md)クエリを以下に 2 つ示しました。
+
+[!include[log-analytics-log-search-nextgeneration](../../includes/log-analytics-log-search-nextgeneration.md)]
+
 
 *高 DTU (Azure SQL Database 上)*
 
@@ -162,7 +156,7 @@ AzureMetrics | where ResourceProvider=="MICROSOFT.SQL" and ResourceId contains "
 6. **[アラート ルールの追加]** ページで、適切なプロパティと特定のしきい値を構成し、**[保存]** をクリックします。  
 ![アラート ルールの追加](./media/log-analytics-azure-sql/create-alert02.png)
 
-## <a name="see-also"></a>関連項目
+## <a name="next-steps"></a>次のステップ
 
 - Log Analytics の[ログ検索](log-analytics-log-searches.md)機能を使用して、詳細な Azure SQL データを確認します。
 - Azure SQL データを表示する[独自のダッシュ ボードを作成](log-analytics-dashboards.md)します。

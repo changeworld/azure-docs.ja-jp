@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/26/2017
 ms.author: kumud
-ms.openlocfilehash: 62d78e067e50183f25af84e547db2e11c0014f5d
-ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
+ms.openlocfilehash: e72fc0d4323f7a2d203fee66311c3fea10ad7a09
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/20/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="high-availability-ports-overview-preview"></a>高可用性ポートの概要 (プレビュー)
 
@@ -36,7 +36,7 @@ HA ポートを構成するには、フロント エンド ポートとバック
 
 ## <a name="why-use-ha-ports"></a>HA ポートを使用する理由
 
-### <a name="network-virtual-appliances"></a>ネットワーク仮想アプライアンス
+### <a name="nva"></a>ネットワーク仮想アプライアンス
 
 ネットワーク仮想アプライアンス (NVA) により、さまざまなセキュリティの脅威から Azure ワークロードを保護できます。 こうしたシナリオで使用する NVA は、信頼性と可用性に優れ、必要に応じてスケールアウトできなければなりません。
 
@@ -139,6 +139,8 @@ HA ポートでサポートされる構成または例外は次のとおりで�
 - 個々のフロントエンド IP 構成のすべてが一意であれば、1 つのネットワーク インターフェイス IP 構成は、HA ポートが指定された 1 つまたは複数の DSR ロード バランサー ルールを持つことができます。
 - すべての負荷分散規則が HA ポート (DSR のみ) の場合、またはすべての規則が HA ポート以外 (DSR および DSR 以外) の場合、同じバックエンド プールを示す複数の Load Balancer ルールが共存できます。 このような 2 つの負荷分散規則は、HA ポートと HA ポート以外のルールの組み合わせがある場合は共存できません。
 - HA ポートは、IPv6 では使用できません。
+- NVA シナリオのフロー対称は、単一の NIC のみでサポートされます。 [ネットワーク仮想アプライアンス](#nva)の説明と図を参照してください。 
+
 
 
 ## <a name="next-steps"></a>次のステップ

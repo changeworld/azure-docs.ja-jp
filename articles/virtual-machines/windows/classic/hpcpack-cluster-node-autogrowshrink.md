@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-multiple
 ms.workload: big-compute
 ms.date: 12/08/2016
 ms.author: danlep
-ms.openlocfilehash: 0dc0d15c64d8951c3c457df73588c37418a3c8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c8a5aacd19d83b26cfeb3750d57dd783687f1c4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="automatically-grow-and-shrink-the-hpc-pack-cluster-resources-in-azure-according-to-the-cluster-workload"></a>クラスターのワークロードに合わせて Azure の HPC Pack クラスター リソースを自動的に拡大縮小する
 HPC Pack クラスターで Azure の "バースト" ノードをデプロイする場合、あるいは Azure VM で HPC Pack クラスターを作成する場合、クラスターのワークロードに合わせて、ノードやコアなどのクラスター リソースを自動的に増減できれば便利です。 この方法でクラスター リソースをスケーリングすると、Azure リソースをさらに効率的に利用し、そのコストを制御できます。
@@ -178,7 +178,7 @@ Set-HpcClusterProperty –ExcludeNodeGroups <group1,group2,group3>
     Set-HpcClusterProperty -ExtraNodesGrowRatio 10
 
 ### <a name="soa-example"></a>SOA の例
-既定では、**SoaJobGrowThreshold** は 50000 に設定され、**SoaRequestsPerCore** は 200000 に設定されています。 要求が 70000 件ある 1 つの SOA ジョブを送信する場合、キューに登録されるタスクは 1 つであり、受信要求数は 70000 件です。 この場合、HPC Pack はキューに登録されたタスクで 1 コアを拡大し、受信要求で (70000 - 50000)/20000 = 1 コアを拡大します。そのため、この SOA ジョブでは合計 2 コアを拡大します。
+既定では、**SoaJobGrowThreshold** は 50000 に設定され、**SoaRequestsPerCore** は 20000 に設定されています。 要求が 70000 件ある 1 つの SOA ジョブを送信する場合、キューに登録されるタスクは 1 つであり、受信要求数は 70000 件です。 この場合、HPC Pack はキューに登録されたタスクで 1 コアを拡大し、受信要求で (70000 - 50000)/20000 = 1 コアを拡大します。そのため、この SOA ジョブでは合計 2 コアを拡大します。
 
 ## <a name="run-the-azureautogrowshrinkps1-script"></a>AzureAutoGrowShrink.ps1 スクリプトを実行する
 ### <a name="prerequisites"></a>前提条件

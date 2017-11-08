@@ -9,11 +9,11 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 09/26/2017
-ms.openlocfilehash: 3c8f6a66b3dd1564bc5eafbecafee6e2f1542caa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dbb9f733455fa0492358b24b178c8c637ff08c71
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="explaining-compute-units-in-azure-database-for-postgresql"></a>Azure Database for PostgreSQL のコンピューティング ユニットについて
 このトピックでは、コンピューティング ユニットの概念と、ワークロードが最大コンピューティング ユニット レベルに達した場合に何が起こるかについて説明します。
@@ -21,7 +21,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="what-are-compute-units"></a>コンピューティング ユニットとは
 コンピューティング ユニットは、単一の Azure Database for PostgreSQL サーバーで使用できることが保証される CPU 処理スループットの測定値で、 CPU とメモリ リソースを組み合わせた測定値です。 一般に、50 個のコンピューティング ユニットは、コアの半分と同等です。 100 個のコンピューティング ユニットは、1 つのコアと同等です。 2000 個のコンピューティング ユニットは、サーバーで使用可能な保証された処理スループットの 20 個のコアと同等です。
 
-コンピューティング ユニットあたりのメモリ量は、Basic および Standard 価格レベル用に最適化されています。 パフォーマンス レベルを上げてコンピューティング ユニットを 2 倍にすると、その単一の Azure Database for PostgreSQL が利用できるリソース セットを 2 倍にした場合と同じ効果が得られます。
+コンピューティング ユニットあたりのメモリ量は、Basic および Standard 価格レベル用に最適化されています。 パフォーマンス レベルを上げてコンピューティング ユニットを 2 倍にすると、単一の Azure Database for PostgreSQL が利用できる CPU とメモリの量が 2 倍にした場合と同じ効果が得られます。
 
 たとえば、Standard 800 コンピューティング ユニットでは、Standard 100 コンピューティング ユニット構成よりも 8 倍の CPU スループットとメモリを実現します。 ただし、Standard 100 コンピューティング ユニットの CPU スループットは、Basic 100 コンピューティング ユニットと同じですが、Standard 価格レベルで事前構成されたメモリ量は、Basic 価格レベルで構成されているメモリ量の 2 倍になります。 そのため、Standard 価格レベルでは、同じコンピューティング ユニットが選択された Basic 価格レベルより、ワークロードのパフォーマンスが向上し、トランザクションの待ち時間が減少します。
 
