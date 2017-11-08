@@ -12,13 +12,13 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: reference
-ms.date: 06/13/2017
+ms.date: 10/18/2017
 ms.author: mimig
-ms.openlocfilehash: 0a05f4ee86d2dcca40dc0b5ec2c503ba0b8bfe8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4907df15fddfb7d8d6128dc994b0920ca601f2c7
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-cosmos-db-documentdb-api-sql-syntax-reference"></a>Azure Cosmos DB DocumentDB API: SQL 構文リファレンス
 
@@ -2446,12 +2446,12 @@ SELECT ARRAY_CONCAT(["apples", "strawberries"], ["bananas"])
 ```  
   
 ####  <a name="bk_array_contains"></a> ARRAY_CONTAINS  
- 配列に指定された値が含まれているかどうかを示すブール値を返します。  
-  
+配列に指定された値が含まれているかどうかを示すブール値を返します。 一致が完全か部分的かを指定できます。 
+
  **構文**  
   
 ```  
-ARRAY_CONTAINS (<arr_expr>, <expr>)  
+ARRAY_CONTAINS (<arr_expr>, <expr> [, bool_expr])  
 ```  
   
  **引数**  
@@ -2463,6 +2463,10 @@ ARRAY_CONTAINS (<arr_expr>, <expr>)
 -   `expr`  
   
      任意の有効な式です。  
+
+-   `bool_expr`  
+  
+     任意のブール式です。       
   
  **戻り値の型**  
   
@@ -2482,6 +2486,25 @@ SELECT
   
 ```  
 [{"$1": true, "$2": false}]  
+```  
+
+ 次の例では、ARRAY_CONTAINS を使用して、配列内 JSON の部分一致を確認する方法を示します。  
+  
+```  
+SELECT  
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}, true), 
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "apples"}),
+    ARRAY_CONTAINS([{"name": "apples", "fresh": true}, {"name": "strawberries", "fresh": true}], {"name": "mangoes"}, true) 
+```  
+  
+ 結果セットは次のようになります。  
+  
+```  
+[{
+  "$1": true,
+  "$2": false,
+  "$3": false
+}] 
 ```  
   
 ####  <a name="bk_array_length"></a> ARRAY_LENGTH  

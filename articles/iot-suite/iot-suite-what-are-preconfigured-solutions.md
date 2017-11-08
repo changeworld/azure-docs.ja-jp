@@ -1,6 +1,6 @@
 ---
-title: "Azure IoT の構成済みソリューション | Microsoft Docs"
-description: "Azure IoT の構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
+title: "Azure IoT Suite 構成済みソリューションの概要 | Microsoft Docs"
+description: "Azure IoT Suite 構成済みソリューションとそのアーキテクチャ (追加リソースのリンクを含む) の説明。"
 services: 
 suite: iot-suite
 documentationcenter: 
@@ -15,33 +15,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2017
 ms.author: dobett
-ms.openlocfilehash: e0e79cb3b4c71c5d424f3b46af72fcb8b2f63ead
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 502b7678e0c47f594291409a9ede976dea3895e5
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
-# <a name="what-are-the-azure-iot-suite-preconfigured-solutions"></a>Azure IoT Suite の構成済みソリューションとは
+# <a name="what-is-azure-iot-suite"></a>Azure IoT Suite とは
 
-Azure IoT Suite の構成済みソリューションとは、サブスクリプションを使用して Azure にデプロイできる一般的な IoT ソリューション パターンの実装です。 構成済みソリューションは次の用途で使用できます。
+Azure IoT Suite は一連の "*構成済みソリューション*" で、次の特長があります。
 
-* 独自の IoT ソリューションの開始点として。
-* IoT ソリューションの設計と開発で一般的なパターンについて学習するため。
+* 数分でデプロイ
+* すぐに開始できるようにサポート
+* 特定の要件に合わせてカスタマイズ可能
 
-構成済みの各ソリューションは、シミュレートされたデバイスを使用してテレメトリを生成することができる、完全なエンド ツー エンドの実装です。
+*IoT Suite* 構成済みソリューションは、すべて同じ原則と目標に基づいて設計されています。
 
-完全なソース コードをダウンロードして、特定の IoT 要件を満たすようにソリューションをカスタマイズして拡張することができます。
+## <a name="preconfigured-solutions-overview"></a>構成済みソリューションの概要
 
-> [!NOTE]
-> 構成済みソリューションのいずれかをデプロイするには、[Microsoft Azure IoT Suite][lnk-azureiotsuite] にアクセスしてください。 [IoT 事前構成済みソリューションの使用][lnk-getstarted-preconfigured]に関する記事では、ソリューションのいずれかをデプロイして実行する方法について詳しく説明しています。
+構成済みソリューションとは、サブスクリプションを使用して Azure にデプロイできる、一般的な IoT ソリューション パターンのオープン ソース実装です。 構成済みソリューションごとに、カスタム コードと Azure サービスを組み合わせて、特定の IoT シナリオを実装します。 こうしたシナリオはどれも、特定の要件に合わせてカスタマイズできます。 これらのシナリオは、次のとおりです。
+
+* 充実したダッシュボードでデータを視覚化し、深い洞察とソリューションの状態を確認する。
+* ライブ IoT デバイス テレメトリに対してルールとアラームを構成する。
+* ソフトウェアと構成の更新など、デバイス管理ジョブをスケジュール設定する。
+* 独自のカスタム物理デバイスまたはシミュレートされたデバイスをプロビジョニングする。
+* トラブルシューティングを行い、IoT デバイス グループ内の問題を修復する。
+
+構成済みソリューションはそれぞれ、シミュレートされたデバイスまたは物理デバイスを使用してテレメトリを生成できる、完全なエンド ツー エンドの実装です。 構成済みソリューションは、ソリューション アクセラレータとして、次の用途でご利用いただけます。
+
+* 独自の IoT ソリューションの開始点を提供する。
+* IoT ソリューションの設計と開発における一般的なパターンについて学習する。
+
+次の 3 つの構成済みソリューションを今すぐ利用できます。
+
+* [リモート監視](iot-suite-remote-monitoring-explore.md)
+* [予測的なメンテナンス](iot-suite-predictive-overview.md)
+* [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md)
 
 次の表は、ソリューションが特定の IoT 機能にどのようにマップされるかを示しています。
 
-| 解決策 | データの取り込み | デバイス ID | デバイス管理 | コマンドと制御 | ルールとアクション | 予測分析 |
-| --- | --- | --- | --- | --- | --- | --- |
-| [リモート監視][lnk-getstarted-preconfigured] |はい |あり |あり |あり |はい |- |
-| [予測的なメンテナンス][lnk-predictive-maintenance] |はい |あり |- |あり |あり |はい |
-| [コネクテッド ファクトリ][lnk-getstarted-factory] |あり |あり |あり |あり |はい |- |
+| 解決策 | データの取り込み | デバイス ID | デバイス管理 | エッジ処理 | コマンドと制御 | ルールとアクション | 予測分析 |
+| ------------------------------------------------------------ | -- | -- | -- | -- | -- | -- | -- |
+| [リモート監視](iot-suite-remote-monitoring-explore.md)  |あり |あり |あり |-   |あり |あり |-   |
+| [予測的なメンテナンス](iot-suite-predictive-overview.md)   |あり |あり |-   |-   |あり |あり |あり |
+| [コネクテッド ファクトリ](iot-suite-connected-factory-overview.md) |あり |あり |あり |あり |あり |はい |-   |
 
 * *データの取り込み*: クラウドへの大規模なデータの取り込み。
 * "*デバイス ID*": 一意のデバイス ID を管理し、ソリューションへのデバイス アクセスを制御します。
@@ -50,128 +67,84 @@ Azure IoT Suite の構成済みソリューションとは、サブスクリプ�
 * "*ルールとアクション*": 特定のデバイスからクラウドへのデータを操作するには、ソリューション バックエンドでルールを使用します。
 * "*予測分析*": ソリューション バックエンドはデバイスからクラウドへのデータを分析して、特定のアクションを実行するタイミングを予測します。 たとえば、航空機エンジンのテレメトリを分析して、エンジンのメンテナンス時期を判断できます。
 
-## <a name="remote-monitoring-preconfigured-solution-overview"></a>リモート監視の構成済みソリューションの概要
+> [!NOTE]
+> 構成済みソリューションをデプロイしたり、カスタマイズ方法の詳細を確認したりするには、[Microsoft Azure IoT Suite](https://www.azureiotsuite.com/) に関するページをご覧ください。
 
-この記事では、リモート監視の構成済みソリューションについて説明します。このソリューションを選択したのは、他のソリューションと共通する一般的な設計要素がたくさん使用されているためです。
+## <a name="azure-services"></a>Azure サービス
 
-次の図は、リモート監視ソリューションの主な要素を示しています。 以降のセクションでは、これらの要素について詳しく説明します。
+構成済みソリューションをデプロイすると、プロビジョニング プロセスによりいくつかの Azure サービスが構成されます。 次の表は、構成済みソリューションで使用されるサービスを示しています。
 
-![リモート監視の構成済みソリューションのアーキテクチャ][img-remote-monitoring-arch]
+|                      | リモート監視  | 予測的なメンテナンス | コネクテッド ファクトリ |
+| -------------------- | ------------------ | ---------------------- | ----------------- |
+| IoT Hub              | あり                |                        | あり               |
+| Event Hubs           |                    | あり                    |                   |
+| Time Series Insights |                    |                        | あり               |
+| コンテナー サービス   | あり                |                        | あり               |
+| Stream Analytics     |                    | あり                    |                   |
+| Web Apps             | あり                | あり                    | あり               |
+| Cosmos DB            | あり                | あり                    | あり               |
+| Azure テーブル         |                    | あり                    | あり               |
 
-## <a name="devices"></a>デバイス
+* [Azure IoT Hub](../iot-hub/index.md)。 このサービスは、デバイスからクラウドへ、およびクライアントからデバイスへのメッセージング機能を提供し、クラウドや他の主要な IoT Suite サービスに対するゲートウェイとして機能します。 このサービスを使用すると、デバイスから大規模にメッセージを受信し、デバイスにコマンドを送信することができます。 また、サービスを使用すると[デバイスを管理](../iot-hub/iot-hub-device-management-overview.md)することもできます。 たとえば、ハブに接続されている 1 台以上のデバイスで、構成、再起動、または出荷時の設定へのリセットを実行できます。
+* [Azure Event Hubs](../event-hubs/index.md)。 このサービスは、クラウドに大量のイベント インジェストを提供します。 「[Azure IoT Hub と Azure Event Hubs の比較](../iot-hub/iot-hub-compare-event-hubs.md)」を参照してください。
+* [Azure Time Series Insights](../time-series-insights/index.md)。 構成済みソリューションは、このサービスを使用して、デバイスの利用統計情報を分析および表示します。
+* [Azure Container Service](../container-service/index.yml)。 このサービスは、構成済みソリューションにおいてマイクロサービスをホストおよび管理します。
+* データ ストレージ用の [Azure Cosmos DB](../cosmos-db/index.yml) および [Azure Storage](../storage/index.yml)。
+* [Azure Stream Analytics](../stream-analytics/index.md)。 予測メンテナンス構成済みソリューションは、このサービスを利用して、受信テレメトリを処理し、集計を実行してイベントを検出します。 また、この構成済みソリューションは、ストリーム分析を使用して、メタデータやデバイスからのコマンド応答などのデータを含む情報メッセージも処理します。
+* [Azure Web Apps](../app-service/index.yml)。構成済みソリューションにおいてカスタム アプリケーション コードをホストします。
 
-リモート監視の構成済みソリューションをデプロイすると、冷却デバイスをシミュレートする 4 つのシミュレートされたデバイスがソリューション内で事前にプロビジョニングされます。 これらのシミュレートされたデバイスには、テレメトリを出力する温度と湿度モデルが組み込まれています。 シミュレートされたデバイスが組み込まれている目的を次に示します。
+一般的な IoT ソリューションのアーキテクチャの概要については、[Microsoft Azure とモノのインターネット (IoT)](iot-suite-what-is-azure-iot.md) に関するページをご覧ください。
 
-- ソリューションを使用したエンド ツー エンドのデータ フローを示す。
-- テレメトリの便利なソースを提供する。
-- バックエンド開発者がソリューションをカスタム実装の開始点として使用する場合に、メソッドまたはコマンドのターゲットを提供する。
+## <a name="whats-new-in-preconfigured-solutions"></a>構成済みソリューションの新機能
 
-ソリューション内のシミュレートされたデバイスは、次のクラウドとデバイス間の通信に応答できます。
+マイクロソフトでは、構成済みソリューションを、マイクロサービス ベースの新しいアーキテクチャに更新しています。 次の表は、構成済みソリューションの現在の状態を示しています。
 
-- "*メソッド ([ダイレクト メソッド][lnk-direct-methods])*": 双方向の通信メソッドで、接続されたデバイスが直ちに応答することが想定されます。
-- "*コマンド (クラウドとデバイス間のメッセージ)*": 一方向の通信メソッドで、デバイスが持続性のあるキューからコマンドを取得します。
+| 構成済みのソリューション | アーキテクチャ  | 言語     |
+| ---------------------- | ------------- | ------------- |
+| リモート監視      | マイクロサービス | Java と .NET |
+| 予測的なメンテナンス | MVC           | .NET          |
+| コネクテッド ファクトリ      | MVC           | .NET          |
 
-このさまざまなアプローチの比較については、「[cloud-to-device 通信に関するガイダンス][lnk-c2d-guidance]」を参照してください。
+次のセクションでは、マイクロサービス ベースの構成済みソリューションの新機能について説明します。
 
-構成済みソリューションの IoT Hub に初めて接続したデバイスは、デバイス情報メッセージをハブに送信します。 このメッセージには、デバイスが応答できるメソッドの一覧が列挙されています。 リモート監視の構成済みソリューションで、シミュレートされたデバイスがサポートするメソッドは次のとおりです。
+### <a name="microservices"></a>マイクロサービス
 
-* "*ファームウェア更新を開始*": このメソッドはデバイスで非同期タスクを開始して、ファームウェア更新を実行します。 非同期タスクは、報告されたプロパティを使用して、ソリューション ダッシュボードに状態の更新を提供します。
-* "*再起動*": このメソッドにより、シミュレートされたデバイスが再起動されます。
-* "*出荷時の設定にリセット*": このメソッドにより、シミュレートされたデバイスで、出荷時の設定へのリセットがトリガーされます。
+新しいバージョンのリモート監視構成済みソリューションでは、マイクロサービス アーキテクチャが採用されています。 この構成済みソリューションは、"*IoT Hub マネージャー*" や "*Storage マネージャー*" など、複数のマイクロサービスで構成されます。 各マイクロサービスの Java バージョンと .NET バージョンの両方を、関連する開発者向けドキュメントと共にダウンロードすることができます。 マイクロサービスの詳細については、[リモート管理アーキテクチャ](iot-suite-remote-monitoring-sample-walkthrough.md)に関するページをご覧ください。
 
-構成済みソリューションの IoT Hub に初めて接続したデバイスは、デバイス情報メッセージをハブに送信します。 このメッセージには、デバイスが応答できるコマンドの一覧が列挙されています。 リモート監視の構成済みソリューションで、シミュレートされたデバイスがサポートするコマンドは次のとおりです。
+このマイクロサービス アーキテクチャは、クラウド ソリューションの実証済みのパターンで、次の特長があります。
 
-* *デバイスの ping*: デバイスは、確認応答を伴って、このコマンドに応答します。 このコマンドは、デバイスがまだアクティブでリッスンしていることを確認するときに役に立ちます。
-* *テレメトリの開始*: テレメトリの送信を開始するようデバイスに指示します。
-* *テレメトリの停止*: テレメトリの送信を停止するようデバイスに指示します。
-* *設定点温度の変更*: デバイスが送信するシミュレートされた温度テレメトリ値を制御します。 このコマンドは、バックエンド ロジックをテストするときに役に立ちます。
-* *診断テレメトリ*: デバイスが外部温度をテレメトリとして送信するかどうかを制御します。
-* *デバイス状態の変更*: デバイスが報告するデバイスの状態のメタデータ プロパティを設定します。 このコマンドは、バックエンド ロジックをテストするときに役に立ちます。
+* スケーラブル。
+* 拡張性を実現。
+* わかりやすい。
+* 個々のサービスをスワップ アウトして代替サービスを使用可能。
 
-同じテレメトリを出力し、同じメソッドとコマンドに応答するシミュレートされたデバイスをソリューションに追加できます。
+> [!TIP]
+> マイクロサービス アーキテクチャの詳細については、「[.NET Application Architecture (.NET アプリケーション アーキテクチャ)](https://www.microsoft.com/net/learn/architecture)」および「[Microservices: An application revolution powered by the cloud. (マイクロサービス: クラウドによって実現されるアプリケーションの革命)](https://azure.microsoft.com/blog/microservices-an-application-revolution-powered-by-the-cloud/)」を参照してください。
 
-ソリューションは、コマンドとメソッドに応答するだけでなく、[デバイス ツイン][lnk-device-twin]を使用します。 デバイスは、プロパティ値をソリューション バックエンドにレポートするときに、デバイス ツインを使用します。 ソリューション ダッシュボードは、デバイス上で新しい必要なプロパティ値に設定するときに、デバイス ツインを使用します。 たとえば、ファームウェアの更新プロセス中、シミュレートされたデバイスは、レポートされたプロパティを使用して更新の状態をレポートします。
+リモート監視の新しいバージョンをデプロイする場合は、次のデプロイ オプションのいずれかを選択する必要があります。
 
-## <a name="iot-hub"></a>IoT Hub
+* **Basic:** デモまたはデプロイ テストのための低コスト バージョン。 すべてのマイクロサービスが 1 つの Azure 仮想マシンにデプロイされます。
+* **Enterprise:** 運用環境のデプロイを開発するための拡張インフラストラクチャ デプロイ。 Azure Container Service により、マイクロサービスが複数の Azure 仮想マシンにデプロイされます。 個々のマイクロサービスをホストする Docker コンテナーは、Kubernetes によって調整されます。
 
-この構成済みソリューションの IoT Hub インスタンスは、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の*クラウド ゲートウェイ*に相当します。
+### <a name="language-choices-java-and-net"></a>言語の選択肢: Java と .NET
 
-IoT Hub は、1 つのエンドポイントのデバイスからテレメトリを受信します。 また、IoT Hub は、デバイス固有のエンドポイントも保持します。各デバイスは、送信されたコマンドをエンドポイントで取得できます。
+Java と .NET の両方で、各マイクロサービスの実装を使用できます。 .NET コードと同様に、Java ソース コードはオープン ソースであり、開発者固有の要件に合わせてカスタマイズできます。
 
-IoT Hub は、受信したテレメトリをサービス側のテレメトリ読み取りエンドポイントを介して使用できるようにします。
+* [.NET GitHub リポジトリのリモート監視](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet)
+* [Java GitHub リポジトリのリモート監視](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java)
 
-IoT Hub のデバイス管理機能を使用すると、ソリューション ポータルからデバイスのプロパティを管理し、次の操作を実行するジョブのスケジュールを設定できます。
+その他の言語の実装を確認する場合は、[Azure IoT ユーザーの声](https://feedback.azure.com/forums/321918-azure-iot)にリクエストを追加してください。
 
-- デバイスの再起動
-- デバイスの状態の変更
-- ファームウェアの更新
+### <a name="react-user-interface-framework"></a>React のユーザー インターフェイス フレームワーク
 
-## <a name="azure-stream-analytics"></a>Azure Stream Analytics
-
-構成済みソリューションでは、次の 3 つの [Azure Stream Analytics][lnk-asa] (ASA) ジョブを使用して、デバイスのテレメトリ ストリームをフィルターします。
-
-* "*DeviceInfo ジョブ*" - イベント ハブにデータを出力します。このイベント ハブにより、デバイス登録固有のメッセージが、ソリューションのデバイス レジストリにルーティングされます。 このデバイス レジストリは、Azure Cosmos DB のデータベースです。 これらのメッセージは、デバイスが最初に接続するとき、または**デバイス状態の変更**コマンドに応答して送信されます。
-* *Telemetry ジョブ* - Azure Blob Storage にコールド ストレージの未加工のテレメトリをすべて送信し、ソリューションのダッシュボードに表示されるテレメトリの集計を行います。
-* *Rules ジョブ* - テレメトリ ストリームをフィルターして、いずれかのルールのしきい値を超える値を絞り込み、そのデータをイベント ハブに出力します。 ルールが実行されると、このイベントは、ソリューション ポータルのダッシュボード ビューに、アラーム履歴テーブルの新しい行として表示されます。 このルールは、ソリューション ポータルの**ルール** ビューおよび**アクション** ビューで定義された設定に基づいて、アクションをトリガーすることもできます。
-
-この構成済みソリューションでは、ASA ジョブは一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の **IoT ソリューション バックエンド**の一部です。
-
-## <a name="event-processor"></a>イベント プロセッサ
-
-この構成済みソリューションでは、イベント プロセッサは一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の **IoT ソリューション バックエンド**の一部です。
-
-**DeviceInfo** と **Rules** の各 ASA ジョブは、他のバックエンド サービスに配信するために出力をイベント ハブに送信します。 このソリューションでは、[Web ジョブ][lnk-web-job]で実行される [EventProcessorHost][lnk-event-processor] インスタンスを使用して、これらのイベント ハブからメッセージを読み取ります。 **EventProcessorHost** は次のように動作します。
-- **DeviceInfo** データを使用して、Cosmos DB データベースのデバイス データを更新します。
-- **Rules** データを使用して、ロジック アプリを呼び出し、ソリューション ポータルのアラートの表示を更新します。
-
-## <a name="device-identity-registry-device-twin-and-cosmos-db"></a>デバイス ID レジストリ、デバイス ツイン、Cosmos DB
-
-すべての IoT Hub には、デバイス キーを格納する[デバイス ID レジストリ][lnk-identity-registry]が含まれています。 IoT Hub は、この情報を使用してデバイスを認証します (ハブに接続する前に、デバイスが登録され、有効なキーを持っている必要があります)。
-
-[デバイス ツイン][lnk-device-twin]は、IoT Hub によって管理される JSON ドキュメントです。 デバイスのデバイス ツインには次が含まれています。
-
-- デバイスによってハブに送信された報告済みプロパティ。 このプロパティは、ソリューション ポータルに表示できます。
-- デバイスに送信する必要なプロパティ。 このプロパティは、ソリューション ポータルで設定できます。
-- デバイス ツインにのみ存在し、デバイスには存在しないタグ。 このタグを使用して、ソリューション ポータルのデバイスの一覧にフィルターを適用できます。
-
-このソリューションでは、デバイス ツインを使用してデバイス メタデータを管理します。 また、Cosmos DB データベースを使用して、ソリューション固有の追加のデバイス データ (各デバイスがサポートするコマンドやコマンドの履歴など) を格納することもできます。
-
-このソリューションでは、デバイス ID レジストリの情報と Cosmos DB データベースのコンテンツの同期が維持されている必要もあります。 **EventProcessorHost** では、**DeviceInfo** Stream Analytics ジョブのデータを使用して、同期を管理します。
-
-## <a name="solution-portal"></a>ソリューション ポータル
-
-![ソリューション ポータル][img-dashboard]
-
-ソリューション ポータルは、構成済みソリューションの一部としてクラウドにデプロイされている Web ベースの UI です。 ソリューション ポータルでは、次の操作を実行できます。
-
-* ダッシュボードにテレメトリとアラームの履歴を表示します。
-* 新しいデバイスをプロビジョニングします。
-* デバイスを管理し、監視します。
-* 特定のデバイスにコマンドを送信します。
-* 特定のデバイスでメソッドを呼び出します。
-* ルールとアクションを管理します。
-* 1 台以上のデバイスで実行するジョブのスケジュールを設定します。
-
-この構成済みソリューションでは、ソリューション ポータルは **IoT ソリューション バックエンド**の一部です。また、一般的な [IoT ソリューション アーキテクチャ][lnk-what-is-azure-iot]の**処理とビジネスの接続**に含まれています。
+UI は、[React](https://facebook.github.io/react/) JavaScript ライブラリを使用して作成されます。 ソース コードはオープン ソースであり、ダウンロードしてカスタマイズできます。
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)][lnk-refarch]」を参照してください。
+これで IoT Suite 構成済みソリューションの概要を確認できました。各構成済みソリューションで推奨される次の手順は以下のとおりです。
 
-構成済みソリューションについて理解した後は、[構成済みソリューションの使用][lnk-getstarted-preconfigured]に関するチュートリアルを参照して、"*リモート監視*" の構成済みソリューションをデプロイしましょう。
+* [Azure IoT Suite リモート監視ソリューションの Resource Manager デプロイメント モデルを確認する](iot-suite-remote-monitoring-explore.md)。
+* [予測メンテナンス構成済みソリューションの概要](iot-suite-predictive-overview.md)。
+* [コネクテッド ファクトリ構成済みソリューションの概要](iot-suite-connected-factory-overview.md)。
 
-[img-remote-monitoring-arch]: ./media/iot-suite-what-are-preconfigured-solutions/remote-monitoring-arch1.png
-[img-dashboard]: ./media/iot-suite-what-are-preconfigured-solutions/dashboard.png
-[lnk-what-is-azure-iot]: iot-suite-what-is-azure-iot.md
-[lnk-asa]: https://azure.microsoft.com/documentation/services/stream-analytics/
-[lnk-event-processor]: ../event-hubs/event-hubs-programming-guide.md#event-processor-host
-[lnk-web-job]: ../app-service/web-sites-create-web-jobs.md
-[lnk-identity-registry]: ../iot-hub/iot-hub-devguide-identity-registry.md
-[lnk-predictive-maintenance]: iot-suite-predictive-overview.md
-[lnk-azureiotsuite]: https://www.azureiotsuite.com/
-[lnk-refarch]: http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf
-[lnk-getstarted-preconfigured]: iot-suite-getstarted-preconfigured-solutions.md
-[lnk-c2d-guidance]: ../iot-hub/iot-hub-devguide-c2d-guidance.md
-[lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
-[lnk-direct-methods]: ../iot-hub/iot-hub-devguide-direct-methods.md
-[lnk-getstarted-factory]: iot-suite-connected-factory-overview.md
+IoT ソリューション アーキテクチャの詳細については、「[Microsoft Azure IoT Reference Architecture (Microsoft Azure IoT リファレンス アーキテクチャ)](http://download.microsoft.com/download/A/4/D/A4DAD253-BC21-41D3-B9D9-87D2AE6F0719/Microsoft_Azure_IoT_Reference_Architecture.pdf)」を参照してください。

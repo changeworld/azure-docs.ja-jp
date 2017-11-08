@@ -2,21 +2,21 @@
 title: "Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)"
 description: "Azure Site Recovery サービスを使用して、別の Azure リージョンへの Azure VM のディザスター リカバリーを設定する方法について説明します。"
 services: site-recovery
-author: rajani-janaki-ram
+author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
-ms.date: 09/18/2017
-ms.author: rajanaki
+ms.date: 11/01/2017
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 9a92bf402863fd1ee688fba7c20d3a2cd3e299da
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2608e0e0c87df1e7c6d034cf0977ed0e16b128cf
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリーを設定する (プレビュー)
 
@@ -129,7 +129,11 @@ Site Recovery は、サブスクリプションとリソース グループ/ク�
 
 Site Recovery では、ターゲット リージョンの既定の設定とレプリケーション ポリシーが作成されます。 設定は、要件に基づいて変更できます。
 
+1. **[設定]** をクリックしてターゲット設定を表示します。
+2. 既定のターゲット設定を上書きするには、**[カスタマイズ]** をクリックします。 
+
 ![設定を構成する](./media/azure-to-azure-tutorial-enable-replication/settings.png)
+
 
 - **ターゲットの場所**: ディザスター リカバリーに使用するターゲット リージョン。 ターゲットの場所が Site Recovery コンテナーの場所と一致していることをお勧めします。
 
@@ -142,7 +146,7 @@ Site Recovery では、ターゲット リージョンの既定の設定とレ�
 
 - **ターゲット ストレージ アカウント**: 既定では、Site Recovery はターゲット リージョンに新しいストレージ アカウントを作成して、ソース VM のストレージ アカウントをミラーします。
 
-- **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。
+- **ターゲットの可用性セット:** 既定では、Site Recovery は "asr" サフィックスを付けて、新しい可用性セットをターゲット リージョンに作成します。 VM がソース リージョンにあるセットの一部である場合、可用性セットのみを追加できます。
 
 - **レプリケーション ポリシー名** : ポリシーの名前。
 

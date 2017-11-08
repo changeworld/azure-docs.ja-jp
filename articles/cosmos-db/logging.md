@@ -12,17 +12,17 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/12/2017
 ms.author: mimig
-ms.openlocfilehash: 34c46fb282ad154225f5ee8ef544bc8da1c50016
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 407a9a3be4ae8a9b00a953914e6b4414d8dac8b6
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="azure-cosmos-db-diagnostic-logging"></a>Azure Cosmos DB 診断ログ
 
-1 つまたは複数の Azure Cosmos DB データベースを使用し始めた場合、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 Azure Cosmos DB の診断ログなら、この監視を実行できます。 診断ログを有効にすると、ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信する、[Azure Event Hubs](https://azure.microsoft.com/en-us/services/event-hubs/) にストリーミングする、[Log Analytics](https://azure.microsoft.com/services/log-analytics/) を介して [Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) ワークスペースにエクスポートすることができます。
+1 つまたは複数の Azure Cosmos DB データベースを使用し始めた場合、データベースのアクセス方法と時間を監視したいと考えるのではないでしょうか。 Azure Cosmos DB の診断ログなら、この監視を実行できます。 診断ログを有効にすると、ログを [Azure Storage](https://azure.microsoft.com/services/storage/) に送信すること、[Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/) にストリーミングすること、[Operations Management Suite](https://www.microsoft.com/cloud-platform/operations-management-suite) に含まれる [Log Analytics](https://azure.microsoft.com/services/log-analytics/) にエクスポートすることができます。
 
 ![Log Analytics を介した Storage、Event Hubs、Operations Management Suite への診断ログ記録](./media/logging/azure-cosmos-db-logging-overview.png)
 
@@ -40,7 +40,7 @@ ms.lasthandoff: 10/11/2017
 
 * 既存の Azure Cosmos DB アカウント、データベース、およびコンテナー。 これらのリソースの作成手順については、[Azure Portal を使用したデータベース アカウントの作成](create-documentdb-dotnet.md#create-a-database-account)、[CLI サンプル](cli-samples.md)、または [PowerShell サンプル](powershell-samples.md)に関するページを参照してください。
 
-
+<a id="#turn-on"></a>
 ## <a name="turn-on-logging-in-the-azure-portal"></a>Azure Portal でログを有効にする
 
 1. [Azure Portal](https://portal.azure.com) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[診断ログ]** をクリックし、**[診断をオンにする]** をクリックします。
@@ -53,12 +53,16 @@ ms.lasthandoff: 10/11/2017
 
     * **[ストレージ アカウントへのアーカイブ]**。 このオプションを使用するには、接続先として既存のストレージ アカウントが必要です。 Portal で新しいストレージ アカウントを作成するには、[ストレージ アカウントの作成に関するページ](../storage/common/storage-create-storage-account.md)を参照し、Resource Manager の汎用アカウントの作成手順を実行します。 Portal でこのページに戻り、ストレージ アカウントを選択します。 新しく作成されたストレージ アカウントがドロップダウン メニューに表示されるまでには、数分かかる場合があります。
     * **イベント ハブにストリーミングします**。 このオプションを使用するには、既存の Event Hubs 名前空間と接続先のイベント ハブが必要です。 Event Hubs 名前空間を作成するには、「[Azure Portal を使用して Event Hubs 名前空間とイベント ハブを作成する](../event-hubs/event-hubs-create.md)」を参照してください。 Portal でこのページに戻り、Event Hubs 名前空間とポリシー名を選択します。
-    * **[Log Analytics への送信]**。 このオプションを使用するには、既存のワークスペースのいずれかを使用するか、Portal のプロンプトに従って新しい Operations Management Suite ワークスペースを作成します。
-    * **DataPlaneRequests をログに記録します**。 ストレージ アカウントにアーカイブしている場合、**[DataPlaneRequests]** を選択し、ログの保持日数を選択して、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。 
+    * **[Log Analytics への送信]**。     このオプションを使用するには、既存のワークスペースを使用するか、ポータルで[新しいワークスペースを作成する](../log-analytics/log-analytics-quick-collect-azurevm.md#create-a-workspace)手順に従って新しい Log Analytics ワークスペースを作成します。 Log Analytics でログを表示する方法については、「[Azure Cosmos DB 診断ログ](#view-in-loganalytics)」を参照してください。
+    * **DataPlaneRequests をログに記録します**。 DocumentDB、Graph、Table API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Log MongoRequests]\(MongoRequests をログに記録する\)**。 MongoDB API アカウントの診断をログに記録するには、このオプションを選択します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
+    * **[Metric Requests]\(メトリック要求\)**。 [Azure メトリックス](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftdocumentdbdatabaseaccounts-cosmosdb)に詳細データを保存するには、このオプションを使用します。 ストレージ アカウントにアーカイブする場合、診断ログのリテンション期間を選択できます。 リテンション期間が過ぎると、ログは自動的に削除されます。
 
 3. [ **Save**] をクリックします。
 
-    いつでもこのページに戻って、アカウントの診断ログ設定を変更することができます。
+    "\<ワークスペース名> の診断を更新できませんでした。 サブスクリプション \<サブスクリプション ID> は microsoft.insights を使用するために登録されていません。" というエラーが表示される場合は、[Azure 診断のトラブルシューティング](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-azure-storage)に関する指示に従ってアカウントを登録してから、この手順を再試行してください。
+
+    今後、診断ログを保存する方法を変更する場合は、いつでもこのページに戻ってアカウントの診断ログの設定を変更できます。
 
 ## <a name="turn-on-logging-using-cli"></a>CLI を使用してログ記録を有効にする
 
@@ -279,59 +283,35 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
      -Context $sa.Context -Blob '*/year=2017/m=07/*'
     ```
 
-これで、ログの内容を検討する準備が整いました。 ただし、ログの内容の検討に入る前に、`Get-AzureRmDiagnosticSetting` 用のさらに 2 つのパラメーターを把握しておく必要があります。
+加えて次の作業を行います。
 
 * データベース リソースの診断設定の状態のクエリを実行する場合: `Get-AzureRmDiagnosticSetting -ResourceId $account.ResourceId`
 * データベース アカウント リソースの **DataPlaneRequests** カテゴリのログ記録を無効にする場合: `Set-AzureRmDiagnosticSetting -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $false -Categories DataPlaneRequests`
 
-## <a id="interpret"></a> Azure Cosmos DB ログを解釈する
-個々の BLOB はテキストとして格納されます (JSON BLOB 形式)。 次の JSON はログ エントリの例です。
 
-    {
-        "records":
-        [
-            {
-               "time": "Fri, 23 Jun 2017 19:29:50.266 GMT",
-               "resourceId": "contosocosmosdb",
-               "category": "DataPlaneRequests",
-               "operationName": "Query",
-               "resourceType": "Database",
-               "properties": {"activityId": "05fcf607-6f64-48fe-81a5-f13ac13dd1eb",`
-               "userAgent": "documentdb-dotnet-sdk/1.12.0 Host/64-bit MicrosoftWindowsNT/6.2.9200.0 AzureSearchIndexer/1.0.0",`
-               "resourceType": "Database","statusCode": "200","documentResourceId": "",`
-               "clientIpAddress": "13.92.241.0","requestCharge": "2.260","collectionRid": "",`
-               "duration": "9250","requestLength": "72","responseLength": "209", "resourceTokenUserRid": ""}
-            }
-        ]
-    }
+これらの各クエリで返される BLOB は、次のコードのように、JSON BLOB 形式のテキストに格納されます。 
 
+```json
+{
+    "records":
+    [
+        {
+           "time": "Fri, 23 Jun 2017 19:29:50.266 GMT",
+           "resourceId": "contosocosmosdb",
+           "category": "DataPlaneRequests",
+           "operationName": "Query",
+           "resourceType": "Database",
+           "properties": {"activityId": "05fcf607-6f64-48fe-81a5-f13ac13dd1eb",`
+           "userAgent": "documentdb-dotnet-sdk/1.12.0 Host/64-bit MicrosoftWindowsNT/6.2.9200.0 AzureSearchIndexer/1.0.0",`
+           "resourceType": "Database","statusCode": "200","documentResourceId": "",`
+           "clientIpAddress": "13.92.241.0","requestCharge": "2.260","collectionRid": "",`
+           "duration": "9250","requestLength": "72","responseLength": "209", "resourceTokenUserRid": ""}
+        }
+    ]
+}
+```
 
-次の表にフィールド名と説明を示します。
-
-| フィールド名 | Description |
-| --- | --- |
-| time |操作が発生した日時 (UTC)。 |
-| resourceId |ログが有効になっている Azure Cosmos DB アカウント。|
-| カテゴリ |Azure Cosmos DB ログの場合、使用できる値は DataPlaneRequests のみです。 |
-| operationName |操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
-| properties |このフィールドの内容については、次の表を参照してください。 |
-
-次の表は、プロパティ フィールド内でログに記録されるフィールドの一覧です。
-
-| プロパティ フィールド名 | Description |
-| --- | --- |
-| activityId | ログに記録された操作の一意の GUID。 |
-| userAgent |要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
-| resourceType | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Collection、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
-| StatusCode |操作の応答状態。 |
-| requestResourceId | 要求に関する resourceId は、実行された操作によって databaseRid、collectionRid、または documentRid の可能性があります。|
-| clientIpAddress |クライアントの IP アドレス。 |
-| requestCharge | 操作に使用された RU 数 |
-| collectionRid | コレクションの一意の ID。|
-| duration | 操作の期間 (ティック単位)。 |
-| requestLength |要求の長さ (バイト単位)。 |
-| responseLength | 応答の長さ (バイト単位)。|
-| resourceTokenUserRid | 認証に[リソース トークン](https://docs.microsoft.com/en-us/azure/cosmos-db/secure-access-to-data#resource-tokens)が使用され、ユーザーのリソース ID を示す場合、この値は空ではありません。 |
+各 JSON BLOB のデータについては、「[Azure Cosmos DB ログを解釈する](#interpret)」を参照してください。
 
 ## <a name="managing-your-logs"></a>ログの管理
 
@@ -341,10 +321,116 @@ BLOB を選択的にダウンロードするには、ワイルドカードを使
 * ストレージ アカウントに保持する必要がなくなったログは削除します。
 * ストレージ アカウントにアーカイブされるデータ プレーン要求のリテンション期間は、**[Log DataPlaneRequests]\(DataPlaneRequests のログを記録する\)** をオンにしたときに構成されます。 この設定を変更する方法については、「[Azure Portal でログを有効にする](#turn-on-logging-in-the-azure-portal)」を参照してください。
 
+
+<a id="#view-in-loganalytics"></a>
+## <a name="view-logs-in-log-analytics"></a>Log Analytics ログを表示する
+
+ログ記録を有効にするときに **[Log Analytics への送信]** オプションを選択した場合、コレクションの診断ログは 2 時間以内に Log Analytics に転送されます。 つまり、ログ記録を有効にした直後に Log Analytics を見てもデータは何も表示されません。 2 時間待ってから、もう一度やり直してください。 
+
+ログを確認する前に、Log Analytics ワークスペースが新しい Log Analytics クエリ言語を使用できるようにアップグレードされているかどうかを確認します。 確認するには、[Azure Portal](https://portal.azure.com) で左端の **[Log Analytics]** をクリックし、次の図のようにワークスペース名を選択します。 次の図のように **[OMS ワークスペース]** ページが表示されます。
+
+![Azure Portal の Log Analytics](./media/logging/azure-portal.png)
+
+**[OMS ワークスペース]** ページに次のメッセージが表示される場合、ワークスペースは新しい言語を使用できるようにアップグレードされていません。 新しいクエリ言語にアップグレードする方法の詳細については、「[新しいログ検索への Azure Log Analytics ワークスペースのアップグレード](../log-analytics/log-analytics-log-search-upgrade.md)」を参照してください。 
+
+![Log Analytics のアップグレード通知](./media/logging/upgrade-notification.png)
+
+Log Analytics で診断データを表示するには、次の図のように左側のメニューまたはページの [管理] 領域から [ログ検索] ページを開きます。
+
+![Azure Portal の [ログ検索] オプション](./media/logging/log-analytics-open-log-search.png)
+
+データ収集を有効にしたら、新しいクエリ言語を使用して、次のログ検索例を実行し、最新のログ `AzureDiagnostics | take 10` を確認します。
+
+![10 個のログ検索を取得するサンプル](./media/logging/log-analytics-query.png)
+
+<a id="#queries"></a>
+### <a name="queries"></a>クエリ
+
+**[ログ検索]** ボックスに入力して Azure Cosmos DB コンテナーの監視に利用できるその他のクエリを紹介します。 これらのクエリは[新しい言語](../log-analytics/log-analytics-log-search-upgrade.md)で使用できます。 
+
+各ログ検索から返されるデータの意味については、「[Azure Cosmos DB ログを解釈する](#interpret)」を参照してください。
+
+* 指定した期間の Azure Cosmos DB のすべての診断ログ。
+
+    ```
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests"
+    ```
+
+* ログに記録された過去 10 個のイベント。
+
+    ```
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | take 10
+    ```
+
+* 操作の種類でグループ分けされたすべての操作。
+
+    ```
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName
+    ```
+
+* リソースでグループ分けされたすべての操作。
+
+    ```
+    AzureActivity | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    ```
+
+* リソースでグループ分けされたすべてのユーザー アクティビティ。 診断ログではなく、アクティビティ ログである点に注意してください。
+
+    ```
+    AzureActivity | where Caller == "test@company.com" and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by Resource
+    ```
+
+* 実行時間が 3 ミリ秒を超えている操作。
+
+    ```
+    AzureDiagnostics | where toint(duration_s) > 3000 and ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by clientIpAddress_s, TimeGenerated
+    ```
+
+* 操作を実行しているエージェント。
+
+    ```
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | summarize count() by OperationName, userAgent_s
+    ```
+
+* 実行時間が長い操作が実行された時刻。
+
+    ```
+    AzureDiagnostics | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="DataPlaneRequests" | project TimeGenerated , toint(duration_s)/1000 | render timechart
+    ```
+
+新しい Log Analytics 言語の使用方法の詳細については、「[Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md)」を参照してください。 
+
+## <a id="interpret"></a>ログを解釈する
+
+Azure Storage と Log Analytics に格納されている診断データは、スキーマがよく似ています。 
+
+次の表は、各ログ エントリの内容をまとめた一覧です。
+
+| Azure Storage のフィールドまたはプロパティ | Log Analytics のプロパティ | Description |
+| --- | --- | --- |
+| time | TimeGenerated | 操作が発生した日時 (UTC)。 |
+| resourceId | リソース | ログが有効になっている Azure Cosmos DB アカウント。|
+| カテゴリ | カテゴリ | Azure Cosmos DB ログの場合、使用できる値は DataPlaneRequests のみです。 |
+| operationName | OperationName | 操作の名前。 この値は、Create、Update、Read、ReadFeed、Delete、Replace、Execute、SqlQuery、Query、JSQuery、Head、HeadFeed、または Upsert 操作のいずれかです。   |
+| properties | 該当なし | このフィールドの内容については、以下の行を参照してください。 |
+| activityId | activityId_g | ログに記録された操作の一意の GUID。 |
+| userAgent | userAgent_s | 要求を実行するクライアント ユーザー エージェントを示す文字列。 {ユーザー エージェント名}/{バージョン} という形式です。|
+| resourceType | ResourceType | アクセスされたリソースの種類。 この値は、リソースの種類 Database、Collection、Document、Attachment、User、Permission、StoredProcedure、Trigger、UserDefinedFunction、または Offer のいずれかです。 |
+| StatusCode |statusCode_s | 操作の応答状態。 |
+| requestResourceId | ResourceId | 要求に関する resourceId は、実行された操作によって databaseRid、collectionRid、または documentRid の可能性があります。|
+| clientIpAddress | clientIpAddress_s | クライアントの IP アドレス。 |
+| requestCharge | requestCharge_s | 操作に使用された RU 数 |
+| collectionRid | collectionId_s | コレクションの一意の ID。|
+| duration | duration_s | 操作の期間 (ティック単位)。 |
+| requestLength | requestLength_s | 要求の長さ (バイト単位)。 |
+| responseLength | responseLength_s | 応答の長さ (バイト単位)。|
+| resourceTokenUserRid | resourceTokenUserRid_s | 認証に[リソース トークン](https://docs.microsoft.com/azure/cosmos-db/secure-access-to-data#resource-tokens)が使用され、ユーザーのリソース ID を示す場合、この値は空ではありません。 |
+
 ## <a name="next-steps"></a>次のステップ
 
 - ロギングを有効にする方法だけでなく、各種 Azure サービスでサポートされるメトリックとログのカテゴリーについて理解を深めるには、「[Microsoft Azure のメトリックの概要](../monitoring-and-diagnostics/monitoring-overview-metrics.md)」と「[Azure リソースからのログ データの収集と使用](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md)」の両方を参照してください。
 - Event Hubs については次の記事をご覧ください。
-   - [Azure Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
+   - [Event Hubs とは](../event-hubs/event-hubs-what-is-event-hubs.md)
    - [Event Hubs の使用](../event-hubs/event-hubs-csharp-ephcs-getstarted.md)
-- [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事をご覧ください。
+- [Azure Storage からメトリックとログをダウンロードする方法](../storage/blobs/storage-dotnet-how-to-use-blobs.md#download-blobs)に関する記事を参照してください
+- 「[Log Analytics でのログ検索について](../log-analytics/log-analytics-log-search-new.md)」を参照してください

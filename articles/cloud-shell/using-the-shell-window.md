@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/16/2017
 ms.author: juluk
-ms.openlocfilehash: fb242abfbea79bc8c242a7a89b3d775cf74a0617
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 59cd03f6e04e9b096fe740e8a7140e602c0baa58
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>Azure Cloud Shell ウィンドウの使用
 
@@ -56,10 +56,10 @@ Cloud Shell では、各セッションが別の Bash プロセスとして存�
 
 ## <a name="changing-the-text-size"></a>テキスト サイズの変更
 ![](media/using-the-shell-window/text-size.png)
-* ウィンドウの左上の設定アイコンをクリックし、[文字のサイズ] オプションをポイントして、目的のテキスト サイズを選びます。
+* ウィンドウの左上の設定アイコンをクリックし、[文字のサイズ] オプションをポイントして、目的のテキスト サイズを選びます。 選択内容は、セッション間で保持されます。
 
 ## <a name="exit-command"></a>exit コマンド
-`exit` を実行すると、アクティブなセッションが終了します。 この動作は既定では 10 分後に発生します (操作が行われない場合)。
+`exit` を実行すると、アクティブなセッションが終了します。 この動作は既定では 20 分後に発生します (操作が行われない場合)。
 
 ## <a name="next-steps"></a>次のステップ
 

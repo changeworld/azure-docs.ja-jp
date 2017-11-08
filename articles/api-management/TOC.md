@@ -50,6 +50,7 @@
 ### [Git を使用して構成する](api-management-configuration-repository-git.md)
 ### [Azure Monitor を使用して監視する](api-management-howto-use-azure-monitor.md)
 ### [ロールベースのアクセス制御を使用する](api-management-role-based-access-control.md)
+### [管理対象のサービス ID の使用](api-management-howto-use-managed-service-identity.md)
 ### Service Fabric と統合する
 #### [概要](../service-fabric/service-fabric-api-management-overview.md)
 #### [クイック スタート](../service-fabric/service-fabric-api-management-quick-start.md)

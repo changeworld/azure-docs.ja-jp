@@ -10,17 +10,17 @@ editor:
 ms.assetid: efb35451-3fed-4264-bf86-72b350f67d50
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: daleche
-ms.openlocfilehash: 5260d6afd24ae0a9c60ee609b54f04bf901f219d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0d2d187ca55ca6e7723139423b4b28783f256704
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>SQL Database の SQL 接続エラーと一時エラーのトラブルシューティング、診断、防止
 この記事では、クライアント アプリケーションが Azure SQL Database とやり取りする際に発生する接続エラーと一時エラーを防止、トラブルシューティング、診断、軽減する方法について説明します。 再試行ロジックの構成方法、接続文字列の作成方法、およびその他の接続設定の調整方法について説明します。

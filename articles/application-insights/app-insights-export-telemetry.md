@@ -3,7 +3,7 @@ title: "Application Insights からのテレメトリの連続エクスポート
 description: "診断および利用状況データを Microsoft Azure のストレージにエクスポートし、そこからダウンロードします。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 5b859200-b484-4c98-9d9f-929713f1030c
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 02/23/2017
-ms.author: bwren
-ms.openlocfilehash: 6ac3bda5101593b5ca66b4c9035e2fdac9d1e833
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 7d1f648bc2c2a42cfbd668f180bce8f56ebd065b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="export-telemetry-from-application-insights"></a>Application Insights からのテレメトリのエクスポート
 標準的なリテンション期間より長くテレメトリを残しておきたい、 または特別な方法でテレメトリを処理したい、 そのようなケースには、連続エクスポートが最適です。 Application Insights ポータルに表示されるイベントは、JSON 形式で Microsoft Azure のストレージにエクスポートできます。 そこからデータをダウンロードしたり、データを処理するためのコードを自由に記述したりできます。  

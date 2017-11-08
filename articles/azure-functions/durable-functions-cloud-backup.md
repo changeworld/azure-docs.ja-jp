@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: aa7c0738120ecda8d43669725748585e1ad5a581
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ef6e649d2f5563ea066b70d5ef3f80c5af36ce23
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="fan-outfan-in-scenario-in-durable-functions---cloud-backup-example"></a>Durable Functions のファンアウト/ファンイン シナリオ - クラウド バックアップの例
 
@@ -97,12 +97,12 @@ Durable Functions を使用する方法は、上記の利点を非常に少な�
 > [!NOTE]
 > これは、I/O 操作を `activityTrigger` 関数に移動させる完璧な例です。 作業を複数の VM に分散できるだけではなく、進行状況のチェックポイント処理のメリットも得ることができます。 ホスト プロセスが何らかの理由で終了した場合でも、どのアップロードが完了しているかがわかります。
 
-## <a name="running-the-sample"></a>サンプルの実行
+## <a name="run-the-sample"></a>サンプルの実行
 
-サンプルに含まれる HTTP によってトリガーされる関数によって、次の HTTP POST 要求を使用するオーケストレーションを開始できます。
+次の HTTP POST 要求を送信してオーケストレーションを開始できます。
 
 ```
-POST http://{host}/orchestrators/E2_BackupSiteContent HTTP/1.1
+POST http://{host}/orchestrators/E2_BackupSiteContent
 Content-Type: application/json
 Content-Length: 20
 
@@ -112,7 +112,7 @@ Content-Length: 20
 > [!NOTE]
 > 呼び出している `HttpStart` 関数は、JSON 形式のコンテンツでのみ動作します。 このため、`Content-Type: application/json` ヘッダーは必須であり、ディレクトリ パスは JSON 文字列としてエンコードされます。
 
-これにより、`E2_BackupSiteContent` オーケストレーターがトリガーされ、文字列 `D:\home\LogFiles` がパラメーターとして渡されます。 応答は、このバックアップ操作の状態を取得するためのリンクを提供します。
+この HTTP 要求で `E2_BackupSiteContent` オーケストレーターがトリガーされ、文字列 `D:\home\LogFiles` がパラメーターとして渡されます。 応答は、このバックアップ操作の状態を取得するためのリンクを提供します。
 
 ```
 HTTP/1.1 202 Accepted
@@ -158,9 +158,7 @@ Visual Studio プロジェクトの単一の C# ファイルとしてのオー�
 
 ## <a name="next-steps"></a>次のステップ
 
-ここでは、Durable Functions の中心となるオーケストレーション機能について詳しく説明しました。 以降のサンプルでは、さらに高度な機能とシナリオについて説明します。
+このサンプルでは、ファンアウト/ファンイン パターンの実装方法について説明しました。 次のサンプルでは、[永続的オーケストレーション](durable-functions-eternal-orchestrations.md)に[ステートフル シングルトン](durable-functions-singletons.md) パターンを実装する方法について説明します。
 
 > [!div class="nextstepaction"]
 > [ステートフル シングルトンのサンプルを実行する](durable-functions-counter.md)
-
-

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/13/2017
 ms.author: raynew
-ms.openlocfilehash: 2f9a5092d4dacce8aa1630830499635b3b4eb151
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ceb4b13e326b24360799c1a7a25fe48f213fabd7
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Azure にオンプレミス物理サーバーのディザスター リカバリーを設定する
 
@@ -76,7 +76,7 @@ VM を Azure にレプリケートするアクセス許可がお使いの Azure 
 
 - Site Recovery は、オンプレミスのマシンを Azure Storage にレプリケートします。 Azure VM は、フェールオーバーの発生後にストレージから作成されます。
 - ストレージ アカウントは、Recovery Services コンテナーと同じリージョンに存在する必要があります。
-- このストレージ アカウントには、Standard または [Premium](../storage/common/storage-premium-storage.md) を使用できます。
+- このストレージ アカウントには、Standard または [Premium](../virtual-machines/windows/premium-storage.md) を使用できます。
 - Premium アカウントを設定する場合は、ログ データ用の Standard アカウントも別途必要になります。
 
 

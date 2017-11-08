@@ -15,11 +15,11 @@ ms.topic: get-started-article
 f1_keywords: sql13.swb.windowsazurestorage.connect.f1
 ms.date: 10/11/2017
 ms.author: tamram
-ms.openlocfilehash: db878f257f64ccc573a220c675cd373539dd5b17
-ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
+ms.openlocfilehash: c9630e575de15b404bd91cbeefc60d698c5da667
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="about-azure-storage-accounts"></a>Azure ストレージ アカウントについて
 
@@ -79,7 +79,7 @@ Azure Storage に格納するすべてのオブジェクトには一意の URL �
 
 5. ストレージ アカウントの種類として、**[汎用]** または **[BLOB ストレージ]** を選択します。 **[汎用]** です。
    
-    **[汎用]** を選択した場合は、パフォーマンス レベルとして **[Standard]** または **[Premium]** を指定します。 既定値は **[Standard]**です。 Standard Storage アカウントと Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」と「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](storage-premium-storage.md)」を参照してください。
+    **[汎用]** を選択した場合は、パフォーマンス レベルとして **[Standard]** または **[Premium]** を指定します。 既定値は **[Standard]**です。 Standard Storage アカウントと Premium Storage アカウントの詳細については、「[Microsoft Azure Storage の概要](storage-introduction.md)」と「[Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)」を参照してください。
    
     **[BLOB ストレージ]** を選択した場合は、アクセス層として **[ホット]** または **[クール]** を指定します。 既定値は **[ホット]**です。 詳細については、「 [Azure Blob Storage: クール層とホット層](../blobs/storage-blob-storage-tiers.md) 」を参照してください。
 6. ストレージ アカウントのレプリケーション オプション (**[LRS]**、**[GRS]**、**[RA-GRS]**、または **[ZRS]**) を選択します。 既定値は **[RA-GRS]**です。 Azure Storage のレプリケーション オプションの詳細については、 [Azure Storage のレプリケーション](storage-redundancy.md)に関するページをご覧ください。

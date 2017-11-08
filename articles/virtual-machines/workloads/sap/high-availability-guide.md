@@ -17,11 +17,11 @@ ms.workload: infrastructure-services
 ms.date: 12/07/2016
 ms.author: goraco
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 65236f527b62b4990b062fb6a54ce13b3c182e93
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ae90fe1d6d9e91bffa3fd4c6a7d79d069ab604a2
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms"></a>Azure VM での SAP NetWeaver の高可用性
 
@@ -380,7 +380,7 @@ ms.lasthandoff: 10/11/2017
 [storage-azure-cli-copy-blobs]:../../../storage/common/storage-azure-cli.md#copy-blobs
 [storage-introduction]:../../../storage/common/storage-introduction.md
 [storage-powershell-guide-full-copy-vhd]:../../../storage/common/storage-powershell-guide-full.md#how-to-copy-blobs-from-one-storage-container-to-another
-[storage-premium-storage-preview-portal]:../../../storage/common/storage-premium-storage.md
+[storage-premium-storage-preview-portal]:../../windows/premium-storage.md
 [storage-redundancy]:../../../storage/common/storage-redundancy.md
 [storage-scalability-targets]:../../../storage/common/storage-scalability-targets.md
 [storage-use-azcopy]:../../../storage/common/storage-use-azcopy.md
@@ -418,13 +418,13 @@ ms.lasthandoff: 10/11/2017
 [virtual-machines-upload-image-windows-resource-manager]:../../virtual-machines-windows-upload-image.md
 [virtual-machines-windows-tutorial]:../../virtual-machines-windows-hero-tutorial.md
 [virtual-machines-workload-template-sql-alwayson]:https://azure.microsoft.com/documentation/templates/sql-server-2014-alwayson-dsc/
-[virtual-network-deploy-multinic-arm-cli]:../../../virtual-network/virtual-network-deploy-multinic-arm-cli.md
-[virtual-network-deploy-multinic-arm-ps]:../../../virtual-network/virtual-network-deploy-multinic-arm-ps.md
+[virtual-network-deploy-multinic-arm-cli]:../linux/multiple-nics.md
+[virtual-network-deploy-multinic-arm-ps]:../windows/multiple-nics.md
 [virtual-network-deploy-multinic-arm-template]:../../../virtual-network/virtual-network-deploy-multinic-arm-template.md
 [virtual-networks-configure-vnet-to-vnet-connection]:../../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md
 [virtual-networks-create-vnet-arm-pportal]:../../../virtual-network/virtual-networks-create-vnet-arm-pportal.md
 [virtual-networks-manage-dns-in-vnet]:../../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md
-[virtual-networks-multiple-nics]:../../../virtual-network/virtual-networks-multiple-nics.md
+[virtual-networks-multiple-nics]:../../../virtual-network/virtual-network-deploy-multinic-classic-ps.md
 [virtual-networks-nsg]:../../../virtual-network/virtual-networks-nsg.md
 [virtual-networks-reserved-private-ip]:../../../virtual-network/virtual-networks-static-private-ip-arm-ps.md
 [virtual-networks-static-private-ip-arm-pportal]:../../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md
@@ -522,7 +522,6 @@ Windows Server フェールオーバー クラスタリングを使用すると�
 * **ノードおよびディスク マジョリティ**。 各ノードとクラスター記憶域の指定されたディスク (ディスク監視) が投票できます。ただし、これらが使用可能であり、通信している必要があります。 クラスターは、投票数が過半数の場合にのみ機能します。 このモードは、ノード数が偶数のクラスター環境で有効です。 半数のノードとディスクがオンラインの場合、クラスターは正常な状態を維持します。
 * **ノードおよびファイル共有マジョリティ**。 各ノードと、管理者が作成した指定ファイル共有 (ファイル共有監視) が投票できます。ノードとファイル共有が使用可能であるかどうかや、通信しているかどうかは問いません。 クラスターは、投票数が過半数の場合にのみ機能します。 このモードは、ノード数が偶数のクラスター環境で有効です。 ノードおよびディスク マジョリティ モードと似ていますが、監視ディスクではなく監視ファイル共有を使用します。 このモードは、実装は簡単ですが、ファイル共有自体が高可用性でない場合、単一障害点になる可能性があります。
 * **非マジョリティ: ディスクのみ**。 1 つのノードが使用可能であり、クラスター記憶域内の特定のディスクと通信していれば、クラスターはクォーラムを獲得します。 また、そのディスクと通信しているノードだけがクラスターに参加できます。 このモードは使用しないことをお勧めします。
- 
 
 ## <a name="fdfee875-6e66-483a-a343-14bbaee33275"></a> Windows Server フェールオーバー クラスタリング オンプレミス
 図 1 は、2 ノードのクラスターを示しています。 ノード間のネットワーク接続で障害が発生し、ノードは両方とも稼働している場合、クォーラム ディスクまたはファイル共有により、クラスターのアプリケーションとサービスの提供を続けるノードが決まります。 クォーラム ディスクまたはファイル共有にアクセスできるノードが、サービスを維持するノードです。

@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 05/23/2017
 ms.author: barlan
 ms.custom: end-user
-ms.openlocfilehash: 2328fe6e6b35ce523f8bf90cbe6159c7ba23d697
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 87b1b6b03f5aaab5da6491c86132d4193693055a
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="manage-your-settings-for-two-step-verification"></a>2 段階認証設定の管理
 この記事では、2 段階認証または多要素認証の設定の更新方法に関する質問に回答しています。 アカウントへのサインインで問題が発生している場合のトラブルシューティング ヘルプについては、「[Having trouble with two-step verification (2 段階認証で問題が発生した場合)](multi-factor-authentication-end-user-troubleshoot.md)」をご覧ください。
@@ -28,7 +28,7 @@ ms.lasthandoff: 10/11/2017
 ## <a name="where-to-find-the-settings-page"></a>設定ページの場所
 会社の Azure Multi-Factor Authentication の設定方法に応じて、電話番号などの設定を変更できる場所がいくつかあります。
 
-IT 管理者が 2 段階認証を管理するための特定の URL または手順を送信した場合は、その指示に従ってください。 それ以外の場合は、他のすべてのユーザーが次の手順を実行する必要があります。 次の手順に従っても同じオプションが表示されない場合は、会社や学校で独自のポータルをカスタマイズしていると考えられます。 Azure Multi-factor Authentication ポータルへのリンクについては、管理者にお問い合わせください。
+社内のサポートが 2 段階認証を管理するための特定の URL または手順を送信した場合は、その指示に従ってください。 それ以外の場合は、他のすべてのユーザーが次の手順を実行する必要があります。 次の手順に従っても同じオプションが表示されない場合は、会社や学校で独自のポータルをカスタマイズしていると考えられます。 Azure Multi-factor Authentication ポータルへのリンクについては、管理者にお問い合わせください。
 
 1. [https://myapps.microsoft.com](https://myapps.microsoft.com) にサインインします。  
 2. 右上でアカウント名を選択し、**プロファイル**を選択します。  
@@ -48,7 +48,7 @@ IT 管理者が 2 段階認証を管理するための特定の URL または手
 **代表電話番号を変更するには:**  
 
 1. [追加のセキュリティ確認] ページで、現在の電話番号のテキスト ボックスを選択し、新しい電話番号を入力します。  
-2. [ **保存**] を選択します。  
+2. **[ 保存]** を選択します。  
 3. この番号が確認オプションに使用する番号である場合は、保存する前にその新しい番号を確認する必要があります。  
 
 **予備の電話番号を追加するには:**  

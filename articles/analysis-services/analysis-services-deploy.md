@@ -4,7 +4,7 @@ description: "SSDT を使用して Azure Analysis Services サーバーに表形
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 5f1f0ae7-11de-4923-a3da-888b13a3638c
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 08/01/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: e9a3aedfb6e55696e1525e226fada1062fd5eda8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: fad1994791f9766282db2a9db569f64473e1c15a
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="deploy-a-model-from-ssdt"></a>SSDT からのモデルのデプロイ
 Azure サブスクリプションにサーバーを作成した後は、表形式モデル データベースをサーバーにデプロイできます。 表形式モデル プロジェクトの作成とデプロイは、SQL Server Data Tools (SSDT) を使って行うことができます。 

@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/20/2017
 ms.author: yushwang
-ms.openlocfilehash: bb3129f70f5eeed99d5889226aa6727f675b6217
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 434f84dc6244eddce9b172a617722b218360ffc2
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection-classic"></a>既存の VPN ゲートウェイ接続を使用してサイト間接続を VNet に追加する (クラシック)
 
@@ -70,11 +70,11 @@ ms.lasthandoff: 10/11/2017
 動的ルーティング ゲートウェイを持つサイト間 VPN が既に存在する場合は、 [仮想ネットワーク構成設定のエクスポート](#export)に進んでください。 まだ作成していない場合は、以下の作業を行います。
 
 ### <a name="if-you-already-have-a-site-to-site-virtual-network-but-it-has-a-static-policy-based-routing-gateway"></a>サイト間仮想ネットワークは既に存在するが、静的な (ポリシー ベースの) ルーティング ゲートウェイの場合:
-1. ゲートウェイ タイプを動的ルーティングに変更します。 マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。 ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。 手順については、「 [ゲートウェイの VPN ルーティングの種類を変更する方法](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。  
-2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、「 [Azure クラシック ポータルで VPN ゲートウェイを構成する](vpn-gateway-configure-vpn-gateway-mp.md)」を参照してください。 最初に、ゲートウェイ タイプを動的ルーティングに変更します。
+1. ゲートウェイ タイプを動的ルーティングに変更します。 マルチサイト VPN は動的 (ルート ベースとも呼ばれます) ルーティング ゲートウェイを必要とします。 ゲートウェイ タイプを変更するには、最初に既存のゲートウェイを削除し、新規で作成します。
+2. 新しいゲートウェイを構成し、VPN トンネルを作成します。 手順については、[「SKU と VPN の種類の指定](vpn-gateway-howto-site-to-site-classic-portal.md#sku)」を参照してください。 ルーティングの種類として [動的] が指定されていることを確認してください。
 
 ### <a name="if-you-dont-have-a-site-to-site-virtual-network"></a>サイト間仮想ネットワークが存在しない場合:
-1. 次の手順によりサイト間仮想ネットワークを作成します: [Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)。  
+1. 「[Azure クラシック ポータルでサイト間 VPN 接続を使用して Virtual Network を作成する](vpn-gateway-site-to-site-create.md)」の手順に従って、サイト間仮想ネットワークを作成します。  
 2. 次の手順により動的ルーティング ゲートウェイを構成します。[VPN ゲートウェイの構成](vpn-gateway-configure-vpn-gateway-mp.md) 必ずゲートウェイ タイプに**動的ルーティング**を選択してください。
 
 ## <a name="export"></a>2.ネットワーク構成ファイルをエクスポートする
@@ -157,7 +157,7 @@ Get-AzureVNetConfig -ExportToFile C:\AzureNet\NetworkConfig.xml
 ```
 
 ## <a name="5-import-the-network-configuration-file"></a>5.ネットワーク構成ファイルをインポートする
-ネットワーク構成ファイルをインポートします。 変更をしてこのファイルをインポートすると、新しいトンネルが追加されます。 トンネルは先ほど作成した動的ゲートウェイを使用します。 クラシック ポータルまたは PowerShell を使用してファイルをインポートできます。
+ネットワーク構成ファイルをインポートします。 変更をしてこのファイルをインポートすると、新しいトンネルが追加されます。 トンネルは先ほど作成した動的ゲートウェイを使用します。 PowerShell を使用して、ファイルをインポートできます。
 
 ## <a name="6-download-keys"></a>6.キーをダウンロードする
 新しいトンネルが追加されたら、PowerShell コマンドレット 'Get-AzureVNetGatewayKey' を使用して、IPsec/IKE 事前共有キーを各トンネル用に取得します。

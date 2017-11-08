@@ -7,20 +7,20 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
 services: machine-learning
-ms.date: 09/15/2017
-ms.openlocfilehash: 43b124fc3eb72adc5d299b218c9e16ec83d1a240
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/27/2017
+ms.openlocfilehash: cfffe5145f8762558e6ee573f6f2bb69d32424ad
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="aerial-image-classification"></a>航空画像の分類
 
-この例は、Azure Machine Learning Workbench を使用して、画像分類モデルの分散トレーニングと運用化を調整する方法を示しています。 ここでは [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) パッケージを使用し、トレーニング済みの CNTK モデルを使用して画像を特徴付けし、生成された特徴を使用して分類をトレーニングします。 次に、トレーニングしたモデルを並行してクラウド内の大規模な画像セットに適用します。 これらの手順は [Azure HDInsight Spark](https://azure.microsoft.com/en-us/services/hdinsight/apache-spark/) クラスターに対して実行されるので、worker ノードを増減することで、トレーニングと運用化の速度を上下できます。
+この例は、Azure Machine Learning Workbench を使用して、画像分類モデルの分散トレーニングと運用化を調整する方法を示しています。 トレーニングには 2 つのアプローチを使います。(i) [Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) GPU クラスターを使って、ディープ ニューラル ネットワークを調整し、(ii) [Microsoft Machine Learning for Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) パッケージを使い、トレーニング済みの CNTK モデルを使って画像を特徴付けし、生成された特徴を使って分類をトレーニングします。 その後、[Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) クラスターを使ってクラウド内の大きな画像セットに並列方式でトレーニングされたモデルを適用します。こうすると、worker ノードを追加または削除することにより、トレーニングと運用化の速度を上げたり下げたりできます。
 
-ここで説明する転移学習の形式は、深層ニューラル ネットワークの再トレーニングや微調整よりも大きな利点があります。具体的には、GPU コンピューティングが不要、本質的に高速で任意の拡大縮小が可能、少ないパラメーターに適合するという利点があります。 そのため、この方法は、少ないトレーニング サンプルを使用可能な場合 (カスタム ユース ケースでよく見られる例) に最適です。 多くのユーザーは、転移学習によって高パフォーマンスのモデルが生成されるので、はるかに高いコストでゼロから深層ニューラル ネットワークをトレーニングしなくても済むと報告しています。
+この例では、学習を転送する 2 つの方法を示します。トレーニング済みのモデルを利用することで、最初からディープ ニューラル ネットワークをトレーニングするコストを回避します。 通常、ディープ ニューラル ネットワークの再トレーニングには GPU の計算が必要ですが、トレーニング セットが十分な大きさの場合は、精度の向上につながる場合があります。 特徴付けした画像に対する単純な分類器のトレーニングは、GPU 計算を必要とせず、本質的に高速で任意にスケーラブルであり、より少ないパラメーターに適合します。 そのため、この方法は、少ないトレーニング サンプルを使用可能な場合 (カスタム ユース ケースでよく見られる例) に最適です。 
 
-この例で使用される Spark クラスターには 40 worker ノードがあり、運用コストは 1 時間あたり 40 ドル以下です。 このチュートリアルの完了には約 2 時間かかります。 チュートリアルを完了したら、クリーンアップ手順に従って、作成したリソースを削除し、課金を停止してください。
+この例で使われている Spark クラスターは、40 worker ノードで、運用コストは約 40 ドル/時です。Batch AI クラスター リソースは、8 つの GPU を含み、運用コストは約 10 ドル/時です。 このチュートリアルの完了には約 3 時間かかります。 チュートリアルを完了したら、クリーンアップ手順に従って、作成したリソースを削除し、課金を停止してください。
 
 ## <a name="link-to-the-gallery-github-repository"></a>ギャラリーの GitHub リポジトリへのリンク
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="use-case-description"></a>ユース ケースの説明
 
-このシナリオでは、機械学習モデルをトレーニングして、224 m × 224 m プロットの航空画像に表示される土地の種類を分類します。 土地利用の分類モデルでは、定期的に収集した航空画像を使用して、都会化、森林伐採、湿地帯の消失などの主要な環境傾向を追跡することができます。 ここでは、米国National Agriculture Imagery Program の画像と、米国National Land Cover Database が公開している土地利用ラベルに基づいて設定したトレーニングと検証画像を用意しました。 各土地利用クラスの画像例を次に示します。
+このシナリオでは、機械学習モデルをトレーニングして、224 m × 224 m プロットの航空画像に表示される土地の種類を分類します。 土地利用の分類モデルでは、定期的に収集した航空画像を使用して、都会化、森林伐採、湿地帯の消失などの主要な環境傾向を追跡することができます。 ここでは、米国National Agriculture Imagery Program の画像と、米国National Land Cover Database が公開している土地利用ラベルに基づいて設定したトレーニングと検証画像を用意しました。 各土地利用クラスの画像の例を次に示します。
 
 ![各土地利用ラベルの地域例](media/scenario-aerial-image-classification/example-labels.PNG)
 
@@ -53,12 +53,20 @@ ms.lasthandoff: 10/11/2017
 
 ### <a name="prerequisites"></a>前提条件
 - [Azure アカウント](https://azure.microsoft.com/en-us/free/) (無料試用版もご利用いただけます)
-    - このサンプルでは、worker ノード数が 40 個の HDInsight Spark クラスターを作成します (合計 168 コア)。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、アカウントで使用できるコアが十分にあることを確認します。
-    - 使用可能なコアがあまりない場合は、HDInsight クラスター テンプレートを変更して、プロビジョニングする worker 数を減らすことができます。 この手順については、「HDInsight Spark クラスターの作成」セクションを参照してください。
+    - worker ノード数が 40 個の HDInsight Spark クラスターを作成します (合計 168 コア)。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、アカウントで使用できるコアが十分にあることを確認します。
+       - 使用可能なコアがあまりない場合は、HDInsight クラスター テンプレートを変更して、プロビジョニングする worker 数を減らすことができます。 この手順については、「HDInsight Spark クラスターの作成」セクションを参照してください。
+    - このサンプルでは、2 つの NC6 (1 GPU、6 vCPU) VM から成る Batch AI トレーニング クラスターを作成します。 Azure Portal のサブスクリプションの [使用量 + クォータ] タブで、米国東部リージョンにアカウントで使用できるコアが十分にあることを確認します。
 - [Azure Machine Learning Workbench](./overview-what-is-azure-ml.md)
     - [インストールと作成のクイックスタート](quickstart-installation.md)に関するページを参照して Azure Machine Learning Workbench をインストールし、実験用アカウントとモデル管理アカウントを作成します。
+- [Batch AI](https://github.com/Azure/BatchAI) Python SDK と Azure CLI 2.0
+    - [レシピの前提条件セクション](https://github.com/Azure/BatchAI/tree/master/recipes)の説明に従って、Batch AI SDK と Azure CLI 2.0 をインストールします。
+        - このドキュメントの作成時点では、Azure Machine Learning Workbench は Azure CLI 2.0 の別の分岐を使います。 はっきりさせるため、Workbench の CLI バージョンを "Azure Machine Learning Workbench から起動された CLI" と呼び、一般公開バージョン (Batch AI を含むもの) を "Azure CLI 2.0" と呼びます。
+    - [こちらの手順](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って、Azure Active Directory アプリケーションとサービス プリンシパルを作成します。 クライアント ID、シークレット、およびテナント ID を記録しておきます。
 - [AzCopy](https://docs.microsoft.com/en-us/azure/storage/common/storage-use-azcopy)。Azure ストレージ アカウント間のファイル転送を調整する無料のユーティリティです。
-    - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)を参照してください)。この例は、Windows 10 PC でテストされましたが、Azure Data Science Virtual Machines など、任意の Windows マシンから実行することができます。 この例を macOS 上で実行するには、若干の変更が必要になる可能性があります (ファイルパスの変更など)。
+    - AzCopy の実行可能ファイルを含むフォルダーが、システム PATH 環境変数にあることを確認します (環境変数の変更手順については、[こちら](https://support.microsoft.com/en-us/help/310519/how-to-manage-environment-variables-in-windows-xp)をご覧ください)。
+- SSH クライアント。[PuTTY](http://www.putty.org/) をお勧めします。
+
+この例は、Windows 10 PC でテストされましたが、Azure Data Science Virtual Machines など、任意の Windows マシンから実行することができます。 Azure CLI 2.0 は、[こちらの説明](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials)に従って MSI からインストールされました。 この例を macOS 上で実行するには、若干の変更が必要になる可能性があります (ファイルパスの変更など)。
 
 ### <a name="set-up-azure-resources"></a>Azure リソースの設定
 
@@ -75,75 +83,79 @@ ms.lasthandoff: 10/11/2017
  
 #### <a name="create-the-resource-group"></a>リソース グループの作成
 
-1. Azure Machine Learning Workbench プロジェクトから、[ファイル]、[コマンド プロンプトを開く] の順にクリックしてコマンドライン インターフェイス (CLI) を開きます。
+1. Azure Machine Learning Workbench でプロジェクトを読み込んだ後、[ファイル] > [コマンド プロンプトを開く] の順にクリックしてコマンドライン インターフェイス (CLI) を開きます。
+    チュートリアルの大部分ではこのバージョンの CLI を使います  (明記されている場合は、別のバージョンの CLI を開いて Batch AI リソースを準備する必要があります)。
+
 1. コマンド ライン インターフェイスから、次のコマンドを実行して Azure アカウントにログインします。
 
-    ````
+    ```
     az login
     ```
 
-    You are asked to visit a URL and type in a provided temporary code; the website requests your Azure account credentials.
+    URL にアクセスして指定された一時コードを入力するよう求められます。Web サイトから、お使いの Azure アカウント資格情報が要求されます。
     
-1. When login is complete, return to the CLI and run the following command to determine which Azure subscriptions are available to your Azure account:
+1. ログインが完了したら、CLI に戻り、次のコマンドを実行して、どの Azure サブスクリプションを Azure アカウントに利用できるかを判定します。
 
     ```
     az account list
     ```
 
-    This command lists all subscriptions associated with your Azure account. Find the ID of the subscription you would like to use. Write the subscription ID where indicated in the following command, then set the active subscription by executing the command:
+    このコマンドは、Azure アカウントに関連付けられているすべてのサブスクリプションを一覧表示します。 使用するサブスクリプションの ID を見つけます。 次のコマンドの指示された場所にサブスクリプション ID を記述し、コマンドを実行してアクティブなサブスクリプションを設定します。
 
     ```
     az account set --subscription [subscription ID]
     ```
 
-1. The Azure resources created in this example are stored together in an Azure resource group. Choose a unique resource group name and write it where indicated, then execute both commands to create the Azure resource group:
+1. この例で作成した Azure リソースは、Azure リソース グループにまとめて保存されます。 一意のリソース グループ名を選択し、指示された場所に記述します。次に、両方のコマンドを実行して、Azure リソース グループを作成します。
 
     ```
     set AZURE_RESOURCE_GROUP=[resource group name]
     az group create --location eastus --name %AZURE_RESOURCE_GROUP%
     ```
 
-#### Create the storage account
+#### <a name="create-the-storage-account"></a>ストレージ アカウントの作成
 
-We now create the storage account that hosts project files that must be accessed by the HDInsight Spark.
+ここでは、常に HDInsight Spark からアクセスされるプロジェクト ファイルをホストするストレージ アカウントを作成します。
 
-1. Choose a unique storage account name and write it where indicated in the following `set` command, then create an Azure storage account by executing both commands:
+1. 一意のストレージ アカウント名を選択し、次の `set` コマンドの指示された場所に記述します。次に、両方のコマンドを実行して、Azure ストレージ アカウントを作成します。
 
     ```
     set STORAGE_ACCOUNT_NAME=[storage account name]
     az storage account create --name %STORAGE_ACCOUNT_NAME% --resource-group %AZURE_RESOURCE_GROUP% --sku Standard_LRS
     ```
 
-1. Issue the following command to list the storage account keys:
+1. 次のコマンドを実行して、ストレージ アカウント キーを一覧表示します。
 
     ```
     az storage account keys list --resource-group %AZURE_RESOURCE_GROUP% --account-name %STORAGE_ACCOUNT_NAME%
     ```
 
-    Record the value of `key1` as the storage key in the following command, then run the command to store the value.
+    `key1` の値を次のコマンドのストレージ キーとして記録し、コマンドを実行して値を格納します。
     ```
     set STORAGE_ACCOUNT_KEY=[storage account key]
     ```
-1. In your favorite text editor, load the `settings.cfg` file from the Azure Machine Learning Workbench project's "Code" subdirectory, and insert the storage account name and key as indicated. Save and close the `settings.cfg` file.
-1. If you have not already done so, download and install the [AzCopy](http://aka.ms/downloadazcopy) utility. Ensure that the AzCopy executable is on your system path by typing "AzCopy" and pressing Enter to show its documentation.
-1. Issue the following commands to copy all of the sample data, pretrained models, and model training scripts to the appropriate locations in your storage account:
+1. 使い慣れたテキスト エディターで、Azure Machine Learning Workbench プロジェクトの "Code" サブディレクトリから `settings.cfg` ファイルを読み込み、指示されたストレージ アカウント名とキーを挿入します。 `settings.cfg` ファイルを保存して閉じます。
+1. まだ完了していない場合は、[AzCopy](http://aka.ms/downloadazcopy) ユーティリティをダウンロードしてインストールします。 「AzCopy」と入力し、Enter キーを押してドキュメントを表示して、AzCopy の実行可能ファイルがシステム パス上にあることを確認します。
+1. 次のコマンドを発行して、すべてのサンプル データ、事前トレーニング済みモデル、およびモデル トレーニング スクリプトをストレージ アカウントの適切な場所にコピーします。
 
     ```
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/test /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/test /DestKey:%STORAGE_ACCOUNT_KEY% /S
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/train /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/train /DestKey:%STORAGE_ACCOUNT_KEY% /S
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/middlesexma2016 /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/middlesexma2016 /DestKey:%STORAGE_ACCOUNT_KEY% /S
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/pretrainedmodels /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/pretrainedmodels /DestKey:%STORAGE_ACCOUNT_KEY% /S
+    AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/pretrainedmodels /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/pretrainedmodels /DestKey:%STORAGE_ACCOUNT_KEY% /S
+    AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/scripts /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/scripts /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    Expect file transfer to take up to 20 minutes. While you wait, you can proceed to the following section. You may need to open another Command Line Interface through Workbench and redefine the temporary variables there.
+    ファイル転送には、最大で 20 分かかります。 待っている間に、以下のセクションに進んでもかまいません。Workbench から別のコマンド ライン インターフェイスを開き、そこで一時変数を再定義する必要が生じる場合があります。
 
-#### Create the HDInsight Spark cluster
+#### <a name="create-the-hdinsight-spark-cluster"></a>HDInsight Spark クラスターの作成
 
-Our recommended method to create an HDInsight cluster uses the HDInsight Spark cluster Resource Manager template included in the "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" subfolder of this project.
+お勧めする HDInsight クラスターの作成方法では、このプロジェクトの "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" サブフォルダーに含まれる HDInsight Spark クラスター Resource Manager テンプレートを使います。
 
-1. The HDInsight Spark cluster template is the "template.json" file under the "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" subfolder of this project. By default, the template creates a Spark cluster with 40 worker nodes. If you must adjust that number, open the template in your favorite text editor and replace all instances of "40" with the worker node number of your choice.
-    - You may encounter out-of-memory errors if the number of worker nodes you choose is small. To combat memory errors, you may run the training and operationalization scripts on a subset of the available data as described later in this document.
-2. Choose a unique name and password for the HDInsight cluster and write them where indicated in the following command. Then create the cluster by issuing the following command:
+1. HDInsight Spark クラスター テンプレートは、このプロジェクトの "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" サブフォルダーにある "template.json" ファイルです。 テンプレートでは既定で、40 ワーカー ノードの Spark クラスターを作成します。 この数値を調整する必要がある場合は、使い慣れたテキスト エディターでテンプレートを開き、すべてのインスタンスの "40" を指定したいワーカー ノード数に置き換えます。
+    - 指定したワーカー ノード数が少ないと、メモリ不足エラーが発生する可能性があります。 メモリ エラーに対処するために、このドキュメントで後から説明する手順に従って、利用可能なデータのサブセット上でトレーニング スクリプトおよび運用化スクリプトを実行できます。
+2. HDInsight クラスターの一意名とパスワードを選び、次のコマンドの指示された場所に記述します。その後、コマンドを実行してクラスターを作成します。
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -151,120 +163,255 @@ Our recommended method to create an HDInsight cluster uses the HDInsight Spark c
     az group deployment create --resource-group %AZURE_RESOURCE_GROUP% --name hdispark --template-file "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning\template.json" --parameters storageAccountName=%STORAGE_ACCOUNT_NAME%.blob.core.windows.net storageAccountKey=%STORAGE_ACCOUNT_KEY% clusterName=%HDINSIGHT_CLUSTER_NAME% clusterLoginPassword=%HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
-Your cluster's deployment may take up to 30 minutes (including provisioning and script action execution).
+クラスターのデプロイには、最大 30 分かかる場合があります (プロビジョニングとスクリプト操作の実行を含む)。
 
-### Prepare the Azure Machine Learning Workbench execution environment
+### <a name="set-up-batch-ai-resources"></a>Batch AI リソースをセットアップする
 
-#### Register the HDInsight cluster as an Azure Machine Learning Workbench compute target
+ストレージ アカウント ファイルの転送と Spark クラスターのデプロイが完了するのを待つ間に、Batch AI ネットワーク ファイル サーバー (NFS) と GPU クラスターを準備できます。 Azure CLI 2.0 のコマンド プロンプトを開き、次のコマンドを実行します。
 
-Once HDInsight cluster creation is complete, register the cluster as a compute target for your project as follows:
+```
+az --version 
+```
 
-1.  Issue the following command from the Azure Machine Learning Command Line Interface:
+インストール済みモジュールの一覧に `batchai` が含まれることを確認します。 ない場合は、異なるコマンド ライン インターフェイス (Workbench から開いたものなど) を使っている可能性があります。
+
+次に、プロバイダーの登録が正常に完了していることを確認します  (プロバイダーの登録には最大で 15 分かかるので、[Batch AI セットアップ手順](https://github.com/Azure/BatchAI/tree/master/recipes)を最近完了した場合はまだ処理中である可能性があります)。次のコマンドの出力で、"Microsoft.Batch" と "Microsoft.BatchAI" の状態がどちらも "Registered" と表示されることを確認します。
+
+```
+az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
+```
+
+そうでない場合は、次のプロバイダー登録コマンドを実行し、登録が完了するまで約 15 分待ちます。
+```
+az provider register --namespace Microsoft.Batch
+az provider register --namespace Microsoft.BatchAI
+```
+
+次のコマンドを変更し、かっこで囲まれた式を、前のリソース グループとストレージ アカウントの作成時に使った値に置き換えます。 その後、次のコマンドを実行し、値を変数として格納します。
+```
+az account set --subscription [subscription ID]
+set AZURE_RESOURCE_GROUP=[resource group name]
+set STORAGE_ACCOUNT_NAME=[storage account name]
+set STORAGE_ACCOUNT_KEY=[storage account key]
+az configure --defaults location=eastus
+az configure --defaults group=%AZURE_RESOURCE_GROUP%
+```
+
+Azure Machine Learning プロジェクトが含まれるフォルダーを確認します (例: `C:\Users\<your username>\AzureML\aerialimageclassification`)。 かっこで囲まれた値をフォルダーのファイルパス (末尾の円記号は除去) に置き換えて、コマンドを実行します。
+```
+set PATH_TO_PROJECT=[The filepath of your project's root directory]
+```
+これで、このチュートリアルに必要な Batch AI リソースを作成する準備が整いました。
+
+#### <a name="prepare-the-batch-ai-network-file-server"></a>Batch AI ネットワーク ファイル サーバーを準備する
+
+Batch AI クラスターは、ネットワーク ファイル サーバー上のトレーニング データにアクセスします。 Azure ファイル共有または Azure Blob Storage と比べて、NFS のファイルにアクセスするとデータ アクセスが数倍速くなる場合があります。
+
+1. ネットワーク ファイル サーバーを作成するには、次のコマンドを実行します。
+
+    ```
+    az batchai file-server create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --vm-size Standard_D2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
+    ```
+
+1. 次のコマンドを使って、ネットワーク ファイル サーバーのプロビジョニング状態を確認します。
+
+    ```
+    az batchai file-server list
+    ```
+
+    "landuseclassifier" という名前のネットワーク ファイル サーバーの "provisioningState" が "succeeded" である場合は、使用可能な状態です。 プロビジョニングには 5 分程度かかります。
+1. 前のコマンドの出力で NFS の IP アドレスを確認します("mountSettings" の "fileServerPublicIp" プロパティ)。 次のコマンドで示されている場所に IP アドレスを書き込み、コマンドを実行して値を格納します。
+
+    ```
+    set AZURE_BATCH_AI_TRAINING_NFS_IP=[your NFS IP address]
+    ```
+
+1. 使い慣れた SSH ツールを使い (次のサンプル コマンドでは [PuTTY](http://www.putty.org/) を使っています)、NFS に対してこのプロジェクトの `prep_nfs.sh` スクリプトを実行して、トレーニング用と検証用の画像セットを NFS に転送します。
+
+    ```
+    putty -ssh demoUser@%AZURE_BATCH_AI_TRAINING_NFS_IP% -pw Dem0Pa$$w0rd -m %PATH_TO_PROJECT%\Code\01_Data_Acquisition_and_Understanding\02_Batch_AI_Training_Provisioning\prep_nfs.sh
+    ```
+
+    データのダウンロードと展開の進行によるシェル ウィンドウのスクロール更新が速すぎて判読できなくても心配しないでください。
+
+必要な場合は、好みの SSH ツールでファイル サーバーにログインして、`/mnt/data` ディレクトリの内容を調べることで、データ転送が計画どおりに行われたことを確認できます。 training_images と validation_images の 2 つのフォルダーが作成され、それぞれに土地利用カテゴリに対応した名前のサブフォルダーが含まれているはずです。  トレーニング用セットと検証用セットには、それぞれ、約 44 K と約 11 K の画像が含まれます。
+
+#### <a name="create-a-batch-ai-cluster"></a>Batch AI クラスターを作成する
+
+1. 次のコマンドを実行してクラスターを作成します。
+
+    ```
+    set AZURE_BATCHAI_STORAGE_ACCOUNT=%STORAGE_ACCOUNT_NAME%
+    set AZURE_BATCHAI_STORAGE_KEY=%STORAGE_ACCOUNT_KEY%
+    az batchai cluster create -n landuseclassifier -u demoUser -p Dem0Pa$$w0rd --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 
+    ```
+
+1. クラスターのプロビジョニング状態を確認するには、次のコマンドを使います。
+
+    ```
+    az batchai cluster list
+    ```
+
+    "landuseclassifier" という名前のクラスターの割り当て状態が resizing から steady に変わったら、ジョブを送信できます。 ただし、クラスター内のすべての VM が "preparing" 状態ではなくなるまで、ジョブの実行は開始しません。 クラスターの "errors" プロパティが null ではない場合は、クラスターの作成中にエラーが発生しており、使うことはできません。
+
+#### <a name="record-batch-ai-training-credentials"></a>Batch AI トレーニング資格情報を記録する
+
+クラスターの割り当てが完了するのを待っている間に、このプロジェクトの "Code" サブディレクトリにある `settings.cfg` ファイルを任意のテキスト エディターで開きます。 次の変数を自分の資格情報で更新します。
+- `bait_subscription_id` (36 文字の Azure サブスクリプション ID)
+- `bait_aad_client_id` (「前提条件」セクションで説明されている Azure Active Directory アプリケーション/クライアント ID)
+- `bait_aad_secret` (「前提条件」セクションで説明されている Azure Active Directory アプリケーション シークレット)
+- `bait_aad_tenant` (「前提条件」セクションで説明されている Azure Active Directory テナント ID)
+- `bait_region` (このドキュメントの作成時点では、eastus が唯一のオプション)
+- `bait_resource_group_name` (前に選んだリソース グループ)
+
+これらの値を割り当てた後、settings.cfg ファイルの変更後の行は次のテキストのようになります。
+
+```
+[Settings]
+    # Credentials for the Azure Storage account
+    storage_account_name = yoursaname
+    storage_account_key = kpIXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXQ==
+    
+    # Batch AI training credentials
+    bait_subscription_id = 0caXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX9c3
+    bait_aad_client_id = d0aXXXXX-XXXX-XXXX-XXXX-XXXXXXXXX7f8
+    bait_aad_secret = ygSXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX6I=
+    bait_aad_tenant = 72fXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXb47
+    bait_region = eastus
+    bait_resource_group_name = yourrgname
+```
+
+`settings.cfg` を保存して閉じます。
+
+Batch AI リソース作成コマンドを実行した CLI ウィンドウは閉じてもかまいません。 このチュートリアルの以降の手順はすべて、Azure Machine Learning Workbench から起動された CLI を使って行います。
+
+### <a name="prepare-the-azure-machine-learning-workbench-execution-environment"></a>Azure Machine Learning Workbench 実行環境の準備
+
+#### <a name="register-the-hdinsight-cluster-as-an-azure-machine-learning-workbench-compute-target"></a>HDInsight クラスターを Azure Machine Learning Workbench コンピューティング ターゲットとして登録する
+
+HDInsight クラスターの作成が完了したら、次の手順に従って、クラスターをお使いのプロジェクトのコンピューティング ターゲットとして登録します。
+
+1.  Azure Machine Learning コマンド ライン インターフェイスから次のコマンドを発行します。
 
     ```
     az ml computetarget attach --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD% -t cluster
     ```
 
-    This command adds two files, `myhdi.runconfig` and `myhdi.compute`, to your project's `aml_config` folder.
+    このコマンドでは、`myhdi.runconfig` および `myhdi.compute` という 2 つのファイルをお使いのプロジェクトの `aml_config` フォルダーに追加します。
 
-1. Open the `myhdi.compute` file in your favorite text editor. Modify the `yarnDeployMode: cluster` line to read `yarnDeployMode: client`, then save and close the file.
-1. Run the following command to prepare your environment for use:
+1. 使い慣れたテキスト エディターで `myhdi.compute` ファイルを開きます。 `yarnDeployMode: client` を読み取るように `yarnDeployMode: cluster` 行を変更してから、ファイルを保存して閉じます。
+1. 次のコマンドを実行して、HDInsight 環境を使えるように準備します。
    ```
    az ml experiment prepare -c myhdi
    ```
 
-#### Install local dependencies
+#### <a name="install-local-dependencies"></a>ローカルの依存関係のインストール
 
-Open a CLI from Azure Machine Learning Workbench and install dependencies needed for local execution by issuing the following command:
+Azure Machine Learning Workbench から CLI を開き、次のコマンドを発行して、ローカル実行に必要な依存関係をインストールします。
 
 ```
-pip install matplotlib azure-storage==0.36.0 pillow scikit-learn
+pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batchai
 ```
 
-## Data acquisition and understanding
+## <a name="data-acquisition-and-understanding"></a>データの取得と理解
 
-This scenario uses publicly available aerial imagery data from the [National Agriculture Imagery Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) at 1-meter resolution. We have generated sets of 224 pixel x 224 pixel PNG files cropped from the original NAIP data and sorted according to land use labels from the [National Land Cover Database](https://www.mrlc.gov/nlcd2011.php). A sample image with label "Developed" is shown at full size:
+このシナリオでは、[National Agriculture Imagery Program](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) (米国農業用地画像プログラム) で一般公開されている、解像度 1 メートルの航空画像データを使用します。 ここでは、224 ピクセル x 224 ピクセルの PNG ファイルのセットを元の NAIP データから生成し、[National Land Cover Database](https://www.mrlc.gov/nlcd2011.php) (米国土地被覆に関するデータベース) の土地用途ラベルに従って並べ替えました。 以下に "Developed" (開発済み) というラベルのサンプル画像をフル サイズで表示します。
 
-![A sample tile of developed land](media/scenario-aerial-image-classification/sample-tile-developed.png)
+![開発地のサンプル タイル](media/scenario-aerial-image-classification/sample-tile-developed.png)
 
-Class-balanced sets of ~44k and 11k images are used for model training and validation, respectively. We demonstrate model deployment on a ~67k image set tiling Middlesex County, MA -- home of Microsoft's New England Research and Development (NERD) center. For more information on how these image sets were constructed, see the [Embarrassingly Parallel Image Classification git repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+~ 44 k および11 k 画像のクラス均衡セットはそれぞれ、モデルのトレーニングと検証に使用されます。 ここでは、マサチューセッツ州ミドルセックス群にあるマイクロソフトの New England Research and Development (NERD : ニューイングランド研究開発センター) センター拠点の、タイル状になった ~67k 画像 セットのモデル デプロイを示します。 これらの画像セットの構築方法の詳細については、git リポジトリの「[Embarrassingly Parallel Image Classification](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)」(驚異的な並行画像分類) をご覧ください。
 
-![Location of Middlesex County, Massachusetts](media/scenario-aerial-image-classification/middlesex-ma.png)
+![マサチューセッツ州ミドルセックス郡の場所](media/scenario-aerial-image-classification/middlesex-ma.png)
 
-During setup, the aerial image sets used in this example were transferred to the storage account that you created. The training, validation, and operationalization images are all 224 pixel x 224 pixel PNG files at a resolution of one pixel per square meter. The training and validation images have been organized into subfolders based on their land use label. (The land use labels of the operationalization images are unknown and in many cases ambiguous; some of these images contain multiple land types.) For more information on how these image sets were constructed, see the [Embarrassingly Parallel Image Classification git repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+セットアップ中に、この例で使用される航空画像セットが、作成したストレージ アカウントに転送されました。 トレーニング、検証、および運用化の画像はすべて、1 平方メートルあたり 1 ピクセルの解像度の、224 ピクセル x 224 ピクセルの PNG ファイルです。 トレーニングと検証の画像は、土地用途ラベルに基づくサブフォルダーに編成済みです  (運用化の画像の土地用途ラベルは不確定であり、多くの場合はあいまいです。これらの画像の一部は、複数の土地種類を含みます)。これらの画像セットの構築方法の詳細については、git リポジトリの「[Embarrassingly Parallel Image Classification](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)」(驚異的な並行画像分類) をご覧ください。
 
-To view example images in your Azure storage account (optional):
-1. Log in to the [Azure portal](https://portal.azure.com).
-1. Search for the name of your storage account in the search bar along the top of your screen. Click on your storage account in the search results.
-2. Click on the "Blobs" link in the storage account's main pane.
-3. Click on the container named "train." You should see a list of directories named according to land use.
-4. Click on any of these directories to load the list of images it contains.
-5. Click on any image and download it to view the image.
-6. If desired, click on the containers named "test" and "middlesexma2016" to view their contents as well.
+Azure ストレージ アカウントでサンプル 画像を表示するには、次の手順を実行します (省略可能)。
+1. [Azure Portal](https://portal.azure.com) にログインします。
+1. 画面の上部にある検索バーで、ストレージ アカウントの名前を検索します。 検索結果で、該当のストレージ アカウントをクリックします。
+2. ストレージ アカウントのメイン ウィンドウにある [BLOB] リンクをクリックします。
+3. "train" という名前のコンテナーをクリックします。 土地用途に従って名前付けされたディレクトリの一覧が表示されます。
+4. これらのディレクトリのいずれかをクリックして、含まれる画像の一覧を読み込みます。
+5. 任意の画像をクリックし、ダウンロードして画像を表示します。
+6. 必要な場合は、"test" および "middlesexma2016" という名前のコンテナーをクリックして、それらのコンテンツも一緒に表示します。
 
-## Modeling
+## <a name="modeling"></a>モデリング
 
-### Training models with MMLSpark
-The `run_mmlspark.py` script in the "Code\02_Modeling" subfolder of the Workbench project is used to train an [MMLSpark](https://github.com/Azure/mmlspark) model for image classification. The script first featurizes the training set images using an image classifier DNN pretrained on the ImageNet dataset (either AlexNet or an 18-layer ResNet). The script then uses the featurized images to train an MMLSpark model (either a random forest or a logistic regression model) to classify the images. The test image set is then featurized and scored with the trained model. The accuracy of the model's predictions on the test set is calculated and logged to Azure Machine Learning Workbench's run history feature. Finally, the trained MMLSpark model and its predictions on the test set are saved to blob storage.
+### <a name="training-models-with-azure-batch-ai"></a>Azure Batch AI でのモデルのトレーニング
 
-Select a unique output model name for your trained model, a pretrained model type, and an MMLSpark model type. Write your selections where indicated in the following command template, then begin retraining by executing the command from an Azure ML Command Line Interface:
+Batch AI トレーニング ジョブを実行するには、Workbench プロジェクトの "Code\02_Modeling" サブフォルダーにある `run_batch_ai.py` スクリプトを使います。 このジョブでは、ユーザーが選んだ画像分類子 DNN が再トレーニングされます (ImageNet でトレーニング済みの AlexNet または ResNet 18)。 再トレーニングの深さを指定することもできます。ネットワークの最後のレイヤーだけを再トレーニングすると、使用できるトレーニング サンプルが少ないときのオーバーフィットを減らすことができます。一方、ネットワーク全体 (または、AlexNet の場合は、完全に接続されたレイヤー) を細かくチューニングすると、トレーニング セットが十分に大きいときのモデルのパフォーマンスを大きく向上させることができます。
+
+トレーニング ジョブが完了すると、このスクリプトはモデル (および、モデルの整数出力と文字ラベルの間のマッピングを記述したファイル) と予測を BLOB ストレージに保存します。 BAIT ジョブのログ ファイルが解析されて、トレーニング エポックでのエラー率改善の経時変化が抽出されます。 エラー率改善の経時変化は、後で確認できるように、AML Workbench の実行履歴に記録されます。
+
+トレーニング済みモデルの名前、事前トレーニング済みモデルの種類、および再トレーニングの深さを選びます。 次のコマンドの指示された場所に選択内容を記述して、Azure ML コマンド ライン インターフェイスからコマンドを実行し、再トレーニングを開始します。
+
+```
+az ml experiment submit -c local Code\02_Modeling\run_batch_ai.py --config_filename Code/settings.cfg --output_model_name [unique model name, alphanumeric characters only] --pretrained_model_type {alexnet,resnet18} --retraining_type {last_only,fully_connected,all} --num_epochs 10
+```
+
+Azure Machine Learning の実行が完了するまで、約 30 分かかります。 異なる方法でトレーニングされたモデルのパフォーマンスを比較できるよう、いくつかの似たコマンド (出力モデル名、事前トレーニング済みモデルの種類、再トレーニングの深さを変えたもの) を実行することをお勧めします。
+
+### <a name="training-models-with-mmlspark"></a>MMLSpark によるモデルのトレーニング
+
+Workbench プロジェクトの "Code\02_Modeling" サブフォルダーにある `run_mmlspark.py` スクリプトは、画像分類用の [MMLSpark](https://github.com/Azure/mmlspark) モデルのトレーニングに使用されます。 スクリプトでは最初に、ImageNet データセット (AlexNet または 18 レイヤーの ResNet) 上で事前にトレーニングされた画像分類子 DNN を使用して、トレーニング セットの画像の特徴付けを行います。 次に、スクリプトは、特徴付けした画像を使って MMLSpark モデル (ランダム フォレストまたはロジスティック回帰モデルのいずれか) をトレーニングし、画像を分類します。 その後、テスト画像セットは、トレーニング済みのモデルを使って特徴付けおよびスコア付けされます。 テスト セット上のモデルの予測精度が計算され、Azure Machine Learning Workbench の実行履歴機能に記録されます。 最後に、テスト セット上のトレーニング済みの MMLSpark モデルと予測が、BLOB ストレージに保存されます。
+
+トレーニング済みモデルの一意の出力モデル名、事前トレーニング済みモデルの種類、および MMLSpark モデルの種類を選択します。 次のコマンド テンプレートの指示された場所に選択内容を記述して、Azure ML コマンド ライン インターフェイスからコマンドを実行して、再トレーニングを開始します。
 
 ```
 az ml experiment submit -c myhdi Code\02_Modeling\run_mmlspark.py --config_filename Code/settings.cfg --output_model_name [unique model name, alphanumeric characters only] --pretrained_model_type {alexnet,resnet18} --mmlspark_model_type {randomforest,logisticregression}
 ```
 
-An additional `--sample_frac` parameter can be used to train and test the model with a subset of available data. Using a small sample fraction decreases runtime and memory requirements at the expense of trained model accuracy. For more information on this and other parameters, run `python Code\02_Modeling\run_mmlspark.py -h`.
+追加の `--sample_frac` パラメーターは、利用可能なデータのサブセットを使って、モデルのトレーニングおよびテストに使用できます。 小さなサンプルの一部を使用すると、トレーニング済みモデルの精度が低下する代わりに、ランタイムとメモリの要件が下がります。 (たとえば、`--sample_frac 0.1` で実行すると、約 20 分間かかります。)この件および他のパラメーターに関する詳細については、`python Code\02_Modeling\run_mmlspark.py -h` を実行してください。
 
-Users are encouraged to run this script several times with different input parameters. The performance of the resulting models can then be compared in Azure Machine Learning Workbench's Run History feature.
+ユーザーは別の入力パラメーターを使用してこのスクリプトを複数回実行することが、推奨されています。 結果として得られるモデルのパフォーマンスは、Azure Machine Learning Workbench の実行履歴機能で比較できます。
 
-### Comparing model performance using the Workbench Run History feature
+### <a name="comparing-model-performance-using-the-workbench-run-history-feature"></a>Workbench の実行履歴機能を使用したモデル パフォーマンスの比較
 
-After you have executed two or more training runs of either type, navigate to the Run History feature in Workbench by clicking the clock icon along the left-hand menu bar. Select `run_mmlspark.py` from the list of scripts at left. A pane loads comparing the test set accuracy for all runs. To see more detail, scroll down and click on the name of an individual run.
+いずれかの種類のトレーニング実行を 2 回以上終えたら、左側のメニュー バーにある時計のアイコンをクリックして、Workbench の実行履歴機能に移動します。 左側のスクリプト一覧から `run_mmlspark.py` を選びます ウィンドウに、すべての実行に対するテスト セットの精度比較が読み込まれます。 詳細を表示するには、下へスクロールして個々 の実行の名前をクリックします。
 
-## Deployment
+## <a name="deployment"></a>デプロイ
 
-To apply one of your trained models to aerial images tiling Middlesex County, MA using remote execution on HDInsight, insert your desired model's name into the following command and execute it:
+HDInsight のリモート実行を使用して、トレーニング済みモデルの 1 つをマサチューセッツ州ミドルセックス郡のタイル状の航空画像に適用するには、目的のモデルの名前を次のコマンドに挿入して、コマンドを実行します。
 
 ```
 az ml experiment submit -c myhdi Code\03_Deployment\batch_score_spark.py --config_filename Code/settings.cfg --output_model_name [trained model name chosen earlier]
 ```
 
-An additional `--sample_frac` parameter can be used to operationalize the model with a subset of available data. Using a small sample fraction decreases runtime and memory requirements at the expense of prediction completeness. For more information on this and other parameters, run `python Code\03_Deployment\batch_score_spark -h`.
+追加の `--sample_frac` パラメーターは、利用可能なデータのサブセットを使って、モデルの運用化に使用できます。 小さなサンプルの一部を使用すると、予測の完成度が低下する代わりに、ランタイムとメモリの要件が下がります。 この件および他のパラメーターに関する詳細については、`python Code\03_Deployment\batch_score_spark -h` を実行してください。
 
-This script writes the model's predictions to your storage account. The predictions can be examined as described in the next section.
+このスクリプトは、お使いのストレージ アカウントにモデルの予測を書き込みます。 予測は、次のセクションの説明に従って検証できます。
 
-## Visualization
+## <a name="visualization"></a>グラフ
 
-The "Model prediction analysis" Jupyter notebook in the "Code\04_Result_Analysis" subfolder of the Workbench project visualizes a model's predictions. Load and run the notebook as follows:
-1. Open the project in Workbench and click on the folder ("Files") icon along the left-hand menu to load the directory listing.
-2. Navigate to the "Code\04_Result_Analysis" subfolder and click on the notebook named "Model prediction analysis." A preview rendering of the notebook should be displayed.
-3. Click "Start Notebook Server" to load the notebook.
-4. In the first cell, enter the name of the model whose results you would like to analyze where indicated.
-5. Click on "Cell -> Run All" to execute all cells in the notebook.
-6. Read along with the notebook to learn more about the analyses and visualizations it presents.
+Workbench プロジェクトの "Code\04_Result_Analysis" サブフォルダーにある "Model prediction analysis"\(モデル予測分析\) Jupyter ノートブックでは、モデルの予測を視覚化します。 次の手順に従って、ノートブックを読み込んで実行します。
+1. Workbench でプロジェクトを開き、左側のメニューにあるフォルダー ("ファイル") アイコンをクリックして、ディレクトリ一覧を読み込みます。
+2. "Code\04_Result_Analysis" サブフォルダーに移動し、"Model prediction analysis"\(モデル予測分析\) という名前のノートブックをクリックします。 ノートブックのプレビューが表示されます。
+3. [Start Notebook Server]\(ノートブック サーバーの起動\) をクリックして、ノートブックを読み込みます。
+4. 最初のセルで、結果を分析するモデルの名前を指示された場所に入力します。
+5. [セル] > [Run All]\(すべて実行\) をクリックして、ノートブックのすべてのセルを実行します。
+6. 提示された分析および視覚化の詳細を、ノートブックと共に読み取って確認します。
 
-## Cleanup
-When you have completed the example, we recommend that you delete all of the resources you have created by executing the following command from the Azure Command Line Interface:
+## <a name="cleanup"></a>クリーンアップ
+例を完了したら、Azure コマンド ライン インターフェイスから次のコマンドを実行して、作成したすべてのリソースを削除することお勧めします。
 
   ```
   az group delete --name %AZURE_RESOURCE_GROUP%
   ```
 
-## References
+## <a name="references"></a>参照
 
-- [The Embarrassingly Parallel Image Classification repository](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)
-   - Describes dataset construction from freely available imagery and labels
-- [MMLSpark](https://github.com/Azure/mmlspark) GitHub repository
-   - Contains additional examples of model training and evaluation with MMLSpark
+- 「[The Embarrassingly Parallel Image Classification](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)」 (驚異的な並行画像分類) リポジトリ
+   - 自由に利用できる画像およびラベルからのデータセットの構築について説明します。
+- 「[MMLSpark](https://github.com/Azure/mmlspark)」 GitHub リポジトリ
+   - MMLSpark でのモデルのトレーニングおよび評価の追加サンプルを含みます。
 
-## Conclusions
+## <a name="conclusions"></a>まとめ
 
-Azure Machine Learning Workbench helps data scientists easily deploy their code on remote compute targets. In this example, local code was deployed for remote execution on an HDInsight cluster. Azure Machine Learning Workbench's run history feature tracked the performance of multiple models and helped us identify the most accurate model. Workbench's Jupyter notebooks feature helped visualize our models' predictions in an interactive, graphical environment.
+Azure Machine Learning Workbench を使用すると、データ サイエンティストはリモート コンピューティングのターゲットに簡単にコードをデプロイできます。 この例では、HDInsight クラスターでのリモート実行用にローカル MMLSpark トレーニング コードがデプロイされており、ローカル スクリプトが Azure Batch AI GPU クラスターでトレーニング ジョブを開始しました。 Azure Machine Learning Workbench の実行履歴機能では、複数のモデルのパフォーマンスを追跡し、最も精度の高いモデルを特定しました。 Workbench の Jupyter ノートブック機能では、インタラクティブなグラフィック環境でモデルの予測を視覚化しました。
 
-## Next steps
-To dive deeper into this example:
-- In Azure Machine Learning Workbench's Run History feature, click the gear symbols to select which graphs and metrics are displayed.
-- Examine the sample scripts for statements calling the `run_logger`. Check that you understand how each metric is being recorded.
-- Examine the sample scripts for statements calling the `blob_service`. Check that you understand how trained models and predictions are stored and retrieved from the cloud.
-- Explore the contents of the containers created in your blob storage account. Ensure that you understand which script or command is responsible for creating each group of files.
-- Modify the training script to train a different MMLSpark model type or to change the model hyperparameters. Use the run history feature to determine whether your changes increased or decreased the model's accuracy.
+## <a name="next-steps"></a>次のステップ
+この例をさらに詳しく確認するには、次の操作を実行してください。
+- Azure Machine Learning Workbench 実行履歴機能で、歯車の記号をクリックして、表示するグラフィックおよびメトリックを選択します。
+- `run_logger` を呼び出すステートメントのサンプル スクリプトを検証します。 各メトリックが記録される方法を理解していることを確認してください。
+- `blob_service` を呼び出すステートメントのサンプル スクリプトを検証します。 トレーニング済みモデルおよび予測が保存されクラウドから取得される方法を理解していることを確認してください。
+- BLOB ストレージ アカウントで作成されたコンテナーの内容を調べます。 どのスクリプトまたはコマンドがファイルの各グループの作成を担っているかを理解していることを確認してください。
+- 異なる MMLSpark モデルの種類をトレーニングするか、またはモデルのハイパーパラメーターを変更するように、トレーニング スクリプトを修正します。 実行履歴機能を使用して、変更によってモデルの精度が向上または低下したかを判断してください。

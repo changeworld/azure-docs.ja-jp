@@ -71,15 +71,9 @@
 
 ## リソース ポリシーの設定
 ### [リソース ポリシーとは](resource-manager-policy.md)
-### [Azure Portal を使用してポリシーを割り当てる](resource-manager-policy-portal.md)
-### [スクリプトを使用してポリシーを割り当てる](resource-manager-policy-create-assign.md)
 ### 例
 #### [タグ](resource-manager-policy-tags.md)
 #### [名前付け規則](resource-manager-policy-naming-convention.md)
-#### [ネットワーク](resource-manager-policy-network.md)
-#### [Storage](resource-manager-policy-storage.md)
-#### [Linux VM](../virtual-machines/linux/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
-#### [Windows VM](../virtual-machines/windows/policy.md?toc=%2fazure%2fazure-resource-manager%2ftoc.json)
 
 ## Audit
 ### [アクティビティ ログを表示する](resource-group-audit.md)

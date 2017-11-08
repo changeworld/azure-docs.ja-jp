@@ -1,6 +1,6 @@
 ---
 title: "PowerShell を使用し、Azure Queue Storage を操作する | Microsoft Docs"
-description: "チュートリアル - PowerShell を使用し、Azure Queue Storage を操作する"
+description: "PowerShell を使用し、Azure Queue Storage を操作する方法"
 services: storage
 documentationcenter: storage
 author: robinsh
@@ -11,18 +11,18 @@ ms.service: storage
 ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: how-to
 ms.date: 09/14/2017
 ms.author: robinsh
-ms.openlocfilehash: 357d8db329a6a3c782753804d681029fdb07b5f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 85678452e84a65bd81472396f8ebbb91091a2095
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="perform-azure-queue-storage-operations-with-azure-powershell"></a>Azure PowerShell を使用し、Azure Queue Storage を操作する
 
-Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 詳細については、[Azure Queue の概要](storage-queues-introduction.md)に関するページをご覧ください。 このチュートリアルでは、Queue Storage の一般的な操作について取り上げます。 学習内容は次のとおりです。
+Azure キュー ストレージは、HTTP または HTTPS を使用した認証された呼び出しを介して世界中のどこからでもアクセスできる大量のメッセージを格納するためのサービスです。 詳細については、[Azure Queue の概要](storage-queues-introduction.md)に関するページをご覧ください。 このハウツー記事では、Queue Storage の一般的な操作について取り上げます。 学習内容は次のとおりです。
 
 > [!div class="checklist"]
 > * キューを作成する
@@ -32,7 +32,9 @@ Azure Queue Storage は、HTTP または HTTPS を使用した認証された呼
 > * メッセージを削除する 
 > * キューを削除する
 
-このチュートリアルには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+このハウツーには、Azure PowerShell モジュール バージョン 3.6 以降が必要です。 バージョンを確認するには、`Get-Module -ListAvailable AzureRM` を実行します。 アップグレードする必要がある場合は、[Azure PowerShell モジュールのインストール](/powershell/azure/install-azurerm-ps)に関するページを参照してください。
+
+キューのデータ プレーン用の PowerShell コマンドレットはありません。 メッセージの追加、読み取り、削除などのデータ プレーン操作を実行するには、PowerShell で公開されるとおりに、.NET ストレージ クライアント ライブラリを使用する必要があります。 メッセージ オブジェクトを作成し、AddMessage などのコマンドを使用して、そのメッセージに対して操作を実行できます。 この記事では、その方法について説明します。
 
 ## <a name="sign-in-to-azure"></a>Azure へのサインイン
 
@@ -44,7 +46,7 @@ Login-AzureRmAccount
 
 ## <a name="retrieve-list-of-locations"></a>場所の一覧を取得する
 
-使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 このチュートリアルでは **eastus** を使用します。 将来使用するために、これを変数 **location** に保存します。
+使用する場所がわからない場合、利用できる場所を一覧表示できます。 一覧が表示されたら、使用する場所を見つけます。 この演習では **eastus** を使用します。 将来使用するために、これを変数 **location** に保存します。
 
 ```powershell
 Get-AzureRmLocation | select Location 
@@ -71,8 +73,7 @@ $storageAccountName = "howtoqueuestorage"
 $storageAccount = New-AzureRmStorageAccount -ResourceGroupName $resourceGroup `
   -Name $storageAccountName `
   -Location $location `
-  -SkuName Standard_LRS `
-  -Kind Storage
+  -SkuName Standard_LRS
 
 $ctx = $storageAccount.Context
 ```
@@ -104,7 +105,7 @@ Get-AzureStorageQueue -Context $ctx | select Name
 
 ## <a name="add-a-message-to-a-queue"></a>メッセージをキューに追加する
 
-キューにメッセージを追加するには、まず [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/library/azure/jj732474.aspx) クラスの新しいインスタンスを作成します。 次に、 [AddMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) メソッドを呼び出します。 CloudQueueMessage は、文字列 (UTF-8 形式) またはバイト配列から作成できます。
+キュー内の実際のメッセージに影響を与える操作では、PowerShell で公開されるとおりに、.NET ストレージ クライアント ライブラリを使用します。 キューにメッセージを追加するには、メッセージ オブジェクト [Microsoft.WindowsAzure.Storage.Queue.CloudQueueMessage](http://msdn.microsoft.com/library/azure/jj732474.aspx) クラスの新しいインスタンスを作成します。 次に、 [AddMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.addmessage.aspx) メソッドを呼び出します。 CloudQueueMessage は、文字列 (UTF-8 形式) またはバイト配列から作成できます。
 
 次の例は、メッセージをキューに追加する方法を示しています。
 
@@ -124,17 +125,17 @@ $queueMessage = New-Object -TypeName Microsoft.WindowsAzure.Storage.Queue.CloudQ
 $queue.CloudQueue.AddMessage($QueueMessage)
 ```
 
-[Azure Storage Explorer](http://storageexplorer.com) を使用する場合、Azure アカウントに接続し、ストレージ アカウントのキューを表示し、その 1 つにドリルダウンし、そのキューに関するメッセージを表示できます。 
+[Azure Storage Explorer](http://storageexplorer.com) を使用する場合、Azure アカウントに接続し、ストレージ アカウントのキューを表示し、キューにドリルダウンし、そのキューに関するメッセージを表示できます。 
 
 ## <a name="read-a-message-from-the-queue-then-delete-it"></a>キューのメッセージを読み、その後、削除する
 
 メッセージは、先入れ先出しをできるだけ試すという方式で読まれます。 最初に届いたメッセージが最初に読まれるという保証はありません。 キューのメッセージを読むと、そのキューを見ているその他すべてのプロセスでそのメッセージが見えなくなります。 この措置によって、ハードウェアまたはソフトウェアの問題が原因でコードによるメッセージの処理が失敗した場合でも、コードの別のインスタンスで同じメッセージを取得し、もう一度処理できます。  
 
-この**非表示時間**によって、メッセージが見えなくなる時間が定義されます。この時間を過ぎると、再び表示され、処理できます。 既定値は 30 秒です。 
+この**非表示タイムアウト**によって、メッセージが見えなくなる時間が定義されます。この時間を過ぎると、再び表示され、処理できます。 既定値は 30 秒です。 
 
 コードは 2 つの手順でキューのメッセージを読みます。 [Microsoft.WindowsAzure.Storage.Queue.CloudQueue.GetMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.getmessage.aspx) メソッドを呼び出すと、キュー内の次のメッセージが取得されます。 **GetMessage** から返されたメッセージは、このキューからメッセージを読み取る他のコードから参照できなくなります。 キューからのメッセージの削除を完了するには、[Microsoft.WindowsAzure.Storage.Queue.CloudQueue.DeleteMessage](http://msdn.microsoft.com/library/azure/microsoft.windowsazure.storage.queue.cloudqueue.deletemessage.aspx) メソッドを呼び出します。 
 
-次の例では、3 つのキュー メッセージを読み、それから 10 秒 (非表示時間) 待ちます。 その後、3 つのメッセージを再び読み、読んだら **DeleteMessage** を呼び出し、メッセージを削除します。 メッセージの削除後にキューを読もうとすると、$queueMessage が NULL として返されます。
+次の例では、3 つのキュー メッセージを読み、それから 10 秒 (非表示タイムアウト) 待ちます。 その後、3 つのメッセージを再び読み、読んだら **DeleteMessage** を呼び出し、メッセージを削除します。 メッセージの削除後にキューを読もうとすると、$queueMessage が NULL として返されます。
 
 ```powershell
 # Set the amount of time you want to entry to be invisible after read from the queue
@@ -178,7 +179,7 @@ Remove-AzureRmResourceGroup -Name $resourceGroup
 
 ## <a name="next-steps"></a>次のステップ
 
-このチュートリアルでは、次のような、PowerShell による基本的な Queue Storage 管理について説明しました。
+このハウツー記事では、次のような、PowerShell による基本的な Queue Storage 管理について説明しました。
 
 > [!div class="checklist"]
 > * キューを作成する

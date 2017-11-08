@@ -4,7 +4,7 @@ description: "Azure Analysis Services での認証とユーザーのアクセス
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 10/09/2017
 ms.author: owend
-ms.openlocfilehash: e9667afff1bdc351e0ed5cd94bb5fcf946b46f3b
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: e7fdb55ba29fbdc2f3d89fbb19c8b77bf2c05795
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="authentication-and-user-permissions"></a>認証とユーザーのアクセス許可
 Azure Analysis Services では、ID 管理とユーザー認証に Azure Active Directory (Azure AD) を使用します。 Azure Analysis Services サーバーを作成、管理、またはこのサーバーに接続するユーザーには、同じサブスクリプション内の [Azure AD テナント](../active-directory/active-directory-administer.md)に有効なユーザー ID が必要です。

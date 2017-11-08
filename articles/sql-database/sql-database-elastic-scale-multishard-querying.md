@@ -9,17 +9,17 @@ editor:
 ms.assetid: a4379c15-f213-4026-ab6f-a450ee9d5758
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 04/12/2016
 ms.author: torsteng
-ms.openlocfilehash: 67bcb3c7fe33341103f28bc70e8cc2acbb924cae
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b4827fafdfd2f8b094c4f541a7511d6233dd4e6f
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="multi-shard-querying"></a>マルチシャード クエリ実行
 ## <a name="overview"></a>Overview

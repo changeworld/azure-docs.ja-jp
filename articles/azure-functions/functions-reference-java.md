@@ -13,11 +13,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/20/2017
 ms.author: routlaw
-ms.openlocfilehash: f8812c2e8ac3398dabd17feaf97897efca5566f3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: dc9a1b6061c41cd623e1ddb3bb9dbb87530a13d5
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-functions-java-developer-guide"></a>Azure Functions の Java 開発者向けガイド
 > [!div class="op_single_selector"]
@@ -39,9 +39,9 @@ Cosmos DB | 該当なし
 HTTP | <ul><li>`HttpTrigger`</li><li>`HttpOutput`</li></ul>
 Mobile Apps | 該当なし
 Notification Hubs | 該当なし
-Storage Blob | <ul><li>`BlobTrigger`</li><li>`BlobOutput`</li><li>`BlobOutput`</li></ul>
-Storage Queue | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
-Storage Table | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
+ストレージ BLOB | <ul><li>`BlobTrigger`</li><li>`BlobOutput`</li><li>`BlobOutput`</li></ul>
+ストレージ キュー | <ul><li>`QueueTrigger`</li><li>`QueueOutput`</li></ul>
+ストレージ テーブル | <ul><li>`TableInput`</li><li>`TableOutput`</li></ul>
 Timer | <ul><li>`TimerTrigger`</li></ul>
 Twilio | 該当なし
 
@@ -214,20 +214,22 @@ public class MyClass {
 
 ## <a name="outputs"></a>出力
 
+
 出力は、戻り値または出力パラメーターの両方で表現できます。 出力が 1 つのみの場合は、戻り値を使用することをお勧めします。 複数の出力では、出力パラメーターを使用する必要があります。
 
 戻り値は最も単純な出力形式であり、任意の型の値を返すと、Azure Functions ランタイムが実際の型に戻すことを試行します (HTTP 応答など)。 `functions.json` では、出力バインドの名前として `$return` を使用します。
 
-複数の出力値を生成するには、`azure-functions-java-core` パッケージに定義されている `OutputParameter<T>` 型を使用します。 HTTP 応答と、キューへのメッセージのプッシュも行う必要がある場合は、次のようなコードを記述できます。
+複数の出力値を生成するには、`azure-functions-java-core` パッケージに定義されている `OutputBinding<T>` 型を使用します。 HTTP 応答と、キューへのメッセージのプッシュも行う必要がある場合は、次のようなコードを記述できます。
 
 ```java
 package com.example;
 
-import com.microsoft.azure.serverless.functions.OutputParameter;
+import com.microsoft.azure.serverless.functions.OutputBinding;
 import com.microsoft.azure.serverless.functions.annotation.BindingName;
 
 public class MyClass {
-    public static String echo(String body, @BindingName("message") OutputParameter<String> queue) {
+    public static String echo(String body, 
+    @QueueOutput(queueName = "messages", connection = "AzureWebJobsStorage", name = "queue") OutputBinding<String> queue) {
         String result = "Hello, " + body + ".";
         queue.setValue(result);
         return result;
@@ -235,7 +237,7 @@ public class MyClass {
 }
 ```
 
-さらに、`function.json` に出力バインドを定義します。
+`function.json` に出力バインドを定義する必要があります。
 
 ```json
 {
@@ -251,10 +253,10 @@ public class MyClass {
     },
     {
       "type": "queue",
-      "name": "message",
+      "name": "queue",
       "direction": "out",
-      "queueName": "myqueue",
-      "connection": "ExampleStorageAccount"
+      "queueName": "messages",
+      "connection": "AzureWebJobsStorage"
     },
     {
       "type": "http",
@@ -268,7 +270,7 @@ public class MyClass {
 
 場合によっては、関数で入力と出力を細かく制御する必要があります。 `azure-functions-java-core` パッケージには、要求情報を操作し、HTTP トリガーの戻り値の状態を調整するための特殊な型が用意されています。
 
-| 特殊な型      |       ターゲット        | 一般的な用途                  |
+| 特殊な型      |       [ターゲット]        | 一般的な用途                  |
 | --------------------- | :-----------------: | ------------------------------ |
 | `HttpRequestMessage`  |    HTTP トリガー     | メソッド、ヘッダー、またはクエリを取得する |
 | `HttpResponseMessage` | HTTP 出力のバインド | 200 以外の状態を返す   |

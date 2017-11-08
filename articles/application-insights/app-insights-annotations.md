@@ -3,7 +3,7 @@ title: "Application Insights のリリース注釈 | Microsoft Docs"
 description: "Application Insights で、メトリックス エクスプローラーのグラフにデプロイ マーカーまたはビルド マーカーを追加します。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 23173e33-d4f2-4528-a730-913a8fd5f02e
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 11/16/2016
-ms.author: bwren
-ms.openlocfilehash: f7eb2f3cba535eb64db5544c498289c9e895987a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: a479fa553d64f3820ae8513353484e72b57d30e4
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Application Insights のメトリック グラフの注釈
 [メトリックス エクスプローラー](app-insights-metrics-explorer.md)のグラフの注釈により、新しいビルドのデプロイ先やその他の重要なイベントが示されます。 これにより、変更内容がアプリケーションのパフォーマンスに影響を与えたかどうかを簡単に把握できます。 注釈は、[Visual Studio Team Services ビルド システム](https://www.visualstudio.com/en-us/get-started/build/build-your-app-vs)により自動で作成されます。 [PowerShell から作成する](#create-annotations-from-powershell)ことにより、任意のイベントにフラグを設定する注釈を作成することもできます。

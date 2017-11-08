@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 10/16/2017
 ms.author: marsma
 ms.custom: 
-ms.openlocfilehash: 033ef0cdd607ced5de6c975e071e0ce37e677201
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e38a92fc48636476f00fe18c735901d906799fde
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="create-a-container-registry-using-the-azure-portal"></a>Azure Portal を使用したコンテナー レジストリの作成
 
@@ -39,11 +39,13 @@ Azure Portal (https://portal.azure.com) にログインします。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-01]
 
-**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `myResourceGroup` というリソース グループを作成し、**[SKU]** に [クラシック] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
+**[レジストリ名]** と **[リソース グループ]** に値を入力します。 レジストリの名前は Azure 内で一意にする必要があります。また、5 ～ 50 文字の英数字を含める必要があります。 `myResourceGroup` というリソース グループを作成し、**[SKU]** に [Basic] を選択します。 **[作成]** を選択して ACR インスタンスをデプロイします。
 
 ![Azure Portal でコンテナー レジストリを作成する][qs-portal-03]
 
-Azure Container Registry は、`Classic`、`Basic`、`Standard`、および `Premium` という複数の SKU でご利用いただけます。 `Basic`、`Standard`、および `Premium` は、管理対象ストレージや webhook のような高度な機能を提供しますが、これらは現在プレビュー中であり、一部の Azure リージョンでは利用できません。 このクイックスタートでは、すべてのリージョンで利用できるため、`Classic` SKU を選択します。
+このクイックスタートでは、*基本*のレジストリを作成します。 次の表で簡単に説明されているように、Azure Container Registry はいくつかの SKU で使用できます。 それぞれの詳細については、「[Azure Container Registry SKUs](container-registry-skus.md)」(Azure Container Registry の SKU) を参照してください。
+
+[!INCLUDE [container-registry-sku-matrix](../../includes/container-registry-sku-matrix.md)]
 
 **"デプロイメントに成功しました"** というメッセージが表示されたら、ポータルでコンテナー レジストリを選択し、**[アクセス キー]** を選択します。
 

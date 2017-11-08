@@ -13,14 +13,14 @@ ms.custom: overview, mvc
 ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 09/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 07c4b4cb920dca7d95caa2fc5f98b0d33ea51dff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f97a1e7977e28765985991ba9e38ed4618e00bda
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="what-is-the-azure-sql-database-service"></a>Azure SQL Database サービスとは 
 

@@ -12,13 +12,13 @@ ms.topic: hero-article
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/23/2017
+ms.date: 10/26/2017
 ms.author: yurid
-ms.openlocfilehash: 847a872661bea31b774814188c7707260a16e620
-ms.sourcegitcommit: 4d90200f49cc60d63015bada2f3fc4445b34d4cb
+ms.openlocfilehash: 0c0029d2dea293e71c6e3daf74b85f0234bfdffd
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/24/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="integrate-security-solutions-in-azure-security-center"></a>Azure Security Center でのセキュリティ ソリューションの統合
 このドキュメントは、既に Azure Security Center に接続されているセキュリティ ソリューションを管理したり、新しいセキュリティ ソリューションを追加したりする際に役立ちます。
@@ -32,10 +32,24 @@ Security Center を使用すると、Azure で統合されたセキュリティ 
 
 現時点では、統合されたセキュリティ ソリューションには以下が含まれます。
 
-- Endpoint Protection ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、[Azure Cloud Services および Virtual Machines 向け Microsoft マルウェア対策](https://docs.microsoft.com/azure/security/azure-security-antimalware)、Windows Defender、System Center Endpoint Protection (SCEP))
+- エンドポイント保護 ([Trend Micro](https://help.deepsecurity.trendmicro.com/azure-marketplace-getting-started-with-deep-security.html)、Symantec、Windows Defender、および System Center Endpoint Protection (SCEP))
 - Web アプリケーション ファイアウォール ([Barracuda](https://www.barracuda.com/products/webapplicationfirewall)、[F5](https://support.f5.com/kb/en-us/products/big-ip_asm/manuals/product/bigip-ve-web-application-firewall-microsoft-azure-12-0-0.html)、[Imperva](https://www.imperva.com/Products/WebApplicationFirewall-WAF)、[Fortinet](https://www.fortinet.com/resources.html?limit=10&search=&document-type=data-sheets)、[Azure Application Gateway](https://azure.microsoft.com/blog/azure-web-application-firewall-waf-generally-available/))
 - 次世代ファイアウォール ([Check Point](https://www.checkpoint.com/products/vsec-microsoft-azure/)、[Barracuda](https://campus.barracuda.com/product/nextgenfirewallf/article/NGF/AzureDeployment/)、[Fortinet](http://docs.fortinet.com/d/fortigate-fortios-handbook-the-complete-guide-to-fortios-5.2)、[Cisco](http://www.cisco.com/c/en/us/td/docs/security/firepower/quick_start/azure/ftdv-azure-qsg.html))
 - 脆弱性評価 ([Qualys](https://www.qualys.com/public-clouds/microsoft-azure/))  
+
+エンドポイント保護の統合エクスペリエンスはソリューションによって異なります。 次の表に、各ソリューションのエクスペリエンスの詳細を示します。
+
+| エンドポイント保護               | プラットフォーム                             | Security Center のインストール | Security Center の検出 |
+|-----------------------------------|---------------------------------------|------------------------------|---------------------------|
+| Windows Defender (Microsoft Antimalware)                  | Windows Server 2016                   | いいえ、OS に組み込まれている           | あり                       |
+| System Center Endpoint Protection (Microsoft Antimalware) | Windows Server 2012 R2、2012、2008 R2 | 拡張機能を介して                | あり                       |
+| Trend Micro – すべてのバージョン         | Windows Server ファミリ                 | 拡張機能を介して                | あり                       |
+| Symantec v12 以降                     | Windows Server ファミリ                 | いいえ                           | あり                        |
+| MacAfee                           | Windows Server ファミリ                 | いいえ                           | いいえ                        |
+| Kaspersky                         | Windows Server ファミリ                 | いいえ                           | いいえ                        |
+| Sophos                            | Windows Server ファミリ                 | いいえ                           | いいえ                        |
+
+
 
 ## <a name="how-security-solutions-are-integrated"></a>セキュリティ ソリューションを統合するしくみ
 Security Center からデプロイされている Azure セキュリティ ソリューションは自動的に接続されます。 また、次のようなその他のセキュリティ データ ソースも接続できます。

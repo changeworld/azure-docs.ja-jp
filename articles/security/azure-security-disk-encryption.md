@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/07/2017
 ms.author: kakhan
-ms.openlocfilehash: ebf3062ab0600b0ae722c78d07095970001a0a23
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eb1f3f01f896cc03fde13f11457be4740fa2720a
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="azure-disk-encryption-for-windows-and-linux-iaas-vms"></a>Windows および Linux IaaS VM の Azure ディスク暗号化
 Microsoft Azure では、データのプライバシーおよびデータ主権の確保に積極的に取り組んでおり、暗号化キーの暗号化、制御、管理、また、データ アクセスの制御と監査を行うための幅広い先進テクノロジを介して Azure でホストされるデータを制御できます。 そのため、Azure の顧客はビジネス ニーズに最適なソリューションを柔軟に選択することができます。 このドキュメントでは、"Windows および Linux IaaS VM の Azure Disk Encryption" という新しいテクノロジ ソリューションを紹介します。このソリューションは、組織のセキュリティおよびコンプライアンス コミットメントを満たすためのデータの保護に役立ちます。 ここでは、サポートされているシナリオやユーザー エクスペリエンスを含む、Azure Disk Encryption 機能の使用方法に関する詳細なガイダンスを提供します。
@@ -40,8 +40,8 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 * Windows IaaS VM での暗号化を無効にする
 * Linux IaaS VM でのデータ ドライブの暗号化を無効にする
 * 管理ディスク VMの暗号化を有効にする
-* 既存の暗号化された Premium 以外のストレージ VM の暗号化設定を更新する
-* キー暗号化キーを使用して暗号化された、暗号化 VM のバックアップと復元
+* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する
+* 暗号化された VM のバックアップと復元
 
 このソリューションでは、Microsoft Azure で有効になっている場合、IaaS VM の以下のシナリオがサポートされます。
 
@@ -54,8 +54,10 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 * ボリュームのマウント パスでの暗号化を有効にする
 * mdadm を使用してディスク ストライピング (RAID) で構成されている Linux VM での暗号化を有効にする
 * データ ディスクの LVM を使用して Linux VM での暗号化を有効にする
+* OS ディスクとデータ ディスクについて Linux LVM 7.3 での暗号化を有効にする 
 * 記憶域スペースで構成されている Windows VM での暗号化を有効にする
-* 既存の暗号化された Premium 以外のストレージ VM の暗号化設定を更新する
+* 既存の暗号化された Premium および Premium 以外のストレージ VM の暗号化設定を更新する
+* KEK なしおよび KEK あり (KEK - キーの暗号化キー) の両方のシナリオについての暗号化された VM のバックアップと復元
 * すべての Azure パブリック リージョンおよび AzureGov リージョンがサポートされる
 
 このソリューションでは、以下のシナリオ、機能、およびテクノロジはサポートされていません。
@@ -64,15 +66,9 @@ Azure Disk Encryption ソリューションでは、次の顧客シナリオが�
 * Linux IaaS VM の OS ドライブの暗号化を無効にする
 * OS ドライブが Linux Iaas VM で暗号化されている場合にデータ ドライブの暗号化を無効にする
 * 従来の VM の作成方法を使用して作成された IaaS VM
-* Windows および Linux IaaS VM ユーザーのカスタム イメージでの暗号化を有効にする機能はサポートされていません。 Linux LVM OS ディスクでの暗号化を有効にする機能は現時点ではサポートされていません。 このサポートはすぐに追加されます。
+* Windows および Linux IaaS VM ユーザーのカスタム イメージでの暗号化を有効にする機能はサポートされていません。
 * オンプレミス キー管理サービスとの統合
 * Azure Files (共有ファイル システム)、ネットワーク ファイル システム (NFS)、ダイナミック ボリューム、およびソフトウェアベースの RAID システムで構成されている Windows VM
-* キー暗号化キーを使用せずに暗号化された、暗号化 VM のバックアップと復元。
-* 既存の暗号化された Premium Storage VM の暗号化設定を更新する。
-
-> [!NOTE]
-> 暗号化された VM のバックアップと復元は、KEK 構成を使用して暗号化された VM についてのみサポートされています。 KEK を使用せずに暗号化された VM については、サポートされていません。 KEK は、VM の暗号化を有効にするための省略可能なパラメーターです。 このサポートは近日提供予定です。
-> 既存の暗号化された Premium Storage VM の暗号化設定の更新は、サポートされていません。 このサポートは近日提供予定です。
 
 ### <a name="encryption-features"></a>暗号化機能
 Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると、指定された構成に応じて、以下の機能が有効になります。
@@ -85,9 +81,6 @@ Azure IaaS VM の Azure Disk Encryption を有効にしてデプロイすると�
 * 暗号化された IaaS VM の暗号化状態をレポートする
 * IaaS 仮想マシンからディスク暗号化構成設定を削除する
 * 暗号化された VM を Azure Backup サービスでバックアップおよび復元する
-
-> [!NOTE]
-> 暗号化された VM のバックアップと復元は、KEK 構成を使用して暗号化された VM についてのみサポートされています。 KEK を使用せずに暗号化された VM については、サポートされていません。 KEK は、VM の暗号化を有効にするための省略可能なパラメーターです。
 
 Windows および Linux IaaS VM の Azure Disk Encryption ソリューションには、以下のものが含まれています。
 
@@ -157,6 +150,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 | Ubuntu | 12.10 | データ ディスク |
 | Ubuntu | 12.04 | データ ディスク |
 | RHEL | 7.3 | OS とデータ ディスク |
+| RHEL | LVM 7.3 | OS とデータ ディスク |
 | RHEL | 7.2 | OS とデータ ディスク |
 | RHEL | 6.8 | OS とデータ ディスク |
 | RHEL | 6.7 | データ ディスク |
@@ -223,7 +217,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 * カスタム グループ ポリシーを使用した、ドメインに参加している仮想マシン上の BitLocker ポリシーには、次の設定を含める必要があります。`Configure user storage of bitlocker recovery information -> Allow 256-bit recovery key`  BitLocker のカスタム グループ ポリシー設定に互換性がない場合、Azure Disk Encryption は失敗します。 正しいポリシー設定がないコンピューターでは、新しいポリシーを適用し、新しいポリシーを強制的に適用して更新し (gpupdate.exe /force)、再起動する処理が必要になる可能性があります。  
 * Azure AD アプリケーションを作成するか、Key Vault を作成するか、または既存の Key Vault をセットアップして暗号化を有効にする場合は、「[Azure Disk Encryption prerequisite PowerShell script](https://github.com/Azure/azure-powershell/blob/master/src/ResourceManager/Compute/Commands.Compute/Extension/AzureDiskEncryption/Scripts/AzureDiskEncryptionPreRequisiteSetup.ps1)」(Azure Disk Encryption の前提条件となる PowerShell スクリプト) をご覧ください。
 * Azure CLI を使用してディスク暗号化の前提条件を構成する場合は、[こちらの Bash スクリプト](https://github.com/ejarvi/ade-cli-getting-started)をご覧ください。
-* Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 バックアップ サービスでは、KEK 構成を使用して暗号化された VM のみがサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。
+* Azure Disk Encryption で暗号化が有効になっている場合、暗号化された VM を Azure バックアップ サービスでバックアップおよび復元するには、Azure Disk Encryption のキー構成を使用して VM を暗号化する必要があります。 Backup サービスでは、KEK なしまたは KEK ありの構成を使用して暗号化された VM がサポートされます。 「[暗号化された仮想マシンを Azure Backup 暗号化でバックアップおよび復元する方法](https://docs.microsoft.com/en-us/azure/backup/backup-azure-vms-encryption)」をご覧ください。
 
 * Linux OS ボリュームを暗号化する場合、現在、プロセスの終了時には VM の再起動が必要な点に注意してください。 この処理は、ポータル、PowerShell、または CLI で実行できます。   暗号化の進行状況を追跡するには、Get-AzureRmVMDiskEncryptionStatus から返されたステータス メッセージが定期的にポーリングされます (https://docs.microsoft.com/en-us/powershell/module/azurerm.compute/get-azurermvmdiskencryptionstatus)。  暗号化が完了すると、このコマンドで返されるステータス メッセージで示されます。  たとえば、"ProgressMessage: OS disk successfully encrypted, please reboot the VM" (ProgressMessage: OS ディスクの暗号化が完了しました。VM を再起動してください) と表示されます。このときに、VM を再起動して使用することができます。  
 
@@ -233,10 +227,7 @@ OS ドライブが暗号化されている場合、Linux のデータ ディス�
 
 * Azure Disk Encryption は、前述の前提条件を満たす Azure ギャラリーがサポートしているイメージでのみサポートされます。 ユーザーのカスタム イメージにはカスタムのパーティション スキームとプロセス動作が存在する可能性があるため、カスタム イメージはサポートされません。 また、最初は前提条件を満たしていて、作成後に変更されたギャラリー イメージも、互換性がない可能性があります。  そのため、Linux VM の暗号化手順として、クリーンなギャラリー イメージから始めて、VM を暗号化し、必要に応じてカスタム ソフトウェアまたはデータを VM に追加することをお勧めします。  
 
-* Azure Disk Encryption は、ローカル データ ボリューム (Windows の Bek ボリュームおよび Linux IaaS VM の /mnt/azure_bek_disk) を使用して暗号化キーを安全に格納します。 このディスクのコンテンツの削除や編集はしないでください。 IaaS VM 上のすべての暗号化操作に暗号化キーが必要なため、ディスクのマウントを解除しないでください。 ボリュームに含まれている README ファイルに、詳細な情報が記載されています。
-
-> [!NOTE]
-> 暗号化された VM のバックアップと復元は、KEK 構成を使用して暗号化された VM についてのみサポートされています。 KEK を使用せずに暗号化された VM については、サポートされていません。 KEK は、VM を有効にするための省略可能なパラメーターです。
+* Azure Disk Encryption とローカル データ ボリューム (Windows の Bek ボリュームおよび Linux IaaS VM の /mnt/azure_bek_disk) は、暗号化キーを安全に格納します。 このディスクのコンテンツの削除や編集はしないでください。 IaaS VM 上のすべての暗号化操作に暗号化キーが必要なため、ディスクのマウントを解除しないでください。 ボリュームに含まれている README ファイルに、詳細な情報が記載されています。
 
 #### <a name="set-up-the-azure-ad-application-in-azure-active-directory"></a>Azure Active Directory 内の Azure AD アプリケーションをセットアップする
 Azure で実行中の VM に対して暗号化を有効にする必要がある場合、Azure Disk Encryption により、暗号化キーが生成され、Key Vault に書き込まれます。 Key Vault の暗号化キーを管理するには、Azure AD 認証が必要です。
@@ -606,7 +597,7 @@ Azure 内にある既存または実行中の IaaS Linux VM でのディスク�
 | AADClientSecret | Key Vault にシークレットを書き込むためのアクセス許可を持つ Azure AD アプリケーションのクライアント シークレット。 |
 | KeyVaultName | BitLocker キーのアップロード先となる Key Vault の名前。 これは、コマンドレット `(Get-AzureRmKeyVault -ResourceGroupName <yourResourceGroupName>). Vaultname` を使用して取得できます。 |
 |  keyEncryptionKeyURL | 生成された BitLocker キーの暗号化に使用されるキー暗号化キーの URL。 このパラメーターは、UseExistingKek ドロップダウン リストで **nokek** を選択した場合には省略可能です。 UseExistingKek ドロップダウン リストで **kek** を選択した場合は、_keyEncryptionKeyURL_ 値を入力する必要があります。 |
-| volumeType | 暗号化操作が実行されるボリュームの種類。 サポートされている有効な値は、_OS_ または _All_ (RHEL 7.2、CentOS 7.2、および Ubuntu 16.04) と _Data_ (それ以外のすべてのディストリビューション) です。 |
+| volumeType | 暗号化操作が実行されるボリュームの種類。 サポートされている有効な値は _OS_ または _All_ です (OS ディスクおよびデータ ディスクに対してサポートされる Linux ディストリビューションとそのバージョンについては、前述の前提条件セクションをご覧ください)。 |
 | sequenceVersion | BitLocker 操作のシーケンス バージョン。 ディスク暗号化操作が同じ VM で実行されるたびに、このバージョン番号をインクリメントします。 |
 | vmName | 暗号化操作が実行される VM の名前。 |
 | passPhrase | データ暗号化キーとして強力なパスフレーズを入力します。 |
@@ -749,7 +740,7 @@ Azure Managed Disk ARM テンプレートを使用して、次の場所にある
   >Azure Disk Encryption を有効にする前に、Azure Disk Encryption 以外を使用して、管理ディスク ベースの VM インスタンスのスナップショットまたはバックアップ (またはその両方) を作成する必要があります。  管理ディスクのスナップショットは、ポータルから作成できます。また、Azure Backup を使用できます。  バックアップがあると、暗号化中に予期しないエラーが発生した場合に、回復オプションを使用できるようになります。  バックアップを作成すると、Set-AzureRmVMDiskEncryptionExtension コマンドレットを使用し、-skipVmBackup パラメーターを指定して管理ディスクを暗号化できます。  バックアップが作成されておらず、このパラメーターを指定していない場合、管理ディスク ベースの VM に対してこのコマンドを実行するとエラーが発生します。    
  
 ### <a name="update-encryption-settings-of-an-existing-encrypted-non-premium-vm"></a>既存の暗号化された Premium 以外の VM の暗号化設定を更新する
-  既存の Azure ディスク暗号化でサポートされている VM 実行用のインターフェイス [PS コマンドレット、CLI、または ARM テンプレート] を使用して、AAD クライアント ID/シークレット、キー暗号化キー [KEK]、BitLocker 暗号化キー (Windows VM の場合)、パスフレーズ (Linux VM の場合) などの暗号化設定を更新します。暗号化設定の更新は、Premium 以外のストレージで支えられる VM の場合のみサポートされます。 Premium Storage によって支えられる VM ではサポートされていません。
+  既存の Azure ディスク暗号化でサポートされている VM 実行用のインターフェイス [PS コマンドレット、CLI、または ARM テンプレート] を使用して、AAD クライアント ID/シークレット、キー暗号化キー [KEK]、BitLocker 暗号化キー (Windows VM の場合)、パスフレーズ (Linux VM の場合) などの暗号化設定を更新します。暗号化設定の更新は、Premium と Premium 以外の両方のストレージ VM に対してサポートされます。
 
 ## <a name="appendix"></a>付録
 ### <a name="connect-to-your-subscription"></a>サブスクリプションへの接続

@@ -11,14 +11,14 @@ ms.custom: mvc, devcenter
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 06/23/2017
-ms.openlocfilehash: e115a9a5f925dc038aca4e403d678cce06262ab0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c16705c89c36452a28ab0547dc6b5277f57dd6d5
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-database-for-postgresql-use-nodejs-to-connect-and-query-data"></a>Azure Database for PostgreSQL: Node.js を使用した接続とデータの照会
-このクイックスタートでは、[Node.js](https://nodejs.org/) を使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
+このクイックスタートでは、[Node.js](https://nodejs.org/) アプリケーションを使用して Azure Database for PostgreSQL に接続する方法を紹介します。 ここでは、SQL ステートメントを使用してデータベース内のデータを照会、挿入、更新、削除する方法を説明します。 この記事の手順では、Node.js を使用した開発には慣れているものの、Azure Database for PostgreSQL の使用は初めてであるユーザーを想定しています。
 
 ## <a name="prerequisites"></a>前提条件
 このクイックスタートでは、次のいずれかのガイドで作成されたリソースを出発点として使用します。
@@ -52,7 +52,7 @@ Azure Database for PostgreSQL に接続するために必要な接続情報を�
 5. サーバーのログイン情報を忘れた場合は、**[概要]** ページに移動して、サーバー管理者ログイン名を確認し、必要に応じてパスワードをリセットします。
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>Node.js での JavaScript コードの実行
-Node.js は、bash シェルか Windows のコマンド プロンプトから「`node`」と入力して起動できます。起動後、サンプルの JavaScript コードをコピーし、プロンプトに貼り付けて対話形式で実行してください。 または、JavaScript コードをテキスト ファイルに保存し、パラメーターとしてそのファイル名を使用して `node filename.js` を起動して実行することもできます。
+Node.js は、Bash シェル、ターミナル、または Windows コマンド プロンプトから「`node`」と入力して起動できます。起動後、サンプルの JavaScript コードをコピーし、プロンプトに貼り付けて対話形式で実行してください。 または、JavaScript コードをテキスト ファイルに保存し、パラメーターとしてそのファイル名を使用して `node filename.js` を起動して実行することもできます。
 
 ## <a name="connect-create-table-and-insert-data"></a>接続、テーブルの作成、データの挿入
 接続し、**CREATE TABLE** および **INSERT INTO** SQL ステートメントを使用してデータを読み込むには、次のコードを使用します。

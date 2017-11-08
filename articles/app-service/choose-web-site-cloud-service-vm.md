@@ -15,11 +15,11 @@ ms.topic: overview
 ms.date: 07/07/2016
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: 3fca6023fedcfc64ecfe66c0f4ed60a495953cfb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edd5099d2804fdb5867b4be5b11a361004db1665
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="azure-app-service-virtual-machines-service-fabric-and-cloud-services-comparison"></a>Azure App Service、Virtual Machines、Service Fabric、Cloud Services の比較
 ## <a name="overview"></a>概要
@@ -40,7 +40,7 @@ Service Fabric は、新しいアプリを作成する場合やマイクロサ�
 | 再デプロイなしでの大型マシンへのスケールアップ |○ | | |○ | |
 | Web サーバーのインスタンスは、コンテンツと構成を共有します。つまり、スケールする際に、デプロイまたは構成をやり直す必要はありません。 |○ | | |○ | |
 | 複数のデプロイ環境 (運用環境とステージング環境) |○ |○ | |○ |Service Fabric を使用すると、アプリ用の複数の環境を所有したり、アプリの複数のバージョンを並行してデプロイしたりできます。 |
-| OS の自動更新の管理 |○ |○ | | |OS の自動更新が今後の Service Fabric リリースで予定されています。 |
+| OS の自動更新の管理 |○ |○ | | |パッチ オーケストレーション アプリケーション (POA) を介して部分的にサポート。将来的には完全にサポート。 |
 | シームレスなプラットフォームの切り替え (32 ビットと 64 ビット間で簡単に移動) |○ |○ | | | |
 | GIT、FTP によるコードのデプロイ |○ | |○ | | |
 | Web デプロイによるコードのデプロイ |○ | |○ | |Cloud Services では、Web 配置を使用して、個々のロール インスタンスに更新プログラムをデプロイできます。 ただし、ロールの初回デプロイに Web 配置を使用することはできません。また、更新プログラムに Web 配置を使用する場合は、各ロールのインスタンスに対して個別にデプロイする必要があります。 運用環境で Cloud Services の SLA を満たすには、複数のインスタンスが必要です。 |

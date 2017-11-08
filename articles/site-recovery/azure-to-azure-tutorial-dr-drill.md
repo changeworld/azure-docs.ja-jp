@@ -2,21 +2,21 @@
 title: "Azure Site Recovery でセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)"
 description: "Azure Site Recovery サービスを使用してセカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する方法について説明します。"
 services: site-recovery
-author: rajani-janaki-ram
-manager: rochakm
+author: rayne-wiselman
+manager: carmonm
 ms.service: site-recovery
 ms.workload: storage-backup-recovery
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2017
-ms.author: rajanaki
+ms.date: 11/01/2017
+ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: a3b453028b7fd32bd3ed22823a337f7a978d9aa7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5bcd3d64714951508d984c17326e845ae4842670
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="run-a-disaster-recovery-drill-for-azure-vms-to-a-secondary-azure-region-preview"></a>セカンダリ Azure リージョンへの Azure VM のディザスター リカバリー訓練を実行する (プレビュー)
 

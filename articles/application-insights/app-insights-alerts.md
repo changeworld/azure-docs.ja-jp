@@ -3,7 +3,7 @@ title: "Azure Application Insights のアラートの設定 | Microsoft Docs"
 description: "Web アプリにおける長い応答時間、例外、パフォーマンスまたは使用状況のその他の変化について通知します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: f8ebde72-f819-4ba5-afa2-31dbd49509a5
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: c8386ffc5d68260eeb75edf7efb77db1163dcef8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: b0e4828b2cb6bbcb4329381e77db3b187d659706
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="set-alerts-in-application-insights"></a>Application Insights のアラートの設定
 [Azure Application Insights][start] では、Web アプリのパフォーマンスまたは使用状況のメトリックの変化についてアラートを発行できます。 

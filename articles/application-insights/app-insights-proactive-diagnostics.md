@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
-ms.author: bwren
-ms.openlocfilehash: f203b2a532ea721d9797c67a4750896e3ab2b9f7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: c15db8451cc1c5380bcf4a29c5e722d09c0a603b
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="smart-detection-in-application-insights"></a>Application Insights のスマート検出
  スマート検出により、Web アプリケーションの潜在的なパフォーマンスの問題について警告を自動的に受け取ることができます。 スマート検出では、アプリから [Application Insights](app-insights-overview.md) に送信されるテレメトリがプロアクティブに分析されます。 障害発生率が急激に上昇したり、クライアントまたはサーバーのパフォーマンスに異常なパターンが発生したりした場合に、アラートが表示されます。 この機能には構成は不要です。 アプリケーションから適切なテレメトリが送信されていれば動作します。

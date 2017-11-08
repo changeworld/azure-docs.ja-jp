@@ -9,17 +9,17 @@ editor:
 ms.assetid: 4ef19ed1-e798-43a2-ad99-0e563f93ab53
 ms.service: sql-database
 ms.custom: security
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/31/2017
 ms.author: giladm
-ms.openlocfilehash: d4a7e6658ec65a70bd7e07859e2a69acee58b7b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 42c89f09eee4394fec7d2f33f51ddc5875587530
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>SQL Database - テーブル監査のためのダウンレベル クライアントのサポートと IP エンドポイントの変更
 

@@ -11,15 +11,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/08/2017
+ms.date: 10/11/2017
 ms.author: bwren
-ms.openlocfilehash: 9746170f157ed5065adc953a31687ff18bd73708
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 28b2402cefa38ef3bfca68f2ff70e56b649c72f5
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="using-regular-expressions-to-filter-log-searches-in-log-analytics"></a>正規表現を使用した Log Analytics のログ検索のフィルター処理
+
+>[!NOTE]
+> この記事では、レガシ クエリ言語を使用した Log Analytics の正規表現について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[言語ドキュメントの正規表現](https://docs.loganalytics.io/docs/Language-Reference/References/Regular-Expressions-syntax)に関するページをご覧ください。
+
 
 [ログ検索](log-analytics-log-searches.md)を使用すると、Log Analytics リポジトリから情報を抽出できます。  [フィルター式](log-analytics-search-reference.md#filter-expressions)を使用すると、特定の条件に従って検索結果をフィルター処理できます。  **RegEx** キーワードを使用すると、そのフィルターの正規表現を指定できます。  
 

@@ -5,6 +5,7 @@ services: application-insights
 documentationcenter: 
 author: noamben
 manager: carmonm
+editor: mrbullwinkle
 ms.assetid: 48903032-2c99-4987-9948-d6e4559b4a63
 ms.service: application-insights
 ms.workload: tbd
@@ -12,12 +13,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2015
-ms.author: bwren
-ms.openlocfilehash: d51e80509ffb63cef0d01133a2295d58757d5b1a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: e935350fbcdeb7a3192778b3dafb288aac281886
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>チュートリアル: Stream Analytics を使用した Application Insights から SQL へのエクスポート
 この記事では、[連続エクスポート][export]と [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) を使用してテレメトリ データを [Azure Application Insights][start] から Azure SQL Database に移動する方法を示します。 

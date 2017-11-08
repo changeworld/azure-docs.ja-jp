@@ -9,17 +9,17 @@ editor:
 ms.assetid: f858344d-085b-4022-935e-1b5fa20adbac
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: d30cc74778e0b36dd632c2f040ce80d1ca8af5a5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9ccd7d78169fa5324808e91724e8e193b56b0290
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-and-manage-scaled-out-azure-sql-databases-using-elastic-jobs-preview"></a>エラスティック ジョブを使用したスケールアウト済み Azure SQL Database の作成と管理 (プレビュー)
 

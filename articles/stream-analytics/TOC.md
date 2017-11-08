@@ -24,6 +24,7 @@
 ### [参照データを使用する](stream-analytics-use-reference-data.md)
 ### [クエリをテストする](stream-analytics-test-query.md)
 ### [JavaScript UDF を統合する](stream-analytics-javascript-user-defined-functions.md)
+### [JavaScript UDA を統合する](stream-analytics-javascript-user-defined-aggregates.md)
 ### [REST API と Machine Learning を統合する](stream-analytics-how-to-configure-azure-machine-learning-endpoints-in-stream-analytics.md)
 ### [出力を作成する](stream-analytics-define-outputs.md)
 ### [Data Lake Store に出力する](stream-analytics-data-lake-output.md)

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/24/2016
-ms.author: bwren
-ms.openlocfilehash: 4ea917b068e0242bfb88d7357eca032607a43a3f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: cde0fc020f1774e0e7669e7573e4aaff3534b34c
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: Application Insights での Linux パフォーマンス メトリック
 

@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: billmath
-ms.openlocfilehash: 902e5bdfbbf04ab70989be8c41e16eb69e475908
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0c32ac27187a88dd13bb747f541968d2e81c5064
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-ad-connect-health-frequently-asked-questions"></a>Azure AD Connect Health についてよく寄せられる質問
 この記事には、Azure Active Directory (Azure AD) Connect Health に関してよく寄せられる質問 (FAQ) に対する回答が記載されています。 これらの FAQ では、課金モデル、機能、制限、サポートなど、サービスの使用方法に関する質問を取り上げています。
@@ -57,6 +57,10 @@ Azure AD テナントを切り替えるには、現在サインインしてい�
 | 3 | 51 | Active Directory フェデレーション サービス (AD FS) サーバー × 1、AD FS プロキシ × 1、ドメイン コントローラー × 1 |
 | 4 | 76 | AD FS サーバー × 1、AD FS プロキシ × 1、ドメイン コントローラー × 2 |
 | 5 | 101 | Azure AD Connect サーバー × 1、AD FS サーバー × 1、AD FS プロキシ × 1、ドメイン コントローラー × 2 |
+
+**Q: Azure AD Connect Health は、Azure Germany Cloud をサポートしていますか。**
+
+Azure AD Connect Health には、Azure Germany 向けの[インストール](active-directory-aadconnect-health-agent-install.md)が用意されています。 German Cloud の顧客のデータはすべて、Azure Germany Cloud 内に保持されています。
 
 
 ## <a name="installation-questions"></a>インストールに関する質問

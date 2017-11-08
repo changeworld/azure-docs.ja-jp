@@ -14,16 +14,30 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 8/9/2017
 ms.author: subramar
-ms.openlocfilehash: 37436f7be4f09c14febef6174faf956fa07255ec
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cf7b0dd3a81c35be4907dbba85b72ce4f87e3a9f
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
-# <a name="specifying-volume-plugins-and-logging-drivers-for-your-container"></a>コンテナーのボリューム プラグインとログ ドライバーを指定する
+# <a name="using-volume-plugins-and-logging-drivers-in-your-container"></a>コンテナーでのボリューム プラグインとログ ドライバーの使用
 
-Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定をサポートします。 プラグインは、次のマニフェストで示すように、アプリケーション マニフェストに指定します。
+Service Fabric では、コンテナー サービスへの [Docker ボリューム プラグイン](https://docs.docker.com/engine/extend/plugins_volume/)および [Docker ログ ドライバー](https://docs.docker.com/engine/admin/logging/overview/)の指定をサポートします。 
 
+## <a name="install-volumelogging-driver"></a>ボリューム/ログ ドライバーをインストールする
+
+Docker ボリューム/ログ ドライバーがコンピューターにインストールされていない場合は、RDP/SSH または VMSS スタートアップ スクリプトによって手動でインストールします。 たとえば、Docker ボリューム ドライバーをインストールするには、コンピューターに SSH でアクセスして次のように実行します。
+
+```bash
+docker plugin install --alias azure --grant-all-permissions docker4x/17.09.0-ce-azure1  \
+    CLOUD_PLATFORM=AZURE \
+    AZURE_STORAGE_ACCOUNT="[MY-STORAGE-ACCOUNT-NAME]" \
+    AZURE_STORAGE_ACCOUNT_KEY="[MY-STORAGE-ACCOUNT-KEY]" \
+    DEBUG=1
+```
+
+## <a name="specify-the-plugin-or-driver-in-the-manifest"></a>マニフェストにプラグインまたはドライバーを指定する
+プラグインは、次のマニフェストで示すように、アプリケーション マニフェストに指定します。
 
 ```xml
 ?xml version="1.0" encoding="UTF-8"?>
@@ -44,7 +58,7 @@ Service Fabric では、コンテナー サービスへの [Docker ボリュー�
         </LogConfig>
         <Volume Source="c:\workspace" Destination="c:\testmountlocation1" IsReadOnly="false"></Volume>
         <Volume Source="d:\myfolder" Destination="c:\testmountlocation2" IsReadOnly="true"> </Volume>
-        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azurefile" IsReadOnly="true">
+        <Volume Source="myvolume1" Destination="c:\testmountlocation2" Driver="azure" IsReadOnly="true">
            <DriverOption Name="share" Value="models"/>
         </Volume>
        </ContainerHostPolicies>

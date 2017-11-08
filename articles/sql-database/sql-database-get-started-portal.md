@@ -1,6 +1,6 @@
 ---
 title: "Azure Portal: SQL データベースの作成 | Microsoft Docs"
-description: "Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、データベースを作成する方法について説明します。 また、Azure Portal を使用して Azure SQL データベースへのクエリを実行する方法についても説明します。"
+description: "Azure Portal で SQL Database の論理サーバー、サーバーレベルのファイアウォール規則、およびデータベースを作成し、クエリを実行します。"
 keywords: "SQL データベース チュートリアル, SQL データベースの作成"
 services: sql-database
 documentationcenter: 
@@ -10,17 +10,17 @@ editor:
 ms.assetid: aeb8c4c3-6ae2-45f7-b2c3-fa13e3752eed
 ms.service: sql-database
 ms.custom: mvc,DBs & servers
-ms.workload: data-management
+ms.workload: Active
 ms.tgt_pltfrm: portal
 ms.devlang: na
 ms.topic: quickstart
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: e1e9dcd5b2b58e02b0c320c808f9042f7e032d50
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 618c20162cdcf1fcbb1639444529ccd6327b6a36
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-an-azure-sql-database-in-the-azure-portal"></a>Azure Portal で Azure SQL データベースを作成する
 
@@ -124,7 +124,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[ Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 

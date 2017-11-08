@@ -1,6 +1,6 @@
 ---
 title: "スケール アウトされたクラウド データベース全体のレポート (行方向のパーティション分割) |Microsoft Docs"
-description: "データベース間データベース クエリを使用する方法"
+description: "複数のデータベース全体についてレポートするには、複数のデータベースにまたがるデータベース クエリを使用します。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -8,17 +8,17 @@ author: MladjoA
 ms.assetid: c81ef5e3-41e9-4fd2-8631-868f2e168147
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: mlandzic
-ms.openlocfilehash: 8eb56d44c3a261f6325d4fc91f169d09bf108160
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 996ad1d47ece592dcf03a6eb8ed1c1916ceba374
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="report-across-scaled-out-cloud-databases-preview"></a>スケールアウトされたクラウド データベース全体のレポート (プレビュー)
 1 つの接続ポイントから複数の Azure SQL データベースのレポートを作成するには、 [エラスティック クエリ](sql-database-elastic-query-overview.md)を使用します。 データベースは、行方向にパーティション分割する必要があります ("シャード化" とも呼ばれます)。

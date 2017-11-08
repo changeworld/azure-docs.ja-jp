@@ -14,11 +14,11 @@ ms.topic: article
 ms.date: 06/19/2017
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 50406e50363054fb92a1783751ba62ca7b3455e4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5b677990efe49b666396728767ee59587a280efe
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="release-notes-for-data-management-gateway"></a>Data Management Gateway のリリース ノート
 最新のデータ統合の課題の 1 つは、オンプレミスとクラウドの間でデータを移動することです。 Data Factory によって、オンプレミスでインストールできるエージェントであり、ハイブリッドなデータ移行を可能にする Data Management Gateway との統合が実現されます。
@@ -29,16 +29,19 @@ Data Management Gateway とその使用方法の詳細については、次の�
 *  [Azure Data Factory を使用してオンプレミスとクラウドの間でデータを移動する](data-factory-move-data-between-onprem-and-cloud.md)
 
 
-## <a name="current-version-21063477"></a>最新バージョン (2.10.6347.7)
+## <a name="current-version"></a>現在のバージョン 
+もうここにはリリース ノートは記載されません。 最新のリリース ノートは[こちら](https://go.microsoft.com/fwlink/?linkid=853077)から取得してください。
 
+
+
+
+## <a name="earlier-versions"></a>以前のバージョン
+## <a name="21063477"></a>2.10.6347.7
 ### <a name="enhancements-"></a>強化された機能
 - ファイアウォールからすべての Azure IP アドレスをホワイトリストに登録するのではなく、DNS エントリを追加して Service Bus をホワイトリストに追加できます (必要な場合)。 それぞれの DNS エントリは、Azure Portal ([Data Factory] - > [作成およびデプロイ] - > [ゲートウェイ] - > [serviceUrls]) で見つかります (JSON)。
 - HDFS コネクタでは、SSL 検証のスキップを許可することで、自己署名公開証明書がサポートされるようになりました。
 - 修正済み: (クロック スキューによる) 更新中のゲートウェイ オフラインの問題。
 
-
-
-## <a name="earlier-versions"></a>以前のバージョン
 
 ## <a name="2963132"></a>2.9.6313.2
 ### <a name="enhancements-"></a>強化された機能

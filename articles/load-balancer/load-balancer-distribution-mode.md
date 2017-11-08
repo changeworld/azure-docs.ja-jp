@@ -1,6 +1,6 @@
 ---
-title: "ロード バランサー分散モードの構成 |Microsoft Docs"
-description: "ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法"
+title: "Azure Load Balancer 分散モードの構成 |Microsoft Docs"
+description: "ソース IP アフィニティをサポートするように Azure Load Balancer の分散モードを構成する方法。"
 services: load-balancer
 documentationcenter: na
 author: KumudD
@@ -13,57 +13,51 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: kumud
-ms.openlocfilehash: a6b3c346358e0aed4c60c4903932236edc237379
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d04a469c04553b7d6a14df7054ad5ef795baa500
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="configure-the-distribution-mode-for-load-balancer"></a>Load Balancer の分散モードを構成する
+# <a name="configure-the-distribution-mode-for-azure-load-balancer"></a>Azure Load Balancer の分散モードを構成する
 
 [!INCLUDE [load-balancer-basic-sku-include.md](../../includes/load-balancer-basic-sku-include.md)]
 
 ## <a name="hash-based-distribution-mode"></a>ハッシュベースの分散モード
 
-既定の分散アルゴリズムは、使用可能なサーバーにトラフィックをマップする 5 タプル (ソース IP、ソース ポート、接続先 IP、接続先ポート、プロトコルの種類) ハッシュです。 これは、トランスポート セッション内でのみ持続性を提供します。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータ センター IP (DIP) インスタンスに送信されます。 クライアントが同じソース IP から新しいセッションを開始すると、ソース ポートが変更され、トラフィックは別の DIP エンドポイントに送信されます。
+Azure Load Balancer の既定の分散モードは、5 タプルのハッシュです。 そのタプルは、ソース IP、ソース ポート、接続先 IP、接続先ポート、プロトコルの種類で構成されます。 ハッシュは使用可能なサーバーにトラフィックをマップするために使用され、アルゴリズムはトランスポート セッション内でのみ持続性を提供します。 同じセッション内のパケットは、負荷分散されたエンドポイントの背後にある同じデータセンター IP (DIP) インスタンスに送信されます。 クライアントが同じソース IP から新しいセッションを開始すると、ソース ポートが変更され、トラフィックは別の DIP エンドポイントに送信されます。
 
-![ハッシュ ベースのロード バランサー](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
-
-図 1 - 5 タプル分散
+![5 タプルのハッシュベースの分散モード](./media/load-balancer-distribution-mode/load-balancer-distribution.png)
 
 ## <a name="source-ip-affinity-mode"></a>ソース IP アフィニティ モード
 
-ソース IP アフィニティと呼ばれる別の分散モードがあります (セッション アフィニティまたはクライアント IP アフィニティとも呼ばれます)。 2 タプル (ソース IP、接続先 IP) または 3 タプル (ソース IP、接続先 IP、プロトコル) を使用して使用可能なサーバーにトラフィックをマップするように Azure Load Balancer を構成できます。 ソース IP アフィニティを使用して、同じクライアント コンピューターから開始された接続は、同じ DIP エンドポイントに移動します。
+Load Balancer は、ソース IP アフィニティ分散モードを使用して構成することもできます。 この分散モードは、セッション アフィニティまたはクライアント IP アフィニティとも呼ばれます。 このモードは 2 タプル (ソース IP と接続先 IP) または 3 タプル (ソース IP、接続先 IP、プロトコルの種類) のハッシュを使用して、使用可能なサーバーにトラフィックをマップします。 ソース IP アフィニティを使用すると、同じクライアント コンピューターから開始された接続は同じ DIP エンドポイントに向かいます。
 
-次の図は 2 タプル構成を示しています。 2 タプルがロード バランサーから仮想マシン 1 (VM1) に流れた後、VM2 と VM3 でバックアップされます。
+次の図は 2 タプルの構成を示しています。 2 タプルの場合に、どのように接続がロード バランサーを通過して仮想マシン 1 (VM1) に向かうかにご注意ください。 その後、VM1 は VM2 と VM3 でバックアップされます。
 
-![セッション アフィニティ](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
+![2 タプルのセッション アフィニティ分散モード](./media/load-balancer-distribution-mode/load-balancer-session-affinity.png)
 
-図 2 - 2 タプル分散
+ソース IP アフィニティ モードは、Azure Load Balancer とリモート デスクトップ ゲートウェイ(RD ゲートウェイ) 間の非互換性の問題を解決します。 このモードを使用すれば、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。
 
-ソース IP アフィニティは、Azure Load Balancer とリモート デスクトップ (RD) ゲートウェイ間の非互換性の問題を解決します。 これで、1 つのクラウド サービス内に RD ゲートウェイ ファームを構築できます。
+もう 1 つの使用シナリオは、メディア アップロードです。 データのアップロードを UDP 経由で行い、コントロール プレーンは TCP 経由で実現します。
 
-もう 1 つの使用シナリオは、データのアップロードを UDP 経由で行い、コントロール プレーンは TCP 経由で実現するメディア アップロードです。
-
-* クライアントは、まず負荷分散されたパブリック アドレスに TCP セッションを開始し、特定の DIP に接続します。このチャネルは、アクティブなまま接続の状態を監視します。
-* 同じクライアント コンピューターからの新しい UDP セッションが、同じ負荷分散されたパブリック エンドポイントに開始されます。この接続は、前の TCP 接続と同じ DIP エンドポイントにも送られるため、メディアのアップロードは TCP 経由のコントロール チャネルを維持しながら高スループットで実行されることが予想されます。
+* クライアントが、負荷分散されたパブリック アドレスに対する TCP セッションを開始し、特定の DIP に送られます。 チャネルは、接続の正常性を監視するためにアクティブのままになります。
+* 同じクライアント コンピューターからの新しい UDP セッションが、負荷分散された同じパブリック エンドポイントに対して開始されます。 接続先は前回の TCP 接続と同じ DIP エンドポイントになります。 コントロール チャネルは TCP 経由で維持しつつ、メディア アップロードを高スループットで実行できます。
 
 > [!NOTE]
-> (仮想マシンの削除や追加により) 負荷分散されたセットが変更されると、クライアント要求の分散が再計算されます。 最終的に同じサーバーに接続する既存のクライアントからの新しい接続に依存することはできません。 また、ソース IP アフィニティ分散モード を使用すると、トラフィックが均等に分散されない可能性があります。 プロキシの背後で実行しているクライアントは、1 つの固有のクライアント アプリケーションと見なすことができます。
+> 負荷分散されたセットが仮想マシンの削除や追加で変更されると、クライアント要求の分散が再計算されます。 最終的に同じサーバーに接続する既存のクライアントからの新しい接続に依存することはできません。 また、ソース IP アフィニティ分散モードを使用すると、トラフィックが均等に分散されない可能性があります。 プロキシの背後で実行しているクライアントは、1 つの固有のクライアント アプリケーションと見なすことができます。
 
-## <a name="configuring-source-ip-affinity-settings-for-load-balancer"></a>ロード バランサーのソース IP アフィニティ設定の構成
+## <a name="configure-source-ip-affinity-settings"></a>ソース IP アフィニティ設定を構成する
 
-仮想マシンの場合、PowerShell を使用してタイムアウト設定を変更できます。
-
-Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを設定する
+仮想マシンの場合、タイムアウト設定を変更するには Azure PowerShell をご使用ください。 次のようにして、Azure エンドポイントを仮想マシンに追加してロード バランサー分散モードを構成します。
 
 ```powershell
 Get-AzureVM -ServiceName mySvc -Name MyVM1 | Add-AzureEndpoint -Name HttpIn -Protocol TCP -PublicPort 80 -LocalPort 8080 –LoadBalancerDistribution sourceIP | Update-AzureVM
 ```
 
-LoadBalancerDistribution は、2 タプル (ソース IP と接続先 IP) の負荷分散では sourceIP、3 タプル (ソース IP、接続先 IP、プロトコル) の負荷分散では sourceIPProtocol、既定の動作 (5 タプルの負荷分散) を使用する場合は none に設定できます。
+`LoadBalancerDistribution` 要素の値を、希望の負荷分散の量に合わせて設定します。 2 タプル (ソース IP と接続先 IP) の負荷分散の場合は sourceIP を指定します。 3 タプル (ソース IP、接続先 IP、プロトコルの種類) の負荷分散の場合は sourceIPProtocol を指定します。 既定の 5 タプルの負荷分散の動作の場合は none を指定します。
 
-エンドポイント ロード バランサー分散モード構成を取得するには、次のコードを使用します。
+次の設定を使用して、エンドポイント ロード バランサー分散モード構成を取得します。
 
     PS C:\> Get-AzureVM –ServiceName MyService –Name MyVM | Get-AzureEndpoint
 
@@ -85,19 +79,20 @@ LoadBalancerDistribution は、2 タプル (ソース IP と接続先 IP) の負
     IdleTimeoutInMinutes : 15
     LoadBalancerDistribution : sourceIP
 
-LoadBalancerDistribution 要素が存在しない場合、Azure Load Balancer は既定の 5 組のアルゴリズムを使用します。
+`LoadBalancerDistribution` 要素が存在しない場合、Azure Load Balancer は既定の 5 タプルのアルゴリズムを使用します。
 
-### <a name="set-the-distribution-mode-on-a-load-balanced-endpoint-set"></a>負荷分散エンドポイント セットで分散モードを設定する
+### <a name="configure-distribution-mode-on-load-balanced-endpoint-set"></a>負荷分散エンドポイント セットで分散モードを構成する
 
-エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで設定される必要があります。
+エンドポイントが負荷分散エンドポイント セットの一部である場合、分散モードは負荷分散エンドポイント セットで構成される必要があります。
 
 ```powershell
 Set-AzureLoadBalancedEndpoint -ServiceName MyService -LBSetName LBSet1 -Protocol TCP -LocalPort 80 -ProbeProtocolTCP -ProbePort 8080 –LoadBalancerDistribution sourceIP
 ```
 
-### <a name="cloud-service-configuration-to-change-distribution-mode"></a>分散モードを変更するクラウド サービス構成
+### <a name="configure-distribution-mode-for-cloud-services-endpoints"></a>Cloud Services エンドポイントで分散モードを構成する
 
-Azure SDK for .NET 2.5 を使用してクラウド サービスを更新できます。 クラウド サービスのエンドポイントの設定は、.csdef で行われます。 ロード バランサー分散モードをアップデートしてクラウド サービスをデプロイするには、デプロイのアップグレードが必要です。
+クラウド サービスを更新するには、Azure SDK for .NET 2.5 をご使用ください。 Cloud Services のエンドポイントの設定は、.csdef ファイルで行われます。 ロード バランサー分散モードを更新して Cloud Services をデプロイするには、デプロイのアップグレードが必要です。
+
 エンドポイント設定の .csdef の変更例は次の通りです。
 
 ```xml
@@ -120,11 +115,13 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
 
 ## <a name="api-example"></a>API の例
 
-ロード バランサーの分散は、サービス管理 API を使用して構成できます。 `2014-09-01` 以降のバージョンに設定された `x-ms-version` ヘッダーを必ず追加します。
+次の例では、デプロイで指定された負荷分散セットのロード バランサー分散モードを再構成する方法を示します。 
 
-### <a name="update-the-configuration-of-the-specified-load-balanced-set-in-a-deployment"></a>デプロイで指定した負荷分散セットの構成を更新します。
+### <a name="change-distribution-mode-for-deployed-load-balanced-set"></a>デプロイ済みの負荷分散セットの分散モードを変更する
 
-#### <a name="request-example"></a>要求の例
+Azure クラシック デプロイメント モデルを使用して、既存のデプロイ構成を変更します。 `x-ms-version` ヘッダーを追加し、値をバージョン 2014-09-01 以降に設定します。
+
+#### <a name="request"></a>要求
 
     POST https://management.core.windows.net/<subscription-id>/services/hostedservices/<cloudservice-name>/deployments/<deployment-name>?comp=UpdateLbSet   x-ms-version: 2014-09-01
     Content-Type: application/xml
@@ -147,7 +144,7 @@ Azure SDK for .NET 2.5 を使用してクラウド サービスを更新でき�
       </InputEndpoint>
     </LoadBalancedEndpointList>
 
-LoadBalancerDistribution の値は、sourceIP (2 タプル アフィニティ)、sourceIPProtocol (3 タプル アフィニティ)、または none (アフィニティなし、 つまり 5 タプル) に設定できます。
+前述のとおり、`LoadBalancerDistribution` 要素を sourceIP (2 タプルのアフィニティ)、sourceIPProtocol (3 タプルのアフィニティ)、none (アフィニティなし、5 タプルのアフィニティ) に設定します。
 
 #### <a name="response"></a>応答
 
@@ -161,8 +158,6 @@ LoadBalancerDistribution の値は、sourceIP (2 タプル アフィニティ)�
 
 ## <a name="next-steps"></a>次のステップ
 
-[内部ロード バランサーの概要](load-balancer-internal-overview.md)
-
-[インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
-
-[ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)
+* [Azure 内部ロード バランサーの概要](load-balancer-internal-overview.md)
+* [インターネットに接続するロード バランサーの構成の開始](load-balancer-get-started-internet-arm-ps.md)
+* [ロード バランサーのアイドル TCP タイムアウト設定の構成](load-balancer-tcp-idle-timeout.md)

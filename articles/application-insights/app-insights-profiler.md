@@ -3,7 +3,7 @@ title: "Application Insights を使用して Azure で実行中の Web アプリ
 description: "フットプリントの小さいプロファイラーを使用して Web サーバー コードのホット パスを特定できます。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
@@ -11,12 +11,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/04/2017
-ms.author: bwren
-ms.openlocfilehash: 5d9a5b0dbd0b2a95bbb3cae37aea27908addc3c9
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: f6669d90878398dcd4592df97180dcd59b146350
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="profiling-live-azure-web-apps-with-application-insights"></a>Application Insights を使用して実行中の Azure Web アプリのプロファイリングを行う
 
@@ -45,9 +45,9 @@ Application Insights で構成されている Web アプリは、[構成] ブレ
 
 [構成] ブレードの *[Enable Profiler (Profiler を有効にする)]* または *[Disable Profiler (Profiler を無効にする)]* ボタンを使用して、すべてのリンクされた Web アプリの Profiler を管理します。
 
-
-
 ![[構成] ブレード][linked app services]
+
+App Service プランでホストされる Web アプリとは異なり、*Azure コンピューティング* リソースでホストされるアプリケーション (例: Virtual Machine、仮想マシン スケール セット、Service Fabric、Cloud Services) は、Azure で直接管理されません。 この場合、ここにリンクする Web アプリは表示されません。画面の [Profiler] をクリックして有効にする必要があります。
 
 ## <a name="disable-the-profiler"></a>Profiler を無効にする
 個々の App Service インスタンスのプロファイラーを停止または再起動するには、**対象の App Service リソース**の **Web ジョブ**で実行できます。 また、削除する場合は、**[拡張機能]** で実行できます。

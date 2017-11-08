@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/06/2017
+ms.date: 10/16/2017
 ms.author: maheshu
-ms.openlocfilehash: d6695b0c40f56093e8701dfe6394143268114453
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34335db77a5e414af4cfa77d6223ab5290bae614
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="azure-ad-domain-services---troubleshooting-guide"></a>Azure AD Domain Services - トラブルシューティング ガイド
 この記事では、Azure Active Directory (AD) ドメイン サービスの設定や管理の際に生じる可能性のある問題をトラブルシューティングするためのヒントを提供します。
@@ -141,7 +141,7 @@ Azure AD テナントの 1 人または複数のユーザーが、新しく作�
 
   * [Azure AD Connect の最新の推奨リリース](https://www.microsoft.com/en-us/download/details.aspx?id=47594)をデプロイまたは更新している。
   * [完全同期を実行](active-directory-ds-getting-started-password-sync.md)するように Azure AD Connect を構成している。
-  * ディレクトリのサイズによっては、ユーザー アカウントと資格情報のハッシュを Azure AD ドメイン サービスで使用できるまで時間がかかる可能性があります。 十分な時間 (ディレクトリのサイズに応じて数時間から 1 ～ 2 日間) を待機してから認証を再試行してください。
+  * ディレクトリのサイズによっては、ユーザー アカウントと資格情報のハッシュを Azure AD ドメイン サービスで使用できるまで時間がかかる可能性があります。 十分に時間を空けてから認証を再試行してください。
   * 上記の手順を確認しても問題が解決しない場合は、Microsoft Azure AD 同期サービスを再起動してみてください。 同期コンピューターから、コマンド プロンプトを起動し、次のコマンドを実行します。
 
     1. net stop 'Microsoft Azure AD Sync'

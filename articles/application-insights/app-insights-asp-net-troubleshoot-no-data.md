@@ -3,7 +3,7 @@ title: "データが存在しない場合のトラブルシューティング - 
 description: "Auzre Application Insights にデータが表示されない場合は、 ここで解決してください。"
 services: application-insights
 documentationcenter: .net
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: e231569f-1b38-48f8-a744-6329f41d91d3
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/14/2017
-ms.author: bwren
-ms.openlocfilehash: 8772a9a21a0c99994ac9bcf10ea7b13c35bac6c2
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.author: mbullwin
+ms.openlocfilehash: 843ffdf6c39cbdf00bfde969eaf93701db6ed536
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="troubleshooting-no-data---application-insights-for-net"></a>データが存在しない場合のトラブルシューティング - Application Insights for .NET
 ## <a name="some-of-my-telemetry-is-missing"></a>テレメトリの一部が見つからない

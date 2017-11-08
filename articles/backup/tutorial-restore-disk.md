@@ -3,8 +3,8 @@ title: "Azure Backup での VM ディスクの復元 | Microsoft Docs"
 description: "Azure でバックアップおよび Recovery Services を使用して、ディスクを復元し、回復した VM を作成する方法について説明します。"
 services: backup, virtual-machines
 documentationcenter: virtual-machines
-author: iainfoulds
-manager: jeconnoc
+author: markgalioto
+manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/28/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 01c266fcede8e4783cdea529bd1e7e9301bb23e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9bc6da13786eb9eb6186ceadf0432b3a3ec2c941
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="restore-a-disk-and-create-a-recovered-vm-in-azure"></a>Azure でディスクを復元し、回復した VM を作成する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、完全な VM を復元する方法について説明します。 このチュートリアルで学習する内容は次のとおりです。

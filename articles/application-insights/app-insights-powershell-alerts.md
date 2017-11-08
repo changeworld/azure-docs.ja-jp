@@ -3,7 +3,7 @@ title: "PowerShell を使用して Application Insights のアラートを設定
 description: "Application Insights の構成を自動化して、メトリックの変更に関する電子メールを受け取ります。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 05d6a9e0-77a2-4a35-9052-a7768d23a196
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 10/31/2016
-ms.author: bwren
-ms.openlocfilehash: 64675c51abf80daa3a55220f910aa8fdee1042ca
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: b90a540afd1c2815db8f5a99ee210ce21ea4d874
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="use-powershell-to-set-alerts-in-application-insights"></a>PowerShell を使用して Application Insights のアラートを設定する
 [Application Insights](app-insights-overview.md) では、[アラート](app-insights-alerts.md)の構成を自動化できます。

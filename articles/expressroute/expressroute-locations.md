@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/06/2017
+ms.date: 10/25/2017
 ms.author: kaanan
-ms.openlocfilehash: b734181eafeec0ed38c0770baa996a398091f341
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 0ef91f6f952b901bcda981e5375be0b84e1ca0a3
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute パートナーとピアリングの場所
 
@@ -84,6 +84,7 @@ ExpressRoute は、すべての Azure のリージョンと場所でサポート
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |サポートされています |サポートされています |シカゴ、シリコン バレー、ワシントン DC |
 | **[Console](https://www.consoleconnect.com/partners/cloudsaas/)**| サポートされています | サポートされています |シリコン バレー、トロント |
 | **[CoreSite](http://www.coresite.com/solutions/cloud-services/public-cloud-providers/microsoft-azure-expressroute)** |サポートされています |サポートされています |シカゴ、デンバー、ロサンゼルス、ニューヨーク、シリコン バレー、ワシントン DC |
+| **Epsilon Global Communications** |サポートされています |サポートされています |シンガポール |
 | **[Equinix](http://www.equinix.com/partners/microsoft-azure/)** |サポートされています |サポートされています |アムステルダム、アトランタ、シカゴ、ダラス、香港、ロンドン、ロサンゼルス、メルボルン、ニューヨーク、大阪、パリ、サンパウロ、シアトル、シリコン バレー、シンガポール、シドニー、東京、トロント、ワシントン DC |
 | **euNetworks** |サポートされています |サポートされています |アムステルダム |
 | **GÉANT** |サポートされています |サポートされています |アムステルダム |

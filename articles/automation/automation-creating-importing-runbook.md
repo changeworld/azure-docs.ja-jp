@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/29/2017
 ms.author: magoedte;bwren
-ms.openlocfilehash: 78df606568b941cf72b823c3715fefce1540c790
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ad070333b85b70d911a492a35cc89c8c4a60e5c1
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="creating-or-importing-a-runbook-in-azure-automation"></a>Azure Automation での Runbook の作成またはインポート
 [新しい Runbook を作成する](#creating-a-new-runbook)ことによって、または既存の Runbook をファイルまたは [Runbook ギャラリー](automation-runbook-gallery.md)からインポートすることによって、Azure Automation に Runbook を追加できます。 この記事では、Runbook を作成またはファイルからインポートする方法について説明します。  コミュニティ Runbook およびモジュールへのアクセスに関する詳細については、「 [Azure Automation 用の Runbook ギャラリーとモジュール ギャラリー](automation-runbook-gallery.md)」を参照してください。
@@ -50,7 +50,7 @@ Azure ポータルで使用できるのは [PowerShell ワークフロー Runboo
     -Name NewRunbook -ResourceGroupName MyResourceGroup -Type PowerShell
 
 ## <a name="importing-a-runbook-from-a-file-into-azure-automation"></a>ファイルから Azure Automation への Runbook のインポート
-PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps1) をインポートして、またはエクスポートされたグラフィカル Runbook (.graphrunbook) をインポートして、Azure Automation で新しい Runbook を作成できます。  以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
+PowerShell スクリプトまたは PowerShell ワークフロー (拡張子 .ps1)、エクスポートしたグラフィック Runbook (.graphrunbook)、または Python 2 スクリプト (拡張子 .py) をインポートすると、Azure Automation で新しい Runbook を作成できます。  以下の点を考慮して、インポート中に作成される [Runbook の種類](automation-runbook-types.md) を指定する必要があります。
 
 * .graphrunbook ファイルは新しい [グラフィカル Runbook](automation-runbook-types.md#graphical-runbooks)にのみインポートでき、グラフィカル Runbook は .graphrunbook ファイルからのみ作成できます。
 * PowerShell ワークフローを含む .ps1 ファイルは、 [PowerShell ワークフロー Runbook](automation-runbook-types.md#powershell-workflow-runbooks)にのみインポートできます。  ファイルに複数の PowerShell ワークフローが含まれている場合、インポートは失敗します。 各ワークフローを専用のファイルに保存し、それぞれを個別にインポートする必要があります。

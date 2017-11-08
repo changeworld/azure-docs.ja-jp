@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2017
+ms.date: 10/19/2017
 ms.author: dobett
-ms.openlocfilehash: 91b2e72b9cc5f7b52dde09fb837cbc994d52a26c
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: a038a46c98af5b434456e1bb979fc6cd8e009d76
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="control-access-to-iot-hub"></a>IoT Hub へのアクセスの制御
 
@@ -31,8 +31,6 @@ ms.lasthandoff: 10/11/2017
 * 資格情報のスコープを指定して特定のリソースへのアクセスを制限する方法。
 * X.509 証明書の IoT Hub サポート。
 * 既存のデバイス ID のレジストリまたは認証スキームを使用した、カスタムのデバイス認証メカニズム。
-
-### <a name="when-to-use"></a>使用時の注意
 
 IoT Hub のエンドポイントにアクセスするには、適切なアクセス許可が必要です。 たとえば、IoT Hub に送信するすべてのメッセージと共に、デバイスにはセキュリティ資格情報が格納されているトークンを含める必要があります。
 
@@ -193,6 +191,39 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
     return 'SharedAccessSignature ' + urlencode(rawtoken)
 ```
 
+セキュリティ トークンを生成する C# の機能を下に示します。
+
+```C#
+using System;
+using System.Globalization;
+using System.Net;
+using System.Net.Http;
+using System.Security.Cryptography;
+using System.Text;
+
+public static string generateSasToken(string resourceUri, string key, string policyName, int expiryInSeconds = 3600)
+{
+    TimeSpan fromEpochStart = DateTime.UtcNow - new DateTime(1970, 1, 1);
+    string expiry = Convert.ToString((int)fromEpochStart.TotalSeconds + expiryInSeconds);
+
+    string stringToSign = WebUtility.UrlEncode(resourceUri).ToLower() + "\n" + expiry;
+
+    HMACSHA256 hmac = new HMACSHA256(Convert.FromBase64String(key));
+    string signature = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(stringToSign)));
+
+    string token = String.Format(CultureInfo.InvariantCulture, "SharedAccessSignature sr={0}&sig={1}&se={2}", WebUtility.UrlEncode(resourceUri).ToLower(), WebUtility.UrlEncode(signature), expiry);
+
+    if (!String.IsNullOrEmpty(policyName))
+    {
+        token += "&skn=" + policyName;
+    }
+
+    return token;
+}
+
+```
+
+
 > [!NOTE]
 > トークンの有効期間は IoT Hub コンピューターで検証されるため、トークンを生成するコンピューターのクロックのずれは最小限である必要があります。
 
@@ -210,7 +241,7 @@ def generate_sas_token(uri, key, policy_name, expiry=3600):
 | エンドポイント | 機能 |
 | --- | --- |
 | `{iot hub host name}/devices/{deviceId}/messages/events` |デバイスからクラウドへのメッセージを送信します。 |
-| `{iot hub host name}/devices/{deviceId}/devicebound` |クラウドからデバイスへのメッセージを受信します。 |
+| `{iot hub host name}/devices/{deviceId}/messages/devicebound` |クラウドからデバイスへのメッセージを受信します。 |
 
 ### <a name="use-a-symmetric-key-in-the-identity-registry"></a>ID レジストリの対称キーを使用する
 
@@ -383,7 +414,7 @@ IoT Hub の [ID レジストリ][lnk-identity-registry]を使用して、デバ�
 
 ### <a name="comparison-with-a-custom-gateway"></a>カスタム ゲートウェイとの比較
 
-IoT Hub でカスタム ID レジストリ/認証スキームを実装する場合は、トークン サービス パターンをお勧めします。 このパターンにより、IoT Hub がほとんどのソリューション トラフィックを処理できるためです。 ただし、カスタム認証スキームがプロトコルとそのように組み合わさっている場合、すべてのトラフィックを処理するには*カスタム ゲートウェイ*が必要になる場合があります。 このようなシナリオの例として、[トランスポート層セキュリティ (TLS) と事前共有キー (PSK)][lnk-tls-psk] の使用があります。 詳細については、[プロトコル ゲートウェイ][lnk-protocols]に関するトピックをご覧ください。
+IoT Hub でカスタム ID レジストリ/認証スキームを実装する場合は、トークン サービス パターンをお勧めします。 このパターンにより、IoT Hub がほとんどのソリューション トラフィックを処理できるためです。 ただし、カスタム認証スキームがプロトコルとそのように組み合わさっている場合、すべてのトラフィックを処理するには*カスタム ゲートウェイ*が必要になる場合があります。 このようなシナリオの例として、[トランスポート層セキュリティ (TLS) と事前共有キー (PSK)][lnk-tls-psk] の使用があります。 詳細については、[プロトコル ゲートウェイ][lnk-protocols]に関する記事をご覧ください。
 
 ## <a name="reference-topics"></a>参照トピック:
 
@@ -412,13 +443,13 @@ IoT Hub 開発者ガイド内の他の参照トピックは次のとおりです
 
 ## <a name="next-steps"></a>次のステップ
 
-IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 開発者ガイドのトピックも参考にしてください。
+IoT Hub へのアクセス制御の方法を理解できたら、次の IoT Hub 開発者ガイドのトピックもご覧ください。
 
 * [デバイス ツインを使って状態と構成を同期する][lnk-devguide-device-twins]
 * [デバイスでダイレクト メソッドを呼び出す][lnk-devguide-directmethods]
-* [複数デバイスで実行されるジョブのスケジュール設定][lnk-devguide-jobs]
+* [複数デバイスでのジョブをスケジュール設定する][lnk-devguide-jobs]
 
-この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご利用ください。
+この記事で説明した概念を試す場合は、次の IoT Hub のチュートリアルをご覧ください。
 
 * [Azure IoT Hub を使ってみる][lnk-getstarted-tutorial]
 * [IoT Hub を使用した C2D メッセージの送信方法][lnk-c2d-tutorial]

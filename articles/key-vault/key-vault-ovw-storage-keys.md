@@ -8,12 +8,12 @@ ms.service: key-vault
 author: BrucePerlerMS
 ms.author: bruceper
 manager: mbaldwin
-ms.date: 09/14/2017
-ms.openlocfilehash: 83bcb339c16b8a1be15773ba35208461ecf8120e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/12/2017
+ms.openlocfilehash: 1d92ffc03b60695c5ff7b6c3d2ac54808c527efd
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-key-vault-storage-account-keys"></a>Azure Key Vault ストレージ アカウント キー
 
@@ -25,7 +25,7 @@ Azure Storage アカウントの概要情報については、「[Azure Storage 
 
 ## <a name="supporting-interfaces"></a>インターフェイスのサポート
 
-Azure Storage アカウント キーの機能は、REST、.NET/C#、PowerShell の各インターフェイスで最初は使用できます。 詳細については、「[Key Vault のドキュメント](https://docs.microsoft.com/azure/key-vault/)」をご覧ください。
+プログラミングとスクリプト インターフェイスの詳細な一覧およびリンクについては、「[Key Vault Developer's Guide](key-vault-developers-guide.md#coding-with-key-vault)」(Key Vault 開発者ガイド) でご確認ください。
 
 
 ## <a name="what-key-vault-manages"></a>Key Vault による管理
@@ -99,15 +99,11 @@ accountSasCredential.UpdateSASToken(sasToken);
 
 ### <a name="setup-for-role-based-access-control-rbac-permissions"></a>ロール ベースのアクセス制御 (RBAC) の権限設定
 
-Key Vault では、ストレージ アカウントのキーを*一覧表示*し*再生成*する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
+Azure Key Vault アプリケーション ID では、ストレージ アカウントのキーを*一覧表示*し*再生成*する権限が必要です。 次の手順に従ってこれらのアクセス許可をセットアップします。
 
-- Key Vault の ObjectId を取得します。 
+- Azure Key Vault ID のオブジェクト ID を取得します。 
 
     `Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093`
-    
-     or
-     
-    `Get-AzureRmADServicePrincipal -SearchString "AzureKeyVault"`
 
 - Azure Key Vault ID に Storage Key Operator ロールを割り当てます。 
 
@@ -131,14 +127,14 @@ Key Vault では、ストレージ アカウントのキーを*一覧表示*し*
 ### <a name="get-a-service-principal"></a>サービス プリンシパルを取得する
 
 ```powershell
-Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
+$yourKeyVaultServicePrincipalId = (Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093).Id
 ```
 
-上記のコマンドの出力には、*yourServicePrincipalId* という ServicePrincipal が含まれます。 
+上記のコマンドの出力には、*yourKeyVaultServicePrincipalId* という ServicePrincipal が含まれます。 
 
 ### <a name="set-permissions"></a>アクセス許可を設定する
 
-ストレージのアクセス許可が *[すべて]* に設定されていることを確認します。 次のコマンドを使用して、yourUserPrincipalId を取得し、コンテナーにアクセス許可を設定できます。
+ストレージのアクセス許可が *[すべて]* に設定されていることを確認します。 次のコマンドを使用して、KeyVaultServicePrincipalId を取得し、コンテナーにアクセス許可を設定できます。
 
 ```powershell
 Get-AzureRmADUser -SearchString "your name"
@@ -146,7 +142,7 @@ Get-AzureRmADUser -SearchString "your name"
 ここで、自分の名前を検索し、関連するオブジェクト ID を取得します。この ID はコンテナーのアクセス許可の設定に使用します。
 
 ```powershell
-Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId yourUserPrincipalId -PermissionsToStorage all
+Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId $yourKeyVaultServicePrincipalId -PermissionsToStorage all
 ```
 
 ### <a name="allow-access"></a>アクセスを許可
@@ -154,7 +150,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'yourtest1' -ObjectId yourUserPrincip
 管理対象のストレージ アカウントと SAS の定義を作成する前に、ストレージ アカウントに、Key Vault サービスへのアクセスを付与する必要があります。
 
 ```powershell
-New-AzureRmRoleAssignment -ObjectId yourServicePrincipalId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '/subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1'
+New-AzureRmRoleAssignment -ObjectId $yourKeyVaultServicePrincipalId -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope '/subscriptions/subscriptionId/resourceGroups/yourresgroup1/providers/Microsoft.Storage/storageAccounts/yourtest1'
 ```
 
 ### <a name="create-storage-account"></a>[ストレージ アカウントの作成]

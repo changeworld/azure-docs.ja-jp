@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: apimpm
-ms.openlocfilehash: badfee15fba5822b383b09a6cc29d9944e64e007
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a496059d1959a6c9e762e70dfbeff9bf961c4d4
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>内部仮想ネットワークでの Azure API Management サービスの使用
 Azure Virtual Networksでは、Azure API Management はインターネットでアクセスできない API を管理できます。 多数の VPN テクノロジを利用して接続できます。 API Management は、次の 2 つの主要モードで仮想ネットワークの内部にデプロイできます。
@@ -45,7 +45,7 @@ API Management を内部モードで使用することにより、次のシナ�
 + **Azure API Management インスタンス**。 詳細については、[Azure API Management インスタンスの作成](get-started-create-service-instance.md)に関する記事を参照してください。
 
 ## <a name="enable-vpn"> </a>内部仮想ネットワークでの API Management の作成
-内部仮想ネットワークでの API Management サービスは、内部ロード バランサー (ILB) の背後でホストされます。 ILB の IP アドレスは [RFC1918](http://www.faqs.org/rfcs/rfc1918.html) 範囲にあります。  
+内部仮想ネットワークでの API Management サービスは、内部ロード バランサー (ILB) の背後でホストされます。
 
 ### <a name="enable-a-virtual-network-connection-using-the-azure-portal"></a>Azure ポータルで仮想ネットワーク接続を有効にする
 
@@ -55,7 +55,7 @@ API Management を内部モードで使用することにより、次のシナ�
 
     ![内部仮想ネットワーク内に Azure API Management をセットアップするためのメニュー][api-management-using-internal-vnet-menu]
 
-4. **[保存]** を選択します。
+4. [ **保存**] を選択します。
 
 デプロイが正常に行われると、サービスの内部仮想 IP アドレスがダッシュボードに表示されます。
 
@@ -69,7 +69,7 @@ API Management を内部モードで使用することにより、次のシナ�
 * 仮想ネットワーク内に既存の API Management サービスをデプロイする: [Update-AzureRmApiManagementDeployment](/powershell/module/azurerm.apimanagement/update-azurermapimanagementdeployment) コマンドレットを使用して、仮想ネットワーク内に既存の API Management サービスを移動し、このサービスが内部仮想ネットワークの種類を使用するように構成します。
 
 ## <a name="apim-dns-configuration"></a>DNS の構成
-API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身で DNS を管理する必要があります。
+API Management が外部仮想ネットワーク モードの場合、DNS は Azure によって管理されます。 内部仮想ネットワーク モードの場合は、自身でルーティングを管理する必要があります。
 
 > [!NOTE]
 > API Management サービスは、IP アドレスから送信される要求をリッスンしません。 サービスは、サービス エンドポイントに構成されたホスト名に対する要求のみに応答します。 これらのエンドポイントには、ゲートウェイ、開発者ポータル、発行者ポータル、ダイレクト管理エンドポイント、および Git が含まれます。
@@ -105,6 +105,11 @@ API Management が外部仮想ネットワーク モードの場合、DNS は Az
 
    2. その後、DNS サーバーでレコードを作成して、仮想ネットワーク内からのみアクセスできるこれらのエンドポイントにアクセスできます。
 
+## <a name="routing"> </a> ルーティング
++ サブネット範囲から負荷分散されたプライベート仮想 IP アドレスは予約され、VNET から API Management サービス エンドポイントにアクセスするために使用されます。
++ 負荷分散されたパブリック IP アドレス (VIP) も、管理サービス エンドポイントへのアクセスをポート 3443 経由でのみ提供するために予約されます。
++ サブネット IP 範囲 (DIP) の IP アドレスは VNET 内のリソースにアクセスするために使用され、パブリック IP アドレス (VIP) は VNET の外部のリソースにアクセスするために使用されます。
++ 負荷分散されたパブリック IP アドレスとプライベート IP アドレスは、Azure ポータルの [概要]/[要点] ブレードで確認できます。
 
 ## <a name="related-content"> </a>関連コンテンツ
 詳細については、次の記事を参照してください。

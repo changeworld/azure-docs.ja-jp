@@ -1,6 +1,6 @@
 ---
 title: "Multi-Factor Authentication の構成 - Azure SQL | Microsoft Docs"
-description: "SQL Database と SQL Data Warehouse の SSMS で Multi-Factored Authentication を使用します。"
+description: "SQL Database と SQL Data Warehouse の SSMS で Multi-Factored Authentication を使用する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -13,14 +13,14 @@ ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Inactive
 ms.date: 09/27/2017
 ms.author: rickbyh
-ms.openlocfilehash: f244fc5dada77d6601710b374aa6edeb607b11d6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a6895f7a145c7b925703e4deb32411d51e7a3cab
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>SQL Server Management Studio と Azure AD 用に多要素認証を構成する
 

@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 08/11/2017
 ms.author: sstein
-ms.openlocfilehash: febf9d9f8a32a95ae61734cc2d3632bb74f6c8f5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: eda330a7202de8a325d645b37a0d05ef8df8985b
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="learn-how-to-provision-and-catalog-new-tenants-and-register-them-in-the-catalog"></a>新しいテナントをプロビジョニングしてカタログ化し、カタログに登録する方法について説明します。
 

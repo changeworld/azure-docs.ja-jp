@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: 5ce000814f2f5899a7338fdefb39c4873c006b1d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b30aa04854b779c25582abafc0f9ebba65b71ba
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 
@@ -131,7 +131,7 @@ Traffic Manager は、問題のあるエンドポイントを含むすべての�
 
 * **優先順位**。 エンドポイントの優先度リストが使用されます。 常に、リスト内で最初に使用可能なエンドポイントが返されます。 エンドポイントが低下状態になると、次に使用可能なエンドポイントが返されます。
 * **重み付け**使用可能なエンドポイントのいずれもが返される可能性があります。 選択は、割り当てられた重みと、他の使用可能なエンドポイントの重みに基づき、ランダムに行われます。
-* **パフォーマンス**。 エンド ユーザーに最も近いエンドポイントが返されます。 エンドポイントが使用不可になると、他の使用可能なすべてのエンドポイントからエンドポイントがランダムに選択されます。 ランダムなエンドポイントを選択することで、最も近いエンドポイントが過負荷になったときに発生する可能性がある連鎖的な障害を回避できます。 パフォーマンス トラフィック ルーティング方法では、[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)を使用してフェールオーバー計画を構成することもできます。
+* **パフォーマンス**。 エンド ユーザーに最も近いエンドポイントが返されます。 そのエンドポイントが使用できない場合、Traffic Manager は、次の最も近い Azure リージョン内のエンドポイントにトラフィックを移動します。 パフォーマンス トラフィック ルーティング方法では、[入れ子になった Traffic Manager プロファイル](traffic-manager-nested-profiles.md#example-4-controlling-performance-traffic-routing-between-multiple-endpoints-in-the-same-region)を使用してフェールオーバー計画を構成することもできます。
 * **地理的**。 クエリ要求の IP に基づいて地理的な場所を提供するためにマップされたエンドポイントが返されます。 地理的な場所はプロファイル内の 1 つのエンドポイントにしかマップできないため、そのエンドポイントが使用できない場合に、フェールオーバー先として別のエンドポイントは選択されません (詳細については、[FAQ](traffic-manager-FAQs.md#traffic-manager-geographic-traffic-routing-method) をご覧ください)。 ベスト プラクティスとして、地理的なルーティングを使用する場合は、プロファイルのエンドポイントとして複数のエンドポイントが含まれた入れ子になった Traffic Manager プロファイルを使用することをお勧めします。
 
 詳細については、「 [Traffic Manager のトラフィック ルーティング方法](traffic-manager-routing-methods.md)」を参照してください。

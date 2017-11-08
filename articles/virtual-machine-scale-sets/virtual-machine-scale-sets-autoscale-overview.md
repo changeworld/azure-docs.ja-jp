@@ -1,10 +1,10 @@
 ---
-title: "自動スケールと仮想マシン スケール セット | Microsoft Docs"
-description: "診断機能と自動スケール リソースを使用してスケール セット内の仮想マシンを自動的にスケールする方法を説明します。"
+title: "Azure 仮想マシン スケール セットでの自動スケールの概要 | Microsoft Docs"
+description: "Azure 仮想マシン スケール セットをパフォーマンスや固定スケジュールに基づいて自動的にスケールするさまざまな方法について説明します"
 services: virtual-machine-scale-sets
 documentationcenter: 
-author: Thraka
-manager: timlt
+author: iainfoulds
+manager: jeconnoc
 editor: 
 tags: azure-resource-manager
 ms.assetid: d29a3385-179e-4331-a315-daa7ea5701df
@@ -13,240 +13,135 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/05/2017
-ms.author: adegeo
+ms.date: 10/19/2017
+ms.author: iainfou
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 06ff9d9ae1dd8256f0d22c1a60ed6a85554f1f17
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 868523a3aca441a47218297be2ce9f9e46dd84a1
+ms.sourcegitcommit: 2d1153d625a7318d7b12a6493f5a2122a16052e0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="how-to-use-automatic-scaling-and-virtual-machine-scale-sets"></a>自動スケールと仮想マシン スケール セットの使用方法
-スケール セット内の仮想マシンの自動スケールとは、パフォーマンス要件を満たすために、必要に応じてセット内の仮想マシンを作成または削除することを意味します。 作業の量が多くなると、アプリケーションで効率よく作業を実行できるようにするために、追加リソースが必要になる場合があります。
+# <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Azure 仮想マシン スケール セットでの自動スケールの概要
+Azure 仮想マシン スケール セットは、アプリケーションを実行する VM インスタンスの数を自動的に増減させることができます。 この自動化された柔軟性のある動作により、アプリケーションを監視してパフォーマンスを最適化する管理上の負担を減らすことができます。 肯定的なカスタマー エクスペリエンスを得られる、許容された最小限のパフォーマンスを定義するルールを作成します。 定義したしきい値に達すると、自動スケール ルールが実行されてスケール セットの容量が調整されます。 また、決まった時間にスケール セットの容量を自動的に増減させるイベントのスケジュールを設定することもできます。 この記事では、使用できるパフォーマンス メトリックの概要と、自動スケールで実行できるアクションについて説明します。
 
-自動スケールは、管理オーバーヘッドを軽減するための自動化されたプロセスです。 オーバーヘッドを減らすことで、システム パフォーマンスを継続的に監視する必要がなくなるだけでなく、リソースの管理方法を決める必要性もなくなります。 スケールはエラスティック プロセスです。 負荷の増加に応じて、さらにリソースを追加することができます。 また、需要が減ったときには、リソースを削除してコストを軽減しながらも、パフォーマンスのレベルを維持できます。
 
-スケール セットに対する自動スケールは、Azure Resource Manager テンプレート、Azure PowerShell、Azure CLI、Azure Portal を使用して設定します。
+## <a name="benefits-of-autoscale"></a>自動スケールの利点
+アプリケーションの需要が増加すると、スケール セット内の VM インスタンスの負荷が増加します。 この増加した負荷が短期的な需要ではなく、一貫性のあるものである場合は、スケール セット内の VM インスタンスの数を増やす自動スケール ルールを構成できます。
 
-## <a name="set-up-scaling-by-using-resource-manager-templates"></a>Resource Manager テンプレートを使用したスケール設定
-アプリケーションの各リソースを個別にデプロイして管理するのではなく、1 回の連携した操作ですべてのリソースをデプロイするテンプレートを使用します。 このテンプレートでは、アプリケーションのリソースを定義し、さまざまな環境に対応するデプロイ パラメーターを指定します。 テンプレートは、JSON、およびデプロイの値を構築するときの式で構成されます。 詳細については、「 [Azure Resource Manager のテンプレートの作成](../azure-resource-manager/resource-group-authoring-templates.md)」を参照してください。
+これらの VM インスタンスが作成され、アプリケーションがデプロイされるときに、スケール セットはロード バランサーを通じてこれらにトラフィックの分散を開始します。 監視するメトリック (CPU やメモリなど)、指定されたしきい値をアプリケーションの負荷が満たす必要がある期間、およびスケール セットに追加する VM インスタンスの数を制御します。
 
-テンプレートでは、容量 (capacity 要素) を指定します。
+夜間や週末は、アプリケーションの需要が低下する場合があります。 この低下した負荷が一定期間持続する場合、スケール セット内の VM インスタンスの数を減らす自動スケール ルールを構成できます。 このスケールイン アクションは、現在の需要を満たすのに必要な数のインスタンスのみを実行するため、スケール セットの実行コストを削減します。
 
-```json
-"sku": {
-  "name": "Standard_A0",
-  "tier": "Standard",
-  "capacity": 3
-},
-```
 
-容量によって、セット内の仮想マシンの数を指定します。 容量を手動で変更するには、別の値を指定したテンプレートをデプロイします。 容量を変更するためだけにテンプレートをデプロイする場合、新しい容量を指定した SKU 要素のみを含めることができます。
+## <a name="use-host-based-metrics"></a>ホストベースのメトリックを使用する
+VM インスタンスから使用できるホスト メトリックを組み込む自動スケール ルールを作成できます。 ホスト メトリックを使用すると、追加のエージェントやデータ コレクションをインストールおよび構成することなく、スケール セット内の VM インスタンスのパフォーマンスを視覚化できます。 これらのメトリックを使用する自動スケール ルールは、CPU の使用状況、メモリーに対する需要、またはディスクへのアクセスに応じて、VM インスタンスの数をスケール インまたはスケール アウトできます。
 
-スケール セットの容量は、**autoscaleSettings** リソースと診断拡張機能を組み合わせて使用することにより、自動的に調整することができます。
+ホストベースのメトリックを使用する自動スケール ルールは、次のツールのいずれかを使用して作成できます。
 
-### <a name="configure-the-azure-diagnostics-extension"></a>Azure 診断拡張機能の構成
-自動スケールは、スケール セット内の各仮想マシンでメトリックが正常に収集されている場合にのみ実行できます。 Azure 診断拡張機能は、自動スケール リソースにおけるメトリック収集のニーズを満たす監視機能と診断機能を備えています。 この拡張機能は、Resource Manager テンプレートの一部としてインストールできます。
+- [Azure ポータル](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
 
-次の例では、テンプレートで診断拡張機能を構成するために使用される変数を示しています。
+より詳細なパフォーマンス メトリックを使用する自動スケール ルールを作成するには、VM インスタンスで [Azure 診断拡張機能をインストールして構成する](#in-guest-vm-metrics-with-the-azure-diagnostics-extension)か、[App Insights を使用してアプリケーションを構成](#application-level-metrics-with-app-insights)します。
 
-```json
-"diagnosticsStorageAccountName": "[concat(parameters('resourcePrefix'), 'saa')]",
-"accountid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/', resourceGroup().name,'/providers/', 'Microsoft.Storage/storageAccounts/', variables('diagnosticsStorageAccountName'))]",
-"wadlogs": "<WadCfg> <DiagnosticMonitorConfiguration overallQuotaInMB=\"4096\" xmlns=\"http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration\"> <DiagnosticInfrastructureLogs scheduledTransferLogLevelFilter=\"Error\"/> <WindowsEventLog scheduledTransferPeriod=\"PT1M\" > <DataSource name=\"Application!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"Security!*[System[(Level = 1 or Level = 2)]]\" /> <DataSource name=\"System!*[System[(Level = 1 or Level = 2)]]\" /></WindowsEventLog>",
-"wadperfcounter": "<PerformanceCounters scheduledTransferPeriod=\"PT1M\"><PerformanceCounterConfiguration counterSpecifier=\"\\Processor(_Total)\\Thread Count\" sampleRate=\"PT15S\" unit=\"Percent\"><annotation displayName=\"Thread Count\" locale=\"en-us\"/></PerformanceCounterConfiguration></PerformanceCounters>",
-"wadcfgxstart": "[concat(variables('wadlogs'),variables('wadperfcounter'),'<Metrics resourceId=\"')]",
-"wadmetricsresourceid": "[concat('/subscriptions/',subscription().subscriptionId,'/resourceGroups/',resourceGroup().name ,'/providers/','Microsoft.Compute/virtualMachineScaleSets/',parameters('vmssName'))]",
-"wadcfgxend": "[concat('\"><MetricAggregation scheduledTransferPeriod=\"PT1H\"/><MetricAggregation scheduledTransferPeriod=\"PT1M\"/></Metrics></DiagnosticMonitorConfiguration></WadCfg>')]"
-```
+ホストベースのメトリック、Azure 診断拡張機能におけるゲスト内 VM メトリック、および App Insights を使用する自動スケール ルールは、次の構成設定を使用できます。
 
-パラメーターはテンプレートがデプロイされたときに指定されます。 この例では、(データが格納される) ストレージ アカウントの名前や (データが収集される) スケール セットの名前が指定されています。 また、この Windows Server の例では Thread Count パフォーマンス カウンターのみが収集されます。 Windows または Linux で使用可能なすべてのパフォーマンス カウンターを使用して診断情報を収集できます。こうしたパフォーマンス カウンターは、拡張機能の構成に含めることができます。
+### <a name="metric-sources"></a>メトリックのソース
+自動スケール ルールは、次のソースのメトリックを使用できます。
 
-次の例では、テンプレートにおける拡張機能の定義を示しています。
+| メトリックのソース        | ユース ケース                                                                                                                     |
+|----------------------|------------------------------------------------------------------------------------------------------------------------------|
+| 現在のスケール セット    | 追加のエージェントをインストールおよび構成する必要がないホストベースのメトリックの場合。                                  |
+| ストレージ アカウント      | Azure 診断拡張機能が Azure ストレージにパフォーマンス メトリックを書き込み、それを使用して自動スケール ルールがトリガーされます。 |
+| Service Bus キュー    | アプリケーションまたはその他のコンポーネントが Azure Service Bus キューのメッセージを送信し、ルールをトリガーできます。                   |
+| Application Insights | アプリケーションにインストールされた、アプリからメトリックを直接ストリームするインストルメンテーション パッケージ。                         |
 
-```json
-"extensionProfile": {
-  "extensions": [
-    {
-      "name": "Microsoft.Insights.VMDiagnosticsSettings",
-      "properties": {
-        "publisher": "Microsoft.Azure.Diagnostics",
-        "type": "IaaSDiagnostics",
-        "typeHandlerVersion": "1.5",
-        "autoUpgradeMinorVersion": true,
-        "settings": {
-          "xmlCfg": "[base64(concat(variables('wadcfgxstart'),variables('wadmetricsresourceid'),variables('wadcfgxend')))]",
-          "storageAccount": "[variables('diagnosticsStorageAccountName')]"
-        },
-        "protectedSettings": {
-          "storageAccountName": "[variables('diagnosticsStorageAccountName')]",
-          "storageAccountKey": "[listkeys(variables('accountid'), variables('apiVersion')).key1]",
-          "storageAccountEndPoint": "https://core.windows.net"
-        }
-      }
-    }
-  ]
-}
-```
 
-診断拡張機能を実行すると、指定したストレージ アカウント内のテーブルにデータが格納および収集されます。 収集されたデータは、**WADPerformanceCounters** テーブルで見ることができます。
+### <a name="autoscale-rule-criteria"></a>自動スケール ルールの条件
+自動スケール ルールを作成するときに、次のホストベースのメトリックを使用できます。 Azure 診断拡張機能または App Insights を使用する場合、どのメトリックを監視して自動スケール ルールで使用するかを定義します。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountBefore2.png)
+| メトリックの名前               |
+|---------------------------|
+| Percentage CPU            |
+| Network In                |
+| Network Out               |
+| Disk Read Bytes           |
+| Disk Write Bytes          |
+| Disk Read Operations/Sec  |
+| Disk Write Operations/Sec |
+| 未使用の CPU クレジット     |
+| 使用済みの CPU クレジット      |
 
-### <a name="configure-the-autoscalesettings-resource"></a>autoScaleSettings リソースの構成
-autoscaleSettings リソースは、スケール セット内の仮想マシン数の増減に関する判断を下すために、診断拡張機能によって収集された情報を利用します。
+指定のメトリックを監視する自動スケール ルールを作成するとき、そのルールは次のいずれかのメトリック集計アクションを考慮します。
 
-次の例は、テンプレートにおけるリソースの構成を示しています。
+| 集計の種類 |
+|------------------|
+| 平均          |
+| 最小値          |
+| 最大値          |
+| 合計            |
+| Last (最後へ)             |
+| カウント            |
 
-```json
-{
-  "type": "Microsoft.Insights/autoscaleSettings",
-  "apiVersion": "2015-04-01",
-  "name": "[concat(parameters('resourcePrefix'),'as1')]",
-  "location": "[resourceGroup().location]",
-  "dependsOn": [
-    "[concat('Microsoft.Compute/virtualMachineScaleSets/',parameters('vmSSName'))]"
-  ],
-  "properties": {
-    "enabled": true,
-    "name": "[concat(parameters('resourcePrefix'),'as1')]",
-    "profiles": [
-      {
-        "name": "Profile1",
-        "capacity": {
-          "minimum": "1",
-          "maximum": "10",
-          "default": "1"
-        },
-        "rules": [
-          {
-            "metricTrigger": {
-              "metricName": "\\Processor(_Total)\\Thread Count",
-              "metricNamespace": "",
-              "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-              "timeGrain": "PT1M",
-              "statistic": "Average",
-              "timeWindow": "PT5M",
-              "timeAggregation": "Average",
-              "operator": "GreaterThan",
-              "threshold": 650
-            },
-            "scaleAction": {
-              "direction": "Increase",
-              "type": "ChangeCount",
-              "value": "1",
-              "cooldown": "PT5M"
-            }
-          },
-          {
-            "metricTrigger": {
-              "metricName": "\\Processor(_Total)\\Thread Count",
-              "metricNamespace": "",
-              "metricResourceUri": "[concat('/subscriptions/',subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]",
-              "timeGrain": "PT1M",
-              "statistic": "Average",
-              "timeWindow": "PT5M",
-              "timeAggregation": "Average",
-              "operator": "LessThan",
-              "threshold": 550
-            },
-            "scaleAction": {
-              "direction": "Decrease",
-              "type": "ChangeCount",
-              "value": "1",
-              "cooldown": "PT5M"
-            }
-          }
-        ]
-      }
-    ],
-    "targetResourceUri": "[concat('/subscriptions/', subscription().subscriptionId, '/resourceGroups/', resourceGroup().name, '/providers/Microsoft.Compute/virtualMachineScaleSets/', parameters('vmSSName'))]"
-  }
-}
-```
+自動スケール ルールはその後、次のいずれかの演算子を使用して、メトリックを定義したしきい値と比較します。
 
-この例では、自動スケール アクションを定義するために 2 つの規則を作成しています。 最初の規則でスケールアウト アクションを定義し、2 番目の規則でスケールイン アクションを定義します。 この 2 つの規則では次の値が指定されています。
+| 演算子                 |
+|--------------------------|
+| より大きい             |
+| 以上 |
+| より小さい                |
+| 以下    |
+| 等しい                 |
+| 等しくない             |
 
-| ルール | Description |
-| ---- | ----------- |
-| metricName        | この値は、診断拡張機能の wadperfcounter 変数で定義したパフォーマンス カウンターと同じです。 この例では、Thread Count カウンターが使用されます。    |
-| metricResourceUri | この値は、仮想マシン スケール セットのリソース識別子です。 この識別子には、リソース グループの名前、リソースプロバイダーの名前、スケールするスケール セットの名前が含まれます。 |
-| timeGrain         | この値は、収集するメトリックの粒度です。 前の例では、1 分間隔でデータを収集します。 この値は、timeWindow と組み合わせて使用されます。 |
-| statistic         | この値は、自動スケール アクションに対応するためのメトリックの集計方法を指定します。 指定できる値は Average、Min、Max です。 |
-| timeWindow        | この値は、インスタンス データを収集する時間の範囲です。 5 分～ 12 時間の範囲で指定する必要があります。 |
-| timeAggregation   | この値は、収集されたデータを一定の時間枠の中で集計する方法を指定します。 既定値は Average です。 指定できる値は Average、Minimum、Maximum、Last、Total、Count です。 |
-| operator          | この値は、メトリック データとしきい値を比較するときに使用する演算子です。 指定できる値は、Equals、NotEquals、GreaterThan、GreaterThanOrEqual、LessThan、LessThanOrEqual です。 |
-| threshold         | この値は、スケール アクションをトリガーするポイントとなる値です。 **スケールアウト** アクションのしきい値と、**スケールイン** アクションのしきい値の間には、十分な差を持たせてください。 両方のアクションに同じ値を設定した場合、変更が絶え間なく発生するものとされ、スケール アクションが実装されなくなります。 たとえば、上の例で両方のしきい値を 600 スレッドに設定した場合、スケール アクションは実行されません。 |
-| direction         | この値は、しきい値に達したときに実行するアクションを指定します。 指定できる値は Increase または Decrease です。 |
-| 型              | この値は、発生させるアクションの種類です。これは ChangeCount に設定する必要があります。 |
-| 値             | この値は、スケール セットに追加する仮想マシンの数またはスケール セットから削除する仮想マシンの数です。 1 以上の値を設定する必要があります。 |
-| cooldown          | この値は、前回のスケール アクションから次回のスケール アクションまでの待機時間です。 この値は 1 分から 1 週間の範囲で指定する必要があります。 |
 
-使用するパフォーマンス カウンターによっては、このテンプレート構成の一部の要素を別の方法で使用します。 上の例では、パフォーマンス カウンターを Thread Count に、スケールアウト アクションのしきい値を 650 に、スケールイン アクションのしきい値を 550 に設定しています。 %Processor Time などのカウンターを使用する場合は、スケール アクションを決定する CPU 使用率をしきい値として設定します。
+### <a name="actions-when-rules-trigger"></a>ルールがトリガーされたときのアクション
+自動スケール ルールがトリガーされるとき、スケール セットは次のいずれかの方法で自動的にスケールされます。
 
-高負荷などのスケール アクションがトリガーされると、テンプレート内の value の値に基づいてセットの容量が増やされます。 たとえば、容量が 3、スケール アクション値が 1 に設定されているスケール セットは次のようになります。
+| スケール操作     | ユース ケース                                                                                                                               |
+|---------------------|----------------------------------------------------------------------------------------------------------------------------------------|
+| カウントを増やす量   | 作成する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
+| パーセントを増やす量 | VM インスタンスのパーセンテージべースの増加量。 固定量の増加ではパフォーマンスの目立った改善が見込まれない大規模なスケール セットに適しています。 |
+| 増やした後のカウント   | 目的の最大量に達するために必要な数だけ VM インスタンスを作成します。                                                            |
+| 減らした後のカウント値   | 削除する VM インスタンスの固定数。 VM の数が少ないスケール セットで便利です。                                           |
+| パーセントを減らす量 | VM インスタンスのパーセンテージべースの減少量。 固定量の増加では使用量やコストの目立った減少が見込まれない大規模なスケール セットに適しています。 |
+| 減らした後のカウント値   | 目的の最小量に達するために必要な数だけ VM インスタンスを削除します。                                                            |
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerBefore.png)
 
-現在の負荷によって、平均スレッド数がしきい値 650 を超えたときには、次のようになります。
+## <a name="in-guest-vm-metrics-with-the-azure-diagnostics-extension"></a>Azure 診断拡張機能におけるゲスト内 VM メトリック
+Azure 診断拡張機能は、VM インスタンス内部で実行されるエージェントです。 エージェントはパフォーマンス メトリックを監視して Azure ストレージに保存します。 これらのパフォーマンス メトリックには、ディスクの *AverageReadTime* や CPU の *PercentIdleTime* など、VM のステータスに関するより詳細な情報が含まれます。 CPU の使用状況やメモリ使用量の割合だけでなく、より詳細な VM パフォーマンスの認識に基づいて自動スケール ルールを作成できます。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ThreadCountAfter.png)
+Azure 診断拡張機能を使用するには、VM インスタンスで使用する Azure のストレージ アカウントを作成し、Azure 診断エージェントをインストールしてから、特定のパフォーマンス カウンターをそのストレージ アカウントにストリームするように VM を構成します。
 
-**スケールアウト** アクションがトリガーされ、セットの容量が 1 ずつ増加します。
+詳しくは、[Linux VM](../virtual-machines/linux/diagnostic-extension.md) または [Windows VM](../virtual-machines/windows/ps-extensions-diagnostics.md) で Azure 診断拡張機能を有効にする方法に関する記事をご覧ください。
 
-```json
-"sku": {
-  "name": "Standard_A0",
-  "tier": "Standard",
-  "capacity": 4
-},
-```
 
-その結果として、スケール セットに仮想マシンが追加されます。
+## <a name="application-level-metrics-with-app-insights"></a>App Insights におけるアプリケーションレベルのメトリック
+Application Insights を使用して、アプリケーションのパフォーマンスをより視覚化できます。 アプリケーションに、アプリを監視して Azure に利用統計情報を送信する、小さなインストルメンテーション パッケージをインストールします。 アプリケーションの応答時間、ページの読み込みパフォーマンス、セッション数などのメトリックを監視できます。 これらのアプリケーション メトリックを使用して、お客様のエクスペリエンスに影響する可能性があるアクションにつながるインサイトに基づき、細かく深いレベルでルールをトリガーするように自動スケール ルールを作成できます。
 
-![](./media/virtual-machine-scale-sets-autoscale-overview/ResourceExplorerAfter.png)
+App Insights について詳しくは、「[Application Insights とは何か?](../application-insights/app-insights-overview.md)」をご覧ください。
 
-5 分間のクールダウン期間の後で、仮想マシンの平均スレッド数がまだ 600 を超えている場合には、セットに仮想マシンがもう 1 つ追加されます。 平均スレッド数が 550 を下回ったままになると、スケール セットの容量が 1 削減され、セットから 1 つの仮想マシンが削除されます。
 
-## <a name="set-up-scaling-using-azure-powershell"></a>Azure PowerShell を使用したスケール設定
+## <a name="scheduled-autoscale"></a>スケジュールに基づく自動スケール
+スケジュールに基づく自動スケール ルールを作成することもできます。 スケジュールベースのルールでは、決まった時間に VM インスタンスの数を自動的にスケールできます。 パフォーマンスベースのルールは、自動スケール ルールがトリガーされ、新しい VM インスタンスがプロビジョニングされるまでに、パフォーマンスに影響を及ぼす可能性があります。 このような需要を予測できる場合、お客様やアプリケーションの追加需要に合わせて、事前に追加の VM インスタンスをプロビジョニングして備えることができます。
 
-PowerShell を使用して自動スケールを設定する例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
+次に示す例は、スケジュールベースの自動スケール ルールを使用するメリットが見込まれるシナリオです。
 
-## <a name="set-up-scaling-using-azure-cli"></a>Azure CLI を使用したスケール設定
+- 営業日の開始時、お客様の需要が増えるときに VM インスタンスの数を自動的にスケール アウトします。 営業日の終了時、アプリケーションの利用が減る夜間のリソースのコストを最小限に抑えるために、VM インスタンスの数を自動的にスケール インします。
+- ある部門で月または年度の特定の時期にアプリケーションの使用頻度が高くなる場合、追加需要に対応するために VM インスタンスの数を自動的にスケールします。
+- マーケティング イベント、プロモーション、ホリデー セールなどを開催するときに、お客様の需要を事前に予測して、VM インスタンスの数を自動的にスケールできます。 
 
-Azure CLI を使用して自動スケールを設定する例については、「[Azure Insights クロスプラットフォーム CLI のクイック スタート サンプル](../monitoring-and-diagnostics/insights-cli-samples.md)」をご覧ください。
-
-## <a name="set-up-scaling-using-the-azure-portal"></a>Azure Portal を使用したスケール設定
-
-Azure Portal を使用して自動スケーリングを設定する例については、「[Azure Portal を使用して仮想マシン スケール セットを作成する](virtual-machine-scale-sets-portal-create.md)」をご覧ください。
-
-## <a name="investigate-scaling-actions"></a>スケール操作に関する情報
-
-* **Azure ポータル**  
-現在、ポータルを使用して入手できる情報の量は限られています。
-
-* **Azure リソース エクスプローラー**  
-このツールは、スケール セットの現在の状態を調査するうえで最適なツールです。 作成した スケール セットのインスタンス ビューは次のパスをたどって表示できます。  
-**[サブスクリプション] > {自分のサブスクリプション} > [resourceGroups] > {自分のリソース グループ} > [プロバイダー] > [Microsoft.Compute] > [virtualMachineScaleSets] > {自分のスケール セット} > [virtualMachines]**
-
-* **Azure PowerShell**  
-次のコマンドを使用して一部の情報を得ることができます。
-
-  ```powershell
-  Get-AzureRmResource -name vmsstest1 -ResourceGroupName vmsstestrg1 -ResourceType Microsoft.Compute/virtualMachineScaleSets -ApiVersion 2015-06-15
-  Get-Autoscalesetting -ResourceGroup rainvmss -DetailedOutput
-  ```
-
-* 通常の仮想マシンに接続するときと同じように Jumpbox 仮想マシンに接続し、スケール セット内の仮想マシンにリモートからアクセスして個々のプロセスを監視することができます。
 
 ## <a name="next-steps"></a>次のステップ
-* 自動スケールを構成したスケール セットの作成方法の例については、「 [仮想マシン スケール セットでのマシンの自動スケール](virtual-machine-scale-sets-windows-autoscale.md) 」を参照してください。
+次のツールのいずれかを使用して、ホストベースのメトリックを使用する自動スケール ルール作成できます。
 
-* Azure Monitor の監視機能の例については、「[Azure Insights の PowerShell クイック スタート サンプル](../monitoring-and-diagnostics/insights-powershell-samples.md)」をご覧ください。
+- [Azure ポータル](virtual-machine-scale-sets-autoscale-portal.md)
+- [Azure PowerShell](virtual-machine-scale-sets-autoscale-powershell.md)
+- [Azure CLI 2.0](virtual-machine-scale-sets-autoscale-cli.md)
 
-* 通知機能の詳細については、「[Azure Insights で自動スケール操作を使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。
+この概要では、自動スケール ルールを使用して水平方向にスケーリングし、スケール セット内の VM インスタンスの "*数*" を増減する方法について説明しました。 垂直方向にスケーリングして、VM インスタンスの "*サイズ*" を増減することもできます。 詳しくは、[仮想マシン スケール セットの垂直方向の自動スケール](virtual-machine-scale-sets-vertical-scale-reprovision.md)に関する記事ご覧ください。
 
-* [Azure Monitor で監査ログを使用して電子メールと Webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)方法をご確認ください。
+VM インスタンスの管理方法について詳しくは、「[Manage virtual machine scale sets with Azure PowerShell (Azure PowerShell を使用した仮想マシン スケール セットの管理)](virtual-machine-scale-sets-windows-manage.md)」をご覧ください。
 
-* [高度な自動スケールのシナリオ](virtual-machine-scale-sets-advanced-autoscale.md)を紹介します。
+自動スケール ルールをトリガーするときにアラートを生成する方法について詳しくは、「[Azure Monitor で自動スケール操作を使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-autoscale-to-webhook-email.md)」をご覧ください。 [Azure Monitor で監査ログを使用して電子メールと webhook アラート通知を送信する](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md)こともできます。

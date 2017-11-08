@@ -12,13 +12,13 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/31/2017
+ms.date: 10/13/2017
 ms.author: dobett
-ms.openlocfilehash: 07497231e2cfab86082c5a0d1f4a4ec8ab31f6a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 27b296092335ec5b95e8f259756aaf9572da1c16
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-iot-hub-developer-guide"></a>Azure IoT Hub 開発者ガイド
 
@@ -48,11 +48,11 @@ Azure IoT Hub は、以下を提供します。
 * [デバイスでのダイレクト メソッドの呼び出し][devguide-directmethods]: ダイレクト メソッドのライフサイクルと、バックエンド アプリからデバイスのメソッドを呼び出してデバイスでダイレクト メソッドを処理する方法について説明します。
 * [Schedule jobs on multiple devices (複数デバイスで実行されるジョブのスケジュール設定)][devguide-jobs]: 複数のデバイスで実行するジョブのスケジュールを設定する方法について説明します。 この記事では、ダイレクト メソッドの実行やデバイス ツインを使用したデバイスの更新などのタスクを実行するジョブを送信する方法について説明します。 ジョブの状態を照会する方法についても説明します。
 * [Reference - choose a communication protocol (リファレンス - 通信プロトコルの選択)][devguide-protocol]: IoT Hub がデバイスの通信でサポートする通信プロトコルについて説明し、オープンする必要があるポートを一覧表示します。
-* [Reference - IoT Hub endpoints (リファレンス - IoT Hub エンドポイント)][devguide-endpoints]: 各 IoT ハブがランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。 また、この記事では、IoT ハブでの追加エンドポイントの作成方法、および標準的ではないシナリオでフィールド ゲートウェイを使用して IoT Hub エンドポイントへのデバイス接続を有効にする方法についても説明しています。
+* [Reference - IoT Hub endpoints (リファレンス - IoT Hub エンドポイント)][devguide-endpoints]: 各 IoT ハブがランタイムと管理の操作のために公開する、さまざまなエンドポイントについて説明します。 また、この記事では、IoT Hub での追加エンドポイントの作成方法、およびフィールド ゲートウェイを使用して標準的ではないシナリオで IoT Hub エンドポイントへの接続を有効にする方法についても説明します。
 * [リファレンス - デバイス ツイン、ジョブ、およびメッセージ ルーティングの IoT Hub クエリ言語][devguide-query]: ハブからデバイス ツインとジョブに関する情報を取得できるようにする IoT Hub クエリ言語について説明します。
-* [Reference - quotas and throttling (リファレンス - クォータとスロットル)][devguide-quotas]: IoT Hub サービスに設定されるクォータと、クォータを超えたときに発生する可能性があるスロットル動作の概要を示します。
+* [リファレンス - クォータと調整][devguide-quotas]: IoT Hub サービスに設定されるクォータと、クォータを超えたときに発生する調整の概要を示します。
 * [リファレンス - 価格][devguide-pricing]: IoT Hub の各種 SKU に関する全般的な情報と価格の概要と、各種の IoT Hub 機能が IoT Hub によってどのようにメッセージとして測定されるかの詳細について説明します。
-* [リファレンス - デバイス SDK とサービス SDK][devguide-sdks]: IoT Hub と対話するデバイスとサービス アプリの両方を開発する際に使用できる Azure IoT SDK の一覧を示します。 この記事には、オンライン API ドキュメントへのリンクが含まれています。
+* [リファレンス - デバイス SDK とサービス SDK][devguide-sdks]: IoT Hub と対話するデバイス アプリとサービス アプリを開発するための Azure IoT SDK を一覧で示します。 この記事には、オンライン API ドキュメントへのリンクが含まれています。
 * [リファレンス - IoT Hub の MQTT のサポート][devguide-mqtt]: IoT Hub での MQTT プロトコルのサポート方法について詳しく説明します。 この記事では、Azure IoT SDK に組み込まれている MQTT プロトコルのサポートと、MQTT プロトコルを直接使用する方法について説明します。
 * [用語集][devguide-glossary]: IoT Hub に関連する一般的な用語の一覧です。
 

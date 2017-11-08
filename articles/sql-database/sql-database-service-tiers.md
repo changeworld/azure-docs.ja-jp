@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database サービス | Microsoft Docs"
-description: "SQL Database のサービス レベルについて説明します"
+description: "単一のデータベースとプールされたデータベースに対してパフォーマンス レベルとストレージ サイズを提供するサービス レベルについて説明します。"
 keywords: 
 services: sql-database
 documentationcenter: 
@@ -13,14 +13,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 08/20/2017
 ms.author: carlrab
-ms.openlocfilehash: 0183e9c60da7c216a6268dfec3874eb76270f71d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 55f59fddee008eb42b7252d6368a56873a6abd16
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="what-are-azure-sql-database-service-tiers"></a>Azure SQL Database サービス レベル概要
 

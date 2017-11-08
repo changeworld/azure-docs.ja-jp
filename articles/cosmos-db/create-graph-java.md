@@ -13,21 +13,24 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: dotnet
 ms.topic: quickstart
-ms.date: 08/24/2017
+ms.date: 10/20/2017
 ms.author: denlee
-ms.openlocfilehash: 090a786b77cbe7b228f42f98dcb5f066b6fe62a8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4470b5adb52debce1492b084ce71100da77da046
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: グラフ データベースを Java と Azure Portal で作成する
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。 
 
-このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってグラフ データベースを作成します。 また、グラフ データベースを使った Java コンソール アプリを OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) ドライバーですばやく作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートに従うと、UI とプログラムのどちらか好きな方法で、グラフ リソースの作成と変更を行うことができるようになります。 
+このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使って簡単なグラフ データベースを作成します。 また、グラフ データベースを使った Java コンソール アプリを OSS [Gremlin Java](https://mvnrepository.com/artifact/org.apache.tinkerpop/gremlin-driver) ドライバーですばやく作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートに従うと、UI とプログラムのどちらか好きな方法で、グラフの作成と変更を行うことができるようになります。 
 
 ## <a name="prerequisites"></a>前提条件
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
+加えて次の作業を行います。
 
 * [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
@@ -36,8 +39,6 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 * [Git](https://www.git-scm.com/)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="create-a-database-account"></a>データベース アカウントの作成
 
@@ -49,28 +50,35 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 Azure Portal でデータ エクスプローラー ツールを使用してグラフ データベースを作成できるようになりました。 
 
-1. Azure Portal の左側のナビゲーション メニューで、**[データ エクスプローラー (プレビュー)]** をクリックします。 
-2. **[データ エクスプローラー (プレビュー)]** ブレードで **[New Graph]\(新しいグラフ\)** をクリックし、以下の情報を使用してページに必要事項を入力します。
+1. **[データ エクスプローラー]** > **[New Graph]\(新しいグラフ\)** をクリックします。
 
-    ![Azure Portal のデータ エクスプローラー](./media/create-graph-java/azure-cosmosdb-data-explorer.png)
+    **[グラフの追加]** 領域が右端に表示されます。表示するには、右にスクロールする必要がある場合があります。
+
+    ![Azure Portal データ エクスプローラーの [グラフの追加] ページ](./media/create-graph-java/azure-cosmosdb-data-explorer-graph.png)
+
+2. **[グラフの追加]** ページで、新しいグラフの設定を入力します。
 
     設定|推奨値|Description
     ---|---|---
-    データベース ID|sample-database|新しいデータベースの ID。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
-    グラフ ID|sample-graph|新しいグラフの ID。 グラフ名の文字要件はデータベース ID と同じです。
-    ストレージの容量| 10 GB|既定値をそのまま使用します。 これは、データベースの記憶域容量です。
-    スループット|400 RU|既定値をそのまま使用します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
+    データベース ID|sample-database|新しいデータベースの名前として「*sample-database*」と入力します。 データベース名は、1 - 255 文字である必要があります。また、`/ \ # ?` は使えず、末尾にスペースを入れることもできません。
+    グラフ ID|sample-graph|新しいコレクションの名前として「*sample-graph*」と入力します。 グラフ名の文字要件はデータベース ID と同じです。
+    ストレージの容量|固定 (10 GB)|値を**固定 (10 GB)** に変更します。 この値は、データベースの記憶域容量です。
+    スループット|400 RU|スループットを 400 要求ユニット (RU/秒) に変更します。 待ち時間を短縮する場合、後でスループットをスケールアップできます。
     パーティション キー|空白|このクイックスタートの目的上、パーティション キーは空白のままにしておきます。
 
 3. フォームに入力したら、**[OK]** をクリックします。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
-github からグラフ アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
+次は、コードを使った作業に移りましょう。 GitHub から Graph API アプリの複製を作成し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。  
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`cd` を実行して作業ディレクトリに移動します。  
+1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダに変更します。  
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上のサンプル アプリのコピーを作成します。 
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-graph-java-getting-started.git
@@ -78,7 +86,7 @@ github からグラフ アプリの複製を作成し、接続文字列を設定
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 \src\GetStarted フォルダーから `Program.java` ファイルを開き、以下のコード行を探します。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認してください。 こららのスニペットはすべて、C:\git-samples\azure-cosmos-db-graph-java-getting-started\src\GetStarted フォルダーの `Program.java` ファイルから取得されます。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
 * Gremlin `Client` は、`src/remote.yaml` 内の構成から初期化されます。
 
@@ -101,51 +109,71 @@ github からグラフ アプリの複製を作成し、接続文字列を設定
     }
     ```
 
-## <a name="update-your-connection-string"></a>接続文字列を更新する
+## <a name="update-your-connection-information"></a>接続情報の更新
 
-1. src/remote.yaml ファイルを開きます。 
+ここで Azure Portal に戻り、接続情報を取得して、アプリにコピーします。 これらの設定により、アプリはホストされているデータベースと通信できるようになります。
 
-3. src/remote.yaml ファイルに *hosts*、*username*、*password* の各値を入力します。 その他の設定を変更する必要はありません。
+1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
 
-    設定|推奨値|説明
-    ---|---|---
-    ホスト|[***.graphs.azure.com]|この表の後のスクリーンショットをご覧ください。 この値は、Azure Portal の [概要] ページに表示される [Gremlin URI] の値から末尾の ":443/" を削除して角かっこで囲んだものです。<br><br>この値は、[キー] タブから取得することもできます。その場合は、[URI] の値から "https://" を削除し、documents を graphs に変更して、末尾の ":443/" を削除してください。
-    ユーザー名|/dbs/sample-database/colls/sample-graph|`/dbs/<db>/colls/<coll>` 形式のリソースです。`<db>` は既存のデータベースの名前、`<coll>` は既存のコレクションの名前になります。
-    パスワード|*プライマリ マスター キー*|この表の後の 2 つ目のスクリーンショットをご覧ください。 この値は自分のプライマリ キーです。Azure Portal の [キー] ページの [プライマリ キー] ボックスから取得できます。 このボックスの右側のコピー ボタンを使って値をコピーしてください。
+    URI の値の最初の部分をコピーします。
 
-    Hosts の値には、**[概要]** ページから **[Gremlin URI]** の値をコピーします。 この値が空の場合は、前の表の Hosts 行で、[キー] ブレードから Gremlin URI を作成する手順を確認してください。
-![Azure Portal の [概要] ページで Gremlin URI の値を表示してコピー](./media/create-graph-java/gremlin-uri.png)
+    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-graph-java/keys.png)
+2. src/remote.yaml ファイルを開き、`hosts: [$name$.graphs.azure.com]` の `$name$` に値を貼り付けます。
 
-    Password の値については、**[キー]** ブレードにある **[プライマリ キー]** から値をコピーしてください。![Azure Portal の [キー] ページでプライマリ キーを表示してコピー](./media/create-graph-java/keys.png)
+    remote.yaml の 1 行目は次のようになります。 
+
+    `hosts: [test-graph.graphs.azure.com]`
+
+3. Azure Portal でコピー ボタンを使って PRIMARY KEY をコピーし、`password: $masterKey$` の `$masterKey$` に貼り付けます。
+
+    remote.yaml の 4 行目は次のようになります。 
+
+    `password: 2Ggkr662ifxz2Mg==`
+
+4. remote.yaml の 3 行目
+
+    `username: /dbs/$database$/colls/$collection$`
+
+    を次のように変更します。 
+
+    `username: /dbs/sample-database/colls/sample-graph`
+
+5. remote.yaml ファイルを保存します。
 
 ## <a name="run-the-console-app"></a>コンソール アプリの実行
 
 1. git ターミナル ウィンドウで、azure-cosmos-db-graph-java-getting-started フォルダーに `cd` で移動します。
 
+    ```git
+    cd "C:\git-samples\azure-cosmos-db-graph-java-getting-started"
+    ```
+
 2. git ターミナル ウィンドウで「`mvn package`」と入力して、必要な Java パッケージをインストールします。
 
-3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して、Java アプリケーションを起動します。
+3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して Java アプリケーションを起動します。
 
-グラフに追加される頂点がターミナル ウィンドウに表示されます。 プログラムが完了したら、インターネット ブラウザーで Azure Portal に切り替えます。 
+    グラフに追加される頂点がターミナル ウィンドウに表示されます。 プログラムが停止したら、インターネット ブラウザーで Azure Portal に切り替えます。 
 
 <a id="add-sample-data"></a>
 ## <a name="review-and-add-sample-data"></a>サンプル データの確認と追加
 
 今度はデータ エクスプローラーに戻って、グラフに追加された頂点を確認し、さらにデータ ポイントを追加してみましょう。
 
-1. データ エクスプローラーで、**sample-database**/**sample-graph** の順に展開し、**[グラフ]** をクリックして **[フィルターの適用]** をクリックします。 
+1. **[データ エクスプローラー]** をクリックし、**sample-graph** を展開して、**[グラフ]**、**[フィルターの適用]** の順にクリックします。 
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-expanded.png)
 
-2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **[ben]** を選択すると、彼は robin に接続されていることがわかります。 Graph エクスプローラーで頂点を移動したり、拡大/縮小したり、Graph エクスプローラーの画面サイズを大きくしたりすることができます。 
+2. **[結果]** リストを見ると、新しいユーザーがグラフに追加されていることがわかります。 **[ben]** を選択すると、彼は robin に接続されていることがわかります。 ドラッグ アンド ドロップで頂点を移動したり、マウスのホイールを回して拡大および縮小したり、双方向矢印でグラフのサイズを大きくしたりできます。 
 
    ![Azure Portal のデータ エクスプローラーにおけるグラフの新しい頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer-new.png)
 
-3. データ エクスプローラーを使って、グラフに新しいユーザーをいくつか追加してみましょう。 グラフにデータを追加するには、**[New Vertex]\(新しい頂点\)** ボタンをクリックします。
+3. 新しいユーザーを何人か追加してみます。 グラフにデータを追加するには、**[New Vertex]\(新しい頂点\)** ボタンをクリックします。
 
    ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-graph-java/azure-cosmosdb-data-explorer-new-vertex.png)
 
-4. *person* というラベルを入力し、次のキーと値を入力して、グラフに 1 つ目の頂点を作成します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
+4. 「*person*」というラベルを入力します。
+
+5. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。 グラフ内の person ごとに一意のプロパティを作成できることに注目してください。 必須のキーは id のみです。
 
     key|value|メモ
     ----|----|----
@@ -156,9 +184,13 @@ github からグラフ アプリの複製を作成し、接続文字列を設定
     > [!NOTE]
     > このクイックスタートでは、パーティション分割されていないコレクションを作成します。 ただし、コレクションの作成段階でパーティション キーを指定することによって、パーティション分割されたコレクションを作成した場合は、新たに作成する各頂点のキーとして、パーティション キーを追加する必要があります。 
 
-5. **[OK]**をクリックします。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
+6. **[OK]**をクリックします。 画面サイズを大きくしないと、画面下部の **[OK]** が見えない場合があります。
 
-6. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 *person* というラベルを入力して、次のキーと値を入力します。
+7. もう一度 **[New Vertex]\(新しい頂点\)** をクリックして、新しいユーザーを追加します。 
+
+8. 「*person*」というラベルを入力します。
+
+9. **[プロパティの追加]** をクリックして、次の各プロパティを追加します。
 
     key|value|メモ
     ----|----|----
@@ -166,25 +198,25 @@ github からグラフ アプリの複製を作成し、接続文字列を設定
     gender|male| 
     school|MIT| 
 
-7. **[OK]**をクリックします。 
+10. **[OK]**をクリックします。 
 
-8. 既定の `g.V()` フィルターで **[フィルターの適用]** をクリックします。 すると、**[結果]** リストにすべてのユーザーが表示されます。 追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーにより `g.V()` を使用してグラフ内のすべての頂点が取得されますが、[グラフ クエリ](tutorial-query-graph.md)を `g.V().count()` のように変更すると、グラフに含まれる全頂点のカウントを JSON 形式で取得できます。
+11. 既定の `g.V()` フィルターで **[フィルターの適用]** をクリックして、グラフ内のすべての値を表示します。 すると、**[結果]** リストにすべてのユーザーが表示されます。 
 
-9. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
+    追加したデータが多くなってきたら、フィルターを使って結果を制限することができます。 既定では、データ エクスプローラーは `g.V()` を使ってグラフのすべての頂点を取得します。 `g.V().count()` などの他の[グラフ クエリ](tutorial-query-graph.md)に変更して、グラフ内のすべての頂点の数を JSON 形式で取得できます。 フィルターを変更した場合、フィルターを `g.V()` に戻して **[フィルターの適用]** をクリックし、もう一度すべての結果を表示します。
+
+12. これで rakesh と ashley を接続できる状態になりました。 **[結果]** リストで **[ashley]** が選択されていることを確認し、右下の **[Targets]\(ターゲット\)** の横にある編集ボタンをクリックします。 ウィンドウの幅を広げないと **[プロパティ]** 領域が見えない場合があります。
 
    ![グラフ内の頂点のターゲットを変更します。](./media/create-graph-java/azure-cosmosdb-data-explorer-edit-target.png)
 
-10. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、**[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをクリックします。
+13. **[Target]\(ターゲット\)** ボックスに「*rakesh*」と入力し、**[Edge label]\(辺ラベル\)** ボックスに「*knows*」と入力して、チェック ボックスをオンにします。
 
    ![データ エクスプローラーで ashley と rakesh との間の接続を追加します。](./media/create-graph-java/azure-cosmosdb-data-explorer-set-target.png)
 
-11. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
+14. 結果リストから **[rakesh]** を選択すると、ashley と rakesh が接続されていることがわかります。 
 
    ![データ エクスプローラーで接続されている 2 つの頂点](./media/create-graph-java/azure-cosmosdb-graph-explorer.png)
 
-    さらに、データ エクスプローラーを使用して、ストアド プロシージャ、UDF、トリガーを作成し、サーバー側ビジネス ロジックを実行できるほか、スループットをスケールすることもできます。 データ エクスプローラーでは、API で使用可能な、組み込みのプログラムによるデータ アクセスがすべて公開されていますが、Azure Portal でデータに簡単にアクセスできます。
-
-
+   以上で、このチュートリアルのリソース作成部分は完了です。引き続き、グラフへの頂点の追加、既存の頂点の変更、またはクエリの変更を行うことができます。 次に、Azure Cosmos DB が提供するメトリックを確認し、リソースをクリーンアップします。 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
 
@@ -192,10 +224,7 @@ github からグラフ アプリの複製を作成し、接続文字列を設定
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。 
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 

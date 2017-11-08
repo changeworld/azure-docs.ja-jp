@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: 19f9686de9face1e53fc84eac23381eadc9fb5cd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c4fb60bde7599daa0ac9d7704c398adcdb0d471
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-azure-portal"></a>チュートリアル: Azure Portal を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -30,6 +30,9 @@ ms.lasthandoff: 10/11/2017
 > * [Resource Manager テンプレート](data-factory-build-your-first-pipeline-using-arm.md)
 > * [REST API](data-factory-build-your-first-pipeline-using-rest-api.md)
 
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-dot-net.md)を参照してください。
 
 この記事では、[Azure Portal](https://portal.azure.com/) を使用して最初の Azure データ ファクトリを作成する方法について説明します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。 
 

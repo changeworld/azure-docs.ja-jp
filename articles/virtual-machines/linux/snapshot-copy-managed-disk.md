@@ -1,8 +1,8 @@
 ---
-title: "バックアップのために Azure Managed Disk をコピーする | Microsoft Docs"
-description: "バックアップまたはディスクの問題のトラブルシューティング用に使うために Azure Managed Disk のコピーを作成する方法について説明します。"
+title: "Azure で VHD のスナップショットを作成する | Microsoft Docs"
+description: "バックアップまたは問題のトラブルシューティングに使うために、Azure で VHD のコピーを作成する方法について説明します。"
 documentationcenter: 
-author: squillace
+author: cynthn
 manager: timlt
 editor: 
 tags: azure-resource-manager
@@ -11,27 +11,23 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.topic: article
-ms.date: 2/6/2017
-ms.author: rasquill
-ms.openlocfilehash: c91367ef11c9d531bebac7c069d2df586607ec29
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/09/2017
+ms.author: cynthn
+ms.openlocfilehash: da00c48f7da5a9be146f4fdb626c93db746c0f9b
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
-# <a name="create-a-copy-of-a-vhd-stored-as-an-azure-managed-disk-by-using-managed-snapshots"></a>管理スナップショットを使って Azure Managed Disk として保存された VHD のコピーを作成する
-バックアップのために Managed Disk のスナップショットを作成するか、スナップショットから Managed Disk を作成してトラブルシューティングのためにテスト仮想マシンに接続します。 管理スナップショットは、VM の Managed Disk の完全なポイントインタイム コピーです。 VHD の読み取り専用のコピーを作成し、既定では Standard Managed Disk として保存します。 
+# <a name="create-a-snapshot"></a>スナップショットの作成 
 
-価格の詳細については、「[Azure Storage の価格](https://azure.microsoft.com/pricing/details/managed-disks/)」をご覧ください。 <!--Add link to topic or blog post that explains managed disks. -->
-
-Managed Disk のスナップショットを作成するには、Azure Portal または Azure CLI 2.0 を使います。
+バックアップ、または VM の問題を解決するために、OS またはデータ ディスク VHD のスナップショットを作成します。 スナップショットは、VHD の完全な読み取り専用コピーです。 
 
 ## <a name="use-azure-cli-20-to-take-a-snapshot"></a>Azure CLI 2.0 使ってスナップショットを作成する
 
-> [!NOTE] 
-> 次の例では、Azure CLI 2.0 がインストールされていて、Azure アカウントにログインしている必要があります。
+次の例では、Azure CLI 2.0 がインストールされていて、Azure アカウントにログインしている必要があります。 バージョンを確認するには、`az --version` を実行します。 インストールまたはアップグレードする必要がある場合は、「[Azure CLI 2.0 のインストール]( /cli/azure/install-azure-cli)」を参照してください。 
 
-次の手順では、`az snapshot create` コマンドと `--source-disk` パラメーターを使って管理 OS ディスクのスナップショットを取得する方法を示します。 次の例では、`myResourceGroup` リソース グループの管理 OS ディスクを使って `myVM` という名前の VM が作成されているものとします。
+次の手順は、`az snapshot create` コマンドと `--source-disk` パラメーターを使用してスナップショットを取得する方法を示しています。 次の例では、`myResourceGroup` リソース グループの管理 OS ディスクを使って `myVM` という名前の VM が作成されているものとします。
 
 ```azure-cli
 # take the disk id with which to create a snapshot
@@ -80,4 +76,8 @@ az snapshot create -g myResourceGroup --source "$osDiskId" --name osDisk-backup
 
 スナップショットを使って Managed Disk を作成し、高パフォーマンスが必要な VM に接続する計画がある場合は、`az snapshot create` コマンドで `--sku Premium_LRS` パラメーターを使います。 Premium Managed Disk として保存されるようにスナップショットが作成されます。 Premium Managed Disks はソリッド ステート ドライブ (SSD) なので高パフォーマンスですが、料金は Standard ディスク (HDD) より高くなります。
 
+
+## <a name="next-steps"></a>次のステップ
+
+ スナップショットから管理ディスクを作成し、その新しい管理ディスクを OS ディスクとして接続することで、スナップショットから仮想マシンを作成します。 詳細については、「[PowerShell でスナップショットから仮想マシンを作成する](./../scripts/virtual-machines-linux-cli-sample-create-vm-from-snapshot.md?toc=%2fcli%2fmodule%2ftoc.json)」のスクリプトを参照してください。
 

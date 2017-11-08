@@ -4,7 +4,7 @@ description: "既定の ASP.NET Web アプリをデプロイして、Azure App S
 services: app-service\web
 documentationcenter: 
 author: cephalin
-manager: wpickett
+manager: cfowler
 editor: 
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.service: app-service-web
@@ -15,11 +15,11 @@ ms.topic: quickstart
 ms.date: 06/14/2017
 ms.author: cephalin
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 79ca3692fd779a26320100921d482df0d1f85855
-ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
+ms.openlocfilehash: 76e20ea1bebbf35910210e1651fadc0daf426aa4
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/26/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-an-aspnet-web-app-in-azure"></a>Azure に ASP.NET Web アプリを作成する
 

@@ -13,21 +13,21 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-windows
 ms.devlang: na
 ms.topic: article
-ms.date: 02/07/2017
+ms.date: 10/11/2017
 ms.author: cynthn
-ms.openlocfilehash: 9ae27e6abc239fe76288e64a996ec39ba7782822
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 6bc52262105fd9b162ad8ada9ae5cc3dbf623df2
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="attach-a-data-disk-to-a-windows-vm-using-powershell"></a>PowerShell を使用して Windows VM にデータ ディスクを接続する
 
-この記事では、PowerShell を使用して新しいディスクおよび既存のディスクを Windows 仮想マシンに接続する方法について説明します。 VM で管理対象ディスクを使用している場合は、管理対象のデータ ディスクを追加できます。 同様に、ストレージ アカウントの非管理対象ディスクを使用している VM には、非管理対象データ ディスクを接続できます。
+この記事では、PowerShell を使用して新しいディスクおよび既存のディスクを Windows 仮想マシンに接続する方法について説明します。 
 
 接続する前に、次のヒントを確認してください。
 * 仮想マシンのサイズによって、接続できるデータ ディスク数は変わります。 詳細については、「 [仮想マシンのサイズ](sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
-* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 これらの仮想マシンでは、Premium および Standard のストレージ アカウントのディスクを使用できます。 Premium Storage は特定のリージョンで使用できます。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../storage/common/storage-premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
+* Premium Storage を使用するには、Premium Storage に対応した VM サイズ (DS シリーズや GS シリーズなどの仮想マシン) が必要です。 詳細については、「 [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](premium-storage.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)」を参照してください。
 
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
 
@@ -43,7 +43,7 @@ PowerShell をインストールしてローカルで使用する場合、この
 ```azurepowershell-interactive
 $rgName = 'myResourceGroup'
 $vmName = 'myVM'
-$location = 'West Central US' 
+$location = 'East US' 
 $storageType = 'PremiumLRS'
 $dataDiskName = $vmName + '_datadisk1'
 
@@ -75,15 +75,6 @@ $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName
 $vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk1.Id -Lun 1
 
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
-```
-
-
-### <a name="using-unmanaged-disks-in-a-storage-account"></a>ストレージ アカウントの非管理対象ディスクを使用する場合
-
-```azurepowershell-interactive
-    $vm = Get-AzureRmVM -ResourceGroupName $rgName -Name $vmName
-    Add-AzureRmVMDataDisk -VM $vm -Name "disk-name" -VhdUri "https://mystore1.blob.core.windows.net/vhds/datadisk1.vhd" -LUN 0 -Caching ReadWrite -DiskSizeinGB 1 -CreateOption Empty
-    Update-AzureRmVM -ResourceGroupName $rgName -VM $vm
 ```
 
 
@@ -120,25 +111,18 @@ Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 
 ## <a name="attach-an-existing-data-disk-to-a-vm"></a>VM に既存のデータ ディスクを接続する
 
-既存の VHD を、管理対象データ ディスクとして仮想マシンに接続することもできます。 
-
-### <a name="using-managed-disks"></a>管理対象ディスクを使用する場合
+既存の管理対象ディスクをデータ ディスクとして VM にアタッチできます。 
 
 ```azurepowershell-interactive
-$rgName = 'myRG'
-$vmName = 'ContosoMdPir3'
-$location = 'West Central US' 
-$storageType = 'PremiumLRS'
-$dataDiskName = $vmName + '_datadisk2'
-$dataVhdUri = 'https://mystorageaccount.blob.core.windows.net/vhds/managed_data_disk.vhd' 
-
-$diskConfig = New-AzureRmDiskConfig -AccountType $storageType -Location $location -CreateOption Import -SourceUri $dataVhdUri -DiskSizeGB 128
-
-$dataDisk2 = New-AzureRmDisk -DiskName $dataDiskName -Disk $diskConfig -ResourceGroupName $rgName
+$rgName = "myResourceGroup"
+$vmName = "myVM"
+$location = "East US" 
+$dataDiskName = "myDisk"
+$disk = Get-AzureRmDisk -ResourceGroupName $rgName -DiskName $dataDiskName 
 
 $vm = Get-AzureRmVM -Name $vmName -ResourceGroupName $rgName 
 
-$vm = Add-AzureRmVMDataDisk -VM $vm -Name $dataDiskName -CreateOption Attach -ManagedDiskId $dataDisk2.Id -Lun 2
+$vm = Add-AzureRmVMDataDisk -CreateOption Attach -Lun 0 -VM $vm -ManagedDiskId $disk.Id
 
 Update-AzureRmVM -VM $vm -ResourceGroupName $rgName
 ```

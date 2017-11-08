@@ -8,11 +8,11 @@ ms.topic: article
 ms.date: 10/10/2017
 ms.author: victorh
 keywords: 
-ms.openlocfilehash: 0a5a783751e4f0fa9f5fb43b22fa221dd9bf3444
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 40d6d4858ef2e3df61d04dc68c00e09c04f000e2
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="azure-stack-datacenter-integration---dns"></a>Azure Stack とデータセンターの統合 - DNS
 
@@ -29,7 +29,7 @@ Azure Stack をデプロイするときに、DNS に関するいくつかの重�
 |リージョン|Azure Stack のデプロイの地理的な場所。|`east`|
 |外部ドメイン名|Azure Stack のデプロイに使用したいゾーンの名前。|`cloud.fabrikam.com`|
 |内部ドメイン名|Azure Stack のインフラストラクチャ サービスに使用される内部ゾーンの名前。  これは、ディレクトリ サービスと統合されたプライベートなゾーンです (Azure Stack のデプロイの外部からは到達できません)。|`azurestack.local`|
-|DNS フォワーダー|Azure Stack の外部 (企業イントラネットまたはパブリック インターネット上) でホストされている DNS クエリ、DNS ゾーンおよびレコードを転送するために使用される DNS サーバー。|`10.57.175.34`<br>`8.8.8.8`|
+|DNS フォワーダ|Azure Stack の外部 (企業イントラネットまたはパブリック インターネット上) でホストされている DNS クエリ、DNS ゾーンおよびレコードを転送するために使用される DNS サーバー。|`10.57.175.34`<br>`8.8.8.8`|
 |名前付けのプレフィックス (省略可能)|Azure Stack インフラストラクチャ ロール インスタンス マシン名に使用する名前付けのプレフィックス。  指定されていない場合、既定値は`azs` です。|`azs`|
 
 Azure Stack のデプロイの完全修飾ドメイン名 (FQDN) とエンドポイントは、リージョン パラメーターと外部ドメイン名 パラメーターの組み合わせです。 前の表に示した例の値を使用すると、この Azure Stack のデプロイの FQDN は次の名前のようになります。
@@ -121,7 +121,7 @@ Azure Stack DNS サーバーの FQDN は次のような形式をとります。
 
 Azure Stack と DNS インフラストラクチャを統合する最も簡単で安全な方法は、親ゾーンをホストするサーバーから、ゾーンの条件付き転送を行うことです。 Azure Stack の外部 DNS 名前空間の親ゾーンをホストする DNS サーバーを直接制御できる場合は、この方法をお勧めします。
 
-DNS で条件付き転送を行う方法がわからない場合は、TechNet の記事「[Assign a Conditional Forwarder for a Domain Name (ドメイン名の条件付きフォワーダーを割り当てる)](https://technet.microsoft.com/library/cc794735)」またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
+DNS で条件付き転送を行う方法がわからない場合は、TechNet の記事「[Assign a Conditional Forwarder for a Domain Name (ドメイン名の条件付きフォワーダを割り当てる)](https://technet.microsoft.com/library/cc794735)」またはお使いの DNS ソリューションに固有のドキュメントをご覧ください。
 
 会社のドメイン名の子ドメインのように見える Azure Stack 外部の DNS ゾーンを指定しているシナリオでは、条件付き転送は使用できません。 DNS 委任を構成する必要があります。
 
@@ -140,4 +140,4 @@ DNS 名を Azure Stack デプロイの外部から解決できるようにする
 
 ## <a name="next-steps"></a>次のステップ
 
-[Azure Stack とデータセンターの統合 - エンドポイントの公開](azure-stack-integrate-endpoints.md)
+[Azure Stack とデータセンターの統合 - ID](azure-stack-integrate-identity.md)

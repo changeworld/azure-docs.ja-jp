@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL のサーバーとデータベースを作成し、管理する | Microsoft Docs"
-description: "Azure SQL Database のサーバーとデータベース概念について説明し、Azure ポータル、PowerShell、Azure CLI、Transact-SQL、REST API を利用してサーバーとデータベースを作成し、管理する方法について説明します。"
+description: "Azure SQL Database サーバーとデータベースの概念と、サーバーとデータベースの作成と管理について説明します。"
 services: sql-database
 documentationcenter: na
 author: CarlRabeler
@@ -12,14 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: dbc01dac6cf31916bef1cba9432e5653751dc625
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 3bd39b9a63cd4a18eabee3d1737daac56b3e37df
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="create-and-manage-azure-sql-database-servers-and-databases"></a>Azure SQL Database のサーバーとデータベースを作成し、管理する
 

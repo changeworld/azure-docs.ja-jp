@@ -9,17 +9,18 @@ editor:
 ms.assetid: a295a768-7ff2-4a86-a253-0090281c8efa
 ms.service: sql-database
 ms.custom: load & move data
-ms.workload: na
+ms.workload: Active
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 06/08/2017
 ms.author: douglasl
-ms.openlocfilehash: 1943e87ffd991d099ab655af5a7d16d7f1608d22
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.reviewer: douglasl
+ms.openlocfilehash: 64b95142eb5b7086b070585a359bf81e7397c3e5
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="getting-started-with-azure-sql-data-sync-preview"></a>Azure SQL データ同期の概要 (プレビュー)
 このチュートリアルでは、Azure SQL Database と SQL Server インスタンスの両方を含むハイブリッド同期グループを作成して、Azure SQL データ同期をセットアップする方法について学習します。 新しい同期グループには必要な構成をすべて行います。このため、新しい同期グループは設定したスケジュールで同期されます。
@@ -30,10 +31,7 @@ SQL データ同期の概要については、[データの同期](sql-database-
 
 SQL データ同期を構成する方法を示す完全な PowerShell の例については、次の記事を参照してください。
 -   [PowerShell を使用して複数の Azure SQL Database 間で同期を行う](scripts/sql-database-sync-data-between-sql-databases.md)
--   [PowerShell を使用して Azure SQL Database と SQL Server オンプレミス データベースの間で同期を行う](scripts/sql-database-sync-data-between-azure-onprem.md)
-
-> [!NOTE]
-> これまで MSDN に置かれていた Azure SQL データ同期の完全な技術ドキュメント セットは、現在は .PDF ドキュメントとして [こちら](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)でダウンロードできます。
+-   [PowerShell を使用した Azure SQL Database と SQL Server オンプレミス データベース間の同期](scripts/sql-database-sync-data-between-azure-onprem.md)
 
 ## <a name="step-1---create-sync-group"></a>手順 1 - 同期グループの作成
 
@@ -200,7 +198,6 @@ SQL データ同期を構成する方法を示す完全な PowerShell の例に�
 
 SQL Database および SQL データ同期の詳細については、以下を参照してください。
 
--   [完全な SQL データ同期テクニカル ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_full_documentation.pdf?raw=true)
 -   [SQL データ同期 REST API ドキュメントのダウンロード](https://github.com/Microsoft/sql-server-samples/raw/master/samples/features/sql-data-sync/Data_Sync_Preview_REST_API.pdf?raw=true)
 -   [SQL Database の概要](sql-database-technical-overview.md)
 -   [データベースのライフサイクル管理](https://msdn.microsoft.com/library/jj907294.aspx)

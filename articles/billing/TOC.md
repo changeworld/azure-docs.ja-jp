@@ -35,9 +35,9 @@
 ### [Office 365 テナントをリンクする](billing-add-office-365-tenant-to-azure-subscription.md)
 ### [請求書によるサブスクリプションの支払い](billing-how-to-pay-by-invoice.md)
 ## トラブルシューティング
-### [サインアップの問題](billing-troubleshoot-azure-sign-up-issues.md)
-### [拒否されたカード](billing-credit-card-fails-during-azure-sign-up.md)
-### [サインインの問題](billing-cannot-login-subscription.md)
+### [サインアップの問題](https://support.microsoft.com/en-us/help/4042959)
+### [拒否されたカード](https://support.microsoft.com/en-us/help/4042960)
+### [サインインの問題](https://support.microsoft.com/en-us/help/4042961)
 ### [サブスクリプションが見つからない](billing-no-subscriptions-found.md)
 ### [Enterprise コスト ビューが無効になっている](billing-enterprise-mgmt-grp-troubleshoot-cost-view.md)
 

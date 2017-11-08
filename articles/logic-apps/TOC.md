@@ -25,7 +25,8 @@
 #### [Azure AD を使用してコネクタをセキュリティで保護する](custom-connector-azure-active-directory-authentication.md)
 #### [Postman で API を記述する](custom-connector-api-postman-collection.md)
 #### [カスタム コネクタの OpenAPI を拡張する](custom-connector-openapi-extensions.md)
-#### [コネクタを登録する](logic-apps-custom-connector-register.md)
+#### [OpenAPI コネクタを作成して登録する](logic-apps-custom-connector-register.md)
+#### [SOAP コネクタを作成して登録する](logic-apps-soap-connector-create-register.md)
 #### [コネクタの認定を受ける](custom-connector-submit-certification.md)
 #### [カスタム コネクタに関する FAQ](custom-connector-faq.md)
 ### カスタム API を開発する

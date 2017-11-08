@@ -4,7 +4,7 @@ description: "この Azure Analysis Services チュートリアルでは、不�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 10/16/2017
 ms.author: owend
-ms.openlocfilehash: 74058b34dc38172f8e0daabfac0e847df71ed553
-ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
+ms.openlocfilehash: 89a0f388815b3a0e2a6e020690f9a644e73bbcad
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="supplemental-lesson---ragged-hierarchies"></a>補足のレッスン - 不規則階層
 

@@ -1,6 +1,6 @@
 ---
 title: "Azure Active Directory Domain Services: 概要 | Microsoft Docs"
-description: "Azure Portal を使って Azure Active Directory Domain Services を有効にする"
+description: "Azure Portal を使用して Azure Active Directory Domain Services を有効にする"
 services: active-directory-ds
 documentationcenter: 
 author: mahesh-unnikrishnan
@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/26/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: 26fa86d166c54f48621ccbab13d1d17f465b7568
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a476e5228fc7fb83c1fe0b7ae0989a7752be09e1
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
-# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使って Azure Active Directory Domain Services を有効にする
+# <a name="enable-azure-active-directory-domain-services-using-the-azure-portal"></a>Azure Portal を使用して Azure Active Directory Domain Services を有効にする
 
 
 ## <a name="before-you-begin"></a>開始する前に
@@ -31,7 +31,11 @@ ms.lasthandoff: 10/11/2017
 次の構成タスクでは、Azure 仮想ネットワークを作成し、その中に専用サブネットを作成します。 仮想ネットワーク内のこのサブネットで、Azure Active Directory Domain Services を有効にします。 既存の仮想ネットワークを選択して、その中に専用サブネットを作成することもできます。
 
 1. **[仮想ネットワーク]** をクリックし、仮想ネットワークを選択します。
-2. **[仮想ネットワークの選択]** ブレードに、既存の仮想ネットワークがすべて表示されます。 **[基本]** ウィザード ページで選択したリソース グループと Azure の場所に属している仮想ネットワークのみが表示されます。
+    > [!NOTE]
+    > **新しいデプロイでは、クラシック仮想ネットワークはサポートされません。** 新しいデプロイでは、クラシック仮想ネットワークはサポートされません。 クラシック仮想ネットワークにデプロイされている既存の管理対象ドメインは、引き続きサポートされます。 近いうちに、既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行する機能が提供される予定です。
+    >
+
+2. **[仮想ネットワークの選択]** ページに、既存の仮想ネットワークがすべて表示されます。 **[基本]** ウィザード ページで選択したリソース グループと Azure の場所に属している仮想ネットワークのみが表示されます。
 3. Azure AD Domain Services を有効にする仮想ネットワークを選択します。 既存の仮想ネットワークを選択することも、新しい仮想ネットワークを作成することもできます。
 
   > [!TIP]

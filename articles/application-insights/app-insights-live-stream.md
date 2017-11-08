@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 05/24/2017
-ms.author: bwren
-ms.openlocfilehash: 1eb2e0c467d4fb4cb263047caf58d36231578d9a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 866fc729b3167863c2d423d0e6ac0d7640e3425e
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="live-metrics-stream-monitor--diagnose-with-1-second-latency"></a>Live Metrics Stream: 1 秒の待機時間での監視と診断 
 
@@ -40,7 +40,7 @@ Live Metrics Stream は現在、オンプレミスまたはクラウドで実行
 ## <a name="get-started"></a>作業開始
 
 1. ASP.NET Web アプリケーションまたは [Windows Server アプリケーション](app-insights-windows-services.md) に [Application Insights をインストール](app-insights-asp-net.md)していない場合は、今すぐインストールします。 
-2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、[**NuGet パッケージの管理**] を選択します。 [**更新プログラム**] タブを開き、[**リリース前のパッケージを含める**] をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
+2. Application Insights パッケージの**最新バージョンに更新**します。 Visual Studio でプロジェクトを右クリックし、**[NuGet パッケージの管理]** を選択します。 **[更新プログラム]** タブを開き、**[リリース前のパッケージを含める]** をオンにし、すべての Microsoft.ApplicationInsights.* パッケージを選択します。
 
     アプリケーションを再デプロイします。
 

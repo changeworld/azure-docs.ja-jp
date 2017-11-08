@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 10/19/2017
 ms.author: maheshu
-ms.openlocfilehash: ad25663f97b83f11f14eeb8bb07dac46f6c080d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2705e97bd5b259ef68090e5688df57e0d3478f30
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-active-directory-domain-services-frequently-asked-questions-faqs"></a>Azure Active Directory Domain Services: よく寄せられる質問 (FAQ)
 このページでは、Azure Active Directory Domain Services に関してよく寄せられる質問への回答が記載されています。 常に最新情報をチェックしてください。
@@ -28,6 +28,7 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 
 ### <a name="configuration"></a>構成
 #### <a name="can-i-create-multiple-managed-domains-for-a-single-azure-ad-directory"></a>1 つの Azure AD ディレクトリに対して複数の管理対象ドメインを作成することはできますか。
+
 いいえ。 1 つの Azure AD ディレクトリに対して Azure AD Domain Services によって対応される管理対象ドメインは 1 つだけ作成できます。  
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-resource-manager-virtual-network"></a>Azure Resource Manager 仮想ネットワークで Azure AD Domain Services を有効にすることはできますか。
@@ -37,6 +38,7 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 現時点では連携しません。 将来的には、既存の管理対象ドメインをクラシック仮想ネットワークから Resource Manager 仮想ネットワークに移行するメカニズムを提供します。
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-an-azure-csp-cloud-solution-provider-subscription"></a>Azure AD Domain Services を Azure CSP (Cloud Solution Provider) サブスクリプション内で有効にできますか。
+
 いいえ。 現在、CSP サブスクリプションに対するサポートを追加するように作業しています。
 
 #### <a name="can-i-enable-azure-ad-domain-services-in-a-federated-azure-ad-directory-i-use-adfs-to-authenticate-users-for-access-to-office-365-and-do-not-synchronize-password-hashes-to-azure-ad-can-i-enable-azure-ad-domain-services-for-this-directory"></a>フェデレーション Azure AD ディレクトリの Azure AD Domain Services を有効にすることはできますか。 Office 365 にアクセスするユーザーの認証に ADFS を使い、パスワード ハッシュを Azure AD と同期しません。 このディレクトリの Azure AD Domain Services を有効にすることはできますか。
@@ -49,9 +51,10 @@ Azure AD Domain Services を構成または管理する際に生じる一般的�
 PowerShell/Azure AD Domain Services の自動デプロイは、現時点では利用できません。
 
 #### <a name="is-azure-ad-domain-services-available-in-the-new-azure-portal"></a>Azure AD Domain Services は新しい Azure Portal で利用できますか。
-はい。 Azure AD Domain Services は、[Azure Portal](https://portal.azure.com) を使って構成できます。 [従来の Azure Portal](https://manage.windowsazure.com) のサポートは将来停止される予定です。
+はい。 Azure AD Domain Services は、[Azure Portal](https://portal.azure.com) を使って構成できます。 [Azure クラシック ポータル](https://manage.windowsazure.com)は現在サポートされていません。
 
 #### <a name="can-i-enable-azure-ad-domain-services-using-a-resource-manager-template"></a>Resource Manager テンプレートを使用して Azure AD Domain Services を有効にできますか。
+
 いいえ。 Azure AD Domain Services を有効にするための一環としていくつかのタスクを実行する必要があります。 これらのタスクは、Resource Manager テンプレートでは実行できません。 ディレクトリに対して Azure AD Domain Services を有効にするには、新しい Azure ポータルを使用してください。
 
 #### <a name="can-i-add-domain-controllers-to-an-azure-ad-domain-services-managed-domain"></a>Azure AD ドメイン サービスの管理対象ドメインにドメイン コント ローラーを追加することはできますか。
@@ -87,6 +90,7 @@ Azure AD UI または PowerShell を使用して Azure AD ディレクトリに�
 このサービスは、Azure の無料試用版に含まれています。 [1 か月間の無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 
 #### <a name="can-i-pause-an-azure-ad-domain-services-managed-domain"></a>Azure AD Domain Services 管理対象ドメインを一時停止することはできますか。 
+
 いいえ。 Azure AD Domain Services 管理対象ドメインを有効にすると、管理対象ドメインを無効化/削除するまで、選択した仮想ネットワーク内でサービスを使用できます。 サービスを一時停止する方法はありません。 課金は、管理対象ドメインを削除するまで、1 時間ごとに続行されます。
 
 #### <a name="can-i-get-azure-ad-domain-services-as-part-of-enterprise-mobility-suite-ems-do-i-need-azure-ad-premium-to-use-azure-ad-domain-services"></a>Enterprise Mobility Suite (EMS) の一部として Azure AD Domain Services を取得できますか。 Azure AD Domain Services を使用するのに Azure AD Premium が必要ですか。

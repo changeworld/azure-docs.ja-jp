@@ -12,19 +12,19 @@ ms.devlang: dotnet
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 06/30/2017
+ms.date: 10/15/2017
 ms.author: dekapur
-ms.openlocfilehash: f57c915dd566e9da9b751bb776a1170842d87297
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9a6e629582b6966d270a2378e585572efe133f3e
+ms.sourcegitcommit: a7c01dbb03870adcb04ca34745ef256414dfc0b3
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="event-aggregation-and-collection-using-eventflow"></a>EventFlow を使用したイベントの集計と収集
 
 [Microsoft Diagnostics EventFlow](https://github.com/Azure/diagnostics-eventflow) では、ノードから 1 つ以上の監視対象にイベントをルーティングすることができます。 EventFlow は NuGet パッケージとしてサービス プロジェクトに含まれるため、EventFlow のコードと構成はサービスと共に移動します。これにより、Azure 診断で説明したノードごとの構成の問題が排除されます。 EventFlow はサービス プロセス内で実行され、構成済みの出力に直接接続されます。 この直接接続により、EventFlow は Azure、コンテナー、オンプレミスの各サービス デプロイで機能します。 各 EventFlow パイプラインは外部接続を行うため、コンテナーなどの高密度シナリオで EventFlow を実行する場合は注意してください。 そのため、複数のプロセスをホストしている場合、いくつかの送信接続が発生することになります。 Service Fabric アプリケーションでは、`ServiceType` のすべてのレプリカが同じプロセス内で実行され、送信接続の数が限られるため、これはそれほど問題にはなりません。 また、EventFlow ではイベントのフィルター処理も行われるので、指定したフィルターと一致するイベントだけが送信されます。
 
-## <a name="setting-up-eventflow"></a>EventFlow の設定
+## <a name="set-up-eventflow"></a>EventFlow の設定
 
 EventFlow バイナリは、一連の NuGet パッケージとして入手できます。 Service Fabric サービス プロジェクトに EventFlow を追加するには、ソリューション エクスプローラーでプロジェクトを右クリックし、[NuGet パッケージの管理] を選びます。 [参照] タブに切り替え、"`Diagnostics.EventFlow`" を検索します。
 
@@ -41,7 +41,7 @@ EventFlow バイナリは、一連の NuGet パッケージとして入手でき
 
 すべてのパッケージをインストールした後は、サービスで EventFlow を構成して有効にします。
 
-## <a name="configuring-and-enabling-log-collection"></a>ログ収集の構成と有効化
+## <a name="configure-and-enable-log-collection"></a>ログの収集の構成と有効化
 ログの送信を行う EventFlow パイプラインは、構成ファイルに格納されている仕様から作成されます。 `Microsoft.Diagnostics.EventFlow.ServiceFabric` パッケージは、初期の EventFlow 構成ファイルを `eventFlowConfig.json` という名前の `PackageRoot\Config` ソリューション フォルダーにインストールします。 サービスの既定の `EventSource` クラスおよび構成する任意の他の入力からデータをキャプチャして適切な場所にデータを送信するように、この構成ファイルを変更する必要があります。
 
 上記で説明した NuGet パッケージに基づくサンプル *eventFlowConfig.json* です。
@@ -136,13 +136,13 @@ namespace Stateless1
 
 `ServiceFabricDiagnosticsPipelineFactory` の `CreatePipeline` メソッドのパラメーターとして渡される名前は、EventFlow ログ収集パイプラインを表す "*正常性エンティティ*" の名前です。 この名前は、EventFlow でエラーが発生し、Service Fabric 正常性サブシステムでそれが報告される場合に使われます。
 
-### <a name="using-service-fabric-settings-and-application-parameters-to-in-eventflowconfig"></a>eventFlowConfig での Service Fabric の設定とアプリケーション パラメーターの使用
+### <a name="use-service-fabric-settings-and-application-parameters-in-eventflowconfig"></a>eventFlowConfig で Service Fabric の設定とアプリケーション パラメーターを使用する
 
 EventFlow は、EventFlow 設定を構成する Service Fabric の設定とアプリケーションのパラメーターの使用をサポートします。 以下の特殊な構文を値にして Service Fabric の設定パラメーターを参照できます。
 
 ```json
 servicefabric:/<section-name>/<setting-name>
-``` 
+```
 
 `<section-name>` は、Service Fabric の構成セクションの名前を示し、`<setting-name>` は、EventFlow の設定の構成に使用する値を提供する構成設定です。 その設定方法についての詳細は、「[Support for Service Fabric settings and application parameters (Service Fabric の設定とアプリケーション パラメーターのサポート)](https://github.com/Azure/diagnostics-eventflow#support-for-service-fabric-settings-and-application-parameters)」をご覧ください。
 

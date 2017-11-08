@@ -1,6 +1,6 @@
 ---
 title: "最初の Azure SQL Database の設計 | Microsoft Docs"
-description: "最初の Azure SQL Database を設計する方法について説明します。"
+description: "Azure ポータルで SQL Server Management Studio を使用して、最初の Azure SQL データベースを設計する方法について説明します。"
 services: sql-database
 documentationcenter: 
 author: CarlRabeler
@@ -13,14 +13,14 @@ ms.custom: mvc,develop databases
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Active
 ms.date: 08/25/2017
 ms.author: carlrab
-ms.openlocfilehash: 3a58c50d1187b9cca9490ad725b14617b4a98efe
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e4848eb366faea134a484c8a494fed6a83203116
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="design-your-first-azure-sql-database"></a>最初の Azure SQL Database の設計
 
@@ -125,7 +125,7 @@ SQL Database サービスは、外部のアプリケーションやツールに�
 
 4. ツール バーの **[クライアント IP の追加]** をクリックし、現在の IP アドレスをファイアウォール規則に追加します。 ファイアウォール規則は、単一の IP アドレスまたは IP アドレスの範囲に対して、ポート 1433 を開くことができます。
 
-5. [ **Save**] をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
+5. **[ Save]** をクリックします。 論理サーバーでポート 1433 を開いている現在の IP アドレスに対して、サーバーレベルのファイアウォール規則が作成されます。
 
 6. **[OK]** をクリックし、**[ファイアウォール設定]** ページを閉じます。
 

@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 28c589b6821526fa6b91dc558a08ef2fb68f97df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d8a5f3c915b1e3b6e11cec9c5540fa192f5f85dd
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="checkpoints-and-replay-in-durable-functions-azure-functions"></a>Durable Functions でのチェックポイントと再生 - (Azure Functions)
 
@@ -115,7 +115,7 @@ Durable Task Framework は、`await` ステートメントごとに、関数の�
 
   非決定論的な操作は、アクティビティ関数で行う必要があります。 これには、他の入力または出力バインドとのすべての対話が含まれ、 これにより、最初の実行時、および実行履歴への保存時に、非決定論的なすべての値が生成されます。 以降の実行では、保存された値が自動的に使用されます。
 
-* オーケストレーター コードは**非ブロッキング**である必要があります。 たとえば、非 `Thread.Sleep` または同等の API です。
+* オーケストレーター コードは**非ブロッキング**である必要があります。 これは、たとえば `Thread.Sleep` または同等の API に対して I/O および呼び出しがないことを意味します。
 
   オーケストレーターに遅延が必要な場合は、[CreateTimer](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationContext.html#Microsoft_Azure_WebJobs_DurableOrchestrationContext_CreateTimer_) API を使用できます。
 

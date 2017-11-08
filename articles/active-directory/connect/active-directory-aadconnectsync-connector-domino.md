@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2017
-ms.author: billmath
-ms.openlocfilehash: 328e2039bbaa8988dc35b46712fd0de6f8bcbee8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.date: 10/119/2017
+ms.author: barclayn
+ms.openlocfilehash: 15155fd9e1ab2dd6d58bcaf85a465c0585d3bc41
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="lotus-domino-connector-technical-reference"></a>Lotus Domino Connector のテクニカル リファレンス
 この記事では Lotus Domino Connector について説明します。 この記事は次の製品に適用されます。
@@ -39,7 +39,7 @@ Lotus Domino Connector を使用すると、IBM の Lotus Domino サーバーと
 | 接続先のデータ ソース |サーバー:  <li>Lotus Domino 8.5.x</li><li>Lotus Domino 9.x</li>クライアント: <li>Lotus Domino 8.5.x</li><li>Lotus Notes 9.x</li> |
 | シナリオ |<li>オブジェクトのライフサイクル管理</li><li>グループ管理</li><li>パスワード管理</li> |
 | 操作 |<li>フル インポートと差分インポート</li><li>エクスポート</li><li>HTTP パスワードにおけるパスワードの設定と変更</li> |
-| スキーマ |<li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li> |
+| スキーマ |<li>Person (ローミング ユーザー、連絡先 (証明書のない Person))</li><li>グループ</li><li>リソース (リソース、ルーム、オンライン会議)</li><li>メールイン データベース</li><li>サポートされているオブジェクトの属性の動的検出</li><li>1 つの組織/組織単位 (OU) に対して最大 250 のカスタム証明者をサポート</li> |
 
 Lotus Domino Connector は、Lotus Domino サーバーとの通信に、Lotus Notes クライアントを使用します。 この依存関係のため、サポートされている Lotus Notes クライアントを同期サーバーにインストールする必要があります。 クライアントとサーバー間の通信は、Lotus Notes .NET Interop (Interop.domino.dll) インターフェイスを介して実装されています。 このインターフェイスにより、Microsoft.NET プラットフォームと Lotus Notes 間の通信は促され、Lotus Domino ドキュメントおよびビューにアクセスできるようになります。 (選択している差分インポートの方法に応じて) 差分インポートで C++ ネイティブ インターフェイスを使用することも可能です。
 
@@ -454,7 +454,7 @@ Domino には、コネクタで使用できるカスタム属性など、スキ�
 1. [これらの手順](http://publib.boulder.ibm.com/infocenter/domhelp/v8r0/index.jsp?topic=%2Fcom.ibm.help.domino.admin85.doc%2FH_CREATING_A_COPY_OF_THE_DEFAULT_PUBIC_ADDRESS_BOOK_TEMPLATE.html) に従って、Domino Directory テンプレート {PUBNAMES.NTF} のコピーを作成します (既定の IBM Lotus Domino ディレクトリ テンプレートはカスタマイズしないでください)。
 2. Domino Designer で作成した Domino Directory テンプレート {CONTOSO.NTF} テンプレートのコピーを開きます。
 3. 左のウィンドウから [Shared Code]、[Subforms] の順に選択します。
-4. New Subformをクリックします。
+4. [New Subform] をクリックします。
 5. 次を実行し、新しいサブフォームのプロパティを指定します。
    * 新しいサブフォームが開いたら、[Design - Subform Properties] を選択します。
    * [Name] プロパティの横に、TestSubform など、補助オブジェクト クラスの名前を入力します。

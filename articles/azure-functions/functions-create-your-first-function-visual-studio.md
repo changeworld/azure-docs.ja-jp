@@ -14,18 +14,18 @@ ms.devlang: multiple
 ms.topic: quickstart
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 09/06/2017
+ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3d9e7a4eb6d94067af6b5c64e71910694d5a6077
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 016179372d69dc63f5e5226723d87ac6e74b31fd
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="create-your-first-function-using-visual-studio"></a>Visual Studio を使用して初めての関数を作成する
 
-Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、サーバーレス環境でコードを実行できます。
+Azure Functions を使用すると、最初に VM を作成したり Web アプリケーションを発行したりしなくても、[サーバーレス](https://azure.microsoft.com/overview/serverless-computing/)環境でコードを実行できます。
 
 このトピックでは、Visual Studio 2017 Tools for Azure Functions を使用して、"hello world" 関数を作成してローカルでテストする方法を学習します。 その後、関数コードを Azure に発行します。 これらのツールは、Visual Studio 2017 バージョン 15.3 以降の Azure 開発ワークロードの一部として利用できます。
 
@@ -35,12 +35,11 @@ Azure Functions を使用すると、最初に VM を作成したり Web アプ�
 
 このチュートリアルを完了するには、以下をインストールしてください。
 
-* [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/) (**Azure 開発**ワークロードを含む)。
+* [Visual Studio 2017 バージョン 15.3](https://www.visualstudio.com/vs/preview/)以降のバージョン (**Azure 開発**ワークロードを含む)。
 
     ![Visual Studio 2017 と Azure 開発ワークロードのインストール](./media/functions-create-your-first-function-visual-studio/functions-vs-workloads.png)
     
-    >[!NOTE]  
-    >Visual Studio 2017 バージョン 15.3 をインストールするか、このバージョンにアップグレードした後、Visual Studio 2017 Tools for Azure Functions を手動で更新する必要があります。 ツールを更新するには、**[ツール]** メニューで **[拡張機能と更新プログラム]** > **[更新プログラム]** > **[Visual Studio Marketplace]** > **[Azure Functions and Web Jobs Tools]\(Azure Functions と Web ジョブのツール\)** > **[更新]** の順に選択します。 
+[!INCLUDE [Create a project using the Azure Functions](../../includes/functions-vstools-install-note.md)] 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
 

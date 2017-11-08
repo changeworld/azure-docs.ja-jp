@@ -12,13 +12,13 @@ ms.workload: infrastructure-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/02/2017
+ms.date: 10/31/2017
 ms.author: markvi
-ms.openlocfilehash: 50dad848cfbdab7f5b1fff0fcec3b5f754e6ae74
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3030336f5efca5029e0e790372495df11cdc8aeb
+ms.sourcegitcommit: 43c3d0d61c008195a0177ec56bf0795dc103b8fa
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="understand-azure-active-directory-architecture"></a>Azure Active Directory のアーキテクチャの概要
 Azure Active Directory (Azure AD) を使用すると、Azure のサービスやリソースへのアクセスをそのユーザーのために安全に管理することができます。 Azure AD には、必要な ID 管理機能がすべて備わっています。 Azure AD の機能については、「[Azure Active Directory とは](https://docs.microsoft.com/en-us/azure/active-directory/active-directory-whatis)」を参照してください。

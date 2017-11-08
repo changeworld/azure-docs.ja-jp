@@ -15,11 +15,11 @@ ms.workload: big-compute
 ms.date: 07/20/2017
 ms.author: tamram
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: afcc04c80ec15872a22de5d5969a7ef6a583562f
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d1f9951c9cc1b9380e166834afaeb18a4687e2d8
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Batch アプリケーション パッケージを使用したコンピューティング ノードへのアプリケーションのデプロイ
 
@@ -262,11 +262,11 @@ Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 For example:
+Linux ノードでは、形式が若干異なります。 ピリオド (.)、ハイフン (-)、番号記号 (#) は、環境変数ではアンダースコアにフラット化されます。 また、アプリケーション ID の大文字と小文字は保持されることに注意してください。 For example:
 
 ```
 Linux:
-AZ_BATCH_APP_PACKAGE_APPLICATIONID_version
+AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
 `APPLICATIONID` と `version` は、デプロイに指定したアプリケーションとパッケージ バージョンに対応する値です。 たとえば、アプリケーション "*blender*" のバージョン 2.7 が Windows ノードにインストールされるように指定した場合、タスクのコマンド ラインでは、次の環境変数を使ってそのファイルにアクセスします。
@@ -276,11 +276,11 @@ Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-Linux ノードでは、次の形式で環境変数を指定します。
+Linux ノードでは、次の形式で環境変数を指定します。 ピリオド (.)、ハイフン (-)、および番号記号 (#) を、アンダースコアにフラット化し、アプリケーション ID の大文字と小文字を保持します。
 
 ```
 Linux:
-AZ_BATCH_APP_PACKAGE_BLENDER_2_7
+AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
 アプリケーション パッケージをアップロードするときに、コンピューティング ノードにデプロイする既定のバージョンを指定できます。 アプリケーションの既定のバージョンを指定した場合、アプリケーションを参照するときにバージョンのサフィックスを省略できます。 アプリケーションの既定のバージョンは、「[アプリケーションのアップロードと管理](#upload-and-manage-applications)」に示すように、Azure Portal の [アプリケーション] ブレードで指定できます。

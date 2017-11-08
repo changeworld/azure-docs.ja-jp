@@ -12,13 +12,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 10/6/2017
+ms.date: 10/22/2017
 ms.author: raiye
-ms.openlocfilehash: 7d3541e6c437212139553d975fa756084da4f757
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7a42f4b981883881681a7e7ecdb102ee28772c49
+ms.sourcegitcommit: e6029b2994fa5ba82d0ac72b264879c3484e3dd0
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure ゲスト OS リリースと SDK の互換性対応表
 Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報を提供します。 この情報は、ゲスト OS が無効になる前にアップグレード パスを計画する際に役立ちます。 「[Azure ゲスト OS の更新設定][Azure Guest OS Update Settings]」に説明されているゲスト OS の *自動更新*を使用するようにロールを構成している場合は、このページを読むことは必須ではありません。
@@ -106,7 +106,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-4-releases"></a>ファミリ 4 のリリース
 **Windows Server 2012 R2**
 
-.NET 4.0、4.5、4.5.1、4.5.2 をサポートします
+インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > * の付いた日付は変更されることがあります
@@ -133,7 +133,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-3-releases"></a>ファミリ 3 のリリース
 **Windows Server 2012**
 
-.NET 4.0、4.5、4.5.1、4.5.2 をサポートします
+インストールされている .NET framework: 4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > * の付いた日付は変更されることがあります
@@ -160,7 +160,7 @@ Cloud Services 向けの最新の Azure ゲスト OS リリースの最新情報
 ## <a name="family-2-releases"></a>ファミリ 2 のリリース
 **Windows Server 2008 R2 SP1**
 
-.NET 3.5、4.0、4.5、4.5.1、4.5.2 をサポートします
+インストールされている .NET framework: 3.5、4.0、4.5、4.5.1、4.5.2
 
 > [!NOTE]
 > * の付いた日付は変更されることがあります

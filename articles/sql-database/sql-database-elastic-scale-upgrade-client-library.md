@@ -1,6 +1,6 @@
 ---
 title: "最新の Elastic Database クライアント ライブラリへのアップグレード | Microsoft Docs"
-description: "Nuget を使用してアプリとライブラリをアップグレードする"
+description: "Nuget を使用してエラスティック データベース クライアント ライブラリをアップグレードします。"
 services: sql-database
 documentationcenter: 
 manager: jhubbard
@@ -8,20 +8,20 @@ author: ddove
 ms.assetid: 0a546510-76e7-465e-9271-f15ff0cfa959
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/06/2017
 ms.author: ddove
-ms.openlocfilehash: 7e28d128645e856c0efa6e4f78d8f9f36982a76c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 62609f2488a01d9b406c6b730c53ecc9f9b6ea1b
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>最新のエラスティック データベース クライアント ライブラリを使用するためのアプリのアップグレード
-[Elastic Database クライアント ライブラリ](sql-database-elastic-database-client-library.md)の新しいバージョンが NuGet と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。 アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
+[エラスティック データベース クライアント ライブラリ](sql-database-elastic-database-client-library.md) の新しいバージョンが NuGet と Visual Studio の NuGetPackage マネージャーのインターフェイスから利用できるようになりました。 アップグレードにはバグ修正が含まれており、クライアント ライブラリの新機能をサポートします。
 
 **最新バージョン:**[Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)に移動します。
 

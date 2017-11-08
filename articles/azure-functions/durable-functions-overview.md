@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 1ba4d68ba93073ebe3516c4fe886c7845080c534
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04d660d5fdd878788c09e46b078b2e2b043b7dbb
+ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="durable-functions-overview-azure-functions"></a>Durable Functions の概要 (Azure Functions)
 
@@ -130,7 +130,7 @@ Content-Type: application/json
 
 状態は Durable Functions ランタイムによって管理されるため、独自の状態追跡メカニズムを実装する必要はありません。
 
-Durable Functions 拡張機能には実行時間の長いオーケストレーションを管理するためのビルトイン Webhook がありますが、独自の関数トリガー (HTTP、キュー、またはイベント ハブなど) と `orchestrationClient` バインドを使用してこのパターンを自分で実装できます。
+Durable Functions 拡張機能には実行時間の長いオーケストレーションを管理するためのビルトイン Webhook がありますが、独自の関数トリガー (HTTP、キュー、またはイベント ハブなど) と `orchestrationClient` バインドを使用してこのパターンを自分で実装できます。 たとえば、キュー メッセージを使用して終了をトリガーできます。  または、生成されたキーを認証で使用するビルトイン Webhook の代わりに、Azure Active Directory の認証ポリシーで保護された HTTP トリガーを使用できます。 
 
 ```cs
 // HTTP-triggered function to start a new orchestrator function instance.
@@ -161,7 +161,7 @@ public static async Task<HttpResponseMessage> Run(
 
 ![ステートフル シングルトンの図](media/durable-functions-overview/stateful-singleton.png)
 
-Durable Functions はアクター モデルの実装ではありませんが、オーケストレーター関数には、そのランタイムと同じ特性が数多くあります。 たとえば、実行時間が長く (無限の場合もあります)、ステートフルで、信頼でき、シングル スレッドで、ロケーションが透過的で、グローバルにアドレス可能であるなどの特性です。 このことが、別のフレームワークを必要とせずに "アクター" のように振る舞うことができるオーケストレーター関数を有用なものにしています。
+Durable Functions はアクター モデルの実装ではありませんが、オーケストレーター関数には、そのランタイムと同じ特性が数多くあります。 たとえば、実行時間が長く (無限の場合もあります)、ステートフルで、信頼でき、シングル スレッドで、ロケーションが透過的で、グローバルにアドレス可能であるなどの特性です。 このため、オーケストレーター関数は "アクター" のようなシナリオで役立ちます。
 
 通常の関数はステートレスであるため、ステートフル シングルトン パターンの実装には不向きです。 しかし、Durable Functions 拡張機能を使用すれば、ステートフル シングルトン パターンを比較的簡単に実装できます。 次のコードは、カウンターを実装するシンプルなオーケストレーター関数です。
 

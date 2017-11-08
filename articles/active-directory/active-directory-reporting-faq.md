@@ -11,35 +11,47 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/22/2017
+ms.date: 10/12/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: accf292f70bf0eafdefc00c3feeaf8e346605401
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: faee3bc9b0b1a10a48a514d830af5045cb047e02
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Azure Active Directory レポートに関する FAQ
 
-この記事では、Azure Active Directory レポートに関してよく寄せられる質問 (FAQ) に対する回答を示します。  
-詳細については、[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)に関する記事を参照してください。 
+この記事では、Azure Active Directory (Azure AD) レポートに関してよく寄せられる質問に対する回答を示します。 詳細については、「[Azure Active Directory レポート](active-directory-reporting-azure-portal.md)」をご覧ください。 
+
+**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによって、レポート システムに Azure AD の監査レポートと統合されたアプリケーションの使用状況レポートを取り込んでいます。何に切り替える必要がありますか。**
+
+**A:** [API リファレンス ドキュメント](https://developer.microsoft.com/graph/)を参照して、新しい API を使用して[アクティビティ レポート](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-api-getting-started-azure-portal)にアクセスする方法をご確認ください。 このエンドポイントには 2 つのレポート (監査とサインイン) があり、旧 API エンドポイントで取得したすべてのデータが提供されます。 この新しいエンドポイントには、アプリの使用状況、デバイスの使用状況、およびユーザー サインイン情報の取得に使用できる Azure AD Premium ライセンスによるサインイン レポートもあります。
+
+
+--- 
+
+**Q: https://graph.windows.net/&lt;tenant-name&gt;/reports/ エンドポイント API を使用して、プログラムによって、レポート システムに Azure AD セキュリティ レポート (漏洩した資格情報や匿名 IP アドレスからのサインインなどの、特定の種類の検出) を取り込んでいます。何に切り替える必要がありますか。**
+
+**A:** [Identity Protection リスク イベント API](active-directory-identityprotection-graph-getting-started.md) をご利用いただくと、Microsoft Graph を通じてセキュリティの検出にアクセスできます。 この新しい形式では、高度なフィルター処理、フィールドの選択など、データをクエリできる方法の柔軟性が高まりました。また、リスク イベントが 1 つのタイプに標準化されるため、SIEM などのデータ コレクション ツールに簡単に統合できます。 データの形式が異なるため、古いクエリの代わりに新しいクエリを使うことはできません。 ただし、新しい API は O365 や Azure AD のような API 向けの Microsoft 標準である [Microsoft Graph](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/identityriskevent) を使用します。 そのため、要した作業により、既存の MS Graph への投資が拡大され、この新しい標準プラットフォームへの移行開始が促進されます。
+
+--- 
 
 **Q: Azure Portal でのアクティビティ ログ (監査およびサインイン) のデータ保持期間はどのぐらいですか。** 
 
-**A:** 無料でご利用のお客様は 7 日間です。Azure AD Premium 1 または Premium 2 ライセンスに切り替えると、データに最大で 30 日間アクセスできるようになります。 保持期間の詳細については、「[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)」をご覧ください。
+**A:** 無料でご利用のお客様は 7 日間です。Azure AD Premium 1 または Premium 2 ライセンスを購入されると、データに最大で 30 日間アクセスできます。 レポートの保持の詳細については、「[Azure Active Directory レポートの保持ポリシー](active-directory-reporting-retention.md)」をご覧ください。
 
 --- 
 
 **Q: 自分のタスクを完了した後、アクティビティ データが表示されるまでどのぐらい時間がかかりますか。**
 
-**A:** 監査アクティビティ ログの待機時間は 15 分から 1 時間です。 サインイン アクティビティ ログの待機時間はほとんどのレコードで 15 分以上で、一部のレコードでは最大 2 時間です。
+**A:** 監査アクティビティ ログの待機時間は 15 分から 1 時間です。 サインイン アクティビティ ログは 15 分から、一部のレコードについては最大で 2 時間かかることがあります。
 
 ---
 
-**Q: Azure Portal でアクティビティ ログを確認、および API を通じてデータを取得するにはグローバル管理者である必要がありますか。**
+**Q: Azure Portal へのアクティビティ サインインを確認、および API を通じてデータを取得するにはグローバル管理者である必要がありますか。**
 
-**A:** いいえ。 **セキュリティ閲覧者**、**セキュリティ管理者**、または**グローバル管理者**であれば、Azure Portal でレポート データを確認でき、また API を通じてアクセスすることもできます。
+**A:** いいえ。 **セキュリティ閲覧者**、**セキュリティ管理者**、または**グローバル管理者**であれば、Azure Portal で、または API を通じてレポート データを取得できます。
 
 ---
 

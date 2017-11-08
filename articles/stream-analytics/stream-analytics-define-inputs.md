@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 07/05/2017
 ms.author: samacha
-ms.openlocfilehash: f5a605e0b0809c27feedc98390175fd383a371eb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 652137cf7a41f8d90a56aebe9f82fd37d5e4683d
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="data-connection-learn-about-data-stream-inputs-from-events-to-stream-analytics"></a>データ接続: Stream Analytics に対するイベントのデータ ストリーム入力の概要
 Stream Analytics ジョブに対するデータ接続は、データ ソースからのイベントのデータ ストリームです。これはジョブの "*入力*" と呼ばれます。 Stream Analytics は、Azure データ ストリーム ソース ([Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)、[Azure IoT Hub](https://azure.microsoft.com/services/iot-hub/)、[Azure Blob Storage](https://azure.microsoft.com/services/storage/blobs/) など) と高度に統合されています。 分析ジョブと同じ Azure サブスクリプションまたは異なるサブスクリプションの入力ソースを指定できます。
@@ -37,7 +37,7 @@ Stream Analytics は、"*参照データ*" と呼ばれる入力もサポート�
 
 ## <a name="compression"></a>圧縮
 
-Azure Stream Analytics は、すべてのデータ ストリーム入力ソース (イベント ハブ、IoT Hub、Blob Storage) に圧縮機能をもうすぐデプロイするようになります。 この機能は、新しいドロップダウン リスト オプションを Azure Portal の **[新しい入力]** ブレードに追加して、オプションでデータ ストリームを圧縮できるようにします。 現在サポートされている圧縮の種類は、[なし]、[GZip]、[Deflate] です。 
+Azure Stream Analytics では、すべてのデータ ストリーム入力ソース (Event Hubs、IoT Hub、Blob Storage) にわたる圧縮がサポートされています。 この機能は、新しいドロップダウン リスト オプションを Azure Portal の **[新しい入力]** ブレードに追加して、オプションでデータ ストリームを圧縮できるようにします。 現在サポートされている圧縮の種類は、[なし]、[GZip]、[Deflate] です。 
 
 圧縮は、Avro シリアル化と一緒にはサポートされず、参照データには適用できません。 
 
@@ -81,6 +81,10 @@ SELECT
     PartitionId
 FROM Input
 ````
+
+> [!NOTE]
+> IoT Hub ルートのエンドポイントとして Event Hub を使用する場合は、[GetMetadataPropertyValue 関数](https://msdn.microsoft.com/en-us/library/azure/mt793845.aspx)を使用して IoT Hub メタデータにアクセスすることができます。
+> 
 
 ## <a name="create-data-stream-input-from-iot-hub"></a>IoT Hub からデータ ストリーム入力を作成する
 Azure IoT Hub は、IoT シナリオ向けに最適化されたスケーラブルな発行/サブスクライブ イベント インジェスターです。

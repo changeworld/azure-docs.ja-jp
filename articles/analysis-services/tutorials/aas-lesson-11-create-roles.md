@@ -4,7 +4,7 @@ description: "この Azure Analysis Services チュートリアル プロジェ�
 services: analysis-services
 documentationcenter: 
 author: Minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -13,13 +13,13 @@ ms.devlang: NA
 ms.topic: get-started-article
 ms.tgt_pltfrm: NA
 ms.workload: na
-ms.date: 09/20/2017
+ms.date: 11/01/2017
 ms.author: owend
-ms.openlocfilehash: 0dfcb9d9fc8cd32f95c5097ec653864364b27bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1496e4523154ba791bf55a0708a1a77132f5257c
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="lesson-11-create-roles"></a>レッスン 11: ロールを作成する
 

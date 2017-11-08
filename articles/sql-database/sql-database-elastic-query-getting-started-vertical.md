@@ -8,17 +8,17 @@ author: torsteng
 ms.assetid: e5b44b10-c432-4f96-b20e-08615ff4d5dd
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/23/2016
 ms.author: torsteng
-ms.openlocfilehash: 17158c4960e9ba9251524659c90af9aec1316774
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: ca715c0ef41ccb4aed2924898d7729bed659b0ca
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="get-started-with-cross-database-queries-vertical-partitioning-preview"></a>クロスデータベース クエリの概要 (列方向のパーティション分割) (プレビュー)
 Azure SQL Database 用の エラスティック データベース クエリ (プレビュー) を使用すると、1 つの接続ポイントで複数のデータベースにまたがる T-SQL クエリを実行することができます。 このトピックは [垂直にパーティション分割されたデータベース](sql-database-elastic-query-vertical-partitioning.md)に適用されます。  

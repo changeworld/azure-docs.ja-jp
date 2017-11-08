@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2017
+ms.date: 10/15/2017
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0e49539e0ca3fb841f282b988bdf0db12068ebd5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cbacf8b73f1eea520000f9406044b072fe36235f
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="move-data-from-odbc-data-stores-using-azure-data-factory"></a>Azure Data Factory を使用して ODBC データ ストアからデータを移動する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -67,8 +67,8 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
 | プロパティ | 説明 | 必須 |
 | --- | --- | --- |
 | type |type プロパティを **OnPremisesOdbc** |はい |
-| connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 |はい |
-| 資格情報 |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: “Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;”. |いいえ |
+| connectionString |接続文字列の非アクセス資格情報部分と省略可能な暗号化された資格情報。 次のセクションの例を参照してください。 <br/><br/>`"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` のようなパターンで接続文字列を指定するか、ゲートウェイ マシンに設定したシステム DSN (データ ソース名) を `"DSN=<name of the DSN>;"` で使用することができます (その場合も、リンクされたサービスの資格情報部分をそれに応じて指定する必要があります)。 |あり |
+| 資格情報 |ドライバー固有のプロパティ値の形式で指定された接続文字列のアクセス資格情報の部分。 例: `"Uid=<user ID>;Pwd=<password>;RefreshToken=<secret refresh token>;"`. |いいえ |
 | authenticationType |ODBC データ ストアへの接続に使用される認証の種類です。 Anonymous と Basic のいずれかの値になります。 |はい |
 | username |基本認証を使用している場合は、ユーザー名を指定します。 |なし |
 | パスワード |ユーザー名に指定したユーザー アカウントのパスワードを指定します。 |いいえ |
@@ -367,7 +367,7 @@ Data Management Gateway とは別に、ゲートウェイ マシン上にデー�
         "type": "OnPremisesOdbc",
         "typeProperties":
         {
-            "connectionString": "DSN=<name of the GE Historian store>",
+            "connectionString": "DSN=<name of the GE Historian store>;",
             "gatewayName": "<gateway name>",
             "authenticationType": "Basic",
             "userName": "<user name>",

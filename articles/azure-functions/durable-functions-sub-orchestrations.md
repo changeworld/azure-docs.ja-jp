@@ -14,11 +14,11 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 6817d2e39e2a99ef29f5e47f876b9f0ce7e6196e
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5184bef81d1cd6ca7b41c1634def24031a4a5942
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) でのサブオーケストレーション
 
@@ -66,7 +66,7 @@ public static async Task ProvisionNewDevices(
     var provisioningTasks = new List<Task>();
     foreach (string deviceId in deviceIds)
     {
-        Task provisionTask = ctx.CallSubOrchestratorAsync("DeviceProvisioningOrchestration");
+        Task provisionTask = ctx.CallSubOrchestratorAsync("DeviceProvisioningOrchestration", deviceId);
         provisioningTasks.Add(provisionTask);
     }
 

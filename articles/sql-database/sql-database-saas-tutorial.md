@@ -10,17 +10,17 @@ editor:
 ms.assetid: 
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/26/2017
 ms.author: sstein
-ms.openlocfilehash: 2e6816ce2740b0325c6f59338f0365c6b40539f3
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: f624485d32901abb5f0d01c86fc30ddaaae261a3
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-and-explore-a-multi-tenant-application-that-uses-azure-sql-database---wingtip-saas"></a>Azure SQL Database を使用するマルチテナント アプリケーションのデプロイと操作 - Wingtip SaaS
 

@@ -31,3 +31,5 @@ Cloudyn による Azure コスト管理では、すべてのクラウド リソ�
 リソースの種類を右クリックし、**[コスト エンティティ]** を選択して、コスト エンティティと、リソースを消費したサービスを表示します。 DevOps の VM と Worker サービスに、この例では、それぞれ $486.60 と $435.71 費やしました。 両方の合計は $922 です。
 
 ![コスト エンティティとサービス](./media/cost-management-create-account-view-data/actual-cost-05.png)
+
+クラウド請求データの表示に関するチュートリアル ビデオは、「[Analyzing your cloud billing data with Azure Cost Management Powered by Cloudyn](https://youtu.be/G0pvI3iLH-Y)」(Cloudyn による Azure Cost Management を使用したクラウドの課金データの分析) をご覧ください。

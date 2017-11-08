@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage
 ms.date: 07/12/2017
 ms.author: tamram
-ms.openlocfilehash: abaad01bbf7a11ad078c79d7c192ef3f84812178
-ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
+ms.openlocfilehash: 805b0eee46846345ee1f33faf0c28393c3e8ebb1
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/19/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-storage-scalability-and-performance-targets"></a>Azure Storage のスケーラビリティおよびパフォーマンスのターゲット
 ## <a name="overview"></a>概要
@@ -76,7 +76,7 @@ Azure Files と Azure File Sync のスケールおよびパフォーマンス �
 ## <a name="see-also"></a>関連項目
 * [Storage の料金詳細](https://azure.microsoft.com/pricing/details/storage/)
 * [Azure サブスクリプションとサービスの制限、クォータ、制約](../../azure-subscription-service-limits.md)
-* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../storage-premium-storage.md)
+* [Premium Storage: Azure 仮想マシン ワークロード向けの高パフォーマンス ストレージ](../../virtual-machines/windows/premium-storage.md)
 * [Azure Storage のレプリケーション](../storage-redundancy.md)
 * [Microsoft Azure Storage のパフォーマンスとスケーラビリティに対するチェック リスト](../storage-performance-checklist.md)
 * [Microsoft Azure Storage: 強力な整合性を備えた高可用クラウド ストレージ サービス](http://blogs.msdn.com/b/windowsazurestorage/archive/2011/11/20/windows-azure-storage-a-highly-available-cloud-storage-service-with-strong-consistency.aspx)

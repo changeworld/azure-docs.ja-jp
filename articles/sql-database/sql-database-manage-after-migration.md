@@ -12,17 +12,17 @@ ms.custom: migrate
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: Inactive
 ms.date: 10/14/2016
 ms.author: Joe.Sack
 ms.suite: SQL
 ms.prod_service: sql-database
 ms.component: management
-ms.openlocfilehash: 95e364c289aac394e1b3824533288b45725022a8
-ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
+ms.openlocfilehash: 663ab4aaf229f8a88d1116b34ccb74450aa66c9d
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/16/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="how-should-i-manage-my-azure-sql-database-after-migration"></a>移行後はどのように Azure SQL Database を管理すればよいですか?
 

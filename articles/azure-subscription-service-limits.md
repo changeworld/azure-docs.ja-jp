@@ -1,4 +1,4 @@
-﻿---
+---
 title: "Azure サブスクリプションの制限とクォータ | Microsoft Docs"
 description: "一般的な Azure サブスクリプションとサービスの制限、クォータ、制約の一覧を示します。 制限を引き上げる方法と、最大値に関する情報も記載されています。"
 services: 
@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/29/2017
 ms.author: byvinyal
-ms.openlocfilehash: e2c67bed2162773156ebf1f0f99593aeb2adf019
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2cdf7ad766fe47f2d2848815860ad545b43aec72
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Azure サブスクリプションとサービスの制限、クォータ、制約
 このドキュメントでは、最も一般的な Microsoft Azure の制限を一覧表示しています。これはクォータと呼ばれることもあります。 現時点では、すべての Azure サービスをカバーするものではありません。 今後、プラットフォームを広くカバーするように一覧を拡大し、更新していく予定です。
@@ -140,9 +140,28 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 
 ### <a name="storage-limits"></a>ストレージの制限
 ストレージ アカウントの上限の詳細については、「 [Azure Storage のスケーラビリティおよびパフォーマンスのターゲット](storage/common/storage-scalability-targets.md)」を参照してください。
+
 <!--like # storage accts --> 
-#### <a name="storage-service-limits"></a>Storage サービスの制限
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
+
+[!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
+
+#### <a name="azure-blob-storage-limits"></a>Azure BLOB ストレージの制限
+[!INCLUDE [storage-blob-scale-targets](../includes/storage-blob-scale-targets.md)]
+
+#### <a name="azure-files-limits"></a>Azure Files の制限
+Azure Files の制限の詳細については、「[Azure Files のスケーラビリティおよびパフォーマンスのターゲット](storage/files/storage-files-scale-targets.md)」を参照してください。
+
+[!INCLUDE [storage-files-scale-targets](../includes/storage-files-scale-targets.md)]
+
+#### <a name="azure-file-sync-limits"></a>Azure File Sync の制限
+[!INCLUDE [storage-sync-files-scale-targets](../includes/storage-sync-files-scale-targets.md)]
+
+#### <a name="azure-queue-storage-limits"></a>Azure Queue Storage の制限
+[!INCLUDE [storage-queues-scale-targets](../includes/storage-queues-scale-targets.md)]
+
+#### <a name="azure-table-storage-limits"></a>Azure Table Storage の制限
+[!INCLUDE [storage-tables-scale-targets](../includes/storage-tables-scale-targets.md)]
 
 <!-- conceptual info about disk limits -- applies to unmanaged and managed -->
 #### <a name="virtual-machine-disk-limits"></a>仮想マシン ディスクの制限 
@@ -159,9 +178,6 @@ Resource Manager 要求の処理制限については、[Throttling Resource Man
 [!INCLUDE [azure-storage-limits-vm-disks-standard](../includes/azure-storage-limits-vm-disks-standard.md)]
 
 [!INCLUDE [azure-storage-limits-vm-disks-premium](../includes/azure-storage-limits-vm-disks-premium.md)]
-
-#### <a name="storage-resource-provider-limits"></a>ストレージ リソース プロバイダーの制限
-[!INCLUDE [azure-storage-limits-azure-resource-manager](../includes/azure-storage-limits-azure-resource-manager.md)]
 
 ### <a name="cloud-services-limits"></a>Cloud Services の制限
 [!INCLUDE [azure-cloud-services-limits](../includes/azure-cloud-services-limits.md)]
@@ -289,4 +305,3 @@ SQL Database の制限については、「 [SQL Database のリソース制限]
 [Azure Virtual Machines および Cloud Services のサイズ](virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 
 [Cloud Services のサイズ](cloud-services/cloud-services-sizes-specs.md)
-

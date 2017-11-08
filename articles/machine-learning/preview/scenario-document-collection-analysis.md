@@ -9,11 +9,11 @@ ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 669fc7a9ec5dfb446ef2755919c498fe6f60c9df
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5ef1589e28c01d750641873d3c8482f61d90a887
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="document-collection-analysis"></a>ドキュメント コレクションの分析
 
@@ -82,17 +82,17 @@ ms.lasthandoff: 10/11/2017
 
 データ ファイルには、9 個のデータ フィールドがあります。 データ フィールドの名前と説明は以下のとおりです。
 
-| フィールド名 | 型 | Description | 欠損値を含む |
+| フィールド名 | 型 | 説明 | 欠損値を含む |
 |------------|------|-------------|---------------|
 | `ID` | String | 法案/決議の ID。 このフィールドの形式は、[法案の種類][番号]-[会議] です。 たとえば、"hconres1-93" は、法案の種類は "hconres" (両院一致決議を表します。詳細については[こちらのドキュメント](https://github.com/unitedstates/congress/wiki/bills#basic-information)を参照してください)、法案番号は "1"、会議番号は "93" です。 | いいえ |
 | `Text` | String | 法案/決議の内容。 | いいえ |
 | `Date` | String | 法案/決議が最初に提案された日付。 'yyyy-mm-dd' の形式です。 | いいえ |
-| `SponsorName` | String | 法案/決議を提案した主要起草者の名前。 | あり |
-| `Type` | String | 主要起草者の肩書きの種類。'rep' (下院議員) または 'sen' (上院議員) です。 | あり |
-| `State` | String | 主要起草者の状態。 | あり |
-| `District` | 整数 | 起草者の肩書きが下院議員の場合は、主要起草者の地域番号。 | あり |
-| `Party` | String | 主要起草者の党。 | あり |
-| `Subjects` | String | 米国議会図書館が法案に累積的に追加している主題語。 主題語はコンマ区切りで連結されています。 主題語は、米国議会図書館の人員が記入しており、法案に関する情報が最初に公開されるときは、通常存在しません。 また、主題語は常に追加される可能性があります。 そのため、法案の有効期間が終了するまでに、一部の主題語は関連しなくなることがあります。 | あり |
+| `SponsorName` | String | 法案/決議を提案した主要起草者の名前。 | はい |
+| `Type` | String | 主要起草者の肩書きの種類。'rep' (下院議員) または 'sen' (上院議員) です。 | はい |
+| `State` | String | 主要起草者の状態。 | はい |
+| `District` | 整数 | 起草者の肩書きが下院議員の場合は、主要起草者の地域番号。 | はい |
+| `Party` | String | 主要起草者の党。 | はい |
+| `Subjects` | String | 米国議会図書館が法案に累積的に追加している主題語。 主題語はコンマ区切りで連結されています。 主題語は、米国議会図書館の人員が記入しており、法案に関する情報が最初に公開されるときは、通常存在しません。 また、主題語は常に追加される可能性があります。 そのため、法案の有効期間が終了するまでに、一部の主題語は関連しなくなることがあります。 | はい |
 
 ## <a name="scenario-structure"></a>シナリオの構造
 
@@ -100,9 +100,9 @@ ms.lasthandoff: 10/11/2017
 
 この例のファイルは、次のように整理されます。
 
-| ファイル名 | 型 | Description |
+| ファイル名 | 型 | 説明 |
 |-----------|------|-------------|
-| `aml_config` | フォルダー | Azure Machine Learning Workbench 構成フォルダー。詳細な実験の実行構成については、[こちらのドキュメント](./experiment-execution-configuration-reference.md)を参照してください |
+| `aml_config` | フォルダー | Azure Machine Learning Workbench 構成フォルダー。詳細な実験の実行構成については、[こちらのドキュメント](./experimentation-service-configuration-reference.md)を参照してください |
 | `Code` | フォルダー | Python スクリプトと Python パッケージを保存するために使用されるコード フォルダー |
 | `Data` | フォルダー | 中間ファイルを保存するために使用されるデータ フォルダー |
 | `notebooks` | フォルダー | Jupyter ノートブックのフォルダー |
@@ -120,6 +120,7 @@ ms.lasthandoff: 10/11/2017
 | `notebooks/3_Topic_Model_Training.ipynb` | iPython Notebook | LDA トピック モデルのトレーニング |
 | `notebooks/4_Topic_Model_Summarization.ipynb` | iPython Notebook | トレーニングされた LDA トピック モデルに基づいてドキュメント コレクションの内容を要約する |
 | `notebooks/5_Topic_Model_Analysis.ipynb` | iPython Notebook | テキスト ドキュメントのコレクションのトピックの内容を分析し、トピックの情報を、ドキュメント コレクションに関連付けられた他のメタデータと関連付ける |
+| `notebooks/6_Interactive_Visualization.ipynb` | iPython Notebook | 学習したトピックモデルの対話型の視覚化 |
 | `notebooks/winprocess.py` | Python ファイル | ノートブックに使用されるマルチプロセッシングの Python スクリプト |
 | `README.md` | マークダウン ファイル | README マークダウン ファイル |
 
@@ -224,6 +225,8 @@ perplex = topicmodeler.EvaluatePerplexity(lda)
 `4_Topic_Model_Summarization.ipynb` は、トレーニングされた LDA トピック モデルに基づいてドキュメントの内容を要約する方法を示しています。 要約は、手順 3 で学習した LDA トピック モデルに適用されます。 これは、ドキュメントの純度測定のトピックを使用して、トピックの重要度または品質を測定する方法を示します。 この純度測定では、出現するドキュメントを特徴付ける潜在的なトピックの方が、多数のドキュメントに弱く分散している潜在的なトピックよりも意味的に重要であると想定しています。 この概念は、「[Latent Topic Modeling for Audio Corpus Summarization](http://people.csail.mit.edu/hazen/publications/Hazen-Interspeech11.pdf)」ドキュメントで紹介されました。
 
 ノートブック `5_Topic_Model_Analysis.ipynb` は、テキスト ドキュメントのコレクションのトピックの内容を分析し、トピックの情報を、ドキュメント コレクションに関連付けられた他のメタデータと関連付ける方法を示しています。 このノートブックには、ユーザーが学習したトピックとドキュメント コレクションの理解を深められるように、いくつかのプロットが導入されています。
+
+ノートブック `6_Interactive_Visualization.ipynb` は、学習したトピック モデルを対話的に視覚化する方法を示します。 4 つの対話型視覚化タスクが含まれています。
 
 ## <a name="conclusion"></a>まとめ
 

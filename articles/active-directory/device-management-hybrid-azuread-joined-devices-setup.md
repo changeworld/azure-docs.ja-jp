@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/07/2017
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 3325aa48db36426a8cf1c9859390c357267ee5fa
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: c43d6bcd62690fe41599888b06ee9828c8e40fc0
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="how-to-configure-hybrid-azure-active-directory-joined-devices"></a>ハイブリッド Azure Active Directory 参加済みデバイスの構成方法
 
@@ -294,8 +294,7 @@ Windows Server 2008 またはそれ以前のバージョンが実行されてい
 
 上記の要求では、
 
-- `$<domain>` は、AD FS サービスの URL です。
-- `<verified-domain-name>` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。
+- `<verified-domain-name>` は、Azure AD で検証済みドメイン名のいずれかに置き換える必要があるプレースホルダーです。 たとえば、Value = "http://contoso.com/adfs/services/trust/" などと指定します。
 
 
 

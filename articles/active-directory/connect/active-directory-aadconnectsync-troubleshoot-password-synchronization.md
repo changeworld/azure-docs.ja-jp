@@ -14,14 +14,22 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2017
 ms.author: billmath
-ms.openlocfilehash: 33fa6a8867764975a57b8727e7705529d1d7506a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d3bb2883257896c72cc616ea7476f3d25ee6aa4b
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="troubleshoot-password-synchronization-with-azure-ad-connect-sync"></a>Azure AD Connect Sync を使用したパスワード同期のトラブルシューティング
-このトピックでは、パスワード同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。 Azure Active Directory (Azure AD) Connect バージョン 1.1.524.0 以降のデプロイについては、パスワード同期の問題のトラブルシューティングに使用できる診断コマンドレットが用意されています。
+このトピックでは、パスワード同期の問題のトラブルシューティングを行う手順を示します。 パスワードが想定どおりに同期しない場合、そのパスワードが、ユーザーのサブセット、またはすべてのユーザーを対象している可能性があります。
+
+Azure Active Directory (Azure AD) Connect バージョン 1.1.614.0 以降のデプロイについては、ウィザードのトラブルシューティング タスクを使用して、パスワード同期の問題のトラブルシューティングを行ってください。
+
+* パスワードが同期されない問題がある場合は、「[パスワードが同期されない: トラブルシューティング タスクによるトラブルシューティング](#no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task)」を参照してください。
+
+* 個々のオブジェクトに問題がある場合は、「[1 つのオブジェクトがパスワードを同期していない: トラブルシューティング タスクによるトラブルシューティング](#one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task)」を参照してください。
+
+バージョン 1.1.524.0 以降のデプロイについては、パスワード同期の問題のトラブルシューティングに使用できる診断コマンドレットが用意されています。
 
 * パスワードが同期されない問題がある場合は、「[パスワードが同期されない: 診断コマンドレットによるトラブルシューティング](#no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet)」を参照してください。
 
@@ -33,25 +41,33 @@ ms.lasthandoff: 10/11/2017
 
 * 個々のオブジェクトに問題がある場合は、「[1 つのオブジェクトがパスワードを同期していない: 手動によるトラブルシューティング手順](#one-object-is-not-synchronizing-passwords-manual-troubleshooting-steps)」を参照してください。
 
-## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>パスワードが同期されない: 診断コマンドレットによるトラブルシューティング
-パスワードが同期されない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
+
+
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-troubleshooting-task"></a>パスワードが同期されない: トラブルシューティング タスクによるトラブルシューティング
+トラブルシューティング タスクを使用して、パスワードが同期されない理由を確認できます。
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
+> トラブルシューティング タスクは、Azure AD Connect バージョン 1.1.614.0 以降のみで使用できます。
 
-### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+### <a name="run-the-troubleshooting-task"></a>トラブルシューティング タスクを実行する
 パスワードが同期されない問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
 
 2. `Set-ExecutionPolicy RemoteSigned` または `Set-ExecutionPolicy Unrestricted` を実行します。
 
-3. `Import-Module ADSyncDiagnostics` を実行します。
+3. Azure AD Connect ウィザードを開始します。
 
-4. `Invoke-ADSyncDiagnostics -PasswordSync` を実行します。
+4. **[追加のタスク]** ページに移動し、**[トラブルシューティング]** を選択して **[次へ]** をクリックします。
 
-### <a name="understand-the-results-of-the-cmdlet"></a>コマンドレットの結果を理解する
-診断コマンドレットでは、次のチェックが実行されます。
+5. トラブルシューティング ページで、**[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
+
+6. メイン メニューで、**[パスワード同期のトラブルシューティング]\(Troubleshoot Password Synchronization\)** を選択します。
+
+7. サブ メニューで、**[Password Synchronization does not work at all]\(パスワード同期がまったく機能しない\)** を選択します。
+
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
+トラブルシューティング タスクでは、次のチェックが実行されます。
 
 * パスワード同期機能が Azure AD テナントに対して有効になっていることを検証します。
 
@@ -73,7 +89,7 @@ ms.lasthandoff: 10/11/2017
 
 ![パスワード同期の診断出力](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalgeneral.png)
 
-このセクションの残りの部分では、コマンドレットによって返される具体的な結果と、それに対応する問題について説明します。
+このセクションの残りの部分では、タスクによって返される具体的な結果と、それに対応する問題について説明します。
 
 #### <a name="password-synchronization-feature-isnt-enabled"></a>パスワード同期機能が有効になっていない
 Azure AD Connect ウィザードを使用してパスワード同期を有効にしていなかった場合は、次のエラーが返されます。
@@ -100,32 +116,34 @@ Azure AD Connect サーバーがステージング モードである場合、�
 
 ![正しくない資格情報](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phsglobalaccountincorrectcredential.png)
 
-## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>1 つのオブジェクトがパスワードを同期していない: 診断コマンドレットによるトラブルシューティング
-1 つのオブジェクトがパスワードを同期していない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
+
+
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-troubleshooting-task"></a>1 つのオブジェクトがパスワードを同期していない: トラブルシューティング タスクによるトラブルシューティング
+
+トラブルシューティング タスクを使用して、1 つのオブジェクトがパスワードを同期していない理由を確認できます。
 
 > [!NOTE]
-> `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
+> トラブルシューティング タスクは、Azure AD Connect バージョン 1.1.614.0 以降のみで使用できます。
 
 ### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
-パスワードが同期されない問題のトラブルシューティングを行うには:
+特定のユーザー オブジェクトに関する問題のトラブルシューティングを行うには:
 
 1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
 
 2. `Set-ExecutionPolicy RemoteSigned` または `Set-ExecutionPolicy Unrestricted` を実行します。
 
-3. `Import-Module ADSyncDiagnostics` を実行します。
+3. Azure AD Connect ウィザードを開始します。
 
-4. 次のコマンドレットを実行します。
-   ```
-   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
-   ```
-   For example:
-   ```
-   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
-   ```
+4. **[追加のタスク]** ページに移動し、**[トラブルシューティング]** を選択して **[次へ]** をクリックします。
 
-### <a name="understand-the-results-of-the-cmdlet"></a>コマンドレットの結果を理解する
-診断コマンドレットでは、次のチェックが実行されます。
+5. トラブルシューティング ページで、**[起動]** をクリックして PowerShell でトラブルシューティング メニューを起動します。
+
+6. メイン メニューで、**[パスワード同期のトラブルシューティング]\(Troubleshoot Password Synchronization\)** を選択します。
+
+7. サブ メニューで、**[Password is not synchronized for a specific user account]\(特定のユーザー アカウントのパスワードが同期されない\)** を選択します。
+
+### <a name="understand-the-results-of-the-troubleshooting-task"></a>トラブルシューティング タスクの結果を理解する
+トラブルシューティング タスクでは、次のチェックが実行されます。
 
 * Active Directory コネクタ スペース、メタバース、および Azure AD コネクタ スペースで、Active Directory オブジェクトの状態を調べます。
 
@@ -153,6 +171,52 @@ Azure AD テナントに対応するオブジェクトがないため、この�
 既定では、Azure AD Connect では、パスワード同期の試行結果が 7 日間保存されます。 選択した Active Directory オブジェクトについて使用できる結果がない場合は、次の警告が返されます。
 
 ![1 つのオブジェクトの診断出力 - パスワード同期履歴がない](./media/active-directory-aadconnectsync-troubleshoot-password-synchronization/phssingleobjectnohistory.png)
+
+
+
+## <a name="no-passwords-are-synchronized-troubleshoot-by-using-the-diagnostic-cmdlet"></a>パスワードが同期されない: 診断コマンドレットによるトラブルシューティング
+パスワードが同期されない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
+
+> [!NOTE]
+> `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
+
+### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+パスワードが同期されない問題のトラブルシューティングを行うには:
+
+1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
+
+2. `Set-ExecutionPolicy RemoteSigned` または `Set-ExecutionPolicy Unrestricted` を実行します。
+
+3. `Import-Module ADSyncDiagnostics` を実行します。
+
+4. `Invoke-ADSyncDiagnostics -PasswordSync` を実行します。
+
+
+
+## <a name="one-object-is-not-synchronizing-passwords-troubleshoot-by-using-the-diagnostic-cmdlet"></a>1 つのオブジェクトがパスワードを同期していない: 診断コマンドレットによるトラブルシューティング
+1 つのオブジェクトがパスワードを同期していない理由を確認するには、`Invoke-ADSyncDiagnostics` コマンドレットを使用できます。
+
+> [!NOTE]
+> `Invoke-ADSyncDiagnostics` コマンドレットは、Azure AD Connect バージョン 1.1.524.0 以降のみで使用できます。
+
+### <a name="run-the-diagnostics-cmdlet"></a>診断コマンドレットを実行する
+ユーザーのパスワードが同期されない問題のトラブルシューティングを行うには:
+
+1. **[管理者として実行]** オプションを指定して、Azure AD Connect サーバーで新しい Windows PowerShell セッションを開きます。
+
+2. `Set-ExecutionPolicy RemoteSigned` または `Set-ExecutionPolicy Unrestricted` を実行します。
+
+3. `Import-Module ADSyncDiagnostics` を実行します。
+
+4. 次のコマンドレットを実行します。
+   ```
+   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName <Name-of-AD-Connector> -DistinguishedName <DistinguishedName-of-AD-object>
+   ```
+   For example:
+   ```
+   Invoke-ADSyncDiagnostics -PasswordSync -ADConnectorName "contoso.com" -DistinguishedName "CN=TestUserCN=Users,DC=contoso,DC=com"
+   ```
+
 
 
 ## <a name="no-passwords-are-synchronized-manual-troubleshooting-steps"></a>パスワードが同期されない: 手動によるトラブルシューティング手順

@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/10/2017
+ms.date: 10/13/2017
 ms.author: helaw
-ms.openlocfilehash: b3f8768b612f476485cb45cfc47b8b7ab0f00e96
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: 5ee2f8164d13e61f9a43abcbda729298f2168518
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Azure Stack Development Kit のリリース ノート
 
 *適用対象: Azure Stack 開発キット*
 
-以下のリリース ノートでは、Azure Stack Development Kit の新機能と既知の問題に関する情報を提供します。  実行しているバージョンが不明な場合は、[ポータルを使用して確認](azure-stack-updates.md#determine-the-current-version)できます。
+以下のリリース ノートでは、Azure Stack Development Kit の新機能と既知の問題に関する情報を提供します。 実行しているバージョンが不明な場合は、[ポータルを使用して確認](azure-stack-updates.md#determine-the-current-version)できます。
 
 ## <a name="release-build-201709283"></a>リリース ビルド 20170928.3
 
@@ -32,16 +32,12 @@ ms.lasthandoff: 10/11/2017
 
 #### <a name="powershell"></a>PowerShell
 
-Azure PowerShell 1.2.11 はまだ使用できませんが、今週後半にはリリースされる予定です。 それまでは、次の問題を検討してください。
-* App Service、SQL アダプター、および MYSQL アダプターのリソースプロバイダーは PowerShell 1.2.11 に依存します。 このため、新しいバージョンの Azure PowerShell が使用できるようになるまで、これらは先延ばしになります。
-* ドキュメントの中では Azure PowerShell 1.2.11 について記述されていますが、まだ使用することはできません。
-* AzureStack-Tools では引き続き Azure PowerShell 1.2.10 が参照されており、バージョン 1.2.11 が使用できるようになるまでこの状態が続きます。
-* Azure PS 1.2.10 は、開発キットの多くの操作で引き続き使用できます。 Azure PS 1.2.11 が使用可能になった場合には交換する必要があります。
-
+- AzureRM 1.2.11 リリースの PowerShell モジュールには、重大な変更が多数追加されています。 1.2.10 バージョンからアップグレードする場合は、[https://aka.ms/azspowershellmigration](https://aka.ms/azspowershellmigration) の移行ガイドを参照してください。
 
 
 #### <a name="deployment"></a>デプロイ
 * デプロイ時に、IP アドレスでタイム サーバーを指定する必要があります。  
+
 
 #### <a name="portal"></a>ポータル
 * ポータルに空のダッシュボードが表示されることがあります。  ポータルの右上にある歯車を選択し、[既定の設定に戻す] を選択することで、ダッシュボードを復元できます。

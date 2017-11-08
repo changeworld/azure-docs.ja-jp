@@ -10,17 +10,17 @@ keywords: "SQL のパフォーマンスのチューニング, データベース
 ms.assetid: eb7b3f66-3b33-4e1b-84fb-424a928a6672
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 06/13/2017
 ms.author: v-shysun
-ms.openlocfilehash: 39d85e7c1c45dd1bb28705ae06c4b5364b8baf37
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4eb344bf9e87ef1a8f469268211588e51696164e
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="monitoring-and-performance-tuning"></a>監視とパフォーマンスのチューニング
 

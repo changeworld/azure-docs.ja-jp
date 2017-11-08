@@ -11,13 +11,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/04/2017
+ms.date: 10/17/2017
 ms.author: bryanla
-ms.openlocfilehash: 2f6cf4709c77ca1bb051b7d5c9e7d1d5d125c343
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 905e7b0d8a0c45c98a86882a8c8f387be0950f9f
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="how-to-use-an-azure-vm-managed-service-identity-msi-for-sign-in-and-token-acquisition"></a>サインインとトークン取得に Azure VM の管理対象サービス ID (MSI) を使用する方法 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)] Azure VM で MSI を有効にした後、サインインに MSI を使用して、アクセス トークンを要求することができます。 この記事では、次に示すさまざまな方法で、MSI [サービス プリンシパル](develop/active-directory-dev-glossary.md#service-principal-object)を使用してサインインし、[アプリ専用のアクセス トークン](develop/active-directory-dev-glossary.md#access-token)を取得します。
@@ -183,14 +183,14 @@ Content-Type: application/json
 | `resource` | アクセス トークンの要求対象リソース。要求の `resource` クエリ文字列パラメーターと一致します。 |
 | `token_type` | トークンの種類。つまり "ベアラー" アクセス トークン。リソースが、このトークンのベアラーへのアクセスを提供できることを意味します。 |
 
-## <a name="how-to-sign-in-with-azure-sdk-libraries-using-msi"></a>MSI を使用して Azure SDK ライブラリでサインインする方法
+## <a name="how-to-use-msi-with-azure-sdk-libraries"></a>Azure SDK ライブラリで MSI を使用する方法
 
 Azure は、一連の [Azure SDK](https://azure.microsoft.com/downloads) によって、複数のプログラミング プラットフォームをサポートしています。 そのいくつかが、MSI を使用したサインインをサポートするために更新され、対応するサンプルを提供することで、その使用方法を示しています。 次の一覧は、サポートが追加されると更新されます。
 
 | SDK | サンプル |
 | --- | ------ | 
-| .NET   | [MSI 対応 VM からリソースを管理する](https://azure.microsoft.com/resources/samples/aad-dotnet-manage-resources-from-vm-with-msi/) |
-| Java   | [MSI 対応 VM からストレージを管理する](https://azure.microsoft.com/resources/samples/compute-java-manage-resources-from-vm-with-msi-in-aad-group/)|
+| .NET | [管理対象サービス ID ](https://github.com/Azure-Samples/windowsvm-msi-arm-dotnet) を使用して、Windows VM から ARM テンプレートを展開する |
+| .NET Core | [管理対象サービス ID を使用して、Linux VM から Azure サービスを呼び出す](https://github.com/Azure-Samples/linuxvm-msi-keyvault-arm-dotnet/) |
 | Node.js| [管理対象サービス ID を使用してリソースを管理する](https://azure.microsoft.com/resources/samples/resources-node-manage-resources-with-msi/) |
 | Python | [MSI を使用して VM 内から認証する](https://azure.microsoft.com/resources/samples/resource-manager-python-manage-resources-with-msi/) |
 | Ruby   | [MSI 対応 VM からリソースを管理する](https://azure.microsoft.com/resources/samples/resources-ruby-manage-resources-with-msi/) | 

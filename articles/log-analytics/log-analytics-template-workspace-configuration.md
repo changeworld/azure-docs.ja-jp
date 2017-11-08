@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: json
 ms.topic: article
-ms.date: 06/01/2017
+ms.date: 10/16/2017
 ms.author: richrund
-ms.openlocfilehash: 37ecfe2762bd239a0abf6015ef6ffd6a5132bb7a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f522a672d1691990bec3e63a41b2ed7e81058ad
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="manage-log-analytics-using-azure-resource-manager-templates"></a>Azure Resource Manager テンプレートを使用して Log Analytics を管理する
 [Azure Resource Manager テンプレート](../azure-resource-manager/resource-group-authoring-templates.md)を使用して、Log Analytics ワークスペースの作成と構成を実行できます。 テンプレートを使用して、次のようなタスクを実行できます。
@@ -37,7 +37,18 @@ ms.lasthandoff: 10/11/2017
 
 この記事のコード サンプルで紹介しているのは、テンプレートから実行できる構成の一部です。
 
-## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースを作成して構成する
+## <a name="api-versions"></a>API のバージョン
+この記事の例は、[アップグレードされた Log Analytics ワークスペース](log-analytics-log-search-upgrade.md)を対象としています。  レガシ ワークスペースを使用するには、クエリの構文をレガシ言語に変更し、リソースごとに API バージョンを変更する必要があります。  次の表は、この例で使用されているリソースの API バージョンの一覧です。
+
+| リソース | リソースの種類 | レガシ API バージョン | アップグレードされた API バージョン |
+|:---|:---|:---|:---|
+| ワークスペース   | workspaces    | 2015-11-01-preview | 2017-03-15-preview |
+| 検索      | savedSearches | 2015-11-01-preview | 2017-03-15-preview |
+| データ ソース | datasources   | 2015-11-01-preview | 2015-11-01-preview |
+| 解決策    | solutions     | 2015-11-01-preview | 2015-11-01-preview |
+
+
+## <a name="create-and-configure-a-log-analytics-workspace"></a>Log Analytics ワークスペースの作成と構成
 次のサンプル テンプレートは、以下のタスクの実行方法を示しています。
 
 1. データ リテンション期間の設定を含め、ワークスペースを作成する
@@ -122,7 +133,7 @@ ms.lasthandoff: 10/11/2017
   },
   "resources": [
     {
-      "apiVersion": "2015-11-01-preview",
+      "apiVersion": "2017-03-15-preview",
       "type": "Microsoft.OperationalInsights/workspaces",
       "name": "[parameters('workspaceName')]",
       "location": "[parameters('location')]",
@@ -134,7 +145,7 @@ ms.lasthandoff: 10/11/2017
       },
       "resources": [
         {
-          "apiVersion": "2015-11-01-preview",
+          "apiVersion": "2017-03-15-preview",
           "name": "VMSS Queries2",
           "type": "savedSearches",
           "dependsOn": [
@@ -144,7 +155,7 @@ ms.lasthandoff: 10/11/2017
             "Category": "VMSS",
             "ETag": "*",
             "DisplayName": "VMSS Instance Count",
-            "Query": "Type:Event Source=ServiceFabricNodeBootstrapAgent | dedup Computer | measure count () by Computer",
+            "Query": "Event | where Source == "ServiceFabricNodeBootstrapAgent" | summarize AggregatedValue = count() by Computer",
             "Version": 1
           }
         },

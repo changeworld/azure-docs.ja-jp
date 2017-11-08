@@ -8,17 +8,17 @@ author: ddove
 ms.assetid: 204fd902-0397-4185-985a-dea3ed7c7d9f
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: b41b6d6be686168359a97eb7468351a105b748db
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 328989c4fc1f9a404d4c048eb148a95e9105bdf5
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>スケールアウトされたクラウド データベース間のデータ移動
 お客様がサービスとしてのソフトウェアの開発者で、突然、アプリが多大な要求を受けた場合、その増加に対応する必要があります。 そのため、データベース (シャード) を追加します。 データの整合性を破壊することなく、新しいデータベースにデータを再分散する方法 **Split-Merge ツール**を使用して、データを制約付きデータベースから新しいデータベースに移動します。  

@@ -9,17 +9,17 @@ editor:
 ms.assetid: cbe0aa2b-17e3-4b6f-a16f-6ebc1f5a66af
 ms.service: sql-database
 ms.custom: scale out apps
-ms.workload: sql-database
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/24/2016
 ms.author: ddove
-ms.openlocfilehash: 71a5aa4da32e76ff02e4a4dae0d47cf03e323688
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7c741deba180af56414b0711de94ba110aeea9b8
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="installing-elastic-database-jobs-overview"></a>Elastic Database ジョブのインストールの概要
 [**Elastic Database ジョブ**](sql-database-elastic-jobs-overview.md)のインストールには PowerShell または Azure クラシック ポータルを使用できます。PowerShell パッケージをインストールしている場合にのみ、PowerShell API を使用してジョブを作成および管理する機能を利用できます。 さらに現在のところ、PowerShell API はポータルよりもはるかに多数の機能を使用できます。

@@ -1,6 +1,6 @@
 ---
-title: "Azure で Linuxコンテナー内に PHP Web アプリを作成する | Microsoft Docs"
-description: "Azure App Service の Web Apps で、初めての PHP の Hello World を数分でデプロイします。"
+title: "PHP Web アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs"
+description: "初めての PHP Hello World を App Service on Linux に数分でデプロイします。"
 services: app-service\web
 documentationcenter: 
 author: syntaxc4
@@ -15,19 +15,19 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 2d5c8901e3deb126e216b58264c820b374b5670b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ff1b0bdd2397387910c31e25ddbc50ffc0bd1c4
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="create-a-php-web-app-in-a-linux-container-in-azure"></a>Azure で Linuxコンテナー内に PHP Web アプリを作成する
+# <a name="create-a-php-web-app-in-app-service-on-linux"></a>App Service on Linux での PHP Web アプリの作成
 
-[Web App for Containers](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Azure Web App for Containers に PHP アプリをデプロイする方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Cloud Shell で Web アプリを作成し、Git を使用して Web アプリに PHP のコードをデプロイします。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタート チュートリアルでは、Azure App Service on Linux に PHP アプリをデプロイする方法を説明します。 Cloud Shell で [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して、組み込みイメージを使用する Web アプリを作成し、Git を使用してその Web アプリに PHP のコードをデプロイします。
 
 ![Azure で実行中のサンプル アプリ]](media/quickstart-php/hello-world-in-browser.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -71,11 +71,11 @@ Web ブラウザーを開き、`http://localhost:8080` のサンプル アプリ
 
 [!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
 
 [!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-linux-php-no-h.md)] 
 
-サイトを参照して、新たに作成された Web アプリを表示します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
+サイトを参照して、新たに作成された、組み込みイメージを使用する Web アプリを確認します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
 
 ```bash
 http://<app name>.azurewebsites.net
@@ -83,9 +83,9 @@ http://<app name>.azurewebsites.net
 
 ![空の Web アプリ ページ](media/quickstart-php/app-service-web-service-created.png)
 
-Git デプロイを有効にして、空の新しい Web アプリを Linux コンテナーに作成しました。
+Git デプロイが有効な、組み込みイメージを使用する新しい空の Web アプリが作成されました。
 
-[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
+[!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)]
 
 ```bash
 Counting objects: 2, done.
@@ -120,11 +120,11 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-PHP のサンプル コードは、Azure App Service の Web アプリで実行されています。
+組み込みイメージを使用する Web アプリで、PHP のサンプル コードが実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-php/hello-world-in-browser.png)
 
-**お疲れさまでした。** App Service に初めての PHP アプリをデプロイしました。
+**お疲れさまでした。** App Service on Linux に初めての PHP アプリをデプロイしました。
 
 ## <a name="update-locally-and-redeploy-the-code"></a>コードをローカルで更新して再デプロイする
 

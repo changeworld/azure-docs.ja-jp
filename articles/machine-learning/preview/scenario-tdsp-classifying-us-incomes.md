@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: bradsev
-ms.openlocfilehash: c0fbd9b3e6f9f9f4f7a5d3e6bda18ce1312650e7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3e92687657b4e80e75fd869da454970622f7178c
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Team Data Science Process (TDSP) プロジェクトによる収入分類
 
@@ -63,7 +63,7 @@ ms.lasthandoff: 10/11/2017
 * [よくある質問 - ファースト ステップ](frequently-asked-questions.md)
 * [概要](overview-what-is-azure-ml.md)
 * [インストール](quickstart-installation.md)
-* [実行](experiment-execution-configuration.md)
+* [実行](experimentation-service-configuration.md)
 * [TDSP の使用](https://aka.ms/how-to-use-tdsp-in-aml)
 * [ファイルの読み取りと書き込み](how-to-read-write-files.md)
 * [Azure Machine Learning で Git を使用する](using-git-ml-project.md)
@@ -108,7 +108,7 @@ ms.lasthandoff: 10/11/2017
 <img src="./media/scenario-tdsp-classifying-us-incomes/instantiation-4.png" width="900" height="700">
 
 ### <a name="execution"></a>実行
-この例では、**ローカル コンピューティング環境**でコードを実行します。 [実行オプション](experiment-execution-configuration.md)の詳細については、Azure Machine Learningの ドキュメントを参照してください。
+この例では、**ローカル コンピューティング環境**でコードを実行します。 [実行オプション](experimentation-service-configuration.md)の詳細については、Azure Machine Learningの ドキュメントを参照してください。
 
 ローカルの Python ランタイムでは Python スクリプトを簡単に簡単できます。
 

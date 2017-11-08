@@ -10,13 +10,13 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/20/2017
+ms.date: 10/25/2017
 ms.author: johnkem
-ms.openlocfilehash: a4ceb822e0ec3e1c1dc31ece1db761834e795f6c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 91129da9ef7791a506292d9e13e386a25ee341a8
+ms.sourcegitcommit: 9c3150e91cc3075141dc2955a01f47040d76048a
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-activity-log-event-schema"></a>Azure アクティビティ ログのイベント スキーマ
 **Azure アクティビティ ログ**は、Azure で発生したあらゆるサブスクリプションレベルのイベントの分析に利用できるログです。 この記事では、データのカテゴリごとにイベント スキーマを説明します。
@@ -407,6 +407,93 @@ Properties.communicationId | このイベントが関連付けられている通
 | properties.LastScaleActionTime | 自動スケール アクションが発生したときのタイムスタンプ。 |
 | status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
 | subStatus | 自動スケールの場合、通常は null です。 |
+| eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
+| submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
+| subscriptionId |Azure サブスクリプション ID。 |
+
+## <a name="security"></a>セキュリティ
+このカテゴリには、Azure Security Center によって生成されたアラートのレコードが含まれます。 このカテゴリで表示されるイベントの種類の例としては、"Suspicious double extension file executed" (拡張子が 2 つある不審なファイルが実行されました) などがあります。
+
+### <a name="sample-event"></a>サンプル イベント
+```json
+{
+    "channels": "Operation",
+    "correlationId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "description": "Suspicious double extension file executed. Machine logs indicate an execution of a process with a suspicious double extension.\r\nThis extension may trick users into thinking files are safe to be opened and might indicate the presence of malware on the system.",
+    "eventDataId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "eventName": {
+        "value": "Suspicious double extension file executed",
+        "localizedValue": "Suspicious double extension file executed"
+    },
+    "category": {
+        "value": "Security",
+        "localizedValue": "Security"
+    },
+    "eventTimestamp": "2017-10-18T06:02:18.6179339Z",
+    "id": "/subscriptions/d4742bb8-c279-4903-9653-9858b17d0c2e/providers/Microsoft.Security/locations/centralus/alerts/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/events/965d6c6a-a790-4a7e-8e9a-41771b3fbc38/ticks/636439033386179339",
+    "level": "Informational",
+    "operationId": "965d6c6a-a790-4a7e-8e9a-41771b3fbc38",
+    "operationName": {
+        "value": "Microsoft.Security/locations/alerts/activate/action",
+        "localizedValue": "Microsoft.Security/locations/alerts/activate/action"
+    },
+    "resourceGroupName": "myResourceGroup",
+    "resourceProviderName": {
+        "value": "Microsoft.Security",
+        "localizedValue": "Microsoft.Security"
+    },
+    "resourceType": {
+        "value": "Microsoft.Security/locations/alerts",
+        "localizedValue": "Microsoft.Security/locations/alerts"
+    },
+    "resourceId": "/subscriptions/d4742bb8-c279-4903-9653-9858b17d0c2e/providers/Microsoft.Security/locations/centralus/alerts/2518939942613820660_a48f8653-3fc6-4166-9f19-914f030a13d3",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": null
+    },
+    "submissionTimestamp": "2017-10-18T06:02:52.2176969Z",
+    "subscriptionId": "d4742bb8-c279-4903-9653-9858b17d0c2e",
+    "properties": {
+        "accountLogonId": "0x2r4",
+        "commandLine": "c:\\mydirectory\\doubleetension.pdf.exe",
+        "domainName": "hpc",
+        "parentProcess": "unknown",
+        "parentProcess id": "0",
+        "processId": "6988",
+        "processName": "c:\\mydirectory\\doubleetension.pdf.exe",
+        "userName": "myUser",
+        "UserSID": "S-3-2-12",
+        "ActionTaken": "Detected",
+        "Severity": "High"
+    },
+    "relatedEvents": []
+}
+
+```
+
+### <a name="property-descriptions"></a>プロパティの説明
+| 要素名 | Description |
+| --- | --- |
+| channels | 常に "Operation" |
+| correlationId | 文字列形式の GUID。 |
+| description |セキュリティ イベントを説明する静的テキスト。 |
+| eventDataId |セキュリティ イベントの一意識別子。 |
+| eventName |セキュリティ イベントのフレンドリ名。 |
+| id |セキュリティ イベントの一意リソース識別子。 |
+| level |イベントのレベル。 "Critical"、"Error"、"Warning"、"Informational"、"Verbose" のいずれかの値 |
+| resourceGroupName |リソースのリソース グループの名前。 |
+| resourceProviderName |Azure Security Center のリソース プロバイダーの名前。 常に "Microsoft.Security"。 |
+| resourceType |セキュリティ イベントを生成したリソースの種類 (例: "Microsoft.Security/locations/alerts") |
+| resourceId |セキュリティ アラートのリソース ID。 |
+| operationId |単一の操作に対応する複数のイベント間で共有される GUID。 |
+| operationName |操作の名前。 |
+| プロパティ |イベントの詳細を示す `<Key, Value>` ペアのセット (辞書)。 これらのプロパティは、セキュリティ アラートの種類によって異なります。 Security Center から送られてくるアラートの種類について詳しくは、[こちらのページ](../security-center/security-center-alerts-type.md)をご覧ください。 |
+| properties.Severity |重大度のレベル。 可能性のある値は、"High"、"Medium"、"Low" です。 |
+| status |操作の状態を説明する文字列。 一般的な値は、Started、In Progress、Succeeded、Failed、Active、Resolved です。 |
+| subStatus | 通常、セキュリティ イベントの場合は null です。 |
 | eventTimestamp |イベントに対応する要求を処理する Azure サービスによって、イベントが生成されたときのタイムスタンプ。 |
 | submissionTimestamp |イベントがクエリで使用できるようになったときのタイムスタンプ。 |
 | subscriptionId |Azure サブスクリプション ID。 |

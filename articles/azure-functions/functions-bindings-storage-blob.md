@@ -14,13 +14,13 @@ ms.devlang: multiple
 ms.topic: reference
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 05/25/2017
+ms.date: 10/27/2017
 ms.author: glenga
-ms.openlocfilehash: 3a8cf6bed7dd6f0c17b12fe7171e47d126607630
-ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
+ms.openlocfilehash: 79b9dbee89a4e33a1768343b9242d6b2b1118355
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/17/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="azure-functions-blob-storage-bindings"></a>Azure Functions における Blob Storage のバインディング
 [!INCLUDE [functions-selector-bindings](../../includes/functions-selector-bindings.md)]
@@ -275,7 +275,7 @@ module.exports = function(context) {
 
 ```cs
 // Copy blob from input to output, based on a queue trigger
-public static void Run(string myQueueItem, Stream myInputBlob, out string myOutputBlob, TraceWriter log)
+public static void Run(string myQueueItem, Stream myInputBlob, out Stream myOutputBlob, TraceWriter log)
 {
     log.Info($"C# Queue trigger function processed: {myQueueItem}");
     myOutputBlob = myInputBlob;

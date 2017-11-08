@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 05/16/2017
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 8f6c428d6b7d5b9cab823c2a2408b895bb2c05a3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2ec40ee232ab50f79169f42b6573d294b77110a2
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="transform-data-in-azure-data-factory"></a>Azure Data Factory でデータを変換する
 > [!div class="op_single_selector"]
@@ -32,7 +32,10 @@ ms.lasthandoff: 10/11/2017
 > * [Data Lake Analytics U-SQL](data-factory-usql-activity.md)
 > * [.NET カスタム](data-factory-use-custom-activities.md)
 
-## <a name="overview"></a>Overview
+## <a name="overview"></a>概要
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Data Factory バージョン 2 でのデータ変換アクティビティ](../transform-data.md)に関する記事を参照してください。
+
 この記事では、Azure Data Factory でのデータ変換アクティビティについて説明します。このアクティビティにより、生データを変換および処理することで、予測や把握が容易になります。 変換アクティビティは、Azure HDInsight クラスターや Azure Batch などのコンピューティング環境で実行されます。 各変換アクティビティの詳細情報に関する記事へのリンクが提供されています。
 
 Data Factory は、次のデータ変換アクティビティをサポートしています。これらのアクティビティは、個別または他のアクティビティと連結した状態で[パイプライン](data-factory-create-pipelines.md)に追加できます。

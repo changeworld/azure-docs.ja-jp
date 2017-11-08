@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/10/2017
+ms.date: 10/12/2017
 ms.author: sethm
-ms.openlocfilehash: e6a0e480f7748f12f5e566cf4059b5b2c4242c09
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 1f57fbb8e2a86b744808ee844e5f853bdb587a5d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Service Bus メッセージングを使用したパフォーマンス向上のためのベスト プラクティス
 
-この記事では、[Azure Service Bus メッセージング](https://azure.microsoft.com/services/service-bus/)を使用して、ブローカー メッセージを交換する際のパフォーマンスを最適化する方法について説明します。 このトピックの前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
+この記事では、ブローカー メッセージを交換する際のパフォーマンスを [Azure Service Bus](https://azure.microsoft.com/services/service-bus/) を使用して最適化する方法について説明しています。 この記事の前半では、パフォーマンスの向上に役立つさまざまなメカニズムについて説明します。 後半では、特定のシナリオでパフォーマンスを最大限に高めるための Service Bus の使用方法に関するガイダンスを示します。
 
-このトピック全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
+このトピック全体で、"クライアント" という用語は Service Bus にアクセスするすべてのエンティティを指します。 クライアントは送信側または受信側の役割を実行できます。 "送信側" という用語は、Service Bus キューまたはトピックのサブスクリプションにメッセージを送信する Service Bus キューまたはトピックのクライアントを指します。 "受信側" という用語は、Service Bus キューまたはサブスクリプションからメッセージを受信する Service Bus キューまたはサブスクリプションのクライアントを指します。
 
 以下のセクションでは、パフォーマンスを向上するために Service Bus で利用される概念をいくつか紹介します。
 
@@ -117,7 +117,7 @@ Queue q = namespaceManager.CreateQueue(qd);
 バッチ処理ストア アクセスは課金対象のメッセージ操作の数には影響を与えない、キュー、トピック、サブスクリプションのプロパティです。 受信モードから独立しており、クライアントと Service Bus サービスの間で使用されるプロトコルです。
 
 ## <a name="prefetching"></a>プリフェッチ
-プリフェッチにより、キューまたはサブスクリプションのクライアントは受信操作の実行時にサービスから追加のメッセージを読み込むことができます。 クライアントはこれらのメッセージをローカル キャッシュに格納します。 キャッシュのサイズは、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] プロパティまたは [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] プロパティによって決まります。 プリフェッチが有効になっているクライアントはそれぞれ独自のキャッシュを保持します。 キャッシュはクライアント間で共有されません。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュが空の場合、サービスはメッセージのバッチを送信します。 バッチのサイズは、キャッシュのサイズと 256 KB のうちの少ない方と等しくなります。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュにメッセージが含まれている場合、キャッシュからメッセージが取得されます。
+[プリフェッチ](service-bus-prefetch.md)により、キューまたはサブスクリプションのクライアントは受信操作の実行時にサービスから追加のメッセージを読み込むことができます。 クライアントはこれらのメッセージをローカル キャッシュに格納します。 キャッシュのサイズは、[QueueClient.PrefetchCount][QueueClient.PrefetchCount] プロパティまたは [SubscriptionClient.PrefetchCount][SubscriptionClient.PrefetchCount] プロパティによって決まります。 プリフェッチが有効になっているクライアントはそれぞれ独自のキャッシュを保持します。 キャッシュはクライアント間で共有されません。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュが空の場合、サービスはメッセージのバッチを送信します。 バッチのサイズは、キャッシュのサイズと 256 KB のうちの少ない方と等しくなります。 クライアントが受信操作を開始するときに、そのクライアントのキャッシュにメッセージが含まれている場合、キャッシュからメッセージが取得されます。
 
 メッセージがプリフェッチされると、サービスはプリフェッチされたメッセージをロックします。 このロックにより、別の受信側はプリフェッチされたメッセージを受信できなくなります。 受信側がメッセージを完了できない状態でロックの有効期限が切れた場合、他の受信側がメッセージを受信できるようになります。 プリフェッチされたメッセージのコピーはキャッシュに残ります。 受信側が有効期限の切れたキャッシュのコピーを使用している場合、そのメッセージを完了しようとしたときに例外を受け取ります。 既定では、メッセージのロックは 60 秒後に期限切れになります。 この値は 5 分まで拡張できます。 期限切れのメッセージの使用を防ぐには、キャッシュ サイズを常に、ロックのタイムアウト間隔内にクライアントが使用できるメッセージの数より小さくする必要があります。
 
@@ -145,7 +145,7 @@ namespaceManager.CreateTopic(td);
 > エクスプレス エンティティはトランザクションをサポートしていません。
 
 ## <a name="use-of-partitioned-queues-or-topics"></a>パーティション分割されたキューまたはトピックの使用
-内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、パーティション分割されたキューまたはトピックは複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
+内部的には、Service Bus は同じノードとメッセージング ストアを使用して、メッセージング エンティティ (キューまたはトピック) のすべてのメッセージを処理し、格納します。 一方、[パーティション分割されたキューまたはトピック](service-bus-partitioning.md)は、複数のノードとメッセージング ストアの間で分散されます。 パーティション分割されたキューとトピックは通常のキューとトピックより高いスループットを生むだけでなく、可用性にも優れています。 パーティション分割されたエンティティを作成するには、次の例のように、[EnablePartitioning][EnablePartitioning] プロパティを **true** に設定します。 パーティション分割されたエンティティの詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
 ```csharp
 // Create partitioned queue.
@@ -248,16 +248,16 @@ Service Bus によって、エンティティに最大 1000 件同時接続で�
 ## <a name="next-steps"></a>次のステップ
 Service Bus のパフォーマンスの最適化の詳細については、[パーティション分割されたメッセージング エンティティ][Partitioned messaging entities]に関する記事をご覧ください。
 
-[QueueClient]: /dotnet/api/microsoft.servicebus.messaging.queueclient
-[MessageSender]: /dotnet/api/microsoft.servicebus.messaging.messagesender
+[QueueClient]: /dotnet/api/microsoft.azure.servicebus.queueclient
+[MessageSender]: /dotnet/api/microsoft.azure.servicebus.core.messagesender
 [MessagingFactory]: /dotnet/api/microsoft.servicebus.messaging.messagingfactory
-[PeekLock]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[ReceiveAndDelete]: /dotnet/api/microsoft.servicebus.messaging.receivemode
-[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.netmessagingtransportsettings.batchflushinterval#Microsoft_ServiceBus_Messaging_NetMessagingTransportSettings_BatchFlushInterval
-[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations#Microsoft_ServiceBus_Messaging_QueueDescription_EnableBatchedOperations
-[QueueClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.queueclient.prefetchcount#Microsoft_ServiceBus_Messaging_QueueClient_PrefetchCount
-[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.servicebus.messaging.subscriptionclient.prefetchcount#Microsoft_ServiceBus_Messaging_SubscriptionClient_PrefetchCount
-[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence#Microsoft_ServiceBus_Messaging_BrokeredMessage_ForcePersistence
-[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning#Microsoft_ServiceBus_Messaging_QueueDescription_EnablePartitioning
+[PeekLock]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[ReceiveAndDelete]: /dotnet/api/microsoft.azure.servicebus.receivemode
+[BatchFlushInterval]: /dotnet/api/microsoft.servicebus.messaging.messagesender.batchflushinterval
+[EnableBatchedOperations]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablebatchedoperations
+[QueueClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.queueclient.prefetchcount
+[SubscriptionClient.PrefetchCount]: /dotnet/api/microsoft.azure.servicebus.subscriptionclient.prefetchcount
+[ForcePersistence]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage.forcepersistence
+[EnablePartitioning]: /dotnet/api/microsoft.servicebus.messaging.queuedescription.enablepartitioning
 [Partitioned messaging entities]: service-bus-partitioning.md
-[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing#Microsoft_ServiceBus_Messaging_TopicDescription_EnableFilteringMessagesBeforePublishing
+[TopicDescription.EnableFilteringMessagesBeforePublishing]: /dotnet/api/microsoft.servicebus.messaging.topicdescription.enablefilteringmessagesbeforepublishing

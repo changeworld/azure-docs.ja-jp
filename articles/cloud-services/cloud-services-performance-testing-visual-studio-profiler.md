@@ -3,7 +3,7 @@ title: "コンピューティング エミュレーターでのクラウド サ�
 services: cloud-services
 description: "Visual Studio プロファイラーを使用して、クラウド サービスのパフォーマンスの問題を調査します。"
 documentationcenter: 
-author: kraigb
+author: mikejo
 manager: ghogen
 editor: 
 tags: 
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 11/18/2016
-ms.author: kraigb
-ms.openlocfilehash: 51c8192d8312dc5cf546b4c357aeecf6f19d56b8
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mikejo
+ms.openlocfilehash: 5e3c729ce3e75665078d7f33baed943087fbe0ca
+ms.sourcegitcommit: b83781292640e82b5c172210c7190cf97fabb704
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="testing-the-performance-of-a-cloud-service-locally-in-the-azure-compute-emulator-using-the-visual-studio-profiler"></a>Visual Studio プロファイラーを使用した、Azure コンピューティング エミュレーターでのクラウド サービスのパフォーマンスのローカルなテスト
 クラウド サービスのパフォーマンスのテストには、さまざまなツールや手法を使用できます。

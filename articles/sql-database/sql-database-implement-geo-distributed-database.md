@@ -13,14 +13,14 @@ ms.custom: mvc,business continuity
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
-ms.workload: 
+ms.workload: On Demand
 ms.date: 05/26/2017
 ms.author: carlrab
-ms.openlocfilehash: 6fdbf12830a402eeb004587202eee604037430c0
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 910be8ff5f9a882c7bb8ae875b8bf5fc74d1fb9a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="implement-a-geo-distributed-database"></a>地理的に分散したデータベースの実装
 

@@ -15,15 +15,15 @@ ms.topic: tutorial
 ms.date: 07/21/2017
 ms.author: cephalin
 ms.custom: mvc
-ms.openlocfilehash: 77d5e04b2e4606cdeb79de12b7c5a0b0cc8f5c25
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5c5f9f813a3bf1f041b4cd6979b9615e46be5cfb
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="build-a-php-and-mysql-web-app-in-azure"></a>Azure で PHP と MySQL Web アプリを構築する
 
-[Web App for Containers](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、PHP Web アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、Web App for Containers で実行される [Laravel](https://laravel.com/) アプリが完成します。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このチュートリアルでは、PHP Web アプリを作成し、MySQL データベースに接続する方法について説明します。 このチュートリアルを終了すると、App Service on Linux で実行される [Laravel](https://laravel.com/) アプリが完成します。
 
 ![Azure App Service で実行される PHP アプリ](./media/tutorial-php-mysql-app/complete-checkbox-published.png)
 
@@ -192,7 +192,6 @@ az mysql server firewall-rule create --name allIPs --server <mysql_server_name> 
 > [!NOTE]
 > 現在のところ、Azure Database for MySQL (Preview) では、接続を Azure Services のみに制限することはできません。 Azure の IP アドレスは動的に割り当てられるため、すべての IP アドレスを有効にしておくことをお勧めします。 このサービスはプレビューの段階です。 データベースを保護するためのより優れた方法が提供される予定です。
 >
->
 
 ### <a name="connect-to-production-mysql-server-locally"></a>ローカルに運用 MySQL サーバーに接続する
 
@@ -327,7 +326,7 @@ git commit -m "database.php updates"
 
 ### <a name="create-an-app-service-plan"></a>App Service プランを作成する
 
-[!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-no-h.md)]
+[!INCLUDE [Create app service plan no h](../../../includes/app-service-web-create-app-service-plan-linux-no-h.md)]
 
 ### <a name="create-a-web-app"></a>Web アプリを作成する
 

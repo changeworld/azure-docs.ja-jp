@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2017
+ms.date: 10/21/2017
 ms.author: markvi
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 71ab5cb02ac70871fb8207ab9220b45d1c842dde
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a454199137f8ccc99ddbef66758fd1cabd8fd486
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-active-directory-risk-events"></a>Azure Active Directory リスク イベント
 
@@ -29,10 +29,9 @@ ms.lasthandoff: 10/11/2017
 - [資格情報が漏洩したユーザー](#leaked-credentials) 
 - [匿名の IP アドレスからのサインイン](#sign-ins-from-anonymous-ip-addresses) 
 - [特殊な場所へのあり得ない移動](#impossible-travel-to-atypical-locations) 
-- [未知の場所からのサインイン](#sign-in-from-unfamiliar-locations)
 - [感染しているデバイスからのサインイン](#sign-ins-from-infected-devices) 
 - [不審なアクティビティのある IP アドレスからのサインイン](#sign-ins-from-ip-addresses-with-suspicious-activity) 
-
+- [不明な場所からのサインイン](#sign-in-from-unfamiliar-locations) (**Azure Active Directory Premium P2** エディション専用)
 
 ![リスク イベント](./media/active-directory-reporting-risk-events/91.png)
 

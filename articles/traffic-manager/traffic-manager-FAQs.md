@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2017
 ms.author: kumud
-ms.openlocfilehash: 868d3ee973a03aca82c9775371d9832b7a063e9a
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5751cd111d2b1c8a4db2fc3b39f2108e73e9508f
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager についてよく寄せられる質問 (FAQ)
 
@@ -251,6 +251,10 @@ Traffic Manager はエンドポイントの DNS 名を返します。 IPv6 エ�
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>同じリージョン内の複数の Web アプリで Traffic Manager を使用できますか。
 
 通常、Traffic Manager は、さまざまなリージョンにデプロイされたアプリケーションにトラフィックを送信するときに使用されます。 ただし、この Traffic Manager は、同じリージョンに複数のアプリケーションがデプロイされている場合も使用できます。 Traffic Manager Azure エンドポイントでは、同じ Azure リージョンの複数の Web アプリケーション エンドポイントを、同じ Traffic Manager プロファイルに追加することはできません。
+
+### <a name="how-do-i-move-my-traffic-manager-profiles-azure-endpoints-to-a-different-resource-group"></a>Traffic Manager プロファイルの Azure エンドポイントを別のリソース グループに移動する操作方法を教えてください。
+
+Traffic Manager プロファイルに関連付けられている Azure エンドポイントは、それぞれのリソース ID を使用して追跡されます。 エンドポイントとして使用している Azure リソース (パブリック IP、クラシック クラウド サービス、Web アプリ、入れ子にして使用されている別の Traffic Manager プロファイルなど) を別のリソース グループに移動すると、リソース ID が変更されます。 このシナリオの場合、現時点では、まずエンドポイントを削除してから Traffic Manager プロファイルに追加することにより、プロファイルを更新する必要があります。 
 
 ##  <a name="traffic-manager-endpoint-monitoring"></a>Traffic Manager エンドポイントの監視
 

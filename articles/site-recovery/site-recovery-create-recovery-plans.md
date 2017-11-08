@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: storage-backup-recovery
 ms.date: 09/25/2017
 ms.author: raynew
-ms.openlocfilehash: 81d8a6e3015ddc4241cce8e888d51d6e2b2cb173
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 202e0ac8be36e9156ec16fadc1b722f4eb3d1432
+ms.sourcegitcommit: b723436807176e17e54f226fe00e7e977aba36d5
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="create-recovery-plans"></a>復旧計画の作成
 

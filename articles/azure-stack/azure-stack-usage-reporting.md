@@ -14,79 +14,94 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/28/2017
 ms.author: sngun;AlfredoPizzirani
-ms.openlocfilehash: 695b93a818d3c0e615bb79e0a2861e134b2f5c89
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 5abc325a6e7c019dc3cb84f7f6ff63c3eb2ff76c
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="report-azure-stack-usage-data-to-azure"></a>Azure Stack 使用状況データの Azure への報告 
 
-使用状況データ (使用量データとも呼ばれる) は、使用されたリソースの量を表します。 使用量ベースの課金モデルを採用する Azure Stack 統合システムは、使用状況データを Azure に報告する必要があります。 この使用状況データは、課金目的で使用されます。 Azure Stack のオペレーターは、使用状況データを報告するように Azure Stack の環境を構成する必要があります。
+使用状況データ (使用量データとも呼ばれる) は、使用されたリソースの量を表します。 
 
+使用量ベースの課金モデルを採用する Azure Stack マルチモード システムは、課金のために使用状況データを Azure に報告する必要があります。  Azure Stack オペレーターは、使用状況データを Azure に報告するように Azure Stack インスタンスを構成する必要があります。
 
 > [!NOTE]
-> 使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack 統合システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます。 Azure Stack Development Kit の場合、クラウド オペレーターは使用状況データを報告してその機能をテストできますが、ユーザーは自分が使用した分の料金を請求されることはありません。 Azure Stack での価格の詳細については、「[Azure Stack の購入方法](https://azure.microsoft.com/overview/azure-stack/how-to-buy/)」のページをご覧ください。
+> 使用状況データの報告は、従量課金モデルのライセンスを持つ Azure Stack マルチモード システムのユーザーにとっては必須事項です。 一方、容量モデルのライセンスを持つユーザーはこの報告を省略できます ([購入方法](https://azure.microsoft.com/overview/azure-stack/how-to-buy/ to learn more about pricing in Azure Stack)に関するページを参照してください)。 Azure Stack Development Kit ユーザーの場合は、Azure Stack オペレーターが使用状況データを報告し、機能をテストできます。 ただし、ユーザーの使用に対して課金されることはありません。 
 
-## <a name="usage-data-reporting-flow"></a>使用状況データの報告フロー
-
-使用状況データは、Azure ブリッジ経由で Azure Stack から Azure に送信されます。 Azure では、コマース システムが使用状況データを処理し、課金を生成します。 課金が生成された後、Azure サブスクリプションの所有者はそれを表示したり、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)からダウンロードしたりできます。 Azure Stack がどのようにライセンス供与されるかについては、「[Azure Stack packaging and pricing document (Azure Stack のパッケージ化および価格設定ドキュメント)](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409)」を参照してください。 
-
-次の図は、Azure Stack における使用状況データのフローを表しています。
 
 ![課金のフロー](media/azure-stack-usage-reporting/billing-flow.png)
 
+使用状況データは、Azure ブリッジ経由で Azure Stack から Azure に送信されます。 Azure では、コマース システムが使用状況データを処理し、課金を生成します。 課金が生成された後、Azure サブスクリプションの所有者はそれを表示したり、[Azure アカウント センター](https://account.windowsazure.com/Subscriptions)からダウンロードしたりできます。 Azure Stack がどのようにライセンス供与されるかについては、「[Azure Stack packaging and pricing document (Azure Stack のパッケージ化および価格設定ドキュメント)](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409)」を参照してください。
+
 ## <a name="set-up-usage-data-reporting"></a>使用状況データ レポートの設定
 
-Azure Stack で使用状況データ レポートを設定するには、[Azure Stack インスタンスを Azure に登録する](azure-stack-register.md)必要があります。 登録プロセスの一部として、Azure Stack の Azure ブリッジ コンポーネントは、Azure Stack を Azure に接続するよう構成されます。 Azure ブリッジが構成されると、次の使用状況データが Azure に送信されます。 
+使用状況データ レポートを設定するには、[Azure Stack インスタンスを Azure に登録する](azure-stack-register.md)必要があります。 登録プロセスの一部として、Azure Stack を Azure に接続し、使用状況データを送信する Azure Stack の Azure Bridge コンポーネントが構成されます。 次の使用状況データが Azure Stack から Azure に送信されます。
 
-* **メーター ID** – 使用されたリソースの一意の ID。
-* **数量** – リソース使用状況データの量。
-* **場所** – 現在の Azure Stack リソースがデプロイされている場所。
-* **リソース URI** – 使用状況が報告されているリソースの完全修飾 URI。 
-* **サブスクリプション ID** – Azure Stack ユーザーのサブスクリプション ID。
-* **時間** – 使用状況データの開始および終了時間。 これらのリソースが Azure Stack で使用されるときと、使用状況データがコマースに報告されるときとの間には、ある程度の時間のずれがあります。 Azure Stack は 24 時間ごとに使用状況データを集計し、その使用状況データを Azure のコマース パイプラインに報告するにはさらに数時間かかります。 そのため、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。
+- **メーター ID** – 使用されたリソースの一意の ID。
+- **数量** – リソース使用状況の量。
+- **場所** – 現在の Azure Stack リソースがデプロイされている場所。
+- **リソース URI** – 使用状況が報告されているリソースの完全修飾 URI。
+- **サブスクリプション ID** – Azure Stack ユーザーのサブスクリプション ID。 これは、ローカル (Azure Stack) サブスクリプションです。
+- **時間** – 使用状況データの開始および終了時間。 これらのリソースが Azure Stack で使用された時間と、使用状況データがコマースに報告された時間の間にはある程度の遅延が存在します。 Azure Stack は 24 時間ごとに使用状況データを集計し、その使用状況データを Azure のコマース パイプラインに報告するにはさらに数時間かかります。 そのため、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。
 
-## <a name="test-usage-data-reporting"></a>使用状況データ レポートのテスト 
+## <a name="generate-usage-data-reporting"></a>使用状況データ レポートの生成
 
-1. 使用状況データ レポートをテストするには、Azure Stack でいくつかのリソースを作成します。 たとえば、コアの使用状況がどのように報告されるかを確認するには、Basic および Standard SKU で[ストレージ アカウント](azure-stack-provision-storage-account.md)、[Windows Server VM](azure-stack-provision-vm.md)、および Linux VM を作成できます。 異なる種類のリソースの使用状況データは、別のメーターのもとに報告されます。  
+1. 使用状況データ レポートをテストするには、Azure Stack でいくつかのリソースを作成します。 たとえば、コアの使用状況がどのように報告されるかを確認するには、Basic および Standard SKU で[ストレージ アカウント](azure-stack-provision-storage-account.md)、[Windows Server VM](azure-stack-provision-vm.md)、および Linux VM を作成できます。 異なる種類のリソースの使用状況データは、別のメーターのもとに報告されます。
 
-2. リソースを数時間実行されたままにします。 使用状況の情報は、1 時間ごとに約 1 回収集されます。 収集の後、このデータは Azure に送信され、Azure コマース システムに処理されます。 このプロセスは、最大数時間かかることがあります。  
+2. リソースを数時間実行されたままにします。 使用状況の情報は、1 時間ごとに約 1 回収集されます。 収集の後、このデータは Azure に送信され、Azure コマース システムに処理されます。 このプロセスは、最大数時間かかることがあります。
 
-3. Azure アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインし、Azure Stack を登録するために使用される Azure サブスクリプションを選択します。 次の図に示すように、Azure Stack 使用状況データ (使用された各リソースの課金される量) を表示できます。  
+## <a name="view-usage---csp-subscriptions"></a>使用状況の表示 - CSP サブスクリプション
+
+Azure Stack を CSP サブスクリプションを使用して登録した場合は、Azure の消費量を表示するのと同じ方法で、使用状況と請求金額を表示できます。 Azure Stack の使用状況は請求書と調整ファイルに含まれます。これらは[パートナー センター](https://partnercenter.microsoft.com/en-us/partner/home)を通して入手できます。 調整ファイルは月単位で更新されます。 Azure Stack の最近の使用状況情報にアクセスする必要がある場合は、パートナー センター API を使用できます。
+
+   ![パートナー センター](media/azure-stack-usage-reporting/partner-center.png)
+
+
+## <a name="view-usage--enterprise-agreement-subscriptions"></a>使用状況の表示 - Enterprise Agreement サブスクリプション
+
+Azure Stack を Enterprise Agreement サブスクリプションを使用して登録した場合は、[EA ポータル](https://ea.azure.com/)で使用状況と請求金額を確認できます。 Azure Stack の使用状況は、EA ポータルの [レポート] セクションで、高度なダウンロードの中にAzure の使用状況と共に含まれています。 
+
+## <a name="view-usage--other-subscriptions"></a>使用状況の表示 - その他のサブスクリプション
+
+Azure Stack をその他のサブスクリプションの種類 (従量課金制など) を使用して登録した場合は、Azure アカウント センターで使用状況と請求金額を確認できます。 Azure アカウント管理者として [Azure アカウント センター](https://account.windowsazure.com/Subscriptions)にサインインし、Azure Stack を登録するために使用される Azure サブスクリプションを選択します。 次の図に示すように、Azure Stack 使用状況データ (使用された各リソースの課金される量) を表示できます。
 
    ![課金のフロー](media/azure-stack-usage-reporting/pricing-details.png)
 
-Azure Stack Development Kit の場合、リソースは課金されないため、価格は $0.00 として示されます。 Azure Stack 統合システムの場合、これらの各リソースの実際のコストが表示されます。
+Azure Stack Development Kit の場合、Azure Stack リソースは課金されないため、価格は $0.00 として示されます。 Azure Stack マルチノードが一般公開された場合は、これらの各リソースの実際のコストを確認できます。
 
-## <a name="are-users-charged-for-the-infrastructure-virtual-machines"></a>ユーザーはインフラストラクチャ仮想マシンを使用すると課金されますか?
-いいえ。一部の Azure Stack リソースプロバイダーの、デプロイ中に作成される仮想マシンとインフラストラクチャ仮想マシンの使用状況データは Azure に報告されますが、ユーザーには課金されません。 
+## <a name="which-azure-stack-deployments-are-charged"></a>どの Azure Stack デプロイが課金されますか?
 
-ユーザーは、ユーザー サブスクリプションのもとで作成する仮想マシンについてのみ課金されます。 そのため、Azure Stack のライセンス条項に従い、すべてのワークロードはユーザー サブスクリプションのもとでデプロイする必要があります。
+リソース使用状況は、Azure Stack Development Kit では無料です。 Azure Stack マルチノード システムの場合は、ワークロード VM、ストレージ サービス、および App Services が課金されます。
 
-## <a name="how-do-i-use-my-existing-windows-server-licenses-in-azure-stack"></a>Azure Stack で既存のWindows Server ライセンスを使用する方法 
-既存の Windows Server ライセンスは Azure Stack で使用できます。このモデルは BYOL (ライセンス持ち込み) と呼ばれます。 既に所有しているライセンスを使用すれば、追加の使用状況メーターを生成せずに済みます。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Use Benefit](../virtual-machines/windows/hybrid-use-benefit-licensing.md)」のトピックに記載されているように、Windows Server 仮想マシンをデプロイする必要があります。 
+## <a name="are-users-charged-for-the-infrastructure-vms"></a>ユーザーはインフラストラクチャ VM に対して課金されますか?
 
-## <a name="what-azure-meters-are-used-when-reporting-usage-data-in-integrated-systems"></a>統合システムで使用状況データを報告するときはどのような Azure メーターが使用されますか?
-* **定価メーター** – ユーザー ワークロードに関連付けられたリソースに使用されます。  
-* **管理メーター** – インフラストラクチャ リソースに使用されます。 これらのメーターの価格は 0 ドルです。
+いいえ。 一部の Azure Stack リソース プロバイダー VM の使用状況データは Azure に報告されますが、これらの VM に対する課金はなく、Azure Stack インフラストラクチャを有効にするためにデプロイ中に作成された VM も課金の対象になりません。  
+
+課金は、テナント サブスクリプションの下で実行されている VM に対してのみ行われます。 すべてのワークロードは、Azure Stack のライセンス条項に従って、テナント サブスクリプションでデプロイする必要があります。
+
+## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Windows Server ライセンスを持っています。Azure Stack で使用したいのですが、どうすればよいですか。
+
+既存のライセンスを使用すると、使用状況メーターの生成を回避できます。 既存の Windows Server ライセンスを Azure Stack で使用できます。「[Azure Stack Licensing Guide](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409)(Azure Stack ライセンス ガイド) の「Using existing software with Azure Stack」(Azure Stack で既存のソフトウェアを使用する) を参照してください。 既存のライセンスを使用するには、「[Windows Server 向け Azure Hybrid Use Benefit](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/hybrid-use-benefit-licensing)」トピックに記載されているように、Windows Server 仮想マシンをデプロイする必要があります。
 
 ## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>使用されたリソースに対してどのサブスクリプションが課金されますか?
 [Azure Stack を Azure に登録する](azure-stack-register.md)ときに指定されたサブスクリプションが課金されます。
 
 ## <a name="what-types-of-subscriptions-are-supported-for-usage-data-reporting"></a>使用状況データ レポートでは、どのような種類のサブスクリプションがサポートされますか?
-Azure Stack 統合システムの場合、Enterprise Agreement (EA) と CSP サブスクリプションがサポートされます。 
 
-Azure Stack Development Kit の場合、Enterprise Agreement (EA)、従量課金、CSP、MSDN サブスクリプションで、使用状況データの報告がサポートされます。
+Azure Stack マルチモード システムでは、Enterprise Agreement (EA) と CSP サブスクリプションがサポートされます。 Azure Stack Development Kit の場合、Enterprise Agreement (EA)、従量課金、CSP、MSDN サブスクリプションで、使用状況データの報告がサポートされます。
 
-## <a name="which-sovereign-clouds-support-usage-data-reporting"></a>使用状況データの報告はどのソブリン クラウドでサポートされますか?
-Azure Stack Development Kit で使用状況データを報告するには、グローバルな Azure システムで作成されたサブスクリプションが必要です。 ソブリン クラウド (Azure Government、Azure Germany、および Azure China クラウド) のいずれかで作成されたサブスクリプションは Azure に登録できないため、使用状況データ レポートをサポートしません。 
+## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>使用状況データ レポートはソブリン クラウドで機能しますか?
+
+Azure Stack Development Kit では、使用状況データ レポートにはグローバルな Azure システムで作成されたサブスクリプションが必要です。 ソブリン クラウド (Azure Government、Azure Germany、および Azure China クラウド) のいずれかで作成されたサブスクリプションは Azure に登録できないため、使用状況データ レポートをサポートしません。
 
 ## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>ユーザーが Azure 課金ポータルで Azure Stack 使用状況データを識別するにはどうすればよいですか?
-ユーザーは、使用状況の詳細ファイルで Azure Stack 使用状況データを確認できます。 使用状況の詳細ファイルを取得する方法については、「[download usage file from the Azure Account Center (Azure アカウント センターからの使用状況ファイルのダウンロード)](../billing/billing-download-azure-invoice-daily-usage-date.md#download-usage-from-the-account-center-csv)」の記事を参照してください。 使用状況の詳細ファイルには、Azure Stack ストレージおよび VM を識別する Azure Stack メーターが含まれています。 Azure Stack で使用されるリソースはすべて、"Azure Stack" という名前のリージョンのもとに報告されます。
+
+ユーザーは、使用状況の詳細ファイルで Azure Stack 使用状況データを確認できます。 使用状況の詳細ファイルを取得する方法については、「[download usage file from the Azure Account Center (Azure アカウント センターからの使用状況ファイルのダウンロード)](https://docs.microsoft.com/en-us/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv)」を参照してください。 使用状況の詳細ファイルには、Azure Stack ストレージおよび VM を識別する Azure Stack メーターが含まれています。 Azure Stack で使用されるリソースはすべて、"Azure Stack" という名前のリージョンのもとに報告されます。
 
 ## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Azure Stack で報告された使用状況が Azure アカウント センターから生成されたレポートと一致しないのはなぜですか?
-Azure Stack の Usage API を使用して使用状況データを報告する場合と、Azure アカウント センターを使用して使用状況データを報告する場合とでは時間差があります。 この遅延は、使用状況データを Azure Stack から Azure コマースにアップロードするために必要な時間です。 この遅延のために、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。 [Azure Stack の Usage API](azure-stack-provider-resource-api.md) を使用した場合、その結果を Azure 課金ポータルで報告された使用状況と比較すると、違いを確認できます。
+
+Azure Stack の Usage API を使用して使用状況データを報告する場合と、Azure アカウント センターを使用して使用状況データを報告する場合とでは常に時間差があります。 この遅延は、使用状況データを Azure Stack から Azure コマースにアップロードするために必要な時間です。 この遅延のために、午前 0 時の少し前に発生した使用状況は翌日 Azure に表示される可能性があります。 [Azure Stack 使用状況 API](azure-stack-provider-resource-api.md) を使用し、その結果を Azure 課金ポータルで報告された使用状況と比較すると、違いを確認できます。
 
 ## <a name="next-steps"></a>次のステップ
 

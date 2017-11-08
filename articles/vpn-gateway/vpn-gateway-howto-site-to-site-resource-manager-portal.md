@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: cherylmc
-ms.openlocfilehash: 15f257ffa313762333fae58197c7d0fab53ca5fc
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 41279502c16d0b23c91739dcb62e8f94f3b8bd67
+ms.sourcegitcommit: 3ab5ea589751d068d3e52db828742ce8ebed4761
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Azure Portal でサイト間接続を作成する
 
@@ -47,7 +47,7 @@ ms.lasthandoff: 10/12/2017
 
 ### <a name="values"></a>値の例
 
-この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。
+この記事の例では、次の値を使用します。 この値を使用して、テスト環境を作成できます。また、この値を参考にしながら、この記事の例を確認していくこともできます。 VPN ゲートウェイの一般的な設定の詳細については、[VPN Gateway の設定](vpn-gateway-about-vpn-gateway-settings.md)に関するページを参照してください。
 
 * **VNet の名前:** TestVNet1
 * **アドレス空間:** 

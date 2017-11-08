@@ -150,6 +150,12 @@
           href: log-analytics-alerts-webhooks.md
         - name: Alert Management ソリューション
           href: log-analytics-solution-alert-management.md
+    - name: 管理
+      items:
+        - name: ワークスペースのコストを管理する
+          href: log-analytics-manage-cost-storage.md
+        - name: ワークスペースを削除する
+          href: log-analytics-manage-del-workspace.md
     - name: ソリューションの使用
       items:
         - name: ソリューションの概要

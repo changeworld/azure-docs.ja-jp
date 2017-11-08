@@ -3,8 +3,8 @@ title: "Azure Backup での VM へのファイルの復元 | Microsoft Docs"
 description: "Azure VM でバックアップおよび Recovery Services を使用して、ファイル レベルの復元を実行する方法について説明します。"
 services: backup, virtual-machines
 documentationcenter: virtual-machines
-author: iainfoulds
-manager: jeconnoc
+author: markgalioto
+manager: carmonm
 editor: 
 tags: azure-resource-manager, virtual-machine-backup
 ms.assetid: 
@@ -16,11 +16,11 @@ ms.workload: infrastructure
 ms.date: 09/29/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: abad99f862e3831e70254e76e768e4eb7b2a5053
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bbae56b70c50fcf691db47efd9dc587686e7da
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Azure の仮想マシンにファイルを復元する
 Azure Backup では、geo 冗長 Recovery コンテナーに保存される復旧ポイントが作成されます。 復旧ポイントから復元するときは、VM 全体または個々のファイルを復元することができます。 この記事では、個々のファイルを復元する方法について詳しく説明します。 このチュートリアルで学習する内容は次のとおりです。

@@ -1,10 +1,10 @@
 ---
-title: "Azure で Linuxコンテナー内に .NET Core Web アプリを作成する | Microsoft Docs"
-description: "最初の .NET Core Hello World アプリを数分で Web App for Containers にデプロイします。"
+title: ".NET Core Web アプリの作成と App Service on Linux へのデプロイ | Microsoft Docs"
+description: "App Service on Linux で、初めての .NET Core の Hello World アプリを数分でデプロイします。"
 keywords: "Azure App Service, Web アプリ, .NET, コア, Linux, OSS"
 services: app-service
 documentationCenter: 
-authors: cephalin
+author: cephalin
 manager: syntaxc4
 editor: 
 ms.assetid: c02959e6-7220-496a-a417-9b2147638e2e
@@ -16,19 +16,19 @@ ms.topic: quickstart
 ms.date: 08/30/2017
 ms.author: cfowler
 ms.custom: mvc
-ms.openlocfilehash: 47e7db5462ecf3a2211538b1f46ed0571980b15b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a8000cadd6f6d7204e1790df62443a7ac7598c9
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/27/2017
 ---
-# <a name="create-a-net-core-web-app-in-a-linux-container-in-azure"></a>Azure で Linux コンテナー内に .NET Core Web アプリを作成する
+# <a name="create-a-net-core-web-app-in-app-service-on-linux"></a>App Service on Linux での .NET Core Web アプリの作成
 
-[Web App for Containers](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、Azure Web App for Containers に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Web アプリを作成し、Git を使用して Web アプリに .NET Core コードをデプロイします。
+[App Service on Linux](app-service-linux-intro.md) は、Linux オペレーティング システムを使用する、高度にスケーラブルな自己適用型の Web ホスティング サービスを提供します。 このクイックスタートでは、App Service on Linux に [.NET Core](https://docs.microsoft.com/aspnet/core/) アプリを作成する方法を示します。 [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli) を使用して Web アプリを作成し、Git を使用して Web アプリに .NET Core コードをデプロイします。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。 
+以下の手順は、Mac、Windows、または Linux コンピューターを使用して実行できます。
 
 ## <a name="prerequisites"></a>前提条件
 
@@ -39,20 +39,20 @@ ms.lasthandoff: 10/11/2017
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="create-the-app-locally"></a>アプリをローカルで作成する ##
+## <a name="create-the-app-locally"></a>アプリをローカルで作成する
 
-コンピューターのターミナル ウィンドウで、`hellodotnetcore` という名前のディレクトリを作成し、現在のディレクトリをそのディレクトリに変更します。 
+コンピューターのターミナル ウィンドウで、`hellodotnetcore` という名前のディレクトリを作成し、現在のディレクトリをそのディレクトリに変更します。
 
 ```bash
 md hellodotnetcore
 cd hellodotnetcore
-``` 
+```
 
 新しい .NET Core Web アプリを作成します。
 
 ```bash
 dotnet new web
-``` 
+```
 
 ## <a name="run-the-app-locally"></a>アプリをローカルで実行する
 
@@ -79,27 +79,23 @@ git commit -m "first commit"
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)] 
+[!INCLUDE [Configure deployment user](../../../includes/configure-deployment-user.md)]
 
-[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)] 
+[!INCLUDE [Create resource group](../../../includes/app-service-web-create-resource-group.md)]
 
-[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)] 
+[!INCLUDE [Create app service plan](../../../includes/app-service-web-create-app-service-plan-linux.md)]
 
-## <a name="create-a-web-app"></a>Web アプリを作成する
+## <a name="create-a-web-app-with-built-in-image"></a>組み込みイメージを使用する Web アプリの作成
 
-[az webapp create](/cli/azure/webapp#create) コマンドを使って、`myAppServicePlan`App Service プランに [Web アプリ](../app-service-web-overview.md)を作成します。 `<app name>` を固有のアプリ名に置き換えることを忘れないでください。
+[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-dotnetcore-no-h.md)]
 
-次のコマンドのランタイムは、`DOTNETCORE|1.1` に設定されます。 サポートされているすべてのランタイムを確認するには、[az webapp list-runtimes](/cli/azure/webapp#list-runtimes) を実行します。
+新たに作成された Web アプリに移動します。 _&lt;app name>_ は、アプリの一意の名前に置き換えてください。
 
-```azurecli-interactive
-az webapp create --resource-group myResourceGroup --plan myAppServicePlan --name <app name> --runtime "DOTNETCORE|1.1" --deployment-local-git
+```bash
+http://<app name>.azurewebsites.net
 ```
 
-[!INCLUDE [Create web app](../../../includes/app-service-web-create-web-app-result.md)] 
-
 ![空の Web アプリ ページ](media/quickstart-dotnetcore/dotnet-browse-created.png)
-
-Git デプロイを有効にして、空の新しい Web アプリを Linux コンテナーに作成しました。
 
 [!INCLUDE [Push to Azure](../../../includes/app-service-web-git-push-to-azure.md)] 
 
@@ -140,11 +136,11 @@ Web ブラウザーを使用して、デプロイされたアプリケーショ�
 http://<app_name>.azurewebsites.net
 ```
 
-Node.js のサンプル コードは、Azure App Service の Web アプリで実行されています。
+Node.js のサンプル コードが、組み込みイメージを使用する Web アプリで実行されています。
 
 ![Azure で実行されるサンプル アプリ](media/quickstart-dotnetcore/dotnet-browse-azure.png)
 
-**お疲れさまでした。** App Service に初めての Node.js アプリをデプロイしました。
+**お疲れさまでした。** App Service on Linux に初めての Node.js アプリをデプロイしました。
 
 ## <a name="update-and-redeploy-the-code"></a>コードを更新して再デプロイする
 
@@ -184,4 +180,4 @@ Web アプリの [概要] ページを確認します。 ここでは、参照�
 ## <a name="next-steps"></a>次のステップ
 
 > [!div class="nextstepaction"]
-> [Azure Web App for Containers での .NET Core および SQL Database Web アプリの作成](tutorial-dotnetcore-sqldb-app.md)
+> [Azure App Service on Linux での .NET Core および SQL Database の Web アプリの作成](tutorial-dotnetcore-sqldb-app.md)

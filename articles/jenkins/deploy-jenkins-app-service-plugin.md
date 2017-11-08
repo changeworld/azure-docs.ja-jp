@@ -15,24 +15,25 @@ ms.workload: web
 ms.date: 7/24/2017
 ms.author: mlearned
 ms.custom: Jenkins
-ms.openlocfilehash: 778fe746f1e8dff1d1c80b6ba7d8f10cc2bfacee
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e38c69ec55d894053792fbf284d07944d7f44dc0
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="deploy-to-azure-app-service-by-using-the-jenkins-plugin"></a>Jenkins プラグインを使用した Azure App Service へのデプロイ 
+
 Java Web アプリを Azure にデプロイするには、[Jenkins パイプライン](/azure/jenkins/execute-cli-jenkins-pipeline)で Azure CLI を使用するか、[Azure App Service Jenkins プラグイン](https://plugins.jenkins.io/azure-app-service)を使用します。 Jenkins プラグイン バージョン 1.0 では、次のツールを介して Azure App Service の Web Apps 機能を使用することで継続的なデプロイをサポートします。
 * Git および FTP
 * Web Apps on Linux 用 Docker
 
 このチュートリアルで学習する内容は次のとおりです。
 > [!div class="checklist"]
-> * Git および FTP を介して Web Apps をデプロイするように Jenkins を構成する 
-> * Web Apps for Containers をデプロイするように Jenkins を構成する 
-
+> * Git および FTP を介して Web Apps をデプロイするように Jenkins を構成する
+> * Web App for Containers をデプロイするように Jenkins を構成する
 
 ## <a name="create-and-configure-a-jenkins-instance"></a>Jenkins インスタンスを作成して構成する
+
 Jenkins マスターがまだない場合は、[ソリューション テンプレート](install-jenkins-solution-template.md)から始めます。このテンプレートには、Java Development Kit (JDK) バージョン 8 と次の必須の Jenkins プラグインが含まれています。
 
 * [Jenkins Git クライアント プラグイン](https://plugins.jenkins.io/git-client) バージョン 2.4.6 
@@ -51,7 +52,7 @@ sudo apt-get install -y openjdk-7-jdk
 sudo apt-get install -y maven
 ```
 
-Web Apps for Containers にデプロイする場合は、ビルドに使用する Jenkins マスターまたは VM エージェントに Docker をインストールします。 手順については、[Ubuntu への Docker のインストール](https://docs.docker.com/engine/installation/linux/ubuntu/)に関するページを参照してください。
+Web App for Containers にデプロイする場合は、ビルドに使用する Jenkins マスターまたは VM エージェントに Docker をインストールします。 手順については、[Ubuntu への Docker のインストール](https://docs.docker.com/engine/installation/linux/ubuntu/)に関するページを参照してください。
 
 ##<a name="service-principal"></a>Jenkins 資格情報に Azure サービス プリンシパルを追加する
 
@@ -128,7 +129,7 @@ Azure App Service Jenkins プラグインは、パイプラインに対応して
 6. **[Script Path]\(スクリプト パス\)** の値を **Jenkinsfile_ftp_plugin** に更新します。
 7. **[Save]\(保存\)** をクリックし、ジョブを実行します。
 
-## <a name="configure-jenkins-to-deploy-web-apps-for-containers"></a>Web Apps for Containers をデプロイするように Jenkins を構成する
+## <a name="configure-jenkins-to-deploy-web-app-for-containers"></a>Web App for Containers をデプロイするように Jenkins を構成する
 
 Web Apps on Linux では、Docker を使用したデプロイをサポートしています。 Docker を使用して Web アプリをデプロイするには、Web アプリとサービス ランタイムを Docker イメージにパッケージ化する Dockerfile を用意する必要があります。 その後、Jenkins プラグインがイメージをビルドして Docker レジストリにプッシュし、イメージを Web アプリにデプロイします。
 
@@ -168,7 +169,7 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
 12. ファイル アップロードの方法と同様に、**運用環境**以外の別の**スロット**名を選択できます。
 13. プロジェクトを保存してビルドします。 コンテナー イメージがレジストリにプッシュされ、Web アプリがデプロイされます。
 
-### <a name="deploy-web-apps-for-containers-by-using-jenkins-pipeline"></a>Jenkins パイプラインを使用して Web Apps for Containers をデプロイする
+### <a name="deploy-web-app-for-containers-by-using-jenkins-pipeline"></a>Jenkins パイプラインを使用して Web App for Containers をデプロイする
 
 1. GitHub インターフェイスで、**Jenkinsfile_container_plugin** ファイルを開きます。 ファイルを編集するには、鉛筆アイコンをクリックします。 11 行目と 12 行目にある、Web アプリの **resourceGroup** と **webAppName** の定義を更新します。
     ```java
@@ -176,15 +177,15 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
     def webAppName = '<myAppName>'
     ```
 
-2. 13 行目を、使用するコンテナー レジストリ サーバーに変更します。   
+2. 13 行目を、使用するコンテナー レジストリ サーバーに変更します。
     ```java
     def registryServer = '<registryURL>'
-    ```    
+    ```
 
-3. 16 行目を変更して、Jenkins インスタンスの資格情報 ID を使用します。  
+3. 16 行目を変更して、Jenkins インスタンスの資格情報 ID を使用します。
     ```java
     azureWebAppPublish azureCredentialsId: '<mySp>', publishType: 'docker', resourceGroup: resourceGroup, appName: webAppName, dockerImageName: imageName, dockerImageTag: imageTag, dockerRegistryEndpoint: [credentialsId: 'acr', url: "http://$registryServer"]
-    ```    
+    ```
 
 ### <a name="create-a-jenkins-pipeline"></a>Jenkins パイプラインを作成する    
 
@@ -234,4 +235,4 @@ Azure Container Registry を使用している場合は、**[Docker registry URL
 
 > [!div class="checklist"]
 > * FTP を介して Azure App Service をデプロイするように Jenkins を構成する 
-> * Web Apps for Containers にデプロイするように Jenkins を構成する 
+> * Web App for Containers にデプロイするように Jenkins を構成する 

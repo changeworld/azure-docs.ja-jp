@@ -3,7 +3,7 @@ title: "ローカルでの Azure Functions の開発と実行 | Microsoft Docs"
 description: "Azure 関数を Azure Functions で実行する前に、ローカル コンピューターでコーディングしてテストする方法について説明します。"
 services: functions
 documentationcenter: na
-author: lindydonna
+author: ggailey777
 manager: cfowler
 editor: 
 ms.assetid: 242736be-ec66-4114-924b-31795fd18884
@@ -12,13 +12,13 @@ ms.workload: na
 ms.tgt_pltfrm: multiple
 ms.devlang: multiple
 ms.topic: article
-ms.date: 09/25/2017
+ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: b6ab081311822abd9c0a24b4cc241291bf56af68
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 35fd47025ca0dba1edbe1d7dd3ee0172fc45d6f5
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="code-and-test-azure-functions-locally"></a>Azure Functions をローカルでコーディングしてテストする
 
@@ -142,7 +142,7 @@ local.settings.json ファイル内の設定は、ローカルで実行されて
 
 有効なストレージ接続文字列が **AzureWebJobsStorage** に設定されていない場合は、次のエラー メッセージが表示されます。  
 
->local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 'func azure functionapp fetch-app-settings' <functionAppName> を実行するか、local.settings.json で接続文字列を指定することができます。
+>local.settings.json に AzureWebJobsStorage の値がありません。 これは HTTP 以外のすべてのトリガーに必要です。 "func azure functionapp fetch-app-settings <functionAppName>" を実行するか、local.settings.json で接続文字列を指定することができます。
   
 [!INCLUDE [Note to not use local storage](../../includes/functions-local-settings-note.md)]
 
@@ -266,9 +266,9 @@ curl --request POST http://localhost:7071/api/MyHttpTrigger --data '{"name":"Azu
 ブラウザーから GET 要求を行ってクエリ文字列でデータを渡すことができることに注意してください。 その他すべての HTTP メソッドについては、cURL、Fiddler、Postman、または類似の HTTP テスト ツールを使用する必要があります。  
 
 #### <a name="non-http-triggered-functions"></a>HTTP でトリガーされない関数
-HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 ローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、テスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。  
+HTTP トリガーと webhook を除く、あらゆる種類の関数の場合、管理エンドポイントを呼び出すことによって、関数をローカルでテストできます。 HTTP POST 要求を使ってローカル サーバーでこのエンドポイントを呼び出すと、関数がトリガーされます。 必要に応じて、POST 要求の本体でテスト データを実行に渡すことができます。 この機能は、Azure Portal の **[テスト]** タブに似ています。  
 
-次の管理者エンドポイントを呼び出して、HTTP POST 要求で非 HTTP 関数をトリガーします。
+次の管理者エンドポイントを呼び出して、非 HTTP 関数をトリガーします。
 
     http://localhost:{port}/admin/functions/{function_name}
 

@@ -1,6 +1,6 @@
 ---
 title: "フェールオーバー グループとアクティブ geo レプリケーション - Azure SQL Database | Microsoft Docs"
-description: "自動フェールオーバー グループとアクティブ geo レプリケーションを使用すると、任意の Azure データセンターに 4 つのデータベースのレプリカを設定し、機能停止の際には自動的にフェールオーバーします。"
+description: "アクティブ geo レプリケーションで自動フェールオーバー グループを使用して、障害発生時に 自動フェイル オーバーを実行できるようにします。"
 services: sql-database
 documentationcenter: na
 author: anosov1960
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: na
 ms.workload: NA
 ms.date: 10/11/2017
 ms.author: sashan
-ms.openlocfilehash: 0725d5747ab343dcf99ad8f2dc0e47d7304c9f1e
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 0b424e2b260ec527f33cdbfe49d1d981b14edfda
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="overview-failover-groups-and-active-geo-replication"></a>概要: フェールオーバー グループとアクティブ geo レプリケーション
 アクティブ geo レプリケーションにより、同じまたは異なるデータ センターの場所 (リージョン) に最大 4 つの読み取り可能なセカンダリ データベースを構成できます。 セカンダリ データベースは、データ センターで障害が発生した場合やプライマリ データベースに接続できない場合のクエリとフェールオーバーに使用できます。 フェールオーバーはユーザーのアプリケーションによって手動で開始する必要があります。 フェールオーバー後、新しいプライマリには別の接続エンドポイントが設定されます。 
@@ -65,7 +65,7 @@ Azure SQL Database の自動フェールオーバー グループ (プレビュ�
 * **読み取り可能なセカンダリ データベース**: アプリケーションは、プライマリ データベースへのアクセスに使用されているのと同じ、または異なるセキュリティ プリンシパルを使用して、セカンダリ データベースにアクセスして読み取り専用操作を実行できます。 セカンダリ データベースは、セカンダリ上で実行されるクエリによってプライマリ (ログの再生) の更新プログラムのレプリケーションが遅延しないように、スナップショット分離モードで動作します。
 
    > [!NOTE]
-   > スキーマの更新があり、セカンダリ データベースが、そのセカンダリ データベース上でスキーマ ロックを要求するプライマリからその更新を受け取る場合、セカンダリ データベースでのログの再生は遅延します。 
+   > プライマリ データベースでスキーマの更新がある場合、セカンダリ データベースのログ再生は遅延します。 後者の場合は、セカンダリ データベースでスキーマ ロックが必要です。 
    > 
 
 * **複数の読み取り可能なセカンダリ**: 2 つ以上のセカンダリ データベースを使用すると、プライマリ データベースとアプリケーションの冗長性が向上し、保護レベルが強化されます。 セカンダリ データベースが複数存在する場合、セカンダリ データベースのいずれかに障害が発生しても、アプリケーションは保護された状態が維持されます。 セカンダリ データベースが 1 つしか存在しない場合に障害が発生すると、新しいセカンダリ データベースが作成されるまで、アプリケーションは高いリスクにさらされます。
@@ -138,7 +138,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 
 ## <a name="manage-sql-database-failover-using-transact-sql"></a>Transact-SQL を使用して SQL データベース フェールオーバーを管理する
 
-| コマンド | Description |
+| コマンド | 説明 |
 | --- | --- |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |ADD SECONDARY ON SERVER 引数を使用して、既存のデータベースのセカンダリ データベースを作成し、データ レプリケーションを開始します。 |
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |FAILOVER または FORCE_FAILOVER_ALLOW_DATA_LOSS を使用して、セカンダリ データベースをプライマリに切り替え、フェールオーバーを開始します |
@@ -170,7 +170,7 @@ DR リージョン内のアプリケーションで使う接続文字列を変�
 >
 
 ## <a name="manage-sql-database-failover-using-the-rest-api"></a>REST API を使用して SQL データベース フェールオーバーを管理する
-| API | Description |
+| API | 説明 |
 | --- | --- |
 | [Create または Update Database (createMode=Restore)](/rest/api/sql/Databases/CreateOrUpdate) |プライマリまたはセカンダリ データベースを作成、更新、または復元します。 |
 | [Get Create or Update Database Status](/rest/api/sql/Databases/CreateOrUpdate) |復元操作中にステータスを返します。 |

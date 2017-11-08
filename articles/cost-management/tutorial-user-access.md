@@ -5,16 +5,16 @@ services: cost-management
 keywords: 
 author: bandersmsft
 ms.author: banders
-ms.date: 09/19/2017
+ms.date: 10/11/2017
 ms.topic: tutorial
 ms.service: cost-management
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: aca9f0b3320f298987cf39172fd4b043326a2f4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: a42f3b51bf6d888d0d5602887ed317c6164391ef
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="assign-access-to-cost-management-data"></a>コスト管理データへのアクセスを割り当てる
 
@@ -49,6 +49,8 @@ Azure の契約またはアカウントを登録した時点で、管理者権�
 
 ![ユーザー アクセス権を持つ新規ユーザーの追加](.\media\tutorial-user-access\new-user-access.png)
 
+ユーザーの追加に関するチュートリアル ビデオを見るには、「[Adding Users to Azure Cost Management by Cloudyn](https://youtu.be/Nzn7GLahx30)」(Cloudyn の Azure Cost Management にユーザーを追加する) をご覧ください。
+
 ## <a name="create-entities"></a>エンティティを作成する
 
 コスト エンティティの階層構造を定義する場合、組織の構造を識別することが重要です。
@@ -67,6 +69,10 @@ Cloudyn ポータルで、右上にある **[設定]** をクリックして **[
 
 完了したら、エンティティを **[保存]** します。
 
+
+コスト エンティティ階層の作成に関するチュートリアル ビデオを見るには、「[Creating a Cost Entity Hierarchy in Azure Cost Management by Cloudyn](https://youtu.be/dAd9G7u0FmU)」(Cloudyn の Azure Cost Management でコスト エンティティ階層を作成する) をご覧ください。
+
+Azure Enterprise Agreement ユーザーの場合は、「[Connecting to Azure Resource Manager with Azure Cost Management by Cloudyn](https://youtu.be/oCIwvfBB6kk)」(Cloudyn の Azure Cost Management に Azure Resource Manager を接続する) のアカウントとサブスクリプションのエンティティとの関連付けに関するチュートリアル ビデオをご覧ください。
 
 ## <a name="next-steps"></a>次のステップ
 

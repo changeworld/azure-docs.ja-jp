@@ -10,17 +10,17 @@ tags:
 ms.assetid: bbb10ecc-739f-4159-b844-12b4be161231
 ms.service: sql-database
 ms.custom: monitor & tune
-ms.workload: data-management
+ms.workload: Inactive
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/05/2017
 ms.author: genemi
-ms.openlocfilehash: 8477c9825161cb2ae8ca17227cd544183bcaafb3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: abf660e3fafd1a5020cdf9a6beb5b73252b72cfc
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="event-file-target-code-for-extended-events-in-sql-database"></a>SQL Database の拡張イベントのためのイベント ファイル ターゲット コード
 

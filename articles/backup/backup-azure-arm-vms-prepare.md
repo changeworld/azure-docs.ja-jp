@@ -15,11 +15,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 9/3/2017
 ms.author: markgal;trinadhk;
-ms.openlocfilehash: 3fa6f4f850fc67d41f619d46bd61a19fe890b0fb
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7ee2e42e05fb4866d32c24b0d4c788b0197970ad
+ms.sourcegitcommit: 9ae92168678610f97ed466206063ec658261b195
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/17/2017
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Resource Manager でデプロイされた仮想マシンをバックアップする環境の準備
 > [!div class="op_single_selector"]
@@ -204,7 +204,13 @@ VM エージェントが仮想マシンにインストールされると、Azure
 | HTTP プロキシ |許可するストレージ URL をプロキシで詳細に制御可能。<br>VM に対するインターネット アクセスを単一の場所で実現。<br>Azure の IP アドレスの変更の影響を受けない。 |プロキシ ソフトウェアで VM を実行するための追加のコストが発生する。 |
 
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Azure データ センターの IP の範囲をホワイトリストに登録する
-Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/en-us/download/details.aspx?id=41653)を参照してください。
+* Azure データ センターの IP 範囲をホワイトリストに登録する場合、IP 範囲の詳細と手順については、[Azure の Web サイト](http://www.microsoft.com/en-us/download/details.aspx?id=41653)を参照してください。
+* [サービス タグ](../virtual-network/security-overview.md#service-tags)を使用し、特定のリージョンのストレージに接続できます。 ストレージ アカウントへのアクセスを許可する規則の優先度を内部アクセスを禁止する規則の優先度より上に設定してください。 
+
+  ![リージョンのストレージ タグが与えられた NSG](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
+
+> [!WARNING]
+> ストレージ タグは特定のリージョンでのみ利用できます。また、これはプレビュー版です。 リージョンの一覧については、「[ストレージのサービス タグ](../virtual-network/security-overview.md#service-tags)」を参照してください。
 
 ### <a name="using-an-http-proxy-for-vm-backups"></a>VM のバックアップに HTTP プロキシを使用する
 VM をバックアップする際、バックアップ拡張機能は HTTPS API を使用してスナップショット管理コマンドを Azure Storage に送信します。 パブリック インターネットにアクセスできるように構成されたコンポーネントは HTTP プロキシのみであるため、HTTP プロキシ経由でバックアップ拡張機能のトラフィックをルーティングします。

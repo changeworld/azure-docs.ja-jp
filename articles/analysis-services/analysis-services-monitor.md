@@ -4,7 +4,7 @@ description: "Azure Portal で、Analysis Services のサーバー メトリッ�
 services: analysis-services
 documentationcenter: 
 author: minewiskan
-manager: erikre
+manager: kfile
 editor: 
 tags: 
 ms.assetid: 
@@ -15,11 +15,11 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/14/2017
 ms.author: owend
-ms.openlocfilehash: c0f00e546d37e52f3583a0acfc26acd225684889
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: f9b32029f0a7065fff73ddb6417fc5c1c7e658a5
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="monitor-server-metrics"></a>サーバー メトリックの監視
 

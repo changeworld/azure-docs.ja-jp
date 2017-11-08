@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/29/2017
+ms.date: 10/13/2017
 ms.author: elioda
-ms.openlocfilehash: b3ca2ed90dd14350d3962a558aaac41f2e007bbd
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3ea10ee8652dc2a03791feb66041431e7b3c6ae1
+ms.sourcegitcommit: ccb84f6b1d445d88b9870041c84cebd64fbdbc72
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/14/2017
 ---
 # <a name="iot-hub-high-availability-and-disaster-recovery"></a>IoT Hub の高可用性とディザスター リカバリー
-IoT Hub は、Azure サービスとして、Azure リージョン レベルの冗長性を使用して高可用性 (HA) を提供します。その際、ソリューションによる追加操作は必要ありません。 さらに、Microsoft Azure Platform には、障害復旧 (DR) 機能または複数のリージョンにわたる可用性を備えたソリューションを構築するのに役立つ機能が用意されています。 複数のリージョンにわたるグローバルな高可用性をデバイスまたはユーザーに提供する場合は、これらの Azure DR 機能を使用できるようにソリューションを設計し、準備します。 ビジネス継続性および障害復旧のための Azure の組み込み機能については、[Azure のビジネス継続性テクニカル ガイダンス](../resiliency/resiliency-technical-guidance.md)に関する記事を参照してください。 [Azure アプリケーションの障害復旧と高可用性][Disaster recovery and high availability for Azure applications]に関するページでは、HA と DR を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
+IoT Hub は、Azure サービスとして、Azure リージョン レベルの冗長性を使用して高可用性 (HA) を提供します。その際、ソリューションによる追加操作は必要ありません。 さらに、Microsoft Azure Platform には、障害復旧 (DR) 機能または複数のリージョンにわたる可用性を備えたソリューションを構築するのに役立つ機能が用意されています。 複数のリージョンにわたるグローバルな高可用性をデバイスまたはユーザーに提供する場合は、これらの Azure DR 機能を利用してください。 ビジネス継続性および障害復旧のための Azure の組み込み機能については、[Azure のビジネス継続性テクニカル ガイダンス](../resiliency/resiliency-technical-guidance.md)に関する記事を参照してください。 [Azure アプリケーションの障害復旧と高可用性][Disaster recovery and high availability for Azure applications]に関するページでは、HA と DR を実現するための Azure アプリケーションの戦略に関するアーキテクチャのガイダンスを確認できます。
 
 ## <a name="azure-iot-hub-dr"></a>Azure IoT Hub DR
 IoT Hub では、リージョン内の HA だけでなく、ユーザーの介入を必要としない災害復旧のためのフェールオーバー メカニズムを実装します。 IoT Hub DR は自己開始型のメカニズムであり、目標復旧時間 (RTO) は 2 ～ 26 時間で、回復ポイントの目標 (RPO) は次のとおりです。
@@ -38,7 +38,7 @@ IoT Hub では、リージョン内の HA だけでなく、ユーザーの介�
 ## <a name="regional-failover-with-iot-hub"></a>IoT Hub での地域フェールオーバー
 IoT ソリューションでのデプロイ トポロジの詳しい説明はこの記事の範囲外です。 この記事では、高可用性とディザスター リカバリーを実現するために、*地域フェールオーバー* デプロイ モデルについて検討します。
 
-地域フェールオーバー モデルでは、ソリューション バックエンドは主に 1 つのデータセンターの場所で実行され、セカンダリの IoT Hub とバックエンドは別のデータセンターの場所にデプロイされます。 プライマリ データセンターの IoT ハブに障害が発生した場合、またはデバイスからプライマリ データセンターへのネットワーク接続が中断された場合、プライマリ ゲートウェイに到達できないと、デバイスは必ずセカンダリ サービス エンドポイントを使用します。 複数のリージョンにまたがるフェールオーバー機能を使用すると、ソリューションの可用性は、1 つのリージョンの高可用性を超えて向上させることができます。
+地域フェールオーバー モデルの場合、ソリューション バック エンドは主に 1 つのデータセンターの場所で実行されます。 セカンダリ IoT ハブとバック エンドは、別のデータセンターの場所にデプロイされています。 プライマリ データセンターの IoT ハブに障害が発生した場合、またはデバイスからプライマリ データセンターへのネットワーク接続が中断された場合、デバイスはセカンダリ サービス エンドポイントを使用します。 1 つのリージョン内ではなく、リージョン間フェールオーバー モデルを実装することで、ソリューションの可用性を改善できます。 
 
 大まかに言えば、IoT Hub で地域フェールオーバー モデルを実装するには、以下を行う必要があります。
 

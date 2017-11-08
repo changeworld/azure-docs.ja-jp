@@ -3,7 +3,7 @@ title: "Azure Application Insights のデータ モデル | Microsoft Docs"
 description: "JSON の連続エクスポートからエクスポートされ、フィルターとして使用されるプロパティについて説明します。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: cabad41c-0518-4669-887f-3087aef865ea
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/21/2016
-ms.author: bwren
-ms.openlocfilehash: a485ddd555f65473d81896effc4a3562bda71410
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 86aef6ba93224bbbb41bc7e651aaeec394fd8718
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-insights-export-data-model"></a>Application Insights エクスポート データ モデル
 次のテーブルは、 [Application Insights SDK](app-insights-overview.md) からポータルに送信されるテレメトリのプロパティを一覧表示したものです。

@@ -13,14 +13,14 @@ ms.custom: overview-samples
 ms.devlang: azurecli
 ms.topic: article
 ms.tgt_pltfrm: sql-database
-ms.workload: database
+ms.workload: On Demand
 ms.date: 06/23/2017
 ms.author: janeng
-ms.openlocfilehash: 91b02d1099dc1683abb1042b3dc65cbee5aeae5b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: b21dbee47ec9597250ef048a743d458eca3cff79
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-cli-samples-for-azure-sql-database"></a>Azure SQL Database 用の Azure CLI サンプル
 

@@ -1,6 +1,6 @@
 ---
 title: "PowerShell を使用した Azure Stack での Key Vault の管理 | Microsoft Docs"
-description: "PowerShell を使用して Azure Stack で Key Vault を管理する方法を説明します。"
+description: "PowerShell を使用して Azure Stack で Key Vault を管理する方法を説明します"
 services: azure-stack
 documentationcenter: 
 author: SnehaGunda
@@ -14,24 +14,27 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: sngun
-ms.openlocfilehash: d1ce9f81006809aa3c3c07744298a8194971e0b3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e920ee20268f5f43592e5a27fe82dcf27cb85af1
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
-# <a name="manage-key-vault-in-azure-stack-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
+# <a name="manage-key-vault-in-azure-stack-by-using-powershell"></a>PowerShell を使用した Azure Stack での Key Vault の管理
 
-この記事は、PowerShell を使用した Azure Stack での Key Vault の作成および管理に取りかかるのに役立ちます。 この記事で説明する Key Vault の PowerShell コマンドレットは、Azure PowerShell SDK の一部として使用できます。 以下のセクションでは、コンテナーの作成、格納、暗号キーとシークレットの管理、およびユーザーまたはアプリケーションに対するコンテナーでの操作の呼び出しの承認に必要な PowerShell コマンドレットについて説明します。 
+この記事は、PowerShell を使用した Azure Stack での Key Vault の作成および管理に取りかかるのに役立ちます。 この記事で説明する Key Vault の PowerShell コマンドレットは、Azure PowerShell SDK の一部として使用できます。 以下のセクションでは、次の操作に必要な PowerShell コマンドレットについて説明します。
+   - コンテナーを作成する。 
+   - 暗号化キーとシークレットを格納および管理する。 
+   - コンテナーで操作を呼び出すことができるように、ユーザーまたはアプリケーションを承認する。 
 
 ## <a name="prerequisites"></a>前提条件
-* ユーザーは、Key Vault サービスを含むプランをサブスクライブする必要があります。 
-* [PowerShell for Azure Stack のインストール。](azure-stack-powershell-install.md)  
-* [Azure Stack ユーザーの PowerShell 環境の構成](azure-stack-powershell-configure-user.md)
+* Azure Key Vault サービスを含むプランをサブスクライブする必要があります。
+* [PowerShell for Azure Stack をインストールします](azure-stack-powershell-install.md)。  
+* [Azure Stack ユーザーの PowerShell 環境を構成します](azure-stack-powershell-configure-user.md)。
 
-## <a name="enable-your-tenant-subscription-for-vault-operations"></a>コンテナー操作のテナント サブスクリプションの有効化
+## <a name="enable-your-tenant-subscription-for-key-vault-operations"></a>Key Vault 操作のためのテナント サブスクリプションの有効化
 
-キー コンテナーを操作するには、コンテナー操作のテナント サブスクリプションが有効になっていることを確認する必要があります。 確認するには、次のコマンドを実行します。
+キー コンテナーを操作するには、コンテナー操作のテナント サブスクリプションが有効になっていることを確認する必要があります。 コンテナー操作が有効になっていることを確認するには、次のコマンドを実行します。
 
 ```PowerShell
 Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
@@ -42,7 +45,7 @@ Get-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault | ft -Autosize
 
 ![登録の状態](media/azure-stack-kv-manage-powershell/image1.png)
 
-そうでない場合は、次のコマンドを呼び出して、サブスクリプションで Key Vault サービスを登録します。
+コンテナー操作が有効になっていない場合は、次のコマンドを呼び出して、サブスクリプションで Key Vault サービスを登録します。
 
 ```PowerShell
 Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
@@ -52,13 +55,11 @@ Register-AzureRmResourceProvider -ProviderNamespace Microsoft.KeyVault
 
 登録に成功した場合は、次の出力が返されます。
 
-![登録](media/azure-stack-kv-manage-powershell/image2.png)
-
-以下のセクションでは、Key Vault サービスがユーザー サブスクリプション内で登録されているものとします。 キー コンテナーのコマンドを呼び出すときに、「The subscription is not registered to use namespace ‘Microsoft.KeyVault」(サブスクリプションは名前空間 ‘Microsoft.KeyVault を使用するように登録されていません) というエラーが発生する場合は、前に述べた手順に従って [Key Vault リソースプロバイダーを有効に](#enable-your-tenant-subscription-for-vault-operations)したかどうか確認してください。
+![登録](media/azure-stack-kv-manage-powershell/image2.png) キー コンテナーのコマンドを呼び出すと、"サブスクリプションが名前空間 'Microsoft.KeyVault' を使用するように登録されていません" のようなエラーが発生する場合があります。このエラーが発生したら、前に説明した手順に従って、[Key Vault リソース プロバイダーが有効](#enable-your-tenant-subscription-for-vault-operations)になっていることを確認してください。
 
 ## <a name="create-a-key-vault"></a>Key Vault を作成します 
 
-キー コンテナーを作成するには、リソース グループを作成して、キー コンテナー関連のすべてのリソースがリソース グループに存在するようにします。 次のコマンドを使用して、新しいリソース グループを作成します。
+キー コンテナーを作成する前に、リソース グループを作成し、このリソース グループに、キー コンテナー関連のすべてのリソースが存在するようにしておきます。 次のコマンドを使用して、新しいリソース グループを作成します。
 
 ```PowerShell
 New-AzureRmResourceGroup -Name “VaultRG” -Location local -verbose -Force
@@ -80,9 +81,9 @@ New-AzureRmKeyVault -VaultName “Vault01” -ResourceGroupName “VaultRG” -L
 
 ![新しいキー コンテナー](media/azure-stack-kv-manage-powershell/image4.png)
 
-このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 アプリケーションは、このコンテナーにアクセスするときに、出力に示される**コンテナー URI** プロパティを使用します。 たとえば、ここでのコンテナー URI は **https://vault01.vault.local.azurestack.external** です。 REST API を介してこのキー コンテナーと対話するアプリケーションは、この URI を使用する必要があります。
+このコマンドの出力は、作成したキー コンテナーのプロパティを示します。 アプリケーションは、このコンテナーにアクセスするときに、出力に示される**コンテナー URI** プロパティを使用します。 たとえば、この場合のコンテナー URI (Uniform Resource Identifier) は "https://vault01.vault.local.azurestack.external" です。 REST API を介してこのキー コンテナーと対話するアプリケーションは、この URI を使用する必要があります。
 
-ADFS ベースのデプロイでは、PowerShell を使用してキー コンテナーを作成する場合、「Access policy is not set. No user or application has access permission to use this vault」(アクセス ポリシーが設定されていません。ユーザーまたはアプリケーションにこのコンテナーを使用するアクセス権限がありません) という警告が表示されることがあります。 この問題を解決するには、[Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) コマンドを使用して、コンテナーのアクセス ポリシーを設定します。
+Active Directory フェデレーション サービス (AD FS) ベースのデプロイでは、PowerShell を使用してキー コンテナーを作成するときに、"アクセス ポリシーが設定されていません。 ユーザーまたはアプリケーションに、このコンテナーを使用するアクセス許可がありません" という警告が表示される場合があります。 この問題を解決するには、[Set-AzureRmKeyVaultAccessPolicy](azure-stack-kv-manage-powershell.md#authorize-an-application-to-use-a-key-or-secret) コマンドを使用して、コンテナーのアクセス ポリシーを設定します。
 
 ```PowerShell
 # Obtain the security identifier(SID) of the active directory user
@@ -95,7 +96,7 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName "{key vault name}" -ResourceGroupName
 
 ## <a name="manage-keys-and-secrets"></a>キーとシークレットの管理
 
-コンテナーを作成したら、次の手順を実行して、コンテナー内でキーとシークレットを作成および管理します。
+キー コンテナーを作成したら、次の手順を実行し、キー コンテナーでキーとシークレットを作成および管理します。
 
 ### <a name="create-a-key"></a>キーの作成
 
@@ -110,10 +111,10 @@ Add-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01” -verbose -Destin
 
 ![新しいキー](media/azure-stack-kv-manage-powershell/image5.png)
 
-これで、作成されたキーの URI を使用してそのキーを参照できます。 既存のキーと同じ名前のキーを作成またはインポートした場合、元のキーは、新しいキーで指定される値で更新されます。  前のバージョンにアクセスするには、キーのバージョン固有の URI を使用します。 たとえば、次のように入力します。 
+これで、作成されたキーの URI を使用してそのキーを参照できます。 既存のキーと同じ名前のキーを作成またはインポートした場合、元のキーは、新しいキーで指定される値で更新されます。 前のバージョンにアクセスするには、キーのバージョン固有の URI を使用します。 For example: 
 
-* **https://vault10.vault.local.azurestack.external:443/keys/key01** を使用すると、常に現在のバージョンが取得されます  
-* **https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a** を使用すると、この特定のバージョンが取得されます
+* "https://vault10.vault.local.azurestack.external:443/keys/key01" を使用すると、常に現在のバージョンが取得されます。 
+* "https://vault010.vault.local.azurestack.external:443/keys/key01/d0b36ee2e3d14e9f967b8b6b1d38938a" を使用すると、この特定のバージョンが取得されます。
 
 ### <a name="get-a-key"></a>キーの取得
 
@@ -125,7 +126,7 @@ Get-AzureKeyVaultKey -VaultName “Vault01” -Name “Key01”
 
 ### <a name="create-a-secret"></a>シークレットの作成
 
-**Set-AzureKeyVaultSecret** コマンドを使用して、コンテナーでシークレットを作成または更新します。 シークレットがまだ存在しない場合はシークレットが作成され、シークレットがすでに存在する場合は新しいバージョンのシークレットが作成されます。
+**Set-AzureKeyVaultSecret** コマンドを使用して、コンテナーでシークレットを作成または更新します。 まだシークレットが存在していない場合は、作成されます。 既に存在する場合は、新しいバージョンのシークレットが作成されます。
 
 ```PowerShell
 $secretvalue = ConvertTo-SecureString “User@123” -AsPlainText -Force
@@ -144,12 +145,12 @@ Set-AzureKeyVaultSecret -VaultName “Vault01” -Name “Secret01” -SecretVal
 Get-AzureKeyVaultSecret -VaultName “Vault01” -Name “Secret01”
 ```
 
-キーとシークレットを作成したら、それらのキーとシークレットを外部アプリケーションが使用することを承認できます。
+キーとシークレットを作成したら、そのキーとシークレットを外部アプリケーションが使用することを承認できます。
 
 ## <a name="authorize-an-application-to-use-a-key-or-secret"></a>アプリケーションがキーまたはシークレットを使用することの承認
 
-アプリケーションがキー コンテナーでキーまたはシークレットにアクセスすることを承認するには、**Set-AzureRmKeyVaultAccessPolicy** コマンドを使用します。
-たとえば、コンテナー名が ContosoKeyVault で、承認するアプリケーションのクライアント ID が 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed だとします。 次のコマンドを実行してアプリケーションを承認します。 必要に応じて、**PermissionsToKeys** パラメーターを指定して、ユーザー、アプリケーション、またはセキュリティ グループのアクセス許可を設定できます。
+**Set-AzureRmKeyVaultAccessPolicy** コマンドを使用して、キー コンテナーのキーまたはシークレットへの、アプリケーションによるアクセスを承認します。
+次の例では、コンテナー名が *ContosoKeyVault* で、承認するアプリケーションのクライアント ID が *8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed* です。 アプリケーションを承認するには、次のコマンドを実行します。 必要に応じて、**PermissionsToKeys** パラメーターを指定し、ユーザー、アプリケーション、またはセキュリティ グループに対してアクセス許可を設定できます。
 
 ```PowerShell
 Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalName 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed -PermissionsToKeys decrypt,sign
@@ -162,5 +163,6 @@ Set-AzureRmKeyVaultAccessPolicy -VaultName 'ContosoKeyVault' -ServicePrincipalNa
 ```
 
 ## <a name="next-steps"></a>次のステップ
-* [キー コンテナーに格納されているパスワードを使用した VM のデプロイ](azure-stack-kv-deploy-vm-with-secret.md)  
-* [キー コンテナーに格納されている証明書を使用した VM のデプロイ](azure-stack-kv-push-secret-into-vm.md) 
+* [Key Vault に格納されているパスワードを使用して VM をデプロイする](azure-stack-kv-deploy-vm-with-secret.md) 
+* [Key Vault に格納されている証明書を使用して VM をデプロイする](azure-stack-kv-push-secret-into-vm.md)
+

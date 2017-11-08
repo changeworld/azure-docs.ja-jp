@@ -63,12 +63,40 @@
       href: regions-and-availability.md
     - name: VM の種類とサイズ
       href: sizes.md
+      items:
+        - name: 汎用
+          href: sizes-general.md
+          items:
+            - name: 負荷の急増に対応できる B シリーズ
+              href: b-series-burstable.md
+        - name: コンピューティング最適化
+          href: sizes-compute.md
+        - name: メモリ最適化
+          href: sizes-memory.md
+        - name: ストレージ最適化
+          href: sizes-storage.md
+        - name: GPU 最適化
+          href: sizes-gpu.md
+          items:
+            - name: GPU ドライバーの設定
+              href: n-series-driver-setup.md
+        - name: ハイ パフォーマンス コンピューティング
+          href: sizes-hpc.md
+        - name: Azure コンピューティング ユニット (ACU)
+          href: sizes-general.md
     - name: 動作保証済みディストリビューション
       href: endorsed-distros.md
     - name: メンテナンスと更新
       href: maintenance-and-updates.md
     - name: ストレージ
       href: azure-vm-storage-overview.md
+      items:
+        - name: Premium Storage
+          href: premium-storage.md
+        - name: Premium Storage のパフォーマンス
+          href: premium-storage-performance.md
+        - name: Standard Storage
+          href: standard-storage.md
     - name: ネットワーク
       href: network-overview.md
     - name: 自動スケール アプリケーション
@@ -289,6 +317,8 @@
           href: expand-disks.md
         - name: ディスクのスナップショットの作成
           href: snapshot-copy-managed-disk.md
+        - name: ディスクのバックアップとディザスター リカバリー
+          href: backup-and-disaster-recovery-for-azure-iaas-disks.md
         - name: 非管理対象ディスクのバックアップ
           href: incremental-snapshots.md
         - name: 管理ディスクに変換する
@@ -297,6 +327,8 @@
           href: convert-disk-storage.md
         - name: ファイルを VM にコピーする
           href: copy-files-to-linux-vm-using-scp.md
+        - name: Azure Site Recovery を使用した Premium Storage への移行
+          href: migrate-to-premium-storage-using-azure-site-recovery.md
         - name: File Storage を使用する
           href: mount-azure-file-storage-on-linux-using-smb.md
         - name: テンプレートによるディスクのデプロイ

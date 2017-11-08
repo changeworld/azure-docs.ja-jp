@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 09/25/2017
 ms.author: v-daljep
-ms.openlocfilehash: b075253c12918df63a464de79e2ab2ff43103da1
-ms.sourcegitcommit: 5d772f6c5fd066b38396a7eb179751132c22b681
+ms.openlocfilehash: 358986f58c431aebfe7b41daa8c40ba641dc408a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="use-the-intelligent-insights-azure-sql-database-performance-diagnostics-log"></a>Intelligent Insights Azure SQL Database パフォーマンス診断ログを使用する
 

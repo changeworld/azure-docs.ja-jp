@@ -1,6 +1,6 @@
 ---
 title: "Azure SQL Database のセキュリティの概要 | Microsoft Docs"
-description: "認証、承認、接続のセキュリティ、暗号化、コンプライアンスなどに関するクラウドと SQL Server オンプレミスの違いなど、Azure SQL Database と SQL Server のセキュリティの詳細について説明します。"
+description: "Azure SQL Database と SQL Server のセキュリティについて説明します。クラウドとオンプレミス SQL Server の違いなどが含まれます。"
 services: sql-database
 documentationcenter: 
 author: tmullaney
@@ -12,14 +12,14 @@ ms.custom: security
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 07/05/2017
 ms.author: thmullan;jackr
-ms.openlocfilehash: de2b70a6a6bc557902fbe1fe1391696ec9998d70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 181ad8471c0d0cb24d8f4eae6bddd9d750b4ee61
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="securing-your-sql-database"></a>SQL Database の保護
 

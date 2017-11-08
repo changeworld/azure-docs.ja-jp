@@ -16,11 +16,11 @@ ms.topic: article
 ms.date: 10/07/2017
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 086f73fd07e9ef24dd7fe776851e1a9402233f4b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 3b427556c589c7cc5205bfda16edc8d891814326
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="migrate-from-amazon-web-services-aws-and-other-platforms-to-managed-disks-in-azure"></a>アマゾン ウェブ サービス (AWS) やその他のプラットフォームから Azure の Managed Disks に移行する
 
@@ -47,9 +47,9 @@ AWS やオンプレミスの仮想化ソリューションから Azure に VHD �
 
 Azure Managed Disks は、ストレージ アカウントを管理する必要をなくして VM 管理をシンプルにします。 Managed Disks では、可用性セット内の VM の信頼性の向上というメリットもあります。 単一障害点を避けるために、可用性セット内の異なる VM のディスクは相互に十分に分離されます。 可用性セット内の異なる VM のディスクは異なるストレージ スケール ユニット (スタンプ) に自動的に配置されるため、ハードウェアとソフトウェアの障害を原因とする単一のストレージ スケール ユニット障害の影響が限定されます。 ニーズに基づいて、2 種類のストレージ オプションから選ぶことができます。 
  
-- [Premium Managed Disks](../../storage/common/storage-premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
+- [Premium Managed Disks](premium-storage.md) は、ソリッド ステート ドライブ (SSD) ベースのストレージ メディアで、I/O を集中的に行うワークロードを実行している仮想マシンに、高パフォーマンスで待ち時間の短いディスク サポートを提供します。 Premium Managed Disks に移行すると、これらのディスクの速度とパフォーマンスを最大限に高めることができます。  
 
-- [Standard Managed Disks](../../storage/common/storage-standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。  
+- [Standard Managed Disks](standard-storage.md) はハード ディスク ドライブ (HDD) ベースのストレージ メディアを使用し、パフォーマンス変動の影響を受けにくい開発テストやアクセス頻度の少ないワークロードに最適です。  
 
 ## <a name="plan-for-the-migration-to-managed-disks"></a>Managed Disks への移行の計画
 

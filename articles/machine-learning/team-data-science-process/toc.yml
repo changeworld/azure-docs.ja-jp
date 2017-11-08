@@ -31,7 +31,7 @@
   href: 'https://github.com/Azure/Azure-TDSP-ProjectTemplate'
 - name: プロジェクトの実行
   href: project-execution.md
-- name: Tutorials (チュートリアル)
+- name: 例
   href: walkthroughs.md
   items:
     - name: Azure Machine Learning
@@ -60,6 +60,12 @@
       href: walkthroughs-sql-server.md
     - name: SQL DW での T-SQL と Python の使用
       href: walkthroughs-sql-data-warehouse.md
+- name: トレーニング
+  items:
+    - name: データ サイエンティスト向け TDSP
+      href: team-data-science-process-for-data-scientists.md
+    - name: DevOps 向け TDSP
+      href: team-data-science-process-for-devops.md
 - name: 方法
   items:
     - name: Azure ML での TDSP の使用
@@ -78,8 +84,20 @@
         - name: Azure Machine Learning ワークスペース
           href: ../studio/create-workspace.md
           maintainContext: true
-        - name: 仮想マシンを設定する
-          href: virtual-machines.md
+        - name: データ サイエンス VM の設定
+          items:
+            - name: Windows データ サイエンス VM の作成
+              href: ../data-science-virtual-machine/provision-vm.md
+              maintainContext: true
+            - name: Ubuntu データ サイエンス VM の作成
+              href: ../data-science-virtual-machine/dsvm-ubuntu-intro.md
+              maintainContext: true
+            - name: CentOS データ サイエンス VM の作成
+              href: ../data-science-virtual-machine/linux-dsvm-intro.md
+              maintainContext: true
+            - name: ディープ ラーニング VM の作成
+              href: ../data-science-virtual-machine/provision-deep-learning-dsvm.md
+              maintainContext: true
     - name: ビジネス ニーズの分析
       items:
         - name: シナリオの特定

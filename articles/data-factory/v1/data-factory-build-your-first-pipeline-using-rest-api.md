@@ -12,14 +12,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 07/10/2017
+ms.date: 11/01/2017
 ms.author: spelluru
 robots: noindex
-ms.openlocfilehash: b3531579f65d08e7dcc453502899970d89b82bcc
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 2a6b52f56647a8bc018c4cf56e996877c1c0d2e6
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="tutorial-build-your-first-azure-data-factory-using-data-factory-rest-api"></a>チュートリアル: Data Factory REST API を使用した初めての Azure データ ファクトリの作成
 > [!div class="op_single_selector"]
@@ -32,6 +32,9 @@ ms.lasthandoff: 10/11/2017
 >
 >
 
+
+> [!NOTE]
+> この記事は、一般公開 (GA) されている Data Factory のバージョン 1 に適用されます。 プレビュー段階にある Data Factory サービスのバージョン 2 を使用している場合は、[Azure Data Factory バージョン 2 を使用したデータ ファクトリの作成に関するクイック スタート](../quickstart-create-data-factory-rest-api.md)を参照してください。
 
 この記事では、Data Factory REST API を使用して最初の Azure データ ファクトリを作成します。 その他のツールや SDK を使用してチュートリアルを行うには、ドロップダウン リストでいずれかのオプションを選択します。
 

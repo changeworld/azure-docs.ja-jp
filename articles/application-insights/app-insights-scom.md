@@ -3,7 +3,7 @@ title: "Application Insights による SCOM 統合 | Microsoft Docs"
 description: "SCOM をご使用の場合は、Application Insights でパフォーマンスを監視して問題を診断します。 包括的なダッシュ ボード、スマート アラート、強力な診断ツール、および分析クエリです。"
 services: application-insights
 documentationcenter: 
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 606e9d03-c0e6-4a77-80e8-61b75efacde0
 ms.service: application-insights
@@ -12,12 +12,12 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 08/12/2016
-ms.author: bwren
-ms.openlocfilehash: 9c205465981fabdbb696cdc44f765532bbb992b5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: 35ea37b751909e14e616a965462b832e4e51bae0
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="application-performance-monitoring-using-application-insights-for-scom"></a>SCOM での Application Insights を使用したアプリケーション パフォーマンス監視
 サーバーの管理に System Center Operations Manager (SCOM) を使用する場合、[Azure Application Insights](app-insights-asp-net.md)を利用して、パフォーマンスを監視し、パフォーマンスの問題を診断することができます。 Application Insights では、Web アプリケーションに入力される要求、出力される REST と SQL、例外、ログ トレースが監視されます。 また、メトリック グラフとスマート アラートだけでなく、このテレメトリに対する強力な診断検索と分析クエリがダッシュボードに用意されています。 
@@ -54,7 +54,7 @@ Operations Manager が実行されているコンピューターで以下の手�
    
      (Application Insights の [管理パック](https://technet.microsoft.com/library/cc974491.aspx) は、インスタンスを作成するためのテンプレートです。 このインスタンスは後で再利用できます)。
 
-    ![[全般プロパティ] タブで、アプリの名前を入力します。 新規をクリックし、管理パックの名前を入力します。 [OK]、[次へ] の順にクリックします。](./media/app-insights-scom/040.png)
+    ![[全般プロパティ] タブで、アプリの名前を入力します。 [新規] をクリックし、管理パックの名前を入力します。 [OK]、[次へ] の順にクリックします。](./media/app-insights-scom/040.png)
 
 1. 監視対象のアプリを 1 つ選択します。 検索機能では、サーバーにインストールされているアプリが検索されます。
    

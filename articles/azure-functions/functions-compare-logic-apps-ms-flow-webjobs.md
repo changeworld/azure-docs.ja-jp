@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: glenga
 ms.custom: mvc
-ms.openlocfilehash: bc801ed3dac213dacac5ee14e1b4e73b87ecc7bd
-ms.sourcegitcommit: 51ea178c8205726e8772f8c6f53637b0d43259c6
+ms.openlocfilehash: ab0aa377f9803d74d8a7a94bdb4c7b780e3ae41d
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="choose-between-flow-logic-apps-functions-and-webjobs"></a>Flow、Logic Apps、Functions、WebJobs の比較
 この記事では、Microsoft Cloud で提供されている以下のサービスを比較対照しながら説明します。いずれも統合に関する問題を解決し、ビジネス プロセスの自動化を実現できるサービスです。
@@ -50,7 +50,7 @@ Flow を使えば、オフィスの従業員がだれでも、開発者や IT �
 | オーディエンス |オフィスの従業員、ビジネス ユーザー |IT プロフェッショナル、開発者 |
 | シナリオ |セルフ サービス |ミッション クリティカル |
 | デザイン ツール |ブラウザー上とモバイル アプリ、UI のみ |ブラウザー上のほか、[Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md)、[コード ビュー](../logic-apps/logic-apps-author-definitions.md)が利用可能 |
-| DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-arm-provision.md) |
+| DevOps |実稼働環境でのアドホックな開発 |[Azure リソース管理](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
 | 管理者向けエクスペリエンス |[https://flow.microsoft.com](https://flow.microsoft.com) |[https://portal.azure.com](https://portal.azure.com) |
 | セキュリティ |標準的な実務慣行: [データの主権性の確保](https://wikipedia.org/wiki/Technological_Sovereignty)、[機密性の高い保存データの暗号化](https://wikipedia.org/wiki/Data_at_rest#Encryption)など |Azure によるセキュリティ保証: [Azure セキュリティ](https://www.microsoft.com/trustcenter/Security/AzureSecurity)、[Security Center](https://azure.microsoft.com/services/security-center/)、[監査ログ](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/)など |
 
@@ -66,6 +66,7 @@ Azure Functions と Azure App Service WebJobs はどちらも開発者向けに�
 
 Functions は WebJobs の最も良い点を引き継ぎ、さらに改善しているという点で、WebJobs を自然な形で進化させたものとなっています。 WebJobs からの改善点は、以下のとおりです。 
 
+* [サーバーレス](https://azure.microsoft.com/overview/serverless-computing/) アプリ モデル。
 * 開発、テスト、コードの実行をブラウザー上で直接行えるよう合理化
 * [GitHub webhook](https://developer.github.com/webhooks/creating/)など、さらに多くの Azure サービスとサードパーティ サービスを統合済み
 * 従量課金制を採用し、 [App Service プラン](../app-service/azure-web-sites-web-hosting-plans-in-depth-overview.md)の購入が不要
@@ -106,7 +107,7 @@ Functions は WebJobs の最も良い点を引き継ぎ、さらに改善して�
 
 * 単純なビジネスの最適化では、Flow を使用します。
 * 統合のシナリオが高度で Flow では対応できない場合、または DevOps 機能やセキュリティ コンプライアンス機能が必要な場合には、Logic Apps を使用します。
-* 統合シナリオのどこかのステップで大幅なカスタマイズまたは特殊なコードの使用が必要になる場合には、関数を作成し、ロジック アプリ内のアクションとして関数をトリガーします。
+* 統合シナリオのどこかのステップで大幅なカスタム変換または特殊なコードの使用が必要になる場合には、関数を作成し、ロジック アプリ内でアクションとして関数をトリガーします。
 
 フローでは、ロジック アプリを呼び出すことができます。 また、ロジック アプリで関数を呼び出したり、関数でロジック アプリを呼び出したりすることもできます。 Flow、Logic Apps、Functions の統合は、今後ますます強まっていきます。 あるサービスで作成したものは、別のサービスで使用できます。 このため、これら 3 つのテクノロジに対する投資が無駄になることはありません。
 

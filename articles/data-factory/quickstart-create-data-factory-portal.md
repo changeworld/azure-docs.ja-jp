@@ -11,16 +11,23 @@ ms.workload: data-services
 ms.topic: hero-article
 ms.date: 09/19/2017
 ms.author: jingwang
-ms.openlocfilehash: b884d7f08311cc60dc3af500f552d525d23b91e6
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f49fbff9f66dc081e94b35e1318a2c9aee60dc0
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="create-a-data-factory-using-the-azure-portal"></a>Azure Portal を使用してデータ ファクトリを作成する
+> [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
+> * [バージョン 1 - 一般公開](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)
+> * [バージョン 2 - プレビュー](quickstart-create-data-factory-portal.md)
+
 Azure Data Factory は、データドリブン型のワークフローをクラウドに作成することでデータの移動と変換を制御し、自動化することができるクラウドベースのデータ統合サービスです。 Azure Data Factory を使えば、データ主導型のワークフロー (パイプライン) を作成し、スケジューリングできます。具体的には、各種データ ストアからデータを取り込む、そのデータを各種コンピューティング サービス (Azure HDInsight Hadoop、Spark、Azure Data Lake Analytics、Azure Machine Learning など) で処理/変換する、データ ストア (Azure SQL Data Warehouse など) に出力データを公開して、それを利用するビジネス インテリジェンス (BI) アプリケーションに提供するという一連の処理を行えるワークフローです。 
 
 このクイック スタートでは、Azure Portal を使用してデータ ファクトリを作成します。 データ ファクトリの作成後、他のクイック スタートのように PowerShell、.NET SDK、Python SDK、または REST API を使用して、データをソース データ ストアからターゲット データ ストアにコピーするデータ パイプラインを作成する必要があります。 現時点では、Azure Portal を使用してデータ ファクトリにパイプラインを作成することはできません。
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[Data Factory バージョン 1 の使用](v1/data-factory-copy-data-from-azure-blob-storage-to-sql-database.md)に関する記事をご覧ください。
 
 Azure サブスクリプションをお持ちでない場合は、開始する前に[無料](https://azure.microsoft.com/free/)アカウントを作成してください。
 

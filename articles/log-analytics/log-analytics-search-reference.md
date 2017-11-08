@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/13/2017
+ms.date: 10/11/2017
 ms.author: bwren
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fc9c9b0a6292dab256997a86a6db16367fc48cd3
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 264ea071dc0b15964af07c68cbf0dee896b07a3e
+ms.sourcegitcommit: 5735491874429ba19607f5f81cd4823e4d8c8206
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/16/2017
 ---
 # <a name="log-analytics-search-reference"></a>Log Analytics 検索リファレンス
 
 >[!NOTE]
-> この記事では、現行のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[新しい言語のリファレンス](https://go.microsoft.com/fwlink/?linkid=856079)を参照してください。
+> この記事では、従来のクエリ言語を使用した Log Analytics のログ検索について説明します。  ワークスペースが[新しい Log Analytics クエリ言語](log-analytics-log-search-upgrade.md)にアップグレードされている場合は、[新しい言語のリファレンス](https://go.microsoft.com/fwlink/?linkid=856079)を参照してください。
 
 検索言語に関する次の参照セクションは、データを検索するときに使用できる一般的なクエリ構文のオプションと、検索を絞り込むために使用できるフィルター式について説明しています。 取得されたデータに対して何らかのアクションを実行するために使用できるコマンドについても説明しています。
 

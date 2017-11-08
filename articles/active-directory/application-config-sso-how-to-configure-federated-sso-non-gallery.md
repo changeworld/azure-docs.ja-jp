@@ -13,18 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: asteen
-ms.openlocfilehash: da7bc05c6452cde4d0236806f249559f178dd4e1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 781d06d2a8234d4cedf546ef059d49b7ece8783d
+ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/13/2017
 ---
 # <a name="how-to-configure-federated-single-sign-on-for-a-non-gallery-application"></a>ギャラリー以外のアプリケーションのフェデレーション シングル サインオンを構成する方法
 
-ギャラリー以外のアプリケーションを構成するには、Azure AD Premium を用意する必要があり、アプリケーションが SAML 2.0 をサポートする必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
+"*コードの記述なしで*" ギャラリー以外のアプリケーションのシングル サインオンを構成するには、サブスクリプションまたは Azure AD Premium を持っており、アプリケーションが SAML 2.0 をサポートしている必要があります。 Azure AD のバージョンの詳細については、[Azure AD の価格](https://azure.microsoft.com/pricing/details/active-directory/)に関するページを参照してください。
 
 ## <a name="overview-of-steps-required"></a>必要な手順の概要
-以下は、ギャラリー以外 (たとえばカスタム) アプリケーションのフェデレーション シングル サインオンの構成に必要な手順の概要です。
+以下は、ギャラリー以外の (たとえばカスタム) アプリケーションの SAML 2.0 を使用するフェデレーション シングル サインオンの構成に必要な手順の概要です。
 
 -   [Azure AD で、アプリケーションのメタデータ値を構成する (サインオン URL、識別子、応答 URL)](#_Configuring_single_sign-on)
 

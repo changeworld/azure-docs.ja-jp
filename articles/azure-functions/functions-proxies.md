@@ -3,7 +3,7 @@ title: "Azure Functions でのプロキシの操作 | Microsoft Docs"
 description: "Azure Functions Proxies の使用方法の概要"
 services: functions
 documentationcenter: 
-author: mattchenderson
+author: alexkarcher-msft
 manager: cfowler
 editor: 
 ms.assetid: 
@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: article
 ms.date: 04/11/2017
-ms.author: mahender
-ms.openlocfilehash: 63119978c59186a71e7e30438e8e37c0b2e1b454
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: alkarche
+ms.openlocfilehash: d201c8395adf47fa3d9f790b77b1d29dda5a0aeb
+ms.sourcegitcommit: 963e0a2171c32903617d883bb1130c7c9189d730
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/20/2017
 ---
 # <a name="work-with-azure-functions-proxies-preview"></a>Azure Functions プロキシ (プレビュー) の操作
 
@@ -28,18 +28,6 @@ ms.lasthandoff: 10/11/2017
 この記事では、Azure Functions Proxies を構成および操作する方法について説明します。 この機能を使用すると、他のリソースによって実装される、関数アプリのエンドポイントを指定することができます。 これらのプロキシを使用して、大きな API を複数の関数アプリに分割できます (マイクロサービス アーキテクチャでのように)。その場合でも、クライアントには単一の API サーフェスとして表示されます。
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
-
-
-## <a name="enable"></a>Azure Functions プロキシを有効にする
-
-既定では、プロキシは有効になっていません。 機能が無効になっていてもプロキシを作成することはできますが、実行されません。 プロキシを有効にするには、以下の手順を実行します。
-
-1. [Azure Portal] を開き、関数アプリに移動します。
-2. **[Function App の設定]** を選択します。
-3. **[Azure Functions プロキシの有効化 (プレビュー)]** を **[オン]** に切り替えます。
-
-新機能が使用可能になったときに、ここに戻って、プロキシ ランタイムを更新することもできます。
-
 
 ## <a name="create"></a>プロキシを作成する
 
@@ -206,6 +194,16 @@ Proxies.json は、名前付きプロキシとその定義から成るプロキ�
 ```
 > [!NOTE] 
 > この例では本文を直接設定しているため、`backendUri` プロパティは必要ありません。 この例では、Azure Functions プロキシを使って API のモッキングを行う方法を説明しています。
+
+## <a name="enable"></a>Azure Functions プロキシを有効にする
+
+現在、Azure Functions プロキシは既定で有効になっています。 プレビュー版の古いバージョンのプロキシを使用し、プロキシを無効にしていた場合、プロキシを実行するために手動で有効化を 1 回行う必要があります。
+
+1. [Azure Portal] を開き、関数アプリに移動します。
+2. **[Function App の設定]** を選択します。
+3. **[Azure Functions プロキシの有効化 (プレビュー)]** を **[オン]** に切り替えます。
+
+新機能が使用可能になったときに、ここに戻って、プロキシ ランタイムを更新することもできます。
 
 [Azure Portal]: https://portal.azure.com
 [HTTP トリガー]: https://docs.microsoft.com/azure/azure-functions/functions-bindings-http-webhook#http-trigger

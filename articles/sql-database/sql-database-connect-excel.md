@@ -10,17 +10,17 @@ editor:
 ms.assetid: 906924bc-2707-48d3-bac6-397976a0409d
 ms.service: sql-database
 ms.custom: develop apps
-ms.workload: data-management
+ms.workload: On Demand
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 03/10/2017
 ms.author: jhubbard
-ms.openlocfilehash: 68eadf7a7eef4ba5e6bcd9af1279227a01efdf70
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 34ff5c479cfcf1e861a82205eef93dfee01cb4a2
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="connect-excel-to-an-azure-sql-database-and-create-a-report"></a>Excel を Azure SQL データベースに接続し、レポートを作成する
 

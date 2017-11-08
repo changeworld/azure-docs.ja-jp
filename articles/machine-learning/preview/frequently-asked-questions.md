@@ -9,11 +9,11 @@ ms.service: machine-learning
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/30/2017
-ms.openlocfilehash: 4b3720019ba396d90be5586fa8fff4fa7e7d6e46
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 75dff9bc10294621218a89b809552c8abcd57017
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="azure-machine-learning-frequently-asked-questions"></a>Azure Machine Learning に関してよく寄せられる質問
 
@@ -108,7 +108,7 @@ Azure Machine Learning モデル管理は、データ サイエンティスト�
 
 **デプロイ シナリオについて、オンプレミスとクラウドの両方がサポートされますか?**
 
-はい。 Docker コンテナーを経由したローカルおよびオンプレミスでのデプロイ シナリオがサポートされます。 ローカル実行のターゲットとしては、単一ノードの Docker デプロイ、[ML サービスを搭載した Microsoft SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)、Hadoop、Spark などがあります。 また、Azure Container Service と Kubernetes、HDInsight、または Spark クラスターによるクラスター化デプロイなど、Docker 経由でのクラウド デプロイもサポートされています。 エッジ シナリオは、Docker コンテナーおよび Azure IoT Edge によりサポートされます。 
+はい。 Docker コンテナーを経由したオンプレミスおよびクラウドでのデプロイ シナリオがサポートされます。 ローカル実行のターゲットとしては、単一ノードの Docker デプロイ、[ML サービスを搭載した Microsoft SQL Server](https://docs.microsoft.com/sql/advanced-analytics/r/r-services)、Hadoop、Spark などがあります。 また、Azure Container Service と Kubernetes、HDInsight、または Spark クラスターによるクラスター化デプロイなど、Docker 経由でのクラウド デプロイもサポートされています。 エッジ シナリオは、Docker コンテナーおよび Azure IoT Edge によりサポートされます。 
 
 **Azure Machine Learning CLI を使用して作成した Docker イメージを別のホスト上で実行できますか?**
 
@@ -126,9 +126,11 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 
 **ワークベンチは IDE ですか?**
 
+
 いいえ。 Machine Learning ワークベンチは Jupyter Notebook、Visual Studio Code、PyCharm などの一般的な IDE の付属品として設計されており、すべての機能が搭載された IDE ではありません。 Machine Learning ワークベンチには基本的なテキスト編集機能はいくつか用意されていますが、IntelliSense などの一般に使用される IDE 機能はサポートされません。 コードの開発、編集、デバッグにはお好みの IDE を使用することをお勧めします。 
 
 **Azure Machine Learning Workbench の使用に料金はかかりますか?**
+
 
 いいえ。 Azure Machine Learning Workbench は無料のアプリケーションです。 マシンとユーザーの数に応じて必要なだけダウンロード可能です。 Azure Machine Learning Workbench を使用するには、実験アカウントが必要になります。 が必要です。  
 
@@ -199,6 +201,7 @@ Azure Machine Learning Workbench は、専門のデータ サイエンティス�
 いいえ。実験サービスでは実験を必要なだけ実行することができ、課金はユーザーの数のみに応じて行われます。 実験のコンピューティング リソースについては別途課金されます。  複数の実験を行い、お客様のソリューションに最適なモデルをお探しください。 
 
 **課金は Web サービスの呼び出し回数に応じて行われますか?**
+
 
 いいえ。 Web サービスは必要な回数だけ呼び出すことが可能であり、モデル管理の課金に影響は及びません。 アプリケーションのニーズに合わせて、デプロイのスケールを完全に自由に調整できます。
 

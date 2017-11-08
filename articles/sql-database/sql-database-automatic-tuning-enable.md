@@ -12,14 +12,14 @@ ms.custom: monitor & tune
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: NA
+ms.workload: Inactive
 ms.date: 09/19/2016
 ms.author: veljko-msft
-ms.openlocfilehash: 95690e10730e64aa7181bc2e2e3b53ba9184f89e
-ms.sourcegitcommit: 1131386137462a8a959abb0f8822d1b329a4e474
+ms.openlocfilehash: 82db5996c1ba1f224593e4eaa5b3b0067755db49
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/13/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="enable-automatic-tuning"></a>自動チューニングの有効化
 

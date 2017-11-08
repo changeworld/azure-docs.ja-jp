@@ -1,6 +1,6 @@
 ---
-title: "Linux デプロイ上の Azure Web App - カスタム イメージか組み込みのプラットフォーム イメージか  | Microsoft Docs"
-description: "カスタム Docker コンテナーのデプロイおよび組み込みのアプリケーション フレームワーク間での決定方法"
+title: "Azure App Service on Linux のデプロイ - カスタム イメージか組み込みのプラットフォーム イメージか  | Microsoft Docs"
+description: "カスタム Docker コンテナーのデプロイか、App Service on Linux の組み込みのアプリケーション フレームワークかを決定する方法"
 keywords: "Azure App Service, Web アプリ, Linux, OSS"
 services: app-service
 documentationCenter: 
@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/14/2017
 ms.author: nickwalk
-ms.openlocfilehash: 322533a9dce54222943f8b2a3d653780a674c8a4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 4a04bba2375b5a107bc3cb8cdc1a75d037c50af6
+ms.sourcegitcommit: b979d446ccbe0224109f71b3948d6235eb04a967
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
 # <a name="custom-image-or-built-in-platform-image"></a>カスタム イメージか組み込みのプラットフォーム イメージか
 
-[Linux 上の Web App](app-service-linux-intro.md) では、Web に対して発行されたアプリケーションを取得する 2 つの異なるパスを提供しています。
+[App Service on Linux](app-service-linux-intro.md) では、アプリケーションを Web に公開する 2 つの異なる方法が用意されています。
 
 - **カスタム イメージのデプロイ**: 実行準備完了パッケージにあるすべてのファイルと依存関係を含む Docker イメージにアプリを "Docker化" します。
 - **組み込みのプラットフォーム イメージを使ったアプリのデプロイ**: 組み込みのプラットフォーム イメージには、共通の Web アプリ ランタイムとノードや PHP などの依存関係が含まれています。 いずれかの [Azure App Service のデプロイ方法](../app-service-deploy-local-git.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json)を使って、お使いの Web アプリのストレージにアプリをデプロイし、組み込みのプラットフォーム イメージを使用してアプリを実行します。

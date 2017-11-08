@@ -15,11 +15,11 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/29/2017
 ms.author: jroth
-ms.openlocfilehash: 4b8cc80f2d1ed6f09ec917118dc9495d20394b94
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 33c306258b6be40f2c5cbc016e3c84e36bf61e0d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="provision-a-sql-server-virtual-machine-using-azure-powershell-resource-manager"></a>Azure PowerShell を使用した SQL Server 仮想マシンのプロビジョニング (Resource Manager)
 > [!div class="op_single_selector"]
@@ -74,7 +74,7 @@ $ResourceGroupName = "sqlvm1"
 ### <a name="storage-properties"></a>ストレージのプロパティ
 以下の変数を使用して、ストレージ アカウントと、仮想マシンで使用するストレージの種類を定義します。
 
-適宜変更を加えたうえで次のコマンドレットを実行し、これらの変数を初期化します。 この例では [Premium Storage](../../../storage/common/storage-premium-storage.md) を使用しています。運用環境のワークロードには Premium Storage の使用をお勧めします。 この指針とその他の推奨事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
+適宜変更を加えたうえで次のコマンドレットを実行し、これらの変数を初期化します。 この例では [Premium Storage](../premium-storage.md) を使用しています。運用環境のワークロードには Premium Storage の使用をお勧めします。 この指針とその他の推奨事項については、「[Azure Virtual Machines における SQL Server のパフォーマンスに関するベスト プラクティス](virtual-machines-windows-sql-performance.md)」を参照してください。
 
 ```PowerShell
 $StorageName = $ResourceGroupName + "storage"

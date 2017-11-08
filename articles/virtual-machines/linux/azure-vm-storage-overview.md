@@ -14,11 +14,11 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 2/7/2017
 ms.author: rasquill
-ms.openlocfilehash: 5e8a62bb180de7288531139594cb61440cab04c5
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 934580f6fcfdbff6e61626ed685459478559717d
+ms.sourcegitcommit: d41d9049625a7c9fc186ef721b8df4feeb28215f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/02/2017
 ---
 # <a name="azure-and-linux-vm-storage"></a>Azure と Linux の VM ストレージ
 Azure Storage は、持続性、可用性、スケーラビリティで顧客のニーズに応える最新のアプリケーションのためのクラウド ストレージ ソリューションです。  Azure Storage は、開発者が新しいシナリオをサポートするための大規模なアプリケーションの構築に使用できるだけでなく、Azure Virtual Machines のストレージ基盤となります。
@@ -91,7 +91,7 @@ Premium Storage の機能
 * Premium Storage ディスク: Azure Premium Storage は、DS、DSv2 または GS シリーズ Azure VM に接続できる VM ディスクをサポートしています。
 * Premium ページ BLOB: Premium Storage は Azure ページ BLOB をサポートしています。これは、Azure Virtual Machines (VM) の永続ディスクを保持するために使われます。
 * Premium ローカル冗長ストレージ: Premium Storage アカウントは、レプリケーション オプションとしてローカル冗長ストレージ (LRS) のみをサポートし、1 つのリージョン内にデータのコピーを 3 つ保持します。
-* [Premium Storage](../../storage/common/storage-premium-storage.md)
+* [Premium Storage](../windows/premium-storage.md)
 
 ## <a name="premium-storage-supported-vms"></a>Premium Storage でサポートされる VM
 Premium Storage は、DS シリーズ、DSv2 シリーズ、GS シリーズおよび Fs シリーズの Azure Virtual Machines (VM) をサポートしています。 Premium Storage でサポートされる VM では、Standard Storage ディスクと Premium Storage ディスクの両方を使用できます。 Premium Storage に互換性のない VM シリーズでは Premium Storage ディスクを使用できません。

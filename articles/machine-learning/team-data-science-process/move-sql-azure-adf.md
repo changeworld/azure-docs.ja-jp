@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: bradsev
-ms.openlocfilehash: a5bbf899fd13de4c5a7d3379e2231828c102b372
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 8f0186900caf6bff19e15ef6b99c1f49fbf90a81
+ms.sourcegitcommit: d03907a25fb7f22bec6a33c9c91b877897e96197
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/12/2017
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Azure Data Factory を使用してオンプレミスの SQL Server から SQL Azure にデータを移動する
 このトピックでは、Azure Data Factory (ADF) を使用して、オンプレミスの SQL Server データベースから Azure Blob Storage を経由して SQL Azure データベースにデータを移動する方法を説明します。
@@ -53,7 +53,7 @@ ADF では、定期的にデータの移動を管理するシンプルな JSON �
 
 * **Azure サブスクリプション**。 サブスクリプションがない場合は、 [無料試用版](https://azure.microsoft.com/pricing/free-trial/)にサインアップできます。
 * **Azure ストレージ アカウント**。 このチュートリアルでは、データの格納に Azure ストレージ アカウントを使用します。 Azure ストレージ アカウントがない場合は、「 [ストレージ アカウントの作成](../../storage/common/storage-create-storage-account.md#create-a-storage-account) 」を参照してください。 ストレージ アカウントを作成したら、ストレージへのアクセスに使用するアカウント キーを取得する必要があります。 「[ストレージ アクセス キーの管理](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys)」を参照してください。
-* **Azure SQL Database**へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、 [Microsoft Azure SQL Database の概要 ](../../sql-database/sql-database-get-started.md) に関するトピックをご覧ください。
+* **Azure SQL Database**へのアクセス権。 Azure SQL Database をセットアップする必要がある場合、Azure SQL Database の新しいインスタンスをプロビジョニングする方法については、[Microsoft Azure SQL Database の概要](../../sql-database/sql-database-get-started.md)に関するページをご覧ください。
 * **Azure PowerShell** がローカルにインストールされ構成されていること。 手順については、「 [Azure PowerShell のインストールおよび構成方法](/powershell/azure/overview)」を参照してください。
 
 > [!NOTE]

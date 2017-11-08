@@ -1,6 +1,6 @@
 ---
 title: Multi-Factor Authentication - Azure SQL | Microsoft Docs
-description: "SQL Database と SQL Data Warehouse の SSMS で Multi-Factored Authentication を使用します。"
+description: "Azure SQL Database と Azure SQL Data Warehouse では、Active Directory ユニバーサル認証を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。"
 services: sql-database
 documentationcenter: 
 author: BYHAM
@@ -13,14 +13,14 @@ ms.custom: security
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: On Demand
 ms.date: 09/29/2017
 ms.author: rickbyh
-ms.openlocfilehash: e710f0cdfec9c0a4ded4072c6ed8b2647a401633
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: bd5a7a117ec6c4a4b75fcced3f2b5987004c83d0
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="universal-authentication-with-sql-database-and-sql-data-warehouse-ssms-support-for-mfa"></a>SQL Database と SQL Data Warehouse でのユニバーサル認証 (MFA 対応の SSMS サポート)
 Azure SQL Database と Azure SQL Data Warehouse では、*Active Directory ユニバーサル認証*を使用して、SQL Server Management Studio (SSMS) からの接続をサポートするようになりました。 

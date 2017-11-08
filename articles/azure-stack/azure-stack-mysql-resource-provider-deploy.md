@@ -13,14 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/10/2017
 ms.author: JeffGo
-ms.openlocfilehash: 30ab634620cbb38315bd331b38d47c26cdd1eb8c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: badaefb4986f573362babea81d704bf2be067d6b
+ms.sourcegitcommit: 804db51744e24dca10f06a89fe950ddad8b6a22d
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/30/2017
 ---
 # <a name="use-mysql-databases-on-microsoft-azure-stack"></a>Microsoft Azure Stack で MySQL データベースを使用する
 
+*適用先: Azure Stack 統合システムと Azure Stack 開発キット*
 
 Azure Stack に MySQL リソース プロバイダーをデプロイできます。 リソース プロバイダーをデプロイしたら、Azure Resource Manager デプロイ テンプレートを使用して MySQL サーバーおよびデータベースを作成し、MySQL データベースをサービスとして提供できます。 MySQL データベースは、Web サイトで一般的であり、多くの Web サイト プラットフォームをサポートしています。 たとえば、リソース プロバイダーをデプロイした後に、Azure Stack のサービスとしての Azure Web Apps プラットフォーム (PaaS) アドオンから WordPress Web サイトを作成できます。
 
@@ -53,10 +54,12 @@ Azure Stack に MySQL リソース プロバイダーをデプロイできます
 
 
 2. 特権エンドポイント VM にアクセスできるホストにサインインします。
+
     a. Azure Stack Development Kit (ASDK) のインストールで、物理ホストにサインインします。
+
     b. マルチノードのシステムでは、ホストは特権エンドポイントにアクセスできるシステムである必要があります。
 
-3. [MySQL リソースプロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestackmysqlrp)し、一時ディレクトリに抽出します。
+3. [MySQL リソースプロバイダー バイナリ ファイルをダウンロード](https://aka.ms/azurestackmysqlrp)し、自己展開形式ファイルを実行してコンテンツを一時ディレクトリに展開します。
 
 4.  Azure Stack のルート証明書は、特権エンドポイントから取得されます。 ASDK には、このプロセスの一環として自己署名証明書が作成されます。 マルチノードの場合は、適切な証明書を提供する必要があります。
 
@@ -90,48 +93,47 @@ PowerShell プロンプトから実行できる例を次に示します (ただ�
 
 
 ```
-# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
-$domain = "AzureStack"
-# Extract the downloaded file by executing it and pointing to a temp directory
-$tempDir = "C:\TEMP\MySQLRP"
-# The service admin (can be AAD or ADFS)
-$serviceAdmin = "admin@mydomain.onmicrosoft.com"
-
-# Install the AzureRM.Bootstrapper module
+# Install the AzureRM.Bootstrapper module, set the profile, and install AzureRM and AzureStack modules
 Install-Module -Name AzureRm.BootStrapper -Force
-
-# Install and imports the API Version Profile required by Azure Stack into the current PowerShell session.
 Use-AzureRmProfile -Profile 2017-03-09-profile
 Install-Module -Name AzureStack -RequiredVersion 1.2.11 -Force
 
-# Create the credentials needed for the deployment - local VM
-$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
-$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
+# Use the NetBIOS name for the Azure Stack domain. On ASDK, the default is AzureStack
+$domain = 'AzureStack'
+# Point to the directory where the RP installation files were extracted
+$tempDir = 'C:\TEMP\MYSQLRP'
 
-# and the Service Admin credential
+# The service admin account (can be AAD or ADFS)
+$serviceAdmin = "admin@mydomain.onmicrosoft.com"
 $AdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $AdminCreds = New-Object System.Management.Automation.PSCredential ($serviceAdmin, $AdminPass)
 
-# and the cloud admin credential required for Privleged Endpoint access
+# Set the credentials for the Resource Provider VM
+$vmLocalAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
+$vmLocalAdminCreds = New-Object System.Management.Automation.PSCredential ("mysqlrpadmin", $vmLocalAdminPass)
+
+# and the cloudadmin credential required for Privleged Endpoint access
 $CloudAdminPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 $CloudAdminCreds = New-Object System.Management.Automation.PSCredential ("$domain\cloudadmin", $CloudAdminPass)
 
 # change the following as appropriate
 $PfxPass = ConvertTo-SecureString "P@ssw0rd1" -AsPlainText -Force
 
-# Change directory to the folder where you extracted the installation files
-# and adjust the endpoints
-$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $vmLocalAdminCreds -CloudAdminCredential $cloudAdminCreds -PrivilegedEndpoint '10.10.10.10' -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath <path to certificate and other dependencies> -AcceptLicense
-
+# Run the installation script from the folder where you extracted the installation files
+# Find the ERCS01 IP address first and make sure the certificate
+# file is in the specified directory
+.$tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds `
+  -VMLocalCredential $vmLocalAdminCreds `
+  -CloudAdminCredential $cloudAdminCreds `
+  -PrivilegedEndpoint '10.10.10.10' `
+  -DefaultSSLCertificatePassword $PfxPass -DependencyFilesLocalPath $tempDir\cert `
+  -AcceptLicense
 
  ```
 
 ### <a name="deploymysqlproviderps1-parameters"></a>DeployMySqlProvider.ps1 パラメーター
 
 これらのパラメーターをコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
-
-### <a name="deploysqlproviderps1-parameters"></a>DeploySqlProvider.ps1 パラメーター
-これらのパラメーターはコマンド ラインで指定できます。 指定しない場合、またはいずれかのパラメーター検証が失敗する場合は、必要なパラメーターの指定を求められます。
 
 | パラメーター名 | Description | コメントまたは既定値 |
 | --- | --- | --- |
@@ -163,7 +165,7 @@ $tempDir\DeployMySQLProvider.ps1 -AzCredential $AdminCreds -VMLocalCredential $v
 
 1. 管理ポータルにサービス管理者としてサインインします。
 
-2. デプロイが成功したことを確認します。 **[リソース グループ]** &gt; を参照して、**system.<location>.mysqladapter** リソース グループをクリックし、5 つのすべてのデプロイが成功したことを確認します。
+2. デプロイが成功したことを確認します。 **[リソース グループ]** &gt; を参照して **system.\<location\>.mysqladapter** リソース グループをクリックし、4 つすべてのデプロイが成功したことを確認します。
 
       ![MySQL RP デプロイの確認](./media/azure-stack-mysql-rp-deploy/mysqlrp-verify.png)
 

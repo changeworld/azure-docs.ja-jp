@@ -14,11 +14,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/03/2017
 ms.author: v-semcev
-ms.openlocfilehash: af396e9f8847421d529c32956216cfc47294edb2
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 04e5499011e72dfcc20dff370d5d837227ed29b6
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="analyze-azure-cdn-usage-patterns"></a>Azure CDN の使用パターンを分析する
 
@@ -26,7 +26,11 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="verizon-core-reports"></a>Verizon コア レポート
 
-Verizon Standard または Verizon Premium プロファイルを所有する Azure CDN ユーザーは、Verizon 補助ポータルで Verizon コア レポートを表示できます。 Verizon 補助ポータルには、さまざまなグラフとビューが用意されており、Azure Portal の **[管理]** オプションからアクセスできます。 詳細については、「[Verizon からのコア レポート](cdn-analyze-usage-patterns.md)」を参照してください。
+Verizon Standard または Verizon Premium プロファイルを所有する Azure CDN ユーザーは、Verizon 補助ポータルで Verizon コア レポートを表示できます。 Verizon コア レポートには、Azure Portal の **[管理]** オプションからアクセスできます。このレポートには、さまざまなグラフとビューが用意されています。 詳細については、「[Verizon からのコア レポート](cdn-analyze-usage-patterns.md)」を参照してください。
+
+## <a name="verizon-custom-reports"></a>Verizon カスタム レポート
+
+Verizon Standard または Verizon Premium プロファイルを所有する Azure CDN ユーザーは、Verizon 補助ポータルで Verizon カスタム レポートを表示できます。 Verizon カスタム レポートには、Azure Portal の **[管理]** オプションからアクセスできます。 Verizon カスタム レポート ページには、Azure CDN プロファイルに属する各エッジ CName のヒット数や転送されたデータが表示されます。 データは、HTTP 応答コードまたは一定期間にわたるキャッシュの状態でグループ化できます。 詳細については、「[Custom Reports from Verizon (Verizon のカスタム レポート)](cdn-verizon-custom-reports.md)」をご覧ください。
 
 ## <a name="core-analytics-via-azure-diagnostic-logs"></a>Azure 診断ログによるコア分析
 

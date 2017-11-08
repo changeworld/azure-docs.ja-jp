@@ -12,14 +12,14 @@ ms.custom: DBs & servers
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
-ms.workload: data-management
+ms.workload: Active
 ms.date: 10/11/2017
 ms.author: carlrab
-ms.openlocfilehash: 581948164acef2fe8894e58fb8c8da7772c4cbd9
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.openlocfilehash: 2e0acc3cc09de4293dcc049c37bee6b899e6101a
+ms.sourcegitcommit: e5355615d11d69fc8d3101ca97067b3ebb3a45ef
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="azure-sql-database-resource-limits"></a>Azure SQL Database のリソース制限
 

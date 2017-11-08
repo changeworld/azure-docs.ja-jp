@@ -3,7 +3,7 @@ title: "Azure Application Insights での HockeyApp データの探索 | Microso
 description: "Application Insights を使用して Azure アプリの使用状況とパフォーマンスを分析します。"
 services: application-insights
 documentationcenter: windows
-author: CFreemanwa
+author: mrbullwinkle
 manager: carmonm
 ms.assetid: 97783cc6-67d6-465f-9926-cb9821f4176e
 ms.service: application-insights
@@ -12,15 +12,21 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: article
 ms.date: 03/30/2017
-ms.author: bwren
-ms.openlocfilehash: 450ca10613d137393090578619f3766734d1d493
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.author: mbullwin
+ms.openlocfilehash: a925241d10b068e377fa9a11fc854db34c808343
+ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 11/01/2017
 ---
 # <a name="exploring-hockeyapp-data-in-application-insights"></a>Application Insights での HockeyApp データの探索
-[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリの監視に推奨されているプラットフォームです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
+
+> [!NOTE]
+> Visual Studio Mobile Center は、新しいモバイル アプリを監視するための、Microsoft の推奨されるサービスとなりました。 [Mobile Center と Application Insights でアプリを設定する方法を確認してください](app-insights-mobile-center-quickstart.md)。
+> 
+> 
+
+[HockeyApp](https://azure.microsoft.com/services/hockeyapp/) は、稼働中のデスクトップ アプリとモバイル アプリを監視するためのサービスです。 HockeyApp から、(クラッシュ データの取得だけでなく) カスタム テレメトリやトレース テレメトリを送信して、使用状況を監視し、診断に役立てることができます。 このテレメトリのストリームは、[Azure Application Insights](app-insights-overview.md) の強力な [Analytics](app-insights-analytics.md) 機能を使用して照会できます。 さらに、 [カスタム テレメトリとトレース テレメトリをエクスポートする](app-insights-export-telemetry.md)こともできます。 これらの機能を有効にするには、Application Insights に HockeyApp カスタム データを中継するブリッジを設定します。
 
 ## <a name="the-hockeyapp-bridge-app"></a>HockeyApp ブリッジ アプリ
 HockeyApp ブリッジ アプリは、Application Insights 内の HockeyApp カスタムおよびトレース テレメトリに Analytics 機能や連続エクスポート機能を使用してアクセスできるようにする核となる機能です。 HockeyApp ブリッジ アプリの作成後に HockeyApp で収集されたカスタムおよびトレース イベントは、これらの機能からアクセスできるようになります。 このようなブリッジ アプリの 1 つを設定する方法を確認しましょう。

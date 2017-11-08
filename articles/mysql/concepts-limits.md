@@ -8,12 +8,12 @@ manager: jhubbard
 editor: jasonwhowell
 ms.service: mysql-database
 ms.topic: article
-ms.date: 10/8/2017
-ms.openlocfilehash: dc5ad012398b7d07886cd22c20975e61f820d7e0
-ms.sourcegitcommit: 54fd091c82a71fbc663b2220b27bc0b691a39b5b
+ms.date: 10/26/2017
+ms.openlocfilehash: b3fba38cacf5b5abcdea7f0def8c1d39e653f0a8
+ms.sourcegitcommit: 3e3a5e01a5629e017de2289a6abebbb798cec736
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/12/2017
+ms.lasthandoff: 10/27/2017
 ---
 # <a name="limitations-in-azure-database-for-mysql-preview"></a>Azure Database for MySQL の制限事項 (プレビュー)
 Azure Database for MySQL サービスはパブリック プレビューの段階です。 次のセクションでは、データベース サービス容量と機能の制限について説明します。 MySQL データベース エンジンに適用できる[一般的な制限事項](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html)も確認してください。
@@ -30,7 +30,7 @@ Azure Database for MySQL では、サーバーを作成するときに複数の�
 | Basic 100 コンピューティング ユニット    | 100 接続   |
 | Standard 100 コンピューティング ユニット | 200 接続   |
 | Standard 200 コンピューティング ユニット | 400 接続   |
-| Standard 400 コンピューティング ユニット | 400 接続   |
+| Standard 400 コンピューティング ユニット | 800 接続   |
 | Standard 800 コンピューティング ユニット | 1600 接続  |
 | **最大コンピューティング ユニット数**      |                   |
 | Basic サービス レベル         | 100 コンピューティング ユニット |

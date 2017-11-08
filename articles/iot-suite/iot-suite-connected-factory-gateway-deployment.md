@@ -1,5 +1,5 @@
 ---
-title: "Azure IoT Suite コネクテッド ファクトリのゲートウェイをデプロイする | Microsoft Docs"
+title: "コネクテッド ファクトリ ゲートウェイをデプロイする - Azure | Microsoft Docs"
 description: "Windows または Linux 上にゲートウェイをデプロイして、構成済みのコネクテッド ファクトリ ソリューションに接続できるようにする方法。"
 services: 
 suite: iot-suite
@@ -14,11 +14,11 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/24/2017
 ms.author: dobett
-ms.openlocfilehash: b0e6ae705911d7c18643c77b7fe08fdffffa5eb1
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9f11d93be49f7d88012b1274ad61495e38a2e9a9
+ms.sourcegitcommit: dfd49613fce4ce917e844d205c85359ff093bb9c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/31/2017
 ---
 # <a name="deploy-a-gateway-on-windows-or-linux-for-the-connected-factory-preconfigured-solution"></a>構成済みのコネクテッド ファクトリ ソリューション用のゲートウェイを Windows または Linux 上にデプロイする
 
@@ -153,6 +153,8 @@ Linux ゲートウェイ デバイスに [Docker をインストール]します
 ## <a name="next-steps"></a>次のステップ
 
 構成済みの コネクテッド ファクトリ ソリューションのアーキテクチャの詳細については、[構成済みのコネクテッド ファクトリ ソリューションのチュートリアル][lnk-walkthrough]をご覧ください。
+
+[OPC Publisher のリファレンス実装](iot-suite-connected-factory-publisher.md)をご覧ください。
 
 [img-install-docker]: ./media/iot-suite-connected-factory-gateway-deployment/image1.png
 [img-hub-connection]: ./media/iot-suite-connected-factory-gateway-deployment/image2.png

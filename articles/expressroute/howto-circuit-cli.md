@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/25/2017
+ms.date: 10/19/2017
 ms.author: anzaman;cherylmc
-ms.openlocfilehash: 1a1c9a96b772868e2c832e9ff57874038c0db2d4
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: cd4e31336fd0e90b13f1c3984de89f24e65b052b
+ms.sourcegitcommit: cf4c0ad6a628dfcbf5b841896ab3c78b97d4eafd
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/21/2017
 ---
 # <a name="create-and-modify-an-expressroute-circuit-using-cli"></a>CLI を使用した ExpressRoute 回線の作成と変更
 
@@ -39,7 +39,7 @@ ms.lasthandoff: 10/11/2017
 * 開始する前に、最新バージョンの CLI コマンド (2.0 以降) をインストールします。 CLI コマンドのインストール方法については、「[Install Azure CLI 2.0 (Azure CLI 2.0 のインストール)](/cli/azure/install-azure-cli)」および「[Azure CLI 2.0 を使ってみる](/cli/azure/get-started-with-azure-cli)」を参照してください。
 * 構成を開始する前に、[前提条件](expressroute-prerequisites.md)と[ワークフロー](expressroute-workflows.md)を確認してください。
 
-## <a name="create-and-provision-an-expressroute-circuit"></a>ExpressRoute 回線の作成とプロビジョニング
+## <a name="create"></a>ExpressRoute 回線の作成とプロビジョニング
 
 ### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1.Azure アカウントにサインインしてサブスクリプションを選択する
 
@@ -351,7 +351,7 @@ az network express-route update -n MyCircuit -g ExpressRouteResourceGroup --sku-
 
 「 [クラシック デプロイメント モデルから Resource Manager デプロイメント モデルへの ExpressRoute 回線の移行](expressroute-howto-move-arm.md)」の説明を参照してください。
 
-## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a>ExpressRoute 回線のプロビジョニング解除と削除
+## <a name="delete"></a>ExpressRoute 回線のプロビジョニング解除と削除
 
 ExpressRoute 回線のプロビジョニングを解除して削除する場合は必ず、次の条件を把握しておいてください。
 

@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 ```java
 final static String CLIENT_ID = "[Enter the application Id here]";
 ```
-3. [`app`]  >  [`manifests`] (マニフェスト)  >  [`AndroidManifest.xml`] の順に開きます。
+3. [`app`]  >  [`manifests`] \(マニフェスト)  >  [`AndroidManifest.xml`] の順に開きます。
 4. ノード `manifest\application` に次のアクティビティを追加します。 これにより `BrowserTabActivity` が登録され、OS は認証の完了後、アプリケーションを再開することが可能になります。
 
 ```xml

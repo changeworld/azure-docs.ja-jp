@@ -16,11 +16,11 @@ ms.workload: na
 ms.date: 7/12/2017
 ms.author: xshi
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8b8fda17a8d1d1796d5299e3aba4b0fd5e719a4c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: d643647d4103acd511ed270132c844da12f2ac9b
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="connect-raspberry-pi-to-azure-iot-hub-c"></a>Raspberry Pi の Azure IoT Hub への接続 (C)
 
@@ -140,7 +140,7 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
 
 ## <a name="run-a-sample-application-on-pi"></a>Pi でのサンプル アプリケーションの実行
 
-### <a name="install-the-prerequisite-packages"></a>前提条件となるパッケージのインストール
+### <a name="login-to-your-raspberry-pi"></a>Raspberry Pi にログインする
 
 1. 次の SSH クライアントのいずれかを使用して、ホスト コンピューターから Raspberry Pi に接続します。
    
@@ -156,41 +156,26 @@ micro USB ケーブルと AC アダプターを使って、Pi の電源を入れ
    > [!NOTE] 
    既定のユーザー名は `pi` で、パスワードは`raspberry` です。
 
-1. 次のコマンドを実行して、C および Cmake 用 Microsoft Azure IoT デバイス SDK の前提条件となるパッケージをインストールします。
-
-   ```bash
-   grep -q -F 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-   grep -q -F 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' /etc/apt/sources.list || sudo sh -c "echo 'deb-src http://ppa.launchpad.net/aziotsdklinux/ppa-azureiot/ubuntu vivid main' >> /etc/apt/sources.list"
-   sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys FDA6A393E4C2257F
-   sudo apt-get update
-   sudo apt-get install -y azure-iot-sdk-c-dev cmake libcurl4-openssl-dev git-core
-   git clone git://git.drogon.net/wiringPi
-   cd ./wiringPi
-   ./build
-   ```
-
 
 ### <a name="configure-the-sample-application"></a>サンプル アプリケーションの構成
 
 1. 次のコマンドを実行して、サンプル アプリケーションを複製します。
 
    ```bash
-   git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app
+   sudo apt-get install git-core
+   git clone https://github.com/Azure-Samples/iot-hub-c-raspberrypi-client-app.git
    ```
-1. 次のコマンドを実行して、config ファイルを開きます。
+
+2. セットアップ スクリプトを実行します。
 
    ```bash
-   cd iot-hub-c-raspberrypi-client-app
-   nano config.h
+   cd ./iot-hub-c-raspberrypi-client-app
+   sudo chmod u+x setup.sh
+   sudo ./setup.sh
    ```
 
-   ![config ファイル](media/iot-hub-raspberry-pi-kit-c-get-started/6_config-file.png)
-
-   このファイルには、構成可能な 2 つのマクロがあります。 1 つ目は `INTERVAL` で、クラウドに送信する 2 つのメッセージの時間間隔 (ミリ秒) を定義します。 2 つ目は `SIMULATED_DATA` で、シミュレートされたセンサー データを使用するかどうかを表すブール値です。
-
-   **センサーがない**場合は、`SIMULATED_DATA` 値を `1` に設定し、シミュレートされたセンサー データをサンプル アプリケーションで作成して使用します。
-
-1. Control + O キー、Enter キー、Control + X キーの順に押し、保存して終了します。
+   > [!NOTE] 
+   > **BME280 が物理的にない**場合は、コマンド ライン パラメーターとして "--simulated-data" を使用して、温度と湿度のデータをシミュレートできます。 `sudo ./setup.sh --simulated-data`
 
 ### <a name="build-and-run-the-sample-application"></a>サンプル アプリケーションをビルドして実行する
 

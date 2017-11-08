@@ -79,8 +79,8 @@
       href: concepts-monitoring.md
     - name: 開発
       items:
-        - name: 接続ライブラリ
-          href: concepts-connection-libraries.md
+        - name: ドライバーとツールの互換性
+          href: concepts-compatibility.md
         - name: アプリケーション開発
           href: concepts-database-application-development.md
     - name: データの移行

@@ -13,21 +13,26 @@ ms.workload:
 ms.tgt_pltfrm: na
 ms.devlang: java
 ms.topic: quickstart
-ms.date: 08/02/2017
+ms.date: 10/16/2017
 ms.author: mimig
-ms.openlocfilehash: f4bf1992b1f13c61f44695f641b3cb3248b5672b
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 7f59394fdb51c59be65e51fa1a4594b947635ace
+ms.sourcegitcommit: 4ed3fe11c138eeed19aef0315a4f470f447eac0c
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/23/2017
 ---
 # <a name="azure-cosmos-db-create-a-document-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: ドキュメント データベースを Java と Azure Portal で作成する
 
-Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB の中核をなすグローバルな分散と水平方向のスケール機能を利用して、ドキュメント、キー/値、およびグラフ データベースをすばやく作成およびクエリできます。 
+Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモデル データベース サービスです。 Azure Cosmos DB を使用すると、管理対象のドキュメントやテーブル、グラフのデータベースを迅速に作成しクエリできます。
 
-このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってドキュメント データベースを作成します。 また、[DocumentDB Java API](documentdb-sdk-java.md) を使ってすばやく Java コンソール アプリを作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、ドキュメント データベース リソースの作成と変更を行うことができるようになります。
+このクイックスタートでは、Azure Cosmos DB 用の Azure Portal ツールを使ってドキュメント データベースを作成します。 また、[DocumentDB Java API](documentdb-sdk-java.md) を使ってすばやく Java コンソール アプリを作成する方法も紹介します。 このクイックスタートの手順は、Java を実行できる任意のオペレーティング システムで使用できます。 このクイックスタートを完了すると、UI とプログラムのどちらか好きな方法で、ドキュメント データベース リソースの作成と変更ができるようになります。
 
 ## <a name="prerequisites"></a>前提条件
+
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
+[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
+
+加えて次の作業を行います。 
 
 * [Java Development Kit (JDK) 1.7 以降](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
     * Ubuntu で `apt-get install default-jdk` を実行して JDK をインストールします。
@@ -36,9 +41,6 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     * Ubuntu で `apt-get install maven` を実行して Maven をインストールします。
 * [Git](https://www.git-scm.com/)
     * Ubuntu で `sudo apt-get install git` を実行して Git をインストールします。
-
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)] 
-[!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
 ## <a name="create-a-database-account"></a>How to create a DocumentDB account (DocumentDB アカウントの作成方法)
 
@@ -55,11 +57,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 これで、データ エクスプローラーを使用して、新しいコレクションにデータを追加できます。
 
-1. データ エクスプローラーで新しいデータベースが [コレクション] ウィンドウに表示されます。 **[タスク]** データベースを展開し、**[項目]** コレクションを展開して、**[ドキュメント]** をクリックし、**[新しいドキュメント]** をクリックします。 
+1. **[項目]** コレクションを展開して、**[ドキュメント]** > **[新しいドキュメント]** をクリックします。
 
-   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-new-document.png)
+   ![Azure Portal のデータ エクスプローラーで新しいドキュメントを作成する](./media/create-documentdb-java/azure-cosmosdb-data-explorer-new-document.png)
   
-2. ここで、次の構造のドキュメントをコレクションに追加します。
+2. ここで、次の構造のドキュメントをコレクションに追加し、**[保存]** をクリックします。
 
      ```json
      {
@@ -71,23 +73,37 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
      }
      ```
 
-3. json を **[ドキュメント]** タブに追加したら、**[保存]** をクリックします。
+    ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/create-documentdb-java/azure-cosmosdb-data-explorer-save-document.png)
 
-    ![json データをコピーし、Azure Portal のデータ エクスプローラーで [保存] をクリックします。](./media/create-documentdb-dotnet/azure-cosmosdb-data-explorer-save-document.png)
+3.  `id` を 2 に変更したもう 1 つのドキュメントを作成して保存し、他のプロパティを適宜変更します。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
 
-4.  もう 1 つドキュメントを作成して保存します。`id` プロパティには一意の値を挿入し、その他のプロパティについては適宜変更してください。 Azure Cosmos DB では、データにスキーマを課さないため、新しいドキュメントは必要な任意の構造にすることができます。
+## <a name="query-your-data"></a>データのクエリ
 
-     これでデータ エクスプローラーで **[フィルターの編集]** ボタンと **[フィルターの適用]** ボタンをクリックすることにより、クエリを使ってデータを取得することができます。 既定では、データ エクスプローラーにより `SELECT * FROM c` を使用してコレクション内のすべてのドキュメントが取得されますが、[SQL クエリ](documentdb-sql-query.md)を `SELECT * FROM c ORDER BY c._ts DESC` のように変更すると、すべてのドキュメントをそのタイムスタンプの降順で取得できます。 
- 
-     さらに、データ エクスプローラーを使用して、ストアド プロシージャ、UDF、トリガーを作成し、サーバー側ビジネス ロジックを実行できるほか、スループットをスケールすることもできます。 データ エクスプローラーでは、API で使用可能な、組み込みのプログラムによるデータ アクセスがすべて公開されていますが、Azure Portal でデータに簡単にアクセスできます。
+これで、データ エクスプローラーでクエリを使用して、データを取得しフィルター処理できるようになりました。
+
+1. 既定では、クエリは `SELECT * FROM c` と設定されていることを確認してください。 この既定のクエリでは、コレクション内のすべてのドキュメントを取得し、表示します。 
+
+    ![データ エクスプローラーの既定のクエリは `SELECT * FROM c`](./media/create-documentdb-java/azure-cosmosdb-data-explorer-query.png)
+
+2. **[フィルターの編集]** ボタンをクリックし、クエリの述語のボックスに `ORDER BY c._ts DESC` を追加してから、**[フィルターの適用]** をクリックすることでクエリを変更します。
+
+    ![ORDER BY c._ts DESC を追加し [フィルタの適用] をクリックすることで既定のクエリを変更](./media/create-documentdb-java/azure-cosmosdb-data-explorer-edit-query.png)
+
+この変更したクエリでは、ドキュメントがそのタイムスタンプの降順に一覧表示されるので、ここでは 2 番目のドキュメントが最初に表示されます。 SQL 構文に慣れている場合は、サポートされている任意の [SQL クエリ](documentdb-sql-query.md)をこのボックスに入力できます。 
+
+以上でデータ エクスプローラーでの作業は完了です。 コードにとりかかる前に、データ エクスプローラーを使用すると、ストアド プロシージャ、UDF、トリガーを作成し、サーバー側ビジネス ロジックを実行できるほか、スループットのスケールもできることに注目してください。 データ エクスプローラーでは、API で使用可能な、組み込みのプログラムによるデータ アクセスがすべて公開されていますが、Azure Portal でデータに簡単にアクセスできます。
 
 ## <a name="clone-the-sample-application"></a>サンプル アプリケーションの複製
 
 次は、コードを使った作業に移りましょう。 GitHub から DocumentDB API アプリを複製し、接続文字列を設定して実行します。 プログラムでデータを処理することが非常に簡単であることがわかります。 
 
-1. git ターミナル ウィンドウ (git bash など) を開き、`CD` を実行して作業ディレクトリに移動します。  
+1. git bash などの git ターミナル ウィンドウを開き、`cd` コマンドを使用して、サンプル アプリをインストールするフォルダーに変更します。 
 
-2. 次のコマンドを実行して、サンプル レポジトリを複製します。 
+    ```bash
+    cd "C:\git-samples"
+    ```
+
+2. 次のコマンドを実行して、サンプル レポジトリを複製します。 このコマンドは、コンピューター上にサンプル アプリのコピーを作成します。
 
     ```bash
     git clone https://github.com/Azure-Samples/azure-cosmos-db-documentdb-java-getting-started.git
@@ -95,9 +111,9 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="review-the-code"></a>コードの確認
 
-アプリで何が行われているかを簡単に確認してみましょう。 \src\GetStarted フォルダーから `Program.java` ファイルを開き、Azure Cosmos DB リソースを作成する以下のコード行を探します。 
+この手順は省略可能です。 コード内のデータベース リソースの作成方法に関心がある場合は、次のスニペットを確認できます。 これらのスニペットはすべて C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted フォルダーにインストールされている `Program.java` ファイルのものです。 関心がない場合は、「[接続文字列の更新](#update-your-connection-string)」に進んでください。 
 
-* `DocumentClient` が初期化されます。
+* `DocumentClient` の初期化。 [DocumentClient](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client) は Azure Cosmos DB データベース サービスのクライアント側の論理表現を提供します。 このクライアントは、サービスに対する要求の構成と実行に使用されます。
 
     ```java
     this.client = new DocumentClient("https://FILLME.documents.azure.com",
@@ -106,7 +122,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
             ConsistencyLevel.Session);
     ```
 
-* 新しいデータベースが作成されます。
+* [Database](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._database) の作成。
 
     ```java
     Database database = new Database();
@@ -115,7 +131,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     this.client.createDatabase(database, null);
     ```
 
-* 新しいコレクションが作成されます。
+* [DocumentCollection](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_collection) の作成。
 
     ```java
     DocumentCollection collectionInfo = new DocumentCollection();
@@ -126,7 +142,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     this.client.createCollection(databaseLink, collectionInfo, requestOptions);
     ```
 
-* いくつかのドキュメントが作成されます。
+* [createDocument](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.createdocument) メソッドを使用したドキュメントの作成。
 
     ```java
     // Any Java object within your code can be serialized into JSON and written to Azure Cosmos DB
@@ -139,7 +155,7 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
     this.client.createDocument(collectionLink, family, new RequestOptions(), true);
     ```
 
-* JSON に対する SQL クエリが実行されます。
+* [queryDocuments](https://docs.microsoft.com/java/api/com.microsoft.azure.documentdb._document_client.querydocuments) メソッドを使用して JSON に対する SQL クエリを実行します。
 
     ```java
     FeedOptions queryOptions = new FeedOptions();
@@ -159,29 +175,49 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="update-your-connection-string"></a>接続文字列の更新
 
-ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できるようになります。
+ここで Azure Portal に戻り、接続文字列情報を取得し、アプリにコピーします。 これでアプリが、ホストされているデータベースと通信できます。
 
-1. [Azure Portal](http://portal.azure.com/) で、Azure Cosmos DB アカウントの左のナビゲーションから、**[キー]** をクリックし、**[読み取り/書き込みキー]** をクリックします。 次の手順では、画面右側のコピー ボタンを使用して、URI とプライマリ キーを `Program.java` ファイルにコピーします。
+1. [Azure Portal](http://portal.azure.com/) で **[キー]** をクリックします。 
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-documentdb-dotnet/keys.png)
+    画面の右側にある [コピー] ボタンを使用して 1 番上の [URI] の値をコピーします。
 
-2. 開いている `Program.java` ファイルに、ポータルから URI 値をコピーし (コピー ボタンを使用して)、`Program.java` の DocumentClient コンストラクターの endpoint の値に設定します。 
+    ![Azure Portal の [キー] ページでアクセス キーを表示およびコピーする](./media/create-documentdb-java/keys.png)
 
-    `"https://FILLME.documents.azure.com"`
+2. C:\git-samples\azure-cosmos-db-documentdb-java-getting-started\src\GetStarted フォルダーから `Program.java` ファイルを開きます。 
 
-4. 次に、ポータルからプライマリ キーの値をコピーし、DocumentClient コンストラクターの第 2 パラメーターとなる "FILLME" に貼り付けます。 これで、Azure Cosmos DB と通信するために必要なすべての情報でアプリを更新しました。 
+3. 45 行目の `https://FILLME.documents.azure.com` にポータルの [URI] の値を貼り付けます。
+
+4. ポータルに戻り、スクリーン ショットに示すように、[主キー] の値をコピーします。 46 行目の `FILLME` にポータルの [主キー] の値を貼り付けます。
+
+    GetStartedDemo メソッドは、次のようになります。 
     
+    ```java
+    private void getStartedDemo() throws DocumentClientException, IOException {
+        this.client = new DocumentClient("https://youraccountname.documents.azure.com:443/",
+                "your-primary-key...RJhQrqQ5QQ==", 
+                new ConnectionPolicy(),
+                ConsistencyLevel.Session);
+    ```
+
 ## <a name="run-the-app"></a>アプリの実行
 
 1. git ターミナル ウィンドウで、azure-cosmos-db-documentdb-java-getting-started フォルダーに `cd` で移動します。
 
+    ```git
+    cd "C:\git-samples\azure-cosmos-db-documentdb-java-getting-started"
+    ```
+
 2. git ターミナル ウィンドウで「`mvn package`」と入力して、必要な Java パッケージをインストールします。
 
-3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して、Java アプリケーションを起動します。
+3. git ターミナル ウィンドウで `mvn exec:java -D exec.mainClass=GetStarted.Program` を実行して Java アプリケーションを起動します。
 
-    ターミナル ウィンドウに、FamilyDB データベースが作成されたことを示す通知が表示され、キーを押して続行するよう促されます。 キーを押してデータベースを作成した後、データ エクスプローラーに切り替えると、FamilyDB データベースが追加されていることがわかります。 キーを繰り返し押して、コレクションとドキュメントを作成した後、クエリを実行します。 プロジェクトが完了すると、アカウントからリソースが削除されます。 
+    ターミナル ウィンドウに、FamilyDB データベースが作成されたという通知が表示されます。 キーを押してコレクションを作成した後、データ エクスプローラーに切り替えると、FamilyDB データベースが追加されていることがわかります。
+    
+    キーを繰り返し押して、ドキュメントを作成した後、クエリを実行します。
+    
+    プログラムの終了時に、このアプリのすべてのリソースはアカウントから削除されるので、料金は発生しません。 
 
-    ![Azure Portal の [キー] ブレードでアクセス キーを表示およびコピーする](./media/create-documentdb-java/console-output.png)
+    ![コンソール出力](./media/create-documentdb-java/console-output.png)
 
 
 ## <a name="review-slas-in-the-azure-portal"></a>Azure Portal での SLA の確認
@@ -190,14 +226,11 @@ Azure Cosmos DB は、Microsoft のグローバルに分散されたマルチモ
 
 ## <a name="clean-up-resources"></a>リソースのクリーンアップ
 
-このアプリの使用を続けない場合は、以下の手順に従い、Azure Portal でこのクイック スタートで作成したすべてのリソースを削除してください。
-
-1. Azure Portal の左側のメニューで、**[リソース グループ]** をクリックし、作成したリソースの名前をクリックします。 
-2. リソース グループのページで **[削除]** をクリックし、削除するリソースの名前をテキスト ボックスに入力してから **[削除]** をクリックします。
+[!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
 ## <a name="next-steps"></a>次のステップ
 
-このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Cosmos DB アカウントに追加のデータをインポートできます。 
+このクイックスタートでは、データ エクスプローラーを使って Azure Cosmos DB アカウント、ドキュメント データベース、コレクションを作成する方法について説明しました。また、同じことを行うアプリをプログラムから実行する方法についても説明しました。 これで、Azure Cosmos DB コレクションに追加のデータをインポートできます。 
 
 > [!div class="nextstepaction"]
 > [Azure Cosmos DB へのデータのインポート](import-data.md)

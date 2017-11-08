@@ -12,13 +12,13 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 10/19/2017
 ms.author: billmath
-ms.openlocfilehash: e0c93cefb135d3ea1c5f0a3797602124aed85c5c
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e1bd58797124210f7c31e90fb20d728289a04ba2
+ms.sourcegitcommit: c5eeb0c950a0ba35d0b0953f5d88d3be57960180
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/24/2017
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory パススルー認証: よく寄せられる質問
 
@@ -30,7 +30,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="is-pass-through-authentication-a-free-feature"></a>パススルー認証は無料の機能ですか。
 
-パススルー認証は無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。 機能が一般公開されても、無料のままです。
+パススルー認証は無料の機能であり、この機能を使用するために Azure AD の有料エディションは不要です。
 
 ## <a name="is-pass-through-authentication-available-in-microsoft-cloud-germanyhttpwwwmicrosoftdecloud-deutschland-and-microsoft-azure-government-cloudhttpsazuremicrosoftcomfeaturesgov"></a>パススルー認証は [Microsoft Cloud Germany](http://www.microsoft.de/cloud-deutschland) および [Microsoft Azure Government クラウド](https://azure.microsoft.com/features/gov/)で使用できますか。
 
@@ -46,7 +46,7 @@ ms.lasthandoff: 10/11/2017
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>パスワード ハッシュ同期は、パススルー認証のフォールバックとして機能しますか。
 
-いいえ。パスワード ハッシュ同期は、パススルー認証への汎用フォールバックとして機能しません。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)向けにパススルー認証を構成する必要があります。
+いいえ。パススルー認証は、パスワード ハッシュ同期に自動的にフェールオーバー_されません_。 この同期は、[パススルー認証で現在サポートされていないシナリオ](active-directory-aadconnect-pass-through-authentication-current-limitations.md#unsupported-scenarios)のフォールバックとしてのみ機能します。 ユーザーのサインイン エラーを回避するには、[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)向けにパススルー認証を構成する必要があります。
 
 ## <a name="can-i-install-an-azure-ad-application-proxyactive-directory-application-proxy-get-startedmd-connector-on-the-same-server-as-a-pass-through-authentication-agent"></a>[Azure AD アプリケーション プロキシ](../active-directory-application-proxy-get-started.md) コネクタを、パススルー認証エージェントと同じサーバーにインストールできますか。
 
@@ -97,7 +97,7 @@ Azure AD Connect ウィザード "_以外_" で、AD FS がサインイン方法
 
 ## <a name="how-many-pass-through-authentication-agents-do-i-need-to-install"></a>いくつのパススルー認証エージェントをインストールする必要がありますか。
 
-複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されます。 ただし、負荷分散は実現されません。 1 つまたは 2 つの認証エージェントにより、大部分のサインイン要求を処理することになります。
+複数のパススルー認証エージェントをインストールすることで[高可用性](active-directory-aadconnect-pass-through-authentication-quick-start.md#step-5-ensure-high-availability)が確保されます。 ただし認証エージェント間の確定的な負荷分散は提供されません。
 
 テナント上で想定されるサインイン要求のピーク時の負荷および平均的な負荷を検討してください。 ベンチマークとして、1 つの認証エージェントでは、標準的な 4 コア CPU、16 GB RAM サーバー上で 1 秒あたり 300,000 ～ 400,000 の認証を処理できます。 ほとんどのお客様の場合、高可用性と大容量を確保するには、合計 2 つまたは 3 つの認証エージェントがあれば十分です。
 
@@ -132,6 +132,6 @@ Azure AD Connect ウィザードを再実行し、ユーザーのサインイン
 - [**スマート ロックアウト**](active-directory-aadconnect-pass-through-authentication-smart-lockout.md) - ユーザー アカウントを保護するようにテナントのスマート ロックアウト機能を構成します。
 - [**技術的な詳細**](active-directory-aadconnect-pass-through-authentication-how-it-works.md) - この機能のしくみを確認します。
 - [**トラブルシューティング**](active-directory-aadconnect-troubleshoot-pass-through-authentication.md) - この機能に関する一般的な問題を解決する方法を確認します。
-- [**セキュリティの詳細**](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 機能に関する追加の詳細な技術情報です。
+- [**セキュリティの詳細** ](active-directory-aadconnect-pass-through-authentication-security-deep-dive.md) - 機能に関する追加の詳細な技術情報です。
 - [**Azure AD シームレス SSO**](active-directory-aadconnect-sso.md) - この補完的な機能の詳細を確認します。
 - [**UserVoice**](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect) - 新しい機能の要求を提出します。

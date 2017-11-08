@@ -13,14 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/24/2017
 ms.author: abnarain
-ms.openlocfilehash: 0514710606b74db7c13f04e961347d215d2d283d
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 9caea4191a2ca99e6e98cc8ce7ca9ca0c7b8dc87
+ms.sourcegitcommit: c50171c9f28881ed3ac33100c2ea82a17bfedbff
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/26/2017
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory - データ移動のセキュリティに関する考慮事項
 この記事では、Azure Data Factory のデータ移動サービスがデータを保護するために使用する基本的なセキュリティ インフラストラクチャについて説明します。 Azure Data Factory 管理リソースは、Azure のセキュリティ インフラストラクチャ上に構築されており、Azure が提供する利用可能なすべてのセキュリティ対策を使用します。
+
+> [!NOTE]
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、「[データ移動のセキュリティに関する考慮事項](v1/data-factory-data-movement-security-considerations.md)」(バージョン 1) を参照してください。
 
 Data Factory ソリューションでは、1 つ以上のデータ [パイプライン](concepts-pipelines-activities.md)を作成します。 パイプラインは、1 つのタスクを連携して実行するアクティビティの論理的なグループです。 これらのパイプラインは、データ ファクトリが作成されたリージョンに存在します。 
 
@@ -141,7 +144,7 @@ PowerShell は既定で、セキュリティで保護された通信にセルフ
 
 次の表には、**企業ファイアウォール**の**送信ポート**とドメインの要件を示しています。
 
-| ドメイン名                  | 送信ポート | Description                              |
+| ドメイン名                  | 送信ポート | 説明                              |
 | ----------------------------- | -------------- | ---------------------------------------- |
 | `*.servicebus.windows.net`    | 443、80        | セルフホステッド統合ランタイムが Data Factory のデータ移動サービスに接続するために必要です。 |
 | `*.core.windows.net`          | 443            | [ステージング コピー](copy-activity-performance.md#staged-copy)機能を使用する場合に、セルフホステッド統合ランタイムが Azure Storage アカウントに接続するために使用します。 |

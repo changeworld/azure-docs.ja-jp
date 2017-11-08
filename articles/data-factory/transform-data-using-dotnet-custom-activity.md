@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/10/2017
 ms.author: shengc
-ms.openlocfilehash: 24f15168fd716cf317087b8a2ad19b66574ce569
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e470071ca0ff45fce0a410b18ea9a91e1925af4b
+ms.sourcegitcommit: bd0d3ae20773fc87b19dd7f9542f3960211495f9
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Azure Data Factory パイプラインでカスタム アクティビティを使用する
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -32,7 +32,7 @@ Azure Data Factory パイプラインでは、2 種類のアクティビティ�
 Data Factory でサポートされていないデータ ストアとの間でデータを移動する場合や、Data Factory でサポートされていない方法でデータを変換/処理する場合は、独自のデータ移動ロジックまたはデータ変換ロジックで**カスタム アクティビティ**を作成し、パイプラインでそのアクティビティを使用します。 カスタム アクティビティでは、仮想マシンの **Azure Batch** プールでカスタマイズされたコード ロジックを実行します。
 
 > [!NOTE]
-> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 のカスタム アクティビティ](v1/data-factory-use-custom-activities.md)を参照してください。
+> この記事は、現在プレビュー段階にある Data Factory のバージョン 2 に適用されます。 一般公開 (GA) されている Data Factory サービスのバージョン 1 を使用している場合は、[V1 の (カスタム) DotNet アクティビティ](v1/data-factory-use-custom-activities.md)に関するページを参照してください。
  
 
 Azure Batch サービスを初めて利用する場合は、次のトピックをご覧ください。
@@ -42,7 +42,7 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 * [New-AzureBatchPool](/powershell/module/azurerm.batch/New-AzureBatchPool?view=azurermps-4.3.1) コマンドレット。
 
 ## <a name="azure-batch-linked-service"></a>Azure Batch のリンクされたサービス 
-次の JSON では、サンプルの Azure Batch 回線サービスを定義しています。 詳細については、「[Azure Data Factory でサポートされるコンピューティング環境](compute-linked-services.md)」をご覧ください。
+次の JSON では、サンプルの Azure Batch のリンクされたサービスを定義しています。 詳細については、「[Azure Data Factory でサポートされるコンピューティング環境](compute-linked-services.md)」をご覧ください。
 
 ```json
 {
@@ -117,6 +117,30 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
 | referenceObjects      | 既存のリンクされたサービスとデータセットの配列。 カスタム コードが Data Factory のリソースを参照できるように、参照されているリンクされたサービスとデータセットが JSON 形式でカスタム アプリケーションに渡されます。 | いいえ       |
 | extendedProperties    | カスタム コードが追加のプロパティを参照できるように、JSON 形式でカスタム アプリケーションに渡すことができるユーザー定義プロパティ。 | いいえ       |
 
+## <a name="executing-commands"></a>コマンドの実行
+
+カスタム アクティビティを使用してコマンドを直接実行できます。 次の例では、Azure Batch プールのターゲット ノードで "echo hello world" コマンドを実行し、出力を stdout に出力します。 
+
+  ```json
+  {
+    "name": "MyCustomActivity",
+    "properties": {
+      "description": "Custom activity sample",
+      "activities": [{
+        "type": "Custom",
+        "name": "MyCustomActivity",
+        "linkedServiceName": {
+          "referenceName": "AzureBatchLinkedService",
+          "type": "LinkedServiceReference"
+        },
+        "typeProperties": {
+          "command": "cmd /c echo hello world"
+        }
+      }]
+    }
+  } 
+  ```
+
 ## <a name="passing-objects-and-properties"></a>オブジェクトとプロパティを渡す
 
 次のサンプルは、referenceObjects と extendedProperties を使用して、Data Factory オブジェクトとユーザー定義プロパティをカスタム アプリケーションに渡す方法を示しています。 
@@ -151,7 +175,10 @@ Azure Batch サービスを初めて利用する場合は、次のトピック�
             "connectionString": {
                 "type": "SecureString",
                 "value": "aSampleSecureString"
-            }           
+            },
+            "PropertyBagPropertyName1": "PropertyBagValue1",
+            "propertyBagPropertyName2": "PropertyBagValue2",
+            "dateTime1": "2015-04-12T12:13:14Z"              
         }
       }
     }]
@@ -198,36 +225,97 @@ namespace SampleApp
 }
 ```
 
-####<a name="retrieve-execution-outputs"></a>実行の出力を取得する
+## <a name="retrieve-execution-outputs"></a>実行の出力を取得する
 
-次の PowerShell コマンドを使用して、サンプル パイプラインのパイプライン実行を開始し、実行結果を監視できます。 
+  次の PowerShell コマンドを使用して、パイプラインの実行を開始できます。 
 
-```powershell
-$runId = Invoke-AzureRmDataFactoryV2Pipeline -dataFactoryName "factoryName" -PipelineName "pipelineName" 
-$result = Get-AzureRmDataFactoryV2ActivityRun -dataFactoryName "factoryName" -PipelineRunId $runId -RunStartedAfter "2017-09-06" -RunStartedBefore "2017-12-31"
-$result.output -join "`r`n" 
-$result.Error -join "`r`n" 
-```
+  ```.powershell
+  $runId = Invoke-AzureRmDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineName $pipelineName
+  ```
+  パイプラインが実行されているときは、次のコマンドを使用して実行出力を確認できます。 
 
-カスタム アプリケーションの **stdout** と **stderr** は、タスクの GUID を使用して Azure Batch のリンクされたサービスを作成したときに定義した、Azure Storage のリンクされたサービスの **adfjobs** コンテナーに保存されます。 次のスニペットに示すように、アクティビティの実行の出力から詳細なパスを取得できます。 
+  ```.powershell
+  while ($True) {
+      $result = Get-AzureRmDataFactoryV2ActivityRun -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -PipelineRunId $runId -RunStartedAfter (Get-Date).AddMinutes(-30) -RunStartedBefore (Get-Date).AddMinutes(30)
 
-```shell
-"exitcode": 0
-"outputs": [
-    "https://adfv2storage.blob.core.windows.net/adfjobs/097235ff-2c65-4d50-9770-29c029cbafbb/output/stdout.txt",
-    "https://adfv2storage.blob.core.windows.net/adfjobs/097235ff-2c65-4d50-9770-29c029cbafbb/output/stderr.txt"
-]
-"errorCode": ""
-"message": ""
-"failureType": ""
-"target": "MyCustomActivity"
-```
+      if(!$result) {
+          Write-Host "Waiting for pipeline to start..." -foregroundcolor "Yellow"
+      }
+      elseif (($result | Where-Object { $_.Status -eq "InProgress" } | Measure-Object).count -ne 0) {
+          Write-Host "Pipeline run status: In Progress" -foregroundcolor "Yellow"
+      }
+      else {
+          Write-Host "Pipeline '"$pipelineName"' run finished. Result:" -foregroundcolor "Yellow"
+          $result
+          break
+      }
+      ($result | Format-List | Out-String)
+      Start-Sleep -Seconds 15
+  }
 
-> [!IMPORTANT]
-> - activity.json、linkedServices.json、datasets.json は、Bath タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、https://adfv2storage.blob.core.windows.net/adfjobs/097235ff-2c65-4d50-9770-29c029cbafbb/runtime/ パスに格納されます。 必要に応じて、パスを個別にクリーンアップしてください。 
-> - リンクされたサービスでセルフホステッド統合ランタイムを使用している場合、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。 
+  Write-Host "Activity `Output` section:" -foregroundcolor "Yellow"
+  $result.Output -join "`r`n"
 
+  Write-Host "Activity `Error` section:" -foregroundcolor "Yellow"
+  $result.Error -join "`r`n"
+  ```
 
+  カスタム アプリケーションの **stdout** と **stderr** は、タスクの GUID を使用して Azure Batch のリンクされたサービスを作成したときに定義した、Azure Storage のリンクされたサービスの **adfjobs** コンテナーに保存されます。 次のスニペットに示すように、アクティビティの実行の出力から詳細なパスを取得できます。 
+
+  ```shell
+  Pipeline ' MyCustomActivity' run finished. Result:
+
+  ResourceGroupName : resourcegroupname
+  DataFactoryName   : datafactoryname
+  ActivityName      : MyCustomActivity
+  PipelineRunId     : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
+  PipelineName      : MyCustomActivity
+  Input             : {command}
+  Output            : {exitcode, outputs, effectiveIntegrationRuntime}
+  LinkedServiceName : 
+  ActivityRunStart  : 10/5/2017 3:33:06 PM
+  ActivityRunEnd    : 10/5/2017 3:33:28 PM
+  DurationInMs      : 21203
+  Status            : Succeeded
+  Error             : {errorCode, message, failureType, target}
+
+  Activity Output section:
+  "exitcode": 0
+  "outputs": [
+    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stdout.txt",
+    "https://shengcstorbatch.blob.core.windows.net/adfjobs/<GUID>/output/stderr.txt"
+  ]
+  "effectiveIntegrationRuntime": "DefaultIntegrationRuntime (East US)"
+  Activity Error section:
+  "errorCode": ""
+  "message": ""
+  "failureType": ""
+  "target": "MyCustomActivity"
+  ```
+ダウンストリームのアクティビティで stdout.txt の内容を使用する場合は、式 "@activity('MyCustomActivity').output.outputs[0]" で stdout.txt ファイルへのパスを取得できます。 
+
+  > [!IMPORTANT]
+  > - activity.json、linkedServices.json、datasets.json は、Bath タスクのランタイム フォルダーに格納されます。 この例では、activity.json、linkedServices.json、datasets.json は、"https://adfv2storage.blob.core.windows.net/adfjobs/<GUID>/runtime/" パスに格納されます。 必要に応じて、パスを個別にクリーンアップする必要があります。 
+  > - リンクされたサービスでセルフホステッド統合ランタイムを使用している場合、顧客が定義したプライベート ネットワーク環境内に資格情報を保持できるように、セルフホステッド統合ランタイムによってキーやパスワードなどの機密情報が暗号化されます。 この場合、カスタム アプリケーション コードから一部の機密フィールドを参照したときにフィールドが見つからない可能性があります。 必要に応じて、リンクされたサービスの参照を使用するのではなく、extendedProperties で SecureString を使用してください。 
+
+## <a name="difference-between-custom-activity-in-azure-data-factory-v2-and-custom-dotnet-activity-in-azure-data-factory-v1"></a>Azure Data Factory V2 のカスタム アクティビティと Azure Data Factory V1 の (カスタム) DotNet アクティビティの違い 
+
+  Azure Data Factory V1 では、IDotNetActivity インターフェイスの Execute メソッドを実装するクラスを含む .Net クラス ライブラリ プロジェクトを作成して (カスタム) DotNet アクティビティ コードを実装します。 (カスタム) DotNet アクティビティ JSON ペイロードのリンクされたサービス、データセット、および拡張プロパティは、厳密に型指定されたオブジェクトとして Execution メソッドに渡されます。 詳細については、[V1 の (カスタム) DotNet](v1/data-factory-use-custom-activities.md) に関するページを参照してください。 そのため、カスタム コードは、.Net Framework 4.5.2 で記述し、Windows ベースの Azure Batch プール ノードで実行する必要があります。 
+
+  Azure Data Factory V2 のカスタム アクティビティでは、.Net インターフェイスを実装する必要はありません。 コマンドとスクリプトを直接実行できるようになり、実行可能ファイルとしてコンパイルされた独自のカスタム コードを実行できるようになりました。 これは、folderPath プロパティと共に Command プロパティを指定することによって実現します。 カスタム アクティビティによって folderpath 内の実行可能ファイルと依存関係がアップロードされ、コマンドが実行されます。 
+
+  カスタム アクティビティの JSON ペイロードに定義されたリンクされたサービス、(referenceObjects に定義されている) データセット、および拡張プロパティには、実行可能ファイルから JSON ファイルとしてアクセスできます。 前述の SampleApp.exe コード サンプルに示すように、JSON シリアライザーを使用して、必要なプロパティにアクセスできます。 
+
+  Azure Data Factory V2 のカスタム アクティビティに導入された変更により、カスタム コード ロジックを任意の言語で記述し、Azure Batch でサポートされている Windows および Linux オペレーション システムで自由に実行することができます。 
+
+  V1 (カスタム) DotNet アクティビティ用に書かれた .Net コードが既にあり、これを V2 カスタム アクティビティで使用するには、コードを変更する必要があります。変更に関する大まかなガイドラインを次に示します。  
+
+  > - プロジェクトを .Net クラス ライブラリからコンソール アプリに変更します。 
+  > - Main メソッドでアプリケーションを起動します。IDotNetActivity インターフェイスの Execute メソッドは、もはや必要ありません。 
+  > - 厳密に型指定されたオブジェクトではなく JSON シリアライザーを使用して、リンクされたサービス、データセット、およびアクティビティの読み取りと解析を行い、必要なプロパティの値をメインのカスタム コード ロジックに渡します。 前述の SampleApp.exe コードをサンプルとして参照してください。 
+  > - ロガー オブジェクトはサポートされなくなりました。実行可能ファイルの出力は、コンソールに印刷でき、stdout.txt に保存されます。 
+  > - Microsoft.Azure.Management.DataFactories NuGet パッケージは、もはや必要ありません。 
+  > - コードをコンパイルし、実行可能ファイルと依存関係を Azure Storage にアップロードし、folderPath プロパティにパスを定義します。 
 
 ## <a name="auto-scaling-of-azure-batch"></a>Azure Batch の自動スケール
 **自動スケール** 機能で、Azure Batch プールを作成することもできます。 たとえば、専用 VM 数が 0 の Azure Batch プールと、保留中のタスクの数に基づく自動スケールの数式を作成できます。 

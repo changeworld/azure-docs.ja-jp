@@ -3,7 +3,7 @@ title: "Windows VM の MSI を使用した Azure Key Vault へのアクセス"
 description: "Windows VM 管理対象サービス ID (MSI) を使用して Azure Key Vault にアクセスするプロセスについて説明するチュートリアルです。"
 services: active-directory
 documentationcenter: 
-author: elkuzmen
+author: bryanla
 manager: mbaldwin
 editor: bryanla
 ms.service: active-directory
@@ -11,19 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/14/2017
+ms.date: 10/24/2017
 ms.author: elkuzmen
-ms.openlocfilehash: 783579eda204b44564abdcb3fee30c09b0e5c1a7
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: e3f9fa3e543851e79d9aed9c80ae4a8d2dd3420d
+ms.sourcegitcommit: 76a3cbac40337ce88f41f9c21a388e21bbd9c13f
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/25/2017
 ---
-# <a name="use-managed-service-identity-msi-with-a-windows-vm-to-access-azure-key-vault"></a>Windows VM 管理対象サービス ID (MSI) を使用した Azure Key Vault へのアクセス 
+# <a name="use-a-windows-vm-managed-service-identity-msi-to-access-azure-key-vault"></a>Windows VM 管理対象サービス ID (MSI) を使用して Azure Key Vault にアクセスする 
 
 [!INCLUDE[preview-notice](../../includes/active-directory-msi-preview-notice.md)]
 
-このチュートリアルでは、Linux 仮想マシンの管理対象サービス ID (MSI) を有効にし、その ID を使用して Azure Key Vault にアクセスする方法について説明します。 管理対象のサービス ID は Azure によって自動的に管理され、資格情報をコードに挿入しなくても、Azure AD の認証をサポートするサービスへの認証を有効にします。 学習内容:
+このチュートリアルでは、Windows 仮想マシンの管理対象サービス ID (MSI) を有効にし、その ID を使用して Azure Key Vault にアクセスする方法について説明します。 ブートストラップとして機能する Key Vault により、クライアント アプリケーションは、Azure Active Directory (AD) で保護されていないリソースにシークレットを使用してアクセスできます。 管理対象サービス ID は Azure によって自動的に管理され、コードに資格情報を挿入しなくても、Azure AD の認証をサポートするサービスを認証できます。 
+
+学習内容は次のとおりです。
 
 
 > [!div class="checklist"]
@@ -68,7 +70,7 @@ Azure Portal ([https://portal.azure.com](https://portal.azure.com)) にサイン
 
 ## <a name="grant-your-vm-access-to-a-secret-stored-in-a-key-vault"></a>Key Vault に格納されているシークレットへ VM のアクセスを許可する 
  
-MSI を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得できます。  ただし、すべての Azure サービスが Azure AD 認証をサポートしているわけではありません。 Azure AD 認証をサポートしていないサービスで MSI を使用する場合、これらのサービスで必要な資格情報を Azure Key Vault に格納し、MSI を使用して Key Vault に認証して資格情報を取得することができます。 
+MSI を使用すると、Azure AD 認証をサポートするリソースに対して認証するためのアクセス トークンをコードで取得できます。  ただし、すべての Azure サービスが Azure AD 認証をサポートしているわけではありません。 MSI をこれらのサービスとともに使用するには、Azure Key Vault にサービス資格情報を保存し、MSI を使用して Key Vault にアクセスして、資格情報を取得します。 
 
 まず、Key Vault を作成し、VM の ID に Key Vault へのアクセスを許可する必要があります。   
 
@@ -86,18 +88,18 @@ MSI を使用すると、Azure AD 認証をサポートするリソースに対�
 
 次に、Key Vault にシークレットを追加して、後で VM で実行されているコードを使用して、シークレットを取得できるようにします。 
 
-1. **[すべてのリソース]** を選択し、作成したばかりの Key Vault を検索して選択します。 
+1. **[すべてのリソース]** を選択し、作成した Key Vault を検索して選択します。 
 2. **[シークレット]** を選択し、**[追加]** をクリックします。 
-3. **アップロード オプション**から **[手動]** を選択します。 
+3. **[アップロード オプション]** から **[手動]** を選択します。 
 4. シークレットの名前と値を指定します。  値は任意のものを指定できます。 
 5. アクティブ化した日付と有効期限の日付をクリアのままにし、**[有効]** を **[はい]** のままにします。 
 6. **[作成]** をクリックしてシークレットを作成します。 
  
-## <a name="get-an-access-token-using-the-vm-identity-and-use-it-retrieve-the-secret-from-the-key-vault"></a>VM ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
+## <a name="get-an-access-token-using-the-vm-identity-and-use-it-to-retrieve-the-secret-from-the-key-vault"></a>VM ID を使用してアクセス トークンを取得して、Key Vault からシークレットを取得する  
 
-これで、シークレットが作成され、Key Vault に格納され、Key Vault へのアクセスが VM MSI に許可されたため、実行時にシークレットを取得するコードを作成することができます。  この例を簡単に示すため、PowerShell を使用して単純な REST 呼び出しを使用します。  PowerShell をインストールしていない場合は、[ここから](https://docs.microsoft.com/powershell/azure/overview?view=azurermps-4.3.1)ダウンロードします。
+PowerShell 4.3.1 以上がインストールされていない場合、[最新バージョンをダウンロードしてインストールする](https://docs.microsoft.com/powershell/azure/overview)必要があります。
 
-最初に、VM の MSI を使用して Key Vault に認証するためのアクセス トークンを取得します。
+最初に、VM の MSI を使用して、Key Vault に対して認証するためのアクセス トークンを取得します。
  
 1. ポータルで **[Virtual Machines]** にナビゲートして Windows 仮想マシンに移動し、**[概要]** の **[接続]** をクリックします。
 2. **Windows VM** を作成したときに追加した**ユーザー名**と**パスワード**を入力します。  

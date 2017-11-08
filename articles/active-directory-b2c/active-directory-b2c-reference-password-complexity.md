@@ -14,13 +14,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: saeeda
-ms.openlocfilehash: ab5547ef76121aa395168844bd69759613ffc045
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 800199b3d1d91d700d26f988a4d49713028de1ce
+ms.sourcegitcommit: d6ad3203ecc54ab267f40649d3903584ac4db60b
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/19/2017
 ---
 # <a name="azure-ad-b2c-configure-complexity-requirements-for-passwords"></a>Azure AD B2C: パスワードの複雑さの要件を構成する
+
+> [!NOTE]
+> "**この機能はプレビュー段階にあります。**"  [AADB2CPreview@microsoft.com](mailto:AADB2CPreview@microsoft.com) に連絡し、ご利用のテスト テナントでこの機能を有効にしてください。
 
 Azure Active Directory B2C (Azure AD B2C) では、アカウントの作成時にエンド ユーザーが指定するパスワードの複雑さの要件の変更がサポートされます。  既定では、Azure AD B2C では `Strong` パスワードを使います。  Azure AD B2C では、顧客が使用できるパスワードの複雑さを制御する構成オプションもサポートしています。
 

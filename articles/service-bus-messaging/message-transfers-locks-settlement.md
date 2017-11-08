@@ -13,11 +13,11 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2017
 ms.author: sethm
-ms.openlocfilehash: a4d14aef8d24f1754db6370505e3f5f8e54d0278
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: edb6e207852fa59d5828906c891693f367739c9c
+ms.sourcegitcommit: 6acb46cfc07f8fade42aff1e3f1c578aa9150c73
 ms.translationtype: HT
 ms.contentlocale: ja-JP
-ms.lasthandoff: 10/11/2017
+ms.lasthandoff: 10/18/2017
 ---
 # <a name="message-transfers-locks-and-settlement"></a>メッセージの転送、ロック、および解決
 
@@ -25,7 +25,7 @@ Service Bus などのメッセージ ブローカーの最も重要な機能は�
 
 クライアントがメッセージを送信する場合、通常は、メッセージが正常に転送され、ブローカーが受信したか、またはなんらかのエラーが発生したかどうかの確認が求められます。 この肯定または否定応答により、クライアントおよびブローカーは、メッセージの転送状態について理解し、これを*解決*と呼びます。
 
-同様に、ブローカーがメッセージをびクライアントに転送する場合、ブローカーとクライアントは、メッセージが正常に送信、処理され、削除できる状態か、またはメッセージの転送や処理が失敗し、メッセージを再送信する必要があるかの確認を求めます。
+同様に、ブローカーがメッセージをクライアントに転送する場合、ブローカーとクライアントは、メッセージが正常に送信、処理され、削除できる状態か、またはメッセージの転送や処理が失敗し、メッセージを再送信する必要があるかの確認を求めます。
 
 ## <a name="settling-send-operations"></a>送信操作の解決
 
